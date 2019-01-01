@@ -1,37 +1,38 @@
 Route18East_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 2 ; warp events
+	warp_event  4,  6, ROUTE_18_GATE, 3
+	warp_event  4,  7, ROUTE_18_GATE, 4
 
-Route18East_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 2
-	warp_def 6, 4, 3, ROUTE_18_GATE
-	warp_def 7, 4, 4, ROUTE_18_GATE
+	db 1 ; bg events
+	bg_event 11,  5, SIGNPOST_JUMPTEXT, Route18SignText
 
-.XYTriggers: db 0
+	db 2 ; object events
+	object_event 11, 12, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerBird_keeperBoris, -1
+	object_event 15,  6, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerBird_keeperBob, -1
 
-.Signposts: db 1
-	signpost 5, 11, SIGNPOST_JUMPTEXT, Route18SignText
+GenericTrainerBird_keeperBoris:
+	generictrainer BIRD_KEEPER, BORIS, EVENT_BEAT_BIRD_KEEPER_BORIS, Bird_keeperBorisSeenText, Bird_keeperBorisBeatenText
 
-.PersonEvents: db 2
-	person_event SPRITE_YOUNGSTER, 12, 11, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBird_keeperBoris, -1
-	person_event SPRITE_YOUNGSTER, 6, 15, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBird_keeperBob, -1
+	text "Since you're so"
+	line "strong, it must be"
+	cont "fun to battle."
+	done
 
-TrainerBird_keeperBoris:
-	trainer EVENT_BEAT_BIRD_KEEPER_BORIS, BIRD_KEEPER, BORIS, Bird_keeperBorisSeenText, Bird_keeperBorisBeatenText, 0, Bird_keeperBorisScript
+GenericTrainerBird_keeperBob:
+	generictrainer BIRD_KEEPER, BOB, EVENT_BEAT_BIRD_KEEPER_BOB, Bird_keeperBobSeenText, Bird_keeperBobBeatenText
 
-Bird_keeperBorisScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x1acfa5
+	text "If you don't have"
+	line "a Bicycle, you're"
 
-TrainerBird_keeperBob:
-	trainer EVENT_BEAT_BIRD_KEEPER_BOB, BIRD_KEEPER, BOB, Bird_keeperBobSeenText, Bird_keeperBobBeatenText, 0, Bird_keeperBobScript
-
-Bird_keeperBobScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x1ad00d
+	para "not allowed to use"
+	line "the shortcut."
+	done
 
 Bird_keeperBorisSeenText:
 	text "If you're looking"
@@ -45,12 +46,6 @@ Bird_keeperBorisBeatenText:
 	text "Ayieee!"
 	done
 
-UnknownText_0x1acfa5:
-	text "Since you're so"
-	line "strong, it must be"
-	cont "fun to battle."
-	done
-
 Bird_keeperBobSeenText:
 	text "Cycling Road is a"
 	line "quick shortcut to"
@@ -59,14 +54,6 @@ Bird_keeperBobSeenText:
 
 Bird_keeperBobBeatenText:
 	text "…Whew!"
-	done
-
-UnknownText_0x1ad00d:
-	text "If you don't have"
-	line "a Bicycle, you're"
-
-	para "not allowed to use"
-	line "the shortcut."
 	done
 
 Route18SignText:

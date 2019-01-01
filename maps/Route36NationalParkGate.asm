@@ -1,42 +1,39 @@
 Route36NationalParkGate_MapScriptHeader:
+	db 3 ; scene scripts
+	scene_script Route36NationalParkGateTrigger0
+	scene_script Route36NationalParkGateTrigger1
+	scene_script Route36NationalParkGateTrigger2
 
-.MapTriggers: db 3
-	dw Route36NationalParkGateTrigger0
-	dw Route36NationalParkGateTrigger1
-	dw Route36NationalParkGateTrigger2
+	db 2 ; callbacks
+	callback MAPCALLBACK_NEWMAP, Route36NationalParkGateCheckIfContestRunning
+	callback MAPCALLBACK_OBJECTS, Route36NationalParkGateCheckIfContestAvailable
 
-.MapCallbacks: db 2
-	dbw MAPCALLBACK_NEWMAP, Route36NationalParkGateCheckIfContestRunning
-	dbw MAPCALLBACK_OBJECTS, Route36NationalParkGateCheckIfContestAvailable
+	db 4 ; warp events
+	warp_event  0,  4, NATIONAL_PARK, 1
+	warp_event  0,  5, NATIONAL_PARK, 2
+	warp_event  9,  4, ROUTE_36, 1
+	warp_event  9,  5, ROUTE_36, 2
 
-Route36NationalParkGate_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 4
-	warp_def 4, 0, 1, NATIONAL_PARK
-	warp_def 5, 0, 2, NATIONAL_PARK
-	warp_def 4, 9, 1, ROUTE_36
-	warp_def 5, 9, 2, ROUTE_36
+	db 1 ; bg events
+	bg_event  6,  0, SIGNPOST_JUMPTEXT, UnknownText_0x6a90e
 
-.XYTriggers: db 0
+	db 12 ; object events
+	object_event  0,  3, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_SCRIPT, 0, Route36OfficerScriptContest, EVENT_ROUTE_36_NATIONAL_PARK_GATE_OFFICER_CONTEST_DAY
+	object_event  2,  5, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_SCRIPT, 0, BugCatcherScript_0x6ad06, EVENT_BUG_CATCHING_CONTESTANT_1B
+	object_event  4,  5, SPRITE_BUG_MANIAC, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, BugManiacScript_0x6ad1a, EVENT_BUG_CATCHING_CONTESTANT_2B
+	object_event  2,  6, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, CooltrainerMScript_0x6ad2e, EVENT_BUG_CATCHING_CONTESTANT_3B
+	object_event  6,  5, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, PokefanMScript_0x6ad42, EVENT_BUG_CATCHING_CONTESTANT_4B
+	object_event  2,  7, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_SCRIPT, 0, BugCatcherScript_0x6ad56, EVENT_BUG_CATCHING_CONTESTANT_5B
+	object_event  5,  6, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x6ad6a, EVENT_BUG_CATCHING_CONTESTANT_6B
+	object_event  3,  6, SPRITE_LASS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_SCRIPT, 0, LassScript_0x6ad7e, EVENT_BUG_CATCHING_CONTESTANT_7B
+	object_event  4,  7, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_SCRIPT, 0, BugCatcherScript_0x6ad92, EVENT_BUG_CATCHING_CONTESTANT_8B
+	object_event  6,  7, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x6ada6, EVENT_BUG_CATCHING_CONTESTANT_9B
+	object_event  6,  6, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x6adba, EVENT_BUG_CATCHING_CONTESTANT_10B
+	object_event  3,  2, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_SCRIPT, 0, OfficerScript_0x6acf4, EVENT_ROUTE_36_NATIONAL_PARK_GATE_OFFICER_NOT_CONTEST_DAY
 
-.Signposts: db 1
-	signpost 0, 6, SIGNPOST_JUMPTEXT, UnknownText_0x6a90e
-
-.PersonEvents: db 12
-	person_event SPRITE_OFFICER, 3, 0, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, Route36OfficerScriptContest, EVENT_ROUTE_36_NATIONAL_PARK_GATE_OFFICER_CONTEST_DAY
-	person_event SPRITE_BUG_CATCHER, 5, 2, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, BugCatcherScript_0x6ad06, EVENT_BUG_CATCHING_CONTESTANT_1B
-	person_event SPRITE_BUG_MANIAC, 5, 4, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, BugManiacScript_0x6ad1a, EVENT_BUG_CATCHING_CONTESTANT_2B
-	person_event SPRITE_COOLTRAINER_M, 6, 2, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CooltrainerMScript_0x6ad2e, EVENT_BUG_CATCHING_CONTESTANT_3B
-	person_event SPRITE_POKEFAN_M, 5, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, PokefanMScript_0x6ad42, EVENT_BUG_CATCHING_CONTESTANT_4B
-	person_event SPRITE_BUG_CATCHER, 7, 2, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, BugCatcherScript_0x6ad56, EVENT_BUG_CATCHING_CONTESTANT_5B
-	person_event SPRITE_YOUNGSTER, 6, 5, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x6ad6a, EVENT_BUG_CATCHING_CONTESTANT_6B
-	person_event SPRITE_LASS, 6, 3, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, LassScript_0x6ad7e, EVENT_BUG_CATCHING_CONTESTANT_7B
-	person_event SPRITE_BUG_CATCHER, 7, 4, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, BugCatcherScript_0x6ad92, EVENT_BUG_CATCHING_CONTESTANT_8B
-	person_event SPRITE_YOUNGSTER, 7, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x6ada6, EVENT_BUG_CATCHING_CONTESTANT_9B
-	person_event SPRITE_YOUNGSTER, 6, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x6adba, EVENT_BUG_CATCHING_CONTESTANT_10B
-	person_event SPRITE_OFFICER, 2, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, OfficerScript_0x6acf4, EVENT_ROUTE_36_NATIONAL_PARK_GATE_OFFICER_NOT_CONTEST_DAY
-
-const_value set 1
+	const_def 1 ; object constants
 	const ROUTE36NATIONALPARKGATE_OFFICER1
 	const ROUTE36NATIONALPARKGATE_BUG_CATCHER1
 	const ROUTE36NATIONALPARKGATE_BUG_MANIAC
@@ -209,10 +206,10 @@ Route36OfficerScriptContest:
 	checkcode VAR_PARTYCOUNT
 	if_less_than $6, .ContinueLeavingMons
 	checkcode VAR_BOXSPACE
-	if_equal $0, .BoxFull
+	iffalse_jumpopenedtext UnknownText_0x6a67c
 .ContinueLeavingMons:
 	special CheckFirstMonIsEgg
-	if_equal $1, .FirstMonIsEgg
+	iftrue_jumpopenedtext UnknownText_0x6a71f
 	writetext UnknownText_0x6a4c6
 	yesorno
 	iffalse_jumpopenedtext UnknownText_0x6a597
@@ -226,12 +223,6 @@ Route36OfficerScriptContest:
 	waitsfx
 	buttonsound
 	jump .ResumeStartingContest
-
-.BoxFull:
-	jumpopenedtext UnknownText_0x6a67c
-
-.FirstMonIsEgg:
-	jumpopenedtext UnknownText_0x6a71f
 
 Route36Officer_ContestHasConcluded:
 	checkevent EVENT_CONTEST_OFFICER_HAS_PRIZE
@@ -252,52 +243,52 @@ OfficerScript_0x6acf4:
 	jumptextfaceplayer UnknownText_0x6b370
 
 BugCatcherScript_0x6ad06:
-	checkevent EVENT_GAVE_KURT_APRICORNS
+	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	iffalse_jumptextfaceplayer UnknownText_0x6b3c4
 	jumptextfaceplayer UnknownText_0x6b399
 
 BugManiacScript_0x6ad1a:
-	checkevent EVENT_GAVE_KURT_APRICORNS
+	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	iffalse_jumptextfaceplayer UnknownText_0x6b440
 	jumptextfaceplayer UnknownText_0x6b40f
 
 CooltrainerMScript_0x6ad2e:
-	checkevent EVENT_GAVE_KURT_APRICORNS
+	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	iffalse_jumptextfaceplayer UnknownText_0x6b496
 	jumptextfaceplayer UnknownText_0x6b462
 
 PokefanMScript_0x6ad42:
-	checkevent EVENT_GAVE_KURT_APRICORNS
+	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	iffalse_jumptextfaceplayer UnknownText_0x6b50a
 	jumptextfaceplayer UnknownText_0x6b4da
 
 BugCatcherScript_0x6ad56:
-	checkevent EVENT_GAVE_KURT_APRICORNS
+	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	iffalse_jumptextfaceplayer UnknownText_0x6b57c
 	jumptextfaceplayer UnknownText_0x6b54e
 
 YoungsterScript_0x6ad6a:
-	checkevent EVENT_GAVE_KURT_APRICORNS
+	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	iffalse_jumptextfaceplayer UnknownText_0x6b5dd
 	jumptextfaceplayer UnknownText_0x6b5b0
 
 LassScript_0x6ad7e:
-	checkevent EVENT_GAVE_KURT_APRICORNS
+	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	iffalse_jumptextfaceplayer UnknownText_0x6b698
 	jumptextfaceplayer UnknownText_0x6b64b
 
 BugCatcherScript_0x6ad92:
-	checkevent EVENT_GAVE_KURT_APRICORNS
+	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	iffalse_jumptextfaceplayer UnknownText_0x6b6e9
 	jumptextfaceplayer UnknownText_0x6b6b8
 
 YoungsterScript_0x6ada6:
-	checkevent EVENT_GAVE_KURT_APRICORNS
+	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	iffalse_jumptextfaceplayer UnknownText_0x6b740
 	jumptextfaceplayer UnknownText_0x6b71b
 
 YoungsterScript_0x6adba:
-	checkevent EVENT_GAVE_KURT_APRICORNS
+	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	iffalse_jumptextfaceplayer UnknownText_0x6b7af
 	jumptextfaceplayer UnknownText_0x6b76f
 

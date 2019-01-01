@@ -1,6 +1,5 @@
-
 ; pokemon
-const_value set 1
+	const_def 1
 	const BULBASAUR  ; $01
 	const IVYSAUR    ; $02
 	const VENUSAUR   ; $03
@@ -254,80 +253,15 @@ const_value set 1
 	const CELEBI     ; $fb
 	const SYLVEON    ; $fc
 	const PORYGON_Z  ; $fd
+NUM_POKEMON EQU const_value +- 1
+	const EGG        ; $fe
+	const CANCEL     ; $ff
 
-const_value SET const_value + -1
-
-NUM_POKEMON EQU const_value
-
-; Can't use $ff - that's the value for Cancel in Bill's PC
-EGG EQU $fe
-
-; pokemon structure in RAM
-MON_SPECIES              EQUS "(wPartyMon1Species - wPartyMon1)"
-MON_ITEM                 EQUS "(wPartyMon1Item - wPartyMon1)"
-MON_MOVES                EQUS "(wPartyMon1Moves - wPartyMon1)"
-MON_ID                   EQUS "(wPartyMon1ID - wPartyMon1)"
-MON_EXP                  EQUS "(wPartyMon1Exp - wPartyMon1)"
-MON_EVS                  EQUS "(wPartyMon1EVs - wPartyMon1)"
-MON_HP_EV                EQUS "(wPartyMon1HPEV - wPartyMon1)"
-MON_ATK_EV               EQUS "(wPartyMon1AtkEV - wPartyMon1)"
-MON_DEF_EV               EQUS "(wPartyMon1DefEV - wPartyMon1)"
-MON_SPD_EV               EQUS "(wPartyMon1SpdEV - wPartyMon1)"
-MON_SAT_EV               EQUS "(wPartyMon1SatEV - wPartyMon1)"
-MON_SDF_EV               EQUS "(wPartyMon1SdfEV - wPartyMon1)"
-MON_DVS                  EQUS "(wPartyMon1DVs - wPartyMon1)"
-MON_PERSONALITY          EQUS "(wPartyMon1Personality - wPartyMon1)"
-MON_SHINY                EQUS "(wPartyMon1Shiny - wPartyMon1)"
-MON_ABILITY              EQUS "(wPartyMon1Ability - wPartyMon1)"
-MON_NATURE               EQUS "(wPartyMon1Nature - wPartyMon1)"
-MON_GENDER               EQUS "(wPartyMon1Gender - wPartyMon1)"
-MON_IS_EGG               EQUS "(wPartyMon1IsEgg - wPartyMon1)"
-MON_IS_DEAD              EQUS "(wPartyMon1IsDead - wPartyMon1)"
-MON_FORM                 EQUS "(wPartyMon1Form - wPartyMon1)"
-MON_PP                   EQUS "(wPartyMon1PP - wPartyMon1)"
-MON_HAPPINESS            EQUS "(wPartyMon1Happiness - wPartyMon1)"
-MON_PKRUS                EQUS "(wPartyMon1PokerusStatus - wPartyMon1)"
-MON_CAUGHTDATA           EQUS "(wPartyMon1CaughtData - wPartyMon1)"
-MON_CAUGHTGENDER         EQUS "(wPartyMon1CaughtGender - wPartyMon1)"
-MON_CAUGHTTIME           EQUS "(wPartyMon1CaughtTime - wPartyMon1)"
-MON_CAUGHTBALL           EQUS "(wPartyMon1CaughtBall - wPartyMon1)"
-MON_CAUGHTLEVEL          EQUS "(wPartyMon1CaughtLevel - wPartyMon1)"
-MON_CAUGHTLOCATION       EQUS "(wPartyMon1CaughtLocation - wPartyMon1)"
-MON_LEVEL                EQUS "(wPartyMon1Level - wPartyMon1)"
-MON_STATUS               EQUS "(wPartyMon1Status - wPartyMon1)"
-MON_HP                   EQUS "(wPartyMon1HP - wPartyMon1)"
-MON_MAXHP                EQUS "(wPartyMon1MaxHP - wPartyMon1)"
-MON_STATS                EQUS "(wPartyMon1Stats - wPartyMon1)"
-MON_ATK                  EQUS "(wPartyMon1Attack - wPartyMon1)"
-MON_DEF                  EQUS "(wPartyMon1Defense - wPartyMon1)"
-MON_SPD                  EQUS "(wPartyMon1Speed - wPartyMon1)"
-MON_SAT                  EQUS "(wPartyMon1SpclAtk - wPartyMon1)"
-MON_SDF                  EQUS "(wPartyMon1SpclDef - wPartyMon1)"
-BOXMON_STRUCT_LENGTH     EQUS "(wPartyMon1End - wPartyMon1)"
-PARTYMON_STRUCT_LENGTH   EQUS "(wPartyMon1StatsEnd - wPartyMon1)"
-
-; apply to MON_FORM
-SHINY_MASK   EQU %10000000
-ABILITY_MASK EQU %01100000
-NATURE_MASK  EQU %00011111
-GENDER_MASK  EQU %10000000
-IS_EGG_MASK  EQU %01000000
-IS_DEAD_MASK EQU %00100000
-FORM_MASK    EQU %00011111
-
-; apply to MON_CAUGHTDATA
-CAUGHTGENDER_MASK EQU %10000000
-CAUGHTTIME_MASK   EQU %01100000
-CAUGHTBALL_MASK   EQU %00011111
-
-; gender values
-MALE   EQU %00000000
-FEMALE EQU %10000000
 
 ; form values
 
 ; unown
-const_value set 1
+	const_def 1
 	const UNOWN_A_FORM
 	const UNOWN_B_FORM
 	const UNOWN_C_FORM
@@ -359,7 +293,7 @@ const_value set 1
 NUM_UNOWN EQU const_value +- 1
 
 ; pikachu
-const_value set 1
+	const_def 1
 	const PIKACHU_PLAIN_FORM
 	const PIKACHU_FLY_FORM
 	const PIKACHU_SURF_FORM
@@ -368,12 +302,12 @@ const_value set 1
 	const PIKACHU_SPARK_FORM
 
 ; pichu
-const_value set 1
+	const_def 1
 	const PICHU_PLAIN_FORM
 	const PICHU_SPIKY_EARED_FORM
 
 ; arbok
-const_value set 1
+	const_def 1
 	const ARBOK_JOHTO_FORM
 	const ARBOK_KANTO_FORM
 	const ARBOK_KOGA_FORM
@@ -381,7 +315,7 @@ const_value set 1
 	const ARBOK_ARIANA_FORM
 
 ; magikarp
-const_value set 1
+	const_def 1
 	const MAGIKARP_PLAIN_FORM
 	const MAGIKARP_SKELLY_FORM
 	const MAGIKARP_CALICO1_FORM
@@ -399,81 +333,11 @@ const_value set 1
 NUM_MAGIKARP EQU const_value +- 1
 
 ; gyarados
-const_value set 1
+	const_def 1
 	const GYARADOS_PLAIN_FORM
 GYARADOS_RED_FORM EQU NUM_MAGIKARP + 1
 
 ; mewtwo
-const_value set 1
+	const_def 1
 	const MEWTWO_PLAIN_FORM
 	const MEWTWO_ARMORED_FORM
-
-; indexes into WritePartyMenuTilemap.Jumptable
-	const_def
-	const PLACE_PARTYMON_NICKNAMES
-	const PLACE_PARTYMON_HP_BAR
-	const PLACE_PARTYMON_HP_DIGITS
-	const PLACE_PARTYMON_LEVEL
-	const PLACE_PARTYMON_STATUS
-	const PLACE_PARTYMON_TMHM
-	const PLACE_PARTYMON_EVO
-	const PLACE_PARTYMON_GENDER
-
-const_value SET 1
-	const MONMENU_CUT        ; 1
-	const MONMENU_FLY        ; 2
-	const MONMENU_SURF       ; 3
-	const MONMENU_STRENGTH   ; 4
-	const MONMENU_WATERFALL  ; 5
-	const MONMENU_FLASH      ; 6
-	const MONMENU_WHIRLPOOL  ; 7
-	const MONMENU_DIG        ; 8
-	const MONMENU_TELEPORT   ; 9
-	const MONMENU_SOFTBOILED ; 10
-	const MONMENU_HEADBUTT   ; 11
-	const MONMENU_ROCKSMASH  ; 12
-	const MONMENU_MILKDRINK  ; 13
-
-	const MONMENU_STATS      ; 14
-	const MONMENU_SWITCH     ; 15
-	const MONMENU_ITEM       ; 16
-	const MONMENU_CANCEL     ; 17
-	const MONMENU_MOVE       ; 18
-	const MONMENU_MAIL       ; 19
-	const MONMENU_ERROR      ; 20
-
-MONMENU_FIELD_MOVE EQU 0
-MONMENU_MENUOPTION EQU 1
-
-NUM_MON_SUBMENU_ITEMS EQU 8
-
-BASEMON_BASE_STATS    EQUS "(BaseData + wBaseStats - wCurBaseData)"
-BASEMON_BASE_HP       EQUS "(BaseData + wBaseHP - wCurBaseData)"
-BASEMON_BASE_ATK      EQUS "(BaseData + wBaseAttack - wCurBaseData)"
-BASEMON_BASE_DEF      EQUS "(BaseData + wBaseDefense - wCurBaseData)"
-BASEMON_BASE_SPD      EQUS "(BaseData + wBaseSpeed - wCurBaseData)"
-BASEMON_BASE_SAT      EQUS "(BaseData + wBaseSpecialAttack - wCurBaseData)"
-BASEMON_BASE_SDF      EQUS "(BaseData + wBaseSpecialDefense - wCurBaseData)"
-BASEMON_TYPES         EQUS "(BaseData + wBaseType - wCurBaseData)"
-BASEMON_TYPE_1        EQUS "(BaseData + wBaseType1 - wCurBaseData)"
-BASEMON_TYPE_2        EQUS "(BaseData + wBaseType2 - wCurBaseData)"
-BASEMON_CATCH_RATE    EQUS "(BaseData + wBaseCatchRate - wCurBaseData)"
-BASEMON_BASE_EXP      EQUS "(BaseData + wBaseExp - wCurBaseData)"
-BASEMON_ITEMS         EQUS "(BaseData + wBaseItems - wCurBaseData)"
-BASEMON_ITEM_1        EQUS "(BaseData + wBaseItems - wCurBaseData)"
-BASEMON_ITEM_2        EQUS "(BaseData + wBaseItems + 1 - wCurBaseData)"
-BASEMON_GENDER        EQUS "(BaseData + wBaseGender - wCurBaseData)"
-BASEMON_EGG_STEPS     EQUS "(BaseData + wBaseEggSteps - wCurBaseData)"
-BASEMON_PIC_SIZE      EQUS "(BaseData + wBasePicSize - wCurBaseData)"
-BASEMON_ABILITIES     EQUS "(BaseData + wBaseAbility1 - wCurBaseData)"
-BASEMON_ABILITY_1     EQUS "(BaseData + wBaseAbility1 - wCurBaseData)"
-BASEMON_ABILITY_2     EQUS "(BaseData + wBaseAbility2 - wCurBaseData)"
-BASEMON_ABILITY_3     EQUS "(BaseData + wBaseHiddenAbility - wCurBaseData)"
-BASEMON_GROWTH_RATE   EQUS "(BaseData + wBaseGrowthRate - wCurBaseData)"
-BASEMON_EGG_GROUPS    EQUS "(BaseData + wBaseEggGroups - wCurBaseData)"
-BASEMON_EV_YIELD_1    EQUS "(BaseData + wBaseEVYield1 - wCurBaseData)"
-BASEMON_EV_YIELD_2    EQUS "(BaseData + wBaseEVYield2 - wCurBaseData)"
-BASEMON_TMHM          EQUS "(BaseData + wBaseTMHM - wCurBaseData)"
-BASEMON_STRUCT_LENGTH EQUS "(BaseData1 - BaseData0)"
-
-BATTLEMON_STRUCT_LENGTH EQUS "(wBattleMonStructEnd - wBattleMonSpecies)"

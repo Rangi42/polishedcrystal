@@ -1,72 +1,73 @@
 SeafoamGym_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 1 ; warp events
+	warp_event 12, 20, SEAFOAM_ISLANDS_1F, 2
 
-SeafoamGym_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 1
-	warp_def 20, 12, 2, SEAFOAM_ISLANDS_1F
+	db 0 ; bg events
 
-.XYTriggers: db 0
+	db 8 ; object events
+	object_event 10, 20, SPRITE_GYM_GUY, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, SeafoamGymGuyScript, EVENT_SEAFOAM_GYM_GYM_GUY
+	object_event  7, 16, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerScientistLowell, -1
+	object_event 14, 14, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerScientistDennett, -1
+	object_event 19, 12, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerSupernerdCary, -1
+	object_event 12,  7, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerScientistLinden, -1
+	object_event 10,  5, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerSupernerdWaldo, -1
+	object_event  6, 14, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerSupernerdMerle, -1
+	object_event 12, 11, SPRITE_BLAINE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_SCRIPT, 0, BlaineScript_0x1ab4fb, -1
 
-.Signposts: db 0
-
-.PersonEvents: db 8
-	person_event SPRITE_GYM_GUY, 20, 10, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, SeafoamGymGuyScript, EVENT_SEAFOAM_GYM_GYM_GUY
-	person_event SPRITE_SCIENTIST, 16, 7, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerScientistLowell, -1
-	person_event SPRITE_SCIENTIST, 14, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerScientistDennett, -1
-	person_event SPRITE_SUPER_NERD, 12, 19, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 1, TrainerSupernerdCary, -1
-	person_event SPRITE_SCIENTIST, 7, 12, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerScientistLinden, -1
-	person_event SPRITE_SUPER_NERD, 5, 10, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 1, TrainerSupernerdWaldo, -1
-	person_event SPRITE_SUPER_NERD, 14, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 1, TrainerSupernerdMerle, -1
-	person_event SPRITE_BLAINE, 11, 12, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, BlaineScript_0x1ab4fb, -1
-
-const_value set 1
+	const_def 1 ; object constants
 	const SEAFOAMGYM_GYM_GUY
 
-TrainerScientistLowell:
-	trainer EVENT_BEAT_SCIENTIST_LOWELL, SCIENTIST, LOWELL, ScientistLowellSeenText, ScientistLowellBeatenText, 0, ScientistLowellScript
+GenericTrainerScientistLowell:
+	generictrainer SCIENTIST, LOWELL, EVENT_BEAT_SCIENTIST_LOWELL, ScientistLowellSeenText, ScientistLowellBeatenText
 
-ScientistLowellScript:
-	end_if_just_battled
-	jumptextfaceplayer ScientistLowellAfterText
+	text "We may be in a"
+	line "cave, but we"
+	cont "always do the"
+	cont "laundry."
+	done
 
-TrainerScientistDennett:
-	trainer EVENT_BEAT_SCIENTIST_DENNETT, SCIENTIST, DENNETT, ScientistDennettSeenText, ScientistDennettBeatenText, 0, ScientistDennettScript
+GenericTrainerScientistDennett:
+	generictrainer SCIENTIST, DENNETT, EVENT_BEAT_SCIENTIST_DENNETT, ScientistDennettSeenText, ScientistDennettBeatenText
 
-ScientistDennettScript:
-	end_if_just_battled
-	jumptextfaceplayer ScientistDennettAfterText
+	text "Together with"
+	line "Blaine, we will"
+	cont "rebuild our Gym!"
+	done
 
-TrainerSupernerdCary:
-	trainer EVENT_BEAT_SUPER_NERD_CARY, SUPER_NERD, CARY, SupernerdCarySeenText, SupernerdCaryBeatenText, 0, SupernerdCaryScript
+GenericTrainerSupernerdCary:
+	generictrainer SUPER_NERD, CARY, EVENT_BEAT_SUPER_NERD_CARY, SupernerdCarySeenText, SupernerdCaryBeatenText
 
-SupernerdCaryScript:
-	end_if_just_battled
-	jumptextfaceplayer SupernerdCaryAfterText
+	text "Bitterness leads"
+	line "to improvement."
+	done
 
-TrainerScientistLinden:
-	trainer EVENT_BEAT_SCIENTIST_LINDEN, SCIENTIST, LINDEN, ScientistLindenSeenText, ScientistLindenBeatenText, 0, ScientistLindenScript
+GenericTrainerScientistLinden:
+	generictrainer SCIENTIST, LINDEN, EVENT_BEAT_SCIENTIST_LINDEN, ScientistLindenSeenText, ScientistLindenBeatenText
 
-ScientistLindenScript:
-	end_if_just_battled
-	jumptextfaceplayer ScientistLindenAfterText
+	text "Not all scientists"
+	line "help the bad guys."
+	done
 
-TrainerSupernerdWaldo:
-	trainer EVENT_BEAT_SUPER_NERD_WALDO, SUPER_NERD, WALDO, SupernerdWaldoSeenText, SupernerdWaldoBeatenText, 0, SupernerdWaldoScript
+GenericTrainerSupernerdWaldo:
+	generictrainer SUPER_NERD, WALDO, EVENT_BEAT_SUPER_NERD_WALDO, SupernerdWaldoSeenText, SupernerdWaldoBeatenText
 
-SupernerdWaldoScript:
-	end_if_just_battled
-	jumptextfaceplayer SupernerdWaldoAfterText
+	text "Who in the world"
+	line "are you?"
+	done
 
-TrainerSupernerdMerle:
-	trainer EVENT_BEAT_SUPER_NERD_MERLE, SUPER_NERD, MERLE, SupernerdMerleSeenText, SupernerdMerleBeatenText, 0, SupernerdMerleScript
+GenericTrainerSupernerdMerle:
+	generictrainer SUPER_NERD, MERLE, EVENT_BEAT_SUPER_NERD_MERLE, SupernerdMerleSeenText, SupernerdMerleBeatenText
 
-SupernerdMerleScript:
-	end_if_just_battled
-	jumptextfaceplayer SupernerdMerleAfterText
+	text "I failed to"
+	line "sense how strong"
+	cont "you are."
+	done
 
 BlaineScript_0x1ab4fb:
 	faceplayer
@@ -112,29 +113,56 @@ BlaineScript_0x1ab4fb:
 	specialphonecall SPECIALCALL_LYRASEGG
 .FightDone:
 	checkevent EVENT_GOT_TM61_WILL_O_WISP
-	iftrue BlaineAfterTMScript
+	iftrue_jumpopenedtext UnknownText_0x1ab71c
 	writetext UnknownText_0x1ab69d
 	buttonsound
 	verbosegivetmhm TM_WILL_O_WISP
 	setevent EVENT_GOT_TM61_WILL_O_WISP
-	jumpopenedtext BlaineOutroText
+	thisopenedtext
 
-BlaineAfterTMScript:
-	jumpopenedtext UnknownText_0x1ab71c
+	text "It's called Will-"
+	line "O-Wisp!"
+
+	para "It weakens your"
+	line "foe by inflicting"
+	cont "a burn."
+
+	para "I did lose this"
+	line "time, but I'm going"
+	cont "to win next time."
+
+	para "When I rebuild my"
+	line "Cinnabar Gym,"
+
+	para "we'll have to have"
+	line "a rematch."
+	done
 
 SeafoamGymGuyScript:
-	faceplayer
-	opentext
 	checkevent EVENT_TALKED_TO_SEAFOAM_GYM_GUY_ONCE
-	iftrue .TalkedToSeafoamGymGuyScript
-	writetext SeafoamGymGuyWinText
-	waitbutton
-	closetext
+	iftrue_jumptextfaceplayer SeafoamGymGuyWinText2
 	setevent EVENT_TALKED_TO_SEAFOAM_GYM_GUY_ONCE
-	end
+	thistextfaceplayer
 
-.TalkedToSeafoamGymGuyScript:
-	jumpopenedtext SeafoamGymGuyWinText2
+	text "Yo!"
+
+	para "…Huh? It's over"
+	line "already?"
+
+	para "Sorry, sorry!"
+
+	para "Cinnabar Gym was"
+	line "gone, so I didn't"
+
+	para "know where to find"
+	line "you."
+
+	para "But, hey, you're"
+	line "plenty strong even"
+
+	para "without my advice."
+	line "I knew you'd win!"
+	done
 
 ScientistLowellSeenText:
 	text "This lab coat"
@@ -149,13 +177,6 @@ ScientistLowellBeatenText:
 	cont "life."
 	done
 
-ScientistLowellAfterText:
-	text "We may be in a"
-	line "cave, but we"
-	cont "always do the"
-	cont "laundry."
-	done
-
 ScientistDennettSeenText:
 	text "Blaine may have"
 	line "lost his Gym, but"
@@ -165,12 +186,6 @@ ScientistDennettSeenText:
 ScientistDennettBeatenText:
 	text "Blaine's persever-"
 	line "ance motivates me!"
-	done
-
-ScientistDennettAfterText:
-	text "Together with"
-	line "Blaine, we will"
-	cont "rebuild our Gym!"
 	done
 
 SupernerdCarySeenText:
@@ -186,11 +201,6 @@ SupernerdCaryBeatenText:
 	line "defeat…"
 	done
 
-SupernerdCaryAfterText:
-	text "Bitterness leads"
-	line "to improvement."
-	done
-
 ScientistLindenSeenText:
 	text "We lost the Gym on"
 	line "Cinnabar Island,"
@@ -200,11 +210,6 @@ ScientistLindenSeenText:
 ScientistLindenBeatenText:
 	text "We accept defeat"
 	line "gracefully…"
-	done
-
-ScientistLindenAfterText:
-	text "Not all scientists"
-	line "help the bad guys."
 	done
 
 SupernerdWaldoSeenText:
@@ -219,11 +224,6 @@ SupernerdWaldoBeatenText:
 	line "you to be so good!"
 	done
 
-SupernerdWaldoAfterText:
-	text "Who in the world"
-	line "are you?"
-	done
-
 SupernerdMerleSeenText:
 	text "Ooh!"
 	line "You look easily"
@@ -232,12 +232,6 @@ SupernerdMerleSeenText:
 
 SupernerdMerleBeatenText:
 	text "Pardon me!"
-	done
-
-SupernerdMerleAfterText:
-	text "I failed to"
-	line "sense how strong"
-	cont "you are."
 	done
 
 UnknownText_0x1ab548:
@@ -286,52 +280,12 @@ UnknownText_0x1ab69d:
 	line "this, too."
 	done
 
-BlaineOutroText:
-	text "It's called Will-"
-	line "O-Wisp!"
-
-	para "It weakens your"
-	line "foe by inflicting"
-	cont "a burn."
-
-	para "I did lose this"
-	line "time, but I'm going"
-	cont "to win next time."
-
-	para "When I rebuild my"
-	line "Cinnabar Gym,"
-
-	para "we'll have to have"
-	line "a rematch."
-	done
-
 UnknownText_0x1ab71c:
 	text "Blaine: My fire"
 	line "#mon will be"
 
 	para "even stronger."
 	line "Just you watch!"
-	done
-
-SeafoamGymGuyWinText:
-	text "Yo!"
-
-	para "…Huh? It's over"
-	line "already?"
-
-	para "Sorry, sorry!"
-
-	para "Cinnabar Gym was"
-	line "gone, so I didn't"
-
-	para "know where to find"
-	line "you."
-
-	para "But, hey, you're"
-	line "plenty strong even"
-
-	para "without my advice."
-	line "I knew you'd win!"
 	done
 
 SeafoamGymGuyWinText2:

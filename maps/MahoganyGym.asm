@@ -1,29 +1,26 @@
 MahoganyGym_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 2 ; warp events
+	warp_event  4, 17, MAHOGANY_TOWN, 3
+	warp_event  5, 17, MAHOGANY_TOWN, 3
 
-MahoganyGym_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 2
-	warp_def 17, 4, 3, MAHOGANY_TOWN
-	warp_def 17, 5, 3, MAHOGANY_TOWN
+	db 2 ; bg events
+	bg_event  3, 15, SIGNPOST_READ, MahoganyGymStatue
+	bg_event  6, 15, SIGNPOST_READ, MahoganyGymStatue
 
-.XYTriggers: db 0
-
-.Signposts: db 2
-	signpost 15, 3, SIGNPOST_READ, MahoganyGymStatue
-	signpost 15, 6, SIGNPOST_READ, MahoganyGymStatue
-
-.PersonEvents: db 7
-	person_event SPRITE_PRYCE, 3, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, PryceScript_0x199a9e, -1
-	person_event SPRITE_SKIER, 6, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerSkierRoxanne, -1
-	person_event SPRITE_BOARDER, 17, 0, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerBoarderRonald, -1
-	person_event SPRITE_SKIER, 17, 9, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerSkierClarissa, -1
-	person_event SPRITE_BOARDER, 9, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerBoarderBrad, -1
-	person_event SPRITE_BOARDER, 4, 2, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerBoarderDouglas, -1
-	person_event SPRITE_GYM_GUY, 15, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, MahoganyGymGuyScript, -1
+	db 7 ; object events
+	object_event  5,  3, SPRITE_PRYCE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_SCRIPT, 0, PryceScript_0x199a9e, -1
+	object_event  4,  6, SPRITE_SKIER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerSkierRoxanne, -1
+	object_event  0, 17, SPRITE_BOARDER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerBoarderRonald, -1
+	object_event  9, 17, SPRITE_SKIER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerSkierClarissa, -1
+	object_event  5,  9, SPRITE_BOARDER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerBoarderBrad, -1
+	object_event  2,  4, SPRITE_BOARDER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerBoarderDouglas, -1
+	object_event  7, 15, SPRITE_GYM_GUY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, MahoganyGymGuyScript, -1
 
 PryceScript_0x199a9e:
 	faceplayer
@@ -46,7 +43,7 @@ PryceScript_0x199a9e:
 	callstd radiotowerrockets
 .FightDone:
 	checkevent EVENT_GOT_TM67_AVALANCHE
-	iftrue UnknownScript_0x199af0
+	iftrue_jumpopenedtext UnknownText_0x199e59
 	setevent EVENT_BEAT_SKIER_ROXANNE
 	setevent EVENT_BEAT_SKIER_CLARISSA
 	setevent EVENT_BEAT_BOARDER_RONALD
@@ -56,45 +53,68 @@ PryceScript_0x199a9e:
 	buttonsound
 	verbosegivetmhm TM_AVALANCHE
 	setevent EVENT_GOT_TM67_AVALANCHE
-	jumpopenedtext UnknownText_0x199def
+	thisopenedtext
 
-UnknownScript_0x199af0:
-	jumpopenedtext UnknownText_0x199e59
+	text "That TM contains"
+	line "Avalanche."
 
-TrainerSkierRoxanne:
-	trainer EVENT_BEAT_SKIER_ROXANNE, SKIER, ROXANNE, SkierRoxanneSeenText, SkierRoxanneBeatenText, 0, SkierRoxanneScript
+	para "It deals more"
+	line "damage if the user"
+	cont "was hurt first."
 
-SkierRoxanneScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x19a116
+	para "It demonstrates"
+	line "the harshness of"
+	cont "winter."
+	done
 
-TrainerSkierClarissa:
-	trainer EVENT_BEAT_SKIER_CLARISSA, SKIER, CLARISSA, SkierClarissaSeenText, SkierClarissaBeatenText, 0, SkierClarissaScript
+GenericTrainerSkierRoxanne:
+	generictrainer SKIER, ROXANNE, EVENT_BEAT_SKIER_ROXANNE, SkierRoxanneSeenText, SkierRoxanneBeatenText
 
-SkierClarissaScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x19a18f
+	text "If you don't skate"
+	line "with precision,"
 
-TrainerBoarderRonald:
-	trainer EVENT_BEAT_BOARDER_RONALD, BOARDER, RONALD, BoarderRonaldSeenText, BoarderRonaldBeatenText, 0, BoarderRonaldScript
+	para "you won't get far"
+	line "in this Gym."
+	done
 
-BoarderRonaldScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x199f2d
+GenericTrainerSkierClarissa:
+	generictrainer SKIER, CLARISSA, EVENT_BEAT_SKIER_CLARISSA, SkierClarissaSeenText, SkierClarissaBeatenText
 
-TrainerBoarderBrad:
-	trainer EVENT_BEAT_BOARDER_BRAD, BOARDER, BRAD, BoarderBradSeenText, BoarderBradBeatenText, 0, BoarderBradScript
+	text "I shouldn't have"
+	line "been bragging"
+	cont "about my skiing…"
+	done
 
-BoarderBradScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x199fdd
+GenericTrainerBoarderRonald:
+	generictrainer BOARDER, RONALD, EVENT_BEAT_BOARDER_RONALD, BoarderRonaldSeenText, BoarderRonaldBeatenText
 
-TrainerBoarderDouglas:
-	trainer EVENT_BEAT_BOARDER_DOUGLAS, BOARDER, DOUGLAS, BoarderDouglasSeenText, BoarderDouglasBeatenText, 0, BoarderDouglasScript
+	text "I think there's a"
+	line "move a #mon"
 
-BoarderDouglasScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x19a047
+	para "can use while it's"
+	line "frozen."
+	done
+
+GenericTrainerBoarderBrad:
+	generictrainer BOARDER, BRAD, EVENT_BEAT_BOARDER_BRAD, BoarderBradSeenText, BoarderBradBeatenText
+
+	text "This Gym is great."
+	line "I love boarding"
+	cont "with my #mon!"
+	done
+
+GenericTrainerBoarderDouglas:
+	generictrainer BOARDER, DOUGLAS, EVENT_BEAT_BOARDER_DOUGLAS, BoarderDouglasSeenText, BoarderDouglasBeatenText
+
+	text "The secret behind"
+	line "Pryce's power…"
+
+	para "He meditates under"
+	line "a waterfall daily"
+
+	para "to strengthen his"
+	line "mind and body."
+	done
 
 MahoganyGymGuyScript:
 	checkevent EVENT_BEAT_PRYCE
@@ -174,19 +194,6 @@ UnknownText_0x199d55:
 	line "a gift from me!"
 	done
 
-UnknownText_0x199def:
-	text "That TM contains"
-	line "Avalanche."
-
-	para "It deals more"
-	line "damage if the user"
-	cont "was hurt first."
-
-	para "It demonstrates"
-	line "the harshness of"
-	cont "winter."
-	done
-
 UnknownText_0x199e59:
 	text "When the ice and"
 	line "snow melt, spring"
@@ -213,14 +220,6 @@ BoarderRonaldBeatenText:
 	line "do a thing."
 	done
 
-UnknownText_0x199f2d:
-	text "I think there's a"
-	line "move a #mon"
-
-	para "can use while it's"
-	line "frozen."
-	done
-
 BoarderBradSeenText:
 	text "This Gym has a"
 	line "slippery floor."
@@ -238,12 +237,6 @@ BoarderBradBeatenText:
 	line "serious we are?"
 	done
 
-UnknownText_0x199fdd:
-	text "This Gym is great."
-	line "I love boarding"
-	cont "with my #mon!"
-	done
-
 BoarderDouglasSeenText:
 	text "I know Pryce's"
 	line "secret."
@@ -252,17 +245,6 @@ BoarderDouglasSeenText:
 BoarderDouglasBeatenText:
 	text "OK. I'll tell you"
 	line "Pryce's secret."
-	done
-
-UnknownText_0x19a047:
-	text "The secret behind"
-	line "Pryce's power…"
-
-	para "He meditates under"
-	line "a waterfall daily"
-
-	para "to strengthen his"
-	line "mind and body."
 	done
 
 SkierRoxanneSeenText:
@@ -278,14 +260,6 @@ SkierRoxanneBeatenText:
 	line "you in skiing!"
 	done
 
-UnknownText_0x19a116:
-	text "If you don't skate"
-	line "with precision,"
-
-	para "you won't get far"
-	line "in this Gym."
-	done
-
 SkierClarissaSeenText:
 	text "Check out my"
 	line "parallel turn!"
@@ -294,12 +268,6 @@ SkierClarissaSeenText:
 SkierClarissaBeatenText:
 	text "No! You made me"
 	line "wipe out!"
-	done
-
-UnknownText_0x19a18f:
-	text "I shouldn't have"
-	line "been bragging"
-	cont "about my skiing…"
 	done
 
 MahoganyGymGuyText:

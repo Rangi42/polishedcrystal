@@ -1,33 +1,30 @@
 RadioTower5F_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 2 ; warp events
+	warp_event  0,  0, RADIO_TOWER_4F, 1
+	warp_event 12,  0, RADIO_TOWER_4F, 3
 
-RadioTower5F_MapEventHeader:
+	db 2 ; coord events
+	coord_event  0,  3, 0, FakeDirectorScript
+	coord_event 16,  5, 1, RadioTower5FRocketBossTrigger
 
-.Warps: db 2
-	warp_def 0, 0, 1, RADIO_TOWER_4F
-	warp_def 0, 12, 3, RADIO_TOWER_4F
+	db 3 ; bg events
+	bg_event  3,  0, SIGNPOST_JUMPTEXT, SignpostRadioTower5FOffice
+	bg_event 11,  0, SIGNPOST_JUMPTEXT, SignpostRadioTower5FStudio
+	bg_event 15,  0, SIGNPOST_JUMPTEXT, SignpostRadioTower5FStudio
 
-.XYTriggers: db 2
-	xy_trigger 0, 3, 0, FakeDirectorScript
-	xy_trigger 1, 5, 16, RadioTower5FRocketBossTrigger
+	db 6 ; object events
+	object_event  3,  6, SPRITE_GENTLEMAN, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, RadioTower5FDirectorText, EVENT_RADIO_TOWER_DIRECTOR
+	object_event  0,  4, SPRITE_PETREL, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, FakeDirectorTextAfter, EVENT_RADIO_TOWER_PETREL
+	object_event 13,  5, SPRITE_ARCHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
+	object_event 17,  2, SPRITE_ARIANA, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerAriana1, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
+	object_event 13,  5, SPRITE_ROCKER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, BenText, EVENT_RADIO_TOWER_CIVILIANS_AFTER
+	itemball_event  8,  5, ULTRA_BALL, 1, EVENT_RADIO_TOWER_5F_ULTRA_BALL
 
-.Signposts: db 3
-	signpost 0, 3, SIGNPOST_JUMPTEXT, SignpostRadioTower5FOffice
-	signpost 0, 11, SIGNPOST_JUMPTEXT, SignpostRadioTower5FStudio
-	signpost 0, 15, SIGNPOST_JUMPTEXT, SignpostRadioTower5FStudio
-
-.PersonEvents: db 6
-	person_event SPRITE_GENTLEMAN, 6, 3, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, RadioTower5FDirectorText, EVENT_RADIO_TOWER_DIRECTOR
-	person_event SPRITE_PETREL, 4, 0, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, FakeDirectorTextAfter, EVENT_RADIO_TOWER_PETREL
-	person_event SPRITE_ARCHER, 5, 13, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
-	person_event SPRITE_ARIANA, 2, 17, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerAriana1, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
-	person_event SPRITE_ROCKER, 5, 13, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, BenText, EVENT_RADIO_TOWER_CIVILIANS_AFTER
-	itemball_event 5, 8, ULTRA_BALL, 1, EVENT_RADIO_TOWER_5F_ULTRA_BALL
-
-const_value set 1
+	const_def 1 ; object constants
 	const RADIOTOWER5F_DIRECTOR
 	const RADIOTOWER5F_PETREL
 	const RADIOTOWER5F_ARCHER
@@ -61,12 +58,21 @@ FakeDirectorScript:
 	setevent EVENT_BEAT_PETREL_1
 	end
 
-TrainerAriana1:
-	trainer EVENT_BEAT_ARIANA_1, ARIANA, ARIANA1, Ariana1SeenText, Ariana1BeatenText, 0, Ariana1Script
+GenericTrainerAriana1:
+	generictrainer ARIANA, ARIANA1, EVENT_BEAT_ARIANA_1, Ariana1SeenText, Ariana1BeatenText
 
-Ariana1Script:
-	end_if_just_battled
-	jumptextfaceplayer Ariana1AfterText
+	text "<PLAYER>, isn't it?"
+
+	para "A brat like you"
+	line "won't appreciate"
+
+	para "the magnificence"
+	line "of Team Rocket."
+
+	para "That's too bad."
+	line "I really admire"
+	cont "your power."
+	done
 
 RadioTower5FRocketBossTrigger:
 	applymovement PLAYER, MovementData_0x60125
@@ -241,20 +247,6 @@ Ariana1BeatenText:
 
 	para "I fought hard, but"
 	line "I still lost…"
-	done
-
-Ariana1AfterText:
-	text "<PLAYER>, isn't it?"
-
-	para "A brat like you"
-	line "won't appreciate"
-
-	para "the magnificence"
-	line "of Team Rocket."
-
-	para "That's too bad."
-	line "I really admire"
-	cont "your power."
 	done
 
 RadioTower5FRocketBossBeforeText:

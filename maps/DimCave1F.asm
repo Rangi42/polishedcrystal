@@ -1,35 +1,33 @@
 DimCave1F_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 4 ; warp events
+	warp_event 30,  2, DIM_CAVE_2F, 5
+	warp_event  5, 17, DIM_CAVE_2F, 6
+	warp_event 28, 18, DIM_CAVE_2F, 7
+	warp_event 24, 32, DIM_CAVE_2F, 8
 
-DimCave1F_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 4
-	warp_def 2, 30, 5, DIM_CAVE_2F
-	warp_def 17, 5, 6, DIM_CAVE_2F
-	warp_def 18, 28, 7, DIM_CAVE_2F
-	warp_def 32, 24, 8, DIM_CAVE_2F
+	db 1 ; bg events
+	bg_event 28,  2, SIGNPOST_ITEM + FULL_HEAL, EVENT_DIM_CAVE_1F_HIDDEN_FULL_HEAL
 
-.XYTriggers: db 0
+	db 5 ; object events
+	object_event 30,  7, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerSuper_nerdGregg, -1
+	object_event 12, 18, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerScientistDexter, -1
+	object_event 27, 21, SPRITE_ROCKER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerGuitaristmBiff, -1
+	itemball_event  3, 20, DUSK_BALL, 1, EVENT_DIM_CAVE_1F_DUSK_BALL
+	itemball_event 28, 31, RARE_BONE, 1, EVENT_DIM_CAVE_1F_RARE_BONE
 
-.Signposts: db 1
-	signpost 2, 28, SIGNPOST_ITEM + FULL_HEAL, EVENT_DIM_CAVE_1F_HIDDEN_FULL_HEAL
+GenericTrainerSuper_nerdGregg:
+	generictrainer SUPER_NERD, GREGG, EVENT_BEAT_SUPER_NERD_GREGG, .SeenText, .BeatenText
 
-.PersonEvents: db 5
-	person_event SPRITE_SUPER_NERD, 7, 30, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 4, TrainerSuper_nerdGregg, -1
-	person_event SPRITE_SCIENTIST, 18, 12, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerScientistDexter, -1
-	person_event SPRITE_ROCKER, 21, 27, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerGuitaristmBiff, -1
-	itemball_event 20, 3, DUSK_BALL, 1, EVENT_DIM_CAVE_1F_DUSK_BALL
-	itemball_event 31, 28, RARE_BONE, 1, EVENT_DIM_CAVE_1F_RARE_BONE
-
-TrainerSuper_nerdGregg:
-	trainer EVENT_BEAT_SUPER_NERD_GREGG, SUPER_NERD, GREGG, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
+	text "The Magnet Train"
+	line "is fast, but it"
+	cont "can't drift."
+	done
 
 .SeenText:
 	text "These carts are"
@@ -41,18 +39,17 @@ TrainerSuper_nerdGregg:
 	text "I don't care!"
 	done
 
-.AfterText:
-	text "The Magnet Train"
-	line "is fast, but it"
-	cont "can't drift."
+GenericTrainerScientistDexter:
+	generictrainer SCIENTIST, DEXTER, EVENT_BEAT_SCIENTIST_DEXTER, .SeenText, .BeatenText
+
+	text "I work for the"
+	line "Power Plant."
+
+	para "We use the water-"
+	line "fall from this"
+	cont "cave for clean,"
+	cont "renewable energy!"
 	done
-
-TrainerScientistDexter:
-	trainer EVENT_BEAT_SCIENTIST_DEXTER, SCIENTIST, DEXTER, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "I'm a hydrologist"
@@ -65,22 +62,12 @@ TrainerScientistDexter:
 	line "hydrology…"
 	done
 
-.AfterText:
-	text "I work for the"
-	line "Power Plant."
+GenericTrainerGuitaristmBiff:
+	generictrainer GUITARISTM, BIFF, EVENT_BEAT_GUITARISTM_BIFF, .SeenText, .BeatenText
 
-	para "We use the water-"
-	line "fall from this"
-	cont "cave for clean,"
-	cont "renewable energy!"
+	text "I love heavy metal"
+	line "and heavy metals!"
 	done
-
-TrainerGuitaristmBiff:
-	trainer EVENT_BEAT_GUITARISTM_BIFF, GUITARISTM, BIFF, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "I dig rock and"
@@ -92,7 +79,3 @@ TrainerGuitaristmBiff:
 	line "ground!"
 	done
 
-.AfterText:
-	text "I love heavy metal"
-	line "and heavy metals!"
-	done

@@ -12,4 +12,5 @@ HealingHPAmounts:
 	dbw ENERGYPOWDER,  60
 	dbw ENERGY_ROOT,  120
 	dbw ORAN_BERRY,    10
+	dbw BERRY_JUICE,   20
 	dbw -1,             0

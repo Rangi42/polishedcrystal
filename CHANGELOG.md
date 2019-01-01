@@ -8,7 +8,7 @@ These changes have been made since the current 2.2.0 release. If you build the p
 
 
 * Add: Medicine and Berry pockets in the Bag.
-* Add: Store up to 20 phone numbers in Pokégear.
+* Add: Store up to 30 phone numbers in Pokégear.
 * Add: Always keep the option to Teleport away from Indigo Plateau.
 * Add: Portrait for the meteorite in Pewter Museum.
 * Add: Special sprite for Red's Pikachu.

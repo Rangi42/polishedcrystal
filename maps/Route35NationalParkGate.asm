@@ -1,35 +1,32 @@
 Route35NationalParkGate_MapScriptHeader:
+	db 3 ; scene scripts
+	scene_script Route35NationalParkGateTrigger0
+	scene_script Route35NationalParkGateTrigger1
+	scene_script Route35NationalParkGateTrigger2
 
-.MapTriggers: db 3
-	dw Route35NationalParkGateTrigger0
-	dw Route35NationalParkGateTrigger1
-	dw Route35NationalParkGateTrigger2
+	db 2 ; callbacks
+	callback MAPCALLBACK_NEWMAP, Route35NationalParkGate_CheckIfStillInContest
+	callback MAPCALLBACK_OBJECTS, Route35NationalParkGate_CheckIfContestDay
 
-.MapCallbacks: db 2
-	dbw MAPCALLBACK_NEWMAP, Route35NationalParkGate_CheckIfStillInContest
-	dbw MAPCALLBACK_OBJECTS, Route35NationalParkGate_CheckIfContestDay
+	db 6 ; warp events
+	warp_event 15,  0, NATIONAL_PARK, 3
+	warp_event 16,  0, NATIONAL_PARK, 4
+	warp_event 15,  7, ROUTE_35, 3
+	warp_event 16,  7, ROUTE_35, 3
+	warp_event  0,  4, OLIVINE_CITY, 11
+	warp_event  0,  5, OLIVINE_CITY, 12
 
-Route35NationalParkGate_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 6
-	warp_def 0, 15, 3, NATIONAL_PARK
-	warp_def 0, 16, 4, NATIONAL_PARK
-	warp_def 7, 15, 3, ROUTE_35
-	warp_def 7, 16, 3, ROUTE_35
-	warp_def 4, 0, 11, OLIVINE_CITY
-	warp_def 5, 0, 12, OLIVINE_CITY
+	db 1 ; bg events
+	bg_event 17,  0, SIGNPOST_JUMPTEXT, UnknownText_0x6a90e
 
-.XYTriggers: db 0
+	db 3 ; object events
+	object_event 14,  1, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_SCRIPT, 0, OfficerScript_0x6a204, EVENT_ROUTE_35_NATIONAL_PARK_GATE_OFFICER_CONTEST_DAY
+	object_event 18,  5, SPRITE_BUG_MANIAC, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x6a8d8, EVENT_ROUTE_35_NATIONAL_PARK_GATE_BUG_MANIAC
+	object_event 12,  3, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_SCRIPT, 0, OfficerScript_0x6a2ca, EVENT_ROUTE_35_NATIONAL_PARK_GATE_OFFICER_NOT_CONTEST_DAY
 
-.Signposts: db 1
-	signpost 0, 17, SIGNPOST_JUMPTEXT, UnknownText_0x6a90e
-
-.PersonEvents: db 3
-	person_event SPRITE_OFFICER, 1, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, OfficerScript_0x6a204, EVENT_ROUTE_35_NATIONAL_PARK_GATE_OFFICER_CONTEST_DAY
-	person_event SPRITE_BUG_MANIAC, 5, 18, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x6a8d8, EVENT_ROUTE_35_NATIONAL_PARK_GATE_BUG_MANIAC
-	person_event SPRITE_OFFICER, 3, 12, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, OfficerScript_0x6a2ca, EVENT_ROUTE_35_NATIONAL_PARK_GATE_OFFICER_NOT_CONTEST_DAY
-
-const_value set 1
+	const_def 1 ; object constants
 	const ROUTE35NATIONALPARKGATE_OFFICER1
 	const ROUTE35NATIONALPARKGATE_BUG_MANIAC
 	const ROUTE35NATIONALPARKGATE_OFFICER2
@@ -100,11 +97,11 @@ OfficerScript_0x6a204:
 	if_equal MONDAY, Route35NationalParkGate_NoContestToday
 	if_equal WEDNESDAY, Route35NationalParkGate_NoContestToday
 	if_equal FRIDAY, Route35NationalParkGate_NoContestToday
+	checkflag ENGINE_DAILY_BUG_CONTEST
+	iftrue_jumptextfaceplayer UnknownText_0x6a84f
 	faceplayer
 	opentext
-	checkflag ENGINE_DAILY_BUG_CONTEST
-	iftrue Route35NationalParkGate_ContestIsOver
-	scall Route35NationalParkGate_GetDayOfWeek
+	callstd daytotext
 	writetext UnknownText_0x6a2eb
 	yesorno
 	iffalse Route35NationalParkGate_DeclinedToParticipate
@@ -146,11 +143,10 @@ Route35NationalParkGate_LeaveTheRestBehind:
 	checkcode VAR_PARTYCOUNT
 	if_less_than 6, Route35NationalParkGate_LessThanFullParty
 	checkcode VAR_BOXSPACE
-	if_equal 0, Route35NationalParkGate_NoRoomInBox
-
+	iffalse_jumpopenedtext UnknownText_0x6a67c
 Route35NationalParkGate_LessThanFullParty: ; 6a27d
 	special CheckFirstMonIsEgg
-	if_equal $1, Route35NationalParkGate_FirstMonIsEgg
+	iftrue_jumpopenedtext UnknownText_0x6a71f
 	writetext UnknownText_0x6a4c6
 	yesorno
 	iffalse Route35NationalParkGate_DeclinedToLeaveMonsBehind
@@ -174,28 +170,18 @@ Route35NationalParkGate_DeclinedToLeaveMonsBehind:
 Route35NationalParkGate_FirstMonIsFainted:
 	jumpopenedtext UnknownText_0x6a608
 
-Route35NationalParkGate_NoRoomInBox:
-	jumpopenedtext UnknownText_0x6a67c
-
-Route35NationalParkGate_FirstMonIsEgg:
-	jumpopenedtext UnknownText_0x6a71f
-
-Route35NationalParkGate_ContestIsOver:
-	jumpopenedtext UnknownText_0x6a84f
-
-Route35NationalParkGate_NoContestToday:
-	jumptextfaceplayer UnknownText_0x6a894
-
 OfficerScript_0x6a2ca:
-	faceplayer
-	opentext
 	checkflag ENGINE_DAILY_BUG_CONTEST
-	iftrue Route35NationalParkGate_ContestIsOver
-	jumpopenedtext UnknownText_0x6a894
+	iftrue_jumptextfaceplayer UnknownText_0x6a84f
+Route35NationalParkGate_NoContestToday:
+	thistextfaceplayer
 
-Route35NationalParkGate_GetDayOfWeek:
-	jumpstd daytotext
-	end
+	text "We hold Contests"
+	line "regularly in the"
+
+	para "park. You should"
+	line "give it a shot."
+	done
 
 MovementData_0x6a2e2:
 	step_down
@@ -389,14 +375,6 @@ UnknownText_0x6a84f:
 
 	para "will participate"
 	line "in the future."
-	done
-
-UnknownText_0x6a894:
-	text "We hold Contests"
-	line "regularly in the"
-
-	para "park. You should"
-	line "give it a shot."
 	done
 
 UnknownText_0x6a8d8:

@@ -1,29 +1,26 @@
 VermilionPort_MapScriptHeader:
+	db 2 ; scene scripts
+	scene_script VermilionPortTrigger0
+	scene_script VermilionPortTrigger1
 
-.MapTriggers: db 2
-	dw VermilionPortTrigger0
-	dw VermilionPortTrigger1
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 2 ; warp events
+	warp_event  9,  5, VERMILION_PORT_PASSAGE, 5
+	warp_event  7, 17, FAST_SHIP_1F, 1
 
-VermilionPort_MapEventHeader:
+	db 1 ; coord events
+	coord_event  7, 11, 0, UnknownScript_0x74e20
 
-.Warps: db 2
-	warp_def 5, 9, 5, VERMILION_PORT_PASSAGE
-	warp_def 17, 7, 1, FAST_SHIP_1F
+	db 1 ; bg events
+	bg_event 16, 13, SIGNPOST_ITEM + IRON, EVENT_VERMILION_PORT_HIDDEN_IRON
 
-.XYTriggers: db 1
-	xy_trigger 0, 11, 7, UnknownScript_0x74e20
+	db 3 ; object events
+	object_event  7, 17, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SailorScript_0x74dc4, EVENT_VERMILION_PORT_SAILOR_AT_GANGWAY
+	object_event  6, 11, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SailorScript_0x74e97, -1
+	object_event 11, 11, SPRITE_SUPER_NERD, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SuperNerdScript_0x74ee6, -1
 
-.Signposts: db 1
-	signpost 13, 16, SIGNPOST_ITEM + IRON, EVENT_VERMILION_PORT_HIDDEN_IRON
-
-.PersonEvents: db 3
-	person_event SPRITE_SAILOR, 17, 7, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SailorScript_0x74dc4, EVENT_VERMILION_PORT_SAILOR_AT_GANGWAY
-	person_event SPRITE_SAILOR, 11, 6, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SailorScript_0x74e97, -1
-	person_event SPRITE_SUPER_NERD, 11, 11, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SuperNerdScript_0x74ee6, -1
-
-const_value set 1
+	const_def 1 ; object constants
 	const VERMILIONPORT_SAILOR1
 	const VERMILIONPORT_SAILOR2
 
@@ -41,14 +38,14 @@ UnknownScript_0x74da6:
 	setevent EVENT_FAST_SHIP_PASSENGERS_FIRST_TRIP
 	clearevent EVENT_OLIVINE_PORT_PASSAGE_POKEFAN_M
 	setevent EVENT_FAST_SHIP_FIRST_TIME
-	setevent EVENT_GAVE_KURT_APRICORNS
+	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	blackoutmod VERMILION_CITY
 	end
 
 SailorScript_0x74dc4:
 	faceplayer
 	opentext
-	checkevent EVENT_GAVE_KURT_APRICORNS
+	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	iftrue UnknownScript_0x74e1a
 	writetext UnknownText_0x74f06
 	waitbutton
@@ -85,9 +82,9 @@ UnknownScript_0x74e1a:
 
 UnknownScript_0x74e20:
 	spriteface VERMILIONPORT_SAILOR2, RIGHT
-	checkevent EVENT_GAVE_KURT_APRICORNS
+	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	iftrue UnknownScript_0x74e86
-	checkevent EVENT_RECEIVED_BALLS_FROM_KURT
+	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
 	iftrue UnknownScript_0x74e86
 	spriteface PLAYER, LEFT
 	opentext
@@ -107,7 +104,7 @@ UnknownScript_0x74e20:
 	writetext UnknownText_0x74fc2
 	waitbutton
 	closetext
-	setevent EVENT_RECEIVED_BALLS_FROM_KURT
+	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
 	applymovement PLAYER, MovementData_0x74ef8
 	jump SailorScript_0x74dc4
 
@@ -148,7 +145,7 @@ UnknownScript_0x74e8d:
 SailorScript_0x74e97:
 	faceplayer
 	opentext
-	checkevent EVENT_GAVE_KURT_APRICORNS
+	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	iftrue UnknownScript_0x74e1a
 	checkcode VAR_WEEKDAY
 	if_equal MONDAY, UnknownScript_0x74eda
@@ -166,7 +163,7 @@ SailorScript_0x74e97:
 	writetext UnknownText_0x74fc2
 	waitbutton
 	closetext
-	setevent EVENT_RECEIVED_BALLS_FROM_KURT
+	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
 	applymovement PLAYER, MovementData_0x74efe
 	jump SailorScript_0x74dc4
 

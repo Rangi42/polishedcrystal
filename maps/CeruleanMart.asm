@@ -1,23 +1,20 @@
 CeruleanMart_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 2 ; warp events
+	warp_event  2,  7, CERULEAN_CITY, 6
+	warp_event  3,  7, CERULEAN_CITY, 6
 
-CeruleanMart_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 2
-	warp_def 7, 2, 6, CERULEAN_CITY
-	warp_def 7, 3, 6, CERULEAN_CITY
+	db 0 ; bg events
 
-.XYTriggers: db 0
-
-.Signposts: db 0
-
-.PersonEvents: db 3
-	mart_clerk_event 3, 1, MARTTYPE_STANDARD, MART_CERULEAN
-	person_event SPRITE_COOLTRAINER_M, 6, 1, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x188acd, -1
-	person_event SPRITE_COOLTRAINER_F, 2, 7, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x188b46, -1
+	db 3 ; object events
+	mart_clerk_event  1,  3, MARTTYPE_STANDARD, MART_CERULEAN
+	object_event  1,  6, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x188acd, -1
+	object_event  7,  2, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x188b46, -1
 
 UnknownText_0x188acd:
 	text "You'll run into"

@@ -54,7 +54,7 @@ PlayerObjectTemplate: ; 8071
 ; Shorter than the actual amount copied by two bytes.
 ; Said bytes seem to be unused, but the game freezes when you first spawn
 ; in your room if this is not loaded.
-	person_event SPRITE_CHRIS, -4, -4, SPRITEMOVEDATA_PLAYER, 15, 15, -1, -1, 0, PERSONTYPE_SCRIPT, 0, 0, -1
+	object_event -4, -4, SPRITE_CHRIS, SPRITEMOVEDATA_PLAYER, 15, 15, -1, -1, 0, PERSONTYPE_SCRIPT, 0, 0, -1
 
 CopyDECoordsToMapObject:: ; 807e
 	push de

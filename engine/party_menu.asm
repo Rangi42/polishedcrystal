@@ -510,7 +510,7 @@ GetPartyMenuTilemapPointers: ; 50396
 	and $f
 	ld e, a
 	ld d, 0
-	ld hl, .Pointers
+	ld hl, PartyMenuQualityPointers
 	add hl, de
 	add hl, de
 	ld a, [hli]
@@ -519,36 +519,11 @@ GetPartyMenuTilemapPointers: ; 50396
 	ret
 
 .skip
-	ld hl, .Default
+	ld hl, PartyMenuQualityPointers.Default
 	ret
 ; 503b2
 
-.Pointers: ; 503b2
-	dw .Default
-	dw .Default
-	dw .Default
-	dw .TMHM
-	dw .Default
-	dw .EvoStone
-	dw .Gender
-	dw .Gender
-	dw .Default
-	dw .Default
-; 503c6
-
-placepartymon: macro
-	rept _NARG
-	db PLACE_PARTYMON_\1
-	shift
-	endr
-	db $ff
-endm
-
-.Default:
-.Gender: placepartymon NICKNAMES, HP_BAR, HP_DIGITS, LEVEL, GENDER, STATUS
-.TMHM: placepartymon NICKNAMES, TMHM, LEVEL, GENDER, STATUS
-.EvoStone: placepartymon NICKNAMES, EVO, LEVEL, GENDER, STATUS
-; 503e0
+INCLUDE "data/party_menu_qualities.asm"
 
 
 InitPartyMenuGFX: ; 503e0

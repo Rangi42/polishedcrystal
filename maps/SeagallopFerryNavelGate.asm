@@ -1,25 +1,22 @@
 SeagallopFerryNavelGate_MapScriptHeader:
+	db 2 ; scene scripts
+	scene_script SeagallopFerryNavelGateTrigger0
+	scene_script SeagallopFerryNavelGateTrigger1
 
-.MapTriggers: db 2
-	dw SeagallopFerryNavelGateTrigger0
-	dw SeagallopFerryNavelGateTrigger1
+	db 1 ; callbacks
+	callback MAPCALLBACK_NEWMAP, SeagallopFerryNavelGateVisited
 
-.MapCallbacks: db 1
-	dbw MAPCALLBACK_NEWMAP, SeagallopFerryNavelGateVisited
+	db 1 ; warp events
+	warp_event  6,  0, NAVEL_ROCK_OUTSIDE, 1
 
-SeagallopFerryNavelGate_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 1
-	warp_def 0, 6, 1, NAVEL_ROCK_OUTSIDE
+	db 0 ; bg events
 
-.XYTriggers: db 0
+	db 1 ; object events
+	object_event  6,  4, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SeagallopFerryNavelGateSailorScript, EVENT_OLIVINE_PORT_SAILOR_AT_GANGWAY
 
-.Signposts: db 0
-
-.PersonEvents: db 1
-	person_event SPRITE_SAILOR, 4, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SeagallopFerryNavelGateSailorScript, EVENT_OLIVINE_PORT_SAILOR_AT_GANGWAY
-
-const_value set 1
+	const_def 1 ; object constants
 	const SEAGALLOPFERRYNAVELGATE_SAILOR
 
 SeagallopFerryNavelGateTrigger1:

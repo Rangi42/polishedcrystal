@@ -627,7 +627,7 @@ INCLUDE "home/pokedex_flags.asm"
 NamesPointers:: ; 33ab
 	dba PokemonNames
 	dba MoveNames
-	dbw 0, 0
+	dba ApricornNames
 	dba ItemNames
 	dbw 0, wPartyMonOT
 	dbw 0, wOTPartyMonOT
@@ -648,7 +648,7 @@ GetName:: ; 33c3
 	jr nz, .NotPokeName
 
 	ld a, [wCurSpecies]
-	ld [wd265], a
+	ld [wNamedObjectIndexBuffer], a
 	call GetPokemonName
 	ld hl, PKMN_NAME_LENGTH
 	add hl, de
@@ -733,7 +733,7 @@ GetBasePokemonName:: ; 3420
 ; 343b
 
 GetPokemonName:: ; 343b
-; Get Pokemon name wd265.
+; Get Pokemon name wNamedObjectIndexBuffer.
 
 	ld a, [hROMBank]
 	push af
@@ -742,7 +742,7 @@ GetPokemonName:: ; 343b
 	rst Bankswitch
 
 ; Each name is ten characters
-	ld a, [wd265]
+	ld a, [wNamedObjectIndexBuffer]
 	dec a
 	ld d, 0
 	ld e, a
@@ -771,11 +771,11 @@ GetPokemonName:: ; 343b
 ; 3468
 
 GetItemName:: ; 3468
-; Get item name wd265.
+; Get item name wNamedObjectIndexBuffer.
 
 	push hl
 	push bc
-	ld a, [wd265]
+	ld a, [wNamedObjectIndexBuffer]
 	ld [wCurSpecies], a
 	ld a, ITEM_NAME
 	ld [wNamedObjectTypeBuffer], a
@@ -786,13 +786,27 @@ GetItemName:: ; 3468
 	ret
 ; 3487
 
+GetApricornName::
+; Get apricorn name wNamedObjectIndexBuffer.
+	push hl
+	push bc
+	ld a, [wNamedObjectIndexBuffer]
+	ld [wCurSpecies], a
+	ld a, APRICORN_NAME
+	ld [wNamedObjectTypeBuffer], a
+	call GetName
+	ld de, wStringBuffer1
+	pop bc
+	pop hl
+	ret
+
 GetTMHMName:: ; 3487
-; Get TM/HM name by item id wd265.
+; Get TM/HM name by item id wNamedObjectIndexBuffer.
 
 	push hl
 	push de
 	push bc
-	ld a, [wd265]
+	ld a, [wNamedObjectIndexBuffer]
 	push af
 
 ; TM/HM prefix
@@ -813,7 +827,7 @@ GetTMHMName:: ; 3487
 	call CopyBytes
 
 ; TM/HM number
-	ld a, [wd265]
+	ld a, [wNamedObjectIndexBuffer]
 	ld c, a
 
 ; HM numbers start from 51, not 1
@@ -850,7 +864,7 @@ GetTMHMName:: ; 3487
 	ld [de], a
 
 	pop af
-	ld [wd265], a
+	ld [wNamedObjectIndexBuffer], a
 	pop bc
 	pop de
 	pop hl

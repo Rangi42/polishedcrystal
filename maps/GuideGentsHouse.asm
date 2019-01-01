@@ -1,21 +1,18 @@
 GuideGentsHouse_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 2 ; warp events
+	warp_event  2,  7, CHERRYGROVE_CITY, 4
+	warp_event  3,  7, CHERRYGROVE_CITY, 4
 
-GuideGentsHouse_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 2
-	warp_def 7, 2, 4, CHERRYGROVE_CITY
-	warp_def 7, 3, 4, CHERRYGROVE_CITY
+	db 0 ; bg events
 
-.XYTriggers: db 0
-
-.Signposts: db 0
-
-.PersonEvents: db 1
-	person_event SPRITE_GRAMPS, 3, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, GuideGentsHouseGuideGentText, EVENT_GUIDE_GENT_VISIBLE_IN_CHERRYGROVE
+	db 1 ; object events
+	object_event  2,  3, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, GuideGentsHouseGuideGentText, EVENT_GUIDE_GENT_VISIBLE_IN_CHERRYGROVE
 
 GuideGentsHouseGuideGentText:
 	text "When I was a wee"

@@ -1,27 +1,24 @@
 SafariZoneWestRestHouse2_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 2 ; warp events
+	warp_event  2,  7, SAFARI_ZONE_WEST, 8
+	warp_event  3,  7, SAFARI_ZONE_WEST, 8
 
-SafariZoneWestRestHouse2_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 2
-	warp_def 7, 2, 8, SAFARI_ZONE_WEST
-	warp_def 7, 3, 8, SAFARI_ZONE_WEST
+	db 4 ; bg events
+	bg_event  4,  1, SIGNPOST_READ, PokemonJournalKogaScript
+	bg_event  5,  1, SIGNPOST_READ, PokemonJournalKogaScript
+	bg_event  6,  1, SIGNPOST_READ, PokemonJournalKogaScript
+	bg_event  7,  1, SIGNPOST_READ, PokemonJournalKogaScript
 
-.XYTriggers: db 0
+	db 1 ; object events
+	object_event  3,  4, SPRITE_FLANNERY, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SafariZoneWestRestHouse2FlanneryScript, -1
 
-.Signposts: db 4
-	signpost 1, 4, SIGNPOST_READ, PokemonJournalKogaScript
-	signpost 1, 5, SIGNPOST_READ, PokemonJournalKogaScript
-	signpost 1, 6, SIGNPOST_READ, PokemonJournalKogaScript
-	signpost 1, 7, SIGNPOST_READ, PokemonJournalKogaScript
-
-.PersonEvents: db 1
-	person_event SPRITE_FLANNERY, 4, 3, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SafariZoneWestRestHouse2FlanneryScript, -1
-
-const_value set 1
+	const_def 1 ; object constants
 	const SAFARIZONEWESTRESTHOUSE2_FLANNERY
 
 SafariZoneWestRestHouse2FlanneryScript:

@@ -1,24 +1,21 @@
 WillsRoom_MapScriptHeader:
+	db 1 ; scene scripts
+	scene_script WillsRoomEntranceTrigger
 
-.MapTriggers: db 1
-	dw WillsRoomEntranceTrigger
+	db 1 ; callbacks
+	callback MAPCALLBACK_TILES, WillsRoomDoorCallback
 
-.MapCallbacks: db 1
-	dbw MAPCALLBACK_TILES, WillsRoomDoorCallback
+	db 3 ; warp events
+	warp_event  5, 17, INDIGO_PLATEAU_POKECENTER_1F, 4
+	warp_event  4,  2, KOGAS_ROOM, 1
+	warp_event  5,  2, KOGAS_ROOM, 2
 
-WillsRoom_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 3
-	warp_def 17, 5, 4, INDIGO_PLATEAU_POKECENTER_1F
-	warp_def 2, 4, 1, KOGAS_ROOM
-	warp_def 2, 5, 2, KOGAS_ROOM
+	db 0 ; bg events
 
-.XYTriggers: db 0
-
-.Signposts: db 0
-
-.PersonEvents: db 1
-	person_event SPRITE_WILL, 7, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, WillScript, -1
+	db 1 ; object events
+	object_event  5,  7, SPRITE_WILL, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_PURPLE, PERSONTYPE_SCRIPT, 0, WillScript, -1
 
 WillsRoomEntranceTrigger:
 	priorityjump .Script

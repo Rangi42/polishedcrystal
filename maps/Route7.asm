@@ -1,40 +1,43 @@
 Route7_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 1 ; callbacks
+	callback MAPCALLBACK_OBJECTS, Route7RebattleBreeder
 
-.MapCallbacks: db 1
-	dbw MAPCALLBACK_OBJECTS, Route7RebattleBreeder
+	db 2 ; warp events
+	warp_event 15,  6, ROUTE_7_SAFFRON_GATE, 1
+	warp_event 15,  7, ROUTE_7_SAFFRON_GATE, 2
 
-Route7_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 2
-	warp_def 6, 15, 1, ROUTE_7_SAFFRON_GATE
-	warp_def 7, 15, 2, ROUTE_7_SAFFRON_GATE
+	db 2 ; bg events
+	bg_event  5, 13, SIGNPOST_JUMPTEXT, Route7UndergroundPathSignText
+	bg_event  6, 11, SIGNPOST_JUMPTEXT, Route7LockedDoorText
 
-.XYTriggers: db 0
+	db 3 ; object events
+	object_event  1,  0, SPRITE_BIG_SNORLAX, SPRITEMOVEDATA_SNORLAX, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route7Snorlax, EVENT_ROUTE_8_SNORLAX
+	object_event 15, 11, SPRITE_BREEDER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_GENERICTRAINER, 5, GenericTrainerBreederCarlene, -1
+	itemball_event 16,  1, MENTAL_HERB, 1, EVENT_ROUTE_7_MENTAL_HERB
 
-.Signposts: db 2
-	signpost 13, 5, SIGNPOST_JUMPTEXT, Route7UndergroundPathSignText
-	signpost 11, 6, SIGNPOST_JUMPTEXT, Route7LockedDoorText
-
-.PersonEvents: db 3
-	person_event SPRITE_BIG_SNORLAX, 0, 1, SPRITEMOVEDATA_SNORLAX, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route7Snorlax, EVENT_ROUTE_8_SNORLAX
-	person_event SPRITE_BREEDER, 11, 15, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 5, TrainerBreederCarlene, -1
-	itemball_event 1, 16, MENTAL_HERB, 1, EVENT_ROUTE_7_MENTAL_HERB
-
-const_value set 1
+	const_def 1 ; object constants
 	const ROUTE7_BIG_SNORLAX
 
 Route7RebattleBreeder:
 	clearevent EVENT_BEAT_BREEDER_CARLENE
 	return
 
-TrainerBreederCarlene:
-	trainer EVENT_BEAT_BREEDER_CARLENE, BREEDER, CARLENE, .SeenText, .BeatenText, 0, .Script
+GenericTrainerBreederCarlene:
+	generictrainer BREEDER, CARLENE, EVENT_BEAT_BREEDER_CARLENE, .SeenText, .BeatenText
 
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
+	text "I make my Smeargle"
+	line "Sketch a move,"
+
+	para "then breed it"
+	line "to pass the move"
+	cont "down!"
+
+	para "Isn't that smart?"
+	done
 
 .SeenText:
 	text "My team is bred"
@@ -45,17 +48,6 @@ TrainerBreederCarlene:
 .BeatenText:
 	text "We couldn't"
 	line "handle you!"
-	done
-
-.AfterText:
-	text "I make my Smeargle"
-	line "Sketch a move,"
-
-	para "then breed it"
-	line "to pass the move"
-	cont "down!"
-
-	para "Isn't that smart?"
 	done
 
 Route7Snorlax:

@@ -1,26 +1,23 @@
 ShamoutiHotelRestaurant_MapScriptHeader:
+	db 1 ; scene scripts
+	scene_script ShamoutiHotelRestaurantTrigger0
 
-.MapTriggers: db 1
-	dw ShamoutiHotelRestaurantTrigger0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 2 ; warp events
+	warp_event 16,  7, SHAMOUTI_HOTEL_1F, 4
+	warp_event 17,  7, SHAMOUTI_HOTEL_1F, 4
 
-ShamoutiHotelRestaurant_MapEventHeader:
+	db 2 ; coord events
+	coord_event 16,  6, 1, ShamoutiHotelRestaurantLeavingTrigger1
+	coord_event 16,  7, 1, ShamoutiHotelRestaurantLeavingTrigger2
 
-.Warps: db 2
-	warp_def 7, 16, 4, SHAMOUTI_HOTEL_1F
-	warp_def 7, 17, 4, SHAMOUTI_HOTEL_1F
+	db 0 ; bg events
 
-.XYTriggers: db 2
-	xy_trigger 1, 6, 16, ShamoutiHotelRestaurantLeavingTrigger1
-	xy_trigger 1, 7, 16, ShamoutiHotelRestaurantLeavingTrigger2
+	db 1 ; object events
+	object_event 16,  4, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_PURPLE, PERSONTYPE_COMMAND, jumptextfaceplayer, ShamoutiHotelRestaurantReceptionistText, -1
 
-.Signposts: db 0
-
-.PersonEvents: db 1
-	person_event SPRITE_RECEPTIONIST, 4, 16, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_COMMAND, jumptextfaceplayer, ShamoutiHotelRestaurantReceptionistText, -1
-
-const_value set 1
+	const_def 1 ; object constants
 	const SHAMOUTIHOTELRESTAURANT_RECEPTIONIST
 
 ShamoutiHotelRestaurantTrigger0:

@@ -1,21 +1,18 @@
 Route26DayofWeekSiblingsHouse_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 2 ; warp events
+	warp_event  2,  7, ROUTE_26, 3
+	warp_event  3,  7, ROUTE_26, 3
 
-Route26DayofWeekSiblingsHouse_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 2
-	warp_def 7, 2, 3, ROUTE_26
-	warp_def 7, 3, 3, ROUTE_26
+	db 0 ; bg events
 
-.XYTriggers: db 0
-
-.Signposts: db 0
-
-.PersonEvents: db 1
-	person_event SPRITE_BOOK_PAPER_POKEDEX, 3, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BookScript_0x7b1e4, -1
+	db 1 ; object events
+	object_event  3,  3, SPRITE_BOOK_PAPER_POKEDEX, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BookScript_0x7b1e4, -1
 
 BookScript_0x7b1e4:
 	opentext

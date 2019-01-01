@@ -1,28 +1,25 @@
 CeladonHomeDecorStore1F_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 3 ; warp events
+	warp_event  3,  7, CELADON_CITY, 12
+	warp_event  4,  7, CELADON_CITY, 12
+	warp_event  9,  0, CELADON_HOME_DECOR_STORE_2F, 1
 
-CeladonHomeDecorStore1F_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 3
-	warp_def 7, 3, 12, CELADON_CITY
-	warp_def 7, 4, 12, CELADON_CITY
-	warp_def 0, 9, 1, CELADON_HOME_DECOR_STORE_2F
+	db 1 ; bg events
+	bg_event  8,  0, SIGNPOST_JUMPTEXT, CeladonHomeDecorStore1FDirectoryText
 
-.XYTriggers: db 0
-
-.Signposts: db 1
-	signpost 0, 8, SIGNPOST_JUMPTEXT, CeladonHomeDecorStore1FDirectoryText
-
-.PersonEvents: db 6
-	person_event SPRITE_RECEPTIONIST, 1, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonHomeDecorStore1FReceptionistText, -1
-	person_event SPRITE_CLERK, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonHomeDecorStore1FClerkScript, -1
-	person_event SPRITE_BULBASAUR, 5, 7, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptext, CeladonHomeDecorStore1FBulbasaurDollText, -1
-	person_event SPRITE_CHARMANDER, 5, 8, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptext, CeladonHomeDecorStore1FCharmanderDollText, -1
-	person_event SPRITE_SQUIRTLE, 5, 9, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptext, CeladonHomeDecorStore1FSquirtleDollText, -1
-	person_event SPRITE_COOLTRAINER_F, 4, 0, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonHomeDecorStore1FCooltrainerfText, -1
+	db 6 ; object events
+	object_event  4,  1, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonHomeDecorStore1FReceptionistText, -1
+	object_event  5,  1, SPRITE_CLERK, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, CeladonHomeDecorStore1FClerkScript, -1
+	object_event  7,  5, SPRITE_BULBASAUR, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptext, CeladonHomeDecorStore1FBulbasaurDollText, -1
+	object_event  8,  5, SPRITE_CHARMANDER, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptext, CeladonHomeDecorStore1FCharmanderDollText, -1
+	object_event  9,  5, SPRITE_SQUIRTLE, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptext, CeladonHomeDecorStore1FSquirtleDollText, -1
+	object_event  0,  4, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonHomeDecorStore1FCooltrainerfText, -1
 
 CeladonHomeDecorStore1FClerkScript:
 	faceplayer

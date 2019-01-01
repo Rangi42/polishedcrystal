@@ -1,22 +1,19 @@
 CeladonDevelopmentSpeechHouse_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 2 ; warp events
+	warp_event  2,  7, CELADON_CITY, 16
+	warp_event  3,  7, CELADON_CITY, 16
 
-CeladonDevelopmentSpeechHouse_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 2
-	warp_def 7, 2, 16, CELADON_CITY
-	warp_def 7, 3, 16, CELADON_CITY
+	db 0 ; bg events
 
-.XYTriggers: db 0
-
-.Signposts: db 0
-
-.PersonEvents: db 2
-	person_event SPRITE_COOLTRAINER_M, 4, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonDevelopmentSpeechHouseCooltrainermText, -1
-	person_event SPRITE_BEAUTY, 3, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonDevelopmentSpeechHouseBeautyText, -1
+	db 2 ; object events
+	object_event  2,  4, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_PURPLE, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonDevelopmentSpeechHouseCooltrainermText, -1
+	object_event  5,  3, SPRITE_BEAUTY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonDevelopmentSpeechHouseBeautyText, -1
 
 CeladonDevelopmentSpeechHouseCooltrainermText:
 	text "Celadon has become"

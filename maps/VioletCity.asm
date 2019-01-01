@@ -1,51 +1,48 @@
 VioletCity_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 1 ; callbacks
+	callback MAPCALLBACK_NEWMAP, VioletCityFlyPoint
 
-.MapCallbacks: db 1
-	dbw MAPCALLBACK_NEWMAP, VioletCityFlyPoint
+	db 11 ; warp events
+	warp_event  9, 21, VIOLET_MART, 2
+	warp_event 18, 21, VIOLET_GYM, 1
+	warp_event 30, 21, EARLS_POKEMON_ACADEMY, 1
+	warp_event  3, 19, VIOLET_NICKNAME_SPEECH_HOUSE, 1
+	warp_event 31, 29, VIOLET_POKECENTER_1F, 1
+	warp_event 21, 33, VIOLET_ONIX_TRADE_HOUSE, 1
+	warp_event 23,  5, SPROUT_TOWER_1F, 1
+	warp_event 39, 28, ROUTE_31_VIOLET_GATE, 1
+	warp_event 39, 29, ROUTE_31_VIOLET_GATE, 2
+	warp_event  2, 12, ROUTE_36_VIOLET_GATE, 3
+	warp_event  2, 13, ROUTE_36_VIOLET_GATE, 4
 
-VioletCity_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 11
-	warp_def 21, 9, 2, VIOLET_MART
-	warp_def 21, 18, 1, VIOLET_GYM
-	warp_def 21, 30, 1, EARLS_POKEMON_ACADEMY
-	warp_def 19, 3, 1, VIOLET_NICKNAME_SPEECH_HOUSE
-	warp_def 29, 31, 1, VIOLET_POKECENTER_1F
-	warp_def 33, 21, 1, VIOLET_ONIX_TRADE_HOUSE
-	warp_def 5, 23, 1, SPROUT_TOWER_1F
-	warp_def 28, 39, 1, ROUTE_31_VIOLET_GATE
-	warp_def 29, 39, 2, ROUTE_31_VIOLET_GATE
-	warp_def 12, 2, 3, ROUTE_36_VIOLET_GATE
-	warp_def 13, 2, 4, ROUTE_36_VIOLET_GATE
+	db 6 ; bg events
+	bg_event 24, 24, SIGNPOST_JUMPTEXT, VioletCitySignText
+	bg_event 15, 21, SIGNPOST_JUMPTEXT, VioletGymSignText
+	bg_event 25,  7, SIGNPOST_JUMPTEXT, SproutTowerSignText
+	bg_event 27, 21, SIGNPOST_JUMPTEXT, EarlsPokemonAcademySignText
+	bg_event 37, 18, SIGNPOST_ITEM + HYPER_POTION, EVENT_VIOLET_CITY_HIDDEN_HYPER_POTION
+	bg_event 21, 13, SIGNPOST_ITEM + POKE_BALL, EVENT_VIOLET_CITY_HIDDEN_POKE_BALL
 
-.XYTriggers: db 0
+	db 13 ; object events
+	object_event 13, 20, SPRITE_FISHER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_SCRIPT, 0, VioletCityEarlScript, EVENT_VIOLET_CITY_EARL
+	object_event 28, 32, SPRITE_NEW_BARK_LYRA, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, VioletCityLassText, -1
+	object_event 26, 18, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_WANDER, 2, 1, -1, (1 << MORN) | (1 << DAY), PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, VioletCityCooltrainerM1Text, -1
+	object_event 26, 18, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_WANDER, 2, 1, -1, (1 << NITE), PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, VioletCityCooltrainerFText, -1
+	object_event 17, 24, SPRITE_GUIDE_GENT, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, VioletCityGrampsText, EVENT_SLOWPOKE_WELL_ROCKETS
+	object_event 16, 24, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, VioletCityGrampsText, EVENT_AZALEA_TOWN_SLOWPOKES
+	object_event  5, 22, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, VioletCityYoungsterText, -1
+	object_event 26, 13, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, VioletCityFisherText, -1
+	object_event 35, 29, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_PURPLE, PERSONTYPE_COMMAND, jumptextfaceplayer, VioletCityCooltrainerM2Text, -1
+	cuttree_event 36, 23, EVENT_VIOLET_CITY_CUT_TREE
+	fruittree_event 14, 33, FRUITTREE_VIOLET_CITY, CHERI_BERRY
+	itemball_event 10,  6, PP_UP, 1, EVENT_VIOLET_CITY_PP_UP
+	itemball_event 35, 12, RARE_CANDY, 1, EVENT_VIOLET_CITY_RARE_CANDY
 
-.Signposts: db 6
-	signpost 24, 24, SIGNPOST_JUMPTEXT, VioletCitySignText
-	signpost 21, 15, SIGNPOST_JUMPTEXT, VioletGymSignText
-	signpost  7, 25, SIGNPOST_JUMPTEXT, SproutTowerSignText
-	signpost 21, 27, SIGNPOST_JUMPTEXT, EarlsPokemonAcademySignText
-	signpost 18, 37, SIGNPOST_ITEM + HYPER_POTION, EVENT_VIOLET_CITY_HIDDEN_HYPER_POTION
-	signpost 13, 21, SIGNPOST_ITEM + POKE_BALL, EVENT_VIOLET_CITY_HIDDEN_POKE_BALL
-
-.PersonEvents: db 13
-	person_event SPRITE_FISHER, 20, 13, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, VioletCityEarlScript, EVENT_VIOLET_CITY_EARL
-	person_event SPRITE_NEW_BARK_LYRA, 32, 28, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, VioletCityLassText, -1
-	person_event SPRITE_COOLTRAINER_M, 18, 26, SPRITEMOVEDATA_WANDER, 2, 1, -1, (1 << MORN) | (1 << DAY), (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, VioletCityCooltrainerM1Text, -1
-	person_event SPRITE_COOLTRAINER_F, 18, 26, SPRITEMOVEDATA_WANDER, 2, 1, -1, (1 << NITE), (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, VioletCityCooltrainerFText, -1
-	person_event SPRITE_GUIDE_GENT, 24, 17, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, VioletCityGrampsText, EVENT_SLOWPOKE_WELL_ROCKETS
-	person_event SPRITE_GRAMPS, 24, 16, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, VioletCityGrampsText, EVENT_AZALEA_TOWN_SLOWPOKES
-	person_event SPRITE_YOUNGSTER, 22, 5, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, VioletCityYoungsterText, -1
-	person_event SPRITE_FISHER, 13, 26, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, VioletCityFisherText, -1
-	person_event SPRITE_COOLTRAINER_M, 29, 35, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_COMMAND, jumptextfaceplayer, VioletCityCooltrainerM2Text, -1
-	cuttree_event 23, 36, EVENT_VIOLET_CITY_CUT_TREE
-	fruittree_event 33, 14, FRUITTREE_VIOLET_CITY, CHERI_BERRY
-	itemball_event 6, 10, PP_UP, 1, EVENT_VIOLET_CITY_PP_UP
-	itemball_event 12, 35, RARE_CANDY, 1, EVENT_VIOLET_CITY_RARE_CANDY
-
-const_value set 1
+	const_def 1 ; object constants
 	const VIOLETCITY_EARL
 
 VioletCityFlyPoint:

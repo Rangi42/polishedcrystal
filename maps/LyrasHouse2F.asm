@@ -1,30 +1,22 @@
-const_value set 3
-	const LYRASHOUSE2F_LYRA
-	const LYRASHOUSE2F_AMPHAROS
-	const LYRASHOUSE2F_N64
-
 LyrasHouse2F_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 1 ; warp events
+	warp_event  0,  0, LYRAS_HOUSE_1F, 3
 
-LyrasHouse2F_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 1
-	warp_def 0, 0, 3, LYRAS_HOUSE_1F
+	db 3 ; bg events
+	bg_event  4,  1, SIGNPOST_JUMPTEXT, LyrasHousePCText
+	bg_event  5,  1, SIGNPOST_READ, LyrasHouseRadio
+	bg_event  7,  1, SIGNPOST_READ, PokemonJournalProfElmScript
 
-.XYTriggers: db 0
-
-.Signposts: db 3
-	signpost 1, 4, SIGNPOST_JUMPTEXT, LyrasHousePCText
-	signpost 1, 5, SIGNPOST_READ, LyrasHouseRadio
-	signpost 1, 7, SIGNPOST_READ, PokemonJournalProfElmScript
-
-.PersonEvents: db 3
-	person_event SPRITE_LYRA, 3, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, LyrasHouseLyraText, EVENT_LYRA_IN_HER_ROOM
-	person_event SPRITE_AMPHAROS, 3, 3, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_POKEMON, AMPHAROS, LyrasHouseAmpharosText, EVENT_LYRA_IN_HER_ROOM
-	person_event SPRITE_N64, 2, 6, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, (1 << 3) | PAL_OW_ROCK, PERSONTYPE_COMMAND, jumptext, LyrasHouseN64Text, -1
+	db 3 ; object events
+	object_event  2,  3, SPRITE_LYRA, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, LyrasHouseLyraText, EVENT_LYRA_IN_HER_ROOM
+	object_event  3,  3, SPRITE_AMPHAROS, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_POKEMON, AMPHAROS, LyrasHouseAmpharosText, EVENT_LYRA_IN_HER_ROOM
+	object_event  6,  2, SPRITE_N64, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, PAL_NPC_ROCK, PERSONTYPE_COMMAND, jumptext, LyrasHouseN64Text, -1
 
 LyrasHouseRadio:
 	checkevent EVENT_GOT_A_POKEMON_FROM_ELM

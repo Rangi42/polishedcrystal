@@ -1,81 +1,106 @@
 FastShipCabins_NNW_NNE_NE_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 3 ; warp events
+	warp_event  2,  0, FAST_SHIP_1F, 2
+	warp_event  2, 12, FAST_SHIP_1F, 3
+	warp_event  2, 24, FAST_SHIP_1F, 4
 
-FastShipCabins_NNW_NNE_NE_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 3
-	warp_def 0, 2, 2, FAST_SHIP_1F
-	warp_def 12, 2, 3, FAST_SHIP_1F
-	warp_def 24, 2, 4, FAST_SHIP_1F
+	db 0 ; bg events
 
-.XYTriggers: db 0
+	db 8 ; object events
+	object_event  4, 26, SPRITE_SAILOR, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, SailorScript_0x755f1, EVENT_FAST_SHIP_CABINS_NNW_NNE_NE_SAILOR
+	object_event  4,  5, SPRITE_PI, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerPILooker, EVENT_FAST_SHIP_PASSENGERS_FIRST_TRIP
+	object_event  4,  3, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerCooltrainermSean, EVENT_FAST_SHIP_PASSENGERS_EASTBOUND
+	object_event  1,  5, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerCooltrainerfCarol, EVENT_FAST_SHIP_PASSENGERS_EASTBOUND
+	object_event  1,  5, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_PURPLE, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerPokemaniacEthan, EVENT_FAST_SHIP_PASSENGERS_WESTBOUND
+	object_event  4, 17, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerHikerNoland, EVENT_FAST_SHIP_PASSENGERS_FIRST_TRIP
+	object_event  7, 30, SPRITE_GENTLEMAN, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerGentlemanEdward, EVENT_FAST_SHIP_PASSENGERS_EASTBOUND
+	object_event  2, 30, SPRITE_PHARMACIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_PURPLE, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerBurglarCorey, EVENT_FAST_SHIP_PASSENGERS_WESTBOUND
 
-.Signposts: db 0
-
-.PersonEvents: db 8
-	person_event SPRITE_SAILOR, 26, 4, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, SailorScript_0x755f1, EVENT_FAST_SHIP_CABINS_NNW_NNE_NE_SAILOR
-	person_event SPRITE_PI, 5, 4, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerPILooker, EVENT_FAST_SHIP_PASSENGERS_FIRST_TRIP
-	person_event SPRITE_COOLTRAINER_M, 3, 4, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerCooltrainermSean, EVENT_FAST_SHIP_PASSENGERS_EASTBOUND
-	person_event SPRITE_COOLTRAINER_F, 5, 1, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerCooltrainerfCarol, EVENT_FAST_SHIP_PASSENGERS_EASTBOUND
-	person_event SPRITE_SUPER_NERD, 5, 1, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerPokemaniacEthan, EVENT_FAST_SHIP_PASSENGERS_WESTBOUND
-	person_event SPRITE_POKEFAN_M, 17, 4, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerHikerNoland, EVENT_FAST_SHIP_PASSENGERS_FIRST_TRIP
-	person_event SPRITE_GENTLEMAN, 30, 7, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerGentlemanEdward, EVENT_FAST_SHIP_PASSENGERS_EASTBOUND
-	person_event SPRITE_PHARMACIST, 30, 2, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 4, TrainerBurglarCorey, EVENT_FAST_SHIP_PASSENGERS_WESTBOUND
-
-const_value set 1
+	const_def 1 ; object constants
 	const FASTSHIPCABINS_NNW_NNE_NE_SAILOR
 
-TrainerPILooker:
-	trainer EVENT_BEAT_PI_LOOKER, PI, LOOKER, PILookerSeenText, PILookerBeatenText, 0, PILookerScript
+GenericTrainerPILooker:
+	generictrainer PI, LOOKER, EVENT_BEAT_PI_LOOKER, PILookerSeenText, PILookerBeatenText
 
-PILookerScript:
-	end_if_just_battled
-	jumptextfaceplayer PILookerAfterText
+	text "My code name,"
+	line "it is Looker."
 
-TrainerCooltrainermSean:
-	trainer EVENT_BEAT_COOLTRAINERM_SEAN, COOLTRAINERM, SEAN, CooltrainermSeanSeenText, CooltrainermSeanBeatenText, 0, CooltrainermSeanScript
+	para "It is what they"
+	line "all call me."
 
-CooltrainermSeanScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x7567b
+	para "I am on the look-"
+	line "out for members"
+	cont "of Team Rocket."
 
-TrainerCooltrainerfCarol:
-	trainer EVENT_BEAT_COOLTRAINERF_CAROL, COOLTRAINERF, CAROL, CooltrainerfCarolSeenText, CooltrainerfCarolBeatenText, 0, CooltrainerfCarolScript
+	para "What?! You defeat-"
+	line "ed them?"
 
-CooltrainerfCarolScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x756f7
+	para "Bravo!"
+	done
 
-TrainerPokemaniacEthan:
-	trainer EVENT_BEAT_POKEMANIAC_ETHAN, POKEMANIAC, ETHAN, PokemaniacEthanSeenText, PokemaniacEthanBeatenText, 0, PokemaniacEthanScript
+GenericTrainerCooltrainermSean:
+	generictrainer COOLTRAINERM, SEAN, EVENT_BEAT_COOLTRAINERM_SEAN, CooltrainermSeanSeenText, CooltrainermSeanBeatenText
 
-PokemaniacEthanScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x7574b
+	text "Trainers from"
+	line "Johto can battle"
 
-TrainerHikerNoland:
-	trainer EVENT_BEAT_HIKER_NOLAND, HIKER, NOLAND, HikerNolandSeenText, HikerNolandBeatenText, 0, HikerNolandScript
+	para "with Kanto Gym"
+	line "Leaders."
+	done
 
-HikerNolandScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x757d4
+GenericTrainerCooltrainerfCarol:
+	generictrainer COOLTRAINERF, CAROL, EVENT_BEAT_COOLTRAINERF_CAROL, CooltrainerfCarolSeenText, CooltrainerfCarolBeatenText
 
-TrainerGentlemanEdward:
-	trainer EVENT_BEAT_GENTLEMAN_EDWARD, GENTLEMAN, EDWARD, GentlemanEdwardSeenText, GentlemanEdwardBeatenText, 0, GentlemanEdwardScript
+	text "I'm going to beat"
+	line "you someday!"
+	done
 
-GentlemanEdwardScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x75937
+GenericTrainerPokemaniacEthan:
+	generictrainer POKEMANIAC, ETHAN, EVENT_BEAT_POKEMANIAC_ETHAN, PokemaniacEthanSeenText, PokemaniacEthanBeatenText
 
-TrainerBurglarCorey:
-	trainer EVENT_BEAT_BURGLAR_COREY, BURGLAR, COREY, BurglarCoreySeenText, BurglarCoreyBeatenText, 0, BurglarCoreyScript
+	text "Lily's nice, but"
+	line "Mary's the best!"
 
-BurglarCoreyScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x75996
+	para "I want to check"
+	line "out Johto's radio"
+	cont "programs!"
+	done
+
+GenericTrainerHikerNoland:
+	generictrainer HIKER, NOLAND, EVENT_BEAT_HIKER_NOLAND, HikerNolandSeenText, HikerNolandBeatenText
+
+	text "I wonder if there"
+	line "are any mountains"
+
+	para "worth climbing in"
+	line "Kanto?"
+	done
+
+GenericTrainerGentlemanEdward:
+	generictrainer GENTLEMAN, EDWARD, EVENT_BEAT_GENTLEMAN_EDWARD, GentlemanEdwardSeenText, GentlemanEdwardBeatenText
+
+	text "I give up."
+	line "You don't have to"
+
+	para "look. Just forget"
+	line "about it!"
+	done
+
+GenericTrainerBurglarCorey:
+	generictrainer BURGLAR, COREY, EVENT_BEAT_BURGLAR_COREY, BurglarCoreySeenText, BurglarCoreyBeatenText
+
+	text "I found a pretty"
+	line "coin here."
+
+	para "Someone must have"
+	line "lost it…"
+	done
 
 SailorScript_0x755f1:
 	special SaveMusic
@@ -138,23 +163,6 @@ PILookerBeatenText:
 	line "you are!"
 	done
 
-PILookerAfterText:
-	text "My code name,"
-	line "it is Looker."
-
-	para "It is what they"
-	line "all call me."
-
-	para "I am on the look-"
-	line "out for members"
-	cont "of Team Rocket."
-
-	para "What?! You defeat-"
-	line "ed them?"
-
-	para "Bravo!"
-	done
-
 CooltrainermSeanSeenText:
 	text "I'm going to Kanto"
 	line "to test my skills."
@@ -162,14 +170,6 @@ CooltrainermSeanSeenText:
 
 CooltrainermSeanBeatenText:
 	text "I wanted to win!"
-	done
-
-UnknownText_0x7567b:
-	text "Trainers from"
-	line "Johto can battle"
-
-	para "with Kanto Gym"
-	line "Leaders."
 	done
 
 CooltrainerfCarolSeenText:
@@ -182,11 +182,6 @@ CooltrainerfCarolBeatenText:
 	line "ent between us?"
 	done
 
-UnknownText_0x756f7:
-	text "I'm going to beat"
-	line "you someday!"
-	done
-
 PokemaniacEthanSeenText:
 	text "Do you know Lily?"
 	line "She's a hot DJ in"
@@ -197,15 +192,6 @@ PokemaniacEthanBeatenText:
 	text "Gyaaaah!"
 	done
 
-UnknownText_0x7574b:
-	text "Lily's nice, but"
-	line "Mary's the best!"
-
-	para "I want to check"
-	line "out Johto's radio"
-	cont "programs!"
-	done
-
 HikerNolandSeenText:
 	text "Are you alone?"
 	line "Then let's battle!"
@@ -214,14 +200,6 @@ HikerNolandSeenText:
 HikerNolandBeatenText:
 	text "That's too much to"
 	line "handle!"
-	done
-
-UnknownText_0x757d4:
-	text "I wonder if there"
-	line "are any mountains"
-
-	para "worth climbing in"
-	line "Kanto?"
 	done
 
 UnknownText_0x75812:
@@ -262,14 +240,6 @@ GentlemanEdwardBeatenText:
 	line "it…"
 	done
 
-UnknownText_0x75937:
-	text "I give up."
-	line "You don't have to"
-
-	para "look. Just forget"
-	line "about it!"
-	done
-
 BurglarCoreySeenText:
 	text "Yeehaw!"
 	line "Lucky!"
@@ -280,10 +250,3 @@ BurglarCoreyBeatenText:
 	line "I lost!"
 	done
 
-UnknownText_0x75996:
-	text "I found a pretty"
-	line "coin here."
-
-	para "Someone must have"
-	line "lost it…"
-	done

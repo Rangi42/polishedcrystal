@@ -1,25 +1,22 @@
 QuietCaveB2F_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 6 ; warp events
+	warp_event 21,  3, QUIET_CAVE_B1F, 6
+	warp_event 17, 25, QUIET_CAVE_B1F, 7
+	warp_event 23, 33, QUIET_CAVE_B1F, 8
+	warp_event 29,  3, QUIET_CAVE_B1F, 9
+	warp_event 10, 31, QUIET_CAVE_B3F, 1
+	warp_event 33,  5, QUIET_CAVE_B3F, 2
 
-QuietCaveB2F_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 6
-	warp_def 3, 21, 6, QUIET_CAVE_B1F
-	warp_def 25, 17, 7, QUIET_CAVE_B1F
-	warp_def 33, 23, 8, QUIET_CAVE_B1F
-	warp_def 3, 29, 9, QUIET_CAVE_B1F
-	warp_def 31, 10, 1, QUIET_CAVE_B3F
-	warp_def 5, 33, 2, QUIET_CAVE_B3F
+	db 1 ; bg events
+	bg_event 16, 11, SIGNPOST_ITEM + CALCIUM, EVENT_QUIET_CAVE_B2F_HIDDEN_CALCIUM
 
-.XYTriggers: db 0
-
-.Signposts: db 1
-	signpost 11, 16, SIGNPOST_ITEM + CALCIUM, EVENT_QUIET_CAVE_B2F_HIDDEN_CALCIUM
-
-.PersonEvents: db 3
-	itemball_event 3, 10, DUSK_BALL, 1, EVENT_QUIET_CAVE_B2F_DUSK_BALL
-	itemball_event 23, 9, RAZOR_CLAW, 1, EVENT_QUIET_CAVE_B2F_RAZOR_CLAW
-	itemball_event 11, 19, SAFE_GOGGLES, 1, EVENT_QUIET_CAVE_B2F_SAFE_GOGGLES
+	db 3 ; object events
+	itemball_event 10,  3, DUSK_BALL, 1, EVENT_QUIET_CAVE_B2F_DUSK_BALL
+	itemball_event  9, 23, RAZOR_CLAW, 1, EVENT_QUIET_CAVE_B2F_RAZOR_CLAW
+	itemball_event 19, 11, SAFE_GOGGLES, 1, EVENT_QUIET_CAVE_B2F_SAFE_GOGGLES

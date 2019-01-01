@@ -1,38 +1,35 @@
 LightningIsland_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 6 ; warp events
+	warp_event  5, 29, SHAMOUTI_COAST, 3
+	warp_event 19, 29, LIGHTNING_ISLAND_ROOF, 1
+	warp_event  6,  3, LIGHTNING_ISLAND, 4
+	warp_event 19,  3, LIGHTNING_ISLAND, 3
+	warp_event 19, 26, LIGHTNING_ISLAND, 6
+	warp_event  5, 27, LIGHTNING_ISLAND, 5 ; hole
 
-LightningIsland_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 6
-	warp_def 29, 5, 3, SHAMOUTI_COAST
-	warp_def 29, 19, 1, LIGHTNING_ISLAND_ROOF
-	warp_def 3, 6, 4, LIGHTNING_ISLAND
-	warp_def 3, 19, 3, LIGHTNING_ISLAND
-	warp_def 26, 19, 6, LIGHTNING_ISLAND
-	warp_def 27, 5, 5, LIGHTNING_ISLAND ; hole
+	db 0 ; bg events
 
-.XYTriggers: db 0
-
-.Signposts: db 0
-
-.PersonEvents: db 14
-	itemball_event 15, 22, DAMP_ROCK, 1, EVENT_LIGHTNING_ISLAND_DAMP_ROCK
-	person_event SPRITE_SNES, 5, 1, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_TREE, PERSONTYPE_SCRIPT, 0, LightningIslandCrystalScript, -1
-	person_event SPRITE_SNES, 13, 1, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_TREE, PERSONTYPE_SCRIPT, 0, LightningIslandCrystalScript, -1
-	person_event SPRITE_SNES, 25, 1, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_TREE, PERSONTYPE_SCRIPT, 0, LightningIslandCrystalScript, -1
-	person_event SPRITE_SNES, 6, 15, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_TREE, PERSONTYPE_SCRIPT, 0, LightningIslandCrystalScript, -1
-	person_event SPRITE_SNES, 11, 15, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_TREE, PERSONTYPE_SCRIPT, 0, LightningIslandCrystalScript, -1
-	person_event SPRITE_SNES, 27, 15, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_TREE, PERSONTYPE_SCRIPT, 0, LightningIslandCrystalScript, -1
-	person_event SPRITE_SNES, 6, 10, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_TREE, PERSONTYPE_SCRIPT, 0, LightningIslandCrystalScript, -1
-	person_event SPRITE_SNES, 18, 10, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_TREE, PERSONTYPE_SCRIPT, 0, LightningIslandCrystalScript, -1
-	person_event SPRITE_SNES, 22, 10, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_TREE, PERSONTYPE_SCRIPT, 0, LightningIslandCrystalScript, -1
-	person_event SPRITE_SNES, 4, 24, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_TREE, PERSONTYPE_SCRIPT, 0, LightningIslandCrystalScript, -1
-	person_event SPRITE_SNES, 8, 24, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_TREE, PERSONTYPE_SCRIPT, 0, LightningIslandCrystalScript, -1
-	person_event SPRITE_SNES, 17, 24, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_TREE, PERSONTYPE_SCRIPT, 0, LightningIslandCrystalScript, -1
-	person_event SPRITE_SNES, 25, 24, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_TREE, PERSONTYPE_SCRIPT, 0, LightningIslandCrystalScript, -1
+	db 14 ; object events
+	itemball_event 22, 15, DAMP_ROCK, 1, EVENT_LIGHTNING_ISLAND_DAMP_ROCK
+	object_event  1,  5, SPRITE_SNES, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_TREE, PERSONTYPE_SCRIPT, 0, LightningIslandCrystalScript, -1
+	object_event  1, 13, SPRITE_SNES, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_TREE, PERSONTYPE_SCRIPT, 0, LightningIslandCrystalScript, -1
+	object_event  1, 25, SPRITE_SNES, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_TREE, PERSONTYPE_SCRIPT, 0, LightningIslandCrystalScript, -1
+	object_event 15,  6, SPRITE_SNES, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_TREE, PERSONTYPE_SCRIPT, 0, LightningIslandCrystalScript, -1
+	object_event 15, 11, SPRITE_SNES, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_TREE, PERSONTYPE_SCRIPT, 0, LightningIslandCrystalScript, -1
+	object_event 15, 27, SPRITE_SNES, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_TREE, PERSONTYPE_SCRIPT, 0, LightningIslandCrystalScript, -1
+	object_event 10,  6, SPRITE_SNES, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_TREE, PERSONTYPE_SCRIPT, 0, LightningIslandCrystalScript, -1
+	object_event 10, 18, SPRITE_SNES, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_TREE, PERSONTYPE_SCRIPT, 0, LightningIslandCrystalScript, -1
+	object_event 10, 22, SPRITE_SNES, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_TREE, PERSONTYPE_SCRIPT, 0, LightningIslandCrystalScript, -1
+	object_event 24,  4, SPRITE_SNES, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_TREE, PERSONTYPE_SCRIPT, 0, LightningIslandCrystalScript, -1
+	object_event 24,  8, SPRITE_SNES, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_TREE, PERSONTYPE_SCRIPT, 0, LightningIslandCrystalScript, -1
+	object_event 24, 17, SPRITE_SNES, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_TREE, PERSONTYPE_SCRIPT, 0, LightningIslandCrystalScript, -1
+	object_event 24, 25, SPRITE_SNES, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_TREE, PERSONTYPE_SCRIPT, 0, LightningIslandCrystalScript, -1
 
 LightningIslandCrystalScript:
 	end

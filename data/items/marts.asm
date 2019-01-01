@@ -147,9 +147,9 @@ Celadon5FMart2: ; 161e1
 	db X_SPEED
 	db X_SPCL_ATK
 	db X_SPCL_DEF
+	db X_ACCURACY
 	db DIRE_HIT
 	db GUARD_SPEC
-	db X_ACCURACY
 	db -1
 ; 16134
 

@@ -1,30 +1,27 @@
 Route34IlexForestGate_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 1 ; callbacks
+	callback MAPCALLBACK_OBJECTS, UnknownScript_0x62d2d
 
-.MapCallbacks: db 1
-	dbw MAPCALLBACK_OBJECTS, UnknownScript_0x62d2d
+	db 4 ; warp events
+	warp_event  4,  0, ROUTE_34, 1
+	warp_event  5,  0, ROUTE_34, 2
+	warp_event  4,  7, ILEX_FOREST, 1
+	warp_event  5,  7, ILEX_FOREST, 1
 
-Route34IlexForestGate_MapEventHeader:
+	db 1 ; coord events
+	coord_event  4,  7, 0, UnknownScript_0x62d3d
 
-.Warps: db 4
-	warp_def 0, 4, 1, ROUTE_34
-	warp_def 0, 5, 2, ROUTE_34
-	warp_def 7, 4, 1, ILEX_FOREST
-	warp_def 7, 5, 1, ILEX_FOREST
+	db 0 ; bg events
 
-.XYTriggers: db 1
-	xy_trigger 0, 7, 4, UnknownScript_0x62d3d
+	db 4 ; object events
+	object_event  9,  3, SPRITE_TEACHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, TeacherScript_0x62d63, EVENT_ROUTE_34_ILEX_FOREST_GATE_TEACHER_BEHIND_COUNTER
+	object_event  5,  7, SPRITE_TEACHER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, TeacherScript_0x62d63, EVENT_ROUTE_34_ILEX_FOREST_GATE_TEACHER_IN_WALKWAY
+	object_event  9,  4, SPRITE_HERACROSS, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_POKEMON, HERACROSS, UnknownText_0x62e83, -1
+	object_event  3,  4, SPRITE_LASS, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x62e97, EVENT_ROUTE_34_ILEX_FOREST_GATE_LASS
 
-.Signposts: db 0
-
-.PersonEvents: db 4
-	person_event SPRITE_TEACHER, 3, 9, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, TeacherScript_0x62d63, EVENT_ROUTE_34_ILEX_FOREST_GATE_TEACHER_BEHIND_COUNTER
-	person_event SPRITE_TEACHER, 7, 5, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, TeacherScript_0x62d63, EVENT_ROUTE_34_ILEX_FOREST_GATE_TEACHER_IN_WALKWAY
-	person_event SPRITE_HERACROSS, 4, 9, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_POKEMON, HERACROSS, UnknownText_0x62e83, -1
-	person_event SPRITE_LASS, 4, 3, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x62e97, EVENT_ROUTE_34_ILEX_FOREST_GATE_LASS
-
-const_value set 1
+	const_def 1 ; object constants
 	const ROUTE34ILEXFORESTGATE_TEACHER1
 	const ROUTE34ILEXFORESTGATE_TEACHER2
 
@@ -56,23 +53,24 @@ UnknownScript_0x62d62:
 	end
 
 TeacherScript_0x62d63:
+	checkevent EVENT_FOREST_IS_RESTLESS
+	iftrue_jumptextfaceplayer UnknownText_0x62e41
+	checkevent EVENT_GOT_TM54_FALSE_SWIPE
+	iftrue_jumptextfaceplayer UnknownText_0x62df6
 	faceplayer
 	opentext
-	checkevent EVENT_FOREST_IS_RESTLESS
-	iftrue UnknownScript_0x62d84
-	checkevent EVENT_GOT_TM54_FALSE_SWIPE
-	iftrue UnknownScript_0x62d7e
 	writetext UnknownText_0x62d9d
 	buttonsound
 	verbosegivetmhm TM_FALSE_SWIPE
 	setevent EVENT_GOT_TM54_FALSE_SWIPE
-UnknownScript_0x62d7e:
-	jumpopenedtext UnknownText_0x62df6
+	thisopenedtext
 
-UnknownScript_0x62d84:
-	writetext UnknownText_0x62e41
-	buttonsound
-	endtext
+UnknownText_0x62df6:
+	text "It's False Swipe."
+
+	para "Teach it to a"
+	line "special #mon."
+	done
 
 MovementData_0x62d97:
 	step_up
@@ -94,13 +92,6 @@ UnknownText_0x62d9d:
 
 	para "Here, take this"
 	line "TM."
-	done
-
-UnknownText_0x62df6:
-	text "It's False Swipe."
-
-	para "Teach it to a"
-	line "special #mon."
 	done
 
 UnknownText_0x62e41:

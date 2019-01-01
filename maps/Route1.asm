@@ -1,53 +1,57 @@
 Route1_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 1 ; warp events
+	warp_event 10,  1, ROUTE_1_VIRIDIAN_GATE, 3
 
-Route1_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 1
-	warp_def 1, 10, 3, ROUTE_1_VIRIDIAN_GATE
+	db 1 ; bg events
+	bg_event  9, 27, SIGNPOST_JUMPTEXT, Route1SignText
 
-.XYTriggers: db 0
+	db 5 ; object events
+	object_event  6, 12, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerSchoolboyDanny, -1
+	object_event 17, 14, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerSchoolboySherman, -1
+	object_event 16, 21, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerCooltrainermFrench, -1
+	object_event 11, 25, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerCooltrainerfQuinn, -1
+	fruittree_event  5,  7, FRUITTREE_ROUTE_1, FIGY_BERRY
 
-.Signposts: db 1
-	signpost 27, 9, SIGNPOST_JUMPTEXT, Route1SignText
+GenericTrainerSchoolboyDanny:
+	generictrainer SCHOOLBOY, DANNY, EVENT_BEAT_SCHOOLBOY_DANNY, SchoolboyDannySeenText, SchoolboyDannyBeatenText
 
-.PersonEvents: db 5
-	person_event SPRITE_YOUNGSTER, 12, 6, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerSchoolboyDanny, -1
-	person_event SPRITE_YOUNGSTER, 14, 17, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerSchoolboySherman, -1
-	person_event SPRITE_COOLTRAINER_M, 21, 16, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerCooltrainermFrench, -1
-	person_event SPRITE_COOLTRAINER_F, 25, 11, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerCooltrainerfQuinn, -1
-	fruittree_event 7, 5, FRUITTREE_ROUTE_1, FIGY_BERRY
+	text "For trainers, it's"
+	line "a given that we'll"
 
-TrainerSchoolboyDanny:
-	trainer EVENT_BEAT_SCHOOLBOY_DANNY, SCHOOLBOY, DANNY, SchoolboyDannySeenText, SchoolboyDannyBeatenText, 0, SchoolboyDannyScript
+	para "battle whenever we"
+	line "meet."
+	done
 
-SchoolboyDannyScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x1ac5d7
+GenericTrainerSchoolboySherman:
+	generictrainer SCHOOLBOY, SHERMAN, EVENT_BEAT_SCHOOLBOY_SHERMAN, SchoolboyShermanSeenText, SchoolboyShermanBeatenText
 
-TrainerSchoolboySherman:
-	trainer EVENT_BEAT_SCHOOLBOY_SHERMAN, SCHOOLBOY, SHERMAN, SchoolboyShermanSeenText, SchoolboyShermanBeatenText, 0, SchoolboyShermanScript
+	text "I should record"
+	line "all of today's"
+	cont "mistakes."
+	done
 
-SchoolboyShermanScript:
-	end_if_just_battled
-	jumptextfaceplayer SchoolboyShermanAfterText
+GenericTrainerCooltrainermFrench:
+	generictrainer COOLTRAINERM, FRENCH, EVENT_BEAT_COOLTRAINERM_FRENCH, CooltrainermFrenchSeenText, CooltrainermFrenchBeatenText
 
-TrainerCooltrainermFrench:
-	trainer EVENT_BEAT_COOLTRAINERM_FRENCH, COOLTRAINERM, FRENCH, CooltrainermFrenchSeenText, CooltrainermFrenchBeatenText, 0, CooltrainermFrenchScript
+	text "That was a great"
+	line "fight!"
+	cont "Don't you agree?"
+	done
 
-CooltrainermFrenchScript:
-	end_if_just_battled
-	jumptextfaceplayer CooltrainermFrenchAfterText
+GenericTrainerCooltrainerfQuinn:
+	generictrainer COOLTRAINERF, QUINN, EVENT_BEAT_COOLTRAINERF_QUINN, CooltrainerfQuinnSeenText, CooltrainerfQuinnBeatenText
 
-TrainerCooltrainerfQuinn:
-	trainer EVENT_BEAT_COOLTRAINERF_QUINN, COOLTRAINERF, QUINN, CooltrainerfQuinnSeenText, CooltrainerfQuinnBeatenText, 0, CooltrainerfQuinnScript
+	text "You're strong."
 
-CooltrainerfQuinnScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x1ac640
+	para "You obviously must"
+	line "have trained hard."
+	done
 
 SchoolboyDannySeenText:
 	text "If trainers meet,"
@@ -60,14 +64,6 @@ SchoolboyDannyBeatenText:
 	line "losing record…"
 	done
 
-UnknownText_0x1ac5d7:
-	text "For trainers, it's"
-	line "a given that we'll"
-
-	para "battle whenever we"
-	line "meet."
-	done
-
 SchoolboyShermanSeenText:
 	text "Right after class,"
 	line "I head outside to"
@@ -77,12 +73,6 @@ SchoolboyShermanSeenText:
 SchoolboyShermanBeatenText:
 	text "I need to follow"
 	line "the textbook."
-	done
-
-SchoolboyShermanAfterText:
-	text "I should record"
-	line "all of today's"
-	cont "mistakes."
 	done
 
 CooltrainermFrenchSeenText:
@@ -98,12 +88,6 @@ CooltrainermFrenchBeatenText:
 	line "expected!"
 	done
 
-CooltrainermFrenchAfterText:
-	text "That was a great"
-	line "fight!"
-	cont "Don't you agree?"
-	done
-
 CooltrainerfQuinnSeenText:
 	text "You there!"
 	line "Want to battle?"
@@ -111,13 +95,6 @@ CooltrainerfQuinnSeenText:
 
 CooltrainerfQuinnBeatenText:
 	text "Down and out…"
-	done
-
-UnknownText_0x1ac640:
-	text "You're strong."
-
-	para "You obviously must"
-	line "have trained hard."
 	done
 
 Route1SignText:

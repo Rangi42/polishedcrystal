@@ -1,29 +1,26 @@
 SaffronTrainStation_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 4 ; warp events
+	warp_event  8, 17, SAFFRON_CITY, 6
+	warp_event  9, 17, SAFFRON_CITY, 6
+	warp_event  6,  5, GOLDENROD_MAGNET_TRAIN_STATION, 4
+	warp_event 11,  5, GOLDENROD_MAGNET_TRAIN_STATION, 3
 
-SaffronTrainStation_MapEventHeader:
+	db 1 ; coord events
+	coord_event 11,  6, 0, Script_ArriveFromGoldenrod
 
-.Warps: db 4
-	warp_def 17, 8, 6, SAFFRON_CITY
-	warp_def 17, 9, 6, SAFFRON_CITY
-	warp_def 5, 6, 4, GOLDENROD_MAGNET_TRAIN_STATION
-	warp_def 5, 11, 3, GOLDENROD_MAGNET_TRAIN_STATION
+	db 0 ; bg events
 
-.XYTriggers: db 1
-	xy_trigger 0, 6, 11, Script_ArriveFromGoldenrod
+	db 4 ; object events
+	object_event  9,  9, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, OfficerScript_0x18a81e, -1
+	object_event 10, 14, SPRITE_GYM_GUY, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GymGuyScript_0x18a875, -1
+	object_event  6, 11, SPRITE_TEACHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x18aaab, EVENT_SAFFRON_TRAIN_STATION_POPULATION
+	object_event  6, 10, SPRITE_LASS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x18ab20, EVENT_SAFFRON_TRAIN_STATION_POPULATION
 
-.Signposts: db 0
-
-.PersonEvents: db 4
-	person_event SPRITE_OFFICER, 9, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, OfficerScript_0x18a81e, -1
-	person_event SPRITE_GYM_GUY, 14, 10, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GymGuyScript_0x18a875, -1
-	person_event SPRITE_TEACHER, 11, 6, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x18aaab, EVENT_SAFFRON_TRAIN_STATION_POPULATION
-	person_event SPRITE_LASS, 10, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x18ab20, EVENT_SAFFRON_TRAIN_STATION_POPULATION
-
-const_value set 1
+	const_def 1 ; object constants
 	const SAFFRONTRAINSTATION_OFFICER
 
 OfficerScript_0x18a81e:

@@ -1,22 +1,19 @@
 IndigoPlateau_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 1 ; callbacks
+	callback MAPCALLBACK_NEWMAP, IndigoPlateauFlyPoint
 
-.MapCallbacks: db 1
-	dbw MAPCALLBACK_NEWMAP, IndigoPlateauFlyPoint
+	db 2 ; warp events
+	warp_event  9,  5, INDIGO_PLATEAU_POKECENTER_1F, 1
+	warp_event 10,  5, INDIGO_PLATEAU_POKECENTER_1F, 2
 
-IndigoPlateau_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 2
-	warp_def 5, 9, 1, INDIGO_PLATEAU_POKECENTER_1F
-	warp_def 5, 10, 2, INDIGO_PLATEAU_POKECENTER_1F
+	db 1 ; bg events
+	bg_event 11,  7, SIGNPOST_JUMPTEXT, IndigoPlateauSignText
 
-.XYTriggers: db 0
-
-.Signposts: db 1
-	signpost 7, 11, SIGNPOST_JUMPTEXT, IndigoPlateauSignText
-
-.PersonEvents: db 0
+	db 0 ; object events
 
 IndigoPlateauFlyPoint:
 	setflag ENGINE_FLYPOINT_INDIGO_PLATEAU

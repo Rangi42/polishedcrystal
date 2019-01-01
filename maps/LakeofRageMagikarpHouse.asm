@@ -1,22 +1,19 @@
 LakeofRageMagikarpHouse_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 2 ; warp events
+	warp_event  2,  7, LAKE_OF_RAGE, 2
+	warp_event  3,  7, LAKE_OF_RAGE, 2
 
-LakeofRageMagikarpHouse_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 2
-	warp_def 7, 2, 2, LAKE_OF_RAGE
-	warp_def 7, 3, 2, LAKE_OF_RAGE
+	db 1 ; bg events
+	bg_event  7,  1, SIGNPOST_JUMPSTD, difficultbookshelf
 
-.XYTriggers: db 0
-
-.Signposts: db 1
-	signpost 1, 7, SIGNPOST_JUMPSTD, difficultbookshelf
-
-.PersonEvents: db 1
-	person_event SPRITE_FISHING_GURU, 3, 2, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FishingGuruScript_0x19a6ae, -1
+	db 1 ; object events
+	object_event  2,  3, SPRITE_FISHING_GURU, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FishingGuruScript_0x19a6ae, -1
 
 FishingGuruScript_0x19a6ae:
 	faceplayer
@@ -28,15 +25,12 @@ FishingGuruScript_0x19a6ae:
 	checkevent EVENT_CLEARED_ROCKET_HIDEOUT
 	iftrue UnknownScript_0x19a6d7
 	checkevent EVENT_LAKE_OF_RAGE_EXPLAINED_WEIRD_MAGIKARP
-	iftrue UnknownScript_0x19a6d1
+	iftrue_jumpopenedtext UnknownText_0x19a84d
 	writetext UnknownText_0x19a72e
 	waitbutton
 	closetext
 	setevent EVENT_LAKE_OF_RAGE_EXPLAINED_WEIRD_MAGIKARP
 	end
-
-UnknownScript_0x19a6d1:
-	jumpopenedtext UnknownText_0x19a84d
 
 UnknownScript_0x19a6d7:
 	writetext UnknownText_0x19a890
@@ -52,7 +46,7 @@ UnknownScript_0x19a6e0:
 	writetext UnknownText_0x19a93e
 	waitbutton
 	special Special_CheckMagikarpLength
-	if_equal $0, UnknownScript_0x19a71c
+	iffalse_jumpopenedtext UnknownText_0x19aa5c
 	if_equal $1, UnknownScript_0x19a722
 	if_equal $2, UnknownScript_0x19a716
 	jump UnknownScript_0x19a6fe
@@ -74,13 +68,27 @@ UnknownScript_0x19a711:
 	end
 
 UnknownScript_0x19a716:
-	jumpopenedtext UnknownText_0x19aa01
+	thisopenedtext
 
-UnknownScript_0x19a71c:
-	jumpopenedtext UnknownText_0x19aa5c
+	text "Wow! This one is"
+	line "outstanding!"
+
+	para "…I wish I could"
+	line "say that, but I've"
+
+	para "seen a bigger one"
+	line "before."
+	done
 
 UnknownScript_0x19a722:
-	jumpopenedtext UnknownText_0x19aa79
+	thisopenedtext
+
+	text "Oh… So you didn't"
+	line "get one good"
+
+	para "enough to show me?"
+	line "Maybe next time."
+	done
 
 UnknownText_0x19a72e:
 	text "Lake of Rage is"
@@ -163,26 +171,7 @@ UnknownText_0x19a9c3:
 	line "a bonus!"
 	done
 
-UnknownText_0x19aa01:
-	text "Wow! This one is"
-	line "outstanding!"
-
-	para "…I wish I could"
-	line "say that, but I've"
-
-	para "seen a bigger one"
-	line "before."
-	done
-
 UnknownText_0x19aa5c:
 	text "What? That's not a"
 	line "Magikarp!"
-	done
-
-UnknownText_0x19aa79:
-	text "Oh… So you didn't"
-	line "get one good"
-
-	para "enough to show me?"
-	line "Maybe next time."
 	done

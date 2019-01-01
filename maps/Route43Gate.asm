@@ -1,29 +1,26 @@
 Route43Gate_MapScriptHeader:
+	db 1 ; scene scripts
+	scene_script Route43GateTrigger0
 
-.MapTriggers: db 1
-	dw Route43GateTrigger0
+	db 1 ; callbacks
+	callback MAPCALLBACK_NEWMAP, UnknownScript_0x19abca
 
-.MapCallbacks: db 1
-	dbw MAPCALLBACK_NEWMAP, UnknownScript_0x19abca
+	db 4 ; warp events
+	warp_event  4,  0, ROUTE_43, 4
+	warp_event  5,  0, ROUTE_43, 5
+	warp_event  4,  7, ROUTE_43, 3
+	warp_event  5,  7, ROUTE_43, 3
 
-Route43Gate_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 4
-	warp_def 0, 4, 4, ROUTE_43
-	warp_def 0, 5, 5, ROUTE_43
-	warp_def 7, 4, 3, ROUTE_43
-	warp_def 7, 5, 3, ROUTE_43
+	db 0 ; bg events
 
-.XYTriggers: db 0
+	db 3 ; object events
+	object_event  2,  4, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x19ad41, EVENT_ROUTE_43_GATE_ROCKETS
+	object_event  7,  4, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x19ad41, EVENT_ROUTE_43_GATE_ROCKETS
+	object_event  0,  4, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, OfficerScript_0x19ac85, EVENT_LAKE_OF_RAGE_CIVILIANS
 
-.Signposts: db 0
-
-.PersonEvents: db 3
-	person_event SPRITE_ROCKET, 4, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x19ad41, EVENT_ROUTE_43_GATE_ROCKETS
-	person_event SPRITE_ROCKET, 4, 7, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x19ad41, EVENT_ROUTE_43_GATE_ROCKETS
-	person_event SPRITE_OFFICER, 4, 0, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, OfficerScript_0x19ac85, EVENT_LAKE_OF_RAGE_CIVILIANS
-
-const_value set 1
+	const_def 1 ; object constants
 	const ROUTE43GATE_ROCKET1
 	const ROUTE43GATE_ROCKET2
 
@@ -115,18 +112,15 @@ UnknownScript_0x19ac72:
 	end
 
 OfficerScript_0x19ac85:
+	checkevent EVENT_GOT_TM36_SLUDGE_BOMB
+	iftrue_jumptextfaceplayer UnknownText_0x19ae2d
 	faceplayer
 	opentext
-	checkevent EVENT_GOT_TM36_SLUDGE_BOMB
-	iftrue UnknownScript_0x19ac9c
 	writetext UnknownText_0x19ad9b
 	buttonsound
 	verbosegivetmhm TM_SLUDGE_BOMB
 	setevent EVENT_GOT_TM36_SLUDGE_BOMB
 	endtext
-
-UnknownScript_0x19ac9c:
-	jumpopenedtext UnknownText_0x19ae2d
 
 MovementData_0x19aca4:
 	run_step_up

@@ -1,27 +1,24 @@
 GoldenrodDeptStore2F_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 3 ; warp events
+	warp_event 12,  0, GOLDENROD_DEPT_STORE_3F, 1
+	warp_event 15,  0, GOLDENROD_DEPT_STORE_1F, 3
+	warp_event  2,  0, GOLDENROD_DEPT_STORE_ELEVATOR, 1
 
-GoldenrodDeptStore2F_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 3
-	warp_def 0, 12, 1, GOLDENROD_DEPT_STORE_3F
-	warp_def 0, 15, 3, GOLDENROD_DEPT_STORE_1F
-	warp_def 0, 2, 1, GOLDENROD_DEPT_STORE_ELEVATOR
+	db 1 ; bg events
+	bg_event 14,  0, SIGNPOST_JUMPTEXT, GoldenrodDeptStore2FDirectoryText
 
-.XYTriggers: db 0
-
-.Signposts: db 1
-	signpost 0, 14, SIGNPOST_JUMPTEXT, GoldenrodDeptStore2FDirectoryText
-
-.PersonEvents: db 5
-	person_event SPRITE_CLERK, 5, 13, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, pokemart, MARTTYPE_STANDARD, MART_GOLDENROD_2F_1, -1
-	person_event SPRITE_CLERK, 6, 13, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ClerkScript_0x55b65, -1
-	person_event SPRITE_YOUNGSTER, 6, 9, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x55c25, -1
-	person_event SPRITE_COOLTRAINER_F, 2, 6, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x55c7b, -1
-	person_event SPRITE_GENTLEMAN, 6, 2, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x55cb7, -1
+	db 5 ; object events
+	object_event 13,  5, SPRITE_CLERK, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, pokemart, MARTTYPE_STANDARD, MART_GOLDENROD_2F_1, -1
+	object_event 13,  6, SPRITE_CLERK, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ClerkScript_0x55b65, -1
+	object_event  9,  6, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x55c25, -1
+	object_event  6,  2, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x55c7b, -1
+	object_event  2,  6, SPRITE_GENTLEMAN, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x55cb7, -1
 
 ClerkScript_0x55b65:
 	checkevent EVENT_GOT_EEVEE
@@ -33,12 +30,12 @@ ClerkScript_0x55b65:
 
 UnknownText_0x55c25:
 	text "#gear can store"
-	line "up to twenty"
+	line "up to thirty" ; CONTACT_LIST_SIZE
 	cont "phone numbers."
 
-	para "It's hard to de-"
-	line "cide which numbers"
-	cont "to keep."
+	para "But getting too"
+	line "many phone calls"
+	cont "can be annoying."
 	done
 
 UnknownText_0x55c7b:

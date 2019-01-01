@@ -1,25 +1,22 @@
 CeladonMansion2F_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 4 ; warp events
+	warp_event  0,  0, CELADON_MANSION_1F, 4
+	warp_event  1,  0, CELADON_MANSION_3F, 2
+	warp_event  6,  0, CELADON_MANSION_3F, 3
+	warp_event  7,  0, CELADON_MANSION_1F, 5
 
-CeladonMansion2F_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 4
-	warp_def 0, 0, 4, CELADON_MANSION_1F
-	warp_def 0, 1, 2, CELADON_MANSION_3F
-	warp_def 0, 6, 3, CELADON_MANSION_3F
-	warp_def 0, 7, 5, CELADON_MANSION_1F
+	db 3 ; bg events
+	bg_event  0,  3, SIGNPOST_JUMPTEXT, CeladonMansion2FComputerText
+	bg_event  5,  8, SIGNPOST_UP, CeladonMansion2FSign
+	bg_event  2,  3, SIGNPOST_JUMPSTD, difficultbookshelf
 
-.XYTriggers: db 0
-
-.Signposts: db 3
-	signpost 3, 0, SIGNPOST_JUMPTEXT, CeladonMansion2FComputerText
-	signpost 8, 5, SIGNPOST_UP, CeladonMansion2FSign
-	signpost 3, 2, SIGNPOST_JUMPSTD, difficultbookshelf
-
-.PersonEvents: db 0
+	db 0 ; object events
 
 CeladonMansion2FSign:
 	jumptext CeladonMansion2FSignText

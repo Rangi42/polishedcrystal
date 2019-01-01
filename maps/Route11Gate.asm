@@ -1,24 +1,21 @@
 Route11Gate_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 5 ; warp events
+	warp_event  0,  5, ROUTE_11, 1
+	warp_event  0,  6, ROUTE_11, 2
+	warp_event  9,  5, ROUTE_12_SOUTH, 2
+	warp_event  9,  6, ROUTE_12_SOUTH, 3
+	warp_event  8,  8, ROUTE_11_GATE_2F, 1
 
-Route11Gate_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 5
-	warp_def 5, 0, 1, ROUTE_11
-	warp_def 6, 0, 2, ROUTE_11
-	warp_def 5, 9, 2, ROUTE_12_SOUTH
-	warp_def 6, 9, 3, ROUTE_12_SOUTH
-	warp_def 8, 8, 1, ROUTE_11_GATE_2F
+	db 0 ; bg events
 
-.XYTriggers: db 0
-
-.Signposts: db 0
-
-.PersonEvents: db 1
-	person_event SPRITE_OFFICER, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, Route11GateOfficerText, -1
+	db 1 ; object events
+	object_event  5,  1, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, Route11GateOfficerText, -1
 
 Route11GateOfficerText:
 	text "When you catch"

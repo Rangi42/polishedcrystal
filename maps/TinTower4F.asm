@@ -1,23 +1,20 @@
 TinTower4F_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 4 ; warp events
+	warp_event  0,  4, TIN_TOWER_5F, 2
+	warp_event 14,  2, TIN_TOWER_3F, 2
+	warp_event  0, 14, TIN_TOWER_5F, 3
+	warp_event 15, 15, TIN_TOWER_5F, 4
 
-TinTower4F_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 4
-	warp_def 4, 0, 2, TIN_TOWER_5F
-	warp_def 2, 14, 2, TIN_TOWER_3F
-	warp_def 14, 0, 3, TIN_TOWER_5F
-	warp_def 15, 15, 4, TIN_TOWER_5F
+	db 1 ; bg events
+	bg_event  9,  6, SIGNPOST_ITEM + MAX_POTION, EVENT_TIN_TOWER_4F_HIDDEN_MAX_POTION
 
-.XYTriggers: db 0
-
-.Signposts: db 1
-	signpost 6, 9, SIGNPOST_ITEM + MAX_POTION, EVENT_TIN_TOWER_4F_HIDDEN_MAX_POTION
-
-.PersonEvents: db 3
-	itemball_event 10, 12, ULTRA_BALL, 1, EVENT_TIN_TOWER_4F_ULTRA_BALL
-	itemball_event 14, 15, PP_UP, 1, EVENT_TIN_TOWER_4F_PP_UP
-	itemball_event 12, 0, ESCAPE_ROPE, 1, EVENT_TIN_TOWER_4F_ESCAPE_ROPE
+	db 3 ; object events
+	itemball_event 12, 10, ULTRA_BALL, 1, EVENT_TIN_TOWER_4F_ULTRA_BALL
+	itemball_event 15, 14, PP_UP, 1, EVENT_TIN_TOWER_4F_PP_UP
+	itemball_event  0, 12, ESCAPE_ROPE, 1, EVENT_TIN_TOWER_4F_ESCAPE_ROPE

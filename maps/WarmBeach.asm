@@ -1,39 +1,39 @@
 WarmBeach_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 3 ; warp events
+	warp_event 15, 13, WARM_BEACH_SHACK, 1
+	warp_event  8,  5, SHAMOUTI_TUNNEL, 2
+	warp_event  3,  8, WARM_BEACH_HOUSE, 1
 
-WarmBeach_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 3
-	warp_def 13, 15, 1, WARM_BEACH_SHACK
-	warp_def 5, 8, 2, SHAMOUTI_TUNNEL
-	warp_def 8, 3, 1, WARM_BEACH_HOUSE
+	db 4 ; bg events
+	bg_event 17, 14, SIGNPOST_JUMPTEXT, WarmBeachShackSignText
+	bg_event 18, 20, SIGNPOST_JUMPTEXT, WarmBeachShrineText
+	bg_event 19, 20, SIGNPOST_JUMPTEXT, WarmBeachShrineText
+	bg_event  6, 20, SIGNPOST_ITEM + PEARL, EVENT_WARM_BEACH_HIDDEN_PEARL
 
-.XYTriggers: db 0
+	db 7 ; object events
+	object_event 11,  8, SPRITE_SIGHTSEER_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerSightseermGareth, -1
+	object_event  4, 12, SPRITE_LADY, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerAromaLadyHolly, -1
+	object_event 11, 14, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, WarmBeachCooltrainermText, -1
+	object_event 22, 20, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, WarmBeachCooltrainerfText, -1
+	object_event 17, 21, SPRITE_SLOWKING, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, WarmBeachSlowkingScript, -1
+	object_event 11, 20, SPRITE_LASS, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_GREEN, PERSONTYPE_SCRIPT, 0, WarmBeachLassScript, -1
+	object_event  6, 23, SPRITE_LADY, SPRITEMOVEDATA_STANDING_DOWN, 0, 2, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, WarmBeachLadyText, -1
 
-.Signposts: db 4
-	signpost 14, 17, SIGNPOST_JUMPTEXT, WarmBeachShackSignText
-	signpost 20, 18, SIGNPOST_JUMPTEXT, WarmBeachShrineText
-	signpost 20, 19, SIGNPOST_JUMPTEXT, WarmBeachShrineText
-	signpost 20, 6, SIGNPOST_ITEM + PEARL, EVENT_WARM_BEACH_HIDDEN_PEARL
+GenericTrainerSightseermGareth:
+	generictrainer SIGHTSEERM, GARETH, EVENT_BEAT_SIGHTSEERM_GARETH, .SeenText, .BeatenText
 
-.PersonEvents: db 7
-	person_event SPRITE_SIGHTSEER_M, 8, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerSightseermGareth, -1
-	person_event SPRITE_LADY, 12, 4, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerAromaLadyHolly, -1
-	person_event SPRITE_COOLTRAINER_M, 14, 11, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, WarmBeachCooltrainermText, -1
-	person_event SPRITE_COOLTRAINER_F, 20, 22, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, WarmBeachCooltrainerfText, -1
-	person_event SPRITE_SLOWKING, 21, 17, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, WarmBeachSlowkingScript, -1
-	person_event SPRITE_LASS, 20, 11, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, WarmBeachLassScript, -1
-	person_event SPRITE_LADY, 23, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 2, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, WarmBeachLadyText, -1
+	text "Even outside of"
+	line "battle, these"
 
-TrainerSightseermGareth:
-	trainer EVENT_BEAT_SIGHTSEERM_GARETH, SIGHTSEERM, GARETH, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
+	para "items make memor-"
+	line "able souvenirs."
+	done
 
 .SeenText:
 	text "I just picked up"
@@ -48,20 +48,13 @@ TrainerSightseermGareth:
 	line "enough…"
 	done
 
-.AfterText:
-	text "Even outside of"
-	line "battle, these"
+GenericTrainerAromaLadyHolly:
+	generictrainer AROMA_LADY, HOLLY, EVENT_BEAT_AROMA_LADY_HOLLY, .SeenText, .BeatenText
 
-	para "items make memor-"
-	line "able souvenirs."
+	text "The sense of smell"
+	line "is vital to living"
+	cont "in nature."
 	done
-
-TrainerAromaLadyHolly:
-	trainer EVENT_BEAT_AROMA_LADY_HOLLY, AROMA_LADY, HOLLY, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "I am at one with"
@@ -72,12 +65,6 @@ TrainerAromaLadyHolly:
 .BeatenText:
 	text "Defeat has its"
 	line "own scent…"
-	done
-
-.AfterText:
-	text "The sense of smell"
-	line "is vital to living"
-	cont "in nature."
 	done
 
 WarmBeachCooltrainermText:
@@ -116,33 +103,32 @@ WarmBeachLassScript:
 	faceplayer
 	opentext
 	checkflag ENGINE_SEASHORE_SHELL_BELL
-	iftrue .BoughtShellBell
+	iftrue_jumpopenedtext .Text3
 	writetext .Text1
 	special PlaceMoneyTopRight
 	yesorno
-	iffalse .NoBuy
+	iffalse_jumpopenedtext .Text4
 	checkmoney $0, 4000
 	if_equal $2, .NotEnoughMoney
 	giveitem SHELL_BELL
-	iffalse .NoRoom
+	iffalse_jumpopenedtext .Text6
 	setflag ENGINE_SEASHORE_SHELL_BELL
 	waitsfx
 	playsound SFX_TRANSACTION
 	takemoney $0, 4000
 	special PlaceMoneyTopRight
-	jumpopenedtext .Text2
+	thisopenedtext
 
-.BoughtShellBell:
-	jumpopenedtext .Text3
-
-.NoBuy:
-	jumpopenedtext .Text4
+	text "One Shell Bell,"
+	line "just for you!"
+	done
 
 .NotEnoughMoney:
-	jumpopenedtext .Text5
+	thisopenedtext
 
-.NoRoom:
-	jumpopenedtext .Text6
+	text "You don't have"
+	line "enough money…"
+	done
 
 .Text1:
 	text "I collect shells"
@@ -158,11 +144,6 @@ WarmBeachLassScript:
 	line "each. Want one?"
 	done
 
-.Text2:
-	text "One Shell Bell,"
-	line "just for you!"
-	done
-
 .Text3:
 	text "I only made one"
 	line "Shell Bell today…"
@@ -170,11 +151,6 @@ WarmBeachLassScript:
 
 .Text4:
 	text "That's OK!"
-	done
-
-.Text5:
-	text "You don't have"
-	line "enough money…"
 	done
 
 .Text6:

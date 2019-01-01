@@ -1,38 +1,35 @@
 CeruleanCave1F_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 1 ; callbacks
+	callback MAPCALLBACK_TILES, CeruleanCave1FTileScript
 
-.MapCallbacks: db 1
-	dbw MAPCALLBACK_TILES, CeruleanCave1FTileScript
+	db 8 ; warp events
+	warp_event 27, 21, CERULEAN_CITY, 7
+	warp_event  9,  5, CERULEAN_CAVE_2F, 1
+	warp_event 29,  5, CERULEAN_CAVE_2F, 2
+	warp_event  3,  7, CERULEAN_CAVE_2F, 3
+	warp_event  2, 10, CERULEAN_CAVE_B1F, 1
+	warp_event 25, 11, CERULEAN_CAVE_2F, 4
+	warp_event 20, 13, CERULEAN_CAVE_2F, 5
+	warp_event  5, 15, CERULEAN_CAVE_2F, 6
 
-CeruleanCave1F_MapEventHeader:
+	db 4 ; coord events
+	coord_event 21,  7, 1, CeruleanCave1FBridgeOverheadTrigger
+	coord_event 22,  7, 1, CeruleanCave1FBridgeOverheadTrigger
+	coord_event 21,  6, 0, CeruleanCave1FBridgeUnderfootTrigger
+	coord_event 22,  6, 0, CeruleanCave1FBridgeUnderfootTrigger
 
-.Warps: db 8
-	warp_def 21, 27, 7, CERULEAN_CITY
-	warp_def 5, 9, 1, CERULEAN_CAVE_2F
-	warp_def 5, 29, 2, CERULEAN_CAVE_2F
-	warp_def 7, 3, 3, CERULEAN_CAVE_2F
-	warp_def 10, 2, 1, CERULEAN_CAVE_B1F
-	warp_def 11, 25, 4, CERULEAN_CAVE_2F
-	warp_def 13, 20, 5, CERULEAN_CAVE_2F
-	warp_def 15, 5, 6, CERULEAN_CAVE_2F
+	db 4 ; bg events
+	bg_event 10, 13, SIGNPOST_ITEM + ULTRA_BALL, EVENT_CERULEAN_CAVE_1F_HIDDEN_ULTRA_BALL
+	bg_event  5, 16, SIGNPOST_ITEM + PP_UP, EVENT_CERULEAN_CAVE_1F_HIDDEN_PP_UP
+	bg_event 16, 15, SIGNPOST_ITEM + RARE_CANDY, EVENT_CERULEAN_CAVE_1F_HIDDEN_RARE_CANDY
+	bg_event 25,  2, SIGNPOST_ITEM + BERSERK_GENE, EVENT_CERULEAN_CAVE_1F_HIDDEN_BERSERK_GENE
 
-.XYTriggers: db 4
-	xy_trigger 1, 7, 21, CeruleanCave1FBridgeOverheadTrigger
-	xy_trigger 1, 7, 22, CeruleanCave1FBridgeOverheadTrigger
-	xy_trigger 0, 6, 21, CeruleanCave1FBridgeUnderfootTrigger
-	xy_trigger 0, 6, 22, CeruleanCave1FBridgeUnderfootTrigger
-
-.Signposts: db 4
-	signpost 13, 10, SIGNPOST_ITEM + ULTRA_BALL, EVENT_CERULEAN_CAVE_1F_HIDDEN_ULTRA_BALL
-	signpost 16, 5, SIGNPOST_ITEM + PP_UP, EVENT_CERULEAN_CAVE_1F_HIDDEN_PP_UP
-	signpost 15, 16, SIGNPOST_ITEM + RARE_CANDY, EVENT_CERULEAN_CAVE_1F_HIDDEN_RARE_CANDY
-	signpost 2, 25, SIGNPOST_ITEM + BERSERK_GENE, EVENT_CERULEAN_CAVE_1F_HIDDEN_BERSERK_GENE
-
-.PersonEvents: db 3
-	itemball_event 6, 7, BIG_NUGGET, 1, EVENT_CERULEAN_CAVE_1F_BIG_NUGGET
-	itemball_event 17, 9, FULL_RESTORE, 1, EVENT_CERULEAN_CAVE_1F_FULL_RESTORE
-	itemball_event 2, 14, MAX_REVIVE, 1, EVENT_CERULEAN_CAVE_1F_MAX_REVIVE
+	db 3 ; object events
+	itemball_event  7,  6, BIG_NUGGET, 1, EVENT_CERULEAN_CAVE_1F_BIG_NUGGET
+	itemball_event  9, 17, FULL_RESTORE, 1, EVENT_CERULEAN_CAVE_1F_FULL_RESTORE
+	itemball_event 14,  2, MAX_REVIVE, 1, EVENT_CERULEAN_CAVE_1F_MAX_REVIVE
 
 CeruleanCave1FTileScript:
 	checktriggers

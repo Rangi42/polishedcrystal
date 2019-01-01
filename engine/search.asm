@@ -255,12 +255,9 @@ CheckOwnMon: ; 0x4a7ba
 	jr nz, .notfound ; ID doesn't match
 
 ; check OT
-; This only checks five characters, which is fine for the Japanese version,
-; but in the English version the player name is 7 characters, so this is wrong.
-
 	ld hl, wPlayerName
-
-	rept 4
+	ld b, PLAYER_NAME_LENGTH +- 1
+.loop
 	ld a, [de]
 	cp [hl]
 	jr nz, .notfound
@@ -268,24 +265,21 @@ CheckOwnMon: ; 0x4a7ba
 	jr z, .found ; reached end of string
 	inc hl
 	inc de
-	endr
-
-	ld a, [de]
-	cp [hl]
-	jr z, .found
-
-.notfound
-	pop de
-	pop hl
-	pop bc
-	and a
-	ret
+	dec b
+	jr nz, .loop
 
 .found
 	pop de
 	pop hl
 	pop bc
 	scf
+	ret
+
+.notfound
+	pop de
+	pop hl
+	pop bc
+	and a
 	ret
 ; 0x4a810
 

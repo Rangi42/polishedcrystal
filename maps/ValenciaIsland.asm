@@ -1,28 +1,25 @@
 ValenciaIsland_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 3 ; warp events
+	warp_event 18, 19, IVYS_LAB, 1
+	warp_event  5, 19, IVYS_HOUSE, 1
+	warp_event  3, 11, VALENCIA_HOUSE, 1
 
-ValenciaIsland_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 3
-	warp_def 19, 18, 1, IVYS_LAB
-	warp_def 19, 5, 1, IVYS_HOUSE
-	warp_def 11, 3, 1, VALENCIA_HOUSE
+	db 5 ; bg events
+	bg_event  8, 12, SIGNPOST_JUMPTEXT, ValenciaIslandSignText
+	bg_event 11,  5, SIGNPOST_JUMPTEXT, ValenciaIslandGoneFishingSignText
+	bg_event 13,  5, SIGNPOST_JUMPTEXT, ValenciaIslandLockedDoorText
+	bg_event 15, 19, SIGNPOST_JUMPTEXT, IvysLabSignText
+	bg_event 13,  3, SIGNPOST_JUMPTEXT, IvysHouseSignText
 
-.XYTriggers: db 0
-
-.Signposts: db 5
-	signpost 12, 8, SIGNPOST_JUMPTEXT, ValenciaIslandSignText
-	signpost 5, 11, SIGNPOST_JUMPTEXT, ValenciaIslandGoneFishingSignText
-	signpost 5, 13, SIGNPOST_JUMPTEXT, ValenciaIslandLockedDoorText
-	signpost 19, 15, SIGNPOST_JUMPTEXT, IvysLabSignText
-	signpost 3, 13, SIGNPOST_JUMPTEXT, IvysHouseSignText
-
-.PersonEvents: db 2
-	person_event SPRITE_COOLTRAINER_M, 8, 7, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, ValenciaIslandCooltrainermText, -1
-	person_event SPRITE_YOUNGSTER, 18, 10, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ValenciaIslandYoungsterScript, -1
+	db 2 ; object events
+	object_event  7,  8, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, ValenciaIslandCooltrainermText, -1
+	object_event 10, 18, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_SCRIPT, 0, ValenciaIslandYoungsterScript, -1
 
 ValenciaIslandCooltrainermText:
 	text "A couple of strong"

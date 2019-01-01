@@ -1,18 +1,15 @@
 SoulHouseB2F_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 3 ; warp events
+	warp_event 17, 15, SOUL_HOUSE_B1F, 2
+	warp_event  3, 15, SOUL_HOUSE_B1F, 3
+	warp_event  9,  4, SOUL_HOUSE_B3F, 1
 
-SoulHouseB2F_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 3
-	warp_def 15, 17, 2, SOUL_HOUSE_B1F
-	warp_def 15, 3, 3, SOUL_HOUSE_B1F
-	warp_def 4, 9, 1, SOUL_HOUSE_B3F
+	db 0 ; bg events
 
-.XYTriggers: db 0
-
-.Signposts: db 0
-
-.PersonEvents: db 0
+	db 0 ; object events

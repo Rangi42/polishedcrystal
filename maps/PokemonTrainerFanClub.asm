@@ -1,28 +1,24 @@
 PokemonTrainerFanClub_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 2 ; warp events
+	warp_event  4,  9, SAFFRON_CITY, 16
+	warp_event  5,  9, SAFFRON_CITY, 16
 
-PokemonTrainerFanClub_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 2
-	warp_def 9, 4, 16, SAFFRON_CITY
-	warp_def 9, 5, 16, SAFFRON_CITY
+	db 2 ; bg events
+	bg_event  0,  1, SIGNPOST_READ, PokemonJournalBrunoScript
+	bg_event  1,  1, SIGNPOST_READ, PokemonJournalBrunoScript
 
-.XYTriggers: db 0
-
-.Signposts: db 2
-	signpost 1, 0, SIGNPOST_READ, PokemonJournalBrunoScript
-	signpost 1, 1, SIGNPOST_READ, PokemonJournalBrunoScript
-
-.PersonEvents: db 0
+	db 0 ; object events
 
 PokemonJournalBrunoScript:
 	setflag ENGINE_READ_BROCK_JOURNAL
-	jumptext PokemonJournalBrunoText
+	thistext
 
-PokemonJournalBrunoText:
 	text "#mon Journal"
 
 	para "Special Feature:"

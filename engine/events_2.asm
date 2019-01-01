@@ -361,7 +361,7 @@ CheckForHiddenItems: ; b8172
 .grottoitem
 	call .GetFarByte
 	call .GetFarByte
-	ld de, EVENT_DRAGON_SHRINE_QUESTION_2
+	ld de, EVENT_TEMPORARY_UNTIL_MAP_RELOAD_3
 .checkitem
 	ld b, CHECK_FLAG
 	call EventFlagAction

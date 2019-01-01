@@ -1,30 +1,27 @@
 CeladonUniversityClassroom3_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 2 ; warp events
+	warp_event  2, 11, CELADON_UNIVERSITY_1F, 8
+	warp_event  3, 11, CELADON_UNIVERSITY_1F, 8
 
-CeladonUniversityClassroom3_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 2
-	warp_def 11, 2, 8, CELADON_UNIVERSITY_1F
-	warp_def 11, 3, 8, CELADON_UNIVERSITY_1F
+	db 5 ; bg events
+	bg_event  2,  0, SIGNPOST_JUMPTEXT, CeladonUniversityClassroom3BlackboardText
+	bg_event  3,  0, SIGNPOST_JUMPTEXT, CeladonUniversityClassroom3BlackboardText
+	bg_event  4,  0, SIGNPOST_JUMPTEXT, CeladonUniversityClassroom3BlackboardText
+	bg_event  6,  1, SIGNPOST_JUMPTEXT, CeladonUniversityClassroom3Bookshelf1Text
+	bg_event  7,  1, SIGNPOST_JUMPTEXT, CeladonUniversityClassroom3Bookshelf2Text
 
-.XYTriggers: db 0
-
-.Signposts: db 5
-	signpost 0, 2, SIGNPOST_JUMPTEXT, CeladonUniversityClassroom3BlackboardText
-	signpost 0, 3, SIGNPOST_JUMPTEXT, CeladonUniversityClassroom3BlackboardText
-	signpost 0, 4, SIGNPOST_JUMPTEXT, CeladonUniversityClassroom3BlackboardText
-	signpost 1, 6, SIGNPOST_JUMPTEXT, CeladonUniversityClassroom3Bookshelf1Text
-	signpost 1, 7, SIGNPOST_JUMPTEXT, CeladonUniversityClassroom3Bookshelf2Text
-
-.PersonEvents: db 5
-	person_event SPRITE_SPARK, 1, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityClassroom3SparkText, EVENT_CELADON_UNIVERSITY_SPARK
-	person_event SPRITE_TEACHER, 1, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityClassroom3TeacherText, EVENT_SHAMOUTI_COAST_SPARK
-	person_event SPRITE_CHILD, 5, 4, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityClassroom3ChildText, -1
-	person_event SPRITE_LASS, 7, 3, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityClassroom3LassText, -1
-	person_event SPRITE_SUPER_NERD, 7, 4, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityClassroom3Super_nerdText, -1
+	db 5 ; object events
+	object_event  2,  1, SPRITE_SPARK, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityClassroom3SparkText, EVENT_CELADON_UNIVERSITY_SPARK
+	object_event  2,  1, SPRITE_TEACHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityClassroom3TeacherText, EVENT_SHAMOUTI_COAST_SPARK
+	object_event  4,  5, SPRITE_CHILD, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityClassroom3ChildText, -1
+	object_event  3,  7, SPRITE_LASS, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityClassroom3LassText, -1
+	object_event  4,  7, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityClassroom3Super_nerdText, -1
 
 CeladonUniversityClassroom3SparkText:
 	text "Hey! I'm Spark."

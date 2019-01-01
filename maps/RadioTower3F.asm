@@ -1,32 +1,29 @@
 RadioTower3F_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 1 ; callbacks
+	callback MAPCALLBACK_TILES, CardKeyShutterCallback
 
-.MapCallbacks: db 1
-	dbw MAPCALLBACK_TILES, CardKeyShutterCallback
+	db 3 ; warp events
+	warp_event  0,  0, RADIO_TOWER_2F, 1
+	warp_event  7,  0, RADIO_TOWER_4F, 2
+	warp_event 17,  0, RADIO_TOWER_4F, 4
 
-RadioTower3F_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 3
-	warp_def 0, 0, 1, RADIO_TOWER_2F
-	warp_def 0, 7, 2, RADIO_TOWER_4F
-	warp_def 0, 17, 4, RADIO_TOWER_4F
+	db 3 ; bg events
+	bg_event  3,  0, SIGNPOST_JUMPTEXT, UnknownText_0x5ead6
+	bg_event  9,  0, SIGNPOST_JUMPTEXT, UnknownText_0x5eae4
+	bg_event 14,  2, SIGNPOST_UP, MapRadioTower3FSignpost2Script
 
-.XYTriggers: db 0
-
-.Signposts: db 3
-	signpost 0, 3, SIGNPOST_JUMPTEXT, UnknownText_0x5ead6
-	signpost 0, 9, SIGNPOST_JUMPTEXT, UnknownText_0x5eae4
-	signpost 2, 14, SIGNPOST_UP, MapRadioTower3FSignpost2Script
-
-.PersonEvents: db 7
-	person_event SPRITE_SUPER_NERD, 4, 7, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x5e621, EVENT_RADIO_TOWER_CIVILIANS_AFTER
-	person_event SPRITE_GYM_GUY, 4, 3, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, GymGuyScript_0x5e556, -1
-	person_event SPRITE_COOLTRAINER_F, 3, 11, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CooltrainerFScript_0x5e56a, -1
-	person_event SPRITE_ROCKET, 1, 5, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 2, TrainerGruntM7, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
-	person_event SPRITE_ROCKET, 2, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerGruntM8, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
-	person_event SPRITE_ROCKET, 6, 16, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerGruntM9, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
-	person_event SPRITE_SCIENTIST, 6, 9, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 5, TrainerRocketScientistMarc, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
+	db 7 ; object events
+	object_event  7,  4, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x5e621, EVENT_RADIO_TOWER_CIVILIANS_AFTER
+	object_event  3,  4, SPRITE_GYM_GUY, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, GymGuyScript_0x5e556, -1
+	object_event 11,  3, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_GREEN, PERSONTYPE_SCRIPT, 0, CooltrainerFScript_0x5e56a, -1
+	object_event  5,  1, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerGruntM7, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
+	object_event  6,  2, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerGruntM8, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
+	object_event 16,  6, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerGruntM9, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
+	object_event  9,  6, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_GENERICTRAINER, 5, GenericTrainerRocketScientistMarc, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
 
 CardKeyShutterCallback:
 	checkevent EVENT_USED_THE_CARD_KEY_IN_THE_RADIO_TOWER
@@ -44,59 +41,79 @@ GymGuyScript_0x5e556:
 	jumptextfaceplayer UnknownText_0x5e682
 
 CooltrainerFScript_0x5e56a:
-	faceplayer
-	opentext
 	checkevent EVENT_GOT_HEAT_ROCK_FROM_RADIO_TOWER
-	iftrue UnknownScript_0x5e59d
+	iftrue_jumptextfaceplayer UnknownText_0x5e85c
 	checkevent EVENT_CLEARED_RADIO_TOWER
 	iftrue UnknownScript_0x5e58a
 	checkevent EVENT_USED_THE_CARD_KEY_IN_THE_RADIO_TOWER
-	iftrue UnknownScript_0x5e584
-	jumpopenedtext UnknownText_0x5e754
+	iftrue_jumptextfaceplayer UnknownText_0x5e7cb
+	thistextfaceplayer
 
-UnknownScript_0x5e584:
-	jumpopenedtext UnknownText_0x5e7cb
+	text "The Team Rocket"
+	line "boss has locked"
+	cont "himself in."
+
+	para "But the Director"
+	line "can open it."
+
+	para "He's up on the"
+	line "fifth floor."
+
+	para "Please save him!"
+	done
 
 UnknownScript_0x5e58a:
+	faceplayer
+	opentext
 	writetext UnknownText_0x5e7e2
 	buttonsound
 	verbosegiveitem HEAT_ROCK
+	iffalse_endtext
 	writetext UnknownText_0x5e821
 	waitbutton
 	closetext
 	setevent EVENT_GOT_HEAT_ROCK_FROM_RADIO_TOWER
 	end
 
-UnknownScript_0x5e59d:
-	jumpopenedtext UnknownText_0x5e85c
+GenericTrainerGruntM7:
+	generictrainer GRUNTM, 7, EVENT_BEAT_ROCKET_GRUNTM_7, GruntM7SeenText, GruntM7BeatenText
 
-TrainerGruntM7:
-	trainer EVENT_BEAT_ROCKET_GRUNTM_7, GRUNTM, 7, GruntM7SeenText, GruntM7BeatenText, 0, GruntM7Script
+	text "I failed in my"
+	line "duties…"
 
-GruntM7Script:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x5e8d0
+	para "I'll be docked pay"
+	line "for this…"
+	done
 
-TrainerGruntM8:
-	trainer EVENT_BEAT_ROCKET_GRUNTM_8, GRUNTM, 8, GruntM8SeenText, GruntM8BeatenText, 0, GruntM8Script
+GenericTrainerGruntM8:
+	generictrainer GRUNTM, 8, EVENT_BEAT_ROCKET_GRUNTM_8, GruntM8SeenText, GruntM8BeatenText
 
-GruntM8Script:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x5e944
+	text "I feel lousy over"
+	line "losing!"
 
-TrainerGruntM9:
-	trainer EVENT_BEAT_ROCKET_GRUNTM_9, GRUNTM, 9, GruntM9SeenText, GruntM9BeatenText, 0, GruntM9Script
+	para "Darn it! I hate"
+	line "useless #mon!"
+	done
 
-GruntM9Script:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x5e9d0
+GenericTrainerGruntM9:
+	generictrainer GRUNTM, 9, EVENT_BEAT_ROCKET_GRUNTM_9, GruntM9SeenText, GruntM9BeatenText
 
-TrainerRocketScientistMarc:
-	trainer EVENT_BEAT_ROCKET_SCIENTIST_MARC, ROCKET_SCIENTIST, MARC, RocketScientistMarcSeenText, RocketScientistMarcBeatenText, 0, RocketScientistMarcScript
+	text "What?! You made it"
+	line "past our men in"
+	cont "the Underground?"
 
-RocketScientistMarcScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x5ea61
+	para "How could you?"
+	done
+
+GenericTrainerRocketScientistMarc:
+	generictrainer ROCKET_SCIENTIST, MARC, EVENT_BEAT_ROCKET_SCIENTIST_MARC, RocketScientistMarcSeenText, RocketScientistMarcBeatenText
+
+	text "Bwahahaha…"
+
+	para "I can transmit as"
+	line "strong a signal as"
+	cont "I need from here."
+	done
 
 MapRadioTower3FSignpost2Script::
 	opentext
@@ -156,20 +173,6 @@ UnknownText_0x5e6eb:
 	cont "clock too!"
 	done
 
-UnknownText_0x5e754:
-	text "The Team Rocket"
-	line "boss has locked"
-	cont "himself in."
-
-	para "But the Director"
-	line "can open it."
-
-	para "He's up on the"
-	line "fifth floor."
-
-	para "Please save him!"
-	done
-
 UnknownText_0x5e7cb:
 	text "Is the Director"
 	line "safe?"
@@ -208,14 +211,6 @@ GruntM7BeatenText:
 	text "What?!"
 	done
 
-UnknownText_0x5e8d0:
-	text "I failed in my"
-	line "duties…"
-
-	para "I'll be docked pay"
-	line "for this…"
-	done
-
 GruntM8SeenText:
 	text "It feels great"
 	line "ordering #mon"
@@ -224,14 +219,6 @@ GruntM8SeenText:
 
 GruntM8BeatenText:
 	text "You're kidding!"
-	done
-
-UnknownText_0x5e944:
-	text "I feel lousy over"
-	line "losing!"
-
-	para "Darn it! I hate"
-	line "useless #mon!"
 	done
 
 GruntM9SeenText:
@@ -246,14 +233,6 @@ GruntM9BeatenText:
 	text "I'm done for!"
 	done
 
-UnknownText_0x5e9d0:
-	text "What?! You made it"
-	line "past our men in"
-	cont "the Underground?"
-
-	para "How could you?"
-	done
-
 RocketScientistMarcSeenText:
 	text "An unknown child"
 	line "wandering here?"
@@ -264,14 +243,6 @@ RocketScientistMarcSeenText:
 RocketScientistMarcBeatenText:
 	text "Tch! I took you"
 	line "too lightly!"
-	done
-
-UnknownText_0x5ea61:
-	text "Bwahahaha…"
-
-	para "I can transmit as"
-	line "strong a signal as"
-	cont "I need from here."
 	done
 
 UnknownText_0x5eaa4:

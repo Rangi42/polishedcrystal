@@ -1,23 +1,20 @@
 OlivineLighthouseRoof_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 1 ; warp events
+	warp_event  9,  3, OLIVINE_LIGHTHOUSE_6F, 4
 
-OlivineLighthouseRoof_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 1
-	warp_def 3, 9, 4, OLIVINE_LIGHTHOUSE_6F
+	db 0 ; bg events
 
-.XYTriggers: db 0
+	db 2 ; object events
+	object_event  4, 13, SPRITE_SKYLA, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, OlivineLighthouseRoofSkylaScript, -1
+	itemball_event 16,  8, SILVER_LEAF, 1, EVENT_OLIVINE_LIGHTHOUSE_ROOF_SILVER_LEAF
 
-.Signposts: db 0
-
-.PersonEvents: db 2
-	person_event SPRITE_SKYLA, 13, 4, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, OlivineLighthouseRoofSkylaScript, -1
-	itemball_event 8, 16, SILVER_LEAF, 1, EVENT_OLIVINE_LIGHTHOUSE_ROOF_SILVER_LEAF
-
-const_value set 1
+	const_def 1 ; object constants
 	const OLIVINELIGHTHOUSEROOF_SKYLA
 
 OlivineLighthouseRoofSkylaScript:
@@ -41,7 +38,7 @@ OlivineLighthouseRoofSkylaScript:
 	writetext .ChallengeText
 .Battle
 	yesorno
-	iffalse .Refused
+	iffalse_jumpopenedtext .RefusedText
 	writetext .SeenText
 	waitbutton
 	closetext
@@ -72,15 +69,26 @@ OlivineLighthouseRoofSkylaScript:
 
 .Waiting:
 	checkevent EVENT_INTRODUCED_SKYLA
-	iftrue .Introduced2
+	iftrue_jumpopenedtext .WaitingText
 	writetext .IntroText
 	waitbutton
 	setevent EVENT_INTRODUCED_SKYLA
-.Introduced2
-	jumpopenedtext .WaitingText
+	thisopenedtext
 
-.Refused:
-	jumpopenedtext .RefusedText
+.WaitingText:
+	text "I saw a hurt #-"
+	line "mon from my plane,"
+
+	para "but I don't have"
+	line "anything that can"
+	cont "help it…"
+
+	para "So even if you"
+	line "want to battle,"
+
+	para "I'm not in the"
+	line "mood right now."
+	done
 
 .IntroText:
 	text "Skyla: Who are"
@@ -102,21 +110,6 @@ OlivineLighthouseRoofSkylaScript:
 
 	para "Lighthouse is even"
 	line "taller."
-	done
-
-.WaitingText:
-	text "I saw a hurt #-"
-	line "mon from my plane,"
-
-	para "but I don't have"
-	line "anything that can"
-	cont "help it…"
-
-	para "So even if you"
-	line "want to battle,"
-
-	para "I'm not in the"
-	line "mood right now."
 	done
 
 .ChallengeText:

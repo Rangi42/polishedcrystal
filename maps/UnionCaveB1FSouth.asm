@@ -1,46 +1,44 @@
 UnionCaveB1FSouth_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 4 ; warp events
+	warp_event  3,  5, UNION_CAVE_1F, 2
+	warp_event 17,  3, UNION_CAVE_B2F, 1
+	warp_event  5, 33, MURKY_SWAMP, 3
+	warp_event 17, 23, ROUTE_32_COAST, 1
 
-UnionCaveB1FSouth_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 4
-	warp_def 5, 3, 2, UNION_CAVE_1F
-	warp_def 3, 17, 1, UNION_CAVE_B2F
-	warp_def 33, 5, 3, MURKY_SWAMP
-	warp_def 23, 17, 1, ROUTE_32_COAST
+	db 3 ; bg events
+	bg_event  2, 18, SIGNPOST_ITEM + X_SPCL_DEF, EVENT_UNION_CAVE_B1F_SOUTH_HIDDEN_X_SPCL_DEF
+	bg_event 12, 25, SIGNPOST_ITEM + NUGGET, EVENT_UNION_CAVE_B1F_SOUTH_HIDDEN_NUGGET
+	bg_event  4, 30, SIGNPOST_ITEM + FULL_RESTORE, EVENT_UNION_CAVE_B1F_SOUTH_HIDDEN_FULL_RESTORE
 
-.XYTriggers: db 0
+	db 14 ; object events
+	object_event  5,  4, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_PURPLE, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerPokemaniacAndrew, -1
+	object_event 17,  2, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_PURPLE, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerPokemaniacCalvin, -1
+	object_event 16, 13, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerHikerPhillip, -1
+	object_event 14, 30, SPRITE_POKEFAN_M, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerHikerLeonard, -1
+	object_event  3, 20, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerFirebreatherJay, -1
+	object_event  7, 30, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerSuper_nerdRory, -1
+	object_event 12, 17, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerRuin_maniacGlyn, -1
+	strengthboulder_event 14, 4
+	strengthboulder_event  8, 32
+	smashrock_event 11, 15
+	smashrock_event 12, 24
+	itemball_event 14, 20, DUSK_STONE, 1, EVENT_UNION_CAVE_B1F_SOUTH_DUSK_STONE
+	itemball_event  8, 26, SUPER_REPEL, 1, EVENT_UNION_CAVE_B1F_SOUTH_SUPER_REPEL
+	itemball_event  2, 28, LIGHT_CLAY, 1, EVENT_UNION_CAVE_B1F_SOUTH_LIGHT_CLAY
 
-.Signposts: db 3
-	signpost 18, 2, SIGNPOST_ITEM + X_SPCL_DEF, EVENT_UNION_CAVE_B1F_SOUTH_HIDDEN_X_SPCL_DEF
-	signpost 25, 12, SIGNPOST_ITEM + NUGGET, EVENT_UNION_CAVE_B1F_SOUTH_HIDDEN_NUGGET
-	signpost 30, 4, SIGNPOST_ITEM + FULL_RESTORE, EVENT_UNION_CAVE_B1F_SOUTH_HIDDEN_FULL_RESTORE
+GenericTrainerPokemaniacAndrew:
+	generictrainer POKEMANIAC, ANDREW, EVENT_BEAT_POKEMANIAC_ANDREW, PokemaniacAndrewSeenText, PokemaniacAndrewBeatenText
 
-.PersonEvents: db 14
-	person_event SPRITE_SUPER_NERD, 4, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerPokemaniacAndrew, -1
-	person_event SPRITE_SUPER_NERD, 2, 17, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerPokemaniacCalvin, -1
-	person_event SPRITE_POKEFAN_M, 13, 16, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerHikerPhillip, -1
-	person_event SPRITE_POKEFAN_M, 30, 14, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerHikerLeonard, -1
-	person_event SPRITE_FISHER, 20, 3, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerFirebreatherJay, -1
-	person_event SPRITE_SUPER_NERD, 30, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerSuper_nerdRory, -1
-	person_event SPRITE_POKEFAN_M, 17, 12, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerRuin_maniacGlyn, -1
-	strengthboulder_event 4, 14
-	strengthboulder_event 32, 8
-	smashrock_event 15, 11
-	smashrock_event 24, 12
-	itemball_event 20, 14, DUSK_STONE, 1, EVENT_UNION_CAVE_B1F_SOUTH_DUSK_STONE
-	itemball_event 26, 8, SUPER_REPEL, 1, EVENT_UNION_CAVE_B1F_SOUTH_SUPER_REPEL
-	itemball_event 28, 2, LIGHT_CLAY, 1, EVENT_UNION_CAVE_B1F_SOUTH_LIGHT_CLAY
-
-TrainerPokemaniacAndrew:
-	trainer EVENT_BEAT_POKEMANIAC_ANDREW, POKEMANIAC, ANDREW, PokemaniacAndrewSeenText, PokemaniacAndrewBeatenText, 0, PokemaniacAndrewScript
-
-PokemaniacAndrewScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x5a181
+	text "Just me and my"
+	line "#mon. I'm de-"
+	cont "lirious with joy."
+	done
 
 PokemaniacAndrewSeenText:
 	text "Who's there?"
@@ -54,18 +52,17 @@ PokemaniacAndrewBeatenText:
 	line "Go away!"
 	done
 
-UnknownText_0x5a181:
-	text "Just me and my"
-	line "#mon. I'm de-"
-	cont "lirious with joy."
+GenericTrainerPokemaniacCalvin:
+	generictrainer POKEMANIAC, CALVIN, EVENT_BEAT_POKEMANIAC_CALVIN, PokemaniacCalvinSeenText, PokemaniacCalvinBeatenText
+
+	text "I should compile"
+	line "and announce my"
+	cont "study findings."
+
+	para "I might even be-"
+	line "come famous like"
+	cont "Prof.Elm."
 	done
-
-TrainerPokemaniacCalvin:
-	trainer EVENT_BEAT_POKEMANIAC_CALVIN, POKEMANIAC, CALVIN, PokemaniacCalvinSeenText, PokemaniacCalvinBeatenText, 0, PokemaniacCalvinScript
-
-PokemaniacCalvinScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x5a230
 
 PokemaniacCalvinSeenText:
 	text "I came all the way"
@@ -82,22 +79,16 @@ PokemaniacCalvinBeatenText:
 	line "on me!"
 	done
 
-UnknownText_0x5a230:
-	text "I should compile"
-	line "and announce my"
-	cont "study findings."
+GenericTrainerHikerPhillip:
+	generictrainer HIKER, PHILLIP, EVENT_BEAT_HIKER_PHILLIP, HikerPhillipSeenText, HikerPhillipBeatenText
 
-	para "I might even be-"
-	line "come famous like"
-	cont "Prof.Elm."
+	text "I've been lost for"
+	line "a long time…"
+
+	para "I don't mind it"
+	line "here, but I am"
+	cont "soooo hungry!"
 	done
-
-TrainerHikerPhillip:
-	trainer EVENT_BEAT_HIKER_PHILLIP, HIKER, PHILLIP, HikerPhillipSeenText, HikerPhillipBeatenText, 0, HikerPhillipScript
-
-HikerPhillipScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x5a073
 
 HikerPhillipSeenText:
 	text "It's been a while"
@@ -112,21 +103,17 @@ HikerPhillipBeatenText:
 	text "Uurggh…"
 	done
 
-UnknownText_0x5a073:
-	text "I've been lost for"
-	line "a long time…"
+GenericTrainerHikerLeonard:
+	generictrainer HIKER, LEONARD, EVENT_BEAT_HIKER_LEONARD, HikerLeonardSeenText, HikerLeonardBeatenText
 
-	para "I don't mind it"
-	line "here, but I am"
-	cont "soooo hungry!"
+	text "I live down here."
+
+	para "You can, too, if"
+	line "you'd like."
+
+	para "There's plenty of"
+	line "room, you see."
 	done
-
-TrainerHikerLeonard:
-	trainer EVENT_BEAT_HIKER_LEONARD, HIKER, LEONARD, HikerLeonardSeenText, HikerLeonardBeatenText, 0, HikerLeonardScript
-
-HikerLeonardScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x5a0fb
 
 HikerLeonardSeenText:
 	text "What do you know!"
@@ -138,22 +125,16 @@ HikerLeonardBeatenText:
 	line "feisty one!"
 	done
 
-UnknownText_0x5a0fb:
-	text "I live down here."
+GenericTrainerFirebreatherJay:
+	generictrainer FIREBREATHER, JAY, EVENT_BEAT_FIREBREATHER_JAY, .SeenText, .BeatenText
 
-	para "You can, too, if"
-	line "you'd like."
+	text "One time my hat"
+	line "caught on fire."
 
-	para "There's plenty of"
-	line "room, you see."
+	para "It looked kind of"
+	line "like a Magmar… but"
+	cont "it hurt!"
 	done
-
-TrainerFirebreatherJay:
-	trainer EVENT_BEAT_FIREBREATHER_JAY, FIREBREATHER, JAY, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "I learned how to"
@@ -168,21 +149,15 @@ TrainerFirebreatherJay:
 	line "beat you…"
 	done
 
-.AfterText:
-	text "One time my hat"
-	line "caught on fire."
+GenericTrainerSuper_nerdRory:
+	generictrainer SUPER_NERD, RORY, EVENT_BEAT_SUPER_NERD_RORY, .SeenText, .BeatenText
 
-	para "It looked kind of"
-	line "like a Magmar… but"
-	cont "it hurt!"
+	text "A jiffy is the"
+	line "scientific name"
+
+	para "for 1/100th of a"
+	line "second."
 	done
-
-TrainerSuper_nerdRory:
-	trainer EVENT_BEAT_SUPER_NERD_RORY, SUPER_NERD, RORY, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "This'll be over"
@@ -194,20 +169,13 @@ TrainerSuper_nerdRory:
 	line "off…"
 	done
 
-.AfterText:
-	text "A jiffy is the"
-	line "scientific name"
+GenericTrainerRuin_maniacGlyn:
+	generictrainer RUIN_MANIAC, GLYN, EVENT_BEAT_RUIN_MANIAC_GLYN, .SeenText, .BeatenText
 
-	para "for 1/100th of a"
-	line "second."
+	text "Rocks hide all"
+	line "sorts of interest-"
+	cont "ing items."
 	done
-
-TrainerRuin_maniacGlyn:
-	trainer EVENT_BEAT_RUIN_MANIAC_GLYN, RUIN_MANIAC, GLYN, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "My #mon were"
@@ -223,8 +191,3 @@ TrainerRuin_maniacGlyn:
 	cont "too!"
 	done
 
-.AfterText:
-	text "Rocks hide all"
-	line "sorts of interest-"
-	cont "ing items."
-	done

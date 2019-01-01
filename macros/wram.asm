@@ -1,4 +1,3 @@
-
 flag_array: MACRO
 	ds ((\1) + 7) / 8
 ENDM

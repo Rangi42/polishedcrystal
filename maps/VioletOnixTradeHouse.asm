@@ -1,22 +1,19 @@
 VioletOnixTradeHouse_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 2 ; warp events
+	warp_event  3,  7, VIOLET_CITY, 6
+	warp_event  4,  7, VIOLET_CITY, 6
 
-VioletOnixTradeHouse_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 2
-	warp_def 7, 3, 6, VIOLET_CITY
-	warp_def 7, 4, 6, VIOLET_CITY
+	db 0 ; bg events
 
-.XYTriggers: db 0
-
-.Signposts: db 0
-
-.PersonEvents: db 2
-	person_event SPRITE_POKEFAN_M, 3, 2, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x69997, -1
-	person_event SPRITE_YOUNGSTER, 5, 6, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, trade, TRADE_WITH_KYLE_FOR_VOLTORB, -1
+	db 2 ; object events
+	object_event  2,  3, SPRITE_POKEFAN_M, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x69997, -1
+	object_event  6,  5, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, trade, TRADE_WITH_KYLE_FOR_VOLTORB, -1
 
 UnknownText_0x69997:
 	text "A #mon you get"

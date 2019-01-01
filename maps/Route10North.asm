@@ -1,44 +1,41 @@
 Route10North_MapScriptHeader:
+	db 2 ; scene scripts
+	scene_script Route10NorthTrigger0
+	scene_script Route10NorthTrigger1
 
-.MapTriggers: db 2
-	dw Route10NorthTrigger0
-	dw Route10NorthTrigger1
+	db 2 ; callbacks
+	callback MAPCALLBACK_NEWMAP, Route10NorthFlyPoint
+	callback MAPCALLBACK_OBJECTS, Route10NorthZapdos
 
-.MapCallbacks: db 2
-	dbw MAPCALLBACK_NEWMAP, Route10NorthFlyPoint
-	dbw MAPCALLBACK_OBJECTS, Route10NorthZapdos
+	db 5 ; warp events
+	warp_event 11, 35, ROUTE_10_POKECENTER_1F, 1
+	warp_event  3, 51, POWER_PLANT, 1
+	warp_event  4, 43, ROCK_TUNNEL_2F, 1
+	warp_event  8, 33, ROCK_TUNNEL_1F, 1
+	warp_event 10,  1, DIM_CAVE_5F, 1
 
-Route10North_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 5
-	warp_def 35, 11, 1, ROUTE_10_POKECENTER_1F
-	warp_def 51, 3, 1, POWER_PLANT
-	warp_def 43, 4, 1, ROCK_TUNNEL_2F
-	warp_def 33, 8, 1, ROCK_TUNNEL_1F
-	warp_def 1, 10, 1, DIM_CAVE_5F
+	db 2 ; bg events
+	bg_event  5, 53, SIGNPOST_JUMPTEXT, PowerPlantSignText
+	bg_event  7, 35, SIGNPOST_JUMPTEXT, RockTunnelSignText
 
-.XYTriggers: db 0
-
-.Signposts: db 2
-	signpost 53, 5, SIGNPOST_JUMPTEXT, PowerPlantSignText
-	signpost 35, 7, SIGNPOST_JUMPTEXT, RockTunnelSignText
-
-.PersonEvents: db 10
-	person_event SPRITE_ZAPDOS, 44, 13, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, Route10Zapdos, EVENT_ROUTE_10_ZAPDOS
-	person_event SPRITE_VERMILION_LAWRENCE, 52, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LAWRENCE_ROUTE_10
-	person_event SPRITE_ZAPDOS, 52, 14, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LAWRENCES_ZAPDOS_ROUTE_10
-	person_event SPRITE_MOM, 52, 12, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CHRIS_IN_NAVEL_ROCK
-	person_event SPRITE_MOM, 52, 12, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_KRIS_IN_NAVEL_ROCK
-	itemball_event 3, 11, FULL_RESTORE, 1, EVENT_ROUTE_10_FULL_RESTORE
-	cuttree_event 21, 7, EVENT_ROUTE_10_CUT_TREE_1
-	cuttree_event 21, 9, EVENT_ROUTE_10_CUT_TREE_2
-	cuttree_event 21, 11, EVENT_ROUTE_10_CUT_TREE_3
-	cuttree_event 21, 13, EVENT_ROUTE_10_CUT_TREE_4
+	db 10 ; object events
+	object_event 13, 44, SPRITE_ZAPDOS, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, Route10Zapdos, EVENT_ROUTE_10_ZAPDOS
+	object_event  6, 52, SPRITE_VERMILION_LAWRENCE, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LAWRENCE_ROUTE_10
+	object_event 14, 52, SPRITE_ZAPDOS, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LAWRENCES_ZAPDOS_ROUTE_10
+	object_event 12, 52, SPRITE_MOM, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CHRIS_IN_NAVEL_ROCK
+	object_event 12, 52, SPRITE_MOM, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_KRIS_IN_NAVEL_ROCK
+	itemball_event 11,  3, FULL_RESTORE, 1, EVENT_ROUTE_10_FULL_RESTORE
+	cuttree_event  7, 21, EVENT_ROUTE_10_CUT_TREE_1
+	cuttree_event  9, 21, EVENT_ROUTE_10_CUT_TREE_2
+	cuttree_event 11, 21, EVENT_ROUTE_10_CUT_TREE_3
+	cuttree_event 13, 21, EVENT_ROUTE_10_CUT_TREE_4
 
 ; SPRITE_MOM is not in this map's overworld sprite set, so it default to the
 ; player sprite, whatever gender they are.
 
-const_value set 1
+	const_def 1 ; object constants
 	const ROUTE10_ZAPDOS
 	const ROUTE10_LAWRENCE
 	const ROUTE10_LAWRENCES_ZAPDOS

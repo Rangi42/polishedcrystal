@@ -1,40 +1,37 @@
 FastShip1F_MapScriptHeader:
+	db 2 ; scene scripts
+	scene_script FastShip1FTrigger0
+	scene_script FastShip1FTrigger1
 
-.MapTriggers: db 2
-	dw FastShip1FTrigger0
-	dw FastShip1FTrigger1
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 12 ; warp events
+	warp_event 25,  1, FAST_SHIP_1F, -1
+	warp_event 27,  8, FAST_SHIP_CABINS_NNW_NNE_NE, 1
+	warp_event 23,  8, FAST_SHIP_CABINS_NNW_NNE_NE, 2
+	warp_event 19,  8, FAST_SHIP_CABINS_NNW_NNE_NE, 3
+	warp_event 15,  8, FAST_SHIP_CABINS_SW_SSW_NW, 1
+	warp_event 15, 15, FAST_SHIP_CABINS_SW_SSW_NW, 2
+	warp_event 19, 15, FAST_SHIP_CABINS_SW_SSW_NW, 4
+	warp_event 23, 15, FAST_SHIP_CABINS_SE_SSE_CAPTAINS_CABIN, 1
+	warp_event 27, 15, FAST_SHIP_CABINS_SE_SSE_CAPTAINS_CABIN, 3
+	warp_event  3, 15, FAST_SHIP_CABINS_SE_SSE_CAPTAINS_CABIN, 5
+	warp_event  6, 14, FAST_SHIP_B1F, 1
+	warp_event 30, 14, FAST_SHIP_B1F, 2
 
-FastShip1F_MapEventHeader:
+	db 2 ; coord events
+	coord_event 24,  6, 2, WorriedGrandpaTriggerLeft
+	coord_event 25,  6, 2, WorriedGrandpaTriggerRight
 
-.Warps: db 12
-	warp_def 1, 25, -1, FAST_SHIP_1F
-	warp_def 8, 27, 1, FAST_SHIP_CABINS_NNW_NNE_NE
-	warp_def 8, 23, 2, FAST_SHIP_CABINS_NNW_NNE_NE
-	warp_def 8, 19, 3, FAST_SHIP_CABINS_NNW_NNE_NE
-	warp_def 8, 15, 1, FAST_SHIP_CABINS_SW_SSW_NW
-	warp_def 15, 15, 2, FAST_SHIP_CABINS_SW_SSW_NW
-	warp_def 15, 19, 4, FAST_SHIP_CABINS_SW_SSW_NW
-	warp_def 15, 23, 1, FAST_SHIP_CABINS_SE_SSE_CAPTAINS_CABIN
-	warp_def 15, 27, 3, FAST_SHIP_CABINS_SE_SSE_CAPTAINS_CABIN
-	warp_def 15, 3, 5, FAST_SHIP_CABINS_SE_SSE_CAPTAINS_CABIN
-	warp_def 14, 6, 1, FAST_SHIP_B1F
-	warp_def 14, 30, 2, FAST_SHIP_B1F
+	db 0 ; bg events
 
-.XYTriggers: db 2
-	xy_trigger 2, 6, 24, WorriedGrandpaTriggerLeft
-	xy_trigger 2, 6, 25, WorriedGrandpaTriggerRight
+	db 4 ; object events
+	object_event 25,  2, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SailorScript_0x75160, -1
+	object_event 19,  6, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_FAST_SHIP_1F_GENTLEMAN
+	object_event 14,  7, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SailorScript_0x751d0, -1
+	object_event 22, 17, SPRITE_SAILOR, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x753c0, -1
 
-.Signposts: db 0
-
-.PersonEvents: db 4
-	person_event SPRITE_SAILOR, 2, 25, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SailorScript_0x75160, -1
-	person_event SPRITE_GENTLEMAN, 6, 19, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_FAST_SHIP_1F_GENTLEMAN
-	person_event SPRITE_SAILOR, 7, 14, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SailorScript_0x751d0, -1
-	person_event SPRITE_SAILOR, 17, 22, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x753c0, -1
-
-const_value set 1
+	const_def 1 ; object constants
 	const FASTSHIP1F_SAILOR1
 	const FASTSHIP1F_GENTLEMAN
 
@@ -67,11 +64,17 @@ SailorScript_0x75160:
 	checkevent EVENT_FAST_SHIP_HAS_ARRIVED
 	iftrue .Arrived
 	checkevent EVENT_FAST_SHIP_DESTINATION_OLIVINE
-	iftrue .Olivine
-	jumpopenedtext UnknownText_0x7523b
+	iftrue_jumpopenedtext UnknownText_0x7529b
+	thisopenedtext
 
-.Olivine:
-	jumpopenedtext UnknownText_0x7529b
+	text "Fast Ship S.S.Aqua"
+	line "is en route to"
+	cont "Vermilion City."
+
+	para "We will make an"
+	line "announcement when"
+	cont "we arrive."
+	done
 
 .Arrived:
 	checkevent EVENT_FAST_SHIP_DESTINATION_OLIVINE
@@ -189,16 +192,6 @@ MovementData_0x75238:
 	step_right
 	step_up
 	step_end
-
-UnknownText_0x7523b:
-	text "Fast Ship S.S.Aqua"
-	line "is en route to"
-	cont "Vermilion City."
-
-	para "We will make an"
-	line "announcement when"
-	cont "we arrive."
-	done
 
 UnknownText_0x7529b:
 	text "Fast Ship S.S.Aqua"

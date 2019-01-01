@@ -1,23 +1,20 @@
 Route18West_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 1 ; callbacks
+	callback MAPCALLBACK_NEWMAP, Route18WestAlwaysOnBike
 
-.MapCallbacks: db 1
-	dbw MAPCALLBACK_NEWMAP, Route18WestAlwaysOnBike
+	db 2 ; warp events
+	warp_event 19,  6, ROUTE_18_GATE, 1
+	warp_event 19,  7, ROUTE_18_GATE, 2
 
-Route18West_MapEventHeader:
+	db 1 ; coord events
+	coord_event 12,  0, 0, Route18WestBikeCheckScript
 
-.Warps: db 2
-	warp_def 6, 19, 1, ROUTE_18_GATE
-	warp_def 7, 19, 2, ROUTE_18_GATE
+	db 0 ; bg events
 
-.XYTriggers: db 1
-	xy_trigger 0, 0, 12, Route18WestBikeCheckScript
-
-.Signposts: db 0
-
-.PersonEvents: db 1
-	person_event SPRITE_BIKER, 2, 6, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 4, TrainerBikerCharles, -1
+	db 1 ; object events
+	object_event  6,  2, SPRITE_BIKER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerBikerCharles, -1
 
 Route18WestAlwaysOnBike:
 	setflag ENGINE_ALWAYS_ON_BIKE
@@ -36,12 +33,13 @@ Route18WestBikeCheckScript:
 	ld [wScriptVar], a
 	ret
 
-TrainerBikerCharles:
-	trainer EVENT_BEAT_BIKER_CHARLES, BIKER, CHARLES, BikerCharlesSeenText, BikerCharlesBeatenText, 0, BikerCharlesScript
+GenericTrainerBikerCharles:
+	generictrainer BIKER, CHARLES, EVENT_BEAT_BIKER_CHARLES, BikerCharlesSeenText, BikerCharlesBeatenText
 
-BikerCharlesScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x1ad293
+	text "Reckless driving"
+	line "causes accidents!"
+	cont "Take it easy!"
+	done
 
 BikerCharlesSeenText:
 	text "We're fearless"
@@ -51,12 +49,6 @@ BikerCharlesSeenText:
 BikerCharlesBeatenText:
 	text "Arrrgh! Crash and"
 	line "burn!"
-	done
-
-UnknownText_0x1ad293:
-	text "Reckless driving"
-	line "causes accidents!"
-	cont "Take it easy!"
 	done
 
 Route18WestBikeWarningText:

@@ -1,29 +1,26 @@
 OlivineLighthouse2F_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 6 ; warp events
+	warp_event  3, 11, OLIVINE_LIGHTHOUSE_1F, 3
+	warp_event  5,  3, OLIVINE_LIGHTHOUSE_3F, 2
+	warp_event 16, 13, OLIVINE_LIGHTHOUSE_1F, 4
+	warp_event 17, 13, OLIVINE_LIGHTHOUSE_1F, 5
+	warp_event 16, 11, OLIVINE_LIGHTHOUSE_3F, 4
+	warp_event 17, 11, OLIVINE_LIGHTHOUSE_3F, 5
 
-OlivineLighthouse2F_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 6
-	warp_def 11, 3, 3, OLIVINE_LIGHTHOUSE_1F
-	warp_def 3, 5, 2, OLIVINE_LIGHTHOUSE_3F
-	warp_def 13, 16, 4, OLIVINE_LIGHTHOUSE_1F
-	warp_def 13, 17, 5, OLIVINE_LIGHTHOUSE_1F
-	warp_def 11, 16, 4, OLIVINE_LIGHTHOUSE_3F
-	warp_def 11, 17, 5, OLIVINE_LIGHTHOUSE_3F
+	db 0 ; bg events
 
-.XYTriggers: db 0
-
-.Signposts: db 0
-
-.PersonEvents: db 2
-	person_event SPRITE_SAILOR, 3, 9, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerSailorHuey1, -1
-	person_event SPRITE_GENTLEMAN, 8, 17, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerGentlemanAlfred, -1
+	db 2 ; object events
+	object_event  9,  3, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_TRAINER, 3, TrainerSailorHuey1, -1
+	object_event 17,  8, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_TRAINER, 3, TrainerGentlemanAlfred, -1
 
 TrainerGentlemanAlfred:
-	trainer EVENT_BEAT_GENTLEMAN_ALFRED, GENTLEMAN, ALFRED, GentlemanAlfredSeenText, GentlemanAlfredBeatenText, 0, GentlemanAlfredScript
+	trainer GENTLEMAN, ALFRED, EVENT_BEAT_GENTLEMAN_ALFRED, GentlemanAlfredSeenText, GentlemanAlfredBeatenText, 0, GentlemanAlfredScript
 
 GentlemanAlfredScript:
 	end_if_just_battled
@@ -32,7 +29,7 @@ GentlemanAlfredScript:
 	jumptextfaceplayer UnknownText_0x5b13e
 
 TrainerSailorHuey1:
-	trainer EVENT_BEAT_SAILOR_HUEY, SAILOR, HUEY1, SailorHuey1SeenText, SailorHuey1BeatenText, 0, SailorHuey1Script
+	trainer SAILOR, HUEY1, EVENT_BEAT_SAILOR_HUEY, SailorHuey1SeenText, SailorHuey1BeatenText, 0, SailorHuey1Script
 
 SailorHuey1Script:
 	writecode VAR_CALLERID, PHONE_SAILOR_HUEY
@@ -128,31 +125,24 @@ UnknownScript_0x5b03f:
 
 UnknownScript_0x5b053:
 	jumpstd asknumber1m
-	end
 
 UnknownScript_0x5b057:
 	jumpstd asknumber2m
-	end
 
 UnknownScript_0x5b05b:
 	jumpstd registerednumberm
-	end
 
 UnknownScript_0x5b05f:
 	jumpstd numberacceptedm
-	end
 
 UnknownScript_0x5b063:
 	jumpstd numberdeclinedm
-	end
 
 UnknownScript_0x5b067:
 	jumpstd phonefullm
-	end
 
 UnknownScript_0x5b06b:
 	jumpstd rematchm
-	end
 
 UnknownScript_0x5b06f:
 	setevent EVENT_HUEY_PROTEIN
@@ -161,7 +151,6 @@ UnknownScript_0x5b06f:
 
 UnknownScript_0x5b076:
 	jumpstd rematchgiftm
-	end
 
 SailorHuey1SeenText:
 	text "Men of the sea are"

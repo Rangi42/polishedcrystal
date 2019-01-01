@@ -1,23 +1,20 @@
 Route39Barn_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 2 ; warp events
+	warp_event  3,  7, ROUTE_39, 1
+	warp_event  4,  7, ROUTE_39, 1
 
-Route39Barn_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 2
-	warp_def 7, 3, 1, ROUTE_39
-	warp_def 7, 4, 1, ROUTE_39
+	db 0 ; bg events
 
-.XYTriggers: db 0
-
-.Signposts: db 0
-
-.PersonEvents: db 3
-	person_event SPRITE_MILTANK, 3, 3, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, MooMoo, -1
-	person_event SPRITE_TWIN, 3, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, TwinScript_0x9cc76, -1
-	person_event SPRITE_TWIN, 3, 4, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, TwinScript_0x9cc90, -1
+	db 3 ; object events
+	object_event  3,  3, SPRITE_MILTANK, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, MooMoo, -1
+	object_event  2,  3, SPRITE_TWIN, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, TwinScript_0x9cc76, -1
+	object_event  4,  3, SPRITE_TWIN, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_SCRIPT, 0, TwinScript_0x9cc90, -1
 
 TwinScript_0x9cc76:
 	faceplayer
@@ -72,7 +69,7 @@ MooMoo:
 	buttonsound
 	writetext Text_AskGiveBerry
 	yesorno
-	iffalse .Refused
+	iffalse_jumpopenedtext Text_RefusedToGiveBerry
 	checkitem ORAN_BERRY
 	iffalse .MaybeSitrusBerry
 	takeitem ORAN_BERRY
@@ -86,7 +83,7 @@ MooMoo:
 
 .MaybeSitrusBerry:
 	checkitem SITRUS_BERRY
-	iffalse .NoBerriesInBag
+	iffalse_jumpopenedtext Text_NoBerries
 	takeitem SITRUS_BERRY
 	copybytetovar wMooMooBerries
 	addvar 2
@@ -133,12 +130,6 @@ MooMoo:
 	special RestartMapMusic
 	setevent EVENT_HEALED_MOOMOO
 	jumpopenedtext Text_TotallyHealthy
-
-.NoBerriesInBag:
-	jumpopenedtext Text_NoBerries
-
-.Refused:
-	jumpopenedtext Text_RefusedToGiveBerry
 
 .HappyCow:
 	showcrytext UnknownText_0x9cd92, MILTANK

@@ -1,27 +1,24 @@
 GoldenrodDeptStore1F_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 4 ; warp events
+	warp_event  7,  7, GOLDENROD_CITY, 9
+	warp_event  8,  7, GOLDENROD_CITY, 9
+	warp_event 15,  0, GOLDENROD_DEPT_STORE_2F, 2
+	warp_event  2,  0, GOLDENROD_DEPT_STORE_ELEVATOR, 1
 
-GoldenrodDeptStore1F_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 4
-	warp_def 7, 7, 9, GOLDENROD_CITY
-	warp_def 7, 8, 9, GOLDENROD_CITY
-	warp_def 0, 15, 2, GOLDENROD_DEPT_STORE_2F
-	warp_def 0, 2, 1, GOLDENROD_DEPT_STORE_ELEVATOR
+	db 1 ; bg events
+	bg_event 14,  0, SIGNPOST_JUMPTEXT, GoldenrodDeptStore1FDirectoryText
 
-.XYTriggers: db 0
-
-.Signposts: db 1
-	signpost 0, 14, SIGNPOST_JUMPTEXT, GoldenrodDeptStore1FDirectoryText
-
-.PersonEvents: db 4
-	person_event SPRITE_RECEPTIONIST, 1, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x55993, -1
-	person_event SPRITE_POKEFAN_F, 4, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x55a1a, -1
-	person_event SPRITE_CHILD, 5, 5, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x55a3a, -1
-	person_event SPRITE_GENTLEMAN, 5, 11, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x559b7, -1
+	db 4 ; object events
+	object_event 10,  1, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x55993, -1
+	object_event  5,  4, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x55a1a, -1
+	object_event  5,  5, SPRITE_CHILD, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x55a3a, -1
+	object_event 11,  5, SPRITE_GENTLEMAN, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x559b7, -1
 
 UnknownText_0x55993:
 	text "Welcome to Golden-"

@@ -1,26 +1,23 @@
 CeladonDeptStore2F_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 3 ; warp events
+	warp_event 12,  0, CELADON_DEPT_STORE_3F, 1
+	warp_event 15,  0, CELADON_DEPT_STORE_1F, 3
+	warp_event  2,  0, CELADON_DEPT_STORE_ELEVATOR, 1
 
-CeladonDeptStore2F_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 3
-	warp_def 0, 12, 1, CELADON_DEPT_STORE_3F
-	warp_def 0, 15, 3, CELADON_DEPT_STORE_1F
-	warp_def 0, 2, 1, CELADON_DEPT_STORE_ELEVATOR
+	db 1 ; bg events
+	bg_event 14,  0, SIGNPOST_JUMPTEXT, CeladonDeptStore2FDirectoryText
 
-.XYTriggers: db 0
-
-.Signposts: db 1
-	signpost 0, 14, SIGNPOST_JUMPTEXT, CeladonDeptStore2FDirectoryText
-
-.PersonEvents: db 4
-	person_event SPRITE_CLERK, 5, 13, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, pokemart, MARTTYPE_STANDARD, MART_CELADON_2F_1, -1
-	person_event SPRITE_CLERK, 5, 14, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, pokemart, MARTTYPE_STANDARD, MART_CELADON_2F_2, -1
-	person_event SPRITE_POKEFAN_M, 2, 5, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x70bc9, -1
-	person_event SPRITE_YOUNGSTER, 2, 6, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x70c3e, -1
+	db 4 ; object events
+	object_event 13,  5, SPRITE_CLERK, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, pokemart, MARTTYPE_STANDARD, MART_CELADON_2F_1, -1
+	object_event 14,  5, SPRITE_CLERK, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, pokemart, MARTTYPE_STANDARD, MART_CELADON_2F_2, -1
+	object_event  5,  2, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x70bc9, -1
+	object_event  6,  2, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x70c3e, -1
 
 UnknownText_0x70bc9:
 	text "I just recently"

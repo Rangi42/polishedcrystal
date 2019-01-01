@@ -1,52 +1,49 @@
 GoldenrodPokeComCenter1F_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 4 ; warp events
+	warp_event  6, 15, GOLDENROD_CITY, 15
+	warp_event  7, 15, GOLDENROD_CITY, 15
+	warp_event  1,  6, GOLDENROD_POKECOM_CENTER_OFFICE, 2
+	warp_event  0, 15, POKECENTER_2F, 1
 
-GoldenrodPokeComCenter1F_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 4
-	warp_def 15, 6, 15, GOLDENROD_CITY
-	warp_def 15, 7, 15, GOLDENROD_CITY
-	warp_def 6, 1, 2, GOLDENROD_POKECOM_CENTER_OFFICE
-	warp_def 15, 0, 1, POKECENTER_2F
+	db 17 ; bg events
+	bg_event 11,  7, SIGNPOST_READ, PokemonJournalWhitneyScript
+	bg_event 24,  5, SIGNPOST_RIGHT, NewsMachineScript
+	bg_event 24,  6, SIGNPOST_RIGHT, NewsMachineScript
+	bg_event 24,  7, SIGNPOST_RIGHT, NewsMachineScript
+	bg_event 24,  9, SIGNPOST_RIGHT, NewsMachineScript
+	bg_event 24, 10, SIGNPOST_RIGHT, NewsMachineScript
+	bg_event 25, 11, SIGNPOST_UP, NewsMachineScript
+	bg_event 26, 11, SIGNPOST_UP, NewsMachineScript
+	bg_event 27, 11, SIGNPOST_UP, NewsMachineScript
+	bg_event 28, 11, SIGNPOST_UP, NewsMachineScript
+	bg_event 29,  5, SIGNPOST_LEFT, NewsMachineScript
+	bg_event 29,  6, SIGNPOST_LEFT, NewsMachineScript
+	bg_event 29,  7, SIGNPOST_LEFT, NewsMachineScript
+	bg_event 29,  8, SIGNPOST_LEFT, NewsMachineScript
+	bg_event 29,  9, SIGNPOST_LEFT, NewsMachineScript
+	bg_event 29, 10, SIGNPOST_LEFT, NewsMachineScript
+	bg_event 24,  3, SIGNPOST_ITEM + RARE_CANDY, EVENT_GOLDENROD_POKECOM_CENTER_1F_HIDDEN_RARE_CANDY
 
-.XYTriggers: db 0
-
-.Signposts: db 17
-	signpost 7, 11, SIGNPOST_READ, PokemonJournalWhitneyScript
-	signpost 5, 24, SIGNPOST_RIGHT, NewsMachineScript
-	signpost 6, 24, SIGNPOST_RIGHT, NewsMachineScript
-	signpost 7, 24, SIGNPOST_RIGHT, NewsMachineScript
-	signpost 9, 24, SIGNPOST_RIGHT, NewsMachineScript
-	signpost 10, 24, SIGNPOST_RIGHT, NewsMachineScript
-	signpost 11, 25, SIGNPOST_UP, NewsMachineScript
-	signpost 11, 26, SIGNPOST_UP, NewsMachineScript
-	signpost 11, 27, SIGNPOST_UP, NewsMachineScript
-	signpost 11, 28, SIGNPOST_UP, NewsMachineScript
-	signpost 5, 29, SIGNPOST_LEFT, NewsMachineScript
-	signpost 6, 29, SIGNPOST_LEFT, NewsMachineScript
-	signpost 7, 29, SIGNPOST_LEFT, NewsMachineScript
-	signpost 8, 29, SIGNPOST_LEFT, NewsMachineScript
-	signpost 9, 29, SIGNPOST_LEFT, NewsMachineScript
-	signpost 10, 29, SIGNPOST_LEFT, NewsMachineScript
-	signpost 3, 24, SIGNPOST_ITEM + RARE_CANDY, EVENT_GOLDENROD_POKECOM_CENTER_1F_HIDDEN_RARE_CANDY
-
-.PersonEvents: db 13
-	person_event SPRITE_BOWING_NURSE, 7, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, NurseScript_0x60f91, -1
-	person_event SPRITE_GAMEBOY_KID, 12, 0, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x62105, -1
-	person_event SPRITE_LASS, 11, 3, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x62260, -1
-	person_event SPRITE_POKEFAN_F, 14, 12, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, PokefanFScript_0x61024, -1
-	person_event SPRITE_LINK_RECEPTIONIST, 8, 16, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, WonderTradeReceptionistScript, -1
-	person_event SPRITE_SUPER_NERD, 13, 8, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x61c89, -1
-	person_event SPRITE_YOUNGSTER, 8, 23, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x61efa, -1
-	person_event SPRITE_TEACHER, 13, 27, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x61e5c, -1
-	person_event SPRITE_ROCKER, 6, 21, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x61fc9, -1
-	person_event SPRITE_GRAMPS, 13, 18, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x62222, -1
-	person_event SPRITE_LASS, 9, 18, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x61cef, -1
-	person_event SPRITE_SLOWPOKETAIL, 9, 3, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_SILVER, PERSONTYPE_SCRIPT, 0, InfoSignScript, -1
-	person_event SPRITE_POKECOM_NEWS, 3, 23, SPRITEMOVEDATA_POKECOM_NEWS, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, PokecomNewsSignScript, -1
+	db 13 ; object events
+	object_event  7,  7, SPRITE_BOWING_NURSE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, NurseScript_0x60f91, -1
+	object_event  0, 12, SPRITE_GAMEBOY_KID, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x62105, -1
+	object_event  3, 11, SPRITE_LASS, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x62260, -1
+	object_event 12, 14, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_SCRIPT, 0, PokefanFScript_0x61024, -1
+	object_event 16,  8, SPRITE_LINK_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, WonderTradeReceptionistScript, -1
+	object_event  8, 13, SPRITE_SUPER_NERD, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x61c89, -1
+	object_event 23,  8, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x61efa, -1
+	object_event 27, 13, SPRITE_TEACHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x61e5c, -1
+	object_event 21,  6, SPRITE_ROCKER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x61fc9, -1
+	object_event 18, 13, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x62222, -1
+	object_event 18,  9, SPRITE_LASS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x61cef, -1
+	object_event  3,  9, SPRITE_SLOWPOKETAIL, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_ROCK, PERSONTYPE_SCRIPT, 0, InfoSignScript, -1
+	object_event 23,  3, SPRITE_MISC_OVERHEAD, SPRITEMOVEDATA_POKECOM_NEWS, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, end, NULL, -1
 
 NurseScript_0x60f91:
 	setevent EVENT_WELCOMING_TO_POKECOM_CENTER
@@ -81,17 +78,17 @@ UnknownText_0x62260:
 	done
 
 PokefanFScript_0x61024:
+	checkevent EVENT_GOT_EVIOLITE_IN_GOLDENROD
+	iftrue_jumptextfaceplayer GoldenrodPokeComCenter1FPokefanFGotEvioliteText
 	faceplayer
 	opentext
-	checkevent EVENT_GOT_EVIOLITE_IN_GOLDENROD
-	iftrue .GotEviolite
 	writetext UnknownText_0x623fb
 	waitbutton
 	checkitem EON_MAIL
-	iffalse .NoEviolite
+	iffalse_jumpopenedtext UnknownText_0x62509
 	writetext UnknownText_0x6248c
 	yesorno
-	iffalse .NoEviolite
+	iffalse_jumpopenedtext UnknownText_0x62509
 	takeitem EON_MAIL
 	writetext UnknownText_0x62549
 	waitbutton
@@ -100,17 +97,19 @@ PokefanFScript_0x61024:
 	verbosegiveitem EVIOLITE
 	iffalse .NoRoomForEviolite
 	setevent EVENT_GOT_EVIOLITE_IN_GOLDENROD
-	jumpopenedtext UnknownText_0x624e9
+	thisopenedtext
 
-.NoEviolite:
-	jumpopenedtext UnknownText_0x62509
+	text "My daughter will"
+	line "be delighted!"
+	done
 
 .NoRoomForEviolite:
 	giveitem EON_MAIL
-	jumpopenedtext UnknownText_0x6252a
+	thisopenedtext
 
-.GotEviolite:
-	jumpopenedtext GoldenrodPokeComCenter1FPokefanFGotEvioliteText
+	text "Oh… Well, another"
+	line "time, then."
+	done
 
 UnknownText_0x623fb:
 	text "Oh my, your bag"
@@ -140,19 +139,9 @@ UnknownText_0x624a4:
 	line "you in return!"
 	done
 
-UnknownText_0x624e9:
-	text "My daughter will"
-	line "be delighted!"
-	done
-
 UnknownText_0x62509:
 	text "Oh? You don't have"
 	line "one? Too bad."
-	done
-
-UnknownText_0x6252a:
-	text "Oh… Well, another"
-	line "time, then."
 	done
 
 UnknownText_0x62549:
@@ -220,9 +209,6 @@ InfoSignScript:
 	para "Right:"
 	line "#mon News"
 	done
-
-PokecomNewsSignScript:
-	end
 
 PokemonJournalWhitneyScript:
 	setflag ENGINE_READ_WHITNEY_JOURNAL

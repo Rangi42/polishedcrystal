@@ -1,24 +1,21 @@
 EusinesHouse_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 2 ; warp events
+	warp_event  2,  7, CELADON_CITY, 14
+	warp_event  3,  7, CELADON_CITY, 14
 
-EusinesHouse_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 2
-	warp_def 7, 2, 14, CELADON_CITY
-	warp_def 7, 3, 14, CELADON_CITY
+	db 0 ; bg events
 
-.XYTriggers: db 0
+	db 2 ; object events
+	object_event  2,  3, SPRITE_EUSINE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CeladonEusine, EVENT_SET_WHEN_FOUGHT_HO_OH
+	object_event  5,  3, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_SCRIPT, 0, EusinesHouseGrampsScript, -1
 
-.Signposts: db 0
-
-.PersonEvents: db 2
-	person_event SPRITE_EUSINE, 3, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CeladonEusine, EVENT_SET_WHEN_FOUGHT_HO_OH
-	person_event SPRITE_GRAMPS, 3, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, EusinesHouseGrampsScript, -1
-
-const_value set 1
+	const_def 1 ; object constants
 	const EUSINESHOUSE_EUSINE
 
 CeladonEusine:

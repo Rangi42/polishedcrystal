@@ -1,37 +1,32 @@
 PsychicInversHouse_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 2 ; warp events
+	warp_event  2,  7, ROUTE_16_WEST, 1
+	warp_event  3,  7, ROUTE_16_WEST, 1
 
-PsychicInversHouse_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 2
-	warp_def 7, 2, 1, ROUTE_16_WEST
-	warp_def 7, 3, 1, ROUTE_16_WEST
+	db 1 ; bg events
+	bg_event  7,  1, SIGNPOST_JUMPSTD, difficultbookshelf
 
-.XYTriggers: db 0
+	db 2 ; object events
+	object_event  2,  2, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_PURPLE, PERSONTYPE_SCRIPT, 0, PsychicInverScript, -1
+	object_event  6,  3, SPRITE_HEX_MANIAC, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_PURPLE, PERSONTYPE_COMMAND, jumptextfaceplayer, PsychicInversHouseHexManiacText, -1
 
-.Signposts: db 1
-	signpost 1, 7, SIGNPOST_JUMPSTD, difficultbookshelf
-
-.PersonEvents: db 2
-	person_event SPRITE_YOUNGSTER, 2, 2, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, PsychicInverScript, -1
-	person_event SPRITE_HEX_MANIAC, 3, 6, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_COMMAND, jumptextfaceplayer, PsychicInversHouseHexManiacText, -1
-
-const_value set 1
+	const_def 1 ; object constants
 	const PSYCHICINVERSHOUSE_INVER
 
 PsychicInverScript:
+	checkflag ENGINE_FOUGHT_PSYCHIC_INVER
+	iftrue_jumptextfaceplayer PsychicInverTomorrowText
 	faceplayer
 	opentext
-	checkflag ENGINE_FOUGHT_PSYCHIC_INVER
-	iftrue .Tomorrow
 	writetext PsychicInverGreetingText
-	waitbutton
-	writetext PsychicInverChallengeText
 	yesorno
-	iffalse .No
+	iffalse_jumpopenedtext PsychicInverNoText
 	writetext PsychicInverYesText
 	waitbutton
 	closetext
@@ -82,12 +77,6 @@ PsychicInverScript:
 	callasm .RandomStone
 	jump .Reward
 
-.No
-	jumpopenedtext PsychicInverNoText
-
-.Tomorrow:
-	jumpopenedtext PsychicInverTomorrowText
-
 .RandomBerry:
 	ld a, APICOT_BERRY - LUM_BERRY + 1
 	call RandomRange
@@ -113,10 +102,8 @@ PsychicInverGreetingText:
 
 	para "I call this an"
 	line "Inverse Battle!"
-	done
 
-PsychicInverChallengeText:
-	text "What do you think?"
+	para "What do you think?"
 	line "Would you care to"
 	cont "try an Inverse"
 	cont "Battle?"

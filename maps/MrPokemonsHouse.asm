@@ -1,31 +1,28 @@
 MrPokemonsHouse_MapScriptHeader:
+	db 1 ; scene scripts
+	scene_script MrPokemonsHouseTrigger0
 
-.MapTriggers: db 1
-	dw MrPokemonsHouseTrigger0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 2 ; warp events
+	warp_event  2,  7, ROUTE_30, 2
+	warp_event  3,  7, ROUTE_30, 2
 
-MrPokemonsHouse_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 2
-	warp_def 7, 2, 2, ROUTE_30
-	warp_def 7, 3, 2, ROUTE_30
+	db 5 ; bg events
+	bg_event  0,  1, SIGNPOST_JUMPTEXT, MrPokemonsHouse_ForeignMagazinesText
+	bg_event  1,  1, SIGNPOST_JUMPTEXT, MrPokemonsHouse_ForeignMagazinesText
+	bg_event  6,  1, SIGNPOST_JUMPTEXT, MrPokemonsHouse_BrokenComputerText
+	bg_event  7,  1, SIGNPOST_JUMPTEXT, MrPokemonsHouse_BrokenComputerText
+	bg_event  6,  4, SIGNPOST_JUMPTEXT, MrPokemonsHouse_StrangeCoinsText
 
-.XYTriggers: db 0
+	db 3 ; object events
+	object_event  3,  5, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, MrPokemonsHouse_MrPokemonScript, -1
+	object_event  6,  5, SPRITE_OAK, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_MR_POKEMONS_HOUSE_OAK
+	object_event  4,  4, SPRITE_BOOK_PAPER_POKEDEX, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_GOT_POKEDEX_FROM_OAK
 
-.Signposts: db 5
-	signpost 1, 0, SIGNPOST_JUMPTEXT, MrPokemonsHouse_ForeignMagazinesText
-	signpost 1, 1, SIGNPOST_JUMPTEXT, MrPokemonsHouse_ForeignMagazinesText
-	signpost 1, 6, SIGNPOST_JUMPTEXT, MrPokemonsHouse_BrokenComputerText
-	signpost 1, 7, SIGNPOST_JUMPTEXT, MrPokemonsHouse_BrokenComputerText
-	signpost 4, 6, SIGNPOST_JUMPTEXT, MrPokemonsHouse_StrangeCoinsText
-
-.PersonEvents: db 3
-	person_event SPRITE_GENTLEMAN, 5, 3, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, MrPokemonsHouse_MrPokemonScript, -1
-	person_event SPRITE_OAK, 5, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_MR_POKEMONS_HOUSE_OAK
-	person_event SPRITE_BOOK_PAPER_POKEDEX, 4, 4, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_GOT_POKEDEX_FROM_OAK
-
-const_value set 1
+	const_def 1 ; object constants
 	const MRPOKEMONSHOUSE_GENTLEMAN
 	const MRPOKEMONSHOUSE_OAK
 	const MRPOKEMONSHOUSE_POKEDEX
@@ -70,16 +67,13 @@ MrPokemonsHouse_MrPokemonScript:
 	checkitem RED_SCALE
 	iftrue .RedScale
 	checkevent EVENT_GAVE_MYSTERY_EGG_TO_ELM
-	iftrue .AlwaysNewDiscoveries
+	iftrue_jumpopenedtext MrPokemonText_AlwaysNewDiscoveries
 	jumpopenedtext MrPokemonText_ImDependingOnYou
-
-.AlwaysNewDiscoveries:
-	jumpopenedtext MrPokemonText_AlwaysNewDiscoveries
 
 .RedScale:
 	writetext MrPokemonText_GimmeTheScale
 	yesorno
-	iffalse .refused
+	iffalse_jumpopenedtext MrPokemonText_Disappointed
 	checkcode VAR_PARTYCOUNT
 	if_equal PARTY_LENGTH, .party_full
 	special SpecialGiveShinyDitto
@@ -88,10 +82,7 @@ MrPokemonsHouse_MrPokemonScript:
 	playsound SFX_KEY_ITEM
 	waitsfx
 	takeitem RED_SCALE
-	jump .AlwaysNewDiscoveries
-
-.refused
-	jumpopenedtext MrPokemonText_Disappointed
+	jumpopenedtext MrPokemonText_AlwaysNewDiscoveries
 
 .party_full
 	jumpopenedtext MrPokemonText_PartyFull

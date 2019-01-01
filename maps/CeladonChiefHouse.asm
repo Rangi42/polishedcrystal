@@ -1,22 +1,19 @@
 CeladonChiefHouse_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 2 ; warp events
+	warp_event  2,  7, CELADON_CITY, 10
+	warp_event  3,  7, CELADON_CITY, 10
 
-CeladonChiefHouse_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 2
-	warp_def 7, 2, 10, CELADON_CITY
-	warp_def 7, 3, 10, CELADON_CITY
+	db 1 ; bg events
+	bg_event  7,  1, SIGNPOST_ITEM + DUBIOUS_DISC, EVENT_CELADON_CHIEF_HOUSE_HIDDEN_DUBIOUS_DISC
 
-.XYTriggers: db 0
-
-.Signposts: db 1
-	signpost 1, 7, SIGNPOST_ITEM + DUBIOUS_DISC, EVENT_CELADON_CHIEF_HOUSE_HIDDEN_DUBIOUS_DISC
-
-.PersonEvents: db 1
-	person_event SPRITE_COOLTRAINER_M, 3, 1, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonChiefHouseCooltrainerMText, -1
+	db 1 ; object events
+	object_event  1,  3, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonChiefHouseCooltrainerMText, -1
 
 CeladonChiefHouseCooltrainerMText:
 	text "The Game Corner is"

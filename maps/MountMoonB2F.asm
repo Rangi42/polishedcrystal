@@ -1,71 +1,87 @@
 MountMoonB2F_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 4 ; warp events
+	warp_event 10, 24, MOUNT_MOON_B1F, 4
+	warp_event 21,  7, MOUNT_MOON_B1F, 5
+	warp_event 17, 15, MOUNT_MOON_B1F, 6
+	warp_event  3,  9, MOUNT_MOON_B1F, 7
 
-MountMoonB2F_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 4
-	warp_def 24, 10, 4, MOUNT_MOON_B1F
-	warp_def 7, 21, 5, MOUNT_MOON_B1F
-	warp_def 15, 17, 6, MOUNT_MOON_B1F
-	warp_def 9, 3, 7, MOUNT_MOON_B1F
+	db 3 ; bg events
+	bg_event 28,  7, SIGNPOST_ITEM + ETHER, EVENT_MOUNT_MOON_B2F_HIDDEN_ETHER
+	bg_event  7,  9, SIGNPOST_ITEM + STARDUST, EVENT_MOUNT_MOON_B2F_HIDDEN_STARDUST
+	bg_event 10, 30, SIGNPOST_ITEM + PP_UP, EVENT_MOUNT_MOON_B2F_HIDDEN_PP_UP
 
-.XYTriggers: db 0
+	db 11 ; object events
+	object_event 24,  9, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerYoungsterJosh, -1
+	object_event 12, 21, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerBird_keeperMick, -1
+	object_event 29, 18, SPRITE_HEX_MANIAC, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerHexManiacEsther, -1
+	object_event  4, 15, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerCooltrainermConnor, -1
+	object_event  9,  8, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerSuperNerdMiguel, -1
+	object_event 10,  6, SPRITE_BOULDER_ROCK_FOSSIL, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_POKEBALL, PLAYEREVENT_ITEMBALL, HELIX_FOSSIL, 1, EVENT_MOUNT_MOON_B2F_HELIX_FOSSIL
+	object_event 11,  6, SPRITE_BOULDER_ROCK_FOSSIL, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_POKEBALL, PLAYEREVENT_ITEMBALL, DOME_FOSSIL, 1, EVENT_MOUNT_MOON_B2F_DOME_FOSSIL
+	itemball_event 11, 14, MOON_STONE, 1, EVENT_MOUNT_MOON_B2F_MOON_STONE
+	itemball_event 18, 21, DUSK_STONE, 1, EVENT_MOUNT_MOON_B2F_DUSK_STONE
+	itemball_event 22,  3, SHINY_STONE, 1, EVENT_MOUNT_MOON_B2F_SHINY_STONE
+	itemball_event 26, 11, BIG_MUSHROOM, 1, EVENT_MOUNT_MOON_B2F_BIG_MUSHROOM
 
-.Signposts: db 3
-	signpost 7, 28, SIGNPOST_ITEM + ETHER, EVENT_MOUNT_MOON_B2F_HIDDEN_ETHER
-	signpost 9, 7, SIGNPOST_ITEM + STARDUST, EVENT_MOUNT_MOON_B2F_HIDDEN_STARDUST
-	signpost 30, 10, SIGNPOST_ITEM + PP_UP, EVENT_MOUNT_MOON_B2F_HIDDEN_PP_UP
+GenericTrainerYoungsterJosh:
+	generictrainer YOUNGSTER, YOUNGSTER_JOSH, EVENT_BEAT_YOUNGSTER_JOSH, YoungsterJoshSeenText, YoungsterJoshBeatenText
 
-.PersonEvents: db 11
-	person_event SPRITE_YOUNGSTER, 9, 24, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerYoungsterJosh, -1
-	person_event SPRITE_YOUNGSTER, 21, 12, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerBird_keeperMick, -1
-	person_event SPRITE_HEX_MANIAC, 18, 29, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerHexManiacEsther, -1
-	person_event SPRITE_COOLTRAINER_M, 15, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerCooltrainermConnor, -1
-	person_event SPRITE_SUPER_NERD, 8, 9, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerSuperNerdMiguel, -1
-	person_event SPRITE_BOULDER_ROCK_FOSSIL, 6, 10, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_POKEBALL, PLAYEREVENT_ITEMBALL, HELIX_FOSSIL, 1, EVENT_MOUNT_MOON_B2F_HELIX_FOSSIL
-	person_event SPRITE_BOULDER_ROCK_FOSSIL, 6, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_POKEBALL, PLAYEREVENT_ITEMBALL, DOME_FOSSIL, 1, EVENT_MOUNT_MOON_B2F_DOME_FOSSIL
-	itemball_event 14, 11, MOON_STONE, 1, EVENT_MOUNT_MOON_B2F_MOON_STONE
-	itemball_event 21, 18, DUSK_STONE, 1, EVENT_MOUNT_MOON_B2F_DUSK_STONE
-	itemball_event 3, 22, SHINY_STONE, 1, EVENT_MOUNT_MOON_B2F_SHINY_STONE
-	itemball_event 11, 26, BIG_MUSHROOM, 1, EVENT_MOUNT_MOON_B2F_BIG_MUSHROOM
+	text "With that team of"
+	line "#mon, you must"
 
-TrainerYoungsterJosh:
-	trainer EVENT_BEAT_YOUNGSTER_JOSH, YOUNGSTER, YOUNGSTER_JOSH, YoungsterJoshSeenText, YoungsterJoshBeatenText, 0, YoungsterJoshScript
+	para "have explored a"
+	line "lot of places."
 
-YoungsterJoshScript:
-	end_if_just_battled
-	jumptextfaceplayer YoungsterJoshAfterText
+	para "Getting lost is"
+	line "your everyday"
+	cont "fare, huh?"
+	done
 
-TrainerBird_keeperMick:
-	trainer EVENT_BEAT_BIRD_KEEPER_MICK, BIRD_KEEPER, MICK, Bird_keeperMickSeenText, Bird_keeperMickBeatenText, 0, Bird_keeperMickScript
+GenericTrainerBird_keeperMick:
+	generictrainer BIRD_KEEPER, MICK, EVENT_BEAT_BIRD_KEEPER_MICK, Bird_keeperMickSeenText, Bird_keeperMickBeatenText
 
-Bird_keeperMickScript:
-	end_if_just_battled
-	jumptextfaceplayer Bird_keeperMickAfterText
+	text "Birds of a feather"
+	line "flock together."
 
-TrainerHexManiacEsther:
-	trainer EVENT_BEAT_HEX_MANIAC_ESTHER, HEX_MANIAC, ESTHER, HexManiacEstherSeenText, HexManiacEstherBeatenText, 0, HexManiacEstherScript
+	para "I should go hang"
+	line "out with other"
 
-HexManiacEstherScript:
-	end_if_just_battled
-	jumptextfaceplayer HexManiacEstherAfterText
+	para "Bird Keepers some-"
+	line "where sensible."
+	done
 
-TrainerCooltrainermConnor:
-	trainer EVENT_BEAT_COOLTRAINERM_CONNOR, COOLTRAINERM, CONNOR, CooltrainermConnorSeenText, CooltrainermConnorBeatenText, 0, CooltrainermConnorScript
+GenericTrainerHexManiacEsther:
+	generictrainer HEX_MANIAC, ESTHER, EVENT_BEAT_HEX_MANIAC_ESTHER, HexManiacEstherSeenText, HexManiacEstherBeatenText
 
-CooltrainermConnorScript:
-	end_if_just_battled
-	jumptextfaceplayer CooltrainermConnorAfterText
+	text "Magic mirror,"
+	line "great and wise,"
 
-TrainerSuperNerdMiguel:
-	trainer EVENT_BEAT_SUPER_NERD_MIGUEL, SUPER_NERD, MIGUEL, SuperNerdMiguelSeenText, SuperNerdMiguelBeatenText, 0, SuperNerdMiguelScript
+	para "failed to see my"
+	line "swift demise."
+	done
 
-SuperNerdMiguelScript:
-	end_if_just_battled
-	jumptextfaceplayer SuperNerdMiguelAfterText
+GenericTrainerCooltrainermConnor:
+	generictrainer COOLTRAINERM, CONNOR, EVENT_BEAT_COOLTRAINERM_CONNOR, CooltrainermConnorSeenText, CooltrainermConnorBeatenText
+
+	text "Style and charm"
+	line "go hand in hand."
+
+	para "They're the cool-"
+	line "est combination."
+	done
+
+GenericTrainerSuperNerdMiguel:
+	generictrainer SUPER_NERD, MIGUEL, EVENT_BEAT_SUPER_NERD_MIGUEL, SuperNerdMiguelSeenText, SuperNerdMiguelBeatenText
+
+	text "Maybe if I had"
+	line "an Aerodactyl…"
+	done
 
 YoungsterJoshSeenText:
 	text "You came to ex-"
@@ -81,18 +97,6 @@ YoungsterJoshBeatenText:
 	line "at all."
 	done
 
-YoungsterJoshAfterText:
-	text "With that team of"
-	line "#mon, you must"
-
-	para "have explored a"
-	line "lot of places."
-
-	para "Getting lost is"
-	line "your everyday"
-	cont "fare, huh?"
-	done
-
 Bird_keeperMickSeenText:
 	text "I'm not sure why"
 	line "I came here."
@@ -104,17 +108,6 @@ Bird_keeperMickSeenText:
 Bird_keeperMickBeatenText:
 	text "Yeah, this was a"
 	line "bad idea."
-	done
-
-Bird_keeperMickAfterText:
-	text "Birds of a feather"
-	line "flock together."
-
-	para "I should go hang"
-	line "out with other"
-
-	para "Bird Keepers some-"
-	line "where sensible."
 	done
 
 HexManiacEstherSeenText:
@@ -129,14 +122,6 @@ HexManiacEstherBeatenText:
 	text "You will!"
 	done
 
-HexManiacEstherAfterText:
-	text "Magic mirror,"
-	line "great and wise,"
-
-	para "failed to see my"
-	line "swift demise."
-	done
-
 CooltrainermConnorSeenText:
 	text "You've either got"
 	line "it or you don't."
@@ -145,14 +130,6 @@ CooltrainermConnorSeenText:
 CooltrainermConnorBeatenText:
 	text "Whoa!"
 	line "You've got it!"
-	done
-
-CooltrainermConnorAfterText:
-	text "Style and charm"
-	line "go hand in hand."
-
-	para "They're the cool-"
-	line "est combination."
 	done
 
 SuperNerdMiguelSeenText:
@@ -169,7 +146,3 @@ SuperNerdMiguelBeatenText:
 	line "crushed!"
 	done
 
-SuperNerdMiguelAfterText:
-	text "Maybe if I had"
-	line "an Aerodactyl…"
-	done

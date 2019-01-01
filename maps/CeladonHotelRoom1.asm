@@ -1,23 +1,20 @@
 CeladonHotelRoom1_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 2 ; warp events
+	warp_event  3,  5, CELADON_HOTEL_2F, 2
+	warp_event  4,  5, CELADON_HOTEL_2F, 2
 
-CeladonHotelRoom1_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 2
-	warp_def 5, 3, 2, CELADON_HOTEL_2F
-	warp_def 5, 4, 2, CELADON_HOTEL_2F
+	db 0 ; bg events
 
-.XYTriggers: db 0
-
-.Signposts: db 0
-
-.PersonEvents: db 3
-	person_event SPRITE_COOLTRAINER_M, 3, 3, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonHotelRoom1CooltrainerMText, -1
-	person_event SPRITE_LASS, 3, 1, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonHotelRoom1LassText, -1
-	itemball_event 1, 3, POKE_DOLL, 1, EVENT_CELADON_HOTEL_ROOM_1_POKE_DOLL
+	db 3 ; object events
+	object_event  3,  3, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonHotelRoom1CooltrainerMText, -1
+	object_event  1,  3, SPRITE_LASS, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonHotelRoom1LassText, -1
+	itemball_event  3,  1, POKE_DOLL, 1, EVENT_CELADON_HOTEL_ROOM_1_POKE_DOLL
 
 CeladonHotelRoom1CooltrainerMText:
 	text "Where I come from,"

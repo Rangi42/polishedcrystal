@@ -1,16 +1,13 @@
 CeladonOutskirts_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 0 ; warp events
 
-CeladonOutskirts_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 0
+	db 0 ; bg events
 
-.XYTriggers: db 0
-
-.Signposts: db 0
-
-.PersonEvents: db 1
-	itemball_event 13, 16, MENTAL_HERB, 1, EVENT_ROUTE_7_MENTAL_HERB
+	db 1 ; object events
+	itemball_event 16, 13, MENTAL_HERB, 1, EVENT_ROUTE_7_MENTAL_HERB

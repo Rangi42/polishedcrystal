@@ -1,38 +1,35 @@
 GoldenrodFlowerShop_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 2 ; warp events
+	warp_event  2,  7, GOLDENROD_CITY, 6
+	warp_event  3,  7, GOLDENROD_CITY, 6
 
-GoldenrodFlowerShop_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 2
-	warp_def 7, 2, 6, GOLDENROD_CITY
-	warp_def 7, 3, 6, GOLDENROD_CITY
+	db 0 ; bg events
 
-.XYTriggers: db 0
+	db 3 ; object events
+	object_event  2,  4, SPRITE_TEACHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FlowerShopTeacherScript, -1
+	object_event  5,  6, SPRITE_LASS, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, FlowerShopFloriaScript, EVENT_FLORIA_AT_FLOWER_SHOP
+	object_event  6,  3, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, FlowerShopGentlemanText, EVENT_FLORIA_AT_SUDOWOODO
 
-.Signposts: db 0
-
-.PersonEvents: db 3
-	person_event SPRITE_TEACHER, 4, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FlowerShopTeacherScript, -1
-	person_event SPRITE_LASS, 6, 5, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, FlowerShopFloriaScript, EVENT_FLORIA_AT_FLOWER_SHOP
-	person_event SPRITE_GENTLEMAN, 3, 6, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, FlowerShopGentlemanText, EVENT_FLORIA_AT_SUDOWOODO
-
-const_value set 1
+	const_def 1 ; object constants
 	const GOLDENRODFLOWERSHOP_TEACHER
 
 FlowerShopTeacherScript:
 	checkevent EVENT_FOUGHT_SUDOWOODO
 	iftrue .SellMulch
 	checkevent EVENT_GOT_SQUIRTBOTTLE
-	iftrue .GotSquirtbottle
+	iftrue_jumptextfaceplayer UnknownText_0x5550d
 	checkevent EVENT_MET_FLORIA
-	iffalse .HaventMetFloria
+	iffalse_jumptextfaceplayer UnknownText_0x553d4
 	checkevent EVENT_TALKED_TO_FLORIA_AT_FLOWER_SHOP
 	iffalse .Lalala
 	checkflag ENGINE_PLAINBADGE
-	iffalse .NoPlainBadge
+	iffalse_jumptextfaceplayer UnknownText_0x55463
 	faceplayer
 	opentext
 	writetext UnknownText_0x554c2
@@ -48,15 +45,6 @@ FlowerShopTeacherScript:
 	spriteface GOLDENRODFLOWERSHOP_TEACHER, LEFT
 	jumptext UnknownText_0x5552e
 
-.GotSquirtbottle:
-	jumptextfaceplayer UnknownText_0x5550d
-
-.NoPlainBadge:
-	jumptextfaceplayer UnknownText_0x55463
-
-.HaventMetFloria:
-	jumptextfaceplayer UnknownText_0x553d4
-
 .SellMulch:
 	faceplayer
 	opentext
@@ -67,13 +55,13 @@ FlowerShopTeacherScript:
 	closewindow
 	if_equal $1, .Buy1
 	if_equal $2, .Buy10
-	jump .Cancel
+	jumpopenedtext DontBuyMulchText
 
 .Buy1:
 	checkmoney $0, 200
 	if_equal $2, .NotEnoughMoney
 	giveitem MULCH
-	iffalse .BagFull
+	iffalse_jumpopenedtext NoRoomForMulchText
 	takemoney $0, 200
 	jump .Done
 
@@ -81,7 +69,7 @@ FlowerShopTeacherScript:
 	checkmoney $0, 2000
 	if_equal $2, .NotEnoughMoney
 	giveitem MULCH, 10
-	iffalse .BagFull
+	iffalse_jumpopenedtext NoRoomForMulchText
 	takemoney $0, 2000
 
 .Done:
@@ -91,14 +79,8 @@ FlowerShopTeacherScript:
 	itemnotify
 	jumpopenedtext BoughtMulchText
 
-.Cancel:
-	jumpopenedtext DontBuyMulchText
-
 .NotEnoughMoney:
 	jumpopenedtext NotEnoughMulchMoneyText
-
-.BagFull:
-	jumpopenedtext NoRoomForMulchText
 
 .MenuDataHeader:
 	db $40 ; flags
@@ -120,7 +102,7 @@ FlowerShopFloriaScript:
 	checkevent EVENT_FOUGHT_SUDOWOODO
 	iftrue .FoughtSudowoodo
 	checkevent EVENT_GOT_SQUIRTBOTTLE
-	iftrue .GotSquirtbottle
+	iftrue_jumpopenedtext UnknownText_0x555e6
 	writetext UnknownText_0x55561
 	waitbutton
 	closetext
@@ -129,16 +111,10 @@ FlowerShopFloriaScript:
 	clearevent EVENT_FLORIA_AT_SUDOWOODO
 	end
 
-.GotSquirtbottle:
-	jumpopenedtext UnknownText_0x555e6
-
 .FoughtSudowoodo:
 	checkitem MULCH
-	iftrue .DescribeMulch
+	iftrue_jumpopenedtext DescribeMulchText
 	jumpopenedtext UnknownText_0x55604
-
-.DescribeMulch:
-	jumpopenedtext DescribeMulchText
 
 UnknownText_0x553d4:
 	text "Have you seen that"

@@ -426,15 +426,6 @@ LoadSpecialMapPalette: ; 494ac
 	cp MAP_ECRUTEAK_CITY
 	jp z, .load_eight_time_of_day_bg_palettes
 .not_ecruteak_city
-	ld a, [wMapGroup]
-	cp GROUP_SILVER_CAVE_OUTSIDE
-	jr nz, .not_silver_cave_outside
-	ld a, [wMapNumber]
-	cp MAP_SILVER_CAVE_OUTSIDE
-	jp z, .load_eight_time_of_day_bg_palettes
-	cp MAP_ROUTE_28
-	jp z, .load_eight_time_of_day_bg_palettes
-.not_silver_cave_outside
 	ld hl, BellchimeTrailPalette
 	ld a, [wMapGroup]
 	cp GROUP_BELLCHIME_TRAIL
@@ -1873,15 +1864,21 @@ LoadSpecialMapOBPalette:
 
 .not_lyras_house_2f:
 	ld a, [wMapGroup]
-	cp GROUP_GOLDENROD_POKECOM_CENTER_1F
-	jr nz, .not_pokecom_center_1f
+	cp GROUP_GOLDENROD_POKECOM_CENTER_1F ; GROUP_GOLDENROD_POKECOM_CENTER_OFFICE
+	jr nz, .not_pokecom_center
 	ld a, [wMapNumber]
 	cp MAP_GOLDENROD_POKECOM_CENTER_1F
 	jr nz, .not_pokecom_center_1f
 	ld hl, PokecomCenter1FOBPalette_Rock
 	jr .load_rock_palette
-
 .not_pokecom_center_1f
+	cp MAP_GOLDENROD_POKECOM_CENTER_OFFICE
+	jr nz, .not_pokecom_center
+	ld hl, PokecomCenterOfficeOBPalette_Purple
+	ld de, wUnknOBPals palette PAL_OW_PURPLE
+	jp .load_single_palette
+
+.not_pokecom_center
 	ld a, [wMapGroup]
 	cp GROUP_MOUNT_MOON_SQUARE
 	jr nz, .not_mount_moon_square
@@ -1971,4 +1968,14 @@ if !DEF(MONOCHROME)
 	RGB 07, 07, 07
 else
 	MONOCHROME_RGB_FOUR
+endc
+
+PokecomCenterOfficeOBPalette_Purple:
+if !DEF(MONOCHROME)
+	RGB 28, 31, 16
+	RGB 31, 22, 10
+	RGB 07, 17, 21
+	RGB 00, 00, 00
+else
+	MONOCHROME_RGB_FOUR_OW
 endc

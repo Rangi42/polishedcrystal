@@ -1,21 +1,18 @@
 Route32CoastHouse_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 2 ; warp events
+	warp_event  2,  7, ROUTE_32_COAST, 2
+	warp_event  3,  7, ROUTE_32_COAST, 2
 
-Route32CoastHouse_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 2
-	warp_def 7, 2, 2, ROUTE_32_COAST
-	warp_def 7, 3, 2, ROUTE_32_COAST
+	db 0 ; bg events
 
-.XYTriggers: db 0
-
-.Signposts: db 0
-
-.PersonEvents: db 1
-	person_event SPRITE_BAKER, 2, 2, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GourmetManiacScript, -1
+	db 1 ; object events
+	object_event  2,  2, SPRITE_BAKER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GourmetManiacScript, -1
 
 GourmetManiacScript:
 	faceplayer
@@ -23,26 +20,27 @@ GourmetManiacScript:
 	writetext .GreetingText
 	buttonsound
 	special Special_ChooseItem
-	iffalse .NoItem
+	iffalse_jumpopenedtext .NoItemText
 	special GetGourmetManiacPrice
-	iffalse .WrongItem
+	iffalse_jumpopenedtext .WrongItemText
 	writetext .OfferText
 	special PlaceMoneyTopRight
 	yesorno
-	iffalse .NoItem
+	iffalse_jumpopenedtext .NoItemText
 	copybytetovar wCurItem
 	takeitem ITEM_FROM_MEM
 	waitsfx
 	playsound SFX_TRANSACTION
 	special Give_hMoneyTemp
 	special PlaceMoneyTopRight
-	jumpopenedtext .ThankYouText
+	thisopenedtext
 
-.NoItem:
-	jumpopenedtext .NoItemText
+	text "Merci! Thank you!"
 
-.WrongItem:
-	jumpopenedtext .WrongItemText
+	para "With this, I can"
+	line "create something"
+	cont "superb."
+	done
 
 .GreetingText:
 	text "Hi there! I am"
@@ -66,14 +64,6 @@ GourmetManiacScript:
 	line "¥@"
 	deciram hMoneyTemp, 3, 7
 	text " for it?"
-	done
-
-.ThankYouText:
-	text "Merci! Thank you!"
-
-	para "With this, I can"
-	line "create something"
-	cont "superb."
 	done
 
 .WrongItemText:

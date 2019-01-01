@@ -1,30 +1,27 @@
 VioletGym_MapScriptHeader:
+	db 1 ; scene scripts
+	scene_script VioletGymTrigger0
 
-.MapTriggers: db 1
-	dw VioletGymTrigger0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 2 ; warp events
+	warp_event  4, 15, VIOLET_CITY, 2
+	warp_event  5, 15, VIOLET_CITY, 2
 
-VioletGym_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 2
-	warp_def 15, 4, 2, VIOLET_CITY
-	warp_def 15, 5, 2, VIOLET_CITY
+	db 2 ; bg events
+	bg_event  3, 13, SIGNPOST_READ, VioletGymStatue
+	bg_event  6, 13, SIGNPOST_READ, VioletGymStatue
 
-.XYTriggers: db 0
+	db 5 ; object events
+	object_event  4, 13, SPRITE_GYM_GUY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_DARK_CAVE_FALKNER
+	object_event  5,  1, SPRITE_FALKNER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, FalknerScript_0x683c2, EVENT_VIOLET_GYM_FALKNER
+	object_event  7,  6, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_LEFT, 0, 2, -1, -1, PAL_NPC_BLUE, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerBird_keeperRod, EVENT_VIOLET_GYM_FALKNER
+	object_event  2, 10, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 2, -1, -1, PAL_NPC_BLUE, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerBird_keeperAbe, EVENT_VIOLET_GYM_FALKNER
+	object_event  7, 13, SPRITE_GYM_GUY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, VioletGymGuyScript, EVENT_VIOLET_GYM_FALKNER
 
-.Signposts: db 2
-	signpost 13, 3, SIGNPOST_READ, VioletGymStatue
-	signpost 13, 6, SIGNPOST_READ, VioletGymStatue
-
-.PersonEvents: db 5
-	person_event SPRITE_GYM_GUY, 13, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_DARK_CAVE_FALKNER
-	person_event SPRITE_FALKNER, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, FalknerScript_0x683c2, EVENT_VIOLET_GYM_FALKNER
-	person_event SPRITE_YOUNGSTER, 6, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 2, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBird_keeperRod, EVENT_VIOLET_GYM_FALKNER
-	person_event SPRITE_YOUNGSTER, 10, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBird_keeperAbe, EVENT_VIOLET_GYM_FALKNER
-	person_event SPRITE_GYM_GUY, 13, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, VioletGymGuyScript, EVENT_VIOLET_GYM_FALKNER
-
-const_value set 1
+	const_def 1 ; object constants
 	const VIOLETGYM_GYM_GUY2
 
 VioletGymTrigger0:
@@ -74,19 +71,24 @@ FalknerScript_0x683c2:
 	setevent EVENT_GOT_TM31_ROOST
 	jumpopenedtext UnknownText_0x68648
 
-TrainerBird_keeperRod:
-	trainer EVENT_BEAT_BIRD_KEEPER_ROD, BIRD_KEEPER, ROD, Bird_keeperRodSeenText, Bird_keeperRodBeatenText, 0, Bird_keeperRodScript
+GenericTrainerBird_keeperRod:
+	generictrainer BIRD_KEEPER, ROD, EVENT_BEAT_BIRD_KEEPER_ROD, Bird_keeperRodSeenText, Bird_keeperRodBeatenText
 
-Bird_keeperRodScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x68837
+	text "Falkner's skills"
+	line "are for real!"
 
-TrainerBird_keeperAbe:
-	trainer EVENT_BEAT_BIRD_KEEPER_ABE, BIRD_KEEPER, ABE, Bird_keeperAbeSeenText, Bird_keeperAbeBeatenText, 0, Bird_keeperAbeScript
+	para "Don't get cocky"
+	line "just because you"
+	cont "beat me!"
+	done
 
-Bird_keeperAbeScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x688c7
+GenericTrainerBird_keeperAbe:
+	generictrainer BIRD_KEEPER, ABE, EVENT_BEAT_BIRD_KEEPER_ABE, Bird_keeperAbeSeenText, Bird_keeperAbeBeatenText
+
+	text "This is pathetic,"
+	line "losing to some"
+	cont "rookie trainer…"
+	done
 
 VioletGymGuyScript:
 	checkevent EVENT_BEAT_FALKNER
@@ -210,15 +212,6 @@ Bird_keeperRodBeatenText:
 	text "Gaaah!"
 	done
 
-UnknownText_0x68837:
-	text "Falkner's skills"
-	line "are for real!"
-
-	para "Don't get cocky"
-	line "just because you"
-	cont "beat me!"
-	done
-
 Bird_keeperAbeSeenText:
 	text "Let me see if you"
 	line "are good enough to"
@@ -228,12 +221,6 @@ Bird_keeperAbeSeenText:
 Bird_keeperAbeBeatenText:
 	text "This can't be"
 	line "true!"
-	done
-
-UnknownText_0x688c7:
-	text "This is pathetic,"
-	line "losing to some"
-	cont "rookie trainer…"
 	done
 
 VioletGymGuyText:

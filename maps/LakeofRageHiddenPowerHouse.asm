@@ -1,24 +1,21 @@
 LakeofRageHiddenPowerHouse_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 2 ; warp events
+	warp_event  2,  7, LAKE_OF_RAGE, 1
+	warp_event  3,  7, LAKE_OF_RAGE, 1
 
-LakeofRageHiddenPowerHouse_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 2
-	warp_def 7, 2, 1, LAKE_OF_RAGE
-	warp_def 7, 3, 1, LAKE_OF_RAGE
+	db 3 ; bg events
+	bg_event  5,  1, SIGNPOST_JUMPSTD, radio2
+	bg_event  6,  1, SIGNPOST_JUMPSTD, difficultbookshelf
+	bg_event  7,  1, SIGNPOST_JUMPSTD, difficultbookshelf
 
-.XYTriggers: db 0
-
-.Signposts: db 3
-	signpost 1, 5, SIGNPOST_JUMPSTD, radio2
-	signpost 1, 6, SIGNPOST_JUMPSTD, difficultbookshelf
-	signpost 1, 7, SIGNPOST_JUMPSTD, difficultbookshelf
-
-.PersonEvents: db 1
-	person_event SPRITE_FISHER, 3, 2, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, HiddenPowerGuy, -1
+	db 1 ; object events
+	object_event  2,  3, SPRITE_FISHER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, HiddenPowerGuy, -1
 
 HiddenPowerGuy:
 	faceplayer
@@ -42,15 +39,28 @@ HiddenPowerGuy:
 	writetext .Text5
 	buttonsound
 	special Special_HiddenPowerGuru
-	if_equal $0, .Cancel
+	iffalse_jumpopenedtext .Text4
 	if_equal $1, .Egg
-	jumpopenedtext .Text6
+	thisopenedtext
 
-.Cancel:
-	jumpopenedtext .Text4
+	text "I can sense it…"
+
+	para "Your @"
+	text_from_ram wStringBuffer3
+	text ""
+	line "has a Hidden Power"
+	cont "of @"
+	text_from_ram wStringBuffer1
+	text "!"
+	done
 
 .Egg:
-	jumpopenedtext .Text8
+	thisopenedtext
+
+	text "An Egg has not yet"
+	line "developed a Hidden"
+	cont "Power…"
+	done
 
 .Text1:
 	text "…You have strayed"
@@ -99,24 +109,6 @@ HiddenPowerGuy:
 	cont "should I find?"
 	done
 
-.Text6:
-	text "I can sense it…"
-
-	para "Your @"
-	text_from_ram wStringBuffer3
-	text ""
-	line "has a Hidden Power"
-	cont "of @"
-	text_from_ram wStringBuffer1
-	text "!"
-	done
-
 .Text7:
 	text "…Very well…"
-	done
-
-.Text8:
-	text "An Egg has not yet"
-	line "developed a Hidden"
-	cont "Power…"
 	done

@@ -1,19 +1,16 @@
 DragonsDen1F_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 4 ; warp events
+	warp_event 15, 55, BLACKTHORN_CITY, 8
+	warp_event 15, 53, DRAGONS_DEN_1F, 4
+	warp_event  5, 55, DRAGONS_DEN_B1F, 1
+	warp_event  5, 53, DRAGONS_DEN_1F, 2
 
-DragonsDen1F_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 4
-	warp_def 55, 15, 8, BLACKTHORN_CITY
-	warp_def 53, 15, 4, DRAGONS_DEN_1F
-	warp_def 55, 5, 1, DRAGONS_DEN_B1F
-	warp_def 53, 5, 2, DRAGONS_DEN_1F
+	db 0 ; bg events
 
-.XYTriggers: db 0
-
-.Signposts: db 0
-
-.PersonEvents: db 0
+	db 0 ; object events

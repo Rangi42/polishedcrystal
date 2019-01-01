@@ -1,43 +1,40 @@
 Route19_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 2 ; callbacks
+	callback MAPCALLBACK_NEWMAP, Route19ClearSmashRocks
+	callback MAPCALLBACK_TILES, Route19ClearRocks
 
-.MapCallbacks: db 2
-	dbw MAPCALLBACK_NEWMAP, Route19ClearSmashRocks
-	dbw MAPCALLBACK_TILES, Route19ClearRocks
+	db 2 ; warp events
+	warp_event  7,  1, ROUTE_19_FUCHSIA_GATE, 3
+	warp_event  5, 13, ROUTE_19_BEACH_HOUSE, 1
 
-Route19_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 2
-	warp_def 1, 7, 3, ROUTE_19_FUCHSIA_GATE
-	warp_def 13, 5, 1, ROUTE_19_BEACH_HOUSE
+	db 6 ; bg events
+	bg_event 11, 15, SIGNPOST_JUMPTEXT, Route19SignText
+	bg_event 11, -1, SIGNPOST_JUMPTEXT, CarefulSwimmingSignText
+	bg_event  5,  3, SIGNPOST_ITEM + REVIVE, EVENT_ROUTE_19_HIDDEN_REVIVE
+	bg_event  3, 11, SIGNPOST_ITEM + MAX_REVIVE, EVENT_ROUTE_19_HIDDEN_MAX_REVIVE
+	bg_event  5, 15, SIGNPOST_ITEM + PEARL, EVENT_ROUTE_19_HIDDEN_PEARL
+	bg_event 13, 13, SIGNPOST_ITEM + BIG_PEARL, EVENT_ROUTE_19_HIDDEN_BIG_PEARL
 
-.XYTriggers: db 0
+	db 13 ; object events
+	smashrock_event 11,  4, EVENT_ROUTE_19_ROCK
+	smashrock_event  6, 3
+	smashrock_event  4, 11
+	smashrock_event 12, 13
+	smashrock_event 13, 14
+	object_event  8, 34, SPRITE_SWIMMER_GIRL, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerSwimmerfDawn, -1
+	object_event  9, 34, SPRITE_SWIMMER_GUY, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerSwimmermTucker, -1
+	object_event 11, 20, SPRITE_SWIMMER_GUY, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerSwimmermJerome, -1
+	object_event 13, 43, SPRITE_SWIMMER_GUY, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerSwimmermHarold, -1
+	object_event 13, 51, SPRITE_COSPLAYER, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerCosplayerBrooke, -1
+	object_event  9,  3, SPRITE_ENGINEER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_SCRIPT, 0, EngineerScript_0x19ea4d, -1
+	object_event 11,  3, SPRITE_ENGINEER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, EngineerScript_0x19ea61, -1
+	tmhmball_event 14, 52, TM_SCALD, EVENT_ROUTE_19_TM_SCALD
 
-.Signposts: db 6
-	signpost 15, 11, SIGNPOST_JUMPTEXT, Route19SignText
-	signpost -1, 11, SIGNPOST_JUMPTEXT, CarefulSwimmingSignText
-	signpost 3, 5, SIGNPOST_ITEM + REVIVE, EVENT_ROUTE_19_HIDDEN_REVIVE
-	signpost 11, 3, SIGNPOST_ITEM + MAX_REVIVE, EVENT_ROUTE_19_HIDDEN_MAX_REVIVE
-	signpost 15, 5, SIGNPOST_ITEM + PEARL, EVENT_ROUTE_19_HIDDEN_PEARL
-	signpost 13, 13, SIGNPOST_ITEM + BIG_PEARL, EVENT_ROUTE_19_HIDDEN_BIG_PEARL
-
-.PersonEvents: db 13
-	smashrock_event 4, 11, EVENT_ROUTE_19_ROCK
-	smashrock_event 3, 6
-	smashrock_event 11, 4
-	smashrock_event 13, 12
-	smashrock_event 14, 13
-	person_event SPRITE_SWIMMER_GIRL, 34, 8, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 4, TrainerSwimmerfDawn, -1
-	person_event SPRITE_SWIMMER_GUY, 34, 9, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerSwimmermTucker, -1
-	person_event SPRITE_SWIMMER_GUY, 20, 11, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerSwimmermJerome, -1
-	person_event SPRITE_SWIMMER_GUY, 43, 13, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerSwimmermHarold, -1
-	person_event SPRITE_COSPLAYER, 51, 13, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerCosplayerBrooke, -1
-	person_event SPRITE_ENGINEER, 3, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, EngineerScript_0x19ea4d, -1
-	person_event SPRITE_ENGINEER, 3, 11, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, EngineerScript_0x19ea61, -1
-	tmhmball_event 52, 14, TM_SCALD, EVENT_ROUTE_19_TM_SCALD
-
-const_value set 1
+	const_def 1 ; object constants
 	const ROUTE19_ROCK1
 
 Route19ClearSmashRocks:
@@ -60,40 +57,57 @@ Route19ClearRocks:
 .Done:
 	return
 
-TrainerSwimmerfDawn:
-	trainer EVENT_BEAT_SWIMMERF_DAWN, SWIMMERF, DAWN, SwimmerfDawnSeenText, SwimmerfDawnBeatenText, 0, SwimmerfDawnScript
+GenericTrainerSwimmerfDawn:
+	generictrainer SWIMMERF, DAWN, EVENT_BEAT_SWIMMERF_DAWN, SwimmerfDawnSeenText, SwimmerfDawnBeatenText
 
-SwimmerfDawnScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x19ebad
+	text "It's a quick swim"
+	line "between Fuchsia"
 
-TrainerSwimmermTucker:
-	trainer EVENT_BEAT_SWIMMERM_TUCKER, SWIMMERM, TUCKER, SwimmermTuckerSeenText, SwimmermTuckerBeatenText, 0, SwimmermTuckerScript
+	para "and Seafoam Is-"
+	line "lands…"
 
-SwimmermTuckerScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x19eb3b
+	para "Sheesh, some big"
+	line "man my boyfriend"
+	cont "is! What a wimp!"
+	done
 
-TrainerSwimmermJerome:
-	trainer EVENT_BEAT_SWIMMERM_JEROME, SWIMMERM, JEROME, SwimmermJeromeSeenText, SwimmermJeromeBeatenText, 0, SwimmermJeromeScript
+GenericTrainerSwimmermTucker:
+	generictrainer SWIMMERM, TUCKER, EVENT_BEAT_SWIMMERM_TUCKER, SwimmermTuckerSeenText, SwimmermTuckerBeatenText
 
-SwimmermJeromeScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x19ec7e
+	text "I… asked my girl-"
+	line "friend to swim to"
+	cont "Fuchsia… Gasp…"
+	done
 
-TrainerSwimmermHarold:
-	trainer EVENT_BEAT_SWIMMERM_HAROLD, SWIMMERM, HAROLD, SwimmermHaroldSeenText, SwimmermHaroldBeatenText, 0, SwimmermHaroldScript
+GenericTrainerSwimmermJerome:
+	generictrainer SWIMMERM, JEROME, EVENT_BEAT_SWIMMERM_JEROME, SwimmermJeromeSeenText, SwimmermJeromeBeatenText
 
-SwimmermHaroldScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x19eab4
+	text "I might be bad at"
+	line "swimming, but I"
+	cont "love the sea."
+	done
 
-TrainerCosplayerBrooke:
-	trainer EVENT_BEAT_COSPLAYER_BROOKE, COSPLAYER, BROOKE, CosplayerBrookeSeenText, CosplayerBrookeBeatenText, 0, CosplayerBrookeScript
+GenericTrainerSwimmermHarold:
+	generictrainer SWIMMERM, HAROLD, EVENT_BEAT_SWIMMERM_HAROLD, SwimmermHaroldSeenText, SwimmermHaroldBeatenText
 
-CosplayerBrookeScript:
-	end_if_just_battled
-	jumptextfaceplayer CosplayerBrookeAfterText
+	text "At night, the sea"
+	line "turns black. It"
+
+	para "feels like it will"
+	line "swallow you up."
+	done
+
+GenericTrainerCosplayerBrooke:
+	generictrainer COSPLAYER, BROOKE, EVENT_BEAT_COSPLAYER_BROOKE, CosplayerBrookeSeenText, CosplayerBrookeBeatenText
+
+	text "I made this outfit"
+	line "for a fancy dress"
+	cont "party, but I love"
+
+	para "it so much that I"
+	line "wear it elsewhere"
+	cont "too."
+	done
 
 EngineerScript_0x19ea4d:
 	checkevent EVENT_CINNABAR_ROCKS_CLEARED
@@ -115,18 +129,6 @@ SwimmerfDawnBeatenText:
 	line "at swimming…"
 	done
 
-UnknownText_0x19ebad:
-	text "It's a quick swim"
-	line "between Fuchsia"
-
-	para "and Seafoam Is-"
-	line "lands…"
-
-	para "Sheesh, some big"
-	line "man my boyfriend"
-	cont "is! What a wimp!"
-	done
-
 SwimmermTuckerSeenText:
 	text "Pant, pant…"
 	line "Just… a little…"
@@ -137,12 +139,6 @@ SwimmermTuckerSeenText:
 
 SwimmermTuckerBeatenText:
 	text "I'm drowning!"
-	done
-
-UnknownText_0x19eb3b:
-	text "I… asked my girl-"
-	line "friend to swim to"
-	cont "Fuchsia… Gasp…"
 	done
 
 SwimmermJeromeSeenText:
@@ -159,12 +155,6 @@ SwimmermJeromeBeatenText:
 	line "win."
 	done
 
-UnknownText_0x19ec7e:
-	text "I might be bad at"
-	line "swimming, but I"
-	cont "love the sea."
-	done
-
 SwimmermHaroldSeenText:
 	text "Have you ever gone"
 	line "swimming in the"
@@ -173,14 +163,6 @@ SwimmermHaroldSeenText:
 
 SwimmermHaroldBeatenText:
 	text "Glub…"
-	done
-
-UnknownText_0x19eab4:
-	text "At night, the sea"
-	line "turns black. It"
-
-	para "feels like it will"
-	line "swallow you up."
 	done
 
 CosplayerBrookeSeenText:
@@ -192,16 +174,6 @@ CosplayerBrookeBeatenText:
 	text "You'd better not"
 	line "have damaged my"
 	cont "costume!"
-	done
-
-CosplayerBrookeAfterText:
-	text "I made this outfit"
-	line "for a fancy dress"
-	cont "party, but I love"
-
-	para "it so much that I"
-	line "wear it elsewhere"
-	cont "too."
 	done
 
 UnknownText_0x19ecaf:

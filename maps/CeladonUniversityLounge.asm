@@ -1,31 +1,28 @@
 CeladonUniversityLounge_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 2 ; warp events
+	warp_event  4, 11, CELADON_UNIVERSITY_1F, 10
+	warp_event  5, 11, CELADON_UNIVERSITY_1F, 10
 
-CeladonUniversityLounge_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 2
-	warp_def 11, 4, 10, CELADON_UNIVERSITY_1F
-	warp_def 11, 5, 10, CELADON_UNIVERSITY_1F
+	db 3 ; bg events
+	bg_event  7,  5, SIGNPOST_JUMPTEXT, CeladonUniversityLoungeBookshelf1Text
+	bg_event  7,  8, SIGNPOST_READ, CeladonUniversityLoungeBookshelf2
+	bg_event  0,  7, SIGNPOST_RIGHT, CeladonUniversityLoungeComputer
 
-.XYTriggers: db 0
+	db 6 ; object events
+	object_event  5,  8, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, CeladonUniversityLoungeNeeshaScript, -1
+	object_event  3,  1, SPRITE_LASS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityLoungeLassText, -1
+	object_event  5,  3, SPRITE_RICH_BOY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityLoungeRichBoyText, -1
+	object_event  5,  4, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityLoungeCooltrainerfText, -1
+	object_event  2,  5, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityLoungeSuper_nerd1Text, -1
+	object_event  1,  8, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_PURPLE, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityLoungeSuper_nerd2Text, -1
 
-.Signposts: db 3
-	signpost 5, 7, SIGNPOST_JUMPTEXT, CeladonUniversityLoungeBookshelf1Text
-	signpost 8, 7, SIGNPOST_READ, CeladonUniversityLoungeBookshelf2
-	signpost 7, 0, SIGNPOST_RIGHT, CeladonUniversityLoungeComputer
-
-.PersonEvents: db 6
-	person_event SPRITE_COOLTRAINER_F, 8, 5, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CeladonUniversityLoungeNeeshaScript, -1
-	person_event SPRITE_LASS, 1, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityLoungeLassText, -1
-	person_event SPRITE_RICH_BOY, 3, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityLoungeRichBoyText, -1
-	person_event SPRITE_COOLTRAINER_F, 4, 5, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityLoungeCooltrainerfText, -1
-	person_event SPRITE_SUPER_NERD, 5, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityLoungeSuper_nerd1Text, -1
-	person_event SPRITE_SUPER_NERD, 8, 1, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityLoungeSuper_nerd2Text, -1
-
-const_value set 1
+	const_def 1 ; object constants
 	const CELADONUNIVERSITYLOUNGE_NEESHA
 
 CeladonUniversityLoungeNeeshaScript:

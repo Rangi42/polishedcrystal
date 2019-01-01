@@ -1,22 +1,19 @@
 Route5UndergroundEntrance_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 3 ; warp events
+	warp_event  3,  7, ROUTE_5, 1
+	warp_event  4,  7, ROUTE_5, 1
+	warp_event  4,  4, UNDERGROUND, 1
 
-Route5UndergroundEntrance_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 3
-	warp_def 7, 3, 1, ROUTE_5
-	warp_def 7, 4, 1, ROUTE_5
-	warp_def 4, 4, 1, UNDERGROUND
+	db 0 ; bg events
 
-.XYTriggers: db 0
-
-.Signposts: db 0
-
-.PersonEvents: db 1
-	person_event SPRITE_TEACHER, 3, 2, SPRITEMOVEDATA_SPINRANDOM_SLOW, 1, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x18b558, -1
+	db 1 ; object events
+	object_event  2,  3, SPRITE_TEACHER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 1, 1, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x18b558, -1
 
 UnknownText_0x18b558:
 	text "Many cities in"

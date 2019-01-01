@@ -1,34 +1,31 @@
 DimCave5F_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 1 ; callbacks
+	callback MAPCALLBACK_CMDQUEUE, DimCave5FSetUpStoneTable
 
-.MapCallbacks: db 1
-	dbw MAPCALLBACK_CMDQUEUE, DimCave5FSetUpStoneTable
+	db 4 ; warp events
+	warp_event 13, 31, ROUTE_10_NORTH, 5
+	warp_event  2, 16, DIM_CAVE_4F, 1
+	warp_event 27, 29, DIM_CAVE_4F, 2
+	warp_event 28, 25, DIM_CAVE_4F, 3
 
-DimCave5F_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 4
-	warp_def 31, 13, 5, ROUTE_10_NORTH
-	warp_def 16, 2, 1, DIM_CAVE_4F
-	warp_def 29, 27, 2, DIM_CAVE_4F
-	warp_def 25, 28, 3, DIM_CAVE_4F
+	db 1 ; bg events
+	bg_event 12, 28, SIGNPOST_ITEM + X_SPCL_ATK, EVENT_DIM_CAVE_5F_HIDDEN_X_SPCL_ATK
 
-.XYTriggers: db 0
-
-.Signposts: db 1
-	signpost 28, 12, SIGNPOST_ITEM + X_SPCL_ATK, EVENT_DIM_CAVE_5F_HIDDEN_X_SPCL_ATK
-
-.PersonEvents: db 8
-	strengthboulder_event 5, 25, EVENT_BOULDER_IN_DIM_CAVE_5F
-	person_event SPRITE_RILEY, 4, 13, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, DimCave5FRileyScript, EVENT_DIM_CAVE_RILEY
-	person_event SPRITE_SUPER_NERD, 17, 24, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerSuper_nerdFoote, -1
-	person_event SPRITE_ENGINEER, 25, 13, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerEngineerHoward, -1
-	person_event SPRITE_SUPER_NERD, 28, 21, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 5, TrainerSuper_nerdDave, -1
+	db 8 ; object events
+	strengthboulder_event 25,  5, EVENT_BOULDER_IN_DIM_CAVE_5F
+	object_event 13,  4, SPRITE_RILEY, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, DimCave5FRileyScript, EVENT_DIM_CAVE_RILEY
+	object_event 24, 17, SPRITE_SUPER_NERD, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerSuper_nerdFoote, -1
+	object_event 13, 25, SPRITE_ENGINEER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerEngineerHoward, -1
+	object_event 21, 28, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_GENERICTRAINER, 5, GenericTrainerSuper_nerdDave, -1
 	itemball_event 13, 13, RARE_CANDY, 1, EVENT_DIM_CAVE_5F_RARE_CANDY
-	itemball_event 26, 25, DUSK_STONE, 1, EVENT_DIM_CAVE_5F_DUSK_STONE
-	itemball_event 30, 9, HYPER_POTION, 1, EVENT_DIM_CAVE_5F_HYPER_POTION
+	itemball_event  9, 27, DUSK_STONE, 1, EVENT_DIM_CAVE_5F_DUSK_STONE
+	itemball_event 31, 14, HYPER_POTION, 1, EVENT_DIM_CAVE_5F_HYPER_POTION
 
-const_value set 1
+	const_def 1 ; object constants
 	const DIMCAVE5F_BOULDER
 	const DIMCAVE5F_RILEY
 
@@ -166,12 +163,18 @@ DimCave5FRileyScript:
 	line "way out."
 	done
 
-TrainerSuper_nerdFoote:
-	trainer EVENT_BEAT_SUPER_NERD_FOOTE, SUPER_NERD, FOOTE, .SeenText, .BeatenText, 0, .Script
+GenericTrainerSuper_nerdFoote:
+	generictrainer SUPER_NERD, FOOTE, EVENT_BEAT_SUPER_NERD_FOOTE, .SeenText, .BeatenText
 
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
+	text "Save one life or"
+	line "save five?"
+
+	para "As a #mon"
+	line "trainer, you may"
+
+	para "have the power to"
+	line "save all six!"
+	done
 
 .SeenText:
 	text "I have a conundrum"
@@ -190,23 +193,16 @@ TrainerSuper_nerdFoote:
 	cont "How Zen!"
 	done
 
-.AfterText:
-	text "Save one life or"
-	line "save five?"
+GenericTrainerEngineerHoward:
+	generictrainer ENGINEER, HOWARD, EVENT_BEAT_ENGINEER_HOWARD, .SeenText, .BeatenText
 
-	para "As a #mon"
-	line "trainer, you may"
+	text "Water flows south"
+	line "from Cerulean Cape"
 
-	para "have the power to"
-	line "save all six!"
+	para "and follows a"
+	line "steady course to"
+	cont "the Power Plant."
 	done
-
-TrainerEngineerHoward:
-	trainer EVENT_BEAT_ENGINEER_HOWARD, ENGINEER, HOWARD, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "This waterfall"
@@ -218,21 +214,15 @@ TrainerEngineerHoward:
 	text "No! A blackout…"
 	done
 
-.AfterText:
-	text "Water flows south"
-	line "from Cerulean Cape"
+GenericTrainerSuper_nerdDave:
+	generictrainer SUPER_NERD, DAVE, EVENT_BEAT_SUPER_NERD_DAVE, .SeenText, .BeatenText
 
-	para "and follows a"
-	line "steady course to"
-	cont "the Power Plant."
+	text "You need a mining"
+	line "pick to mine."
+
+	para "But you can't get"
+	line "them around here."
 	done
-
-TrainerSuper_nerdDave:
-	trainer EVENT_BEAT_SUPER_NERD_DAVE, SUPER_NERD, DAVE, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "I've maxed out my"
@@ -247,10 +237,3 @@ TrainerSuper_nerdDave:
 	line "battling…"
 	done
 
-.AfterText:
-	text "You need a mining"
-	line "pick to mine."
-
-	para "But you can't get"
-	line "them around here."
-	done

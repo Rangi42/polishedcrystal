@@ -1,42 +1,39 @@
 MurkySwamp_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 3 ; warp events
+	warp_event  7, 35, STORMY_BEACH, 1
+	warp_event  8, 35, STORMY_BEACH, 2
+	warp_event 36,  5, UNION_CAVE_B1F_SOUTH, 3
 
-MurkySwamp_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 3
-	warp_def 35, 7, 1, STORMY_BEACH
-	warp_def 35, 8, 2, STORMY_BEACH
-	warp_def 5, 36, 3, UNION_CAVE_B1F_SOUTH
+	db 4 ; bg events
+	bg_event 20, 10, SIGNPOST_ITEM + MULCH, EVENT_MURKY_SWAMP_HIDDEN_MULCH
+	bg_event 22, 13, SIGNPOST_ITEM + X_SPCL_DEF, EVENT_MURKY_SWAMP_HIDDEN_X_SPCL_DEF
+	bg_event  5, 23, SIGNPOST_ITEM + BIG_MUSHROOM, EVENT_MURKY_SWAMP_HIDDEN_BIG_MUSHROOM
+	bg_event 40, 33, SIGNPOST_ITEM + TINYMUSHROOM, EVENT_MURKY_SWAMP_HIDDEN_TINYMUSHROOM
 
-.XYTriggers: db 0
+	db 15 ; object events
+	object_event 40, 26, SPRITE_CHERYL, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, MurkySwampCherylScript, EVENT_MURKY_SWAMP_CHERYL
+	object_event 22, 20, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_GENERICTRAINER, 5, GenericTrainerBug_catcherOscar, -1
+	object_event 17, 31, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerBug_catcherCallum, -1
+	object_event 25,  7, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerBug_catcherDavid, -1
+	object_event 27, 33, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_PURPLE, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerPokemaniacClive, -1
+	object_event 37, 17, SPRITE_HEX_MANIAC, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_PURPLE, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerHex_maniacMatilda, -1
+	object_event  6, 22, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerFirebreatherOleg, -1
+	object_event  3,  8, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerFisherDundee, -1
+	object_event  4, 33, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, MurkySwampYoungsterText, -1
+	itemball_event 14,  9, FULL_HEAL, 1, EVENT_MURKY_SWAMP_FULL_HEAL
+	itemball_event 10, 11, BIG_MUSHROOM, 1, EVENT_MURKY_SWAMP_BIG_MUSHROOM
+	itemball_event 43, 23, TOXIC_ORB, 1, EVENT_MURKY_SWAMP_TOXIC_ORB
+	itemball_event 14, 34, MULCH, 1, EVENT_MURKY_SWAMP_MULCH
+	cuttree_event  2, 14, EVENT_MURKY_SWAMP_CUT_TREE_1
+	cuttree_event  6, 19, EVENT_MURKY_SWAMP_CUT_TREE_2
 
-.Signposts: db 4
-	signpost 10, 20, SIGNPOST_ITEM + MULCH, EVENT_MURKY_SWAMP_HIDDEN_MULCH
-	signpost 13, 22, SIGNPOST_ITEM + X_SPCL_DEF, EVENT_MURKY_SWAMP_HIDDEN_X_SPCL_DEF
-	signpost 23, 5, SIGNPOST_ITEM + BIG_MUSHROOM, EVENT_MURKY_SWAMP_HIDDEN_BIG_MUSHROOM
-	signpost 33, 40, SIGNPOST_ITEM + TINYMUSHROOM, EVENT_MURKY_SWAMP_HIDDEN_TINYMUSHROOM
-
-.PersonEvents: db 15
-	person_event SPRITE_CHERYL, 26, 40, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, MurkySwampCherylScript, EVENT_MURKY_SWAMP_CHERYL
-	person_event SPRITE_BUG_CATCHER, 20, 22, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 5, TrainerBug_catcherOscar, -1
-	person_event SPRITE_BUG_CATCHER, 31, 17, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerBug_catcherCallum, -1
-	person_event SPRITE_BUG_CATCHER, 7, 25, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerBug_catcherDavid, -1
-	person_event SPRITE_SUPER_NERD, 33, 27, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerPokemaniacClive, -1
-	person_event SPRITE_HEX_MANIAC, 17, 37, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerHex_maniacMatilda, -1
-	person_event SPRITE_FISHER, 22, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerFirebreatherOleg, -1
-	person_event SPRITE_FISHER, 8, 3, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherDundee, -1
-	person_event SPRITE_YOUNGSTER, 33, 4, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, MurkySwampYoungsterText, -1
-	itemball_event 9, 14, FULL_HEAL, 1, EVENT_MURKY_SWAMP_FULL_HEAL
-	itemball_event 11, 10, BIG_MUSHROOM, 1, EVENT_MURKY_SWAMP_BIG_MUSHROOM
-	itemball_event 23, 43, TOXIC_ORB, 1, EVENT_MURKY_SWAMP_TOXIC_ORB
-	itemball_event 34, 14, MULCH, 1, EVENT_MURKY_SWAMP_MULCH
-	cuttree_event 14, 2, EVENT_MURKY_SWAMP_CUT_TREE_1
-	cuttree_event 19, 6, EVENT_MURKY_SWAMP_CUT_TREE_2
-
-const_value set 1
+	const_def 1 ; object constants
 	const MURKYSWAMP_CHERYL
 
 MurkySwampCherylScript:
@@ -146,12 +143,15 @@ MurkySwampCherylScript:
 	para "Bye for now!"
 	done
 
-TrainerBug_catcherOscar:
-	trainer EVENT_BEAT_BUG_CATCHER_OSCAR, BUG_CATCHER, OSCAR, .SeenText, .BeatenText, 0, .Script
+GenericTrainerBug_catcherOscar:
+	generictrainer BUG_CATCHER, OSCAR, EVENT_BEAT_BUG_CATCHER_OSCAR, .SeenText, .BeatenText
 
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
+	text "I came here to"
+	line "find bugs!"
+
+	para "Nobody warned me"
+	line "about ghosts!"
+	done
 
 .SeenText:
 	text "G-g-g-ghost!"
@@ -161,20 +161,15 @@ TrainerBug_catcherOscar:
 	text "Get me outta here!"
 	done
 
-.AfterText:
-	text "I came here to"
-	line "find bugs!"
+GenericTrainerBug_catcherCallum:
+	generictrainer BUG_CATCHER, CALLUM, EVENT_BEAT_BUG_CATCHER_CALLUM, .SeenText, .BeatenText
 
-	para "Nobody warned me"
-	line "about ghosts!"
+	text "This close to the"
+	line "coast, I guess the"
+
+	para "land becomes soak-"
+	line "ed with water."
 	done
-
-TrainerBug_catcherCallum:
-	trainer EVENT_BEAT_BUG_CATCHER_CALLUM, BUG_CATCHER, CALLUM, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "I'm from Azalea,"
@@ -189,20 +184,17 @@ TrainerBug_catcherCallum:
 	line "It's a swamp!"
 	done
 
-.AfterText:
-	text "This close to the"
-	line "coast, I guess the"
+GenericTrainerBug_catcherDavid:
+	generictrainer BUG_CATCHER, DAVID, EVENT_BEAT_BUG_CATCHER_DAVID, .SeenText, .BeatenText
 
-	para "land becomes soak-"
-	line "ed with water."
+	text "It must be the"
+	line "trees blocking"
+	cont "the sun."
+
+	para "That's gotta be"
+	line "why it's so cold,"
+	cont "right?"
 	done
-
-TrainerBug_catcherDavid:
-	trainer EVENT_BEAT_BUG_CATCHER_DAVID, BUG_CATCHER, DAVID, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "It feels so cold"
@@ -213,22 +205,17 @@ TrainerBug_catcherDavid:
 	text "Brrr…"
 	done
 
-.AfterText:
-	text "It must be the"
-	line "trees blocking"
-	cont "the sun."
+GenericTrainerPokemaniacClive:
+	generictrainer POKEMANIAC, CLIVE, EVENT_BEAT_POKEMANIAC_CLIVE, .SeenText, .BeatenText
 
-	para "That's gotta be"
-	line "why it's so cold,"
-	cont "right?"
+	text "I know a fellow"
+	line "#maniac when I"
+	cont "see one."
+
+	para "Leave some rare"
+	line "#mon for me,"
+	cont "OK?"
 	done
-
-TrainerPokemaniacClive:
-	trainer EVENT_BEAT_POKEMANIAC_CLIVE, POKEMANIAC, CLIVE, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Don't tell me,"
@@ -241,22 +228,15 @@ TrainerPokemaniacClive:
 	text "I knew it!"
 	done
 
-.AfterText:
-	text "I know a fellow"
-	line "#maniac when I"
-	cont "see one."
+GenericTrainerHex_maniacMatilda:
+	generictrainer HEX_MANIAC, MATILDA, EVENT_BEAT_HEX_MANIAC_MATILDA, .SeenText, .BeatenText
 
-	para "Leave some rare"
-	line "#mon for me,"
-	cont "OK?"
+	text "So off into the"
+	line "trees I stroll,"
+
+	para "to lose my mind"
+	line "and find my soul."
 	done
-
-TrainerHex_maniacMatilda:
-	trainer EVENT_BEAT_HEX_MANIAC_MATILDA, HEX_MANIAC, MATILDA, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Within the dark-"
@@ -269,20 +249,12 @@ TrainerHex_maniacMatilda:
 	text "Fufufufu…"
 	done
 
-.AfterText:
-	text "So off into the"
-	line "trees I stroll,"
+GenericTrainerFirebreatherOleg:
+	generictrainer FIREBREATHER, OLEG, EVENT_BEAT_FIREBREATHER_OLEG, .SeenText, .BeatenText
 
-	para "to lose my mind"
-	line "and find my soul."
+	text "It's cold and dark"
+	line "without a fire…"
 	done
-
-TrainerFirebreatherOleg:
-	trainer EVENT_BEAT_FIREBREATHER_OLEG, FIREBREATHER, OLEG, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "I want to light a"
@@ -298,17 +270,13 @@ TrainerFirebreatherOleg:
 	text "I risked and lost!"
 	done
 
-.AfterText:
-	text "It's cold and dark"
-	line "without a fire…"
+GenericTrainerFisherDundee:
+	generictrainer FISHER, DUNDEE, EVENT_BEAT_FISHER_DUNDEE, .SeenText, .BeatenText
+
+	text "I would go fish in"
+	line "the ocean, but I'm"
+	cont "lost in here…"
 	done
-
-TrainerFisherDundee:
-	trainer EVENT_BEAT_FISHER_DUNDEE, FISHER, DUNDEE, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "All the #mon I"
@@ -319,12 +287,6 @@ TrainerFisherDundee:
 .BeatenText:
 	text "This is no place"
 	line "for fishing…"
-	done
-
-.AfterText:
-	text "I would go fish in"
-	line "the ocean, but I'm"
-	cont "lost in here…"
 	done
 
 MurkySwampYoungsterText:

@@ -1,24 +1,21 @@
 SaffronHitmontopKidHouse_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 2 ; warp events
+	warp_event  2,  7, SAFFRON_CITY, 19
+	warp_event  3,  7, SAFFRON_CITY, 19
 
-SaffronHitmontopKidHouse_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 2
-	warp_def 7, 2, 19, SAFFRON_CITY
-	warp_def 7, 3, 19, SAFFRON_CITY
+	db 0 ; bg events
 
-.XYTriggers: db 0
+	db 2 ; object events
+	object_event  5,  4, SPRITE_CHILD, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, PAL_NPC_BROWN, PERSONTYPE_SCRIPT, 0, SaffronHitmontopKidHouseChildScript, -1
+	object_event  2,  4, SPRITE_TEACHER, SPRITEMOVEDATA_STANDING_LEFT, 2, 2, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, SaffronHitmontopKidHouseTeacherScript, -1
 
-.Signposts: db 0
-
-.PersonEvents: db 2
-	person_event SPRITE_CHILD, 4, 5, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, SaffronHitmontopKidHouseChildScript, -1
-	person_event SPRITE_TEACHER, 4, 2, SPRITEMOVEDATA_STANDING_LEFT, 2, 2, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, SaffronHitmontopKidHouseTeacherScript, -1
-
-const_value set 1
+	const_def 1 ; object constants
 	const SAFFRONHITMONTOPKIDHOUSE_CHILD
 
 SaffronHitmontopKidHouseChildScript:

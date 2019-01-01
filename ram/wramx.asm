@@ -98,7 +98,7 @@ wd004:: ds 1 ; TODO: replace with meaningful labels
 NEXTU
 ; miscellaneous
 wTempDayOfWeek::
-wApricorns:: ds 1
+wUnusedApricorns:: ds 1
 	ds 2
 
 wStartFlypoint:: ds 1
@@ -382,7 +382,6 @@ wMapBlockDataBank:: ds 1
 wMapBlockDataPointer:: ds 2
 wMapScriptHeaderBank:: ds 1
 wMapScriptHeaderPointer:: ds 2
-wMapEventHeaderPointer:: ds 2
 wMapConnections:: ds 1 ; bit set
 
 wNorthMapConnection::
@@ -803,6 +802,9 @@ wMapObjects::
 	map_object wMap15
 	map_object wMap16
 	map_object wMap17
+	map_object wMap18
+	map_object wMap19
+	map_object wMap20
 wMapObjectsEnd::
 
 wObjectMasks:: ds NUM_OBJECTS
@@ -878,6 +880,8 @@ wKeyItemsEnd::
 
 wPCItems:: ds MAX_PC_ITEMS * 2 + 1
 wPCItemsEnd::
+
+wApricorns:: ds NUM_APRICORNS
 
 wPokegearFlags::
 ; bit 0: map

@@ -1,35 +1,32 @@
 BattleTower1F_MapScriptHeader:
+	db 1 ; scene scripts
+	scene_script BattleTower1FTrigger0
 
-.MapTriggers: db 1
-	dw BattleTower1FTrigger0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 4 ; warp events
+	warp_event 10, 13, BATTLE_TOWER_OUTSIDE, 3
+	warp_event 11, 13, BATTLE_TOWER_OUTSIDE, 4
+	warp_event 10,  0, BATTLE_TOWER_ELEVATOR, 1
+	warp_event  0,  5, BATTLE_TOWER_2F, 1
 
-BattleTower1F_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 4
-	warp_def 13, 10, 3, BATTLE_TOWER_OUTSIDE
-	warp_def 13, 11, 4, BATTLE_TOWER_OUTSIDE
-	warp_def 0, 10, 1, BATTLE_TOWER_ELEVATOR
-	warp_def 5, 0, 1, BATTLE_TOWER_2F
+	db 1 ; bg events
+	bg_event 11,  7, SIGNPOST_READ, MapBattleTower1FSignpost0Script
 
-.XYTriggers: db 0
+	db 9 ; object events
+	object_event 10,  7, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ReceptionistScript_0x9e3e2, -1
+	pc_nurse_event  6, 6
+	object_event 14,  6, SPRITE_CLERK, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, pokemart, MARTTYPE_BP, MART_BT_1, -1
+	object_event 16,  6, SPRITE_CLERK, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, pokemart, MARTTYPE_BP, MART_BT_2, -1
+	object_event 18,  6, SPRITE_CLERK, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, pokemart, MARTTYPE_BP, MART_BT_3, -1
+	object_event  6, 12, SPRITE_PHARMACIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_PURPLE, PERSONTYPE_SCRIPT, 0, BattleTowerPharmacistScript, -1
+	object_event 16, 11, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, Text_BattleTowerCooltrainerF, -1
+	object_event  2, 10, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, Text_BattleTowerBugCatcher, -1
+	object_event 20,  9, SPRITE_GRANNY, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, Text_BattleTowerGranny, -1
 
-.Signposts: db 1
-	signpost 7, 11, SIGNPOST_READ, MapBattleTower1FSignpost0Script
-
-.PersonEvents: db 9
-	person_event SPRITE_RECEPTIONIST, 7, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ReceptionistScript_0x9e3e2, -1
-	pc_nurse_event 6, 6
-	person_event SPRITE_CLERK, 6, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, pokemart, MARTTYPE_BP, MART_BT_1, -1
-	person_event SPRITE_CLERK, 6, 16, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, pokemart, MARTTYPE_BP, MART_BT_2, -1
-	person_event SPRITE_CLERK, 6, 18, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, pokemart, MARTTYPE_BP, MART_BT_3, -1
-	person_event SPRITE_PHARMACIST, 12, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, BattleTowerPharmacistScript, -1
-	person_event SPRITE_COOLTRAINER_F, 11, 16, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, Text_BattleTowerCooltrainerF, -1
-	person_event SPRITE_BUG_CATCHER, 10, 2, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, Text_BattleTowerBugCatcher, -1
-	person_event SPRITE_GRANNY, 9, 20, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, Text_BattleTowerGranny, -1
-
-const_value set 1
+	const_def 1 ; object constants
 	const BATTLETOWER1F_RECEPTIONIST
 
 BattleTower1FTrigger0:

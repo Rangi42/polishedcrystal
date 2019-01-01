@@ -1,31 +1,28 @@
 FireIsland_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 14 ; warp events
+	warp_event  5, 29, SHAMOUTI_COAST, 1
+	warp_event 19, 29, FIRE_ISLAND_ROOF, 1
+	warp_event  7,  5, FIRE_ISLAND, 4
+	warp_event 21,  5, FIRE_ISLAND, 3
+	warp_event  7,  9, FIRE_ISLAND, 6
+	warp_event 21,  9, FIRE_ISLAND, 5
+	warp_event  2, 16, FIRE_ISLAND, 8
+	warp_event 16, 16, FIRE_ISLAND, 7
+	warp_event  9, 19, FIRE_ISLAND, 10
+	warp_event 23, 19, FIRE_ISLAND, 9
+	warp_event  3, 23, FIRE_ISLAND, 12
+	warp_event 17, 23, FIRE_ISLAND, 11
+	warp_event 20, 27, FIRE_ISLAND, 14
+	warp_event  6, 27, FIRE_ISLAND, 13 ; hole
 
-FireIsland_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 14
-	warp_def 29, 5, 1, SHAMOUTI_COAST
-	warp_def 29, 19, 1, FIRE_ISLAND_ROOF
-	warp_def 5, 7, 4, FIRE_ISLAND
-	warp_def 5, 21, 3, FIRE_ISLAND
-	warp_def 9, 7, 6, FIRE_ISLAND
-	warp_def 9, 21, 5, FIRE_ISLAND
-	warp_def 16, 2, 8, FIRE_ISLAND
-	warp_def 16, 16, 7, FIRE_ISLAND
-	warp_def 19, 9, 10, FIRE_ISLAND
-	warp_def 19, 23, 9, FIRE_ISLAND
-	warp_def 23, 3, 12, FIRE_ISLAND
-	warp_def 23, 17, 11, FIRE_ISLAND
-	warp_def 27, 20, 14, FIRE_ISLAND
-	warp_def 27, 6, 13, FIRE_ISLAND ; hole
+	db 0 ; bg events
 
-.XYTriggers: db 0
-
-.Signposts: db 0
-
-.PersonEvents: db 1
-	itemball_event 19, 2, HEAT_ROCK, 1, EVENT_FIRE_ISLAND_HEAT_ROCK
+	db 1 ; object events
+	itemball_event  2, 19, HEAT_ROCK, 1, EVENT_FIRE_ISLAND_HEAT_ROCK
 

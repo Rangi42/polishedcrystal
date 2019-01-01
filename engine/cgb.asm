@@ -719,10 +719,17 @@ _CGB_PackPals: ; 93d3
 	ld a, $1
 	call FillBoxCGB
 
-	hlcoord 7, 2, wAttrMap
-	lb bc, 9, 1
 	ld a, $2
-	call FillBoxCGB
+	hlcoord 7, 2, wAttrMap
+	ld [hl], a
+	hlcoord 7, 4, wAttrMap
+	ld [hl], a
+	hlcoord 7, 6, wAttrMap
+	ld [hl], a
+	hlcoord 7, 8, wAttrMap
+	ld [hl], a
+	hlcoord 7, 10, wAttrMap
+	ld [hl], a
 
 	hlcoord 0, 2, wAttrMap
 	lb bc, 5, 5

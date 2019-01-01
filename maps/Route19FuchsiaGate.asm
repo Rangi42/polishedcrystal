@@ -1,23 +1,20 @@
 Route19FuchsiaGate_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 4 ; warp events
+	warp_event  4,  0, FUCHSIA_CITY, 9
+	warp_event  5,  0, FUCHSIA_CITY, 10
+	warp_event  4,  7, ROUTE_19, 1
+	warp_event  5,  7, ROUTE_19, 1
 
-Route19FuchsiaGate_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 4
-	warp_def 0, 4, 9, FUCHSIA_CITY
-	warp_def 0, 5, 10, FUCHSIA_CITY
-	warp_def 7, 4, 1, ROUTE_19
-	warp_def 7, 5, 1, ROUTE_19
+	db 0 ; bg events
 
-.XYTriggers: db 0
-
-.Signposts: db 0
-
-.PersonEvents: db 1
-	person_event SPRITE_OFFICER, 4, 0, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, OfficerScript_0x1ab3f6, -1
+	db 1 ; object events
+	object_event  0,  4, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, OfficerScript_0x1ab3f6, -1
 
 OfficerScript_0x1ab3f6:
 	checkevent EVENT_CINNABAR_ROCKS_CLEARED

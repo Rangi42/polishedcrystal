@@ -1,25 +1,22 @@
 NavelRockRoof_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 1 ; callbacks
+	callback MAPCALLBACK_SPRITES, NavelRockRoofDailyLeafRematchCallback
 
-.MapCallbacks: db 1
-	dbw MAPCALLBACK_SPRITES, NavelRockRoofDailyLeafRematchCallback
+	db 1 ; warp events
+	warp_event  9, 15, NAVEL_ROCK_INSIDE, 14
 
-NavelRockRoof_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 1
-	warp_def 15, 9, 14, NAVEL_ROCK_INSIDE
+	db 0 ; bg events
 
-.XYTriggers: db 0
+	db 3 ; object events
+	object_event  8,  8, SPRITE_LEAF, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_SCRIPT, 0, Leaf, EVENT_LEAF_IN_NAVEL_ROCK
+	object_event  8,  8, SPRITE_CHRIS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CHRIS_IN_NAVEL_ROCK
+	object_event  8,  8, SPRITE_KRIS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_KRIS_IN_NAVEL_ROCK
 
-.Signposts: db 0
-
-.PersonEvents: db 3
-	person_event SPRITE_LEAF, 8, 8, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, Leaf, EVENT_LEAF_IN_NAVEL_ROCK
-	person_event SPRITE_CHRIS, 8, 8, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CHRIS_IN_NAVEL_ROCK
-	person_event SPRITE_KRIS, 8, 8, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_KRIS_IN_NAVEL_ROCK
-
-const_value set 1
+	const_def 1 ; object constants
 	const NAVELROCKROOF_GREEN
 	const NAVELROCKROOF_CHRIS
 	const NAVELROCKROOF_KRIS

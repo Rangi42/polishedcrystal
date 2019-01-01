@@ -1,23 +1,20 @@
 CeladonMansionRoof_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 3 ; warp events
+	warp_event  1,  1, CELADON_MANSION_3F, 1
+	warp_event  6,  1, CELADON_MANSION_3F, 4
+	warp_event  2,  5, CELADON_MANSION_ROOF_HOUSE, 1
 
-CeladonMansionRoof_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 3
-	warp_def 1, 1, 1, CELADON_MANSION_3F
-	warp_def 1, 6, 4, CELADON_MANSION_3F
-	warp_def 5, 2, 1, CELADON_MANSION_ROOF_HOUSE
+	db 1 ; bg events
+	bg_event  6,  1, SIGNPOST_LEFT, MapCeladonMansionRoofSignpost0Script
 
-.XYTriggers: db 0
-
-.Signposts: db 1
-	signpost 1, 6, SIGNPOST_LEFT, MapCeladonMansionRoofSignpost0Script
-
-.PersonEvents: db 1
-	person_event SPRITE_FISHER, 5, 7, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x71a3f, -1
+	db 1 ; object events
+	object_event  7,  5, SPRITE_FISHER, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x71a3f, -1
 
 MapCeladonMansionRoofSignpost0Script:
 	jumptext UnknownText_0x71aa1

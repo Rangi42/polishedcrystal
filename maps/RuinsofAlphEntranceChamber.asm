@@ -1,22 +1,19 @@
 RuinsofAlphEntranceChamber_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 3 ; warp events
+	warp_event  3,  7, RUINS_OF_ALPH_OUTSIDE, 5
+	warp_event  4,  7, RUINS_OF_ALPH_OUTSIDE, 5
+	warp_event  4,  3, RUINS_OF_ALPH_INNER_CHAMBER, 1
 
-RuinsofAlphEntranceChamber_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 3
-	warp_def 7, 3, 5, RUINS_OF_ALPH_OUTSIDE
-	warp_def 7, 4, 5, RUINS_OF_ALPH_OUTSIDE
-	warp_def 3, 4, 1, RUINS_OF_ALPH_INNER_CHAMBER
+	db 1 ; bg events
+	bg_event  2,  3, SIGNPOST_JUMPTEXT, RuinsofAlphEntranceChamberStatueText
 
-.XYTriggers: db 0
-
-.Signposts: db 1
-	signpost 3, 2, SIGNPOST_JUMPTEXT, RuinsofAlphEntranceChamberStatueText
-
-.PersonEvents: db 0
+	db 0 ; object events
 
 RuinsofAlphEntranceChamberStatueText:
 	text "It's a replica of"

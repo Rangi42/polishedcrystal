@@ -1,25 +1,22 @@
 TrainerHouseB1F_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 1 ; warp events
+	warp_event  9,  4, TRAINER_HOUSE_1F, 3
 
-TrainerHouseB1F_MapEventHeader:
+	db 1 ; coord events
+	coord_event  7,  3, 0, TrainerHouseReceptionistScript
 
-.Warps: db 1
-	warp_def 4, 9, 3, TRAINER_HOUSE_1F
+	db 0 ; bg events
 
-.XYTriggers: db 1
-	xy_trigger 0, 3, 7, TrainerHouseReceptionistScript
+	db 3 ; object events
+	object_event  6, 11, SPRITE_CHRIS, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_TRAINER_HOUSE_CAL
+	object_event  6, 11, SPRITE_KRIS, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_TRAINER_HOUSE_CARRIE
+	object_event  7,  1, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
 
-.Signposts: db 0
-
-.PersonEvents: db 3
-	person_event SPRITE_CHRIS, 11, 6, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_TRAINER_HOUSE_CAL
-	person_event SPRITE_KRIS, 11, 6, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_TRAINER_HOUSE_CARRIE
-	person_event SPRITE_RECEPTIONIST, 1, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
-
-const_value set 1
+	const_def 1 ; object constants
 	const TRAINERHOUSEB1F_CAL
 	const TRAINERHOUSEB1F_CARRIE
 

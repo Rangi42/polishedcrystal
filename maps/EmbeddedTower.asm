@@ -1,24 +1,21 @@
 EmbeddedTower_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 2 ; warp events
+	warp_event 10, 23, ROUTE_47, 6
+	warp_event 11, 23, ROUTE_47, 6
 
-EmbeddedTower_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 2
-	warp_def 23, 10, 6, ROUTE_47
-	warp_def 23, 11, 6, ROUTE_47
+	db 0 ; bg events
 
-.XYTriggers: db 0
+	db 2 ; object events
+	object_event 12,  9, SPRITE_STEVEN, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, EmbeddedTowerSteven1Script, EVENT_EMBEDDED_TOWER_STEVEN_1
+	object_event  8, 11, SPRITE_STEVEN, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, EmbeddedTowerSteven2Script, EVENT_EMBEDDED_TOWER_STEVEN_2
 
-.Signposts: db 0
-
-.PersonEvents: db 2
-	person_event SPRITE_STEVEN, 9, 12, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, EmbeddedTowerSteven1Script, EVENT_EMBEDDED_TOWER_STEVEN_1
-	person_event SPRITE_STEVEN, 11, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, EmbeddedTowerSteven2Script, EVENT_EMBEDDED_TOWER_STEVEN_2
-
-const_value set 1
+	const_def 1 ; object constants
 	const EMBEDDEDTOWER_STEVEN1
 	const EMBEDDEDTOWER_STEVEN2
 
@@ -62,10 +59,10 @@ EmbeddedTowerSteven1Script:
 	jumpopenedtext EmbeddedTowerSteven1AfterText
 
 EmbeddedTowerSteven2Script:
+	checkevent EVENT_BEAT_STEVEN
+	iftrue_jumptextfaceplayer EmbeddedTowerSteven2AfterText
 	faceplayer
 	opentext
-	checkevent EVENT_BEAT_STEVEN
-	iftrue_jumpopenedtext EmbeddedTowerSteven2AfterText
 	writetext EmbeddedTowerSteven2ChallengeText
 	yesorno
 	iffalse_jumpopenedtext EmbeddedTowerSteven2NoText

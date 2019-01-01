@@ -1,56 +1,64 @@
 SafariZoneWest_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 8 ; warp events
+	warp_event 22,  2, SAFARI_ZONE_NORTH, 8
+	warp_event 23,  2, SAFARI_ZONE_NORTH, 9
+	warp_event 28,  2, SAFARI_ZONE_NORTH, 3
+	warp_event 29,  2, SAFARI_ZONE_NORTH, 4
+	warp_event 31, 24, SAFARI_ZONE_HUB, 5
+	warp_event 31, 25, SAFARI_ZONE_HUB, 6
+	warp_event 13, 13, SAFARI_ZONE_WEST_REST_HOUSE_1, 1
+	warp_event  5,  5, SAFARI_ZONE_WEST_REST_HOUSE_2, 1
 
-SafariZoneWest_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 8
-	warp_def 2, 22, 8, SAFARI_ZONE_NORTH
-	warp_def 2, 23, 9, SAFARI_ZONE_NORTH
-	warp_def 2, 28, 3, SAFARI_ZONE_NORTH
-	warp_def 2, 29, 4, SAFARI_ZONE_NORTH
-	warp_def 24, 31, 5, SAFARI_ZONE_HUB
-	warp_def 25, 31, 6, SAFARI_ZONE_HUB
-	warp_def 13, 13, 1, SAFARI_ZONE_WEST_REST_HOUSE_1
-	warp_def 5, 5, 1, SAFARI_ZONE_WEST_REST_HOUSE_2
+	db 5 ; bg events
+	bg_event 26, 24, SIGNPOST_JUMPTEXT, SafariZoneWestAreaSignText
+	bg_event 14, 14, SIGNPOST_JUMPTEXT, SafariZoneWestRestHouseSignText
+	bg_event 28,  6, SIGNPOST_JUMPTEXT, SafariZoneWestTrainerTips1SignText
+	bg_event 19,  5, SIGNPOST_JUMPTEXT, SafariZoneWestTrainerTips2SignText
+	bg_event 13,  6, SIGNPOST_ITEM + NUGGET, EVENT_SAFARI_ZONE_WEST_HIDDEN_NUGGET
 
-.XYTriggers: db 0
+	db 4 ; object events
+	object_event 22, 23, SPRITE_LASS, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerLassDuplica, -1
+	object_event 23, 12, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerCamperAmos, -1
+	object_event 12, 19, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerTamerBrett, -1
+	itemball_event 14,  9, MAX_REVIVE, 1, EVENT_SAFARI_ZONE_WEST_MAX_REVIVE
 
-.Signposts: db 5
-	signpost 24, 26, SIGNPOST_JUMPTEXT, SafariZoneWestAreaSignText
-	signpost 14, 14, SIGNPOST_JUMPTEXT, SafariZoneWestRestHouseSignText
-	signpost 6, 28, SIGNPOST_JUMPTEXT, SafariZoneWestTrainerTips1SignText
-	signpost 5, 19, SIGNPOST_JUMPTEXT, SafariZoneWestTrainerTips2SignText
-	signpost 6, 13, SIGNPOST_ITEM + NUGGET, EVENT_SAFARI_ZONE_WEST_HIDDEN_NUGGET
+GenericTrainerLassDuplica:
+	generictrainer LASS, DUPLICA, EVENT_BEAT_LASS_DUPLICA, LassDuplicaSeenText, LassDuplicaBeatenText
 
-.PersonEvents: db 4
-	person_event SPRITE_LASS, 23, 22, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerLassDuplica, -1
-	person_event SPRITE_YOUNGSTER, 12, 23, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerCamperAmos, -1
-	person_event SPRITE_COOLTRAINER_M, 19, 12, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 4, TrainerTamerBrett, -1
-	itemball_event 9, 14, MAX_REVIVE, 1, EVENT_SAFARI_ZONE_WEST_MAX_REVIVE
+	text "I'm really good at"
+	line "impressions!"
 
-TrainerLassDuplica:
-	trainer EVENT_BEAT_LASS_DUPLICA, LASS, DUPLICA, LassDuplicaSeenText, LassDuplicaBeatenText, 0, LassDuplicaScript
+	para "Someday I'll become"
+	line "a Fuchsia Gym"
 
-LassDuplicaScript:
-	end_if_just_battled
-	jumptextfaceplayer LassDuplicaAfterText
+	para "Trainer and mimic"
+	line "Janine."
+	done
 
-TrainerCamperAmos:
-	trainer EVENT_BEAT_CAMPER_AMOS, CAMPER, AMOS, CamperAmosSeenText, CamperAmosBeatenText, 0, CamperAmosScript
+GenericTrainerCamperAmos:
+	generictrainer CAMPER, AMOS, EVENT_BEAT_CAMPER_AMOS, CamperAmosSeenText, CamperAmosBeatenText
 
-CamperAmosScript:
-	end_if_just_battled
-	jumptextfaceplayer CamperAmosAfterText
+	text "I'll search far"
+	line "and wide for new"
+	cont "#mon."
+	done
 
-TrainerTamerBrett:
-	trainer EVENT_BEAT_TAMER_BRETT, TAMER, BRETT, TamerBrettSeenText, TamerBrettBeatenText, 0, TamerBrettScript
+GenericTrainerTamerBrett:
+	generictrainer TAMER, BRETT, EVENT_BEAT_TAMER_BRETT, TamerBrettSeenText, TamerBrettBeatenText
 
-TamerBrettScript:
-	end_if_just_battled
-	jumptextfaceplayer TamerBrettAfterText
+	text "You have to com-"
+	line "mand #mon with"
+	cont "confidence."
+
+	para "Earning Badges can"
+	line "help with that."
+	done
 
 LassDuplicaSeenText:
 	text "To truly use"
@@ -61,17 +69,6 @@ LassDuplicaSeenText:
 LassDuplicaBeatenText:
 	text "I've got a lot"
 	line "to learn."
-	done
-
-LassDuplicaAfterText:
-	text "I'm really good at"
-	line "impressions!"
-
-	para "Someday I'll become"
-	line "a Fuschia Gym"
-
-	para "Trainer and mimic"
-	line "Janine."
 	done
 
 CamperAmosSeenText:
@@ -89,12 +86,6 @@ CamperAmosBeatenText:
 	cont "them!"
 	done
 
-CamperAmosAfterText:
-	text "I'll search far"
-	line "and wide for new"
-	cont "#mon."
-	done
-
 TamerBrettSeenText:
 	text "Do you know how to"
 	line "handle aggressive"
@@ -103,15 +94,6 @@ TamerBrettSeenText:
 
 TamerBrettBeatenText:
 	text "Yeah, you do!"
-	done
-
-TamerBrettAfterText:
-	text "You have to com-"
-	line "mand #mon with"
-	cont "confidence."
-
-	para "Earning Badges can"
-	line "help with that."
 	done
 
 SafariZoneWestAreaSignText:

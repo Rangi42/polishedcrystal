@@ -1,21 +1,18 @@
 SafariZoneNorthRestHouse_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 2 ; warp events
+	warp_event  2,  7, SAFARI_ZONE_NORTH, 7
+	warp_event  3,  7, SAFARI_ZONE_NORTH, 7
 
-SafariZoneNorthRestHouse_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 2
-	warp_def 7, 2, 7, SAFARI_ZONE_NORTH
-	warp_def 7, 3, 7, SAFARI_ZONE_NORTH
+	db 4 ; bg events
+	bg_event  4,  1, SIGNPOST_READ, PokemonJournalKogaScript
+	bg_event  5,  1, SIGNPOST_READ, PokemonJournalKogaScript
+	bg_event  6,  1, SIGNPOST_READ, PokemonJournalKogaScript
+	bg_event  7,  1, SIGNPOST_READ, PokemonJournalKogaScript
 
-.XYTriggers: db 0
-
-.Signposts: db 4
-	signpost 1, 4, SIGNPOST_READ, PokemonJournalKogaScript
-	signpost 1, 5, SIGNPOST_READ, PokemonJournalKogaScript
-	signpost 1, 6, SIGNPOST_READ, PokemonJournalKogaScript
-	signpost 1, 7, SIGNPOST_READ, PokemonJournalKogaScript
-
-.PersonEvents: db 0
+	db 0 ; object events

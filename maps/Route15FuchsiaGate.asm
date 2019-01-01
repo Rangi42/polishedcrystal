@@ -1,24 +1,21 @@
 Route15FuchsiaGate_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 5 ; warp events
+	warp_event  0,  5, FUCHSIA_CITY, 7
+	warp_event  0,  6, FUCHSIA_CITY, 8
+	warp_event  9,  5, ROUTE_15, 1
+	warp_event  9,  6, ROUTE_15, 2
+	warp_event  8,  8, ROUTE_15_FUCHSIA_GATE_2F, 1
 
-Route15FuchsiaGate_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 5
-	warp_def 5, 0, 7, FUCHSIA_CITY
-	warp_def 6, 0, 8, FUCHSIA_CITY
-	warp_def 5, 9, 1, ROUTE_15
-	warp_def 6, 9, 2, ROUTE_15
-	warp_def 8, 8, 1, ROUTE_15_FUCHSIA_GATE_2F
+	db 0 ; bg events
 
-.XYTriggers: db 0
-
-.Signposts: db 0
-
-.PersonEvents: db 1
-	person_event SPRITE_OFFICER, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1967a1, -1
+	db 1 ; object events
+	object_event  5,  1, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1967a1, -1
 
 UnknownText_0x1967a1:
 	text "You're working on"

@@ -1,29 +1,26 @@
 MountMortarB1F_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 2 ; warp events
+	warp_event  3,  3, MOUNT_MORTAR_1F_INSIDE, 5
+	warp_event 19, 29, MOUNT_MORTAR_1F_OUTSIDE, 7
 
-MountMortarB1F_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 2
-	warp_def 3, 3, 5, MOUNT_MORTAR_1F_INSIDE
-	warp_def 29, 19, 7, MOUNT_MORTAR_1F_OUTSIDE
+	db 1 ; bg events
+	bg_event  4,  6, SIGNPOST_ITEM + MAX_REVIVE, EVENT_MOUNT_MORTAR_B1F_HIDDEN_MAX_REVIVE
 
-.XYTriggers: db 0
-
-.Signposts: db 1
-	signpost 6, 4, SIGNPOST_ITEM + MAX_REVIVE, EVENT_MOUNT_MORTAR_B1F_HIDDEN_MAX_REVIVE
-
-.PersonEvents: db 8
-	person_event SPRITE_POKEFAN_M, 31, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, MountMortarB1FHikerScript, -1
-	person_event SPRITE_BLACK_BELT, 4, 16, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, KiyoScript_0x7e1f6, -1
-	strengthboulder_event 10, 9
-	itemball_event 12, 29, HYPER_POTION, 1, EVENT_MOUNT_MORTAR_B1F_HYPER_POTION
-	itemball_event 16, 4, CARBOS, 1, EVENT_MOUNT_MORTAR_B1F_CARBOS
-	itemball_event 24, 34, PROTECTOR, 1, EVENT_MOUNT_MORTAR_B1F_PROTECTOR
-	itemball_event 3, 32, MAX_ETHER, 1, EVENT_MOUNT_MORTAR_B1F_MAX_ETHER
-	itemball_event 26, 21, PP_UP, 1, EVENT_MOUNT_MORTAR_B1F_PP_UP
+	db 8 ; object events
+	object_event 11, 31, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_SCRIPT, 0, MountMortarB1FHikerScript, -1
+	object_event 16,  4, SPRITE_BLACK_BELT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_SCRIPT, 0, KiyoScript_0x7e1f6, -1
+	strengthboulder_event  9, 10
+	itemball_event 29, 12, HYPER_POTION, 1, EVENT_MOUNT_MORTAR_B1F_HYPER_POTION
+	itemball_event  4, 16, CARBOS, 1, EVENT_MOUNT_MORTAR_B1F_CARBOS
+	itemball_event 34, 24, PROTECTOR, 1, EVENT_MOUNT_MORTAR_B1F_PROTECTOR
+	itemball_event 32,  3, MAX_ETHER, 1, EVENT_MOUNT_MORTAR_B1F_MAX_ETHER
+	itemball_event 21, 26, PP_UP, 1, EVENT_MOUNT_MORTAR_B1F_PP_UP
 
 MountMortarB1FHikerScript:
 	faceplayer
@@ -56,22 +53,19 @@ MountMortarB1FTutorDefenseCurlScript:
 	jumpopenedtext Text_MountMortarB1FTutorTaught
 
 KiyoScript_0x7e1f6:
-	faceplayer
-	opentext
 	checkevent EVENT_GOT_TYROGUE_FROM_KIYO
-	iftrue UnknownScript_0x7e231
+	iftrue_jumptextfaceplayer UnknownText_0x7e36a
+	faceplayer
 	checkevent EVENT_BEAT_KIYO
 	iftrue UnknownScript_0x7e217
-	writetext UnknownText_0x7e24d
-	waitbutton
-	closetext
+	showtext UnknownText_0x7e24d
 	winlosstext UnknownText_0x7e2a9, 0
 	loadtrainer KARATE_KING, KIYO
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_KIYO
-	opentext
 UnknownScript_0x7e217:
+	opentext
 	writetext UnknownText_0x7e2c0
 	buttonsound
 	waitsfx
@@ -84,8 +78,21 @@ UnknownScript_0x7e217:
 	writebyte PREMIER_BALL
 	special SetLastPartyMonBall
 	setevent EVENT_GOT_TYROGUE_FROM_KIYO
-UnknownScript_0x7e231:
-	jumpopenedtext UnknownText_0x7e36a
+	thisopenedtext
+
+UnknownText_0x7e36a:
+	text "Tyrogue is a"
+	line "Fighting-type."
+
+	para "It evolves into a"
+	line "tougher #mon."
+
+	para "Keep up the hard"
+	line "work. I'll keep"
+	cont "training too."
+
+	para "Farewell!"
+	done
 
 UnknownScript_0x7e237:
 	jumpopenedtext UnknownText_0x7e3df
@@ -176,20 +183,6 @@ UnknownText_0x7e2c0:
 UnknownText_0x7e355:
 	text "<PLAYER> received"
 	line "Tyrogue."
-	done
-
-UnknownText_0x7e36a:
-	text "Tyrogue is a"
-	line "Fighting-type."
-
-	para "It evolves into a"
-	line "tougher #mon."
-
-	para "Keep up the hard"
-	line "work. I'll keep"
-	cont "training too."
-
-	para "Farewell!"
 	done
 
 UnknownText_0x7e3df:

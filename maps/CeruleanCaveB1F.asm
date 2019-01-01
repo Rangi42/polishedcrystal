@@ -1,26 +1,23 @@
 CeruleanCaveB1F_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 1 ; warp events
+	warp_event  5,  7, CERULEAN_CAVE_1F, 5
 
-CeruleanCaveB1F_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 1
-	warp_def 7, 5, 5, CERULEAN_CAVE_1F
+	db 2 ; bg events
+	bg_event  8,  6, SIGNPOST_ITEM + MAX_REVIVE, EVENT_CERULEAN_CAVE_B1F_HIDDEN_MAX_REVIVE
+	bg_event 24, 11, SIGNPOST_ITEM + ULTRA_BALL, EVENT_CERULEAN_CAVE_B1F_HIDDEN_ULTRA_BALL
 
-.XYTriggers: db 0
+	db 3 ; object events
+	object_event  7, 13, SPRITE_MEWTWO, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_PURPLE, PERSONTYPE_SCRIPT, 0, CeruleanCaveMewtwo, EVENT_CERULEAN_CAVE_MEWTWO
+	itemball_event 26,  9, MAX_ELIXER, 1, EVENT_CERULEAN_CAVE_B1F_MAX_ELIXER
+	itemball_event 26,  3, ULTRA_BALL, 1, EVENT_CERULEAN_CAVE_B1F_ULTRA_BALL
 
-.Signposts: db 2
-	signpost 6, 8, SIGNPOST_ITEM + MAX_REVIVE, EVENT_CERULEAN_CAVE_B1F_HIDDEN_MAX_REVIVE
-	signpost 11, 24, SIGNPOST_ITEM + ULTRA_BALL, EVENT_CERULEAN_CAVE_B1F_HIDDEN_ULTRA_BALL
-
-.PersonEvents: db 3
-	person_event SPRITE_MEWTWO, 13, 7, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, CeruleanCaveMewtwo, EVENT_CERULEAN_CAVE_MEWTWO
-	itemball_event 9, 26, MAX_ELIXER, 1, EVENT_CERULEAN_CAVE_B1F_MAX_ELIXER
-	itemball_event 3, 26, ULTRA_BALL, 1, EVENT_CERULEAN_CAVE_B1F_ULTRA_BALL
-
-const_value set 1
+	const_def 1 ; object constants
 	const CERULEANCAVEB1F_MEWTWO
 
 CeruleanCaveMewtwo:

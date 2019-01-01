@@ -1,28 +1,25 @@
 SilphCo1F_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 1 ; callbacks
+	callback MAPCALLBACK_SPRITES, SilphCo1FMoveOfficerCallback
 
-.MapCallbacks: db 1
-	dbw MAPCALLBACK_SPRITES, SilphCo1FMoveOfficerCallback
+	db 3 ; warp events
+	warp_event  2,  7, SAFFRON_CITY, 7
+	warp_event  3,  7, SAFFRON_CITY, 7
+	warp_event 13,  0, SILPH_CO_2F, 1
 
-SilphCo1F_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 3
-	warp_def 7, 2, 7, SAFFRON_CITY
-	warp_def 7, 3, 7, SAFFRON_CITY
-	warp_def 0, 13, 1, SILPH_CO_2F
+	db 0 ; bg events
 
-.XYTriggers: db 0
+	db 4 ; object events
+	object_event 13,  1, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, OfficerScript_0x18abe8, -1
+	object_event  4,  2, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, SilphCoReceptionistText, -1
+	object_event 11,  4, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, SilphCo1FGentlemanText, -1
+	object_event  8,  2, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, SilphCo1FCooltrainerfText, -1
 
-.Signposts: db 0
-
-.PersonEvents: db 4
-	person_event SPRITE_OFFICER, 1, 13, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, OfficerScript_0x18abe8, -1
-	person_event SPRITE_RECEPTIONIST, 2, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, SilphCoReceptionistText, -1
-	person_event SPRITE_GENTLEMAN, 4, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, SilphCo1FGentlemanText, -1
-	person_event SPRITE_COOLTRAINER_F, 2, 8, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, SilphCo1FCooltrainerfText, -1
-
-const_value set 1
+	const_def 1 ; object constants
 	const SILPHCO1F_OFFICER
 
 SilphCo1FMoveOfficerCallback:

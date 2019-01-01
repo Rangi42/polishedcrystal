@@ -1,23 +1,20 @@
 FarawayJungle_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 2 ; warp events
+	warp_event 12, 18, FARAWAY_ISLAND, 1
+	warp_event 13, 18, FARAWAY_ISLAND, 2
 
-FarawayJungle_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 2
-	warp_def 18, 12, 1, FARAWAY_ISLAND
-	warp_def 18, 13, 2, FARAWAY_ISLAND
+	db 0 ; bg events
 
-.XYTriggers: db 0
+	db 1 ; object events
+	object_event 12, 10, SPRITE_MEW, SPRITEMOVEDATA_WANDER, 3, 3, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, FarawayJungleMew, EVENT_FARAWAY_JUNGLE_MEW
 
-.Signposts: db 0
-
-.PersonEvents: db 1
-	person_event SPRITE_MEW, 10, 12, SPRITEMOVEDATA_WANDER, 3, 3, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, FarawayJungleMew, EVENT_FARAWAY_JUNGLE_MEW
-
-const_value set 1
+	const_def 1 ; object constants
 	const FARAWAYJUNGLE_MEW
 
 FarawayJungleMew:

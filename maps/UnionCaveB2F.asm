@@ -1,28 +1,25 @@
 UnionCaveB2F_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 1 ; callbacks
+	callback MAPCALLBACK_OBJECTS, UnionCaveB2FLapras
 
-.MapCallbacks: db 1
-	dbw MAPCALLBACK_OBJECTS, UnionCaveB2FLapras
+	db 1 ; warp events
+	warp_event  5,  3, UNION_CAVE_B1F_SOUTH, 2
 
-UnionCaveB2F_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 1
-	warp_def 3, 5, 2, UNION_CAVE_B1F_SOUTH
+	db 0 ; bg events
 
-.XYTriggers: db 0
+	db 6 ; object events
+	object_event 11, 31, SPRITE_LAPRAS, SPRITEMOVEDATA_SWIM_AROUND, 1, 1, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, UnionCaveLapras, EVENT_UNION_CAVE_B2F_LAPRAS
+	object_event 15, 19, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerCooltrainermNick, -1
+	object_event  5, 13, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerCooltrainerfGwen, -1
+	object_event  3, 30, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerCooltrainerfEmma, -1
+	itemball_event 16,  2, ELIXER, 1, EVENT_UNION_CAVE_B2F_ELIXER
+	itemball_event 12, 19, HYPER_POTION, 1, EVENT_UNION_CAVE_B2F_HYPER_POTION
 
-.Signposts: db 0
-
-.PersonEvents: db 6
-	person_event SPRITE_LAPRAS, 31, 11, SPRITEMOVEDATA_SWIM_AROUND, 1, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, UnionCaveLapras, EVENT_UNION_CAVE_B2F_LAPRAS
-	person_event SPRITE_COOLTRAINER_M, 19, 15, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerCooltrainermNick, -1
-	person_event SPRITE_COOLTRAINER_F, 13, 5, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerCooltrainerfGwen, -1
-	person_event SPRITE_COOLTRAINER_F, 30, 3, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerCooltrainerfEmma, -1
-	itemball_event 2, 16, ELIXER, 1, EVENT_UNION_CAVE_B2F_ELIXER
-	itemball_event 19, 12, HYPER_POTION, 1, EVENT_UNION_CAVE_B2F_HYPER_POTION
-
-const_value set 1
+	const_def 1 ; object constants
 	const UNIONCAVEB2F_LAPRAS
 
 UnionCaveB2FLapras:
@@ -48,26 +45,35 @@ UnionCaveLapras:
 	reloadmapafterbattle
 	end
 
-TrainerCooltrainermNick:
-	trainer EVENT_BEAT_COOLTRAINERM_NICK, COOLTRAINERM, NICK, CooltrainermNickSeenText, CooltrainermNickBeatenText, 0, CooltrainermNickScript
+GenericTrainerCooltrainermNick:
+	generictrainer COOLTRAINERM, NICK, EVENT_BEAT_COOLTRAINERM_NICK, CooltrainermNickSeenText, CooltrainermNickBeatenText
 
-CooltrainermNickScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x5a3f0
+	text "Your #mon style"
+	line "is stunning and"
+	cont "colorful, I admit."
 
-TrainerCooltrainerfGwen:
-	trainer EVENT_BEAT_COOLTRAINERF_GWEN, COOLTRAINERF, GWEN, CooltrainerfGwenSeenText, CooltrainerfGwenBeatenText, 0, CooltrainerfGwenScript
+	para "You'll just keep"
+	line "getting better!"
+	done
 
-CooltrainerfGwenScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x5a488
+GenericTrainerCooltrainerfGwen:
+	generictrainer COOLTRAINERF, GWEN, EVENT_BEAT_COOLTRAINERF_GWEN, CooltrainerfGwenSeenText, CooltrainerfGwenBeatenText
 
-TrainerCooltrainerfEmma:
-	trainer EVENT_BEAT_COOLTRAINERF_EMMA, COOLTRAINERF, EMMA, CooltrainerfEmmaSeenText, CooltrainerfEmmaBeatenText, 0, CooltrainerfEmmaScript
+	text "I'm going to train"
+	line "by myself until I"
+	cont "improve."
+	done
 
-CooltrainerfEmmaScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x5a52b
+GenericTrainerCooltrainerfEmma:
+	generictrainer COOLTRAINERF, EMMA, EVENT_BEAT_COOLTRAINERF_EMMA, CooltrainerfEmmaSeenText, CooltrainerfEmmaBeatenText
+
+	text "Just once a week,"
+	line "a #mon comes to"
+	cont "the water's edge."
+
+	para "I wanted to see"
+	line "that #mon…"
+	done
 
 CooltrainermNickSeenText:
 	text "There are two"
@@ -86,15 +92,6 @@ CooltrainermNickBeatenText:
 	line "dazzling style!"
 	done
 
-UnknownText_0x5a3f0:
-	text "Your #mon style"
-	line "is stunning and"
-	cont "colorful, I admit."
-
-	para "You'll just keep"
-	line "getting better!"
-	done
-
 CooltrainerfGwenSeenText:
 	text "I'm in training."
 	line "Care for a round?"
@@ -103,12 +100,6 @@ CooltrainerfGwenSeenText:
 CooltrainerfGwenBeatenText:
 	text "Aww, no! You're"
 	line "too good for me."
-	done
-
-UnknownText_0x5a488:
-	text "I'm going to train"
-	line "by myself until I"
-	cont "improve."
 	done
 
 CooltrainerfEmmaSeenText:
@@ -125,11 +116,3 @@ CooltrainerfEmmaBeatenText:
 	line "babies than this!"
 	done
 
-UnknownText_0x5a52b:
-	text "Just once a week,"
-	line "a #mon comes to"
-	cont "the water's edge."
-
-	para "I wanted to see"
-	line "that #mon…"
-	done

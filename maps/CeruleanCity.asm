@@ -1,47 +1,44 @@
 CeruleanCity_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 1 ; callbacks
+	callback MAPCALLBACK_NEWMAP, CeruleanCityFlyPoint
 
-.MapCallbacks: db 1
-	dbw MAPCALLBACK_NEWMAP, CeruleanCityFlyPoint
+	db 11 ; warp events
+	warp_event  7, 11, CERULEAN_GYM_BADGE_SPEECH_HOUSE, 1
+	warp_event 28, 13, CERULEAN_POLICE_STATION, 1
+	warp_event 13, 15, CERULEAN_TRADE_SPEECH_HOUSE, 1
+	warp_event 19, 17, CERULEAN_POKECENTER_1F, 1
+	warp_event 30, 19, CERULEAN_GYM, 1
+	warp_event 25, 25, CERULEAN_MART, 2
+	warp_event  2,  9, CERULEAN_CAVE_1F, 1
+	warp_event 14, 25, CERULEAN_BIKE_SHOP, 1
+	warp_event 15, 11, CERULEAN_BERRY_POWDER_HOUSE, 1
+	warp_event 19, 25, CERULEAN_COUPLE_HOUSE, 1
+	warp_event 29,  5, CERULEAN_WATER_SHOW_SPEECH_HOUSE, 1
 
-CeruleanCity_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 11
-	warp_def 11, 7, 1, CERULEAN_GYM_BADGE_SPEECH_HOUSE
-	warp_def 13, 28, 1, CERULEAN_POLICE_STATION
-	warp_def 15, 13, 1, CERULEAN_TRADE_SPEECH_HOUSE
-	warp_def 17, 19, 1, CERULEAN_POKECENTER_1F
-	warp_def 19, 30, 1, CERULEAN_GYM
-	warp_def 25, 25, 2, CERULEAN_MART
-	warp_def 9, 2, 1, CERULEAN_CAVE_1F
-	warp_def 25, 14, 1, CERULEAN_BIKE_SHOP
-	warp_def 11, 15, 1, CERULEAN_BERRY_POWDER_HOUSE
-	warp_def 25, 19, 1, CERULEAN_COUPLE_HOUSE
-	warp_def 5, 29, 1, CERULEAN_WATER_SHOW_SPEECH_HOUSE
+	db 7 ; bg events
+	bg_event 23, 19, SIGNPOST_JUMPTEXT, CeruleanCitySignText
+	bg_event 27, 21, SIGNPOST_JUMPTEXT, CeruleanGymSignText
+	bg_event 11, 25, SIGNPOST_JUMPTEXT, CeruleanBikeShopSignText
+	bg_event 25, 13, SIGNPOST_JUMPTEXT, CeruleanPoliceSignText
+	bg_event 23,  4, SIGNPOST_JUMPTEXT, CeruleanCapeSignText
+	bg_event 11, 19, SIGNPOST_JUMPTEXT, CeruleanBubblerText
+	bg_event  4, 13, SIGNPOST_ITEM + BERSERK_GENE, EVENT_FOUND_BERSERK_GENE_IN_CERULEAN_CITY
 
-.XYTriggers: db 0
+	db 8 ; object events
+	object_event 21, 20, SPRITE_VERMILION_LAWRENCE, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_SCRIPT, 0, CooltrainerFScript_0x18402a, -1
+	object_event  6,  8, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 1, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x184064, -1
+	object_event 30, 22, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, CooltrainerMScript_0x184009, -1
+	object_event 23, 11, SPRITE_SUPER_NERD, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1841a8, -1
+	object_event 20, 20, SPRITE_SLOWBRO, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, 0, PERSONTYPE_POKEMON, SLOWBRO, CeruleanCitySlowbroText, -1
+	object_event 14, 18, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, FisherScript_0x18404a, -1
+	object_event  2, 10, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, CeruleanCaveGuardText, EVENT_BEAT_BLUE
+	object_event 44, 16, SPRITE_BALL_CUT_FRUIT, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_9_CUT_TREE
 
-.Signposts: db 7
-	signpost 19, 23, SIGNPOST_JUMPTEXT, CeruleanCitySignText
-	signpost 21, 27, SIGNPOST_JUMPTEXT, CeruleanGymSignText
-	signpost 25, 11, SIGNPOST_JUMPTEXT, CeruleanBikeShopSignText
-	signpost 13, 25, SIGNPOST_JUMPTEXT, CeruleanPoliceSignText
-	signpost 4, 23, SIGNPOST_JUMPTEXT, CeruleanCapeSignText
-	signpost 19, 11, SIGNPOST_JUMPTEXT, CeruleanBubblerText
-	signpost 13, 4, SIGNPOST_ITEM + BERSERK_GENE, EVENT_FOUND_BERSERK_GENE_IN_CERULEAN_CITY
-
-.PersonEvents: db 8
-	person_event SPRITE_VERMILION_LAWRENCE, 20, 21, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CooltrainerFScript_0x18402a, -1
-	person_event SPRITE_YOUNGSTER, 8, 6, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x184064, -1
-	person_event SPRITE_COOLTRAINER_M, 22, 30, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CooltrainerMScript_0x184009, -1
-	person_event SPRITE_SUPER_NERD, 11, 23, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1841a8, -1
-	person_event SPRITE_SLOWBRO, 20, 20, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, 0, PERSONTYPE_POKEMON, SLOWBRO, CeruleanCitySlowbroText, -1
-	person_event SPRITE_FISHER, 18, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, FisherScript_0x18404a, -1
-	person_event SPRITE_COOLTRAINER_M, 10, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, CeruleanCaveGuardText, EVENT_BEAT_BLUE
-	person_event SPRITE_BALL_CUT_FRUIT, 16, 44, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_9_CUT_TREE
-
-const_value set 1
+	const_def 1 ; object constants
 	const CERULEANCITY_COOLTRAINER_F
 	const CERULEANCITY_YOUNGSTER
 
@@ -62,26 +59,17 @@ CooltrainerFScript_0x18402a:
 	jumptext UnknownText_0x18424b
 
 FisherScript_0x18404a:
-	faceplayer
-	opentext
 	checkevent EVENT_RETURNED_MACHINE_PART
-	iftrue UnknownScript_0x184058
+	iftrue_jumptextfaceplayer UnknownText_0x18424e
 	checkevent EVENT_MET_ROCKET_GRUNT_AT_CERULEAN_GYM
-	iftrue UnknownScript_0x18405e
-UnknownScript_0x184058:
-	jumpopenedtext UnknownText_0x18424e
-
-UnknownScript_0x18405e:
-	jumpopenedtext UnknownText_0x184275
+	iftrue_jumptextfaceplayer UnknownText_0x184275
+	jumptextfaceplayer UnknownText_0x18424e
 
 YoungsterScript_0x184064:
-	faceplayer
-	opentext
 	checkevent EVENT_FOUND_BERSERK_GENE_IN_CERULEAN_CITY
-	iftrue .FoundBerserkGene
-	writetext UnknownText_0x1842a9
-	waitbutton
-	closetext
+	iftrue_jumptextfaceplayer CeruleanCityYoungsterText
+	faceplayer
+	showtext UnknownText_0x1842a9
 	waitsfx
 	playsound SFX_SECOND_PART_OF_ITEMFINDER
 	waitsfx
@@ -102,9 +90,6 @@ YoungsterScript_0x184064:
 	showemote EMOTE_SHOCK, CERULEANCITY_YOUNGSTER, 15
 	spriteface CERULEANCITY_YOUNGSTER, LEFT
 	jumptext UnknownText_0x1842ee
-
-.FoundBerserkGene:
-	jumpopenedtext CeruleanCityYoungsterText
 
 UnknownText_0x1840bc:
 	text "Kanto's Power"

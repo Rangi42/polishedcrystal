@@ -1,33 +1,30 @@
 RuinsofAlphKabutoChamber_MapScriptHeader:
+	db 1 ; scene scripts
+	scene_script RuinsofAlphKabutoChamberTrigger0
 
-.MapTriggers: db 1
-	dw RuinsofAlphKabutoChamberTrigger0
+	db 1 ; callbacks
+	callback MAPCALLBACK_TILES, UnknownScript_0x58737
 
-.MapCallbacks: db 1
-	dbw MAPCALLBACK_TILES, UnknownScript_0x58737
+	db 5 ; warp events
+	warp_event  3,  9, RUINS_OF_ALPH_OUTSIDE, 2
+	warp_event  4,  9, RUINS_OF_ALPH_OUTSIDE, 2
+	warp_event  3,  3, RUINS_OF_ALPH_INNER_CHAMBER, 4
+	warp_event  4,  3, RUINS_OF_ALPH_INNER_CHAMBER, 5
+	warp_event  4,  0, RUINS_OF_ALPH_KABUTO_ITEM_ROOM, 1
 
-RuinsofAlphKabutoChamber_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 5
-	warp_def 9, 3, 2, RUINS_OF_ALPH_OUTSIDE
-	warp_def 9, 4, 2, RUINS_OF_ALPH_OUTSIDE
-	warp_def 3, 3, 4, RUINS_OF_ALPH_INNER_CHAMBER
-	warp_def 3, 4, 5, RUINS_OF_ALPH_INNER_CHAMBER
-	warp_def 0, 4, 1, RUINS_OF_ALPH_KABUTO_ITEM_ROOM
+	db 6 ; bg events
+	bg_event  2,  3, SIGNPOST_JUMPTEXT, UnknownText_0x58b1a
+	bg_event  5,  3, SIGNPOST_JUMPTEXT, UnknownText_0x58b1a
+	bg_event  3,  2, SIGNPOST_UP, MapRuinsofAlphKabutoChamberSignpost2Script
+	bg_event  4,  2, SIGNPOST_UP, MapRuinsofAlphKabutoChamberSignpost3Script
+	bg_event  3,  0, SIGNPOST_UP, MapRuinsofAlphKabutoChamberSignpost4Script
+	bg_event  4,  0, SIGNPOST_UP, MapRuinsofAlphKabutoChamberSignpost5Script
 
-.XYTriggers: db 0
-
-.Signposts: db 6
-	signpost 3, 2, SIGNPOST_JUMPTEXT, UnknownText_0x58b1a
-	signpost 3, 5, SIGNPOST_JUMPTEXT, UnknownText_0x58b1a
-	signpost 2, 3, SIGNPOST_UP, MapRuinsofAlphKabutoChamberSignpost2Script
-	signpost 2, 4, SIGNPOST_UP, MapRuinsofAlphKabutoChamberSignpost3Script
-	signpost 0, 3, SIGNPOST_UP, MapRuinsofAlphKabutoChamberSignpost4Script
-	signpost 0, 4, SIGNPOST_UP, MapRuinsofAlphKabutoChamberSignpost5Script
-
-.PersonEvents: db 2
-	person_event SPRITE_RECEPTIONIST, 5, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x58800, EVENT_RUINS_OF_ALPH_KABUTO_CHAMBER_RECEPTIONIST
-	person_event SPRITE_SCIENTIST, 1, 3, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ScientistScript_0x587a8, -1
+	db 2 ; object events
+	object_event  5,  5, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x58800, EVENT_RUINS_OF_ALPH_KABUTO_CHAMBER_RECEPTIONIST
+	object_event  3,  1, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, ScientistScript_0x587a8, -1
 
 RuinsofAlphKabutoChamberTrigger0:
 	checkevent EVENT_WALL_OPENED_IN_KABUTO_CHAMBER

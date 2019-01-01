@@ -1,36 +1,33 @@
 BurnedTower1F_MapScriptHeader:
+	db 1 ; scene scripts
+	scene_script BurnedTower1FTrigger0
 
-.MapTriggers: db 1
-	dw BurnedTower1FTrigger0
+	db 1 ; callbacks
+	callback MAPCALLBACK_TILES, BurnedTower1FHoleAndLadder
 
-.MapCallbacks: db 1
-	dbw MAPCALLBACK_TILES, BurnedTower1FHoleAndLadder
+	db 4 ; warp events
+	warp_event  7, 15, ECRUTEAK_CITY, 13
+	warp_event  8, 15, ECRUTEAK_CITY, 13
+	warp_event  8,  9, BURNED_TOWER_B1F, 1
+	warp_event  5, 15, BURNED_TOWER_B1F, 2
 
-BurnedTower1F_MapEventHeader:
+	db 1 ; coord events
+	coord_event  9,  9, 1, BurnedTowerRivalBattleScript
 
-.Warps: db 4
-	warp_def 15, 7, 13, ECRUTEAK_CITY
-	warp_def 15, 8, 13, ECRUTEAK_CITY
-	warp_def 9, 8, 1, BURNED_TOWER_B1F
-	warp_def 15, 5, 2, BURNED_TOWER_B1F
+	db 2 ; bg events
+	bg_event  6,  7, SIGNPOST_ITEM + ETHER, EVENT_BURNED_TOWER_1F_HIDDEN_ETHER
+	bg_event 11, 11, SIGNPOST_ITEM + ULTRA_BALL, EVENT_BURNED_TOWER_1F_HIDDEN_ULTRA_BALL
 
-.XYTriggers: db 1
-	xy_trigger 1, 9, 9, BurnedTowerRivalBattleScript
+	db 7 ; object events
+	object_event 10, 12, SPRITE_EUSINE, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, BurnedTower1FEusineText, EVENT_BURNED_TOWER_1F_EUSINE
+	object_event  6,  9, SPRITE_SILVER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_BURNED_TOWER
+	smashrock_event 13, 4
+	object_event 12, 14, SPRITE_MORTY, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, BurnedTower1FMortyText, EVENT_BURNED_TOWER_MORTY
+	itemball_event 13,  1, HP_UP, 1, EVENT_BURNED_TOWER_1F_HP_UP
+	object_event  1,  1, SPRITE_HEX_MANIAC, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_PURPLE, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerHexManiacTamara, -1
+	object_event 11,  3, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerFirebreatherNed, -1
 
-.Signposts: db 2
-	signpost  7,  6, SIGNPOST_ITEM + ETHER, EVENT_BURNED_TOWER_1F_HIDDEN_ETHER
-	signpost 11, 11, SIGNPOST_ITEM + ULTRA_BALL, EVENT_BURNED_TOWER_1F_HIDDEN_ULTRA_BALL
-
-.PersonEvents: db 7
-	person_event SPRITE_EUSINE, 12, 10, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, BurnedTower1FEusineText, EVENT_BURNED_TOWER_1F_EUSINE
-	person_event SPRITE_SILVER, 9, 6, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_BURNED_TOWER
-	smashrock_event 4, 13
-	person_event SPRITE_MORTY, 14, 12, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, BurnedTower1FMortyText, EVENT_BURNED_TOWER_MORTY
-	itemball_event 1, 13, HP_UP, 1, EVENT_BURNED_TOWER_1F_HP_UP
-	person_event SPRITE_HEX_MANIAC, 1, 1, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 2, TrainerHexManiacTamara, -1
-	person_event SPRITE_FISHER, 3, 11, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerFirebreatherNed, -1
-
-const_value set 1
+	const_def 1 ; object constants
 	const BURNEDTOWER1F_EUSINE
 	const BURNEDTOWER1F_SILVER
 
@@ -122,19 +119,26 @@ BurnedTowerRivalBattleScript:
 	warpcheck
 	end
 
-TrainerHexManiacTamara:
-	trainer EVENT_BEAT_HEX_MANIAC_TAMARA, HEX_MANIAC, TAMARA, HexManiacTamaraSeenText, HexManiacTamaraBeatenText, 0, HexManiacTamaraScript
+GenericTrainerHexManiacTamara:
+	generictrainer HEX_MANIAC, TAMARA, EVENT_BEAT_HEX_MANIAC_TAMARA, HexManiacTamaraSeenText, HexManiacTamaraBeatenText
 
-HexManiacTamaraScript:
-	end_if_just_battled
-	jumptextfaceplayer HexManiacTamaraAfterText
+	text "There are powers"
+	line "beyond our under-"
 
-TrainerFirebreatherNed:
-	trainer EVENT_BEAT_FIREBREATHER_NED, FIREBREATHER, NED, FirebreatherNedSeenText, FirebreatherNedBeatenText, 0, FirebreatherNedScript
+	para "standing in the"
+	line "world…"
+	done
 
-FirebreatherNedScript:
-	end_if_just_battled
-	jumptextfaceplayer FirebreatherNedAfterText
+GenericTrainerFirebreatherNed:
+	generictrainer FIREBREATHER, NED, EVENT_BEAT_FIREBREATHER_NED, FirebreatherNedSeenText, FirebreatherNedBeatenText
+
+	text "We Firebreathers"
+	line "know the true"
+
+	para "power of fire"
+	line "better than"
+	cont "anyone!"
+	done
 
 BurnedTower1FEusineMovement:
 	step_down
@@ -271,14 +275,6 @@ HexManiacTamaraBeatenText:
 	text "I have lost…"
 	done
 
-HexManiacTamaraAfterText:
-	text "There are powers"
-	line "beyond our under-"
-
-	para "standing in the"
-	line "world…"
-	done
-
 FirebreatherNedSeenText:
 	text "My soul is on"
 	line "fire. I'll show"
@@ -292,11 +288,3 @@ FirebreatherNedBeatenText:
 	line "enough…"
 	done
 
-FirebreatherNedAfterText:
-	text "We Firebreathers"
-	line "know the true"
-
-	para "power of fire"
-	line "better than"
-	cont "anyone!"
-	done

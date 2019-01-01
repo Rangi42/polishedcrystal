@@ -1,61 +1,58 @@
 SaffronGym_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 33 ; warp events
+	warp_event  8, 17, SAFFRON_CITY, 2
+	warp_event  9, 17, SAFFRON_CITY, 2
+	warp_event 11, 14, SAFFRON_GYM, 18
+	warp_event 19, 14, SAFFRON_GYM, 19
+	warp_event 19, 10, SAFFRON_GYM, 20
+	warp_event  0, 10, SAFFRON_GYM, 21
+	warp_event  4,  2, SAFFRON_GYM, 22
+	warp_event 11,  4, SAFFRON_GYM, 23
+	warp_event  0, 14, SAFFRON_GYM, 24
+	warp_event 19,  2, SAFFRON_GYM, 25
+	warp_event 15, 16, SAFFRON_GYM, 26
+	warp_event  4, 16, SAFFRON_GYM, 27
+	warp_event  4,  8, SAFFRON_GYM, 28
+	warp_event  8,  2, SAFFRON_GYM, 29
+	warp_event 15,  8, SAFFRON_GYM, 30
+	warp_event 15,  4, SAFFRON_GYM, 31
+	warp_event  0,  4, SAFFRON_GYM, 32
+	warp_event 19, 16, SAFFRON_GYM, 3
+	warp_event 19,  8, SAFFRON_GYM, 4
+	warp_event  0,  8, SAFFRON_GYM, 5
+	warp_event  4,  4, SAFFRON_GYM, 6
+	warp_event 11,  2, SAFFRON_GYM, 7
+	warp_event  0, 16, SAFFRON_GYM, 8
+	warp_event 19,  4, SAFFRON_GYM, 9
+	warp_event 15, 14, SAFFRON_GYM, 10
+	warp_event  4, 14, SAFFRON_GYM, 11
+	warp_event  4, 10, SAFFRON_GYM, 12
+	warp_event  8,  4, SAFFRON_GYM, 13
+	warp_event 15, 10, SAFFRON_GYM, 14
+	warp_event 15,  2, SAFFRON_GYM, 15
+	warp_event  0,  2, SAFFRON_GYM, 16
+	warp_event 11, 10, SAFFRON_GYM, 17
+	warp_event  8, 10, SAFFRON_GYM, 3
 
-SaffronGym_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 33
-	warp_def 17, 8, 2, SAFFRON_CITY
-	warp_def 17, 9, 2, SAFFRON_CITY
-	warp_def 14, 11, 18, SAFFRON_GYM
-	warp_def 14, 19, 19, SAFFRON_GYM
-	warp_def 10, 19, 20, SAFFRON_GYM
-	warp_def 10, 0, 21, SAFFRON_GYM
-	warp_def 2, 4, 22, SAFFRON_GYM
-	warp_def 4, 11, 23, SAFFRON_GYM
-	warp_def 14, 0, 24, SAFFRON_GYM
-	warp_def 2, 19, 25, SAFFRON_GYM
-	warp_def 16, 15, 26, SAFFRON_GYM
-	warp_def 16, 4, 27, SAFFRON_GYM
-	warp_def 8, 4, 28, SAFFRON_GYM
-	warp_def 2, 8, 29, SAFFRON_GYM
-	warp_def 8, 15, 30, SAFFRON_GYM
-	warp_def 4, 15, 31, SAFFRON_GYM
-	warp_def 4, 0, 32, SAFFRON_GYM
-	warp_def 16, 19, 3, SAFFRON_GYM
-	warp_def 8, 19, 4, SAFFRON_GYM
-	warp_def 8, 0, 5, SAFFRON_GYM
-	warp_def 4, 4, 6, SAFFRON_GYM
-	warp_def 2, 11, 7, SAFFRON_GYM
-	warp_def 16, 0, 8, SAFFRON_GYM
-	warp_def 4, 19, 9, SAFFRON_GYM
-	warp_def 14, 15, 10, SAFFRON_GYM
-	warp_def 14, 4, 11, SAFFRON_GYM
-	warp_def 10, 4, 12, SAFFRON_GYM
-	warp_def 4, 8, 13, SAFFRON_GYM
-	warp_def 10, 15, 14, SAFFRON_GYM
-	warp_def 2, 15, 15, SAFFRON_GYM
-	warp_def 2, 0, 16, SAFFRON_GYM
-	warp_def 10, 11, 17, SAFFRON_GYM
-	warp_def 10, 8, 3, SAFFRON_GYM
+	db 1 ; bg events
+	bg_event  8, 15, SIGNPOST_READ, SaffronGymStatue
 
-.XYTriggers: db 0
-
-.Signposts: db 1
-	signpost 15, 8, SIGNPOST_READ, SaffronGymStatue
-
-.PersonEvents: db 9
-	person_event SPRITE_SABRINA, 8, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, SabrinaScript_0x189c2e, -1
-	person_event SPRITE_GRANNY, 3, 2, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerMediumDoris, -1
-	person_event SPRITE_YOUNGSTER, 3, 9, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerPsychicLeon, -1
-	person_event SPRITE_YOUNGSTER, 3, 17, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerPsychicJared, -1
-	person_event SPRITE_HEX_MANIAC, 9, 2, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerHexManiacLuna, -1
-	person_event SPRITE_HEX_MANIAC, 9, 17, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerHexManiacNatalie, -1
-	person_event SPRITE_YOUNGSTER, 15, 2, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerPsychicFranklin, -1
-	person_event SPRITE_GRANNY, 15, 17, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerMediumRebecca, -1
-	person_event SPRITE_GYM_GUY, 14, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, SaffronGymGuyScript, -1
+	db 9 ; object events
+	object_event  9,  8, SPRITE_SABRINA, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, SabrinaScript_0x189c2e, -1
+	object_event  2,  3, SPRITE_GRANNY, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerMediumDoris, -1
+	object_event  9,  3, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_PURPLE, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerPsychicLeon, -1
+	object_event 17,  3, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_PURPLE, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerPsychicJared, -1
+	object_event  2,  9, SPRITE_HEX_MANIAC, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_PURPLE, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerHexManiacLuna, -1
+	object_event 17,  9, SPRITE_HEX_MANIAC, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_PURPLE, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerHexManiacNatalie, -1
+	object_event  2, 15, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_PURPLE, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerPsychicFranklin, -1
+	object_event 17, 15, SPRITE_GRANNY, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerMediumRebecca, -1
+	object_event  9, 14, SPRITE_GYM_GUY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, SaffronGymGuyScript, -1
 
 SabrinaScript_0x189c2e:
 	faceplayer
@@ -99,64 +96,83 @@ SabrinaScript_0x189c2e:
 	specialphonecall SPECIALCALL_LYRASEGG
 .FightDone:
 	checkevent EVENT_GOT_TM29_PSYCHIC
-	iftrue SabrinaAfterTMScript
+	iftrue_jumpopenedtext UnknownText_0x189f6c
 	writetext UnknownText_0x189ead
 	buttonsound
 	verbosegivetmhm TM_PSYCHIC
 	setevent EVENT_GOT_TM29_PSYCHIC
-	jumpopenedtext SabrinaOutroText
+	thisopenedtext
 
-SabrinaAfterTMScript:
-	jumpopenedtext UnknownText_0x189f6c
+	text "TM29 is Psychic."
 
-TrainerMediumDoris:
-	trainer EVENT_BEAT_MEDIUM_DORIS, MEDIUM, DORIS, MediumDorisSeenText, MediumDorisBeatenText, 0, MediumDorisScript
+	para "It may lower the"
+	line "target's Spcl.Def."
 
-MediumDorisScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x18a136
+	para "You will become a"
+	line "celebrated and"
 
-TrainerPsychicLeon:
-	trainer EVENT_BEAT_PSYCHIC_LEON, PSYCHIC_T, LEON, PsychicLeonSeenText, PsychicLeonBeatenText, 0, PsychicLeonScript
+	para "beloved Champion!"
+	done
 
-PsychicLeonScript:
-	end_if_just_battled
-	jumptextfaceplayer PsychicLeonAfterText
+GenericTrainerMediumDoris:
+	generictrainer MEDIUM, DORIS, EVENT_BEAT_MEDIUM_DORIS, MediumDorisSeenText, MediumDorisBeatenText
 
-TrainerPsychicJared:
-	trainer EVENT_BEAT_PSYCHIC_JARED, PSYCHIC_T, JARED, PsychicJaredSeenText, PsychicJaredBeatenText, 0, PsychicJaredScript
+	text "Darn! I forgot"
+	line "that I predicted I"
+	cont "would lose to you."
+	done
 
-PsychicJaredScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x18a1b3
+GenericTrainerPsychicLeon:
+	generictrainer PSYCHIC_T, LEON, EVENT_BEAT_PSYCHIC_LEON, PsychicLeonSeenText, PsychicLeonBeatenText
 
-TrainerHexManiacLuna:
-	trainer EVENT_BEAT_HEX_MANIAC_LUNA, HEX_MANIAC, LUNA, HexManiacLunaSeenText, HexManiacLunaBeatenText, 0, HexManiacLunaScript
+	text "Sabrina's power is"
+	line "greater than mine!"
+	done
 
-HexManiacLunaScript:
-	end_if_just_battled
-	jumptextfaceplayer HexManiacLunaAfterText
+GenericTrainerPsychicJared:
+	generictrainer PSYCHIC_T, JARED, EVENT_BEAT_PSYCHIC_JARED, PsychicJaredSeenText, PsychicJaredBeatenText
 
-TrainerHexManiacNatalie:
-	trainer EVENT_BEAT_HEX_MANIAC_NATALIE, HEX_MANIAC, NATALIE, HexManiacNatalieSeenText, HexManiacNatalieBeatenText, 0, HexManiacNatalieScript
+	text "Karate King, the"
+	line "master of the"
 
-HexManiacNatalieScript:
-	end_if_just_battled
-	jumptextfaceplayer HexManiacNatalieAfterText
+	para "Fighting Dojo, was"
+	line "just destroyed by"
+	cont "Sabrina."
+	done
 
-TrainerPsychicFranklin:
-	trainer EVENT_BEAT_PSYCHIC_FRANKLIN, PSYCHIC_T, FRANKLIN, PsychicFranklinSeenText, PsychicFranklinBeatenText, 0, PsychicFranklinScript
+GenericTrainerHexManiacLuna:
+	generictrainer HEX_MANIAC, LUNA, EVENT_BEAT_HEX_MANIAC_LUNA, HexManiacLunaSeenText, HexManiacLunaBeatenText
 
-PsychicFranklinScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x18a0a6
+	text "Alakazam is a pow-"
+	line "erful #mon,"
 
-TrainerMediumRebecca:
-	trainer EVENT_BEAT_MEDIUM_REBECCA, MEDIUM, REBECCA, MediumRebeccaSeenText, MediumRebeccaBeatenText, 0, MediumRebeccaScript
+	para "so Hex Maniacs use"
+	line "its name for"
+	cont "powerful spells."
+	done
 
-MediumRebeccaScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x18a034
+GenericTrainerHexManiacNatalie:
+	generictrainer HEX_MANIAC, NATALIE, EVENT_BEAT_HEX_MANIAC_NATALIE, HexManiacNatalieSeenText, HexManiacNatalieBeatenText
+
+	text "Maybe I'm not cut"
+	line "out to be a Hex"
+	cont "Maniac…"
+	done
+
+GenericTrainerPsychicFranklin:
+	generictrainer PSYCHIC_T, FRANKLIN, EVENT_BEAT_PSYCHIC_FRANKLIN, PsychicFranklinSeenText, PsychicFranklinBeatenText
+
+	text "You made your soul"
+	line "stronger, not just"
+	cont "your abilities."
+	done
+
+GenericTrainerMediumRebecca:
+	generictrainer MEDIUM, REBECCA, EVENT_BEAT_MEDIUM_REBECCA, MediumRebeccaSeenText, MediumRebeccaBeatenText
+
+	text "What is the source"
+	line "of your power?"
+	done
 
 SaffronGymGuyScript:
 	checkevent EVENT_BEAT_SABRINA
@@ -242,18 +258,6 @@ UnknownText_0x189ead:
 	line "TM, too!"
 	done
 
-SabrinaOutroText:
-	text "TM29 is Psychic."
-
-	para "It may lower the"
-	line "target's Spcl.Def."
-
-	para "You will become a"
-	line "celebrated and"
-
-	para "beloved Champion!"
-	done
-
 UnknownText_0x189f6c:
 	text "Sabrina: Your love"
 	line "for your #mon"
@@ -281,12 +285,6 @@ MediumDorisBeatenText:
 	line "I still lost…"
 	done
 
-UnknownText_0x18a136:
-	text "Darn! I forgot"
-	line "that I predicted I"
-	cont "would lose to you."
-	done
-
 PsychicLeonSeenText:
 	text "You cannot resist"
 	line "my psychic power!"
@@ -295,11 +293,6 @@ PsychicLeonSeenText:
 PsychicLeonBeatenText:
 	text "My prediction was"
 	line "inaccurate…"
-	done
-
-PsychicLeonAfterText:
-	text "Sabrina's power is"
-	line "greater than mine!"
 	done
 
 PsychicJaredSeenText:
@@ -312,15 +305,6 @@ PsychicJaredBeatenText:
 	text "I was no match…"
 	done
 
-UnknownText_0x18a1b3:
-	text "Karate King, the"
-	line "master of the"
-
-	para "Fighting Dojo, was"
-	line "just destroyed by"
-	cont "Sabrina."
-	done
-
 HexManiacLunaSeenText:
 	text "Abra, Kadabra,"
 	line "Alakazam!"
@@ -330,15 +314,6 @@ HexManiacLunaBeatenText:
 	text "My curse failed?"
 	done
 
-HexManiacLunaAfterText:
-	text "Alakazam is a pow-"
-	line "erful #mon,"
-
-	para "so Hex Maniacs use"
-	line "its name for"
-	cont "powerful spells."
-	done
-
 HexManiacNatalieSeenText:
 	text "Let us do battle!"
 	line "Mwahaha!"
@@ -346,12 +321,6 @@ HexManiacNatalieSeenText:
 
 HexManiacNatalieBeatenText:
 	text "Mwaha--cough!"
-	done
-
-HexManiacNatalieAfterText:
-	text "Maybe I'm not cut"
-	line "out to be a Hex"
-	cont "Maniac…"
 	done
 
 PsychicFranklinSeenText:
@@ -365,12 +334,6 @@ PsychicFranklinBeatenText:
 	line "power than mine!"
 	done
 
-UnknownText_0x18a0a6:
-	text "You made your soul"
-	line "stronger, not just"
-	cont "your abilities."
-	done
-
 MediumRebeccaSeenText:
 	text "The power of all"
 	line "those you defeated"
@@ -380,11 +343,6 @@ MediumRebeccaSeenText:
 MediumRebeccaBeatenText:
 	text "Strong…"
 	line "Far too strong…"
-	done
-
-UnknownText_0x18a034:
-	text "What is the source"
-	line "of your power?"
 	done
 
 SaffronGymGuyText:

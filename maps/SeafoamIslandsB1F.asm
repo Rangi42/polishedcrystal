@@ -1,30 +1,27 @@
 SeafoamIslandsB1F_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 6 ; warp events
+	warp_event 35, 15, SEAFOAM_ISLANDS_1F, 3
+	warp_event  3,  3, SEAFOAM_ISLANDS_1F, 5
+	warp_event 27, 15, SEAFOAM_ISLANDS_B2F, 1
+	warp_event 18,  5, SEAFOAM_ISLANDS_B2F, 2
+	warp_event 15, 11, SEAFOAM_ISLANDS_B2F, 3
+	warp_event  7, 15, SEAFOAM_ISLANDS_B2F, 4
 
-SeafoamIslandsB1F_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 6
-	warp_def 15, 35, 3, SEAFOAM_ISLANDS_1F
-	warp_def 3, 3, 5, SEAFOAM_ISLANDS_1F
-	warp_def 15, 27, 1, SEAFOAM_ISLANDS_B2F
-	warp_def 5, 18, 2, SEAFOAM_ISLANDS_B2F
-	warp_def 11, 15, 3, SEAFOAM_ISLANDS_B2F
-	warp_def 15, 7, 4, SEAFOAM_ISLANDS_B2F
+	db 1 ; bg events
+	bg_event 20, 11, SIGNPOST_ITEM + ICE_HEAL, EVENT_SEAFOAM_ISLANDS_B1F_HIDDEN_ICE_HEAL
 
-.XYTriggers: db 0
-
-.Signposts: db 1
-	signpost 11, 20, SIGNPOST_ITEM + ICE_HEAL, EVENT_SEAFOAM_ISLANDS_B1F_HIDDEN_ICE_HEAL
-
-.PersonEvents: db 8
-	itemball_event 3, 20, GRIP_CLAW, 1, EVENT_SEAFOAM_ISLANDS_B1F_GRIP_CLAW
-	itemball_event 5, 24, ICE_HEAL, 1, EVENT_SEAFOAM_ISLANDS_B1F_ICE_HEAL
-	strengthboulder_event 9, 30
-	strengthboulder_event 9, 31
-	strengthboulder_event 10, 32
-	strengthboulder_event 8, 12
-	strengthboulder_event 11, 7
-	strengthboulder_event 15, 13
+	db 8 ; object events
+	itemball_event 20,  3, GRIP_CLAW, 1, EVENT_SEAFOAM_ISLANDS_B1F_GRIP_CLAW
+	itemball_event 24,  5, ICE_HEAL, 1, EVENT_SEAFOAM_ISLANDS_B1F_ICE_HEAL
+	strengthboulder_event 30, 9
+	strengthboulder_event 31, 9
+	strengthboulder_event 32, 10
+	strengthboulder_event 12, 8
+	strengthboulder_event  7, 11
+	strengthboulder_event 13, 15

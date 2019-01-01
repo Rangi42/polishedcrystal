@@ -1,24 +1,21 @@
 Route5SaffronCityGate_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 4 ; warp events
+	warp_event  4,  0, ROUTE_5, 2
+	warp_event  5,  0, ROUTE_5, 3
+	warp_event  4,  7, SAFFRON_CITY, 9
+	warp_event  5,  7, SAFFRON_CITY, 9
 
-Route5SaffronCityGate_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 4
-	warp_def 0, 4, 2, ROUTE_5
-	warp_def 0, 5, 3, ROUTE_5
-	warp_def 7, 4, 9, SAFFRON_CITY
-	warp_def 7, 5, 9, SAFFRON_CITY
+	db 0 ; bg events
 
-.XYTriggers: db 0
-
-.Signposts: db 0
-
-.PersonEvents: db 2
-	person_event SPRITE_OFFICER, 4, 0, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, Route5SaffronCityGateOfficerText, -1
-	person_event SPRITE_BLACK_BELT, 4, 6, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, Route5SaffronCityGateBlackBeltScript, -1
+	db 2 ; object events
+	object_event  0,  4, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, Route5SaffronCityGateOfficerText, -1
+	object_event  6,  4, SPRITE_BLACK_BELT, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_SCRIPT, 0, Route5SaffronCityGateBlackBeltScript, -1
 
 Route5SaffronCityGateOfficerText:
 	text "You're from Johto,"

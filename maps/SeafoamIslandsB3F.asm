@@ -1,30 +1,27 @@
 SeafoamIslandsB3F_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 10 ; warp events
+	warp_event 37,  7, SEAFOAM_ISLANDS_B2F, 5
+	warp_event 25,  9, SEAFOAM_ISLANDS_B2F, 6
+	warp_event 35, 13, SEAFOAM_ISLANDS_B2F, 7
+	warp_event  3, 13, SEAFOAM_ISLANDS_B2F, 8
+	warp_event  3,  3, SEAFOAM_ISLANDS_B4F, 1
+	warp_event  7, 13, SEAFOAM_ISLANDS_B4F, 2
+	warp_event 21,  9, SEAFOAM_ISLANDS_B4F, 3
+	warp_event 29,  3, SEAFOAM_ISLANDS_B4F, 4
+	warp_event 31, 15, SEAFOAM_ISLANDS_B4F, 5
+	warp_event 37, 15, SEAFOAM_ISLANDS_B4F, 6
 
-SeafoamIslandsB3F_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 10
-	warp_def 7, 37, 5, SEAFOAM_ISLANDS_B2F
-	warp_def 9, 25, 6, SEAFOAM_ISLANDS_B2F
-	warp_def 13, 35, 7, SEAFOAM_ISLANDS_B2F
-	warp_def 13, 3, 8, SEAFOAM_ISLANDS_B2F
-	warp_def 3, 3, 1, SEAFOAM_ISLANDS_B4F
-	warp_def 13, 7, 2, SEAFOAM_ISLANDS_B4F
-	warp_def 9, 21, 3, SEAFOAM_ISLANDS_B4F
-	warp_def 3, 29, 4, SEAFOAM_ISLANDS_B4F
-	warp_def 15, 31, 5, SEAFOAM_ISLANDS_B4F
-	warp_def 15, 37, 6, SEAFOAM_ISLANDS_B4F
+	db 2 ; bg events
+	bg_event 27, 17, SIGNPOST_ITEM + MAX_REVIVE, EVENT_SEAFOAM_ISLANDS_B3F_HIDDEN_MAX_REVIVE
+	bg_event  7,  5, SIGNPOST_ITEM + RARE_CANDY, EVENT_SEAFOAM_ISLANDS_B3F_HIDDEN_RARE_CANDY
 
-.XYTriggers: db 0
-
-.Signposts: db 2
-	signpost 17, 27, SIGNPOST_ITEM + MAX_REVIVE, EVENT_SEAFOAM_ISLANDS_B3F_HIDDEN_MAX_REVIVE
-	signpost 5, 7, SIGNPOST_ITEM + RARE_CANDY, EVENT_SEAFOAM_ISLANDS_B3F_HIDDEN_RARE_CANDY
-
-.PersonEvents: db 3
+	db 3 ; object events
 	itemball_event 15, 15, REVIVE, 1, EVENT_SEAFOAM_ISLANDS_B3F_REVIVE
-	itemball_event 6, 17, BIG_PEARL, 1, EVENT_SEAFOAM_ISLANDS_B3F_BIG_PEARL
-	strengthboulder_event 7, 28
+	itemball_event 17,  6, BIG_PEARL, 1, EVENT_SEAFOAM_ISLANDS_B3F_BIG_PEARL
+	strengthboulder_event 28, 7

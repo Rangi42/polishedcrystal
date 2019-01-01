@@ -1,32 +1,29 @@
 GoldenrodGym_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 2 ; warp events
+	warp_event  2, 17, GOLDENROD_CITY, 1
+	warp_event  3, 17, GOLDENROD_CITY, 1
 
-GoldenrodGym_MapEventHeader:
+	db 1 ; coord events
+	coord_event  8,  5, 1, WhitneyCriesScript
 
-.Warps: db 2
-	warp_def 17, 2, 1, GOLDENROD_CITY
-	warp_def 17, 3, 1, GOLDENROD_CITY
+	db 2 ; bg events
+	bg_event  1, 15, SIGNPOST_READ, GoldenrodGymStatue
+	bg_event  4, 15, SIGNPOST_READ, GoldenrodGymStatue
 
-.XYTriggers: db 1
-	xy_trigger 1, 5, 8, WhitneyCriesScript
+	db 7 ; object events
+	object_event  9,  6, SPRITE_LASS, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerSrandjrJoandcath1, -1
+	object_event  8,  3, SPRITE_WHITNEY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, WhitneyScript_0x5400c, -1
+	object_event  9, 13, SPRITE_LASS, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerLassCathy, -1
+	object_event  9,  7, SPRITE_LASS, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerSrandjrJoandcath2, -1
+	object_event  0,  2, SPRITE_BEAUTY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerBeautyVictoria, -1
+	object_event 19,  5, SPRITE_BEAUTY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerBeautySamantha, -1
+	object_event  5, 15, SPRITE_GYM_GUY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, GoldenrodGymGuyScript, -1
 
-.Signposts: db 2
-	signpost 15, 1, SIGNPOST_READ, GoldenrodGymStatue
-	signpost 15, 4, SIGNPOST_READ, GoldenrodGymStatue
-
-.PersonEvents: db 7
-	person_event SPRITE_LASS, 6, 9, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerSrandjrJoandcath1, -1
-	person_event SPRITE_WHITNEY, 3, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, WhitneyScript_0x5400c, -1
-	person_event SPRITE_LASS, 13, 9, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerLassCathy, -1
-	person_event SPRITE_LASS, 7, 9, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerSrandjrJoandcath2, -1
-	person_event SPRITE_BEAUTY, 2, 0, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBeautyVictoria, -1
-	person_event SPRITE_BEAUTY, 5, 19, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerBeautySamantha, -1
-	person_event SPRITE_GYM_GUY, 15, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, GoldenrodGymGuyScript, -1
-
-const_value set 1
+	const_def 1 ; object constants
 	const GOLDENRODGYM_LASS2
 
 WhitneyScript_0x5400c:
@@ -53,7 +50,7 @@ WhitneyScript_0x5400c:
 
 .StoppedCrying:
 	checkevent EVENT_GOT_TM45_ATTRACT
-	iftrue UnknownScript_0x54077
+	iftrue_jumpopenedtext UnknownText_0x54360
 	checkflag ENGINE_PLAINBADGE
 	iftrue UnknownScript_0x54064
 	writetext UnknownText_0x54222
@@ -68,17 +65,25 @@ UnknownScript_0x54064:
 	buttonsound
 	verbosegivetmhm TM_ATTRACT
 	setevent EVENT_GOT_TM45_ATTRACT
-	jumpopenedtext UnknownText_0x54302
+	thisopenedtext
 
-UnknownScript_0x54077:
-	jumpopenedtext UnknownText_0x54360
+	text "It's Attract!"
+	line "It makes full use"
 
-TrainerLassCathy:
-	trainer EVENT_BEAT_LASS_CATHY, LASS, CATHY, LassCathySeenText, LassCathyBeatenText, 0, LassCathyScript
+	para "of a #mon's"
+	line "charm."
 
-LassCathyScript:
-	end_if_just_battled
-	jumptextfaceplayer LassCathyOWText
+	para "Isn't it just per-"
+	line "fect for a cutie"
+	cont "like me? ♥"
+	done
+
+GenericTrainerLassCathy:
+	generictrainer LASS, CATHY, EVENT_BEAT_LASS_CATHY, LassCathySeenText, LassCathyBeatenText
+
+	text "Do my #mon"
+	line "think I'm cute?"
+	done
 
 WhitneyCriesScript:
 	showemote EMOTE_SHOCK, GOLDENRODGYM_LASS2, 15
@@ -90,42 +95,72 @@ WhitneyCriesScript:
 	clearevent EVENT_MADE_WHITNEY_CRY
 	end
 
-TrainerSrandjrJoandcath1:
-	trainer EVENT_BEAT_SR_AND_JR_JO_AND_CATH, SR_AND_JR, JOANDCATH1, SrandjrJoandcath1SeenText, SrandjrJoandcath1BeatenText, 0, SrandjrJoandcath1Script
+GenericTrainerSrandjrJoandcath1:
+	generictrainer SR_AND_JR, JOANDCATH1, EVENT_BEAT_SR_AND_JR_JO_AND_CATH, SrandjrJoandcath1SeenText, SrandjrJoandcath1BeatenText
 
-SrandjrJoandcath1Script:
-	end_if_just_battled
-	jumptextfaceplayer SrandjrJoandcath1OWText
+	text "Jo: I'm helping my"
+	line "junior Cath to"
 
-TrainerSrandjrJoandcath2:
-	trainer EVENT_BEAT_SR_AND_JR_JO_AND_CATH, SR_AND_JR, JOANDCATH2, SrandjrJoandcath2SeenText, SrandjrJoandcath2BeatenText, 0, SrandjrJoandcath2Script
+	para "earn a badge"
+	line "from Whitney."
 
-SrandjrJoandcath2Script:
-	end_if_just_battled
-	jumptextfaceplayer SrandjrJoandcath2OWText
+	para "She's improving"
+	line "gradually."
+	done
 
-TrainerBeautyVictoria:
-	trainer EVENT_BEAT_BEAUTY_VICTORIA, BEAUTY, VICTORIA, BeautyVictoriaSeenText, BeautyVictoriaBeatenText, 0, BeautyVictoriaScript
+GenericTrainerSrandjrJoandcath2:
+	generictrainer SR_AND_JR, JOANDCATH2, EVENT_BEAT_SR_AND_JR_JO_AND_CATH, SrandjrJoandcath2SeenText, SrandjrJoandcath2BeatenText
 
-BeautyVictoriaScript:
-	end_if_just_battled
-	jumptextfaceplayer BeautyVictoriaOWText
+	text "Cath: I keep on"
+	line "losing to Whitney."
+	cont "It's depressing."
 
-TrainerBeautySamantha:
-	trainer EVENT_BEAT_BEAUTY_SAMANTHA, BEAUTY, SAMANTHA, BeautySamanthaSeenText, BeautySamanthaBeatenText, 0, BeautySamanthaScript
+	para "I'm OK! If I lose,"
+	line "I'll just try"
+	cont "harder next time!"
+	done
 
-BeautySamanthaScript:
-	end_if_just_battled
-	jumptextfaceplayer BeautySamanthaOWText
+GenericTrainerBeautyVictoria:
+	generictrainer BEAUTY, VICTORIA, EVENT_BEAT_BEAUTY_VICTORIA, BeautyVictoriaSeenText, BeautyVictoriaBeatenText
+
+	text "Wow, you must be"
+	line "good to beat me!"
+	cont "Keep it up!"
+	done
+
+GenericTrainerBeautySamantha:
+	generictrainer BEAUTY, SAMANTHA, EVENT_BEAT_BEAUTY_SAMANTHA, BeautySamanthaSeenText, BeautySamanthaBeatenText
+
+	text "I taught Meowth"
+	line "moves for taking"
+	cont "on any type…"
+	done
 
 GoldenrodGymGuyScript:
-	faceplayer
 	checkevent EVENT_BEAT_WHITNEY
-	iftrue .GoldenrodGymGuyWinScript
-	jumptext GoldenrodGymGuyText
+	iftrue_jumptextfaceplayer GoldenrodGymGuyWinText
+	thistextfaceplayer
 
-.GoldenrodGymGuyWinScript:
-	jumptext GoldenrodGymGuyWinText
+	text "Yo! Champ in"
+	line "making!"
+
+	para "This Gym is home"
+	line "to Normal-type"
+	cont "#mon trainers."
+
+	para "I recommend you"
+	line "use Fighting-type"
+	cont "#mon."
+
+	para "But be careful--"
+	line "Fairy #mon"
+
+	para "resist Fighting-"
+	line "type moves,"
+
+	para "and they're used"
+	line "here too!"
+	done
 
 GoldenrodGymStatue:
 	trainertotext WHITNEY, 1, $1
@@ -211,18 +246,6 @@ UnknownText_0x5428b:
 	line "this too!"
 	done
 
-UnknownText_0x54302:
-	text "It's Attract!"
-	line "It makes full use"
-
-	para "of a #mon's"
-	line "charm."
-
-	para "Isn't it just per-"
-	line "fect for a cutie"
-	cont "like me? ♥"
-	done
-
 UnknownText_0x54360:
 	text "Ah, that was a"
 	line "good cry!"
@@ -244,11 +267,6 @@ LassCathyBeatenText:
 	line "you were weak…"
 	done
 
-LassCathyOWText:
-	text "Do my #mon"
-	line "think I'm cute?"
-	done
-
 SrandjrJoandcath1SeenText:
 	text "Jo: If you want to"
 	line "face Whitney,"
@@ -265,17 +283,6 @@ SrandjrJoandcath1BeatenText:
 	line "cool at all!"
 	done
 
-SrandjrJoandcath1OWText:
-	text "Jo: I'm helping my"
-	line "junior Cath to"
-
-	para "earn a badge"
-	line "from Whitney."
-
-	para "She's improving"
-	line "gradually."
-	done
-
 SrandjrJoandcath2SeenText:
 	text "Cath: I'm trying"
 	line "to beat Whitney,"
@@ -288,16 +295,6 @@ SrandjrJoandcath2SeenText:
 SrandjrJoandcath2BeatenText:
 	text "Cath: Oh, no,"
 	line "no, no!"
-	done
-
-SrandjrJoandcath2OWText:
-	text "Cath: I keep on"
-	line "losing to Whitney."
-	cont "It's depressing."
-
-	para "I'm OK! If I lose,"
-	line "I'll just try"
-	cont "harder next time!"
 	done
 
 JoWhitneyCriesText:
@@ -324,12 +321,6 @@ BeautyVictoriaBeatenText:
 	line "it's over?"
 	done
 
-BeautyVictoriaOWText:
-	text "Wow, you must be"
-	line "good to beat me!"
-	cont "Keep it up!"
-	done
-
 BeautySamanthaSeenText:
 	text "Give it your best"
 	line "shot, or I'll take"
@@ -339,34 +330,6 @@ BeautySamanthaSeenText:
 BeautySamanthaBeatenText:
 	text "No! Oh, Meowth,"
 	line "I'm so sorry!"
-	done
-
-BeautySamanthaOWText:
-	text "I taught Meowth"
-	line "moves for taking"
-	cont "on any type…"
-	done
-
-GoldenrodGymGuyText:
-	text "Yo! Champ in"
-	line "making!"
-
-	para "This Gym is home"
-	line "to Normal-type"
-	cont "#mon trainers."
-
-	para "I recommend you"
-	line "use Fighting-type"
-	cont "#mon."
-
-	para "But be careful--"
-	line "Fairy #mon"
-
-	para "resist Fighting-"
-	line "type moves,"
-
-	para "and they're used"
-	line "here too!"
 	done
 
 GoldenrodGymGuyWinText:

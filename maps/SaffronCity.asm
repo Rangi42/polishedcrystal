@@ -1,59 +1,56 @@
 SaffronCity_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 1 ; callbacks
+	callback MAPCALLBACK_NEWMAP, SaffronCityFlyPoint
 
-.MapCallbacks: db 1
-	dbw MAPCALLBACK_NEWMAP, SaffronCityFlyPoint
+	db 20 ; warp events
+	warp_event 26,  3, FIGHTING_DOJO, 1
+	warp_event 34,  3, SAFFRON_GYM, 1
+	warp_event 25, 11, SAFFRON_MART, 2
+	warp_event  9, 29, SAFFRON_POKECENTER_1F, 1
+	warp_event 27, 29, MR_PSYCHICS_HOUSE, 1
+	warp_event  8,  3, SAFFRON_TRAIN_STATION, 2
+	warp_event 18, 21, SILPH_CO_1F, 1
+	warp_event  9, 11, COPYCATS_HOUSE_1F, 1
+	warp_event 18,  1, ROUTE_5_SAFFRON_CITY_GATE, 3
+	warp_event  0, 18, ROUTE_7_SAFFRON_GATE, 3
+	warp_event  0, 19, ROUTE_7_SAFFRON_GATE, 4
+	warp_event 16, 35, ROUTE_6_SAFFRON_GATE, 1
+	warp_event 17, 35, ROUTE_6_SAFFRON_GATE, 2
+	warp_event 39, 18, ROUTE_8_SAFFRON_GATE, 1
+	warp_event 39, 19, ROUTE_8_SAFFRON_GATE, 2
+	warp_event 34, 11, POKEMON_TRAINER_FAN_CLUB, 1
+	warp_event  5, 29, SAFFRON_ORRE_SPEECH_HOUSE, 1
+	warp_event 13, 29, SAFFRON_BOOK_SPEECH_HOUSE, 1
+	warp_event 21, 29, SAFFRON_HITMONTOP_KID_HOUSE, 1
+	warp_event 13, 11, SAFFRON_RICH_SPEECH_HOUSE, 1
 
-SaffronCity_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 20
-	warp_def 3, 26, 1, FIGHTING_DOJO
-	warp_def 3, 34, 1, SAFFRON_GYM
-	warp_def 11, 25, 2, SAFFRON_MART
-	warp_def 29, 9, 1, SAFFRON_POKECENTER_1F
-	warp_def 29, 27, 1, MR_PSYCHICS_HOUSE
-	warp_def 3, 8, 2, SAFFRON_TRAIN_STATION
-	warp_def 21, 18, 1, SILPH_CO_1F
-	warp_def 11, 9, 1, COPYCATS_HOUSE_1F
-	warp_def 1, 18, 3, ROUTE_5_SAFFRON_CITY_GATE
-	warp_def 18, 0, 3, ROUTE_7_SAFFRON_GATE
-	warp_def 19, 0, 4, ROUTE_7_SAFFRON_GATE
-	warp_def 35, 16, 1, ROUTE_6_SAFFRON_GATE
-	warp_def 35, 17, 2, ROUTE_6_SAFFRON_GATE
-	warp_def 18, 39, 1, ROUTE_8_SAFFRON_GATE
-	warp_def 19, 39, 2, ROUTE_8_SAFFRON_GATE
-	warp_def 11, 34, 1, POKEMON_TRAINER_FAN_CLUB
-	warp_def 29, 5, 1, SAFFRON_ORRE_SPEECH_HOUSE
-	warp_def 29, 13, 1, SAFFRON_BOOK_SPEECH_HOUSE
-	warp_def 29, 21, 1, SAFFRON_HITMONTOP_KID_HOUSE
-	warp_def 11, 13, 1, SAFFRON_RICH_SPEECH_HOUSE
+	db 7 ; bg events
+	bg_event 21,  5, SIGNPOST_JUMPTEXT, SaffronCitySignText
+	bg_event 33,  5, SIGNPOST_JUMPTEXT, SaffronGymSignText
+	bg_event 25,  5, SIGNPOST_JUMPTEXT, FightingDojoSignText
+	bg_event 15, 21, SIGNPOST_JUMPTEXT, SilphCoSignText
+	bg_event 25, 29, SIGNPOST_JUMPTEXT, MrPsychicsHouseSignText
+	bg_event 11,  5, SIGNPOST_JUMPTEXT, SaffronCityMagnetTrainStationSignText
+	bg_event 32, 12, SIGNPOST_JUMPTEXT, PokemonTrainerFanClubSignText
 
-.XYTriggers: db 0
-
-.Signposts: db 7
-	signpost 5, 21, SIGNPOST_JUMPTEXT, SaffronCitySignText
-	signpost 5, 33, SIGNPOST_JUMPTEXT, SaffronGymSignText
-	signpost 5, 25, SIGNPOST_JUMPTEXT, FightingDojoSignText
-	signpost 21, 15, SIGNPOST_JUMPTEXT, SilphCoSignText
-	signpost 29, 25, SIGNPOST_JUMPTEXT, MrPsychicsHouseSignText
-	signpost 5, 11, SIGNPOST_JUMPTEXT, SaffronCityMagnetTrainStationSignText
-	signpost 12, 32, SIGNPOST_JUMPTEXT, PokemonTrainerFanClubSignText
-
-.PersonEvents: db 13
-	person_event SPRITE_LASS, 14, 7, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, LassScript_0x19932a, -1
-	person_event SPRITE_POKEFAN_M, 30, 18, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, PokefanMScript_0x19933e, -1
-	person_event SPRITE_COOLTRAINER_M, 7, 32, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1994fe, -1
-	person_event SPRITE_COOLTRAINER_F, 24, 20, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x19958e, -1
-	person_event SPRITE_FISHER, 12, 27, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, FisherScript_0x199358, -1
-	person_event SPRITE_YOUNGSTER, 19, 15, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1996a5, -1
-	person_event SPRITE_YOUNGSTER, 22, 35, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1996e5, -1
-	person_event SPRITE_LASS, 6, 14, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x199745, -1
-	person_event SPRITE_BLACK_BELT, 24, 3, SPRITEMOVEDATA_WALK_UP_DOWN, 4, 0, -1, (1 << MORN), (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, SaffronCityBlackBelt1Text, -1
-	person_event SPRITE_BLACK_BELT, 25, 4, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, (1 << DAY) | (1 << NITE), (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, SaffronCityBlackBelt2Text, -1
-	person_event SPRITE_SUPER_NERD, 8, 22, SPRITEMOVEDATA_SPINRANDOM_SLOW, 4, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, SaffronCitySuperNerdText, -1
-	person_event SPRITE_SCIENTIST, 22, 23, SPRITEMOVEDATA_STANDING_DOWN, 4, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, SaffronCityScientistText, -1
-	person_event SPRITE_SILPH_EMPLOYEE, 22, 11, SPRITEMOVEDATA_SPINRANDOM_SLOW, 4, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, SaffronCitySilphEmployeeText, -1
+	db 13 ; object events
+	object_event  7, 14, SPRITE_LASS, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, LassScript_0x19932a, -1
+	object_event 18, 30, SPRITE_POKEFAN_M, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, PAL_NPC_BROWN, PERSONTYPE_SCRIPT, 0, PokefanMScript_0x19933e, -1
+	object_event 32,  7, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1994fe, -1
+	object_event 20, 24, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x19958e, -1
+	object_event 27, 12, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_SCRIPT, 0, FisherScript_0x199358, -1
+	object_event 15, 19, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1996a5, -1
+	object_event 35, 22, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1996e5, -1
+	object_event 14,  6, SPRITE_LASS, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x199745, -1
+	object_event  3, 24, SPRITE_BLACK_BELT, SPRITEMOVEDATA_WALK_UP_DOWN, 4, 0, -1, (1 << MORN), PAL_NPC_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, SaffronCityBlackBelt1Text, -1
+	object_event  4, 25, SPRITE_BLACK_BELT, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, (1 << DAY) | (1 << NITE), PAL_NPC_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, SaffronCityBlackBelt2Text, -1
+	object_event 22,  8, SPRITE_SUPER_NERD, SPRITEMOVEDATA_SPINRANDOM_SLOW, 4, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, SaffronCitySuperNerdText, -1
+	object_event 23, 22, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_DOWN, 4, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, SaffronCityScientistText, -1
+	object_event 11, 22, SPRITE_SILPH_EMPLOYEE, SPRITEMOVEDATA_SPINRANDOM_SLOW, 4, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, SaffronCitySilphEmployeeText, -1
 
 SaffronCityFlyPoint:
 	setflag ENGINE_FLYPOINT_SAFFRON

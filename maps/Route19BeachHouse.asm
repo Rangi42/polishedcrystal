@@ -1,24 +1,21 @@
 Route19BeachHouse_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 2 ; warp events
+	warp_event  2,  7, ROUTE_19, 2
+	warp_event  3,  7, ROUTE_19, 2
 
-Route19BeachHouse_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 2
-	warp_def 7, 2, 2, ROUTE_19
-	warp_def 7, 3, 2, ROUTE_19
+	db 0 ; bg events
 
-.XYTriggers: db 0
+	db 2 ; object events
+	object_event  2,  3, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, Route19BeachHouseVictorScript, -1
+	object_event  6,  4, SPRITE_SURFING_PIKACHU, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, Route19BeachHouseSurfingPikachuScript, -1
 
-.Signposts: db 0
-
-.PersonEvents: db 2
-	person_event SPRITE_COOLTRAINER_M, 3, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Route19BeachHouseVictorScript, -1
-	person_event SPRITE_SURFING_PIKACHU, 4, 6, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, Route19BeachHouseSurfingPikachuScript, -1
-
-const_value set 1
+	const_def 1 ; object constants
 	const ROUTE19BEACHHOUSE_VICTOR
 
 Route19BeachHouseVictorScript:

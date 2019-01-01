@@ -1,21 +1,18 @@
 SinjohRuins_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 2 ; warp events
+	warp_event  5,  7, MYSTRI_STAGE, 1
+	warp_event 13, 21, SINJOH_RUINS_HOUSE, 1
 
-SinjohRuins_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 2
-	warp_def 7, 5, 1, MYSTRI_STAGE
-	warp_def 21, 13, 1, SINJOH_RUINS_HOUSE
+	db 1 ; bg events
+	bg_event  7,  8, SIGNPOST_JUMPTEXT, SinjohRuinsSignpostText
 
-.XYTriggers: db 0
-
-.Signposts: db 1
-	signpost 8, 7, SIGNPOST_JUMPTEXT, SinjohRuinsSignpostText
-
-.PersonEvents: db 0
+	db 0 ; object events
 
 SinjohRuinsSignpostText:
 	text "The Sinjoh Ruins"

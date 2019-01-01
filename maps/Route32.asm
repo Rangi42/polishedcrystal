@@ -1,57 +1,54 @@
 Route32_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 2 ; callbacks
+	callback MAPCALLBACK_NEWMAP, Route32FlyPoint
+	callback MAPCALLBACK_OBJECTS, Route32Frieda
 
-.MapCallbacks: db 2
-	dbw MAPCALLBACK_NEWMAP, Route32FlyPoint
-	dbw MAPCALLBACK_OBJECTS, Route32Frieda
+	db 5 ; warp events
+	warp_event 11, 73, ROUTE_32_POKECENTER_1F, 1
+	warp_event  4,  2, ROUTE_32_RUINS_OF_ALPH_GATE, 3
+	warp_event  4,  3, ROUTE_32_RUINS_OF_ALPH_GATE, 4
+	warp_event  6, 79, UNION_CAVE_1F, 4
+	warp_event  4, 24, HIDDEN_TREE_GROTTO, 1
 
-Route32_MapEventHeader:
+	db 6 ; coord events
+	coord_event 18,  8, 0, Route32CooltrainerMStopsYou
+	coord_event 10, 24, 1, Route32LyraIntroducesHiddenGrottoes1
+	coord_event 11, 24, 1, Route32LyraIntroducesHiddenGrottoes2
+	coord_event 12, 24, 1, Route32LyraIntroducesHiddenGrottoes3
+	coord_event 13, 24, 1, Route32LyraIntroducesHiddenGrottoes4
+	coord_event  7, 71, 2, Route32WannaBuyASlowpokeTailScript
 
-.Warps: db 5
-	warp_def 73, 11, 1, ROUTE_32_POKECENTER_1F
-	warp_def 2, 4, 3, ROUTE_32_RUINS_OF_ALPH_GATE
-	warp_def 3, 4, 4, ROUTE_32_RUINS_OF_ALPH_GATE
-	warp_def 79, 6, 4, UNION_CAVE_1F
-	warp_def 24, 4, 1, HIDDEN_TREE_GROTTO
+	db 7 ; bg events
+	bg_event 13,  5, SIGNPOST_JUMPTEXT, Route32SignText
+	bg_event  9,  1, SIGNPOST_JUMPTEXT, Route32RuinsSignText
+	bg_event 10, 84, SIGNPOST_JUMPTEXT, Route32UnionCaveSignText
+	bg_event 12, 67, SIGNPOST_ITEM + GREAT_BALL, EVENT_ROUTE_32_HIDDEN_GREAT_BALL
+	bg_event 11, 40, SIGNPOST_ITEM + SUPER_POTION, EVENT_ROUTE_32_HIDDEN_SUPER_POTION
+	bg_event  4, 23, SIGNPOST_JUMPSTD, treegrotto, HIDDENGROTTO_ROUTE_32
+	bg_event  5, 23, SIGNPOST_JUMPSTD, treegrotto, HIDDENGROTTO_ROUTE_32
 
-.XYTriggers: db 6
-	xy_trigger 0, 8, 18, Route32CooltrainerMStopsYou
-	xy_trigger 1, 24, 10, Route32LyraIntroducesHiddenGrottoes1
-	xy_trigger 1, 24, 11, Route32LyraIntroducesHiddenGrottoes2
-	xy_trigger 1, 24, 12, Route32LyraIntroducesHiddenGrottoes3
-	xy_trigger 1, 24, 13, Route32LyraIntroducesHiddenGrottoes4
-	xy_trigger 2, 71, 7, Route32WannaBuyASlowpokeTailScript
+	db 17 ; object events
+	object_event 19,  8, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, Route32CooltrainermPetrieScript, -1
+	object_event  7, 70, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SlowpokeTailSalesmanScript, EVENT_SLOWPOKE_WELL_ROCKETS
+	object_event 12, 67, SPRITE_NEW_BARK_LYRA, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FriedaScript, EVENT_ROUTE_32_FRIEDA_OF_FRIDAY
+	object_event 12, 33, SPRITE_NEW_BARK_LYRA, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_TRAINER, 1, TrainerPicnickerLiz1, -1
+	object_event  8, 49, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerFisherJustin, -1
+	object_event 12, 56, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_TRAINER, 3, TrainerFisherRalph1, -1
+	object_event  6, 48, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerFisherHenry, -1
+	object_event 16, 18, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerYoungsterAlbert, -1
+	object_event  4, 63, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerYoungsterGordon, -1
+	object_event  3, 45, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerCamperRoland, -1
+	object_event 11, 82, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerBird_keeperPeter, -1
+	itemball_event  6, 53, GREAT_BALL, 1, EVENT_ROUTE_32_GREAT_BALL
+	object_event 15, 13, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route32RoarTMGuyScript, -1
+	itemball_event  6, 32, REPEL, 1, EVENT_ROUTE_32_REPEL
+	cuttree_event 10, 19, EVENT_ROUTE_32_CUT_TREE
+	cuttree_event -1, 29, EVENT_MAGNET_TUNNEL_EAST_CUT_TREE
+	cuttree_event 23, 32, EVENT_CHERRYGROVE_BAY_CUT_TREE
 
-.Signposts: db 7
-	signpost  5, 13, SIGNPOST_JUMPTEXT, Route32SignText
-	signpost  1,  9, SIGNPOST_JUMPTEXT, Route32RuinsSignText
-	signpost 84, 10, SIGNPOST_JUMPTEXT, Route32UnionCaveSignText
-	signpost 67, 12, SIGNPOST_ITEM + GREAT_BALL, EVENT_ROUTE_32_HIDDEN_GREAT_BALL
-	signpost 40, 11, SIGNPOST_ITEM + SUPER_POTION, EVENT_ROUTE_32_HIDDEN_SUPER_POTION
-	signpost 23, 4, SIGNPOST_JUMPSTD, treegrotto, HIDDENGROTTO_ROUTE_32
-	signpost 23, 5, SIGNPOST_JUMPSTD, treegrotto, HIDDENGROTTO_ROUTE_32
-
-.PersonEvents: db 17
-	person_event SPRITE_COOLTRAINER_M, 8, 19, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, Route32CooltrainermPetrieScript, -1
-	person_event SPRITE_FISHER, 70, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SlowpokeTailSalesmanScript, EVENT_SLOWPOKE_WELL_ROCKETS
-	person_event SPRITE_NEW_BARK_LYRA, 67, 12, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FriedaScript, EVENT_ROUTE_32_FRIEDA_OF_FRIDAY
-	person_event SPRITE_NEW_BARK_LYRA, 33, 12, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerPicnickerLiz1, -1
-	person_event SPRITE_FISHER, 49, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherJustin, -1
-	person_event SPRITE_FISHER, 56, 12, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerFisherRalph1, -1
-	person_event SPRITE_FISHER, 48, 6, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherHenry, -1
-	person_event SPRITE_YOUNGSTER, 18, 16, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerYoungsterAlbert, -1
-	person_event SPRITE_YOUNGSTER, 63, 4, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerYoungsterGordon, -1
-	person_event SPRITE_YOUNGSTER, 45, 3, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerCamperRoland, -1
-	person_event SPRITE_YOUNGSTER, 82, 11, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBird_keeperPeter, -1
-	itemball_event 53, 6, GREAT_BALL, 1, EVENT_ROUTE_32_GREAT_BALL
-	person_event SPRITE_FISHER, 13, 15, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route32RoarTMGuyScript, -1
-	itemball_event 32, 6, REPEL, 1, EVENT_ROUTE_32_REPEL
-	cuttree_event 19, 10, EVENT_ROUTE_32_CUT_TREE
-	cuttree_event 29, -1, EVENT_MAGNET_TUNNEL_EAST_CUT_TREE
-	cuttree_event 32, 23, EVENT_CHERRYGROVE_BAY_CUT_TREE
-
-const_value set 1
+	const_def 1 ; object constants
 	const ROUTE32_COOLTRAINER_M
 	const ROUTE32_FISHER4
 	const ROUTE32_FRIEDA
@@ -450,22 +447,26 @@ Route32RoarTMGuyScript:
 .AlreadyHaveRoar:
 	jumpopenedtext Text_RoarOutro
 
-TrainerCamperRoland:
-	trainer EVENT_BEAT_CAMPER_ROLAND, CAMPER, ROLAND, CamperRolandSeenText, CamperRolandBeatenText, 0, .Script
+GenericTrainerCamperRoland:
+	generictrainer CAMPER, ROLAND, EVENT_BEAT_CAMPER_ROLAND, CamperRolandSeenText, CamperRolandBeatenText
 
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer CamperRolandAfterText
+	text "If you don't want"
+	line "to battle, just"
+	cont "avoid eye contact."
+	done
 
-TrainerFisherJustin:
-	trainer EVENT_BEAT_FISHER_JUSTIN, FISHER, JUSTIN, FisherJustinSeenText, FisherJustinBeatenText, 0, .Script
+GenericTrainerFisherJustin:
+	generictrainer FISHER, JUSTIN, EVENT_BEAT_FISHER_JUSTIN, FisherJustinSeenText, FisherJustinBeatenText
 
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer FisherJustinAfterText
+	text "Calm, collected…"
+	line "The essence of"
+
+	para "fishing and #-"
+	line "mon is the same."
+	done
 
 TrainerFisherRalph1:
-	trainer EVENT_BEAT_FISHER_RALPH, FISHER, RALPH1, FisherRalph1SeenText, FisherRalph1BeatenText, 0, .Script
+	trainer FISHER, RALPH1, EVENT_BEAT_FISHER_RALPH, FisherRalph1SeenText, FisherRalph1BeatenText, 0, .Script
 
 .Script:
 	writecode VAR_CALLERID, PHONE_FISHER_RALPH
@@ -481,21 +482,21 @@ TrainerFisherRalph1:
 	writetext FisherRalphAfterText
 	buttonsound
 	setevent EVENT_RALPH_ASKED_FOR_PHONE_NUMBER
-	scall .AskNumber1
+	callstd asknumber1m
 	jump .AskForNumber
 
 .AskAgain:
-	scall .AskNumber2
+	callstd asknumber2m
 .AskForNumber:
 	askforphonenumber PHONE_FISHER_RALPH
 	if_equal $1, .PhoneFull
 	if_equal $2, .NumberDeclined
 	trainertotext FISHER, RALPH1, $0
-	scall .RegisteredNumber
-	jump .NumberAccepted
+	callstd registerednumberm
+	jumpstd numberacceptedm
 
 .Rematch:
-	scall .RematchStd
+	callstd rematchm
 	winlosstext FisherRalph1BeatenText, 0
 	copybytetovar wRalphFightCount
 	if_equal 4, .Fight4
@@ -557,43 +558,27 @@ TrainerFisherRalph1:
 .Swarm:
 	jumpopenedtext FisherRalphSwarmText
 
-.AskNumber1:
-	jumpstd asknumber1m
-	end
-
-.AskNumber2:
-	jumpstd asknumber2m
-	end
-
-.RegisteredNumber:
-	jumpstd registerednumberm
-	end
-
 .NumberAccepted:
 	jumpstd numberacceptedm
-	end
 
 .NumberDeclined:
 	jumpstd numberdeclinedm
-	end
 
 .PhoneFull:
 	jumpstd phonefullm
-	end
 
-.RematchStd:
-	jumpstd rematchm
-	end
+GenericTrainerFisherHenry:
+	generictrainer FISHER, HENRY, EVENT_BEAT_FISHER_HENRY, FisherHenrySeenText, FisherHenryBeatenText
 
-TrainerFisherHenry:
-	trainer EVENT_BEAT_FISHER_HENRY, FISHER, HENRY, FisherHenrySeenText, FisherHenryBeatenText, 0, .Script
+	text "Freshly caught"
+	line "#mon are no"
 
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer FisherHenryAfterText
+	para "match for properly"
+	line "raised ones."
+	done
 
 TrainerPicnickerLiz1:
-	trainer EVENT_BEAT_PICNICKER_LIZ, PICNICKER, LIZ1, PicnickerLiz1SeenText, PicnickerLiz1BeatenText, 0, .Script
+	trainer PICNICKER, LIZ1, EVENT_BEAT_PICNICKER_LIZ, PicnickerLiz1SeenText, PicnickerLiz1BeatenText, 0, .Script
 
 .Script:
 	writecode VAR_CALLERID, PHONE_PICNICKER_LIZ
@@ -607,21 +592,21 @@ TrainerPicnickerLiz1:
 	writetext PicnickerLiz1AfterText
 	buttonsound
 	setevent EVENT_LIZ_ASKED_FOR_PHONE_NUMBER
-	scall .AskNumber1
+	callstd asknumber1f
 	jump .AskForNumber
 
 .AskAgain:
-	scall .AskNumber2
+	callstd asknumber2f
 .AskForNumber:
 	askforphonenumber PHONE_PICNICKER_LIZ
 	if_equal $1, .PhoneFull
 	if_equal $2, .NumberDeclined
 	trainertotext PICNICKER, LIZ1, $0
-	scall .RegisteredNumber
-	jump .NumberAccepted
+	callstd registerednumberf
+	jumpstd numberacceptedf
 
 .Rematch:
-	scall .RematchStd
+	callstd rematchf
 	winlosstext PicnickerLiz1BeatenText, 0
 	copybytetovar wLizFightCount
 	if_equal 4, .Fight4
@@ -680,54 +665,41 @@ TrainerPicnickerLiz1:
 	clearflag ENGINE_LIZ
 	end
 
-.AskNumber1:
-	jumpstd asknumber1f
-	end
-
-.AskNumber2:
-	jumpstd asknumber2f
-	end
-
-.RegisteredNumber:
-	jumpstd registerednumberf
-	end
-
 .NumberAccepted:
 	jumpstd numberacceptedf
-	end
 
 .NumberDeclined:
 	jumpstd numberdeclinedf
-	end
 
 .PhoneFull:
 	jumpstd phonefullf
-	end
 
-.RematchStd:
-	jumpstd rematchf
-	end
+GenericTrainerYoungsterAlbert:
+	generictrainer YOUNGSTER, ALBERT, EVENT_BEAT_YOUNGSTER_ALBERT, YoungsterAlbertSeenText, YoungsterAlbertBeatenText
 
-TrainerYoungsterAlbert:
-	trainer EVENT_BEAT_YOUNGSTER_ALBERT, YOUNGSTER, ALBERT, YoungsterAlbertSeenText, YoungsterAlbertBeatenText, 0, .Script
+	text "I'm going to try"
+	line "to be the best"
+	cont "with my favorites."
 
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer YoungsterAlbertAfterText
+	para "I'm not using the"
+	line "same tough #mon"
+	cont "as everyone else."
+	done
 
-TrainerYoungsterGordon:
-	trainer EVENT_BEAT_YOUNGSTER_GORDON, YOUNGSTER, GORDON, YoungsterGordonSeenText, YoungsterGordonBeatenText, 0, .Script
+GenericTrainerYoungsterGordon:
+	generictrainer YOUNGSTER, GORDON, EVENT_BEAT_YOUNGSTER_GORDON, YoungsterGordonSeenText, YoungsterGordonBeatenText
 
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer YoungsterGordonAfterText
+	text "The grass is full"
+	line "of clingy things."
+	done
 
-TrainerBird_keeperPeter:
-	trainer EVENT_BEAT_BIRD_KEEPER_PETER, BIRD_KEEPER, PETER, Bird_keeperPeterSeenText, Bird_keeperPeterBeatenText, 0, .Script
+GenericTrainerBird_keeperPeter:
+	generictrainer BIRD_KEEPER, PETER, EVENT_BEAT_BIRD_KEEPER_PETER, Bird_keeperPeterSeenText, Bird_keeperPeterBeatenText
 
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer Bird_keeperPeterAfterText
+	text "I should train"
+	line "again at the Gym"
+	cont "in Violet City."
+	done
 
 FriedaScript:
 	checkevent EVENT_GOT_POISON_BARB_FROM_FRIEDA
@@ -829,14 +801,6 @@ FisherJustinBeatenText:
 	text "Sploosh!"
 	done
 
-FisherJustinAfterText:
-	text "Calm, collected…"
-	line "The essence of"
-
-	para "fishing and #-"
-	line "mon is the same."
-	done
-
 FisherRalph1SeenText:
 	text "I'm really good at"
 	line "both fishing and"
@@ -879,14 +843,6 @@ FisherHenryBeatenText:
 	text "Splash?"
 	done
 
-FisherHenryAfterText:
-	text "Freshly caught"
-	line "#mon are no"
-
-	para "match for properly"
-	line "raised ones."
-	done
-
 YoungsterAlbertSeenText:
 	text "I haven't seen you"
 	line "around before."
@@ -897,16 +853,6 @@ YoungsterAlbertSeenText:
 
 YoungsterAlbertBeatenText:
 	text "You're strong!"
-	done
-
-YoungsterAlbertAfterText:
-	text "I'm going to try"
-	line "to be the best"
-	cont "with my favorites."
-
-	para "I'm not using the"
-	line "same tough #mon"
-	cont "as everyone else."
 	done
 
 YoungsterGordonSeenText:
@@ -923,11 +869,6 @@ YoungsterGordonBeatenText:
 	line "could win."
 	done
 
-YoungsterGordonAfterText:
-	text "The grass is full"
-	line "of clingy things."
-	done
-
 CamperRolandSeenText:
 	text "That glance…"
 	line "It's intriguing."
@@ -936,12 +877,6 @@ CamperRolandSeenText:
 CamperRolandBeatenText:
 	text "Hmmm. This is"
 	line "disappointing."
-	done
-
-CamperRolandAfterText:
-	text "If you don't want"
-	line "to battle, just"
-	cont "avoid eye contact."
 	done
 
 PicnickerLiz1SeenText:
@@ -975,12 +910,6 @@ Bird_keeperPeterSeenText:
 Bird_keeperPeterBeatenText:
 	text "I know what my"
 	line "weaknesses are."
-	done
-
-Bird_keeperPeterAfterText:
-	text "I should train"
-	line "again at the Gym"
-	cont "in Violet City."
 	done
 
 Text_RoarIntro:

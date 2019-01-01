@@ -1,29 +1,26 @@
 EcruteakShrineInside_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 2 ; warp events
+	warp_event  5, 11, ECRUTEAK_SHRINE_OUTSIDE, 1
+	warp_event  6, 11, ECRUTEAK_SHRINE_OUTSIDE, 1
 
-EcruteakShrineInside_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 2
-	warp_def 11, 5, 1, ECRUTEAK_SHRINE_OUTSIDE
-	warp_def 11, 6, 1, ECRUTEAK_SHRINE_OUTSIDE
+	db 2 ; bg events
+	bg_event  5,  6, SIGNPOST_JUMPTEXT, EcruteakShrineInsideAltarText
+	bg_event  6,  6, SIGNPOST_JUMPTEXT, EcruteakShrineInsideAltarText
 
-.XYTriggers: db 0
+	db 5 ; object events
+	object_event  7,  6, SPRITE_SABRINA, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, EcruteakShrineInsideReiScript, -1
+	object_event  3,  8, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, EcruteakShrineInsideGrampsText, -1
+	object_event 10,  5, SPRITE_SAGE, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, EcruteakShrineInsideSageText, -1
+	object_event  1,  6, SPRITE_GRANNY, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, EcruteakShrineInsideGrannyText, -1
+	object_event 10,  3, SPRITE_FURRET, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
 
-.Signposts: db 2
-	signpost 6, 5, SIGNPOST_JUMPTEXT, EcruteakShrineInsideAltarText
-	signpost 6, 6, SIGNPOST_JUMPTEXT, EcruteakShrineInsideAltarText
-
-.PersonEvents: db 6
-	person_event SPRITE_SABRINA, 6, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, EcruteakShrineInsideReiScript, -1
-	person_event SPRITE_GRAMPS, 8, 3, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, EcruteakShrineInsideGrampsText, -1
-	person_event SPRITE_SAGE, 5, 10, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, EcruteakShrineInsideSageText, -1
-	person_event SPRITE_GRANNY, 6, 1, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, EcruteakShrineInsideGrannyText, -1
-	person_event SPRITE_FURRET, 3, 10, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
-
-const_value set 1
+	const_def 1 ; object constants
 	const ECRUTEAKSHRINEINSIDE_REI
 
 EcruteakShrineInsideReiScript:

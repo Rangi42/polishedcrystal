@@ -87,7 +87,7 @@ FindNest: ; 2a01f
 	inc hl
 	inc hl
 	inc hl
-	ld a, NUM_WILDMONS_PER_AREA_TIME_OF_DAY * 3
+	ld a, NUM_GRASSMON * 3
 	call .SearchMapForMon
 	jr nc, .next_grass
 	ld [de], a
@@ -95,7 +95,7 @@ FindNest: ; 2a01f
 
 .next_grass
 	pop hl
-	ld bc, WILDMON_GRASS_STRUCTURE_LENGTH
+	ld bc, GRASS_WILDDATA_LENGTH
 	add hl, bc
 	jr .FindGrass
 ; 2a06e

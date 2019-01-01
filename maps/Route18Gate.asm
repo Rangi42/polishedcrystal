@@ -1,31 +1,28 @@
 Route18Gate_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 5 ; warp events
+	warp_event  0,  5, ROUTE_18_WEST, 1
+	warp_event  0,  6, ROUTE_18_WEST, 2
+	warp_event  9,  5, ROUTE_18_EAST, 1
+	warp_event  9,  6, ROUTE_18_EAST, 2
+	warp_event  8,  8, ROUTE_18_GATE_2F, 1
 
-Route18Gate_MapEventHeader:
+	db 5 ; coord events
+	coord_event  5,  3, 0, UnknownScript_0x73611
+	coord_event  5,  4, 0, UnknownScript_0x73611
+	coord_event  5,  5, 0, Route18GateStepUpOneTrigger
+	coord_event  5,  6, 0, Route18GateStepUpTwoTrigger
+	coord_event  5,  7, 0, Route18GateStepUpThreeTrigger
 
-.Warps: db 5
-	warp_def 5, 0, 1, ROUTE_18_WEST
-	warp_def 6, 0, 2, ROUTE_18_WEST
-	warp_def 5, 9, 1, ROUTE_18_EAST
-	warp_def 6, 9, 2, ROUTE_18_EAST
-	warp_def 8, 8, 1, ROUTE_18_GATE_2F
+	db 0 ; bg events
 
-.XYTriggers: db 5
-	xy_trigger 0, 3, 5, UnknownScript_0x73611
-	xy_trigger 0, 4, 5, UnknownScript_0x73611
-	xy_trigger 0, 5, 5, Route18GateStepUpOneTrigger
-	xy_trigger 0, 6, 5, Route18GateStepUpTwoTrigger
-	xy_trigger 0, 7, 5, Route18GateStepUpThreeTrigger
+	db 1 ; object events
+	object_event  5,  1, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x7362c, -1
 
-.Signposts: db 0
-
-.PersonEvents: db 1
-	person_event SPRITE_OFFICER, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x7362c, -1
-
-const_value set 1
+	const_def 1 ; object constants
 	const ROUTE18GATE_OFFICER
 
 Route18GateStepUpOneTrigger:

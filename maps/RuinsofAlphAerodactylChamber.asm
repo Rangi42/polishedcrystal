@@ -1,31 +1,28 @@
 RuinsofAlphAerodactylChamber_MapScriptHeader:
+	db 1 ; scene scripts
+	scene_script RuinsofAlphAerodactylChamberTrigger0
 
-.MapTriggers: db 1
-	dw RuinsofAlphAerodactylChamberTrigger0
+	db 1 ; callbacks
+	callback MAPCALLBACK_TILES, UnknownScript_0x58db9
 
-.MapCallbacks: db 1
-	dbw MAPCALLBACK_TILES, UnknownScript_0x58db9
+	db 5 ; warp events
+	warp_event  3,  9, RUINS_OF_ALPH_OUTSIDE, 4
+	warp_event  4,  9, RUINS_OF_ALPH_OUTSIDE, 4
+	warp_event  3,  3, RUINS_OF_ALPH_INNER_CHAMBER, 8
+	warp_event  4,  3, RUINS_OF_ALPH_INNER_CHAMBER, 9
+	warp_event  4,  0, RUINS_OF_ALPH_AERODACTYL_ITEM_ROOM, 1
 
-RuinsofAlphAerodactylChamber_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 5
-	warp_def 9, 3, 4, RUINS_OF_ALPH_OUTSIDE
-	warp_def 9, 4, 4, RUINS_OF_ALPH_OUTSIDE
-	warp_def 3, 3, 8, RUINS_OF_ALPH_INNER_CHAMBER
-	warp_def 3, 4, 9, RUINS_OF_ALPH_INNER_CHAMBER
-	warp_def 0, 4, 1, RUINS_OF_ALPH_AERODACTYL_ITEM_ROOM
+	db 6 ; bg events
+	bg_event  2,  3, SIGNPOST_JUMPTEXT, UnknownText_0x58ec2
+	bg_event  5,  3, SIGNPOST_JUMPTEXT, UnknownText_0x58ec2
+	bg_event  3,  2, SIGNPOST_UP, MapRuinsofAlphAerodactylChamberSignpost2Script
+	bg_event  4,  2, SIGNPOST_UP, MapRuinsofAlphAerodactylChamberSignpost3Script
+	bg_event  3,  0, SIGNPOST_UP, MapRuinsofAlphAerodactylChamberSignpost4Script
+	bg_event  4,  0, SIGNPOST_UP, MapRuinsofAlphAerodactylChamberSignpost5Script
 
-.XYTriggers: db 0
-
-.Signposts: db 6
-	signpost 3, 2, SIGNPOST_JUMPTEXT, UnknownText_0x58ec2
-	signpost 3, 5, SIGNPOST_JUMPTEXT, UnknownText_0x58ec2
-	signpost 2, 3, SIGNPOST_UP, MapRuinsofAlphAerodactylChamberSignpost2Script
-	signpost 2, 4, SIGNPOST_UP, MapRuinsofAlphAerodactylChamberSignpost3Script
-	signpost 0, 3, SIGNPOST_UP, MapRuinsofAlphAerodactylChamberSignpost4Script
-	signpost 0, 4, SIGNPOST_UP, MapRuinsofAlphAerodactylChamberSignpost5Script
-
-.PersonEvents: db 0
+	db 0 ; object events
 
 RuinsofAlphAerodactylChamberTrigger0:
 	checkevent EVENT_WALL_OPENED_IN_AERODACTYL_CHAMBER

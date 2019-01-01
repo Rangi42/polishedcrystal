@@ -53,8 +53,8 @@ def get_ordered_mons():
 				break
 
 def get_egg_groups(mon):
-	# Read data/base_stats/<mon>.asm
-	filename = 'data/base_stats/%s.asm' % mon
+	# Read data/pokemon/base_stats/<mon>.asm
+	filename = 'data/pokemon/base_stats/%s.asm' % mon
 	with open(filename, 'r') as file:
 		for line in file:
 			line = line.rstrip()
@@ -71,7 +71,7 @@ def get_egg_groups(mon):
 
 def get_level_up_moves():
 	# Read data/evos_attacks.asm
-	with open('data/evos_attacks.asm', 'r') as file:
+	with open('data/pokemon/evos_attacks.asm', 'r') as file:
 		current_mon = None
 		reading_moves = False
 		for line in file:
@@ -101,7 +101,7 @@ def get_level_up_moves():
 
 def get_tm_moves(mon):
 	# Read data/base_stats/<mon>.asm
-	filename = 'data/base_stats/%s.asm' % mon
+	filename = 'data/pokemon/base_stats/%s.asm' % mon
 	with open(filename, 'r') as file:
 		for line in file:
 			line = line.rstrip()
@@ -116,7 +116,7 @@ def get_tm_moves(mon):
 
 def get_egg_moves():
 	# Read data/egg_moves.asm
-	with open('data/egg_moves.asm', 'r') as file:
+	with open('data/pokemon/egg_moves.asm', 'r') as file:
 		current_mon = None
 		for line in file:
 			line = line.rstrip()

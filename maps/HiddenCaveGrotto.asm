@@ -1,20 +1,17 @@
 HiddenCaveGrotto_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 1 ; callbacks
+	callback MAPCALLBACK_NEWMAP, HiddenGrottoCallback
 
-.MapCallbacks: db 1
-	dbw MAPCALLBACK_NEWMAP, HiddenGrottoCallback
+	db 1 ; warp events
+	warp_event 35, 85, HIDDEN_CAVE_GROTTO, -1
 
-HiddenCaveGrotto_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 1
-	warp_def 85, 35, -1, HIDDEN_CAVE_GROTTO
+	db 1 ; bg events
+	bg_event 34, 74, SIGNPOST_GROTTOITEM, HiddenGrottoHiddenItemScript
 
-.XYTriggers: db 0
-
-.Signposts: db 1
-	signpost 74, 34, SIGNPOST_GROTTOITEM, HiddenGrottoHiddenItemScript
-
-.PersonEvents: db 2
-	person_event SPRITE_GROTTO_MON, 74, 34, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, HiddenGrottoPokemonScript, EVENT_GAVE_KURT_APRICORNS
-	person_event SPRITE_BALL_CUT_FRUIT, 74, 34, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, HiddenGrottoItemScript, EVENT_RECEIVED_BALLS_FROM_KURT
+	db 2 ; object events
+	object_event 34, 74, SPRITE_GROTTO_MON, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_PURPLE, PERSONTYPE_SCRIPT, 0, HiddenGrottoPokemonScript, EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
+	object_event 34, 74, SPRITE_BALL_CUT_FRUIT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, HiddenGrottoItemScript, EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2

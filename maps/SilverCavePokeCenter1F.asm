@@ -1,25 +1,22 @@
 SilverCavePokeCenter1F_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 3 ; warp events
+	warp_event  5,  7, SILVER_CAVE_OUTSIDE, 1
+	warp_event  6,  7, SILVER_CAVE_OUTSIDE, 1
+	warp_event  0,  7, POKECENTER_2F, 1
 
-SilverCavePokeCenter1F_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 3
-	warp_def 7, 5, 1, SILVER_CAVE_OUTSIDE
-	warp_def 7, 6, 1, SILVER_CAVE_OUTSIDE
-	warp_def 7, 0, 1, POKECENTER_2F
+	db 1 ; bg events
+	bg_event 10,  1, SIGNPOST_READ, PokemonJournalLanceScript
 
-.XYTriggers: db 0
-
-.Signposts: db 1
-	signpost 1, 10, SIGNPOST_READ, PokemonJournalLanceScript
-
-.PersonEvents: db 3
-	pc_nurse_event 1, 5
-	person_event SPRITE_GRAMPS, 4, 9, SPRITEMOVEDATA_STANDING_DOWN, 1, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SilverCavePokeCenterGrampsScript, -1
-	person_event SPRITE_GRANNY, 4, 2, SPRITEMOVEDATA_STANDING_LEFT, 1, 2, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, SilverCavePokeCenter1FGrannyText, -1
+	db 3 ; object events
+	pc_nurse_event  5, 1
+	object_event  9,  4, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_DOWN, 1, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SilverCavePokeCenterGrampsScript, -1
+	object_event  2,  4, SPRITE_GRANNY, SPRITEMOVEDATA_STANDING_LEFT, 1, 2, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, SilverCavePokeCenter1FGrannyText, -1
 
 PokemonJournalLanceScript:
 	setflag ENGINE_READ_LANCE_JOURNAL

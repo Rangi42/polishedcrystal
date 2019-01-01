@@ -1,20 +1,17 @@
 MagnetTunnelEast_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 1 ; warp events
+	warp_event  8,  7, MAGNET_TUNNEL_INSIDE, 2
 
-MagnetTunnelEast_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 1
-	warp_def 7, 8, 2, MAGNET_TUNNEL_INSIDE
+	db 0 ; bg events
 
-.XYTriggers: db 0
-
-.Signposts: db 0
-
-.PersonEvents: db 4
-	cuttree_event 11, 19, EVENT_MAGNET_TUNNEL_EAST_CUT_TREE
-	smashrock_event 8, 12
-	smashrock_event 4, 13
-	smashrock_event 5, 12
+	db 4 ; object events
+	cuttree_event 19, 11, EVENT_MAGNET_TUNNEL_EAST_CUT_TREE
+	smashrock_event 12, 8
+	smashrock_event 13, 4
+	smashrock_event 12, 5

@@ -1,36 +1,37 @@
 Route6_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 2 ; warp events
+	warp_event 21,  9, ROUTE_6_UNDERGROUND_ENTRANCE, 1
+	warp_event 10,  1, ROUTE_6_SAFFRON_GATE, 3
 
-Route6_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 2
-	warp_def 9, 21, 1, ROUTE_6_UNDERGROUND_ENTRANCE
-	warp_def 1, 10, 3, ROUTE_6_SAFFRON_GATE
+	db 1 ; bg events
+	bg_event 23, 11, SIGNPOST_JUMPTEXT, Route6UndergroundPathSignText
 
-.XYTriggers: db 0
+	db 8 ; object events
+	object_event 21, 10, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1ad957, EVENT_ROUTE_5_6_POKEFAN_M_BLOCKS_UNDERGROUND_PATH
+	object_event 13, 24, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_GENERICTRAINER, 0, GenericTrainerPokefanmRex, -1
+	object_event 14, 24, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_GENERICTRAINER, 0, GenericTrainerPokefanmAllan, -1
+	object_event 16, 17, SPRITE_TWIN, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerTwinsDayanddani1, -1
+	object_event 17, 17, SPRITE_TWIN, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerTwinsDayanddani2, -1
+	object_event 20, 27, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerYoungsterChaz, -1
+	object_event 12, 13, SPRITE_VERMILION_LAWRENCE, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerGuitaristfWanda, -1
+	object_event 21, 19, SPRITE_OFFICER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 1, OfficerfJennyScript, -1
 
-.Signposts: db 1
-	signpost 11, 23, SIGNPOST_JUMPTEXT, Route6UndergroundPathSignText
+GenericTrainerPokefanmRex:
+	generictrainer POKEFANM, REX, EVENT_BEAT_POKEFANM_REX, PokefanmRexSeenText, PokefanmRexBeatenText
 
-.PersonEvents: db 8
-	person_event SPRITE_POKEFAN_M, 10, 21, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1ad957, EVENT_ROUTE_5_6_POKEFAN_M_BLOCKS_UNDERGROUND_PATH
-	person_event SPRITE_POKEFAN_M, 24, 13, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 0, TrainerPokefanmRex, -1
-	person_event SPRITE_POKEFAN_M, 24, 14, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 0, TrainerPokefanmAllan, -1
-	person_event SPRITE_TWIN, 17, 16, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerTwinsDayanddani1, -1
-	person_event SPRITE_TWIN, 17, 17, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerTwinsDayanddani2, -1
-	person_event SPRITE_YOUNGSTER, 27, 20, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerYoungsterChaz, -1
-	person_event SPRITE_VERMILION_LAWRENCE, 13, 12, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerGuitaristfWanda, -1
-	person_event SPRITE_OFFICER_F, 19, 21, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 1, OfficerfJennyScript, -1
+	text "Look how adorable"
+	line "my Phanpy acts!"
 
-TrainerPokefanmRex:
-	trainer EVENT_BEAT_POKEFANM_REX, POKEFANM, REX, PokefanmRexSeenText, PokefanmRexBeatenText, 0, PokefanmRexScript
-
-PokefanmRexScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x1ad9ff
+	para "Isn't it cute"
+	line "enough to make"
+	cont "your heart melt?"
+	done
 
 PokefanmRexSeenText:
 	text "My Phanpy is the"
@@ -42,21 +43,16 @@ PokefanmRexBeatenText:
 	text "My Phanpy!"
 	done
 
-UnknownText_0x1ad9ff:
+GenericTrainerPokefanmAllan:
+	generictrainer POKEFANM, ALLAN, EVENT_BEAT_POKEFANM_ALLAN, PokefanmAllanSeenText, PokefanmAllanBeatenText
+
 	text "Look how adorable"
-	line "my Phanpy acts!"
+	line "my Teddiursa acts!"
 
 	para "Isn't it cute"
 	line "enough to make"
 	cont "your heart melt?"
 	done
-
-TrainerPokefanmAllan:
-	trainer EVENT_BEAT_POKEFANM_ALLAN, POKEFANM, ALLAN, PokefanmAllanSeenText, PokefanmAllanBeatenText, 0, PokefanmAllanScript
-
-PokefanmAllanScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x1ada88
 
 PokefanmAllanSeenText:
 	text "My Teddiursa is"
@@ -68,21 +64,11 @@ PokefanmAllanBeatenText:
 	text "My Teddiursa!"
 	done
 
-UnknownText_0x1ada88:
-	text "Look how adorable"
-	line "my Teddiursa acts!"
+GenericTrainerTwinsDayanddani1:
+	generictrainer TWINS, DAYANDDANI1, EVENT_BEAT_TWINS_DAY_AND_DANI, TwinsDayanddani1SeenText, TwinsDayanddani1BeatenText
 
-	para "Isn't it cute"
-	line "enough to make"
-	cont "your heart melt?"
+	text "Day: You beat us…"
 	done
-
-TrainerTwinsDayanddani1:
-	trainer EVENT_BEAT_TWINS_DAY_AND_DANI, TWINS, DAYANDDANI1, TwinsDayanddani1SeenText, TwinsDayanddani1BeatenText, 0, TrainerTwinsDayanddani1Script
-
-TrainerTwinsDayanddani1Script:
-	end_if_just_battled
-	jumptextfaceplayer TwinsDayanddani1AfterText
 
 TwinsDayanddani1SeenText:
 	text "Day: Are you going"
@@ -93,16 +79,12 @@ TwinsDayanddani1BeatenText:
 	text "Day: Waah!"
 	done
 
-TwinsDayanddani1AfterText:
-	text "Day: You beat us…"
+GenericTrainerTwinsDayanddani2:
+	generictrainer TWINS, DAYANDDANI2, EVENT_BEAT_TWINS_DAY_AND_DANI, TwinsDayanddani2SeenText, TwinsDayanddani2BeatenText
+
+	text "Dani: Looks like"
+	line "we got bounced."
 	done
-
-TrainerTwinsDayanddani2:
-	trainer EVENT_BEAT_TWINS_DAY_AND_DANI, TWINS, DAYANDDANI2, TwinsDayanddani2SeenText, TwinsDayanddani2BeatenText, 0, TrainerTwinsDayanddani2Script
-
-TrainerTwinsDayanddani2Script:
-	end_if_just_battled
-	jumptextfaceplayer TwinsDayanddani2AfterText
 
 TwinsDayanddani2SeenText:
 	text "Dani: We'll knock"
@@ -113,17 +95,12 @@ TwinsDayanddani2BeatenText:
 	text "Dani: Eeeeh!"
 	done
 
-TwinsDayanddani2AfterText:
-	text "Dani: Looks like"
-	line "we got bounced."
+GenericTrainerYoungsterChaz:
+	generictrainer YOUNGSTER, CHAZ, EVENT_BEAT_YOUNGSTER_CHAZ, .SeenText, .BeatenText
+
+	text "Me and my big"
+	line "mouth…"
 	done
-
-TrainerYoungsterChaz:
-	trainer EVENT_BEAT_YOUNGSTER_CHAZ, YOUNGSTER, CHAZ, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Do I see a strong"
@@ -137,17 +114,11 @@ TrainerYoungsterChaz:
 	text "The trash was me…"
 	done
 
-.AfterText:
-	text "Me and my big"
-	line "mouth…"
+GenericTrainerGuitaristfWanda:
+	generictrainer GUITARISTF, WANDA, EVENT_BEAT_GUITARISTF_WANDA, .SeenText, .BeatenText
+
+	text "Just move along…"
 	done
-
-TrainerGuitaristfWanda:
-	trainer EVENT_BEAT_GUITARISTF_WANDA, GUITARISTF, WANDA, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "You'd better"
@@ -157,10 +128,6 @@ TrainerGuitaristfWanda:
 .BeatenText:
 	text "The battle's lost"
 	line "and not won…"
-	done
-
-.AfterText:
-	text "Just move along…"
 	done
 
 OfficerfJennyScript:

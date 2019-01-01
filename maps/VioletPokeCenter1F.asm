@@ -1,29 +1,26 @@
 VioletPokeCenter1F_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 3 ; warp events
+	warp_event  5,  7, VIOLET_CITY, 5
+	warp_event  6,  7, VIOLET_CITY, 5
+	warp_event  0,  7, POKECENTER_2F, 1
 
-VioletPokeCenter1F_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 3
-	warp_def 7, 5, 5, VIOLET_CITY
-	warp_def 7, 6, 5, VIOLET_CITY
-	warp_def 7, 0, 1, POKECENTER_2F
+	db 1 ; bg events
+	bg_event 10,  1, SIGNPOST_READ, PokemonJournalFalknerScript
 
-.XYTriggers: db 0
+	db 5 ; object events
+	object_event 10,  2, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, VioletPokeCenter1FElmsAideScript, EVENT_ELMS_AIDE_IN_VIOLET_POKEMON_CENTER
+	pc_nurse_event  5, 1
+	object_event  9,  4, SPRITE_GAMEBOY_KID, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, VioletPokeCenter1FGameboyKidText, -1
+	object_event  2,  4, SPRITE_GENTLEMAN, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, VioletPokeCenter1FGentlemanText, -1
+	object_event 11,  5, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, VioletPokeCenter1FYoungsterText, -1
 
-.Signposts: db 1
-	signpost 1, 10, SIGNPOST_READ, PokemonJournalFalknerScript
-
-.PersonEvents: db 5
-	person_event SPRITE_SCIENTIST, 2, 10, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, VioletPokeCenter1FElmsAideScript, EVENT_ELMS_AIDE_IN_VIOLET_POKEMON_CENTER
-	pc_nurse_event 1, 5
-	person_event SPRITE_GAMEBOY_KID, 4, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, VioletPokeCenter1FGameboyKidText, -1
-	person_event SPRITE_GENTLEMAN, 4, 2, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, VioletPokeCenter1FGentlemanText, -1
-	person_event SPRITE_YOUNGSTER, 5, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, VioletPokeCenter1FYoungsterText, -1
-
-const_value set 1
+	const_def 1 ; object constants
 	const VIOLETPOKECENTER1F_SCIENTIST
 
 PokemonJournalFalknerScript:

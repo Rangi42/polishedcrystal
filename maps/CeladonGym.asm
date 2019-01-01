@@ -1,29 +1,26 @@
 CeladonGym_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 2 ; warp events
+	warp_event  4, 17, CELADON_CITY, 8
+	warp_event  5, 17, CELADON_CITY, 8
 
-CeladonGym_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 2
-	warp_def 17, 4, 8, CELADON_CITY
-	warp_def 17, 5, 8, CELADON_CITY
+	db 2 ; bg events
+	bg_event  3, 15, SIGNPOST_READ, CeladonGymStatue
+	bg_event  6, 15, SIGNPOST_READ, CeladonGymStatue
 
-.XYTriggers: db 0
-
-.Signposts: db 2
-	signpost 15, 3, SIGNPOST_READ, CeladonGymStatue
-	signpost 15, 6, SIGNPOST_READ, CeladonGymStatue
-
-.PersonEvents: db 7
-	person_event SPRITE_ERIKA, 3, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ErikaScript_0x72a6a, -1
-	person_event SPRITE_LASS, 8, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerLassMichelle, -1
-	person_event SPRITE_LASS, 8, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 2, TrainerPicnickerTanya, -1
-	person_event SPRITE_BEAUTY, 5, 3, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerBeautyJulia, -1
-	person_event SPRITE_LADY, 5, 6, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerAroma_ladyDahlia, -1
-	person_event SPRITE_TWIN, 10, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerTwinsJoandzoe1, -1
-	person_event SPRITE_TWIN, 10, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerTwinsJoandzoe2, -1
+	db 7 ; object events
+	object_event  5,  3, SPRITE_ERIKA, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_SCRIPT, 0, ErikaScript_0x72a6a, -1
+	object_event  7,  8, SPRITE_LASS, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerLassMichelle, -1
+	object_event  2,  8, SPRITE_LASS, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerPicnickerTanya, -1
+	object_event  3,  5, SPRITE_BEAUTY, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerBeautyJulia, -1
+	object_event  6,  5, SPRITE_LADY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerAroma_ladyDahlia, -1
+	object_event  4, 10, SPRITE_TWIN, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerTwinsJoandzoe1, -1
+	object_event  5, 10, SPRITE_TWIN, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerTwinsJoandzoe2, -1
 
 ErikaScript_0x72a6a:
 	faceplayer
@@ -72,47 +69,57 @@ ErikaScript_0x72a6a:
 	setevent EVENT_GOT_TM19_GIGA_DRAIN
 	jumpopenedtext ErikaOutroText
 
-TrainerLassMichelle:
-	trainer EVENT_BEAT_LASS_MICHELLE, LASS, MICHELLE, LassMichelleSeenText, LassMichelleBeatenText, 0, LassMichelleScript
+GenericTrainerLassMichelle:
+	generictrainer LASS, MICHELLE, EVENT_BEAT_LASS_MICHELLE, LassMichelleSeenText, LassMichelleBeatenText
 
-LassMichelleScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x72e30
+	text "I just got care-"
+	line "less, that's all!"
+	done
 
-TrainerPicnickerTanya:
-	trainer EVENT_BEAT_PICNICKER_TANYA, PICNICKER, TANYA, PicnickerTanyaSeenText, PicnickerTanyaBeatenText, 0, PicnickerTanyaScript
+GenericTrainerPicnickerTanya:
+	generictrainer PICNICKER, TANYA, EVENT_BEAT_PICNICKER_TANYA, PicnickerTanyaSeenText, PicnickerTanyaBeatenText
 
-PicnickerTanyaScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x72e8e
+	text "Oh, look at all"
+	line "your Badges. No"
 
-TrainerBeautyJulia:
-	trainer EVENT_BEAT_BEAUTY_JULIA, BEAUTY, JULIA, BeautyJuliaSeenText, BeautyJuliaBeatenText, 0, BeautyJuliaScript
+	para "wonder I couldn't"
+	line "win!"
+	done
 
-BeautyJuliaScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x72f01
+GenericTrainerBeautyJulia:
+	generictrainer BEAUTY, JULIA, EVENT_BEAT_BEAUTY_JULIA, BeautyJuliaSeenText, BeautyJuliaBeatenText
 
-TrainerAroma_ladyDahlia:
-	trainer EVENT_BEAT_AROMA_LADY_DAHLIA, AROMA_LADY, DAHLIA, Aroma_ladyDahliaSeenText, Aroma_ladyDahliaBeatenText, 0, Aroma_ladyDahliaScript
+	text "How do I go about"
+	line "becoming ladylike"
+	cont "like Erika?"
+	done
 
-Aroma_ladyDahliaScript:
-	end_if_just_battled
-	jumptextfaceplayer Aroma_ladyDahliaAfterText
+GenericTrainerAroma_ladyDahlia:
+	generictrainer AROMA_LADY, DAHLIA, EVENT_BEAT_AROMA_LADY_DAHLIA, Aroma_ladyDahliaSeenText, Aroma_ladyDahliaBeatenText
 
-TrainerTwinsJoandzoe1:
-	trainer EVENT_BEAT_TWINS_JO_AND_ZOE, TWINS, JOANDZOE1, TwinsJoandzoe1SeenText, TwinsJoandzoe1BeatenText, 0, TwinsJoandzoe1Script
+	text "Gloom releases a"
+	line "foul fragrance,"
 
-TwinsJoandzoe1Script:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x72f70
+	para "but Erika knows"
+	line "how to turn it"
 
-TrainerTwinsJoandzoe2:
-	trainer EVENT_BEAT_TWINS_JO_AND_ZOE, TWINS, JOANDZOE2, TwinsJoandzoe2SeenText, TwinsJoandzoe2BeatenText, 0, TwinsJoandzoe2Script
+	para "into a sweet"
+	line "perfume."
+	done
 
-TwinsJoandzoe2Script:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x72fc0
+GenericTrainerTwinsJoandzoe1:
+	generictrainer TWINS, JOANDZOE1, EVENT_BEAT_TWINS_JO_AND_ZOE, TwinsJoandzoe1SeenText, TwinsJoandzoe1BeatenText
+
+	text "Erika will get you"
+	line "back for us!"
+	done
+
+GenericTrainerTwinsJoandzoe2:
+	generictrainer TWINS, JOANDZOE2, EVENT_BEAT_TWINS_JO_AND_ZOE, TwinsJoandzoe2SeenText, TwinsJoandzoe2BeatenText
+
+	text "Erika is much,"
+	line "much stronger!"
+	done
 
 CeladonGymStatue:
 	trainertotext ERIKA, 1, $1
@@ -211,11 +218,6 @@ LassMichelleBeatenText:
 	text "Oh, bleah!"
 	done
 
-UnknownText_0x72e30:
-	text "I just got care-"
-	line "less, that's all!"
-	done
-
 PicnickerTanyaSeenText:
 	text "Oh, a battle?"
 	line "That's kind of"
@@ -226,14 +228,6 @@ PicnickerTanyaBeatenText:
 	text "Oh, that's it?"
 	done
 
-UnknownText_0x72e8e:
-	text "Oh, look at all"
-	line "your Badges. No"
-
-	para "wonder I couldn't"
-	line "win!"
-	done
-
 BeautyJuliaSeenText:
 	text "Were you looking"
 	line "at these flowers"
@@ -242,12 +236,6 @@ BeautyJuliaSeenText:
 
 BeautyJuliaBeatenText:
 	text "How annoying!"
-	done
-
-UnknownText_0x72f01:
-	text "How do I go about"
-	line "becoming ladylike"
-	cont "like Erika?"
 	done
 
 Aroma_ladyDahliaSeenText:
@@ -261,17 +249,6 @@ Aroma_ladyDahliaBeatenText:
 	line "of defeat…"
 	done
 
-Aroma_ladyDahliaAfterText:
-	text "Gloom releases a"
-	line "foul fragrance,"
-
-	para "but Erika knows"
-	line "how to turn it"
-
-	para "into a sweet"
-	line "perfume."
-	done
-
 TwinsJoandzoe1SeenText:
 	text "We'll show you"
 	line "#mon moves that"
@@ -280,11 +257,6 @@ TwinsJoandzoe1SeenText:
 
 TwinsJoandzoe1BeatenText:
 	text "Oh… We lost…"
-	done
-
-UnknownText_0x72f70:
-	text "Erika will get you"
-	line "back for us!"
 	done
 
 TwinsJoandzoe2SeenText:
@@ -296,7 +268,3 @@ TwinsJoandzoe2BeatenText:
 	text "We couldn't win…"
 	done
 
-UnknownText_0x72fc0:
-	text "Erika is much,"
-	line "much stronger!"
-	done

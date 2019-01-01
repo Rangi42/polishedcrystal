@@ -1,31 +1,28 @@
 RuinsofAlphOmanyteChamber_MapScriptHeader:
+	db 1 ; scene scripts
+	scene_script RuinsofAlphOmanyteChamberTrigger0
 
-.MapTriggers: db 1
-	dw RuinsofAlphOmanyteChamberTrigger0
+	db 1 ; callbacks
+	callback MAPCALLBACK_TILES, UnknownScript_0x58bf8
 
-.MapCallbacks: db 1
-	dbw MAPCALLBACK_TILES, UnknownScript_0x58bf8
+	db 5 ; warp events
+	warp_event  3,  9, RUINS_OF_ALPH_OUTSIDE, 3
+	warp_event  4,  9, RUINS_OF_ALPH_OUTSIDE, 3
+	warp_event  3,  3, RUINS_OF_ALPH_INNER_CHAMBER, 6
+	warp_event  4,  3, RUINS_OF_ALPH_INNER_CHAMBER, 7
+	warp_event  4,  0, RUINS_OF_ALPH_OMANYTE_ITEM_ROOM, 1
 
-RuinsofAlphOmanyteChamber_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 5
-	warp_def 9, 3, 3, RUINS_OF_ALPH_OUTSIDE
-	warp_def 9, 4, 3, RUINS_OF_ALPH_OUTSIDE
-	warp_def 3, 3, 6, RUINS_OF_ALPH_INNER_CHAMBER
-	warp_def 3, 4, 7, RUINS_OF_ALPH_INNER_CHAMBER
-	warp_def 0, 4, 1, RUINS_OF_ALPH_OMANYTE_ITEM_ROOM
+	db 6 ; bg events
+	bg_event  2,  3, SIGNPOST_JUMPTEXT, UnknownText_0x58d01
+	bg_event  5,  3, SIGNPOST_JUMPTEXT, UnknownText_0x58d01
+	bg_event  3,  2, SIGNPOST_UP, MapRuinsofAlphOmanyteChamberSignpost2Script
+	bg_event  4,  2, SIGNPOST_UP, MapRuinsofAlphOmanyteChamberSignpost3Script
+	bg_event  3,  0, SIGNPOST_UP, MapRuinsofAlphOmanyteChamberSignpost4Script
+	bg_event  4,  0, SIGNPOST_UP, MapRuinsofAlphOmanyteChamberSignpost5Script
 
-.XYTriggers: db 0
-
-.Signposts: db 6
-	signpost 3, 2, SIGNPOST_JUMPTEXT, UnknownText_0x58d01
-	signpost 3, 5, SIGNPOST_JUMPTEXT, UnknownText_0x58d01
-	signpost 2, 3, SIGNPOST_UP, MapRuinsofAlphOmanyteChamberSignpost2Script
-	signpost 2, 4, SIGNPOST_UP, MapRuinsofAlphOmanyteChamberSignpost3Script
-	signpost 0, 3, SIGNPOST_UP, MapRuinsofAlphOmanyteChamberSignpost4Script
-	signpost 0, 4, SIGNPOST_UP, MapRuinsofAlphOmanyteChamberSignpost5Script
-
-.PersonEvents: db 0
+	db 0 ; object events
 
 RuinsofAlphOmanyteChamberTrigger0:
 	special SpecialOmanyteChamber

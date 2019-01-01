@@ -1,40 +1,46 @@
 OlivineLighthouse4F_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 10 ; warp events
+	warp_event 13,  3, OLIVINE_LIGHTHOUSE_3F, 1
+	warp_event  3,  5, OLIVINE_LIGHTHOUSE_5F, 2
+	warp_event  9,  7, OLIVINE_LIGHTHOUSE_5F, 3
+	warp_event  9,  5, OLIVINE_LIGHTHOUSE_3F, 3
+	warp_event 16,  9, OLIVINE_LIGHTHOUSE_3F, 6
+	warp_event 17,  9, OLIVINE_LIGHTHOUSE_3F, 7
+	warp_event  8,  3, OLIVINE_LIGHTHOUSE_3F, 8
+	warp_event  9,  3, OLIVINE_LIGHTHOUSE_3F, 9
+	warp_event 16,  7, OLIVINE_LIGHTHOUSE_5F, 4
+	warp_event 17,  7, OLIVINE_LIGHTHOUSE_5F, 5
 
-OlivineLighthouse4F_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 10
-	warp_def 3, 13, 1, OLIVINE_LIGHTHOUSE_3F
-	warp_def 5, 3, 2, OLIVINE_LIGHTHOUSE_5F
-	warp_def 7, 9, 3, OLIVINE_LIGHTHOUSE_5F
-	warp_def 5, 9, 3, OLIVINE_LIGHTHOUSE_3F
-	warp_def 9, 16, 6, OLIVINE_LIGHTHOUSE_3F
-	warp_def 9, 17, 7, OLIVINE_LIGHTHOUSE_3F
-	warp_def 3, 8, 8, OLIVINE_LIGHTHOUSE_3F
-	warp_def 3, 9, 9, OLIVINE_LIGHTHOUSE_3F
-	warp_def 7, 16, 4, OLIVINE_LIGHTHOUSE_5F
-	warp_def 7, 17, 5, OLIVINE_LIGHTHOUSE_5F
+	db 0 ; bg events
 
-.XYTriggers: db 0
+	db 2 ; object events
+	object_event  7, 14, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_TRAINER, 3, TrainerSailorKent, -1
+	object_event 11,  2, SPRITE_LASS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerLassConnie, EVENT_OLIVINE_LIGHTHOUSE_JASMINE
 
-.Signposts: db 0
+GenericTrainerLassConnie:
+	generictrainer LASS, CONNIE, EVENT_BEAT_LASS_CONNIE, LassConnieSeenText, LassConnieBeatenText
 
-.PersonEvents: db 2
-	person_event SPRITE_SAILOR, 14, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerSailorKent, -1
-	person_event SPRITE_LASS, 2, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerLassConnie, EVENT_OLIVINE_LIGHTHOUSE_JASMINE
+	text "Right. Anybody"
+	line "would be worried"
 
-TrainerLassConnie:
-	trainer EVENT_BEAT_LASS_CONNIE, LASS, CONNIE, LassConnieSeenText, LassConnieBeatenText, 0, LassConnieScript
+	para "if their own #-"
+	line "mon were hurt."
 
-LassConnieScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x5b63c
+	para "I'll pray for the"
+	line "#mon here, so"
+
+	para "Jasmine can come"
+	line "back to the Gym."
+	done
 
 TrainerSailorKent:
-	trainer EVENT_BEAT_SAILOR_KENT, SAILOR, KENT, SailorKentSeenText, SailorKentBeatenText, 0, SailorKentScript
+	trainer SAILOR, KENT, EVENT_BEAT_SAILOR_KENT, SailorKentSeenText, SailorKentBeatenText, 0, SailorKentScript
 
 SailorKentScript:
 	end_if_just_battled
@@ -88,16 +94,3 @@ LassConnieBeatenText:
 	text "Aaack! My #mon!"
 	done
 
-UnknownText_0x5b63c:
-	text "Right. Anybody"
-	line "would be worried"
-
-	para "if their own #-"
-	line "mon were hurt."
-
-	para "I'll pray for the"
-	line "#mon here, so"
-
-	para "Jasmine can come"
-	line "back to the Gym."
-	done

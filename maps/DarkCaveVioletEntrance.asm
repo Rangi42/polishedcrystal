@@ -1,36 +1,33 @@
 DarkCaveVioletEntrance_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 3 ; warp events
+	warp_event  3, 15, ROUTE_31, 3
+	warp_event 17,  1, DARK_CAVE_BLACKTHORN_ENTRANCE, 2
+	warp_event 35, 33, ROUTE_46, 3
 
-DarkCaveVioletEntrance_MapEventHeader:
+	db 1 ; coord events
+	coord_event  5,  2, 0, DarkCaveVioletEntranceFalknerTrigger
 
-.Warps: db 3
-	warp_def 15, 3, 3, ROUTE_31
-	warp_def 1, 17, 2, DARK_CAVE_BLACKTHORN_ENTRANCE
-	warp_def 33, 35, 3, ROUTE_46
+	db 1 ; bg events
+	bg_event 26,  3, SIGNPOST_ITEM + ELIXER, EVENT_DARK_CAVE_VIOLET_ENTRANCE_HIDDEN_ELIXER
 
-.XYTriggers: db 1
-	xy_trigger 0, 2, 5, DarkCaveVioletEntranceFalknerTrigger
+	db 11 ; object events
+	object_event 10,  2, SPRITE_URSARING, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_DARK_CAVE_URSARING
+	object_event  9,  2, SPRITE_PIDGEOTTO, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_DARK_CAVE_PIDGEOTTO
+	object_event  8,  2, SPRITE_FALKNER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_DARK_CAVE_FALKNER
+	itemball_event  6,  8, POTION, 1, EVENT_DARK_CAVE_VIOLET_ENTRANCE_POTION
+	smashrock_event 16, 14
+	smashrock_event 27, 6
+	smashrock_event  7, 14
+	smashrock_event 36, 31
+	itemball_event 36, 22, DUSK_STONE, 1, EVENT_DARK_CAVE_VIOLET_ENTRANCE_DUSK_STONE
+	itemball_event 35,  9, HYPER_POTION, 1, EVENT_DARK_CAVE_VIOLET_ENTRANCE_HYPER_POTION
+	itemball_event 30, 28, DIRE_HIT, 1, EVENT_DARK_CAVE_VIOLET_ENTRANCE_DIRE_HIT
 
-.Signposts: db 1
-	signpost 3, 26, SIGNPOST_ITEM + ELIXER, EVENT_DARK_CAVE_VIOLET_ENTRANCE_HIDDEN_ELIXER
-
-.PersonEvents: db 11
-	person_event SPRITE_URSARING, 2, 10, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_DARK_CAVE_URSARING
-	person_event SPRITE_PIDGEOTTO, 2, 9, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_DARK_CAVE_PIDGEOTTO
-	person_event SPRITE_FALKNER, 2, 8, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_DARK_CAVE_FALKNER
-	itemball_event 8, 6, POTION, 1, EVENT_DARK_CAVE_VIOLET_ENTRANCE_POTION
-	smashrock_event 14, 16
-	smashrock_event 6, 27
-	smashrock_event 14, 7
-	smashrock_event 31, 36
-	itemball_event 22, 36, DUSK_STONE, 1, EVENT_DARK_CAVE_VIOLET_ENTRANCE_DUSK_STONE
-	itemball_event 9, 35, HYPER_POTION, 1, EVENT_DARK_CAVE_VIOLET_ENTRANCE_HYPER_POTION
-	itemball_event 28, 30, DIRE_HIT, 1, EVENT_DARK_CAVE_VIOLET_ENTRANCE_DIRE_HIT
-
-const_value set 1
+	const_def 1 ; object constants
 	const DARKCAVEVIOLETENTRANCE_URSARING
 	const DARKCAVEVIOLETENTRANCE_PIDGEOTTO
 	const DARKCAVEVIOLETENTRANCE_FALKNER

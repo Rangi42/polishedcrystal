@@ -1,23 +1,20 @@
 EcruteakLugiaSpeechHouse_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 2 ; warp events
+	warp_event  3,  7, ECRUTEAK_CITY, 7
+	warp_event  4,  7, ECRUTEAK_CITY, 7
 
-EcruteakLugiaSpeechHouse_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 2
-	warp_def 7, 3, 7, ECRUTEAK_CITY
-	warp_def 7, 4, 7, ECRUTEAK_CITY
+	db 1 ; bg events
+	bg_event  2,  1, SIGNPOST_JUMPSTD, radio2
 
-.XYTriggers: db 0
-
-.Signposts: db 1
-	signpost 1, 2, SIGNPOST_JUMPSTD, radio2
-
-.PersonEvents: db 2
-	person_event SPRITE_GRAMPS, 3, 2, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x9933d, -1
-	person_event SPRITE_YOUNGSTER, 4, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x993ec, -1
+	db 2 ; object events
+	object_event  2,  3, SPRITE_GRAMPS, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x9933d, -1
+	object_event  5,  4, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x993ec, -1
 
 UnknownText_0x9933d:
 	text "This happened when"

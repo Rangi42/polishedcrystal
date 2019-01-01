@@ -1,35 +1,33 @@
 CliffCave_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 7 ; warp events
+	warp_event  5, 19, ROUTE_47, 2
+	warp_event  7,  9, ROUTE_47, 3
+	warp_event  5, 33, ROUTE_47, 4
+	warp_event  3, 17, CLIFF_CAVE, 6
+	warp_event  7, 17, CLIFF_CAVE, 7
+	warp_event  3,  3, CLIFF_CAVE, 4
+	warp_event  7, 27, CLIFF_CAVE, 5
 
-CliffCave_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 7
-	warp_def 19, 5, 2, ROUTE_47
-	warp_def 9, 7, 3, ROUTE_47
-	warp_def 33, 5, 4, ROUTE_47
-	warp_def 17, 3, 6, CLIFF_CAVE
-	warp_def 17, 7, 7, CLIFF_CAVE
-	warp_def 3, 3, 4, CLIFF_CAVE
-	warp_def 27, 7, 5, CLIFF_CAVE
+	db 1 ; bg events
+	bg_event  9,  9, SIGNPOST_ITEM + ULTRA_BALL, EVENT_CLIFF_CAVE_HIDDEN_ULTRA_BALL
 
-.XYTriggers: db 0
+	db 2 ; object events
+	object_event  9,  5, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerGruntM22, EVENT_CLEARED_YELLOW_FOREST
+	object_event  5, 33, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, CliffCaveRocketText, EVENT_CLEARED_YELLOW_FOREST
 
-.Signposts: db 1
-	signpost 9, 9, SIGNPOST_ITEM + ULTRA_BALL, EVENT_CLIFF_CAVE_HIDDEN_ULTRA_BALL
+GenericTrainerGruntM22:
+	generictrainer GRUNTM, 22, EVENT_BEAT_ROCKET_GRUNTM_22, GruntM22SeenText, GruntM22BeatenText
 
-.PersonEvents: db 2
-	person_event SPRITE_ROCKET, 5, 9, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerGruntM22, EVENT_CLEARED_YELLOW_FOREST
-	person_event SPRITE_ROCKET, 33, 5, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, CliffCaveRocketText, EVENT_CLEARED_YELLOW_FOREST
-
-TrainerGruntM22:
-	trainer EVENT_BEAT_ROCKET_GRUNTM_22, GRUNTM, 22, GruntM22SeenText, GruntM22BeatenText, 0, GruntM22Script
-
-GruntM22Script:
-	end_if_just_battled
-	jumptextfaceplayer GruntM22AfterText
+	text "No wonder you"
+	line "were able to"
+	cont "reach here."
+	done
 
 GruntM22SeenText:
 	text "Hey! You got past"
@@ -38,12 +36,6 @@ GruntM22SeenText:
 
 GruntM22BeatenText:
 	text "Aieee!"
-	done
-
-GruntM22AfterText:
-	text "No wonder you"
-	line "were able to"
-	cont "reach here."
 	done
 
 CliffCaveRocketText:

@@ -1,27 +1,24 @@
 CeladonUniversityWillowsOffice_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 2 ; warp events
+	warp_event  3,  5, CELADON_UNIVERSITY_2F, 3
+	warp_event  4,  5, CELADON_UNIVERSITY_2F, 3
 
-CeladonUniversityWillowsOffice_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 2
-	warp_def 5, 3, 3, CELADON_UNIVERSITY_2F
-	warp_def 5, 4, 3, CELADON_UNIVERSITY_2F
+	db 5 ; bg events
+	bg_event  0,  0, SIGNPOST_JUMPTEXT, CeladonUniversityWillowsOfficeBlackboardText
+	bg_event  1,  0, SIGNPOST_JUMPTEXT, CeladonUniversityWillowsOfficeBlackboardText
+	bg_event  2,  1, SIGNPOST_JUMPTEXT, CeladonUniversityWillowsOfficeBookshelf1Text
+	bg_event  3,  1, SIGNPOST_JUMPTEXT, CeladonUniversityWillowsOfficeBookshelf2Text
+	bg_event  5,  2, SIGNPOST_RIGHT, CeladonUniversityWillowsOfficeComputer
 
-.XYTriggers: db 0
-
-.Signposts: db 5
-	signpost 0, 0, SIGNPOST_JUMPTEXT, CeladonUniversityWillowsOfficeBlackboardText
-	signpost 0, 1, SIGNPOST_JUMPTEXT, CeladonUniversityWillowsOfficeBlackboardText
-	signpost 1, 2, SIGNPOST_JUMPTEXT, CeladonUniversityWillowsOfficeBookshelf1Text
-	signpost 1, 3, SIGNPOST_JUMPTEXT, CeladonUniversityWillowsOfficeBookshelf2Text
-	signpost 2, 5, SIGNPOST_RIGHT, CeladonUniversityWillowsOfficeComputer
-
-.PersonEvents: db 2
-	person_event SPRITE_WILLOW, 2, 0, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityWillowsOfficeWillowText, -1
-	person_event SPRITE_SCIENTIST, 3, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityWillowsOfficeScientistText, -1
+	db 2 ; object events
+	object_event  0,  2, SPRITE_WILLOW, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityWillowsOfficeWillowText, -1
+	object_event  4,  3, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityWillowsOfficeScientistText, -1
 
 CeladonUniversityWillowsOfficeWillowText:
 	text "Hello there!"

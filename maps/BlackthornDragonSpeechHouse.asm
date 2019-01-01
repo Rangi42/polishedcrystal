@@ -1,23 +1,20 @@
 BlackthornDragonSpeechHouse_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 2 ; warp events
+	warp_event  2,  7, BLACKTHORN_CITY, 2
+	warp_event  3,  7, BLACKTHORN_CITY, 2
 
-BlackthornDragonSpeechHouse_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 2
-	warp_def 7, 2, 2, BLACKTHORN_CITY
-	warp_def 7, 3, 2, BLACKTHORN_CITY
+	db 1 ; bg events
+	bg_event  7,  1, SIGNPOST_JUMPSTD, difficultbookshelf
 
-.XYTriggers: db 0
-
-.Signposts: db 1
-	signpost 1, 7, SIGNPOST_JUMPSTD, difficultbookshelf
-
-.PersonEvents: db 2
-	person_event SPRITE_GRANNY, 3, 2, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, BlackthornDragonSpeechHouseGrannyText, -1
-	person_event SPRITE_DRATINI, 5, 5, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_POKEMON, DRATINI, BlackthornDragonSpeechHouseDratiniText, -1
+	db 2 ; object events
+	object_event  2,  3, SPRITE_GRANNY, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, BlackthornDragonSpeechHouseGrannyText, -1
+	object_event  5,  5, SPRITE_DRATINI, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_POKEMON, DRATINI, BlackthornDragonSpeechHouseDratiniText, -1
 
 BlackthornDragonSpeechHouseGrannyText:
 	text "A clan of trainers"

@@ -1,17 +1,14 @@
 HauntedRadioTower5F_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 2 ; warp events
+	warp_event 15, 10, HAUNTED_RADIO_TOWER_4F, 2
+	warp_event  6, 17, HAUNTED_RADIO_TOWER_6F, 1
 
-HauntedRadioTower5F_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 2
-	warp_def 10, 15, 2, HAUNTED_RADIO_TOWER_4F
-	warp_def 17, 6, 1, HAUNTED_RADIO_TOWER_6F
+	db 0 ; bg events
 
-.XYTriggers: db 0
-
-.Signposts: db 0
-
-.PersonEvents: db 0
+	db 0 ; object events

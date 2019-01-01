@@ -1,21 +1,18 @@
 ValenciaHouse_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 2 ; warp events
+	warp_event  2,  7, VALENCIA_ISLAND, 3
+	warp_event  3,  7, VALENCIA_ISLAND, 3
 
-ValenciaHouse_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 2
-	warp_def 7, 2, 3, VALENCIA_ISLAND
-	warp_def 7, 3, 3, VALENCIA_ISLAND
+	db 0 ; bg events
 
-.XYTriggers: db 0
-
-.Signposts: db 0
-
-.PersonEvents: db 1
-	person_event SPRITE_LASS, 3, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, ValenciaHouseLassText, -1
+	db 1 ; object events
+	object_event  2,  3, SPRITE_LASS, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, ValenciaHouseLassText, -1
 
 ValenciaHouseLassText:
 	text "Prof.Ivy is really"

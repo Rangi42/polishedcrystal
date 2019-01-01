@@ -1,34 +1,31 @@
 DiglettsCave_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 6 ; warp events
+	warp_event 37, 15, VERMILION_CITY, 10
+	warp_event 39, 13, DIGLETTS_CAVE, 5
+	warp_event 37,  5, ROUTE_2_NORTH, 4
+	warp_event 39,  3, DIGLETTS_CAVE, 6
+	warp_event 37, 31, DIGLETTS_CAVE, 2
+	warp_event  5,  5, DIGLETTS_CAVE, 4
 
-DiglettsCave_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 6
-	warp_def 15, 37, 10, VERMILION_CITY
-	warp_def 13, 39, 5, DIGLETTS_CAVE
-	warp_def 5, 37, 4, ROUTE_2_NORTH
-	warp_def 3, 39, 6, DIGLETTS_CAVE
-	warp_def 31, 37, 2, DIGLETTS_CAVE
-	warp_def 5, 5, 4, DIGLETTS_CAVE
+	db 2 ; bg events
+	bg_event  8, 15, SIGNPOST_ITEM + MAX_REVIVE, EVENT_DIGLETTS_CAVE_HIDDEN_MAX_REVIVE
+	bg_event 34, 33, SIGNPOST_ITEM + MAX_REPEL, EVENT_DIGLETTS_CAVE_HIDDEN_MAX_REPEL
 
-.XYTriggers: db 0
-
-.Signposts: db 2
-	signpost 15, 8, SIGNPOST_ITEM + MAX_REVIVE, EVENT_DIGLETTS_CAVE_HIDDEN_MAX_REVIVE
-	signpost 33, 34, SIGNPOST_ITEM + MAX_REPEL, EVENT_DIGLETTS_CAVE_HIDDEN_MAX_REPEL
-
-.PersonEvents: db 8
-	person_event SPRITE_SUPER_NERD, 15, 11, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, DiglettsCaveFossilManiacScript, -1
-	person_event SPRITE_POKEFAN_M, 13, 5, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerHikerGerard, -1
-	person_event SPRITE_POKEFAN_M, 31, 25, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 4, TrainerHikerDent, -1
-	person_event SPRITE_BLACK_BELT, 21, 16, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerBlackbeltInigo, -1
-	person_event SPRITE_ENGINEER, 20, 9, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerEngineerSmith, -1
-	person_event SPRITE_POKEFAN_M, 13, 37, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, PokefanMScript_0x74002Text, -1
-	person_event SPRITE_COOLTRAINER_F, 27, 20, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, DiglettsCaveCooltrainerfText, -1
-	itemball_event 28, 13, RARE_BONE, 1, EVENT_DIGLETTS_CAVE_RARE_BONE
+	db 8 ; object events
+	object_event 11, 15, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, DiglettsCaveFossilManiacScript, -1
+	object_event  5, 13, SPRITE_POKEFAN_M, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerHikerGerard, -1
+	object_event 25, 31, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerHikerDent, -1
+	object_event 16, 21, SPRITE_BLACK_BELT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerBlackbeltInigo, -1
+	object_event  9, 20, SPRITE_ENGINEER, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerEngineerSmith, -1
+	object_event 37, 13, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, PokefanMScript_0x74002Text, -1
+	object_event 20, 27, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, DiglettsCaveCooltrainerfText, -1
+	itemball_event 13, 28, RARE_BONE, 1, EVENT_DIGLETTS_CAVE_RARE_BONE
 
 DiglettsCaveFossilManiacScript:
 	faceplayer
@@ -36,26 +33,31 @@ DiglettsCaveFossilManiacScript:
 	writetext .GreetingText
 	buttonsound
 	special Special_ChooseItem
-	iffalse .NoItem
+	iffalse_jumpopenedtext .NoItemText
 	special GetFossilManiacPrice
-	iffalse .WrongItem
+	iffalse_jumpopenedtext .WrongItemText
 	writetext .OfferText
 	special PlaceMoneyTopRight
 	yesorno
-	iffalse .NoItem
+	iffalse_jumpopenedtext .NoItemText
 	copybytetovar wCurItem
 	takeitem ITEM_FROM_MEM
 	waitsfx
 	playsound SFX_TRANSACTION
 	special Give_hMoneyTemp
 	special PlaceMoneyTopRight
-	jumpopenedtext .ThankYouText
+	thisopenedtext
 
-.NoItem:
-	jumpopenedtext .NoItemText
+	text "Hey, thanks!"
 
-.WrongItem:
-	jumpopenedtext .WrongItemText
+	para "I bet I can sell"
+	line "this for way more"
+	cont "than I just gave"
+	cont "you. Ha!"
+
+	para "That's business"
+	line "for ya!"
+	done
 
 .GreetingText:
 	text "Hey, check it out."
@@ -84,18 +86,6 @@ DiglettsCaveFossilManiacScript:
 	cont "Whaddaya say?"
 	done
 
-.ThankYouText:
-	text "Hey, thanks!"
-
-	para "I bet I can sell"
-	line "this for way more"
-	cont "than I just gave"
-	cont "you. Ha!"
-
-	para "That's business"
-	line "for ya!"
-	done
-
 .WrongItemText:
 	text "Nope, this is no"
 	line "good. Not worth"
@@ -110,12 +100,16 @@ DiglettsCaveFossilManiacScript:
 	line "next time!"
 	done
 
-TrainerHikerGerard:
-	trainer EVENT_BEAT_HIKER_GERARD, HIKER, GERARD, .SeenText, .BeatenText, 0, .Script
+GenericTrainerHikerGerard:
+	generictrainer HIKER, GERARD, EVENT_BEAT_HIKER_GERARD, .SeenText, .BeatenText
 
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
+	text "This place makes"
+	line "me so nervous."
+
+	para "What if a Diglett"
+	line "attacks me out of"
+	cont "nowhere?"
+	done
 
 .SeenText:
 	text "Aah! I think that"
@@ -127,21 +121,13 @@ TrainerHikerGerard:
 	line "my imagination."
 	done
 
-.AfterText:
-	text "This place makes"
-	line "me so nervous."
+GenericTrainerHikerDent:
+	generictrainer HIKER, DENT, EVENT_BEAT_HIKER_DENT, .SeenText, .BeatenText
 
-	para "What if a Diglett"
-	line "attacks me out of"
-	cont "nowhere?"
+	text "I'll fit right in"
+	line "with Pewter Gym's"
+	cont "buff crew. Hohoh!"
 	done
-
-TrainerHikerDent:
-	trainer EVENT_BEAT_HIKER_DENT, HIKER, DENT, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "I'm headed to"
@@ -158,18 +144,16 @@ TrainerHikerDent:
 	cont "than me!"
 	done
 
-.AfterText:
-	text "I'll fit right in"
-	line "with Pewter Gym's"
-	cont "buff crew. Hohoh!"
+GenericTrainerBlackbeltInigo:
+	generictrainer BLACKBELT_T, INIGO, EVENT_BEAT_BLACKBELT_INIGO, .SeenText, .BeatenText
+
+	text "Making noises won't"
+	line "make you a better"
+	cont "fighter, but it"
+
+	para "can intimidate"
+	line "your foes."
 	done
-
-TrainerBlackbeltInigo:
-	trainer EVENT_BEAT_BLACKBELT_INIGO, BLACKBELT_T, INIGO, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Prepare for"
@@ -181,21 +165,13 @@ TrainerBlackbeltInigo:
 	text "HIIYAAAH!"
 	done
 
-.AfterText:
-	text "Making noises won't"
-	line "make you a better"
-	cont "fighter, but it"
+GenericTrainerEngineerSmith:
+	generictrainer ENGINEER, SMITH, EVENT_BEAT_ENGINEER_SMITH, .SeenText, .BeatenText
 
-	para "can intimidate"
-	line "your foes."
+	text "Those Diglett are"
+	line "just natural"
+	cont "engineers."
 	done
-
-TrainerEngineerSmith:
-	trainer EVENT_BEAT_ENGINEER_SMITH, ENGINEER, SMITH, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "How did Diglett"
@@ -205,12 +181,6 @@ TrainerEngineerSmith:
 
 .BeatenText:
 	text "Amazing!"
-	done
-
-.AfterText:
-	text "Those Diglett are"
-	line "just natural"
-	cont "engineers."
 	done
 
 DiglettsCaveCooltrainerfText:

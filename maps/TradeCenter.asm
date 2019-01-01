@@ -1,28 +1,25 @@
 TradeCenter_MapScriptHeader:
+	db 1 ; scene scripts
+	scene_script TradeCenterTrigger0
 
-.MapTriggers: db 1
-	dw TradeCenterTrigger0
+	db 1 ; callbacks
+	callback MAPCALLBACK_OBJECTS, TradeCenter_SetWhichChris
 
-.MapCallbacks: db 1
-	dbw MAPCALLBACK_OBJECTS, TradeCenter_SetWhichChris
+	db 2 ; warp events
+	warp_event  4,  7, POKECENTER_2F, 2
+	warp_event  5,  7, POKECENTER_2F, 2
 
-TradeCenter_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 2
-	warp_def 7, 4, 2, POKECENTER_2F
-	warp_def 7, 5, 2, POKECENTER_2F
+	db 2 ; bg events
+	bg_event  4,  4, SIGNPOST_RIGHT, MapTradeCenterSignpost1Script
+	bg_event  5,  4, SIGNPOST_LEFT, MapTradeCenterSignpost1Script
 
-.XYTriggers: db 0
+	db 2 ; object events
+	object_event  3,  4, SPRITE_CHRIS, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ChrisScript_0x193499, EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
+	object_event  6,  4, SPRITE_CHRIS, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ChrisScript_0x193499, EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
 
-.Signposts: db 2
-	signpost 4, 4, SIGNPOST_RIGHT, MapTradeCenterSignpost1Script
-	signpost 4, 5, SIGNPOST_LEFT, MapTradeCenterSignpost1Script
-
-.PersonEvents: db 2
-	person_event SPRITE_CHRIS, 4, 3, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ChrisScript_0x193499, EVENT_GAVE_KURT_APRICORNS
-	person_event SPRITE_CHRIS, 4, 6, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ChrisScript_0x193499, EVENT_RECEIVED_BALLS_FROM_KURT
-
-const_value set 1
+	const_def 1 ; object constants
 	const TRADECENTER_CHRIS1
 	const TRADECENTER_CHRIS2
 

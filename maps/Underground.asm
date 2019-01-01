@@ -1,20 +1,17 @@
 Underground_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 2 ; warp events
+	warp_event  3,  2, ROUTE_5_UNDERGROUND_ENTRANCE, 3
+	warp_event  3, 32, ROUTE_6_UNDERGROUND_ENTRANCE, 3
 
-Underground_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 2
-	warp_def 2, 3, 3, ROUTE_5_UNDERGROUND_ENTRANCE
-	warp_def 32, 3, 3, ROUTE_6_UNDERGROUND_ENTRANCE
+	db 2 ; bg events
+	bg_event  3,  9, SIGNPOST_ITEM + FULL_RESTORE, EVENT_UNDERGROUND_HIDDEN_FULL_RESTORE
+	bg_event  1, 21, SIGNPOST_ITEM + X_SPCL_ATK, EVENT_UNDERGROUND_HIDDEN_X_SPCL_ATK
 
-.XYTriggers: db 0
-
-.Signposts: db 2
-	signpost 9, 3, SIGNPOST_ITEM + FULL_RESTORE, EVENT_UNDERGROUND_HIDDEN_FULL_RESTORE
-	signpost 21, 1, SIGNPOST_ITEM + X_SPCL_ATK, EVENT_UNDERGROUND_HIDDEN_X_SPCL_ATK
-
-.PersonEvents: db 1
-	tmhmball_event 15, 4, TM_EXPLOSION, EVENT_UNDERGROUND_TM_EXPLOSION
+	db 1 ; object events
+	tmhmball_event  4, 15, TM_EXPLOSION, EVENT_UNDERGROUND_TM_EXPLOSION

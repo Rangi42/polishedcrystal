@@ -1,38 +1,36 @@
 Route2North_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 6 ; warp events
+	warp_event 15, 19, ROUTE_2_NUGGET_SPEECH_HOUSE, 1
+	warp_event 16, 35, ROUTE_2_GATE, 1
+	warp_event 17, 35, ROUTE_2_GATE, 2
+	warp_event 12,  9, DIGLETTS_CAVE, 3
+	warp_event  1, 11, VIRIDIAN_FOREST_PEWTER_GATE, 3
+	warp_event  2, 11, VIRIDIAN_FOREST_PEWTER_GATE, 4
 
-Route2North_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 6
-	warp_def 19, 15, 1, ROUTE_2_NUGGET_SPEECH_HOUSE
-	warp_def 35, 16, 1, ROUTE_2_GATE
-	warp_def 35, 17, 2, ROUTE_2_GATE
-	warp_def 9, 12, 3, DIGLETTS_CAVE
-	warp_def 11, 1, 3, VIRIDIAN_FOREST_PEWTER_GATE
-	warp_def 11, 2, 4, VIRIDIAN_FOREST_PEWTER_GATE
+	db 1 ; bg events
+	bg_event 11, 11, SIGNPOST_JUMPTEXT, UnknownText_0x1ac49f
 
-.XYTriggers: db 0
+	db 6 ; object events
+	object_event  6,  6, SPRITE_BUG_MANIAC, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerBug_maniacEd, -1
+	itemball_event 19,  4, CARBOS, 1, EVENT_ROUTE_2_CARBOS
+	fruittree_event  7, 13, FRUITTREE_ROUTE_2, LUM_BERRY
+	cuttree_event  5, 10, EVENT_ROUTE_2_CUT_TREE_1
+	cuttree_event 15, 22, EVENT_ROUTE_2_CUT_TREE_2
+	object_event 12, 10, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, Route2NorthCooltrainermText, EVENT_VERMILION_CITY_SNORLAX
 
-.Signposts: db 1
-	signpost 11, 11, SIGNPOST_JUMPTEXT, UnknownText_0x1ac49f
+GenericTrainerBug_maniacEd:
+	generictrainer BUG_MANIAC, ED, EVENT_BEAT_BUG_MANIAC_ED, Bug_maniacEdSeenText, Bug_maniacEdBeatenText
 
-.PersonEvents: db 6
-	person_event SPRITE_BUG_MANIAC, 6, 6, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBug_maniacEd, -1
-	itemball_event 4, 19, CARBOS, 1, EVENT_ROUTE_2_CARBOS
-	fruittree_event 13, 7, FRUITTREE_ROUTE_2, LUM_BERRY
-	cuttree_event 10, 5, EVENT_ROUTE_2_CUT_TREE_1
-	cuttree_event 22, 15, EVENT_ROUTE_2_CUT_TREE_2
-	person_event SPRITE_COOLTRAINER_M, 10, 12, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, Route2NorthCooltrainermText, EVENT_VERMILION_CITY_SNORLAX
-
-TrainerBug_maniacEd:
-	trainer EVENT_BEAT_BUG_MANIAC_ED, BUG_MANIAC, ED, Bug_maniacEdSeenText, Bug_maniacEdBeatenText, 0, Bug_maniacEdScript
-
-Bug_maniacEdScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x1ac3cf
+	text "They'll really"
+	line "sting when you"
+	cont "take a bath."
+	done
 
 Bug_maniacEdSeenText:
 	text "If you walk in"
@@ -44,12 +42,6 @@ Bug_maniacEdSeenText:
 
 Bug_maniacEdBeatenText:
 	text "Ouch, ouch, ouch!"
-	done
-
-UnknownText_0x1ac3cf:
-	text "They'll really"
-	line "sting when you"
-	cont "take a bath."
 	done
 
 Route2NorthCooltrainermText:

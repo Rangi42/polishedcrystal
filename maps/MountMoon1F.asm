@@ -1,37 +1,34 @@
 MountMoon1F_MapScriptHeader:
+	db 1 ; scene scripts
+	scene_script MountMoon1FTrigger0
 
-.MapTriggers: db 1
-	dw MountMoon1FTrigger0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 4 ; warp events
+	warp_event 11, 23, ROUTE_3, 1
+	warp_event 22, 12, MOUNT_MOON_B1F, 1
+	warp_event 11,  9, MOUNT_MOON_B1F, 2
+	warp_event  4,  4, MOUNT_MOON_B1F, 3
 
-MountMoon1F_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 4
-	warp_def 23, 11, 1, ROUTE_3
-	warp_def 12, 22, 1, MOUNT_MOON_B1F
-	warp_def 9, 11, 2, MOUNT_MOON_B1F
-	warp_def 4, 4, 3, MOUNT_MOON_B1F
+	db 2 ; bg events
+	bg_event  2, 17, SIGNPOST_ITEM + RARE_CANDY, EVENT_MOUNT_MOON_1F_HIDDEN_RARE_CANDY
+	bg_event 12, 16, SIGNPOST_ITEM + FULL_RESTORE, EVENT_MOUNT_MOON_1F_HIDDEN_FULL_RESTORE
 
-.XYTriggers: db 0
+	db 10 ; object events
+	object_event 10, 19, SPRITE_SILVER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_MT_MOON_RIVAL
+	object_event  4, 18, SPRITE_BUG_MANIAC, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerBugManiacKenta, -1
+	object_event 11, 14, SPRITE_LASS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerLassMiriam, -1
+	object_event 20, 21, SPRITE_SUPER_NERD, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerSuperNerdJovan, -1
+	object_event 27, 14, SPRITE_BUG_MANIAC, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerBugManiacRobby, -1
+	object_event 20,  2, SPRITE_LASS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerLassIris, -1
+	object_event  5,  5, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerHikerMarcos, -1
+	itemball_event  3,  2, REVIVE, 1, EVENT_MOUNT_MOON_1F_REVIVE
+	itemball_event  2, 20, X_ACCURACY, 1, EVENT_MOUNT_MOON_1F_X_ACCURACY
+	itemball_event 16, 22, CALCIUM, 1, EVENT_MOUNT_MOON_1F_CALCIUM
 
-.Signposts: db 2
-	signpost 17, 2, SIGNPOST_ITEM + RARE_CANDY, EVENT_MOUNT_MOON_1F_HIDDEN_RARE_CANDY
-	signpost 16, 12, SIGNPOST_ITEM + FULL_RESTORE, EVENT_MOUNT_MOON_1F_HIDDEN_FULL_RESTORE
-
-.PersonEvents: db 10
-	person_event SPRITE_SILVER, 19, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_MT_MOON_RIVAL
-	person_event SPRITE_BUG_MANIAC, 18, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 4, TrainerBugManiacKenta, -1
-	person_event SPRITE_LASS, 14, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerLassMiriam, -1
-	person_event SPRITE_SUPER_NERD, 21, 20, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerSuperNerdJovan, -1
-	person_event SPRITE_BUG_MANIAC, 14, 27, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerBugManiacRobby, -1
-	person_event SPRITE_LASS, 2, 20, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerLassIris, -1
-	person_event SPRITE_POKEFAN_M, 5, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerHikerMarcos, -1
-	itemball_event 2, 3, REVIVE, 1, EVENT_MOUNT_MOON_1F_REVIVE
-	itemball_event 20, 2, X_ACCURACY, 1, EVENT_MOUNT_MOON_1F_X_ACCURACY
-	itemball_event 22, 16, CALCIUM, 1, EVENT_MOUNT_MOON_1F_CALCIUM
-
-const_value set 1
+	const_def 1 ; object constants
 	const MOUNTMOON1F_SILVER
 
 MountMoon1FTrigger0:
@@ -90,47 +87,66 @@ MountMoon1FTrigger0:
 	playmapmusic
 	end
 
-TrainerBugManiacKenta:
-	trainer EVENT_BEAT_BUG_MANIAC_KENTA, BUG_MANIAC, KENTA, BugManiacKentaSeenText, BugManiacKentaBeatenText, 0, BugManiacKentaScript
+GenericTrainerBugManiacKenta:
+	generictrainer BUG_MANIAC, KENTA, EVENT_BEAT_BUG_MANIAC_KENTA, BugManiacKentaSeenText, BugManiacKentaBeatenText
 
-BugManiacKentaScript:
-	end_if_just_battled
-	jumptextfaceplayer BugManiacKentaAfterText
+	text "Team Rocket used"
+	line "to lurk around"
+	cont "here."
 
-TrainerLassMiriam:
-	trainer EVENT_BEAT_LASS_MIRIAM, LASS, MIRIAM, LassMiriamSeenText, LassMiriamBeatenText, 0, LassMiriamScript
+	para "I wonder if the"
+	line "red-haired boy has"
+	cont "any connection to"
+	cont "them?"
+	done
 
-LassMiriamScript:
-	end_if_just_battled
-	jumptextfaceplayer LassMiriamAfterText
+GenericTrainerLassMiriam:
+	generictrainer LASS, MIRIAM, EVENT_BEAT_LASS_MIRIAM, LassMiriamSeenText, LassMiriamBeatenText
 
-TrainerSuperNerdJovan:
-	trainer EVENT_BEAT_SUPER_NERD_JOVAN, SUPER_NERD, JOVAN, SuperNerdJovanSeenText, SuperNerdJovanBeatenText, 0, SuperNerdJovanScript
+	text "Mt.Moon is big,"
+	line "but you'll get"
+	cont "used to it soon."
+	done
 
-SuperNerdJovanScript:
-	end_if_just_battled
-	jumptextfaceplayer SuperNerdJovanAfterText
+GenericTrainerSuperNerdJovan:
+	generictrainer SUPER_NERD, JOVAN, EVENT_BEAT_SUPER_NERD_JOVAN, SuperNerdJovanSeenText, SuperNerdJovanBeatenText
 
-TrainerBugManiacRobby:
-	trainer EVENT_BEAT_BUG_MANIAC_ROBBY, BUG_MANIAC, ROBBY, BugManiacRobbySeenText, BugManiacRobbyBeatenText, 0, BugManiacRobbyScript
+	text "I have yet to find"
+	line "stronger #mon."
 
-BugManiacRobbyScript:
-	end_if_just_battled
-	jumptextfaceplayer BugManiacRobbyAfterText
+	para "Where might they"
+	line "be?"
+	done
 
-TrainerLassIris:
-	trainer EVENT_BEAT_LASS_IRIS, LASS, IRIS, LassIrisSeenText, LassIrisBeatenText, 0, LassIrisScript
+GenericTrainerBugManiacRobby:
+	generictrainer BUG_MANIAC, ROBBY, EVENT_BEAT_BUG_MANIAC_ROBBY, BugManiacRobbySeenText, BugManiacRobbyBeatenText
 
-LassIrisScript:
-	end_if_just_battled
-	jumptextfaceplayer LassIrisAfterText
+	text "I used to only"
+	line "catch bug #mon"
+	cont "as a hobby,"
 
-TrainerHikerMarcos:
-	trainer EVENT_BEAT_HIKER_MARCOS, HIKER, MARCOS, HikerMarcosSeenText, HikerMarcosBeatenText, 0, HikerMarcosScript
+	para "but now it's my"
+	line "pride and joy."
+	done
 
-HikerMarcosScript:
-	end_if_just_battled
-	jumptextfaceplayer HikerMarcosAfterText
+GenericTrainerLassIris:
+	generictrainer LASS, IRIS, EVENT_BEAT_LASS_IRIS, LassIrisSeenText, LassIrisBeatenText
+
+	text "I come here every"
+	line "day just to catch"
+	cont "a Clefairy, but"
+
+	para "I haven't seen a"
+	line "single one…"
+	done
+
+GenericTrainerHikerMarcos:
+	generictrainer HIKER, MARCOS, EVENT_BEAT_HIKER_MARCOS, HikerMarcosSeenText, HikerMarcosBeatenText
+
+	text "A long time ago,"
+	line "I was beaten by a"
+	cont "kid just like you."
+	done
 
 MountMoon1FSilverMovementBefore:
 	step_down
@@ -239,17 +255,6 @@ BugManiacKentaBeatenText:
 	text "You got me!"
 	done
 
-BugManiacKentaAfterText:
-	text "Team Rocket used"
-	line "to lurk around"
-	cont "here."
-
-	para "I wonder if the"
-	line "red-haired boy has"
-	cont "any connection to"
-	cont "them?"
-	done
-
 LassMiriamSeenText:
 	text "When I was young-"
 	line "er, I always used"
@@ -262,12 +267,6 @@ LassMiriamBeatenText:
 	text "Oh! I lost it!"
 	done
 
-LassMiriamAfterText:
-	text "Mt.Moon is big,"
-	line "but you'll get"
-	cont "used to it soon."
-	done
-
 SuperNerdJovanSeenText:
 	text "What! Don't sneak"
 	line "up on me!"
@@ -276,14 +275,6 @@ SuperNerdJovanSeenText:
 SuperNerdJovanBeatenText:
 	text "My #mon"
 	line "won't do!"
-	done
-
-SuperNerdJovanAfterText:
-	text "I have yet to find"
-	line "stronger #mon."
-
-	para "Where might they"
-	line "be?"
 	done
 
 BugManiacRobbySeenText:
@@ -298,15 +289,6 @@ BugManiacRobbyBeatenText:
 	text "I lost…"
 	done
 
-BugManiacRobbyAfterText:
-	text "I used to only"
-	line "catch bug #mon"
-	cont "as a hobby,"
-
-	para "but now it's my"
-	line "pride and joy."
-	done
-
 LassIrisSeenText:
 	text "Have you seen a"
 	line "Clefairy?"
@@ -316,15 +298,6 @@ LassIrisSeenText:
 
 LassIrisBeatenText:
 	text "That was so fast…"
-	done
-
-LassIrisAfterText:
-	text "I come here every"
-	line "day just to catch"
-	cont "a Clefairy, but"
-
-	para "I haven't seen a"
-	line "single one…"
 	done
 
 HikerMarcosSeenText:
@@ -340,8 +313,3 @@ HikerMarcosBeatenText:
 	line "You're strong!"
 	done
 
-HikerMarcosAfterText:
-	text "A long time ago,"
-	line "I was beaten by a"
-	cont "kid just like you."
-	done

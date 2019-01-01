@@ -1,28 +1,19 @@
 CherrygroveEvolutionSpeechHouse_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 2 ; warp events
+	warp_event  2,  7, CHERRYGROVE_CITY, 5
+	warp_event  3,  7, CHERRYGROVE_CITY, 5
 
-CherrygroveEvolutionSpeechHouse_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 2
-	warp_def 7, 2, 5, CHERRYGROVE_CITY
-	warp_def 7, 3, 5, CHERRYGROVE_CITY
+	db 0 ; bg events
 
-.XYTriggers: db 0
-
-.Signposts: db 0
-
-.PersonEvents: db 2
-	person_event SPRITE_LASS, 5, 3, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, LassScript_0x196cb9, -1
-	person_event SPRITE_YOUNGSTER, 5, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x196cb2, -1
-
-YoungsterScript_0x196cb2:
-	jumptext UnknownText_0x196cc3
-
-LassScript_0x196cb9:
-	jumptext UnknownText_0x196cfc
+	db 2 ; object events
+	object_event  3,  5, SPRITE_LASS, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptext, UnknownText_0x196cfc, -1
+	object_event  2,  5, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptext, UnknownText_0x196cc3, -1
 
 UnknownText_0x196cc3:
 	text "#mon gain expe-"

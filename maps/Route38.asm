@@ -1,46 +1,49 @@
 Route38_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 2 ; warp events
+	warp_event 35,  8, ROUTE_38_ECRUTEAK_GATE, 1
+	warp_event 35,  9, ROUTE_38_ECRUTEAK_GATE, 2
 
-Route38_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 2
-	warp_def 8, 35, 1, ROUTE_38_ECRUTEAK_GATE
-	warp_def 9, 35, 2, ROUTE_38_ECRUTEAK_GATE
+	db 2 ; bg events
+	bg_event 33,  7, SIGNPOST_JUMPTEXT, Route38SignText
+	bg_event  5, 13, SIGNPOST_JUMPTEXT, Route38TrainerTipsText
 
-.XYTriggers: db 0
+	db 7 ; object events
+	object_event  4,  1, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_TRAINER, 1, TrainerSchoolboyChad1, -1
+	object_event 15,  3, SPRITE_LASS, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_TRAINER, 2, TrainerLassDana1, -1
+	object_event 12, 15, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerBird_keeperToby, -1
+	object_event 19,  9, SPRITE_BEAUTY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerBeautyValencia, -1
+	object_event 24,  5, SPRITE_SAILOR, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerSailorHarry, -1
+	fruittree_event 12, 10, FRUITTREE_ROUTE_38, SITRUS_BERRY
+	object_event  5,  8, SPRITE_BEAUTY, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerBeautyOlivia, -1
 
-.Signposts: db 2
-	signpost 7, 33, SIGNPOST_JUMPTEXT, Route38SignText
-	signpost 13, 5, SIGNPOST_JUMPTEXT, Route38TrainerTipsText
+GenericTrainerBird_keeperToby:
+	generictrainer BIRD_KEEPER, TOBY, EVENT_BEAT_BIRD_KEEPER_TOBY, Bird_keeperTobySeenText, Bird_keeperTobyBeatenText
 
-.PersonEvents: db 7
-	person_event SPRITE_YOUNGSTER, 1, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerSchoolboyChad1, -1
-	person_event SPRITE_LASS, 3, 15, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerLassDana1, -1
-	person_event SPRITE_YOUNGSTER, 15, 12, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerBird_keeperToby, -1
-	person_event SPRITE_BEAUTY, 9, 19, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerBeautyValencia, -1
-	person_event SPRITE_SAILOR, 5, 24, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerSailorHarry, -1
-	fruittree_event 10, 12, FRUITTREE_ROUTE_38, SITRUS_BERRY
-	person_event SPRITE_BEAUTY, 8, 5, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerBeautyOlivia, -1
+	text "I plan to train in"
+	line "Cianwood City to"
 
-TrainerBird_keeperToby:
-	trainer EVENT_BEAT_BIRD_KEEPER_TOBY, BIRD_KEEPER, TOBY, Bird_keeperTobySeenText, Bird_keeperTobyBeatenText, 0, .script
+	para "teach my #mon"
+	line "how to Fly."
+	done
 
-.script
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x1a1f86
+GenericTrainerSailorHarry:
+	generictrainer SAILOR, HARRY, EVENT_BEAT_SAILOR_HARRY, SailorHarrySeenText, SailorHarryBeatenText
 
-TrainerSailorHarry:
-	trainer EVENT_BEAT_SAILOR_HARRY, SAILOR, HARRY, SailorHarrySeenText, SailorHarryBeatenText, 0, .script
+	text "All kinds of peo-"
+	line "ple around the"
 
-.script
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x1a220c
+	para "world live happily"
+	line "with #mon."
+	done
 
 TrainerLassDana1:
-	trainer EVENT_BEAT_LASS_DANA, LASS, DANA1, LassDana1SeenText, LassDana1BeatenText, 0, .script
+	trainer LASS, DANA1, EVENT_BEAT_LASS_DANA, LassDana1SeenText, LassDana1BeatenText, 0, .script
 
 .script
 	writecode VAR_CALLERID, PHONE_LASS_DANA
@@ -56,21 +59,21 @@ TrainerLassDana1:
 	writetext UnknownText_0x1a20ec
 	buttonsound
 	setevent EVENT_DANA_ASKED_FOR_PHONE_NUMBER
-	scall .AskNumber1F
+	callstd asknumber1f
 	jump .AskForPhoneNumber
 
 .SecondTimeAsking:
-	scall .AskNumber2F
+	callstd asknumber2f
 .AskForPhoneNumber:
 	askforphonenumber PHONE_LASS_DANA
 	if_equal $1, .PhoneFull
 	if_equal $2, .DeclinedPhoneNumber
 	trainertotext LASS, DANA1, $0
-	scall .RegisteredPhoneNumber
-	jump .NumberAccepted
+	callstd registerednumberf
+	jumpstd numberacceptedf
 
 .DanaRematch:
-	scall .Rematch
+	callstd rematchf
 	winlosstext LassDana1BeatenText, 0
 	copybytetovar wDanaFightCount
 	if_equal 4, .Fight4
@@ -130,54 +133,27 @@ TrainerLassDana1:
 	end
 
 .TryGiveThunderstone:
-	scall .Gift
+	callstd giftf
 	verbosegiveitem THUNDERSTONE
 	iffalse .NoRoomForThunderstone
 	clearflag ENGINE_DANA_HAS_THUNDERSTONE
 	setevent EVENT_DANA_GAVE_THUNDERSTONE
-	jump .NumberAccepted
+	jumpstd numberacceptedf
 
 .NoRoomForThunderstone:
-	jump .PackFull
-
-.AskNumber1F:
-	jumpstd asknumber1f
-	end
-
-.AskNumber2F:
-	jumpstd asknumber2f
-	end
-
-.RegisteredPhoneNumber:
-	jumpstd registerednumberf
-	end
+	jumpstd packfullf
 
 .NumberAccepted:
 	jumpstd numberacceptedf
-	end
 
 .DeclinedPhoneNumber:
 	jumpstd numberdeclinedf
-	end
 
 .PhoneFull:
 	jumpstd phonefullf
-	end
-
-.Rematch:
-	jumpstd rematchf
-	end
-
-.Gift:
-	jumpstd giftf
-	end
-
-.PackFull:
-	jumpstd packfullf
-	end
 
 TrainerSchoolboyChad1:
-	trainer EVENT_BEAT_SCHOOLBOY_CHAD, SCHOOLBOY, CHAD1, SchoolboyChad1SeenText, SchoolboyChad1BeatenText, 0, .script
+	trainer SCHOOLBOY, CHAD1, EVENT_BEAT_SCHOOLBOY_CHAD, SchoolboyChad1SeenText, SchoolboyChad1BeatenText, 0, .script
 
 .script
 	writecode VAR_CALLERID, PHONE_SCHOOLBOY_CHAD
@@ -191,21 +167,21 @@ TrainerSchoolboyChad1:
 	writetext UnknownText_0x1a200e
 	buttonsound
 	setevent EVENT_CHAD_ASKED_FOR_PHONE_NUMBER
-	scall .AskPhoneNumber1
+	callstd asknumber1m
 	jump .AskToRegisterNumber
 
 .SecondTimeAsking:
-	scall .AskPhoneNumber2
+	callstd asknumber2m
 .AskToRegisterNumber:
 	askforphonenumber PHONE_SCHOOLBOY_CHAD
 	if_equal $1, .PhoneFull
 	if_equal $2, .SaidNo
 	trainertotext SCHOOLBOY, CHAD1, $0
-	scall .RegisteredChad
-	jump .HaveChadsNumber
+	callstd registerednumberm
+	jumpstd numberacceptedm
 
 .ChadRematch:
-	scall .Rematch
+	callstd rematchm
 	winlosstext SchoolboyChad1BeatenText, 0
 	copybytetovar wChadFightCount
 	if_equal 4, .Fight4
@@ -264,47 +240,34 @@ TrainerSchoolboyChad1:
 	clearflag ENGINE_CHAD
 	end
 
-.AskPhoneNumber1:
-	jumpstd asknumber1m
-	end
-
-.AskPhoneNumber2:
-	jumpstd asknumber2m
-	end
-
-.RegisteredChad:
-	jumpstd registerednumberm
-	end
-
 .HaveChadsNumber:
 	jumpstd numberacceptedm
-	end
 
 .SaidNo:
 	jumpstd numberdeclinedm
-	end
 
 .PhoneFull:
 	jumpstd phonefullm
-	end
 
-.Rematch:
-	jumpstd rematchm
-	end
+GenericTrainerBeautyValencia:
+	generictrainer BEAUTY, VALENCIA, EVENT_BEAT_BEAUTY_VALENCIA, BeautyValenciaSeenText, BeautyValenciaBeatenText
 
-TrainerBeautyValencia:
-	trainer EVENT_BEAT_BEAUTY_VALENCIA, BEAUTY, VALENCIA, BeautyValenciaSeenText, BeautyValenciaBeatenText, 0, .script
+	text "When I see #-"
+	line "mon, it seems to"
+	cont "soothe my nerves."
+	done
 
-.script
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x1a2185
+GenericTrainerBeautyOlivia:
+	generictrainer BEAUTY, OLIVIA, EVENT_BEAT_BEAUTY_OLIVIA, BeautyOliviaSeenText, BeautyOliviaBeatenText
 
-TrainerBeautyOlivia:
-	trainer EVENT_BEAT_BEAUTY_OLIVIA, BEAUTY, OLIVIA, BeautyOliviaSeenText, BeautyOliviaBeatenText, 0, .script
+	text "Moomoo Milk is"
+	line "good for beauty"
+	cont "and health."
 
-.script
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x1a229a
+	para "I like to buy a"
+	line "dozen bottles at"
+	cont "a time!"
+	done
 
 Bird_keeperTobySeenText:
 	text "Fly high into the"
@@ -315,14 +278,6 @@ Bird_keeperTobySeenText:
 Bird_keeperTobyBeatenText:
 	text "I feel like just"
 	line "flying away now."
-	done
-
-UnknownText_0x1a1f86:
-	text "I plan to train in"
-	line "Cianwood City to"
-
-	para "teach my #mon"
-	line "how to Fly."
 	done
 
 SchoolboyChad1SeenText:
@@ -384,12 +339,6 @@ BeautyValenciaBeatenText:
 	line "see your #mon!"
 	done
 
-UnknownText_0x1a2185:
-	text "When I see #-"
-	line "mon, it seems to"
-	cont "soothe my nerves."
-	done
-
 SailorHarrySeenText:
 	text "I've been over-"
 	line "seas, so I know"
@@ -403,14 +352,6 @@ SailorHarryBeatenText:
 	line "world class!"
 	done
 
-UnknownText_0x1a220c:
-	text "All kinds of peo-"
-	line "ple around the"
-
-	para "world live happily"
-	line "with #mon."
-	done
-
 BeautyOliviaSeenText:
 	text "Don't you think my"
 	line "#mon and I are"
@@ -420,16 +361,6 @@ BeautyOliviaSeenText:
 BeautyOliviaBeatenText:
 	text "We drink Moomoo"
 	line "Milk every day."
-	done
-
-UnknownText_0x1a229a:
-	text "Moomoo Milk is"
-	line "good for beauty"
-	cont "and health."
-
-	para "I like to buy a"
-	line "dozen bottles at"
-	cont "a time!"
 	done
 
 Route38SignText:

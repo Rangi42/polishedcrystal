@@ -1,35 +1,32 @@
 KurtsHouse_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 1 ; callbacks
+	callback MAPCALLBACK_OBJECTS, UnknownScript_0x18e154
 
-.MapCallbacks: db 1
-	dbw MAPCALLBACK_OBJECTS, UnknownScript_0x18e154
+	db 2 ; warp events
+	warp_event  3,  7, AZALEA_TOWN, 4
+	warp_event  4,  7, AZALEA_TOWN, 4
 
-KurtsHouse_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 2
-	warp_def 7, 3, 4, AZALEA_TOWN
-	warp_def 7, 4, 4, AZALEA_TOWN
+	db 7 ; bg events
+	bg_event  6,  1, SIGNPOST_JUMPSTD, radio2
+	bg_event  8,  0, SIGNPOST_JUMPTEXT, KurtsHouseOakPhotoText
+	bg_event  9,  0, SIGNPOST_JUMPTEXT, KurtsHouseOakPhotoText
+	bg_event  5,  1, SIGNPOST_READ, PokemonJournalProfWestwoodScript
+	bg_event  2,  1, SIGNPOST_READ, PokemonJournalProfWestwoodScript
+	bg_event  3,  1, SIGNPOST_READ, PokemonJournalProfWestwoodScript
+	bg_event  4,  1, SIGNPOST_JUMPTEXT, KurtsHouseCelebiStatueText
 
-.XYTriggers: db 0
+	db 5 ; object events
+	object_event  3,  2, SPRITE_KURT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, KurtScript_0x18e178, EVENT_KURTS_HOUSE_KURT_1
+	object_event  5,  3, SPRITE_TWIN, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, KurtsGranddaughter1, EVENT_KURTS_HOUSE_GRANDDAUGHTER_1
+	object_event 14,  3, SPRITE_KURT, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, KurtScript_0x18e3bd, EVENT_KURTS_HOUSE_KURT_2
+	object_event 11,  4, SPRITE_TWIN, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, KurtsGranddaughter2, EVENT_KURTS_HOUSE_GRANDDAUGHTER_2
+	object_event  6,  3, SPRITE_SLOWPOKE, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_POKEMON, SLOWPOKE, KurtsHouseSlowpokeText, EVENT_KURTS_HOUSE_SLOWPOKE
 
-.Signposts: db 7
-	signpost 1, 6, SIGNPOST_JUMPSTD, radio2
-	signpost 0, 8, SIGNPOST_JUMPTEXT, KurtsHouseOakPhotoText
-	signpost 0, 9, SIGNPOST_JUMPTEXT, KurtsHouseOakPhotoText
-	signpost 1, 5, SIGNPOST_READ, PokemonJournalProfWestwoodScript
-	signpost 1, 2, SIGNPOST_READ, PokemonJournalProfWestwoodScript
-	signpost 1, 3, SIGNPOST_READ, PokemonJournalProfWestwoodScript
-	signpost 1, 4, SIGNPOST_JUMPTEXT, KurtsHouseCelebiStatueText
-
-.PersonEvents: db 5
-	person_event SPRITE_KURT, 2, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, KurtScript_0x18e178, EVENT_KURTS_HOUSE_KURT_1
-	person_event SPRITE_TWIN, 3, 5, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, KurtsGranddaughter1, EVENT_KURTS_HOUSE_GRANDDAUGHTER_1
-	person_event SPRITE_KURT, 3, 14, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, KurtScript_0x18e3bd, EVENT_KURTS_HOUSE_KURT_2
-	person_event SPRITE_TWIN, 4, 11, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, KurtsGranddaughter2, EVENT_KURTS_HOUSE_GRANDDAUGHTER_2
-	person_event SPRITE_SLOWPOKE, 3, 6, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_POKEMON, SLOWPOKE, KurtsHouseSlowpokeText, EVENT_KURTS_HOUSE_SLOWPOKE
-
-const_value set 1
+	const_def 1 ; object constants
 	const KURTSHOUSE_KURT1
 	const KURTSHOUSE_TWIN1
 	const KURTSHOUSE_KURT2
@@ -59,8 +56,8 @@ UnknownScript_0x18e177:
 KurtScript_0x18e178:
 	faceplayer
 	opentext
-	checkevent EVENT_KURT_GAVE_YOU_LEVEL_BALL
-	iftrue .GotLevelBall
+	checkevent EVENT_KURT_GAVE_YOU_APRICORN_BOX
+	iftrue .GotApricornBox
 	checkevent EVENT_CLEARED_SLOWPOKE_WELL
 	iftrue .ClearedSlowpokeWell
 	writetext UnknownText_0x18e473
@@ -92,10 +89,9 @@ KurtScript_0x18e178:
 .ClearedSlowpokeWell:
 	writetext UnknownText_0x18e615
 	buttonsound
-	verbosegiveitem LEVEL_BALL
-	iffalse .NoRoomForBall
-	setevent EVENT_KURT_GAVE_YOU_LEVEL_BALL
-.GotLevelBall:
+	verbosegiveitem APRICORN_BOX
+	setevent EVENT_KURT_GAVE_YOU_APRICORN_BOX
+.GotApricornBox:
 	checkevent EVENT_GAVE_KURT_RED_APRICORN
 	iftrue .GiveLevelBall
 	checkevent EVENT_GAVE_KURT_BLU_APRICORN
@@ -113,42 +109,38 @@ KurtScript_0x18e178:
 	checkevent EVENT_CAN_GIVE_GS_BALL_TO_KURT
 	iftrue .CanGiveGSBallToKurt
 .NoGSBall:
-	checkevent EVENT_RECEIVED_BALLS_FROM_KURT
+	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
 	iftrue .CheckApricorns
-	checkevent EVENT_DRAGON_SHRINE_QUESTION_2
+	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_3
 	iftrue .CheckApricorns
 	writetext UnknownText_0x18e6c9
 	waitbutton
 .CheckApricorns:
-	checkitem RED_APRICORN
+	callasm .CheckHaveAnyApricorns
 	iftrue .AskApricorn
-	checkitem BLU_APRICORN
-	iftrue .AskApricorn
-	checkitem YLW_APRICORN
-	iftrue .AskApricorn
-	checkitem GRN_APRICORN
-	iftrue .AskApricorn
-	checkitem WHT_APRICORN
-	iftrue .AskApricorn
-	checkitem BLK_APRICORN
-	iftrue .AskApricorn
-	checkitem PNK_APRICORN
-	iftrue .AskApricorn
-	checkevent EVENT_RECEIVED_BALLS_FROM_KURT
-	iftrue .ThatTurnedOutGreat
-	checkevent EVENT_DRAGON_SHRINE_QUESTION_2
-	iftrue .IMakeBallsFromApricorns
+	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
+	iftrue_jumpopenedtext UnknownText_0x18e82a
+	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_3
+	iftrue_jumpopenedtext UnknownText_0x18e6c9
 	endtext
 
-.IMakeBallsFromApricorns:
-	jumpopenedtext UnknownText_0x18e6c9
+.CheckHaveAnyApricorns:
+	xor a
+	ld hl, wApricorns
+	or [hl]
+rept NUM_APRICORNS +- 1
+	inc hl
+	or [hl]
+endr
+	ld [wScriptVar], a
+	ret
 
 .AskApricorn:
 	writetext UnknownText_0x18e736
 	buttonsound
-	setevent EVENT_DRAGON_SHRINE_QUESTION_2
+	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_3
 	special Special_SelectApricornForKurt
-	if_equal $0, .Cancel
+	iffalse_jumpopenedtext UnknownText_0x18e7bc
 	if_equal BLU_APRICORN, .Blu
 	if_equal YLW_APRICORN, .Ylw
 	if_equal GRN_APRICORN, .Grn
@@ -182,7 +174,7 @@ KurtScript_0x18e178:
 .Pnk:
 	setevent EVENT_GAVE_KURT_PNK_APRICORN
 .GaveKurtApricorns:
-	setevent EVENT_GAVE_KURT_APRICORNS
+	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	writetext KurtsHouseKurtGetStartedText
 	waitbutton
 	closetext
@@ -201,16 +193,9 @@ KurtScript_0x18e178:
 	warpfacing UP, KURTS_HOUSE, 3, 3
 	jump KurtScript_0x18e178
 
-.Cancel:
-	jumpopenedtext UnknownText_0x18e7bc
-
-._ThatTurnedOutGreat:
-	setevent EVENT_RECEIVED_BALLS_FROM_KURT
 .ThatTurnedOutGreat:
-	writetext UnknownText_0x18e82a
-	waitbutton
-.NoRoomForBall:
-	endtext
+	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
+	jumpopenedtext UnknownText_0x18e82a
 
 .GiveLevelBall:
 	checkflag ENGINE_KURT_MAKING_BALLS
@@ -218,9 +203,9 @@ KurtScript_0x18e178:
 	writetext UnknownText_0x18e7fb
 	buttonsound
 	verbosegiveitem2 LEVEL_BALL, VAR_KURT_APRICORNS
-	iffalse .NoRoomForBall
+	iffalse_endtext
 	clearevent EVENT_GAVE_KURT_RED_APRICORN
-	jump ._ThatTurnedOutGreat
+	jump .ThatTurnedOutGreat
 
 .GiveLureBall:
 	checkflag ENGINE_KURT_MAKING_BALLS
@@ -228,9 +213,9 @@ KurtScript_0x18e178:
 	writetext UnknownText_0x18e7fb
 	buttonsound
 	verbosegiveitem2 LURE_BALL, VAR_KURT_APRICORNS
-	iffalse .NoRoomForBall
+	iffalse_endtext
 	clearevent EVENT_GAVE_KURT_BLU_APRICORN
-	jump ._ThatTurnedOutGreat
+	jump .ThatTurnedOutGreat
 
 .GiveMoonBall:
 	checkflag ENGINE_KURT_MAKING_BALLS
@@ -238,9 +223,9 @@ KurtScript_0x18e178:
 	writetext UnknownText_0x18e7fb
 	buttonsound
 	verbosegiveitem2 MOON_BALL, VAR_KURT_APRICORNS
-	iffalse .NoRoomForBall
+	iffalse_endtext
 	clearevent EVENT_GAVE_KURT_YLW_APRICORN
-	jump ._ThatTurnedOutGreat
+	jump .ThatTurnedOutGreat
 
 .GiveFriendBall:
 	checkflag ENGINE_KURT_MAKING_BALLS
@@ -248,9 +233,9 @@ KurtScript_0x18e178:
 	writetext UnknownText_0x18e7fb
 	buttonsound
 	verbosegiveitem2 FRIEND_BALL, VAR_KURT_APRICORNS
-	iffalse .NoRoomForBall
+	iffalse_endtext
 	clearevent EVENT_GAVE_KURT_GRN_APRICORN
-	jump ._ThatTurnedOutGreat
+	jump .ThatTurnedOutGreat
 
 .GiveFastBall:
 	checkflag ENGINE_KURT_MAKING_BALLS
@@ -258,9 +243,9 @@ KurtScript_0x18e178:
 	writetext UnknownText_0x18e7fb
 	buttonsound
 	verbosegiveitem2 FAST_BALL, VAR_KURT_APRICORNS
-	iffalse .NoRoomForBall
+	iffalse_endtext
 	clearevent EVENT_GAVE_KURT_WHT_APRICORN
-	jump ._ThatTurnedOutGreat
+	jump .ThatTurnedOutGreat
 
 .GiveHeavyBall:
 	checkflag ENGINE_KURT_MAKING_BALLS
@@ -268,9 +253,9 @@ KurtScript_0x18e178:
 	writetext UnknownText_0x18e7fb
 	buttonsound
 	verbosegiveitem2 HEAVY_BALL, VAR_KURT_APRICORNS
-	iffalse .NoRoomForBall
+	iffalse_endtext
 	clearevent EVENT_GAVE_KURT_BLK_APRICORN
-	jump ._ThatTurnedOutGreat
+	jump .ThatTurnedOutGreat
 
 .GiveLoveBall:
 	checkflag ENGINE_KURT_MAKING_BALLS
@@ -278,9 +263,9 @@ KurtScript_0x18e178:
 	writetext UnknownText_0x18e7fb
 	buttonsound
 	verbosegiveitem2 LOVE_BALL, VAR_KURT_APRICORNS
-	iffalse .NoRoomForBall
+	iffalse_endtext
 	clearevent EVENT_GAVE_KURT_PNK_APRICORN
-	jump ._ThatTurnedOutGreat
+	jump .ThatTurnedOutGreat
 
 .CanGiveGSBallToKurt:
 	checkevent EVENT_GAVE_GS_BALL_TO_KURT
@@ -362,28 +347,19 @@ KurtScript_ImCheckingItNow:
 
 KurtsGranddaughter1:
 	faceplayer
-	checkevent EVENT_GAVE_KURT_APRICORNS
+	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	iftrue KurtsGranddaughter2Subscript
-	checkevent EVENT_RECEIVED_BALLS_FROM_KURT
-	iftrue KurtsGranddaughterFunScript
+	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
+	iftrue_jumptext KurtsGranddaughterFunText
 	checkevent EVENT_FOREST_IS_RESTLESS
-	iftrue .Lonely
+	iftrue_jumptext KurtsGranddaughterLonelyText
 	checkevent EVENT_FAST_SHIP_FIRST_TIME
-	iftrue .Dad
+	iftrue_jumptext KurtsGranddaughterDadText
 	checkevent EVENT_CLEARED_SLOWPOKE_WELL
-	iftrue .SlowpokeBack
+	iftrue_jumptext KurtsGranddaughterSlowpokeBackText
 	checkevent EVENT_AZALEA_TOWN_SLOWPOKETAIL_ROCKET
-	iftrue .Lonely
+	iftrue_jumptext KurtsGranddaughterLonelyText
 	jumptext KurtsGranddaughterSlowpokeGoneText
-
-.SlowpokeBack:
-	jumptext KurtsGranddaughterSlowpokeBackText
-
-.Lonely:
-	jumptext KurtsGranddaughterLonelyText
-
-.Dad:
-	jumptext KurtsGranddaughterDadText
 
 KurtsGranddaughter2:
 	faceplayer
@@ -404,12 +380,26 @@ KurtsGranddaughter2Subscript:
 	spriteface LAST_TALKED, RIGHT
 	end
 
-KurtsGranddaughterFunScript:
-	jumptext KurtsGranddaughterFunText
-
 PokemonJournalProfWestwoodScript:
 	setflag ENGINE_READ_PROF_WESTWOOD_JOURNAL
-	jumptext PokemonJournalProfWestwoodText
+	thistext
+
+	text "#mon Journal"
+
+	para "Special Feature:"
+	line "Prof.Westwood!"
+
+	para "Prof.Westwood V"
+	line "teaches at Celadon"
+	cont "University."
+
+	para "His ancestor's re-"
+	line "search in 1925 led"
+
+	para "to the development"
+	line "of modern #"
+	cont "Balls."
+	done
 
 MovementData_0x18e46c:
 	big_step_right
@@ -502,8 +492,11 @@ UnknownText_0x18e615:
 	para "a trainer like"
 	line "you."
 
-	para "This is all I have"
-	line "now, but take it."
+	para "But first, you'll"
+	line "need Apricorns."
+
+	para "Here, take this"
+	line "Apricorn Box!"
 	done
 
 UnknownText_0x18e6c9:
@@ -675,22 +668,4 @@ KurtsHouseCelebiStatueText:
 	text "It's a statue of"
 	line "the forest's pro-"
 	cont "tector."
-	done
-
-PokemonJournalProfWestwoodText:
-	text "#mon Journal"
-
-	para "Special Feature:"
-	line "Prof.Westwood!"
-
-	para "Prof.Westwood V"
-	line "teaches at Celadon"
-	cont "University."
-
-	para "His ancestor's re-"
-	line "search in 1925 led"
-
-	para "to the development"
-	line "of modern #"
-	cont "Balls."
 	done

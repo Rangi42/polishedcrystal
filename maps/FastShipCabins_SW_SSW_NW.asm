@@ -1,61 +1,67 @@
 FastShipCabins_SW_SSW_NW_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 5 ; warp events
+	warp_event  2,  0, FAST_SHIP_1F, 5
+	warp_event  2, 19, FAST_SHIP_1F, 6
+	warp_event  3, 19, FAST_SHIP_1F, 6
+	warp_event  2, 31, FAST_SHIP_1F, 7
+	warp_event  3, 31, FAST_SHIP_1F, 7
 
-FastShipCabins_SW_SSW_NW_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 5
-	warp_def 0, 2, 5, FAST_SHIP_1F
-	warp_def 19, 2, 6, FAST_SHIP_1F
-	warp_def 19, 3, 6, FAST_SHIP_1F
-	warp_def 31, 2, 7, FAST_SHIP_1F
-	warp_def 31, 3, 7, FAST_SHIP_1F
+	db 2 ; bg events
+	bg_event  7,  1, SIGNPOST_READ, FastShipBed
+	bg_event  7,  2, SIGNPOST_READ, FastShipBed
 
-.XYTriggers: db 0
+	db 5 ; object events
+	object_event  1, 15, SPRITE_FISHER, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerFirebreatherLyle, EVENT_FAST_SHIP_PASSENGERS_FIRST_TRIP
+	object_event  6, 15, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerBug_catcherKen, EVENT_FAST_SHIP_PASSENGERS_WESTBOUND
+	object_event  5, 27, SPRITE_RICH_BOY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerRichBoyWinston, EVENT_FAST_SHIP_PASSENGERS_FIRST_TRIP
+	object_event  1, 26, SPRITE_BEAUTY, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerBeautyCassie, EVENT_FAST_SHIP_PASSENGERS_EASTBOUND
+	object_event  3, 28, SPRITE_ROCKER, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_TRAINER, 2, TrainerGuitaristmClyde, EVENT_FAST_SHIP_PASSENGERS_WESTBOUND
 
-.Signposts: db 2
-	signpost 1, 7, SIGNPOST_READ, FastShipBed
-	signpost 2, 7, SIGNPOST_READ, FastShipBed
+GenericTrainerFirebreatherLyle:
+	generictrainer FIREBREATHER, LYLE, EVENT_BEAT_FIREBREATHER_LYLE, FirebreatherLyleSeenText, FirebreatherLyleBeatenText
 
-.PersonEvents: db 5
-	person_event SPRITE_FISHER, 15, 1, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerFirebreatherLyle, EVENT_FAST_SHIP_PASSENGERS_FIRST_TRIP
-	person_event SPRITE_BUG_CATCHER, 15, 6, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerBug_catcherKen, EVENT_FAST_SHIP_PASSENGERS_WESTBOUND
-	person_event SPRITE_RICH_BOY, 27, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerRichBoyWinston, EVENT_FAST_SHIP_PASSENGERS_FIRST_TRIP
-	person_event SPRITE_BEAUTY, 26, 1, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerBeautyCassie, EVENT_FAST_SHIP_PASSENGERS_EASTBOUND
-	person_event SPRITE_ROCKER, 28, 3, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerGuitaristmClyde, EVENT_FAST_SHIP_PASSENGERS_WESTBOUND
+	text "I guess fire is"
+	line "weak on the sea."
 
-TrainerFirebreatherLyle:
-	trainer EVENT_BEAT_FIREBREATHER_LYLE, FIREBREATHER, LYLE, FirebreatherLyleSeenText, FirebreatherLyleBeatenText, 0, FirebreatherLyleScript
+	para "It doesn't matter?"
+	line "Really?"
+	done
 
-FirebreatherLyleScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x75b52
+GenericTrainerBug_catcherKen:
+	generictrainer BUG_CATCHER, KEN, EVENT_BEAT_BUG_CATCHER_KEN, Bug_catcherKenSeenText, Bug_catcherKenBeatenText
 
-TrainerBug_catcherKen:
-	trainer EVENT_BEAT_BUG_CATCHER_KEN, BUG_CATCHER, KEN, Bug_catcherKenSeenText, Bug_catcherKenBeatenText, 0, Bug_catcherKenScript
+	text "You can find lots"
+	line "of #mon in the"
+	cont "trees of Johto!"
+	done
 
-Bug_catcherKenScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x75bd5
+GenericTrainerRichBoyWinston:
+	generictrainer RICH_BOY, WINSTON, EVENT_BEAT_RICH_BOY_WINSTON, RichBoyWinstonSeenText, RichBoyWinstonBeatenText
 
-TrainerRichBoyWinston:
-	trainer EVENT_BEAT_RICH_BOY_WINSTON, RICH_BOY, WINSTON, RichBoyWinstonSeenText, RichBoyWinstonBeatenText, 0, RichBoyWinstonScript
+	text "This boat is so"
+	line "drab."
+	done
 
-RichBoyWinstonScript:
-	end_if_just_battled
-	jumptextfaceplayer RichBoyWinstonAfterText
+GenericTrainerBeautyCassie:
+	generictrainer BEAUTY, CASSIE, EVENT_BEAT_BEAUTY_CASSIE, BeautyCassieSeenText, BeautyCassieBeatenText
 
-TrainerBeautyCassie:
-	trainer EVENT_BEAT_BEAUTY_CASSIE, BEAUTY, CASSIE, BeautyCassieSeenText, BeautyCassieBeatenText, 0, BeautyCassieScript
+	text "A voyage is best"
+	line "for getting over"
+	cont "a broken heart."
 
-BeautyCassieScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x75c43
+	para "But a Fast Ship"
+	line "trip is too short"
+	cont "for grieving."
+	done
 
 TrainerGuitaristmClyde:
-	trainer EVENT_BEAT_GUITARISTM_CLYDE, GUITARISTM, CLYDE, GuitaristmClydeSeenText, GuitaristmClydeBeatenText, 0, GuitaristmClydeScript
+	trainer GUITARISTM, CLYDE, EVENT_BEAT_GUITARISTM_CLYDE, GuitaristmClydeSeenText, GuitaristmClydeBeatenText, 0, GuitaristmClydeScript
 
 GuitaristmClydeScript:
 	end_if_just_battled
@@ -111,14 +117,6 @@ FirebreatherLyleBeatenText:
 	line "flame's tiny…"
 	done
 
-UnknownText_0x75b52:
-	text "I guess fire is"
-	line "weak on the sea."
-
-	para "It doesn't matter?"
-	line "Really?"
-	done
-
 Bug_catcherKenSeenText:
 	text "I'm visiting my"
 	line "grandma to catch"
@@ -128,12 +126,6 @@ Bug_catcherKenSeenText:
 Bug_catcherKenBeatenText:
 	text "Ooh, wow."
 	line "You're tough!"
-	done
-
-UnknownText_0x75bd5:
-	text "You can find lots"
-	line "of #mon in the"
-	cont "trees of Johto!"
 	done
 
 RichBoyWinstonSeenText:
@@ -150,11 +142,6 @@ RichBoyWinstonBeatenText:
 	line "your #mon from?"
 	done
 
-RichBoyWinstonAfterText:
-	text "This boat is so"
-	line "drab."
-	done
-
 BeautyCassieSeenText:
 	text "I'm trying to"
 	line "forget my woes."
@@ -163,16 +150,6 @@ BeautyCassieSeenText:
 
 BeautyCassieBeatenText:
 	text "My heart weeps…"
-	done
-
-UnknownText_0x75c43:
-	text "A voyage is best"
-	line "for getting over"
-	cont "a broken heart."
-
-	para "But a Fast Ship"
-	line "trip is too short"
-	cont "for grieving."
 	done
 
 GuitaristmClydeSeenText:

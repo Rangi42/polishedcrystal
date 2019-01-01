@@ -1,100 +1,112 @@
 Route8_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 2 ; warp events
+	warp_event  4, 10, ROUTE_8_SAFFRON_GATE, 3
+	warp_event  4, 11, ROUTE_8_SAFFRON_GATE, 4
 
-Route8_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 2
-	warp_def 10, 4, 3, ROUTE_8_SAFFRON_GATE
-	warp_def 11, 4, 4, ROUTE_8_SAFFRON_GATE
+	db 2 ; bg events
+	bg_event 11,  9, SIGNPOST_JUMPTEXT, Route8UndergroundPathSignText
+	bg_event 10,  7, SIGNPOST_JUMPTEXT, Route8LockedDoorText
 
-.XYTriggers: db 0
+	db 15 ; object events
+	object_event 10, 10, SPRITE_BIKER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_GENERICTRAINER, 5, GenericTrainerBikerDwayne, EVENT_ROUTE_8_KANTO_POKEMON_FEDERATION
+	object_event 10, 11, SPRITE_BIKER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_GENERICTRAINER, 5, GenericTrainerBikerHarris, EVENT_ROUTE_8_KANTO_POKEMON_FEDERATION
+	object_event 10, 12, SPRITE_BIKER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_GENERICTRAINER, 5, GenericTrainerBikerZeke, EVENT_ROUTE_8_KANTO_POKEMON_FEDERATION
+	object_event 17,  9, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerSupernerdSam, -1
+	object_event 32,  9, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerSupernerdTom, -1
+	object_event 43, 14, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerGentlemanMilton, -1
+	object_event 23,  4, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerCoupleMoeandlulu1, -1
+	object_event 24,  4, SPRITE_LASS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerCoupleMoeandlulu2, -1
+	object_event 29,  4, SPRITE_LASS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerLassMeadow, -1
+	cuttree_event 21, 14, EVENT_ROUTE_8_CUT_TREE_1
+	cuttree_event 32, 12, EVENT_ROUTE_8_CUT_TREE_2
+	fruittree_event 45,  7, FRUITTREE_ROUTE_8, SALAC_BERRY
+	object_event  6,  9, SPRITE_BIKER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, Route8BikerDwayneProtestText, EVENT_ROUTE_8_PROTESTORS
+	object_event  7, 10, SPRITE_BIKER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, Route8BikerHarrisProtestText, EVENT_ROUTE_8_PROTESTORS
+	object_event  6, 11, SPRITE_BIKER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, Route8BikerZekeProtestText, EVENT_ROUTE_8_PROTESTORS
 
-.Signposts: db 2
-	signpost 9, 11, SIGNPOST_JUMPTEXT, Route8UndergroundPathSignText
-	signpost 7, 10, SIGNPOST_JUMPTEXT, Route8LockedDoorText
+GenericTrainerBikerDwayne:
+	generictrainer BIKER, DWAYNE, EVENT_BEAT_BIKER_DWAYNE, BikerDwayneSeenText, BikerDwayneBeatenText
 
-.PersonEvents: db 15
-	person_event SPRITE_BIKER, 10, 10, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 5, TrainerBikerDwayne, EVENT_ROUTE_8_KANTO_POKEMON_FEDERATION
-	person_event SPRITE_BIKER, 11, 10, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 5, TrainerBikerHarris, EVENT_ROUTE_8_KANTO_POKEMON_FEDERATION
-	person_event SPRITE_BIKER, 12, 10, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 5, TrainerBikerZeke, EVENT_ROUTE_8_KANTO_POKEMON_FEDERATION
-	person_event SPRITE_SUPER_NERD, 9, 17, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerSupernerdSam, -1
-	person_event SPRITE_SUPER_NERD, 9, 32, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerSupernerdTom, -1
-	person_event SPRITE_GENTLEMAN, 14, 43, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerGentlemanMilton, -1
-	person_event SPRITE_YOUNGSTER, 4, 23, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerCoupleMoeandlulu1, -1
-	person_event SPRITE_LASS, 4, 24, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerCoupleMoeandlulu2, -1
-	person_event SPRITE_LASS, 4, 29, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerLassMeadow, -1
-	cuttree_event 14, 21, EVENT_ROUTE_8_CUT_TREE_1
-	cuttree_event 12, 32, EVENT_ROUTE_8_CUT_TREE_2
-	fruittree_event 7, 45, FRUITTREE_ROUTE_8, SALAC_BERRY
-	person_event SPRITE_BIKER, 9, 6, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, Route8BikerDwayneProtestText, EVENT_ROUTE_8_PROTESTORS
-	person_event SPRITE_BIKER, 10, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, Route8BikerHarrisProtestText, EVENT_ROUTE_8_PROTESTORS
-	person_event SPRITE_BIKER, 11, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, Route8BikerZekeProtestText, EVENT_ROUTE_8_PROTESTORS
+	text "The Kanto #mon"
+	line "Federation will"
+	cont "never fall!"
+	done
 
-TrainerBikerDwayne:
-	trainer EVENT_BEAT_BIKER_DWAYNE, BIKER, DWAYNE, BikerDwayneSeenText, BikerDwayneBeatenText, 0, BikerDwayneScript
+GenericTrainerBikerHarris:
+	generictrainer BIKER, HARRIS, EVENT_BEAT_BIKER_HARRIS, BikerHarrisSeenText, BikerHarrisBeatenText
 
-BikerDwayneScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x6c0c8
+	text "Wiped out by some"
+	line "punk from Johto…"
+	done
 
-TrainerBikerHarris:
-	trainer EVENT_BEAT_BIKER_HARRIS, BIKER, HARRIS, BikerHarrisSeenText, BikerHarrisBeatenText, 0, BikerHarrisScript
+GenericTrainerBikerZeke:
+	generictrainer BIKER, ZEKE, EVENT_BEAT_BIKER_ZEKE, BikerZekeSeenText, BikerZekeBeatenText
 
-BikerHarrisScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x6c143
+	text "We'll try not to"
+	line "disturb anyone"
+	cont "from now on…"
+	done
 
-TrainerBikerZeke:
-	trainer EVENT_BEAT_BIKER_ZEKE, BIKER, ZEKE, BikerZekeSeenText, BikerZekeBeatenText, 0, BikerZekeScript
+GenericTrainerSupernerdSam:
+	generictrainer SUPER_NERD, SAM, EVENT_BEAT_SUPER_NERD_SAM, SupernerdSamSeenText, SupernerdSamBeatenText
 
-BikerZekeScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x6c1a3
+	text "The power of mag-"
+	line "nets is awesome!"
+	done
 
-TrainerSupernerdSam:
-	trainer EVENT_BEAT_SUPER_NERD_SAM, SUPER_NERD, SAM, SupernerdSamSeenText, SupernerdSamBeatenText, 0, SupernerdSamScript
+GenericTrainerSupernerdTom:
+	generictrainer SUPER_NERD, TOM, EVENT_BEAT_SUPER_NERD_TOM, SupernerdTomSeenText, SupernerdTomBeatenText
 
-SupernerdSamScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x6c219
+	text "Gym Badges are"
+	line "proof of your"
+	cont "skill at battles."
+	done
 
-TrainerSupernerdTom:
-	trainer EVENT_BEAT_SUPER_NERD_TOM, SUPER_NERD, TOM, SupernerdTomSeenText, SupernerdTomBeatenText, 0, SupernerdTomScript
+GenericTrainerGentlemanMilton:
+	generictrainer GENTLEMAN, MILTON, EVENT_BEAT_GENTLEMAN_MILTON, GentlemanMiltonSeenText, GentlemanMiltonBeatenText
 
-SupernerdTomScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x6c27e
+	text "Stopping in the"
+	line "road for a battle"
+	cont "isn't rude."
 
-TrainerGentlemanMilton:
-	trainer EVENT_BEAT_GENTLEMAN_MILTON, GENTLEMAN, MILTON, GentlemanMiltonSeenText, GentlemanMiltonBeatenText, 0, GentlemanMiltonScript
+	para "No matter what,"
+	line "I am a gentleman"
+	cont "first!"
+	done
 
-GentlemanMiltonScript:
-	end_if_just_battled
-	jumptextfaceplayer GentlemanMiltonAfterText
+GenericTrainerCoupleMoeandlulu1:
+	generictrainer COUPLE, MOEANDLULU1, EVENT_BEAT_COUPLE_MOE_AND_LULU, CoupleMoeandlulu1SeenText, CoupleMoeandlulu1BeatenText
 
-TrainerCoupleMoeandlulu1:
-	trainer EVENT_BEAT_COUPLE_MOE_AND_LULU, COUPLE, MOEANDLULU1, CoupleMoeandlulu1SeenText, CoupleMoeandlulu1BeatenText, 0, CoupleMoeandlulu1Script
+	text "Moe: In short,"
+	line "you're just too"
+	cont "strong…"
+	done
 
-CoupleMoeandlulu1Script:
-	end_if_just_battled
-	jumptextfaceplayer CoupleMoeandlulu1AfterText
+GenericTrainerCoupleMoeandlulu2:
+	generictrainer COUPLE, MOEANDLULU2, EVENT_BEAT_COUPLE_MOE_AND_LULU, CoupleMoeandlulu2SeenText, CoupleMoeandlulu2BeatenText
 
-TrainerCoupleMoeandlulu2:
-	trainer EVENT_BEAT_COUPLE_MOE_AND_LULU, COUPLE, MOEANDLULU2, CoupleMoeandlulu2SeenText, CoupleMoeandlulu2BeatenText, 0, CoupleMoeandlulu2Script
+	text "Lulu: It's not that"
+	line "Moe's weak, it's"
 
-CoupleMoeandlulu2Script:
-	end_if_just_battled
-	jumptextfaceplayer CoupleMoeandlulu2AfterText
+	para "that you're too"
+	line "strong!"
+	done
 
-TrainerLassMeadow:
-	trainer EVENT_BEAT_LASS_MEADOW, LASS, MEADOW, LassMeadowSeenText, LassMeadowBeatenText, 0, LassMeadowScript
+GenericTrainerLassMeadow:
+	generictrainer LASS, MEADOW, EVENT_BEAT_LASS_MEADOW, LassMeadowSeenText, LassMeadowBeatenText
 
-LassMeadowScript:
-	end_if_just_battled
-	jumptextfaceplayer LassMeadowAfterText
+	text "Oh well, I'm more"
+	line "worried about"
+
+	para "having fun than"
+    line "being competitive."
+	done
 
 Route8BikerDwayneProtestText:
 	text "We're the Kanto"
@@ -130,12 +142,6 @@ BikerDwayneBeatenText:
 	text "S-sorry!"
 	done
 
-UnknownText_0x6c0c8:
-	text "The Kanto #mon"
-	line "Federation will"
-	cont "never fall!"
-	done
-
 Route8BikerHarrisProtestText:
 BikerHarrisSeenText:
 	text "The cops shut down"
@@ -149,11 +155,6 @@ BikerHarrisBeatenText:
 	text "F-forgive me!"
 	done
 
-UnknownText_0x6c143:
-	text "Wiped out by some"
-	line "punk from Johto…"
-	done
-
 BikerZekeSeenText:
 	text "We're the Kanto"
 	line "#mon Federa-"
@@ -163,12 +164,6 @@ BikerZekeSeenText:
 
 BikerZekeBeatenText:
 	text "Yikes! Sorry!"
-	done
-
-UnknownText_0x6c1a3:
-	text "We'll try not to"
-	line "disturb anyone"
-	cont "from now on…"
 	done
 
 SupernerdSamSeenText:
@@ -181,11 +176,6 @@ SupernerdSamBeatenText:
 	line "the Magnet Train…"
 	done
 
-UnknownText_0x6c219:
-	text "The power of mag-"
-	line "nets is awesome!"
-	done
-
 SupernerdTomSeenText:
 	text "Hm… You've got"
 	line "many Gym Badges."
@@ -194,12 +184,6 @@ SupernerdTomSeenText:
 SupernerdTomBeatenText:
 	text "Just as I thought…"
 	line "You're tough!"
-	done
-
-UnknownText_0x6c27e:
-	text "Gym Badges are"
-	line "proof of your"
-	cont "skill at battles."
 	done
 
 GentlemanMiltonSeenText:
@@ -211,16 +195,6 @@ GentlemanMiltonSeenText:
 GentlemanMiltonBeatenText:
 	text "You were very"
 	line "skillful."
-	done
-
-GentlemanMiltonAfterText:
-	text "Stopping in the"
-	line "road for a battle"
-	cont "isn't rude."
-
-	para "No matter what,"
-	line "I am a gentleman"
-	cont "first!"
 	done
 
 CoupleMoeandlulu1SeenText:
@@ -237,12 +211,6 @@ CoupleMoeandlulu1BeatenText:
 	text "Moe: Uwaaaahhh…"
 	done
 
-CoupleMoeandlulu1AfterText:
-	text "Moe: In short,"
-	line "you're just too"
-	cont "strong…"
-	done
-
 CoupleMoeandlulu2SeenText:
 	text "Lulu: Moe and I"
 	line "make a great pair!"
@@ -255,14 +223,6 @@ CoupleMoeandlulu2BeatenText:
 	text "Lulu: Eeek!"
 	done
 
-CoupleMoeandlulu2AfterText:
-	text "Lulu: It's not that"
-	line "Moe's weak, it's"
-
-	para "that you're too"
-	line "strong!"
-	done
-
 LassMeadowSeenText:
 	text "I like skirts!"
 	line "They're cute and"
@@ -271,14 +231,6 @@ LassMeadowSeenText:
 
 LassMeadowBeatenText:
 	text "Oh my!"
-	done
-
-LassMeadowAfterText:
-	text "Oh well, I'm more"
-	line "worried about"
-
-	para "having fun than"
-    line "being competitive."
 	done
 
 Route8LockedDoorText:

@@ -855,19 +855,15 @@ NamePlayer: ; 0x6074
 	ld de, wPlayerName
 	farcall NamingScreen
 	ld hl, wPlayerName
-	ld de, .Chris
+	ld de, DefaultMalePlayerName
 	ld a, [wPlayerGender]
 	bit 0, a
 	jr z, .Male
-	ld de, .Kris
+	ld de, DefaultFemalePlayerName
 .Male:
 	jp InitName
 
-.Chris:
-	db "Chris@@@@@@"
-.Kris:
-	db "Kris@@@@@@@"
-; 60e9
+INCLUDE "data/default_player_names.asm"
 
 ShrinkPlayer: ; 610f
 

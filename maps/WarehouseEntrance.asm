@@ -1,44 +1,41 @@
 WarehouseEntrance_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 3 ; callbacks
+	callback MAPCALLBACK_NEWMAP, WarehouseEntranceResetSwitches
+	callback MAPCALLBACK_TILES, WarehouseEntranceCheckBasementKey
+	callback MAPCALLBACK_OBJECTS, WarehouseEntranceCheckDayOfWeek
 
-.MapCallbacks: db 3
-	dbw MAPCALLBACK_NEWMAP, WarehouseEntranceResetSwitches
-	dbw MAPCALLBACK_TILES, WarehouseEntranceCheckBasementKey
-	dbw MAPCALLBACK_OBJECTS, WarehouseEntranceCheckDayOfWeek
+	db 6 ; warp events
+	warp_event  1,  2, UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES, 7
+	warp_event  1, 34, UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES, 4
+	warp_event 16,  6, WAREHOUSE_ENTRANCE, 4
+	warp_event 13, 35, WAREHOUSE_ENTRANCE, 3
+	warp_event 14, 35, WAREHOUSE_ENTRANCE, 3
+	warp_event 14, 31, UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES, 1
 
-WarehouseEntrance_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 6
-	warp_def 2, 1, 7, UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES
-	warp_def 34, 1, 4, UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES
-	warp_def 6, 16, 4, WAREHOUSE_ENTRANCE
-	warp_def 35, 13, 3, WAREHOUSE_ENTRANCE
-	warp_def 35, 14, 3, WAREHOUSE_ENTRANCE
-	warp_def 31, 14, 1, UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES
+	db 5 ; bg events
+	bg_event 16,  6, SIGNPOST_READ, BasementDoorScript
+	bg_event 17,  6, SIGNPOST_JUMPTEXT, UnknownText_0x7c91a
+	bg_event  4, 13, SIGNPOST_ITEM + PARLYZ_HEAL, EVENT_WAREHOUSE_ENTRANCE_HIDDEN_PARLYZ_HEAL
+	bg_event  2, 18, SIGNPOST_ITEM + SUPER_POTION, EVENT_WAREHOUSE_ENTRANCE_HIDDEN_SUPER_POTION
+	bg_event 15,  8, SIGNPOST_ITEM + ANTIDOTE, EVENT_WAREHOUSE_ENTRANCE_HIDDEN_ANTIDOTE
 
-.XYTriggers: db 0
+	db 10 ; object events
+	object_event  5, 11, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_SCRIPT, 0, GrampsScript_0x7c146, EVENT_WAREHOUSE_ENTRANCE_GRAMPS
+	object_event  5, 14, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, OlderHaircutBrotherScript, EVENT_WAREHOUSE_ENTRANCE_OLDER_HAIRCUT_BROTHER
+	object_event  5, 15, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_SCRIPT, 0, YoungerHaircutBrotherScript, EVENT_WAREHOUSE_ENTRANCE_YOUNGER_HAIRCUT_BROTHER
+	object_event  5, 21, SPRITE_GRANNY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_SCRIPT, 0, GrannyScript_0x7c132, EVENT_WAREHOUSE_ENTRANCE_GRANNY
+	object_event  3, 31, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerSupernerdEric, -1
+	object_event  4,  9, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerSupernerdTeru, -1
+	object_event  1, 27, SPRITE_SUPER_NERD, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_PURPLE, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerPokemaniacIssac, -1
+	object_event  0,  6, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_PURPLE, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerPokemaniacDonald, -1
+	itemball_event  4, 25, COIN_CASE, 1, EVENT_WAREHOUSE_ENTRANCE_COIN_CASE
+	object_event  1, 18, SPRITE_COSPLAYER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerCosplayerClara, -1
 
-.Signposts: db 5
-	signpost 6, 16, SIGNPOST_READ, BasementDoorScript
-	signpost 6, 17, SIGNPOST_JUMPTEXT, UnknownText_0x7c91a
-	signpost 13, 4, SIGNPOST_ITEM + PARLYZ_HEAL, EVENT_WAREHOUSE_ENTRANCE_HIDDEN_PARLYZ_HEAL
-	signpost 18, 2, SIGNPOST_ITEM + SUPER_POTION, EVENT_WAREHOUSE_ENTRANCE_HIDDEN_SUPER_POTION
-	signpost 8, 15, SIGNPOST_ITEM + ANTIDOTE, EVENT_WAREHOUSE_ENTRANCE_HIDDEN_ANTIDOTE
-
-.PersonEvents: db 10
-	person_event SPRITE_GRAMPS, 11, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, GrampsScript_0x7c146, EVENT_WAREHOUSE_ENTRANCE_GRAMPS
-	person_event SPRITE_SUPER_NERD, 14, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, OlderHaircutBrotherScript, EVENT_WAREHOUSE_ENTRANCE_OLDER_HAIRCUT_BROTHER
-	person_event SPRITE_SUPER_NERD, 15, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, YoungerHaircutBrotherScript, EVENT_WAREHOUSE_ENTRANCE_YOUNGER_HAIRCUT_BROTHER
-	person_event SPRITE_GRANNY, 21, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, GrannyScript_0x7c132, EVENT_WAREHOUSE_ENTRANCE_GRANNY
-	person_event SPRITE_SUPER_NERD, 31, 3, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerSupernerdEric, -1
-	person_event SPRITE_SUPER_NERD, 9, 4, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerSupernerdTeru, -1
-	person_event SPRITE_SUPER_NERD, 27, 1, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 2, TrainerPokemaniacIssac, -1
-	person_event SPRITE_SUPER_NERD, 6, 0, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerPokemaniacDonald, -1
-	itemball_event 25, 4, COIN_CASE, 1, EVENT_WAREHOUSE_ENTRANCE_COIN_CASE
-	person_event SPRITE_COSPLAYER, 18, 1, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerCosplayerClara, -1
-
-const_value set 1
+	const_def 1 ; object constants
 	const WAREHOUSEENTRANCE_GRAMPS
 	const WAREHOUSEENTRANCE_SUPER_NERD5
 	const WAREHOUSEENTRANCE_SUPER_NERD6
@@ -135,60 +132,76 @@ WarehouseEntranceCheckDayOfWeek:
 	appear WAREHOUSEENTRANCE_GRANNY
 	return
 
-TrainerSupernerdEric:
-	trainer EVENT_BEAT_SUPER_NERD_ERIC, SUPER_NERD, ERIC, SupernerdEricSeenText, SupernerdEricBeatenText, 0, SupernerdEricScript
+GenericTrainerSupernerdEric:
+	generictrainer SUPER_NERD, ERIC, EVENT_BEAT_SUPER_NERD_ERIC, SupernerdEricSeenText, SupernerdEricBeatenText
 
-SupernerdEricScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x7c36c
+	text "I guess I have to"
+	line "do things fair and"
+	cont "square…"
+	done
 
-TrainerSupernerdTeru:
-	trainer EVENT_BEAT_SUPER_NERD_TERU, SUPER_NERD, TERU, SupernerdTeruSeenText, SupernerdTeruBeatenText, 0, SupernerdTeruScript
+GenericTrainerSupernerdTeru:
+	generictrainer SUPER_NERD, TERU, EVENT_BEAT_SUPER_NERD_TERU, SupernerdTeruSeenText, SupernerdTeruBeatenText
 
-SupernerdTeruScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x7c410
+	text "I know my #mon"
+	line "type alignments."
 
-TrainerPokemaniacIssac:
-	trainer EVENT_BEAT_POKEMANIAC_ISSAC, POKEMANIAC, ISSAC, PokemaniacIssacSeenText, PokemaniacIssacBeatenText, 0, PokemaniacIssacScript
+	para "But I only use one"
+	line "type of #mon."
+	done
 
-PokemaniacIssacScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x7c498
+GenericTrainerPokemaniacIssac:
+	generictrainer POKEMANIAC, ISSAC, EVENT_BEAT_POKEMANIAC_ISSAC, PokemaniacIssacSeenText, PokemaniacIssacBeatenText
 
-TrainerPokemaniacDonald:
-	trainer EVENT_BEAT_POKEMANIAC_DONALD, POKEMANIAC, DONALD, PokemaniacDonaldSeenText, PokemaniacDonaldBeatenText, 0, PokemaniacDonaldScript
+	text "Your #mon will"
+	line "like you more if"
 
-PokemaniacDonaldScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x7c52f
+	para "you give them"
+	line "haircuts."
+	done
 
-TrainerCosplayerClara:
-	trainer EVENT_BEAT_COSPLAYER_CLARA, COSPLAYER, CLARA, CosplayerClaraSeenText, CosplayerClaraBeatenText, 0, CosplayerClaraScript
+GenericTrainerPokemaniacDonald:
+	generictrainer POKEMANIAC, DONALD, EVENT_BEAT_POKEMANIAC_DONALD, PokemaniacDonaldSeenText, PokemaniacDonaldBeatenText
 
-CosplayerClaraScript:
-	end_if_just_battled
-	jumptextfaceplayer CosplayerClaraAfterText
+	text "Are you making a"
+	line "#dex? Here's a"
+	cont "hot tip."
+
+	para "The Hiker on Route"
+	line "33, Anthony, is a"
+	cont "good guy."
+
+	para "He'll phone you if"
+	line "he sees any rare"
+	cont "#mon."
+	done
+
+GenericTrainerCosplayerClara:
+	generictrainer COSPLAYER, CLARA, EVENT_BEAT_COSPLAYER_CLARA, CosplayerClaraSeenText, CosplayerClaraBeatenText
+
+	text "I made this cos-"
+	line "tume myself!"
+	done
 
 GrannyScript_0x7c132:
 	checkcode VAR_WEEKDAY
 	if_equal SUNDAY, .Open
 	if_equal SATURDAY, .Open
-	jump WarehouseEntranceScript_ShopClosed
+	jumptext UnknownText_0x7c904
 
 .Open:
 	pokemart MARTTYPE_BITTER, MART_UNDERGROUND
 
 GrampsScript_0x7c146:
 	checkflag ENGINE_GOLDENROD_UNDERGROUND_MERCHANT_CLOSED
-	iftrue WarehouseEntranceScript_ShopClosed
+	iftrue_jumptext UnknownText_0x7c904
 	checkcode VAR_WEEKDAY
 	if_equal MONDAY, .CheckMorn
-	jump WarehouseEntranceScript_ShopClosed
+	jumptext UnknownText_0x7c904
 
 .CheckMorn:
 	checkmorn
-	iffalse WarehouseEntranceScript_ShopClosed
+	iffalse_jumptext UnknownText_0x7c904
 	pokemart MARTTYPE_BARGAIN, 0
 
 OlderHaircutBrotherScript:
@@ -196,7 +209,7 @@ OlderHaircutBrotherScript:
 	if_equal TUESDAY, .DoHaircut
 	if_equal THURSDAY, .DoHaircut
 	if_equal SATURDAY, .DoHaircut
-	jump WarehouseEntranceScript_ShopClosed
+	jumptext UnknownText_0x7c904
 
 .DoHaircut:
 	opentext
@@ -219,21 +232,21 @@ OlderHaircutBrotherScript:
 	jump .else
 
 .two
-	setevent EVENT_GAVE_KURT_APRICORNS
-	clearevent EVENT_RECEIVED_BALLS_FROM_KURT
-	clearevent EVENT_DRAGON_SHRINE_QUESTION_2
+	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
+	clearevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
+	clearevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_3
 	jump .then
 
 .three
-	clearevent EVENT_GAVE_KURT_APRICORNS
-	setevent EVENT_RECEIVED_BALLS_FROM_KURT
-	clearevent EVENT_DRAGON_SHRINE_QUESTION_2
+	clearevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
+	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
+	clearevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_3
 	jump .then
 
 .else
-	clearevent EVENT_GAVE_KURT_APRICORNS
-	clearevent EVENT_RECEIVED_BALLS_FROM_KURT
-	setevent EVENT_DRAGON_SHRINE_QUESTION_2
+	clearevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
+	clearevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
+	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_3
 	jump .then
 
 .then
@@ -250,9 +263,9 @@ OlderHaircutBrotherScript:
 	opentext
 	writetext UnknownText_0x7c6d8
 	waitbutton
-	checkevent EVENT_GAVE_KURT_APRICORNS
+	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	iftrue UnknownScript_0x7c2bb
-	checkevent EVENT_RECEIVED_BALLS_FROM_KURT
+	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
 	iftrue UnknownScript_0x7c2c4
 	jump UnknownScript_0x7c2cd
 
@@ -270,7 +283,7 @@ YoungerHaircutBrotherScript:
 	if_equal SUNDAY, .DoHaircut
 	if_equal WEDNESDAY, .DoHaircut
 	if_equal FRIDAY, .DoHaircut
-	jump WarehouseEntranceScript_ShopClosed
+	jumptext UnknownText_0x7c904
 
 .DoHaircut:
 	opentext
@@ -293,21 +306,21 @@ YoungerHaircutBrotherScript:
 	jump .else
 
 .two
-	setevent EVENT_GAVE_KURT_APRICORNS
-	clearevent EVENT_RECEIVED_BALLS_FROM_KURT
-	clearevent EVENT_DRAGON_SHRINE_QUESTION_2
+	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
+	clearevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
+	clearevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_3
 	jump .then
 
 .three
-	clearevent EVENT_GAVE_KURT_APRICORNS
-	setevent EVENT_RECEIVED_BALLS_FROM_KURT
-	clearevent EVENT_DRAGON_SHRINE_QUESTION_2
+	clearevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
+	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
+	clearevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_3
 	jump .then
 
 .else
-	clearevent EVENT_GAVE_KURT_APRICORNS
-	clearevent EVENT_RECEIVED_BALLS_FROM_KURT
-	setevent EVENT_DRAGON_SHRINE_QUESTION_2
+	clearevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
+	clearevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
+	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_3
 .then
 	takemoney $0, 300
 	special PlaceMoneyTopRight
@@ -322,9 +335,9 @@ YoungerHaircutBrotherScript:
 	opentext
 	writetext UnknownText_0x7c82a
 	waitbutton
-	checkevent EVENT_GAVE_KURT_APRICORNS
+	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	iftrue UnknownScript_0x7c2bb
-	checkevent EVENT_RECEIVED_BALLS_FROM_KURT
+	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
 	iftrue UnknownScript_0x7c2c4
 	jump UnknownScript_0x7c2cd
 
@@ -367,9 +380,6 @@ BasementDoorScript::
 	setevent EVENT_USED_BASEMENT_KEY
 	endtext
 
-WarehouseEntranceScript_ShopClosed:
-	jumptext UnknownText_0x7c904
-
 SupernerdEricSeenText:
 	text "I got booted out"
 	line "of the Game Cor-"
@@ -382,12 +392,6 @@ SupernerdEricSeenText:
 
 SupernerdEricBeatenText:
 	text "…Grumble…"
-	done
-
-UnknownText_0x7c36c:
-	text "I guess I have to"
-	line "do things fair and"
-	cont "square…"
 	done
 
 SupernerdTeruSeenText:
@@ -406,14 +410,6 @@ SupernerdTeruBeatenText:
 	text "Ow, ow, ow!"
 	done
 
-UnknownText_0x7c410:
-	text "I know my #mon"
-	line "type alignments."
-
-	para "But I only use one"
-	line "type of #mon."
-	done
-
 PokemaniacIssacSeenText:
 	text "My #mon just"
 	line "got a haircut!"
@@ -424,14 +420,6 @@ PokemaniacIssacSeenText:
 
 PokemaniacIssacBeatenText:
 	text "Aiyeeee!"
-	done
-
-UnknownText_0x7c498:
-	text "Your #mon will"
-	line "like you more if"
-
-	para "you give them"
-	line "haircuts."
 	done
 
 PokemaniacDonaldSeenText:
@@ -447,20 +435,6 @@ PokemaniacDonaldBeatenText:
 	line "That makes me mad!"
 	done
 
-UnknownText_0x7c52f:
-	text "Are you making a"
-	line "#dex? Here's a"
-	cont "hot tip."
-
-	para "The Hiker on Route"
-	line "33, Anthony, is a"
-	cont "good guy."
-
-	para "He'll phone you if"
-	line "he sees any rare"
-	cont "#mon."
-	done
-
 CosplayerClaraSeenText:
 	text "Pix! Vul, pix! ♥"
 	done
@@ -471,11 +445,6 @@ CosplayerClaraBeatenText:
 
 	para "Nope! It's just"
 	line "quality cosplay."
-	done
-
-CosplayerClaraAfterText:
-	text "I made this cos-"
-	line "tume myself!"
 	done
 
 UnknownText_0x7c5b0:

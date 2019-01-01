@@ -1,32 +1,29 @@
 MahoganyRedGyaradosSpeechHouse_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 2 ; warp events
+	warp_event  2,  7, MAHOGANY_TOWN, 2
+	warp_event  3,  7, MAHOGANY_TOWN, 2
 
-MahoganyRedGyaradosSpeechHouse_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 2
-	warp_def 7, 2, 2, MAHOGANY_TOWN
-	warp_def 7, 3, 2, MAHOGANY_TOWN
+	db 0 ; bg events
 
-.XYTriggers: db 0
-
-.Signposts: db 0
-
-.PersonEvents: db 2
-	person_event SPRITE_BLACK_BELT, 3, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x19999c, -1
-	person_event SPRITE_TEACHER, 5, 6, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, TeacherScript_0x199982, -1
+	db 2 ; object events
+	object_event  2,  3, SPRITE_BLACK_BELT, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x19999c, -1
+	object_event  6,  5, SPRITE_TEACHER, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, TeacherScript_0x199982, -1
 
 TeacherScript_0x199982:
-	faceplayer
-	opentext
 	checkflag ENGINE_ROCKETS_IN_RADIO_TOWER
-	iftrue UnknownScript_0x199990
-	jumpopenedtext UnknownText_0x199a0e
+	iftrue_jumptextfaceplayer UnknownText_0x199a3d
+	thistextfaceplayer
 
-UnknownScript_0x199990:
-	jumpopenedtext UnknownText_0x199a3d
+	text "My favorite radio"
+	line "program? I'd say"
+	cont "#mon Music."
+	done
 
 UnknownText_0x19999c:
 	text "I heard that a red"
@@ -38,12 +35,6 @@ UnknownText_0x19999c:
 
 	para "Gyarados are rare"
 	line "in that lake…"
-	done
-
-UnknownText_0x199a0e:
-	text "My favorite radio"
-	line "program? I'd say"
-	cont "#mon Music."
 	done
 
 UnknownText_0x199a3d:

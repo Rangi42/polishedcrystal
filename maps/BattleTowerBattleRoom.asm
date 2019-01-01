@@ -1,25 +1,22 @@
 BattleTowerBattleRoom_MapScriptHeader:
+	db 1 ; scene scripts
+	scene_script BattleTowerBattleRoomEnterBattleRoom
 
-.MapTriggers: db 1
-	dw BattleTowerBattleRoomEnterBattleRoom
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 2 ; warp events
+	warp_event  3,  7, BATTLE_TOWER_HALLWAY, 4
+	warp_event  4,  7, BATTLE_TOWER_HALLWAY, 4
 
-BattleTowerBattleRoom_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 2
-	warp_def 7, 3, 4, BATTLE_TOWER_HALLWAY
-	warp_def 7, 4, 4, BATTLE_TOWER_HALLWAY
+	db 0 ; bg events
 
-.XYTriggers: db 0
+	db 2 ; object events
+	object_event  4,  0, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_BATTLE_TOWER_BATTLE_ROOM_YOUNGSTER
+	object_event  2,  6, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
 
-.Signposts: db 0
-
-.PersonEvents: db 2
-	person_event SPRITE_YOUNGSTER, 0, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_BATTLE_TOWER_BATTLE_ROOM_YOUNGSTER
-	person_event SPRITE_RECEPTIONIST, 6, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
-
-const_value set 1
+	const_def 1 ; object constants
 	const BATTLETOWERBATTLEROOM_OPPONENT
 	const BATTLETOWERBATTLEROOM_RECEPTIONIST
 

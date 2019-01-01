@@ -1,46 +1,48 @@
 Route10South_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 1 ; warp events
+	warp_event  6,  3, ROCK_TUNNEL_1F, 2
 
-Route10South_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 1
-	warp_def 3, 6, 2, ROCK_TUNNEL_1F
+	db 2 ; bg events
+	bg_event  5,  5, SIGNPOST_JUMPTEXT, Route10SignText
+	bg_event 16,  3, SIGNPOST_ITEM + MAX_ETHER, EVENT_ROUTE_10_HIDDEN_MAX_ETHER
 
-.XYTriggers: db 0
+	db 4 ; object events
+	object_event 17,  5, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerHikerJim, -1
+	object_event  4,  7, SPRITE_POKEFAN_M, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerPokefanmRobert, -1
+	object_event  8, 12, SPRITE_HEX_MANIAC, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_PURPLE, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerHexManiacAmy, -1
+	tmhmball_event  9,  7, TM_VOLT_SWITCH, EVENT_ROUTE_10_TM_VOLT_SWITCH
 
-.Signposts: db 2
-	signpost 5, 5, SIGNPOST_JUMPTEXT, Route10SignText
-	signpost 3, 16, SIGNPOST_ITEM + MAX_ETHER, EVENT_ROUTE_10_HIDDEN_MAX_ETHER
+GenericTrainerHikerJim:
+	generictrainer HIKER, JIM, EVENT_BEAT_HIKER_JIM, HikerJimSeenText, HikerJimBeatenText
 
-.PersonEvents: db 4
-	person_event SPRITE_POKEFAN_M, 5, 17, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerHikerJim, -1
-	person_event SPRITE_POKEFAN_M, 7, 4, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerPokefanmRobert, -1
-	person_event SPRITE_HEX_MANIAC, 12, 8, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 4, TrainerHexManiacAmy, -1
-	tmhmball_event 7, 9, TM_VOLT_SWITCH, EVENT_ROUTE_10_TM_VOLT_SWITCH
+	text "Hay fever is"
+	line "making me sneeze!"
+	cont "Ahahah-CHOO!"
+	done
 
-TrainerHikerJim:
-	trainer EVENT_BEAT_HIKER_JIM, HIKER, JIM, HikerJimSeenText, HikerJimBeatenText, 0, HikerJimScript
+GenericTrainerPokefanmRobert:
+	generictrainer POKEFANM, ROBERT, EVENT_BEAT_POKEFANM_ROBERT, PokefanmRobertSeenText, PokefanmRobertBeatenText
 
-HikerJimScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x1ae43b
+	text "Look what you did"
+	line "to my #mon…"
 
-TrainerPokefanmRobert:
-	trainer EVENT_BEAT_POKEFANM_ROBERT, POKEFANM, ROBERT, PokefanmRobertSeenText, PokefanmRobertBeatenText, 0, PokefanmRobertScript
+	para "I won't forget"
+	line "this…"
+	done
 
-PokefanmRobertScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x1ae4a9
+GenericTrainerHexManiacAmy:
+	generictrainer HEX_MANIAC, AMY, EVENT_BEAT_HEX_MANIAC_AMY, HexManiacAmySeenText, HexManiacAmyBeatenText
 
-TrainerHexManiacAmy:
-	trainer EVENT_BEAT_HEX_MANIAC_AMY, HEX_MANIAC, AMY, HexManiacAmySeenText, HexManiacAmyBeatenText, 0, HexManiacAmyScript
-
-HexManiacAmyScript:
-	end_if_just_battled
-	jumptextfaceplayer HexManiacAmyAfterText
+	text "A Hex Maniac is"
+	line "at peace among"
+	cont "the spirits…"
+	done
 
 HikerJimSeenText:
 	text "Hahahah!"
@@ -48,12 +50,6 @@ HikerJimSeenText:
 
 HikerJimBeatenText:
 	text "Hahaha-hachoo!"
-	done
-
-UnknownText_0x1ae43b:
-	text "Hay fever is"
-	line "making me sneeze!"
-	cont "Ahahah-CHOO!"
 	done
 
 PokefanmRobertSeenText:
@@ -68,14 +64,6 @@ PokefanmRobertBeatenText:
 	line "that's my loss."
 	done
 
-UnknownText_0x1ae4a9:
-	text "Look what you did"
-	line "to my #mon…"
-
-	para "I won't forget"
-	line "this…"
-	done
-
 HexManiacAmySeenText:
 	text "Lavender Town…"
 
@@ -87,12 +75,6 @@ HexManiacAmyBeatenText:
 	text "Your #mon are"
 	line "overflowing with"
 	cont "vitality…"
-	done
-
-HexManiacAmyAfterText:
-	text "A Hex Maniac is"
-	line "at peace among"
-	cont "the spirits…"
 	done
 
 Route10SignText:

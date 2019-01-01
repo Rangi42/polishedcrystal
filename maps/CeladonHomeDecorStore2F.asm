@@ -1,23 +1,20 @@
 CeladonHomeDecorStore2F_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 2 ; warp events
+	warp_event  9,  0, CELADON_HOME_DECOR_STORE_1F, 3
+	warp_event  6,  0, CELADON_HOME_DECOR_STORE_3F, 1
 
-CeladonHomeDecorStore2F_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 2
-	warp_def 0, 9, 3, CELADON_HOME_DECOR_STORE_1F
-	warp_def 0, 6, 1, CELADON_HOME_DECOR_STORE_3F
+	db 1 ; bg events
+	bg_event  8,  0, SIGNPOST_JUMPTEXT, CeladonHomeDecorStore2FDirectoryText
 
-.XYTriggers: db 0
-
-.Signposts: db 1
-	signpost 0, 8, SIGNPOST_JUMPTEXT, CeladonHomeDecorStore2FDirectoryText
-
-.PersonEvents: db 2
-	person_event SPRITE_CLERK, 5, 9, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonHomeDecorStore2FClerkScript, -1
-	person_event SPRITE_POKEFAN_F, 1, 3, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonHomeDecorStore2FPokefanfText, -1
+	db 2 ; object events
+	object_event  9,  5, SPRITE_CLERK, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, CeladonHomeDecorStore2FClerkScript, -1
+	object_event  3,  1, SPRITE_POKEFAN_F, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonHomeDecorStore2FPokefanfText, -1
 
 CeladonHomeDecorStore2FClerkScript:
 	faceplayer

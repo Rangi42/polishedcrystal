@@ -1,48 +1,45 @@
 Route34_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 1 ; callbacks
+	callback MAPCALLBACK_OBJECTS, Route34RebattleBreederAndEggCheckCallback
 
-.MapCallbacks: db 1
-	dbw MAPCALLBACK_OBJECTS, Route34RebattleBreederAndEggCheckCallback
+	db 5 ; warp events
+	warp_event 13, 37, ROUTE_34_ILEX_FOREST_GATE, 1
+	warp_event 14, 37, ROUTE_34_ILEX_FOREST_GATE, 2
+	warp_event 11, 14, DAYCARE, 1
+	warp_event 11, 15, DAYCARE, 2
+	warp_event 13, 15, DAYCARE, 3
 
-Route34_MapEventHeader:
+	db 3 ; coord events
+	coord_event  8, 17, 1, Route34LyraTrigger1
+	coord_event  9, 17, 1, Route34LyraTrigger2
+	coord_event 10, 17, 1, Route34LyraTrigger3
 
-.Warps: db 5
-	warp_def 37, 13, 1, ROUTE_34_ILEX_FOREST_GATE
-	warp_def 37, 14, 2, ROUTE_34_ILEX_FOREST_GATE
-	warp_def 14, 11, 1, DAYCARE
-	warp_def 15, 11, 2, DAYCARE
-	warp_def 15, 13, 3, DAYCARE
+	db 5 ; bg events
+	bg_event 12,  6, SIGNPOST_JUMPTEXT, Route34SignText
+	bg_event 13, 33, SIGNPOST_JUMPTEXT, Route34TrainerTipsText
+	bg_event 10, 13, SIGNPOST_JUMPTEXT, DayCareSignText
+	bg_event  8, 32, SIGNPOST_ITEM + RARE_CANDY, EVENT_ROUTE_34_HIDDEN_RARE_CANDY
+	bg_event 17, 19, SIGNPOST_ITEM + SUPER_POTION, EVENT_ROUTE_34_HIDDEN_SUPER_POTION
 
-.XYTriggers: db 3
-	xy_trigger 1, 17, 8, Route34LyraTrigger1
-	xy_trigger 1, 17, 9, Route34LyraTrigger2
-	xy_trigger 1, 17, 10, Route34LyraTrigger3
+	db 14 ; object events
+	object_event 11, 20, SPRITE_RICH_BOY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, Route34RichBoyIrvingScript, -1
+	object_event 10, 15, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, DayCareManScript_Outside, EVENT_DAYCARE_MAN_ON_ROUTE_34
+	object_event  8, 12, SPRITE_GOLDENROD_LYRA, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LYRA_ROUTE_34
+	object_event 13,  7, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_TRAINER, 5, TrainerCamperTodd1, -1
+	object_event 15, 32, SPRITE_BREEDER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_TRAINER, 3, TrainerBreederJulie, -1
+	object_event 10, 26, SPRITE_LASS, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_TRAINER, 3, TrainerPicnickerGina1, -1
+	object_event  6, 10, SPRITE_OFFICER_F, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, OfficerfMaraScript, -1
+	object_event 18, 28, SPRITE_POKEFAN_M, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerPokefanmBrandon, -1
+	object_event 14, 18, SPRITE_DAYCARE_MON_1, SPRITEMOVEDATA_POKEMON, 2, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, DaycareMon1Script, EVENT_DAYCARE_MON_1
+	object_event 17, 19, SPRITE_DAYCARE_MON_2, SPRITEMOVEDATA_POKEMON, 2, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, DaycareMon2Script, EVENT_DAYCARE_MON_2
+	object_event 11, 48, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_TRAINER, 5, TrainerCooltrainerfIrene, -1
+	object_event  3, 48, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_TRAINER, 3, TrainerCooltrainerfJenn, -1
+	object_event  6, 51, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_TRAINER, 2, TrainerCooltrainerfKate, -1
+	itemball_event  7, 30, NUGGET, 1, EVENT_ROUTE_34_NUGGET
 
-.Signposts: db 5
-	signpost 6, 12, SIGNPOST_JUMPTEXT, Route34SignText
-	signpost 33, 13, SIGNPOST_JUMPTEXT, Route34TrainerTipsText
-	signpost 13, 10, SIGNPOST_JUMPTEXT, DayCareSignText
-	signpost 32, 8, SIGNPOST_ITEM + RARE_CANDY, EVENT_ROUTE_34_HIDDEN_RARE_CANDY
-	signpost 19, 17, SIGNPOST_ITEM + SUPER_POTION, EVENT_ROUTE_34_HIDDEN_SUPER_POTION
-
-.PersonEvents: db 14
-	person_event SPRITE_RICH_BOY, 20, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Route34RichBoyIrvingScript, -1
-	person_event SPRITE_GRAMPS, 15, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, DayCareManScript_Outside, EVENT_DAYCARE_MAN_ON_ROUTE_34
-	person_event SPRITE_GOLDENROD_LYRA, 12, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LYRA_ROUTE_34
-	person_event SPRITE_YOUNGSTER, 7, 13, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 5, TrainerCamperTodd1, -1
-	person_event SPRITE_BREEDER, 32, 15, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerBreederJulie, -1
-	person_event SPRITE_LASS, 26, 10, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerPicnickerGina1, -1
-	person_event SPRITE_OFFICER_F, 10, 6, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, OfficerfMaraScript, -1
-	person_event SPRITE_POKEFAN_M, 28, 18, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerPokefanmBrandon, -1
-	person_event SPRITE_DAYCARE_MON_1, 18, 14, SPRITEMOVEDATA_POKEMON, 2, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, DaycareMon1Script, EVENT_DAYCARE_MON_1
-	person_event SPRITE_DAYCARE_MON_2, 19, 17, SPRITEMOVEDATA_POKEMON, 2, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, DaycareMon2Script, EVENT_DAYCARE_MON_2
-	person_event SPRITE_COOLTRAINER_F, 48, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 5, TrainerCooltrainerfIrene, -1
-	person_event SPRITE_COOLTRAINER_F, 48, 3, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerCooltrainerfJenn, -1
-	person_event SPRITE_COOLTRAINER_F, 51, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerCooltrainerfKate, -1
-	itemball_event 30, 7, NUGGET, 1, EVENT_ROUTE_34_NUGGET
-
-const_value set 1
+	const_def 1 ; object constants
 	const ROUTE34_RICH_BOY
 	const ROUTE34_GRAMPS
 	const ROUTE34_LYRA
@@ -205,7 +202,7 @@ DaycareMon2Script:
 	endtext
 
 TrainerCamperTodd1:
-	trainer EVENT_BEAT_CAMPER_TODD, CAMPER, TODD1, CamperTodd1SeenText, CamperTodd1BeatenText, 0, .Script
+	trainer CAMPER, TODD1, EVENT_BEAT_CAMPER_TODD, CamperTodd1SeenText, CamperTodd1BeatenText, 0, .Script
 
 .Script:
 	writecode VAR_CALLERID, PHONE_CAMPER_TODD
@@ -213,7 +210,7 @@ TrainerCamperTodd1:
 	checkflag ENGINE_TODD
 	iftrue .Rematch
 	checkflag ENGINE_GOLDENROD_DEPT_STORE_SALE_IS_ON
-	iftrue .SaleIsOn
+	iftrue_jumpopenedtext CamperToddSaleText
 	checkcellnum PHONE_CAMPER_TODD
 	iftrue .NumberAccepted
 	checkevent EVENT_TODD_ASKED_FOR_PHONE_NUMBER
@@ -221,21 +218,21 @@ TrainerCamperTodd1:
 	writetext CamperTodd1AfterText
 	buttonsound
 	setevent EVENT_TODD_ASKED_FOR_PHONE_NUMBER
-	scall .AskNumber
+	callstd asknumber1m
 	jump .FinishAsk
 
 .AskAgain:
-	scall .AskNumber2
+	callstd asknumber2m
 .FinishAsk:
 	askforphonenumber PHONE_CAMPER_TODD
 	if_equal $1, .PhoneFull
 	if_equal $2, .NumberDeclined
 	trainertotext CAMPER, TODD1, $0
-	scall .RegisteredNumber
-	jump .NumberAccepted
+	callstd registerednumberm
+	jumpstd numberacceptedm
 
 .Rematch:
-	scall .RematchStd
+	callstd rematchm
 	winlosstext CamperTodd1BeatenText, 0
 	copybytetovar wToddFightCount
 	if_equal 4, .Fight4
@@ -294,43 +291,20 @@ TrainerCamperTodd1:
 	clearflag ENGINE_TODD
 	end
 
-.SaleIsOn:
-	jumpopenedtext CamperToddSaleText
-
-.AskNumber:
-	jumpstd asknumber1m
-	end
-
-.AskNumber2:
-	jumpstd asknumber2m
-	end
-
-.RegisteredNumber:
-	jumpstd registerednumberm
-	end
-
 .NumberAccepted:
 	jumpstd numberacceptedm
-	end
 
 .NumberDeclined:
 	jumpstd numberdeclinedm
-	end
 
 .PhoneFull:
 	jumpstd phonefullm
-	end
-
-.RematchStd:
-	jumpstd rematchm
-	end
 
 TrainerPicnickerGina1:
-	trainer EVENT_BEAT_PICNICKER_GINA, PICNICKER, GINA1, PicnickerGina1SeenText, PicnickerGina1BeatenText, 0, .Script
+	trainer PICNICKER, GINA1, EVENT_BEAT_PICNICKER_GINA, PicnickerGina1SeenText, PicnickerGina1BeatenText, 0, .Script
 
 .Script:
 	writecode VAR_CALLERID, PHONE_PICNICKER_GINA
-	end_if_just_battled
 	opentext
 	checkflag ENGINE_GINA
 	iftrue .Rematch
@@ -343,21 +317,21 @@ TrainerPicnickerGina1:
 	writetext PicnickerGina1AfterText
 	buttonsound
 	setevent EVENT_GINA_ASKED_FOR_PHONE_NUMBER
-	scall .AskNumber1
+	callstd asknumber1f
 	jump .FinishAsk
 
 .AskAgain:
-	scall .AskNumber2
+	callstd asknumber2f
 .FinishAsk:
 	askforphonenumber PHONE_PICNICKER_GINA
 	if_equal $1, .PhoneFull
 	if_equal $2, .NumberDeclined
 	trainertotext PICNICKER, GINA1, $0
-	scall .RegisteredNumber
-	jump .NumberAccepted
+	callstd registerednumberf
+	jumpstd numberacceptedf
 
 .Rematch:
-	scall .RematchStd
+	callstd rematchf
 	winlosstext PicnickerGina1BeatenText, 0
 	copybytetovar wGinaFightCount
 	if_equal 4, .Fight4
@@ -417,59 +391,32 @@ TrainerPicnickerGina1:
 	end
 
 .LeafStone:
-	scall .Gift
+	callstd giftf
 	verbosegiveitem LEAF_STONE
 	iffalse .BagFull
 	clearflag ENGINE_GINA_HAS_LEAF_STONE
 	setevent EVENT_GINA_GAVE_LEAF_STONE
-	jump .NumberAccepted
+	jumpstd numberacceptedf
 
 .BagFull:
-	jump .PackFull
-
-.AskNumber1:
-	jumpstd asknumber1f
-	end
-
-.AskNumber2:
-	jumpstd asknumber2f
-	end
-
-.RegisteredNumber:
-	jumpstd registerednumberf
-	end
+	jumpstd packfullf
 
 .NumberAccepted:
 	jumpstd numberacceptedf
-	end
 
 .NumberDeclined:
 	jumpstd numberdeclinedf
-	end
 
 .PhoneFull:
 	jumpstd phonefullf
-	end
-
-.RematchStd:
-	jumpstd rematchf
-	end
-
-.Gift:
-	jumpstd giftf
-	end
-
-.PackFull:
-	jumpstd packfullf
-	end
 
 OfficerfMaraScript:
+	checknite
+	iffalse_jumptextfaceplayer OfficerfMaraDaytimeText
+	checkevent EVENT_BEAT_OFFICERF_MARA
+	iftrue_jumptextfaceplayer OfficerfMaraAfterText
 	faceplayer
 	opentext
-	checknite
-	iffalse .NoFight
-	checkevent EVENT_BEAT_OFFICERF_MARA
-	iftrue .AfterScript
 	special SaveMusic
 	playmusic MUSIC_OFFICER_ENCOUNTER
 	writetext OfficerfMaraSeenText
@@ -482,14 +429,8 @@ OfficerfMaraScript:
 	setevent EVENT_BEAT_OFFICERF_MARA
 	endtext
 
-.AfterScript:
-	jumpopenedtext OfficerfMaraAfterText
-
-.NoFight:
-	jumpopenedtext OfficerfMaraDaytimeText
-
 TrainerBreederJulie:
-	trainer EVENT_BEAT_BREEDER_JULIE, BREEDER, JULIE, BreederJulieSeenText, BreederJulieBeatenText, 0, .Script
+	trainer BREEDER, JULIE, EVENT_BEAT_BREEDER_JULIE, BreederJulieSeenText, BreederJulieBeatenText, 0, .Script
 
 .Script:
 	setevent EVENT_BEAT_BREEDER_JULIE_ONCE
@@ -598,57 +539,70 @@ Route34RichBoyIrvingScript:
 	cont "battle."
 	done
 
-TrainerPokefanmBrandon:
-	trainer EVENT_BEAT_POKEFANM_BRANDON, POKEFANM, BRANDON, PokefanmBrandonSeenText, PokefanmBrandonBeatenText, 0, .Script
+GenericTrainerPokefanmBrandon:
+	generictrainer POKEFANM, BRANDON, EVENT_BEAT_POKEFANM_BRANDON, PokefanmBrandonSeenText, PokefanmBrandonBeatenText
 
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer PokefanmBrandonAfterText
+	text "My #mon knew"
+	line "moves I didn't"
+	cont "know it had."
+
+	para "That confounded me"
+	line "to no end!"
+	done
 
 TrainerCooltrainerfIrene:
-	trainer EVENT_BEAT_COOLTRAINERF_IRENE, COOLTRAINERF, IRENE, CooltrainerfIreneSeenText, CooltrainerfIreneBeatenText, 0, .Script
+	trainer COOLTRAINERF, IRENE, EVENT_BEAT_COOLTRAINERF_IRENE, CooltrainerfIreneSeenText, CooltrainerfIreneBeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
-	opentext
 	checkevent EVENT_GOT_POWER_HERB_FROM_KATE
-	iftrue .GotPowerHerb
-	jumpopenedtext CooltrainerfIreneAfterText1
+	iftrue_jumptext CooltrainerfIreneAfterText2
+	thistext
 
-.GotPowerHerb:
-	jumpopenedtext CooltrainerfIreneAfterText2
+	text "Irene: My sister"
+	line "Kate will get you"
+	cont "for this!"
+	done
 
 TrainerCooltrainerfJenn:
-	trainer EVENT_BEAT_COOLTRAINERF_JENN, COOLTRAINERF, JENN, CooltrainerfJennSeenText, CooltrainerfJennBeatenText, 0, .Script
+	trainer COOLTRAINERF, JENN, EVENT_BEAT_COOLTRAINERF_JENN, CooltrainerfJennSeenText, CooltrainerfJennBeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
-	opentext
 	checkevent EVENT_GOT_POWER_HERB_FROM_KATE
-	iftrue .GotPowerHerb
-	jumpopenedtext CooltrainerfJennAfterText1
+	iftrue_jumptext CooltrainerfJennAfterText2
+	thistext
 
-.GotPowerHerb:
-	jumpopenedtext CooltrainerfJennAfterText2
+	text "Jenn: Don't get"
+	line "cocky! My sister"
+	cont "Kate is tough!"
+	done
 
 TrainerCooltrainerfKate:
-	trainer EVENT_BEAT_COOLTRAINERF_KATE, COOLTRAINERF, KATE, CooltrainerfKateSeenText, CooltrainerfKateBeatenText, 0, .Script
+	trainer COOLTRAINERF, KATE, EVENT_BEAT_COOLTRAINERF_KATE, CooltrainerfKateSeenText, CooltrainerfKateBeatenText, 0, .Script
 
 .Script:
 	end_if_just_battled
-	opentext
 	checkevent EVENT_GOT_POWER_HERB_FROM_KATE
-	iftrue .GotPowerHerb
+	iftrue_jumptext CooltrainerfKateAfterText
+	opentext
 	writetext CooltrainerfKateOfferPowerHerbText
 	buttonsound
 	verbosegiveitem POWER_HERB
-	iffalse .BagFull
+	iffalse_endtext
 	setevent EVENT_GOT_POWER_HERB_FROM_KATE
-.GotPowerHerb:
-	writetext CooltrainerfKateAfterText
-	waitbutton
-.BagFull:
-	endtext
+	thisopenedtext
+
+CooltrainerfKateAfterText:
+	text "Kate: I'm sorry we"
+	line "jumped you."
+
+	para "We never expected"
+	line "anyone to find us"
+
+	para "here. You sure"
+	line "startled us."
+	done
 
 Route34MovementData_DayCareManWalksBackInside_WalkAroundPlayer:
 	slow_step_up
@@ -840,15 +794,6 @@ PokefanmBrandonBeatenText:
 	line "this way?"
 	done
 
-PokefanmBrandonAfterText:
-	text "My #mon knew"
-	line "moves I didn't"
-	cont "know it had."
-
-	para "That confounded me"
-	line "to no end!"
-	done
-
 CooltrainerfIreneSeenText:
 	text "Irene: Kyaaah!"
 	line "Someone found us!"
@@ -857,12 +802,6 @@ CooltrainerfIreneSeenText:
 CooltrainerfIreneBeatenText:
 	text "Irene: Ohhh!"
 	line "Too strong!"
-	done
-
-CooltrainerfIreneAfterText1:
-	text "Irene: My sister"
-	line "Kate will get you"
-	cont "for this!"
 	done
 
 CooltrainerfIreneAfterText2:
@@ -882,12 +821,6 @@ CooltrainerfJennSeenText:
 CooltrainerfJennBeatenText:
 	text "Jenn: So sorry,"
 	line "Kate! Sis!"
-	done
-
-CooltrainerfJennAfterText1:
-	text "Jenn: Don't get"
-	line "cocky! My sister"
-	cont "Kate is tough!"
 	done
 
 CooltrainerfJennAfterText2:
@@ -914,17 +847,6 @@ CooltrainerfKateOfferPowerHerbText:
 
 	para "Here. You deserve"
 	line "this."
-	done
-
-CooltrainerfKateAfterText:
-	text "Kate: I'm sorry we"
-	line "jumped you."
-
-	para "We never expected"
-	line "anyone to find us"
-
-	para "here. You sure"
-	line "startled us."
 	done
 
 Route34SignText:

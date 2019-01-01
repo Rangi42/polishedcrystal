@@ -1,24 +1,21 @@
 TinTower9F_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 7 ; warp events
+	warp_event 10,  3, TIN_TOWER_8F, 2
+	warp_event  0,  5, TIN_TOWER_8F, 3
+	warp_event 10,  7, TIN_TOWER_8F, 4
+	warp_event  5,  9, TIN_TOWER_10F, 1
+	warp_event 14,  7, TIN_TOWER_7F, 5
+	warp_event  4, 13, TIN_TOWER_8F, 5
+	warp_event  6, 13, TIN_TOWER_8F, 6
 
-TinTower9F_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 7
-	warp_def 3, 10, 2, TIN_TOWER_8F
-	warp_def 5, 0, 3, TIN_TOWER_8F
-	warp_def 7, 10, 4, TIN_TOWER_8F
-	warp_def 9, 5, 1, TIN_TOWER_10F
-	warp_def 7, 14, 5, TIN_TOWER_7F
-	warp_def 13, 4, 5, TIN_TOWER_8F
-	warp_def 13, 6, 6, TIN_TOWER_8F
+	db 0 ; bg events
 
-.XYTriggers: db 0
-
-.Signposts: db 0
-
-.PersonEvents: db 1
-	itemball_event 1, 7, HP_UP, 1, EVENT_TIN_TOWER_9F_HP_UP
+	db 1 ; object events
+	itemball_event  7,  1, HP_UP, 1, EVENT_TIN_TOWER_9F_HP_UP
 

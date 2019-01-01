@@ -1,25 +1,22 @@
 BeautifulBeachVilla_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 2 ; warp events
+	warp_event  2,  7, BEAUTIFUL_BEACH, 3
+	warp_event  3,  7, BEAUTIFUL_BEACH, 3
 
-BeautifulBeachVilla_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 2
-	warp_def 7, 2, 3, BEAUTIFUL_BEACH
-	warp_def 7, 3, 3, BEAUTIFUL_BEACH
+	db 0 ; bg events
 
-.XYTriggers: db 0
-
-.Signposts: db 0
-
-.PersonEvents: db 0
-	person_event SPRITE_DARACH, 4, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, (1 << MORN) | (1 << DAY), 0, PERSONTYPE_COMMAND, jumptextfaceplayer, DarachMornDayText, -1
-	person_event SPRITE_DARACH, 4, 10, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, (1 << NITE), 0, PERSONTYPE_COMMAND, jumptextfaceplayer, DarachNiteText, -1
-	person_event SPRITE_CAITLIN, 4, 1, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, (1 << MORN) | (1 << DAY), 0, PERSONTYPE_COMMAND, jumptextfaceplayer, CaitlinMornDayText, -1
-	person_event SPRITE_WEIRD_TREE, 2, 9, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, (1 << NITE), (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, CaitlinNiteScript, -1
-	person_event SPRITE_BOOK_PAPER_POKEDEX, 4, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, (1 << NITE), 0, PERSONTYPE_COMMAND, jumptext, DarachsBookText, -1
+	db 0 ; object events
+	object_event  5,  4, SPRITE_DARACH, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, (1 << MORN) | (1 << DAY), 0, PERSONTYPE_COMMAND, jumptextfaceplayer, DarachMornDayText, -1
+	object_event 10,  4, SPRITE_DARACH, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, (1 << NITE), 0, PERSONTYPE_COMMAND, jumptextfaceplayer, DarachNiteText, -1
+	object_event  1,  4, SPRITE_CAITLIN, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, (1 << MORN) | (1 << DAY), 0, PERSONTYPE_COMMAND, jumptextfaceplayer, CaitlinMornDayText, -1
+	object_event  9,  2, SPRITE_WEIRD_TREE, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, (1 << NITE), PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, CaitlinNiteScript, -1
+	object_event 11,  4, SPRITE_BOOK_PAPER_POKEDEX, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, (1 << NITE), 0, PERSONTYPE_COMMAND, jumptext, DarachsBookText, -1
 
 DarachMornDayText:
 	text "TODO"

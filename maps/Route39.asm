@@ -1,43 +1,40 @@
 Route39_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 2 ; warp events
+	warp_event  1,  3, ROUTE_39_BARN, 1
+	warp_event  5,  3, ROUTE_39_FARMHOUSE, 1
 
-Route39_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 2
-	warp_def 3, 1, 1, ROUTE_39_BARN
-	warp_def 3, 5, 1, ROUTE_39_FARMHOUSE
+	db 4 ; bg events
+	bg_event  5, 31, SIGNPOST_JUMPTEXT, Route39TrainerTipsText
+	bg_event  9,  5, SIGNPOST_JUMPTEXT, MoomooFarmSignText
+	bg_event 15,  7, SIGNPOST_JUMPTEXT, Route39SignText
+	bg_event  5, 13, SIGNPOST_ITEM + NUGGET, EVENT_ROUTE_39_HIDDEN_NUGGET
 
-.XYTriggers: db 0
+	db 13 ; object events
+	object_event  7, 14, SPRITE_OLIVINE_RIVAL, SPRITEMOVEDATA_WANDER, 1, 2, -1, -1, PAL_NPC_BROWN, PERSONTYPE_SCRIPT, 0, Route39CowgirlAnnieScript, -1
+	object_event 13, 29, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_GENERICTRAINER, 5, GenericTrainerSailorEugene, -1
+	object_event 10, 22, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_TRAINER, 4, TrainerPokefanmDerek1, -1
+	object_event 11, 19, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerPokefanfRuth, -1
+	object_event  3, 12, SPRITE_MILTANK, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_POKEMON, MILTANK, Route39MiltankText, -1
+	object_event  6, 11, SPRITE_MILTANK, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_POKEMON, MILTANK, Route39MiltankText, -1
+	object_event  4, 15, SPRITE_MILTANK, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_POKEMON, MILTANK, Route39MiltankText, -1
+	object_event  8, 13, SPRITE_MILTANK, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_POKEMON, MILTANK, Route39MiltankText, -1
+	object_event 13,  7, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_PURPLE, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerPsychicNorman, -1
+	fruittree_event  9,  3, FRUITTREE_ROUTE_39, CHESTO_BERRY
+	object_event  4, 22, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, PokefanFScript_0x1a5bbe, -1
+	object_event  4, 30, SPRITE_BEAUTY, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, Route39BeautyText, -1
+	tmhmball_event  1,  7, TM_BULLDOZE, EVENT_ROUTE_39_TM_BULLDOZE
 
-.Signposts: db 4
-	signpost 31, 5, SIGNPOST_JUMPTEXT, Route39TrainerTipsText
-	signpost 5, 9, SIGNPOST_JUMPTEXT, MoomooFarmSignText
-	signpost 7, 15, SIGNPOST_JUMPTEXT, Route39SignText
-	signpost 13, 5, SIGNPOST_ITEM + NUGGET, EVENT_ROUTE_39_HIDDEN_NUGGET
-
-.PersonEvents: db 13
-	person_event SPRITE_OLIVINE_RIVAL, 14, 7, SPRITEMOVEDATA_WANDER, 1, 2, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, Route39CowgirlAnnieScript, -1
-	person_event SPRITE_SAILOR, 29, 13, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 5, TrainerSailorEugene, -1
-	person_event SPRITE_POKEFAN_M, 22, 10, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerPokefanmDerek1, -1
-	person_event SPRITE_POKEFAN_F, 19, 11, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerPokefanfRuth, -1
-	person_event SPRITE_MILTANK, 12, 3, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_POKEMON, MILTANK, Route39MiltankText, -1
-	person_event SPRITE_MILTANK, 11, 6, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_POKEMON, MILTANK, Route39MiltankText, -1
-	person_event SPRITE_MILTANK, 15, 4, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_POKEMON, MILTANK, Route39MiltankText, -1
-	person_event SPRITE_MILTANK, 13, 8, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_POKEMON, MILTANK, Route39MiltankText, -1
-	person_event SPRITE_YOUNGSTER, 7, 13, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 1, TrainerPsychicNorman, -1
-	fruittree_event 3, 9, FRUITTREE_ROUTE_39, CHESTO_BERRY
-	person_event SPRITE_POKEFAN_F, 22, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, PokefanFScript_0x1a5bbe, -1
-	person_event SPRITE_BEAUTY, 30, 4, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, Route39BeautyText, -1
-	tmhmball_event 7, 1, TM_BULLDOZE, EVENT_ROUTE_39_TM_BULLDOZE
-
-const_value set 1
+	const_def 1 ; object constants
 	const ROUTE39_COWGIRL
 
 TrainerPokefanmDerek1:
-	trainer EVENT_BEAT_POKEFANM_DEREK, POKEFANM, DEREK1, PokefanmDerek1SeenText, PokefanmDerek1BeatenText, 0, PokefanmDerek1Script
+	trainer POKEFANM, DEREK1, EVENT_BEAT_POKEFANM_DEREK, PokefanmDerek1SeenText, PokefanmDerek1BeatenText, 0, PokefanmDerek1Script
 
 PokefanmDerek1Script:
 	writecode VAR_CALLERID, PHONE_POKEFANM_DEREK
@@ -81,42 +78,37 @@ UnknownScript_0x1a5b5c:
 
 UnknownScript_0x1a5b62:
 	jumpstd asknumber1m
-	end
 
 UnknownScript_0x1a5b66:
 	jumpstd asknumber2m
-	end
 
 UnknownScript_0x1a5b6a:
 	jumpstd registerednumberm
-	end
 
 UnknownScript_0x1a5b6e:
 	jumpstd numberacceptedm
-	end
 
 UnknownScript_0x1a5b72:
 	jumpstd numberdeclinedm
-	end
 
 UnknownScript_0x1a5b76:
 	jumpstd phonefullm
-	end
 
 UnknownScript_0x1a5b7a:
 	jumpstd giftm
-	end
 
 UnknownScript_0x1a5b7e:
 	jumpstd packfullm
-	end
 
-TrainerPokefanfRuth:
-	trainer EVENT_BEAT_POKEFANF_RUTH, POKEFANF, RUTH, PokefanfRuthSeenText, PokefanfRuthBeatenText, 0, PokefanfRuthScript
+GenericTrainerPokefanfRuth:
+	generictrainer POKEFANF, RUTH, EVENT_BEAT_POKEFANF_RUTH, PokefanfRuthSeenText, PokefanfRuthBeatenText
 
-PokefanfRuthScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x1a5db2
+	text "Do you know about"
+	line "baby #mon?"
+
+	para "I bet they're just"
+	line "adorable!"
+	done
 
 Route39CowgirlAnnieScript:
 	checkevent EVENT_GOT_PP_MAX_FROM_ROUTE_39_LEADER
@@ -235,19 +227,30 @@ Route39CowgirlAnnieScript:
 	line "ya!"
 	done
 
-TrainerSailorEugene:
-	trainer EVENT_BEAT_SAILOR_EUGENE, SAILOR, EUGENE, SailorEugeneSeenText, SailorEugeneBeatenText, 0, SailorEugeneScript
+GenericTrainerSailorEugene:
+	generictrainer SAILOR, EUGENE, EVENT_BEAT_SAILOR_EUGENE, SailorEugeneSeenText, SailorEugeneBeatenText
 
-SailorEugeneScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x1a5c4d
+	text "My #mon were"
+	line "caught and raised"
+	cont "overseas."
 
-TrainerPsychicNorman:
-	trainer EVENT_BEAT_PSYCHIC_NORMAN, PSYCHIC_T, NORMAN, PsychicNormanSeenText, PsychicNormanBeatenText, 0, PsychicNormanScript
+	para "They're my compan-"
+	line "ions on those long"
+	cont "voyages."
+	done
 
-PsychicNormanScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x1a5e57
+GenericTrainerPsychicNorman:
+	generictrainer PSYCHIC_T, NORMAN, EVENT_BEAT_PSYCHIC_NORMAN, PsychicNormanSeenText, PsychicNormanBeatenText
+
+	text "You know how #-"
+	line "mon have different"
+	cont "abilities?"
+
+	para "People are like"
+	line "that too. Every-"
+	cont "one has different"
+	cont "potential."
+	done
 
 PokefanFScript_0x1a5bbe:
 	faceplayer
@@ -288,16 +291,6 @@ SailorEugeneBeatenText:
 	text "Awaaargh!"
 	done
 
-UnknownText_0x1a5c4d:
-	text "My #mon were"
-	line "caught and raised"
-	cont "overseas."
-
-	para "They're my compan-"
-	line "ions on those long"
-	cont "voyages."
-	done
-
 PokefanmDerek1SeenText:
 	text "This is a good"
 	line "time to brag about"
@@ -334,14 +327,6 @@ PokefanfRuthBeatenText:
 	line "losing."
 	done
 
-UnknownText_0x1a5db2:
-	text "Do you know about"
-	line "baby #mon?"
-
-	para "I bet they're just"
-	line "adorable!"
-	done
-
 UnknownText_0x1a5dec:
 	text "Pikachu is it!"
 	line "Don't you agree?"
@@ -356,17 +341,6 @@ PsychicNormanSeenText:
 PsychicNormanBeatenText:
 	text "Ooh, your #mon"
 	line "have potential."
-	done
-
-UnknownText_0x1a5e57:
-	text "You know how #-"
-	line "mon have different"
-	cont "abilities?"
-
-	para "People are like"
-	line "that too. Every-"
-	cont "one has different"
-	cont "potential."
 	done
 
 UnknownText_0x1a5ec4:

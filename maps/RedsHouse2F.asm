@@ -1,23 +1,20 @@
 RedsHouse2F_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 1 ; warp events
+	warp_event  7,  0, REDS_HOUSE_1F, 3
 
-RedsHouse2F_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 1
-	warp_def 0, 7, 3, REDS_HOUSE_1F
+	db 4 ; bg events
+	bg_event  0,  1, SIGNPOST_JUMPTEXT, RedsHouse2FPCText
+	bg_event  3,  5, SIGNPOST_JUMPTEXT, RedsHouse2FSNESText
+	bg_event  4,  1, SIGNPOST_READ, PokemonJournalProfOakScript
+	bg_event  5,  1, SIGNPOST_READ, PokemonJournalProfOakScript
 
-.XYTriggers: db 0
-
-.Signposts: db 4
-	signpost 1, 0, SIGNPOST_JUMPTEXT, RedsHouse2FPCText
-	signpost 5, 3, SIGNPOST_JUMPTEXT, RedsHouse2FSNESText
-	signpost 1, 4, SIGNPOST_READ, PokemonJournalProfOakScript
-	signpost 1, 5, SIGNPOST_READ, PokemonJournalProfOakScript
-
-.PersonEvents: db 0
+	db 0 ; object events
 
 PokemonJournalProfOakScript:
 	setflag ENGINE_READ_PROF_OAK_JOURNAL

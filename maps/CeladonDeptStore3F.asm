@@ -1,35 +1,32 @@
 CeladonDeptStore3F_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 3 ; warp events
+	warp_event 12,  0, CELADON_DEPT_STORE_2F, 1
+	warp_event 15,  0, CELADON_DEPT_STORE_4F, 2
+	warp_event  2,  0, CELADON_DEPT_STORE_ELEVATOR, 1
 
-CeladonDeptStore3F_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 3
-	warp_def 0, 12, 1, CELADON_DEPT_STORE_2F
-	warp_def 0, 15, 2, CELADON_DEPT_STORE_4F
-	warp_def 0, 2, 1, CELADON_DEPT_STORE_ELEVATOR
+	db 5 ; bg events
+	bg_event 14,  0, SIGNPOST_JUMPTEXT, CeladonDeptStore3FDirectoryText
+	bg_event  2,  3, SIGNPOST_JUMPTEXT, CeladonDeptStore3FRPGText
+	bg_event  5,  3, SIGNPOST_JUMPTEXT, CeladonDeptStore3FSportsGameText
+	bg_event  2,  5, SIGNPOST_JUMPTEXT, CeladonDeptStore3FPuzzleGameText
+	bg_event  5,  5, SIGNPOST_JUMPTEXT, CeladonDeptStore3FFightingGameText
 
-.XYTriggers: db 0
-
-.Signposts: db 5
-	signpost 0, 14, SIGNPOST_JUMPTEXT, CeladonDeptStore3FDirectoryText
-	signpost 3, 2, SIGNPOST_JUMPTEXT, CeladonDeptStore3FRPGText
-	signpost 3, 5, SIGNPOST_JUMPTEXT, CeladonDeptStore3FSportsGameText
-	signpost 5, 2, SIGNPOST_JUMPTEXT, CeladonDeptStore3FPuzzleGameText
-	signpost 5, 5, SIGNPOST_JUMPTEXT, CeladonDeptStore3FFightingGameText
-
-.PersonEvents: db 9
-	person_event SPRITE_CLERK, 1, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, pokemart, MARTTYPE_TM, MART_CELADON_3F_TM, -1
-	person_event SPRITE_CLERK, 1, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonDeptStore3FClerk2Script, -1
-	person_event SPRITE_YOUNGSTER, 5, 7, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x70d53, -1
-	person_event SPRITE_SUPER_NERD, 4, 13, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x70e61, -1
-	person_event SPRITE_CLERK, 4, 0, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, VideoGameClerkText, -1
-	person_event SPRITE_SNES, 3, 1, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CeladonDeptStore3FSnesScript, -1
-	person_event SPRITE_N64, 5, 1, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CeladonDeptStore3FN64Script, -1
-	person_event SPRITE_GAMECUBE, 3, 4, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CeladonDeptStore3FGameCubeScript, -1
-	person_event SPRITE_WII, 5, 4, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CeladonDeptStore3FWiiScript, -1
+	db 9 ; object events
+	object_event  9,  1, SPRITE_CLERK, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, pokemart, MARTTYPE_TM, MART_CELADON_3F_TM, -1
+	object_event  8,  1, SPRITE_CLERK, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, CeladonDeptStore3FClerk2Script, -1
+	object_event  7,  5, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x70d53, -1
+	object_event 13,  4, SPRITE_SUPER_NERD, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x70e61, -1
+	object_event  0,  4, SPRITE_CLERK, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, VideoGameClerkText, -1
+	object_event  1,  3, SPRITE_SNES, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CeladonDeptStore3FSnesScript, -1
+	object_event  1,  5, SPRITE_N64, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CeladonDeptStore3FN64Script, -1
+	object_event  4,  3, SPRITE_GAMECUBE, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CeladonDeptStore3FGameCubeScript, -1
+	object_event  4,  5, SPRITE_WII, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CeladonDeptStore3FWiiScript, -1
 
 CeladonDeptStore3FClerk2Script:
 	faceplayer

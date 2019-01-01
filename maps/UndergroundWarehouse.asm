@@ -1,29 +1,26 @@
 UndergroundWarehouse_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 1 ; callbacks
+	callback MAPCALLBACK_NEWMAP, UndergroundWarehouseResetSwitches
 
-.MapCallbacks: db 1
-	dbw MAPCALLBACK_NEWMAP, UndergroundWarehouseResetSwitches
+	db 3 ; warp events
+	warp_event  2, 12, UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES, 2
+	warp_event  3, 12, UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES, 3
+	warp_event 17,  2, GOLDENROD_DEPT_STORE_B1F, 1
 
-UndergroundWarehouse_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 3
-	warp_def 12, 2, 2, UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES
-	warp_def 12, 3, 3, UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES
-	warp_def 2, 17, 1, GOLDENROD_DEPT_STORE_B1F
+	db 0 ; bg events
 
-.XYTriggers: db 0
-
-.Signposts: db 0
-
-.PersonEvents: db 7
-	person_event SPRITE_ROCKET, 8, 9, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerGruntM24, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
-	person_event SPRITE_ROCKET, 15, 8, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerGruntM14, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
-	person_event SPRITE_ROCKET, 3, 14, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 4, TrainerGruntM15, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
-	person_event SPRITE_GENTLEMAN, 8, 12, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GentlemanScript_0x7d9bf, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
-	itemball_event 15, 18, MAX_ETHER, 1, EVENT_UNDERGROUND_WAREHOUSE_MAX_ETHER
-	tmhmball_event 9, 13, TM_X_SCISSOR, EVENT_UNDERGROUND_WAREHOUSE_TM_X_SCISSOR
-	itemball_event 1, 2, ULTRA_BALL, 1, EVENT_UNDERGROUND_WAREHOUSE_ULTRA_BALL
+	db 7 ; object events
+	object_event  9,  8, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerGruntM24, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
+	object_event  8, 15, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerGruntM14, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
+	object_event 14,  3, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerGruntM15, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
+	object_event 12,  8, SPRITE_GENTLEMAN, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GentlemanScript_0x7d9bf, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
+	itemball_event 18, 15, MAX_ETHER, 1, EVENT_UNDERGROUND_WAREHOUSE_MAX_ETHER
+	tmhmball_event 13,  9, TM_X_SCISSOR, EVENT_UNDERGROUND_WAREHOUSE_TM_X_SCISSOR
+	itemball_event  2,  1, ULTRA_BALL, 1, EVENT_UNDERGROUND_WAREHOUSE_ULTRA_BALL
 
 UndergroundWarehouseResetSwitches:
 	clearevent EVENT_SWITCH_1
@@ -45,26 +42,34 @@ UndergroundWarehouseResetSwitches:
 	copyvartobyte wUndergroundSwitchPositions
 	return
 
-TrainerGruntM24:
-	trainer EVENT_BEAT_ROCKET_GRUNTM_24, GRUNTM, 24, GruntM24SeenText, GruntM24BeatenText, 0, GruntM24Script
+GenericTrainerGruntM24:
+	generictrainer GRUNTM, 24, EVENT_BEAT_ROCKET_GRUNTM_24, GruntM24SeenText, GruntM24BeatenText
 
-GruntM24Script:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x7da48
+	text "Team Rocket will"
+	line "keep going, wait-"
+	cont "ing for the return"
+	cont "of Giovanni."
 
-TrainerGruntM14:
-	trainer EVENT_BEAT_ROCKET_GRUNTM_14, GRUNTM, 14, GruntM14SeenText, GruntM14BeatenText, 0, GruntM14Script
+	para "We'll do whatever"
+	line "it takes."
+	done
 
-GruntM14Script:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x7db01
+GenericTrainerGruntM14:
+	generictrainer GRUNTM, 14, EVENT_BEAT_ROCKET_GRUNTM_14, GruntM14SeenText, GruntM14BeatenText
 
-TrainerGruntM15:
-	trainer EVENT_BEAT_ROCKET_GRUNTM_15, GRUNTM, 15, GruntM15SeenText, GruntM15BeatenText, 0, GruntM15Script
+	text "I lost…"
 
-GruntM15Script:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x7db8e
+	para "Please forgive me,"
+	line "Giovanni!"
+	done
+
+GenericTrainerGruntM15:
+	generictrainer GRUNTM, 15, EVENT_BEAT_ROCKET_GRUNTM_15, GruntM15SeenText, GruntM15BeatenText
+
+	text "Hyuck-hyuck-hyuck!"
+	line "That was a blast!"
+	cont "I'll remember you!"
+	done
 
 GentlemanScript_0x7d9bf:
 	checkevent EVENT_RECEIVED_CARD_KEY
@@ -95,16 +100,6 @@ GruntM24BeatenText:
 	text "I got disposed of…"
 	done
 
-UnknownText_0x7da48:
-	text "Team Rocket will"
-	line "keep going, wait-"
-	cont "ing for the return"
-	cont "of Giovanni."
-
-	para "We'll do whatever"
-	line "it takes."
-	done
-
 GruntM14SeenText:
 	text "You're not going"
 	line "any farther!"
@@ -118,13 +113,6 @@ GruntM14BeatenText:
 	text "Blast it!"
 	done
 
-UnknownText_0x7db01:
-	text "I lost…"
-
-	para "Please forgive me,"
-	line "Giovanni!"
-	done
-
 GruntM15SeenText:
 	text "Hyuck-hyuck-hyuck!"
 	line "I remember you!"
@@ -136,12 +124,6 @@ GruntM15SeenText:
 GruntM15BeatenText:
 	text "Hyuck-hyuck-hyuck!"
 	line "So, that's how?"
-	done
-
-UnknownText_0x7db8e:
-	text "Hyuck-hyuck-hyuck!"
-	line "That was a blast!"
-	cont "I'll remember you!"
 	done
 
 UnknownText_0x7dbc6:

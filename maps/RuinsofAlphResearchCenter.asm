@@ -1,32 +1,29 @@
 RuinsofAlphResearchCenter_MapScriptHeader:
+	db 2 ; scene scripts
+	scene_script RuinsofAlphResearchCenterTrigger0
+	scene_script RuinsofAlphResearchCenterTrigger1
 
-.MapTriggers: db 2
-	dw RuinsofAlphResearchCenterTrigger0
-	dw RuinsofAlphResearchCenterTrigger1
+	db 1 ; callbacks
+	callback MAPCALLBACK_OBJECTS, UnknownScript_0x59185
 
-.MapCallbacks: db 1
-	dbw MAPCALLBACK_OBJECTS, UnknownScript_0x59185
+	db 2 ; warp events
+	warp_event  2,  7, RUINS_OF_ALPH_OUTSIDE, 6
+	warp_event  3,  7, RUINS_OF_ALPH_OUTSIDE, 6
 
-RuinsofAlphResearchCenter_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 2
-	warp_def 7, 2, 6, RUINS_OF_ALPH_OUTSIDE
-	warp_def 7, 3, 6, RUINS_OF_ALPH_OUTSIDE
+	db 4 ; bg events
+	bg_event  6,  5, SIGNPOST_JUMPTEXT, UnknownText_0x59886
+	bg_event  3,  4, SIGNPOST_READ, MapRuinsofAlphResearchCenterSignpost1Script
+	bg_event  7,  1, SIGNPOST_JUMPTEXT, UnknownText_0x5980e
+	bg_event  5,  0, SIGNPOST_JUMPTEXT, UnknownText_0x59848
 
-.XYTriggers: db 0
+	db 3 ; object events
+	object_event  4,  5, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, ScientistScript_0x591e5, -1
+	object_event  5,  2, SPRITE_SCIENTIST, SPRITEMOVEDATA_WANDER, 1, 2, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, ScientistScript_0x59214, -1
+	object_event  2,  5, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, ScientistScript_0x591d1, EVENT_RUINS_OF_ALPH_RESEARCH_CENTER_SCIENTIST
 
-.Signposts: db 4
-	signpost 5, 6, SIGNPOST_JUMPTEXT, UnknownText_0x59886
-	signpost 4, 3, SIGNPOST_READ, MapRuinsofAlphResearchCenterSignpost1Script
-	signpost 1, 7, SIGNPOST_JUMPTEXT, UnknownText_0x5980e
-	signpost 0, 5, SIGNPOST_JUMPTEXT, UnknownText_0x59848
-
-.PersonEvents: db 3
-	person_event SPRITE_SCIENTIST, 5, 4, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ScientistScript_0x591e5, -1
-	person_event SPRITE_SCIENTIST, 2, 5, SPRITEMOVEDATA_WANDER, 1, 2, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ScientistScript_0x59214, -1
-	person_event SPRITE_SCIENTIST, 5, 2, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ScientistScript_0x591d1, EVENT_RUINS_OF_ALPH_RESEARCH_CENTER_SCIENTIST
-
-const_value set 1
+	const_def 1 ; object constants
 	const RUINSOFALPHRESEARCHCENTER_SCIENTIST1
 	const RUINSOFALPHRESEARCHCENTER_SCIENTIST2
 	const RUINSOFALPHRESEARCHCENTER_SCIENTIST3

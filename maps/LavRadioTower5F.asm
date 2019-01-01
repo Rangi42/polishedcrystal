@@ -1,16 +1,13 @@
 LavRadioTower5F_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 1 ; warp events
+	warp_event  8,  0, LAV_RADIO_TOWER_4F, 2
 
-LavRadioTower5F_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 1
-	warp_def 0, 8, 2, LAV_RADIO_TOWER_4F
+	db 0 ; bg events
 
-.XYTriggers: db 0
-
-.Signposts: db 0
-
-.PersonEvents: db 0
+	db 0 ; object events

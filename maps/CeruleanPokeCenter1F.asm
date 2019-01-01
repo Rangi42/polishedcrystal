@@ -1,25 +1,22 @@
 CeruleanPokeCenter1F_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 3 ; warp events
+	warp_event  5,  7, CERULEAN_CITY, 4
+	warp_event  6,  7, CERULEAN_CITY, 4
+	warp_event  0,  7, POKECENTER_2F, 1
 
-CeruleanPokeCenter1F_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 3
-	warp_def 7, 5, 4, CERULEAN_CITY
-	warp_def 7, 6, 4, CERULEAN_CITY
-	warp_def 7, 0, 1, POKECENTER_2F
+	db 1 ; bg events
+	bg_event 10,  1, SIGNPOST_READ, PokemonJournalMistyScript
 
-.XYTriggers: db 0
-
-.Signposts: db 1
-	signpost 1, 10, SIGNPOST_READ, PokemonJournalMistyScript
-
-.PersonEvents: db 3
-	pc_nurse_event 1, 5
-	person_event SPRITE_GYM_GUY, 5, 1, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CeruleanPokeCenter1FGymGuyScript, -1
-	person_event SPRITE_SUPER_NERD, 4, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_COMMAND, jumptextfaceplayer, CeruleanPokeCenter1FSuperNerdText, -1
+	db 3 ; object events
+	pc_nurse_event  5, 1
+	object_event  1,  5, SPRITE_GYM_GUY, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_GREEN, PERSONTYPE_SCRIPT, 0, CeruleanPokeCenter1FGymGuyScript, -1
+	object_event  8,  4, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_PURPLE, PERSONTYPE_COMMAND, jumptextfaceplayer, CeruleanPokeCenter1FSuperNerdText, -1
 
 PokemonJournalMistyScript:
 	setflag ENGINE_READ_MISTY_JOURNAL

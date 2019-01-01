@@ -1,32 +1,29 @@
 PowerPlant_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 2 ; warp events
+	warp_event  2, 17, ROUTE_10_NORTH, 2
+	warp_event  3, 17, ROUTE_10_NORTH, 2
 
-PowerPlant_MapEventHeader:
+	db 1 ; coord events
+	coord_event  5, 12, 1, PowerPlantGuardPhoneScript
 
-.Warps: db 2
-	warp_def 17, 2, 2, ROUTE_10_NORTH
-	warp_def 17, 3, 2, ROUTE_10_NORTH
+	db 2 ; bg events
+	bg_event  0,  1, SIGNPOST_JUMPSTD, difficultbookshelf
+	bg_event  1,  1, SIGNPOST_JUMPSTD, difficultbookshelf
 
-.XYTriggers: db 1
-	xy_trigger 1, 12, 5, PowerPlantGuardPhoneScript
+	db 7 ; object events
+	object_event  4, 14, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_SCRIPT, 0, OfficerScript_0x188df5, -1
+	object_event  2,  9, SPRITE_GYM_GUY, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, GymGuyScript_0x188e15, -1
+	object_event  6, 11, SPRITE_GYM_GUY, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, GymGuyScript_0x188e29, -1
+	object_event  9,  3, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_SCRIPT, 0, OfficerScript_0x188e3d, -1
+	object_event  7,  2, SPRITE_GYM_GUY, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, GymGuyScript_0x188e51, -1
+	object_event 14, 10, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, PowerPlantManager, -1
+	object_event  5,  5, SPRITE_GYM_GUY, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, PowerPlantForestText, -1
 
-.Signposts: db 2
-	signpost 1, 0, SIGNPOST_JUMPSTD, difficultbookshelf
-	signpost 1, 1, SIGNPOST_JUMPSTD, difficultbookshelf
-
-.PersonEvents: db 7
-	person_event SPRITE_OFFICER, 14, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, OfficerScript_0x188df5, -1
-	person_event SPRITE_GYM_GUY, 9, 2, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, GymGuyScript_0x188e15, -1
-	person_event SPRITE_GYM_GUY, 11, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, GymGuyScript_0x188e29, -1
-	person_event SPRITE_OFFICER, 3, 9, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, OfficerScript_0x188e3d, -1
-	person_event SPRITE_GYM_GUY, 2, 7, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, GymGuyScript_0x188e51, -1
-	person_event SPRITE_FISHER, 10, 14, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, PowerPlantManager, -1
-	person_event SPRITE_GYM_GUY, 5, 5, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, PowerPlantForestText, -1
-
-const_value set 1
+	const_def 1 ; object constants
 	const POWERPLANT_OFFICER1
 	const POWERPLANT_GYM_GUY1
 	const POWERPLANT_GYM_GUY2
@@ -49,19 +46,11 @@ PowerPlantGuardPhoneScript:
 	end
 
 OfficerScript_0x188df5:
-	faceplayer
-	opentext
 	checkevent EVENT_RETURNED_MACHINE_PART
-	iftrue UnknownScript_0x188e0f
+	iftrue_jumptextfaceplayer UnknownText_0x188fa2
 	checkevent EVENT_MET_MANAGER_AT_POWER_PLANT
-	iftrue UnknownScript_0x188e09
-	jumpopenedtext UnknownText_0x188ee0
-
-UnknownScript_0x188e09:
-	jumpopenedtext UnknownText_0x188f7f
-
-UnknownScript_0x188e0f:
-	jumpopenedtext UnknownText_0x188fa2
+	iftrue_jumptextfaceplayer UnknownText_0x188f7f
+	jumptextfaceplayer UnknownText_0x188ee0
 
 GymGuyScript_0x188e15:
 	checkevent EVENT_RETURNED_MACHINE_PART
@@ -91,7 +80,7 @@ PowerPlantManager:
 	checkitem MACHINE_PART
 	iftrue UnknownScript_0x188e93
 	checkevent EVENT_MET_MANAGER_AT_POWER_PLANT
-	iftrue UnknownScript_0x188e8d
+	iftrue_jumpopenedtext UnknownText_0x189308
 	writetext UnknownText_0x189264
 	waitbutton
 	closetext
@@ -100,9 +89,6 @@ PowerPlantManager:
 	domaptrigger CERULEAN_GYM, $1
 	dotrigger $1
 	end
-
-UnknownScript_0x188e8d:
-	jumpopenedtext UnknownText_0x189308
 
 UnknownScript_0x188e93:
 	writetext UnknownText_0x18936e

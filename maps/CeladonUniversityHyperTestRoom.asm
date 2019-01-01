@@ -1,35 +1,32 @@
 CeladonUniversityHyperTestRoom_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 2 ; warp events
+	warp_event  2, 11, CELADON_UNIVERSITY_2F, 4
+	warp_event  3, 11, CELADON_UNIVERSITY_2F, 4
 
-CeladonUniversityHyperTestRoom_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 2
-	warp_def 11, 2, 4, CELADON_UNIVERSITY_2F
-	warp_def 11, 3, 4, CELADON_UNIVERSITY_2F
+	db 5 ; bg events
+	bg_event  2,  1, SIGNPOST_READ, CeladonUniversityHyperTestRoomMagikarpSign
+	bg_event  6,  1, SIGNPOST_JUMPTEXT, CeladonUniversityHyperTestRoomBookshelf1Text
+	bg_event  7,  1, SIGNPOST_JUMPTEXT, CeladonUniversityHyperTestRoomBookshelf2Text
+	bg_event  7,  4, SIGNPOST_RIGHT, CeladonUniversityHyperTestRoomComputer
+	bg_event  7,  6, SIGNPOST_RIGHT, CeladonUniversityHyperTestRoomComputer
 
-.XYTriggers: db 0
-
-.Signposts: db 5
-	signpost 1, 2, SIGNPOST_READ, CeladonUniversityHyperTestRoomMagikarpSign
-	signpost 1, 6, SIGNPOST_JUMPTEXT, CeladonUniversityHyperTestRoomBookshelf1Text
-	signpost 1, 7, SIGNPOST_JUMPTEXT, CeladonUniversityHyperTestRoomBookshelf2Text
-	signpost 4, 7, SIGNPOST_RIGHT, CeladonUniversityHyperTestRoomComputer
-	signpost 6, 7, SIGNPOST_RIGHT, CeladonUniversityHyperTestRoomComputer
-
-.PersonEvents: db 4
-	person_event SPRITE_WESTWOOD, 2, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CeladonUniversityHyperTestRoomWestwoodScript, -1
-	person_event SPRITE_SCIENTIST, 7, 6, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityHyperTestRoomScientistText, -1
-	person_event SPRITE_TWIN, 6, 1, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityHyperTestRoomTwin1Text, -1
-	person_event SPRITE_TWIN, 8, 1, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityHyperTestRoomTwin2Text, -1
+	db 4 ; object events
+	object_event  4,  2, SPRITE_WESTWOOD, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CeladonUniversityHyperTestRoomWestwoodScript, -1
+	object_event  6,  7, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityHyperTestRoomScientistText, -1
+	object_event  1,  6, SPRITE_TWIN, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityHyperTestRoomTwin1Text, -1
+	object_event  1,  8, SPRITE_TWIN, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityHyperTestRoomTwin2Text, -1
 
 CeladonUniversityHyperTestRoomWestwoodScript:
 	faceplayer
 	opentext
 	checkevent EVENT_GOT_DRAGON_RAGE_MAGIKARP
-	iftrue .TestComplete
+	iftrue_jumpopenedtext .TestOverText
 	checkevent EVENT_PASSED_CELADON_HYPER_TEST
 	iftrue .GiveMagikarp
 	writetext .GreetingText
@@ -42,9 +39,9 @@ CeladonUniversityHyperTestRoomWestwoodScript:
 .HeardIntro
 	writetext .QuestionText
 	yesorno
-	iffalse .NoHyperTest
+	iffalse_jumpopenedtext .RefusedText
 	checkflag ENGINE_TOOK_HYPER_TEST
-	iftrue .TookHyperTestToday
+	iftrue_jumpopenedtext .AlreadyTookText
 	setflag ENGINE_TOOK_HYPER_TEST
 	writetext .BeginText
 	waitbutton
@@ -146,15 +143,7 @@ CeladonUniversityHyperTestRoomWestwoodScript:
 	writebyte ULTRA_BALL
 	special SetLastPartyMonBall
 	setevent EVENT_GOT_DRAGON_RAGE_MAGIKARP
-
-.TestComplete:
 	jumpopenedtext .TestOverText
-
-.NoHyperTest:
-	jumpopenedtext .RefusedText
-
-.TookHyperTestToday:
-	jumpopenedtext .AlreadyTookText
 
 .WrongAnswer:
 	waitsfx

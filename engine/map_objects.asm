@@ -150,7 +150,7 @@ HandleCurNPCStep:
 	ld hl, OBJECT_FLAGS1
 	add hl, bc
 	bit INVISIBLE, [hl]
-	jr nz, SetFacingStanding
+	jp nz, SetFacingStanding
 	ld hl, OBJECT_FLAGS2
 	add hl, bc
 	bit 6, [hl]
@@ -532,9 +532,11 @@ MapObjectMovementPattern:
 	dw .MovementBoulderDust          ; SPRITEMOVEFN_BOULDERDUST
 	dw .MovementShakingGrass         ; SPRITEMOVEFN_GRASS
 	dw .MovementSplashingPuddle      ; SPRITEMOVEFN_PUDDLE
+	dw .MovementCutTree              ; SPRITEMOVEFN_CUT_TREE
 	dw .MovementBigGyarados          ; SPRITEMOVEFN_BIG_GYARADOS
 	dw .StandingFlip                 ; SPRITEMOVEFN_STANDING_FLIP
 	dw .MovementPokecomNews          ; SPRITEMOVEFN_POKECOM_NEWS
+	dw .MovementArchTree             ; SPRITEMOVEFN_ARCH_TREE
 
 .RandomWalkY:
 	call Random
@@ -729,6 +731,14 @@ MapObjectMovementPattern:
 
 .MovementPokecomNews:
 	ld a, PERSON_ACTION_POKECOM_NEWS
+	jr ._ActionA_StepType04
+
+.MovementCutTree:
+	ld a, PERSON_ACTION_CUT_TREE
+	jr ._ActionA_StepType04
+
+.MovementArchTree:
+	ld a, PERSON_ACTION_ARCH_TREE
 	jr ._ActionA_StepType04
 
 .StandingFlip:

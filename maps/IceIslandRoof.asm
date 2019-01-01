@@ -1,22 +1,19 @@
 IceIslandRoof_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 1 ; warp events
+	warp_event  3,  7, ICE_ISLAND, 2
 
-IceIslandRoof_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 1
-	warp_def 7, 3, 2, ICE_ISLAND
+	db 0 ; bg events
 
-.XYTriggers: db 0
+	db 1 ; object events
+	object_event  5,  5, SPRITE_BLANCHE, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, IceIslandRoofBlancheScript, EVENT_SHAMOUTI_COAST_BLANCHE
 
-.Signposts: db 0
-
-.PersonEvents: db 1
-	person_event SPRITE_BLANCHE, 5, 5, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, IceIslandRoofBlancheScript, EVENT_SHAMOUTI_COAST_BLANCHE
-
-const_value set 1
+	const_def 1 ; object constants
 	const ICEISLANDROOF_BLANCHE
 
 IceIslandRoofBlancheScript:

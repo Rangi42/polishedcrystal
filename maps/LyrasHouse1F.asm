@@ -1,26 +1,23 @@
 LyrasHouse1F_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 3 ; warp events
+	warp_event  2,  7, NEW_BARK_TOWN, 4
+	warp_event  3,  7, NEW_BARK_TOWN, 4
+	warp_event  0,  0, LYRAS_HOUSE_2F, 1
 
-LyrasHouse1F_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 3
-	warp_def 7, 2, 4, NEW_BARK_TOWN
-	warp_def 7, 3, 4, NEW_BARK_TOWN
-	warp_def 0, 0, 1, LYRAS_HOUSE_2F
+	db 4 ; bg events
+	bg_event  7,  1, SIGNPOST_UP, LyrasFridgeScript
+	bg_event  8,  1, SIGNPOST_JUMPTEXT, LyrasSinkText
+	bg_event  9,  1, SIGNPOST_JUMPTEXT, LyrasStoveText
+	bg_event  2,  1, SIGNPOST_UP, LyrasTVScript
 
-.XYTriggers: db 0
-
-.Signposts: db 4
-	signpost 1, 7, SIGNPOST_UP, LyrasFridgeScript
-	signpost 1, 8, SIGNPOST_JUMPTEXT, LyrasSinkText
-	signpost 1, 9, SIGNPOST_JUMPTEXT, LyrasStoveText
-	signpost 1, 2, SIGNPOST_UP, LyrasTVScript
-
-.PersonEvents: db 1
-	person_event SPRITE_DAD, 3, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, LyrasDadScript, -1
+	db 1 ; object events
+	object_event  2,  3, SPRITE_DAD, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, LyrasDadScript, -1
 
 LyrasDadScript:
 	faceplayer

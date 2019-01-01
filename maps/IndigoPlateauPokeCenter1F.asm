@@ -1,36 +1,33 @@
 IndigoPlateauPokeCenter1F_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 1 ; callbacks
+	callback MAPCALLBACK_NEWMAP, PrepareEliteFourCallback
 
-.MapCallbacks: db 1
-	dbw MAPCALLBACK_NEWMAP, PrepareEliteFourCallback
+	db 4 ; warp events
+	warp_event  9, 13, INDIGO_PLATEAU, 1
+	warp_event 10, 13, INDIGO_PLATEAU, 2
+	warp_event  0, 13, POKECENTER_2F, 1
+	warp_event 12,  3, WILLS_ROOM, 1
 
-IndigoPlateauPokeCenter1F_MapEventHeader:
+	db 2 ; coord events
+	coord_event 14,  4, 0, PlateauRivalBattleTrigger1
+	coord_event 15,  4, 0, PlateauRivalBattleTrigger2
 
-.Warps: db 4
-	warp_def 13, 9, 1, INDIGO_PLATEAU
-	warp_def 13, 10, 2, INDIGO_PLATEAU
-	warp_def 13, 0, 1, POKECENTER_2F
-	warp_def 3, 12, 1, WILLS_ROOM
+	db 1 ; bg events
+	bg_event 13,  7, SIGNPOST_READ, PokemonJournalGiovanniScript
 
-.XYTriggers: db 2
-	xy_trigger 0, 4, 14, PlateauRivalBattleTrigger1
-	xy_trigger 0, 4, 15, PlateauRivalBattleTrigger2
+	db 8 ; object events
+	object_event 14,  9, SPRITE_SILVER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_INDIGO_PLATEAU_POKECENTER_RIVAL
+	object_event 14,  9, SPRITE_LYRA, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_INDIGO_PLATEAU_POKECENTER_LYRA
+	object_event 10,  9, SPRITE_YELLOW, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, IndigoPlateauYellowScript, EVENT_INDIGO_PLATEAU_POKECENTER_YELLOW
+	pc_nurse_event  9, 7
+	mart_clerk_event  1,  9, MARTTYPE_STANDARD, MART_INDIGO_PLATEAU
+	object_event  6,  9, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, IndigoPlateauTeleportGuyScript, EVENT_TELEPORT_GUY
+	object_event  5,  9, SPRITE_ABRA, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_POKEMON, ABRA, IndigoPlateauAbraText, EVENT_TELEPORT_GUY
+	object_event  5, 12, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, IndigoPlateauCooltrainermText, -1
 
-.Signposts: db 1
-	signpost 7, 13, SIGNPOST_READ, PokemonJournalGiovanniScript
-
-.PersonEvents: db 8
-	person_event SPRITE_SILVER, 9, 14, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_INDIGO_PLATEAU_POKECENTER_RIVAL
-	person_event SPRITE_LYRA, 9, 14, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_INDIGO_PLATEAU_POKECENTER_LYRA
-	person_event SPRITE_YELLOW, 9, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, IndigoPlateauYellowScript, EVENT_INDIGO_PLATEAU_POKECENTER_YELLOW
-	pc_nurse_event 7, 9
-	mart_clerk_event 9, 1, MARTTYPE_STANDARD, MART_INDIGO_PLATEAU
-	person_event SPRITE_GRAMPS, 9, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, IndigoPlateauTeleportGuyScript, EVENT_TELEPORT_GUY
-	person_event SPRITE_ABRA, 9, 5, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_POKEMON, ABRA, IndigoPlateauAbraText, EVENT_TELEPORT_GUY
-	person_event SPRITE_COOLTRAINER_M, 12, 5, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, IndigoPlateauCooltrainermText, -1
-
-const_value set 1
+	const_def 1 ; object constants
 	const INDIGOPLATEAUPOKECENTER1F_SILVER
 	const INDIGOPLATEAUPOKECENTER1F_LYRA
 	const INDIGOPLATEAUPOKECENTER1F_YELLOW

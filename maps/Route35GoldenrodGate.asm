@@ -1,25 +1,22 @@
 Route35GoldenrodGate_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 4 ; warp events
+	warp_event  4,  0, ROUTE_35, 1
+	warp_event  5,  0, ROUTE_35, 2
+	warp_event  4,  7, GOLDENROD_CITY, 12
+	warp_event  5,  7, GOLDENROD_CITY, 12
 
-Route35GoldenrodGate_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 4
-	warp_def 0, 4, 1, ROUTE_35
-	warp_def 0, 5, 2, ROUTE_35
-	warp_def 7, 4, 12, GOLDENROD_CITY
-	warp_def 7, 5, 12, GOLDENROD_CITY
+	db 0 ; bg events
 
-.XYTriggers: db 0
-
-.Signposts: db 0
-
-.PersonEvents: db 3
-	person_event SPRITE_OFFICER, 4, 0, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, OfficerScript_0x69d37, -1
-	person_event SPRITE_BREEDER, 4, 6, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, BreederScript_0x69dc6, -1
-	person_event SPRITE_FISHER, 2, 3, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x6a0cb, -1
+	db 3 ; object events
+	object_event  0,  4, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, OfficerScript_0x69d37, -1
+	object_event  6,  4, SPRITE_BREEDER, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_SCRIPT, 0, BreederScript_0x69dc6, -1
+	object_event  3,  2, SPRITE_FISHER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_PURPLE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x6a0cb, -1
 
 OfficerScript_0x69d37:
 	faceplayer

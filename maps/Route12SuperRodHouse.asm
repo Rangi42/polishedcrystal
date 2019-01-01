@@ -1,27 +1,24 @@
 Route12SuperRodHouse_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 2 ; warp events
+	warp_event  2,  7, ROUTE_12_SOUTH, 1
+	warp_event  3,  7, ROUTE_12_SOUTH, 1
 
-Route12SuperRodHouse_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 2
-	warp_def 7, 2, 1, ROUTE_12_SOUTH
-	warp_def 7, 3, 1, ROUTE_12_SOUTH
+	db 0 ; bg events
 
-.XYTriggers: db 0
-
-.Signposts: db 0
-
-.PersonEvents: db 1
-	person_event SPRITE_FISHING_GURU, 3, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, FishingGuruScript_0x7f484, -1
+	db 1 ; object events
+	object_event  5,  3, SPRITE_FISHING_GURU, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, FishingGuruScript_0x7f484, -1
 
 FishingGuruScript_0x7f484:
+	checkevent EVENT_GOT_SUPER_ROD
+	iftrue_jumptextfaceplayer UnknownText_0x7f57c
 	faceplayer
 	opentext
-	checkevent EVENT_GOT_SUPER_ROD
-	iftrue UnknownScript_0x7f4a0
 	writetext UnknownText_0x7f4af
 	yesorno
 	iffalse UnknownScript_0x7f4a6
@@ -30,8 +27,19 @@ FishingGuruScript_0x7f484:
 	verbosegiveitem SUPER_ROD
 	iffalse UnknownScript_0x7f4aa
 	setevent EVENT_GOT_SUPER_ROD
-UnknownScript_0x7f4a0:
-	jumpopenedtext UnknownText_0x7f57c
+	thisopenedtext
+
+UnknownText_0x7f57c:
+	text "Try your hand at"
+	line "fishing wherever"
+	cont "there is water."
+
+	para "Remember--you can"
+	line "catch different"
+
+	para "#mon using"
+	line "different Rods."
+	done
 
 UnknownScript_0x7f4a6:
 	writetext UnknownText_0x7f5ec
@@ -61,18 +69,6 @@ UnknownText_0x7f52f:
 	para "Here, fishing fan!"
 	line "Take this--it's a"
 	cont "Super Rod."
-	done
-
-UnknownText_0x7f57c:
-	text "Try your hand at"
-	line "fishing wherever"
-	cont "there is water."
-
-	para "Remember--you can"
-	line "catch different"
-
-	para "#mon using"
-	line "different Rods."
 	done
 
 UnknownText_0x7f5ec:

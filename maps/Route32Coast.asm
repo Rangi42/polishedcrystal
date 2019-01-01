@@ -1,46 +1,44 @@
 Route32Coast_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 2 ; warp events
+	warp_event  4, 57, UNION_CAVE_B1F_SOUTH, 4
+	warp_event 17, 51, ROUTE_32_COAST_HOUSE, 1
 
-Route32Coast_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 2
-	warp_def 57, 4, 4, UNION_CAVE_B1F_SOUTH
-	warp_def 51, 17, 1, ROUTE_32_COAST_HOUSE
+	db 4 ; bg events
+	bg_event 15, 29, SIGNPOST_JUMPTEXT, Route32CoastTrainerTipsText
+	bg_event  5, 59, SIGNPOST_JUMPTEXT, Route32CoastUnionCaveSignText
+	bg_event 17, 34, SIGNPOST_ITEM + LEVEL_BALL, EVENT_ROUTE_32_COAST_HIDDEN_LEVEL_BALL
+	bg_event  5, 45, SIGNPOST_ITEM + HYPER_POTION, EVENT_ROUTE_32_COAST_HIDDEN_HYPER_POTION
 
-.XYTriggers: db 0
+	db 15 ; object events
+	object_event  9,  5, SPRITE_GUIDE_GENT, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerSwimmermMichel, -1
+	object_event 18, 67, SPRITE_GUIDE_GENT, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerSwimmermLucas, -1
+	object_event 20,  8, SPRITE_SWIMMER_GIRL, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerSwimmerfAlison, -1
+	object_event 23, 17, SPRITE_SWIMMER_GIRL, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerSwimmerfStephanie, -1
+	object_event 18, 23, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_GENERICTRAINER, 5, GenericTrainerBird_keeperPowell, -1
+	object_event 14, 62, SPRITE_COSPLAYER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerCosplayerChloe, -1
+	object_event 24, 62, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerFisherKiley, -1
+	object_event  6, 22, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerCamperCraig, -1
+	object_event 11, 45, SPRITE_NEW_BARK_LYRA, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerLassLayla, -1
+	object_event 25, 35, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerCoupleFoxandrae1, -1
+	object_event 25, 36, SPRITE_NEW_BARK_LYRA, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerCoupleFoxandrae2, -1
+	object_event  6, 61, SPRITE_NEW_BARK_LYRA, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, Route32CoastLassText, -1
+	fruittree_event 21, 51, FRUITTREE_ROUTE_32_COAST, ASPEAR_BERRY
+	itemball_event  5, 18, WHITE_HERB, 1, EVENT_ROUTE_32_COAST_WHITE_HERB
+	itemball_event 22, 63, SOFT_SAND, 1, EVENT_ROUTE_32_COAST_SOFT_SAND
 
-.Signposts: db 4
-	signpost 29, 15, SIGNPOST_JUMPTEXT, Route32CoastTrainerTipsText
-	signpost 59, 5, SIGNPOST_JUMPTEXT, Route32CoastUnionCaveSignText
-	signpost 34, 17, SIGNPOST_ITEM + LEVEL_BALL, EVENT_ROUTE_32_COAST_HIDDEN_LEVEL_BALL
-	signpost 45, 5, SIGNPOST_ITEM + HYPER_POTION, EVENT_ROUTE_32_COAST_HIDDEN_HYPER_POTION
+GenericTrainerSwimmermMichel:
+	generictrainer SWIMMERM, MICHEL, EVENT_BEAT_SWIMMERM_MICHEL, .SeenText, .BeatenText
 
-.PersonEvents: db 15
-	person_event SPRITE_GUIDE_GENT, 5, 9, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerSwimmermMichel, -1
-	person_event SPRITE_GUIDE_GENT, 67, 18, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerSwimmermLucas, -1
-	person_event SPRITE_SWIMMER_GIRL, 8, 20, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 4, TrainerSwimmerfAlison, -1
-	person_event SPRITE_SWIMMER_GIRL, 17, 23, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 4, TrainerSwimmerfStephanie, -1
-	person_event SPRITE_YOUNGSTER, 23, 18, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 5, TrainerBird_keeperPowell, -1
-	person_event SPRITE_COSPLAYER, 62, 14, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerCosplayerChloe, -1
-	person_event SPRITE_FISHER, 62, 24, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherKiley, -1
-	person_event SPRITE_YOUNGSTER, 22, 6, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 2, TrainerCamperCraig, -1
-	person_event SPRITE_NEW_BARK_LYRA, 45, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerLassLayla, -1
-	person_event SPRITE_YOUNGSTER, 35, 25, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerCoupleFoxandrae1, -1
-	person_event SPRITE_NEW_BARK_LYRA, 36, 25, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerCoupleFoxandrae2, -1
-	person_event SPRITE_NEW_BARK_LYRA, 61, 6, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, Route32CoastLassText, -1
-	fruittree_event 51, 21, FRUITTREE_ROUTE_32_COAST, ASPEAR_BERRY
-	itemball_event 18, 5, WHITE_HERB, 1, EVENT_ROUTE_32_COAST_WHITE_HERB
-	itemball_event 63, 22, SOFT_SAND, 1, EVENT_ROUTE_32_COAST_SOFT_SAND
-
-TrainerSwimmermMichel:
-	trainer EVENT_BEAT_SWIMMERM_MICHEL, SWIMMERM, MICHEL, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
+	text "Lesson learned--"
+	line "do warm-up exer-"
+	cont "cises."
+	done
 
 .SeenText:
 	text "I was waiting"
@@ -55,18 +53,17 @@ TrainerSwimmermMichel:
 	line "I got a cramp!"
 	done
 
-.AfterText:
-	text "Lesson learned--"
-	line "do warm-up exer-"
-	cont "cises."
+GenericTrainerSwimmermLucas:
+	generictrainer SWIMMERM, LUCAS, EVENT_BEAT_SWIMMERM_LUCAS, .SeenText, .BeatenText
+
+	text "Rainbows caused by"
+	line "sunlight appear"
+
+	para "opposite the sun"
+	line "in the sky."
+
+	para "Interesting, huh?"
 	done
-
-TrainerSwimmermLucas:
-	trainer EVENT_BEAT_SWIMMERM_LUCAS, SWIMMERM, LUCAS, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Reflecting and re-"
@@ -82,22 +79,15 @@ TrainerSwimmermLucas:
 	line "full of color!"
 	done
 
-.AfterText:
-	text "Rainbows caused by"
-	line "sunlight appear"
+GenericTrainerSwimmerfAlison:
+	generictrainer SWIMMERF, ALISON, EVENT_BEAT_SWIMMERF_ALISON, .SeenText, .BeatenText
 
-	para "opposite the sun"
-	line "in the sky."
+	text "Inhale…"
+	line "Exhale…"
 
-	para "Interesting, huh?"
+	para "Isn't this"
+	line "refreshing?"
 	done
-
-TrainerSwimmerfAlison:
-	trainer EVENT_BEAT_SWIMMERF_ALISON, SWIMMERF, ALISON, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Before battling"
@@ -110,20 +100,15 @@ TrainerSwimmerfAlison:
 	line "some seawater…"
 	done
 
-.AfterText:
-	text "Inhale…"
-	line "Exhale…"
+GenericTrainerSwimmerfStephanie:
+	generictrainer SWIMMERF, STEPHANIE, EVENT_BEAT_SWIMMERF_STEPHANIE, .SeenText, .BeatenText
 
-	para "Isn't this"
-	line "refreshing?"
+	text "Sound travels"
+	line "faster in water"
+	cont "than in air."
+
+	para "Neat, isn't it?"
 	done
-
-TrainerSwimmerfStephanie:
-	trainer EVENT_BEAT_SWIMMERF_STEPHANIE, SWIMMERF, STEPHANIE, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Did you hear that?"
@@ -133,20 +118,17 @@ TrainerSwimmerfStephanie:
 	text "Boo!"
 	done
 
-.AfterText:
-	text "Sound travels"
-	line "faster in water"
-	cont "than in air."
+GenericTrainerBird_keeperPowell:
+	generictrainer BIRD_KEEPER, POWELL, EVENT_BEAT_BIRD_KEEPER_POWELL, .SeenText, .BeatenText
 
-	para "Neat, isn't it?"
+	text "My Pokemon can"
+	line "use Fly even while"
+
+	para "fainted, so I can"
+	line "still get home."
+
+	para "Convenient, eh?"
 	done
-
-TrainerBird_keeperPowell:
-	trainer EVENT_BEAT_BIRD_KEEPER_POWELL, BIRD_KEEPER, POWELL, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "I can't swim, so"
@@ -159,22 +141,14 @@ TrainerBird_keeperPowell:
 	line "#mon!"
 	done
 
-.AfterText:
-	text "My Pokemon can"
-	line "use Fly even while"
+GenericTrainerCosplayerChloe:
+	generictrainer COSPLAYER, CHLOE, EVENT_BEAT_COSPLAYER_CHLOE, .SeenText, .BeatenText
 
-	para "fainted, so I can"
-	line "still get home."
-
-	para "Convenient, eh?"
+	text "When I'm dressed"
+	line "like this, people"
+	para "say I'm the cutest"
+	line "wherever I go."
 	done
-
-TrainerCosplayerChloe:
-	trainer EVENT_BEAT_COSPLAYER_CHLOE, COSPLAYER, CHLOE, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Like my costume?"
@@ -187,19 +161,15 @@ TrainerCosplayerChloe:
 	line "very effective…"
 	done
 
-.AfterText:
-	text "When I'm dressed"
-	line "like this, people"
-	para "say I'm the cutest"
-	line "wherever I go."
+GenericTrainerFisherKiley:
+	generictrainer FISHER, KILEY, EVENT_BEAT_FISHER_KILEY, .SeenText, .BeatenText
+
+	text "You have to have a"
+	line "good Rod if you"
+
+	para "want to catch good"
+	line "#mon."
 	done
-
-TrainerFisherKiley:
-	trainer EVENT_BEAT_FISHER_KILEY, FISHER, KILEY, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Heh, I'm on a roll"
@@ -212,20 +182,15 @@ TrainerFisherKiley:
 	line "lucky that time."
 	done
 
-.AfterText:
-	text "You have to have a"
-	line "good Rod if you"
+GenericTrainerCamperCraig:
+	generictrainer CAMPER, CRAIG, EVENT_BEAT_CAMPER_CRAIG, .SeenText, .BeatenText
 
-	para "want to catch good"
-	line "#mon."
+	text "Adventure lives"
+	line "outside your tent,"
+
+	para "so get out there"
+	line "and have a blast!"
 	done
-
-TrainerCamperCraig:
-	trainer EVENT_BEAT_CAMPER_CRAIG, CAMPER, CRAIG, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Nothing beats the"
@@ -237,20 +202,14 @@ TrainerCamperCraig:
 	line "Camper."
 	done
 
-.AfterText:
-	text "Adventure lives"
-	line "outside your tent,"
+GenericTrainerLassLayla:
+	generictrainer LASS, LAYLA, EVENT_BEAT_LASS_LAYLA, .SeenText, .BeatenText
 
-	para "so get out there"
-	line "and have a blast!"
+	text "If you make a wish"
+	line "and tell someone"
+	cont "what it is, it"
+	cont "won't come true!"
 	done
-
-TrainerLassLayla:
-	trainer EVENT_BEAT_LASS_LAYLA, LASS, LAYLA, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "If you had one"
@@ -263,19 +222,13 @@ TrainerLassLayla:
 	line "wish, though!"
 	done
 
-.AfterText:
-	text "If you make a wish"
-	line "and tell someone"
-	cont "what it is, it"
-	cont "won't come true!"
+GenericTrainerCoupleFoxandrae1:
+	generictrainer COUPLE, FOXANDRAE1, EVENT_BEAT_COUPLE_FOX_AND_RAE, .SeenText, .BeatenText
+
+	text "Fox: Our teamwork"
+	line "as a Couple wasn't"
+	cont "enough this time."
 	done
-
-TrainerCoupleFoxandrae1:
-	trainer EVENT_BEAT_COUPLE_FOX_AND_RAE, COUPLE, FOXANDRAE1, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Fox: Come on, Rae,"
@@ -287,18 +240,13 @@ TrainerCoupleFoxandrae1:
 	line "and me…"
 	done
 
-.AfterText:
-	text "Fox: Our teamwork"
-	line "as a Couple wasn't"
-	cont "enough this time."
+GenericTrainerCoupleFoxandrae2:
+	generictrainer COUPLE, FOXANDRAE2, EVENT_BEAT_COUPLE_FOX_AND_RAE, .SeenText, .BeatenText
+
+	text "Rae: We lost, but"
+	line "we're still a"
+	cont "happy Couple."
 	done
-
-TrainerCoupleFoxandrae2:
-	trainer EVENT_BEAT_COUPLE_FOX_AND_RAE, COUPLE, FOXANDRAE2, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Rae: Hey Fox, why"
@@ -309,12 +257,6 @@ TrainerCoupleFoxandrae2:
 .BeatenText:
 	text "Rae: How could you"
 	line "beat Fox and me?"
-	done
-
-.AfterText:
-	text "Rae: We lost, but"
-	line "we're still a"
-	cont "happy Couple."
 	done
 
 Route32CoastLassText:

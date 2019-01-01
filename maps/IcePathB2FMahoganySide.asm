@@ -1,36 +1,30 @@
 IcePathB2FMahoganySide_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 6 ; warp events
+	warp_event 17,  1, ICE_PATH_B1F, 2
+	warp_event  9, 11, ICE_PATH_B3F, 1
+	warp_event 11,  4, ICE_PATH_B1F, 3
+	warp_event  4,  6, ICE_PATH_B1F, 4
+	warp_event  4, 12, ICE_PATH_B1F, 5
+	warp_event 12, 12, ICE_PATH_B1F, 6
 
-IcePathB2FMahoganySide_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 6
-	warp_def 1, 17, 2, ICE_PATH_B1F
-	warp_def 11, 9, 1, ICE_PATH_B3F
-	warp_def 4, 11, 3, ICE_PATH_B1F
-	warp_def 6, 4, 4, ICE_PATH_B1F
-	warp_def 12, 4, 5, ICE_PATH_B1F
-	warp_def 12, 12, 6, ICE_PATH_B1F
+	db 1 ; bg events
+	bg_event  0, 17, SIGNPOST_ITEM + CARBOS, EVENT_ICE_PATH_B2F_MAHOGANY_SIDE_HIDDEN_CARBOS
 
-.XYTriggers: db 0
+	db 6 ; object events
+	object_event 11,  3, SPRITE_BOULDER_ROCK_FOSSIL, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptext, BoulderText_0x7e5ad, EVENT_BOULDER_IN_ICE_PATH_1A
+	object_event  4,  7, SPRITE_BOULDER_ROCK_FOSSIL, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptext, BoulderText_0x7e5ad, EVENT_BOULDER_IN_ICE_PATH_2A
+	object_event  3, 12, SPRITE_BOULDER_ROCK_FOSSIL, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptext, BoulderText_0x7e5ad, EVENT_BOULDER_IN_ICE_PATH_3A
+	object_event 12, 13, SPRITE_BOULDER_ROCK_FOSSIL, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptext, BoulderText_0x7e5ad, EVENT_BOULDER_IN_ICE_PATH_4A
+	itemball_event  8,  9, FULL_HEAL, 1, EVENT_ICE_PATH_B2F_MAHOGANY_SIDE_FULL_HEAL
+	itemball_event  0,  2, MAX_POTION, 1, EVENT_ICE_PATH_B2F_MAHOGANY_SIDE_MAX_POTION
 
-.Signposts: db 1
-	signpost 17, 0, SIGNPOST_ITEM + CARBOS, EVENT_ICE_PATH_B2F_MAHOGANY_SIDE_HIDDEN_CARBOS
-
-.PersonEvents: db 6
-	person_event SPRITE_BOULDER_ROCK_FOSSIL, 3, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BoulderScript_0x7e5a3, EVENT_BOULDER_IN_ICE_PATH_1A
-	person_event SPRITE_BOULDER_ROCK_FOSSIL, 7, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BoulderScript_0x7e5a3, EVENT_BOULDER_IN_ICE_PATH_2A
-	person_event SPRITE_BOULDER_ROCK_FOSSIL, 12, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BoulderScript_0x7e5a3, EVENT_BOULDER_IN_ICE_PATH_3A
-	person_event SPRITE_BOULDER_ROCK_FOSSIL, 13, 12, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BoulderScript_0x7e5a3, EVENT_BOULDER_IN_ICE_PATH_4A
-	itemball_event 9, 8, FULL_HEAL, 1, EVENT_ICE_PATH_B2F_MAHOGANY_SIDE_FULL_HEAL
-	itemball_event 2, 0, MAX_POTION, 1, EVENT_ICE_PATH_B2F_MAHOGANY_SIDE_MAX_POTION
-
-BoulderScript_0x7e5a3:
-	jumptext UnknownText_0x7e5ad
-
-UnknownText_0x7e5ad:
+BoulderText_0x7e5ad:
 	text "It's immovably"
 	line "imbedded in ice."
 	done

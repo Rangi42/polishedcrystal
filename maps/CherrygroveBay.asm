@@ -1,26 +1,23 @@
 CherrygroveBay_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 0 ; warp events
 
-CherrygroveBay_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 0
+	db 0 ; bg events
 
-.XYTriggers: db 0
-
-.Signposts: db 0
-
-.PersonEvents: db 8
-	person_event SPRITE_POKEFAN_M, 32, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, CherrygroveBayHikerScript, -1
-	person_event SPRITE_POKEFAN_M, 22, 21, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 1, TrainerHikerTony, -1
-	person_event SPRITE_FISHER, 33, 15, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, CherrygroveBayFisherText, -1
-	person_event SPRITE_GUIDE_GENT, 39, 7, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerSwimmermThomas, -1
-	person_event SPRITE_SWIMMER_GIRL, 22, 7, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 4, TrainerSwimmerfSally, -1
-	person_event SPRITE_SWIMMER_GIRL, 39, 22, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 4, TrainerSwimmerfTara, -1
-	itemball_event 24, 22, SHINY_STONE, 1, EVENT_CHERRYGROVE_BAY_SHINY_STONE
-	cuttree_event 8, 3, EVENT_CHERRYGROVE_BAY_CUT_TREE
+	db 8 ; object events
+	object_event  9, 32, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_SCRIPT, 0, CherrygroveBayHikerScript, -1
+	object_event 21, 22, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerHikerTony, -1
+	object_event 15, 33, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, CherrygroveBayFisherText, -1
+	object_event  7, 39, SPRITE_GUIDE_GENT, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerSwimmermThomas, -1
+	object_event  7, 22, SPRITE_SWIMMER_GIRL, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerSwimmerfSally, -1
+	object_event 22, 39, SPRITE_SWIMMER_GIRL, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerSwimmerfTara, -1
+	itemball_event 22, 24, SHINY_STONE, 1, EVENT_CHERRYGROVE_BAY_SHINY_STONE
+	cuttree_event  3,  8, EVENT_CHERRYGROVE_BAY_CUT_TREE
 
 CherrygroveBayHikerScript:
 	faceplayer
@@ -52,12 +49,13 @@ CherrygroveBayTutorEarthPowerScript:
 	takeitem SILVER_LEAF
 	jumpopenedtext Text_CherrygroveBayTutorTaught
 
-TrainerSwimmermThomas:
-	trainer EVENT_BEAT_SWIMMERM_THOMAS, SWIMMERM, THOMAS, .SeenText, .BeatenText, 0, .Script
+GenericTrainerSwimmermThomas:
+	generictrainer SWIMMERM, THOMAS, EVENT_BEAT_SWIMMERM_THOMAS, .SeenText, .BeatenText
 
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
+	text "My #mon knows"
+	line "how to Surf, but"
+	cont "I prefer swimming."
+	done
 
 .SeenText:
 	text "Do you know how to"
@@ -69,18 +67,13 @@ TrainerSwimmermThomas:
 	text "Glub, glub, glub…"
 	done
 
-.AfterText:
-	text "My #mon knows"
-	line "how to Surf, but"
-	cont "I prefer swimming."
+GenericTrainerSwimmerfSally:
+	generictrainer SWIMMERF, SALLY, EVENT_BEAT_SWIMMERF_SALLY, .SeenText, .BeatenText
+
+	text "I like drifting on"
+	line "the waves along-"
+	cont "side my #mon!"
 	done
-
-TrainerSwimmerfSally:
-	trainer EVENT_BEAT_SWIMMERF_SALLY, SWIMMERF, SALLY, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "I like this bay."
@@ -95,18 +88,16 @@ TrainerSwimmerfSally:
 	line "losing, however…"
 	done
 
-.AfterText:
-	text "I like drifting on"
-	line "the waves along-"
-	cont "side my #mon!"
+GenericTrainerSwimmerfTara:
+	generictrainer SWIMMERF, TARA, EVENT_BEAT_SWIMMERF_TARA, .SeenText, .BeatenText
+
+	text "There's a grove of"
+	line "golden trees north"
+	cont "of Ecruteak City."
+
+	para "I'd love to visit"
+	line "someday."
 	done
-
-TrainerSwimmerfTara:
-	trainer EVENT_BEAT_SWIMMERF_TARA, SWIMMERF, TARA, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Ah, swimming amid"
@@ -119,21 +110,15 @@ TrainerSwimmerfTara:
 	line "losing…"
 	done
 
-.AfterText:
-	text "There's a grove of"
-	line "golden trees north"
-	cont "of Ecruteak City."
+GenericTrainerHikerTony:
+	generictrainer HIKER, TONY, EVENT_BEAT_HIKER_TONY, .SeenText, .BeatenText
 
-	para "I'd love to visit"
-	line "someday."
+	text "After a long hike,"
+	line "resting under the"
+
+	para "cherry trees hits"
+	line "the spot."
 	done
-
-TrainerHikerTony:
-	trainer EVENT_BEAT_HIKER_TONY, HIKER, TONY, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "I hiked through"
@@ -143,14 +128,6 @@ TrainerHikerTony:
 
 .BeatenText:
 	text "I'm exhausted…"
-	done
-
-.AfterText:
-	text "After a long hike,"
-	line "resting under the"
-
-	para "cherry trees hits"
-	line "the spot."
 	done
 
 CherrygroveBayFisherText:

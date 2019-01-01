@@ -1,26 +1,23 @@
 PewterMuseumOfScience2F_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 1 ; warp events
+	warp_event  7,  7, PEWTER_MUSEUM_OF_SCIENCE_1F, 5
 
-PewterMuseumOfScience2F_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 1
-	warp_def 7, 7, 5, PEWTER_MUSEUM_OF_SCIENCE_1F
+	db 2 ; bg events
+	bg_event  3,  6, SIGNPOST_READ, Museum2FMoonStoneSignpostScript
+	bg_event 11,  2, SIGNPOST_JUMPTEXT, Museum2FSpaceShuttleSignpostText
 
-.XYTriggers: db 0
-
-.Signposts: db 2
-	signpost 6, 3, SIGNPOST_READ, Museum2FMoonStoneSignpostScript
-	signpost 2, 11, SIGNPOST_JUMPTEXT, Museum2FSpaceShuttleSignpostText
-
-.PersonEvents: db 5
-	person_event SPRITE_SCIENTIST, 5, 7, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, Museum2FScientistText, -1
-	person_event SPRITE_CHILD, 7, 1, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, Museum2FChildText, -1
-	person_event SPRITE_TEACHER, 7, 2, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, Museum2FTeacherText, -1
-	person_event SPRITE_LASS, 1, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, Museum2FLassText, -1
-	person_event SPRITE_POKEFAN_M, 5, 12, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Museum2FPokefanMScript, -1
+	db 5 ; object events
+	object_event  7,  5, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, Museum2FScientistText, -1
+	object_event  1,  7, SPRITE_CHILD, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, Museum2FChildText, -1
+	object_event  2,  7, SPRITE_TEACHER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, Museum2FTeacherText, -1
+	object_event  2,  1, SPRITE_LASS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, Museum2FLassText, -1
+	object_event 12,  5, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Museum2FPokefanMScript, -1
 
 Museum2FPokefanMScript:
 	faceplayer

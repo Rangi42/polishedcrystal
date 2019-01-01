@@ -1,30 +1,27 @@
 OlivineGoodRodHouse_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 2 ; warp events
+	warp_event  2,  7, OLIVINE_CITY, 5
+	warp_event  3,  7, OLIVINE_CITY, 5
 
-OlivineGoodRodHouse_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 2
-	warp_def 7, 2, 5, OLIVINE_CITY
-	warp_def 7, 3, 5, OLIVINE_CITY
+	db 0 ; bg events
 
-.XYTriggers: db 0
-
-.Signposts: db 0
-
-.PersonEvents: db 1
-	person_event SPRITE_FISHING_GURU, 3, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, GoodRodGuru, -1
+	db 1 ; object events
+	object_event  2,  3, SPRITE_FISHING_GURU, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_SCRIPT, 0, GoodRodGuru, -1
 
 GoodRodGuru:
 	faceplayer
 	opentext
 	checkevent EVENT_GOT_GOOD_ROD
-	iftrue .AlreadyGotItem
+	iftrue_jumpopenedtext HaveGoodRodText
 	writetext OfferGoodRodText
 	yesorno
-	iffalse .DontWantIt
+	iffalse_jumpopenedtext DontWantGoodRodText
 	writetext GiveGoodRodText
 	buttonsound
 	verbosegiveitem GOOD_ROD
@@ -33,12 +30,6 @@ GoodRodGuru:
 	closetext
 	setevent EVENT_GOT_GOOD_ROD
 	end
-
-.DontWantIt:
-	jumpopenedtext DontWantGoodRodText
-
-.AlreadyGotItem:
-	jumpopenedtext HaveGoodRodText
 
 OfferGoodRodText:
 	text "Olivine is on the"

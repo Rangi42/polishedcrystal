@@ -1,17 +1,14 @@
 ShamoutiTouristCenter_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 2 ; warp events
+	warp_event  2,  7, SHAMOUTI_ISLAND, 4
+	warp_event  3,  7, SHAMOUTI_ISLAND, 4
 
-ShamoutiTouristCenter_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 2
-	warp_def 7, 2, 4, SHAMOUTI_ISLAND
-	warp_def 7, 3, 4, SHAMOUTI_ISLAND
+	db 0 ; bg events
 
-.XYTriggers: db 0
-
-.Signposts: db 0
-
-.PersonEvents: db 0
+	db 0 ; object events

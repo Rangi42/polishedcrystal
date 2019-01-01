@@ -1,53 +1,50 @@
 SeafoamIslandsB2F_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 8 ; warp events
+	warp_event 25, 15, SEAFOAM_ISLANDS_B1F, 3
+	warp_event 15,  7, SEAFOAM_ISLANDS_B1F, 4
+	warp_event 13, 13, SEAFOAM_ISLANDS_B1F, 5
+	warp_event  7, 15, SEAFOAM_ISLANDS_B1F, 6
+	warp_event 35,  7, SEAFOAM_ISLANDS_B3F, 1
+	warp_event 28,  9, SEAFOAM_ISLANDS_B3F, 2
+	warp_event 35, 15, SEAFOAM_ISLANDS_B3F, 3
+	warp_event  4, 13, SEAFOAM_ISLANDS_B3F, 4
 
-SeafoamIslandsB2F_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 8
-	warp_def 15, 25, 3, SEAFOAM_ISLANDS_B1F
-	warp_def 7, 15, 4, SEAFOAM_ISLANDS_B1F
-	warp_def 13, 13, 5, SEAFOAM_ISLANDS_B1F
-	warp_def 15, 7, 6, SEAFOAM_ISLANDS_B1F
-	warp_def 7, 35, 1, SEAFOAM_ISLANDS_B3F
-	warp_def 9, 28, 2, SEAFOAM_ISLANDS_B3F
-	warp_def 15, 35, 3, SEAFOAM_ISLANDS_B3F
-	warp_def 13, 4, 4, SEAFOAM_ISLANDS_B3F
+	db 2 ; bg events
+	bg_event  7,  9, SIGNPOST_ITEM + PEARL, EVENT_SEAFOAM_ISLANDS_B2F_HIDDEN_PEARL_1
+	bg_event 35, 13, SIGNPOST_ITEM + PEARL, EVENT_SEAFOAM_ISLANDS_B2F_HIDDEN_PEARL_2
 
-.XYTriggers: db 0
+	db 4 ; object events
+	object_event 11,  4, SPRITE_SKIER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerSkierCady, -1
+	object_event 16,  5, SPRITE_BOARDER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerBoarderShaun, -1
+	object_event 25,  8, SPRITE_BOARDER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerBoarderBryce, -1
+	itemball_event 15, 16, WATER_STONE, 1, EVENT_SEAFOAM_ISLANDS_B2F_WATER_STONE
 
-.Signposts: db 2
-	signpost 9, 7, SIGNPOST_ITEM + PEARL, EVENT_SEAFOAM_ISLANDS_B2F_HIDDEN_PEARL_1
-	signpost 13, 35, SIGNPOST_ITEM + PEARL, EVENT_SEAFOAM_ISLANDS_B2F_HIDDEN_PEARL_2
+GenericTrainerSkierCady:
+	generictrainer SKIER, CADY, EVENT_BEAT_SKIER_CADY, SkierCadySeenText, SkierCadyBeatenText
 
-.PersonEvents: db 4
-	person_event SPRITE_SKIER, 4, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerSkierCady, -1
-	person_event SPRITE_BOARDER, 5, 16, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerBoarderShaun, -1
-	person_event SPRITE_BOARDER, 8, 25, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerBoarderBryce, -1
-	itemball_event 16, 15, WATER_STONE, 1, EVENT_SEAFOAM_ISLANDS_B2F_WATER_STONE
+	text "That was a hot"
+	line "battle!"
+	done
 
-TrainerSkierCady:
-	trainer EVENT_BEAT_SKIER_CADY, SKIER, CADY, SkierCadySeenText, SkierCadyBeatenText, 0, SkierCadyScript
+GenericTrainerBoarderShaun:
+	generictrainer BOARDER, SHAUN, EVENT_BEAT_BOARDER_SHAUN, BoarderShaunSeenText, BoarderShaunBeatenText
 
-SkierCadyScript:
-	end_if_just_battled
-	jumptextfaceplayer SkierCadyAfterText
+	text "All right, please"
+	line "pass through!"
+	done
 
-TrainerBoarderShaun:
-	trainer EVENT_BEAT_BOARDER_SHAUN, BOARDER, SHAUN, BoarderShaunSeenText, BoarderShaunBeatenText, 0, BoarderShaunScript
+GenericTrainerBoarderBryce:
+	generictrainer BOARDER, BRYCE, EVENT_BEAT_BOARDER_BRYCE, BoarderBryceSeenText, BoarderBryceBeatenText
 
-BoarderShaunScript:
-	end_if_just_battled
-	jumptextfaceplayer BoarderShaunAfterText
-
-TrainerBoarderBryce:
-	trainer EVENT_BEAT_BOARDER_BRYCE, BOARDER, BRYCE, BoarderBryceSeenText, BoarderBryceBeatenText, 0, BoarderBryceScript
-
-BoarderBryceScript:
-	end_if_just_battled
-	jumptextfaceplayer BoarderBryceAfterText
+	text "Trainers are"
+	line "everywhere."
+	done
 
 SkierCadySeenText:
 	text "To beat the cold,"
@@ -60,11 +57,6 @@ SkierCadyBeatenText:
 	line "out here!"
 	done
 
-SkierCadyAfterText:
-	text "That was a hot"
-	line "battle!"
-	done
-
 BoarderShaunSeenText:
 	text "Hey, hey, you're"
 	line "in my way! Right!"
@@ -73,11 +65,6 @@ BoarderShaunSeenText:
 BoarderShaunBeatenText:
 	text "I got kicked"
 	line "around…"
-	done
-
-BoarderShaunAfterText:
-	text "All right, please"
-	line "pass through!"
 	done
 
 BoarderBryceSeenText:
@@ -92,7 +79,3 @@ BoarderBryceBeatenText:
 	line "way out here…"
 	done
 
-BoarderBryceAfterText:
-	text "Trainers are"
-	line "everywhere."
-	done

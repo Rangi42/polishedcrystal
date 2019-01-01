@@ -1,39 +1,36 @@
 PewterMuseumOfScience1F_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 5 ; warp events
+	warp_event 10,  7, PEWTER_CITY, 6
+	warp_event 11,  7, PEWTER_CITY, 6
+	warp_event 16,  7, PEWTER_CITY, 7
+	warp_event 17,  7, PEWTER_CITY, 7
+	warp_event  7,  7, PEWTER_MUSEUM_OF_SCIENCE_2F, 1
 
-PewterMuseumOfScience1F_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 5
-	warp_def 7, 10, 6, PEWTER_CITY
-	warp_def 7, 11, 6, PEWTER_CITY
-	warp_def 7, 16, 7, PEWTER_CITY
-	warp_def 7, 17, 7, PEWTER_CITY
-	warp_def 7, 7, 1, PEWTER_MUSEUM_OF_SCIENCE_2F
+	db 9 ; bg events
+	bg_event  2,  3, SIGNPOST_READ, KabutopsFossilSignpostScript
+	bg_event  6,  3, SIGNPOST_READ, OmastarFossilSignpostScript
+	bg_event  3,  6, SIGNPOST_READ, AerodactylFossilSignpostScript
+	bg_event 12,  1, SIGNPOST_JUMPTEXT, Museum1FBookshelfSignpostText
+	bg_event 13,  1, SIGNPOST_JUMPTEXT, Museum1FBookshelfSignpostText
+	bg_event 14,  1, SIGNPOST_JUMPTEXT, Museum1FBookshelfSignpostText
+	bg_event 15,  1, SIGNPOST_JUMPTEXT, Museum1FBookshelfSignpostText
+	bg_event 17,  1, SIGNPOST_JUMPTEXT, Museum1FBookshelfSignpostText
+	bg_event 18,  1, SIGNPOST_JUMPTEXT, Museum1FBookshelfSignpostText
 
-.XYTriggers: db 0
+	db 5 ; object events
+	object_event 18,  3, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, Museum1FFossilScientistScript, -1
+	object_event 12,  4, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, Museum1FReceptionistScript, -1
+	object_event 16,  2, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, Museum1FScientistText, -1
+	object_event  1,  7, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, Museum1FGrampsText, -1
+	object_event  4,  3, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, Museum1FYoungsterText, -1
 
-.Signposts: db 9
-	signpost 3, 2, SIGNPOST_READ, KabutopsFossilSignpostScript
-	signpost 3, 6, SIGNPOST_READ, OmastarFossilSignpostScript
-	signpost 6, 3, SIGNPOST_READ, AerodactylFossilSignpostScript
-	signpost 1, 12, SIGNPOST_JUMPTEXT, Museum1FBookshelfSignpostText
-	signpost 1, 13, SIGNPOST_JUMPTEXT, Museum1FBookshelfSignpostText
-	signpost 1, 14, SIGNPOST_JUMPTEXT, Museum1FBookshelfSignpostText
-	signpost 1, 15, SIGNPOST_JUMPTEXT, Museum1FBookshelfSignpostText
-	signpost 1, 17, SIGNPOST_JUMPTEXT, Museum1FBookshelfSignpostText
-	signpost 1, 18, SIGNPOST_JUMPTEXT, Museum1FBookshelfSignpostText
-
-.PersonEvents: db 5
-	person_event SPRITE_SCIENTIST, 3, 18, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Museum1FFossilScientistScript, -1
-	person_event SPRITE_RECEPTIONIST, 4, 12, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Museum1FReceptionistScript, -1
-	person_event SPRITE_SCIENTIST, 2, 16, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, Museum1FScientistText, -1
-	person_event SPRITE_GRAMPS, 7, 1, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, Museum1FGrampsText, -1
-	person_event SPRITE_YOUNGSTER, 3, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, Museum1FYoungsterText, -1
-
-const_value set 1
+	const_def 1 ; object constants
 	const PEWTERMUSEUMOFSCIENCE1F_SCIENTIST2
 
 Museum1FFossilScientistScript:

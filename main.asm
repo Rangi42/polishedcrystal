@@ -166,8 +166,8 @@ INCLUDE "engine/init_options.asm"
 INCLUDE "engine/learn.asm"
 INCLUDE "engine/math.asm"
 INCLUDE "engine/npc_movement.asm"
-INCLUDE "event/happiness_egg.asm"
-INCLUDE "event/special.asm"
+INCLUDE "engine/events/happiness_egg.asm"
+INCLUDE "engine/events/specials_2.asm"
 INCLUDE "data/items/attributes.asm"
 
 
@@ -182,10 +182,10 @@ INCLUDE "engine/trainer_scripts.asm"
 
 SECTION "Code 3", ROMX
 
-INCLUDE "engine/specials.asm"
+INCLUDE "engine/events/specials.asm"
 INCLUDE "engine/printnum.asm"
 INCLUDE "engine/health.asm"
-INCLUDE "event/overworld.asm"
+INCLUDE "engine/events/overworld.asm"
 INCLUDE "engine/items.asm"
 INCLUDE "engine/player_step.asm"
 INCLUDE "engine/anim_hp_bar.asm"
@@ -385,17 +385,17 @@ INCLUDE "engine/pack.asm"
 INCLUDE "engine/time.asm"
 INCLUDE "engine/tmhm.asm"
 INCLUDE "engine/naming_screen.asm"
-INCLUDE "event/itemball.asm"
-INCLUDE "engine/healmachineanim.asm"
-INCLUDE "event/whiteout.asm"
-INCLUDE "event/forced_movement.asm"
-INCLUDE "event/itemfinder.asm"
+INCLUDE "engine/events/itemball.asm"
+INCLUDE "engine/events/heal_machine_anim.asm"
+INCLUDE "engine/events/whiteout.asm"
+INCLUDE "engine/events/forced_movement.asm"
+INCLUDE "engine/events/itemfinder.asm"
 INCLUDE "engine/startmenu.asm"
 INCLUDE "engine/selectmenu.asm"
-INCLUDE "event/elevator.asm"
-INCLUDE "event/bug_contest.asm"
-INCLUDE "event/safari_game.asm"
-INCLUDE "event/std_tiles.asm"
+INCLUDE "engine/events/elevator.asm"
+INCLUDE "engine/events/bug_contest.asm"
+INCLUDE "engine/events/safari_game.asm"
+INCLUDE "engine/events/std_tiles.asm"
 
 
 SECTION "Roofs", ROMX
@@ -415,28 +415,28 @@ INCLUDE "engine/pokecenter_pc.asm"
 INCLUDE "engine/mart.asm"
 INCLUDE "engine/money.asm"
 INCLUDE "data/items/marts.asm"
-INCLUDE "event/mom.asm"
-INCLUDE "event/daycare.asm"
+INCLUDE "engine/events/mom.asm"
+INCLUDE "engine/events/daycare.asm"
 INCLUDE "engine/breeding.asm"
 
 
 SECTION "Code 6", ROMX
 
 INCLUDE "engine/clock_reset.asm"
-INCLUDE "event/move_reminder.asm"
+INCLUDE "engine/events/move_reminder.asm"
 
 
 SECTION "Code 7", ROMX
 
-INCLUDE "engine/pokepic.asm"
+INCLUDE "engine/events/pokepic.asm"
 INCLUDE "engine/scrolling_menu.asm"
 INCLUDE "engine/switch_items.asm"
 INCLUDE "engine/menu.asm"
 INCLUDE "engine/mon_menu.asm"
-INCLUDE "battle/menu.asm"
+INCLUDE "engine/battle/menu.asm"
 INCLUDE "engine/buy_sell_toss.asm"
 INCLUDE "engine/trainer_card.asm"
-INCLUDE "engine/prof_oaks_pc.asm"
+INCLUDE "engine/events/prof_oaks_pc.asm"
 INCLUDE "engine/decorations.asm"
 INCLUDE "data/trainers/dvs.asm"
 
@@ -528,6 +528,15 @@ PlaceMenuTMHMName:
 	pop hl
 	jp PlaceString
 
+PlaceMenuApricornQuantity:
+	ld a, [wMenuSelection]
+	ld [wCurItem], a
+	and a
+	ret nz
+	ld l, e
+	ld h, d
+	jr _PlaceMenuQuantity
+
 PlaceMenuItemQuantity: ; 0x24ac3
 	push de
 	ld a, [wMenuSelection]
@@ -537,6 +546,7 @@ PlaceMenuItemQuantity: ; 0x24ac3
 	pop hl
 	and a
 	ret nz
+_PlaceMenuQuantity:
 	ld de, $15
 	add hl, de
 	ld [hl], "×"
@@ -706,53 +716,6 @@ StartMenu_PrintBugContestStatus: ; 24be7
 .Level: ; 24c5e
 	db "Level@"
 
-FindApricornsInBag: ; 24c64
-; Checks the bag for Apricorns.
-	ld hl, wBuffer1
-	xor a
-	ld [hli], a
-	dec a
-	ld bc, 10
-	call ByteFill
-
-	ld hl, ApricornBalls
-.loop
-	ld a, [hl]
-	cp -1
-	jr z, .done
-	push hl
-	ld [wCurItem], a
-	ld hl, wNumItems
-	call CheckItem
-	pop hl
-	jr nc, .nope
-	ld a, [hl]
-	call .addtobuffer
-.nope
-	inc hl
-	inc hl
-	jr .loop
-
-.done
-	ld a, [wBuffer1]
-	and a
-	ret nz
-	scf
-	ret
-
-.addtobuffer ; 24c94
-	push hl
-	ld hl, wBuffer1
-	inc [hl]
-	ld e, [hl]
-	ld d, 0
-	add hl, de
-	ld [hl], a
-	pop hl
-	ret
-
-INCLUDE "data/items/apricorn_balls.asm"
-
 PadCoords_de: ; 27092
 	ld a, d
 	add 4
@@ -818,11 +781,11 @@ INCLUDE "engine/link.asm"
 SECTION "Code 9", ROMX
 
 INCLUDE "data/battle/music.asm"
-INCLUDE "battle/trainer_huds.asm"
-INCLUDE "battle/ai/redundant.asm"
-INCLUDE "event/move_deleter.asm"
+INCLUDE "engine/battle/trainer_huds.asm"
+INCLUDE "engine/battle/ai/redundant.asm"
+INCLUDE "engine/events/move_deleter.asm"
 INCLUDE "engine/tmhm2.asm"
-INCLUDE "event/pokerus.asm"
+INCLUDE "engine/events/pokerus.asm"
 INCLUDE "data/trainers/class_names.asm"
 INCLUDE "data/moves/descriptions.asm"
 
@@ -1004,9 +967,9 @@ PlaceGraphic: ; 2ef6e
 SECTION "Code 10", ROMX
 
 INCLUDE "engine/mail.asm"
-INCLUDE "engine/fruit_trees.asm"
-INCLUDE "engine/hidden_grottoes.asm"
-INCLUDE "battle/ai/move.asm"
+INCLUDE "engine/events/fruit_trees.asm"
+INCLUDE "engine/events/hidden_grottoes.asm"
+INCLUDE "engine/battle/ai/move.asm"
 
 AnimateDexSearchSlowpoke: ; 441cf
 	ld hl, .FrameIDs
@@ -1388,7 +1351,7 @@ SECTION "Code 11", ROMX
 
 INCLUDE "engine/main_menu.asm"
 INCLUDE "engine/search.asm"
-INCLUDE "event/celebi.asm"
+INCLUDE "engine/events/celebi.asm"
 INCLUDE "engine/tileset_palettes.asm"
 
 Special_MoveTutor: ; 4925b
@@ -2831,7 +2794,7 @@ ResetDisplayBetweenHallOfFameMons: ; 4e906
 	ld [rSVBK], a
 	ret
 
-INCLUDE "battle/sliding_intro.asm"
+INCLUDE "engine/battle/sliding_intro.asm"
 
 CheckBattleEffects: ; 4ea44
 ; Return carry if battle scene is turned off.
@@ -2846,13 +2809,13 @@ CheckBattleEffects: ; 4ea44
 
 INCLUDE "engine/bsod.asm"
 
-INCLUDE "event/stats_judge.asm"
+INCLUDE "engine/events/stats_judge.asm"
 
-INCLUDE "event/poisonstep.asm"
-INCLUDE "event/squirtbottle.asm"
-INCLUDE "event/card_key.asm"
-INCLUDE "event/basement_key.asm"
-INCLUDE "event/sacred_ash.asm"
+INCLUDE "engine/events/poisonstep.asm"
+INCLUDE "engine/events/squirtbottle.asm"
+INCLUDE "engine/events/card_key.asm"
+INCLUDE "engine/events/basement_key.asm"
+INCLUDE "engine/events/sacred_ash.asm"
 
 
 SECTION "Code 13", ROMX
@@ -2984,7 +2947,30 @@ GetPkmnSpecies: ; 508d5
 
 INCLUDE "data/types/names.asm"
 
-INCLUDE "data/battle/natures.asm"
+PrintNature:
+; Print nature b at hl.
+	ld a, b
+	push hl
+	ld hl, NatureNames
+	jr _PrintNatureProperty
+
+PrintNatureIndicators:
+; Print indicators for nature b at hl.
+	ld a, b
+	push hl
+	ld hl, NatureIndicators
+_PrintNatureProperty:
+	add a
+	ld e, a
+	ld d, 0
+	add hl, de
+	ld a, [hli]
+	ld e, a
+	ld d, [hl]
+	pop hl
+	jp PlaceString
+
+INCLUDE "data/natures.asm"
 
 DrawPlayerHP: ; 50b0a
 	ld a, $1
@@ -3915,7 +3901,7 @@ INCLUDE "data/pokemon/names.asm"
 
 SECTION "Code 14", ROMX
 
-INCLUDE "battle/abilities.asm"
+INCLUDE "engine/battle/abilities.asm"
 INCLUDE "data/trainers/final_text.asm"
 INCLUDE "engine/player_movement.asm"
 INCLUDE "engine/engine_flags.asm"
@@ -3925,21 +3911,92 @@ INCLUDE "data/text/battle.asm"
 
 SECTION "Code 15", ROMX
 
-INCLUDE "battle/anim_gfx.asm"
-INCLUDE "event/halloffame.asm"
-INCLUDE "data/battle/abilities.asm"
+INCLUDE "engine/battle/anim_gfx.asm"
+INCLUDE "engine/events/halloffame.asm"
+
+PrintAbility:
+; Print ability b at hl.
+	ld l, b
+	ld h, 0
+	ld bc, AbilityNames
+	add hl, hl
+	add hl, bc
+	ld a, [hli]
+	ld d, [hl]
+	ld e, a
+	hlcoord 3, 13
+	jp PlaceString
+
+BufferAbility:
+; Buffer name for b into wStringBuffer1
+	ld l, b
+	ld h, 0
+	ld bc, AbilityNames
+	add hl, hl
+	add hl, bc
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	ld de, wStringBuffer1
+.loop
+	ld a, [hli]
+	ld [de], a
+	inc de
+	cp "@"
+	ret z
+	jr .loop
+
+PrintAbilityDescription:
+; Print ability description for b
+; we can't use PlaceString, because it would linebreak with an empty line inbetween
+	ld l, b
+	ld h, 0
+	ld bc, AbilityDescriptions
+	add hl, hl
+	add hl, bc
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	decoord 1, 15
+	push de
+.loop
+	ld a, [hli]
+	cp "@"
+	jr z, .done
+	cp $4e
+	jr z, .line
+	ld [de], a
+	inc de
+	jr .loop
+
+.line
+	pop de
+	push hl
+	ld hl, $0014
+	add hl, de
+	ld d, h
+	ld e, l
+	pop hl
+	push de
+	jr .loop
+
+.done
+	pop de
+	ret
+
+INCLUDE "data/abilities.asm"
 
 
 SECTION "Code 16", ROMX
 
 INCLUDE "engine/player_gfx.asm"
-INCLUDE "event/kurt.asm"
-INCLUDE "event/unown.asm"
-INCLUDE "event/buena.asm"
-INCLUDE "event/movesets.asm"
-INCLUDE "event/battle_tower/battle_tower.asm"
-INCLUDE "event/battle_tower/trainer_text.asm"
-INCLUDE "event/item_maniacs.asm"
+INCLUDE "engine/events/kurt.asm"
+INCLUDE "engine/events/unown.asm"
+INCLUDE "engine/events/buena.asm"
+INCLUDE "engine/events/movesets.asm"
+INCLUDE "engine/events/battle_tower/battle_tower.asm"
+INCLUDE "engine/events/battle_tower/trainer_text.asm"
+INCLUDE "engine/events/item_maniacs.asm"
 
 
 SECTION "Code 17", ROMX
@@ -3948,8 +4005,8 @@ INCLUDE "engine/timeofdaypals.asm"
 INCLUDE "engine/battle_start.asm"
 INCLUDE "engine/sprites.asm"
 INCLUDE "engine/mon_icons.asm"
-INCLUDE "event/field_moves.asm"
-INCLUDE "event/magnet_train.asm"
+INCLUDE "engine/events/field_moves.asm"
+INCLUDE "engine/events/magnet_train.asm"
 INCLUDE "data/pokemon/menu_icon_pointers.asm"
 INCLUDE "data/pokemon/menu_icons.asm"
 
@@ -3959,7 +4016,7 @@ SECTION "Code 18", ROMX
 INCLUDE "engine/phone.asm"
 INCLUDE "engine/timeset.asm"
 INCLUDE "engine/pokegear.asm"
-INCLUDE "engine/fish.asm"
+INCLUDE "engine/events/fish.asm"
 INCLUDE "engine/slot_machine.asm"
 
 
@@ -3972,7 +4029,7 @@ INCLUDE "gfx/mail.asm"
 
 SECTION "Code 20", ROMX
 
-INCLUDE "engine/std_scripts.asm"
+INCLUDE "engine/events/std_scripts.asm"
 INCLUDE "engine/phone_scripts.asm"
 
 
@@ -3992,27 +4049,27 @@ INCLUDE "engine/billspc.asm"
 
 SECTION "Code 23", ROMX
 
-INCLUDE "battle/hidden_power.asm"
-INCLUDE "battle/misc.asm"
+INCLUDE "engine/battle/hidden_power.asm"
+INCLUDE "engine/battle/misc.asm"
 INCLUDE "engine/unowndex.asm"
-INCLUDE "event/magikarp.asm"
-INCLUDE "event/name_rater.asm"
+INCLUDE "engine/events/magikarp.asm"
+INCLUDE "engine/events/name_rater.asm"
 INCLUDE "audio/distorted_cries.asm"
 
 
 SECTION "Code 24", ROMX
 
 INCLUDE "engine/tileset_anims.asm"
-INCLUDE "engine/npctrade.asm"
-INCLUDE "engine/wonder_trade.asm"
-INCLUDE "event/mom_phone.asm"
+INCLUDE "engine/events/npc_trade.asm"
+INCLUDE "engine/events/wonder_trade.asm"
+INCLUDE "engine/events/mom_phone.asm"
 
 
 SECTION "Code 25", ROMX
 
 INCLUDE "engine/misc_gfx.asm"
 INCLUDE "engine/warp_connection.asm"
-INCLUDE "battle/used_move_text.asm"
+INCLUDE "engine/battle/used_move_text.asm"
 INCLUDE "gfx/items.asm"
 
 
@@ -4047,12 +4104,12 @@ INCLUDE "gfx/font.asm"
 
 SECTION "Battle Core", ROMX
 
-INCLUDE "battle/core.asm"
+INCLUDE "engine/battle/core.asm"
 
 
 SECTION "Effect Commands", ROMX
 
-INCLUDE "battle/effect_commands.asm"
+INCLUDE "engine/battle/effect_commands.asm"
 
 
 SECTION "Effect Command Pointers", ROMX
@@ -4087,10 +4144,10 @@ INCLUDE "data/moves/moves.asm"
 
 SECTION "Enemy Trainers", ROMX
 
-INCLUDE "battle/ai/items.asm"
+INCLUDE "engine/battle/ai/items.asm"
 
 AIScoring: ; 38591
-INCLUDE "battle/ai/scoring.asm"
+INCLUDE "engine/battle/ai/scoring.asm"
 
 GetTrainerClassName: ; 3952d
 	ld a, c
@@ -4347,6 +4404,7 @@ PrintTMHMDescription:
 	ret
 
 INCLUDE "data/items/descriptions.asm"
+INCLUDE "data/items/apricorn_names.asm"
 
 
 SECTION "Move and Landmark Text", ROMX
@@ -4363,5 +4421,5 @@ INCLUDE "data/battle_tower/trainer_text.asm"
 
 SECTION "Crystal Data", ROMX
 
-INCLUDE "event/battle_tower/load_trainer.asm"
-INCLUDE "data/odd_eggs.asm"
+INCLUDE "engine/events/battle_tower/load_trainer.asm"
+INCLUDE "data/events/odd_eggs.asm"

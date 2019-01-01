@@ -1,24 +1,21 @@
 Route31VioletGate_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 4 ; warp events
+	warp_event  0,  4, VIOLET_CITY, 8
+	warp_event  0,  5, VIOLET_CITY, 9
+	warp_event  9,  4, ROUTE_31, 1
+	warp_event  9,  5, ROUTE_31, 2
 
-Route31VioletGate_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 4
-	warp_def 4, 0, 8, VIOLET_CITY
-	warp_def 5, 0, 9, VIOLET_CITY
-	warp_def 4, 9, 1, ROUTE_31
-	warp_def 5, 9, 2, ROUTE_31
+	db 0 ; bg events
 
-.XYTriggers: db 0
-
-.Signposts: db 0
-
-.PersonEvents: db 2
-	person_event SPRITE_OFFICER, 2, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x19763a, -1
-	person_event SPRITE_COOLTRAINER_F, 2, 1, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x197661, -1
+	db 2 ; object events
+	object_event  5,  2, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x19763a, -1
+	object_event  1,  2, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x197661, -1
 
 UnknownText_0x19763a:
 	text "Hi there!"

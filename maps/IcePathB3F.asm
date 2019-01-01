@@ -1,26 +1,23 @@
 IcePathB3F_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 2 ; warp events
+	warp_event  3,  5, ICE_PATH_B2F_MAHOGANY_SIDE, 2
+	warp_event 15,  5, ICE_PATH_B2F_BLACKTHORN_SIDE, 2
 
-IcePathB3F_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 2
-	warp_def 5, 3, 2, ICE_PATH_B2F_MAHOGANY_SIDE
-	warp_def 5, 15, 2, ICE_PATH_B2F_BLACKTHORN_SIDE
+	db 1 ; bg events
+	bg_event 16,  3, SIGNPOST_JUMPTEXT, Text_IcePathB3FIceRock
 
-.XYTriggers: db 0
+	db 3 ; object events
+	object_event 10,  2, SPRITE_LORELEI, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, LoreleiScript, -1
+	itemball_event  5,  7, NEVERMELTICE, 1, EVENT_ICE_PATH_B3F_NEVERMELTICE
+	smashrock_event  6, 6
 
-.Signposts: db 1
-	signpost 3, 16, SIGNPOST_JUMPTEXT, Text_IcePathB3FIceRock
-
-.PersonEvents: db 3
-	person_event SPRITE_LORELEI, 2, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, LoreleiScript, -1
-	itemball_event 7, 5, NEVERMELTICE, 1, EVENT_ICE_PATH_B3F_NEVERMELTICE
-	smashrock_event 6, 6
-
-const_value set 1
+	const_def 1 ; object constants
 	const ICEPATHB3F_LORELEI
 
 LoreleiScript:
@@ -29,7 +26,7 @@ LoreleiScript:
 	checkevent EVENT_BEAT_ELITE_FOUR
 	iftrue LoreleiRematchScript
 	checkevent EVENT_BEAT_LORELEI
-	iftrue LoreleiAfterScript
+	iftrue_jumpopenedtext LoreleiAfterText
 	checkevent EVENT_INTRODUCED_LORELEI
 	iftrue LoreleiAfterIntroScript
 	writetext LoreleiIntroText
@@ -38,7 +35,7 @@ LoreleiScript:
 LoreleiAfterIntroScript:
 	writetext LoreleiAfterIntroText
 	yesorno
-	iffalse LoreleiNoBattleScript
+	iffalse_jumpopenedtext LoreleiNoBattleText
 	writetext LoreleiSeenText
 	waitbutton
 	closetext
@@ -53,15 +50,24 @@ LoreleiAfterIntroScript:
 	buttonsound
 	verbosegiveitem ICY_ROCK
 	setevent EVENT_GOT_ICY_ROCK_FROM_LORELEI
-LoreleiAfterScript:
-	jumpopenedtext LoreleiAfterText
+	thisopenedtext
 
-LoreleiNoBattleScript:
-	jumpopenedtext LoreleiNoBattleText
+LoreleiAfterText:
+	text "Go on ahead. You"
+	line "can challenge the"
+
+	para "#mon League"
+	line "with one more"
+	cont "Badge."
+
+	para "If you do beat"
+	line "them, meet me here"
+	cont "for a rematch."
+	done
 
 LoreleiRematchScript:
 	checkevent EVENT_BEAT_LORELEI_AGAIN
-	iftrue LoreleiRematchAfterScript
+	iftrue_jumpopenedtext LoreleiRematchAfterText
 	checkevent EVENT_INTRODUCED_LORELEI
 	iftrue LoreleiReintroductionScript
 	writetext LoreleiIntroText
@@ -79,13 +85,31 @@ LoreleiAfterRematchIntroScript:
 	setevent EVENT_BEAT_LORELEI_AGAIN
 	opentext
 	checkevent EVENT_GOT_ICY_ROCK_FROM_LORELEI
-	iftrue LoreleiRematchAfterScript
+	iftrue_jumpopenedtext LoreleiRematchAfterText
 	writetext LoreleiRewardText
 	buttonsound
 	verbosegiveitem ICY_ROCK
 	setevent EVENT_GOT_ICY_ROCK_FROM_LORELEI
-LoreleiRematchAfterScript:
-	jumpopenedtext LoreleiRematchAfterText
+	thisopenedtext
+
+LoreleiRematchAfterText:
+	text "Your journey isn't"
+	line "over, you know."
+
+	para "You can earn more"
+	line "badges in Kanto,"
+
+	para "catch new species"
+	line "of #mon,"
+
+	para "improve yourself"
+	line "and your team."
+
+	para "Becoming a"
+	line "#mon master is"
+	cont "a life's work."
+	done
+
 
 LoreleiReintroductionScript:
 	writetext LoreleiRematchIntroAgainText
@@ -161,19 +185,6 @@ LoreleiRewardText:
 	line "this item."
 	done
 
-LoreleiAfterText:
-	text "Go on ahead. You"
-	line "can challenge the"
-
-	para "#mon League"
-	line "with one more"
-	cont "Badge."
-
-	para "If you do beat"
-	line "them, meet me here"
-	cont "for a rematch."
-	done
-
 LoreleiRematchIntroAgainText:
 	text "Lorelei: Hello"
 	line "again, <PLAYER>."
@@ -197,22 +208,4 @@ LoreleiRematchSeenText:
 LoreleiRematchBeatenText:
 	text "As expected of"
 	line "the Champion!"
-	done
-
-LoreleiRematchAfterText:
-	text "Your journey isn't"
-	line "over, you know."
-
-	para "You can earn more"
-	line "badges in Kanto,"
-
-	para "catch new species"
-	line "of #mon,"
-
-	para "improve yourself"
-	line "and your team."
-
-	para "Becoming a"
-	line "#mon master is"
-	cont "a life's work."
 	done

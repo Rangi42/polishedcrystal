@@ -1,25 +1,22 @@
 AzaleaMart_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 2 ; warp events
+	warp_event  2,  7, AZALEA_TOWN, 3
+	warp_event  3,  7, AZALEA_TOWN, 3
 
-AzaleaMart_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 2
-	warp_def 7, 2, 3, AZALEA_TOWN
-	warp_def 7, 3, 3, AZALEA_TOWN
+	db 0 ; bg events
 
-.XYTriggers: db 0
-
-.Signposts: db 0
-
-.PersonEvents: db 5
-	mart_clerk_event 3, 1, MARTTYPE_STANDARD, MART_AZALEA
-	person_event SPRITE_COOLTRAINER_M, 5, 2, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, AzaleaMartCooltrainermText, -1
-	person_event SPRITE_BUG_CATCHER, 2, 7, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, AzaleaMartBugCatcherText, -1
-	person_event SPRITE_LADY, 6, 8, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, (1 << MORN) | (1 << DAY), (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, AzaleaMartLadyText, -1
-	person_event SPRITE_ROCKER, 6, 8, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, (1 << NITE), (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_COMMAND, jumptextfaceplayer, AzaleaMartRockerText, -1
+	db 5 ; object events
+	mart_clerk_event  1,  3, MARTTYPE_STANDARD, MART_AZALEA
+	object_event  2,  5, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, AzaleaMartCooltrainermText, -1
+	object_event  7,  2, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, AzaleaMartBugCatcherText, -1
+	object_event  8,  6, SPRITE_LADY, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, (1 << MORN) | (1 << DAY), PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, AzaleaMartLadyText, -1
+	object_event  8,  6, SPRITE_ROCKER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, (1 << NITE), PAL_NPC_PURPLE, PERSONTYPE_COMMAND, jumptextfaceplayer, AzaleaMartRockerText, -1
 
 AzaleaMartCooltrainermText:
 	text "There's no Great"

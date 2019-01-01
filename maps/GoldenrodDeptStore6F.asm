@@ -1,24 +1,21 @@
 GoldenrodDeptStore6F_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 3 ; warp events
+	warp_event 15,  0, GOLDENROD_DEPT_STORE_5F, 2
+	warp_event  2,  0, GOLDENROD_DEPT_STORE_ELEVATOR, 1
+	warp_event 13,  0, GOLDENROD_DEPT_STORE_ROOF, 1
 
-GoldenrodDeptStore6F_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 3
-	warp_def 0, 15, 2, GOLDENROD_DEPT_STORE_5F
-	warp_def 0, 2, 1, GOLDENROD_DEPT_STORE_ELEVATOR
-	warp_def 0, 13, 1, GOLDENROD_DEPT_STORE_ROOF
+	db 1 ; bg events
+	bg_event 14,  0, SIGNPOST_JUMPTEXT, GoldenrodDeptStore6FDirectoryText
 
-.XYTriggers: db 0
-
-.Signposts: db 1
-	signpost 0, 14, SIGNPOST_JUMPTEXT, GoldenrodDeptStore6FDirectoryText
-
-.PersonEvents: db 2
-	person_event SPRITE_LASS, 2, 10, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x5654b, -1
-	person_event SPRITE_SUPER_NERD, 2, 8, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x565ca, -1
+	db 2 ; object events
+	object_event 10,  2, SPRITE_LASS, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x5654b, -1
+	object_event  8,  2, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x565ca, -1
 
 UnknownText_0x5654b:
 	text "Do you listen to"

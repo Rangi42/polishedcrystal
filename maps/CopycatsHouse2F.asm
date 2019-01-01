@@ -1,28 +1,25 @@
 CopycatsHouse2F_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 1 ; callbacks
+	callback MAPCALLBACK_OBJECTS, CopycatsHouse2FCallback
 
-.MapCallbacks: db 1
-	dbw MAPCALLBACK_OBJECTS, CopycatsHouse2FCallback
+	db 1 ; warp events
+	warp_event  3,  0, COPYCATS_HOUSE_1F, 3
 
-CopycatsHouse2F_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 1
-	warp_def 0, 3, 3, COPYCATS_HOUSE_1F
+	db 0 ; bg events
 
-.XYTriggers: db 0
+	db 6 ; object events
+	object_event  4,  3, SPRITE_NEW_BARK_LYRA, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, Copycat1Script, EVENT_COPYCAT_1
+	object_event  4,  3, SPRITE_NEW_BARK_LYRA, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, Copycat2Script, EVENT_COPYCAT_2
+	object_event  6,  4, SPRITE_DODRIO, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_SCRIPT, 0, CopycatsDodrioScript, -1
+	object_event  6,  1, SPRITE_CLEFAIRY, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptext, CopycatsHouse2FDollText, EVENT_COPYCATS_HOUSE_2F_DOLL
+	object_event  2,  1, SPRITE_GENGAR, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, PAL_NPC_PURPLE, PERSONTYPE_COMMAND, jumptext, CopycatsHouse2FDollText, -1
+	object_event  7,  1, SPRITE_MURKROW, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptext, CopycatsHouse2FDollText, -1
 
-.Signposts: db 0
-
-.PersonEvents: db 6
-	person_event SPRITE_NEW_BARK_LYRA, 3, 4, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, Copycat1Script, EVENT_COPYCAT_1
-	person_event SPRITE_NEW_BARK_LYRA, 3, 4, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, Copycat2Script, EVENT_COPYCAT_2
-	person_event SPRITE_DODRIO, 4, 6, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, CopycatsDodrioScript, -1
-	person_event SPRITE_CLEFAIRY, 1, 6, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptext, CopycatsHouse2FDollText, EVENT_COPYCATS_HOUSE_2F_DOLL
-	person_event SPRITE_GENGAR, 1, 2, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_COMMAND, jumptext, CopycatsHouse2FDollText, -1
-	person_event SPRITE_MURKROW, 1, 7, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptext, CopycatsHouse2FDollText, -1
-
-const_value set 1
+	const_def 1 ; object constants
 	const COPYCATSHOUSE2F_COPYCAT1
 	const COPYCATSHOUSE2F_COPYCAT2
 

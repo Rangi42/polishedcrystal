@@ -1,21 +1,18 @@
 CeladonMansionRoofHouse_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 2 ; warp events
+	warp_event  2,  7, CELADON_MANSION_ROOF, 3
+	warp_event  3,  7, CELADON_MANSION_ROOF, 3
 
-CeladonMansionRoofHouse_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 2
-	warp_def 7, 2, 3, CELADON_MANSION_ROOF
-	warp_def 7, 3, 3, CELADON_MANSION_ROOF
+	db 0 ; bg events
 
-.XYTriggers: db 0
-
-.Signposts: db 0
-
-.PersonEvents: db 1
-	person_event SPRITE_PHARMACIST, 2, 3, SPRITEMOVEDATA_STANDING_DOWN, 2, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CeladonMansionRoofHousePharmacistScript, -1
+	db 1 ; object events
+	object_event  3,  2, SPRITE_PHARMACIST, SPRITEMOVEDATA_STANDING_DOWN, 2, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_SCRIPT, 0, CeladonMansionRoofHousePharmacistScript, -1
 
 CeladonMansionRoofHousePharmacistScript:
 	checkevent EVENT_GOT_TM03_CURSE

@@ -1,22 +1,19 @@
 GoldenrodSpeechHouse_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 2 ; warp events
+	warp_event  2,  7, GOLDENROD_CITY, 18
+	warp_event  3,  7, GOLDENROD_CITY, 18
 
-GoldenrodSpeechHouse_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 2
-	warp_def 7, 2, 18, GOLDENROD_CITY
-	warp_def 7, 3, 18, GOLDENROD_CITY
+	db 0 ; bg events
 
-.XYTriggers: db 0
-
-.Signposts: db 0
-
-.PersonEvents: db 2
-	person_event SPRITE_LADY, 3, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, GoldenrodSpeechHouseLadyText, -1
-	person_event SPRITE_TEACHER, 2, 7, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, GoldenrodSpeechHouseTeacherText, -1
+	db 2 ; object events
+	object_event  2,  3, SPRITE_LADY, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, GoldenrodSpeechHouseLadyText, -1
+	object_event  7,  2, SPRITE_TEACHER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, GoldenrodSpeechHouseTeacherText, -1
 
 GoldenrodSpeechHouseLadyText:
 	text "The Underground is"

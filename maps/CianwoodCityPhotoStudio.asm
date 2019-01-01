@@ -1,30 +1,27 @@
 CianwoodCityPhotoStudio_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 2 ; warp events
+	warp_event  2,  7, CIANWOOD_CITY, 5
+	warp_event  3,  7, CIANWOOD_CITY, 5
 
-CianwoodCityPhotoStudio_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 2
-	warp_def 7, 2, 5, CIANWOOD_CITY
-	warp_def 7, 3, 5, CIANWOOD_CITY
+	db 0 ; bg events
 
-.XYTriggers: db 0
-
-.Signposts: db 0
-
-.PersonEvents: db 1
-	person_event SPRITE_FISHING_GURU, 3, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, FishingGuruScript_0x9e0e0, -1
+	db 1 ; object events
+	object_event  2,  3, SPRITE_FISHING_GURU, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, FishingGuruScript_0x9e0e0, -1
 
 FishingGuruScript_0x9e0e0:
 	faceplayer
 	opentext
 	checkflag ENGINE_DAILY_PHOTOGRAPH
-	iftrue .AlreadyTookPhoto
+	iftrue_jumpopenedtext PhotoStudioAlreadyDoneText
 	writetext PhotoStudioGreetingText
 	yesorno
-	iffalse .RefusedPhoto
+	iffalse_jumpopenedtext PhotoStudioRefusedText
 	writetext PhotoStudioWhichMonText
 	buttonsound
 	special Special_CianwoodPhotograph
@@ -49,13 +46,10 @@ FishingGuruScript_0x9e0e0:
 	writetext PhotoStudioPrestoText
 	special PlayCurMonCry
 	waitbutton
-	jumpopenedtext PhotoStudioComeAgainText
+	thisopenedtext
 
-.AlreadyTookPhoto:
-	jumpopenedtext PhotoStudioAlreadyDoneText
-
-.RefusedPhoto:
-	jumpopenedtext PhotoStudioRefusedText
+	text "Come again, OK?"
+	done
 
 .NoPicture:
 	jumpopenedtext PhotoStudioNoPictureText
@@ -95,10 +89,6 @@ PhotoStudioPrestoText:
 	text_from_ram wStringBuffer3
 	text ""
 	line "looks happier!"
-	done
-
-PhotoStudioComeAgainText:
-	text "Come again, OK?"
 	done
 
 PhotoStudioAlreadyDoneText:

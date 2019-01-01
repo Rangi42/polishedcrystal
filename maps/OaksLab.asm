@@ -1,44 +1,41 @@
 OaksLab_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 2 ; warp events
+	warp_event  4, 11, PALLET_TOWN, 3
+	warp_event  5, 11, PALLET_TOWN, 3
 
-OaksLab_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 2
-	warp_def 11, 4, 3, PALLET_TOWN
-	warp_def 11, 5, 3, PALLET_TOWN
+	db 16 ; bg events
+	bg_event  6,  1, SIGNPOST_JUMPSTD, difficultbookshelf
+	bg_event  7,  1, SIGNPOST_JUMPSTD, difficultbookshelf
+	bg_event  8,  1, SIGNPOST_JUMPSTD, difficultbookshelf
+	bg_event  9,  1, SIGNPOST_JUMPSTD, difficultbookshelf
+	bg_event  0,  7, SIGNPOST_JUMPSTD, difficultbookshelf
+	bg_event  1,  7, SIGNPOST_JUMPSTD, difficultbookshelf
+	bg_event  2,  7, SIGNPOST_JUMPSTD, difficultbookshelf
+	bg_event  3,  7, SIGNPOST_JUMPSTD, difficultbookshelf
+	bg_event  6,  7, SIGNPOST_JUMPSTD, difficultbookshelf
+	bg_event  7,  7, SIGNPOST_JUMPSTD, difficultbookshelf
+	bg_event  8,  7, SIGNPOST_JUMPSTD, difficultbookshelf
+	bg_event  9,  7, SIGNPOST_JUMPSTD, difficultbookshelf
+	bg_event  4,  0, SIGNPOST_JUMPTEXT, OaksLabPoster1Text
+	bg_event  5,  0, SIGNPOST_JUMPTEXT, OaksLabPoster2Text
+	bg_event  9,  3, SIGNPOST_JUMPTEXT, OaksLabTrashcanText
+	bg_event  0,  1, SIGNPOST_JUMPTEXT, OaksLabPCText
 
-.XYTriggers: db 0
+	db 6 ; object events
+	object_event  4,  2, SPRITE_OAK, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Oak, -1
+	object_event  7,  3, SPRITE_EEVEE, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_SCRIPT, 0, EeveeDollScript, EVENT_DECO_EEVEE_DOLL
+	object_event  1,  8, SPRITE_SCIENTIST, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, OaksAssistant1Text, -1
+	object_event  8,  9, SPRITE_SCIENTIST, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, OaksAssistant2Text, -1
+	object_event  1,  4, SPRITE_SCIENTIST, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, OaksAssistant3Text, -1
+	object_event  2,  1, SPRITE_BOOK_PAPER_POKEDEX, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptext, OaksLabPokedexText, -1
 
-.Signposts: db 16
-	signpost 1, 6, SIGNPOST_JUMPSTD, difficultbookshelf
-	signpost 1, 7, SIGNPOST_JUMPSTD, difficultbookshelf
-	signpost 1, 8, SIGNPOST_JUMPSTD, difficultbookshelf
-	signpost 1, 9, SIGNPOST_JUMPSTD, difficultbookshelf
-	signpost 7, 0, SIGNPOST_JUMPSTD, difficultbookshelf
-	signpost 7, 1, SIGNPOST_JUMPSTD, difficultbookshelf
-	signpost 7, 2, SIGNPOST_JUMPSTD, difficultbookshelf
-	signpost 7, 3, SIGNPOST_JUMPSTD, difficultbookshelf
-	signpost 7, 6, SIGNPOST_JUMPSTD, difficultbookshelf
-	signpost 7, 7, SIGNPOST_JUMPSTD, difficultbookshelf
-	signpost 7, 8, SIGNPOST_JUMPSTD, difficultbookshelf
-	signpost 7, 9, SIGNPOST_JUMPSTD, difficultbookshelf
-	signpost 0, 4, SIGNPOST_JUMPTEXT, OaksLabPoster1Text
-	signpost 0, 5, SIGNPOST_JUMPTEXT, OaksLabPoster2Text
-	signpost 3, 9, SIGNPOST_JUMPTEXT, OaksLabTrashcanText
-	signpost 1, 0, SIGNPOST_JUMPTEXT, OaksLabPCText
-
-.PersonEvents: db 6
-	person_event SPRITE_OAK, 2, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Oak, -1
-	person_event SPRITE_EEVEE, 3, 7, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, EeveeDollScript, EVENT_DECO_EEVEE_DOLL
-	person_event SPRITE_SCIENTIST, 8, 1, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, OaksAssistant1Text, -1
-	person_event SPRITE_SCIENTIST, 9, 8, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, OaksAssistant2Text, -1
-	person_event SPRITE_SCIENTIST, 4, 1, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, OaksAssistant3Text, -1
-	person_event SPRITE_BOOK_PAPER_POKEDEX, 1, 2, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptext, OaksLabPokedexText, -1
-
-const_value set 1
+	const_def 1 ; object constants
 	const OAKSLAB_OAK
 	const OAKSLAB_EEVEE_DOLL
 
@@ -63,7 +60,7 @@ Oak:
 	checkcode VAR_PARTYCOUNT
 	if_equal $6, .PartyFull
 	checkevent EVENT_GOT_BULBASAUR_FROM_IVY
-	iftrue .Eevee
+	iftrue .Charmander
 	checkevent EVENT_GOT_CHARMANDER_FROM_IVY
 	iftrue .Squirtle
 	pokenamemem BULBASAUR, $0
@@ -75,7 +72,7 @@ Oak:
 	setevent EVENT_GOT_A_POKEMON_FROM_OAK
 	jump .CheckBadges
 
-.Eevee:
+.Charmander:
 	pokenamemem CHARMANDER, $0
 	writetext OakLabReceivedKantoStarterText
 	playsound SFX_CAUGHT_MON
@@ -99,6 +96,8 @@ Oak:
 	writetext OakLabPartyFullText
 	waitbutton
 .CheckBadges:
+	checkevent EVENT_OPENED_MT_SILVER
+	iftrue .CheckPokedex
 	checkevent EVENT_BEAT_ELITE_FOUR_AGAIN
 	iftrue .BattleOak
 	checkcode VAR_BADGES

@@ -1,5 +1,5 @@
 treemon_map: macro
-	map \1
+	map_id \1
 	db  \2 ; treemon set
 endm
 

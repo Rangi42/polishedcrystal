@@ -1,23 +1,20 @@
 IceIsland_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 6 ; warp events
+	warp_event  6, 29, SHAMOUTI_COAST, 2
+	warp_event 20, 29, ICE_ISLAND_ROOF, 1
+	warp_event  7,  5, ICE_ISLAND, 4
+	warp_event 21,  5, ICE_ISLAND, 3
+	warp_event 21, 26, ICE_ISLAND, 6
+	warp_event  7, 26, ICE_ISLAND, 5 ; hole
 
-IceIsland_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 6
-	warp_def 29, 6, 2, SHAMOUTI_COAST
-	warp_def 29, 20, 1, ICE_ISLAND_ROOF
-	warp_def 5, 7, 4, ICE_ISLAND
-	warp_def 5, 21, 3, ICE_ISLAND
-	warp_def 26, 21, 6, ICE_ISLAND
-	warp_def 26, 7, 5, ICE_ISLAND ; hole
+	db 0 ; bg events
 
-.XYTriggers: db 0
-
-.Signposts: db 0
-
-.PersonEvents: db 1
-	itemball_event 6, 19, ICY_ROCK, 1, EVENT_ICE_ISLAND_ICY_ROCK
+	db 1 ; object events
+	itemball_event 19,  6, ICY_ROCK, 1, EVENT_ICE_ISLAND_ICY_ROCK
 

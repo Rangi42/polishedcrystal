@@ -1,3 +1,26 @@
+add_tm: MACRO
+if !DEF(TM01)
+TM01 = const_value
+	enum_start 1
+endc
+	define _\@_1, "TM_\1"
+	const _\@_1
+	enum \1_TMNUM
+ENDM
+
+add_hm: MACRO
+if !DEF(HM01)
+HM01 = const_value
+endc
+	define _\@_1, "HM_\1"
+	const _\@_1
+	enum \1_TMNUM
+ENDM
+
+add_mt: MACRO
+	enum \1_TMNUM
+ENDM
+
 	const_def
 
 	add_tm DYNAMICPUNCH ; $00
@@ -112,4 +135,4 @@ NUM_HMS = const_value - HM01
 	add_mt ZAP_CANNON   ; $69
 	add_mt ZEN_HEADBUTT ; $6a
 
-NUM_TMHMS EQU ZEN_HEADBUTT_TMNUM
+NUM_TMHMS EQU __enum__ +- 1

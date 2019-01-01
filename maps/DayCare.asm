@@ -1,30 +1,27 @@
 DayCare_MapScriptHeader:
+	db 1 ; scene scripts
+	scene_script DayCareTrigger0
 
-.MapTriggers: db 1
-	dw DayCareTrigger0
+	db 1 ; callbacks
+	callback MAPCALLBACK_OBJECTS, DayCareEggCheckCallback
 
-.MapCallbacks: db 1
-	dbw MAPCALLBACK_OBJECTS, DayCareEggCheckCallback
+	db 4 ; warp events
+	warp_event  0,  4, ROUTE_34, 3
+	warp_event  0,  5, ROUTE_34, 4
+	warp_event  2,  7, ROUTE_34, 5
+	warp_event  3,  7, ROUTE_34, 5
 
-DayCare_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 4
-	warp_def 4, 0, 3, ROUTE_34
-	warp_def 5, 0, 4, ROUTE_34
-	warp_def 7, 2, 5, ROUTE_34
-	warp_def 7, 3, 5, ROUTE_34
+	db 1 ; bg events
+	bg_event  5,  1, SIGNPOST_JUMPSTD, difficultbookshelf
 
-.XYTriggers: db 0
+	db 3 ; object events
+	object_event  5,  3, SPRITE_GRANNY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, DayCareLadyScript, -1
+	object_event  0,  5, SPRITE_LYRA, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LYRA_DAYCARE
+	object_event  2,  3, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, DayCareManScript_Inside, EVENT_DAYCARE_MAN_IN_DAYCARE
 
-.Signposts: db 1
-	signpost 1, 5, SIGNPOST_JUMPSTD, difficultbookshelf
-
-.PersonEvents: db 3
-	person_event SPRITE_GRANNY, 3, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, DayCareLadyScript, -1
-	person_event SPRITE_LYRA, 5, 0, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LYRA_DAYCARE
-	person_event SPRITE_GRAMPS, 3, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, DayCareManScript_Inside, EVENT_DAYCARE_MAN_IN_DAYCARE
-
-const_value set 1
+	const_def 1 ; object constants
 	const DAYCARE_GRANNY
 	const DAYCARE_LYRA
 
@@ -120,7 +117,7 @@ DayCareLadyScript:
 	faceplayer
 	opentext
 	checkflag ENGINE_DAYCARE_MAN_HAS_EGG
-	iftrue .HusbandWasLookingForYou
+	iftrue_jumpopenedtext Text_GrampsLookingForYou
 	checkevent EVENT_LYRA_GAVE_AWAY_EGG
 	iffalse .NoLyrasEgg
 	checkevent EVENT_GOT_LYRAS_EGG
@@ -156,9 +153,6 @@ DayCareLadyScript:
 .NoLyrasEgg:
 	special Special_DayCareLady
 	waitendtext
-
-.HusbandWasLookingForYou:
-	jumpopenedtext Text_GrampsLookingForYou
 
 DayCareMovementData_LyraApproachesGrandma:
 	step_right

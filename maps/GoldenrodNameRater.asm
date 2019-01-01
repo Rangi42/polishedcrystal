@@ -1,23 +1,20 @@
 GoldenrodNameRater_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 2 ; warp events
+	warp_event  2,  7, GOLDENROD_CITY, 8
+	warp_event  3,  7, GOLDENROD_CITY, 8
 
-GoldenrodNameRater_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 2
-	warp_def 7, 2, 8, GOLDENROD_CITY
-	warp_def 7, 3, 8, GOLDENROD_CITY
+	db 2 ; bg events
+	bg_event  5,  1, SIGNPOST_JUMPSTD, radio2
+	bg_event  7,  1, SIGNPOST_JUMPSTD, difficultbookshelf
 
-.XYTriggers: db 0
-
-.Signposts: db 2
-	signpost 1, 5, SIGNPOST_JUMPSTD, radio2
-	signpost 1, 7, SIGNPOST_JUMPSTD, difficultbookshelf
-
-.PersonEvents: db 1
-	person_event SPRITE_GENTLEMAN, 4, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GoldenrodNameRater, -1
+	db 1 ; object events
+	object_event  2,  4, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_DOWN, 0, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GoldenrodNameRater, -1
 
 GoldenrodNameRater:
 	faceplayer

@@ -1,23 +1,20 @@
 EcruteakMart_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 2 ; warp events
+	warp_event  2,  7, ECRUTEAK_CITY, 9
+	warp_event  3,  7, ECRUTEAK_CITY, 9
 
-EcruteakMart_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 2
-	warp_def 7, 2, 9, ECRUTEAK_CITY
-	warp_def 7, 3, 9, ECRUTEAK_CITY
+	db 0 ; bg events
 
-.XYTriggers: db 0
-
-.Signposts: db 0
-
-.PersonEvents: db 3
-	mart_clerk_event 3, 1, MARTTYPE_STANDARD, MART_ECRUTEAK
-	person_event SPRITE_SUPER_NERD, 2, 5, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x99c48, -1
-	person_event SPRITE_RICH_BOY, 6, 6, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x99cd5, -1
+	db 3 ; object events
+	mart_clerk_event  1,  3, MARTTYPE_STANDARD, MART_ECRUTEAK
+	object_event  5,  2, SPRITE_SUPER_NERD, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x99c48, -1
+	object_event  6,  6, SPRITE_RICH_BOY, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_PURPLE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x99cd5, -1
 
 UnknownText_0x99c48:
 	text "My Eevee evolved"

@@ -164,10 +164,11 @@ Group36Sprites:
 	db SPRITE_OFFICER ; doesn't walk
 	; 13 walking sprites (9 that walk)
 	db SPRITE_BALL_CUT_FRUIT
+	db SPRITE_MISC_OVERHEAD
 	db SPRITE_WEIRD_TREE
 	db SPRITE_SMEARGLE
 	db SPRITE_SUICUNE
-	; 17 total sprites
+	; 18 total sprites
 	db 0
 
 

@@ -1,33 +1,33 @@
 Route34Coast_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 0 ; warp events
 
-Route34Coast_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 0
+	db 0 ; bg events
 
-.XYTriggers: db 0
+	db 8 ; object events
+	object_event  7, 45, SPRITE_SWIMMER_GUY, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerSwimmermFrank, -1
+	object_event  9, 19, SPRITE_SWIMMER_GUY, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerSwimmermNadar, -1
+	object_event  8, 61, SPRITE_SWIMMER_GUY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_GENERICTRAINER, 5, GenericTrainerSwimmermConrad, -1
+	object_event  8, 42, SPRITE_GOLDENROD_LYRA, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerSwimmerfCaroline, -1
+	object_event  8,  6, SPRITE_GOLDENROD_LYRA, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerSwimmerfNatalia, -1
+	object_event  8, 29, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerFisherFrancis, -1
+	object_event  6, 32, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerBird_keeperTony, -1
+	itemball_event  4, 34, PEARL_STRING, 1, EVENT_ROUTE_34_COAST_PEARL_STRING
 
-.Signposts: db 0
+GenericTrainerSwimmermFrank:
+	generictrainer SWIMMERM, FRANK, EVENT_BEAT_SWIMMERM_FRANK, .SeenText, .BeatenText
 
-.PersonEvents: db 8
-	person_event SPRITE_SWIMMER_GUY, 45, 7, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerSwimmermFrank, -1
-	person_event SPRITE_SWIMMER_GUY, 19, 9, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerSwimmermNadar, -1
-	person_event SPRITE_SWIMMER_GUY, 61, 8, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 5, TrainerSwimmermConrad, -1
-	person_event SPRITE_GOLDENROD_LYRA, 42, 8, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerSwimmerfCaroline, -1
-	person_event SPRITE_GOLDENROD_LYRA, 6, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerSwimmerfNatalia, -1
-	person_event SPRITE_FISHER, 29, 8, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherFrancis, -1
-	person_event SPRITE_YOUNGSTER, 32, 6, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerBird_keeperTony, -1
-	itemball_event 34, 4, PEARL_STRING, 1, EVENT_ROUTE_34_COAST_PEARL_STRING
+	text "Sea, sand, sun,"
+	line "and #mon!"
 
-TrainerSwimmermFrank:
-	trainer EVENT_BEAT_SWIMMERM_FRANK, SWIMMERM, FRANK, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
+	para "What more could a"
+	line "guy need?"
+	done
 
 .SeenText:
 	text "I'm vacationing"
@@ -41,20 +41,15 @@ TrainerSwimmermFrank:
 	line "I'm on vacation!"
 	done
 
-.AfterText:
-	text "Sea, sand, sun,"
-	line "and #mon!"
+GenericTrainerSwimmermNadar:
+	generictrainer SWIMMERM, NADAR, EVENT_BEAT_SWIMMERM_NADAR, .SeenText, .BeatenText
 
-	para "What more could a"
-	line "guy need?"
+	text "Practice swimming,"
+	line "or train with my"
+	cont "#mon?"
+
+	para "What a dilemma."
 	done
-
-TrainerSwimmermNadar:
-	trainer EVENT_BEAT_SWIMMERM_NADAR, SWIMMERM, NADAR, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Swimming is my"
@@ -69,20 +64,15 @@ TrainerSwimmermNadar:
 	line "speciality?"
 	done
 
-.AfterText:
-	text "Practice swimming,"
-	line "or train with my"
-	cont "#mon?"
+GenericTrainerSwimmermConrad:
+	generictrainer SWIMMERM, CONRAD, EVENT_BEAT_SWIMMERM_CONRAD, .SeenText, .BeatenText
 
-	para "What a dilemma."
+	text "UV rays are refle-"
+	line "cted by the waves."
+
+	para "Always remember"
+	line "sun lotion."
 	done
-
-TrainerSwimmermConrad:
-	trainer EVENT_BEAT_SWIMMERM_CONRAD, SWIMMERM, CONRAD, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Lotion on, goggles"
@@ -97,20 +87,16 @@ TrainerSwimmermConrad:
 	line "hit me this time."
 	done
 
-.AfterText:
-	text "UV rays are refle-"
-	line "cted by the waves."
+GenericTrainerSwimmerfCaroline:
+	generictrainer SWIMMERF, CAROLINE, EVENT_BEAT_SWIMMERF_CAROLINE, .SeenText, .BeatenText
 
-	para "Always remember"
-	line "sun lotion."
+	text "We're staying in"
+	line "Goldenrod, but"
+
+	para "this Route makes"
+	line "for a lovely"
+	cont "excursion!"
 	done
-
-TrainerSwimmerfCaroline:
-	trainer EVENT_BEAT_SWIMMERF_CAROLINE, SWIMMERF, CAROLINE, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "My husband and I"
@@ -122,21 +108,15 @@ TrainerSwimmerfCaroline:
 	text "Oh! What a shame."
 	done
 
-.AfterText:
-	text "We're staying in"
-	line "Goldenrod, but"
+GenericTrainerSwimmerfNatalia:
+	generictrainer SWIMMERF, NATALIA, EVENT_BEAT_SWIMMERF_NATALIA, .SeenText, .BeatenText
 
-	para "this Route makes"
-	line "for a lovely"
-	cont "excursion!"
+	text "I think I bought"
+	line "the wrong bikini."
+
+	para "This really isn't"
+	line "my color."
 	done
-
-TrainerSwimmerfNatalia:
-	trainer EVENT_BEAT_SWIMMERF_NATALIA, SWIMMERF, NATALIA, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "I bought a new"
@@ -150,20 +130,16 @@ TrainerSwimmerfNatalia:
 	text "Bah!"
 	done
 
-.AfterText:
-	text "I think I bought"
-	line "the wrong bikini."
+GenericTrainerFisherFrancis:
+	generictrainer FISHER, FRANCIS, EVENT_BEAT_FISHER_FRANCIS, .SeenText, .BeatenText
 
-	para "This really isn't"
-	line "my color."
+	text "It doesn't matter"
+	line "if I win or lose."
+
+	para "I just want to"
+	line "have fun and keep"
+	cont "fishing."
 	done
-
-TrainerFisherFrancis:
-	trainer EVENT_BEAT_FISHER_FRANCIS, FISHER, FRANCIS, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "I like fishing for"
@@ -176,21 +152,13 @@ TrainerFisherFrancis:
 	line "hit!"
 	done
 
-.AfterText:
-	text "It doesn't matter"
-	line "if I win or lose."
+GenericTrainerBird_keeperTony:
+	generictrainer BIRD_KEEPER, BIRD_KEEPER_TONY, EVENT_BEAT_BIRD_KEEPER_TONY, .SeenText, .BeatenText
 
-	para "I just want to"
-	line "have fun and keep"
-	cont "fishing."
+	text "Everybody's heard"
+	line "that the bird is"
+	cont "the word."
 	done
-
-TrainerBird_keeperTony:
-	trainer EVENT_BEAT_BIRD_KEEPER_TONY, BIRD_KEEPER, BIRD_KEEPER_TONY, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Have you heard"
@@ -200,11 +168,5 @@ TrainerBird_keeperTony:
 .BeatenText:
 	text "Don't you know"
 	line "about the bird?"
-	done
-
-.AfterText:
-	text "Everybody's heard"
-	line "that the bird is"
-	cont "the word."
 	done
 

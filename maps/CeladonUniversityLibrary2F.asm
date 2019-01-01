@@ -1,54 +1,51 @@
 CeladonUniversityLibrary2F_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 1 ; warp events
+	warp_event  7,  0, CELADON_UNIVERSITY_LIBRARY_1F, 3
 
-CeladonUniversityLibrary2F_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 1
-	warp_def 0, 7, 3, CELADON_UNIVERSITY_LIBRARY_1F
+	db 28 ; bg events
+	bg_event  4,  0, SIGNPOST_JUMPTEXT, CeladonUniversityLibrary1FSignpost1Text
+	bg_event 10,  0, SIGNPOST_JUMPTEXT, CeladonUniversityLibrary1FSignpost2Text
+	bg_event  0,  3, SIGNPOST_JUMPTEXT, CeladonUniversityLibrary2FBookshelf1Text
+	bg_event  1,  3, SIGNPOST_JUMPTEXT, CeladonUniversityLibrary2FBookshelf2Text
+	bg_event  2,  3, SIGNPOST_JUMPTEXT, CeladonUniversityLibrary2FBookshelf3Text
+	bg_event  3,  3, SIGNPOST_JUMPTEXT, CeladonUniversityLibrary2FBookshelf4Text
+	bg_event  4,  3, SIGNPOST_JUMPTEXT, CeladonUniversityLibrary2FBookshelf5Text
+	bg_event  5,  3, SIGNPOST_JUMPTEXT, CeladonUniversityLibrary2FBookshelf6Text
+	bg_event  8,  3, SIGNPOST_JUMPTEXT, CeladonUniversityLibrary2FBookshelf7Text
+	bg_event  9,  3, SIGNPOST_JUMPTEXT, CeladonUniversityLibrary2FBookshelf8Text
+	bg_event 10,  3, SIGNPOST_JUMPTEXT, CeladonUniversityLibrary2FBookshelf9Text
+	bg_event 11,  3, SIGNPOST_JUMPTEXT, CeladonUniversityLibrary2FBookshelf10Text
+	bg_event 12,  3, SIGNPOST_JUMPTEXT, CeladonUniversityLibrary2FBookshelf11Text
+	bg_event 13,  3, SIGNPOST_JUMPTEXT, CeladonUniversityLibrary2FBookshelf12Text
+	bg_event  6,  7, SIGNPOST_JUMPTEXT, CeladonUniversityLibrary2FBookshelf13Text
+	bg_event  7,  7, SIGNPOST_JUMPTEXT, CeladonUniversityLibrary2FBookshelf14Text
+	bg_event  8,  7, SIGNPOST_JUMPTEXT, CeladonUniversityLibrary2FBookshelf15Text
+	bg_event  9,  7, SIGNPOST_JUMPTEXT, CeladonUniversityLibrary2FBookshelf16Text
+	bg_event 10,  7, SIGNPOST_JUMPTEXT, CeladonUniversityLibrary2FBookshelf17Text
+	bg_event 11,  7, SIGNPOST_JUMPTEXT, CeladonUniversityLibrary2FBookshelf18Text
+	bg_event 12,  7, SIGNPOST_JUMPTEXT, CeladonUniversityLibrary2FBookshelf19Text
+	bg_event 13,  7, SIGNPOST_JUMPTEXT, CeladonUniversityLibrary2FBookshelf20Text
+	bg_event  1,  6, SIGNPOST_RIGHT, CeladonUniversityLibrary2FComputer1
+	bg_event  3,  6, SIGNPOST_RIGHT, CeladonUniversityLibrary2FComputer2
+	bg_event  1,  8, SIGNPOST_RIGHT, CeladonUniversityLibrary2FComputer3
+	bg_event  3,  8, SIGNPOST_RIGHT, CeladonUniversityLibrary2FComputer1
+	bg_event  1, 10, SIGNPOST_RIGHT, CeladonUniversityLibrary2FComputer1
+	bg_event  3, 10, SIGNPOST_RIGHT, CeladonUniversityLibrary2FComputer4
 
-.XYTriggers: db 0
-
-.Signposts: db 28
-	signpost 0, 4, SIGNPOST_JUMPTEXT, CeladonUniversityLibrary1FSignpost1Text
-	signpost 0, 10, SIGNPOST_JUMPTEXT, CeladonUniversityLibrary1FSignpost2Text
-	signpost 3, 0, SIGNPOST_JUMPTEXT, CeladonUniversityLibrary2FBookshelf1Text
-	signpost 3, 1, SIGNPOST_JUMPTEXT, CeladonUniversityLibrary2FBookshelf2Text
-	signpost 3, 2, SIGNPOST_JUMPTEXT, CeladonUniversityLibrary2FBookshelf3Text
-	signpost 3, 3, SIGNPOST_JUMPTEXT, CeladonUniversityLibrary2FBookshelf4Text
-	signpost 3, 4, SIGNPOST_JUMPTEXT, CeladonUniversityLibrary2FBookshelf5Text
-	signpost 3, 5, SIGNPOST_JUMPTEXT, CeladonUniversityLibrary2FBookshelf6Text
-	signpost 3, 8, SIGNPOST_JUMPTEXT, CeladonUniversityLibrary2FBookshelf7Text
-	signpost 3, 9, SIGNPOST_JUMPTEXT, CeladonUniversityLibrary2FBookshelf8Text
-	signpost 3, 10, SIGNPOST_JUMPTEXT, CeladonUniversityLibrary2FBookshelf9Text
-	signpost 3, 11, SIGNPOST_JUMPTEXT, CeladonUniversityLibrary2FBookshelf10Text
-	signpost 3, 12, SIGNPOST_JUMPTEXT, CeladonUniversityLibrary2FBookshelf11Text
-	signpost 3, 13, SIGNPOST_JUMPTEXT, CeladonUniversityLibrary2FBookshelf12Text
-	signpost 7, 6, SIGNPOST_JUMPTEXT, CeladonUniversityLibrary2FBookshelf13Text
-	signpost 7, 7, SIGNPOST_JUMPTEXT, CeladonUniversityLibrary2FBookshelf14Text
-	signpost 7, 8, SIGNPOST_JUMPTEXT, CeladonUniversityLibrary2FBookshelf15Text
-	signpost 7, 9, SIGNPOST_JUMPTEXT, CeladonUniversityLibrary2FBookshelf16Text
-	signpost 7, 10, SIGNPOST_JUMPTEXT, CeladonUniversityLibrary2FBookshelf17Text
-	signpost 7, 11, SIGNPOST_JUMPTEXT, CeladonUniversityLibrary2FBookshelf18Text
-	signpost 7, 12, SIGNPOST_JUMPTEXT, CeladonUniversityLibrary2FBookshelf19Text
-	signpost 7, 13, SIGNPOST_JUMPTEXT, CeladonUniversityLibrary2FBookshelf20Text
-	signpost 6, 1, SIGNPOST_RIGHT, CeladonUniversityLibrary2FComputer1
-	signpost 6, 3, SIGNPOST_RIGHT, CeladonUniversityLibrary2FComputer2
-	signpost 8, 1, SIGNPOST_RIGHT, CeladonUniversityLibrary2FComputer3
-	signpost 8, 3, SIGNPOST_RIGHT, CeladonUniversityLibrary2FComputer1
-	signpost 10, 1, SIGNPOST_RIGHT, CeladonUniversityLibrary2FComputer1
-	signpost 10, 3, SIGNPOST_RIGHT, CeladonUniversityLibrary2FComputer4
-
-.PersonEvents: db 7
-	person_event SPRITE_COSPLAYER, 4, 3, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityLibrary2FCosplayerText, -1
-	person_event SPRITE_LASS, 5, 11, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityLibrary2FLassText, -1
-	person_event SPRITE_ARTIST, 9, 0, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeladonUniversityLibrary2FArtistScript, -1
-	person_event SPRITE_SUPER_NERD, 11, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityLibrary2FSuper_nerdText, -1
-	person_event SPRITE_COOLTRAINER_F, 11, 8, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityLibrary2FCooltrainerfText, -1
-	person_event SPRITE_YOUNGSTER, 10, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityLibrary2FYoungsterText, -1
-	itemball_event 1, 0, TIMER_BALL, 1, EVENT_CELADON_UNIVERSITY_LIBRARY_2F_TIMER_BALL
+	db 7 ; object events
+	object_event  3,  4, SPRITE_COSPLAYER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityLibrary2FCosplayerText, -1
+	object_event 11,  5, SPRITE_LASS, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityLibrary2FLassText, -1
+	object_event  0,  9, SPRITE_ARTIST, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, CeladonUniversityLibrary2FArtistScript, -1
+	object_event  2, 11, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityLibrary2FSuper_nerdText, -1
+	object_event  8, 11, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityLibrary2FCooltrainerfText, -1
+	object_event 11, 10, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityLibrary2FYoungsterText, -1
+	itemball_event  0,  1, TIMER_BALL, 1, EVENT_CELADON_UNIVERSITY_LIBRARY_2F_TIMER_BALL
 
 CeladonUniversityLibrary2FCosplayerText:
 	text "It's great being"

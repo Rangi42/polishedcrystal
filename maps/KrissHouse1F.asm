@@ -1,35 +1,32 @@
 KrissHouse1F_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 3 ; warp events
+	warp_event  6,  7, NEW_BARK_TOWN, 2
+	warp_event  7,  7, NEW_BARK_TOWN, 2
+	warp_event  9,  0, KRISS_HOUSE_2F, 1
 
-KrissHouse1F_MapEventHeader:
+	db 3 ; coord events
+	coord_event  8,  4, 0, MomTrigger1
+	coord_event  9,  4, 0, MomTrigger2
+	coord_event  7,  2, 0, MomTrigger3
 
-.Warps: db 3
-	warp_def 7, 6, 2, NEW_BARK_TOWN
-	warp_def 7, 7, 2, NEW_BARK_TOWN
-	warp_def 0, 9, 1, KRISS_HOUSE_2F
+	db 4 ; bg events
+	bg_event  0,  1, SIGNPOST_JUMPTEXT, FridgeText
+	bg_event  1,  1, SIGNPOST_JUMPTEXT, SinkText
+	bg_event  2,  1, SIGNPOST_JUMPTEXT, StoveText
+	bg_event  7,  1, SIGNPOST_UP, TVScript
 
-.XYTriggers: db 3
-	xy_trigger 0, 4, 8, MomTrigger1
-	xy_trigger 0, 4, 9, MomTrigger2
-	xy_trigger 0, 2, 7, MomTrigger3
+	db 5 ; object events
+	object_event  7,  4, SPRITE_MOM, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, MomScript, EVENT_KRISS_HOUSE_MOM_1
+	object_event  2,  2, SPRITE_MOM, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, (1 << MORN), 0, PERSONTYPE_SCRIPT, 0, MomScript, EVENT_KRISS_HOUSE_MOM_2
+	object_event  7,  4, SPRITE_MOM, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, (1 << DAY), 0, PERSONTYPE_SCRIPT, 0, MomScript, EVENT_KRISS_HOUSE_MOM_2
+	object_event  0,  2, SPRITE_MOM, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, (1 << NITE), 0, PERSONTYPE_SCRIPT, 0, MomScript, EVENT_KRISS_HOUSE_MOM_2
+	object_event  4,  4, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, NeighborScript, EVENT_KRISS_HOUSE_1F_NEIGHBOR
 
-.Signposts: db 4
-	signpost 1, 0, SIGNPOST_JUMPTEXT, FridgeText
-	signpost 1, 1, SIGNPOST_JUMPTEXT, SinkText
-	signpost 1, 2, SIGNPOST_JUMPTEXT, StoveText
-	signpost 1, 7, SIGNPOST_UP, TVScript
-
-.PersonEvents: db 5
-	person_event SPRITE_MOM, 4, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, MomScript, EVENT_KRISS_HOUSE_MOM_1
-	person_event SPRITE_MOM, 2, 2, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, (1 << MORN), 0, PERSONTYPE_SCRIPT, 0, MomScript, EVENT_KRISS_HOUSE_MOM_2
-	person_event SPRITE_MOM, 4, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, (1 << DAY), 0, PERSONTYPE_SCRIPT, 0, MomScript, EVENT_KRISS_HOUSE_MOM_2
-	person_event SPRITE_MOM, 2, 0, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, (1 << NITE), 0, PERSONTYPE_SCRIPT, 0, MomScript, EVENT_KRISS_HOUSE_MOM_2
-	person_event SPRITE_POKEFAN_F, 4, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, NeighborScript, EVENT_KRISS_HOUSE_1F_NEIGHBOR
-
-const_value set 1
+	const_def 1 ; object constants
 	const KRISSHOUSE1F_MOM1
 
 MomTrigger1:
@@ -135,20 +132,20 @@ MomScript:
 	iffalse .MomEvent
 	opentext
 	checkevent EVENT_FIRST_TIME_BANKING_WITH_MOM
-	iftrue .DoIt
+	iftrue_jumpopenedtext MomDoItText
 	checkevent EVENT_TALKED_TO_MOM_AFTER_MYSTERY_EGG_QUEST
 	iftrue .BankOfMom
 	checkevent EVENT_GAVE_MYSTERY_EGG_TO_ELM
 	iftrue .FirstTimeBanking
 	checkevent EVENT_GOT_A_POKEMON_FROM_ELM
-	iftrue .Errand
-	jumpopenedtext MomHurryUpText
+	iftrue_jumpopenedtext MomErrandText
+	thisopenedtext
 
-.Errand:
-	jumpopenedtext MomErrandText
+	text "Prof.Elm is wait-"
+	line "ing for you."
 
-.DoIt:
-	jumpopenedtext MomDoItText
+	para "Hurry up, baby!"
+	done
 
 .FirstTimeBanking:
 	setevent EVENT_FIRST_TIME_BANKING_WITH_MOM
@@ -239,13 +236,6 @@ MomInstructionsText:
 MomOutroText:
 	text "Gee, aren't they"
 	line "convenient?"
-	done
-
-MomHurryUpText:
-	text "Prof.Elm is wait-"
-	line "ing for you."
-
-	para "Hurry up, baby!"
 	done
 
 MomErrandText:

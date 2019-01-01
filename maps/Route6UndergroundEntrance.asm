@@ -1,18 +1,15 @@
 Route6UndergroundEntrance_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 3 ; warp events
+	warp_event  3,  7, ROUTE_6, 1
+	warp_event  4,  7, ROUTE_6, 1
+	warp_event  4,  4, UNDERGROUND, 2
 
-Route6UndergroundEntrance_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 3
-	warp_def 7, 3, 1, ROUTE_6
-	warp_def 7, 4, 1, ROUTE_6
-	warp_def 4, 4, 2, UNDERGROUND
+	db 0 ; bg events
 
-.XYTriggers: db 0
-
-.Signposts: db 0
-
-.PersonEvents: db 0
+	db 0 ; object events

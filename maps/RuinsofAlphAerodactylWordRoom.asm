@@ -1,18 +1,15 @@
 RuinsofAlphAerodactylWordRoom_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 3 ; warp events
+	warp_event  9,  5, RUINS_OF_ALPH_AERODACTYL_ITEM_ROOM, 3
+	warp_event 10,  5, RUINS_OF_ALPH_AERODACTYL_ITEM_ROOM, 4
+	warp_event 17, 11, RUINS_OF_ALPH_INNER_CHAMBER, 8
 
-RuinsofAlphAerodactylWordRoom_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 3
-	warp_def 5, 9, 3, RUINS_OF_ALPH_AERODACTYL_ITEM_ROOM
-	warp_def 5, 10, 4, RUINS_OF_ALPH_AERODACTYL_ITEM_ROOM
-	warp_def 11, 17, 8, RUINS_OF_ALPH_INNER_CHAMBER
+	db 0 ; bg events
 
-.XYTriggers: db 0
-
-.Signposts: db 0
-
-.PersonEvents: db 0
+	db 0 ; object events

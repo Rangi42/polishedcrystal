@@ -1,25 +1,22 @@
 SeagallopFerryShamoutiGate_MapScriptHeader:
+	db 2 ; scene scripts
+	scene_script SeagallopFerryShamoutiGateTrigger0
+	scene_script SeagallopFerryShamoutiGateTrigger1
 
-.MapTriggers: db 2
-	dw SeagallopFerryShamoutiGateTrigger0
-	dw SeagallopFerryShamoutiGateTrigger1
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 1 ; warp events
+	warp_event  6,  0, BEAUTIFUL_BEACH, 1
 
-SeagallopFerryShamoutiGate_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 1
-	warp_def 0, 6, 1, BEAUTIFUL_BEACH
+	db 0 ; bg events
 
-.XYTriggers: db 0
+	db 2 ; object events
+	object_event  6,  4, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SeagallopFerryShamoutiGateSailorScript, EVENT_OLIVINE_PORT_SAILOR_AT_GANGWAY
+	object_event  4,  1, SPRITE_TWIN, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, SeagallopFerryShamoutiGateTwinText, -1
 
-.Signposts: db 0
-
-.PersonEvents: db 2
-	person_event SPRITE_SAILOR, 4, 6, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SeagallopFerryShamoutiGateSailorScript, EVENT_OLIVINE_PORT_SAILOR_AT_GANGWAY
-	person_event SPRITE_TWIN, 1, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, SeagallopFerryShamoutiGateTwinText, -1
-
-const_value set 1
+	const_def 1 ; object constants
 	const SEAGALLOPFERRYSHAMOUTIGATE_SAILOR
 
 SeagallopFerryShamoutiGateTrigger1:

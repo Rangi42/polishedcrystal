@@ -1,29 +1,26 @@
 Route48_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 1 ; callbacks
+	callback MAPCALLBACK_NEWMAP, Route48JessieJamesCallback
 
-.MapCallbacks: db 1
-	dbw MAPCALLBACK_NEWMAP, Route48JessieJamesCallback
+	db 1 ; warp events
+	warp_event 11,  5, YELLOW_FOREST_GATE, 3
 
-Route48_MapEventHeader:
+	db 2 ; coord events
+	coord_event 20, 12, 0, Route48JessieJamesScript1
+	coord_event 20, 13, 0, Route48JessieJamesScript2
 
-.Warps: db 1
-	warp_def 5, 11, 3, YELLOW_FOREST_GATE
+	db 1 ; bg events
+	bg_event 27, 11, SIGNPOST_JUMPTEXT, Route48YellowForestSignText
 
-.XYTriggers: db 2
-	xy_trigger 0, 12, 20, Route48JessieJamesScript1
-	xy_trigger 0, 13, 20, Route48JessieJamesScript2
+	db 4 ; object events
+	object_event 11,  6, SPRITE_ARCHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_TRAINER, 1, TrainerArcher2, EVENT_CLEARED_YELLOW_FOREST
+	object_event 15, 12, SPRITE_JESSIE, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_48_JESSIE
+	object_event 26, 12, SPRITE_JAMES, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_48_JAMES
+	itemball_event  4, 13, NUGGET, 1, EVENT_ROUTE_48_NUGGET
 
-.Signposts: db 1
-	signpost 11, 27, SIGNPOST_JUMPTEXT, Route48YellowForestSignText
-
-.PersonEvents: db 4
-	person_event SPRITE_ARCHER, 6, 11, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerArcher2, EVENT_CLEARED_YELLOW_FOREST
-	person_event SPRITE_JESSIE, 12, 15, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_48_JESSIE
-	person_event SPRITE_JAMES, 12, 26, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_48_JAMES
-	itemball_event 13, 4, NUGGET, 1, EVENT_ROUTE_48_NUGGET
-
-const_value set 1
+	const_def 1 ; object constants
 	const ROUTE48_ARCHER
 	const ROUTE48_JESSIE
 	const ROUTE48_JAMES
@@ -96,7 +93,7 @@ JamesLeaveMovementData:
 	step_end
 
 TrainerArcher2:
-	trainer EVENT_BEAT_ARCHER_2, ARCHER, ARCHER2, Archer2SeenText, Archer2BeatenText, 0, Archer2Script
+	trainer ARCHER, ARCHER2, EVENT_BEAT_ARCHER_2, Archer2SeenText, Archer2BeatenText, 0, Archer2Script
 
 Archer2Script:
 	showtext Archer2AfterText

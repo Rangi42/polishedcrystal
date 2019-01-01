@@ -1,28 +1,25 @@
 SinjohRuinsHouse_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 2 ; warp events
+	warp_event  2,  7, SINJOH_RUINS, 2
+	warp_event  3,  7, SINJOH_RUINS, 2
 
-SinjohRuinsHouse_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 2
-	warp_def 7, 2, 2, SINJOH_RUINS
-	warp_def 7, 3, 2, SINJOH_RUINS
+	db 2 ; bg events
+	bg_event  0,  1, SIGNPOST_JUMPSTD, difficultbookshelf
+	bg_event  1,  1, SIGNPOST_JUMPSTD, difficultbookshelf
 
-.XYTriggers: db 0
+	db 4 ; object events
+	object_event  5,  4, SPRITE_CYNTHIA, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_PURPLE, PERSONTYPE_SCRIPT, 0, SinjohRuinsHouseCynthiaScript, EVENT_SINJOH_RUINS_HOUSE_CYNTHIA
+	object_event  5,  3, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, SinjohRuinsHousePokefanmText, -1
+	object_event  2,  4, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_SCRIPT, 0, SinjohRuinsHouseGrampsScript, -1
+	object_event  2,  3, SPRITE_ABRA, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_POKEMON, ABRA, SinjohRuinsHouseAbraText, -1
 
-.Signposts: db 2
-	signpost 1, 0, SIGNPOST_JUMPSTD, difficultbookshelf
-	signpost 1, 1, SIGNPOST_JUMPSTD, difficultbookshelf
-
-.PersonEvents: db 4
-	person_event SPRITE_CYNTHIA, 4, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_SCRIPT, 0, SinjohRuinsHouseCynthiaScript, EVENT_SINJOH_RUINS_HOUSE_CYNTHIA
-	person_event SPRITE_POKEFAN_M, 3, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, SinjohRuinsHousePokefanmText, -1
-	person_event SPRITE_GRAMPS, 4, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, SinjohRuinsHouseGrampsScript, -1
-	person_event SPRITE_ABRA, 3, 2, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_POKEMON, ABRA, SinjohRuinsHouseAbraText, -1
-
-const_value set 1
+	const_def 1 ; object constants
 	const SINJOHRUINSHOUSE_CYNTHIA
 
 SinjohRuinsHouseGrampsScript:
@@ -30,7 +27,7 @@ SinjohRuinsHouseGrampsScript:
 	opentext
 	writetext SinjohRuinsHouseGrampsText
 	yesorno
-	iffalse .No
+	iffalse_jumpopenedtext SinjohRuinsHouseGrampsNoText
 	writetext SinjohRuinsHouseGrampsYesText
 	waitbutton
 	closetext
@@ -40,17 +37,14 @@ SinjohRuinsHouseGrampsScript:
 	warp NEW_BARK_TOWN, 15, 6
 	end
 
-.No:
-	jumpopenedtext SinjohRuinsHouseGrampsNoText
-
 SinjohRuinsHouseCynthiaScript:
+	checkevent EVENT_BEAT_CYNTHIA
+	iftrue_jumptextfaceplayer SinjohRuinsHouseCynthiaAfterText
 	faceplayer
 	opentext
-	checkevent EVENT_BEAT_CYNTHIA
-	iftrue .Beat
 	writetext SinjohRuinsHouseCynthiaChallengeText
 	yesorno
-	iffalse .Refused
+	iffalse_jumpopenedtext SinjohRuinsHouseCynthiaNoText
 	writetext SinjohRuinsHouseCynthiaYesText
 	waitbutton
 	closetext
@@ -60,12 +54,19 @@ SinjohRuinsHouseCynthiaScript:
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_CYNTHIA
-	opentext
-.Beat:
-	jumpopenedtext SinjohRuinsHouseCynthiaAfterText
+	thistext
 
-.Refused:
-	jumpopenedtext SinjohRuinsHouseCynthiaNoText
+SinjohRuinsHouseCynthiaAfterText:
+	text "Cynthia: What an"
+	line "incredible battle!"
+
+	para "You're a great"
+	line "trainer, and it"
+
+	para "would make me"
+	line "happy to see you"
+	cont "again sometime."
+	done
 
 SinjohRuinsHousePokefanmText:
 	text "A long time ago,"
@@ -160,16 +161,4 @@ SinjohRuinsHouseCynthiaWinText:
 
 	para "was outclassed"
 	line "like this!"
-	done
-
-SinjohRuinsHouseCynthiaAfterText:
-	text "Cynthia: What an"
-	line "incredible battle!"
-
-	para "You're a great"
-	line "trainer, and it"
-
-	para "would make me"
-	line "happy to see you"
-	cont "again sometime."
 	done

@@ -1,26 +1,23 @@
 PewterGym_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 2 ; warp events
+	warp_event  4, 13, PEWTER_CITY, 2
+	warp_event  5, 13, PEWTER_CITY, 2
 
-PewterGym_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 2
-	warp_def 13, 4, 2, PEWTER_CITY
-	warp_def 13, 5, 2, PEWTER_CITY
+	db 2 ; bg events
+	bg_event  2, 11, SIGNPOST_READ, PewterGymStatue
+	bg_event  7, 11, SIGNPOST_READ, PewterGymStatue
 
-.XYTriggers: db 0
-
-.Signposts: db 2
-	signpost 11, 2, SIGNPOST_READ, PewterGymStatue
-	signpost 11, 7, SIGNPOST_READ, PewterGymStatue
-
-.PersonEvents: db 4
-	person_event SPRITE_BROCK, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, BrockScript_0x1a2864, -1
-	person_event SPRITE_YOUNGSTER, 7, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerCamperJerry, -1
-	person_event SPRITE_POKEFAN_M, 5, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerHikerEdwin, -1
-	person_event SPRITE_GYM_GUY, 11, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 1, PewterGymGuyScript, -1
+	db 4 ; object events
+	object_event  5,  1, SPRITE_BROCK, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_SCRIPT, 0, BrockScript_0x1a2864, -1
+	object_event  2,  7, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerCamperJerry, -1
+	object_event  7,  5, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerHikerEdwin, -1
+	object_event  6, 11, SPRITE_GYM_GUY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 1, PewterGymGuyScript, -1
 
 BrockScript_0x1a2864:
 	faceplayer
@@ -59,29 +56,37 @@ BrockScript_0x1a2864:
 	specialphonecall SPECIALCALL_LYRASEGG
 .FightDone:
 	checkevent EVENT_GOT_TM48_ROCK_SLIDE
-	iftrue BrockAfterTMScript
+	iftrue_jumpopenedtext UnknownText_0x1a2ada
 	writetext UnknownText_0x1a2a57
 	buttonsound
 	verbosegivetmhm TM_ROCK_SLIDE
 	setevent EVENT_GOT_TM48_ROCK_SLIDE
-	jumpopenedtext BrockOutroText
+	thisopenedtext
 
-BrockAfterTMScript:
-	jumpopenedtext UnknownText_0x1a2ada
+	text "It can sometimes"
+	line "cause your foe to"
+	cont "flinch."
+	done
 
-TrainerCamperJerry:
-	trainer EVENT_BEAT_CAMPER_JERRY, CAMPER, JERRY, CamperJerrySeenText, CamperJerryBeatenText, 0, CamperJerryScript
+GenericTrainerCamperJerry:
+	generictrainer CAMPER, JERRY, EVENT_BEAT_CAMPER_JERRY, CamperJerrySeenText, CamperJerryBeatenText
 
-CamperJerryScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x1a2c0f
+	text "Hey, you! Trainer"
+	line "from Johto! Brock"
 
-TrainerHikerEdwin:
-	trainer EVENT_BEAT_HIKER_EDWIN, HIKER, EDWIN, HikerEdwinSeenText, HikerEdwinBeatenText, 0, HikerEdwinScript
+	para "is tough. He'll"
+	line "punish you if you"
 
-HikerEdwinScript:
-	end_if_just_battled
-	jumptextfaceplayer HikerEdwinAfterText
+	para "don't take him"
+	line "seriously."
+	done
+
+GenericTrainerHikerEdwin:
+	generictrainer HIKER, EDWIN, EVENT_BEAT_HIKER_EDWIN, HikerEdwinSeenText, HikerEdwinBeatenText
+
+	text "Phew… Broken"
+	line "in pieces."
+	done
 
 PewterGymGuyScript:
 	checkevent EVENT_BEAT_BROCK
@@ -152,12 +157,6 @@ UnknownText_0x1a2a57:
 	cont "too."
 	done
 
-BrockOutroText:
-	text "It can sometimes"
-	line "cause your foe to"
-	cont "flinch."
-	done
-
 UnknownText_0x1a2ada:
 	text "Brock: The world"
 	line "is huge. There are"
@@ -191,28 +190,12 @@ CamperJerryBeatenText:
 	line "these battles…"
 	done
 
-UnknownText_0x1a2c0f:
-	text "Hey, you! Trainer"
-	line "from Johto! Brock"
-
-	para "is tough. He'll"
-	line "punish you if you"
-
-	para "don't take him"
-	line "seriously."
-	done
-
 HikerEdwinSeenText:
 	text "R-r-r-R-R--CRASH!"
 	done
 
 HikerEdwinBeatenText:
 	text "BOOM!"
-	done
-
-HikerEdwinAfterText:
-	text "Phew… Broken"
-	line "in pieces."
 	done
 
 PewterGymGuyText:

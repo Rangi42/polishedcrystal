@@ -1,26 +1,23 @@
 ViridianPokeCenter1F_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 3 ; warp events
+	warp_event  5,  7, VIRIDIAN_CITY, 5
+	warp_event  6,  7, VIRIDIAN_CITY, 5
+	warp_event  0,  7, POKECENTER_2F, 1
 
-ViridianPokeCenter1F_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 3
-	warp_def 7, 5, 5, VIRIDIAN_CITY
-	warp_def 7, 6, 5, VIRIDIAN_CITY
-	warp_def 7, 0, 1, POKECENTER_2F
+	db 1 ; bg events
+	bg_event 10,  1, SIGNPOST_READ, PokemonJournalBlueScript
 
-.XYTriggers: db 0
-
-.Signposts: db 1
-	signpost 1, 10, SIGNPOST_READ, PokemonJournalBlueScript
-
-.PersonEvents: db 4
-	pc_nurse_event 1, 5
-	person_event SPRITE_COOLTRAINER_M, 4, 2, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ViridianPokeCenter1FCooltrainermScript, -1
-	person_event SPRITE_COOLTRAINER_F, 4, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, ViridianPokeCenter1FCooltrainerfText, -1
-	person_event SPRITE_BUG_CATCHER, 6, 3, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, ViridianPokeCenter1FBugCatcherText, -1
+	db 4 ; object events
+	pc_nurse_event  5, 1
+	object_event  2,  4, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, ViridianPokeCenter1FCooltrainermScript, -1
+	object_event  8,  4, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, ViridianPokeCenter1FCooltrainerfText, -1
+	object_event  3,  6, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, ViridianPokeCenter1FBugCatcherText, -1
 
 PokemonJournalBlueScript:
 	setflag ENGINE_READ_BLUE_JOURNAL

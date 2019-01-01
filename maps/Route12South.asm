@@ -1,44 +1,41 @@
 Route12South_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 4 ; warp events
+	warp_event 11, 57, ROUTE_12_SUPER_ROD_HOUSE, 1
+	warp_event  0, 42, ROUTE_11_GATE, 3
+	warp_event  0, 43, ROUTE_11_GATE, 4
+	warp_event 10,  1, ROUTE_12_GATE, 3
 
-Route12South_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 4
-	warp_def 57, 11, 1, ROUTE_12_SUPER_ROD_HOUSE
-	warp_def 42, 0, 3, ROUTE_11_GATE
-	warp_def 43, 0, 4, ROUTE_11_GATE
-	warp_def 1, 10, 3, ROUTE_12_GATE
+	db 2 ; bg events
+	bg_event 11, 43, SIGNPOST_JUMPTEXT, Route12SignText
+	bg_event 14, 15, SIGNPOST_ITEM + ELIXER, EVENT_ROUTE_12_HIDDEN_ELIXER
 
-.XYTriggers: db 0
+	db 13 ; object events
+	object_event  7,  7, SPRITE_FISHER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerFisherMartin, -1
+	object_event 14, 33, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerFisherStephen, -1
+	object_event 12, 63, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_GENERICTRAINER, 5, GenericTrainerFisherBarney, -1
+	object_event 10, 74, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerFisherKyler, -1
+	object_event 10, 24, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerBird_keeperJustin, -1
+	object_event  7, 57, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerBird_keeperGail, -1
+	object_event 10, 39, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerCoupleVicandtara1, -1
+	object_event 10, 38, SPRITE_LASS, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerCoupleVicandtara2, -1
+	object_event 14, 89, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
+	itemball_event  5, 68, CALCIUM, 1, EVENT_ROUTE_12_CALCIUM
+	itemball_event  5, 82, NUGGET, 1, EVENT_ROUTE_12_NUGGET
+	cuttree_event  6, 71, EVENT_ROUTE_12_CUT_TREE_1
+	cuttree_event  9, 79, EVENT_ROUTE_12_CUT_TREE_2
 
-.Signposts: db 2
-	signpost 43, 11, SIGNPOST_JUMPTEXT, Route12SignText
-	signpost 15, 14, SIGNPOST_ITEM + ELIXER, EVENT_ROUTE_12_HIDDEN_ELIXER
+GenericTrainerFisherMartin:
+	generictrainer FISHER, MARTIN, EVENT_BEAT_FISHER_MARTIN, FisherMartinSeenText, FisherMartinBeatenText
 
-.PersonEvents: db 13
-	person_event SPRITE_FISHER, 7, 7, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherMartin, -1
-	person_event SPRITE_FISHER, 33, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherStephen, -1
-	person_event SPRITE_FISHER, 63, 12, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 5, TrainerFisherBarney, -1
-	person_event SPRITE_FISHER, 74, 10, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherKyler, -1
-	person_event SPRITE_YOUNGSTER, 24, 10, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerBird_keeperJustin, -1
-	person_event SPRITE_YOUNGSTER, 57, 7, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 2, TrainerBird_keeperGail, -1
-	person_event SPRITE_YOUNGSTER, 39, 10, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerCoupleVicandtara1, -1
-	person_event SPRITE_LASS, 38, 10, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerCoupleVicandtara2, -1
-	person_event SPRITE_YOUNGSTER, 89, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
-	itemball_event 68, 5, CALCIUM, 1, EVENT_ROUTE_12_CALCIUM
-	itemball_event 82, 5, NUGGET, 1, EVENT_ROUTE_12_NUGGET
-	cuttree_event 71, 6, EVENT_ROUTE_12_CUT_TREE_1
-	cuttree_event 79, 9, EVENT_ROUTE_12_CUT_TREE_2
-
-TrainerFisherMartin:
-	trainer EVENT_BEAT_FISHER_MARTIN, FISHER, MARTIN, FisherMartinSeenText, FisherMartinBeatenText, 0, FisherMartinScript
-
-FisherMartinScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x1a704c
+	text "I'm too impatient"
+	line "for fishing…"
+	done
 
 FisherMartinSeenText:
 	text "Patience is the"
@@ -50,17 +47,15 @@ FisherMartinBeatenText:
 	text "Gwaaah!"
 	done
 
-UnknownText_0x1a704c:
-	text "I'm too impatient"
-	line "for fishing…"
+GenericTrainerFisherStephen:
+	generictrainer FISHER, STEPHEN, EVENT_BEAT_FISHER_STEPHEN, FisherStephenSeenText, FisherStephenBeatenText
+
+	text "Have you checked"
+	line "out Kanto's radio"
+
+	para "programs? We get a"
+	line "good variety here."
 	done
-
-TrainerFisherStephen:
-	trainer EVENT_BEAT_FISHER_STEPHEN, FISHER, STEPHEN, FisherStephenSeenText, FisherStephenBeatenText, 0, FisherStephenScript
-
-FisherStephenScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x1a70d4
 
 FisherStephenSeenText:
 	text "I feel so content,"
@@ -74,33 +69,9 @@ FisherStephenBeatenText:
 	line "distracted me!"
 	done
 
-UnknownText_0x1a70d4:
-	text "Have you checked"
-	line "out Kanto's radio"
+GenericTrainerFisherBarney:
+	generictrainer FISHER, BARNEY, EVENT_BEAT_FISHER_BARNEY, FisherBarneySeenText, FisherBarneyBeatenText
 
-	para "programs? We get a"
-	line "good variety here."
-	done
-
-TrainerFisherBarney:
-	trainer EVENT_BEAT_FISHER_BARNEY, FISHER, BARNEY, FisherBarneySeenText, FisherBarneyBeatenText, 0, FisherBarneyScript
-
-FisherBarneyScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x1a716d
-
-FisherBarneySeenText:
-	text "What's most impor-"
-	line "tant in our every-"
-	cont "day lives?"
-	done
-
-FisherBarneyBeatenText:
-	text "The answer is"
-	line "coming up next!"
-	done
-
-UnknownText_0x1a716d:
 	text "I think electric-"
 	line "ity is the most"
 
@@ -117,12 +88,27 @@ UnknownText_0x1a716d:
 	line "out of commission."
 	done
 
-TrainerFisherKyler:
-	trainer EVENT_BEAT_FISHER_KYLER, FISHER, KYLER, .SeenText, .BeatenText, 0, .Script
+FisherBarneySeenText:
+	text "What's most impor-"
+	line "tant in our every-"
+	cont "day lives?"
+	done
 
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
+FisherBarneyBeatenText:
+	text "The answer is"
+	line "coming up next!"
+	done
+
+GenericTrainerFisherKyler:
+	generictrainer FISHER, KYLER, EVENT_BEAT_FISHER_KYLER, .SeenText, .BeatenText
+
+	text "Really? Rather"
+	line "than always catch-"
+	cont "ing new #mon,"
+
+	para "it's good to train"
+	line "them?"
+	done
 
 .SeenText:
 	text "#mon battles"
@@ -134,21 +120,13 @@ TrainerFisherKyler:
 	line "is empty!"
 	done
 
-.AfterText:
-	text "Really? Rather"
-	line "than always catch-"
-	cont "ing new #mon,"
+GenericTrainerBird_keeperJustin:
+	generictrainer BIRD_KEEPER, BIRD_KEEPER_JUSTIN, EVENT_BEAT_BIRD_KEEPER_JUSTIN, .SeenText, .BeatenText
 
-	para "it's good to train"
-	line "them?"
+	text "Since the wind has"
+	line "changed, I'll lay"
+	cont "low…"
 	done
-
-TrainerBird_keeperJustin:
-	trainer EVENT_BEAT_BIRD_KEEPER_JUSTIN, BIRD_KEEPER, BIRD_KEEPER_JUSTIN, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Huh? The wind has"
@@ -159,18 +137,12 @@ TrainerBird_keeperJustin:
 	text "Phew…"
 	done
 
-.AfterText:
-	text "Since the wind has"
-	line "changed, I'll lay"
-	cont "low…"
+GenericTrainerBird_keeperGail:
+	generictrainer BIRD_KEEPER, GAIL, EVENT_BEAT_BIRD_KEEPER_GAIL, .SeenText, .BeatenText
+
+	text "Chuun-Chuun?"
+	line "Chunchun!"
 	done
-
-TrainerBird_keeperGail:
-	trainer EVENT_BEAT_BIRD_KEEPER_GAIL, BIRD_KEEPER, GAIL, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "BASABASABASA-"
@@ -181,17 +153,12 @@ TrainerBird_keeperGail:
 	text "Pyopyopyopyo…"
 	done
 
-.AfterText:
-	text "Chuun-Chuun?"
-	line "Chunchun!"
+GenericTrainerCoupleVicandtara1:
+	generictrainer COUPLE, VICANDTARA1, EVENT_BEAT_COUPLE_VIC_AND_TARA, .SeenText, .BeatenText
+
+	text "Vic: Tara already"
+	line "saw me humiliated…"
 	done
-
-TrainerCoupleVicandtara1:
-	trainer EVENT_BEAT_COUPLE_VIC_AND_TARA, COUPLE, VICANDTARA1, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Vic: All right!"
@@ -204,17 +171,14 @@ TrainerCoupleVicandtara1:
 	line "plans!"
 	done
 
-.AfterText:
-	text "Vic: Tara already"
-	line "saw me humiliated…"
+GenericTrainerCoupleVicandtara2:
+	generictrainer COUPLE, VICANDTARA2, EVENT_BEAT_COUPLE_VIC_AND_TARA, .SeenText, .BeatenText
+
+	text "Tara: Even though"
+	line "my boyfriend lost,"
+	cont "he's still wonder-"
+	cont "ful."
 	done
-
-TrainerCoupleVicandtara2:
-	trainer EVENT_BEAT_COUPLE_VIC_AND_TARA, COUPLE, VICANDTARA2, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "Tara: I love to"
@@ -226,13 +190,6 @@ TrainerCoupleVicandtara2:
 .BeatenText:
 	text "Tara: Oh no,"
 	line "oh no…"
-	done
-
-.AfterText:
-	text "Tara: Even though"
-	line "my boyfriend lost,"
-	cont "he's still wonder-"
-	cont "ful."
 	done
 
 Route12SignText:

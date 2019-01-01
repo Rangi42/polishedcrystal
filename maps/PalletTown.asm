@@ -1,29 +1,26 @@
 PalletTown_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 1 ; callbacks
+	callback MAPCALLBACK_NEWMAP, PalletTownFlyPoint
 
-.MapCallbacks: db 1
-	dbw MAPCALLBACK_NEWMAP, PalletTownFlyPoint
+	db 3 ; warp events
+	warp_event  5,  5, REDS_HOUSE_1F, 1
+	warp_event 13,  5, BLUES_HOUSE_1F, 1
+	warp_event 12, 11, OAKS_LAB, 1
 
-PalletTown_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 3
-	warp_def 5, 5, 1, REDS_HOUSE_1F
-	warp_def 5, 13, 1, BLUES_HOUSE_1F
-	warp_def 11, 12, 1, OAKS_LAB
+	db 4 ; bg events
+	bg_event  7,  9, SIGNPOST_JUMPTEXT, PalletTownSignText
+	bg_event  3,  5, SIGNPOST_JUMPTEXT, RedsHouseSignText
+	bg_event 13, 13, SIGNPOST_JUMPTEXT, OaksLabSignText
+	bg_event 11,  5, SIGNPOST_JUMPTEXT, BluesHouseSignText
 
-.XYTriggers: db 0
-
-.Signposts: db 4
-	signpost 9, 7, SIGNPOST_JUMPTEXT, PalletTownSignText
-	signpost 5, 3, SIGNPOST_JUMPTEXT, RedsHouseSignText
-	signpost 13, 13, SIGNPOST_JUMPTEXT, OaksLabSignText
-	signpost 5, 11, SIGNPOST_JUMPTEXT, BluesHouseSignText
-
-.PersonEvents: db 3
-	person_event SPRITE_TEACHER, 8, 3, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1ac6e7, -1
-	person_event SPRITE_FISHER, 14, 12, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1ac720, -1
-	person_event SPRITE_YOUNGSTER, 7, 17, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, PalletTownYoungsterText, -1
+	db 3 ; object events
+	object_event  3,  8, SPRITE_TEACHER, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1ac6e7, -1
+	object_event 12, 14, SPRITE_FISHER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1ac720, -1
+	object_event 17,  7, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, PalletTownYoungsterText, -1
 
 PalletTownFlyPoint:
 	setflag ENGINE_FLYPOINT_PALLET

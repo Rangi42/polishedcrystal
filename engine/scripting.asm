@@ -129,7 +129,7 @@ ScriptCommandTable:
 	dw Script_stringtotext               ; 42
 	dw Script_itemnotify                 ; 43
 	dw Script_pocketisfull               ; 44
-	dw Script_textbox                    ; 45
+	dw Script_opentext                    ; 45
 	dw Script_refreshscreen              ; 46
 	dw Script_closetext                  ; 47
 	dw Script_farwritetext               ; 48
@@ -257,6 +257,7 @@ ScriptCommandTable:
 	dw Script_iftrue_endtext             ; c2
 	dw Script_iffalse_endtext            ; c3
 	dw Script_loadgrottomon              ; c4
+	dw Script_giveapricorn               ; c5
 
 StartScript:
 	ld hl, wScriptFlags
@@ -730,7 +731,7 @@ Script_pokemart:
 ;     dialog_id (SingleByteParam)
 ;     mart_id (SingleByteParam)
 	call Script_faceplayer
-	call Script_textbox
+	call Script_opentext
 	call GetScriptByte
 	ld c, a
 	call GetScriptByte
@@ -762,7 +763,7 @@ Script_trade:
 ; parameters:
 ;     trade_id (SingleByteParam)
 	call Script_faceplayer
-	call Script_textbox
+	call Script_opentext
 	call GetScriptByte
 	ld e, a
 	farcall NPCTrade
@@ -2569,7 +2570,7 @@ Script_reloadandreturn:
 	call Script_newloadmap
 	jp Script_end
 
-Script_textbox:
+Script_opentext:
 	jp OpenText
 
 Script_refreshscreen:
@@ -2584,7 +2585,7 @@ Script_showtextfaceplayer:
 Script_showtext:
 ; parameters:
 ;     text_pointer (RawTextPointerLabelParam)
-	call Script_textbox
+	call Script_opentext
 	call Script_writetext
 	call Script_waitbutton
 ; fallthrough
@@ -2895,7 +2896,7 @@ Script_showcrytext:
 ; parameters:
 ;     text_pointer (RawTextPointerLabelParam)
 ;     cry_id (SingleByteParam)
-	call Script_textbox
+	call Script_opentext
 	call Script_writetext
 	call Script_cry
 	call Script_waitbutton
@@ -2909,4 +2910,37 @@ Script_loadgrottomon:
 	ld [wBattleScriptFlags], a
 	farcall GetCurHiddenGrottoLevel
 	ld [wCurPartyLevel], a
+	ret
+
+Script_giveapricorn:
+; parameters:
+;     apricorn (SingleByteParam)
+;     quantity (SingleByteParam)
+	call GetScriptByte
+	cp ITEM_FROM_MEM
+	jr nz, .ok
+	ld a, [wScriptVar]
+.ok
+	ld [wCurItem], a
+	call GetScriptByte
+	ld [wItemQuantityChangeBuffer], a
+
+	ld hl, wApricorns
+	ld a, [wCurItem]
+	dec a
+	ld c, a
+	ld b, 0
+	add hl, bc
+	ld a, [wItemQuantityChangeBuffer]
+	add [hl]
+	cp 100
+	jr nc, .full
+	ld [hl], a
+	ld a, TRUE
+	ld [wScriptVar], a
+	ret
+
+.full
+	xor a
+	ld [wScriptVar], a
 	ret

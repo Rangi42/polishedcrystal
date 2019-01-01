@@ -1,23 +1,20 @@
 Route42EcruteakGate_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 4 ; warp events
+	warp_event  0,  4, ECRUTEAK_CITY, 1
+	warp_event  0,  5, ECRUTEAK_CITY, 2
+	warp_event  9,  4, ROUTE_42, 1
+	warp_event  9,  5, ROUTE_42, 2
 
-Route42EcruteakGate_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 4
-	warp_def 4, 0, 1, ECRUTEAK_CITY
-	warp_def 5, 0, 2, ECRUTEAK_CITY
-	warp_def 4, 9, 1, ROUTE_42
-	warp_def 5, 9, 2, ROUTE_42
+	db 0 ; bg events
 
-.XYTriggers: db 0
-
-.Signposts: db 0
-
-.PersonEvents: db 1
-	person_event SPRITE_OFFICER, 2, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x19a4b8, -1
+	db 1 ; object events
+	object_event  5,  2, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x19a4b8, -1
 
 UnknownText_0x19a4b8:
 	text "Mt.Mortar is like"

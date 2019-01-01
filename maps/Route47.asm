@@ -1,76 +1,73 @@
 Route47_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 1 ; callbacks
+	callback MAPCALLBACK_TILES, Route47TileScript
 
-.MapCallbacks: db 1
-	dbw MAPCALLBACK_TILES, Route47TileScript
+	db 6 ; warp events
+	warp_event 67, 21, CLIFF_EDGE_GATE, 2
+	warp_event 53, 21, CLIFF_CAVE, 1
+	warp_event 52, 17, CLIFF_CAVE, 2
+	warp_event 53, 29, CLIFF_CAVE, 3
+	warp_event 11, 23, QUIET_CAVE_1F, 1
+	warp_event  7, 23, EMBEDDED_TOWER, 1
 
-Route47_MapEventHeader:
+	db 32 ; coord events
+	coord_event 42, 24, 1, Route47Bridge1OverheadTrigger
+	coord_event 42, 25, 1, Route47Bridge1OverheadTrigger
+	coord_event 51, 24, 1, Route47Bridge1OverheadTrigger
+	coord_event 51, 25, 1, Route47Bridge1OverheadTrigger
+	coord_event 43, 24, 0, Route47Bridge1UnderfootTrigger
+	coord_event 43, 25, 0, Route47Bridge1UnderfootTrigger
+	coord_event 50, 24, 0, Route47Bridge1UnderfootTrigger
+	coord_event 50, 25, 0, Route47Bridge1UnderfootTrigger
+	coord_event 42, 18, 1, Route47Bridge2OverheadTrigger
+	coord_event 42, 19, 1, Route47Bridge2OverheadTrigger
+	coord_event 51, 18, 1, Route47Bridge2OverheadTrigger
+	coord_event 51, 19, 1, Route47Bridge2OverheadTrigger
+	coord_event 43, 18, 0, Route47Bridge2UnderfootTrigger
+	coord_event 43, 19, 0, Route47Bridge2UnderfootTrigger
+	coord_event 50, 18, 0, Route47Bridge2UnderfootTrigger
+	coord_event 50, 19, 0, Route47Bridge2UnderfootTrigger
+	coord_event 18, 24, 1, Route47Bridge3OverheadTrigger
+	coord_event 18, 25, 1, Route47Bridge3OverheadTrigger
+	coord_event 27, 24, 1, Route47Bridge3OverheadTrigger
+	coord_event 27, 25, 1, Route47Bridge3OverheadTrigger
+	coord_event 19, 24, 0, Route47Bridge3UnderfootTrigger
+	coord_event 19, 25, 0, Route47Bridge3UnderfootTrigger
+	coord_event 26, 24, 0, Route47Bridge3UnderfootTrigger
+	coord_event 26, 25, 0, Route47Bridge3UnderfootTrigger
+	coord_event 18, 16, 1, Route47Bridge4OverheadTrigger
+	coord_event 18, 17, 1, Route47Bridge4OverheadTrigger
+	coord_event 27, 16, 1, Route47Bridge4OverheadTrigger
+	coord_event 27, 17, 1, Route47Bridge4OverheadTrigger
+	coord_event 19, 16, 0, Route47Bridge4UnderfootTrigger
+	coord_event 19, 17, 0, Route47Bridge4UnderfootTrigger
+	coord_event 26, 16, 0, Route47Bridge4UnderfootTrigger
+	coord_event 26, 17, 0, Route47Bridge4UnderfootTrigger
 
-.Warps: db 6
-	warp_def 21, 67, 2, CLIFF_EDGE_GATE
-	warp_def 21, 53, 1, CLIFF_CAVE
-	warp_def 17, 52, 2, CLIFF_CAVE
-	warp_def 29, 53, 3, CLIFF_CAVE
-	warp_def 23, 11, 1, QUIET_CAVE_1F
-	warp_def 23, 7, 1, EMBEDDED_TOWER
+	db 4 ; bg events
+	bg_event  8, 23, SIGNPOST_IFNOTSET, Route47SealedCaveSign
+	bg_event 36, 32, SIGNPOST_JUMPTEXT, Route47QuietCaveSignText
+	bg_event 34, 33, SIGNPOST_ITEM + PEARL, EVENT_ROUTE_47_HIDDEN_PEARL
+	bg_event  5, 32, SIGNPOST_ITEM + STARDUST, EVENT_ROUTE_47_HIDDEN_STARDUST
 
-.XYTriggers: db 32
-	xy_trigger 1, 24, 42, Route47Bridge1OverheadTrigger
-	xy_trigger 1, 25, 42, Route47Bridge1OverheadTrigger
-	xy_trigger 1, 24, 51, Route47Bridge1OverheadTrigger
-	xy_trigger 1, 25, 51, Route47Bridge1OverheadTrigger
-	xy_trigger 0, 24, 43, Route47Bridge1UnderfootTrigger
-	xy_trigger 0, 25, 43, Route47Bridge1UnderfootTrigger
-	xy_trigger 0, 24, 50, Route47Bridge1UnderfootTrigger
-	xy_trigger 0, 25, 50, Route47Bridge1UnderfootTrigger
-	xy_trigger 1, 18, 42, Route47Bridge2OverheadTrigger
-	xy_trigger 1, 19, 42, Route47Bridge2OverheadTrigger
-	xy_trigger 1, 18, 51, Route47Bridge2OverheadTrigger
-	xy_trigger 1, 19, 51, Route47Bridge2OverheadTrigger
-	xy_trigger 0, 18, 43, Route47Bridge2UnderfootTrigger
-	xy_trigger 0, 19, 43, Route47Bridge2UnderfootTrigger
-	xy_trigger 0, 18, 50, Route47Bridge2UnderfootTrigger
-	xy_trigger 0, 19, 50, Route47Bridge2UnderfootTrigger
-	xy_trigger 1, 24, 18, Route47Bridge3OverheadTrigger
-	xy_trigger 1, 25, 18, Route47Bridge3OverheadTrigger
-	xy_trigger 1, 24, 27, Route47Bridge3OverheadTrigger
-	xy_trigger 1, 25, 27, Route47Bridge3OverheadTrigger
-	xy_trigger 0, 24, 19, Route47Bridge3UnderfootTrigger
-	xy_trigger 0, 25, 19, Route47Bridge3UnderfootTrigger
-	xy_trigger 0, 24, 26, Route47Bridge3UnderfootTrigger
-	xy_trigger 0, 25, 26, Route47Bridge3UnderfootTrigger
-	xy_trigger 1, 16, 18, Route47Bridge4OverheadTrigger
-	xy_trigger 1, 17, 18, Route47Bridge4OverheadTrigger
-	xy_trigger 1, 16, 27, Route47Bridge4OverheadTrigger
-	xy_trigger 1, 17, 27, Route47Bridge4OverheadTrigger
-	xy_trigger 0, 16, 19, Route47Bridge4UnderfootTrigger
-	xy_trigger 0, 17, 19, Route47Bridge4UnderfootTrigger
-	xy_trigger 0, 16, 26, Route47Bridge4UnderfootTrigger
-	xy_trigger 0, 17, 26, Route47Bridge4UnderfootTrigger
-
-.Signposts: db 4
-	signpost 23, 8, SIGNPOST_IFNOTSET, Route47SealedCaveSign
-	signpost 32, 36, SIGNPOST_JUMPTEXT, Route47QuietCaveSignText
-	signpost 33, 34, SIGNPOST_ITEM + PEARL, EVENT_ROUTE_47_HIDDEN_PEARL
-	signpost 32, 5, SIGNPOST_ITEM + STARDUST, EVENT_ROUTE_47_HIDDEN_STARDUST
-
-.PersonEvents: db 15
-	person_event SPRITE_POKEFAN_M, 26, 59, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerHikerDevin, EVENT_YELLOW_FOREST_ROCKET_TAKEOVER
-	person_event SPRITE_YOUNGSTER, 24, 40, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 2, TrainerCamperGrant, EVENT_YELLOW_FOREST_ROCKET_TAKEOVER
-	person_event SPRITE_COOLTRAINER_M, 18, 38, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerAceDuoThomandkae1, EVENT_YELLOW_FOREST_ROCKET_TAKEOVER
-	person_event SPRITE_COOLTRAINER_F, 18, 39, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerAceDuoThomandkae2, EVENT_YELLOW_FOREST_ROCKET_TAKEOVER
-	person_event SPRITE_YOUNGSTER, 7, 27, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerCoupleDuffandeda1, EVENT_YELLOW_FOREST_ROCKET_TAKEOVER
-	person_event SPRITE_LASS, 7, 28, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 1, TrainerCoupleDuffandeda2, EVENT_YELLOW_FOREST_ROCKET_TAKEOVER
-	person_event SPRITE_COWGIRL, 8, 51, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 3, TrainerCowgirlDaniela, EVENT_YELLOW_FOREST_ROCKET_TAKEOVER
-	person_event SPRITE_ROCKET_GIRL, 27, 55, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerGruntF6, EVENT_CLEARED_YELLOW_FOREST
-	person_event SPRITE_ROCKET, 20, 36, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 2, TrainerGruntM23, EVENT_CLEARED_YELLOW_FOREST
-	person_event SPRITE_ROCKET, 12, 28, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 1, TrainerGruntM26, EVENT_CLEARED_YELLOW_FOREST
-	person_event SPRITE_ROCKET_GIRL, 25, 40, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, Route47RocketGirlText, EVENT_CLEARED_YELLOW_FOREST
-	itemball_event 28, 39, REVIVE, 1, EVENT_ROUTE_47_REVIVE
-	itemball_event 32, 7, MYSTIC_WATER, 1, EVENT_ROUTE_47_MYSTIC_WATER
-	itemball_event 20, 31, QUICK_CLAW, 1, EVENT_ROUTE_47_QUICK_CLAW
-	itemball_event 6, 7, MAX_REPEL, 1, EVENT_ROUTE_47_MAX_REPEL
+	db 15 ; object events
+	object_event 59, 26, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerHikerDevin, EVENT_YELLOW_FOREST_ROCKET_TAKEOVER
+	object_event 40, 24, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerCamperGrant, EVENT_YELLOW_FOREST_ROCKET_TAKEOVER
+	object_event 38, 18, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerAceDuoThomandkae1, EVENT_YELLOW_FOREST_ROCKET_TAKEOVER
+	object_event 39, 18, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerAceDuoThomandkae2, EVENT_YELLOW_FOREST_ROCKET_TAKEOVER
+	object_event 27,  7, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerCoupleDuffandeda1, EVENT_YELLOW_FOREST_ROCKET_TAKEOVER
+	object_event 28,  7, SPRITE_LASS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerCoupleDuffandeda2, EVENT_YELLOW_FOREST_ROCKET_TAKEOVER
+	object_event 51,  8, SPRITE_COWGIRL, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerCowgirlDaniela, EVENT_YELLOW_FOREST_ROCKET_TAKEOVER
+	object_event 55, 27, SPRITE_ROCKET_GIRL, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerGruntF6, EVENT_CLEARED_YELLOW_FOREST
+	object_event 36, 20, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerGruntM23, EVENT_CLEARED_YELLOW_FOREST
+	object_event 28, 12, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerGruntM26, EVENT_CLEARED_YELLOW_FOREST
+	object_event 40, 25, SPRITE_ROCKET_GIRL, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, Route47RocketGirlText, EVENT_CLEARED_YELLOW_FOREST
+	itemball_event 39, 28, REVIVE, 1, EVENT_ROUTE_47_REVIVE
+	itemball_event  7, 32, MYSTIC_WATER, 1, EVENT_ROUTE_47_MYSTIC_WATER
+	itemball_event 31, 20, QUICK_CLAW, 1, EVENT_ROUTE_47_QUICK_CLAW
+	itemball_event  7,  6, MAX_REPEL, 1, EVENT_ROUTE_47_MAX_REPEL
 
 Route47TileScript:
 	checkevent EVENT_DOOR_OPENED_IN_RUINS_OF_ALPH
@@ -207,75 +204,88 @@ Route47Bridge4UnderfootTrigger:
 	changebridgeblock 26, 16, $b7, ROUTE_47
 	jp Route47_FinishUnderfootBridge
 
-TrainerHikerDevin:
-	trainer EVENT_BEAT_HIKER_DEVIN, HIKER, DEVIN, HikerDevinSeenText, HikerDevinBeatenText, 0, HikerDevinScript
+GenericTrainerHikerDevin:
+	generictrainer HIKER, DEVIN, EVENT_BEAT_HIKER_DEVIN, HikerDevinSeenText, HikerDevinBeatenText
 
-HikerDevinScript:
-	end_if_just_battled
-	jumptextfaceplayer HikerDevinAfterText
+	text "After a battle,"
+	line "you should part"
+	cont "with a laugh!"
+	done
 
-TrainerCamperGrant:
-	trainer EVENT_BEAT_CAMPER_GRANT, CAMPER, GRANT, CamperGrantSeenText, CamperGrantBeatenText, 0, CamperGrantScript
+GenericTrainerCamperGrant:
+	generictrainer CAMPER, GRANT, EVENT_BEAT_CAMPER_GRANT, CamperGrantSeenText, CamperGrantBeatenText
 
-CamperGrantScript:
-	end_if_just_battled
-	jumptextfaceplayer CamperGrantAfterText
+	text "See ya!"
+	done
 
-TrainerAceDuoThomandkae1:
-	trainer EVENT_BEAT_ACE_DUO_THOM_AND_KAE, ACE_DUO, THOMANDKAE1, AceDuoThomandkae1SeenText, AceDuoThomandkae1BeatenText, 0, AceDuoThomandkae1Script
+GenericTrainerAceDuoThomandkae1:
+	generictrainer ACE_DUO, THOMANDKAE1, EVENT_BEAT_ACE_DUO_THOM_AND_KAE, AceDuoThomandkae1SeenText, AceDuoThomandkae1BeatenText
 
-AceDuoThomandkae1Script:
-	end_if_just_battled
-	jumptextfaceplayer AceDuoThomandkae1AfterText
+	text "Thom: Your power"
+	line "is impossible to"
+	cont "predict!"
+	done
 
-TrainerAceDuoThomandkae2:
-	trainer EVENT_BEAT_ACE_DUO_THOM_AND_KAE, ACE_DUO, THOMANDKAE2, AceDuoThomandkae2SeenText, AceDuoThomandkae2BeatenText, 0, AceDuoThomandkae2Script
+GenericTrainerAceDuoThomandkae2:
+	generictrainer ACE_DUO, THOMANDKAE2, EVENT_BEAT_ACE_DUO_THOM_AND_KAE, AceDuoThomandkae2SeenText, AceDuoThomandkae2BeatenText
 
-AceDuoThomandkae2Script:
-	end_if_just_battled
-	jumptextfaceplayer AceDuoThomandkae2AfterText
+	text "Kae: I figured you"
+	line "were an ordinary"
 
-TrainerCoupleDuffandeda1:
-	trainer EVENT_BEAT_COUPLE_DUFF_AND_EDA, COUPLE, DUFFANDEDA1, CoupleDuffandeda1SeenText, CoupleDuffandeda1BeatenText, 0, CoupleDuffandeda1Script
+	para "lone trainer."
+	line "Boy, was I wrong!"
+	done
 
-CoupleDuffandeda1Script:
-	end_if_just_battled
-	jumptextfaceplayer CoupleDuffandeda1AfterText
+GenericTrainerCoupleDuffandeda1:
+	generictrainer COUPLE, DUFFANDEDA1, EVENT_BEAT_COUPLE_DUFF_AND_EDA, CoupleDuffandeda1SeenText, CoupleDuffandeda1BeatenText
 
-TrainerCoupleDuffandeda2:
-	trainer EVENT_BEAT_COUPLE_DUFF_AND_EDA, COUPLE, DUFFANDEDA2, CoupleDuffandeda2SeenText, CoupleDuffandeda2BeatenText, 0, CoupleDuffandeda2Script
+	text "Duff: Thank you"
+	line "for the awe-"
+	cont "inspiring battle!"
+	done
 
-CoupleDuffandeda2Script:
-	end_if_just_battled
-	jumptextfaceplayer CoupleDuffandeda2AfterText
+GenericTrainerCoupleDuffandeda2:
+	generictrainer COUPLE, DUFFANDEDA2, EVENT_BEAT_COUPLE_DUFF_AND_EDA, CoupleDuffandeda2SeenText, CoupleDuffandeda2BeatenText
 
-TrainerCowgirlDaniela:
-	trainer EVENT_BEAT_COWGIRL_DANIELA, COWGIRL, DANIELA, CowgirlDanielaSeenText, CowgirlDanielaBeatenText, 0, CowgirlDanielaScript
+	text "Eda: You should"
+	line "find a wonderful"
+	cont "partner, too."
+	done
 
-CowgirlDanielaScript:
-	end_if_just_battled
-	jumptextfaceplayer CowgirlDanielaAfterText
+GenericTrainerCowgirlDaniela:
+	generictrainer COWGIRL, DANIELA, EVENT_BEAT_COWGIRL_DANIELA, CowgirlDanielaSeenText, CowgirlDanielaBeatenText
 
-TrainerGruntF6:
-	trainer EVENT_BEAT_ROCKET_GRUNTF_6, GRUNTF, 6, GruntF6SeenText, GruntF6BeatenText, 0, GruntF6Script
+	text "Have you ever"
+	line "tried to ride a"
+	cont "Tauros?"
+	done
 
-GruntF6Script:
-	end_if_just_battled
-	jumptextfaceplayer GruntF6AfterText
+GenericTrainerGruntF6:
+	generictrainer GRUNTF, 6, EVENT_BEAT_ROCKET_GRUNTF_6, GruntF6SeenText, GruntF6BeatenText
 
-TrainerGruntM23:
-	trainer EVENT_BEAT_ROCKET_GRUNTM_23, GRUNTM, 23, GruntM23SeenText, GruntM23BeatenText, 0, GruntM23Script
+	text "If we treated"
+	line "every single"
+	cont "#mon well,"
 
-GruntM23Script:
-	end_if_just_battled
-	jumptextfaceplayer GruntM23AfterText
+	para "how would we"
+	line "make money?"
+	done
 
-TrainerGruntM26:
-	trainer EVENT_BEAT_ROCKET_GRUNTM_26, GRUNTM, 26, GruntM26SeenText, GruntM26BeatenText, 0, GruntM26Script
+GenericTrainerGruntM23:
+	generictrainer GRUNTM, 23, EVENT_BEAT_ROCKET_GRUNTM_23, GruntM23SeenText, GruntM23BeatenText
 
-GruntM26Script:
-	end_if_just_battled
-	jumptextfaceplayer GruntM26AfterText
+	text "It doesn't matter."
+	line "You can't beat"
+	cont "all of us!"
+	done
+
+GenericTrainerGruntM26:
+	generictrainer GRUNTM, 26, EVENT_BEAT_ROCKET_GRUNTM_26, GruntM26SeenText, GruntM26BeatenText
+
+	text "How we treat"
+	line "#mon is none"
+	cont "of your business!"
+	done
 
 HikerDevinSeenText:
 	text "Battles are"
@@ -285,12 +295,6 @@ HikerDevinSeenText:
 
 HikerDevinBeatenText:
 	text "Wah ha ha!"
-	done
-
-HikerDevinAfterText:
-	text "After a battle,"
-	line "you should part"
-	cont "with a laugh!"
 	done
 
 CamperGrantSeenText:
@@ -306,10 +310,6 @@ CamperGrantBeatenText:
 	cont "mountain…"
 	done
 
-CamperGrantAfterText:
-	text "See ya!"
-	done
-
 AceDuoThomandkae1SeenText:
 	text "Thom: One plus one"
 	line "is two. But the"
@@ -323,12 +323,6 @@ AceDuoThomandkae1BeatenText:
 	line "what I expected…"
 	done
 
-AceDuoThomandkae1AfterText:
-	text "Thom: Your power"
-	line "is impossible to"
-	cont "predict!"
-	done
-
 AceDuoThomandkae2SeenText:
 	text "Kae: The two of us"
 	line "aren't just some"
@@ -338,14 +332,6 @@ AceDuoThomandkae2SeenText:
 AceDuoThomandkae2BeatenText:
 	text "Kae: You're"
 	line "unusual, too!"
-	done
-
-AceDuoThomandkae2AfterText:
-	text "Kae: I figured you"
-	line "were an ordinary"
-
-	para "lone trainer."
-	line "Boy, was I wrong!"
 	done
 
 CoupleDuffandeda1SeenText:
@@ -361,12 +347,6 @@ CoupleDuffandeda1BeatenText:
 	line "match for you…"
 	done
 
-CoupleDuffandeda1AfterText:
-	text "Duff: Thank you"
-	line "for the awe-"
-	cont "inspiring battle!"
-	done
-
 CoupleDuffandeda2SeenText:
 	text "Eda: My feelings"
 	line "for my boyfriend"
@@ -380,12 +360,6 @@ CoupleDuffandeda2BeatenText:
 	line "something…"
 	done
 
-CoupleDuffandeda2AfterText:
-	text "Eda: You should"
-	line "find a wonderful"
-	cont "partner, too."
-	done
-
 CowgirlDanielaSeenText:
 	text "Hiya, cutie!"
 	done
@@ -393,12 +367,6 @@ CowgirlDanielaSeenText:
 CowgirlDanielaBeatenText:
 	text "Well aren't you a"
 	line "feisty one?"
-	done
-
-CowgirlDanielaAfterText:
-	text "Have you ever"
-	line "tried to ride a"
-	cont "Tauros?"
 	done
 
 GruntF6SeenText:
@@ -413,15 +381,6 @@ GruntF6BeatenText:
 	text "Who are you?!"
 	done
 
-GruntF6AfterText:
-	text "If we treated"
-	line "every single"
-	cont "#mon well,"
-
-	para "how would we"
-	line "make money?"
-	done
-
 GruntM23SeenText:
 	text "Aww, are you here"
 	line "to save the cute"
@@ -433,12 +392,6 @@ GruntM23BeatenText:
 	line "You're tough!"
 	done
 
-GruntM23AfterText:
-	text "It doesn't matter."
-	line "You can't beat"
-	cont "all of us!"
-	done
-
 GruntM26SeenText:
 	text "Stop meddling with"
 	line "our plans!"
@@ -447,12 +400,6 @@ GruntM26SeenText:
 GruntM26BeatenText:
 	text "Just leave us"
 	line "alone…"
-	done
-
-GruntM26AfterText:
-	text "How we treat"
-	line "#mon is none"
-	cont "of your business!"
 	done
 
 Route47RocketGirlText:

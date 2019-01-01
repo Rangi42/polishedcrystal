@@ -1,23 +1,20 @@
 Route16Gate_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 4 ; warp events
+	warp_event  0,  4, ROUTE_16_NORTHWEST, 2
+	warp_event  0,  5, ROUTE_16_NORTHWEST, 3
+	warp_event  9,  4, ROUTE_16_NORTHEAST, 3
+	warp_event  9,  5, ROUTE_16_NORTHEAST, 4
 
-Route16Gate_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 4
-	warp_def 4, 0, 2, ROUTE_16_NORTHWEST
-	warp_def 5, 0, 3, ROUTE_16_NORTHWEST
-	warp_def 4, 9, 3, ROUTE_16_NORTHEAST
-	warp_def 5, 9, 4, ROUTE_16_NORTHEAST
+	db 0 ; bg events
 
-.XYTriggers: db 0
-
-.Signposts: db 0
-
-.PersonEvents: db 1
-	person_event SPRITE_OFFICER, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, Route16GateOfficerText, -1
+	db 1 ; object events
+	object_event  5,  1, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, Route16GateOfficerText, -1
 
 	end
 

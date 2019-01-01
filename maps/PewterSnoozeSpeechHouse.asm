@@ -1,23 +1,20 @@
 PewterSnoozeSpeechHouse_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 2 ; warp events
+	warp_event  2,  7, PEWTER_CITY, 5
+	warp_event  3,  7, PEWTER_CITY, 5
 
-PewterSnoozeSpeechHouse_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 2
-	warp_def 7, 2, 5, PEWTER_CITY
-	warp_def 7, 3, 5, PEWTER_CITY
+	db 1 ; bg events
+	bg_event  7,  1, SIGNPOST_JUMPSTD, picturebookshelf
 
-.XYTriggers: db 0
-
-.Signposts: db 1
-	signpost 1, 7, SIGNPOST_JUMPSTD, picturebookshelf
-
-.PersonEvents: db 2
-	person_event SPRITE_GRAMPS, 3, 5, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1a305f, -1
-	person_event SPRITE_GRANNY, 4, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, PewterSnoozeSpeechHouseGrannyText, -1
+	db 2 ; object events
+	object_event  5,  3, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1a305f, -1
+	object_event  2,  4, SPRITE_GRANNY, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, PewterSnoozeSpeechHouseGrannyText, -1
 
 UnknownText_0x1a305f:
 	text "I like snoozing"

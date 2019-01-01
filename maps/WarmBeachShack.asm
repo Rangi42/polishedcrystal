@@ -1,22 +1,19 @@
 WarmBeachShack_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 2 ; warp events
+	warp_event  2,  7, WARM_BEACH, 1
+	warp_event  3,  7, WARM_BEACH, 1
 
-WarmBeachShack_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 2
-	warp_def 7, 2, 1, WARM_BEACH
-	warp_def 7, 3, 1, WARM_BEACH
+	db 0 ; bg events
 
-.XYTriggers: db 0
-
-.Signposts: db 0
-
-.PersonEvents: db 2
-	person_event SPRITE_FISHER, 3, 1, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, WarmBeachShackFisherScript, -1
-	person_event SPRITE_FISHER, 3, 3, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, WarmBeachShackFisherScript, -1
+	db 2 ; object events
+	object_event  1,  3, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, WarmBeachShackFisherScript, -1
+	object_event  3,  3, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, WarmBeachShackFisherScript, -1
 
 WarmBeachShackFisherScript:
 	faceplayer

@@ -1,35 +1,32 @@
 CeruleanGym_MapScriptHeader:
+	db 2 ; scene scripts
+	scene_script CeruleanGymTrigger0
+	scene_script CeruleanGymTrigger1
 
-.MapTriggers: db 2
-	dw CeruleanGymTrigger0
-	dw CeruleanGymTrigger1
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 2 ; warp events
+	warp_event  4, 15, CERULEAN_CITY, 5
+	warp_event  5, 15, CERULEAN_CITY, 5
 
-CeruleanGym_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 2
-	warp_def 15, 4, 5, CERULEAN_CITY
-	warp_def 15, 5, 5, CERULEAN_CITY
+	db 3 ; bg events
+	bg_event  3,  8, SIGNPOST_IFNOTSET, CeruleanGymHiddenMachinePart
+	bg_event  2, 13, SIGNPOST_READ, CeruleanGymStatue1
+	bg_event  6, 13, SIGNPOST_READ, CeruleanGymStatue2
 
-.XYTriggers: db 0
+	db 8 ; object events
+	object_event  4, 10, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CERULEAN_GYM_ROCKET
+	object_event  5,  3, SPRITE_MISTY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, MistyScript_0x188432, EVENT_TRAINERS_IN_CERULEAN_GYM
+	object_event  4,  6, SPRITE_SWIMMER_GIRL, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerSwimmerfDiana, EVENT_TRAINERS_IN_CERULEAN_GYM
+	object_event  1,  9, SPRITE_SWIMMER_GIRL, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerSwimmerfBriana, EVENT_TRAINERS_IN_CERULEAN_GYM
+	object_event  8,  9, SPRITE_SWIMMER_GIRL, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerSwimmerfViola, EVENT_TRAINERS_IN_CERULEAN_GYM
+	object_event  0,  4, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerSailorParker, EVENT_TRAINERS_IN_CERULEAN_GYM
+	object_event  9,  4, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerSailorEddie, EVENT_TRAINERS_IN_CERULEAN_GYM
+	object_event  3, 13, SPRITE_GYM_GUY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, CeruleanGymGuyScript, EVENT_TRAINERS_IN_CERULEAN_GYM
 
-.Signposts: db 3
-	signpost 8, 3, SIGNPOST_IFNOTSET, CeruleanGymHiddenMachinePart
-	signpost 13, 2, SIGNPOST_READ, CeruleanGymStatue1
-	signpost 13, 6, SIGNPOST_READ, CeruleanGymStatue2
-
-.PersonEvents: db 8
-	person_event SPRITE_ROCKET, 10, 4, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CERULEAN_GYM_ROCKET
-	person_event SPRITE_MISTY, 3, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, MistyScript_0x188432, EVENT_TRAINERS_IN_CERULEAN_GYM
-	person_event SPRITE_SWIMMER_GIRL, 6, 4, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerSwimmerfDiana, EVENT_TRAINERS_IN_CERULEAN_GYM
-	person_event SPRITE_SWIMMER_GIRL, 9, 1, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerSwimmerfBriana, EVENT_TRAINERS_IN_CERULEAN_GYM
-	person_event SPRITE_SWIMMER_GIRL, 9, 8, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerSwimmerfViola, EVENT_TRAINERS_IN_CERULEAN_GYM
-	person_event SPRITE_SAILOR, 4, 0, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerSailorParker, EVENT_TRAINERS_IN_CERULEAN_GYM
-	person_event SPRITE_SAILOR, 4, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 3, TrainerSailorEddie, EVENT_TRAINERS_IN_CERULEAN_GYM
-	person_event SPRITE_GYM_GUY, 13, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, CeruleanGymGuyScript, EVENT_TRAINERS_IN_CERULEAN_GYM
-
-const_value set 1
+	const_def 1 ; object constants
 	const CERULEANGYM_ROCKET
 
 CeruleanGymTrigger1:
@@ -103,50 +100,63 @@ MistyScript_0x188432:
 	specialphonecall SPECIALCALL_LYRASEGG
 .FightDone:
 	checkevent EVENT_GOT_TM63_WATER_PULSE
-	iftrue MistyAfterTMScript
+	iftrue_jumpopenedtext UnknownText_0x188782
 	writetext MistyGiveTMText
 	buttonsound
 	verbosegivetmhm TM_WATER_PULSE
 	setevent EVENT_GOT_TM63_WATER_PULSE
 	jumpopenedtext MistyOutroText
 
-MistyAfterTMScript:
-	jumpopenedtext UnknownText_0x188782
+GenericTrainerSwimmerfDiana:
+	generictrainer SWIMMERF, DIANA, EVENT_BEAT_SWIMMERF_DIANA, SwimmerfDianaSeenText, SwimmerfDianaBeatenText
 
-TrainerSwimmerfDiana:
-	trainer EVENT_BEAT_SWIMMERF_DIANA, SWIMMERF, DIANA, SwimmerfDianaSeenText, SwimmerfDianaBeatenText, 0, SwimmerfDianaScript
+	text "I'll be swimming"
+	line "quietly."
+	done
 
-SwimmerfDianaScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x188856
+GenericTrainerSwimmerfViola:
+	generictrainer SWIMMERF, VIOLA, EVENT_BEAT_SWIMMERF_VIOLA, SwimmerfViolaSeenText, SwimmerfViolaBeatenText
 
-TrainerSwimmerfViola:
-	trainer EVENT_BEAT_SWIMMERF_VIOLA, SWIMMERF, VIOLA, SwimmerfViolaSeenText, SwimmerfViolaBeatenText, 0, SwimmerfViolaScript
+	text "Swimming is good"
+	line "for both beauty"
+	cont "and health!"
 
-SwimmerfViolaScript:
-	end_if_just_battled
-	jumptextfaceplayer SwimmerfViolaAfterText
+	para "Just look at"
+	line "Misty, you'll see."
+	done
 
-TrainerSwimmerfBriana:
-	trainer EVENT_BEAT_SWIMMERF_BRIANA, SWIMMERF, BRIANA, SwimmerfBrianaSeenText, SwimmerfBrianaBeatenText, 0, SwimmerfBrianaScript
+GenericTrainerSwimmerfBriana:
+	generictrainer SWIMMERF, BRIANA, EVENT_BEAT_SWIMMERF_BRIANA, SwimmerfBrianaSeenText, SwimmerfBrianaBeatenText
 
-SwimmerfBrianaScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x1888c0
+	text "Don't be too smug"
+	line "about beating me."
 
-TrainerSailorParker:
-	trainer EVENT_BEAT_SAILOR_PARKER, SAILOR, PARKER, SailorParkerSeenText, SailorParkerBeatenText, 0, SailorParkerScript
+	para "Misty will destroy"
+	line "you if you get"
+	cont "complacent."
+	done
 
-SailorParkerScript:
-	end_if_just_battled
-	jumptextfaceplayer SailorParkerAfterText
+GenericTrainerSailorParker:
+	generictrainer SAILOR, PARKER, EVENT_BEAT_SAILOR_PARKER, SailorParkerSeenText, SailorParkerBeatenText
 
-TrainerSailorEddie:
-	trainer EVENT_BEAT_SAILOR_EDDIE, SAILOR, EDDIE, SailorEddieSeenText, SailorEddieBeatenText, 0, SailorEddieScript
+	text "Misty has gotten"
+	line "much better in the"
+	cont "past few years."
 
-SailorEddieScript:
-	end_if_just_battled
-	jumptextfaceplayer SailorEddieAfterText
+	para "Don't let your"
+	line "guard down, or"
+	cont "you'll be crushed!"
+	done
+
+GenericTrainerSailorEddie:
+	generictrainer SAILOR, EDDIE, EVENT_BEAT_SAILOR_EDDIE, SailorEddieSeenText, SailorEddieBeatenText
+
+	text "Hey, let's go for"
+	line "a swim!"
+
+	para "Sailors have to"
+	line "be able to swim!"
+	done
 
 CeruleanGymGuyScript:
 	checkevent EVENT_BEAT_MISTY
@@ -331,11 +341,6 @@ SwimmerfDianaBeatenText:
 	line "the winner!"
 	done
 
-UnknownText_0x188856:
-	text "I'll be swimming"
-	line "quietly."
-	done
-
 SwimmerfViolaSeenText:
 	text "Swimming isn't"
 	line "just about speed!"
@@ -349,15 +354,6 @@ SwimmerfViolaBeatenText:
 	line "beautifully…"
 	done
 
-SwimmerfViolaAfterText:
-	text "Swimming is good"
-	line "for both beauty"
-	cont "and health!"
-
-	para "Just look at"
-	line "Misty, you'll see."
-	done
-
 SwimmerfBrianaSeenText:
 	text "Don't let my ele-"
 	line "gant swimming un-"
@@ -369,15 +365,6 @@ SwimmerfBrianaBeatenText:
 	line "disposed of me…"
 	done
 
-UnknownText_0x1888c0:
-	text "Don't be too smug"
-	line "about beating me."
-
-	para "Misty will destroy"
-	line "you if you get"
-	cont "complacent."
-	done
-
 SailorParkerSeenText:
 	text "Alright! Come"
 	line "and get me!"
@@ -385,16 +372,6 @@ SailorParkerSeenText:
 
 SailorParkerBeatenText:
 	text "This can't be…"
-	done
-
-SailorParkerAfterText:
-	text "Misty has gotten"
-	line "much better in the"
-	cont "past few years."
-
-	para "Don't let your"
-	line "guard down, or"
-	cont "you'll be crushed!"
 	done
 
 SailorEddieSeenText:
@@ -407,14 +384,6 @@ SailorEddieSeenText:
 SailorEddieBeatenText:
 	text "You can't win with"
 	line "strength alone."
-	done
-
-SailorEddieAfterText:
-	text "Hey, let's go for"
-	line "a swim!"
-
-	para "Sailors have to"
-	line "be able to swim!"
 	done
 
 CeruleanGymGuyText:

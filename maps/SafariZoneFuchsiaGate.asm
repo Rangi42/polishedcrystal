@@ -1,23 +1,20 @@
 SafariZoneFuchsiaGate_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 4 ; warp events
+	warp_event  4,  0, SAFARI_ZONE_HUB, 1
+	warp_event  5,  0, SAFARI_ZONE_HUB, 2
+	warp_event  4,  7, FUCHSIA_CITY, 6
+	warp_event  5,  7, FUCHSIA_CITY, 6
 
-SafariZoneFuchsiaGate_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 4
-	warp_def 0, 4, 1, SAFARI_ZONE_HUB
-	warp_def 0, 5, 2, SAFARI_ZONE_HUB
-	warp_def 7, 4, 6, FUCHSIA_CITY
-	warp_def 7, 5, 6, FUCHSIA_CITY
+	db 0 ; bg events
 
-.XYTriggers: db 0
-
-.Signposts: db 0
-
-.PersonEvents: db 1
-	person_event SPRITE_OFFICER, 4, 0, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, SafariZoneFuchsiaGateOfficerText, -1
+	db 1 ; object events
+	object_event  0,  4, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, SafariZoneFuchsiaGateOfficerText, -1
 
 SafariZoneFuchsiaGateOfficerText:
 	text "Hi there!"

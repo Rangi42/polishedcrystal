@@ -1,44 +1,41 @@
 NewBarkTown_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 1 ; callbacks
+	callback MAPCALLBACK_NEWMAP, NewBarkTownFlyPoint
 
-.MapCallbacks: db 1
-	dbw MAPCALLBACK_NEWMAP, NewBarkTownFlyPoint
+	db 5 ; warp events
+	warp_event  6,  3, ELMS_LAB, 1
+	warp_event 15,  5, KRISS_HOUSE_1F, 1
+	warp_event  3, 11, KRISS_NEIGHBORS_HOUSE, 1
+	warp_event 11, 13, LYRAS_HOUSE_1F, 1
+	warp_event 10,  2, ELMS_HOUSE, 2
 
-NewBarkTown_MapEventHeader:
+	db 7 ; coord events
+	coord_event  1,  8, 0, NewBarkTown_TeacherStopsYouTrigger1
+	coord_event  1,  9, 0, NewBarkTown_TeacherStopsYouTrigger2
+	coord_event  6,  4, 0, NewBarkTown_LyraIntroTrigger
+	coord_event 17,  6, 1, NewBarkTown_LyraFinalTrigger1
+	coord_event 17,  7, 1, NewBarkTown_LyraFinalTrigger2
+	coord_event 17,  8, 1, NewBarkTown_LyraFinalTrigger3
+	coord_event 17,  9, 1, NewBarkTown_LyraFinalTrigger4
 
-.Warps: db 5
-	warp_def 3, 6, 1, ELMS_LAB
-	warp_def 5, 15, 1, KRISS_HOUSE_1F
-	warp_def 11, 3, 1, KRISS_NEIGHBORS_HOUSE
-	warp_def 13, 11, 1, LYRAS_HOUSE_1F
-	warp_def 2, 10, 2, ELMS_HOUSE
+	db 5 ; bg events
+	bg_event  8,  8, SIGNPOST_JUMPTEXT, NewBarkTownSignText
+	bg_event 13,  5, SIGNPOST_JUMPTEXT, PlayersHouseSignText
+	bg_event  3,  3, SIGNPOST_JUMPTEXT, ElmsLabSignText
+	bg_event  9, 13, SIGNPOST_JUMPTEXT, LyrasHouseSignText
+	bg_event  3,  2, SIGNPOST_ITEM + POTION, EVENT_NEW_BARK_TOWN_HIDDEN_POTION
 
-.XYTriggers: db 7
-	xy_trigger 0, 8, 1, NewBarkTown_TeacherStopsYouTrigger1
-	xy_trigger 0, 9, 1, NewBarkTown_TeacherStopsYouTrigger2
-	xy_trigger 0, 4, 6, NewBarkTown_LyraIntroTrigger
-	xy_trigger 1, 6, 17, NewBarkTown_LyraFinalTrigger1
-	xy_trigger 1, 7, 17, NewBarkTown_LyraFinalTrigger2
-	xy_trigger 1, 8, 17, NewBarkTown_LyraFinalTrigger3
-	xy_trigger 1, 9, 17, NewBarkTown_LyraFinalTrigger4
+	db 6 ; object events
+	object_event  3,  2, SPRITE_CHERRYGROVE_RIVAL, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, NewBarkTownSilverScript, EVENT_RIVAL_NEW_BARK_TOWN
+	object_event  1,  6, SPRITE_NEW_BARK_LYRA, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LYRA_NEW_BARK_TOWN
+	object_event  6,  8, SPRITE_NEW_BARK_TEACHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_TEACHER_NEW_BARK_TOWN
+	object_event  6,  8, SPRITE_TEACHER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, NewBarkTownTeacherScript, -1
+	object_event 13,  8, SPRITE_FISHER, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, Text_ElmDiscoveredNewMon, -1
+	object_event  7, 15, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, (1 << MORN) | (1 << DAY), 0, PERSONTYPE_COMMAND, jumptextfaceplayer, Text_GearIsImpressive, -1
 
-.Signposts: db 5
-	signpost 8, 8, SIGNPOST_JUMPTEXT, NewBarkTownSignText
-	signpost 5, 13, SIGNPOST_JUMPTEXT, PlayersHouseSignText
-	signpost 3, 3, SIGNPOST_JUMPTEXT, ElmsLabSignText
-	signpost 13, 9, SIGNPOST_JUMPTEXT, LyrasHouseSignText
-	signpost 2, 3, SIGNPOST_ITEM + POTION, EVENT_NEW_BARK_TOWN_HIDDEN_POTION
-
-.PersonEvents: db 6
-	person_event SPRITE_CHERRYGROVE_RIVAL, 2, 3, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, NewBarkTownSilverScript, EVENT_RIVAL_NEW_BARK_TOWN
-	person_event SPRITE_NEW_BARK_LYRA, 6, 1, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LYRA_NEW_BARK_TOWN
-	person_event SPRITE_NEW_BARK_TEACHER, 8, 6, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_TEACHER_NEW_BARK_TOWN
-	person_event SPRITE_TEACHER, 8, 6, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, NewBarkTownTeacherScript, -1
-	person_event SPRITE_FISHER, 8, 13, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, Text_ElmDiscoveredNewMon, -1
-	person_event SPRITE_YOUNGSTER, 15, 7, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, (1 << MORN) | (1 << DAY), 0, PERSONTYPE_COMMAND, jumptextfaceplayer, Text_GearIsImpressive, -1
-
-const_value set 1
+	const_def 1 ; object constants
 	const NEWBARKTOWN_SILVER
 	const NEWBARKTOWN_LYRA
 	const NEWBARKTOWN_TEACHER

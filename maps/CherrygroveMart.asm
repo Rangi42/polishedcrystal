@@ -1,23 +1,20 @@
 CherrygroveMart_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 2 ; warp events
+	warp_event  2,  7, CHERRYGROVE_CITY, 1
+	warp_event  3,  7, CHERRYGROVE_CITY, 1
 
-CherrygroveMart_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 2
-	warp_def 7, 2, 1, CHERRYGROVE_CITY
-	warp_def 7, 3, 1, CHERRYGROVE_CITY
+	db 0 ; bg events
 
-.XYTriggers: db 0
-
-.Signposts: db 0
-
-.PersonEvents: db 3
-	person_event SPRITE_CLERK, 3, 1, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ClerkScript_0x19680a, -1
-	person_event SPRITE_COOLTRAINER_M, 6, 7, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CooltrainerMScript_0x19681d, -1
-	person_event SPRITE_YOUNGSTER, 5, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1968a0, -1
+	db 3 ; object events
+	object_event  1,  3, SPRITE_CLERK, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ClerkScript_0x19680a, -1
+	object_event  7,  6, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CooltrainerMScript_0x19681d, -1
+	object_event  2,  5, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1968a0, -1
 
 ClerkScript_0x19680a:
 	checkevent EVENT_GAVE_MYSTERY_EGG_TO_ELM
@@ -29,13 +26,9 @@ ClerkScript_0x19680a:
 
 CooltrainerMScript_0x19681d:
 	checkevent EVENT_GAVE_MYSTERY_EGG_TO_ELM
-	iftrue .AfterDex
-	jumptextfaceplayer UnknownText_0x196834
+	iftrue_jumptextfaceplayer UnknownText_0x196873
+	thistextfaceplayer
 
-.AfterDex:
-	jumptextfaceplayer UnknownText_0x196873
-
-UnknownText_0x196834:
 	text "They're fresh out"
 	line "of # Balls!"
 

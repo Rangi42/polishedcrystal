@@ -1,27 +1,24 @@
 CherrygrovePokeCenter1F_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 3 ; warp events
+	warp_event  5,  7, CHERRYGROVE_CITY, 2
+	warp_event  6,  7, CHERRYGROVE_CITY, 2
+	warp_event  0,  7, POKECENTER_2F, 1
 
-CherrygrovePokeCenter1F_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 3
-	warp_def 7, 5, 2, CHERRYGROVE_CITY
-	warp_def 7, 6, 2, CHERRYGROVE_CITY
-	warp_def 7, 0, 1, POKECENTER_2F
+	db 1 ; bg events
+	bg_event 10,  1, SIGNPOST_READ, PokemonJournalRedScript
 
-.XYTriggers: db 0
-
-.Signposts: db 1
-	signpost 1, 10, SIGNPOST_READ, PokemonJournalRedScript
-
-.PersonEvents: db 5
-	pc_nurse_event 1, 5
-	person_event SPRITE_TEACHER, 6, 1, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CherrygrovePokeCenter1FTeacherScript, -1
-	person_event SPRITE_FISHER, 1, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, CherrygrovePokeCenter1FFisherText, -1
-	person_event SPRITE_GENTLEMAN, 6, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, CherrygrovePokeCenter1FGentlemanText, -1
-	person_event SPRITE_LADY, 4, 9, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, CherrygrovePokeCenter1FLadyText, -1
+	db 5 ; object events
+	pc_nurse_event  5, 1
+	object_event  1,  6, SPRITE_TEACHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_SCRIPT, 0, CherrygrovePokeCenter1FTeacherScript, -1
+	object_event  8,  1, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, CherrygrovePokeCenter1FFisherText, -1
+	object_event 11,  6, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, CherrygrovePokeCenter1FGentlemanText, -1
+	object_event  9,  4, SPRITE_LADY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, CherrygrovePokeCenter1FLadyText, -1
 
 PokemonJournalRedScript:
 	setflag ENGINE_READ_RED_JOURNAL

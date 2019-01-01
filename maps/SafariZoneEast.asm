@@ -1,37 +1,37 @@
 SafariZoneEast_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 5 ; warp events
+	warp_event  2, 24, SAFARI_ZONE_HUB, 3
+	warp_event  2, 25, SAFARI_ZONE_HUB, 4
+	warp_event  2,  6, SAFARI_ZONE_NORTH, 1
+	warp_event  2,  7, SAFARI_ZONE_NORTH, 2
+	warp_event 27, 11, SAFARI_ZONE_EAST_REST_HOUSE, 1
 
-SafariZoneEast_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 5
-	warp_def 24, 2, 3, SAFARI_ZONE_HUB
-	warp_def 25, 2, 4, SAFARI_ZONE_HUB
-	warp_def 6, 2, 1, SAFARI_ZONE_NORTH
-	warp_def 7, 2, 2, SAFARI_ZONE_NORTH
-	warp_def 11, 27, 1, SAFARI_ZONE_EAST_REST_HOUSE
+	db 3 ; bg events
+	bg_event  6, 24, SIGNPOST_JUMPTEXT, SafariZoneEastAreaSignText
+	bg_event 28, 12, SIGNPOST_JUMPTEXT, SafariZoneEastRestHouseSignText
+	bg_event  8,  6, SIGNPOST_JUMPTEXT, SafariZoneEastTrainerTipsSignText
 
-.XYTriggers: db 0
+	db 4 ; object events
+	object_event  9, 11, SPRITE_COWGIRL, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerCowgirlApril, -1
+	itemball_event 22, 15, CARBOS, 1, EVENT_SAFARI_ZONE_EAST_CARBOS
+	itemball_event  7, 13, SILVERPOWDER, 1, EVENT_SAFARI_ZONE_EAST_SILVERPOWDER
+	itemball_event  5,  3, FULL_RESTORE, 1, EVENT_SAFARI_ZONE_EAST_FULL_RESTORE
 
-.Signposts: db 3
-	signpost 24, 6, SIGNPOST_JUMPTEXT, SafariZoneEastAreaSignText
-	signpost 12, 28, SIGNPOST_JUMPTEXT, SafariZoneEastRestHouseSignText
-	signpost 6, 8, SIGNPOST_JUMPTEXT, SafariZoneEastTrainerTipsSignText
+GenericTrainerCowgirlApril:
+	generictrainer COWGIRL, APRIL, EVENT_BEAT_COWGIRL_APRIL, CowgirlAprilSeenText, CowgirlAprilBeatenText
 
-.PersonEvents: db 4
-	person_event SPRITE_COWGIRL, 11, 9, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 2, TrainerCowgirlApril, -1
-	itemball_event 15, 22, CARBOS, 1, EVENT_SAFARI_ZONE_EAST_CARBOS
-	itemball_event 13, 7, SILVERPOWDER, 1, EVENT_SAFARI_ZONE_EAST_SILVERPOWDER
-	itemball_event 3, 5, FULL_RESTORE, 1, EVENT_SAFARI_ZONE_EAST_FULL_RESTORE
+	text "Sometimes you'll"
+	line "see 10 of the same"
 
-TrainerCowgirlApril:
-	trainer EVENT_BEAT_COWGIRL_APRIL, COWGIRL, APRIL, CowgirlAprilSeenText, CowgirlAprilBeatenText, 0, CowgirlAprilScript
-
-CowgirlAprilScript:
-	end_if_just_battled
-	jumptextfaceplayer CowgirlAprilAfterText
+	para "#mon, all in a"
+	line "row!"
+	done
 
 CowgirlAprilSeenText:
 	text "Yeehaw!"
@@ -42,14 +42,6 @@ CowgirlAprilSeenText:
 
 CowgirlAprilBeatenText:
 	text "Well, shoot!"
-	done
-
-CowgirlAprilAfterText:
-	text "Sometimes you'll"
-	line "see 10 of the same"
-
-	para "#mon, all in a"
-	line "row!"
 	done
 
 SafariZoneEastAreaSignText:

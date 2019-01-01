@@ -1,25 +1,22 @@
 KarensRoom_MapScriptHeader:
+	db 1 ; scene scripts
+	scene_script KarensRoomEntranceTrigger
 
-.MapTriggers: db 1
-	dw KarensRoomEntranceTrigger
+	db 1 ; callbacks
+	callback MAPCALLBACK_TILES, KarensRoomDoorCallback
 
-.MapCallbacks: db 1
-	dbw MAPCALLBACK_TILES, KarensRoomDoorCallback
+	db 4 ; warp events
+	warp_event  4, 17, BRUNOS_ROOM, 3
+	warp_event  5, 17, BRUNOS_ROOM, 4
+	warp_event  4,  2, LANCES_ROOM, 1
+	warp_event  5,  2, LANCES_ROOM, 2
 
-KarensRoom_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 4
-	warp_def 17, 4, 3, BRUNOS_ROOM
-	warp_def 17, 5, 4, BRUNOS_ROOM
-	warp_def 2, 4, 1, LANCES_ROOM
-	warp_def 2, 5, 2, LANCES_ROOM
+	db 0 ; bg events
 
-.XYTriggers: db 0
-
-.Signposts: db 0
-
-.PersonEvents: db 1
-	person_event SPRITE_KAREN, 7, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, KarenScript, -1
+	db 1 ; object events
+	object_event  5,  7, SPRITE_KAREN, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, KarenScript, -1
 
 KarensRoomEntranceTrigger:
 	priorityjump .Script

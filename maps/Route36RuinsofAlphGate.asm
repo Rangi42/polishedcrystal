@@ -1,24 +1,21 @@
 Route36RuinsofAlphGate_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 4 ; warp events
+	warp_event  4,  0, ROUTE_36, 3
+	warp_event  5,  0, ROUTE_36, 4
+	warp_event  4,  7, RUINS_OF_ALPH_OUTSIDE, 9
+	warp_event  5,  7, RUINS_OF_ALPH_OUTSIDE, 9
 
-Route36RuinsofAlphGate_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 4
-	warp_def 0, 4, 3, ROUTE_36
-	warp_def 0, 5, 4, ROUTE_36
-	warp_def 7, 4, 9, RUINS_OF_ALPH_OUTSIDE
-	warp_def 7, 5, 9, RUINS_OF_ALPH_OUTSIDE
+	db 0 ; bg events
 
-.XYTriggers: db 0
-
-.Signposts: db 0
-
-.PersonEvents: db 2
-	person_event SPRITE_OFFICER, 4, 0, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x6aa20, -1
-	person_event SPRITE_GRAMPS, 5, 7, SPRITEMOVEDATA_WANDER, 2, 1, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x6aa5b, -1
+	db 2 ; object events
+	object_event  0,  4, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x6aa20, -1
+	object_event  7,  5, SPRITE_GRAMPS, SPRITEMOVEDATA_WANDER, 2, 1, -1, -1, PAL_NPC_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x6aa5b, -1
 
 UnknownText_0x6aa20:
 	text "Don't you wonder"

@@ -127,9 +127,9 @@ XDefendIcon:
 XSpeedIcon:
 XSpclAtkIcon:
 XSpclDefIcon:
+XAccuracyIcon:
 DireHitIcon:
-GuardSpecIcon:
-XAccuracyIcon:    INCBIN "gfx/items/battle_item.2bpp.lz"
+GuardSpecIcon:    INCBIN "gfx/items/battle_item.2bpp.lz"
 RepelIcon:
 SuperRepelIcon:
 MaxRepelIcon:     INCBIN "gfx/items/repel.2bpp.lz"
@@ -174,6 +174,7 @@ OldSeaMapIcon:    INCBIN "gfx/items/old_sea_map.2bpp.lz"
 ShinyCharmIcon:   INCBIN "gfx/items/shiny_charm.2bpp.lz"
 OvalCharmIcon:    INCBIN "gfx/items/oval_charm.2bpp.lz"
 SilphScope2Icon:  INCBIN "gfx/items/silphscope2.2bpp.lz"
+ApricornBoxIcon:  INCBIN "gfx/items/apricorn_box.2bpp.lz"
 CheriBerryIcon:   INCBIN "gfx/items/cheri_berry.2bpp.lz"
 ChestoBerryIcon:  INCBIN "gfx/items/chesto_berry.2bpp.lz"
 PechaBerryIcon:   INCBIN "gfx/items/pecha_berry.2bpp.lz"
@@ -190,13 +191,7 @@ GanlonBerryIcon:  INCBIN "gfx/items/ganlon_berry.2bpp.lz"
 SalacBerryIcon:   INCBIN "gfx/items/salac_berry.2bpp.lz"
 PetayaBerryIcon:  INCBIN "gfx/items/petaya_berry.2bpp.lz"
 ApicotBerryIcon:  INCBIN "gfx/items/apicot_berry.2bpp.lz"
-RedApricornIcon:
-BluApricornIcon:
-YlwApricornIcon:
-GrnApricornIcon:
-WhtApricornIcon:
-BlkApricornIcon:
-PnkApricornIcon:  INCBIN "gfx/items/apricorn.2bpp.lz"
+BerryJuiceIcon:   INCBIN "gfx/items/berry_juice.2bpp.lz"
 SilkScarfIcon:
 ChoiceScarfIcon:  INCBIN "gfx/items/scarf.2bpp.lz"
 BlackBeltIcon:    INCBIN "gfx/items/black_belt.2bpp.lz"

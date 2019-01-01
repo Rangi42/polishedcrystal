@@ -1,31 +1,28 @@
 PokemonFanClub_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 2 ; warp events
+	warp_event  2,  7, VERMILION_CITY, 3
+	warp_event  3,  7, VERMILION_CITY, 3
 
-PokemonFanClub_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 2
-	warp_def 7, 2, 3, VERMILION_CITY
-	warp_def 7, 3, 3, VERMILION_CITY
+	db 3 ; bg events
+	bg_event  7,  0, SIGNPOST_JUMPTEXT, UnknownText_0x191dfc
+	bg_event  9,  0, SIGNPOST_JUMPTEXT, UnknownText_0x191e29
+	bg_event  0,  1, SIGNPOST_READ, PokemonJournalGreenScript
 
-.XYTriggers: db 0
+	db 6 ; object events
+	object_event  3,  3, SPRITE_CLEFAIRY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptext, ClefairyDollText, EVENT_VERMILION_FAN_CLUB_DOLL
+	object_event  5,  1, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GentlemanScript_0x1917e9, -1
+	object_event  6,  1, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x191b6d, -1
+	object_event  3,  4, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FisherScript_0x191824, -1
+	object_event  7,  2, SPRITE_TEACHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x191d73, -1
+	object_event  7,  3, SPRITE_ODDISH, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_POKEMON, ODDISH, FanClubOddishText, -1
 
-.Signposts: db 3
-	signpost 0, 7, SIGNPOST_JUMPTEXT, UnknownText_0x191dfc
-	signpost 0, 9, SIGNPOST_JUMPTEXT, UnknownText_0x191e29
-	signpost 1, 0, SIGNPOST_READ, PokemonJournalGreenScript
-
-.PersonEvents: db 6
-	person_event SPRITE_CLEFAIRY, 3, 3, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptext, ClefairyDollText, EVENT_VERMILION_FAN_CLUB_DOLL
-	person_event SPRITE_GENTLEMAN, 1, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GentlemanScript_0x1917e9, -1
-	person_event SPRITE_RECEPTIONIST, 1, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x191b6d, -1
-	person_event SPRITE_FISHER, 4, 3, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FisherScript_0x191824, -1
-	person_event SPRITE_TEACHER, 2, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x191d73, -1
-	person_event SPRITE_ODDISH, 3, 7, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_POKEMON, ODDISH, FanClubOddishText, -1
-
-const_value set 1
+	const_def 1 ; object constants
 	const POKEMONFANCLUB_CLEFAIRY_DOLL
 
 GentlemanScript_0x1917e9:
@@ -49,12 +46,12 @@ UnknownScript_0x191802:
 	jumpopenedtext UnknownText_0x191a72
 
 FisherScript_0x191824:
+	checkevent EVENT_GOT_LOST_ITEM_FROM_FAN_CLUB
+	iftrue_jumptextfaceplayer UnknownText_0x191d1e
+	checkevent EVENT_RETURNED_MACHINE_PART
+	iffalse_jumptextfaceplayer UnknownText_0x191ba0
 	faceplayer
 	opentext
-	checkevent EVENT_GOT_LOST_ITEM_FROM_FAN_CLUB
-	iftrue_jumpopenedtext UnknownText_0x191d1e
-	checkevent EVENT_RETURNED_MACHINE_PART
-	iffalse_jumpopenedtext UnknownText_0x191ba0
 	writetext UnknownText_0x191bff
 	checkevent EVENT_MET_COPYCAT_FOUND_OUT_ABOUT_LOST_ITEM
 	iftrue UnknownScript_0x191844
@@ -76,7 +73,21 @@ UnknownScript_0x191844:
 
 PokemonJournalGreenScript:
 	setflag ENGINE_READ_GREEN_JOURNAL
-	jumptext PokemonJournalGreenText
+	thistext
+
+	text "#mon Journal"
+
+	para "Special Feature:"
+	line "<PK><MN> Trainer Green!"
+
+	para "In addition to"
+	line "being a powerful"
+	cont "trainer, Green is"
+
+	para "said to be fascin-"
+	line "ated by legendary"
+	cont "#mon."
+	done
 
 UnknownText_0x191881:
 	text "I'm the Chairman"
@@ -252,19 +263,4 @@ UnknownText_0x191dfc:
 UnknownText_0x191e29:
 	text "If someone brags,"
 	line "brag right back!"
-	done
-
-PokemonJournalGreenText:
-	text "#mon Journal"
-
-	para "Special Feature:"
-	line "<PK><MN> Trainer Green!"
-
-	para "In addition to"
-	line "being a powerful"
-	cont "trainer, Green is"
-
-	para "said to be fascin-"
-	line "ated by legendary"
-	cont "#mon."
 	done

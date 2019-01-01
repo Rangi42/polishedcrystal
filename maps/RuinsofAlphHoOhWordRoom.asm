@@ -1,18 +1,15 @@
 RuinsofAlphHoOhWordRoom_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 3 ; warp events
+	warp_event  9,  9, RUINS_OF_ALPH_HO_OH_ITEM_ROOM, 3
+	warp_event 10,  9, RUINS_OF_ALPH_HO_OH_ITEM_ROOM, 4
+	warp_event 17, 21, RUINS_OF_ALPH_INNER_CHAMBER, 2
 
-RuinsofAlphHoOhWordRoom_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 3
-	warp_def 9, 9, 3, RUINS_OF_ALPH_HO_OH_ITEM_ROOM
-	warp_def 9, 10, 4, RUINS_OF_ALPH_HO_OH_ITEM_ROOM
-	warp_def 21, 17, 2, RUINS_OF_ALPH_INNER_CHAMBER
+	db 0 ; bg events
 
-.XYTriggers: db 0
-
-.Signposts: db 0
-
-.PersonEvents: db 0
+	db 0 ; object events

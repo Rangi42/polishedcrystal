@@ -1,19 +1,16 @@
 TinTower6F_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 2 ; warp events
+	warp_event  1,  9, TIN_TOWER_7F, 1
+	warp_event  9, 15, TIN_TOWER_5F, 1
 
-TinTower6F_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 2
-	warp_def 9, 1, 1, TIN_TOWER_7F
-	warp_def 15, 9, 1, TIN_TOWER_5F
+	db 0 ; bg events
 
-.XYTriggers: db 0
-
-.Signposts: db 0
-
-.PersonEvents: db 1
-	itemball_event 8, 6, MAX_POTION, 1, EVENT_TIN_TOWER_6F_MAX_POTION
+	db 1 ; object events
+	itemball_event  6,  8, MAX_POTION, 1, EVENT_TIN_TOWER_6F_MAX_POTION
 

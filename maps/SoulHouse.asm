@@ -1,28 +1,25 @@
 SoulHouse_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 3 ; warp events
+	warp_event  4,  9, LAVENDER_TOWN, 6
+	warp_event  5,  9, LAVENDER_TOWN, 6
+	warp_event  4,  2, SOUL_HOUSE_B1F, 1
 
-SoulHouse_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 3
-	warp_def 9, 4, 6, LAVENDER_TOWN
-	warp_def 9, 5, 6, LAVENDER_TOWN
-	warp_def 2, 4, 1, SOUL_HOUSE_B1F
+	db 0 ; bg events
 
-.XYTriggers: db 0
+	db 5 ; object events
+	object_event  9,  7, SPRITE_AGATHA, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, AgathaScript, -1
+	object_event  5,  2, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, MrFujiText, EVENT_SOUL_HOUSE_MR_FUJI
+	object_event  7,  3, SPRITE_TEACHER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x7ed4d, -1
+	object_event  2,  7, SPRITE_LASS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x7edb1, -1
+	object_event  1,  5, SPRITE_GRANNY, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x7eddb, -1
 
-.Signposts: db 0
-
-.PersonEvents: db 5
-	person_event SPRITE_AGATHA, 7, 9, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, AgathaScript, -1
-	person_event SPRITE_GRAMPS, 2, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, MrFujiText, EVENT_SOUL_HOUSE_MR_FUJI
-	person_event SPRITE_TEACHER, 3, 7, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x7ed4d, -1
-	person_event SPRITE_LASS, 7, 2, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x7edb1, -1
-	person_event SPRITE_GRANNY, 5, 1, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x7eddb, -1
-
-const_value set 1
+	const_def 1 ; object constants
 	const SOULHOUSE_AGATHA
 
 AgathaScript:

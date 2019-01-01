@@ -1,26 +1,23 @@
 CeladonDeptStore1F_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 4 ; warp events
+	warp_event  7,  7, CELADON_CITY, 1
+	warp_event  8,  7, CELADON_CITY, 1
+	warp_event 15,  0, CELADON_DEPT_STORE_2F, 2
+	warp_event  2,  0, CELADON_DEPT_STORE_ELEVATOR, 1
 
-CeladonDeptStore1F_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 4
-	warp_def 7, 7, 1, CELADON_CITY
-	warp_def 7, 8, 1, CELADON_CITY
-	warp_def 0, 15, 2, CELADON_DEPT_STORE_2F
-	warp_def 0, 2, 1, CELADON_DEPT_STORE_ELEVATOR
+	db 1 ; bg events
+	bg_event 14,  0, SIGNPOST_JUMPTEXT, CeladonDeptStore1FDirectoryText
 
-.XYTriggers: db 0
-
-.Signposts: db 1
-	signpost 0, 14, SIGNPOST_JUMPTEXT, CeladonDeptStore1FDirectoryText
-
-.PersonEvents: db 3
-	person_event SPRITE_RECEPTIONIST, 1, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x709ef, -1
-	person_event SPRITE_GENTLEMAN, 4, 11, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x70a35, -1
-	person_event SPRITE_TEACHER, 3, 5, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x70aa9, -1
+	db 3 ; object events
+	object_event 10,  1, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x709ef, -1
+	object_event 11,  4, SPRITE_GENTLEMAN, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x70a35, -1
+	object_event  5,  3, SPRITE_TEACHER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x70aa9, -1
 
 UnknownText_0x709ef:
 	text "Hello! Welcome to"

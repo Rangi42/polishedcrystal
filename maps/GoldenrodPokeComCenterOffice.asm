@@ -1,29 +1,26 @@
 GoldenrodPokeComCenterOffice_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 2 ; warp events
+	warp_event  0,  7, GOLDENROD_POKECOM_CENTER_1F, 3
+	warp_event  1,  7, GOLDENROD_POKECOM_CENTER_1F, 3
 
-GoldenrodPokeComCenterOffice_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 2
-	warp_def 7, 0, 3, GOLDENROD_POKECOM_CENTER_1F
-	warp_def 7, 1, 3, GOLDENROD_POKECOM_CENTER_1F
+	db 4 ; bg events
+	bg_event  3,  2, SIGNPOST_JUMPTEXT, RangiComputerText
+	bg_event  6,  2, SIGNPOST_JUMPTEXT, LunaComputerText
+	bg_event  6,  5, SIGNPOST_UP, AizawaComputerScript
+	bg_event  4,  2, SIGNPOST_READ, RangiKeyboardScript
 
-.XYTriggers: db 0
+	db 3 ; object events
+	object_event  4,  4, SPRITE_SCIENTIST_F, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, PAL_NPC_PURPLE, PERSONTYPE_COMMAND, jumptextfaceplayer, AdminRangiText, -1
+	object_event  7,  3, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, AdminLunaText, -1
+	object_event  7,  6, SPRITE_PHARMACIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, AdminAizawaText, -1
 
-.Signposts: db 4
-	signpost 2, 3, SIGNPOST_JUMPTEXT, RangiComputerText
-	signpost 2, 6, SIGNPOST_JUMPTEXT, LunaComputerText
-	signpost 5, 6, SIGNPOST_UP, AizawaComputerScript
-	signpost 2, 4, SIGNPOST_READ, RangiKeyboardScript
-
-.PersonEvents: db 3
-	person_event SPRITE_SCIENTIST_F, 4, 4, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_COMMAND, jumptextfaceplayer, AdminRangiText, -1
-	person_event SPRITE_COOLTRAINER_F, 3, 7, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, AdminLunaText, -1
-	person_event SPRITE_PHARMACIST, 6, 7, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, AdminAizawaText, -1
-
-const_value set 1
+	const_def 1 ; object constants
 	const GOLDENRODPOKECOMCENTEROFFICE_RANGI
 
 AdminRangiText:

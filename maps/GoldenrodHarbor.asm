@@ -1,35 +1,32 @@
 GoldenrodHarbor_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 2 ; warp events
+	warp_event 31, 16, GOLDENROD_HARBOR_GATE, 1
+	warp_event 31, 17, GOLDENROD_HARBOR_GATE, 2
 
-GoldenrodHarbor_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 2
-	warp_def 16, 31, 1, GOLDENROD_HARBOR_GATE
-	warp_def 17, 31, 2, GOLDENROD_HARBOR_GATE
+	db 3 ; bg events
+	bg_event 29, 19, SIGNPOST_JUMPTEXT, GoldenrodHarborSignText
+	bg_event 28, 15, SIGNPOST_JUMPTEXT, GoldenrodHarborCrateSignText
+	bg_event 22, 21, SIGNPOST_ITEM + REVIVE, EVENT_GOLDENROD_HARBOR_HIDDEN_REVIVE
 
-.XYTriggers: db 0
-
-.Signposts: db 3
-	signpost 19, 29, SIGNPOST_JUMPTEXT, GoldenrodHarborSignText
-	signpost 15, 28, SIGNPOST_JUMPTEXT, GoldenrodHarborCrateSignText
-	signpost 21, 22, SIGNPOST_ITEM + REVIVE, EVENT_GOLDENROD_HARBOR_HIDDEN_REVIVE
-
-.PersonEvents: db 12
-	person_event SPRITE_FISHER, 3, 17, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, GoldenrodHarborFisherScript, -1
-	person_event SPRITE_FISHER, 5, 13, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherPaton, -1
-	itemball_event 3, 13, STAR_PIECE, 1, EVENT_GOLDENROD_HARBOR_STAR_PIECE
-	person_event SPRITE_LASS, 15, 27, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, pokemart, MARTTYPE_ADVENTURER, MART_GOLDENROD_HARBOR, -1
-	person_event SPRITE_POKEFAN_M, 15, 22, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, GoldenrodHarborPokefanmScript, -1
-	person_event SPRITE_MAGIKARP, 15, 21, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, GoldenrodHarborMagikarpText, -1
-	person_event SPRITE_YOUNGSTER, 15, 16, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, GoldenrodHarborYoungsterScript, -1
-	person_event SPRITE_FISHER, 20, 14, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, trade, TRADE_WITH_JACQUES_FOR_GRIMER, -1
-	person_event SPRITE_ROCKET, 16, 40, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_GOLDENROD_CITY_ROCKET_SCOUT
-	person_event SPRITE_SWIMMER_GIRL, 8, 31, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 5, TrainerSwimmerfKatie, -1
-	person_event SPRITE_SWIMMER_GUY, 28, 18, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerSwimmermJames, -1
-	person_event SPRITE_LASS, 19, 18, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, GoldenrodHarborLass2Text, -1
+	db 12 ; object events
+	object_event 17,  3, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_SCRIPT, 0, GoldenrodHarborFisherScript, -1
+	object_event 13,  5, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerFisherPaton, -1
+	itemball_event 13,  3, STAR_PIECE, 1, EVENT_GOLDENROD_HARBOR_STAR_PIECE
+	object_event 27, 15, SPRITE_LASS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, pokemart, MARTTYPE_ADVENTURER, MART_GOLDENROD_HARBOR, -1
+	object_event 22, 15, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, GoldenrodHarborPokefanmScript, -1
+	object_event 21, 15, SPRITE_MAGIKARP, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, GoldenrodHarborMagikarpText, -1
+	object_event 16, 15, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_SCRIPT, 0, GoldenrodHarborYoungsterScript, -1
+	object_event 14, 20, SPRITE_FISHER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, trade, TRADE_WITH_JACQUES_FOR_GRIMER, -1
+	object_event 40, 16, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_GOLDENROD_CITY_ROCKET_SCOUT
+	object_event 31,  8, SPRITE_SWIMMER_GIRL, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_GENERICTRAINER, 5, GenericTrainerSwimmerfKatie, -1
+	object_event 18, 28, SPRITE_SWIMMER_GUY, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerSwimmermJames, -1
+	object_event 18, 19, SPRITE_LASS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, GoldenrodHarborLass2Text, -1
 
 GoldenrodHarborFisherScript:
 	faceplayer
@@ -61,26 +58,34 @@ GoldenrodHarborTutorHyperVoiceScript:
 	takeitem SILVER_LEAF
 	jumpopenedtext Text_GoldenrodHarborTutorTaught
 
-TrainerFisherPaton:
-	trainer EVENT_BEAT_FISHER_PATON, FISHER, PATON, FisherPatonSeenText, FisherPatonBeatenText, 0, TrainerFisherPatonScript
+GenericTrainerFisherPaton:
+	generictrainer FISHER, PATON, EVENT_BEAT_FISHER_PATON, FisherPatonSeenText, FisherPatonBeatenText
 
-TrainerFisherPatonScript:
-	end_if_just_battled
-	jumptextfaceplayer FisherPatonAfterText
+	text "You're working"
+	line "on a #dex?"
+	cont "That's neat!"
+	done
 
-TrainerSwimmerfKatie:
-	trainer EVENT_BEAT_SWIMMERF_KATIE, SWIMMERF, KATIE, SwimmerfKatieSeenText, SwimmerfKatieBeatenText, 0, SwimmerfKatieScript
+GenericTrainerSwimmerfKatie:
+	generictrainer SWIMMERF, KATIE, EVENT_BEAT_SWIMMERF_KATIE, SwimmerfKatieSeenText, SwimmerfKatieBeatenText
 
-SwimmerfKatieScript:
-	end_if_just_battled
-	jumptextfaceplayer SwimmerfKatieAfterText
+	text "Why is the sea"
+	line "blue?"
 
-TrainerSwimmermJames:
-	trainer EVENT_BEAT_SWIMMERM_JAMES, SWIMMERM, JAMES, SwimmermJamesSeenText, SwimmermJamesBeatenText, 0, SwimmermJamesScript
+	para "I heard it ref-"
+	line "lects the sky…"
 
-SwimmermJamesScript:
-	end_if_just_battled
-	jumptextfaceplayer SwimmermJamesAfterText
+	para "But then why is"
+	line "the sky blue?"
+	done
+
+GenericTrainerSwimmermJames:
+	generictrainer SWIMMERM, JAMES, EVENT_BEAT_SWIMMERM_JAMES, SwimmermJamesSeenText, SwimmermJamesBeatenText
+
+	text "Can't a Swimmer"
+	line "use a rowboat"
+	cont "sometimes?"
+	done
 
 GoldenrodHarborPokefanmScript:
 	faceplayer
@@ -302,12 +307,6 @@ FisherPatonBeatenText:
 	line "interesting?"
 	done
 
-FisherPatonAfterText:
-	text "You're working"
-	line "on a #dex?"
-	cont "That's neat!"
-	done
-
 SwimmerfKatieSeenText:
 	text "Swimming in the"
 	line "deep blue sea"
@@ -319,17 +318,6 @@ SwimmerfKatieBeatenText:
 	line "Now I feel blue…"
 	done
 
-SwimmerfKatieAfterText:
-	text "Why is the sea"
-	line "blue?"
-
-	para "I heard it ref-"
-	line "lects the sky…"
-
-	para "But then why is"
-	line "the sky blue?"
-	done
-
 SwimmermJamesSeenText:
 	text "I can swim, but"
 	line "I can also row!"
@@ -338,12 +326,6 @@ SwimmermJamesSeenText:
 SwimmermJamesBeatenText:
 	text "Maybe I can't"
 	line "battle…"
-	done
-
-SwimmermJamesAfterText:
-	text "Can't a Swimmer"
-	line "use a rowboat"
-	cont "sometimes?"
 	done
 
 GoldenrodHarborMagikarpText:

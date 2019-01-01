@@ -1,31 +1,29 @@
 Route12North_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 2 ; warp events
+	warp_event 10, 15, ROUTE_12_GATE, 1
+	warp_event 11, 15, ROUTE_12_GATE, 2
 
-Route12North_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 2
-	warp_def 15, 10, 1, ROUTE_12_GATE
-	warp_def 15, 11, 2, ROUTE_12_GATE
+	db 1 ; bg events
+	bg_event 13, 13, SIGNPOST_JUMPTEXT, FishingSpotSignText
 
-.XYTriggers: db 0
+	db 1 ; object events
+	object_event  6, 11, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerFisherKyle, -1
 
-.Signposts: db 1
-	signpost 13, 13, SIGNPOST_JUMPTEXT, FishingSpotSignText
+GenericTrainerFisherKyle:
+	generictrainer FISHER, KYLE, EVENT_BEAT_FISHER_KYLE, FisherKyleSeenText, FisherKyleBeatenText
 
-.PersonEvents: db 1
-	person_event SPRITE_FISHER, 11, 6, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 3, TrainerFisherKyle, -1
+	text "The tug you feel"
+	line "on the Rod when"
 
-TrainerFisherKyle:
-	trainer EVENT_BEAT_FISHER_KYLE, FISHER, KYLE, FisherKyleSeenText, FisherKyleBeatenText, 0, FisherKyleScript
-
-FisherKyleScript:
-	end_if_just_battled
-	jumptextfaceplayer UnknownText_0x1a7238
-
-	jumpopenedtext UnknownText_0x1a70d4
+	para "you hook a #-"
+	line "mon…"
+	done
 
 FisherKyleSeenText:
 	text "Do you remember?"
@@ -33,14 +31,6 @@ FisherKyleSeenText:
 
 FisherKyleBeatenText:
 	text "You do remember?"
-	done
-
-UnknownText_0x1a7238:
-	text "The tug you feel"
-	line "on the Rod when"
-
-	para "you hook a #-"
-	line "mon…"
 	done
 
 FishingSpotSignText:

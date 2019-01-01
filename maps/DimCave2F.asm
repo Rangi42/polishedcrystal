@@ -1,36 +1,33 @@
 DimCave2F_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 1 ; callbacks
+	callback MAPCALLBACK_TILES, DimCave2FBouldersLand
 
-.MapCallbacks: db 1
-	dbw MAPCALLBACK_TILES, DimCave2FBouldersLand
+	db 8 ; warp events
+	warp_event 15,  1, CERULEAN_CAPE, 2
+	warp_event 29,  5, DIM_CAVE_3F, 4
+	warp_event 27, 25, DIM_CAVE_3F, 5
+	warp_event 14, 20, DIM_CAVE_3F, 6 ; hole
+	warp_event 30,  2, DIM_CAVE_1F, 1
+	warp_event  5, 17, DIM_CAVE_1F, 2
+	warp_event 28, 18, DIM_CAVE_1F, 3
+	warp_event 26, 32, DIM_CAVE_1F, 4
 
-DimCave2F_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 8
-	warp_def 1, 15, 2, CERULEAN_CAPE
-	warp_def 5, 29, 4, DIM_CAVE_3F
-	warp_def 25, 27, 5, DIM_CAVE_3F
-	warp_def 20, 14, 6, DIM_CAVE_3F ; hole
-	warp_def 2, 30, 1, DIM_CAVE_1F
-	warp_def 17, 5, 2, DIM_CAVE_1F
-	warp_def 18, 28, 3, DIM_CAVE_1F
-	warp_def 32, 26, 4, DIM_CAVE_1F
+	db 2 ; bg events
+	bg_event  6,  4, SIGNPOST_ITEM + STARDUST, EVENT_DIM_CAVE_2F_HIDDEN_STARDUST
+	bg_event  2, 19, SIGNPOST_ITEM + MOON_STONE, EVENT_DIM_CAVE_2F_HIDDEN_MOON_STONE
 
-.XYTriggers: db 0
-
-.Signposts: db 2
-	signpost 4, 6, SIGNPOST_ITEM + STARDUST, EVENT_DIM_CAVE_2F_HIDDEN_STARDUST
-	signpost 19, 2, SIGNPOST_ITEM + MOON_STONE, EVENT_DIM_CAVE_2F_HIDDEN_MOON_STONE
-
-.PersonEvents: db 7
-	person_event SPRITE_BOULDER_ROCK_FOSSIL, 21, 14, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, DimCave2FFallenBoulderScript, EVENT_BOULDER_FELL_IN_DIM_CAVE_2F
-	person_event SPRITE_ENGINEER, 12, 15, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerEngineerLang, -1
-	person_event SPRITE_POKEFAN_M, 16, 7, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_TRAINER, 1, TrainerHikerDerrick, -1
-	itemball_event 12, 28, MAX_REVIVE, 1, EVENT_DIM_CAVE_2F_MAX_REVIVE
-	itemball_event 15, 2, IRON, 1, EVENT_DIM_CAVE_2F_IRON
-	itemball_event 18, 24, LIGHT_CLAY, 1, EVENT_DIM_CAVE_2F_LIGHT_CLAY
-	tmhmball_event 33, 31, TM_FACADE, EVENT_DIM_CAVE_2F_TM_FACADE
+	db 7 ; object events
+	object_event 14, 21, SPRITE_BOULDER_ROCK_FOSSIL, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptext, DimCaveFallenBoulderText, EVENT_BOULDER_FELL_IN_DIM_CAVE_2F
+	object_event 15, 12, SPRITE_ENGINEER, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerEngineerLang, -1
+	object_event  7, 16, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerHikerDerrick, -1
+	itemball_event 28, 12, MAX_REVIVE, 1, EVENT_DIM_CAVE_2F_MAX_REVIVE
+	itemball_event  2, 15, IRON, 1, EVENT_DIM_CAVE_2F_IRON
+	itemball_event 24, 18, LIGHT_CLAY, 1, EVENT_DIM_CAVE_2F_LIGHT_CLAY
+	tmhmball_event 31, 33, TM_FACADE, EVENT_DIM_CAVE_2F_TM_FACADE
 
 DimCave2FBouldersLand:
 	checkevent EVENT_BOULDER_FELL_IN_DIM_CAVE_2F
@@ -40,12 +37,19 @@ DimCave2FBouldersLand:
 .skip
 	return
 
-TrainerEngineerLang:
-	trainer EVENT_BEAT_ENGINEER_LANG, ENGINEER, LANG, .SeenText, .BeatenText, 0, .Script
+GenericTrainerEngineerLang:
+	generictrainer ENGINEER, LANG, EVENT_BEAT_ENGINEER_LANG, .SeenText, .BeatenText
 
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
+	text "Three years ago"
+	line "the Power Plant"
+	cont "was a wreck."
+
+	para "We got it up and"
+	line "running to power"
+
+	para "the Magnet Train"
+	line "to Johto."
+	done
 
 .SeenText:
 	text "We mined ore from"
@@ -59,24 +63,15 @@ TrainerEngineerLang:
 	text "A power failure!"
 	done
 
-.AfterText:
-	text "Three years ago"
-	line "the Power Plant"
-	cont "was a wreck."
+GenericTrainerHikerDerrick:
+	generictrainer HIKER, DERRICK, EVENT_BEAT_HIKER_DERRICK, .SeenText, .BeatenText
 
-	para "We got it up and"
-	line "running to power"
+	text "It goes without"
+	line "saying, but I love"
 
-	para "the Magnet Train"
-	line "to Johto."
+	para "hiking with my"
+	line "#mon."
 	done
-
-TrainerHikerDerrick:
-	trainer EVENT_BEAT_HIKER_DERRICK, HIKER, DERRICK, .SeenText, .BeatenText, 0, .Script
-
-.Script:
-	end_if_just_battled
-	jumptextfaceplayer .AfterText
 
 .SeenText:
 	text "♪ A-hiking we"
@@ -90,17 +85,7 @@ TrainerHikerDerrick:
 	cont "we will go! ♪"
 	done
 
-.AfterText:
-	text "It goes without"
-	line "saying, but I love"
-
-	para "hiking with my"
-	line "#mon."
-	done
-
-DimCave2FFallenBoulderScript:
-	thistext
-
+DimCaveFallenBoulderText:
 	text "It's stuck on the"
 	line "button."
 	done

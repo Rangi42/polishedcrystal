@@ -1,25 +1,22 @@
 BrunosRoom_MapScriptHeader:
+	db 1 ; scene scripts
+	scene_script BrunosRoomEntranceTrigger
 
-.MapTriggers: db 1
-	dw BrunosRoomEntranceTrigger
+	db 1 ; callbacks
+	callback MAPCALLBACK_TILES, BrunosRoomDoorCallback
 
-.MapCallbacks: db 1
-	dbw MAPCALLBACK_TILES, BrunosRoomDoorCallback
+	db 4 ; warp events
+	warp_event  4, 17, KOGAS_ROOM, 3
+	warp_event  5, 17, KOGAS_ROOM, 4
+	warp_event  4,  2, KARENS_ROOM, 1
+	warp_event  5,  2, KARENS_ROOM, 2
 
-BrunosRoom_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 4
-	warp_def 17, 4, 3, KOGAS_ROOM
-	warp_def 17, 5, 4, KOGAS_ROOM
-	warp_def 2, 4, 1, KARENS_ROOM
-	warp_def 2, 5, 2, KARENS_ROOM
+	db 0 ; bg events
 
-.XYTriggers: db 0
-
-.Signposts: db 0
-
-.PersonEvents: db 1
-	person_event SPRITE_BRUNO, 7, 5, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_SCRIPT, 0, BrunoScript, -1
+	db 1 ; object events
+	object_event  5,  7, SPRITE_BRUNO, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_SCRIPT, 0, BrunoScript, -1
 
 BrunosRoomEntranceTrigger:
 	priorityjump .Script

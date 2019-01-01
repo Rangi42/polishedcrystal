@@ -1,58 +1,55 @@
 CeladonCity_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 1 ; callbacks
+	callback MAPCALLBACK_NEWMAP, CeladonCityFlyPoint
 
-.MapCallbacks: db 1
-	dbw MAPCALLBACK_NEWMAP, CeladonCityFlyPoint
+	db 16 ; warp events
+	warp_event  8,  9, CELADON_DEPT_STORE_1F, 1
+	warp_event 20,  9, CELADON_MANSION_1F, 1
+	warp_event 20,  3, CELADON_MANSION_1F, 3
+	warp_event 21,  3, CELADON_MANSION_1F, 3
+	warp_event 33,  9, CELADON_POKECENTER_1F, 1
+	warp_event 22, 19, CELADON_GAME_CORNER, 1
+	warp_event 27, 19, CELADON_GAME_CORNER_PRIZE_ROOM, 1
+	warp_event 14, 29, CELADON_GYM, 1
+	warp_event 25, 29, CELADON_CAFE, 1
+	warp_event 33, 29, CELADON_CHIEF_HOUSE, 1
+	warp_event 37, 29, CELADON_HOTEL_1F, 1
+	warp_event 13,  9, CELADON_HOME_DECOR_STORE_1F, 1
+	warp_event  4, 29, CELADON_UNIVERSITY_1F, 1
+	warp_event 29,  9, EUSINES_HOUSE, 1
+	warp_event 33, 19, CELADON_OLD_MAN_SPEECH_HOUSE, 1
+	warp_event 37, 19, CELADON_DEVELOPMENT_SPEECH_HOUSE, 1
 
-CeladonCity_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 16
-	warp_def 9, 8, 1, CELADON_DEPT_STORE_1F
-	warp_def 9, 20, 1, CELADON_MANSION_1F
-	warp_def 3, 20, 3, CELADON_MANSION_1F
-	warp_def 3, 21, 3, CELADON_MANSION_1F
-	warp_def 9, 33, 1, CELADON_POKECENTER_1F
-	warp_def 19, 22, 1, CELADON_GAME_CORNER
-	warp_def 19, 27, 1, CELADON_GAME_CORNER_PRIZE_ROOM
-	warp_def 29, 14, 1, CELADON_GYM
-	warp_def 29, 25, 1, CELADON_CAFE
-	warp_def 29, 33, 1, CELADON_CHIEF_HOUSE
-	warp_def 29, 37, 1, CELADON_HOTEL_1F
-	warp_def 9, 13, 1, CELADON_HOME_DECOR_STORE_1F
-	warp_def 29, 4, 1, CELADON_UNIVERSITY_1F
-	warp_def 9, 29, 1, EUSINES_HOUSE
-	warp_def 19, 33, 1, CELADON_OLD_MAN_SPEECH_HOUSE
-	warp_def 19, 37, 1, CELADON_DEVELOPMENT_SPEECH_HOUSE
+	db 9 ; bg events
+	bg_event  9, 18, SIGNPOST_JUMPTEXT, CeladonCitySignText
+	bg_event 15, 31, SIGNPOST_JUMPTEXT, CeladonGymSignText
+	bg_event  3, 31, SIGNPOST_JUMPTEXT, CeladonUniversitySignText
+	bg_event 10,  9, SIGNPOST_JUMPTEXT, CeladonCityDeptStoreSignText
+	bg_event 14,  9, SIGNPOST_JUMPTEXT, CeladonCityHomeDecorStoreSignText
+	bg_event 17,  9, SIGNPOST_JUMPTEXT, CeladonCityMansionSignText
+	bg_event 21, 21, SIGNPOST_JUMPTEXT, CeladonCityGameCornerSignText
+	bg_event 33, 21, SIGNPOST_JUMPTEXT, CeladonCityTrainerTipsText
+	bg_event 41, 21, SIGNPOST_ITEM + PP_UP, EVENT_CELADON_CITY_HIDDEN_PP_UP
 
-.XYTriggers: db 0
-
-.Signposts: db 9
-	signpost 18, 9, SIGNPOST_JUMPTEXT, CeladonCitySignText
-	signpost 31, 15, SIGNPOST_JUMPTEXT, CeladonGymSignText
-	signpost 31, 3, SIGNPOST_JUMPTEXT, CeladonUniversitySignText
-	signpost 9, 10, SIGNPOST_JUMPTEXT, CeladonCityDeptStoreSignText
-	signpost 9, 14, SIGNPOST_JUMPTEXT, CeladonCityHomeDecorStoreSignText
-	signpost 9, 17, SIGNPOST_JUMPTEXT, CeladonCityMansionSignText
-	signpost 21, 21, SIGNPOST_JUMPTEXT, CeladonCityGameCornerSignText
-	signpost 21, 33, SIGNPOST_JUMPTEXT, CeladonCityTrainerTipsText
-	signpost 21, 41, SIGNPOST_ITEM + PP_UP, EVENT_CELADON_CITY_HIDDEN_PP_UP
-
-.PersonEvents: db 14
-	person_event SPRITE_RICH_BOY, 17, 4, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, CeladonCityScript, -1
-	person_event SPRITE_FISHER, 11, 30, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1a9f7d, -1
-	person_event SPRITE_POLIWRATH, 11, 31, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_POKEMON, POLIWRATH, CeladonCityPoliwrathText, -1
-	person_event SPRITE_TEACHER, 24, 24, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1a9fde, -1
-	person_event SPRITE_GRAMPS, 16, 17, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1aa043, -1
-	person_event SPRITE_GRAMPS, 31, 12, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1aa0dc, -1
-	person_event SPRITE_YOUNGSTER, 13, 22, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1aa115, -1
-	person_event SPRITE_YOUNGSTER, 33, 27, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1aa155, -1
-	person_event SPRITE_TEACHER, 13, 12, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1aa1bd, -1
-	person_event SPRITE_LASS, 22, 10, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1aa25b, -1
-	person_event SPRITE_BIG_SNORLAX, 10, 45, SPRITEMOVEDATA_SNORLAX, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_8_SNORLAX
-	person_event SPRITE_LASS, 23, 35, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonCityLassText, -1
-	itemball_event 7, 39, MAX_ETHER, 1, EVENT_CELADON_CITY_MAX_ETHER
-	cuttree_event 34, 32, EVENT_CELADON_CITY_CUT_TREE
+	db 14 ; object events
+	object_event  4, 17, SPRITE_RICH_BOY, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_SCRIPT, 0, CeladonCityScript, -1
+	object_event 30, 11, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1a9f7d, -1
+	object_event 31, 11, SPRITE_POLIWRATH, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_POKEMON, POLIWRATH, CeladonCityPoliwrathText, -1
+	object_event 24, 24, SPRITE_TEACHER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1a9fde, -1
+	object_event 17, 16, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1aa043, -1
+	object_event 12, 31, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1aa0dc, -1
+	object_event 22, 13, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1aa115, -1
+	object_event 27, 33, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1aa155, -1
+	object_event 12, 13, SPRITE_TEACHER, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1aa1bd, -1
+	object_event 10, 22, SPRITE_LASS, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1aa25b, -1
+	object_event 45, 10, SPRITE_BIG_SNORLAX, SPRITEMOVEDATA_SNORLAX, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_8_SNORLAX
+	object_event 35, 23, SPRITE_LASS, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonCityLassText, -1
+	itemball_event 39,  7, MAX_ETHER, 1, EVENT_CELADON_CITY_MAX_ETHER
+	cuttree_event 32, 34, EVENT_CELADON_CITY_CUT_TREE
 
 CeladonCityFlyPoint:
 	setflag ENGINE_FLYPOINT_CELADON

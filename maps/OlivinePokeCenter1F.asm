@@ -1,29 +1,26 @@
 OlivinePokeCenter1F_MapScriptHeader:
+	db 0 ; scene scripts
 
-.MapTriggers: db 0
+	db 0 ; callbacks
 
-.MapCallbacks: db 0
+	db 3 ; warp events
+	warp_event  5,  7, OLIVINE_CITY, 1
+	warp_event  6,  7, OLIVINE_CITY, 1
+	warp_event  0,  7, POKECENTER_2F, 1
 
-OlivinePokeCenter1F_MapEventHeader:
+	db 0 ; coord events
 
-.Warps: db 3
-	warp_def 7, 5, 1, OLIVINE_CITY
-	warp_def 7, 6, 1, OLIVINE_CITY
-	warp_def 7, 0, 1, POKECENTER_2F
+	db 1 ; bg events
+	bg_event 10,  1, SIGNPOST_READ, PokemonJournalJasmineScript
 
-.XYTriggers: db 0
+	db 5 ; object events
+	object_event  8,  1, SPRITE_BEAUTY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, BeautyCharlotteScript, -1
+	pc_nurse_event  5, 1
+	object_event  2,  6, SPRITE_FISHING_GURU, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_COMMAND, jumpstd, happinesschecknpc, -1
+	object_event  2,  3, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, OlivinePokeCenter1FFisherText, -1
+	object_event 11,  6, SPRITE_TEACHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, OlivinePokeCenter1FTeacherText, -1
 
-.Signposts: db 1
-	signpost 1, 10, SIGNPOST_READ, PokemonJournalJasmineScript
-
-.PersonEvents: db 5
-	person_event SPRITE_BEAUTY, 1, 8, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, BeautyCharlotteScript, -1
-	pc_nurse_event 1, 5
-	person_event SPRITE_FISHING_GURU, 6, 2, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_COMMAND, jumpstd, happinesschecknpc, -1
-	person_event SPRITE_FISHER, 3, 2, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, OlivinePokeCenter1FFisherText, -1
-	person_event SPRITE_TEACHER, 6, 11, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, OlivinePokeCenter1FTeacherText, -1
-
-const_value set 1
+	const_def 1 ; object constants
 	const OLIVINEPOKECENTER1F_BEAUTY
 
 PokemonJournalJasmineScript:
