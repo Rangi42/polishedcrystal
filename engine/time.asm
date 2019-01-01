@@ -301,17 +301,16 @@ CalcHoursDaysSince: ; 115d2
 ; 115d6
 
 CalcMinsHoursDaysSince: ; 115d6
-rept 2
 	inc hl
-endr
+	inc hl
 	xor a
 	jr _CalcMinsHoursDaysSince
 ; 115db
 
 CalcSecsMinsHoursDaysSince: ; 115db
-rept 3
 	inc hl
-endr
+	inc hl
+	inc hl
 	ld a, [hSeconds]
 	ld c, a
 	sub [hl]

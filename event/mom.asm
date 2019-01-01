@@ -23,9 +23,8 @@ Special_BankOfMom: ; 16218
 	ld e, a
 	ld d, 0
 	ld hl, .dw
-rept 2
 	add hl, de
-endr
+	add hl, de
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
@@ -143,9 +142,8 @@ endr
 	call PrintText
 	xor a
 	ld hl, wStringBuffer2
-rept 2
 	ld [hli], a
-endr
+	ld [hli], a
 	ld [hl], a
 	ld a, $5
 	ld [wcf64], a
@@ -209,9 +207,8 @@ endr
 	call PrintText
 	xor a
 	ld hl, wStringBuffer2
-rept 2
 	ld [hli], a
-endr
+	ld [hli], a
 	ld [hl], a
 	ld a, $5
 	ld [wcf64], a
@@ -579,9 +576,9 @@ Mom_WithdrawDepositMenuJoypad: ; 16571
 	push de
 	ld e, a
 	ld d, 0
-rept 3
 	add hl, de
-endr
+	add hl, de
+	add hl, de
 	pop de
 	ret
 ; 16613

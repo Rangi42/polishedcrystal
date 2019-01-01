@@ -65,7 +65,7 @@ _DepositPKMN: ; e2391 (38:6391)
 	call BillsPC_PrintBoxCountAndCapacityInsideBox
 	ld a, $ff
 	ld [wCurPartySpecies], a
-	ld a, SCGB_BILLS_PC
+	ld a, CGB_BILLS_PC
 	call BillsPC_ApplyPalettes
 	call WaitBGMap
 	call BillsPC_UpdateSelectionCursor
@@ -120,7 +120,7 @@ _DepositPKMN: ; e2391 (38:6391)
 	call ClearSprites
 	call BillsPC_GetSelectedPokemonSpecies
 	ld [wCurPartySpecies], a
-	ld a, SCGB_BILLS_PC
+	ld a, CGB_BILLS_PC
 	call BillsPC_ApplyPalettes
 	ld de, PCString_WhatsUp
 	call BillsPC_PlaceString
@@ -141,9 +141,8 @@ _DepositPKMN: ; e2391 (38:6391)
 	ld e, a
 	ld d, 0
 	ld hl, BillsPCDepositJumptable
-rept 2
 	add hl, de
-endr
+	add hl, de
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
@@ -179,7 +178,7 @@ BillsPCDepositFuncStats: ; e24c8 (38:64c8)
 	call PCMonInfo
 	call BillsPC_GetSelectedPokemonSpecies
 	ld [wCurPartySpecies], a
-	ld a, SCGB_BILLS_PC
+	ld a, CGB_BILLS_PC
 	jp BillsPC_ApplyPalettes
 
 BillsPCDepositFuncRelease: ; e24e0 (38:64e0)
@@ -313,7 +312,7 @@ _WithdrawPKMN: ; e2583 (38:6583)
 	call BillsPC_PrintBoxCountAndCapacityInsideBox
 	ld a, $ff
 	ld [wCurPartySpecies], a
-	ld a, SCGB_BILLS_PC
+	ld a, CGB_BILLS_PC
 	call BillsPC_ApplyPalettes
 	call WaitBGMap
 	call BillsPC_UpdateSelectionCursor
@@ -363,7 +362,7 @@ _WithdrawPKMN: ; e2583 (38:6583)
 	call ClearSprites
 	call BillsPC_GetSelectedPokemonSpecies
 	ld [wCurPartySpecies], a
-	ld a, SCGB_BILLS_PC
+	ld a, CGB_BILLS_PC
 	call BillsPC_ApplyPalettes
 	ld de, PCString_WhatsUp
 	call BillsPC_PlaceString
@@ -384,9 +383,8 @@ BillsPC_Withdraw: ; e2675 (38:6675)
 	ld e, a
 	ld d, 0
 	ld hl, .dw
-rept 2
 	add hl, de
-endr
+	add hl, de
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
@@ -420,7 +418,7 @@ endr
 	call PCMonInfo
 	call BillsPC_GetSelectedPokemonSpecies
 	ld [wCurPartySpecies], a
-	ld a, SCGB_BILLS_PC
+	ld a, CGB_BILLS_PC
 	jp BillsPC_ApplyPalettes
 
 .release ; e26d8 (38:66d8)
@@ -556,7 +554,7 @@ _MovePKMNWithoutMail: ; e2759
 	call BillsPC_PrintBoxCountAndCapacityInsideBox
 	ld a, $ff
 	ld [wCurPartySpecies], a
-	ld a, SCGB_BILLS_PC
+	ld a, CGB_BILLS_PC
 	call BillsPC_ApplyPalettes
 	call WaitBGMap
 	call BillsPC_UpdateSelectionCursor
@@ -615,7 +613,7 @@ _MovePKMNWithoutMail: ; e2759
 	call ClearSprites
 	call BillsPC_GetSelectedPokemonSpecies
 	ld [wCurPartySpecies], a
-	ld a, SCGB_BILLS_PC
+	ld a, CGB_BILLS_PC
 	call BillsPC_ApplyPalettes
 	ld de, PCString_WhatsUp
 	call BillsPC_PlaceString
@@ -637,9 +635,8 @@ _MovePKMNWithoutMail: ; e2759
 	ld e, a
 	ld d, 0
 	ld hl, .Jumptable2
-rept 2
 	add hl, de
-endr
+	add hl, de
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
@@ -673,7 +670,7 @@ endr
 	call PCMonInfo
 	call BillsPC_GetSelectedPokemonSpecies
 	ld [wCurPartySpecies], a
-	ld a, SCGB_BILLS_PC
+	ld a, CGB_BILLS_PC
 	jp BillsPC_ApplyPalettes
 ; e28bd
 
@@ -1120,9 +1117,9 @@ BillsPC_LoadMonStats: ; e2b6d (38:6b6d)
 	ld e, a
 	ld d, $0
 	ld hl, wBillsPCPokemonList + 1
-rept 3
 	add hl, de
-endr
+	add hl, de
+	add hl, de
 	ld a, [hl]
 	and a
 	jr z, .party
@@ -1132,6 +1129,7 @@ endr
 	call GetBoxPointer
 	ld a, b
 	call GetSRAMBank
+	; level
 	push hl
 	ld bc, sBoxMon1Level - sBox
 	add hl, bc
@@ -1141,6 +1139,7 @@ endr
 	ld a, [hl]
 	ld [wTempMonLevel], a
 	pop hl
+	; item
 	push hl
 	ld bc, sBoxMon1Item - sBox
 	add hl, bc
@@ -1150,80 +1149,124 @@ endr
 	ld a, [hl]
 	ld [wTempMonItem], a
 	pop hl
+	; DVs and personality (DVs for color variation)
+	push hl
 	ld bc, sBoxMon1DVs - sBox
 	add hl, bc
 	ld bc, BOXMON_STRUCT_LENGTH
 	ld a, e
 	call AddNTimes
-	ld de, wTempMonDVs
-	; Copy DVs and personality right after them
+	ld bc, wTempMonDVs
 rept 4
 	ld a, [hli]
-	ld [de], a
-	inc de
+	ld [bc], a
+	inc bc
 endr
 	ld a, [hl]
-	ld [de], a
+	ld [bc], a
+	pop hl
+	; moves (for Pikachu forms)
+	ld bc, sBoxMon1Moves - sBox
+	add hl, bc
+	ld bc, BOXMON_STRUCT_LENGTH
+	ld a, e
+	call AddNTimes
+	ld bc, wTempMonMoves
+rept NUM_MOVES +- 1
+	ld a, [hli]
+	ld [bc], a
+	inc bc
+endr
+	ld a, [hl]
+	ld [bc], a
 	jp CloseSRAM
 
 .party
+	; level
 	ld hl, wPartyMon1Level
 	ld bc, PARTYMON_STRUCT_LENGTH
 	ld a, e
 	call AddNTimes
 	ld a, [hl]
 	ld [wTempMonLevel], a
+	; item
 	ld hl, wPartyMon1Item
 	ld bc, PARTYMON_STRUCT_LENGTH
 	ld a, e
 	call AddNTimes
 	ld a, [hl]
 	ld [wTempMonItem], a
+	; DVs and personality (DVs for color variation)
 	ld hl, wPartyMon1DVs
 	ld bc, PARTYMON_STRUCT_LENGTH
 	ld a, e
 	call AddNTimes
-	ld de, wTempMonDVs
-	; Copy DVs and personality right after them
+	ld bc, wTempMonDVs
 rept 4
 	ld a, [hli]
-	ld [de], a
-	inc de
+	ld [bc], a
+	inc bc
 endr
 	ld a, [hl]
-	ld [de], a
+	ld [bc], a
+	; moves (for Pikachu forms)
+	ld hl, wPartyMon1Item
+	ld bc, PARTYMON_STRUCT_LENGTH
+	ld a, e
+	call AddNTimes
+	ld bc, wTempMonMoves
+rept NUM_MOVES +- 1
+	ld a, [hli]
+	ld [bc], a
+	inc bc
+endr
+	ld a, [hl]
+	ld [bc], a
 	ret
 
 .sBox
 	ld a, BANK(sBox)
 	call GetSRAMBank
+	; level
 	ld hl, sBoxMon1Level
 	ld bc, BOXMON_STRUCT_LENGTH
 	ld a, e
 	call AddNTimes
 	ld a, [hl]
 	ld [wTempMonLevel], a
-
+	; item
 	ld hl, sBoxMon1Item
 	ld bc, BOXMON_STRUCT_LENGTH
 	ld a, e
 	call AddNTimes
 	ld a, [hl]
 	ld [wTempMonItem], a
-
+	; DVs and personality (DVs for color variation)
 	ld hl, sBoxMon1DVs
 	ld bc, BOXMON_STRUCT_LENGTH
 	ld a, e
 	call AddNTimes
-	ld de, wTempMonDVs
-	; Copy DVs and personality right after them
+	ld bc, wTempMonDVs
 rept 4
 	ld a, [hli]
-	ld [de], a
-	inc de
+	ld [bc], a
+	inc bc
 endr
 	ld a, [hl]
-	ld [de], a
+	ld [bc], a
+	; moves (for Pikachu forms)
+	ld hl, sBoxMon1Moves
+	ld bc, BOXMON_STRUCT_LENGTH
+	ld a, e
+	call AddNTimes
+	ld bc, wTempMonMoves
+rept NUM_MOVES +- 1
+	ld a, [hli]
+	ld [bc], a
+	inc bc
+endr
+	ld a, [hl]
+	ld [bc], a
 	jp CloseSRAM
 
 BillsPC_RefreshTextboxes: ; e2c2c (38:6c2c)
@@ -1240,9 +1283,9 @@ BillsPC_RefreshTextboxes: ; e2c2c (38:6c2c)
 	ld e, a
 	ld d, 0
 	ld hl, wBillsPCPokemonList
-rept 3
 	add hl, de
-endr
+	add hl, de
+	add hl, de
 	ld e, l
 	ld d, h
 	hlcoord 9, 4
@@ -1256,9 +1299,9 @@ endr
 	ld de, 2 * SCREEN_WIDTH
 	add hl, de
 	pop de
-rept 3
 	inc de
-endr
+	inc de
+	inc de
 	pop af
 	dec a
 	jr nz, .loop
@@ -1454,9 +1497,9 @@ BillsPC_GetSelectedPokemonSpecies: ; e2def (38:6def)
 	ld e, a
 	ld d, $0
 	ld hl, wBillsPCPokemonList
-rept 3
 	add hl, de
-endr
+	add hl, de
+	add hl, de
 	ld a, [hl]
 	ret
 
@@ -1942,9 +1985,8 @@ MovePKMNWitoutMail_InsertMon: ; e31e7
 
 .moving_to_box
 	ld hl, .Jumptable
-rept 2
 	add hl, bc
-endr
+	add hl, bc
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
@@ -2134,9 +2176,9 @@ GetBoxPointer: ; e3396 (38:7396)
 	ld c, b
 	ld b, 0
 	ld hl, .boxes
-rept 3
 	add hl, bc
-endr
+	add hl, bc
+	add hl, bc
 	ld a, [hli]
 	ld b, a
 	ld a, [hli]
@@ -2165,7 +2207,7 @@ endr
 
 BillsPC_ApplyPalettes: ; e33d0 (38:73d0)
 	ld b, a
-	call GetSGBLayout
+	call GetCGBLayout
 	ld a, %11100100
 	call DmgToCgbBGPals
 	ld a, %11111100
@@ -2174,9 +2216,8 @@ BillsPC_ApplyPalettes: ; e33d0 (38:73d0)
 BillsPC_Jumptable: ; e33df (38:73df)
 	ld e, a
 	ld d, $0
-rept 2
 	add hl, de
-endr
+	add hl, de
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
@@ -2403,9 +2444,9 @@ BoxSelectionJumpIn:
 	ld c, a
 	ld b, 0
 	ld hl, .boxbanks
-rept 3
 	add hl, bc
-endr
+	add hl, bc
+	add hl, bc
 	ld a, [hli]
 	ld b, a
 	call GetSRAMBank

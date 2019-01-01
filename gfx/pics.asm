@@ -3,23 +3,17 @@ INCLUDE "includes.asm"
 
 SECTION "Pic Pointers", ROMX
 
-PicPointers:: INCLUDE "gfx/pics/pic_pointers.asm"
+INCLUDE "data/pokemon/pic_pointers.asm"
 
 
 SECTION "Variant Pic Pointers", ROMX
 
-UnownPicPointers::    INCLUDE "gfx/pics/unown_pic_pointers.asm"
-PikachuPicPointers::  INCLUDE "gfx/pics/pikachu_pic_pointers.asm"
-PichuPicPointers::    INCLUDE "gfx/pics/pichu_pic_pointers.asm"
-ArbokPicPointers::    INCLUDE "gfx/pics/arbok_pic_pointers.asm"
-MagikarpPicPointers:: INCLUDE "gfx/pics/magikarp_pic_pointers.asm"
-GyaradosPicPointers:: INCLUDE "gfx/pics/gyarados_pic_pointers.asm"
-MewtwoPicPointers::   INCLUDE "gfx/pics/mewtwo_pic_pointers.asm"
+INCLUDE "data/pokemon/variant_pic_pointers.asm"
 
 
 SECTION "Trainer Pic Pointers", ROMX
 
-TrainerPicPointers:: INCLUDE "gfx/pics/trainer_pic_pointers.asm"
+INCLUDE "data/trainers/pic_pointers.asm"
 
 
 SECTION "Pokemon Pics 1", ROMX
@@ -721,15 +715,15 @@ UnownQuestionBackpic:     INCBIN "gfx/pics/unown_question/back.2bpp.lz"
 SECTION "Pikachu Pics", ROMX
 
 PikachuPlainFrontpic:     INCBIN "gfx/pics/pikachu_plain/front.2bpp.lz"
+PikachuPlainBackpic:
+PikachuSurfBackpic:
+PikachuPikaBackpic:       INCBIN "gfx/pics/pikachu_plain/back.2bpp.lz"
 PikachuFlyFrontpic:       INCBIN "gfx/pics/pikachu_fly/front.2bpp.lz"
 PikachuFlyBackpic:        INCBIN "gfx/pics/pikachu_fly/back.2bpp.lz"
 PikachuSurfFrontpic:      INCBIN "gfx/pics/pikachu_surf/front.2bpp.lz"
 PikachuPikaFrontpic:      INCBIN "gfx/pics/pikachu_pika/front.2bpp.lz"
 PikachuChuchuFrontpic:    INCBIN "gfx/pics/pikachu_chuchu/front.2bpp.lz"
-PikachuPlainBackpic:
-PikachuSurfBackpic:
-PikachuPikaBackpic:
-PikachuChuchuBackpic:     INCBIN "gfx/pics/pikachu/back.2bpp.lz"
+PikachuChuchuBackpic:     INCBIN "gfx/pics/pikachu_chuchu/back.2bpp.lz"
 
 
 SECTION "Pichu Pics", ROMX

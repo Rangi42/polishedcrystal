@@ -84,9 +84,9 @@ FindNest: ; 2a01f
 	ld a, [hli]
 .not_navel_rock_map
 	ld c, a
-rept 3
 	inc hl
-endr
+	inc hl
+	inc hl
 	ld a, NUM_WILDMONS_PER_AREA_TIME_OF_DAY * 3
 	call .SearchMapForMon
 	jr nc, .next_grass
@@ -130,9 +130,8 @@ endr
 	ld a, [wNamedObjectIndexBuffer]
 	cp [hl]
 	jr z, .found
-rept 2
 	inc hl
-endr
+	inc hl
 	pop af
 	dec a
 	jr nz, .ScanMapLoop
@@ -332,24 +331,23 @@ _ChooseWildEncounter:
 	pop bc
 	jp c, .startwildbattle
 
-rept 3
 	inc hl
-endr
+	inc hl
+	inc hl
 	push bc
 	call CheckOnWater
 	pop bc
-	ld de, .WaterMonTable
+	ld de, WaterMonProbTable
 	ld b, $4
 	jr z, .got_table
-rept 2
 	inc hl
-endr
+	inc hl
 	ld a, [wTimeOfDay]
 	push bc
 	ld bc, $e
 	call AddNTimes
 	pop bc
-	ld de, .GrassMonTable
+	ld de, GrassMonProbTable
 	ld b, $c
 
 .got_table
@@ -496,21 +494,7 @@ endr
 	ret
 ; 2a1cb
 
-.GrassMonTable: ; 2a1cb
-	db 30,  $0 ; 30% chance
-	db 60,  $2 ; 30% chance
-	db 80,  $4 ; 20% chance
-	db 90,  $6 ; 10% chance
-	db 95,  $8 ;  5% chance
-	db 98,  $a ;  3% chance
-	db 100, $c ;  2% chance
-; 2a1d9
-
-.WaterMonTable: ; 2a1d9
-	db 60,  $0 ; 60% chance
-	db 90,  $2 ; 30% chance
-	db 100, $4 ; 10% chance
-; 2a1df
+INCLUDE "data/wild/probabilities.asm"
 
 CheckRepelEffect::
 ; If there is no active Repel, there's no need to be here.
@@ -809,9 +793,9 @@ CheckEncounterRoamMon: ; 2a2ce
 	cp [hl]
 	jr nz, .DontEncounterRoamMon
 ; We've decided to take on a beast, so stage its information for battle.
-rept 3
 	dec hl
-endr
+	dec hl
+	dec hl
 	ld a, [hli]
 	ld [wTempWildMonSpecies], a
 	ld a, [hl]
@@ -914,9 +898,8 @@ UpdateRoamMons: ; 2a30d
 	inc hl
 	ld c, a
 	ld b, $0
-rept 2
 	add hl, bc
-endr
+	add hl, bc
 	ld a, [wRoamMons_LastMapGroup]
 	cp [hl]
 	jr nz, .done
@@ -1010,29 +993,7 @@ _BackUpMapIndices: ; 2a3f6
 	ret
 ; 2a40f
 
-RoamMaps: ; 2a40f
-; Maps that roaming monsters can be on,
-; and possible maps they can jump to.
-; Notably missing are Route 40 and
-; Route 41, which are water routes.
-	roam_map ROUTE_29, 2, ROUTE_30, ROUTE_46
-	roam_map ROUTE_30, 2, ROUTE_29, ROUTE_31
-	roam_map ROUTE_31, 3, ROUTE_30, ROUTE_32, ROUTE_36
-	roam_map ROUTE_32, 3, ROUTE_36, ROUTE_31, ROUTE_33
-	roam_map ROUTE_33, 2, ROUTE_32, ROUTE_34
-	roam_map ROUTE_34, 2, ROUTE_33, ROUTE_35
-	roam_map ROUTE_35, 2, ROUTE_34, ROUTE_36
-	roam_map ROUTE_36, 4, ROUTE_35, ROUTE_31, ROUTE_32, ROUTE_37
-	roam_map ROUTE_37, 3, ROUTE_36, ROUTE_38, ROUTE_42
-	roam_map ROUTE_38, 3, ROUTE_37, ROUTE_39, ROUTE_42
-	roam_map ROUTE_39, 1, ROUTE_38
-	roam_map ROUTE_42, 4, ROUTE_43, ROUTE_44, ROUTE_37, ROUTE_38
-	roam_map ROUTE_43, 2, ROUTE_42, ROUTE_44
-	roam_map ROUTE_44, 3, ROUTE_42, ROUTE_43, ROUTE_45
-	roam_map ROUTE_45, 2, ROUTE_44, ROUTE_46
-	roam_map ROUTE_46, 2, ROUTE_45, ROUTE_29
-	db -1
-; 2a4a0
+INCLUDE "data/wild/roammon_maps.asm"
 
 ValidateTempWildMonSpecies: ; 2a4a0
 ; Due to a development oversight, this function is called with the wild Pokemon's level, not its species, in a.
@@ -1075,9 +1036,8 @@ RandomPhoneRareWildMon: ; 2a4ab
 	dec a
 	ld c, a
 	ld b, $0
-rept 2
 	add hl, bc
-endr
+	add hl, bc
 ; We now have the pointer to one of the last (rarest) three wild Pokemon found in that area.
 	inc hl
 	ld c, [hl] ; Contains the species index of this rare Pokemon
@@ -1151,9 +1111,8 @@ RandomPhoneWildMon: ; 2a51f
 	and $3
 	ld c, a
 	ld b, $0
-rept 2
 	add hl, bc
-endr
+	add hl, bc
 	inc hl
 	ld a, [hl]
 	ld [wNamedObjectIndexBuffer], a
@@ -1172,9 +1131,9 @@ RandomPhoneMon: ; 2a567
 	dec a
 	ld c, a
 	ld b, 0
-rept 3
 	add hl, bc
-endr
+	add hl, bc
+	add hl, bc
 	ld a, BANK(TrainerGroups)
 	call GetFarByte
 	inc hl

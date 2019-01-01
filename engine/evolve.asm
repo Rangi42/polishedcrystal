@@ -46,9 +46,8 @@ EvolveAfterBattle_MasterLoop
 	ld b, 0
 	ld c, a
 	ld hl, EvosAttacksPointers
-rept 2
 	add hl, bc
-endr
+	add hl, bc
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
@@ -516,9 +515,8 @@ LearnLevelMoves: ; 42487
 	ld b, 0
 	ld c, a
 	ld hl, EvosAttacksPointers
-rept 2
 	add hl, bc
-endr
+	add hl, bc
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
@@ -717,9 +715,8 @@ GetPreEvolution: ; 42581
 .loop ; For each Pokemon...
 	ld hl, EvosAttacksPointers
 	ld b, 0
-rept 2
 	add hl, bc
-endr
+	add hl, bc
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a

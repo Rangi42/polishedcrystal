@@ -259,7 +259,7 @@ endr
 	pop af
 	ld [wCurItem], a
 	call Random
-	cp $10
+	cp SHINY_NUMERATOR
 	jr nc, .not_shiny ; 240/256 still not shiny
 .shiny
 	ld a, SHINY_MASK
@@ -268,7 +268,7 @@ endr
 	pop af
 	ld [wCurItem], a
 	call Random
-	cp $30
+	cp CHARMED_SHINY_NUMERATOR
 	jr c, .shiny ; 208/256 still not shiny
 .not_shiny
 	xor a

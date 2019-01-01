@@ -13,8 +13,8 @@ Copyright_GFPresents: ; e4579
 	ld a, $90
 	ld [hWY], a
 	call WaitBGMap
-	ld b, SCGB_GAMEFREAK_LOGO
-	call GetSGBLayout
+	ld b, CGB_GAMEFREAK_LOGO
+	call GetCGBLayout
 	call SetPalettes
 	ld c, 10
 	call DelayFrames
@@ -118,9 +118,8 @@ PlaceGameFreakPresents: ; e4670
 	ld e, a
 	ld d, 0
 	ld hl, .dw
-rept 2
 	add hl, de
-endr
+	add hl, de
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
@@ -214,9 +213,8 @@ GameFreakLogoJumper: ; e46ed (39:46ed)
 	ld e, [hl]
 	ld d, 0
 	ld hl, GameFreakLogoScenes
-rept 2
 	add hl, de
-endr
+	add hl, de
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
@@ -310,9 +308,8 @@ GameFreakLogoScene4: ; e4776 (39:4776)
 	ld e, a
 	ld d, $0
 	ld hl, GameFreakLogoPalettes
-rept 2
 	add hl, de
-endr
+	add hl, de
 	ld a, [rSVBK]
 	push af
 	ld a, $5
@@ -437,9 +434,8 @@ IntroSceneJumper: ; e490f
 	ld e, a
 	ld d, 0
 	ld hl, IntroScenes
-rept 2
 	add hl, de
-endr
+	add hl, de
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
@@ -910,9 +906,8 @@ IntroScene12: ; e4cfa (39:4cfa)
 	ret z
 	cp c
 	jr z, .playsound
-rept 2
 	inc hl
-endr
+	inc hl
 	jr .loop
 .playsound
 	ld a, [hli]
@@ -1568,16 +1563,15 @@ CrystalIntro_InitUnownAnim: ; e51dc (39:51dc)
 	jp ReinitSpriteAnimFrame
 
 CrystalIntro_UnownFade: ; e5223 (39:5223)
-rept 3
 	add a
-endr
+	add a
+	add a
 	ld e, a
 	ld d, $0
 	ld hl, wBGPals
 	add hl, de
-rept 2
 	inc hl
-endr
+	inc hl
 	ld a, [wcf65]
 	and $3f
 	cp $1f
@@ -1617,9 +1611,8 @@ endc
 
 	push hl
 	ld hl, .BWFade
-rept 2
 	add hl, bc
-endr
+	add hl, bc
 	ld a, [hli]
 	ld d, [hl]
 	ld e, a
@@ -1631,9 +1624,8 @@ endr
 
 	push hl
 	ld hl, .BlackLBlueFade
-rept 2
 	add hl, bc
-endr
+	add hl, bc
 	ld a, [hli]
 	ld d, [hl]
 	ld e, a
@@ -1645,9 +1637,8 @@ endr
 
 	push hl
 	ld hl, .BlackBlueFade
-rept 2
 	add hl, bc
-endr
+	add hl, bc
 	ld a, [hli]
 	ld d, [hl]
 	ld e, a
@@ -1750,9 +1741,9 @@ Intro_Scene20_AppearUnown: ; e5348 (39:5348)
 .got_pointer
 	ld a, [wcf65]
 	and $7
-rept 3
 	add a
-endr
+	add a
+	add a
 	ld c, a
 	ld a, [rSVBK]
 	push af
@@ -1820,9 +1811,9 @@ endc
 ; e539d
 
 Intro_FadeUnownWordPals: ; e539d (39:539d)
-rept 3
 	add a
-endr
+	add a
+	add a
 	ld e, a
 	ld d, $0
 	ld hl, wBGPals
@@ -2111,9 +2102,8 @@ Intro_PerspectiveScrollBG: ; e552f (39:552f)
 	; grass in the front
 	ld hl, wLYOverrides + $5f
 	ld a, [hl]
-rept 2
 	inc a
-endr
+	inc a
 	ld bc, $31
 	call ByteFill
 	ld a, [wLYOverrides + 0]

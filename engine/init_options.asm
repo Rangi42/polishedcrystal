@@ -57,8 +57,8 @@ SetInitialOptions:
 	ld de, .InitialOptionsString
 	call PlaceString
 
-;	ld b, SCGB_DIPLOMA
-;	call GetSGBLayout
+;	ld b, CGB_DIPLOMA
+;	call GetCGBLayout
 ;	call SetPalettes
 
 	xor a

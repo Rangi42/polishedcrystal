@@ -4,7 +4,7 @@ WRAM0
 	align 8
 	"Audio RAM"
 	"WRAM 0"
-	org $c300
+	org $c308
 	"Sprite Animations"
 	"Music Player RAM"
 	org $c400

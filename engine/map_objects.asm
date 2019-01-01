@@ -1,10 +1,7 @@
+INCLUDE "data/sprites/facings.asm"
+INCLUDE "data/sprites/map_objects.asm"
 
-INCLUDE "engine/facings.asm"
-
-SpriteMovementData:: ; 4273
-INCLUDE "data/map_objects.asm"
-
-DeleteMapObject::
+DeleteMapObject:: ; 4357
 	push bc
 	ld hl, OBJECT_MAP_OBJECT_INDEX
 	add hl, bc
@@ -267,9 +264,9 @@ EndSpriteMovement:
 	ld [hl], a
 	ld hl, OBJECT_MOVEMENT_BYTE_INDEX
 	add hl, bc
-rept 3
 	ld [hli], a
-endr
+	ld [hli], a
+	ld [hli], a
 	ld [hl], a ; OBJECT_30
 	ld hl, OBJECT_DIRECTION_WALKING
 	add hl, bc
@@ -537,6 +534,7 @@ MapObjectMovementPattern:
 	dw .MovementSplashingPuddle      ; SPRITEMOVEFN_PUDDLE
 	dw .MovementBigGyarados          ; SPRITEMOVEFN_BIG_GYARADOS
 	dw .StandingFlip                 ; SPRITEMOVEFN_STANDING_FLIP
+	dw .MovementPokecomNews          ; SPRITEMOVEFN_POKECOM_NEWS
 
 .RandomWalkY:
 	call Random
@@ -727,6 +725,10 @@ MapObjectMovementPattern:
 
 .MovementBigGyarados:
 	ld a, PERSON_ACTION_BIG_GYARADOS
+	jr ._ActionA_StepType04
+
+.MovementPokecomNews:
+	ld a, PERSON_ACTION_POKECOM_NEWS
 	jr ._ActionA_StepType04
 
 .StandingFlip:

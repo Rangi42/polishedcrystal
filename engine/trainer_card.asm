@@ -55,15 +55,15 @@ TrainerCard: ; 25105
 
 	call EnableLCD
 	call WaitBGMap
-	ld b, SCGB_TRAINER_CARD
-	call GetSGBLayout
+	ld b, CGB_TRAINER_CARD
+	call GetCGBLayout
 	call SetPalettes
 	call WaitBGMap
 	ld hl, wJumptableIndex
 	xor a
-rept 3
 	ld [hli], a
-endr
+	ld [hli], a
+	ld [hli], a
 	ld [hl], a
 	ret
 
@@ -94,8 +94,8 @@ TrainerCard_Page1_LoadGFX: ; 251b6 (9:51b6)
 	call TrainerCardSetup_ClearBottomHalf
 	call WaitBGMap
 
-	ld b, SCGB_TRAINER_CARD
-	call GetSGBLayout
+	ld b, CGB_TRAINER_CARD
+	call GetCGBLayout
 	call SetPalettes
 	call WaitBGMap
 
@@ -125,8 +125,8 @@ TrainerCard_Page2_LoadGFX: ; 251f4 (9:51f4)
 	call TrainerCardSetup_ClearBottomHalf
 	call WaitBGMap
 
-	ld b, SCGB_TRAINER_CARD_2
-	call GetSGBLayout
+	ld b, CGB_TRAINER_CARD_2
+	call GetCGBLayout
 	call SetPalettes
 	call WaitBGMap
 
@@ -192,8 +192,8 @@ TrainerCard_Page3_LoadGFX: ; 2524c (9:524c)
 	call TrainerCardSetup_ClearBottomHalf
 	call WaitBGMap
 
-	ld b, SCGB_TRAINER_CARD_3
-	call GetSGBLayout
+	ld b, CGB_TRAINER_CARD_3
+	call GetCGBLayout
 	call SetPalettes
 	call WaitBGMap
 

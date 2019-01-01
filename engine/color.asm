@@ -80,9 +80,8 @@ LoadPlayerStatusIconPalette:
 	ld hl, StatusIconPals
 	ld c, a
 	ld b, 0
-rept 2
 	add hl, bc
-endr
+	add hl, bc
 	ld de, wUnknBGPals palette PAL_BATTLE_BG_STATUS + 2
 	ld bc, 2
 	ld a, $5
@@ -95,9 +94,8 @@ LoadEnemyStatusIconPalette:
 	ld hl, StatusIconPals
 	ld c, a
 	ld b, 0
-rept 2
 	add hl, bc
-endr
+	add hl, bc
 	ld de, wUnknBGPals palette PAL_BATTLE_BG_STATUS + 4
 	ld bc, 2
 	ld a, $5
@@ -120,9 +118,8 @@ endr
 	ld a, [wPlayerMoveStruct + MOVE_TYPE]
 	ld c, a
 	ld b, 0
-rept 2
 	add hl, bc
-endr
+	add hl, bc
 	ld de, wUnknBGPals palette PAL_BATTLE_BG_TYPE_CAT + 6
 	ld bc, 2
 	ld a, $5
@@ -201,9 +198,9 @@ LoadStatsScreenPals:
 LoadMailPalettes:
 	ld l, e
 	ld h, 0
-rept 3
 	add hl, hl
-endr
+	add hl, hl
+	add hl, hl
 	ld de, MailPals
 	add hl, de
 	ld de, wUnknBGPals
@@ -359,8 +356,10 @@ ApplyPals:
 
 ApplyAttrMap:
 	ld a, [rLCDC]
-	bit 7, a
-	jr z, .UpdateVBank1
+	bit 7, a ; lcd on?
+	jr z, ApplyAttrMapVBank1
+	; fallthrough
+ApplyAttrMapVBank0::
 	ld a, [hBGMapMode]
 	push af
 	ld a, $2
@@ -373,7 +372,7 @@ ApplyAttrMap:
 	ld [hBGMapMode], a
 	ret
 
-.UpdateVBank1:
+ApplyAttrMapVBank1:
 	hlcoord 0, 0, wAttrMap
 	debgcoord 0, 0
 	ld b, SCREEN_HEIGHT
@@ -401,7 +400,7 @@ ApplyAttrMap:
 
 ApplyPartyMenuHPPals: ; 96f3
 	ld hl, wHPPals
-	ld a, [wSGBPals]
+	ld a, [wHPPalIndex]
 	ld e, a
 	ld d, $0
 	add hl, de
@@ -412,7 +411,7 @@ ApplyPartyMenuHPPals: ; 96f3
 	ld e, a
 	hlcoord 11, 2, wAttrMap
 	ld bc, 2 * SCREEN_WIDTH
-	ld a, [wSGBPals]
+	ld a, [wHPPalIndex]
 .loop
 	and a
 	jr z, .done
@@ -511,9 +510,9 @@ GetTrainerPalettePointer:
 GetMonPalettePointer:
 	ld l, a
 	ld h, $0
-rept 3
 	add hl, hl
-endr
+	add hl, hl
+	add hl, hl
 	ld bc, PokemonPalettes
 	add hl, bc
 	ret
@@ -584,9 +583,9 @@ InitCGBPals::
 	ld c, 4 * 8
 .bgpals_loop
 if !DEF(MONOCHROME)
-	ld a, $7fff % $100
+	ld a, (palred 31 + palgreen 31 + palblue 31) % $100
 	ld [rBGPD], a
-	ld a, $7fff / $100
+	ld a, (palred 31 + palgreen 31 + palblue 31) / $100
 	ld [rBGPD], a
 else
 	ld a, PAL_MONOCHROME_WHITE % $100
@@ -601,9 +600,9 @@ endc
 	ld c, 4 * 8
 .obpals_loop
 if !DEF(MONOCHROME)
-	ld a, $7fff % $100
+	ld a, (palred 31 + palgreen 31 + palblue 31) % $100
 	ld [rOBPD], a
-	ld a, $7fff / $100
+	ld a, (palred 31 + palgreen 31 + palblue 31) / $100
 	ld [rOBPD], a
 else
 	ld a, PAL_MONOCHROME_WHITE % $100
@@ -629,9 +628,9 @@ endc
 	ld c, 4 * 16
 .loop
 if !DEF(MONOCHROME)
-	ld a, $7fff % $100
+	ld a, (palred 31 + palgreen 31 + palblue 31) % $100
 	ld [hli], a
-	ld a, $7fff / $100
+	ld a, (palred 31 + palgreen 31 + palblue 31) / $100
 	ld [hli], a
 else
 	ld a, PAL_MONOCHROME_WHITE % $100
@@ -676,7 +675,7 @@ LoadMapPals:
 	and 7
 	ld e, a
 	ld d, 0
-	ld hl, .TilesetColorsPointers
+	ld hl, EnvironmentColorsPointers
 	add hl, de
 	add hl, de
 	ld a, [hli]
@@ -701,7 +700,7 @@ LoadMapPals:
 	ld hl, wUnknBGPals
 	ld b, 8
 .outer_loop
-	ld a, [de] ; lookup index for .TilesetBGPalette
+	ld a, [de] ; lookup index for TilesetBGPalette
 	push de
 	push hl
 	ld l, a
@@ -709,7 +708,7 @@ LoadMapPals:
 	add hl, hl
 	add hl, hl
 	add hl, hl
-	ld de, .TilesetBGPalette
+	ld de, TilesetBGPalette
 	add hl, de
 	ld e, l
 	ld d, h
@@ -732,7 +731,7 @@ LoadMapPals:
 	ld a, [wTimeOfDayPal]
 	and 3
 	ld bc, 8 palettes
-	ld hl, .MapObjectPals
+	ld hl, MapObjectPals
 	call AddNTimes
 	ld de, wUnknOBPals
 	ld bc, 8 palettes
@@ -752,10 +751,10 @@ LoadMapPals:
 	dec a
 	ld l, a
 	ld h, 0
-rept 3
 	add hl, hl
-endr
-	ld de, .OvercastRoofPals
+	add hl, hl
+	add hl, hl
+	ld de, OvercastRoofPals
 	jr .get_roof_color
 
 .not_overcast
@@ -770,10 +769,10 @@ endr
 	ld a, [wMapGroup]
 	ld l, a
 	ld h, 0
-rept 3
 	add hl, hl
-endr
-	ld de, .RoofPals
+	add hl, hl
+	add hl, hl
+	ld de, RoofPals
 .get_roof_color
 	add hl, de
 	ld a, [wTimeOfDayPal]
@@ -789,185 +788,47 @@ endr
 	ld a, $5
 	jp FarCopyWRAM
 
-.TilesetColorsPointers:
-	dw .OutdoorColors ; unused
-	dw .OutdoorColors ; TOWN
-	dw .OutdoorColors ; ROUTE
-	dw .IndoorColors ; INDOOR
-	dw .DungeonColors ; CAVE
-	dw .Perm5Colors ; PERM_5
-	dw .IndoorColors ; GATE
-	dw .DungeonColors ; DUNGEON
+INCLUDE "data/maps/environment_colors.asm"
 
-; Valid indices: $00 - $29
-.OutdoorColors:
-.Perm5Colors:
-	db $00, $01, $02, $28, $04, $05, $06, $07 ; morn
-	db $08, $09, $0a, $29, $0c, $0d, $0e, $0f ; day
-	db $10, $11, $12, $2a, $14, $15, $16, $17 ; nite
-	db $18, $19, $1a, $1b, $1c, $1d, $1e, $1f ; dark
-
-.IndoorColors:
-	db $20, $21, $22, $23, $24, $25, $26, $27 ; morn
-	db $20, $21, $22, $23, $24, $25, $26, $27 ; day
-	db $10, $11, $12, $13, $14, $15, $16, $17 ; nite
-	db $18, $19, $1a, $1b, $1c, $1d, $1e, $1f ; dark
-
-.DungeonColors:
-	db $00, $01, $02, $03, $04, $05, $06, $07 ; morn
-	db $08, $09, $0a, $0b, $0c, $0d, $0e, $0f ; day
-	db $10, $11, $12, $13, $14, $15, $16, $17 ; nite
-	db $18, $19, $1a, $1b, $1c, $1d, $1e, $1f ; dark
-
-.TilesetBGPalette:
+TilesetBGPalette:
 if DEF(HGSS)
-INCLUDE "tilesets/palettes/hgss/bg.pal"
+INCLUDE "gfx/tilesets/palettes/hgss/bg.pal"
+elif DEF(MONOCHROME)
+INCLUDE "gfx/tilesets/palettes/monochrome/bg.pal"
 else
-if !DEF(MONOCHROME)
-INCLUDE "tilesets/palettes/bg.pal"
-else
-rept 7
-	MONOCHROME_RGB_FOUR
-endr
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_DARK
-	RGB_MONOCHROME_BLACK
-rept 7
-	MONOCHROME_RGB_FOUR
-endr
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_DARK
-	RGB_MONOCHROME_BLACK
-rept 4
-	MONOCHROME_RGB_FOUR_NIGHT
-endr
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_DARK
-	RGB_MONOCHROME_DARK
-	RGB_MONOCHROME_BLACK
-rept 2
-	MONOCHROME_RGB_FOUR_NIGHT
-endr
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_DARK
-	RGB_MONOCHROME_BLACK
-rept 4
-	RGB_MONOCHROME_BLACK
-	RGB_MONOCHROME_BLACK
-	RGB_MONOCHROME_BLACK
-	RGB_MONOCHROME_BLACK
-endr
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_BLACK
-	RGB_MONOCHROME_BLACK
-	RGB_MONOCHROME_BLACK
-rept 2
-	RGB_MONOCHROME_BLACK
-	RGB_MONOCHROME_BLACK
-	RGB_MONOCHROME_BLACK
-	RGB_MONOCHROME_BLACK
-endr
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_DARK
-	RGB_MONOCHROME_BLACK
-rept 7
-	MONOCHROME_RGB_FOUR
-endr
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_DARK
-	RGB_MONOCHROME_BLACK
-	MONOCHROME_RGB_FOUR
-	MONOCHROME_RGB_FOUR
-	MONOCHROME_RGB_FOUR_NIGHT
-endc
+INCLUDE "gfx/tilesets/palettes/bg.pal"
 endc
 
-.MapObjectPals:
+MapObjectPals:
 if DEF(HGSS)
-INCLUDE "tilesets/palettes/hgss/ob.pal"
+INCLUDE "gfx/tilesets/palettes/hgss/ob.pal"
+elif DEF(MONOCHROME)
+INCLUDE "gfx/tilesets/palettes/monochrome/ob.pal"
 else
-if !DEF(MONOCHROME)
-INCLUDE "tilesets/palettes/ob.pal"
-else
-rept 5
-	MONOCHROME_RGB_FOUR_OW
-endr
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_DARK
-	RGB_MONOCHROME_BLACK
-	MONOCHROME_RGB_FOUR
-	MONOCHROME_RGB_FOUR
-rept 5
-	MONOCHROME_RGB_FOUR_OW
-endr
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_DARK
-	RGB_MONOCHROME_BLACK
-	MONOCHROME_RGB_FOUR
-	MONOCHROME_RGB_FOUR
-rept 5
-	MONOCHROME_RGB_FOUR_OW_NIGHT
-endr
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_DARK
-	RGB_MONOCHROME_BLACK
-	MONOCHROME_RGB_FOUR
-	MONOCHROME_RGB_FOUR
-rept 5
-	MONOCHROME_RGB_FOUR_OW_DARKNESS
-endr
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_WHITE
-	RGB_MONOCHROME_DARK
-	RGB_MONOCHROME_BLACK
-rept 2
-	RGB_MONOCHROME_BLACK
-	RGB_MONOCHROME_BLACK
-	RGB_MONOCHROME_BLACK
-	RGB_MONOCHROME_BLACK
-endr
-endc
+INCLUDE "gfx/tilesets/palettes/ob.pal"
 endc
 
-.RoofPals:
+RoofPals:
 if DEF(HGSS)
-INCLUDE "tilesets/palettes/hgss/roof.pal"
+INCLUDE "gfx/tilesets/palettes/hgss/roof.pal"
+elif DEF(MONOCHROME)
+INCLUDE "gfx/tilesets/palettes/monochrome/roof.pal"
 else
-if !DEF(MONOCHROME)
-INCLUDE "tilesets/palettes/roof.pal"
-else
-rept 36
-	MONOCHROME_RGB_TWO
-	MONOCHROME_RGB_TWO_NIGHT
-endr
-endc
+INCLUDE "gfx/tilesets/palettes/roof.pal"
 endc
 
-.OvercastRoofPals:
+OvercastRoofPals:
 if DEF(HGSS)
-INCLUDE "tilesets/palettes/hgss/roof_overcast.pal"
+INCLUDE "gfx/tilesets/palettes/hgss/roof_overcast.pal"
+elif DEF(MONOCHROME)
+INCLUDE "gfx/tilesets/palettes/monochrome/roof_overcast.pal"
 else
-if !DEF(MONOCHROME)
-INCLUDE "tilesets/palettes/roof_overcast.pal"
-else
-rept 3
-	MONOCHROME_RGB_TWO
-	MONOCHROME_RGB_TWO_NIGHT
-endr
-endc
+INCLUDE "gfx/tilesets/palettes/roof_overcast.pal"
 endc
 
 
-INCLUDE "gfx/pics/palette_pointers.asm"
+INCLUDE "data/pokemon/palettes.asm"
 
-INCLUDE "gfx/trainers/palette_pointers.asm"
+INCLUDE "data/trainers/palettes.asm"
 
 INCLUDE "engine/palettes.asm"

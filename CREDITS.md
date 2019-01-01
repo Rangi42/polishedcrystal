@@ -14,11 +14,12 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * FIQ for multiple feature code contributions (specifically: abilities, natures affecting stats, better AI, various item and move effects, and other battle engine features; and porting TPP's caught data stats screen).
 * The TPP Anniversary Crystal 251 dev team for making their code publically usable (specifically: the Move Relearner, Stats Judge, automatic box swtching, Gen VI money loss, and caught data stats page code).
 * Sanqui for the music player with piano roll visualization.
+* ax6 for porting the xorshift+ PRNG from Prism.
 * MeroMero for the in-battle color inversion code, Smeargle color code, and some move animations.
 * kroc for the no-RTC code.
 * VictoriaLacroix for the Running Shoes routine.
 * ShockSlayer for fixing the FinalPkmnSlideInEnemyMonFrontpic routine.
-* pfero for the improved GetAnimatedFrontpic routine.
+* pfero for the improved GetAnimatedFrontpic routine and the BGMap0 fill-tile bug.
 * Armada651 for the playable Celadon Game Corner lucky slot machine.
 * tonyism for the in-battle shiny icon code.
 
@@ -30,7 +31,7 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * Pum for the Flannery, Maylene, and Valerie battle and Lugia theme music.
 * ShantyTown for the Rock Tunnel (XY Power Plant) and Cycling Road (XY Bicycle) music.
 * Pigu and GACT for some battle music (used in TPP Anniversary Crystal 251).
-* ShockSlayer for the Pokémon Go Gym Leader battle music.
+* ShockSlayer for some Pokémon Go and Pokémon Stadium battle music.
 * LevusBevus, GRonnoc, Cat333Pokemon, and KoolBoyMan for some music from Pokémon Prism (available in the music player).
 
 
@@ -38,11 +39,11 @@ Pokémon Polished Crystal would never have been finished without the help of man
 
 * Blue Emerald, solo993, Chamber, Lake, Neslug, and Pikachu25 for many sprites and icons.
 * metalflygon08 for the many Pokémon and trainer sprites.
-* JaceDeane for Pokémon and trainer sprites, as well as Ecruteak's lantern tiles.
+* JaceDeane for Pokémon and trainer sprites, as well as some tiles.
 * bloodless for sprites of Buck, Maylene, Skyla, Veteran♂, Pikachu, Diglett, and Dugtrio.
 * Kuroko Aizawa for sprites of Prof. Ivy, Looker, Cheryl, Officer♀, Aroma Lady, Artist.
 * SCMidna for animations of Alolan Diglett and Dugtrio, Munchlax, Unown ! and ?, and Surfing Pikachu, and the stat trainers' overworld sprites.
-* Acrozz for sprites and animations of Magikarp forms.
+* Acrozz for many HGSS Pokémon palettes, and sprites and animations of Magikarp forms.
 * Freeline for animations of Honchkrow and Munchlax, and the Rocket Executives' and stat trainers' overworld sprites.
 * Megaman-Omega for some of Prism's overworld sprites.
 * spritershawn for sprites of Red, Blue, and Green.

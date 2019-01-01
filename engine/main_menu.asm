@@ -1,8 +1,8 @@
 MainMenu: ; 49cdc
 	call DeleteSavedMusic
 	call Function49ed0
-	ld b, SCGB_DIPLOMA
-	call GetSGBLayout
+	ld b, CGB_DIPLOMA
+	call GetCGBLayout
 	call SetPalettes
 	ld hl, wGameTimerPause
 	res 0, [hl]

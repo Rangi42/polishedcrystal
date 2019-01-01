@@ -75,9 +75,8 @@ FarCopyBytesDouble:: ; e9b
 .loop
 	ld a, [de]
 	inc de
-rept 2
 	ld [hli], a
-endr
+	ld [hli], a
 .dec
 	dec c
 	jr nz, .loop
@@ -209,7 +208,7 @@ Request1bpp::
 
 Get2bpp:: ; f82
 	ld a, [rLCDC]
-	bit 7, a
+	bit 7, a ; lcd on?
 	jp nz, Request2bpp
 
 Copy2bpp::
@@ -288,7 +287,7 @@ HBlankCopy2bpp::
 
 Get1bpp:: ; f9d
 	ld a, [rLCDC]
-	bit 7, a
+	bit 7, a ; lcd on?
 	jp nz, Request1bpp
 
 Copy1bpp::

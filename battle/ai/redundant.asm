@@ -41,6 +41,7 @@ AI_Redundant: ; 2c41a
 	dbw EFFECT_SWAGGER,       .Swagger
 	dbw EFFECT_FUTURE_SIGHT,  .FutureSight
 	dbw EFFECT_BATON_PASS,    .BatonPass
+	dbw EFFECT_ROOST,         .Roost
 	db -1
 
 .LightScreen: ; 2c487
@@ -178,7 +179,8 @@ AI_Redundant: ; 2c41a
 	jr .NotRedundant
 
 .Heal:
-.HealingLight: ; 2c539
+.HealingLight:
+.Roost:
 	farcall AICheckEnemyMaxHP
 	jr nc, .NotRedundant
 

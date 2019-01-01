@@ -2,9 +2,8 @@ NewBarkTown_MapScriptHeader:
 
 .MapTriggers: db 0
 
-.MapCallbacks: db 2
+.MapCallbacks: db 1
 	dbw MAPCALLBACK_NEWMAP, NewBarkTownFlyPoint
-	dbw MAPCALLBACK_SPRITES, NewBarkTownSwimmerGuySprite
 
 NewBarkTown_MapEventHeader:
 
@@ -31,33 +30,31 @@ NewBarkTown_MapEventHeader:
 	signpost 13, 9, SIGNPOST_JUMPTEXT, LyrasHouseSignText
 	signpost 2, 3, SIGNPOST_ITEM + POTION, EVENT_NEW_BARK_TOWN_HIDDEN_POTION
 
-.PersonEvents: db 5
-	person_event SPRITE_TEACHER, 8, 6, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, NewBarkTownTeacherScript, -1
+.PersonEvents: db 6
 	person_event SPRITE_CHERRYGROVE_RIVAL, 2, 3, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, NewBarkTownSilverScript, EVENT_RIVAL_NEW_BARK_TOWN
 	person_event SPRITE_NEW_BARK_LYRA, 6, 1, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LYRA_NEW_BARK_TOWN
+	person_event SPRITE_NEW_BARK_TEACHER, 8, 6, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_TEACHER_NEW_BARK_TOWN
+	person_event SPRITE_TEACHER, 8, 6, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, NewBarkTownTeacherScript, -1
 	person_event SPRITE_FISHER, 8, 13, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, Text_ElmDiscoveredNewMon, -1
 	person_event SPRITE_YOUNGSTER, 15, 7, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, (1 << MORN) | (1 << DAY), 0, PERSONTYPE_COMMAND, jumptextfaceplayer, Text_GearIsImpressive, -1
 
 const_value set 1
-	const NEWBARKTOWN_TEACHER
 	const NEWBARKTOWN_SILVER
 	const NEWBARKTOWN_LYRA
+	const NEWBARKTOWN_TEACHER
+	const NEWBARKTOWN_STILL_TEACHER
 
 NewBarkTownFlyPoint:
 	setflag ENGINE_FLYPOINT_NEW_BARK
 	clearevent EVENT_FIRST_TIME_BANKING_WITH_MOM
 	return
 
-NewBarkTownSwimmerGuySprite:
-	checkevent EVENT_GUIDE_GENT_VISIBLE_IN_CHERRYGROVE
-	iftrue .done
-	variablesprite SPRITE_GUIDE_GENT, SPRITE_SWIMMER_GUY
-.done
-	return
-
 NewBarkTown_TeacherStopsYouTrigger1:
 	playmusic MUSIC_MOM
-	spriteface NEWBARKTOWN_TEACHER, LEFT
+	spriteface NEWBARKTOWN_STILL_TEACHER, LEFT
+	appear NEWBARKTOWN_TEACHER
+	spriteface NEWBARKTOWN_STILL_TEACHER, LEFT
+	disappear NEWBARKTOWN_STILL_TEACHER
 	showtext Text_WaitPlayer
 	spriteface PLAYER, RIGHT
 	applymovement NEWBARKTOWN_TEACHER, Movement_TeacherRunsToYou1_NBT
@@ -66,12 +63,18 @@ NewBarkTown_TeacherStopsYouTrigger1:
 	applymovement NEWBARKTOWN_TEACHER, Movement_TeacherBringsYouBack1_NBT
 	stopfollow
 	showtext Text_ItsDangerousToGoAlone
+	appear NEWBARKTOWN_STILL_TEACHER
+	spriteface NEWBARKTOWN_TEACHER, LEFT
+	disappear NEWBARKTOWN_TEACHER
 	special RestartMapMusic
 	end
 
 NewBarkTown_TeacherStopsYouTrigger2:
 	playmusic MUSIC_MOM
 	spriteface NEWBARKTOWN_TEACHER, LEFT
+	appear NEWBARKTOWN_TEACHER
+	spriteface NEWBARKTOWN_STILL_TEACHER, LEFT
+	disappear NEWBARKTOWN_STILL_TEACHER
 	showtext Text_WaitPlayer
 	spriteface PLAYER, RIGHT
 	applymovement NEWBARKTOWN_TEACHER, Movement_TeacherRunsToYou2_NBT
@@ -81,6 +84,9 @@ NewBarkTown_TeacherStopsYouTrigger2:
 	applymovement NEWBARKTOWN_TEACHER, Movement_TeacherBringsYouBack2_NBT
 	stopfollow
 	showtext Text_ItsDangerousToGoAlone
+	appear NEWBARKTOWN_STILL_TEACHER
+	spriteface NEWBARKTOWN_TEACHER, LEFT
+	disappear NEWBARKTOWN_TEACHER
 	special RestartMapMusic
 	end
 

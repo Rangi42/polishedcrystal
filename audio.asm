@@ -5,17 +5,14 @@ SECTION "Audio", ROMX
 
 INCLUDE "audio/engine.asm"
 
-INCLUDE "audio/trainer_encounters.asm"
+INCLUDE "data/trainers/encounter_music.asm"
 
-Music:
 INCLUDE "audio/music_pointers.asm"
 
 INCLUDE "audio/music/nothing.asm"
 
-Cries:
 INCLUDE "audio/cry_pointers.asm"
 
-SFX:
 INCLUDE "audio/sfx_pointers.asm"
 
 
@@ -339,6 +336,11 @@ INCLUDE "audio/music/go/wildbattle.asm"
 INCLUDE "audio/music/go/gymbattle.asm"
 
 
+SECTION "Stadium Music", ROMX
+
+INCLUDE "audio/music/stadium/mewtwobattle.asm"
+
+
 SECTION "Movie 2000 Music", ROMX
 
 INCLUDE "audio/music/m02/lugiassong.asm"
@@ -356,7 +358,6 @@ INCLUDE "audio/sfx_crystal.asm"
 
 SECTION "Cries", ROMX
 
-CryHeaders::
-INCLUDE "audio/cry_headers.asm"
+INCLUDE "data/pokemon/cries.asm"
 
 INCLUDE "audio/cries.asm"

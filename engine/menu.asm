@@ -690,8 +690,8 @@ _InitVerticalMenuCursor:: ; 2446d
 	ld [hli], a
 ; wCursorOffCharacter, wCursorCurrentTile
 	xor a
-rept 3
 	ld [hli], a
-endr
+	ld [hli], a
+	ld [hli], a
 	ret
 ; 244c3

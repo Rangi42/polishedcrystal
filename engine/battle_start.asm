@@ -664,9 +664,9 @@ StartTrainerBattle_LoadPokeBallGraphics: ; 8c5dc (23:45dc)
 	ld hl, .timepals
 	ld a, [wTimeOfDayPal]
 	and %00000011
-rept 3
 	sla a
-endr
+	sla a
+	sla a
 	push bc
 	ld b, 0
 	ld c, a

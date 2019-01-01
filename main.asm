@@ -56,7 +56,7 @@ ReanchorBGMap_NoOAMUpdate:: ; 6454
 	ld [hWY], a
 	inc a
 	ld [hCGBPalUpdate], a
-	call HDMATransfer_FillBGMap0WithTile60
+	call HDMATransfer_FillBGMap0WithBlackTile
 
 	ld a, VBGMap0 / $100
 	ld [hBGMapAddress + 1], a
@@ -92,13 +92,13 @@ LoadFonts_NoOAMUpdate:: ; 64bf
 	ld [hOAMUpdate], a
 	ret
 
-HDMATransfer_FillBGMap0WithTile60: ; 64db
+HDMATransfer_FillBGMap0WithBlackTile: ; 64db
 	ld a, [rSVBK]
 	push af
 	ld a, $6
 	ld [rSVBK], a
 
-	ld a, $60
+	ld a, "<BLACK>"
 	ld hl, wScratchTileMap
 	ld bc, BG_MAP_WIDTH * BG_MAP_HEIGHT
 	call ByteFill
@@ -168,16 +168,14 @@ INCLUDE "engine/math.asm"
 INCLUDE "engine/npc_movement.asm"
 INCLUDE "event/happiness_egg.asm"
 INCLUDE "event/special.asm"
-
-ItemAttributes: ; 67c1
-INCLUDE "items/item_attributes.asm"
+INCLUDE "data/items/attributes.asm"
 
 
 SECTION "Code 2", ROMX
 
 INCLUDE "engine/player_object.asm"
 INCLUDE "engine/sine.asm"
-INCLUDE "data/predefs.asm"
+INCLUDE "data/predef_pointers.asm"
 INCLUDE "engine/color.asm"
 INCLUDE "engine/trainer_scripts.asm"
 
@@ -193,7 +191,7 @@ INCLUDE "engine/player_step.asm"
 INCLUDE "engine/anim_hp_bar.asm"
 INCLUDE "engine/move_mon.asm"
 INCLUDE "engine/billspctop.asm"
-INCLUDE "items/item_effects.asm"
+INCLUDE "engine/item_effects.asm"
 
 CheckTime:: ; c000
 	ld a, [wTimeOfDay]
@@ -364,8 +362,8 @@ DisplayCaughtContestMonStats: ; cc000
 	ld [wOptions1], a
 
 	call WaitBGMap
-	ld b, SCGB_DIPLOMA
-	call GetSGBLayout
+	ld b, CGB_DIPLOMA
+	call GetCGBLayout
 	jp SetPalettes
 
 .Health:
@@ -386,7 +384,7 @@ SECTION "Code 4", ROMX
 INCLUDE "engine/pack.asm"
 INCLUDE "engine/time.asm"
 INCLUDE "engine/tmhm.asm"
-INCLUDE "engine/namingscreen.asm"
+INCLUDE "engine/naming_screen.asm"
 INCLUDE "event/itemball.asm"
 INCLUDE "engine/healmachineanim.asm"
 INCLUDE "event/whiteout.asm"
@@ -396,7 +394,13 @@ INCLUDE "engine/startmenu.asm"
 INCLUDE "engine/selectmenu.asm"
 INCLUDE "event/elevator.asm"
 INCLUDE "event/bug_contest.asm"
+INCLUDE "event/safari_game.asm"
 INCLUDE "event/std_tiles.asm"
+
+
+SECTION "Roofs", ROMX
+
+INCLUDE "engine/mapgroup_roofs.asm"
 
 
 SECTION "Code 5", ROMX
@@ -410,7 +414,7 @@ INCLUDE "engine/map_setup.asm"
 INCLUDE "engine/pokecenter_pc.asm"
 INCLUDE "engine/mart.asm"
 INCLUDE "engine/money.asm"
-INCLUDE "items/marts.asm"
+INCLUDE "data/items/marts.asm"
 INCLUDE "event/mom.asm"
 INCLUDE "event/daycare.asm"
 INCLUDE "engine/breeding.asm"
@@ -434,7 +438,7 @@ INCLUDE "engine/buy_sell_toss.asm"
 INCLUDE "engine/trainer_card.asm"
 INCLUDE "engine/prof_oaks_pc.asm"
 INCLUDE "engine/decorations.asm"
-INCLUDE "trainers/dvs.asm"
+INCLUDE "data/trainers/dvs.asm"
 
 UpdateItemDescriptionAndBagQuantity:
 	hlcoord 1, 1
@@ -711,7 +715,7 @@ FindApricornsInBag: ; 24c64
 	ld bc, 10
 	call ByteFill
 
-	ld hl, .ApricornBalls
+	ld hl, ApricornBalls
 .loop
 	ld a, [hl]
 	cp -1
@@ -747,15 +751,7 @@ FindApricornsInBag: ; 24c64
 	pop hl
 	ret
 
-.ApricornBalls: ; 24ca0
-	db RED_APRICORN, LEVEL_BALL
-	db BLU_APRICORN, LURE_BALL
-	db YLW_APRICORN, MOON_BALL
-	db GRN_APRICORN, FRIEND_BALL
-	db WHT_APRICORN, FAST_BALL
-	db BLK_APRICORN, HEAVY_BALL
-	db PNK_APRICORN, LOVE_BALL
-	db -1
+INCLUDE "data/items/apricorn_balls.asm"
 
 PadCoords_de: ; 27092
 	ld a, d
@@ -800,7 +796,7 @@ _ReturnToBattle_UseBall: ; 2715c
 .continue
 	farcall GetMonFrontpic
 	farcall _LoadBattleFontsHPBar
-	call GetMemSGBLayout
+	call GetMemCGBLayout
 	call CloseWindow
 	call LoadStandardMenuDataHeader
 	call WaitBGMap
@@ -809,11 +805,9 @@ _ReturnToBattle_UseBall: ; 2715c
 	farcall LoadEnemyStatusIcon
 	farjp InstantReloadPaletteHack
 
-MoveEffectsPointers: ; 271f4
-INCLUDE "battle/moves/move_effects_pointers.asm"
+INCLUDE "data/moves/effects_pointers.asm"
 
-MoveEffects: ; 2732e
-INCLUDE "battle/moves/move_effects.asm"
+INCLUDE "data/moves/effects.asm"
 
 
 SECTION "Code 8", ROMX
@@ -823,18 +817,14 @@ INCLUDE "engine/link.asm"
 
 SECTION "Code 9", ROMX
 
-INCLUDE "battle/music.asm"
+INCLUDE "data/battle/music.asm"
 INCLUDE "battle/trainer_huds.asm"
 INCLUDE "battle/ai/redundant.asm"
 INCLUDE "event/move_deleter.asm"
 INCLUDE "engine/tmhm2.asm"
 INCLUDE "event/pokerus.asm"
-
-TrainerClassNames:: ; 2c1ef
-INCLUDE "text/trainer_class_names.asm"
-
-MoveDescriptions:: ; 2cb52
-INCLUDE "battle/moves/move_descriptions.asm"
+INCLUDE "data/trainers/class_names.asm"
+INCLUDE "data/moves/descriptions.asm"
 
 ShowLinkBattleParticipants: ; 2ee18
 ; If we're not in a communications room,
@@ -889,9 +879,9 @@ ClearBattleRAM: ; 2ef18
 	ld [wBattleResult], a
 
 	ld hl, wPartyMenuCursor
-rept 3
 	ld [hli], a
-endr
+	ld [hli], a
+	ld [hli], a
 	ld [hl], a
 
 	ld [wMenuScrollPosition], a
@@ -1391,7 +1381,7 @@ endr
 	ret
 
 PokedexDataPointerTable: ; 0x44378
-INCLUDE "data/pokedex/entry_pointers.asm"
+INCLUDE "data/pokemon/dex_entry_pointers.asm"
 
 
 SECTION "Code 11", ROMX
@@ -1399,18 +1389,18 @@ SECTION "Code 11", ROMX
 INCLUDE "engine/main_menu.asm"
 INCLUDE "engine/search.asm"
 INCLUDE "event/celebi.asm"
-INCLUDE "tilesets/palettes.asm"
+INCLUDE "engine/tileset_palettes.asm"
 
 Special_MoveTutor: ; 4925b
 	call FadeToMenu
 	call ClearBGPalettes
 	call ClearScreen
 	call DelayFrame
-	ld b, SCGB_PACKPALS
-	call GetSGBLayout
+	ld b, CGB_PACKPALS
+	call GetCGBLayout
 	xor a
 	ld [wItemAttributeParamBuffer], a
-	call .GetMoveTutorMove
+	ld a, [wScriptVar]
 	ld [wd265], a
 	ld [wPutativeTMHMMove], a
 	call GetMoveName
@@ -1426,18 +1416,13 @@ Special_MoveTutor: ; 4925b
 	call CheckCanLearnMoveTutorMove
 	jr nc, .loop
 	xor a
-	ld [wScriptVar], a
 	jr .quit
 
 .cancel
 	ld a, -1
-	ld [wScriptVar], a
 .quit
+	ld [wScriptVar], a
 	jp CloseSubmenu
-
-.GetMoveTutorMove: ; 492a5
-	ld a, [wScriptVar]
-	ret
 
 CheckCanLearnMoveTutorMove: ; 492b9
 	ld hl, .MenuDataHeader
@@ -1670,7 +1655,7 @@ CheckSave:: ; 4cffe
 	ld c, $0
 	ret
 
-INCLUDE "engine/map_triggers.asm"
+INCLUDE "data/maps/scenes.asm"
 
 _LoadMapPart:: ; 4d15b
 	ld hl, wMisc
@@ -1797,8 +1782,8 @@ INCBIN "gfx/shrink/shrink2.2bpp.lz"
 
 _ResetClock: ; 4d3b1
 	farcall BlankScreen
-	ld b, SCGB_DIPLOMA
-	call GetSGBLayout
+	ld b, CGB_DIPLOMA
+	call GetCGBLayout
 	call LoadStandardFont
 	call LoadFontsExtra
 	ld de, MUSIC_MAIN_MENU
@@ -1845,8 +1830,8 @@ _ResetClock: ; 4d3b1
 
 _DeleteSaveData: ; 4d54c
 	farcall BlankScreen
-	ld b, SCGB_DIPLOMA
-	call GetSGBLayout
+	ld b, CGB_DIPLOMA
+	call GetCGBLayout
 	call LoadStandardFont
 	call LoadFontsExtra
 	ld de, MUSIC_MAIN_MENU
@@ -1869,8 +1854,8 @@ _DeleteSaveData: ; 4d54c
 
 _ResetInitialOptions:
 	farcall BlankScreen
-	ld b, SCGB_DIPLOMA
-	call GetSGBLayout
+	ld b, CGB_DIPLOMA
+	call GetCGBLayout
 	call LoadStandardFont
 	call LoadFontsExtra
 	ld de, MUSIC_MAIN_MENU
@@ -1911,8 +1896,7 @@ TitleScreenNoYesMenuDataHeader: ; 0x4d585
 	db "No@"
 	db "Yes@"
 
-Tilesets::
-INCLUDE "tilesets/tileset_headers.asm"
+INCLUDE "data/tilesets.asm"
 
 FlagPredef: ; 4d7c1
 ; Perform action b on flag c in flag array hl.
@@ -2011,8 +1995,8 @@ AnimateTrademonFrontpic: ; 4d81e
 	ld [wTempMonPersonality], a
 	ld a, [wOTTrademonPersonality + 1]
 	ld [wTempMonPersonality + 1], a
-	ld b, SCGB_PLAYER_OR_MON_FRONTPIC_PALS
-	call GetSGBLayout
+	ld b, CGB_PLAYER_OR_MON_FRONTPIC_PALS
+	call GetCGBLayout
 	ld a, %11100100 ; 3,2,1,0
 	call DmgToCgbBGPals
 	farcall TradeAnim_ShowGetmonFrontpic
@@ -2106,9 +2090,9 @@ Special_CheckForLuckyNumberWinners: ; 4d87a
 	jr z, .SkipBox
 	ld hl, .BoxBankAddresses
 	ld b, 0
-rept 3
 	add hl, bc
-endr
+	add hl, bc
+	add hl, bc
 	ld a, [hli]
 	call GetSRAMBank
 	ld a, [hli]
@@ -2998,8 +2982,9 @@ GetPkmnSpecies: ; 508d5
 	ld [wCurPartySpecies], a
 	ret
 
-INCLUDE "text/types.asm"
-INCLUDE "text/natures.asm"
+INCLUDE "data/types/names.asm"
+
+INCLUDE "data/battle/natures.asm"
 
 DrawPlayerHP: ; 50b0a
 	ld a, $1
@@ -3260,9 +3245,9 @@ ListMovePP: ; 50c50
 
 .skip
 	pop hl
-rept 3
 	inc hl
-endr
+	inc hl
+	inc hl
 	ld d, h
 	ld e, l
 	ld hl, wTempMonMoves
@@ -3383,9 +3368,8 @@ PlaceStatusString: ; 50d0a
 	ld e, a
 	push hl
 	ld hl, StatusStringPointers
-rept 2
 	add hl, de
-endr
+	add hl, de
 	ld a, [hli]
 	ld e, a
 	ld a, [hl]
@@ -3647,23 +3631,7 @@ CalcExpAtLevel: ; 50e47
 	ld [hMultiplier], a
 	jp Multiply
 
-GrowthRates: ; 50efa
-
-growth_rate: MACRO
-; [1]/[2]*n**3 + [3]*n**2 + [4]*n - [5]
-	dn \1, \2
-	if \3 & $80 ; signed
-		db -\3 | $80
-	else
-		db \3
-	endc
-	db \4, \5
-ENDM
-
-	growth_rate 1, 1,   0,   0,   0 ; Medium Fast
-	growth_rate 6, 5, -15, 100, 140 ; Medium Slow
-	growth_rate 4, 5,   0,   0,   0 ; Fast
-	growth_rate 5, 4,   0,   0,   0 ; Slow
+INCLUDE "data/growth_rates.asm"
 
 _SwitchPartyMons:
 	ld a, [wSwitchMon]
@@ -3941,30 +3909,25 @@ InsertDataIntoBoxOrParty: ; 513e0
 	pop hl
 	jp CopyBytes
 
-BaseData::
-INCLUDE "data/base_stats.asm"
-
-PokemonNames::
-INCLUDE "data/pokemon_names.asm"
+INCLUDE "data/pokemon/base_stats.asm"
+INCLUDE "data/pokemon/names.asm"
 
 
 SECTION "Code 14", ROMX
 
-INCLUDE "battle/effects/abilities.asm"
-INCLUDE "battle/final_text.asm"
+INCLUDE "battle/abilities.asm"
+INCLUDE "data/trainers/final_text.asm"
 INCLUDE "engine/player_movement.asm"
 INCLUDE "engine/engine_flags.asm"
 INCLUDE "engine/variables.asm"
-
-BattleText::
-INCLUDE "text/battle.asm"
+INCLUDE "data/text/battle.asm"
 
 
 SECTION "Code 15", ROMX
 
 INCLUDE "battle/anim_gfx.asm"
 INCLUDE "event/halloffame.asm"
-INCLUDE "text/abilities.asm"
+INCLUDE "data/battle/abilities.asm"
 
 
 SECTION "Code 16", ROMX
@@ -3974,8 +3937,8 @@ INCLUDE "event/kurt.asm"
 INCLUDE "event/unown.asm"
 INCLUDE "event/buena.asm"
 INCLUDE "event/movesets.asm"
-INCLUDE "event/battle_tower.asm"
-INCLUDE "event/battle_tower_text.asm"
+INCLUDE "event/battle_tower/battle_tower.asm"
+INCLUDE "event/battle_tower/trainer_text.asm"
 INCLUDE "event/item_maniacs.asm"
 
 
@@ -3987,8 +3950,8 @@ INCLUDE "engine/sprites.asm"
 INCLUDE "engine/mon_icons.asm"
 INCLUDE "event/field_moves.asm"
 INCLUDE "event/magnet_train.asm"
-INCLUDE "gfx/icon/icon_pointers.asm"
-INCLUDE "gfx/icons.asm"
+INCLUDE "data/pokemon/menu_icon_pointers.asm"
+INCLUDE "data/pokemon/menu_icons.asm"
 
 
 SECTION "Code 18", ROMX
@@ -4002,7 +3965,7 @@ INCLUDE "engine/slot_machine.asm"
 
 SECTION "Code 19", ROMX
 
-INCLUDE "engine/events_3.asm"
+INCLUDE "engine/events_2.asm"
 INCLUDE "engine/radio.asm"
 INCLUDE "gfx/mail.asm"
 
@@ -4015,8 +3978,8 @@ INCLUDE "engine/phone_scripts.asm"
 
 SECTION "Code 21", ROMX
 
-INCLUDE "battle/bg_effects.asm"
-INCLUDE "battle/anims.asm"
+INCLUDE "engine/battle_anims/bg_effects.asm"
+INCLUDE "data/moves/animations.asm"
 
 
 SECTION "Code 22", ROMX
@@ -4039,7 +4002,7 @@ INCLUDE "audio/distorted_cries.asm"
 
 SECTION "Code 24", ROMX
 
-INCLUDE "tilesets/animations.asm"
+INCLUDE "engine/tileset_anims.asm"
 INCLUDE "engine/npctrade.asm"
 INCLUDE "engine/wonder_trade.asm"
 INCLUDE "event/mom_phone.asm"
@@ -4094,13 +4057,19 @@ INCLUDE "battle/effect_commands.asm"
 
 SECTION "Effect Command Pointers", ROMX
 
-INCLUDE "battle/effect_command_pointers.asm"
+INCLUDE "data/battle/effect_command_pointers.asm"
 
 
 SECTION "Battle Animations", ROMX
 
-INCLUDE "battle/anim_commands.asm"
-INCLUDE "battle/anim_objects.asm"
+INCLUDE "engine/battle_anims/anim_commands.asm"
+INCLUDE "engine/battle_anims/core.asm"
+INCLUDE "data/battle_anims/objects.asm"
+INCLUDE "engine/battle_anims/functions.asm"
+INCLUDE "engine/battle_anims/helpers.asm"
+INCLUDE "data/battle_anims/framesets.asm"
+INCLUDE "data/battle_anims/oam.asm"
+INCLUDE "data/battle_anims/object_gfx.asm"
 
 
 SECTION "Battle Graphics", ROMX
@@ -4113,7 +4082,7 @@ GhostFrontpic:      INCBIN "gfx/battle/ghost.2bpp.lz"
 
 SECTION "Moves", ROMX
 
-INCLUDE "battle/moves/moves.asm"
+INCLUDE "data/moves/moves.asm"
 
 
 SECTION "Enemy Trainers", ROMX
@@ -4175,9 +4144,9 @@ GetTrainerAttributes: ; 3957b
 ComputeTrainerReward: ; 3991b (e:591b)
 	ld hl, hProduct
 	xor a
-rept 3
 	ld [hli], a
-endr
+	ld [hli], a
+	ld [hli], a
 	ld a, [wEnemyTrainerBaseReward]
 	ld [hli], a
 	ld a, [wCurPartyLevel]
@@ -4192,14 +4161,14 @@ endr
 	ld [hl], a
 	ret
 
-INCLUDE "trainers/attributes.asm"
+INCLUDE "data/trainers/attributes.asm"
 
 
 SECTION "Enemy Trainer Pointers", ROMX
 
-INCLUDE "trainers/read_party.asm"
-INCLUDE "trainers/trainer_pointers.asm"
-INCLUDE "trainers/trainers.asm"
+INCLUDE "engine/read_party.asm"
+INCLUDE "data/trainers/party_pointers.asm"
+INCLUDE "data/trainers/parties.asm"
 
 
 SECTION "Wild Data", ROMX
@@ -4219,7 +4188,7 @@ INCLUDE "engine/evolve.asm"
 
 SECTION "Pic Animations", ROMX
 
-INCLUDE "gfx/pics/animation.asm"
+INCLUDE "engine/pic_animation.asm"
 
 ; Pic animations are assembled in 3 parts:
 
@@ -4237,46 +4206,46 @@ INCLUDE "gfx/pics/animation.asm"
 ;	following bytes are tile ids mapped to each bit in the mask
 
 ; Main animations (played everywhere)
-INCLUDE "gfx/pics/anim_pointers.asm"
-INCLUDE "gfx/pics/anims.asm"
+INCLUDE "data/pokemon/anims/anim_pointers.asm"
+INCLUDE "data/pokemon/anims/anims.asm"
 
 ; Extra animations, appended to the main animation
 ; Used in the status screen (blinking, tail wags etc.)
-INCLUDE "gfx/pics/extra_pointers.asm"
-INCLUDE "gfx/pics/extras.asm"
+INCLUDE "data/pokemon/anims/extra_pointers.asm"
+INCLUDE "data/pokemon/anims/extras.asm"
 
 ; Variants have their own animation data despite having entries in the main tables
-INCLUDE "gfx/pics/variant_anim_pointers.asm"
-INCLUDE "gfx/pics/variant_anims.asm"
-INCLUDE "gfx/pics/variant_extra_pointers.asm"
-INCLUDE "gfx/pics/variant_extras.asm"
+INCLUDE "data/pokemon/anims/variant_anim_pointers.asm"
+INCLUDE "data/pokemon/anims/variant_anims.asm"
+INCLUDE "data/pokemon/anims/variant_extra_pointers.asm"
+INCLUDE "data/pokemon/anims/variant_extras.asm"
 
 
 SECTION "Pic Animations Frames 1", ROMX
 
-INCLUDE "gfx/pics/frame_pointers.asm"
-INCLUDE "gfx/pics/kanto_frames.asm"
+INCLUDE "data/pokemon/anims/frame_pointers.asm"
+INCLUDE "data/pokemon/anims/kanto_frames.asm"
 
 
 SECTION "Pic Animations Frames 2", ROMX
 
-INCLUDE "gfx/pics/johto_frames.asm"
-INCLUDE "gfx/pics/variant_frame_pointers.asm"
-INCLUDE "gfx/pics/variant_frames.asm"
+INCLUDE "data/pokemon/anims/johto_frames.asm"
+INCLUDE "data/pokemon/anims/variant_frame_pointers.asm"
+INCLUDE "data/pokemon/anims/variant_frames.asm"
 
 
 SECTION "Pic Animations Bitmasks", ROMX
 
 ; Bitmasks
-INCLUDE "gfx/pics/bitmask_pointers.asm"
-INCLUDE "gfx/pics/bitmasks.asm"
-INCLUDE "gfx/pics/variant_bitmask_pointers.asm"
-INCLUDE "gfx/pics/variant_bitmasks.asm"
+INCLUDE "data/pokemon/anims/bitmask_pointers.asm"
+INCLUDE "data/pokemon/anims/bitmasks.asm"
+INCLUDE "data/pokemon/anims/variant_bitmask_pointers.asm"
+INCLUDE "data/pokemon/anims/variant_bitmasks.asm"
 
 
-SECTION "Common Text", ROMX
+SECTION "Standard Text", ROMX
 
-INCLUDE "text/stdtext.asm"
+INCLUDE "data/text/std_text.asm"
 
 
 SECTION "Phone Scripts", ROMX
@@ -4287,81 +4256,112 @@ INCLUDE "engine/buena_phone_scripts.asm"
 
 SECTION "Phone Text 1", ROMX
 
-INCLUDE "text/phone/anthony_overworld.asm"
-INCLUDE "text/phone/todd_overworld.asm"
-INCLUDE "text/phone/gina_overworld.asm"
-INCLUDE "text/phone/irwin_overworld.asm"
-INCLUDE "text/phone/arnie_overworld.asm"
-INCLUDE "text/phone/alan_overworld.asm"
-INCLUDE "text/phone/dana_overworld.asm"
-INCLUDE "text/phone/chad_overworld.asm"
-INCLUDE "text/phone/derek_overworld.asm"
-INCLUDE "text/phone/tully_overworld.asm"
-INCLUDE "text/phone/brent_overworld.asm"
-INCLUDE "text/phone/tiffany_overworld.asm"
-INCLUDE "text/phone/vance_overworld.asm"
-INCLUDE "text/phone/wilton_overworld.asm"
-INCLUDE "text/phone/kenji_overworld.asm"
-INCLUDE "text/phone/parry_overworld.asm"
-INCLUDE "text/phone/erin_overworld.asm"
+INCLUDE "data/phone/text/anthony_overworld.asm"
+INCLUDE "data/phone/text/todd_overworld.asm"
+INCLUDE "data/phone/text/gina_overworld.asm"
+INCLUDE "data/phone/text/irwin_overworld.asm"
+INCLUDE "data/phone/text/arnie_overworld.asm"
+INCLUDE "data/phone/text/alan_overworld.asm"
+INCLUDE "data/phone/text/dana_overworld.asm"
+INCLUDE "data/phone/text/chad_overworld.asm"
+INCLUDE "data/phone/text/derek_overworld.asm"
+INCLUDE "data/phone/text/tully_overworld.asm"
+INCLUDE "data/phone/text/brent_overworld.asm"
+INCLUDE "data/phone/text/tiffany_overworld.asm"
+INCLUDE "data/phone/text/vance_overworld.asm"
+INCLUDE "data/phone/text/wilton_overworld.asm"
+INCLUDE "data/phone/text/kenji_overworld.asm"
+INCLUDE "data/phone/text/parry_overworld.asm"
+INCLUDE "data/phone/text/erin_overworld.asm"
 
 
 SECTION "Phone Text 2", ROMX
 
-INCLUDE "text/phone/jack_overworld.asm"
-INCLUDE "text/phone/beverly_overworld.asm"
-INCLUDE "text/phone/huey_overworld.asm"
-INCLUDE "text/phone/gaven_overworld.asm"
-INCLUDE "text/phone/beth_overworld.asm"
-INCLUDE "text/phone/jose_overworld.asm"
-INCLUDE "text/phone/reena_overworld.asm"
-INCLUDE "text/phone/joey_overworld.asm"
-INCLUDE "text/phone/wade_overworld.asm"
-INCLUDE "text/phone/ralph_overworld.asm"
+INCLUDE "data/phone/text/jack_overworld.asm"
+INCLUDE "data/phone/text/beverly_overworld.asm"
+INCLUDE "data/phone/text/huey_overworld.asm"
+INCLUDE "data/phone/text/gaven_overworld.asm"
+INCLUDE "data/phone/text/beth_overworld.asm"
+INCLUDE "data/phone/text/jose_overworld.asm"
+INCLUDE "data/phone/text/reena_overworld.asm"
+INCLUDE "data/phone/text/joey_overworld.asm"
+INCLUDE "data/phone/text/wade_overworld.asm"
+INCLUDE "data/phone/text/ralph_overworld.asm"
 
 
 SECTION "Phone Text 3", ROMX
 
-INCLUDE "text/phone/mom.asm"
-INCLUDE "text/phone/bill.asm"
-INCLUDE "text/phone/elm.asm"
-INCLUDE "text/phone/trainers1.asm"
-INCLUDE "text/phone/liz_overworld.asm"
+INCLUDE "data/phone/text/mom.asm"
+INCLUDE "data/phone/text/bill.asm"
+INCLUDE "data/phone/text/elm.asm"
+INCLUDE "data/phone/text/trainers1.asm"
+INCLUDE "data/phone/text/liz_overworld.asm"
 
 
 SECTION "Phone Text 4", ROMX
 
-INCLUDE "text/phone/extra.asm"
-INCLUDE "text/phone/lyra.asm"
+INCLUDE "data/phone/text/extra.asm"
+INCLUDE "data/phone/text/lyra.asm"
 
 
 SECTION "Phone Text 5", ROMX
 
-INCLUDE "text/phone/extra2.asm"
+INCLUDE "data/phone/text/extra2.asm"
 
 
 SECTION "Item Text", ROMX
 
-ItemNames::
-INCLUDE "items/item_names.asm"
+INCLUDE "data/items/names.asm"
 
-INCLUDE "items/item_descriptions.asm"
+PrintItemDescription: ; 0x1c8955
+; Print the description for item [wCurSpecies] at de.
+
+	ld hl, ItemDescriptions
+	ld a, [wCurSpecies]
+	dec a
+	ld c, a
+	ld b, 0
+	add hl, bc
+	add hl, bc
+	push de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	pop hl
+	jp PlaceString
+; 0x1c8987
+
+PrintTMHMDescription:
+; Print the description for TM/HM [wCurSpecies] at de.
+
+	ld a, [wCurSpecies]
+	inc a
+	ld [wCurTMHM], a
+	ld [wCurTMHM], a
+	push de
+	predef GetTMHMMove
+	pop hl
+	ld a, [wd265]
+	ld [wCurSpecies], a
+	predef PrintMoveDesc
+	ret
+
+INCLUDE "data/items/descriptions.asm"
 
 
 SECTION "Move and Landmark Text", ROMX
 
-MoveNames::
-INCLUDE "battle/move_names.asm"
+INCLUDE "data/moves/names.asm"
 
 INCLUDE "engine/landmarks.asm"
 
 
 SECTION "Battle Tower Text", ROMX
 
-INCLUDE "text/battle_tower.asm"
+INCLUDE "data/battle_tower/trainer_text.asm"
 
 
 SECTION "Crystal Data", ROMX
 
-INCLUDE "data/battle_tower.asm"
+INCLUDE "event/battle_tower/load_trainer.asm"
 INCLUDE "data/odd_eggs.asm"

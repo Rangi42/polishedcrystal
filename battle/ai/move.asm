@@ -12,14 +12,14 @@ AIChooseMove: ; 440ce
 	ret nz
 
 	; Default score is 20, unusable moves are set to 80.
+	call SetEnemyTurn
 	ld hl, wBuffer1 + 3
 	ld a, 4
 .unusable_loop
 	dec a
 	push af
 	push hl
-	ld b, a
-	farcall FarCheckUsableMove
+	farcall CheckUsableMove
 	ld a, 20
 	jr z, .unusable_next
 	ld a, 80
@@ -81,9 +81,8 @@ AIChooseMove: ; 440ce
 	ld hl, AIScoringPointers
 	dec c
 	ld b, 0
-rept 2
 	add hl, bc
-endr
+	add hl, bc
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a

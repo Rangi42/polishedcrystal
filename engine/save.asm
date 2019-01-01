@@ -560,19 +560,7 @@ TryLoadSaveData: ; 14f1c
 	jp PanicResetClock
 ; 14f7c
 
-DefaultOptions: ; 14f7c
-	db %01100001 ; wOptions1: fast text speed, stereo sound, battle scene on
-	db $00       ; wSaveFileExists: no
-	db $00       ; wTextBoxFrame: frame 0
-	db $01       ; wTextBoxFlags: ?
-	db $0        ; ???
-	db %00000000 ; wOptions2: default typeface, running shoes off, 12-hour clock,
-	             ;           imperial units, battle style set
-	db %00000111 ; wInitialOptions: natures on, abilities on, color variation on,
-	             ;                 perfect IVs off, traded as OT off,
-	             ;                 nuzlocke mode off
-	db $0        ; ???
-; 14f84
+INCLUDE "data/default_options.asm"
 
 CheckPrimarySaveFile: ; 14f84
 	ld a, BANK(sCheckValue1)

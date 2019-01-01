@@ -101,9 +101,8 @@ MagnetTrain_UpdateLYOverrides: ; 8cc99
 	ld d, a
 	ld hl, wcf64
 	ld a, [hl]
-rept 2
 	add d
-endr
+	add d
 	ld [hl], a
 	ret
 
@@ -150,9 +149,9 @@ MagntTrain_LoadGFX_PlayMusic: ; 8ccc9
 	xor a
 	ld [hli], a
 	ld a, [wMagnetTrainInitPosition]
-rept 3
 	ld [hli], a
-endr
+	ld [hli], a
+	ld [hli], a
 	ld de, MUSIC_MAGNET_TRAIN
 	jp PlayMusic2
 ; 8cd27
@@ -209,9 +208,8 @@ GetMagnetTrainBGTiles: ; 8cd74
 	ld e, a
 	ld d, 0
 	ld hl, MagnetTrainBGTiles
-rept 2
 	add hl, de
-endr
+	add hl, de
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
@@ -294,9 +292,8 @@ MagnetTrain_Jumptable: ; 8cdf7
 	ld e, a
 	ld d, 0
 	ld hl, .Jumptable
-rept 2
 	add hl, de
-endr
+	add hl, de
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
@@ -431,8 +428,8 @@ MagnetTrain_Jumptable_FirstRunThrough: ; 8ceae
 	ld [wTimeOfDayPal], a
 	ld a, $1
 	ld [wPermission], a
-	ld b, SCGB_MAPPALS
-	call GetSGBLayout
+	ld b, CGB_MAPPALS
+	call GetCGBLayout
 	call UpdateTimePals
 	ld a, [rBGP]
 	ld [wBGP], a

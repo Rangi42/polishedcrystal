@@ -401,7 +401,7 @@ NUM_MAGIKARP EQU const_value +- 1
 ; gyarados
 const_value set 1
 	const GYARADOS_PLAIN_FORM
-	const GYARADOS_RED_FORM
+GYARADOS_RED_FORM EQU NUM_MAGIKARP + 1
 
 ; mewtwo
 const_value set 1
@@ -444,6 +444,8 @@ const_value SET 1
 
 MONMENU_FIELD_MOVE EQU 0
 MONMENU_MENUOPTION EQU 1
+
+NUM_MON_SUBMENU_ITEMS EQU 8
 
 BASEMON_BASE_STATS    EQUS "(BaseData + wBaseStats - wCurBaseData)"
 BASEMON_BASE_HP       EQUS "(BaseData + wBaseHP - wCurBaseData)"

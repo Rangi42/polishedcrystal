@@ -68,9 +68,8 @@ ReadAnyMail: ; b9237
 	cp -1
 	jr z, .invalid
 	inc c
-rept 2
 	inc hl
-endr
+	inc hl
 	jr .loop2
 
 .invalid
@@ -889,9 +888,8 @@ LoadMailGFX_Color3: ; b991e
 .loop
 	ld a, [de]
 	inc de
-rept 2
 	ld [hli], a
-endr
+	ld [hli], a
 	dec c
 	jr nz, .loop
 	ret
@@ -1033,21 +1031,9 @@ INCBIN "gfx/mail/0b9e4e.1bpp"
 
 ItemIsMail: ; b9e76
 	ld a, d
-	ld hl, .items
+	ld hl, MailItems
 	ld de, 1
 	jp IsInArray
 ; b9e80
 
-.items
-	db FLOWER_MAIL
-	db SURF_MAIL
-	db LITEBLUEMAIL
-	db PORTRAITMAIL
-	db LOVELY_MAIL
-	db EON_MAIL
-	db MORPH_MAIL
-	db BLUESKY_MAIL
-	db MUSIC_MAIL
-	db MIRAGE_MAIL
-	db -1
-; b9e8b
+INCLUDE "data/items/mail_items.asm"

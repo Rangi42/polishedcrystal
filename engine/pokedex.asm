@@ -15,7 +15,6 @@
 	const DEXSTATE_EXIT
 
 Pokedex: ; 40000
-
 	ld a, [hWX]
 	ld l, a
 	ld a, [hWY]
@@ -222,8 +221,8 @@ Pokedex_InitMainScreen: ; 4013c (10:413c)
 	ld [wCurPartySpecies], a
 	xor a
 	ld [wDexMonShiny], a
-	ld a, SCGB_POKEDEX
-	call Pokedex_GetSGBLayout
+	ld a, CGB_POKEDEX
+	call Pokedex_GetCGBLayout
 	call Pokedex_UpdateCursorOAM
 	call Pokedex_DrawListWindow
 	hlcoord 0, 17
@@ -313,8 +312,8 @@ Pokedex_InitDexEntryScreen: ; 40217 (10:4217)
 	ld [wCurPartySpecies], a
 	xor a
 	ld [wDexMonShiny], a
-	ld a, SCGB_POKEDEX
-	call Pokedex_GetSGBLayout
+	ld a, CGB_POKEDEX
+	call Pokedex_GetCGBLayout
 	ld a, [wCurPartySpecies]
 	call PlayCry
 	jp Pokedex_IncrementDexPointer
@@ -384,8 +383,8 @@ Pokedex_ReinitDexEntryScreen: ; 402aa (10:42aa)
 	call WaitBGMap
 	call Pokedex_GetSelectedMon
 	ld [wCurPartySpecies], a
-	ld a, SCGB_POKEDEX
-	call Pokedex_GetSGBLayout
+	ld a, CGB_POKEDEX
+	call Pokedex_GetCGBLayout
 	ld a, [wCurPartySpecies]
 	call PlayCry
 	ld hl, wJumptableIndex
@@ -438,8 +437,8 @@ DexEntryScreen_MenuActionJumptable: ; 402f2
 	call WaitBGMap
 	call Pokedex_GetSelectedMon
 	ld [wCurPartySpecies], a
-	ld a, SCGB_POKEDEX
-	jp Pokedex_GetSGBLayout
+	ld a, CGB_POKEDEX
+	jp Pokedex_GetCGBLayout
 
 .Cry: ; 40340
 	ld a, [wCurPartySpecies]
@@ -451,8 +450,8 @@ DexEntryScreen_MenuActionJumptable: ; 402f2
 	xor SHINY_MASK ; alternate 0 and SHINY_MASK
 	ld [hl], a
 	ld a, [wCurPartySpecies]
-	ld a, SCGB_POKEDEX
-	jp Pokedex_GetSGBLayout
+	ld a, CGB_POKEDEX
+	jp Pokedex_GetCGBLayout
 
 Pokedex_RedisplayDexEntry: ; 4038d
 	call Pokedex_LoadGFX
@@ -472,8 +471,8 @@ Pokedex_InitOptionScreen: ; 4039d (10:439d)
 	ld [wDexArrowCursorPosIndex], a
 	call Pokedex_DisplayModeDescription
 	call WaitBGMap
-	ld a, SCGB_POKEDEX_SEARCH_OPTION
-	call Pokedex_GetSGBLayout
+	ld a, CGB_POKEDEX_SEARCH_OPTION
+	call Pokedex_GetCGBLayout
 	jp Pokedex_IncrementDexPointer
 
 Pokedex_UpdateOptionScreen: ; 403be (10:43be)
@@ -579,8 +578,8 @@ Pokedex_InitSearchScreen: ; 40443 (10:4443)
 	ld [wDexSearchSlowpokeFrame], a
 	farcall DoDexSearchSlowpokeFrame
 	call WaitBGMap
-	ld a, SCGB_POKEDEX_SEARCH_OPTION
-	call Pokedex_GetSGBLayout
+	ld a, CGB_POKEDEX_SEARCH_OPTION
+	call Pokedex_GetCGBLayout
 	jp Pokedex_IncrementDexPointer
 
 Pokedex_UpdateSearchScreen: ; 40471 (10:4471)
@@ -693,8 +692,8 @@ Pokedex_InitSearchResultsScreen: ; 4050a (10:450a)
 	call Pokedex_UpdateSearchResultsCursorOAM
 	ld a, $ff
 	ld [wCurPartySpecies], a
-	ld a, SCGB_POKEDEX
-	call Pokedex_GetSGBLayout
+	ld a, CGB_POKEDEX
+	call Pokedex_GetCGBLayout
 	jp Pokedex_IncrementDexPointer
 
 Pokedex_UpdateSearchResultsScreen: ; 40562 (10:4562)
@@ -751,8 +750,8 @@ Pokedex_InitUnownMode: ; 405bd (10:45bd)
 	call Pokedex_UnownModePlaceCursor
 	farcall PrintUnownWord
 	call WaitBGMap
-	ld a, SCGB_POKEDEX_UNOWN_MODE
-	call Pokedex_GetSGBLayout
+	ld a, CGB_POKEDEX_UNOWN_MODE
+	call Pokedex_GetCGBLayout
 	jp Pokedex_IncrementDexPointer
 
 Pokedex_UpdateUnownMode: ; 405df (10:45df)
@@ -1764,11 +1763,8 @@ Pokedex_ABCMode: ; 40c30
 	inc a
 	jr .loop2abc
 
-AlphabeticalPokedexOrder: ; 0x40c65
-INCLUDE "data/pokedex/order_alpha.asm"
-
-NewPokedexOrder: ; 0x40d60
-INCLUDE "data/pokedex/order_new.asm"
+INCLUDE "data/pokemon/dex_order_alpha.asm"
+INCLUDE "data/pokemon/dex_order_new.asm"
 
 Pokedex_DisplayModeDescription: ; 40e5b
 	xor a
@@ -1923,7 +1919,7 @@ Pokedex_PlaceTypeString: ; 40fcd (10:4fcd)
 	push hl
 	ld e, a
 	ld d, 0
-	ld hl, .TypeStrings
+	ld hl, PokedexTypeSearchStrings
 rept 9
 	add hl, de
 endr
@@ -1932,26 +1928,7 @@ endr
 	pop hl
 	jp PlaceString
 
-.TypeStrings: ; 40fe4
-	db "  ----  @"
-	db " Normal @"
-	db "  Fire  @"
-	db " Water  @"
-	db " Grass  @"
-	db "Electric@"
-	db "  Ice   @"
-	db "Fighting@"
-	db " Poison @"
-	db " Ground @"
-	db " Flying @"
-	db "Psychic @"
-	db "  Bug   @"
-	db "  Rock  @"
-	db " Ghost  @"
-	db " Dragon @"
-	db "  Dark  @"
-	db " Steel  @"
-	db " Fairy  @"
+INCLUDE "data/types/search_strings.asm"
 
 Pokedex_SearchForMons: ; 41086
 	ld a, [wDexSearchMonType2]
@@ -1966,7 +1943,7 @@ Pokedex_SearchForMons: ; 41086
 	dec a
 	ld e, a
 	ld d, 0
-	ld hl, .TypeConversionTable
+	ld hl, PokedexTypeSearchConversionTable
 	add hl, de
 	ld a, [hl]
 	ld [wDexConvertedMonType], a
@@ -2025,25 +2002,7 @@ Pokedex_SearchForMons: ; 41086
 	inc a
 	jr .zero_remaining_mons
 
-.TypeConversionTable: ; 410f6
-	db NORMAL
-	db FIRE
-	db WATER
-	db GRASS
-	db ELECTRIC
-	db ICE
-	db FIGHTING
-	db POISON
-	db GROUND
-	db FLYING
-	db PSYCHIC
-	db BUG
-	db ROCK
-	db GHOST
-	db DRAGON
-	db DARK
-	db STEEL
-	db FAIRY
+INCLUDE "data/types/search_types.asm"
 
 Pokedex_DisplayTypeNotFoundMessage: ; 41107
 	xor a
@@ -2378,9 +2337,9 @@ endc
 	ld a, $ff
 	jp DmgToCgbObjPal0
 
-Pokedex_GetSGBLayout: ; 41423
+Pokedex_GetCGBLayout: ; 41423
 	ld b, a
-	call GetSGBLayout
+	call GetCGBLayout
 	ld a, $e4
 	call DmgToCgbBGPals
 	ld a, $e0
@@ -2389,9 +2348,8 @@ Pokedex_GetSGBLayout: ; 41423
 Pokedex_LoadPointer: ; 41432
 	ld e, a
 	ld d, 0
-rept 2
 	add hl, de
-endr
+	add hl, de
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
@@ -2586,8 +2544,8 @@ NewPokedexEntry: ; fb877
 	call GetBaseData
 	ld de, VTiles2
 	predef GetFrontpic
-	ld a, SCGB_POKEDEX
-	call Pokedex_GetSGBLayout
+	ld a, CGB_POKEDEX
+	call Pokedex_GetCGBLayout
 	ld a, [wCurPartySpecies]
 	jp PlayCry
 
@@ -2602,8 +2560,8 @@ NewPokedexEntry: ; fb877
 	ld [wTempMonPersonality], a
 	ld a, [hl]
 	ld [wTempMonPersonality + 1], a
-	ld b, SCGB_TRAINER_OR_MON_FRONTPIC_PALS
-	call GetSGBLayout
+	ld b, CGB_TRAINER_OR_MON_FRONTPIC_PALS
+	call GetCGBLayout
 	jp SetPalettes
 ; fb8f1
 

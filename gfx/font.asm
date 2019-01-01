@@ -80,9 +80,8 @@ LoadStandardFontPointer::
 	and FONT_MASK
 	ld d, 0
 	ld e, a
-rept 2
 	add hl, de
-endr
+	add hl, de
 	ld e, [hl]
 	inc hl
 	ld d, [hl]

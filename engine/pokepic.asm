@@ -70,7 +70,7 @@ ClosePokepic:: ; 24528
 	call CopyMenuDataHeader
 	call ClearMenuBoxInterior
 	call WaitBGMap
-	call GetMemSGBLayout
+	call GetMemCGBLayout
 	xor a
 	ld [hBGMapMode], a
 	call OverworldTextModeSwitch

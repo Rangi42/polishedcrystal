@@ -81,9 +81,9 @@ StageBallTilesData: ; 2c059
 	jr z, .fainted
 
 .got_hp
-rept 3
 	dec hl
-endr
+	dec hl
+	dec hl
 	ld a, [hl]
 	and a
 	ld b, $32 ; statused
@@ -92,9 +92,9 @@ endr
 	jr .load
 
 .fainted
-rept 3
 	dec hl
-endr
+	dec hl
+	dec hl
 
 .load
 	ld a, b
@@ -259,8 +259,8 @@ _ShowLinkBattleParticipants: ; 2c1b2
 	ld [hli], a
 	ld [hl], "S"
 	call LinkBattle_TrainerHuds
-	ld b, SCGB_DIPLOMA
-	call GetSGBLayout
+	ld b, CGB_DIPLOMA
+	call GetCGBLayout
 	call SetPalettes
 	ld a, $e4
 	ld [rOBP0], a

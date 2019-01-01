@@ -133,9 +133,10 @@ hRandomAdd         EQU $ffe1
 hRandomSub         EQU $ffe2
 hSecondsBackup     EQU $ffe3
 hBattleTurn        EQU $ffe4 ; Which trainers turn is it? 0: Player, 1: Opponent Trainer
+
 hCGBPalUpdate      EQU $ffe5
 hCGB               EQU $ffe6
-hSGB               EQU $ffe7
+
 hDMATransfer       EQU $ffe8
 
 hFarCallSavedA     EQU $ffe9

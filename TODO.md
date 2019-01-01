@@ -27,7 +27,6 @@ The final, non-beta 3.0 release should include all of these.
 * Variety Channel with daily unique music
 * Separate radio channels for March and Lullaby, available every day
 * Send gift Pokémon to the PC if the party is full
-* Add the improved PRNG from Prism
 * Get better Wonder Trade items at higher levels
 * Play Pokémon cry+animation when they escape a Poké Ball (from Prism)
 * Use RBY's Surf and Bike themes in Kanto
@@ -135,7 +134,6 @@ Low priority:
 
 ### Music player
 
-* Fix the piano roll graphics "leaking" into the song list
 * Use the UnlockedMusic flag_array to hide unheard song titles
 
 
@@ -163,7 +161,6 @@ Some of these may never be added; they're just suggestions.
    * Marowak, Exeggutor, and Raichu evolve while holding the Odd Souvenir (bought on Shamouti Island)
 * More Pokémon
    * Rewrite Eggs to use the IsEgg bitflag instead of $fe
-   * Rewrite Bill's PC to not use $ff as a terminator
    * Rewrite everything to use two-byte IDs, allowing 65,534 Pokémon
    * Restore Shuckle as the Cianwood guy's Pokémon
    * Restore Stantler as a Normal/Psychic type, and make Girafarig Psychic/Dark
@@ -228,11 +225,8 @@ Some of these may never be added; they're just suggestions.
       * Pawniard → Bisharp
       * Skiddo → Gogoat
       * Mareanie → Toxapek (in Cherrygrove Bay with Corsola)
-* More moves
-   * Triple Kick is replacable (learned by Hitmontop, Hitmonlee, and Dodrio)
-   * Make Double Kick hit 2–5 times with 20 power
 * More music
-   * PGo Battle! Legendary Raid (for Mewtwo)
+   * PGo Battle! Legendary Raid (for Mew)
    * S/M Malie City (Day) (for Shamouti Shrine)
    * R/S/E Route 119
    * R/S/E Route 120
@@ -253,7 +247,7 @@ Some of these may never be added; they're just suggestions.
 * Rarely wild Pokémon know an egg move (could be a bonus for DexNav or Poké Radar use)
 * Use the [Japanese GS Ball event quiz](https://www.pokecommunity.com/showthread.php?p=9739072#post9739072) ([original](http://www.geocities.co.jp/Playtown-Darts/9915/serebi.htm))
 * Restore [unused memory game](http://iimarck.us/i/memory/) ([more info](https://tcrf.net/Pok%C3%A9mon_Gold_and_Silver#Unused_Memory_Game))
-* Restore the Pikachu's beach minigame
+* Restore the Pikachu's Beach minigame
 * Level ranges for wild Pokémon, instead of single values
 * Optional scaled experience formula from Gen V and Gen VII (port from [pokecrystal-speedchoice](https://github.com/Dabomstew/pokecrystal-speedchoice))
 * Use the News Machine for something (Mystery Gift?)

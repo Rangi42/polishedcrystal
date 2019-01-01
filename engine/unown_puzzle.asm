@@ -44,11 +44,11 @@ UnownPuzzle: ; e1190
 	ld [wHoldingUnownPuzzlePiece], a
 	ld [wUnownPuzzleCursorPosition], a
 	ld [wUnownPuzzleHeldPiece], a
-	ld a, $93
+	ld a, %10010011
 	ld [rLCDC], a
 	call WaitBGMap
-	ld b, SCGB_UNOWN_PUZZLE
-	call GetSGBLayout
+	ld b, CGB_UNOWN_PUZZLE
+	call GetCGBLayout
 	ld a, $e4
 	call DmgToCgbBGPals
 	ld a, $24
@@ -84,7 +84,7 @@ UnownPuzzle: ; e1190
 	call ClearBGPalettes
 	call ClearTileMap
 	call ClearSprites
-	ld a, $e3
+	ld a, %11100011
 	ld [rLCDC], a
 	ret
 ; e124e
@@ -177,9 +177,8 @@ UnownPuzzleJumptable: ; e12ca
 	ld e, a
 	ld d, 0
 	ld hl, .Jumptable
-rept 2
 	add hl, de
-endr
+	add hl, de
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
@@ -836,9 +835,8 @@ LoadUnownPuzzlePiecesGFX: ; e17a3
 	ld e, a
 	ld d, 0
 	ld hl, .LZPointers
-rept 2
 	add hl, de
-endr
+	add hl, de
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a

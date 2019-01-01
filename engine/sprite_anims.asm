@@ -388,9 +388,9 @@ DoAnimFrame: ; 8d24b
 	ld hl, SPRITEANIMSTRUCT_0C
 	add hl, bc
 	ld a, [hl]
-rept 3
 	inc [hl]
-endr
+	inc [hl]
+	inc [hl]
 	push af
 	push de
 	call .Sprites_Sine
@@ -552,9 +552,9 @@ endr
 	ld hl, SPRITEANIMSTRUCT_JUMPTABLE_INDEX
 	add hl, bc
 	ld d, [hl]
-rept 3
 	inc [hl]
-endr
+	inc [hl]
+	inc [hl]
 
 	ld hl, SPRITEANIMSTRUCT_0C
 	add hl, bc

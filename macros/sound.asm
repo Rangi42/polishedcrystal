@@ -19,10 +19,6 @@ musicheader: macro
 	dbw ((\1 - 1) << 6) + (\2 - 1), \3
 	endm
 
-cry_header: macro
-	dw \1, \2, \3
-	endm
-
 	enum_start $d8
 	enum notetype_cmd
 octave: macro

@@ -1,4 +1,3 @@
-
 GoldenrodPokeComCenterOffice_MapScriptHeader:
 
 .MapTriggers: db 0
@@ -13,72 +12,66 @@ GoldenrodPokeComCenterOffice_MapEventHeader:
 
 .XYTriggers: db 0
 
-.Signposts: db 3
-	signpost 2, 6, SIGNPOST_UP, Computer0Script
-	signpost 5, 6, SIGNPOST_UP, Computer1Script
-	signpost 2, 3, SIGNPOST_UP, Computer2Script
+.Signposts: db 4
+	signpost 2, 3, SIGNPOST_JUMPTEXT, RangiComputerText
+	signpost 2, 6, SIGNPOST_JUMPTEXT, LunaComputerText
+	signpost 5, 6, SIGNPOST_UP, AizawaComputerScript
+	signpost 2, 4, SIGNPOST_READ, RangiKeyboardScript
 
 .PersonEvents: db 3
-	person_event SPRITE_SCIENTIST, 4, 4, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x62674, -1
-	person_event SPRITE_SCIENTIST, 3, 7, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x626f9, -1
-	person_event SPRITE_SCIENTIST, 6, 7, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x62795, -1
+	person_event SPRITE_SCIENTIST_F, 4, 4, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_COMMAND, jumptextfaceplayer, AdminRangiText, -1
+	person_event SPRITE_COOLTRAINER_F, 3, 7, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, AdminLunaText, -1
+	person_event SPRITE_PHARMACIST, 6, 7, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, AdminAizawaText, -1
 
-Computer0Script:
-	jumptext UnknownText_0x627ee
+const_value set 1
+	const GOLDENRODPOKECOMCENTEROFFICE_RANGI
 
-Computer1Script:
-	jumptext UnknownText_0x62989
+AdminRangiText:
+	text "Rangi: I hope"
+	line "you're enjoying"
 
-Computer2Script:
-	jumptext UnknownText_0x62b26
+	para "your journey"
+	line "through this game!"
 
-UnknownText_0x62674:
-	text "#Com Center and"
-	line "its Wonder Trade"
+	para "We had trouble"
+	line "fitting all the"
+	cont "data in for it."
 
-	para "Hub were built to"
-	line "satisfy demand for"
-
-	para "trading with"
-	line "people far away."
+	para "There was barely"
+	line "even enough room"
+	cont "for my sprite!"
 	done
 
-UnknownText_0x626f9:
-	text "When you traded"
-	line "with someone"
-	cont "in another region"
+AdminLunaText:
+	text "Luna: When you"
+	line "Wonder Traded"
 
-	para "wirelessly for"
-	line "the first time,"
+	para "with someone in"
+	line "another region"
 
-	para "weren't you"
-	line "impressed?"
+	para "for the first"
+	line "time, weren't you"
+	cont "impressed?"
 
-	para "When my first try"
-	line "worked, I was so"
-
-	para "amazed that I"
-	line "got the shakes!"
+	para "I built the orig-"
+	line "inal system right"
+	cont "here in Goldenrod!"
 	done
 
-UnknownText_0x62795:
-	text "They were able to"
-	line "build this huge"
+AdminAizawaText:
+	text "Aizawa: Dialog,"
+	line "map designs,"
+	cont "character sprites,"
+	cont "trainer teams…"
 
-	para "facility thanks to"
-	line "advances in wire-"
-	cont "less technology."
+	para "Game Freak over"
+	line "in Kanto is lucky"
+
+	para "to have a whole"
+	line "team for this!"
 	done
 
-UnknownText_0x627ee:
-	text "Network traffic"
-	line "from Wonder Trades"
-
-	para "is streaming by"
-	line "on the screen."
-	done
-
-UnknownText_0x62989:
+RangiComputerText:
 	text "There's a screen-"
 	line "saver endlessly"
 
@@ -86,30 +79,32 @@ UnknownText_0x62989:
 	line "a 3D maze."
 	done
 
-UnknownText_0x62b26:
-	text "The Administration"
-	line "Office received an"
-	cont "e-mail. It says…"
+LunaComputerText:
+	text "Network traffic"
+	line "from Wonder Trades"
 
-	para "…… …… ……"
+	para "is streaming by"
+	line "on the screen."
+	done
 
-	para "To the #Com"
-	line "Center staff…"
+AizawaComputerScript:
+	thistext
 
-	para "Wireless communi-"
-	line "cation has enabled"
+	text "A program called"
+	line "Polished Map is"
+	cont "displaying a"
 
-	para "#mon trainers"
-	line "to interact across"
+	para "half-drawn trop-"
+	line "ical island."
+	done
 
-	para "the nation. Let's"
-	line "keep working for"
+RangiKeyboardScript:
+	spriteface GOLDENRODPOKECOMCENTEROFFICE_RANGI, UP
+	showemote EMOTE_SHOCK, GOLDENRODPOKECOMCENTEROFFICE_RANGI, 10
+	thistext
 
-	para "the day when all"
-	line "the trainers in"
-
-	para "the world can link"
-	line "without barriers!"
-
-	para "…… …… ……"
+	text "Rangi: Hey! If you"
+	line "want to hack the"
+	cont "game, use your"
+	cont "own computer!"
 	done

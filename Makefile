@@ -63,15 +63,15 @@ wram.o \
 main.o \
 home.o \
 audio.o \
-maps.o \
-tilesets.o \
-musicplayer.o \
-engine/events.o \
+audio/musicplayer.o \
+data/pokemon/dex_entries.o \
+data/pokemon/egg_moves.o \
+data/pokemon/evos_attacks.o \
+data/maps/maps.o \
+data/text/common.o \
+data/tileset_data.o \
 engine/credits.o \
-data/egg_moves.o \
-data/evos_attacks.o \
-data/pokedex/entries.o \
-text/common_text.o \
+engine/events.o \
 gfx/pics.o \
 gfx/sprites.o
 

@@ -265,9 +265,8 @@ Credits_Jumptable: ; 109926
 	ld e, a
 	ld d, 0
 	ld hl, .Jumptable
-rept 2
 	add hl, de
-endr
+	add hl, de
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
@@ -333,9 +332,8 @@ Credits_LYOverride: ; 109986 (42:5986)
 	cp $30
 	jr c, Credits_LYOverride
 	ld a, [wCreditsLYOverride]
-rept 2
 	dec a
-endr
+	dec a
 	ld [wCreditsLYOverride], a
 	ld hl, wLYOverrides + $1f
 	call .Fill
@@ -405,9 +403,8 @@ ParseCredits: ; 1099aa
 	ld e, a
 	ld d, 0
 	ld hl, CreditsStrings
-rept 2
 	add hl, de
-endr
+	add hl, de
 	ld a, [hli]
 	ld d, [hl]
 	ld e, a
@@ -641,15 +638,15 @@ GetCreditsPalette: ; 109b2c
 ; Each set of palette data is 24 bytes long.
 	ld a, [wCreditsBorderMon] ; scene
 	and 7
-rept 3
-	add a ; * 8
-endr
+	add a
+	add a
+	add a
 	ld e, a
 	ld d, 0
 	ld hl, CreditsPalettes
-rept 3
-	add hl, de ; * 3
-endr
+	add hl, de
+	add hl, de
+	add hl, de
 	ret
 
 .UpdatePals:
@@ -854,9 +851,9 @@ Credits_LoadBorderGFX: ; 109bca (42:5bca)
 	ld [hl], a
 	ld a, [wCreditsBorderMon]
 	and 7
-rept 3
-	add a ; * 8
-endr
+	add a
+	add a
+	add a
 	add e
 	add a
 	ld e, a

@@ -18,8 +18,8 @@ InitClock: ; 90672 (24:4672)
 	call RotateFourPalettesLeft
 	call ClearTileMap
 	call ClearSprites
-	ld b, SCGB_DIPLOMA
-	call GetSGBLayout
+	ld b, CGB_DIPLOMA
+	call GetCGBLayout
 	xor a
 	ld [hBGMapMode], a
 	call LoadStandardFont
@@ -469,9 +469,8 @@ Special_SetDayOfWeek: ; 90913
 	ld e, a
 	ld d, 0
 	ld hl, .WeekdayStrings
-rept 2
 	add hl, de
-endr
+	add hl, de
 	ld a, [hli]
 	ld d, [hl]
 	ld e, a

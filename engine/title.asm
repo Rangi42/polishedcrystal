@@ -188,9 +188,8 @@ endc
 	call ChannelsOff
 	call EnableLCD
 
-; Set sprite size to 8x16
 	ld a, [rLCDC]
-	set 2, a
+	set 2, a ; 8x16 sprites
 	ld [rLCDC], a
 
 	ld a, +112
@@ -338,9 +337,8 @@ InitializeBackground: ; 10ef06
 	ld b, a
 	ld a, e
 	ld [hli], a
-rept 2
 	inc e
-endr
+	inc e
 	ld a, $80
 	ld [hli], a
 	dec c
@@ -365,9 +363,9 @@ AnimateTitleCrystal: ; 10ef32
 	ld a, [hl]
 	add 2
 	ld [hli], a
-rept 3
 	inc hl
-endr
+	inc hl
+	inc hl
 	dec c
 	jr nz, .loop
 

@@ -290,9 +290,9 @@ VaryColorsByDVs::
 	ld e, a
 	pop hl
 ;;; DarkRGB = base paint color
-rept 3
 	inc hl
-endr
+	inc hl
+	inc hl
 	ld a, e
 	ld [hld], a
 	ld a, d

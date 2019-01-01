@@ -157,30 +157,31 @@
 	const MUSIC_SUMMONING_DANCE_HGSS           ; 9b
 	const MUSIC_HO_OH_BATTLE_HGSS              ; 9c
 	const MUSIC_CERULEAN_CAVE_RBY              ; 9d
-	const MUSIC_ABANDONED_SHIP_RSE             ; 9e
-	const MUSIC_KANTO_LEGEND_BATTLE_XY         ; 9f
-	const MUSIC_GYM_LEADER_BATTLE_RSE          ; a0
-	const MUSIC_GYM_LEADER_BATTLE_DPPT         ; a1
-	const MUSIC_GYM_LEADER_BATTLE_BW           ; a2
-	const MUSIC_GYM_LEADER_BATTLE_XY           ; a3
-	const MUSIC_GYM_LEADER_BATTLE_GO           ; a4
-	const MUSIC_ELITE_FOUR_BATTLE_BW           ; a5
-	const MUSIC_CELESTIAL_TOWER_BW             ; a6
-	const MUSIC_CHAMPION_BATTLE_RSE            ; a7
-	const MUSIC_MOUNT_CORONET_DPPT             ; a8
-	const MUSIC_CHAMPION_BATTLE_DPPT           ; a9
-	const MUSIC_WCS_BATTLE_BW                  ; aa
-	const MUSIC_CHAMPION_BATTLE_B2W2           ; ab
-	const MUSIC_CREDITS                        ; ac
-	const MUSIC_POST_CREDITS                   ; ad
-	const MUSIC_TITLE_XY                       ; ae
-	const MUSIC_DEWFORD_TOWN_RSE               ; af ; unused
-	const MUSIC_MARINE_TUBE_B2W2               ; b0 ; unused
-	const MUSIC_LEGENDARY_BATTLE_XY            ; b1 ; unused
-	const MUSIC_WILD_BATTLE_PRISM              ; b2 ; unused
-	const MUSIC_TRAINER_BATTLE_PRISM           ; b3 ; unused
-	const MUSIC_GYM_LEADER_BATTLE_PRISM        ; b4 ; unused
-	const MUSIC_PALETTE_BATTLE_PRISM           ; b5 ; unused
+	const MUSIC_MEWTWO_BATTLE_STADIUM          ; 9e
+	const MUSIC_ABANDONED_SHIP_RSE             ; 9f
+	const MUSIC_KANTO_LEGEND_BATTLE_XY         ; a0
+	const MUSIC_GYM_LEADER_BATTLE_RSE          ; a1
+	const MUSIC_GYM_LEADER_BATTLE_DPPT         ; a2
+	const MUSIC_GYM_LEADER_BATTLE_BW           ; a3
+	const MUSIC_GYM_LEADER_BATTLE_XY           ; a4
+	const MUSIC_GYM_LEADER_BATTLE_GO           ; a5
+	const MUSIC_ELITE_FOUR_BATTLE_BW           ; a6
+	const MUSIC_CELESTIAL_TOWER_BW             ; a7
+	const MUSIC_CHAMPION_BATTLE_RSE            ; a8
+	const MUSIC_MOUNT_CORONET_DPPT             ; a9
+	const MUSIC_CHAMPION_BATTLE_DPPT           ; aa
+	const MUSIC_WCS_BATTLE_BW                  ; ab
+	const MUSIC_CHAMPION_BATTLE_B2W2           ; ac
+	const MUSIC_CREDITS                        ; ad
+	const MUSIC_POST_CREDITS                   ; ae
+	const MUSIC_TITLE_XY                       ; af
+	const MUSIC_DEWFORD_TOWN_RSE               ; b0 ; unused
+	const MUSIC_MARINE_TUBE_B2W2               ; b1 ; unused
+	const MUSIC_LEGENDARY_BATTLE_XY            ; b2 ; unused
+	const MUSIC_WILD_BATTLE_PRISM              ; b3 ; unused
+	const MUSIC_TRAINER_BATTLE_PRISM           ; b4 ; unused
+	const MUSIC_GYM_LEADER_BATTLE_PRISM        ; b5 ; unused
+	const MUSIC_PALETTE_BATTLE_PRISM           ; b6 ; unused
 NUM_SONGS EQU const_value
 
 ; special

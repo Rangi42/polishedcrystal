@@ -23,7 +23,7 @@ _SlotMachine:
 	ld hl, wOptions1
 	res NO_TEXT_SCROLL, [hl]
 	ld hl, rLCDC ; $ff40
-	res 2, [hl]
+	res 2, [hl] ; 8x8 sprites
 	ret
 
 .InitGFX: ; 926f7 (24:66f7)
@@ -38,8 +38,8 @@ _SlotMachine:
 	ld bc, VBGMap1 - VBGMap0
 	ld a, " "
 	call ByteFill
-	ld b, SCGB_SLOT_MACHINE
-	call GetSGBLayout
+	ld b, CGB_SLOT_MACHINE
+	call GetCGBLayout
 	farcall ClearSpriteAnims
 	ld hl, wSlots
 	ld bc, wSlotsDataEnd - wSlots
@@ -68,7 +68,7 @@ _SlotMachine:
 	call CopyBytes
 
 	ld hl, rLCDC ; $ff40
-	set 2, [hl]
+	set 2, [hl] ; 8x16 sprites
 	call EnableLCD
 	ld hl, wSlots
 	ld bc, wSlotsEnd - wSlots
@@ -608,9 +608,9 @@ Slots_SpinReels: ; 92b0f (24:6b0f)
 	ld a, [hl]
 	add d
 	ld [hli], a
-rept 3
 	inc hl
-endr
+	inc hl
+	inc hl
 	dec e
 	jr nz, .loop
 	ret
@@ -1724,9 +1724,9 @@ SlotPayoutText: ; 93158 (24:7158)
 	ld e, a
 	ld d, 0
 	ld hl, .PayoutStrings
-rept 3
 	add hl, de
-endr
+	add hl, de
+	add hl, de
 	ld de, wStringBuffer2
 	ld bc, 4
 	call CopyBytes

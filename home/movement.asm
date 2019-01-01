@@ -101,9 +101,8 @@ ComputePathToWalkToPlayer:: ; 1b5f
 	push hl
 	ld l, b
 	ld h, 0
-rept 2
 	add hl, hl
-endr
+	add hl, hl
 	ld e, a
 	ld d, 0
 	add hl, de
@@ -142,13 +141,12 @@ SetMenuAttributes:: ; 1bb1
 	dec b
 	jr nz, .loop
 	ld a, $1
-rept 2
 	ld [hli], a
-endr
+	ld [hli], a
 	xor a
-rept 3
 	ld [hli], a
-endr
+	ld [hli], a
+	ld [hli], a
 	pop bc
 	pop hl
 	ret

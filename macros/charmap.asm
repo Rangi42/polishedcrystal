@@ -51,6 +51,7 @@
 
 ; map tiles:
 
+	charmap "<BLACK>",  $f2 ; aka "<PHONE>"; black edges are sufficient
 	charmap " ",        $7f
 
 ; typeface font:

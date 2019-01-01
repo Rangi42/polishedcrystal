@@ -235,9 +235,8 @@ AnimateHOFMonEntrance: ; 865b5
 	ld a, [hli]
 	ld [wTempMonSpecies], a
 	ld [wCurPartySpecies], a
-rept 2
 	inc hl
-endr
+	inc hl
 	ld a, [hli]
 	ld [wTempMonPersonality], a
 	ld a, [hli]
@@ -262,8 +261,8 @@ endr
 	call WaitBGMap
 	xor a
 	ld [hBGMapMode], a
-	ld b, SCGB_PLAYER_OR_MON_FRONTPIC_PALS
-	call GetSGBLayout
+	ld b, CGB_PLAYER_OR_MON_FRONTPIC_PALS
+	call GetCGBLayout
 	call SetPalettes
 	call HOF_SlideBackpic
 	xor a
@@ -297,9 +296,8 @@ HOF_SlideFrontpic:
 	ld a, [hSCX]
 	and a
 	ret z
-rept 2
 	dec a
-endr
+	dec a
 	ld [hSCX], a
 	call DelayFrame
 	jr .frontpicloop
@@ -397,8 +395,8 @@ _HallOfFamePC: ; 86650
 	ld de, .EmptyString
 	call PlaceString
 	call WaitBGMap
-	ld b, SCGB_PLAYER_OR_MON_FRONTPIC_PALS
-	call GetSGBLayout
+	ld b, CGB_PLAYER_OR_MON_FRONTPIC_PALS
+	call GetCGBLayout
 	call SetPalettes
 	decoord 6, 5
 	ld c, $6
@@ -549,8 +547,8 @@ HOF_AnimatePlayerPic: ; 86810
 	xor a
 	ld [hBGMapMode], a
 	ld [wCurPartySpecies], a
-	ld b, SCGB_PLAYER_OR_MON_FRONTPIC_PALS
-	call GetSGBLayout
+	ld b, CGB_PLAYER_OR_MON_FRONTPIC_PALS
+	call GetCGBLayout
 	call SetPalettes
 	call HOF_SlideBackpic
 	xor a

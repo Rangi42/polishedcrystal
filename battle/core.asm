@@ -136,8 +136,8 @@ WildFled_EnemyFled_LinkBattleCanceled: ; 3c0e5
 	ld a, [wBattleType]
 	cp BATTLETYPE_ROAMING
 	jr z, .print_text
-	cp BATTLETYPE_LEGENDARY
-	jr z, .print_text
+	cp BATTLETYPE_RED_GYARADOS
+	jr nc, .print_text ; also BATTLETYPE_LEGENDARY
 
 	ld hl, BattleText_WildFled
 	ld a, [wLinkMode]
@@ -796,45 +796,7 @@ TryEnemyFlee: ; 3c543
 	ret
 ; 3c59a
 
-FleeMons:
-
-SometimesFleeMons: ; 3c59a
-	db MAGNEMITE
-	db GRIMER
-	db TANGELA
-	db TOGEPI
-	db TOGETIC
-	db MR__MIME
-	db EEVEE
-	db PORYGON
-	db DRATINI
-	db DRAGONAIR
-	db ESPEON
-	db UMBREON
-	db UNOWN
-	db SNUBBULL
-	db HERACROSS
-	db PICHU
-	db MUNCHLAX
-	db TYROGUE
-	db ELEKID
-	db MAGBY
-	db LARVITAR
-	db -1
-
-OftenFleeMons: ; 3c5a8
-	db TOGEKISS
-	db CUBONE
-	db QUAGSIRE
-	db PHANPY
-	db TEDDIURSA
-	db -1
-
-AlwaysFleeMons: ; 3c5b1
-	db RAIKOU
-	db ENTEI
-	db -1
-; 3c5b4
+INCLUDE "data/wild/flee_mons.asm"
 
 
 CompareMovePriority: ; 3c5b4
@@ -855,7 +817,7 @@ GetMovePriority: ; 3c5c5
 	ld a, BATTLE_VARS_MOVE
 	call GetBattleVar
 	ld b, a
-	ld hl, MoveEffectPriorities
+	ld hl, MovePriorities
 .loop
 	ld a, [hli]
 	cp b
@@ -885,23 +847,7 @@ GetMovePriority: ; 3c5c5
 	pop bc
 	ret
 
-
-MoveEffectPriorities: ; 3c5df
-	db PROTECT,       4
-	db ENDURE,        4
-	db EXTREMESPEED,  2
-	db AQUA_JET,      1
-	db SUCKER_PUNCH,  1
-	db BULLET_PUNCH,  1
-	db ICE_SHARD,     1
-	db MACH_PUNCH,    1
-	db QUICK_ATTACK,  1
-	; everything else 0
-	db AVALANCHE,    -4
-	db COUNTER,      -5
-	db MIRROR_COAT,  -5
-	db ROAR,         -6
-	db -1
+INCLUDE "data/moves/priorities.asm"
 
 
 GetMoveEffect: ; 3c5ec
@@ -2575,41 +2521,7 @@ IsBossTrainerCommon:
 	ret
 ; 0x3d137
 
-BossTrainers:
-	db CHAMPION
-	db RED
-	db LEAF
-	db STEVEN
-	db CYNTHIA
-	db TOWERTYCOON
-	db VALERIE
-	db GIOVANNI
-	db LORELEI
-	db AGATHA
-	; elite 4
-	db WILL
-	db KOGA
-	db BRUNO
-	db KAREN
-JohtoGymLeaders:
-	db FALKNER
-	db WHITNEY
-	db BUGSY
-	db MORTY
-	db CHUCK
-	db JASMINE
-	db PRYCE
-	db CLAIR
-KantoGymLeaders:
-	db BROCK
-	db MISTY
-	db LT_SURGE
-	db ERIKA
-	db JANINE
-	db SABRINA
-	db BLAINE
-	db BLUE
-	db -1
+INCLUDE "data/trainers/leaders.asm"
 
 
 HandlePlayerMonFaint: ; 3d14e
@@ -2749,7 +2661,7 @@ ForcePlayerMonChoice: ; 3d227
 	call ExitMenu
 	call LoadTileMapToTempTileMap
 	call WaitBGMap
-	call GetMemSGBLayout
+	call GetMemCGBLayout
 	call SetPalettes
 	xor a
 	ld c, a
@@ -2768,7 +2680,7 @@ ForcePlayerMonChoice: ; 3d227
 	call DelayFrame
 	call _LoadStatusIcons
 	call CloseWindow
-	call GetMemSGBLayout
+	call GetMemCGBLayout
 	call SetPalettes
 	call SendOutPkmnText
 	call NewBattleMonStatus
@@ -2952,8 +2864,8 @@ LostBattle: ; 3d38e
 	jr nz, .LostLinkBattle
 
 ; Greyscale
-	ld b, SCGB_BATTLE_GRAYSCALE
-	call GetSGBLayout
+	ld b, CGB_BATTLE_GRAYSCALE
+	call GetCGBLayout
 	call SetPalettes
 	jr .end
 
@@ -3492,9 +3404,9 @@ NewEnemyMonStatus: ; 3d834
 	ld [wLastPlayerCounterMove], a
 	ld [wLastEnemyMove], a
 	ld hl, wEnemySubStatus1
-rept 3
 	ld [hli], a
-endr
+	ld [hli], a
+	ld [hli], a
 	ld [hl], a
 	ld [wEnemyDisableCount], a
 	ld [wEnemyProtectCount], a
@@ -3855,12 +3767,12 @@ NewBattleMonStatus: ; 3dbde
 	ld [wLastPlayerCounterMove], a
 	ld [wLastPlayerMove], a
 	ld hl, wPlayerSubStatus1
-rept 3
 	ld [hli], a
-endr
+	ld [hli], a
+	ld [hli], a
 	ld [hl], a
 	ld hl, wPlayerUsedMoves
-rept 3
+rept NUM_MOVES + -1
 	ld [hli], a
 endr
 	ld [hl], a
@@ -5164,7 +5076,7 @@ BattleMenuPKMN_Loop:
 	call _LoadStatusIcons
 	call CloseWindow
 	call LoadTileMapToTempTileMap
-	call GetMemSGBLayout
+	call GetMemCGBLayout
 	call SetPalettes
 	jp BattleMenu
 ; 3e2f5
@@ -5254,7 +5166,7 @@ TryPlayerSwitch: ; 3e358
 	call ClearSprites
 	call _LoadStatusIcons
 	call CloseWindow
-	call GetMemSGBLayout
+	call GetMemCGBLayout
 	call SetPalettes
 	ld a, [wCurPartyMon]
 	ld [wCurBattleMon], a
@@ -5414,9 +5326,11 @@ CheckRunSpeed:
 	ld a, [wBattleType]
 	cp BATTLETYPE_CONTEST
 	jp z, .can_escape
+	cp BATTLETYPE_SAFARI
+	jp z, .can_escape
 	cp BATTLETYPE_GHOST
 	jp z, .can_escape
-	cp BATTLETYPE_TRAP ; or BATTLETYPE_LEGENDARY
+	cp BATTLETYPE_TRAP ; or BATTLETYPE_FORCEITEM, BATTLETYPE_RED_GYARADOS, BATTLETYPE_LEGENDARY
 	jp nc, .cant_escape
 
 	ld a, [wLinkMode]
@@ -6137,13 +6051,6 @@ CheckUsableMoves:
 	xor a
 	ret
 
-FarCheckUsableMove:
-; Reads/writes to b instead of a for below
-	ld a, b
-	call CheckUsableMove
-	ld b, a
-	ret
-
 CheckUsableMove:
 ; Check if move a in the move list is usable. Returns z if usable
 ; Note that the first move in the list is move 0, not move 1.
@@ -6280,6 +6187,7 @@ ParseEnemyAction: ; 3e7c1
 	jp .finish
 
 .not_linked
+	call SetEnemyTurn
 	call CheckUsableMoves
 	jp nz, .struggle
 	ld hl, wEnemySubStatus2
@@ -6644,7 +6552,7 @@ endc
 	pop af
 	ld [wCurItem], a
 	call BattleRandom
-	cp $10
+	cp SHINY_NUMERATOR
 	jr nc, .not_shiny ; 240/256 still not shiny
 .shiny
 	ld a, SHINY_MASK
@@ -6653,7 +6561,7 @@ endc
 	pop af
 	ld [wCurItem], a
 	call BattleRandom
-	cp $30
+	cp CHARMED_SHINY_NUMERATOR
 	jr c, .shiny ; 208/256 still not shiny
 .not_shiny
 	xor a
@@ -6923,7 +6831,7 @@ endc
 	xor a
 	ld h, d
 	ld l, e
-rept 3
+rept NUM_MOVES + -1
 	ld [hli], a
 endr
 	ld [hl], a
@@ -6981,13 +6889,13 @@ CheckSleepingTreeMon: ; 3eb38
 	jr z, .NotSleeping
 
 ; Get list for the time of day
-	ld hl, .Morn
+	ld hl, AsleepTreeMonsMorn
 	ld a, [wTimeOfDay]
 	cp DAY
 	jr c, .Check
-	ld hl, .Day
+	ld hl, AsleepTreeMonsDay
 	jr z, .Check
-	ld hl, .Nite
+	ld hl, AsleepTreeMonsNite
 
 .Check:
 	ld a, [wTempEnemyMonSpecies]
@@ -7000,35 +6908,7 @@ CheckSleepingTreeMon: ; 3eb38
 	and a
 	ret
 
-.Nite:
-	db CATERPIE
-	db METAPOD
-	db BUTTERFREE
-	db WEEDLE
-	db KAKUNA
-	db BEEDRILL
-	db PIDGEY
-	db EKANS
-	db EXEGGCUTE
-	db LEDYBA
-	db -1 ; end
-
-.Day:
-	db VENONAT
-	db HOOTHOOT
-	db NOCTOWL
-	db SPINARAK
-	db HERACROSS
-	db -1 ; end
-
-.Morn:
-	db VENONAT
-	db HOOTHOOT
-	db NOCTOWL
-	db SPINARAK
-	db HERACROSS
-	db -1 ; end
-; 3eb75
+INCLUDE "data/wild/treemons_asleep.asm"
 
 
 CheckUnownLetter: ; 3eb75
@@ -7045,7 +6925,7 @@ CheckUnownLetter: ; 3eb75
 	jr nc, .next
 
 ; Is our letter in the set?
-	ld hl, .LetterSets
+	ld hl, UnlockedUnownLetterSets
 	add hl, de
 	ld a, [hli]
 	ld h, [hl]
@@ -7066,7 +6946,7 @@ CheckUnownLetter: ; 3eb75
 	inc e
 	inc e
 	ld a, e
-	cp .Set1 - .LetterSets
+	cp UnlockedUnownLetterSets.End - UnlockedUnownLetterSets
 	jr c, .loop
 
 ; Hasn't been unlocked, or the letter is invalid
@@ -7078,26 +6958,7 @@ CheckUnownLetter: ; 3eb75
 	and a
 	ret
 
-.LetterSets:
-	dw .Set1
-	dw .Set2
-	dw .Set3
-	dw .Set4
-
-.Set1:
-	;  A   B   C   D   E   F   G   H   I   J
-	db 01, 02, 03, 04, 05, 06, 07, 08, 09, 10, $ff
-.Set2:
-	;  K   L   M   N   O   P   Q
-	db 11, 12, 13, 14, 15, 16, 17, $ff
-.Set3:
-	;  R   S   T   U   V   W
-	db 18, 19, 20, 21, 22, 23, $ff
-.Set4:
-	;  X   Y   Z   !   ?
-	db 24, 25, 26, 27, 28, $ff
-
-; 3ebc7
+INCLUDE "data/wild/unlocked_unowns.asm"
 
 
 FinalPkmnSlideInEnemyMonFrontpic:
@@ -7332,8 +7193,8 @@ FinishBattleAnim: ; 3ee27
 	push bc
 	push de
 	push hl
-	ld b, SCGB_BATTLE_COLORS
-	call GetSGBLayout
+	ld b, CGB_BATTLE_COLORS
+	call GetCGBLayout
 	call SetPalettes
 	call DelayFrame
 	pop hl
@@ -8511,14 +8372,14 @@ BattleIntro: ; 3f4dd
 	farcall ClearBattleRAM
 	call InitEnemy
 	call BackUpVBGMap2
-	ld b, SCGB_BATTLE_GRAYSCALE
-	call GetSGBLayout
+	ld b, CGB_BATTLE_GRAYSCALE
+	call GetCGBLayout
 	ld hl, rLCDC
-	res 6, [hl]
+	res 6, [hl] ; win tilemap 0
 	call InitBattleDisplay
 	call BattleStartMessage
 	ld hl, rLCDC
-	set 6, [hl]
+	set 6, [hl] ; win tilemap 1
 	xor a
 	ld [hBGMapMode], a
 	call EmptyBattleTextBox
@@ -8865,8 +8726,8 @@ DisplayLinkRecord: ; 3f836
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
 	call ByteFill
 	call WaitBGMap2
-	ld b, SCGB_DIPLOMA
-	call GetSGBLayout
+	ld b, CGB_DIPLOMA
+	call GetCGBLayout
 	call SetPalettes
 	ld c, 8
 	call DelayFrames
@@ -9352,8 +9213,8 @@ InitBattleDisplay: ; 3fb6c
 	ld [rWY], a
 	call WaitBGMap
 	call HideSprites
-	ld b, SCGB_BATTLE_COLORS
-	call GetSGBLayout
+	ld b, CGB_BATTLE_COLORS
+	call GetCGBLayout
 	call SetPalettes
 	ld a, $90
 	ld [hWY], a
@@ -9532,7 +9393,6 @@ BattleStartMessage: ; 3fc8b
 	ld a, [wBattleType]
 	cp BATTLETYPE_FISH
 	jr nz, .NotFishing
-
 	ld hl, HookedPokemonAttackedText
 	jr .PlaceBattleStartText
 
@@ -9543,10 +9403,8 @@ BattleStartMessage: ; 3fc8b
 	ld hl, LegendaryAppearedText
 	cp BATTLETYPE_ROAMING
 	jr z, .PlaceBattleStartText
-	cp BATTLETYPE_LEGENDARY
-	jr z, .PlaceBattleStartText
-	cp BATTLETYPE_RED_GYARADOS
-	jr z, .PlaceBattleStartText
+	cp BATTLETYPE_RED_GYARADOS ; or BATTLETYPE_LEGENDARY
+	jr nc, .PlaceBattleStartText
 	ld hl, WildPokemonAppearedText
 
 .PlaceBattleStartText:
@@ -9639,4 +9497,4 @@ CheckUniqueWildMove:
 	inc hl
 	jr .loop
 
-INCLUDE "data/unique_wild_moves.asm"
+INCLUDE "data/pokemon/unique_wild_moves.asm"

@@ -2,8 +2,7 @@ Route26_MapScriptHeader:
 
 .MapTriggers: db 0
 
-.MapCallbacks: db 1
-	dbw MAPCALLBACK_SPRITES, Route26DragonTamerSprite
+.MapCallbacks: db 0
 
 Route26_MapEventHeader:
 
@@ -18,21 +17,17 @@ Route26_MapEventHeader:
 	signpost 6, 8, SIGNPOST_JUMPTEXT, Route26SignText
 
 .PersonEvents: db 11
-	person_event SPRITE_GUIDE_GENT, 38, 9, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerDragonTamerKazu, -1
+	person_event SPRITE_NEW_BARK_TEACHER, 38, 9, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerDragonTamerKazu, -1
 	person_event SPRITE_COOLTRAINER_M, 24, 14, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 2, TrainerCooltrainermGaven1, -1
 	person_event SPRITE_COOLTRAINER_F, 56, 10, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 3, TrainerCooltrainerfJoyce, -1
 	person_event SPRITE_COOLTRAINER_F, 8, 5, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerCooltrainerfBeth1, -1
 	person_event SPRITE_YOUNGSTER, 79, 13, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 2, TrainerPsychicRichard, -1
 	person_event SPRITE_COOLTRAINER_F, 82, 2, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerBattleGirlRonda, -1
 	person_event SPRITE_FISHER, 100, 6, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherScott, -1
-	person_event SPRITE_GUIDE_GENT, 92, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerDragonTamerErick, -1
+	person_event SPRITE_NEW_BARK_TEACHER, 92, 10, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_PURPLE, PERSONTYPE_TRAINER, 3, TrainerDragonTamerErick, -1
 	fruittree_event 54, 14, FRUITTREE_ROUTE_26, SITRUS_BERRY
 	itemball_event 15, 9, MAX_ELIXER, 1, EVENT_ROUTE_26_MAX_ELIXER
 	tmhmball_event 34, 13, TM_DRAGON_CLAW, EVENT_ROUTE_26_TM_DRAGON_CLAW
-
-Route26DragonTamerSprite:
-	variablesprite SPRITE_GUIDE_GENT, SPRITE_DRAGON_TAMER
-	return
 
 TrainerDragonTamerKazu:
 	trainer EVENT_BEAT_DRAGON_TAMER_KAZU, DRAGON_TAMER, KAZU, DragonTamerKazuSeenText, DragonTamerKazuBeatenText, 0, DragonTamerKazuScript

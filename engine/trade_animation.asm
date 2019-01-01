@@ -221,9 +221,8 @@ DoTradeAnimation: ; 29082
 	ld e, a
 	ld d, 0
 	ld hl, .JumpTable
-rept 2
 	add hl, de
-endr
+	add hl, de
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
@@ -370,8 +369,8 @@ TradeAnim_InitTubeAnim: ; 2914e
 	ld [hl], b
 
 	call WaitBGMap
-	ld b, SCGB_TRADE_TUBE
-	call GetSGBLayout
+	ld b, CGB_TRADE_TUBE
+	call GetCGBLayout
 	ld a, %11100100 ; 3,2,1,0
 	call DmgToCgbBGPals
 	ld a, %11010000
@@ -513,9 +512,8 @@ TradeAnim_TubeAnimJumptable: ; 29281
 	ld e, a
 	ld d, 0
 	ld hl, .Jumptable
-rept 2
 	add hl, de
-endr
+	add hl, de
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
@@ -633,8 +631,8 @@ TradeAnim_EnterLinkTube1: ; 29348
 	lb bc, 3, 12
 	call TradeAnim_CopyBoxFromDEtoHL
 	call WaitBGMap
-	ld b, SCGB_TRADE_TUBE
-	call GetSGBLayout
+	ld b, CGB_TRADE_TUBE
+	call GetCGBLayout
 	ld a, %11100100 ; 3,2,1,0
 	call DmgToCgbBGPals
 	lb de, %11100100, %11100100 ; 3,2,1,0, 3,2,1,0
@@ -764,8 +762,8 @@ TradeAnim_ShowGivemonData: ; 2942e
 	ld [wTempMonPersonality], a
 	ld a, [wPlayerTrademonPersonality + 1]
 	ld [wTempMonPersonality + 1], a
-	ld b, SCGB_PLAYER_OR_MON_FRONTPIC_PALS
-	call GetSGBLayout
+	ld b, CGB_PLAYER_OR_MON_FRONTPIC_PALS
+	call GetCGBLayout
 	ld a, %11100100 ; 3,2,1,0
 	call DmgToCgbBGPals
 	call TradeAnim_ShowGivemonFrontpic
@@ -789,8 +787,8 @@ TradeAnim_ShowGetmonData: ; 29461
 	ld [wTempMonPersonality], a
 	ld a, [wOTTrademonPersonality + 1]
 	ld [wTempMonPersonality + 1], a
-	ld b, SCGB_PLAYER_OR_MON_FRONTPIC_PALS
-	call GetSGBLayout
+	ld b, CGB_PLAYER_OR_MON_FRONTPIC_PALS
+	call GetCGBLayout
 	ld a, %11100100 ; 3,2,1,0
 	call DmgToCgbBGPals
 	call TradeAnim_ShowGetmonFrontpic
@@ -1065,9 +1063,8 @@ TradeAnim_AnimateTrademonInTube: ; 29676 (a:5676)
 	ld e, [hl]
 	ld d, 0
 	ld hl, .Jumptable
-rept 2
 	add hl, de
-endr
+	add hl, de
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a

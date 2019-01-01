@@ -36,7 +36,7 @@ InitializeHiddenGrotto::
 	srl a
 	jr c, .RandomItem
 .RandomHiddenItem:
-	ld hl, .HiddenItems
+	ld hl, HiddenGrottoHiddenItems
 	call GetHiddenGrottoTableEntry
 	ld d, GROTTO_HIDDEN_ITEM
 	ld e, a
@@ -44,7 +44,7 @@ InitializeHiddenGrotto::
 
 .RandomPokemon:
 	eventflagset EVENT_SAW_FIRST_HIDDEN_GROTTO
-	ld hl, .PokemonIndexes
+	ld hl, HiddenGrottoPokemonIndexes
 	call GetHiddenGrottoTableEntry
 	ld hl, HiddenGrottoData + GROTTODATA_MON1
 .mon_loop
@@ -61,7 +61,7 @@ InitializeHiddenGrotto::
 	jr .StoreContent
 
 .RandomItem:
-	ld hl, .Items
+	ld hl, HiddenGrottoItems
 	call GetHiddenGrottoTableEntry
 	cp ITEM_FROM_MEM
 	jr nz, .got_item
@@ -83,40 +83,7 @@ InitializeHiddenGrotto::
 	ld [wScriptVar], a
 	ret
 
-.PokemonIndexes:
-	db 40 ; total probability
-	db 15, $0
-	db 15, $1
-	db 8, $2
-	db 2, $3
-	db -1
-
-.Items:
-	db 160 ; total probability
-	db 50, POKE_BALL
-	db 20, GREAT_BALL
-	db 8, ULTRA_BALL
-	db 25, POTION
-	db 10, SUPER_POTION
-	db 4, HYPER_POTION
-	db 25, REPEL
-	db 10, SUPER_REPEL
-	db 4, MAX_REPEL
-	db 4, ITEM_FROM_MEM
-	db -1
-
-.HiddenItems:
-	db 160 ; total probability
-	db 99, MULCH
-	db 30, TINYMUSHROOM
-	db 10, BIG_MUSHROOM
-	db 1, BALMMUSHROOM
-	db 8, SILVER_LEAF
-	db 8, GOLD_LEAF
-	db 1, RARE_CANDY
-	db 2, PP_UP
-	db 1, PP_MAX
-	db -1
+INCLUDE "data/hidden_grottoes/probabilities.asm"
 
 GetHiddenGrottoTableEntry:
 	ld a, [hli]
@@ -177,10 +144,4 @@ GetCurHiddenGrottoLevel::
 	ld a, [hl]
 	ret
 
-HiddenGrottoData:
-	; warp number, rare item, common mon 1, common mon 2, uncommon mon, rare mon, level
-HiddenGrotto1:
-	db 5, EVERSTONE, MAREEP, WOOPER, EKANS, GASTLY, 5 ; HIDDENGROTTO_ROUTE_32
-HiddenGrotto2:
-	db 4, SUN_STONE, SNUBBULL, SNUBBULL, YANMA, YANMA, 15 ; HIDDENGROTTO_ROUTE_35
-	db 3, WATER_STONE, FLAAFFY, FLAAFFY, GIRAFARIG, FARFETCH_D, 25 ; HIDDENGROTTO_LAKE_OF_RAGE
+INCLUDE "data/hidden_grottoes/grottoes.asm"

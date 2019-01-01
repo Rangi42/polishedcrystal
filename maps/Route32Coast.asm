@@ -2,8 +2,7 @@ Route32Coast_MapScriptHeader:
 
 .MapTriggers: db 0
 
-.MapCallbacks: db 1
-	dbw MAPCALLBACK_SPRITES, Route32CoastSwimmerGuySprite
+.MapCallbacks: db 0
 
 Route32Coast_MapEventHeader:
 
@@ -35,10 +34,6 @@ Route32Coast_MapEventHeader:
 	fruittree_event 51, 21, FRUITTREE_ROUTE_32_COAST, ASPEAR_BERRY
 	itemball_event 18, 5, WHITE_HERB, 1, EVENT_ROUTE_32_COAST_WHITE_HERB
 	itemball_event 63, 22, SOFT_SAND, 1, EVENT_ROUTE_32_COAST_SOFT_SAND
-
-Route32CoastSwimmerGuySprite:
-	variablesprite SPRITE_GUIDE_GENT, SPRITE_SWIMMER_GUY
-	return
 
 TrainerSwimmermMichel:
 	trainer EVENT_BEAT_SWIMMERM_MICHEL, SWIMMERM, MICHEL, .SeenText, .BeatenText, 0, .Script

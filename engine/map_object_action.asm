@@ -18,6 +18,7 @@ Pointers445f: ; 445f
 	dw SetFacingSkyfall,               SetFacingCurrent           ; PERSON_ACTION_SKYFALL
 	dw SetFacingBigGyarados,           SetFacingFreezeBigGyarados ; PERSON_ACTION_BIG_GYARADOS
 	dw SetFacingStandFlip,             SetFacingStandFlip         ; PERSON_ACTION_STAND_FLIP
+	dw SetFacingPokecomNews,           SetFacingPokecomNews       ; PERSON_ACTION_POKECOM_NEWS
 	dw SetFacingRun,                   SetFacingCurrent           ; PERSON_ACTION_RUN
 ; 44a3
 
@@ -40,6 +41,10 @@ SetFacingEmote: ; 4582 emote
 	ld a, FACING_EMOTE
 	jr SetFixedFacing
 ; 4589
+
+SetFacingPokecomNews:
+	ld a, FACING_POKECOM_NEWS
+	jr SetFixedFacing
 
 SetFacingBigDoll: ; 45c5
 	ld a, [wVariableSprites + SPRITE_BIG_DOLL - SPRITE_VARS]

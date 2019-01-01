@@ -120,6 +120,10 @@ wLZBank:: ds 1
 
 	ds 1
 
+wRNGState:: ds 4
+wRNGCumulativeDividerPlus:: ds 2
+wRNGCumulativeDividerMinus:: ds 1
+
 wBoxAlignment:: ds 1
 wInputType:: ds 1
 wAutoInputAddress:: ds 2
@@ -169,8 +173,6 @@ wTempObjectCopyX:: ds 1
 wTempObjectCopyY:: ds 1
 wTempObjectCopyRadius:: ds 1
 
-	ds 1
-
 wTileDown:: ds 1
 wTileUp:: ds 1
 wTileLeft:: ds 1
@@ -183,8 +185,6 @@ wTilePermissions::
 ; bit 2: up
 ; bit 1: left
 ; bit 0: right
-	ds 1
-
 	ds 1
 
 
@@ -872,25 +872,22 @@ ENDU
 
 SECTION "Video", WRAM0
 
-UNION
-; video
 wBGMapBuffer:: ds 40
 wBGMapPalBuffer:: ds 40
 wBGMapBufferPtrs:: ds 40 ; 20 bg map addresses (16x8 tiles)
-NEXTU
-; credits
+
 wCreditsPos:: ds 2
 wCreditsTimer:: ds 1
-ENDU
 
-wSGBPredef:: ds 1
+wMemCGBLayout:: ds 1
+
 wPlayerHPPal:: ds 1
 wEnemyHPPal:: ds 1
-
 wHPPals:: ds PARTY_LENGTH
 wCurHPPal:: ds 1
-	ds 7
-wSGBPals:: ds 48
+wHPPalIndex:: ds 1
+
+	ds 51
 
 wAttrMap::
 ; 20x18 grid of palettes for 8x8 tiles
@@ -1185,6 +1182,16 @@ wMartItem12BCD:: ds 3
 wMartItemBCDEnd::
 
 NEXTU
+; town map data
+wTownMapPlayerIconLandmark:: ds 1
+UNION
+wTownMapCursorLandmark:: ds 1
+wTownMapCursorObjectPointer:: ds 2
+NEXTU
+wTownMapCursorCoordinates:: ds 2
+ENDU
+
+NEXTU
 ; phone call data
 wPhoneScriptBank:: ds 1
 wPhoneCallerLo:: ds 1
@@ -1344,16 +1351,11 @@ ENDU
 
 wTMHMMoveNameBackup:: ds MOVE_NAME_LENGTH
 
-wStringBuffer1::
-	ds 24
-wStringBuffer2::
-	ds 19
-wStringBuffer3::
-	ds 19
-wStringBuffer4::
-	ds 19
-wStringBuffer5::
-	ds 19
+wStringBuffer1:: ds 24
+wStringBuffer2:: ds 19
+wStringBuffer3:: ds 19
+wStringBuffer4:: ds 19
+wStringBuffer5:: ds 19
 
 wBattleMenuCursorBuffer:: ds 2
 
@@ -1739,7 +1741,7 @@ SECTION "Enemy Party", WRAMX
 wPokedexShowPointerAddr:: ds 2
 wPokedexShowPointerBank:: ds 1
 
-	ds 5
+	ds 2
 
 wOTPlayerName:: ds NAME_LENGTH
 wOTPlayerID:: ds 2
@@ -1775,8 +1777,6 @@ wOTPartyMonNicknames:: ds PKMN_NAME_LENGTH * PARTY_LENGTH
 wOTPartyDataEnd::
 ENDU
 
-	ds 4 ; unused
-
 wBattleAction:: ds 1
 wLinkBattleSentAction:: ds 1
 
@@ -1806,8 +1806,7 @@ wScriptBank:: ds 1
 wScriptPos:: ds 2
 
 wScriptStackSize:: ds 1
-wScriptStack:: ds 3 * 5
-	ds 1
+wScriptStack:: ds 3 * 12
 wScriptDelay:: ds 1
 
 wPriorityScriptBank::
@@ -1815,11 +1814,7 @@ wScriptTextBank:: ds 1
 wPriorityScriptAddr::
 wScriptTextAddr:: ds 2
 
-	ds 1
-
 wWildEncounterCooldown:: ds 1
-
-	ds 5 ; unused
 
 wWildBattlePanic:: ds 1
 
@@ -1834,13 +1829,9 @@ wMapReentryScriptQueueFlag:: ds 1 ; MemScriptFlag
 wMapReentryScriptBank:: ds 1 ; MemScriptBank
 wMapReentryScriptAddress:: ds 2 ; MemScriptAddr
 
-	ds 4
-
 wTimeCyclesSinceLastCall:: ds 1
 wReceiveCallDelay_MinsRemaining:: ds 1
 wReceiveCallDelay_StartTime:: ds 3
-
-	ds 3
 
 wBugContestMinsRemaining:: ds 1
 wBugContestSecsRemaining:: ds 1
@@ -1979,7 +1970,7 @@ wStatusFlags::
 	ds 1
 wStatusFlags2::
 	; 0 - rockets
-	; 1 - safari zone?
+	; 1 - safari game
 	; 2 - bug contest timer
 	; 3 - seen shamouti island
 	; 4 - bike shop call
@@ -2350,7 +2341,7 @@ wPartyMonOT:: ds NAME_LENGTH * PARTY_LENGTH
 wPartyMonNicknames:: ds PKMN_NAME_LENGTH * PARTY_LENGTH
 wPartyMonNicknamesEnd::
 
-	ds 13 ; unused
+	ds 12 ; unused
 
 wPokedexCaught:: flag_array NUM_POKEMON
 wEndPokedexCaught::
@@ -2359,7 +2350,7 @@ wPokedexSeen:: flag_array NUM_POKEMON
 wEndPokedexSeen::
 
 wUnownDex:: ds NUM_UNOWN
-wUnlockedUnowns::
+wUnlockedUnowns:: ds 1
 
 wFirstUnownSeen:: ds 1
 wFirstMagikarpSeen:: ds 1

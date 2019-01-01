@@ -1209,8 +1209,8 @@ BattleCommand_Critical: ; 34631
 	db $ff
 
 .Chances:
-	; 6.25% 12.5%  50%   100%
-	db $10,  $20,  $80,  $ff
+	; 4.17% 12.5%  50%   100%
+	db $a,  $20,  $80,  $ff
 	;   0     1     2     3+
 ; 346b2
 
@@ -1563,12 +1563,8 @@ BattleCommand_ResetTypeMatchup: ; 34833
 
 INCLUDE "battle/ai/switch.asm"
 
-TypeMatchup: ; 34bb1
-INCLUDE "battle/type_matchup.asm"
-; 34cfd
-
-InverseTypeMatchup:
-INCLUDE "battle/inverse_type_matchup.asm"
+INCLUDE "data/types/type_matchups.asm"
+INCLUDE "data/types/inverse_type_matchups.asm"
 
 
 BattleCommand_DamageVariation: ; 34cfd
@@ -2671,7 +2667,7 @@ BattleCommand_SuckerPunch:
 
 	; TODO: Is there a better way to check "player didn't fight"?
 	; Because of how the battle core is designed, a player switch
-	; or item use wont neccessarily imply going first from the
+	; or item use won't neccessarily imply going first from the
 	; battle move scripts' point of view...
 	ld a, [wBattlePlayerAction]
 	and a
@@ -3108,10 +3104,10 @@ DittoMetalPowder: ; 352b1
 	ld a, [hBattleTurn]
 	and a
 	ld a, [hl]
-	jr nz, .Ditto
+	jr nz, .continue
 	ld a, [wTempEnemyMonSpecies]
 
-.Ditto:
+.continue:
 	cp DITTO
 	ret nz
 
@@ -3147,10 +3143,10 @@ UnevolvedEviolite:
 	ld a, [hBattleTurn]
 	and a
 	ld a, [hl]
-	jr nz, .Unevolved
+	jr nz, .continue
 	ld a, [wTempEnemyMonSpecies]
 
-.Unevolved:
+.continue:
 	dec a
 	push hl
 	push bc
@@ -3159,6 +3155,7 @@ UnevolvedEviolite:
 	ld hl, EvosAttacksPointers
 	add hl, bc
 	add hl, bc
+	ld a, BANK(EvosAttacksPointers)
 	call GetFarHalfword
 	ld a, BANK(EvosAttacks)
 	call GetFarByte
@@ -3606,9 +3603,9 @@ HitSelfInConfusion: ; 355dd
 	sla c
 	rl b
 .mimic_screen
-rept 3
 	dec hl
-endr
+	dec hl
+	dec hl
 	ld a, [hli]
 	ld l, [hl]
 	ld h, a
@@ -4230,9 +4227,9 @@ BattleCommand_Encore: ; 35864
 	set SUBSTATUS_ENCORED, [hl]
 	call BattleRandom
 	and $3
-rept 3
 	inc a
-endr
+	inc a
+	inc a
 	ld [de], a
 	call CheckOpponentWentFirst
 	jr nz, .finish_move
@@ -6340,9 +6337,7 @@ BattleCommand_Teleport: ; 36778
 ; teleport
 
 	ld a, [wBattleType]
-	cp BATTLETYPE_RED_GYARADOS
-	jr z, .failed
-	cp BATTLETYPE_TRAP ; or BATTLETYPE_LEGENDARY
+	cp BATTLETYPE_TRAP ; or BATTLETYPE_FORCEITEM, BATTLETYPE_RED_GYARADOS, BATTLETYPE_LEGENDARY
 	jr nc, .failed
 
 ; Can't teleport from a trainer battle
@@ -6451,9 +6446,7 @@ BattleCommand_ForceSwitch: ; 3680f
 ; forceswitch
 
 	ld a, [wBattleType]
-	cp BATTLETYPE_RED_GYARADOS
-	jp z, .fail
-	cp BATTLETYPE_TRAP ; or BATTLETYPE_LEGENDARY
+	cp BATTLETYPE_TRAP ; or BATTLETYPE_FORCEITEM, BATTLETYPE_RED_GYARADOS, BATTLETYPE_LEGENDARY
 	jp nc, .fail
 	call GetOpponentAbilityAfterMoldBreaker
 	cp SUCTION_CUPS
@@ -6762,12 +6755,15 @@ BattleCommand_EndLoop: ; 369b6
 	call GetBattleVarAddr
 	res SUBSTATUS_IN_LOOP, [hl]
 
-	ld hl, PlayerHitTimesText
 	ld a, [hBattleTurn]
 	and a
+	ld hl, PlayerHitTimesText
 	jr z, .got_hit_n_times_text
 	ld hl, EnemyHitTimesText
 .got_hit_n_times_text
+	push bc
+	call StdBattleTextBox
+	pop bc
 	xor a
 	ld [bc], a
 	ret
@@ -7890,7 +7886,7 @@ BattleCommand_Roost:
 	set SUBSTATUS_ROOST, [hl]
 	ret
 
-INCLUDE "battle/effects/transform.asm"
+INCLUDE "battle/effect_commands/transform.asm"
 
 BattleSideCopy: ; 372c6
 ; Copy bc bytes from hl to de if it's the player's turn.
@@ -8150,7 +8146,7 @@ BattleCommand_SelfDestruct: ; 37380
 ; 373c9
 
 
-INCLUDE "battle/effects/metronome.asm"
+INCLUDE "battle/effect_commands/metronome.asm"
 
 
 CheckUserMove: ; 37462
@@ -8197,7 +8193,7 @@ ResetTurn: ; 3747b
 ; 37492
 
 
-INCLUDE "battle/effects/thief.asm"
+INCLUDE "battle/effect_commands/thief.asm"
 
 
 BattleCommand_ArenaTrap: ; 37517
@@ -8263,19 +8259,19 @@ BattleCommand_Defrost: ; 37563
 ; 37588
 
 
-INCLUDE "battle/effects/curse.asm"
+INCLUDE "battle/effect_commands/curse.asm"
 
-INCLUDE "battle/effects/protect.asm"
+INCLUDE "battle/effect_commands/protect.asm"
 
-INCLUDE "battle/effects/endure.asm"
+INCLUDE "battle/effect_commands/endure.asm"
 
-INCLUDE "battle/effects/spikes.asm"
+INCLUDE "battle/effect_commands/spikes.asm"
 
-INCLUDE "battle/effects/foresight.asm"
+INCLUDE "battle/effect_commands/foresight.asm"
 
-INCLUDE "battle/effects/perish_song.asm"
+INCLUDE "battle/effect_commands/perish_song.asm"
 
-INCLUDE "battle/effects/rollout.asm"
+INCLUDE "battle/effect_commands/rollout.asm"
 
 BoostJumptable:
 	dbw AVALANCHE, DoAvalanche
@@ -8375,7 +8371,7 @@ DoKnockOff:
 	ld [wCurDamage + 1], a
 	ret
 
-INCLUDE "battle/effects/attract.asm"
+INCLUDE "battle/effect_commands/attract.asm"
 
 BattleCommand_HappinessPower: ; 3784b
 ; happinesspower
@@ -8651,8 +8647,8 @@ DoPlayerBatonPass:
 	hlcoord 1, 0
 	lb bc, 4, 10
 	call ClearBox
-	ld b, SCGB_BATTLE_COLORS
-	call GetSGBLayout
+	ld b, CGB_BATTLE_COLORS
+	call GetCGBLayout
 	call SetPalettes
 	call BatonPass_LinkPlayerSwitch
 

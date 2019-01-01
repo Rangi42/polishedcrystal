@@ -1003,9 +1003,9 @@ DoPlayerEvent: ; 96beb
 	ld c, a
 	ld b, 0
 	ld hl, PlayerEventScriptPointers
-rept 3
 	add hl, bc
-endr
+	add hl, bc
+	add hl, bc
 	ld a, [hli]
 	ld [wScriptBank], a
 	ld a, [hli]
@@ -1168,6 +1168,8 @@ RandomEncounter:: ; 97cc0
 	call CanUseSweetScent
 	jr nc, .nope
 	ld hl, wStatusFlags2
+	bit 1, [hl] ; ENGINE_SAFARI_GAME
+	jr nz, .safari_game
 	bit 2, [hl] ; ENGINE_BUG_CONTEST_TIMER
 	jr nz, .bug_contest
 	farcall TryWildEncounter
@@ -1179,6 +1181,13 @@ RandomEncounter:: ; 97cc0
 	call CallScript
 	scf
 	ret
+
+.safari_game
+	farcall TryWildEncounter
+	jr nz, .nope
+	ld a, BANK(SafariGameBattleScript)
+	ld hl, SafariGameBattleScript
+	jr .done
 
 .bug_contest
 	call _TryWildEncounter_BugContest
@@ -1288,21 +1297,7 @@ TryWildEncounter_BugContest: ; 97d64
 	ret
 ; 97d87
 
-ContestMons: ; 97d87
-	;   %, species,   min, max
-	db 15, CATERPIE,    7, 18
-	db 15, WEEDLE,      7, 18
-	db 10, METAPOD,     9, 18
-	db 10, KAKUNA,      9, 18
-	db  5, BUTTERFREE, 12, 15
-	db  5, BEEDRILL,   12, 15
-	db 10, VENONAT,    10, 16
-	db 10, PARAS,      10, 17
-	db  5, VENOMOTH,   12, 15
-	db  5, YANMA,      13, 14
-	db  5, SCYTHER,    13, 14
-	db  5, PINSIR,     13, 14
-; 97db3
+INCLUDE "data/wild/bug_contest_mons.asm"
 
 DoBikeStep:: ; 97db3
 	; If the bike shop owner doesn't have our number, or

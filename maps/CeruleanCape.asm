@@ -21,9 +21,10 @@ CeruleanCape_MapEventHeader:
 	signpost 12, 31, SIGNPOST_ITEM + PEARL_STRING, EVENT_CERULEAN_CAPE_HIDDEN_PEARL_STRING
 	signpost 3, 18, SIGNPOST_ITEM + BOTTLE_CAP, EVENT_CERULEAN_CAPE_HIDDEN_BOTTLE_CAP
 
-.PersonEvents: db 15
-	person_event SPRITE_CERULEAN_CAPE_MISTY, 9, 8, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_25_MISTY_BOYFRIEND
-	person_event SPRITE_COOLTRAINER_M, 10, 8, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_25_MISTY_BOYFRIEND
+.PersonEvents: db 16
+	person_event SPRITE_MISTY, 9, 8, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CERULEAN_CAPE_BOYFRIEND
+	person_event SPRITE_VERMILION_LAWRENCE, 9, 8, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CERULEAN_CAPE_MISTY
+	person_event SPRITE_COOLTRAINER_M, 10, 8, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CERULEAN_CAPE_BOYFRIEND
 	person_event SPRITE_SWIMMER_GUY, 7, 25, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerSwimmermRomeo, -1
 	person_event SPRITE_SWIMMER_GUY, 16, 41, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerSwimmermMalcolm, -1
 	person_event SPRITE_SWIMMER_GUY, 23, 21, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerSwimmermArmand, -1
@@ -31,7 +32,7 @@ CeruleanCape_MapEventHeader:
 	person_event SPRITE_BEAUTY, 21, 1, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerBeautyVeronica, -1
 	person_event SPRITE_GENTLEMAN, 27, 0, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerGentlemanCamus, -1
 	person_event SPRITE_GENTLEMAN, 26, 41, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_TRAINER, 4, TrainerGentlemanGeoffrey, -1
-	person_event SPRITE_COOLTRAINER_F, 33, 14, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 1, TrainerGuitaristfMorgan, -1
+	person_event SPRITE_VERMILION_LAWRENCE, 32, 16, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_TRAINER, 4, TrainerGuitaristfMorgan, -1
 	person_event SPRITE_LADY, 26, 7, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerLadyJessica, -1
 	person_event SPRITE_FISHER, 11, 32, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherLeroy, -1
 	person_event SPRITE_COOLTRAINER_M, 8, -4, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_25_COOLTRAINER_M_BEFORE
@@ -40,45 +41,56 @@ CeruleanCape_MapEventHeader:
 
 const_value set 1
 	const CERULEANCAPE_MISTY
-	const CERULEANCAPE_MISTY_BOYFRIEND
+	const CERULEANCAPE_MISTY_WALK
+	const CERULEANCAPE_BOYFRIEND
 
 CeruleanCapeDateInterruptedTrigger1:
 	showemote EMOTE_HEART, CERULEANCAPE_MISTY, 15
 	pause 30
-	showemote EMOTE_SHOCK, CERULEANCAPE_MISTY_BOYFRIEND, 10
+	showemote EMOTE_SHOCK, CERULEANCAPE_BOYFRIEND, 10
 	spriteface CERULEANCAPE_MISTY, DOWN
-	applyonemovement CERULEANCAPE_MISTY_BOYFRIEND, big_step_down
-	disappear CERULEANCAPE_MISTY_BOYFRIEND
+	applyonemovement CERULEANCAPE_BOYFRIEND, big_step_down
+	disappear CERULEANCAPE_BOYFRIEND
 	pause 15
 	playmusic MUSIC_BEAUTY_ENCOUNTER
 	spriteface CERULEANCAPE_MISTY, UP
-	pause 10
-	applymovement CERULEANCAPE_MISTY, MovementData_0x19efed
+	variablesprite SPRITE_VERMILION_LAWRENCE, SPRITE_MISTY
+	special MapCallbackSprites_LoadUsedSpritesGFX
+	appear CERULEANCAPE_MISTY_WALK
+	spriteface CERULEANCAPE_MISTY_WALK, UP
+	disappear CERULEANCAPE_MISTY
+	pause 5
+	applymovement CERULEANCAPE_MISTY_WALK, MovementData_0x19efed
 	showtext UnknownText_0x19f006
-	spriteface PLAYER, DOWN
-	applymovement CERULEANCAPE_MISTY, MovementData_0x19effa
+	applymovement CERULEANCAPE_MISTY_WALK, MovementData_0x19effa
 	jump CeruleanCapeDateFinishScript
 
 CeruleanCapeDateInterruptedTrigger2:
 	showemote EMOTE_HEART, CERULEANCAPE_MISTY, 15
 	pause 30
-	showemote EMOTE_SHOCK, CERULEANCAPE_MISTY_BOYFRIEND, 10
+	showemote EMOTE_SHOCK, CERULEANCAPE_BOYFRIEND, 10
 	spriteface CERULEANCAPE_MISTY, DOWN
-	applymovement CERULEANCAPE_MISTY_BOYFRIEND, MovementData_0x19efea
-	disappear CERULEANCAPE_MISTY_BOYFRIEND
+	applymovement CERULEANCAPE_BOYFRIEND, MovementData_0x19efea
+	disappear CERULEANCAPE_BOYFRIEND
 	pause 15
 	playmusic MUSIC_BEAUTY_ENCOUNTER
 	spriteface CERULEANCAPE_MISTY, UP
-	pause 10
-	applymovement CERULEANCAPE_MISTY, MovementData_0x19eff4
+	variablesprite SPRITE_VERMILION_LAWRENCE, SPRITE_MISTY
+	special MapCallbackSprites_LoadUsedSpritesGFX
+	appear CERULEANCAPE_MISTY_WALK
+	spriteface CERULEANCAPE_MISTY_WALK, UP
+	disappear CERULEANCAPE_MISTY
+	pause 5
+	applymovement CERULEANCAPE_MISTY_WALK, MovementData_0x19eff4
 	showtext UnknownText_0x19f006
-	spriteface PLAYER, UP
-	applymovement CERULEANCAPE_MISTY, MovementData_0x19effd
+	applymovement CERULEANCAPE_MISTY_WALK, MovementData_0x19effd
 CeruleanCapeDateFinishScript:
 	spriteface PLAYER, LEFT
-	applymovement CERULEANCAPE_MISTY, MovementData_0x19f000
-	disappear CERULEANCAPE_MISTY
+	applymovement CERULEANCAPE_MISTY_WALK, MovementData_0x19f000
+	disappear CERULEANCAPE_MISTY_WALK
 	clearevent EVENT_TRAINERS_IN_CERULEAN_GYM
+	variablesprite SPRITE_VERMILION_LAWRENCE, SPRITE_COOLTRAINER_F
+	special MapCallbackSprites_LoadUsedSpritesGFX
 	dotrigger $0
 	special RestartMapMusic
 	end
@@ -86,22 +98,29 @@ CeruleanCapeDateFinishScript:
 CeruleanCapeDateInterruptedTrigger3:
 	showemote EMOTE_HEART, CERULEANCAPE_MISTY, 15
 	pause 30
-	spriteface CERULEANCAPE_MISTY_BOYFRIEND, DOWN
-	showemote EMOTE_SHOCK, CERULEANCAPE_MISTY_BOYFRIEND, 10
+	spriteface CERULEANCAPE_BOYFRIEND, DOWN
+	showemote EMOTE_SHOCK, CERULEANCAPE_BOYFRIEND, 10
 	spriteface CERULEANCAPE_MISTY, DOWN
-	applymovement CERULEANCAPE_MISTY_BOYFRIEND, .RunAwayMovement1
+	applymovement CERULEANCAPE_BOYFRIEND, .RunAwayMovement1
 	spriteface CERULEANCAPE_MISTY, UP
-	applymovement CERULEANCAPE_MISTY_BOYFRIEND, .RunAwayMovement2
-	disappear CERULEANCAPE_MISTY_BOYFRIEND
+	applymovement CERULEANCAPE_BOYFRIEND, .RunAwayMovement2
+	disappear CERULEANCAPE_BOYFRIEND
 	pause 15
 	playmusic MUSIC_BEAUTY_ENCOUNTER
 	spriteface CERULEANCAPE_MISTY, DOWN
-	pause 10
-	applymovement CERULEANCAPE_MISTY, .ApproachMovement
-	showtext UnknownText_0x19f006
-	applymovement CERULEANCAPE_MISTY, .LeaveMovement
+	variablesprite SPRITE_VERMILION_LAWRENCE, SPRITE_MISTY
+	special MapCallbackSprites_LoadUsedSpritesGFX
+	appear CERULEANCAPE_MISTY_WALK
+	spriteface CERULEANCAPE_MISTY_WALK, DOWN
 	disappear CERULEANCAPE_MISTY
+	pause 5
+	applymovement CERULEANCAPE_MISTY_WALK, .ApproachMovement
+	showtext UnknownText_0x19f006
+	applymovement CERULEANCAPE_MISTY_WALK, .LeaveMovement
+	disappear CERULEANCAPE_MISTY_WALK
 	clearevent EVENT_TRAINERS_IN_CERULEAN_GYM
+	variablesprite SPRITE_VERMILION_LAWRENCE, SPRITE_COOLTRAINER_F
+	special MapCallbackSprites_LoadUsedSpritesGFX
 	dotrigger $0
 	special RestartMapMusic
 	end

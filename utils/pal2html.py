@@ -28,14 +28,17 @@ def convert_to_html(content):
 	for line in content.split('\n'):
 		line = line.split(';')[0].lstrip()
 		if line.startswith('RGB'):
-			rgb = tuple(int(c, 10) * 8 for c in line[3:].split(','))
-			html += ('<span style="background: rgb(%d, %d, %d);">&nbsp;&nbsp;'
-				'&nbsp;&nbsp;&nbsp;</span>\n' % rgb)
-			n += 1
-			if not n % (4 * 8):
-				html += '</td>\n<td>\n'
-			elif not n % 4:
-				html += '<br>\n'
+			rgbs = [int(c, 10) * 8 for c in line[3:].split(',')]
+			assert not len(rgbs) % 3
+			while rgbs:
+				rgb, rgbs = tuple(rgbs[:3]), rgbs[3:]
+				html += ('<span style="background: rgb(%d, %d, %d);">&nbsp;&nbsp;'
+					'&nbsp;&nbsp;&nbsp;</span>\n' % rgb)
+				n += 1
+				if not n % (4 * 8):
+					html += '</td>\n<td>\n'
+				elif not n % 4:
+					html += '<br>\n'
 	html += '</td>\n</tr>\n</table>\n</body>\n</html>\n'
 	html = html.replace('<td>\n</td>\n', '')
 	return html

@@ -1,12 +1,10 @@
-; Replaces the functionality of sgb.asm to work with CGB hardware.
-
 Predef_LoadCGBLayout: ; 8d59
 	ld a, b
-	cp SCGB_RAM
+	cp CGB_RAM
 	jr nz, .not_ram
-	ld a, [wSGBPredef]
+	ld a, [wMemCGBLayout]
 .not_ram
-	cp SCGB_PARTY_MENU_HP_PALS
+	cp CGB_PARTY_MENU_HP_PALS
 	jp z, ApplyPartyMenuHPPals
 	call ResetBGPals
 	ld l, a
@@ -152,8 +150,8 @@ _CGB_BattleColors: ; 8ddb
 	ld a, $5
 	call FarCopyWRAM
 
-	ld a, SCGB_BATTLE_COLORS
-	ld [wSGBPredef], a
+	ld a, CGB_BATTLE_COLORS
+	ld [wMemCGBLayout], a
 	call ApplyPals
 
 _CGB_FinishBattleScreenLayout: ; 8e23
@@ -508,8 +506,8 @@ endc
 
 _CGB_MapPals: ; 91c8
 	call LoadMapPals
-	ld a, SCGB_MAPPALS
-	ld [wSGBPredef], a
+	ld a, CGB_MAPPALS
+	ld [wMemCGBLayout], a
 	ret
 ; 91d1
 
@@ -520,9 +518,9 @@ _CGB_PartyMenu: ; 91d1
 	call LoadHLPaletteIntoDE
 
 	ld hl, HPBarPals
-rept 3
 	call LoadHLPaletteIntoDE
-endr
+	call LoadHLPaletteIntoDE
+	call LoadHLPaletteIntoDE
 
 	ld hl, GenderAndExpBarPals
 	call LoadPalette_White_Col1_Col2_Black
@@ -633,9 +631,8 @@ endr
 	ld hl, TypeIconPals
 	ld c, a
 	ld b, 0
-rept 2
 	add hl, bc
-endr
+	add hl, bc
 	ld de, wUnknBGPals palette 0 + 6
 	ld bc, 2
 	ld a, $5

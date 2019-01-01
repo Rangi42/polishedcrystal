@@ -30,7 +30,7 @@ ClearTileMap:: ; fc8
 
 	; Update the BG Map.
 	ld a, [rLCDC]
-	bit 7, a
+	bit 7, a ; lcd on?
 	ret z
 	jp WaitBGMap
 ; fdb
@@ -110,12 +110,10 @@ TextBoxPalette:: ; 1024
 ; Fill text box width c height b at hl with pal 7
 	ld de, wAttrMap - wTileMap
 	add hl, de
-rept 2
 	inc b
-endr
-rept 2
+	inc b
 	inc c
-endr
+	inc c
 	ld a, PAL_BG_TEXT
 .col
 	push bc
@@ -493,12 +491,10 @@ TextScroll:: ; 138c
 	dec c
 	jr nz, .row
 
-rept 2
 	inc de
-endr
-rept 2
+	inc de
 	inc hl
-endr
+	inc hl
 	pop af
 	dec a
 	jr nz, .col
@@ -578,9 +574,8 @@ DoTextUntilTerminator:: ; 13f6
 	ld c, a
 	ld b, 0
 	ld hl, TextCommands
-rept 2
 	add hl, bc
-endr
+	add hl, bc
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
@@ -843,9 +838,8 @@ Text_PlaySound:: ; 1500
 	jr z, .done
 	cp b
 	jr z, .play
-rept 2
 	inc hl
-endr
+	inc hl
 	jr .loop
 
 .play
@@ -958,9 +952,8 @@ Text_WeekDay:: ; 1582
 	ld c, a
 	ld b, 0
 	ld hl, .Days
-rept 2
 	add hl, bc
-endr
+	add hl, bc
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a

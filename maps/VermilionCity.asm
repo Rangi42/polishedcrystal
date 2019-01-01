@@ -38,8 +38,8 @@ VermilionCity_MapEventHeader:
 
 .PersonEvents: db 14
 	person_event SPRITE_BIG_SNORLAX, 18, 35, SPRITEMOVEDATA_SNORLAX, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, VermilionSnorlax, EVENT_VERMILION_CITY_SNORLAX
-	person_event SPRITE_LAWRENCE, 28, 19, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LAWRENCE_VERMILION_CITY
-	person_event SPRITE_COOLTRAINER_F, 13, 18, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1aaa15, -1
+	person_event SPRITE_VERMILION_LAWRENCE, 28, 19, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LAWRENCE_VERMILION_CITY
+	person_event SPRITE_VERMILION_LAWRENCE, 13, 18, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1aaa15, -1
 	person_event SPRITE_GRAMPS, 10, 23, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, VermilionMachokeOwnerText, -1
 	person_event SPRITE_MACHOKE, 11, 26, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT, 0, VermilionMachoke, -1
 	person_event SPRITE_ROCKER, 20, 14, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, (1 << 3) | PAL_OW_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1aab1a, -1
@@ -75,6 +75,8 @@ LawrenceLeftIntroScript:
 	applymovement VERMILIONCITY_LAWRENCE, LawrenceDepartLeftMovementData
 	playsound SFX_EXIT_BUILDING
 	disappear VERMILIONCITY_LAWRENCE
+	variablesprite SPRITE_VERMILION_LAWRENCE, SPRITE_COOLTRAINER_F
+	special MapCallbackSprites_LoadUsedSpritesGFX
 	dotrigger $1
 	setflag ENGINE_FLYPOINT_VERMILION
 	special RestartMapMusic
@@ -99,6 +101,8 @@ LawrenceRightIntroScript:
 	applymovement VERMILIONCITY_LAWRENCE, LawrenceDepartRightMovementData
 	playsound SFX_EXIT_BUILDING
 	disappear VERMILIONCITY_LAWRENCE
+	variablesprite SPRITE_VERMILION_LAWRENCE, SPRITE_COOLTRAINER_F
+	special MapCallbackSprites_LoadUsedSpritesGFX
 	dotrigger $1
 	setflag ENGINE_FLYPOINT_VERMILION
 	special RestartMapMusic

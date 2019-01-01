@@ -390,9 +390,8 @@ rept SPRITEMOVEDATA_FIELDS
 endr
 	ld a, BANK(SpriteMovementData)
 	call GetFarByte
-rept 2
 	add a
-endr
+	add a
 	and $c
 	pop de
 	pop bc

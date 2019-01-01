@@ -147,9 +147,8 @@ _Jumptable:
 	push de
 	ld e, a
 	ld d, 0
-rept 2
 	add hl, de
-endr
+	add hl, de
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
@@ -562,10 +561,9 @@ endc
 	ret
 ; 333e
 
-GetMemSGBLayout:: ; 333e
-	ld b, SCGB_RAM
-GetSGBLayout:: ; 3340
-; load sgb packets unless dmg
+GetMemCGBLayout:: ; 333e
+	ld b, CGB_RAM
+GetCGBLayout:: ; 3340
 	predef_jump Predef_LoadCGBLayout
 ; 334e
 
@@ -578,15 +576,14 @@ SetHPPal:: ; 334e
 
 GetHPPal:: ; 3353
 ; Get palette for hp bar pixel length e in d.
-
 	ld d, HP_GREEN
 	ld a, e
 	cp (50 * 48 / 100)
 	ret nc
-	inc d ; yellow
+	inc d ; HP_YELLOW
 	cp (21 * 48 / 100)
 	ret nc
-	inc d ; red
+	inc d ; HP_RED
 	ret
 ; 335f
 
@@ -665,9 +662,9 @@ GetName:: ; 33c3
 	ld e, a
 	ld d, 0
 	ld hl, NamesPointers
-rept 3
 	add hl, de
-endr
+	add hl, de
+	add hl, de
 	ld a, [hli]
 	rst Bankswitch
 	ld a, [hli]

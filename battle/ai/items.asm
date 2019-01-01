@@ -206,9 +206,9 @@ AI_TryItem: ; 38105
 	cp [hl]
 	jr z, .has_item
 
-rept 3
 	inc hl
-endr
+	inc hl
+	inc hl
 	jr .loop
 
 .has_item
@@ -226,9 +226,8 @@ endr
 	pop de
 	pop hl
 
-rept 2
 	inc hl
-endr
+	inc hl
 	jr c, .loop
 
 .used_item

@@ -323,8 +323,8 @@ LinkTimeout: ; 283b2
 	call PlaceWholeStringInBoxAtOnce
 	call RotateThreePalettesRight
 	call ClearScreen
-	ld b, SCGB_DIPLOMA
-	call GetSGBLayout
+	ld b, CGB_DIPLOMA
+	call GetCGBLayout
 	jp WaitBGMap2
 ; 283ed
 
@@ -403,9 +403,9 @@ FixDataForLinkTransfer: ; 28434
 	jr nz, .loop2
 	ld hl, wLinkMisc
 	ld a, SERIAL_PREAMBLE_BYTE
-rept 3
 	ld [hli], a
-endr
+	ld [hli], a
+	ld [hli], a
 	ld b, $c8
 	xor a
 .loop3
@@ -652,9 +652,9 @@ InitTradeMenuDisplay: ; 287e3
 	call InitTradeSpeciesList
 	xor a
 	ld hl, wOtherPlayerLinkMode
-rept 3
 	ld [hli], a
-endr
+	ld [hli], a
+	ld [hli], a
 	ld [hl], a
 	ld a, 1
 	ld [wMenuCursorY], a
@@ -1341,8 +1341,8 @@ Function28ade: ; 28ade
 Function28b22: ; 28b22
 	call RotateThreePalettesRight
 	call ClearScreen
-	ld b, SCGB_DIPLOMA
-	call GetSGBLayout
+	ld b, CGB_DIPLOMA
+	call GetCGBLayout
 	call WaitBGMap2
 	xor a
 	ld [rSB], a
@@ -1620,8 +1620,8 @@ LinkTrade: ; 28b87
 	call DelayFrames
 	call ClearTileMap
 	call LoadFontsBattleExtra
-	ld b, SCGB_DIPLOMA
-	call GetSGBLayout
+	ld b, CGB_DIPLOMA
+	call GetCGBLayout
 	ld a, [hSerialConnectionStatus]
 	cp USING_EXTERNAL_CLOCK
 	jr z, .player_2

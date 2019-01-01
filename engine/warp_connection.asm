@@ -259,7 +259,7 @@ LoadMapTimeOfDay: ; 104750
 	call ByteFill
 	pop af
 	ld [rVBK], a
-	ld a, $60
+	ld a, "<BLACK>"
 	ld bc, VBGMap1 - VBGMap0
 	hlbgcoord 0, 0
 	jp ByteFill
@@ -301,8 +301,8 @@ LoadGraphics: ; 1047cf
 	jp LoadStandardFont
 
 LoadMapPalettes: ; 1047eb
-	ld b, SCGB_MAPPALS
-	jp GetSGBLayout
+	ld b, CGB_MAPPALS
+	jp GetCGBLayout
 ; 1047f0
 
 RefreshMapSprites: ; 1047f0

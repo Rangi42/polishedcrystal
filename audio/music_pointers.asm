@@ -1,3 +1,4 @@
+Music:
 	dba Music_Nothing
 	dba Music_CrystalOpening
 	dba Music_TitleScreen
@@ -156,6 +157,7 @@
 	dba Music_SummoningDanceHGSS
 	dba Music_HoOhBattleHGSS
 	dba Music_CeruleanCaveRBY
+	dba Music_MewtwoBattleStadium
 	dba Music_AbandonedShipRSE
 	dba Music_KantoLegendBattleXY
 	dba Music_GymLeaderBattleRSE

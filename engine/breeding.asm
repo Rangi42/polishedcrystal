@@ -459,9 +459,8 @@ GLOBAL EggMoves
 	ld c, a
 	ld b, 0
 	ld hl, EggMovePointers
-rept 2
 	add hl, bc
-endr
+	add hl, bc
 	ld a, BANK(EggMovePointers)
 	call GetFarHalfword
 .loop
@@ -807,8 +806,8 @@ EggHatch_AnimationSequence: ; 1728f (5:728f)
 
 Hatch_LoadFrontpicPal: ; 17363 (5:7363)
 	ld [wPlayerHPPal], a
-	lb bc, SCGB_EVOLUTION, $0
-	jp GetSGBLayout
+	lb bc, CGB_EVOLUTION, $0
+	jp GetCGBLayout
 
 EggHatch_CrackShell: ; 1736d (5:736d)
 	ld a, [wcf64]

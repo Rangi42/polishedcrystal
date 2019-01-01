@@ -38,7 +38,6 @@ GetBGMapTilePalettes::
 	jr nz, .loop
 	ret
 
-INCLUDE "tilesets/palette_maps.asm"
+INCLUDE "gfx/tilesets/palette_maps.asm"
 
-TileCollisionTable:: ; 4ce1f
-INCLUDE "tilesets/collision.asm"
+INCLUDE "data/collision_permissions.asm"

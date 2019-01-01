@@ -1,0 +1,7 @@
+XItemStats:
+	db X_ATTACK,   $10 | ATTACK
+	db X_DEFEND,   $10 | DEFENSE
+	db X_SPEED,    $10 | SPEED
+	db X_SPCL_ATK, $10 | SP_ATTACK
+	db X_SPCL_DEF, $10 | SP_DEFENSE
+	db X_ACCURACY, $10 | ACCURACY
