@@ -431,7 +431,7 @@ ApplyTilemap:: ; 321c
 ; WaitBGMap
 	ld a, 1
 	ld [hBGMapMode], a
-	ld c, 4
+	ld c, 3
 	jp DelayFrames
 ; 3238
 
