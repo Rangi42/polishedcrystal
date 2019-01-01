@@ -522,7 +522,7 @@ CheckWhiteHerb:
 	call GetItemName
 	ld hl, RegainedStatsWithItem
 	call StdBattleTextBox
-	farjp ConsumeUserItem
+	jp ConsumeUserItem
 
 CheckPowerHerb:
 	call GetUserItemAfterUnnerve
@@ -550,7 +550,7 @@ CheckPowerHerb:
 
 	ld hl, BattleText_UserChargedWithItem
 	call StdBattleTextBox
-	farcall ConsumeUserItem
+	call ConsumeUserItem
 	jp ResetTurn
 
 OpponentCantMove: ; 34216
@@ -2824,7 +2824,7 @@ BattleCommand_SuperEffectiveText: ; 351ad
 	ld a, SP_ATTACK
 	call .print_msg
 .satk_msg_done
-	farcall ConsumeUserItem
+	call ConsumeUserItem
 .end
 	pop hl
 	jp SwitchTurn
@@ -2834,6 +2834,90 @@ BattleCommand_SuperEffectiveText: ; 351ad
 	farcall GetStatName
 	ld hl, BattleText_ItemSharplyRaised
 	jp StdBattleTextBox
+
+ConsumeEnemyItem::
+	call SwitchTurn
+	call ConsumeUserItem
+	jp SwitchTurn
+
+ConsumeUserItem::
+	ld a, [hBattleTurn]
+	and a
+	ld a, [wCurBattleMon]
+	ld de, wBattleMonItem
+	ld hl, wPartyMon1Item
+	jr z, .got_item_pointers
+	ld a, [wCurOTMon]
+	ld de, wEnemyMonItem
+	ld hl, wOTPartyMon1Item
+.got_item_pointers
+	call GetPartyLocation
+
+	; Air Balloons are consumed permanently, so don't write it to UsedItems
+	ld a, [de]
+	cp AIR_BALLOON
+	jr z, .consume_item
+	push hl
+	push af
+	call GetUsedItemAddr
+	pop af
+	ld [hl], a
+	pop hl
+
+.consume_item
+	xor a
+	ld [de], a
+
+	; Wildmons has no wOTPartyMon1Item, but we want to consume our own items still
+	ld a, [hBattleTurn]
+	and a
+	jr z, .has_party_struct
+
+	ld a, [wBattleMode]
+	dec a
+	jr z, .apply_unburden
+
+.has_party_struct
+	ld a, [hl]
+	ld d, a
+	xor a
+	ld [hl], a
+	ld a, [hBattleTurn]
+	and a
+	jr nz, .apply_unburden
+
+	; For players, maybe remove the backup item too if we're dealing with a berry
+	ld a, d
+	ld [wCurItem], a
+	push de
+	push bc
+	farcall CheckItemPocket
+	pop bc
+	pop de
+	ld a, [wItemAttributeParamBuffer]
+	cp BERRIES
+	jr nz, .apply_unburden
+	call GetBackupItemAddr
+
+	; If the backup is different, don't touch it. This prevents consuming i.e. Focus Sash
+	; under the following scenario: Sash procs, steal an Oran Berry, use the Oran Berry
+	ld a, [hl]
+	cp d
+	jr nz, .apply_unburden
+	xor a
+	ld [hl], a
+
+.apply_unburden
+	; Unburden doubles Speed when an item is consumed
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	cp UNBURDEN
+	ret nz
+
+	ld a, BATTLE_VARS_SUBSTATUS1
+	call GetBattleVarAddr
+	set SUBSTATUS_UNBURDEN, [hl]
+	ret
 
 BattleCommand_PostFaintEffects:
 ; Effects that run after faint by an attack (Destiny Bond, Moxie, Aftermath, etc)

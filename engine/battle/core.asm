@@ -4255,7 +4255,7 @@ HandleStatBoostBerry:
 	farcall GetStatName
 	ld hl, BattleText_ItemRaised
 	call StdBattleTextBox
-	jp ConsumeUserItem
+	farjp ConsumeUserItem
 
 HandleHPHealingItem:
 	; only restore HP if HP<=1/2
@@ -4301,7 +4301,7 @@ UseBattleItem:
 	call GetItemName
 	ld hl, RecoveredUsingText
 	call StdBattleTextBox
-	jp ConsumeUserItem
+	farjp ConsumeUserItem
 
 ItemRecoveryAnim::
 	push hl
