@@ -1,7 +1,8 @@
 ; Written by Sanqui
 ; https://github.com/froggestspirit/CrystalComplete/blob/master/misc/musicplayer.asm
 
-INCLUDE "includes.asm"
+INCLUDE "constants.asm"
+
 
 MP_METER0 EQU $20
 MP_METER8 EQU $28

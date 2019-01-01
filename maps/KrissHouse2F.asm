@@ -292,9 +292,9 @@ FillPokedex:
 	ld a, 1
 	ld [wFirstUnownSeen], a
 	ld [wFirstMagikarpSeen], a
-	ld hl, PokedexSeen
+	ld hl, wPokedexSeen
 	call .Fill
-	ld hl, PokedexCaught
+	ld hl, wPokedexCaught
 .Fill:
 	ld a, %11111111
 	ld bc, 31 ; 001-248

@@ -1,8 +1,12 @@
+if DEF(HGSS) && DEF(MONOCHROME)
+fail "'make hgss' and 'make monochrome' are incompatible."
+endc
+
 INCLUDE "macros.asm"
 
-INCLUDE "gbhw.asm"
-INCLUDE "hram.asm"
+INCLUDE "ram/hram.asm"
 
+INCLUDE "constants/hardware_constants.asm"
 INCLUDE "constants/wram_constants.asm"
 INCLUDE "constants/pokemon_constants.asm"
 INCLUDE "constants/type_constants.asm"
