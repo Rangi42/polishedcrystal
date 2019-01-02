@@ -1598,6 +1598,15 @@ HealAllStatusAbility:
 	jp HealStatusAbility
 
 AngerPointAbility:
+; preserves attack miss result to avoid multi-hit moves aborting
+	ld a, [wAttackMissed]
+	push af
+	call _AngerPointAbility
+	pop af
+	ld [wAttackMissed], a
+	ret
+
+_AngerPointAbility:
 	call DisableAnimations
 	farcall ResetMiss
 	farcall BattleCommand_AttackUp2
