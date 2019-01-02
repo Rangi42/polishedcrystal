@@ -1598,7 +1598,7 @@ HealAllStatusAbility:
 	jp HealStatusAbility
 
 AngerPointAbility:
-; preserves move failure flags to avoid multihit moves aborting
+; preserves attack miss result to avoid multi-hit moves aborting
 	ld a, [AttackMissed]
 	push af
 	call _AngerPointAbility

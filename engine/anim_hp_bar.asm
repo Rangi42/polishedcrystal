@@ -370,7 +370,6 @@ ShortHPBar_CalcPixelFrame: ; d839
 	ld a, h
 	sbc $0
 	ld h, a
-	jr z, .done
 	jr c, .done
 	inc b
 	jr .loop
