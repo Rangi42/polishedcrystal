@@ -5869,15 +5869,12 @@ MoveInfoBox: ; 3e6c8
 
 	hlcoord 0, 8
 	; Check if we've already created the move info textbox.
-	; If we haven't, run TextBox, and (after writing out all data),
-	; WaitBGMap. Not needed for disabled moves since there's no icons.
+	; If we haven't, run WaitBGMap later to avoid pokémon pallet issues
 	ld a, [hl]
 	cp "┌"
 	push af
-	jr z, .textbox_ok
 	lb bc, 3, 9
 	call TextBox
-.textbox_ok
 
 	ld a, [wPlayerDisableCount]
 	and a
