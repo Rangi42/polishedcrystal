@@ -2904,7 +2904,7 @@ BattleCommand_PostFaintEffects:
 
 BattleCommand_PostHitEffects:
 ; This can run even if someone is fainted. Take this into account.
-	call HasEnemyFainted
+	call HasOpponentFainted
 	jr z, .skip_sub_check
 	call CheckSubstituteOpp
 	ret nz
@@ -2917,7 +2917,7 @@ BattleCommand_PostHitEffects:
 	farcall RunHitAbilities
 
 	; Burst air balloons
-	call HasEnemyFainted
+	call HasOpponentFainted
 	jr z, .air_balloon_done
 	call CheckAirBalloon
 	jr nz, .air_balloon_done
@@ -2927,7 +2927,7 @@ BattleCommand_PostHitEffects:
 	call ConsumeEnemyItem
 
 .air_balloon_done
-	call HasEnemyFainted
+	call HasOpponentFainted
 	jr z, .rage_done
 	ld a, BATTLE_VARS_SUBSTATUS4_OPP
 	call GetBattleVar
@@ -2993,7 +2993,7 @@ BattleCommand_PostHitEffects:
 	jp .checkfaint
 .flinch_up
 	; Ensure that the move doesn't already have a flinch rate.
-	call HasEnemyFainted
+	call HasOpponentFainted
 	ret z
 	ld a, BATTLE_VARS_MOVE_EFFECT
 	call GetBattleVar
