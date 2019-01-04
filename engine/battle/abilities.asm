@@ -864,12 +864,10 @@ StatUpAbility:
 	ret z
 	ld a, [wAttackMissed]
 	push af
-	xor a
-	ld [wAttackMissed], a
 	call DisableAnimations
 	farcall ResetMiss
 	farcall BattleCommand_StatUp
-	ld a, [wFailedMessage]
+	ld a, [wAttackMissed]
 	and a
 	jr nz, .cant_raise
 	call ShowAbilityActivation
