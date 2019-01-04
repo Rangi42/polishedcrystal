@@ -1,4 +1,8 @@
 _AnimateHPBar:
+; Code in here treat the HP bar for update frequency as
+; if it had 96 pixels. This makes the HP bar animate
+; in 30fps (60fps makes it too fast), while numbers update
+; at 60fps frequency.
 	call .ComputePixels
 .loop
 	push bc

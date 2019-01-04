@@ -48,6 +48,7 @@ EMOTE_OBJECT EQU 7
 ; object_struct OBJECT_FLAGS2 bit flags
 INVISIBLE    EQU 0
 OVERHEAD     EQU 3
+OBJECT_DISABLE_STEP_TYPE EQU 5
 
 
 ; map object struct
