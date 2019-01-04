@@ -777,7 +777,7 @@ MapObjectMovementPattern:
 	ld hl, OBJECT_RANGE
 	add hl, bc
 	ld a, [hl]
-	ld a, $10
+	ld a, $20
 	ld hl, OBJECT_STEP_DURATION
 	add hl, bc
 	ld [hl], a
@@ -1027,14 +1027,14 @@ MapObjectMovementPattern:
 RandomStepDuration_Slow: ; 4b1d
 	call Random
 	ld a, [hRandomAdd]
-	and %01111111
+	and $fe
 	jr SetRandomStepDuration
 ; 4b26
 
 RandomStepDuration_Fast: ; 4b26
 	call Random
 	ld a, [hRandomAdd]
-	and %00011111
+	and $3e
 SetRandomStepDuration: ; 4b2d
 	ld hl, OBJECT_STEP_DURATION
 	add hl, bc
