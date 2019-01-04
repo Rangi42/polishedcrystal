@@ -29,6 +29,8 @@ _AnimateHPBar:
 	ld a, [hli]
 	ld b, a
 	pop hl
+	sla c
+	rl b
 	call ComputeHPBarPixels
 	ld a, e
 	ld [wCurHPBarPixels], a
@@ -41,6 +43,8 @@ _AnimateHPBar:
 	ld e, a
 	ld a, [wCurHPAnimMaxHP + 1]
 	ld d, a
+	sla c
+	rl b
 	call ComputeHPBarPixels
 	ld a, e
 	ld [wNewHPBarPixels], a
@@ -110,7 +114,7 @@ HPBarAnim_UpdateVariables:
 .incdecdone
 	dec hl
 	ld [hl], a
-; wCurHPAnimOldHP = a * wCurHPAnimMaxHP / 48
+; wCurHPAnimOldHP = a * wCurHPAnimMaxHP / (48 * 2)
 	ld [hMultiplier], a
 	xor a
 	ld [hMultiplicand], a
@@ -119,7 +123,7 @@ HPBarAnim_UpdateVariables:
 	ld a, [wCurHPAnimMaxHP]
 	ld [hMultiplicand + 2], a
 	call Multiply
-	ld a, 48
+	ld a, 48 * 2
 	ld [hDivisor], a
 	ld b, 4
 	call Divide
@@ -144,6 +148,7 @@ HPBarAnim_UpdateVariables:
 HPBarAnim_UpdateTiles:
 	call HPBarAnim_UpdateHPRemaining
 	ld a, [wCurHPBarPixels]
+	srl a
 	ld c, a
 	ld e, a
 	ld d, 6
