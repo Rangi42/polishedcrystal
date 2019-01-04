@@ -596,22 +596,22 @@ Movement_turn_in_right: ; 535f
 ; 5364
 
 Movement_turn_waterfall_down: ; 5364
-	ld a, STEP_BIKE << 2 | DOWN
+	ld a, STEP_WALK << 2 | DOWN
 	jp TurningStep
 ; 5369
 
 Movement_turn_waterfall_up: ; 5369
-	ld a, STEP_BIKE << 2 | UP
+	ld a, STEP_WALK << 2 | UP
 	jp TurningStep
 ; 536e
 
 Movement_turn_waterfall_left: ; 536e
-	ld a, STEP_BIKE << 2 | LEFT
+	ld a, STEP_WALK << 2 | LEFT
 	jp TurningStep
 ; 5373
 
 Movement_turn_waterfall_right: ; 5373
-	ld a, STEP_BIKE << 2 | RIGHT
+	ld a, STEP_WALK << 2 | RIGHT
 	jp TurningStep
 ; 5378
 
@@ -657,22 +657,22 @@ Movement_slide_step_right: ; 539b
 ; 53a0
 
 Movement_fast_slide_step_down: ; 53a0
-	ld a, STEP_BIKE << 2 | DOWN
+	ld a, STEP_RUN << 2 | DOWN
 	jp SlideStep
 ; 53a5
 
 Movement_fast_slide_step_up: ; 53a5
-	ld a, STEP_BIKE << 2 | UP
+	ld a, STEP_RUN << 2 | UP
 	jp SlideStep
 ; 53aa
 
 Movement_fast_slide_step_left: ; 53aa
-	ld a, STEP_BIKE << 2 | LEFT
+	ld a, STEP_RUN << 2 | LEFT
 	jp SlideStep
 ; 53af
 
 Movement_fast_slide_step_right: ; 53af
-	ld a, STEP_BIKE << 2 | RIGHT
+	ld a, STEP_RUN << 2 | RIGHT
 	jp SlideStep
 ; 53b4
 
