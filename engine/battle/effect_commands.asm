@@ -2837,15 +2837,7 @@ BattleCommand_SuperEffectiveText: ; 351ad
 
 BattleCommand_PostFaintEffects:
 ; Effects that run after faint by an attack (Destiny Bond, Moxie, Aftermath, etc)
-	ld hl, EnemyMonHP
-	ld a, [hBattleTurn]
-	and a
-	jr z, .got_hp
-	ld hl, BattleMonHP
-
-.got_hp
-	ld a, [hli]
-	or [hl]
+	call HasOpponentFainted
 	ret nz
 
 	ld a, BATTLE_VARS_SUBSTATUS2_OPP
