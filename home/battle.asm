@@ -641,9 +641,9 @@ CheckIfTargetIsDarkType::
 	jr CheckIfTargetIsSomeType
 CheckIfTargetIsRockType::
 	ld a, ROCK
-;	jr CheckIfTargetIsSomeType
-;CheckIfTargetIsGroundType::
-;	ld a, GROUND
+	jr CheckIfTargetIsSomeType
+CheckIfTargetIsGhostType::
+	ld a, GHOST
 CheckIfTargetIsSomeType::
 	ld b, a
 	ld a, [hBattleTurn]

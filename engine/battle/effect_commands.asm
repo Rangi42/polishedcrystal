@@ -6876,6 +6876,8 @@ BattleCommand_TrapTarget: ; 36c2d
 	ret nz
 	call CheckSubstituteOpp
 	ret nz
+	call CheckIfTargetIsGhostType
+	ret z
 	push bc
 	push de
 	push hl
@@ -8148,23 +8150,29 @@ INCLUDE "engine/battle/effect_commands/thief.asm"
 BattleCommand_ArenaTrap: ; 37517
 ; arenatrap
 
-; Doesn't work on an absent opponent.
-
+	; Doesn't work on an absent opponent.
 	call CheckHiddenOpponent
 	jr nz, .failed
 
-; Don't trap if the opponent is already trapped.
-
+	; Don't trap if the opponent is already trapped.
 	ld a, BATTLE_VARS_SUBSTATUS2
 	call GetBattleVarAddr
 	bit SUBSTATUS_CANT_RUN, [hl]
 	jr nz, .failed
 
-; Otherwise trap the opponent.
+	; Don't trap Ghost types
+	call CheckIfTargetIsGhostType
+	jr z, .immune
 
+	; Otherwise trap the opponent.
 	set SUBSTATUS_CANT_RUN, [hl]
 	call AnimateCurrentMove
 	ld hl, CantEscapeNowText
+	jp StdBattleTextBox
+
+.immune
+	call AnimateFailedMove
+	ld hl, DoesntAffectText
 	jp StdBattleTextBox
 
 .failed

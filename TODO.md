@@ -82,12 +82,6 @@ Shamouti Island:
 * Shamouti Restaurant (works like Seven Stars Restaurant) (different subset of all trainers every day of the week)
 
 
-### Item effects
-
-* Jaboca/Rowap Berry damages the foe if they hit you with a physical/special move
-* Kee/Maranga Berry raises Defense/Special Defense if hit with a physical/special move
-
-
 ### Move effects
 
 * Bug Bite eats and uses the foe's held Berry
@@ -96,7 +90,6 @@ Shamouti Island:
 * Body Slam does double damage against Minimize
 * Stomp and Body Slam never miss against Minimize
 * Destiny Bond's success chance halves every successive turn it's used (Gen VII)
-* Ghost-type Pokémon are immune to the trapping effects of Mean Look, Clamp, Fire Spin, Whirlpool, and Wrap
 * Rock Smash breaks screens instead of lowering Defense (like Brick Break) (non-Faithful)
 
 
