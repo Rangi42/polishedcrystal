@@ -124,7 +124,7 @@ BattleText_UserAteItem:
 	text "<USER>"
 	line "ate"
 	cont "@"
-	text_from_ram StringBuffer1
+	text_from_ram wStringBuffer1
 	text "."
 	prompt
 

@@ -3050,13 +3050,13 @@ BattleCommand_PostHitEffects:
 .got_stat
 	call SwitchTurn
 	call BattleCommand_StatUp
-	ld a, [FailedMessage]
+	ld a, [wFailedMessage]
 	and a
 	jr nz, .defend_hit_done
 	farcall ItemRecoveryAnim
 	call GetUserItemAfterUnnerve
 	call GetItemName
-	ld a, [LoweredStat]
+	ld a, [wLoweredStat]
 	and $f
 	ld b, a
 	inc b
@@ -7681,7 +7681,7 @@ BattleCommand_BugBite:
 	; there are non-edible ones which we'll still eat (with no effect)
 	call GetOpponentItem
 	ld a, [hl]
-	ld [CurItem], a
+	ld [wCurItem], a
 	push bc
 	push hl
 	farcall CheckItemPocket
