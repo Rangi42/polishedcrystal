@@ -4292,6 +4292,8 @@ _HeldStatBoostBerry:
 	ret
 
 StealHPHealingItem:
+	call CheckFullHP
+	ret z
 	farcall GetOpponentItem
 	call _HeldHPHealingItem
 	ret z
