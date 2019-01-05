@@ -7573,7 +7573,6 @@ BattleCommand_KnockOff:
 	call ItemIsMail
 	ret c
 
-	ld [wNamedObjectIndexBuffer], a
 	xor a
 	ld [hl], a
 	call GetItemName
