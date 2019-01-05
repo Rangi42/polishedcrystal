@@ -774,9 +774,6 @@ MapObjectMovementPattern:
 	ld hl, OBJECT_ACTION
 	add hl, bc
 	ld [hl], PERSON_ACTION_STAND
-	ld hl, OBJECT_RANGE
-	add hl, bc
-	ld a, [hl]
 	ld a, $20
 	ld hl, OBJECT_STEP_DURATION
 	add hl, bc
@@ -984,6 +981,7 @@ MapObjectMovementPattern:
 ._MovementScreenShake:
 	ld d, a
 	and %00111111
+	add a
 	ld e, a
 	ld a, d
 	rlca
@@ -1186,7 +1184,7 @@ TeleportFrom: ; 4c18
 	ld [hl], 0
 	ld hl, OBJECT_STEP_DURATION
 	add hl, bc
-	ld [hl], 16
+	ld [hl], 32
 	call IncrementObjectStructField28
 .DoSpin:
 	ld hl, OBJECT_ACTION
@@ -1204,10 +1202,10 @@ TeleportFrom: ; 4c18
 	ld [hl], 0
 	ld hl, OBJECT_31
 	add hl, bc
-	ld [hl], $10
+	ld [hl], $20
 	ld hl, OBJECT_STEP_DURATION
 	add hl, bc
-	ld [hl], 16
+	ld [hl], 32
 	ld hl, OBJECT_FLAGS2
 	add hl, bc
 	res OVERHEAD, [hl]
@@ -1258,7 +1256,7 @@ TeleportTo: ; 4c89
 	ld [hl], PERSON_ACTION_00
 	ld hl, OBJECT_STEP_DURATION
 	add hl, bc
-	ld [hl], 16
+	ld [hl], 32
 	jp IncrementObjectStructField28
 ; 4caa
 
@@ -1277,7 +1275,7 @@ TeleportTo: ; 4c89
 	ld [hl], 0
 	ld hl, OBJECT_STEP_DURATION
 	add hl, bc
-	ld [hl], 16
+	ld [hl], 32
 	jp IncrementObjectStructField28
 ; 4cc9
 
@@ -1304,7 +1302,7 @@ TeleportTo: ; 4c89
 .InitFinalSpin:
 	ld hl, OBJECT_STEP_DURATION
 	add hl, bc
-	ld [hl], 16
+	ld [hl], 32
 	jp IncrementObjectStructField28
 ; 4cf5
 
@@ -1573,10 +1571,10 @@ PlayerOrNPCTurnStep: ; 4e83
 	ld hl, OBJECT_STEP_FRAME
 	add hl, bc
 	ld a, [hl]
-	ld [hl], 2
+	ld [hl], 4
 	ld hl, OBJECT_STEP_DURATION
 	add hl, bc
-	ld [hl], 2
+	ld [hl], 4
 	call IncrementObjectStructField28
 .step1
 	ld hl, OBJECT_STEP_DURATION
@@ -1593,7 +1591,7 @@ PlayerOrNPCTurnStep: ; 4e83
 	ld [hl], a
 	ld hl, OBJECT_STEP_DURATION
 	add hl, bc
-	ld [hl], 2
+	ld [hl], 4
 	call IncrementObjectStructField28
 .step2
 	ld hl, OBJECT_STEP_DURATION
@@ -2397,11 +2395,8 @@ RefreshPlayerSprite: ; 579d
 .TryResetPlayerAction: ; 57bc
 	ld hl, wPlayerSpriteSetupFlags
 	bit 7, [hl]
-	jr nz, .ok
-	ret
-
-.ok
-	ld a, PERSON_ACTION_00
+	ret z
+	xor a
 	ld [wPlayerAction], a
 	ret
 ; 57ca
@@ -2427,11 +2422,6 @@ ContinueSpawnFacing: ; 57db
 SetPlayerPalette: ; 57e2
 	and %10000000
 	ret z
-	ld a, d
-	ld hl, OBJECT_FACING
-	ld a, [hl]
-	or d
-	ld [hl], a
 	ld a, d
 	swap a
 	and %00000111
@@ -2555,7 +2545,7 @@ SetFlagsForMovement_2:: ; 5897
 	ret
 ; 58b9
 
-Function58b9:: ; 58b9
+ReleaseAllMapObjects:: ; 58b9
 	push bc
 	ld bc, wObjectStructs
 	xor a

@@ -242,7 +242,6 @@ SuicuneFrameIterator: ; 10eea7
 	call LoadSuicuneFrame
 	ld a, $1
 	ld [hBGMapMode], a
-	ld a, $3
 	ld [hBGMapHalf], a
 	ret
 ; 10eece

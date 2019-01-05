@@ -189,7 +189,7 @@ Credits:: ; 109847
 	xor a
 	call ByteFill
 
-	ld a, rSCX - $ff00
+	ld a, rSCX & $ff
 	ld [hLCDCPointer], a
 
 	call GetCreditsPalette

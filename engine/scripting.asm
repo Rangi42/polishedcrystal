@@ -33,7 +33,7 @@ WaitScript:
 	dec [hl]
 	ret nz
 
-	farcall Function58b9
+	farcall ReleaseAllMapObjects
 
 	ld a, SCRIPT_READ
 	ld [wScriptMode], a
@@ -46,7 +46,7 @@ WaitScriptMovement:
 	bit 7, [hl]
 	ret nz
 
-	farcall Function58b9
+	farcall ReleaseAllMapObjects
 
 	ld a, SCRIPT_READ
 	ld [wScriptMode], a

@@ -105,15 +105,15 @@ WaitTop::
 
 	ld a, [hBGMapMode]
 	and a
-	jr nz, .loop_inner
-	ret
+	ret z
 
-.loop
-	call DelayFrame
-.loop_inner
 	ld a, [hBGMapHalf]
 	and a
-	jr nz, .loop
+	jr z, .done
+
+	call DelayFrame
+	jr WaitTop
+
 .done
 	xor a
 	ld [hBGMapMode], a
@@ -140,7 +140,6 @@ UpdateBGMap:: ; 164c
 	jr z, .DoBGMap1Tiles
 	dec a
 	jr z, .DoBGMap1Attributes
-	dec a
 ; Update from a specific row
 ; does not update hBGMapHalf
 	dec a
@@ -158,34 +157,23 @@ UpdateBGMap:: ; 164c
 
 .DoCustomSourceTiles
 	ld [hSPBuffer], sp
-	xor a
-	ld h, a
-	ld d, a
+	ld hl, 0
+	ld d, h
+	ld e, l
 	ld a, [hBGMapHalf] ; multiply by 20 to get the tilemap offset
-	ld l, a
-	ld e, a
-	add hl, hl ; hl = hl * 2
-	add hl, hl ; hl = hl * 4
-	add hl, de ; hl = (hl*4) + de
-	add hl, hl ; hl = (5*hl)*2
-	add hl, hl ; hl = (5*hl)*4
+	and a
+	jr z, .first_half
+	ld l, 20
+	ld e, 32
+.first_half
 	add hl, bc
 	ld sp, hl
-	ld a, [hBGMapHalf] ; multiply by 32 to get the bg map offset
-	ld l, a
-	ld h, 0
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, hl
 	ld a, [hBGMapAddress]
-	add l
 	ld l, a
 	ld a, [hBGMapAddress + 1]
-	adc h
 	ld h, a
 	ld a, [hTilesPerCycle]
+	add hl, de
 	jr .startCustomCopy
 
 .DoAttributes
@@ -277,25 +265,24 @@ endr
 	ld sp, hl
 	ret
 
-Serve1bppRequest::
+Serve1bppRequest:: ; 170a
 ; Only call during the first fifth of VBlank
 
 	ld a, [hRequested1bpp]
 	and a
 	ret z
 
-	ld b, a ; save tile count for later
-
+	ld b, a
 ; Back out if we're too far into VBlank
 	ld a, [rLY]
 	cp 144
 	ret c
 	cp 146
 	ret nc
+
 	xor a
 	ld [hRequested1bpp], a
 
-_Serve1bppRequest::
 ; Copy [hRequested1bpp] 1bpp tiles from [hRequestedVTileSource] to [hRequestedVTileDest]
 	ld [hSPBuffer], sp
 ; Destination
@@ -312,6 +299,7 @@ _Serve1bppRequest::
 	ld h, d
 	ld l, e
 
+; # tiles to copy
 .next
 	rept 4
 	pop de
@@ -325,6 +313,13 @@ _Serve1bppRequest::
 	dec b
 	jr nz, .next
 	jp WriteVTileSourceAndDestinationAndReturn
+
+Serve2bppRequest_NoVBlankCheck::
+	ld a, [hRequested2bpp]
+	and a
+	ret z
+	call _Serve2bppRequest
+	ret
 
 Serve2bppRequest::
 ; Only call during the first fifth of VBlank
@@ -342,11 +337,11 @@ Serve2bppRequest::
 	cp 146
 	ret nc
 
-	xor a
-	ld [hRequested2bpp], a
-
 _Serve2bppRequest::
 ; Copy [hRequested2bpp] 2bpp tiles from [hRequestedVTileSource] to [hRequestedVTileDest]
+
+	xor a
+	ld [hRequested2bpp], a
 
 	ld [hSPBuffer], sp
 ; Destination

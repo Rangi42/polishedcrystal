@@ -409,31 +409,22 @@ ClearBGPalettes::
 WaitBGMap2::
 	ld a, 2
 	ld [hBGMapMode], a
-	ld c, 3
-	call DelayFrames
+	call Delay2
+
 WaitBGMap::
 ; Tell VBlank to update BG Map
 	ld a, 1
 	ld [hBGMapMode], a
-	ld c, 3
-	jp DelayFrames
+	jp Delay2
 
 ApplyTilemap:: ; 321c
 	ld a, [wSpriteUpdatesEnabled]
 	cp 0
-	jr z, .dmg
+	jr z, WaitBGMap
 
 	ld a, 1
 	ld [hBGMapMode], a
 	jr LoadEDTile
-
-.dmg
-; WaitBGMap
-	ld a, 1
-	ld [hBGMapMode], a
-	ld c, 3
-	jp DelayFrames
-; 3238
 
 LoadEDTile:: ; 323d
 	ld a, [hBGMapMode]

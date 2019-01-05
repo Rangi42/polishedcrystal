@@ -80,30 +80,59 @@ FarCopyBytesDouble:: ; e9b
 	ret
 ; 0xeba
 
+Get2bpp::
+	ld a, [rLCDC]
+	bit 7, a ; lcd on?
+	jp nz, Request2bpp
 
-Request2bpp::
+Copy2bpp::
+; copy c 2bpp tiles from b:de to hl
+
+	push hl
+	ld h, d
+	ld l, e
+	pop de
+
+; bank
+	ld a, b
+
+; bc = c * $10
+	push af
+	swap c
+	ld a, $f
+	and c
+	ld b, a
+	ld a, $f0
+	and c
+	ld c, a
+	pop af
+
+	jp FarCopyBytes
+
+Request2bpp:: ; eba
 ; Load 2bpp at b:de to occupy c tiles of hl.
-	call FarCallInBankB
-
-.Function
 	ld a, [hBGMapMode]
 	push af
 	xor a
 	ld [hBGMapMode], a
 
+	ld a, [hROMBank]
+	push af
+	ld a, b
+	rst Bankswitch
+
 	call WriteVCopyRegistersToHRAM
 	ld a, [rLY]
 	cp $88
 	jr c, .handleLoop
-; fallthrough to vblank copy handler if LY is too high
 .loop
 	ld a, [hTilesPerCycle]
-	sub $10
+	sub 16
 	ld [hTilesPerCycle], a
 	jr c, .copyRemainingTilesAndExit
 	jr nz, .copySixteenTilesAndContinue
 .copyRemainingTilesAndExit
-	add $10
+	add 16
 	ld [hRequested2bpp], a
 	xor a
 	ld [hTilesPerCycle], a
@@ -124,7 +153,7 @@ Request2bpp::
 	ld [hTilesPerCycle], a
 	jr .done
 .copySixteenTilesAndContinue
-	ld a, $10
+	ld a, 16
 	ld [hRequested2bpp], a
 	call DelayFrame
 	ld a, [hRequested2bpp]
@@ -134,35 +163,68 @@ Request2bpp::
 	call HBlankCopy2bpp
 	jr c, .loop
 .done
+	pop af
+	rst Bankswitch
 
 	pop af
 	ld [hBGMapMode], a
 	ret
 
-Request1bpp::
-; Load 1bpp at b:de to occupy c tiles of hl.
-	call FarCallInBankB
+Get1bpp:: ; f9d
+	ld a, [rLCDC]
+	bit 7, a ; lcd on?
+	jr nz, Request1bpp
 
-.Function:
+Copy1bpp:: ; fa4
+; copy c 1bpp tiles from b:de to hl
+
+	push de
+	ld d, h
+	ld e, l
+
+; bank
+	ld a, b
+
+; bc = c * $10 / 2
+	push af
+	ld h, 0
+	ld l, c
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	ld b, h
+	ld c, l
+	pop af
+
+	pop hl
+	jp FarCopyBytesDouble
+; fb6
+
+Request1bpp:: ; f1e
+; Load 1bpp at b:de to occupy c tiles of hl.
 	ld a, [hBGMapMode]
 	push af
 	xor a
 	ld [hBGMapMode], a
 
+	ld a, [hROMBank]
+	push af
+	ld a, b
+	rst Bankswitch
+
 	call WriteVCopyRegistersToHRAM
 	ld a, [rLY]
 	cp $88
 	jr c, .handleLoop
-; fallthrough to vblank copy handler if LY is too high
 .loop
 	ld a, [hTilesPerCycle]
-	sub $10
+	sub 16
 	ld [hTilesPerCycle], a
 	jr c, .copyRemainingTilesAndExit
 	jr nz, .copySixteenTilesAndContinue
 .copyRemainingTilesAndExit
-	add $10
-	ld [hRequested1bpp], a
+	add 16
+	ld [hTilesPerCycle], a
 	xor a
 	ld [hTilesPerCycle], a
 	call DelayFrame
@@ -177,14 +239,12 @@ Request1bpp::
 	xor a
 	ld [hRequested1bpp], a
 	jr .handleLoop
-
 .clearTileCountAndFinish
 	xor a
 	ld [hTilesPerCycle], a
 	jr .done
-
 .copySixteenTilesAndContinue
-	ld a, $10
+	ld a, 16
 	ld [hRequested1bpp], a
 	call DelayFrame
 	ld a, [hRequested1bpp]
@@ -195,23 +255,11 @@ Request1bpp::
 	jr c, .loop
 .done
 	pop af
+	rst Bankswitch
+
+	pop af
 	ld [hBGMapMode], a
 	ret
-
-Get2bpp:: ; f82
-	ld a, [rLCDC]
-	bit 7, a ; lcd on?
-	jp nz, Request2bpp
-
-Copy2bpp::
-; copy c 2bpp tiles from b:de to hl
-; must be called in di/disable LCD!!!
-	call FarCallInBankB
-
-.Function:
-	call WriteVCopyRegistersToHRAM
-	ld b, c
-	jp _Serve2bppRequest
 
 HBlankCopy2bpp::
 	di
@@ -234,7 +282,40 @@ HBlankCopy2bpp::
 	jr c, .innerLoop
 	cp SRAM_Begin / $100 ; is source past VRAM
 	jr nc, .innerLoop
-	jp VRAMToVRAMCopy
+	lb bc, %11, rSTAT & $ff ; predefine bitmask and rSTAT source for speed and size
+	jr .waitNoHBlank2
+.outerLoop2
+	ld a, [rLY]
+	cp $88
+	jp nc, ContinueHBlankCopy
+.waitNoHBlank2
+	ld a, [$ff00+c]
+	and b
+	jr z, .waitNoHBlank2
+.waitHBlank2
+	ld a, [$ff00+c]
+	and b
+	jr nz, .waitHBlank2
+	rept 7
+	pop de
+	ld a, e
+	ld [hli], a
+	ld a, d
+	ld [hli], a
+	endr
+	pop de
+	ld a, e
+	ld [hli], a
+	ld [hl], d
+	inc hl
+	ld a, l
+	and $f
+	jr nz, .waitNoHBlank2
+	ld a, [hTilesPerCycle]
+	dec a
+	ld [hTilesPerCycle], a
+	jr nz, .outerLoop2
+	jp DoneHBlankCopy
 .outerLoop
 	ld a, [rLY]
 	cp $88
@@ -276,20 +357,6 @@ HBlankCopy2bpp::
 	ld [hTilesPerCycle], a
 	jr nz, .outerLoop
 	jp DoneHBlankCopy
-
-Get1bpp:: ; f9d
-	ld a, [rLCDC]
-	bit 7, a ; lcd on?
-	jp nz, Request1bpp
-
-Copy1bpp::
-; copy c 1bpp tiles from b:de to hl
-	call FarCallInBankB
-
-.Function
-	call WriteVCopyRegistersToHRAM
-	ld b, c
-	jp _Serve1bppRequest
 
 HBlankCopy1bpp:
 	di
@@ -375,42 +442,6 @@ WriteVCopyRegistersToHRAM:
 	ld a, c
 	ld [hTilesPerCycle], a
 	ret
-
-VRAMToVRAMCopy::
-	lb bc, %11, rSTAT & $ff ; predefine bitmask and rSTAT source for speed and size
-	jr .waitNoHBlank2
-.outerLoop2
-	ld a, [rLY]
-	cp $88
-	jr nc, ContinueHBlankCopy
-.waitNoHBlank2
-	ld a, [$ff00+c]
-	and b
-	jr z, .waitNoHBlank2
-.waitHBlank2
-	ld a, [$ff00+c]
-	and b
-	jr nz, .waitHBlank2
-	rept 7
-	pop de
-	ld a, e
-	ld [hli], a
-	ld a, d
-	ld [hli], a
-	endr
-	pop de
-	ld a, e
-	ld [hli], a
-	ld [hl], d
-	inc hl
-	ld a, l
-	and $f
-	jr nz, .waitNoHBlank2
-	ld a, [hTilesPerCycle]
-	dec a
-	ld [hTilesPerCycle], a
-	jr nz, .outerLoop2
-	jp DoneHBlankCopy
 
 
 GetOpaque1bpp_2::

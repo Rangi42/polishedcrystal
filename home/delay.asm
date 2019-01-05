@@ -12,6 +12,9 @@ DelayFrame:: ; 45a
 	ret
 ; 468
 
+Delay2::
+; TODO: optimize to the point where this can do what it claims
+	ld c, 3
 
 DelayFrames:: ; 468
 ; Wait c frames

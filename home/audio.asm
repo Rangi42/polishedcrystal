@@ -193,7 +193,9 @@ endr
 	ret
 ; 3c23
 
-
+WaitPlaySFX::
+	call WaitSFX
+	; fallthrough
 PlaySFX:: ; 3c23
 ; Play sound effect de.
 ; Sound effects are ordered by priority (highest to lowest)
@@ -236,18 +238,14 @@ PlaySFX:: ; 3c23
 ; 3c4e
 
 
-WaitPlaySFX:: ; 3c4e
-	call WaitSFX
-	jp PlaySFX
-; 3c55
-
-
 WaitSFX:: ; 3c55
 ; infinite loop until sfx is done playing
 
 	push hl
-
+	jr .handleLoop
 .wait
+	call DelayFrame
+.handleLoop
 	ld hl, wChannel5Flags
 	bit 0, [hl]
 	jr nz, .wait

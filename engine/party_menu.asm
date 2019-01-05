@@ -641,14 +641,12 @@ PartyMenuSelect: ; 0x50457
 
 	ld de, SFX_READ_TEXT_2
 	call PlaySFX
-	call WaitSFX
 	and a
 	ret
 
 .exitmenu
 	ld de, SFX_READ_TEXT_2
 	call PlaySFX
-	call WaitSFX
 	scf
 	ret
 ; 0x5049a

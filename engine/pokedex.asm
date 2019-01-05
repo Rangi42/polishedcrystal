@@ -2573,8 +2573,7 @@ Pokedex_SetBGMapMode4: ; 41ae1 (10:5ae1)
 	ld a, $4
 Pokedex_SetBGMapMode:
 	ld [hBGMapMode], a
-	ld c, 4
-	jp DelayFrames
+	jp Delay2
 
 Pokedex_ResetBGMapMode: ; 41af7
 	xor a

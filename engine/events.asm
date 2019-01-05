@@ -120,22 +120,12 @@ HandleMap:
 
 MapEvents: ; 96795
 	ld a, [wMapEventStatus]
-	ld hl, .jumps
-	rst JumpTable
-	ret
-
-.jumps
-	dw .events
-	dw .no_events
-; 967a1
-
-.events ; 967a1
+	and a
+	ret nz
 	call PlayerEvents
 	call DisableEvents
 	farcall ScriptEvents
-.no_events ; 967ae
 	ret
-; 967ae
 
 ResetOverworldDelay:
 	ld hl, wOverworldDelay
@@ -1066,7 +1056,7 @@ EdgeWarpScript: ; 4
 ; 96c4f
 
 ChangeDirectionScript: ; 9
-	deactivatefacing 3
+	callasm ReleaseAllMapObjects
 	callasm EnableWildEncounters
 	end
 ; 96c56

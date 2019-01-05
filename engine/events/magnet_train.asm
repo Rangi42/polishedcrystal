@@ -35,10 +35,10 @@ Special_MagnetTrain: ; 8cc04
 	ld a, [hSCY]
 	push af
 	call MagntTrain_LoadGFX_PlayMusic
-	ld hl, hVBlank
-	ld a, [hl]
+	ld a, [hVBlank]
 	push af
-	ld [hl], $1
+	ld a, $1
+	ld [hVBlank], a
 .loop
 	ld a, [wJumptableIndex]
 	and a

@@ -21,6 +21,7 @@ SpecialNone: ; c224
 
 Special_SetPlayerPalette: ; c225
 	ld a, [wScriptVar]
+	ld d, a
 	farjp SetPlayerPalette
 ; c230
 
