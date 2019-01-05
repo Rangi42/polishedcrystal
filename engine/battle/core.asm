@@ -4296,8 +4296,6 @@ HandleHPHealingItem:
 UseBattleItem:
 	call RefreshBattleHuds
 	farcall GetUserItemAfterUnnerve
-	ld a, [hl]
-	ld [wNamedObjectIndexBuffer], a
 	call GetItemName
 	ld hl, RecoveredUsingText
 	call StdBattleTextBox
@@ -4320,7 +4318,7 @@ ItemRecoveryAnim::
 	ret
 ; 3dde9
 
-UseEnemyHeldStatusHealingItem:
+UseOpponentHeldStatusHealingItem:
 	call SwitchTurn
 	call UseHeldStatusHealingItem
 	jp SwitchTurn

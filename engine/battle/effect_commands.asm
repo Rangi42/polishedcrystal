@@ -2541,7 +2541,7 @@ BattleCommand_CheckFaint:
 	call StdBattleTextBox
 	pop af
 	dec a
-	jp nz, ConsumeEnemyItem
+	jp nz, ConsumeOpponentItem
 	ret
 
 .check_sub
@@ -2916,7 +2916,7 @@ BattleCommand_PostHitEffects:
 
 	ld hl, AirBalloonPoppedText
 	call StdBattleTextBox
-	call ConsumeEnemyItem
+	call ConsumeOpponentItem
 
 .air_balloon_done
 	call HasOpponentFainted
@@ -2942,28 +2942,64 @@ BattleCommand_PostHitEffects:
 .rage_done_switchturn
 	call SwitchTurn
 .rage_done
-	; Do Rocky Helmet
+	; Do Jaboca, Rowap, Kee, Maranga berries and Rocky Helmet
 	call HasUserFainted
 	jr z, .rocky_helmet_done
-	call CheckContactMove
-	jr c, .rocky_helmet_done
 	call GetOpponentItemAfterUnnerve
 	ld a, b
 	cp HELD_ROCKY_HELMET
+	jr z, .rocky_helmet
+	ld a, BATTLE_VARS_MOVE_CATEGORY
+	call GetBattleVar
+	cp c
 	jr nz, .rocky_helmet_done
-	push hl
+	ld a, b
+	cp HELD_OFFEND_HIT
+	jr z, .held_offend_hit
+	cp HELD_DEFEND_HIT
+	jr nz, .rocky_helmet_done
+	ld a, c
+	cp PHYSICAL
+	ld b, DEFENSE
+	jr z, .got_stat
+	ld b, SP_DEFENSE
+.got_stat
+	call SwitchTurn
+	call BattleCommand_StatUp
+	ld a, [FailedMessage]
+	and a
+	jr nz, .defend_hit_done
+	farcall ItemRecoveryAnim
+	call GetUserItemAfterUnnerve
+	call GetItemName
+	ld a, [LoweredStat]
+	and $f
+	ld b, a
+	inc b
+	call GetStatName
+	ld hl, BattleText_ItemRaised
+	call StdBattleTextBox
+	call ConsumeUserItem
+.defend_hit_done
+	call SwitchTurn
+	jr .rocky_helmet_done
+.held_offend_hit
+	call ConsumeOpponentItem
+	farcall GetEighthMaxHP
+	jr .got_hurt_item_damage
+.rocky_helmet
+	call CheckContactMove
+	jr c, .rocky_helmet_done
 	farcall GetThirdMaxHP
 	srl b
 	rr c
+.got_hurt_item_damage
 	ld a, b
 	or c
 	jr nz, .damage_ok
 	inc c
 .damage_ok
 	farcall SubtractHPFromUser
-	pop hl
-	ld a, [hl]
-	ld [wNamedObjectIndexBuffer], a
 	call GetItemName
 	ld hl, BattleText_UserHurtByItem
 	call StdBattleTextBox
@@ -4967,7 +5003,7 @@ DoLeafGuardCheck:
 PostStatusWithSynchronize:
 	farcall RunEnemySynchronizeAbility
 PostStatus:
-	farcall UseEnemyHeldStatusHealingItem
+	farcall UseOpponentHeldStatusHealingItem
 	farjp RunEnemyStatusHealAbilities
 
 BattleCommand_SleepTarget:
@@ -9116,13 +9152,17 @@ GetEnemyItem:
 
 GetUserItem: ; 37db2
 ; Return the effect of the user's item in bc, and its id at hl.
+; Also updates the object name buffer, allowing you to just
+; GetItemName to get the item name
 	ld hl, BattleMonItem
 	ld a, [hBattleTurn]
 	and a
 	jr z, .go
 	ld hl, EnemyMonItem
 .go
-	ld b, [hl]
+	ld a, [hl]
+	ld [wNamedObjectIndexBuffer], a
+	ld b, a
 	jp GetItemHeldEffect
 
 ; 37dc1
@@ -9152,7 +9192,7 @@ GetUserItemAfterUnnerve::
 	push de
 	push hl
 	ld de, 1
-	ld hl, UnnerveItemsBlocked
+	ld hl, EdibleBerries
 	call IsInArray
 	pop hl
 	pop de
@@ -9161,7 +9201,7 @@ GetUserItemAfterUnnerve::
 	ld b, HELD_NONE
 	ret
 
-UnnerveItemsBlocked:
+EdibleBerries:
 	db ORAN_BERRY
 	db SITRUS_BERRY
 	db PECHA_BERRY
@@ -9178,6 +9218,9 @@ UnnerveItemsBlocked:
 	db SALAC_BERRY
 	db PETAYA_BERRY
 	db APICOT_BERRY
+	db KEE_BERRY
+	db MARANGABERRY
+	; not eaten, so unaffected: jaboca, rowap
 	db -1
 NoItem:
 	db NO_ITEM

@@ -202,7 +202,7 @@ GetUsedItemAddr::
 	inc h
 	ret
 
-ConsumeEnemyItem::
+ConsumeOpponentItem::
 	call SwitchTurn
 	call ConsumeUserItem
 	jp SwitchTurn
@@ -273,7 +273,7 @@ ConsumeUserItem::
 	jr nz, .apply_unburden
 	xor a
 	ld [hl], a
-	
+
 .apply_unburden
 	; Unburden doubles Speed when an item is consumed
 	ld a, BATTLE_VARS_ABILITY
