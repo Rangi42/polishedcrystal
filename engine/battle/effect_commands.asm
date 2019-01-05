@@ -4807,50 +4807,14 @@ EnemyHurtItself: ; 35d1c
 	jp nz, SelfInflictDamageToSubstitute
 
 .mimic_sub_check
+	push bc
 	ld a, [hld]
-	ld b, a
-	ld a, [EnemyMonHP + 1]
-	ld [Buffer3], a
-	sub b
-	ld [EnemyMonHP + 1], a
-	ld a, [hl]
-	ld b, a
-	ld a, [EnemyMonHP]
-	ld [Buffer4], a
-	sbc b
-	ld [EnemyMonHP], a
-	jr nc, .mimic_faint
-
-	ld a, [Buffer4]
-	ld [hli], a
-	ld a, [Buffer3]
-	ld [hl], a
-
-	xor a
-	ld hl, EnemyMonHP
-	ld [hli], a
-	ld [hl], a
-
-.mimic_faint
-	ld hl, EnemyMonMaxHP
-	ld a, [hli]
-	ld [Buffer2], a
-	ld a, [hl]
-	ld [Buffer1], a
-	ld hl, EnemyMonHP
-	ld a, [hli]
-	ld [Buffer6], a
-	ld a, [hl]
-	ld [Buffer5], a
-	hlcoord 1, 2
-	xor a
-	ld [wWhichHPBar], a
-	predef AnimateHPBar
+	ld c, a
+	ld b, [hl]
+	farcall SubtractHPFromEnemy
+	pop bc
 .did_no_damage
 	jp RefreshBattleHuds
-
-; 35d7e
-
 
 PlayerHurtItself: ; 35d7e
 	ld hl, CurDamage
@@ -4868,44 +4832,12 @@ PlayerHurtItself: ; 35d7e
 	bit SUBSTATUS_SUBSTITUTE, a
 	jp nz, SelfInflictDamageToSubstitute
 .mimic_sub_check
+	push bc
 	ld a, [hld]
-	ld b, a
-	ld a, [BattleMonHP + 1]
-	ld [Buffer3], a
-	sub b
-	ld [BattleMonHP + 1], a
-	ld [Buffer5], a
+	ld c, a
 	ld b, [hl]
-	ld a, [BattleMonHP]
-	ld [Buffer4], a
-	sbc b
-	ld [BattleMonHP], a
-	ld [Buffer6], a
-	jr nc, .mimic_faint
-
-	ld a, [Buffer4]
-	ld [hli], a
-	ld a, [Buffer3]
-	ld [hl], a
-	xor a
-
-	ld hl, BattleMonHP
-	ld [hli], a
-	ld [hl], a
-	ld hl, Buffer5
-	ld [hli], a
-	ld [hl], a
-
-.mimic_faint
-	ld hl, BattleMonMaxHP
-	ld a, [hli]
-	ld [Buffer2], a
-	ld a, [hl]
-	ld [Buffer1], a
-	hlcoord 11, 9
-	ld a, $1
-	ld [wWhichHPBar], a
-	predef AnimateHPBar
+	farcall SubtractHPFromPlayer
+	pop bc
 .did_no_damage
 	jp RefreshBattleHuds
 

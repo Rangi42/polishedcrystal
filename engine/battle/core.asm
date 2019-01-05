@@ -1745,17 +1745,27 @@ HandleWeatherEffects:
 	call GetSixteenthMaxHP
 	; fallthrough
 
-SubtractHPFromUser:
-	call SubtractHP
-	jp UpdateHPBarBattleHuds
-
-SubtractHP: ; 3cc45
-	ld hl, BattleMonHP
+SubtractHPFromOpponent:
 	ld a, [hBattleTurn]
 	and a
-	jr z, .ok
+	jr nz, SubtractHPFromPlayer
+SubtractHPFromEnemy:
 	ld hl, EnemyMonHP
-.ok
+	jr _SubtractHP
+
+SubtractHPFromUser:
+	ld a, [hBattleTurn]
+	and a
+	jr nz, SubtractHPFromEnemy
+SubtractHPFromPlayer:
+	ld hl, BattleMonHP
+	call _SubtractHP
+_SubtractHP:
+	call .do_subtract
+	call UpdateHPBarBattleHuds
+	jp HandleHPHealingItems
+
+.do_subtract
 	inc hl
 	ld a, [hl]
 	ld [Buffer3], a
