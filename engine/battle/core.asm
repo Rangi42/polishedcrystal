@@ -1763,7 +1763,7 @@ SubtractHPFromPlayer:
 _SubtractHP:
 	call .do_subtract
 	call UpdateHPBarBattleHuds
-	jp HandleHPHealingItems
+	jp HandleHealingItems
 
 .do_subtract
 	inc hl
