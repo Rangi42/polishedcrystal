@@ -607,12 +607,11 @@ HitConfusion: ; 343a5
 	call CallBattleCore
 	ld a, $1
 	ld [hBGMapMode], a
-	ld c, $1
-	call PlayerHurtItself
-	jp BattleCommand_RaiseSub
 .enemy
 	ld c, $1
-	call EnemyHurtItself
+	call SwitchTurn
+	call TakeDamage
+	call SwitchTurn
 	jp BattleCommand_RaiseSub
 
 ; 343db
@@ -2506,16 +2505,7 @@ BattleCommand_CheckFaint:
 	push bc
 	call .check_sub
 	ld c, $0
-	ld a, [hBattleTurn]
-	and a
-	jr nz, .damage_player
-	call EnemyHurtItself
-	jr .done_damage
-
-.damage_player
-	call PlayerHurtItself
-
-.done_damage
+	call TakeDamage
 	pop bc
 	ld a, b
 	and a
@@ -2632,10 +2622,7 @@ endr
 	ld [wKickCounter], a
 	call LoadMoveAnim
 	ld c, $1
-	ld a, [hBattleTurn]
-	and a
-	jp nz, EnemyHurtItself
-	jp PlayerHurtItself
+	jp TakeDamage
 
 FailText_CheckOpponentProtect: ; 35157
 ; Print an appropriate failure message, usually AttackMissed.
@@ -4789,8 +4776,8 @@ PlayFXAnimID: ; 35d08
 
 ; 35d1c
 
-
-EnemyHurtItself: ; 35d1c
+TakeDamage:
+; opponent takes damage
 	ld hl, CurDamage
 	ld a, [hli]
 	ld b, a
@@ -4802,42 +4789,15 @@ EnemyHurtItself: ; 35d1c
 	and a
 	jr nz, .mimic_sub_check
 
-	ld a, [EnemySubStatus4]
-	bit SUBSTATUS_SUBSTITUTE, a
-	jp nz, SelfInflictDamageToSubstitute
-
-.mimic_sub_check
-	push bc
-	ld a, [hld]
-	ld c, a
-	ld b, [hl]
-	farcall SubtractHPFromEnemy
-	pop bc
-.did_no_damage
-	jp RefreshBattleHuds
-
-PlayerHurtItself: ; 35d7e
-	ld hl, CurDamage
-	ld a, [hli]
-	ld b, a
-	ld a, [hl]
-	or b
-	jr z, .did_no_damage
-
-	ld a, c
-	and a
-	jr nz, .mimic_sub_check
-
-	ld a, [PlayerSubStatus4]
+	ld a, BATTLE_VARS_SUBSTATUS4_OPP
+	call GetBattleVar
 	bit SUBSTATUS_SUBSTITUTE, a
 	jp nz, SelfInflictDamageToSubstitute
 .mimic_sub_check
-	push bc
 	ld a, [hld]
 	ld c, a
 	ld b, [hl]
-	farcall SubtractHPFromPlayer
-	pop bc
+	farcall SubtractHPFromOpponent
 .did_no_damage
 	jp RefreshBattleHuds
 

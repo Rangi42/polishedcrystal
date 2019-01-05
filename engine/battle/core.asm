@@ -1750,16 +1750,39 @@ SubtractHPFromOpponent:
 	and a
 	jr nz, SubtractHPFromPlayer
 SubtractHPFromEnemy:
+	ld hl, EnemyMonMaxHP
+	ld a, [hli]
+	ld [Buffer2], a
+	ld a, [hl]
+	ld [Buffer1], a
 	ld hl, EnemyMonHP
-	jr _SubtractHP
+	ld a, [hBattleTurn]
+	push af
+	call SetEnemyTurn
+	call _SubtractHP
+	pop af
+	ld [hBattleTurn], a
+	ret
 
 SubtractHPFromUser:
 	ld a, [hBattleTurn]
 	and a
 	jr nz, SubtractHPFromEnemy
 SubtractHPFromPlayer:
+	ld hl, BattleMonMaxHP
+	ld a, [hli]
+	ld [Buffer2], a
+	ld a, [hl]
+	ld [Buffer1], a
 	ld hl, BattleMonHP
+	ld a, [hBattleTurn]
+	push af
+	call SetPlayerTurn
 	call _SubtractHP
+	pop af
+	ld [hBattleTurn], a
+	ret
+
 _SubtractHP:
 	call .do_subtract
 	call UpdateHPBarBattleHuds
