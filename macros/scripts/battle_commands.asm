@@ -176,6 +176,7 @@ endm
 	command knockoff                ; a9
 	command bugbite                 ; aa
 	command toxic                   ; ab
+	command gyroball
 
 	enum_start -1, -1
 	command endmove

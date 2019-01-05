@@ -8478,6 +8478,75 @@ BattleCommand_GetMagnitude: ; 37991
 	db 255, 150, 10
 ; 379c9
 
+BattleCommand_GyroBall:
+	push bc
+	push de
+	call SwitchTurn
+	call GetSpeed
+	push bc
+	call SwitchTurn
+	call GetSpeed
+	pop de
+	; User speed in BC, target speed in DE
+
+	; This is counterintuitive (the logical choice is to set speed to 1),
+	; but is how it's done in VII...
+	ld a, b
+	or c
+	ld a, 1
+	jr z, .got_power
+
+	; We can't divide numbers >255, so scale down speed in that case
+.scaledown_loop
+	ld a, b
+	and a
+	jr nz, .scaledown_ok
+	srl b
+	rr c
+	srl d
+	rr e
+	jr .scaledown_loop
+.scaledown_ok
+	; Base Power = 25 * (Target Speed / User Speed), capped at 150
+	xor a
+	ld [hMultiplicand + 0], a
+	ld a, d
+	ld [hMultiplicand + 1], a
+	ld a, e
+	ld [hMultiplicand + 2], a
+	ld a, 25
+	ld [hMultiplier], a
+	call Multiply
+
+	ld a, c
+	ld [hDivisor], a
+	ld b, 4
+	call Divide
+
+	; Cap at min 1, max 150
+	ld hl, hMultiplicand
+	ld a, [hli]
+	or [hl]
+	ld a, 150
+	jr nz, .got_power
+	inc hl
+	ld a, [hl]
+	and a
+	jr nz, .nonzero_power
+	ld a, 1
+	jr .got_power
+
+.nonzero_power
+	cp 151
+	jr c, .got_power
+
+	ld a, 150
+.got_power
+	pop de
+	ld d, a
+	pop bc
+	ret
+
 CheckAnyOtherAliveMons:
 ; These return nz if any is alive
 	ld a, [hBattleTurn]

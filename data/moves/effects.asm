@@ -1,6 +1,5 @@
 MoveEffects:
 
-GyroBall: ; TODO
 NormalHit:
 AerialAce:
 Aeroblast:
@@ -1985,6 +1984,29 @@ Magnitude:
 	critical
 	damagestats
 	getmagnitude
+	damagecalc
+	stab
+	damagevariation
+	checkhit
+	doubleundergrounddamage
+	hittarget
+	failuretext
+	checkfaint
+	criticaltext
+	supereffectivetext
+	checkdestinybond
+	buildopponentrage
+	pickpocket
+	endmove
+
+GyroBall:
+	checkobedience
+	usedmovetext
+	doturn
+	pressure
+	critical
+	damagestats
+	gyroball
 	damagecalc
 	stab
 	damagevariation

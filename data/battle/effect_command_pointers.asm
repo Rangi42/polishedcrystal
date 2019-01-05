@@ -170,3 +170,4 @@ BattleCommandPointers:
 	dw BattleCommand_KnockOff
 	dw BattleCommand_BugBite
 	dw BattleCommand_Toxic
+	dw BattleCommand_GyroBall

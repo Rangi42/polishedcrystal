@@ -85,7 +85,6 @@ Shamouti Island:
 ### Move effects
 
 * Bug Bite eats and uses the foe's held Berry
-* Gyro Ball's power is based on speed ratio
 * Low Kick's power is based on weight
 * Body Slam does double damage against Minimize
 * Stomp and Body Slam never miss against Minimize
