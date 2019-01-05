@@ -3384,6 +3384,7 @@ StatusStringPointers:
 	dw BrnString
 	dw FrzString
 	dw FntString
+	dw ToxString
 
 OKString:  db "OK @"
 PsnString: db "Psn@"
@@ -3392,6 +3393,7 @@ SlpString: db "Slp@"
 BrnString: db "Brn@"
 FrzString: db "Frz@"
 FntString: db "Fnt@"
+ToxString: db "Tox@"
 
 ListMoves: ; 50d6f
 ; List moves at hl, spaced every [wBuffer1] tiles.

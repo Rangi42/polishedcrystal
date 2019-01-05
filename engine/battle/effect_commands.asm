@@ -2541,7 +2541,7 @@ BattleCommand_CheckFaint:
 	call StdBattleTextBox
 	pop af
 	dec a
-	jp nz, ConsumeEnemyItem
+	jp nz, ConsumeOpponentItem
 	ret
 
 .check_sub
@@ -2835,7 +2835,7 @@ BattleCommand_SuperEffectiveText: ; 351ad
 	ld hl, BattleText_ItemSharplyRaised
 	jp StdBattleTextBox
 
-ConsumeEnemyItem::
+ConsumeOpponentItem::
 	call SwitchTurn
 	call ConsumeUserItem
 	jp SwitchTurn
@@ -2921,15 +2921,7 @@ ConsumeUserItem::
 
 BattleCommand_PostFaintEffects:
 ; Effects that run after faint by an attack (Destiny Bond, Moxie, Aftermath, etc)
-	ld hl, wEnemyMonHP
-	ld a, [hBattleTurn]
-	and a
-	jr z, .got_hp
-	ld hl, wBattleMonHP
-
-.got_hp
-	ld a, [hli]
-	or [hl]
+	call HasOpponentFainted
 	ret nz
 
 	ld a, BATTLE_VARS_SUBSTATUS2_OPP
@@ -2988,7 +2980,7 @@ BattleCommand_PostFaintEffects:
 
 BattleCommand_PostHitEffects:
 ; This can run even if someone is fainted. Take this into account.
-	call HasEnemyFainted
+	call HasOpponentFainted
 	jr z, .skip_sub_check
 	call CheckSubstituteOpp
 	ret nz
@@ -3001,17 +2993,17 @@ BattleCommand_PostHitEffects:
 	farcall RunHitAbilities
 
 	; Burst air balloons
-	call HasEnemyFainted
+	call HasOpponentFainted
 	jr z, .air_balloon_done
 	call CheckAirBalloon
 	jr nz, .air_balloon_done
 
 	ld hl, AirBalloonPoppedText
 	call StdBattleTextBox
-	call ConsumeEnemyItem
+	call ConsumeOpponentItem
 
 .air_balloon_done
-	call HasEnemyFainted
+	call HasOpponentFainted
 	jr z, .rage_done
 	ld a, BATTLE_VARS_SUBSTATUS4_OPP
 	call GetBattleVar
@@ -3034,28 +3026,64 @@ BattleCommand_PostHitEffects:
 .rage_done_switchturn
 	call SwitchTurn
 .rage_done
-	; Do Rocky Helmet
+	; Do Jaboca, Rowap, Kee, Maranga berries and Rocky Helmet
 	call HasUserFainted
 	jr z, .rocky_helmet_done
-	call CheckContactMove
-	jr c, .rocky_helmet_done
 	call GetOpponentItemAfterUnnerve
 	ld a, b
 	cp HELD_ROCKY_HELMET
+	jr z, .rocky_helmet
+	ld a, BATTLE_VARS_MOVE_CATEGORY
+	call GetBattleVar
+	cp c
 	jr nz, .rocky_helmet_done
-	push hl
+	ld a, b
+	cp HELD_OFFEND_HIT
+	jr z, .held_offend_hit
+	cp HELD_DEFEND_HIT
+	jr nz, .rocky_helmet_done
+	ld a, c
+	cp PHYSICAL
+	ld b, DEFENSE
+	jr z, .got_stat
+	ld b, SP_DEFENSE
+.got_stat
+	call SwitchTurn
+	call BattleCommand_StatUp
+	ld a, [FailedMessage]
+	and a
+	jr nz, .defend_hit_done
+	farcall ItemRecoveryAnim
+	call GetUserItemAfterUnnerve
+	call GetItemName
+	ld a, [LoweredStat]
+	and $f
+	ld b, a
+	inc b
+	call GetStatName
+	ld hl, BattleText_ItemRaised
+	call StdBattleTextBox
+	call ConsumeUserItem
+.defend_hit_done
+	call SwitchTurn
+	jr .rocky_helmet_done
+.held_offend_hit
+	call ConsumeOpponentItem
+	farcall GetEighthMaxHP
+	jr .got_hurt_item_damage
+.rocky_helmet
+	call CheckContactMove
+	jr c, .rocky_helmet_done
 	farcall GetThirdMaxHP
 	srl b
 	rr c
+.got_hurt_item_damage
 	ld a, b
 	or c
 	jr nz, .damage_ok
 	inc c
 .damage_ok
 	farcall SubtractHPFromUser
-	pop hl
-	ld a, [hl]
-	ld [wNamedObjectIndexBuffer], a
 	call GetItemName
 	ld hl, BattleText_UserHurtByItem
 	call StdBattleTextBox
@@ -3077,7 +3105,7 @@ BattleCommand_PostHitEffects:
 	jp .checkfaint
 .flinch_up
 	; Ensure that the move doesn't already have a flinch rate.
-	call HasEnemyFainted
+	call HasOpponentFainted
 	ret z
 	ld a, BATTLE_VARS_MOVE_EFFECT
 	call GetBattleVar
@@ -5059,7 +5087,7 @@ DoLeafGuardCheck:
 PostStatusWithSynchronize:
 	farcall RunEnemySynchronizeAbility
 PostStatus:
-	farcall UseEnemyHeldStatusHealingItem
+	farcall UseOpponentHeldStatusHealingItem
 	farjp RunEnemyStatusHealAbilities
 
 BattleCommand_SleepTarget:
@@ -7629,7 +7657,6 @@ BattleCommand_KnockOff:
 	call ItemIsMail
 	ret c
 
-	ld [wNamedObjectIndexBuffer], a
 	xor a
 	ld [hl], a
 	call GetItemName
@@ -7643,8 +7670,47 @@ BattleCommand_KnockOff:
 	ret
 
 BattleCommand_BugBite:
-; TODO: bugbite
-	ret
+	; these abilities prevent us from eating it
+	call GetOpponentAbilityAfterMoldBreaker
+	cp STICKY_HOLD
+	ret z
+	cp UNNERVE
+	ret z
+
+	; does the opponent even have a berry? DON'T check EdibleBerries,
+	; there are non-edible ones which we'll still eat (with no effect)
+	call GetOpponentItem
+	ld a, [hl]
+	ld [CurItem], a
+	push bc
+	push hl
+	farcall CheckItemPocket
+	pop hl
+	pop bc
+	ld a, [wItemAttributeParamBuffer]
+	cp BERRIES
+	ret nz
+
+	; OK, we will eat the berry. Done by reusing item effect functions,
+	; and if the opponent still has an item, eating it with no effect
+	farcall StealHeldStatusHealingItem
+	farcall StealHPHealingItem
+	farcall StealStatBoostBerry
+	farcall StealDefendHitBerry
+	; TODO: leppa berry
+
+	; check if the opponent still has a berry
+	call GetOpponentItem
+	ld a, [hl]
+	and a
+	ret z
+	farcall ItemRecoveryAnim
+	call GetItemName
+	ld hl, BattleText_UserAteItem
+	call StdBattleTextBox
+	call ConsumeOpponentItem
+	ld hl, NothingHappenedText
+	jp StdBattleTextBox
 
 BattleCommand_PayDay: ; 3705c
 ; payday
@@ -9208,13 +9274,17 @@ GetEnemyItem:
 
 GetUserItem: ; 37db2
 ; Return the effect of the user's item in bc, and its id at hl.
+; Also updates the object name buffer, allowing you to just
+; GetItemName to get the item name
 	ld hl, wBattleMonItem
 	ld a, [hBattleTurn]
 	and a
 	jr z, .go
 	ld hl, wEnemyMonItem
 .go
-	ld b, [hl]
+	ld a, [hl]
+	ld [wNamedObjectIndexBuffer], a
+	ld b, a
 	jp GetItemHeldEffect
 
 ; 37dc1
@@ -9244,7 +9314,7 @@ GetUserItemAfterUnnerve::
 	push de
 	push hl
 	ld de, 1
-	ld hl, UnnerveItemsBlocked
+	ld hl, EdibleBerries
 	call IsInArray
 	pop hl
 	pop de
@@ -9253,7 +9323,7 @@ GetUserItemAfterUnnerve::
 	ld b, HELD_NONE
 	ret
 
-UnnerveItemsBlocked:
+EdibleBerries:
 	db ORAN_BERRY
 	db SITRUS_BERRY
 	db PECHA_BERRY
@@ -9270,6 +9340,9 @@ UnnerveItemsBlocked:
 	db SALAC_BERRY
 	db PETAYA_BERRY
 	db APICOT_BERRY
+	db KEE_BERRY
+	db MARANGABERRY
+	; not eaten, so unaffected: jaboca, rowap
 	db -1
 NoItem:
 	db NO_ITEM

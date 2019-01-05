@@ -4220,6 +4220,30 @@ HandleRoost:
 	ld [hl], a
 	ret
 
+StealDefendHitBerry:
+; treat it as a stat boost berry
+	farcall GetOpponentItem
+	ld a, b
+	cp HELD_DEFEND_HIT
+	ret nz
+	ld a, HELD_RAISE_STAT
+	ld b, a
+	ld a, c
+	cp PHYSICAL
+	ld a, DEFENSE
+	jr z, .got_stat
+	ld a, SP_DEFENSE
+.got_stat
+	ld c, a
+	jr DoStealStatBoostBerry
+
+StealStatBoostBerry:
+	farcall GetOpponentItem
+DoStealStatBoostBerry:
+	call _HeldStatBoostBerry
+	ret nz
+	farjp ConsumeOpponentItem
+
 HandleStatBoostBerry:
 	ld a, BATTLE_VARS_ABILITY
 	call GetBattleVar
@@ -4235,16 +4259,22 @@ HandleStatBoostBerry:
 	ret nc
 .ok
 	farcall GetUserItemAfterUnnerve
+	call _HeldStatBoostBerry
+	ret nz
+	farjp ConsumeUserItem
+
+_HeldStatBoostBerry:
 	ld a, b
+	ld b, c
 	cp HELD_RAISE_STAT
 	ret nz
-	ld b, c
+	push hl
 	farcall BattleCommand_StatUp
+	pop hl
 	ld a, [wFailedMessage]
 	and a
 	ret nz
 	call ItemRecoveryAnim
-	farcall GetUserItemAfterUnnerve
 	ld a, [hl]
 	ld [wNamedObjectIndexBuffer], a
 	call GetItemName
@@ -4255,7 +4285,22 @@ HandleStatBoostBerry:
 	farcall GetStatName
 	ld hl, BattleText_ItemRaised
 	call StdBattleTextBox
-	farjp ConsumeUserItem
+	xor a
+	ret
+
+StealHPHealingItem:
+	call CheckFullHP
+	ret z
+	farcall GetOpponentItem
+	call _HeldHPHealingItem
+	ret nz
+StealBattleItem:
+	call RefreshBattleHuds
+	farcall GetOpponentItem
+	call GetItemName
+	ld hl, RecoveredUsingText
+	call StdBattleTextBox
+	farjp ConsumeOpponentItem
 
 HandleHPHealingItem:
 	; only restore HP if HP<=1/2
@@ -4265,12 +4310,9 @@ HandleHPHealingItem:
 	ret nc
 .ok
 	farcall GetUserItemAfterUnnerve
-	ld a, b
-	cp HELD_BERRY
-	ret nz
 	ld a, [hl]
 	cp FIGY_BERRY
-	jr nz, .not_figy
+	jr nz, .figy_ok
 
 	; Gluttony makes Figy activate at 50%HP like the others
 	ld a, BATTLE_VARS_ABILITY
@@ -4282,26 +4324,37 @@ HandleHPHealingItem:
 	jr z, .figy_ok
 	ret nc
 .figy_ok
-	call GetHalfMaxHP
-	jr .got_hp_to_restore
-.not_figy
-	ld b, 0 ; c contains HP to restore
-	call ItemRecoveryAnim
-	ld a, [hl]
-	cp SITRUS_BERRY
-	jr nz, .got_hp_to_restore
-	call GetQuarterMaxHP
-.got_hp_to_restore
-	call RestoreHP
+	farcall GetUserItemAfterUnnerve
+	call _HeldHPHealingItem
+	ret nz
 UseBattleItem:
 	call RefreshBattleHuds
-	farcall GetUserItemAfterUnnerve
-	ld a, [hl]
-	ld [wNamedObjectIndexBuffer], a
+	farcall GetUserItem
 	call GetItemName
 	ld hl, RecoveredUsingText
 	call StdBattleTextBox
 	farjp ConsumeUserItem
+
+_HeldHPHealingItem:
+	ld a, b
+	cp HELD_BERRY
+	ret nz
+	ld b, 0 ; bc contains HP to restore unless Figy or Sitrus
+	ld a, [hl]
+	cp FIGY_BERRY
+	jr nz, .not_figy
+	call GetHalfMaxHP
+	jr .got_hp_to_restore
+
+.not_figy
+	cp SITRUS_BERRY
+	jr nz, .got_hp_to_restore
+	call GetQuarterMaxHP
+.got_hp_to_restore
+	call ItemRecoveryAnim
+	call RestoreHP
+	xor a
+	ret
 
 ItemRecoveryAnim::
 	push hl
@@ -4320,13 +4373,24 @@ ItemRecoveryAnim::
 	ret
 ; 3dde9
 
-UseEnemyHeldStatusHealingItem:
+UseOpponentHeldStatusHealingItem:
 	call SwitchTurn
 	call UseHeldStatusHealingItem
 	jp SwitchTurn
 
+StealHeldStatusHealingItem:
+	farcall GetOpponentItem
+	call _HeldStatusHealingItem
+	ret z
+	jp StealBattleItem
+
 UseHeldStatusHealingItem: ; 3dde9
 	farcall GetUserItemAfterUnnerve
+	call _HeldStatusHealingItem
+	ret z
+	jp UseBattleItem
+
+_HeldStatusHealingItem:
 	ld hl, .Statuses
 .loop
 	ld a, [hli]
@@ -4355,11 +4419,8 @@ UseHeldStatusHealingItem: ; 3dde9
 
 .skip_confuse
 	call ItemRecoveryAnim
-	call UseBattleItem
-	ld a, $1
-	and a
+	or 1
 	ret
-; 3de44
 
 .Statuses: ; 3de44
 	db HELD_HEAL_POISON, 1 << PSN

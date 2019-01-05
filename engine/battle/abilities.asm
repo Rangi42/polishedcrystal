@@ -661,7 +661,7 @@ AfflictStatusAbility
 ; duplicating them here is minor logic, and it avoids spamming
 ; needless ability activations that ends up not actually doing
 ; anything.
-	call HasEnemyFainted
+	call HasOpponentFainted
 	ret z
 	ld a, BATTLE_VARS_ABILITY_OPP
 	push de

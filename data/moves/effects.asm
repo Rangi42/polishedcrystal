@@ -223,12 +223,12 @@ ZenHeadbutt:
 	doturn
 	pressure
 	critical
+	effectchance
 	damagestats
 	damagecalc
 	stab
 	damagevariation
 	checkhit
-	effectchance
 	hittarget
 	failuretext
 	checkfaint
@@ -250,12 +250,12 @@ GunkShot:
 	doturn
 	pressure
 	critical
+	effectchance
 	damagestats
 	damagecalc
 	stab
 	damagevariation
 	checkhit
-	effectchance
 	hittarget
 	failuretext
 	checkfaint
@@ -277,12 +277,12 @@ FireBlast:
 	doturn
 	pressure
 	critical
+	effectchance
 	damagestats
 	damagecalc
 	stab
 	damagevariation
 	checkhit
-	effectchance
 	hittarget
 	failuretext
 	checkfaint
@@ -308,12 +308,12 @@ ZapCannon:
 	doturn
 	pressure
 	critical
+	effectchance
 	damagestats
 	damagecalc
 	stab
 	damagevariation
 	checkhit
-	effectchance
 	hittarget
 	failuretext
 	checkfaint
@@ -331,12 +331,12 @@ SleepHit:
 	doturn
 	pressure
 	critical
+	effectchance
 	damagestats
 	damagecalc
 	stab
 	damagevariation
 	checkhit
-	effectchance
 	hittarget
 	failuretext
 	checkfaint
@@ -357,12 +357,12 @@ Blizzard:
 	doturn
 	pressure
 	critical
+	effectchance
 	damagestats
 	damagecalc
 	stab
 	damagevariation
 	checkhit
-	effectchance
 	hittarget
 	failuretext
 	checkfaint
@@ -386,12 +386,12 @@ Hurricane:
 	doturn
 	pressure
 	critical
+	effectchance
 	damagestats
 	damagecalc
 	stab
 	damagevariation
 	checkhit
-	effectchance
 	hittarget
 	failuretext
 	checkfaint
@@ -410,12 +410,12 @@ MetalClaw:
 	doturn
 	pressure
 	critical
+	effectchance
 	damagestats
 	damagecalc
 	stab
 	damagevariation
 	checkhit
-	effectchance
 	hittarget
 	failuretext
 	checkfaint
@@ -435,12 +435,12 @@ SteelWing:
 	doturn
 	pressure
 	critical
+	effectchance
 	damagestats
 	damagecalc
 	stab
 	damagevariation
 	checkhit
-	effectchance
 	hittarget
 	failuretext
 	checkfaint
@@ -460,12 +460,12 @@ Ancientpower:
 	doturn
 	pressure
 	critical
+	effectchance
 	damagestats
 	damagecalc
 	stab
 	damagevariation
 	checkhit
-	effectchance
 	hittarget
 	failuretext
 	checkfaint
@@ -484,12 +484,12 @@ AuroraBeam:
 	doturn
 	pressure
 	critical
+	effectchance
 	damagestats
 	damagecalc
 	stab
 	damagevariation
 	checkhit
-	effectchance
 	hittarget
 	failuretext
 	checkfaint
@@ -511,12 +511,12 @@ RockSmash:
 	doturn
 	pressure
 	critical
+	effectchance
 	damagestats
 	damagecalc
 	stab
 	damagevariation
 	checkhit
-	effectchance
 	hittarget
 	failuretext
 	checkfaint
@@ -538,12 +538,12 @@ Bulldoze:
 	doturn
 	pressure
 	critical
+	effectchance
 	damagestats
 	damagecalc
 	stab
 	damagevariation
 	checkhit
-	effectchance
 	hittarget
 	failuretext
 	checkfaint
@@ -563,12 +563,12 @@ Moonblast:
 	doturn
 	pressure
 	critical
+	effectchance
 	damagestats
 	damagecalc
 	stab
 	damagevariation
 	checkhit
-	effectchance
 	hittarget
 	failuretext
 	checkfaint
@@ -595,12 +595,12 @@ ShadowBall:
 	doturn
 	pressure
 	critical
+	effectchance
 	damagestats
 	damagecalc
 	stab
 	damagevariation
 	checkhit
-	effectchance
 	hittarget
 	failuretext
 	checkfaint
@@ -621,12 +621,12 @@ Octazooka:
 	doturn
 	pressure
 	critical
+	effectchance
 	damagestats
 	damagecalc
 	stab
 	damagevariation
 	checkhit
-	effectchance
 	hittarget
 	failuretext
 	checkfaint
@@ -645,12 +645,12 @@ EvasionDownHit:
 	doturn
 	pressure
 	critical
+	effectchance
 	damagestats
 	damagecalc
 	stab
 	damagevariation
 	checkhit
-	effectchance
 	hittarget
 	failuretext
 	checkfaint
@@ -669,12 +669,12 @@ CloseCombat:
 	doturn
 	pressure
 	critical
+	effectchance
 	damagestats
 	damagecalc
 	stab
 	damagevariation
 	checkhit
-	effectchance
 	hittarget
 	failuretext
 	checkfaint
@@ -1708,13 +1708,13 @@ Thief:
 	doturn
 	pressure
 	critical
+	effectchance
 	damagestats
 	damagecalc
 	stab
 	damagevariation
 	checkhit
 	; Yes, thief is 100% but this makes Sheer Force and Substitute be handled correctly
-	effectchance
 	hittarget
 	failuretext
 	checkfaint
@@ -1741,12 +1741,12 @@ FlameWheel:
 	doturn
 	pressure
 	critical
+	effectchance
 	damagestats
 	damagecalc
 	stab
 	damagevariation
 	checkhit
-	effectchance
 	hittarget
 	failuretext
 	checkfaint
@@ -1937,12 +1937,12 @@ SacredFire:
 	doturn
 	pressure
 	critical
+	effectchance
 	damagestats
 	damagecalc
 	stab
 	damagevariation
 	checkhit
-	effectchance
 	hittarget
 	failuretext
 	checkfaint
@@ -2096,13 +2096,13 @@ Earthquake:
 	doturn
 	pressure
 	critical
+	effectchance
 	damagestats
 	damagecalc
 	stab
 	damagevariation
 	doubleundergrounddamage
 	checkhit
-	effectchance
 	hittarget
 	failuretext
 	checkfaint
@@ -2159,13 +2159,13 @@ Stomp:
 	doturn
 	pressure
 	critical
+	effectchance
 	damagestats
 	damagecalc
 	stab
 	damagevariation
 	doubleminimizedamage
 	checkhit
-	effectchance
 	hittarget
 	failuretext
 	checkfaint
@@ -2207,11 +2207,11 @@ Thunder:
 	doturn
 	pressure
 	critical
+	effectchance
 	damagestats
 	damagecalc
 	thunderaccuracy
 	checkhit
-	effectchance
 	stab
 	damagevariation
 	hittarget
@@ -2276,12 +2276,12 @@ FlareBlitz:
 	doturn
 	pressure
 	critical
+	effectchance
 	damagestats
 	damagecalc
 	stab
 	damagevariation
 	checkhit
-	effectchance
 	hittarget
 	failuretext
 	checkfaint

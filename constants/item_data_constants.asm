@@ -138,6 +138,8 @@ ITEMMENU_CLOSE   EQU 6
 	const HELD_BLACK_SLUDGE
 
 	const HELD_RAISE_STAT
+	const HELD_OFFEND_HIT
+	const HELD_DEFEND_HIT
 
 
 ; mart types
