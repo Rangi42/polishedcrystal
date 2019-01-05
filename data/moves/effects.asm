@@ -1,6 +1,5 @@
 MoveEffects:
 
-BugBite: ; TODO
 GyroBall: ; TODO
 NormalHit:
 AerialAce:
@@ -1455,6 +1454,29 @@ KnockOff:
 	checkdestinybond
 	buildopponentrage
 	pickpocket
+	endmove
+
+BugBite:
+	checkobedience
+	usedmovetext
+	doturn
+	pressure
+	critical
+	damagestats
+	damagecalc
+	stab
+	damagevariation
+	checkhit
+	conditionalboost
+	hittarget
+	failuretext
+	bugbite ; before checkfaint to steal HP berries before they take effect
+	checkfaint
+	criticaltext
+	supereffectivetext
+	knockoff
+	checkdestinybond
+	buildopponentrage
 	endmove
 
 TriAttack:
