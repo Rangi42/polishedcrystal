@@ -134,6 +134,7 @@ CheckBreedmonCompatibility: ; 16e1d
 	; ditto
 	ld a, 8
 	ret z
+	ld a, 3
 	push bc
 	predef GetGender
 	pop bc
