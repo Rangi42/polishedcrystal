@@ -901,7 +901,7 @@ DayCare_InitBreeding: ; 16a3b
 	ld a, [wBreedMon2Ability]
 .got_mother_ability
 	ld b, a
-	
+
 	ld a, 5
 	call RandomRange
 	and a

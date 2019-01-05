@@ -711,6 +711,7 @@ Poisonpowder:
 	usedmovetext
 	doturn
 	pressure
+	checkpowder
 	checkhit
 	bounceback
 	stab
@@ -751,7 +752,7 @@ Glare:
 	usedmovetext
 	doturn
 	pressure
-	stab
+	checkpowder
 	checkhit
 	bounceback
 	checksafeguard
@@ -767,6 +768,7 @@ Spore:
 	usedmovetext
 	doturn
 	pressure
+	checkpowder
 	checkhit
 	bounceback
 	checksafeguard

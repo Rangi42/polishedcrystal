@@ -1379,7 +1379,6 @@ BattleCommand_Stab: ; 346d2
 	ld [hl], a
 	ret
 
-
 BattleCheckTypeMatchup:
 	ld a, [hBattleTurn]
 	and a
@@ -1538,7 +1537,13 @@ _CheckTypeMatchup: ; 347d3
 
 ; 34833
 
-
+BattleCommand_CheckPowder:
+	ld de, 1
+	ld a, BATTLE_VARS_MOVE
+	call GetBattleVar
+	ld hl, PowderMoves
+	call IsInArray
+	ret nc
 BattleCommand_ResetTypeMatchup: ; 34833
 ; Reset the type matchup multiplier to 1.0, if the type matchup is not 0.
 ; If there is immunity in play, the move automatically misses.
@@ -4993,6 +4998,9 @@ CanStatusTarget:
 	jr z, .cant_type
 	ld a, c
 	call CheckIfTargetIsSomeType
+	jr z, .cant_type
+	ld a, [wTypeMatchup]
+	and a
 	jr z, .cant_type
 	call GetOpponentItemAfterUnnerve
 	ld a, b
