@@ -160,3 +160,4 @@
 	tilecoll LEFT_WALL, FLOOR, LEFT_WALL, FLOOR
 	tilecoll WALL, WALL, WALL, WALL
 	tilecoll WALL, WALL, WALL, WALL
+	tilecoll BUOY, BUOY, WATER, WATER

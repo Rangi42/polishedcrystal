@@ -3495,7 +3495,7 @@ FlaaffyEvosAttacks:
 if DEF(FAITHFUL)
 	db EVOLVE_LEVEL, 30, AMPHAROS
 else
-	db EVOLVE_LEVEL, 35, AMPHAROS
+	db EVOLVE_LEVEL, 36, AMPHAROS
 endc
 	db 0 ; no more evolutions
 	db 1, TACKLE
@@ -3529,11 +3529,7 @@ AmpharosEvosAttacks:
 	db 20, HEAL_BELL ; Take Down → HGSS tutor move
 	db 25, TAKE_DOWN ; Electro Ball → Take Down
 	db 29, CONFUSE_RAY
-if DEF(FAITHFUL)
 	db 35, POWER_GEM
-else
-	db 34, POWER_GEM
-endc
 	db 40, THUNDERBOLT ; Discharge → TM move
 	db 46, SAFEGUARD ; Cotton Guard → egg move
 	db 51, DAZZLINGLEAM ; Signal Beam → new move

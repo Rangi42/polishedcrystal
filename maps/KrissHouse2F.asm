@@ -104,6 +104,7 @@ if DEF(DEBUG)
 	givemoney $0, 999999
 	giveitem COIN_CASE
 	givecoins 50000
+	loadvar BattlePoints, 250
 	; all badges
 	setflag ENGINE_ZEPHYRBADGE
 	setflag ENGINE_HIVEBADGE

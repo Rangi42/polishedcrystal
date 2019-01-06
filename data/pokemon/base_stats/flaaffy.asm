@@ -2,7 +2,7 @@ if DEF(FAITHFUL)
 	db  70,  55,  55,  45,  80,  60
 	;   hp  atk  def  spd  sat  sdf
 else
-	db  70,  60,  60,  45,  85,  65
+	db  70,  60,  60,  50,  85,  65
 	;   hp  atk  def  spd  sat  sdf
 endc
 

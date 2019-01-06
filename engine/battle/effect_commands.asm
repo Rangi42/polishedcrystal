@@ -2072,6 +2072,9 @@ BattleCommand_EffectChance: ; 34ecc
 	jr c, .end ; Carry means the effect byte overflowed, so gurantee it
 
 .skip_serene_grace
+	ld a, b
+	cp 100 percent
+	jr z, .end
 	call BattleRandom
 	cp b
 	jr c, .end
