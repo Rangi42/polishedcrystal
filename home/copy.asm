@@ -444,7 +444,7 @@ WriteVCopyRegistersToHRAM:
 	ret
 
 
-GetOpaque1bpp_2::
+GetOpaque1bpp::
 ; Two bytes in VRAM define eight pixels (2 bits/pixel)
 ; Bits are paired from the bytes, e.g. %ABCDEFGH %abcdefgh defines pixels
 ; %Aa, %Bb, %Cc, %Dd, %Ee, %Ff, %Gg, %Hh
@@ -452,8 +452,7 @@ GetOpaque1bpp_2::
 	ld a, [rLCDC]
 	bit 7, a ; lcd on?
 	jr z, .CopyOpaque1bpp
-	homecall _GetOpaque1bpp
-	ret
+	jp Request1bpp
 
 .CopyOpaque1bpp:
 ; copy c 1bpp tiles from b:de to hl

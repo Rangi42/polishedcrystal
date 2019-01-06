@@ -83,11 +83,11 @@ LoadOverworldFont::
 	ld e, l
 	ld hl, VTiles0 tile "A"
 	lb bc, BANK(FontNormal), 111
-	call GetOpaque1bpp_2
+	call GetOpaque1bpp
 	ld hl, VTiles2 tile " "
 	ld de, TextBoxSpaceGFX
 	lb bc, BANK(TextBoxSpaceGFX), 1
-	jp GetOpaque1bpp_2
+	jp GetOpaque1bpp
 
 LoadStandardFontPointer::
 	ld hl, .FontPointers
