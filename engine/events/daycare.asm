@@ -644,7 +644,12 @@ InheritDV:
 	; Have we inherited as much as we can?
 	ld a, b
 	and a
-	jr z, .cant_inherit
+	jr z, .cant_inherit_any_more
+
+	; Have we inherited every stat?
+	ld a, c
+	cp %111111
+	jr z, .cant_inherit_any_more
 
 	; Have we already inherited the given stat?
 	push de
@@ -660,7 +665,7 @@ InheritDV:
 	and c
 	ld a, d
 	pop de
-	jr z, .cant_inherit
+	ret z ; we can still inherit other things, so don't return nz
 
 	; Mark the stat as inherited and decrease inherit counter
 	or c
@@ -710,7 +715,7 @@ InheritDV:
 	pop de
 	xor a
 	ret
-.cant_inherit
+.cant_inherit_any_more
 	or 1
 	ret
 
