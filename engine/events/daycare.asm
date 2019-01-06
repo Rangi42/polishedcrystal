@@ -638,12 +638,18 @@ PowerItems:
 InheritDV:
 ; Inherit DV e (0=HP, 1=Atk, 2=Def, 3=Speed, 4=Sp.Atk, 5=Sp.Def)
 ; from parent DVs in hl. Returns z if we successfully inherited it.
+; b: inheritance counts left, c: already inherited bitfield
 ; Preserves de+hl
 	; Figure out if we can inherit the DV
 	; Have we inherited as much as we can?
 	ld a, b
 	and a
-	jr z, .cant_inherit
+	jr z, .cant_inherit_any_more
+
+	; Have we inherited every stat?
+	ld a, c
+	cp %111111
+	jr z, .cant_inherit_any_more
 
 	; Have we already inherited the given stat?
 	push de
@@ -659,7 +665,7 @@ InheritDV:
 	and c
 	ld a, d
 	pop de
-	jr z, .cant_inherit
+	ret z ; we can still inherit other things, so don't return nz
 
 	; Mark the stat as inherited and decrease inherit counter
 	or c
@@ -667,12 +673,18 @@ InheritDV:
 	dec b
 
 	; Inherit the stat
+	; inc/dec doesn't alter carry flag
+	; DV is stored as %xxxxyyyy, %zzzzaaaa, %bbbbcccc
+	; x=HP, y=Atk, z=Def, a=Speed, b=SpAtk, c=SpDef
+	; To inherit the correct nibble, copy high from HL, low from DE
+	; a=0, 2 or 4 :: HL is Parent, DE is Egg
+	; a=1, 3 or 5 :: HL is Egg, DE is Parent
 	ld a, e
 	push de
 	push hl
 	ld de, wEggMonDVs
-	srl a
-	; inc/dec doesn't alter carry flag
+	; halve A; 0-1: first byte, 2-3: second, 4-5: third
+	srl a ; sets carry if a is odd, maintained thorough the loop
 	inc a
 .find_dv_loop
 	dec a
@@ -681,15 +693,16 @@ InheritDV:
 	inc hl
 	jr .find_dv_loop
 .found_dv
-	push de
+	push de ; Egg DVs inherited to
+	; current HL is Parent, DE is Egg, if a is odd, swap
 	jr nc, .swap_done
 	push de
 	ld d, h
 	ld e, l
 	pop hl
 .swap_done
-	; Take the high nibble from hl and the low from de and put into
-	; the uppermost stack addr (eggmon DV)
+	; inherit x from HL, y from DE in %xxxxyyyy
+	; This means that half is "inherited" from Egg, half from Parent
 	ld a, [hl]
 	and $f0
 	ld h, a
@@ -702,7 +715,7 @@ InheritDV:
 	pop de
 	xor a
 	ret
-.cant_inherit
+.cant_inherit_any_more
 	or 1
 	ret
 
@@ -901,7 +914,7 @@ DayCare_InitBreeding: ; 16a3b
 	ld a, [wBreedMon2Ability]
 .got_mother_ability
 	ld b, a
-	
+
 	ld a, 5
 	call RandomRange
 	and a

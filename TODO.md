@@ -82,21 +82,13 @@ Shamouti Island:
 * Shamouti Restaurant (works like Seven Stars Restaurant) (different subset of all trainers every day of the week)
 
 
-### Item effects
-
-* Jaboca/Rowap Berry damages the foe if they hit you with a physical/special move
-* Kee/Maranga Berry raises Defense/Special Defense if hit with a physical/special move
-
-
 ### Move effects
 
 * Bug Bite eats and uses the foe's held Berry
-* Gyro Ball's power is based on speed ratio
 * Low Kick's power is based on weight
 * Body Slam does double damage against Minimize
 * Stomp and Body Slam never miss against Minimize
 * Destiny Bond's success chance halves every successive turn it's used (Gen VII)
-* Ghost-type Pokémon are immune to the trapping effects of Mean Look, Clamp, Fire Spin, Whirlpool, and Wrap
 * Rock Smash breaks screens instead of lowering Defense (like Brick Break) (non-Faithful)
 
 
@@ -239,7 +231,7 @@ Some of these may never be added; they're just suggestions.
    * R/S/E Route 120
 * More Orange Islands
 * First Pokémon walks behind you ([comet's prototype](https://hax.iimarck.us/topic/6248/) and [diff](https://github.com/yenatch/pokecrystal/commit/dbc5cd2025a0214c5b2cd1e3330f50603a0bb9d1))
-* 60 FPS via [doublespeed](https://github.com/FredrIQ/polishedcrystal/tree/doublespeed) mode
+* 60 FPS via [doublespeed](https://github.com/FredrIQ/polishedcrystal/tree/optimizations) mode
 * Port optimizations from Prism that improve overall speed of graphics loading, menu scrolling, etc
 * Load the font graphics only when textboxes are open, and otherwise load sprites' walking frames like G/S (popup location signs would have to be handled specially)
 * Evening (intervals: morn 4–11, day 11–6, eve 6–9, nite 9–4)

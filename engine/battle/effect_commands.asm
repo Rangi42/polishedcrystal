@@ -607,12 +607,11 @@ HitConfusion: ; 343a5
 	call CallBattleCore
 	ld a, $1
 	ld [hBGMapMode], a
-	ld c, $1
-	call PlayerHurtItself
-	jp BattleCommand_RaiseSub
 .enemy
 	ld c, $1
-	call EnemyHurtItself
+	call SwitchTurn
+	call TakeDamage
+	call SwitchTurn
 	jp BattleCommand_RaiseSub
 
 ; 343db
@@ -1380,7 +1379,6 @@ BattleCommand_Stab: ; 346d2
 	ld [hl], a
 	ret
 
-
 BattleCheckTypeMatchup:
 	ld a, [hBattleTurn]
 	and a
@@ -1539,7 +1537,13 @@ _CheckTypeMatchup: ; 347d3
 
 ; 34833
 
-
+BattleCommand_CheckPowder:
+	ld de, 1
+	ld a, BATTLE_VARS_MOVE
+	call GetBattleVar
+	ld hl, PowderMoves
+	call IsInArray
+	ret nc
 BattleCommand_ResetTypeMatchup: ; 34833
 ; Reset the type matchup multiplier to 1.0, if the type matchup is not 0.
 ; If there is immunity in play, the move automatically misses.
@@ -2506,16 +2510,7 @@ BattleCommand_CheckFaint:
 	push bc
 	call .check_sub
 	ld c, $0
-	ld a, [hBattleTurn]
-	and a
-	jr nz, .damage_player
-	call EnemyHurtItself
-	jr .done_damage
-
-.damage_player
-	call PlayerHurtItself
-
-.done_damage
+	call TakeDamage
 	pop bc
 	ld a, b
 	and a
@@ -2632,10 +2627,7 @@ endr
 	ld [wKickCounter], a
 	call LoadMoveAnim
 	ld c, $1
-	ld a, [hBattleTurn]
-	and a
-	jp nz, EnemyHurtItself
-	jp PlayerHurtItself
+	jp TakeDamage
 
 FailText_CheckOpponentProtect: ; 35157
 ; Print an appropriate failure message, usually wAttackMissed.
@@ -4873,8 +4865,8 @@ PlayFXAnimID: ; 35d08
 
 ; 35d1c
 
-
-EnemyHurtItself: ; 35d1c
+TakeDamage:
+; opponent takes damage
 	ld hl, wCurDamage
 	ld a, [hli]
 	ld b, a
@@ -4886,110 +4878,15 @@ EnemyHurtItself: ; 35d1c
 	and a
 	jr nz, .mimic_sub_check
 
-	ld a, [wEnemySubStatus4]
-	bit SUBSTATUS_SUBSTITUTE, a
-	jp nz, SelfInflictDamageToSubstitute
-
-.mimic_sub_check
-	ld a, [hld]
-	ld b, a
-	ld a, [wEnemyMonHP + 1]
-	ld [wBuffer3], a
-	sub b
-	ld [wEnemyMonHP + 1], a
-	ld a, [hl]
-	ld b, a
-	ld a, [wEnemyMonHP]
-	ld [wBuffer4], a
-	sbc b
-	ld [wEnemyMonHP], a
-	jr nc, .mimic_faint
-
-	ld a, [wBuffer4]
-	ld [hli], a
-	ld a, [wBuffer3]
-	ld [hl], a
-
-	xor a
-	ld hl, wEnemyMonHP
-	ld [hli], a
-	ld [hl], a
-
-.mimic_faint
-	ld hl, wEnemyMonMaxHP
-	ld a, [hli]
-	ld [wBuffer2], a
-	ld a, [hl]
-	ld [wBuffer1], a
-	ld hl, wEnemyMonHP
-	ld a, [hli]
-	ld [wBuffer6], a
-	ld a, [hl]
-	ld [wBuffer5], a
-	hlcoord 1, 2
-	xor a
-	ld [wWhichHPBar], a
-	predef AnimateHPBar
-.did_no_damage
-	jp RefreshBattleHuds
-
-; 35d7e
-
-
-PlayerHurtItself: ; 35d7e
-	ld hl, wCurDamage
-	ld a, [hli]
-	ld b, a
-	ld a, [hl]
-	or b
-	jr z, .did_no_damage
-
-	ld a, c
-	and a
-	jr nz, .mimic_sub_check
-
-	ld a, [wPlayerSubStatus4]
+	ld a, BATTLE_VARS_SUBSTATUS4_OPP
+	call GetBattleVar
 	bit SUBSTATUS_SUBSTITUTE, a
 	jp nz, SelfInflictDamageToSubstitute
 .mimic_sub_check
 	ld a, [hld]
-	ld b, a
-	ld a, [wBattleMonHP + 1]
-	ld [wBuffer3], a
-	sub b
-	ld [wBattleMonHP + 1], a
-	ld [wBuffer5], a
+	ld c, a
 	ld b, [hl]
-	ld a, [wBattleMonHP]
-	ld [wBuffer4], a
-	sbc b
-	ld [wBattleMonHP], a
-	ld [wBuffer6], a
-	jr nc, .mimic_faint
-
-	ld a, [wBuffer4]
-	ld [hli], a
-	ld a, [wBuffer3]
-	ld [hl], a
-	xor a
-
-	ld hl, wBattleMonHP
-	ld [hli], a
-	ld [hl], a
-	ld hl, wBuffer5
-	ld [hli], a
-	ld [hl], a
-
-.mimic_faint
-	ld hl, wBattleMonMaxHP
-	ld a, [hli]
-	ld [wBuffer2], a
-	ld a, [hl]
-	ld [wBuffer1], a
-	hlcoord 11, 9
-	ld a, $1
-	ld [wWhichHPBar], a
-	predef AnimateHPBar
+	farcall SubtractHPFromOpponent
 .did_no_damage
 	jp RefreshBattleHuds
 
@@ -5185,6 +5082,9 @@ CanStatusTarget:
 	jr z, .cant_type
 	ld a, c
 	call CheckIfTargetIsSomeType
+	jr z, .cant_type
+	ld a, [wTypeMatchup]
+	and a
 	jr z, .cant_type
 	call GetOpponentItemAfterUnnerve
 	ld a, b
@@ -7068,6 +6968,8 @@ BattleCommand_TrapTarget: ; 36c2d
 	ret nz
 	call CheckSubstituteOpp
 	ret nz
+	call CheckIfTargetIsGhostType
+	ret z
 	push bc
 	push de
 	push hl
@@ -8340,23 +8242,29 @@ INCLUDE "engine/battle/effect_commands/thief.asm"
 BattleCommand_ArenaTrap: ; 37517
 ; arenatrap
 
-; Doesn't work on an absent opponent.
-
+	; Doesn't work on an absent opponent.
 	call CheckHiddenOpponent
 	jr nz, .failed
 
-; Don't trap if the opponent is already trapped.
-
+	; Don't trap if the opponent is already trapped.
 	ld a, BATTLE_VARS_SUBSTATUS2
 	call GetBattleVarAddr
 	bit SUBSTATUS_CANT_RUN, [hl]
 	jr nz, .failed
 
-; Otherwise trap the opponent.
+	; Don't trap Ghost types
+	call CheckIfTargetIsGhostType
+	jr z, .immune
 
+	; Otherwise trap the opponent.
 	set SUBSTATUS_CANT_RUN, [hl]
 	call AnimateCurrentMove
 	ld hl, CantEscapeNowText
+	jp StdBattleTextBox
+
+.immune
+	call AnimateFailedMove
+	ld hl, DoesntAffectText
 	jp StdBattleTextBox
 
 .failed
@@ -8661,6 +8569,75 @@ BattleCommand_GetMagnitude: ; 37991
 	db 242, 110,  9
 	db 255, 150, 10
 ; 379c9
+
+BattleCommand_GyroBall:
+	push bc
+	push de
+	call SwitchTurn
+	call GetSpeed
+	push bc
+	call SwitchTurn
+	call GetSpeed
+	pop de
+	; User speed in BC, target speed in DE
+
+	; This is counterintuitive (the logical choice is to set speed to 1),
+	; but is how it's done in VII...
+	ld a, b
+	or c
+	ld a, 1
+	jr z, .got_power
+
+	; We can't divide numbers >255, so scale down speed in that case
+.scaledown_loop
+	ld a, b
+	and a
+	jr nz, .scaledown_ok
+	srl b
+	rr c
+	srl d
+	rr e
+	jr .scaledown_loop
+.scaledown_ok
+	; Base Power = 25 * (Target Speed / User Speed), capped at 150
+	xor a
+	ld [hMultiplicand + 0], a
+	ld a, d
+	ld [hMultiplicand + 1], a
+	ld a, e
+	ld [hMultiplicand + 2], a
+	ld a, 25
+	ld [hMultiplier], a
+	call Multiply
+
+	ld a, c
+	ld [hDivisor], a
+	ld b, 4
+	call Divide
+
+	; Cap at min 1, max 150
+	ld hl, hMultiplicand
+	ld a, [hli]
+	or [hl]
+	ld a, 150
+	jr nz, .got_power
+	inc hl
+	ld a, [hl]
+	and a
+	jr nz, .nonzero_power
+	ld a, 1
+	jr .got_power
+
+.nonzero_power
+	cp 151
+	jr c, .got_power
+
+	ld a, 150
+.got_power
+	pop de
+	ld d, a
+	pop bc
+	ret
 
 CheckAnyOtherAliveMons:
 ; These return nz if any is alive
@@ -9056,10 +9033,6 @@ BattleCommand_StartHail:
 	lb bc, WEATHER_HAIL, HELD_PROLONG_HAIL
 	ld hl, HailStartedText
 BattleCommand_StartWeather:
-	ld a, [wWeather]
-	cp b
-	jr z, .failed
-
 	ld a, b
 	ld [wWeather], a
 	ld a, c
@@ -9067,10 +9040,6 @@ BattleCommand_StartWeather:
 	ld [wWeatherCount], a
 	call AnimateCurrentMove
 	jp StdBattleTextBox ; hl has text pointer already
-
-.failed
-	call AnimateFailedMove
-	jp PrintButItFailed
 
 
 BattleCommand_BellyDrum: ; 37c1a

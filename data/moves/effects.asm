@@ -1,7 +1,5 @@
 MoveEffects:
 
-BugBite: ; TODO
-GyroBall: ; TODO
 NormalHit:
 AerialAce:
 Aeroblast:
@@ -713,6 +711,7 @@ Poisonpowder:
 	usedmovetext
 	doturn
 	pressure
+	checkpowder
 	checkhit
 	bounceback
 	stab
@@ -753,7 +752,7 @@ Glare:
 	usedmovetext
 	doturn
 	pressure
-	stab
+	checkpowder
 	checkhit
 	bounceback
 	checksafeguard
@@ -769,6 +768,7 @@ Spore:
 	usedmovetext
 	doturn
 	pressure
+	checkpowder
 	checkhit
 	bounceback
 	checksafeguard
@@ -1457,6 +1457,29 @@ KnockOff:
 	pickpocket
 	endmove
 
+BugBite:
+	checkobedience
+	usedmovetext
+	doturn
+	pressure
+	critical
+	damagestats
+	damagecalc
+	stab
+	damagevariation
+	checkhit
+	conditionalboost
+	hittarget
+	failuretext
+	bugbite ; before checkfaint to steal HP berries before they take effect
+	checkfaint
+	criticaltext
+	supereffectivetext
+	knockoff
+	checkdestinybond
+	buildopponentrage
+	endmove
+
 TriAttack:
 	checkobedience
 	usedmovetext
@@ -1963,6 +1986,29 @@ Magnitude:
 	critical
 	damagestats
 	getmagnitude
+	damagecalc
+	stab
+	damagevariation
+	checkhit
+	doubleundergrounddamage
+	hittarget
+	failuretext
+	checkfaint
+	criticaltext
+	supereffectivetext
+	checkdestinybond
+	buildopponentrage
+	pickpocket
+	endmove
+
+GyroBall:
+	checkobedience
+	usedmovetext
+	doturn
+	pressure
+	critical
+	damagestats
+	gyroball
 	damagecalc
 	stab
 	damagevariation
