@@ -443,47 +443,6 @@ SafeCopyTilemapAtOnce::
 CopyTilemapAtOnce::
 	farjp _CopyTilemapAtOnce
 
-.StackPointerMagic: ; 327b
-; Copy all tiles to VBGMap
-	ld [hSPBuffer], sp
-	ld sp, hl
-	ld a, [hBGMapAddress + 1]
-	ld h, a
-	ld l, 0
-	ld a, SCREEN_HEIGHT
-	ld [hTilesPerCycle], a
-	lb bc, (1 << 1), (rSTAT % $100) ; b: not in v/hblank
-
-.loop
-rept SCREEN_WIDTH / 2
-	pop de
-; if in v/hblank, wait until not in v/hblank
-.loop\@
-	ld a, [$ff00+c]
-	and b
-	jr nz, .loop\@
-; load BGMap0
-	ld [hl], e
-	inc l
-	ld [hl], d
-	inc l
-endr
-
-	ld de, $20 - SCREEN_WIDTH
-	add hl, de
-	ld a, [hTilesPerCycle]
-	dec a
-	ld [hTilesPerCycle], a
-	jr nz, .loop
-
-	ld a, [hSPBuffer]
-	ld l, a
-	ld a, [hSPBuffer + 1]
-	ld h, a
-	ld sp, hl
-	ret
-; 32f9
-
 SetPalettes:: ; 32f9
 ; Inits the Palettes
 ; depending on the system the monochromes palettes or color palettes
