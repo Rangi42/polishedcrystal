@@ -576,7 +576,7 @@ wListMoves_MoveIndicesBuffer:: ds NUM_MOVES
 
 wPutativeTMHMMove:: ds 1
 
-	ds 1
+wForgettingMove:: ds 1
 
 wBattleHasJustStarted:: ds 1
 
