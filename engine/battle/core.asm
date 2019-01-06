@@ -1785,7 +1785,12 @@ SubtractHPFromPlayer:
 
 _SubtractHP:
 	call .do_subtract
+	ld a, [hli]
+	or [hl]
+	push af
 	call UpdateHPBarBattleHuds
+	pop af
+	ret z
 	jp HandleHealingItems
 
 .do_subtract
@@ -1808,7 +1813,7 @@ _SubtractHP:
 	ld b, a
 	xor a
 	ld [hli], a
-	ld [hl], a
+	ld [hld], a
 	ld [Buffer5], a
 	ld [Buffer6], a
 	ret
