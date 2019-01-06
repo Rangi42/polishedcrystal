@@ -761,6 +761,10 @@ GetPokemonName:: ; 343b
 	ret
 ; 3468
 
+GetCurItemName::
+; Get item name from item in CurItem
+	ld a, [CurItem]
+	ld [wNamedObjectIndexBuffer], a
 GetItemName:: ; 3468
 ; Get item name wNamedObjectIndexBuffer.
 

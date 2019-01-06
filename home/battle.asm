@@ -715,9 +715,7 @@ CheckSpeedWithQuickClaw::
 	push de
 	farcall ItemRecoveryAnim
 	farcall GetUserItemAfterUnnerve
-	ld a, [hl]
-	ld [wNamedObjectIndexBuffer], a
-	call GetItemName
+	call GetCurItemName
 	ld hl, BattleText_UserItemLetItMoveFirst
 	call StdBattleTextBox
 	pop de

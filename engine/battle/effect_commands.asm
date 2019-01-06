@@ -517,9 +517,7 @@ CheckWhiteHerb:
 	ret nz
 	farcall ItemRecoveryAnim
 	call GetUserItem
-	ld a, [hl]
-	ld [wNamedObjectIndexBuffer], a
-	call GetItemName
+	call GetCurItemName
 	ld hl, RegainedStatsWithItem
 	call StdBattleTextBox
 	jp ConsumeUserItem
@@ -530,9 +528,7 @@ CheckPowerHerb:
 	cp HELD_POWER_HERB
 	ret nz
 
-	ld a, [hl]
-	ld [wNamedObjectIndexBuffer], a
-	call GetItemName
+	call GetCurItemName
 
 	call HasUserFainted
 	ret z
@@ -544,9 +540,7 @@ CheckPowerHerb:
 
 	farcall ItemRecoveryAnim
 	call GetUserItem
-	ld a, [hl]
-	ld [wNamedObjectIndexBuffer], a
-	call GetItemName
+	call GetCurItemName
 
 	ld hl, BattleText_UserChargedWithItem
 	call StdBattleTextBox
@@ -2531,9 +2525,7 @@ BattleCommand_CheckFaint:
 .enduring_with_item
 	push af
 	call GetOpponentItem
-	ld a, [hl]
-	ld [wNamedObjectIndexBuffer], a
-	call GetItemName
+	call GetCurItemName
 
 	ld hl, HungOnText
 	call StdBattleTextBox
@@ -2806,9 +2798,7 @@ BattleCommand_SuperEffectiveText: ; 351ad
 	push hl
 	push bc
 	jr nz, .atk_msg_done
-	ld a, [hl]
-	ld [wNamedObjectIndexBuffer], a
-	call GetItemName
+	call GetCurItemName
 	ld a, ATTACK
 	call .print_msg
 .atk_msg_done
@@ -3050,7 +3040,7 @@ BattleCommand_PostHitEffects:
 	jr nz, .defend_hit_done
 	farcall ItemRecoveryAnim
 	call GetUserItemAfterUnnerve
-	call GetItemName
+	call GetCurItemName
 	ld a, [wLoweredStat]
 	and $f
 	ld b, a
@@ -3079,16 +3069,14 @@ BattleCommand_PostHitEffects:
 	inc c
 .damage_ok
 	farcall SubtractHPFromUser
-	call GetItemName
+	call GetCurItemName
 	ld hl, BattleText_UserHurtByItem
 	call StdBattleTextBox
 
 .rocky_helmet_done
 	call GetUserItem
-	ld a, [hl]
-	ld [wNamedObjectIndexBuffer], a
 	push bc
-	call GetItemName
+	call GetCurItemName
 	pop bc
 	ld a, b
 	cp HELD_LIFE_ORB
@@ -5138,9 +5126,7 @@ CanStatusTarget:
 	pop de
 	jr .end
 .cant_item
-	ld a, [hl]
-	ld [wNamedObjectIndexBuffer], a
-	call GetItemName
+	call GetCurItemName
 	ld hl, ProtectedByText
 	; fallthrough
 .end
@@ -7185,9 +7171,7 @@ BattleCommand_Confuse: ; 36d3b
 	ld a, b
 	cp HELD_PREVENT_CONFUSE
 	jr nz, .no_item_protection
-	ld a, [hl]
-	ld [wNamedObjectIndexBuffer], a
-	call GetItemName
+	call GetCurItemName
 	call AnimateFailedMove
 	ld hl, ProtectedByText
 	jp StdBattleTextBox
@@ -7564,7 +7548,7 @@ BattleCommand_KnockOff:
 
 	xor a
 	ld [hl], a
-	call GetItemName
+	call GetCurItemName
 	ld hl, KnockedOffItemText
 	call StdBattleTextBox
 	ld a, MON_ITEM
@@ -7610,7 +7594,7 @@ BattleCommand_BugBite:
 	and a
 	ret z
 	farcall ItemRecoveryAnim
-	call GetItemName
+	call GetCurItemName
 	ld hl, BattleText_UserAteItem
 	call StdBattleTextBox
 	call ConsumeOpponentItem
@@ -9247,7 +9231,7 @@ GetEnemyItem:
 GetUserItem: ; 37db2
 ; Return the effect of the user's item in bc, and its id at hl.
 ; Also updates the object name buffer, allowing you to just
-; GetItemName to get the item name
+; GetCurItemName to get the item name
 	ld hl, wBattleMonItem
 	ld a, [hBattleTurn]
 	and a
@@ -9255,7 +9239,7 @@ GetUserItem: ; 37db2
 	ld hl, wEnemyMonItem
 .go
 	ld a, [hl]
-	ld [wNamedObjectIndexBuffer], a
+	ld [wCurItem], a
 	ld b, a
 	jp GetItemHeldEffect
 

@@ -424,8 +424,7 @@ FriskAbility:
 	ld a, [hl]
 	and a
 	ret z ; no item
-	ld [wNamedObjectIndexBuffer], a
-	call GetItemName
+	call GetCurItemName
 	ld hl, FriskedItemText
 	jp StdBattleTextBox
 
