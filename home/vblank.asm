@@ -192,7 +192,7 @@ VBlank1:: ; 337
 	jr c, .done
 
 	call UpdateBGMap
-	call Serve2bppRequest_NoVBlankCheck
+	call Serve2bppRequest
 
 	call hPushOAM
 .done
@@ -246,7 +246,7 @@ VBlank3::
 	jr c, .done
 
 	call UpdateBGMap
-	call Serve2bppRequest_NoVBlankCheck
+	call Serve2bppRequest
 
 	call hPushOAM
 .done
