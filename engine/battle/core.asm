@@ -604,9 +604,6 @@ ParsePlayerAction: ; 3c434
 	ld [wFXAnimIDLo], a
 	call MoveSelectionScreen
 	push af
-	call GetMemCGBLayout
-	call SetPalettes
-
 	call Call_LoadTempTileMapToTileMap
 	call UpdateBattleHuds
 

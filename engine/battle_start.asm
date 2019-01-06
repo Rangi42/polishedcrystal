@@ -68,7 +68,8 @@ endc
 	call UpdateSprites
 	call DelayFrame
 	call .LoadPokeballTiles
-	call CopyTilemapAtOnce
+	ld b, 3
+	call SafeCopyTilemapAtOnce
 	ld a, SCREEN_HEIGHT_PX
 	ld [hWY], a
 	call DelayFrame

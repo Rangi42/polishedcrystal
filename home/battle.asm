@@ -904,7 +904,7 @@ BattleTextBox:: ; 3ac3
 	push hl
 	call SpeechTextBox
 	call UpdateSprites
-	call CopyTilemapAtOnce
+	call ApplyTilemap
 	pop hl
 	jp PrintTextBoxText
 ; 3ad5
