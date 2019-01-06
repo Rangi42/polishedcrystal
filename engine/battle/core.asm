@@ -5967,7 +5967,7 @@ MoveInfoBox: ; 3e6c8
 	lb bc, 3, 9
 	call TextBox
 	pop af
-	call nz, WaitBGMap
+	call nz, ApplyTilemap
 
 	ld a, [wPlayerDisableCount]
 	and a
