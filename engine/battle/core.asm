@@ -1288,9 +1288,7 @@ HandleLeftovers:
 
 .do_it
 	farcall GetUserItem
-	ld a, [hl]
-	ld [wNamedObjectIndexBuffer], a
-	call GetItemName
+	call GetCurItemName
 	ld a, b
 	cp HELD_LEFTOVERS
 	jr z, .leftovers
@@ -4045,9 +4043,7 @@ HandleAirBalloon:
 	ld a, b
 	cp HELD_AIR_BALLOON
 	ret nz
-	ld a, [hl]
-	ld [wd265], a
-	call GetItemName
+	call GetCurItemName
 	ld hl, NotifyAirBalloonText
 	call StdBattleTextBox
 	xor a
@@ -4313,9 +4309,7 @@ _HeldStatBoostBerry:
 	and a
 	ret nz
 	call ItemRecoveryAnim
-	ld a, [hl]
-	ld [wNamedObjectIndexBuffer], a
-	call GetItemName
+	call GetCurItemName
 	ld a, [LoweredStat]
 	and $f
 	ld b, a
@@ -4335,7 +4329,7 @@ StealHPHealingItem:
 StealBattleItem:
 	call RefreshBattleHuds
 	farcall GetOpponentItem
-	call GetItemName
+	call GetCurItemName
 	ld hl, RecoveredUsingText
 	call StdBattleTextBox
 	jp ConsumeOpponentItem
@@ -4368,7 +4362,7 @@ HandleHPHealingItem:
 UseBattleItem:
 	call RefreshBattleHuds
 	farcall GetUserItem
-	call GetItemName
+	call GetCurItemName
 	ld hl, RecoveredUsingText
 	call StdBattleTextBox
 	jp ConsumeUserItem
@@ -4488,12 +4482,10 @@ UseConfusionHealingItem: ; 3de51
 	ret nz
 
 .heal_status
-	ld a, [hl]
-	ld [wd265], a
 	ld a, BATTLE_VARS_SUBSTATUS3
 	call GetBattleVarAddr
 	res SUBSTATUS_CONFUSED, [hl]
-	call GetItemName
+	call GetCurItemName
 	call ItemRecoveryAnim
 	ld hl, BattleText_ItemHealedConfusion
 	call StdBattleTextBox

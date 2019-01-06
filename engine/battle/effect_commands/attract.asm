@@ -44,9 +44,7 @@ BattleCommand_Attract: ; 377ce
 	ld b, a
 	push bc
 	; put ability in buffer 1, item in buffer 2
-	ld a, [hl]
-	ld [wNamedObjectIndexBuffer], a
-	call GetItemName
+	call GetCurItemName
 
 	ld hl, StringBuffer1
 	ld de, StringBuffer2
@@ -59,9 +57,7 @@ BattleCommand_Attract: ; 377ce
 	jr .destiny_knot_done
 
 .no_user_ability_protection
-	ld a, [hl]
-	ld [wNamedObjectIndexBuffer], a
-	call GetItemName
+	call GetCurItemName
 	ld hl, DestinyKnotInfatuatedUser
 	call StdBattleTextBox
 	ld a, BATTLE_VARS_SUBSTATUS1
@@ -156,9 +152,7 @@ CheckMentalHerb:
 	push bc
 	farcall ItemRecoveryAnim
 	call GetUserItem
-	ld a, [hl]
-	ld [wNamedObjectIndexBuffer], a
-	call GetItemName
+	call GetCurItemName
 
 	pop bc
 	bit 0, b
