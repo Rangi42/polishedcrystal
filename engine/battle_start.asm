@@ -68,7 +68,7 @@ endc
 	call UpdateSprites
 	call DelayFrame
 	call .LoadPokeballTiles
-	call LoadEDTile
+	call CopyTilemapAtOnce
 	ld a, SCREEN_HEIGHT_PX
 	ld [hWY], a
 	call DelayFrame
@@ -691,7 +691,7 @@ StartTrainerBattle_LoadPokeBallGraphics: ; 8c5dc (23:45dc)
 	ld a, $1
 	ld [hCGBPalUpdate], a
 	call DelayFrame
-	call LoadEDTile
+	call CopyTilemapAtOnce
 
 .nextscene ; 8c673 (23:4673)
 	jp StartTrainerBattle_NextScene

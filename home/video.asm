@@ -1,5 +1,14 @@
 ; Functions dealing with VRAM.
 
+PushOAM::
+	ld a, [hOAMUpdate]
+	and a
+	ret nz
+ForcePushOAM:
+	lb bc, 40 + 1, rDMA & $ff
+	ld a, wSprites >> 8
+	jp hPushOAM
+
 DMATransfer:: ; 15d8
 ; Return carry if the transfer is completed.
 

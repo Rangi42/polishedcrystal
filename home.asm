@@ -417,53 +417,31 @@ WaitBGMap::
 	ld [hBGMapMode], a
 	jp Delay2
 
-ApplyTilemap:: ; 321c
-	ld a, [wSpriteUpdatesEnabled]
-	cp 0
-	jr z, WaitBGMap
-
+ApplyTilemap::
+; Tell VBlank to update BG Map
 	ld a, 1
 	ld [hBGMapMode], a
-	jr LoadEDTile
+	ld a, [wSpriteUpdatesEnabled]
+	and a
+	ld b, 3
+	jr nz, SafeCopyTilemapAtOnce
+	ld b, 1 << 3 | 3
 
-LoadEDTile:: ; 323d
-	ld a, [hBGMapMode]
-	push af
-	xor a
-	ld [hBGMapMode], a
+; fallthrough
+SafeCopyTilemapAtOnce::
+; copies the tile&attr map at once
+; without any tearing
+; input:
+; b: 0 = no palette copy
+;    1 = copy raw palettes
+;    2 = set palettes and copy
+;    3 = use whatever was in hCGBPalUpdate
+; bit 2: if set, clear hOAMUpdate
+; bit 3: if set, only update tilemap
+	farjp _SafeCopyTilemapAtOnce
 
-	ld a, [hMapAnims]
-	push af
-	xor a
-	ld [hMapAnims], a
-
-.wait
-	ld a, [rLY]
-	cp $7f
-	jr c, .wait
-
-	di
-	ld a, BANK(VTiles3)
-	ld [rVBK], a
-	hlcoord 0, 0, wAttrMap
-	call .StackPointerMagic
-	xor a ; ld a, BANK(VTiles0)
-	ld [rVBK], a
-	hlcoord 0, 0
-	call .StackPointerMagic
-
-.wait2
-	ld a, [rLY]
-	cp $7f
-	jr c, .wait2
-	ei
-
-	pop af
-	ld [hMapAnims], a
-	pop af
-	ld [hBGMapMode], a
-	ret
-; 327b
+CopyTilemapAtOnce::
+	farjp _CopyTilemapAtOnce
 
 .StackPointerMagic: ; 327b
 ; Copy all tiles to VBGMap

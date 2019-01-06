@@ -3,7 +3,7 @@ SaveMenu: ; 14a1a
 	farcall DisplaySaveInfoOnSave
 	call SpeechTextBox
 	call UpdateSprites
-	farcall SaveMenu_LoadEDTile
+	call CopyTilemapAtOnce
 	ld hl, UnknownText_0x15283
 	ld b, BANK(UnknownText_0x15283)
 	call MapTextbox
@@ -25,7 +25,7 @@ SaveMenu: ; 14a1a
 
 .refused
 	call ExitMenu
-	farcall SaveMenu_LoadEDTile
+	call CopyTilemapAtOnce
 	scf
 	ret
 

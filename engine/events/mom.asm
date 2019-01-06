@@ -469,7 +469,7 @@ Mom_ContinueMenuSetup: ; 1651a
 	lb bc, PRINTNUM_MONEY | PRINTNUM_LEADINGZEROS | 3, 6
 	call PrintNum
 	call UpdateSprites
-	jp LoadEDTile
+	jp CopyTilemapAtOnce
 ; 1656b
 
 Mom_Wait10Frames: ; 1656b

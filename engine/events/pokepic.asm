@@ -3,7 +3,7 @@ Pokepic:: ; 244e3
 	call CopyMenuDataHeader
 	call MenuBox
 	call UpdateSprites
-	call ApplyTilemap
+	call CopyTilemapAtOnce
 	ld a, [wIsCurMonInParty]
 	and a
 	jr nz, .partymon
@@ -45,7 +45,7 @@ Trainerpic::
 	call CopyMenuDataHeader
 	call MenuBox
 	call UpdateSprites
-	call ApplyTilemap
+	call CopyTilemapAtOnce
 	farcall LoadTrainerPalette
 	call UpdateTimePals
 	xor a
@@ -90,7 +90,7 @@ ClosePokepic:: ; 24528
 	xor a
 	ld [hBGMapMode], a
 	call OverworldTextModeSwitch
-	call ApplyTilemap
+	call CopyTilemapAtOnce
 	call UpdateSprites
 	farjp LoadOverworldFont
 

@@ -315,15 +315,20 @@ FadeInMusic:: ; 3cae
 	ret
 ; 3cb4
 
-SkipMusic:: ; 3cb4
+SkipMusic::
 ; Skip a frames of music.
+	ld [hBuffer], a
+	ld a, [wMusicPlaying]
+	push af
+	xor a
+	ld [wMusicPlaying], a
+	ld a, [hBuffer]
 .loop
-	and a
-	ret z
-	dec a
 	call UpdateSound
-	jr .loop
-; 3cbc
+	dec a
+	jr nz, .loop
+	pop af
+	ld [wMusicPlaying], a
 
 FadeToMapMusic:: ; 3cbc
 	push hl

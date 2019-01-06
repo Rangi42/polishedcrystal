@@ -4,8 +4,8 @@ INCLUDE "constants.asm"
 SECTION "Code 1", ROMX
 
 LoadPushOAM:: ; 4031
-	lb bc, (PushOAMEnd - PushOAM), (hPushOAM - $ff00)
-	ld hl, PushOAM
+	lb bc, (PushOAMCodeEnd - PushOAMCode), hPushOAM & $ff
+	ld hl, PushOAMCode
 .loop
 	ld a, [hli]
 	ld [$ff00+c], a
@@ -14,7 +14,7 @@ LoadPushOAM:: ; 4031
 	jr nz, .loop
 	ret
 
-PushOAM: ; 403f
+PushOAMCode: ; 403f
 	ld a, wSprites / $100
 	ld [rDMA], a
 	ld a, 40
@@ -22,7 +22,7 @@ PushOAM: ; 403f
 	dec a
 	jr nz, .loop
 	ret
-PushOAMEnd
+PushOAMCodeEnd
 
 ReanchorBGMap_NoOAMUpdate:: ; 6454
 	call DelayFrame
@@ -3915,6 +3915,7 @@ SECTION "Code 15", ROMX
 
 INCLUDE "gfx/battle_anims.asm"
 INCLUDE "engine/events/halloffame.asm"
+INCLUDE "engine/copy_tilemap_at_once.asm"
 
 PrintAbility:
 ; Print ability b at hl.
