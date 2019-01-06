@@ -1,11 +1,18 @@
+	const_def
+	const INCOMPATIBLE
+	const SLIGHTLY_COMPATIBLE
+	const MODERATELY_COMPATIBLE
+	const HIGHLY_COMPATIBLE
+
+	const_def
+	shift_const BREEDGEN_MALE
+	shift_const BREEDGEN_FEMALE
+	shift_const BREEDGEN_GENDERLESS
+	shift_const BREEDGEN_DITTO
+
 CheckBreedmonCompatibility: ; 16e1d
-	; Returns:
-	; 0 - incompatible
-	; 1 - slightly compatible
-	; 2 - moderately compatible
-	; 3 - highly compatible
 	call .CheckBreedingGroupCompatibility
-	ld c, $0
+	ld c, INCOMPATIBLE
 	jp nc, .done
 	ld a, [wBreedMon1Species]
 	ld [CurPartySpecies], a
@@ -19,14 +26,14 @@ CheckBreedmonCompatibility: ; 16e1d
 	ld [TempMonGender], a
 	call .SetGenderData
 	cp b
-	ld c, $0
+	ld c, INCOMPATIBLE
 	jr z, .done ; both are same gender, both are dittos or both are genderless
 	; Check for Ditto
 	or b
-	cp 8
+	cp BREEDGEN_DITTO
 	jr nc, .breed_ok
 	; Check for genderless
-	cp 4
+	cp BREEDGEN_GENDERLESS
 	jr nc, .done ; Any mon being genderless is incompatible with non-Ditto
 
 .breed_ok
@@ -34,9 +41,9 @@ CheckBreedmonCompatibility: ; 16e1d
 	ld b, a
 	ld a, [wBreedMon1Species]
 	cp b
-	ld c, 3
+	ld c, HIGHLY_COMPATIBLE
 	jr z, .compare_ids
-	ld c, 2
+	ld c, MODERATELY_COMPATIBLE
 .compare_ids
 	; Speed up
 	ld a, [wBreedMon1ID]
@@ -49,7 +56,7 @@ CheckBreedmonCompatibility: ; 16e1d
 	ld a, [wBreedMon2ID + 1]
 	cp b
 	jr nz, .done
-	dec c
+	dec c ; SLIGHTLY_COMPATIBLE
 
 .done
 	ld a, c
@@ -128,24 +135,19 @@ CheckBreedmonCompatibility: ; 16e1d
 	ret
 
 .SetGenderData:
-	; set a to 1 (male), 2 (female), 4 (genderless) or 8 (ditto)
 	ld a, [CurPartySpecies]
 	cp DITTO
-	; ditto
-	ld a, 8
+	ld a, BREEDGEN_DITTO
 	ret z
-	ld a, 3
+	ld a, BREEDMON
 	push bc
 	predef GetGender
 	pop bc
-	; genderless
-	ld a, 4
+	ld a, BREEDGEN_GENDERLESS
 	ret c
-	; female
-	ld a, 2
+	ld a, BREEDGEN_FEMALE
 	ret z
-	; male
-	ld a, 1
+	srl a ; BREEDGEN_MALE
 	ret
 
 ; 16f3e
@@ -200,7 +202,7 @@ DoEggStep:: ; 16f3e
 	ld a, 1
 	and a
 .done
-	ld c, 0	; TODO: check if this is needed (was done earlier)
+	ld c, 0 ; TODO: check if this is needed (was done earlier)
 	ret
 
 .next

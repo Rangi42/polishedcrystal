@@ -8949,10 +8949,6 @@ BattleCommand_StartHail:
 	lb bc, WEATHER_HAIL, HELD_PROLONG_HAIL
 	ld hl, HailStartedText
 BattleCommand_StartWeather:
-	ld a, [Weather]
-	cp b
-	jr z, .failed
-
 	ld a, b
 	ld [Weather], a
 	ld a, c
@@ -8960,10 +8956,6 @@ BattleCommand_StartWeather:
 	ld [WeatherCount], a
 	call AnimateCurrentMove
 	jp StdBattleTextBox ; hl has text pointer already
-
-.failed
-	call AnimateFailedMove
-	jp PrintButItFailed
 
 
 BattleCommand_BellyDrum: ; 37c1a
