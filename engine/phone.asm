@@ -542,16 +542,13 @@ Phone_StartRinging: ; 9033f
 	call PlaySFX
 	call Phone_CallerTextbox
 	call UpdateSprites
-	farjp PhoneRing_LoadEDTile
-; 90355
+	jp CopyTilemapAtOnce
 
 HangUp_Wait20Frames: ; 90355
 Phone_Wait20Frames:
 	ld c, 20
 	call DelayFrames
-	farjp PhoneRing_LoadEDTile
-; 90363
-
+	jp CopyTilemapAtOnce
 
 Function90363: ; 90363 (24:4363)
 	push bc

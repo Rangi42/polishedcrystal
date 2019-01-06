@@ -12,6 +12,9 @@ SaveMenu: ; 14a1a
 	ld a, [wMenuCursorY]
 	dec a
 	call CloseWindow
+	push af
+	call CopyTilemapAtOnce
+	pop af
 	and a
 	jr nz, .refused
 	call AskOverwriteSaveFile
