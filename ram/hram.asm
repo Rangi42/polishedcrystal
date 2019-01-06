@@ -3,6 +3,7 @@ hPushOAM           EQU $ff80 ; 10 bytes
 
 hROMBankBackup     EQU $ff8a
 hBuffer            EQU $ff8b
+hLYOverrideStackCopyAmount EQU $ff8c
 
 hRTCDayHi          EQU $ff8d
 hRTCDayLo          EQU $ff8e

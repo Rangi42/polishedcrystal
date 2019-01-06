@@ -98,7 +98,7 @@ _CopyTilemapAtOnce::
 	ld [hBGMapMode], a
 	ret
 
-VBlankSafeCopyTilemapAtOnce:
+VBlankSafeCopyTilemapAtOnce::
 	ld a, [hSCX]
 	ld [rSCX], a
 	ld a, [hSCY]

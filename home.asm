@@ -1721,7 +1721,7 @@ PushLYOverrides:: ; 3b0c
 	ld [hRequestedVTileDest + 1], a
 
 	ld a, (wLYOverridesEnd - wLYOverrides) / 16
-	ld [hRequested2bpp], a
+	ld [hLYOverrideStackCopyAmount], a
 	ret
 ; 3b2a
 

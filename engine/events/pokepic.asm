@@ -90,7 +90,7 @@ ClosePokepic:: ; 24528
 	xor a
 	ld [hBGMapMode], a
 	call OverworldTextModeSwitch
-	call CopyTilemapAtOnce
+	call ApplyTilemap
 	call UpdateSprites
 	farjp LoadOverworldFont
 

@@ -7,7 +7,7 @@
 ; This prevents the display and audio output from lagging.
 
 
-VBlank:: ; 283
+VBlank::
 	push af
 	push bc
 	push de
@@ -50,7 +50,7 @@ VBlank:: ; 283
 	call AnimateTileset
 	jr .doGameTime
 
-.VBlanks: ; 2a1
+.VBlanks:
 	dw VBlank0
 	dw VBlank1
 	dw VBlank2
@@ -58,11 +58,10 @@ VBlank:: ; 283
 	dw VBlank4
 	dw VBlank5
 	dw VBlank6
-	dw VBlank0 ; just in case
-; 2b1
+	dw VBlank7
 
 
-VBlank0:: ; 2b1
+VBlank0::
 ; normal operation
 
 ; rng
@@ -104,12 +103,7 @@ VBlank0:: ; 2b1
 
 .done
 
-	ld a, [hOAMUpdate]
-	and a
-	jr nz, .done_oam
-	call hPushOAM
-.done_oam
-
+	call PushOAM
 	; vblank-sensitive operations are done
 
 	; inc frame counter
@@ -139,11 +133,15 @@ VBlank0:: ; 2b1
 	ld [hSecondsBackup], a
 	; fallthrough
 
-VBlank2::
+VBlankUpdateSound::
 ; sound only
 	ld a, BANK(_UpdateSound)
 	rst Bankswitch
 	jp _UpdateSound
+
+VBlank2::
+	call AnimateTileset
+	jr VBlankUpdateSound
 
 VBlank6::
 ; palettes
@@ -155,14 +153,14 @@ VBlank6::
 	inc [hl]
 
 	call UpdateCGBPals
-	jr c, VBlank2
+	jr c, VBlankUpdateSound
 
 	call Serve2bppRequest
 	call Serve1bppRequest
 	call DMATransfer
-	jr VBlank2
+	jr VBlankUpdateSound
 
-VBlank4:: ; 3df
+VBlank4::
 ; bg map
 ; tiles
 ; oam
@@ -171,12 +169,12 @@ VBlank4:: ; 3df
 ; sound
 	call UpdateBGMap
 	call Serve2bppRequest
-	call hPushOAM
+	call PushOAM
 	call Joypad
 	call AskSerial
-	jr VBlank2
+	jr VBlankUpdateSound
 
-VBlank1:: ; 337
+VBlank1::
 ; scx, scy
 ; palettes
 ; bg map
@@ -189,44 +187,13 @@ VBlank1:: ; 337
 	ld [rSCY], a
 
 	call UpdateCGBPals
-	jr c, .done
+	jr c, VBlank1EntryPoint
 
 	call UpdateBGMap
 	call Serve2bppRequest
 
-	call hPushOAM
-.done
-	; get requested ints
-	ld a, [rIE]
-	push af
-	ld a, [rIF]
-	push af
-	xor a
-	ld [rIF], a
-	ld a, 1 << LCD_STAT ; lcd stat
-	ld [rIE], a
-	ld [rIF], a
-
-	ei
-	call VBlank2
-	di
-
-	; get requested ints
-	ld a, [rIF]
-	ld b, a
-	; discard requested ints
-	pop af
-	or b
-	ld b, a
-	xor a
-	ld [rIF], a
-	; enable ints besides joypad
-	pop af
-	ld [rIE], a
-	; rerequest ints
-	ld a, b
-	ld [rIF], a
-	ret
+	call PushOAM
+	jr VBlank1EntryPoint
 
 VBlank3::
 ; scx, scy
@@ -240,16 +207,15 @@ VBlank3::
 	ld a, [hSCY]
 	ld [rSCY], a
 
-	ld a, [hCGBPalUpdate]
-	and a
-	call nz, ForceUpdateCGBPals
-	jr c, .done
+	call UpdateCGBPals
+	jr c, VBlank1EntryPoint
 
 	call UpdateBGMap
 	call Serve2bppRequest
+	call LYOverrideStackCopy
 
-	call hPushOAM
-.done
+VBlank1EntryPoint:
+	call PushOAM
 
 	; get requested ints
 	ld a, [rIE]
@@ -258,12 +224,12 @@ VBlank3::
 	push af
 	xor a
 	ld [rIF], a
-	ld a, 1 << LCD_STAT ; lcd stat
+	ld a, 1 << LCD_STAT
 	ld [rIE], a
 	ld [rIF], a
 
 	ei
-	call VBlank2
+	call VBlankUpdateSound
 	di
 
 	; get requested ints
@@ -283,12 +249,21 @@ VBlank3::
 	ld [rIF], a
 	ret
 
-VBlank5:: ; 400
+VBlank7::
+; special vblank routine
+; copies tilemap in one frame without any tearing
+; also updates oam, and pals if specified
+	ld a, BANK(VBlankSafeCopyTilemapAtOnce)
+	rst Bankswitch
+	jp VBlankSafeCopyTilemapAtOnce
+
+VBlank5::
 ; scx
 ; palettes
 ; bg map
 ; tiles
 ; joypad
+; sound
 	ld a, [hSCX]
 	ld [rSCX], a
 
@@ -310,7 +285,7 @@ VBlank5:: ; 400
 	ld [rIF], a
 
 	ei
-	call VBlank2
+	call VBlankUpdateSound
 	di
 
 	xor a

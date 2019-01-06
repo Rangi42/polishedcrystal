@@ -323,12 +323,14 @@ Serve1bppRequest:: ; 170a
 	jr nz, .next
 	jp WriteVTileSourceAndDestinationAndReturn
 
-Serve2bppRequest_NoVBlankCheck::
-	ld a, [hRequested2bpp]
+LYOverrideStackCopy::
+	ld a, [hLYOverrideStackCopyAmount]
 	and a
 	ret z
-	call _Serve2bppRequest
-	ret
+	ld b, a
+	xor a
+	ld [hLYOverrideStackCopyAmount], a
+	jr _Serve2bppRequest
 
 Serve2bppRequest::
 ; Only call during the first fifth of VBlank
@@ -346,11 +348,11 @@ Serve2bppRequest::
 	cp 146
 	ret nc
 
-_Serve2bppRequest::
-; Copy [hRequested2bpp] 2bpp tiles from [hRequestedVTileSource] to [hRequestedVTileDest]
-
 	xor a
 	ld [hRequested2bpp], a
+
+_Serve2bppRequest::
+; Copy [hRequested2bpp] 2bpp tiles from [hRequestedVTileSource] to [hRequestedVTileDest]
 
 	ld [hSPBuffer], sp
 ; Destination
