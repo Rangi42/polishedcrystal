@@ -224,7 +224,7 @@ Request1bpp:: ; f1e
 	jr nz, .copySixteenTilesAndContinue
 .copyRemainingTilesAndExit
 	add 16
-	ld [hTilesPerCycle], a
+	ld [hRequested1bpp], a
 	xor a
 	ld [hTilesPerCycle], a
 	call DelayFrame
