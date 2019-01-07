@@ -16,6 +16,8 @@ LearnMove: ; 6508
 	ld d, h
 	ld e, l
 	ld b, NUM_MOVES
+	xor a
+	ld [wForgettingMove], a
 ; Get the first empty move slot.  This routine also serves to
 ; determine whether the Pokemon learning the moves already has
 ; all four slots occupied, in which case one would need to be
@@ -56,6 +58,9 @@ LearnMove: ; 6508
 	pop de
 	pop hl
 
+	ld a, TRUE
+	ld [wForgettingMove], a
+
 .learn
 	ld a, [wPutativeTMHMMove]
 	ld [hl], a
@@ -72,8 +77,20 @@ LearnMove: ; 6508
 	call GetFarByte
 	pop de
 	pop hl
+	ld b, a
 
-	ld [hl], a
+; Are we forgetting a move?
+	ld a, [wForgettingMove]
+	and a
+	jr z, .pp_ok
+; Is the old move's current PP less than the new move's PP?
+	ld a, [hl]
+	cp b
+	jr nc, .pp_ok
+; TMs won't give free PP
+	ld b, a
+.pp_ok
+	ld [hl], b
 
 	ld a, [wBattleMode]
 	and a
