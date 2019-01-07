@@ -211,7 +211,7 @@ Movement_step_loop: ; 51b8
 ; 51c1
 
 Movement_step_end: ; 51c1
-	call RestoreDefaultMovement
+	xor a
 	ld hl, OBJECT_MOVEMENTTYPE
 	add hl, bc
 	ld [hl], a
