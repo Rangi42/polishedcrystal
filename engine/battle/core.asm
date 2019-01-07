@@ -5963,8 +5963,6 @@ MoveInfoBox: ; 3e6c8
 	push af
 	lb bc, 3, 9
 	call TextBox
-	pop af
-	call nz, ApplyTilemap
 
 	ld a, [wPlayerDisableCount]
 	and a
@@ -6081,7 +6079,7 @@ MoveInfoBox: ; 3e6c8
 	ld e, l
 	ld hl, VTiles2 tile $59
 	lb bc, BANK(CategoryIconGFX), 2
-	call Get2bpp
+	call Request2bpp
 	ld hl, TypeIconGFX
 	ld bc, 4 * LEN_1BPP_TILE
 	ld a, [wPlayerMoveStruct + MOVE_TYPE]
@@ -6090,7 +6088,7 @@ MoveInfoBox: ; 3e6c8
 	ld e, l
 	ld hl, VTiles2 tile $5b
 	lb bc, BANK(TypeIconGFX), 4
-	call Get1bpp
+	call Request1bpp
 	hlcoord 1, 9
 	ld b, 6
 	ld a, $59
@@ -6099,6 +6097,8 @@ MoveInfoBox: ; 3e6c8
 	inc a
 	dec b
 	jr nz, .loop
+	pop af
+	call nz, ApplyTilemap
 	ret
 
 .Disabled:
