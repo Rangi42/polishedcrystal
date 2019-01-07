@@ -329,6 +329,7 @@ SkipMusic::
 	jr nz, .loop
 	pop af
 	ld [wMusicPlaying], a
+	ret
 
 FadeToMapMusic:: ; 3cbc
 	push hl
