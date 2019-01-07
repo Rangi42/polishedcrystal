@@ -74,10 +74,6 @@ Serial:: ; 6ef
 	reti
 ; 75f
 
-Timer:: ; 3e93
-	reti
-; 3ed7
-
 ; hl = send data
 ; de = receive data
 ; bc = length of data

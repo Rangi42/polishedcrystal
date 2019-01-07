@@ -14,6 +14,32 @@ LoadFontsExtra:: ; e5f
 	farjp LoadFrame
 ; e6c
 
+ApplyTilemap::
+; Tell VBlank to update BG Map
+	ld a, 1
+	ld [hBGMapMode], a
+	ld a, [wSpriteUpdatesEnabled]
+	and a
+	ld b, 3
+	jr nz, SafeCopyTilemapAtOnce
+	ld b, 1 << 3 | 3
+
+; fallthrough
+SafeCopyTilemapAtOnce::
+; copies the tile&attr map at once
+; without any tearing
+; input:
+; b: 0 = no palette copy
+;    1 = copy raw palettes
+;    2 = set palettes and copy
+;    3 = use whatever was in hCGBPalUpdate
+; bit 2: if set, clear hOAMUpdate
+; bit 3: if set, only update tilemap
+	farjp _SafeCopyTilemapAtOnce
+
+CopyTilemapAtOnce::
+	farjp _CopyTilemapAtOnce
+
 DecompressRequest2bpp:: ; e73
 	push de
 	ld a, BANK(sScratch)
@@ -261,103 +287,6 @@ Request1bpp:: ; f1e
 	ld [hBGMapMode], a
 	ret
 
-HBlankCopy2bpp::
-	di
-	ld [hSPBuffer], sp
-	ld hl, hRequestedVTileDest
-	ld a, [hli]
-	ld e, a
-	ld a, [hli]
-	ld d, a ; destination
-
-	ld a, [hli] ; source
-	ld h, [hl]
-	ld l, a
-	ld sp, hl ; set source to sp
-	ld a, h ; save source high byte for later
-	ld h, d ; exchange hl and de
-	ld l, e
-; vram to vram copy check:
-	cp VTiles0 / $100 ; is source in RAM?
-	jr c, .innerLoop
-	cp SRAM_Begin / $100 ; is source past VRAM
-	jr nc, .innerLoop
-	lb bc, %11, rSTAT & $ff ; predefine bitmask and rSTAT source for speed and size
-	jr .waitNoHBlank2
-.outerLoop2
-	ld a, [rLY]
-	cp $88
-	jp nc, ContinueHBlankCopy
-.waitNoHBlank2
-	ld a, [$ff00+c]
-	and b
-	jr z, .waitNoHBlank2
-.waitHBlank2
-	ld a, [$ff00+c]
-	and b
-	jr nz, .waitHBlank2
-	rept 7
-	pop de
-	ld a, e
-	ld [hli], a
-	ld a, d
-	ld [hli], a
-	endr
-	pop de
-	ld a, e
-	ld [hli], a
-	ld [hl], d
-	inc hl
-	ld a, l
-	and $f
-	jr nz, .waitNoHBlank2
-	ld a, [hTilesPerCycle]
-	dec a
-	ld [hTilesPerCycle], a
-	jr nz, .outerLoop2
-	jp DoneHBlankCopy
-.outerLoop
-	ld a, [rLY]
-	cp $88
-	jp nc, ContinueHBlankCopy
-.innerLoop
-	pop bc
-	pop de
-.waitNoHBlank
-	ld a, [rSTAT]
-	and 3
-	jr z, .waitNoHBlank
-.waitHBlank
-	ld a, [rSTAT]
-	and 3
-	jr nz, .waitHBlank
-; preloads r us
-	ld a, c ; 1
-	ld [hli], a ; 3
-	ld a, b ; 4
-	ld [hli], a ; 6
-	ld a, e ; 7
-	ld [hli], a ; 9
-	ld a, d ; 10
-	ld [hli], a ; 12
-	rept 5
-	pop de
-	ld a, e
-	ld [hli], a
-	ld a, d
-	ld [hli], a
-	endr ; 47 (12 + 7 * 5)
-	pop de ; 50
-	ld a, e ; 51
-	ld [hli], a ; 53
-	ld [hl], d ; 55
-	inc hl
-	ld a, [hTilesPerCycle]
-	dec a
-	ld [hTilesPerCycle], a
-	jr nz, .outerLoop
-	jp DoneHBlankCopy
-
 HBlankCopy1bpp:
 	di
 	ld [hSPBuffer], sp
@@ -443,6 +372,41 @@ WriteVCopyRegistersToHRAM:
 	ld [hTilesPerCycle], a
 	ret
 
+VRAMToVRAMCopy::
+	lb bc, %11, rSTAT & $ff ; predefine bitmask and rSTAT source for speed and size
+	jr .waitNoHBlank2
+.outerLoop2
+	ld a, [rLY]
+	cp $88
+	jp nc, ContinueHBlankCopy
+.waitNoHBlank2
+	ld a, [$ff00+c]
+	and b
+	jr z, .waitNoHBlank2
+.waitHBlank2
+	ld a, [$ff00+c]
+	and b
+	jr nz, .waitHBlank2
+	rept 7
+	pop de
+	ld a, e
+	ld [hli], a
+	ld a, d
+	ld [hli], a
+	endr
+	pop de
+	ld a, e
+	ld [hli], a
+	ld [hl], d
+	inc hl
+	ld a, l
+	and $f
+	jr nz, .waitNoHBlank2
+	ld a, [hTilesPerCycle]
+	dec a
+	ld [hTilesPerCycle], a
+	jr nz, .outerLoop2
+	jp DoneHBlankCopy
 
 GetOpaque1bpp::
 ; Two bytes in VRAM define eight pixels (2 bits/pixel)

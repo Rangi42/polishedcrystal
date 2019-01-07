@@ -8,6 +8,8 @@ NULL::
 INCLUDE "home/rst.asm"
 INCLUDE "home/interrupts.asm"
 
+SECTION "High Home", ROM0
+INCLUDE "home/highhome.asm"
 
 SECTION "Header", ROM0
 
@@ -20,7 +22,6 @@ SECTION "Home", ROM0
 
 INCLUDE "home/init.asm"
 INCLUDE "home/vblank.asm"
-INCLUDE "home/delay.asm"
 INCLUDE "home/rtc.asm"
 INCLUDE "home/fade.asm"
 INCLUDE "home/lcd.asm"
@@ -46,37 +47,24 @@ INCLUDE "home/window.asm"
 INCLUDE "home/flag.asm"
 INCLUDE "home/restore_music.asm"
 
-xor_a:: ; 2ec6
-	xor a
-	ret
-; 2ec8
-
-xor_a_dec_a:: ; 2ec8
-	xor a
-	dec a
-	ret
-; 2ecb
-
 DisableSpriteUpdates:: ; 0x2ed3
 ; disables overworld sprite updating?
 	xor a
 	ld [hMapAnims], a
+	ld [wSpriteUpdatesEnabled], a
 	ld a, [wVramState]
 	res 0, a
 	ld [wVramState], a
-	xor a
-	ld [wSpriteUpdatesEnabled], a
 	ret
 ; 0x2ee4
 
 EnableSpriteUpdates:: ; 2ee4
 	ld a, $1
 	ld [wSpriteUpdatesEnabled], a
+	ld [hMapAnims], a
 	ld a, [wVramState]
 	set 0, a
 	ld [wVramState], a
-	ld a, $1
-	ld [hMapAnims], a
 	ret
 ; 2ef6
 
@@ -101,17 +89,6 @@ IsInJohto:: ; 2f17
 INCLUDE "home/item.asm"
 INCLUDE "home/random.asm"
 INCLUDE "home/sram.asm"
-
-; Register aliases
-
-_hl_:: ; 2fec
-	jp hl
-; 2fed
-
-_de_:: ; 2fed
-	push de
-	ret
-; 2fef
 
 INCLUDE "home/double_speed.asm"
 
@@ -208,30 +185,6 @@ CopyName2:: ; 30d9
 	jr nz, .loop
 	ret
 ; 30e1
-
-IsInArray:: ; 30e1
-; Find value a for every de bytes in array hl.
-; Return index in b and carry if found.
-	ld b, 0
-	ld c, a
-.loop
-	ld a, [hl]
-	cp -1
-	jr z, .NotInArray
-	cp c
-	jr z, .InArray
-	inc b
-	add hl, de
-	jr .loop
-
-.NotInArray:
-	and a
-	ret
-
-.InArray:
-	scf
-	ret
-; 30f4
 
 SkipNames:: ; 0x30f4
 ; Skip a names.

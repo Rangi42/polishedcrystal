@@ -7,12 +7,8 @@ FarCall_de::
 	push af
 	ld a, [hBuffer]
 	rst Bankswitch
-	call .de
+	call _de_
 	jr ReturnFarCall
-
-.de
-	push de
-	ret
 
 FarCall_hl::
 ; Call a:hl.
