@@ -122,10 +122,9 @@ BattleText_UserRecoveredWithItem:
 
 BattleText_UserAteItem:
 	text "<USER>"
-	line "ate"
-	cont "@"
+	line "ate @"
 	text_from_ram StringBuffer1
-	text "."
+	text "!"
 	prompt
 
 BattleText_UserHurtByItem:
