@@ -2206,10 +2206,7 @@ CheckPartyFullAfterContest: ; 4d9e5
 	ld a, BANK(sBoxMon1CaughtLocation)
 	call GetSRAMBank
 	ld hl, sBoxMon1CaughtLocation
-	ld a, [hl]
-	and $80
-	ld b, $13
-	or b
+	ld a, NATIONAL_PARK
 	ld [hl], a
 	call CloseSRAM
 	xor a
