@@ -702,7 +702,7 @@ GiveTakePartyMonItem: ; 12b60
 	call GetItemName
 	ld de, StringBuffer1
 .not_holding_anything
-	hlcoord 1, 15
+	hlcoord 1, 16
 	call PlaceString
 	ld hl, GiveTakeItemMenuData
 	call LoadMenuDataHeader
