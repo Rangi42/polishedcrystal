@@ -5158,9 +5158,14 @@ BattleMenuPKMN_Loop:
 	jr z, .Stats
 	dec a ; SWITCH
 	jp z, TryPlayerSwitch
+	dec a ; MOVES
+	jr z, .Moves
 	dec a ; CANCEL
 	jr z, .Cancel
 	jr .loop
+
+.Moves:
+	farcall ManagePokemonMoves
 
 .Cancel:
 	jr BattleMenuPKMN_Loop
@@ -5174,6 +5179,7 @@ BattleMenuPKMN_Loop:
 	call ClearPalettes
 	call DelayFrame
 	call _LoadStatusIcons
+	call GetMonBackpic
 	call CloseWindow
 	call LoadTileMapToTempTileMap
 	call GetMemCGBLayout
@@ -5215,7 +5221,7 @@ BattleMenuPKMN_Loop:
 
 .MenuHeader: ; 24ed4
 	db $00 ; flags
-	db 11, 11 ; start coords
+	db 9, 11 ; start coords
 	db 17, 19 ; end coords
 	dw .MenuData
 	db 1 ; default option
@@ -5223,9 +5229,10 @@ BattleMenuPKMN_Loop:
 
 .MenuData: ; 24edc
 	db $c0 ; flags
-	db 3 ; items
+	db 4 ; items
 	db "Stats@"
 	db "Switch@"
+	db "Moves@"
 	db "Cancel@"
 ; 24ef2
 
@@ -5905,6 +5912,27 @@ MoveSelectionScreen:
 	ld a, [wMoveSwapBuffer]
 	and a
 	jr z, .start_swap
+	call SwapBattleMoves
+	xor a
+	ld [wMoveSwapBuffer], a
+	jp MoveSelectionScreen
+
+.start_swap
+	ld a, [wMenuCursorY]
+	ld [wMoveSwapBuffer], a
+	jp MoveSelectionScreen
+
+.struggle
+	ld a, STRUGGLE
+	ld [CurPlayerMove], a
+	ld hl, BattleText_PkmnHasNoMovesLeft
+	call StdBattleTextBox
+	ld c, 60
+	call DelayFrames
+	xor a
+	ret
+
+SwapBattleMoves:
 	ld hl, BattleMonMoves
 	call .swap_bytes
 	ld hl, BattleMonPP
@@ -5942,7 +5970,7 @@ MoveSelectionScreen:
 ; Fixes the COOLTRAINER glitch
 	ld a, [PlayerSubStatus2]
 	bit SUBSTATUS_TRANSFORMED, a
-	jr nz, .transformed
+	ret nz
 	ld hl, PartyMon1Moves
 	ld a, [CurBattleMon]
 	call GetPartyLocation
@@ -5951,12 +5979,6 @@ MoveSelectionScreen:
 	pop hl
 	ld bc, MON_PP - MON_MOVES
 	add hl, bc
-	call .swap_bytes
-
-.transformed
-	xor a
-	ld [wMoveSwapBuffer], a
-	jp MoveSelectionScreen
 
 .swap_bytes
 	push hl
@@ -5978,21 +6000,6 @@ MoveSelectionScreen:
 	ld [hl], a
 	ld a, b
 	ld [de], a
-	ret
-
-.start_swap
-	ld a, [wMenuCursorY]
-	ld [wMoveSwapBuffer], a
-	jp MoveSelectionScreen
-
-.struggle
-	ld a, STRUGGLE
-	ld [CurPlayerMove], a
-	ld hl, BattleText_PkmnHasNoMovesLeft
-	call StdBattleTextBox
-	ld c, 60
-	call DelayFrames
-	xor a
 	ret
 
 MoveInfoBox: ; 3e6c8
