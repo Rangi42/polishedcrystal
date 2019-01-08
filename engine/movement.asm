@@ -71,7 +71,7 @@ MovementPointers:
 	dw Movement_step_sleep_8          ; 45
 	dw Movement_step_sleep            ; 46
 	dw Movement_step_end              ; 47
-	dw Movement_48                    ; 48
+	dw Movement_step_resume           ; 48
 	dw Movement_remove_person         ; 49
 	dw Movement_step_loop             ; 4a
 	dw Movement_4b                    ; 4b
@@ -229,7 +229,7 @@ Movement_step_end: ; 51c1
 	ret
 ; 51db
 
-Movement_48: ; 51db
+Movement_step_resume: ; 51db
 	call RestoreDefaultMovement
 	ld hl, OBJECT_MOVEMENTTYPE
 	add hl, bc
@@ -239,17 +239,12 @@ Movement_48: ; 51db
 	add hl, bc
 	ld [hl], $0
 
-	call JumpMovementPointer
-	ld hl, OBJECT_STEP_DURATION
-	add hl, bc
-	ld [hl], a
+	ld hl, wVramState
+	res 7, [hl]
 
 	ld hl, OBJECT_STEP_TYPE
 	add hl, bc
-	ld [hl], STEP_TYPE_03
-
-	ld hl, wVramState
-	res 7, [hl]
+	ld [hl], STEP_TYPE_SLEEP
 	ret
 ; 51fd
 

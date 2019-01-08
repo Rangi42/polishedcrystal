@@ -362,9 +362,10 @@ step_end: macro
 	db movement_step_end ; $47
 	endm
 
-; Whatever Movement_48 is, it takes a one-byte parameter
-
-__enum__ = $49
+	enum movement_step_resume
+step_resume: macro
+	db movement_step_resume ; $48
+	endm
 
 	enum movement_remove_person
 remove_person: macro
