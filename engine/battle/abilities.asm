@@ -1753,6 +1753,27 @@ RunPostBattleAbilities::
 	call GetPartyParamLocation
 	ld a, b
 	ld [hl], a
+	push bc
+	push de
+	ld [wNamedObjectIndexBuffer], a
+	call GetItemName
+	ld hl, StringBuffer1
+	ld de, StringBuffer2
+	ld bc, PKMN_NAME_LENGTH
+	call CopyBytes
+	pop de
+	pop bc
+	push bc
+	push de
+	ld a, MON_SPECIES
+	call GetPartyParamLocation
+	ld a, [hl]
+	ld [wNamedObjectIndexBuffer], a
+	call GetPokemonName
+	ld hl, BattleText_PickedUpItem
+	call StdBattleTextBox
+	pop de
+	pop bc
 	ret
 
 GetRandomPickupItem::

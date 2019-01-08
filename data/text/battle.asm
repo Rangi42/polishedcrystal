@@ -112,6 +112,15 @@ BattleText_UserLostSomeOfItsHP:
 	cont "HP!"
 	prompt
 
+BattleText_PickedUpItem:
+	text "@"
+	text_from_ram StringBuffer1
+	text " picked"
+	line "up @"
+	text_from_ram StringBuffer2
+	text "."
+	prompt
+
 BattleText_UserRecoveredWithItem:
 	text "<USER>"
 	line "recovered with"
