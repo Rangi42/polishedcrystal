@@ -211,7 +211,15 @@ Movement_step_loop: ; 51b8
 ; 51c1
 
 Movement_step_end: ; 51c1
-	xor a
+	; check for player object
+	ld hl, OBJECT_MAP_OBJECT_INDEX
+	add hl, bc
+	ld a, [hl]
+	and a
+	jr nz, .not_player
+	ld a, SPRITEMOVEDATA_PLAYER
+
+.not_player
 	ld hl, OBJECT_MOVEMENTTYPE
 	add hl, bc
 	ld [hl], a
