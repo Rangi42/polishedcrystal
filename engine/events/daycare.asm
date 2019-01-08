@@ -665,7 +665,7 @@ InheritDV:
 	and c
 	ld a, d
 	pop de
-	ret z ; we can still inherit other things, so don't return nz
+	jr nz, .cant_inherit_this_stat
 
 	; Mark the stat as inherited and decrease inherit counter
 	or c
@@ -713,6 +713,7 @@ InheritDV:
 	ld [de], a
 	pop hl
 	pop de
+.cant_inherit_this_stat
 	xor a
 	ret
 .cant_inherit_any_more
