@@ -693,6 +693,17 @@ GiveTakePartyMonItem: ; 12b60
 	cp EGG
 	jr z, .cancel
 
+	call GetPartyItemLocation
+	ld a, [hl]
+	and a
+	ld de, .noItemString
+	jr z, .not_holding_anything
+	ld [wNamedObjectIndexBuffer], a
+	call GetItemName
+	ld de, wStringBuffer1
+.not_holding_anything
+	hlcoord 1, 15
+	call PlaceString
 	ld hl, GiveTakeItemMenuData
 	call LoadMenuDataHeader
 	call VerticalMenu
@@ -727,6 +738,8 @@ GiveTakePartyMonItem: ; 12b60
 	ret
 ; 12ba9
 
+.noItemString
+	db "No held item@"
 
 .GiveItem:
 
@@ -861,7 +874,7 @@ TakePartyItem: ; 12c60
 
 GiveTakeItemMenuData: ; 12c9b
 	db %01010000
-	db 12, 12 ; start coords
+	db 12, 13 ; start coords
 	db 17, 19 ; end coords
 	dw .Items
 	db 1 ; default option
