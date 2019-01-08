@@ -191,6 +191,7 @@ VBlank1::
 
 	call UpdateBGMap
 	call Serve2bppRequest
+	call LYOverrideStackCopy
 
 	call PushOAM
 	jr VBlank1EntryPoint
