@@ -5,10 +5,10 @@
 	const HIGHLY_COMPATIBLE
 
 	const_def
-	shift_const BREEDGEN_MALE
-	shift_const BREEDGEN_FEMALE
-	shift_const BREEDGEN_GENDERLESS
-	shift_const BREEDGEN_DITTO
+	const BREEDGEN_MALE
+	const BREEDGEN_FEMALE
+	const BREEDGEN_GENDERLESS
+	const BREEDGEN_DITTO
 
 CheckBreedmonCompatibility: ; 16e1d
 	call .CheckBreedingGroupCompatibility
@@ -30,11 +30,11 @@ CheckBreedmonCompatibility: ; 16e1d
 	jr z, .done ; both are same gender, both are dittos or both are genderless
 	; Check for Ditto
 	or b
-	cp BREEDGEN_DITTO
-	jr nc, .breed_ok
+	bit BREEDGEN_DITTO, a
+	jr nz, .breed_ok
 	; Check for genderless
-	cp BREEDGEN_GENDERLESS
-	jr nc, .done ; Any mon being genderless is incompatible with non-Ditto
+	bit BREEDGEN_GENDERLESS, a
+	jr nz, .done ; Any mon being genderless is incompatible with non-Ditto
 
 .breed_ok
 	ld a, [wBreedMon2Species]
@@ -137,17 +137,18 @@ CheckBreedmonCompatibility: ; 16e1d
 .SetGenderData:
 	ld a, [wCurPartySpecies]
 	cp DITTO
-	ld a, BREEDGEN_DITTO
+	ld a, 1 << BREEDGEN_DITTO
 	ret z
 	ld a, BREEDMON
+	ld [wMonType], a
 	push bc
 	predef GetGender
 	pop bc
-	ld a, BREEDGEN_GENDERLESS
+	ld a, 1 << BREEDGEN_GENDERLESS
 	ret c
-	ld a, BREEDGEN_FEMALE
+	ld a, 1 << BREEDGEN_FEMALE
 	ret z
-	srl a ; BREEDGEN_MALE
+	srl a ; 1 << BREEDGEN_MALE
 	ret
 
 ; 16f3e
