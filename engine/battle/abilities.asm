@@ -1344,6 +1344,24 @@ MoodyAbility:
 	call SwitchTurn
 	jp EnableAnimations
 
+ApplyDamageAbilities_AfterTypeMatchup:
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	ld hl, OffensiveDamageAbilities_AfterTypeMatchup
+	call AbilityJumptable
+	call GetOpponentAbilityAfterMoldBreaker
+	ld hl, DefensiveDamageAbilities_AfterTypeMatchup
+	jp AbilityJumptable
+
+OffensiveDamageAbilities_AfterTypeMatchup:
+	dbw TINTED_LENS, TintedLensAbility
+	dbw -1, -1
+
+DefensiveDamageAbilities_AfterTypeMatchup:
+	dbw SOLID_ROCK, EnemySolidRockAbility
+	dbw FILTER, EnemyFilterAbility
+	dbw -1, -1
+
 ApplyDamageAbilities:
 	ld a, BATTLE_VARS_ABILITY
 	call GetBattleVar
@@ -1364,7 +1382,6 @@ OffensiveDamageAbilities:
 	dbw RIVALRY, RivalryAbility
 	dbw SHEER_FORCE, SheerForceAbility
 	dbw ANALYTIC, AnalyticAbility
-	dbw TINTED_LENS, TintedLensAbility
 	dbw SOLAR_POWER, SolarPowerAbility
 	dbw IRON_FIST, IronFistAbility
 	dbw SAND_FORCE, SandForceAbility
@@ -1376,8 +1393,6 @@ OffensiveDamageAbilities:
 DefensiveDamageAbilities:
 	dbw MULTISCALE, EnemyMultiscaleAbility
 	dbw MARVEL_SCALE, EnemyMarvelScaleAbility
-	dbw SOLID_ROCK, EnemySolidRockAbility
-	dbw FILTER, EnemyFilterAbility
 	dbw THICK_FAT, EnemyThickFatAbility
 	dbw DRY_SKIN, EnemyDrySkinAbility
 	dbw FUR_COAT, EnemyFurCoatAbility

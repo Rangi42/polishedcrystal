@@ -1331,6 +1331,9 @@ BattleCommand_Stab: ; 346d2
 	ld b, a
 	farcall DoWeatherModifiers
 
+	; Second ability pass
+	farcall ApplyDamageAbilities_AfterTypeMatchup
+
 	; Now calculate the damage changes with the modifiers in mind.
 	ld a, [wTypeMatchup]
 	ld [hMultiplier], a
