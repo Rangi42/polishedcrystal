@@ -1862,7 +1862,7 @@ ApplyMovementToFollower: ; 54b8
 	ret z
 	cp movement_step_end
 	ret z
-	cp movement_step_4b
+	cp movement_step_resume
 	ret z
 	cp movement_step_bump
 	ret z

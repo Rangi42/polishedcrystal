@@ -32,7 +32,7 @@ Script_ForcedMovement:: ; 0x1253d
 	turn_in_down
 	step_dig 16
 	turn_head_down
-	step_end
+	step_resume
 ; 0x1256b
 
 .MovementData_down: ; 0x1256b
@@ -40,7 +40,7 @@ Script_ForcedMovement:: ; 0x1253d
 	turn_in_up
 	step_dig 16
 	turn_head_up
-	step_end
+	step_resume
 ; 0x12572
 
 .MovementData_right: ; 0x12572
@@ -48,7 +48,7 @@ Script_ForcedMovement:: ; 0x1253d
 	turn_in_left
 	step_dig 16
 	turn_head_left
-	step_end
+	step_resume
 ; 0x12579
 
 .MovementData_left: ; 0x12579
@@ -56,5 +56,5 @@ Script_ForcedMovement:: ; 0x1253d
 	turn_in_right
 	step_dig 16
 	turn_head_right
-	step_end
+	step_resume
 ; 0x12580

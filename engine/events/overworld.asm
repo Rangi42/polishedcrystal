@@ -984,12 +984,12 @@ dig_incave
 .DigOut: ; 0xcc59
 	step_dig 32
 	hide_person
-	step_end
+	step_resume
 
 .DigReturn: ; 0xcc5d
 	show_person
 	return_dig 32
-	step_end
+	step_resume
 
 TeleportFunction: ; cc61
 	call FieldMoveJumptableReset
@@ -1066,11 +1066,11 @@ TeleportFunction: ; cc61
 
 .TeleportFrom: ; cce1
 	teleport_from
-	step_end
+	step_resume
 
 .TeleportTo: ; cce3
 	teleport_to
-	step_end
+	step_resume
 
 StrengthFunction: ; cce5
 	call .TryStrength
@@ -1300,22 +1300,22 @@ Script_UsedWhirlpool: ; 0xce0f
 .UpMovementData:
 	slow_step_up
 	slow_step_up
-	step_end
+	step_resume
 
 .RightMovementData:
 	slow_step_right
 	slow_step_right
-	step_end
+	step_resume
 
 .DownMovementData:
 	slow_step_down
 	slow_step_down
-	step_end
+	step_resume
 
 .LeftMovementData:
 	slow_step_left
 	slow_step_left
-	step_end
+	step_resume
 
 TryWhirlpoolOW:: ; ce3e
 	ld d, WHIRLPOOL
@@ -1523,7 +1523,7 @@ RockSmashScript: ; cf32
 
 MovementData_0xcf55: ; 0xcf55
 	rock_smash 10
-	step_end
+	step_resume
 
 UnknownText_0xcf58: ; 0xcf58
 	text_jump UnknownText_0x1c08f0
@@ -1741,7 +1741,7 @@ Movement_BiteNotFacingUp: ; d05c
 Movement_HookedItemNotFacingUp:
 	fish_got_bite
 	show_emote
-	step_end
+	step_resume
 
 Movement_BiteFacingUp: ; d062
 	fish_got_bite
@@ -1751,12 +1751,12 @@ Movement_HookedItemFacingUp:
 	fish_got_bite
 	step_sleep_1
 	show_emote
-	step_end
+	step_resume
 
 Movement_RestoreRod: ; d069
 	hide_emote
 	fish_cast_rod
-	step_end
+	step_resume
 
 Fishing_CheckFacingUp: ; d06c
 	ld a, [wPlayerDirection]
@@ -1783,7 +1783,7 @@ Script_FishCastRod: ; 0xd07c
 
 MovementData_0xd093: ; d093
 	fish_cast_rod
-	step_end
+	step_resume
 
 PutTheRodAway: ; d095
 	xor a
