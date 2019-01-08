@@ -216,10 +216,11 @@ Movement_step_end: ; 51c1
 	add hl, bc
 	ld a, [hl]
 	and a
-	jr nz, .not_player
 	ld a, SPRITEMOVEDATA_PLAYER
+	jr z, .player
+	xor a
 
-.not_player
+.player
 	ld hl, OBJECT_MOVEMENTTYPE
 	add hl, bc
 	ld [hl], a
