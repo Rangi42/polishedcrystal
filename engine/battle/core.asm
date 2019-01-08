@@ -1242,12 +1242,12 @@ HandleWrap: ; 3c874
 	bit SUBSTATUS_SUBSTITUTE, a
 	ret nz
 
+	push de
 	ld a, [de]
-	ld [wd265], a
 	ld [FXAnimIDLo], a
-	call GetMoveName
 	dec [hl]
-	jr z, .release_from_bounds
+	ld hl, BattleText_UserWasReleasedFromStringBuffer1
+	jr z, .print_text
 
 	ld a, BATTLE_VARS_SUBSTATUS3
 	call GetBattleVar
@@ -1272,12 +1272,12 @@ HandleWrap: ; 3c874
 .subtract_hp
 	call SubtractHPFromUser
 	ld hl, BattleText_UsersHurtByStringBuffer1
-	jr .print_text
-
-.release_from_bounds
-	ld hl, BattleText_UserWasReleasedFromStringBuffer1
 
 .print_text
+	pop de
+	ld a, [de]
+	ld [wNamedObjectIndexBuffer], a
+	call GetMoveName
 	jp StdBattleTextBox
 ; 3c8e4
 
