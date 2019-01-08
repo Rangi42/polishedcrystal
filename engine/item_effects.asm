@@ -292,6 +292,11 @@ PokeBallEffect: ; e8a2
 	cp PARTY_LENGTH
 	jr z, .check_room
 
+	; Don't mess with item backup struct if we are in a bug contest
+	ld a, [BattleType]
+	cp BATTLETYPE_CONTEST
+	jr z, .room_in_party
+
 	; Copy wildmon's item to item backup struct in case we catch
 	ld hl, PartyBackupItems
 	ld c, a
