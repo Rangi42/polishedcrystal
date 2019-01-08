@@ -1,4 +1,6 @@
 BattleIntroSlidingPics: ; 4e980
+	ld hl, rIE
+	set LCD_STAT, [hl]
 	ld a, [rSVBK]
 	push af
 	ld a, $5
@@ -11,6 +13,8 @@ BattleIntroSlidingPics: ; 4e980
 	ld [hLCDCPointer], a
 	pop af
 	ld [rSVBK], a
+	ld hl, rIE
+	res LCD_STAT, [hl]
 	ret
 ; 4e998
 

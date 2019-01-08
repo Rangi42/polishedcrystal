@@ -253,6 +253,8 @@ StartTrainerBattle_Finish: ; 8c393 (23:4393)
 	call ClearSprites
 	ld a, $80
 	ld [wJumptableIndex], a
+	ld hl, rIE
+	res LCD_STAT, [hl]
 	ret
 
 StartTrainerBattle_NextScene: ; 8c39c (23:439c)
@@ -331,6 +333,8 @@ StartTrainerBattle_SetUpForWavyOutro: ; 8c3e8 (23:43e8)
 	xor a
 	ld [wcf64], a
 	ld [wcf65], a
+	ld hl, rIE
+	set LCD_STAT, [hl]
 	ret
 
 StartTrainerBattle_SineWave: ; 8c408 (23:4408)

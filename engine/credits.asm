@@ -192,6 +192,8 @@ Credits:: ; 109847
 	ld a, rSCX & $ff
 	ld [hLCDCPointer], a
 
+	ld hl, rIE
+	set LCD_STAT, [hl]
 	call GetCreditsPalette
 	call SetPalettes
 	ld a, [hVBlank]
@@ -220,6 +222,8 @@ Credits:: ; 109847
 	xor a
 	ld [hLCDCPointer], a
 	ld [hBGMapAddress], a
+	ld hl, rIE
+	res LCD_STAT, [hl]
 	pop af
 	ld [hVBlank], a
 	pop af

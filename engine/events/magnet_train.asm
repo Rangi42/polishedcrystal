@@ -30,6 +30,8 @@ Special_MagnetTrain: ; 8cc04
 	ld a, d
 	ld [wMagnetTrainPlayerSpriteInitX], a
 
+	ld hl, rIE
+	set LCD_STAT, [hl]
 	ld a, [hSCX]
 	push af
 	ld a, [hSCY]
@@ -76,6 +78,8 @@ Special_MagnetTrain: ; 8cc04
 	ld [hSCY], a
 	pop af
 	ld [hSCX], a
+	ld hl, rIE
+	res LCD_STAT, [hl]
 	xor a
 	ld [hBGMapMode], a
 	pop af

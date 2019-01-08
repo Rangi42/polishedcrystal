@@ -372,6 +372,8 @@ INCBIN "gfx/splash/logo.1bpp"
 ; e48ac
 
 CrystalIntro: ; e48ac
+	ld hl, rIE
+	set LCD_STAT, [hl]
 	ld a, [rSVBK]
 	push af
 	ld a, 5
@@ -415,6 +417,8 @@ CrystalIntro: ; e48ac
 	ld [hInMenu], a
 	pop af
 	ld [rSVBK], a
+	ld hl, rIE
+	res LCD_STAT, [hl]
 	ret
 ; e4901
 

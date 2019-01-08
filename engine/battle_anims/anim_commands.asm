@@ -2,6 +2,9 @@
 
 
 PlayBattleAnim: ; cc0d6
+	ld hl, rIE
+	set LCD_STAT, [hl]
+
 	ld a, [rSVBK]
 	push af
 
@@ -12,6 +15,9 @@ PlayBattleAnim: ; cc0d6
 
 	pop af
 	ld [rSVBK], a
+
+	ld hl, rIE
+	res LCD_STAT, [hl]
 	ret
 ; cc0e4
 

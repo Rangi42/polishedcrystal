@@ -157,7 +157,7 @@ Init:: ; 17d
 
 	xor a
 	ld [rIF], a
-	ld a, 1 << VBLANK | 1 << LCD_STAT | 1 << SERIAL
+	ld a, 1 << VBLANK | 1 << SERIAL
 	ld [rIE], a
 	ei
 
