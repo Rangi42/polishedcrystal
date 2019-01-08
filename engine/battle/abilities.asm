@@ -865,7 +865,13 @@ StatUpAbility:
 	push af
 	call DisableAnimations
 	farcall ResetMiss
+	ld a, [EffectFailed]
+	push af
+	xor a
+	ld [EffectFailed], a
 	farcall BattleCommand_StatUp
+	pop af
+	ld [EffectFailed], a
 	ld a, [AttackMissed]
 	and a
 	jr nz, .cant_raise
