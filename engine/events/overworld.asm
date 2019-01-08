@@ -483,7 +483,7 @@ UsedSurfScript: ; c986
 	special ReplaceKrisSprite
 	special PlayMapMusic
 ; step into the water
-	special Special_SurfStartStep ; (slow_step_x, step_end)
+	special Special_SurfStartStep ; (slow_step_x, step_resume)
 	applymovement PLAYER, wMovementBuffer ; PLAYER, MovementBuffer
 	end
 
@@ -807,7 +807,7 @@ Script_UsedWaterfall: ; 0xcb20
 
 .WaterfallStep: ; cb4f
 	turn_waterfall_up
-	step_end
+	step_resume
 
 .Text_UsedWaterfall: ; 0xcb51
 	; used WATERFALL!

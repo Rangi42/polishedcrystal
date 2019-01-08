@@ -514,7 +514,7 @@ TrainerWalkToPlayer: ; 831e
 	ld d, 1
 	call .GetPathToPlayer
 	call DecrementMovementBufferCount
-	ld a, movement_step_end
+	ld a, movement_step_resume
 	jp AppendToMovementBuffer
 
 .GetPathToPlayer: ; 8341
@@ -564,7 +564,7 @@ Special_SurfStartStep: ; 8379
 	call InitMovementBuffer
 	call .GetMovementData
 	call AppendToMovementBuffer
-	ld a, movement_step_end
+	ld a, movement_step_resume
 	jp AppendToMovementBuffer
 
 .GetMovementData: ; 8388
