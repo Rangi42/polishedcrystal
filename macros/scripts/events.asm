@@ -1178,7 +1178,7 @@ applyonemovement: macro
 	db applyonemovement_command
 	db \1 ; person
 	db movement_\2 ; movement data
-	db movement_step_end
+	db movement_step_resume
 	endm
 
 	enum showcrytext_command

@@ -1926,7 +1926,7 @@ GetFollowerNextMovementByte: ; 54e6
 .nope
 	ld a, -1
 	ld [wObjectFollow_Follower], a
-	ld a, movement_step_end
+	ld a, movement_step_resume
 	scf
 	ret
 ; 5529
