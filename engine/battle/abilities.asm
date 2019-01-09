@@ -865,7 +865,13 @@ StatUpAbility:
 	push af
 	call DisableAnimations
 	farcall ResetMiss
+	ld a, [wEffectFailed]
+	push af
+	xor a
+	ld [wEffectFailed], a
 	farcall BattleCommand_StatUp
+	pop af
+	ld [wEffectFailed], a
 	ld a, [wAttackMissed]
 	and a
 	jr nz, .cant_raise
@@ -1338,6 +1344,24 @@ MoodyAbility:
 	call SwitchTurn
 	jp EnableAnimations
 
+ApplyDamageAbilities_AfterTypeMatchup:
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	ld hl, OffensiveDamageAbilities_AfterTypeMatchup
+	call AbilityJumptable
+	call GetOpponentAbilityAfterMoldBreaker
+	ld hl, DefensiveDamageAbilities_AfterTypeMatchup
+	jp AbilityJumptable
+
+OffensiveDamageAbilities_AfterTypeMatchup:
+	dbw TINTED_LENS, TintedLensAbility
+	dbw -1, -1
+
+DefensiveDamageAbilities_AfterTypeMatchup:
+	dbw SOLID_ROCK, EnemySolidRockAbility
+	dbw FILTER, EnemyFilterAbility
+	dbw -1, -1
+
 ApplyDamageAbilities:
 	ld a, BATTLE_VARS_ABILITY
 	call GetBattleVar
@@ -1358,7 +1382,6 @@ OffensiveDamageAbilities:
 	dbw RIVALRY, RivalryAbility
 	dbw SHEER_FORCE, SheerForceAbility
 	dbw ANALYTIC, AnalyticAbility
-	dbw TINTED_LENS, TintedLensAbility
 	dbw SOLAR_POWER, SolarPowerAbility
 	dbw IRON_FIST, IronFistAbility
 	dbw SAND_FORCE, SandForceAbility
@@ -1370,8 +1393,6 @@ OffensiveDamageAbilities:
 DefensiveDamageAbilities:
 	dbw MULTISCALE, EnemyMultiscaleAbility
 	dbw MARVEL_SCALE, EnemyMarvelScaleAbility
-	dbw SOLID_ROCK, EnemySolidRockAbility
-	dbw FILTER, EnemyFilterAbility
 	dbw THICK_FAT, EnemyThickFatAbility
 	dbw DRY_SKIN, EnemyDrySkinAbility
 	dbw FUR_COAT, EnemyFurCoatAbility
@@ -1732,6 +1753,27 @@ RunPostBattleAbilities::
 	call GetPartyParamLocation
 	ld a, b
 	ld [hl], a
+	push bc
+	push de
+	ld [wNamedObjectIndexBuffer], a
+	call GetItemName
+	ld hl, wStringBuffer1
+	ld de, wStringBuffer2
+	ld bc, PKMN_NAME_LENGTH
+	call CopyBytes
+	pop de
+	pop bc
+	push bc
+	push de
+	ld a, MON_SPECIES
+	call GetPartyParamLocation
+	ld a, [hl]
+	ld [wNamedObjectIndexBuffer], a
+	call GetPokemonName
+	ld hl, BattleText_PickedUpItem
+	call StdBattleTextBox
+	pop de
+	pop bc
 	ret
 
 GetRandomPickupItem::

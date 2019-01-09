@@ -1343,6 +1343,9 @@ BattleCommand_Stab: ; 346d2
 	ld [hMultiplicand + 2], a
 	call Multiply
 
+	; Second ability pass
+	farcall ApplyDamageAbilities_AfterTypeMatchup
+
 	ld a, $10
 	ld [hDivisor], a
 	ld b, 4

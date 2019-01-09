@@ -5146,33 +5146,39 @@ BattleMenuPKMN_Loop:
 	ld [wPartyMenuActionText], a
 	call JumpToPartyMenuAndPrintText
 	call SelectBattleMon
-	jr c, .Cancel
+	jr c, .PressedB
 .loop
 	farcall FreezeMonIcons
 	call .GetMenu
-	jr c, .PressedB
+	jr c, .Cancel
 	call PlaceHollowCursor
 	ld a, [wMenuCursorY]
-	cp $1 ; SWITCH
-	jp z, TryPlayerSwitch
-	cp $2 ; STATS
+	dec a ; STATS
 	jr z, .Stats
-	cp $3 ; CANCEL
+	dec a ; SWITCH
+	jp z, TryPlayerSwitch
+	dec a ; MOVES
+	jr z, .Moves
+	dec a ; CANCEL
 	jr z, .Cancel
 	jr .loop
 
-.PressedB:
+.Moves:
+	farcall ManagePokemonMoves
+
+.Cancel:
 	jr BattleMenuPKMN_Loop
 
 .Stats:
 	call Battle_StatsScreen
 	jp BattleMenuPKMN_ReturnFromStats
 
-.Cancel:
+.PressedB:
 	call ClearSprites
 	call ClearPalettes
 	call DelayFrame
 	call _LoadStatusIcons
+	call GetMonBackpic
 	call CloseWindow
 	call LoadTileMapToTempTileMap
 	call GetMemCGBLayout
@@ -5180,9 +5186,54 @@ BattleMenuPKMN_Loop:
 	jp BattleMenu
 ; 3e2f5
 
-.GetMenu: ; 3e2f5
-	farjp BattleMonMenu
-; 3e308
+.GetMenu:
+	ld hl, .MenuHeader
+	call CopyMenuDataHeader
+	xor a
+	ld [hBGMapMode], a
+	call MenuBox
+	call UpdateSprites
+	call PlaceVerticalMenuItems
+	call WaitBGMap
+	call CopyMenuData2
+	ld a, [wMenuData2Flags]
+	bit 7, a
+	jr z, .set_carry
+	call InitVerticalMenuCursor
+	ld hl, w2DMenuFlags1
+	set 6, [hl]
+	call StaticMenuJoypad
+	ld de, SFX_READ_TEXT_2
+	call PlaySFX
+	ld a, [hJoyPressed]
+	bit B_BUTTON_F, a
+	jr z, .clear_carry
+	ret z
+
+.set_carry
+	scf
+	ret
+
+.clear_carry
+	and a
+	ret
+
+.MenuHeader: ; 24ed4
+	db $00 ; flags
+	db 9, 11 ; start coords
+	db 17, 19 ; end coords
+	dw .MenuData
+	db 1 ; default option
+; 24edc
+
+.MenuData: ; 24edc
+	db $c0 ; flags
+	db 4 ; items
+	db "Stats@"
+	db "Switch@"
+	db "Moves@"
+	db "Cancel@"
+; 24ef2
 
 Battle_StatsScreen: ; 3e308
 	call DisableLCD
@@ -5863,6 +5914,27 @@ MoveSelectionScreen:
 	ld a, [wMoveSwapBuffer]
 	and a
 	jr z, .start_swap
+	call SwapBattleMoves
+	xor a
+	ld [wMoveSwapBuffer], a
+	jp MoveSelectionScreen
+
+.start_swap
+	ld a, [wMenuCursorY]
+	ld [wMoveSwapBuffer], a
+	jp MoveSelectionScreen
+
+.struggle
+	ld a, STRUGGLE
+	ld [wCurPlayerMove], a
+	ld hl, BattleText_PkmnHasNoMovesLeft
+	call StdBattleTextBox
+	ld c, 60
+	call DelayFrames
+	xor a
+	ret
+
+SwapBattleMoves:
 	ld hl, wBattleMonMoves
 	call .swap_bytes
 	ld hl, wBattleMonPP
@@ -5900,7 +5972,7 @@ MoveSelectionScreen:
 ; Fixes the COOLTRAINER glitch
 	ld a, [wPlayerSubStatus2]
 	bit SUBSTATUS_TRANSFORMED, a
-	jr nz, .transformed
+	ret nz
 	ld hl, wPartyMon1Moves
 	ld a, [wCurBattleMon]
 	call GetPartyLocation
@@ -5909,12 +5981,6 @@ MoveSelectionScreen:
 	pop hl
 	ld bc, MON_PP - MON_MOVES
 	add hl, bc
-	call .swap_bytes
-
-.transformed
-	xor a
-	ld [wMoveSwapBuffer], a
-	jp MoveSelectionScreen
 
 .swap_bytes
 	push hl
@@ -5936,21 +6002,6 @@ MoveSelectionScreen:
 	ld [hl], a
 	ld a, b
 	ld [de], a
-	ret
-
-.start_swap
-	ld a, [wMenuCursorY]
-	ld [wMoveSwapBuffer], a
-	jp MoveSelectionScreen
-
-.struggle
-	ld a, STRUGGLE
-	ld [wCurPlayerMove], a
-	ld hl, BattleText_PkmnHasNoMovesLeft
-	call StdBattleTextBox
-	ld c, 60
-	call DelayFrames
-	xor a
 	ret
 
 MoveInfoBox: ; 3e6c8

@@ -1466,6 +1466,20 @@ MoveScreenLoop: ; 12fd5
 	jp .moving_move
 
 .place_move
+	ld a, [wBattleMode]
+	and a
+	jr z, .regular_swap_move
+
+	; If we're transformed, the Moves screen shows our original moveset.
+	; So swapping in the moves screen swap our original moves, while
+	; swapping in the battle interface swaps our temporary moves.
+	ld a, [wPlayerSubStatus2]
+	bit SUBSTATUS_TRANSFORMED, a
+	jr nz, .regular_swap_move
+	farcall SwapBattleMoves
+	jr .swap_moves
+
+.regular_swap_move
 	ld hl, wPartyMon1Moves
 	ld bc, PARTYMON_STRUCT_LENGTH
 	ld a, [wCurPartyMon]
@@ -1474,18 +1488,6 @@ MoveScreenLoop: ; 12fd5
 	call .copy_move
 	pop hl
 	ld bc, MON_PP - MON_MOVES
-	add hl, bc
-	call .copy_move
-	ld a, [wBattleMode]
-	jr z, .swap_moves
-	ld hl, wBattleMonMoves
-	ld bc, BATTLEMON_STRUCT_LENGTH
-	ld a, [wCurPartyMon]
-	call AddNTimes
-	push hl
-	call .copy_move
-	pop hl
-	ld bc, (wBattleMonPP - wBattleMonMoves)
 	add hl, bc
 	call .copy_move
 
