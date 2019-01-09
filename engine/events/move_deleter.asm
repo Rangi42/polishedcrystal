@@ -24,8 +24,8 @@ MoveDeletion:
 	push af
 	call ReturnToMapWithSpeechTextbox
 	pop af
-	jr c, .declined
-	ld a, [wMenuCursorY]
+	jr z, .declined
+	jr c, .declined ; no moves -- should never happen
 	push af
 	ld a, [CurSpecies]
 	ld [wd265], a

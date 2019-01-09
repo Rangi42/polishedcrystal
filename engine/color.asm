@@ -102,25 +102,37 @@ LoadEnemyStatusIconPalette:
 	jp FarCopyWRAM
 
 LoadBattleCategoryAndTypePals:
-	ld hl, CategoryIconPals
 	ld a, [wPlayerMoveStruct + MOVE_CATEGORY]
-	ld c, a
-	ld b, 0
-rept 4
-	add hl, bc
-endr
-	ld de, UnknBGPals palette PAL_BATTLE_BG_TYPE_CAT + 2
-	ld bc, 4
-	ld a, $5
-	call FarCopyWRAM
-
-	ld hl, TypeIconPals
+	ld b, a
 	ld a, [wPlayerMoveStruct + MOVE_TYPE]
 	ld c, a
+	ld de, UnknBGPals palette PAL_BATTLE_BG_TYPE_CAT + 2
+LoadCategoryAndTypePals:
+	ld hl, CategoryIconPals
+	ld a, b
+	add a
+	add a
+	push bc
+	ld c, a
 	ld b, 0
 	add hl, bc
+	ld bc, 4
+	ld a, $5
+	push de
+	call FarCopyWRAM
+	pop de
+
+	ld hl, TypeIconPals
+	pop bc
+	ld a, c
+	add a
+	ld c, a
+	ld b, 0
 	add hl, bc
-	ld de, UnknBGPals palette PAL_BATTLE_BG_TYPE_CAT + 6
+	inc de
+	inc de
+	inc de
+	inc de
 	ld bc, 2
 	ld a, $5
 	jp FarCopyWRAM

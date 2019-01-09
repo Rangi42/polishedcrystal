@@ -96,6 +96,14 @@ wd003:: ds 1 ; TODO: replace with meaningful labels
 wd004:: ds 1 ; TODO: replace with meaningful labels
 
 NEXTU
+wMoveScreenMode:: ds 1 ; normal, learning, reminder, deletion
+wMoveScreenSelectedMove:: ds 1 ; move index
+wMoveScreenCursor:: ds 1 ; cursor position
+wMoveScreenOffset:: ds 1 ; offset from top of the list in view
+wMoveScreenNumMoves:: ds 1 ; amount of moves in the list
+wMoveScreenMoves:: ds 55
+
+NEXTU
 ; miscellaneous
 wTempDayOfWeek::
 wApricorns:: ds 1
