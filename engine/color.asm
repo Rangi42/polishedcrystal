@@ -368,27 +368,12 @@ ApplyPals:
 
 ApplyAttrMap:
 	ld a, [rLCDC]
-	bit 7, a ; lcd on?
-	jr z, ApplyAttrMapVBank1
-	; fallthrough
-ApplyAttrMapVBank0::
-	ld a, [hBGMapMode]
-	push af
-	ld a, $2
-	ld [hBGMapMode], a
-	call DelayFrame
-	call DelayFrame
-	call DelayFrame
-	call DelayFrame
-	pop af
-	ld [hBGMapMode], a
-	ret
-
-ApplyAttrMapVBank1:
+	bit 7, a
+	jr nz, ApplyAttrMapVBank0
 	hlcoord 0, 0, wAttrMap
 	debgcoord 0, 0
 	ld b, SCREEN_HEIGHT
-	ld a, $1
+	ld a, 1
 	ld [rVBK], a
 .row
 	ld c, SCREEN_WIDTH
@@ -408,6 +393,16 @@ ApplyAttrMapVBank1:
 	jr nz, .row
 	xor a
 	ld [rVBK], a
+	ret
+
+ApplyAttrMapVBank0::
+	ld a, [hBGMapMode]
+	push af
+	ld a, 2
+	ld [hBGMapMode], a
+	call Delay2
+	pop af
+	ld [hBGMapMode], a
 	ret
 
 ApplyPartyMenuHPPals: ; 96f3
