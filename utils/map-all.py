@@ -18,22 +18,24 @@ map_headers_filename = 'data/maps/maps.asm'
 block_data_filename  = 'data/maps/blocks.asm'
 block_filename_fmt   = 'maps/%s.blk'
 
-tileset_names = ['johto1', 'johto2', 'johto3', 'johto4', 'kanto1', 'kanto2',
-                 'shamouti', 'valencia', 'faraway', 'house1', 'house2', 'house3',
-                 'pokecenter', 'pokecom', 'mart', 'gate', 'gym1', 'gym2', 'gym3',
-                 'port', 'lab', 'facility', 'mansion', 'game_corner', 'decor',
-                 'museum', 'hotel', 'tower', 'battle_tower', 'radio_tower',
-                 'lighthouse', 'warehouse', 'cave', 'quiet_cave', 'ice_path',
-                 'tunnel', 'forest', 'park', 'safari', 'ruins', 'alph',
-                 'pokemon_mansion']
+tileset_names = [
+	'johto_traditional', 'johto_modern', 'battle_tower_outside', 'johto_overcast',
+	'kanto', 'indigo_plateau', 'shamouti_island', 'valencia_island', 'faraway_island',
+	'johto_house', 'kanto_house', 'traditional_house', 'pokecenter', 'pokecom_center',
+	'mart', 'gate', 'gym', 'magnet_train', 'champions_room', 'port', 'lab',
+	'facility', 'celadon_mansion', 'game_corner', 'home_decor_store', 'museum',
+	'hotel', 'sprout_tower', 'battle_tower_inside', 'radio_tower', 'lighthouse',
+	'underground', 'cave', 'quiet_cave', 'ice_path', 'tunnel', 'forest', 'park',
+	'safari_zone', 'ruins_of_alph', 'alph_word_room', 'pokemon_mansion'
+]
 
-# {'TILESET_JOHTO_1': 1, ...}
+# {'TILESET_KANTO': 1, ...}
 tileset_ids = {}
-# {'NEW_BARK_TOWN': 10, ...}
+# {'PALLET_TOWN': 10, ...}
 map_widths = OrderedDict()
-# {'NewBarkTown': 'TILESET_JOHTO_1', ...}
+# {'PalletTown': 'TILESET_KANTO', ...}
 map_tilesets = OrderedDict()
-# {'NewBarkTown': 'NewBarkTown.blk', ...}
+# {'PalletTown': 'PalletTown.blk', ...}
 map_block_data_exceptions = {}
 
 def read_tileset_ids():
