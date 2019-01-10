@@ -19,33 +19,35 @@ block_data_filename    = 'data/maps/blocks.asm'
 block_filename_fmt     = 'maps/%s.blk'
 metatile_filename_fmt  = 'data/tilesets/%s_metatiles.bin'
 
-tileset_names = ['johto1', 'johto2', 'johto3', 'johto4', 'kanto1', 'kanto2',
-                 'shamouti', 'valencia', 'faraway', 'house1', 'house2', 'house3',
-                 'pokecenter', 'pokecom', 'mart', 'gate', 'gym1', 'gym2', 'gym3',
-                 'port', 'lab', 'facility', 'mansion', 'game_corner', 'decor',
-                 'museum', 'hotel', 'tower', 'battle_tower', 'radio_tower',
-                 'lighthouse', 'warehouse', 'cave', 'quiet_cave', 'ice_path',
-                 'tunnel', 'forest', 'park', 'safari', 'ruins', 'alph',
-                 'pokemon_mansion']
+tileset_names = [
+	'johto_traditional', 'johto_modern', 'battle_tower_outside', 'johto_overcast',
+	'kanto', 'indigo_plateau', 'shamouti_island', 'valencia_island', 'faraway_island',
+	'johto_house', 'kanto_house', 'traditional_house', 'pokecenter', 'pokecom_center',
+	'mart', 'gate', 'gym', 'magnet_train', 'champions_room', 'port', 'lab',
+	'facility', 'celadon_mansion', 'game_corner', 'home_decor_store', 'museum',
+	'hotel', 'sprout_tower', 'battle_tower_inside', 'radio_tower', 'lighthouse',
+	'underground', 'cave', 'quiet_cave', 'ice_path', 'tunnel', 'forest', 'park',
+	'safari_zone', 'ruins_of_alph', 'alph_word_room', 'pokemon_mansion'
+]
 
-# {'TILESET_JOHTO_1': 'johto1', ...}
+# {'TILESET_KANTO': 'kanto', ...}
 tileset_ids = {}
-# {'NewBarkTown': 'johto1', ...}
+# {'PalletTown': 'kanto', ...}
 map_tilesets = {}
-# {'johto1': {'NewBarkTown', ...}, ...}
+# {'kanto': {'PalletTown', ...}, ...}
 tileset_maps = defaultdict(lambda: set())
 
 # {'OlivineTimsHouse': 'House1', ...}
 map_block_data_exceptions = {}
 
-# {tileset 'johto1': {tile '01', tile '02', tile '03', ...}, ...}
+# {tileset 'kanto': {tile '01', tile '02', tile '03', ...}, ...}
 tileset_used_tile_ids = defaultdict(lambda: set())
-# {tileset 'johto1': {block '01', block '02', block '03', ...}, ...}
+# {tileset 'kanto': {block '01', block '02', block '03', ...}, ...}
 tileset_used_block_ids = defaultdict(lambda: set())
 
-# {tileset 'johto1': {tile '01', tile '02', tile '03', ...}, ...}
+# {tileset 'kanto': {tile '01', tile '02', tile '03', ...}, ...}
 tileset_unused_tile_ids = defaultdict(lambda: set())
-# {tileset 'johto1': {block '01', block '02', block '03', ...}, ...}
+# {tileset 'kanto': {block '01', block '02', block '03', ...}, ...}
 tileset_unused_block_ids = defaultdict(lambda: set())
 
 def pretty(n):

@@ -4,27 +4,28 @@ KrissHouse1F_MapScriptHeader:
 	db 0 ; callbacks
 
 	db 3 ; warp events
-	warp_event  6,  7, NEW_BARK_TOWN, 2
-	warp_event  7,  7, NEW_BARK_TOWN, 2
-	warp_event  9,  0, KRISS_HOUSE_2F, 1
+	warp_event  8,  7, NEW_BARK_TOWN, 2
+	warp_event  9,  7, NEW_BARK_TOWN, 2
+	warp_event 11,  0, KRISS_HOUSE_2F, 1
 
-	db 3 ; coord events
-	coord_event  8,  4, 0, MomTrigger1
-	coord_event  9,  4, 0, MomTrigger2
-	coord_event  7,  2, 0, MomTrigger3
+	db 4 ; coord events
+	coord_event 10,  4, 0, MomTrigger1
+	coord_event 11,  4, 0, MomTrigger2
+	coord_event  9,  1, 0, MomTrigger3
+	coord_event  9,  2, 0, MomTrigger4
 
 	db 4 ; bg events
-	bg_event  0,  1, SIGNPOST_JUMPTEXT, FridgeText
-	bg_event  1,  1, SIGNPOST_JUMPTEXT, SinkText
-	bg_event  2,  1, SIGNPOST_JUMPTEXT, StoveText
-	bg_event  7,  1, SIGNPOST_UP, TVScript
+	bg_event  1,  1, SIGNPOST_JUMPTEXT, FridgeText
+	bg_event  2,  1, SIGNPOST_JUMPTEXT, SinkText
+	bg_event  3,  1, SIGNPOST_JUMPTEXT, StoveText
+	bg_event  6,  1, SIGNPOST_UP, TVScript
 
 	db 5 ; object events
-	object_event  7,  4, SPRITE_MOM, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, MomScript, EVENT_KRISS_HOUSE_MOM_1
-	object_event  2,  2, SPRITE_MOM, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, (1 << MORN), 0, PERSONTYPE_SCRIPT, 0, MomScript, EVENT_KRISS_HOUSE_MOM_2
-	object_event  7,  4, SPRITE_MOM, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, (1 << DAY), 0, PERSONTYPE_SCRIPT, 0, MomScript, EVENT_KRISS_HOUSE_MOM_2
-	object_event  0,  2, SPRITE_MOM, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, (1 << NITE), 0, PERSONTYPE_SCRIPT, 0, MomScript, EVENT_KRISS_HOUSE_MOM_2
-	object_event  4,  4, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, NeighborScript, EVENT_KRISS_HOUSE_1F_NEIGHBOR
+	object_event  9,  4, SPRITE_MOM, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, MomScript, EVENT_KRISS_HOUSE_MOM_1
+	object_event  3,  2, SPRITE_MOM, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, (1 << MORN), 0, PERSONTYPE_SCRIPT, 0, MomScript, EVENT_KRISS_HOUSE_MOM_2
+	object_event  9,  4, SPRITE_MOM, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, (1 << DAY), 0, PERSONTYPE_SCRIPT, 0, MomScript, EVENT_KRISS_HOUSE_MOM_2
+	object_event  1,  2, SPRITE_MOM, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, (1 << NITE), 0, PERSONTYPE_SCRIPT, 0, MomScript, EVENT_KRISS_HOUSE_MOM_2
+	object_event  6,  4, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, NeighborScript, EVENT_KRISS_HOUSE_1F_NEIGHBOR
 
 	const_def 1 ; object constants
 	const KRISSHOUSE1F_MOM1
@@ -44,6 +45,18 @@ MomTrigger2:
 	jump MomEventScript
 
 MomTrigger3:
+	playmusic MUSIC_MOM
+	showemote EMOTE_SHOCK, KRISSHOUSE1F_MOM1, 15
+	turnobject KRISSHOUSE1F_MOM1, UP
+	applymovement PLAYER, .two_steps_down
+	jump MomEventScript
+
+.two_steps_down
+	step_down
+	step_down
+	step_end
+
+MomTrigger4:
 	playmusic MUSIC_MOM
 	showemote EMOTE_SHOCK, KRISSHOUSE1F_MOM1, 15
 	turnobject KRISSHOUSE1F_MOM1, UP
