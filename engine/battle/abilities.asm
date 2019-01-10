@@ -6,7 +6,10 @@ RunStatusHealAbilities:
 UserAbilityJumptable:
 	ld a, BATTLE_VARS_ABILITY
 	call GetBattleVar
-	jp AbilityJumptable
+AbilityJumptable:
+	; If we at some point make the AI learn abilities, keep this.
+	; For now it just jumps to the general jumptable function
+	jp BattleJumptable
 
 RunEnemyStatusHealAbilities:
 	call SwitchTurn
@@ -179,11 +182,6 @@ WeatherAbility:
 	farcall Call_PlayBattleAnim
 	farcall BattleCommand_StartSun
 	jp EnableAnimations
-.handlesandstorm
-	ld de, SANDSTORM
-	farcall Call_PlayBattleAnim
-	farcall BattleCommand_StartSandstorm
-	jp EnableAnimations
 .handlehail
 	ld de, HAIL
 	farcall Call_PlayBattleAnim
@@ -193,9 +191,19 @@ WeatherAbility:
 IntimidateAbility:
 	call ShowAbilityActivation
 	call DisableAnimations
-	farcall ResetMiss
+	ld a, [AttackMissed]
+	push af
+	ld a, [EffectFailed]
+	push af
+	xor a
+	ld [AttackMissed], a
+	ld [EffectFailed], a
 	farcall BattleCommand_AttackDown
 	farcall BattleCommand_StatDownMessage
+	pop af
+	ld [EffectFailed], a
+	pop af
+	ld [AttackMissed], a
 	jp EnableAnimations
 
 DownloadAbility:
@@ -1656,11 +1664,6 @@ RegeneratorAbility:
 	and a
 	jp z, UpdateBattleMonInParty
 	jp UpdateEnemyMonInParty
-
-AbilityJumptable:
-	; If we at some point make the AI learn abilities, keep this.
-	; For now it just jumps to the general jumptable function
-	jp BattleJumptable
 
 DisableAnimations:
 	ld a, 1
