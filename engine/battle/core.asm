@@ -172,8 +172,6 @@ BattleTurn: ; 3c12f
 	ld [wPlayerIsSwitching], a
 	ld [wEnemyIsSwitching], a
 	ld [wBattleHasJustStarted], a
-	ld [wPlayerJustGotFrozen], a
-	ld [wEnemyJustGotFrozen], a
 	ld [CurDamage], a
 	ld [CurDamage + 1], a
 
@@ -243,6 +241,16 @@ SafariBattleTurn:
 
 	jr .loop
 
+HasUserEndturnSwitched:
+	ld a, [hBattleTurn]
+	and a
+	ld a, [wPlayerEndturnSwitched]
+	jr z, .got_endturnswitch
+	ld a, [wEnemyEndturnSwitched]
+.got_endturnswitch
+	xor 1 ; return z if we have endturn switched
+	ret
+
 HandleBetweenTurnEffects: ; 3c1d6
 	call CheckFaint
 	ret c
@@ -270,6 +278,8 @@ HandleBetweenTurnEffects: ; 3c1d6
 	call HandleScreens
 	call HandleHealingItems
 	farcall HandleAbilities
+
+	; these run even if the user switched at endturn
 	call HandleStatusOrbs
 	call HandleRoost
 	call UpdateBattleMonInParty
@@ -915,6 +925,9 @@ Battle_PlayerFirst: ; 3c664
 .enemy_used_move
 	call PlayerTurn_EndOpponentProtectEndureDestinyBond
 	pop bc
+	xor a
+	ld [wPlayerEndturnSwitched], a
+	ld [wEnemyEndturnSwitched], a
 	ld a, [wForcedSwitch]
 	and a
 	ret nz
@@ -935,6 +948,9 @@ Battle_PlayerFirst: ; 3c664
 	call TryEnemyFlee
 	jp c, WildFled_EnemyFled_LinkBattleCanceled
 	call EnemyTurn_EndOpponentProtectEndureDestinyBond
+	xor a
+	ld [wPlayerEndturnSwitched], a
+	ld [wEnemyEndturnSwitched], a
 	ld a, [wForcedSwitch]
 	and a
 	ret nz
@@ -993,6 +1009,8 @@ HandleResidualDamage:
 
 .do_it
 	call HasUserFainted
+	ret z
+	call HasUserEndturnSwitched
 	ret z
 
 	; Magic guard prevents everything here
@@ -1287,6 +1305,8 @@ HandleLeftovers:
 	call SwitchTurn
 
 .do_it
+	call HasUserEndturnSwitched
+	ret z
 	farcall GetUserItem
 	call GetCurItemName
 	ld a, b
@@ -1330,6 +1350,8 @@ HandleLeppaBerry:
 	call SwitchTurn
 
 .do_it
+	call HasUserEndturnSwitched
+	ret z
 	farcall GetUserItemAfterUnnerve
 	ld a, b
 	cp HELD_RESTORE_PP
@@ -1539,6 +1561,16 @@ HandleFutureSight:
 	cp $1
 	ret nz
 
+	call HasUserEndturnSwitched
+	jr nz, .do_future_sight
+
+	; Future Sight misses automatically
+	xor a
+	ld [hl], a
+	ld hl, BattleText_UsersFutureSightMissed
+	jp StdBattleTextBox
+
+.do_future_sight
 	ld hl, BattleText_TargetWasHitByFutureSight
 	call StdBattleTextBox
 
@@ -1758,6 +1790,8 @@ HandleWeather:
 
 HandleWeatherEffects:
 ; sandstorm/hail damage, abilities like rain dish, etc.
+	call HasUserEndturnSwitched
+	ret z
 	farcall GetUserItemAfterUnnerve
 	ld a, b
 	cp HELD_SAFETY_GOGGLES
@@ -2083,7 +2117,8 @@ HandleEnemyMonFaint: ; 3cd55
 .dont_flee
 	call ForcePlayerMonChoice
 
-	ld a, $1
+	ld a, 1
+	ld [wPlayerEndturnSwitched], a
 	ld [wPlayerAction], a
 	call HandleEnemySwitch
 	jp z, WildFled_EnemyFled_LinkBattleCanceled
@@ -2364,6 +2399,8 @@ EnemyPartyMonEntrance: ; 3cf78
 	push af
 	xor a
 	ld [wEnemySwitchMonIndex], a
+	ld a, 1
+	ld [wEnemyEndturnSwitched], a
 	call NewEnemyMonStatus
 	call ResetEnemyStatLevels
 	call BreakAttraction
@@ -2688,6 +2725,8 @@ HandlePlayerMonFaint: ; 3d14e
 	ret
 
 .switch
+	ld a, 1
+	ld [wPlayerEndturnSwitched], a
 	call ForcePlayerMonChoice
 	ld a, c
 	and a
@@ -4247,6 +4286,8 @@ HandleHealingItems: ; 3dcf9
 	call SwitchTurn
 
 .do_it
+	; runs instantly whenever possible, so don't prevent usage
+	; even if the user endturn switched
 	call HandleHPHealingItem
 	call UseHeldStatusHealingItem
 	call HandleStatBoostBerry

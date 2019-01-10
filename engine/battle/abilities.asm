@@ -1105,19 +1105,14 @@ WeatherRecoveryAbility:
 
 HandleAbilities:
 ; Abilities handled at the end of the turn.
-	call CheckSpeed
-	jr nz, .enemy_first
-	call SetPlayerTurn
+	farcall SetFastestTurn
 	call .do_it
-	call SetEnemyTurn
-	jp .do_it
-
-.enemy_first
-	call SetEnemyTurn
-	call .do_it
-	call SetPlayerTurn
+	call SwitchTurn
 
 .do_it
+	farcall HasUserEndturnSwitched
+	ret z
+
 	ld hl, EndTurnAbilities
 	call UserAbilityJumptable
 	ld hl, StatusHealAbilities

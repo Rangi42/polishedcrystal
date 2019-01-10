@@ -193,6 +193,16 @@ BattleText_UserChargedWithItem:
 	text "!"
 	prompt
 
+BattleText_UsersFutureSightMissed:
+; used when Future Sight can't hit anything because there was
+; no target
+	text "<USER>'s"
+	line "Future Sight took!"
+
+	para "But there was no"
+	line "target..."
+	prompt
+
 BattleText_TargetWasHitByFutureSight: ; 0x808b6
 	text "<TARGET>"
 	line "was hit by Future"
