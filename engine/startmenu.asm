@@ -1279,6 +1279,8 @@ ManagePokemonMoves: ; 12fba
 	ld a, [hl]
 	push af
 	set NO_TEXT_SCROLL, [hl]
+	xor a
+	ld [wMoveScreenMode], a
 	call MoveScreenLoop
 	pop af
 	ld [Options1], a
