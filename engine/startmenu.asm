@@ -1359,7 +1359,14 @@ MoveScreenLoop:
 .loop
 	farcall PlaySpriteAnimationsAndDelayFrame
 	call JoyTextDelay
+
+	; allow d-pad to be held, but not a/b/start/select
+	ld a, [hJoyPressed]
+	and BUTTONS
+	ld b, a
 	ld a, [hJoyDown]
+	and D_PAD
+	or b
 	rrca
 	jr c, .pressed_a
 	rrca
@@ -1421,16 +1428,27 @@ MoveScreenLoop:
 .pressed_right
 	ld a, [wMoveScreenMode]
 	and a
-	jr nz, .loop
+	jr z, .species_right
+	ld a, [wMoveScreenCursor]
+	cp 3
+	jp z, .far_down
+	ld a, [wMoveScreenNumMoves]
+	dec a
+	cp 4
+	jp c, .update_screen_cursor
+	ld a, 3
+	jr .update_screen_cursor
+.species_right
 	ld a, [wCurPartyMon]
 	cp PARTY_LENGTH - 1
-	jr z, .loop
+	jp z, .loop
 .loop_right
 	inc a
 	ld d, a
 	ld bc, PARTYMON_STRUCT_LENGTH
 	ld hl, wPartyMon1Species
 	call AddNTimes
+	ld a, [hl]
 	cp EGG
 	jr z, .loop_right_invalid
 	call IsAPokemon
@@ -1446,7 +1464,13 @@ MoveScreenLoop:
 .pressed_left
 	ld a, [wMoveScreenMode]
 	and a
-	jp nz, .loop
+	jp z, .species_left
+	ld a, [wMoveScreenCursor]
+	and a
+	jr z, .far_up
+	xor a
+	jr .update_screen_cursor
+.species_left
 	ld a, [wCurPartyMon]
 	and a
 	jp z, .loop
@@ -1456,6 +1480,7 @@ MoveScreenLoop:
 	ld bc, PARTYMON_STRUCT_LENGTH
 	ld hl, wPartyMon1Species
 	call AddNTimes
+	ld a, [hl]
 	cp EGG
 	jr z, .loop_left_invalid
 	call IsAPokemon
@@ -1486,11 +1511,27 @@ MoveScreenLoop:
 .update_screen_cursor
 	ld [wMoveScreenCursor], a
 	jp .outer_loop
+.far_up
+	ld a, [wMoveScreenOffset]
+	sub 4
+	jr nc, .update_screen_offset
+	xor a
+	jr .update_screen_offset
 .scroll_up
 	ld a, [wMoveScreenOffset]
 	and a
 	jp z, .outer_loop
 	dec a
+	jr .update_screen_offset
+.far_down
+	ld a, [wMoveScreenNumMoves]
+	sub 4
+	ld b, a
+	ld a, [wMoveScreenOffset]
+	add 4
+	cp b
+	jr c, .update_screen_offset
+	ld a, b
 	jr .update_screen_offset
 .scroll_down
 	ld a, [wMoveScreenNumMoves]
