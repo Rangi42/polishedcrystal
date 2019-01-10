@@ -113,6 +113,8 @@ MusicPlayer::
 	call ClearTileMap
 
 ; Load palette
+	ld hl, rIE
+	set LCD_STAT, [hl]
 	ld a, [rSVBK]
 	push af
 	ld a, 5
@@ -347,6 +349,8 @@ MusicPlayerLoop:
 	call ClearSprites
 	ld hl, rLCDC
 	res 2, [hl] ; 8x8 sprites
+	ld hl, rIE
+	res LCD_STAT, [hl]
 	ret
 
 .start:
