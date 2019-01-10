@@ -5064,6 +5064,7 @@ BattleMenu_SafariBall:
 	jp .UseItem
 
 .didnt_use_item
+	call ClearTileMap
 	call ClearPalettes
 	call DelayFrame
 	call _LoadBattleFontsHPBar
