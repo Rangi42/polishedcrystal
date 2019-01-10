@@ -610,12 +610,12 @@ _CGB_MoveList: ; 9373
 	call AddNTimes
 	ld a, BANK(Moves)
 	call GetFarByte
+	add a
+	add a
 	ld hl, CategoryIconPals
 	ld c, a
 	ld b, 0
-rept 4
 	add hl, bc
-endr
 	ld de, wUnknBGPals palette 0 + 2
 	ld bc, 4
 	ld a, $5
@@ -629,9 +629,9 @@ endr
 	ld a, BANK(Moves)
 	call GetFarByte
 	ld hl, TypeIconPals
+	add a
 	ld c, a
 	ld b, 0
-	add hl, bc
 	add hl, bc
 	ld de, wUnknBGPals palette 0 + 6
 	ld bc, 2
