@@ -1014,6 +1014,8 @@ IntroScene15: ; e4e40 (39:4e40)
 	call Intro_ClearBGPals
 	call ClearSprites
 	call ClearTileMap
+	ld c, 60
+	call DelayFrames
 	xor a
 	ld [hBGMapMode], a
 	ld a, $1
@@ -1094,6 +1096,8 @@ IntroScene17: ; e4ef5 (39:4ef5)
 	call Intro_ClearBGPals
 	call ClearSprites
 	call ClearTileMap
+	ld c, 60
+	call DelayFrames
 	xor a
 	ld [hBGMapMode], a
 	ld a, $1
@@ -1158,6 +1162,8 @@ IntroScene19: ; e4f7e (39:4f7e)
 	call Intro_ClearBGPals
 	call ClearSprites
 	call ClearTileMap
+	ld c, 60
+	call DelayFrames
 	xor a
 	ld [hBGMapMode], a
 	ld a, $1
@@ -1439,6 +1445,8 @@ Intro_Scene24_ApplyPaletteFade: ; e5172 (39:5172)
 	ld [rSVBK], a
 	ld a, $1
 	ld [hCGBPalUpdate], a
+	ld c, 10
+	call DelayFrames
 	ret
 ; e519c (39:519c)
 
