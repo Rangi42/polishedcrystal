@@ -5326,7 +5326,7 @@ BattleMenuPKMN_Loop:
 	call InitVerticalMenuCursor
 	ld hl, w2DMenuFlags1
 	set 6, [hl]
-	call StaticMenuJoypad
+	call DoMenuJoypadLoop
 	ld de, SFX_READ_TEXT_2
 	call PlaySFX
 	ld a, [hJoyPressed]
@@ -5922,7 +5922,7 @@ MoveSelectionScreen:
 .interpret_joypad
 	ld a, $1
 	ld [hBGMapMode], a
-	call ScrollingMenuJoypad
+	call DoMenuJoypadLoop
 	bit D_UP_F, a
 	jp nz, .pressed_up
 	bit D_DOWN_F, a

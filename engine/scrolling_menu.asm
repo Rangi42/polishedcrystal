@@ -20,9 +20,6 @@ _ScrollingMenu:: ; 245cb
 	jr c, .exit
 	jr nz, _ScrollingMenu
 	call ScrollingMenu_InitDisplay
-	call WaitBGMap
-	xor a
-	ld [hBGMapMode], a
 	jr _ScrollingMenu
 
 .exit
@@ -48,7 +45,7 @@ ScrollingMenu_InitDisplay: ; 245f1
 ; 24609
 
 ScrollingMenuJoyAction: ; 24609
-	call _ScrollingMenuJoypad
+	call _DoMenuJoypadLoop
 	call GetMenuJoypad
 	rrca
 	jr c, .a_button

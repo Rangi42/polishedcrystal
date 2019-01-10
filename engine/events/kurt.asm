@@ -50,7 +50,7 @@ Special_SelectApricornForKurt: ; 88018
 	call Kurt_GiveUpSelectedQuantityOfSelectedApricorn
 
 .done
-	jp Call_ExitMenu
+	jp ExitMenu
 ; 88055
 
 Kurt_SelectApricorn: ; 88055

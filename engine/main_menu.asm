@@ -113,7 +113,7 @@ MainMenuJoypadLoop: ; 49de4
 	ld a, [w2DMenuFlags1]
 	set 5, a
 	ld [w2DMenuFlags1], a
-	call GetScrollingMenuJoypad
+	call ReadMenuJoypad
 	ld a, [wMenuJoypad]
 	cp B_BUTTON
 	jr z, .b_button

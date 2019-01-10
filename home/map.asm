@@ -1882,13 +1882,13 @@ CloseSubmenu:: ; 2b3c
 	call ClearBGPalettes
 	call ReloadTilesetAndPalettes
 	call UpdateSprites
-	call Call_ExitMenu
+	call ExitMenu
 	jr FinishExitMenu
 ; 2b4d
 
 ExitAllMenus:: ; 2b4d
 	call ClearBGPalettes
-	call Call_ExitMenu
+	call ExitMenu
 	call ReloadTilesetAndPalettes
 	call UpdateSprites
 FinishExitMenu:: ; 2b5c

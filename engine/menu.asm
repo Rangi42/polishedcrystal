@@ -9,7 +9,7 @@ _2DMenu_:: ; 2400e
 
 Get2DMenuSelection: ; 2408f
 	call Init2DMenuCursorPosition
-	call StaticMenuJoypad
+	call DoMenuJoypadLoop
 	call MenuClickSound
 	ld a, [wMenuData2Flags]
 	bit 1, a
@@ -197,9 +197,7 @@ Init2DMenuCursorPosition: ; 2411a (9:411a)
 ; 241a8
 
 
-_StaticMenuJoypad:: ; 241a8
-	call Place2DMenuCursor
-_ScrollingMenuJoypad:: ; 241ab
+_DoMenuJoypadLoop::
 	ld hl, w2DMenuFlags2
 	res 7, [hl]
 	ld a, [hBGMapMode]
@@ -235,6 +233,11 @@ MenuJoypadLoop: ; 24216
 	ld a, $1
 	ld [hOAMUpdate], a
 	call WaitBGMap
+	ld [hBGMapMode], a
+	ld a, [w2DMenuFlags1]
+	bit 6, a
+	call z, DelayFrame
+	call DelayFrame
 	pop af
 	ld [hOAMUpdate], a
 	xor a

@@ -616,7 +616,7 @@ PartyMenuAttributes: ; 5044f
 
 PartyMenuSelect: ; 0x50457
 ; sets carry if exitted menu.
-	call StaticMenuJoypad
+	call DoMenuJoypadLoop
 	call PlaceHollowCursor
 	ld a, [wPartyCount]
 	inc a

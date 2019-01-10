@@ -86,7 +86,7 @@ StartMenu:: ; 125cd
 	ld a, $ff
 	ld [wMenuSelection], a
 .loop
-	call GetScrollingMenuJoypad
+	call ReadMenuJoypad
 	ld a, [wMenuJoypad]
 	cp B_BUTTON
 	jr z, .b
@@ -129,7 +129,7 @@ StartMenu:: ; 125cd
 
 .ReturnRedraw: ; 126b1
 	call ClearBGPalettes
-	call Call_ExitMenu
+	call ExitMenu
 	call ReloadTilesetAndPalettes
 	call DrawVariableLengthMenuBox
 	call .DrawBugContestStatus
@@ -1119,7 +1119,7 @@ OpenPartyStats: ; 12e00
 	call LowVolume
 	predef StatsScreenInit
 	call MaxVolume
-	call Call_ExitMenu
+	call ExitMenu
 	xor a
 	ret
 ; 12e1b

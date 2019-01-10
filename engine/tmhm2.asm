@@ -51,7 +51,7 @@ TMHM_PocketLoop: ; 2c8d3 (b:48d3)
 
 TMHM_JoypadLoop: ; 2c915 (b:4915)
 	call TMHM_DisplayPocketItems
-	call StaticMenuJoypad
+	call DoMenuJoypadLoop
 	ld b, a
 	ld a, [wMenuCursorY]
 	dec a

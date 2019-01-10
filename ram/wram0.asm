@@ -1049,8 +1049,9 @@ wBTTempOTSprite:: ds 1
 wOverworldDelay:: ds 1
 wTextDelayFrames:: ds 1
 wVBlankOccurred:: ds 1
+wGenericDelay:: ds 1
 
-	ds 8 ; unused
+	ds 7 ; unused
 
 wGameTimerPause::
 ; bit 0

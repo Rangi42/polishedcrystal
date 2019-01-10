@@ -1079,7 +1079,7 @@ Function28926: ; 28926
 	xor a
 	ld [w2DMenuFlags1], a
 	ld [w2DMenuFlags2], a
-	call ScrollingMenuJoypad
+	call DoMenuJoypadLoop
 	bit D_RIGHT_F, a
 	jr nz, .d_right
 	bit B_BUTTON_F, a
@@ -1111,7 +1111,7 @@ Function28926: ; 28926
 	xor a
 	ld [w2DMenuFlags1], a
 	ld [w2DMenuFlags2], a
-	call ScrollingMenuJoypad
+	call DoMenuJoypadLoop
 	bit D_LEFT_F, a
 	jp nz, .joy_loop
 	bit B_BUTTON_F, a
@@ -1428,9 +1428,9 @@ LinkTrade: ; 28b87
 	ld [wMenuCursorY], a
 	ld [wMenuCursorX], a
 	call Link_WaitBGMap
-	call ScrollingMenuJoypad
+	call DoMenuJoypadLoop
 	push af
-	call Call_ExitMenu
+	call ExitMenu
 	call WaitBGMap2
 	pop af
 	bit 1, a
@@ -1798,7 +1798,7 @@ Function16d6ce: ; 16d6ce
 	ld c, 50
 	call DelayFrames
 	call Serial_SyncAndExchangeNybble
-	call Call_ExitMenu
+	call ExitMenu
 	jp WaitBGMap2
 ; 16d6e1
 

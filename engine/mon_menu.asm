@@ -48,7 +48,7 @@ MonMenuLoop: ; 24d59
 	call InitVerticalMenuCursor
 	ld hl, w2DMenuFlags1
 	set 6, [hl]
-	call StaticMenuJoypad
+	call DoMenuJoypadLoop
 	ld de, SFX_READ_TEXT_2
 	call PlaySFX
 	ld a, [hJoyPressed]
