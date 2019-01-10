@@ -6,7 +6,10 @@ RunStatusHealAbilities:
 UserAbilityJumptable:
 	ld a, BATTLE_VARS_ABILITY
 	call GetBattleVar
-	jp AbilityJumptable
+AbilityJumptable:
+	; If we at some point make the AI learn abilities, keep this.
+	; For now it just jumps to the general jumptable function
+	jp BattleJumptable
 
 RunEnemyStatusHealAbilities:
 	call SwitchTurn
@@ -179,11 +182,6 @@ WeatherAbility:
 	farcall Call_PlayBattleAnim
 	farcall BattleCommand_StartSun
 	jp EnableAnimations
-.handlesandstorm
-	ld de, SANDSTORM
-	farcall Call_PlayBattleAnim
-	farcall BattleCommand_StartSandstorm
-	jp EnableAnimations
 .handlehail
 	ld de, HAIL
 	farcall Call_PlayBattleAnim
@@ -193,9 +191,19 @@ WeatherAbility:
 IntimidateAbility:
 	call ShowAbilityActivation
 	call DisableAnimations
-	farcall ResetMiss
+	ld a, [wAttackMissed]
+	push af
+	ld a, [wEffectFailed]
+	push af
+	xor a
+	ld [wAttackMissed], a
+	ld [wEffectFailed], a
 	farcall BattleCommand_AttackDown
 	farcall BattleCommand_StatDownMessage
+	pop af
+	ld [wEffectFailed], a
+	pop af
+	ld [wAttackMissed], a
 	jp EnableAnimations
 
 DownloadAbility:
@@ -1105,19 +1113,14 @@ WeatherRecoveryAbility:
 
 HandleAbilities:
 ; Abilities handled at the end of the turn.
-	call CheckSpeed
-	jr nz, .enemy_first
-	call SetPlayerTurn
+	farcall SetFastestTurn
 	call .do_it
-	call SetEnemyTurn
-	jp .do_it
-
-.enemy_first
-	call SetEnemyTurn
-	call .do_it
-	call SetPlayerTurn
+	call SwitchTurn
 
 .do_it
+	farcall HasUserEndturnSwitched
+	ret z
+
 	ld hl, EndTurnAbilities
 	call UserAbilityJumptable
 	ld hl, StatusHealAbilities
@@ -1661,11 +1664,6 @@ RegeneratorAbility:
 	and a
 	jp z, UpdateBattleMonInParty
 	jp UpdateEnemyMonInParty
-
-AbilityJumptable:
-	; If we at some point make the AI learn abilities, keep this.
-	; For now it just jumps to the general jumptable function
-	jp BattleJumptable
 
 DisableAnimations:
 	ld a, 1

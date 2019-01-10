@@ -666,8 +666,8 @@ wAmuletCoin:: ds 1
 
 wSomeoneIsRampaging:: ds 1
 
-wPlayerJustGotFrozen:: ds 1
-wEnemyJustGotFrozen:: ds 1
+wPlayerEndturnSwitched:: ds 1
+wEnemyEndturnSwitched:: ds 1
 
 wDVAndPersonalityBuffer:: ds 5
 wBattleEnd::

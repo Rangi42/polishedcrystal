@@ -154,10 +154,13 @@ BattleText_UserItemLetItMoveFirst::
 
 BattleText_UserRecoveredPPUsing:
 	text "<USER>"
-	line "recovered PP using"
+	line "restored PP of"
+	cont "@"
+	text_from_ram wStringBuffer2
+	text " using"
 	cont "@"
 	text_from_ram wStringBuffer1
-	text "."
+	text "!"
 	prompt
 
 BattleText_ItemRaised:
@@ -188,6 +191,16 @@ BattleText_UserChargedWithItem:
 	cont "using @"
 	text_from_ram wStringBuffer1
 	text "!"
+	prompt
+
+BattleText_UsersFutureSightMissed:
+; used when Future Sight can't hit anything because there was
+; no target
+	text "<USER>'s"
+	line "Future Sight took!"
+
+	para "But there was no"
+	line "target..."
 	prompt
 
 BattleText_TargetWasHitByFutureSight: ; 0x808b6

@@ -5433,15 +5433,7 @@ BattleCommand_FreezeTarget:
 	jp PostStatus
 .no_magma_armor
 	call OpponentCantMove
-	call EndRechargeOpp
-	ld hl, wEnemyJustGotFrozen
-	ld a, [hBattleTurn]
-	and a
-	jr z, .finish
-	ld hl, wPlayerJustGotFrozen
-.finish
-	ld [hl], $1
-	ret
+	jp EndRechargeOpp
 
 BattleCommand_ParalyzeTarget:
 	xor a
@@ -7593,7 +7585,7 @@ BattleCommand_BugBite:
 	farcall StealHPHealingItem
 	farcall StealStatBoostBerry
 	farcall StealDefendHitBerry
-	; TODO: leppa berry
+	farcall StealLeppaBerry
 
 	; check if the opponent still has a berry
 	call GetOpponentItem

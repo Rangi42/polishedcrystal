@@ -172,8 +172,6 @@ BattleTurn: ; 3c12f
 	ld [wPlayerIsSwitching], a
 	ld [wEnemyIsSwitching], a
 	ld [wBattleHasJustStarted], a
-	ld [wPlayerJustGotFrozen], a
-	ld [wEnemyJustGotFrozen], a
 	ld [wCurDamage], a
 	ld [wCurDamage + 1], a
 
@@ -243,6 +241,16 @@ SafariBattleTurn:
 
 	jr .loop
 
+HasUserEndturnSwitched:
+	ld a, [hBattleTurn]
+	and a
+	ld a, [wPlayerEndturnSwitched]
+	jr z, .got_endturnswitch
+	ld a, [wEnemyEndturnSwitched]
+.got_endturnswitch
+	xor 1 ; return z if we have endturn switched
+	ret
+
 HandleBetweenTurnEffects: ; 3c1d6
 	call CheckFaint
 	ret c
@@ -270,6 +278,8 @@ HandleBetweenTurnEffects: ; 3c1d6
 	call HandleScreens
 	call HandleHealingItems
 	farcall HandleAbilities
+
+	; these run even if the user switched at endturn
 	call HandleStatusOrbs
 	call HandleRoost
 	call UpdateBattleMonInParty
@@ -914,6 +924,9 @@ Battle_PlayerFirst: ; 3c664
 .enemy_used_move
 	call PlayerTurn_EndOpponentProtectEndureDestinyBond
 	pop bc
+	xor a
+	ld [wPlayerEndturnSwitched], a
+	ld [wEnemyEndturnSwitched], a
 	ld a, [wForcedSwitch]
 	and a
 	ret nz
@@ -934,6 +947,9 @@ Battle_PlayerFirst: ; 3c664
 	call TryEnemyFlee
 	jp c, WildFled_EnemyFled_LinkBattleCanceled
 	call EnemyTurn_EndOpponentProtectEndureDestinyBond
+	xor a
+	ld [wPlayerEndturnSwitched], a
+	ld [wEnemyEndturnSwitched], a
 	ld a, [wForcedSwitch]
 	and a
 	ret nz
@@ -992,6 +1008,8 @@ HandleResidualDamage:
 
 .do_it
 	call HasUserFainted
+	ret z
+	call HasUserEndturnSwitched
 	ret z
 
 	; Magic guard prevents everything here
@@ -1286,6 +1304,8 @@ HandleLeftovers:
 	call SwitchTurn
 
 .do_it
+	call HasUserEndturnSwitched
+	ret z
 	farcall GetUserItem
 	call GetCurItemName
 	ld a, b
@@ -1310,130 +1330,214 @@ HandleLeftovers:
 .print
 	jp StdBattleTextBox
 
+StealLeppaBerry:
+	farcall GetOpponentItem
+	ld a, b
+	cp HELD_RESTORE_PP
+	ret nz
+	call PreparePPRestore
+	call GetNonfullPPMove
+	ret z
+	push bc
+	call ConsumeOpponentItem
+	pop bc
+	jp LeppaRestorePP
+
 HandleLeppaBerry:
 	call SetFastestTurn
 	call .do_it
 	call SwitchTurn
 
 .do_it
+	call HasUserEndturnSwitched
+	ret z
 	farcall GetUserItemAfterUnnerve
 	ld a, b
 	cp HELD_RESTORE_PP
 	ret nz
-	ld hl, wPartyMon1PP
-	ld a, [wCurBattleMon]
-	call GetPartyLocation
-	ld d, h
-	ld e, l
-	ld hl, wPartyMon1Moves
-	ld a, [wCurBattleMon]
-	call GetPartyLocation
+	call PreparePPRestore
+	call GetZeroPPMove
+	ret z
+	push bc
+	call ConsumeUserItem
+	pop bc
+	jp LeppaRestorePP
+
+PreparePPRestore:
 	ld a, [hBattleTurn]
 	and a
-	jr z, .wild
-	ld de, wWildMonPP
-	ld hl, wWildMonMoves
-	ld a, [wBattleMode]
-	dec a
-	jr z, .wild
-	ld hl, wOTPartyMon1PP
-	ld a, [wCurOTMon]
-	call GetPartyLocation
-	ld d, h
-	ld e, l
-	ld hl, wOTPartyMon1Moves
-	ld a, [wCurOTMon]
-	call GetPartyLocation
+	jr nz, .enemy
+	ld hl, wBattleMonMoves
+	ld de, wTempMonMoves
+	ld bc, NUM_MOVES
+	call CopyBytes
+	ld hl, wBattleMonPP
+	ld de, wTempMonPP
+	ld bc, NUM_MOVES
+	jp CopyBytes
 
-.wild
-	ld c, $0
+.enemy
+	ld hl, wEnemyMonMoves
+	ld de, wTempMonMoves
+	ld bc, NUM_MOVES
+	call CopyBytes
+	ld hl, wEnemyMonPP
+	ld de, wTempMonPP
+	ld bc, NUM_MOVES
+	jp CopyBytes
+
+GetZeroPPMove:
+; Returns z if we didn't find a valid move
+	ld bc, 0
+	ld d, NUM_MOVES
+	ld hl, wTempMonPP
 .loop
-	ld a, [hl]
-	and a
-	ret z
-	ld a, [de]
-	and $3f
-	jr z, .restore
-	inc hl
-	inc de
-	inc c
-	ld a, c
-	cp NUM_MOVES
+	ld a, [hli]
+	and $3f ; mask out PP ups
+	jr z, .got_zero_pp
+	inc bc
+	dec d
 	jr nz, .loop
 	ret
 
-.restore
-	; lousy hack
+.got_zero_pp
+	; Did we simply run past our valid moves?
+	ld hl, wTempMonMoves
+	add hl, bc
 	ld a, [hl]
-	cp SKETCH
-	ld b, 1
-	jr z, .sketch
-	ld b, 5
-.sketch
-	ld a, [de]
-	add b
-	ld [de], a
-	push bc
-	push bc
-	ld a, [hl]
-	ld [wd265], a
-	ld de, wBattleMonMoves - 1
-	ld hl, wBattleMonPP
-	ld a, [hBattleTurn]
 	and a
-	jr z, .player_pp
-	ld de, wEnemyMonMoves - 1
-	ld hl, wEnemyMonPP
-.player_pp
-	inc de
+	ret
+
+GetNonfullPPMove:
+; Returns z if we didn't find a move without full PP
+	ld a, BOXMON
+	ld [wMonType], a
+	ld a, [wMenuCursorY]
+	push af
+	ld bc, 0
+	ld d, NUM_MOVES
+.loop
+	ld hl, wTempMonMoves
+	add hl, bc
+	ld a, [hl]
+	and a
+	jr z, .all_moves_full
+	ld hl, wTempMonPP
+	add hl, bc
+	ld e, [hl]
+	push bc
+	push de
+	ld a, c
+	inc a
+	ld [wMenuCursorY], a
+	farcall GetMaxPPOfMove
+	pop de
 	pop bc
-	ld b, 0
+	ld a, [wd265]
+	cp e
+	jr nz, .got_nonfull_pp
+	inc bc
+	dec d
+	jr nz, .loop
+.all_moves_full
+	pop af
+	ld [wMenuCursorY], a
+	xor a
+	ret
+
+.got_nonfull_pp
+	pop af
+	ld [wMenuCursorY], a
+	or 1
+	ret
+
+LeppaRestorePP:
+	; Restore up to 10PP of move bc (0-3)
+	ld hl, wTempMonPP
 	add hl, bc
-	push hl
-	ld h, d
-	ld l, e
+	ld a, [hl]
+	add 10
+	ld d, a
+	ld a, BOXMON
+	ld [wMonType], a
+	ld a, [wMenuCursorY]
+	push af
+	ld a, c
+	inc a
+	ld [wMenuCursorY], a
+	push bc
+	push de
+	farcall GetMaxPPOfMove
+	pop de
+	pop bc
+	pop af
+	ld [wMenuCursorY], a
+	ld a, [wd265]
+	cp d
+	jr nc, .got_pp_to_restore
+	ld d, a
+
+.got_pp_to_restore
+	; d: PP to restore, bc: memory offset of move
+	ld a, [wd265]
+	and a
+	ret z
+
+	call ItemRecoveryAnim
+	push bc
+	push de
+	ld hl, wTempMonMoves
 	add hl, bc
+	ld a, [hl]
+	ld [wNamedObjectIndexBuffer], a
+	call GetMoveName
+	ld hl, wStringBuffer1
+	ld de, wStringBuffer2
+	ld bc, MOVE_NAME_LENGTH
+	call CopyBytes
+	call GetCurItemName
+	ld hl, BattleText_UserRecoveredPPUsing
+	call StdBattleTextBox
 	pop de
 	pop bc
 
-	ld a, [wd265]
-	cp [hl]
-	jr nz, .skip_checks
+	; restore PP of active battle struct
 	ld a, [hBattleTurn]
 	and a
-	ld a, [wPlayerSubStatus2]
-	jr z, .check_transform
-	ld a, [wEnemySubStatus2]
-.check_transform
+	ld hl, wBattleMonPP
+	jr z, .got_battle_pp
+	ld hl, wEnemyMonPP
+.got_battle_pp
+	add hl, bc
+	ld [hl], d
+
+	; restore PP of party struct unless transformed
+	ld a, BATTLE_VARS_SUBSTATUS2
+	call GetBattleVar
 	bit SUBSTATUS_TRANSFORMED, a
-	jr nz, .skip_checks
-	ld a, [de]
-	add b
-	ld [de], a
-.skip_checks
-	farcall GetUserItem
-	ld a, [hl]
-	ld [wd265], a
-	xor a
-	ld [hl], a
-	call GetPartymonItem
+	ret nz
+
 	ld a, [hBattleTurn]
 	and a
-	jr z, .consume_item
+	ld a, [wCurPartyMon]
+	ld hl, wPartyMon1PP
+	jr z, .set_party_pp
 	ld a, [wBattleMode]
 	dec a
-	jr z, .skip_consumption
-	call GetOTPartymonItem
-
-.consume_item
-	xor a
-	ld [hl], a
-
-.skip_consumption
-	call GetItemName
-	call ItemRecoveryAnim
-	ld hl, BattleText_UserRecoveredPPUsing
-	jp StdBattleTextBox
+	ld a, [wCurOTMon]
+	ld hl, wWildMonPP
+	jr z, .pp_vars_ok
+	ld hl, wOTPartyMon1PP
+.set_party_pp
+	push bc
+	push de
+	call GetPartyLocation
+	pop de
+	pop bc
+.pp_vars_ok
+	add hl, bc
+	ld [hl], d
+	ret
 
 HandleFutureSight:
 	call SetFastestTurn
@@ -1456,6 +1560,16 @@ HandleFutureSight:
 	cp $1
 	ret nz
 
+	call HasUserEndturnSwitched
+	jr nz, .do_future_sight
+
+	; Future Sight misses automatically
+	xor a
+	ld [hl], a
+	ld hl, BattleText_UsersFutureSightMissed
+	jp StdBattleTextBox
+
+.do_future_sight
 	ld hl, BattleText_TargetWasHitByFutureSight
 	call StdBattleTextBox
 
@@ -1675,6 +1789,8 @@ HandleWeather:
 
 HandleWeatherEffects:
 ; sandstorm/hail damage, abilities like rain dish, etc.
+	call HasUserEndturnSwitched
+	ret z
 	farcall GetUserItemAfterUnnerve
 	ld a, b
 	cp HELD_SAFETY_GOGGLES
@@ -2000,8 +2116,9 @@ HandleEnemyMonFaint: ; 3cd55
 .dont_flee
 	call ForcePlayerMonChoice
 
-	ld a, $1
-	ld [wBattlePlayerAction], a
+	ld a, 1
+	ld [wPlayerEndturnSwitched], a
+	ld [wPlayerAction], a
 	call HandleEnemySwitch
 	jp z, WildFled_EnemyFled_LinkBattleCanceled
 	jr DoubleSwitch
@@ -2281,6 +2398,8 @@ EnemyPartyMonEntrance: ; 3cf78
 	push af
 	xor a
 	ld [wEnemySwitchMonIndex], a
+	ld a, 1
+	ld [wEnemyEndturnSwitched], a
 	call NewEnemyMonStatus
 	call ResetEnemyStatLevels
 	call BreakAttraction
@@ -2605,6 +2724,8 @@ HandlePlayerMonFaint: ; 3d14e
 	ret
 
 .switch
+	ld a, 1
+	ld [wPlayerEndturnSwitched], a
 	call ForcePlayerMonChoice
 	ld a, c
 	and a
@@ -4164,6 +4285,8 @@ HandleHealingItems: ; 3dcf9
 	call SwitchTurn
 
 .do_it
+	; runs instantly whenever possible, so don't prevent usage
+	; even if the user endturn switched
 	call HandleHPHealingItem
 	call UseHeldStatusHealingItem
 	call HandleStatBoostBerry
