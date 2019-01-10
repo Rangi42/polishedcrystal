@@ -1311,6 +1311,19 @@ HandleLeftovers:
 .print
 	jp StdBattleTextBox
 
+StealLeppaBerry:
+	farcall GetOpponentItem
+	ld a, b
+	cp HELD_RESTORE_PP
+	ret nz
+	call PreparePPRestore
+	call GetNonfullPPMove
+	ret z
+	push bc
+	call ConsumeOpponentItem
+	pop bc
+	jp LeppaRestorePP
+
 HandleLeppaBerry:
 	call SetFastestTurn
 	call .do_it
@@ -1321,120 +1334,189 @@ HandleLeppaBerry:
 	ld a, b
 	cp HELD_RESTORE_PP
 	ret nz
-	ld hl, PartyMon1PP
-	ld a, [CurBattleMon]
-	call GetPartyLocation
-	ld d, h
-	ld e, l
-	ld hl, PartyMon1Moves
-	ld a, [CurBattleMon]
-	call GetPartyLocation
+	call PreparePPRestore
+	call GetZeroPPMove
+	ret z
+	push bc
+	call ConsumeUserItem
+	pop bc
+	jp LeppaRestorePP
+
+PreparePPRestore:
 	ld a, [hBattleTurn]
 	and a
-	jr z, .wild
-	ld de, wWildMonPP
-	ld hl, wWildMonMoves
-	ld a, [wBattleMode]
-	dec a
-	jr z, .wild
-	ld hl, OTPartyMon1PP
-	ld a, [CurOTMon]
-	call GetPartyLocation
-	ld d, h
-	ld e, l
-	ld hl, OTPartyMon1Moves
-	ld a, [CurOTMon]
-	call GetPartyLocation
+	jr nz, .enemy
+	ld hl, BattleMonMoves
+	ld de, TempMonMoves
+	ld bc, NUM_MOVES
+	call CopyBytes
+	ld hl, BattleMonPP
+	ld de, TempMonPP
+	ld bc, NUM_MOVES
+	jp CopyBytes
 
-.wild
-	ld c, $0
+.enemy
+	ld hl, EnemyMonMoves
+	ld de, TempMonMoves
+	ld bc, NUM_MOVES
+	call CopyBytes
+	ld hl, EnemyMonPP
+	ld de, TempMonPP
+	ld bc, NUM_MOVES
+	jp CopyBytes
+
+GetZeroPPMove:
+; Returns z if we didn't find a valid move
+	ld bc, 0
+	ld d, NUM_MOVES
+	ld hl, TempMonPP
 .loop
-	ld a, [hl]
-	and a
-	ret z
-	ld a, [de]
-	and $3f
-	jr z, .restore
-	inc hl
-	inc de
-	inc c
-	ld a, c
-	cp NUM_MOVES
+	ld a, [hli]
+	and $3f ; mask out PP ups
+	jr z, .got_zero_pp
+	inc bc
+	dec d
 	jr nz, .loop
 	ret
 
-.restore
-	; lousy hack
+.got_zero_pp
+	; Did we simply run past our valid moves?
+	ld hl, TempMonMoves
+	add hl, bc
 	ld a, [hl]
-	cp SKETCH
-	ld b, 1
-	jr z, .sketch
-	ld b, 5
-.sketch
-	ld a, [de]
-	add b
-	ld [de], a
-	push bc
-	push bc
-	ld a, [hl]
-	ld [wd265], a
-	ld de, BattleMonMoves - 1
-	ld hl, BattleMonPP
-	ld a, [hBattleTurn]
 	and a
-	jr z, .player_pp
-	ld de, EnemyMonMoves - 1
-	ld hl, EnemyMonPP
-.player_pp
-	inc de
+	ret
+
+GetNonfullPPMove:
+; Returns z if we didn't find a move without full PP
+	ld a, BOXMON
+	ld [MonType], a
+	ld a, [wMenuCursorY]
+	push af
+	ld bc, 0
+	ld d, NUM_MOVES
+.loop
+	ld hl, TempMonMoves
+	add hl, bc
+	ld a, [hl]
+	and a
+	jr z, .all_moves_full
+	ld hl, TempMonPP
+	add hl, bc
+	ld e, [hl]
+	push bc
+	push de
+	ld a, c
+	inc a
+	ld [wMenuCursorY], a
+	farcall GetMaxPPOfMove
+	pop de
 	pop bc
-	ld b, 0
+	ld a, [wd265]
+	cp e
+	jr nz, .got_nonfull_pp
+	inc bc
+	dec d
+	jr nz, .loop
+.all_moves_full
+	pop af
+	ld [wMenuCursorY], a
+	xor a
+	ret
+
+.got_nonfull_pp
+	pop af
+	ld [wMenuCursorY], a
+	or 1
+	ret
+
+LeppaRestorePP:
+	; Restore up to 10PP of move bc (0-3)
+	ld hl, TempMonPP
 	add hl, bc
-	push hl
-	ld h, d
-	ld l, e
+	ld a, [hl]
+	add 10
+	ld d, a
+	ld a, BOXMON
+	ld [MonType], a
+	ld a, [wMenuCursorY]
+	push af
+	ld a, c
+	inc a
+	ld [wMenuCursorY], a
+	push bc
+	push de
+	farcall GetMaxPPOfMove
+	pop de
+	pop bc
+	pop af
+	ld [wMenuCursorY], a
+	ld a, [wd265]
+	cp d
+	jr nc, .got_pp_to_restore
+	ld d, a
+
+.got_pp_to_restore
+	; d: PP to restore, bc: memory offset of move
+	ld a, [wd265]
+	and a
+	ret z
+
+	call ItemRecoveryAnim
+	push bc
+	push de
+	ld hl, TempMonMoves
 	add hl, bc
+	ld a, [hl]
+	ld [wNamedObjectIndexBuffer], a
+	call GetMoveName
+	ld hl, StringBuffer1
+	ld de, StringBuffer2
+	ld bc, MOVE_NAME_LENGTH
+	call CopyBytes
+	call GetCurItemName
+	ld hl, BattleText_UserRecoveredPPUsing
+	call StdBattleTextBox
 	pop de
 	pop bc
 
-	ld a, [wd265]
-	cp [hl]
-	jr nz, .skip_checks
+	; restore PP of active battle struct
 	ld a, [hBattleTurn]
 	and a
-	ld a, [PlayerSubStatus2]
-	jr z, .check_transform
-	ld a, [EnemySubStatus2]
-.check_transform
+	ld hl, BattleMonPP
+	jr z, .got_battle_pp
+	ld hl, EnemyMonPP
+.got_battle_pp
+	add hl, bc
+	ld [hl], d
+
+	; restore PP of party struct unless transformed
+	ld a, BATTLE_VARS_SUBSTATUS2
+	call GetBattleVar
 	bit SUBSTATUS_TRANSFORMED, a
-	jr nz, .skip_checks
-	ld a, [de]
-	add b
-	ld [de], a
-.skip_checks
-	farcall GetUserItem
-	ld a, [hl]
-	ld [wd265], a
-	xor a
-	ld [hl], a
-	call GetPartymonItem
+	ret nz
+
 	ld a, [hBattleTurn]
 	and a
-	jr z, .consume_item
+	ld a, [CurPartyMon]
+	ld hl, PartyMon1PP
+	jr z, .set_party_pp
 	ld a, [wBattleMode]
 	dec a
-	jr z, .skip_consumption
-	call GetOTPartymonItem
-
-.consume_item
-	xor a
-	ld [hl], a
-
-.skip_consumption
-	call GetItemName
-	call ItemRecoveryAnim
-	ld hl, BattleText_UserRecoveredPPUsing
-	jp StdBattleTextBox
+	ld a, [CurOTMon]
+	ld hl, wWildMonPP
+	jr z, .pp_vars_ok
+	ld hl, OTPartyMon1PP
+.set_party_pp
+	push bc
+	push de
+	call GetPartyLocation
+	pop de
+	pop bc
+.pp_vars_ok
+	add hl, bc
+	ld [hl], d
+	ret
 
 HandleFutureSight:
 	call SetFastestTurn

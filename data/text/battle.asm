@@ -154,10 +154,13 @@ BattleText_UserItemLetItMoveFirst::
 
 BattleText_UserRecoveredPPUsing:
 	text "<USER>"
-	line "recovered PP using"
+	line "restored PP of"
+	cont "@"
+	text_from_ram StringBuffer2
+	text " using"
 	cont "@"
 	text_from_ram StringBuffer1
-	text "."
+	text "!"
 	prompt
 
 BattleText_ItemRaised:

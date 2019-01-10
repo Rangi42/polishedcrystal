@@ -7509,7 +7509,7 @@ BattleCommand_BugBite:
 	farcall StealHPHealingItem
 	farcall StealStatBoostBerry
 	farcall StealDefendHitBerry
-	; TODO: leppa berry
+	farcall StealLeppaBerry
 
 	; check if the opponent still has a berry
 	call GetOpponentItem
