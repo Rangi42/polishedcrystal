@@ -700,7 +700,7 @@ AspearBerryDesc:
 
 LeppaBerryDesc:
 	db   "A self-restore"
-	next "for PP. (Hold)@"
+	next "item. (10<BOLDP><BOLDP>, Hold)@"
 
 OranBerryDesc:
 	db   "A self-restore"
