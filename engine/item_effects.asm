@@ -1457,10 +1457,17 @@ VitaminEffect: ; ee3d
 
 	add hl, bc
 	ld a, [hl]
-	cp 243
+	cp 252
 	jr nc, NoEffectMessage
 
 	add 10
+	jr c, .set_to_max
+	cp 253
+	jr c, .ev_value_ok
+.set_to_max
+	ld a, 252
+
+.ev_value_ok
 	ld [hl], a
 	call UpdateStatsAfterItem
 
