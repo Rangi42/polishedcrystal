@@ -1,5 +1,4 @@
-ConsumeGenericDelay:
-; delayed DelayFrames until we are about to ask for input
+ConsumeGenericDelay::
 	ld a, [wGenericDelay]
 	and a
 	ret z

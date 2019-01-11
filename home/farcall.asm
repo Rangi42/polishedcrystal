@@ -19,6 +19,15 @@ FarCall_hl::
 	push af
 	jr DoFarCall
 
+FarPointerCall::
+	ld a, [hROMBank]
+	push af
+	ld a, [hli]
+	ld [hBuffer], a
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	jr DoFarCall
 
 FarCallInBankB:
 	ld a, b

@@ -285,24 +285,6 @@ FarPrintText:: ; 31b0
 	ret
 ; 31be
 
-CallPointerAt:: ; 31be
-	ld a, [hROMBank]
-	push af
-	ld a, [hli]
-	rst Bankswitch
-
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-
-	call _hl_
-
-	pop hl
-	ld a, h
-	rst Bankswitch
-	ret
-; 31cd
-
 QueueScript:: ; 31cd
 ; Push pointer hl in the current bank to wQueuedScriptBank.
 	ld a, [hROMBank]
