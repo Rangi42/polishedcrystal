@@ -4993,7 +4993,7 @@ CanStatusTarget:
 	ld a, c
 	call CheckIfTargetIsSomeType
 	jr z, .cant_type
-	ld a, [wTypeMatchup]
+	ld a, [TypeModifier]
 	and a
 	jr z, .cant_type
 	call GetOpponentItemAfterUnnerve
