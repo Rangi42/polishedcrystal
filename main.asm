@@ -768,7 +768,7 @@ _ReturnToBattle_UseBall: ; 2715c
 	call SetPalettes
 	farcall LoadPlayerStatusIcon
 	farcall LoadEnemyStatusIcon
-	farjp InstantReloadPaletteHack
+	farjp FinishBattleAnim
 
 INCLUDE "data/moves/effects_pointers.asm"
 

@@ -144,11 +144,10 @@ LoadFrame:: ; fb4cc
 LoadBattleFontsHPBar: ; fb4f2
 	call _LoadFontsBattleExtra
 
-LoadStatusIcons: ; fb50d
+LoadStatusIcons:
 	call LoadPlayerStatusIcon
 	call LoadEnemyStatusIcon
-	jp InstantReloadPaletteHack
-; fb53e
+	farjp FinishBattleAnim
 
 LoadPlayerStatusIcon:
 	push de
@@ -194,31 +193,6 @@ LoadEnemyStatusIcon:
 	call Request2bpp
 	farcall LoadEnemyStatusIconPalette
 	pop de
-	ret
-
-InstantReloadPaletteHack:
-; Hack to make the palette load instantly
-	ret ; remove function?
-	ld a, [rSVBK]
-	push af
-	push de
-	ld a, $5 ; gfx
-	ld [rSVBK], a
-; copy & reorder bg pal buffer
-	ld hl, wBGPals palette PAL_BATTLE_BG_STATUS ; to
-	ld de, wUnknBGPals palette PAL_BATTLE_BG_STATUS ; from
-; order
-	ld a, [rBGP]
-	ld b, a
-; 1 pal
-	ld c, 1
-	call CopyPals
-; request pal update
-	ld a, 1
-	ld [hCGBPalUpdate], a
-	pop de
-	pop af
-	ld [rSVBK], a
 	ret
 
 LoadStatsScreenGFX: ; fb53e
