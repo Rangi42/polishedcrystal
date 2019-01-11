@@ -426,7 +426,6 @@ INCLUDE "engine/breeding.asm"
 SECTION "Code 6", ROMX
 
 INCLUDE "engine/clock_reset.asm"
-INCLUDE "engine/events/move_reminder.asm"
 
 
 SECTION "Code 7", ROMX
@@ -1367,10 +1366,13 @@ Special_MoveTutor: ; 4925b
 	xor a
 	ld [wItemAttributeParamBuffer], a
 	ld a, [wScriptVar]
-	ld [wd265], a
+	and a
 	ld [wPutativeTMHMMove], a
+	jr z, .relearner
+	ld [wNamedObjectIndexBuffer], a
 	call GetMoveName
 	call CopyName1
+.relearner
 	farcall ChooseMonToLearnTMHM
 	jr c, .cancel
 	jr .enter_loop
@@ -1415,10 +1417,14 @@ CheckCanLearnMoveTutorMove: ; 492b9
 	jr .didnt_learn
 
 .can_learn
+	ld a, [wPutativeTMHMMove]
+	and a
+	jr z, .reminder
 	farcall KnowsMove
 	jr c, .didnt_learn
 
 	predef LearnMove
+.perform_move_learn
 	ld a, b
 	and a
 	jr z, .didnt_learn
@@ -1426,6 +1432,30 @@ CheckCanLearnMoveTutorMove: ; 492b9
 	ld c, HAPPINESS_LEARNMOVE
 	farcall ChangeHappiness
 	jr .learned
+
+.reminder
+	farcall ChooseMoveToRelearn
+	jr nc, .can_remind
+	push de
+	ld de, SFX_WRONG
+	call PlaySFX
+	pop de
+	ld a, BANK(MoveReminderNoMovesText)
+	ld hl, MoveReminderNoMovesText
+	call FarPrintText
+	jr .didnt_learn
+
+.can_remind
+	jr z, .didnt_learn
+	ld a, [wMoveScreenSelectedMove]
+	ld [wPutativeTMHMMove], a
+	ld [wNamedObjectIndexBuffer], a
+	call GetMoveName
+	call CopyName1
+	predef LearnMove
+	xor a
+	ld [wPutativeTMHMMove], a
+	jr .perform_move_learn
 
 .didnt_learn
 	call ExitMenu

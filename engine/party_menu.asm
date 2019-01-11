@@ -78,6 +78,7 @@ WritePartyMenuTilemap: ; 0x5005f
 	dw PlacePartyMonTMHMCompatibility
 	dw PlacePartyMonEvoStoneCompatibility
 	dw PlacePartyMonGender
+	dw PlacePartyMonRemindable
 ; 5009b
 
 PlacePartyNicknames: ; 5009b
@@ -490,6 +491,62 @@ PlacePartyMonGender: ; 502b1
 ; 502ee
 
 
+PlacePartyMonRemindable: ; 501e0
+	ld a, [wPartyCount]
+	and a
+	ret z
+	ld c, a
+	ld b, 0
+	hlcoord 12, 2
+.loop
+	push bc
+	push hl
+	call PartyMenuCheckEgg
+	jr z, .next
+	push hl
+	ld hl, wPartySpecies
+	ld e, b
+	ld d, 0
+	add hl, de
+	ld a, [hl]
+	ld [wCurPartySpecies], a
+	farcall GetForgottenMoves
+	pop hl
+	call .PlaceAbleNotAble
+	call PlaceString
+
+.next
+	pop hl
+	ld de, SCREEN_WIDTH * 2
+	add hl, de
+	pop bc
+	inc b
+	dec c
+	jr nz, .loop
+	ret
+; 50215
+
+.PlaceAbleNotAble: ; 50215
+	ld a, c
+	and a
+	jr nz, .able
+	ld de, .string_not_able
+	ret
+
+.able
+	ld de, .string_able
+	ret
+; 50221
+
+.string_able ; 50221
+	db "Able@"
+; 50226
+
+.string_not_able ; 50226
+	db "Not able@"
+; 5022f
+
+
 PartyMenuCheckEgg: ; 50389
 	ld a, wPartySpecies % $100
 	add b
@@ -685,6 +742,7 @@ PrintPartyMenuText: ; 5049a
 ; 0x504d2
 
 PartyMenuStrings: ; 0x504d2
+; needs to match PartyMenuQualityPointers
 	dw ChooseAMonString
 	dw UseOnWhichPKMNString
 	dw WhichPKMNString
@@ -694,6 +752,7 @@ PartyMenuStrings: ; 0x504d2
 	dw ChooseAMonString ; Probably used to be ChooseAFemalePKMNString
 	dw ChooseAMonString ; Probably used to be ChooseAMalePKMNString
 	dw ToWhichPKMNString
+	dw TutorWhichPKMNString
 
 ChooseAMonString: ; 0x504e4
 	db "Choose a #mon.@"
@@ -703,6 +762,8 @@ WhichPKMNString: ; 0x50504
 	db "Which <PK><MN>?@"
 TeachWhichPKMNString: ; 0x5050e
 	db "Teach which <PK><MN>?@"
+TutorWhichPKMNString: ; 0x5050e
+	db "Tutor which <PK><MN>?@"
 MoveToWhereString: ; 0x5051e
 	db "Move to where?@"
 ToWhichPKMNString: ; 0x50549

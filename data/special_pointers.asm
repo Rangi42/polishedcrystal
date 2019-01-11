@@ -153,7 +153,6 @@ SpecialsPointers::
 	add_special RespawnOneOffs
 	add_special SpecialGiveShinyDitto
 	add_special GiveMystriEgg
-	add_special MoveReminder
 	add_special Special_ReiBlessing
 	add_special BillBoxSwitchCheck
 	add_special BillBoxSwitch
