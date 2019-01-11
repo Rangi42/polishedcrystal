@@ -191,6 +191,7 @@ INCLUDE "engine/items.asm"
 INCLUDE "engine/player_step.asm"
 INCLUDE "engine/load_map_part.asm"
 ; end linked section
+INCLUDE "engine/anim_hp_bar.asm"
 INCLUDE "engine/move_mon.asm"
 INCLUDE "engine/billspctop.asm"
 INCLUDE "engine/item_effects.asm"
@@ -3889,7 +3890,6 @@ INCLUDE "engine/misc_gfx.asm"
 INCLUDE "engine/warp_connection.asm"
 INCLUDE "engine/battle/used_move_text.asm"
 INCLUDE "gfx/items.asm"
-INCLUDE "engine/anim_hp_bar.asm"
 
 
 SECTION "Introduction", ROMX
