@@ -4,14 +4,12 @@ TMHMPocket: ; 2c76f (b:476f)
 	call CountTMsHMs ; This stores the count to wd265.
 	and a
 	jr z, .noicon
-	farcall LoadTMHMIcon
 .noicon
 	call TMHM_PocketLoop
 	ld a, 0 ; not xor a; preserve carry flag
 	ld [hInMenu], a
 	ret nc
 	call PlaceHollowCursor
-	call WaitBGMap
 	ld a, [wCurTMHM]
 	scf
 	ret
@@ -88,6 +86,7 @@ TMHM_ShowTMMoveDescription: ; 2c946 (b:4946)
 	ld [wCurSpecies], a
 	hlcoord 1, 14
 	call PrintMoveDesc
+	farcall LoadTMHMIcon
 	jp TMHM_JoypadLoop
 
 TMHM_ChooseTMorHM: ; 2c974 (b:4974)
