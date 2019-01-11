@@ -3055,9 +3055,13 @@ ListMovePP: ; 50c50
 	push af
 	ld [hl], b
 	push hl
+	ld a, [wMonType]
+	push af
 	ld a, BOXMON
 	ld [wMonType], a
 	farcall GetMaxPPOfMove
+	pop af
+	ld [wMonType], a
 	pop hl
 	pop af
 	ld [hl], a
