@@ -1307,77 +1307,61 @@ WaitBGMap_DrawPackGFX: ; 1089a (4:489a)
 	call WaitBGMap
 DrawPackGFX: ; 1089d
 	; place top row
-	ld hl, PackTopRowStrings
-	ld bc, 20
 	ld a, [wCurrPocket]
 	and $7
-	call AddNTimes
-	decoord 0, 0
-	ld b, 20
+	push af
+	ld c, a
+	add a, a
+	add c
+	cp 10
+	jr c, .got_pocket
+	inc a
+	cp 14
+	jr c, .got_pocket
+	inc a
+.got_pocket
+	ld b, a
+	inc b
+	ld a, 2
+	ld c, 20
+	hlcoord 0, 0
 .loop
-	ld a, [hli]
-	ld [de], a
-	inc de
 	dec b
+	jr nz, .normal_insert
+	ld [hl], $1
+	inc hl
+	jr .insert_ok
+.normal_insert
+	ld [hli], a
+	inc a
+.insert_ok
+	dec c
 	jr nz, .loop
 
 	; place pack gfx
-	ld a, [wCurrPocket]
-	and $7
-	ld e, a
-	ld d, $0
+	pop af
+	ld d, a
+	ld bc, 25 tiles
+	ld hl, PackGFX
+	ld e, BANK(PackGFX)
 	ld a, [wBattleType]
 	cp BATTLETYPE_TUTORIAL
 	jr z, .female
 	ld a, [wPlayerGender]
-	bit 0, a
-	jr nz, .female
-	ld hl, PackGFXPointers
-	add hl, de
-	add hl, de
-	ld a, [hli]
-	ld e, a
-	ld d, [hl]
-	ld hl, VTiles2 tile $27
-	lb bc, BANK(PackGFX), 25
-	jp Request2bpp
-
+	rrca
+	jr c, .male
 .female
-	ld hl, PackFGFXPointers
-	add hl, de
-	add hl, de
-	ld a, [hli]
-	ld e, a
-	ld d, [hl]
+	ld hl, PackFGFX
+	ld e, BANK(PackFGFX)
+.male
+	ld a, d
+	call AddNTimes
+	ld b, e
+	ld c, 25
+	ld d, h
+	ld e, l
 	ld hl, VTiles2 tile $27
-	lb bc, BANK(PackFGFX), 25
 	jp Request2bpp
-; 108cc
-
-PackTopRowStrings:
-	db $01, $02, $03, $04, $05, $06, $07, $08, $09, $0a, $0b, $0c, $0d, $0e, $0f, $10, $11, $12, $13, $14 ; Items
-	db $02, $03, $04, $01, $05, $06, $07, $08, $09, $0a, $0b, $0c, $0d, $0e, $0f, $10, $11, $12, $13, $14 ; Medicine
-	db $02, $03, $04, $05, $06, $07, $01, $08, $09, $0a, $0b, $0c, $0d, $0e, $0f, $10, $11, $12, $13, $14 ; Balls
-	db $02, $03, $04, $05, $06, $07, $08, $09, $0a, $01, $0b, $0c, $0d, $0e, $0f, $10, $11, $12, $13, $14 ; TM/HM
-	db $02, $03, $04, $05, $06, $07, $08, $09, $0a, $0b, $0c, $0d, $0e, $01, $0f, $10, $11, $12, $13, $14 ; Berries
-	db $02, $03, $04, $05, $06, $07, $08, $09, $0a, $0b, $0c, $0d, $0e, $0f, $10, $11, $12, $01, $13, $14 ; Key Items
-
-PackGFXPointers: ; 108cc
-	dw PackGFX + (25 tiles) * 0 ; Items
-	dw PackGFX + (25 tiles) * 1 ; Medicine
-	dw PackGFX + (25 tiles) * 2 ; Balls
-	dw PackGFX + (25 tiles) * 3 ; TM/HM
-	dw PackGFX + (25 tiles) * 4 ; Berries
-	dw PackGFX + (25 tiles) * 5 ; Key Items
-; 108d4
-
-PackFGFXPointers: ; 48e93
-	dw PackFGFX + (25 tiles) * 0 ; Items
-	dw PackFGFX + (25 tiles) * 1 ; Medicine
-	dw PackFGFX + (25 tiles) * 2 ; Balls
-	dw PackFGFX + (25 tiles) * 3 ; TM/HM
-	dw PackFGFX + (25 tiles) * 4 ; Berries
-	dw PackFGFX + (25 tiles) * 5 ; Key Items
 
 Pack_InterpretJoypad: ; 108d4 (4:48d4)
 	ld hl, wMenuJoypad
