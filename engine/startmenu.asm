@@ -1254,7 +1254,7 @@ MonMenu_Softboiled_MilkDrink: ; 12ee6
 	const MOVESCREEN_NEWMOVE
 	const MOVESCREEN_REMINDER
 
-ChooseMoveToDelete: ; 12f5b
+ChooseMoveToDelete:
 	ld hl, Options1
 	ld a, [hl]
 	push af
@@ -1276,6 +1276,7 @@ ChooseMoveToForget:
 	ld a, [hl]
 	push af
 	set NO_TEXT_SCROLL, [hl]
+	call LoadTileMapToTempTileMap
 	call LoadFontsBattleExtra
 	ld a, MOVESCREEN_NEWMOVE
 	ld [wMoveScreenMode], a
@@ -1285,6 +1286,67 @@ ChooseMoveToForget:
 	ld a, b
 	ld [Options1], a
 	call ClearBGPalettes
+	ld a, [wBattleMode]
+	and a
+	jr z, .tm_tutor
+
+	; Level up in battle
+	call ClearTileMap
+	call ClearSprites
+	call ClearPalettes
+	call DelayFrame
+	call UpdateSprites
+	farcall FinishBattleAnim
+	farcall _LoadBattleFontsHPBar
+	farcall GetMonBackpic
+	call LoadTempTileMapToTileMap
+	jr .done
+
+.tm_tutor
+	farcall LoadPartyMenuGFX
+	farcall InitPartyMenuWithCancel
+	farcall InitPartyMenuGFX
+	farcall WritePartyMenuTilemap
+	farcall PrintPartyMenuText
+	call SpeechTextBox
+.done
+	call WaitBGMap
+	call SetPalettes
+	call DelayFrame
+	pop af
+	ret
+
+ChooseMoveToRelearn:
+	ld hl, Options1
+	ld a, [hl]
+	push af
+	set NO_TEXT_SCROLL, [hl]
+	call LoadFontsBattleExtra
+	ld a, MOVESCREEN_REMINDER
+	ld [wMoveScreenMode], a
+	call MoveScreenLoop
+	pop bc
+	push af
+	ld a, b
+	ld [Options1], a
+	jr c, .no_moves
+	call ClearBGPalettes
+	ld a, [CurPartyMon]
+	push af
+	farcall LoadPartyMenuGFX
+	farcall InitPartyMenuWithCancel
+	farcall InitPartyMenuGFX
+	farcall WritePartyMenuTilemap
+	farcall PrintPartyMenuText
+	pop af
+	ld [CurPartyMon], a
+	pop af
+	push af
+	call nz, SpeechTextBox
+	call WaitBGMap
+	call SetPalettes
+	call DelayFrame
+.no_moves
 	pop af
 	ret
 

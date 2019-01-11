@@ -360,9 +360,13 @@ ChooseMonToLearnTMHM_NoRefresh: ; 2c80a
 	farcall LoadPartyMenuGFX
 	farcall InitPartyMenuWithCancel
 	farcall InitPartyMenuGFX
-	ld a, $3 ; TeachWhichPKMNString
-	ld [PartyMenuActionText], a
+	ld a, [wPutativeTMHMMove]
+	and a
+	ld a, 3 ; TeachWhichPKMNString
+	jr nz, .loopback
+	ld a, 9 ; TutorWhichPKMNString
 .loopback
+	ld [PartyMenuActionText], a
 	farcall WritePartyMenuTilemap
 	farcall PrintPartyMenuText
 	call WaitBGMap
