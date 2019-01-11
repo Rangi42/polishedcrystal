@@ -8,7 +8,6 @@ Pack: ; 10000
 	bit 7, a
 	jr nz, .done
 	call .RunJumptable
-	call DelayFrame
 	jr .loop
 
 .done
@@ -1307,7 +1306,7 @@ Pack_PrintTextNoScroll: ; 10889 (4:4889)
 	ret
 
 WaitBGMap_DrawPackGFX: ; 1089a (4:489a)
-	call WaitBGMap
+	call ApplyTilemap
 DrawPackGFX: ; 1089d
 	; place top row
 	ld hl, PackTopRowStrings
@@ -1532,11 +1531,10 @@ ClearPocketList: ; 10a36 (4:4a36)
 	jp ClearBox
 
 Pack_InitColors: ; 10a40
-	call WaitBGMap
+	call ApplyTilemap
 	ld b, CGB_PACKPALS
 	call GetCGBLayout
-	call SetPalettes
-	jp DelayFrame
+	jp SetPalettes
 ; 10a4f
 
 ItemsPocketMenuDataHeader: ; 0x10a4f

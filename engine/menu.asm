@@ -20,8 +20,8 @@ Get2DMenuSelection: ; 2408f
 
 .skip
 	ld a, [wMenuData2Flags]
-	bit 0, a
-	jr nz, .skip2
+	rra
+	jr c, .skip2
 	call GetMenuJoypad
 	bit B_BUTTON_F, a
 	jr nz, .quit
@@ -206,38 +206,36 @@ _DoMenuJoypadLoop::
 	pop af
 	ld [hBGMapMode], a
 	ret
-; 241ba
 
-MenuJoypadLoop: ; 24216
+MenuJoypadLoop:
 .loop
 	call Move2DMenuCursor
 	call .BGMap_OAM
 	call Do2DMenuRTCJoypad
-	ret nc
+	jr nc, .done
 	call _2DMenuInterpretJoypad
-	ret c
+	jr c, .done
 	ld a, [w2DMenuFlags1]
 	bit 7, a
-	ret nz
+	jr nz, .done
 	call GetMenuJoypad
 	ld b, a
 	ld a, [wMenuJoypadFilter]
 	and b
 	jr z, .loop
-	ret
-; 24238
+.done
+	jp Move2DMenuCursor
 
 .BGMap_OAM: ; 24238
 	ld a, [hOAMUpdate]
 	push af
 	ld a, $1
 	ld [hOAMUpdate], a
-	call WaitBGMap
 	ld [hBGMapMode], a
 	ld a, [w2DMenuFlags1]
 	bit 6, a
 	call z, DelayFrame
-	call DelayFrame
+	call Delay2
 	pop af
 	ld [hOAMUpdate], a
 	xor a
@@ -264,7 +262,11 @@ Menu_WasButtonPressed: ; 24259
 	ld a, [w2DMenuFlags1]
 	bit 6, a
 	jr z, .skip_to_joypad
+	ld a, $1
+	ld [hBGMapMode], a
 	farcall PlaySpriteAnimationsAndDelayFrame
+	xor a
+	ld [hBGMapMode], a
 
 .skip_to_joypad
 	call JoyTextDelay
@@ -397,11 +399,6 @@ _2DMenuInterpretJoypad: ; 24270
 	ret
 ; 24318
 
-.a_start_select ; 24318
-	xor a
-	ret
-; 2431a
-
 .b_button
 	ld a, [wIsBattleMenu]
 	and a ; should B move to Run?
@@ -410,6 +407,7 @@ _2DMenuInterpretJoypad: ; 24270
 	ld a, $2
 	ld [wMenuCursorX], a
 	ld [wMenuCursorY], a
+.a_start_select
 .no_b_run
 	xor a
 	ret
@@ -433,14 +431,15 @@ Place2DMenuCursor: ; 24329
 	ld a, [w2DMenuCursorOffsets]
 	swap a
 	and $f
+	jr z, .got_row
 	ld c, a
 	ld a, [wMenuCursorY]
 	ld b, a
 	xor a
-	jr .handleRowLoop
+	jr .handleLoop
 .row_loop
 	add c
-.handleRowLoop
+.handleLoop
 	dec b
 	jr nz, .row_loop
 
@@ -449,14 +448,15 @@ Place2DMenuCursor: ; 24329
 	call AddNTimes
 	ld a, [w2DMenuCursorOffsets]
 	and $f
+	jr z, .got_col
 	ld c, a
 	ld a, [wMenuCursorX]
 	ld b, a
 	xor a
-	jr .handleColLoop
+	dec b
+	jr z, .got_col
 .col_loop
 	add c
-.handleColLoop
 	dec b
 	jr nz, .col_loop
 
@@ -503,23 +503,20 @@ _PushWindow:: ; 24374
 ; Otherwise, reset bit 0 of 7:[wWindowStackPointer].
 	ld a, [wMenuFlags]
 	bit 6, a
-	jr nz, .bit_6
-	bit 7, a
-	jr z, .not_bit_7
+	jr z, .not_bit_6
 
-.bit_6
 	ld hl, wWindowStackPointer
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
 	set 0, [hl]
-	call MenuBoxCoord2Tile
+	call PushWindow_MenuBoxCoordToTile
 	call .copy
-	call MenuBoxCoord2Attr
+	call PushWindow_MenuBoxCoordToAttr
 	call .copy
 	jr .done
 
-.not_bit_7
+.not_bit_6
 	pop hl ; last-pushed register was de
 	push hl
 	ld a, [hld]
@@ -548,9 +545,7 @@ _PushWindow:: ; 24374
 ; 243cd
 
 .copy ; 243cd
-	call GetMenuBoxDims
-	inc b
-	inc c
+	call GetTileBackupMenuBoxDims
 
 .row
 	push bc

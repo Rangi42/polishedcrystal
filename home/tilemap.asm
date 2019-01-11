@@ -54,7 +54,7 @@ RestoreTileBackup:: ; 0x1c23
 	jr nz, .row
 	ret
 
-GetTileBackupMenuBoxDims:
+GetTileBackupMenuBoxDims::
 	call GetMenuBoxDims
 	ld a, [wMenuFlags]
 	bit 1, a
@@ -208,11 +208,11 @@ ClearWholeMenuBox::
 	inc b
 	jp ClearBox
 
-PushWindow_MenuBoxCoordToTile:
+PushWindow_MenuBoxCoordToTile::
 	coord bc, 0, 0
 	jr PushWindow_MenuBoxCoordToAbsolute
 
-PushWindow_MenuBoxCoordToAttr:
+PushWindow_MenuBoxCoordToAttr::
 	coord bc, 0, 0, wAttrMap
 
 ; fallthrough

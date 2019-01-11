@@ -187,6 +187,10 @@ INCLUDE "engine/printnum.asm"
 INCLUDE "engine/health.asm"
 INCLUDE "engine/events/overworld.asm"
 INCLUDE "engine/items.asm"
+; linked, do not separate
+INCLUDE "engine/player_step.asm"
+INCLUDE "engine/load_map_part.asm"
+; end linked section
 INCLUDE "engine/move_mon.asm"
 INCLUDE "engine/billspctop.asm"
 INCLUDE "engine/item_effects.asm"
@@ -3915,13 +3919,6 @@ INCLUDE "engine/map_palettes.asm"
 SECTION "Typefaces", ROMX
 
 INCLUDE "gfx/font.asm"
-
-SECTION "Load Map Part", ROMX
-
-; linked, do not separate
-INCLUDE "engine/player_step.asm"
-INCLUDE "engine/load_map_part.asm"
-; end linked section
 
 SECTION "Battle Core", ROMX
 
