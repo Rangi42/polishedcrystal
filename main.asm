@@ -187,8 +187,6 @@ INCLUDE "engine/printnum.asm"
 INCLUDE "engine/health.asm"
 INCLUDE "engine/events/overworld.asm"
 INCLUDE "engine/items.asm"
-INCLUDE "engine/player_step.asm"
-INCLUDE "engine/anim_hp_bar.asm"
 INCLUDE "engine/move_mon.asm"
 INCLUDE "engine/billspctop.asm"
 INCLUDE "engine/item_effects.asm"
@@ -1546,43 +1544,6 @@ CheckSave:: ; 4cffe
 	ret
 
 INCLUDE "data/maps/scenes.asm"
-
-_LoadMapPart:: ; 4d15b
-	ld hl, wMisc
-	ld a, [wMetatileStandingY]
-	and a
-	jr z, .top_row
-	ld bc, WMISC_WIDTH * 2
-	add hl, bc
-
-.top_row
-	ld a, [wMetatileStandingX]
-	and a
-	jr z, .left_column
-	inc hl
-	inc hl
-
-.left_column
-	decoord 0, 0
-	ld b, SCREEN_HEIGHT
-.loop
-	ld c, SCREEN_WIDTH
-.loop2
-	ld a, [hli]
-	ld [de], a
-	inc de
-	dec c
-	jr nz, .loop2
-	ld a, l
-	add 4
-	ld l, a
-	jr nc, .carry
-	inc h
-
-.carry
-	dec b
-	jr nz, .loop
-	ret
 
 Shrink1Pic: ; 4d249
 INCBIN "gfx/new_game/shrink1.2bpp.lz"
@@ -3920,6 +3881,7 @@ INCLUDE "engine/misc_gfx.asm"
 INCLUDE "engine/warp_connection.asm"
 INCLUDE "engine/battle/used_move_text.asm"
 INCLUDE "gfx/items.asm"
+INCLUDE "engine/anim_hp_bar.asm"
 
 
 SECTION "Introduction", ROMX
@@ -3950,6 +3912,12 @@ SECTION "Typefaces", ROMX
 
 INCLUDE "gfx/font.asm"
 
+SECTION "Load Map Part", ROMX
+
+; linked, do not separate
+INCLUDE "engine/player_step.asm"
+INCLUDE "engine/load_map_part.asm"
+; end linked section
 
 SECTION "Battle Core", ROMX
 

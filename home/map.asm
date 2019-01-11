@@ -50,33 +50,27 @@ GetMapTrigger:: ; 2147
 	rst Bankswitch
 
 	ld hl, MapTriggers
+	ld de, 4
+	jr .handleLoop
 .loop
+	pop hl
+	add hl, de
+.handleLoop
 	push hl
 	ld a, [hli] ; map group, or terminator
 	cp -1
 	jr z, .end ; the current map is not in the trigger table
 	cp b
-	jr nz, .next ; map group did not match
+	jr nz, .loop ; map group did not match
 	ld a, [hli] ; map number
 	cp c
-	jr nz, .next ; map number did not match
-	jr .found ; we found our map
-
-.next
-	pop hl
-	ld de, 4 ; size of an entry in the trigger table
-	add hl, de
-	jr .loop
-
+	jr nz, .loop ; map number did not match
+	ld a, [hli]
+	ld d, [hl]
+	ld e, a
+	jr .done
 .end
 	scf
-	jr .done
-
-.found
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-
 .done
 	pop hl
 	pop bc
@@ -87,10 +81,9 @@ GetMapTrigger:: ; 2147
 	ret
 ; 2173
 
-OverworldTextModeSwitch:: ; 2173
+OverworldTextModeSwitch::
 	call LoadMapPart
 	jp FarCallSwapTextboxPalettes
-; 217a
 
 LoadMapPart:: ; 217a
 	ld a, [hROMBank]
@@ -100,6 +93,10 @@ LoadMapPart:: ; 217a
 	rst Bankswitch
 
 	call LoadMetatiles
+	ld a, $60
+	hlcoord 0, 0
+	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
+	call ByteFill
 
 	ld a, BANK(_LoadMapPart)
 	rst Bankswitch
@@ -117,12 +114,28 @@ LoadMetatiles:: ; 2198
 	ld a, [wOverworldMapAnchor + 1]
 	ld d, a
 	ld hl, wMisc
-	ld b, WMISC_HEIGHT / 4 ; 5
+	ld a, WMISC_HEIGHT / 4 ; 5
+	ld [hMetatileCountHeight], a
+
+; copy to hram registers for speed
+
+	ld a, [wMapBorderBlock]
+	ld [hMapBorderBlock], a
+	ld a, [wMapWidth]
+	add 6
+	ld [hMapWidthPlus6], a
+	ld a, [wTilesetBlocksAddress]
+	ld [hTilesetBlocksAddress], a
+	ld a, [wTilesetBlocksAddress + 1]
+	ld [hTilesetBlocksAddress + 1], a
+
+	ld bc, WMISC_WIDTH - 4
 
 .row
 	push de
 	push hl
-	ld c, WMISC_WIDTH / 4 ; 6
+	ld a, WMISC_WIDTH / 4 ; 6
+	ld [hMetatileCountWidth], a
 
 .col
 	push de
@@ -132,79 +145,133 @@ LoadMetatiles:: ; 2198
 	ld a, [de]
 	and a
 	jr nz, .ok
-	ld a, [wMapBorderBlock]
+	ld a, [hMapBorderBlock]
 
 .ok
-	; Load the current wMisc address into de.
-	ld e, l
-	ld d, h
-	; Set hl to the address of the current metatile data ([wTilesetBlocksAddress] + (a) tiles).
+	; Save wMisc to the stack
+	push hl
+	; Set hl to the address of the current metatile data ([TilesetBlocksAddress] + (a) tiles).
+
 	ld l, a
-	ld h, 0
-rept 4
+	ld h, b ; b = 0
+
 	add hl, hl
-endr
-	ld a, [wTilesetBlocksAddress]
+	add hl, hl
+	add hl, hl
+	add hl, hl
+
+	ld a, [hTilesetBlocksAddress]
 	add l
-	ld l, a
-	ld a, [wTilesetBlocksAddress + 1]
+	ld e, a
+	ld a, [hTilesetBlocksAddress + 1]
 	adc h
-	ld h, a
+	ld d, a
+
+	pop hl
 
 	; copy the 4x4 metatile
-rept 3
-rept 4
-	ld a, [hli]
-	ld [de], a
+
+; row 1
+	ld a, [de]
+	ld [hli], a
 	inc de
-endr
-	ld a, e
-	add WMISC_WIDTH - 4
-	ld e, a
-	jr nc, .next\@
-	inc d
-.next\@
-endr
-rept 4
-	ld a, [hli]
-	ld [de], a
+	ld a, [de]
+	ld [hli], a
 	inc de
-endr
+	ld a, [de]
+	ld [hli], a
+	inc de
+	ld a, [de]
+	ld [hli], a
+	inc de
+	add hl, bc
+; row 2
+	ld a, [de]
+	ld [hli], a
+	inc de
+	ld a, [de]
+	ld [hli], a
+	inc de
+	ld a, [de]
+	ld [hli], a
+	inc de
+	ld a, [de]
+	ld [hli], a
+	inc de
+	add hl, bc
+; row 3
+	ld a, [de]
+	ld [hli], a
+	inc de
+	ld a, [de]
+	ld [hli], a
+	inc de
+	ld a, [de]
+	ld [hli], a
+	inc de
+	ld a, [de]
+	ld [hli], a
+	inc de
+	add hl, bc
+; row 4
+	ld a, [de]
+	ld [hli], a
+	inc de
+	ld a, [de]
+	ld [hli], a
+	inc de
+	ld a, [de]
+	ld [hli], a
+	inc de
+	ld a, [de]
+	ld [hli], a
+
 	; Next metatile
 	pop hl
-	ld de, 4
-	add hl, de
 	pop de
+	ld a, 4
+	add l
+	ld l, a
+	jr nc, .noCarry
+	inc h
+.noCarry
 	inc de
-	dec c
+	ld a, [hMetatileCountWidth]
+	dec a
+	ld [hMetatileCountWidth], a
 	jp nz, .col
 	; Next metarow
 	pop hl
-	ld de, WMISC_WIDTH * 4
-	add hl, de
 	pop de
-	ld a, [wMapWidth]
-	add 6
+
+	ld a, WMISC_WIDTH * 4
+	add l
+	ld l, a
+	jr nc, .noCarry2
+	inc h
+.noCarry2
+	ld a, [hMapWidthPlus6]
 	add e
 	ld e, a
-	jr nc, .ok2
+	jr nc, .noCarry3
 	inc d
-.ok2
-	dec b
+.noCarry3
+	ld a, [hMetatileCountHeight]
+	dec a
+	ld [hMetatileCountHeight], a
 	jp nz, .row
 	ret
 ; 222a
 
-ReturnToMapFromSubmenu:: ; 222a
+ReturnToMapFromSubmenu::
 	ld a, MAPSETUP_SUBMENU
 	ld [hMapEntryMethod], a
 	farcall RunMapSetupScript
 	xor a
 	ld [hMapEntryMethod], a
 	ret
-; 2238
 
-CheckWarpTile:: ; 2238
+CheckWarpTile::
 	call GetDestinationWarpNumber
 	ret nc
 
@@ -216,13 +283,11 @@ CheckWarpTile:: ; 2238
 	call CopyWarpData
 	scf
 	ret
-; 224a
 
-WarpCheck:: ; 224a
+WarpCheck::
 	call GetDestinationWarpNumber
 	ret nc
 	jp CopyWarpData
-; 2252
 
 GetDestinationWarpNumber:: ; 2252
 	farcall CheckWarpCollision
@@ -282,8 +347,8 @@ GetDestinationWarpNumber:: ; 2252
 
 .found_warp
 	pop hl
-	call .IncreaseHLTwice
-	ret nc ; never encountered
+	inc hl
+	inc hl
 
 	ld a, [wCurrMapWarpCount]
 	inc a
@@ -291,13 +356,6 @@ GetDestinationWarpNumber:: ; 2252
 	ld c, a
 	scf
 	ret
-
-.IncreaseHLTwice:
-	inc hl
-	inc hl
-	scf
-	ret
-; 22a7
 
 CopyWarpData:: ; 22a7
 	ld a, [hROMBank]

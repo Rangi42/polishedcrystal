@@ -1,22 +1,20 @@
 _HandlePlayerStep:: ; d497 (3:5497)
 	ld a, [wPlayerStepFlags]
-	and a
-	ret z
-	bit 7, a ; starting step
-	jr nz, .update_overworld_map
-	bit 6, a ; finishing step
-	jr nz, .update_player_coords
-	bit 5, a ; ongoing step
-	jr nz, .finish
+	add a, a
+	jr c, .updateOverworldMap ; starting step
+	add a, a
+	jr c, .updatePlayerCoords ; finishing step
+	add a, a
+	jr c, .finish ; ongoing step
 	ret
 
-.update_overworld_map
+.updateOverworldMap
 	ld a, 4
 	ld [wHandlePlayerStep], a
 	call UpdateOverworldMap
 	jr .finish
 
-.update_player_coords
+.updatePlayerCoords
 	call UpdatePlayerCoords
 	; fallthrough
 

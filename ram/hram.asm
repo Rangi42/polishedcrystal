@@ -40,6 +40,10 @@ hObjectStructIndexBuffer EQU $ffb0
 hConnectionStripLength EQU $ffaf
 hConnectedMapWidth EQU $ffb0
 
+hMapBorderBlock    EQU $ffad
+hMapWidthPlus6     EQU $ffae
+hTilesetBlocksAddress  EQU $ffaf
+
 hPredefTemp        EQU $ffb1
 
 ; can only use the bytes reserved for hPredefTemp in contained functions, unless you know what you're doing
@@ -66,6 +70,9 @@ hMultiplier        EQU $ffb7 ; 1 byte long
 hProduct           EQU $ffb3 ; result (4 bytes long)
 
 hMathBuffer        EQU $ffb8
+
+hMetatileCountWidth    EQU $ffb3
+hMetatileCountHeight   EQU $ffb4
 
 hPrintNum1         EQU $ffb3
 hPrintNum2         EQU $ffb4
