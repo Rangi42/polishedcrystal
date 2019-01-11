@@ -193,7 +193,6 @@ VBlank1::
 	call Serve2bppRequest
 	call LYOverrideStackCopy
 
-	call PushOAM
 	jr VBlank1EntryPoint
 
 VBlank3::
