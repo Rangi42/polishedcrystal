@@ -3,7 +3,7 @@ Pokepic:: ; 244e3
 	call CopyMenuDataHeader
 	call MenuBox
 	call UpdateSprites
-	call CopyTilemapAtOnce
+	call SafeCopyTilemapAtOnce
 	ld a, [wIsCurMonInParty]
 	and a
 	jr nz, .partymon
@@ -45,7 +45,7 @@ Trainerpic::
 	call CopyMenuDataHeader
 	call MenuBox
 	call UpdateSprites
-	call CopyTilemapAtOnce
+	call SafeCopyTilemapAtOnce
 	farcall LoadTrainerPalette
 	call UpdateTimePals
 	xor a

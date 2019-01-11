@@ -128,8 +128,6 @@ Pack: ; 10000
 	ld a, TM_HM - 1
 	ld [wCurrPocket], a
 	call ClearPocketList
-	xor a
-	ld [hBGMapMode], a
 	call WaitBGMap_DrawPackGFX
 	jp Pack_JumptableNext
 
@@ -1306,7 +1304,7 @@ Pack_PrintTextNoScroll: ; 10889 (4:4889)
 	ret
 
 WaitBGMap_DrawPackGFX: ; 1089a (4:489a)
-	call ApplyTilemap
+	call WaitBGMap
 DrawPackGFX: ; 1089d
 	; place top row
 	ld hl, PackTopRowStrings
@@ -1531,7 +1529,7 @@ ClearPocketList: ; 10a36 (4:4a36)
 	jp ClearBox
 
 Pack_InitColors: ; 10a40
-	call ApplyTilemap
+	call WaitBGMap
 	ld b, CGB_PACKPALS
 	call GetCGBLayout
 	jp SetPalettes

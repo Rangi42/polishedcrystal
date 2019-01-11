@@ -198,6 +198,7 @@ LoadEnemyStatusIcon:
 
 InstantReloadPaletteHack:
 ; Hack to make the palette load instantly
+	ret ; remove function?
 	ld a, [rSVBK]
 	push af
 	push de

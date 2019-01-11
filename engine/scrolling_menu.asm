@@ -13,8 +13,6 @@ _InitScrollingMenuNoBGMapUpdate::
 	ld [hBGMapMode], a
 	inc a
 	ld [hInMenu], a
-	inc a
-	ld [wGenericDelay], a
 	call InitScrollingMenuCursor
 	call ScrollingMenu_InitFlags
 	call ScrollingMenu_ValidateSwitchItem
