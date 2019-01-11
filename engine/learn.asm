@@ -149,71 +149,22 @@ ForgetMove: ; 65d3
 	ld de, wListMoves_MoveIndicesBuffer
 	ld bc, NUM_MOVES
 	call CopyBytes
-	pop hl
-.loop
-	push hl
 	ld hl, Text_ForgetWhich
 	call PrintText
-	hlcoord 5, 2
-	lb bc, NUM_MOVES * 2, MOVE_NAME_LENGTH
-	call TextBox
-	hlcoord 5 + 2, 2 + 2
-	ld a, SCREEN_WIDTH * 2
-	ld [Buffer1], a
-	predef ListMoves
-	; wMenuData3
-	ld a, $4
-	ld [w2DMenuCursorInitY], a
-	ld a, $6
-	ld [w2DMenuCursorInitX], a
-	ld a, [wNumMoves]
-	inc a
-	ld [w2DMenuNumRows], a
-	ld a, $1
-	ld [w2DMenuNumCols], a
-	ld [wMenuCursorY], a
-	ld [wMenuCursorX], a
-	ld a, $3
-	ld [wMenuJoypadFilter], a
-	ld a, $20
-	ld [w2DMenuFlags1], a
-	xor a
-	ld [w2DMenuFlags2], a
-	ld a, $20
-	ld [w2DMenuCursorOffsets], a
-	call StaticMenuJoypad
-	push af
-	call Call_LoadTempTileMapToTileMap
-	pop af
-	pop hl
-	bit 1, a
-	jr nz, .cancel
-	push hl
-	ld a, [wMenuCursorY]
+	farcall ChooseMoveToForget
+	jr z, .cancel
+	cp 5 ; user chose the new move itself, meaning cancel
+	jr z, .cancel
 	dec a
 	ld c, a
 	ld b, 0
-	add hl, bc
-	ld a, [hl]
-	push af
-	push bc
-	call IsHMMove
-	pop bc
-	pop de
-	ld a, d
-	jr c, .hmmove
+	ld a, [wMoveScreenSelectedMove]
 	pop hl
-	add hl, bc
 	and a
 	ret
 
-.hmmove
-	ld hl, Text_CantForgetHM
-	call PrintText
-	pop hl
-	jr .loop
-
 .cancel
+	pop hl
 	scf
 	ret
 ; 666b

@@ -1271,6 +1271,23 @@ ChooseMoveToDelete: ; 12f5b
 	pop af
 	ret
 
+ChooseMoveToForget:
+	ld hl, Options1
+	ld a, [hl]
+	push af
+	set NO_TEXT_SCROLL, [hl]
+	call LoadFontsBattleExtra
+	ld a, MOVESCREEN_NEWMOVE
+	ld [wMoveScreenMode], a
+	call MoveScreenLoop
+	pop bc
+	push af
+	ld a, b
+	ld [Options1], a
+	call ClearBGPalettes
+	pop af
+	ret
+
 ManagePokemonMoves: ; 12fba
 	ld a, [CurPartySpecies]
 	cp EGG
