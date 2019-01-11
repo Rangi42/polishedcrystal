@@ -1,3 +1,8 @@
+AnimateHPBar: ; c6e0
+	call WaitBGMap
+	call _AnimateHPBar
+	jp WaitBGMap
+
 _AnimateHPBar:
 ; Code in here treat the HP bar for update frequency as
 ; if it had 96 pixels. This makes the HP bar animate
