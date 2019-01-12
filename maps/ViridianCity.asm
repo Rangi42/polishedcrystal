@@ -10,8 +10,8 @@ ViridianCity_MapScriptHeader:
 	warp_event 23, 15, TRAINER_HOUSE_1F, 1
 	warp_event 29, 19, VIRIDIAN_MART, 2
 	warp_event 23, 25, VIRIDIAN_POKECENTER_1F, 1
-	warp_event 28, 33, ROUTE_1_VIRIDIAN_GATE, 1
-	warp_event 29, 33, ROUTE_1_VIRIDIAN_GATE, 2
+	warp_event 20, 33, ROUTE_1_VIRIDIAN_GATE, 1
+	warp_event 21, 33, ROUTE_1_VIRIDIAN_GATE, 2
 	warp_event 21,  9, VIRIDIAN_SCHOOL_HOUSE, 1
 
 	db 0 ; coord events
@@ -20,7 +20,7 @@ ViridianCity_MapScriptHeader:
 	bg_event 17, 17, SIGNPOST_JUMPTEXT, ViridianCitySignText
 	bg_event 27,  7, SIGNPOST_JUMPTEXT, ViridianGymSignText
 	bg_event 19,  1, SIGNPOST_JUMPTEXT, ViridianCityTrainerTips1Text
-	bg_event 29, 29, SIGNPOST_JUMPTEXT, ViridianCityTrainerTips2Text
+	bg_event 21, 29, SIGNPOST_JUMPTEXT, ViridianCityTrainerTips2Text
 	bg_event 21, 15, SIGNPOST_JUMPTEXT, TrainerHouseSignText
 
 	db 8 ; object events
