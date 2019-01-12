@@ -140,7 +140,6 @@ VBlankUpdateSound::
 	jp _UpdateSound
 
 VBlank2::
-	call AnimateTileset
 	jr VBlankUpdateSound
 
 VBlank6::

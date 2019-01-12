@@ -21,7 +21,7 @@ connection: MACRO
 ;\6: strip length
 if "\1" == "north"
 	map_id \3
-	dw \2_BlockData + \3_WIDTH * (\3_HEIGHT - 3) + \5
+	dw wDecompressScratch + \3_WIDTH * (\3_HEIGHT - 3) + \5
 	dw wOverworldMap + \4 + 3
 	db \6
 	db \3_WIDTH
@@ -30,7 +30,7 @@ if "\1" == "north"
 	dw wOverworldMap + \3_HEIGHT * (\3_WIDTH + 6) + 1
 elif "\1" == "south"
 	map_id \3
-	dw \2_BlockData + \5
+	dw wDecompressScratch + \5
 	dw wOverworldMap + (CURRENT_MAP_HEIGHT + 3) * (CURRENT_MAP_WIDTH + 6) + \4 + 3
 	db \6
 	db \3_WIDTH
@@ -39,7 +39,7 @@ elif "\1" == "south"
 	dw wOverworldMap + \3_WIDTH + 7
 elif "\1" == "west"
 	map_id \3
-	dw \2_BlockData + (\3_WIDTH * \5) + \3_WIDTH - 3
+	dw wDecompressScratch + (\3_WIDTH * \5) + \3_WIDTH - 3
 	dw wOverworldMap + (CURRENT_MAP_WIDTH + 6) * (\4 + 3)
 	db \6
 	db \3_WIDTH
@@ -48,7 +48,7 @@ elif "\1" == "west"
 	dw wOverworldMap + \3_WIDTH * 2 + 6
 elif "\1" == "east"
 	map_id \3
-	dw \2_BlockData + (\3_WIDTH * \5)
+	dw wDecompressScratch + (\3_WIDTH * \5)
 	dw wOverworldMap + (CURRENT_MAP_WIDTH + 6) * (\4 + 3 + 1) - 3
 	db \6
 	db \3_WIDTH

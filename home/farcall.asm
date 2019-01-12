@@ -89,6 +89,32 @@ ReturnFarCall::
 	ld a, [hFarCallSavedA]
 	ret
 
+RunFunctionInWRA6::
+	GLOBAL wDecompressScratch
+	ld a, BANK(wDecompressScratch)
+
+; fallthrough
+StackCallInWRAMBankA:
+	ld [hBuffer], a
+	ld a, h
+	ld [hPredefTemp + 1], a
+	ld a, l
+	ld [hPredefTemp], a
+
+; fallthrough
+StackCallInWRAMBankA_continue:
+	pop hl
+	ld a, [rSVBK]
+	push af
+	ld a, [hBuffer]
+	ld [rSVBK], a
+	call RetrieveHLAndCallFunction
+	ld [hBuffer], a
+	pop af
+	ld [rSVBK], a
+	ld a, [hBuffer]
+	ret
+
 RetrieveHLAndCallFunction:
 	push hl
 	ld hl, hPredefTemp

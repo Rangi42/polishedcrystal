@@ -189,7 +189,7 @@ INCLUDE "engine/events/overworld.asm"
 INCLUDE "engine/items.asm"
 ; linked, do not separate
 INCLUDE "engine/player_step.asm"
-INCLUDE "engine/load_map_part.asm"
+;INCLUDE "engine/load_map_part.asm"
 ; end linked section
 INCLUDE "engine/anim_hp_bar.asm"
 INCLUDE "engine/move_mon.asm"
@@ -3762,6 +3762,44 @@ SECTION "Code 15", ROMX
 INCLUDE "gfx/battle_anims.asm"
 INCLUDE "engine/events/halloffame.asm"
 INCLUDE "engine/copy_tilemap_at_once.asm"
+
+_LoadMapPart:: ; 4d15b
+
+	ld hl, wMisc
+	ld a, [wMetatileStandingY]
+	and a
+	jr z, .top_row
+	ld bc, WMISC_WIDTH * 2
+	add hl, bc
+
+.top_row
+	ld a, [wMetatileStandingX]
+	and a
+	jr z, .left_column
+	inc hl
+	inc hl
+
+.left_column
+	decoord 0, 0
+	ld b, SCREEN_HEIGHT
+.loop
+	ld c, SCREEN_WIDTH
+.loop2
+	ld a, [hli]
+	ld [de], a
+	inc de
+	dec c
+	jr nz, .loop2
+	ld a, l
+	add 4
+	ld l, a
+	jr nc, .carry
+	inc h
+
+.carry
+	dec b
+	jr nz, .loop
+	ret
 
 PrintAbility:
 ; Print ability b at hl.

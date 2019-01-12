@@ -1,8 +1,21 @@
-FarDecompress::
+FarDecompress:: ; b40
 ; Decompress graphics data from a:hl to de.
-	call FarCallInBankA
 
-Decompress::
+	ld [wLZBank], a
+	ld a, [hROMBank]
+	push af
+	ld a, [wLZBank]
+	rst Bankswitch
+
+	call Decompress
+
+	pop af
+	rst Bankswitch
+	ret
+; b50
+
+
+Decompress:: ; b50
 	ld a, [hVBlank]
 	push af
 	ld a, 2 ; sound only
@@ -11,7 +24,7 @@ Decompress::
 	pop af
 	ld [hVBlank], a
 	ret
-
+	
 _Decompress:
 ; Pokemon Crystal uses an lz variant for compression.
 ; This is mainly (but not necessarily) used for graphics.
@@ -72,9 +85,9 @@ LZ_LONG_HI   EQU %00000011
 	; Save the output address
 	; for rewrite commands.
 	ld a, e
-	ld [hLZAddress], a
+	ld [wLZAddress], a
 	ld a, d
-	ld [hLZAddress + 1], a
+	ld [wLZAddress + 1], a
 
 .Main
 	ld a, [hl]
@@ -98,7 +111,7 @@ LZ_LONG_HI   EQU %00000011
 
 ; This is our new control code.
 	and LZ_CMD
-	ld [hBuffer], a
+	push af
 
 	ld a, [hli]
 	and LZ_LONG_HI
@@ -112,7 +125,7 @@ LZ_LONG_HI   EQU %00000011
 
 
 .short
-	ld [hBuffer], a
+	push af
 
 	ld a, [hli]
 	and LZ_LEN
@@ -125,13 +138,16 @@ LZ_LONG_HI   EQU %00000011
 
 .command
 	; Modify loop counts to support 8 bit loop counters
+	ld a, b
+	and a
+	jr z, .eightBitCopyAmount
+	ld a, c
+	and a
+	jr z, .multipleOf0x100
+.eightBitCopyAmount
 	inc b
-	inc c
-	dec c
-	jr nz, .cWillNotunderflow
-	dec b
-.cWillNotunderflow
-	ld a, [hBuffer]
+.multipleOf0x100
+	pop af
 
 	bit LZ_RW, a
 	jr nz, .rewrite
@@ -224,6 +240,7 @@ LZ_LONG_HI   EQU %00000011
 .rewrite
 ; Repeat decompressed data from output.
 	push hl
+	push af
 
 	ld a, [hli]
 	bit 7, a ; sign
@@ -233,14 +250,13 @@ LZ_LONG_HI   EQU %00000011
 ; hl = de - a
 	; Since we can't subtract a from de,
 	; Make it negative and add de.
-	; equivalent to hl + $ff00 + !a
 	and %01111111
 	cpl
 	add e
 	ld l, a
-	ld h, d
-	jr c, .ok
-	dec h
+	ld a, -1
+	adc d
+	ld h, a
 	jr .ok
 
 .positive
@@ -248,15 +264,15 @@ LZ_LONG_HI   EQU %00000011
 	ld l, [hl]
 	ld h, a
 	; add to starting output address
-	ld a, [hLZAddress]
+	ld a, [wLZAddress]
 	add l
 	ld l, a
-	ld a, [hLZAddress + 1]
+	ld a, [wLZAddress + 1]
 	adc h
 	ld h, a
 
 .ok
-	ld a, [hBuffer]
+	pop af
 
 	cp LZ_REPEAT
 	jr z, .Repeat
@@ -290,11 +306,14 @@ LZ_LONG_HI   EQU %00000011
 ; Copy bitflipped decompressed data for bc bytes.
 	ld a, [hli]
 	push bc
-	ld b, 0
-rept 8
+	lb bc, 0, 8
+
+.floop
 	rra
 	rl b
-endr
+	dec c
+	jr nz, .floop
+
 	ld a, b
 	pop bc
 
@@ -326,3 +345,4 @@ endr
 .next
 	inc hl
 	jp .Main
+; c2f
