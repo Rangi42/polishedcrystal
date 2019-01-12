@@ -180,7 +180,7 @@ VolunteerPokemonHouseSignText:
 	done
 
 SoulHouseSignText:
-	text "House of Memories"
+	text "House of Souls"
 
 	para "May the Souls of"
 	line "#mon Rest Easy"
