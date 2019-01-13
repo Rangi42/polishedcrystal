@@ -107,7 +107,6 @@ _NewGame_FinishSetup:
 
 ResetWRAM_NotPlus:
 	xor a
-	ld [wSaveFileExists], a
 	ld [wSavedAtLeastOnce], a
 
 	ld [BattlePoints], a
