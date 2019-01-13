@@ -12,10 +12,11 @@ LavenderTown_MapScriptHeader:
 	warp_event 13, 13, SOUL_HOUSE, 1
 	warp_event 14,  7, LAV_RADIO_TOWER_1F, 1
 
-	db 3 ; coord events
-	coord_event  8,  5, 0, LavenderTownExpositionTrigger1
-	coord_event  9,  5, 0, LavenderTownExpositionTrigger2
-	coord_event 10,  5, 0, LavenderTownExpositionTrigger3
+	db 0 ; coord events
+; TODO:
+;	coord_event  8,  5, 0, LavenderTownExpositionTrigger1
+;	coord_event  9,  5, 0, LavenderTownExpositionTrigger2
+;	coord_event 10,  5, 0, LavenderTownExpositionTrigger3
 
 	db 4 ; bg events
 	bg_event 11,  5, SIGNPOST_JUMPTEXT, LavenderTownSignText
@@ -29,9 +30,9 @@ LavenderTown_MapScriptHeader:
 	object_event  2, 17, SPRITE_TEACHER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, LavenderTownTeacherText, -1
 	object_event 14, 14, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, LavenderTownGrampsText, -1
 	object_event  6, 13, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, LavenderTownYoungsterText, -1
-	object_event  8, 18, SPRITE_SUPER_NERD, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, LavenderTownSuperNerdText, EVENT_EXORCISED_LAV_RADIO_TOWER
-	object_event  9, 19, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, LavenderTownCooltrainerFText, EVENT_EXORCISED_LAV_RADIO_TOWER
-	object_event 11, 17, SPRITE_ROCKER, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 1, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, LavenderTownRockerText, EVENT_EXORCISED_LAV_RADIO_TOWER
+	object_event  8, 18, SPRITE_SUPER_NERD, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, LavenderTownSuperNerdText, EVENT_LAVENDER_TOWN_FLEEING_YOUNGSTER ; TODO: EVENT_EXORCISED_LAV_RADIO_TOWER
+	object_event  9, 19, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, LavenderTownCooltrainerFText, EVENT_LAVENDER_TOWN_FLEEING_YOUNGSTER ; TODO: EVENT_EXORCISED_LAV_RADIO_TOWER
+	object_event 11, 17, SPRITE_ROCKER, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 1, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, LavenderTownRockerText, EVENT_LAVENDER_TOWN_FLEEING_YOUNGSTER ; TODO: EVENT_EXORCISED_LAV_RADIO_TOWER
 
 	const_def 1 ; object constants
 	const LAVENDERTOWN_YOUNGSTER1
@@ -179,7 +180,7 @@ VolunteerPokemonHouseSignText:
 	done
 
 SoulHouseSignText:
-	text "House of Memories"
+	text "House of Souls"
 
 	para "May the Souls of"
 	line "#mon Rest Easy"

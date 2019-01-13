@@ -224,14 +224,14 @@ ENDM
 
 	map_attributes ViridianCity, VIRIDIAN_CITY, $f, NORTH | SOUTH | WEST
 	connection north, Route2South, ROUTE_2_SOUTH, 5, 0, 10
-	connection south, Route1, ROUTE_1, 9, 0, 10
+	connection south, Route1, ROUTE_1, 5, 0, 10
 	connection west, Route22, ROUTE_22, 4, 0, 9
 
 	map_attributes Route22, ROUTE_22, $2c, EAST
 	connection east, ViridianCity, VIRIDIAN_CITY, -3, 1, 15
 
 	map_attributes Route1, ROUTE_1, $f, NORTH | SOUTH
-	connection north, ViridianCity, VIRIDIAN_CITY, -3, 6, 13
+	connection north, ViridianCity, VIRIDIAN_CITY, -3, 2, 13
 	connection south, PalletTown, PALLET_TOWN, 1, 0, 10
 
 	map_attributes PalletTown, PALLET_TOWN, $f, NORTH | SOUTH
@@ -736,9 +736,9 @@ ENDM
 	map_attributes LavenderNameRater, LAVENDER_NAME_RATER, $0, 0
 	map_attributes LavenderMart, LAVENDER_MART, $0, 0
 	map_attributes SoulHouse, SOUL_HOUSE, $0, 0
-	map_attributes SoulHouseB1F, SOUL_HOUSE_B1F, $0, 0
-	map_attributes SoulHouseB2F, SOUL_HOUSE_B2F, $0, 0
-	map_attributes SoulHouseB3F, SOUL_HOUSE_B3F, $0, 0
+	map_attributes SoulHouseB1F, SOUL_HOUSE_B1F, $6c, 0
+	map_attributes SoulHouseB2F, SOUL_HOUSE_B2F, $6c, 0
+	map_attributes SoulHouseB3F, SOUL_HOUSE_B3F, $6c, 0
 	map_attributes LavRadioTower1F, LAV_RADIO_TOWER_1F, $0, 0
 	map_attributes LavRadioTower2F, LAV_RADIO_TOWER_2F, $0, 0
 	map_attributes LavRadioTower3F, LAV_RADIO_TOWER_3F, $0, 0

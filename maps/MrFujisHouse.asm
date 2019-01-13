@@ -23,9 +23,8 @@ UnknownText_0x7e8f1:
 	line "here, but he's not"
 	cont "home now."
 
-	para "He should be at"
-	line "the House of"
-	cont "Memories."
+	para "He might be at the"
+	line "House of Souls."
 	done
 
 UnknownText_0x7e940:

@@ -2378,10 +2378,7 @@ FindAtLeastThatHappy: ; 4dc0a
 	ld a, d
 	dec a
 	push hl
-	push bc
-	ld bc, PARTYMON_STRUCT_LENGTH
-	call AddNTimes
-	pop bc
+	call GetPartyLocation
 	ld a, b
 	cp [hl]
 	pop hl
@@ -2410,10 +2407,7 @@ FindGreaterThanThatLevel: ; 4dc31
 	ld a, d
 	dec a
 	push hl
-	push bc
-	ld bc, PARTYMON_STRUCT_LENGTH
-	call AddNTimes
-	pop bc
+	call GetPartyLocation
 	ld a, b
 	cp [hl]
 	pop hl

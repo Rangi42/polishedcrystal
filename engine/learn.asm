@@ -160,6 +160,7 @@ ForgetMove: ; 65d3
 	ld b, 0
 	ld a, [wMoveScreenSelectedMove]
 	pop hl
+	add hl, bc
 	and a
 	ret
 

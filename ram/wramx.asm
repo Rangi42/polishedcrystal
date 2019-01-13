@@ -296,7 +296,9 @@ wMailboxItems:: ds MAILBOX_CAPACITY
 wMailboxEnd:: ds 1
 ENDU
 
-	ds 6 ; unused
+	ds 5 ; unused
+
+wCurIconMonHasItemOrMail:: ds 1
 
 wCurTMHM::
 wCurItem::

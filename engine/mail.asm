@@ -197,11 +197,8 @@ GivePokeItem:: ; 446cc
 	ld a, [wPartyCount]
 	dec a
 	push af
-	push bc
 	ld hl, wPartyMon1Item
-	ld bc, PARTYMON_STRUCT_LENGTH
-	call AddNTimes
-	pop bc
+	call GetPartyLocation
 	ld [hl], b
 	pop af
 	push bc

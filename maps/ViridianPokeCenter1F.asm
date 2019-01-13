@@ -33,7 +33,7 @@ PokemonJournalBlueScript:
 	cont "ished #mon"
 
 	para "every year in the"
-	line "House of Memories."
+	line "House of Souls."
 	done
 
 ViridianPokeCenter1FCooltrainermScript:

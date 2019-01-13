@@ -23,7 +23,6 @@ SetMenuMonIconColor:
 	ld a, [wd265]
 	ld [wCurPartySpecies], a
 	call GetMenuMonIconPalette
-	ld hl, wSprites + 3
 	jr ProcessMenuMonIconColor
 
 SetMenuMonIconColor_NoShiny:
@@ -36,7 +35,6 @@ SetMenuMonIconColor_NoShiny:
 	ld [wCurPartySpecies], a
 	and a
 	call GetMenuMonIconPalette_PredeterminedShininess
-	ld hl, wSprites + 3
 	jr ProcessMenuMonIconColor
 
 LoadPartyMenuMonIconColors:
@@ -50,6 +48,12 @@ LoadPartyMenuMonIconColors:
 	ld [wCurPartyMon], a
 	ld d, 0
 	ld e, a
+
+	ld hl, wPartyMon1Item
+	call GetPartyLocation
+	ld a, [hl]
+	ld [wCurIconMonHasItemOrMail], a
+
 	ld hl, wPartySpecies
 	add hl, de
 	ld a, [hl]
@@ -68,7 +72,28 @@ LoadPartyMenuMonIconColors:
 
 	add hl, de
 	pop af
+
+	ld de, 4
+	ld [hl], a
+	add hl, de
+	ld [hl], a
+	add hl, de
+	push hl
+	add hl, de
+	ld [hl], a
+	pop hl
+	ld d, a
+	ld a, [wCurIconMonHasItemOrMail]
+	and a
+	ld a, PAL_OW_RED ; same color for item or mail
+	jr nz, .ok
+	ld a, d
+.ok
+	ld [hl], a
+	jr ProcessMenuMonIconColor.finish
+
 ProcessMenuMonIconColor:
+	ld hl, wSprites + 3
 	ld c, 4
 	ld de, 4
 
@@ -78,6 +103,7 @@ ProcessMenuMonIconColor:
 	dec c
 	jr nz, .colorIcon
 
+.finish
 	pop af
 	pop bc
 	pop de
@@ -127,12 +153,9 @@ LoadPartyMenuMonIcon:
 	ret
 
 .SpawnItemIcon: ; 8e8df (23:68df)
-	push bc
 	ld a, [hObjectStructIndexBuffer]
 	ld hl, wPartyMon1Item
-	ld bc, PARTYMON_STRUCT_LENGTH
-	call AddNTimes
-	pop bc
+	call GetPartyLocation
 	ld a, [hl]
 	and a
 	ret z
