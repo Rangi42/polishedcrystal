@@ -1287,14 +1287,10 @@ GiveEgg:: ; df8c
 
 	call TryAddMonToParty
 
-	push bc
-	ld bc, PartyCount
-	ld a, [bc]
+	ld a, [PartyCount]
 	dec a
 	ld hl, PartyMon1IsEgg
-	ld bc, PARTYMON_STRUCT_LENGTH
-	call AddNTimes
-	pop bc
+	call GetPartyLocation
 	ld a, [hl]
 	or IS_EGG_MASK
 	ld [hl], a

@@ -127,12 +127,9 @@ LoadPartyMenuMonIcon:
 	ret
 
 .SpawnItemIcon: ; 8e8df (23:68df)
-	push bc
 	ld a, [hObjectStructIndexBuffer]
 	ld hl, PartyMon1Item
-	ld bc, PARTYMON_STRUCT_LENGTH
-	call AddNTimes
-	pop bc
+	call GetPartyLocation
 	ld a, [hl]
 	and a
 	ret z

@@ -43,12 +43,9 @@ ChangeHappiness: ; 71c2
 	cp EGG
 	ret z
 
-	push bc
 	ld hl, PartyMon1Happiness
-	ld bc, PARTYMON_STRUCT_LENGTH
 	ld a, [CurPartyMon]
-	call AddNTimes
-	pop bc
+	call GetPartyLocation
 
 	ld d, h
 	ld e, l
@@ -118,12 +115,8 @@ GetExtraHappiness:
 	jr nc, .no_soothe_bell ; already at maximum
 
 	ld a, [CurPartyMon]
-	push bc
 	ld hl, PartyMon1Item
-	ld bc, PARTYMON_STRUCT_LENGTH
-	ld a, [CurPartyMon]
-	call AddNTimes
-	pop bc
+	call GetPartyLocation
 	ld a, [hl]
 	cp SOOTHE_BELL
 	jr nz, .no_soothe_bell
@@ -137,12 +130,8 @@ GetExtraHappiness:
 	jr nc, .no_luxury_ball ; already at maximum
 
 	ld a, [CurPartyMon]
-	push bc
 	ld hl, PartyMon1CaughtBall
-	ld bc, PARTYMON_STRUCT_LENGTH
-	ld a, [CurPartyMon]
-	call AddNTimes
-	pop bc
+	call GetPartyLocation
 	ld a, [hl]
 	and CAUGHTBALL_MASK
 	cp LUXURY_BALL
