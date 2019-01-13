@@ -3976,6 +3976,29 @@ HandleFirstAirBalloon:
 	ld [hBattleTurn], a
 	ret
 
+RecalculateStatsAfterBattle::
+	ld a, [PartyCount]
+	ld hl, PartyMon1MaxHP
+	ld bc, PARTYMON_STRUCT_LENGTH
+	inc a
+.loop
+	dec a
+	ret z
+	push af
+	ld d, h
+	ld e, l
+	push hl
+	push bc
+	ld bc, MON_EVS - 1 - MON_MAXHP
+	add hl, bc
+	ld b, TRUE
+	predef CalcPkmnStats
+	pop bc
+	pop hl
+	add hl, bc
+	pop af
+	jr .loop
+
 RemoveToxicAfterBattle::
 ; removes toxic from mons after battle
 	ld a, [PartyCount]

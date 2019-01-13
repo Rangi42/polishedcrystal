@@ -1378,6 +1378,7 @@ Script_reloadmapafterbattle:
 	push bc
 	push de
 	call RestoreBattleItems
+	farcall RecalculateStatsAfterBattle
 	pop de
 	pop bc
 	ld hl, wBattleScriptFlags
