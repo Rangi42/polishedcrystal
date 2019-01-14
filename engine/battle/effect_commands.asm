@@ -4687,15 +4687,22 @@ BattleCommand_SleepTalk: ; 35b33
 BattleCommand_DestinyBond: ; 35bff
 ; destinybond
 
+	ld a, BATTLE_VARS_LAST_COUNTER_MOVE
+	call GetBattleVarAddr
+	ld a, [hl]
+	ld [hl], $0
+	cp DESTINY_BOND
+	jr z, .failed
+	ld [hl], DESTINY_BOND
 	ld a, BATTLE_VARS_SUBSTATUS2
 	call GetBattleVarAddr
 	set SUBSTATUS_DESTINY_BOND, [hl]
 	call AnimateCurrentMove
 	ld hl, DestinyBondEffectText
 	jp StdBattleTextBox
-
-; 35c0f
-
+.failed
+	call AnimateFailedMove
+	jp PrintButItFailed
 
 BattleCommand_FalseSwipe: ; 35c94
 ; falseswipe
