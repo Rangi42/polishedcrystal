@@ -3139,7 +3139,7 @@ BattleCommand_RageDamage:
 
 DittoMetalPowder: ; 352b1
 	ld a, MON_SPECIES
-	call BattlePartyAttr
+	call UserPartyAttr
 	ld a, [hBattleTurn]
 	and a
 	ld a, [hl]
@@ -3178,7 +3178,7 @@ DittoMetalPowder: ; 352b1
 
 UnevolvedEviolite:
 	ld a, MON_SPECIES
-	call BattlePartyAttr
+	call UserPartyAttr
 	ld a, [hBattleTurn]
 	and a
 	ld a, [hl]
@@ -3493,7 +3493,7 @@ ThickClubOrLightBallBoost: ; 353b5
 	push de
 	push hl
 	ld a, MON_SPECIES
-	call BattlePartyAttr
+	call UserPartyAttr
 	ld a, [hBattleTurn]
 	and a
 	ld a, [hl]
@@ -3545,7 +3545,7 @@ SpeciesItemBoost: ; 353d1
 
 	push hl
 	ld a, MON_SPECIES
-	call BattlePartyAttr
+	call UserPartyAttr
 	ld a, [hBattleTurn]
 	and a
 	ld a, [hl]
@@ -7624,11 +7624,15 @@ BattleCommand_Trick:
 	ld a, [hl]
 	and a
 	jr z, .failed
+	cp ARMOR_SUIT
+	jr z, .failed
 	push hl
 	call GetOpponentItem
 	ld a, [hl]
 	and a
 	pop de
+	jr z, .failed
+	cp ARMOR_SUIT
 	jr z, .failed
 
 	ld a, [de]
@@ -8567,6 +8571,14 @@ BattleCommand_GyroBall:
 .got_power
 	pop de
 	ld d, a
+	pop bc
+	ret
+
+BattleCommand_LowKick:
+	; todo
+	push bc
+	push de
+	pop de
 	pop bc
 	ret
 

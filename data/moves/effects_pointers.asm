@@ -149,3 +149,4 @@ MoveEffectsPointers:
 	dw BugBite
 	dw GyroBall
 	dw BodySlam
+	dw LowKick

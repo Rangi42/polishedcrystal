@@ -212,7 +212,6 @@ Headbutt:
 HyperFang:
 IcicleCrash:
 IronHead:
-LowKick:
 RockSlide:
 Waterfall:
 ZenHeadbutt:
@@ -2032,6 +2031,28 @@ GyroBall:
 	critical
 	damagestats
 	gyroball
+	damagecalc
+	stab
+	damagevariation
+	checkhit
+	hittarget
+	failuretext
+	checkfaint
+	criticaltext
+	supereffectivetext
+	checkdestinybond
+	buildopponentrage
+	pickpocket
+	endmove
+
+LowKick:
+	checkobedience
+	usedmovetext
+	doturn
+	pressure
+	critical
+	damagestats
+	lowkick
 	damagecalc
 	stab
 	damagevariation

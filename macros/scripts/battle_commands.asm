@@ -178,6 +178,7 @@ endm
 	command toxic                   ; ab
 	command gyroball                ; ac
 	command checkpowder             ; ad
+	command lowkick                 ; ae
 
 	enum_start -1, -1
 	command endmove

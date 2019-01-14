@@ -172,3 +172,4 @@ BattleCommandPointers:
 	dw BattleCommand_Toxic
 	dw BattleCommand_GyroBall
 	dw BattleCommand_CheckPowder
+	dw BattleCommand_LowKick
