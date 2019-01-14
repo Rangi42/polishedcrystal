@@ -83,11 +83,6 @@ Shamouti Island:
 
 ### Move effects
 
-* Bug Bite eats and uses the foe's held Berry
-* Low Kick's power is based on weight
-* Body Slam does double damage against Minimize
-* Stomp and Body Slam never miss against Minimize
-* Destiny Bond's success chance halves every successive turn it's used (Gen VII)
 * Rock Smash breaks screens instead of lowering Defense (like Brick Break) (non-Faithful)
 
 
