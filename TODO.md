@@ -81,16 +81,6 @@ Shamouti Island:
 * Shamouti Restaurant (works like Seven Stars Restaurant) (different subset of all trainers every day of the week)
 
 
-### Move effects
-
-* Bug Bite eats and uses the foe's held Berry
-* Low Kick's power is based on weight
-* Body Slam does double damage against Minimize
-* Stomp and Body Slam never miss against Minimize
-* Destiny Bond's success chance halves every successive turn it's used (Gen VII)
-* Rock Smash breaks screens instead of lowering Defense (like Brick Break) (non-Faithful)
-
-
 ### Move animations
 
 Refer to [B/W animations with sound effects](https://www.youtube.com/watch?v=TFDV0HeBz_0).
@@ -230,8 +220,6 @@ Some of these may never be added; they're just suggestions.
    * R/S/E Route 120
 * More Orange Islands
 * First Pokémon walks behind you ([comet's prototype](https://hax.iimarck.us/topic/6248/) and [diff](https://github.com/yenatch/pokecrystal/commit/dbc5cd2025a0214c5b2cd1e3330f50603a0bb9d1))
-* 60 FPS via [doublespeed](https://github.com/FredrIQ/polishedcrystal/tree/optimizations) mode
-* Port optimizations from Prism that improve overall speed of graphics loading, menu scrolling, etc
 * Load the font graphics only when textboxes are open, and otherwise load sprites' walking frames like G/S (popup location signs would have to be handled specially)
 * Evening (intervals: morn 4–11, day 11–6, eve 6–9, nite 9–4)
 * Seasons with appropriate day/night lengths from B/W (affects palettes, tiles, wild Pokémon, dialog, accessible areas, etc)
@@ -259,7 +247,6 @@ Some of these may never be added; they're just suggestions.
    * Emerald [wild_encounter_related](https://github.com/pret/pokeemerald/blob/master/asm/rom4.s#L2544): raises call probability for Swarm ability
 * Either add a 510 EV limit, or replace the 6 Power items with more useful Berries
 * Catch rate formula from Gen III
-* Show move stats when overwriting one
 * Show stat changes and then absolute values on level up
 * Port critical captures from Prism
 * Allow evolution during battle

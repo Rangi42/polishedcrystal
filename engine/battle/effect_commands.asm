@@ -1735,6 +1735,9 @@ BattleCommand_CheckHit:
 	call .WeatherAccCheck
 	ret z
 
+	call .AntiMinimize
+	ret z
+
 	; Perfect-accuracy moves
 	ld a, BATTLE_VARS_MOVE_EFFECT
 	call GetBattleVar
@@ -2036,6 +2039,25 @@ BattleCommand_CheckHit:
 	cp NO_GUARD
 	ret
 
+.AntiMinimize:
+	ld a, [hBattleTurn]
+	and a
+	ld hl, wPlayerMinimized
+	jr z, .got_minimize
+	ld hl, wEnemyMinimized
+.got_minimize
+	ld a, [hl]
+	and a
+	jr z, .no_minimize
+	ld a, BATTLE_VARS_MOVE_ANIM
+	call GetBattleVar
+	cp BODY_SLAM
+	ret z
+	cp STOMP
+	ret z
+.no_minimize
+	or 1
+	ret
 
 BattleCommand_EffectChance: ; 34ecc
 ; effectchance
@@ -3201,7 +3223,7 @@ BattleCommand_RageDamage:
 
 DittoMetalPowder: ; 352b1
 	ld a, MON_SPECIES
-	call BattlePartyAttr
+	call UserPartyAttr
 	ld a, [hBattleTurn]
 	and a
 	ld a, [hl]
@@ -3240,7 +3262,7 @@ DittoMetalPowder: ; 352b1
 
 UnevolvedEviolite:
 	ld a, MON_SPECIES
-	call BattlePartyAttr
+	call UserPartyAttr
 	ld a, [hBattleTurn]
 	and a
 	ld a, [hl]
@@ -3288,6 +3310,35 @@ UnevolvedEviolite:
 	rr c
 	ret
 
+BattleCommand_BrickBreak:
+	ld a, [hBattleTurn]
+	and a
+	ld hl, wEnemyScreens
+	ld bc, wEnemyLightScreenCount
+	jr z, .got_screens
+	ld hl, wPlayerScreens
+	ld bc, wPlayerLightScreenCount
+.got_screens
+	bit SCREENS_LIGHT_SCREEN, [hl]
+	jr z, .light_screen_done
+	res SCREENS_LIGHT_SCREEN, [hl]
+	xor a
+	ld [bc], a
+	push hl
+	push bc
+	ld hl, BrokeLightScreenText
+	call StdBattleTextBox
+	pop bc
+	pop hl
+.light_screen_done
+	inc bc
+	bit SCREENS_REFLECT, [hl]
+	ret z
+	res SCREENS_REFLECT, [hl]
+	xor a
+	ld [bc], a
+	ld hl, BrokeReflectText
+	jp StdBattleTextBox
 
 BattleCommand_DamageStats: ; 352dc
 ; damagestats
@@ -3298,7 +3349,6 @@ BattleCommand_DamageStats: ; 352dc
 
 	; fallthrough
 ; 352e2
-
 
 PlayerAttackDamage: ; 352e2
 ; Return move power d, player level e, enemy defense c and player attack b.
@@ -3555,7 +3605,7 @@ ThickClubOrLightBallBoost: ; 353b5
 	push de
 	push hl
 	ld a, MON_SPECIES
-	call BattlePartyAttr
+	call UserPartyAttr
 	ld a, [hBattleTurn]
 	and a
 	ld a, [hl]
@@ -3607,7 +3657,7 @@ SpeciesItemBoost: ; 353d1
 
 	push hl
 	ld a, MON_SPECIES
-	call BattlePartyAttr
+	call UserPartyAttr
 	ld a, [hBattleTurn]
 	and a
 	ld a, [hl]
@@ -4749,15 +4799,22 @@ BattleCommand_SleepTalk: ; 35b33
 BattleCommand_DestinyBond: ; 35bff
 ; destinybond
 
+	ld a, BATTLE_VARS_LAST_COUNTER_MOVE
+	call GetBattleVarAddr
+	ld a, [hl]
+	ld [hl], $0
+	cp DESTINY_BOND
+	jr z, .failed
+	ld [hl], DESTINY_BOND
 	ld a, BATTLE_VARS_SUBSTATUS2
 	call GetBattleVarAddr
 	set SUBSTATUS_DESTINY_BOND, [hl]
 	call AnimateCurrentMove
 	ld hl, DestinyBondEffectText
 	jp StdBattleTextBox
-
-; 35c0f
-
+.failed
+	call AnimateFailedMove
+	jp PrintButItFailed
 
 BattleCommand_FalseSwipe: ; 35c94
 ; falseswipe
@@ -7679,11 +7736,15 @@ BattleCommand_Trick:
 	ld a, [hl]
 	and a
 	jr z, .failed
+	cp ARMOR_SUIT
+	jr z, .failed
 	push hl
 	call GetOpponentItem
 	ld a, [hl]
 	and a
 	pop de
+	jr z, .failed
+	cp ARMOR_SUIT
 	jr z, .failed
 
 	ld a, [de]
@@ -8624,6 +8685,67 @@ BattleCommand_GyroBall:
 	ld d, a
 	pop bc
 	ret
+
+BattleCommand_LowKick:
+	push bc
+	push de
+	ld a, [hBattleTurn]
+	and a
+	ld hl, wBattleMonSpecies
+	jr z, .got_species
+	ld hl, wEnemyMonSpecies
+.got_species
+	ld a, [hl]
+	dec a
+	ld e, a
+	ld d, 0
+	add hl, de
+	add hl, de
+	ld a, BANK(PokedexDataPointerTable)
+	call GetFarHalfword
+
+	; skip the pokémon "type" (seed for bulbasaur, genetic for mewtwo, etc)
+.loop
+	call GetPokedexEntryBank
+	call GetFarByte
+	inc hl
+	cp "@"
+	jr nz, .loop
+
+	; skip height by inc hl twice
+	call GetPokedexEntryBank
+	push bc
+	inc hl
+	inc hl
+	call GetFarHalfword ; now we have weight in hl
+	ld d, h
+	ld e, l
+
+	ld hl, .WeightTable
+.loop2
+	ld a, [hli]
+	ld c, a
+	ld a, [hli]
+	ld b, a
+	ld a, [hli]
+	sub e
+	ld a, b
+	sbc d
+	jr nc, .loop2
+.got_power
+	pop de
+	ld d, c
+	pop bc
+	ret
+
+.WeightTable
+	;    BP, weight
+	dbw 120, 4407
+	dbw 100, 2202
+	dbw  80, 1100
+	dbw  60, 550
+	dbw  40, 218
+	dbw  20, 0
 
 CheckAnyOtherAliveMons:
 ; These return nz if any is alive

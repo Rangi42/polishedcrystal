@@ -212,7 +212,6 @@ Headbutt:
 HyperFang:
 IcicleCrash:
 IronHead:
-LowKick:
 RockSlide:
 Waterfall:
 ZenHeadbutt:
@@ -297,7 +296,6 @@ Lick:
 Thundershock:
 Spark:
 Thunderpunch:
-BodySlam:
 Dragonbreath:
 Thunderbolt:
 ZapCannon:
@@ -311,6 +309,30 @@ ZapCannon:
 	damagecalc
 	stab
 	damagevariation
+	checkhit
+	hittarget
+	failuretext
+	checkfaint
+	criticaltext
+	supereffectivetext
+	checkdestinybond
+	buildopponentrage
+	paralyzetarget
+	pickpocket
+	endmove
+
+BodySlam:
+	checkobedience
+	usedmovetext
+	doturn
+	pressure
+	critical
+	effectchance
+	damagestats
+	damagecalc
+	stab
+	damagevariation
+	doubleminimizedamage
 	checkhit
 	hittarget
 	failuretext
@@ -503,6 +525,30 @@ AuroraBeam:
 DefenseDownHit:
 Crunch:
 IronTail:
+	checkobedience
+	usedmovetext
+	doturn
+	pressure
+	critical
+	effectchance
+	damagestats
+	damagecalc
+	stab
+	damagevariation
+	checkhit
+	hittarget
+	failuretext
+	checkfaint
+	criticaltext
+	supereffectivetext
+	checkdestinybond
+	buildopponentrage
+	defensedown
+	statdownmessage
+	pickpocket
+	endmove
+
+BrickBreak:
 RockSmash:
 	checkobedience
 	usedmovetext
@@ -510,6 +556,8 @@ RockSmash:
 	pressure
 	critical
 	effectchance
+	resettypematchup
+	brickbreak
 	damagestats
 	damagecalc
 	stab
@@ -2013,7 +2061,28 @@ GyroBall:
 	stab
 	damagevariation
 	checkhit
-	doubleundergrounddamage
+	hittarget
+	failuretext
+	checkfaint
+	criticaltext
+	supereffectivetext
+	checkdestinybond
+	buildopponentrage
+	pickpocket
+	endmove
+
+LowKick:
+	checkobedience
+	usedmovetext
+	doturn
+	pressure
+	critical
+	damagestats
+	lowkick
+	damagecalc
+	stab
+	damagevariation
+	checkhit
 	hittarget
 	failuretext
 	checkfaint
