@@ -297,7 +297,6 @@ Lick:
 Thundershock:
 Spark:
 Thunderpunch:
-BodySlam:
 Dragonbreath:
 Thunderbolt:
 ZapCannon:
@@ -311,6 +310,30 @@ ZapCannon:
 	damagecalc
 	stab
 	damagevariation
+	checkhit
+	hittarget
+	failuretext
+	checkfaint
+	criticaltext
+	supereffectivetext
+	checkdestinybond
+	buildopponentrage
+	paralyzetarget
+	pickpocket
+	endmove
+
+BodySlam:
+	checkobedience
+	usedmovetext
+	doturn
+	pressure
+	critical
+	effectchance
+	damagestats
+	damagecalc
+	stab
+	damagevariation
+	doubleminimizedamage
 	checkhit
 	hittarget
 	failuretext

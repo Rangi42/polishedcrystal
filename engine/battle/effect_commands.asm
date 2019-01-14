@@ -1735,6 +1735,9 @@ BattleCommand_CheckHit:
 	call .WeatherAccCheck
 	ret z
 
+	call .AntiMinimize
+	ret z
+
 	; Perfect-accuracy moves
 	ld a, BATTLE_VARS_MOVE_EFFECT
 	call GetBattleVar
@@ -2036,6 +2039,25 @@ BattleCommand_CheckHit:
 	cp NO_GUARD
 	ret
 
+.AntiMinimize:
+	ld a, [hBattleTurn]
+	and a
+	ld hl, wPlayerMinimized
+	jr z, .got_minimize
+	ld hl, wEnemyMinimized
+.got_minimize
+	ld a, [hl]
+	and a
+	jr z, .no_minimize
+	ld a, BATTLE_VARS_MOVE_ANIM
+	call GetBattleVar
+	cp BODY_SLAM
+	ret z
+	cp STOMP
+	ret z
+.no_minimize
+	or 1
+	ret
 
 BattleCommand_EffectChance: ; 34ecc
 ; effectchance

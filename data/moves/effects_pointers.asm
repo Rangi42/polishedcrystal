@@ -148,3 +148,4 @@ MoveEffectsPointers:
 	dw FuryStrikes
 	dw BugBite
 	dw GyroBall
+	dw BodySlam
