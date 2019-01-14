@@ -8767,6 +8767,15 @@ BattleCommand_BatonPass:
 	call CheckAnyOtherAliveMons
 	jp z, FailedBatonPass
 
+	ld a, [hBattleTurn]
+	and a
+	ld hl, wPlayerMinimized
+	jr z, .got_minimize
+	ld hl, wEnemyMinimized
+.got_minimize
+	xor a
+	ld [hl], a
+
 	call AnimateCurrentMove
 	ld c, 30
 	call DelayFrames
