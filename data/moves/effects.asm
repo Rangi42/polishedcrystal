@@ -2036,7 +2036,6 @@ GyroBall:
 	stab
 	damagevariation
 	checkhit
-	doubleundergrounddamage
 	hittarget
 	failuretext
 	checkfaint
