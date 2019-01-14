@@ -525,6 +525,30 @@ AuroraBeam:
 DefenseDownHit:
 Crunch:
 IronTail:
+	checkobedience
+	usedmovetext
+	doturn
+	pressure
+	critical
+	effectchance
+	damagestats
+	damagecalc
+	stab
+	damagevariation
+	checkhit
+	hittarget
+	failuretext
+	checkfaint
+	criticaltext
+	supereffectivetext
+	checkdestinybond
+	buildopponentrage
+	defensedown
+	statdownmessage
+	pickpocket
+	endmove
+
+BrickBreak:
 RockSmash:
 	checkobedience
 	usedmovetext
@@ -532,6 +556,8 @@ RockSmash:
 	pressure
 	critical
 	effectchance
+	resettypematchup
+	brickbreak
 	damagestats
 	damagecalc
 	stab

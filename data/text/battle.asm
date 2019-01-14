@@ -163,6 +163,18 @@ BattleText_UserRecoveredPPUsing:
 	text "!"
 	prompt
 
+BrokeLightScreenText:
+	text "<USER>"
+	line "broke the target's"
+	cont "Light Screen!"
+	prompt
+
+BrokeReflectText:
+	text "<USER>"
+	line "broke the target's"
+	cont "Reflect!"
+	prompt
+
 BattleText_ItemRaised:
 	text "The @"
 	text_from_ram StringBuffer1

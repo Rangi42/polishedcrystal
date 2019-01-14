@@ -150,3 +150,4 @@ MoveEffectsPointers:
 	dw GyroBall
 	dw BodySlam
 	dw LowKick
+	dw BrickBreak

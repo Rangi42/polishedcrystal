@@ -81,11 +81,6 @@ Shamouti Island:
 * Shamouti Restaurant (works like Seven Stars Restaurant) (different subset of all trainers every day of the week)
 
 
-### Move effects
-
-* Rock Smash breaks screens instead of lowering Defense (like Brick Break) (non-Faithful)
-
-
 ### Move animations
 
 Refer to [B/W animations with sound effects](https://www.youtube.com/watch?v=TFDV0HeBz_0).

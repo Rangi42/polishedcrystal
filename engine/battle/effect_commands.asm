@@ -3226,6 +3226,35 @@ UnevolvedEviolite:
 	rr c
 	ret
 
+BattleCommand_BrickBreak:
+	ld a, [hBattleTurn]
+	and a
+	ld hl, EnemyScreens
+	ld bc, EnemyLightScreenCount
+	jr z, .got_screens
+	ld hl, PlayerScreens
+	ld bc, PlayerLightScreenCount
+.got_screens
+	bit SCREENS_LIGHT_SCREEN, [hl]
+	jr z, .light_screen_done
+	res SCREENS_LIGHT_SCREEN, [hl]
+	xor a
+	ld [bc], a
+	push hl
+	push bc
+	ld hl, BrokeLightScreenText
+	call StdBattleTextBox
+	pop bc
+	pop hl
+.light_screen_done
+	inc bc
+	bit SCREENS_REFLECT, [hl]
+	ret z
+	res SCREENS_REFLECT, [hl]
+	xor a
+	ld [bc], a
+	ld hl, BrokeReflectText
+	jp StdBattleTextBox
 
 BattleCommand_DamageStats: ; 352dc
 ; damagestats
@@ -3236,7 +3265,6 @@ BattleCommand_DamageStats: ; 352dc
 
 	; fallthrough
 ; 352e2
-
 
 PlayerAttackDamage: ; 352e2
 ; Return move power d, player level e, enemy defense c and player attack b.
