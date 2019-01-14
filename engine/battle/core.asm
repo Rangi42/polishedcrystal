@@ -3739,10 +3739,6 @@ BattleCheckShininess: ; 3da7c
 ; 3da85
 
 GetPartyMonDVs: ; 3da85
-	ld hl, BattleMonDVs
-	ld a, [PlayerSubStatus2]
-	bit SUBSTATUS_TRANSFORMED, a
-	ret z
 	ld hl, PartyMon1DVs
 	ld a, [CurBattleMon]
 	jp GetPartyLocation
@@ -3989,7 +3985,21 @@ RecalculateStatsAfterBattle::
 	ld e, l
 	push hl
 	push bc
-	ld bc, MON_EVS - 1 - MON_MAXHP
+	ld bc, MON_SPECIES - MON_MAXHP
+	add hl, bc
+	ld a, [hl]
+	ld [CurPartySpecies], a
+	ld [CurSpecies], a
+	push hl
+	push de
+	call GetBaseData
+	pop de
+	pop hl
+	ld bc, MON_LEVEL - MON_SPECIES
+	add hl, bc
+	ld a, [hl]
+	ld [CurPartyLevel], a
+	ld bc, MON_EVS - 1 - MON_LEVEL
 	add hl, bc
 	ld b, TRUE
 	predef CalcPkmnStats
