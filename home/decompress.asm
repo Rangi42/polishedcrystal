@@ -1,20 +1,6 @@
-FarDecompress:: ; b40
+FarDecompress::
 ; Decompress graphics data from a:hl to de.
-
-	ld [wLZBank], a
-	ld a, [hROMBank]
-	push af
-	ld a, [wLZBank]
-	rst Bankswitch
-
-	call Decompress
-
-	pop af
-	rst Bankswitch
-	ret
-; b50
-
-
+	call FarCallInBankA
 Decompress:: ; b50
 	ld a, [hVBlank]
 	push af
