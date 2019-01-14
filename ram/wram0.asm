@@ -110,10 +110,7 @@ wMusicEnd::
 
 SECTION "WRAM 0", WRAM0
 
-wLZAddress:: ds 2
-wLZBank:: ds 1
-
-	ds 1
+	ds 4
 
 wRNGState:: ds 4
 wRNGCumulativeDividerPlus:: ds 2
