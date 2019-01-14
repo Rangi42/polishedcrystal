@@ -220,8 +220,6 @@ Some of these may never be added; they're just suggestions.
    * R/S/E Route 120
 * More Orange Islands
 * First Pokémon walks behind you ([comet's prototype](https://hax.iimarck.us/topic/6248/) and [diff](https://github.com/yenatch/pokecrystal/commit/dbc5cd2025a0214c5b2cd1e3330f50603a0bb9d1))
-* 60 FPS via [doublespeed](https://github.com/FredrIQ/polishedcrystal/tree/optimizations) mode
-* Port optimizations from Prism that improve overall speed of graphics loading, menu scrolling, etc
 * Load the font graphics only when textboxes are open, and otherwise load sprites' walking frames like G/S (popup location signs would have to be handled specially)
 * Evening (intervals: morn 4–11, day 11–6, eve 6–9, nite 9–4)
 * Seasons with appropriate day/night lengths from B/W (affects palettes, tiles, wild Pokémon, dialog, accessible areas, etc)
