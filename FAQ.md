@@ -17,6 +17,7 @@ The game's data files do a fairly good job of listing things you'll want to know
 * [Move attributes](data/moves/moves.asm)
 * [TM+HM+tutor list](data/moves/tmhm_moves.asm)
 * [Wild Pokémon](data/wild/)
+* [Hidden Grottoes](data/events/hidden_grottoes/grottoes.asm)
 
 
 ### How do I evolve my Pokémon?
