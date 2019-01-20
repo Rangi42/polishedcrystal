@@ -2847,7 +2847,7 @@ BattleCommand_SuperEffectiveText: ; 351ad
 
 CheckSheerForceNegation:
 ; Check if a secondary effect was suppressed due to Sheer Force.
-; Most likely a bug introduced at Gen IV, it is an established
+; Most likely a bug introduced in Gen V, it is an established
 ; mechanic at this point (VII) that if Sheer Force negates the
 ; secondary effect of a move, various side effects don't trigger
 	ld a, BATTLE_VARS_ABILITY
