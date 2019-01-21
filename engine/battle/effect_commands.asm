@@ -1344,7 +1344,9 @@ BattleCommand_Stab: ; 346d2
 	call Multiply
 
 	; Second ability pass
+	push hl
 	farcall ApplyDamageAbilities_AfterTypeMatchup
+	pop hl
 
 	ld a, $10
 	ld [hDivisor], a
@@ -2845,6 +2847,24 @@ BattleCommand_SuperEffectiveText: ; 351ad
 	ld hl, BattleText_ItemSharplyRaised
 	jp StdBattleTextBox
 
+CheckSheerForceNegation:
+; Check if a secondary effect was suppressed due to Sheer Force.
+; Most likely a bug introduced in Gen V, it is an established
+; mechanic at this point (VII) that if Sheer Force negates the
+; secondary effect of a move, various side effects don't trigger
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	cp SHEER_FORCE
+	ret nz
+	ld a, [wEffectFailed]
+	and a
+	jr z, .ret_nz
+	xor a
+	ret
+.ret_nz
+	or 1
+	ret
+
 ConsumeOpponentItem::
 	call SwitchTurn
 	call ConsumeUserItem
@@ -3115,6 +3135,8 @@ BattleCommand_PostHitEffects:
 	; Ensure that the move doesn't already have a flinch rate.
 	call HasOpponentFainted
 	ret z
+	call CheckSheerForceNegation
+	ret nz
 	ld a, BATTLE_VARS_MOVE_EFFECT
 	call GetBattleVar
 	cp EFFECT_FLINCH_HIT
@@ -3122,6 +3144,16 @@ BattleCommand_PostHitEffects:
 	cp EFFECT_STOMP
 	ret z
 
+	; Serene Grace boosts King's Rock
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	cp SERENE_GRACE
+	jr nz, .no_serene_grace
+	ld a, c
+	add a
+	ld c, a
+
+.no_serene_grace
 	; Flinch items procs even after Rocky Helmet fainting
 	ld a, 100
 	call BattleRandomRange
@@ -3131,6 +3163,8 @@ BattleCommand_PostHitEffects:
 .shell_bell
 	call .checkfaint
 	ret z
+	call CheckSheerForceNegation
+	ret nz
 
 	ld a, [wCurDamage]
 	ld b, a
@@ -3162,13 +3196,8 @@ BattleCommand_PostHitEffects:
 	cp MAGIC_GUARD
 	ret z
 
-	; Sheer Force weirdness (Ignore Life Orb recoil if a secondary effect
-	; was suppressed)
-	cp SHEER_FORCE
-	jr nz, .no_sheer_force
-	ld a, [wEffectFailed]
-	and a
-	ret z
+	call CheckSheerForceNegation
+	ret nz
 
 .no_sheer_force
 	xor a
@@ -3199,6 +3228,9 @@ BattleCommand_PostHitEffects:
 
 BattleCommand_Pickpocket:
 ; If the opponent has Pickpocket, proc the item steal now
+	call CheckSheerForceNegation
+	ret nz
+
 	; At this point, we can safely reset wEffectFailed (This runs after everything else)
 	xor a
 	ld [wEffectFailed], a
