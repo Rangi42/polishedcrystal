@@ -267,8 +267,8 @@ PidgeyEvosAttacks:
 	db EVOLVE_LEVEL, 18, PIDGEOTTO
 	db 0 ; no more evolutions
 	db 1, TACKLE
-	db 5, MUD_SLAP ; Sand Attack → similar move
-	db 9, GUST
+	db 5, GUST ; Sand Attack → Gust
+	db 9, MUD_SLAP ; Gust → GSC TM move
 	db 13, QUICK_ATTACK
 	db 17, RAGE ; Whirlwind → RBY TM move
 	db 21, CHARM ; Twister → egg move
@@ -286,8 +286,8 @@ PidgeottoEvosAttacks:
 	db EVOLVE_LEVEL, 36, PIDGEOT
 	db 0 ; no more evolutions
 	db 1, TACKLE
-	db 5, MUD_SLAP ; Sand Attack → similar move
-	db 9, GUST
+	db 5, GUST ; Sand Attack → Gust
+	db 9, MUD_SLAP ; Gust → GSC TM move
 	db 13, QUICK_ATTACK
 	db 17, RAGE ; Whirlwind → RBY TM move
 	db 22, CHARM ; Twister → egg move
@@ -1111,12 +1111,12 @@ ArcanineEvosAttacks:
 PoliwagEvosAttacks:
 	db EVOLVE_LEVEL, 25, POLIWHIRL
 	db 0 ; no more evolutions
-	db 1, MUD_SLAP ; Water Sport → TM move
 	db 1, SWEET_KISS ; event move
-	db 5, WATER_GUN
-	db 8, HYPNOSIS
+	db 1, WATER_GUN ; Water Sport → Water Gun
+	db 5, HYPNOSIS ; Water Gun → Hypnosis
+	db 8, DOUBLE_SLAP ; Hypnosis → Double Slap
 	db 11, AQUA_JET ; Bubble → new move
-	db 15, DOUBLE_SLAP
+	db 15, MUD_SLAP ; Double Slap → TM move
 	db 18, RAIN_DANCE
 	db 21, BODY_SLAM
 	db 25, BUBBLE_BEAM
@@ -1131,12 +1131,12 @@ PoliwhirlEvosAttacks:
 	db EVOLVE_ITEM, WATER_STONE, POLIWRATH
 	db EVOLVE_HOLDING, KINGS_ROCK, POLITOED
 	db 0 ; no more evolutions
-	db 1, MUD_SLAP ; Water Sport → TM move
 	db 1, SWEET_KISS ; event move
-	db 5, WATER_GUN
-	db 8, HYPNOSIS
+	db 1, WATER_GUN ; Water Sport → Water Gun
+	db 5, HYPNOSIS ; Water Gun → Hypnosis
+	db 8, DOUBLE_SLAP ; Hypnosis → Double Slap
 	db 11, AQUA_JET ; Bubble → new move
-	db 15, DOUBLE_SLAP
+	db 15, MUD_SLAP ; Double Slap → TM move
 	db 18, RAIN_DANCE
 	db 21, BODY_SLAM
 	db 27, BUBBLE_BEAM
