@@ -1523,7 +1523,6 @@ BugBite:
 	checkfaint
 	criticaltext
 	supereffectivetext
-	knockoff
 	checkdestinybond
 	buildopponentrage
 	endmove
