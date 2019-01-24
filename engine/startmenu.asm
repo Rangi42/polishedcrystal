@@ -1517,10 +1517,13 @@ MoveScreenLoop:
 	cp 4
 	jp c, .update_screen_cursor
 	ld a, 3
-	jr .update_screen_cursor
+	jp .update_screen_cursor
 .species_right
+	ld a, [PartyCount]
+	ld d, a
 	ld a, [CurPartyMon]
-	cp PARTY_LENGTH - 1
+	dec d
+	cp d
 	jp z, .loop
 .loop_right
 	inc a
@@ -1537,8 +1540,10 @@ MoveScreenLoop:
 	ld [CurPartyMon], a
 	jp MoveScreenLoop
 .loop_right_invalid
+	ld a, [PartyCount]
+	dec a
+	cp d
 	ld a, d
-	cp PARTY_LENGTH - 1
 	jp z, .loop
 	jr .loop_right
 .pressed_left
