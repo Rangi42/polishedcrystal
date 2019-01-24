@@ -1972,7 +1972,7 @@ PlaceMoveData:
 	xor a
 	ld [hBGMapMode], a
 
-	hlcoord 7, 12
+	hlcoord 10, 12
 	ld de, String_PowAcc
 	call PlaceString
 
@@ -2037,7 +2037,7 @@ PlaceMoveData:
 	call AddNTimes
 	ld a, BANK(Moves)
 	call GetFarByte
-	hlcoord 8, 12
+	hlcoord 10, 12
 	cp 2
 	jr c, .no_power
 	ld [wd265], a
@@ -2069,7 +2069,7 @@ PlaceMoveData:
 	jr z, .no_inc
 	inc a
 .no_inc
-	hlcoord 13, 12
+	hlcoord 15, 12
 	cp 2
 	jr c, .no_acc
 	ld [wd265], a
@@ -2093,4 +2093,4 @@ String_na: ; 132cf
 	db "---@"
 
 String_PowAcc:
-	db "/   <BOLDP>/   %@"
+	db "   <BOLDP>/   %@"
