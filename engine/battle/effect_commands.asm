@@ -8662,7 +8662,6 @@ BattleCommand_LowKick:
 
 	; skip height by inc hl twice
 	call GetPokedexEntryBank
-	push bc
 	inc hl
 	inc hl
 	call GetFarHalfword ; now we have weight in hl
