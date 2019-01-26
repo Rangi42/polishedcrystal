@@ -39,6 +39,9 @@ PlayFaintingCry:
 	ld l, a
 	ld bc, -$38
 	add hl, bc
+	jr nc, .ok
+	ld hl, 0
+.ok
 	ld a, l
 	ld [CryPitch], a
 	ld a, h
