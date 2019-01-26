@@ -3020,9 +3020,7 @@ BattleCommand_PostHitEffects:
 .rocky_helmet
 	call CheckContactMove
 	jr c, .rocky_helmet_done
-	farcall GetThirdMaxHP
-	srl b
-	rr c
+	farcall GetSixthMaxHP
 .got_hurt_item_damage
 	ld a, b
 	or c
@@ -3051,8 +3049,6 @@ BattleCommand_PostHitEffects:
 	; Ensure that the move doesn't already have a flinch rate.
 	call HasOpponentFainted
 	ret z
-	call CheckSheerForceNegation
-	ret nz
 	ld a, BATTLE_VARS_MOVE_EFFECT
 	call GetBattleVar
 	cp EFFECT_FLINCH_HIT
