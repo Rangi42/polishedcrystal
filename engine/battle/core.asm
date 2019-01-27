@@ -2060,7 +2060,7 @@ UpdateHPBar: ; 3cd3c
 .ok
 	push bc
 	ld [wWhichHPBar], a
-	predef AnimateHPBar
+	call BattleAnimateHPBar
 	pop bc
 	ret
 ; 3cd55
@@ -4984,6 +4984,18 @@ endr
 	ld [hl], $58
 	farjp FinishBattleAnim
 ; 3e127
+
+BattleAnimateHPBar:
+	predef AnimateHPBar
+	ld a, [wWhichHPBar]
+	and a
+	ld hl, wEnemyHPPal
+	jr z, .got_hp_pal
+	ld hl, wPlayerHPPal
+.got_hp_pal
+	ld a, [wCurHPAnimPal]
+	ld [hl], a
+	ret
 
 UpdatePlayerHPPal: ; 3df98
 	ld hl, wPlayerHPPal

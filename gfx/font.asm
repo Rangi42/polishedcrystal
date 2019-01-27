@@ -146,8 +146,7 @@ LoadBattleFontsHPBar: ; fb4f2
 
 LoadStatusIcons:
 	call LoadPlayerStatusIcon
-	call LoadEnemyStatusIcon
-	farjp FinishBattleAnim
+	jp LoadEnemyStatusIcon
 
 LoadPlayerStatusIcon:
 	push de

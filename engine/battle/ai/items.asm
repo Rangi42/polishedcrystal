@@ -632,7 +632,7 @@ EnemyPotionFinish: ; 38436
 	xor a
 	ld [wWhichHPBar], a
 	call AIUsedItemSound
-	predef AnimateHPBar
+	farcall BattleAnimateHPBar
 	jp AIUpdateHUD
 
 

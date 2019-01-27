@@ -7106,7 +7106,6 @@ BattleCommand_FocusEnergy: ; 36c98
 
 ; 36cb2
 
-
 BattleCommand_Recoil: ; 36cb2
 ; recoil
 
@@ -7187,7 +7186,7 @@ BattleCommand_Recoil: ; 36cb2
 	xor a
 .animate_hp_bar
 	ld [wWhichHPBar], a
-	predef AnimateHPBar
+	farcall BattleAnimateHPBar
 	call RefreshBattleHuds
 .recoil_text
 	ld hl, RecoilText
