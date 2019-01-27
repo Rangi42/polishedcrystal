@@ -13,7 +13,6 @@ WaitBGMap::
 	ld [hBGMapMode], a
 
 Delay2::
-; TODO: optimize to the point where this can do what it claims
 	ld c, 2
 
 DelayFrames::
