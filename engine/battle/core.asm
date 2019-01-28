@@ -1118,7 +1118,11 @@ HandleResidualDamage:
 	call SwitchTurn
 
 	call GetEighthMaxHP
+	push bc
 	call SubtractHPFromUser
+	pop bc
+	srl b
+	rr c
 	call SwitchTurn
 	farcall HandleBigRoot
 	ld a, $1
