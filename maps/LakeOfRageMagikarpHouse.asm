@@ -54,7 +54,7 @@ UnknownScript_0x19a6e0:
 UnknownScript_0x19a6fe:
 	writetext UnknownText_0x19a977
 	buttonsound
-	verbosegiveitem ELIXER
+	verbosegiveitem ELIXIR
 	iffalse UnknownScript_0x19a711
 	writetext UnknownText_0x19a9c3
 	waitbutton

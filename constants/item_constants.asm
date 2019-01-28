@@ -38,7 +38,7 @@
 
 	const ANTIDOTE     ; 1d
 	const BURN_HEAL    ; 1e
-	const PARLYZ_HEAL  ; 1f
+	const PARALYZEHEAL ; 1f
 	const AWAKENING    ; 20
 	const ICE_HEAL     ; 21
 	const FULL_HEAL    ; 22
@@ -49,8 +49,8 @@
 
 	const ETHER        ; 26
 	const MAX_ETHER    ; 27
-	const ELIXER       ; 28
-	const MAX_ELIXER   ; 29
+	const ELIXIR       ; 28
+	const MAX_ELIXIR   ; 29
 
 	const HP_UP        ; 2a
 	const PROTEIN      ; 2b
@@ -345,7 +345,7 @@
 	const NAM_DUSK_BALL    ; 16
 	const NAM_DUSK_STONE   ; 51
 	const NAM_ELECTIRIZER  ; db
-	const NAM_ELIXER       ; 28
+	const NAM_ELIXIR       ; 28
 	const NAM_ENERGY_ROOT  ; 3a
 	const NAM_ENERGYPOWDER ; 39
 	const NAM_EON_MAIL     ; fa
@@ -413,7 +413,7 @@
 	const NAM_MAGNET       ; 94
 	const NAM_MARANGABERRY ; 86
 	const NAM_MASTER_BALL  ; 04
-	const NAM_MAX_ELIXER   ; 29
+	const NAM_MAX_ELIXIR   ; 29
 	const NAM_MAX_ETHER    ; 27
 	const NAM_MAX_POTION   ; 1c
 	const NAM_MAX_REPEL    ; 47
@@ -445,7 +445,7 @@
 	const NAM_ORAN_BERRY   ; 79
 	const NAM_ORANGETICKET ; 6b
 	const NAM_OVAL_CHARM   ; 6f
-	const NAM_PARLYZ_HEAL  ; 1f
+	const NAM_PARALYZEHEAL ; 1f
 	const NAM_PARK_BALL    ; 0d
 	const NAM_PASS         ; 63
 	const NAM_PEARL        ; e5

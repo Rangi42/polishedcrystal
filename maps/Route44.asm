@@ -11,7 +11,7 @@ Route44_MapScriptHeader:
 	db 3 ; bg events
 	bg_event 53,  7, SIGNPOST_JUMPTEXT, Route44Sign1Text
 	bg_event  6, 10, SIGNPOST_JUMPTEXT, Route44Sign2Text
-	bg_event 32,  9, SIGNPOST_ITEM + ELIXER, EVENT_ROUTE_44_HIDDEN_ELIXER
+	bg_event 32,  9, SIGNPOST_ITEM + ELIXIR, EVENT_ROUTE_44_HIDDEN_ELIXIR
 
 	db 12 ; object events
 	object_event 32,  8, SPRITE_VETERAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_SCRIPT, 0, Route44VeteranmScript, -1

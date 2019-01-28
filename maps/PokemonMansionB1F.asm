@@ -9,7 +9,7 @@ PokemonMansionB1F_MapScriptHeader:
 	db 0 ; coord events
 
 	db 9 ; bg events
-	bg_event 26,  4, SIGNPOST_ITEM + MAX_ELIXER, EVENT_POKEMON_MANSION_B1F_HIDDEN_MAX_ELIXIR
+	bg_event 26,  4, SIGNPOST_ITEM + MAX_ELIXIR, EVENT_POKEMON_MANSION_B1F_HIDDEN_MAX_ELIXIR
 	bg_event  8, 13, SIGNPOST_READ, PokemonMansionB1FHiddenRareCandy
 	bg_event 20, 27, SIGNPOST_READ, PokemonMansionB1FHiddenBerserkGene
 	bg_event 22,  5, SIGNPOST_JUMPTEXT, PokemonMansion1FMewtwoStatueText

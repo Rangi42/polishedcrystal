@@ -183,7 +183,7 @@ if DEF(DEBUG)
 	giveitem MAX_REPEL, 99
 	giveitem MAX_REVIVE, 99
 	giveitem FULL_RESTORE, 99
-	giveitem MAX_ELIXER, 99
+	giveitem MAX_ELIXIR, 99
 	giveitem RARE_CANDY, 99
 	giveitem ESCAPE_ROPE, 99
 	giveitem SILVER_LEAF, 99

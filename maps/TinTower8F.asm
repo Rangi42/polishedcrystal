@@ -17,6 +17,6 @@ TinTower8F_MapScriptHeader:
 
 	db 3 ; object events
 	itemball_event  5, 13, BIG_NUGGET, 1, EVENT_TIN_TOWER_8F_BIG_NUGGET
-	itemball_event  9,  6, MAX_ELIXER, 1, EVENT_TIN_TOWER_8F_MAX_ELIXER
+	itemball_event  9,  6, MAX_ELIXIR, 1, EVENT_TIN_TOWER_8F_MAX_ELIXIR
 	itemball_event  1,  1, FULL_RESTORE, 1, EVENT_TIN_TOWER_8F_FULL_RESTORE
 
