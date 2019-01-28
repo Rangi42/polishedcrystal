@@ -280,281 +280,309 @@ GetSortingItemIndex:
 	push bc
 	call ItemSwitch_GetNthItem
 	ld a, [hl]
-	ld b, a
+	ld c, a
 	ld a, [wMenuCursorY]
 	dec a
 	jr z, .by_name
-	ld a, b
+	ld a, c
 	pop bc
 	ret
 .by_name
 	ld hl, ItemNameOrder
-	ld c, 0
-.loop
-	ld a, [hli]
-	cp b
-	jr z, .got_name_index
-	inc c
-	jr .loop
-.got_name_index
-	ld a, c
+	ld b, 0
+	add hl, bc
+	ld a, [hl]
 	pop bc
 	ret
 
 ItemNameOrder:
-	db NO_ITEM
-	db ABILITY_CAP  ; 4a
-	db AIR_BALLOON  ; ac
-	db AMULET_COIN  ; a1
-	db ANTIDOTE     ; 1d
-	db APICOT_BERRY ; 82
-	db APRICORN_BOX ; 71
-	db ARMOR_SUIT   ; ab
-	db ASPEAR_BERRY ; 77
-	db ASSAULT_VEST ; ad
-	db AWAKENING    ; 20
-	db BALMMUSHROOM ; e4
-	db BASEMENT_KEY ; 61
-	db BERSERK_GENE ; a4
-	db BICYCLE      ; 55
-	db BIG_MUSHROOM ; e3
-	db BIG_NUGGET   ; e1
-	db BIG_PEARL    ; e6
-	db BIG_ROOT     ; ae
-	db BINDING_BAND ; af
-	db BLACK_BELT   ; 89
-	db BLACK_SLUDGE ; cf
-	db BLACKGLASSES ; 98
-	db BLUE_CARD    ; 6a
-	db BLUESKY_MAIL ; fc
-	db BOTTLE_CAP   ; ef
-	db BRICK_PIECE  ; ea
-	db BRIGHTPOWDER ; 9a
-	db BURN_HEAL    ; 1e
-	db CALCIUM      ; 2e
-	db CARBOS       ; 2d
-	db CARD_KEY     ; 60
-	db CHARCOAL     ; 91
-	db CHERI_BERRY  ; 73
-	db CHERISH_BALL ; 18
-	db CHESTO_BERRY ; 74
-	db CHOICE_BAND  ; ca
-	db CHOICE_SCARF ; cb
-	db CHOICE_SPECS ; cc
-	db CLEANSE_TAG  ; a2
-	db CLEAR_BELL   ; 68
-	db COIN_CASE    ; 59
-	db DAMP_ROCK    ; c6
-	db DESTINY_KNOT ; b0
-	db DIRE_HIT     ; 43
-	db DIVE_BALL    ; 12
-	db DOME_FOSSIL  ; f1
-	db DRAGON_FANG  ; 97
-	db DRAGON_SCALE ; d7
-	db DUBIOUS_DISC ; d9
-	db DUSK_BALL    ; 16
-	db DUSK_STONE   ; 51
-	db ELECTIRIZER  ; db
-	db ELIXER       ; 28
-	db ENERGY_ROOT  ; 3a
-	db ENERGYPOWDER ; 39
-	db EON_MAIL     ; fa
-	db ESCAPE_ROPE  ; 48
-	db ETHER        ; 26
-	db EVERSTONE    ; 54
-	db EVIOLITE     ; b1
-	db EXP_SHARE    ; 5b
-	db EXPERT_BELT  ; b2
-	db FAST_BALL    ; 0a
-	db FIGY_BERRY   ; 7d
-	db FIRE_STONE   ; 4c
-	db FLAME_ORB    ; cd
-	db FLOWER_MAIL  ; f5
-	db FOCUS_BAND   ; 9e
-	db FOCUS_SASH   ; b3
-	db FRESH_WATER  ; 33
-	db FRIEND_BALL  ; 09
-	db FULL_HEAL    ; 22
-	db FULL_RESTORE ; 23
-	db GANLON_BERRY ; 7f
-	db GOLD_LEAF    ; ed
-	db GOOD_ROD     ; 57
-	db GREAT_BALL   ; 02
-	db GRIP_CLAW    ; b4
-	db GS_BALL      ; 69
-	db GUARD_SPEC   ; 44
-	db HARD_STONE   ; 8d
-	db HEAL_BALL    ; 14
-	db HEAL_POWDER  ; 3b
-	db HEAT_ROCK    ; c7
-	db HEAVY_BALL   ; 0b
-	db HELIX_FOSSIL ; f0
-	db HP_UP        ; 2a
-	db HYPER_POTION ; 1b
-	db ICE_HEAL     ; 21
-	db ICE_STONE    ; 53
-	db ICY_ROCK     ; c9
-	db IRON         ; 2c
-	db ITEMFINDER   ; 5a
-	db JABOCA_BERRY ; 83
-	db KEE_BERRY    ; 85
-	db KINGS_ROCK   ; 9d
-	db LEAF_STONE   ; 4b
-	db LEFTOVERS    ; 9f
-	db LEMONADE     ; 35
-	db LEPPA_BERRY  ; 78
-	db LEVEL_BALL   ; 06
-	db LIECHI_BERRY ; 7e
-	db LIFE_ORB     ; b5
-	db LIGHT_BALL   ; a5
-	db LIGHT_CLAY   ; b6
-	db LITEBLUEMAIL ; f7
-	db LOST_ITEM    ; 65
-	db LOVE_BALL    ; 0c
-	db LOVELY_MAIL  ; f9
-	db LUCKY_EGG    ; a0
-	db LUCKY_PUNCH  ; a8
-	db LUM_BERRY    ; 7b
-	db LURE_BALL    ; 07
-	db LUXURY_BALL  ; 13
-	db MACHINE_PART ; 64
-	db MACHO_BRACE  ; d0
-	db MAGMARIZER   ; dc
-	db MAGNET       ; 94
-	db MARANGABERRY ; 86
-	db MASTER_BALL  ; 04
-	db MAX_ELIXER   ; 29
-	db MAX_ETHER    ; 27
-	db MAX_POTION   ; 1c
-	db MAX_REPEL    ; 47
-	db MAX_REVIVE   ; 25
-	db MENTAL_HERB  ; c3
-	db METAL_COAT   ; 90
-	db METAL_POWDER ; a9
-	db METRONOME_I  ; b7
-	db MIRACLE_SEED ; 93
-	db MIRAGE_MAIL  ; fe
-	db MOOMOO_MILK  ; 36
-	db MOON_BALL    ; 08
-	db MOON_STONE   ; 4f
-	db MORPH_MAIL   ; fb
-	db MULCH        ; f3
-	db MUSCLE_BAND  ; b8
-	db MUSIC_MAIL   ; fd
-	db MYSTERY_EGG  ; 5c
-	db MYSTIC_WATER ; 92
-	db MYSTICTICKET ; 6c
-	db NEST_BALL    ; 10
-	db NET_BALL     ; 11
-	db NEVERMELTICE ; 96
-	db NUGGET       ; e0
-	db ODD_SOUVENIR ; df
-	db OLD_AMBER    ; f2
-	db OLD_ROD      ; 56
-	db OLD_SEA_MAP  ; 6d
-	db ORAN_BERRY   ; 79
-	db ORANGETICKET ; 6b
-	db OVAL_CHARM   ; 6f
-	db PARLYZ_HEAL  ; 1f
-	db PARK_BALL    ; 0d
-	db PASS         ; 63
-	db PEARL        ; e5
-	db PEARL_STRING ; e7
-	db PECHA_BERRY  ; 75
-	db PERSIM_BERRY ; 7a
-	db PETAYA_BERRY ; 81
-	db PEWTERCRUNCH ; 87
-	db PINK_BOW     ; 99
-	db POISON_BARB  ; 8b
-	db POKE_BALL    ; 01
-	db POKE_DOLL    ; 49
-	db PORTRAITMAIL ; f8
-	db POTION       ; 19
-	db POWER_ANKLET ; d6
-	db POWER_BAND   ; d5
-	db POWER_BELT   ; d3
-	db POWER_BRACER ; d2
-	db POWER_HERB   ; c4
-	db POWER_LENS   ; d4
-	db POWER_WEIGHT ; d1
-	db PP_MAX       ; 32
-	db PP_UP        ; 31
-	db PREMIER_BALL ; 17
-	db PROTECT_PADS ; b9
-	db PROTECTOR    ; da
-	db PROTEIN      ; 2b
-	db QUICK_BALL   ; 15
-	db QUICK_CLAW   ; 9c
-	db QUICK_POWDER ; aa
-	db RAGECANDYBAR ; 37
-	db RAINBOW_WING ; 66
-	db RARE_BONE    ; eb
-	db RARE_CANDY   ; 30
-	db RAWST_BERRY  ; 76
-	db RAZOR_CLAW   ; de
-	db RAZOR_FANG   ; dd
-	db RED_SCALE    ; 5f
-	db REPEAT_BALL  ; 0e
-	db REPEL        ; 45
-	db REVIVAL_HERB ; 3c
-	db REVIVE       ; 24
-	db ROCKY_HELMET ; ba
-	db ROWAP_BERRY  ; 84
-	db S_S_TICKET   ; 62
-	db SACRED_ASH   ; 38
-	db SAFARI_BALL  ; 05
-	db SAFE_GOGGLES ; bb
-	db SALAC_BERRY  ; 80
-	db SCOPE_LENS   ; 9b
-	db SECRETPOTION ; 5e
-	db SHARP_BEAK   ; 8a
-	db SHED_SHELL   ; bc
-	db SHELL_BELL   ; bd
-	db SHINY_CHARM  ; 6e
-	db SHINY_STONE  ; 52
-	db SILK_SCARF   ; 88
-	db SILPHSCOPE2  ; 70
-	db SILVER_LEAF  ; ec
-	db SILVER_WING  ; 67
-	db SILVERPOWDER ; 8e
-	db SITRUS_BERRY ; 7c
-	db SLOWPOKETAIL ; ee
-	db SMOKE_BALL   ; a3
-	db SMOOTH_ROCK  ; c8
-	db SODA_POP     ; 34
-	db SOFT_SAND    ; 8c
-	db SOOTHE_BELL  ; be
-	db SPELL_TAG    ; 8f
-	db SQUIRTBOTTLE ; 5d
-	db STAR_PIECE   ; e9
-	db STARDUST     ; e8
-	db STICK        ; a6
-	db SUN_STONE    ; 50
-	db SUPER_POTION ; 1a
-	db SUPER_REPEL  ; 46
-	db SUPER_ROD    ; 58
-	db SURF_MAIL    ; f6
-	db SWEET_HONEY  ; f4
-	db TERU_SAMA    ; 72
-	db THICK_CLUB   ; a7
-	db THUNDERSTONE ; 4e
-	db TIMER_BALL   ; 0f
-	db TINYMUSHROOM ; e2
-	db TOXIC_ORB    ; ce
-	db TWISTEDSPOON ; 95
-	db ULTRA_BALL   ; 03
-	db UP_GRADE     ; d8
-	db WATER_STONE  ; 4d
-	db WEAK_POLICY  ; bf
-	db WIDE_LENS    ; c0
-	db WISE_GLASSES ; c1
-	db WHITE_HERB   ; c5
-	db X_ACCURACY   ; 42
-	db X_ATTACK     ; 3d
-	db X_DEFEND     ; 3e
-	db X_SPCL_ATK   ; 40
-	db X_SPCL_DEF   ; 41
-	db X_SPEED      ; 3f
-	db ZINC         ; 2f
-	db ZOOM_LENS    ; c2
+	db 0
+
+	db NAM_POKE_BALL    ; 01
+	db NAM_GREAT_BALL   ; 02
+	db NAM_ULTRA_BALL   ; 03
+	db NAM_MASTER_BALL  ; 04
+
+	db NAM_SAFARI_BALL  ; 05
+
+	db NAM_LEVEL_BALL   ; 06
+	db NAM_LURE_BALL    ; 07
+	db NAM_MOON_BALL    ; 08
+	db NAM_FRIEND_BALL  ; 09
+	db NAM_FAST_BALL    ; 0a
+	db NAM_HEAVY_BALL   ; 0b
+	db NAM_LOVE_BALL    ; 0c
+
+	db NAM_PARK_BALL    ; 0d
+
+	db NAM_REPEAT_BALL  ; 0e
+	db NAM_TIMER_BALL   ; 0f
+	db NAM_NEST_BALL    ; 10
+	db NAM_NET_BALL     ; 11
+	db NAM_DIVE_BALL    ; 12
+	db NAM_LUXURY_BALL  ; 13
+	db NAM_HEAL_BALL    ; 14
+	db NAM_QUICK_BALL   ; 15
+	db NAM_DUSK_BALL    ; 16
+	db NAM_PREMIER_BALL ; 17
+	db NAM_CHERISH_BALL ; 18
+
+	db NAM_POTION       ; 19
+	db NAM_SUPER_POTION ; 1a
+	db NAM_HYPER_POTION ; 1b
+	db NAM_MAX_POTION   ; 1c
+
+	db NAM_ANTIDOTE     ; 1d
+	db NAM_BURN_HEAL    ; 1e
+	db NAM_PARLYZ_HEAL  ; 1f
+	db NAM_AWAKENING    ; 20
+	db NAM_ICE_HEAL     ; 21
+	db NAM_FULL_HEAL    ; 22
+	db NAM_FULL_RESTORE ; 23
+
+	db NAM_REVIVE       ; 24
+	db NAM_MAX_REVIVE   ; 25
+
+	db NAM_ETHER        ; 26
+	db NAM_MAX_ETHER    ; 27
+	db NAM_ELIXER       ; 28
+	db NAM_MAX_ELIXER   ; 29
+
+	db NAM_HP_UP        ; 2a
+	db NAM_PROTEIN      ; 2b
+	db NAM_IRON         ; 2c
+	db NAM_CARBOS       ; 2d
+	db NAM_CALCIUM      ; 2e
+	db NAM_ZINC         ; 2f
+	db NAM_RARE_CANDY   ; 30
+	db NAM_PP_UP        ; 31
+	db NAM_PP_MAX       ; 32
+
+	db NAM_FRESH_WATER  ; 33
+	db NAM_SODA_POP     ; 34
+	db NAM_LEMONADE     ; 35
+	db NAM_MOOMOO_MILK  ; 36
+	db NAM_RAGECANDYBAR ; 37
+
+	db NAM_SACRED_ASH   ; 38
+	db NAM_ENERGYPOWDER ; 39
+	db NAM_ENERGY_ROOT  ; 3a
+	db NAM_HEAL_POWDER  ; 3b
+	db NAM_REVIVAL_HERB ; 3c
+
+	db NAM_X_ATTACK     ; 3d
+	db NAM_X_DEFEND     ; 3e
+	db NAM_X_SPEED      ; 3f
+	db NAM_X_SPCL_ATK   ; 40
+	db NAM_X_SPCL_DEF   ; 41
+	db NAM_X_ACCURACY   ; 42
+	db NAM_DIRE_HIT     ; 43
+	db NAM_GUARD_SPEC   ; 44
+
+	db NAM_REPEL        ; 45
+	db NAM_SUPER_REPEL  ; 46
+	db NAM_MAX_REPEL    ; 47
+	db NAM_ESCAPE_ROPE  ; 48
+	db NAM_POKE_DOLL    ; 49
+
+	db NAM_ABILITY_CAP  ; 4a
+
+	db NAM_LEAF_STONE   ; 4b
+	db NAM_FIRE_STONE   ; 4c
+	db NAM_WATER_STONE  ; 4d
+	db NAM_THUNDERSTONE ; 4e
+	db NAM_MOON_STONE   ; 4f
+	db NAM_SUN_STONE    ; 50
+	db NAM_DUSK_STONE   ; 51
+	db NAM_SHINY_STONE  ; 52
+	db NAM_ICE_STONE    ; 53
+	db NAM_EVERSTONE    ; 54
+
+	db NAM_BICYCLE      ; 55
+	db NAM_OLD_ROD      ; 56
+	db NAM_GOOD_ROD     ; 57
+	db NAM_SUPER_ROD    ; 58
+	db NAM_COIN_CASE    ; 59
+	db NAM_ITEMFINDER   ; 5a
+	db NAM_EXP_SHARE    ; 5b
+	db NAM_MYSTERY_EGG  ; 5c
+	db NAM_SQUIRTBOTTLE ; 5d
+	db NAM_SECRETPOTION ; 5e
+	db NAM_RED_SCALE    ; 5f
+	db NAM_CARD_KEY     ; 60
+	db NAM_BASEMENT_KEY ; 61
+	db NAM_S_S_TICKET   ; 62
+	db NAM_PASS         ; 63
+	db NAM_MACHINE_PART ; 64
+	db NAM_LOST_ITEM    ; 65
+	db NAM_RAINBOW_WING ; 66
+	db NAM_SILVER_WING  ; 67
+	db NAM_CLEAR_BELL   ; 68
+	db NAM_GS_BALL      ; 69
+	db NAM_BLUE_CARD    ; 6a
+	db NAM_ORANGETICKET ; 6b
+	db NAM_MYSTICTICKET ; 6c
+	db NAM_OLD_SEA_MAP  ; 6d
+	db NAM_SHINY_CHARM  ; 6e
+	db NAM_OVAL_CHARM   ; 6f
+	db NAM_SILPHSCOPE2  ; 70
+	db NAM_APRICORN_BOX ; 71
+
+	db NAM_TERU_SAMA    ; 72
+
+	db NAM_CHERI_BERRY  ; 73
+	db NAM_CHESTO_BERRY ; 74
+	db NAM_PECHA_BERRY  ; 75
+	db NAM_RAWST_BERRY  ; 76
+	db NAM_ASPEAR_BERRY ; 77
+	db NAM_LEPPA_BERRY  ; 78
+	db NAM_ORAN_BERRY   ; 79
+	db NAM_PERSIM_BERRY ; 7a
+	db NAM_LUM_BERRY    ; 7b
+	db NAM_SITRUS_BERRY ; 7c
+	db NAM_FIGY_BERRY   ; 7d
+	db NAM_LIECHI_BERRY ; 7e
+	db NAM_GANLON_BERRY ; 7f
+	db NAM_SALAC_BERRY  ; 80
+	db NAM_PETAYA_BERRY ; 81
+	db NAM_APICOT_BERRY ; 82
+	db NAM_JABOCA_BERRY ; 83
+	db NAM_ROWAP_BERRY  ; 84
+	db NAM_KEE_BERRY    ; 85
+	db NAM_MARANGABERRY ; 86
+
+	db NAM_PEWTERCRUNCH ; 87
+
+	db NAM_SILK_SCARF   ; 88
+	db NAM_BLACK_BELT   ; 89
+	db NAM_SHARP_BEAK   ; 8a
+	db NAM_POISON_BARB  ; 8b
+	db NAM_SOFT_SAND    ; 8c
+	db NAM_HARD_STONE   ; 8d
+	db NAM_SILVERPOWDER ; 8e
+	db NAM_SPELL_TAG    ; 8f
+	db NAM_METAL_COAT   ; 90
+	db NAM_CHARCOAL     ; 91
+	db NAM_MYSTIC_WATER ; 92
+	db NAM_MIRACLE_SEED ; 93
+	db NAM_MAGNET       ; 94
+	db NAM_TWISTEDSPOON ; 95
+	db NAM_NEVERMELTICE ; 96
+	db NAM_DRAGON_FANG  ; 97
+	db NAM_BLACKGLASSES ; 98
+	db NAM_PINK_BOW     ; 99
+
+	db NAM_BRIGHTPOWDER ; 9a
+	db NAM_SCOPE_LENS   ; 9b
+	db NAM_QUICK_CLAW   ; 9c
+	db NAM_KINGS_ROCK   ; 9d
+	db NAM_FOCUS_BAND   ; 9e
+	db NAM_LEFTOVERS    ; 9f
+	db NAM_LUCKY_EGG    ; a0
+	db NAM_AMULET_COIN  ; a1
+	db NAM_CLEANSE_TAG  ; a2
+	db NAM_SMOKE_BALL   ; a3
+	db NAM_BERSERK_GENE ; a4
+
+	db NAM_LIGHT_BALL   ; a5
+	db NAM_STICK        ; a6
+	db NAM_THICK_CLUB   ; a7
+	db NAM_LUCKY_PUNCH  ; a8
+	db NAM_METAL_POWDER ; a9
+	db NAM_QUICK_POWDER ; aa
+	db NAM_ARMOR_SUIT   ; ab
+
+	db NAM_AIR_BALLOON  ; ac
+	db NAM_ASSAULT_VEST ; ad
+	db NAM_BIG_ROOT     ; ae
+	db NAM_BINDING_BAND ; af
+	db NAM_DESTINY_KNOT ; b0
+	db NAM_EVIOLITE     ; b1
+	db NAM_EXPERT_BELT  ; b2
+	db NAM_FOCUS_SASH   ; b3
+	db NAM_GRIP_CLAW    ; b4
+	db NAM_LIFE_ORB     ; b5
+	db NAM_LIGHT_CLAY   ; b6
+	db NAM_METRONOME_I  ; b7
+	db NAM_MUSCLE_BAND  ; b8
+	db NAM_PROTECT_PADS ; b9
+	db NAM_ROCKY_HELMET ; ba
+	db NAM_SAFE_GOGGLES ; bb
+	db NAM_SHED_SHELL   ; bc
+	db NAM_SHELL_BELL   ; bd
+	db NAM_SOOTHE_BELL  ; be
+	db NAM_WEAK_POLICY  ; bf
+	db NAM_WIDE_LENS    ; c0
+	db NAM_WISE_GLASSES ; c1
+	db NAM_ZOOM_LENS    ; c2
+
+	db NAM_MENTAL_HERB  ; c3
+	db NAM_POWER_HERB   ; c4
+	db NAM_WHITE_HERB   ; c5
+
+	db NAM_DAMP_ROCK    ; c6
+	db NAM_HEAT_ROCK    ; c7
+	db NAM_SMOOTH_ROCK  ; c8
+	db NAM_ICY_ROCK     ; c9
+
+	db NAM_CHOICE_BAND  ; ca
+	db NAM_CHOICE_SCARF ; cb
+	db NAM_CHOICE_SPECS ; cc
+
+	db NAM_FLAME_ORB    ; cd
+	db NAM_TOXIC_ORB    ; ce
+	db NAM_BLACK_SLUDGE ; cf
+
+	db NAM_MACHO_BRACE  ; d0
+	db NAM_POWER_WEIGHT ; d1
+	db NAM_POWER_BRACER ; d2
+	db NAM_POWER_BELT   ; d3
+	db NAM_POWER_LENS   ; d4
+	db NAM_POWER_BAND   ; d5
+	db NAM_POWER_ANKLET ; d6
+
+	db NAM_DRAGON_SCALE ; d7
+	db NAM_UP_GRADE     ; d8
+	db NAM_DUBIOUS_DISC ; d9
+	db NAM_PROTECTOR    ; da
+	db NAM_ELECTIRIZER  ; db
+	db NAM_MAGMARIZER   ; dc
+	db NAM_RAZOR_FANG   ; dd
+	db NAM_RAZOR_CLAW   ; de
+	db NAM_ODD_SOUVENIR ; df
+
+	db NAM_NUGGET       ; e0
+	db NAM_BIG_NUGGET   ; e1
+	db NAM_TINYMUSHROOM ; e2
+	db NAM_BIG_MUSHROOM ; e3
+	db NAM_BALMMUSHROOM ; e4
+	db NAM_PEARL        ; e5
+	db NAM_BIG_PEARL    ; e6
+	db NAM_PEARL_STRING ; e7
+	db NAM_STARDUST     ; e8
+	db NAM_STAR_PIECE   ; e9
+	db NAM_BRICK_PIECE  ; ea
+	db NAM_RARE_BONE    ; eb
+	db NAM_SILVER_LEAF  ; ec
+	db NAM_GOLD_LEAF    ; ed
+	db NAM_SLOWPOKETAIL ; ee
+	db NAM_BOTTLE_CAP   ; ef
+
+	db NAM_HELIX_FOSSIL ; f0
+	db NAM_DOME_FOSSIL  ; f1
+	db NAM_OLD_AMBER    ; f2
+
+	db NAM_MULCH        ; f3
+	db NAM_SWEET_HONEY  ; f4
+
+	db NAM_FLOWER_MAIL  ; f5
+	db NAM_SURF_MAIL    ; f6
+	db NAM_LITEBLUEMAIL ; f7
+	db NAM_PORTRAITMAIL ; f8
+	db NAM_LOVELY_MAIL  ; f9
+	db NAM_EON_MAIL     ; fa
+	db NAM_MORPH_MAIL   ; fb
+	db NAM_BLUESKY_MAIL ; fc
+	db NAM_MUSIC_MAIL   ; fd
+	db NAM_MIRAGE_MAIL  ; fe
 	db -1
