@@ -1,48 +1,37 @@
-SwitchItemsInBag: ; 2490c (9:490c)
+SwitchItemsInBag:
 	ld a, [wSwitchItem]
 	and a
-	jr z, .init
+	jr nz, .completeItemSwitch
+	ld a, [wScrollingMenuCursorPosition]
+	inc a
+	ld [wSwitchItem], a
+	ret
+.completeItemSwitch
 	ld b, a
 	ld a, [wScrollingMenuCursorPosition]
 	inc a
 	cp b
-	jr z, .trivial
+	jr nz, .notSwappingItemWithItself
+	xor a
+	ld [wSwitchItem], a
+	ret
+.notSwappingItemWithItself
 	ld a, [wScrollingMenuCursorPosition]
 	call ItemSwitch_GetNthItem
 	ld a, [hl]
-	cp -1
+	inc a
 	ret z
 	ld a, [wSwitchItem]
 	dec a
 	ld [wSwitchItem], a
-	call Function249a7
-	jp c, Function249d1
+	call TryCombiningSwitchItems
+	jp c, CombineSwitchItems
 	ld a, [wScrollingMenuCursorPosition]
 	ld c, a
 	ld a, [wSwitchItem]
 	cp c
-	jr c, .asm_2497a
-	jr .asm_2494a
-
-.init
-	ld a, [wScrollingMenuCursorPosition]
-	inc a
-	ld [wSwitchItem], a
-	ret
-
-.trivial
-	xor a
-	ld [wSwitchItem], a
-	ret
-
-.asm_2494a
-	ld a, [wSwitchItem]
-	call Function24a40
-	ld a, [wScrollingMenuCursorPosition]
-	ld d, a
-	ld a, [wSwitchItem]
-	ld e, a
-	call Function24a6c
+	jr c, .insertItemAbove
+	call GetSwitchItemDestinationOffset
 	push bc
 	ld a, [wSwitchItem]
 	call ItemSwitch_GetNthItem
@@ -54,21 +43,15 @@ SwitchItemsInBag: ; 2490c (9:490c)
 	ld e, l
 	pop hl
 	pop bc
-	call Function24aab
+	call SwitchItems_BackwardsCopy
 	ld a, [wScrollingMenuCursorPosition]
-	call Function24a4d
+	call CopyBufferedSwitchItemToScrollLocation
 	xor a
 	ld [wSwitchItem], a
 	ret
 
-.asm_2497a
-	ld a, [wSwitchItem]
-	call Function24a40
-	ld a, [wScrollingMenuCursorPosition]
-	ld d, a
-	ld a, [wSwitchItem]
-	ld e, a
-	call Function24a6c
+.insertItemAbove
+	call GetSwitchItemDestinationOffset
 	push bc
 	ld a, [wSwitchItem]
 	call ItemSwitch_GetNthItem
@@ -79,12 +62,12 @@ SwitchItemsInBag: ; 2490c (9:490c)
 	pop bc
 	call CopyBytes
 	ld a, [wScrollingMenuCursorPosition]
-	call Function24a4d
+	call CopyBufferedSwitchItemToScrollLocation
 	xor a
 	ld [wSwitchItem], a
 	ret
 
-Function249a7: ; 249a7 (9:49a7)
+TryCombiningSwitchItems:
 	ld a, [wSwitchItem]
 	call ItemSwitch_GetNthItem
 	ld d, h
@@ -93,24 +76,27 @@ Function249a7: ; 249a7 (9:49a7)
 	call ItemSwitch_GetNthItem
 	ld a, [de]
 	cp [hl]
-	jr nz, .asm_249cd
+	jr nz, .doNotCombineSwitchItems
+	ld a, [wMenuData2_ScrollingMenuSpacing]
+	cp 2
+	jr nz, .doNotCombineSwitchItems
 	ld a, [wScrollingMenuCursorPosition]
-	call Function24a97
+	call GetQuantityOfSwitchItem
 	cp 99
-	jr z, .asm_249cd
+	jr z, .doNotCombineSwitchItems
 	ld a, [wSwitchItem]
-	call Function24a97
+	call GetQuantityOfSwitchItem
 	cp 99
-	jr nz, .asm_249cf
-.asm_249cd
+	jr nz, .combineSwitchItems
+.doNotCombineSwitchItems
 	and a
 	ret
 
-.asm_249cf
+.combineSwitchItems
 	scf
 	ret
 
-Function249d1: ; 249d1 (9:49d1)
+CombineSwitchItems:
 	ld a, [wSwitchItem]
 	call ItemSwitch_GetNthItem
 	inc hl
@@ -122,7 +108,7 @@ Function249d1: ; 249d1 (9:49d1)
 	pop hl
 	add [hl]
 	cp 100
-	jr c, .asm_24a01
+	jr c, .mergeItemStacks
 	sub 99
 	push af
 	ld a, [wScrollingMenuCursorPosition]
@@ -138,7 +124,7 @@ Function249d1: ; 249d1 (9:49d1)
 	ld [wSwitchItem], a
 	ret
 
-.asm_24a01
+.mergeItemStacks
 	push af
 	ld a, [wScrollingMenuCursorPosition]
 	call ItemSwitch_GetNthItem
@@ -151,7 +137,7 @@ Function249d1: ; 249d1 (9:49d1)
 	ld l, a
 	ld a, [wSwitchItem]
 	cp [hl]
-	jr nz, .asm_24a25
+	jr nz, .notCombiningLastItem
 	dec [hl]
 	ld a, [wSwitchItem]
 	call ItemSwitch_GetNthItem
@@ -160,7 +146,7 @@ Function249d1: ; 249d1 (9:49d1)
 	ld [wSwitchItem], a
 	ret
 
-.asm_24a25
+.notCombiningLastItem
 	dec [hl]
 	call ItemSwitch_ConvertSpacingToDW
 	push bc
@@ -170,31 +156,33 @@ Function249d1: ; 249d1 (9:49d1)
 	push hl
 	add hl, bc
 	pop de
-.asm_24a34
+.shiftInventoryAboveLoop
 	ld a, [hli]
 	ld [de], a
 	inc de
 	cp $ff
-	jr nz, .asm_24a34
+	jr nz, .shiftInventoryAboveLoop
 	xor a
 	ld [wSwitchItem], a
 	ret
 
-Function24a40: ; 24a40 (9:4a40)
+CopySwitchItemToBuffer:
 	call ItemSwitch_GetNthItem
 	ld de, wd002
 	call ItemSwitch_ConvertSpacingToDW
-	jp CopyBytes
+	call CopyBytes
+	ret
 
-Function24a4d: ; 24a4d (9:4a4d)
+CopyBufferedSwitchItemToScrollLocation:
 	call ItemSwitch_GetNthItem
 	ld d, h
 	ld e, l
 	ld hl, wd002
 	call ItemSwitch_ConvertSpacingToDW
-	jp CopyBytes
+	call CopyBytes
+	ret
 
-ItemSwitch_GetNthItem: ; 24a5c (9:4a5c)
+ItemSwitch_GetNthItem:
 	push af
 	call ItemSwitch_ConvertSpacingToDW
 	ld hl, wMenuData2_ItemsPointerAddr
@@ -203,12 +191,17 @@ ItemSwitch_GetNthItem: ; 24a5c (9:4a5c)
 	ld l, a
 	inc hl
 	pop af
-	jp AddNTimes
+	call AddNTimes
+	ret
 
-Function24a6c: ; 24a6c (9:4a6c)
+GetSwitchItemDestinationOffset:
+	ld a, [wSwitchItem]
+	call CopySwitchItemToBuffer
 	push hl
 	call ItemSwitch_ConvertSpacingToDW
-	ld a, d
+	ld a, [wSwitchItem]
+	ld e, a
+	ld a, [wScrollingMenuCursorPosition]
 	sub e
 	jr nc, .dont_negate
 	dec a
@@ -221,30 +214,19 @@ Function24a6c: ; 24a6c (9:4a6c)
 	pop hl
 	ret
 
-ItemSwitch_ConvertSpacingToDW: ; 24a80 (9:4a80)
+ItemSwitch_ConvertSpacingToDW:
 	ld a, [wMenuData2_ScrollingMenuSpacing]
 	ld c, a
 	ld b, 0
 	ret
 
-Function24a97: ; 24a97 (9:4a97)
-	push af
-	call ItemSwitch_ConvertSpacingToDW
-	ld a, c
-	cp 2
-	jr nz, .not_2
-	pop af
+GetQuantityOfSwitchItem:
 	call ItemSwitch_GetNthItem
 	inc hl
 	ld a, [hl]
 	ret
 
-.not_2
-	pop af
-	ld a, $1
-	ret
-
-Function24aab: ; 24aab (9:4aab)
+SwitchItems_BackwardsCopy:
 .loop
 	ld a, [hld]
 	ld [de], a
