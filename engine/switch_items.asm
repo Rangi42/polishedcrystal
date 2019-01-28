@@ -170,8 +170,7 @@ CopySwitchItemToBuffer:
 	call ItemSwitch_GetNthItem
 	ld de, wd002
 	call ItemSwitch_ConvertSpacingToDW
-	call CopyBytes
-	ret
+	jp CopyBytes
 
 CopyBufferedSwitchItemToScrollLocation:
 	call ItemSwitch_GetNthItem
@@ -179,20 +178,18 @@ CopyBufferedSwitchItemToScrollLocation:
 	ld e, l
 	ld hl, wd002
 	call ItemSwitch_ConvertSpacingToDW
-	call CopyBytes
-	ret
+	jp CopyBytes
 
 ItemSwitch_GetNthItem:
-	push af
-	call ItemSwitch_ConvertSpacingToDW
+	ld c, a
+	ld b, 0
 	ld hl, wMenuData2_ItemsPointerAddr
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
 	inc hl
-	pop af
-	call AddNTimes
-	ret
+	ld a, [wMenuData2_ScrollingMenuSpacing]
+	jp AddNTimes
 
 GetSwitchItemDestinationOffset:
 	ld a, [wSwitchItem]
