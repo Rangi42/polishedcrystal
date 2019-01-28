@@ -279,18 +279,14 @@ SortItemsInBag:
 GetSortingItemIndex:
 	push bc
 	call ItemSwitch_GetNthItem
-	ld a, [hl]
-	ld c, a
 	ld a, [wMenuCursorY]
 	dec a
-	jr z, .by_name
-	ld a, c
-	pop bc
-	ret
-.by_name
-	ld hl, ItemNameOrder
+	jr nz, .done
+	ld c, [hl]
 	ld b, 0
+	ld hl, ItemNameOrder
 	add hl, bc
+.done
 	ld a, [hl]
 	pop bc
 	ret
