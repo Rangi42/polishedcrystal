@@ -240,6 +240,42 @@ Pack: ; 10000
 	; fallthrough
 
 .ItemBallsKey_LoadSubmenu: ; 101c5 (4:41c5)
+	jr z, .not_sorting
+	ld hl, Text_SortItemsHow
+	call Pack_PrintTextNoScroll
+	ld hl, wMenuData2_ItemsPointerAddr
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	push hl
+	ld a, [wMenuData2_ScrollingMenuSpacing]
+	push af
+	ld hl, MenuDataHeader_SortItems
+	ld de, Jumptable_SortItems
+	push de
+	call LoadMenuDataHeader
+	call VerticalMenu
+	call ExitMenu
+	jr nc, .no_quit
+	ld a, 3
+	ld [wMenuCursorY], a
+.no_quit
+	pop de
+	pop af
+	ld [wMenuData2_ScrollingMenuSpacing], a
+	pop bc
+	ld hl, wMenuData2_ItemsPointerAddr
+	ld a, c
+	ld [hli], a
+	ld [hl], b
+	ld h, d
+	ld l, e
+	ld a, [wMenuCursorY]
+	dec a
+	call Pack_GetJumptablePointer
+	jp hl
+
+.not_sorting
 	farcall _CheckTossableItem
 	ld a, [wItemAttributeParamBuffer]
 	and a
@@ -308,7 +344,29 @@ Pack: ; 10000
 	call Pack_GetJumptablePointer
 	jp hl
 
-; 10249 (4:4249)
+MenuDataHeader_SortItems:
+	db $40 ; flags
+	db 05, 10 ; start coords
+	db 11, 19 ; end coords
+	dw .MenuData2
+	db 1 ; default option
+
+.MenuData2:
+	db $c0 ; flags
+	db 3 ; items
+	db "By Name@"
+	db "By Type@"
+	db "Quit@"
+
+Jumptable_SortItems:
+	dw SortItemsName
+	dw SortItemsType
+	dw QuitItemSubmenu
+
+SortItemsName:
+SortItemsType:
+	farjp SortItemsInBag
+
 MenuDataHeader_UsableKeyItem: ; 0x10249
 	db $40 ; flags
 	db 01, 13 ; start coords
@@ -1199,7 +1257,7 @@ TutorialPack: ; 107bb
 ; 0x107f7
 
 .ItemsMenuData2: ; 0x107f7
-	db $ae ; flags
+	db $ee ; flags
 	db 5, 8 ; rows, columns
 	db 2 ; horizontal spacing
 	dbw 0, wDudeNumItems
@@ -1223,7 +1281,7 @@ TutorialPack: ; 107bb
 ; 0x10816
 
 .MedicineMenuData2: ; 0x10816
-	db $ae ; flags
+	db $ee ; flags
 	db 5, 8 ; rows, columns
 	db 2 ; horizontal spacing
 	dbw 0, wDudeNumMedicine
@@ -1247,7 +1305,7 @@ TutorialPack: ; 107bb
 ; 0x1084a
 
 .BallsMenuData2: ; 0x1084a
-	db $ae ; flags
+	db $ee ; flags
 	db 5, 8 ; rows, columns
 	db 2 ; horizontal spacing
 	dbw 0, wDudeNumBalls
@@ -1383,11 +1441,14 @@ Pack_InterpretJoypad: ; 108d4 (4:48d4)
 	ld a, [hl]
 	and SELECT
 	jr nz, .select
+	ld a, [hl]
+	and START
+	jr nz, .start
 	scf
 	ret
 
 .a_button
-	and a
+	xor a
 	ret
 
 .b_button
@@ -1423,6 +1484,10 @@ Pack_InterpretJoypad: ; 108d4 (4:48d4)
 	ld hl, Text_MoveItemWhere
 	call Pack_PrintTextNoScroll
 	scf
+	ret
+
+.start
+	or 1
 	ret
 
 .switching_item
@@ -1528,7 +1593,7 @@ ItemsPocketMenuDataHeader: ; 0x10a4f
 ; 0x10a57
 
 .MenuData2: ; 0x10a57
-	db $ae ; flags
+	db $ee ; flags
 	db 5, 8 ; rows, columns
 	db 2 ; horizontal spacing
 	dbw 0, wNumItems
@@ -1563,7 +1628,7 @@ MedicinePocketMenuDataHeader:
 	db 1 ; default option
 
 .MenuData2:
-	db $ae ; flags
+	db $ee ; flags
 	db 5, 8 ; rows, columns
 	db 2 ; horizontal spacing
 	dbw 0, wNumMedicine
@@ -1596,7 +1661,7 @@ BallsPocketMenuDataHeader: ; 0x10aaf
 ; 0x10ab7
 
 .MenuData2: ; 0x10ab7
-	db $ae ; flags
+	db $ee ; flags
 	db 5, 8 ; rows, columns
 	db 2 ; horizontal spacing
 	dbw 0, wNumBalls
@@ -1631,7 +1696,7 @@ BerriesPocketMenuDataHeader:
 	db 1 ; default option
 
 .MenuData2:
-	db $ae ; flags
+	db $ee ; flags
 	db 5, 8 ; rows, columns
 	db 2 ; horizontal spacing
 	dbw 0, wNumBerries
@@ -1664,7 +1729,7 @@ KeyItemsPocketMenuDataHeader: ; 0x10a7f
 ; 0x10a87
 
 .MenuData2: ; 0x10a87
-	db $ae ; flags
+	db $ee ; flags
 	db 5, 8 ; rows, columns
 	db 1 ; horizontal spacing
 	dbw 0, wNumKeyItems
@@ -1690,6 +1755,9 @@ PC_Mart_KeyItemsPocketMenuDataHeader: ; 0x10a97
 	dba PlaceMenuItemQuantity
 	dba UpdateItemIconAndDescription
 ; 10aaf
+
+Text_SortItemsHow:
+	text "Sort items how?@@"
 
 Text_ThrowAwayHowMany: ; 0x10ae4
 	; Throw away how many?

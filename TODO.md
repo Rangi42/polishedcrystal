@@ -265,7 +265,6 @@ Some of these may never be added; they're just suggestions.
    * "Being able to battle with you, the best Trainer, in the best stage... Ah! I'm really happy right now!"
    * "Oh! This is my first time battling against such a strong opponent!"
    * "Your attack was great! Let's battle again sometime!"
-* Press Start to auto-sort items in Bag
 * Select reorders Pokémon in party menu
 * Use Mart interface for selling decorations, with a red sidebar
 * Add separate throwing animation graphics for more Poké Ball designs
