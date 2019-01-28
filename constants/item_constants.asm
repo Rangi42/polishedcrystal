@@ -1,3 +1,4 @@
+	; When changing: also change ItemNameOrder and NAM_* constants
 	const_def
 	const NO_ITEM      ; 00
 
