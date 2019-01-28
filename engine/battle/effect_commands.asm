@@ -8565,10 +8565,10 @@ BattleCommand_GyroBall:
 	push bc
 	push de
 	call SwitchTurn
-	call GetSpeed
+	farcall GetSpeed
 	push bc
 	call SwitchTurn
-	call GetSpeed
+	farcall GetSpeed
 	pop de
 	; User speed in BC, target speed in DE
 
@@ -8583,7 +8583,7 @@ BattleCommand_GyroBall:
 .scaledown_loop
 	ld a, b
 	and a
-	jr nz, .scaledown_ok
+	jr z, .scaledown_ok
 	srl b
 	rr c
 	srl d
