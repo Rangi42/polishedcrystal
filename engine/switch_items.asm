@@ -235,7 +235,9 @@ SwitchItems_BackwardsCopy:
 	ret
 
 SortItemsInBag:
-; Sort items by type using bubblesort
+; Sorts items in the bag.
+; wMenuCursorY=1: by name
+; wMenuCursorY=2: by type (index order)
 	ld a, [wScrollingMenuCursorPosition]
 	push af
 	xor a
@@ -249,6 +251,19 @@ SortItemsInBag:
 	ld c, a
 	inc a
 	jr z, .done
+	ld a, [wMenuCursorY]
+	dec a
+	jr nz, .type
+	push bc
+	ld a, c
+	ld [wNamedObjectIndexBuffer], a
+	call GetItemName
+	ld hl, StringBuffer1
+	ld de, StringBuffer2
+	ld bc, ITEM_NAME_LENGTH
+	call CopyBytes
+	pop bc
+.type
 	ld a, b
 	inc a
 	push bc
@@ -258,8 +273,27 @@ SortItemsInBag:
 	inc a
 	jr z, .done
 	dec a
+	push bc
+	ld b, a
+	ld a, [wMenuCursorY]
+	dec a
+	jr nz, .type2
+	ld a, b
+	ld [wNamedObjectIndexBuffer], a
+	call GetItemName
+	ld de, StringBuffer1
+	ld hl, StringBuffer2
+	ld bc, ITEM_NAME_LENGTH
+	call StringCmp
+	pop bc
+	jr nc, .sort_ok
+	jr .sort
+.type2
+	ld a, b
+	pop bc
 	cp c
 	jr nc, .sort_ok
+.sort
 	push bc
 	ld a, b
 	ld [wScrollingMenuCursorPosition], a

@@ -244,6 +244,8 @@ Pack: ; 10000
 
 .ItemBallsKey_LoadSubmenu: ; 101c5 (4:41c5)
 	jr z, .not_sorting
+	ld hl, Text_SortItemsHow
+	call Pack_PrintTextNoScroll
 	ld hl, wMenuData2_ItemsPointerAddr
 	ld a, [hli]
 	ld h, [hl]
@@ -1773,6 +1775,9 @@ PC_Mart_KeyItemsPocketMenuDataHeader: ; 0x10a97
 	dba PlaceMenuItemQuantity
 	dba UpdateItemIconAndDescription
 ; 10aaf
+
+Text_SortItemsHow:
+	text "Sort items how?@@"
 
 Text_ThrowAwayHowMany: ; 0x10ae4
 	; Throw away how many?
