@@ -8733,14 +8733,14 @@ BattleCommand_LowKick:
 
 	; skip the pokémon "type" (seed for bulbasaur, genetic for mewtwo, etc)
 .loop
-	call GetPokedexEntryBank
+	farcall GetPokedexEntryBank
 	call GetFarByte
 	inc hl
 	cp "@"
 	jr nz, .loop
 
 	; skip height by inc hl twice
-	call GetPokedexEntryBank
+	farcall GetPokedexEntryBank
 	inc hl
 	inc hl
 	call GetFarHalfword ; now we have weight in hl
