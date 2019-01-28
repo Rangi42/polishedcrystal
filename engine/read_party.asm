@@ -214,7 +214,8 @@ endr
 	ld bc, PARTYMON_STRUCT_LENGTH
 	call AddNTimes
 	ld a, [hl]
-	and $f0
+	; $f1, not $f0, to leave Hidden Power type alone
+	and $f1
 	ld [hl], a
 	pop bc
 	pop de
