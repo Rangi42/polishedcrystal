@@ -1194,7 +1194,7 @@ TutorialPack: ; 107bb
 
 ; 107ef (4:47ef)
 .ItemsMenuDataHeader: ; 0x107ef
-	db $40 ; flags
+	db $60 ; flags
 	db 01, 07 ; start coords
 	db 11, 19 ; end coords
 	dw .ItemsMenuData2
@@ -1218,7 +1218,7 @@ TutorialPack: ; 107bb
 
 ; 1080e (4:480e)
 .MedicineMenuDataHeader: ; 0x1080e
-	db $40 ; flags
+	db $60 ; flags
 	db 01, 07 ; start coords
 	db 11, 19 ; end coords
 	dw .MedicineMenuData2
@@ -1242,7 +1242,7 @@ TutorialPack: ; 107bb
 
 ; 10842 (4:4842)
 .BallsMenuDataHeader: ; 0x10842
-	db $40 ; flags
+	db $60 ; flags
 	db 01, 07 ; start coords
 	db 11, 19 ; end coords
 	dw .BallsMenuData2
@@ -1402,6 +1402,9 @@ Pack_InterpretJoypad: ; 108d4 (4:48d4)
 	ld a, [hl]
 	and SELECT
 	jr nz, .select
+	ld a, [hl]
+	and START
+	jr nz, .start
 	scf
 	ret
 
@@ -1441,6 +1444,11 @@ Pack_InterpretJoypad: ; 108d4 (4:48d4)
 	farcall SwitchItemsInBag
 	ld hl, Text_MoveItemWhere
 	call Pack_PrintTextNoScroll
+	scf
+	ret
+
+.start
+	farcall SortItemsInBag
 	scf
 	ret
 
@@ -1540,7 +1548,7 @@ Pack_InitColors: ; 10a40
 ; 10a4f
 
 ItemsPocketMenuDataHeader: ; 0x10a4f
-	db $40 ; flags
+	db $60 ; flags
 	db 01, 07 ; start coords
 	db 11, 19 ; end coords
 	dw .MenuData2
@@ -1576,7 +1584,7 @@ PC_Mart_ItemsPocketMenuDataHeader: ; 0x10a67
 ; 10a7f
 
 MedicinePocketMenuDataHeader:
-	db $40 ; flags
+	db $60 ; flags
 	db 01, 07 ; start coords
 	db 11, 19 ; end coords
 	dw .MenuData2
@@ -1608,7 +1616,7 @@ PC_Mart_MedicinePocketMenuDataHeader:
 	dba UpdateItemIconAndDescription
 
 BallsPocketMenuDataHeader: ; 0x10aaf
-	db $40 ; flags
+	db $60 ; flags
 	db 01, 07 ; start coords
 	db 11, 19 ; end coords
 	dw .MenuData2
@@ -1644,7 +1652,7 @@ PC_Mart_BallsPocketMenuDataHeader: ; 0x10ac7
 ; 10adf
 
 BerriesPocketMenuDataHeader:
-	db $40 ; flags
+	db $60 ; flags
 	db 01, 07 ; start coords
 	db 11, 19 ; end coords
 	dw .MenuData2
@@ -1676,7 +1684,7 @@ PC_Mart_BerriesPocketMenuDataHeader:
 	dba UpdateItemIconAndDescription
 
 KeyItemsPocketMenuDataHeader: ; 0x10a7f
-	db $40 ; flags
+	db $60 ; flags
 	db 01, 07 ; start coords
 	db 11, 19 ; end coords
 	dw .MenuData2

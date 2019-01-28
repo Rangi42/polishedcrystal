@@ -236,3 +236,49 @@ SwitchItems_BackwardsCopy:
 	or c
 	jr nz, .loop
 	ret
+
+SortItemsInBag:
+; Sort items by type using bubblesort
+	ld a, [wScrollingMenuCursorPosition]
+	push af
+	xor a
+	ld b, a
+.loop
+	ld a, b
+	push bc
+	call ItemSwitch_GetNthItem
+	pop bc
+	ld a, [hl]
+	ld c, a
+	inc a
+	jr z, .done
+	ld a, b
+	inc a
+	push bc
+	call ItemSwitch_GetNthItem
+	pop bc
+	ld a, [hl]
+	inc a
+	jr z, .done
+	dec a
+	cp c
+	jr nc, .sort_ok
+	push bc
+	ld a, b
+	ld [wScrollingMenuCursorPosition], a
+	call SwitchItemsInBag
+	ld [wScrollingMenuCursorPosition], a
+	call SwitchItemsInBag
+	pop bc
+	ld a, b
+	and a
+	jr z, .loop
+	dec b
+	jr .loop
+.sort_ok
+	inc b
+	jr .loop
+.done
+	pop af
+	ld [wScrollingMenuCursorPosition], a
+	ret
