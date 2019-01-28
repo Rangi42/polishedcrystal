@@ -15,7 +15,7 @@ Route2South_MapScriptHeader:
 	db 7 ; object events
 	object_event 10, 23, SPRITE_BUG_MANIAC, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_GENERICTRAINER, 5, GenericTrainerBug_maniacRob, -1
 	object_event  0, 16, SPRITE_BUG_MANIAC, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerBug_maniacDoug, -1
-	itemball_event 14, 30, ELIXER, 1, EVENT_ROUTE_2_ELIXER
+	itemball_event 14, 30, ELIXIR, 1, EVENT_ROUTE_2_ELIXIR
 	cuttree_event 11, 16, EVENT_ROUTE_2_CUT_TREE_3
 	cuttree_event 12, 24, EVENT_ROUTE_2_CUT_TREE_4
 	cuttree_event 12, 30, EVENT_ROUTE_2_CUT_TREE_5

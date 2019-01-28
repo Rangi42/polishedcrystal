@@ -13,7 +13,7 @@ Route12South_MapScriptHeader:
 
 	db 2 ; bg events
 	bg_event 11, 43, SIGNPOST_JUMPTEXT, Route12SignText
-	bg_event 14, 15, SIGNPOST_ITEM + ELIXER, EVENT_ROUTE_12_HIDDEN_ELIXER
+	bg_event 14, 15, SIGNPOST_ITEM + ELIXIR, EVENT_ROUTE_12_HIDDEN_ELIXIR
 
 	db 13 ; object events
 	object_event  7,  7, SPRITE_FISHER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerFisherMartin, -1

@@ -25,7 +25,7 @@ QuietCaveB1F_MapScriptHeader:
 	object_event 33, 30, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerHikerSteve, -1
 	object_event  4,  7, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_PURPLE, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerPsychicVirgil, -1
 	itemball_event  8,  3, BIG_PEARL, 1, EVENT_QUIET_CAVE_B1F_BIG_PEARL
-	itemball_event 14, 13, ELIXER, 1, EVENT_QUIET_CAVE_B1F_ELIXIR
+	itemball_event 14, 13, ELIXIR, 1, EVENT_QUIET_CAVE_B1F_ELIXIR
 
 GenericTrainerBattleGirlKagami:
 	generictrainer BATTLE_GIRL, KAGAMI, EVENT_BEAT_BATTLE_GIRL_KAGAMI, BattleGirlKagamiSeenText, BattleGirlKagamiBeatenText

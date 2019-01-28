@@ -334,7 +334,7 @@ ItemNameOrder:
 
 	db NAM_ANTIDOTE     ; 1d
 	db NAM_BURN_HEAL    ; 1e
-	db NAM_PARLYZ_HEAL  ; 1f
+	db NAM_PARALYZEHEAL ; 1f
 	db NAM_AWAKENING    ; 20
 	db NAM_ICE_HEAL     ; 21
 	db NAM_FULL_HEAL    ; 22
@@ -345,8 +345,8 @@ ItemNameOrder:
 
 	db NAM_ETHER        ; 26
 	db NAM_MAX_ETHER    ; 27
-	db NAM_ELIXER       ; 28
-	db NAM_MAX_ELIXER   ; 29
+	db NAM_ELIXIR       ; 28
+	db NAM_MAX_ELIXIR   ; 29
 
 	db NAM_HP_UP        ; 2a
 	db NAM_PROTEIN      ; 2b

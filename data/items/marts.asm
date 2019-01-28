@@ -47,7 +47,7 @@ CherrygroveMart: ; 160ed
 	db 4 ; # items
 	db POTION
 	db ANTIDOTE
-	db PARLYZ_HEAL
+	db PARALYZEHEAL
 	db AWAKENING
 	db -1
 ; 160f3
@@ -58,7 +58,7 @@ CherrygroveMartAfterDex: ; 160f3
 	db HEAL_BALL
 	db POTION
 	db ANTIDOTE
-	db PARLYZ_HEAL
+	db PARALYZEHEAL
 	db AWAKENING
 	db -1
 ; 160fa
@@ -70,7 +70,7 @@ VioletMart: ; 160fa
 	db POTION
 	db ESCAPE_ROPE
 	db ANTIDOTE
-	db PARLYZ_HEAL
+	db PARALYZEHEAL
 	db AWAKENING
 	db X_ATTACK
 	db X_DEFEND
@@ -89,7 +89,7 @@ AzaleaMart: ; 16106
 	db ESCAPE_ROPE
 	db REPEL
 	db ANTIDOTE
-	db PARLYZ_HEAL
+	db PARALYZEHEAL
 	db FLOWER_MAIL
 	db -1
 ; 16111
@@ -99,7 +99,7 @@ Goldenrod2FMart1: ; 16118
 	db POTION
 	db SUPER_POTION
 	db ANTIDOTE
-	db PARLYZ_HEAL
+	db PARALYZEHEAL
 	db AWAKENING
 	db BURN_HEAL
 	db ICE_HEAL
@@ -181,7 +181,7 @@ Goldenrod5FTMMart: ; 1613b
 GoldenrodHarborMart:
 	db 8 ; # items
 	db ETHER
-	db ELIXER
+	db ELIXIR
 	db DESTINY_KNOT
 	db SCOPE_LENS
 	db WIDE_LENS
@@ -207,7 +207,7 @@ EcruteakMart: ; 1615e
 	db POTION
 	db SUPER_POTION
 	db ANTIDOTE
-	db PARLYZ_HEAL
+	db PARALYZEHEAL
 	db AWAKENING
 	db BURN_HEAL
 	db ICE_HEAL
@@ -222,7 +222,7 @@ OlivineMart: ; 16153
 	db SUPER_POTION
 	db HYPER_POTION
 	db ANTIDOTE
-	db PARLYZ_HEAL
+	db PARALYZEHEAL
 	db AWAKENING
 	db ICE_HEAL
 	db SUPER_REPEL
@@ -307,7 +307,7 @@ ViridianMart: ; 16186
 	db NET_BALL
 	db HYPER_POTION
 	db ANTIDOTE
-	db PARLYZ_HEAL
+	db PARALYZEHEAL
 	db AWAKENING
 	db BURN_HEAL
 	db FULL_HEAL
@@ -324,7 +324,7 @@ PewterMart: ; 16191
 	db SUPER_POTION
 	db SUPER_REPEL
 	db ANTIDOTE
-	db PARLYZ_HEAL
+	db PARALYZEHEAL
 	db AWAKENING
 	db BURN_HEAL
 	db -1
@@ -366,7 +366,7 @@ LavenderMart: ; 161a5
 	db SUPER_POTION
 	db MAX_REPEL
 	db ANTIDOTE
-	db PARLYZ_HEAL
+	db PARALYZEHEAL
 	db AWAKENING
 	db BURN_HEAL
 	db -1
@@ -379,7 +379,7 @@ VermilionMart: ; 161af
 	db SUPER_POTION
 	db HYPER_POTION
 	db REVIVE
-	db PARLYZ_HEAL
+	db PARALYZEHEAL
 	db AWAKENING
 	db BURN_HEAL
 	db LITEBLUEMAIL
@@ -396,7 +396,7 @@ Celadon2FMart1: ; 161b9
 	db BURN_HEAL
 	db ICE_HEAL
 	db AWAKENING
-	db PARLYZ_HEAL
+	db PARALYZEHEAL
 	db FULL_HEAL
 	db REVIVE
 	db MAX_REVIVE

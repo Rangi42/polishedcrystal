@@ -1844,7 +1844,7 @@ GetRandomPickupItem::
 	db FULL_RESTORE
 	db MAX_REVIVE
 	db PP_UP
-	db MAX_ELIXER
+	db MAX_ELIXIR
 
 .RarePickupTable:
 	db HYPER_POTION
@@ -1854,7 +1854,7 @@ GetRandomPickupItem::
 	db ETHER
 	db LUCKY_EGG
 	db DESTINY_KNOT
-	db ELIXER
+	db ELIXIR
 	db BIG_NUGGET
 	db LEFTOVERS
 	db BOTTLE_CAP

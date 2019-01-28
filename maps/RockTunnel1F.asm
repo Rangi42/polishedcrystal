@@ -21,7 +21,7 @@ RockTunnel1F_MapScriptHeader:
 
 	db 3 ; object events
 	object_event 23, 18, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerHikerSeamus, -1
-	itemball_event 21, 15, ELIXER, 1, EVENT_ROCK_TUNNEL_1F_ELIXER
+	itemball_event 21, 15, ELIXIR, 1, EVENT_ROCK_TUNNEL_1F_ELIXIR
 	itemball_event 10, 15, HP_UP, 1, EVENT_ROCK_TUNNEL_1F_HP_UP
 
 GenericTrainerHikerSeamus:

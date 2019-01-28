@@ -44,7 +44,7 @@ ItemEffects: ; e73c
 	dw RestoreHPEffect  ; MAX_POTION
 	dw HealStatusEffect ; ANTIDOTE
 	dw HealStatusEffect ; BURN_HEAL
-	dw HealStatusEffect ; PARLYZ_HEAL
+	dw HealStatusEffect ; PARALYZEHEAL
 	dw HealStatusEffect ; AWAKENING
 	dw HealStatusEffect ; ICE_HEAL
 	dw HealStatusEffect ; FULL_HEAL
@@ -53,8 +53,8 @@ ItemEffects: ; e73c
 	dw ReviveEffect     ; MAX_REVIVE
 	dw RestorePPEffect  ; ETHER
 	dw RestorePPEffect  ; MAX_ETHER
-	dw RestorePPEffect  ; ELIXER
-	dw RestorePPEffect  ; MAX_ELIXER
+	dw RestorePPEffect  ; ELIXIR
+	dw RestorePPEffect  ; MAX_ELIXIR
 	dw VitaminEffect    ; HP_UP
 	dw VitaminEffect    ; PROTEIN
 	dw VitaminEffect    ; IRON
@@ -2587,9 +2587,9 @@ RestorePPEffect: ; f5bf
 
 .loop2
 	ld a, [wd002]
-	cp MAX_ELIXER
+	cp MAX_ELIXIR
 	jp z, Elixir_RestorePPofAllMoves
-	cp ELIXER
+	cp ELIXIR
 	jp z, Elixir_RestorePPofAllMoves
 
 	ld hl, TextJump_RaiseThePPOfWhichMove
@@ -2795,7 +2795,7 @@ RestorePP: ; f6e8
 	jr nc, .dont_restore
 
 	ld a, [wd002]
-	cp MAX_ELIXER
+	cp MAX_ELIXIR
 	jr z, .restore_all
 	cp MAX_ETHER
 	jr z, .restore_all

@@ -12,7 +12,7 @@ DarkCaveVioletEntrance_MapScriptHeader:
 	coord_event  5,  2, 0, DarkCaveVioletEntranceFalknerTrigger
 
 	db 1 ; bg events
-	bg_event 26,  3, SIGNPOST_ITEM + ELIXER, EVENT_DARK_CAVE_VIOLET_ENTRANCE_HIDDEN_ELIXER
+	bg_event 26,  3, SIGNPOST_ITEM + ELIXIR, EVENT_DARK_CAVE_VIOLET_ENTRANCE_HIDDEN_ELIXIR
 
 	db 11 ; object events
 	object_event 10,  2, SPRITE_URSARING, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_DARK_CAVE_URSARING
