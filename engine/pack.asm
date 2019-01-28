@@ -1194,7 +1194,7 @@ TutorialPack: ; 107bb
 
 ; 107ef (4:47ef)
 .ItemsMenuDataHeader: ; 0x107ef
-	db $60 ; flags
+	db $40 ; flags
 	db 01, 07 ; start coords
 	db 11, 19 ; end coords
 	dw .ItemsMenuData2
@@ -1202,7 +1202,7 @@ TutorialPack: ; 107bb
 ; 0x107f7
 
 .ItemsMenuData2: ; 0x107f7
-	db $ae ; flags
+	db $ee ; flags
 	db 5, 8 ; rows, columns
 	db 2 ; horizontal spacing
 	dbw 0, wDudeNumItems
@@ -1218,7 +1218,7 @@ TutorialPack: ; 107bb
 
 ; 1080e (4:480e)
 .MedicineMenuDataHeader: ; 0x1080e
-	db $60 ; flags
+	db $40 ; flags
 	db 01, 07 ; start coords
 	db 11, 19 ; end coords
 	dw .MedicineMenuData2
@@ -1226,7 +1226,7 @@ TutorialPack: ; 107bb
 ; 0x10816
 
 .MedicineMenuData2: ; 0x10816
-	db $ae ; flags
+	db $ee ; flags
 	db 5, 8 ; rows, columns
 	db 2 ; horizontal spacing
 	dbw 0, wDudeNumMedicine
@@ -1242,7 +1242,7 @@ TutorialPack: ; 107bb
 
 ; 10842 (4:4842)
 .BallsMenuDataHeader: ; 0x10842
-	db $60 ; flags
+	db $40 ; flags
 	db 01, 07 ; start coords
 	db 11, 19 ; end coords
 	dw .BallsMenuData2
@@ -1250,7 +1250,7 @@ TutorialPack: ; 107bb
 ; 0x1084a
 
 .BallsMenuData2: ; 0x1084a
-	db $ae ; flags
+	db $ee ; flags
 	db 5, 8 ; rows, columns
 	db 2 ; horizontal spacing
 	dbw 0, wDudeNumBalls
@@ -1548,7 +1548,7 @@ Pack_InitColors: ; 10a40
 ; 10a4f
 
 ItemsPocketMenuDataHeader: ; 0x10a4f
-	db $60 ; flags
+	db $40 ; flags
 	db 01, 07 ; start coords
 	db 11, 19 ; end coords
 	dw .MenuData2
@@ -1556,7 +1556,7 @@ ItemsPocketMenuDataHeader: ; 0x10a4f
 ; 0x10a57
 
 .MenuData2: ; 0x10a57
-	db $ae ; flags
+	db $ee ; flags
 	db 5, 8 ; rows, columns
 	db 2 ; horizontal spacing
 	dbw 0, NumItems
@@ -1584,14 +1584,14 @@ PC_Mart_ItemsPocketMenuDataHeader: ; 0x10a67
 ; 10a7f
 
 MedicinePocketMenuDataHeader:
-	db $60 ; flags
+	db $40 ; flags
 	db 01, 07 ; start coords
 	db 11, 19 ; end coords
 	dw .MenuData2
 	db 1 ; default option
 
 .MenuData2:
-	db $ae ; flags
+	db $ee ; flags
 	db 5, 8 ; rows, columns
 	db 2 ; horizontal spacing
 	dbw 0, NumMedicine
@@ -1616,7 +1616,7 @@ PC_Mart_MedicinePocketMenuDataHeader:
 	dba UpdateItemIconAndDescription
 
 BallsPocketMenuDataHeader: ; 0x10aaf
-	db $60 ; flags
+	db $40 ; flags
 	db 01, 07 ; start coords
 	db 11, 19 ; end coords
 	dw .MenuData2
@@ -1624,7 +1624,7 @@ BallsPocketMenuDataHeader: ; 0x10aaf
 ; 0x10ab7
 
 .MenuData2: ; 0x10ab7
-	db $ae ; flags
+	db $ee ; flags
 	db 5, 8 ; rows, columns
 	db 2 ; horizontal spacing
 	dbw 0, NumBalls
@@ -1652,14 +1652,14 @@ PC_Mart_BallsPocketMenuDataHeader: ; 0x10ac7
 ; 10adf
 
 BerriesPocketMenuDataHeader:
-	db $60 ; flags
+	db $40 ; flags
 	db 01, 07 ; start coords
 	db 11, 19 ; end coords
 	dw .MenuData2
 	db 1 ; default option
 
 .MenuData2:
-	db $ae ; flags
+	db $ee ; flags
 	db 5, 8 ; rows, columns
 	db 2 ; horizontal spacing
 	dbw 0, NumBerries
@@ -1684,7 +1684,7 @@ PC_Mart_BerriesPocketMenuDataHeader:
 	dba UpdateItemIconAndDescription
 
 KeyItemsPocketMenuDataHeader: ; 0x10a7f
-	db $60 ; flags
+	db $40 ; flags
 	db 01, 07 ; start coords
 	db 11, 19 ; end coords
 	dw .MenuData2
@@ -1692,7 +1692,7 @@ KeyItemsPocketMenuDataHeader: ; 0x10a7f
 ; 0x10a87
 
 .MenuData2: ; 0x10a87
-	db $ae ; flags
+	db $ee ; flags
 	db 5, 8 ; rows, columns
 	db 1 ; horizontal spacing
 	dbw 0, NumKeyItems
