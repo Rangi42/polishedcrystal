@@ -176,7 +176,7 @@ endr
 ; moves?
 	ld a, [OtherTrainerType]
 	bit TRNTYPE_MOVES, a
-	jr z, .not_moves
+	jp z, .not_moves
 
 	push hl
 	ld a, [OTPartyCount]
@@ -193,6 +193,50 @@ endr
 	call GetNextTrainerDataByte
 	ld [de], a
 	inc de
+	cp RETURN
+	jr z, .return
+	cp GYRO_BALL
+	jr nz, .done_special_moves
+
+	; Set speed EVs and IVs to 0
+	push hl
+	push de
+	push bc
+	ld a, [OTPartyCount]
+	dec a
+	ld hl, OTPartyMon1SpdEV
+	ld bc, PARTYMON_STRUCT_LENGTH
+	call AddNTimes
+	ld [hl], 0
+	ld a, [OTPartyCount]
+	dec a
+	ld hl, OTPartyMon1DefSpdDV
+	ld bc, PARTYMON_STRUCT_LENGTH
+	call AddNTimes
+	ld a, [hl]
+	and $f0
+	ld [hl], a
+	pop bc
+	pop de
+	pop hl
+	jr .done_special_moves
+
+.return
+	; Maximize happiness
+	push hl
+	push de
+	push bc
+	ld a, [OTPartyCount]
+	dec a
+	ld hl, OTPartyMon1Happiness
+	ld bc, PARTYMON_STRUCT_LENGTH
+	call AddNTimes
+	ld [hl], 255
+	pop bc
+	pop de
+	pop hl
+
+.done_special_moves
 	dec b
 	jr nz, .copy_moves
 
