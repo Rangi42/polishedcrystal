@@ -898,7 +898,7 @@ BTMartConfirmPurchase:
 ; 15da5
 
 TMMartConfirmPurchase:
-	ld a, [CurTMHM]
+	ld a, [wCurTMHM]
 	ld [wd265], a
 	call GetTMHMName
 	call CopyName1
@@ -986,7 +986,7 @@ RooftopSaleAskPurchaseQuantity:
 ; 15e0e
 
 TMMartAskPurchaseQuantity:
-	ld a, [CurTMHM]
+	ld a, [wCurTMHM]
 	call CheckTMHM
 	jr c, .AlreadyHaveTM
 

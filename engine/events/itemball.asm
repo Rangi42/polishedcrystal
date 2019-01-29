@@ -87,7 +87,7 @@ FindTMHMInBallScript::
 	call CopyName2
 
 	ld a, [CurItemBallContents]
-	ld [CurTMHM], a
+	ld [wCurTMHM], a
 	call ReceiveTMHM
 	ld a, $1
 	ld [ScriptVar], a

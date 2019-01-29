@@ -300,7 +300,7 @@ ENDU
 
 CurIconMonHasItemOrMail:: ds 1
 
-CurTMHM::
+wCurTMHM::
 CurItem::
 	ds 1
 wMartItemID::
@@ -592,7 +592,7 @@ wBattleHasJustStarted:: ds 1
 
 wd265:: ; TODO: replace with meaningful labels
 wNamedObjectIndexBuffer::
-wCurTMHM::
+wCurTMHMBuffer::
 wTypeMatchup::
 wFoundMatchingIDInParty::
 	ds 1

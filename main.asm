@@ -477,7 +477,7 @@ UpdateTMHMDescriptionAndOwnership:
 	ld a, [MenuSelection]
 	cp -1
 	jr z, UpdateTMHMDescription
-	ld a, [CurTMHM]
+	ld a, [wCurTMHM]
 	call CheckTMHM
 	ld de, OwnedTMString
 	jr c, .GotString
@@ -4422,8 +4422,8 @@ PrintTMHMDescription:
 
 	ld a, [CurSpecies]
 	inc a
-	ld [CurTMHM], a
 	ld [wCurTMHM], a
+	ld [wCurTMHMBuffer], a
 	push de
 	predef GetTMHMMove
 	pop hl

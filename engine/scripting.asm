@@ -696,7 +696,7 @@ CurItemName:
 	jp GetItemName
 
 CurTMHMName:
-	ld a, [CurTMHM]
+	ld a, [wCurTMHM]
 	ld [wd265], a
 	jp GetTMHMName
 
@@ -2743,7 +2743,7 @@ Script_givetmhm:
 ; parameters:
 ;     tmhm (TMHMLabelByte)
 	call GetScriptByte
-	ld [CurTMHM], a
+	ld [wCurTMHM], a
 	ld [wItemQuantityChangeBuffer], a
 	call ReceiveTMHM
 	jr nc, .full
@@ -2761,7 +2761,7 @@ Script_checktmhm:
 	xor a
 	ld [ScriptVar], a
 	call GetScriptByte
-	ld [CurTMHM], a
+	ld [wCurTMHM], a
 	call CheckTMHM
 	ret nc
 	ld a, TRUE

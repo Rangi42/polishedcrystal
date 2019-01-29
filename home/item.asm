@@ -54,7 +54,7 @@ ReceiveItem:: ; 2f66
 ; 2f79
 
 ReceiveTMHM:: ; d3c4
-	ld a, [CurTMHM]
+	ld a, [wCurTMHM]
 	ld e, a
 	ld d, 0
 	ld b, SET_FLAG
@@ -84,7 +84,7 @@ CheckItem:: ; 2f79
 ; 2f8c
 
 CheckTMHM:: ; d3fb
-	ld a, [CurTMHM]
+	ld a, [wCurTMHM]
 	ld e, a
 	ld d, 0
 	ld b, CHECK_FLAG

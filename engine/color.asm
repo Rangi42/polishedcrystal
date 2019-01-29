@@ -155,7 +155,7 @@ LoadItemIconPalette:
 	jp FarCopyWRAM
 
 LoadTMHMIconPalette:
-	ld a, [CurTMHM]
+	ld a, [wCurTMHM]
 	cp NUM_TMS + NUM_HMS + 1
 	jr nc, .cancel
 	dec a

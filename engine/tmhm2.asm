@@ -12,7 +12,7 @@ TMHMPocket: ; 2c76f (b:476f)
 	ret nc
 	call PlaceHollowCursor
 	call WaitBGMap
-	ld a, [CurTMHM]
+	ld a, [wCurTMHM]
 	scf
 	ret
 
@@ -79,7 +79,7 @@ TMHM_ShowTMMoveDescription: ; 2c946 (b:4946)
 	call TextBox
 	farcall LoadTMHMIconPalette
 	call SetPalettes
-	ld a, [CurTMHM]
+	ld a, [wCurTMHM]
 	cp NUM_TMS + NUM_HMS + 1
 	jr nc, TMHM_JoypadLoop
 	ld [wd265], a
@@ -117,7 +117,7 @@ TMHM_CheckHoveringOverCancel: ; 2c98a (b:498a)
 	jr nz, .loop
 	ld a, c
 .okay
-	ld [CurTMHM], a
+	ld [wCurTMHM], a
 	cp -1
 	ret
 
@@ -328,15 +328,15 @@ AskTeachTMHM: ; 2c7bf (b:47bf)
 	ld a, [hl]
 	push af
 	res NO_TEXT_SCROLL, [hl]
-	ld a, [CurTMHM]
-	ld [wCurTMHM], a
-	predef GetTMHMMove
 	ld a, [wCurTMHM]
+	ld [wCurTMHMBuffer], a
+	predef GetTMHMMove
+	ld a, [wCurTMHMBuffer]
 	ld [wPutativeTMHMMove], a
 	call GetMoveName
 	call CopyName1
 	ld hl, Text_BootedTM ; Booted up a TM
-	ld a, [CurTMHM]
+	ld a, [wCurTMHM]
 	cp HM01 + 1 ; off by one error?
 	jr c, .TM
 	ld hl, Text_BootedHM ; Booted up an HM
@@ -430,7 +430,7 @@ TeachTMHM: ; 2c867
 	and a
 	jr z, .nope
 
-	ld a, [CurTMHM]
+	ld a, [wCurTMHM]
 	call IsHM
 	ret c
 
