@@ -145,11 +145,11 @@ Text_ComeBack::
 
 UnknownText_0x1c0373::
 	text "Booted up a TM."
-	prompt
+	done
 
 UnknownText_0x1c0384::
 	text "Booted up an HM."
-	prompt
+	done
 
 UnknownText_0x1c0396::
 	text "It contained"
