@@ -216,9 +216,3 @@ Text_1_2_and_Poof: ; 6684
 	text_jump UnknownText_0x1c574e
 	db "@"
 ; 669a
-
-Text_CantForgetHM: ; 669a
-; HM moves can't be forgotten now.
-	text_jump UnknownText_0x1c5772
-	db "@"
-; 669f

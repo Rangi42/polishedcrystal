@@ -146,7 +146,7 @@ RadioTerminator:: ; 1052
 
 PrintText:: ; 1057
 	call SetUpTextBox
-BuenaPrintText:: ; 105a
+PrintTextNoBox:: ; 105a
 	push hl
 	hlcoord TEXTBOX_INNERX, TEXTBOX_INNERY
 	lb bc, TEXTBOX_INNERH - 1, TEXTBOX_INNERW
