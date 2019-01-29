@@ -342,6 +342,9 @@ AskTeachTMHM: ; 2c7bf (b:47bf)
 	ld hl, Text_BootedHM ; Booted up an HM
 .TM:
 	call PrintText
+	ld de, SFX_CHOOSE_PC_OPTION
+	call WaitPlaySFX
+	call Text_WaitButton
 	ld hl, Text_ItContained
 	call PrintText
 	call YesNoBox
