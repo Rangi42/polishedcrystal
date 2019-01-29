@@ -511,6 +511,27 @@ GetQuantityInBag:
 	pop af
 	ret
 
+PlaceKeyItemName:
+; places a star near the name if registered
+	push de
+	dec de
+	dec de
+	ld a, " "
+	ld [de], a
+	ld a, [MenuSelection]
+	push bc
+	ld b, a
+	ld a, [RegisteredItem]
+	and a
+	jr z, .not_registered
+	cp b
+	jr nz, .not_registered
+	ld a, "★"
+	ld [de], a
+.not_registered
+	pop bc
+	pop de
+	; fallthrough
 PlaceMenuItemName: ; 0x24ab4
 	push de
 	ld a, [MenuSelection]

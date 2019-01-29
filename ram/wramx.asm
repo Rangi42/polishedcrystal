@@ -901,7 +901,9 @@ wPokegearFlags::
 ; bit 7: on/off
 	ds 1
 wRadioTuningKnob:: ds 1
-wLastDexMode:: ds 2
+wLastDexMode:: ds 1
+
+	ds 1 ; unused
 
 RegisteredItem:: ds 1
 
