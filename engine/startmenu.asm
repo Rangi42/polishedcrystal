@@ -1484,7 +1484,9 @@ MoveScreenLoop:
 	ld a, [hl]
 	ld [wMoveScreenSelectedMove], a
 	jr nz, .ok
+	push bc
 	call IsHMMove
+	pop bc
 	jr nc, .ok
 	ld hl, Text_CantForgetHM
 	call PrintTextNoBox
