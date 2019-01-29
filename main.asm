@@ -4274,7 +4274,7 @@ PrintTMHMDescription:
 	ld a, [wCurSpecies]
 	inc a
 	ld [wCurTMHM], a
-	ld [wCurTMHM], a
+	ld [wCurTMHMBuffer], a
 	push de
 	predef GetTMHMMove
 	pop hl

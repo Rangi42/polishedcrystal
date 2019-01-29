@@ -1757,7 +1757,8 @@ PC_Mart_KeyItemsPocketMenuDataHeader: ; 0x10a97
 ; 10aaf
 
 Text_SortItemsHow:
-	text "Sort items how?@@"
+	text "How do you want"
+	line "to sort items?@@"
 
 Text_ThrowAwayHowMany: ; 0x10ae4
 	; Throw away how many?
