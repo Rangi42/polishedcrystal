@@ -5,15 +5,24 @@ BOXMON     EQU 2
 BREEDMON   EQU 3
 WILDMON    EQU 4
 
-; wOptions1: ; cfcc
-FAST_TEXT      EQU $0
-MED_TEXT       EQU $1
-SLOW_TEXT      EQU $2
-INST_TEXT      EQU $3
+; wOptions1: text speed
+INST_TEXT      EQU $0
+FAST_TEXT      EQU $1
+MED_TEXT       EQU $2
+SLOW_TEXT      EQU $3
+
+; wOptions1: text autoscroll.
+; CheckAutoscroll relies on exact bit usage and order
+AUTOSCROLL_MASK  EQU %1100
+AUTOSCROLL_NONE  EQU %0000
+AUTOSCROLL_START EQU %0100
+AUTOSCROLL_AANDB EQU %1000
+AUTOSCROLL_AORB  EQU %1100
+
 ; bits
-NO_TEXT_SCROLL EQU 4
-STEREO         EQU 5
-BATTLE_EFFECTS EQU 6
+NO_TEXT_SCROLL EQU 5
+STEREO         EQU 6
+BATTLE_EFFECTS EQU 7
 
 ; wOptions2:
 FONT_MASK      EQU %00000111

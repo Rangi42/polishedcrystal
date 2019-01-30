@@ -220,7 +220,7 @@ PrintLetterDelay:: ; 313d
 	ld a, [wOptions1]
 	bit NO_TEXT_SCROLL, a
 	ret nz
-	and %111
+	and %11
 	ret z
 	ld a, $1
 	ld [hBGMapHalf], a
@@ -231,12 +231,14 @@ PrintLetterDelay:: ; 313d
 ; force fast scroll?
 	ld a, [wTextBoxFlags]
 	bit 0, a
-	ld a, 1
+	ld a, 2
 	jr z, .updateDelay
 ; text speed
 	ld a, [wOptions1]
-	and %111
+	and %11
+	rlca
 .updateDelay
+	dec a
 	ld [wTextDelayFrames], a
 .textDelayLoop
 	ld a, [wTextDelayFrames]
