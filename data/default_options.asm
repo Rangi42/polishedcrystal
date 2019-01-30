@@ -1,5 +1,5 @@
 DefaultOptions:
-	db %01100001 ; Options1: fast text speed, stereo sound, battle scene on
+	db %11000001 ; Options1: fast text speed, stereo sound, battle scene on
 	db $00       ; wSaveFileExists: no
 	db $00       ; TextBoxFrame: frame 0
 	db $01       ; TextBoxFlags: ?

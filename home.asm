@@ -282,17 +282,17 @@ PrintLetterDelay:: ; 313d
 ; force fast scroll?
 	ld a, [TextBoxFlags]
 	bit 0, a
-	jr z, .fast
+	ld a, 2
+	jr z, .updatedelay
 
-; text speed
+; text speed (options -> frames): 0 -> 0, 1 -> 1, 2 -> 3, 3 -> 5
 	ld a, [Options1]
-	and %111
-	jr .updatedelay
-
-.fast
-	ld a, 1
+	and %11
+	jr z, .end
+	rla
 
 .updatedelay
+	dec a
 	ld [TextDelayFrames], a
 
 .checkjoypad
