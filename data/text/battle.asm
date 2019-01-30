@@ -207,9 +207,9 @@ BattleText_UserChargedWithItem:
 
 BattleText_UsersFutureSightMissed:
 ; used when Future Sight can't hit anything because there was
-; no target
-	text "<TARGET> took"
-	line "the Future Sight!"
+; no target (so <TARGET> is undefined)
+	text "The Future Sight"
+	line "arrived!"
 
 	para "But it failed!"
 	prompt
