@@ -961,7 +961,7 @@ TN_PrintCharacteristics:
 	ld a, [hli]
 	cp "@"
 	jr z, .done
-	cp $4e
+	cp "<NL>"
 	jr z, .line
 	ld [de], a
 	inc de

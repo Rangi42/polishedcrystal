@@ -1031,11 +1031,16 @@ PCMonInfo: ; e2ac6 (38:6ac6)
 	call ClearBox
 
 	call BillsPC_GetSelectedPokemonSpecies
-	and a
-	ret z
-	cp -1
-	ret z
+	inc a
+	jr z, .no_pkmn
+	dec a
+	jr nz, .pkmn
 
+.no_pkmn
+	ld de, PCString_ChooseaPKMN
+	jp BillsPC_PlaceString
+
+.pkmn
 	ld [wd265], a
 	hlcoord 1, 4
 	xor a
@@ -1094,9 +1099,18 @@ PCMonInfo: ; e2ac6 (38:6ac6)
 
 	ld a, [wTempMonItem]
 	and a
-	ret z
+	jr nz, .has_item
+	ld de, PCString_NoHeldItem
+	jp BillsPC_PlaceString
 
+.has_item
 	ld d, a
+	push de
+	ld [wNamedObjectIndexBuffer], a
+	call GetItemName
+	ld de, wStringBuffer1
+	call BillsPC_PlaceString
+	pop de
 	call ItemIsMail
 	jr c, .mail
 	ld a, $5d ; item icon
@@ -2262,6 +2276,7 @@ PCString_Got: db "Got @"
 PCString_BoxFull: db "The Box is full.@"
 PCString_PartyFull: db "The party's full!@"
 PCString_NoReleasingEGGS: db "No releasing Eggs!@"
+PCString_NoHeldItem: db "No held item@"
 ; e35aa
 
 
