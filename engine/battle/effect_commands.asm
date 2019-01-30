@@ -7147,9 +7147,7 @@ BattleCommand_ConfuseTarget: ; 36d1d
 	ret z
 	call GetOpponentAbilityAfterMoldBreaker
 	cp OWN_TEMPO
-	jr nz, .no_own_tempo
-	farjp ShowEnemyAbilityActivation
-.no_own_tempo
+	ret z
 	ld a, [EffectFailed]
 	and a
 	ret nz
