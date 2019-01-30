@@ -215,8 +215,9 @@ BattleText_UsersFutureSightMissed:
 	prompt
 
 BattleText_TargetWasHitByFutureSight: ; 0x808b6
-	text "<TARGET> took"
-	line "the Future Sight!"
+	text "<TARGET>"
+	line "took the"
+	cont "Future Sight!"
 	prompt
 ; 0x808d2
 
