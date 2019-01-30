@@ -540,10 +540,8 @@ Options_Typeface:
 	or c
 	ld [hl], a
 	call .NonePressed
-	push bc
-	call LoadStandardFont
-	pop bc
-	ret
+	call WaitBGMap
+	jp LoadStandardFont
 
 .NonePressed:
 	ld b, 0
