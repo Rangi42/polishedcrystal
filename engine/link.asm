@@ -2102,8 +2102,6 @@ Special_TryQuickSave: ; 29e66
 	xor a
 .return_result
 	ld [ScriptVar], a
-	ld c, 30
-	call DelayFrames
 	pop af
 	ld [wd265], a
 	ret
