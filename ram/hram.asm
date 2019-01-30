@@ -48,8 +48,7 @@ hPredefTemp        EQU $ffb1
 
 ; can only use the bytes reserved for hPredefTemp in contained functions, unless you know what you're doing
 
-hBuffer2           EQU $ffb1
-hBuffer3           EQU $ffb2
+hRequestOpaque1bpp EQU $ffb1
 
 hLZAddress         EQU $ffb1
 

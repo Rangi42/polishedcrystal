@@ -226,8 +226,15 @@ Copy1bpp:: ; fa4
 	jp FarCopyBytesDouble
 ; fb6
 
-Request1bpp:: ; f1e
+RequestOpaque1bpp:
+	ld a, 1
+	ld [hRequestOpaque1bpp], a
+	jr _Request1bpp
+Request1bpp::
+	xor a
+	ld [hRequestOpaque1bpp], a
 ; Load 1bpp at b:de to occupy c tiles of hl.
+_Request1bpp:
 	ld a, [hBGMapMode]
 	push af
 	xor a
@@ -311,6 +318,9 @@ HBlankCopy1bpp:
 .innerLoop
 	pop bc
 	pop de
+	ld a, [hRequestOpaque1bpp]
+	dec a
+	jr z, .waithblank2opaque
 .waithblank2
 	ld a, [rSTAT]
 	and 3
@@ -338,6 +348,46 @@ HBlankCopy1bpp:
 	ld [hli], a
 	ld a, d
 	ld [hli], a
+	ld [hli], a
+	endr
+	ld a, [hTilesPerCycle]
+	dec a
+	ld [hTilesPerCycle], a
+	jr nz, .outerLoop
+	jr DoneHBlankCopy
+.waithblank2opaque
+	ld a, [rSTAT]
+	and 3
+	jr z, .waithblank2opaque
+.waithblankopaque
+	ld a, [rSTAT]
+	and 3
+	jr nz, .waithblankopaque
+	ld a, c
+	ld [hl], $ff
+	inc hl
+	ld [hli], a
+	ld a, b
+	ld [hl], $ff
+	inc hl
+	ld [hli], a
+	ld a, e
+	ld [hl], $ff
+	inc hl
+	ld [hli], a
+	ld a, d
+	ld [hl], $ff
+	inc hl
+	ld [hli], a
+	rept 2
+	pop de
+	ld a, e
+	ld [hl], $ff
+	inc hl
+	ld [hli], a
+	ld a, d
+	ld [hl], $ff
+	inc hl
 	ld [hli], a
 	endr
 	ld a, [hTilesPerCycle]
@@ -416,7 +466,7 @@ GetOpaque1bpp::
 	ld a, [rLCDC]
 	bit 7, a ; lcd on?
 	jr z, .CopyOpaque1bpp
-	jp Request1bpp
+	jp RequestOpaque1bpp
 
 .CopyOpaque1bpp:
 ; copy c 1bpp tiles from b:de to hl
