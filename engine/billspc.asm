@@ -1977,8 +1977,6 @@ MovePKMNWitoutMail_InsertMon: ; e31e7
 	hlcoord 1, 16
 	ld de, .Saving_LeaveOn
 	call PlaceString
-	ld c, 20
-	call DelayFrames
 	pop af
 	pop bc
 	pop de

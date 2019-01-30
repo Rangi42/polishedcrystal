@@ -17,7 +17,7 @@ SaveMenu: ; 14a1a
 	call AskOverwriteSaveFile
 	jr c, .refused
 	call SetWRAMStateForSave
-	call _SavingDontTurnOffThePower
+	call SavedTheGame
 	call ClearWRAMStateAfterSave
 	call ExitMenu
 	and a
@@ -59,7 +59,6 @@ ChangeBoxSaveGameNoConfirm:
 	push de
 SaveAndChangeBox:
 	call SetWRAMStateForSave
-;	call SavingDontTurnOffThePower
 	call SaveBox
 	pop de
 	ld a, e
@@ -74,7 +73,7 @@ Link_SaveGame: ; 14ab2
 	call AskOverwriteSaveFile
 	ret c
 	call SetWRAMStateForSave
-	call _SavingDontTurnOffThePower
+	call SavedTheGame
 	call ClearWRAMStateAfterSave
 	and a
 	ret
@@ -116,9 +115,7 @@ MovePkmnWOMail_InsertMon_SaveGame: ; 14ad5
 	call LoadBox
 	call ClearWRAMStateAfterSave
 	ld de, SFX_SAVE
-	call PlaySFX
-	ld c, 24
-	jp DelayFrames
+	jp PlaySFX
 ; 14b34
 
 StartMovePkmnWOMail_SaveGame: ; 14b34
@@ -130,7 +127,7 @@ StartMovePkmnWOMail_SaveGame: ; 14b34
 	call AskOverwriteSaveFile
 	jr c, .refused
 	call SetWRAMStateForSave
-	call _SavingDontTurnOffThePower
+	call SavedTheGame
 	call ClearWRAMStateAfterSave
 	and a
 	ret
@@ -216,32 +213,14 @@ CompareLoadedAndSavedPlayerID: ; 14bcb
 	ret
 ; 14be3
 
-_SavingDontTurnOffThePower: ; 14be3
-;	call SavingDontTurnOffThePower
 SavedTheGame: ; 14be6
 	call SaveGameData
-;	; wait 32 frames
-;	ld c, $20
-;	call DelayFrames
-;	; copy the original text speed setting to the stack
-;	ld a, [wOptions1]
-;	push af
-;	; set text speed super slow
-;	ld a, $3
-;	ld [wOptions1], a
 	; <PLAYER> saved the game!
 	ld hl, UnknownText_0x1528d
 	call PrintText
-;	; restore the original text speed setting
-;	pop af
-;	ld [wOptions1], a
 	ld de, SFX_SAVE
 	call WaitPlaySFX
-	call WaitSFX
-;	; wait 30 frames
-;	ld c, $1e
-;	call DelayFrames
-	ret
+	jp WaitSFX
 ; 14c10
 
 
@@ -279,32 +258,6 @@ SaveGameData:: ; 14c10
 	ld [hVBlank], a
 	ret
 ; 14c6b
-
-;SavingDontTurnOffThePower: ; 14c99
-;	; Prevent joypad interrupts
-;	xor a
-;	ld [hJoypadReleased], a
-;	ld [hJoypadPressed], a
-;	ld [hJoypadSum], a
-;	ld [hJoypadDown], a
-;;	; Save the text speed setting to the stack
-;;	ld a, [wOptions1]
-;;	push af
-;;	; Set the text speed to super slow
-;;	ld a, $3
-;;	ld [wOptions1], a
-;	; SAVING... DON'T TURN OFF THE POWER.
-;	ld hl, UnknownText_0x15288
-;	call PrintText
-;;	; Restore the text speed setting
-;;	pop af
-;;	ld [wOptions1], a
-;;	; Wait for 16 frames
-;;	ld c, $10
-;;	call DelayFrames
-;	ret
-;; 14cbb
-
 
 ErasePreviousSave: ; 14cbb
 	call EraseBoxes

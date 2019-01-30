@@ -71,9 +71,7 @@ HallOfFame_FadeOutMusic: ; 8648e
 	xor a
 	ld [wVramState], a
 	ld [hMapAnims], a
-	farcall InitDisplayForHallOfFame
-	ld c, 100
-	jp DelayFrames
+	farjp InitDisplayForHallOfFame
 ; 864b4
 
 HallOfFame_PlayMusicDE: ; 864b4
