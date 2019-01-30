@@ -297,11 +297,11 @@ CheckAutoscroll:
 	ret z
 
 	cp AUTOSCROLL_START
+	ld a, [hJoyDown]
 	jr z, .start
 
 	; Check A+B. If both are held, autoscroll for both A&B and A|B.
 	; Otherwise, autoscroll if the option is set to A or B, not A and B
-	ld a, [hJoyDown]
 	and A_BUTTON | B_BUTTON
 	ret z
 	cp A_BUTTON | B_BUTTON
@@ -312,7 +312,6 @@ CheckAutoscroll:
 	ret
 
 .start
-	ld a, [hJoyDown]
 	and START
 	ret
 
