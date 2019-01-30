@@ -271,16 +271,50 @@ StopAutoInput:: ; a0a
 ; a1b
 
 
-JoyWaitAorB:: ; a36
+JoyWaitAorB::
 .loop
 	call DelayFrame
 	call GetJoypad
 	ld a, [hJoyPressed]
 	and A_BUTTON | B_BUTTON
 	ret nz
+	call CheckAutoscroll
+	ret nz
 	call RTC
 	jr .loop
-; a46
+
+CheckIfAOrBPressed:
+	call JoyTextDelay
+	ld a, [hJoyLast]
+_Autoscroll:
+	and A_BUTTON | B_BUTTON
+	ret nz
+	; fallthrough
+CheckAutoscroll:
+; Returns nz if we should autoscroll
+	ld a, [Options1]
+	and AUTOSCROLL_MASK
+	ret z
+
+	cp AUTOSCROLL_START
+	jr z, .start
+
+	; Check A+B. If both are held, autoscroll for both A&B and A|B.
+	; Otherwise, autoscroll if the option is set to A or B, not A and B
+	ld a, [hJoyDown]
+	and A_BUTTON | B_BUTTON
+	ret z
+	cp A_BUTTON | B_BUTTON
+	jr z, _Autoscroll
+	ld a, [Options1]
+	; nz if AORB, z if AANDB
+	and %100
+	ret
+
+.start
+	ld a, [hJoyDown]
+	and START
+	ret
 
 WaitButton:: ; a46
 	ld a, [hOAMUpdate]
@@ -340,9 +374,7 @@ WaitPressAorB_BlinkCursor:: ; a80
 	call BlinkCursor
 	pop hl
 
-	call JoyTextDelay
-	ld a, [hJoyLast]
-	and A_BUTTON | B_BUTTON
+	call CheckIfAOrBPressed
 	jr z, .loop
 
 	pop af
@@ -352,14 +384,12 @@ WaitPressAorB_BlinkCursor:: ; a80
 	ret
 ; aa5
 
-SimpleWaitPressAorB:: ; aa5
+SimpleWaitPressAorB::
 .loop
-	call JoyTextDelay
-	ld a, [hJoyLast]
-	and A_BUTTON | B_BUTTON
-	jr z, .loop
-	ret
-; aaf
+	call CheckIfAOrBPressed
+	ret nz
+	call DelayFrame
+	jr .loop
 
 ButtonSound:: ; aaf
 	ld a, [wLinkMode]
@@ -391,9 +421,7 @@ ButtonSound:: ; aaf
 
 .input_wait_loop
 	call .blink_cursor
-	call JoyTextDelay
-	ld a, [hJoyPressed]
-	and A_BUTTON | B_BUTTON
+	call CheckIfAOrBPressed
 	jr nz, .received_input
 	call RTC
 	ld a, $1

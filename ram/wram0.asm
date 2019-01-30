@@ -1090,13 +1090,14 @@ wOBP1:: ds 1
 wNumHits:: ds 2
 
 Options1::
-; bit 0-2: number of frames to delay when printing text
-;   fast 1; mid 3; slow 5
-; bit 3: ?
-; bit 4: no text delay
-; bit 5: stereo off/on
-; bit 6: battle scene off/on
-; bit 7: unused
+; bit 0-1: text delay
+;   inst 0; fast 1; mid 2; slow 3
+; bit 2-3: text autoscroll
+;   none 0; start 1; a+b 2; a or b 3
+; bit 4: unused
+; bit 5: no text delay
+; bit 6: stereo off/on
+; bit 7: battle scene off/on
 	ds 1
 
 wSaveFileExists:: ds 1

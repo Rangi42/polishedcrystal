@@ -70,7 +70,7 @@ OptionsMenu_LoadOptions:
 StringOptions1: ; e4241
 	db "Text Speed<LNBRK>"
 	db "        :<LNBRK>"
-	db "Battle Scene<LNBRK>"
+	db "Battle Effects<LNBRK>"
 	db "        :<LNBRK>"
 	db "Battle Style<LNBRK>"
 	db "        :<LNBRK>"
@@ -90,10 +90,10 @@ StringOptions2:
 	db "        :<LNBRK>"
 	db "#dex Units<LNBRK>"
 	db "        :<LNBRK>"
+	db "Text Autoscroll<LNBRK>"
+	db "        :<LNBRK>"
 	db "Typeface<LNBRK>"
 	db "        :<LNBRK>"
-	db "<LNBRK>"
-	db "<LNBRK>"
 	db "<LNBRK>"
 	db "<LNBRK>"
 	db "<LNBRK>"
@@ -134,8 +134,8 @@ GetOptionPointer: ; e42d6
 
 	dw Options_ClockFormat
 	dw Options_PokedexUnits
+	dw Options_TextAutoscroll
 	dw Options_Typeface
-	dw Options_Unused
 	dw Options_Unused
 	dw Options_Unused
 	dw Options_NextPrevious
@@ -144,7 +144,9 @@ GetOptionPointer: ; e42d6
 
 
 Options_TextSpeed: ; e42f5
-	call GetTextSpeed
+	ld a, [Options1]
+	and %11
+	ld c, a
 	ld a, [hJoyPressed]
 	dec c
 	bit D_LEFT_F, a
@@ -191,13 +193,6 @@ Options_TextSpeed: ; e42f5
 .Instant:
 	db "Instant@"
 ; e4346
-
-
-GetTextSpeed: ; e4346
-	ld a, [Options1] ; This converts the number of frames, to 0, 1, 2 representing speed
-	and %11
-	ld c, a
-	ret
 
 
 Options_BattleEffects: ; e4365
@@ -454,6 +449,57 @@ Options_PokedexUnits:
 	db "Metric  @"
 
 
+Options_TextAutoscroll:
+	ld a, [hJoyPressed]
+	ld b, a
+	ld a, [Options1]
+	and AUTOSCROLL_MASK
+	sub 4
+	bit D_LEFT_F, b
+	jr nz, .ok
+	add 4
+	bit D_RIGHT_F, b
+	jr z, .not_changing
+	add 4
+.ok
+	and AUTOSCROLL_MASK
+	ld c, a
+	ld a, [Options1]
+	and $f3
+	or c
+	ld [Options1], a
+	ld a, c
+
+.not_changing
+	rrca
+	ld b, 0
+	ld c, a
+	ld hl, .Strings
+	add hl, bc
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	hlcoord 11, 7
+	call PlaceString
+	and a
+	ret
+
+.Strings:
+	dw .None
+	dw .Start
+	dw .AandB
+	dw .AorB
+
+.None:
+	db "None   @"
+.Start:
+	db "Start  @"
+.AandB:
+	db "A and B@"
+.AorB:
+	db "A or B @"
+
+
 Options_Typeface:
 	ld hl, Options2
 	ld a, [hl]
@@ -488,9 +534,11 @@ Options_Typeface:
 	and $ff - FONT_MASK
 	or c
 	ld [hl], a
+	call .NonePressed
 	push bc
 	call LoadStandardFont
 	pop bc
+	ret
 
 .NonePressed:
 	ld b, 0
@@ -500,7 +548,7 @@ Options_Typeface:
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	hlcoord 11, 7
+	hlcoord 11, 9
 	call PlaceString
 	and a
 	ret
@@ -586,7 +634,7 @@ OptionsControl: ; e452a
 .DownPressed:
 	ld a, [hl] ; load the cursor position to a
 
-	cp $2
+	cp $3
 	jr nz, .DownOK
 	ld a, [wCurrentOptionsPage]
 	and a
@@ -613,7 +661,7 @@ OptionsControl: ; e452a
 	and a
 	ld a, [hl]
 	jr z, .UpOK
-	ld [hl], $2 ; skip missing options on page 2
+	ld [hl], $3 ; skip missing options on page 2
 	scf
 	ret
 .UpOK
