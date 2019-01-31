@@ -37,7 +37,6 @@ ReloadMapPart:: ; 104061
 	decoord 0, 0
 	ld hl, wScratchTileMap
 	call CutAndPasteTilemap
-	call DelayFrame
 
 	di
 	ld a, [rVBK]
@@ -55,40 +54,6 @@ ReloadMapPart:: ; 104061
 	ei
 
 	ret
-
-OpenAndCloseMenu_HDMATransferTileMapAndAttrMap:: ; 104110
-; OpenText
-	ld hl, .Function
-	jp CallInSafeGFXMode
-
-.Function:
-	; Transfer wAttrMap and Tilemap to BGMap
-	; Fill vBGAttrs with $00
-	; Fill vBGTiles with " "
-	decoord 0, 0, wAttrMap
-	ld hl, wScratchAttrMap
-	call CutAndPasteAttrMap
-	decoord 0, 0
-	ld hl, wScratchTileMap
-	call CutAndPasteTilemap
-	call DelayFrame
-
-	di
-	ld a, [rVBK]
-	push af
-	ld a, $1
-	ld [rVBK], a
-	ld hl, wScratchAttrMap
-	call HDMATransfer_Wait123Scanlines_toBGMap
-	ld a, $0
-	ld [rVBK], a
-	ld hl, wScratchTileMap
-	call HDMATransfer_Wait123Scanlines_toBGMap
-	pop af
-	ld [rVBK], a
-	ei
-	ret
-; 104148
 
 BridgeTransition_HDMATransferTileMapAndAttrMap::
 	ld hl, .Function

@@ -10,20 +10,21 @@ Predef_StartBattle: ; 8c20f
 	ld hl, hVBlank
 	ld a, [hl]
 	push af
-	ld [hl], $1
+	ld [hl], 3
+	jr .handleLoop
 
 .loop
-	ld a, [wJumptableIndex]
-	bit 7, a
-	jr nz, .done
 	call FlashyTransitionToBattle
 	call DelayFrame
-	jr .loop
+.handleLoop
+	ld a, [wJumptableIndex]
+	bit 7, a
+	jr z, .loop
 
 .done
 	ld a, [rSVBK]
 	push af
-	ld a, $5
+	ld a, BANK(wUnknBGPals)
 	ld [rSVBK], a
 
 	ld hl, wUnknBGPals
@@ -55,7 +56,7 @@ endc
 	ld [hLYOverrideEnd], a
 	ld [hSCY], a
 
-	ld a, $1
+	ld a, BANK(wEnemyMon)
 	ld [rSVBK], a
 	pop af
 	ld [hVBlank], a
@@ -63,7 +64,6 @@ endc
 ; 8c26d
 
 .InitGFX: ; 8c26d
-	ld a, [wLinkMode]
 	farcall ReanchorBGMap_NoOAMUpdate
 	call UpdateSprites
 	call DelayFrame

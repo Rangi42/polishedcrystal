@@ -25,8 +25,6 @@ PushOAMCode: ; 403f
 PushOAMCodeEnd
 
 ReanchorBGMap_NoOAMUpdate:: ; 6454
-	call DelayFrame
-
 	ld a, [hOAMUpdate]
 	push af
 
@@ -46,26 +44,21 @@ ReanchorBGMap_NoOAMUpdate:: ; 6454
 	ld [hBGMapAddress + 1], a
 	xor a
 	ld [hBGMapAddress], a
-	farcall OpenAndCloseMenu_HDMATransferTileMapAndAttrMap
-
+	call BGMapAnchorTopLeft
 	farcall LoadBlindingFlashPalette
 	farcall ApplyPals
-
 	xor a
 	ld [hBGMapMode], a
 	ld [hWY], a
-	inc a
-	ld [hCGBPalUpdate], a
-	call HDMATransfer_FillBGMap0WithBlackTile
-
-	ld a, VBGMap0 / $100
-	ld [hBGMapAddress + 1], a
-	ld [wBGMapAnchor + 1], a
-	xor a
 	ld [hBGMapAddress], a
 	ld [wBGMapAnchor], a
 	ld [hSCX], a
 	ld [hSCY], a
+	inc a
+	ld [hCGBPalUpdate], a
+	ld a, VBGMap0 / $100 ; overworld
+	ld [hBGMapAddress + 1], a
+	ld [wBGMapAnchor + 1], a
 	call ApplyBGMapAnchorToObjects
 
 	pop af
@@ -90,32 +83,6 @@ LoadFonts_NoOAMUpdate:: ; 64bf
 
 	pop af
 	ld [hOAMUpdate], a
-	ret
-
-HDMATransfer_FillBGMap0WithBlackTile: ; 64db
-	ld a, [rSVBK]
-	push af
-	ld a, $6
-	ld [rSVBK], a
-
-	ld a, "<BLACK>"
-	ld hl, wScratchTileMap
-	ld bc, BG_MAP_WIDTH * BG_MAP_HEIGHT
-	call ByteFill
-	ld a, wScratchTileMap / $100
-	ld [rHDMA1], a
-	ld a, wScratchTileMap % $100
-	ld [rHDMA2], a
-	ld a, (VBGMap0 % $8000) / $100
-	ld [rHDMA3], a
-	ld a, (VBGMap0 % $8000) % $100
-	ld [rHDMA4], a
-	ld a, $3f
-	ld [hDMATransfer], a
-	call DelayFrame
-
-	pop af
-	ld [rSVBK], a
 	ret
 
 ReanchorBGMap_NoOAMUpdate_NoDelay::

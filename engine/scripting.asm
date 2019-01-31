@@ -2575,7 +2575,7 @@ Script_showtext:
 ; fallthrough
 
 Script_closetext:
-	call _OpenAndCloseMenu_HDMATransferTileMapAndAttrMap
+	call BGMapAnchorTopLeft
 	jp CloseText
 
 Script_passtoengine:
