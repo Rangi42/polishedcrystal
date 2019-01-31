@@ -7194,7 +7194,6 @@ ApplyLegendaryDVs:
 	ld b, 0
 	ld c, 6
 	call BattleRandom
-	and %11111100
 .loop
 	rlca
 	jr nc, .dont_apply
