@@ -1540,11 +1540,13 @@ MoveScreenLoop:
 	inc a
 	ld d, a
 	ld bc, PARTYMON_STRUCT_LENGTH
-	ld hl, PartyMon1Species
+	ld hl, PartyMon1IsEgg
 	call AddNTimes
 	ld a, [hl]
-	cp EGG
-	jr z, .loop_right_invalid
+	and IS_EGG_MASK
+	jr nz, .loop_right_invalid
+	ld hl, PartyMon1Species
+	call AddNTimes
 	call IsAPokemon
 	jr c, .loop_right_invalid
 	ld a, d
@@ -1574,11 +1576,13 @@ MoveScreenLoop:
 	dec a
 	ld d, a
 	ld bc, PARTYMON_STRUCT_LENGTH
-	ld hl, PartyMon1Species
+	ld hl, PartyMon1IsEgg
 	call AddNTimes
 	ld a, [hl]
-	cp EGG
-	jr z, .loop_left_invalid
+	and IS_EGG_MASK
+	jr nz, .loop_left_invalid
+	ld hl, PartyMon1Species
+	call AddNTimes
 	call IsAPokemon
 	jr c, .loop_left_invalid
 	ld a, d
