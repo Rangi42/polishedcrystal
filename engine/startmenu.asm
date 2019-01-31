@@ -1487,12 +1487,14 @@ MoveScreenLoop:
 	push bc
 	call IsHMMove
 	pop bc
+	ld a, c
 	jr nc, .ok
+	cp 4 ; selected new move
+	jr z, .ok
 	ld hl, Text_CantForgetHM
 	call PrintTextNoBox
 	jr .outer_loop
 .ok
-	ld a, c
 	inc a
 	ret
 .pressed_b
@@ -1503,11 +1505,11 @@ MoveScreenLoop:
 	ret z
 	xor a
 	ld [wMoveSwapBuffer], a
-	jr .outer_loop
+	jp .outer_loop
 .pressed_select
 	ld a, [wMoveScreenMode]
 	and a
-	jr nz, .loop
+	jp nz, .loop
 .swap_move
 	; check if we are in swap mode
 	ld a, [wMoveSwapBuffer]
@@ -1545,12 +1547,14 @@ MoveScreenLoop:
 	call AddNTimes
 	ld a, [hl]
 	and IS_EGG_MASK
+	ld a, d
 	jr nz, .loop_right_invalid
 	ld hl, wPartyMon1Species
 	call AddNTimes
+	ld a, [hl]
 	call IsAPokemon
-	jr c, .loop_right_invalid
 	ld a, d
+	jr c, .loop_right_invalid
 	ld [wCurPartyMon], a
 	jp MoveScreenLoop
 .loop_right_invalid
@@ -1581,16 +1585,17 @@ MoveScreenLoop:
 	call AddNTimes
 	ld a, [hl]
 	and IS_EGG_MASK
+	ld a, d
 	jr nz, .loop_left_invalid
 	ld hl, wPartyMon1Species
 	call AddNTimes
+	ld a, [hl]
 	call IsAPokemon
-	jr c, .loop_left_invalid
 	ld a, d
+	jr c, .loop_left_invalid
 	ld [wCurPartyMon], a
 	jp MoveScreenLoop
 .loop_left_invalid
-	ld a, d
 	and a
 	jp z, .loop
 	jr .loop_left
