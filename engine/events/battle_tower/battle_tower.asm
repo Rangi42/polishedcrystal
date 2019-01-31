@@ -672,16 +672,16 @@ Function_UberRestriction:
 .loop
 	push af
 	ld a, [de]
-	cp MEWTWO
-	jr z, .uber
-	cp MEW
-	jr z, .uber
-	cp LUGIA
-	jr z, .uber
-	cp HO_OH
-	jr z, .uber
-	cp CELEBI
-	jr nz, .next
+	push bc
+	push de
+	push hl
+	ld de, 1
+	ld hl, UberMons
+	call IsInArray
+	pop bc
+	pop de
+	pop hl
+	jr nc, .next
 .uber
 	ld a, [hl]
 	cp 70

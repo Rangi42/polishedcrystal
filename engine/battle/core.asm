@@ -6774,7 +6774,9 @@ endc
 	call BattleRandom
 	ld [hli], a
 	call BattleRandom
-	ld [hli], a
+	ld [hl], a
+	call ApplyLegendaryDVs
+	inc hl
 
 	; Random nature from 0 to 24
 	; 50% chance of same nature with Synchronize ability
@@ -7175,6 +7177,58 @@ endr
 	ld bc, PKMN_NAME_LENGTH
 	jp CopyBytes
 
+ApplyLegendaryDVs:
+	push de
+	push bc
+	push hl
+	ld a, [CurPartySpecies]
+	ld de, 1
+	ld hl, LegendaryMons
+	call IsInArray
+	pop hl
+	jr nc, .done
+	push hl
+
+	; Generate 3 random stats to give perfect DVs to
+.outer_loop
+	ld b, 0
+	ld c, 6
+	call BattleRandom
+	and %11111100
+.loop
+	rlca
+	jr nc, .dont_apply
+	inc b
+.dont_apply
+	dec c
+	jr nz, .loop
+	ld c, a
+	ld a, b
+	cp 3
+	jr nz, .outer_loop
+
+	; Apply perfect DVs to the resulting stats
+.stat_loop
+	rrc c
+	jr nc, .skip_low_nibble
+	ld a, [hl]
+	or $f
+	ld [hl], a
+.skip_low_nibble
+	rrc c
+	jr nc, .skip_high_nibble
+	ld a, [hl]
+	or $f0
+	ld [hl], a
+.skip_high_nibble
+	dec hl
+	dec b
+	jr nz, .stat_loop
+	pop hl
+.done
+	pop bc
+	pop de
+	ret
 
 CheckSleepingTreeMon: ; 3eb38
 ; Return carry if species is in the list
