@@ -326,6 +326,7 @@ Movement_step_sleep: ; 5242
 Movement_step_sleep_common: ; 5247
 	ld hl, OBJECT_STEP_DURATION
 	add hl, bc
+	add a, a
 	ld [hl], a
 
 	ld hl, OBJECT_STEP_TYPE
