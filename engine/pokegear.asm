@@ -2841,6 +2841,7 @@ TownMapFlips:
 TownMapMon: ; 91f7b
 ; Draw the FlyMon icon at town map location in
 
+	farcall LoadFlyMonColor
 ; Get FlyMon species
 	ld a, [wCurPartyMon]
 	ld hl, wPartySpecies
@@ -2854,7 +2855,7 @@ TownMapMon: ; 91f7b
 	farcall PokegearFlyMap_GetMonIcon
 ; Animation/palette
 	depixel 0, 0
-	ld a, SPRITE_ANIM_INDEX_PARTY_MON
+	ld a, SPRITE_ANIM_INDEX_FLY_MON
 	call _InitSpriteAnimStruct
 	ld hl, SPRITEANIMSTRUCT_TILE_ID
 	add hl, bc
