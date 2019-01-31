@@ -44,6 +44,7 @@ LoadFlyMonColor:
 	push af
 	ld a, MON_SPECIES
 	call GetPartyParamLocation
+	ld a, [hl]
 	ld [CurPartySpecies], a
 	ld a, MON_SHINY
 	call GetPartyParamLocation
