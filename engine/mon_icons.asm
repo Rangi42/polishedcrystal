@@ -37,6 +37,25 @@ SetMenuMonIconColor_NoShiny:
 	call GetMenuMonIconPalette_PredeterminedShininess
 	jr ProcessMenuMonIconColor
 
+LoadFlyMonColor:
+	push hl
+	push de
+	push bc
+	push af
+	ld a, MON_SPECIES
+	call GetPartyParamLocation
+	ld [CurPartySpecies], a
+	ld a, MON_SHINY
+	call GetPartyParamLocation
+	call GetMenuMonIconPalette
+	and $7
+	ld [wFlyMonPal], a
+	pop af
+	pop bc
+	pop de
+	pop hl
+	ret
+
 LoadPartyMenuMonIconColors:
 	push hl
 	push de

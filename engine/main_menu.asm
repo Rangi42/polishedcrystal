@@ -1,7 +1,5 @@
 MainMenu: ; 49cdc
 	call DeleteSavedMusic
-	xor a
-	ld [wDisableTextAcceleration], a
 	call Function49ed0
 	ld b, CGB_DIPLOMA
 	call GetCGBLayout

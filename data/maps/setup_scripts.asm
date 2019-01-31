@@ -147,7 +147,6 @@ MapSetupScript_LinkReturn: ; 153f7
 	db map_fade_in_palettes
 	db map_animations_on
 	db map_wildmons
-	db map_text_scroll_off
 	db map_end
 
 MapSetupScript_Continue: ; 15408

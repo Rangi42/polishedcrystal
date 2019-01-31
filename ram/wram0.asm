@@ -134,7 +134,9 @@ wMapTimeOfDay:: ds 1
 wPrinterConnectionOpen:: ds 1
 wPrinterOpcode:: ds 1
 wLastDexEntry:: ds 1
-wDisableTextAcceleration:: ds 1
+
+wFlyMonPal:: ds 1
+
 wPreviousLandmark:: ds 1
 wCurrentLandmark:: ds 1
 wLandmarkSignTimer:: ds 2

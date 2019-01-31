@@ -262,10 +262,6 @@ Gen2ToGen2LinkComms: ; 28177
 	ld bc, NAME_LENGTH
 	call CopyBytes
 	call ReturnToMapFromSubmenu
-	ld a, [wDisableTextAcceleration]
-	push af
-	ld a, $1
-	ld [wDisableTextAcceleration], a
 	ld a, [rIE]
 	push af
 	ld a, [rIF]
@@ -286,8 +282,6 @@ Gen2ToGen2LinkComms: ; 28177
 	ld [rIE], a
 	ld a, h
 	ld [rIF], a
-	pop af
-	ld [wDisableTextAcceleration], a
 	pop af
 	ld [Options2], a
 	farcall LoadPokemonData

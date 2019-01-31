@@ -105,16 +105,9 @@ MapSetupCommands: ; 15440
 	dba ActivateMapAnims ; 29
 	dba SuspendMapAnims ; 2a
 	dba RetainOldPalettes ; 2b
-	dba DontScrollText ; 2c
-	dba ReturnFromMapSetupScript ; 2d
+	dba ReturnFromMapSetupScript ; 2c
 ; 154ca
 
-
-DontScrollText: ; 154ca
-	xor a
-	ld [wDisableTextAcceleration], a
-	ret
-; 154cf
 
 ActivateMapAnims: ; 154cf
 	ld a, $1
