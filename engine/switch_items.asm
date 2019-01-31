@@ -281,7 +281,7 @@ GetSortingItemIndex:
 	call ItemSwitch_GetNthItem
 	ld a, [wMenuCursorY]
 	dec a
-	jr nz, .done
+	jr z, .done
 	ld c, [hl]
 	ld b, 0
 	ld hl, ItemNameOrder
