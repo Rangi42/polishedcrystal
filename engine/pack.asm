@@ -354,8 +354,8 @@ MenuDataHeader_SortItems:
 .MenuData2:
 	db $c0 ; flags
 	db 3 ; items
-	db "By Name@"
 	db "By Type@"
+	db "By Name@"
 	db "Quit@"
 
 Jumptable_SortItems:
@@ -363,8 +363,8 @@ Jumptable_SortItems:
 	dw SortItemsType
 	dw QuitItemSubmenu
 
-SortItemsName:
 SortItemsType:
+SortItemsName:
 	farjp SortItemsInBag
 
 MenuDataHeader_UsableKeyItem: ; 0x10249

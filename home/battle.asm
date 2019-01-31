@@ -346,6 +346,21 @@ GetOpponentAbilityAfterMoldBreaker:: ; 39e1
 	pop de
 	ret
 
+LegendaryMons::
+	db ARTICUNO
+	db ZAPDOS
+	db MOLTRES
+	db RAIKOU
+	db ENTEI
+	db SUICUNE
+UberMons::
+	db MEWTWO
+	db MEW
+	db LUGIA
+	db HO_OH
+	db CELEBI
+	db -1
+
 MoldBreakerSuppressedAbilities:
 	db BATTLE_ARMOR
 	db BIG_PECKS

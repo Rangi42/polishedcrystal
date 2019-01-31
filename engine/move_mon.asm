@@ -190,6 +190,11 @@ endr
 	call Random
 	ld [wDVAndPersonalityBuffer + 2], a
 
+	push hl
+	ld hl, wDVAndPersonalityBuffer + 2
+	farcall ApplyLegendaryDVs
+	pop hl
+
 ; Random nature from 0 to 24
 ; This overwrites the base data struct, so reload it afterwards
 	ld a, [wCurSpecies]
