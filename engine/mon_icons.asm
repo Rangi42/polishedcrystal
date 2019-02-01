@@ -50,7 +50,7 @@ LoadFlyMonColor:
 	call GetPartyParamLocation
 	call GetMenuMonIconPalette
 	ld hl, Sprites + 3
-	jp _LoadPartyMenuMonIconColors
+	jr _LoadPartyMenuMonIconColors
 
 LoadPartyMenuMonIconColors:
 	push hl
