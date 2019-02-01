@@ -49,13 +49,8 @@ LoadFlyMonColor:
 	ld a, MON_SHINY
 	call GetPartyParamLocation
 	call GetMenuMonIconPalette
-	and $7
-	ld [wFlyMonPal], a
-	pop af
-	pop bc
-	pop de
-	pop hl
-	ret
+	ld hl, Sprites + 3
+	jp _LoadPartyMenuMonIconColors
 
 LoadPartyMenuMonIconColors:
 	push hl
@@ -66,6 +61,7 @@ LoadPartyMenuMonIconColors:
 	ld a, [PartyCount]
 	sub c
 	ld [CurPartyMon], a
+
 	ld d, 0
 	ld e, a
 
@@ -93,6 +89,7 @@ LoadPartyMenuMonIconColors:
 	add hl, de
 	pop af
 
+_LoadPartyMenuMonIconColors:
 	ld de, 4
 	ld [hl], a
 	add hl, de

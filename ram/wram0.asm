@@ -135,7 +135,7 @@ wPrinterConnectionOpen:: ds 1
 wPrinterOpcode:: ds 1
 wLastDexEntry:: ds 1
 
-wFlyMonPal:: ds 1
+	ds 1
 
 wPreviousLandmark:: ds 1
 wCurrentLandmark:: ds 1

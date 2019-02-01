@@ -2855,7 +2855,7 @@ TownMapMon: ; 91f7b
 	farcall PokegearFlyMap_GetMonIcon
 ; Animation/palette
 	depixel 0, 0
-	ld a, SPRITE_ANIM_INDEX_FLY_MON
+	ld a, SPRITE_ANIM_INDEX_PARTY_MON
 	call _InitSpriteAnimStruct
 	ld hl, SPRITEANIMSTRUCT_TILE_ID
 	add hl, bc
