@@ -291,11 +291,7 @@ UpdateAnimFrame: ; 8d04c
 	ld a, [hl]
 	cp -1 ; this lets the party menu icons keep their dynamic color attribute
 	jr z, .skipOAMAttributes
-	cp -2
-	jr nz, .normal_load
-	ld a, [wFlyMonPal]
-.normal_load
-	call nz, GetSpriteOAMAttr
+	call GetSpriteOAMAttr
 	ld [de], a
 .skipOAMAttributes
 	inc hl
