@@ -438,8 +438,20 @@ Paragraph:: ; 12f2
 	lb bc, TEXTBOX_INNERH - 1, TEXTBOX_INNERW
 	call ClearBox
 	call UnloadBlinkingCursor
-	ld c, 20
+	ld a, [Options1]
+	bit NO_TEXT_SCROLL, a
+	jr nz, .skipdelay
+	and %11
+	jr z, .skipdelay
+	ld c, 5
+.loop
+	dec a
+	jr z, .got_delay
+	sla c
+	jr .loop
+.got_delay
 	call DelayFrames
+.skipdelay
 	hlcoord TEXTBOX_INNERX, TEXTBOX_INNERY
 	pop de
 	jp NextChar
