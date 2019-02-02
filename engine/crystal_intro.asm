@@ -1381,7 +1381,7 @@ IntroScene27: ; e512d (39:512d)
 
 .done
 	call NextIntroScene
-	ld a, $80
+	ld a, $ff
 	ld [wIntroSceneFrameCounter], a
 	ret
 
@@ -1392,9 +1392,9 @@ IntroScene28: ; e5152 (39:5152)
 	and a
 	jr z, .done
 	dec [hl]
-	cp $18
+	cp $30
 	jr z, .clear
-	cp $8
+	cp $10
 	ret nz
 
 	ld de, SFX_TITLE_SCREEN_INTRO
@@ -2035,8 +2035,8 @@ endc
 	ld [rSVBK], a
 	ld a, $1
 	ld [hCGBPalUpdate], a
-	call DelayFrame
-	jp DelayFrame
+	ld c, 64
+	jp DelayFrames
 
 Intro_DecompressRequest2bpp_64Tiles: ; e54fa (39:54fa)
 	lb bc, 1, 64
