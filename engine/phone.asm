@@ -542,13 +542,13 @@ Phone_StartRinging: ; 9033f
 	call PlaySFX
 	call Phone_CallerTextbox
 	call UpdateSprites
-	jp CopyTilemapAtOnce
+	jp ApplyTilemap
 
 HangUp_Wait20Frames: ; 90355
 Phone_Wait20Frames:
 	ld c, 20
 	call DelayFrames
-	jp CopyTilemapAtOnce
+	jp ApplyTilemap
 
 Function90363: ; 90363 (24:4363)
 	push bc
