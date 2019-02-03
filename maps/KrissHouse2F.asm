@@ -20,7 +20,7 @@ KrissHouse2F_MapScriptHeader:
 	object_event  4,  2, SPRITE_CONSOLE, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GameConsole, EVENT_KRISS_HOUSE_2F_CONSOLE
 	object_event  4,  4, SPRITE_DOLL_1, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Doll1, EVENT_KRISS_HOUSE_2F_DOLL_1
 	object_event  5,  4, SPRITE_DOLL_2, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Doll2, EVENT_KRISS_HOUSE_2F_DOLL_2
-	object_event  0,  1, SPRITE_BIG_DOLL, SPRITEMOVEDATA_BIGDOLL, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, wBigDoll, EVENT_KRISS_HOUSE_2F_BIG_DOLL
+	object_event  0,  1, SPRITE_BIG_DOLL, SPRITEMOVEDATA_BIGDOLL, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BigDoll, EVENT_KRISS_HOUSE_2F_BIG_DOLL
 
 KrissHouse2FInitializeRoom:
 	special ToggleDecorationsVisibility
@@ -42,7 +42,7 @@ Doll1:
 Doll2:
 	describedecoration 2
 
-wBigDoll:
+BigDoll:
 	describedecoration 3
 
 GameConsole:
@@ -69,28 +69,18 @@ if DEF(DEBUG)
 	; pokedex
 	setflag ENGINE_POKEDEX
 	setflag ENGINE_UNOWN_DEX
-	; all hms
-	givetmhm HM_CUT
-	givetmhm HM_FLY
-	givetmhm HM_SURF
-	givetmhm HM_STRENGTH
-	givetmhm HM_WATERFALL
-	givetmhm HM_WHIRLPOOL
-	; tms for party
-	givetmhm TM_ICE_BEAM
-	givetmhm TM_BLIZZARD
-	givetmhm TM_FLAMETHROWER
-	givetmhm TM_FIRE_BLAST
-	givetmhm TM_THUNDERBOLT
-	givetmhm TM_THUNDER
-	givetmhm TM_PSYCHIC
-	givetmhm TM_SHADOW_BALL
-	givetmhm TM_EARTHQUAKE
-	givetmhm TM_SWORDS_DANCE
-	givetmhm TM_CALM_MIND
-	givetmhm TM_BULK_UP
-	givetmhm TM_ROCK_SMASH
-	givetmhm TM_FLASH
+	; all tms+hms
+x = 0
+rept NUM_TMS + NUM_HMS
+	givetmhm x
+x = x + 1
+endr
+	; all items
+x = 1
+rept $fe
+	giveitem x, 99
+x = x + 1
+endr
 	; max money
 	givemoney $0, 1000000
 	givemoney $0, 1000000
@@ -102,7 +92,6 @@ if DEF(DEBUG)
 	givemoney $0, 1000000
 	givemoney $0, 1000000
 	givemoney $0, 999999
-	giveitem COIN_CASE
 	givecoins 50000
 	loadvar wBattlePoints, 250
 	; all badges
@@ -171,34 +160,8 @@ if DEF(DEBUG)
 	setflag ENGINE_FLYPOINT_CINNABAR
 	; magnet train works
 	setevent EVENT_RESTORED_POWER_TO_KANTO
-	giveitem PASS
-	; cycling road works
-	giveitem BICYCLE
-	; useful items
-	giveitem ITEMFINDER
-	giveitem APRICORN_BOX
-	giveitem SQUIRTBOTTLE
-	giveitem MYSTICTICKET
-	giveitem OLD_SEA_MAP
-	giveitem MAX_REPEL, 99
-	giveitem MAX_REVIVE, 99
-	giveitem FULL_RESTORE, 99
-	giveitem MAX_ELIXIR, 99
-	giveitem RARE_CANDY, 99
-	giveitem ESCAPE_ROPE, 99
-	giveitem SILVER_LEAF, 99
-	giveitem GOLD_LEAF, 99
-	giveitem HP_UP, 99
-	giveitem PP_UP, 99
-	giveitem PROTEIN, 99
-	giveitem IRON, 99
-	giveitem CARBOS, 99
-	giveitem CALCIUM, 99
-	giveitem ZINC, 99
-	giveitem MASTER_BALL, 99
-	giveitem EXP_SHARE, 2
+	; post-e4
 	setflag ENGINE_CREDITS_SKIP
-	giveitem SHINY_CHARM
 	setflag ENGINE_HAVE_SHINY_CHARM
 	; good party
 	givepoke MEWTWO, 100, ARMOR_SUIT
