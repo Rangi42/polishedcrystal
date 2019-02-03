@@ -366,16 +366,18 @@ ChooseMonToLearnTMHM_NoRefresh: ; 2c80a
 	ld a, [wPutativeTMHMMove]
 	and a
 	ld a, 3 ; TeachWhichPKMNString
-	jr nz, .loopback
+	jr nz, .got_text
 	ld a, 9 ; TutorWhichPKMNString
-.loopback
+.got_text
 	ld [PartyMenuActionText], a
+.loopback
 	farcall WritePartyMenuTilemap
 	farcall PrintPartyMenuText
 	call WaitBGMap
 	call SetPalettes
 	call DelayFrame
 	farcall PartyMenuSelect
+	ret c
 	push af
 	ld a, MON_IS_EGG
 	call GetPartyParamLocation

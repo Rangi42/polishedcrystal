@@ -34,6 +34,7 @@ MoveReminderScript:
 	iffalse .refused
 	writebyte NO_MOVE ; to toggle move relearner
 	writetext MoveReminderWhichMonText
+	waitbutton
 	special Special_MoveTutor
 	ifequal $0, .teach_move
 .refused
