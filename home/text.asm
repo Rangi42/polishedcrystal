@@ -439,8 +439,9 @@ Paragraph:: ; 12f2
 	call ClearBox
 	call UnloadBlinkingCursor
 	ld a, [Options1]
-	bit AUTOSCROLL_ABF, a
-	ld c, 30
+	and AUTOSCROLL_MASK
+	cp AUTOSCROLL_AORB
+	ld c, 20
 	jr nz, .got_delay
 	bit NO_TEXT_SCROLL, a
 	jr nz, .skipdelay
