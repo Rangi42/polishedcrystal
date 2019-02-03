@@ -420,6 +420,9 @@ Paragraph::
 	call ClearSpeechBox
 	call UnloadBlinkingCursor
 	ld a, [wOptions1]
+	bit AUTOSCROLL_ABF, a
+	ld c, 30
+	jr nz, .got_delay
 	bit NO_TEXT_SCROLL, a
 	jr nz, .skipdelay
 	and %11
