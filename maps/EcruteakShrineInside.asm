@@ -136,7 +136,7 @@ EcruteakShrineInsideHappinessText:
 	done
 
 EcruteakShrineInsideReiBlessEggText:
-	text "Rei: I'm can't"
+	text "Rei: I can't"
 	line "bless an Egg."
 	done
 

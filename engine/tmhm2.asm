@@ -365,21 +365,24 @@ ChooseMonToLearnTMHM_NoRefresh: ; 2c80a
 	ld a, [wPutativeTMHMMove]
 	and a
 	ld a, 3 ; TeachWhichPKMNString
-	jr nz, .loopback
+	jr nz, .got_text
 	ld a, 9 ; TutorWhichPKMNString
-.loopback
+.got_text
 	ld [wPartyMenuActionText], a
+.loopback
 	farcall WritePartyMenuTilemap
 	farcall PrintPartyMenuText
 	call WaitBGMap
 	call SetPalettes
 	call DelayFrame
 	farcall PartyMenuSelect
+	ret c
 	push af
-	ld a, [wCurPartySpecies]
-	cp EGG
+	ld a, MON_IS_EGG
+	call GetPartyParamLocation
+	bit MON_IS_EGG_F, [hl]
 	pop bc ; now contains the former contents of af
-	jr z, .egg
+	jr nz, .egg
 	push bc
 	ld hl, wTMHMMoveNameBackup
 	ld de, wStringBuffer2
