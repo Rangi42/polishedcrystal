@@ -2,7 +2,7 @@ VermilionGym_MapScriptHeader:
 	db 0 ; scene scripts
 
 	db 1 ; callbacks
-	callback MAPCALLBACK_TILES, VermilionGymDoorsScript
+	callback MAPCALLBACK_OBJECTS, VermilionGymDoorsScript
 
 	db 2 ; warp events
 	warp_event  4, 17, VERMILION_CITY, 7
@@ -55,7 +55,7 @@ VermilionGymDoorsScript:
 	appear VERMILIONGYM_FENCE_1_LEFT
 	appear VERMILIONGYM_FENCE_1_RIGHT
 .resample
-	callasm SampleVermilionGymTrashCan
+	callasm SampleVermilionGymTrashCans
 .done
 	return
 
@@ -189,7 +189,7 @@ VermilionGymTrashCanScript:
 	playsound SFX_WRONG
 	waitbutton
 	closetext
-	callasm SampleVermilionGymTrashCan
+	callasm SampleVermilionGymTrashCans
 	appear VERMILIONGYM_FENCE_1_LEFT
 	appear VERMILIONGYM_FENCE_1_RIGHT
 	end
@@ -384,126 +384,107 @@ VermilionGymElectricFenceText:
 	line "Don't touch it!"
 	done
 
-; Vermilion Gym trash can code by TPP Anniversary Crystal 251
-; https://github.com/TwitchPlaysPokemon/tppcrystal251pub/blob/public/maps/VermilionGym.asm
-
-SampleVermilionGymTrashCan:
+SampleVermilionGymTrashCans:
 	ld a, [rSVBK]
 	push af
-	ld a, $1
+	ld a, BANK(wVermilionGymTrashCan1)
 	ld [rSVBK], a
 .loop
 	call Random
-	and $3f
-	cp 38
-	jr nc, .loop
+	ld e, a
+	swap e
+	and $f
+	jr z, .loop
+	dec a
 	ld [wVermilionGymTrashCan1], a
-	xor a
+	call .GetSecondTrashCan
 	ld [wVermilionGymTrashCan2], a
 	pop af
 	ld [rSVBK], a
 	ret
+
+.GetSecondTrashCan:
+	ld hl, .AdjacencyTable
+	add a
+	add a
+	ld c, a
+	ld a, e
+	and %11
+	add c
+	ld c, a
+	ld b, 0
+	add hl, bc
+	ld a, [hl]
+	ret
+
+.AdjacencyTable:
+	; left, right, up, down
+	db  1,  1,  5,  5 ;  0 ( 1, 7)
+	db  0,  2,  6,  6 ;  1 ( 3, 7)
+	db  1,  3,  7,  7 ;  2 ( 5, 7)
+	db  2,  4,  8,  8 ;  3 ( 7, 7)
+	db  3,  3,  9,  9 ;  4 ( 9, 7)
+	db  6,  6,  0, 10 ;  5 ( 1, 9)
+	db  5,  7,  1, 11 ;  6 ( 3, 9)
+	db  6,  8,  2, 12 ;  7 ( 5, 9)
+	db  7,  9,  3, 13 ;  8 ( 7, 9)
+	db  8,  8,  4, 14 ;  9 ( 9, 9)
+	db 11, 11,  5,  5 ; 10 ( 1,11)
+	db 10, 12,  6,  6 ; 11 ( 3,11)
+	db 11, 13,  7,  7 ; 12 ( 5,11)
+	db 12, 14,  8,  8 ; 13 ( 7,11)
+	db 13, 13,  9,  9 ; 14 ( 9,11)
 
 CheckVermilionGymTrashCan:
-	call GetFacingTileCoord
-	ld hl, .CoordTable
-	ld a, d
-	swap a
-	or e
-	push af
-	ld de, 3
-	call IsInArray
-	pop bc
-	jr nc, .nope_no_pop
 	ld a, [rSVBK]
 	push af
-	ld a, 3
+	ld a, BANK(wVermilionGymTrashCan1)
 	ld [rSVBK], a
-	inc hl
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	ld a, [wVermilionGymTrashCan1]
-	ld de, 1
-	push bc
-	call IsInArray
-	pop bc
-	jr nc, .nope
+	eventflagcheck EVENT_VERMILION_GYM_SWITCH_1
+	jr z, .first
 	ld a, [wVermilionGymTrashCan2]
-	and a
-	jr z, .set
-	cp b
-	jr z, .nope
-	pop af
-	ld [rSVBK], a
-	ld a, 2
-	jr .done
-
-.set
-	ld a, b
-	ld [wVermilionGymTrashCan2], a
-	pop af
-	ld [rSVBK], a
+	call .CheckTrashCan
 	ld a, 1
-	jr .done
-.nope
-	pop af
-	ld [rSVBK], a
-.nope_no_pop
-	xor a
+	jr z, .done
+	dec a
 .done
 	ld [ScriptVar], a
+	pop af
+	ld [rSVBK], a
 	ret
 
-.CoordTable
-vermiliongymtrashcan: MACRO
-	dn \1 + 4, \2 + 4
-	dw \3
-endm
-	vermiliongymtrashcan 1,  7, .Set1_1
-	vermiliongymtrashcan 3,  7, .Set2_1
-	vermiliongymtrashcan 5,  7, .Set3_1
-	vermiliongymtrashcan 7,  7, .Set4_1
-	vermiliongymtrashcan 9,  7, .Set5_1
-	vermiliongymtrashcan 1,  9, .Set1_2
-	vermiliongymtrashcan 3,  9, .Set2_2
-	vermiliongymtrashcan 5,  9, .Set3_2
-	vermiliongymtrashcan 7,  9, .Set4_2
-	vermiliongymtrashcan 9,  9, .Set5_2
-	vermiliongymtrashcan 1, 11, .Set1_3
-	vermiliongymtrashcan 3, 11, .Set2_3
-	vermiliongymtrashcan 5, 11, .Set3_3
-	vermiliongymtrashcan 7, 11, .Set4_3
-	vermiliongymtrashcan 9, 11, .Set5_3
-	db $ff
+.first:
+	ld a, [wVermilionGymTrashCan1]
+	call .CheckTrashCan
+	jr z, .yes
+	ld a, [wVermilionGymTrashCan2]
+	call .CheckTrashCan
+	ld a, 0
+	jr nz, .done
+	ld a, [wVermilionGymTrashCan1]
+	ld [wVermilionGymTrashCan2], a
+.yes
+	ld a, 1
+	jr .done
 
-.Set1_1
-	db 0, 12, 22, -1
-.Set2_1
-	db 0, 1, 14, 23, 26, -1
-.Set3_1
-	db 1, 2, 16, 27, 30, -1
-.Set4_1
-	db 2, 3, 18, 31, 34, -1
-.Set5_1
-	db 3, 20, 35, -1
-.Set1_2
-	db 4, 12, 13, 23, 24, -1
-.Set2_2
-	db 4, 5, 14, 15, 22, 25, 27, 28, -1
-.Set3_2
-	db 5, 6, 16, 17, 26, 29, 31, 32, -1
-.Set4_2
-	db 6, 7, 18, 19, 30, 33, 35, 36, -1
-.Set5_2
-	db 7, 20, 21, 35, 37, -1
-.Set1_3
-	db 8, 13, 25, -1
-.Set2_3
-	db 8, 9, 15, 24, 29, -1
-.Set3_3
-	db 9, 10, 17, 28, 33, -1
-.Set4_3
-	db 10, 11, 19, 32, 37, -1
-.Set5_3
-	db 11, 21, 36, -1
+.CheckTrashCan:
+	ld c, a
+	call GetFacingTileCoord
+	call .ConvertCoordsToTrashCan
+	cp c
+	ret
+
+.ConvertCoordsToTrashCan:
+	ld a, d
+	sub 5
+	srl a
+	ld d, a
+	ld a, e
+	sub 11
+	srl a
+	ld e, a
+	add a
+	add a
+	add e
+	add d
+	ret
