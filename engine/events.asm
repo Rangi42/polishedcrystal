@@ -1154,16 +1154,16 @@ CheckFacingTileEvent: ; 97c5f
 RandomEncounter:: ; 97cc0
 ; Random encounter
 	call CheckWildEncounterCooldown
-	jr c, .nope
+	jr c, .disable_encounters
 	call CanUseSweetScent
-	jr nc, .nope
+	jr nc, .disable_encounters
 	ld hl, wStatusFlags2
 	bit 1, [hl] ; ENGINE_SAFARI_GAME
 	jr nz, .safari_game
 	bit 2, [hl] ; ENGINE_BUG_CONTEST_TIMER
 	jr nz, .bug_contest
-	farcall TryWildEncounter
-	jr nz, .nope
+	farcall CheckWildEncounter
+	jr z, .nope
 .ok
 	ld a, BANK(WildBattleScript)
 	ld hl, WildBattleScript
@@ -1173,8 +1173,8 @@ RandomEncounter:: ; 97cc0
 	ret
 
 .safari_game
-	farcall TryWildEncounter
-	jr nz, .nope
+	farcall CheckWildEncounter
+	jr z, .nope
 	ld a, BANK(SafariGameBattleScript)
 	ld hl, SafariGameBattleScript
 	jr .done
@@ -1186,6 +1186,9 @@ RandomEncounter:: ; 97cc0
 	ld hl, BugCatchingContestBattleScript
 	jr .done
 
+.disable_encounters
+	xor a
+	ld [wRandomEncountersEnabled], a
 .nope
 	ld a, 1
 	and a

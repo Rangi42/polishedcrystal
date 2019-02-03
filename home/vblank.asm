@@ -32,6 +32,9 @@ VBlank::
 	call _hl_
 
 .doGameTime
+	ld a, BANK(VBlankTryWildEncounter)
+	rst Bankswitch
+	call VBlankTryWildEncounter
 	call GameTimer
 
 	xor a

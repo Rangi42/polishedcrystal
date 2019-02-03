@@ -708,7 +708,13 @@ wReceiveCallDelay_StartTime:: ds 3
 wBugContestMinsRemaining:: ds 1
 wBugContestSecsRemaining:: ds 1
 
-	ds 2
+wRandomEncountersEnabled::
+; 0: random encounters disabled
+; 1: random encounters enabled, no encounter
+; 2: random encounters enabled, found encounter
+	ds 1
+
+	ds 1
 
 wMapStatusEnd::
 
