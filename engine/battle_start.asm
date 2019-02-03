@@ -58,6 +58,8 @@ endc
 
 	ld a, BANK(wEnemyMon)
 	ld [rSVBK], a
+	ld hl, rIE
+	res LCD_STAT, [hl]
 	pop af
 	ld [hVBlank], a
 	jp DelayFrame
@@ -253,8 +255,6 @@ StartTrainerBattle_Finish: ; 8c393 (23:4393)
 	call ClearSprites
 	ld a, $80
 	ld [wJumptableIndex], a
-	ld hl, rIE
-	res LCD_STAT, [hl]
 	ret
 
 StartTrainerBattle_NextScene: ; 8c39c (23:439c)
