@@ -6,6 +6,5 @@ Sine:: ; 1b11
 ; Return d * sin(a) in hl
 ; a is a signed 6-bit value.
 	ld e, a
-	homecall _Sine
-	ret
+	farjp _Sine
 ; 1b1e

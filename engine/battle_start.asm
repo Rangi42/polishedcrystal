@@ -364,12 +364,12 @@ StartTrainerBattle_SineWave: ; 8c408 (23:4408)
 	push af
 	push de
 	ld a, e
-	call StartTrainerBattle_DrawSineWave
+	call Sine
 	ld [bc], a
 	inc bc
 	pop de
 	ld a, e
-	add $2
+	add 2
 	ld e, a
 	pop af
 	dec a
@@ -415,18 +415,13 @@ endr
 	call .load
 	ld a, $1
 	ld [hBGMapMode], a
-	call DelayFrame
-	call DelayFrame
+	call Delay2
 	ld hl, wcf64
 	inc [hl]
 	ret
 
 .end
-	ld a, $1
-	ld [hBGMapMode], a
-	call DelayFrame
-	call DelayFrame
-	call DelayFrame
+	call WaitBGMap
 	xor a
 	ld [hBGMapMode], a
 	ld a, $20
@@ -835,49 +830,6 @@ WipeLYOverrides: ; 8c6d8
 	ret
 ; 8c6f7
 
-
-StartTrainerBattle_DrawSineWave: ; 8c6f7 (23:46f7)
-	and (1 << 6) - 1
-	cp 1 << 5
-	jr nc, .okay
-	call .DoSineWave
-	ld a, h
-	ret
-
-.okay
-	and (1 << 5) - 1
-	call .DoSineWave
-	ld a, h
-	cpl
-	inc a
-	ret
-
-.DoSineWave: ; 8c70c (23:470c)
-	ld e, a
-	ld a, d
-	ld d, 0
-	ld hl, .sinewave
-	add hl, de
-	add hl, de
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	ld hl, 0
-.loop
-	srl a
-	jr nc, .skip
-	add hl, de
-.skip
-	sla e
-	rl d
-	and a
-	jr nz, .loop
-	ret
-; 8c728 (23:4728)
-
-.sinewave ; 8c728
-	sine_wave $100
-; 8c768
 
 zoombox: macro
 ; width, height, start y, start x

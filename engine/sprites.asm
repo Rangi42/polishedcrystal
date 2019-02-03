@@ -530,54 +530,6 @@ INCLUDE "engine/sprite_anims.asm"
 INCLUDE "data/sprite_anims/framesets.asm"
 INCLUDE "data/sprite_anims/oam.asm"
 
-Sprites_Cosine: ; 8e72a
-	add $10
-Sprites_Sine: ; 8e72c
-; floor(d * sin(a * pi/32))
-	and $3f
-	cp $20
-	jr nc, .negative
-	call .ApplySineWave
-	ld a, h
-	ret
-
-.negative
-	and $1f
-	call .ApplySineWave
-	ld a, h
-	cpl
-	inc a
-	ret
-; 8e741
-
-.ApplySineWave: ; 8e741
-	ld e, a
-	ld a, d
-	ld d, 0
-	ld hl, .sinewave
-	add hl, de
-	add hl, de
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	ld hl, 0
-.multiply
-	srl a
-	jr nc, .even
-	add hl, de
-
-.even
-	sla e
-	rl d
-	and a
-	jr nz, .multiply
-	ret
-; 8e75d
-
-.sinewave ; 8e75d
-	sine_wave $100
-
-
 AnimateEndOfExpBar: ; 8e79d
 	ld de, EndOfExpBarGFX
 	ld hl, VTiles0 tile $00
@@ -614,7 +566,7 @@ AnimateEndOfExpBar: ; 8e79d
 
 	push de
 	push hl
-	call Sprites_Sine
+	call Sine
 	pop hl
 	pop de
 	add 13 * 8
@@ -623,7 +575,7 @@ AnimateEndOfExpBar: ; 8e79d
 	pop af
 	push de
 	push hl
-	call Sprites_Cosine
+	call Cosine
 	pop hl
 	pop de
 	add 19 * 8 + 4

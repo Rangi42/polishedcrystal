@@ -1144,7 +1144,7 @@ BattleBGEffect_DoubleTeam: ; c8689 (32:4689)
 	add hl, bc
 	ld a, [hl]
 	ld d, $2
-	call BattleBGEffects_Sine
+	call Sine
 	ld hl, BG_EFFECT_STRUCT_03
 	add hl, bc
 	add [hl]
@@ -1595,7 +1595,7 @@ BattleBGEffect_26: ; c892a (32:492a)
 	add hl, bc
 	ld a, [hl]
 	ld d, $8
-	call BattleBGEffects_Sine
+	call Sine
 	call BGEffect_FillLYOverridesBackup
 	ld hl, BG_EFFECT_STRUCT_03
 	add hl, bc
@@ -1635,13 +1635,13 @@ BattleBGEffect_2c: ; c8964 (32:4964)
 	add hl, bc
 	ld a, [hl]
 	ld d, $6
-	call BattleBGEffects_Sine
+	call Sine
 	push af
 	ld hl, BG_EFFECT_STRUCT_BATTLE_TURN
 	add hl, bc
 	ld a, [hl]
 	ld d, $2
-	call BattleBGEffects_Sine
+	call Sine
 	ld e, a
 	pop af
 	add e
@@ -1735,7 +1735,7 @@ BattleBGEffect_BounceDown: ; c89ee (32:49ee)
 	add hl, bc
 	ld a, [hl]
 	ld d, $10
-	call BattleBGEffects_Cosine
+	call Cosine
 	add $10
 	ld d, a
 	pop af
@@ -2100,7 +2100,7 @@ BattleBGEffect_WobbleMon: ; c8ca2 (32:4ca2)
 	cp $40
 	jr nc, .two
 	ld d, $6
-	call BattleBGEffects_Sine
+	call Sine
 	call BGEffect_FillLYOverridesBackup
 	ld hl, BG_EFFECT_STRUCT_03
 	add hl, bc
@@ -2190,7 +2190,7 @@ BattleBGEffect_35: ; c8d3a (32:4d3a)
 	cp $40
 	jr nc, .finish
 	ld d, $6
-	call BattleBGEffects_Sine
+	call Sine
 	ld [hSCX], a
 	ld hl, BG_EFFECT_STRUCT_03
 	add hl, bc
@@ -2491,7 +2491,7 @@ Functionc8f2e: ; c8f2e (32:4f2e)
 	ld a, [wBattleAnimTemp2]
 	ld d, a
 	ld a, [wBattleAnimTemp0]
-	call BattleBGEffects_Sine
+	call Sine
 	ld [bc], a
 .next
 	inc bc
@@ -2520,7 +2520,7 @@ InitSurfWaves: ; c8f69 (32:4f69)
 	ld a, [wBattleAnimTemp2]
 	ld d, a
 	ld a, [wBattleAnimTemp0]
-	call BattleBGEffects_Sine
+	call Sine
 	ld [bc], a
 	inc bc
 	ld a, [wBattleAnimTemp1]
@@ -2556,7 +2556,7 @@ Functionc8f9a: ; c8f9a (32:4f9a)
 	ld d, a
 	ld a, [wBattleAnimTemp1]
 	push hl
-	call BattleBGEffects_Sine
+	call Sine
 	ld e, a
 	pop hl
 	ld a, [hLYOverrideEnd]
@@ -2682,18 +2682,6 @@ BGEffect_CheckFlyDigStatus: ; c9042 (32:5042)
 .player
 	ld a, [wPlayerSubStatus3] ; PlayerSubStatus3
 	and 1 << SUBSTATUS_FLYING | 1 << SUBSTATUS_UNDERGROUND
-	ret
-
-BattleBGEffects_Sine: ; c905d (32:505d)
-	ld e, a
-	farcall BattleAnim_Sine_e
-	ld a, e
-	ret
-
-BattleBGEffects_Cosine: ; c9066 (32:5066)
-	ld e, a
-	farcall BattleAnim_Cosine_e
-	ld a, e
 	ret
 
 ; c906f (32:506f)

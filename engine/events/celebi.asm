@@ -129,7 +129,7 @@ UpdateCelebiPosition: ; 49aa2 (12:5aa2)
 	add hl, bc
 	ld a, [hl]
 	inc [hl]
-	call CelebiEvent_Cosine
+	call Cosine
 	ld hl, SPRITEANIMSTRUCT_XOFFSET
 	add hl, bc
 	ld [hl], a
@@ -200,51 +200,6 @@ UpdateCelebiPosition: ; 49aa2 (12:5aa2)
 	add hl, bc
 	ld a, SPRITE_ANIM_FRAMESET_CELEBI_LEFT
 	jp ReinitSpriteAnimFrame
-
-CelebiEvent_Cosine: ; 49b3b (12:5b3b)
-	add $10
-	and $3f
-	cp $20
-	jr nc, .negative
-	call .SineFunction
-	ld a, h
-	ret
-
-.negative
-	and $1f
-	call .SineFunction
-	ld a, h
-	cpl
-	inc a
-	ret
-
-.SineFunction: ; 49b52 (12:5b52)
-	ld e, a
-	ld a, d
-	ld d, $0
-	ld hl, .sinewave
-	add hl, de
-	add hl, de
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	ld hl, 0
-.multiply
-	srl a
-	jr nc, .even
-	add hl, de
-.even
-	sla e
-	rl d
-	and a
-	jr nz, .multiply
-	ret
-
-; 49b6e (12:5b6e)
-
-.sinewave ; 49b6e
-	sine_wave $100
-; 49bae
 
 GetCelebiSpriteTile: ; 49bae
 	push hl
