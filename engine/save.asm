@@ -1,9 +1,11 @@
 SaveMenu: ; 14a1a
+	ld c, 4
+	call DelayFrames
 	call LoadStandardMenuDataHeader
 	farcall DisplaySaveInfoOnSave
 	call SpeechTextBox
 	call UpdateSprites
-	call CopyTilemapAtOnce
+	call ApplyTilemap
 	ld hl, UnknownText_0x15283
 	ld b, BANK(UnknownText_0x15283)
 	call MapTextbox
