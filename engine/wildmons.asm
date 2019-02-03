@@ -222,7 +222,9 @@ CheckWildEncounter::
 	and a
 	call z, EnableRandomEncounters
 	ld a, [wRandomEncountersEnabled]
-	dec a
+	sub 2
+	ld a, 1
+	ld [wRandomEncountersEnabled], a
 	ret
 
 EnableRandomEncounters:
@@ -231,12 +233,14 @@ EnableRandomEncounters:
 	jr TryWildEncounter
 
 VBlankTryWildEncounter::
-	ld a, [wRandomEncountersEnabled]
-	and a
-	ret z
 	ld a, [wMapEventStatus]
 	and a
 	ret z
+	ld a, [wRandomEncountersEnabled]
+	and a
+	ret z
+	dec a
+	ret nz
 
 TryWildEncounter::
 ; Try to trigger a wild encounter.
@@ -261,7 +265,7 @@ TryWildEncounter::
 	ld [wBattleType], a
 	ld a, [wRandomEncountersEnabled]
 	and a
-	ld a, 1
+	ld a, 3
 	jr z, .skip_random_encounters_flag
 	ld [wRandomEncountersEnabled], a
 .skip_random_encounters_flag

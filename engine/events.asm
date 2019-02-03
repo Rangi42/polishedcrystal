@@ -1163,7 +1163,7 @@ RandomEncounter:: ; 97cc0
 	bit 2, [hl] ; ENGINE_BUG_CONTEST_TIMER
 	jr nz, .bug_contest
 	farcall CheckWildEncounter
-	jr z, .nope
+	jr nz, .nope
 .ok
 	ld a, BANK(WildBattleScript)
 	ld hl, WildBattleScript
@@ -1174,7 +1174,7 @@ RandomEncounter:: ; 97cc0
 
 .safari_game
 	farcall CheckWildEncounter
-	jr z, .nope
+	jr nz, .nope
 	ld a, BANK(SafariGameBattleScript)
 	ld hl, SafariGameBattleScript
 	jr .done

@@ -710,8 +710,9 @@ wBugContestSecsRemaining:: ds 1
 
 wRandomEncountersEnabled::
 ; 0: random encounters disabled
-; 1: random encounters enabled, no encounter
-; 2: random encounters enabled, found encounter
+; 1: do encounter check next vblank while moving
+; 2: found encounter
+; 3: no encounter this step
 	ds 1
 
 	ds 1
