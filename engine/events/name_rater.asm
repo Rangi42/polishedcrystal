@@ -10,9 +10,10 @@ NameRater: ; fb6ed
 	farcall SelectMonFromParty
 	jr c, .cancel
 ; He can't rename an egg...
-	ld a, [CurPartySpecies]
-	cp EGG
-	jr z, .egg
+	ld a, MON_IS_EGG
+	call GetPartyParamLocation
+	bit MON_IS_EGG_F, [hl]
+	jr nz, .egg
 ; ... or a Pokemon you got from a trade.
 	call GetCurNick
 	ld a, [InitialOptions]

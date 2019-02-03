@@ -245,9 +245,10 @@ Special_BillsGrandfather: ; 73f7
 Special_HiddenPowerGuru:
 	farcall SelectMonFromParty
 	jr c, .cancel
-	ld a, [CurPartySpecies]
-	cp EGG
-	jr z, .egg
+	ld a, MON_IS_EGG
+	call GetPartyParamLocation
+	bit MON_IS_EGG_F, [hl]
+	jr nz, .egg
 	ld [wNamedObjectIndexBuffer], a
 	call GetPokemonName
 	call CopyPokemonName_Buffer1_Buffer3
@@ -294,9 +295,12 @@ MassageOrHaircut: ; 7420
 	farcall SelectMonFromParty
 	pop hl
 	jr c, .nope
-	ld a, [CurPartySpecies]
-	cp EGG
-	jr z, .egg
+	ld a, MON_IS_EGG
+	push hl
+	call GetPartyParamLocation
+	bit MON_IS_EGG_F, [hl]
+	pop hl
+	jr nz, .egg
 	push hl
 	call GetCurNick
 	call CopyPokemonName_Buffer1_Buffer3

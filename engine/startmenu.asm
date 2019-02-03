@@ -689,9 +689,10 @@ SwitchPartyMons: ; 12aec
 GiveTakePartyMonItem: ; 12b60
 
 ; Eggs can't hold items!
-	ld a, [CurPartySpecies]
-	cp EGG
-	jr z, .cancel
+	ld a, MON_IS_EGG
+	call GetPartyParamLocation
+	bit MON_IS_EGG_F, [hl]
+	jr nz, .cancel
 
 	call GetPartyItemLocation
 	ld a, [hl]

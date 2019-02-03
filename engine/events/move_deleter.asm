@@ -7,9 +7,10 @@ MoveDeletion:
 	call PrintText
 	farcall SelectMonFromParty
 	jr c, .declined
-	ld a, [CurPartySpecies]
-	cp EGG
-	jr z, .egg
+	ld a, MON_IS_EGG
+	call GetPartyParamLocation
+	bit MON_IS_EGG_F, [hl]
+	jr nz, .egg
 	ld a, [CurPartyMon]
 	ld hl, PartyMon1Moves + 1
 	ld bc, PARTYMON_STRUCT_LENGTH

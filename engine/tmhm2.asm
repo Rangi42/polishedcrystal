@@ -377,10 +377,11 @@ ChooseMonToLearnTMHM_NoRefresh: ; 2c80a
 	call DelayFrame
 	farcall PartyMenuSelect
 	push af
-	ld a, [CurPartySpecies]
-	cp EGG
+	ld a, MON_IS_EGG
+	call GetPartyParamLocation
+	bit MON_IS_EGG_F, [hl]
 	pop bc ; now contains the former contents of af
-	jr z, .egg
+	jr nz, .egg
 	push bc
 	ld hl, wTMHMMoveNameBackup
 	ld de, StringBuffer2

@@ -99,9 +99,9 @@ MonStatsInit: ; 4dd72 (13:5d72)
 	call ClearTileMap
 	farcall HDMATransferTileMapToWRAMBank3
 	call StatsScreen_CopyToTempMon
-	ld a, [CurPartySpecies]
-	cp EGG
-	jr z, .egg
+	ld a, [TempMonIsEgg]
+	bit MON_IS_EGG_F, a
+	jr nz, .egg
 	call StatsScreen_InitUpperHalf
 	ld hl, wcf64
 	set 4, [hl]
@@ -179,9 +179,9 @@ StatsScreen_CopyToTempMon: ; 4ddf2 (13:5df2)
 
 .breedmon
 	farcall CopyPkmnToTempMon
-	ld a, [CurPartySpecies]
-	cp EGG
-	jr z, .done
+	ld a, [TempMonIsEgg]
+	bit MON_IS_EGG_F, a
+	jr nz, .done
 	ld a, [MonType]
 	cp BOXMON
 	jr c, .done
@@ -1095,9 +1095,9 @@ StatsScreen_GetAnimationParam: ; 4e2ad (13:62ad)
 .Tempmon: ; 4e2ed (13:62ed)
 	ld bc, TempMon
 .CheckEggFaintedFrzSlp: ; 4e2f2 (13:62f2)
-	ld a, [CurPartySpecies]
-	cp EGG
-	jr z, .egg
+	ld a, [TempMonIsEgg]
+	bit MON_IS_EGG_F, a
+	jr nz, .egg
 	call CheckFaintedFrzSlp
 	jr c, .FaintedFrzSlp
 .egg
