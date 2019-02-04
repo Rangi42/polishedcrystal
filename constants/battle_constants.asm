@@ -152,6 +152,16 @@ endc
 	const BATTLETYPE_RED_GYARADOS
 	const BATTLETYPE_LEGENDARY
 
+; attack failure modes, higher gives priority
+; TODO: complete this functionality
+	const_def 1
+	const ATKFAIL_MISSED  ; "<USER>'s attack missed!"
+	const ATKFAIL_PROTECT ; "<TARGET> is protecting itself!"
+	const ATKFAIL_ABILITY ; ability immunity, might have side effects
+	const ATKFAIL_GENERIC ; "But it failed!"
+	const ATKFAIL_IMMUNE  ; "It doesn't affect <TARGET>!"
+	const ATKFAIL_CUSTOM  ; custom message
+
 ; battle variables
 	const_def
 	const BATTLE_VARS_SUBSTATUS1
@@ -173,6 +183,7 @@ endc
 	const BATTLE_VARS_MOVE_TYPE
 	const BATTLE_VARS_MOVE_CATEGORY
 	const BATTLE_VARS_MOVE
+	const BATTLE_VARS_MOVE_OPP
 	const BATTLE_VARS_LAST_COUNTER_MOVE
 	const BATTLE_VARS_LAST_COUNTER_MOVE_OPP
 	const BATTLE_VARS_LAST_MOVE

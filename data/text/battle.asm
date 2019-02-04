@@ -1174,17 +1174,11 @@ ItFailedText: ; 0x81500
 	prompt
 ; 0x8150c
 
-DidntAffect1Text: ; 0x8150c
+DidntAffectText: ; 0x8150c
 	text "It didn't affect"
 	line "<TARGET>!"
 	prompt
 ; 0x81520
-
-DidntAffect2Text: ; 0x81520
-	text "It didn't affect"
-	line "<TARGET>!"
-	prompt
-; 0x81534
 
 HPIsFullText: ; 0x81534
 	text "<USER>'s"

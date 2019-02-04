@@ -1714,13 +1714,16 @@ BattleCommand_BounceBack:
 
 BattleCommand_CheckHit:
 	call .DreamEater
-	jp z, .Miss
+	ld a, ATKFAIL_IMMUNE
+	jp z, .Miss_skipset
 
 	call .Protect
+	ld a, ATKFAIL_PROTECT
 	jp nz, .Miss_skipset
 
 	call .Substitute
-	jp nz, .Miss
+	ld a, ATKFAIL_GENERIC
+	jp nz, .Miss_skipset
 
 	call .PoisonTypeUsingToxic
 	ret z
@@ -1874,13 +1877,11 @@ BattleCommand_CheckHit:
 	ld b, a
 	call BattleRandom
 	cp b
-	jr nc, .Miss
-	ret
-
+	ret c
 
 .Miss:
 ; Keep the damage value intact if we're using (Hi) Jump Kick.
-	ld a, 1
+	ld a, ATKFAIL_MISSED
 .Miss_skipset:
 ; Used to set a special value to wAttackMissed for message customization
 	ld [wAttackMissed], a
@@ -1889,7 +1890,6 @@ BattleCommand_CheckHit:
 	cp EFFECT_JUMP_KICK
 	call nz, ResetDamage
 	ret
-
 
 .DreamEater:
 ; Return z if we're trying to eat the dream of
@@ -1904,17 +1904,12 @@ BattleCommand_CheckHit:
 	and SLP
 	ret
 
-
 .Protect:
 ; Return nz if the opponent is protected.
 	ld a, BATTLE_VARS_SUBSTATUS1_OPP
 	call GetBattleVar
 	bit SUBSTATUS_PROTECT, a
-	ret z
-	ld a, 2
-	and a
 	ret
-
 
 .Substitute:
 ; Return nz if the opponent is behind a Substitute for certain moves
@@ -2657,17 +2652,21 @@ FailText_CheckOpponentProtect: ; 35157
 ; the message, used for Protect and some abilities.
 ; Important: To ensure proper message order, wAttackMissed=3
 ; has side effects -- it triggers the ability.
-; TODO: perhaps an enum?
+; TODO: use this function more extensively
 	ld a, [wAttackMissed]
-	cp 1
+	and a
 	jr z, .printmsg
-	cp 2
-	jr z, .protected
-	cp 3
-	jr z, .ability_immune
-	jr .printmsg ; just in case
-.protected
+	dec a
+	jr z, .printmsg
+	dec a
 	ld hl, ProtectingItselfText
+	jr z, .printmsg
+	dec a
+	jr z, .ability_immune
+	dec a
+	ld hl, ButItFailedText
+	jr z, .printmsg
+	ld hl, DoesntAffectText
 .printmsg
 	jp StdBattleTextBox
 .ability_immune
@@ -6527,27 +6526,54 @@ BattleCommand_ForceSwitch: ; 3680f
 
 	ld a, [wBattleType]
 	cp BATTLETYPE_TRAP ; or BATTLETYPE_FORCEITEM, BATTLETYPE_RED_GYARADOS, BATTLETYPE_LEGENDARY
-	jp nc, .fail
+	jr nc, .but_it_failed
 	call GetOpponentAbilityAfterMoldBreaker
 	cp SUCTION_CUPS
-	jp z, .fail
+	ld a, ATKFAIL_ABILITY
+	jr z, .fail
 	ld a, [wAttackMissed]
 	and a
-	jr nz, .missed
-	ld a, [hBattleTurn]
-	and a
-	jp nz, .force_player_switch
+	jr nz, .fail
 	ld a, [wBattleMode]
 	dec a
 	jr nz, .trainer
-	ld a, [wCurPartyLevel]
+	jr .wild
+
+.but_it_failed
+	ld a, ATKFAIL_GENERIC
+.fail
+	ld [wAttackMissed], a
+	call BattleCommand_LowerSub
+	call BattleCommand_MoveDelay
+	call BattleCommand_RaiseSub
+	jp FailText_CheckOpponentProtect
+
+.wild
+	ld a, [wEnemyMonLevel]
 	ld b, a
 	ld a, [wBattleMonLevel]
+	ld c, a
+
+	ld a, [hBattleTurn]
+	and a
+	jr nz, .enemy_wild
+
+.enemy_wild
+	ld a, b
+	ld b, c
+	ld c, a
+	jr .wild_got_party_vars
+
+.wild_got_party_vars
+	ld a, c
 	cp b
-	jr nc, .wild_force_flee
+	jr nc, .wild_succeed
+
 	add b
 	ld c, a
 	inc c
+	jr nz, .random_loop_wild
+	dec c
 .random_loop_wild
 	call BattleRandom
 	cp c
@@ -6555,170 +6581,17 @@ BattleCommand_ForceSwitch: ; 3680f
 	srl b
 	srl b
 	cp b
-	jr nc, .wild_force_flee
-.missed
-	jp .fail
+	jr c, .but_it_failed
 
-.wild_force_flee
+.wild_succeed
 	call UpdateBattleMonInParty
 	xor a
 	ld [wNumHits], a
 	inc a
 	ld [wForcedSwitch], a
 	call SetBattleDraw
-	ld a, [wPlayerMoveStructAnimation]
-	jp .succeed
-
-.trainer
-	call CheckAnyOtherAliveOpponentMons
-	jp z, .fail
-	ld a, [wEnemyGoesFirst]
-	and a
-	jr z, .switch_fail
-	call UpdateEnemyMonInParty
-	ld a, $1
-	ld [wKickCounter], a
-	call AnimateCurrentMove
-	ld c, $14
-	call DelayFrames
-	hlcoord 1, 0
-	lb bc, 4, 10
-	call ClearBox
-	ld c, 20
-	call DelayFrames
-	ld a, [wOTPartyCount]
-	ld b, a
-	ld a, [wCurOTMon]
-	ld c, a
-; select a random enemy mon to switch to
-.random_loop_trainer
-	call BattleRandom
-	and $7
-	cp b
-	jr nc, .random_loop_trainer
-	cp c
-	jr z, .random_loop_trainer
-	push af
-	ld hl, wOTPartyMon1HP
-	call GetPartyLocation
-	ld a, [hli]
-	or [hl]
-	pop de
-	jr z, .random_loop_trainer
-	ld a, d
-	inc a
-	ld [wEnemySwitchMonIndex], a
-	farcall ForceEnemySwitch
-
-	ld hl, DraggedOutText
-	call StdBattleTextBox
-
-	ld hl, SpikesDamage_CheckMoldBreaker
-	call CallBattleCore
-
-	ld hl, RunActivationAbilities
-	jp CallBattleCore
-
-.switch_fail
-	jp .fail
-
-.force_player_switch
-	ld a, [wBattleMode]
-	dec a
-	jr nz, .vs_trainer
-
-	ld a, [wBattleMonLevel]
-	ld b, a
-	ld a, [wCurPartyLevel]
-	cp b
-	jr nc, .wild_succeed_playeristarget
-
-	add b
-	ld c, a
-	inc c
-.wild_random_loop_playeristarget
-	call BattleRandom
-	cp c
-	jr nc, .wild_random_loop_playeristarget
-
-	srl b
-	srl b
-	cp b
-	jr nc, .wild_succeed_playeristarget
-
-.player_miss
-	jp .fail
-
-.wild_succeed_playeristarget
-	call UpdateBattleMonInParty
-	xor a
-	ld [wNumHits], a
-	inc a
-	ld [wForcedSwitch], a
-	call SetBattleDraw
-	ld a, [wEnemyMoveStructAnimation]
-	jr .succeed
-
-.vs_trainer
-	call CheckAnyOtherAliveOpponentMons
-	jr z, .fail
-	ld a, [wEnemyGoesFirst]
-	cp $1
-	jr z, .switch_fail
-
-	call UpdateBattleMonInParty
-	ld a, $1
-	ld [wKickCounter], a
-	call AnimateCurrentMove
-	ld c, 20
-	call DelayFrames
-	hlcoord 9, 7
-	lb bc, 5, 11
-	call ClearBox
-	ld c, 20
-	call DelayFrames
-	ld a, [wPartyCount]
-	ld b, a
-	ld a, [wCurBattleMon]
-	ld c, a
-.random_loop_trainer_playeristarget
-	call BattleRandom
-	and $7
-	cp b
-	jr nc, .random_loop_trainer_playeristarget
-
-	cp c
-	jr z, .random_loop_trainer_playeristarget
-
-	push af
-	ld hl, wPartyMon1HP
-	call GetPartyLocation
-	ld a, [hli]
-	or [hl]
-	pop de
-	jr z, .random_loop_trainer_playeristarget
-
-	ld a, d
-	ld [wCurPartyMon], a
-	ld hl, SwitchPlayerMon
-	call CallBattleCore
-
-	ld hl, DraggedOutText
-	call StdBattleTextBox
-
-	ld hl, SpikesDamage_CheckMoldBreaker
-	call CallBattleCore
-
-	ld hl, RunActivationAbilities
-	jp CallBattleCore
-
-.fail
-	call BattleCommand_LowerSub
-	call BattleCommand_MoveDelay
-	call BattleCommand_RaiseSub
-	jp PrintButItFailed
-
-.succeed
+	ld a, BATTLE_VARS_MOVE_ANIM
+	call GetBattleVar
 	push af
 	call SetBattleDraw
 	ld a, $1
@@ -6730,8 +6603,84 @@ BattleCommand_ForceSwitch: ; 3680f
 	ld hl, FledInFearText
 	jp StdBattleTextBox
 
-; 36994
+.trainer
+	call CheckAnyOtherAliveOpponentMons
+	jr z, .but_it_failed
+	ld a, BATTLE_VARS_MOVE_OPP
+	call GetBattleVarAddr
+	xor a
+	ld [hl], a
+	call UpdateOpponentInParty
+	ld a, $1
+	ld [wKickCounter], a
+	call AnimateCurrentMove
+	ld c, $14
+	call DelayFrames
+	ld a, [hBattleTurn]
+	and a
+	jr nz, .enemy_trainer
+	hlcoord 1, 0
+	lb bc, 4, 10
+	call ClearBox
+	ld c, 20
+	call DelayFrames
+	ld a, [wOTPartyCount]
+	ld b, a
+	ld a, [wCurOTMon]
+	ld c, a
+	ld hl, wOTPartyMon1HP
+	jr .trainer_got_party_vars
 
+.enemy_trainer
+	hlcoord 9, 7
+	lb bc, 5, 11
+	call ClearBox
+	ld c, 20
+	call DelayFrames
+	ld a, [wPartyCount]
+	ld b, a
+	ld a, [wCurBattleMon]
+	ld c, a
+	ld hl, wPartyMon1HP
+
+.trainer_got_party_vars
+	push hl
+.random_loop_trainer
+	call BattleRandom
+	and $7
+	cp b
+	jr nc, .random_loop_trainer
+	cp c
+	jr z, .random_loop_trainer
+	pop hl
+	push hl
+	push af
+	call GetPartyLocation
+	ld a, [hli]
+	or [hl]
+	pop de
+	jr z, .random_loop_trainer
+
+	ld a, [hBattleTurn]
+	and a
+	ld a, d
+	jr nz, .enemy_trainer2
+
+	inc a
+	ld [wEnemySwitchMonIndex], a
+	farcall ForceEnemySwitch
+	jr .done_forceswitch
+
+.enemy_trainer2
+	ld [wCurPartyMon], a
+	farcall SwitchPlayerMon
+
+.done_forceswitch
+	ld hl, DraggedOutText
+	call StdBattleTextBox
+
+	farcall SpikesDamage_CheckMoldBreaker
+	farjp RunActivationAbilities
 
 CheckPlayerHasMonToSwitchTo: ; 36994
 	ld a, [wPartyCount]
@@ -8165,26 +8114,14 @@ FailDisable:
 FailAttract:
 FailForesight:
 FailSpikes:
+PrintDidntAffect2:
 	call AnimateFailedMove
 	; fallthrough
-; 37357
 
-PrintDidntAffect: ; 37360
+PrintDidntAffect:
 ; 'it didn't affect'
-	ld hl, DidntAffect1Text
+	ld hl, DidntAffectText
 	jp StdBattleTextBox
-
-; 37366
-
-
-PrintDidntAffect2: ; 37366
-	call AnimateFailedMove
-	ld hl, DidntAffect1Text ; 'it didn't affect'
-	ld de, DidntAffect2Text ; 'it didn't affect'
-	jp FailText_CheckOpponentProtect
-
-; 37372
-
 
 PrintParalyze: ; 37372
 ; 'paralyzed! maybe it can't attack!'
