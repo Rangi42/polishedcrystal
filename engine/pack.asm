@@ -243,42 +243,7 @@ Pack: ; 10000
 	; fallthrough
 
 .ItemBallsKey_LoadSubmenu: ; 101c5 (4:41c5)
-	jr z, .not_sorting
-	ld hl, Text_SortItemsHow
-	call Pack_PrintTextNoScroll
-	ld hl, wMenuData2_ItemsPointerAddr
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	push hl
-	ld a, [wMenuData2_ScrollingMenuSpacing]
-	push af
-	ld hl, MenuDataHeader_SortItems
-	ld de, Jumptable_SortItems
-	push de
-	call LoadMenuDataHeader
-	call VerticalMenu
-	call ExitMenu
-	jr nc, .no_quit
-	ld a, 3
-	ld [wMenuCursorY], a
-.no_quit
-	pop de
-	pop af
-	ld [wMenuData2_ScrollingMenuSpacing], a
-	pop bc
-	ld hl, wMenuData2_ItemsPointerAddr
-	ld a, c
-	ld [hli], a
-	ld [hl], b
-	ld h, d
-	ld l, e
-	ld a, [wMenuCursorY]
-	dec a
-	call Pack_GetJumptablePointer
-	jp hl
-
-.not_sorting
+	jr nz, PackSortMenu
 	farcall _CheckTossableItem
 	ld a, [wItemAttributeParamBuffer]
 	and a
@@ -310,42 +275,76 @@ Pack: ; 10000
 .usable
 	ld hl, MenuDataHeader_UsableKeyItem
 	ld de, Jumptable_UseGiveTossRegisterQuit
-	jr .build_menu
+	jr PackBuildMenu
 
 .selectable_usable
 	ld hl, MenuDataHeader_UsableItem
 	ld de, Jumptable_UseGiveTossQuit
-	jr .build_menu
+	jr PackBuildMenu
 
 .tossable_selectable
 	ld hl, MenuDataHeader_UnusableItem
 	ld de, Jumptable_UseQuit
-	jr .build_menu
+	jr PackBuildMenu
 
 .tossable_unselectable
 	ld hl, MenuDataHeader_UnusableKeyItem
 	ld de, Jumptable_UseRegisterQuit
-	jr .build_menu
+	jr PackBuildMenu
 
 .unusable
 	ld hl, MenuDataHeader_HoldableKeyItem
 	ld de, Jumptable_GiveTossRegisterQuit
-	jr .build_menu
+	jr PackBuildMenu
 
 .selectable_unusable
 	ld hl, MenuDataHeader_HoldableItem
 	ld de, Jumptable_GiveTossQuit
-.build_menu
+
+PackBuildMenu:
 	push de
 	call LoadMenuDataHeader
 	call VerticalMenu
 	call ExitMenu
 	pop hl
 	ret c
+PackMenuJump:
 	ld a, [wMenuCursorY]
 	dec a
 	call Pack_GetJumptablePointer
 	jp hl
+
+PackSortMenu:
+	ld hl, Text_SortItemsHow
+	call Pack_PrintTextNoScroll
+	ld hl, wMenuData2_ItemsPointerAddr
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	push hl
+	ld a, [wMenuData2_ScrollingMenuSpacing]
+	push af
+	ld hl, MenuDataHeader_SortItems
+	ld de, Jumptable_SortItems
+	push de
+	call LoadMenuDataHeader
+	call VerticalMenu
+	call ExitMenu
+	jr nc, .no_quit
+	ld a, 3
+	ld [wMenuCursorY], a
+.no_quit
+	pop de
+	pop af
+	ld [wMenuData2_ScrollingMenuSpacing], a
+	pop bc
+	ld hl, wMenuData2_ItemsPointerAddr
+	ld a, c
+	ld [hli], a
+	ld [hl], b
+	ld h, d
+	ld l, e
+	jr PackMenuJump
 
 MenuDataHeader_SortItems:
 	db $40 ; flags
@@ -870,29 +869,18 @@ BattlePack: ; 10493
 	; fallthrough
 
 ItemSubmenu: ; 105d3 (4:45d3)
+	jp nz, PackSortMenu
 	farcall CheckItemContext
 	ld a, [wItemAttributeParamBuffer]
 TMHMSubmenu: ; 105dc (4:45dc)
 	and a
-	jr z, .NoUse
 	ld hl, .UsableMenuDataHeader
 	ld de, .UsableJumptable
-	jr .proceed
-
-.NoUse:
+	jr nz, .proceed
 	ld hl, .UnusableMenuDataHeader
 	ld de, .UnusableJumptable
 .proceed
-	push de
-	call LoadMenuDataHeader
-	call VerticalMenu
-	call ExitMenu
-	pop hl
-	ret c
-	ld a, [wMenuCursorY]
-	dec a
-	call Pack_GetJumptablePointer
-	jp hl
+	jp PackBuildMenu
 
 ; 10601 (4:4601)
 .UsableMenuDataHeader: ; 0x10601
