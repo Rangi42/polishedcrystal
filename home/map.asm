@@ -2430,7 +2430,7 @@ GetOvercastIndex::
 	cp MAP_ROUTE_33
 	jr nz, .not_overcast
 .azalea_town
-; Not overcast until Slowpokes appear (Team ROcket beaten)
+; Not overcast until Slowpokes appear (Team Rocket beaten)
 	eventflagcheck EVENT_AZALEA_TOWN_SLOWPOKES
 	jr nz, .not_overcast
 ; Overcast on Sunday, Tuesday, Thursday, and Saturday
