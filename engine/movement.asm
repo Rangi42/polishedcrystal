@@ -212,6 +212,7 @@ Movement_step_loop: ; 51b8
 
 Movement_step_end: ; 51c1
 	; check for player object
+	jp Movement_step_resume
 	ld hl, OBJECT_MAP_OBJECT_INDEX
 	add hl, bc
 	ld a, [hl]

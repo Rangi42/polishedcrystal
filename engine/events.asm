@@ -101,6 +101,9 @@ EnterMap: ; 9673e
 ; 9676d
 
 HandleMap:
+	call .do_it
+	ret nz
+.do_it
 	call ResetOverworldDelay
 	call HandleMapTimeAndJoypad
 	call HandleCmdQueue
@@ -111,12 +114,12 @@ HandleMap:
 	cp 2 ; HandleMap
 	ret nz
 
-	call .background_events
-.background_events
 	call HandleMapObjects
 	call NextOverworldFrame
 	call HandleMapBackground
-	jp CheckPlayerState
+	call CheckPlayerState
+	xor a
+	ret
 
 MapEvents: ; 96795
 	ld a, [wMapEventStatus]
