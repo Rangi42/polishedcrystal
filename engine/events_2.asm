@@ -1,8 +1,4 @@
 ReturnFromMapSetupScript:: ; b8000
-	farcall RefreshSprites
-	xor a
-	ld [hBGMapMode], a
-
 	ld a, [wMapGroup]
 	ld b, a
 	ld a, [wMapNumber]
@@ -44,9 +40,7 @@ ReturnFromMapSetupScript:: ; b8000
 ; Display for 60 frames
 	ld a, 60
 	ld [wLandmarkSignTimer], a
-	call LoadMapNameSignGFX
-	call InitMapNameFrame
-	farjp HDMATransfer_OnlyTopFourRows
+	ret
 
 .dont_do_map_sign
 	ld a, [wCurrentLandmark]
@@ -104,15 +98,17 @@ ReturnFromMapSetupScript:: ; b8000
 
 
 PlaceMapNameSign:: ; b8098 (2e:4098)
+	; Sign is slightly delayed to move it away from the map connection setup
 	ld hl, wLandmarkSignTimer
 	ld a, [hl]
 	and a
 	jr z, .disappear
 	dec [hl]
-	cp 60
-	ret z
-	cp 59
-	jr nz, .skip2
+	cp 57
+	ret nc
+	cp 56
+	jr c, .skip2
+	call LoadMapNameSignGFX
 	call InitMapNameFrame
 	call PlaceMapNameCenterAlign
 	farcall HDMATransfer_OnlyTopFourRows

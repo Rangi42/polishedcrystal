@@ -708,11 +708,12 @@ wReceiveCallDelay_StartTime:: ds 3
 wBugContestMinsRemaining:: ds 1
 wBugContestSecsRemaining:: ds 1
 
-wRandomEncountersEnabled::
-; 0: random encounters disabled
+wVBlankOWAction::
+; 0: nothing going on
 ; 1: do encounter check next vblank while moving
 ; 2: found encounter
-; 3: no encounter this step
+; 3: no encounter this step (but dismiss regular check)
+; 4: perform NPC/player movement
 	ds 1
 
 	ds 1

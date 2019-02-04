@@ -116,6 +116,16 @@ HandleMap:
 
 	call HandleMapObjects
 	call NextOverworldFrame
+	ld a, [wLandmarkSignTimer]
+	cp 58
+	jr nz, .continue
+	ld a, 4
+	ld [wVBlankOWAction], a
+	farcall RefreshSprites
+	xor a
+	ld [wVBlankOWAction], a
+
+.continue
 	call HandleMapBackground
 	call CheckPlayerState
 	xor a
@@ -162,11 +172,18 @@ HandleMapObjects: ; 967d1
 	jp _CheckObjectEnteringVisibleRange
 ; 967e1
 
-HandleMapBackground: ; 967e1
+VBlankHandleMapBackground::
+	ld a, [wPlayerStepFlags]
+	bit 5, a
+	ret z
+	bit 6, a
+	ret nz
+
+	call HandleMapObjects
+HandleMapBackground:
 	farcall _UpdateSprites
 	farcall ScrollScreen
 	farjp PlaceMapNameSign
-; 967f4
 
 CheckPlayerState: ; 967f4
 	ld a, [wPlayerStepFlags]
@@ -1191,7 +1208,7 @@ RandomEncounter:: ; 97cc0
 
 .disable_encounters
 	xor a
-	ld [wRandomEncountersEnabled], a
+	ld [wVBlankOWAction], a
 .nope
 	ld a, 1
 	and a

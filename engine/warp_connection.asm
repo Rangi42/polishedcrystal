@@ -305,6 +305,9 @@ LoadMapPalettes: ; 1047eb
 
 RefreshMapSprites: ; 1047f0
 	call ClearSprites
+	xor a
+	ld [hBGMapMode], a
+
 	farcall ReturnFromMapSetupScript
 	call GetMovementPermissions
 	farcall RefreshPlayerSprite

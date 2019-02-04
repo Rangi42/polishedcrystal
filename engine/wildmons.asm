@@ -218,25 +218,31 @@ FindNest: ; 2a01f
 	ret
 
 CheckWildEncounter::
-	ld a, [wRandomEncountersEnabled]
+	ld a, [wVBlankOWAction]
 	and a
 	call z, EnableRandomEncounters
-	ld a, [wRandomEncountersEnabled]
+	ld a, [wVBlankOWAction]
 	sub 2
 	ld a, 1
-	ld [wRandomEncountersEnabled], a
+	ld [wVBlankOWAction], a
 	ret
 
 EnableRandomEncounters:
 	ld a, 1
-	ld [wRandomEncountersEnabled], a
+	ld [wVBlankOWAction], a
 	jr TryWildEncounter
 
-VBlankTryWildEncounter::
+VBlankOWCheck::
 	ld a, [wMapEventStatus]
 	and a
 	ret z
-	ld a, [wRandomEncountersEnabled]
+	ld a, [wVBlankOWAction]
+	cp 4
+	jr nz, .continue
+	farjp VBlankHandleMapBackground
+
+.continue
+	; check for wild Pokémon
 	and a
 	ret z
 	dec a
@@ -251,11 +257,11 @@ TryWildEncounter::
 	jr nc, .no_battle
 	call CheckRepelEffect
 	jr nc, .no_battle
-	ld a, [wRandomEncountersEnabled]
+	ld a, [wVBlankOWAction]
 	and a
 	ret z
 	ld a, 2
-	ld [wRandomEncountersEnabled], a
+	ld [wVBlankOWAction], a
 	xor a
 	ret
 
@@ -263,11 +269,11 @@ TryWildEncounter::
 	xor a ; BATTLETYPE_NORMAL
 	ld [wTempWildMonSpecies], a
 	ld [wBattleType], a
-	ld a, [wRandomEncountersEnabled]
+	ld a, [wVBlankOWAction]
 	and a
 	ld a, 3
 	jr z, .skip_random_encounters_flag
-	ld [wRandomEncountersEnabled], a
+	ld [wVBlankOWAction], a
 .skip_random_encounters_flag
 	and a
 	ret
