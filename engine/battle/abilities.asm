@@ -756,7 +756,7 @@ CheckNullificationAbilities:
 .ability_ok
 	; Set AttackMissed to 3 (means ability immunity kicked in), and wTypeMatchup
 	; to 0 (not neccessary for the engine itself, but helps the AI)
-	ld a, 3
+	ld a, ATKFAIL_ABILITY
 	ld [AttackMissed], a
 	xor a
 	ld [wTypeMatchup], a
