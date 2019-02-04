@@ -6488,9 +6488,10 @@ BattleCommand_ForceSwitch: ; 3680f
 .trainer
 	call CheckAnyOtherAliveOpponentMons
 	jp z, .fail
-	ld a, [wEnemyGoesFirst]
-	and a
-	jr z, .switch_fail
+	ld a, BATTLE_VARS_MOVE_OPP
+	call GetBattleVarAddr
+	xor a
+	ld [hl], a
 	call UpdateEnemyMonInParty
 	ld a, $1
 	ld [wKickCounter], a
@@ -6578,10 +6579,11 @@ BattleCommand_ForceSwitch: ; 3680f
 .vs_trainer
 	call CheckAnyOtherAliveOpponentMons
 	jr z, .fail
-	ld a, [wEnemyGoesFirst]
-	cp $1
-	jr z, .switch_fail
 
+	ld a, BATTLE_VARS_MOVE_OPP
+	call GetBattleVarAddr
+	xor a
+	ld [hl], a
 	call UpdateBattleMonInParty
 	ld a, $1
 	ld [wKickCounter], a

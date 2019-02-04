@@ -1009,6 +1009,7 @@ GetBattleVarAddr:: ; 39e7
 .type           db PLAYER_MOVE_TYPE,      ENEMY_MOVE_TYPE
 .category       db PLAYER_MOVE_CATEGORY,  ENEMY_MOVE_CATEGORY
 .curmove        db PLAYER_CUR_MOVE,       ENEMY_CUR_MOVE
+.curmoveopp     db ENEMY_CUR_MOVE,        PLAYER_CUR_MOVE
 .lastcounter    db PLAYER_COUNTER_MOVE,   ENEMY_COUNTER_MOVE
 .lastcounteropp db ENEMY_COUNTER_MOVE,    PLAYER_COUNTER_MOVE
 .lastmove       db PLAYER_LAST_MOVE,      ENEMY_LAST_MOVE
