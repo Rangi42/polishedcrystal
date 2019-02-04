@@ -1202,10 +1202,10 @@ TeleportFrom: ; 4c18
 	ld [hl], 0
 	ld hl, OBJECT_31
 	add hl, bc
-	ld [hl], $20
+	ld [hl], $10
 	ld hl, OBJECT_STEP_DURATION
 	add hl, bc
-	ld [hl], 32
+	ld [hl], 16
 	ld hl, OBJECT_FLAGS2
 	add hl, bc
 	res OVERHEAD, [hl]
@@ -1275,7 +1275,7 @@ TeleportTo: ; 4c89
 	ld [hl], 0
 	ld hl, OBJECT_STEP_DURATION
 	add hl, bc
-	ld [hl], 32
+	ld [hl], 16
 	jp IncrementObjectStructField28
 ; 4cc9
 

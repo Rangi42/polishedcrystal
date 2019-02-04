@@ -457,6 +457,9 @@ StartMenu_Pokemon: ; 12976
 	jr c, .return ; if cancelled or pressed B
 
 	call PokemonActionSubmenu
+	push af
+	call Delay2
+	pop af
 	cp 3
 	jr z, .menu
 	cp 0

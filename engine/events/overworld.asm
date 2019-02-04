@@ -1037,11 +1037,6 @@ TeleportFunction: ; cc61
 	ld a, $80
 	ret
 
-.Text_ReturnToLastMonCenter: ; 0xccb1
-	; Return to the last #MON CENTER.
-	text_jump UnknownText_0x1c071a
-	db "@"
-
 .Text_CantUseHere: ; 0xccb6
 	; Can't use that here.
 	text_jump UnknownText_0x1c073b
@@ -1050,10 +1045,6 @@ TeleportFunction: ; cc61
 .TeleportScript: ; 0xccbb
 	reloadmappart
 	special UpdateTimePals
-	writetext .Text_ReturnToLastMonCenter
-	pause 60
-	reloadmappart
-	closetext
 	playsound SFX_WARP_TO
 	applymovement PLAYER, .TeleportFrom
 	farscall Script_AbortBugContest

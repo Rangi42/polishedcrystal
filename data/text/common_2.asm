@@ -257,11 +257,6 @@ UnknownText_0x1c0705::
 	line "here."
 	done
 
-UnknownText_0x1c071a::
-	text "Return to the last"
-	line "#mon Center."
-	done
-
 UnknownText_0x1c073b::
 	text "Can't use that"
 	line "here."
