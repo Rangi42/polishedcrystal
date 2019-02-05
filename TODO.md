@@ -247,7 +247,6 @@ Some of these may never be added; they're just suggestions.
    * Emerald [wild_encounter_related](https://github.com/pret/pokeemerald/blob/master/asm/rom4.s#L2544): raises call probability for Swarm ability
 * Either add a 510 EV limit, or replace the 6 Power items with more useful Berries
 * Catch rate formula from Gen III
-* Show stat changes and then absolute values on level up
 * Port critical captures from Prism
 * Allow evolution during battle
 * Itemfinder makes you face towards the item

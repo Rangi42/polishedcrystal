@@ -2771,17 +2771,16 @@ INCLUDE "data/types/names.asm"
 
 PrintNature:
 ; Print nature b at hl.
-	ld a, b
 	push hl
 	ld hl, NatureNames
 	jr _PrintNatureProperty
 
 PrintNatureIndicators:
 ; Print indicators for nature b at hl.
-	ld a, b
 	push hl
 	ld hl, NatureIndicators
 _PrintNatureProperty:
+	ld a, b
 	add a
 	ld e, a
 	ld d, 0
@@ -2924,6 +2923,116 @@ endr
 	next "Spcl.Def"
 	next "Speed"
 	next "@"
+
+PrintStatDifferences: ; 50b7b
+; Print TempMon's stats at hl, with spacing bc, with previous stats at
+; wStringBuffer3
+	ld a, [wTextBoxFlags]
+	push af
+	set NO_LINE_SPACING, a
+	ld [wTextBoxFlags], a
+
+	push hl
+	call .PrintStatNames
+	ld bc, 8
+	add hl, bc
+	ld de, wStringBuffer3
+	ld b, 1
+	call .PrintStats
+	call WaitPressAorB_BlinkCursor
+	pop hl
+
+	call .PrintStatNames
+	ld bc, 8
+	add hl, bc
+	ld de, wTempMonMaxHP
+	ld b, 0
+	call .PrintStats
+	call WaitPressAorB_BlinkCursor
+	pop af
+	ld [wTextBoxFlags], a
+	ret
+
+.PrintStatNames:
+	push hl
+	ld de, .StatNames
+	call PlaceString
+	pop hl
+
+	push hl
+	ld a, [wTempMonNature]
+	ld b, a
+	farcall GetNature
+	pop hl
+	push hl
+	push bc
+	ld bc, 7 + SCREEN_WIDTH
+	add hl, bc
+	pop bc
+	predef PrintNatureIndicators
+	pop hl
+	ret
+
+.PrintStats:
+	ld c, 6
+.stats_loop
+	push bc
+	push hl
+	push de
+	ld a, b
+	lb bc, 2, 3
+	push af
+	call PrintNum
+	pop af
+	and a
+	jr z, .mod_done
+	pop hl
+	inc hl
+	ld c, [hl]
+	push bc
+	ld bc, wTempMonMaxHP - wStringBuffer3
+	add hl, bc
+	ld a, [hld]
+	pop bc
+	sub c
+	ld bc, wStringBuffer3 - wTempMonMaxHP
+	add hl, bc
+	ld d, h
+	ld e, l
+	ld hl, wStringBuffer3 + 12
+	ld [hl], a
+	pop hl
+	push hl
+	inc hl
+	inc hl
+	inc hl
+	ld a, "+"
+	ld [hli], a
+
+	lb bc, 1, 2
+	push de
+	ld de, wStringBuffer3 + 12
+	call PrintNum
+.mod_done
+	pop de
+	pop hl
+	ld bc, SCREEN_WIDTH
+	add hl, bc
+	inc de
+	inc de
+	pop bc
+	dec c
+	jr nz, .stats_loop
+	ret
+
+.StatNames:
+	;    "Stat   ↑123+ 1"
+	db   "Max HP        "
+	next "Attack        "
+	next "Defense       "
+	next "Sp. Atk       "
+	next "Sp. Def       "
+	next "Speed         @"
 
 GetGender: ; 50bdd
 ; Return the gender of a given monster (wCurPartyMon/wCurOTMon/CurWildMon).

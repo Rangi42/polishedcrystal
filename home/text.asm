@@ -346,6 +346,9 @@ PlaceCommandCharacter::
 	jp NextChar
 
 NextLineChar::
+	ld a, [wTextBoxFlags]
+	bit NO_LINE_SPACING, a
+	jr nz, LineBreak
 	pop hl
 	ld bc, SCREEN_WIDTH * 2
 	add hl, bc

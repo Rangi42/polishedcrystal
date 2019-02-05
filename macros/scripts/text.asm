@@ -1,5 +1,6 @@
 text   EQUS "db \"<START>\"," ; Start writing text.
 next   EQUS "db \"<NL>\","    ; Move a line down.
+next1  EQUS "db \"<LNBRK>\"," ; Move a line down (without line spacing)
 line   EQUS "db \"<LINE>\","  ; Start writing at the bottom line.
 page   EQUS "db \"@\","       ; Start a new Pokedex page.
 para   EQUS "db \"<PARA>\","  ; Start a new paragraph.

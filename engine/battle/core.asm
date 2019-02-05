@@ -3975,40 +3975,13 @@ HandleFirstAirBalloon:
 
 RecalculateStatsAfterBattle::
 	ld a, [wPartyCount]
-	ld hl, wPartyMon1MaxHP
-	ld bc, PARTYMON_STRUCT_LENGTH
-	inc a
 .loop
 	dec a
-	ret z
 	push af
-	ld d, h
-	ld e, l
-	push hl
-	push bc
-	ld bc, MON_SPECIES - MON_MAXHP
-	add hl, bc
-	ld a, [hl]
-	ld [wCurPartySpecies], a
-	ld [wCurSpecies], a
-	push hl
-	push de
-	call GetBaseData
-	pop de
-	pop hl
-	ld bc, MON_LEVEL - MON_SPECIES
-	add hl, bc
-	ld a, [hl]
-	ld [wCurPartyLevel], a
-	ld bc, MON_EVS - 1 - MON_LEVEL
-	add hl, bc
-	ld b, TRUE
-	predef CalcPkmnStats
-	pop bc
-	pop hl
-	add hl, bc
+	farcall UpdatePkmnStats
 	pop af
-	jr .loop
+	jr nz, .loop
+	ret
 
 RemoveToxicAfterBattle::
 ; removes toxic from mons after battle
@@ -7596,7 +7569,7 @@ GiveExperiencePoints: ; 3ee3b
 	add hl, bc
 	ld a, [hli]
 	or [hl]
-	jp z, .skip_stats ; fainted
+	jp z, .next_mon ; fainted
 
 	push bc
 	ld hl, wBattleParticipantsNotFainted
@@ -7608,20 +7581,20 @@ GiveExperiencePoints: ; 3ee3b
 	ld a, c
 	and a
 	pop bc
-	jp z, .skip_stats
+	jp z, .next_mon
 
 	call GiveBattleEVs
 
-; No experience at level 100
+	; No experience at level 100
 	ld hl, MON_LEVEL
 	add hl, bc
 	ld a, [hl]
 	cp MAX_LEVEL
-	jp z, .skip_stats
+	jp z, .next_mon
 
 	push bc
 	xor a
-	ld [hMultiplicand + 0], a
+	ld [hMultiplicand], a
 	ld [hMultiplicand + 1], a
 	ld a, [wEnemyMonBaseExp]
 	ld [hMultiplicand + 2], a
@@ -7632,9 +7605,9 @@ GiveExperiencePoints: ; 3ee3b
 	ld [hDivisor], a
 	ld b, 4
 	call Divide
-	pop bc
 
-; Boost experience for traded Pokemon
+	; Boost Experience for traded Pokemon
+	pop bc
 	ld hl, MON_ID
 	add hl, bc
 	ld a, [wPlayerID]
@@ -7648,6 +7621,7 @@ GiveExperiencePoints: ; 3ee3b
 	ld a, [wInitialOptions]
 	bit TRADED_AS_OT_OPT, a
 	jr nz, .no_boost
+
 .boosted
 	call BoostExp
 	ld a, $1
@@ -7660,8 +7634,8 @@ GiveExperiencePoints: ; 3ee3b
 	call nz, BoostExp
 ; Boost experience for Lucky Egg
 	push bc
-	ld a, MON_ITEM
-	call GetPartyParamLocation
+	ld hl, MON_ITEM
+	add hl, bc
 	ld a, [hl]
 	cp LUCKY_EGG
 	call z, BoostExp
@@ -7748,54 +7722,30 @@ GiveExperiencePoints: ; 3ee3b
 	add hl, bc
 	ld a, [hl]
 	cp MAX_LEVEL
-	jp nc, .skip_stats
+	jp nc, .next_mon
 	cp d
-	jp z, .skip_stats
+	jp z, .next_mon
 ; <NICKNAME> grew to level ##!
 	ld [wTempLevel], a
 	ld a, [wCurPartyLevel]
 	push af
-	ld a, d
-	ld [wCurPartyLevel], a
-	ld [hl], a
-	ld hl, MON_SPECIES
-	add hl, bc
-	ld a, [hl]
-	ld [wCurSpecies], a
-	ld [wd265], a
-	call GetBaseData
-	ld hl, MON_MAXHP + 1
-	add hl, bc
-	ld a, [hld]
-	ld e, a
-	ld d, [hl]
-	push de
+	push bc
 	ld hl, MON_MAXHP
 	add hl, bc
-	ld d, h
-	ld e, l
-	ld hl, MON_EVS - 1
-	add hl, bc
-	push bc
-	ld b, TRUE
-	predef CalcPkmnStats
-	pop bc
+	push de
+	ld de, wStringBuffer3
+	ld bc, 12
+	call CopyBytes
 	pop de
-	ld hl, MON_MAXHP + 1
+	pop bc
+	push bc
+	ld hl, MON_LEVEL
 	add hl, bc
-	ld a, [hld]
-	sub e
-	ld e, a
-	ld a, [hl]
-	sbc d
-	ld d, a
-	dec hl
-	ld a, [hl]
-	add e
-	ld [hld], a
-	ld a, [hl]
-	adc d
-	ld [hl], a
+	ld [hl], d
+	farcall UpdatePkmnStats
+	pop bc
+	ld hl, MON_HP
+	add hl, bc
 	ld a, [wCurBattleMon]
 	ld d, a
 	ld a, [wCurPartyMon]
@@ -7816,10 +7766,9 @@ GiveExperiencePoints: ; 3ee3b
 	add hl, bc
 	ld a, [hl]
 	ld [wBattleMonLevel], a
-
 	xor a
 	ld [wd265], a
-	farcall UpdatePlayerHUD
+	call UpdatePlayerHUD
 	call EmptyBattleTextBox
 	call LoadTileMapToTempTileMap
 	ld a, $1
@@ -7843,15 +7792,11 @@ GiveExperiencePoints: ; 3ee3b
 	xor a ; PARTYMON
 	ld [wMonType], a
 	predef CopyPkmnToTempMon
-	hlcoord 9, 0
-	lb bc, $a, $9
+	hlcoord 4, 4
+	lb bc, 6, 14
 	call TextBox
-	hlcoord 10, 1
-	ld bc, 6
-	predef PrintTempMonStats
-	ld c, $1e
-	call DelayFrames
-	call WaitPressAorB_BlinkCursor
+	hlcoord 5, 5
+	farcall PrintStatDifferences
 	call Call_LoadTempTileMapToTileMap
 	xor a ; PARTYMON
 	ld [wMonType], a
@@ -7883,23 +7828,19 @@ GiveExperiencePoints: ; 3ee3b
 	pop af
 	ld [wCurPartyLevel], a
 
-.skip_stats
+.next_mon
 	ld a, [wPartyCount]
 	ld b, a
 	ld a, [wCurPartyMon]
 	inc a
 	cp b
-	jr z, .done
+	jp z, ResetBattleParticipants
 	ld [wCurPartyMon], a
 	ld a, MON_SPECIES
 	call GetPartyParamLocation
 	ld b, h
 	ld c, l
 	jp .loop
-
-.done
-	jp ResetBattleParticipants
-; 3f0d4
 
 .EvenlyDivideExpAmongParticipants:
 ; count number of battle participants

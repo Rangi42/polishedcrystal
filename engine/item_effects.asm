@@ -1469,7 +1469,7 @@ VitaminEffect: ; ee3d
 
 .ev_value_ok
 	ld [hl], a
-	call UpdateStatsAfterItem
+	farcall UpdatePkmnStats
 
 	call GetEVRelativePointer
 
@@ -1500,17 +1500,6 @@ NoEffectMessage: ; ee83
 	jp ClearPalettes
 ; ee8c
 
-
-UpdateStatsAfterItem: ; ee8c
-	ld a, MON_MAXHP
-	call GetPartyParamLocation
-	ld d, h
-	ld e, l
-	ld a, MON_EVS - 1
-	call GetPartyParamLocation
-	ld b, TRUE
-	predef_jump CalcPkmnStats
-; ee9f
 
 RareCandy_StatBooster_ExitMenu: ; ee9f
 	xor a
@@ -1600,31 +1589,17 @@ RareCandy: ; ef14
 	ld a, [hMultiplicand + 2]
 	ld [hl], a
 
+	push bc
 	ld a, MON_MAXHP
 	call GetPartyParamLocation
-	ld a, [hli]
-	ld b, a
-	ld c, [hl]
-	push bc
-	call UpdateStatsAfterItem
-
-	ld a, MON_MAXHP + 1
-	call GetPartyParamLocation
-
+	push de
+	ld de, wStringBuffer3
+	ld bc, 12
+	call CopyBytes
+	pop de
 	pop bc
-	ld a, [hld]
-	sub c
-	ld c, a
-	ld a, [hl]
-	sbc b
-	ld b, a
-	dec hl
-	ld a, [hl]
-	add c
-	ld [hld], a
-	ld a, [hl]
-	adc b
-	ld [hl], a
+
+	farcall UpdatePkmnStats
 	farcall LevelUpHappinessMod
 
 	ld a, PARTYMENUTEXT_LEVEL_UP
@@ -1634,15 +1609,11 @@ RareCandy: ; ef14
 	ld [wMonType], a
 	predef CopyPkmnToTempMon
 
-	hlcoord 9, 0
-	lb bc, 10, 9
+	hlcoord 4, 4
+	lb bc, 6, 14
 	call TextBox
-
-	hlcoord 10, 1
-	ld bc, 6
-	predef PrintTempMonStats
-
-	call WaitPressAorB_BlinkCursor
+	hlcoord 5, 5
+	farcall PrintStatDifferences
 
 	xor a ; PARTYMON
 	ld [wMonType], a

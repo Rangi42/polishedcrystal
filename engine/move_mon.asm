@@ -1572,12 +1572,75 @@ ComputeNPCTrademonStats: ; e134
 	ret
 ; e167
 
+UpdatePkmnStats:
+; Recalculates the stats of wCurPartyMon and also updates current HP accordingly
+	ld a, MON_SPECIES
+	call GetPartyParamLocation
+	ld a, [hl]
+	ld [wCurSpecies], a
+	call GetBaseData
+	ld a, MON_LEVEL
+	call GetPartyParamLocation
+	ld a, [hl]
+	ld [wCurPartyLevel], a
+	ld a, MON_MAXHP + 1
+	call GetPartyParamLocation
+	ld a, [hld]
+	ld c, a
+	ld b, [hl]
+	push bc
+	ld d, h
+	ld e, l
+	ld a, MON_EVS - 1
+	call GetPartyParamLocation
+	ld b, TRUE
+	call CalcPkmnStats
+	ld a, MON_HP
+	call GetPartyParamLocation
+	pop bc
+
+	; Don't change the current HP if we're fainted
+	ld a, [hli]
+	or [hl]
+	ret z
+
+	; Update current HP
+	inc hl
+	inc hl
+	ld a, [hld]
+	sub c
+	ld c, a
+	ld a, [hld]
+	sbc b
+	ld b, a
+	ld a, [hl]
+	add c
+	ld [hld], a
+	ld a, [hl]
+	adc b
+	ld [hl], a
+
+	; Prevent the infamous Pomeg glitch (HP underflow)
+	cp $80
+	jr nc, .set_hp_to_one
+
+	; Don't faint Pokémon who used to not be fainted
+	inc hl
+	or [hl]
+	ret nz
+.set_hp_to_one
+	xor a
+	ld [hli], a
+	inc a
+	ld [hl], a
+	ret
+
 CalcPkmnStats: ; e167
 ; Calculates all 6 Stats of a Pkmn
 ; b: Take into account EVs if TRUE
 ; 'c' counts from 1-6 and points with 'wBaseStats' to the base value
 ; hl is the path to the EVs
-; results in $ffb5 and $ffb6 are saved in [de]
+; de is a pointer where the 6 stats are placed
 
 	ld c, $0
 .loop
