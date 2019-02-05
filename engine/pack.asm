@@ -11,7 +11,7 @@ Pack: ; 10000
 	jr .loop
 
 .done
-	call Delay2
+	call SFXDelay2
 	ld a, [wCurrPocket]
 	ld [wLastPocket], a
 	ld hl, wOptions1

@@ -458,7 +458,7 @@ StartMenu_Pokemon: ; 12976
 
 	call PokemonActionSubmenu
 	push af
-	call Delay2
+	call SFXDelay2
 	pop af
 	cp 3
 	jr z, .menu

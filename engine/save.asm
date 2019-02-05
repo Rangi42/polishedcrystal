@@ -1,6 +1,6 @@
 SaveMenu: ; 14a1a
 	ld c, 4
-	call DelayFrames
+	call SFXDelayFrames
 	call LoadStandardMenuDataHeader
 	farcall DisplaySaveInfoOnSave
 	call SpeechTextBox
