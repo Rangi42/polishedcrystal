@@ -1469,7 +1469,7 @@ VitaminEffect: ; ee3d
 
 .ev_value_ok
 	ld [hl], a
-	call UpdateStatsAfterItem
+	farcall UpdatePkmnStats
 
 	call GetEVRelativePointer
 
@@ -1500,17 +1500,6 @@ NoEffectMessage: ; ee83
 	jp ClearPalettes
 ; ee8c
 
-
-UpdateStatsAfterItem: ; ee8c
-	ld a, MON_MAXHP
-	call GetPartyParamLocation
-	ld d, h
-	ld e, l
-	ld a, MON_EVS - 1
-	call GetPartyParamLocation
-	ld b, TRUE
-	predef_jump CalcPkmnStats
-; ee9f
 
 RareCandy_StatBooster_ExitMenu: ; ee9f
 	xor a
@@ -1600,31 +1589,7 @@ RareCandy: ; ef14
 	ld a, [hMultiplicand + 2]
 	ld [hl], a
 
-	ld a, MON_MAXHP
-	call GetPartyParamLocation
-	ld a, [hli]
-	ld b, a
-	ld c, [hl]
-	push bc
-	call UpdateStatsAfterItem
-
-	ld a, MON_MAXHP + 1
-	call GetPartyParamLocation
-
-	pop bc
-	ld a, [hld]
-	sub c
-	ld c, a
-	ld a, [hl]
-	sbc b
-	ld b, a
-	dec hl
-	ld a, [hl]
-	add c
-	ld [hld], a
-	ld a, [hl]
-	adc b
-	ld [hl], a
+	farcall UpdatePkmnStats
 	farcall LevelUpHappinessMod
 
 	ld a, PARTYMENUTEXT_LEVEL_UP
