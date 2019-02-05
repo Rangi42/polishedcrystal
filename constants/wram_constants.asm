@@ -5,6 +5,10 @@ BOXMON     EQU 2
 BREEDMON   EQU 3
 WILDMON    EQU 4
 
+; Text box flags
+; TODO: add the other bits used
+NO_LINE_SPACING EQU 2
+
 ; Options1: text speed
 INST_TEXT      EQU $0
 FAST_TEXT      EQU $1

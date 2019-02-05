@@ -7722,6 +7722,15 @@ GiveExperiencePoints: ; 3ee3b
 	ld a, [CurPartyLevel]
 	push af
 	push bc
+	ld hl, MON_MAXHP
+	add hl, bc
+	push de
+	ld de, StringBuffer3
+	ld bc, 12
+	call CopyBytes
+	pop de
+	pop bc
+	push bc
 	ld hl, MON_LEVEL
 	add hl, bc
 	ld [hl], d
@@ -7775,15 +7784,11 @@ GiveExperiencePoints: ; 3ee3b
 	xor a ; PARTYMON
 	ld [MonType], a
 	predef CopyPkmnToTempMon
-	hlcoord 9, 0
-	lb bc, $a, $9
+	hlcoord 4, 4
+	lb bc, 6, 14
 	call TextBox
-	hlcoord 10, 1
-	ld bc, 6
-	predef PrintTempMonStats
-	ld c, $1e
-	call DelayFrames
-	call WaitPressAorB_BlinkCursor
+	hlcoord 5, 5
+	farcall PrintStatDifferences
 	call Call_LoadTempTileMapToTileMap
 	xor a ; PARTYMON
 	ld [MonType], a

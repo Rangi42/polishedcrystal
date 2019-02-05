@@ -359,6 +359,9 @@ PlaceCommandCharacter:: ; 126a
 ; 0x1273
 
 NextLineChar:: ; 12a7
+	ld a, [TextBoxFlags]
+	bit NO_LINE_SPACING, a
+	jr nz, LineBreak
 	pop hl
 	ld bc, SCREEN_WIDTH * 2
 	add hl, bc

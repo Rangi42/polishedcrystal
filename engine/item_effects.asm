@@ -1589,6 +1589,16 @@ RareCandy: ; ef14
 	ld a, [hMultiplicand + 2]
 	ld [hl], a
 
+	push bc
+	ld a, MON_MAXHP
+	call GetPartyParamLocation
+	push de
+	ld de, StringBuffer3
+	ld bc, 12
+	call CopyBytes
+	pop de
+	pop bc
+
 	farcall UpdatePkmnStats
 	farcall LevelUpHappinessMod
 
@@ -1599,15 +1609,11 @@ RareCandy: ; ef14
 	ld [MonType], a
 	predef CopyPkmnToTempMon
 
-	hlcoord 9, 0
-	lb bc, 10, 9
+	hlcoord 4, 4
+	lb bc, 6, 14
 	call TextBox
-
-	hlcoord 10, 1
-	ld bc, 6
-	predef PrintTempMonStats
-
-	call WaitPressAorB_BlinkCursor
+	hlcoord 5, 5
+	farcall PrintStatDifferences
 
 	xor a ; PARTYMON
 	ld [MonType], a
