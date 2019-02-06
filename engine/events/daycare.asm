@@ -1061,6 +1061,10 @@ DayCare_InitBreeding: ; 16a3b
 	or [hl]
 	ld [hl], a
 
+	; Mark as an egg
+	ld hl, wEggMonIsEgg
+	set MON_IS_EGG_F, [hl]
+
 	; PP, egg cycles, level
 	ld hl, wStringBuffer1
 	ld de, wMonOrItemNameBuffer
