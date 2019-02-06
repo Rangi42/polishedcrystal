@@ -126,7 +126,6 @@ Low priority:
 
 ### Optimizations
 
-* Finish and merge the optimizations branch
 * Compress text with a Huffman tree (potentially save ~5.6% space)
 * LZ-compress maps' .blk files, tilesets' metatiles and collision data, and various tilemaps (potentially save ~2.7% space)
 * Optimize battle command engine, including parameterized commands
