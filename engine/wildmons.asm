@@ -594,7 +594,9 @@ ApplyAbilityEffectsOnEncounterMon:
 .halve_encounter_rate
 	srl b
 .avoid_rate_underflow
-	ret nc
+	ld a, b
+	and a
+	ret nz
 	ld b, 1
 	ret
 
