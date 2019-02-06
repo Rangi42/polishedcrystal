@@ -428,7 +428,7 @@ Paragraph::
 	ld c, 20
 	jr z, .got_delay
 	bit NO_TEXT_SCROLL, a
-	jr nz, .skipdelay
+	jr nz, .got_delay
 	and %11
 	jr z, .got_delay
 	ld c, 5
