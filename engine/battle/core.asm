@@ -4113,8 +4113,7 @@ SpikesDamage_GotAbility:
 	pop af
 
 	; Grounded Poison types absorb the Toxic Spikes
-	cpl
-	and [hl]
+	xor [hl]
 	ld [hl], a
 	ret
 
