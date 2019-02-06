@@ -552,6 +552,7 @@ CheckRepelEffect::
 
 ApplyAbilityEffectsOnEncounterMon:
 	call GetLeadAbility
+	ret z
 	ld hl, .AbilityEffects
 	jp BattleJumptable
 

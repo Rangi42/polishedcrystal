@@ -1449,41 +1449,37 @@ GetAbility::
 ; 'c' contains the target species
 ; returns ability in b
 ; preserves curspecies and base data
+	anonbankpush BaseData
+
+.Function:
 	ld a, [wInitialOptions]
-	bit ABILITIES_OPT, a
-	jr z, .no_ability
-	push de
-	ld a, [wCurSpecies]
-	ld d, a
-	ld a, c
-	ld [wCurSpecies], a
-	call GetBaseData
+	and ABILITIES_OPTMASK
+	jr z, .got_ability
+
+	push hl
+	push bc
+	ld hl, BASEMON_ABILITIES
+	ld b, 0
+	ld a, BASEMON_STRUCT_LENGTH
+	dec c
+	call AddNTimes
+	pop bc
+	push bc
 	ld a, b
 	and ABILITY_MASK
-	cp HIDDEN_ABILITY
-	jr z, .hidden_ability
+	cp ABILITY_1
+	jr z, .got_ability_ptr
+	inc hl
 	cp ABILITY_2
-	jr z, .ability_2
-.ability_1
-	ld a, [wBaseAbility1]
-	jr .restore_species
-.ability_2
-	ld a, [wBaseAbility2]
-	jr .restore_species
-.hidden_ability
-	ld a, [wBaseHiddenAbility]
-.restore_species
+	jr z, .got_ability_ptr
+	inc hl
+.got_ability_ptr
+	ld a, [hl]
+	pop bc
+	pop hl
+.got_ability
 	ld b, a
-	ld a, d
-	ld [wCurSpecies], a
-	call GetBaseData
-	pop de
 	ret
-
-.no_ability:
-	ld b, NO_ABILITY
-	ret
-
 
 GetCurNick:: ; 389c
 	ld a, [wCurPartyMon]

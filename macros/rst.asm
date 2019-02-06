@@ -3,6 +3,11 @@ Bankswitch EQU $10
 JumpTable  EQU $28
 Predef     EQU $30
 
+anonbankpush: macro
+	call AnonBankPush
+	db BANK(\1)
+endm
+
 farcall: macro ; bank, address
 	rst FarCall
 	dbw BANK(\1), \1

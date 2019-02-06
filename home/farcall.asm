@@ -10,6 +10,18 @@ FarCall_de::
 	call _de_
 	jr ReturnFarCall
 
+AnonBankPush::
+	ld [hFarCallSavedA], a
+	ld a, h
+	ld [hPredefTemp], a
+	ld a, l
+	ld [hPredefTemp + 1], a
+	pop hl
+	ld a, [hROMBank]
+	push af
+	ld a, [hli]
+	jr DoFarCall_BankInA
+
 FarCall_hl::
 ; Call a:hl.
 ; Preserves other registers.
@@ -68,6 +80,7 @@ RstFarCall::
 	ld l, a
 DoFarCall:
 	ld a, [hBuffer]
+DoFarCall_BankInA:
 	and $7f
 	rst Bankswitch
 	call RetrieveHLAndCallFunction
