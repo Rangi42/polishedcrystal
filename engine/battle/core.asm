@@ -7793,10 +7793,6 @@ GiveExperiencePoints: ; 3ee3b
 	xor a ; PARTYMON
 	ld [wMonType], a
 	predef CopyPkmnToTempMon
-	hlcoord 4, 4
-	lb bc, 6, 14
-	call TextBox
-	hlcoord 5, 5
 	farcall PrintStatDifferences
 	call Call_LoadTempTileMapToTileMap
 	xor a ; PARTYMON

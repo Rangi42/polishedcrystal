@@ -2927,6 +2927,11 @@ endr
 PrintStatDifferences: ; 50b7b
 ; Print TempMon's stats at hl, with spacing bc, with previous stats at
 ; wStringBuffer3
+	hlcoord 4, 4
+	lb bc, 6, 14
+	call TextBox
+	hlcoord 5, 5
+
 	ld a, [wTextBoxFlags]
 	push af
 	set NO_LINE_SPACING, a
