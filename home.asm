@@ -1424,6 +1424,7 @@ GetLeadAbility::
 ; abilities
 	ld a, [wPartyMon1IsEgg]
 	and IS_EGG_MASK
+	xor IS_EGG_MASK
 	ret z
 	ld a, [wPartyMon1Species]
 	inc a
