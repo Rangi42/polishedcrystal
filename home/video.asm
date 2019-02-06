@@ -93,10 +93,8 @@ endr
 	jr nz, .next
 
 
-	ld a, [hSPBuffer]
-	ld l, a
-	ld a, [hSPBuffer + 1]
-	ld h, a
+	ld sp, hSPBuffer
+	pop hl
 	ld sp, hl
 
 	pop af
@@ -110,20 +108,19 @@ endr
 
 
 WaitTop::
-; Wait until the top third of the BG Map is being updated.
+; Wait until the top half of the BG Map is being updated.
 
 	ld a, [hBGMapMode]
 	and a
-	ret z
-
+	jr nz, .handleLoop
+	ret
+.loop
+	call DelayFrame
+.handleLoop
 	ld a, [hBGMapHalf]
 	and a
-	jr z, .done
+	jr nz, .loop
 
-	call DelayFrame
-	jr WaitTop
-
-.done
 	xor a
 	ld [hBGMapMode], a
 	ret
@@ -166,23 +163,34 @@ UpdateBGMap:: ; 164c
 
 .DoCustomSourceTiles
 	ld [hSPBuffer], sp
-	ld hl, 0
-	ld d, h
-	ld e, l
+	xor a
+	ld h, a
+	ld d, a
 	ld a, [hBGMapHalf] ; multiply by 20 to get the tilemap offset
-	and a
-	jr z, .first_half
-	ld l, 20
-	ld e, 32
-.first_half
+	ld l, a
+	ld e, a
+	add hl, hl ; hl = hl * 2
+	add hl, hl ; hl = hl * 4
+	add hl, de ; hl = (hl*4) + de
+	add hl, hl ; hl = (5*hl)*2
+	add hl, hl ; hl = (5*hl)*4
 	add hl, bc
 	ld sp, hl
+	ld a, [hBGMapHalf] ; multiply by 32 to get the bg map offset
+	ld l, a
+	ld h, 0
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	add hl, hl
 	ld a, [hBGMapAddress]
+	add l
 	ld l, a
 	ld a, [hBGMapAddress + 1]
+	adc h
 	ld h, a
 	ld a, [hTilesPerCycle]
-	add hl, de
 	jr .startCustomCopy
 
 .DoAttributes
@@ -251,13 +259,13 @@ UpdateBGMap:: ; 164c
 	ld bc, BG_MAP_WIDTH - (SCREEN_WIDTH - 1)
 .row
 ; Copy a row of 20 tiles
-rept (SCREEN_WIDTH / 2) - 1
+	rept (SCREEN_WIDTH / 2) - 1
 	pop de
 	ld [hl], e
 	inc l
 	ld [hl], d
 	inc l
-endr
+	endr
 	pop de
 	ld [hl], e
 	inc l
@@ -392,7 +400,7 @@ WriteVTileSourceAndDestinationAndReturn:
 	ld sp, hl
 	ret
 
-AnimateTileset:: ; 17d3
+AnimateTileset::
 ; Only call during the first fifth of VBlank
 
 	ld a, [hMapAnims]
@@ -406,20 +414,18 @@ AnimateTileset:: ; 17d3
 	cp 151
 	ret nc
 
-	ld a, [hROMBank]
-	push af
-	ld a, BANK(_AnimateTileset)
-	rst Bankswitch
-
 	ld a, [rSVBK]
 	push af
-	ld a, 1
-	ld [rSVBK], a
 
 	ld a, [rVBK]
 	push af
 	xor a
 	ld [rVBK], a
+	inc a
+	ld [rSVBK], a
+
+	ld a, BANK(_AnimateTileset)
+	call Bankswitch
 
 	call _AnimateTileset
 
@@ -427,7 +433,4 @@ AnimateTileset:: ; 17d3
 	ld [rVBK], a
 	pop af
 	ld [rSVBK], a
-	pop af
-	rst Bankswitch
 	ret
-; 17ff
