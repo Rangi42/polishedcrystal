@@ -2974,8 +2974,26 @@ PrintStatDifferences: ; 50b7b
 	ret
 
 .PrintStats:
-	ld c, 6
-.stats_loop
+	; Some screen movement is done because internal stat order is different
+	; from the order we want to display.
+	; Printing: HP, Atk, Def, SAtk, SDef, Speed
+	; Internal: HP, Atk, Def, Speed, SAtk, SDef
+	call .PrintStat ; HP
+	call .PrintStat ; Attack
+	call .PrintStat ; Defense
+
+	push bc
+	ld bc, SCREEN_WIDTH * 2
+	add hl, bc
+	pop bc
+	call .PrintStat ; Speed
+
+	push bc
+	ld bc, -SCREEN_WIDTH * 3
+	add hl, bc
+	pop bc
+	call .PrintStat
+.PrintStat:
 	push bc
 	push hl
 	push de
@@ -3021,8 +3039,6 @@ PrintStatDifferences: ; 50b7b
 	inc de
 	inc de
 	pop bc
-	dec c
-	jr nz, .stats_loop
 	ret
 
 .StatNames:
