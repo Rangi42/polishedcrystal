@@ -3978,6 +3978,7 @@ RecalculateStatsAfterBattle::
 .loop
 	dec a
 	push af
+	ld [wCurPartyMon], a
 	farcall UpdatePkmnStats
 	pop af
 	jr nz, .loop
