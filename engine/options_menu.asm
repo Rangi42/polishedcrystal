@@ -92,10 +92,10 @@ StringOptions2:
 	db "        :<LNBRK>"
 	db "Text Autoscroll<LNBRK>"
 	db "        :<LNBRK>"
+	db "Turning Speed<LNBRK>"
+	db "        :<LNBRK>"
 	db "Typeface<LNBRK>"
 	db "        :<LNBRK>"
-	db "<LNBRK>"
-	db "<LNBRK>"
 	db "<LNBRK>"
 	db "<LNBRK>"
 	db "Previous<LNBRK>"
@@ -135,8 +135,8 @@ GetOptionPointer: ; e42d6
 	dw Options_ClockFormat
 	dw Options_PokedexUnits
 	dw Options_TextAutoscroll
+	dw Options_TurningSpeed
 	dw Options_Typeface
-	dw Options_Unused
 	dw Options_Unused
 	dw Options_NextPrevious
 	dw Options_Done
@@ -500,6 +500,41 @@ Options_TextAutoscroll:
 	db "A or B @"
 
 
+Options_TurningSpeed:
+	ld a, [hJoyPressed]
+	and D_LEFT | D_RIGHT
+	ld a, [wOptions1]
+	jr z, .not_changing
+	xor TURNING_SPEED_MASK
+	ld [wOptions1], a
+
+.not_changing
+	and TURNING_SPEED_MASK
+	rrca
+	rrca
+	rrca
+	ld b, 0
+	ld c, a
+	ld hl, .Strings
+	add hl, bc
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	hlcoord 11, 9
+	call PlaceString
+	and a
+	ret
+
+.Strings:
+	dw .Slow
+	dw .Fast
+
+.Slow:
+	db "Slow@"
+.Fast:
+	db "Fast@"
+
+
 Options_Typeface:
 	ld hl, wOptions2
 	ld a, [hl]
@@ -551,7 +586,7 @@ Options_Typeface:
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	hlcoord 11, 9
+	hlcoord 11, 11
 	call PlaceString
 	and a
 	ret
@@ -637,7 +672,7 @@ OptionsControl: ; e452a
 .DownPressed:
 	ld a, [hl] ; load the cursor position to a
 
-	cp $3
+	cp $4
 	jr nz, .DownOK
 	ld a, [wCurrentOptionsPage]
 	and a
@@ -664,7 +699,7 @@ OptionsControl: ; e452a
 	and a
 	ld a, [hl]
 	jr z, .UpOK
-	ld [hl], $3 ; skip missing options on page 2
+	ld [hl], $4 ; skip missing options on page 2
 	scf
 	ret
 .UpOK

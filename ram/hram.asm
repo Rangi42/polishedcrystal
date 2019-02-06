@@ -70,6 +70,8 @@ hProduct           EQU $ffb3 ; result (4 bytes long)
 
 hMathBuffer        EQU $ffb8
 
+hTilesetPalettesHigh   EQU $ffb3
+
 hMetatileCountWidth    EQU $ffb3
 hMetatileCountHeight   EQU $ffb4
 

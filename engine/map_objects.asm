@@ -1556,7 +1556,7 @@ PlayerStep: ; 4e56
 	ret
 ; 4e83
 
-PlayerOrNPCTurnStep: ; 4e83
+PlayerOrNPCTurnStep:
 	call Object28AnonymousJumptable
 ; anonymous dw
 	dw .init1
@@ -1574,7 +1574,8 @@ PlayerOrNPCTurnStep: ; 4e83
 	ld [hl], 4
 	ld hl, OBJECT_STEP_DURATION
 	add hl, bc
-	ld [hl], 4
+	call .GetTurningSpeed
+	ld [hl], a
 	call IncrementObjectStructField28
 .step1
 	ld hl, OBJECT_STEP_DURATION
@@ -1591,7 +1592,8 @@ PlayerOrNPCTurnStep: ; 4e83
 	ld [hl], a
 	ld hl, OBJECT_STEP_DURATION
 	add hl, bc
-	ld [hl], 4
+	call .GetTurningSpeed
+	ld [hl], a
 	call IncrementObjectStructField28
 .step2
 	ld hl, OBJECT_STEP_DURATION
@@ -1602,7 +1604,14 @@ PlayerOrNPCTurnStep: ; 4e83
 	add hl, bc
 	ld [hl], STEP_TYPE_SLEEP
 	ret
-; 4ecd
+
+.GetTurningSpeed:
+	ld a, [wOptions1]
+	bit TURNING_SPEED, a
+	ld a, 4
+	ret z
+	ld a, 2
+	ret
 
 StepType0f: ; 4ecd
 	call AddStepVector

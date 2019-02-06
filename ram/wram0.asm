@@ -1083,7 +1083,7 @@ wOptions1::
 ;   inst 0; fast 1; mid 2; slow 3
 ; bit 2-3: text autoscroll
 ;   none 0; start 1; a+b 2; a or b 3
-; bit 4: unused
+; bit 4: turning step
 ; bit 5: no text delay
 ; bit 6: stereo off/on
 ; bit 7: battle scene off/on
