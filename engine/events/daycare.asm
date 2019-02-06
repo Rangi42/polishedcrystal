@@ -750,6 +750,8 @@ DayCare_InitBreeding: ; 16a3b
 	call ByteFill
 	ld a, [wBreedMon1Species]
 	ld [wCurPartySpecies], a
+	ld a, [wBreedMon1Gender]
+	ld [wTempMonGender], a
 	ld a, $3
 	ld [wMonType], a
 	ld a, [wBreedMon1Species]

@@ -605,6 +605,8 @@ GetHeritableMoves: ; 17197
 	push af
 	ld a, [wBreedMon2Species]
 	ld [wCurPartySpecies], a
+	ld a, [wBreedMon2Gender]
+	ld [wTempMonGender], a
 	ld a, [wBreedMon2DVs]
 	ld [wTempMonDVs], a
 	ld a, [wBreedMon2DVs + 1]
@@ -621,6 +623,8 @@ GetHeritableMoves: ; 17197
 	push af
 	ld a, [wBreedMon1Species]
 	ld [wCurPartySpecies], a
+	ld a, [wBreedMon1Gender]
+	ld [wTempMonGender], a
 	ld a, [wBreedMon1DVs]
 	ld [wTempMonDVs], a
 	ld a, [wBreedMon1DVs + 1]
