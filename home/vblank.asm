@@ -13,6 +13,9 @@ VBlank::
 	push de
 	push hl
 
+	ld a, [hBuffer]
+	push af
+
 	ld a, [hROMBank]
 	ld [hROMBankBackup], a
 
@@ -37,8 +40,17 @@ VBlank::
 	call VBlankOWCheck
 	call GameTimer
 
-	xor a
-	ld [wVBlankOccurred], a
+	ld hl, wVBlankOccurred
+	ld a, [hl]
+	and a
+	ld [hl], 0
+	jr nz, .noVBlankLeak
+	ld a, $ff
+	ld [hDelayFrameLY], a
+.noVBlankLeak
+
+	pop af
+	ld [hBuffer], a
 
 	ld a, [hROMBankBackup]
 	rst Bankswitch

@@ -27,6 +27,8 @@ DelayFrames::
 SFXDelayFrame::
 DelayFrame::
 ; Wait for one frame
+	ld a, [rLY]
+	ld [hDelayFrameLY], a
 	ld a, 1
 	ld [wVBlankOccurred], a
 

@@ -1,9 +1,3 @@
-; Routines very unlikely to change that fits between joypad and header
-; Use the below to mark free space left if you change these routines
-	rept $3
-	nop
-	endr
-
 INCLUDE "home/delay.asm"
 
 HBlankCopy2bpp::
@@ -87,12 +81,4 @@ IsInArray::
 
 .InArray:
 	scf
-	ret
-
-; Register aliases
-_hl_::
-	jp hl
-
-_de_::
-	push de
 	ret

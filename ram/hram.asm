@@ -148,6 +148,8 @@ hDMATransfer       EQU $ffe8
 
 hFarCallSavedA     EQU $ffe9
 
+hDelayFrameLY      EQU $ffea
+
 hClockResetTrigger EQU $ffeb
 
 hMPState           EQU $ffed

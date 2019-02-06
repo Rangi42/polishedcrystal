@@ -47,6 +47,14 @@ INCLUDE "home/window.asm"
 INCLUDE "home/flag.asm"
 INCLUDE "home/restore_music.asm"
 
+; Register aliases
+_hl_::
+	jp hl
+
+_de_::
+	push de
+	ret
+
 DisableSpriteUpdates:: ; 0x2ed3
 ; disables overworld sprite updating?
 	xor a
