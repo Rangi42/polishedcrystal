@@ -283,7 +283,7 @@ AnticipationAbility:
 	dec a
 	ld hl, Moves
 	ld bc, MOVE_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	ld a, [hBattleTurn]
 	and a
 	ld de, wPlayerMoveStruct
@@ -320,7 +320,7 @@ AnticipationAbility:
 	dec a
 	ld hl, Moves
 	ld bc, MOVE_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	ld a, [hBattleTurn]
 	and a
 	ld de, wPlayerMoveStruct
@@ -1758,7 +1758,7 @@ RunPostBattleAbilities::
 	ld hl, wStringBuffer1
 	ld de, wStringBuffer2
 	ld bc, PKMN_NAME_LENGTH
-	call CopyBytes
+	rst CopyBytes
 	pop de
 	pop bc
 	push bc

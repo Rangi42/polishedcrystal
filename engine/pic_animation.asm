@@ -395,7 +395,7 @@ PokeAnim_GetDuration: ; d02ae
 	ld b, $0
 	ld hl, 0
 	ld a, [wPokeAnimSpeed]
-	call AddNTimes
+	rst AddNTimes
 	ld a, h
 	swap a
 	and $f0
@@ -485,7 +485,7 @@ PokeAnim_CopyBitmaskToBuffer: ; d033b
 	ld h, [hl]
 	ld l, a
 	ld a, [wPokeAnimCurBitmask]
-	call AddNTimes
+	rst AddNTimes
 	pop bc
 	ld de, wPokeAnimBitmaskBuffer
 	ld a, [wPokeAnimBitmaskBank]
@@ -591,7 +591,7 @@ PokeAnim_ConvertAndApplyBitmask: ; d036b
 	call .GetStartCoord
 	ld a, [wPokeAnimBitmaskCurRow]
 	ld bc, SCREEN_WIDTH
-	call AddNTimes
+	rst AddNTimes
 	ld a, [wBoxAlignment]
 	and a
 	jr nz, .go

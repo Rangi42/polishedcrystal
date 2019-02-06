@@ -324,7 +324,8 @@ InitializeNPCNames: ; 5ce9
 
 .Copy:
 	ld bc, NAME_LENGTH
-	jp CopyBytes
+	rst CopyBytes
+	ret
 
 .Rival:
 .Backup: db "???@"

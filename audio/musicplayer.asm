@@ -123,12 +123,12 @@ MusicPlayer::
 	ld hl, MusicPlayerPals
 	ld de, wBGPals
 	ld bc, 4 palettes
-	call CopyBytes
+	rst CopyBytes
 
 	ld hl, MusicPlayerNotePals
 	ld de, wOBPals
 	ld bc, 1 palettes
-	call CopyBytes
+	rst CopyBytes
 
 	pop af
 	ld [rSVBK], a
@@ -218,12 +218,12 @@ RenderMusicPlayer:
 	ld bc, SCREEN_WIDTH * MP_HUD_HEIGHT
 	ld hl, MPTilemap
 	decoord 0, PIANO_ROLL_HEIGHT
-	call CopyBytes
+	rst CopyBytes
 
 	ld bc, 4 * 3
 	ld hl, NoteOAM
 	ld de, wSprites
-	call CopyBytes
+	rst CopyBytes
 	call DelayFrame
 	xor a
 	ld [hOAMUpdate], a ; we will manually do it in LCD interrupt
@@ -1121,11 +1121,12 @@ DrawNotes:
 .CopyNotes:
 	ld bc, 4
 	ld hl, wMPNotes
-	call AddNTimes
+	rst AddNTimes
 	ld d, h
 	ld e, l
 	ld hl, wPitchesTmp
-	jp CopyBytes
+	rst CopyBytes
+	ret
 
 CheckEndedNote:
 ; Check that the current channel is actually playing a note.
@@ -1143,7 +1144,7 @@ CheckNoteDuration:
 
 ; Note duration
 	ld hl, wChannel1NoteDuration
-	call AddNTimes
+	rst AddNTimes
 	ld a, [hl]
 	cp 2
 	jr c, _NoteEnded
@@ -1154,7 +1155,7 @@ CheckChannelOn:
 	ld a, [wTmpCh]
 	ld bc, wChannel2 - wChannel1
 	ld hl, wChannel1Flags
-	call AddNTimes
+	rst AddNTimes
 	bit SOUND_CHANNEL_ON, [hl]
 	jr z, _NoteEnded
 
@@ -1163,7 +1164,7 @@ CheckChannelOn:
 ; note is read, so this is pointless.
 	ld a, [wTmpCh]
 	ld hl, wChannel1NoteFlags
-	call AddNTimes
+	rst AddNTimes
 	bit SOUND_REST, [hl]
 	jr nz, _NoteEnded
 
@@ -1181,7 +1182,7 @@ CheckChannelOn:
 .notch3
 	ld bc, 5
 	ld hl, rNR12
-	call AddNTimes
+	rst AddNTimes
 	ld a, [hl]
 	ld b, a
 	and $f0
@@ -1232,7 +1233,7 @@ DrawNewNote:
 	sub $8
 	ld bc, 28
 	ld hl, 8
-	call AddNTimes
+	rst AddNTimes
 	ld b, l
 	pop hl
 	ld a, [hl]
@@ -1253,7 +1254,7 @@ DrawLongerNote:
 	ld a,[wTmpCh]
 	ld hl, wChannel1Intensity
 	ld bc, wChannel2 - wChannel1
-	call AddNTimes
+	rst AddNTimes
 	ld a, [hl]
 	and $f
 	cp $9
@@ -1314,7 +1315,7 @@ SetVisualIntensity:
 	ld a,[wTmpCh]
 	ld hl, wChannel1Pitch
 	ld bc, wChannel2 - wChannel1
-	call AddNTimes
+	rst AddNTimes
 	ld a, [hl]
 	and a
 	jr z, .skip
@@ -1322,7 +1323,7 @@ SetVisualIntensity:
 	ld hl, wChannel1Intensity
 	ld bc, wChannel2 - wChannel1
 	push af
-	call AddNTimes
+	rst AddNTimes
 	pop af
 	cp 2
 	jr z, .wave_channel
@@ -1334,7 +1335,7 @@ SetVisualIntensity:
 	ld a, [wTmpCh]
 	ld hl, wC1Vol
 	ld bc, 2
-	call AddNTimes
+	rst AddNTimes
 	ld a, d
 	ldi [hl], a
 	ld a, e
@@ -1374,7 +1375,7 @@ SetVisualIntensity:
 	ld a, [wTmpCh]
 	ld hl, wC1Vol
 	ld bc, 2
-	call AddNTimes
+	rst AddNTimes
 	xor a
 	ld [hli], a
 	ld [hl], a
@@ -1478,13 +1479,15 @@ GetDutyCycleAddr:
 _GetChannelMemberAddr:
 	ld a, [wTmpCh]
 	ld bc, wChannel2 - wChannel1
-	jp AddNTimes
+	rst AddNTimes
+	ret
 
 GetIntensityAddr:
 	ld a, [wTmpCh]
 	ld hl, wC1Vol
 	ld bc, 2
-	jp AddNTimes
+	rst AddNTimes
+	ret
 
 GetSongInfo:
 	ld a, [wSongSelection]
@@ -1742,7 +1745,7 @@ UpdateSelectorNames:
 	push bc
 	ld a, b
 	ld bc, SCREEN_WIDTH
-	call AddNTimes
+	rst AddNTimes
 	call MPLPlaceString
 rept 4
 	inc de

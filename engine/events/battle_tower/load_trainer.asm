@@ -66,9 +66,9 @@ Function_LoadOpponentTrainer: ; 1f8000
 	ld hl, BattleTowerTrainers
 	ld de, wBT_OTName
 	ld bc, NAME_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	ld bc, NAME_LENGTH
-	call CopyBytes
+	rst CopyBytes
 
 	call CloseSRAM
 
@@ -111,7 +111,7 @@ PopulateBattleTowerTeam:
 	ld a, d
 	call RandomRange
 	ld bc, BattleTowerPokemon2 - BattleTowerPokemon1
-	call AddNTimes
+	rst AddNTimes
 
 	; Verify that the species hasn't been chosen already
 	ld a, [hl]
@@ -231,7 +231,7 @@ PopulateBattleTowerTeam:
 	ld e, l
 	ld hl, wStringBuffer1
 	ld bc, PKMN_NAME_LENGTH
-	call CopyBytes
+	rst CopyBytes
 	pop de
 	ld a, d
 	and a

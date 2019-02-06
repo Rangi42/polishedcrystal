@@ -820,7 +820,8 @@ TradeAnim_GetNickname: ; 294a9
 	ld hl, wStringBuffer1
 	pop de
 	ld bc, NAME_LENGTH
-	jp CopyBytes
+	rst CopyBytes
+	ret
 ; 294bb
 
 TradeAnim_ShowGivemonFrontpic: ; 294bb
@@ -1323,11 +1324,12 @@ LinkTradeAnim_LoadTradePlayerNames: ; 297ff
 	push de
 	ld de, wLinkPlayer1Name
 	ld bc, NAME_LENGTH
-	call CopyBytes
+	rst CopyBytes
 	pop hl
 	ld de, wLinkPlayer2Name
 	ld bc, NAME_LENGTH
-	jp CopyBytes
+	rst CopyBytes
+	ret
 ; 29814
 
 LinkTradeAnim_LoadTradeMonSpecies: ; 29814

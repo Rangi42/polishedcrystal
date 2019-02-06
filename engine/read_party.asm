@@ -52,7 +52,7 @@ ReadTrainerParty: ; 39771
 	dec a
 	ld hl, wOTPartyMon1Item
 	ld bc, PARTYMON_STRUCT_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	ld d, h
 	ld e, l
 	pop hl
@@ -70,7 +70,7 @@ ReadTrainerParty: ; 39771
 	dec a
 	ld hl, wOTPartyMon1EVs
 	ld bc, PARTYMON_STRUCT_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	ld d, h
 	ld e, l
 	pop hl
@@ -95,7 +95,7 @@ endr
 	dec a
 	ld hl, wOTPartyMon1DVs
 	ld bc, PARTYMON_STRUCT_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	ld d, h
 	ld e, l
 	pop hl
@@ -133,7 +133,7 @@ endr
 	dec a
 	ld hl, wOTPartyMon1Personality
 	ld bc, PARTYMON_STRUCT_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	ld d, h
 	ld e, l
 	pop hl
@@ -163,12 +163,12 @@ endr
 	dec a
 	ld hl, wOTPartyMonNicknames
 	ld bc, PKMN_NAME_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	ld d, h
 	ld e, l
 	ld hl, wStringBuffer2
 	ld bc, PKMN_NAME_LENGTH
-	call CopyBytes
+	rst CopyBytes
 	pop hl
 	pop de
 
@@ -183,7 +183,7 @@ endr
 	dec a
 	ld hl, wOTPartyMon1Moves
 	ld bc, PARTYMON_STRUCT_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	ld d, h
 	ld e, l
 	pop hl
@@ -206,13 +206,13 @@ endr
 	dec a
 	ld hl, wOTPartyMon1SpdEV
 	ld bc, PARTYMON_STRUCT_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	ld [hl], 0
 	ld a, [wOTPartyCount]
 	dec a
 	ld hl, wOTPartyMon1DefSpdDV
 	ld bc, PARTYMON_STRUCT_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	ld a, [hl]
 	; $f1, not $f0, to leave Hidden Power type alone
 	and $f1
@@ -231,7 +231,7 @@ endr
 	dec a
 	ld hl, wOTPartyMon1Happiness
 	ld bc, PARTYMON_STRUCT_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	ld [hl], 255
 	pop bc
 	pop de
@@ -247,7 +247,7 @@ endr
 	dec a
 	ld hl, wOTPartyMon1Species
 	ld bc, PARTYMON_STRUCT_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	ld d, h
 	ld e, l
 	ld hl, MON_PP
@@ -269,7 +269,7 @@ endr
 	dec a
 	ld hl, Moves + MOVE_PP
 	ld bc, MOVE_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	ld a, BANK(Moves)
 	call GetFarByte
 	pop bc
@@ -293,12 +293,12 @@ endr
 	ld hl, wOTPartyMon1MaxHP
 	ld bc, PARTYMON_STRUCT_LENGTH
 	push af
-	call AddNTimes
+	rst AddNTimes
 	pop af
 	push hl
 	ld hl, wOTPartyMon1EVs - 1
 	ld bc, PARTYMON_STRUCT_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	pop de
 	ld b, TRUE
 	push de

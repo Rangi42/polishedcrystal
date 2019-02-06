@@ -996,7 +996,7 @@ GetSubstitutePic: ; cc64c
 	ld bc, 7 tiles
 	ld hl, sScratch + 1 tiles
 .okay1
-	call AddNTimes
+	rst AddNTimes
 	pop bc
 	inc b
 	ld a, [hBattleTurn]
@@ -1006,7 +1006,7 @@ GetSubstitutePic: ; cc64c
 .okay2
 	ld a, b
 	ld bc, 1 tiles
-	call AddNTimes
+	rst AddNTimes
 	ld d, h
 	ld e, l
 	pop bc
@@ -1014,7 +1014,7 @@ GetSubstitutePic: ; cc64c
 	ld a, b
 	ld hl, wTempTileMap
 	ld bc, 4 tiles
-	call AddNTimes
+	rst AddNTimes
 	pop bc
 	swap c
 	ld b, 0

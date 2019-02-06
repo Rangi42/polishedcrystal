@@ -72,7 +72,7 @@ BattleCommand_Transform: ; 371cd
 	inc de
 	inc de
 	ld bc, NUM_MOVES
-	call CopyBytes
+	rst CopyBytes
 
 	; copy DVs and personality
 	ld a, [hli]
@@ -101,7 +101,7 @@ BattleCommand_Transform: ; 371cd
 	ld e, l
 	pop hl
 	ld bc, wBattleMonStructEnd - wBattleMonStats
-	call CopyBytes
+	rst CopyBytes
 ; init the power points
 	ld bc, wBattleMonMoves - wBattleMonStructEnd
 	add hl, bc
@@ -171,7 +171,7 @@ BattleCommand_Transform: ; 371cd
 	ld hl, wBattleMonMoves
 	ld de, wPlayerUsedMoves
 	ld bc, NUM_MOVES
-	call CopyBytes
+	rst CopyBytes
 
 .move_reveal_done
 	; Copy ability

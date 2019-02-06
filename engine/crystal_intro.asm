@@ -156,7 +156,7 @@ PlaceGameFreakPresents_1: ; e468d
 	ld hl, .GAME_FREAK
 	decoord 5, 10
 	ld bc, .end - .GAME_FREAK
-	call CopyBytes
+	rst CopyBytes
 	call PlaceGameFreakPresents_AdvanceIndex
 	ld de, SFX_GAME_FREAK_PRESENTS
 	jp PlaySFX
@@ -182,7 +182,7 @@ PlaceGameFreakPresents_2: ; e46ba
 	ld hl, .presents
 	decoord 7, 11
 	ld bc, .end - .presents
-	call CopyBytes
+	rst CopyBytes
 	jp PlaceGameFreakPresents_AdvanceIndex
 ; e46d6
 
@@ -510,11 +510,11 @@ IntroScene1: ; e495b (39:495b)
 	ld hl, Palette_365ad
 	ld de, wUnknBGPals
 	ld bc, 16 palettes
-	call CopyBytes
+	rst CopyBytes
 	ld hl, Palette_365ad
 	ld de, wBGPals
 	ld bc, 16 palettes
-	call CopyBytes
+	rst CopyBytes
 	pop af
 	ld [rSVBK], a
 	xor a
@@ -618,11 +618,11 @@ IntroScene5: ; e4a7a (39:4a7a)
 	ld hl, Palette_365ad
 	ld de, wUnknBGPals
 	ld bc, 16 palettes
-	call CopyBytes
+	rst CopyBytes
 	ld hl, Palette_365ad
 	ld de, wBGPals
 	ld bc, 16 palettes
-	call CopyBytes
+	rst CopyBytes
 	pop af
 	ld [rSVBK], a
 	xor a
@@ -841,11 +841,11 @@ IntroScene11: ; e4c86 (39:4c86)
 	ld hl, Palette_365ad
 	ld de, wUnknBGPals
 	ld bc, 16 palettes
-	call CopyBytes
+	rst CopyBytes
 	ld hl, Palette_365ad
 	ld de, wBGPals
 	ld bc, 16 palettes
-	call CopyBytes
+	rst CopyBytes
 	pop af
 	ld [rSVBK], a
 	xor a
@@ -1043,11 +1043,11 @@ IntroScene15: ; e4e40 (39:4e40)
 	ld hl, Palette_e77dd
 	ld de, wUnknBGPals
 	ld bc, 16 palettes
-	call CopyBytes
+	rst CopyBytes
 	ld hl, Palette_e77dd
 	ld de, wBGPals
 	ld bc, 16 palettes
-	call CopyBytes
+	rst CopyBytes
 	pop af
 	ld [rSVBK], a
 	xor a
@@ -1115,11 +1115,11 @@ IntroScene17: ; e4ef5 (39:4ef5)
 	ld hl, Palette_e6d6d
 	ld de, wUnknBGPals
 	ld bc, 16 palettes
-	call CopyBytes
+	rst CopyBytes
 	ld hl, Palette_e6d6d
 	ld de, wBGPals
 	ld bc, 16 palettes
-	call CopyBytes
+	rst CopyBytes
 	pop af
 	ld [rSVBK], a
 	xor a
@@ -1187,11 +1187,11 @@ IntroScene19: ; e4f7e (39:4f7e)
 	ld hl, Palette_e77dd
 	ld de, wUnknBGPals
 	ld bc, 16 palettes
-	call CopyBytes
+	rst CopyBytes
 	ld hl, Palette_e77dd
 	ld de, wBGPals
 	ld bc, 16 palettes
-	call CopyBytes
+	rst CopyBytes
 	pop af
 	ld [rSVBK], a
 	xor a
@@ -1339,11 +1339,11 @@ IntroScene26: ; e50bb (39:50bb)
 	ld hl, Palette_e679d
 	ld de, wUnknBGPals
 	ld bc, 16 palettes
-	call CopyBytes
+	rst CopyBytes
 	ld hl, Palette_e679d
 	ld de, wBGPals
 	ld bc, 16 palettes
-	call CopyBytes
+	rst CopyBytes
 	pop af
 	ld [rSVBK], a
 	xor a
@@ -1764,7 +1764,7 @@ Intro_Scene20_AppearUnown: ; e5348 (39:5348)
 	ld d, a
 
 	ld bc, 8
-	call CopyBytes
+	rst CopyBytes
 	pop bc
 
 	ld de, wUnknBGPals
@@ -1776,7 +1776,7 @@ Intro_Scene20_AppearUnown: ; e5348 (39:5348)
 	ld d, a
 
 	ld bc, 8
-	call CopyBytes
+	rst CopyBytes
 
 	pop af
 	ld [rSVBK], a
@@ -2144,12 +2144,12 @@ Intro_SetupCommonScenery:
 	ld hl, Palette_e5edd
 	ld de, wUnknBGPals
 	ld bc, 16 palettes
-	call CopyBytes
+	rst CopyBytes
 
 	ld hl, Palette_e5edd
 	ld de, wBGPals
 	ld bc, 16 palettes
-	call CopyBytes
+	rst CopyBytes
 
 	pop af
 	ld [rSVBK], a

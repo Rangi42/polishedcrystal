@@ -166,7 +166,7 @@ Special_BankOfMom: ; 16218
 	ld hl, wStringBuffer2
 	ld de, wStringBuffer2 + 3
 	ld bc, 3
-	call CopyBytes
+	rst CopyBytes
 	ld bc, wMomsMoney
 	ld de, wStringBuffer2
 	farcall GiveMoney
@@ -177,7 +177,7 @@ Special_BankOfMom: ; 16218
 	ld hl, wStringBuffer2
 	ld de, wMomsMoney
 	ld bc, 3
-	call CopyBytes
+	rst CopyBytes
 	ld de, SFX_TRANSACTION
 	call PlaySFX
 	call WaitSFX
@@ -227,7 +227,7 @@ Special_BankOfMom: ; 16218
 	ld hl, wStringBuffer2
 	ld de, wStringBuffer2 + 3
 	ld bc, 3
-	call CopyBytes
+	rst CopyBytes
 	ld de, wMomsMoney
 	ld bc, wStringBuffer2
 	farcall CompareMoney
@@ -242,7 +242,7 @@ Special_BankOfMom: ; 16218
 	ld hl, wStringBuffer2
 	ld de, wMoney
 	ld bc, 3
-	call CopyBytes
+	rst CopyBytes
 	ld de, SFX_TRANSACTION
 	call PlaySFX
 	call WaitSFX

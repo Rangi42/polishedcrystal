@@ -1298,7 +1298,7 @@ Script_earthquake:
 	ld hl, EarthquakeMovement
 	ld de, wEarthquakeMovementDataBuffer
 	ld bc, EarthquakeMovementEnd - EarthquakeMovement
-	call CopyBytes
+	rst CopyBytes
 	call GetScriptByte
 	ld [wEarthquakeMovementDataBuffer + 1], a
 	and %111111
@@ -1866,7 +1866,7 @@ ConvertMemToText:
 CopyConvertedText:
 	ld hl, wStringBuffer3
 	ld bc, wStringBuffer4 - wStringBuffer3
-	call AddNTimes
+	rst AddNTimes
 	jp CopyName2
 
 Script_itemtotext:

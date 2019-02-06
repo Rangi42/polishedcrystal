@@ -117,7 +117,7 @@ DrawPlayerPartyIconHUDBorder: ; 2c0ad
 	ld hl, .tiles
 	ld de, wTrainerHUDTiles
 	ld bc, 4
-	call CopyBytes
+	rst CopyBytes
 	hlcoord 19, 11
 	ld de, -1 ; start on right
 	jr PlaceHUDBorderTiles
@@ -133,7 +133,7 @@ DrawEnemyPartyIconHUDBorder:
 	ld hl, .tiles
 	ld de, wTrainerHUDTiles
 	ld bc, 4
-	call CopyBytes
+	rst CopyBytes
 	hlcoord 0, 3
 	ld de, 1 ; start on left
 	call PlaceHUDBorderTiles

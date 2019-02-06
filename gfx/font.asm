@@ -129,7 +129,7 @@ LoadFrame:: ; fb4cc
 	ld a, [wTextBoxFrame]
 	ld bc, TILES_PER_FRAME * LEN_1BPP_TILE
 	ld hl, Frames
-	call AddNTimes
+	rst AddNTimes
 	ld d, h
 	ld e, l
 	ld hl, VTiles0 tile "┌"

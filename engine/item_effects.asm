@@ -481,17 +481,17 @@ PokeBallEffect: ; e8a2
 	ld hl, wEnemyBackupDVs
 	ld de, wEnemyMonDVs
 	ld bc, 5
-	call CopyBytes
+	rst CopyBytes
 
 	ld hl, wWildMonMoves
 	ld de, wEnemyMonMoves
 	ld bc, NUM_MOVES
-	call CopyBytes
+	rst CopyBytes
 
 	ld hl, wWildMonPP
 	ld de, wEnemyMonPP
 	ld bc, NUM_MOVES
-	call CopyBytes
+	rst CopyBytes
 
 	ld a, [wEnemyMonSpecies]
 	push af
@@ -593,7 +593,7 @@ PokeBallEffect: ; e8a2
 	dec a
 	ld hl, wPartyMon1Happiness
 	ld bc, PARTYMON_STRUCT_LENGTH
-	call AddNTimes
+	rst AddNTimes
 
 	ld a, FRIEND_BALL_HAPPINESS
 	ld [hl], a
@@ -629,7 +629,7 @@ PokeBallEffect: ; e8a2
 	ld [wCurPartyMon], a
 	ld hl, wPartyMonNicknames
 	ld bc, PKMN_NAME_LENGTH
-	call AddNTimes
+	rst AddNTimes
 
 	ld d, h
 	ld e, l
@@ -703,7 +703,7 @@ PokeBallEffect: ; e8a2
 	ld hl, wMonOrItemNameBuffer
 	ld de, sBoxMonNicknames
 	ld bc, PKMN_NAME_LENGTH
-	call CopyBytes
+	rst CopyBytes
 
 	ld hl, sBoxMonNicknames
 	ld de, wStringBuffer1
@@ -718,7 +718,7 @@ PokeBallEffect: ; e8a2
 	ld hl, sBoxMonNicknames
 	ld de, wMonOrItemNameBuffer
 	ld bc, PKMN_NAME_LENGTH
-	call CopyBytes
+	rst CopyBytes
 
 	call CloseSRAM
 
@@ -1481,7 +1481,7 @@ VitaminEffect: ; ee3d
 	ld l, a
 	ld de, wStringBuffer2
 	ld bc, ITEM_NAME_LENGTH
-	call CopyBytes
+	rst CopyBytes
 
 	call Play_SFX_FULL_HEAL
 
@@ -1595,7 +1595,7 @@ RareCandy: ; ef14
 	push de
 	ld de, wStringBuffer3
 	ld bc, 12
-	call CopyBytes
+	rst CopyBytes
 	pop de
 	pop bc
 
@@ -1967,7 +1967,7 @@ HealHP_SFX_GFX: ; f1db (3:71db)
 	ld a, [wCurPartyMon]
 	hlcoord 11, 0
 	ld bc, SCREEN_WIDTH * 2
-	call AddNTimes
+	rst AddNTimes
 	ld a, $2
 	ld [wWhichHPBar], a
 	predef_jump AnimateHPBar
@@ -2671,7 +2671,7 @@ BattleRestorePP: ; f652
 	ld a, [wCurPartyMon]
 	ld hl, wPartyMon1Moves
 	ld bc, PARTYMON_STRUCT_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	ld de, wBattleMonMoves
 	ld b, NUM_MOVES
 .loop
@@ -3200,7 +3200,7 @@ GetMaxPPOfMove: ; f8ec
 	push hl
 	ld hl, Moves + MOVE_PP
 	ld bc, MOVE_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	ld a, BANK(Moves)
 	call GetFarByte
 	ld b, a
@@ -3239,7 +3239,7 @@ GetMaxPPOfMove: ; f8ec
 
 GetMthMoveOfNthPartymon: ; f963
 	ld a, [wCurPartyMon]
-	call AddNTimes
+	rst AddNTimes
 
 GetMthMoveOfCurrentMon: ; f969
 	ld a, [wMenuCursorY]

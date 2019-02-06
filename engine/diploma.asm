@@ -10,7 +10,7 @@ _Diploma: ; 1dd702
 	ld hl, DiplomaTilemap
 	decoord 0, 0
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
-	call CopyBytes
+	rst CopyBytes
 	ld de, .PlayerString
 	hlcoord 2, 5
 	call PlaceString

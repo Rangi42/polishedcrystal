@@ -2,7 +2,7 @@ ReadPartyMonMail: ; b9229
 	ld a, [wCurPartyMon]
 	ld hl, sPartyMail
 	ld bc, MAIL_STRUCT_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	ld d, h
 	ld e, l
 ReadAnyMail: ; b9237
@@ -675,12 +675,12 @@ MailGFX_PlaceMessage: ; b9803
 	ld de, wTempMail
 	ld a, BANK(sPartyMail)
 	call GetSRAMBank
-	call CopyBytes
+	rst CopyBytes
 	call CloseSRAM
 	ld hl, wTempMailAuthor
 	ld de, wMonOrItemNameBuffer
 	ld bc, NAME_LENGTH - 1
-	call CopyBytes
+	rst CopyBytes
 	ld a, "@"
 	ld [wTempMailAuthor], a
 	ld [wMonOrItemNameBuffer + NAME_LENGTH - 1], a

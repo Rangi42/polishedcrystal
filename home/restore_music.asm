@@ -22,7 +22,7 @@ SaveMusic::
 	di
 	ld bc, wChannelsEnd - wMusic
 	ld hl, wMusic
-	call CopyBytes
+	rst CopyBytes
 	ei
 
 .skip
@@ -64,7 +64,7 @@ RestoreMusic::
 	ld hl, wSoundEngineBackup
 	ld bc, wChannelsEnd - wMusic
 	ld de, wMusic
-	call CopyBytes
+	rst CopyBytes
 	ei
 
 	xor a

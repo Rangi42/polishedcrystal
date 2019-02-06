@@ -49,7 +49,7 @@ AIChooseMove: ; 440ce
 	ld a, [wTrainerClass]
 	dec a
 	ld bc, 7 ; Trainer2AI - Trainer1AI
-	call AddNTimes
+	rst AddNTimes
 
 .battle_tower_skip
 	lb bc, CHECK_FLAG, 0

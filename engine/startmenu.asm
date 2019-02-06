@@ -660,7 +660,7 @@ SwitchPartyMons: ; 12aec
 	ld bc, 20 * 2
 	ld a, [wSwitchMon]
 	dec a
-	call AddNTimes
+	rst AddNTimes
 	ld [hl], "▷"
 	call WaitBGMap
 	call SetPalettes
@@ -718,7 +718,7 @@ GiveTakePartyMonItem: ; 12b60
 	ld hl, wStringBuffer1
 	ld de, wMonOrItemNameBuffer
 	ld bc, PKMN_NAME_LENGTH
-	call CopyBytes
+	rst CopyBytes
 	ld a, [wMenuCursorY]
 	cp 1
 	jr nz, .take
@@ -968,10 +968,10 @@ ComposeMailMessage: ; 12cfe (4:6cfe)
 	ld hl, wPlayerName
 	ld de, wTempMailAuthor
 	ld bc, NAME_LENGTH - 1
-	call CopyBytes
+	rst CopyBytes
 	ld hl, wPlayerID
 	ld bc, 2
-	call CopyBytes
+	rst CopyBytes
 	ld a, [wCurPartySpecies]
 	ld [de], a
 	inc de
@@ -980,14 +980,14 @@ ComposeMailMessage: ; 12cfe (4:6cfe)
 	ld a, [wCurPartyMon]
 	ld hl, sPartyMail
 	ld bc, MAIL_STRUCT_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	ld d, h
 	ld e, l
 	ld hl, wTempMail
 	ld bc, MAIL_STRUCT_LENGTH
 	ld a, BANK(sPartyMail)
 	call GetSRAMBank
-	call CopyBytes
+	rst CopyBytes
 	jp CloseSRAM
 
 MonMailAction: ; 12d45
@@ -1548,13 +1548,13 @@ MoveScreenLoop:
 	ld d, a
 	ld bc, PARTYMON_STRUCT_LENGTH
 	ld hl, wPartyMon1IsEgg
-	call AddNTimes
+	rst AddNTimes
 	ld a, [hl]
 	and IS_EGG_MASK
 	ld a, d
 	jr nz, .loop_right_invalid
 	ld hl, wPartyMon1Species
-	call AddNTimes
+	rst AddNTimes
 	ld a, [hl]
 	call IsAPokemon
 	ld a, d
@@ -1586,13 +1586,13 @@ MoveScreenLoop:
 	ld d, a
 	ld bc, PARTYMON_STRUCT_LENGTH
 	ld hl, wPartyMon1IsEgg
-	call AddNTimes
+	rst AddNTimes
 	ld a, [hl]
 	and IS_EGG_MASK
 	ld a, d
 	jr nz, .loop_left_invalid
 	ld hl, wPartyMon1Species
-	call AddNTimes
+	rst AddNTimes
 	ld a, [hl]
 	call IsAPokemon
 	ld a, d
@@ -1865,7 +1865,7 @@ MoveScreen_ListMoves:
 	add hl, bc
 	ld de, wListMoves_MoveIndicesBuffer
 	ld bc, NUM_MOVES
-	call CopyBytes
+	rst CopyBytes
 	ld a, SCREEN_WIDTH * 2 ; move list spacing
 	ld [wBuffer1], a
 	hlcoord 2, 3
@@ -1875,7 +1875,7 @@ MoveScreen_ListMoves:
 	ld hl, wListMoves_MoveIndicesBuffer
 	ld de, wTempMonMoves
 	ld bc, NUM_MOVES
-	call CopyBytes
+	rst CopyBytes
 
 	; Get default PP for moves
 	ld c, NUM_MOVES
@@ -1888,7 +1888,7 @@ MoveScreen_ListMoves:
 	ld hl, Moves + MOVE_PP
 	ld bc, MOVE_LENGTH
 	dec a
-	call AddNTimes
+	rst AddNTimes
 	ld a, BANK(Moves)
 	call GetFarByte
 	ld [de], a
@@ -2010,14 +2010,14 @@ PlaceMoveData:
 	dec a
 	ld hl, Moves + MOVE_CATEGORY
 	ld bc, MOVE_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	ld a, BANK(Moves)
 	call GetFarByte
 	ld b, a
 	push bc
 	ld hl, CategoryIconGFX
 	ld bc, 2 tiles
-	call AddNTimes
+	rst AddNTimes
 	ld d, h
 	ld e, l
 	ld hl, VTiles2 tile $59
@@ -2032,7 +2032,7 @@ PlaceMoveData:
 	dec a
 	ld hl, Moves + MOVE_TYPE
 	ld bc, MOVE_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	ld a, BANK(Moves)
 	call GetFarByte
 	pop bc
@@ -2045,7 +2045,7 @@ PlaceMoveData:
 	pop af
 	ld hl, TypeIconGFX
 	ld bc, 4 * LEN_1BPP_TILE
-	call AddNTimes
+	rst AddNTimes
 	ld d, h
 	ld e, l
 	ld hl, VTiles2 tile $5b
@@ -2064,7 +2064,7 @@ PlaceMoveData:
 	dec a
 	ld hl, Moves + MOVE_POWER
 	ld bc, MOVE_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	ld a, BANK(Moves)
 	call GetFarByte
 	hlcoord 10, 12
@@ -2084,7 +2084,7 @@ PlaceMoveData:
 	dec a
 	ld hl, Moves + MOVE_ACC
 	ld bc, MOVE_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	; convert internal accuracy representation to a number
 	; between 0-100
 	ld a, BANK(Moves)

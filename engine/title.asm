@@ -151,12 +151,12 @@ endc
 	ld hl, TitleScreenPalettes
 	ld de, wUnknBGPals
 	ld bc, 16 palettes
-	call CopyBytes
+	rst CopyBytes
 
 	ld hl, TitleScreenPalettes
 	ld de, wBGPals
 	ld bc, 16 palettes
-	call CopyBytes
+	rst CopyBytes
 
 ; Restore WRAM bank
 	pop af

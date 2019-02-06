@@ -531,7 +531,7 @@ LoadSpecialMapPalette: ; 494ac
 	ld a, [wTimeOfDayPal]
 	and 3
 	ld bc, 8 palettes
-	call AddNTimes
+	rst AddNTimes
 	ld a, $5
 	ld de, wUnknBGPals
 	ld bc, 8 palettes
@@ -1813,7 +1813,7 @@ LoadSpecialMapOBPalette:
 	ld a, [wTimeOfDayPal]
 	and 3
 	ld bc, 8 palettes
-	call AddNTimes
+	rst AddNTimes
 	ld a, $5
 	ld de, wUnknOBPals
 	ld bc, 8 palettes

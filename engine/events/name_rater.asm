@@ -52,12 +52,12 @@ NameRater: ; fb6ed
 	ld hl, wPartyMonNicknames
 	ld bc, PKMN_NAME_LENGTH
 	ld a, [wCurPartyMon]
-	call AddNTimes
+	rst AddNTimes
 	ld e, l
 	ld d, h
 	ld hl, wStringBuffer2
 	ld bc, PKMN_NAME_LENGTH
-	call CopyBytes
+	rst CopyBytes
 	ld hl, NameRaterEvenBetterText
 
 .samename
@@ -88,7 +88,7 @@ CheckIfMonIsYourOT: ; fb78a
 	ld hl, wPartyMonOT
 	ld bc, NAME_LENGTH
 	ld a, [wCurPartyMon]
-	call AddNTimes
+	rst AddNTimes
 	ld de, wPlayerName
 	ld c, NAME_LENGTH
 	call .loop
@@ -97,7 +97,7 @@ CheckIfMonIsYourOT: ; fb78a
 	ld hl, wPartyMon1ID
 	ld bc, PARTYMON_STRUCT_LENGTH
 	ld a, [wCurPartyMon]
-	call AddNTimes
+	rst AddNTimes
 	ld de, wPlayerID
 	ld c, 2 ; number of bytes in which your ID is stored
 .loop
@@ -143,7 +143,7 @@ CompareNewToOld: ; fb7d3
 	ld hl, wPartyMonNicknames
 	ld bc, PKMN_NAME_LENGTH
 	ld a, [wCurPartyMon]
-	call AddNTimes
+	rst AddNTimes
 	push hl
 	call GetNicknameLength
 	ld b, c

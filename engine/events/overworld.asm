@@ -83,7 +83,7 @@ CheckPartyMove: ; c742
 	ld bc, PARTYMON_STRUCT_LENGTH
 	ld hl, wPartyMon1Moves
 	ld a, e
-	call AddNTimes
+	rst AddNTimes
 	ld b, NUM_MOVES
 .check
 	ld a, [hli]
@@ -908,7 +908,7 @@ dig_incave
 	ld hl, wDigWarp
 	ld de, wNextWarp
 	ld bc, 3
-	call CopyBytes
+	rst CopyBytes
 	call GetPartyNick
 	ld a, [wBuffer2]
 	cp $2

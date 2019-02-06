@@ -187,7 +187,7 @@ GetBreedMon1LevelGrowth: ; e698
 	ld hl, wBreedMon1Stats
 	ld de, wTempMon
 	ld bc, BOXMON_STRUCT_LENGTH
-	call CopyBytes
+	rst CopyBytes
 	farcall CalcLevel
 	ld a, [wBreedMon1Level]
 	ld b, a
@@ -201,7 +201,7 @@ GetBreedMon2LevelGrowth: ; e6b3
 	ld hl, wBreedMon2Stats
 	ld de, wTempMon
 	ld bc, BOXMON_STRUCT_LENGTH
-	call CopyBytes
+	rst CopyBytes
 	farcall CalcLevel
 	ld a, [wBreedMon2Level]
 	ld b, a
@@ -1110,7 +1110,7 @@ DisplayDexEntry: ; 4424d
 	ld d, 0
 	ld hl, 0
 	ld bc, 12
-	call AddNTimes
+	rst AddNTimes
 	add hl, de
 	ld b, h
 	ld c, l
@@ -2080,12 +2080,12 @@ CheckPartyFullAfterContest: ; 4d9e5
 	ld a, [wPartyCount]
 	dec a
 	ld bc, PARTYMON_STRUCT_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	ld d, h
 	ld e, l
 	ld hl, wContestMon
 	ld bc, PARTYMON_STRUCT_LENGTH
-	call CopyBytes
+	rst CopyBytes
 	ld a, [wPartyCount]
 	dec a
 	ld hl, wPartyMonOT
@@ -2093,14 +2093,14 @@ CheckPartyFullAfterContest: ; 4d9e5
 	ld d, h
 	ld e, l
 	ld hl, wPlayerName
-	call CopyBytes
+	rst CopyBytes
 	ld a, [wCurPartySpecies]
 	ld [wd265], a
 	call GetPokemonName
 	ld hl, wStringBuffer1
 	ld de, wMonOrItemNameBuffer
 	ld bc, PKMN_NAME_LENGTH
-	call CopyBytes
+	rst CopyBytes
 	call GiveANickname_YesNo
 	jr c, .Party_SkipNickname
 	ld a, [wPartyCount]
@@ -2119,7 +2119,7 @@ CheckPartyFullAfterContest: ; 4d9e5
 	ld d, h
 	ld e, l
 	ld hl, wMonOrItemNameBuffer
-	call CopyBytes
+	rst CopyBytes
 	ld a, [wPartyCount]
 	dec a
 	ld hl, wPartyMon1Level
@@ -2154,11 +2154,11 @@ CheckPartyFullAfterContest: ; 4d9e5
 	ld hl, wContestMon
 	ld de, wBufferMon
 	ld bc, BOXMON_STRUCT_LENGTH
-	call CopyBytes
+	rst CopyBytes
 	ld hl, wPlayerName
 	ld de, wBufferMonOT
 	ld bc, NAME_LENGTH
-	call CopyBytes
+	rst CopyBytes
 	farcall InsertPokemonIntoBox
 	ld a, [wCurPartySpecies]
 	ld [wd265], a
@@ -2177,7 +2177,7 @@ CheckPartyFullAfterContest: ; 4d9e5
 	call GetSRAMBank
 	ld de, sBoxMonNicknames
 	ld bc, PKMN_NAME_LENGTH
-	call CopyBytes
+	rst CopyBytes
 	call CloseSRAM
 
 .BoxFull:
@@ -2340,7 +2340,7 @@ _FindThatSpeciesYourTrainerID: ; 4dbe6
 	ld a, c
 	ld hl, wPartyMon1ID
 	ld bc, PARTYMON_STRUCT_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	ld a, [wPlayerID]
 	cp [hl]
 	jr nz, .nope
@@ -2473,12 +2473,12 @@ CatchTutorial:: ; 4e554
 	ld hl, wPlayerName
 	ld de, wBackupName
 	ld bc, NAME_LENGTH
-	call CopyBytes
+	rst CopyBytes
 ; Copy Dude's name to your name
 	ld hl, .Dude
 	ld de, wPlayerName
 	ld bc, NAME_LENGTH
-	call CopyBytes
+	rst CopyBytes
 
 	call .LoadDudeData
 
@@ -2495,7 +2495,8 @@ CatchTutorial:: ; 4e554
 	ld hl, wBackupName
 	ld de, wPlayerName
 	ld bc, NAME_LENGTH
-	jp CopyBytes
+	rst CopyBytes
+	ret
 
 .LoadDudeData: ; 4e5b7 (13:65b7)
 	ld hl, wDudeNumItems
@@ -2669,10 +2670,11 @@ CopyPkmnToTempMon: ; 5084a
 
 .copywholestruct
 	ld a, [wCurPartyMon]
-	call AddNTimes
+	rst AddNTimes
 	ld de, wTempMon
 	ld bc, PARTYMON_STRUCT_LENGTH
-	jp CopyBytes
+	rst CopyBytes
+	ret
 
 CalcwBufferMonStats: ; 5088b
 	ld bc, wBufferMon
@@ -2713,7 +2715,7 @@ _TempMonStatsCalculation: ; 50893
 	ld hl, MON_MAXHP
 	add hl, bc
 	ld bc, 2
-	call CopyBytes
+	rst CopyBytes
 	pop bc
 
 .zero_status
@@ -3173,7 +3175,7 @@ GetGender: ; 50bdd
 .PartyMon:
 .sBoxMon
 	ld a, [wCurPartyMon]
-	call AddNTimes
+	rst AddNTimes
 
 .Gender:
 
@@ -3199,7 +3201,7 @@ GetGender: ; 50bdd
 	dec a
 	ld hl, BASEMON_GENDER
 	ld bc, BASEMON_STRUCT_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	pop bc
 
 	ld a, BANK(BaseData)
@@ -3671,14 +3673,14 @@ _SwitchPartyMons:
 	push af
 	hlcoord 0, 1
 	ld bc, 2 * SCREEN_WIDTH
-	call AddNTimes
+	rst AddNTimes
 	ld bc, 2 * SCREEN_WIDTH
 	ld a, " "
 	call ByteFill
 	pop af
 	ld hl, wSprites
 	ld bc, $10
-	call AddNTimes
+	rst AddNTimes
 	ld de, $4
 	ld c, $4
 .gfx_loop
@@ -3713,23 +3715,23 @@ _SwitchPartyMons:
 	ld a, [wBuffer2]
 	ld hl, wPartyMons
 	ld bc, PARTYMON_STRUCT_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	push hl
 	ld de, wd002
 	ld bc, PARTYMON_STRUCT_LENGTH
-	call CopyBytes
+	rst CopyBytes
 	ld a, [wBuffer3]
 	ld hl, wPartyMons
 	ld bc, PARTYMON_STRUCT_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	pop de
 	push hl
 	ld bc, PARTYMON_STRUCT_LENGTH
-	call CopyBytes
+	rst CopyBytes
 	pop de
 	ld hl, wd002
 	ld bc, PARTYMON_STRUCT_LENGTH
-	call CopyBytes
+	rst CopyBytes
 	ld a, [wBuffer2]
 	ld hl, wPartyMonOT
 	call SkipNames
@@ -3761,25 +3763,25 @@ _SwitchPartyMons:
 	ld hl, sPartyMail
 	ld a, [wBuffer2]
 	ld bc, MAIL_STRUCT_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	push hl
 	ld de, wd002
 	ld bc, MAIL_STRUCT_LENGTH
 	ld a, BANK(sPartyMail)
 	call GetSRAMBank
-	call CopyBytes
+	rst CopyBytes
 	ld hl, sPartyMail
 	ld a, [wBuffer3]
 	ld bc, MAIL_STRUCT_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	pop de
 	push hl
 	ld bc, MAIL_STRUCT_LENGTH
-	call CopyBytes
+	rst CopyBytes
 	pop de
 	ld hl, wd002
 	ld bc, MAIL_STRUCT_LENGTH
-	call CopyBytes
+	rst CopyBytes
 	call CloseSRAM
 	pop bc
 	pop de
@@ -3791,7 +3793,8 @@ _SwitchPartyMons:
 
 .CopyName: ; 51039 (14:5039)
 	ld bc, NAME_LENGTH
-	jp CopyBytes
+	rst CopyBytes
+	ret
 
 INCLUDE "gfx/load_pics.asm"
 
@@ -3824,11 +3827,11 @@ InsertPokemonIntoBox: ; 51322
 	ld hl, wBufferMonMoves
 	ld de, wTempMonMoves
 	ld bc, NUM_MOVES
-	call CopyBytes
+	rst CopyBytes
 	ld hl, wBufferMonPP
 	ld de, wTempMonPP
 	ld bc, NUM_MOVES
-	call CopyBytes
+	rst CopyBytes
 	ld a, [wCurPartyMon]
 	ld b, a
 	farcall RestorePPofDepositedPokemon
@@ -3883,7 +3886,7 @@ InsertDataIntoBoxOrParty: ; 513e0
 	push bc
 	ld a, [wd265]
 	dec a
-	call AddNTimes
+	rst AddNTimes
 	push hl
 	add hl, bc
 	ld d, h
@@ -3900,7 +3903,7 @@ InsertDataIntoBoxOrParty: ; 513e0
 	push hl
 	push de
 	push bc
-	call CopyBytes
+	rst CopyBytes
 	pop bc
 	pop de
 	pop hl
@@ -3921,11 +3924,12 @@ InsertDataIntoBoxOrParty: ; 513e0
 	pop bc
 	pop hl
 	ld a, [wCurPartyMon]
-	call AddNTimes
+	rst AddNTimes
 	ld d, h
 	ld e, l
 	pop hl
-	jp CopyBytes
+	rst CopyBytes
+	ret
 
 INCLUDE "data/pokemon/base_stats.asm"
 INCLUDE "data/pokemon/names.asm"
@@ -4245,7 +4249,7 @@ GetOTName: ; 39550
 	ld bc, TRAINER_CLASS_NAME_LENGTH
 	ld de, wOTClassName
 	push de
-	call CopyBytes
+	rst CopyBytes
 	pop de
 	ret
 
@@ -4257,7 +4261,7 @@ GetTrainerAttributes: ; 3957b
 	dec a
 	ld hl, TrainerClassAttributes + TRNATTR_ITEM1
 	ld bc, NUM_TRAINER_ATTRIBUTES
-	call AddNTimes
+	rst AddNTimes
 	ld de, wEnemyTrainerItem1
 	ld a, [hli]
 	ld [de], a

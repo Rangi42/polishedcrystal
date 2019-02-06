@@ -129,7 +129,8 @@ GetHiddenGrottoContentPointer:
 AddCurHiddenGrottoTimes:
 	ld a, [wCurHiddenGrotto]
 	dec a ; since hidden grotto IDs start at 1
-	jp AddNTimes
+	rst AddNTimes
+	ret
 
 GetHiddenGrottoContents::
 	call GetHiddenGrottoContentPointer

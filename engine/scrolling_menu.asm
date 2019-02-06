@@ -555,5 +555,5 @@ ScrollingMenu_GetAddressOfCurListPosition:
 	ld l, a
 	inc hl ; items
 	ld a, [wMenuData2_ScrollingMenuSpacing]
-	call AddNTimes
+	rst AddNTimes
 	ret

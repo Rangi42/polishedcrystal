@@ -161,7 +161,7 @@ PlacePartymonHPBar: ; 50117
 	ld a, b
 	ld bc, PARTYMON_STRUCT_LENGTH
 	ld hl, wPartyMon1HP
-	call AddNTimes
+	rst AddNTimes
 	ld a, [hli]
 	or [hl]
 	jr nz, .not_fainted
@@ -200,7 +200,7 @@ PlacePartyMenuHPDigits: ; 50138
 	ld a, b
 	ld bc, PARTYMON_STRUCT_LENGTH
 	ld hl, wPartyMon1HP
-	call AddNTimes
+	rst AddNTimes
 	ld e, l
 	ld d, h
 	pop hl
@@ -242,7 +242,7 @@ PlacePartyMonLevel: ; 50176
 	ld a, b
 	ld bc, PARTYMON_STRUCT_LENGTH
 	ld hl, wPartyMon1Level
-	call AddNTimes
+	rst AddNTimes
 	ld e, l
 	ld d, h
 	pop hl
@@ -285,7 +285,7 @@ PlacePartyMonStatus: ; 501b2
 	ld a, b
 	ld bc, PARTYMON_STRUCT_LENGTH
 	ld hl, wPartyMon1Status
-	call AddNTimes
+	rst AddNTimes
 	ld e, l
 	ld d, h
 	pop hl
@@ -374,7 +374,7 @@ PlacePartyMonEvoStoneCompatibility: ; 5022f
 	ld a, b
 	ld bc, PARTYMON_STRUCT_LENGTH
 	ld hl, wPartyMon1Species
-	call AddNTimes
+	rst AddNTimes
 	ld a, [hl]
 	dec a
 	ld e, a

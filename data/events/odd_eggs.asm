@@ -38,7 +38,7 @@ GiveOddEgg:
 
 	ld hl, OddEggs
 	ld a, OddEgg2 - OddEgg1
-	call AddNTimes
+	rst AddNTimes
 	jr GiveEggMon
 
 .Probabilities:
@@ -72,7 +72,7 @@ GiveMystriEgg:
 GiveEggMon:
 	ld de, wOddEggSpecies
 	ld bc, PARTYMON_STRUCT_LENGTH + 2 * PKMN_NAME_LENGTH
-	call CopyBytes
+	rst CopyBytes
 ; fallthrough
 AddEggMonToParty:
 	ld hl, wPartyCount
@@ -107,7 +107,7 @@ AddEggMonToParty:
 	ld d, h
 	ld hl, wOddEggSpecies
 	ld bc, PARTYMON_STRUCT_LENGTH
-	call CopyBytes
+	rst CopyBytes
 
 	ld hl, wPartyMonOT
 	ld bc, NAME_LENGTH
@@ -121,7 +121,7 @@ AddEggMonToParty:
 	ld d, h
 	ld hl, wOddEggName
 	ld bc, PKMN_NAME_LENGTH - 1
-	call CopyBytes
+	rst CopyBytes
 	ld a, "@"
 	ld [de], a
 
@@ -137,7 +137,7 @@ AddEggMonToParty:
 	ld d, h
 	ld hl, wOddEggName
 	ld bc, PKMN_NAME_LENGTH - 1
-	call CopyBytes
+	rst CopyBytes
 	ld a, "@"
 	ld [de], a
 

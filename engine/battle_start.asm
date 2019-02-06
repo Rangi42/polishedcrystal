@@ -681,11 +681,11 @@ StartTrainerBattle_LoadPokeBallGraphics: ; 8c5dc (23:45dc)
 	push hl
 	ld de, wUnknBGPals palette PAL_BATTLE_BG_TEXT
 	ld bc, 1 palettes
-	call CopyBytes
+	rst CopyBytes
 	pop hl
 	ld de, wBGPals palette PAL_BATTLE_BG_TEXT
 	ld bc, 1 palettes
-	call CopyBytes
+	rst CopyBytes
 	pop af
 	ld [rSVBK], a
 	ld a, $1
@@ -712,7 +712,7 @@ StartTrainerBattle_LoadPokeBallGraphics: ; 8c5dc (23:45dc)
 .copy ; 8c698 (23:4698)
 	push hl
 	ld bc, 1 palettes
-	call CopyBytes
+	rst CopyBytes
 	pop hl
 	ret
 ; 8c6a1 (23:46a1)

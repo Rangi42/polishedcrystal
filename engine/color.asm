@@ -771,7 +771,7 @@ LoadMapPals:
 	and 3
 	ld bc, 8 palettes
 	ld hl, MapObjectPals
-	call AddNTimes
+	rst AddNTimes
 	ld de, wUnknOBPals
 	ld bc, 8 palettes
 	ld a, BANK(wUnknOBPals)

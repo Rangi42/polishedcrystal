@@ -6112,7 +6112,8 @@ GetStatName:
 .Copy:
 	ld de, wStringBuffer2
 	ld bc, wStringBuffer3 - wStringBuffer2
-	jp CopyBytes
+	rst CopyBytes
+	ret
 
 .names
 	db "Attack@"
@@ -6694,7 +6695,7 @@ CheckPlayerHasMonToSwitchTo: ; 36994
 
 	ld a, e
 	ld hl, wPartyMon1HP
-	call AddNTimes
+	rst AddNTimes
 	ld a, [hli]
 	or [hl]
 	jr nz, .not_fainted
@@ -7971,7 +7972,8 @@ BattleSideCopy: ; 372c6
 	ld l, e
 	pop de
 .copy
-	jp CopyBytes
+	rst CopyBytes
+	ret
 
 ; 372d2
 
@@ -9407,7 +9409,7 @@ GetItemHeldEffect: ; 37dd0
 	ld c, a
 	ld b, 0
 	ld a, NUM_ITEMATTRS
-	call AddNTimes
+	rst AddNTimes
 	ld a, BANK(ItemAttributes)
 	call GetFarHalfword
 	ld b, l

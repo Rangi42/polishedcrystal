@@ -69,7 +69,8 @@ GetTypeName: ; 50964
 	ld l, a
 	ld de, wStringBuffer1
 	ld bc, 13
-	jp CopyBytes
+	rst CopyBytes
+	ret
 ; 5097b
 
 

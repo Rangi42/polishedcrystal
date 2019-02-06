@@ -60,14 +60,6 @@ DecompressRequest2bpp:: ; e73
 
 
 
-FarCopyBytes:: ; e8d
-; copy bc bytes from a:hl to de
-	ld [hBuffer], a
-	homecall CopyBytes, [hBuffer]
-	ret
-; 0xe9b
-
-
 FarCopyBytesDouble:: ; e9b
 ; Copy bc bytes from a:hl to bc*2 bytes at de,
 ; doubling each byte in the process.

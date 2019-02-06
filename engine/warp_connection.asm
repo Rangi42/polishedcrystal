@@ -415,7 +415,7 @@ GetCoordOfUpperLeftCorner:: ; 10486d
 	srl a
 
 .resume2
-	call AddNTimes
+	rst AddNTimes
 	ld a, l
 	ld [wOverworldMapAnchor], a
 	ld a, h

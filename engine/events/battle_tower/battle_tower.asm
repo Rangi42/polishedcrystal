@@ -126,7 +126,7 @@ ReadBTTrainerParty: ; 1702b7
 	ld hl, wBT_OTTempName ; 0xc608
 	ld de, wOTPlayerName
 	ld bc, NAME_LENGTH - 1
-	call CopyBytes
+	rst CopyBytes
 	ld a, "@"
 	ld [de], a
 
@@ -151,14 +151,14 @@ ReadBTTrainerParty: ; 1702b7
 	inc bc
 	push bc
 	ld bc, PARTYMON_STRUCT_LENGTH
-	call CopyBytes
+	rst CopyBytes
 	push de
 	ld a, [wBGMapBuffer]
 	ld e, a
 	ld a, [wBGMapBuffer + 1]
 	ld d, a
 	ld bc, PKMN_NAME_LENGTH
-	call CopyBytes
+	rst CopyBytes
 	ld a, e
 	ld [wBGMapBuffer], a
 	ld a, d
@@ -184,7 +184,7 @@ CopyBTTrainerToTemp: ; 1704a2
 	ld hl, wBT_OTTrainer ; $d100
 	ld de, wBT_OTTemp ; wMisc
 	ld bc, BATTLE_TOWER_STRUCT_LENGTH
-	call CopyBytes
+	rst CopyBytes
 
 	pop af
 	ld [rSVBK], a

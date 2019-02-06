@@ -862,7 +862,7 @@ GetMoveEffect: ; 3c5ec
 	dec a
 	ld hl, Moves + MOVE_EFFECT
 	ld bc, MOVE_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	ld a, BANK(Moves)
 	call GetFarByte
 	ld b, a
@@ -1370,23 +1370,23 @@ PreparePPRestore:
 	and a
 	jr nz, .enemy
 	ld hl, wBattleMonMoves
-	ld de, wTempMonMoves
-	ld bc, NUM_MOVES
-	call CopyBytes
+	push hl
 	ld hl, wBattleMonPP
-	ld de, wTempMonPP
-	ld bc, NUM_MOVES
-	jp CopyBytes
+	jr .copy
 
 .enemy
 	ld hl, wEnemyMonMoves
-	ld de, wTempMonMoves
-	ld bc, NUM_MOVES
-	call CopyBytes
+	push hl
 	ld hl, wEnemyMonPP
+.copy
 	ld de, wTempMonPP
 	ld bc, NUM_MOVES
-	jp CopyBytes
+	rst CopyBytes
+	pop hl
+	ld de, wTempMonMoves
+	ld bc, NUM_MOVES
+	rst CopyBytes
+	ret
 
 GetZeroPPMove:
 ; Returns z if we didn't find a valid move
@@ -1496,7 +1496,7 @@ LeppaRestorePP:
 	ld hl, wStringBuffer1
 	ld de, wStringBuffer2
 	ld bc, MOVE_NAME_LENGTH
-	call CopyBytes
+	rst CopyBytes
 	call GetCurItemName
 	ld hl, BattleText_UserRecoveredPPUsing
 	call StdBattleTextBox
@@ -3088,7 +3088,7 @@ MonFaintedAnimation: ; 3d444
 	push hl
 	push de
 	ld bc, 7
-	call CopyBytes
+	rst CopyBytes
 	pop de
 	pop hl
 	ld bc, -SCREEN_WIDTH
@@ -3655,7 +3655,7 @@ CheckIfCurPartyMonIsFitToFight: ; 3d887
 	ld a, [wCurPartyMon]
 	ld hl, wPartyMon1IsEgg
 	ld bc, PARTYMON_STRUCT_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	ld a, [hl]
 	and IS_EGG_MASK
 	ld hl, BattleText_AnEGGCantBattle
@@ -3683,17 +3683,17 @@ InitBattleMon: ; 3da0d
 	call GetPartyParamLocation
 	ld de, wBattleMonSpecies
 	ld bc, MON_ID - MON_SPECIES
-	call CopyBytes ; copy Species, Item, Moves
+	rst CopyBytes ; copy Species, Item, Moves
 	ld bc, MON_DVS - MON_ID
 	add hl, bc ; skip ID, Exp, EVs
 	ld de, wBattleMonDVs
 	ld bc, MON_PKRUS - MON_DVS
-	call CopyBytes ; copy DVs, Personality, PP, Happiness
+	rst CopyBytes ; copy DVs, Personality, PP, Happiness
 	ld bc, MON_LEVEL - MON_PKRUS
 	add hl, bc ; skip PokerusStatus, CaughtData
 	ld de, wBattleMonLevel
 	ld bc, PARTYMON_STRUCT_LENGTH - MON_LEVEL
-	call CopyBytes ; copy Level, Status, Unused, HP, MaxHP, Stats
+	rst CopyBytes ; copy Level, Status, Unused, HP, MaxHP, Stats
 	ld a, [wBattleMonSpecies]
 	ld [wTempBattleMonSpecies], a
 	ld [wCurPartySpecies], a
@@ -3722,7 +3722,7 @@ endc
 	call SkipNames
 	ld de, wBattleMonNick
 	ld bc, PKMN_NAME_LENGTH
-	call CopyBytes
+	rst CopyBytes
 	jp ResetPlayerAbility
 ; 3da74
 
@@ -3790,17 +3790,17 @@ InitEnemyMon: ; 3dabd
 	call GetPartyLocation
 	ld de, wEnemyMonSpecies
 	ld bc, MON_ID - MON_SPECIES
-	call CopyBytes ; copy Species, Item, Moves
+	rst CopyBytes ; copy Species, Item, Moves
 	ld bc, MON_DVS - MON_ID
 	add hl, bc ; skip ID, Exp, EVs
 	ld de, wEnemyMonDVs
 	ld bc, MON_PKRUS - MON_DVS
-	call CopyBytes ; copy DVs, Personality, PP, Happiness
+	rst CopyBytes ; copy DVs, Personality, PP, Happiness
 	ld bc, MON_LEVEL - MON_PKRUS
 	add hl, bc ; skip PokerusStatus, CaughtData
 	ld de, wEnemyMonLevel
 	ld bc, PARTYMON_STRUCT_LENGTH - MON_LEVEL
-	call CopyBytes ; copy Level, Status, Unused, HP, MaxHP, Stats
+	rst CopyBytes ; copy Level, Status, Unused, HP, MaxHP, Stats
 	ld a, [wEnemyMonSpecies]
 	ld [wCurSpecies], a
 	call GetBaseData
@@ -3809,7 +3809,7 @@ InitEnemyMon: ; 3dabd
 	call SkipNames
 	ld de, wEnemyMonNick
 	ld bc, PKMN_NAME_LENGTH
-	call CopyBytes
+	rst CopyBytes
 	ld hl, wBaseType1
 	ld de, wEnemyMonType1
 	ld a, [hli]
@@ -4779,7 +4779,7 @@ endr
 	ld hl, wBattleMonLevel
 	ld de, wTempMonLevel
 	ld bc, $0011
-	call CopyBytes
+	rst CopyBytes
 	ld a, [wCurBattleMon]
 	ld hl, wPartyMon1Species
 	call GetPartyLocation
@@ -5381,11 +5381,11 @@ Battle_StatsScreen: ; 3e308
 	ld hl, VTiles2 tile $31
 	ld de, VTiles0
 	ld bc, $11 tiles
-	call CopyBytes
+	rst CopyBytes
 	ld hl, VTiles2
 	ld de, VTiles0 tile $11
 	ld bc, $31 tiles
-	call CopyBytes
+	rst CopyBytes
 	call EnableLCD
 	call ClearSprites
 	call LowVolume
@@ -5397,11 +5397,11 @@ Battle_StatsScreen: ; 3e308
 	ld hl, VTiles0
 	ld de, VTiles2 tile $31
 	ld bc, $11 tiles
-	call CopyBytes
+	rst CopyBytes
 	ld hl, VTiles0 tile $11
 	ld de, VTiles2
 	ld bc, $31 tiles
-	call CopyBytes
+	rst CopyBytes
 	jp EnableLCD
 ; 3e358
 
@@ -5858,7 +5858,7 @@ MoveSelectionScreen:
 .got_menu_type
 	ld de, wListMoves_MoveIndicesBuffer
 	ld bc, NUM_MOVES
-	call CopyBytes
+	rst CopyBytes
 	xor a
 	ld [hBGMapMode], a
 
@@ -5933,7 +5933,7 @@ MoveSelectionScreen:
 	hlcoord 5, 13
 	ld bc, SCREEN_WIDTH
 	dec a
-	call AddNTimes
+	rst AddNTimes
 	ld [hl], "▷"
 
 .interpret_joypad
@@ -6001,7 +6001,7 @@ MoveSelectionScreen:
 	ld hl, wStringBuffer1
 	ld de, wStringBuffer2
 	ld bc, MOVE_NAME_LENGTH
-	call CopyBytes
+	rst CopyBytes
 
 	; now place item into wStringBuffer1
 	ld a, [wBattleMonItem]
@@ -6213,7 +6213,7 @@ MoveInfoBox: ; 3e6c8
 	dec a
 	ld hl, Moves + MOVE_POWER
 	ld bc, MOVE_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	ld a, BANK(Moves)
 	call GetFarByte
 	hlcoord 1, 10
@@ -6233,7 +6233,7 @@ MoveInfoBox: ; 3e6c8
 	dec a
 	ld hl, Moves + MOVE_ACC
 	ld bc, MOVE_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	; convert internal accuracy representation to a number
 	; between 0-100
 	ld a, BANK(Moves)
@@ -6266,7 +6266,7 @@ MoveInfoBox: ; 3e6c8
 	ld hl, CategoryIconGFX
 	ld bc, 2 tiles
 	ld a, [wPlayerMoveStruct + MOVE_CATEGORY]
-	call AddNTimes
+	rst AddNTimes
 	ld d, h
 	ld e, l
 	ld hl, VTiles2 tile $59
@@ -6275,7 +6275,7 @@ MoveInfoBox: ; 3e6c8
 	ld hl, TypeIconGFX
 	ld bc, 4 * LEN_1BPP_TILE
 	ld a, [wPlayerMoveStruct + MOVE_TYPE]
-	call AddNTimes
+	rst AddNTimes
 	ld d, h
 	ld e, l
 	ld hl, VTiles2 tile $5b
@@ -6892,7 +6892,7 @@ endc
 	dec a
 	ld hl, BASEMON_GENDER
 	ld bc, BASEMON_STRUCT_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	ld a, BANK(BaseData)
 	call GetFarByte
 	swap a
@@ -7156,7 +7156,8 @@ endr
 	ld hl, wStringBuffer1
 	ld de, wEnemyMonNick
 	ld bc, PKMN_NAME_LENGTH
-	jp CopyBytes
+	rst CopyBytes
+	ret
 
 ApplyLegendaryDVs:
 	push de
@@ -7735,7 +7736,7 @@ GiveExperiencePoints: ; 3ee3b
 	push de
 	ld de, wStringBuffer3
 	ld bc, 12
-	call CopyBytes
+	rst CopyBytes
 	pop de
 	pop bc
 	push bc
@@ -7760,7 +7761,7 @@ GiveExperiencePoints: ; 3ee3b
 	ld de, wBattleMonMaxHP
 	push bc
 	ld bc, PARTYMON_STRUCT_LENGTH - MON_MAXHP
-	call CopyBytes
+	rst CopyBytes
 	pop bc
 	ld hl, MON_LEVEL
 	add hl, bc
@@ -8123,7 +8124,7 @@ AnimateExpBar: ; 3f136
 	ld hl, wBattleMonNick
 	ld de, wStringBuffer1
 	ld bc, PKMN_NAME_LENGTH
-	call CopyBytes
+	rst CopyBytes
 	call TerminateExpBarSound
 	ld de, SFX_HIT_END_OF_EXP_BAR
 	call PlaySFX
@@ -8792,15 +8793,15 @@ InitEnemyWildmon: ; 3f607
 	ld hl, wEnemyMonMoves
 	ld de, wWildMonMoves
 	ld bc, NUM_MOVES
-	call CopyBytes
+	rst CopyBytes
 	ld hl, wEnemyMonPP
 	ld de, wWildMonPP
 	ld bc, NUM_MOVES
-	call CopyBytes
+	rst CopyBytes
 	ld hl, wEnemyMonDVs
 	ld de, wEnemyBackupDVs
 	ld bc, 5
-	call CopyBytes
+	rst CopyBytes
 	ld hl, wEnemyMonForm
 	predef GetVariant
 
@@ -9055,12 +9056,12 @@ ReadAndPrintLinkBattleRecord: ; 3f85f
 	ld l, e
 	ld de, wd002
 	ld bc, NAME_LENGTH - 1
-	call CopyBytes
+	rst CopyBytes
 	ld a, "@"
 	ld [de], a
 	inc de
 	ld bc, 6
-	call CopyBytes
+	rst CopyBytes
 	ld de, wd002
 	pop hl
 	call PlaceString
@@ -9275,10 +9276,10 @@ AddLastBattleToLinkRecord: ; 3fa42
 	ld hl, wOTPlayerID
 	ld de, wStringBuffer1
 	ld bc, 2
-	call CopyBytes
+	rst CopyBytes
 	ld hl, wOTPlayerName
 	ld bc, NAME_LENGTH - 1
-	call CopyBytes
+	rst CopyBytes
 	ld hl, sLinkBattleResults
 	call .StoreResult
 	ld hl, sLinkBattleRecord
@@ -9312,7 +9313,7 @@ AddLastBattleToLinkRecord: ; 3fa42
 	ld e, l
 	ld hl, wStringBuffer1
 	ld bc, 12
-	call CopyBytes
+	rst CopyBytes
 	ld b, 6
 	xor a
 .loop2
@@ -9428,26 +9429,27 @@ AddLastBattleToLinkRecord: ; 3fa42
 	ld a, b
 	ld bc, 18
 	ld hl, sLinkBattleRecord
-	call AddNTimes
+	rst AddNTimes
 	push hl
 	ld de, wd002
 	ld bc, 18
-	call CopyBytes
+	rst CopyBytes
 	pop hl
 	pop bc
 	push hl
 	ld a, c
 	ld bc, 18
 	ld hl, sLinkBattleRecord
-	call AddNTimes
+	rst AddNTimes
 	pop de
 	push hl
 	ld bc, 18
-	call CopyBytes
+	rst CopyBytes
 	ld hl, wd002
 	ld bc, 18
 	pop de
-	jp CopyBytes
+	rst CopyBytes
+	ret
 ; 3fb54
 
 .LoadPointer: ; 3fb54

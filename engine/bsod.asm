@@ -15,7 +15,7 @@ BSOD: ; 4ea82
 	ld hl, .Palette
 	ld de, wBGPals
 	ld bc, 1 palettes
-	call CopyBytes
+	rst CopyBytes
 	pop af
 	ld [rSVBK], a
 

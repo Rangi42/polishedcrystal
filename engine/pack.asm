@@ -643,7 +643,7 @@ GiveItem: ; 103fd
 	ld hl, wStringBuffer1
 	ld de, wMonOrItemNameBuffer
 	ld bc, PKMN_NAME_LENGTH
-	call CopyBytes
+	rst CopyBytes
 	call TryGiveItemToPartymon
 	pop af
 	ld [wcf64], a
@@ -1402,7 +1402,7 @@ DrawPackGFX: ; 1089d
 	ld e, BANK(PackFGFX)
 .male
 	ld a, d
-	call AddNTimes
+	rst AddNTimes
 	ld b, e
 	ld c, 25
 	ld d, h

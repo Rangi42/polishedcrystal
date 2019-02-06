@@ -98,7 +98,7 @@ AnimateHallOfFame: ; 864c3
 	jr nc, .done
 	ld hl, wHallOfFameTempMon1
 	ld bc, wHallOfFameTempMon1End - wHallOfFameTempMon1
-	call AddNTimes
+	rst AddNTimes
 	ld a, [hl]
 	cp -1
 	jr z, .done
@@ -168,7 +168,7 @@ GetHallOfFameParty: ; 8653f
 	ld a, c
 	ld hl, wPartyMons
 	ld bc, PARTYMON_STRUCT_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	ld c, l
 	ld b, h
 
@@ -207,9 +207,9 @@ GetHallOfFameParty: ; 8653f
 	ld a, c
 	ld hl, wPartyMonNicknames
 	ld bc, PKMN_NAME_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	ld bc, PKMN_NAME_LENGTH - 1
-	call CopyBytes
+	rst CopyBytes
 
 	pop bc
 	inc c
@@ -358,7 +358,7 @@ _HallOfFamePC: ; 86650
 	jr nc, .fail
 	ld hl, wHallOfFameTempMon1
 	ld bc, wHallOfFameTempMon1End - wHallOfFameTempMon1
-	call AddNTimes
+	rst AddNTimes
 	ld a, [hl]
 	cp -1
 	jr nz, .okay
@@ -420,7 +420,7 @@ LoadHOFTeam: ; 8671c
 	jr nc, .invalid
 	ld hl, sHallOfFame
 	ld bc, HOF_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	ld a, BANK(sHallOfFame)
 	call GetSRAMBank
 	ld a, [hl]
@@ -428,7 +428,7 @@ LoadHOFTeam: ; 8671c
 	jr z, .absent
 	ld de, wHallOfFameTemp
 	ld bc, HOF_LENGTH
-	call CopyBytes
+	rst CopyBytes
 	call CloseSRAM
 	and a
 	ret
@@ -458,7 +458,7 @@ DisplayHOFMon: ; 86748
 	ld [wTempMonLevel], a
 	ld de, wStringBuffer2
 	ld bc, PKMN_NAME_LENGTH - 1
-	call CopyBytes
+	rst CopyBytes
 	ld a, "@"
 	ld [wStringBuffer2 + 10], a
 	hlcoord 0, 0

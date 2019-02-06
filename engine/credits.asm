@@ -438,7 +438,7 @@ ParseCredits: ; 1099aa
 ; Print strings spaced every two lines.
 	call .get
 	ld bc, 20 * 2
-	call AddNTimes
+	rst AddNTimes
 	call PlaceString
 	jr .loop
 
@@ -664,7 +664,7 @@ GetCreditsPalette: ; 109b2c
 	adc wUnknBGPals / $100
 	ld d, a
 	ld bc, 24
-	call CopyBytes
+	rst CopyBytes
 
 	pop hl
 	pop af
@@ -674,7 +674,8 @@ GetCreditsPalette: ; 109b2c
 	adc wBGPals / $100
 	ld d, a
 	ld bc, 24
-	jp CopyBytes
+	rst CopyBytes
+	ret
 
 
 CreditsPalettes:

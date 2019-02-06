@@ -374,7 +374,7 @@ InitialOptions_UpdateCursorPosition: ; e455c
 	; hlcoord 1, a
 	ld hl, wTileMap
 	ld bc, SCREEN_WIDTH
-	call AddNTimes
+	rst AddNTimes
 	inc hl
 	ld [hl], "▶"
 	ret

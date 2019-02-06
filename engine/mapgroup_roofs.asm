@@ -9,10 +9,10 @@ LoadMapGroupRoof:: ; 1c000
 	jr z, .extra_tiles
 	ld hl, Roofs
 	ld bc, 9 tiles
-	call AddNTimes
+	rst AddNTimes
 	ld de, VTiles2 tile $0a
 	ld bc, 9 tiles
-	call CopyBytes
+	rst CopyBytes
 
 .extra_tiles
 ; Load puddle tiles for Stormy Beach on top of the unused Mart roof tiles
@@ -29,11 +29,11 @@ LoadMapGroupRoof:: ; 1c000
 	ld hl, StormyBeachPuddleGFX
 	ld de, VTiles4 tile $c6
 	ld bc, 6 tiles
-	call CopyBytes
+	rst CopyBytes
 	ld hl, StormyBeachPuddleGFX + 6 tiles
 	ld de, VTiles4 tile $d6
 	ld bc, 6 tiles
-	call CopyBytes
+	rst CopyBytes
 	pop af
 	ld [rVBK], a
 	ret

@@ -13,7 +13,7 @@ LoadWildMonData: ; 29ff8
 	inc hl
 	ld de, wMornEncounterRate
 	ld bc, 3
-	call CopyBytes
+	rst CopyBytes
 .done_copy
 	call _WaterWildmonLookup
 	ld a, 0 ; not xor a; preserve carry flag
@@ -386,7 +386,7 @@ _ChooseWildEncounter:
 	ld a, [wTimeOfDay]
 	push bc
 	ld bc, $e
-	call AddNTimes
+	rst AddNTimes
 	pop bc
 	ld de, GrassMonProbTable
 	ld b, $c
@@ -828,7 +828,7 @@ CheckEncounterRoamMon: ; 2a2ce
 	ld c, a
 	ld b, 0
 	ld a, wRoamMon1End - wRoamMon1 ; length of the RoamMon struct
-	call AddNTimes
+	rst AddNTimes
 	ld a, d
 	cp [hl]
 	jr nz, .DontEncounterRoamMon
@@ -1072,7 +1072,7 @@ RandomPhoneRareWildMon: ; 2a4ab
 	add hl, bc
 	ld a, [wTimeOfDay]
 	ld bc, 7 * 2
-	call AddNTimes
+	rst AddNTimes
 .randloop1
 	call Random
 	and $3
@@ -1164,7 +1164,8 @@ RandomPhoneWildMon: ; 2a51f
 	ld hl, wStringBuffer1
 	ld de, wStringBuffer4
 	ld bc, PKMN_NAME_LENGTH
-	jp CopyBytes
+	rst CopyBytes
+	ret
 ; 2a567
 
 RandomPhoneMon: ; 2a567
@@ -1283,7 +1284,8 @@ RandomPhoneMon: ; 2a567
 	ld hl, wStringBuffer1
 	ld de, wStringBuffer4
 	ld bc, PKMN_NAME_LENGTH
-	jp CopyBytes
+	rst CopyBytes
+	ret
 ; 2a5e9
 
 

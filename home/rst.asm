@@ -13,10 +13,10 @@ SECTION "rst10", ROM0
 	ret
 
 SECTION "rst18", ROM0
-	rst $38
+	jp _AddNTimes
 
 SECTION "rst20", ROM0
-	rst $38
+	jp _CopyBytes
 
 SECTION "rst28", ROM0
 	jp _Jumptable

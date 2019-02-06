@@ -1,4 +1,4 @@
-AddNTimes:: ; 0x30fe
+_AddNTimes:: ; 0x30fe
 ; Add bc * a to hl. Don't optimize this for space.
 	and a
 	ret z

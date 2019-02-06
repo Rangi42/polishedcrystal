@@ -137,7 +137,8 @@ Pokegear_LoadGFX: ; 90c4e
 .loadaltsprite
 	ld de, VTiles0 tile $10
 	ld bc, 8 tiles
-	jp CopyBytes
+	rst CopyBytes
+	ret
 
 .sinjoh
 	ld hl, SinjohRuinsArrowGFX
@@ -905,7 +906,7 @@ PokegearPhone_Joypad: ; 91171 (24:5171)
 	hlcoord 1, 4
 	ld a, [wPokegearPhoneCursorPosition]
 	ld bc, 20 * 2
-	call AddNTimes
+	rst AddNTimes
 	ld [hl], "▷"
 	call PokegearPhoneContactSubmenu
 	jr c, .quit_submenu
@@ -1052,7 +1053,7 @@ PokegearPhone_UpdateCursor: ; 912b7 (24:52b7)
 	hlcoord 1, 4
 	ld a, [wPokegearPhoneCursorPosition]
 	ld bc, 2 * SCREEN_WIDTH
-	call AddNTimes
+	rst AddNTimes
 	ld [hl], "▶"
 	ret
 
@@ -1084,7 +1085,7 @@ PokegearPhone_UpdateDisplayList: ; 912d8 (24:52d8)
 	hlcoord 2, 4
 	ld a, [wPokegearPhoneLoadNameBuffer]
 	ld bc, 2 * SCREEN_WIDTH
-	call AddNTimes
+	rst AddNTimes
 	ld d, h
 	ld e, l
 	pop af
@@ -1290,7 +1291,7 @@ PokegearPhoneContactSubmenu: ; 91342 (24:5342)
 	pop hl
 	ld a, [wPokegearPhoneSubmenuCursor]
 	ld bc, SCREEN_WIDTH  * 2
-	call AddNTimes
+	rst AddNTimes
 	ld [hl], "▶"
 	pop de
 	ret
@@ -2489,7 +2490,8 @@ _Area: ; 91d11
 	hlcoord 0, 0
 	ld de, wSprites
 	ld bc, wSpritesEnd - wSprites
-	jp CopyBytes
+	rst CopyBytes
+	ret
 
 ; 91de9
 
@@ -2554,7 +2556,8 @@ _Area: ; 91d11
 	ld hl, wSprites
 	decoord 0, 0
 	ld bc, wSpritesEnd - wSprites
-	jp CopyBytes
+	rst CopyBytes
+	ret
 
 ; 91e5a
 

@@ -82,7 +82,8 @@ _KrisDecorationMenu: ; 0x2675c
 	ld hl, wStringBuffer2
 	ld de, wd002
 	ld bc, ITEM_NAME_LENGTH
-	jp CopyBytes
+	rst CopyBytes
+	ret
 
 .ClearStringBuffer2: ; 26822 (9:6822)
 	ld hl, wStringBuffer2
@@ -460,7 +461,8 @@ PopulateDecoCategoryMenu: ; 2695b
 GetDecorationData: ; 269dd
 	ld hl, DecorationAttributes
 	ld bc, 6
-	jp AddNTimes
+	rst AddNTimes
+	ret
 ; 269e7
 
 GetDecorationName: ; 269e7

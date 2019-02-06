@@ -174,7 +174,7 @@ StatsScreen_CopyToTempMon: ; 4ddf2 (13:5df2)
 	ld hl, wBufferMon
 	ld de, wTempMon
 	ld bc, PARTYMON_STRUCT_LENGTH
-	call CopyBytes
+	rst CopyBytes
 	jr .done
 
 .breedmon
@@ -453,7 +453,7 @@ StatsScreen_LoadGFX: ; 4dfb6 (13:5fb6)
 	ld bc, 1 tiles
 	ld a, [wTempMonCaughtBall]
 	and CAUGHTBALL_MASK
-	call AddNTimes
+	rst AddNTimes
 	; load center graphics
 	ld d, h
 	ld e, l
@@ -687,7 +687,7 @@ StatsScreen_LoadGFX: ; 4dfb6 (13:5fb6)
 	ld hl, wTempMonMoves
 	ld de, wListMoves_MoveIndicesBuffer
 	ld bc, NUM_MOVES
-	call CopyBytes
+	rst CopyBytes
 	hlcoord 8, 10
 	ld a, SCREEN_WIDTH * 2
 	ld [wBuffer1], a
@@ -1068,7 +1068,7 @@ StatsScreen_GetAnimationParam: ; 4e2ad (13:62ad)
 	ld a, [wCurPartyMon]
 	ld hl, wPartyMon1Species
 	ld bc, PARTYMON_STRUCT_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	ld b, h
 	ld c, l
 	jr .CheckEggFaintedFrzSlp
@@ -1081,7 +1081,7 @@ StatsScreen_GetAnimationParam: ; 4e2ad (13:62ad)
 	ld hl, sBoxMons
 	ld bc, PARTYMON_STRUCT_LENGTH
 	ld a, [wCurPartyMon]
-	call AddNTimes
+	rst AddNTimes
 	ld b, h
 	ld c, l
 	ld a, BANK(sBoxMons)
@@ -1283,13 +1283,13 @@ CopyNickname: ; 4e505 (13:6505)
 	ld a, BANK(sBoxMonNicknames)
 	call GetSRAMBank
 	push de
-	call CopyBytes
+	rst CopyBytes
 	pop de
 	jp CloseSRAM
 
 .partymon
 	push de
-	call CopyBytes
+	rst CopyBytes
 	pop de
 	ret
 

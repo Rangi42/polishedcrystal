@@ -21,7 +21,7 @@ WonderTrade::
 	ld hl, wPartyMon1Item
 	ld bc, PARTYMON_STRUCT_LENGTH
 	ld a, [wCurPartyMon]
-	call AddNTimes
+	rst AddNTimes
 	ld b, [hl]
 	ld a, GS_BALL
 	cp b
@@ -539,7 +539,8 @@ GetWonderTradeOTName:
 	ld hl, WonderTradeOTNames2
 .ok
 	lb bc, 0, PLAYER_NAME_LENGTH
-	jp AddNTimes
+	rst AddNTimes
+	ret
 
 INCLUDE "data/events/wonder_trade/ot_names.asm"
 

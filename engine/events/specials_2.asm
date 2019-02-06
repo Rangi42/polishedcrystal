@@ -151,7 +151,8 @@ _GetLastPartyMonAttribute:
 	ld a, [wPartyCount]
 	dec a
 	ld bc, PARTYMON_STRUCT_LENGTH
-	jp AddNTimes
+	rst AddNTimes
+	ret
 
 SpecialReturnWobbuffet: ; 737e
 	farcall SelectMonFromParty
@@ -164,7 +165,7 @@ SpecialReturnWobbuffet: ; 737e
 	ld a, [wCurPartyMon]
 	ld hl, wPartyMon1ID
 	ld bc, PARTYMON_STRUCT_LENGTH
-	call AddNTimes
+	rst AddNTimes
 
 ; OT ID
 	ld a, [hli]
@@ -195,7 +196,7 @@ SpecialReturnWobbuffet: ; 737e
 	ld a, [wCurPartyMon]
 	ld hl, wPartyMon1Happiness
 	ld bc, PARTYMON_STRUCT_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	ld a, [hl]
 	cp 150
 	ld a, $3
@@ -337,4 +338,5 @@ CopyPokemonName_Buffer1_Buffer3: ; 746e
 	ld hl, wStringBuffer1
 	ld de, wStringBuffer3
 	ld bc, PKMN_NAME_LENGTH
-	jp CopyBytes
+	rst CopyBytes
+	ret

@@ -445,7 +445,7 @@ Place2DMenuCursor: ; 24329
 
 .got_row
 	ld c, SCREEN_WIDTH
-	call AddNTimes
+	rst AddNTimes
 	ld a, [w2DMenuCursorOffsets]
 	and $f
 	jr z, .got_col

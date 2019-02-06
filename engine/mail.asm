@@ -9,18 +9,18 @@ SendMailToPC: ; 4456e
 	jr nc, .full
 	ld bc, MAIL_STRUCT_LENGTH
 	ld hl, sMailbox
-	call AddNTimes
+	rst AddNTimes
 	ld d, h
 	ld e, l
 	ld a, [wCurPartyMon]
 	ld bc, MAIL_STRUCT_LENGTH
 	ld hl, sPartyMail
-	call AddNTimes
+	rst AddNTimes
 	push hl
 	ld a, BANK(sMailboxCount)
 	call GetSRAMBank
 	ld bc, MAIL_STRUCT_LENGTH
-	call CopyBytes
+	rst CopyBytes
 	pop hl
 	xor a
 	ld bc, MAIL_STRUCT_LENGTH
@@ -47,7 +47,7 @@ DeleteMailFromPC: ; 445c0 (11:45c0)
 	push bc
 	ld hl, sMailbox
 	ld bc, MAIL_STRUCT_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	push hl
 	add hl, bc
 	pop de
@@ -58,7 +58,7 @@ DeleteMailFromPC: ; 445c0 (11:45c0)
 	jr z, .done
 	push bc
 	ld bc, MAIL_STRUCT_LENGTH
-	call CopyBytes
+	rst CopyBytes
 	pop bc
 	inc b
 	jr .loop
@@ -77,7 +77,7 @@ ReadMailMessage: ; 445f4
 	ld a, b
 	ld hl, sMailbox
 	ld bc, MAIL_STRUCT_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	ld d, h
 	ld e, l
 	farjp ReadAnyMail
@@ -89,18 +89,18 @@ MoveMailFromPCToParty: ; 44607
 	ld a, b
 	ld bc, MAIL_STRUCT_LENGTH
 	ld hl, sMailbox
-	call AddNTimes
+	rst AddNTimes
 	push hl
 	ld a, [wCurPartyMon]
 	ld bc, MAIL_STRUCT_LENGTH
 	ld hl, sPartyMail
-	call AddNTimes
+	rst AddNTimes
 	ld d, h
 	ld e, l
 	pop hl
 	push hl
 	ld bc, MAIL_STRUCT_LENGTH
-	call CopyBytes
+	rst CopyBytes
 	pop hl
 	ld de, PARTYMON_STRUCT_LENGTH - MON_MOVES
 	add hl, de
@@ -108,7 +108,7 @@ MoveMailFromPCToParty: ; 44607
 	ld a, [wCurPartyMon]
 	ld hl, wPartyMon1Item
 	ld bc, PARTYMON_STRUCT_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	ld [hl], d
 	call CloseSRAM
 	pop bc
@@ -133,7 +133,7 @@ CheckPokeItem:: ; 44654
 	ld a, [wCurPartyMon]
 	ld hl, wPartyMon1Item
 	ld bc, PARTYMON_STRUCT_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	ld d, [hl]
 	call ItemIsMail
 	ld a, $3
@@ -144,7 +144,7 @@ CheckPokeItem:: ; 44654
 	ld a, [wCurPartyMon]
 	ld hl, sPartyMail
 	ld bc, MAIL_STRUCT_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	ld d, h
 	ld e, l
 	pop hl
@@ -205,25 +205,25 @@ GivePokeItem:: ; 446cc
 	push af
 	ld hl, sPartyMail
 	ld bc, MAIL_STRUCT_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	ld d, h
 	ld e, l
 	ld hl, wd002
 	ld bc, MAIL_MSG_LENGTH + 1
 	ld a, BANK(sPartyMail)
 	call GetSRAMBank
-	call CopyBytes
+	rst CopyBytes
 	pop af
 	push af
 	ld hl, wPartyMonOT
 	ld bc, NAME_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	ld bc, NAME_LENGTH - 1
-	call CopyBytes
+	rst CopyBytes
 	pop af
 	ld hl, wPartyMon1ID
 	ld bc, PARTYMON_STRUCT_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	ld a, [hli]
 	ld [de], a
 	inc de
@@ -246,11 +246,11 @@ BackupPartyMonMail: ; 44725
 	ld hl, sPartyMail
 	ld de, sPartyMailBackup
 	ld bc, 6 * MAIL_STRUCT_LENGTH
-	call CopyBytes
+	rst CopyBytes
 	ld hl, sMailboxCount
 	ld de, sMailboxCountBackup
 	ld bc, 1 + 10 * MAIL_STRUCT_LENGTH
-	call CopyBytes
+	rst CopyBytes
 	jp CloseSRAM
 ; 44745
 
@@ -260,11 +260,11 @@ RestorePartyMonMail: ; 44745 (11:4745)
 	ld hl, sPartyMailBackup
 	ld de, sPartyMail
 	ld bc, 6 * MAIL_STRUCT_LENGTH
-	call CopyBytes
+	rst CopyBytes
 	ld hl, sMailboxCountBackup
 	ld de, sMailboxCount
 	ld bc, 1 + 10 * MAIL_STRUCT_LENGTH
-	call CopyBytes
+	rst CopyBytes
 	jp CloseSRAM
 
 DeletePartyMonMail: ; 44765 (11:4765)
@@ -351,13 +351,13 @@ MailboxPC_GetMailAuthor: ; 0x447da
 	dec a
 	ld hl, sMailbox1Author
 	ld bc, MAIL_STRUCT_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	ld a, BANK(sMailboxCount)
 	call GetSRAMBank
 	ld de, wStringBuffer2
 	push de
 	ld bc, NAME_LENGTH - 1
-	call CopyBytes
+	rst CopyBytes
 	ld a, "@"
 	ld [de], a
 	call CloseSRAM
@@ -481,7 +481,7 @@ MailboxPC: ; 0x44806
 	pop af
 	ld hl, sMailbox1Type
 	ld bc, MAIL_STRUCT_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	ld a, [hl]
 	ld [wCurItem], a
 	jp CloseSRAM

@@ -15,7 +15,7 @@ Special_CheckMagikarpLength: ; fbb32
 	ld a, [wCurPartyMon]
 	ld hl, wPartyMon1Species
 	ld bc, PARTYMON_STRUCT_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	push hl
 	ld bc, MON_DVS
 	add hl, bc
@@ -50,7 +50,7 @@ Special_CheckMagikarpLength: ; fbb32
 	ld a, [wCurPartyMon]
 	ld hl, wPartyMonOT
 	call SkipNames
-	call CopyBytes
+	rst CopyBytes
 	ld a, 3
 	ld [wScriptVar], a
 	ret

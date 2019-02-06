@@ -210,7 +210,7 @@ GetAvailableCallers: ; 900de (24:40de)
 	jr z, .not_good_for_call
 	ld hl, PhoneContacts + PHONE_CONTACT_SCRIPT2_TIME
 	ld bc, PHONE_TABLE_WIDTH
-	call AddNTimes
+	rst AddNTimes
 	ld a, [wEngineBuffer1]
 	and [hl]
 	jr z, .not_good_for_call
@@ -250,7 +250,7 @@ CheckSpecialPhoneCall:: ; 90136 (24:4136)
 	ld b, 0
 	ld hl, SpecialPhoneCallList
 	ld a, 6
-	call AddNTimes
+	rst AddNTimes
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
@@ -296,7 +296,8 @@ CheckSpecialPhoneCall:: ; 90136 (24:4136)
 	ld b, 0
 	ld hl, SpecialPhoneCallList
 	ld a, 6
-	jp AddNTimes
+	rst AddNTimes
+	ret
 
 SpecialCallOnlyWhenOutside: ; 90188
 	ld a, [wPermission]
@@ -329,7 +330,7 @@ Function90199: ; 90199 (24:4199)
 	ld [wCurrentCaller], a
 	ld hl, PhoneContacts
 	ld bc, PHONE_TABLE_WIDTH
-	call AddNTimes
+	rst AddNTimes
 	ld d, h
 	ld e, l
 	ld hl, PHONE_CONTACT_SCRIPT1_TIME
@@ -404,7 +405,7 @@ LoadCallerScript: ; 9020d (24:420d)
 	ld hl, PhoneContacts
 	ld bc, 12
 	ld a, e
-	call AddNTimes
+	rst AddNTimes
 	ld a, BANK(PhoneContacts)
 .proceed
 	ld de, wEngineBuffer2
@@ -597,7 +598,7 @@ GetCallerTrainerClass: ; 9039a
 	push hl
 	ld hl, PhoneContacts + PHONE_CONTACT_TRAINER_CLASS
 	ld bc, PHONE_TABLE_WIDTH
-	call AddNTimes
+	rst AddNTimes
 	ld a, [hli]
 	ld b, [hl]
 	ld c, a
@@ -702,7 +703,7 @@ GetCallerLocation: ; 90439
 	ld a, [wCurrentCaller]
 	ld hl, PhoneContacts + PHONE_CONTACT_MAP_GROUP
 	ld bc, PHONE_TABLE_WIDTH
-	call AddNTimes
+	rst AddNTimes
 	ld b, [hl]
 	inc hl
 	ld c, [hl]

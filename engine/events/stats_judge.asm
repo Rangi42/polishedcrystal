@@ -396,7 +396,7 @@ JudgeGetStatName:
 .got_stat
 	ld de, wStringBuffer1
 	ld bc, wStringBuffer2 - wStringBuffer1
-	call CopyBytes
+	rst CopyBytes
 	pop hl
 	pop de
 	pop bc

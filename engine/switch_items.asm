@@ -60,7 +60,7 @@ SwitchItemsInBag:
 	call ItemSwitch_ConvertSpacingToDW
 	add hl, bc
 	pop bc
-	call CopyBytes
+	rst CopyBytes
 	ld a, [wScrollingMenuCursorPosition]
 	call CopyBufferedSwitchItemToScrollLocation
 	xor a
@@ -170,7 +170,8 @@ CopySwitchItemToBuffer:
 	call ItemSwitch_GetNthItem
 	ld de, wd002
 	call ItemSwitch_ConvertSpacingToDW
-	jp CopyBytes
+	rst CopyBytes
+	ret
 
 CopyBufferedSwitchItemToScrollLocation:
 	call ItemSwitch_GetNthItem
@@ -178,7 +179,8 @@ CopyBufferedSwitchItemToScrollLocation:
 	ld e, l
 	ld hl, wd002
 	call ItemSwitch_ConvertSpacingToDW
-	jp CopyBytes
+	rst CopyBytes
+	ret
 
 ItemSwitch_GetNthItem:
 	ld c, a
@@ -189,7 +191,8 @@ ItemSwitch_GetNthItem:
 	ld l, a
 	inc hl
 	ld a, [wMenuData2_ScrollingMenuSpacing]
-	jp AddNTimes
+	rst AddNTimes
+	ret
 
 GetSwitchItemDestinationOffset:
 	ld a, [wSwitchItem]
@@ -205,7 +208,7 @@ GetSwitchItemDestinationOffset:
 	cpl
 .dont_negate
 	ld hl, 0
-	call AddNTimes
+	rst AddNTimes
 	ld b, h
 	ld c, l
 	pop hl

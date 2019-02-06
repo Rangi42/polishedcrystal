@@ -3,7 +3,7 @@
 CopyMenuDataHeader::
 	ld de, wMenuDataHeader
 	ld bc, wMenuDataHeaderEnd - wMenuDataHeader
-	call CopyBytes
+	rst CopyBytes
 	ld a, [hROMBank]
 	ld [wMenuDataBank], a
 	ret

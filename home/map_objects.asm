@@ -147,7 +147,7 @@ GetMapObject:: ; 18d2
 ; Return the location of map object a in bc.
 	ld hl, wMapObjects
 	ld bc, OBJECT_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	ld b, h
 	ld c, l
 	ret
@@ -299,7 +299,8 @@ CopyPlayerObjectTemplate:: ; 19a6
 	inc de
 	pop hl
 	ld bc, OBJECT_LENGTH - 1
-	jp CopyBytes
+	rst CopyBytes
+	ret
 ; 19b8
 
 LoadMovementDataPointer:: ; 19e9
@@ -505,7 +506,7 @@ UpdateSprites:: ; 1ad2
 GetObjectStruct:: ; 1ae5
 	ld bc, OBJECT_STRUCT_LENGTH
 	ld hl, wObjectStructs
-	call AddNTimes
+	rst AddNTimes
 	ld b, h
 	ld c, l
 	ret

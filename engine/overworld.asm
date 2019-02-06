@@ -166,7 +166,7 @@ GetSprite: ; 1423c
 	ld c, a
 	ld b, 0
 	ld a, NUM_SPRITEHEADER_FIELDS
-	call AddNTimes
+	rst AddNTimes
 	; load the address into de
 	ld a, [hli]
 	ld e, a
@@ -270,7 +270,7 @@ _DoesSpriteHaveFacings:: ; 142a7
 	ld c, a
 	ld b, 0
 	ld a, NUM_SPRITEHEADER_FIELDS
-	call AddNTimes
+	rst AddNTimes
 	ld a, [hl]
 	pop bc
 	pop hl
@@ -295,7 +295,7 @@ _GetSpritePalette:: ; 142c4
 	ld c, a
 	ld b, 0
 	ld a, NUM_SPRITEHEADER_FIELDS
-	call AddNTimes
+	rst AddNTimes
 	ld c, [hl]
 	ret
 
@@ -648,7 +648,7 @@ LoadEmote:: ; 1442f
 	ld a, c
 	ld bc, 6
 	ld hl, EmotesPointers
-	call AddNTimes
+	rst AddNTimes
 ; Load the emote address into de
 	ld e, [hl]
 	inc hl

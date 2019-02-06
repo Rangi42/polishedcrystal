@@ -112,7 +112,7 @@ MoveDeletion:
 	add hl, bc
 	ld a, [wCurPartyMon]
 	ld bc, PARTYMON_STRUCT_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	pop bc
 	push bc
 	inc b
@@ -141,7 +141,7 @@ MoveDeletion:
 	add hl, bc
 	ld a, [wCurPartyMon]
 	ld bc, PARTYMON_STRUCT_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	pop bc
 	inc b
 .loop2

@@ -168,7 +168,7 @@ AddHallOfFameEntry: ; 14b5f
 	ld hl, wOverworldMap
 	ld de, sHallOfFame
 	ld bc, HOF_LENGTH
-	call CopyBytes
+	rst CopyBytes
 	jp CloseSRAM
 ; 14b85
 
@@ -322,7 +322,7 @@ SaveOptions: ; 14dbb
 	ld hl, wOptions1
 	ld de, sOptions
 	ld bc, wOptionsEnd - wOptions1
-	call CopyBytes
+	rst CopyBytes
 	ld a, [wOptions1]
 	and $ff ^ (1 << NO_TEXT_SCROLL)
 	ld [sOptions], a
@@ -335,11 +335,11 @@ SavePlayerData: ; 14dd7
 	ld hl, wPlayerData
 	ld de, sPlayerData
 	ld bc, wPlayerDataEnd - wPlayerData
-	call CopyBytes
+	rst CopyBytes
 	ld hl, wMapData
 	ld de, sMapData
 	ld bc, wMapDataEnd - wMapData
-	call CopyBytes
+	rst CopyBytes
 	jp CloseSRAM
 ; 14df7
 
@@ -349,7 +349,7 @@ SavePokemonData: ; 14df7
 	ld hl, wPokemonData
 	ld de, sPokemonData
 	ld bc, wPokemonDataEnd - wPokemonData
-	call CopyBytes
+	rst CopyBytes
 	jp CloseSRAM
 ; 14e0c
 
@@ -387,7 +387,7 @@ SaveBackupOptions: ; 14e40
 	ld hl, wOptions1
 	ld de, sBackupOptions
 	ld bc, wOptionsEnd - wOptions1
-	call CopyBytes
+	rst CopyBytes
 	jp CloseSRAM
 ; 14e55
 
@@ -397,11 +397,11 @@ SaveBackupPlayerData: ; 14e55
 	ld hl, wPlayerData
 	ld de, sBackupPlayerData
 	ld bc, wPlayerDataEnd - wPlayerData
-	call CopyBytes
+	rst CopyBytes
 	ld hl, wMapData
 	ld de, sBackupMapData
 	ld bc, wMapDataEnd - wMapData
-	call CopyBytes
+	rst CopyBytes
 	jp CloseSRAM
 ; 14e76
 
@@ -411,7 +411,7 @@ SaveBackupPokemonData: ; 14e76
 	ld hl, wPokemonData
 	ld de, sBackupPokemonData
 	ld bc, wPokemonDataEnd - wPokemonData
-	call CopyBytes
+	rst CopyBytes
 	jp CloseSRAM
 ; 14e8b
 
@@ -485,7 +485,7 @@ TryLoadSaveData: ; 14f1c
 	ld hl, sPlayerData + wStartDay - wPlayerData
 	ld de, wStartDay
 	ld bc, 8
-	call CopyBytes
+	rst CopyBytes
 	ld hl, sPlayerData + wStatusFlags - wPlayerData
 	ld de, wStatusFlags
 	ld a, [hl]
@@ -503,7 +503,7 @@ TryLoadSaveData: ; 14f1c
 	ld hl, sBackupPlayerData + wStartDay - wPlayerData
 	ld de, wStartDay
 	ld bc, 8
-	call CopyBytes
+	rst CopyBytes
 	ld hl, sBackupPlayerData + wStatusFlags - wPlayerData
 	ld de, wStatusFlags
 	ld a, [hl]
@@ -514,7 +514,7 @@ TryLoadSaveData: ; 14f1c
 	ld hl, DefaultOptions
 	ld de, wOptions1
 	ld bc, wOptionsEnd - wOptions1
-	call CopyBytes
+	rst CopyBytes
 	jp PanicResetClock
 ; 14f7c
 
@@ -532,7 +532,7 @@ CheckPrimarySaveFile: ; 14f84
 	ld hl, sOptions
 	ld de, wOptions1
 	ld bc, wOptionsEnd - wOptions1
-	call CopyBytes
+	rst CopyBytes
 	call CloseSRAM
 	ld a, $1
 	ld [wSaveFileExists], a
@@ -553,7 +553,7 @@ CheckBackupSaveFile: ; 14faf
 	ld hl, sBackupOptions
 	ld de, wOptions1
 	ld bc, wOptionsEnd - wOptions1
-	call CopyBytes
+	rst CopyBytes
 	ld a, $2
 	ld [wSaveFileExists], a
 
@@ -568,11 +568,11 @@ LoadPlayerData: ; 14fd7 (5:4fd7)
 	ld hl, sPlayerData
 	ld de, wPlayerData
 	ld bc, wPlayerDataEnd - wPlayerData
-	call CopyBytes
+	rst CopyBytes
 	ld hl, sMapData
 	ld de, wMapData
 	ld bc, wMapDataEnd - wMapData
-	call CopyBytes
+	rst CopyBytes
 	call CloseSRAM
 	ld a, BANK(sBattleTowerChallengeState)
 	call GetSRAMBank
@@ -590,7 +590,7 @@ LoadPokemonData: ; 1500c
 	ld hl, sPokemonData
 	ld de, wPokemonData
 	ld bc, wPokemonDataEnd - wPokemonData
-	call CopyBytes
+	rst CopyBytes
 	jp CloseSRAM
 ; 15021
 
@@ -621,11 +621,11 @@ LoadBackupPlayerData: ; 15046 (5:5046)
 	ld hl, sBackupPlayerData
 	ld de, wPlayerData
 	ld bc, wPlayerDataEnd - wPlayerData
-	call CopyBytes
+	rst CopyBytes
 	ld hl, sBackupMapData
 	ld de, wMapData
 	ld bc, wMapDataEnd - wMapData
-	call CopyBytes
+	rst CopyBytes
 	jp CloseSRAM
 
 LoadBackupPokemonData: ; 15067 (5:5067)
@@ -634,7 +634,7 @@ LoadBackupPokemonData: ; 15067 (5:5067)
 	ld hl, sBackupPokemonData
 	ld de, wPokemonData
 	ld bc, wPokemonDataEnd - wPokemonData
-	call CopyBytes
+	rst CopyBytes
 	jp CloseSRAM
 
 VerifyBackupChecksum: ; 1507c (5:507c)
@@ -695,7 +695,7 @@ SaveBoxAddress: ; 150f9
 	ld hl, sBox
 	ld de, wMisc
 	ld bc, (wMiscEnd - wMisc)
-	call CopyBytes
+	rst CopyBytes
 	call CloseSRAM
 	pop de
 	pop af
@@ -705,7 +705,7 @@ SaveBoxAddress: ; 150f9
 	call GetSRAMBank
 	ld hl, wMisc
 	ld bc, (wMiscEnd - wMisc)
-	call CopyBytes
+	rst CopyBytes
 	call CloseSRAM
 
 ; Load the second part of the active box.
@@ -714,7 +714,7 @@ SaveBoxAddress: ; 150f9
 	ld hl, sBox + (wMiscEnd - wMisc)
 	ld de, wMisc
 	ld bc, (wMiscEnd - wMisc)
-	call CopyBytes
+	rst CopyBytes
 	call CloseSRAM
 	pop de
 	pop af
@@ -729,7 +729,7 @@ SaveBoxAddress: ; 150f9
 	call GetSRAMBank
 	ld hl, wMisc
 	ld bc, (wMiscEnd - wMisc)
-	call CopyBytes
+	rst CopyBytes
 	call CloseSRAM
 
 ; Load the third and final part of the active box.
@@ -738,7 +738,7 @@ SaveBoxAddress: ; 150f9
 	ld hl, sBox + (wMiscEnd - wMisc) * 2
 	ld de, wMisc
 	ld bc, sBoxEnd - (sBox + (wMiscEnd - wMisc) * 2) ; $8e
-	call CopyBytes
+	rst CopyBytes
 	call CloseSRAM
 	pop de
 	pop af
@@ -751,7 +751,7 @@ SaveBoxAddress: ; 150f9
 	call GetSRAMBank
 	ld hl, wMisc
 	ld bc, sBoxEnd - (sBox + (wMiscEnd - wMisc) * 2) ; $8e
-	call CopyBytes
+	rst CopyBytes
 	call CloseSRAM
 
 	pop hl
@@ -772,14 +772,14 @@ LoadBoxAddress: ; 1517d (5:517d)
 	call GetSRAMBank
 	ld de, wMisc
 	ld bc, (wMiscEnd - wMisc)
-	call CopyBytes
+	rst CopyBytes
 	call CloseSRAM
 	ld a, BANK(sBox)
 	call GetSRAMBank
 	ld hl, wMisc
 	ld de, sBox
 	ld bc, (wMiscEnd - wMisc)
-	call CopyBytes
+	rst CopyBytes
 	call CloseSRAM
 	pop hl
 	pop af
@@ -792,14 +792,14 @@ LoadBoxAddress: ; 1517d (5:517d)
 	call GetSRAMBank
 	ld de, wMisc
 	ld bc, (wMiscEnd - wMisc)
-	call CopyBytes
+	rst CopyBytes
 	call CloseSRAM
 	ld a, BANK(sBox)
 	call GetSRAMBank
 	ld hl, wMisc
 	ld de, sBox + (wMiscEnd - wMisc)
 	ld bc, (wMiscEnd - wMisc)
-	call CopyBytes
+	rst CopyBytes
 	call CloseSRAM
 	pop hl
 	pop af
@@ -809,14 +809,14 @@ LoadBoxAddress: ; 1517d (5:517d)
 	call GetSRAMBank
 	ld de, wMisc
 	ld bc, sBoxEnd - (sBox + (wMiscEnd - wMisc) * 2) ; $8e
-	call CopyBytes
+	rst CopyBytes
 	call CloseSRAM
 	ld a, BANK(sBox)
 	call GetSRAMBank
 	ld hl, wMisc
 	ld de, sBox + (wMiscEnd - wMisc) * 2
 	ld bc, sBoxEnd - (sBox + (wMiscEnd - wMisc) * 2) ; $8e
-	call CopyBytes
+	rst CopyBytes
 	call CloseSRAM
 
 	pop hl

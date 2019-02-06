@@ -20,7 +20,7 @@ UnownPuzzle: ; e1190
 	ld hl, UnownPuzzleCursorGFX
 	ld de, VTiles1 tile $60
 	ld bc, 4 tiles
-	call CopyBytes
+	rst CopyBytes
 	ld hl, UnownPuzzleStartCancelLZ
 	ld de, VTiles1 tile $6d
 	call Decompress

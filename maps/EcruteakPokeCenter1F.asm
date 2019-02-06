@@ -227,14 +227,14 @@ EcruteakPokeCenter1FBillScript:
 	ld a, [wPartyCount]
 	dec a
 	ld bc, MAIL_STRUCT_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	push hl
 	pop de
 	ld hl, .EeveeMailOTID
 	ld bc, .EeveeMailOTIDEnd - .EeveeMailOTID
 	ld a, BANK(sPartyMail)
 	call GetSRAMBank
-	call CopyBytes
+	rst CopyBytes
 	jp CloseSRAM
 
 .EeveeMailOTID:

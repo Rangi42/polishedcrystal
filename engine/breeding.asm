@@ -252,7 +252,7 @@ HatchEggs: ; 16f70 (5:6f70)
 	ld a, [wCurPartyMon]
 	ld hl, wPartyMon1Species
 	ld bc, PARTYMON_STRUCT_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	ld a, [hl]
 	ld [wCurPartySpecies], a
 	dec a
@@ -261,7 +261,7 @@ HatchEggs: ; 16f70 (5:6f70)
 	ld a, [wCurPartyMon]
 	ld hl, wPartyMon1IsEgg
 	ld bc, PARTYMON_STRUCT_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	ld a, [hl]
 	and $ff - IS_EGG_MASK
 	ld [hl], a
@@ -284,7 +284,7 @@ HatchEggs: ; 16f70 (5:6f70)
 	ld a, [wCurPartyMon]
 	ld hl, wPartyMons
 	ld bc, PARTYMON_STRUCT_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	push hl
 	ld bc, MON_MAXHP
 	add hl, bc
@@ -330,17 +330,17 @@ HatchEggs: ; 16f70 (5:6f70)
 	ld a, [wCurPartyMon]
 	ld hl, wPartyMonOT
 	ld bc, NAME_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	ld d, h
 	ld e, l
 	ld hl, wPlayerName
-	call CopyBytes
+	rst CopyBytes
 	ld hl, .Text_HatchEgg
 	call PrintText
 	ld a, [wCurPartyMon]
 	ld hl, wPartyMonNicknames
 	ld bc, PKMN_NAME_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	ld d, h
 	ld e, l
 	push de
@@ -371,7 +371,7 @@ HatchEggs: ; 16f70 (5:6f70)
 .nonickname
 	ld hl, wStringBuffer1
 	ld bc, PKMN_NAME_LENGTH
-	call CopyBytes
+	rst CopyBytes
 
 .next ; 1707d (5:707d)
 	ld hl, wCurPartyMon
@@ -674,7 +674,7 @@ GetEggFrontpic: ; 17224 (5:7224)
 	ld a, [wCurPartyMon]
 	ld hl, wPartyMon1Form
 	ld bc, PARTYMON_STRUCT_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	predef GetVariant
 	pop de
 	predef_jump GetFrontpic
@@ -687,7 +687,7 @@ GetHatchlingFrontpic: ; 1723c (5:723c)
 	ld a, [wCurPartyMon]
 	ld hl, wPartyMon1Form
 	ld bc, PARTYMON_STRUCT_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	predef GetVariant
 	pop de
 	predef_jump FrontpicPredef
@@ -955,7 +955,7 @@ DayCareMonCompatibilityText: ; 1746c
 	push bc
 	ld de, wStringBuffer1
 	ld bc, NAME_LENGTH
-	call CopyBytes
+	rst CopyBytes
 	call CheckBreedmonCompatibility
 	pop bc
 	ld a, [wd265]

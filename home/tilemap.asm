@@ -108,7 +108,7 @@ CopyMenuData2::
 	ld l, a
 	ld de, wMenuData2Flags
 	ld bc, wMenuData2End - wMenuData2Flags
-	call CopyBytes
+	rst CopyBytes
 	pop af
 	pop bc
 	pop de
@@ -266,4 +266,5 @@ Coord2Absolute:
 	ld c, b
 	ld b, h
 	ld a, SCREEN_WIDTH
-	jp AddNTimes
+	rst AddNTimes
+	ret

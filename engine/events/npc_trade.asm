@@ -275,13 +275,14 @@ GetTradeAttribute: ; 0xfcdc2
 
 Trade_GetAttributeOfCurrentPartymon: ; fcdd7
 	ld a, [wCurPartyMon]
-	jp AddNTimes
+	rst AddNTimes
+	ret
 ; fcdde
 
 Trade_GetAttributeOfLastPartymon: ; fcdde
 	ld a, [wPartyCount]
 	dec a
-	call AddNTimes
+	rst AddNTimes
 	ld e, l
 	ld d, h
 	ret
@@ -298,7 +299,8 @@ GetTradeMonName: ; fcde8
 
 CopyTradeName: ; fcdf4
 	ld bc, NAME_LENGTH
-	jp CopyBytes
+	rst CopyBytes
+	ret
 ; fcdfb
 
 Trade_CopyTwoBytes: ; fce0f
@@ -367,7 +369,7 @@ PrintTradeText: ; fcf38
 	pop af
 	ld bc, 2 * 4
 	ld hl, TradeTexts
-	call AddNTimes
+	rst AddNTimes
 	ld a, [wcf64]
 	ld c, a
 	add hl, bc

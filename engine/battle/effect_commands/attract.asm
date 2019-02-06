@@ -49,7 +49,7 @@ BattleCommand_Attract: ; 377ce
 	ld hl, wStringBuffer1
 	ld de, wStringBuffer2
 	ld bc, ITEM_NAME_LENGTH
-	call CopyBytes
+	rst CopyBytes
 	pop bc
 	farcall BufferAbility
 	ld hl, ObliviousPreventedDestinyKnot

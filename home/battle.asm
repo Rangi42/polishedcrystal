@@ -86,7 +86,8 @@ UpdateBattleMon::
 	ld e, l
 	ld hl, wBattleMonLevel
 	ld bc, wBattleMonMaxHP - wBattleMonLevel
-	jp CopyBytes
+	rst CopyBytes
+	ret
 
 UpdateOpponentInParty::
 	ld a, [hBattleTurn]
@@ -107,7 +108,8 @@ UpdateEnemyMonInParty::
 	ld e, l
 	ld hl, wEnemyMonLevel
 	ld bc, wEnemyMonMaxHP - wEnemyMonLevel
-	jp CopyBytes
+	rst CopyBytes
+	ret
 
 RefreshBattleHuds:: ; 39c9
 	call UpdateBattleHuds
@@ -229,7 +231,7 @@ GetMoveAttr::
 ; Assuming hl = Moves + x, return attribute x of move a.
 	push bc
 	ld bc, MOVE_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	call GetMoveByte
 	pop bc
 	ret
@@ -238,7 +240,7 @@ GetMoveData::
 ; Copy move struct a to de.
 	ld hl, Moves
 	ld bc, MOVE_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	ld a, Bank(Moves)
 	jp FarCopyBytes
 
@@ -907,7 +909,7 @@ FarCopyRadioText:: ; 3a90
 	ld h, a
 	ld de, wRadioText
 	ld bc, 2 * SCREEN_WIDTH
-	call CopyBytes
+	rst CopyBytes
 	pop af
 	ld [hROMBank], a
 	ld [MBC3RomBank], a

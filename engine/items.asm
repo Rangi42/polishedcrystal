@@ -488,7 +488,7 @@ GetItemAttr: ; d460
 	dec a
 	ld c, a
 	ld a, NUM_ITEMATTRS
-	call AddNTimes
+	rst AddNTimes
 	ld a, BANK(ItemAttributes)
 	call GetFarByte
 

@@ -310,7 +310,7 @@ _CGB_StatsScreenHPPals: ; 8edb
 	ld bc, $4
 	ld a, [wTempMonCaughtBall]
 	and CAUGHTBALL_MASK
-	call AddNTimes
+	rst AddNTimes
 	ld de, wUnknBGPals palette 7
 	call LoadPalette_White_Col1_Col2_Black
 
@@ -561,7 +561,7 @@ _CGB_Evolution: ; 91e4
 	ld hl, wPartyMon1Personality
 	ld bc, PARTYMON_STRUCT_LENGTH
 	ld a, [wCurPartyMon]
-	call AddNTimes
+	rst AddNTimes
 	ld c, l
 	ld b, h
 	ld a, [wPlayerHPPal]
@@ -571,7 +571,7 @@ _CGB_Evolution: ; 91e4
 	ld hl, wPartyMon1DVs
 	ld bc, PARTYMON_STRUCT_LENGTH
 	ld a, [wCurPartyMon]
-	call AddNTimes
+	rst AddNTimes
 	; b = species
 	ld a, [wCurPartySpecies]
 	ld b, a
@@ -607,7 +607,7 @@ _CGB_MoveList: ; 9373
 	dec a
 	ld hl, Moves + MOVE_CATEGORY
 	ld bc, MOVE_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	ld a, BANK(Moves)
 	call GetFarByte
 	add a
@@ -625,7 +625,7 @@ _CGB_MoveList: ; 9373
 	dec a
 	ld hl, Moves + MOVE_TYPE
 	ld bc, MOVE_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	ld a, BANK(Moves)
 	call GetFarByte
 	ld hl, TypeIconPals

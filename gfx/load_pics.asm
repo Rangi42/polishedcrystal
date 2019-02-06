@@ -189,7 +189,7 @@ GetFrontpicPointer: ; 510d7
 .notvariant
 	dec a
 	ld bc, 6
-	call AddNTimes
+	rst AddNTimes
 	ld a, d
 	call GetFarByte
 	push af
@@ -316,7 +316,7 @@ GetBackpic: ; 5116c
 .notvariant
 	dec a
 	ld bc, 6
-	call AddNTimes
+	rst AddNTimes
 	ld bc, 3
 	add hl, bc
 	ld a, d
@@ -353,7 +353,7 @@ GetTrainerPic: ; 5120d
 	ld a, [wTrainerClass]
 	dec a
 	ld bc, 3
-	call AddNTimes
+	rst AddNTimes
 	ld a, [rSVBK]
 	push af
 	ld a, $6
@@ -390,7 +390,7 @@ GetPaintingPic:
 	ld hl, PaintingPicPointers
 	ld a, [wTrainerClass]
 	ld bc, 3
-	call AddNTimes
+	rst AddNTimes
 	ld a, [rSVBK]
 	push af
 	ld a, $6

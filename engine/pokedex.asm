@@ -2145,7 +2145,7 @@ Pokedex_PutScrollbarOAM: ; 4130e (10:530e)
 	jr z, .asm_4133f
 	ld hl, $0
 	ld bc, $79
-	call AddNTimes
+	rst AddNTimes
 	ld e, l
 	ld d, h
 	ld b, $0

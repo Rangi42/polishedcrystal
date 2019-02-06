@@ -3066,7 +3066,7 @@ AIGetEnemyMove: ; 39508
 	dec a
 	ld hl, Moves
 	ld bc, MOVE_LENGTH
-	call AddNTimes
+	rst AddNTimes
 
 	ld de, wEnemyMoveStruct
 	ld a, BANK(Moves)

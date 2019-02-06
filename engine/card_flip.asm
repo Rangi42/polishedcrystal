@@ -27,11 +27,11 @@ _CardFlip: ; e00ee (38:40ee)
 	ld hl, CardFlipOffButtonGFX
 	ld de, VTiles1 tile (CARDFLIP_LIGHT_OFF - $80)
 	ld bc, 1 tiles
-	call CopyBytes
+	rst CopyBytes
 	ld hl, CardFlipOnButtonGFX
 	ld de, VTiles1 tile (CARDFLIP_LIGHT_ON - $80)
 	ld bc, 1 tiles
-	call CopyBytes
+	rst CopyBytes
 
 	call CardFlip_ShiftDigitsLeftTwoPixels
 	call CardFlip_InitTilemap
@@ -177,7 +177,7 @@ _CardFlip: ; e00ee (38:40ee)
 	hlcoord 9, 0
 	ld bc, SCREEN_WIDTH
 	ld a, [wCardFlipNumCardsPlayed]
-	call AddNTimes
+	rst AddNTimes
 	ld [hl], CARDFLIP_LIGHT_ON
 	ld a, $1
 	ld [hBGMapMode], a
@@ -385,7 +385,7 @@ CollapseCursorPosition: ; e0398
 	ld hl, 0
 	ld bc, 6
 	ld a, [wCardFlipCursorY]
-	call AddNTimes
+	rst AddNTimes
 	ld b, $0
 	ld a, [wCardFlipCursorX]
 	ld c, a
@@ -610,7 +610,7 @@ CardFlip_ShiftDigitsLeftTwoPixels: ; e0521 (38:4521)
 	ld de, VTiles1 tile ("0" & $7f)
 	ld hl, VTiles1 tile ("0" & $7f) + 2
 	ld bc, 10 tiles - 2
-	call CopyBytes
+	rst CopyBytes
 	ld hl, VTiles1 tile $7f + 1 tiles - 2
 	xor a
 	ld [hli], a
@@ -1629,7 +1629,7 @@ CardFlip_InitAttrPals: ; e0c37 (38:4c37)
 	ld hl, .palettes
 	ld de, wUnknBGPals
 	ld bc, 9 palettes
-	call CopyBytes
+	rst CopyBytes
 	pop af
 	ld [rSVBK], a
 	ret

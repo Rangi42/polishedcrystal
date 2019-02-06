@@ -180,7 +180,7 @@ if DEF(NO_RTC)
 	ld hl, sPlayerData + wNoRTC - wPlayerData
 	ld de, wNoRTC
 	ld bc, 5
-	call CopyBytes
+	rst CopyBytes
 	call CloseSRAM
 endc
 

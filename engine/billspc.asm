@@ -995,7 +995,7 @@ BillsPC_BoxName: ; e2a8e (38:6a8e)
 	dec a
 	ld hl, wBoxNames
 	ld bc, BOX_NAME_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	ld e, l
 	ld d, h
 	jr .print
@@ -1149,7 +1149,7 @@ BillsPC_LoadMonStats: ; e2b6d (38:6b6d)
 	add hl, bc
 	ld bc, BOXMON_STRUCT_LENGTH
 	ld a, e
-	call AddNTimes
+	rst AddNTimes
 	ld a, [hl]
 	ld [wTempMonLevel], a
 	pop hl
@@ -1159,7 +1159,7 @@ BillsPC_LoadMonStats: ; e2b6d (38:6b6d)
 	add hl, bc
 	ld bc, BOXMON_STRUCT_LENGTH
 	ld a, e
-	call AddNTimes
+	rst AddNTimes
 	ld a, [hl]
 	ld [wTempMonItem], a
 	pop hl
@@ -1169,7 +1169,7 @@ BillsPC_LoadMonStats: ; e2b6d (38:6b6d)
 	add hl, bc
 	ld bc, BOXMON_STRUCT_LENGTH
 	ld a, e
-	call AddNTimes
+	rst AddNTimes
 	ld bc, wTempMonDVs
 rept 4
 	ld a, [hli]
@@ -1184,7 +1184,7 @@ endr
 	add hl, bc
 	ld bc, BOXMON_STRUCT_LENGTH
 	ld a, e
-	call AddNTimes
+	rst AddNTimes
 	ld bc, wTempMonMoves
 rept NUM_MOVES +- 1
 	ld a, [hli]
@@ -1200,21 +1200,21 @@ endr
 	ld hl, wPartyMon1Level
 	ld bc, PARTYMON_STRUCT_LENGTH
 	ld a, e
-	call AddNTimes
+	rst AddNTimes
 	ld a, [hl]
 	ld [wTempMonLevel], a
 	; item
 	ld hl, wPartyMon1Item
 	ld bc, PARTYMON_STRUCT_LENGTH
 	ld a, e
-	call AddNTimes
+	rst AddNTimes
 	ld a, [hl]
 	ld [wTempMonItem], a
 	; DVs and personality (DVs for color variation)
 	ld hl, wPartyMon1DVs
 	ld bc, PARTYMON_STRUCT_LENGTH
 	ld a, e
-	call AddNTimes
+	rst AddNTimes
 	ld bc, wTempMonDVs
 rept 4
 	ld a, [hli]
@@ -1227,7 +1227,7 @@ endr
 	ld hl, wPartyMon1Item
 	ld bc, PARTYMON_STRUCT_LENGTH
 	ld a, e
-	call AddNTimes
+	rst AddNTimes
 	ld bc, wTempMonMoves
 rept NUM_MOVES +- 1
 	ld a, [hli]
@@ -1245,21 +1245,21 @@ endr
 	ld hl, sBoxMon1Level
 	ld bc, BOXMON_STRUCT_LENGTH
 	ld a, e
-	call AddNTimes
+	rst AddNTimes
 	ld a, [hl]
 	ld [wTempMonLevel], a
 	; item
 	ld hl, sBoxMon1Item
 	ld bc, BOXMON_STRUCT_LENGTH
 	ld a, e
-	call AddNTimes
+	rst AddNTimes
 	ld a, [hl]
 	ld [wTempMonItem], a
 	; DVs and personality (DVs for color variation)
 	ld hl, sBoxMon1DVs
 	ld bc, BOXMON_STRUCT_LENGTH
 	ld a, e
-	call AddNTimes
+	rst AddNTimes
 	ld bc, wTempMonDVs
 rept 4
 	ld a, [hli]
@@ -1272,7 +1272,7 @@ endr
 	ld hl, sBoxMon1Moves
 	ld bc, BOXMON_STRUCT_LENGTH
 	ld a, e
-	call AddNTimes
+	rst AddNTimes
 	ld bc, wTempMonMoves
 rept NUM_MOVES +- 1
 	ld a, [hli]
@@ -1356,7 +1356,7 @@ BillsPC_RefreshTextboxes: ; e2c2c (38:6c2c)
 	add hl, bc
 	ld bc, BOXMON_STRUCT_LENGTH
 	ld a, e
-	call AddNTimes
+	rst AddNTimes
 	ld a, [hl]
 	pop hl
 	and a
@@ -1365,10 +1365,10 @@ BillsPC_RefreshTextboxes: ; e2c2c (38:6c2c)
 	add hl, bc
 	ld bc, PKMN_NAME_LENGTH
 	ld a, e
-	call AddNTimes
+	rst AddNTimes
 	ld de, wStringBuffer1
 	ld bc, PKMN_NAME_LENGTH
-	call CopyBytes
+	rst CopyBytes
 	call CloseSRAM
 	pop hl
 	ld de, wStringBuffer1
@@ -1390,10 +1390,10 @@ BillsPC_RefreshTextboxes: ; e2c2c (38:6c2c)
 	ld hl, wPartyMonNicknames
 	ld bc, PKMN_NAME_LENGTH
 	ld a, e
-	call AddNTimes
+	rst AddNTimes
 	ld de, wStringBuffer1
 	ld bc, PKMN_NAME_LENGTH
-	call CopyBytes
+	rst CopyBytes
 	pop hl
 	ld de, wStringBuffer1
 	jp PlaceString
@@ -1415,10 +1415,10 @@ BillsPC_RefreshTextboxes: ; e2c2c (38:6c2c)
 	ld hl, sBoxMonNicknames
 	ld bc, PKMN_NAME_LENGTH
 	ld a, e
-	call AddNTimes
+	rst AddNTimes
 	ld de, wStringBuffer1
 	ld bc, PKMN_NAME_LENGTH
-	call CopyBytes
+	rst CopyBytes
 	call CloseSRAM
 	pop hl
 	ld de, wStringBuffer1
@@ -1764,10 +1764,10 @@ BillsPC_CopyMon: ; e2fd6 (38:6fd6)
 	ld hl, sBoxMons
 	ld bc, BOXMON_STRUCT_LENGTH
 	ld a, [wCurPartyMon]
-	call AddNTimes
+	rst AddNTimes
 	ld de, wBufferMon
 	ld bc, PARTYMON_STRUCT_LENGTH
-	call CopyBytes
+	rst CopyBytes
 	call CloseSRAM
 	farjp CalcwBufferMonStats
 
@@ -1781,10 +1781,11 @@ BillsPC_CopyMon: ; e2fd6 (38:6fd6)
 	ld hl, wPartyMons
 	ld bc, PARTYMON_STRUCT_LENGTH
 	ld a, [wCurPartyMon]
-	call AddNTimes
+	rst AddNTimes
 	ld de, wBufferMon
 	ld bc, PARTYMON_STRUCT_LENGTH
-	jp CopyBytes
+	rst CopyBytes
+	ret
 
 .box
 	ld b, a
@@ -2164,24 +2165,27 @@ CopySpeciesToTemp: ; e3357 (38:7357)
 CopyNicknameToTemp: ; e3363 (38:7363)
 	ld bc, PKMN_NAME_LENGTH
 	ld a, [wCurPartyMon]
-	call AddNTimes
+	rst AddNTimes
 	ld de, wBufferMonNick
 	ld bc, PKMN_NAME_LENGTH
-	jp CopyBytes
+	rst CopyBytes
+	ret
 
 CopyOTNameToTemp: ; e3376 (38:7376)
 	ld bc, NAME_LENGTH
 	ld a, [wCurPartyMon]
-	call AddNTimes
+	rst AddNTimes
 	ld de, wBufferMonOT
 	ld bc, NAME_LENGTH
-	jp CopyBytes
+	rst CopyBytes
+	ret
 
 CopyMonToTemp: ; e3389 (38:7389)
 	ld a, [wCurPartyMon]
-	call AddNTimes
+	rst AddNTimes
 	ld de, wBufferMon
-	jp CopyBytes
+	rst CopyBytes
+	ret
 
 GetBoxPointer: ; e3396 (38:7396)
 	dec b
@@ -2246,7 +2250,7 @@ BillsPC_InitGFX: ; e33e8 (38:73e8)
 	ld hl, PCMailGFX
 	ld de, VTiles2 tile $5c
 	ld bc, 4 tiles
-	call CopyBytes
+	rst CopyBytes
 	ld hl, PCSelectLZ
 	ld de, VTiles0 tile $00
 	call Decompress
@@ -2352,7 +2356,7 @@ endr
 GetBoxName: ; e3626 (38:7626)
 	ld bc, BOX_NAME_LENGTH
 	ld hl, wBoxNames
-	call AddNTimes
+	rst AddNTimes
 	ld d, h
 	ld e, l
 	ret

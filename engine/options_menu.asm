@@ -725,7 +725,7 @@ Options_UpdateCursorPosition: ; e455c
 	hlcoord 1, 2
 	ld bc, 2 * SCREEN_WIDTH
 	ld a, [wJumptableIndex]
-	call AddNTimes
+	rst AddNTimes
 	ld [hl], "▶"
 	ret
 ; e4579

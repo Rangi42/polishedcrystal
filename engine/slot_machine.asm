@@ -65,7 +65,7 @@ _SlotMachine:
 	ld hl, SlotsTilemap
 	decoord 0, 0
 	ld bc, SCREEN_WIDTH * 12
-	call CopyBytes
+	rst CopyBytes
 
 	ld hl, rLCDC ; $ff40
 	set 2, [hl] ; 8x16 sprites
@@ -1729,7 +1729,7 @@ SlotPayoutText: ; 93158 (24:7158)
 	add hl, de
 	ld de, wStringBuffer2
 	ld bc, 4
-	call CopyBytes
+	rst CopyBytes
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a

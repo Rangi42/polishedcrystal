@@ -149,7 +149,7 @@ LoadTileMapToTempTileMap:: ; 309d
 	hlcoord 0, 0
 	decoord 0, 0, wTempTileMap
 	ld bc, wTileMapEnd - wTileMap
-	call CopyBytes
+	rst CopyBytes
 	pop af
 	ld [rSVBK], a
 	ret
@@ -173,7 +173,7 @@ LoadTempTileMapToTileMap:: ; 30bf
 	hlcoord 0, 0, wTempTileMap
 	decoord 0, 0
 	ld bc, wTileMapEnd - wTileMap
-	call CopyBytes
+	rst CopyBytes
 	pop af
 	ld [rSVBK], a
 	ret
@@ -509,7 +509,7 @@ GetName:: ; 33c3
 
 	ld de, wStringBuffer1
 	ld bc, ITEM_NAME_LENGTH
-	call CopyBytes
+	rst CopyBytes
 
 .done
 	pop de
@@ -591,7 +591,7 @@ GetPokemonName:: ; 343b
 	ld de, wStringBuffer1
 	push de
 	ld bc, PKMN_NAME_LENGTH - 1
-	call CopyBytes
+	rst CopyBytes
 	ld hl, wStringBuffer1 + PKMN_NAME_LENGTH - 1
 	ld [hl], "@"
 	pop de
@@ -660,7 +660,7 @@ GetTMHMName:: ; 3487
 
 .asm_34a1
 	ld de, wStringBuffer1
-	call CopyBytes
+	rst CopyBytes
 
 ; TM/HM number
 	ld a, [wNamedObjectIndexBuffer]
@@ -1382,10 +1382,10 @@ GetBaseData:: ; 3856
 	dec a
 	ld bc, BASEMON_STRUCT_LENGTH
 	ld hl, BaseData
-	call AddNTimes
+	rst AddNTimes
 	ld de, wCurBaseData
 	ld bc, BASEMON_STRUCT_LENGTH
-	call CopyBytes
+	rst CopyBytes
 	jr .end
 
 .egg
@@ -1462,7 +1462,7 @@ GetAbility::
 	ld b, 0
 	ld a, BASEMON_STRUCT_LENGTH
 	dec c
-	call AddNTimes
+	rst AddNTimes
 	pop bc
 	push bc
 	ld a, b
@@ -1496,7 +1496,7 @@ GetNick:: ; 38a2
 
 	push de
 	ld bc, PKMN_NAME_LENGTH
-	call CopyBytes
+	rst CopyBytes
 	pop de
 
 	pop bc
@@ -1602,7 +1602,7 @@ GetPartyLocation::
 ; Add the length of a PartyMon struct to hl a times.
 	push bc
 	ld bc, PARTYMON_STRUCT_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	pop bc
 	ret
 

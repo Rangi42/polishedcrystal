@@ -313,7 +313,7 @@ endr
 	ld a, [wCurPartyMon]
 	ld hl, wPartyMons
 	ld bc, PARTYMON_STRUCT_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	ld e, l
 	ld d, h
 	ld bc, MON_MAXHP
@@ -338,7 +338,7 @@ endr
 
 	ld hl, wTempMonSpecies
 	ld bc, PARTYMON_STRUCT_LENGTH
-	call CopyBytes
+	rst CopyBytes
 
 	ld a, [wCurSpecies]
 	ld [wd265], a
@@ -411,7 +411,7 @@ UpdateSpeciesNameIfNotNicknamed: ; 42414
 	ld a, [wCurPartyMon]
 	ld bc, PKMN_NAME_LENGTH
 	ld hl, wPartyMonNicknames
-	call AddNTimes
+	rst AddNTimes
 	push hl
 	ld a, [wCurSpecies]
 	ld [wd265], a
@@ -419,7 +419,8 @@ UpdateSpeciesNameIfNotNicknamed: ; 42414
 	ld hl, wStringBuffer1
 	pop de
 	ld bc, PKMN_NAME_LENGTH
-	jp CopyBytes
+	rst CopyBytes
+	ret
 ; 42454
 
 CancelEvolution: ; 42454
@@ -435,7 +436,7 @@ IsMonHoldingEverstone: ; 42461
 	ld a, [wCurPartyMon]
 	ld hl, wPartyMon1Item
 	ld bc, PARTYMON_STRUCT_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	ld a, [hl]
 	cp EVERSTONE
 	pop hl
@@ -484,7 +485,7 @@ LearnEvolutionMove:
 	ld hl, wPartyMon1Moves
 	ld a, [wCurPartyMon]
 	ld bc, PARTYMON_STRUCT_LENGTH
-	call AddNTimes
+	rst AddNTimes
 
 	ld b, NUM_MOVES
 .check_move
@@ -542,7 +543,7 @@ LearnLevelMoves: ; 42487
 	ld hl, wPartyMon1Moves
 	ld a, [wCurPartyMon]
 	ld bc, PARTYMON_STRUCT_LENGTH
-	call AddNTimes
+	rst AddNTimes
 
 	ld b, NUM_MOVES
 .check_move
@@ -670,7 +671,7 @@ FillMoves: ; 424e1
 	dec a
 	ld hl, Moves + MOVE_PP
 	ld bc, MOVE_LENGTH
-	call AddNTimes
+	rst AddNTimes
 	ld a, BANK(Moves)
 	call GetFarByte
 	pop hl

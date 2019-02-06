@@ -379,7 +379,7 @@ CopyWarpData:: ; 22a7
 	ld a, c
 	dec a
 	ld bc, 5 ; warp size
-	call AddNTimes
+	rst AddNTimes
 	ld bc, 2 ; warp number
 	add hl, bc
 	ld a, [hli]
@@ -532,7 +532,8 @@ ReadMapTriggers:: ; 23ac
 	ret z
 
 	ld bc, 2 ; size of a map trigger header entry
-	jp AddNTimes
+	rst AddNTimes
+	ret
 ; 23c3
 
 ReadMapCallbacks:: ; 23c3
@@ -548,7 +549,8 @@ ReadMapCallbacks:: ; 23c3
 	ret z
 
 	ld bc, 3
-	jp AddNTimes
+	rst AddNTimes
+	ret
 ; 23da
 
 ReadWarps:: ; 23da
@@ -563,7 +565,8 @@ ReadWarps:: ; 23da
 	and a
 	ret z
 	ld bc, 5
-	jp AddNTimes
+	rst AddNTimes
+	ret
 ; 23f1
 
 ReadCoordEvents:: ; 23f1
@@ -580,7 +583,8 @@ ReadCoordEvents:: ; 23f1
 	ret z
 
 	ld bc, 5
-	jp AddNTimes
+	rst AddNTimes
+	ret
 ; 2408
 
 ReadSignposts:: ; 2408
@@ -597,7 +601,8 @@ ReadSignposts:: ; 2408
 	ret z
 
 	ld bc, 5
-	jp AddNTimes
+	rst AddNTimes
+	ret
 ; 241f
 
 ReadObjectEvents:: ; 241f
@@ -686,15 +691,15 @@ RestoreFacingAfterWarp:: ; 248a
 	; get to the warp coords
 	ld a, [hli] ; get map trigger count
 	ld bc, 2 ; size of an entry in the map trigger table
-	call AddNTimes
+	rst AddNTimes
 	ld a, [hli] ; get callback count
 	ld bc, 3 ; size of an entry in the callback table
-	call AddNTimes
+	rst AddNTimes
 	inc hl ; skip warp count
 	ld a, [wWarpNumber]
 	dec a
 	ld bc, 5 ; size of an entry in the warps table
-	call AddNTimes
+	rst AddNTimes
 
 	ld a, [hli]
 	ld [wYCoord], a
@@ -1419,7 +1424,7 @@ LoadTileset:: ; 2821
 	ld hl, wDecompressScratch
 	ld de, VTiles2
 	ld bc, $7f tiles
-	call CopyBytes
+	rst CopyBytes
 
 	ld a, [rVBK]
 	push af
@@ -1429,7 +1434,7 @@ LoadTileset:: ; 2821
 	ld hl, wDecompressScratch + $80 tiles
 	ld de, VTiles2
 	ld bc, $80 tiles
-	call CopyBytes
+	rst CopyBytes
 
 	pop af
 	ld [rVBK], a
@@ -1900,7 +1905,7 @@ CheckIfFacingTileCoordIsSign:: ; 2aaa
 	pop hl
 	ld de, wCurSignpostYCoord
 	ld bc, 5 ; signpost event length
-	call CopyBytes
+	rst CopyBytes
 	scf
 	ret
 ; 2ad4
@@ -1973,7 +1978,7 @@ CheckCurrentMapXYTriggers:: ; 2ad4
 	pop hl
 	ld de, wCurCoordEventTriggerID
 	ld bc, 5 ; xy-trigger size
-	call CopyBytes
+	rst CopyBytes
 	scf
 	ret
 ; 2b29
@@ -2091,7 +2096,8 @@ GetAnyMapHeaderPointer:: ; 0x2bed
 	dec c
 	ld b, 0
 	ld a, 9
-	jp AddNTimes
+	rst AddNTimes
+	ret
 ; 0x2c04
 
 GetMapHeaderMember:: ; 0x2c04
@@ -2160,7 +2166,7 @@ PartiallyCopyMapHeader:: ; 2c3d
 	call GetMapHeaderPointer
 	ld de, wSecondMapHeaderBank
 	ld bc, wMapHeader - wSecondMapHeaderBank
-	call CopyBytes
+	rst CopyBytes
 
 	pop af
 	rst Bankswitch
@@ -2396,7 +2402,7 @@ LoadTilesetHeader:: ; 2d27
 	ld hl, Tilesets
 	ld bc, Tileset00End - Tileset00
 	ld a, [wTileset]
-	call AddNTimes
+	rst AddNTimes
 
 	ld de, wTilesetHeader
 	ld bc, Tileset00End - Tileset00

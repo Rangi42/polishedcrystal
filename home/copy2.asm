@@ -1,4 +1,7 @@
-CopyBytes:: ; 0x3026
+FarCopyBytes::
+	call FarCallInBankA
+	; fallthrough
+_CopyBytes:: ; 0x3026
 ; copy bc bytes from hl to de
 	inc b  ; we bail the moment b hits 0, so include the last run
 	inc c  ; same thing; include last byte
@@ -61,7 +64,7 @@ FarCopyWRAM:: ; 306b
 	ld a, [hBuffer]
 	ld [rSVBK], a
 
-	call CopyBytes
+	rst CopyBytes
 
 	pop af
 	ld [rSVBK], a

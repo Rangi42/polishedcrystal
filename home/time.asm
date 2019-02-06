@@ -26,7 +26,8 @@ if DEF(NO_RTC)
 	ld hl, wNoRTC
 	ld de, hRTCDayHi
 	ld bc, 5
-	jp CopyBytes
+	rst CopyBytes
+	ret
 else
 ; enable clock r/w
 	ld a, SRAM_ENABLE
@@ -209,7 +210,8 @@ if DEF(NO_RTC)
 	ld hl, hRTCDayHi
 	ld de, wNoRTC
 	ld bc, 5
-	jp CopyBytes
+	rst CopyBytes
+	ret
 else
 ; enable clock r/w
 	ld a, SRAM_ENABLE
