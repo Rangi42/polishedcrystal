@@ -2925,40 +2925,121 @@ endr
 	next "@"
 
 PrintStatDifferences: ; 50b7b
-; Print TempMon's stats at hl, with spacing bc, with previous stats at
-; wStringBuffer3
-	hlcoord 4, 4
-	lb bc, 6, 14
-	call TextBox
-	hlcoord 5, 5
-
 	ld a, [wTextBoxFlags]
 	push af
 	set NO_LINE_SPACING, a
 	ld [wTextBoxFlags], a
 
-	push hl
-	call .PrintStatNames
-	ld bc, 8
-	add hl, bc
+	; Figure out length of largest modifier (+x, +xx or +xxx)
+	ld hl, wStringBuffer3
+	ld c, 6
+	ld b, 1
+.loop
+	call .ComputeStatDifference
+	inc hl
+	inc hl
+	ld a, [wStringBuffer3 + 12]
+	and a
+	ld a, [wStringBuffer3 + 13]
+	ld d, 3
+	jr nz, .got_digit_length
+	cp 100
+	jr nc, .got_digit_length
+	dec d
+	cp 10
+	jr nc, .got_digit_length
+	dec d
+.got_digit_length
+	ld a, b
+	cp d
+	jr nc, .digit_length_not_larger
+	ld b, d
+.digit_length_not_larger
+	dec c
+	jr nz, .loop
+
+	ld a, b
+	ld [wStringBuffer3 + 14], a
 	ld de, wStringBuffer3
 	ld b, 1
-	call .PrintStats
-	call WaitPressAorB_BlinkCursor
-	pop hl
-
-	call .PrintStatNames
-	ld bc, 8
-	add hl, bc
+	call .PrintStatDisplay
 	ld de, wTempMonMaxHP
 	ld b, 0
-	call .PrintStats
-	call WaitPressAorB_BlinkCursor
+	call .PrintStatDisplay
 	pop af
 	ld [wTextBoxFlags], a
 	ret
 
+.ComputeStatDifference:
+	push de
+	push bc
+	ld a, [hli]
+	cpl
+	ld d, a
+	ld a, [hld]
+	cpl
+	add 1
+	jr nc, .dont_inc_b
+	inc d
+.dont_inc_b
+	ld e, a
+	ld bc, wTempMonMaxHP - wStringBuffer3
+	add hl, bc
+	ld a, [hli]
+	ld b, a
+	ld a, [hld]
+	ld c, a
+	push bc
+	ld bc, wStringBuffer3 - wTempMonMaxHP
+	add hl, bc
+	pop bc
+	push hl
+	ld h, b
+	ld l, c
+	add hl, de
+	ld a, h
+	ld [wStringBuffer3 + 12], a
+	ld a, l
+	ld [wStringBuffer3 + 13], a
+	pop hl
+	pop bc
+	pop de
+	ret
+
+.PrintStatDisplay:
+	push de
+	push bc
+	call .PrintStatNames
+	ld bc, 8
+	add hl, bc
+	pop bc
+	pop de
+	call .PrintStats
+	jp WaitPressAorB_BlinkCursor
+
 .PrintStatNames:
+	ld a, [wStringBuffer3 + 14]
+	push af
+	hlcoord 6, 4
+.coord_loop
+	dec hl
+	dec a
+	jr nz, .coord_loop
+	pop af
+	push af
+	ld b, 6
+	ld c, 12
+	add c
+	ld c, a
+	call TextBox
+	pop af
+	push af
+	hlcoord 7, 5
+.coord_loop2
+	dec hl
+	dec a
+	jr nz, .coord_loop2
+	pop af
 	push hl
 	ld de, .StatNames
 	call PlaceString
@@ -3010,20 +3091,9 @@ PrintStatDifferences: ; 50b7b
 	and a
 	jr z, .mod_done
 	pop hl
-	inc hl
-	ld c, [hl]
-	push bc
-	ld bc, wTempMonMaxHP - wStringBuffer3
-	add hl, bc
-	ld a, [hld]
-	pop bc
-	sub c
-	ld bc, wStringBuffer3 - wTempMonMaxHP
-	add hl, bc
+	call .ComputeStatDifference
 	ld d, h
 	ld e, l
-	ld hl, wStringBuffer3 + 12
-	ld [hl], a
 	pop hl
 	push hl
 	inc hl
@@ -3032,7 +3102,9 @@ PrintStatDifferences: ; 50b7b
 	ld a, "+"
 	ld [hli], a
 
-	lb bc, 1, 2
+	ld b, 2
+	ld a, [wStringBuffer3 + 14]
+	ld c, a
 	push de
 	ld de, wStringBuffer3 + 12
 	call PrintNum
@@ -3047,13 +3119,13 @@ PrintStatDifferences: ; 50b7b
 	ret
 
 .StatNames:
-	;    "Stat   ↑123+ 1"
-	db   "Max HP        "
-	next "Attack        "
-	next "Defense       "
-	next "Sp. Atk       "
-	next "Sp. Def       "
-	next "Speed         @"
+	;    "Stat   ↑123+1"
+	db   "Max HP"
+	next "Attack"
+	next "Defense"
+	next "Sp. Atk"
+	next "Sp. Def"
+	next "Speed@"
 
 GetGender: ; 50bdd
 ; Return the gender of a given monster (wCurPartyMon/wCurOTMon/CurWildMon).
