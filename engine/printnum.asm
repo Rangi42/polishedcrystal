@@ -22,41 +22,52 @@ _PrintNum:: ; c4c7
 	res PRINTNUM_MONEY_F, b ; 100xxxxx or 010xxxxx
 
 .main
+	ld a, c
+	dec a
+	jr z, .one
+	call .do_it
+	pop bc
+	ret
+
+.one
+	dec hl
+	ld a, [hl]
+	push hl
+	push af
+	call .do_it
+	pop af
+	pop hl
+	ld [hl], a
+	pop bc
+	ret
+
+.do_it
+	push bc
 	xor a
 	ld [hPrintNum1], a
 	ld [hPrintNum2], a
 	ld [hPrintNum3], a
 	ld a, b
 	and $f
-	cp 1
+	dec a
 	jr z, .byte
-	cp 2
+	dec a
 	jr z, .word
 ; maximum 3 bytes
 .long
 	ld a, [de]
 	ld [hPrintNum2], a
 	inc de
-	ld a, [de]
-	ld [hPrintNum3], a
-	inc de
-	ld a, [de]
-	ld [hPrintNum4], a
-	jr .start
 
 .word
 	ld a, [de]
 	ld [hPrintNum3], a
 	inc de
-	ld a, [de]
-	ld [hPrintNum4], a
-	jr .start
 
 .byte
 	ld a, [de]
 	ld [hPrintNum4], a
 
-.start
 	push de
 
 	ld d, b
@@ -68,18 +79,20 @@ _PrintNum:: ; c4c7
 	and $f
 	ld b, a
 	ld c, 0
-	cp 2
+	dec a
 	jr z, .two
-	cp 3
+	dec a
+	jr z, .two
+	dec a
 	jr z, .three
-	cp 4
+	dec a
 	jr z, .four
-	cp 5
+	dec a
 	jr z, .five
-	cp 6
+	dec a
 	jr z, .six
 
-.seven
+; seven
 	ld a, 1000000 / $10000 % $100
 	ld [hPrintNum5], a
 	ld a, 1000000 / $100 % $100
@@ -138,12 +151,13 @@ _PrintNum:: ; c4c7
 
 	ld c, 0
 	ld a, [hPrintNum4]
+	jr .handleLoop
 .mod_10
-	cp 10
-	jr c, .modded_10
 	sub 10
 	inc c
-	jr .mod_10
+.handleLoop
+	cp 10
+	jr nc, .mod_10
 .modded_10
 
 	ld b, a
