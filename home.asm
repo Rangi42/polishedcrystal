@@ -1422,11 +1422,14 @@ GetNature::
 GetLeadAbility::
 ; Returns ability of lead mon unless it's an Egg. Used for field
 ; abilities
-	ld a, [wPartyMon1Species]
-	xor EGG
+	ld a, [wPartyMon1IsEgg]
+	and IS_EGG_MASK
 	ret z
-	xor EGG ; revert to original species
-	ret z ; in case species was 0
+	ld a, [wPartyMon1Species]
+	inc a
+	ret z
+	dec a
+	ret z
 	push bc
 	push de
 	push hl
