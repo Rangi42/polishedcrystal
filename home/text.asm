@@ -426,11 +426,11 @@ Paragraph::
 	and AUTOSCROLL_MASK
 	cp AUTOSCROLL_AORB
 	ld c, 20
-	jr nz, .got_delay
+	jr z, .got_delay
 	bit NO_TEXT_SCROLL, a
 	jr nz, .skipdelay
 	and %11
-	jr z, .skipdelay
+	jr z, .got_delay
 	ld c, 5
 .loop
 	dec a
@@ -439,7 +439,6 @@ Paragraph::
 	jr .loop
 .got_delay
 	call DelayFrames
-.skipdelay
 	hlcoord TEXTBOX_INNERX, TEXTBOX_INNERY
 	pop de
 	jp NextChar
