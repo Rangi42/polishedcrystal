@@ -1,6 +1,5 @@
 HDMATransferTileMapToWRAMBank3:: ; 10402d
-	ld hl, .Function
-	jp CallInSafeGFXMode
+	call CallInSafeGFXMode
 
 .Function:
 	decoord 0, 0
@@ -13,8 +12,7 @@ HDMATransferTileMapToWRAMBank3:: ; 10402d
 ; 104047
 
 HDMATransferAttrMapToWRAMBank3: ; 104047
-	ld hl, .Function
-	jp CallInSafeGFXMode
+	call CallInSafeGFXMode
 
 .Function:
 	decoord 0, 0, wAttrMap
@@ -27,8 +25,7 @@ HDMATransferAttrMapToWRAMBank3: ; 104047
 ; 104061
 
 ReloadMapPart:: ; 104061
-	ld hl, .Function
-	jp CallInSafeGFXMode
+	call CallInSafeGFXMode
 
 .Function:
 	decoord 0, 0, wAttrMap
@@ -51,13 +48,35 @@ ReloadMapPart:: ; 104061
 	call HDMATransfer_Wait127Scanlines_toBGMap
 	pop af
 	ld [rVBK], a
-	ei
+	reti
 
+HDMATransferToWRAMBank3: ; 10419d (41:419d)
+	ld a, h
+	ld [rHDMA1], a
+	ld a, l
+	ld [rHDMA2], a
+	ld a, [hBGMapAddress + 1]
+	and $1f
+	ld [rHDMA3], a
+	ld a, [hBGMapAddress]
+	ld [rHDMA4], a
+
+	ld a, $23
+	ld [hDMATransfer], a
+	; fallthrough
+
+WaitDMATransfer:
+	jr .handleLoop
+.loop
+	call DelayFrame
+.handleLoop
+	ld a, [hDMATransfer]
+	and a
+	jr nz, .loop
 	ret
 
 BridgeTransition_HDMATransferTileMapAndAttrMap::
-	ld hl, .Function
-	jp CallInSafeGFXMode
+	call CallInSafeGFXMode
 
 .Function:
 	decoord 0, 0, wAttrMap
@@ -80,10 +99,11 @@ BridgeTransition_HDMATransferTileMapAndAttrMap::
 	call HDMATransfer_Wait123Scanlines_toBGMap
 	pop af
 	ld [rVBK], a
-	ei
-	ret
+	reti
 
-CallInSafeGFXMode: ; 104177
+CallInSafeGFXMode:
+	pop hl
+
 	ld a, [hBGMapMode]
 	push af
 	ld a, [hMapAnims]
@@ -93,12 +113,12 @@ CallInSafeGFXMode: ; 104177
 	ld [hMapAnims], a
 	ld a, [rSVBK]
 	push af
-	ld a, $6
+	ld a, BANK(wScratchTileMap)
 	ld [rSVBK], a
 	ld a, [rVBK]
 	push af
 
-	call ._hl_
+	call _hl_
 
 	pop af
 	ld [rVBK], a
@@ -108,22 +128,6 @@ CallInSafeGFXMode: ; 104177
 	ld [hMapAnims], a
 	pop af
 	ld [hBGMapMode], a
-	ret
-; 10419c
-
-._hl_ ; 10419c
-	jp hl
-; 10419d
-
-HDMATransferToWRAMBank3: ; 10419d (41:419d)
-	call _LoadHDMAParameters
-	ld a, $23
-	ld [hDMATransfer], a
-.loop
-	call DelayFrame
-	ld a, [hDMATransfer]
-	and a
-	jr nz, .loop
 	ret
 
 HDMATransfer_Wait127Scanlines_toBGMap: ; 1041ad (41:41ad)
@@ -137,7 +141,7 @@ HDMATransfer_Wait127Scanlines_toBGMap: ; 1041ad (41:41ad)
 	ld c, 2 * SCREEN_HEIGHT
 	jr HDMATransfer_Wait127Scanlines
 
-HDMATransfer_Wait123Scanlines_toBGMap: ; 1041b7 (41:41b7)
+HDMATransfer_Wait123Scanlines_toBGMap:
 ; HDMA transfer from hl to [hBGMapAddress]
 ; hBGMapAddress -> de
 ; 2 * SCREEN_HEIGHT -> c
@@ -168,62 +172,31 @@ _continue_HDMATransfer:
 	and $f0 ; high nybble
 	ld [rHDMA4], a
 	; e = c | %10000000
-	ld a, c
-	dec c
-	or $80
-	ld e, a
-	; d = b - c + 1
-	ld a, b
-	sub c
-	ld d, a
-	; while [rLY] >= d: pass
-.ly_loop
-	ld a, [rLY]
-	cp d
-	jr nc, .ly_loop
-
+	dec c ; c = number of LYs needed
+	ld e, c
+	set 7, e ; hblank dma transfers
 	di
-	; while [rSTAT] & 3: pass
-.rstat_loop_1
-	ld a, [rSTAT]
-	and $3
-	jr nz, .rstat_loop_1
-	; while not [rSTAT] & 3: pass
-.rstat_loop_2
-	ld a, [rSTAT]
-	and $3
-	jr z, .rstat_loop_2
-	; load the 5th byte of HDMA
-	ld a, e
-	ld [rHDMA5], a
-	; wait until rLY advances (c + 1) times
 	ld a, [rLY]
-	inc c
-	ld hl, rLY
-.final_ly_loop
-	cp [hl]
-	jr z, .final_ly_loop
-	ld a, [hl]
-	dec c
-	jr nz, .final_ly_loop
+	add c ; calculate end LY
+	cp b ; is the end LY greater than the max LY
+	call nc, DI_DelayFrame ; if so, delay a frame to reset the LY
+
+	lb bc, %11, rSTAT & $ff
+.noHBlankWait
+	ld a, [c]
+	and b
+	jr z, .noHBlankWait
+.hBlankWaitLoop
+	ld a, [c]
+	and b
+	jr nz, .hBlankWaitLoop
 	ld hl, rHDMA5
-	res 7, [hl]
-	ei
-
-	ret
-; 10424e
-
-_LoadHDMAParameters: ; 10424e (41:424e)
-	ld a, h
-	ld [rHDMA1], a
-	ld a, l
-	ld [rHDMA2], a
-	ld a, [hBGMapAddress + 1]
-	and $1f
-	ld [rHDMA3], a
-	ld a, [hBGMapAddress]
-	ld [rHDMA4], a
-	ret
+	ld [hl], e
+	ld a, $ff
+.waitForHDMA
+	cp [hl]
+	jr nz, .waitForHDMA
+	reti
 
 CutAndPasteTilemap: ; 10425f (41:425f)
 	ld c, " "
@@ -269,9 +242,7 @@ CutAndPasteMap: ; 104265 (41:4265)
 	ret
 
 HDMATransfer_OnlyTopFourRows: ; 104303
-	ld hl, .Function
-	jp CallInSafeGFXMode
-; 104309
+	call CallInSafeGFXMode
 
 .Function:
 	ld hl, wScratchTileMap
@@ -280,6 +251,7 @@ HDMATransfer_OnlyTopFourRows: ; 104303
 	ld hl, wScratchTileMap + $80
 	decoord 0, 0, wAttrMap
 	call .Copy
+	di
 	ld a, $1
 	ld [rVBK], a
 	ld c, $8
@@ -291,7 +263,9 @@ HDMATransfer_OnlyTopFourRows: ; 104303
 	ld c, $8
 	ld hl, wScratchTileMap
 	debgcoord 0, 0, VBGMap1
-	jp HDMATransfer_Wait127Scanlines
+	call HDMATransfer_Wait127Scanlines
+
+	reti
 
 .Copy: ; 10433a (41:433a)
 	ld b, 4
@@ -312,7 +286,20 @@ HDMATransfer_OnlyTopFourRows: ; 104303
 	dec b
 	jr nz, .outer_loop
 	ret
-; 104350
+
+DI_DelayFrame:
+	ld a, [rLY]
+	push bc
+	ld b, a
+.loop
+	ld a, [rLY]
+	and a
+	jr z, .done
+	cp b
+	jr nc, .loop
+.done
+	pop bc
+	ret
 
 ShockEmote:      INCBIN "gfx/emotes/shock.2bpp"
 QuestionEmote:   INCBIN "gfx/emotes/question.2bpp"

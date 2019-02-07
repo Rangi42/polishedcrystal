@@ -48,8 +48,6 @@ hPredefTemp        EQU $ffb1
 
 ; can only use the bytes reserved for hPredefTemp in contained functions, unless you know what you're doing
 
-hRequestOpaque1bpp EQU $ffb1
-
 hLZAddress         EQU $ffb1
 
 ; Arithmetic addresses aren't seperate, to simplify
@@ -166,5 +164,7 @@ hTmpd              EQU $fff7
 hTmpe              EQU $fff8
 
 hFastMusicUpdate   EQU $fff9
+
+hRequestOpaque1bpp EQU $fffb
 
 HRAM_END EQU $ffff
