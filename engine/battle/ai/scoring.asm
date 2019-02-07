@@ -71,7 +71,12 @@ AI_Basic: ; 38591
 	db $ff
 ; 385e0
 
-
+AI_Conversion:
+; not a layer, called by Conversion to allow the AI to select a good move type
+; TODO: implement
+	call BattleRandom
+	and %11
+	ret
 
 AI_Setup: ; 385e0
 ; Use stat-modifying moves on turn 1.

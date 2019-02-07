@@ -548,6 +548,9 @@ wTrainerClass:: ds 1
 wMonVariant:: ds 1
 
 wMoveSelectionMenuType:: ds 1
+; 0: battle move selection
+; 1: pp restore selection
+; 2: conversion selection
 
 wCurBaseData::
 wBaseStats::

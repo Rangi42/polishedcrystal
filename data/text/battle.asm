@@ -1,5 +1,13 @@
 BattleText::
 
+LinkBattleErrorText::
+	text "There was a link"
+	line "error."
+
+	para "The game will now"
+	line "be reset."
+	prompt
+
 BattleText_PlayerPickedUpPayDayMoney: ; 0x80730
 	text "<PLAYER> picked up"
 	line "¥@"
@@ -912,6 +920,16 @@ SwappedAbilitiesText:
 SwappedItemsText:
 	text "The battlers"
 	line "swapped items!"
+	prompt
+
+ChangeIntoTypeText:
+	text "Change into what"
+	line "move's type?"
+	prompt
+
+InvalidTypeChangeText:
+	text "You can't choose"
+	line "that move's type!"
 	prompt
 
 SketchedText: ; 0x81143

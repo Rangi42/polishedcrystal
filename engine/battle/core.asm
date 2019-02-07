@@ -5820,6 +5820,9 @@ CheckAmuletCoin:
 MoveSelectionScreen:
 	; Maybe reset wPlayerSelectedMove if the move has disappeared
 	; (possible if we learned a new move and replaced the old)
+	ld a, [wMoveSelectionMenuType]
+	cp 2
+	jr z, .ether_elixer_menu
 	push bc
 	push hl
 	ld hl, wBattleMonMoves
@@ -5843,8 +5846,8 @@ MoveSelectionScreen:
 	pop hl
 	pop bc
 	ld a, [wMoveSelectionMenuType]
-	dec a
-	jr z, .ether_elixer_menu
+	and a
+	jr nz, .ether_elixer_menu
 	call SetPlayerTurn
 	call CheckUsableMoves
 	jp nz, .struggle
@@ -5864,8 +5867,8 @@ MoveSelectionScreen:
 
 	hlcoord 4, 17 - NUM_MOVES - 1
 	ld a, [wMoveSelectionMenuType]
-	and a
-	jr z, .got_dims
+	dec a
+	jr nz, .got_dims
 	hlcoord 4, 17 - NUM_MOVES - 1 - 4
 .got_dims
 	lb bc, 4, 14
@@ -5873,8 +5876,8 @@ MoveSelectionScreen:
 
 	hlcoord 6, 17 - NUM_MOVES
 	ld a, [wMoveSelectionMenuType]
-	and a
-	jr z, .got_start_coord
+	dec a
+	jr nz, .got_start_coord
 	hlcoord 6, 17 - NUM_MOVES - 4
 .got_start_coord
 	ld a, SCREEN_WIDTH
@@ -5882,9 +5885,9 @@ MoveSelectionScreen:
 	predef ListMoves
 
 	ld a, [wMoveSelectionMenuType]
-	and a
+	dec a
 	ld a, 17 - NUM_MOVES
-	jr z, .got_default_coord
+	jr nz, .got_default_coord
 	ld a, 17 - NUM_MOVES - 4
 
 .got_default_coord
@@ -5904,13 +5907,19 @@ MoveSelectionScreen:
 	ld c, $2c
 
 	ld a, [wMoveSelectionMenuType]
-	dec a
 	ld b, D_DOWN | D_UP | A_BUTTON | B_BUTTON
+	and a
+	jr z, .check_link
+	dec a
 	jr z, .okay
+	ld b, D_DOWN | D_UP | A_BUTTON
+.check_link
 	ld a, [wLinkMode]
 	and a
 	jr nz, .okay
-	ld b, D_DOWN | D_UP | A_BUTTON | B_BUTTON | SELECT
+	ld a, SELECT
+	or b
+	ld b, a
 
 .okay
 	ld a, b
@@ -5923,8 +5932,8 @@ MoveSelectionScreen:
 	ld [w2DMenuCursorOffsets], a
 .menu_loop
 	ld a, [wMoveSelectionMenuType]
-	and a
-	jr nz, .interpret_joypad
+	dec a
+	jr z, .interpret_joypad
 
 	call MoveInfoBox
 	ld a, [wMoveSwapBuffer]
@@ -6156,23 +6165,6 @@ MoveInfoBox: ; 3e6c8
 	lb bc, 3, 9
 	call TextBox
 
-	ld a, [wPlayerDisableCount]
-	and a
-	jr z, .not_disabled
-
-	swap a
-	and $f
-	ld b, a
-	ld a, [wMenuCursorY]
-	cp b
-	jr nz, .not_disabled
-
-	hlcoord 1, 10
-	ld de, .Disabled
-	pop af
-	jp PlaceString
-
-.not_disabled
 	ld hl, wMenuCursorY
 	dec [hl]
 	call SetPlayerTurn
@@ -6293,8 +6285,6 @@ MoveInfoBox: ; 3e6c8
 	call nz, ApplyTilemap
 	ret
 
-.Disabled:
-	db "Disabled!@"
 .PowAcc:
 	db "   <BOLDP>/   %@"
 .NA:
@@ -6543,6 +6533,12 @@ CheckEnemyLockedIn: ; 3e8d1
 	bit SUBSTATUS_ROLLOUT, [hl]
 	ret
 ; 3e8e4
+
+LinkBattleError:
+; TODO: handle link battle errors gracefully
+	ld hl, LinkBattleErrorText
+	call StdBattleTextBox
+	jp SoftReset
 
 LinkBattleSendReceiveAction: ; 3e8e4
 ; Note that only the lower 4 bits is usable. The higher 4 determines what kind of
