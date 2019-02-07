@@ -300,6 +300,7 @@ Serve1bppRequest:: ; 170a
 	xor a
 	ld [hRequested1bpp], a
 
+_Serve1bppRequest::
 ; Copy [hRequested1bpp] 1bpp tiles from [hRequestedVTileSource] to [hRequestedVTileDest]
 	ld [hSPBuffer], sp
 ; Destination
@@ -315,6 +316,9 @@ Serve1bppRequest:: ; 170a
 	ld sp, hl
 	ld h, d
 	ld l, e
+	ld a, [hRequestOpaque1bpp]
+	dec a
+	jr z, .nextopaque
 
 ; # tiles to copy
 .next
@@ -329,6 +333,21 @@ Serve1bppRequest:: ; 170a
 	endr
 	dec b
 	jr nz, .next
+	jp WriteVTileSourceAndDestinationAndReturn
+.nextopaque
+	rept 4
+	pop de
+	ld a, e
+	ld [hl], $ff
+	inc hl
+	ld [hli], a
+	ld a, d
+	ld [hl], $ff
+	inc hl
+	ld [hli], a
+	endr
+	dec b
+	jr nz, .nextopaque
 	jp WriteVTileSourceAndDestinationAndReturn
 
 LYOverrideStackCopy::

@@ -58,46 +58,6 @@ DecompressRequest2bpp:: ; e73
 	jp CloseSRAM
 ; e8d
 
-
-
-FarCopyBytesDouble:: ; e9b
-; Copy bc bytes from a:hl to bc*2 bytes at de,
-; doubling each byte in the process.
-
-	ld [hBuffer], a
-	ld a, [hROMBank]
-	push af
-	ld a, [hBuffer]
-	rst Bankswitch
-
-; switcheroo, de <> hl
-	ld a, h
-	ld h, d
-	ld d, a
-	ld a, l
-	ld l, e
-	ld e, a
-
-	inc b
-	inc c
-	jr .dec
-
-.loop
-	ld a, [de]
-	inc de
-	ld [hli], a
-	ld [hli], a
-.dec
-	dec c
-	jr nz, .loop
-	dec b
-	jr nz, .loop
-
-	pop af
-	rst Bankswitch
-	ret
-; 0xeba
-
 Get2bpp::
 	ld a, [rLCDC]
 	bit 7, a ; lcd on?
@@ -105,52 +65,36 @@ Get2bpp::
 
 Copy2bpp::
 ; copy c 2bpp tiles from b:de to hl
+	call FarCallInBankB
 
-	push hl
-	ld h, d
-	ld l, e
-	pop de
-
-; bank
-	ld a, b
-
-; bc = c * $10
-	push af
-	swap c
-	ld a, $f
-	and c
-	ld b, a
-	ld a, $f0
-	and c
-	ld c, a
-	pop af
-
-	jp FarCopyBytes
+.Function:
+	call WriteVCopyRegistersToHRAM
+	ld b, c
+	jp _Serve2bppRequest
 
 Request2bpp:: ; eba
 ; Load 2bpp at b:de to occupy c tiles of hl.
+	call FarCallInBankB
+
+.Function:
 	ld a, [hBGMapMode]
 	push af
 	xor a
 	ld [hBGMapMode], a
 
-	ld a, [hROMBank]
-	push af
-	ld a, b
-	rst Bankswitch
-
 	call WriteVCopyRegistersToHRAM
 	ld a, [rLY]
 	cp $88
 	jr c, .handleLoop
+; fallthrough to vblank copy handler if LY is too high
 .loop
 	ld a, [hTilesPerCycle]
-	sub 16
+	sub $10
 	ld [hTilesPerCycle], a
 	jr c, .copyRemainingTilesAndExit
 	jr nz, .copySixteenTilesAndContinue
 .copyRemainingTilesAndExit
-	add 16
+	add $10
 	ld [hRequested2bpp], a
 	xor a
 	ld [hTilesPerCycle], a
@@ -171,7 +115,7 @@ Request2bpp:: ; eba
 	ld [hTilesPerCycle], a
 	jr .done
 .copySixteenTilesAndContinue
-	ld a, 16
+	ld a, $10
 	ld [hRequested2bpp], a
 	call DelayFrame
 	ld a, [hRequested2bpp]
@@ -181,42 +125,39 @@ Request2bpp:: ; eba
 	call HBlankCopy2bpp
 	jr c, .loop
 .done
-	pop af
-	rst Bankswitch
 
 	pop af
 	ld [hBGMapMode], a
 	ret
 
+GetOpaque1bpp::
+; Two bytes in VRAM define eight pixels (2 bits/pixel)
+; Bits are paired from the bytes, e.g. %ABCDEFGH %abcdefgh defines pixels
+; %Aa, %Bb, %Cc, %Dd, %Ee, %Ff, %Gg, %Hh
+; %00 = white, %11 = black, %10 = light, %01 = dark
+	ld a, [rLCDC]
+	bit 7, a ; lcd on?
+	jr nz, RequestOpaque1bpp
+CopyOpaque1bpp:
+	ld a, 1
+	ld [hRequestOpaque1bpp], a
+	jr _Copy1bpp
+
 Get1bpp:: ; f9d
 	ld a, [rLCDC]
 	bit 7, a ; lcd on?
 	jr nz, Request1bpp
-
-Copy1bpp:: ; fa4
+Copy1bpp::
+	xor a
+	ld [hRequestOpaque1bpp], a
+_Copy1bpp::
 ; copy c 1bpp tiles from b:de to hl
+	call FarCallInBankB
 
-	push de
-	ld d, h
-	ld e, l
-
-; bank
-	ld a, b
-
-; bc = c * $10 / 2
-	push af
-	ld h, 0
-	ld l, c
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	ld b, h
-	ld c, l
-	pop af
-
-	pop hl
-	jp FarCopyBytesDouble
-; fb6
+.Function:
+	call WriteVCopyRegistersToHRAM
+	ld b, c
+	jp _Serve1bppRequest
 
 RequestOpaque1bpp:
 	ld a, 1
@@ -225,8 +166,8 @@ RequestOpaque1bpp:
 Request1bpp::
 	xor a
 	ld [hRequestOpaque1bpp], a
-; Load 1bpp at b:de to occupy c tiles of hl.
 _Request1bpp:
+; Load 1bpp at b:de to occupy c tiles of hl.
 	ld a, [hBGMapMode]
 	push af
 	xor a
@@ -449,75 +390,3 @@ VRAMToVRAMCopy::
 	ld [hTilesPerCycle], a
 	jr nz, .outerLoop2
 	jp DoneHBlankCopy
-
-GetOpaque1bpp::
-; Two bytes in VRAM define eight pixels (2 bits/pixel)
-; Bits are paired from the bytes, e.g. %ABCDEFGH %abcdefgh defines pixels
-; %Aa, %Bb, %Cc, %Dd, %Ee, %Ff, %Gg, %Hh
-; %00 = white, %11 = black, %10 = light, %01 = dark
-	ld a, [rLCDC]
-	bit 7, a ; lcd on?
-	jr z, .CopyOpaque1bpp
-	jp RequestOpaque1bpp
-
-.CopyOpaque1bpp:
-; copy c 1bpp tiles from b:de to hl
-
-	push de
-	ld d, h
-	ld e, l
-
-; bank
-	ld a, b
-
-; bc = c * $10 / 2
-	push af
-	ld h, 0
-	ld l, c
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	ld b, h
-	ld c, l
-	pop af
-
-	pop hl
-	; fallthrough
-
-FarCopyOpaqueBytesDouble::
-; Copy bc bytes from a:hl to bc*2 bytes at de,
-; writing $ff before each byte in the process.
-
-	ld [hBuffer], a
-	ld a, [hROMBank]
-	push af
-	ld a, [hBuffer]
-	rst Bankswitch
-
-; switcheroo, de <> hl
-	ld a, h
-	ld h, d
-	ld d, a
-	ld a, l
-	ld l, e
-	ld e, a
-
-	inc b
-	inc c
-	jr .dec
-
-.loop
-	ld a, [de]
-	inc de
-	ld [hl], $ff
-	inc hl
-	ld [hli], a
-.dec
-	dec c
-	jr nz, .loop
-	dec b
-	jr nz, .loop
-
-	pop af
-	rst Bankswitch
-	ret
