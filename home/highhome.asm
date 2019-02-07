@@ -74,11 +74,8 @@ IsInArray::
 	cp -1
 	ret z ; carry can never be set for "cp -1"
 	cp c
-	jr z, .InArray
+	scf
+	ret z
 	inc b
 	add hl, de
 	jr .loop
-
-.InArray:
-	scf
-	ret

@@ -7562,20 +7562,8 @@ BattleCommand_KnockOff:
 	cp STICKY_HOLD
 	ret z
 
-	; Check if target has an item to knock off
-	call GetOpponentItem
-	ld a, [hl]
-	and a
+	call OpponentCanLoseItem
 	ret z
-
-	; Armor Suit can't be knocked off
-	cp ARMOR_SUIT
-	ret z
-
-	; Mail can't be knocked off
-	ld d, a
-	call ItemIsMail
-	ret c
 
 	xor a
 	ld [hl], a
@@ -7707,20 +7695,14 @@ BattleCommand_Trick:
 	cp STICKY_HOLD
 	jr z, .ability_failed
 
+	call UserCanLoseItem
+	jr z, .failed
+	call OpponentCanLoseItem
+	jr z, .failed
 	call GetUserItem
-	ld a, [hl]
-	and a
-	jr z, .failed
-	cp ARMOR_SUIT
-	jr z, .failed
 	push hl
 	call GetOpponentItem
-	ld a, [hl]
-	and a
 	pop de
-	jr z, .failed
-	cp ARMOR_SUIT
-	jr z, .failed
 
 	ld a, [de]
 	ld b, [hl]
@@ -7745,6 +7727,7 @@ BattleCommand_Trick:
 
 .ability_failed
 	call ShowEnemyAbilityActivation
+	jp PrintDoesntAffect
 .failed
 	call AnimateFailedMove
 	jp PrintButItFailed
@@ -8412,9 +8395,7 @@ DoKnockOff:
 	call CheckSubstituteOpp
 	ret nz
 
-	call GetOpponentItem
-	ld a, [hl]
-	and a
+	call OpponentCanLoseItem
 	ret z
 
 	ld hl, wCurDamage
@@ -9321,7 +9302,7 @@ GetEnemyItem:
 	ld b, [hl]
 	jp GetItemHeldEffect
 
-GetUserItem: ; 37db2
+GetUserItem:: ; 37db2
 ; Return the effect of the user's item in bc, and its id at hl.
 ; Also updates the object name buffer, allowing you to just
 ; GetCurItemName to get the item name

@@ -51,6 +51,10 @@ ResetDamage:: ; 397d
 	ret
 ; 3985
 
+SwitchTurn::
+	ld a, [hBattleTurn]
+	and a
+	jr z, SetEnemyTurn
 SetPlayerTurn:: ; 3985
 	xor a
 	ld [hBattleTurn], a
@@ -62,12 +66,6 @@ SetEnemyTurn:: ; 3989
 	ld [hBattleTurn], a
 	ret
 ; 398e
-
-SwitchTurn::
-	ld a, [hBattleTurn]
-	xor 1
-	ld [hBattleTurn], a
-	ret
 
 UpdateUserInParty::
 	ld a, [hBattleTurn]
@@ -181,6 +179,61 @@ ToggleBattleItems:
 	add hl, bc
 	pop bc
 	jr .loop
+
+OpponentCanLoseItem::
+	call SwitchTurn
+	call UserCanLoseItem
+	push af
+	call SwitchTurn
+	pop af
+	ret
+
+UserCanLoseItem::
+; Returns z if user can't lose its held item. This happens if:
+; - user doesn't have a held item
+; - user is holding Armor Suit
+; - user is holding Mail
+; Does not check Sticky Hold (we just want to know if we can
+; theoretically lose our item at any point)
+	push hl
+	push de
+	push bc
+	farcall GetUserItem
+	ld a, [hl]
+	and a
+	jr z, .pop_and_ret_z
+	ld d, a
+	call ItemIsMail
+	jr c, .pop_and_ret_z
+	ld de, 2
+	ld hl, .StuckItems
+	call IsInArray
+	jr nc, .pop_and_ret_z
+	inc hl
+	ld a, [hBattleTurn]
+	and a
+	ld de, wBattleMonSpecies
+	jr z, .got_species
+	ld de, wEnemyMonSpecies
+.got_species
+	ld a, [de]
+	cp [hl]
+	jr nz, .pop_and_ret_z
+	pop bc
+	pop de
+	pop hl
+	or 1
+	ret
+.pop_and_ret_z
+	pop bc
+	pop de
+	pop hl
+	xor a
+	ret
+
+.StuckItems
+	db ARMOR_SUIT, MEWTWO
+	db -1
 
 GetUsedItemAddr::
 ; Returns addr for user's POV's UsedItem

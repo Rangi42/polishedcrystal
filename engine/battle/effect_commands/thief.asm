@@ -45,6 +45,9 @@ CanStealItem:
 	cp STICKY_HOLD
 	jr z, .cant
 
+	call OpponentCanLoseItem
+	jr z, .cant
+
 	ld a, [hBattleTurn]
 	and a
 	ld hl, wBattleMonItem
@@ -62,22 +65,6 @@ CanStealItem:
 	; Check if user is holding an item already
 	ld a, [hl]
 	and a
-	ret nz
-
-	; Check if target has an item to steal
-	ld a, [bc]
-	and a
-	jr z, .cant
-
-	; Armor Suit can't be stolen
-	cp ARMOR_SUIT
-	jr z, .cant
-
-	; Mail can't be stolen
-	ld d, a
-	call ItemIsMail
-	jr c, .cant
-	xor a
 	ret
 
 .cant
