@@ -7808,6 +7808,10 @@ BattleCommand_Conversion:
 	jr nz, .enemy
 
 	; Choose what move's type to change into
+	call BattleCommand_MoveDelay
+	pop de
+.player_choose_move
+	push de
 	ld hl, ChangeIntoTypeText
 	call StdBattleTextBox
 
@@ -7926,6 +7930,11 @@ BattleCommand_Conversion:
 	and a
 	ld hl, InvalidTypeChangeText
 	call z, StdBattleTextBox
+
+	; skip move delay after the first selection
+	ld a, [hBattleTurn]
+	and a
+	jp z, .player_choose_move
 	jp .choose_move
 
 BattleCommand_ResetStats:
