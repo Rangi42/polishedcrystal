@@ -1,5 +1,5 @@
 FarCopyBytes::
-	call FarCallInBankA
+	call StackCallInBankA
 	; fallthrough
 _CopyBytes:: ; 0x3026
 ; copy bc bytes from hl to de
@@ -33,7 +33,7 @@ ByteFill:: ; 0x3041
 
 GetFarByte:: ; 0x304d
 ; retrieve a single byte from a:hl, and return it in a.
-	call FarCallInBankA
+	call StackCallInBankA
 	ld a, [hl]
 	ret
 

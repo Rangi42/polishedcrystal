@@ -41,9 +41,9 @@ FarPointerCall::
 	ld l, a
 	jr DoFarCall
 
-FarCallInBankB:
+StackCallInBankB:
 	ld a, b
-FarCallInBankA:
+StackCallInBankA:
 	ld [hBuffer], a
 	ld a, h
 	ld [hPredefTemp], a

@@ -65,7 +65,7 @@ Get2bpp::
 
 Copy2bpp::
 ; copy c 2bpp tiles from b:de to hl
-	call FarCallInBankB
+	call StackCallInBankB
 
 .Function:
 	call WriteVCopyRegistersToHRAM
@@ -74,7 +74,7 @@ Copy2bpp::
 
 Request2bpp:: ; eba
 ; Load 2bpp at b:de to occupy c tiles of hl.
-	call FarCallInBankB
+	call StackCallInBankB
 
 .Function:
 	ld a, [hBGMapMode]
@@ -152,7 +152,7 @@ Copy1bpp::
 	ld [hRequestOpaque1bpp], a
 _Copy1bpp::
 ; copy c 1bpp tiles from b:de to hl
-	call FarCallInBankB
+	call StackCallInBankB
 
 .Function:
 	call WriteVCopyRegistersToHRAM

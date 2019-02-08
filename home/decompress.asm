@@ -7,7 +7,7 @@ SwapDEHL::
 
 FarDecompress::
 ; Decompress graphics data from a:hl to de.
-	call FarCallInBankA
+	call StackCallInBankA
 Decompress::
 	ld a, [hVBlank]
 	push af
