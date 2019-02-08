@@ -42,14 +42,14 @@ CloseText:: ; 2dcf
 	xor a
 	ld [hBGMapMode], a
 	call SafeUpdateSprites
+	farcall LoadUsedSpritesGFX
 	ld a, $90
 	ld [hWY], a
 	call ReplaceKrisSprite
 	xor a
 	ld [hBGMapMode], a
 
-	farcall ReturnFromMapSetupScript
-	farjp LoadOverworldFont
+	farjp ReturnFromMapSetupScript
 ; 2e08
 
 OpenText:: ; 2e08

@@ -294,9 +294,7 @@ LoadGraphics: ; 1047cf
 	xor a
 	ld [hMapAnims], a
 	ld [hTileAnimFrame], a
-	farcall RefreshSprites
-	call LoadFontsExtra
-	farjp LoadOverworldFont
+	farjp RefreshSprites
 
 LoadMapPalettes: ; 1047eb
 	ld b, CGB_MAPPALS

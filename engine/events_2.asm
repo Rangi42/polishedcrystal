@@ -109,8 +109,8 @@ PlaceMapNameSign:: ; b8098 (2e:4098)
 	cp 56
 	jr c, .skip2
 	call LoadMapNameSignGFX
+	call LoadLandmarkNameGFX
 	call InitMapNameFrame
-	call PlaceMapNameCenterAlign
 	farcall HDMATransfer_OnlyTopFourRows
 .skip2
 	ld a, $70
@@ -130,12 +130,121 @@ LoadMapNameSignGFX: ; b80c6
 	ld a, $1
 	ld [rVBK], a
 	ld de, MapEntryFrameGFX
-	ld hl, VTiles4 tile $78
-	lb bc, BANK(MapEntryFrameGFX), 8
+	ld hl, VTiles3 tile POPUP_MAP_FRAME_START
+	lb bc, BANK(MapEntryFrameGFX), POPUP_MAP_FRAME_SIZE
 	call Get2bpp
 	xor a
 	ld [rVBK], a
 	ret
+
+LoadLandmarkNameGFX:
+	; make space opaque
+	ld hl, VTiles2 tile " "
+	ld de, TextBoxSpaceGFX
+	call GetOpaque1bppFontTile
+	; clear landmark name area
+	ld hl, VTiles0 tile POPUP_MAP_NAME_START
+	ld e, $100 - POPUP_MAP_NAME_START
+.clear_loop
+	push hl
+	push de
+	ld de, TextBoxSpaceGFX
+	call GetOpaque1bppFontTile
+	pop de
+	pop hl
+	ld bc, LEN_2BPP_TILE
+	add hl, bc
+	dec e
+	jr nz, .clear_loop
+	; wStringBuffer1 = current landmark name
+	ld a, [wCurrentLandmark]
+	ld e, a
+	farcall GetLandmarkName
+	; c = length of landmark name
+	ld c, 0
+	push hl
+	ld hl, wStringBuffer1
+.length_loop
+	ld a, [hli]
+	cp "@"
+	jr z, .got_length
+	inc c
+	jr .length_loop
+.got_length
+	pop hl
+	; bc = byte offset to center landmark name
+	ld a, SCREEN_WIDTH - 2
+	sub c
+	srl a
+	ld h, 0
+	ld l, a
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	ld b, h
+	ld c, l
+	ld hl, VTiles0 tile POPUP_MAP_NAME_START
+	add hl, bc
+	; de = start of vram buffer
+	ld d, h
+	ld e, l
+	; hl = start of landmark name
+	ld hl, wStringBuffer1
+.loop
+	; a = tile offset into font graphic
+	ld a, [hli]
+	cp "@"
+	ret z
+	; save position in landmark name
+	push hl
+	; spaces are unique
+	cp "¯"
+	jr z, .space
+	cp " "
+	jr nz, .not_space
+.space
+	ld hl, TextBoxSpaceGFX
+	jr .got_tile
+.not_space
+	sub $80
+	; bc = byte offset into font graphic (a * 8)
+	push hl
+	ld h, 0
+	ld l, a
+	add hl, hl
+	add hl, hl
+	add hl, hl
+	ld b, h
+	ld c, l
+	pop hl
+	; hl = start of font tile graphic
+	push de
+	farcall LoadStandardFontPointer
+	pop de
+	add hl, bc
+.got_tile
+	; save position in vram
+	push de
+	; swap hl and de, so de = font tile graphic, and hl = vram
+	push hl
+	ld h, d
+	ld l, e
+	pop de
+	; get font tile into vram
+	call GetOpaque1bppFontTile
+	; restore hl = position in vram
+	pop hl
+	; increment position in vram
+	ld bc, LEN_2BPP_TILE
+	add hl, bc
+	; de = position in vram
+	ld d, h
+	ld e, l
+	; restore hl = position in landmark name
+	pop hl
+	; continue
+	jr .loop
 ; b80d3
 
 InitMapNameFrame: ; b80d3
@@ -168,7 +277,7 @@ endr
 ; PlaceMapNameFrame
 	hlcoord 0, 0
 	; top left
-	ld a, $f8
+	ld a, POPUP_MAP_FRAME_START ; $f8
 	ld [hli], a
 	; top row
 	inc a ; $f9
@@ -177,17 +286,17 @@ endr
 	dec a ; $f8
 	ld [hli], a
 	; left, first line
-	ld a, $fb
+	ld a, POPUP_MAP_FRAME_START + 3 ; $fb
 	ld [hli], a
 	; first line
-	call .FillMiddle
+	call .FillUpperMiddle
 	; right, first line
 	ld [hli], a
 	; left, second line
 	inc a ; $fc
 	ld [hli], a
 	; second line
-	call .FillMiddle
+	call .FillLowerMiddle
 	; right, second line
 	ld [hli], a
 	; bottom left
@@ -202,14 +311,26 @@ endr
 	ret
 ; b815b
 
-.FillMiddle: ; b815b
+.FillUpperMiddle: ; b815b
 	push af
-	ld a, $7f
+	ld a, " "
 	ld c, SCREEN_WIDTH - 2
 .loop
 	ld [hli], a
 	dec c
 	jr nz, .loop
+	pop af
+	ret
+
+.FillLowerMiddle:
+	push af
+	ld a, POPUP_MAP_NAME_START
+	ld c, SCREEN_WIDTH - 2
+.loop2
+	ld [hli], a
+	inc a
+	dec c
+	jr nz, .loop2
 	pop af
 	ret
 ; b8164
@@ -231,37 +352,6 @@ endr
 	jr nz, .continueloop
 	ret
 ; b8172
-
-PlaceMapNameCenterAlign: ; b80e1 (2e:40e1)
-	ld a, [wCurrentLandmark]
-	ld e, a
-	farcall GetLandmarkName
-	call .GetNameLength
-	ld a, SCREEN_WIDTH
-	sub c
-	srl a
-	ld b, $0
-	ld c, a
-	hlcoord 0, 2
-	add hl, bc
-	ld de, wStringBuffer1
-	jp PlaceString
-
-.GetNameLength: ; b8101 (2e:4101)
-	ld c, 0
-	push hl
-	ld hl, wStringBuffer1
-.loop
-	ld a, [hli]
-	cp "@"
-	jr z, .stop
-	cp "<NEXT>"
-	jr z, .loop
-	inc c
-	jr .loop
-.stop
-	pop hl
-	ret
 
 
 CheckForHiddenItems: ; b8172

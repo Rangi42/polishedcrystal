@@ -91,8 +91,7 @@ ClosePokepic:: ; 24528
 	ld [hBGMapMode], a
 	call OverworldTextModeSwitch
 	call ApplyTilemap
-	call UpdateSprites
-	farjp LoadOverworldFont
+	jp UpdateSprites
 
 PokepicMenuDataHeader: ; 0x24547
 	db $40 ; flags

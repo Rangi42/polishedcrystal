@@ -282,8 +282,7 @@ CutDownGrass: ; c810
 	call BufferScreen
 	call GetMovementPermissions
 	call UpdateSprites
-	call DelayFrame
-	farjp LoadOverworldFont
+	jp DelayFrame
 
 CheckOverworldTileArrays: ; c840
 	; Input: c contains the tile you're facing
@@ -733,8 +732,7 @@ FlyFunction: ; ca3b
 .ReturnFromFly: ; cacb
 	farcall ReturnFromFly_SpawnOnlyPlayer
 	call DelayFrame
-	call ReplaceKrisSprite
-	farjp LoadOverworldFont
+	jp ReplaceKrisSprite
 
 WaterfallFunction: ; cade
 	call .TryWaterfall

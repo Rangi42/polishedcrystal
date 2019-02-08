@@ -130,11 +130,12 @@ Request2bpp:: ; eba
 	ld [hBGMapMode], a
 	ret
 
-GetOpaque1bpp::
+GetOpaque1bppFontTile::
 ; Two bytes in VRAM define eight pixels (2 bits/pixel)
 ; Bits are paired from the bytes, e.g. %ABCDEFGH %abcdefgh defines pixels
 ; %Aa, %Bb, %Cc, %Dd, %Ee, %Ff, %Gg, %Hh
 ; %00 = white, %11 = black, %10 = light, %01 = dark
+	lb bc, BANK(FontTiles), 1
 	ld a, [rLCDC]
 	bit 7, a ; lcd on?
 	jr nz, RequestOpaque1bpp

@@ -24,7 +24,6 @@ RefreshSprites:: ; 14168
 	call GetPlayerSprite
 	call AddMapSprites
 	call LoadSpriteGFX
-	call SortUsedSprites
 	call ArrangeUsedSprites
 	jp MapCallbackSprites_LoadUsedSpritesGFX
 ; 1416f
@@ -84,11 +83,6 @@ GetPlayerSprite: ; 14183
 
 AddMapSprites: ; 141c9
 	call GetMapPermission
-	call CheckOutdoorMap
-	jr z, AddOutdoorSprites
-	; fallthrough
-
-AddIndoorSprites: ; 141d9
 	ld hl, wMap1ObjectSprite
 	ld a, 1
 .loop
@@ -104,29 +98,11 @@ AddIndoorSprites: ; 141d9
 	ret
 ; 141ee
 
-AddOutdoorSprites: ; 141ee
-	ld a, [wMapGroup]
-	dec a
-	ld c, a
-	ld b, 0
-	ld hl, OutdoorSprites
-	add hl, bc
-	add hl, bc
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-.loop
-	ld a, [hli]
-	and a ; cp SPRITE_NONE
-	ret z
-	call AddSpriteGFX
-	jr .loop
-; 14209
-
 
 MapCallbackSprites_LoadUsedSpritesGFX: ; 14209
 	ld a, MAPCALLBACK_SPRITES
 	call RunMapCallback
+LoadUsedSpritesGFX::
 	call GetUsedSprites
 
 	ld a, [wSpriteFlags]
@@ -370,82 +346,6 @@ LoadSpriteGFX: ; 14306
 ; 1431e
 
 
-SortUsedSprites: ; 1431e
-; Bubble-sort sprites by type.
-
-; Overworld map sprite sets are assumed to be manually sorted.
-
-	call GetMapPermission
-	call CheckOutdoorMap
-	ret z
-
-; Run backwards through wUsedSprites to find the last one.
-
-	ld c, SPRITE_GFX_LIST_CAPACITY
-	ld de, wUsedSprites + (SPRITE_GFX_LIST_CAPACITY - 1) * 2
-.FindLastSprite:
-	ld a, [de]
-	and a
-	jr nz, .FoundLastSprite
-	dec de
-	dec de
-	dec c
-	jr nz, .FindLastSprite
-.FoundLastSprite:
-	dec c
-	ret z
-
-; If the length of the current sprite is
-; higher than a later one, swap them.
-
-	inc de
-	ld hl, wUsedSprites + 1
-
-.CheckSprite:
-	push bc
-	push de
-	push hl
-
-.CheckFollowing:
-	ld a, [de]
-	cp [hl]
-	jr nc, .loop
-
-; Swap the two sprites.
-
-	ld b, a
-	ld a, [hl]
-	ld [hl], b
-	ld [de], a
-	dec de
-	dec hl
-	ld a, [de]
-	ld b, a
-	ld a, [hl]
-	ld [hl], b
-	ld [de], a
-	inc de
-	inc hl
-
-; Keep doing this until everything's in order.
-
-.loop
-	dec de
-	dec de
-	dec c
-	jr nz, .CheckFollowing
-
-	pop hl
-	inc hl
-	inc hl
-	pop de
-	pop bc
-	dec c
-	jr nz, .CheckSprite
-	ret
-; 14355
-
-
 ArrangeUsedSprites: ; 14355
 ; Get the length of each sprite and space them out in VRAM.
 ; Crystal introduces a second table in VRAM bank 0.
@@ -594,14 +494,18 @@ endr
 	pop hl
 
 	ld a, [wSpriteFlags]
-	bit 5, a
-	ret nz
 	bit 6, a
 	ret nz
 
 	ld a, [hUsedSpriteIndex]
 	call _DoesSpriteHaveFacings
 	ret c
+
+	ld a, [hUsedSpriteTile]
+	add c
+	dec a
+	cp $ee
+	ret nc
 
 	ld a, h
 	add $8
@@ -676,7 +580,5 @@ LoadEmote:: ; 1442f
 INCLUDE "data/sprites/emotes.asm"
 
 INCLUDE "data/sprites/sprite_mons.asm"
-
-INCLUDE "data/maps/outdoor_sprites.asm"
 
 INCLUDE "data/sprites/sprites.asm"
