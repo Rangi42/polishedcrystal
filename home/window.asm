@@ -16,7 +16,6 @@ RefreshScreen:: ; 2dba
 
 RefreshScreen_BridgeUpdate::
 	call GetMovementPermissions
-	call ClearWindowData
 	farjp ReanchorBGMap_NoOAMUpdate_NoDelay
 
 CloseText:: ; 2dcf

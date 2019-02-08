@@ -75,32 +75,6 @@ WaitDMATransfer:
 	jr nz, .loop
 	ret
 
-BridgeTransition_HDMATransferTileMapAndAttrMap::
-	call CallInSafeGFXMode
-
-.Function:
-	decoord 0, 0, wAttrMap
-	ld hl, wScratchAttrMap
-	call CutAndPasteAttrMap
-	decoord 0, 0
-	ld hl, wScratchTileMap
-	call CutAndPasteTilemap
-
-	di
-	ld a, [rVBK]
-	push af
-	ld a, $1
-	ld [rVBK], a
-	ld hl, wScratchAttrMap
-	call HDMATransfer_Wait123Scanlines_toBGMap
-	ld a, $0
-	ld [rVBK], a
-	ld hl, wScratchTileMap
-	call HDMATransfer_Wait123Scanlines_toBGMap
-	pop af
-	ld [rVBK], a
-	reti
-
 CallInSafeGFXMode:
 	pop hl
 
