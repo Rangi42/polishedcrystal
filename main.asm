@@ -88,14 +88,14 @@ LoadFonts_NoOAMUpdate:: ; 64bf
 ReanchorBGMap_NoOAMUpdate_NoDelay::
 	ld a, [hOAMUpdate]
 	push af
+
 	ld a, $1
 	ld [hOAMUpdate], a
-
 	ld a, [hBGMapMode]
 	push af
+
 	xor a
 	ld [hBGMapMode], a
-
 	ld [hLCDCPointer], a
 	ld a, $90
 	ld [hWY], a
@@ -105,27 +105,26 @@ ReanchorBGMap_NoOAMUpdate_NoDelay::
 	ld [hBGMapAddress + 1], a
 	xor a
 	ld [hBGMapAddress], a
-	farcall BridgeTransition_HDMATransferTileMapAndAttrMap
-
-	ld a, VBGMap0 / $100
-	ld [hBGMapAddress + 1], a
-	ld [wBGMapAnchor + 1], a
+	call CopyTilemapAtOnce
 	xor a
+	ld [hWY], a
 	ld [hBGMapAddress], a
 	ld [wBGMapAnchor], a
 	ld [hSCX], a
 	ld [hSCY], a
-	ld [hWY], a
 	inc a
 	ld [hCGBPalUpdate], a
-	farcall BridgeTransition_HDMATransferTileMapAndAttrMap
-
+	ld a, VBGMap0 / $100 ; overworld
+	ld [hBGMapAddress + 1], a
+	ld [wBGMapAnchor + 1], a
 	pop af
 	ld [hBGMapMode], a
-
 	pop af
 	ld [hOAMUpdate], a
-	ret
+	ld hl, wVramState
+	set 6, [hl]
+	ld b, 0
+	jp SafeCopyTilemapAtOnce
 
 INCLUDE "engine/map_objects.asm"
 INCLUDE "engine/intro_menu.asm"
