@@ -279,6 +279,7 @@ BattleAnimations::
 	dw BattleAnim_Wobble
 	dw BattleAnim_Shake
 	dw BattleAnim_HitConfusion
+	dw BattleAnim_Sharpen
 
 BattleAnim_0:
 	anim_ret
@@ -5070,6 +5071,19 @@ BattleAnim_ShowMon_1:
 	anim_wait 1
 	anim_ret
 
+BattleAnim_Sharpen: ; removed
+	anim_1gfx ANIM_GFX_SHAPES
+	anim_obp0 $e4
+	anim_call BattleAnim_FollowEnemyFeet_0
+	anim_sound 0, 0, SFX_SHARPEN
+	anim_bgeffect ANIM_BG_18, $0, $1, $40
+	anim_obj ANIM_OBJ_78,   6, 0,  11, 0, $0
+	anim_wait 96
+	anim_incobj  2
+	anim_incbgeffect ANIM_BG_18
+	anim_call BattleAnim_ShowMon_0
+	anim_ret
+
 ; ================================
 ; unused animations below here
 ; ================================
@@ -5570,19 +5584,6 @@ BattleAnim_ShowMon_1:
 ;	anim_bgeffect ANIM_BG_FLASH_INVERTED, $0, $8, $2
 ;	anim_obj ANIM_OBJ_01,  15, 4,   5, 0, $0
 ;	anim_wait 16
-;	anim_ret
-
-;BattleAnim_Sharpen: ; removed
-;	anim_1gfx ANIM_GFX_SHAPES
-;	anim_obp0 $e4
-;	anim_call BattleAnim_FollowEnemyFeet_0
-;	anim_sound 0, 0, SFX_SHARPEN
-;	anim_bgeffect ANIM_BG_18, $0, $1, $40
-;	anim_obj ANIM_OBJ_78,   6, 0,  11, 0, $0
-;	anim_wait 96
-;	anim_incobj  2
-;	anim_incbgeffect ANIM_BG_18
-;	anim_call BattleAnim_ShowMon_0
 ;	anim_ret
 
 ;BattleAnim_SweetScent2: ; removed

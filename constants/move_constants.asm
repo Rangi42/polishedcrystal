@@ -282,6 +282,7 @@
 	const ANIM_WOBBLE            ; $114
 	const ANIM_SHAKE             ; $115
 	const ANIM_HIT_CONFUSION     ; $116
+	const ANIM_SHARPEN           ; $117
 
 ; wNumHits uses offsets from ANIM_MISS
 	const_def

@@ -114,13 +114,13 @@ DoBattle: ; 3c000
 	call EnemySwitch
 	call SetEnemyTurn
 	call HandleFirstAirBalloon
-	call AutomaticRainWhenOvercast
 	call RunBothActivationAbilities
 	jp BattleTurn
 
 .not_linked_2
 	call HandleFirstAirBalloon
 	call AutomaticRainWhenOvercast
+	call BoostGiovannisArmoredMewtwo
 	call RunBothActivationAbilities
 	jp BattleTurn
 ; 3c0e5
@@ -9732,6 +9732,20 @@ AutomaticRainWhenOvercast:
 	ld hl, DownpourText
 	call StdBattleTextBox
 	jp EmptyBattleTextBox
+
+BoostGiovannisArmoredMewtwo:
+	ld a, [wOtherTrainerClass]
+	cp GIOVANNI
+	ret nz
+	ld a, [wOtherTrainerID]
+	cp GIOVANNI1
+	ret nz
+	ld a, 1
+	ld [hBattleTurn], a
+	ld de, ANIM_SHARPEN
+	call Call_PlayBattleAnim
+	farcall BattleCommand_AllStatsUp
+	ret
 
 CheckUniqueWildMove:
 	ld a, [wMapGroup]
