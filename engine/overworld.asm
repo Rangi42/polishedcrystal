@@ -127,6 +127,7 @@ AddOutdoorSprites: ; 141ee
 MapCallbackSprites_LoadUsedSpritesGFX: ; 14209
 	ld a, MAPCALLBACK_SPRITES
 	call RunMapCallback
+LoadUsedSpritesGFX::
 	call GetUsedSprites
 
 	ld a, [wSpriteFlags]
@@ -594,14 +595,18 @@ endr
 	pop hl
 
 	ld a, [wSpriteFlags]
-	bit 5, a
-	ret nz
 	bit 6, a
 	ret nz
 
 	ld a, [hUsedSpriteIndex]
 	call _DoesSpriteHaveFacings
 	ret c
+
+	ld a, [hUsedSpriteTile]
+	add c
+	dec a
+	cp $ee
+	ret nc
 
 	ld a, h
 	add $8
