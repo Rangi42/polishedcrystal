@@ -141,8 +141,7 @@ LoadLandmarkNameGFX:
 	; make space opaque
 	ld hl, VTiles2 tile " "
 	ld de, TextBoxSpaceGFX
-	lb bc, BANK(FontNormal), 1
-	call GetOpaque1bpp
+	call GetOpaque1bppFontTile
 	; clear landmark name area
 	ld hl, VTiles0 tile POPUP_MAP_NAME_START
 	ld e, $100 - POPUP_MAP_NAME_START
@@ -150,8 +149,7 @@ LoadLandmarkNameGFX:
 	push hl
 	push de
 	ld de, TextBoxSpaceGFX
-	lb bc, BANK(FontNormal), 1
-	call GetOpaque1bpp
+	call GetOpaque1bppFontTile
 	pop de
 	pop hl
 	ld bc, LEN_2BPP_TILE
@@ -234,8 +232,7 @@ LoadLandmarkNameGFX:
 	ld l, e
 	pop de
 	; get font tile into vram
-	lb bc, BANK(FontNormal), 1
-	call GetOpaque1bpp
+	call GetOpaque1bppFontTile
 	; restore hl = position in vram
 	pop hl
 	; increment position in vram
