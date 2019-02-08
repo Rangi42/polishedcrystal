@@ -9744,8 +9744,7 @@ BoostGiovannisArmoredMewtwo:
 	ld [hBattleTurn], a
 	ld de, ANIM_SHARPEN
 	call Call_PlayBattleAnim
-	farcall BattleCommand_AllStatsUp
-	ret
+	farjp BattleCommand_AllStatsUp
 
 CheckUniqueWildMove:
 	ld a, [wMapGroup]
