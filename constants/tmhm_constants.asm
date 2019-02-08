@@ -53,7 +53,7 @@ ENDM
 	add_tm DIG          ; $1b
 	add_tm PSYCHIC      ; $1c
 	add_tm SHADOW_BALL  ; $1d
-	add_tm ROOST        ; $1e
+	add_tm ROCK_SMASH   ; $1e
 	add_tm DOUBLE_TEAM  ; $1f
 	add_tm REFLECT      ; $20
 	add_tm FLASH_CANNON ; $21
@@ -72,8 +72,8 @@ ENDM
 	add_tm STEEL_WING   ; $2e
 	add_tm ROCK_SLIDE   ; $2f
 	add_tm DAZZLINGLEAM ; $30
-	add_tm ROCK_SMASH   ; $31
-	add_tm LEECH_LIFE   ; $32
+	add_tm LEECH_LIFE   ; $31
+	add_tm ROOST        ; $32
 	add_tm FOCUS_BLAST  ; $33
 	add_tm ENERGY_BALL  ; $34
 	add_tm FALSE_SWIPE  ; $35

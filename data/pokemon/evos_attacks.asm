@@ -2041,7 +2041,11 @@ HitmonleeEvosAttacks:
 	db 9, PURSUIT ; Rolling Kick → egg move
 	db 13, LOW_KICK ; Jump Kick → HGSS tutor move
 	db 17, STOMP ; Brick Break → new move
+if DEF(FAITHFUL)
 	db 21, ENDURE ; Focus Energy → TM move
+else
+	db 21, ROCK_SMASH ; Focus Energy → "Brick Break"
+endc
 	db 25, AERIAL_ACE ; Feint → new move
 	db 29, HI_JUMP_KICK
 	db 33, DOUBLE_TEAM ; Mind Reader → TM move
@@ -4172,7 +4176,11 @@ HeracrossEvosAttacks:
 	db 19, COUNTER
 	db 25, FURY_STRIKES ; Fury Attack → similar move
 	db 28, SEISMIC_TOSS ; Brick Break → tutor move
+if DEF(FAITHFUL)
 	db 31, PIN_MISSILE
+else
+	db 31, ROCK_SMASH ; Pin Missile → "Brick Break"
+endc
 	db 34, TAKE_DOWN
 	db 37, MEGAHORN
 	db 43, CLOSE_COMBAT

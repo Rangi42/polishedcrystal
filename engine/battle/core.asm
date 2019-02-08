@@ -5044,15 +5044,9 @@ BattleMenu: ; 3e139
 	jr .loop
 
 .autoinput_down_a
-	db NO_INPUT, $fe
-	db NO_INPUT, $fe
-	db NO_INPUT, $fe
-	db NO_INPUT, $fe
+	db NO_INPUT, $40
 	db D_DOWN,   $00
-	db NO_INPUT, $fe
-	db NO_INPUT, $fe
-	db NO_INPUT, $fe
-	db NO_INPUT, $fe
+	db NO_INPUT, $40
 	db A_BUTTON, $00
 	db NO_INPUT, $ff ; end
 ; 3e192

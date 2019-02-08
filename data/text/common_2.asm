@@ -337,7 +337,11 @@ UnknownText_0x1c08bc::
 UnknownText_0x1c08f0::
 	text_from_ram wStringBuffer2
 	text " used"
+if DEF(FAITHFUL)
 	line "Rock Smash!"
+else
+	line "Brick Break!"
+endc
 	prompt
 
 UnknownText_0x1c0906::
@@ -349,8 +353,13 @@ UnknownText_0x1c0924::
 	text "This rock looks"
 	line "breakable."
 
+if DEF(FAITHFUL)
 	para "Want to use Rock"
 	line "Smash?"
+else
+	para "Want to use Brick"
+	line "Break?"
+endc
 	done
 
 UnknownText_0x1c0958::

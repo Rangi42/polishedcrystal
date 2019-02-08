@@ -542,7 +542,11 @@ RockSmashGuyText2:
 
 RockSmashGuyText3:
 	text "That happens to be"
+if DEF(FAITHFUL)
 	line "Rock Smash."
+else
+	line "Brick Break."
+endc
 
 	para "You can shatter"
 	line "rocks with just a"
@@ -552,7 +556,11 @@ RockSmashGuyText3:
 
 	para "If any rocks are"
 	line "in your way, just"
+if DEF(FAITHFUL)
 	cont "smash 'em up!"
+else
+	cont "break 'em up!"
+endc
 	done
 
 UnknownText_0x1945b8:

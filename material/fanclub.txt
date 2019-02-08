@@ -1,0 +1,23 @@
+Reformed Rocket: Hey! Just 'cause I used to be in Team Rocket doesn't mean I can't love and appreciate Pokemon! Plus...hey...I think I know you! We battled in Slowpoke Well! How about a rematch?
+Team: Raticate, Crobat, Slowbro
+Victory: Wow! You got strong!
+After: I'm so poor I can't afford a new change of clothes...
+
+Rando NPC: The things I've seen the president do with his Rapidash...heh! I'm sure he'll pay me to be nice and quiet about that...
+
+Pokemon Imitator: <imitates cry of lead pokemon in party> Heh! Pretty good, am I right?
+
+Blackbelt Darkholme: Hey! I'll show you the boss of this fanclub!
+Loss: Argh! Screw you, leatherhead!
+Team: Hitmontop, Hitmonlee, Hitmonchan
+After: Leather club's two blocks down. 
+
+Winston: Hello there! My name is Winston Cheston Wambler! Show me some Electric-type love and I'll give you something great! (gifts a shiny raichu if spoken to with an all electric team)
+Condition Fulfilled: Shocking! Now go, trainer, and take this! With it, you may soar to even greaterheights, and zap to the extreme! 
+
+Raoh: Hmph. I'll only recognize your strength if you beat Kiyo, the Karate King. I hear he trains even now in the depths of Mt. Mortar, in Johto.
+Condition Fulfilled: Splendid! Now, prepare for battle!
+Team: Heracross, Machamp, Rapidash 
+Defeat: To think that you could defeat me, Raoh! 
+After: Truly an amazing battle. You would do well not to squander your strength. Crush all who oppose you with it! 
+
