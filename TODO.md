@@ -35,12 +35,14 @@ The final, non-beta 3.0 release should include all of these.
 * More location-unique wild moves (see [material/moves.txt](material/moves.txt))
 * Finish wild rosters
 * DVs to vary palettes for trainers' duplicate Pokémon (e.g. Clair's Dragonairs)
+* Encounter both kinds of regional Arboks in Route 28 + Mt. Silver
 
 
 ### Aesthetics
 
 * Play a shiny flash when Pokémon are caught (from Prism)
 * "make hgss" to use HGSS-based palettes
+* Lance should hold up his cape
 
 
 ### Events
@@ -51,6 +53,15 @@ The final, non-beta 3.0 release should include all of these.
 * Rematch Bill in his house somehow
 * Calling Lyra should have more varied messages (see [material/lyra-dialog.txt](material/lyra-dialog.txt))
 * Name trainers after anime characters (Jackson, Ritchie, Liza, Kidd, Lisa)
+* Acquire dolls from NPCs throughout the regions
+* Red goes back home after you battle him, and returns to Mt. Silver after you battle Green
+* Clarify that Silver dropped his trainer card, like in HGSS
+* Use Team Rocket music for Route 47 and 48 during their mission
+* Oak tells you to meet him in his lab after the Lance rematch to unlock Mt. Silver
+* Replace Skyla with Marlon (team: Politoed, Tentacruel, Blastoise, Starmie, Mantine, Cloyster, Vaporeon)
+* Nurse trainer class (heals you afterwards)
+* Gambler trainer class (uses Game Corner mons)
+* Soldier trainer class (in Lt. Surge's Gym)
 
 Shamouti Island:
 
@@ -65,13 +76,13 @@ Maps need signs, NPCs, trainers (with [dialog](https://docs.google.com/document/
 * Connect the Magnet Train track south to Cherrygrove Bay
 * Magnet Tunnel (TM74 Gyro Ball)
 * Soul House
-* Lavender Radio Tower (use Reina, DJ Fern, and DJ Lily)
+* Lavender Radio Tower (use Reina, DJ Fern, DJ Lily, and a Clefable+Gengar Couple)
 * Saffron City Trainer Fan Club
 * Valencia Island (signs and NPCs)
 * Route 49 (wild Pokémon and unique wild moves)
 * Safari Zone rest houses (NPCs and maybe trainers)
 * Reference the Pokéathlon Dome inside the Route 35 gate or Route 35 Coast
-* Goldenrod Museum?
+* Goldenrod Museum
 
 
 Shamouti Island:
