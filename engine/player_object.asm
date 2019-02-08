@@ -129,7 +129,6 @@ CopyObjectStruct:: ; 80e7
 	call CheckObjectMask
 	and a
 	ret nz ; masked
-
 	ld hl, wObjectStructs + OBJECT_STRUCT_LENGTH * 1
 	ld a, 1
 	ld de, OBJECT_STRUCT_LENGTH
@@ -216,6 +215,32 @@ CopyMapObjectToObjectStruct: ; 8116
 	ld [wTempObjectCopyRadius], a
 
 	jp CopyTempObjectToObjectStruct
+
+ReloadVisibleSprites::
+	ld hl, wObjectStructs + OBJECT_STRUCT_LENGTH * 1
+	ld a, 1
+	ld de, OBJECT_STRUCT_LENGTH
+.loop
+	ld [hObjectStructIndexBuffer], a
+	ld a, [hl]
+	and a
+	jr z, .done
+	ld a, [hl]
+	push hl
+	call GetSpriteVTile
+	pop hl
+	push hl
+	inc hl
+	inc hl
+	ld [hl], a
+	pop hl
+.done
+	add hl, de
+	ld a, [hObjectStructIndexBuffer]
+	inc a
+	cp NUM_OBJECT_STRUCTS
+	jr nz, .loop
+	ret
 
 InitializeVisibleSprites: ; 8177
 	ld bc, wMapObjects + OBJECT_LENGTH

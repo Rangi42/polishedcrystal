@@ -122,6 +122,7 @@ HandleMap:
 	ld a, 4
 	ld [wVBlankOWAction], a
 	farcall RefreshSprites
+	farcall ReloadVisibleSprites
 	xor a
 	ld [wVBlankOWAction], a
 
