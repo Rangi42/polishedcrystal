@@ -1208,11 +1208,11 @@ TutorialPack: ; 107bb
 	ret
 
 .autoinput_right_right_a
-	db NO_INPUT, $08
+	db NO_INPUT, $40
 	db D_RIGHT,  $00
-	db NO_INPUT, $08
+	db NO_INPUT, $40
 	db D_RIGHT,  $00
-	db NO_INPUT, $08
+	db NO_INPUT, $40
 	db A_BUTTON, $00
 	db NO_INPUT, $ff ; end
 ; 107d7
