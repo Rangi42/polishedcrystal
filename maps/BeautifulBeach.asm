@@ -15,7 +15,6 @@ BeautifulBeach_MapScriptHeader:
 	bg_event 29, 19, SIGNPOST_JUMPTEXT, BeautifulBeachVillaSignText
 
 	db 9 ; object events
-	object_event -2, 13, SPRITE_BALL_CUT_FRUIT, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
 	object_event 11, 18, SPRITE_LADY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerAromaLadyBryony, -1
 	object_event 26, 26, SPRITE_SIGHTSEER_M, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerSightseermJaska, -1
 	object_event 33, 23, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerTamerVince, -1
@@ -24,9 +23,7 @@ BeautifulBeach_MapScriptHeader:
 	object_event 27, 13, SPRITE_ARTIST, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerArtistMarlene, -1
 	itemball_event  6, 19, LUXURY_BALL, 1, EVENT_BEAUTIFUL_BEACH_LUXURY_BALL
 	itemball_event 36, 20, FULL_RESTORE, 1, EVENT_BEAUTIFUL_BEACH_FULL_RESTORE
-
-	const_def 1 ; object constants
-	const BEAUTIFULBEACH_DUMMY_SHAMOUTISHRINERUINS_POKE_BALL
+	object_event -2, 13, SPRITE_BALL_CUT_FRUIT, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
 
 BeautifulBeachWelcomeSignText:
 	text "Welcome to"
