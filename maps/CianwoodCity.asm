@@ -193,8 +193,13 @@ UnknownText_0x1a0319:
 	line "something."
 
 	para "Your #mon could"
+if DEF(FAITHFUL)
 	line "use Rock Smash to"
 	cont "break them."
+else
+	line "use Brick Break"
+	cont "to smash them."
+endc
 	done
 
 UnknownText_0x1a0394:

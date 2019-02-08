@@ -247,7 +247,11 @@ MoveNames::
 	db "AncientPower@"
 	db "Shadow Ball@"
 	db "Future Sight@"
+if DEF(FAITHFUL)
 	db "Rock Smash@"
+else
+	db "Brick Break@"
+endc
 	db "Whirlpool@"
 	db "Dark Pulse@"
 	db "Moonblast@"
