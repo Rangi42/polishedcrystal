@@ -237,12 +237,6 @@ VBlankOWCheck::
 	and a
 	ret z
 	ld a, [wVBlankOWAction]
-	cp 4
-	jr nz, .continue
-	farjp VBlankHandleMapBackground
-
-.continue
-	; check for wild Pokémon
 	and a
 	ret z
 	dec a

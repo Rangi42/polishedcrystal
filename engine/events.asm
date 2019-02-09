@@ -162,14 +162,6 @@ HandleMapObjects: ; 967d1
 	jp _CheckObjectEnteringVisibleRange
 ; 967e1
 
-VBlankHandleMapBackground::
-	ld a, [wPlayerStepFlags]
-	bit 5, a
-	ret z
-	bit 6, a
-	ret nz
-
-	call HandleMapObjects
 HandleMapBackground:
 	farcall _UpdateSprites
 	farcall ScrollScreen
