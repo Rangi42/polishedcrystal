@@ -516,6 +516,4 @@ INCLUDE "data/sprites/emotes.asm"
 
 INCLUDE "data/sprites/sprite_mons.asm"
 
-INCLUDE "data/maps/outdoor_sprites.asm"
-
 INCLUDE "data/sprites/sprites.asm"
