@@ -139,7 +139,7 @@ LoadMapNameSignGFX: ; b80c6
 	call GetOpaque1bppFontTile
 	; clear landmark name area
 	ld hl, VTiles3 tile POPUP_MAP_NAME_START
-	ld e, $100 - POPUP_MAP_NAME_START
+	ld e, POPUP_MAP_NAME_SIZE
 .clear_loop
 	push hl
 	push de
