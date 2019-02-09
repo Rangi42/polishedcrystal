@@ -25,7 +25,7 @@ GetSpriteVTile:: ; 180e
 	res 5, [hl]
 	ld a, [hUsedSpriteIndex]
 	cp SPRITE_BIG_GYARADOS
-	ld a, 14
+	ld a, 13
 	jr z, .got_sprite_tile
 	ld a, [hObjectStructIndexBuffer]
 .got_sprite_tile
