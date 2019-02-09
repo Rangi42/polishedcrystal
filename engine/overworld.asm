@@ -112,6 +112,7 @@ ReloadSpriteIndex::
 MapCallbackSprites_LoadUsedSpritesGFX: ; 14209
 	ld a, MAPCALLBACK_SPRITES
 	call RunMapCallback
+	call ReloadVisibleSprites
 
 LoadEmoteGFX::
 	ld a, [wSpriteFlags]
