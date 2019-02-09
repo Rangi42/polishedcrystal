@@ -1045,7 +1045,7 @@ FallIntoMapScript: ; 96c38
 
 MovementData_0x96c48: ; 96c48
 	skyfall
-	step_resume
+	step_end
 ; 96c4a
 
 LandAfterPitfallScript: ; 96c4a

@@ -1841,7 +1841,7 @@ Movement_ContestResults_WalkAfterWarp: ; bcea1
 	step_right
 	step_down
 	turn_head_up
-	step_resume
+	step_end
 ; bcea5
 
 CutTreeScript:

@@ -428,7 +428,7 @@ MovementData_0x1a0a66:
 	step_left
 	step_left
 	turn_head_left
-	step_resume
+	step_end
 
 UnknownText_0x1a0a6b:
 	text "Hey!"

@@ -1871,8 +1871,6 @@ ApplyMovementToFollower: ; 54b8
 	ret z
 	cp movement_step_end
 	ret z
-	cp movement_step_resume
-	ret z
 	cp movement_step_bump
 	ret z
 	cp movement_turn_step_right + 1
@@ -1935,7 +1933,7 @@ GetFollowerNextMovementByte: ; 54e6
 .nope
 	ld a, -1
 	ld [wObjectFollow_Follower], a
-	ld a, movement_step_resume
+	ld a, movement_step_end
 	scf
 	ret
 ; 5529

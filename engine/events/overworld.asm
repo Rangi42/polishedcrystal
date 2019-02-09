@@ -482,7 +482,7 @@ UsedSurfScript: ; c986
 	special ReplaceKrisSprite
 	special PlayMapMusic
 ; step into the water
-	special Special_SurfStartStep ; (slow_step_x, step_resume)
+	special Special_SurfStartStep ; (slow_step_x, step_end)
 	applymovement PLAYER, wMovementBuffer ; PLAYER, MovementBuffer
 	end
 
@@ -805,7 +805,7 @@ Script_UsedWaterfall: ; 0xcb20
 
 .WaterfallStep: ; cb4f
 	turn_waterfall_up
-	step_resume
+	step_end
 
 .Text_UsedWaterfall: ; 0xcb51
 	; used WATERFALL!
@@ -982,12 +982,12 @@ dig_incave
 .DigOut: ; 0xcc59
 	step_dig 32
 	hide_person
-	step_resume
+	step_end
 
 .DigReturn: ; 0xcc5d
 	show_person
 	return_dig 32
-	step_resume
+	step_end
 
 TeleportFunction: ; cc61
 	call FieldMoveJumptableReset
@@ -1055,11 +1055,11 @@ TeleportFunction: ; cc61
 
 .TeleportFrom: ; cce1
 	teleport_from
-	step_resume
+	step_end
 
 .TeleportTo: ; cce3
 	teleport_to
-	step_resume
+	step_end
 
 StrengthFunction: ; cce5
 	call .TryStrength
@@ -1289,22 +1289,22 @@ Script_UsedWhirlpool: ; 0xce0f
 .UpMovementData:
 	slow_step_up
 	slow_step_up
-	step_resume
+	step_end
 
 .RightMovementData:
 	slow_step_right
 	slow_step_right
-	step_resume
+	step_end
 
 .DownMovementData:
 	slow_step_down
 	slow_step_down
-	step_resume
+	step_end
 
 .LeftMovementData:
 	slow_step_left
 	slow_step_left
-	step_resume
+	step_end
 
 TryWhirlpoolOW:: ; ce3e
 	ld d, WHIRLPOOL
@@ -1512,7 +1512,7 @@ RockSmashScript: ; cf32
 
 MovementData_0xcf55: ; 0xcf55
 	rock_smash 10
-	step_resume
+	step_end
 
 UnknownText_0xcf58: ; 0xcf58
 	text_jump UnknownText_0x1c08f0
@@ -1732,7 +1732,7 @@ Movement_BiteNotFacingUp: ; d05c
 Movement_HookedItemNotFacingUp:
 	fish_got_bite
 	show_emote
-	step_resume
+	step_end
 
 Movement_BiteFacingUp: ; d062
 	fish_got_bite
@@ -1742,12 +1742,12 @@ Movement_HookedItemFacingUp:
 	fish_got_bite
 	step_sleep_1
 	show_emote
-	step_resume
+	step_end
 
 Movement_RestoreRod: ; d069
 	hide_emote
 	fish_cast_rod
-	step_resume
+	step_end
 
 Fishing_CheckFacingUp: ; d06c
 	ld a, [wPlayerDirection]
@@ -1774,7 +1774,7 @@ Script_FishCastRod: ; 0xd07c
 
 MovementData_0xd093: ; d093
 	fish_cast_rod
-	step_resume
+	step_end
 
 PutTheRodAway: ; d095
 	xor a
