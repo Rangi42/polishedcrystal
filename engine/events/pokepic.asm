@@ -91,7 +91,8 @@ ClosePokepic:: ; 24528
 	ld [hBGMapMode], a
 	call OverworldTextModeSwitch
 	call ApplyTilemap
-	jp UpdateSprites
+	call UpdateSprites
+	farjp ReloadVisibleSprites
 
 PokepicMenuDataHeader: ; 0x24547
 	db $40 ; flags
