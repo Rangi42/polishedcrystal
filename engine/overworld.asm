@@ -2,6 +2,8 @@ _ReplaceKrisSprite:: ; 14135
 	call GetPlayerSprite
 	ld a, [wPlayerSprite]
 	ld [hUsedSpriteIndex], a
+	xor a
+	ld [hUsedSpriteTile], a
 	jp GetUsedSprite
 ; 14146
 
