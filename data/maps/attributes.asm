@@ -81,10 +81,9 @@ ENDM
 	map_attributes CianwoodCity, CIANWOOD_CITY, $35, EAST
 	connection east, Route41, ROUTE_41, 0, 0, 27
 
-	map_attributes GoldenrodCity, GOLDENROD_CITY, $35, NORTH | SOUTH | WEST | EAST
+	map_attributes GoldenrodCity, GOLDENROD_CITY, $35, NORTH | SOUTH | EAST
 	connection north, Route35, ROUTE_35, 5, 0, 12
 	connection south, Route34, ROUTE_34, 7, 0, 10
-	connection west, GoldenrodHarbor, GOLDENROD_HARBOR, 0, 0, 18
 	connection east, MagnetTunnelWest, MAGNET_TUNNEL_WEST, 0, 0, 11
 
 	map_attributes OlivineCity, OLIVINE_CITY, $35, NORTH | SOUTH | WEST
@@ -424,10 +423,9 @@ ENDM
 	map_attributes RuinsOfAlphOutside, RUINS_OF_ALPH_OUTSIDE, $5, SOUTH
 	connection south, MagnetTunnelEast, MAGNET_TUNNEL_EAST, -2, 0, 10
 
-	map_attributes GoldenrodHarbor, GOLDENROD_HARBOR, $35, NORTH | WEST | EAST
+	map_attributes GoldenrodHarbor, GOLDENROD_HARBOR, $35, NORTH | WEST
 	connection north, Route35Coast, ROUTE_35_COAST, 0, 0, 24
 	connection west, Route41, ROUTE_41, -3, 0, 20
-	connection east, GoldenrodCity, GOLDENROD_CITY, 0, 0, 18
 
 	map_attributes MagnetTunnelEast, MAGNET_TUNNEL_EAST, $5, NORTH | EAST
 	connection north, RuinsOfAlphOutside, RUINS_OF_ALPH_OUTSIDE, 2, 0, 11
