@@ -1686,8 +1686,9 @@ Script_NotEvenANibble: ; 0xd01e
 	scall Script_FishCastRod
 	writetext UnknownText_0xd0a9
 	loademote EMOTE_SHADOW
+	closetext
 	callasm PutTheRodAway
-	endtext
+	end
 
 Script_GotAnItem:
 	scall Script_FishCastRod
@@ -1717,8 +1718,8 @@ Script_GotABite: ; 0xd035
 	pause 40
 	applymovement PLAYER, Movement_RestoreRod
 	writetext UnknownText_0xd0a4
-	callasm PutTheRodAway
 	closetext
+	callasm PutTheRodAway
 	randomwildmon
 	startbattle
 	reloadmapafterbattle
