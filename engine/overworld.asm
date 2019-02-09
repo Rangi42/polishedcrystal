@@ -389,7 +389,7 @@ GetUsedSprites: ; 1439b
 	jr z, .dont_set
 
 	ld a, [wSpriteFlags]
-	set 5, a ; load VBank0
+	set 5, a ; load VBank1
 	ld [wSpriteFlags], a
 
 .dont_set
@@ -471,9 +471,9 @@ endr
 	push af
 	ld a, [wSpriteFlags]
 	bit 5, a
-	ld a, $1
+	ld a, $0
 	jr z, .bankswitch
-	xor a
+	inc a
 
 .bankswitch
 	ld [rVBK], a
