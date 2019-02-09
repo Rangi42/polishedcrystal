@@ -1149,11 +1149,12 @@ Script_variablesprite:
 	call GetScriptByte
 	ld e, a
 	ld d, $0
+	ld [hUsedSpriteIndex], a
 	ld hl, wVariableSprites
 	add hl, de
 	call GetScriptByte
 	ld [hl], a
-	ret
+	farjp ReloadSpriteIndex
 
 Script_appear:
 ; parameters:

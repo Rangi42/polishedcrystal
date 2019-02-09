@@ -22,6 +22,7 @@ RefreshSprites:: ; 14168
 	ld hl, wUsedSprites
 	call ByteFill
 	call GetPlayerSprite
+	jp MapCallbackSprites_LoadUsedSpritesGFX
 	call AddMapSprites
 	call LoadSpriteGFX
 	call SortUsedSprites
@@ -158,7 +159,7 @@ SafeGetSprite: ; 14236
 	ret
 ; 1423c
 
-GetSprite: ; 1423c
+GetSprite:: ; 1423c
 	call GetMonSprite
 	ret c
 
@@ -568,7 +569,7 @@ GetUsedSprites: ; 1439b
 	ret
 ; 143c8
 
-GetUsedSprite: ; 143c8
+GetUsedSprite:: ; 143c8
 	ld a, [hUsedSpriteIndex]
 	call SafeGetSprite
 	ld a, [hUsedSpriteTile]
