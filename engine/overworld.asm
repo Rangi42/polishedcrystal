@@ -94,6 +94,8 @@ ReloadSpriteIndex::
 .loop
 	ld [hObjectStructIndexBuffer], a
 	ld a, [hl]
+	and a
+	jr z, .done
 	bit 7, b
 	jr z, .continue
 	cp b
