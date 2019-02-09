@@ -42,7 +42,7 @@ CloseText:: ; 2dcf
 	xor a
 	ld [hBGMapMode], a
 	call SafeUpdateSprites
-	farcall LoadUsedSpritesGFX
+	farcall ReloadVisibleSprites
 	ld a, $90
 	ld [hWY], a
 	call ReplaceKrisSprite

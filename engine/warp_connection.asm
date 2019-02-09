@@ -294,7 +294,7 @@ LoadGraphics: ; 1047cf
 	xor a
 	ld [hMapAnims], a
 	ld [hTileAnimFrame], a
-	farjp RefreshSprites
+	farjp ReloadVisibleSprites
 
 LoadMapPalettes: ; 1047eb
 	ld b, CGB_MAPPALS

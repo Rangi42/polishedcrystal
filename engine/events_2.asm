@@ -109,7 +109,6 @@ PlaceMapNameSign:: ; b8098 (2e:4098)
 	cp 56
 	jr c, .skip2
 	call LoadMapNameSignGFX
-	call LoadLandmarkNameGFX
 	call InitMapNameFrame
 	farcall HDMATransfer_OnlyTopFourRows
 .skip2
@@ -129,21 +128,17 @@ PlaceMapNameSign:: ; b8098 (2e:4098)
 LoadMapNameSignGFX: ; b80c6
 	ld a, $1
 	ld [rVBK], a
+	; load sign frame
 	ld de, MapEntryFrameGFX
 	ld hl, VTiles3 tile POPUP_MAP_FRAME_START
 	lb bc, BANK(MapEntryFrameGFX), POPUP_MAP_FRAME_SIZE
 	call Get2bpp
-	xor a
-	ld [rVBK], a
-	ret
-
-LoadLandmarkNameGFX:
-	; make space opaque
-	ld hl, VTiles2 tile " "
+	; load opaque space
+	ld hl, VTiles3 tile POPUP_MAP_FRAME_SPACE
 	ld de, TextBoxSpaceGFX
 	call GetOpaque1bppFontTile
 	; clear landmark name area
-	ld hl, VTiles0 tile POPUP_MAP_NAME_START
+	ld hl, VTiles3 tile POPUP_MAP_NAME_START
 	ld e, $100 - POPUP_MAP_NAME_START
 .clear_loop
 	push hl
@@ -178,13 +173,12 @@ LoadLandmarkNameGFX:
 	srl a
 	ld h, 0
 	ld l, a
+rept 4
 	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, hl
+endr
 	ld b, h
 	ld c, l
-	ld hl, VTiles0 tile POPUP_MAP_NAME_START
+	ld hl, VTiles3 tile POPUP_MAP_NAME_START
 	add hl, bc
 	; de = start of vram buffer
 	ld d, h
@@ -195,7 +189,7 @@ LoadLandmarkNameGFX:
 	; a = tile offset into font graphic
 	ld a, [hli]
 	cp "@"
-	ret z
+	jr z, .done
 	; save position in landmark name
 	push hl
 	; spaces are unique
@@ -243,8 +237,11 @@ LoadLandmarkNameGFX:
 	ld e, l
 	; restore hl = position in landmark name
 	pop hl
-	; continue
 	jr .loop
+.done
+	xor a
+	ld [rVBK], a
+	ret
 ; b80d3
 
 InitMapNameFrame: ; b80d3
@@ -262,10 +259,9 @@ InitMapNameFrame: ; b80d3
 rept 2
 	and $ff - X_FLIP
 	ld [hli], a
-	and $ff - TILE_BANK
 	ld bc, SCREEN_WIDTH - 2
 	call ByteFill
-	or X_FLIP | TILE_BANK
+	or X_FLIP
 	ld [hli], a
 endr
 	; bottom row
@@ -313,7 +309,7 @@ endr
 
 .FillUpperMiddle: ; b815b
 	push af
-	ld a, " "
+	ld a, POPUP_MAP_FRAME_SPACE
 	ld c, SCREEN_WIDTH - 2
 .loop
 	ld [hli], a

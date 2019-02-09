@@ -116,17 +116,6 @@ HandleMap:
 
 	call HandleMapObjects
 	call NextOverworldFrame
-	ld a, [wLandmarkSignTimer]
-	cp 58
-	jr nz, .continue
-	ld a, 4
-	ld [wVBlankOWAction], a
-	farcall RefreshSprites
-	farcall ReloadVisibleSprites
-	xor a
-	ld [wVBlankOWAction], a
-
-.continue
 	call HandleMapBackground
 	call CheckPlayerState
 	xor a

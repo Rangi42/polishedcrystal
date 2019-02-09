@@ -1,12 +1,3 @@
-GetEmote2bpp: ; 1412a
-	ld a, $1
-	ld [rVBK], a
-	call Get2bpp
-	xor a
-	ld [rVBK], a
-	ret
-; 14135
-
 _ReplaceKrisSprite:: ; 14135
 	call GetPlayerSprite
 	ld a, [wUsedSprites]
@@ -15,18 +6,6 @@ _ReplaceKrisSprite:: ; 14135
 	ld [hUsedSpriteTile], a
 	jp GetUsedSprite
 ; 14146
-
-RefreshSprites:: ; 14168
-	xor a
-	ld bc, wUsedSpritesEnd - wUsedSprites
-	ld hl, wUsedSprites
-	call ByteFill
-	call GetPlayerSprite
-	call AddMapSprites
-	call LoadSpriteGFX
-	call ArrangeUsedSprites
-	jp MapCallbackSprites_LoadUsedSpritesGFX
-; 1416f
 
 GetPlayerSprite: ; 14183
 ; Get Chris or Kris's sprite.
@@ -81,47 +60,79 @@ GetPlayerSprite: ; 14183
 ; 141c9
 
 
-AddMapSprites: ; 141c9
-	call GetMapPermission
-	ld hl, wMap1ObjectSprite
-	ld a, 1
-.loop
-	push af
-	ld a, [hl]
-	call AddSpriteGFX
-	ld de, OBJECT_LENGTH
-	add hl, de
-	pop af
-	inc a
-	cp NUM_OBJECTS
-	jr nz, .loop
+ReloadVisibleSprites::
+	push hl
+	push de
+	push bc
+	call GetPlayerSprite
+	xor a
+	ld [hUsedSpriteIndex], a
+	call ReloadSpriteIndex
+	call LoadEmoteGFX
+	pop bc
+	pop de
+	pop hl
 	ret
-; 141ee
 
+ReloadSpriteIndex::
+; Reloads sprites using hUsedSpriteIndex.
+; Used to reload variable sprites
+	ld hl, wObjectStructs
+	ld de, OBJECT_STRUCT_LENGTH
+	push bc
+	ld a, [hUsedSpriteIndex]
+	ld b, a
+	xor a
+.loop
+	ld [hObjectStructIndexBuffer], a
+	ld a, [hl]
+	and a
+	jr z, .done
+	bit 7, b
+	jr z, .continue
+	cp b
+	jr nz, .done
+.continue
+	push hl
+	call GetSpriteVTile
+	pop hl
+	push hl
+	inc hl
+	inc hl
+	ld [hl], a
+	pop hl
+.done
+	add hl, de
+	ld a, [hObjectStructIndexBuffer]
+	inc a
+	cp NUM_OBJECT_STRUCTS
+	jr nz, .loop
+	pop bc
+	ret
 
 MapCallbackSprites_LoadUsedSpritesGFX: ; 14209
 	ld a, MAPCALLBACK_SPRITES
 	call RunMapCallback
-LoadUsedSpritesGFX::
 	call GetUsedSprites
 
+LoadEmoteGFX::
 	ld a, [wSpriteFlags]
 	bit 6, a
 	ret nz
 
 	ld c, EMOTE_SHADOW
-	farcall LoadEmote
+	call LoadEmote
 	call GetMapPermission
 	call CheckOutdoorMapOrPerm5
 	jr z, .outdoor
 	ld c, EMOTE_BOULDER_DUST
-	farjp LoadEmote
+	jp LoadEmote
 
 .outdoor
 	ld c, EMOTE_SHAKING_GRASS
-	farcall LoadEmote
+	call LoadEmote
 	ld c, EMOTE_PUDDLE_SPLASH
-	farjp LoadEmote
+	jp LoadEmote
 ; 14236
 
 
@@ -133,7 +144,7 @@ SafeGetSprite: ; 14236
 	ret
 ; 1423c
 
-GetSprite: ; 1423c
+GetSprite:: ; 1423c
 	call GetMonSprite
 	ret c
 
@@ -322,87 +333,6 @@ AddSpriteGFX: ; 142e5
 ; 14306
 
 
-LoadSpriteGFX: ; 14306
-	ld hl, wUsedSprites
-	ld b, SPRITE_GFX_LIST_CAPACITY
-.loop
-	ld a, [hli]
-	and a
-	ret z
-	push hl
-	push bc
-	call .LoadSprite
-	pop bc
-	pop hl
-	ld [hli], a
-	dec b
-	jr nz, .loop
-	ret
-
-.LoadSprite:
-	call GetSprite
-	ld a, l
-	ret
-; 1431e
-
-
-ArrangeUsedSprites: ; 14355
-; Get the length of each sprite and space them out in VRAM.
-; Crystal introduces a second table in VRAM bank 0.
-
-	ld hl, wUsedSprites
-	lb bc, 0, SPRITE_GFX_LIST_CAPACITY
-.FirstTableLength:
-; Keep going until the end of the list.
-	ld a, [hli]
-	and a
-	ret z
-
-	ld a, [hl]
-	call GetSpriteLength
-
-; Spill over into the second table after $78 tiles.
-	add b
-	cp $78
-	jr z, .loop
-	jr nc, .SecondTable
-
-.loop
-	ld [hl], b
-	inc hl
-	ld b, a
-
-; Assumes the next table will be reached before c hits 0.
-	dec c
-	jr nz, .FirstTableLength
-
-.SecondTable:
-; The second tile table starts at tile $80.
-	ld b, $80
-	dec hl
-.SecondTableLength:
-; Keep going until the end of the list.
-	ld a, [hli]
-	and a
-	ret z
-
-	ld a, [hl]
-	call GetSpriteLength
-
-; There are only two tables, so don't go any further than that.
-	add b
-	ret c
-
-	ld [hl], b
-	ld b, a
-	inc hl
-
-	dec c
-	jr nz, .SecondTableLength
-	ret
-; 14386
-
-
 GetSpriteLength: ; 14386
 ; Return the length of sprite type a in tiles.
 
@@ -453,7 +383,7 @@ GetUsedSprites: ; 1439b
 	jr z, .dont_set
 
 	ld a, [wSpriteFlags]
-	set 5, a ; load VBank0
+	set 5, a ; load VBank1
 	ld [wSpriteFlags], a
 
 .dont_set
@@ -467,7 +397,7 @@ GetUsedSprites: ; 1439b
 	ret
 ; 143c8
 
-GetUsedSprite: ; 143c8
+GetUsedSprite:: ; 143c8
 	ld a, [hUsedSpriteIndex]
 	call SafeGetSprite
 	ld a, [hUsedSpriteTile]
@@ -535,9 +465,9 @@ endr
 	push af
 	ld a, [wSpriteFlags]
 	bit 5, a
-	ld a, $1
+	ld a, $0
 	jr z, .bankswitch
-	xor a
+	inc a
 
 .bankswitch
 	ld [rVBK], a
@@ -573,8 +503,13 @@ LoadEmote:: ; 1442f
 	ld a, c
 	and a
 	ret z
-	jp GetEmote2bpp
-; 1444d
+; load into vram1
+	ld a, $1
+	ld [rVBK], a
+	call Get2bpp
+	xor a
+	ld [rVBK], a
+	ret
 
 
 INCLUDE "data/sprites/emotes.asm"

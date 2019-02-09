@@ -100,7 +100,7 @@ DidntCatchSudowoodo:
 	applymovement ROUTE36_WEIRD_TREE, WeirdTreeMovement_Flee
 	disappear ROUTE36_WEIRD_TREE
 	special MapCallbackSprites_LoadUsedSpritesGFX
-	special RefreshSprites
+	special ReloadVisibleSprites
 	end
 
 Route36FloriaScript:

@@ -17,39 +17,46 @@ GetSpritePalette:: ; 17ff
 
 GetSpriteVTile:: ; 180e
 	push hl
+	push de
 	push bc
-	ld hl, wUsedSprites + 2
-	ld c, SPRITE_GFX_LIST_CAPACITY - 1
+	ld [hUsedSpriteIndex], a
+	farcall GetSprite
+	ld hl, wSpriteFlags
+	res 5, [hl]
+	; SPRITE_BIG_GYARADOS uses object 13
+	ld a, [hUsedSpriteIndex]
+	cp SPRITE_BIG_GYARADOS
+	ld a, 13
+	jr z, .got_sprite_tile
+	ld a, [hObjectStructIndexBuffer]
+.got_sprite_tile
+	; objects 10+ load in vbk1
+	cp 10
+	jr c, .continue
+	set 5, [hl]
+	sub 10
+.continue
+	add a, a
+	add a, a
 	ld b, a
-	ld a, [hMapObjectIndexBuffer]
-	and a
-	jr z, .nope
-	ld a, b
-.loop
-	cp [hl]
-	jr z, .found
-	inc hl
-	inc hl
-	dec c
-	jr nz, .loop
-	ld a, [wUsedSprites + 1]
-	scf
-	jr .done
-
-.nope
-	ld a, [wUsedSprites + 1]
-	jr .done
-
-.found
-	inc hl
+	add a, b
+	add a, b
+	ld [hUsedSpriteTile], a
+	push af
+	farcall GetUsedSprite
+	pop af
+	ld b, a
 	xor a
-	ld a, [hl]
-
-.done
+	ld a, b
+	ld hl, wSpriteFlags
+	bit 5, [hl]
+	jr nz, .using_vbk1
+	or $80
+.using_vbk1
 	pop bc
+	pop de
 	pop hl
 	ret
-; 1836
 
 DoesSpriteHaveFacings:: ; 1836
 	push de
