@@ -23,12 +23,14 @@ GetSpriteVTile:: ; 180e
 	farcall GetSprite
 	ld hl, wSpriteFlags
 	res 5, [hl]
+	; SPRITE_BIG_GYARADOS uses object 13
 	ld a, [hUsedSpriteIndex]
 	cp SPRITE_BIG_GYARADOS
 	ld a, 13
 	jr z, .got_sprite_tile
 	ld a, [hObjectStructIndexBuffer]
 .got_sprite_tile
+	; objects 10+ load in vbk1
 	cp 10
 	jr c, .continue
 	set 5, [hl]
