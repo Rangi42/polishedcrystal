@@ -372,8 +372,7 @@ wSpinning:: ds 1
 
 wBGMapAnchor:: ds 2
 
-wUsedSprites:: ds 32 * 2 ; sprite ID, start tile
-wUsedSpritesEnd::
+	ds 64 ; unused
 
 wOverworldMapAnchor:: ds 2
 wMetatileStandingY:: ds 1

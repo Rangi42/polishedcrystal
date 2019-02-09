@@ -1,9 +1,7 @@
 _ReplaceKrisSprite:: ; 14135
 	call GetPlayerSprite
-	ld a, [wUsedSprites]
+	ld a, [wPlayerSprite]
 	ld [hUsedSpriteIndex], a
-	ld a, [wUsedSprites + 1]
-	ld [hUsedSpriteTile], a
 	jp GetUsedSprite
 ; 14146
 
@@ -39,7 +37,6 @@ GetPlayerSprite: ; 14183
 	ld a, [hl]
 
 .finish
-	ld [wUsedSprites + 0], a
 	ld [wPlayerSprite], a
 	ld [wPlayerObjectSprite], a
 	ret
@@ -113,7 +110,6 @@ ReloadSpriteIndex::
 MapCallbackSprites_LoadUsedSpritesGFX: ; 14209
 	ld a, MAPCALLBACK_SPRITES
 	call RunMapCallback
-	call GetUsedSprites
 
 LoadEmoteGFX::
 	ld a, [wSpriteFlags]
@@ -292,110 +288,6 @@ _GetSpritePalette:: ; 142c4
 	ret
 ; 142db
 
-
-AddSpriteGFX: ; 142e5
-; Add any new sprite ids to a list of graphics to be loaded.
-; Return carry if the list is full.
-
-	push hl
-	push bc
-	ld b, a
-	ld hl, wUsedSprites + 2
-	ld c, SPRITE_GFX_LIST_CAPACITY - 1
-.loop
-	ld a, [hl]
-	cp b
-	jr z, .exists
-	and a
-	jr z, .new
-	inc hl
-	inc hl
-	dec c
-	jr nz, .loop
-
-	pop bc
-	pop hl
-	scf
-	ret
-
-.exists
-	pop bc
-	pop hl
-	and a
-	ret
-
-.new
-	ld [hl], b
-	pop bc
-	pop hl
-	and a
-	ret
-; 14306
-
-
-GetSpriteLength: ; 14386
-; Return the length of sprite type a in tiles.
-
-	cp WALKING_SPRITE
-	jr z, .AnyDirection
-	cp STANDING_SPRITE
-	jr z, .AnyDirection
-	cp STILL_SPRITE
-	jr z, .OneDirection
-	cp BIG_GYARADOS_SPRITE
-	jr z, .BigGyarados
-; MON_SPRITE
-	ld a, 8
-	ret
-
-.AnyDirection:
-	ld a, 12
-	ret
-
-.OneDirection:
-	ld a, 4
-	ret
-
-.BigGyarados:
-	ld a, 16
-	ret
-; 1439b
-
-
-GetUsedSprites: ; 1439b
-	ld hl, wUsedSprites
-	ld c, SPRITE_GFX_LIST_CAPACITY
-
-.loop
-	ld a, [wSpriteFlags]
-	res 5, a
-	ld [wSpriteFlags], a
-
-	ld a, [hli]
-	and a
-	ret z
-	ld [hUsedSpriteIndex], a
-
-	ld a, [hli]
-	ld [hUsedSpriteTile], a
-
-	bit 7, a
-	jr z, .dont_set
-
-	ld a, [wSpriteFlags]
-	set 5, a ; load VBank1
-	ld [wSpriteFlags], a
-
-.dont_set
-	push bc
-	push hl
-	call GetUsedSprite
-	pop hl
-	pop bc
-	dec c
-	jr nz, .loop
-	ret
-; 143c8
 
 GetUsedSprite:: ; 143c8
 	ld a, [hUsedSpriteIndex]

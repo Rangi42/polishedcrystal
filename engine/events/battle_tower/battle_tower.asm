@@ -323,9 +323,8 @@ Special_BattleTower_LoadOpponentTrainerAndPokemonsWithOTSprite: ; 0x170b44
 ; because s/he is chosen randomly and appears out of nowhere
 	ld a, [wBTTempOTSprite]
 	ld [wMap1ObjectSprite], a
-	ld [wUsedSprites + 2], a
 	ld [hUsedSpriteIndex], a
-	ld a, [wUsedSprites + 3]
+	ld a, 24
 	ld [hUsedSpriteTile], a
 	farjp GetUsedSprite
 ; 170b90
