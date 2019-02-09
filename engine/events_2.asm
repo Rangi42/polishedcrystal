@@ -774,7 +774,7 @@ GetTreeScore: ; b8443
 LoadFishingGFX: ; b84b3
 	ld a, [rVBK]
 	push af
-	ld a, $1
+	xor a
 	ld [rVBK], a
 
 	ld de, FishingGFX
