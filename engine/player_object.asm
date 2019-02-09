@@ -217,7 +217,6 @@ CopyMapObjectToObjectStruct: ; 8116
 	jp CopyTempObjectToObjectStruct
 
 ReloadVisibleSprites::
-	ret
 	push hl
 	push de
 	push bc
@@ -232,12 +231,12 @@ ReloadVisibleSprites::
 ReloadSpriteIndex::
 ; Reloads sprites using hUsedSpriteIndex.
 ; Used to reload variable sprites
-	ld hl, wObjectStructs + OBJECT_STRUCT_LENGTH * 1
-	ld a, 1
+	ld hl, wObjectStructs
 	ld de, OBJECT_STRUCT_LENGTH
 	push bc
 	ld a, [hUsedSpriteIndex]
 	ld b, a
+	xor a
 .loop
 	ld [hObjectStructIndexBuffer], a
 	ld a, [hl]

@@ -23,7 +23,12 @@ GetSpriteVTile:: ; 180e
 	farcall GetSprite
 	ld hl, wSpriteFlags
 	res 5, [hl]
+	ld a, [hUsedSpriteIndex]
+	cp SPRITE_BIG_GYARADOS
+	ld a, 14
+	jr z, .got_sprite_tile
 	ld a, [hObjectStructIndexBuffer]
+.got_sprite_tile
 	cp 10
 	jr c, .continue
 	set 5, [hl]
@@ -500,8 +505,7 @@ UpdateSprites:: ; 1ad2
 	ret z
 
 	farcall UpdateMapObjectDataAndSprites
-	farcall _UpdateSprites
-	farjp ReloadVisibleSprites
+	farjp _UpdateSprites
 ; 1ae5
 
 GetObjectStruct:: ; 1ae5
