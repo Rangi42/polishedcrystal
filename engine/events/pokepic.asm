@@ -3,7 +3,6 @@ Pokepic:: ; 244e3
 	call CopyMenuDataHeader
 	call MenuBox
 	call UpdateSprites
-	call SafeCopyTilemapAtOnce
 	ld a, [wIsCurMonInParty]
 	and a
 	jr nz, .partymon
@@ -38,7 +37,8 @@ _Displaypic:
 	ld [hGraphicStartTile], a
 	lb bc, 7, 7
 	predef PlaceGraphic
-	jp WaitBGMap
+	ld b, 1
+	jp SafeCopyTilemapAtOnce
 
 Trainerpic::
 	ld hl, PokepicMenuDataHeader
@@ -73,7 +73,6 @@ Paintingpic::
 	inc a
 	ld [hl], a
 	call UpdateSprites
-	call ApplyTilemap
 	xor a
 	ld [hBGMapMode], a
 	ld a, [wTrainerClass]
@@ -85,13 +84,13 @@ ClosePokepic:: ; 24528
 	ld hl, PokepicMenuDataHeader
 	call CopyMenuDataHeader
 	call ClearMenuBoxInterior
-	call WaitBGMap
 	call GetMemCGBLayout
 	xor a
 	ld [hBGMapMode], a
 	call OverworldTextModeSwitch
-	call ApplyTilemap
 	call UpdateSprites
+	ld b, 1
+	call SafeCopyTilemapAtOnce
 	farjp ReloadVisibleSprites
 
 PokepicMenuDataHeader: ; 0x24547
