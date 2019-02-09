@@ -1701,6 +1701,7 @@ Script_GotAnItem:
 	applymovement PLAYER, Movement_RestoreRod
 	callasm PutTheRodAway
 	callasm CurItemToScriptVar
+	opentext
 	verbosegiveitem ITEM_FROM_MEM
 	endtext
 
