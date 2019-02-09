@@ -1,12 +1,3 @@
-GetEmote2bpp: ; 1412a
-	ld a, $1
-	ld [rVBK], a
-	call Get2bpp
-	xor a
-	ld [rVBK], a
-	ret
-; 14135
-
 _ReplaceKrisSprite:: ; 14135
 	call GetPlayerSprite
 	ld a, [wUsedSprites]
@@ -77,6 +68,7 @@ ReloadVisibleSprites::
 	xor a
 	ld [hUsedSpriteIndex], a
 	call ReloadSpriteIndex
+	call LoadEmoteGFX
 	pop bc
 	pop de
 	pop hl
@@ -121,26 +113,26 @@ ReloadSpriteIndex::
 MapCallbackSprites_LoadUsedSpritesGFX: ; 14209
 	ld a, MAPCALLBACK_SPRITES
 	call RunMapCallback
-LoadUsedSpritesGFX::
 	call GetUsedSprites
 
+LoadEmoteGFX::
 	ld a, [wSpriteFlags]
 	bit 6, a
 	ret nz
 
 	ld c, EMOTE_SHADOW
-	farcall LoadEmote
+	call LoadEmote
 	call GetMapPermission
 	call CheckOutdoorMapOrPerm5
 	jr z, .outdoor
 	ld c, EMOTE_BOULDER_DUST
-	farjp LoadEmote
+	jp LoadEmote
 
 .outdoor
 	ld c, EMOTE_SHAKING_GRASS
-	farcall LoadEmote
+	call LoadEmote
 	ld c, EMOTE_PUDDLE_SPLASH
-	farjp LoadEmote
+	jp LoadEmote
 ; 14236
 
 
@@ -511,8 +503,13 @@ LoadEmote:: ; 1442f
 	ld a, c
 	and a
 	ret z
-	jp GetEmote2bpp
-; 1444d
+; load into vram1
+	ld a, $1
+	ld [rVBK], a
+	call Get2bpp
+	xor a
+	ld [rVBK], a
+	ret
 
 
 INCLUDE "data/sprites/emotes.asm"
