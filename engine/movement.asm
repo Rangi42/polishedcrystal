@@ -210,36 +210,8 @@ Movement_step_loop: ; 51b8
 	jp ContinueReadingMovement
 ; 51c1
 
-Movement_step_end: ; 51c1
-	; check for player object
-	jp Movement_step_resume
-	ld hl, OBJECT_MAP_OBJECT_INDEX
-	add hl, bc
-	ld a, [hl]
-	and a
-	ld a, SPRITEMOVEDATA_PLAYER
-	jr z, .player
-	xor a
-
-.player
-	ld hl, OBJECT_MOVEMENTTYPE
-	add hl, bc
-	ld [hl], a
-
-	ld hl, OBJECT_MOVEMENT_BYTE_INDEX
-	add hl, bc
-	ld [hl], $0
-
-	ld hl, wVramState
-	res 7, [hl]
-
-	ld hl, OBJECT_STEP_TYPE
-	add hl, bc
-	ld [hl], STEP_TYPE_SLEEP
-	ret
-; 51db
-
-Movement_step_resume: ; 51db
+Movement_step_resume:
+Movement_step_end:
 	call RestoreDefaultMovement
 	ld hl, OBJECT_MOVEMENTTYPE
 	add hl, bc
