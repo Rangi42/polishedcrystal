@@ -14,10 +14,9 @@ GoldenrodHarbor_MapScriptHeader:
 	bg_event 26, 15, SIGNPOST_JUMPTEXT, GoldenrodHarborCrateSignText
 	bg_event 20, 21, SIGNPOST_ITEM + REVIVE, EVENT_GOLDENROD_HARBOR_HIDDEN_REVIVE
 
-	db 12 ; object events
+	db 11 ; object events
 	object_event 17,  3, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_SCRIPT, 0, GoldenrodHarborFisherScript, -1
 	object_event 13,  5, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerFisherPaton, -1
-	itemball_event 13,  3, STAR_PIECE, 1, EVENT_GOLDENROD_HARBOR_STAR_PIECE
 	object_event 25, 15, SPRITE_LASS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, pokemart, MARTTYPE_ADVENTURER, MART_GOLDENROD_HARBOR, -1
 	object_event 20, 15, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, GoldenrodHarborPokefanmScript, -1
 	object_event 19, 15, SPRITE_MAGIKARP, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, GoldenrodHarborMagikarpText, -1
@@ -26,6 +25,7 @@ GoldenrodHarbor_MapScriptHeader:
 	object_event 31,  8, SPRITE_SWIMMER_GIRL, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_GENERICTRAINER, 5, GenericTrainerSwimmerfKatie, -1
 	object_event 18, 28, SPRITE_SWIMMER_GUY, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerSwimmermJames, -1
 	object_event 16, 19, SPRITE_LASS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, GoldenrodHarborLass2Text, -1
+	itemball_event 13,  3, STAR_PIECE, 1, EVENT_GOLDENROD_HARBOR_STAR_PIECE
 
 GoldenrodHarborFisherScript:
 	faceplayer
