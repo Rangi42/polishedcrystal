@@ -22,13 +22,11 @@ The final, non-beta 3.0 release should include all of these.
 ### Mechanics
 
 * Add hidden grottoes throughout Johto
-* Add [Sweet Honey](http://iimarck.us/i/sweet-honey/) that acts like Sweet Scent and attracts rare Pokémon
 * Variety Channel with daily unique music
 * Separate radio channels for March and Lullaby, available every day
 * Send gift Pokémon to the PC if the party is full
 * Get better Wonder Trade items at higher levels
 * Play Pokémon cry+animation when they escape a Poké Ball (from Prism)
-* Use RBY's Bike theme in Kanto
 * Generate Battle Tower Pokémon
 * Generate random team for Psychic Inver
 * Wild Ghosts and the SilphScope2
@@ -137,8 +135,7 @@ Low priority:
 
 ### Optimizations
 
-* Compress text with a Huffman tree (potentially save ~5.6% space)
-* LZ-compress maps' .blk files, tilesets' metatiles and collision data, and various tilemaps (potentially save ~2.7% space)
+* LZ-compress metatiles.bin data, collision.asm data, and various tilemaps (potentially save ~2.7% space)
 * Optimize battle command engine, including parameterized commands
 * Optimize map scripts with the various new commands and PERSONTYPE_GENERICTRAINER
 
@@ -147,7 +144,6 @@ Low priority:
 
 Some of these may never be added; they're just suggestions.
 
-* Port pokecrystal changes since commit 7aef59841489ea449b9a34d424c681a4b48b88ab
 * Alolan forms (update GetBaseData and everything that refers to EvosAttacksPointers)
    * Persian as a one-time trade from an Alolan tourist (you can breed it for more)
    * Rattata/Raticate in Kanto
@@ -226,11 +222,10 @@ Some of these may never be added; they're just suggestions.
    * PGo Overworld/Walking (for Safari Game)
    * PGo Battle! Legendary Raid (for Mew)
    * S/M Malie City (Day) (for Shamouti Shrine)
-   * R/S/E Route 119
-   * R/S/E Route 120
+   * R/S/E Surf (for Surfing in Orange Islands)
 * More Orange Islands
+* Add [Sweet Honey](http://iimarck.us/i/sweet-honey/) that acts like Sweet Scent and attracts rare Pokémon
 * First Pokémon walks behind you ([comet's prototype](https://hax.iimarck.us/topic/6248/) and [diff](https://github.com/yenatch/pokecrystal/commit/dbc5cd2025a0214c5b2cd1e3330f50603a0bb9d1))
-* Load the font graphics only when textboxes are open, and otherwise load sprites' walking frames like G/S (popup location signs would have to be handled specially)
 * Evening (intervals: morn 4–11, day 11–6, eve 6–9, nite 9–4)
 * Seasons with appropriate day/night lengths from B/W (affects palettes, tiles, wild Pokémon, dialog, accessible areas, etc)
 * Dive areas
@@ -255,7 +250,6 @@ Some of these may never be added; they're just suggestions.
    * Ruby [sub_8054050](https://github.com/pret/pokeruby/blob/master/src/rom4.c#L893): plays the cry of gUnknown_02029814 if on a non-water encounter tile at volume 50–80 instead of the usual 125
    * Ruby [sub_80540D0](https://github.com/pret/pokeruby/blob/master/src/rom4.c#L906): might randomly play the cry (run with time-based events)
    * Emerald [wild_encounter_related](https://github.com/pret/pokeemerald/blob/master/asm/rom4.s#L2544): raises call probability for Swarm ability
-* Either add a 510 EV limit, or replace the 6 Power items with more useful Berries
 * Catch rate formula from Gen III
 * Port critical captures from Prism
 * Allow evolution during battle
