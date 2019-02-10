@@ -15,12 +15,11 @@ Route29_MapScriptHeader:
 	bg_event 51,  7, SIGNPOST_JUMPTEXT, Route29Sign1Text
 	bg_event  3,  5, SIGNPOST_JUMPTEXT, Route29Sign2Text
 
-	db 11 ; object events
-	object_event 50, 12, SPRITE_NEW_BARK_LYRA, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LYRA_ROUTE_29
+	db 10 ; object events
+	object_event 50, 12, SPRITE_LYRA, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LYRA_ROUTE_29
 	object_event 29, 12, SPRITE_TEACHER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, TuscanyScript, EVENT_ROUTE_29_TUSCANY_OF_TUESDAY
 	object_event 27, 16, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, Route29YoungsterText, -1
-	object_event 15, 11, SPRITE_NEW_BARK_TEACHER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, Route29TeacherText, EVENT_SLOWPOKE_WELL_ROCKETS
-	object_event 15, 11, SPRITE_TEACHER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 1, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, Route29TeacherText, EVENT_AZALEA_TOWN_SLOWPOKES
+	object_event 15, 11, SPRITE_TEACHER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, Route29TeacherText, -1
 	cuttree_event 30,  9, EVENT_ROUTE_29_CUT_TREE_1
 	cuttree_event 21, 11, EVENT_ROUTE_29_CUT_TREE_2
 	fruittree_event 12,  2, FRUITTREE_ROUTE_29, ORAN_BERRY
@@ -99,8 +98,6 @@ Route29FinishTutorial:
 	applymovement ROUTE29_LYRA, LyraMovementData3
 	disappear ROUTE29_LYRA
 	setscene $0
-	variablesprite SPRITE_NEW_BARK_LYRA, SPRITE_LASS
-	special MapCallbackSprites_LoadUsedSpritesGFX
 	setevent EVENT_LEARNED_TO_CATCH_POKEMON
 	playmusic MUSIC_ROUTE_29
 	end

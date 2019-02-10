@@ -102,7 +102,6 @@ UnknownScript_0x188e93:
 	clearevent EVENT_GOLDENROD_TRAIN_STATION_GENTLEMAN
 	setmapscene ROUTE_10_NORTH, $1
 	clearevent EVENT_LAWRENCE_ROUTE_10
-	variablesprite SPRITE_VERMILION_LAWRENCE, SPRITE_LAWRENCE
 	writetext UnknownText_0x1893c4
 	waitbutton
 PowerPlantTutorZapCannonScript:

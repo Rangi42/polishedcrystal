@@ -17,8 +17,8 @@ Route48_MapScriptHeader:
 	db 5 ; object events
 	object_event 11,  6, SPRITE_ARCHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_TRAINER, 1, TrainerArcher2, EVENT_CLEARED_YELLOW_FOREST
 	object_event 15, 12, SPRITE_JESSIE, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_48_JESSIE
-	object_event 26, 12, SPRITE_GUIDE_GENT, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_48_JAMES
-	object_event 11,  5, SPRITE_GUIDE_GENT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_48_NURSE
+	object_event 26, 12, SPRITE_JAMES, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_48_JAMES
+	object_event 11,  5, SPRITE_NURSE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_48_NURSE
 	itemball_event  4, 13, NUGGET, 1, EVENT_ROUTE_48_NUGGET
 
 	const_def 1 ; object constants
@@ -39,8 +39,6 @@ Route48JessieJamesScript1:
 	showemote EMOTE_SHOCK, PLAYER, 15
 	special Special_FadeOutMusic
 	pause 15
-	variablesprite SPRITE_GUIDE_GENT, SPRITE_JAMES
-	special MapCallbackSprites_LoadUsedSpritesGFX
 	appear ROUTE48_JESSIE
 	appear ROUTE48_JAMES
 	playmusic MUSIC_JESSIE_JAMES_ENCOUNTER
@@ -48,7 +46,6 @@ Route48JessieJamesScript1:
 	applymovement ROUTE48_JAMES, JamesEnterMovementData
 	showtext Route48JessieJamesSeenText
 	setscene $1
-	variablesprite SPRITE_GUIDE_GENT, SPRITE_SWIMMER_GUY
 	setevent EVENT_BEAT_JESSIE_AND_JAMES
 	setevent EVENT_ROUTE_48_JESSIE
 	setevent EVENT_ROUTE_48_JAMES
@@ -57,7 +54,6 @@ Route48JessieJamesScript1:
 	loadtrainer JESSIE_JAMES, 1
 	startbattle
 	dontrestartmapmusic
-	variablesprite SPRITE_GUIDE_GENT, SPRITE_JAMES
 	reloadmapafterbattle
 	special DeleteSavedMusic
 	playmusic MUSIC_JESSIE_JAMES_ENCOUNTER
@@ -112,8 +108,6 @@ Archer2Script:
 	special Special_FadeInQuickly
 	setevent EVENT_CLEARED_YELLOW_FOREST
 	clearevent EVENT_YELLOW_FOREST_ROCKET_TAKEOVER
-	variablesprite SPRITE_GUIDE_GENT, SPRITE_NURSE
-	special MapCallbackSprites_LoadUsedSpritesGFX
 	playsound SFX_ENTER_DOOR
 	appear ROUTE48_NURSE
 	waitsfx
@@ -132,7 +126,6 @@ Archer2Script:
 	applyonemovement ROUTE48_NURSE, step_up
 	playsound SFX_EXIT_BUILDING
 	disappear ROUTE48_NURSE
-	variablesprite SPRITE_GUIDE_GENT, SPRITE_SWIMMER_GUY
 	end
 
 Route48JessieJamesSeenText:

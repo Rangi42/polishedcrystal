@@ -169,95 +169,96 @@
 	const SPRITE_GOLD_TROPHY ; a6
 	const SPRITE_MISC_OVERHEAD ; a7
 
-SPRITE_POKEMON EQU const_value
-	const SPRITE_BULBASAUR ; a8
-	const SPRITE_CHARMANDER ; a9
-	const SPRITE_SQUIRTLE ; aa
-	const SPRITE_PIDGEY ; ab
-	const SPRITE_PIDGEOTTO ; ac
-	const SPRITE_RATTATA ; ad
-	const SPRITE_PIKACHU ; ae
-	const SPRITE_RAICHU ; af
-	const SPRITE_NIDORAN_F ; b0
-	const SPRITE_NIDORAN_M ; b1
-	const SPRITE_NIDORINO ; b2
-	const SPRITE_VULPIX ; b3
-	const SPRITE_JIGGLYPUFF ; b4
-	const SPRITE_ODDISH ; b5
-	const SPRITE_VILEPLUME ; b6
-	const SPRITE_DIGLETT ; b7
-	const SPRITE_MEOWTH ; b8
-	const SPRITE_PERSIAN ; b9
-	const SPRITE_PSYDUCK ; ba
-	const SPRITE_GROWLITHE ; bb
-	const SPRITE_POLIWAG ; bc
-	const SPRITE_POLIWRATH ; bd
-	const SPRITE_ABRA ; be
-	const SPRITE_MACHOKE ; bf
-	const SPRITE_GEODUDE ; c0
-	const SPRITE_SLOWPOKE ; c1
-	const SPRITE_SLOWBRO ; c2
-	const SPRITE_DODRIO ; c3
-	const SPRITE_GENGAR ; c4
-	const SPRITE_VOLTORB ; c5
-	const SPRITE_ELECTRODE ; c6
-	const SPRITE_RHYDON ; c7
-	const SPRITE_CHANSEY ; c8
-	const SPRITE_TOGEPI ; c9
-	const SPRITE_MAGIKARP ; ca
-	const SPRITE_DITTO ; cb
-	const SPRITE_ARTICUNO ; cc
-	const SPRITE_ZAPDOS ; cd
-	const SPRITE_MOLTRES ; ce
-	const SPRITE_DRATINI ; cf
-	const SPRITE_MEWTWO ; d0
-	const SPRITE_CHIKORITA ; d1
-	const SPRITE_CYNDAQUIL ; d2
-	const SPRITE_TOTODILE ; d3
-	const SPRITE_FURRET ; d4
-	const SPRITE_HOOTHOOT ; d5
-	const SPRITE_MAREEP ; d6
-	const SPRITE_AMPHAROS ; d7
-	const SPRITE_MARILL ; d8
-	const SPRITE_MURKROW ; d9
-	const SPRITE_SLOWKING ; da
-	const SPRITE_UNOWN ; db
-	const SPRITE_PINECO ; dc
-	const SPRITE_HERACROSS ; dd
-	const SPRITE_WEAVILE ; de
-	const SPRITE_TEDDIURSA ; df
-	const SPRITE_URSARING ; e0
-	const SPRITE_OCTILLERY ; e1
-	const SPRITE_SKARMORY ; e2
-	const SPRITE_SMEARGLE ; e3
-	const SPRITE_MILTANK ; e4
-	const SPRITE_BLISSEY ; e5
-	const SPRITE_RAIKOU ; e6
-	const SPRITE_ENTEI ; e7
-	const SPRITE_SUICUNE ; e8
-	const SPRITE_LUGIA ; e9
-	const SPRITE_HO_OH ; ea
-	const SPRITE_EGG ; eb
+	const SPRITE_UNUSED_1 ; a8
+	const SPRITE_UNUSED_2 ; a9
+	const SPRITE_UNUSED_3 ; aa
+	const SPRITE_UNUSED_4 ; ab
+	const SPRITE_UNUSED_5 ; ac
+	const SPRITE_UNUSED_6 ; ad
+	const SPRITE_UNUSED_7 ; ae
+	const SPRITE_UNUSED_8 ; af
 
-	const SPRITE_DAYCARE_MON_1 ; ec
-	const SPRITE_DAYCARE_MON_2 ; ed
-	const SPRITE_GROTTO_MON ; ee
+SPRITE_POKEMON EQU const_value
+	const SPRITE_BULBASAUR ; b0
+	const SPRITE_CHARMANDER ; b1
+	const SPRITE_SQUIRTLE ; b2
+	const SPRITE_PIDGEY ; b3
+	const SPRITE_PIDGEOTTO ; b4
+	const SPRITE_RATTATA ; b5
+	const SPRITE_PIKACHU ; b6
+	const SPRITE_RAICHU ; b7
+	const SPRITE_NIDORAN_F ; b8
+	const SPRITE_NIDORAN_M ; b9
+	const SPRITE_NIDORINO ; ba
+	const SPRITE_VULPIX ; bb
+	const SPRITE_JIGGLYPUFF ; bc
+	const SPRITE_ODDISH ; bd
+	const SPRITE_VILEPLUME ; be
+	const SPRITE_DIGLETT ; bf
+	const SPRITE_MEOWTH ; c0
+	const SPRITE_PERSIAN ; c1
+	const SPRITE_PSYDUCK ; c2
+	const SPRITE_GROWLITHE ; c3
+	const SPRITE_POLIWAG ; c4
+	const SPRITE_POLIWRATH ; c5
+	const SPRITE_ABRA ; c6
+	const SPRITE_MACHOKE ; c7
+	const SPRITE_GEODUDE ; c8
+	const SPRITE_SLOWPOKE ; c9
+	const SPRITE_SLOWBRO ; ca
+	const SPRITE_DODRIO ; cb
+	const SPRITE_GENGAR ; cc
+	const SPRITE_VOLTORB ; cd
+	const SPRITE_ELECTRODE ; ce
+	const SPRITE_RHYDON ; cf
+	const SPRITE_CHANSEY ; d0
+	const SPRITE_TOGEPI ; d1
+	const SPRITE_MAGIKARP ; d2
+	const SPRITE_DITTO ; d3
+	const SPRITE_ARTICUNO ; d4
+	const SPRITE_ZAPDOS ; d5
+	const SPRITE_MOLTRES ; d6
+	const SPRITE_DRATINI ; d7
+	const SPRITE_MEWTWO ; d8
+	const SPRITE_CHIKORITA ; d9
+	const SPRITE_CYNDAQUIL ; da
+	const SPRITE_TOTODILE ; db
+	const SPRITE_FURRET ; dc
+	const SPRITE_HOOTHOOT ; dd
+	const SPRITE_MAREEP ; de
+	const SPRITE_AMPHAROS ; df
+	const SPRITE_MARILL ; e0
+	const SPRITE_MURKROW ; e1
+	const SPRITE_SLOWKING ; e2
+	const SPRITE_UNOWN ; e3
+	const SPRITE_PINECO ; e4
+	const SPRITE_HERACROSS ; e5
+	const SPRITE_WEAVILE ; e6
+	const SPRITE_TEDDIURSA ; e7
+	const SPRITE_URSARING ; e8
+	const SPRITE_OCTILLERY ; e9
+	const SPRITE_SKARMORY ; ea
+	const SPRITE_SMEARGLE ; eb
+	const SPRITE_MILTANK ; ec
+	const SPRITE_BLISSEY ; ed
+	const SPRITE_RAIKOU ; ee
+	const SPRITE_ENTEI ; ef
+	const SPRITE_SUICUNE ; f0
+	const SPRITE_LUGIA ; f1
+	const SPRITE_HO_OH ; f2
+	const SPRITE_EGG ; f3
+
+	const SPRITE_DAYCARE_MON_1 ; f4
+	const SPRITE_DAYCARE_MON_2 ; f5
+	const SPRITE_GROTTO_MON ; f6
 
 SPRITE_VARS EQU const_value
-	const SPRITE_CONSOLE ; ef
-	const SPRITE_DOLL_1 ; f0
-	const SPRITE_DOLL_2 ; f1
-	const SPRITE_BIG_DOLL ; f2
-	const SPRITE_FUCHSIA_GYM_1 ; f3
-	const SPRITE_FUCHSIA_GYM_2 ; f4
-	const SPRITE_FUCHSIA_GYM_3 ; f5
-	const SPRITE_FUCHSIA_GYM_4 ; f6
-	const SPRITE_GUIDE_GENT ; f7 ; permanent SPRITE_SWIMMER_GUY
-	const SPRITE_NEW_BARK_TEACHER ; f8 ; permanent SPRITE_DRAGON_TAMER
-	const SPRITE_NEW_BARK_LYRA ; f9 ; permanent SPRITE_LASS
-	const SPRITE_GOLDENROD_LYRA ; fa ; permanent SPRITE_SWIMMER_GIRL
-	const SPRITE_ROUTE_30_RATTATA ; fb ; permanent SPRITE_SUICUNE
-	const SPRITE_CHERRYGROVE_RIVAL ; fc ; permanent SPRITE_BUG_CATCHER
-	const SPRITE_OLIVINE_RIVAL ; fd ; permanent SPRITE_COWGIRL
-	const SPRITE_LAKE_OF_RAGE_LANCE ; fe ; permanent SPRITE_ENGINEER
-	const SPRITE_VERMILION_LAWRENCE ; ff ; permanent SPRITE_COOLTRAINER_F
+	const SPRITE_CONSOLE ; f7
+	const SPRITE_DOLL_1 ; f8
+	const SPRITE_DOLL_2 ; f9
+	const SPRITE_BIG_DOLL ; fa
+	const SPRITE_FUCHSIA_GYM_1 ; fb
+	const SPRITE_FUCHSIA_GYM_2 ; fc
+	const SPRITE_FUCHSIA_GYM_3 ; fd
+	const SPRITE_FUCHSIA_GYM_4 ; fe
+	const SPRITE_COPYCAT ; ff

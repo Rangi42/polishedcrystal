@@ -34,7 +34,7 @@ OlivineCity_MapScriptHeader:
 	bg_event 49, 29, SIGNPOST_ITEM + SOFT_SAND, EVENT_OLIVINE_CITY_HIDDEN_SOFT_SAND
 
 	db 15 ; object events
-	object_event 10,  7, SPRITE_OLIVINE_RIVAL, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_OLIVINE_CITY
+	object_event 10,  7, SPRITE_SILVER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_OLIVINE_CITY
 	object_event 20,  8, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, OlivineCityYoungster1Script, -1
 	object_event 26, 22, SPRITE_SAILOR, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, OlivineCitySailor1Text, -1
 	object_event 15, 21, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, (1 << DAY) | (1 << NITE), 0, PERSONTYPE_COMMAND, jumptextfaceplayer, OlivineCitySailor2Text, -1
@@ -61,8 +61,6 @@ OlivineCityRivalGymScript:
 	turnobject PLAYER, UP
 	showemote EMOTE_SHOCK, PLAYER, 15
 	special Special_FadeOutMusic
-	variablesprite SPRITE_OLIVINE_RIVAL, SPRITE_SILVER
-	special MapCallbackSprites_LoadUsedSpritesGFX
 	playsound SFX_ENTER_DOOR
 	appear OLIVINECITY_OLIVINE_RIVAL
 	waitsfx
@@ -76,8 +74,6 @@ OlivineCityRivalGymScript:
 	setscene $1
 	disappear OLIVINECITY_OLIVINE_RIVAL
 	special RestartMapMusic
-	variablesprite SPRITE_OLIVINE_RIVAL, SPRITE_COWGIRL
-	special MapCallbackSprites_LoadUsedSpritesGFX
 	end
 
 OlivineCityRivalLighthouseScript:
@@ -85,8 +81,6 @@ OlivineCityRivalLighthouseScript:
 	showemote EMOTE_SHOCK, PLAYER, 15
 	special Special_FadeOutMusic
 	moveobject OLIVINECITY_OLIVINE_RIVAL, 33, 19
-	variablesprite SPRITE_OLIVINE_RIVAL, SPRITE_SILVER
-	special MapCallbackSprites_LoadUsedSpritesGFX
 	playsound SFX_ENTER_DOOR
 	appear OLIVINECITY_OLIVINE_RIVAL
 	waitsfx
@@ -100,8 +94,6 @@ OlivineCityRivalLighthouseScript:
 	setscene $1
 	disappear OLIVINECITY_OLIVINE_RIVAL
 	special RestartMapMusic
-	variablesprite SPRITE_OLIVINE_RIVAL, SPRITE_COWGIRL
-	special MapCallbackSprites_LoadUsedSpritesGFX
 	end
 
 OlivineCityYoungster1Script:

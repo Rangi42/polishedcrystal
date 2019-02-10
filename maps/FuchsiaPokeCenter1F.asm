@@ -14,7 +14,7 @@ FuchsiaPokeCenter1F_MapScriptHeader:
 	bg_event 10,  1, SIGNPOST_READ, PokemonJournalJanineScript
 
 	db 4 ; object events
-	object_event  6,  3, SPRITE_NEW_BARK_LYRA, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_PURPLE, PERSONTYPE_SCRIPT, 0, JanineImpersonatorScript, -1
+	object_event  6,  3, SPRITE_COPYCAT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_PURPLE, PERSONTYPE_SCRIPT, 0, JanineImpersonatorScript, -1
 	pc_nurse_event  5, 1
 	object_event  9,  4, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, FuchsiaPokeCenter1FCooltrainerMText, -1
 	object_event  1,  4, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, FuchsiaPokeCenter1FCooltrainerFText, -1
@@ -43,12 +43,12 @@ JanineImpersonatorScript:
 	showtextfaceplayer .Text1
 	applymovement FUCHSIAPOKECENTER1F_JANINE_IMPERSONATOR, .SpinMovement
 	faceplayer
-	variablesprite SPRITE_NEW_BARK_LYRA, SPRITE_JANINE
+	variablesprite SPRITE_COPYCAT, SPRITE_JANINE
 	special MapCallbackSprites_LoadUsedSpritesGFX
 	showtext .Text2
 	applymovement FUCHSIAPOKECENTER1F_JANINE_IMPERSONATOR, .SpinMovement
 	faceplayer
-	variablesprite SPRITE_NEW_BARK_LYRA, SPRITE_LASS
+	variablesprite SPRITE_COPYCAT, SPRITE_LASS
 	special MapCallbackSprites_LoadUsedSpritesGFX
 	end
 

@@ -27,10 +27,9 @@ NewBarkTown_MapScriptHeader:
 	bg_event  9, 13, SIGNPOST_JUMPTEXT, LyrasHouseSignText
 	bg_event  3,  2, SIGNPOST_ITEM + POTION, EVENT_NEW_BARK_TOWN_HIDDEN_POTION
 
-	db 6 ; object events
-	object_event  3,  2, SPRITE_CHERRYGROVE_RIVAL, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, NewBarkTownSilverScript, EVENT_RIVAL_NEW_BARK_TOWN
-	object_event  1,  6, SPRITE_NEW_BARK_LYRA, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LYRA_NEW_BARK_TOWN
-	object_event  6,  8, SPRITE_NEW_BARK_TEACHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_TEACHER_NEW_BARK_TOWN
+	db 5 ; object events
+	object_event  3,  2, SPRITE_SILVER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, NewBarkTownSilverScript, EVENT_RIVAL_NEW_BARK_TOWN
+	object_event  1,  6, SPRITE_LYRA, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LYRA_NEW_BARK_TOWN
 	object_event  6,  8, SPRITE_TEACHER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, NewBarkTownTeacherScript, -1
 	object_event 13,  8, SPRITE_FISHER, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, Text_ElmDiscoveredNewMon, -1
 	object_event  7, 15, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, (1 << MORN) | (1 << DAY), 0, PERSONTYPE_COMMAND, jumptextfaceplayer, Text_GearIsImpressive, -1
@@ -39,7 +38,6 @@ NewBarkTown_MapScriptHeader:
 	const NEWBARKTOWN_SILVER
 	const NEWBARKTOWN_LYRA
 	const NEWBARKTOWN_TEACHER
-	const NEWBARKTOWN_STILL_TEACHER
 
 NewBarkTownFlyPoint:
 	setflag ENGINE_FLYPOINT_NEW_BARK
@@ -48,10 +46,7 @@ NewBarkTownFlyPoint:
 
 NewBarkTown_TeacherStopsYouTrigger1:
 	playmusic MUSIC_MOM
-	turnobject NEWBARKTOWN_STILL_TEACHER, LEFT
-	appear NEWBARKTOWN_TEACHER
-	turnobject NEWBARKTOWN_STILL_TEACHER, LEFT
-	disappear NEWBARKTOWN_STILL_TEACHER
+	turnobject NEWBARKTOWN_TEACHER, LEFT
 	showtext Text_WaitPlayer
 	turnobject PLAYER, RIGHT
 	applymovement NEWBARKTOWN_TEACHER, Movement_TeacherRunsToYou1_NBT
@@ -60,18 +55,12 @@ NewBarkTown_TeacherStopsYouTrigger1:
 	applymovement NEWBARKTOWN_TEACHER, Movement_TeacherBringsYouBack1_NBT
 	stopfollow
 	showtext Text_ItsDangerousToGoAlone
-	appear NEWBARKTOWN_STILL_TEACHER
-	turnobject NEWBARKTOWN_TEACHER, LEFT
-	disappear NEWBARKTOWN_TEACHER
 	special RestartMapMusic
 	end
 
 NewBarkTown_TeacherStopsYouTrigger2:
 	playmusic MUSIC_MOM
 	turnobject NEWBARKTOWN_TEACHER, LEFT
-	appear NEWBARKTOWN_TEACHER
-	turnobject NEWBARKTOWN_STILL_TEACHER, LEFT
-	disappear NEWBARKTOWN_STILL_TEACHER
 	showtext Text_WaitPlayer
 	turnobject PLAYER, RIGHT
 	applymovement NEWBARKTOWN_TEACHER, Movement_TeacherRunsToYou2_NBT
@@ -81,9 +70,6 @@ NewBarkTown_TeacherStopsYouTrigger2:
 	applymovement NEWBARKTOWN_TEACHER, Movement_TeacherBringsYouBack2_NBT
 	stopfollow
 	showtext Text_ItsDangerousToGoAlone
-	appear NEWBARKTOWN_STILL_TEACHER
-	turnobject NEWBARKTOWN_TEACHER, LEFT
-	disappear NEWBARKTOWN_TEACHER
 	special RestartMapMusic
 	end
 
@@ -125,8 +111,6 @@ NewBarkTown_LyraFinalTrigger3:
 NewBarkTown_LyraFinalTrigger4:
 	moveobject NEWBARKTOWN_LYRA, 14, 14
 NewBarkTown_LyraFinalTrigger:
-	variablesprite SPRITE_NEW_BARK_LYRA, SPRITE_LYRA
-	special MapCallbackSprites_LoadUsedSpritesGFX
 	appear NEWBARKTOWN_LYRA
 	applymovement NEWBARKTOWN_LYRA, Movement_LyraSaysGoodbye1_NBT
 	showemote EMOTE_SHOCK, NEWBARKTOWN_LYRA, 15
@@ -136,7 +120,6 @@ NewBarkTown_LyraFinalTrigger:
 	turnobject PLAYER, LEFT
 	showtext Text_LyraGoodbye1
 	setevent EVENT_LYRA_NEW_BARK_TOWN
-	variablesprite SPRITE_NEW_BARK_LYRA, SPRITE_LASS
 	winlosstext Text_LyraGoodbyeWin, Text_LyraGoodbyeLoss
 	setlasttalked NEWBARKTOWN_LYRA
 	checkevent EVENT_GOT_TOTODILE_FROM_ELM
@@ -155,15 +138,12 @@ NewBarkTown_LyraFinalTrigger:
 .AfterBattle
 	startbattle
 	dontrestartmapmusic
-	variablesprite SPRITE_NEW_BARK_LYRA, SPRITE_LYRA
 	reloadmapafterbattle
 	special DeleteSavedMusic
 	playmusic MUSIC_LYRA_DEPARTURE_HGSS
 	showtext Text_LyraGoodbye2
 	applymovement NEWBARKTOWN_LYRA, Movement_LyraSaysGoodbye3_NBT
 	disappear NEWBARKTOWN_LYRA
-	variablesprite SPRITE_NEW_BARK_LYRA, SPRITE_LASS
-	special MapCallbackSprites_LoadUsedSpritesGFX
 	setscene $2
 	playmapmusic
 	end

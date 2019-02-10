@@ -32,10 +32,11 @@ Route32_MapScriptHeader:
 	db 17 ; object events
 	object_event 19,  8, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, Route32CooltrainermPetrieScript, -1
 	object_event  7, 70, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SlowpokeTailSalesmanScript, EVENT_SLOWPOKE_WELL_ROCKETS
-	object_event 12, 67, SPRITE_NEW_BARK_LYRA, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FriedaScript, EVENT_ROUTE_32_FRIEDA_OF_FRIDAY
-	object_event 12, 33, SPRITE_NEW_BARK_LYRA, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_TRAINER, 1, TrainerPicnickerLiz1, -1
+	object_event 12, 67, SPRITE_LASS, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FriedaScript, EVENT_ROUTE_32_FRIEDA_OF_FRIDAY
+	object_event 13, 29, SPRITE_LYRA, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LYRA_ROUTE_32
 	object_event  8, 49, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerFisherJustin, -1
 	object_event 12, 56, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_TRAINER, 3, TrainerFisherRalph1, -1
+	object_event 12, 33, SPRITE_LASS, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_TRAINER, 1, TrainerPicnickerLiz1, -1
 	object_event  6, 48, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerFisherHenry, -1
 	object_event 16, 18, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerYoungsterAlbert, -1
 	object_event  4, 63, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerYoungsterGordon, -1
@@ -52,7 +53,7 @@ Route32_MapScriptHeader:
 	const ROUTE32_COOLTRAINER_M
 	const ROUTE32_FISHER4
 	const ROUTE32_FRIEDA
-	const ROUTE32_LASS
+	const ROUTE32_LYRA
 
 Route32FlyPoint:
 	setflag ENGINE_FLYPOINT_UNION_CAVE
@@ -212,29 +213,29 @@ Route32CooltrainerMStopsYou:
 
 Route32LyraIntroducesHiddenGrottoes1:
 	scall Route32LyraIntroducesHiddenGrottoesIntroScript
-	applymovement ROUTE32_FRIEDA, Route32LyraIntroducesHiddenGrottoes_Left3
+	applymovement ROUTE32_LYRA, Route32LyraIntroducesHiddenGrottoes_Left3
 	scall Route32LyraIntroducesHiddenGrottoesMainScript
-	applymovement ROUTE32_FRIEDA, Route32LyraIntroducesHiddenGrottoes_Left5
+	applymovement ROUTE32_LYRA, Route32LyraIntroducesHiddenGrottoes_Left5
 	jump Route32LyraIntroducesHiddenGrottoesOutroScript
 
 Route32LyraIntroducesHiddenGrottoes2:
 	scall Route32LyraIntroducesHiddenGrottoesIntroScript
-	applymovement ROUTE32_FRIEDA, Route32LyraIntroducesHiddenGrottoes_Left2
+	applymovement ROUTE32_LYRA, Route32LyraIntroducesHiddenGrottoes_Left2
 	scall Route32LyraIntroducesHiddenGrottoesMainScript
-	applymovement ROUTE32_FRIEDA, Route32LyraIntroducesHiddenGrottoes_Left6
+	applymovement ROUTE32_LYRA, Route32LyraIntroducesHiddenGrottoes_Left6
 	jump Route32LyraIntroducesHiddenGrottoesOutroScript
 
 Route32LyraIntroducesHiddenGrottoes3:
 	scall Route32LyraIntroducesHiddenGrottoesIntroScript
-	applymovement ROUTE32_FRIEDA, Route32LyraIntroducesHiddenGrottoes_Left1
+	applymovement ROUTE32_LYRA, Route32LyraIntroducesHiddenGrottoes_Left1
 	scall Route32LyraIntroducesHiddenGrottoesMainScript
-	applymovement ROUTE32_FRIEDA, Route32LyraIntroducesHiddenGrottoes_Left7
+	applymovement ROUTE32_LYRA, Route32LyraIntroducesHiddenGrottoes_Left7
 	jump Route32LyraIntroducesHiddenGrottoesOutroScript
 
 Route32LyraIntroducesHiddenGrottoes4:
 	scall Route32LyraIntroducesHiddenGrottoesIntroScript
 	scall Route32LyraIntroducesHiddenGrottoesMainScript
-	applymovement ROUTE32_FRIEDA, Route32LyraIntroducesHiddenGrottoes_Left8
+	applymovement ROUTE32_LYRA, Route32LyraIntroducesHiddenGrottoes_Left8
 	jump Route32LyraIntroducesHiddenGrottoesOutroScript
 
 Route32LyraIntroducesHiddenGrottoes_Left8:
@@ -255,16 +256,12 @@ Route32LyraIntroducesHiddenGrottoes_Left1:
 	step_end
 
 Route32LyraIntroducesHiddenGrottoesIntroScript:
-	disappear ROUTE32_FRIEDA
-	variablesprite SPRITE_NEW_BARK_LYRA, SPRITE_LYRA
-	special MapCallbackSprites_LoadUsedSpritesGFX
-	moveobject ROUTE32_FRIEDA, 13, 29
-	appear ROUTE32_FRIEDA
-	applymovement ROUTE32_FRIEDA, .StepUpMovement
-	showemote EMOTE_SHOCK, ROUTE32_FRIEDA, 15
+	appear ROUTE32_LYRA
+	applymovement ROUTE32_LYRA, .StepUpMovement
+	showemote EMOTE_SHOCK, ROUTE32_LYRA, 15
 	special Special_FadeOutMusic
 	pause 15
-	applymovement ROUTE32_FRIEDA, .StepUpMovement
+	applymovement ROUTE32_LYRA, .StepUpMovement
 	end
 
 .StepUpMovement:
@@ -273,7 +270,7 @@ Route32LyraIntroducesHiddenGrottoesIntroScript:
 	step_end
 
 Route32LyraIntroducesHiddenGrottoesMainScript:
-	turnobject ROUTE32_FRIEDA, UP
+	turnobject ROUTE32_LYRA, UP
 	playmusic MUSIC_LYRA_ENCOUNTER_HGSS
 	opentext
 	writetext .GreetingText
@@ -289,11 +286,10 @@ Route32LyraIntroducesHiddenGrottoesMainScript:
 	closetext
 	playsound SFX_SANDSTORM
 	waitsfx
-	showemote EMOTE_SHOCK, ROUTE32_FRIEDA, 15
-	applymovement ROUTE32_FRIEDA, .LookAroundMovement
+	showemote EMOTE_SHOCK, ROUTE32_LYRA, 15
+	applymovement ROUTE32_LYRA, .LookAroundMovement
 	showtext .QuestionText
-	disappear ROUTE32_LASS
-	follow ROUTE32_FRIEDA, PLAYER
+	follow ROUTE32_LYRA, PLAYER
 	end
 
 .GreetingText:
@@ -347,28 +343,20 @@ Route32LyraIntroducesHiddenGrottoesMainScript:
 
 Route32LyraIntroducesHiddenGrottoesOutroScript:
 	stopfollow
-	turnobject ROUTE32_FRIEDA, UP
-	showemote EMOTE_SHOCK, ROUTE32_FRIEDA, 15
+	turnobject ROUTE32_LYRA, UP
+	showemote EMOTE_SHOCK, ROUTE32_LYRA, 15
 	pause 7
-	follow ROUTE32_FRIEDA, PLAYER
-	applyonemovement ROUTE32_FRIEDA, slow_step_up
+	follow ROUTE32_LYRA, PLAYER
+	applyonemovement ROUTE32_LYRA, slow_step_up
 	stopfollow
 	turnobject PLAYER, UP
 	pause 15
-	turnobject ROUTE32_FRIEDA, DOWN
+	turnobject ROUTE32_LYRA, DOWN
 	showtext .GrottoText
-	applymovement ROUTE32_FRIEDA, .LeaveMovement1
+	applymovement ROUTE32_LYRA, .LeaveMovement1
 	turnobject PLAYER, DOWN
-	applymovement ROUTE32_FRIEDA, .LeaveMovement2
-	disappear ROUTE32_FRIEDA
-	variablesprite SPRITE_NEW_BARK_LYRA, SPRITE_LASS
-	special MapCallbackSprites_LoadUsedSpritesGFX
-	moveobject ROUTE32_FRIEDA, 12, 67
-	checkcode VAR_WEEKDAY
-	ifnotequal FRIDAY, .Done
-	appear ROUTE32_FRIEDA
-.Done
-	appear ROUTE32_LASS
+	applymovement ROUTE32_LYRA, .LeaveMovement2
+	disappear ROUTE32_LYRA
 	setscene $2
 	playmusic MUSIC_ROUTE_30
 	end

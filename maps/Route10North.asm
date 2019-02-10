@@ -22,10 +22,10 @@ Route10North_MapScriptHeader:
 
 	db 10 ; object events
 	object_event 13, 44, SPRITE_ZAPDOS, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, Route10Zapdos, EVENT_ROUTE_10_ZAPDOS
-	object_event  6, 52, SPRITE_VERMILION_LAWRENCE, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LAWRENCE_ROUTE_10
+	object_event  6, 52, SPRITE_LAWRENCE, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LAWRENCE_ROUTE_10
 	object_event 14, 52, SPRITE_ZAPDOS, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LAWRENCES_ZAPDOS_ROUTE_10
-	object_event 12, 52, SPRITE_MOM, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CHRIS_IN_NAVEL_ROCK
-	object_event 12, 52, SPRITE_MOM, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_KRIS_IN_NAVEL_ROCK
+	object_event 12, 52, SPRITE_CHRIS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CHRIS_IN_NAVEL_ROCK
+	object_event 12, 52, SPRITE_KRIS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_KRIS_IN_NAVEL_ROCK
 	itemball_event 11,  3, FULL_RESTORE, 1, EVENT_ROUTE_10_FULL_RESTORE
 	cuttree_event  7, 21, EVENT_ROUTE_10_CUT_TREE_1
 	cuttree_event  9, 21, EVENT_ROUTE_10_CUT_TREE_2
@@ -122,8 +122,6 @@ Route10NorthLawrenceEncounter1Script:
 	waitsfx
 	pause 15
 	special Special_FadeInQuickly
-	variablesprite SPRITE_VERMILION_LAWRENCE, SPRITE_COOLTRAINER_F
-	special MapCallbackSprites_LoadUsedSpritesGFX
 	setscene $0
 	special RestartMapMusic
 	end
@@ -132,8 +130,6 @@ Route10NorthLawrenceEncounter2Script:
 	showemote EMOTE_SHOCK, PLAYER, 15
 	special Special_FadeOutMusic
 	pause 15
-	variablesprite SPRITE_VERMILION_LAWRENCE, SPRITE_LAWRENCE
-	special MapCallbackSprites_LoadUsedSpritesGFX
 	checkcode VAR_FACING
 	ifequal UP, .up
 	ifequal DOWN, .down
@@ -185,8 +181,6 @@ Route10NorthLawrenceEncounter2Script:
 	waitsfx
 	pause 15
 	special Special_FadeInQuickly
-	variablesprite SPRITE_VERMILION_LAWRENCE, SPRITE_COOLTRAINER_F
-	special MapCallbackSprites_LoadUsedSpritesGFX
 	setevent EVENT_HEARD_LAWRENCES_FINAL_SPEECH
 	clearevent EVENT_LAWRENCE_SHAMOUTI_SHRINE_RUINS
 	special RestartMapMusic
