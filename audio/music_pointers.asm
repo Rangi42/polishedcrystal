@@ -62,7 +62,7 @@ Music:
 	dba Music_PokemonMarch
 	dba Music_Lighthouse
 	dba Music_Surf
-	dba Music_SurfKanto
+	dba Music_SurfingRBY
 	dba Music_CianwoodCityHGSS
 	dba Music_Route47HGSS
 	dba Music_LookJessieJames

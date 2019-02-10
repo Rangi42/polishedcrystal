@@ -182,8 +182,8 @@ SECTION "RBY Music 2", ROMX
 INCLUDE "audio/music/rby/lavendertown.asm"
 INCLUDE "audio/music/rby/lookjessiejames.asm"
 INCLUDE "audio/music/rby/pokemontower.asm"
+INCLUDE "audio/music/rby/surfing.asm"
 INCLUDE "audio/music/rby/surfingpikachu.asm"
-INCLUDE "audio/music/rby/surfkanto.asm"
 
 
 SECTION "RSE Music 1", ROMX

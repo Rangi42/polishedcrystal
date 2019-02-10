@@ -28,7 +28,7 @@ The final, non-beta 3.0 release should include all of these.
 * Send gift Pokémon to the PC if the party is full
 * Get better Wonder Trade items at higher levels
 * Play Pokémon cry+animation when they escape a Poké Ball (from Prism)
-* Use RBY's Surf and Bike themes in Kanto
+* Use RBY's Bike theme in Kanto
 * Generate Battle Tower Pokémon
 * Generate random team for Psychic Inver
 * Wild Ghosts and the SilphScope2
