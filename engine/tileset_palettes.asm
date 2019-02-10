@@ -144,7 +144,7 @@ LoadSpecialMapPalette: ; 494ac
 
 .normal_pokecenter
 	ld hl, PokeCenterPalette
-.load_eight_bg_palettes
+.load_eight_bg_palettes:
 	ld a, $5
 	ld de, wUnknBGPals
 	ld bc, 8 palettes
@@ -527,7 +527,7 @@ LoadSpecialMapPalette: ; 494ac
 	ld a, [wMapNumber]
 	cp MAP_NAVEL_ROCK_ROOF
 	jp nz, .load_eight_bg_palettes
-.load_eight_time_of_day_bg_palettes
+.load_eight_time_of_day_bg_palettes:
 	ld a, [wTimeOfDayPal]
 	and 3
 	ld bc, 8 palettes
@@ -1877,7 +1877,7 @@ LoadSpecialMapOBPalette:
 	cp MAP_ROCK_TUNNEL_2F
 	jr nz, .not_rock_tunnel_2f
 	ld hl, RockTunnelOBPalette_Tree
-	jr .load_tree_palette
+	jp .load_tree_palette
 
 .not_rock_tunnel_2f:
 	ld a, [wMapGroup]
@@ -1887,9 +1887,23 @@ LoadSpecialMapOBPalette:
 	cp MAP_LYRAS_HOUSE_2F
 	jr nz, .not_lyras_house_2f
 	ld hl, LyrasHouse2FOBPalette_Rock
-	jr .load_rock_palette
+	jp .load_rock_palette
 
 .not_lyras_house_2f:
+	ld a, [wMapGroup]
+	cp GROUP_GOLDENROD_HARBOR
+	jr nz, .not_goldenrod_harbor
+	ld a, [wMapNumber]
+	cp MAP_GOLDENROD_HARBOR
+	jr nz, .not_goldenrod_harbor
+	ld hl, GoldenrodHarborOBPalette_Tree
+	ld a, [wTimeOfDayPal]
+	and 3
+	ld bc, 1 palettes
+	rst AddNTimes
+	jp .load_tree_palette
+
+.not_goldenrod_harbor:
 	ld a, [wMapGroup]
 	cp GROUP_GOLDENROD_POKECOM_CENTER_1F ; GROUP_GOLDENROD_POKECOM_CENTER_OFFICE, GROUP_GOLDENROD_MUSEUM_1F, GROUP_GOLDENROD_MUSEUM_2F
 	jr nz, .not_goldenrod
@@ -1993,6 +2007,29 @@ if !DEF(MONOCHROME)
 	RGB 07, 07, 07
 else
 	MONOCHROME_RGB_FOUR
+endc
+
+GoldenrodHarborOBPalette_Tree:
+if !DEF(MONOCHROME)
+; morn
+	RGB 28, 31, 16
+	RGB 28, 31, 16
+	RGB 18, 19, 31
+	RGB 07, 07, 07
+; day
+	RGB 27, 31, 27
+	RGB 27, 31, 27
+	RGB 18, 19, 31
+	RGB 07, 07, 07
+; nite
+	RGB 15, 14, 24
+	RGB 15, 14, 24
+	RGB 10, 09, 20
+	RGB 00, 00, 00
+else
+	MONOCHROME_RGB_FOUR_OW
+	MONOCHROME_RGB_FOUR_OW
+	MONOCHROME_RGB_FOUR_OW_NIGHT
 endc
 
 PokecomCenter1FOBPalette_Rock:

@@ -117,6 +117,8 @@ MAPOBJECT_SCREEN_WIDTH EQU 12
 	const SPRITEMOVEDATA_ARCH_TREE_UP         ; 26
 	const SPRITEMOVEDATA_ARCH_TREE_LEFT       ; 27
 	const SPRITEMOVEDATA_ARCH_TREE_RIGHT      ; 28
+	const SPRITEMOVEDATA_SAILBOAT_TOP         ; 29
+	const SPRITEMOVEDATA_SAILBOAT_BOTTOM      ; 2a
 NUM_SPRITEMOVEDATA EQU const_value
 SPRITEMOVEDATA_FIELDS EQU 6
 
@@ -150,6 +152,8 @@ SPRITEMOVEDATA_FIELDS EQU 6
 	const SPRITEMOVEFN_STANDING_FLIP         ; 18
 	const SPRITEMOVEFN_POKECOM_NEWS          ; 19
 	const SPRITEMOVEFN_ARCH_TREE             ; 1a
+	const SPRITEMOVEFN_SAILBOAT_TOP          ; 1b
+	const SPRITEMOVEFN_SAILBOAT_BOTTOM       ; 1c
 
 ; sprite step types
 ; see engine/map_objects.asm:StepTypesJumptable
@@ -179,29 +183,31 @@ SPRITEMOVEDATA_FIELDS EQU 6
 
 ; see engine/map_object_action.asm:Pointers445f
 	const_def
-	const PERSON_ACTION_00            ; 00
-	const PERSON_ACTION_STAND         ; 01
-	const PERSON_ACTION_STEP          ; 02
-	const PERSON_ACTION_BUMP          ; 03
-	const PERSON_ACTION_SPIN          ; 04
-	const PERSON_ACTION_SPIN_FLICKER  ; 05
-	const PERSON_ACTION_FISHING       ; 06
-	const PERSON_ACTION_SHADOW        ; 07
-	const PERSON_ACTION_EMOTE         ; 08
-	const PERSON_ACTION_BIG_SNORLAX   ; 09
-	const PERSON_ACTION_BOUNCE        ; 0a
-	const PERSON_ACTION_WEIRD_TREE    ; 0b
-	const PERSON_ACTION_BIG_DOLL      ; 0c
-	const PERSON_ACTION_BOULDER_DUST  ; 0d
-	const PERSON_ACTION_GRASS_SHAKE   ; 0e
-	const PERSON_ACTION_PUDDLE_SPLASH ; 0f
-	const PERSON_ACTION_CUT_TREE      ; 10
-	const PERSON_ACTION_SKYFALL       ; 11
-	const PERSON_ACTION_BIG_GYARADOS  ; 12
-	const PERSON_ACTION_STAND_FLIP    ; 13
-	const PERSON_ACTION_POKECOM_NEWS  ; 14
-	const PERSON_ACTION_ARCH_TREE     ; 15
-	const PERSON_ACTION_RUN           ; 16
+	const PERSON_ACTION_00              ; 00
+	const PERSON_ACTION_STAND           ; 01
+	const PERSON_ACTION_STEP            ; 02
+	const PERSON_ACTION_BUMP            ; 03
+	const PERSON_ACTION_SPIN            ; 04
+	const PERSON_ACTION_SPIN_FLICKER    ; 05
+	const PERSON_ACTION_FISHING         ; 06
+	const PERSON_ACTION_SHADOW          ; 07
+	const PERSON_ACTION_EMOTE           ; 08
+	const PERSON_ACTION_BIG_SNORLAX     ; 09
+	const PERSON_ACTION_BOUNCE          ; 0a
+	const PERSON_ACTION_WEIRD_TREE      ; 0b
+	const PERSON_ACTION_BIG_DOLL        ; 0c
+	const PERSON_ACTION_BOULDER_DUST    ; 0d
+	const PERSON_ACTION_GRASS_SHAKE     ; 0e
+	const PERSON_ACTION_PUDDLE_SPLASH   ; 0f
+	const PERSON_ACTION_CUT_TREE        ; 10
+	const PERSON_ACTION_SKYFALL         ; 11
+	const PERSON_ACTION_BIG_GYARADOS    ; 12
+	const PERSON_ACTION_STAND_FLIP      ; 13
+	const PERSON_ACTION_POKECOM_NEWS    ; 14
+	const PERSON_ACTION_ARCH_TREE       ; 15
+	const PERSON_ACTION_RUN             ; 16
+	const PERSON_ACTION_SAILBOAT_TOP    ; 17
+	const PERSON_ACTION_SAILBOAT_BOTTOM ; 18
 
 ; see data/sprites/facings.asm:Facings
 	const_def
@@ -249,3 +255,5 @@ SPRITEMOVEDATA_FIELDS EQU 6
 	const FACING_ARCH_TREE_UP    ; 29
 	const FACING_ARCH_TREE_LEFT  ; 2a
 	const FACING_ARCH_TREE_RIGHT ; 2b
+	const FACING_SAILBOAT_TOP    ; 2c
+	const FACING_SAILBOAT_BOTTOM ; 2d

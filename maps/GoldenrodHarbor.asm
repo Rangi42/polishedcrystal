@@ -14,7 +14,7 @@ GoldenrodHarbor_MapScriptHeader:
 	bg_event 28, 15, SIGNPOST_JUMPTEXT, GoldenrodHarborCrateSignText
 	bg_event 22, 21, SIGNPOST_ITEM + REVIVE, EVENT_GOLDENROD_HARBOR_HIDDEN_REVIVE
 
-	db 12 ; object events
+	db 14 ; object events
 	object_event 17,  3, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_SCRIPT, 0, GoldenrodHarborFisherScript, -1
 	object_event 13,  5, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerFisherPaton, -1
 	itemball_event 13,  3, STAR_PIECE, 1, EVENT_GOLDENROD_HARBOR_STAR_PIECE
@@ -27,6 +27,8 @@ GoldenrodHarbor_MapScriptHeader:
 	object_event 31,  8, SPRITE_SWIMMER_GIRL, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_GENERICTRAINER, 5, GenericTrainerSwimmerfKatie, -1
 	object_event 18, 28, SPRITE_SWIMMER_GUY, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerSwimmermJames, -1
 	object_event 18, 19, SPRITE_LASS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, GoldenrodHarborLass2Text, -1
+	object_event  6, 26, SPRITE_SAILBOAT_TOP, SPRITEMOVEDATA_SAILBOAT_TOP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, end, NULL, -1
+	object_event  6, 26, SPRITE_SAILBOAT_BOTTOM, SPRITEMOVEDATA_SAILBOAT_BOTTOM, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, end, NULL, -1
 
 GoldenrodHarborFisherScript:
 	faceplayer

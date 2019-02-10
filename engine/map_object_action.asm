@@ -22,6 +22,8 @@ Pointers445f: ; 445f
 	dw SetFacingPokecomNews,           SetFacingPokecomNews       ; PERSON_ACTION_POKECOM_NEWS
 	dw SetFacingArchTree,              SetFacingArchTree          ; PERSON_ACTION_ARCH_TREE
 	dw SetFacingRun,                   SetFacingCurrent           ; PERSON_ACTION_RUN
+	dw SetFacingSailboatTop,           SetFacingSailboatTop       ; PERSON_ACTION_SAILBOAT_TOP
+	dw SetFacingSailboatBottom,        SetFacingSailboatBottom    ; PERSON_ACTION_SAILBOAT_BOTTOM
 ; 44a3
 
 SetFacingStanding: ; 44a3
@@ -50,6 +52,14 @@ SetFacingCutTree:
 
 SetFacingPokecomNews:
 	ld a, FACING_POKECOM_NEWS
+	jr SetFixedFacing
+
+SetFacingSailboatTop:
+	ld a, FACING_SAILBOAT_TOP
+	jr SetFixedFacing
+
+SetFacingSailboatBottom:
+	ld a, FACING_SAILBOAT_BOTTOM
 	jr SetFixedFacing
 
 SetFacingBigDoll: ; 45c5
