@@ -4,6 +4,8 @@ _ReplaceKrisSprite:: ; 14135
 	ld [hUsedSpriteIndex], a
 	xor a
 	ld [hUsedSpriteTile], a
+	ld hl, wSpriteFlags
+	res 5, [hl]
 	jp GetUsedSprite
 ; 14146
 
