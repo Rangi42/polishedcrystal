@@ -698,13 +698,18 @@ PartyMenuSelect: ; 0x50457
 
 	ld de, SFX_READ_TEXT_2
 	call PlaySFX
+	push bc
+	call SFXDelay2
+	pop bc
 	and a
 	ret
 
 .exitmenu
 	ld de, SFX_READ_TEXT_2
 	call PlaySFX
+	push bc
 	call SFXDelay2
+	pop bc
 	scf
 	ret
 ; 0x5049a

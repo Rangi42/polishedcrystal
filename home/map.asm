@@ -40,15 +40,12 @@ GetCurrentMapTrigger:: ; 212a
 	ret
 ; 2147
 
-GetMapTrigger:: ; 2147
+GetMapTrigger::
 ; Searches the trigger table for the map group and number loaded in bc, and returns the wram pointer in de.
 ; If the map is not in the trigger table, returns carry.
-	push bc
-	ld a, [hROMBank]
-	push af
-	ld a, BANK(MapTriggers)
-	rst Bankswitch
+	anonbankpush MapTriggers
 
+.Function:
 	ld hl, MapTriggers
 	ld de, 4
 	jr .handleLoop
@@ -73,13 +70,7 @@ GetMapTrigger:: ; 2147
 	scf
 .done
 	pop hl
-	pop bc
-	ld a, b
-	rst Bankswitch
-
-	pop bc
 	ret
-; 2173
 
 OverworldTextModeSwitch::
 	call LoadMapPart

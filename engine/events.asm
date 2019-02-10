@@ -470,6 +470,9 @@ PlayTalkObject: ; 969ac
 	ld de, SFX_READ_TEXT_2
 	call PlaySFX
 	pop de
+	push bc
+	call SFXDelay2
+	pop bc
 	ret
 ; 969b5
 

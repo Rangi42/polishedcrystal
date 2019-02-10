@@ -421,7 +421,6 @@ WriteVTileSourceAndDestinationAndReturn:
 
 AnimateTileset::
 ; Only call during the first fifth of VBlank
-
 	ld a, [hMapAnims]
 	and a
 	ret z
