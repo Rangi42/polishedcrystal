@@ -527,7 +527,11 @@ SpecialMapMusic:: ; 3d62
 	ret
 
 .surf
+	call GetCurrentLandmark
+	cp KANTO_LANDMARK
 	ld de, MUSIC_SURF
+	ret c
+	ld de, MUSIC_SURF_KANTO
 	scf
 	ret
 
