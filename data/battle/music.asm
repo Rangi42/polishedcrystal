@@ -95,7 +95,7 @@ PlayBattleMusic: ; 2ee6c
 
 .getregionmusicfromarray
 	push hl
-	farcall RegionCheck
+	call RegionCheck
 	pop hl
 	ld a, e
 	and a ; Johto

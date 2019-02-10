@@ -6953,7 +6953,7 @@ endr
 	jr nz, .Magikarp
 
 .yes_ekans
-	farcall RegionCheck
+	call RegionCheck
 	ld a, e
 	ld d, ARBOK_JOHTO_FORM
 	and a

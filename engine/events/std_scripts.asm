@@ -251,7 +251,7 @@ RadioOffAirScript:
 	farjumptext RadioOffAirText
 
 IsKantoRadioOffAir:
-	farcall RegionCheck
+	call RegionCheck
 	ld a, e
 	cp KANTO_REGION
 	jr nz, .no

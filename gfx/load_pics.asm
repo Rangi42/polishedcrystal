@@ -14,7 +14,7 @@ GetVariant: ; 51040
 	jr nz, .not_kanto_arbok
 	push bc
 	push de
-	farcall RegionCheck
+	call RegionCheck
 	ld a, e
 	pop de
 	pop bc

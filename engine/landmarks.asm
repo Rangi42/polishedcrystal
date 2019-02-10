@@ -48,26 +48,3 @@ GetLandmarkName:: ; 0x1ca8a5
 
 
 INCLUDE "data/maps/landmarks.asm"
-
-
-RegionCheck: ; 0x1caea1
-; Checks if the player is in Kanto or Johto.
-; If in Johto, returns 0 in e.
-; If in Kanto, returns 1 in e.
-; If on Shamouti Island, returns 2 in e.
-	call GetCurrentLandmark
-	cp SHAMOUTI_LANDMARK
-	jr nc, .shamouti
-	cp KANTO_LANDMARK
-	jr nc, .kanto
-.johto
-	ld e, JOHTO_REGION
-	ret
-
-.shamouti
-	ld e, ORANGE_REGION
-	ret
-
-.kanto
-	ld e, KANTO_REGION
-	ret

@@ -2293,6 +2293,21 @@ GetBackupLandmark::
 	ld c, a
 	jp GetWorldMapLocation
 
+RegionCheck::
+; Checks if the player is in Kanto or Johto.
+; If in Johto, returns 0 in e.
+; If in Kanto, returns 1 in e.
+; If on Shamouti Island, returns 2 in e.
+	call GetCurrentLandmark
+	ld e, ORANGE_REGION
+	cp SHAMOUTI_LANDMARK
+	ret nc
+	dec e ; KANTO_REGION
+	cp KANTO_LANDMARK
+	ret nc
+	dec e ; JOHTO_REGION
+	ret
+
 GetMapHeaderMusic:: ; 2cbd
 	push hl
 	push bc

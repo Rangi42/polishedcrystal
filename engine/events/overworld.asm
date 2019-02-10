@@ -1887,33 +1887,6 @@ BikeFunction: ; d0b3
 	scf
 	ret
 
-GetBikeMusic::
-	ld de, MUSIC_BICYCLE_XY
-	ld a, [wMapGroup]
-	cp GROUP_ROUTE_17 ; GROUP_ROUTE_18_WEST
-	jr nz, .not_cycling_road
-	ld a, [wMapNumber]
-	cp MAP_ROUTE_17
-	ret z
-	cp MAP_ROUTE_18_WEST
-	ret z
-	ld a, [wMapGroup]
-.not_cycling_road
-	ld de, MUSIC_NONE
-	cp GROUP_QUIET_CAVE_1F ; GROUP_QUIET_CAVE_B1F, GROUP_QUIET_CAVE_B2F, GROUP_QUIET_CAVE_B3F
-	jr nz, .not_quiet_cave
-	cp MAP_QUIET_CAVE_1F
-	ret z
-	cp MAP_QUIET_CAVE_B1F
-	ret z
-	cp MAP_QUIET_CAVE_B2F
-	ret z
-	cp MAP_QUIET_CAVE_B3F
-	ret z
-.not_quiet_cave
-	ld de, MUSIC_BICYCLE
-	ret
-
 Script_GetOnBike: ; 0xd13e
 	reloadmappart
 	special UpdateTimePals

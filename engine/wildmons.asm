@@ -652,7 +652,7 @@ _WaterWildmonLookup: ; 2a21d
 	jr _NormalWildmonOK
 
 _GetGrassWildmonPointer:
-	farcall RegionCheck
+	call RegionCheck
 	ld a, e
 	ld hl, JohtoGrassWildMons
 	and a ; cp JOHTO_REGION
@@ -664,7 +664,7 @@ _GetGrassWildmonPointer:
 	ret
 
 _GetWaterWildmonPointer:
-	farcall RegionCheck
+	call RegionCheck
 	ld a, e
 	ld hl, JohtoWaterWildMons
 	and a ; cp JOHTO_REGION
