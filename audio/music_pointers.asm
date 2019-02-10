@@ -102,6 +102,7 @@ Music:
 	dba Music_CeladonCity
 	dba Music_GameCornerDPPt
 	dba Music_CanalaveCityDPPt
+	dba Music_BicycleRB
 	dba Music_BicycleXY
 	dba Music_Route12
 	dba Music_PokeFluteChannel

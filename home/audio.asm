@@ -517,7 +517,11 @@ SpecialMapMusic:: ; 3d62
 	ret
 
 .bike
+	call GetCurrentLandmark
+	cp KANTO_LANDMARK
 	ld de, MUSIC_BICYCLE
+	ret c
+	ld de, MUSIC_BICYCLE_RB
 	scf
 	ret
 

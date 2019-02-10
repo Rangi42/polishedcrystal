@@ -175,6 +175,7 @@ INCLUDE "audio/music/rby/ceruleancave.asm"
 INCLUDE "audio/music/rby/cinnabarmansion.asm"
 INCLUDE "audio/music/rby/diglettscave.asm"
 INCLUDE "audio/music/rby/indigoplateau.asm"
+INCLUDE "audio/music/rby/bikeriding.asm"
 
 
 SECTION "RBY Music 2", ROMX
