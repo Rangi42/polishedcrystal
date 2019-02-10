@@ -471,7 +471,8 @@ PlayTalkObject: ; 969ac
 	call PlaySFX
 	pop de
 	push bc
-	call SFXDelay2
+	ld c, 3
+	call SFXDelayFrames
 	pop bc
 	ret
 ; 969b5
