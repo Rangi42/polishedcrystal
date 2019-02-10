@@ -112,6 +112,7 @@ MapRuinsofAlphKabutoChamberSignpost3Script:
 	unowntypeface
 	showtext UnknownText_0x58b3f
 	restoretypeface
+	special MapCallbackSprites_LoadUsedSpritesGFX
 	end
 
 MapRuinsofAlphKabutoChamberSignpost5Script:

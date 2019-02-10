@@ -61,6 +61,9 @@ GetPlayerSprite: ; 14183
 ; 141c9
 
 
+MapCallbackSprites_LoadUsedSpritesGFX: ; 14209
+	ld a, MAPCALLBACK_SPRITES
+	call RunMapCallback
 ReloadVisibleSprites::
 	push hl
 	push de
@@ -110,11 +113,6 @@ ReloadSpriteIndex::
 	jr nz, .loop
 	pop bc
 	ret
-
-MapCallbackSprites_LoadUsedSpritesGFX: ; 14209
-	ld a, MAPCALLBACK_SPRITES
-	call RunMapCallback
-	call ReloadVisibleSprites
 
 LoadEmoteGFX::
 	ld a, [wSpriteFlags]

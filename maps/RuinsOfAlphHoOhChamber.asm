@@ -89,6 +89,7 @@ MapRuinsofAlphHoOhChamberSignpost3Script:
 	unowntypeface
 	showtext UnknownText_0x586aa
 	restoretypeface
+	special MapCallbackSprites_LoadUsedSpritesGFX
 	end
 
 MapRuinsofAlphHoOhChamberSignpost5Script:

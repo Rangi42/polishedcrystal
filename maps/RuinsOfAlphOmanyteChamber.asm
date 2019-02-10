@@ -89,6 +89,7 @@ MapRuinsofAlphOmanyteChamberSignpost3Script:
 	unowntypeface
 	showtext UnknownText_0x58d26
 	restoretypeface
+	special MapCallbackSprites_LoadUsedSpritesGFX
 	end
 
 MapRuinsofAlphOmanyteChamberSignpost5Script:
