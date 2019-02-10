@@ -335,6 +335,7 @@ wTempMon::
 	party_struct wTempMon
 
 wSpriteFlags:: ds 1
+; 5: use vbk1 if set, otherwise vbk0
 
 wHandlePlayerStep:: ds 2
 
