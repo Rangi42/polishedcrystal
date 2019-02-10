@@ -1819,19 +1819,7 @@ BikeFunction: ; d0b3
 	ld hl, Script_GetOnBike
 	ld de, Script_GetOnBike_Register
 	call .CheckIfRegistered
-	call QueueScript
-	xor a
-	ld [wMusicFade], a
-	ld de, MUSIC_NONE
-	call PlayMusic
-	call DelayFrame
-	call MaxVolume
-	call GetBikeMusic
-	ld a, e
-	ld [wMapMusic], a
-	call PlayMusic
-	ld a, $1
-	ret
+	jr .done
 
 .GetOffBike:
 	ld hl, wBikeFlags
@@ -1840,7 +1828,6 @@ BikeFunction: ; d0b3
 	ld hl, Script_GetOffBike
 	ld de, Script_GetOffBike_Register
 	call .CheckIfRegistered
-	ld a, BANK(Script_GetOffBike)
 	jr .done
 
 .CantGetOffBike:
@@ -1893,15 +1880,15 @@ Script_GetOnBike: ; 0xd13e
 	writecode VAR_MOVEMENT, PLAYER_BIKE
 	writetext GotOnTheBikeText
 	waitbutton
+FinishGettingOnBike:
 	closetext
 	special ReplaceKrisSprite
+	special PlayMapMusic
 	end
 
 Script_GetOnBike_Register: ; 0xd14e
 	writecode VAR_MOVEMENT, PLAYER_BIKE
-	closetext
-	special ReplaceKrisSprite
-	end
+	jump FinishGettingOnBike
 
 Script_GetOffBike: ; 0xd158
 	reloadmappart
@@ -1909,7 +1896,6 @@ Script_GetOffBike: ; 0xd158
 	writecode VAR_MOVEMENT, PLAYER_NORMAL
 	writetext GotOffTheBikeText
 	waitbutton
-
 FinishGettingOffBike:
 	closetext
 	special ReplaceKrisSprite

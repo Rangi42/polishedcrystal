@@ -71,6 +71,14 @@ GLOBAL LoadMusicByte
 ; 3b97
 
 
+PlayMusicAfterDelay::
+	push de
+	ld de, MUSIC_NONE
+	call PlayMusic
+	call DelayFrame
+	pop de
+	ld a, e
+	ld [wMapMusic], a
 PlayMusic:: ; 3b97
 ; Play music de.
 
@@ -368,18 +376,8 @@ PlayMapMusic:: ; 3cdf
 	call GetMapMusic
 	ld a, [wMapMusic]
 	cp e
-	jr z, .done
+	call nz, PlayMusicAfterDelay
 
-	push de
-	ld de, MUSIC_NONE
-	call PlayMusic
-	call DelayFrame
-	pop de
-	ld a, e
-	ld [wMapMusic], a
-	call PlayMusic
-
-.done
 	pop af
 	pop bc
 	pop de
@@ -396,18 +394,7 @@ EnterMapMusic:: ; 3d03
 	xor a
 	ld [wDontPlayMapMusicOnReload], a
 	call GetMapMusic
-	ld a, [wPlayerState]
-	cp PLAYER_BIKE
-	call z, GetBikeMusic
-	push de
-	ld de, MUSIC_NONE
-	call PlayMusic
-	call DelayFrame
-	pop de
-
-	ld a, e
-	ld [wMapMusic], a
-	call PlayMusic
+	call PlayMusicAfterDelay
 
 	pop af
 	pop bc
@@ -449,144 +436,99 @@ RestartMapMusic:: ; 3d47
 	ret
 ; 3d62
 
-SpecialMapMusic:: ; 3d62
+GetMapMusic::
+	ld hl, SpecialMusicMaps
 	ld a, [wMapGroup]
-	cp GROUP_ROUTE_23
-	jr nz, .not_route_23
+	ld b, a
 	ld a, [wMapNumber]
-	cp MAP_ROUTE_23
-	jr z, .no
+	ld c, a
+.loop:
+	ld a, [hli]
+	and a
+	jr z, GetPlayerStateMusic
+	cp b
+	jr nz, .wrong_group
+	ld a, [hli]
+	cp c
+	jr nz, .wrong_map
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	jp hl
 
-.not_route_23
-	ld a, [wMapGroup]
-	cp GROUP_QUIET_CAVE_1F ; GROUP_QUIET_CAVE_B1F, GROUP_QUIET_CAVE_B2F, GROUP_QUIET_CAVE_B3F
-	jr nz, .not_quiet_cave
-	ld a, [wMapNumber]
-	cp MAP_QUIET_CAVE_1F
-	jr z, .no
-	cp MAP_QUIET_CAVE_B1F
-	jr z, .no
-	cp MAP_QUIET_CAVE_B2F
-	jr z, .no
-	cp MAP_QUIET_CAVE_B3F
-	jr z, .no
+.wrong_group:
+	inc hl
+.wrong_map:
+	inc hl
+	inc hl
+	jr .loop
 
-.not_quiet_cave
-	ld a, [wMapGroup]
-	cp GROUP_SCARY_CAVE_SHIPWRECK
-	jr nz, .not_shipwreck
-	ld a, [wMapNumber]
-	cp MAP_SCARY_CAVE_SHIPWRECK
-	jr z, .no
-
-.not_shipwreck
-	ld a, [wMapGroup]
-	cp GROUP_WHIRL_ISLAND_LUGIA_CHAMBER
-	jr nz, .not_lugia_chamber
-	ld a, [wMapNumber]
-	cp MAP_WHIRL_ISLAND_LUGIA_CHAMBER
-	jr z, .no
-
-.not_lugia_chamber
-	ld a, [wMapGroup]
-	cp GROUP_ROUTE_16_SOUTH ; GROUP_ROUTE_18_WEST
-	jr nz, .not_cycling_road_bike
-	ld a, [wMapNumber]
-	cp MAP_ROUTE_16_SOUTH
-	jr z, .route_16
-	cp MAP_ROUTE_18_WEST
-	jr nz, .not_cycling_road_bike
-.route_16
+GetCyclingRoadMusic:
+	ld de, MUSIC_BICYCLE_XY
 	ld a, [wPlayerState]
 	cp PLAYER_BIKE
-	jr z, .cycling_road_bike
+	ret z
+	jr GetPlayerStateMusic
 
-.not_cycling_road_bike
+GetBugCatchingContestMusic:
+	ld de, MUSIC_BUG_CATCHING_CONTEST_RANKING
+	ld a, [wStatusFlags2]
+	bit 2, a ; ENGINE_BUG_CONTEST_TIMER
+	ret nz
+	; fallthrough
+
+GetPlayerStateMusic:
 	ld a, [wPlayerState]
+	cp PLAYER_BIKE
+	jr z, .bike
 	cp PLAYER_SURF
 	jr z, .surf
 	cp PLAYER_SURF_PIKA
 	jr z, .surf_pikachu
-
-	ld a, [wStatusFlags2]
-	bit 2, a ; ENGINE_BUG_CONTEST_TIMER
-	jr nz, .contest
-
-.no
-	and a
-	ret
-
-.cycling_road_bike
-	ld de, MUSIC_BICYCLE_XY
-	scf
-	ret
-
-.surf
-	call GetCurrentLandmark
-	cp KANTO_REGION
-	ld de, MUSIC_SURF
-	ret z
-	ld de, MUSIC_SURF_KANTO
-	scf
-	ret
-
-.surf_pikachu
-	ld de, MUSIC_SURFING_PIKACHU
-	scf
-	ret
-
-.contest
-	ld a, [wMapGroup]
-	cp GROUP_ROUTE_35_NATIONAL_PARK_GATE
-	jr nz, .no
-	ld a, [wMapNumber]
-	cp MAP_ROUTE_35_NATIONAL_PARK_GATE
-	jr z, .ranking
-	cp MAP_ROUTE_36_NATIONAL_PARK_GATE
-	jr nz, .no
-
-.ranking
-	ld de, MUSIC_BUG_CATCHING_CONTEST_RANKING
-	scf
-	ret
-; 3d97
-
-GetBikeMusic::
-	ld de, MUSIC_BICYCLE_XY
-	ld a, [wMapGroup]
-	cp GROUP_ROUTE_17 ; GROUP_ROUTE_18_WEST
-	jr nz, .not_cycling_road
-	ld a, [wMapNumber]
-	cp MAP_ROUTE_17
-	ret z
-	cp MAP_ROUTE_18_WEST
-	ret z
-	ld a, [wMapGroup]
-.not_cycling_road
-	ld de, MUSIC_NONE
-	cp GROUP_QUIET_CAVE_1F ; GROUP_QUIET_CAVE_B1F, GROUP_QUIET_CAVE_B2F, GROUP_QUIET_CAVE_B3F
-	jr nz, .not_quiet_cave
-	cp MAP_QUIET_CAVE_1F
-	ret z
-	cp MAP_QUIET_CAVE_B1F
-	ret z
-	cp MAP_QUIET_CAVE_B2F
-	ret z
-	cp MAP_QUIET_CAVE_B3F
-	ret z
-.not_quiet_cave
-	call RegionCheck
-	cp KANTO_REGION
-	ld de, MUSIC_BICYCLE
-	ret z
-	ld de, MUSIC_BICYCLE_RB
-	ret
-
-GetMapMusic:: ; 3d97
-	call SpecialMapMusic
-	ret c
 	jp GetMapHeaderMusic
-; 3d9f
+
+.bike:
+	call RegionCheck
+	ld a, e
+	ld de, MUSIC_BICYCLE_RB
+	cp KANTO_REGION
+	ret z
+	ld de, MUSIC_BICYCLE
+	ret
+
+.surf:
+	call RegionCheck
+	ld a, e
+	ld de, MUSIC_SURF_KANTO
+	cp KANTO_REGION
+	ret z
+	ld de, MUSIC_SURF
+	ret
+
+.surf_pikachu:
+	ld de, MUSIC_SURFING_PIKACHU
+	ret
+
+SpecialMusicMaps:
+music_map: MACRO
+	map_id \1
+	dw \2
+ENDM
+	music_map ROUTE_23, GetMapHeaderMusic
+	music_map INDIGO_PLATEAU, GetMapHeaderMusic
+	music_map QUIET_CAVE_1F, GetMapHeaderMusic
+	music_map QUIET_CAVE_B1F, GetMapHeaderMusic
+	music_map QUIET_CAVE_B2F, GetMapHeaderMusic
+	music_map QUIET_CAVE_B3F, GetMapHeaderMusic
+	music_map SCARY_CAVE_SHIPWRECK, GetMapHeaderMusic
+	music_map WHIRL_ISLAND_LUGIA_CHAMBER, GetMapHeaderMusic
+	music_map TIN_TOWER_ROOF, GetMapHeaderMusic
+	music_map ROUTE_16_SOUTH, GetCyclingRoadMusic
+	music_map ROUTE_17, GetCyclingRoadMusic
+	music_map ROUTE_18_WEST, GetCyclingRoadMusic
+	music_map ROUTE_35_NATIONAL_PARK_GATE, GetBugCatchingContestMusic
+	music_map ROUTE_36_NATIONAL_PARK_GATE, GetBugCatchingContestMusic
+	db 0 ; end
 
 CheckSFX:: ; 3dde
 ; Return carry if any SFX channels are active.
