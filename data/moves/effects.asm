@@ -549,7 +549,6 @@ IronTail:
 	endmove
 
 BrickBreak:
-RockSmash:
 	checkobedience
 	usedmovetext
 	doturn
