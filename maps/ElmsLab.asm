@@ -397,7 +397,6 @@ ElmAfterTheftScript:
 	setmapscene ROUTE_29, $1
 	clearevent EVENT_ROUTE_30_YOUNGSTER_JOEY
 	setevent EVENT_ROUTE_30_BATTLE
-	variablesprite SPRITE_ROUTE_30_RATTATA, SPRITE_SUICUNE
 	setscene $2
 	jumpopenedtext ElmAfterTheftText6
 

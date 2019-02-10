@@ -21,8 +21,8 @@ CherrygroveCity_MapScriptHeader:
 	bg_event 23,  9, SIGNPOST_JUMPTEXT, GuideGentsHouseSignText
 
 	db 6 ; object events
-	object_event 32,  6, SPRITE_GUIDE_GENT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_SCRIPT, 0, CherrygroveCityGuideGent, EVENT_GUIDE_GENT_IN_HIS_HOUSE
-	object_event 39,  6, SPRITE_CHERRYGROVE_RIVAL, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_CHERRYGROVE_CITY
+	object_event 32,  6, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_SCRIPT, 0, CherrygroveCityGuideGent, EVENT_GUIDE_GENT_IN_HIS_HOUSE
+	object_event 39,  6, SPRITE_SILVER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_CHERRYGROVE_CITY
 	object_event 25, 13, SPRITE_TEACHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 1, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, CherrygroveTeacherText_HaveMapCard, -1
 	object_event 23,  7, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, CherrygroveYoungsterScript, -1
 	object_event  7, 12, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_SCRIPT, 0, MysticWaterGuy, -1
@@ -71,7 +71,7 @@ CherrygroveCityGuideGent:
 	waitbutton
 	closetext
 	stopfollow
-	special RestartMapMusic
+	playmusic MUSIC_CHERRYGROVE_CITY
 	turnobject PLAYER, UP
 	applymovement CHERRYGROVECITY_GRAMPS, GuideGentMovement6
 	playsound SFX_ENTER_DOOR
@@ -96,7 +96,6 @@ CherrygroveSilverTriggerNorth:
 	turnobject PLAYER, RIGHT
 	playmusic MUSIC_RIVAL_ENCOUNTER
 	showtext UnknownText_0x19c4e2
-	variablesprite SPRITE_CHERRYGROVE_RIVAL, SPRITE_BUG_CATCHER
 	checkevent EVENT_GOT_TOTODILE_FROM_ELM
 	iftrue .Totodile
 	checkevent EVENT_GOT_CHIKORITA_FROM_ELM
@@ -106,7 +105,6 @@ CherrygroveSilverTriggerNorth:
 	loadtrainer RIVAL0, 3
 	writecode VAR_BATTLETYPE, BATTLETYPE_CANLOSE
 	startbattle
-	variablesprite SPRITE_CHERRYGROVE_RIVAL, SPRITE_SILVER
 	setevent EVENT_RIVAL_CHERRYGROVE_CITY
 	reloadmap
 	jump .FinishRival
@@ -118,7 +116,6 @@ CherrygroveSilverTriggerNorth:
 	writecode VAR_BATTLETYPE, BATTLETYPE_CANLOSE
 	startbattle
 	dontrestartmapmusic
-	variablesprite SPRITE_CHERRYGROVE_RIVAL, SPRITE_SILVER
 	setevent EVENT_RIVAL_CHERRYGROVE_CITY
 	reloadmap
 	jump .FinishRival
@@ -130,7 +127,6 @@ CherrygroveSilverTriggerNorth:
 	writecode VAR_BATTLETYPE, BATTLETYPE_CANLOSE
 	startbattle
 	dontrestartmapmusic
-	variablesprite SPRITE_CHERRYGROVE_RIVAL, SPRITE_SILVER
 	setevent EVENT_RIVAL_CHERRYGROVE_CITY
 	reloadmap
 .FinishRival:
@@ -144,8 +140,6 @@ CherrygroveSilverTriggerNorth:
 	turnobject PLAYER, LEFT
 	applymovement CHERRYGROVECITY_SILVER, CherrygroveCity_RivalExitsStageLeft
 	disappear CHERRYGROVECITY_SILVER
-	variablesprite SPRITE_CHERRYGROVE_RIVAL, SPRITE_BUG_CATCHER
-	special MapCallbackSprites_LoadUsedSpritesGFX
 	special HealPartyEvenForNuzlocke
 	setscene $2
 	playmusic MUSIC_CHERRYGROVE_CITY

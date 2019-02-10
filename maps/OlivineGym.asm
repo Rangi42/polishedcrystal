@@ -39,7 +39,6 @@ JasmineScript_0x9c12f:
 	setflag ENGINE_MINERALBADGE
 	callstd goldenrodrockets
 	setmapscene ROUTE_42, $1
-	variablesprite SPRITE_NEW_BARK_TEACHER, SPRITE_POKEFAN_M
 .FightDone:
 	checkevent EVENT_GOT_TM23_IRON_TAIL
 	iftrue_jumpopenedtext UnknownText_0x9c3d1

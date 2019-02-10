@@ -26,12 +26,12 @@ Route42_MapScriptHeader:
 	bg_event 16, 11, SIGNPOST_ITEM + MAX_POTION, EVENT_ROUTE_42_HIDDEN_MAX_POTION
 
 	db 13 ; object events
-	object_event 26, 16, SPRITE_ROUTE_30_RATTATA, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_SAW_SUICUNE_ON_ROUTE_42
-	object_event 10,  5, SPRITE_NEW_BARK_LYRA, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LYRA_ROUTE_42
+	object_event 26, 16, SPRITE_SUICUNE, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_SAW_SUICUNE_ON_ROUTE_42
+	object_event 10,  5, SPRITE_LYRA, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LYRA_ROUTE_42
 	object_event 40, 10, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_TRAINER, 1, TrainerFisherTully1, -1
 	object_event 51,  9, SPRITE_POKEFAN_M, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerHikerBenjamin, -1
-	object_event  2,  8, SPRITE_NEW_BARK_TEACHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, Route42OfficerText, EVENT_BEAT_JASMINE
-	object_event  2,  9, SPRITE_NEW_BARK_TEACHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, Route42OfficerText, EVENT_BEAT_JASMINE
+	object_event  2,  8, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, Route42OfficerText, EVENT_BEAT_JASMINE
+	object_event  2,  9, SPRITE_OFFICER_F, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, Route42OfficerText, EVENT_BEAT_JASMINE
 	object_event 21, 20, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_PURPLE, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
 	cuttree_event 24, 13, EVENT_ROUTE_42_CUT_TREE
 	fruittree_event 27, 16, FRUITTREE_ROUTE_42_1, PNK_APRICORN
@@ -49,8 +49,6 @@ Route42LyraScript1:
 	showemote EMOTE_SHOCK, PLAYER, 15
 	special Special_FadeOutMusic
 	pause 15
-	variablesprite SPRITE_NEW_BARK_LYRA, SPRITE_LYRA
-	special MapCallbackSprites_LoadUsedSpritesGFX
 	playsound SFX_ENTER_DOOR
 	appear ROUTE42_LYRA
 	waitsfx
@@ -62,8 +60,6 @@ Route42LyraScript2:
 	showemote EMOTE_SHOCK, PLAYER, 15
 	special Special_FadeOutMusic
 	pause 15
-	variablesprite SPRITE_NEW_BARK_LYRA, SPRITE_LYRA
-	special MapCallbackSprites_LoadUsedSpritesGFX
 	playsound SFX_ENTER_DOOR
 	appear ROUTE42_LYRA
 	waitsfx
@@ -75,8 +71,6 @@ Route42LyraScript3:
 	showemote EMOTE_SHOCK, PLAYER, 15
 	special Special_FadeOutMusic
 	pause 15
-	variablesprite SPRITE_NEW_BARK_LYRA, SPRITE_LYRA
-	special MapCallbackSprites_LoadUsedSpritesGFX
 	playsound SFX_ENTER_DOOR
 	appear ROUTE42_LYRA
 	waitsfx
@@ -86,8 +80,6 @@ Route42LyraScript3:
 Route42LyraScript4:
 	turnobject PLAYER, LEFT
 	showemote EMOTE_SHOCK, PLAYER, 15
-	variablesprite SPRITE_NEW_BARK_LYRA, SPRITE_LYRA
-	special MapCallbackSprites_LoadUsedSpritesGFX
 	playsound SFX_ENTER_DOOR
 	appear ROUTE42_LYRA
 	waitsfx
@@ -97,8 +89,6 @@ Route42LyraScript4:
 Route42LyraScript5:
 	turnobject PLAYER, UP
 	showemote EMOTE_SHOCK, PLAYER, 15
-	variablesprite SPRITE_NEW_BARK_LYRA, SPRITE_LYRA
-	special MapCallbackSprites_LoadUsedSpritesGFX
 	playsound SFX_ENTER_DOOR
 	appear ROUTE42_LYRA
 	waitsfx
@@ -109,7 +99,6 @@ Route42LyraScript:
 	playmusic MUSIC_LYRA_ENCOUNTER_HGSS
 	showtext Route42LyraGreetingText
 	setevent EVENT_LYRA_ROUTE_42
-	variablesprite SPRITE_NEW_BARK_LYRA, SPRITE_LASS
 	winlosstext Route42LyraWinText, Route42LyraLossText
 	setlasttalked ROUTE42_LYRA
 	checkevent EVENT_GOT_TOTODILE_FROM_ELM
@@ -127,7 +116,6 @@ Route42LyraScript:
 	loadtrainer LYRA1, LYRA1_9
 .AfterBattle
 	startbattle
-	variablesprite SPRITE_NEW_BARK_LYRA, SPRITE_LYRA
 	dontrestartmapmusic
 	reloadmapafterbattle
 	special DeleteSavedMusic
@@ -149,8 +137,6 @@ Route42LyraScript:
 .NoSuicune
 	setscene $0
 .Finish
-	variablesprite SPRITE_NEW_BARK_LYRA, SPRITE_LASS
-	special MapCallbackSprites_LoadUsedSpritesGFX
 	playmapmusic
 	end
 

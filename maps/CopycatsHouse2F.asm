@@ -12,8 +12,8 @@ CopycatsHouse2F_MapScriptHeader:
 	db 0 ; bg events
 
 	db 6 ; object events
-	object_event  4,  3, SPRITE_NEW_BARK_LYRA, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, Copycat1Script, EVENT_COPYCAT_1
-	object_event  4,  3, SPRITE_NEW_BARK_LYRA, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, Copycat2Script, EVENT_COPYCAT_2
+	object_event  4,  3, SPRITE_COPYCAT, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, Copycat1Script, EVENT_COPYCAT_1
+	object_event  4,  3, SPRITE_COPYCAT, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, Copycat2Script, EVENT_COPYCAT_2
 	object_event  6,  4, SPRITE_DODRIO, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_SCRIPT, 0, CopycatsDodrioScript, -1
 	object_event  6,  1, SPRITE_CLEFAIRY, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptext, CopycatsHouse2FDollText, EVENT_COPYCATS_HOUSE_2F_DOLL
 	object_event  2,  1, SPRITE_GENGAR, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, PAL_NPC_PURPLE, PERSONTYPE_COMMAND, jumptext, CopycatsHouse2FDollText, -1
@@ -45,7 +45,7 @@ Copycat1Script:
 	iftrue CopycatFoundLostItemScript
 	applymovement COPYCATSHOUSE2F_COPYCAT1, CopycatSpinMovement
 	faceplayer
-	variablesprite SPRITE_NEW_BARK_LYRA, SPRITE_CHRIS
+	variablesprite SPRITE_COPYCAT, SPRITE_CHRIS
 	special MapCallbackSprites_LoadUsedSpritesGFX
 	checkevent EVENT_RETURNED_MACHINE_PART
 	iftrue .ReturnedMachinePart
@@ -61,7 +61,7 @@ Copycat1Script:
 .GotPass:
 	applymovement COPYCATSHOUSE2F_COPYCAT1, CopycatSpinMovement
 	faceplayer
-	variablesprite SPRITE_NEW_BARK_LYRA, SPRITE_CHRIS
+	variablesprite SPRITE_COPYCAT, SPRITE_CHRIS
 	special MapCallbackSprites_LoadUsedSpritesGFX
 	showtext .Thanks1Text
 	applymovement COPYCATSHOUSE2F_COPYCAT1, CopycatSpinMovement
@@ -119,7 +119,7 @@ Copycat2Script:
 	iftrue CopycatFoundLostItemScript
 	applymovement COPYCATSHOUSE2F_COPYCAT2, CopycatSpinMovement
 	faceplayer
-	variablesprite SPRITE_NEW_BARK_LYRA, SPRITE_KRIS
+	variablesprite SPRITE_COPYCAT, SPRITE_KRIS
 	special MapCallbackSprites_LoadUsedSpritesGFX
 	checkevent EVENT_RETURNED_MACHINE_PART
 	iftrue .ReturnedMachinePart
@@ -135,7 +135,7 @@ Copycat2Script:
 .GotPass:
 	applymovement COPYCATSHOUSE2F_COPYCAT2, CopycatSpinMovement
 	faceplayer
-	variablesprite SPRITE_NEW_BARK_LYRA, SPRITE_KRIS
+	variablesprite SPRITE_COPYCAT, SPRITE_KRIS
 	special MapCallbackSprites_LoadUsedSpritesGFX
 	showtext .Thanks2Text
 	applymovement COPYCATSHOUSE2F_COPYCAT2, CopycatSpinMovement
@@ -185,7 +185,7 @@ Copycat2Script:
 	done
 CopycatRetortScript:
 	faceplayer
-	variablesprite SPRITE_NEW_BARK_LYRA, SPRITE_LASS
+	variablesprite SPRITE_COPYCAT, SPRITE_LASS
 	special MapCallbackSprites_LoadUsedSpritesGFX
 	thistext
 
@@ -198,7 +198,7 @@ CopycatRetortScript:
 
 CopycatWorriedScript:
 	faceplayer
-	variablesprite SPRITE_NEW_BARK_LYRA, SPRITE_LASS
+	variablesprite SPRITE_COPYCAT, SPRITE_LASS
 	special MapCallbackSprites_LoadUsedSpritesGFX
 	setevent EVENT_MET_COPYCAT_FOUND_OUT_ABOUT_LOST_ITEM
 	thistext
@@ -265,7 +265,7 @@ CopycatGivePassScript:
 
 CopycatFinalScript:
 	faceplayer
-	variablesprite SPRITE_NEW_BARK_LYRA, SPRITE_LASS
+	variablesprite SPRITE_COPYCAT, SPRITE_LASS
 	special MapCallbackSprites_LoadUsedSpritesGFX
 	thistext
 

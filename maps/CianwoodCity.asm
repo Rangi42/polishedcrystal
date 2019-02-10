@@ -28,7 +28,7 @@ CianwoodCity_MapScriptHeader:
 	bg_event  5, 29, SIGNPOST_ITEM + MAX_ETHER, EVENT_CIANWOOD_CITY_HIDDEN_MAX_ETHER
 
 	db 15 ; object events
-	object_event 11, 21, SPRITE_OLIVINE_RIVAL, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_PURPLE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CIANWOOD_CITY_EUSINE
+	object_event 11, 21, SPRITE_EUSINE, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_PURPLE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CIANWOOD_CITY_EUSINE
 	object_event 10, 14, SPRITE_SUICUNE, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_SAW_SUICUNE_AT_CIANWOOD_CITY
 	object_event 21, 37, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1a02df, -1
 	object_event 16, 33, SPRITE_POKEFAN_M, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1a0319, -1
@@ -81,27 +81,21 @@ UnknownScript_0x1a001e:
 	checkevent EVENT_BEAT_EUSINE
 	iftrue .Done
 	setevent EVENT_BEAT_EUSINE
-	variablesprite SPRITE_OLIVINE_RIVAL, SPRITE_EUSINE
-	special MapCallbackSprites_LoadUsedSpritesGFX
 	playmusic MUSIC_MYSTICALMAN_ENCOUNTER
 	appear CIANWOODCITY_EUSINE
 	applymovement CIANWOODCITY_EUSINE, MovementData_0x1a00e7
 	showtext UnknownText_0x1a0433
-	variablesprite SPRITE_OLIVINE_RIVAL, SPRITE_COWGIRL
 	winlosstext UnknownText_0x1a05a1, EusineLossText
 	setlasttalked CIANWOODCITY_EUSINE
 	loadtrainer MYSTICALMAN, EUSINE
 	startbattle
 	dontrestartmapmusic
-	variablesprite SPRITE_OLIVINE_RIVAL, SPRITE_EUSINE
 	reloadmapafterbattle
 	special DeleteSavedMusic
 	playmusic MUSIC_MYSTICALMAN_ENCOUNTER
 	showtext UnknownText_0x1a05c3
 	applymovement CIANWOODCITY_EUSINE, MovementData_0x1a00ec
 	disappear CIANWOODCITY_EUSINE
-	variablesprite SPRITE_OLIVINE_RIVAL, SPRITE_COWGIRL
-	special MapCallbackSprites_LoadUsedSpritesGFX
 	pause 20
 	special Special_FadeOutMusic
 	playmapmusic

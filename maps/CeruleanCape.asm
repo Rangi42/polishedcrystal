@@ -18,18 +18,17 @@ CeruleanCape_MapScriptHeader:
 	bg_event 31, 12, SIGNPOST_ITEM + PEARL_STRING, EVENT_CERULEAN_CAPE_HIDDEN_PEARL_STRING
 	bg_event 18,  3, SIGNPOST_ITEM + BOTTLE_CAP, EVENT_CERULEAN_CAPE_HIDDEN_BOTTLE_CAP
 
-	db 16 ; object events
+	db 15 ; object events
 	object_event  8,  9, SPRITE_MISTY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CERULEAN_CAPE_BOYFRIEND
-	object_event  8,  9, SPRITE_VERMILION_LAWRENCE, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CERULEAN_CAPE_MISTY
 	object_event  8, 10, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CERULEAN_CAPE_BOYFRIEND
 	object_event 25,  7, SPRITE_SWIMMER_GUY, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerSwimmermRomeo, -1
 	object_event 41, 16, SPRITE_SWIMMER_GUY, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerSwimmermMalcolm, -1
 	object_event 21, 23, SPRITE_SWIMMER_GUY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerSwimmermArmand, -1
-	object_event 19, 13, SPRITE_BEAUTY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerBeautyBridget, -1
+	object_event 19, 12, SPRITE_BEAUTY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerBeautyBridget, -1
 	object_event  1, 21, SPRITE_BEAUTY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerBeautyVeronica, -1
 	object_event  0, 27, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerGentlemanCamus, -1
 	object_event 41, 26, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerGentlemanGeoffrey, -1
-	object_event 16, 32, SPRITE_VERMILION_LAWRENCE, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerGuitaristfMorgan, -1
+	object_event 16, 32, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerGuitaristfMorgan, -1
 	object_event  7, 26, SPRITE_LADY, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_TRAINER, 1, TrainerLadyJessica, -1
 	object_event 32, 11, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerFisherLeroy, -1
 	object_event -4, 8, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_25_COOLTRAINER_M_BEFORE
@@ -38,7 +37,6 @@ CeruleanCape_MapScriptHeader:
 
 	const_def 1 ; object constants
 	const CERULEANCAPE_MISTY
-	const CERULEANCAPE_MISTY_WALK
 	const CERULEANCAPE_BOYFRIEND
 
 CeruleanCapeDateInterruptedTrigger1:
@@ -51,15 +49,10 @@ CeruleanCapeDateInterruptedTrigger1:
 	pause 15
 	playmusic MUSIC_BEAUTY_ENCOUNTER
 	turnobject CERULEANCAPE_MISTY, UP
-	variablesprite SPRITE_VERMILION_LAWRENCE, SPRITE_MISTY
-	special MapCallbackSprites_LoadUsedSpritesGFX
-	appear CERULEANCAPE_MISTY_WALK
-	turnobject CERULEANCAPE_MISTY_WALK, UP
-	disappear CERULEANCAPE_MISTY
 	pause 5
-	applymovement CERULEANCAPE_MISTY_WALK, MovementData_0x19efed
+	applymovement CERULEANCAPE_MISTY, MovementData_0x19efed
 	showtext UnknownText_0x19f006
-	applymovement CERULEANCAPE_MISTY_WALK, MovementData_0x19effa
+	applymovement CERULEANCAPE_MISTY, MovementData_0x19effa
 	jump CeruleanCapeDateFinishScript
 
 CeruleanCapeDateInterruptedTrigger2:
@@ -72,22 +65,15 @@ CeruleanCapeDateInterruptedTrigger2:
 	pause 15
 	playmusic MUSIC_BEAUTY_ENCOUNTER
 	turnobject CERULEANCAPE_MISTY, UP
-	variablesprite SPRITE_VERMILION_LAWRENCE, SPRITE_MISTY
-	special MapCallbackSprites_LoadUsedSpritesGFX
-	appear CERULEANCAPE_MISTY_WALK
-	turnobject CERULEANCAPE_MISTY_WALK, UP
-	disappear CERULEANCAPE_MISTY
 	pause 5
-	applymovement CERULEANCAPE_MISTY_WALK, MovementData_0x19eff4
+	applymovement CERULEANCAPE_MISTY, MovementData_0x19eff4
 	showtext UnknownText_0x19f006
-	applymovement CERULEANCAPE_MISTY_WALK, MovementData_0x19effd
+	applymovement CERULEANCAPE_MISTY, MovementData_0x19effd
 CeruleanCapeDateFinishScript:
 	turnobject PLAYER, LEFT
-	applymovement CERULEANCAPE_MISTY_WALK, MovementData_0x19f000
-	disappear CERULEANCAPE_MISTY_WALK
+	applymovement CERULEANCAPE_MISTY, MovementData_0x19f000
+	disappear CERULEANCAPE_MISTY
 	clearevent EVENT_TRAINERS_IN_CERULEAN_GYM
-	variablesprite SPRITE_VERMILION_LAWRENCE, SPRITE_COOLTRAINER_F
-	special MapCallbackSprites_LoadUsedSpritesGFX
 	setscene $0
 	special RestartMapMusic
 	end
@@ -105,19 +91,12 @@ CeruleanCapeDateInterruptedTrigger3:
 	pause 15
 	playmusic MUSIC_BEAUTY_ENCOUNTER
 	turnobject CERULEANCAPE_MISTY, DOWN
-	variablesprite SPRITE_VERMILION_LAWRENCE, SPRITE_MISTY
-	special MapCallbackSprites_LoadUsedSpritesGFX
-	appear CERULEANCAPE_MISTY_WALK
-	turnobject CERULEANCAPE_MISTY_WALK, DOWN
-	disappear CERULEANCAPE_MISTY
 	pause 5
-	applymovement CERULEANCAPE_MISTY_WALK, .ApproachMovement
+	applymovement CERULEANCAPE_MISTY, .ApproachMovement
 	showtext UnknownText_0x19f006
-	applymovement CERULEANCAPE_MISTY_WALK, .LeaveMovement
-	disappear CERULEANCAPE_MISTY_WALK
+	applymovement CERULEANCAPE_MISTY, .LeaveMovement
+	disappear CERULEANCAPE_MISTY
 	clearevent EVENT_TRAINERS_IN_CERULEAN_GYM
-	variablesprite SPRITE_VERMILION_LAWRENCE, SPRITE_COOLTRAINER_F
-	special MapCallbackSprites_LoadUsedSpritesGFX
 	setscene $0
 	special RestartMapMusic
 	end
