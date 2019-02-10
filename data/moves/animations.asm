@@ -1174,8 +1174,8 @@ BattleAnim_Surf:
 	anim_obj ANIM_OBJ_22,  11, 0,  13, 0, $8
 .loop
 	anim_sound 0, 1, SFX_SURF
-	anim_wait 32
-	anim_loop 4, .loop
+	anim_wait 112
+	anim_loop 1, .loop
 	anim_incobj  1
 	anim_wait 56
 	anim_ret
