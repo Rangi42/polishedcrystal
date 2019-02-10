@@ -57,9 +57,9 @@
 	const CARBOS       ; 2d
 	const CALCIUM      ; 2e
 	const ZINC         ; 2f
-	const PP_UP        ; 30
-	const PP_MAX       ; 31
-	const RARE_CANDY   ; 32
+	const RARE_CANDY   ; 30
+	const PP_UP        ; 31
+	const PP_MAX       ; 32
 
 	const FRESH_WATER  ; 33
 	const SODA_POP     ; 34
