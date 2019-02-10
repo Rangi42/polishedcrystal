@@ -1,48 +1,50 @@
 Facings:
-	dw FacingStepDown0     ; FACING_STEP_DOWN_0
-	dw FacingStepDown1     ; FACING_STEP_DOWN_1
-	dw FacingStepDown2     ; FACING_STEP_DOWN_2
-	dw FacingStepDown3     ; FACING_STEP_DOWN_3
-	dw FacingStepUp0       ; FACING_STEP_UP_0
-	dw FacingStepUp1       ; FACING_STEP_UP_1
-	dw FacingStepUp2       ; FACING_STEP_UP_2
-	dw FacingStepUp3       ; FACING_STEP_UP_3
-	dw FacingStepLeft0     ; FACING_STEP_LEFT_0
-	dw FacingStepLeft1     ; FACING_STEP_LEFT_1
-	dw FacingStepLeft2     ; FACING_STEP_LEFT_2
-	dw FacingStepLeft3     ; FACING_STEP_LEFT_3
-	dw FacingStepRight0    ; FACING_STEP_RIGHT_0
-	dw FacingStepRight1    ; FACING_STEP_RIGHT_1
-	dw FacingStepRight2    ; FACING_STEP_RIGHT_2
-	dw FacingStepRight3    ; FACING_STEP_RIGHT_3
-	dw FacingFishDown      ; FACING_FISH_DOWN
-	dw FacingFishUp        ; FACING_FISH_UP
-	dw FacingFishLeft      ; FACING_FISH_LEFT
-	dw FacingFishRight     ; FACING_FISH_RIGHT
-	dw FacingEmote         ; FACING_EMOTE
-	dw FacingShadow        ; FACING_SHADOW
-	dw FacingBigDollAsym   ; FACING_BIG_DOLL_ASYM
-	dw FacingBigDollSym    ; FACING_BIG_DOLL_SYM
-	dw FacingWeirdTree0    ; FACING_WEIRD_TREE_0
-	dw FacingWeirdTree1    ; FACING_WEIRD_TREE_1
-	dw FacingWeirdTree2    ; FACING_WEIRD_TREE_2
-	dw FacingWeirdTree3    ; FACING_WEIRD_TREE_3
-	dw FacingBoulderDust1  ; FACING_BOULDER_DUST_1
-	dw FacingBoulderDust2  ; FACING_BOULDER_DUST_2
-	dw FacingGrass1        ; FACING_GRASS_1
-	dw FacingGrass2        ; FACING_GRASS_2
-	dw FacingSplash1       ; FACING_SPLASH_1
-	dw FacingSplash2       ; FACING_SPLASH_2
-	dw FacingCutTree       ; FACING_CUT_TREE
-	dw FacingBigGyarados1  ; FACING_BIG_GYARADOS_1
-	dw FacingBigGyarados2  ; FACING_BIG_GYARADOS_2
-	dw FacingStepDownFlip  ; FACING_STEP_DOWN_FLIP
-	dw FacingStepUpFlip    ; FACING_STEP_UP_FLIP
-	dw FacingPokecomNews   ; FACING_POKECOM_NEWS
-	dw FacingArchTreeDown  ; FACING_ARCH_TREE_DOWN
-	dw FacingArchTreeUp    ; FACING_ARCH_TREE_UP
-	dw FacingArchTreeLeft  ; FACING_ARCH_TREE_LEFT
-	dw FacingArchTreeRight ; FACING_ARCH_TREE_RIGHT
+	dw FacingStepDown0      ; FACING_STEP_DOWN_0
+	dw FacingStepDown1      ; FACING_STEP_DOWN_1
+	dw FacingStepDown2      ; FACING_STEP_DOWN_2
+	dw FacingStepDown3      ; FACING_STEP_DOWN_3
+	dw FacingStepUp0        ; FACING_STEP_UP_0
+	dw FacingStepUp1        ; FACING_STEP_UP_1
+	dw FacingStepUp2        ; FACING_STEP_UP_2
+	dw FacingStepUp3        ; FACING_STEP_UP_3
+	dw FacingStepLeft0      ; FACING_STEP_LEFT_0
+	dw FacingStepLeft1      ; FACING_STEP_LEFT_1
+	dw FacingStepLeft2      ; FACING_STEP_LEFT_2
+	dw FacingStepLeft3      ; FACING_STEP_LEFT_3
+	dw FacingStepRight0     ; FACING_STEP_RIGHT_0
+	dw FacingStepRight1     ; FACING_STEP_RIGHT_1
+	dw FacingStepRight2     ; FACING_STEP_RIGHT_2
+	dw FacingStepRight3     ; FACING_STEP_RIGHT_3
+	dw FacingFishDown       ; FACING_FISH_DOWN
+	dw FacingFishUp         ; FACING_FISH_UP
+	dw FacingFishLeft       ; FACING_FISH_LEFT
+	dw FacingFishRight      ; FACING_FISH_RIGHT
+	dw FacingEmote          ; FACING_EMOTE
+	dw FacingShadow         ; FACING_SHADOW
+	dw FacingBigDollAsym    ; FACING_BIG_DOLL_ASYM
+	dw FacingBigDollSym     ; FACING_BIG_DOLL_SYM
+	dw FacingWeirdTree0     ; FACING_WEIRD_TREE_0
+	dw FacingWeirdTree1     ; FACING_WEIRD_TREE_1
+	dw FacingWeirdTree2     ; FACING_WEIRD_TREE_2
+	dw FacingWeirdTree3     ; FACING_WEIRD_TREE_3
+	dw FacingBoulderDust1   ; FACING_BOULDER_DUST_1
+	dw FacingBoulderDust2   ; FACING_BOULDER_DUST_2
+	dw FacingGrass1         ; FACING_GRASS_1
+	dw FacingGrass2         ; FACING_GRASS_2
+	dw FacingSplash1        ; FACING_SPLASH_1
+	dw FacingSplash2        ; FACING_SPLASH_2
+	dw FacingCutTree        ; FACING_CUT_TREE
+	dw FacingBigGyarados1   ; FACING_BIG_GYARADOS_1
+	dw FacingBigGyarados2   ; FACING_BIG_GYARADOS_2
+	dw FacingStepDownFlip   ; FACING_STEP_DOWN_FLIP
+	dw FacingStepUpFlip     ; FACING_STEP_UP_FLIP
+	dw FacingPokecomNews    ; FACING_POKECOM_NEWS
+	dw FacingArchTreeDown   ; FACING_ARCH_TREE_DOWN
+	dw FacingArchTreeUp     ; FACING_ARCH_TREE_UP
+	dw FacingArchTreeLeft   ; FACING_ARCH_TREE_LEFT
+	dw FacingArchTreeRight  ; FACING_ARCH_TREE_RIGHT
+	dw FacingSailboatTop    ; FACING_SAILBOAT_TOP
+	dw FacingSailboatBottom ; FACING_SAILBOAT_BOTTOM
 FacingsEnd: dw 0
 
 NUM_FACINGS EQU (FacingsEnd - Facings) / 2
@@ -366,3 +368,33 @@ FacingArchTreeLeft:
 FacingArchTreeRight:
 	db 1 ; #
 	db 12, 0, 0, $08
+
+FacingSailboatTop:
+	db 12 ; #
+	db  0,   8, 0, $00
+	db  0,  16, 0, $01
+	db  8,   8, 0, $02
+	db  8,  16, 0, $03
+	db  0,  24, 0, $04
+	db  0,  32, 0, $05
+	db  8,  24, 0, $06
+	db  8,  32, 0, $07
+	db -8,  16, 0, $08
+	db -8,  24, 0, $09
+	db  8,  -8, 0, $0a
+	db  8,   0, 0, $0b
+
+FacingSailboatBottom:
+	db 12 ; #
+	db 16,   8, 0, $00
+	db 16,  16, 0, $01
+	db 24,   8, 0, $02
+	db 24,  16, 0, $03
+	db 16,  -8, 0, $04
+	db 16,   0, 0, $05
+	db 24,  -8, 0, $06
+	db 24,   0, 0, $07
+	db 16,  24, 0, $08
+	db 16,  32, 0, $09
+	db 24,  24, 0, $0a
+	db 24,  32, 0, $0b

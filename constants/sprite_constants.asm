@@ -168,15 +168,15 @@
 	const SPRITE_SILVER_TROPHY ; a5
 	const SPRITE_GOLD_TROPHY ; a6
 	const SPRITE_MISC_OVERHEAD ; a7
+	const SPRITE_SAILBOAT_TOP ; a8
+	const SPRITE_SAILBOAT_BOTTOM ; a9
 
-	const SPRITE_UNUSED_1 ; a8
-	const SPRITE_UNUSED_2 ; a9
-	const SPRITE_UNUSED_3 ; aa
-	const SPRITE_UNUSED_4 ; ab
-	const SPRITE_UNUSED_5 ; ac
-	const SPRITE_UNUSED_6 ; ad
-	const SPRITE_UNUSED_7 ; ae
-	const SPRITE_UNUSED_8 ; af
+	const SPRITE_UNUSED_1 ; aa
+	const SPRITE_UNUSED_2 ; ab
+	const SPRITE_UNUSED_3 ; ac
+	const SPRITE_UNUSED_4 ; ad
+	const SPRITE_UNUSED_5 ; ae
+	const SPRITE_UNUSED_6 ; af
 
 SPRITE_POKEMON EQU const_value
 	const SPRITE_BULBASAUR ; b0

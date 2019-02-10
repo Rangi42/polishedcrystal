@@ -172,3 +172,5 @@ SpriteHeaders:
 	overworld_sprite SilverTrophySpriteGFX, STANDING_SPRITE, PAL_OW_SILVER
 	overworld_sprite GoldTrophySpriteGFX, STANDING_SPRITE, PAL_OW_BROWN
 	overworld_sprite MiscOverheadSpriteGFX, STANDING_SPRITE, PAL_OW_ROCK
+	overworld_sprite SailboatTopSpriteGFX, STANDING_SPRITE, PAL_OW_TREE
+	overworld_sprite SailboatBottomSpriteGFX, STANDING_SPRITE, PAL_OW_TREE

@@ -154,7 +154,7 @@ HandleCurNPCStep:
 	ld hl, OBJECT_FLAGS2
 	add hl, bc
 	bit 6, [hl]
-	jr nz, SetFacingStanding
+	jp nz, SetFacingStanding
 	bit OBJECT_DISABLE_STEP_TYPE, [hl]
 	jr nz, asm_4448
 	ld de, Pointers445f ; use first column
@@ -537,6 +537,8 @@ MapObjectMovementPattern:
 	dw .StandingFlip                 ; SPRITEMOVEFN_STANDING_FLIP
 	dw .MovementPokecomNews          ; SPRITEMOVEFN_POKECOM_NEWS
 	dw .MovementArchTree             ; SPRITEMOVEFN_ARCH_TREE
+	dw .MovementSailboatTop          ; SPRITEMOVEFN_SAILBOAT_TOP
+	dw .MovementSailboatBottom       ; SPRITEMOVEFN_SAILBOAT_BOTTOM
 
 .RandomWalkY:
 	call Random
@@ -739,6 +741,14 @@ MapObjectMovementPattern:
 
 .MovementArchTree:
 	ld a, PERSON_ACTION_ARCH_TREE
+	jr ._ActionA_StepType04
+
+.MovementSailboatTop:
+	ld a, PERSON_ACTION_SAILBOAT_TOP
+	jr ._ActionA_StepType04
+
+.MovementSailboatBottom:
+	ld a, PERSON_ACTION_SAILBOAT_BOTTOM
 	jr ._ActionA_StepType04
 
 .StandingFlip:
