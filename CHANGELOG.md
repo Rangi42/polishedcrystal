@@ -32,7 +32,6 @@ These changes have been made since the current 2.2.0 release. If you build the p
    * Gengar has the ability Cursed Body. (Can also have Levitate in non-Faithful.)
    * Raikou, Entei, and Suicune have the hidden ability Inner Focus. (Faithful only.)
    * New item: Protect Pads (abbreviated "Protective Pads"). "Protect the holder from effects caused by making direct contact with the target."
-   * Paralysis halves Speed.
    * Timer Ball catch rate multiplier is 1 + (turns passed × 3) / 10.
    * Nest Ball catch rate multiplier is (41 − enemy mon level) / 5.
 * Add: Flash is required to return Falkner to the Gym.
