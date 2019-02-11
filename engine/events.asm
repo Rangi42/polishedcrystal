@@ -1062,7 +1062,7 @@ EdgeWarpScript: ; 4
 ; 96c4f
 
 ChangeDirectionScript: ; 9
-	callasm ReleaseAllMapObjects
+	deactivatefacing 6
 	callasm EnableWildEncounters
 	end
 ; 96c56
