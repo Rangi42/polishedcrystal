@@ -3,10 +3,9 @@ CeruleanCape_MapScriptHeader:
 
 	db 0 ; callbacks
 
-	db 3 ; warp events
+	db 2 ; warp events
 	warp_event  9,  5, BILLS_HOUSE, 1
 	warp_event 38, 29, DIM_CAVE_2F, 1
-	warp_event 39, 29, DIM_CAVE_2F, 1
 
 	db 3 ; coord events
 	coord_event  4,  6, 1, CeruleanCapeDateInterruptedTrigger1
