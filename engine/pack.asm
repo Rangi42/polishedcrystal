@@ -592,8 +592,21 @@ RegisterItem: ; 103c2
 	ld a, [wItemAttributeParamBuffer]
 	and a
 	jr nz, .cant_register
+	ld hl, wRegisteredItems
+	ld d, 4
+.loop
+	ld a, [hl]
+	and a
+	jr z, .found_empty_slot
+	inc hl
+	dec d
+	jr nz, .loop
+	ld hl, Text_NoEmptySlot
+	jp Pack_PrintTextNoScroll
+
+.found_empty_slot
 	ld a, [wCurItem]
-	ld [wRegisteredItem], a
+	ld [hl], a
 	call Pack_GetItemName
 	ld de, SFX_FULL_HEAL
 	call WaitPlaySFX
@@ -603,7 +616,6 @@ RegisterItem: ; 103c2
 .cant_register
 	ld hl, Text_CantRegister
 	jp Pack_PrintTextNoScroll
-; 103fd
 
 GiveItem: ; 103fd
 	ld a, [wPartyCount]
@@ -1748,6 +1760,13 @@ PC_Mart_KeyItemsPocketMenuDataHeader: ; 0x10a97
 Text_SortItemsHow:
 	text "How do you want"
 	line "to sort items?@@"
+
+Text_NoEmptySlot:
+	text "There are no free"
+	line "register slots."
+
+	para "Unregister another"
+	line "item first.@@"
 
 Text_ThrowAwayHowMany: ; 0x10ae4
 	; Throw away how many?

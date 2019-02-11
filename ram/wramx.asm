@@ -913,9 +913,7 @@ wPokegearFlags::
 wRadioTuningKnob:: ds 1
 wLastDexMode:: ds 1
 
-	ds 1 ; unused
-
-wRegisteredItem:: ds 1
+	ds 2 ; unused
 
 wPlayerState:: ds 1
 
@@ -1283,6 +1281,10 @@ wBestMagikarpLengthMm::
 wBestMagikarpLengthMmHi:: ds 1
 wBestMagikarpLengthMmLo:: ds 1
 wMagikarpRecordHoldersName:: ds NAME_LENGTH
+
+wRegisteredItems::
+; You can map 4 items, to select + directions
+	ds 4
 
 wPokemonDataEnd::
 wGameDataEnd::

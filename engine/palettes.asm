@@ -1881,7 +1881,6 @@ else
 	MONOCHROME_RGB_FOUR
 endc
 
-
 PokedexRedPalette:
 if !DEF(MONOCHROME)
 	RGB 00, 00, 00

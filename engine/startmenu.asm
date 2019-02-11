@@ -118,12 +118,8 @@ StartMenu:: ; 125cd
 
 .ExitMenuCallFuncCloseText: ; 126a2
 	call ExitMenu
-	ld hl, wQueuedScriptAddr
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	ld a, [wQueuedScriptBank]
-	call FarCall_hl
+	ld hl, wQueuedScriptBank
+	call FarPointerCall
 	jr .ReturnEnd2
 ; 126b1
 

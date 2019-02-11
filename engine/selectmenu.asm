@@ -1,7 +1,6 @@
-SelectMenu:: ; 13327
-
+SelectMenu::
 	call CheckRegisteredItem
-	jr c, .NotRegistered
+	jr z, .NotRegistered
 	jp UseRegisteredItem
 
 .NotRegistered:
@@ -11,40 +10,70 @@ SelectMenu:: ; 13327
 	call MapTextbox
 	call WaitButton
 	jp CloseText
-; 13340
 
 
-ItemMayBeRegisteredText: ; 13340
+ItemMayBeRegisteredText:
 	text_jump UnknownText_0x1c1cf3
 	db "@"
-; 13345
 
 
 CheckRegisteredItem: ; 13345
-; assume that only key items can be registered
-; (Bicycle, Old/Good/Super Rod, Itemfinder)
-	ld a, [wRegisteredItem]
+; Returns amount of registered items and z if none is. Populates wCurItem
+; with a valid registered item, useful if there's only a single one.
+	ld hl, wRegisteredItems
+	ld b, 4
+	ld c, 0
+.loop
+	ld a, [hl]
 	and a
-	jr z, .NoRegisteredItem
+	jr z, .next
+	push hl
+	push bc
+	push af
 	ld hl, wKeyItems
 	ld de, 1
 	call IsInArray
-	jr nc, .NoRegisteredItem
-	ld a, [wRegisteredItem]
+	jr c, .registration_ok
+
+	; We can register regular items too (e.g. Repel)
+	pop af
+	push af
+	ld hl, wItems
+	ld de, 2
+	call IsInArray
+	jr c, .registration_ok
+	pop af
+	pop bc
+	pop hl
+	xor a
+	ld [hl], a
+	jr .next
+.registration_ok
+	pop af
+	pop bc
+	pop hl
+
+	; Useful if we only have a single registered item
 	ld [wCurItem], a
+	inc c
+.next
+	inc hl
+	dec b
+	jr nz, .loop
+	ld a, c
 	and a
 	ret
 
-.NoRegisteredItem:
-	xor a
-	ld [wRegisteredItem], a
-	scf
-	ret
-; 133a6
+UseRegisteredItem:
+	; If we only have a single valid item, use it
+	cp 2
+	jr c, .single_registered_item
 
+	; Otherwise, show an item selection window
+	call GetRegisteredItem
+	ret z
 
-UseRegisteredItem: ; 133c3
-
+.single_registered_item
 	farcall CheckItemMenu
 	ld a, [wItemAttributeParamBuffer]
 	ld hl, .SwitchTo
@@ -59,25 +88,22 @@ UseRegisteredItem: ; 133c3
 	dw .Current
 	dw .Party
 	dw .Overworld
-; 133df
 
-.NoFunction: ; 133df
+.NoFunction:
 	call OpenText
 	call CantUseItem
 	call CloseText
 	and a
 	ret
-; 133ea
 
-.Current: ; 133ea
+.Current:
 	call OpenText
 	call DoItemEffect
 	call CloseText
 	and a
 	ret
-; 133f5
 
-.Party: ; 133f5
+.Party:
 	call RefreshScreen
 	call FadeToMenu
 	call DoItemEffect
@@ -85,9 +111,8 @@ UseRegisteredItem: ; 133c3
 	call CloseText
 	and a
 	ret
-; 13406
 
-.Overworld: ; 13406
+.Overworld:
 	call RefreshScreen
 	ld a, 1
 	ld [wUsingItemWithSelect], a
@@ -101,9 +126,8 @@ UseRegisteredItem: ; 133c3
 	ld a, HMENURETURN_SCRIPT
 	ld [hMenuReturn], a
 	ret
-; 13422
 
-.CantUse: ; 13422
+.CantUse:
 	call RefreshScreen
 
 ._cantuse
@@ -111,4 +135,52 @@ UseRegisteredItem: ; 133c3
 	call CloseText
 	and a
 	ret
-; 1342d
+
+GetRegisteredItem:
+; Shows a list of registered items, allowing you to select one with directions
+; TODO: finish
+	call ClearWindowData
+	ld de, SFX_MENU
+	call PlaySFX
+
+	farcall ReanchorBGMap_NoOAMUpdate
+	call SafeUpdateSprites
+	call BGMapAnchorTopLeft
+	call LoadStandardOpaqueFont
+	ld hl, InvertedTextPalette
+	ld de, wUnknBGPals palette 7
+	ld bc, 1  palettes
+	ld a, 5
+	call FarCopyWRAM
+
+	hlcoord 0, 14, wAttrMap
+	ld a, 7
+	ld bc, SCREEN_WIDTH * 4
+	call ByteFill
+
+	hlcoord 0, 14
+	ld a, " "
+	ld bc, SCREEN_WIDTH * 4
+	call ByteFill
+	ld b, 2
+	call SafeCopyTilemapAtOnce
+	ld a, 1
+	ld [hOAMUpdate], a
+	call SafeUpdateSprites
+	call ApplyTilemap
+	ld c, 240
+	call DelayFrames
+	ret
+
+InvertedTextPalette:
+if !DEF(MONOCHROME)
+	RGB 00, 00, 00
+	RGB 00, 00, 00
+	RGB 31, 31, 31
+	RGB 31, 31, 31
+else
+	RGB_MONOCHROME_BLACK
+	RGB_MONOCHROME_BLACK
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_WHITE
+endc

@@ -2,6 +2,9 @@ ReplaceKrisSprite:: ; e4a
 	farjp _ReplaceKrisSprite
 ; e51
 
+LoadStandardOpaqueFont::
+	farjp _LoadStandardOpaqueFont
+
 LoadStandardFont:: ; e51
 	farjp _LoadStandardFont
 ; e58
@@ -130,12 +133,19 @@ Request2bpp:: ; eba
 	ld [hBGMapMode], a
 	ret
 
+GetMaybeOpaque1bpp::
+	ld a, [rLCDC]
+	bit 7, a
+	jr nz, _Request1bpp
+	jr _Copy1bpp
+
 GetOpaque1bppFontTile::
 ; Two bytes in VRAM define eight pixels (2 bits/pixel)
 ; Bits are paired from the bytes, e.g. %ABCDEFGH %abcdefgh defines pixels
 ; %Aa, %Bb, %Cc, %Dd, %Ee, %Ff, %Gg, %Hh
 ; %00 = white, %11 = black, %10 = light, %01 = dark
 	lb bc, BANK(FontTiles), 1
+GetOpaque1bpp::
 	ld a, [rLCDC]
 	bit 7, a ; lcd on?
 	jr nz, RequestOpaque1bpp
@@ -169,15 +179,13 @@ Request1bpp::
 	ld [hRequestOpaque1bpp], a
 _Request1bpp:
 ; Load 1bpp at b:de to occupy c tiles of hl.
+	call StackCallInBankB
+
+.Function:
 	ld a, [hBGMapMode]
 	push af
 	xor a
 	ld [hBGMapMode], a
-
-	ld a, [hROMBank]
-	push af
-	ld a, b
-	rst Bankswitch
 
 	call WriteVCopyRegistersToHRAM
 	ld a, [rLY]
@@ -221,9 +229,6 @@ _Request1bpp:
 	call HBlankCopy1bpp
 	jr c, .loop
 .done
-	pop af
-	rst Bankswitch
-
 	pop af
 	ld [hBGMapMode], a
 	ret

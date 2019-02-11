@@ -65,18 +65,32 @@ INCBIN "gfx/frames/map_entry_sign.2bpp"
 PaintingFrameGFX:
 INCBIN "gfx/frames/painting.2bpp"
 
-_LoadStandardFont:: ; fb449
+_LoadStandardOpaqueFont::
+	ld a, 1
+	call _LoadStandardMaybeOpaqueFont
+	ld hl, VTiles0 tile " "
+	ld de, TextBoxSpaceGFX
+	jp GetOpaque1bppFontTile
+
+_LoadStandardFont::
+	xor a
+_LoadStandardMaybeOpaqueFont:
+	push af
 	call LoadStandardFontPointer
 	ld d, h
 	ld e, l
 	ld hl, VTiles0 tile "A"
 	lb bc, BANK(FontNormal), 111
-	call Get1bpp
+	pop af
+	ld [hRequestOpaque1bpp], a
+	push af
+	call GetMaybeOpaque1bpp
 	ld de, FontCommon
 	ld hl, VTiles0 tile "▷"
 	lb bc, BANK(FontCommon), 11
-	jp Get1bpp
-; fb48a
+	pop af
+	ld [hRequestOpaque1bpp], a
+	jp GetMaybeOpaque1bpp
 
 LoadStandardFontPointer::
 	ld hl, .FontPointers

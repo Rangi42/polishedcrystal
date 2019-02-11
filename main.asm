@@ -482,24 +482,46 @@ GetQuantityInBag:
 
 PlaceKeyItemName:
 ; places a star near the name if registered
+	push hl
 	push de
 	dec de
 	dec de
 	ld a, " "
 	ld [de], a
+	dec de
+	ld [de], a
 	ld a, [wMenuSelection]
 	push bc
-	ld b, a
-	ld a, [wRegisteredItem]
 	and a
 	jr z, .not_registered
+	ld b, a
+	ld hl, wRegisteredItems
+	ld a, [hli]
 	cp b
+	ld c, "▲"
+	jr z, .registered
+	ld a, [hli]
+	cp b
+	ld c, "◀"
+	jr z, .registered
+	ld a, [hli]
+	cp b
+	ld c, "▶"
+	jr z, .registered
+	ld a, [hli]
+	cp b
+	ld c, "▼"
 	jr nz, .not_registered
+.registered
+	ld a, c
+	ld [de], a
+	inc de
 	ld a, "★"
 	ld [de], a
 .not_registered
 	pop bc
 	pop de
+	pop hl
 	; fallthrough
 PlaceMenuItemName: ; 0x24ab4
 	push de
