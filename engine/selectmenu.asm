@@ -142,6 +142,8 @@ GetRegisteredItem:
 	ld de, SFX_MENU
 	call PlaySFX
 
+	call UpdateSprites
+	call DelayFrame
 	call LoadStandardOpaqueFont
 	ld hl, InvertedTextPalette
 	ld de, wUnknBGPals palette 7
