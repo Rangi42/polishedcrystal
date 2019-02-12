@@ -153,24 +153,96 @@ GetRegisteredItem:
 	ld a, 5
 	call FarCopyWRAM
 
-	hlcoord 0, 14, wAttrMap
-	ld a, 7
+	hlcoord 0, 0, wAttrMap
+	ld a, BEHIND_BG | 7
 	ld bc, SCREEN_WIDTH * 4
 	call ByteFill
 
-	hlcoord 0, 14
+	hlcoord 0, 0
 	ld a, " "
 	ld bc, SCREEN_WIDTH * 4
 	call ByteFill
-	ld b, 2
-	call SafeCopyTilemapAtOnce
-	ld a, 1
-	ld [hOAMUpdate], a
-	call SafeUpdateSprites
-	call ApplyTilemap
-	ld c, 240
-	call DelayFrames
+
+	; Insert registered items
+	hlcoord 0, 0
+	ld de, .RegisteredItemText
+	call PlaceString
+	hlcoord 2, 0
+	ld de, wRegisteredItems
+	ld b, 4
+.loop
+	push bc
+	ld a, [de]
+	and a
+	jr z, .next
+	ld [wNamedObjectIndexBuffer], a
+	push de
+	push hl
+	call GetItemName
+	pop hl
+	push hl
+	ld de, wStringBuffer1
+	call PlaceString
+	pop hl
+	pop de
+.next
+	inc de
+	ld bc, SCREEN_WIDTH
+	add hl, bc
+	pop bc
+	dec b
+	jr nz, .loop
+
+	call SetPalettes
+	farcall HDMATransfer_OnlyTopFourRows
+	xor a
+	ld a, $70
+	ld [rWY], a
+	ld [hWY], a
+
+	; wait for input
+.joy_loop
+	call GetJoypad
+	ld hl, hJoyPressed
+	ld a, [hl]
+	and D_PAD | B_BUTTON | SELECT | START
+	jr nz, .got_input
+	call DelayFrame
+	jr .joy_loop
+.got_input
+	and B_BUTTON | SELECT | START
+	jr nz, .cancel
+	ld de, wRegisteredItems
+	ld a, [hl]
+	bit D_UP_F, a
+	jr nz, .got_item
+	inc de
+	bit D_LEFT_F, a
+	jr nz, .got_item
+	inc de
+	bit D_RIGHT_F, a
+	jr nz, .got_item
+	inc de
+.got_item
+	ld a, [de]
+	ld [wCurItem], a
+	and a
+	jr z, .joy_loop
+	jr .ret
+
+.cancel
+	xor a
+.ret
+	push af
+	farcall ReloadVisibleSprites
+	pop af
 	ret
+
+.RegisteredItemText:
+	db "▲ -"
+	next1 "◀ -"
+	next1 "▶ -"
+	next1 "▼ -@"
 
 InvertedTextPalette:
 if !DEF(MONOCHROME)
