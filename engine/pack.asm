@@ -592,6 +592,19 @@ RegisterItem: ; 103c2
 	ld a, [wItemAttributeParamBuffer]
 	and a
 	jr nz, .cant_register
+
+	; Check if the item is registered
+	ld hl, wRegisteredItems
+	ld a, [wCurItem]
+	ld e, a
+	ld d, 4
+.already_registered_loop
+	ld a, [hl]
+	cp e
+	jr z, .found_registered_slot
+	inc hl
+	dec d
+	jr nz, .already_registered_loop
 	ld hl, wRegisteredItems
 	ld d, 4
 .loop
@@ -602,7 +615,7 @@ RegisterItem: ; 103c2
 	dec d
 	jr nz, .loop
 	ld hl, Text_NoEmptySlot
-	jp Pack_PrintTextNoScroll
+	jr .print
 
 .found_empty_slot
 	ld a, [wCurItem]
@@ -611,10 +624,18 @@ RegisterItem: ; 103c2
 	ld de, SFX_FULL_HEAL
 	call WaitPlaySFX
 	ld hl, Text_RegisteredItem
-	jp Pack_PrintTextNoScroll
+	jr .print
+
+.found_registered_slot
+	ld [hl], 0
+	ld a, [wCurItem]
+	call Pack_GetItemName
+	ld hl, Text_UnregisteredItem
+	jr .print
 
 .cant_register
 	ld hl, Text_CantRegister
+.print
 	jp Pack_PrintTextNoScroll
 
 GiveItem: ; 103fd
@@ -1803,6 +1824,14 @@ Text_RegisteredItem: ; 0x10afd
 	text_jump UnknownText_0x1c0c2e
 	db "@"
 ; 0x10b02
+
+Text_UnregisteredItem:
+	text "Unregistered the"
+	line "@"
+	text_from_ram wStringBuffer2
+	text "."
+	prompt
+	db "@"
 
 Text_CantRegister: ; 0x10b02
 	; You can't register that item.
