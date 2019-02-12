@@ -17,7 +17,7 @@ ItemMayBeRegisteredText:
 	db "@"
 
 
-CheckRegisteredItem: ; 13345
+CheckRegisteredItem:: ; 13345
 ; Returns amount of registered items and z if none is. Populates wCurItem
 ; with a valid registered item, useful if there's only a single one.
 	ld hl, wRegisteredItems
@@ -138,7 +138,6 @@ UseRegisteredItem:
 
 GetRegisteredItem:
 ; Shows a list of registered items, allowing you to select one with directions
-; TODO: finish
 	ld de, SFX_MENU
 	call PlaySFX
 
@@ -146,13 +145,13 @@ GetRegisteredItem:
 	call DelayFrame
 	call LoadStandardOpaqueFont
 	ld hl, InvertedTextPalette
-	ld de, wUnknBGPals palette 7
-	ld bc, 1  palettes
-	ld a, 5
+	ld de, wUnknBGPals palette PAL_BG_TEXT
+	ld bc, 1 palettes
+	ld a, $5
 	call FarCopyWRAM
 
 	hlcoord 0, 0, wAttrMap
-	ld a, BEHIND_BG | 7
+	ld a, BEHIND_BG | PAL_BG_TEXT
 	ld bc, SCREEN_WIDTH * 4
 	call ByteFill
 
@@ -241,7 +240,7 @@ GetRegisteredItem:
 	ret
 
 .RegisteredItemText:
-	db "▲ -"
+	db    "▲ -"
 	next1 "◀ -"
 	next1 "▶ -"
 	next1 "▼ -@"
