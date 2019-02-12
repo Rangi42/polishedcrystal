@@ -139,13 +139,9 @@ UseRegisteredItem:
 GetRegisteredItem:
 ; Shows a list of registered items, allowing you to select one with directions
 ; TODO: finish
-	call ClearWindowData
 	ld de, SFX_MENU
 	call PlaySFX
 
-	farcall ReanchorBGMap_NoOAMUpdate
-	call SafeUpdateSprites
-	call BGMapAnchorTopLeft
 	call LoadStandardOpaqueFont
 	ld hl, InvertedTextPalette
 	ld de, wUnknBGPals palette 7
@@ -194,6 +190,7 @@ GetRegisteredItem:
 	jr nz, .loop
 
 	call SetPalettes
+	call DelayFrame
 	farcall HDMATransfer_OnlyTopFourRows
 	xor a
 	ld a, $70
