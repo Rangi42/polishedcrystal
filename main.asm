@@ -511,6 +511,15 @@ PlaceMenuItemName:
 	ld c, "▼"
 	jr nz, .not_registered
 .registered
+	push bc
+	push de
+	farcall CheckRegisteredItem
+	pop de
+	pop bc
+	dec a
+	jr nz, .not_unique
+	ld c, "★"
+.not_unique
 	ld a, c
 	ld [de], a
 .not_registered
