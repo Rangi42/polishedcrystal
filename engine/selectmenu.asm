@@ -234,6 +234,9 @@ GetRegisteredItem:
 	xor a
 .ret
 	push af
+	ld a, $90
+	ld [rWY], a
+	ld [hWY], a
 	farcall ReloadVisibleSprites
 	pop af
 	ret
