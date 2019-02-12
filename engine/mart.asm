@@ -1115,7 +1115,7 @@ MenuDataHeader_Buy: ; 0x15e18
 	db 4, 8 ; rows, columns
 	db 1 ; horizontal spacing
 	dbw 0, wCurMart
-	dba PlaceMenuItemName
+	dba PlaceMartItemName
 	dba MartMenu_PrintBCDPrices
 	dba UpdateItemIconAndDescriptionAndBagQuantity
 ; 15e30
@@ -1169,7 +1169,7 @@ BlueCardMenuDataHeader_Buy:
 	db 4, 8 ; rows, columns
 	db 1 ; horizontal spacing
 	dbw 0, wCurMart
-	dba PlaceMenuItemName
+	dba PlaceMartItemName
 	dba .PrintPointCosts
 	dba UpdateItemIconAndDescriptionAndBagQuantity
 
@@ -1198,7 +1198,7 @@ BTMenuDataHeader_Buy:
 	db 4, 8 ; rows, columns
 	db 1 ; horizontal spacing
 	dbw 0, wCurMart
-	dba PlaceMenuItemName
+	dba PlaceMartItemName
 	dba .PrintPointCosts
 	dba UpdateItemIconAndDescriptionAndBagQuantity
 

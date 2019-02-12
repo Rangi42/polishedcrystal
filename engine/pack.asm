@@ -1637,7 +1637,7 @@ PC_Mart_ItemsPocketMenuDataHeader: ; 0x10a67
 	db 5, 8 ; rows, columns
 	db 2 ; horizontal spacing
 	dbw 0, wNumItems
-	dba PlaceMenuItemName
+	dba PlaceMartItemName
 	dba PlaceMenuItemQuantity
 	dba UpdateItemIconAndDescription
 ; 10a7f
@@ -1670,7 +1670,7 @@ PC_Mart_MedicinePocketMenuDataHeader:
 	db 5, 8 ; rows, columns
 	db 2 ; horizontal spacing
 	dbw 0, wNumMedicine
-	dba PlaceMenuItemName
+	dba PlaceMartItemName
 	dba PlaceMenuItemQuantity
 	dba UpdateItemIconAndDescription
 
@@ -1705,7 +1705,7 @@ PC_Mart_BallsPocketMenuDataHeader: ; 0x10ac7
 	db 5, 8 ; rows, columns
 	db 2 ; horizontal spacing
 	dbw 0, wNumBalls
-	dba PlaceMenuItemName
+	dba PlaceMartItemName
 	dba PlaceMenuItemQuantity
 	dba UpdateItemIconAndDescription
 ; 10adf
@@ -1738,7 +1738,7 @@ PC_Mart_BerriesPocketMenuDataHeader:
 	db 5, 8 ; rows, columns
 	db 2 ; horizontal spacing
 	dbw 0, wNumBerries
-	dba PlaceMenuItemName
+	dba PlaceMartItemName
 	dba PlaceMenuItemQuantity
 	dba UpdateItemIconAndDescription
 
@@ -1773,7 +1773,7 @@ PC_Mart_KeyItemsPocketMenuDataHeader: ; 0x10a97
 	db 5, 8 ; rows, columns
 	db 1 ; horizontal spacing
 	dbw 0, wNumKeyItems
-	dba PlaceMenuItemName
+	dba PlaceMartItemName
 	dba PlaceMenuItemQuantity
 	dba UpdateItemIconAndDescription
 ; 10aaf

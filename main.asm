@@ -522,6 +522,7 @@ PlaceMenuItemName:
 	pop bc
 	pop de
 	pop hl
+PlaceMartItemName:
 	push de
 	ld a, [wMenuSelection]
 	ld [wNamedObjectIndexBuffer], a
