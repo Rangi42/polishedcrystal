@@ -488,8 +488,6 @@ PlaceMenuItemName:
 	dec de
 	ld a, " "
 	ld [de], a
-	dec de
-	ld [de], a
 	ld a, [wMenuSelection]
 	push bc
 	and a
@@ -514,9 +512,6 @@ PlaceMenuItemName:
 	jr nz, .not_registered
 .registered
 	ld a, c
-	ld [de], a
-	inc de
-	ld a, "★"
 	ld [de], a
 .not_registered
 	pop bc

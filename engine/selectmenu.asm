@@ -138,19 +138,18 @@ UseRegisteredItem:
 
 GetRegisteredItem:
 ; Shows a list of registered items, allowing you to select one with directions
-; TODO: finish
 	ld de, SFX_MENU
 	call PlaySFX
 
 	call LoadStandardOpaqueFont
 	ld hl, InvertedTextPalette
-	ld de, wUnknBGPals palette 7
-	ld bc, 1  palettes
-	ld a, 5
+	ld de, wUnknBGPals palette PAL_BG_TEXT
+	ld bc, 1 palettes
+	ld a, $5
 	call FarCopyWRAM
 
 	hlcoord 0, 0, wAttrMap
-	ld a, BEHIND_BG | 7
+	ld a, BEHIND_BG | PAL_BG_TEXT
 	ld bc, SCREEN_WIDTH * 4
 	call ByteFill
 
@@ -239,7 +238,7 @@ GetRegisteredItem:
 	ret
 
 .RegisteredItemText:
-	db "▲ -"
+	db    "▲ -"
 	next1 "◀ -"
 	next1 "▶ -"
 	next1 "▼ -@"

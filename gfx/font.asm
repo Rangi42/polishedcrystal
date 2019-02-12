@@ -66,9 +66,9 @@ PaintingFrameGFX:
 INCBIN "gfx/frames/painting.2bpp"
 
 _LoadStandardOpaqueFont::
-	ld a, 1
+	ld a, TRUE
 	call _LoadStandardMaybeOpaqueFont
-	ld hl, VTiles0 tile " "
+	ld hl, VTiles2 tile " "
 	ld de, TextBoxSpaceGFX
 	jp GetOpaque1bppFontTile
 
