@@ -480,7 +480,7 @@ GetQuantityInBag:
 	pop af
 	ret
 
-PlaceKeyItemName:
+PlaceMenuItemName:
 ; places a star near the name if registered
 	push hl
 	push de
@@ -522,8 +522,6 @@ PlaceKeyItemName:
 	pop bc
 	pop de
 	pop hl
-	; fallthrough
-PlaceMenuItemName: ; 0x24ab4
 	push de
 	ld a, [wMenuSelection]
 	ld [wNamedObjectIndexBuffer], a
