@@ -16,6 +16,7 @@ SongArtists:
 	db "ShantyTown@"
 	db "Pigu@"
 	db "ShockSlayer@"
+	db "Monstarules@"
 	db "Pigu, PikalaxALT@"
 	db "GACT, Pigu@"
 	db "LevusBevus@"

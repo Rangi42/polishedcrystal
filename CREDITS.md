@@ -33,6 +33,7 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * ShantyTown for the XY Power Plant and Bicycle music.
 * Pigu and GACT for some battle music (used in TPP Anniversary Crystal 251).
 * ShockSlayer for some Pokémon Go and Pokémon Stadium battle music.
+* Monstarules for the RSE Surf music.
 * LevusBevus, GRonnoc, Cat333Pokemon, and KoolBoyMan for some music from Pokémon Prism (available in the music player).
 
 

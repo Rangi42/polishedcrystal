@@ -189,6 +189,7 @@ INCLUDE "audio/music/rby/surfingpikachu.asm"
 
 SECTION "RSE Music 1", ROMX
 
+INCLUDE "audio/music/rse/surfing.asm"
 INCLUDE "audio/music/rse/abandonedship.asm"
 INCLUDE "audio/music/rse/championbattle.asm"
 INCLUDE "audio/music/rse/evergrandecity.asm"

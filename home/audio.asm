@@ -493,6 +493,9 @@ GetPlayerStateMusic:
 	ld de, MUSIC_BICYCLE_RB
 	cp KANTO_REGION
 	ret z
+;	ld de, MUSIC_BICYCLE_RSE
+;	cp ORANGE_REGION
+;	ret z
 	ld de, MUSIC_BICYCLE
 	ret
 
@@ -501,6 +504,9 @@ GetPlayerStateMusic:
 	ld a, e
 	ld de, MUSIC_SURF_KANTO
 	cp KANTO_REGION
+	ret z
+	ld de, MUSIC_SURF_HOENN
+	cp ORANGE_REGION
 	ret z
 	ld de, MUSIC_SURF
 	ret
