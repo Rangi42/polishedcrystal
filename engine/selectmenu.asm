@@ -201,11 +201,13 @@ GetRegisteredItem:
 	call GetJoypad
 	ld hl, hJoyPressed
 	ld a, [hl]
-	and D_PAD | B_BUTTON | SELECT | START
+	and a
 	jr nz, .got_input
 	call DelayFrame
 	jr .joy_loop
 .got_input
+	bit A_BUTTON_F, a
+	jr nz, .first
 	and B_BUTTON | SELECT | START
 	jr nz, .cancel
 	ld de, wRegisteredItems
@@ -221,6 +223,7 @@ GetRegisteredItem:
 	inc de
 .got_item
 	ld a, [de]
+.got_item_a
 	ld [wCurItem], a
 	and a
 	jr z, .joy_loop
@@ -236,6 +239,18 @@ GetRegisteredItem:
 	farcall ReloadVisibleSprites
 	pop af
 	ret
+
+.first
+	ld hl, wRegisteredItems
+rept 3
+	ld a, [hli]
+	and a
+	jr nz, .got_item_a
+endr
+	ld a, [hl]
+	and a
+	jr nz, .got_item_a
+	jr .joy_loop
 
 .RegisteredItemText:
 	db    "▲ -"
