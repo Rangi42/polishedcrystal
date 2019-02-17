@@ -629,7 +629,6 @@ CopScript:
 	applymovement ELMSLAB_LYRA, LyraRunsInMovement
 	turnobject ELMSLAB_OFFICER, DOWN
 	showtext ElmsLabLyraTheftInnocentText
-	showemote EMOTE_SHOCK, ELMSLAB_OFFICER, 15
 	pause 10
 	turnobject ELMSLAB_OFFICER, LEFT
 	opentext
