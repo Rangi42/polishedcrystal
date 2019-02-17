@@ -2900,7 +2900,7 @@ PrintTempMonStats: ; 50b7b
 ; Print wTempMon's stats at hl, with spacing bc.
 	push bc
 	push hl
-	ld de, .StatNames
+	ld de, MostStatNames
 	call PlaceString
 	pop hl
 	pop bc
@@ -2942,7 +2942,9 @@ endr
 	add hl, de
 	ret
 
-.StatNames: ; 50bb5
+AllStatNames:
+	db   "Health<NL>"
+MostStatNames:
 	db   "Attack"
 	next "Defense"
 	next "Spcl.Atk"
@@ -2967,7 +2969,7 @@ PrintStatDifferences: ; 50b7b
 	ld a, [wStringBuffer3 + 12]
 	and a
 	ld a, [wStringBuffer3 + 13]
-	ld d, 3
+	ld d, 4
 	jr nz, .got_digit_length
 	cp 100
 	jr nc, .got_digit_length
@@ -2987,10 +2989,10 @@ PrintStatDifferences: ; 50b7b
 	ld a, b
 	ld [wStringBuffer3 + 14], a
 	ld de, wStringBuffer3
-	ld b, 1
+	ld b, 1 ; show stat+difference
 	call .PrintStatDisplay
 	ld de, wTempMonMaxHP
-	ld b, 0
+	ld b, 0 ; just show stat
 	call .PrintStatDisplay
 	pop af
 	ld [wTextBoxFlags], a
@@ -3036,7 +3038,7 @@ PrintStatDifferences: ; 50b7b
 	push de
 	push bc
 	call .PrintStatNames
-	ld bc, 8
+	ld bc, 9
 	add hl, bc
 	pop bc
 	pop de
@@ -3067,21 +3069,8 @@ PrintStatDifferences: ; 50b7b
 	jr nz, .coord_loop2
 	pop af
 	push hl
-	ld de, .StatNames
+	ld de, AllStatNames
 	call PlaceString
-	pop hl
-
-	push hl
-	ld a, [wTempMonNature]
-	ld b, a
-	farcall GetNature
-	pop hl
-	push hl
-	push bc
-	ld bc, 7 + SCREEN_WIDTH
-	add hl, bc
-	pop bc
-	predef PrintNatureIndicators
 	pop hl
 	ret
 
@@ -3131,6 +3120,7 @@ PrintStatDifferences: ; 50b7b
 	ld b, 2
 	ld a, [wStringBuffer3 + 14]
 	ld c, a
+	dec c
 	push de
 	ld de, wStringBuffer3 + 12
 	call PrintNum
@@ -3143,15 +3133,6 @@ PrintStatDifferences: ; 50b7b
 	inc de
 	pop bc
 	ret
-
-.StatNames:
-	;    "Stat   ↑123+1"
-	db   "Max HP"
-	next "Attack"
-	next "Defense"
-	next "Sp. Atk"
-	next "Sp. Def"
-	next "Speed@"
 
 GetGender: ; 50bdd
 ; Return the gender of a given monster (wCurPartyMon/wCurOTMon/CurWildMon).
