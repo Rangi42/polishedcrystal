@@ -161,14 +161,17 @@ NewBarkTownSilverScript:
 	showtext NewBarkTownRivalText1
 	turnobject NEWBARKTOWN_SILVER, LEFT
 	showtext NewBarkTownRivalText2
+	turnobject PLAYER, UP
+	applyonemovement PLAYER, fix_facing
 	follow PLAYER, NEWBARKTOWN_SILVER
-	applymovement PLAYER, Movement_SilverPushesYouAway_NBT
+	applyonemovement PLAYER, step_down
 	stopfollow
 	pause 5
 	turnobject NEWBARKTOWN_SILVER, DOWN
 	pause 5
 	playsound SFX_TACKLE
-	applymovement PLAYER, Movement_SilverShovesYouOut_NBT
+	applyonemovement PLAYER, jump_step_down
+	applyonemovement PLAYER, remove_fixed_facing
 	applyonemovement NEWBARKTOWN_SILVER, step_right
 	end
 
@@ -196,18 +199,6 @@ Movement_TeacherBringsYouBack1_NBT:
 	step_right
 	step_right
 	turn_head_left
-	step_end
-
-Movement_SilverPushesYouAway_NBT:
-	turn_head_up
-	step_down
-	step_end
-
-Movement_SilverShovesYouOut_NBT:
-	turn_head_up
-	fix_facing
-	jump_step_down
-	remove_fixed_facing
 	step_end
 
 Movement_LyraEnters_NBT:
