@@ -630,7 +630,7 @@ wDudeNumItems:: ds 1
 wDudeItems: ds 2 * 2
 wDudeItemsEnd:: ds 1
 wDudeNumMedicine:: ds 1
-wDudeMedicine:: ds 2 * 2
+wDudeMedicine:: ds 3 * 2
 wDudeMedicineEnd:: ds 1
 wDudeNumBalls:: ds 1
 wDudeBalls:: ds 2 * 2

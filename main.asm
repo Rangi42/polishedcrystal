@@ -2524,33 +2524,29 @@ CatchTutorial:: ; 4e554
 
 .LoadDudeData: ; 4e5b7 (13:65b7)
 	ld hl, wDudeNumItems
-	ld [hl], 1
-	inc hl
-	ld [hl], REPEL
-	inc hl
-	ld [hl], 1
-	inc hl
-	ld [hl], -1
+	ld de, .DudeItems
+	call .CopyDudeData
 	ld hl, wDudeNumMedicine
-	ld [hl], 1
-	inc hl
-	ld [hl], POTION
-	inc hl
-	ld [hl], 1
-	inc hl
-	ld [hl], -1
+	ld de, .DudeMedicine
+	call .CopyDudeData
 	ld hl, wDudeNumBalls
-	ld [hl], 1
-	inc hl
-	ld [hl], POKE_BALL
-	inc hl
-	ld [hl], 10
-	inc hl
-	ld [hl], -1
+	ld de, .DudeBalls
+.CopyDudeData:
+	ld a, [de]
+	inc de
+	ld [hli], a
+	cp -1
+	jr nz, .CopyDudeData
 	ret
 
 .Dude: ; 4e5da
 	db "Lyra@"
+.DudeItems:
+	db 2, REPEL, 1, GOLD_LEAF, 1, -1
+.DudeMedicine:
+	db 3, POTION, 2, ANTIDOTE, 1, FRESH_WATER, 1, -1
+.DudeBalls:
+	db 2, POKE_BALL, 10, PREMIER_BALL, 1, -1
 
 .AutoInput: ; 4e5df
 	db NO_INPUT, $ff ; end
