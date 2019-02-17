@@ -96,7 +96,6 @@ Refer to [B/W animations with sound effects](https://www.youtube.com/watch?v=TFD
 
 High priority:
 
-* Aqua Jet
 * Giga Impact
 * Gyro Ball
 * Rock Blast

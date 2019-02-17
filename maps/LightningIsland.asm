@@ -3,13 +3,37 @@ LightningIsland_MapScriptHeader:
 
 	db 0 ; callbacks
 
-	db 6 ; warp events
+	db 30 ; warp events
 	warp_event  5, 29, SHAMOUTI_COAST, 3
 	warp_event 19, 29, LIGHTNING_ISLAND_ROOF, 1
 	warp_event  6,  3, LIGHTNING_ISLAND, 4
 	warp_event 19,  3, LIGHTNING_ISLAND, 3
 	warp_event 19, 26, LIGHTNING_ISLAND, 6
 	warp_event  5, 27, LIGHTNING_ISLAND, 5 ; hole
+	warp_event  4, 11, LIGHTNING_ISLAND, 7 ; hole
+	warp_event  6, 11, LIGHTNING_ISLAND, 8 ; hole
+	warp_event 17,  9, LIGHTNING_ISLAND, 7
+	warp_event 17, 10, LIGHTNING_ISLAND, 7
+	warp_event 17, 11, LIGHTNING_ISLAND, 7
+	warp_event 17, 12, LIGHTNING_ISLAND, 7
+	warp_event 17, 13, LIGHTNING_ISLAND, 7
+	warp_event 20,  9, LIGHTNING_ISLAND, 8
+	warp_event 20, 10, LIGHTNING_ISLAND, 8
+	warp_event 20, 11, LIGHTNING_ISLAND, 8
+	warp_event 20, 12, LIGHTNING_ISLAND, 8
+	warp_event 20, 13, LIGHTNING_ISLAND, 8
+	warp_event  5, 22, LIGHTNING_ISLAND, 19 ; hole
+	warp_event  7, 21, LIGHTNING_ISLAND, 20 ; hole
+	warp_event 19, 19, LIGHTNING_ISLAND, 19
+	warp_event 19, 20, LIGHTNING_ISLAND, 19
+	warp_event 19, 21, LIGHTNING_ISLAND, 19
+	warp_event 19, 22, LIGHTNING_ISLAND, 19
+	warp_event 19, 23, LIGHTNING_ISLAND, 19
+	warp_event 22, 19, LIGHTNING_ISLAND, 20
+	warp_event 22, 20, LIGHTNING_ISLAND, 20
+	warp_event 22, 21, LIGHTNING_ISLAND, 20
+	warp_event 22, 22, LIGHTNING_ISLAND, 20
+	warp_event 22, 23, LIGHTNING_ISLAND, 20
 
 	db 0 ; coord events
 
