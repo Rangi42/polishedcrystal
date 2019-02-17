@@ -254,3 +254,4 @@ IconPointers:
 	dw SylveonIcon
 	dw PorygonZIcon
 	dw EggIcon
+	dw RattataBackIcon

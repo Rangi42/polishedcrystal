@@ -68,3 +68,4 @@ SpriteMons:
 	db LUGIA
 	db HO_OH
 	db EGG
+	db $ff ; SPRITE_RATTATA_BACK
