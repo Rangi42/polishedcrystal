@@ -34,7 +34,7 @@ SetMenuMonIconColor_NoShiny:
 	ld a, [wd265]
 	ld [wCurPartySpecies], a
 	and a
-	call GetMenuMonIconPalette_PredeterminedShininess
+	call GetMenuMonIconPalette.got_shininess
 	jr ProcessMenuMonIconColor
 
 LoadFlyMonColor:
@@ -125,18 +125,25 @@ ProcessMenuMonIconColor:
 	pop hl
 	ret
 
+GetMonIconPalette::
+	push af
+	ld a, [wCurIcon]
+	and a
+	jr GetMenuMonIconPalette.got_species
+
 GetMenuMonIconPalette::
 ; check shininess at hl
 	ld a, [hl]
 	and SHINY_MASK
 	jr z, .not_shiny
 	scf
-	jr GetMenuMonIconPalette_PredeterminedShininess
+	jr .got_shininess
 .not_shiny
 	and a
-GetMenuMonIconPalette_PredeterminedShininess:
+.got_shininess:
 	push af
 	ld a, [wCurPartySpecies]
+.got_species:
 	dec a
 	ld c, a
 	ld b, 0

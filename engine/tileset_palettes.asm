@@ -1843,13 +1843,15 @@ LoadSpecialMapOBPalette:
 
 .not_faraway:
 	ld a, [wMapGroup]
-	cp GROUP_MURKY_SWAMP
-	jr nz, .not_murky_swamp
+	cp GROUP_MURKY_SWAMP ; GROUP_ROUTE_34
+	jr nz, .not_murky_swamp_or_route_34
 	ld a, [wMapNumber]
 	cp MAP_MURKY_SWAMP
 	jr z, .load_bg_tree_palette
+	cp MAP_ROUTE_34
+	jp z, .load_party_mon_palettes
 
-.not_murky_swamp:
+.not_murky_swamp_or_route_34:
 	ld a, [wMapGroup]
 	cp GROUP_VERMILION_GYM
 	jr nz, .not_vermilion_gym
@@ -1881,15 +1883,18 @@ LoadSpecialMapOBPalette:
 
 .not_rock_tunnel_2f:
 	ld a, [wMapGroup]
-	cp GROUP_LYRAS_HOUSE_2F
-	jr nz, .not_lyras_house_2f
+	cp GROUP_LYRAS_HOUSE_2F ; GROUP_KRISS_HOUSE_2F
+	jr nz, .not_lyras_house_2f_or_kriss_house_2f
 	ld a, [wMapNumber]
 	cp MAP_LYRAS_HOUSE_2F
 	jr nz, .not_lyras_house_2f
 	ld hl, LyrasHouse2FOBPalette_Rock
 	jp .load_rock_palette
+.not_lyras_house_2f
+	cp MAP_KRISS_HOUSE_2F
+	jp z, .load_party_mon_palettes
 
-.not_lyras_house_2f:
+.not_lyras_house_2f_or_kriss_house_2f:
 	ld a, [wMapGroup]
 	cp GROUP_GOLDENROD_HARBOR
 	jr nz, .not_goldenrod_harbor
@@ -1968,6 +1973,17 @@ LoadSpecialMapOBPalette:
 .load_rock_palette
 	ld de, wUnknOBPals palette PAL_OW_ROCK
 	jp .load_single_palette
+
+.load_party_mon_palettes:
+	ld hl, OverworldPartyMonPalettes
+	ld a, [wTimeOfDayPal]
+	and 3
+	ld bc, 3 palettes
+	rst AddNTimes
+	ld de, wUnknOBPals palette PAL_OW_SILVER
+	ld bc, 3 palettes
+	ld a, $5
+	jp FarCopyWRAM
 
 VermilionGymOBPalette_Tree:
 if !DEF(MONOCHROME)
@@ -2073,4 +2089,27 @@ else
 	RGB_MONOCHROME_WHITE
 	RGB_MONOCHROME_LIGHT
 	RGB_MONOCHROME_DARK
+endc
+
+OverworldPartyMonPalettes:
+if !DEF(MONOCHROME)
+; morn
+	RGB 28,31,16, 31,22,10, 13,13,13, 00,00,00 ; gray
+	RGB 28,31,16, 31,22,10, 31,10,11, 00,00,00 ; pink
+	RGB 28,31,16, 31,22,10, 03,23,21, 00,00,00 ; teal
+; day
+	RGB 27,31,27, 31,19,10, 13,13,13, 00,00,00 ; gray
+	RGB 27,31,27, 31,19,10, 31,10,11, 00,00,00 ; pink
+	RGB 27,31,27, 31,19,10, 03,23,21, 00,00,00 ; teal
+; nite
+	RGB 15,14,24, 16,09,09, 07,07,10, 00,00,00 ; gray
+	RGB 15,14,24, 16,09,09, 17,07,08, 00,00,00 ; pink
+	RGB 15,14,24, 16,09,09, 02,12,16, 00,00,00 ; teal
+else
+rept 6
+	MONOCHROME_RGB_FOUR_OW
+endr
+rept 3
+	MONOCHROME_RGB_FOUR_OW_NIGHT
+endr
 endc

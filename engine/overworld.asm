@@ -300,7 +300,26 @@ _GetSpritePalette:: ; 142c4
 	ret
 
 .is_pokemon
-	xor a
+	ld a, [wMapGroup]
+	cp GROUP_KRISS_HOUSE_2F
+	jr nz, .not_doll
+	ld a, [wMapNumber]
+	cp MAP_KRISS_HOUSE_2F
+	jr nz, .not_daycare_or_doll
+	jr .daycare_or_doll
+.not_doll
+	cp GROUP_ROUTE_34
+	jr nz, .not_daycare_or_doll
+	ld a, [wMapNumber]
+	cp MAP_ROUTE_34
+	jr nz, .not_daycare_or_doll
+.daycare_or_doll
+	farcall GetMonIconPalette
+	jr .got_palette
+
+.not_daycare_or_doll
+	xor a ; PAL_OW_RED
+.got_palette
 	ld c, a
 	ret
 ; 142db
