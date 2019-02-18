@@ -1138,6 +1138,10 @@ DecorationDesc_RightOrnament: ; 26fbe
 	ld a, [wRightOrnament]
 DecorationDesc_Ornament:
 	ld c, a
+	cp DECO_GOLD_TROPHY_DOLL
+	jr z, DecorationDesc_Console.go
+	cp DECO_SILVER_TROPHY_DOLL
+	jr z, DecorationDesc_Console.go
 	ld de, wStringBuffer3
 	call GetDecorationName_c_de
 	ld b, BANK(.OrnamentScript)
@@ -1155,6 +1159,7 @@ DecorationDesc_Ornament:
 DecorationDesc_Console: ; 26fc3
 	ld a, [wConsole]
 	ld c, a
+.go:
 	ld de, wStringBuffer3
 	call GetDecorationName_c_de
 	ld b, BANK(.ConsoleScript)
