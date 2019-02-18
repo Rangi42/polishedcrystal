@@ -1132,32 +1132,43 @@ DecorationDesc_NullPoster: ; 26fb8
 
 DecorationDesc_LeftOrnament: ; 26fb9
 	ld a, [wLeftOrnament]
-	jr DecorationDesc_OrnamentOrConsole
+	jr DecorationDesc_Ornament
 
 DecorationDesc_RightOrnament: ; 26fbe
 	ld a, [wRightOrnament]
-	jr DecorationDesc_OrnamentOrConsole
-
-DecorationDesc_Console: ; 26fc3
-	ld a, [wConsole]
-	; fallthrough
-
-DecorationDesc_OrnamentOrConsole: ; 26fc8
+DecorationDesc_Ornament:
 	ld c, a
 	ld de, wStringBuffer3
 	call GetDecorationName_c_de
-	ld b, BANK(.OrnamentConsoleScript)
-	ld de, .OrnamentConsoleScript
+	ld b, BANK(.OrnamentScript)
+	ld de, .OrnamentScript
+	ret
+
+.OrnamentScript:
+	jumptext .OrnamentText
+
+.OrnamentText:
+	; It's an adorable @ .
+	text_jump UnknownText_0x1bc5d7
+	db "@"
+
+DecorationDesc_Console: ; 26fc3
+	ld a, [wConsole]
+	ld c, a
+	ld de, wStringBuffer3
+	call GetDecorationName_c_de
+	ld b, BANK(.ConsoleScript)
+	ld de, .ConsoleScript
 	ret
 ; 26fd5
 
-.OrnamentConsoleScript: ; 26fd5
-	jumptext .OrnamentConsoleText
+.ConsoleScript: ; 26fd5
+	jumptext .ConsoleText
 ; 26fd8
 
-.OrnamentConsoleText: ; 0x26fd8
-	; It's an adorable @ .
-	text_jump UnknownText_0x1bc5d7
+.ConsoleText: ; 0x26fd8
+	; It's a shiny @ .
+	text_jump DecoConsoleText
 	db "@"
 ; 0x26fdd
 

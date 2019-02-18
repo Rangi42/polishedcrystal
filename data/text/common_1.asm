@@ -283,6 +283,13 @@ UnknownText_0x1bc5d7::
 	text "."
 	done
 
+DecoConsoleText::
+	text "It's a shiny"
+	line "@"
+	text_from_ram wStringBuffer3
+	text "."
+	done
+
 UnknownText_0x1bc5ef::
 	text "A giant doll! It's"
 	line "fluffy and cuddly."
