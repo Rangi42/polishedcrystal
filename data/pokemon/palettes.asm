@@ -278,8 +278,8 @@ TaurosPalette:          INCLUDE "gfx/pokemon/tauros/hgss/normal.pal"
 TaurosShinyPalette:     INCLUDE "gfx/pokemon/tauros/hgss/shiny.pal"
 MagikarpPalette:        INCLUDE "gfx/pokemon/magikarp/hgss/normal.pal"
 MagikarpShinyPalette:   INCLUDE "gfx/pokemon/magikarp/hgss/shiny.pal"
-GyaradosPalette:        INCLUDE "gfx/pokemon/gyarados/hgss/normal.pal"
-GyaradosShinyPalette:   INCLUDE "gfx/pokemon/gyarados/hgss/shiny.pal"
+GyaradosPalette:        INCLUDE "gfx/pokemon/gyarados_plain/hgss/normal.pal"
+GyaradosShinyPalette:   INCLUDE "gfx/pokemon/gyarados_plain/hgss/shiny.pal"
 LaprasPalette:          INCLUDE "gfx/pokemon/lapras/hgss/normal.pal"
 LaprasShinyPalette:     INCLUDE "gfx/pokemon/lapras/hgss/shiny.pal"
 DittoPalette:           INCLUDE "gfx/pokemon/ditto/hgss/normal.pal"
@@ -807,8 +807,8 @@ TaurosPalette:          INCLUDE "gfx/pokemon/tauros/normal.pal"
 TaurosShinyPalette:     INCLUDE "gfx/pokemon/tauros/shiny.pal"
 MagikarpPalette:        INCLUDE "gfx/pokemon/magikarp/normal.pal"
 MagikarpShinyPalette:   INCLUDE "gfx/pokemon/magikarp/shiny.pal"
-GyaradosPalette:        INCLUDE "gfx/pokemon/gyarados/normal.pal"
-GyaradosShinyPalette:   INCLUDE "gfx/pokemon/gyarados/shiny.pal"
+GyaradosPalette:        INCLUDE "gfx/pokemon/gyarados_plain/normal.pal"
+GyaradosShinyPalette:   INCLUDE "gfx/pokemon/gyarados_plain/shiny.pal"
 LaprasPalette:          INCLUDE "gfx/pokemon/lapras/normal.pal"
 LaprasShinyPalette:     INCLUDE "gfx/pokemon/lapras/shiny.pal"
 DittoPalette:           INCLUDE "gfx/pokemon/ditto/normal.pal"
@@ -1063,6 +1063,20 @@ EggShinyPalette:        INCLUDE "gfx/pokemon/egg/shiny.pal"
 ; 255 shiny
 	RGB 30, 22, 17
 	RGB 16, 14, 19
+endc
+
+RedGyaradosPalette:
+if DEF(MONOCHROME)
+	MONOCHROME_RGB_TWO
+	MONOCHROME_RGB_TWO
+	MONOCHROME_RGB_TWO
+	MONOCHROME_RGB_TWO
+elif DEF(HGSS)
+INCLUDE "gfx/pokemon/gyarados_red/hgss/normal.pal"
+INCLUDE "gfx/pokemon/gyarados_red/hgss/shiny.pal"
+else
+INCLUDE "gfx/pokemon/gyarados_red/normal.pal"
+INCLUDE "gfx/pokemon/gyarados_red/shiny.pal"
 endc
 
 MewtwoArmoredPalette:

@@ -132,6 +132,20 @@ GetMonIconPalette::
 	jr GetMenuMonIconPalette.got_species
 
 GetMenuMonIconPalette::
+	ld a, [wCurPartySpecies]
+	cp GYARADOS
+	jr nz, .not_red_gyarados
+
+	inc hl ; Form is in the byte after Shiny
+	ld a, [hl]
+	dec hl
+	and FORM_MASK
+	cp GYARADOS_RED_FORM
+	jr nz, .not_red_gyarados
+	xor a ; PAL_OW_RED
+	jr .done
+
+.not_red_gyarados
 ; check shininess at hl
 	ld a, [hl]
 	and SHINY_MASK
@@ -156,6 +170,7 @@ GetMenuMonIconPalette::
 	swap a
 .shiny
 	and $f
+.done
 	ld l, a
 	ret
 

@@ -6812,7 +6812,7 @@ endc
 	; 1/4096 chance to be shiny, 3/4096 with Shiny Charm
 	ld a, [wBattleType]
 	cp BATTLETYPE_RED_GYARADOS
-	jr z, .shiny
+	jr z, .not_shiny
 	cp BATTLETYPE_GROTTO
 	jr z, .not_shiny
 	call BattleRandom

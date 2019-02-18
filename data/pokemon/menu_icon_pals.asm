@@ -132,7 +132,7 @@ MenuMonIconColors::
 	iconpal BROWN, BLUE ; PINSIR
 	iconpal BROWN, RED ; TAUROS
 	iconpal RED, BROWN ; MAGIKARP
-	iconpal BLUE, RED ; GYARADOS
+	iconpal BLUE, BROWN ; GYARADOS
 	iconpal BLUE, RED ; LAPRAS
 	iconpal PURPLE, BLUE ; DITTO
 	iconpal BROWN, GRAY ; EEVEE
