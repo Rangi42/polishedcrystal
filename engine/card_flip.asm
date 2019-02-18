@@ -33,7 +33,6 @@ _CardFlip: ; e00ee (38:40ee)
 	ld bc, 1 tiles
 	rst CopyBytes
 
-	call CardFlip_ShiftDigitsLeftTwoPixels
 	call CardFlip_InitTilemap
 	call CardFlip_InitAttrPals
 	call EnableLCD
@@ -605,18 +604,6 @@ CardFlip_CopyOAM: ; e0509
 	jr nz, .loop
 	ret
 ; e0521
-
-CardFlip_ShiftDigitsLeftTwoPixels: ; e0521 (38:4521)
-	ld de, VTiles1 tile ("0" & $7f)
-	ld hl, VTiles1 tile ("0" & $7f) + 2
-	ld bc, 10 tiles - 2
-	rst CopyBytes
-	ld hl, VTiles1 tile $7f + 1 tiles - 2
-	xor a
-	ld [hli], a
-	ld [hl], a
-	ret
-; e0534 (38:4534)
 
 CardFlip_BlankDiscardedCardSlot: ; e0534
 	xor a
