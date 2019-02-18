@@ -179,10 +179,14 @@ GetMonSprite: ; 14259
 
 	cp SPRITE_POKEMON
 	jr c, .Normal
+	cp SPRITE_MON_DOLL_1
+	jr z, .MonDoll1
+	cp SPRITE_MON_DOLL_2
+	jr z, .MonDoll2
 	cp SPRITE_DAYCARE_MON_1
-	jr z, .wBreedMon1
+	jr z, .BreedMon1
 	cp SPRITE_DAYCARE_MON_2
-	jr z, .wBreedMon2
+	jr z, .BreedMon2
 	cp SPRITE_GROTTO_MON
 	jr z, .GrottoMon
 	cp SPRITE_VARS
@@ -202,17 +206,27 @@ GetMonSprite: ; 14259
 	ld a, [hl]
 	jr .Mon
 
-.wBreedMon1
+.BreedMon1
 	ld a, [wBreedMon1Species]
 	jr .Mon
 
-.wBreedMon2
+.BreedMon2
 	ld a, [wBreedMon2Species]
 	jr .Mon
 
 .GrottoMon
 	farcall GetHiddenGrottoContents
 	ld a, [hl]
+	jr .Mon
+
+.MonDoll1
+	ld a, [wLeftOrnament]
+	farcall GetDecorationSpecies
+	jr .Mon
+
+.MonDoll2
+	ld a, [wRightOrnament]
+	farcall GetDecorationSpecies
 
 .Mon:
 	ld e, a

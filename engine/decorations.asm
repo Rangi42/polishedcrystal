@@ -539,6 +539,12 @@ GetDecorationSprite: ; 26a44
 	ret
 ; 26a4f
 
+GetDecorationSpecies::
+	call GetDecorationData
+	inc hl
+	ld a, [hl]
+	ret
+
 _GetDecorationSprite: ; 27085
 	ld c, a
 	push de
@@ -1230,6 +1236,10 @@ ToggleDecorationsVisibility: ; 27043
 	ld hl, wVariableSprites + SPRITE_CONSOLE - SPRITE_VARS
 	ld a, [wConsole]
 	call .ToggleDecorationVisibility
+	ld de, EVENT_KRISS_HOUSE_2F_BIG_DOLL
+	ld hl, wVariableSprites + SPRITE_BIG_DOLL - SPRITE_VARS
+	ld a, [wBigDoll]
+	call .ToggleDecorationVisibility
 	ld de, EVENT_KRISS_HOUSE_2F_DOLL_1
 	ld hl, wVariableSprites + SPRITE_DOLL_1 - SPRITE_VARS
 	ld a, [wLeftOrnament]
@@ -1237,14 +1247,19 @@ ToggleDecorationsVisibility: ; 27043
 	ld de, EVENT_KRISS_HOUSE_2F_DOLL_2
 	ld hl, wVariableSprites + SPRITE_DOLL_2 - SPRITE_VARS
 	ld a, [wRightOrnament]
-	call .ToggleDecorationVisibility
-	ld de, EVENT_KRISS_HOUSE_2F_BIG_DOLL
-	ld hl, wVariableSprites + SPRITE_BIG_DOLL - SPRITE_VARS
-	ld a, [wBigDoll]
+	and a
+	jr z, .hide
+	call _GetDecorationSprite
+	cp SPRITE_MON_DOLL_1
+	jr nz, .ok
+	inc a ; SPRITE_MON_DOLL_2
+	jr .ok
+
 .ToggleDecorationVisibility: ; 27074
 	and a
 	jr z, .hide
 	call _GetDecorationSprite
+.ok
 	ld [hl], a
 	ld b, RESET_FLAG
 	jp EventFlagAction

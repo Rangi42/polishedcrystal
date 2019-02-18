@@ -81,6 +81,12 @@ rept $fe
 	giveitem x, 99
 x = x + 1
 endr
+	; all decorations
+x = EVENT_DECO_BED_1
+rept EVENT_DECO_BIG_LAPRAS_DOLL - EVENT_DECO_BED_1 + 1
+	setevent x
+x = x + 1
+endr
 	; max money
 	givemoney $0, 1000000
 	givemoney $0, 1000000
