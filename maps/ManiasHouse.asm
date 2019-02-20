@@ -14,7 +14,7 @@ ManiasHouse_MapScriptHeader:
 	bg_event  7,  1, SIGNPOST_JUMPSTD, picturebookshelf
 
 	db 1 ; object events
-	object_event  2,  4, SPRITE_ROCKER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ManiaScript, -1
+	object_event  2,  4, SPRITE_ROCKER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_SCRIPT, 0, ManiaScript, -1
 
 ManiaScript:
 	faceplayer

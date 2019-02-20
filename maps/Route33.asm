@@ -13,8 +13,8 @@ Route33_MapScriptHeader:
 	bg_event 11, 11, SIGNPOST_JUMPTEXT, Route33SignText
 
 	db 3 ; object events
-	object_event  6, 13, SPRITE_POKEFAN_M, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_TRAINER, 2, TrainerHikerAnthony, -1
-	object_event 12, 17, SPRITE_TWIN, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerSchoolgirlImogen, -1
+	object_event  6, 13, SPRITE_HIKER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 2, TrainerHikerAnthony, -1
+	object_event 12, 17, SPRITE_TWIN, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerSchoolgirlImogen, -1
 	fruittree_event 14, 16, FRUITTREE_ROUTE_33, PECHA_BERRY
 
 Route33RainScript:

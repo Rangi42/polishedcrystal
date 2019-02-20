@@ -1901,12 +1901,13 @@ LoadSpecialMapOBPalette:
 	ld a, [wMapNumber]
 	cp MAP_GOLDENROD_HARBOR
 	jr nz, .not_goldenrod_harbor
-	ld hl, GoldenrodHarborOBPalette_Tree
+	ld hl, GoldenrodHarborOBPalette_Purple
 	ld a, [wTimeOfDayPal]
 	and 3
 	ld bc, 1 palettes
 	rst AddNTimes
-	jp .load_tree_palette
+	ld de, wUnknOBPals palette PAL_OW_PURPLE
+	jp .load_single_palette
 
 .not_goldenrod_harbor:
 	ld a, [wMapGroup]
@@ -2025,7 +2026,7 @@ else
 	MONOCHROME_RGB_FOUR
 endc
 
-GoldenrodHarborOBPalette_Tree:
+GoldenrodHarborOBPalette_Purple:
 if !DEF(MONOCHROME)
 ; morn
 	RGB 28, 31, 16

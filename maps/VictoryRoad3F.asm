@@ -13,7 +13,7 @@ VictoryRoad3F_MapScriptHeader:
 	db 0 ; bg events
 
 	db 2 ; object events
-	object_event 11,  8, SPRITE_VETERAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerVeteranmRemy, -1
+	object_event 11,  8, SPRITE_VETERAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerVeteranmRemy, -1
 	itemball_event 16, 13, RAZOR_FANG, 1, EVENT_VICTORY_ROAD_3F_RAZOR_FANG
 
 GenericTrainerVeteranmRemy:

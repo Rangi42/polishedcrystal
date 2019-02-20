@@ -12,7 +12,7 @@ SaffronRichSpeechHouse_MapScriptHeader:
 	db 0 ; bg events
 
 	db 1 ; object events
-	object_event  5,  3, SPRITE_RICH_BOY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, SaffronRichSpeechHouseRichBoyText, -1
+	object_event  5,  3, SPRITE_RICH_BOY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, SaffronRichSpeechHouseRichBoyText, -1
 
 SaffronRichSpeechHouseRichBoyText:
 	text "Houses are expen-"

@@ -24,9 +24,9 @@ IcePathB1F_MapScriptHeader:
 	strengthboulder_event  7,  8, EVENT_BOULDER_IN_ICE_PATH_2
 	strengthboulder_event  8,  9, EVENT_BOULDER_IN_ICE_PATH_3
 	strengthboulder_event 17,  7, EVENT_BOULDER_IN_ICE_PATH_4
-	object_event  2,  1, SPRITE_SKIER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, IcePathB1FSkierScript, -1
-	object_event  4, 23, SPRITE_BOARDER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerBoarderMax, -1
-	object_event 14, 24, SPRITE_SKIER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerSkierBecky, -1
+	object_event  2,  1, SPRITE_SKIER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, IcePathB1FSkierScript, -1
+	object_event  4, 23, SPRITE_BOARDER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerBoarderMax, -1
+	object_event 14, 24, SPRITE_SKIER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerSkierBecky, -1
 	itemball_event  5, 35, IRON, 1, EVENT_ICE_PATH_B1F_IRON
 
 	const_def 1 ; object constants

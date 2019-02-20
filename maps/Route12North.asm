@@ -13,7 +13,7 @@ Route12North_MapScriptHeader:
 	bg_event 13, 13, SIGNPOST_JUMPTEXT, FishingSpotSignText
 
 	db 1 ; object events
-	object_event  6, 11, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerFisherKyle, -1
+	object_event  6, 11, SPRITE_REAL_FISHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerFisherKyle, -1
 
 GenericTrainerFisherKyle:
 	generictrainer FISHER, KYLE, EVENT_BEAT_FISHER_KYLE, FisherKyleSeenText, FisherKyleBeatenText

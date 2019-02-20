@@ -12,7 +12,7 @@ FuchsiaSafariBallHouse_MapScriptHeader:
 	db 0 ; bg events
 
 	db 1 ; object events
-	object_event  2,  4, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, FuchsiaSafariBallHouseOfficerScript, -1
+	object_event  2,  4, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_SCRIPT, 0, FuchsiaSafariBallHouseOfficerScript, -1
 
 FuchsiaSafariBallHouseOfficerScript:
 	faceplayer
