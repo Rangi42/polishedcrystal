@@ -1639,8 +1639,6 @@ BillsPC_CheckSpaceInDestination: ; e2ee5
 	ld de, SFX_WRONG
 	call WaitPlaySFX
 	call WaitSFX
-	ld c, 50
-	call DelayFrames
 	scf
 	ret
 ; e2f18
@@ -1680,8 +1678,6 @@ BillsPC_CheckMail_PreventBlackout: ; e2f18 (38:6f18)
 	ld de, SFX_WRONG
 	call WaitPlaySFX
 	call WaitSFX
-	ld c, 50
-	call DelayFrames
 	scf
 	ret
 
@@ -1698,8 +1694,6 @@ BillsPC_IsMonAnEgg: ; e2f5f (38:6f5f)
 	ld de, SFX_WRONG
 	call WaitPlaySFX
 	call WaitSFX
-	ld c, 50
-	call DelayFrames
 	scf
 	ret
 
@@ -1849,8 +1843,6 @@ DepositPokemon: ; e307c (38:707c)
 	call PlaceString
 	ld a, "!"
 	ld [bc], a
-	ld c, 50
-	call DelayFrames
 	and a
 	ret
 
@@ -1860,8 +1852,6 @@ DepositPokemon: ; e307c (38:707c)
 	ld de, SFX_WRONG
 	call WaitPlaySFX
 	call WaitSFX
-	ld c, 50
-	call DelayFrames
 	scf
 	ret
 
@@ -1904,8 +1894,6 @@ TryWithdrawPokemon: ; e30fa (38:70fa)
 	call PlaceString
 	ld a, "!"
 	ld [bc], a
-	ld c, 50
-	call DelayFrames
 	and a
 	ret
 
@@ -1915,8 +1903,6 @@ TryWithdrawPokemon: ; e30fa (38:70fa)
 	ld de, SFX_WRONG
 	call WaitPlaySFX
 	call WaitSFX
-	ld c, 50
-	call DelayFrames
 	scf
 	ret
 
@@ -1947,8 +1933,6 @@ ReleasePKMN_ByePKMN: ; e3180 (38:7180)
 	hlcoord 1, 16
 	ld de, PCString_ReleasedPKMN
 	call PlaceString
-	ld c, 80
-	call DelayFrames
 	hlcoord 0, 15
 	lb bc, 1, 18
 	call TextBox
@@ -1963,8 +1947,7 @@ ReleasePKMN_ByePKMN: ; e3180 (38:7180)
 	ld l, c
 	ld h, b
 	ld [hl], "!"
-	ld c, 50
-	jp DelayFrames
+	ret
 ; e31e7 (38:71e7)
 
 MovePKMNWitoutMail_InsertMon: ; e31e7
