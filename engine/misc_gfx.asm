@@ -41,11 +41,11 @@ ReloadMapPart:: ; 104061
 	ld a, $1
 	ld [rVBK], a
 	ld hl, wScratchAttrMap
-	call HDMATransfer_Wait127Scanlines_toBGMap
+	call DoHBlankHDMATransfer_toBGMap
 	ld a, $0
 	ld [rVBK], a
 	ld hl, wScratchTileMap
-	call HDMATransfer_Wait127Scanlines_toBGMap
+	call DoHBlankHDMATransfer_toBGMap
 	pop af
 	ld [rVBK], a
 	reti
@@ -104,33 +104,43 @@ CallInSafeGFXMode:
 	ld [hBGMapMode], a
 	ret
 
-HDMATransfer_Wait127Scanlines_toBGMap: ; 1041ad (41:41ad)
-; HDMA transfer from hl to [hBGMapAddress]
-; hBGMapAddress -> de
-; 2 * SCREEN_HEIGHT -> c
+DoHBlankHDMATransfer_toBGMap:
 	ld a, [hBGMapAddress + 1]
 	ld d, a
 	ld a, [hBGMapAddress]
 	ld e, a
-	ld c, 2 * SCREEN_HEIGHT
-	jr HDMATransfer_Wait127Scanlines
+	ld c, $23
+	ld a, h
+	ld [rHDMA1], a
+	ld a, l
+	and $f0
+	ld [rHDMA2], a
+	ld a, d
+	and $1f
+	ld [rHDMA3], a
+	ld a, e
+	and $f0
+	ld [rHDMA4], a
+	di
+	ld a, [rLY]
+	add c ; calculate end LY
+	cp $80 ; is the end LY greater than the max LY
+	call nc, DI_DelayFrame ; if so, delay a frame to reset the LY
+	set 7, c
+.waitHBlank
+	ld a, [rSTAT]
+	and $3
+	jr nz, .waitHBlank
+	ld hl, rHDMA5
+	ld [hl], c
+	ld a, $ff
+.waitHDMALoop
+	cp [hl]
+	jr nz, .waitHDMALoop
+	reti
 
-HDMATransfer_Wait123Scanlines_toBGMap:
-; HDMA transfer from hl to [hBGMapAddress]
-; hBGMapAddress -> de
-; 2 * SCREEN_HEIGHT -> c
-; $7b --> b
-	ld a, [hBGMapAddress + 1]
-	ld d, a
-	ld a, [hBGMapAddress]
-	ld e, a
-	lb bc, $7b, 2 * SCREEN_HEIGHT
-	jr _continue_HDMATransfer
-; 1041c1 (41:41c1)
-
-HDMATransfer_Wait127Scanlines:
+DoHBlankHDMATransfer
 	ld b, $7f
-_continue_HDMATransfer:
 ; a lot of waiting around for hardware registers
 	; [rHDMA1, rHDMA2] = hl & $fff0
 	ld a, h
@@ -149,7 +159,6 @@ _continue_HDMATransfer:
 	dec c ; c = number of LYs needed
 	ld e, c
 	set 7, e ; hblank dma transfers
-	di
 	ld a, [rLY]
 	add c ; calculate end LY
 	cp b ; is the end LY greater than the max LY
@@ -170,7 +179,7 @@ _continue_HDMATransfer:
 .waitForHDMA
 	cp [hl]
 	jr nz, .waitForHDMA
-	reti
+	ret
 
 CutAndPasteTilemap: ; 10425f (41:425f)
 	ld c, " "
@@ -231,13 +240,13 @@ HDMATransfer_OnlyTopFourRows: ; 104303
 	ld c, $8
 	ld hl, wScratchTileMap + $80
 	debgcoord 0, 0, VBGMap1
-	call HDMATransfer_Wait127Scanlines
+	call DoHBlankHDMATransfer
 	xor a
 	ld [rVBK], a
 	ld c, $8
 	ld hl, wScratchTileMap
 	debgcoord 0, 0, VBGMap1
-	call HDMATransfer_Wait127Scanlines
+	call DoHBlankHDMATransfer
 
 	reti
 
