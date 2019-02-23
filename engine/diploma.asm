@@ -21,7 +21,7 @@ _Diploma: ; 1dd702
 	hlcoord 2, 8
 	call PlaceString
 	call EnableLCD
-	call WaitBGMap
+	call ApplyTilemapInVBlank
 	ld b, CGB_DIPLOMA
 	call GetCGBLayout
 	call SetPalettes

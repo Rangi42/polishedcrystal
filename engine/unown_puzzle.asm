@@ -46,7 +46,7 @@ UnownPuzzle: ; e1190
 	ld [wUnownPuzzleHeldPiece], a
 	ld a, %10010011
 	ld [rLCDC], a
-	call WaitBGMap
+	call ApplyTilemapInVBlank
 	ld b, CGB_UNOWN_PUZZLE
 	call GetCGBLayout
 	ld a, $e4
@@ -312,7 +312,7 @@ UnownPuzzle_A: ; e1376
 	ld [wUnownPuzzleHeldPiece], a
 	call RedrawUnownPuzzlePieces
 	call FillUnoccupiedPuzzleSpace
-	call WaitBGMap
+	call ApplyTilemapInVBlank
 	call WaitSFX
 	ld a, TRUE
 	ld [wHoldingUnownPuzzlePiece], a
@@ -327,7 +327,7 @@ UnownPuzzle_A: ; e1376
 	ld a, [wUnownPuzzleHeldPiece]
 	ld [hl], a
 	call PlaceUnownPuzzlePieceGFX
-	call WaitBGMap
+	call ApplyTilemapInVBlank
 	xor a
 	ld [wUnownPuzzleHeldPiece], a
 	call RedrawUnownPuzzlePieces

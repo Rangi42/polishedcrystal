@@ -23,7 +23,7 @@ ReadAnyMail: ; b9237
 	pop de
 	call .LoadGFX
 	call EnableLCD
-	call WaitBGMap
+	call ApplyTilemapInVBlank
 	ld a, [wBuffer3]
 	ld e, a
 	farcall LoadMailPalettes

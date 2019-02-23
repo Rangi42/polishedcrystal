@@ -49,7 +49,7 @@ ShakeHeadbuttTree: ; 8c80a
 
 .done
 	call OverworldTextModeSwitch
-	call WaitBGMap
+	call ApplyTilemapInVBlank
 	xor a
 	ld [hBGMapMode], a
 	farcall ClearSpriteAnims
@@ -91,7 +91,7 @@ HideHeadbuttTree: ; 8c913
 	add hl, bc
 	ld [hli], a
 	ld [hld], a
-	call WaitBGMap
+	call ApplyTilemapInVBlank
 	xor a
 	ld [hBGMapMode], a
 	ret

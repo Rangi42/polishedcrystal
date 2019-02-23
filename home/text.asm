@@ -38,7 +38,7 @@ ClearTileMap::
 	ld a, [rLCDC]
 	bit 7, a
 	ret z
-	jp WaitBGMap
+	jp ApplyTilemapInVBlank
 
 SpeechTextBox::
 ; Standard textbox.
@@ -546,7 +546,7 @@ Text_WaitBGMap::
 	ld a, 1
 	ld [hOAMUpdate], a
 
-	call WaitBGMap
+	call ApplyTilemapInVBlank
 
 	pop af
 	ld [hOAMUpdate], a

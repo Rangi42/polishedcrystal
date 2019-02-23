@@ -28,7 +28,7 @@ InitClock: ; 90672 (24:4672)
 	lb bc, BANK(TimesetBackgroundGFX), 1
 	call Request1bpp
 	call .ClearScreen
-	call WaitBGMap
+	call ApplyTilemapInVBlank
 	call RotateFourPalettesRight
 if !DEF(DEBUG)
 	ld hl, Text_WokeUpOak
@@ -165,7 +165,7 @@ SetHour: ; 90795 (24:4795)
 	call ByteFill
 	hlcoord 4, 9
 	call DisplayHourOClock
-	call WaitBGMap
+	call ApplyTilemapInVBlank
 	and a
 	ret
 
@@ -229,7 +229,7 @@ SetMinutes: ; 90810 (24:4810)
 	call ByteFill
 	hlcoord 12, 9
 	call DisplayMinutesWithMinString
-	call WaitBGMap
+	call ApplyTilemapInVBlank
 	and a
 	ret
 .a_button
@@ -458,7 +458,7 @@ Special_SetDayOfWeek: ; 90913
 	call ClearBox
 	hlcoord 10, 5
 	call .PlaceWeekdayString
-	call WaitBGMap
+	call ApplyTilemapInVBlank
 	and a
 	ret
 ; 909de

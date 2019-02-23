@@ -372,7 +372,7 @@ ChooseMonToLearnTMHM_NoRefresh: ; 2c80a
 .loopback
 	farcall WritePartyMenuTilemap
 	farcall PrintPartyMenuText
-	call WaitBGMap
+	call ApplyTilemapInVBlank
 	call SetPalettes
 	call DelayFrame
 	farcall PartyMenuSelect

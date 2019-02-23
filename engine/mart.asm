@@ -528,7 +528,7 @@ BuyMenu_InitGFX:
 ;	lb bc, 4, SCREEN_WIDTH - 2
 ;	call TextBox
 	call EnableLCD
-	call WaitBGMap
+	call ApplyTilemapInVBlank
 	ld b, CGB_BUYMENU_PALS
 	call GetCGBLayout
 	call SetPalettes

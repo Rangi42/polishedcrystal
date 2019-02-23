@@ -346,7 +346,7 @@ GetTrainerPic: ; 5120d
 	ret z
 	cp NUM_TRAINER_CLASSES
 	ret nc
-	call WaitBGMap
+	call ApplyTilemapInVBlank
 	xor a
 	ld [hBGMapMode], a
 	ld hl, TrainerPicPointers
@@ -377,14 +377,14 @@ _Decompress7x7Pic:
 	call Get2bpp
 	pop af
 	ld [rSVBK], a
-	call WaitBGMap
+	call ApplyTilemapInVBlank
 	ld a, $1
 	ld [hBGMapMode], a
 	ret
 
 GetPaintingPic:
 	ld a, [wTrainerClass]
-	call WaitBGMap
+	call ApplyTilemapInVBlank
 	xor a
 	ld [hBGMapMode], a
 	ld hl, PaintingPicPointers

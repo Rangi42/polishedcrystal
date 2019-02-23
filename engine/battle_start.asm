@@ -421,7 +421,7 @@ endr
 	ret
 
 .end
-	call WaitBGMap
+	call ApplyTilemapInVBlank
 	xor a
 	ld [hBGMapMode], a
 	ld a, $20
@@ -859,7 +859,7 @@ StartTrainerBattle_ZoomToBlack: ; 8c768 (23:4768)
 	xor a
 	ld [hBGMapMode], a
 	call .Copy
-	call WaitBGMap
+	call ApplyTilemapInVBlank
 	jr .loop
 
 .done

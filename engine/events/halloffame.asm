@@ -125,7 +125,7 @@ AnimateHallOfFame: ; 864c3
 	ld de, .String_NewHallOfFamer
 	hlcoord 1, 2
 	call PlaceString
-	call WaitBGMap
+	call ApplyTilemapInVBlank
 	decoord 6, 5
 	ld c, $6
 	predef HOF_AnimateFrontpic
@@ -258,7 +258,7 @@ AnimateHOFMonEntrance: ; 865b5
 	ld [hSCY], a
 	ld a, $90
 	ld [hSCX], a
-	call WaitBGMap
+	call ApplyTilemapInVBlank
 	xor a
 	ld [hBGMapMode], a
 	ld b, CGB_PLAYER_OR_MON_FRONTPIC_PALS
@@ -273,7 +273,7 @@ AnimateHOFMonEntrance: ; 865b5
 	call ByteFill
 	hlcoord 6, 5
 	call _PrepMonFrontpic
-	call WaitBGMap
+	call ApplyTilemapInVBlank
 	xor a
 	ld [hBGMapMode], a
 	ld [hSCY], a
@@ -394,7 +394,7 @@ _HallOfFamePC: ; 86650
 .finish
 	ld de, .EmptyString
 	call PlaceString
-	call WaitBGMap
+	call ApplyTilemapInVBlank
 	ld b, CGB_PLAYER_OR_MON_FRONTPIC_PALS
 	call GetCGBLayout
 	call SetPalettes
@@ -543,7 +543,7 @@ HOF_AnimatePlayerPic: ; 86810
 	ld [hSCY], a
 	ld a, $90
 	ld [hSCX], a
-	call WaitBGMap
+	call ApplyTilemapInVBlank
 	xor a
 	ld [hBGMapMode], a
 	ld [wCurPartySpecies], a
@@ -565,7 +565,7 @@ HOF_AnimatePlayerPic: ; 86810
 	predef PlaceGraphic
 	ld a, $c0
 	ld [hSCX], a
-	call WaitBGMap
+	call ApplyTilemapInVBlank
 	xor a
 	ld [hBGMapMode], a
 	ld [hSCY], a
@@ -603,7 +603,7 @@ HOF_AnimatePlayerPic: ; 86810
 	ld de, wGameTimeMinutes
 	lb bc, PRINTNUM_LEADINGZEROS | 1, 2
 	call PrintNum
-	call WaitBGMap
+	call ApplyTilemapInVBlank
 	farjp ProfOaksPCRating
 ; 868ed
 

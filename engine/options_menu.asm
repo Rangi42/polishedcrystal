@@ -65,7 +65,7 @@ OptionsMenu_LoadOptions:
 	call z, UpdateFrame
 	ld a, 1
 	ld [hBGMapMode], a
-	jp WaitBGMap
+	jp ApplyTilemapInVBlank
 
 StringOptions1: ; e4241
 	db "Text Speed<LNBRK>"
@@ -575,7 +575,7 @@ Options_Typeface:
 	or c
 	ld [hl], a
 	call .NonePressed
-	call WaitBGMap
+	call ApplyTilemapInVBlank
 	jp LoadStandardFont
 
 .NonePressed:

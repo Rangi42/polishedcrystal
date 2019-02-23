@@ -330,7 +330,7 @@ DisplayCaughtContestMonStats: ; cc000
 	pop af
 	ld [wOptions1], a
 
-	call WaitBGMap
+	call ApplyTilemapInVBlank
 	ld b, CGB_DIPLOMA
 	call GetCGBLayout
 	jp SetPalettes
@@ -776,7 +776,7 @@ _ReturnToBattle_UseBall: ; 2715c
 	call GetMemCGBLayout
 	call CloseWindow
 	call LoadStandardMenuDataHeader
-	call WaitBGMap
+	call ApplyTilemapInVBlank
 	call SetPalettes
 	farcall LoadPlayerStatusIcon
 	farcall LoadEnemyStatusIcon
@@ -2574,7 +2574,7 @@ InitDisplayForHallOfFame: ; 4e881
 	call EnableLCD
 	ld hl, .SavingRecordDontTurnOff
 	call PrintText
-	call WaitBGMap2
+	call ApplyAttrAndTilemapInVBlank
 	jp SetPalettes
 
 .SavingRecordDontTurnOff: ; 0x4e8bd
@@ -2617,7 +2617,7 @@ endc
 	ld [hSCY], a
 	ld [hSCX], a
 	call EnableLCD
-	call WaitBGMap2
+	call ApplyAttrAndTilemapInVBlank
 	jp SetPalettes
 
 ResetDisplayBetweenHallOfFameMons: ; 4e906

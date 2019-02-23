@@ -112,7 +112,7 @@ UpdateEnemyMonInParty::
 RefreshBattleHuds:: ; 39c9
 	call UpdateBattleHuds
 	call Delay2
-	jp WaitBGMap
+	jp ApplyTilemapInVBlank
 ; 39d4
 
 UpdateBattleHuds:: ; 39d4

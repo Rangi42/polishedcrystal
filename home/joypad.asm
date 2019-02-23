@@ -312,7 +312,7 @@ WaitButton:: ; a46
 	push af
 	ld a, 1
 	ld [hOAMUpdate], a
-	call WaitBGMap
+	call ApplyTilemapInVBlank
 	call JoyWaitAorB
 	pop af
 	ld [hOAMUpdate], a

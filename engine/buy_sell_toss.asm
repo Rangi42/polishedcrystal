@@ -239,7 +239,7 @@ BuySell_DisplaySubtotal: ; 250d1
 	call DisplayPurchasePriceCommon
 	lb bc, PRINTNUM_MONEY | 3, 7
 	call PrintNum
-	jp WaitBGMap
+	jp ApplyTilemapInVBlank
 ; 250ed
 
 BTDisplayPurchaseCost:
@@ -249,7 +249,7 @@ BTDisplayPurchaseCost:
 	call PrintNum
 	ld de, .BPString
 	call PlaceString
-	jp WaitBGMap
+	jp ApplyTilemapInVBlank
 
 .BPString:
 	db " BP@"

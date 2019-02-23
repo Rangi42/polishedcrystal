@@ -655,7 +655,7 @@ GiveItem: ; 103fd
 .loop
 	farcall WritePartyMenuTilemap
 	farcall PrintPartyMenuText
-	call WaitBGMap
+	call ApplyTilemapInVBlank
 	call SetPalettes
 	call DelayFrame
 	farcall PartyMenuSelect
@@ -1384,7 +1384,7 @@ Pack_PrintTextNoScroll: ; 10889 (4:4889)
 	ret
 
 WaitBGMap_DrawPackGFX: ; 1089a (4:489a)
-	call WaitBGMap
+	call ApplyTilemapInVBlank
 DrawPackGFX: ; 1089d
 	; place top row
 	ld a, [wCurrPocket]
@@ -1600,7 +1600,7 @@ ClearPocketList: ; 10a36 (4:4a36)
 	jp ClearBox
 
 Pack_InitColors: ; 10a40
-	call WaitBGMap
+	call ApplyTilemapInVBlank
 	ld b, CGB_PACKPALS
 	call GetCGBLayout
 	jp SetPalettes

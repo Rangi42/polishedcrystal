@@ -67,7 +67,7 @@ _DepositPKMN: ; e2391 (38:6391)
 	ld [wCurPartySpecies], a
 	ld a, CGB_BILLS_PC
 	call BillsPC_ApplyPalettes
-	call WaitBGMap
+	call ApplyTilemapInVBlank
 	call BillsPC_UpdateSelectionCursor
 	jp BillsPC_IncrementJumptableIndex
 
@@ -314,7 +314,7 @@ _WithdrawPKMN: ; e2583 (38:6583)
 	ld [wCurPartySpecies], a
 	ld a, CGB_BILLS_PC
 	call BillsPC_ApplyPalettes
-	call WaitBGMap
+	call ApplyTilemapInVBlank
 	call BillsPC_UpdateSelectionCursor
 	jp BillsPC_IncrementJumptableIndex
 
@@ -556,7 +556,7 @@ _MovePKMNWithoutMail: ; e2759
 	ld [wCurPartySpecies], a
 	ld a, CGB_BILLS_PC
 	call BillsPC_ApplyPalettes
-	call WaitBGMap
+	call ApplyTilemapInVBlank
 	call BillsPC_UpdateSelectionCursor
 	jp BillsPC_IncrementJumptableIndex
 ; e27eb
@@ -708,7 +708,7 @@ _MovePKMNWithoutMail: ; e2759
 	call BillsPC_MoveMonWOMail_BoxNameAndArrows
 	call ClearSprites
 	call BillsPC_UpdateInsertCursor
-	call WaitBGMap
+	call ApplyTilemapInVBlank
 	jp BillsPC_IncrementJumptableIndex
 ; e2903
 
@@ -1833,7 +1833,7 @@ DepositPokemon: ; e307c (38:707c)
 	hlcoord 0, 15
 	lb bc, 1, 18
 	call TextBox
-	call WaitBGMap
+	call ApplyTilemapInVBlank
 	hlcoord 1, 16
 	ld de, PCString_Stored
 	call PlaceString
@@ -1884,7 +1884,7 @@ TryWithdrawPokemon: ; e30fa (38:70fa)
 	hlcoord 0, 15
 	lb bc, 1, 18
 	call TextBox
-	call WaitBGMap
+	call ApplyTilemapInVBlank
 	hlcoord 1, 16
 	ld de, PCString_Got
 	call PlaceString
@@ -1918,7 +1918,7 @@ ReleasePKMN_ByePKMN: ; e3180 (38:7180)
 	lb bc, 1, 18
 	call TextBox
 
-	call WaitBGMap
+	call ApplyTilemapInVBlank
 	ld a, [wCurPartySpecies]
 	call GetCryIndex
 	jr c, .skip_cry

@@ -35,7 +35,7 @@ BSOD: ; 4ea82
 	hlcoord 1, 1
 	call PlaceString
 
-	call WaitBGMap
+	call ApplyTilemapInVBlank
 
 .infiniteloop
 	call DelayFrame

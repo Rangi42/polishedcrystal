@@ -399,7 +399,7 @@ StartMenu_Pokegear: ; 1294c
 	farcall InitPokegearPalettes
 	farcall PokeGear
 	call CloseSubmenu
-	call WaitBGMap
+	call ApplyTilemapInVBlank
 	call SetPalettes
 	call DelayFrame
 	xor a
@@ -446,7 +446,7 @@ StartMenu_Pokemon: ; 12976
 .menunoreload
 	farcall WritePartyMenuTilemap
 	farcall PrintPartyMenuText
-	call WaitBGMap
+	call ApplyTilemapInVBlank
 	call SetPalettes ; load regular palettes?
 	call DelayFrame
 	farcall PartyMenuSelect
@@ -658,7 +658,7 @@ SwitchPartyMons: ; 12aec
 	dec a
 	rst AddNTimes
 	ld [hl], "▷"
-	call WaitBGMap
+	call ApplyTilemapInVBlank
 	call SetPalettes
 	call DelayFrame
 
@@ -1310,7 +1310,7 @@ ChooseMoveToForget:
 	farcall PrintPartyMenuText
 	call SpeechTextBox
 .done
-	call WaitBGMap
+	call ApplyTilemapInVBlank
 	call SetPalettes
 	call DelayFrame
 	pop af
@@ -1343,7 +1343,7 @@ ChooseMoveToRelearn:
 	pop af
 	push af
 	call nz, SpeechTextBox
-	call WaitBGMap
+	call ApplyTilemapInVBlank
 	call SetPalettes
 	call DelayFrame
 .no_moves

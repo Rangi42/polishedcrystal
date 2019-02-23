@@ -1236,7 +1236,7 @@ PrintWinLossText:: ; 3718
 	ld l, a
 	ld a, [wMapScriptHeaderBank]
 	call FarPrintText
-	call WaitBGMap
+	call ApplyTilemapInVBlank
 	jp WaitPressAorB_BlinkCursor
 ; 3741
 

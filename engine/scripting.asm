@@ -498,7 +498,7 @@ Script_buttonsound:
 	push af
 	ld a, $1
 	ld [hOAMUpdate], a
-	call WaitBGMap
+	call ApplyTilemapInVBlank
 	call ButtonSound
 	pop af
 	ld [hOAMUpdate], a

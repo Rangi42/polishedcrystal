@@ -39,7 +39,7 @@ EvolutionAnimation: ; 4e5e1
 
 	xor a
 	ld [wLowHealthAlarm], a
-	call WaitBGMap
+	call ApplyTilemapInVBlank
 	xor a
 	ld [hBGMapMode], a
 	ld a, [wEvolutionOldSpecies]
@@ -219,7 +219,7 @@ EvolutionAnimation: ; 4e5e1
 	jr nz, .loop1
 	ld a, $1
 	ld [hBGMapMode], a
-	call WaitBGMap
+	call ApplyTilemapInVBlank
 	pop bc
 	ret
 ; 4e779

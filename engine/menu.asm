@@ -610,7 +610,7 @@ _ExitMenu:: ; 243e8
 Error_Cant_ExitMenu: ; 2445d
 	ld hl, .Text_NoWindowsAvailableForPopping
 	call PrintText
-	call WaitBGMap
+	call ApplyTilemapInVBlank
 .InfiniteLoop:
 	jr .InfiniteLoop
 ; 24468

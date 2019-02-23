@@ -260,7 +260,7 @@ InitPokegearTilemap: ; 90da8 (24:4da8)
 	ld [hBGMapMode], a
 	ld c, 3
 	call DelayFrames
-	jp WaitBGMap
+	jp ApplyTilemapInVBlank
 
 ; 90e12 (24:4e12)
 
@@ -1032,13 +1032,13 @@ PokegearPhone_GetDPad: ; 9126d (24:526d)
 	xor a
 	ld [hBGMapMode], a
 	call PokegearPhone_UpdateCursor
-	jp WaitBGMap
+	jp ApplyTilemapInVBlank
 
 .done_joypad_update_page
 	xor a
 	ld [hBGMapMode], a
 	call PokegearPhone_UpdateDisplayList
-	jp WaitBGMap
+	jp ApplyTilemapInVBlank
 
 PokegearPhone_UpdateCursor: ; 912b7 (24:52b7)
 	ld a, " "
@@ -1179,7 +1179,7 @@ PokegearPhoneContactSubmenu: ; 91342 (24:5342)
 	xor a
 	ld [wPokegearPhoneSubmenuCursor], a
 	call .UpdateCursor
-	call WaitBGMap
+	call ApplyTilemapInVBlank
 .loop
 	push de
 	call JoyTextDelay
@@ -1257,7 +1257,7 @@ PokegearPhoneContactSubmenu: ; 91342 (24:5342)
 	call PokegearPhone_UpdateDisplayList
 	ld hl, PokegearText_WhomToCall
 	call PrintText
-	call WaitBGMap
+	call ApplyTilemapInVBlank
 .CancelDelete:
 	scf
 	ret
@@ -1772,7 +1772,7 @@ _TownMap: ; 9191c
 	xor a
 	ld [hBGMapMode], a
 	call .InitTilemap
-	call WaitBGMap2
+	call ApplyAttrAndTilemapInVBlank
 	ld a, [wTownMapPlayerIconLandmark]
 	call PokegearMap_InitPlayerIcon
 	ld a, [wTownMapCursorLandmark]
@@ -1966,7 +1966,7 @@ PlayRadio: ; 91a53
 	ld h, b
 	ld l, c
 	ld [hl], "”"
-	jp WaitBGMap
+	jp ApplyTilemapInVBlank
 
 ; 91ab9
 
@@ -2109,7 +2109,7 @@ FlyMapScroll: ; 91b73
 	jr z, .ScrollPrev
 .Finally:
 	call TownMapBubble
-	call WaitBGMap
+	call ApplyTilemapInVBlank
 	xor a
 	ld [hBGMapMode], a
 	ret
@@ -2690,7 +2690,7 @@ TownMapBGUpdate: ; 91ee4
 	ld c, 3
 	call DelayFrames
 ; Update BG Map tiles
-	call WaitBGMap
+	call ApplyTilemapInVBlank
 ; Turn off BG Map update
 	xor a
 	ld [hBGMapMode], a

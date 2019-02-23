@@ -1,7 +1,7 @@
 AnimateHPBar: ; c6e0
-	call WaitBGMap
+	call ApplyTilemapInVBlank
 	call _AnimateHPBar
-	jp WaitBGMap
+	jp ApplyTilemapInVBlank
 
 _AnimateHPBar:
 ; Code in here treat the HP bar for update frequency as

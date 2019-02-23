@@ -509,7 +509,7 @@ Mom_WithdrawDepositMenuJoypad: ; 16571
 	ld [hl], " "
 
 .skip
-	call WaitBGMap
+	call ApplyTilemapInVBlank
 	jr .loop
 
 .pressedB

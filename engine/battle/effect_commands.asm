@@ -5782,7 +5782,7 @@ StatUpAnimation:
 	xor a
 	ld [hBGMapMode], a
 	call CallBattleCore
-	call WaitBGMap
+	call ApplyTilemapInVBlank
 	jp BattleCommand_MoveDelay
 
 ; 362ad
@@ -6317,7 +6317,7 @@ BattleCommand_RaiseSubNoAnim: ; 365af
 	xor a
 	ld [hBGMapMode], a
 	call CallBattleCore
-	jp WaitBGMap
+	jp ApplyTilemapInVBlank
 
 ; 365c3
 
@@ -6332,7 +6332,7 @@ BattleCommand_LowerSubNoAnim: ; 365c3
 	xor a
 	ld [hBGMapMode], a
 	call CallBattleCore
-	jp WaitBGMap
+	jp ApplyTilemapInVBlank
 
 BattleCommand_CheckRampage: ; 3671a
 ; checkrampage
@@ -8282,7 +8282,7 @@ BattleCommand_SelfDestruct: ; 37380
 	ret nc
 	farcall DrawPlayerHUD
 	farcall DrawEnemyHUD
-	call WaitBGMap
+	call ApplyTilemapInVBlank
 	jp RefreshBattleHuds
 
 ; 373c9

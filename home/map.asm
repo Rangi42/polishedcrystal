@@ -2000,7 +2000,7 @@ FinishExitMenu:: ; 2b5c
 	ld b, CGB_MAPPALS
 	call GetCGBLayout
 	farcall LoadBlindingFlashPalette
-	call WaitBGMap2
+	call ApplyAttrAndTilemapInVBlank
 	farcall FadeInPalettes
 	jp EnableSpriteUpdates
 ; 2b74
@@ -2018,7 +2018,7 @@ ReturnToMapWithSpeechTextbox:: ; 0x2b74
 	ld hl, wVramState
 	set 0, [hl]
 	call UpdateSprites
-	call WaitBGMap2
+	call ApplyAttrAndTilemapInVBlank
 	ld b, CGB_MAPPALS
 	call GetCGBLayout
 	farcall LoadBlindingFlashPalette

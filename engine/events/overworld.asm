@@ -697,7 +697,7 @@ FlyFunction: ; ca3b
 
 .illegal
 	call CloseWindow
-	call WaitBGMap
+	call ApplyTilemapInVBlank
 	ld a, $80
 	ret
 

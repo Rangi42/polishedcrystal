@@ -36,7 +36,7 @@ SetInitialOptions:
 
 	farcall ApplyPals
 
-	call WaitBGMap2
+	call ApplyAttrAndTilemapInVBlank
 	call SetPalettes
 
 	ld hl, .InitialOptionsText
@@ -80,7 +80,7 @@ SetInitialOptions:
 	ld [wJumptableIndex], a
 	inc a
 	ld [hBGMapMode], a
-	call WaitBGMap
+	call ApplyTilemapInVBlank
 
 .joypad_loop
 	call JoyTextDelay

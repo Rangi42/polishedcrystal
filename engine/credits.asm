@@ -582,13 +582,13 @@ ConstructCreditsTilemap: ; 109a95 (42:5a95)
 	ld a, $1
 	call ByteFill
 
-	call WaitBGMap2
+	call ApplyAttrAndTilemapInVBlank
 	xor a
 	ld [hBGMapMode], a
 	ld [hBGMapAddress], a
 	hlcoord 0, 0
 	call .InitTopPortion
-	jp WaitBGMap2
+	jp ApplyAttrAndTilemapInVBlank
 
 .InitTopPortion: ; 109aff (42:5aff)
 	ld b, 5

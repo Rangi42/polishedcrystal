@@ -57,7 +57,7 @@ INCBIN "gfx/battle/lyra_back.6x6.2bpp.lz"
 
 
 HOF_LoadTrainerFrontpic: ; 88840
-	call WaitBGMap
+	call ApplyTilemapInVBlank
 	xor a
 	ld [hBGMapMode], a
 	ld e, 0
@@ -79,7 +79,7 @@ HOF_LoadTrainerFrontpic: ; 88840
 	ld hl, VTiles2
 	lb bc, BANK(ChrisCardPic), 5 * 7 ; BANK(KrisCardPic)
 	call Get2bpp
-	call WaitBGMap
+	call ApplyTilemapInVBlank
 	ld a, $1
 	ld [hBGMapMode], a
 	ret

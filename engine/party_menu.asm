@@ -4,7 +4,7 @@ SelectMonFromParty: ; 50000
 	ld [wPartyMenuActionText], a
 	call ClearBGPalettes
 	call InitPartyMenuLayout
-	call WaitBGMap
+	call ApplyTilemapInVBlank
 	call SetPalettes
 	call DelayFrame
 	call PartyMenuSelect
@@ -18,7 +18,7 @@ SelectTradeOrDaycareMon: ; 5001d
 	call DisableSpriteUpdates
 	call ClearBGPalettes
 	call InitPartyMenuLayout
-	call WaitBGMap
+	call ApplyTilemapInVBlank
 	ld b, CGB_PARTY_MENU
 	call GetCGBLayout
 	call SetPalettes

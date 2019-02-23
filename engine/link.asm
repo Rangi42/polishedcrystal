@@ -15,7 +15,7 @@ LinkCommunications: ; 28000
 	call LoadStandardFont
 	call LoadFontsBattleExtra
 	call LoadTradeScreenGFX
-	call WaitBGMap2
+	call ApplyAttrAndTilemapInVBlank
 	hlcoord 3, 8
 	lb bc, 2, 12
 	call LinkTextbox
@@ -23,7 +23,7 @@ LinkCommunications: ; 28000
 	ld de, String_PleaseWait
 	call PlaceString
 	call SetTradeRoomBGPals
-	call WaitBGMap2
+	call ApplyAttrAndTilemapInVBlank
 	ld hl, wcf5d
 	xor a
 	ld [hli], a
@@ -318,7 +318,7 @@ LinkTimeout: ; 283b2
 	call ClearScreen
 	ld b, CGB_DIPLOMA
 	call GetCGBLayout
-	jp WaitBGMap2
+	jp ApplyAttrAndTilemapInVBlank
 ; 283ed
 
 .TooMuchTimeHasElapsed: ; 0x283ed
@@ -636,8 +636,8 @@ Link_FindFirstNonControlCharacter_AllowZero: ; 287d8
 ; 287e3
 
 Link_WaitBGMap: ; 4d354
-	call WaitBGMap
-	jp WaitBGMap2
+	call ApplyTilemapInVBlank
+	jp ApplyAttrAndTilemapInVBlank
 
 InitTradeMenuDisplay: ; 287e3
 	call ClearScreen
@@ -798,7 +798,7 @@ LinkMonStatsScreen: ; 4d319
 	call Link_WaitBGMap
 	call InitTradeSpeciesList
 	call SetTradeRoomBGPals
-	jp WaitBGMap2
+	jp ApplyAttrAndTilemapInVBlank
 
 LinkTrade_PlayerPartyMenu: ; 2888b
 	farcall InitLinkTradePalMap
@@ -822,7 +822,7 @@ LinkTrade_PlayerPartyMenu: ; 2888b
 	ld [w2DMenuFlags1], a
 	xor a
 	ld [w2DMenuFlags2], a
-	call WaitBGMap2
+	call ApplyAttrAndTilemapInVBlank
 
 LinkTradePartymonMenuLoop: ; 288c5
 	call LinkTradeMenu
@@ -930,7 +930,7 @@ LinkTradeMenu: ; 16d70c
 	push af
 	ld a, $1
 	ld [hOAMUpdate], a
-	call WaitBGMap
+	call ApplyTilemapInVBlank
 	pop af
 	ld [hOAMUpdate], a
 	xor a
@@ -1336,7 +1336,7 @@ Function28b22: ; 28b22
 	call ClearScreen
 	ld b, CGB_DIPLOMA
 	call GetCGBLayout
-	call WaitBGMap2
+	call ApplyAttrAndTilemapInVBlank
 	xor a
 	ld [rSB], a
 	ld [hSerialSend], a
@@ -1424,7 +1424,7 @@ LinkTrade: ; 28b87
 	call DoMenuJoypadLoop
 	push af
 	call ExitMenu
-	call WaitBGMap2
+	call ApplyAttrAndTilemapInVBlank
 	pop af
 	bit 1, a
 	jr nz, .asm_28c33
@@ -1786,13 +1786,13 @@ Function16d6ce: ; 16d6ce
 	hlcoord 6, 11
 	ld de, .Waiting
 	call PlaceString
-	call WaitBGMap
-	call WaitBGMap2
+	call ApplyTilemapInVBlank
+	call ApplyAttrAndTilemapInVBlank
 	ld c, 50
 	call DelayFrames
 	call Serial_SyncAndExchangeNybble
 	call ExitMenu
-	jp WaitBGMap2
+	jp ApplyAttrAndTilemapInVBlank
 ; 16d6e1
 
 .Waiting: ; 16d701
@@ -1959,7 +1959,7 @@ Special_CheckLinkTimeout: ; 29d92
 	ld [hli], a
 	xor a
 	ld [hl], a
-	call WaitBGMap
+	call ApplyTilemapInVBlank
 	ld a, $2
 	ld [hVBlank], a
 	call DelayFrame
@@ -1981,7 +1981,7 @@ Function29dba: ; 29dba
 	ld [hli], a
 	xor a
 	ld [hl], a
-	call WaitBGMap
+	call ApplyTilemapInVBlank
 	ld a, $2
 	ld [hVBlank], a
 	call DelayFrame

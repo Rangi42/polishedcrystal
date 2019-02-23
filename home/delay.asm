@@ -1,13 +1,13 @@
 ClearBGPalettes::
 	call ClearPalettes
-	jr WaitBGMap
+	jr ApplyTilemapInVBlank
 
-WaitBGMap2::
+ApplyAttrAndTilemapInVBlank::
 	ld a, 2
 	ld [hBGMapMode], a
 	call Delay2
 
-WaitBGMap::
+ApplyTilemapInVBlank::
 ; Tell VBlank to update BG Map
 	ld a, 1
 	ld [hBGMapMode], a

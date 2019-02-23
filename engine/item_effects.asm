@@ -2023,7 +2023,7 @@ ChoosePkmnToUseItemOn: ; f21c (3:721c)
 	farcall InitPartyMenuGFX
 	farcall WritePartyMenuTilemap
 	farcall PrintPartyMenuText
-	call WaitBGMap
+	call ApplyTilemapInVBlank
 	call SetPalettes
 	call DelayFrame
 	farjp PartyMenuSelect
@@ -2039,7 +2039,7 @@ ItemActionText: ; f24a (3:724a)
 	push bc
 	farcall WritePartyMenuTilemap
 	farcall PrintPartyMenuActionText
-	call WaitBGMap
+	call ApplyTilemapInVBlank
 	call SetPalettes
 	call DelayFrame
 	pop bc

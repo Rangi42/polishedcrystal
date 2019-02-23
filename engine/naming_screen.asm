@@ -49,7 +49,7 @@ NamingScreen: ; 116c1
 	ld a, %11100011
 	ld [rLCDC], a
 	call .GetNamingScreenSetup
-	call WaitBGMap
+	call ApplyTilemapInVBlank
 	call WaitTop
 	call SetPalettes
 	jp NamingScreen_InitNameEntry
@@ -923,7 +923,7 @@ _ComposeMailMessage: ; 11e75 (mail?)
 	call .initwNamingScreenMaxNameLength
 	ld b, CGB_DIPLOMA
 	call GetCGBLayout
-	call WaitBGMap
+	call ApplyTilemapInVBlank
 	call WaitTop
 	ld a, %11100100
 	call DmgToCgbBGPals

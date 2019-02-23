@@ -36,7 +36,7 @@ _CardFlip: ; e00ee (38:40ee)
 	call CardFlip_InitTilemap
 	call CardFlip_InitAttrPals
 	call EnableLCD
-	call WaitBGMap2
+	call ApplyAttrAndTilemapInVBlank
 	ld a, $e4
 	call DmgToCgbBGPals
 	ld de, $e4e4
@@ -190,7 +190,7 @@ _CardFlip: ; e00ee (38:40ee)
 	call DelayFrames
 	hlcoord 2, 6
 	call PlaceCardFaceDown
-	call WaitBGMap
+	call ApplyTilemapInVBlank
 	ld hl, .ChooseACardText
 	call CardFlip_UpdateCoinBalanceDisplay
 	xor a
@@ -293,7 +293,7 @@ _CardFlip: ; e00ee (38:40ee)
 	ld [hl], TRUE
 	call GetCoordsOfChosenCard
 	call CardFlip_DisplayCardFaceUp
-	call WaitBGMap2
+	call ApplyAttrAndTilemapInVBlank
 	jp .Increment
 ; e0314
 

@@ -12,7 +12,7 @@ BlankScreen: ; 8000
 	ld bc, wAttrMapEnd - wAttrMap
 	ld a, $7
 	call ByteFill
-	call WaitBGMap2
+	call ApplyAttrAndTilemapInVBlank
 	jp SetPalettes
 
 SpawnPlayer: ; 8029

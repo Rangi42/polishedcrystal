@@ -735,7 +735,7 @@ endc
 
 	call ClearTileMap
 	call LoadFontsExtra
-	call WaitBGMap
+	call ApplyTilemapInVBlank
 	call DrawIntroPlayerPic
 
 	ld b, CGB_INTRO_PALS
@@ -782,7 +782,7 @@ ElmText7: ; 0x606f
 InitGender: ; 48dcb (12:4dcb)
 	call RotateThreePalettesRight
 	call ClearTileMap
-	call WaitBGMap2
+	call ApplyAttrAndTilemapInVBlank
 	call SetPalettes
 
 	ld b, CGB_INTRO_PALS
@@ -794,7 +794,7 @@ InitGender: ; 48dcb (12:4dcb)
 
 	ld hl, .MenuDataHeader
 	call LoadMenuDataHeader
-	call WaitBGMap2
+	call ApplyAttrAndTilemapInVBlank
 	call VerticalMenu
 	call CloseWindow
 	ld a, [wMenuCursorY]
@@ -1050,7 +1050,7 @@ StartTitleScreen: ; 6219
 	ld hl, rLCDC
 	res 2, [hl] ; 8x8 sprites
 	call ClearScreen
-	call WaitBGMap2
+	call ApplyAttrAndTilemapInVBlank
 	xor a
 	ld [hLCDCPointer], a
 	ld [hSCX], a
@@ -1381,6 +1381,6 @@ GameInit:: ; 642e
 	ld [hSCY], a
 	ld a, $90
 	ld [hWY], a
-	call WaitBGMap
+	call ApplyTilemapInVBlank
 	jp CrystalIntroSequence
 ; 6454

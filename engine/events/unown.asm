@@ -123,7 +123,7 @@ Special_DisplayUnownWords: ; 8ae68
 	ld bc, wAttrMap - wTileMap
 	add hl, bc
 	call .FillAttr
-	call WaitBGMap2
+	call ApplyAttrAndTilemapInVBlank
 	call JoyWaitAorB
 	call PlayClickSFX
 	jp CloseWindow

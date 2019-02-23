@@ -199,7 +199,7 @@ ClearPCItemScreen: ; e58b
 	hlcoord 0, 12
 	lb bc, 4, 18
 	call TextBox
-	call WaitBGMap2
+	call ApplyAttrAndTilemapInVBlank
 	jp SetPalettes ; load regular palettes?
 
 CopyBoxmonToTempMon: ; e5bb

@@ -562,7 +562,7 @@ OaksPkmnTalk10:
 	farcall RadioMusicRestartPokemonChannel
 	ld hl, OPT_RestartText
 	call PrintText
-	call WaitBGMap
+	call ApplyTilemapInVBlank
 	ld hl, OPT_PokemonChannelText
 	call PrintText
 	ld a, OAKS_POKEMON_TALK_11

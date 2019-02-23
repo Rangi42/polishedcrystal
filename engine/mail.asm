@@ -498,7 +498,7 @@ MailboxPC: ; 0x44806
 	farcall InitPartyMenuGFX
 	farcall WritePartyMenuTilemap
 	farcall PrintPartyMenuText
-	call WaitBGMap
+	call ApplyTilemapInVBlank
 	call SetPalettes
 	call DelayFrame
 	farcall PartyMenuSelect

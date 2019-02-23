@@ -54,11 +54,11 @@ TrainerCard: ; 25105
 	call TrainerCard_PrintTopHalfOfCard
 
 	call EnableLCD
-	call WaitBGMap
+	call ApplyTilemapInVBlank
 	ld b, CGB_TRAINER_CARD
 	call GetCGBLayout
 	call SetPalettes
-	call WaitBGMap
+	call ApplyTilemapInVBlank
 	ld hl, wJumptableIndex
 	xor a
 	ld [hli], a
@@ -92,12 +92,12 @@ TrainerCard_Quit: ; 251b0 (9:51b0)
 TrainerCard_Page1_LoadGFX: ; 251b6 (9:51b6)
 	call ClearSprites
 	call TrainerCardSetup_ClearBottomHalf
-	call WaitBGMap
+	call ApplyTilemapInVBlank
 
 	ld b, CGB_TRAINER_CARD
 	call GetCGBLayout
 	call SetPalettes
-	call WaitBGMap
+	call ApplyTilemapInVBlank
 
 	ld de, CardStatusGFX
 	call TrainerCard_LoadHeaderGFX
@@ -123,12 +123,12 @@ TrainerCard_Page1_Joypad: ; 251d7 (9:51d7)
 TrainerCard_Page2_LoadGFX: ; 251f4 (9:51f4)
 	call ClearSprites
 	call TrainerCardSetup_ClearBottomHalf
-	call WaitBGMap
+	call ApplyTilemapInVBlank
 
 	ld b, CGB_TRAINER_CARD_2
 	call GetCGBLayout
 	call SetPalettes
-	call WaitBGMap
+	call ApplyTilemapInVBlank
 
 	ld de, CardBadgesGFX
 	call TrainerCard_LoadHeaderGFX
@@ -190,12 +190,12 @@ TrainerCard_Page2_Joypad: ; 25221 (9:5221)
 TrainerCard_Page3_LoadGFX: ; 2524c (9:524c)
 	call ClearSprites
 	call TrainerCardSetup_ClearBottomHalf
-	call WaitBGMap
+	call ApplyTilemapInVBlank
 
 	ld b, CGB_TRAINER_CARD_3
 	call GetCGBLayout
 	call SetPalettes
-	call WaitBGMap
+	call ApplyTilemapInVBlank
 
 	ld de, CardBadgesGFX
 	call TrainerCard_LoadHeaderGFX

@@ -40,7 +40,7 @@ DisplayUsedMoveText: ; 105db0
 	ld hl, UsedMoveInsteadText
 .ok
 	call StdBattleTextBox
-	jp WaitBGMap
+	jp ApplyTilemapInVBlank
 ; 105db9
 
 

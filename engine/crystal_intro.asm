@@ -12,14 +12,14 @@ Copyright_GFPresents: ; e4579
 	ld [hSCY], a
 	ld a, $90
 	ld [hWY], a
-	call WaitBGMap
+	call ApplyTilemapInVBlank
 	ld b, CGB_GAMEFREAK_LOGO
 	call GetCGBLayout
 	call SetPalettes
 	ld c, 10
 	call DelayFrames
 	farcall Copyright
-	call WaitBGMap
+	call ApplyTilemapInVBlank
 	ld c, 100
 	call DelayFrames
 	call ClearTileMap

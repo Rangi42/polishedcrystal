@@ -53,7 +53,7 @@ Script_Whiteout: ; 0x124ce
 OverworldBGMap: ; 124fa
 	call ClearPalettes
 	call ClearScreen
-	call WaitBGMap2
+	call ApplyAttrAndTilemapInVBlank
 	call HideSprites
 	jp RotateThreePalettesLeft
 ; 1250a

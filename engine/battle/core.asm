@@ -2373,7 +2373,7 @@ HandleEnemySwitch: ; 3cf4a
 	ld hl, wEnemyHPPal
 	ld e, HP_BAR_LENGTH_PX
 	call UpdateHPPal
-	call WaitBGMap
+	call ApplyTilemapInVBlank
 	farcall EnemySwitch_TrainerHud
 	ld a, [wLinkMode]
 	and a
@@ -2827,7 +2827,7 @@ ForcePlayerMonChoice: ; 3d227
 	call _LoadStatusIcons
 	call ExitMenu
 	call LoadTileMapToTempTileMap
-	call WaitBGMap
+	call ApplyTilemapInVBlank
 	call GetMemCGBLayout
 	call SetPalettes
 	xor a
@@ -2894,7 +2894,7 @@ SetUpBattlePartyMenu: ; switch to fullscreen menu?
 JumpToPartyMenuAndPrintText: ; 3d313
 	farcall WritePartyMenuTilemap
 	farcall PrintPartyMenuText
-	call WaitBGMap
+	call ApplyTilemapInVBlank
 	call SetPalettes
 	jp DelayFrame
 ; 3d329
@@ -3406,7 +3406,7 @@ FinalPkmnMusicAndAnimation:
 	ld [wTempEnemyMonSpecies], a
 	; ...and return the Pokémon
 	call EmptyBattleTextBox
-	call WaitBGMap
+	call ApplyTilemapInVBlank
 	call SlideEnemyPicOut
 	ld c, 10
 	call DelayFrames
@@ -3505,7 +3505,7 @@ ClearEnemyMonBox: ; 3d7a0
 	hlcoord 0, 0
 	lb bc, 4, 11
 	call ClearBox
-	call WaitBGMap
+	call ApplyTilemapInVBlank
 	jp FinishBattleAnim
 ; 3d7b8
 
@@ -3513,7 +3513,7 @@ Function_BattleTextEnemySentOut: ; 3d7b8
 	farcall Battle_GetTrainerName
 	ld hl, BattleText_EnemySentOut
 	call StdBattleTextBox
-	jp WaitBGMap
+	jp ApplyTilemapInVBlank
 ; 3d7c7
 
 Function_SetEnemyPkmnAndSendOutAnimation: ; 3d7c7
@@ -3873,7 +3873,7 @@ SendOutPlayerMon: ; 3db5f
 	hlcoord 1, 5
 	lb bc, 7, 8
 	call ClearBox
-	call WaitBGMap
+	call ApplyTilemapInVBlank
 	xor a
 	ld [hBGMapMode], a
 	call GetMonBackpic
@@ -5207,7 +5207,7 @@ BattleMenu_SafariBall:
 	call GetMonBackpic
 	call GetMonFrontpic
 	call ExitMenu
-	call WaitBGMap
+	call ApplyTilemapInVBlank
 	call FinishBattleAnim
 	call LoadTileMapToTempTileMap
 	jp BattleMenu
@@ -5246,7 +5246,7 @@ BattleMenu_SafariBall:
 	ld a, [wBattleType]
 	cp BATTLETYPE_SAFARI
 	call nz, UpdateBattleHUDs
-	call WaitBGMap
+	call ApplyTilemapInVBlank
 	call LoadTileMapToTempTileMap
 	call ClearWindowData
 	call FinishBattleAnim
@@ -5329,7 +5329,7 @@ BattleMenuPKMN_Loop:
 	call MenuBox
 	call UpdateSprites
 	call PlaceVerticalMenuItems
-	call WaitBGMap
+	call ApplyTilemapInVBlank
 	call CopyMenuData2
 	ld a, [wMenuData2Flags]
 	bit 7, a
@@ -7518,7 +7518,7 @@ Call_PlayBattleAnim: ; 3ee17
 	ld [wFXAnimIDLo], a
 	ld a, d
 	ld [wFXAnimIDHi], a
-	call WaitBGMap
+	call ApplyTilemapInVBlank
 	predef_jump PlayBattleAnim
 ; 3ee27
 
@@ -9013,7 +9013,7 @@ DisplayLinkRecord: ; 3f836
 	xor a
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
 	call ByteFill
-	call WaitBGMap2
+	call ApplyAttrAndTilemapInVBlank
 	ld b, CGB_DIPLOMA
 	call GetCGBLayout
 	call SetPalettes
@@ -9486,7 +9486,7 @@ InitBattleDisplay: ; 3fb6c
 	ld a, $90
 	ld [hWY], a
 	ld [rWY], a
-	call WaitBGMap
+	call ApplyTilemapInVBlank
 	xor a
 	ld [hBGMapMode], a
 	farcall BattleIntroSlidingPics
@@ -9497,7 +9497,7 @@ InitBattleDisplay: ; 3fb6c
 	hlcoord 2, 6
 	lb bc, 6, 6
 	predef PlaceGraphic
-	call WaitBGMap
+	call ApplyTilemapInVBlank
 	call HideSprites
 	ld b, CGB_BATTLE_COLORS
 	call GetCGBLayout
