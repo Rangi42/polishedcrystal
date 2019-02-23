@@ -520,7 +520,7 @@ UnknownText_0x1c5660::
 UnknownText_0x1c5678::
 	text "Which move should"
 	next "be forgotten?"
-	done
+	prompt
 
 UnknownText_0x1c5699::
 	text "Stop learning"
