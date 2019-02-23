@@ -245,44 +245,42 @@ SortItemsInBag:
 	push af
 	xor a
 	ld b, a
-.loop
+.outer_loop
 	ld a, b
 	call GetSortingItemIndex
 	ld c, a
 	inc a
 	jr z, .done
+.inner_loop
+	inc b
 	ld a, b
-	inc a
 	call GetSortingItemIndex
 	inc a
 	jr z, .done
 	dec a
 	cp c
-	jr nc, .sort_ok
 	ld c, a
+	jr nc, .inner_loop
 	push bc
 	ld a, b
-	inc a
 	ld [wScrollingMenuCursorPosition], a
 	call SwitchItemsInBag
 	pop bc
 	push bc
 	ld b, 0
-.loop2
+.insertion_loop
 	ld a, b
 	call GetSortingItemIndex
 	cp c
 	jr nc, .do_sort
 	inc b
-	jr .loop2
+	jr .insertion_loop
 .do_sort
 	ld a, b
 	ld [wScrollingMenuCursorPosition], a
 	call SwitchItemsInBag
 	pop bc
-.sort_ok
-	inc b
-	jr .loop
+	jr .outer_loop
 .done
 	pop af
 	ld [wScrollingMenuCursorPosition], a
