@@ -712,7 +712,7 @@ Hatch_UpdateFrontpicBGMapCenter: ; 17254 (5:7254)
 	pop af
 	call Hatch_LoadFrontpicPal
 	call SetPalettes
-	jp ApplyTilemapInVBlank
+	jp ApplyAttrAndTilemapInVBlank
 
 EggHatch_DoAnimFrame: ; 1727f (5:727f)
 	push hl
