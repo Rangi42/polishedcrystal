@@ -1707,9 +1707,9 @@ YoungsterGroup:
 
 	; YOUNGSTER
 	db "Joey@"
-	db TRAINERTYPE_ITEM | TRAINERTYPE_EVS | TRAINERTYPE_DVS | TRAINERTYPE_PERSONALITY
+	db TRAINERTYPE_DVS | TRAINERTYPE_PERSONALITY
 	; party
-	db 5, RATTATA, ORAN_BERRY, 16, FAKE_PERFECT_DVS, ABILITY_2 | ADAMANT, MALE
+	db 5, RATTATA, FAKE_PERFECT_DVS, ABILITY_2 | ADAMANT, MALE
 	db -1 ; end
 
 ; ================
@@ -6218,9 +6218,8 @@ SchoolgirlGroup:
 	db "Molly@"
 	db TRAINERTYPE_NICKNAME
 	; party
-	db 6, MAREEP, "Fluffy@"
-	db 6, PHANPY, "Phanpy@"
 	db 6, TEDDIURSA, "Teddy@"
+	db 6, PHANPY, "Phanpy@"
 	db -1 ; end
 
 ; ================
@@ -6273,9 +6272,8 @@ SchoolgirlGroup:
 	db "Imogen@"
 	db TRAINERTYPE_NICKNAME
 	; party
-	db 10, BULBASAUR, "Garlic@"
-	db 7, SANDSHREW, "Sandshrew@"
-	db 7, POLIWAG, "Poliwag@"
+	db 9, BULBASAUR, "Garlic@"
+	db 8, POLIWAG, "Poliwag@"
 	db -1 ; end
 
 ; ================
