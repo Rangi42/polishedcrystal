@@ -123,7 +123,7 @@ HPBarAnim_UpdateVariables:
 .incdecdone
 	dec hl
 	ld [hl], a
-; wCurHPAnimOldHP = a * wCurHPAnimMaxHP / (48 * 2)
+; wCurHPAnimOldHP = a * wCurHPAnimMaxHP / (HP_BAR_LENGTH_PX * 2)
 	ld [hMultiplier], a
 	xor a
 	ld [hMultiplicand], a
@@ -132,7 +132,7 @@ HPBarAnim_UpdateVariables:
 	ld a, [wCurHPAnimMaxHP]
 	ld [hMultiplicand + 2], a
 	call Multiply
-	ld a, 48 * 2
+	ld a, HP_BAR_LENGTH_PX * 2
 	ld [hDivisor], a
 	ld b, 4
 	call Divide
