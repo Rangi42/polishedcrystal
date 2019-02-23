@@ -1033,7 +1033,7 @@ rept 255
 	MONOCHROME_RGB_TWO
 endr
 endc
-TMHMCancelPalette:
+CancelPalette:
 if !DEF(MONOCHROME)
 ; CANCEL
 	RGB 31, 31, 31

@@ -668,7 +668,7 @@ _CGB_BuyMenu: ; 9499
 	call FarCopyWRAM
 
 rept 2
-	ld hl, TMHMCancelPalette
+	ld hl, CancelPalette
 	call LoadPalette_White_Col1_Col2_Black
 endr
 

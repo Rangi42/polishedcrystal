@@ -156,8 +156,6 @@ LoadItemIconPalette:
 
 LoadTMHMIconPalette:
 	ld a, [wCurTMHM]
-	cp NUM_TMS + NUM_HMS + 1
-	jr nc, .cancel
 	dec a
 	ld hl, TMHMTypes
 	ld b, 0
@@ -176,13 +174,6 @@ endr
 	call FarCopyWRAM
 	ld hl, BlackPalette
 	ld bc, 2
-	ld a, $5
-	jp FarCopyWRAM
-
-.cancel:
-	ld hl, TMHMCancelPalette
-	ld de, wUnknBGPals palette 7 + 2
-	ld bc, 6
 	ld a, $5
 	jp FarCopyWRAM
 
