@@ -74,6 +74,12 @@ UseRegisteredItem:
 	ret z
 
 .single_registered_item
+	push de
+	ld de, SFX_READ_TEXT_2
+	call PlaySFX
+	ld c, 3
+	call SFXDelayFrames
+	pop de
 	farcall CheckItemMenu
 	ld a, [wItemAttributeParamBuffer]
 	ld hl, .SwitchTo

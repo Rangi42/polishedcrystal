@@ -839,7 +839,6 @@ CheckMenuOW: ; 96b30
 	ret
 
 .Select:
-	call PlayTalkObject
 	ld a, BANK(SelectMenuScript)
 	ld hl, SelectMenuScript
 	call CallScript
