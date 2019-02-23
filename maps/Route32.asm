@@ -256,7 +256,6 @@ Route32LyraIntroducesHiddenGrottoes_Left1:
 	step_end
 
 Route32LyraIntroducesHiddenGrottoesIntroScript:
-	appear ROUTE32_LYRA
 	applymovement ROUTE32_LYRA, .StepUpMovement
 	showemote EMOTE_SHOCK, ROUTE32_LYRA, 15
 	special Special_FadeOutMusic
