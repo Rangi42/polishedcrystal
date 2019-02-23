@@ -79,7 +79,12 @@ GetMenu2::
 	ret
 
 YesNoBox::
+	ld a, [wInPokegear]
+	and a
 	lb bc, SCREEN_WIDTH - 6, 7
+	jr z, .got_position
+	dec b
+.got_position
 	; fallthrough
 
 PlaceYesNoBox::
