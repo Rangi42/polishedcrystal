@@ -56,6 +56,50 @@ RotatePalettesLeft:: ; 501
 	ret
 ; 517
 
+FadeToWhite::
+	ld a, BANK(wUnknBGPals)
+	call StackCallInWRAMBankA
+
+.Function:
+	ld hl, wUnknBGPals
+	ld a, $ff
+	ld c, 16 palettes
+	inc c
+.loop
+	dec c
+	jr z, FadePalettes
+	xor $80
+	ld [hli], a
+	jr .loop
+
+FadeToBlack::
+	ld a, BANK(wUnknBGPals)
+	call StackCallInWRAMBankA
+
+.Function:
+	ld hl, wUnknBGPals
+	xor a
+	ld bc, 16 palettes
+	call ByteFill
+
+FadePalettes::
+; Fades active palettes in wBGPals/wOBPals to new ones in
+; wUnknBGPals/wUnknOBPals in c frames
+	ld c, 31
+	xor a
+	ld [wPalFadeMode], a
+	jr DoFadePalettes
+
+FadeBGPalettes::
+	ld a, 1
+	ld [wPalFadeMode], a
+	jr DoFadePalettes
+
+FadeOBPalettes::
+	ld a, 2
+	ld [wPalFadeMode], a
+DoFadePalettes:
+	farjp _DoFadePalettes
 
 ; 517
 IncGradGBPalTable_00:: db %11111111, %11111111, %11111111

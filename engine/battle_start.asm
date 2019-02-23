@@ -270,6 +270,8 @@ StartTrainerBattle_SetUpBGMap: ; 8c3a1 (23:43a1)
 	ret
 
 StartTrainerBattle_Flash: ; 8c3ab (23:43ab)
+	call FadeToBlack
+	jp StartTrainerBattle_NextScene
 	call .DoFlashAnimation
 	ret nc
 	jp StartTrainerBattle_NextScene
