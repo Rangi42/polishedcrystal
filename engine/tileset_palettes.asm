@@ -1849,7 +1849,7 @@ LoadSpecialMapOBPalette:
 	cp MAP_MURKY_SWAMP
 	jr z, .load_bg_tree_palette
 	cp MAP_ROUTE_34
-	jp z, .load_party_mon_palettes
+	jp z, .load_gray_party_mon_palette
 
 .not_murky_swamp_or_route_34:
 	ld a, [wMapGroup]
@@ -1975,12 +1975,23 @@ LoadSpecialMapOBPalette:
 	ld de, wUnknOBPals palette PAL_OW_ROCK
 	jp .load_single_palette
 
-.load_party_mon_palettes:
+.get_timeofday_party_mon_palettes:
 	ld hl, OverworldPartyMonPalettes
 	ld a, [wTimeOfDayPal]
 	and 3
 	ld bc, 3 palettes
 	rst AddNTimes
+	ret
+
+.load_gray_party_mon_palette:
+	call .get_timeofday_party_mon_palettes
+	ld de, wUnknOBPals palette PAL_OW_ROCK
+	ld bc, 1 palettes
+	ld a, $5
+	jp FarCopyWRAM
+
+.load_party_mon_palettes:
+	call .get_timeofday_party_mon_palettes
 	ld de, wUnknOBPals palette PAL_OW_SILVER
 	ld bc, 3 palettes
 	ld a, $5

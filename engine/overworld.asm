@@ -305,22 +305,32 @@ _GetSpritePalette:: ; 142c4
 	jr nz, .not_doll
 	ld a, [wMapNumber]
 	cp MAP_KRISS_HOUSE_2F
-	jr nz, .not_daycare_or_doll
-	jr .daycare_or_doll
+	jr nz, .not_doll
+	farcall GetMonIconPalette
+	ld c, a
+	ret
+
 .not_doll
 	cp GROUP_ROUTE_34
-	jr nz, .not_daycare_or_doll
+	jr nz, .not_daycare
 	ld a, [wMapNumber]
 	cp MAP_ROUTE_34
-	jr nz, .not_daycare_or_doll
-.daycare_or_doll
+	jr nz, .not_daycare
 	farcall GetMonIconPalette
-	jr .got_palette
-
-.not_daycare_or_doll
-	xor a ; PAL_OW_RED
-.got_palette
+	cp PAL_OW_GRAY
+	ld c, PAL_OW_ROCK
+	ret z
+	cp PAL_OW_PINK
+	ld c, PAL_OW_RED
+	ret z
+	cp PAL_OW_TEAL
+	ld c, PAL_OW_GREEN
+	ret z
 	ld c, a
+	ret
+
+.not_daycare
+	ld c, PAL_OW_RED
 	ret
 ; 142db
 
