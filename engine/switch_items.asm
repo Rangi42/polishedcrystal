@@ -259,18 +259,27 @@ SortItemsInBag:
 	dec a
 	cp c
 	jr nc, .sort_ok
+	ld c, a
 	push bc
 	ld a, b
-	ld [wScrollingMenuCursorPosition], a
-	call SwitchItemsInBag
+	inc a
 	ld [wScrollingMenuCursorPosition], a
 	call SwitchItemsInBag
 	pop bc
+	push bc
+	ld b, 0
+.loop2
 	ld a, b
-	and a
-	jr z, .loop
-	dec b
-	jr .loop
+	call GetSortingItemIndex
+	cp c
+	jr nc, .do_sort
+	inc b
+	jr .loop2
+.do_sort
+	ld a, b
+	ld [wScrollingMenuCursorPosition], a
+	call SwitchItemsInBag
+	pop bc
 .sort_ok
 	inc b
 	jr .loop
