@@ -455,6 +455,7 @@ BuyMenu: ; 15c62
 	call BuyMenuLoop ; menu loop
 	jr nc, .loop
 BuyMenu_Finish:
+	call SFXDelay2
 	call ReturnToMapWithSpeechTextbox
 	and a
 	ret
@@ -1476,6 +1477,7 @@ SellMenu: ; 15eb3
 	jr .loop
 
 .quit
+	call SFXDelay2
 	call ReturnToMapWithSpeechTextbox
 	and a
 	ret
