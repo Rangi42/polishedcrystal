@@ -1267,7 +1267,6 @@ ChooseMoveToDelete:
 	push af
 	ld a, b
 	ld [wOptions1], a
-	push af
 	call ClearBGPalettes
 	pop af
 	ret
