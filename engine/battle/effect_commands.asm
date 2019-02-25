@@ -6557,15 +6557,14 @@ BattleCommand_ForceSwitch: ; 3680f
 
 	ld a, [hBattleTurn]
 	and a
-	jr nz, .enemy_wild
+	jr z, .wild_got_party_vars
 
-.enemy_wild
 	ld a, b
 	ld b, c
 	ld c, a
-	jr .wild_got_party_vars
 
 .wild_got_party_vars
+	; b: opponent level, c: user level
 	ld a, c
 	cp b
 	jr nc, .wild_succeed
@@ -6591,16 +6590,12 @@ BattleCommand_ForceSwitch: ; 3680f
 	inc a
 	ld [wForcedSwitch], a
 	call SetBattleDraw
-	ld a, BATTLE_VARS_MOVE_ANIM
-	call GetBattleVar
-	push af
 	call SetBattleDraw
 	ld a, $1
 	ld [wKickCounter], a
 	call AnimateCurrentMove
 	ld c, 20
 	call DelayFrames
-	pop af
 	ld hl, FledInFearText
 	jp StdBattleTextBox
 
@@ -6661,6 +6656,7 @@ BattleCommand_ForceSwitch: ; 3680f
 	or [hl]
 	pop de
 	jr z, .random_loop_trainer
+	pop hl
 
 	ld a, [hBattleTurn]
 	and a
