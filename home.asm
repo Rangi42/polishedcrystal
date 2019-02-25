@@ -1608,6 +1608,16 @@ GetPartyLocation::
 
 INCLUDE "home/battle.asm"
 
+HalveBC::
+	srl b
+	rr c
+FloorBC::
+	ld a, c
+	or b
+	ret nz
+	inc c
+	ret
+
 PushLYOverrides:: ; 3b0c
 
 	ld a, [hLCDCPointer]

@@ -5350,10 +5350,6 @@ SapHealth: ; 36011
 	ld b, a
 	ld c, [hl]
 
-	; halve result
-	srl b
-	rr c
-
 	; for Drain Kiss, we want 75% drain instead of 50%
 	ld a, BATTLE_VARS_MOVE
 	call GetBattleVar
@@ -5368,16 +5364,8 @@ SapHealth: ; 36011
 	ld c, l
 
 .skip_drain_kiss
-	; ensure minimum 1HP drained
-	ld a, b
-	and a
-	jr nz, .skip_increase
-	ld a, c
-	and a
-	jr nz, .skip_increase
-	ld c, 1
-.skip_increase
-	call HandleBigRoot
+	call GetHPAbsorption
+
 	; check for Liquid Ooze
 	push bc
 	call GetOpponentAbilityAfterMoldBreaker
@@ -5388,6 +5376,11 @@ SapHealth: ; 36011
 .damage
 	farcall ShowEnemyAbilityActivation
 	farjp SubtractHPFromUser
+
+GetHPAbsorption:
+; From damage in bc, get resulting absorbed HP
+	call HandleBigRoot
+	jp HalveBC
 
 HandleBigRoot:
 ; Bonus +30% HP drain (or reduction if Liquid Ooze)

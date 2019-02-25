@@ -1118,10 +1118,8 @@ HandleResidualDamage:
 	push bc
 	call SubtractHPFromUser
 	pop bc
-	srl b
-	rr c
 	call SwitchTurn
-	farcall HandleBigRoot
+	farcall GetHPAbsorption
 	ld a, $1
 	ld [hBGMapMode], a
 	ld a, BATTLE_VARS_ABILITY_OPP
@@ -1971,16 +1969,7 @@ GetQuarterMaxHP:
 GetHalfMaxHP:
 	call GetMaxHP
 HalfHP:
-	srl b
-	rr c
-
-	; floor = 1
-	ld a, c
-	or b
-	ret nz
-	inc c
-	ret
-
+	jp HalveBC
 
 GetMaxHP: ; 3ccac
 ; output: bc, wBuffer1-2
