@@ -186,9 +186,6 @@ BattleTurn: ; 3c12f
 	ld a, [wBattleEnded]
 	and a
 	ret nz
-	ld a, [wForcedSwitch] ; roared/teleported
-	and a
-	ret nz
 .skip_iteration
 	call ParsePlayerAction
 	jr nz, .loop1
@@ -203,7 +200,7 @@ BattleTurn: ; 3c12f
 .false
 	call Battle_PlayerFirst
 .proceed
-	ld a, [wForcedSwitch]
+	ld a, [wBattleEnded]
 	and a
 	ret nz
 
@@ -880,7 +877,7 @@ Battle_EnemyFirst: ; 3c5fe
 	farcall AI_SwitchOrTryItem
 	jr c, .switch_item
 	call EnemyTurn_EndOpponentProtectEndureDestinyBond
-	ld a, [wForcedSwitch]
+	ld a, [wBattleEnded]
 	and a
 	ret nz
 	call HasPlayerFainted
@@ -894,7 +891,7 @@ Battle_EnemyFirst: ; 3c5fe
 	jp z, HandleEnemyMonFaint
 	call RefreshBattleHuds
 	call PlayerTurn_EndOpponentProtectEndureDestinyBond
-	ld a, [wForcedSwitch]
+	ld a, [wBattleEnded]
 	and a
 	ret nz
 	call HasEnemyFainted
@@ -925,7 +922,7 @@ Battle_PlayerFirst: ; 3c664
 	xor a
 	ld [wPlayerEndturnSwitched], a
 	ld [wEnemyEndturnSwitched], a
-	ld a, [wForcedSwitch]
+	ld a, [wBattleEnded]
 	and a
 	ret nz
 	call HasEnemyFainted
@@ -948,7 +945,7 @@ Battle_PlayerFirst: ; 3c664
 	xor a
 	ld [wPlayerEndturnSwitched], a
 	ld [wEnemyEndturnSwitched], a
-	ld a, [wForcedSwitch]
+	ld a, [wBattleEnded]
 	and a
 	ret nz
 	call HasPlayerFainted
@@ -8880,7 +8877,6 @@ CleanUpBattleRAM: ; 3f6d0
 	ld [wOtherTrainerClass], a
 	ld [wFailedToFlee], a
 	ld [wNumFleeAttempts], a
-	ld [wForcedSwitch], a
 	ld [wPartyMenuCursor], a
 	ld [wKeyItemsPocketCursor], a
 	ld [wItemsPocketCursor], a

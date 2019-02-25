@@ -541,7 +541,7 @@ wBattleType::
 
 wOtherTrainerID:: ds 1
 
-wForcedSwitch:: ds 1
+	ds 1 ; unused
 
 wTrainerClass:: ds 1
 

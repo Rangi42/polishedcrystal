@@ -866,7 +866,6 @@ ClearBattleRAM: ; 2ef18
 	ld [wBattleMonSpecies], a
 	ld [wBattleParticipantsNotFainted], a
 	ld [wCurBattleMon], a
-	ld [wForcedSwitch], a
 	ld [wTimeOfDayPal], a
 	ld [wPlayerTurnsTaken], a
 	ld [wEnemyTurnsTaken], a

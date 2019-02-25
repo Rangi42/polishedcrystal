@@ -6428,7 +6428,7 @@ BattleCommand_Teleport: ; 36778
 	xor a
 	ld [wNumHits], a
 	inc a
-	ld [wForcedSwitch], a
+	ld [wBattleEnded], a
 	ld [wKickCounter], a
 	call SetBattleDraw
 	call BattleCommand_LowerSub
@@ -6581,7 +6581,7 @@ BattleCommand_ForceSwitch: ; 3680f
 	xor a
 	ld [wNumHits], a
 	inc a
-	ld [wForcedSwitch], a
+	ld [wBattleEnded], a
 	call SetBattleDraw
 	call SetBattleDraw
 	ld a, $1
