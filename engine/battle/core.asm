@@ -8,6 +8,8 @@ DoBattle: ; 3c000
 	ld [wBattlePlayerAction], a
 	ld [wBattleEnded], a
 	ld [wInverseBattleScore], a
+	ld [wPlayerEndturnSwitched], a
+	ld [wEnemyEndturnSwitched], a
 	inc a
 	ld [wBattleHasJustStarted], a
 	ld hl, wOTPartyMon1HP
@@ -248,7 +250,7 @@ HasUserEndturnSwitched:
 	xor 1 ; return z if we have endturn switched
 	ret
 
-HandleBetweenTurnEffects: ; 3c1d6
+HandleBetweenTurnEffects:
 	call CheckFaint
 	ret c
 	call HandleResidualDamage
@@ -275,6 +277,10 @@ HandleBetweenTurnEffects: ; 3c1d6
 	call HandleScreens
 	call HandleHealingItems
 	farcall HandleAbilities
+
+	xor a
+	ld [wPlayerEndturnSwitched], a
+	ld [wEnemyEndturnSwitched], a
 
 	; these run even if the user switched at endturn
 	call HandleStatusOrbs
@@ -919,9 +925,6 @@ Battle_PlayerFirst: ; 3c664
 .enemy_used_move
 	call PlayerTurn_EndOpponentProtectEndureDestinyBond
 	pop bc
-	xor a
-	ld [wPlayerEndturnSwitched], a
-	ld [wEnemyEndturnSwitched], a
 	ld a, [wBattleEnded]
 	and a
 	ret nz
@@ -942,9 +945,6 @@ Battle_PlayerFirst: ; 3c664
 	call TryEnemyFlee
 	jp c, WildFled_EnemyFled_LinkBattleCanceled
 	call EnemyTurn_EndOpponentProtectEndureDestinyBond
-	xor a
-	ld [wPlayerEndturnSwitched], a
-	ld [wEnemyEndturnSwitched], a
 	ld a, [wBattleEnded]
 	and a
 	ret nz
@@ -2104,8 +2104,6 @@ HandleEnemyMonFaint: ; 3cd55
 .dont_flee
 	call ForcePlayerMonChoice
 
-	ld a, 1
-	ld [wPlayerEndturnSwitched], a
 	ld [wPlayerAction], a
 	call HandleEnemySwitch
 	jp z, WildFled_EnemyFled_LinkBattleCanceled
@@ -2356,6 +2354,8 @@ CheckEnemyTrainerDefeated: ; 3cf35
 ; 3cf4a
 
 HandleEnemySwitch: ; 3cf4a
+	ld a, 1
+	ld [wEnemyEndturnSwitched], a
 	ld hl, wEnemyHPPal
 	ld e, HP_BAR_LENGTH_PX
 	call UpdateHPPal
@@ -2386,8 +2386,6 @@ EnemyPartyMonEntrance: ; 3cf78
 	push af
 	xor a
 	ld [wEnemySwitchMonIndex], a
-	ld a, 1
-	ld [wEnemyEndturnSwitched], a
 	call NewEnemyMonStatus
 	call ResetEnemyStatLevels
 	call BreakAttraction
@@ -2712,8 +2710,6 @@ HandlePlayerMonFaint: ; 3d14e
 	ret
 
 .switch
-	ld a, 1
-	ld [wPlayerEndturnSwitched], a
 	call ForcePlayerMonChoice
 	ld a, c
 	and a
@@ -2789,6 +2785,8 @@ AskUseNextPokemon: ; 3d1f8
 	jp CheckRunSpeed
 
 ForcePlayerMonChoice: ; 3d227
+	ld a, 1
+	ld [wPlayerEndturnSwitched], a
 	call EmptyBattleTextBox
 	call LoadStandardMenuDataHeader
 	call SetUpBattlePartyMenu_NoLoop
