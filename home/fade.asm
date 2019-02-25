@@ -72,6 +72,17 @@ FadeToWhite::
 	ld [hli], a
 	jr .loop
 
+SmoothFlash::
+	ld a, BANK(wUnknBGPals)
+	call StackCallInWRAMBankA
+
+.Function:
+	ld a, 1
+	set PALFADE_FLASH, a
+	ld [wPalFadeMode], a
+	ld c, 10
+	jr DoFadePalettes
+
 FadeToBlack::
 	ld a, BANK(wUnknBGPals)
 	call StackCallInWRAMBankA
@@ -81,11 +92,11 @@ FadeToBlack::
 	xor a
 	ld bc, 16 palettes
 	call ByteFill
+	ld c, 60
 
 FadePalettes::
 ; Fades active palettes in wBGPals/wOBPals to new ones in
 ; wUnknBGPals/wUnknOBPals in c frames
-	ld c, 31
 	xor a
 	ld [wPalFadeMode], a
 	jr DoFadePalettes

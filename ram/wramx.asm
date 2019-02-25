@@ -1379,6 +1379,7 @@ wColorVaryDVs:: ds 3
 wColorVarySpecies:: ds 1
 wColorVaryShiny:: ds 1
 
+wPalFadeDelayFrames:: ds 1
 wPalFadeDelay:: ds 1
 wPalFadeMode::
 ; 0: Fade everything
@@ -1386,7 +1387,7 @@ wPalFadeMode::
 ; 2: Fade wOBPals towards wUnknOBPals
 	ds 1
 
-	ds 100 ; unused
+	ds 99 ; unused
 
 wLYOverridesBackup:: ds SCREEN_HEIGHT_PX
 wLYOverridesBackupEnd::

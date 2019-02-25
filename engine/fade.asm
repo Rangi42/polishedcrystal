@@ -1,26 +1,36 @@
 _DoFadePalettes::
 ; w(BG|OB)Pals: Current palettes
 ; wUnkn(BG|OB)Pals: Palettes we're fading towards
-; c: Fade frames
+; c: Fade duration
 ; wPalFadeMode can be 0 (fade everything), 1 (fade BG), 2 (fade OBJ)
 	ld a, [rSVBK]
 	push af
-	push bc
-	push de
 	push hl
+	push de
+.restart_dofade
+	push bc
 	ld a, BANK(wBGPals)
 	ld [rSVBK], a
 
+	; No matter what, we always take up to 31 color fade steps.
+	; Evenly divide DelayFrames in case the fade duration is more.
 	ld a, c
-	and a
+	cp 32
+	ld [wPalFadeDelayFrames], a
 	ld [wPalFadeDelay], a
+	jr c, .delay_ok
+	ld a, 31
+	ld [wPalFadeDelayFrames], a
+
+.delay_ok
+	and a
 	jr nz, .outer_loop
 	call SetPalettes
 	jp .done
 
 .outer_loop
 	ld a, [wPalFadeMode]
-	and a
+	and PALFADE_WHICH
 	ld hl, wBGPals
 	ld d, 4 * 16 ; colors, palettes
 	jr z, .inner_loop
@@ -33,6 +43,14 @@ _DoFadePalettes::
 	ld a, [hli]
 	ld e, a
 	ld d, [hl]
+	ld a, [wPalFadeMode]
+	bit PALFADE_FLASH, a
+	jr z, .no_flash
+	ld bc, 0
+	dec hl
+	jr .got_destination
+
+.no_flash
 	ld bc, wUnknBGPals - wBGPals
 	add hl, bc
 	ld a, [hld]
@@ -43,6 +61,7 @@ _DoFadePalettes::
 	add hl, bc
 	pop bc
 
+.got_destination
 	; de: active pals, bc: pals we're fading towards (high endian)
 	push hl
 
@@ -110,17 +129,20 @@ _DoFadePalettes::
 	pop de
 	dec d
 	jr nz, .inner_loop
-	ld a, 1
-	ld [hCGBPalUpdate], a
-	call DelayFrame
-	ld a, [wPalFadeDelay]
+	call .FadeDelay
+	ld a, [wPalFadeDelayFrames]
 	dec a
-	ld [wPalFadeDelay], a
+	ld [wPalFadeDelayFrames], a
 	jp nz, .outer_loop
 .done
-	pop hl
-	pop de
 	pop bc
+	ld a, [wPalFadeMode]
+	bit PALFADE_FLASH, a
+	res PALFADE_FLASH, a
+	ld [wPalFadeMode], a
+	jp nz, .restart_dofade
+	pop de
+	pop hl
 	pop af
 	ld [rSVBK], a
 	ret
@@ -156,11 +178,12 @@ _DoFadePalettes::
 	sub l
 	ld c, a
 
-	ld a, [wPalFadeDelay]
+	ld a, [wPalFadeDelayFrames]
 	cp c
 	jr c, .dist_is_big
 
 	; Approximates linear fading
+	; TODO: actual linear fading
 	push bc
 	call SimpleDivide
 	and a
@@ -184,7 +207,7 @@ _DoFadePalettes::
 .dist_is_big
 	push bc
 	ld b, c
-	ld a, [wPalFadeDelay]
+	ld a, [wPalFadeDelayFrames]
 	ld c, a
 	ld a, b
 	call SimpleDivide
@@ -203,3 +226,17 @@ _DoFadePalettes::
 	ret z
 	ld l, h
 	ret
+
+.FadeDelay:
+	ld a, [wPalFadeDelayFrames]
+	ld c, a
+	ld hl, wPalFadeDelay
+	ld a, [hl]
+	call SimpleDivide
+	ld a, [hl]
+	sub b
+	ld [hl], a
+	ld c, b
+	ld a, 1
+	ld [hCGBPalUpdate], a
+	jp DelayFrames
