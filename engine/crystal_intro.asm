@@ -12,18 +12,20 @@ Copyright_GFPresents: ; e4579
 	ld [hSCY], a
 	ld a, $90
 	ld [hWY], a
+	ld b, CGB_GAMEFREAK_LOGO
+	call GetCGBLayout
+	farcall Copyright
+	farcall BSOD
 	call ApplyTilemapInVBlank
+	ld c, 31
+	call FadePalettes
+	ld c, 60
+	call DelayFrames
+	call FadeToBlack
+	call ClearTileMap
 	ld b, CGB_GAMEFREAK_LOGO
 	call GetCGBLayout
 	call SetPalettes
-	ld c, 10
-	call DelayFrames
-	farcall Copyright
-	call ApplyTilemapInVBlank
-	ld c, 100
-	call DelayFrames
-	call ClearTileMap
-	farcall BSOD
 	call .GetGFLogoGFX
 .joy_loop
 	call JoyTextDelay

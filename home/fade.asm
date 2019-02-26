@@ -91,7 +91,7 @@ FadeToBlack::
 	xor a
 	ld bc, 16 palettes
 	call ByteFill
-	ld c, 60
+	ld c, 31
 
 FadePalettes::
 ; Fades active palettes in wBGPals/wOBPals to new ones in
