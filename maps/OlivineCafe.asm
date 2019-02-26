@@ -58,7 +58,7 @@ OlivineCafeLyraScript:
 	writetext OlivineCafeLyraText1
 	buttonsound
 	verbosegiveitem AMULET_COIN
-	iffalse .BagFull
+	iffalse_endtext
 	writetext OlivineCafeLyraText2
 	waitbutton
 	closetext
@@ -71,7 +71,6 @@ OlivineCafeLyraScript:
 	disappear OLIVINECAFE_LYRA
 	setevent EVENT_GOT_AMULET_COIN_FROM_LYRA
 	waitsfx
-.BagFull
 	end
 
 OlivineCafeMovementData_LyraLeaves:
