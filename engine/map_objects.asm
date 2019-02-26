@@ -2436,18 +2436,23 @@ ContinueSpawnFacing: ; 57db
 	jp SetSpriteDirection
 ; 57e2
 
+SetCopycatPalette:
+	ld bc, wObject1Struct
+	jr SetSpritePalette
+
 SetPlayerPalette: ; 57e2
+	ld bc, wPlayerStruct
+SetSpritePalette:
 	and %10000000
 	ret z
 	ld a, d
 	swap a
-	and %00000111
+	and OAM_PALETTE
 	ld d, a
-	ld bc, wPlayerStruct
 	ld hl, OBJECT_PALETTE
 	add hl, bc
 	ld a, [hl]
-	and %11111000
+	and $ff ^ OAM_PALETTE
 	or d
 	ld [hl], a
 	ret
