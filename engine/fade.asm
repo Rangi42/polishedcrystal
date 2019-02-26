@@ -86,21 +86,18 @@ _DoFadePalettes::
 	call .getGreen
 	pop bc
 	call .fadeColorStep
+	sla l
+	swap l
 	ld a, l
-	rlca
-	rlca
-	rlca
-	rlca
-	rlca
 	and %11100000
 	ld h, a
 	ld a, e
 	and %00011111
 	or h
 	ld e, a
-	srl l
-	srl l
-	srl l
+	ld a, l
+	and %00000011
+	ld l, a
 	ld a, d
 	and %01111100
 	or l
