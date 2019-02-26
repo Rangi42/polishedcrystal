@@ -1,7 +1,8 @@
 TrainerHouseB1F_MapScriptHeader:
 	db 0 ; scene scripts
 
-	db 0 ; callbacks
+	db 1 ; callbacks
+	callback MAPCALLBACK_OBJECTS, TrainerHouseB1FCallback
 
 	db 1 ; warp events
 	warp_event  9,  4, TRAINER_HOUSE_1F, 3
@@ -20,6 +21,18 @@ TrainerHouseB1F_MapScriptHeader:
 	const TRAINERHOUSEB1F_CAL
 	const TRAINERHOUSEB1F_CARRIE
 
+TrainerHouseB1FCallback:
+	checkflag ENGINE_PLAYER_IS_FEMALE
+	iftrue .Cal
+	disappear TRAINERHOUSEB1F_CAL
+	appear TRAINERHOUSEB1F_CARRIE
+	jump .Done
+.Cal:
+	disappear TRAINERHOUSEB1F_CARRIE
+	appear TRAINERHOUSEB1F_CAL
+.Done:
+	return
+
 TrainerHouseReceptionistScript:
 	turnobject PLAYER, UP
 	opentext
@@ -29,13 +42,9 @@ TrainerHouseReceptionistScript:
 	buttonsound
 	checkflag ENGINE_PLAYER_IS_FEMALE
 	iftrue .GetCalName
-	disappear TRAINERHOUSEB1F_CAL
-	appear TRAINERHOUSEB1F_CARRIE
 	trainertotext CARRIE, 1, $0
 	jump .GotName
 .GetCalName
-	disappear TRAINERHOUSEB1F_CARRIE
-	appear TRAINERHOUSEB1F_CAL
 	trainertotext CAL, 1, $0
 .GotName:
 	writetext TrainerHouseB1FYourOpponentIsText
