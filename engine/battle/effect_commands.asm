@@ -5350,10 +5350,6 @@ SapHealth: ; 36011
 	ld b, a
 	ld c, [hl]
 
-	; halve result
-	srl b
-	rr c
-
 	; for Drain Kiss, we want 75% drain instead of 50%
 	ld a, BATTLE_VARS_MOVE
 	call GetBattleVar
@@ -5368,16 +5364,8 @@ SapHealth: ; 36011
 	ld c, l
 
 .skip_drain_kiss
-	; ensure minimum 1HP drained
-	ld a, b
-	and a
-	jr nz, .skip_increase
-	ld a, c
-	and a
-	jr nz, .skip_increase
-	ld c, 1
-.skip_increase
-	call HandleBigRoot
+	call GetHPAbsorption
+
 	; check for Liquid Ooze
 	push bc
 	call GetOpponentAbilityAfterMoldBreaker
@@ -5388,6 +5376,11 @@ SapHealth: ; 36011
 .damage
 	farcall ShowEnemyAbilityActivation
 	farjp SubtractHPFromUser
+
+GetHPAbsorption:
+; From damage in bc, get resulting absorbed HP
+	call HandleBigRoot
+	jp HalveBC
 
 HandleBigRoot:
 ; Bonus +30% HP drain (or reduction if Liquid Ooze)
@@ -6435,7 +6428,7 @@ BattleCommand_Teleport: ; 36778
 	xor a
 	ld [wNumHits], a
 	inc a
-	ld [wForcedSwitch], a
+	ld [wBattleEnded], a
 	ld [wKickCounter], a
 	call SetBattleDraw
 	call BattleCommand_LowerSub
@@ -6557,15 +6550,14 @@ BattleCommand_ForceSwitch: ; 3680f
 
 	ld a, [hBattleTurn]
 	and a
-	jr nz, .enemy_wild
+	jr z, .wild_got_party_vars
 
-.enemy_wild
 	ld a, b
 	ld b, c
 	ld c, a
-	jr .wild_got_party_vars
 
 .wild_got_party_vars
+	; b: opponent level, c: user level
 	ld a, c
 	cp b
 	jr nc, .wild_succeed
@@ -6589,18 +6581,14 @@ BattleCommand_ForceSwitch: ; 3680f
 	xor a
 	ld [wNumHits], a
 	inc a
-	ld [wForcedSwitch], a
+	ld [wBattleEnded], a
 	call SetBattleDraw
-	ld a, BATTLE_VARS_MOVE_ANIM
-	call GetBattleVar
-	push af
 	call SetBattleDraw
 	ld a, $1
 	ld [wKickCounter], a
 	call AnimateCurrentMove
 	ld c, 20
 	call DelayFrames
-	pop af
 	ld hl, FledInFearText
 	jp StdBattleTextBox
 
@@ -6661,6 +6649,7 @@ BattleCommand_ForceSwitch: ; 3680f
 	or [hl]
 	pop de
 	jr z, .random_loop_trainer
+	pop hl
 
 	ld a, [hBattleTurn]
 	and a
