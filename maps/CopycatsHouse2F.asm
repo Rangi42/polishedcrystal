@@ -24,6 +24,7 @@ CopycatsHouse2F_MapScriptHeader:
 	const COPYCATSHOUSE2F_COPYCAT2
 
 CopycatsHouse2FCallback:
+	variablesprite SPRITE_COPYCAT, SPRITE_LASS
 	checkflag ENGINE_PLAYER_IS_FEMALE
 	iftrue .Part1
 	disappear COPYCATSHOUSE2F_COPYCAT2
