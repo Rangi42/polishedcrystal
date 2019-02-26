@@ -18,15 +18,22 @@ _DoFadePalettes::
 	cp 32
 	ld [wPalFadeDelayFrames], a
 	ld [wPalFadeDelay], a
-	jr c, .delay_ok
+	jr c, .got_delay
 	ld a, 31
 	ld [wPalFadeDelayFrames], a
 
-.delay_ok
+.got_delay
 	and a
-	jr nz, .outer_loop
+	jr nz, .has_delay
 	call SetPalettes
 	jp .done
+
+.has_delay
+	ld a, [wPalFadeMode]
+	bit PALFADE_PARTIAL_F, a
+	jr z, .outer_loop
+	ld a, b
+	ld [wPalFadeDelay], a
 
 .outer_loop
 	ld a, [wPalFadeMode]
@@ -44,7 +51,7 @@ _DoFadePalettes::
 	ld e, a
 	ld d, [hl]
 	ld a, [wPalFadeMode]
-	bit PALFADE_FLASH, a
+	bit PALFADE_FLASH_F, a
 	jr z, .no_flash
 	ld bc, 0
 	dec hl
@@ -134,8 +141,8 @@ _DoFadePalettes::
 .done
 	pop bc
 	ld a, [wPalFadeMode]
-	bit PALFADE_FLASH, a
-	res PALFADE_FLASH, a
+	bit PALFADE_FLASH_F, a
+	res PALFADE_FLASH_F, a
 	ld [wPalFadeMode], a
 	jp nz, .restart_dofade
 	pop de
@@ -230,10 +237,18 @@ _DoFadePalettes::
 	ld hl, wPalFadeDelay
 	ld a, [hl]
 	call SimpleDivide
+	inc b
+	dec b
+	jr nz, .delay_ok
+	inc b
+.delay_ok
 	ld a, [hl]
 	sub b
-	ld [hl], a
-	ld c, b
+	ld [hld], a
 	ld a, 1
+	jr nz, .delay_finished
+	ld [hl], a
+.delay_finished
+	ld c, b
 	ld [hCGBPalUpdate], a
 	jp DelayFrames

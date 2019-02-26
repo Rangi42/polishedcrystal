@@ -77,8 +77,7 @@ SmoothFlash::
 	call StackCallInWRAMBankA
 
 .Function:
-	ld a, 1
-	set PALFADE_FLASH, a
+	ld a, PALFADE_BOTH | PALFADE_FLASH
 	ld [wPalFadeMode], a
 	ld c, 10
 	jr DoFadePalettes

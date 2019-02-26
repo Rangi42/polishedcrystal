@@ -1382,9 +1382,9 @@ wColorVaryShiny:: ds 1
 wPalFadeDelayFrames:: ds 1
 wPalFadeDelay:: ds 1
 wPalFadeMode::
-; 0: Fade everything
-; 1: Fade wBGPals towards wUnknBGPals
-; 2: Fade wOBPals towards wUnknOBPals
+; bit 0-1: which (0: everything, 1: BG, 2: OBJ)
+; bit 2: perform a smooth dark flash
+; bit 3: partial fade (fade b of c frames)
 	ds 1
 
 	ds 99 ; unused
