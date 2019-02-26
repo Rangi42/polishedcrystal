@@ -7,103 +7,103 @@ Characteristics:
 	dw Chara_SPE0, Chara_SPE1, Chara_SPE2, Chara_SPE3, Chara_SPE4
 
 Chara_HP0:
-	db   "Loves t", "o"
-	next "eat@"
+	db    "Loves t", "o"
+	next1 "eat@"
 Chara_HP1:
-	db   "Takes"
-	next "plenty of"
-	next "siestas@"
+	db    "Takes"
+	next1 "plenty of"
+	next1 "siestas@"
 Chara_HP2:
-	db   "Nods off"
-	next "a lot@"
+	db    "Nods off"
+	next1 "a lot@"
 Chara_HP3:
-	db   "Scatters"
-	next "things"
-	next "often@"
+	db    "Scatters"
+	next1 "things"
+	next1 "often@"
 Chara_HP4:
-	db   "Likes t", "o"
-	next "relax@"
+	db    "Likes t", "o"
+	next1 "relax@"
 
 Chara_ATK0:
-	db   "Proud of"
-	next "its power@"
+	db    "Proud of"
+	next1 "its power@"
 Chara_ATK1:
-	db   "Likes t", "o"
-	next "thrash"
-	next "about@"
+	db    "Likes t", "o"
+	next1 "thrash"
+	next1 "about@"
 Chara_ATK2:
-	db   "A little"
-	next "quick"
-	next "tempered@"
+	db    "A little"
+	next1 "quick"
+	next1 "tempered@"
 Chara_ATK3:
-	db   "Likes t", "o"
-	next "fight@"
+	db    "Likes t", "o"
+	next1 "fight@"
 Chara_ATK4:
-	db   "Quick"
-	next "tempered@"
+	db    "Quick"
+	next1 "tempered@"
 
 Chara_DEF0:
-	db   "Sturdy"
-	next "body@"
+	db    "Sturdy"
+	next1 "body@"
 Chara_DEF1:
-	db   "Capable of"
-	next "taking"
-	next "hits@"
+	db    "Capable of"
+	next1 "taking"
+	next1 "hits@"
 Chara_DEF2:
-	db   "Highly"
-	next "persistent@"
+	db    "Highly"
+	next1 "persistent@"
 Chara_DEF3:
-	db   "Good"
-	next "endurance@"
+	db    "Good"
+	next1 "endurance@"
 Chara_DEF4:
-	db   "Good"
-	next "persever-"
-	next "ance@"
+	db    "Good"
+	next1 "persever-"
+	next1 "ance@"
 
 Chara_SPA0:
-	db   "Highly"
-	next "curious@"
+	db    "Highly"
+	next1 "curious@"
 Chara_SPA1:
-	db   "Mischiev-"
-	next "ous@"
+	db    "Mischiev-"
+	next1 "ous@"
 Chara_SPA2:
-	db   "Thoroughly"
-	next "cunning@"
+	db    "Thoroughly"
+	next1 "cunning@"
 Chara_SPA3:
-	db   "Often lost"
-	next "in thought@"
+	db    "Often lost"
+	next1 "in thought@"
 Chara_SPA4:
-	db   "Very"
-	next "finicky@"
+	db    "Very"
+	next1 "finicky@"
 
 Chara_SPD0:
-	db   "Strong"
-	next "willed@"
+	db    "Strong"
+	next1 "willed@"
 Chara_SPD1:
-	db   "Somewhat"
-	next "vain@"
+	db    "Somewhat"
+	next1 "vain@"
 Chara_SPD2:
-	db   "Strongly"
-	next "defiant@"
+	db    "Strongly"
+	next1 "defiant@"
 Chara_SPD3:
-	db   "Hates t", "o"
-	next "lose@"
+	db    "Hates t", "o"
+	next1 "lose@"
 Chara_SPD4:
-	db   "Somewhat"
-	next "stubborn@"
+	db    "Somewhat"
+	next1 "stubborn@"
 
 Chara_SPE0:
-	db   "Likes t", "o"
-	next "run@"
+	db    "Likes t", "o"
+	next1 "run@"
 Chara_SPE1:
-	db   "Alert t", "o"
-	next "sounds@"
+	db    "Alert t", "o"
+	next1 "sounds@"
 Chara_SPE2:
-	db   "Impetuous"
-	next "an", "d silly@"
+	db    "Impetuous"
+	next1 "an", "d silly@"
 Chara_SPE3:
-	db   "Somewhat"
-	next "of a clown@"
+	db    "Somewhat"
+	next1 "of a clown@"
 Chara_SPE4:
-	db   "Quick t", "o"
-	next "flee@"
+	db    "Quick t", "o"
+	next1 "flee@"
