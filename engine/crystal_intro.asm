@@ -17,11 +17,13 @@ Copyright_GFPresents: ; e4579
 	farcall Copyright
 	farcall BSOD
 	call ApplyTilemapInVBlank
-	ld c, 31
+	ld c, 15
 	call FadePalettes
-	ld c, 60
+	ld c, 80
 	call DelayFrames
-	call FadeToBlack
+	call SetBlackPals
+	ld c, 15
+	call FadePalettes
 	call ClearTileMap
 	ld b, CGB_GAMEFREAK_LOGO
 	call GetCGBLayout

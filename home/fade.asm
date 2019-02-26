@@ -82,7 +82,7 @@ SmoothFlash::
 	ld c, 10
 	jr DoFadePalettes
 
-FadeToBlack::
+SetBlackPals::
 	ld a, BANK(wUnknBGPals)
 	call StackCallInWRAMBankA
 
@@ -90,7 +90,10 @@ FadeToBlack::
 	ld hl, wUnknBGPals
 	xor a
 	ld bc, 16 palettes
-	call ByteFill
+	jp ByteFill
+
+FadeToBlack::
+	call SetBlackPals
 	ld c, 31
 
 FadePalettes::
