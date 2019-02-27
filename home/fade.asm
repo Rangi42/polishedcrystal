@@ -1,11 +1,5 @@
 ; Functions to fade the screen in and out.
 
-RotateFourPalettesRight:: ; 4a3
-	ld hl, IncGradGBPalTable_00
-	ld b, 4
-	jr RotatePalettesRight
-; 4b6
-
 RotateThreePalettesRight:: ; 4b6
 	ld hl, IncGradGBPalTable_05
 	ld b, 3
@@ -27,12 +21,6 @@ RotatePalettesRight:: ; 4c7
 	jr nz, RotatePalettesRight
 	ret
 ; 4dd
-
-RotateFourPalettesLeft:: ; 4dd
-	ld hl, IncGradGBPalTable_04 - 1
-	ld b, 4
-	jr RotatePalettesLeft
-; 4f0
 
 RotateThreePalettesLeft:: ; 4f0
 	ld hl, IncGradGBPalTable_07 - 1
@@ -63,14 +51,10 @@ FadeToWhite::
 .Function:
 	ld hl, wUnknBGPals
 	ld a, $ff
-	ld c, 16 palettes
-	inc c
-.loop
-	dec c
-	jr z, FadePalettes
-	xor $80
-	ld [hli], a
-	jr .loop
+	ld bc, 16 palettes
+	call ByteFill
+	ld c, 31
+	jp FadePalettes
 
 SmoothFlash::
 	ld a, BANK(wUnknBGPals)

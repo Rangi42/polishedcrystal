@@ -657,14 +657,13 @@ Continue_DisplayGameTime: ; 5f84
 
 ProfElmSpeech: ; 0x5f99
 	farcall InitClock
-	call RotateFourPalettesLeft
+	call FadeToBlack
 	call ClearTileMap
 
 	ld de, MUSIC_ROUTE_30
 	call PlayMusic
 
-	call RotateFourPalettesRight
-	call RotateThreePalettesRight
+	call FadeToWhite
 
 	xor a
 	ld [wCurPartySpecies], a
