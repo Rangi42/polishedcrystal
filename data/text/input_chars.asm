@@ -20,7 +20,7 @@ NameInputUpper:
 	db "J K L M N O P Q R"
 	db "S T U V W X Y Z  "
 	db "? ! ♂ ♀ . , : & %"
-	db "U", "p", "p", "e", "r  D", "e", "l   E", "n", "d "
+	db "L", "o", "w", "e", "r  D", "e", "l   E", "n", "d "
 
 BoxNameInputUpper:
 	db "A B C D E F G H I"
@@ -28,7 +28,7 @@ BoxNameInputUpper:
 	db "S T U V W X Y Z  "
 	db "/ ( ) ¥ <PK> <MN> ★ ♥ ♪"
 	db "? ! ♂ ♀ . , : & %"
-	db "U", "p", "p", "e", "r  D", "e", "l   E", "n", "d "
+	db "L", "o", "w", "e", "r  D", "e", "l   E", "n", "d "
 
 MailEntry_Uppercase:
 	db "A B C D E F G H I J"
@@ -36,7 +36,7 @@ MailEntry_Uppercase:
 	db "U V W X Y Z ? ! … :"
 	db "1 2 3 4 5 6 7 8 9 0"
 	db "<PK> <MN> <PO> <KE> é ♂ ♀ ¥ × /"
-	db "U", "p", "p", "e", "r  D", "e", "l   E", "n", "d   "
+	db "L", "o", "w", "e", "r  D", "e", "l   E", "n", "d   "
 
 MailEntry_Lowercase:
 	db "a b c d e f g h i j"
