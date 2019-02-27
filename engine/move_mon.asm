@@ -1638,7 +1638,7 @@ UpdatePkmnStats:
 
 CalcPkmnStats: ; e167
 ; Calculates all 6 Stats of a Pkmn
-; b: Take into account EVs if TRUE
+; b: Hyper Training (bit 7-2), apply EVs (bit 0)
 ; 'c' counts from 1-6 and points with 'wBaseStats' to the base value
 ; hl is the path to the EVs
 ; de is a pointer where the 6 stats are placed
@@ -1697,6 +1697,17 @@ CalcPkmnStatC: ; e17b
 	bit PERFECT_IVS_OPT, a
 	ld a, $f
 	jr nz, .GotDV
+	ld a, b
+	push bc
+.hyper_training_loop
+	rlca
+	dec c
+	jr nz, .hyper_training_loop
+	pop bc
+	ld a, $f
+	jr c, .GotDV
+
+.not_hyper_trained
 	ld a, c
 	cp STAT_ATK
 	jr z, .Attack
