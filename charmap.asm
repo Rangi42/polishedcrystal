@@ -28,6 +28,7 @@
 	charmap "<LNBRK>",  $22
 	charmap "<NEXT>",   $25
 
+	charmap "on",       $35
 	charmap "th",       $36
 	charmap "and",      $37
 	charmap "have",     $38
