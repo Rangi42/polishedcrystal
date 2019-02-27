@@ -207,6 +207,7 @@ endm
 	dict "<USER>",   PlaceMoveUsersName
 	dict "<ENEMY>",  PlaceEnemysName
 	dict "#",        PlacePoke
+	dict "er",       PlaceEr
 	dict "on",       PlaceOn
 	dict "th",       PlaceTh
 	dict "and",      PlaceAnd
@@ -219,7 +220,7 @@ endm
 	dict "for",      PlaceFor
 	dict "with",     PlaceWith
 	dict "an",       PlaceAn
-	dict "this",     PlaceThis
+	dict "ing",      PlaceIng
 	dict2 "¯", " "
 
 .notDict
@@ -236,6 +237,9 @@ endm
 PrintPlayerName:   print_name wPlayerName
 PrintRivalName:    print_name wRivalName
 PrintTrendyPhrase: print_name wTrendyPhrase
+
+PlaceEr: print_name .ErText
+.ErText: db "e", "r", "@"
 
 PlaceOn: print_name .OnText
 .OnText: db "o", "n", "@"
@@ -276,8 +280,8 @@ PlaceWith: print_name .WithText
 PlaceAn: print_name .AnText
 .AnText: db "a", "n", "@"
 
-PlaceThis: print_name .ThisText
-.ThisText: db "t", "h", "i", "s", "@"
+PlaceIng: print_name .IngText
+.IngText: db "i", "n", "g", "@"
 
 PlaceMoveTargetsName::
 	ld a, [hBattleTurn]

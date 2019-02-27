@@ -28,6 +28,7 @@
 	charmap "<LNBRK>",  $22
 	charmap "<NEXT>",   $25
 
+	charmap "er",       $34
 	charmap "on",       $35
 	charmap "th",       $36
 	charmap "and",      $37
@@ -36,7 +37,7 @@
 	charmap "for",      $3a
 	charmap "with",     $3b
 	charmap "an",       $3c
-	charmap "this",     $3d
+	charmap "ing",      $3d
 
 	charmap "<_CONT>",  $4b
 	charmap "<SCRL2>",  $4c
