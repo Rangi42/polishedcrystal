@@ -76,6 +76,7 @@ FindNest: ; 2a01f
 	ld a, [hli]
 	cp MAP_NAVEL_ROCK_INSIDE
 	jr nz, .not_navel_rock_map
+	pop hl
 	ret
 
 	ld a, [hli]
