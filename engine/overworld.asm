@@ -441,13 +441,8 @@ LoadEmote:: ; 1442f
 	ld a, c
 	and a
 	ret z
-; load into vram1
-	ld a, $1
-	ld [rVBK], a
-	call Get2bpp
-	xor a
-	ld [rVBK], a
-	ret
+; load into vram0
+	jp Get2bpp
 
 
 INCLUDE "data/sprites/emotes.asm"

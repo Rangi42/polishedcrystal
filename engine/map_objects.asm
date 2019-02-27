@@ -1958,7 +1958,7 @@ SpawnShadow: ; 5529
 
 .ShadowObject:
 	; vtile, palette, movement
-	db $00, PAL_OW_SILVER, SPRITEMOVEDATA_SHADOW
+	db $80, PAL_OW_SILVER, SPRITEMOVEDATA_SHADOW
 ; 5538
 SpawnStrengthBoulderDust: ; 5538
 	push bc
@@ -1969,7 +1969,7 @@ SpawnStrengthBoulderDust: ; 5538
 	ret
 
 .BoulderDustObject:
-	db $00, PAL_OW_SILVER, SPRITEMOVEDATA_BOULDERDUST
+	db $80, PAL_OW_SILVER, SPRITEMOVEDATA_BOULDERDUST
 ; 5547
 
 SpawnEmote: ; 5547
@@ -1981,7 +1981,7 @@ SpawnEmote: ; 5547
 	ret
 
 .EmoteObject:
-	db $00, PAL_OW_SILVER, SPRITEMOVEDATA_EMOTE
+	db $80, PAL_OW_SILVER, SPRITEMOVEDATA_EMOTE
 ; 5556
 
 ShakeGrass: ; 5556
@@ -1993,7 +1993,7 @@ ShakeGrass: ; 5556
 	ret
 
 .data_5562
-	db $00, PAL_OW_TREE, SPRITEMOVEDATA_GRASS
+	db $80, PAL_OW_TREE, SPRITEMOVEDATA_GRASS
 ; 5565
 
 SplashPuddle:
@@ -2006,7 +2006,7 @@ SplashPuddle:
 	jp PlaySFX
 
 .puddle_data
-	db $00, PAL_OW_BLUE, SPRITEMOVEDATA_PUDDLE
+	db $80, PAL_OW_BLUE, SPRITEMOVEDATA_PUDDLE
 ; 5565
 
 ShakeScreen: ; 5565
@@ -2021,7 +2021,7 @@ ShakeScreen: ; 5565
 	ret
 
 .ScreenShakeObject:
-	db $00, PAL_OW_SILVER, SPRITEMOVEDATA_SCREENSHAKE
+	db $80, PAL_OW_SILVER, SPRITEMOVEDATA_SCREENSHAKE
 ; 5579
 
 DespawnEmote: ; 5579
