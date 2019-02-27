@@ -30,9 +30,6 @@ WRAMX $2
 	"Pic Animations RAM"
 	align 8
 	"Battle Tower"
-
-WRAMX $4
-	org $d000
 	"Sound Stack"
 	align 8
 	"Music Player Notes"

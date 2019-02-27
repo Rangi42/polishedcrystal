@@ -117,7 +117,7 @@ MusicPlayer::
 	set LCD_STAT, [hl]
 	ld a, [rSVBK]
 	push af
-	ld a, 5
+	ld a, BANK(wBGPals)
 	ld [rSVBK], a
 
 	ld hl, MusicPlayerPals
@@ -264,7 +264,7 @@ _RedrawMusicPlayer:
 ; fallthrough
 
 MusicPlayerLoop:
-	ld a, $4
+	ld a, BANK(wMPNotes)
 	ld [rSVBK], a
 
 	call MPUpdateUIAndGetJoypad
@@ -1098,7 +1098,7 @@ DrawNotes:
 
 	ld a, [rSVBK]
 	push af
-	ld a, 4
+	ld a, BANK(wMPNotes)
 	ld [rSVBK], a
 	ld a, [hMPState]
 	inc a

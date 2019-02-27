@@ -9926,6 +9926,8 @@
 02:D8FE wBT_OTTrainer7Pkmn3NameEnd
 02:D922 wBTChoiceOfLvlGroup
 02:D922 wBT_OTTrainer7TrainerEnd
+02:D923 wSoundEngineBackup
+02:DB00 wMPNotes
 03:4000 Special
 03:400F SpecialsPointers
 03:400F WarpToSpawnPointSpecial
@@ -12306,8 +12308,6 @@
 04:7EA4 UnownUFrontpic
 04:7F5D UnownUBackpic
 04:7FC7 CeladonOutskirts_MapScriptHeader
-04:D000 wSoundEngineBackup
-04:D200 wMPNotes
 05:4000 StartRTC
 05:4018 GetTimeOfDay
 05:401D GetTimeOfDay.check
