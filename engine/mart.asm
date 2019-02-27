@@ -463,7 +463,6 @@ BuyMenu_Finish:
 
 BuyTMMenu:
 	call BuyMenu_InitGFX
-	farcall LoadTMHMIcon
 .loop
 	call BuyTMMenuLoop ; menu loop
 	jr nc, .loop
