@@ -1381,13 +1381,8 @@ wColorVaryShiny:: ds 1
 
 wPalFadeDelayFrames:: ds 1
 wPalFadeDelay:: ds 1
-wPalFadeMode::
-; bit 0-1: which (0: everything, 1: BG, 2: OBJ)
-; bit 2: perform a smooth dark flash
-; bit 3: partial fade (fade b of c frames)
-	ds 1
 
-	ds 99 ; unused
+	ds 100 ; unused
 
 wLYOverridesBackup:: ds SCREEN_HEIGHT_PX
 wLYOverridesBackupEnd::

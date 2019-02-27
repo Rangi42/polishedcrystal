@@ -57,10 +57,6 @@ FadeToWhite::
 	jp FadePalettes
 
 SmoothFlash::
-	ld a, BANK(wUnknBGPals)
-	call StackCallInWRAMBankA
-
-.Function:
 	ld a, PALFADE_BOTH | PALFADE_FLASH
 	ld [wPalFadeMode], a
 	ld c, 10
