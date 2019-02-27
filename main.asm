@@ -4030,34 +4030,10 @@ PrintAbilityDescription:
 	add hl, hl
 	add hl, bc
 	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	decoord 1, 15
-	push de
-.loop
-	ld a, [hli]
-	cp "@"
-	jr z, .done
-	cp $4e
-	jr z, .line
-	ld [de], a
-	inc de
-	jr .loop
-
-.line
-	pop de
-	push hl
-	ld hl, $0014
-	add hl, de
-	ld d, h
-	ld e, l
-	pop hl
-	push de
-	jr .loop
-
-.done
-	pop de
-	ret
+	ld d, [hl]
+	ld e, a
+	hlcoord 1, 15
+	jp PlaceString
 
 INCLUDE "data/abilities.asm"
 
