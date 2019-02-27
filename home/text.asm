@@ -207,6 +207,7 @@ endm
 	dict "<USER>",   PlaceMoveUsersName
 	dict "<ENEMY>",  PlaceEnemysName
 	dict "#",        PlacePoke
+	dict "in",       PlaceIn
 	dict "er",       PlaceEr
 	dict "on",       PlaceOn
 	dict "th",       PlaceTh
@@ -237,6 +238,9 @@ endm
 PrintPlayerName:   print_name wPlayerName
 PrintRivalName:    print_name wRivalName
 PrintTrendyPhrase: print_name wTrendyPhrase
+
+PlaceIn: print_name .InText
+.InText: db "i", "n", "@"
 
 PlaceEr: print_name .ErText
 .ErText: db "e", "r", "@"
