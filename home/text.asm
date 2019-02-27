@@ -215,7 +215,7 @@ endm
 	dict "that",     PlaceThat
 	dict "for",      PlaceFor
 	dict "with",     PlaceWith
-	dict "and",      PlaceAnd
+	dict "an",       PlaceAn
 	dict "this",     PlaceThis
 	dict2 "¯", " "
 
@@ -261,8 +261,8 @@ PlaceFor: print_name .ForText
 PlaceWith: print_name .WithText
 .WithText: db "w", "i", "t", "h", "@"
 
-PlaceAnd: print_name .AndText
-.AndText: db "a", "n", "d", "@"
+PlaceAn: print_name .AnText
+.AnText: db "a", "n", "@"
 
 PlaceThis: print_name .ThisText
 .ThisText: db "t", "h", "i", "s", "@"

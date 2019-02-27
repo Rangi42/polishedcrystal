@@ -32,7 +32,7 @@
 	charmap "that",     $39
 	charmap "for",      $3a
 	charmap "with",     $3b
-	charmap "and",      $3c
+	charmap "an",       $3c
 	charmap "this",     $3d
 
 	charmap "<_CONT>",  $4b
