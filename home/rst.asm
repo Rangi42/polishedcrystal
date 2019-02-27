@@ -10,18 +10,6 @@ DisappearUser::
 SECTION "rst8", ROM0
 	jp RstFarCall
 
-SECTION "rst10", ROM0
-	ld [hROMBank], a
-	ld [MBC3RomBank], a
-	ret
-
-_de_::
-	push de
-	ret
-
-SECTION "rst18", ROM0
-	jp _AddNTimes
-
 IsAPokemon::
 ; Return carry if species a is not a Pokemon.
 ; Since every ID other than $0 and $ff is valid, we can simplify this function.
@@ -29,6 +17,21 @@ IsAPokemon::
 	cp $2 ; sets carry for $0 (inc'ed to $1) and $ff (inc'ed to $0)
 	dec a
 	ret
+
+SECTION "rst10", ROM0
+	ld [hROMBank], a
+	ld [MBC3RomBank], a
+	ret
+
+SECTION "rst18", ROM0
+	jp _AddNTimes
+
+_de_::
+	push de
+	ret
+
+FarCopyWRAM::
+	call StackCallInWRAMBankA
 
 SECTION "rst20", ROM0
 	jp _CopyBytes

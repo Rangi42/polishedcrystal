@@ -50,31 +50,3 @@ GetFarHalfword:: ; 0x305d
 	rst Bankswitch
 	ret
 ; 0x306b
-
-FarCopyWRAM:: ; 306b
-	ld [hBuffer], a
-	ld a, [rSVBK]
-	push af
-	ld a, [hBuffer]
-	ld [rSVBK], a
-
-	rst CopyBytes
-
-	pop af
-	ld [rSVBK], a
-	ret
-; 307b
-
-GetFarWRAMByte:: ; 307b
-	ld [hBuffer], a
-	ld a, [rSVBK]
-	push af
-	ld a, [hBuffer]
-	ld [rSVBK], a
-	ld a, [hl]
-	ld [hBuffer], a
-	pop af
-	ld [rSVBK], a
-	ld a, [hBuffer]
-	ret
-; 308d

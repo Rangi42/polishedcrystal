@@ -3,6 +3,13 @@
 SECTION "vblank", ROM0
 	jp VBlank
 
+GetFarWRAMByte::
+	call StackCallInWRAMBankA
+
+.Function:
+	ld a, [hl]
+	ret
+
 SECTION "lcd", ROM0
 	jp LCD
 
