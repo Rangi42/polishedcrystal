@@ -91,7 +91,7 @@ CeladonUniversityWillowsOfficeBookshelf2Text:
 CeladonUniversityWillowsOfficeComputer:
 	thistext
 
-	text "“Pokemon Transfer"
+	text "“#mon Transfer"
 	line "System” is on the"
 	cont "screen."
 	done

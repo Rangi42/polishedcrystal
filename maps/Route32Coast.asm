@@ -121,7 +121,7 @@ GenericTrainerSwimmerfStephanie:
 GenericTrainerBird_keeperPowell:
 	generictrainer BIRD_KEEPER, POWELL, EVENT_BEAT_BIRD_KEEPER_POWELL, .SeenText, .BeatenText
 
-	text "My Pokemon can"
+	text "My #mon can"
 	line "use Fly even while"
 
 	para "fainted, so I can"

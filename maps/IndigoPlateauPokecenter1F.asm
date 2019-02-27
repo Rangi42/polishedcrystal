@@ -271,7 +271,7 @@ PlateauLyraText1:
 	done
 
 PlateauLyraText2:
-	text "as the Pokemon"
+	text "as the #mon"
 	line "League Champion!"
 	done
 

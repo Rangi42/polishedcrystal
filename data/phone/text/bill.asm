@@ -157,7 +157,7 @@ BillPhoneSecondBadgeText:
 	line "Wonder Trading."
 
 	para "You might get a"
-	line "weird Pokemon"
+	line "weird #mon"
 	cont "in exchange."
 
 	para "That's all."

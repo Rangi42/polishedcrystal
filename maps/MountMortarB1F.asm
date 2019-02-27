@@ -98,7 +98,7 @@ UnknownScript_0x7e237:
 	jumpopenedtext UnknownText_0x7e3df
 
 MountMortarB1FHikerText:
-	text "My Pokemon used"
+	text "My #mon used"
 if DEF(FAITHFUL)
 	line "Rock Smash on a"
 else

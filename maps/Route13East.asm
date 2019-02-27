@@ -217,7 +217,7 @@ Route13TrainerTips1Text:
 Route13TrainerTips2Text:
 	text "Trainer Tips"
 
-	para "Some Pokemon need"
+	para "Some #mon need"
 	line "items to evolve."
 
 	para "If you're lucky,"

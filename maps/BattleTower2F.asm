@@ -458,7 +458,7 @@ BattleTower2FLadyText:
 	cont "trainer?"
 
 	para "The fact that"
-	line "Pokemon will bring"
+	line "#mon will bring"
 
 	para "me lots of"
 	line "friends!"

@@ -264,7 +264,7 @@ Route17TrainerTips1Text:
 	para "All #mon are"
 	line "unique."
 
-	para "Two Pokemon of the"
+	para "Two #mon of the"
 	line "same species and"
 	cont "level may still"
 

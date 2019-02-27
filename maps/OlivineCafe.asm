@@ -102,7 +102,7 @@ UnknownText_0x9ca09:
 	done
 
 BakerChelsieGreetingText:
-	text "My Pokemon are on"
+	text "My #mon are on"
 	line "the rise!"
 
 	para "I raised them with"

@@ -82,7 +82,7 @@ KukuiScript:
 	cont "Alola!"
 
 	para "But we don't have a"
-	line "Pokemon League, so"
+	line "#mon League, so"
 
 	para "I came to Kanto to"
 	line "battle the Elite"

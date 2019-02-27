@@ -1281,10 +1281,10 @@ AideText_ThiefReturnedMon:
 	line "to him…"
 
 	para "“It seems that"
-	line "the Pokemon likes"
+	line "the #mon likes"
 	cont "you very much."
 
-	para "Pokemon do their"
+	para "#mon do their"
 	line "best with someone"
 	cont "they love."
 

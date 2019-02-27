@@ -139,7 +139,7 @@ ShamoutiShrineRuinsLawrenceScript:
 
 .GoodbyeText:
 	text "My dream was to"
-	line "own that Pokemon,"
+	line "own that #mon,"
 
 	para "but you've proven"
 	line "yourself worthy."
