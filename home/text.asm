@@ -207,6 +207,13 @@ endm
 	dict "<USER>",   PlaceMoveUsersName
 	dict "<ENEMY>",  PlaceEnemysName
 	dict "#",        PlacePoke
+	dict "le",       PlaceLe
+	dict "ng",       PlaceNg
+	dict "te",       PlaceTe
+	dict "as",       PlaceAs
+	dict "or",       PlaceOr
+	dict "ou",       PlaceOu
+	dict "re",       PlaceRe
 	dict "in",       PlaceIn
 	dict "er",       PlaceEr
 	dict "on",       PlaceOn
@@ -238,6 +245,27 @@ endm
 PrintPlayerName:   print_name wPlayerName
 PrintRivalName:    print_name wRivalName
 PrintTrendyPhrase: print_name wTrendyPhrase
+
+PlaceLe: print_name .LeText
+.LeText: db "l", "e", "@"
+
+PlaceNg: print_name .NgText
+.NgText: db "n", "g", "@"
+
+PlaceTe: print_name .TeText
+.TeText: db "t", "e", "@"
+
+PlaceAs: print_name .AsText
+.AsText: db "a", "s", "@"
+
+PlaceOr: print_name .OrText
+.OrText: db "o", "r", "@"
+
+PlaceOu: print_name .OuText
+.OuText: db "o", "u", "@"
+
+PlaceRe: print_name .ReText
+.ReText: db "r", "e", "@"
 
 PlaceIn: print_name .InText
 .InText: db "i", "n", "@"

@@ -28,6 +28,13 @@
 	charmap "<LNBRK>",  $22
 	charmap "<NEXT>",   $25
 
+	charmap "le",       $2c
+	charmap "ng",       $2d
+	charmap "te",       $2e
+	charmap "as",       $2f
+	charmap "or",       $30
+	charmap "ou",       $31
+	charmap "re",       $32
 	charmap "in",       $33
 	charmap "er",       $34
 	charmap "on",       $35

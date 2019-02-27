@@ -44,28 +44,25 @@ OTPartyAttr::
 	ld a, [wCurOTMon]
 	jr DoBattlePartyAttr
 
-ResetDamage:: ; 397d
+ResetDamage::
 	xor a
 	ld [wCurDamage], a
 	ld [wCurDamage + 1], a
 	ret
-; 3985
 
 SwitchTurn::
 	ld a, [hBattleTurn]
 	and a
 	jr z, SetEnemyTurn
-SetPlayerTurn:: ; 3985
+SetPlayerTurn::
 	xor a
 	ld [hBattleTurn], a
 	ret
-; 3989
 
-SetEnemyTurn:: ; 3989
+SetEnemyTurn::
 	ld a, 1
 	ld [hBattleTurn], a
 	ret
-; 398e
 
 UpdateUserInParty::
 	ld a, [hBattleTurn]
@@ -288,21 +285,6 @@ GetMoveAttr::
 	call GetMoveByte
 	pop bc
 	ret
-
-GetMoveData::
-; Copy move struct a to de.
-	ld hl, Moves
-	ld bc, MOVE_LENGTH
-	rst AddNTimes
-	ld a, Bank(Moves)
-	jp FarCopyBytes
-
-GetMoveByte::
-	ld a, BANK(Moves)
-	jp GetFarByte
-
-DisappearUser::
-	farjp _DisappearUser
 
 ; Damage modifiers. a contains $xy where damage is multiplied by x, then divided by y
 ApplyPhysicalAttackDamageMod::

@@ -31,12 +31,6 @@ ByteFill:: ; 0x3041
 	jr nz, .PutByte
 	ret
 
-GetFarByte:: ; 0x304d
-; retrieve a single byte from a:hl, and return it in a.
-	call StackCallInBankA
-	ld a, [hl]
-	ret
-
 GetFarHalfword:: ; 0x305d
 ; retrieve a halfword from a:hl, and return it in hl.
 	; bankswitch to new bank

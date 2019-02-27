@@ -1,7 +1,3 @@
-DoItemEffect:: ; 2f3f
-	farjp _DoItemEffect
-; 2f46
-
 CheckTossableItem:: ; 2f46
 	push hl
 	push de
