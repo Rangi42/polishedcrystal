@@ -2900,6 +2900,18 @@ PRIORITY_HIGH EQU $30
 	add [hl]
 	inc hl
 	ld [bc], a
+
+	ld a, d
+	and %00001000
+	jr z, .vram0
+	ld a, [bc]
+	cp $80
+	jr c, .standing
+	sub $40
+	ld [bc], a
+.standing
+.vram0
+
 	inc c
 	ld a, e
 	bit 1, a
