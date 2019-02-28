@@ -369,22 +369,31 @@ endr
 	call _DoesSpriteHaveFacings
 	ret c
 
-	push bc
 	ld a, [wSpriteFlags]
 	bit 5, a
-	ld b, $8
-	jr z, .vram0
-	ld b, $4
-.vram0
 	ld a, h
-	add b
-	pop bc
-
+	jr nz, .vram1
+	add $4
+.vram1
+	add $4
 	ld h, a
-	jp .CopyToVram
-; 14406
 
-.GetTileAddr: ; 14406
+.CopyToVram:
+	ld a, [rVBK]
+	push af
+	ld a, [wSpriteFlags]
+	bit 5, a
+	ld a, $0
+	jr z, .bankswitch
+	inc a
+.bankswitch
+	ld [rVBK], a
+	call Get2bpp
+	pop af
+	ld [rVBK], a
+	ret
+
+.GetTileAddr:
 ; Return the address of tile (a) in (hl).
 	and $7f
 	ld l, a
@@ -399,24 +408,6 @@ endr
 	adc VTiles0 / $100
 	ld h, a
 	ret
-; 14418
-
-.CopyToVram: ; 14418
-	ld a, [rVBK]
-	push af
-	ld a, [wSpriteFlags]
-	bit 5, a
-	ld a, $0
-	jr z, .bankswitch
-	inc a
-
-.bankswitch
-	ld [rVBK], a
-	call Get2bpp
-	pop af
-	ld [rVBK], a
-	ret
-; 1442f
 
 LoadEmote:: ; 1442f
 ; Get the address of the pointer to emote c.
