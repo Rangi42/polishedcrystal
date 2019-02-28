@@ -126,7 +126,7 @@ PlaceMapNameSign:: ; b8098 (2e:4098)
 	ret
 
 LoadMapNameSignGFX: ; b80c6
-	ld a, $1
+	xor a
 	ld [rVBK], a
 	; load sign frame
 	ld de, MapEntryFrameGFX
@@ -250,7 +250,7 @@ InitMapNameFrame: ; b80d3
 	ld de, wAttrMap - wTileMap
 	add hl, de
 	; top row
-	ld a, TILE_BANK | BEHIND_BG | PAL_BG_TEXT
+	ld a, BEHIND_BG | PAL_BG_TEXT
 	ld bc, SCREEN_WIDTH - 1
 	call ByteFill
 	or X_FLIP
