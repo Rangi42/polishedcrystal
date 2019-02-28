@@ -126,23 +126,21 @@ PlaceMapNameSign:: ; b8098 (2e:4098)
 	ret
 
 LoadMapNameSignGFX: ; b80c6
-	; load sign frame
-	ld de, MapEntryFrameGFX
-	ld hl, VTiles0 tile POPUP_MAP_FRAME_START
-	lb bc, BANK(MapEntryFrameGFX), POPUP_MAP_FRAME_SIZE
-	call Get2bpp
 	; load opaque space
 	ld hl, VTiles0 tile POPUP_MAP_FRAME_SPACE
-	ld de, TextBoxSpaceGFX
-	call GetOpaque1bppFontTile
+	call GetOpaque1bppSpaceTile
+	; load sign frame
+	ld hl, VTiles0 tile POPUP_MAP_FRAME_START
+	ld de, MapEntryFrameGFX
+	lb bc, BANK(MapEntryFrameGFX), POPUP_MAP_FRAME_SIZE
+	call Get2bpp
 	; clear landmark name area
 	ld hl, VTiles0 tile POPUP_MAP_NAME_START
 	ld e, POPUP_MAP_NAME_SIZE
 .clear_loop
 	push hl
 	push de
-	ld de, TextBoxSpaceGFX
-	call GetOpaque1bppFontTile
+	call GetOpaque1bppSpaceTile
 	pop de
 	pop hl
 	ld bc, LEN_2BPP_TILE
