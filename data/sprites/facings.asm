@@ -68,18 +68,18 @@ FacingWeirdTree2:
 
 FacingStepDown1:
 	db 4 ; #
-	db  0,  0, 0, $80
-	db  0,  8, 0, $81
-	db  8,  0, 2, $82
-	db  8,  8, 2, $83
+	db  0,  0, 0, $60
+	db  0,  8, 0, $61
+	db  8,  0, 2, $62
+	db  8,  8, 2, $63
 ; 40ad
 
 FacingStepDown3:
 	db 4 ; #
-	db  0,  8, 0 | X_FLIP, $80
-	db  0,  0, 0 | X_FLIP, $81
-	db  8,  8, 2 | X_FLIP, $82
-	db  8,  0, 2 | X_FLIP, $83
+	db  0,  8, 0 | X_FLIP, $60
+	db  0,  0, 0 | X_FLIP, $61
+	db  8,  8, 2 | X_FLIP, $62
+	db  8,  0, 2 | X_FLIP, $63
 ; 40be
 
 FacingStepUp0:
@@ -93,18 +93,18 @@ FacingStepUp2:
 
 FacingStepUp1:
 	db 4 ; #
-	db  0,  0, 0, $84
-	db  0,  8, 0, $85
-	db  8,  0, 2, $86
-	db  8,  8, 2, $87
+	db  0,  0, 0, $64
+	db  0,  8, 0, $65
+	db  8,  0, 2, $66
+	db  8,  8, 2, $67
 ; 40e0
 
 FacingStepUp3:
 	db 4 ; #
-	db  0,  8, 0 | X_FLIP, $84
-	db  0,  0, 0 | X_FLIP, $85
-	db  8,  8, 2 | X_FLIP, $86
-	db  8,  0, 2 | X_FLIP, $87
+	db  0,  8, 0 | X_FLIP, $64
+	db  0,  0, 0 | X_FLIP, $65
+	db  8,  8, 2 | X_FLIP, $66
+	db  8,  0, 2 | X_FLIP, $67
 ; 40f1
 
 FacingStepLeft0:
@@ -128,19 +128,19 @@ FacingStepRight2:
 FacingStepLeft1:
 FacingStepLeft3:
 	db 4 ; #
-	db  0,  0, 0, $88
-	db  0,  8, 0, $89
-	db  8,  0, 2, $8a
-	db  8,  8, 2, $8b
+	db  0,  0, 0, $68
+	db  0,  8, 0, $69
+	db  8,  0, 2, $6a
+	db  8,  8, 2, $6b
 ; 4124
 
 FacingStepRight1:
 FacingStepRight3:
 	db 4 ; #
-	db  0,  8, 0 | X_FLIP, $88
-	db  0,  0, 0 | X_FLIP, $89
-	db  8,  8, 2 | X_FLIP, $8a
-	db  8,  0, 2 | X_FLIP, $8b
+	db  0,  8, 0 | X_FLIP, $68
+	db  0,  0, 0 | X_FLIP, $69
+	db  8,  8, 2 | X_FLIP, $6a
+	db  8,  0, 2 | X_FLIP, $6b
 ; 4135
 
 FacingFishDown:
@@ -309,26 +309,26 @@ FacingBigGyarados1:
 	db 16, 16, 0, $0c
 	db 16, 24, 0, $0d
 	db 24, 16, 0, $0e
-	db 24, 24, 0, $80
+	db 24, 24, 0, $60
 
 FacingBigGyarados2:
 	db 16 ; #
 	db  0,  0, 0, $00
 	db  0,  8, 0, $01
-	db  8,  0, 0, $81
-	db  8,  8, 0, $82
-	db  0, 16, 0, $83
-	db  0, 24, 0, $84
-	db  8, 16, 0, $85
-	db  8, 24, 0, $86
-	db 16,  0, 0, $87
-	db 16,  8, 0, $88
-	db 24,  0, 0, $89
-	db 24,  8, 0, $8a
-	db 16, 16, 0, $8b
-	db 16, 24, 0, $8c
-	db 24, 16, 0, $8d
-	db 24, 24, 0, $8e
+	db  8,  0, 0, $61
+	db  8,  8, 0, $62
+	db  0, 16, 0, $63
+	db  0, 24, 0, $64
+	db  8, 16, 0, $65
+	db  8, 24, 0, $66
+	db 16,  0, 0, $67
+	db 16,  8, 0, $68
+	db 24,  0, 0, $69
+	db 24,  8, 0, $6a
+	db 16, 16, 0, $6b
+	db 16, 24, 0, $6c
+	db 24, 16, 0, $6d
+	db 24, 24, 0, $6e
 
 FacingStepDownFlip:
 	db 4 ; #
