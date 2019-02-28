@@ -126,19 +126,17 @@ PlaceMapNameSign:: ; b8098 (2e:4098)
 	ret
 
 LoadMapNameSignGFX: ; b80c6
-	ld a, $1
-	ld [rVBK], a
 	; load sign frame
 	ld de, MapEntryFrameGFX
-	ld hl, VTiles3 tile POPUP_MAP_FRAME_START
+	ld hl, VTiles0 tile POPUP_MAP_FRAME_START
 	lb bc, BANK(MapEntryFrameGFX), POPUP_MAP_FRAME_SIZE
 	call Get2bpp
 	; load opaque space
-	ld hl, VTiles3 tile POPUP_MAP_FRAME_SPACE
+	ld hl, VTiles0 tile POPUP_MAP_FRAME_SPACE
 	ld de, TextBoxSpaceGFX
 	call GetOpaque1bppFontTile
 	; clear landmark name area
-	ld hl, VTiles3 tile POPUP_MAP_NAME_START
+	ld hl, VTiles0 tile POPUP_MAP_NAME_START
 	ld e, POPUP_MAP_NAME_SIZE
 .clear_loop
 	push hl
@@ -189,7 +187,7 @@ endr
 	; a = tile offset into font graphic
 	ld a, [hli]
 	cp "@"
-	jr z, .done
+	ret z
 	; save position in landmark name
 	push hl
 	; spaces are unique
@@ -238,10 +236,6 @@ endr
 	; restore hl = position in landmark name
 	pop hl
 	jr .loop
-.done
-	xor a
-	ld [rVBK], a
-	ret
 ; b80d3
 
 InitMapNameFrame: ; b80d3
@@ -250,7 +244,7 @@ InitMapNameFrame: ; b80d3
 	ld de, wAttrMap - wTileMap
 	add hl, de
 	; top row
-	ld a, TILE_BANK | BEHIND_BG | PAL_BG_TEXT
+	ld a, BEHIND_BG | PAL_BG_TEXT
 	ld bc, SCREEN_WIDTH - 1
 	call ByteFill
 	or X_FLIP
