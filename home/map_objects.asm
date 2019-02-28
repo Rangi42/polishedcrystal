@@ -23,18 +23,17 @@ GetSpriteVTile:: ; 180e
 	farcall GetSprite
 	ld hl, wSpriteFlags
 	res 5, [hl]
-	; SPRITE_BIG_GYARADOS uses object 13
+	; SPRITE_BIG_GYARADOS uses the last object_struct
 	ld a, [hUsedSpriteIndex]
 	cp SPRITE_BIG_GYARADOS
-	ld a, 13
+	ld a, NUM_OBJECT_STRUCTS - 1
 	jr z, .got_sprite_tile
 	ld a, [hObjectStructIndexBuffer]
 .got_sprite_tile
-	; objects 10+ load in vbk1
-	cp 10
+	cp FIRST_VRAM1_OBJECT_STRUCT
 	jr c, .continue
 	set 5, [hl]
-	sub 10
+	sub FIRST_VRAM1_OBJECT_STRUCT
 .continue
 	add a, a
 	add a, a
