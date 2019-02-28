@@ -2,7 +2,6 @@
 	const_def 1
 	const WALKING_SPRITE
 	const STANDING_SPRITE
-	const STILL_SPRITE
 	const MON_SPRITE
 	const BIG_GYARADOS_SPRITE
 

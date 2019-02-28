@@ -259,9 +259,9 @@ GetMonSprite: ; 14259
 
 _DoesSpriteHaveFacings:: ; 142a7
 ; Checks to see whether we can apply a facing to a sprite.
-; Returns carry unless the sprite is a Pokemon or a Still Sprite.
+; Returns carry for walking sprites, zero for standing, Pokémon, or variable sprites.
 	cp SPRITE_POKEMON
-	jr nc, .only_down
+	jr nc, .still
 
 	push hl
 	push bc
@@ -274,13 +274,13 @@ _DoesSpriteHaveFacings:: ; 142a7
 	ld a, [hl]
 	pop bc
 	pop hl
-	cp STILL_SPRITE
-	jr nz, .only_down
-	scf
+	cp STANDING_SPRITE
+	jr z, .still
+	and a
 	ret
 
-.only_down
-	and a
+.still
+	scf
 	ret
 ; 142c4
 

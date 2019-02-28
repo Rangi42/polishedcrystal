@@ -1109,7 +1109,7 @@ ApplyPersonFacing:
 	push bc
 	call DoesSpriteHaveFacings
 	pop bc
-	jr c, .not_visible ; STILL_SPRITE
+	jr c, .not_visible ; STANDING_SPRITE
 	ld hl, OBJECT_FLAGS1
 	add hl, bc
 	bit FIXED_FACING, [hl]
