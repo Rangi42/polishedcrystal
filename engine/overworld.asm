@@ -376,7 +376,7 @@ endr
 	ret nc
 
 	ld a, h
-	add $6
+	add $8
 	ld h, a
 	jp .CopyToVram
 ; 14406
