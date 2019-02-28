@@ -375,15 +375,9 @@ endr
 	cp $ee
 	ret nc
 
-	push bc
-	ld a, [wSpriteFlags]
-	bit 5, a
-	ld bc, $800
-	jr z, .got_walking_offset
-	ld bc, $400
-.got_walking_offset
-	add hl, bc
-	pop bc
+	ld a, h
+	add $8
+	ld h, a
 	jp .CopyToVram
 ; 14406
 
