@@ -369,14 +369,17 @@ endr
 	call _DoesSpriteHaveFacings
 	ret c
 
-	ld a, [hUsedSpriteTile]
-	add c
-	dec a
-	cp $ee
-	ret nc
-
+	push bc
+	ld a, [wSpriteFlags]
+	bit 5, a
+	ld b, $8
+	jr z, .vram0
+	ld b, $4
+.vram0
 	ld a, h
-	add $8
+	add b
+	pop bc
+
 	ld h, a
 	jp .CopyToVram
 ; 14406
