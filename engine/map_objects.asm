@@ -2834,6 +2834,16 @@ PRIORITY_HIGH EQU $30
 	or %10000000
 .skip4
 	ld [hCurSpriteOAMFlags], a
+	ld hl, wSpriteFlags
+	set 5, [hl]
+	push hl
+	ld hl, OBJECT_SPRITE_TILE
+	add hl, bc
+	bit 7, [hl]
+	pop hl
+	jr nz, .using_vbk1
+	res 5, [hl]
+.using_vbk1
 	ld hl, OBJECT_SPRITE_X
 	add hl, bc
 	ld a, [hl]
@@ -2892,12 +2902,24 @@ PRIORITY_HIGH EQU $30
 	inc c
 	ld e, [hl]
 	inc hl
+	push bc
+	ld a, [wSpriteFlags]
+	ld c, $40
+	bit 5, a
+	jr z, .lower_walking_offset
+	ld c, $00
+.lower_walking_offset
 	ld a, [hCurSpriteTile]
 	bit 2, e
 	jr z, .nope1
 	xor a
 .nope1
 	add [hl]
+	bit 7, a
+	jr z, .got_offset
+	sub c
+.got_offset
+	pop bc
 	inc hl
 	ld [bc], a
 	inc c
