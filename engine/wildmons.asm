@@ -511,6 +511,7 @@ CheckRepelEffect::
 	ret
 
 ApplyAbilityEffectsOnEncounterMon:
+; Consider making the abilities more useful in non-faithful
 	call GetLeadAbility
 	ret z
 	ld hl, .AbilityEffects
@@ -570,19 +571,9 @@ ApplyAbilityEffectsOnEncounterMon:
 	rrca
 	ret c
 	ld a, c
-	rrca
-	rrca
-	rrca
-	and %11111
-	jr nz, .got_increase
-	inc a
-.got_increase
-	add c
-	cp 101
-	jr c, .got_level
-	ld a, 100
-.got_level
-	ld c, a
+	cp 100
+	ret nc
+	inc c
 	ret
 
 .Intimidate:
