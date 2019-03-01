@@ -322,13 +322,8 @@ DecompressMetatiles:
 	ld h, [hl]
 	ld l, a
 	ld de, wDecompressedMetatiles
-	ld a, [rSVBK]
-	push af
 	ld a, c
-	ld [rSVBK], a
-	ld a, b
-	ld bc, $1000
-	call FarDecompress
-	pop af
-	ld [rSVBK], a
-	ret
+	call StackCallInWRAMBankA
+
+.Function
+	jp FarDecompressAtB_D000

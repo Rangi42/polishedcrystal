@@ -107,7 +107,7 @@ RunFunctionInWRA6::
 	ld a, BANK(wDecompressScratch)
 
 ; fallthrough
-StackCallInWRAMBankA:
+StackCallInWRAMBankA::
 	ld [hBuffer], a
 	ld a, h
 	ld [hPredefTemp + 1], a

@@ -561,15 +561,11 @@ ChangeMap:: ; 24e4
 	ld a, [wMapHeight]
 	ld e, a
 
-	ld a, [rSVBK]
-	push af
-	ld a, BANK(wDecompressScratch)
-	ld [rSVBK], a
+	call RunFunctionInWRA6
 
+.Function:
 	push de
-	ld de, wDecompressScratch
-	ld a, b
-	call FarDecompress
+	call FarDecompressAtB_D000
 	pop de
 
 	ld a, d
@@ -607,8 +603,6 @@ ChangeMap:: ; 24e4
 .okay
 	dec b
 	jr nz, .row
-	pop af
-	ld [rSVBK], a
 	ret
 ; 2524
 
