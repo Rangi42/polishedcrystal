@@ -710,14 +710,7 @@ wReceiveCallDelay_StartTime:: ds 3
 wBugContestMinsRemaining:: ds 1
 wBugContestSecsRemaining:: ds 1
 
-wVBlankOWAction::
-; 0: nothing going on
-; 1: do encounter check next vblank while moving
-; 2: found encounter
-; 3: no encounter this step (but dismiss regular check)
-	ds 1
-
-	ds 1
+	ds 2 ; unused
 
 wMapStatusEnd::
 
