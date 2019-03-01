@@ -3981,13 +3981,11 @@ _LoadMapPart:: ; 4d15b
 
 	ld b, SCREEN_HEIGHT
 .loop
-	ld c, SCREEN_WIDTH
-.loop2
+rept SCREEN_WIDTH ; unrolled loop -- gives a significant perf boost
 	ld a, [hli]
 	ld [de], a
 	inc de
-	dec c
-	jr nz, .loop2
+endr
 	ld a, l
 	add 4
 	ld l, a
@@ -3997,7 +3995,6 @@ _LoadMapPart:: ; 4d15b
 .carry
 	dec b
 	jr nz, .loop
-
 	pop af
 	ld [rSVBK], a
 	ret
