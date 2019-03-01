@@ -30,6 +30,7 @@ MapSetupScript_Warp: ; 15392
 	db map_load_blocks
 	db map_buffer_screen
 	db map_load_graphics
+	db map_decompress_metatiles
 	db map_time_of_day
 	db map_load_objects
 	db map_lcd_on
@@ -54,6 +55,7 @@ MapSetupScript_BadWarp: ; 153a9
 	db map_buffer_screen
 	db map_lcd_off
 	db map_load_graphics
+	db map_decompress_metatiles
 	db map_time_of_day
 	db map_fade_out_music
 	db map_lcd_on
@@ -100,6 +102,7 @@ MapSetupScript_Train: ; 153d2
 	db map_buffer_screen
 	db map_lcd_off
 	db map_load_graphics
+	db map_decompress_metatiles
 	db map_time_of_day
 	db map_fade_out_music
 	db map_lcd_on
@@ -121,6 +124,7 @@ MapSetupScript_ReloadMap: ; 153e7
 	db map_load_blocks
 	db map_connection_blocks
 	db map_load_graphics
+	db map_decompress_metatiles
 	db map_time_of_day
 	db map_lcd_on
 	db map_palettes
@@ -139,6 +143,7 @@ MapSetupScript_LinkReturn: ; 153f7
 	db map_load_blocks
 	db map_buffer_screen
 	db map_load_graphics
+	db map_decompress_metatiles
 	db map_time_of_day
 	db map_lcd_on
 	db map_palettes
@@ -159,6 +164,7 @@ MapSetupScript_Continue: ; 15408
 	db map_connection_blocks
 	db map_buffer_screen
 	db map_load_graphics
+	db map_decompress_metatiles
 	db map_time_of_day
 	db map_lcd_on
 	db map_palettes

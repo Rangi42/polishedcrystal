@@ -76,18 +76,12 @@ LoadMapPart:: ; 217a
 	ld a, [hROMBank]
 	push af
 
-	ld a, [wTilesetBlocksBank]
-	rst Bankswitch
 	call LoadMetatiles
 
 	ld a, "<BLACK>"
 	hlcoord 0, 0
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
 	call ByteFill
-
-	ld a, [wTilesetAttributesBank]
-	rst Bankswitch
-	call LoadMetatileAttributes
 
 	ld a, BANK(_LoadMapPart)
 	rst Bankswitch
@@ -99,46 +93,55 @@ LoadMapPart:: ; 217a
 ; 2198
 
 LoadMetatiles:: ; 2198
-	ld hl, wSurroundingTiles
-	ld de, wTilesetBlocksAddress
-	jr _LoadMetatilesOrAttributes
+; copy to hram registers for speed
 
-LoadMetatileAttributes::
-	ld hl, wSurroundingAttributes
-	ld de, wTilesetAttributesAddress
-	; fallthrough
-
-_LoadMetatilesOrAttributes:
-	ld a, [de]
-	ld [wTilesetDataAddress], a
-	inc de
-	ld a, [de]
-	ld [wTilesetDataAddress + 1], a
+	ld a, [rSVBK]
+	push af
+	ld a, [wMapBorderBlock]
+	ld [hMapBorderBlock], a
+	ld a, [wMapWidth]
+	add 6
+	ld [hMapWidthPlus6], a
 
 	; de <- wOverworldMapAnchor
 	ld a, [wOverworldMapAnchor]
 	ld e, a
 	ld a, [wOverworldMapAnchor + 1]
 	ld d, a
+
+	push de
+	call .LoadAttributes
+	pop de
+	ld a, BANK(wDecompressedMetatiles)
+	ld [rSVBK], a
+	call .do_it
+
+	pop af
+	ld [rSVBK], a
+	ret
+
+.LoadAttributes:
+	ld a, BANK(wDecompressedAttributes)
+	ld [rSVBK], a
+	ld hl, wSurroundingAttributes
+	; fallthrough
+
+.LoadMetatilesOrAttributes:
+	push hl
+	call .do_it
+	pop de
+	ld a, BANK(wSurroundingAttributes)
+	ld [rSVBK], a
+	ld hl, wMisc
+	ld bc, WMISC_WIDTH * WMISC_HEIGHT
+	rst CopyBytes
+	ret
+
+.do_it
+	ld hl, wMisc
+
 	ld a, WMISC_HEIGHT / 4 ; 5
 	ld [hMetatileCountHeight], a
-
-; copy to hram registers for speed
-
-	ld a, [wMapBorderBlock]
-	ld [hMapBorderBlock], a
-	ld a, [wMapWidth]
-	add 6
-	ld [hMapWidthPlus6], a
-	ld a, [wTilesetDataAddress]
-	ld [hTilesetDataAddress], a
-	ld a, [wTilesetDataAddress + 1]
-	ld [hTilesetDataAddress + 1], a
-
-	ld a, [rSVBK]
-	push af
-	ld a, BANK("Surrounding Data")
-	ld [rSVBK], a
 
 	ld bc, WMISC_WIDTH - 4
 
@@ -159,83 +162,33 @@ _LoadMetatilesOrAttributes:
 	ld a, [hMapBorderBlock]
 
 .ok
-	; Save wSurroundingTiles/Attributes to the stack
-	push hl
-
-	; Set hl to the address of the current metatile data ([wTilesetDataAddress] + (a) tiles).
-	ld l, a
-	ld h, b ; b = 0
-
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, hl
-
-	ld a, [hTilesetDataAddress]
-	add l
-	ld e, a
-	ld a, [hTilesetDataAddress + 1]
-	adc h
+	swap a
 	ld d, a
-
-	pop hl
-
+	and $f0
+	ld e, a
+	ld a, d
+	and $f
+	add (wDecompressedMetatiles >> 8)
+	ld d, a
 	; copy the 4x4 metatile
 
-; row 1
-	ld a, [de]
-	ld [hli], a
-	inc de
-	ld a, [de]
-	ld [hli], a
-	inc de
-	ld a, [de]
-	ld [hli], a
-	inc de
-	ld a, [de]
-	ld [hli], a
-	inc de
-	add hl, bc
-; row 2
-	ld a, [de]
-	ld [hli], a
-	inc de
-	ld a, [de]
-	ld [hli], a
-	inc de
-	ld a, [de]
-	ld [hli], a
-	inc de
-	ld a, [de]
-	ld [hli], a
-	inc de
-	add hl, bc
-; row 3
-	ld a, [de]
-	ld [hli], a
-	inc de
-	ld a, [de]
-	ld [hli], a
-	inc de
-	ld a, [de]
-	ld [hli], a
-	inc de
-	ld a, [de]
-	ld [hli], a
-	inc de
-	add hl, bc
+; rows 1 - 3
+	rept 3
+		rept 4
+			ld a, [de]
+			ld [hli], a
+			inc e
+		endr
+		add hl, bc
+	endr
 ; row 4
+	rept 3
+		ld a, [de]
+		ld [hli], a
+		inc e
+	endr
 	ld a, [de]
-	ld [hli], a
-	inc de
-	ld a, [de]
-	ld [hli], a
-	inc de
-	ld a, [de]
-	ld [hli], a
-	inc de
-	ld a, [de]
-	ld [hli], a
+	ld [hl], a
 
 	; Next metatile
 	pop hl
@@ -271,9 +224,6 @@ _LoadMetatilesOrAttributes:
 	dec a
 	ld [hMetatileCountHeight], a
 	jp nz, .row
-
-	pop af
-	ld [rSVBK], a
 
 	ret
 ; 222a

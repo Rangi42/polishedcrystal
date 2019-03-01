@@ -68,4 +68,5 @@
 	const map_animations_off      ; 2a
 	const map_keep_palettes       ; 2b
 	const map_stop_script         ; 2c
+	const map_decompress_metatiles ; 2d
 map_end EQU -1

@@ -34,6 +34,12 @@ WRAMX $2
 	align 8
 	"Music Player Notes"
 
+WRAMX $3
+	"Metatiles"
+
+WRAMX $4
+	"Attributes"
+
 WRAMX $5
 	org $d000
 	"GBC Video"

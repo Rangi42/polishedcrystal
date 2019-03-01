@@ -292,6 +292,8 @@ SECTION "Battle", WRAM0
 
 UNION
 ; miscellaneous
+wSurroundingTiles:: ds WMISC_WIDTH * WMISC_HEIGHT
+NEXTU
 wMisc:: ds (SCREEN_WIDTH + 4) * (SCREEN_HEIGHT + 2)
 wMiscEnd::
 

@@ -106,6 +106,7 @@ MapSetupCommands: ; 15440
 	dba SuspendMapAnims ; 2a
 	dba RetainOldPalettes ; 2b
 	dba ReturnFromMapSetupScript ; 2c
+	dba DecompressMetatiles ; 2d
 ; 154ca
 
 ActivateMapAnims: ; 154cf
@@ -305,4 +306,29 @@ ForceMapMusic: ; 15587
 	ld [wMusicFade], a
 .notbiking
 	jp TryRestartMapMusic
-; 1559a
+
+DecompressMetatiles:
+	ld hl, wTilesetBlocksBank
+	ld c, BANK(wDecompressedMetatiles)
+	call .Decompress
+
+	ld hl, wTilesetAttributesBank
+	ld c, BANK(wDecompressedAttributes)
+
+.Decompress:
+	ld a, [hli]
+	ld b, a
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	ld de, wDecompressedMetatiles
+	ld a, [rSVBK]
+	push af
+	ld a, c
+	ld [rSVBK], a
+	ld a, b
+	ld bc, $1000
+	call FarDecompress
+	pop af
+	ld [rSVBK], a
+	ret

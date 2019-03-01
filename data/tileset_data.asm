@@ -13,11 +13,11 @@ INCBIN "gfx/tilesets/johto_traditional.2bpp.lz"
 
 Tileset00Meta::
 TilesetJohto1Meta::
-INCBIN "data/tilesets/johto_traditional_metatiles.bin"
+INCBIN "data/tilesets/johto_traditional_metatiles.bin.lz"
 
 Tileset00Attr::
 TilesetJohto1Attr::
-INCBIN "data/tilesets/johto_traditional_attributes.bin"
+INCBIN "data/tilesets/johto_traditional_attributes.bin.lz"
 
 Tileset00Coll::
 TilesetJohto1Coll::
@@ -30,10 +30,10 @@ TilesetJohto2GFX::
 INCBIN "gfx/tilesets/johto_modern.2bpp.lz"
 
 TilesetJohto2Meta::
-INCBIN "data/tilesets/johto_modern_metatiles.bin"
+INCBIN "data/tilesets/johto_modern_metatiles.bin.lz"
 
 TilesetJohto2Attr::
-INCBIN "data/tilesets/johto_modern_attributes.bin"
+INCBIN "data/tilesets/johto_modern_attributes.bin.lz"
 
 TilesetJohto2Coll::
 INCLUDE "data/tilesets/johto_modern_collision.asm"
@@ -45,10 +45,10 @@ TilesetJohto3GFX::
 INCBIN "gfx/tilesets/battle_tower_outside.2bpp.lz"
 
 TilesetJohto3Meta::
-INCBIN "data/tilesets/battle_tower_outside_metatiles.bin"
+INCBIN "data/tilesets/battle_tower_outside_metatiles.bin.lz"
 
 TilesetJohto3Attr::
-INCBIN "data/tilesets/battle_tower_outside_attributes.bin"
+INCBIN "data/tilesets/battle_tower_outside_attributes.bin.lz"
 
 TilesetJohto3Coll::
 INCLUDE "data/tilesets/battle_tower_outside_collision.asm"
@@ -60,10 +60,10 @@ TilesetJohto4GFX::
 INCBIN "gfx/tilesets/johto_overcast.2bpp.lz"
 
 TilesetJohto4Meta::
-INCBIN "data/tilesets/johto_overcast_metatiles.bin"
+INCBIN "data/tilesets/johto_overcast_metatiles.bin.lz"
 
 TilesetJohto4Attr::
-INCBIN "data/tilesets/johto_overcast_attributes.bin"
+INCBIN "data/tilesets/johto_overcast_attributes.bin.lz"
 
 TilesetJohto4Coll::
 INCLUDE "data/tilesets/johto_overcast_collision.asm"
@@ -75,10 +75,10 @@ TilesetKanto1GFX::
 INCBIN "gfx/tilesets/kanto.2bpp.lz"
 
 TilesetKanto1Meta::
-INCBIN "data/tilesets/kanto_metatiles.bin"
+INCBIN "data/tilesets/kanto_metatiles.bin.lz"
 
 TilesetKanto1Attr::
-INCBIN "data/tilesets/kanto_attributes.bin"
+INCBIN "data/tilesets/kanto_attributes.bin.lz"
 
 TilesetKanto1Coll::
 INCLUDE "data/tilesets/kanto_collision.asm"
@@ -90,10 +90,10 @@ TilesetKanto2GFX::
 INCBIN "gfx/tilesets/indigo_plateau.2bpp.lz"
 
 TilesetKanto2Meta::
-INCBIN "data/tilesets/indigo_plateau_metatiles.bin"
+INCBIN "data/tilesets/indigo_plateau_metatiles.bin.lz"
 
 TilesetKanto2Attr::
-INCBIN "data/tilesets/indigo_plateau_attributes.bin"
+INCBIN "data/tilesets/indigo_plateau_attributes.bin.lz"
 
 TilesetKanto2Coll::
 INCLUDE "data/tilesets/indigo_plateau_collision.asm"
@@ -105,10 +105,10 @@ TilesetShamoutiGFX::
 INCBIN "gfx/tilesets/shamouti_island.2bpp.lz"
 
 TilesetShamoutiMeta::
-INCBIN "data/tilesets/shamouti_island_metatiles.bin"
+INCBIN "data/tilesets/shamouti_island_metatiles.bin.lz"
 
 TilesetShamoutiAttr::
-INCBIN "data/tilesets/shamouti_island_attributes.bin"
+INCBIN "data/tilesets/shamouti_island_attributes.bin.lz"
 
 TilesetShamoutiColl::
 INCLUDE "data/tilesets/shamouti_island_collision.asm"
@@ -120,10 +120,10 @@ TilesetValenciaGFX::
 INCBIN "gfx/tilesets/valencia_island.2bpp.lz"
 
 TilesetValenciaMeta::
-INCBIN "data/tilesets/valencia_island_metatiles.bin"
+INCBIN "data/tilesets/valencia_island_metatiles.bin.lz"
 
 TilesetValenciaAttr::
-INCBIN "data/tilesets/valencia_island_attributes.bin"
+INCBIN "data/tilesets/valencia_island_attributes.bin.lz"
 
 TilesetValenciaColl::
 INCLUDE "data/tilesets/valencia_island_collision.asm"
@@ -135,10 +135,10 @@ TilesetFarawayGFX::
 INCBIN "gfx/tilesets/faraway_island.2bpp.lz"
 
 TilesetFarawayMeta::
-INCBIN "data/tilesets/faraway_island_metatiles.bin"
+INCBIN "data/tilesets/faraway_island_metatiles.bin.lz"
 
 TilesetFarawayAttr::
-INCBIN "data/tilesets/faraway_island_attributes.bin"
+INCBIN "data/tilesets/faraway_island_attributes.bin.lz"
 
 TilesetFarawayColl::
 INCLUDE "data/tilesets/faraway_island_collision.asm"
@@ -150,10 +150,10 @@ TilesetHouse1GFX::
 INCBIN "gfx/tilesets/johto_house.2bpp.lz"
 
 TilesetHouse1Meta::
-INCBIN "data/tilesets/johto_house_metatiles.bin"
+INCBIN "data/tilesets/johto_house_metatiles.bin.lz"
 
 TilesetHouse1Attr::
-INCBIN "data/tilesets/johto_house_attributes.bin"
+INCBIN "data/tilesets/johto_house_attributes.bin.lz"
 
 TilesetHouse1Coll::
 INCLUDE "data/tilesets/johto_house_collision.asm"
@@ -165,10 +165,10 @@ TilesetHouse2GFX::
 INCBIN "gfx/tilesets/kanto_house.2bpp.lz"
 
 TilesetHouse2Meta::
-INCBIN "data/tilesets/kanto_house_metatiles.bin"
+INCBIN "data/tilesets/kanto_house_metatiles.bin.lz"
 
 TilesetHouse2Attr::
-INCBIN "data/tilesets/kanto_house_attributes.bin"
+INCBIN "data/tilesets/kanto_house_attributes.bin.lz"
 
 TilesetHouse2Coll::
 INCLUDE "data/tilesets/kanto_house_collision.asm"
@@ -180,10 +180,10 @@ TilesetHouse3GFX::
 INCBIN "gfx/tilesets/traditional_house.2bpp.lz"
 
 TilesetHouse3Meta::
-INCBIN "data/tilesets/traditional_house_metatiles.bin"
+INCBIN "data/tilesets/traditional_house_metatiles.bin.lz"
 
 TilesetHouse3Attr::
-INCBIN "data/tilesets/traditional_house_attributes.bin"
+INCBIN "data/tilesets/traditional_house_attributes.bin.lz"
 
 TilesetHouse3Coll::
 INCLUDE "data/tilesets/traditional_house_collision.asm"
@@ -195,10 +195,10 @@ TilesetPokeCenterGFX::
 INCBIN "gfx/tilesets/pokecenter.2bpp.lz"
 
 TilesetPokeCenterMeta::
-INCBIN "data/tilesets/pokecenter_metatiles.bin"
+INCBIN "data/tilesets/pokecenter_metatiles.bin.lz"
 
 TilesetPokeCenterAttr::
-INCBIN "data/tilesets/pokecenter_attributes.bin"
+INCBIN "data/tilesets/pokecenter_attributes.bin.lz"
 
 TilesetPokeCenterColl::
 INCLUDE "data/tilesets/pokecenter_collision.asm"
@@ -210,10 +210,10 @@ TilesetPokeComGFX::
 INCBIN "gfx/tilesets/pokecom_center.2bpp.lz"
 
 TilesetPokeComMeta::
-INCBIN "data/tilesets/pokecom_center_metatiles.bin"
+INCBIN "data/tilesets/pokecom_center_metatiles.bin.lz"
 
 TilesetPokeComAttr::
-INCBIN "data/tilesets/pokecom_center_attributes.bin"
+INCBIN "data/tilesets/pokecom_center_attributes.bin.lz"
 
 TilesetPokeComColl::
 INCLUDE "data/tilesets/pokecom_center_collision.asm"
@@ -225,10 +225,10 @@ TilesetMartGFX::
 INCBIN "gfx/tilesets/mart.2bpp.lz"
 
 TilesetMartMeta::
-INCBIN "data/tilesets/mart_metatiles.bin"
+INCBIN "data/tilesets/mart_metatiles.bin.lz"
 
 TilesetMartAttr::
-INCBIN "data/tilesets/mart_attributes.bin"
+INCBIN "data/tilesets/mart_attributes.bin.lz"
 
 TilesetMartColl::
 INCLUDE "data/tilesets/mart_collision.asm"
@@ -240,10 +240,10 @@ TilesetGateGFX::
 INCBIN "gfx/tilesets/gate.2bpp.lz"
 
 TilesetGateMeta::
-INCBIN "data/tilesets/gate_metatiles.bin"
+INCBIN "data/tilesets/gate_metatiles.bin.lz"
 
 TilesetGateAttr::
-INCBIN "data/tilesets/gate_attributes.bin"
+INCBIN "data/tilesets/gate_attributes.bin.lz"
 
 TilesetGateColl::
 INCLUDE "data/tilesets/gate_collision.asm"
@@ -255,10 +255,10 @@ TilesetGym1GFX::
 INCBIN "gfx/tilesets/gym.2bpp.lz"
 
 TilesetGym1Meta::
-INCBIN "data/tilesets/gym_metatiles.bin"
+INCBIN "data/tilesets/gym_metatiles.bin.lz"
 
 TilesetGym1Attr::
-INCBIN "data/tilesets/gym_attributes.bin"
+INCBIN "data/tilesets/gym_attributes.bin.lz"
 
 TilesetGym1Coll::
 INCLUDE "data/tilesets/gym_collision.asm"
@@ -270,10 +270,10 @@ TilesetGym2GFX::
 INCBIN "gfx/tilesets/magnet_train.2bpp.lz"
 
 TilesetGym2Meta::
-INCBIN "data/tilesets/magnet_train_metatiles.bin"
+INCBIN "data/tilesets/magnet_train_metatiles.bin.lz"
 
 TilesetGym2Attr::
-INCBIN "data/tilesets/magnet_train_attributes.bin"
+INCBIN "data/tilesets/magnet_train_attributes.bin.lz"
 
 TilesetGym2Coll::
 INCLUDE "data/tilesets/magnet_train_collision.asm"
@@ -285,10 +285,10 @@ TilesetGym3GFX::
 INCBIN "gfx/tilesets/champions_room.2bpp.lz"
 
 TilesetGym3Meta::
-INCBIN "data/tilesets/champions_room_metatiles.bin"
+INCBIN "data/tilesets/champions_room_metatiles.bin.lz"
 
 TilesetGym3Attr::
-INCBIN "data/tilesets/champions_room_attributes.bin"
+INCBIN "data/tilesets/champions_room_attributes.bin.lz"
 
 TilesetGym3Coll::
 INCLUDE "data/tilesets/champions_room_collision.asm"
@@ -300,10 +300,10 @@ TilesetPortGFX::
 INCBIN "gfx/tilesets/port.2bpp.lz"
 
 TilesetPortMeta::
-INCBIN "data/tilesets/port_metatiles.bin"
+INCBIN "data/tilesets/port_metatiles.bin.lz"
 
 TilesetPortAttr::
-INCBIN "data/tilesets/port_attributes.bin"
+INCBIN "data/tilesets/port_attributes.bin.lz"
 
 TilesetPortColl::
 INCLUDE "data/tilesets/port_collision.asm"
@@ -315,10 +315,10 @@ TilesetLabGFX::
 INCBIN "gfx/tilesets/lab.2bpp.lz"
 
 TilesetLabMeta::
-INCBIN "data/tilesets/lab_metatiles.bin"
+INCBIN "data/tilesets/lab_metatiles.bin.lz"
 
 TilesetLabAttr::
-INCBIN "data/tilesets/lab_attributes.bin"
+INCBIN "data/tilesets/lab_attributes.bin.lz"
 
 TilesetLabColl::
 INCLUDE "data/tilesets/lab_collision.asm"
@@ -330,10 +330,10 @@ TilesetFacilityGFX::
 INCBIN "gfx/tilesets/facility.2bpp.lz"
 
 TilesetFacilityMeta::
-INCBIN "data/tilesets/facility_metatiles.bin"
+INCBIN "data/tilesets/facility_metatiles.bin.lz"
 
 TilesetFacilityAttr::
-INCBIN "data/tilesets/facility_attributes.bin"
+INCBIN "data/tilesets/facility_attributes.bin.lz"
 
 TilesetFacilityColl::
 INCLUDE "data/tilesets/facility_collision.asm"
@@ -345,10 +345,10 @@ TilesetMansionGFX::
 INCBIN "gfx/tilesets/celadon_mansion.2bpp.lz"
 
 TilesetMansionMeta::
-INCBIN "data/tilesets/celadon_mansion_metatiles.bin"
+INCBIN "data/tilesets/celadon_mansion_metatiles.bin.lz"
 
 TilesetMansionAttr::
-INCBIN "data/tilesets/celadon_mansion_attributes.bin"
+INCBIN "data/tilesets/celadon_mansion_attributes.bin.lz"
 
 TilesetMansionColl::
 INCLUDE "data/tilesets/celadon_mansion_collision.asm"
@@ -360,10 +360,10 @@ TilesetGameCornerGFX::
 INCBIN "gfx/tilesets/game_corner.2bpp.lz"
 
 TilesetGameCornerMeta::
-INCBIN "data/tilesets/game_corner_metatiles.bin"
+INCBIN "data/tilesets/game_corner_metatiles.bin.lz"
 
 TilesetGameCornerAttr::
-INCBIN "data/tilesets/game_corner_attributes.bin"
+INCBIN "data/tilesets/game_corner_attributes.bin.lz"
 
 TilesetGameCornerColl::
 INCLUDE "data/tilesets/game_corner_collision.asm"
@@ -375,10 +375,10 @@ TilesetDecorGFX::
 INCBIN "gfx/tilesets/home_decor_store.2bpp.lz"
 
 TilesetDecorMeta::
-INCBIN "data/tilesets/home_decor_store_metatiles.bin"
+INCBIN "data/tilesets/home_decor_store_metatiles.bin.lz"
 
 TilesetDecorAttr::
-INCBIN "data/tilesets/home_decor_store_attributes.bin"
+INCBIN "data/tilesets/home_decor_store_attributes.bin.lz"
 
 TilesetDecorColl::
 INCLUDE "data/tilesets/home_decor_store_collision.asm"
@@ -390,10 +390,10 @@ TilesetMuseumGFX::
 INCBIN "gfx/tilesets/museum.2bpp.lz"
 
 TilesetMuseumMeta::
-INCBIN "data/tilesets/museum_metatiles.bin"
+INCBIN "data/tilesets/museum_metatiles.bin.lz"
 
 TilesetMuseumAttr::
-INCBIN "data/tilesets/museum_attributes.bin"
+INCBIN "data/tilesets/museum_attributes.bin.lz"
 
 TilesetMuseumColl::
 INCLUDE "data/tilesets/museum_collision.asm"
@@ -405,10 +405,10 @@ TilesetHotelGFX::
 INCBIN "gfx/tilesets/hotel.2bpp.lz"
 
 TilesetHotelMeta::
-INCBIN "data/tilesets/hotel_metatiles.bin"
+INCBIN "data/tilesets/hotel_metatiles.bin.lz"
 
 TilesetHotelAttr::
-INCBIN "data/tilesets/hotel_attributes.bin"
+INCBIN "data/tilesets/hotel_attributes.bin.lz"
 
 TilesetHotelColl::
 INCLUDE "data/tilesets/hotel_collision.asm"
@@ -420,10 +420,10 @@ TilesetTowerGFX::
 INCBIN "gfx/tilesets/sprout_tower.2bpp.lz"
 
 TilesetTowerMeta::
-INCBIN "data/tilesets/sprout_tower_metatiles.bin"
+INCBIN "data/tilesets/sprout_tower_metatiles.bin.lz"
 
 TilesetTowerAttr::
-INCBIN "data/tilesets/sprout_tower_attributes.bin"
+INCBIN "data/tilesets/sprout_tower_attributes.bin.lz"
 
 TilesetTowerColl::
 INCLUDE "data/tilesets/sprout_tower_collision.asm"
@@ -435,10 +435,10 @@ TilesetBattleTowerGFX::
 INCBIN "gfx/tilesets/battle_tower_inside.2bpp.lz"
 
 TilesetBattleTowerMeta::
-INCBIN "data/tilesets/battle_tower_inside_metatiles.bin"
+INCBIN "data/tilesets/battle_tower_inside_metatiles.bin.lz"
 
 TilesetBattleTowerAttr::
-INCBIN "data/tilesets/battle_tower_inside_attributes.bin"
+INCBIN "data/tilesets/battle_tower_inside_attributes.bin.lz"
 
 TilesetBattleTowerColl::
 INCLUDE "data/tilesets/battle_tower_inside_collision.asm"
@@ -450,10 +450,10 @@ TilesetRadioTowerGFX::
 INCBIN "gfx/tilesets/radio_tower.2bpp.lz"
 
 TilesetRadioTowerMeta::
-INCBIN "data/tilesets/radio_tower_metatiles.bin"
+INCBIN "data/tilesets/radio_tower_metatiles.bin.lz"
 
 TilesetRadioTowerAttr::
-INCBIN "data/tilesets/radio_tower_attributes.bin"
+INCBIN "data/tilesets/radio_tower_attributes.bin.lz"
 
 TilesetRadioTowerColl::
 INCLUDE "data/tilesets/radio_tower_collision.asm"
@@ -465,10 +465,10 @@ TilesetLighthouseGFX::
 INCBIN "gfx/tilesets/lighthouse.2bpp.lz"
 
 TilesetLighthouseMeta::
-INCBIN "data/tilesets/lighthouse_metatiles.bin"
+INCBIN "data/tilesets/lighthouse_metatiles.bin.lz"
 
 TilesetLighthouseAttr::
-INCBIN "data/tilesets/lighthouse_attributes.bin"
+INCBIN "data/tilesets/lighthouse_attributes.bin.lz"
 
 TilesetLighthouseColl::
 INCLUDE "data/tilesets/lighthouse_collision.asm"
@@ -480,10 +480,10 @@ TilesetWarehouseGFX::
 INCBIN "gfx/tilesets/underground.2bpp.lz"
 
 TilesetWarehouseMeta::
-INCBIN "data/tilesets/underground_metatiles.bin"
+INCBIN "data/tilesets/underground_metatiles.bin.lz"
 
 TilesetWarehouseAttr::
-INCBIN "data/tilesets/underground_attributes.bin"
+INCBIN "data/tilesets/underground_attributes.bin.lz"
 
 TilesetWarehouseColl::
 INCLUDE "data/tilesets/underground_collision.asm"
@@ -499,11 +499,11 @@ INCBIN "gfx/tilesets/quiet_cave.2bpp.lz"
 
 TilesetCaveMeta::
 TilesetQuietCaveMeta::
-INCBIN "data/tilesets/cave_metatiles.bin"
+INCBIN "data/tilesets/cave_metatiles.bin.lz"
 
 TilesetCaveAttr::
 TilesetQuietCaveAttr::
-INCBIN "data/tilesets/cave_attributes.bin"
+INCBIN "data/tilesets/cave_attributes.bin.lz"
 
 TilesetCaveColl::
 TilesetQuietCaveColl::
@@ -516,10 +516,10 @@ TilesetIcePathGFX::
 INCBIN "gfx/tilesets/ice_path.2bpp.lz"
 
 TilesetIcePathMeta::
-INCBIN "data/tilesets/ice_path_metatiles.bin"
+INCBIN "data/tilesets/ice_path_metatiles.bin.lz"
 
 TilesetIcePathAttr::
-INCBIN "data/tilesets/ice_path_attributes.bin"
+INCBIN "data/tilesets/ice_path_attributes.bin.lz"
 
 TilesetIcePathColl::
 INCLUDE "data/tilesets/ice_path_collision.asm"
@@ -531,10 +531,10 @@ TilesetTunnelGFX::
 INCBIN "gfx/tilesets/tunnel.2bpp.lz"
 
 TilesetTunnelMeta::
-INCBIN "data/tilesets/tunnel_metatiles.bin"
+INCBIN "data/tilesets/tunnel_metatiles.bin.lz"
 
 TilesetTunnelAttr::
-INCBIN "data/tilesets/tunnel_attributes.bin"
+INCBIN "data/tilesets/tunnel_attributes.bin.lz"
 
 TilesetTunnelColl::
 INCLUDE "data/tilesets/tunnel_collision.asm"
@@ -546,10 +546,10 @@ TilesetForestGFX::
 INCBIN "gfx/tilesets/forest.2bpp.lz"
 
 TilesetForestMeta::
-INCBIN "data/tilesets/forest_metatiles.bin"
+INCBIN "data/tilesets/forest_metatiles.bin.lz"
 
 TilesetForestAttr::
-INCBIN "data/tilesets/forest_attributes.bin"
+INCBIN "data/tilesets/forest_attributes.bin.lz"
 
 TilesetForestColl::
 INCLUDE "data/tilesets/forest_collision.asm"
@@ -561,10 +561,10 @@ TilesetParkGFX::
 INCBIN "gfx/tilesets/park.2bpp.lz"
 
 TilesetParkMeta::
-INCBIN "data/tilesets/park_metatiles.bin"
+INCBIN "data/tilesets/park_metatiles.bin.lz"
 
 TilesetParkAttr::
-INCBIN "data/tilesets/park_attributes.bin"
+INCBIN "data/tilesets/park_attributes.bin.lz"
 
 TilesetParkColl::
 INCLUDE "data/tilesets/park_collision.asm"
@@ -576,10 +576,10 @@ TilesetSafariGFX::
 INCBIN "gfx/tilesets/safari_zone.2bpp.lz"
 
 TilesetSafariMeta::
-INCBIN "data/tilesets/safari_zone_metatiles.bin"
+INCBIN "data/tilesets/safari_zone_metatiles.bin.lz"
 
 TilesetSafariAttr::
-INCBIN "data/tilesets/safari_zone_attributes.bin"
+INCBIN "data/tilesets/safari_zone_attributes.bin.lz"
 
 TilesetSafariColl::
 INCLUDE "data/tilesets/safari_zone_collision.asm"
@@ -592,10 +592,10 @@ TilesetAlphGFX::
 INCBIN "gfx/tilesets/ruins_of_alph.2bpp.lz"
 
 TilesetRuinsMeta::
-INCBIN "data/tilesets/ruins_of_alph_metatiles.bin"
+INCBIN "data/tilesets/ruins_of_alph_metatiles.bin.lz"
 
 TilesetRuinsAttr::
-INCBIN "data/tilesets/ruins_of_alph_attributes.bin"
+INCBIN "data/tilesets/ruins_of_alph_attributes.bin.lz"
 
 TilesetRuinsColl::
 INCLUDE "data/tilesets/ruins_of_alph_collision.asm"
@@ -604,10 +604,10 @@ INCLUDE "data/tilesets/ruins_of_alph_collision.asm"
 SECTION "Tileset Data - alph_word_room", ROMX
 
 TilesetAlphMeta::
-INCBIN "data/tilesets/alph_word_room_metatiles.bin"
+INCBIN "data/tilesets/alph_word_room_metatiles.bin.lz"
 
 TilesetAlphAttr::
-INCBIN "data/tilesets/alph_word_room_attributes.bin"
+INCBIN "data/tilesets/alph_word_room_attributes.bin.lz"
 
 TilesetAlphColl::
 INCLUDE "data/tilesets/alph_word_room_collision.asm"
@@ -619,10 +619,10 @@ TilesetPokemonMansionGFX::
 INCBIN "gfx/tilesets/pokemon_mansion.2bpp.lz"
 
 TilesetPokemonMansionMeta::
-INCBIN "data/tilesets/pokemon_mansion_metatiles.bin"
+INCBIN "data/tilesets/pokemon_mansion_metatiles.bin.lz"
 
 TilesetPokemonMansionAttr::
-INCBIN "data/tilesets/pokemon_mansion_attributes.bin"
+INCBIN "data/tilesets/pokemon_mansion_attributes.bin.lz"
 
 TilesetPokemonMansionColl::
 INCLUDE "data/tilesets/pokemon_mansion_collision.asm"

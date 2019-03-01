@@ -1352,6 +1352,16 @@ SECTION "Sound Stack", WRAMX
 wSoundEngineBackup:: ds wChannelsEnd - wMusic
 
 
+SECTION "Metatiles", WRAMX
+
+wDecompressedMetatiles:: ds 256 * 16
+
+
+SECTION "Attributes", WRAMX
+
+wDecompressedAttributes:: ds 256 * 16
+
+
 SECTION "Music Player Notes", WRAMX
 
 wMPNotes:: ds 4 * 256
@@ -1359,7 +1369,6 @@ wMPNotes:: ds 4 * 256
 
 SECTION "Surrounding Data", WRAMX
 
-wSurroundingTiles:: ds WMISC_WIDTH * WMISC_HEIGHT
 wSurroundingAttributes:: ds WMISC_WIDTH * WMISC_HEIGHT
 
 

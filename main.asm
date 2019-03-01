@@ -3952,7 +3952,6 @@ INCLUDE "engine/events/halloffame.asm"
 INCLUDE "engine/copy_tilemap_at_once.asm"
 
 _LoadMapPart:: ; 4d15b
-
 	ld hl, wSurroundingTiles
 	decoord 0, 0
 	call .copy
