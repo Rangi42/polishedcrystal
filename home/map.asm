@@ -72,22 +72,22 @@ GetMapTrigger::
 	pop hl
 	ret
 
-OverworldTextModeSwitch::
-	call LoadMapPart
-	jp FarCallSwapTextboxPalettes
-
 LoadMapPart:: ; 217a
 	ld a, [hROMBank]
 	push af
 
 	ld a, [wTilesetBlocksBank]
 	rst Bankswitch
-
 	call LoadMetatiles
-	ld a, $60
+
+	ld a, "<BLACK>"
 	hlcoord 0, 0
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
 	call ByteFill
+
+	ld a, [wTilesetAttributesBank]
+	rst Bankswitch
+	call LoadMetatileAttributes
 
 	ld a, BANK(_LoadMapPart)
 	rst Bankswitch
@@ -99,12 +99,27 @@ LoadMapPart:: ; 217a
 ; 2198
 
 LoadMetatiles:: ; 2198
+	ld hl, wSurroundingTiles
+	ld de, wTilesetBlocksAddress
+	jr _LoadMetatilesOrAttributes
+
+LoadMetatileAttributes::
+	ld hl, wSurroundingAttributes
+	ld de, wTilesetAttributesAddress
+	; fallthrough
+
+_LoadMetatilesOrAttributes:
+	ld a, [de]
+	ld [wTilesetDataAddress], a
+	inc de
+	ld a, [de]
+	ld [wTilesetDataAddress + 1], a
+
 	; de <- wOverworldMapAnchor
 	ld a, [wOverworldMapAnchor]
 	ld e, a
 	ld a, [wOverworldMapAnchor + 1]
 	ld d, a
-	ld hl, wMisc
 	ld a, WMISC_HEIGHT / 4 ; 5
 	ld [hMetatileCountHeight], a
 
@@ -115,10 +130,15 @@ LoadMetatiles:: ; 2198
 	ld a, [wMapWidth]
 	add 6
 	ld [hMapWidthPlus6], a
-	ld a, [wTilesetBlocksAddress]
-	ld [hTilesetBlocksAddress], a
-	ld a, [wTilesetBlocksAddress + 1]
-	ld [hTilesetBlocksAddress + 1], a
+	ld a, [wTilesetDataAddress]
+	ld [hTilesetDataAddress], a
+	ld a, [wTilesetDataAddress + 1]
+	ld [hTilesetDataAddress + 1], a
+
+	ld a, [rSVBK]
+	push af
+	ld a, BANK("Surrounding Data")
+	ld [rSVBK], a
 
 	ld bc, WMISC_WIDTH - 4
 
@@ -139,10 +159,10 @@ LoadMetatiles:: ; 2198
 	ld a, [hMapBorderBlock]
 
 .ok
-	; Save wMisc to the stack
+	; Save wSurroundingTiles/Attributes to the stack
 	push hl
-	; Set hl to the address of the current metatile data ([TilesetBlocksAddress] + (a) tiles).
 
+	; Set hl to the address of the current metatile data ([wTilesetDataAddress] + (a) tiles).
 	ld l, a
 	ld h, b ; b = 0
 
@@ -151,10 +171,10 @@ LoadMetatiles:: ; 2198
 	add hl, hl
 	add hl, hl
 
-	ld a, [hTilesetBlocksAddress]
+	ld a, [hTilesetDataAddress]
 	add l
 	ld e, a
-	ld a, [hTilesetBlocksAddress + 1]
+	ld a, [hTilesetDataAddress + 1]
 	adc h
 	ld d, a
 
@@ -251,6 +271,10 @@ LoadMetatiles:: ; 2198
 	dec a
 	ld [hMetatileCountHeight], a
 	jp nz, .row
+
+	pop af
+	ld [rSVBK], a
+
 	ret
 ; 222a
 
@@ -1229,8 +1253,9 @@ ScrollMapDown:: ; 272a
 	hlcoord 0, 0
 	ld de, wBGMapBuffer
 	call BackupBGMapRow
-	ld c, 2 * SCREEN_WIDTH
-	call FarCallScrollBGMapPalettes
+	hlcoord 0, 0, wAttrMap
+	ld de, wBGMapPalBuffer
+	call BackupBGMapRow
 	ld a, [wBGMapAnchor]
 	ld e, a
 	ld a, [wBGMapAnchor + 1]
@@ -1245,8 +1270,9 @@ ScrollMapUp:: ; 2748
 	hlcoord 0, SCREEN_HEIGHT - 2
 	ld de, wBGMapBuffer
 	call BackupBGMapRow
-	ld c, 2 * SCREEN_WIDTH
-	call FarCallScrollBGMapPalettes
+	hlcoord 0, SCREEN_HEIGHT - 2, wAttrMap
+	ld de, wBGMapPalBuffer
+	call BackupBGMapRow
 	ld a, [wBGMapAnchor]
 	ld l, a
 	ld a, [wBGMapAnchor + 1]
@@ -1269,8 +1295,9 @@ ScrollMapRight:: ; 2771
 	hlcoord 0, 0
 	ld de, wBGMapBuffer
 	call BackupBGMapColumn
-	ld c, 2 * SCREEN_HEIGHT
-	call FarCallScrollBGMapPalettes
+	hlcoord 0, 0, wAttrMap
+	ld de, wBGMapPalBuffer
+	call BackupBGMapColumn
 	ld a, [wBGMapAnchor]
 	ld e, a
 	ld a, [wBGMapAnchor + 1]
@@ -1285,8 +1312,9 @@ ScrollMapLeft:: ; 278f
 	hlcoord SCREEN_WIDTH - 2, 0
 	ld de, wBGMapBuffer
 	call BackupBGMapColumn
-	ld c, 2 * SCREEN_HEIGHT
-	call FarCallScrollBGMapPalettes
+	hlcoord SCREEN_WIDTH - 2, 0, wAttrMap
+	ld de, wBGMapPalBuffer
+	call BackupBGMapColumn
 	ld a, [wBGMapAnchor]
 	ld e, a
 	and %11100000
@@ -2044,7 +2072,7 @@ ReloadTilesetAndPalettes:: ; 2bae
 	ld c, a
 	call SwitchToAnyMapBank
 	farcall UpdateTimeOfDayPal
-	call OverworldTextModeSwitch
+	call LoadMapPart
 	call LoadTileset
 	ld a, 9
 	call SkipMusic

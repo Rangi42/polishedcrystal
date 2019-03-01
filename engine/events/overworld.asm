@@ -273,7 +273,7 @@ CutDownGrass: ; c810
 	ld [hl], a
 	xor a
 	ld [hBGMapMode], a
-	call OverworldTextModeSwitch
+	call LoadMapPart
 	call UpdateSprites
 	call DelayFrame
 	ld a, [wBuffer6] ; Animation type (always 1)
@@ -332,7 +332,7 @@ Script_CutTree:
 CutDownTree:
 	xor a
 	ld [hBGMapMode], a
-	call OverworldTextModeSwitch
+	call LoadMapPart
 	call UpdateSprites
 	call DelayFrame
 	xor a ; Animation type

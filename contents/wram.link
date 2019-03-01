@@ -43,6 +43,8 @@ WRAMX $5
 WRAMX $6
 	org $d000
 	"WRAM 6"
+	align 8
+	"Surrounding Data"
 
 WRAMX $7
 	org $d000

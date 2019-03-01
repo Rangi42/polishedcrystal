@@ -48,7 +48,7 @@ ShakeHeadbuttTree: ; 8c80a
 	jr .loop
 
 .done
-	call OverworldTextModeSwitch
+	call LoadMapPart
 	call ApplyTilemapInVBlank
 	xor a
 	ld [hBGMapMode], a

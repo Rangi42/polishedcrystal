@@ -150,7 +150,7 @@ LoadSpecialMapPalette: ; 494ac
 	ld bc, 8 palettes
 	call FarCopyWRAM
 
-; replace green with Poké Mart blue for maps using Mart.blk
+; replace green with Poké Mart blue for maps using Mart.ablk
 	ld a, [wMapBlockDataBank]
 	cp BANK(GenericMart_BlockData)
 	jr nz, .not_mart

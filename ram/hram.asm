@@ -40,9 +40,9 @@ hObjectStructIndexBuffer EQU $ffb0
 hConnectionStripLength EQU $ffaf
 hConnectedMapWidth EQU $ffb0
 
-hMapBorderBlock    EQU $ffad
-hMapWidthPlus6     EQU $ffae
-hTilesetBlocksAddress  EQU $ffaf
+hMapBorderBlock     EQU $ffad
+hMapWidthPlus6      EQU $ffae
+hTilesetDataAddress EQU $ffaf
 
 hPredefTemp        EQU $ffb1
 

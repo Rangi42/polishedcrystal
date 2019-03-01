@@ -38,7 +38,7 @@ ReanchorBGMap_NoOAMUpdate:: ; 6454
 	ld [hLCDCPointer], a
 	ld a, $90
 	ld [hWY], a
-	call OverworldTextModeSwitch
+	call LoadMapPart
 
 	ld a, VBGMap1 / $100
 	ld [hBGMapAddress + 1], a
@@ -99,7 +99,7 @@ ReanchorBGMap_NoOAMUpdate_NoDelay::
 	ld [hLCDCPointer], a
 	ld a, $90
 	ld [hWY], a
-	call OverworldTextModeSwitch
+	call LoadMapPart
 
 	ld a, VBGMap1 / $100
 	ld [hBGMapAddress + 1], a
@@ -3953,7 +3953,13 @@ INCLUDE "engine/copy_tilemap_at_once.asm"
 
 _LoadMapPart:: ; 4d15b
 
-	ld hl, wMisc
+	ld hl, wSurroundingTiles
+	decoord 0, 0
+	call .copy
+	ld hl, wSurroundingAttributes
+	decoord 0, 0, wAttrMap
+
+.copy:
 	ld a, [wMetatileStandingY]
 	and a
 	jr z, .top_row
@@ -3968,7 +3974,11 @@ _LoadMapPart:: ; 4d15b
 	inc hl
 
 .left_column
-	decoord 0, 0
+	ld a, [rSVBK]
+	push af
+	ld a, BANK("Surrounding Data")
+	ld [rSVBK], a
+
 	ld b, SCREEN_HEIGHT
 .loop
 	ld c, SCREEN_WIDTH
@@ -3987,6 +3997,9 @@ _LoadMapPart:: ; 4d15b
 .carry
 	dec b
 	jr nz, .loop
+
+	pop af
+	ld [rSVBK], a
 	ret
 
 PrintAbility:
@@ -4143,9 +4156,9 @@ SECTION "Diploma", ROMX
 INCLUDE "engine/diploma.asm"
 
 
-SECTION "Palette Maps", ROMX
+SECTION "Collision Permissions", ROMX
 
-INCLUDE "engine/map_palettes.asm"
+INCLUDE "data/collision_permissions.asm"
 
 
 SECTION "Typefaces", ROMX

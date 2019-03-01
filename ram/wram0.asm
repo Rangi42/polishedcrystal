@@ -110,7 +110,9 @@ wMusicEnd::
 
 SECTION "WRAM 0", WRAM0
 
-	ds 4
+	ds 2
+
+wTilesetDataAddress:: ds 2
 
 wRNGState:: ds 4
 wRNGCumulativeDividerPlus:: ds 2

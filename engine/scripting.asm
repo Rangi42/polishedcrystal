@@ -2532,7 +2532,7 @@ Script_changeblock:
 Script_reloadmappart::
 	xor a
 	ld [hBGMapMode], a
-	call OverworldTextModeSwitch
+	call LoadMapPart
 	call GetMovementPermissions
 	farcall ReloadMapPart
 	jp UpdateSprites

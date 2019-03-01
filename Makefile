@@ -141,5 +141,5 @@ gfx/pokemon/%/bitmask.asm gfx/pokemon/%/frames.asm: gfx/pokemon/%/front.2bpp
 %.png: ; $(error ERROR: Cannot find '$@')
 %.asm: ; $(error ERROR: Cannot find '$@')
 %.bin: ; $(error ERROR: Cannot find '$@')
-%.blk: ; $(error ERROR: Cannot find '$@')
+%.ablk: ; $(error ERROR: Cannot find '$@')
 %.tilemap: ; $(error ERROR: Cannot find '$@')

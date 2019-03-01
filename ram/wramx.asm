@@ -445,8 +445,9 @@ wTilesetBlocksBank:: ds 1
 wTilesetBlocksAddress:: ds 2
 wTilesetCollisionBank:: ds 1
 wTilesetCollisionAddress:: ds 2
+wTilesetAttributesBank:: ds 1
+wTilesetAttributesAddress:: ds 2
 wTilesetAnim:: ds 2 ; bank 3f
-wTilesetPalettes:: ds 2 ; bank 3f
 
 wEvolvableFlags:: flag_array PARTY_LENGTH
 
@@ -540,8 +541,6 @@ wBattleType::
 	ds 1
 
 wOtherTrainerID:: ds 1
-
-	ds 1 ; unused
 
 wTrainerClass:: ds 1
 
@@ -1356,6 +1355,12 @@ wSoundEngineBackup:: ds wChannelsEnd - wMusic
 SECTION "Music Player Notes", WRAMX
 
 wMPNotes:: ds 4 * 256
+
+
+SECTION "Surrounding Data", WRAMX
+
+wSurroundingTiles:: ds WMISC_WIDTH * WMISC_HEIGHT
+wSurroundingAttributes:: ds WMISC_WIDTH * WMISC_HEIGHT
 
 
 SECTION "GBC Video", WRAMX
