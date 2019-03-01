@@ -564,12 +564,26 @@ ApplyAbilityEffectsOnEncounterMon:
 .Hustle:
 .Pressure:
 .VitalSpirit:
-; Increase encounter rate by 50% if the foe's level exceed leading non-fainted mon
-	ld a, [wCurPartyLevel]
-	cp c
+; Vanilla 3gen+: 50% to force upper bound in a level range
+; Since we don't have level ranges, 50% to increase level by 1/8 (min 1)
+	call Random
+	rrca
 	ret c
-	ret z
-	jr .semidouble_encounter_rate
+	ld a, c
+	rrca
+	rrca
+	rrca
+	and %11111
+	jr nz, .got_increase
+	inc a
+.got_increase
+	add c
+	cp 101
+	jr c, .got_level
+	ld a, 100
+.got_level
+	ld c, a
+	ret
 
 .Intimidate:
 .KeenEye:
