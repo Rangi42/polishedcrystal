@@ -1367,11 +1367,6 @@ SECTION "Music Player Notes", WRAMX
 wMPNotes:: ds 4 * 256
 
 
-SECTION "Surrounding Data", WRAMX
-
-wSurroundingAttributes:: ds WMISC_WIDTH * WMISC_HEIGHT
-
-
 SECTION "GBC Video", WRAMX
 
 ; 8 4-color palettes

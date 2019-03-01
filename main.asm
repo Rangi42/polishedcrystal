@@ -153,10 +153,6 @@ INCLUDE "engine/printnum.asm"
 INCLUDE "engine/health.asm"
 INCLUDE "engine/events/overworld.asm"
 INCLUDE "engine/items.asm"
-; linked, do not separate
-INCLUDE "engine/player_step.asm"
-;INCLUDE "engine/load_map_part.asm"
-; end linked section
 INCLUDE "engine/anim_hp_bar.asm"
 INCLUDE "engine/move_mon.asm"
 INCLUDE "engine/billspctop.asm"
@@ -3951,53 +3947,6 @@ INCLUDE "gfx/battle_anims.asm"
 INCLUDE "engine/events/halloffame.asm"
 INCLUDE "engine/copy_tilemap_at_once.asm"
 
-_LoadMapPart:: ; 4d15b
-	ld hl, wSurroundingTiles
-	decoord 0, 0
-	call .copy
-	ld hl, wSurroundingAttributes
-	decoord 0, 0, wAttrMap
-
-.copy:
-	ld a, [wMetatileStandingY]
-	and a
-	jr z, .top_row
-	ld bc, WMISC_WIDTH * 2
-	add hl, bc
-
-.top_row
-	ld a, [wMetatileStandingX]
-	and a
-	jr z, .left_column
-	inc hl
-	inc hl
-
-.left_column
-	ld a, [rSVBK]
-	push af
-	ld a, BANK("Surrounding Data")
-	ld [rSVBK], a
-
-	ld b, SCREEN_HEIGHT
-.loop
-rept SCREEN_WIDTH ; unrolled loop -- gives a significant perf boost
-	ld a, [hli]
-	ld [de], a
-	inc de
-endr
-	ld a, l
-	add 4
-	ld l, a
-	jr nc, .carry
-	inc h
-
-.carry
-	dec b
-	jr nz, .loop
-	pop af
-	ld [rSVBK], a
-	ret
-
 PrintAbility:
 ; Print ability b at hl.
 	ld l, b
@@ -4131,6 +4080,12 @@ INCLUDE "engine/misc_gfx.asm"
 INCLUDE "engine/warp_connection.asm"
 INCLUDE "engine/battle/used_move_text.asm"
 INCLUDE "gfx/items.asm"
+
+SECTION "Load Map Part", ROMX
+; linked, do not separate
+INCLUDE "engine/player_step.asm"
+INCLUDE "engine/load_map_part.asm"
+; end linked section
 
 
 SECTION "Introduction", ROMX

@@ -95,19 +95,19 @@ UpdateOverworldMap: ; d536 (3:5536)
 	ret nz
 ; step right
 	call .ScrollOverworldMapRight
-	call LoadMapPart
+	call _LoadMapPart
 	jp ScrollMapLeft
 .stepDown
 	call .ScrollOverworldMapDown
-	call LoadMapPart
+	call _LoadMapPart
 	jp ScrollMapUp
 .stepUp
 	call .ScrollOverworldMapUp
-	call LoadMapPart
+	call _LoadMapPart
 	jp ScrollMapDown
 .stepLeft
 	call .ScrollOverworldMapLeft
-	call LoadMapPart
+	call _LoadMapPart
 	jp ScrollMapRight
 
 .ScrollOverworldMapDown: ; d571 (3:5571)
