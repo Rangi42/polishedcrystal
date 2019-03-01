@@ -42,7 +42,6 @@ hConnectedMapWidth EQU $ffb0
 
 hMapBorderBlock     EQU $ffad
 hMapWidthPlus6      EQU $ffae
-hTilesetDataAddress EQU $ffaf
 
 hPredefTemp        EQU $ffb1
 
