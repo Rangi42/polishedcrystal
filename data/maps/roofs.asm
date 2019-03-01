@@ -12,7 +12,7 @@ MapGroupRoofs:
 	db -1 ; group 8 (Azalea Town)
 	db -1 ; group 9 (Lake of Rage)
 	db  1 ; group 10 (Violet City)
-	db  5 ; group 11 (Goldenrod City)
+	db -1 ; group 11 (Goldenrod City)
 	db -1 ; group 12
 	db -1 ; group 13
 	db -1 ; group 14
@@ -21,7 +21,7 @@ MapGroupRoofs:
 	db -1 ; group 17
 	db -1 ; group 18
 	db  4 ; group 19 (Route 28)
-	db  6 ; group 20 (Ecruteak Shrine)
+	db -1 ; group 20 (Ecruteak Shrine)
 	db -1 ; group 21
 	db  3 ; group 22 (Cianwood City)
 	db -1 ; group 23
@@ -45,5 +45,3 @@ INCBIN "gfx/tilesets/roofs/1.2bpp"
 INCBIN "gfx/tilesets/roofs/2.2bpp"
 INCBIN "gfx/tilesets/roofs/3.2bpp"
 INCBIN "gfx/tilesets/roofs/4.2bpp"
-INCBIN "gfx/tilesets/roofs/5.2bpp"
-INCBIN "gfx/tilesets/roofs/6.2bpp"
