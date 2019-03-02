@@ -88,6 +88,14 @@ endc
 .LoadPokeballTiles: ; 8c2a0
 ; Load the tiles used in the Pokeball Graphic that fills the screen
 ; at the start of every Trainer battle.
+	ld a, $1
+	ld [rVBK], a
+	ld de, .TrainerBattlePokeballTiles
+	ld hl, VTiles3 tile $fe
+	lb bc, BANK(.TrainerBattlePokeballTiles), 2
+	call Request2bpp
+	xor a
+	ld [rVBK], a
 	ld de, .TrainerBattlePokeballTiles
 	ld hl, VTiles0 tile $fe
 	lb bc, BANK(.TrainerBattlePokeballTiles), 2
