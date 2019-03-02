@@ -1381,7 +1381,7 @@ SafeguardProtectText: ; 0x81733
 
 MagnitudeText: ; 0x81751
 	text "Magnitude @"
-	deciram wd265, 1, 1
+	deciram wd265, 1, 2
 	text "!"
 	prompt
 ; 0x81764
