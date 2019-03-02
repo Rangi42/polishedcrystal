@@ -684,7 +684,7 @@ StartMenu_PrintBugContestStatus: ; 24be7
 	call PlaceString
 	hlcoord 8, 5
 	ld de, wParkBallsRemaining
-	lb bc, PRINTNUM_RIGHTALIGN | 1, 2
+	lb bc, PRINTNUM_LEFTALIGN | 1, 2
 	call PrintNum
 	hlcoord 1, 1
 	ld de, .Caught
@@ -1137,7 +1137,7 @@ DisplayDexEntry: ; 4424d
 	call Mul16
 	ld de, hTmpd
 	hlcoord 11, 7
-	lb bc, 2, PRINTNUM_RIGHTALIGN | 5
+	lb bc, 2, PRINTNUM_LEFTALIGN | 5
 	call PrintNum
 	pop hl
 	jr .skip_height
@@ -1178,7 +1178,7 @@ DisplayDexEntry: ; 4424d
 	call Mul16
 	ld de, hTmpd
 	hlcoord 11, 9
-	lb bc, 2, PRINTNUM_RIGHTALIGN | 5
+	lb bc, 2, PRINTNUM_LEFTALIGN | 5
 	call PrintNum
 	jr .skip_weight
 
@@ -1188,7 +1188,7 @@ DisplayDexEntry: ; 4424d
 	ld d, h
 	ld e, l
 	hlcoord 11, 9
-	lb bc, 2, PRINTNUM_RIGHTALIGN | 5
+	lb bc, 2, PRINTNUM_LEFTALIGN | 5
 	call PrintNum
 	pop de
 

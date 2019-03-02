@@ -849,7 +849,7 @@ TN_PrintLV:
 	ld de, .str_atlv
 	call PlaceString
 	ld de, wBuffer2
-	lb bc, PRINTNUM_RIGHTALIGN | 1, 3
+	lb bc, PRINTNUM_LEFTALIGN | 1, 3
 	hlcoord 12, 9
 	jp PrintNum
 .hatched

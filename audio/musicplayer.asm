@@ -741,7 +741,7 @@ DrawPitchTransposition:
 .continue
 	ld [hl], "P"
 	inc hl
-	lb bc, PRINTNUM_RIGHTALIGN | 1, 2
+	lb bc, PRINTNUM_LEFTALIGN | 1, 2
 	ld de, wPitchTransposition
 	jr _PrintSignedNum
 
@@ -758,7 +758,7 @@ DrawTempoAdjustment:
 .continue
 	ld [hl], "T"
 	inc hl
-	lb bc, PRINTNUM_RIGHTALIGN | 1, 3
+	lb bc, PRINTNUM_LEFTALIGN | 1, 3
 	ld de, wTempoAdjustment
 _PrintSignedNum:
 	bit 7, a

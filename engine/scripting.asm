@@ -1948,7 +1948,7 @@ Script_readmoney:
 	call ResetStringBuffer1
 	call GetMoneyAccount
 	ld hl, wStringBuffer1
-	lb bc, PRINTNUM_RIGHTALIGN | 3, 6
+	lb bc, PRINTNUM_LEFTALIGN | 3, 6
 	call PrintNum
 	ld de, wStringBuffer1
 	jp ConvertMemToText
@@ -1959,7 +1959,7 @@ Script_readcoins:
 	call ResetStringBuffer1
 	ld hl, wStringBuffer1
 	ld de, wCoins
-	lb bc, PRINTNUM_RIGHTALIGN | 2, 6
+	lb bc, PRINTNUM_LEFTALIGN | 2, 6
 	call PrintNum
 	ld de, wStringBuffer1
 	jp ConvertMemToText
@@ -1970,7 +1970,7 @@ Script_RAM2MEM:
 	call ResetStringBuffer1
 	ld hl, wStringBuffer1
 	ld de, wScriptVar
-	lb bc, PRINTNUM_RIGHTALIGN | 1, 3
+	lb bc, PRINTNUM_LEFTALIGN | 1, 3
 	call PrintNum
 	ld de, wStringBuffer1
 	jp ConvertMemToText

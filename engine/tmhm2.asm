@@ -200,7 +200,7 @@ TMHM_DisplayPocketItems: ; 2c9e2 (b:49e2)
 	ld [hl], "H"
 	inc hl
 	ld de, wd265
-	lb bc, PRINTNUM_RIGHTALIGN | 1, 2
+	lb bc, PRINTNUM_LEFTALIGN | 1, 2
 	call PrintNum
 	pop af
 	ld [wd265], a

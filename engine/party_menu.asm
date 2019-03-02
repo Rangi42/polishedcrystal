@@ -251,10 +251,10 @@ PlacePartyMonLevel: ; 50176
 	jr nc, .ThreeDigits
 	ld a, "<LV>"
 	ld [hli], a
-	lb bc, PRINTNUM_RIGHTALIGN | 1, 2
+	lb bc, PRINTNUM_LEFTALIGN | 1, 2
 	; jr .okay
 .ThreeDigits:
-	lb bc, PRINTNUM_RIGHTALIGN | 1, 3
+	lb bc, PRINTNUM_LEFTALIGN | 1, 3
 ; .okay
 	call PrintNum
 

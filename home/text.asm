@@ -860,7 +860,7 @@ Text_PrintNum::
 	ld a, b
 	and $f0
 	swap a
-	set PRINTNUM_RIGHTALIGN_F, a
+	set PRINTNUM_LEFTALIGN_F, a
 	ld b, a
 	call PrintNum
 	ld b, h

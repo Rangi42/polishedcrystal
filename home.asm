@@ -1343,7 +1343,7 @@ PrintLevel:: ; 382d
 Print8BitNumRightAlign:: ; 3842
 	ld [wd265], a
 	ld de, wd265
-	ld b, PRINTNUM_RIGHTALIGN | 1
+	ld b, PRINTNUM_LEFTALIGN | 1
 	jp PrintNum
 ; 384d
 

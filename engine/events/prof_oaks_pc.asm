@@ -67,7 +67,7 @@ Rate: ; 0x26616
 	ld bc, ITEM_NAME_LENGTH
 	call ByteFill
 	pop hl
-	lb bc, PRINTNUM_RIGHTALIGN | 1, 3
+	lb bc, PRINTNUM_LEFTALIGN | 1, 3
 	jp PrintNum
 
 FindOakRating: ; 0x2666b
