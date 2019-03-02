@@ -22,6 +22,13 @@ _PrintNum:: ; c4c7
 	res PRINTNUM_MONEY_F, b ; 100xxxxx or 010xxxxx
 
 .main
+	bit PRINTNUM_RIGHTALIGN_F, b
+	jr z, .continue
+	ld a, c
+	dec a
+	jr nz, .continue
+	inc c
+.continue
 	ld a, c
 	dec a
 	jr z, .one
