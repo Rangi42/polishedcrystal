@@ -439,8 +439,9 @@ wEastConnectionStripXOffset:: ds 1
 wEastConnectionWindow:: ds 2
 
 wTilesetHeader::
-wTilesetBank:: ds 1
-wTilesetAddress:: ds 2
+wTilesetGFXBank:: ds 1
+wTilesetGFXAddress:: ds 2
+wTilesetGFX2Address:: ds 2
 wTilesetBlocksBank:: ds 1
 wTilesetBlocksAddress:: ds 2
 wTilesetCollisionBank:: ds 1
@@ -448,6 +449,7 @@ wTilesetCollisionAddress:: ds 2
 wTilesetAttributesBank:: ds 1
 wTilesetAttributesAddress:: ds 2
 wTilesetAnim:: ds 2 ; bank 3f
+wTilesetHeaderEnd::
 
 wEvolvableFlags:: flag_array PARTY_LENGTH
 

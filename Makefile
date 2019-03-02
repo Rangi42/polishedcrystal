@@ -69,7 +69,7 @@ data/pokemon/egg_moves.o \
 data/pokemon/evos_attacks.o \
 data/maps/map_data.o \
 data/text/common.o \
-data/tileset_data.o \
+data/tilesets.o \
 engine/credits.o \
 engine/events.o \
 gfx/pics.o \
