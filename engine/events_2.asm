@@ -104,11 +104,12 @@ PlaceMapNameSign:: ; b8098 (2e:4098)
 	and a
 	jr z, .disappear
 	dec [hl]
-	cp 57
+	cp 59
 	ret nc
-	cp 56
+	sub 57
 	jr c, .skip2
-	call LoadMapNameSignGFX
+	and a
+	jp nz, LoadMapNameSignGFX
 	call InitMapNameFrame
 	farcall HDMATransfer_OnlyTopFourRows
 .skip2
