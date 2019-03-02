@@ -166,4 +166,6 @@ hFastMusicUpdate   EQU $fff9
 
 hRequestOpaque1bpp EQU $fffb
 
+hTilesetGFXBank EQU $fffc
+
 HRAM_END EQU $ffff

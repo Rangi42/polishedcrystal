@@ -1215,19 +1215,17 @@ UpdateBGMapColumn:: ; 27f8
 ; 2816
 
 LoadTileset:: ; 2821
-	ld hl, wTilesetAddress
+	ld hl, wTilesetGFXAddress
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	ld a, [wTilesetBank]
-	ld e, a
+	ld a, [wTilesetGFXBank]
+	ld [hTilesetGFXBank], a
 
-	ld a, [rSVBK]
-	push af
-	ld a, $6
+	ld a, BANK(wDecompressScratch)
 	ld [rSVBK], a
 
-	ld a, e
+	ld a, [hTilesetGFXBank]
 	ld de, wDecompressScratch
 	call FarDecompress
 
@@ -1236,20 +1234,41 @@ LoadTileset:: ; 2821
 	ld bc, $7f tiles
 	rst CopyBytes
 
-	ld a, [rVBK]
-	push af
 	ld a, $1
 	ld [rVBK], a
 
 	ld hl, wDecompressScratch + $80 tiles
-	ld de, VTiles2
+	ld de, VTiles5
 	ld bc, $80 tiles
 	rst CopyBytes
 
-	pop af
+	ld a, $1
+	ld [rSVBK], a
+
+	ld hl, wTilesetGFX2Address
+	ld a, [hli]
+	and a
+	jr z, .no_gfx2
+	ld h, [hl]
+	ld l, a
+
+	ld a, BANK(wDecompressScratch)
+	ld [rSVBK], a
+
+	ld a, [hTilesetGFXBank]
+	ld de, wDecompressScratch
+	call FarDecompress
+
+	ld hl, wDecompressScratch
+	ld de, VTiles4
+	ld bc, $80 tiles
+	rst CopyBytes
+
+.no_gfx2
+	xor a
 	ld [rVBK], a
 
-	pop af
+	inc a
 	ld [rSVBK], a
 
 	ld a, [wTileset]
@@ -2225,12 +2244,13 @@ LoadTilesetHeader:: ; 2d27
 	push bc
 
 	ld hl, Tilesets
-	ld bc, Tileset00End - Tileset00
+	ld bc, wTilesetHeaderEnd - wTilesetHeader
 	ld a, [wTileset]
+	dec a
 	rst AddNTimes
 
 	ld de, wTilesetHeader
-	ld bc, Tileset00End - Tileset00
+	ld bc, wTilesetHeaderEnd - wTilesetHeader
 
 	ld a, BANK(Tilesets)
 	call FarCopyBytes
