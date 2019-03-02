@@ -8650,6 +8650,7 @@ BattleCommand_GetMagnitude: ; 37991
 	inc hl
 	ld a, [hl]
 	ld [wTypeMatchup], a
+	ld [wd265], a
 	call BattleCommand_MoveDelay
 	ld hl, MagnitudeText
 	call StdBattleTextBox
