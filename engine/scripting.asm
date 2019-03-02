@@ -936,7 +936,7 @@ Script_playsound:
 	call GetScriptByte
 	ld e, a
 	ld d, 0
-	jp PlaySFX
+	jp WaitPlaySFX
 
 Script_waitsfx:
 	jp WaitSFX
