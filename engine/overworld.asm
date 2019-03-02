@@ -259,28 +259,16 @@ GetMonSprite: ; 14259
 
 _DoesSpriteHaveFacings:: ; 142a7
 ; Checks to see whether we can apply a facing to a sprite.
-; Returns carry for walking sprites, zero for standing, Pokémon, or variable sprites.
+; Returns zero for Pokémon sprites, carry for the rest.
 	cp SPRITE_POKEMON
-	jr nc, .still
-
-	push hl
-	push bc
-	ld hl, SpriteHeaders + SPRITEHEADER_TYPE ; type
-	dec a
-	ld c, a
-	ld b, 0
-	ld a, NUM_SPRITEHEADER_FIELDS
-	rst AddNTimes
-	ld a, [hl]
-	pop bc
-	pop hl
-	cp STANDING_SPRITE
-	jr z, .still
-	and a
+	jr c, .facings
+	cp SPRITE_VARS
+	jr nc, .facings
+	scf
 	ret
 
-.still
-	scf
+.facings
+	and a
 	ret
 ; 142c4
 
