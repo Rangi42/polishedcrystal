@@ -1276,7 +1276,8 @@ LoadTileset:: ; 2821
 	jr z, .load_roof
 	cp TILESET_JOHTO_MODERN
 	jr z, .load_roof
-	jr .skip_roof
+	cp TILESET_JOHTO_OVERCAST
+	jr nz, .skip_roof
 
 .load_roof
 	farcall LoadMapGroupRoof
