@@ -1478,10 +1478,11 @@ MoveScreenLoop:
 	ld b, 0
 	ld hl, wMoveScreenMoves
 	add hl, bc
-	ld a, [wMoveScreenMode]
-	cp MOVESCREEN_NEWMOVE
 	ld a, [hl]
 	ld [wMoveScreenSelectedMove], a
+	ld a, [wMoveScreenMode]
+	cp MOVESCREEN_NEWMOVE
+	ld a, c
 	jr nz, .ok
 	push bc
 	call IsHMMove
@@ -1495,6 +1496,7 @@ MoveScreenLoop:
 	jr .outer_loop
 .ok
 	inc a
+	and a
 	ret
 .pressed_b
 	ld de, SFX_READ_TEXT_2
