@@ -2306,6 +2306,8 @@ FaintYourPokemon: ; 3cef1
 	ld a, [wBattleMonSpecies]
 	ld b, a
 	farcall PlayFaintingCry
+	ld de, SFX_KINESIS
+	call PlaySFX
 	call PlayerMonFaintedAnimation
 	hlcoord 9, 7
 	lb bc, 5, 11
@@ -3055,10 +3057,10 @@ PlayerMonFaintedAnimation: ; 3d43b
 	; fallthrough
 
 MonFaintedAnimation: ; 3d444
-	ld a, [InputFlags]
+	ld a, [wInputFlags]
 	push af
 	set 6, a
-	ld [InputFlags], a
+	ld [wInputFlags], a
 	ld b, 7
 
 .OuterLoop:
@@ -3092,8 +3094,7 @@ MonFaintedAnimation: ; 3d444
 	add hl, bc
 	ld de, .Spaces
 	call PlaceString
-	ld c, 2
-	call DelayFrames
+	call ApplyTilemapInVBlank
 	pop hl
 	pop de
 	pop bc
@@ -3101,7 +3102,7 @@ MonFaintedAnimation: ; 3d444
 	jr nz, .OuterLoop
 
 	pop af
-	ld [InputFlags], a
+	ld [wInputFlags], a
 	ret
 ; 3d488
 
