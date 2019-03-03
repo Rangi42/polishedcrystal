@@ -205,7 +205,7 @@ UserCanLoseItem::
 	ld de, 2
 	ld hl, .StuckItems
 	call IsInArray
-	jr nc, .pop_and_ret_z
+	jr nc, .pop_and_ret_nz
 	inc hl
 	ld a, [hBattleTurn]
 	and a
@@ -216,6 +216,7 @@ UserCanLoseItem::
 	ld a, [de]
 	cp [hl]
 	jr nz, .pop_and_ret_z
+.pop_and_ret_nz
 	pop bc
 	pop de
 	pop hl
