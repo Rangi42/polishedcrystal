@@ -167,7 +167,7 @@ PlaceNextChar::
 
 NextChar::
 	inc de
-	jp PlaceNextChar
+	jr PlaceNextChar
 
 CheckDict::
 	cp $60
@@ -349,12 +349,6 @@ PlaceEnemysName::
 	and a
 	jr nz, .linkbattle
 
-	ld a, [wTrainerClass]
-	cp RIVAL1
-	jr z, .rival
-	cp RIVAL2
-	jr z, .rival
-
 	ld de, wOTClassName
 	call PlaceString
 	ld h, b
@@ -365,18 +359,6 @@ PlaceEnemysName::
 	farcall Battle_GetTrainerName
 	pop hl
 	ld de, wStringBuffer1
-	jr PlaceCommandCharacter
-
-.rival:
-	ld de, wOTClassName
-	call PlaceString
-	ld h, b
-	ld l, c
-	ld de, .SpaceText
-	call PlaceString
-	ld h, b
-	ld l, c
-	ld de, wRivalName
 	jr PlaceCommandCharacter
 
 .linkbattle:
