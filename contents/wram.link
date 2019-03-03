@@ -35,9 +35,11 @@ WRAMX $2
 	"Music Player Notes"
 
 WRAMX $3
+	org $d000
 	"Metatiles"
 
 WRAMX $4
+	org $d000
 	"Attributes"
 
 WRAMX $5
@@ -52,4 +54,4 @@ WRAMX $6
 
 WRAMX $7
 	org $d000
-	"WRAM 7"
+	"Window Stack"
