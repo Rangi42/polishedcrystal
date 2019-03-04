@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 
 """
-Generate a .png of a 32x32 metatileset from its corresponding 8x8 tileset,
-palette_map.asm file, and metatiles.bin file.
+Generate a .png of a metatileset from its tileset graphics, metatiles.bin, and
+attributes.bin files.
 """
 
 from __future__ import print_function
@@ -27,7 +27,6 @@ def rgb_bytes(rgbs):
 		yield px[1]
 		yield px[2]
 
-num_shades = 4
 default_rgb = (0xAB, 0xCD, 0xEF)
 
 RGBC = lambda c: c * 8 # c * 33 // 4 for BGB instead of VBA
@@ -66,9 +65,12 @@ def load_palette(filename):
 	return palette
 
 class Tileset(object):
+	WHITE, LIGHT, DARK, BLACK = range(4)
+
 	p_per_t = 8
 
-	def __init__(self, filename, palette_map):
+	def __init__(self, filename, attributes):
+		self.attributes = attributes
 		reader = png.Reader(filename=filename)
 		self.w, self.h, data, metadata = reader.read_flat()
 		self.wt, self.ht = self.w // Tileset.p_per_t, self.h // Tileset.p_per_t
@@ -90,17 +92,27 @@ class Tileset(object):
 			px = data[i*stride:(i+1)*stride][0]
 			if palette:
 				px = palette[px][0]
-			shade = px * num_shades // (2 ** bitdepth)
+			shade = 3 - 4 * px // (2 ** bitdepth)
+			assert 0 <= shade < 4
+			self.data.append(shade)
 
-			color4 = palette_map.color4(self.tile_id_of_px(i))
-			self.data.append(color4[shade])
-
-	def tile(self, i):
+	def tile(self, i, attr):
 		tile = []
+		if attr & Attributes.BANK1:
+			i |= 0x80
+		else:
+			i &= 0x7f
 		ty, tx = divmod(i, self.wt)
-		for r in range(Tileset.p_per_t):
+		color = self.attributes.colors[attr & Attributes.COLOR]
+		span = range(Tileset.p_per_t)
+		if attr & Attributes.YFLIP:
+			span = span[::-1]
+		for r in span:
 			start = ty*Tileset.p_per_t**2*self.wt + tx*Tileset.p_per_t + Tileset.p_per_t*self.wt*r
 			row = self.data[start:start+Tileset.p_per_t]
+			if attr & Attributes.XFLIP:
+				row = row[::-1]
+			row = [color[px] for px in row]
 			tile.extend(row)
 		if not tile:
 			tile = [default_rgb] * Tileset.p_per_t**2
@@ -111,20 +123,13 @@ class Tileset(object):
 		tw = Tileset.p_per_t
 		return (i // wt // (tw * tw) * wt) + (i // tw % wt)
 
-	def export_colored(self, filename):
-		with open(filename, 'wb') as file:
-			writer = png.Writer(self.w, self.h)
-			writer.write(file, chunk(rgb_bytes(self.data), self.w * 3))
-
-class PaletteMap(object):
-	color_constants = {
-		'GRAY': 0, 'RED': 1, 'GREEN': 2, 'WATER': 3,
-		'YELLOW': 4, 'BROWN': 5, 'ROOF': 6, 'TEXT': 7,
-		'PRIORITY_GRAY': 0, 'PRIORITY_RED': 1,
-		'PRIORITY_GREEN': 2, 'PRIORITY_WATER': 3,
-		'PRIORITY_YELLOW': 4, 'PRIORITY_BROWN': 5,
-		'PRIORITY_ROOF': 6, 'PRIORITY_TEXT': 7
-	}
+class Attributes(object):
+	GRAY, RED, GREEN, WATER, YELLOW, BROWN, ROOF, TEXT = range(8)
+	COLOR    = 0x07
+	BANK1    = 0x08
+	XFLIP    = 0x20
+	YFLIP    = 0x40
+	PRIORITY = 0x80
 
 	day_palette = staticmethod(lambda:
 		(lambda x=load_palette('gfx/tilesets/bg_tiles.pal'): x[8:11]+[x[0x29]]+x[12:16])())
@@ -236,28 +241,27 @@ class PaletteMap(object):
 	}
 
 	def __init__(self, filename, key, map_blk):
-		colors_lambda = PaletteMap.map_palettes.get(map_blk,
-			PaletteMap.tileset_palettes.get(key, PaletteMap.indoor_palette))
-		colors = colors_lambda()
-		assert len(colors) == 8
-		colors = {k: colors[v] for k, v in PaletteMap.color_constants.items()}
+		colors_lambda = Attributes.map_palettes.get(map_blk,
+			Attributes.tileset_palettes.get(key, Attributes.day_palette))
+		self.colors = colors_lambda()
+		assert len(self.colors) == 8
 		self.data = []
-		with open(filename, 'r') as file:
-			for line in file:
-				line = line.strip()
-				if line.startswith('tilepal '):
-					indexes = line[len('tilepal '):].split(',')[1:]
-					more_data = [colors[c.strip()][::-1] for c in indexes]
-					self.data.extend(more_data)
+		with open(filename, 'rb') as file:
+			while True:
+				tile_attrs = [ord(c) for c in file.read(Metatiles.t_per_m**2)]
+				if not len(tile_attrs):
+					break
+				self.data.append(tile_attrs)
 
 	def color4(self, i):
-		return self.data[i] if i < len(self.data) else [default_rgb] * 4
+		return self.colors[self.data[i]] if i < len(self.data) else [default_rgb] * 4
 
 class Metatiles(object):
 	t_per_m = 4
 
-	def __init__(self, filename, tileset):
+	def __init__(self, filename, tileset, attributes):
 		self.tileset = tileset
+		self.attributes = attributes
 		self.data = []
 		with open(filename, 'rb') as file:
 			i = 0
@@ -265,7 +269,8 @@ class Metatiles(object):
 				tile_indexes = [ord(c) for c in file.read(Metatiles.t_per_m**2)]
 				if not len(tile_indexes):
 					break
-				metatile = [tileset.tile(ti) for ti in tile_indexes]
+				attr_indexes = self.attributes.data[i]
+				metatile = [tileset.tile(ti, ta) for ti, ta in zip(tile_indexes, attr_indexes)]
 				self.data.append(metatile)
 				i += 1
 
@@ -301,14 +306,10 @@ class Metatiles(object):
 			writer = png.Writer(overall_w, overall_h)
 			writer.write(file, chunk(rgb_bytes(data), overall_w * 3))
 
-def process(key, tileset_name, palette_map_name, metatiles_name, map_blk):
-	palette_map = PaletteMap(palette_map_name, key, map_blk)
-	tileset = Tileset(tileset_name, palette_map)
-	metatiles = Metatiles(metatiles_name, tileset)
-
-	tileset_colored_name = tileset_name[:-4] + '.colored.png'
-	tileset.export_colored(tileset_colored_name)
-	print('Exported', tileset_colored_name)
+def process(key, tileset_name, metatiles_name, attributes_name, map_blk):
+	attributes = Attributes(attributes_name, key, map_blk)
+	tileset = Tileset(tileset_name, attributes)
+	metatiles = Metatiles(metatiles_name, tileset, attributes)
 
 	metatiles_colored_name = metatiles_name[:-4] + '.png'
 	metatiles.export_colored(metatiles_colored_name)
@@ -319,29 +320,32 @@ def main():
 	if len(sys.argv) in [2, 3]:
 		name = sys.argv[1]
 		tileset = 'gfx/tilesets/%s.2bpp.lz' % name
-		palette_map = 'gfx/tilesets/%s_palette_map.asm' % name
 		metatiles = 'data/tilesets/%s_metatiles.bin' % name
+		attributes = 'data/tilesets/%s_attributes.bin' % name
 		map_blk = sys.argv[2] if len(sys.argv) == 3 else None
 	elif len(sys.argv) in [4, 5]:
 		name = None
 		tileset = sys.argv[1]
-		palette_map = sys.argv[2]
-		metatiles = sys.argv[3]
+		metatiles = sys.argv[2]
+		attributes = sys.argv[3]
 		map_blk = sys.argv[4] if len(sys.argv) == 5 else None
 	else:
-		usage = '''Usage: %s tileset [palette_map.asm metatiles.bin map.blk]
+		usage = '''Usage: %s tileset [metatiles.bin attributes.bin map.blk]
        Generate a .png of a metatileset for viewing
 
-       If tileset is gfx/tilesets/##.{2bpp.lz,2bpp,png},
+       If tileset is gfx/tilesets/FOO.{2bpp.lz,2bpp,png},
        the other parameters will be inferred as
-       gfx/tilesets/##_palette_map.asm and data/tilesets/##_metatiles.bin.
+       data/tilesets/FOO_metatiles.bin and data/tilesets/FOO_attributes.bin.
 
-       If tileset is ##, it will first be inferred as
-       gfx/tilesets/##.2bpp.lz.
+       If tileset is FOO, it will first be inferred as
+       gfx/tilesets/FOO.2bpp.lz.
 
        If a map is specified, its unique palette may be used.'''
 		print(usage % sys.argv[0], file=sys.stderr)
 		sys.exit(1)
+
+	if tileset.endswith('.2bpp.lz') and not os.path.exists(tileset):
+		tileset = tileset[:-3]
 
 	if not tileset.endswith('.png'):
 		os.system('python gfx.py png %s' % tileset)
@@ -350,7 +354,7 @@ def main():
 	elif tileset.endswith('.2bpp.lz'):
 		tileset = tileset[:-8] + '.png'
 
-	process(name, tileset, palette_map, metatiles, map_blk)
+	process(name, tileset, metatiles, attributes, map_blk)
 
 if __name__ == '__main__':
 	main()
