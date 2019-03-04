@@ -5570,6 +5570,9 @@ BattleCommand_SelfStatDownHit:
 	pop bc
 	call LowerStat
 	call SwitchTurn
+	ld a, [wLoweredStat]
+	or $80
+	ld [wLoweredStat], a
 	call BattleCommand_StatDownMessage
 	jp SwitchTurn
 
@@ -6038,6 +6041,9 @@ BattleCommand_StatDownMessage:
 	call BattleTextBox
 	; Competitive/Defiant activates here to give proper messages. A bit awkward,
 	; but the alternative is to rewrite the stat-down logic.
+	ld a, [wLoweredStat]
+	and $80
+	ret nz
 	farjp RunEnemyStatIncreaseAbilities
 
 .stat
@@ -6045,7 +6051,7 @@ BattleCommand_StatDownMessage:
 	start_asm
 	ld hl, .fell
 	ld a, [wLoweredStat]
-	and $f0
+	and $70
 	ret z
 	ld hl, .sharplyfell
 	ret
