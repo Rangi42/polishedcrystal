@@ -31,9 +31,6 @@ INCBIN "gfx/frames/9.1bpp"
 BattleExtrasGFX:
 INCBIN "gfx/battle/hpexpbars.2bpp"
 
-BattleNoCaptureGFX:
-INCBIN "gfx/battle/nocapture.1bpp"
-
 GFX_Stats: ; f89b0
 INCBIN "gfx/stats/stats.2bpp"
 ; f8ac0
@@ -122,10 +119,6 @@ _LoadFontsBattleExtra:: ; fb4be
 	ld hl, VTiles2 tile BATTLEEXTRA_GFX_START
 	lb bc, BANK(BattleExtrasGFX), 32
 	call Get2bpp
-	ld de, BattleNoCaptureGFX
-	ld hl, VTiles0 tile "<NONO>"
-	lb bc, BANK(BattleNoCaptureGFX), 1
-	call Get1bpp
 ; fb4cc
 
 LoadFrame:: ; fb4cc
