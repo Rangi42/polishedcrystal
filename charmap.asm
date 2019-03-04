@@ -251,9 +251,9 @@ BATTLEEXTRA_GFX_START EQU $5f
 	charmap "…",        $f0
 	charmap "<PHONE>",  $f1
 	charmap "<BLACK>",  $f2
-	charmap "′",        $f3
-	charmap "″",        $f4
-	charmap "<NONO>",   $f5
+	charmap "<NONO>",   $f3
+	charmap "′",        $f4
+	charmap "″",        $f5
 	charmap "★",        $f6
 	charmap "↑",        $f7
 	charmap "↓",        $f8
