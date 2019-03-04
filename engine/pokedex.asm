@@ -1186,7 +1186,7 @@ Pokedex_DrawOptionScreenBG: ; 4087c (10:487c)
 	jp PlaceString
 
 .Title: ; 408b2
-	db $3b, " Option ", $3c, $ff
+	db $3b, " Optio", "n ", $3c, $ff
 
 .Modes: ; 408bd
 	db   "Johto Mode"
