@@ -1,190 +1,190 @@
 SongInfo:
 	; title, origin, composer, additional credits
-	db "O","p","e","n","i","n","g","@", ORIGIN_C, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
-	db "T","i","t","l","e"," ","S","c","r","e","e","n","@", ORIGIN_C, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
-	db "M","a","i","n"," ","M","e","n","u","@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
-	db "N","e","w"," ","B","a","r","k"," ","T","o","w","n","@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA_GO_ICHINOSE, COMPOSER_NONE
-	db "M","o","m","@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
-	db "E","l","m","'s"," ","L","a","b","@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
-	db "L","y","r","a"," ","A","p","p","e","a","r","s","@", ORIGIN_HGSS, COMPOSER_SHOTA_KAGEYAMA, COMPOSER_MMMMMM
-	db "V","s",".","R","i","v","a","l","@", ORIGIN_XY, COMPOSER_SHOTA_KAGEYAMA, COMPOSER_MMMMMM
-	db "L","y","r","a"," ","D","e","p","a","r","t","s","@", ORIGIN_HGSS, COMPOSER_SHOTA_KAGEYAMA, COMPOSER_MMMMMM
-	db "R","o","u","t","e"," ","2","9","@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
-	db "V","s",".","J","o","h","t","o"," ","W","i","l","d","@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
-	db "V","s",".","J","o","h","t","o"," ","W","i","l","d"," ","N","i","g","h","t","@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
-	db "V","i","c","t","o","r","y","!"," ","W","i","l","d","@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
-	db "C","h","e","r","r","y","g","r","o","v","e"," ","C","i","t","y","@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
-	db "F","o","l","l","o","w"," ","M","e","!","@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
-	db "P","o","k","é","m","o","n"," ","C","e","n","t","e","r","@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
-	db "H","e","a","l"," ","P","o","k","é","m","o","n","@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
-	db "C","a","p","t","u","r","e","d"," ","P","o","k","é","m","o","n","@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
-	db "S","p","o","t","t","e","d","!"," ","Y","o","u","n","g","s","t","e","r","@", ORIGIN_GS, COMPOSER_GO_ICHINOSE, COMPOSER_NONE
-	db "V","s",".","J","o","h","t","o"," ","T","r","a","i","n","e","r","@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
-	db "V","i","c","t","o","r","y","!"," ","T","r","a","i","n","e","r","@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
-	db "R","o","u","t","e"," ","3","0","@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
-	db "V","i","o","l","e","t"," ","C","i","t","y","@", ORIGIN_GS, COMPOSER_GO_ICHINOSE, COMPOSER_NONE
-	db "S","p","r","o","u","t"," ","T","o","w","e","r","@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
-	db "S","p","o","t","t","e","d","!"," ","S","a","g","e","@", ORIGIN_GS, COMPOSER_GO_ICHINOSE, COMPOSER_NONE
-	db "P","o","k","é"," ","M","a","r","t","@", ORIGIN_HGSS, COMPOSER_GO_ICHINOSE, COMPOSER_FROGGESTSPIRIT
-	db "H","i","d","d","e","n"," ","G","r","o","t","t","o","@", ORIGIN_B2W2, COMPOSER_GO_ICHINOSE, COMPOSER_MMMMMM
-	db "U","n","i","o","n"," ","C","a","v","e","@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
-	db "R","u","i","n","s"," ","o","f"," ","A","l","p","h","@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
-	db "U","n","o","w","n"," ","R","a","d","i","o","@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
-	db "A","z","a","l","e","a"," ","T","o","w","n","@", ORIGIN_GS, COMPOSER_GO_ICHINOSE, COMPOSER_NONE
-	db "S","p","o","t","t","e","d","!"," ","T","e","a","m"," ","R","o","c","k","e","t","@", ORIGIN_GS, COMPOSER_GO_ICHINOSE, COMPOSER_NONE
-	db "V","s",".","T","e","a","m"," ","R","o","c","k","e","t","@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
-	db "R","o","u","t","e"," ","3","4","@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
-	db "R","i","v","a","l"," ","A","p","p","e","a","r","s","@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
-	db "V","s",".","R","i","v","a","l","@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
-	db "R","i","v","a","l"," ","D","e","p","a","r","t","s","@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
-	db "E","v","o","l","u","t","i","o","n","@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
-	db "G","o","l","d","e","n","r","o","d"," ","C","i","t","y","@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
-	db "P","o","k","é","C","o","m"," ","C","e","n","t","e","r","@", ORIGIN_C, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
-	db "G","y","m","@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
-	db "V","s",".","J","o","h","t","o"," ","G","y","m"," ","L","e","a","d","e","r","@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
-	db "F","i","n","a","l"," ","P","o","k","é","m","o","n","@", ORIGIN_BW, COMPOSER_JUNICHI_MASUDA_GO_ICHINOSE, COMPOSER_MMMMMM
-	db "V","i","c","t","o","r","y","!"," ","G","y","m"," ","L","e","a","d","e","r","@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
-	db "P","o","k","é","m","o","n"," ","C","h","a","n","n","e","l","@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
-	db "B","u","e","n","a","'s"," ","P","a","s","s","w","o","r","d","@", ORIGIN_C, COMPOSER_MORIKAZU_AOKI, COMPOSER_NONE
-	db "G","a","m","e"," ","C","o","r","n","e","r","@", ORIGIN_GS, COMPOSER_GO_ICHINOSE, COMPOSER_NONE
-	db "B","i","c","y","c","l","e","@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
-	db "S","p","o","t","t","e","d","!"," ","L","a","s","s","@", ORIGIN_GS, COMPOSER_GO_ICHINOSE, COMPOSER_NONE
-	db "N","a","t","i","o","n","a","l"," ","P","a","r","k","@", ORIGIN_GS, COMPOSER_GO_ICHINOSE, COMPOSER_NONE
-	db "B","u","g","-","C","a","t","c","h","i","n","g"," ","C","o","n","t","e","s","t","@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
-	db "B","u","g","-","C","a","t","c","h","i","n","g"," ","C","o","n","t","e","s","t","R","a","n","k","i","n","g","@", ORIGIN_GS, COMPOSER_GO_ICHINOSE, COMPOSER_NONE
-	db "E","c","r","u","t","e","a","k"," ","C","i","t","y","@", ORIGIN_GS, COMPOSER_GO_ICHINOSE, COMPOSER_NONE
-	db "D","a","n","c","e"," ","T","h","e","a","t","e","r","@", ORIGIN_GS, COMPOSER_GO_ICHINOSE, COMPOSER_NONE
-	db "S","p","o","t","t","e","d","!"," ","K","i","m","o","n","o"," ","G","i","r","l","@", ORIGIN_GS, COMPOSER_GO_ICHINOSE, COMPOSER_NONE
-	db "B","u","r","n","e","d"," ","T","o","w","e","r","@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
-	db "E","u","s","i","n","e"," ","A","p","p","e","a","r","s","@", ORIGIN_C, COMPOSER_MORIKAZU_AOKI, COMPOSER_NONE
-	db "P","r","o","f",".","O","a","k","'s"," ","P","o","k","é","m","o","n"," "," "," ","T","a","l","k","@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
-	db "R","o","u","t","e"," ","3","8","@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
-	db "P","o","k","é","m","o","n"," ","M","a","r","c","h","@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
-	db "O","l","i","v","i","n","e"," ","L","i","g","h","t","h","o","u","s","e","@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
-	db "S","u","r","f","i","n","g"," ","J","o","h","t","o","@", ORIGIN_GS, COMPOSER_GO_ICHINOSE, COMPOSER_NONE
-	db "C","i","a","n","w","o","o","d"," ","C","i","t","y","@", ORIGIN_HGSS, COMPOSER_GO_ICHINOSE, COMPOSER_MMMMMM
-	db "R","o","u","t","e"," ","4","7","@", ORIGIN_HGSS, COMPOSER_HITOMI_SATO, COMPOSER_MMMMMM
-	db "J","e","s","s","i","e"," ","&"," ","J","a","m","e","s"," "," "," "," "," "," ","A","p","p","e","a","r","@", ORIGIN_Y, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
-	db "S","a","f","a","r","i"," ","Z","o","n","e"," ","G","a","t","e","@", ORIGIN_HGSS, COMPOSER_HITOMI_SATO, COMPOSER_MMMMMM
-	db "S","u","r","f","i","n","g"," ","P","i","k","a","c","h","u","@", ORIGIN_Y, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
-	db "R","o","u","t","e"," ","4","2","@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
-	db "S","t","a","r","k"," ","M","o","u","n","t","a","i","n","@", ORIGIN_DPPT, COMPOSER_GO_ICHINOSE, COMPOSER_FROGGESTSPIRIT
-	db "R","o","c","k","e","t"," ","R","a","d","i","o","@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
-	db "R","o","c","k","e","t"," ","H","i","d","e","o","u","t","@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
-	db "S","p","o","t","t","e","d","!"," ","P","o","k","é","m","a","n","i","a","c","@", ORIGIN_GS, COMPOSER_GO_ICHINOSE, COMPOSER_NONE
-	db "R","a","d","i","o"," ","T","o","w","e","r"," ","O","c","c","u","-"," "," "," ","p","i","e","d","!","@", ORIGIN_GS, COMPOSER_GO_ICHINOSE, COMPOSER_NONE
-	db "I","c","e"," ","P","a","t","h","@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
-	db "D","r","a","g","o","n","'s"," ","D","e","n","@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
-	db "C","l","a","i","r","@", ORIGIN_C, COMPOSER_MORIKAZU_AOKI, COMPOSER_NONE
-	db "R","o","u","t","e"," ","4","@", ORIGIN_BW, COMPOSER_JUNICHI_MASUDA, COMPOSER_MMMMMM
-	db "B","e","l","l"," ","T","o","w","e","r","@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
-	db "V","s",".","S","u","i","c","u","n","e","@", ORIGIN_C, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
-	db "R","o","u","t","e"," ","2","6","@", ORIGIN_GS, COMPOSER_GO_ICHINOSE, COMPOSER_NONE
-	db "I","n","d","i","g","o"," ","P","l","a","t","e","a","u","@", ORIGIN_RB, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
-	db "V","i","c","t","o","r","y"," ","R","o","a","d","@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
-	db "I","n","d","i","g","o"," ","P","l","a","t","e","a","u","@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
-	db "V","s",".","E","l","i","t","e"," ","F","o","u","r","@", ORIGIN_SM, COMPOSER_JUNICHI_MASUDA, COMPOSER_MMMMMM
-	db "V","s",".","C","h","a","m","p","i","o","n","@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
-	db "H","a","l","l"," ","o","f"," ","F","a","m","e","@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
-	db "S",".","S",".","A","q","u","a","@", ORIGIN_GS, COMPOSER_GO_ICHINOSE, COMPOSER_NONE
-	db "S","u","r","f","i","n","g"," ","K","a","n","t","o","@", ORIGIN_RB, COMPOSER_GO_ICHINOSE, COMPOSER_NONE
-	db "V","e","r","m","i","l","i","o","n"," ","C","i","t","y","@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
-	db "V","s",".","K","a","n","t","o"," ","G","y","m"," ","L","e","a","d","e","r","@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
-	db "L","a","v","e","n","d","e","r"," ","T","o","w","n","@", ORIGIN_RB, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
-	db "P","o","k","é","m","o","n"," ","T","o","w","e","r","@", ORIGIN_RB, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
-	db "L","a","v","e","n","d","e","r"," ","T","o","w","n","@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA_GO_ICHINOSE, COMPOSER_NONE
-	db "V","s",".","K","a","n","t","o"," ","W","i","l","d","@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
-	db "C","e","r","u","l","e","a","n"," ","C","i","t","y","@", ORIGIN_HGSS, COMPOSER_JUNICHI_MASUDA, COMPOSER_FROGGESTSPIRIT
-	db "B","i","c","y","c","l","e","@", ORIGIN_RB, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
-	db "R","o","u","t","e"," ","2","4","@", ORIGIN_HGSS, COMPOSER_JUNICHI_MASUDA, COMPOSER_FROGGESTSPIRIT
-	db "M","a","g","n","e","t"," ","T","r","a","i","n","@", ORIGIN_GS, COMPOSER_GO_ICHINOSE, COMPOSER_NONE
-	db "B","l","a","c","k"," ","C","i","t","y","@", ORIGIN_BW, COMPOSER_SHOTA_KAGEYAMA, COMPOSER_MMMMMM
-	db "P","o","k","é","m","o","n"," ","L","u","l","l","a","b","y","@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
-	db "C","e","l","a","d","o","n"," ","C","i","t","y","@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
-	db "G","a","m","e"," ","C","o","r","n","e","r","@", ORIGIN_DPPT, COMPOSER_JUNICHI_MASUDA_GO_ICHINOSE, COMPOSER_FROGGESTSPIRIT
-	db "C","a","n","a","l","a","v","e"," ","C","i","t","y","@", ORIGIN_DPPT, COMPOSER_GO_ICHINOSE, COMPOSER_FROGGESTSPIRIT
-	db "B","i","c","y","c","l","e","@", ORIGIN_XY, COMPOSER_SHOTA_KAGEYAMA, COMPOSER_SHANTYTOWN
-	db "R","o","u","t","e"," ","1","1","@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
-	db "P","o","k","é"," ","F","l","u","t","e","@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
-	db "R","o","u","t","e"," ","2","0","9","@", ORIGIN_DPPT, COMPOSER_HITOMI_SATO, COMPOSER_FROGGESTSPIRIT
-	db "R","o","u","t","e"," ","2","1","0","@", ORIGIN_DPPT, COMPOSER_GO_ICHINOSE, COMPOSER_FROGGESTSPIRIT
-	db "R","o","u","t","e"," ","2","2","5","@", ORIGIN_DPPT, COMPOSER_GO_ICHINOSE, COMPOSER_FROGGESTSPIRIT
-	db "V","s",".","W","i","l","d"," ","P","o","k","é","m","o","n","@", ORIGIN_GO, COMPOSER_JUNICHI_MASUDA, COMPOSER_SHOCKSLAYER
-	db "D","i","g","l","e","t","t","'s"," ","C","a","v","e","@", ORIGIN_RB, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
-	db "V","i","r","i","d","i","a","n"," ","F","o","r","e","s","t","@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA_GO_ICHINOSE, COMPOSER_NONE
-	db "S","p","o","t","t","e","d","!"," ","H","i","k","e","r","@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
-	db "P","e","w","t","e","r"," ","C","i","t","y","@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
-	db "R","o","u","t","e"," ","3","@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
-	db "S","p","o","t","t","e","d","!"," ","O","f","f","i","c","e","r","@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
-	db "M","t",".","M","o","o","n","@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
-	db "M","t",".","M","o","o","n"," ","S","q","u","a","r","e","@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
-	db "R","o","u","t","e"," ","1","@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
-	db "P","a","l","l","e","t"," ","T","o","w","n","@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
-	db "P","r","o","f",".","O","a","k"," ","A","p","p","e","a","r","s","@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
-	db "S","p","o","t","t","e","d","!"," ","B","e","a","u","t","y","@", ORIGIN_GS, COMPOSER_GO_ICHINOSE, COMPOSER_NONE
-	db "V","s",".","K","a","n","t","o"," ","T","r","a","i","n","e","r","@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
-	db "C","i","n","n","a","b","a","r"," ","I","s","l","a","n","d","@", ORIGIN_HGSS, COMPOSER_JUNICHI_MASUDA, COMPOSER_FROGGESTSPIRIT
-	db "C","i","n","n","a","b","a","r"," ","M","a","n","s","i","o","n","@", ORIGIN_RB, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
-	db "V","s",".","T","r","a","i","n","e","r","@", ORIGIN_DPPT, COMPOSER_JUNICHI_MASUDA, COMPOSER_FROGGESTSPIRIT
-	db "S","c","a","r","y"," ","H","o","u","s","e","@", ORIGIN_XY, COMPOSER_MINAKO_ADACHI, COMPOSER_MMMMMM
-	db "E","t","e","r","n","a"," ","F","o","r","e","s","t","@", ORIGIN_DPPT, COMPOSER_HITOMI_SATO, COMPOSER_FROGGESTSPIRIT
-	db "M","t",".","C","h","i","m","n","e","y","@", ORIGIN_RSE, COMPOSER_GO_ICHINOSE, COMPOSER_MMMMMM
-	db "M","t",".","P","y","r","e","@", ORIGIN_RSE, COMPOSER_JUNICHI_MASUDA, COMPOSER_MMMMMM
-	db "B","a","t","t","l","e"," ","T","o","w","e","r","@", ORIGIN_C, COMPOSER_MORIKAZU_AOKI, COMPOSER_NONE
-	db "B","a","t","t","l","e"," ","T","o","w","e","r"," ","L","o","b","b","y","@", ORIGIN_C, COMPOSER_MORIKAZU_AOKI, COMPOSER_NONE
-	db "V","s",".","T","r","a","i","n","e","r","@", ORIGIN_BW, COMPOSER_JUNICHI_MASUDA, COMPOSER_FROGGESTSPIRIT
-	db "V","s",".","F","r","o","n","t","i","e","r"," ","B","r","a","i","n","@", ORIGIN_RSE, COMPOSER_GO_ICHINOSE, COMPOSER_FROGGESTSPIRIT
-	db "Z","i","n","n","i","a"," ","A","p","p","e","a","r","s","@", ORIGIN_ORAS, COMPOSER_SHOTA_KAGEYAMA, COMPOSER_MMMMMM
-	db "R","o","u","t","e"," ","2","0","5","@", ORIGIN_DPPT, COMPOSER_HITOMI_SATO, COMPOSER_FROGGESTSPIRIT
-	db "S","u","r","f"," ","H","o","e","n","n","@", ORIGIN_RSE, COMPOSER_MORIKAZU_AOKI, COMPOSER_MONSTARULES
-	db "V","s",".","W","i","l","d","@", ORIGIN_SM, COMPOSER_JUNICHI_MASUDA, COMPOSER_MMMMMM
-	db "S","u","n","y","s","h","o","r","e"," ","C","i","t","y","@", ORIGIN_DPPT, COMPOSER_GO_ICHINOSE, COMPOSER_FROGGESTSPIRIT
-	db "V","s",".","T","r","a","i","n","e","r","@", ORIGIN_SM, COMPOSER_JUNICHI_MASUDA, COMPOSER_MMMMMM
-	db "R","o","u","t","e"," ","2","0","3","@", ORIGIN_DPPT, COMPOSER_GO_ICHINOSE, COMPOSER_FROGGESTSPIRIT
-	db "W","h","i","t","e"," ","T","r","e","e","h","o","l","l","o","w","@", ORIGIN_B2W2, COMPOSER_HITOMI_SATO, COMPOSER_MMMMMM
-	db "L","a","v","e","r","r","e"," ","C","i","t","y","@", ORIGIN_XY, COMPOSER_SHOTA_KAGEYAMA, COMPOSER_MMMMMM
-	db "R","o","u","t","e"," ","1","0","1","@", ORIGIN_RSE, COMPOSER_MORIKAZU_AOKI, COMPOSER_MMMMMM
-	db "E","v","e","r"," ","G","r","a","n","d","e"," ","C","i","t","y","@", ORIGIN_RSE, COMPOSER_GO_ICHINOSE, COMPOSER_MMMMMM
-	db "O","r","e","b","u","r","g","h"," ","G","a","t","e","@", ORIGIN_DPPT, COMPOSER_GO_ICHINOSE, COMPOSER_MMMMMM
-	db "R","o","u","t","e"," ","1","2","@", ORIGIN_BW, COMPOSER_HITOMI_SATO, COMPOSER_MMMMMM
-	db "R","o","a","d"," ","t","o"," ","R","e","v","e","r","s","a","l"," "," "," "," ","M","o","u","n","t","a","i","n","@", ORIGIN_B2W2, COMPOSER_HITOMI_SATO, COMPOSER_MMMMMM
-	db "V","s",".","Z","i","n","n","i","a","@", ORIGIN_ORAS, COMPOSER_SHOTA_KAGEYAMA, COMPOSER_MMMMMM
-	db "W","a","l","l","y"," ","A","p","p","e","a","r","s","@", ORIGIN_ORAS, COMPOSER_SHOTA_KAGEYAMA, COMPOSER_MMMMMM
-	db "V","s",".","W","a","l","l","y","@", ORIGIN_ORAS, COMPOSER_MINAKO_ADACHI, COMPOSER_MMMMMM
-	db "S","p","i","k","y","-","E","a","r","e","d"," ","P","i","c","h","u","@", ORIGIN_HGSS, COMPOSER_SHOTA_KAGEYAMA, COMPOSER_MMMMMM
-	db "V","s",".","M","o","t","h","e","r"," ","B","e","a","s","t","@", ORIGIN_SM, COMPOSER_MINAKO_ADACHI, COMPOSER_MMMMMM
-	db "F","r","o","s","t"," ","C","a","v","e","r","n","@", ORIGIN_XY, COMPOSER_SHOTA_KAGEYAMA, COMPOSER_MMMMMM
-	db "P","o","w","e","r"," ","P","l","a","n","t","@", ORIGIN_XY, COMPOSER_SHOTA_KAGEYAMA, COMPOSER_SHANTYTOWN
-	db "R","e","v","e","r","s","a","l"," ","M","o","u","n","t","a","i","n","@", ORIGIN_B2W2, COMPOSER_HITOMI_SATO, COMPOSER_MMMMMM
-	db "M","e","t","e","o","r"," ","F","a","l","l","s","@", ORIGIN_RSE, COMPOSER_MORIKAZU_AOKI, COMPOSER_MMMMMM
-	db "L","u","g","i","a","'s"," ","S","o","n","g","@", ORIGIN_M02, COMPOSER_JOHN_LISSAUER_RALPH_SCHUCKETT, COMPOSER_MMMMMM
-	db "V","s",".","L","u","g","i","a","@", ORIGIN_HGSS, COMPOSER_GO_ICHINOSE, COMPOSER_PIGU
-	db "S","u","m","m","o","n","i","n","g"," ","D","a","n","c","e","@", ORIGIN_HGSS, COMPOSER_SHOTA_KAGEYAMA, COMPOSER_MMMMMM
-	db "V","s",".","H","o","-","O","h","@", ORIGIN_HGSS, COMPOSER_GO_ICHINOSE, COMPOSER_PIGU
-	db "C","e","r","u","l","e","a","n"," ","C","a","v","e","@", ORIGIN_RB, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
-	db "V","s",".","M","e","w","t","w","o","@", ORIGIN_STADIUM, COMPOSER_JUNICHI_MASUDA, COMPOSER_SHOCKSLAYER
-	db "A","b","a","n","d","o","n","e","d"," ","S","h","i","p","@", ORIGIN_RSE, COMPOSER_MORIKAZU_AOKI, COMPOSER_MMMMMM
-	db "V","s",".","K","a","n","t","o"," ","L","e","g","e","n","d","@", ORIGIN_XY, COMPOSER_JUNICHI_MASUDA, COMPOSER_GACT_PIGU
-	db "V","s",".","G","y","m"," ","L","e","a","d","e","r","@", ORIGIN_RSE, COMPOSER_JUNICHI_MASUDA, COMPOSER_MMMMMM
-	db "V","s",".","G","y","m"," ","L","e","a","d","e","r","@", ORIGIN_DPPT, COMPOSER_JUNICHI_MASUDA, COMPOSER_FROGGESTSPIRIT
-	db "V","s",".","G","y","m"," ","L","e","a","d","e","r","@", ORIGIN_BW, COMPOSER_JUNICHI_MASUDA, COMPOSER_PUM
-	db "V","s",".","G","y","m"," ","L","e","a","d","e","r","@", ORIGIN_XY, COMPOSER_JUNICHI_MASUDA, COMPOSER_PUM
-	db "V","s",".","G","y","m"," ","L","e","a","d","e","r","@", ORIGIN_GO, COMPOSER_JUNICHI_MASUDA, COMPOSER_SHOCKSLAYER
-	db "V","s",".","E","l","i","t","e"," ","F","o","u","r","@", ORIGIN_BW, COMPOSER_JUNICHI_MASUDA, COMPOSER_MMMMMM
-	db "C","e","l","e","s","t","i","a","l"," ","T","o","w","e","r","@", ORIGIN_BW, COMPOSER_SHOTA_KAGEYAMA, COMPOSER_MMMMMM
-	db "V","s",".","C","h","a","m","p","i","o","n","@", ORIGIN_RSE, COMPOSER_JUNICHI_MASUDA, COMPOSER_MMMMMM
-	db "M","t",".","C","o","r","o","n","e","t","@", ORIGIN_DPPT, COMPOSER_GO_ICHINOSE, COMPOSER_MMMMMM
-	db "V","s",".","C","h","a","m","p","i","o","n","@", ORIGIN_DPPT, COMPOSER_JUNICHI_MASUDA, COMPOSER_FROGGESTSPIRIT
-	db "V","s",".","W","o","r","l","d"," ","C","h","a","m","p","i","o","n","-"," "," ","s","h","i","p"," ","F","i","n","a","l","s","@", ORIGIN_BW, COMPOSER_JUNICHI_MASUDA, COMPOSER_PIGU_PIKALAXALT
-	db "V","s",".","C","h","a","m","p","i","o","n","@", ORIGIN_B2W2, COMPOSER_HITOMI_SATO, COMPOSER_MMMMMM
-	db "C","r","e","d","i","t","s","@", ORIGIN_GS, COMPOSER_GO_ICHINOSE, COMPOSER_NONE
-	db "P","o","s","t","-","C","r","e","d","i","t","s","@", ORIGIN_GS, COMPOSER_GO_ICHINOSE, COMPOSER_NONE
-	db "T","i","t","l","e","@", ORIGIN_XY, COMPOSER_JUNICHI_MASUDA_SHOTA_KAGEYAMA, COMPOSER_SHANTYTOWN
-	db "D","e","w","f","o","r","d"," ","T","o","w","n","@", ORIGIN_RSE, COMPOSER_GO_ICHINOSE, COMPOSER_SHANTYTOWN
-	db "M","a","r","i","n","e"," ","T","u","b","e","@", ORIGIN_B2W2, COMPOSER_GO_ICHINOSE, COMPOSER_MMMMMM
-	db "V","s",".","L","e","g","e","n","d","a","r","y","@", ORIGIN_XY, COMPOSER_JUNICHI_MASUDA, COMPOSER_MMMMMM
-	db "V","s",".","N","a","l","j","o"," ","W","i","l","d","@", ORIGIN_PRISM, COMPOSER_LEVUSBEVUS, COMPOSER_FROGGESTSPIRIT
-	db "V","s",".","N","a","l","j","o"," ","T","r","a","i","n","e","r","@", ORIGIN_PRISM, COMPOSER_GACT, COMPOSER_NOTFROGGESTSPIRIT
-	db "V","s",".","N","a","l","j","o"," ","L","e","a","d","e","r","@", ORIGIN_PRISM, COMPOSER_GRONNOC, COMPOSER_FROGGESTSPIRIT
-	db "V","s",".","P","a","l","e","t","t","e"," ","R","a","n","g","e","r","@", ORIGIN_PRISM, COMPOSER_CAT333POKEMON, COMPOSER_NOTFROGGESTSPIRIT
+	db "Opening@", ORIGIN_C, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Title Screen@", ORIGIN_C, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Main Menu@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "New Bark Town@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA_GO_ICHINOSE, COMPOSER_NONE
+	db "Mom@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Elm's Lab@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Lyra Appears@", ORIGIN_HGSS, COMPOSER_SHOTA_KAGEYAMA, COMPOSER_MMMMMM
+	db "Vs.Rival@", ORIGIN_XY, COMPOSER_SHOTA_KAGEYAMA, COMPOSER_MMMMMM
+	db "Lyra Departs@", ORIGIN_HGSS, COMPOSER_SHOTA_KAGEYAMA, COMPOSER_MMMMMM
+	db "Route 29@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Vs.Joht","o Wild@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Vs.Joht","o Wild Night@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Vict","ory! Wild@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Cherrygrove City@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Follow Me!@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Pokémon Center@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Heal Pokémon@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Captured Pokémon@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Spotted! Youngster@", ORIGIN_GS, COMPOSER_GO_ICHINOSE, COMPOSER_NONE
+	db "Vs.Joht","o Trainer@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Vict","ory! Trainer@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Route 30@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Violet City@", ORIGIN_GS, COMPOSER_GO_ICHINOSE, COMPOSER_NONE
+	db "Sprout Tower@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Spotted! Sage@", ORIGIN_GS, COMPOSER_GO_ICHINOSE, COMPOSER_NONE
+	db "Poké Mart@", ORIGIN_HGSS, COMPOSER_GO_ICHINOSE, COMPOSER_FROGGESTSPIRIT
+	db "Hidden Grott","o@", ORIGIN_B2W2, COMPOSER_GO_ICHINOSE, COMPOSER_MMMMMM
+	db "Union Cave@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Ruins of Alph@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Unown Radio@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Azalea Town@", ORIGIN_GS, COMPOSER_GO_ICHINOSE, COMPOSER_NONE
+	db "Spotted! Team Rocket@", ORIGIN_GS, COMPOSER_GO_ICHINOSE, COMPOSER_NONE
+	db "Vs.Team Rocket@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Route 34@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Rival Appears@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Vs.Rival@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Rival Departs@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Evolution@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Goldenrod City@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "PokéCom Center@", ORIGIN_C, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Gym@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Vs.Joht","o Gym Leader@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Final Pokémon@", ORIGIN_BW, COMPOSER_JUNICHI_MASUDA_GO_ICHINOSE, COMPOSER_MMMMMM
+	db "Vict","ory! Gym Leader@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Pokémon Channel@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Buena's Password@", ORIGIN_C, COMPOSER_MORIKAZU_AOKI, COMPOSER_NONE
+	db "Game Corner@", ORIGIN_GS, COMPOSER_GO_ICHINOSE, COMPOSER_NONE
+	db "Bicycle@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Spotted! Lass@", ORIGIN_GS, COMPOSER_GO_ICHINOSE, COMPOSER_NONE
+	db "National Park@", ORIGIN_GS, COMPOSER_GO_ICHINOSE, COMPOSER_NONE
+	db "Bug-Catching Contest@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Bug-Catching ContestRanking@", ORIGIN_GS, COMPOSER_GO_ICHINOSE, COMPOSER_NONE
+	db "Ecruteak City@", ORIGIN_GS, COMPOSER_GO_ICHINOSE, COMPOSER_NONE
+	db "Dance Theater@", ORIGIN_GS, COMPOSER_GO_ICHINOSE, COMPOSER_NONE
+	db "Spotted! Kimono Girl@", ORIGIN_GS, COMPOSER_GO_ICHINOSE, COMPOSER_NONE
+	db "Burned Tower@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Eusine Appears@", ORIGIN_C, COMPOSER_MORIKAZU_AOKI, COMPOSER_NONE
+	db "Prof.Oak's Pokémon   Talk@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Route 38@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Pokémon March@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Olivine Lighthouse@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Surfing Johto@", ORIGIN_GS, COMPOSER_GO_ICHINOSE, COMPOSER_NONE
+	db "Cianwood City@", ORIGIN_HGSS, COMPOSER_GO_ICHINOSE, COMPOSER_MMMMMM
+	db "Route 47@", ORIGIN_HGSS, COMPOSER_HITOMI_SATO, COMPOSER_MMMMMM
+	db "Jessie & James      Appear@", ORIGIN_Y, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Safari Zone Gate@", ORIGIN_HGSS, COMPOSER_HITOMI_SATO, COMPOSER_MMMMMM
+	db "Surfing Pikachu@", ORIGIN_Y, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Route 42@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Stark Mountain@", ORIGIN_DPPT, COMPOSER_GO_ICHINOSE, COMPOSER_FROGGESTSPIRIT
+	db "Rocket Radio@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Rocket Hideout@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Spotted! Pokémaniac@", ORIGIN_GS, COMPOSER_GO_ICHINOSE, COMPOSER_NONE
+	db "Radio Tower Occu-   pied!@", ORIGIN_GS, COMPOSER_GO_ICHINOSE, COMPOSER_NONE
+	db "Ice Path@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Dragon's Den@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Clair@", ORIGIN_C, COMPOSER_MORIKAZU_AOKI, COMPOSER_NONE
+	db "Route 4@", ORIGIN_BW, COMPOSER_JUNICHI_MASUDA, COMPOSER_MMMMMM
+	db "Bell Tower@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Vs.Suicune@", ORIGIN_C, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Route 26@", ORIGIN_GS, COMPOSER_GO_ICHINOSE, COMPOSER_NONE
+	db "Indigo Plateau@", ORIGIN_RB, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Vict","ory Road@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Indigo Plateau@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Vs.Elite Four@", ORIGIN_SM, COMPOSER_JUNICHI_MASUDA, COMPOSER_MMMMMM
+	db "Vs.Champion@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Hall of Fame@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "S.S.Aqua@", ORIGIN_GS, COMPOSER_GO_ICHINOSE, COMPOSER_NONE
+	db "Surfing Kanto@", ORIGIN_RB, COMPOSER_GO_ICHINOSE, COMPOSER_NONE
+	db "Vermilion City@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Vs.Kant","o Gym Leader@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Lavender Town@", ORIGIN_RB, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Pokémon Tower@", ORIGIN_RB, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Lavender Town@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA_GO_ICHINOSE, COMPOSER_NONE
+	db "Vs.Kant","o Wild@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Cerulean City@", ORIGIN_HGSS, COMPOSER_JUNICHI_MASUDA, COMPOSER_FROGGESTSPIRIT
+	db "Bicycle@", ORIGIN_RB, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Route 24@", ORIGIN_HGSS, COMPOSER_JUNICHI_MASUDA, COMPOSER_FROGGESTSPIRIT
+	db "Magnet Train@", ORIGIN_GS, COMPOSER_GO_ICHINOSE, COMPOSER_NONE
+	db "Black City@", ORIGIN_BW, COMPOSER_SHOTA_KAGEYAMA, COMPOSER_MMMMMM
+	db "Pokémon Lullaby@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Celadon City@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Game Corner@", ORIGIN_DPPT, COMPOSER_JUNICHI_MASUDA_GO_ICHINOSE, COMPOSER_FROGGESTSPIRIT
+	db "Canalave City@", ORIGIN_DPPT, COMPOSER_GO_ICHINOSE, COMPOSER_FROGGESTSPIRIT
+	db "Bicycle@", ORIGIN_XY, COMPOSER_SHOTA_KAGEYAMA, COMPOSER_SHANTYTOWN
+	db "Route 11@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Poké Flute@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Route 209@", ORIGIN_DPPT, COMPOSER_HITOMI_SATO, COMPOSER_FROGGESTSPIRIT
+	db "Route 210@", ORIGIN_DPPT, COMPOSER_GO_ICHINOSE, COMPOSER_FROGGESTSPIRIT
+	db "Route 225@", ORIGIN_DPPT, COMPOSER_GO_ICHINOSE, COMPOSER_FROGGESTSPIRIT
+	db "Vs.Wild Pokémon@", ORIGIN_GO, COMPOSER_JUNICHI_MASUDA, COMPOSER_SHOCKSLAYER
+	db "Diglett's Cave@", ORIGIN_RB, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Viridian Forest@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA_GO_ICHINOSE, COMPOSER_NONE
+	db "Spotted! Hiker@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Pewter City@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Route 3@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Spotted! Officer@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Mt.Moon@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Mt.Moon Square@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Route 1@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Pallet Town@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Prof.Oak Appears@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Spotted! Beauty@", ORIGIN_GS, COMPOSER_GO_ICHINOSE, COMPOSER_NONE
+	db "Vs.Kant","o Trainer@", ORIGIN_GS, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Cinnabar Islan","d@", ORIGIN_HGSS, COMPOSER_JUNICHI_MASUDA, COMPOSER_FROGGESTSPIRIT
+	db "Cinnabar Mansion@", ORIGIN_RB, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Vs.Trainer@", ORIGIN_DPPT, COMPOSER_JUNICHI_MASUDA, COMPOSER_FROGGESTSPIRIT
+	db "Scary House@", ORIGIN_XY, COMPOSER_MINAKO_ADACHI, COMPOSER_MMMMMM
+	db "Eterna Forest@", ORIGIN_DPPT, COMPOSER_HITOMI_SATO, COMPOSER_FROGGESTSPIRIT
+	db "Mt.Chimney@", ORIGIN_RSE, COMPOSER_GO_ICHINOSE, COMPOSER_MMMMMM
+	db "Mt.Pyre@", ORIGIN_RSE, COMPOSER_JUNICHI_MASUDA, COMPOSER_MMMMMM
+	db "Battle Tower@", ORIGIN_C, COMPOSER_MORIKAZU_AOKI, COMPOSER_NONE
+	db "Battle Tower Lobby@", ORIGIN_C, COMPOSER_MORIKAZU_AOKI, COMPOSER_NONE
+	db "Vs.Trainer@", ORIGIN_BW, COMPOSER_JUNICHI_MASUDA, COMPOSER_FROGGESTSPIRIT
+	db "Vs.Frontier Brain@", ORIGIN_RSE, COMPOSER_GO_ICHINOSE, COMPOSER_FROGGESTSPIRIT
+	db "Zinnia Appears@", ORIGIN_ORAS, COMPOSER_SHOTA_KAGEYAMA, COMPOSER_MMMMMM
+	db "Route 205@", ORIGIN_DPPT, COMPOSER_HITOMI_SATO, COMPOSER_FROGGESTSPIRIT
+	db "Surf Hoenn@", ORIGIN_RSE, COMPOSER_MORIKAZU_AOKI, COMPOSER_MONSTARULES
+	db "Vs.Wild@", ORIGIN_SM, COMPOSER_JUNICHI_MASUDA, COMPOSER_MMMMMM
+	db "Sunyshore City@", ORIGIN_DPPT, COMPOSER_GO_ICHINOSE, COMPOSER_FROGGESTSPIRIT
+	db "Vs.Trainer@", ORIGIN_SM, COMPOSER_JUNICHI_MASUDA, COMPOSER_MMMMMM
+	db "Route 203@", ORIGIN_DPPT, COMPOSER_GO_ICHINOSE, COMPOSER_FROGGESTSPIRIT
+	db "White Treehollow@", ORIGIN_B2W2, COMPOSER_HITOMI_SATO, COMPOSER_MMMMMM
+	db "Laverre City@", ORIGIN_XY, COMPOSER_SHOTA_KAGEYAMA, COMPOSER_MMMMMM
+	db "Route 101@", ORIGIN_RSE, COMPOSER_MORIKAZU_AOKI, COMPOSER_MMMMMM
+	db "Ever Gran","de City@", ORIGIN_RSE, COMPOSER_GO_ICHINOSE, COMPOSER_MMMMMM
+	db "Oreburgh Gate@", ORIGIN_DPPT, COMPOSER_GO_ICHINOSE, COMPOSER_MMMMMM
+	db "Route 12@", ORIGIN_BW, COMPOSER_HITOMI_SATO, COMPOSER_MMMMMM
+	db "Road t","o Reversal    Mountain@", ORIGIN_B2W2, COMPOSER_HITOMI_SATO, COMPOSER_MMMMMM
+	db "Vs.Zinnia@", ORIGIN_ORAS, COMPOSER_SHOTA_KAGEYAMA, COMPOSER_MMMMMM
+	db "Wally Appears@", ORIGIN_ORAS, COMPOSER_SHOTA_KAGEYAMA, COMPOSER_MMMMMM
+	db "Vs.Wally@", ORIGIN_ORAS, COMPOSER_MINAKO_ADACHI, COMPOSER_MMMMMM
+	db "Spiky-Eared Pichu@", ORIGIN_HGSS, COMPOSER_SHOTA_KAGEYAMA, COMPOSER_MMMMMM
+	db "Vs.Moth","er Beast@", ORIGIN_SM, COMPOSER_MINAKO_ADACHI, COMPOSER_MMMMMM
+	db "Frost Cavern@", ORIGIN_XY, COMPOSER_SHOTA_KAGEYAMA, COMPOSER_MMMMMM
+	db "Power Plant@", ORIGIN_XY, COMPOSER_SHOTA_KAGEYAMA, COMPOSER_SHANTYTOWN
+	db "Reversal Mountain@", ORIGIN_B2W2, COMPOSER_HITOMI_SATO, COMPOSER_MMMMMM
+	db "Meteor Falls@", ORIGIN_RSE, COMPOSER_MORIKAZU_AOKI, COMPOSER_MMMMMM
+	db "Lugia's Song@", ORIGIN_M02, COMPOSER_JOHN_LISSAUER_RALPH_SCHUCKETT, COMPOSER_MMMMMM
+	db "Vs.Lugia@", ORIGIN_HGSS, COMPOSER_GO_ICHINOSE, COMPOSER_PIGU
+	db "Summoning Dance@", ORIGIN_HGSS, COMPOSER_SHOTA_KAGEYAMA, COMPOSER_MMMMMM
+	db "Vs.Ho-Oh@", ORIGIN_HGSS, COMPOSER_GO_ICHINOSE, COMPOSER_PIGU
+	db "Cerulean Cave@", ORIGIN_RB, COMPOSER_JUNICHI_MASUDA, COMPOSER_NONE
+	db "Vs.Mewtwo@", ORIGIN_STADIUM, COMPOSER_JUNICHI_MASUDA, COMPOSER_SHOCKSLAYER
+	db "Aban","doned Ship@", ORIGIN_RSE, COMPOSER_MORIKAZU_AOKI, COMPOSER_MMMMMM
+	db "Vs.Kant","o Legend@", ORIGIN_XY, COMPOSER_JUNICHI_MASUDA, COMPOSER_GACT_PIGU
+	db "Vs.Gym Leader@", ORIGIN_RSE, COMPOSER_JUNICHI_MASUDA, COMPOSER_MMMMMM
+	db "Vs.Gym Leader@", ORIGIN_DPPT, COMPOSER_JUNICHI_MASUDA, COMPOSER_FROGGESTSPIRIT
+	db "Vs.Gym Leader@", ORIGIN_BW, COMPOSER_JUNICHI_MASUDA, COMPOSER_PUM
+	db "Vs.Gym Leader@", ORIGIN_XY, COMPOSER_JUNICHI_MASUDA, COMPOSER_PUM
+	db "Vs.Gym Leader@", ORIGIN_GO, COMPOSER_JUNICHI_MASUDA, COMPOSER_SHOCKSLAYER
+	db "Vs.Elite Four@", ORIGIN_BW, COMPOSER_JUNICHI_MASUDA, COMPOSER_MMMMMM
+	db "Celestial Tower@", ORIGIN_BW, COMPOSER_SHOTA_KAGEYAMA, COMPOSER_MMMMMM
+	db "Vs.Champion@", ORIGIN_RSE, COMPOSER_JUNICHI_MASUDA, COMPOSER_MMMMMM
+	db "Mt.Coronet@", ORIGIN_DPPT, COMPOSER_GO_ICHINOSE, COMPOSER_MMMMMM
+	db "Vs.Champion@", ORIGIN_DPPT, COMPOSER_JUNICHI_MASUDA, COMPOSER_FROGGESTSPIRIT
+	db "Vs.World Champion-  ship Finals@", ORIGIN_BW, COMPOSER_JUNICHI_MASUDA, COMPOSER_PIGU_PIKALAXALT
+	db "Vs.Champion@", ORIGIN_B2W2, COMPOSER_HITOMI_SATO, COMPOSER_MMMMMM
+	db "Credits@", ORIGIN_GS, COMPOSER_GO_ICHINOSE, COMPOSER_NONE
+	db "Post-Credits@", ORIGIN_GS, COMPOSER_GO_ICHINOSE, COMPOSER_NONE
+	db "Title@", ORIGIN_XY, COMPOSER_JUNICHI_MASUDA_SHOTA_KAGEYAMA, COMPOSER_SHANTYTOWN
+	db "Dewfo","rd Town@", ORIGIN_RSE, COMPOSER_GO_ICHINOSE, COMPOSER_SHANTYTOWN
+	db "Marine Tube@", ORIGIN_B2W2, COMPOSER_GO_ICHINOSE, COMPOSER_MMMMMM
+	db "Vs.Legendary@", ORIGIN_XY, COMPOSER_JUNICHI_MASUDA, COMPOSER_MMMMMM
+	db "Vs.Naljo Wild@", ORIGIN_PRISM, COMPOSER_LEVUSBEVUS, COMPOSER_FROGGESTSPIRIT
+	db "Vs.Naljo Trainer@", ORIGIN_PRISM, COMPOSER_GACT, COMPOSER_NOTFROGGESTSPIRIT
+	db "Vs.Naljo Leader@", ORIGIN_PRISM, COMPOSER_GRONNOC, COMPOSER_FROGGESTSPIRIT
+	db "Vs.Palette Ranger@", ORIGIN_PRISM, COMPOSER_CAT333POKEMON, COMPOSER_NOTFROGGESTSPIRIT
 	db -1
