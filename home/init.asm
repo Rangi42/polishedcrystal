@@ -10,7 +10,7 @@ SoftReset:: ; 150
 	ld [rIE], a
 	ei
 
-	ld hl, InputFlags
+	ld hl, wInputFlags
 	set 7, [hl]
 
 	ld c, 32

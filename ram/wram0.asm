@@ -1055,7 +1055,7 @@ wGameTimerPause::
 ; bit 0
 	ds 1
 
-InputFlags::
+wInputFlags::
 ; bits 7, 6, and 4 can be used to disable joypad input
 	ds 2
 

@@ -20,7 +20,7 @@ Joypad:: ; 935
 ; hJoypadSum: pressed so far
 
 ; Any of these three bits can be used to disable input.
-	ld a, [InputFlags]
+	ld a, [wInputFlags]
 	and %11010000
 	ret nz
 
