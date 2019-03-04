@@ -1792,44 +1792,54 @@ MPLPlaceString:
 	pop de
 	ld [hl], " "
 	inc hl
-	ld b, 0
-.loop:
+	push hl
+	push de
+	call PlaceString
+	ld h, b
+	ld l, c
+	ld [hl], "@"
+	pop de
+	pop hl
+.de_loop
 	ld a, [de]
-	ld [hl], a
-	cp "@"
-	jr nz, .next
-	ld [hl], " "
-	dec de
-.next
-	inc hl
 	inc de
-	inc b
-	ld a, b
-	cp 14
-	jr c, .loop
-	ld a, [de]
 	cp "@"
-	jr nz, .not_end
-	ld [hl], a
-	jr .last
-.not_end
+	jr nz, .de_loop
+	dec de
+	ld bc, 0
+.loop
+	inc c
+	ld a, [hli]
+	cp "@"
+	jr nz, .loop
+	ld a, c
+	cp 16
+	jr nc, .overflow
 	dec hl
+	ld a, 15
+	sub c
+	jr z, .ok
+.loop2
+	ld [hl], " "
+	inc hl
+	dec a
+	jr nz, .loop2
+	ld [hl], "@"
+	jr .ok
+.overflow
+	ld bc, 17
+	ld hl, wStringBuffer2
+	add hl, bc
 	ld [hl], "…"
 	inc hl
 	ld [hl], "@"
-.loop2:
-	inc de
-	ld a, [de]
-	cp "@"
-	jr nz, .loop2
-.last:
+.ok
 	pop hl
 	push de
 	ld de, wStringBuffer2
 	call PlaceString
 	pop de
 	ret
-
 
 MPTilemap:
 db $00, $01, $02, $03, $04, $05, $06, $00, $01, $02, $03, $04, $05, $06, $00, $01, $02, $03, $04, $05
