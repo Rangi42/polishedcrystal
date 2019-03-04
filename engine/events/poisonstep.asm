@@ -185,7 +185,12 @@ LoadPoisonBGPals: ; cbcdd
 	ld hl, wBGPals
 	ld c, 8 * 4
 .loop
-if !DEF(MONOCHROME)
+if DEF(NOIR)
+	ld a, (palred 24 + palgreen 24 + palblue 24) % $100
+	ld [hli], a
+	ld a, (palred 24 + palgreen 24 + palblue 24) / $100
+	ld [hli], a
+elif !DEF(MONOCHROME)
 ; RGB 28, 21, 31
 	ld a, (palred 28 + palgreen 21 + palblue 31) % $100
 	ld [hli], a

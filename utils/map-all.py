@@ -16,7 +16,7 @@ tileset_filename     = 'constants/tileset_constants.asm'
 maps_filename        = 'constants/map_constants.asm'
 map_headers_filename = 'data/maps/maps.asm'
 block_data_filename  = 'data/maps/blocks.asm'
-block_filename_fmt   = 'maps/%s.blk'
+block_filename_fmt   = 'maps/%s.ablk'
 
 tileset_names = [
 	'johto_traditional', 'johto_modern', 'battle_tower_outside', 'johto_overcast',
@@ -29,13 +29,13 @@ tileset_names = [
 	'safari_zone', 'ruins_of_alph', 'alph_word_room', 'pokemon_mansion'
 ]
 
-# {'TILESET_KANTO': 1, ...}
+# {'TILESET_PC_JOHTO_1': 1, ...}
 tileset_ids = {}
-# {'PALLET_TOWN': 10, ...}
+# {'NEW_BARK_TOWN': 10, ...}
 map_widths = OrderedDict()
-# {'PalletTown': 'TILESET_KANTO', ...}
+# {'NewBarkTown': 'TILESET_PC_JOHTO_1', ...}
 map_tilesets = OrderedDict()
-# {'PalletTown': 'PalletTown.blk', ...}
+# {'NewBarkTown': 'NewBarkTown.ablk', ...}
 map_block_data_exceptions = {}
 
 def read_tileset_ids():
@@ -81,8 +81,8 @@ def read_map_block_data():
 			line = line.strip()
 			if line.endswith('_BlockData:'):
 				map_names.append(line[:-11])
-			elif line.startswith('INCBIN "maps/') and line.endswith('.blk"'):
-				block_data_name = line[13:-5]
+			elif line.startswith('INCBIN "maps/') and line.endswith('.ablk.lz"'):
+				block_data_name = line[13:-9]
 				for map_name in map_names:
 					if map_name != block_data_name:
 						map_block_data_exceptions[map_name] = block_data_name
@@ -92,8 +92,9 @@ def render_map_images(valid_tilesets):
 	rendered = set()
 	for map_const, map_name in sorted(zip(map_widths, map_tilesets)):
 		map_width = map_widths[map_const]
-		tileset_name = tileset_names[tileset_ids[map_tilesets[map_name]] - 1]
-		if not valid_tilesets or tileset_name in valid_tilesets:
+		tileset_id = tileset_ids[map_tilesets[map_name]]
+		tileset_name = tileset_names[tileset_id - 1] if tileset_id <= len(tileset_names) else None
+		if tileset_name and (not valid_tilesets or tileset_name in valid_tilesets):
 			block_data_name = map_block_data_exceptions.get(map_name, map_name)
 			if block_data_name in rendered:
 				continue

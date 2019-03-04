@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-Generate a .png of a map .blk file.
+Generate a .png of a map .ablk file.
 """
 
 from __future__ import print_function
@@ -103,13 +103,13 @@ class Map(object):
 def process(blockfile_name, size, metatiles_name):
 	metatiles = Metatiles(metatiles_name)
 	map = Map(blockfile_name, size, metatiles)
-	filename = blockfile_name[:-4] + '.png'
+	filename = blockfile_name[:-5] + '.png'
 	map.export(filename)
 	print('Exported', filename)
 
 def main():
 	if len(sys.argv) < 4:
-		usage = '''Usage: %s map.blk (width | 'h'height) tileset
+		usage = '''Usage: %s map.ablk (width | 'h'height) tileset
        Generate a .png of a map for viewing'''
 		print(usage % sys.argv[0], file=sys.stderr)
 		sys.exit(1)
