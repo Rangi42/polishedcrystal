@@ -175,6 +175,10 @@ VaryColorsByDVs::
 ; [wColorVarySpecies] = species
 ; [wColorVaryShiny] = shiny
 
+if DEF(MONOCHROME) || DEF(NOIR)
+	ret
+endc
+
 	ld a, [wInitialOptions]
 	bit COLOR_VARY_OPT, a
 	ret z
