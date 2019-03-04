@@ -1,9 +1,8 @@
-
 RunCallback_05_03: ; 1045b0
 	call ResetMapBufferEventFlags
 	call ResetFlashIfOutOfCave
 	call GetCurrentMapTrigger
-	call ResetBikeFlags
+	call ResetOWState
 	ld a, MAPCALLBACK_NEWMAP
 	call RunMapCallback
 RunCallback_03: ; 1045c4

@@ -223,8 +223,8 @@ CheckReplaceKrisSprite: ; 154f7
 
 .CheckBiking: ; 1550c (5:550c)
 	and a
-	ld hl, wBikeFlags
-	bit OWSTATE_FORCEBIKE, [hl]
+	ld hl, wOWState
+	bit OWSTATE_BIKING_FORCED, [hl]
 	ret z
 	ld a, PLAYER_BIKE
 	ld [wPlayerState], a

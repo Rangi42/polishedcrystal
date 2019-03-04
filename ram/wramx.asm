@@ -1052,7 +1052,7 @@ wCelebiEvent:: ds 1
 
 	ds 1 ; unused
 
-wBikeFlags::
+wOWState::
 ; bit 0: using strength
 ; bit 1: always on bike
 ; bit 2: downhill

@@ -857,7 +857,7 @@
 00:2C84 BGMapAnchorTopLeft
 00:2C94 SafeUpdateSprites
 00:2CB1 ResetMapBufferEventFlags
-00:2CB7 ResetBikeFlags
+00:2CB7 ResetOWState
 00:2CBD ResetFlashIfOutOfCave
 00:2CC9 ResetFlashIfOutOfCave.asm_2e69
 00:2CCF EventFlagAction
@@ -7305,7 +7305,7 @@
 01:DB43 wBoxNames
 01:DBC1 wBoxNamesEnd
 01:DBC1 wCelebiEvent
-01:DBC3 wBikeFlags
+01:DBC3 wOWState
 01:DBC5 wCurrentMapTriggerPointer
 01:DBC7 wCurrentCaller
 01:DBC9 wCurrMapWarpCount
