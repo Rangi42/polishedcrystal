@@ -41,9 +41,9 @@ EngineFlags: ; 80462
 	engine_flag wStatusFlags2, 6 ; exorcised lav radio tower
 	engine_flag wStatusFlags2, 7 ; rockets in mahogany
 
-	engine_flag wBikeFlags, 0 ; strength active ; $18
-	engine_flag wBikeFlags, 1 ; always on bike (cant surf)
-	engine_flag wBikeFlags, 2 ; downhill (cycling road)
+	engine_flag wBikeFlags, OWSTATE_STRENGTH
+	engine_flag wBikeFlags, OWSTATE_FORCEBIKE
+	engine_flag wBikeFlags, OWSTATE_DOWNHILL
 
 	engine_flag wJohtoBadges, 0 ; zephyrbadge
 	engine_flag wJohtoBadges, 1 ; hivebadge
