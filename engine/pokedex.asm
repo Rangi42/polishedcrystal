@@ -1128,9 +1128,9 @@ Pokedex_DrawDexEntryScreenBG: ; 407fd
 .WeightMetric:
 	db "Wt   ???kg", $ff ; WT   ???kg
 .MenuItems: ; 40867
-	db $3b, " Page Area Cry     ", $ff
+	db $3b, " Page Ar", "ea Cry     ", $ff
 .MenuItemsShinyCharm:
-	db $3b, " Page Area Cry Shny", $ff
+	db $3b, " Page Ar", "ea Cry Shny", $ff
 
 Pokedex_DrawDexEntryScreenRightEdge: ; 1de247
 	ld a, [hBGMapAddress]
