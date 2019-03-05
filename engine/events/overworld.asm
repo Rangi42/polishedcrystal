@@ -1502,6 +1502,8 @@ RockSmashScript: ; cf32
 	closetext
 	waitsfx
 	scall FieldMovePokepicScript
+	setflag ENGINE_ROCK_SMASH_ACTIVE
+AutoRockSmashScript:
 	playsound SFX_STRENGTH
 	earthquake 84
 	applymovement2 MovementData_0xcf55
@@ -1536,6 +1538,8 @@ AskRockSmashScript: ; 0xcf5d
 	callasm HasRockSmash
 	ifequal 1, .no
 
+	checkflag ENGINE_ROCK_SMASH_ACTIVE
+	iftrue AutoRockSmashScript
 	opentext
 	writetext UnknownText_0xcf77
 	yesorno
