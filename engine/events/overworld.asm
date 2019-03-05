@@ -474,8 +474,10 @@ UsedSurfScript: ; c986
 	waitbutton
 	closetext
 
+	setflag ENGINE_AUTOSURF_ACTIVE
 	scall FieldMovePokepicScript
 
+AutoSurfScript:
 	copybytetovar wBuffer2
 	writevarcode VAR_MOVEMENT
 
@@ -579,14 +581,26 @@ TrySurfOW:: ; c9e7
 	bit OWSTATE_BIKING_FORCED, [hl]
 	jr nz, .quit
 
+	push hl
 	call GetSurfType
 	ld [wBuffer2], a
 	call GetPartyNick
+	pop hl
+
+	bit OWSTATE_SURF, [hl]
+	jr nz, .autosurf
 
 	ld a, BANK(AskSurfScript)
 	ld hl, AskSurfScript
 	call CallScript
 
+	scf
+	ret
+
+.autosurf
+	ld a, BANK(AutoSurfScript)
+	ld hl, AutoSurfScript
+	call CallScript
 	scf
 	ret
 
