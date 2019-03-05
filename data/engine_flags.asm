@@ -46,6 +46,9 @@ EngineFlags: ; 80462
 	engine_flag wOWState, OWSTATE_BIKING_DOWNHILL
 	engine_flag wOWState, OWSTATE_SURF
 	engine_flag wOWState, OWSTATE_ROCK_SMASH
+	engine_flag wOWState, OWSTATE_HEADBUTT
+	engine_flag wOWState, OWSTATE_WHIRLPOOL
+	engine_flag wOWState, OWSTATE_WATERFALL
 
 	engine_flag wJohtoBadges, 0 ; zephyrbadge
 	engine_flag wJohtoBadges, 1 ; hivebadge

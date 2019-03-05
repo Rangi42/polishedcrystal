@@ -329,6 +329,9 @@ DoPlayerMovement:: ; 80000
 	and a
 	jr nz, .ExitWater
 
+	ld a, [wOWState]
+	set OWSTATE_SURF, a
+	ld [wOWState], a
 	ld a, STEP_FAST
 	call .DoStep
 	scf

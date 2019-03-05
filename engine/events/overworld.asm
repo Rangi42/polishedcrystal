@@ -581,14 +581,9 @@ TrySurfOW:: ; c9e7
 	bit OWSTATE_BIKING_FORCED, [hl]
 	jr nz, .quit
 
-	push hl
 	call GetSurfType
 	ld [wBuffer2], a
 	call GetPartyNick
-	pop hl
-
-	bit OWSTATE_SURF, [hl]
-	jr nz, .autosurf
 
 	ld a, BANK(AskSurfScript)
 	ld hl, AskSurfScript
@@ -597,18 +592,13 @@ TrySurfOW:: ; c9e7
 	scf
 	ret
 
-.autosurf
-	ld a, BANK(AutoSurfScript)
-	ld hl, AutoSurfScript
-	call CallScript
-	scf
-	ret
-
 .quit
 	xor a
 	ret
 
 AskSurfScript: ; ca2c
+	checkflag ENGINE_AUTOSURF_ACTIVE
+	iftrue AutoSurfScript
 	opentext
 	writetext AskSurfText
 	yesorno
@@ -800,6 +790,15 @@ Script_UsedWaterfall: ; 0xcb20
 	waitbutton
 	closetext
 	scall FieldMovePokepicScript
+	setflag ENGINE_AUTOWATERFALL_ACTIVE
+	jump Script_AutoWaterfall
+
+.Text_UsedWaterfall:
+	; used WATERFALL!
+	text_jump UnknownText_0x1c068e
+	db "@"
+
+Script_AutoWaterfall:
 	playsound SFX_BUBBLE_BEAM
 .loop
 	applymovement PLAYER, .WaterfallStep
@@ -820,11 +819,6 @@ Script_UsedWaterfall: ; 0xcb20
 .WaterfallStep: ; cb4f
 	turn_waterfall_up
 	step_end
-
-.Text_UsedWaterfall: ; 0xcb51
-	; used WATERFALL!
-	text_jump UnknownText_0x1c068e
-	db "@"
 
 TryWaterfallOW:: ; cb56
 	ld d, WATERFALL
@@ -857,6 +851,8 @@ Script_CantDoWaterfall: ; 0xcb7e
 	db "@"
 
 Script_AskWaterfall: ; 0xcb86
+	checkflag ENGINE_AUTOWATERFALL_ACTIVE
+	iftrue Script_AutoWaterfall
 	opentext
 	writetext .AskUseWaterfall
 	yesorno
@@ -1278,8 +1274,10 @@ Script_UsedWhirlpool: ; 0xce0f
 	writetext Text_UsedWhirlpool
 	closetext
 	scall FieldMovePokepicScript
-
+	setflag ENGINE_AUTOWHIRLPOOL_ACTIVE
 	waitsfx
+
+Script_AutoWhirlpool:
 	playsound SFX_SURF
 	checkcode VAR_FACING
 	ifequal UP, .Up
@@ -1350,6 +1348,8 @@ Script_MightyWhirlpool: ; 0xce66
 	db "@"
 
 Script_AskWhirlpoolOW: ; 0xce6e
+	checkflag ENGINE_AUTOWHIRLPOOL_ACTIVE
+	iftrue Script_AutoWhirlpool
 	opentext
 	writetext UnknownText_0xce78
 	yesorno
@@ -1401,6 +1401,9 @@ HeadbuttScript: ; 0xceab
 	closetext
 
 	scall FieldMovePokepicScript
+	setflag ENGINE_HEADBUTT_ACTIVE
+
+AutoHeadbuttScript:
 	callasm ShakeHeadbuttTree
 
 	callasm TreeMonEncounter
@@ -1436,6 +1439,8 @@ TryHeadbuttOW:: ; cec9
 	ret
 
 AskHeadbuttScript: ; 0xcedc
+	checkflag ENGINE_HEADBUTT_ACTIVE
+	iftrue AutoHeadbuttScript
 	opentext
 	writetext UnknownText_0xcee6
 	yesorno
