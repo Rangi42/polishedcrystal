@@ -583,6 +583,8 @@ InheritMove:
 	ld a, [hli]
 	and a
 	jr z, .got_move_byte
+	cp d
+	ret z
 	dec b
 	jr nz, .loop
 
