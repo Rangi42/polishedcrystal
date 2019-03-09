@@ -1,4 +1,3 @@
-
 	const_def
 
 ; These first eight flags are reset upon reloading the map.

@@ -344,7 +344,7 @@ ForewarnAbility:
 	xor a
 	ld [wBuffer2], a ; used when randomizing between equal-power moves
 	ld [wBuffer3], a ; highest power move index
-	ld [wBuffer4], a	; power of said move for comparing
+	ld [wBuffer4], a ; power of said move for comparing
 .loop
 	ld a, [wBuffer1]
 	dec a
