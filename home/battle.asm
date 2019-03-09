@@ -50,6 +50,7 @@ ResetDamage::
 	ld [wCurDamage + 1], a
 	ret
 
+BattleCommand_SwitchTurn::
 SwitchTurn::
 	ld a, [hBattleTurn]
 	and a
@@ -64,6 +65,8 @@ SetEnemyTurn::
 	ld [hBattleTurn], a
 	ret
 
+UpdateOpponentInParty::
+	call CallOpponentTurn
 UpdateUserInParty::
 	ld a, [hBattleTurn]
 	and a
@@ -84,11 +87,6 @@ UpdateBattleMon::
 	rst CopyBytes
 	ret
 
-UpdateOpponentInParty::
-	ld a, [hBattleTurn]
-	and a
-	jr nz, UpdateBattleMonInParty
-	; fallthrough
 UpdateEnemyMonInParty::
 ; No wildmons.
 	ld a, [wBattleMode]
@@ -178,13 +176,7 @@ ToggleBattleItems:
 	jr .loop
 
 OpponentCanLoseItem::
-	call SwitchTurn
-	call UserCanLoseItem
-	push af
-	call SwitchTurn
-	pop af
-	ret
-
+	call CallOpponentTurn
 UserCanLoseItem::
 ; Returns z if user can't lose its held item. This happens if:
 ; - user doesn't have a held item
@@ -233,6 +225,8 @@ UserCanLoseItem::
 	db ARMOR_SUIT, MEWTWO
 	db -1
 
+GetOpponentUsedItemAddr::
+	call CallOpponentTurn
 GetUsedItemAddr::
 ; Returns addr for user's POV's UsedItem
 	ld a, [hBattleTurn]
@@ -686,6 +680,8 @@ CompareHP::
 	pop hl
 	ret
 
+CheckOpponentContactMove::
+	call CallOpponentTurn
 CheckContactMove::
 ; Check if user's move made contact. Returns nc if it is
 	farcall GetUserItemAfterUnnerve

@@ -752,7 +752,7 @@ TryEnemyFlee: ; 3c543
 	jr z, .skip_traps
 
 	call SetEnemyTurn
-	call CheckIfTrappedByAbility_Core
+	farcall CheckIfTrappedByAbility
 	jr z, .Stay
 
 	ld a, [wPlayerSubStatus2]
@@ -1152,6 +1152,8 @@ HandleResidualDamage:
 	jp StdBattleTextBox
 ; 3c801
 
+CheckOpponentFullHP:
+	call CallOpponentTurn
 CheckFullHP:
 ; check if the user has full HP
 ; z: yes, nz: no
@@ -1987,11 +1989,8 @@ GetMaxHP: ; 3ccac
 	ret
 ; 3ccc2
 
-RestoreEnemyHP:
-	call SwitchTurn
-	call RestoreHP
-	jp SwitchTurn
-
+RestoreOpponentHP:
+	call CallOpponentTurn
 RestoreHP ; 3ccef
 	ld hl, wBattleMonMaxHP
 	ld a, [hBattleTurn]
@@ -3657,12 +3656,6 @@ CheckIfCurPartyMonIsFitToFight: ; 3d887
 ; 3d8b3
 
 
-CheckIfTrappedByAbility_Core:
-	farcall _CheckIfTrappedByAbility
-	ld a, b
-	and a
-	ret
-
 InitBattleMon: ; 3da0d
 	ld a, MON_SPECIES
 	call GetPartyParamLocation
@@ -4520,17 +4513,14 @@ ItemRecoveryAnim::
 	ret
 ; 3dde9
 
-UseOpponentHeldStatusHealingItem:
-	call SwitchTurn
-	call UseHeldStatusHealingItem
-	jp SwitchTurn
-
 StealHeldStatusHealingItem:
 	farcall GetOpponentItem
 	call _HeldStatusHealingItem
 	ret z
 	jp StealBattleItem
 
+UseOpponentHeldStatusHealingItem:
+	call CallOpponentTurn
 UseHeldStatusHealingItem: ; 3dde9
 	farcall GetUserItemAfterUnnerve
 	call _HeldStatusHealingItem
@@ -4579,11 +4569,8 @@ _HeldStatusHealingItem:
 	db $ff
 ; 3de51
 
-UseEnemyConfusionHealingItem:
-	call SwitchTurn
-	call UseConfusionHealingItem
-	jp SwitchTurn
-
+UseOpponentConfusionHealingItem:
+	call CallOpponentTurn
 UseConfusionHealingItem: ; 3de51
 	ld a, BATTLE_VARS_SUBSTATUS3
 	call GetBattleVar
@@ -5401,7 +5388,7 @@ TryPlayerSwitch: ; 3e358
 	ld a, b
 	cp HELD_SHED_SHELL
 	jr z, .try_switch
-	call CheckIfTrappedByAbility_Core
+	farcall CheckIfTrappedByAbility
 	jr nz, .check_other_trapped
 	ld a, BATTLE_VARS_ABILITY_OPP
 	call GetBattleVar
@@ -5648,7 +5635,7 @@ CheckRunSpeed:
 	push hl
 	push de
 	call SetPlayerTurn
-	call CheckIfTrappedByAbility_Core
+	farcall CheckIfTrappedByAbility
 	pop de
 	pop hl
 	jp z, .ability_prevents_escape

@@ -41,6 +41,21 @@ FarPointerCall::
 	ld l, a
 	jr DoFarCall
 
+CallOpponentTurn::
+	ld [hFarCallSavedA], a
+	ld a, h
+	ld [hPredefTemp + 1], a
+	ld a, l
+	ld [hPredefTemp], a
+
+	pop hl
+	call SwitchTurn
+	call RetrieveHLAndCallFunction
+	push af
+	call SwitchTurn
+	pop af
+	ret
+
 StackCallInBankB:
 	ld a, b
 StackCallInBankA:

@@ -1,6 +1,9 @@
 RunActivationAbilitiesInner:
 	ld hl, BattleEntryAbilities
 	jr UserAbilityJumptable
+
+RunEnemyStatusHealAbilities:
+	call CallOpponentTurn
 RunStatusHealAbilities:
 	ld hl, StatusHealAbilities
 UserAbilityJumptable:
@@ -10,11 +13,6 @@ AbilityJumptable:
 	; If we at some point make the AI learn abilities, keep this.
 	; For now it just jumps to the general jumptable function
 	jp BattleJumptable
-
-RunEnemyStatusHealAbilities:
-	call SwitchTurn
-	call RunStatusHealAbilities
-	jp SwitchTurn
 
 BattleEntryAbilities:
 	dbw TRACE, TraceAbility
@@ -508,11 +506,7 @@ AftermathAbility:
 	cp DAMP
 	ret z
 	; Only contact moves proc Aftermath
-	call SwitchTurn
-	call CheckContactMove
-	push af
-	call SwitchTurn
-	pop af
+	call CheckOpponentContactMove
 	ret c
 .is_contact
 	call ShowAbilityActivation
@@ -582,10 +576,8 @@ RunContactAbilities:
 	ret nc
 	call GetOpponentAbilityAfterMoldBreaker
 	ld b, a
-	call SwitchTurn
-	call .do_enemy_abilities
-	jp SwitchTurn
 
+	call CallOpponentTurn
 .do_enemy_abilities
 	ld a, b
 	cp EFFECT_SPORE
@@ -777,9 +769,7 @@ CheckNullificationAbilities:
 RunEnemyNullificationAbilities:
 ; At this point, we are already certain that the ability will activate, so no additional
 ; checks are required.
-	call SwitchTurn
-	call .do_enemy_abilities
-	jp SwitchTurn
+	call CallOpponentTurn
 .do_enemy_abilities
 	ld hl, NullificationAbilities
 	call UserAbilityJumptable
@@ -1197,9 +1187,7 @@ PickupAbility:
 
 	; Does the opponent have a consumed item?
 	push hl
-	call SwitchTurn
-	call GetUsedItemAddr
-	call SwitchTurn
+	call GetOpponentUsedItemAddr
 	pop de
 	ld a, [hl]
 	and a
@@ -1546,11 +1534,7 @@ PixilateAbility:
 
 EnemyMultiscaleAbility:
 ; 50% damage if user is at full HP
-	call SwitchTurn
-	farcall CheckFullHP
-	push af
-	call SwitchTurn
-	pop af
+	farcall CheckOpponentFullHP
 	ret nz
 	ld a, $12
 	jp ApplyDamageMod
@@ -1676,9 +1660,7 @@ EnableAnimations:
 	ret
 
 ShowEnemyAbilityActivation::
-	call SwitchTurn
-	call ShowAbilityActivation
-	jp SwitchTurn
+	call CallOpponentTurn
 ShowAbilityActivation::
 	push bc
 	push de

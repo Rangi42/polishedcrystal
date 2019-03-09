@@ -183,9 +183,7 @@ BattleCommand_CheckTurn:
 	and SLP
 	jr z, .not_asleep
 
-	dec a
-	ld [hl], a
-	and a ; check if the sleep timer ran out
+	dec [hl]
 	jr z, .woke_up
 
 	; Early Bird decreases the sleep timer twice as fast (including Rest).
@@ -194,10 +192,7 @@ BattleCommand_CheckTurn:
 	cp EARLY_BIRD
 	jr nz, .no_early_bird
 	; duplicated, but too few lines to make merging it worth it
-	ld a, [hl]
-	dec a
-	ld [hl], a
-	and a ; check if the sleep timer ran out
+	dec [hl]
 	jr z, .woke_up
 
 .no_early_bird
@@ -210,7 +205,6 @@ BattleCommand_CheckTurn:
 .woke_up
 	ld hl, WokeUpText
 	call StdBattleTextBox
-	call CantMove
 	ld a, [hBattleTurn]
 	and a
 	jr nz, .enemy1
@@ -426,7 +420,9 @@ EndTurn:
 	jp ResetDamage
 
 
-CantMove: ; 341f0
+OpponentCantMove:
+	call CallOpponentTurn
+CantMove:
 	ld a, BATTLE_VARS_SUBSTATUS1
 	call GetBattleVarAddr
 	res SUBSTATUS_ROLLOUT, [hl]
@@ -450,7 +446,6 @@ CantMove: ; 341f0
 	res SUBSTATUS_FLYING, [hl]
 	jp AppearUserRaiseSub
 
-; 34216
 
 IncreaseMetronomeCount:
 	; Don't arbitrarily boost usage counter twice on a turn
@@ -547,14 +542,6 @@ CheckPowerHerb:
 	call ConsumeUserItem
 	jp ResetTurn
 
-OpponentCantMove: ; 34216
-	call SwitchTurn
-	call CantMove
-	jp SwitchTurn
-
-; 3421f
-
-
 MoveDisabled: ; 3438d
 
 	; Make sure any charged moves fail
@@ -603,9 +590,7 @@ HitConfusion: ; 343a5
 	ld [hBGMapMode], a
 .enemy
 	ld c, $1
-	call SwitchTurn
-	call TakeDamage
-	call SwitchTurn
+	call TakeOpponentDamage
 	jp BattleCommand_RaiseSub
 
 ; 343db
@@ -2398,17 +2383,6 @@ BattleCommand_StatUpDownAnim: ; 34feb
 ; 34ffd
 
 
-BattleCommand_SwitchTurn: ; 34ffd
-; switchturn
-
-	ld a, [hBattleTurn]
-	xor 1
-	ld [hBattleTurn], a
-	ret
-
-; 35004
-
-
 BattleCommand_RaiseSub: ; 35004
 ; raisesub
 
@@ -2505,11 +2479,7 @@ BattleCommand_CheckFaint:
 	jr nz, .no_endure
 .sturdy
 	push bc
-	call SwitchTurn
-	farcall CheckFullHP
-	push af
-	call SwitchTurn
-	pop af
+	farcall CheckOpponentFullHP
 	pop bc
 	jr nz, .no_endure
 	jr .enduring
@@ -2865,10 +2835,7 @@ CheckSheerForceNegation:
 	ret
 
 ConsumeOpponentItem::
-	call SwitchTurn
-	call ConsumeUserItem
-	jp SwitchTurn
-
+	call CallOpponentTurn
 ConsumeUserItem::
 	ld a, [hBattleTurn]
 	and a
@@ -4479,7 +4446,7 @@ BattleCommand_Encore: ; 35864
 	call AnimateCurrentMove
 	ld hl, GotAnEncoreText
 	call StdBattleTextBox
-	jp CheckEnemyMentalHerb
+	jp CheckOpponentMentalHerb
 
 .failed
 	jp PrintDidntAffect2
@@ -4943,6 +4910,8 @@ PlayFXAnimID: ; 35d08
 
 ; 35d1c
 
+TakeOpponentDamage:
+	call CallOpponentTurn
 TakeDamage:
 ; opponent takes damage
 	ld hl, wCurDamage
@@ -5061,6 +5030,8 @@ GetMoveByte::
 	ld a, BANK(Moves)
 	jp GetFarByte
 
+IsOpponentLeafGuardActive:
+	call CallOpponentTurn
 IsLeafGuardActive:
 ; returns z if leaf guard applies for enemy
 	call GetOpponentAbilityAfterMoldBreaker
@@ -6467,35 +6438,24 @@ BattleCommand_Teleport: ; 36778
 	jp PrintButItFailed
 
 CheckIfTrappedByAbility:
-	call _CheckIfTrappedByAbility
-	ld a, b
-	and a
+; Wrapper around ability checks to ensure that no double-traps happen.
+	call .CheckTrap
+	ret nz
+	call .CheckOpponentTrap
+	jr z, .not_trapped
+.trapped
+	xor a
+	ret
+.not_trapped
+	or 1
 	ret
 
-_CheckIfTrappedByAbility:
-	; Wrapper around ability checks to ensure that no double-traps happen.
-	call CheckIfTrappedByAbilityInner
-	ld a, b
-	and a
-	ret nz ; we aren't trapped
-	call SwitchTurn
-	call CheckIfTrappedByAbilityInner
-	call SwitchTurn
-	ld a, b
-	and a
-	jp z, .is_double_trap
-	ld b, 0
-	ret
-.is_double_trap
-	ld b, 1
-	ret
-
-CheckIfTrappedByAbilityInner:
-	; Returns b=0 if trapped, b=1 otherwise
-	ld b, 1
+.CheckOpponentTrap:
+	call CallOpponentTurn
+.CheckTrap:
 	; Ghost types are immune to all trapping abilities
 	call CheckIfUserIsGhostType
-	ret z
+	jr z, .not_trapped
 	ld a, BATTLE_VARS_ABILITY_OPP
 	call GetBattleVar
 	cp MAGNET_PULL
@@ -6503,24 +6463,20 @@ CheckIfTrappedByAbilityInner:
 	cp ARENA_TRAP
 	jr z, .has_arena_trap
 	cp SHADOW_TAG
-	jr z, .is_trapped
 	ret
 .has_magnet_pull
 	; Only works on Steel types
-	call CheckIfUserIsSteelType
-	ret nz
-	jr .is_trapped
+	jp CheckIfUserIsSteelType
 .has_arena_trap
 	; Doesn't work on flying types or levitate users
 	call CheckIfUserIsFlyingType
-	ret z
+	jr z, .not_trapped
 	ld a, BATTLE_VARS_ABILITY
 	cp LEVITATE
-	ret z
+	jr z, .not_trapped
 	call CheckAirBalloon
-	ret z
-.is_trapped
-	ld b, 0
+	jr z, .not_trapped
+	xor a
 	ret
 
 SetBattleDraw: ; 36804
@@ -7267,7 +7223,7 @@ BattleCommand_FinishConfusingTarget: ; 36d70
 	ld hl, BecameConfusedText
 	call StdBattleTextBox
 
-	farcall UseEnemyConfusionHealingItem
+	farcall UseOpponentConfusionHealingItem
 	farjp RunEnemyStatusHealAbilities
 
 ; 36db6
@@ -7548,7 +7504,7 @@ BattleCommand_Disable: ; 36fed
 	call GetMoveName
 	ld hl, WasDisabledText
 	call StdBattleTextBox
-	jp CheckEnemyMentalHerb
+	jp CheckOpponentMentalHerb
 
 .failed
 	jp FailDisable
@@ -7982,11 +7938,7 @@ BattleCommand_Heal:
 	jr z, .ability_prevents_rest
 	cp VITAL_SPIRIT
 	jr z, .ability_prevents_rest
-	call SwitchTurn
-	call IsLeafGuardActive
-	push af
-	call SwitchTurn
-	pop af
+	call IsOpponentLeafGuardActive
 	jr z, .ability_prevents_rest
 	call BattleCommand_MoveDelay
 	ld a, BATTLE_VARS_STATUS
@@ -9407,14 +9359,16 @@ CheckHiddenOpponent: ; 37daa
 GetPlayerItem:
 	ld hl, wBattleMonItem
 	ld b, [hl]
-	jp GetItemHeldEffect
+	jr GetItemHeldEffect
 
 GetEnemyItem:
 	ld hl, wEnemyMonItem
 	ld b, [hl]
-	jp GetItemHeldEffect
+	jr GetItemHeldEffect
 
-GetUserItem:: ; 37db2
+GetOpponentItem:
+	call CallOpponentTurn
+GetUserItem::
 ; Return the effect of the user's item in bc, and its id at hl.
 ; Also updates the object name buffer, allowing you to just
 ; GetCurItemName to get the item name
@@ -9429,21 +9383,8 @@ GetUserItem:: ; 37db2
 	ld b, a
 	jp GetItemHeldEffect
 
-; 37dc1
-
-
 GetOpponentItemAfterUnnerve:
-; Return the effect of the opponent's item in bc, and its id at hl unless Unnerve applies
-	call SwitchTurn
-	call GetUserItemAfterUnnerve
-	jp SwitchTurn
-
-GetOpponentItem:
-; Return the effect of the opponent's item in bc, and its id at hl.
-	call SwitchTurn
-	call GetUserItem
-	jp SwitchTurn
-
+	call CallOpponentTurn
 GetUserItemAfterUnnerve::
 ; Returns the effect of the user's item in bc, and its id at hl,
 ; unless it's a Berry and Unnerve is in effect.
@@ -9593,26 +9534,9 @@ LoadMoveAnim: ; 37e36
 ; 37e44
 
 
-LoadAnim: ; 37e44
-
+LoadAnim:
 	ld [wFXAnimIDLo], a
-
-	; fallthrough
-; 37e47
-
-
-PlayUserBattleAnim: ; 37e47
-	push hl
-	push de
-	push bc
-	farcall PlayBattleAnim
-	pop bc
-	pop de
-	pop hl
-	ret
-
-; 37e54
-
+	jr PlayUserBattleAnim
 
 PlayOpponentBattleAnim: ; 37e54
 	ld a, e
@@ -9621,21 +9545,16 @@ PlayOpponentBattleAnim: ; 37e54
 	ld [wFXAnimIDHi], a
 	xor a
 	ld [wNumHits], a
-
+	call CallOpponentTurn
+PlayUserBattleAnim:
 	push hl
 	push de
 	push bc
-	call SwitchTurn
-
 	farcall PlayBattleAnim
-
-	call SwitchTurn
 	pop bc
 	pop de
 	pop hl
 	ret
-
-; 37e73
 
 
 CallBattleCore: ; 37e73

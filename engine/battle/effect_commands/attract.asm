@@ -83,11 +83,8 @@ BattleCommand_Attract: ; 377ce
 	call CheckMentalHerb
 	farjp RunStatusHealAbilities
 
-CheckEnemyMentalHerb:
-	call SwitchTurn
-	call CheckMentalHerb
-	jp SwitchTurn
-
+CheckOpponentMentalHerb:
+	call CallOpponentTurn
 CheckMentalHerb:
 	; Check if we hold it
 	call GetUserItemAfterUnnerve
