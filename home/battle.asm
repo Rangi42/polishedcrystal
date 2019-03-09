@@ -50,7 +50,7 @@ ResetDamage::
 	ld [wCurDamage + 1], a
 	ret
 
-BattleCommand_SwitchTurn::
+BattleCommand_switchturn::
 SwitchTurn::
 	ld a, [hBattleTurn]
 	and a

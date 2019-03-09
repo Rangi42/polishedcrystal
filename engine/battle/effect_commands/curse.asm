@@ -1,6 +1,4 @@
-BattleCommand_Curse: ; 37588
-; curse
-
+BattleCommand_curse:
 	ld de, wBattleMonType1
 	ld bc, wPlayerStatLevels
 	ld a, [hBattleTurn]
@@ -45,14 +43,14 @@ BattleCommand_Curse: ; 37588
 	ld b, SPEED
 	call LowerStat
 	call SwitchTurn
-	call BattleCommand_StatDownMessage
+	call BattleCommand_statdownmessage
 	call ResetMiss
 	call SwitchTurn
-	call BattleCommand_AttackUp
-	call BattleCommand_StatUpMessage
+	call BattleCommand_attackup
+	call BattleCommand_statupmessage
 	call ResetMiss
-	call BattleCommand_DefenseUp
-	jp BattleCommand_StatUpMessage
+	call BattleCommand_defenseup
+	jp BattleCommand_statupmessage
 
 
 .ghost

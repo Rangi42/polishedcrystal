@@ -2432,8 +2432,8 @@ XItemEffect: ; f4c5
 	farcall CheckIfStatCanBeRaised
 	call WaitSFX
 
-	farcall BattleCommand_StatUpMessage
-	farcall BattleCommand_StatUpFailText
+	farcall BattleCommand_statupmessage
+	farcall BattleCommand_statupfailtext
 
 	ld a, [wCurBattleMon]
 	ld [wCurPartyMon], a

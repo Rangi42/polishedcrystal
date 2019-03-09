@@ -1,4 +1,4 @@
-BattleCommand_Attract: ; 377ce
+BattleCommand_attract: ; 377ce
 ; attract
 	ld a, [wAttackMissed]
 	and a

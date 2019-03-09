@@ -1,4 +1,4 @@
-BattleCommand_Thief:
+BattleCommand_thief:
 	; Pickpocket uses this too
 	call CanStealItem
 	ret nz

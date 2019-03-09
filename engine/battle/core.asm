@@ -384,14 +384,14 @@ HandleBerserkGene: ; 3c27c
 	ld [hl], a
 	ld [wAttackMissed], a
 	ld [wEffectFailed], a
-	farcall BattleCommand_AttackUp2
+	farcall BattleCommand_attackup2
 	pop af
 	pop hl
 	ld [hl], a
 	call GetItemName
 	ld hl, BattleText_UsersStringBuffer1Activated
 	call StdBattleTextBox
-	farcall BattleCommand_StatUpMessage
+	farcall BattleCommand_statupmessage
 	pop af
 	bit SUBSTATUS_CONFUSED, a
 	ret nz
@@ -4411,7 +4411,7 @@ _HeldStatBoostBerry:
 	cp HELD_RAISE_STAT
 	ret nz
 	push hl
-	farcall BattleCommand_StatUp
+	farcall BattleCommand_statup
 	pop hl
 	ld a, [wFailedMessage]
 	and a
@@ -9715,7 +9715,7 @@ BoostGiovannisArmoredMewtwo:
 	ld [hBattleTurn], a
 	ld de, ANIM_SHARPEN
 	call Call_PlayBattleAnim
-	farjp BattleCommand_AllStatsUp
+	farjp BattleCommand_allstatsup
 
 CheckUniqueWildMove:
 	ld a, [wMapGroup]

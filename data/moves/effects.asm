@@ -60,8 +60,8 @@ XScissor:
 	checkfaint
 	criticaltext
 	supereffectivetext
-	checkdestinybond
-	buildopponentrage
+	postfainteffects
+	posthiteffects
 	pickpocket
 	endmove
 
@@ -82,8 +82,8 @@ SuckerPunch:
 	checkfaint
 	criticaltext
 	supereffectivetext
-	checkdestinybond
-	buildopponentrage
+	postfainteffects
+	posthiteffects
 	pickpocket
 	endmove
 
@@ -110,8 +110,8 @@ DrainPunch:
 	criticaltext
 	supereffectivetext
 	draintarget
-	checkdestinybond
-	buildopponentrage
+	postfainteffects
+	posthiteffects
 	pickpocket
 	endmove
 
@@ -133,8 +133,8 @@ SwitchHit:
 	checkfaint
 	criticaltext
 	supereffectivetext
-	checkdestinybond
-	buildopponentrage
+	postfainteffects
+	posthiteffects
 	pickpocket
 	switchout
 	endmove
@@ -168,8 +168,8 @@ FuryStrikes:
 	criticaltext
 	cleartext
 	supereffectivelooptext
-	checkdestinybond
-	buildopponentrage
+	postfainteffects
+	posthiteffects
 	endloop
 	pickpocket
 	raisesub
@@ -197,8 +197,8 @@ BraveBird:
 	criticaltext
 	supereffectivetext
 	recoil
-	checkdestinybond
-	buildopponentrage
+	postfainteffects
+	posthiteffects
 	pickpocket
 	endmove
 
@@ -231,8 +231,8 @@ ZenHeadbutt:
 	checkfaint
 	criticaltext
 	supereffectivetext
-	checkdestinybond
-	buildopponentrage
+	postfainteffects
+	posthiteffects
 	flinchtarget
 	pickpocket
 	endmove
@@ -258,8 +258,8 @@ GunkShot:
 	checkfaint
 	criticaltext
 	supereffectivetext
-	checkdestinybond
-	buildopponentrage
+	postfainteffects
+	posthiteffects
 	poisontarget
 	pickpocket
 	endmove
@@ -285,8 +285,8 @@ FireBlast:
 	checkfaint
 	criticaltext
 	supereffectivetext
-	checkdestinybond
-	buildopponentrage
+	postfainteffects
+	posthiteffects
 	burntarget
 	pickpocket
 	endmove
@@ -315,8 +315,8 @@ ZapCannon:
 	checkfaint
 	criticaltext
 	supereffectivetext
-	checkdestinybond
-	buildopponentrage
+	postfainteffects
+	posthiteffects
 	paralyzetarget
 	pickpocket
 	endmove
@@ -339,8 +339,8 @@ BodySlam:
 	checkfaint
 	criticaltext
 	supereffectivetext
-	checkdestinybond
-	buildopponentrage
+	postfainteffects
+	posthiteffects
 	paralyzetarget
 	pickpocket
 	endmove
@@ -362,8 +362,8 @@ SleepHit:
 	checkfaint
 	criticaltext
 	supereffectivetext
-	checkdestinybond
-	buildopponentrage
+	postfainteffects
+	posthiteffects
 	sleeptarget
 	pickpocket
 	endmove
@@ -388,8 +388,8 @@ Blizzard:
 	checkfaint
 	criticaltext
 	supereffectivetext
-	checkdestinybond
-	buildopponentrage
+	postfainteffects
+	posthiteffects
 	freezetarget
 	pickpocket
 	endmove
@@ -417,8 +417,8 @@ Hurricane:
 	checkfaint
 	criticaltext
 	supereffectivetext
-	checkdestinybond
-	buildopponentrage
+	postfainteffects
+	posthiteffects
 	confusetarget
 	pickpocket
 	endmove
@@ -441,8 +441,8 @@ MetalClaw:
 	checkfaint
 	criticaltext
 	supereffectivetext
-	checkdestinybond
-	buildopponentrage
+	postfainteffects
+	posthiteffects
 	attackup
 	statupmessage
 	pickpocket
@@ -466,8 +466,8 @@ SteelWing:
 	checkfaint
 	criticaltext
 	supereffectivetext
-	checkdestinybond
-	buildopponentrage
+	postfainteffects
+	posthiteffects
 	defenseup
 	statupmessage
 	pickpocket
@@ -491,8 +491,8 @@ Ancientpower:
 	checkfaint
 	criticaltext
 	supereffectivetext
-	checkdestinybond
-	buildopponentrage
+	postfainteffects
+	posthiteffects
 	allstatsup
 	pickpocket
 	endmove
@@ -515,8 +515,8 @@ AuroraBeam:
 	checkfaint
 	criticaltext
 	supereffectivetext
-	checkdestinybond
-	buildopponentrage
+	postfainteffects
+	posthiteffects
 	attackdown
 	statdownmessage
 	pickpocket
@@ -541,8 +541,8 @@ IronTail:
 	checkfaint
 	criticaltext
 	supereffectivetext
-	checkdestinybond
-	buildopponentrage
+	postfainteffects
+	posthiteffects
 	defensedown
 	statdownmessage
 	pickpocket
@@ -567,8 +567,8 @@ BrickBreak:
 	checkfaint
 	criticaltext
 	supereffectivetext
-	checkdestinybond
-	buildopponentrage
+	postfainteffects
+	posthiteffects
 	defensedown
 	statdownmessage
 	pickpocket
@@ -594,8 +594,8 @@ Bulldoze:
 	checkfaint
 	criticaltext
 	supereffectivetext
-	checkdestinybond
-	buildopponentrage
+	postfainteffects
+	posthiteffects
 	speeddown
 	statdownmessage
 	pickpocket
@@ -619,8 +619,8 @@ Moonblast:
 	checkfaint
 	criticaltext
 	supereffectivetext
-	checkdestinybond
-	buildopponentrage
+	postfainteffects
+	posthiteffects
 	specialattackdown
 	statdownmessage
 	pickpocket
@@ -651,8 +651,8 @@ ShadowBall:
 	checkfaint
 	criticaltext
 	supereffectivetext
-	checkdestinybond
-	buildopponentrage
+	postfainteffects
+	posthiteffects
 	specialdefensedown
 	statdownmessage
 	pickpocket
@@ -677,8 +677,8 @@ Octazooka:
 	checkfaint
 	criticaltext
 	supereffectivetext
-	checkdestinybond
-	buildopponentrage
+	postfainteffects
+	posthiteffects
 	accuracydown
 	statdownmessage
 	pickpocket
@@ -701,8 +701,8 @@ EvasionDownHit:
 	checkfaint
 	criticaltext
 	supereffectivetext
-	checkdestinybond
-	buildopponentrage
+	postfainteffects
+	posthiteffects
 	evasiondown
 	statdownmessage
 	pickpocket
@@ -726,8 +726,8 @@ CloseCombat:
 	criticaltext
 	supereffectivetext
 	closecombat
-	checkdestinybond
-	buildopponentrage
+	postfainteffects
+	posthiteffects
 	pickpocket
 	endmove
 
@@ -747,8 +747,8 @@ SuperFang:
 	hittarget
 	failuretext
 	checkfaint
-	checkdestinybond
-	buildopponentrage
+	postfainteffects
+	posthiteffects
 	pickpocket
 	endmove
 
@@ -1349,8 +1349,8 @@ Outrage:
 	checkfaint
 	criticaltext
 	supereffectivetext
-	checkdestinybond
-	buildopponentrage
+	postfainteffects
+	posthiteffects
 	pickpocket
 	endmove
 
@@ -1375,8 +1375,8 @@ Whirlpool:
 	checkfaint
 	criticaltext
 	supereffectivetext
-	checkdestinybond
-	buildopponentrage
+	postfainteffects
+	posthiteffects
 	traptarget
 	pickpocket
 	endmove
@@ -1399,8 +1399,8 @@ Explosion:
 	checkfaint
 	criticaltext
 	supereffectivetext
-	checkdestinybond
-	buildopponentrage
+	postfainteffects
+	posthiteffects
 	endmove
 
 DreamEater:
@@ -1420,8 +1420,8 @@ DreamEater:
 	criticaltext
 	supereffectivetext
 	eatdream
-	checkdestinybond
-	buildopponentrage
+	postfainteffects
+	posthiteffects
 	pickpocket
 	endmove
 
@@ -1476,8 +1476,8 @@ PayDay:
 	criticaltext
 	supereffectivetext
 	payday
-	checkdestinybond
-	buildopponentrage
+	postfainteffects
+	posthiteffects
 	pickpocket
 	endmove
 
@@ -1499,8 +1499,8 @@ KnockOff:
 	criticaltext
 	supereffectivetext
 	knockoff
-	checkdestinybond
-	buildopponentrage
+	postfainteffects
+	posthiteffects
 	pickpocket
 	endmove
 
@@ -1522,8 +1522,8 @@ BugBite:
 	checkfaint
 	criticaltext
 	supereffectivetext
-	checkdestinybond
-	buildopponentrage
+	postfainteffects
+	posthiteffects
 	endmove
 
 TriAttack:
@@ -1542,8 +1542,8 @@ TriAttack:
 	checkfaint
 	criticaltext
 	supereffectivetext
-	checkdestinybond
-	buildopponentrage
+	postfainteffects
+	posthiteffects
 	tristatuschance
 	pickpocket
 	endmove
@@ -1581,8 +1581,8 @@ GigaImpact:
 	criticaltext
 	supereffectivetext
 	rechargenextturn
-	checkdestinybond
-	buildopponentrage
+	postfainteffects
+	posthiteffects
 	pickpocket
 	endmove
 
@@ -1603,8 +1603,8 @@ Rage:
 	checkfaint
 	criticaltext
 	supereffectivetext
-	checkdestinybond
-	buildopponentrage
+	postfainteffects
+	posthiteffects
 	pickpocket
 	endmove
 
@@ -1650,8 +1650,8 @@ Counter:
 	hittarget
 	failuretext
 	checkfaint
-	checkdestinybond
-	buildopponentrage
+	postfainteffects
+	posthiteffects
 	endmove
 
 Encore:
@@ -1708,8 +1708,8 @@ Reversal:
 	failuretext
 	checkfaint
 	supereffectivetext
-	checkdestinybond
-	buildopponentrage
+	postfainteffects
+	posthiteffects
 	pickpocket
 	endmove
 
@@ -1730,8 +1730,8 @@ FalseSwipe:
 	checkfaint
 	criticaltext
 	supereffectivetext
-	checkdestinybond
-	buildopponentrage
+	postfainteffects
+	posthiteffects
 	pickpocket
 	endmove
 
@@ -1763,8 +1763,8 @@ TripleKick:
 	criticaltext
 	cleartext
 	supereffectivelooptext
-	checkdestinybond
-	buildopponentrage
+	postfainteffects
+	posthiteffects
 	kickcounter
 	endloop
 	raisesub
@@ -1790,8 +1790,8 @@ Thief:
 	criticaltext
 	supereffectivetext
 	thief
-	checkdestinybond
-	buildopponentrage
+	postfainteffects
+	posthiteffects
 	pickpocket
 	endmove
 
@@ -1822,8 +1822,8 @@ FlameWheel:
 	criticaltext
 	supereffectivetext
 	defrost
-	checkdestinybond
-	buildopponentrage
+	postfainteffects
+	posthiteffects
 	burntarget
 	pickpocket
 	endmove
@@ -1916,8 +1916,8 @@ Rollout:
 	checkfaint
 	criticaltext
 	supereffectivetext
-	checkdestinybond
-	buildopponentrage
+	postfainteffects
+	posthiteffects
 	pickpocket
 	endmove
 
@@ -1963,8 +1963,8 @@ ConditionalBoostHit:
 	checkfaint
 	criticaltext
 	supereffectivetext
-	checkdestinybond
-	buildopponentrage
+	postfainteffects
+	posthiteffects
 	pickpocket
 	endmove
 
@@ -1995,8 +1995,8 @@ Return:
 	checkfaint
 	criticaltext
 	supereffectivetext
-	checkdestinybond
-	buildopponentrage
+	postfainteffects
+	posthiteffects
 	pickpocket
 	endmove
 
@@ -2018,8 +2018,8 @@ SacredFire:
 	criticaltext
 	supereffectivetext
 	defrost
-	checkdestinybond
-	buildopponentrage
+	postfainteffects
+	posthiteffects
 	burntarget
 	pickpocket
 	endmove
@@ -2042,8 +2042,8 @@ Magnitude:
 	checkfaint
 	criticaltext
 	supereffectivetext
-	checkdestinybond
-	buildopponentrage
+	postfainteffects
+	posthiteffects
 	pickpocket
 	endmove
 
@@ -2064,8 +2064,8 @@ GyroBall:
 	checkfaint
 	criticaltext
 	supereffectivetext
-	checkdestinybond
-	buildopponentrage
+	postfainteffects
+	posthiteffects
 	pickpocket
 	endmove
 
@@ -2086,8 +2086,8 @@ LowKick:
 	checkfaint
 	criticaltext
 	supereffectivetext
-	checkdestinybond
-	buildopponentrage
+	postfainteffects
+	posthiteffects
 	pickpocket
 	endmove
 
@@ -2115,8 +2115,8 @@ Pursuit:
 	checkfaint
 	criticaltext
 	supereffectivetext
-	checkdestinybond
-	buildopponentrage
+	postfainteffects
+	posthiteffects
 	pickpocket
 	endmove
 
@@ -2137,8 +2137,8 @@ RapidSpin:
 	criticaltext
 	supereffectivetext
 	clearhazards
-	checkdestinybond
-	buildopponentrage
+	postfainteffects
+	posthiteffects
 	pickpocket
 	endmove
 
@@ -2165,8 +2165,8 @@ HiddenPower:
 	checkfaint
 	criticaltext
 	supereffectivetext
-	checkdestinybond
-	buildopponentrage
+	postfainteffects
+	posthiteffects
 	pickpocket
 	endmove
 
@@ -2199,8 +2199,8 @@ MirrorCoat:
 	hittarget
 	failuretext
 	checkfaint
-	checkdestinybond
-	buildopponentrage
+	postfainteffects
+	posthiteffects
 	endmove
 
 Earthquake:
@@ -2221,8 +2221,8 @@ Earthquake:
 	checkfaint
 	criticaltext
 	supereffectivetext
-	checkdestinybond
-	buildopponentrage
+	postfainteffects
+	posthiteffects
 	pickpocket
 	endmove
 
@@ -2240,8 +2240,8 @@ FutureSight:
 	hittargetnosub
 	failuretext
 	checkfaint
-	checkdestinybond
-	buildopponentrage
+	postfainteffects
+	posthiteffects
 	endmove
 
 Gust:
@@ -2261,8 +2261,8 @@ Gust:
 	checkfaint
 	criticaltext
 	supereffectivetext
-	checkdestinybond
-	buildopponentrage
+	postfainteffects
+	posthiteffects
 	pickpocket
 	endmove
 
@@ -2284,8 +2284,8 @@ Stomp:
 	checkfaint
 	criticaltext
 	supereffectivetext
-	checkdestinybond
-	buildopponentrage
+	postfainteffects
+	posthiteffects
 	flinchtarget
 	pickpocket
 	endmove
@@ -2309,8 +2309,8 @@ SolarBeam:
 	checkfaint
 	criticaltext
 	supereffectivetext
-	checkdestinybond
-	buildopponentrage
+	postfainteffects
+	posthiteffects
 	pickpocket
 	endmove
 
@@ -2332,8 +2332,8 @@ Thunder:
 	checkfaint
 	criticaltext
 	supereffectivetext
-	checkdestinybond
-	buildopponentrage
+	postfainteffects
+	posthiteffects
 	paralyzetarget
 	pickpocket
 	endmove
@@ -2365,8 +2365,8 @@ Dig:
 	checkfaint
 	criticaltext
 	supereffectivetext
-	checkdestinybond
-	buildopponentrage
+	postfainteffects
+	posthiteffects
 	pickpocket
 	endmove
 
@@ -2402,8 +2402,8 @@ FlareBlitz:
 	supereffectivetext
 	recoil
 	defrost
-	checkdestinybond
-	buildopponentrage
+	postfainteffects
+	posthiteffects
 	burntarget
 	pickpocket
 	endmove

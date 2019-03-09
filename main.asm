@@ -390,6 +390,11 @@ SECTION "Code 6", ROMX
 INCLUDE "engine/clock_reset.asm"
 
 
+SECTION "Effect Command Pointers", ROMX
+
+INCLUDE "data/battle/effect_command_pointers.asm"
+
+
 SECTION "Code 7", ROMX
 
 INCLUDE "engine/events/pokepic.asm"
@@ -4122,11 +4127,6 @@ INCLUDE "engine/battle/core.asm"
 SECTION "Effect Commands", ROMX
 
 INCLUDE "engine/battle/effect_commands.asm"
-
-
-SECTION "Effect Command Pointers", ROMX
-
-INCLUDE "data/battle/effect_command_pointers.asm"
 
 
 SECTION "Battle Animations", ROMX
