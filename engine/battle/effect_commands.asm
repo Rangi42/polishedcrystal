@@ -7527,6 +7527,7 @@ BattleCommand_knockoff:
 	call OpponentCanLoseItem
 	ret z
 
+	call GetOpponentItem
 	xor a
 	ld [hl], a
 	call GetCurItemName
