@@ -424,40 +424,138 @@ HatchEggs: ; 16f70 (5:6f70)
 	db "@"
 ; 0x170bf
 
-InitEggMoves: ; 170bf
-	call GetHeritableMoves
-	ld d, h
-	ld e, l
-	ld b, NUM_MOVES
-.loop
-	ld a, [de]
+GetMotherAddr:
+	ld a, [wBreedMotherOrNonDitto]
 	and a
 	ret z
+	jr SwitchParentAddr
 
-	ld hl, wEggMonMoves
-	ld c, NUM_MOVES
-.next
-	ld a, [de]
-	cp [hl]
-	jr z, .skip
-	inc hl
-	dec c
-	jr nz, .next
-	call GetEggMove
-	jr nc, .skip
-	call LoadEggMove
-
-.skip
-	inc de
-	dec b
-	jr nz, .loop
-	ret
-; 170e4
-
-GetEggMove: ; 170e4
-GLOBAL EggMoves
-
+GetFatherAddr:
+	ld a, [wBreedMotherOrNonDitto]
+	and a
+	ret nz
+SwitchParentAddr:
 	push bc
+	ld bc, wBreedMon2 - wBreedMon1
+	add hl, bc
+	pop bc
+	ret
+
+InitEggMoves:
+; Order of move inheritance in VII:
+; * Default moves at level 1
+; * Inherited level up moves (both parents must know it)
+; * Egg moves from father
+; * Egg moves from mother
+; Further inheritances shift previous moves out, meaning that the list is in a
+; reversed inheritance priority
+
+	; Default level 1 moves
+	ld de, wEggMonMoves
+	xor a
+	ld [wBuffer1], a
+	predef FillMoves
+
+	; Inherited level up moves
+	ld de, wBreedMon1Moves
+	ld b, NUM_MOVES
+.level_up_loop
+	ld a, [de]
+	inc de
+	and a
+	jr z, .level_up_done
+	ld c, a
+	ld hl, wBreedMon2Moves
+	push de
+	ld d, NUM_MOVES
+.level_up_loop_inner
+	ld a, [hli]
+	cp c
+	jr z, .got_level_up_move
+	and a
+	jr z, .level_up_done_inner
+	dec d
+	jr nz, .level_up_loop_inner
+.level_up_done_inner
+	pop de
+	dec b
+	jr nz, .level_up_loop
+	jr .level_up_done
+
+.got_level_up_move
+	ld d, c
+	push hl
+	push bc
+	call InheritLevelMove
+	pop bc
+	pop hl
+	pop de
+	jr .level_up_done_inner
+
+.level_up_done
+	; Egg moves from father
+	ld hl, wBreedMon1Moves
+	call GetFatherAddr
+	call .GetEggMoves
+
+	; Egg moves from mother
+	ld hl, wBreedMon1Moves
+	call GetMotherAddr
+	call .GetEggMoves
+
+	; Done, fill PP
+	ld hl, wEggMonMoves
+	ld de, wEggMonPP
+	predef_jump FillPP
+
+.GetEggMoves:
+	ld b, NUM_MOVES
+.egg_move_loop
+	ld a, [hli]
+	and a
+	ret z
+	ld d, a
+	push hl
+	push bc
+	call InheritEggMove
+	pop bc
+	pop hl
+	dec b
+	jr nz, .egg_move_loop
+	ret
+
+InheritLevelMove:
+; If move d is part of the level up moveset, inherit that move
+	ld a, [wEggMonSpecies]
+	dec a
+	ld c, a
+	ld b, 0
+	ld hl, EvosAttacksPointers
+	add hl, bc
+	add hl, bc
+	ld a, BANK(EvosAttacksPointers)
+	call GetFarHalfword
+.loop
+	ld a, BANK(EvosAttacks)
+	call GetFarByte
+	inc hl
+	and a
+	jr nz, .loop
+.loop2
+	ld a, BANK(EvosAttacks)
+	call GetFarByte
+	and a
+	ret z
+	inc hl
+	ld a, BANK(EvosAttacks)
+	call GetFarByte
+	cp d
+	jr z, InheritMove
+	inc hl
+	jr .loop2
+
+InheritEggMove:
+; If move d is an egg move, inherit that move
 	ld a, [wEggMonSpecies]
 	dec a
 	ld c, a
@@ -470,200 +568,33 @@ GLOBAL EggMoves
 .loop
 	ld a, BANK(EggMoves)
 	call GetFarByte
-	cp -1
-	jr z, .reached_end
-	ld b, a
-	ld a, [de]
-	cp b
-	jr z, .done_carry
+	inc a
+	ret z
+	dec a
+	cp d
+	jr z, InheritMove
 	inc hl
 	jr .loop
 
-.reached_end
-	call GetBreedmonMovePointer
-	ld b, NUM_MOVES
-.loop2
-	ld a, [de]
-	cp [hl]
-	jr z, .found_eggmove
-	inc hl
-	dec b
-	jr z, .inherit_tmhm
-	jr .loop2
-
-.found_eggmove
-	ld a, [wEggMonSpecies]
-	dec a
-	ld c, a
-	ld b, 0
-	ld hl, EvosAttacksPointers
-	add hl, bc
-	add hl, bc
-	ld a, BANK(EvosAttacksPointers)
-	call GetFarHalfword
-.loop3
-	ld a, BANK(EvosAttacks)
-	call GetFarByte
-	inc hl
-	and a
-	jr nz, .loop3
-.loop4
-	ld a, BANK(EvosAttacks)
-	call GetFarByte
-	and a
-	jr z, .inherit_tmhm
-	inc hl
-	ld a, BANK(EvosAttacks)
-	call GetFarByte
-	ld b, a
-	ld a, [de]
-	cp b
-	jr z, .done_carry
-	inc hl
-	jr .loop4
-
-.inherit_tmhm
-	ld hl, TMHMMoves
-.loop5
-	ld a, BANK(TMHMMoves)
-	call GetFarByte
-	inc hl
-	and a
-	jr z, .done
-	ld b, a
-	ld a, [de]
-	cp b
-	jr nz, .loop5
-	ld [wPutativeTMHMMove], a
-	predef CanLearnTMHMMove
-	ld a, c
-	and a
-	jr z, .done
-
-.done_carry
-	pop bc
-	scf
-	ret
-
-.done
-	pop bc
-	and a
-	ret
-; 17169
-
-LoadEggMove: ; 17169
-	push de
-	push bc
-	ld a, [de]
-	ld b, a
+InheritMove:
 	ld hl, wEggMonMoves
-	ld c, NUM_MOVES
+	ld b, NUM_MOVES
 .loop
 	ld a, [hli]
 	and a
-	jr z, .done
-	dec c
+	jr z, .got_move_byte
+	dec b
 	jr nz, .loop
-	ld de, wEggMonMoves
+
+	; shift moves
+	ld bc, 3
 	ld hl, wEggMonMoves + 1
-	ld a, [hli]
-	ld [de], a
-	inc de
-	ld a, [hli]
-	ld [de], a
-	inc de
-	ld a, [hli]
-	ld [de], a
-
-.done
+	ld de, wEggMonMoves
+	rst CopyBytes
+.got_move_byte
 	dec hl
-	ld [hl], b
-	ld hl, wEggMonMoves
-	ld de, wEggMonPP
-	predef FillPP
-	pop bc
-	pop de
+	ld [hl], d
 	ret
-; 17197
-
-GetHeritableMoves: ; 17197
-	ld hl, wBreedMon2Moves
-	ld a, [wBreedMon1Species]
-	cp DITTO
-	jr z, .ditto1
-	ld a, [wBreedMon2Species]
-	cp DITTO
-	jr z, .ditto2
-	ld a, [wBreedMotherOrNonDitto]
-	and a
-	ret z
-	ld hl, wBreedMon1Moves
-	ret
-
-.ditto1
-	ld a, [wCurPartySpecies]
-	push af
-	ld a, [wBreedMon2Species]
-	ld [wCurPartySpecies], a
-	ld a, [wBreedMon2Gender]
-	ld [wTempMonGender], a
-	ld a, [wBreedMon2DVs]
-	ld [wTempMonDVs], a
-	ld a, [wBreedMon2DVs + 1]
-	ld [wTempMonDVs + 1], a
-	ld a, BREEDMON
-	ld [wMonType], a
-	predef GetGender
-	jr c, .inherit_mon2_moves
-	jr nz, .inherit_mon2_moves
-	jr .inherit_mon1_moves
-
-.ditto2
-	ld a, [wCurPartySpecies]
-	push af
-	ld a, [wBreedMon1Species]
-	ld [wCurPartySpecies], a
-	ld a, [wBreedMon1Gender]
-	ld [wTempMonGender], a
-	ld a, [wBreedMon1DVs]
-	ld [wTempMonDVs], a
-	ld a, [wBreedMon1DVs + 1]
-	ld [wTempMonDVs + 1], a
-	ld a, BREEDMON
-	ld [wMonType], a
-	predef GetGender
-	jr c, .inherit_mon1_moves
-	jr nz, .inherit_mon1_moves
-
-.inherit_mon2_moves
-	ld hl, wBreedMon2Moves
-	pop af
-	ld [wCurPartySpecies], a
-	ret
-
-.inherit_mon1_moves
-	ld hl, wBreedMon1Moves
-	pop af
-	ld [wCurPartySpecies], a
-	ret
-; 1720b
-
-GetBreedmonMovePointer: ; 1720b
-	ld hl, wBreedMon1Moves
-	ld a, [wBreedMon1Species]
-	cp DITTO
-	ret z
-	ld a, [wBreedMon2Species]
-	cp DITTO
-	jr z, .ditto
-	ld a, [wBreedMotherOrNonDitto]
-	and a
-	ret z
-
-.ditto
-	ld hl, wBreedMon2Moves
-	ret
-; 17224
 
 
 GetEggFrontpic: ; 17224 (5:7224)
