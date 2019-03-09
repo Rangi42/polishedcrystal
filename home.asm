@@ -118,8 +118,6 @@ HideSprites:: ; 3016
 	ret
 ; 3026
 
-INCLUDE "home/copy2.asm"
-
 _Jumptable:
 	push de
 	ld e, a
