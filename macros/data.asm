@@ -124,6 +124,15 @@ x = x + (\1) * $40000
 	endr
 ENDM
 
+assert: MACRO
+	if !(\1)
+		if _NARG > 1
+			fail \2
+		else
+			fail "Assertion failed: \1"
+		endc
+	endc
+ENDM
 
 genders: MACRO
 ; eight arguments, all MALE ($00) or FEMALE ($80)
