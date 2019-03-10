@@ -386,6 +386,7 @@ LegendaryMons::
 	db ENTEI
 	db SUICUNE
 UberMons::
+; banned from Battle Tower
 	db MEWTWO
 	db MEW
 	db LUGIA
