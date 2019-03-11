@@ -277,7 +277,8 @@ GetMoveAttr::
 	push bc
 	ld bc, MOVE_LENGTH
 	rst AddNTimes
-	call GetMoveByte
+	ld a, BANK(Moves)
+	call GetFarByte
 	pop bc
 	ret
 

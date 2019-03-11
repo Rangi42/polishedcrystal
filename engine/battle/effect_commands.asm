@@ -5025,10 +5025,6 @@ GetMoveData::
 	ld a, Bank(Moves)
 	jp FarCopyBytes
 
-GetMoveByte::
-	ld a, BANK(Moves)
-	jp GetFarByte
-
 IsOpponentLeafGuardActive:
 	call CallOpponentTurn
 IsLeafGuardActive:

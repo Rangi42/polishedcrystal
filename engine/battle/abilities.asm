@@ -376,9 +376,7 @@ ForewarnAbility:
 	dec a
 	push hl
 	ld hl, Moves + MOVE_POWER
-	push bc
 	call GetMoveAttr
-	pop bc
 	pop hl
 	ld c, a
 	; Status moves have 0 power
