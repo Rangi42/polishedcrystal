@@ -1101,6 +1101,9 @@ HandleResidualDamage:
 	bit SUBSTATUS_LEECH_SEED, [hl]
 	jr z, .not_seeded
 
+	call HasOpponentFainted
+	jr z, .not_seeded
+
 	call SwitchTurn
 	xor a
 	ld [wNumHits], a
