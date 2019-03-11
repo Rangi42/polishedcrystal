@@ -20,4 +20,4 @@ Makefile text
 *.blk  binary diff=hex
 *.ablk binary diff=hex
 *.tilemap binary diff=hex
-
+*.ips  binary diff=hex
