@@ -6418,7 +6418,6 @@ BattleCommand_teleport: ; 36778
 	inc a
 	ld [wBattleEnded], a
 	ld [wKickCounter], a
-	call SetBattleDraw
 	call BattleCommand_lowersub
 	call LoadMoveAnim
 	ld c, 20
@@ -6555,7 +6554,6 @@ BattleCommand_forceswitch: ; 3680f
 	ld [wNumHits], a
 	inc a
 	ld [wBattleEnded], a
-	call SetBattleDraw
 	call SetBattleDraw
 	ld a, $1
 	ld [wKickCounter], a
