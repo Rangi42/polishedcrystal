@@ -1381,6 +1381,7 @@ Script_reloadmapafterbattle:
 	push de
 	call RestoreBattleItems
 	farcall RecalculateStatsAfterBattle
+	farcall RemoveToxicAfterBattle
 	pop de
 	pop bc
 	ld hl, wBattleScriptFlags
@@ -1401,7 +1402,6 @@ Script_reloadmapafterbattle:
 	jr z, .was_wild
 	farcall MomTriesToBuySomething
 	farcall RunPostBattleAbilities
-	farcall RemoveToxicAfterBattle
 	jr .done
 
 .was_wild
@@ -1409,7 +1409,6 @@ Script_reloadmapafterbattle:
 	bit 1, a ; set on fleeing
 	jr nz, .skip_pickup
 	farcall RunPostBattleAbilities
-	farcall RemoveToxicAfterBattle
 .skip_pickup
 	ld a, [wBattleResult]
 	bit 7, a
