@@ -1377,13 +1377,7 @@ Script_catchtutorial:
 	jp Script_reloadmap
 
 Script_reloadmapafterbattle:
-	push bc
-	push de
-	call RestoreBattleItems
-	farcall RecalculateStatsAfterBattle
-	farcall RemoveToxicAfterBattle
-	pop de
-	pop bc
+	farcall PostBattleTasks
 	ld hl, wBattleScriptFlags
 	ld d, [hl]
 	ld [hl], $0

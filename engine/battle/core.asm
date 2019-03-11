@@ -3954,29 +3954,24 @@ HandleFirstAirBalloon:
 	ld [hBattleTurn], a
 	ret
 
-RecalculateStatsAfterBattle::
+PostBattleTasks::
+	push bc
+	push de
+	call RestoreBattleItems
 	ld a, [wPartyCount]
 .loop
 	dec a
 	push af
 	ld [wCurPartyMon], a
 	farcall UpdatePkmnStats
+	ld a, MON_STATUS
+	call GetPartyParamLocation
+	res TOX, [hl]
 	pop af
 	jr nz, .loop
+	pop de
+	pop bc
 	ret
-
-RemoveToxicAfterBattle::
-; removes toxic from mons after battle
-	ld a, [wPartyCount]
-	ld hl, wPartyMon1Status
-	ld bc, PARTYMON_STRUCT_LENGTH
-	inc a
-.loop
-	dec a
-	ret z
-	res TOX, [hl]
-	add hl, bc
-	jr .loop
 
 RunBothActivationAbilities:
 ; runs both pokémon's activation abilities (Intimidate, etc.).
