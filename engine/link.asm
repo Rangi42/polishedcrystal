@@ -314,7 +314,8 @@ LinkTimeout: ; 283b2
 	pop hl
 	bccoord 1, 14
 	call PlaceWholeStringInBoxAtOnce
-	call RotateThreePalettesRight
+	ld c, 15
+	call FadeToWhite
 	call ClearScreen
 	ld b, CGB_DIPLOMA
 	call GetCGBLayout
@@ -1332,7 +1333,8 @@ Function28ade: ; 28ade
 	cp $f
 	jr nz, .loop1
 Function28b22: ; 28b22
-	call RotateThreePalettesRight
+	ld c, 15
+	call FadeToWhite
 	call ClearScreen
 	ld b, CGB_DIPLOMA
 	call GetCGBLayout

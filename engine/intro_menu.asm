@@ -681,7 +681,8 @@ ProfElmSpeech: ; 0x5f99
 	ld hl, ElmText1
 	call PrintText
 if !DEF(DEBUG)
-	call RotateThreePalettesRight
+	ld c, 15
+	call FadeToWhite
 	call ClearTileMap
 
 	ld a, SYLVEON
@@ -706,7 +707,8 @@ if !DEF(DEBUG)
 	call PrintText
 	ld hl, ElmText4
 	call PrintText
-	call RotateThreePalettesRight
+	ld c, 15
+	call FadeToWhite
 	call ClearTileMap
 
 	xor a
@@ -781,7 +783,14 @@ ElmText7: ; 0x606f
 	db "@"
 
 InitGender: ; 48dcb (12:4dcb)
-	call RotateThreePalettesRight
+	ld hl, WhitePal
+	ld de, wUnknBGPals palette 0
+	ld bc, 1 palettes
+	ld a, 5
+	call FarCopyWRAM
+	ld c, 15
+	call FadePalettes
+
 	call ClearTileMap
 	call ApplyAttrAndTilemapInVBlank
 	call SetPalettes
@@ -789,6 +798,7 @@ InitGender: ; 48dcb (12:4dcb)
 	ld b, CGB_INTRO_PALS
 	call GetCGBLayout
 	call InitIntroGradient
+	call SetPalettes
 
 	ld hl, AreYouABoyOrAreYouAGirlText
 	call PrintText
@@ -917,7 +927,8 @@ ShrinkPlayer: ; 610f
 	ld c, 50
 	call DelayFrames
 
-	call RotateThreePalettesRight
+	ld c, 15
+	call FadeToWhite
 	jp ClearTileMap
 ; 616a
 

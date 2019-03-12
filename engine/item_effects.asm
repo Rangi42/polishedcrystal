@@ -639,7 +639,8 @@ PokeBallEffect: ; e8a2
 	ld b, $0 ; pokemon
 	farcall NamingScreen
 
-	call RotateThreePalettesRight
+	ld c, 15
+	call FadeToWhite
 
 	call LoadStandardFont
 
@@ -725,7 +726,9 @@ PokeBallEffect: ; e8a2
 	ld hl, Text_SentToBillsPC
 	call PrintText
 
-	call RotateThreePalettesRight
+	ld c, 15
+	call FadeToWhite
+
 	call LoadStandardFont
 	jr .return_from_capture
 
