@@ -22,29 +22,7 @@ RotatePalettesRight:: ; 4c7
 	ret
 ; 4dd
 
-RotateThreePalettesLeft:: ; 4f0
-	ld hl, IncGradGBPalTable_07 - 1
-	ld b, 3
-RotatePalettesLeft:: ; 501
-; Rotate palettes to the left and fill with loaded colors from the right
-; If we're already at the rightmost color, fill with the rightmost color
-	push de
-	ld a, [hld]
-	ld d, a
-	ld a, [hld]
-	ld e, a
-	call DmgToCgbObjPals
-	ld a, [hld]
-	call DmgToCgbBGPals
-	ld c, 8
-	call DelayFrames
-	pop de
-	dec b
-	jr nz, RotatePalettesLeft
-	ret
-; 517
-
-FadeToWhite::
+SetWhitePals::
 	ld a, BANK(wUnknBGPals)
 	call StackCallInWRAMBankA
 
@@ -52,9 +30,7 @@ FadeToWhite::
 	ld hl, wUnknBGPals
 	ld a, $ff
 	ld bc, 16 palettes
-	call ByteFill
-	ld c, 31
-	jp FadePalettes
+	jp ByteFill
 
 SmoothFlash::
 	ld a, PALFADE_BOTH | PALFADE_FLASH
@@ -72,9 +48,16 @@ SetBlackPals::
 	ld bc, 16 palettes
 	jp ByteFill
 
+FadeToWhite::
+	push bc
+	call SetWhitePals
+	pop bc
+	jr FadePalettes
+
 FadeToBlack::
+	push bc
 	call SetBlackPals
-	ld c, 31
+	pop bc
 
 FadePalettes::
 ; Fades active palettes in wBGPals/wOBPals to new ones in

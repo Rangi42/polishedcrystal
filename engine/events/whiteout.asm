@@ -5,7 +5,7 @@ Script_BattleWhiteout:: ; 0x124c1
 
 Script_OverworldWhiteout:: ; 0x124c8
 	refreshscreen
-	callasm OverworldBGMap
+	callasm OverworldWhiteoutFade
 
 Script_Whiteout: ; 0x124ce
 	callasm LoseMoney
@@ -50,13 +50,14 @@ Script_Whiteout: ; 0x124ce
 	text_jump WhiteoutToTrainerText
 	db "@"
 
-OverworldBGMap: ; 124fa
-	call ClearPalettes
-	call ClearScreen
-	call ApplyAttrAndTilemapInVBlank
-	call HideSprites
-	jp RotateThreePalettesLeft
-; 1250a
+OverworldWhiteoutFade
+	farcall FadeOutPalettes
+	call ClearTileMap
+	call ClearSprites
+	ld b, CGB_DIPLOMA
+	call GetCGBLayout
+	jp SetPalettes
+
 
 BattleBGMap: ; 1250a
 	ld b, CGB_BATTLE_GRAYSCALE

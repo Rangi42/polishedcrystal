@@ -115,20 +115,13 @@ _UpdateTimePals:: ; 8c070
 	jp DmgToCgbTimePals
 ; 8c079
 
-FadeInPalettes:: ; 8c079
-	ld c, $12
-	call GetTimePalFade
-	ld b, $4
-	jp ConvertTimePalsDecHL
-; 8c084
+FadeInPalettes::
+	ld c, 10
+	jp FadePalettes
 
-FadeOutPalettes:: ; 8c084
-	call FillWhiteBGColor
-	ld c, $9
-	call GetTimePalFade
-	ld b, $4
-	jp ConvertTimePalsIncHL
-; 8c092
+FadeOutPalettes::
+	ld c, 10
+	jp FadeToWhite
 
 Special_BattleTower_Fade: ; 8c092
 	call FillWhiteBGColor

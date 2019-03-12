@@ -287,15 +287,14 @@ FadeOldMapMusic: ; 15567
 RetainOldPalettes: ; 1556d
 	farjp _UpdateTimePals
 
-RotatePalettesRightMapAndMusic: ; 15574
+RotatePalettesRightMapAndMusic:
 	ld e, 0
 	ld a, [wMusicFadeIDLo]
 	ld d, 0
 	ld a, [wMusicFadeIDHi]
 	ld a, $4
 	ld [wMusicFade], a
-	jp RotateThreePalettesRight
-; 15587
+	jp FadeOutPalettes
 
 ForceMapMusic: ; 15587
 	ld a, [wPlayerState]

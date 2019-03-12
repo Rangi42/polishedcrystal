@@ -13,6 +13,7 @@ InitClock: ; 90672 (24:4672)
 	ld [wMusicFadeIDLo], a
 	ld a, MUSIC_NONE / $100
 	ld [wMusicFadeIDHi], a
+	ld c, 31
 	call FadeToBlack
 	call ClearTileMap
 	call ClearSprites

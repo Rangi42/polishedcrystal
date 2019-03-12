@@ -657,12 +657,14 @@ Continue_DisplayGameTime: ; 5f84
 
 ProfElmSpeech: ; 0x5f99
 	farcall InitClock
+	ld c, 31
 	call FadeToBlack
 	call ClearTileMap
 
 	ld de, MUSIC_ROUTE_30
 	call PlayMusic
 
+	ld c, 31
 	call FadeToWhite
 
 	xor a
