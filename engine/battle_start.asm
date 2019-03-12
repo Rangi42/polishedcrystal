@@ -377,13 +377,18 @@ endr
 	call .load
 	ld a, $1
 	ld [hBGMapMode], a
-	call Delay2
 	ld hl, wcf64
+	ld a, [hl]
 	inc [hl]
-	ret
+.mod_3
+	; Ensure that music lines up with the transistion
+	sub 3
+	jr nc, .mod_3
+	add 3
+	ret z
+	jp DelayFrame
 
 .end
-	call ApplyTilemapInVBlank
 	xor a
 	ld [hBGMapMode], a
 	ld a, $20
@@ -392,26 +397,46 @@ endr
 ; 8c490 (23:4490)
 
 .spintable ; 8c490
-	spintable_entry UPPER_LEFT,  1,  1,  6
-	spintable_entry UPPER_LEFT,  2,  0,  3
-	spintable_entry UPPER_LEFT,  3,  1,  0
-	spintable_entry UPPER_LEFT,  4,  5,  0
-	spintable_entry UPPER_LEFT,  5,  9,  0
-	spintable_entry UPPER_RIGHT, 5, 10,  0
-	spintable_entry UPPER_RIGHT, 4, 14,  0
-	spintable_entry UPPER_RIGHT, 3, 18,  0
-	spintable_entry UPPER_RIGHT, 2, 19,  3
-	spintable_entry UPPER_RIGHT, 1, 18,  6
-	spintable_entry LOWER_RIGHT, 1, 18, 11
-	spintable_entry LOWER_RIGHT, 2, 19, 14
-	spintable_entry LOWER_RIGHT, 3, 18, 17
-	spintable_entry LOWER_RIGHT, 4, 14, 17
-	spintable_entry LOWER_RIGHT, 5, 10, 17
-	spintable_entry LOWER_LEFT,  5,  9, 17
-	spintable_entry LOWER_LEFT,  4,  5, 17
-	spintable_entry LOWER_LEFT,  3,  1, 17
-	spintable_entry LOWER_LEFT,  2,  0, 14
-	spintable_entry LOWER_LEFT,  1,  1, 11
+	spintable_entry UPPER_LEFT,   1,  9,  8
+	spintable_entry UPPER_LEFT,   2,  1,  6
+	spintable_entry UPPER_LEFT,   3,  0,  4
+	spintable_entry UPPER_LEFT,   4,  0,  2
+	spintable_entry UPPER_LEFT,   5,  0,  0
+	spintable_entry UPPER_LEFT,   6,  1,  0
+	spintable_entry UPPER_LEFT,   7,  3,  0
+	spintable_entry UPPER_LEFT,   8,  5,  0
+	spintable_entry UPPER_LEFT,   9,  7,  0
+	spintable_entry UPPER_LEFT,  10,  9,  0
+	spintable_entry UPPER_RIGHT, 10, 10,  0
+	spintable_entry UPPER_RIGHT,  9, 12,  0
+	spintable_entry UPPER_RIGHT,  8, 14,  0
+	spintable_entry UPPER_RIGHT,  7, 16,  0
+	spintable_entry UPPER_RIGHT,  6, 18,  0
+	spintable_entry UPPER_RIGHT,  5, 19,  0
+	spintable_entry UPPER_RIGHT,  4, 19,  2
+	spintable_entry UPPER_RIGHT,  3, 19,  4
+	spintable_entry UPPER_RIGHT,  2, 18,  6
+	spintable_entry UPPER_RIGHT,  1, 10,  8
+	spintable_entry LOWER_RIGHT,  1, 10,  9
+	spintable_entry LOWER_RIGHT,  2, 18, 11
+	spintable_entry LOWER_RIGHT,  3, 19, 13
+	spintable_entry LOWER_RIGHT,  4, 19, 15
+	spintable_entry LOWER_RIGHT,  5, 19, 17
+	spintable_entry LOWER_RIGHT,  6, 18, 17
+	spintable_entry LOWER_RIGHT,  7, 16, 17
+	spintable_entry LOWER_RIGHT,  8, 14, 17
+	spintable_entry LOWER_RIGHT,  9, 12, 17
+	spintable_entry LOWER_RIGHT, 10, 10, 17
+	spintable_entry LOWER_LEFT,  10,  9, 17
+	spintable_entry LOWER_LEFT,   9,  7, 17
+	spintable_entry LOWER_LEFT,   8,  5, 17
+	spintable_entry LOWER_LEFT,   7,  3, 17
+	spintable_entry LOWER_LEFT,   6,  1, 17
+	spintable_entry LOWER_LEFT,   5,  0, 17
+	spintable_entry LOWER_LEFT,   4,  0, 15
+	spintable_entry LOWER_LEFT,   3,  0, 13
+	spintable_entry LOWER_LEFT,   2,  1, 11
+	spintable_entry LOWER_LEFT,   1,  9,  9
 	db -1
 ; 8c4f5
 
@@ -469,11 +494,17 @@ endr
 	jr .loop
 ; 8c538 (23:4538)
 
-.wedge1 db 2, 3, 5, 4, 9, -1
-.wedge2 db 1, 1, 2, 2, 4, 2, 4, 2, 3, -1
-.wedge3 db 2, 1, 3, 1, 4, 1, 4, 1, 4, 1, 3, 1, 2, 1, 1, 1, 1, -1
-.wedge4 db 4, 1, 4, 0, 3, 1, 3, 0, 2, 1, 2, 0, 1, -1
-.wedge5 db 4, 0, 3, 0, 3, 0, 2, 0, 2, 0, 1, 0, 1, 0, 1, -1
+; wedgeN: db width towards edge, x increment or -1 if done
+.wedge1 db 10, -1
+.wedge2 db 2, 4, 6, -1
+.wedge3 db 1, 2, 3, 2, 3, 3, 2, -1
+.wedge4 db 1, 1, 2, 2, 3, 1, 2, 2, 2, 1, 1, -1
+.wedge5 db 1, 1, 2, 1, 2, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, -1
+.wedge6 db 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, -1
+.wedge7 db 2, 1, 2, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, -1
+.wedge8 db 2, 1, 2, 0, 2, 1, 2, 0, 1, 1, 2, 0, 1, 1, 1, -1
+.wedge9 db 2, 0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, -1
+.wedge10 db 2, 0, 2, 0, 2, 0, 1, 0, 1, 0, 1, -1
 ; 8c578
 
 StartTrainerBattle_SetUpForRandomScatterOutro: ; 8c578 (23:4578)
