@@ -232,52 +232,8 @@ StartTrainerBattle_SetUpBGMap: ; 8c3a1 (23:43a1)
 	ret
 
 StartTrainerBattle_Flash: ; 8c3ab (23:43ab)
-	call .DoFlashAnimation
-	ret nc
+	call SmoothFlash
 	jp StartTrainerBattle_NextScene
-
-.DoFlashAnimation: ; 8c3b3 (23:43b3)
-	ld a, [wTimeOfDayPalset]
-	cp %11111111 ; dark cave
-	jr z, .done
-	ld hl, wcf64
-	ld a, [hl]
-	inc [hl]
-	srl a
-	ld e, a
-	ld d, 0
-	ld hl, .pals
-	add hl, de
-	ld a, [hl]
-	cp %00000001
-	jr z, .done
-	ld [wBGP], a
-	call DmgToCgbBGPals
-	and a
-	ret
-
-.done
-	xor a
-	ld [wcf64], a
-	scf
-	ret
-; 8c3db (23:43db)
-
-.pals ; 8c3db
-	db %11111001 ; 3321
-	db %11111110 ; 3332
-	db %11111111 ; 3333
-	db %11111110 ; 3332
-	db %11111001 ; 3321
-	db %11100100 ; 3210
-	db %10010000 ; 2100
-	db %01000000 ; 1000
-	db %00000000 ; 0000
-	db %01000000 ; 1000
-	db %10010000 ; 2100
-	db %11100100 ; 3210
-	db %00000001 ; 0001
-; 8c3e8
 
 StartTrainerBattle_SetUpForWavyOutro: ; 8c3e8 (23:43e8)
 	farcall BattleStart_HideAllSpritesExceptBattleParticipants

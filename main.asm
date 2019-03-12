@@ -4057,6 +4057,7 @@ INCLUDE "engine/card_flip.asm"
 INCLUDE "engine/unown_puzzle.asm"
 ;INCLUDE "engine/dummy_game.asm"
 INCLUDE "engine/billspc.asm"
+INCLUDE "engine/fade.asm"
 
 
 SECTION "Code 23", ROMX

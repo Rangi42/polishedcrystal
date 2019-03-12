@@ -1129,11 +1129,7 @@ rept 2
 	ld hl, .GameFreakDittoPalette
 	call LoadHLPaletteIntoDE
 endr
-
-	call WipeAttrMap
-	call ApplyAttrMap
-	jp ApplyPals
-; 9521
+	ret
 
 .GameFreakLogoPalette:
 if !DEF(MONOCHROME)

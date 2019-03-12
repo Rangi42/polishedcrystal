@@ -1383,7 +1383,10 @@ wColorVaryDVs:: ds 3
 wColorVarySpecies:: ds 1
 wColorVaryShiny:: ds 1
 
-	ds 102 ; unused
+wPalFadeDelayFrames:: ds 1
+wPalFadeDelay:: ds 1
+
+	ds 100 ; unused
 
 wLYOverridesBackup:: ds SCREEN_HEIGHT_PX
 wLYOverridesBackupEnd::

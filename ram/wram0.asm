@@ -959,7 +959,13 @@ wcf66:: ds 1 ; TODO: replace with meaningful labels
 
 ENDU
 
-	ds 10 ; unused
+wPalFadeMode::
+; bit 0-1: which (0: everything, 1: BG, 2: OBJ)
+; bit 2: perform a smooth dark flash
+; bit 3: partial fade (fade b of c frames)
+	ds 1
+
+	ds 9 ; unused
 
 wWindowStackPointer:: ds 2
 wMenuJoypad:: ds 1

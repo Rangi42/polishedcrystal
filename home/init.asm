@@ -13,7 +13,7 @@ SoftReset:: ; 150
 	ld hl, wInputFlags
 	set 7, [hl]
 
-	ld c, 32
+	ld c, 3
 	call DelayFrames
 
 	jr Init

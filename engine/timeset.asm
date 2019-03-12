@@ -13,9 +13,7 @@ InitClock: ; 90672 (24:4672)
 	ld [wMusicFadeIDLo], a
 	ld a, MUSIC_NONE / $100
 	ld [wMusicFadeIDHi], a
-	ld c, 8
-	call DelayFrames
-	call RotateFourPalettesLeft
+	call FadeToBlack
 	call ClearTileMap
 	call ClearSprites
 	ld b, CGB_DIPLOMA
@@ -29,7 +27,9 @@ InitClock: ; 90672 (24:4672)
 	call Request1bpp
 	call .ClearScreen
 	call ApplyTilemapInVBlank
-	call RotateFourPalettesRight
+	call SetPalettes
+	ld c, 10
+	call DelayFrames
 if !DEF(DEBUG)
 	ld hl, Text_WokeUpOak
 	call PrintText
