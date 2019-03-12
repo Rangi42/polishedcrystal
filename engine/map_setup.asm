@@ -294,7 +294,7 @@ RotatePalettesRightMapAndMusic:
 	ld a, [wMusicFadeIDHi]
 	ld a, $4
 	ld [wMusicFade], a
-	jp FadeOutPalettes
+	farjp FadeOutPalettes
 
 ForceMapMusic: ; 15587
 	ld a, [wPlayerState]
