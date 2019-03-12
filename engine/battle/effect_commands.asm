@@ -3025,6 +3025,7 @@ BattleCommand_posthiteffects:
 	call HasUserFainted
 	jr z, .rocky_helmet_done
 	call GetOpponentItemAfterUnnerve
+	call GetCurItemName
 	ld a, b
 	cp HELD_ROCKY_HELMET
 	jr z, .rocky_helmet
@@ -3049,8 +3050,6 @@ BattleCommand_posthiteffects:
 	and a
 	jr nz, .defend_hit_done
 	farcall ItemRecoveryAnim
-	call GetUserItemAfterUnnerve
-	call GetCurItemName
 	ld a, [wLoweredStat]
 	and $f
 	ld b, a
@@ -3077,7 +3076,6 @@ BattleCommand_posthiteffects:
 	inc c
 .damage_ok
 	farcall SubtractHPFromUser
-	call GetCurItemName
 	ld hl, BattleText_UserHurtByItem
 	call StdBattleTextBox
 
