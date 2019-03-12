@@ -651,7 +651,7 @@ GetCallerName: ; 903a9 (24:43a9)
 	inc a
 	ld de, wPokegearNumberBuffer
 	ld [de], a
-	lb bc, PRINTNUM_RIGHTALIGN | 1, 2
+	lb bc, PRINTNUM_LEFTALIGN | 1, 2
 	call PrintNum
 	ld de, .filler
 	jp PlaceString

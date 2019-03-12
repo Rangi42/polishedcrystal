@@ -76,6 +76,7 @@ FindNest: ; 2a01f
 	ld a, [hli]
 	cp MAP_NAVEL_ROCK_INSIDE
 	jr nz, .not_navel_rock_map
+	pop hl
 	ret
 
 	ld a, [hli]
@@ -217,31 +218,6 @@ FindNest: ; 2a01f
 	inc de
 	ret
 
-CheckWildEncounter::
-	ld a, [wVBlankOWAction]
-	and a
-	call z, EnableRandomEncounters
-	ld a, [wVBlankOWAction]
-	sub 2
-	ld a, 1
-	ld [wVBlankOWAction], a
-	ret
-
-EnableRandomEncounters:
-	ld a, 1
-	ld [wVBlankOWAction], a
-	jr TryWildEncounter
-
-VBlankOWCheck::
-	ld a, [wMapEventStatus]
-	and a
-	ret z
-	ld a, [wVBlankOWAction]
-	and a
-	ret z
-	dec a
-	ret nz
-
 TryWildEncounter::
 ; Try to trigger a wild encounter.
 	; Do this first, because this affects some abilities messing with encounter rate
@@ -251,11 +227,6 @@ TryWildEncounter::
 	jr nc, .no_battle
 	call CheckRepelEffect
 	jr nc, .no_battle
-	ld a, [wVBlankOWAction]
-	and a
-	ret z
-	ld a, 2
-	ld [wVBlankOWAction], a
 	xor a
 	ret
 
@@ -263,12 +234,7 @@ TryWildEncounter::
 	xor a ; BATTLETYPE_NORMAL
 	ld [wTempWildMonSpecies], a
 	ld [wBattleType], a
-	ld a, [wVBlankOWAction]
-	and a
-	ld a, 3
-	jr z, .skip_random_encounters_flag
-	ld [wVBlankOWAction], a
-.skip_random_encounters_flag
+	ld a, 1
 	and a
 	ret
 
@@ -545,6 +511,7 @@ CheckRepelEffect::
 	ret
 
 ApplyAbilityEffectsOnEncounterMon:
+; Consider making the abilities more useful in non-faithful
 	call GetLeadAbility
 	ret z
 	ld hl, .AbilityEffects
@@ -598,12 +565,16 @@ ApplyAbilityEffectsOnEncounterMon:
 .Hustle:
 .Pressure:
 .VitalSpirit:
-; Increase encounter rate by 50% if the foe's level exceed leading non-fainted mon
-	ld a, [wCurPartyLevel]
-	cp c
+; Vanilla 3gen+: 50% to force upper bound in a level range
+; Since we don't have level ranges, 50% to increase level by 1/8 (min 1)
+	call Random
+	rrca
 	ret c
-	ret z
-	jr .semidouble_encounter_rate
+	ld a, c
+	cp 100
+	ret nc
+	inc c
+	ret
 
 .Intimidate:
 .KeenEye:

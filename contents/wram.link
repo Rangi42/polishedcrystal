@@ -30,12 +30,17 @@ WRAMX $2
 	"Pic Animations RAM"
 	align 8
 	"Battle Tower"
-
-WRAMX $4
-	org $d000
 	"Sound Stack"
 	align 8
 	"Music Player Notes"
+
+WRAMX $3
+	org $d000
+	"Metatiles"
+
+WRAMX $4
+	org $d000
+	"Attributes"
 
 WRAMX $5
 	org $d000
@@ -49,4 +54,4 @@ WRAMX $6
 
 WRAMX $7
 	org $d000
-	"WRAM 7"
+	"Window Stack"

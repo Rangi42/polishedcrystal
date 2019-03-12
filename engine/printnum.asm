@@ -13,7 +13,7 @@ _PrintNum:: ; c4c7
 	jr z, .main
 	bit PRINTNUM_LEADINGZEROS_F, b
 	jr nz, .moneyflag
-	bit PRINTNUM_RIGHTALIGN_F, b
+	bit PRINTNUM_LEFTALIGN_F, b
 	jr z, .main
 
 .moneyflag ; 101xxxxx or 011xxxxx
@@ -22,6 +22,13 @@ _PrintNum:: ; c4c7
 	res PRINTNUM_MONEY_F, b ; 100xxxxx or 010xxxxx
 
 .main
+	bit PRINTNUM_LEFTALIGN_F, b
+	jr z, .continue
+	ld a, c
+	dec a
+	jr nz, .continue
+	inc c
+.continue
 	ld a, c
 	dec a
 	jr z, .one
@@ -304,7 +311,7 @@ _PrintNum:: ; c4c7
 ; the number is left-aligned, and no nonzero digits have been printed yet
 	bit PRINTNUM_LEADINGZEROS_F, d ; print leading zeroes?
 	jr nz, .inc
-	bit PRINTNUM_RIGHTALIGN_F, d ; left alignment or right alignment?
+	bit PRINTNUM_LEFTALIGN_F, d ; left alignment or right alignment?
 	jr z, .inc
 	ld a, [hPrintNum1]
 	and a

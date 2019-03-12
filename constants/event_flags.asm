@@ -1,4 +1,3 @@
-
 	const_def
 
 ; These first eight flags are reset upon reloading the map.
@@ -2339,8 +2338,6 @@
 	const EVENT_CHERRYGROVE_BAY_CUT_TREE
 
 ; Unused placeholder events
-	const EVENT_881
-	const EVENT_882
 	const EVENT_883
 	const EVENT_884
 	const EVENT_885
@@ -2467,3 +2464,5 @@
 	const EVENT_8FE
 	const EVENT_8FF
 NUM_EVENTS EQU const_value
+
+	assert NUM_EVENTS == $8ff, "Too many event flags defined"

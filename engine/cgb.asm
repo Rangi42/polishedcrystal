@@ -668,7 +668,7 @@ _CGB_BuyMenu: ; 9499
 	call FarCopyWRAM
 
 rept 2
-	ld hl, TMHMCancelPalette
+	ld hl, CancelPalette
 	call LoadPalette_White_Col1_Col2_Black
 endr
 
@@ -1084,11 +1084,16 @@ _CGB_UnownPuzzle: ; 925e
 	ld a, $5
 	ld [rSVBK], a
 	ld hl, wUnknOBPals
-if !DEF(MONOCHROME)
-	; RGB 31, 00, 00
-	ld a, $1f
+if DEF(NOIR)
+	ld a, (palred 9 + palgreen 9 + palblue 9) % $100
 	ld [hli], a
-	xor a
+	ld a, (palred 9 + palgreen 9 + palblue 9) % $100
+	ld [hl], a
+elif !DEF(MONOCHROME)
+; RGB 31, 00, 00
+	ld a, (palred 31 + palgreen 0 + palblue 0) % $100
+	ld [hli], a
+	xor a ; (palred 31 + palgreen 0 + palblue 0) % $100
 	ld [hl], a
 else
 	ld a, PAL_MONOCHROME_WHITE % $100

@@ -87,7 +87,7 @@ ClosePokepic:: ; 24528
 	call GetMemCGBLayout
 	xor a
 	ld [hBGMapMode], a
-	call OverworldTextModeSwitch
+	call LoadMapPart
 	call UpdateSprites
 	ld b, 1
 	call SafeCopyTilemapAtOnce

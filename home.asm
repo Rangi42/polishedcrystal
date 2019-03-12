@@ -47,14 +47,6 @@ INCLUDE "home/window.asm"
 INCLUDE "home/flag.asm"
 INCLUDE "home/restore_music.asm"
 
-; Register aliases
-_hl_::
-	jp hl
-
-_de_::
-	push de
-	ret
-
 DisableSpriteUpdates:: ; 0x2ed3
 ; disables overworld sprite updating?
 	xor a
@@ -125,8 +117,6 @@ HideSprites:: ; 3016
 	jr nz, .loop
 	ret
 ; 3026
-
-INCLUDE "home/copy2.asm"
 
 _Jumptable:
 	push de
@@ -1240,15 +1230,6 @@ PrintWinLossText:: ; 3718
 	jp WaitPressAorB_BlinkCursor
 ; 3741
 
-IsAPokemon:: ; 3741
-; Return carry if species a is not a Pokemon.
-; Since every ID other than $0 and $ff is valid, we can simplify this function.
-	inc a
-	cp $2 ; sets carry for $0 (inc'ed to $1) and $ff (inc'ed to $0)
-	dec a
-	ret
-; 3750
-
 DrawBattleHPBar:: ; 3750
 ; Draw an HP bar d tiles long at hl
 ; Fill it up to e pixels
@@ -1360,7 +1341,7 @@ PrintLevel:: ; 382d
 Print8BitNumRightAlign:: ; 3842
 	ld [wd265], a
 	ld de, wd265
-	ld b, PRINTNUM_RIGHTALIGN | 1
+	ld b, PRINTNUM_LEFTALIGN | 1
 	jp PrintNum
 ; 384d
 
@@ -1607,6 +1588,16 @@ GetPartyLocation::
 	ret
 
 INCLUDE "home/battle.asm"
+
+HalveBC::
+	srl b
+	rr c
+FloorBC::
+	ld a, c
+	or b
+	ret nz
+	inc c
+	ret
 
 PushLYOverrides:: ; 3b0c
 

@@ -147,7 +147,10 @@ GetRegisteredItem:
 	ld de, SFX_MENU
 	call PlaySFX
 
-	call UpdateSprites
+	call ClearWindowData
+	farcall ReanchorBGMap_NoOAMUpdate
+	call SafeUpdateSprites
+	call BGMapAnchorTopLeft
 	call DelayFrame
 	call LoadStandardOpaqueFont
 	ld hl, InvertedTextPalette
@@ -197,7 +200,6 @@ GetRegisteredItem:
 	jr nz, .loop
 
 	call SetPalettes
-	call DelayFrame
 	farcall HDMATransfer_OnlyTopFourRows
 	xor a
 	ld a, $70

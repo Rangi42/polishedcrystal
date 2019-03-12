@@ -1339,8 +1339,8 @@ AI_Smart_PriorityHit: ; 38d5a
 	ld [hBattleTurn], a
 	push hl
 	farcall EnemyAttackDamage
-	farcall BattleCommand_DamageCalc
-	farcall BattleCommand_Stab
+	farcall BattleCommand_damagecalc
+	farcall BattleCommand_stab
 	pop hl
 	ld a, [wCurDamage + 1]
 	ld c, a
@@ -2760,18 +2760,18 @@ AIDamageCalc: ; 393e7
 	ld hl, .ConstantDamageEffects
 	call IsInArray
 	jr nc, .no_special_damage
-	farjp BattleCommand_ConstantDamage
+	farjp BattleCommand_constantdamage
 
 .no_special_damage
 	farcall EnemyAttackDamage
-	farcall BattleCommand_DamageCalc
-	farcall BattleCommand_Stab
+	farcall BattleCommand_damagecalc
+	farcall BattleCommand_stab
 
 	; Maybe run conditional boost if applicable
 	ld a, [wEnemyMoveStruct + MOVE_EFFECT]
 	cp EFFECT_CONDITIONAL_BOOST
 	ret nz
-	farjp BattleCommand_ConditionalBoost
+	farjp BattleCommand_conditionalboost
 
 .ConstantDamageEffects:
 	db EFFECT_SUPER_FANG

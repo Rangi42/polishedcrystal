@@ -1,6 +1,4 @@
-BattleCommand_Foresight: ; 376a0
-; foresight
-
+BattleCommand_foresight:
 	ld a, [wAttackMissed]
 	and a
 	jr nz, .failed
@@ -20,4 +18,3 @@ BattleCommand_Foresight: ; 376a0
 
 .failed
 	jp FailForesight
-; 376c2

@@ -259,27 +259,15 @@ GetMonSprite: ; 14259
 
 _DoesSpriteHaveFacings:: ; 142a7
 ; Checks to see whether we can apply a facing to a sprite.
-; Returns carry unless the sprite is a Pokemon or a Still Sprite.
+; Returns zero for Pokémon sprites, carry for the rest.
 	cp SPRITE_POKEMON
-	jr nc, .only_down
-
-	push hl
-	push bc
-	ld hl, SpriteHeaders + SPRITEHEADER_TYPE ; type
-	dec a
-	ld c, a
-	ld b, 0
-	ld a, NUM_SPRITEHEADER_FIELDS
-	rst AddNTimes
-	ld a, [hl]
-	pop bc
-	pop hl
-	cp STILL_SPRITE
-	jr nz, .only_down
+	jr c, .facings
+	cp SPRITE_VARS
+	jr nc, .facings
 	scf
 	ret
 
-.only_down
+.facings
 	and a
 	ret
 ; 142c4
@@ -305,22 +293,32 @@ _GetSpritePalette:: ; 142c4
 	jr nz, .not_doll
 	ld a, [wMapNumber]
 	cp MAP_KRISS_HOUSE_2F
-	jr nz, .not_daycare_or_doll
-	jr .daycare_or_doll
+	jr nz, .not_doll
+	farcall GetMonIconPalette
+	ld c, a
+	ret
+
 .not_doll
 	cp GROUP_ROUTE_34
-	jr nz, .not_daycare_or_doll
+	jr nz, .not_daycare
 	ld a, [wMapNumber]
 	cp MAP_ROUTE_34
-	jr nz, .not_daycare_or_doll
-.daycare_or_doll
+	jr nz, .not_daycare
 	farcall GetMonIconPalette
-	jr .got_palette
-
-.not_daycare_or_doll
-	xor a ; PAL_OW_RED
-.got_palette
+	cp PAL_OW_GRAY
+	ld c, PAL_OW_ROCK
+	ret z
+	cp PAL_OW_PINK
+	ld c, PAL_OW_RED
+	ret z
+	cp PAL_OW_TEAL
+	ld c, PAL_OW_GREEN
+	ret z
 	ld c, a
+	ret
+
+.not_daycare
+	ld c, PAL_OW_RED
 	ret
 ; 142db
 
@@ -359,19 +357,31 @@ endr
 	call _DoesSpriteHaveFacings
 	ret c
 
-	ld a, [hUsedSpriteTile]
-	add c
-	dec a
-	cp $ee
-	ret nc
-
+	ld a, [wSpriteFlags]
+	bit 5, a
 	ld a, h
-	add $8
+	jr nz, .vram1
+	add $4
+.vram1
+	add $4
 	ld h, a
-	jp .CopyToVram
-; 14406
 
-.GetTileAddr: ; 14406
+.CopyToVram:
+	ld a, [rVBK]
+	push af
+	ld a, [wSpriteFlags]
+	bit 5, a
+	ld a, $0
+	jr z, .bankswitch
+	inc a
+.bankswitch
+	ld [rVBK], a
+	call Get2bpp
+	pop af
+	ld [rVBK], a
+	ret
+
+.GetTileAddr:
 ; Return the address of tile (a) in (hl).
 	and $7f
 	ld l, a
@@ -386,24 +396,6 @@ endr
 	adc VTiles0 / $100
 	ld h, a
 	ret
-; 14418
-
-.CopyToVram: ; 14418
-	ld a, [rVBK]
-	push af
-	ld a, [wSpriteFlags]
-	bit 5, a
-	ld a, $0
-	jr z, .bankswitch
-	inc a
-
-.bankswitch
-	ld [rVBK], a
-	call Get2bpp
-	pop af
-	ld [rVBK], a
-	ret
-; 1442f
 
 LoadEmote:: ; 1442f
 ; Get the address of the pointer to emote c.
@@ -431,13 +423,8 @@ LoadEmote:: ; 1442f
 	ld a, c
 	and a
 	ret z
-; load into vram1
-	ld a, $1
-	ld [rVBK], a
-	call Get2bpp
-	xor a
-	ld [rVBK], a
-	ret
+; load into vram0
+	jp Get2bpp
 
 
 INCLUDE "data/sprites/emotes.asm"

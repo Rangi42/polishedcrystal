@@ -193,7 +193,7 @@ DragonsDenB1FSilverScript:
 	text "…"
 	line "Listen."
 
-	para "The Pokemon I…"
+	para "The #mon I…"
 	line "took from the Lab…"
 
 	para "It had an Egg."

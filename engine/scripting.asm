@@ -936,7 +936,7 @@ Script_playsound:
 	call GetScriptByte
 	ld e, a
 	ld d, 0
-	jp PlaySFX
+	jp WaitPlaySFX
 
 Script_waitsfx:
 	jp WaitSFX
@@ -1109,7 +1109,7 @@ ApplyPersonFacing:
 	push bc
 	call DoesSpriteHaveFacings
 	pop bc
-	jr c, .not_visible ; STILL_SPRITE
+	jr c, .not_visible ; STANDING_SPRITE
 	ld hl, OBJECT_FLAGS1
 	add hl, bc
 	bit FIXED_FACING, [hl]
@@ -1377,12 +1377,7 @@ Script_catchtutorial:
 	jp Script_reloadmap
 
 Script_reloadmapafterbattle:
-	push bc
-	push de
-	call RestoreBattleItems
-	farcall RecalculateStatsAfterBattle
-	pop de
-	pop bc
+	farcall PostBattleTasks
 	ld hl, wBattleScriptFlags
 	ld d, [hl]
 	ld [hl], $0
@@ -1401,7 +1396,6 @@ Script_reloadmapafterbattle:
 	jr z, .was_wild
 	farcall MomTriesToBuySomething
 	farcall RunPostBattleAbilities
-	farcall RemoveToxicAfterBattle
 	jr .done
 
 .was_wild
@@ -1409,7 +1403,6 @@ Script_reloadmapafterbattle:
 	bit 1, a ; set on fleeing
 	jr nz, .skip_pickup
 	farcall RunPostBattleAbilities
-	farcall RemoveToxicAfterBattle
 .skip_pickup
 	ld a, [wBattleResult]
 	bit 7, a
@@ -1948,7 +1941,7 @@ Script_readmoney:
 	call ResetStringBuffer1
 	call GetMoneyAccount
 	ld hl, wStringBuffer1
-	lb bc, PRINTNUM_RIGHTALIGN | 3, 6
+	lb bc, PRINTNUM_LEFTALIGN | 3, 6
 	call PrintNum
 	ld de, wStringBuffer1
 	jp ConvertMemToText
@@ -1959,7 +1952,7 @@ Script_readcoins:
 	call ResetStringBuffer1
 	ld hl, wStringBuffer1
 	ld de, wCoins
-	lb bc, PRINTNUM_RIGHTALIGN | 2, 6
+	lb bc, PRINTNUM_LEFTALIGN | 2, 6
 	call PrintNum
 	ld de, wStringBuffer1
 	jp ConvertMemToText
@@ -1970,7 +1963,7 @@ Script_RAM2MEM:
 	call ResetStringBuffer1
 	ld hl, wStringBuffer1
 	ld de, wScriptVar
-	lb bc, PRINTNUM_RIGHTALIGN | 1, 3
+	lb bc, PRINTNUM_LEFTALIGN | 1, 3
 	call PrintNum
 	ld de, wStringBuffer1
 	jp ConvertMemToText
@@ -2532,7 +2525,7 @@ Script_changeblock:
 Script_reloadmappart::
 	xor a
 	ld [hBGMapMode], a
-	call OverworldTextModeSwitch
+	call LoadMapPart
 	call GetMovementPermissions
 	farcall ReloadMapPart
 	jp UpdateSprites

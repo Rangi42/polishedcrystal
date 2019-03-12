@@ -72,187 +72,8 @@ GetMapTrigger::
 	pop hl
 	ret
 
-OverworldTextModeSwitch::
-	call LoadMapPart
-	jp FarCallSwapTextboxPalettes
-
 LoadMapPart:: ; 217a
-	ld a, [hROMBank]
-	push af
-
-	ld a, [wTilesetBlocksBank]
-	rst Bankswitch
-
-	call LoadMetatiles
-	ld a, $60
-	hlcoord 0, 0
-	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
-	call ByteFill
-
-	ld a, BANK(_LoadMapPart)
-	rst Bankswitch
-	call _LoadMapPart
-
-	pop af
-	rst Bankswitch
-	ret
-; 2198
-
-LoadMetatiles:: ; 2198
-	; de <- wOverworldMapAnchor
-	ld a, [wOverworldMapAnchor]
-	ld e, a
-	ld a, [wOverworldMapAnchor + 1]
-	ld d, a
-	ld hl, wMisc
-	ld a, WMISC_HEIGHT / 4 ; 5
-	ld [hMetatileCountHeight], a
-
-; copy to hram registers for speed
-
-	ld a, [wMapBorderBlock]
-	ld [hMapBorderBlock], a
-	ld a, [wMapWidth]
-	add 6
-	ld [hMapWidthPlus6], a
-	ld a, [wTilesetBlocksAddress]
-	ld [hTilesetBlocksAddress], a
-	ld a, [wTilesetBlocksAddress + 1]
-	ld [hTilesetBlocksAddress + 1], a
-
-	ld bc, WMISC_WIDTH - 4
-
-.row
-	push de
-	push hl
-	ld a, WMISC_WIDTH / 4 ; 6
-	ld [hMetatileCountWidth], a
-
-.col
-	push de
-	push hl
-	; Load the current map block.
-	; If the current map block is a border block, load the border block.
-	ld a, [de]
-	and a
-	jr nz, .ok
-	ld a, [hMapBorderBlock]
-
-.ok
-	; Save wMisc to the stack
-	push hl
-	; Set hl to the address of the current metatile data ([TilesetBlocksAddress] + (a) tiles).
-
-	ld l, a
-	ld h, b ; b = 0
-
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, hl
-
-	ld a, [hTilesetBlocksAddress]
-	add l
-	ld e, a
-	ld a, [hTilesetBlocksAddress + 1]
-	adc h
-	ld d, a
-
-	pop hl
-
-	; copy the 4x4 metatile
-
-; row 1
-	ld a, [de]
-	ld [hli], a
-	inc de
-	ld a, [de]
-	ld [hli], a
-	inc de
-	ld a, [de]
-	ld [hli], a
-	inc de
-	ld a, [de]
-	ld [hli], a
-	inc de
-	add hl, bc
-; row 2
-	ld a, [de]
-	ld [hli], a
-	inc de
-	ld a, [de]
-	ld [hli], a
-	inc de
-	ld a, [de]
-	ld [hli], a
-	inc de
-	ld a, [de]
-	ld [hli], a
-	inc de
-	add hl, bc
-; row 3
-	ld a, [de]
-	ld [hli], a
-	inc de
-	ld a, [de]
-	ld [hli], a
-	inc de
-	ld a, [de]
-	ld [hli], a
-	inc de
-	ld a, [de]
-	ld [hli], a
-	inc de
-	add hl, bc
-; row 4
-	ld a, [de]
-	ld [hli], a
-	inc de
-	ld a, [de]
-	ld [hli], a
-	inc de
-	ld a, [de]
-	ld [hli], a
-	inc de
-	ld a, [de]
-	ld [hli], a
-
-	; Next metatile
-	pop hl
-	pop de
-	ld a, 4
-	add l
-	ld l, a
-	jr nc, .noCarry
-	inc h
-.noCarry
-	inc de
-	ld a, [hMetatileCountWidth]
-	dec a
-	ld [hMetatileCountWidth], a
-	jp nz, .col
-	; Next metarow
-	pop hl
-	pop de
-
-	ld a, WMISC_WIDTH * 4
-	add l
-	ld l, a
-	jr nc, .noCarry2
-	inc h
-.noCarry2
-	ld a, [hMapWidthPlus6]
-	add e
-	ld e, a
-	jr nc, .noCarry3
-	inc d
-.noCarry3
-	ld a, [hMetatileCountHeight]
-	dec a
-	ld [hMetatileCountHeight], a
-	jp nz, .row
-	ret
-; 222a
+	farjp _LoadMapPart
 
 ReturnToMapFromSubmenu::
 	ld a, MAPSETUP_SUBMENU
@@ -740,15 +561,11 @@ ChangeMap:: ; 24e4
 	ld a, [wMapHeight]
 	ld e, a
 
-	ld a, [rSVBK]
-	push af
-	ld a, BANK(wDecompressScratch)
-	ld [rSVBK], a
+	call RunFunctionInWRA6
 
+.Function:
 	push de
-	ld de, wDecompressScratch
-	ld a, b
-	call FarDecompress
+	call FarDecompressAtB_D000
 	pop de
 
 	ld a, d
@@ -786,8 +603,6 @@ ChangeMap:: ; 24e4
 .okay
 	dec b
 	jr nz, .row
-	pop af
-	ld [rSVBK], a
 	ret
 ; 2524
 
@@ -1229,8 +1044,9 @@ ScrollMapDown:: ; 272a
 	hlcoord 0, 0
 	ld de, wBGMapBuffer
 	call BackupBGMapRow
-	ld c, 2 * SCREEN_WIDTH
-	call FarCallScrollBGMapPalettes
+	hlcoord 0, 0, wAttrMap
+	ld de, wBGMapPalBuffer
+	call BackupBGMapRow
 	ld a, [wBGMapAnchor]
 	ld e, a
 	ld a, [wBGMapAnchor + 1]
@@ -1245,8 +1061,9 @@ ScrollMapUp:: ; 2748
 	hlcoord 0, SCREEN_HEIGHT - 2
 	ld de, wBGMapBuffer
 	call BackupBGMapRow
-	ld c, 2 * SCREEN_WIDTH
-	call FarCallScrollBGMapPalettes
+	hlcoord 0, SCREEN_HEIGHT - 2, wAttrMap
+	ld de, wBGMapPalBuffer
+	call BackupBGMapRow
 	ld a, [wBGMapAnchor]
 	ld l, a
 	ld a, [wBGMapAnchor + 1]
@@ -1269,8 +1086,9 @@ ScrollMapRight:: ; 2771
 	hlcoord 0, 0
 	ld de, wBGMapBuffer
 	call BackupBGMapColumn
-	ld c, 2 * SCREEN_HEIGHT
-	call FarCallScrollBGMapPalettes
+	hlcoord 0, 0, wAttrMap
+	ld de, wBGMapPalBuffer
+	call BackupBGMapColumn
 	ld a, [wBGMapAnchor]
 	ld e, a
 	ld a, [wBGMapAnchor + 1]
@@ -1285,8 +1103,9 @@ ScrollMapLeft:: ; 278f
 	hlcoord SCREEN_WIDTH - 2, 0
 	ld de, wBGMapBuffer
 	call BackupBGMapColumn
-	ld c, 2 * SCREEN_HEIGHT
-	call FarCallScrollBGMapPalettes
+	hlcoord SCREEN_WIDTH - 2, 0, wAttrMap
+	ld de, wBGMapPalBuffer
+	call BackupBGMapColumn
 	ld a, [wBGMapAnchor]
 	ld e, a
 	and %11100000
@@ -1396,19 +1215,17 @@ UpdateBGMapColumn:: ; 27f8
 ; 2816
 
 LoadTileset:: ; 2821
-	ld hl, wTilesetAddress
+	ld hl, wTilesetGFXAddress
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	ld a, [wTilesetBank]
-	ld e, a
+	ld a, [wTilesetGFXBank]
+	ld [hTilesetGFXBank], a
 
-	ld a, [rSVBK]
-	push af
-	ld a, $6
+	ld a, BANK(wDecompressScratch)
 	ld [rSVBK], a
 
-	ld a, e
+	ld a, [hTilesetGFXBank]
 	ld de, wDecompressScratch
 	call FarDecompress
 
@@ -1417,20 +1234,41 @@ LoadTileset:: ; 2821
 	ld bc, $7f tiles
 	rst CopyBytes
 
-	ld a, [rVBK]
-	push af
 	ld a, $1
 	ld [rVBK], a
 
 	ld hl, wDecompressScratch + $80 tiles
-	ld de, VTiles2
+	ld de, VTiles5
 	ld bc, $80 tiles
 	rst CopyBytes
 
-	pop af
+	ld a, $1
+	ld [rSVBK], a
+
+	ld hl, wTilesetGFX2Address
+	ld a, [hli]
+	and a
+	jr z, .no_gfx2
+	ld h, [hl]
+	ld l, a
+
+	ld a, BANK(wDecompressScratch)
+	ld [rSVBK], a
+
+	ld a, [hTilesetGFXBank]
+	ld de, wDecompressScratch
+	call FarDecompress
+
+	ld hl, wDecompressScratch
+	ld de, VTiles4
+	ld bc, $80 tiles
+	rst CopyBytes
+
+.no_gfx2
+	xor a
 	ld [rVBK], a
 
-	pop af
+	inc a
 	ld [rSVBK], a
 
 	ld a, [wTileset]
@@ -1438,7 +1276,8 @@ LoadTileset:: ; 2821
 	jr z, .load_roof
 	cp TILESET_JOHTO_MODERN
 	jr z, .load_roof
-	jr .skip_roof
+	cp TILESET_JOHTO_OVERCAST
+	jr nz, .skip_roof
 
 .load_roof
 	farcall LoadMapGroupRoof
@@ -2044,7 +1883,7 @@ ReloadTilesetAndPalettes:: ; 2bae
 	ld c, a
 	call SwitchToAnyMapBank
 	farcall UpdateTimeOfDayPal
-	call OverworldTextModeSwitch
+	call LoadMapPart
 	call LoadTileset
 	ld a, 9
 	call SkipMusic
@@ -2406,12 +2245,13 @@ LoadTilesetHeader:: ; 2d27
 	push bc
 
 	ld hl, Tilesets
-	ld bc, Tileset00End - Tileset00
+	ld bc, wTilesetHeaderEnd - wTilesetHeader
 	ld a, [wTileset]
+	dec a
 	rst AddNTimes
 
 	ld de, wTilesetHeader
-	ld bc, Tileset00End - Tileset00
+	ld bc, wTilesetHeaderEnd - wTilesetHeader
 
 	ld a, BANK(Tilesets)
 	call FarCopyBytes

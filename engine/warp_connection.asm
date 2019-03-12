@@ -1,9 +1,8 @@
-
 RunCallback_05_03: ; 1045b0
 	call ResetMapBufferEventFlags
 	call ResetFlashIfOutOfCave
 	call GetCurrentMapTrigger
-	call ResetBikeFlags
+	call ResetOWState
 	ld a, MAPCALLBACK_NEWMAP
 	call RunMapCallback
 RunCallback_03: ; 1045c4
@@ -219,8 +218,7 @@ LoadWarpData: ; 1046c6
 	cp TILESET_POKECENTER
 	jr z, .pokecenter_pokecom
 	cp TILESET_POKECOM_CENTER
-	jr z, .pokecenter_pokecom
-	ret
+	ret nz
 .pokecenter_pokecom
 	ld a, [wPrevMapGroup]
 	ld [wLastSpawnMapGroup], a
@@ -235,34 +233,8 @@ LoadMapTimeOfDay: ; 104750
 	ld [wSpriteUpdatesEnabled], a
 	farcall ReplaceTimeOfDayPals
 	farcall UpdateTimeOfDayPal
-	call OverworldTextModeSwitch
+	call LoadMapPart
 	call .ClearBGMap
-	jp .PushAttrMap
-
-.ClearBGMap: ; 104770 (41:4770)
-	ld a, VBGMap0 / $100
-	ld [wBGMapAnchor + 1], a
-	xor a
-	ld [wBGMapAnchor], a
-	ld [hSCY], a
-	ld [hSCX], a
-	farcall ApplyBGMapAnchorToObjects
-	ld a, [rVBK]
-	push af
-	ld a, $1
-	ld [rVBK], a
-	xor a
-	ld bc, VBGMap1 - VBGMap0
-	hlbgcoord 0, 0
-	call ByteFill
-	pop af
-	ld [rVBK], a
-	ld a, "<BLACK>"
-	ld bc, VBGMap1 - VBGMap0
-	hlbgcoord 0, 0
-	jp ByteFill
-
-.PushAttrMap: ; 1047a3 (41:47a3)
 	decoord 0, 0
 	call .copy
 	decoord 0, 0, wAttrMap
@@ -287,6 +259,29 @@ LoadMapTimeOfDay: ; 104750
 	xor a
 	ld [rVBK], a
 	ret
+
+.ClearBGMap: ; 104770 (41:4770)
+	ld a, VBGMap0 / $100
+	ld [wBGMapAnchor + 1], a
+	xor a
+	ld [wBGMapAnchor], a
+	ld [hSCY], a
+	ld [hSCX], a
+	farcall ApplyBGMapAnchorToObjects
+	ld a, [rVBK]
+	push af
+	ld a, $1
+	ld [rVBK], a
+	xor a
+	ld bc, VBGMap1 - VBGMap0
+	hlbgcoord 0, 0
+	call ByteFill
+	pop af
+	ld [rVBK], a
+	ld a, "<BLACK>"
+	ld bc, VBGMap1 - VBGMap0
+	hlbgcoord 0, 0
+	jp ByteFill
 
 LoadGraphics: ; 1047cf
 	call LoadTilesetHeader

@@ -22,11 +22,10 @@ AI_SwitchOrTryItem: ; 38000
 	push af
 	ld a, 1
 	ld [hBattleTurn], a
-	farcall _CheckIfTrappedByAbility
-	pop af
-	ld [hBattleTurn], a
+	farcall CheckIfTrappedByAbility
+	pop bc
 	ld a, b
-	and a
+	ld [hBattleTurn], a
 	jr z, DontSwitch
 
 	ld a, [wPlayerSubStatus2]

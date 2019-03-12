@@ -101,9 +101,6 @@ EnterMap: ; 9673e
 ; 9676d
 
 HandleMap:
-	call .do_it
-	ret nz
-.do_it
 	call ResetOverworldDelay
 	call HandleMapTimeAndJoypad
 	call HandleCmdQueue
@@ -1159,15 +1156,15 @@ CheckFacingTileEvent: ; 97c5f
 RandomEncounter:: ; 97cc0
 ; Random encounter
 	call CheckWildEncounterCooldown
-	jr c, .disable_encounters
+	jr c, .nope
 	call CanUseSweetScent
-	jr nc, .disable_encounters
+	jr nc, .nope
 	ld hl, wStatusFlags2
 	bit 1, [hl] ; ENGINE_SAFARI_GAME
 	jr nz, .safari_game
 	bit 2, [hl] ; ENGINE_BUG_CONTEST_TIMER
 	jr nz, .bug_contest
-	farcall CheckWildEncounter
+	farcall TryWildEncounter
 	jr nz, .nope
 .ok
 	ld a, BANK(WildBattleScript)
@@ -1178,7 +1175,7 @@ RandomEncounter:: ; 97cc0
 	ret
 
 .safari_game
-	farcall CheckWildEncounter
+	farcall TryWildEncounter
 	jr nz, .nope
 	ld a, BANK(SafariGameBattleScript)
 	ld hl, SafariGameBattleScript
@@ -1191,9 +1188,6 @@ RandomEncounter:: ; 97cc0
 	ld hl, BugCatchingContestBattleScript
 	jr .done
 
-.disable_encounters
-	xor a
-	ld [wVBlankOWAction], a
 .nope
 	ld a, 1
 	and a

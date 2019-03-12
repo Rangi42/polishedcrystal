@@ -1,10 +1,6 @@
 TMHMPocket: ; 2c76f (b:476f)
 	ld a, $1
 	ld [hInMenu], a
-	call CountTMsHMs ; This stores the count to wd265.
-	and a
-	jr z, .noicon
-.noicon
 	call TMHM_PocketLoop
 	ld a, 0 ; not xor a; preserve carry flag
 	ld [hInMenu], a
@@ -70,8 +66,7 @@ TMHM_JoypadLoop: ; 2c915 (b:4915)
 	bit D_LEFT_F, a
 	jp nz, TMHM_ExitPocket
 TMHM_ShowTMMoveDescription: ; 2c946 (b:4946)
-	call TMHM_CheckHoveringOverCancel
-	jp nc, TMHM_ExitPocket
+	call TMHM_GetCurrentTMHM
 	hlcoord 0, 12
 	lb bc, 4, SCREEN_WIDTH - 2
 	call TextBox
@@ -79,7 +74,7 @@ TMHM_ShowTMMoveDescription: ; 2c946 (b:4946)
 	call SetPalettes
 	ld a, [wCurTMHM]
 	cp NUM_TMS + NUM_HMS + 1
-	jr nc, TMHM_JoypadLoop
+	jr nc, .Cancel
 	ld [wd265], a
 	predef GetTMHMMove
 	ld a, [wd265]
@@ -87,6 +82,10 @@ TMHM_ShowTMMoveDescription: ; 2c946 (b:4946)
 	hlcoord 1, 14
 	call PrintMoveDesc
 	farcall LoadTMHMIcon
+	jp TMHM_JoypadLoop
+
+.Cancel:
+	farcall ClearTMHMIcon
 	jp TMHM_JoypadLoop
 
 TMHM_ChooseTMorHM: ; 2c974 (b:4974)
@@ -101,7 +100,7 @@ TMHM_ChooseTMorHM: ; 2c974 (b:4974)
 	ld a, [wd265]
 	cp b
 	jr z, _TMHM_ExitPack ; our cursor was hovering over CANCEL
-TMHM_CheckHoveringOverCancel: ; 2c98a (b:498a)
+TMHM_GetCurrentTMHM: ; 2c98a (b:498a)
 	call TMHM_GetCurrentPocketPosition
 	ld a, [wMenuCursorY]
 	ld b, a
@@ -117,7 +116,6 @@ TMHM_CheckHoveringOverCancel: ; 2c98a (b:498a)
 	ld a, c
 .okay
 	ld [wCurTMHM], a
-	cp -1
 	ret
 
 TMHM_ExitPack: ; 2c9a5 (b:49a5)
@@ -202,7 +200,7 @@ TMHM_DisplayPocketItems: ; 2c9e2 (b:49e2)
 	ld [hl], "H"
 	inc hl
 	ld de, wd265
-	lb bc, PRINTNUM_RIGHTALIGN | 1, 2
+	lb bc, PRINTNUM_LEFTALIGN | 1, 2
 	call PrintNum
 	pop af
 	ld [wd265], a

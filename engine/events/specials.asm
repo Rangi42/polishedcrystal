@@ -25,6 +25,11 @@ Special_SetPlayerPalette: ; c225
 	farjp SetPlayerPalette
 ; c230
 
+Special_SetCopycatPalette:
+	ld a, [wScriptVar]
+	ld d, a
+	farjp SetCopycatPalette
+
 Special_GameCornerPrizeMonCheckDex: ; c230
 	ld a, [wScriptVar]
 	dec a

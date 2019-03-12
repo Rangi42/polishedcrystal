@@ -36,6 +36,41 @@ DarkCaveVioletEntranceFalknerTrigger:
 	waitsfx
 	checkdarkness
 	iftrue .Darkness
+	scall .BeatUrsaring
+	showemote EMOTE_SHOCK, DARKCAVEVIOLETENTRANCE_FALKNER, 15
+	opentext
+	writetext DarkCaveVioletEntranceFalknerIntroText
+.Finish:
+	writetext DarkCaveVioletEntranceFalknerExplanationText
+	waitbutton
+	closetext
+	follow PLAYER, DARKCAVEVIOLETENTRANCE_FALKNER
+	applymovement PLAYER, DarkCaveVioletEntranceMovementData_PlayerStepAside
+	stopfollow
+	turnobject PLAYER, DOWN
+	applymovement DARKCAVEVIOLETENTRANCE_FALKNER, DarkCaveVioletEntranceMovementData_FalknerLeave
+	disappear DARKCAVEVIOLETENTRANCE_FALKNER
+	pause 15
+	clearevent EVENT_VIOLET_GYM_FALKNER
+	setmapscene VIOLET_GYM, $1
+	setscene $1
+	end
+
+.Darkness:
+	checkevent EVENT_GOT_TM70_FLASH
+	iftrue .ProgressAnyway
+	showtext DarkCaveVioletEntranceFalknerDarknessText
+	applyonemovement PLAYER, step_left
+	end
+
+.ProgressAnyway:
+	showtext DarkCaveVioletEntranceFalknerProgressAnywayText
+	scall .BeatUrsaring
+	opentext
+	writetext DarkCaveVioletEntranceFalknerDarkIntroText
+	jump .Finish
+
+.BeatUrsaring:
 	special SaveMusic
 	playmusic MUSIC_JOHTO_TRAINER_BATTLE
 	pause 40
@@ -61,23 +96,6 @@ DarkCaveVioletEntranceFalknerTrigger:
 	disappear DARKCAVEVIOLETENTRANCE_PIDGEOTTO
 	pause 20
 	applymovement DARKCAVEVIOLETENTRANCE_FALKNER, DarkCaveVioletEntranceMovementData_FalknerHeadBack
-	showemote EMOTE_SHOCK, DARKCAVEVIOLETENTRANCE_FALKNER, 15
-	showtext DarkCaveVioletEntranceFalknerIntroText
-	follow PLAYER, DARKCAVEVIOLETENTRANCE_FALKNER
-	applymovement PLAYER, DarkCaveVioletEntranceMovementData_PlayerStepAside
-	stopfollow
-	turnobject PLAYER, DOWN
-	applymovement DARKCAVEVIOLETENTRANCE_FALKNER, DarkCaveVioletEntranceMovementData_FalknerLeave
-	disappear DARKCAVEVIOLETENTRANCE_FALKNER
-	pause 15
-	clearevent EVENT_VIOLET_GYM_FALKNER
-	setmapscene VIOLET_GYM, $1
-	setscene $1
-	end
-
-.Darkness:
-	showtext DarkCaveVioletEntranceFalknerDarknessText
-	applyonemovement PLAYER, step_left
 	end
 
 DarkCaveVioletEntranceMovementData_PidgeottoAttack:
@@ -115,8 +133,16 @@ DarkCaveVioletEntranceFalknerReturnText:
 DarkCaveVioletEntranceFalknerIntroText:
 	text "Oh! You must be"
 	line "a trainer."
+	prompt
 
-	para "I'm Falkner, the"
+DarkCaveVioletEntranceFalknerDarkIntroText:
+	text "You must be brave"
+	line "to come here in"
+	cont "pitch darkness."
+	prompt
+
+DarkCaveVioletEntranceFalknerExplanationText:
+	text "I'm Falkner, the"
 	line "Violet #mon"
 	cont "Gym Leader."
 
@@ -152,4 +178,17 @@ DarkCaveVioletEntranceFalknerDarknessText:
 
 	para "It's too dark, you"
 	line "could get hurt."
+	done
+
+DarkCaveVioletEntranceFalknerProgressAnywayText:
+	text "Falkner: Is"
+	line "someone there?"
+
+	para "It's reckless to"
+	line "explore Dark Cave"
+	cont "without any light!"
+
+	para "I'm in the middle"
+	line "of a battle, so"
+	cont "stay back!"
 	done

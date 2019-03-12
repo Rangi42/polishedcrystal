@@ -108,7 +108,7 @@ SafariZoneWestRestHouseSignText:
 SafariZoneWestTrainerTips1SignText:
 	text "Trainer Tips"
 
-	para "Fire-type Pokemon"
+	para "Fire-type #mon"
 	line "cannot be burnt,"
 
 	para "Electric types"

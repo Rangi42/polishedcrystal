@@ -32,26 +32,26 @@ _GetVarAction:: ; 80648 (20:4648)
 ; $00: copy [de] to wStringBuffer2
 ; $40: return address in de
 ; $80: call function
-	dwb wStringBuffer2,                  RETVAR_STRBUF2
-	dwb wPartyCount,                     RETVAR_STRBUF2
+	dwb wStringBuffer2,                 RETVAR_STRBUF2
+	dwb wPartyCount,                    RETVAR_STRBUF2
 	dwb .BattleResult,                  RETVAR_EXECUTE
-	dwb wBattleType,                     RETVAR_ADDR_DE
-	dwb wTimeOfDay,                      RETVAR_STRBUF2
+	dwb wBattleType,                    RETVAR_ADDR_DE
+	dwb wTimeOfDay,                     RETVAR_STRBUF2
 	dwb .CountCaughtMons,               RETVAR_EXECUTE
 	dwb .CountSeenMons,                 RETVAR_EXECUTE
 	dwb .CountBadges,                   RETVAR_EXECUTE
-	dwb wPlayerState,                    RETVAR_ADDR_DE
-	dwb .wPlayerFacing,                  RETVAR_EXECUTE
+	dwb wPlayerState,                   RETVAR_ADDR_DE
+	dwb .wPlayerFacing,                 RETVAR_EXECUTE
 	dwb hHours,                         RETVAR_STRBUF2
 	dwb .DayOfWeek,                     RETVAR_EXECUTE
-	dwb wMapGroup,                       RETVAR_STRBUF2
-	dwb wMapNumber,                      RETVAR_STRBUF2
+	dwb wMapGroup,                      RETVAR_STRBUF2
+	dwb wMapNumber,                     RETVAR_STRBUF2
 	dwb .UnownCaught,                   RETVAR_EXECUTE
 	dwb wPermission,                    RETVAR_STRBUF2
 	dwb .BoxFreeSpace,                  RETVAR_EXECUTE
 	dwb wBugContestMinsRemaining,       RETVAR_STRBUF2
-	dwb wXCoord,                         RETVAR_STRBUF2
-	dwb wYCoord,                         RETVAR_STRBUF2
+	dwb wXCoord,                        RETVAR_STRBUF2
+	dwb wYCoord,                        RETVAR_STRBUF2
 	dwb wSpecialPhoneCallID,            RETVAR_STRBUF2
 	dwb wNrOfBeatenBattleTowerTrainers, RETVAR_STRBUF2
 	dwb wKurtApricornQuantity,          RETVAR_STRBUF2
@@ -59,7 +59,7 @@ _GetVarAction:: ; 80648 (20:4648)
 	dwb wBlueCardBalance,               RETVAR_ADDR_DE
 	dwb wBuenasPassword,                RETVAR_ADDR_DE
 	dwb wKenjiBreakTimer,               RETVAR_STRBUF2
-	dwb wBattlePoints,                   RETVAR_ADDR_DE
+	dwb wBattlePoints,                  RETVAR_ADDR_DE
 	dwb .CountPokemonJournals,          RETVAR_EXECUTE
 	dwb .CountTrainerStars,             RETVAR_EXECUTE
 	dwb NULL,                           RETVAR_STRBUF2

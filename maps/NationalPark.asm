@@ -528,7 +528,7 @@ UnknownText_0x5c771:
 UnknownText_0x5c7c6:
 	text "Trainer Tips"
 
-	para "Pokemon become"
+	para "#mon become"
 	line "happier from"
 
 	para "haircuts, bless-"

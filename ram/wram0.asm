@@ -110,7 +110,9 @@ wMusicEnd::
 
 SECTION "WRAM 0", WRAM0
 
-	ds 4
+	ds 2
+
+wTilesetDataAddress:: ds 2
 
 wRNGState:: ds 4
 wRNGCumulativeDividerPlus:: ds 2
@@ -289,7 +291,6 @@ wTileMapEnd::
 SECTION "Battle", WRAM0
 
 UNION
-; miscellaneous
 wMisc:: ds (SCREEN_WIDTH + 4) * (SCREEN_HEIGHT + 2)
 wMiscEnd::
 
@@ -1060,7 +1061,7 @@ wGameTimerPause::
 ; bit 0
 	ds 1
 
-InputFlags::
+wInputFlags::
 ; bits 7, 6, and 4 can be used to disable joypad input
 	ds 2
 

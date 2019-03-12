@@ -8,6 +8,8 @@ DoBattle: ; 3c000
 	ld [wBattlePlayerAction], a
 	ld [wBattleEnded], a
 	ld [wInverseBattleScore], a
+	ld [wPlayerEndturnSwitched], a
+	ld [wEnemyEndturnSwitched], a
 	inc a
 	ld [wBattleHasJustStarted], a
 	ld hl, wOTPartyMon1HP
@@ -186,9 +188,6 @@ BattleTurn: ; 3c12f
 	ld a, [wBattleEnded]
 	and a
 	ret nz
-	ld a, [wForcedSwitch] ; roared/teleported
-	and a
-	ret nz
 .skip_iteration
 	call ParsePlayerAction
 	jr nz, .loop1
@@ -203,7 +202,7 @@ BattleTurn: ; 3c12f
 .false
 	call Battle_PlayerFirst
 .proceed
-	ld a, [wForcedSwitch]
+	ld a, [wBattleEnded]
 	and a
 	ret nz
 
@@ -251,7 +250,7 @@ HasUserEndturnSwitched:
 	xor 1 ; return z if we have endturn switched
 	ret
 
-HandleBetweenTurnEffects: ; 3c1d6
+HandleBetweenTurnEffects:
 	call CheckFaint
 	ret c
 	call HandleResidualDamage
@@ -278,6 +277,10 @@ HandleBetweenTurnEffects: ; 3c1d6
 	call HandleScreens
 	call HandleHealingItems
 	farcall HandleAbilities
+
+	xor a
+	ld [wPlayerEndturnSwitched], a
+	ld [wEnemyEndturnSwitched], a
 
 	; these run even if the user switched at endturn
 	call HandleStatusOrbs
@@ -381,14 +384,14 @@ HandleBerserkGene: ; 3c27c
 	ld [hl], a
 	ld [wAttackMissed], a
 	ld [wEffectFailed], a
-	farcall BattleCommand_AttackUp2
+	farcall BattleCommand_attackup2
 	pop af
 	pop hl
 	ld [hl], a
 	call GetItemName
 	ld hl, BattleText_UsersStringBuffer1Activated
 	call StdBattleTextBox
-	farcall BattleCommand_StatUpMessage
+	farcall BattleCommand_statupmessage
 	pop af
 	bit SUBSTATUS_CONFUSED, a
 	ret nz
@@ -749,7 +752,7 @@ TryEnemyFlee: ; 3c543
 	jr z, .skip_traps
 
 	call SetEnemyTurn
-	call CheckIfTrappedByAbility_Core
+	farcall CheckIfTrappedByAbility
 	jr z, .Stay
 
 	ld a, [wPlayerSubStatus2]
@@ -880,7 +883,7 @@ Battle_EnemyFirst: ; 3c5fe
 	farcall AI_SwitchOrTryItem
 	jr c, .switch_item
 	call EnemyTurn_EndOpponentProtectEndureDestinyBond
-	ld a, [wForcedSwitch]
+	ld a, [wBattleEnded]
 	and a
 	ret nz
 	call HasPlayerFainted
@@ -894,7 +897,7 @@ Battle_EnemyFirst: ; 3c5fe
 	jp z, HandleEnemyMonFaint
 	call RefreshBattleHuds
 	call PlayerTurn_EndOpponentProtectEndureDestinyBond
-	ld a, [wForcedSwitch]
+	ld a, [wBattleEnded]
 	and a
 	ret nz
 	call HasEnemyFainted
@@ -922,10 +925,7 @@ Battle_PlayerFirst: ; 3c664
 .enemy_used_move
 	call PlayerTurn_EndOpponentProtectEndureDestinyBond
 	pop bc
-	xor a
-	ld [wPlayerEndturnSwitched], a
-	ld [wEnemyEndturnSwitched], a
-	ld a, [wForcedSwitch]
+	ld a, [wBattleEnded]
 	and a
 	ret nz
 	call HasEnemyFainted
@@ -945,10 +945,7 @@ Battle_PlayerFirst: ; 3c664
 	call TryEnemyFlee
 	jp c, WildFled_EnemyFled_LinkBattleCanceled
 	call EnemyTurn_EndOpponentProtectEndureDestinyBond
-	xor a
-	ld [wPlayerEndturnSwitched], a
-	ld [wEnemyEndturnSwitched], a
-	ld a, [wForcedSwitch]
+	ld a, [wBattleEnded]
 	and a
 	ret nz
 	call HasPlayerFainted
@@ -1104,6 +1101,9 @@ HandleResidualDamage:
 	bit SUBSTATUS_LEECH_SEED, [hl]
 	jr z, .not_seeded
 
+	call HasOpponentFainted
+	jr z, .not_seeded
+
 	call SwitchTurn
 	xor a
 	ld [wNumHits], a
@@ -1118,10 +1118,8 @@ HandleResidualDamage:
 	push bc
 	call SubtractHPFromUser
 	pop bc
-	srl b
-	rr c
 	call SwitchTurn
-	farcall HandleBigRoot
+	farcall GetHPAbsorption
 	ld a, $1
 	ld [hBGMapMode], a
 	ld a, BATTLE_VARS_ABILITY_OPP
@@ -1157,6 +1155,8 @@ HandleResidualDamage:
 	jp StdBattleTextBox
 ; 3c801
 
+CheckOpponentFullHP:
+	call CallOpponentTurn
 CheckFullHP:
 ; check if the user has full HP
 ; z: yes, nz: no
@@ -1971,16 +1971,7 @@ GetQuarterMaxHP:
 GetHalfMaxHP:
 	call GetMaxHP
 HalfHP:
-	srl b
-	rr c
-
-	; floor = 1
-	ld a, c
-	or b
-	ret nz
-	inc c
-	ret
-
+	jp HalveBC
 
 GetMaxHP: ; 3ccac
 ; output: bc, wBuffer1-2
@@ -2001,11 +1992,8 @@ GetMaxHP: ; 3ccac
 	ret
 ; 3ccc2
 
-RestoreEnemyHP:
-	call SwitchTurn
-	call RestoreHP
-	jp SwitchTurn
-
+RestoreOpponentHP:
+	call CallOpponentTurn
 RestoreHP ; 3ccef
 	ld hl, wBattleMonMaxHP
 	ld a, [hBattleTurn]
@@ -2118,8 +2106,6 @@ HandleEnemyMonFaint: ; 3cd55
 .dont_flee
 	call ForcePlayerMonChoice
 
-	ld a, 1
-	ld [wPlayerEndturnSwitched], a
 	ld [wPlayerAction], a
 	call HandleEnemySwitch
 	jp z, WildFled_EnemyFled_LinkBattleCanceled
@@ -2322,6 +2308,8 @@ FaintYourPokemon: ; 3cef1
 	ld a, [wBattleMonSpecies]
 	ld b, a
 	farcall PlayFaintingCry
+	ld de, SFX_KINESIS
+	call PlaySFX
 	call PlayerMonFaintedAnimation
 	hlcoord 9, 7
 	lb bc, 5, 11
@@ -2370,6 +2358,8 @@ CheckEnemyTrainerDefeated: ; 3cf35
 ; 3cf4a
 
 HandleEnemySwitch: ; 3cf4a
+	ld a, 1
+	ld [wEnemyEndturnSwitched], a
 	ld hl, wEnemyHPPal
 	ld e, HP_BAR_LENGTH_PX
 	call UpdateHPPal
@@ -2400,8 +2390,6 @@ EnemyPartyMonEntrance: ; 3cf78
 	push af
 	xor a
 	ld [wEnemySwitchMonIndex], a
-	ld a, 1
-	ld [wEnemyEndturnSwitched], a
 	call NewEnemyMonStatus
 	call ResetEnemyStatLevels
 	call BreakAttraction
@@ -2726,8 +2714,6 @@ HandlePlayerMonFaint: ; 3d14e
 	ret
 
 .switch
-	ld a, 1
-	ld [wPlayerEndturnSwitched], a
 	call ForcePlayerMonChoice
 	ld a, c
 	and a
@@ -2803,6 +2789,8 @@ AskUseNextPokemon: ; 3d1f8
 	jp CheckRunSpeed
 
 ForcePlayerMonChoice: ; 3d227
+	ld a, 1
+	ld [wPlayerEndturnSwitched], a
 	call EmptyBattleTextBox
 	call LoadStandardMenuDataHeader
 	call SetUpBattlePartyMenu_NoLoop
@@ -3071,10 +3059,10 @@ PlayerMonFaintedAnimation: ; 3d43b
 	; fallthrough
 
 MonFaintedAnimation: ; 3d444
-	ld a, [InputFlags]
+	ld a, [wInputFlags]
 	push af
 	set 6, a
-	ld [InputFlags], a
+	ld [wInputFlags], a
 	ld b, 7
 
 .OuterLoop:
@@ -3108,8 +3096,7 @@ MonFaintedAnimation: ; 3d444
 	add hl, bc
 	ld de, .Spaces
 	call PlaceString
-	ld c, 2
-	call DelayFrames
+	call ApplyTilemapInVBlank
 	pop hl
 	pop de
 	pop bc
@@ -3117,7 +3104,7 @@ MonFaintedAnimation: ; 3d444
 	jr nz, .OuterLoop
 
 	pop af
-	ld [InputFlags], a
+	ld [wInputFlags], a
 	ret
 ; 3d488
 
@@ -3672,12 +3659,6 @@ CheckIfCurPartyMonIsFitToFight: ; 3d887
 ; 3d8b3
 
 
-CheckIfTrappedByAbility_Core:
-	farcall _CheckIfTrappedByAbility
-	ld a, b
-	and a
-	ret
-
 InitBattleMon: ; 3da0d
 	ld a, MON_SPECIES
 	call GetPartyParamLocation
@@ -3973,29 +3954,24 @@ HandleFirstAirBalloon:
 	ld [hBattleTurn], a
 	ret
 
-RecalculateStatsAfterBattle::
+PostBattleTasks::
+	push bc
+	push de
+	call RestoreBattleItems
 	ld a, [wPartyCount]
 .loop
 	dec a
 	push af
 	ld [wCurPartyMon], a
 	farcall UpdatePkmnStats
+	ld a, MON_STATUS
+	call GetPartyParamLocation
+	res TOX, [hl]
 	pop af
 	jr nz, .loop
+	pop de
+	pop bc
 	ret
-
-RemoveToxicAfterBattle::
-; removes toxic from mons after battle
-	ld a, [wPartyCount]
-	ld hl, wPartyMon1Status
-	ld bc, PARTYMON_STRUCT_LENGTH
-	inc a
-.loop
-	dec a
-	ret z
-	res TOX, [hl]
-	add hl, bc
-	jr .loop
 
 RunBothActivationAbilities:
 ; runs both pokémon's activation abilities (Intimidate, etc.).
@@ -4433,7 +4409,7 @@ _HeldStatBoostBerry:
 	cp HELD_RAISE_STAT
 	ret nz
 	push hl
-	farcall BattleCommand_StatUp
+	farcall BattleCommand_statup
 	pop hl
 	ld a, [wFailedMessage]
 	and a
@@ -4535,17 +4511,14 @@ ItemRecoveryAnim::
 	ret
 ; 3dde9
 
-UseOpponentHeldStatusHealingItem:
-	call SwitchTurn
-	call UseHeldStatusHealingItem
-	jp SwitchTurn
-
 StealHeldStatusHealingItem:
 	farcall GetOpponentItem
 	call _HeldStatusHealingItem
 	ret z
 	jp StealBattleItem
 
+UseOpponentHeldStatusHealingItem:
+	call CallOpponentTurn
 UseHeldStatusHealingItem: ; 3dde9
 	farcall GetUserItemAfterUnnerve
 	call _HeldStatusHealingItem
@@ -4594,11 +4567,8 @@ _HeldStatusHealingItem:
 	db $ff
 ; 3de51
 
-UseEnemyConfusionHealingItem:
-	call SwitchTurn
-	call UseConfusionHealingItem
-	jp SwitchTurn
-
+UseOpponentConfusionHealingItem:
+	call CallOpponentTurn
 UseConfusionHealingItem: ; 3de51
 	ld a, BATTLE_VARS_SUBSTATUS3
 	call GetBattleVar
@@ -5416,7 +5386,7 @@ TryPlayerSwitch: ; 3e358
 	ld a, b
 	cp HELD_SHED_SHELL
 	jr z, .try_switch
-	call CheckIfTrappedByAbility_Core
+	farcall CheckIfTrappedByAbility
 	jr nz, .check_other_trapped
 	ld a, BATTLE_VARS_ABILITY_OPP
 	call GetBattleVar
@@ -5663,7 +5633,7 @@ CheckRunSpeed:
 	push hl
 	push de
 	call SetPlayerTurn
-	call CheckIfTrappedByAbility_Core
+	farcall CheckIfTrappedByAbility
 	pop de
 	pop hl
 	jp z, .ability_prevents_escape
@@ -8891,7 +8861,6 @@ CleanUpBattleRAM: ; 3f6d0
 	ld [wOtherTrainerClass], a
 	ld [wFailedToFlee], a
 	ld [wNumFleeAttempts], a
-	ld [wForcedSwitch], a
 	ld [wPartyMenuCursor], a
 	ld [wKeyItemsPocketCursor], a
 	ld [wItemsPocketCursor], a
@@ -9744,7 +9713,7 @@ BoostGiovannisArmoredMewtwo:
 	ld [hBattleTurn], a
 	ld de, ANIM_SHARPEN
 	call Call_PlayBattleAnim
-	farjp BattleCommand_AllStatsUp
+	farjp BattleCommand_allstatsup
 
 CheckUniqueWildMove:
 	ld a, [wMapGroup]

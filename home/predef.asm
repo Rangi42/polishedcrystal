@@ -3,9 +3,9 @@ _Predef::
 ; Preserves a, bc, de, hl.
 	ld [hFarCallSavedA], a
 	ld a, h
-	ld [hPredefTemp], a
-	ld a, l
 	ld [hPredefTemp + 1], a
+	ld a, l
+	ld [hPredefTemp], a
 	pop hl
 	ld a, [hli]
 	ld [hBuffer], a

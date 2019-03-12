@@ -16,8 +16,9 @@ tileset_filename       = 'constants/tileset_constants.asm'
 map_headers_filename   = 'data/maps/maps.asm'
 map_headers_2_filename = 'data/maps/attributes.asm'
 block_data_filename    = 'data/maps/blocks.asm'
-block_filename_fmt     = 'maps/%s.blk'
+block_filename_fmt     = 'maps/%s.ablk'
 metatile_filename_fmt  = 'data/tilesets/%s_metatiles.bin'
+attribute_filename_fmt = 'data/tilesets/%s_attributes.bin'
 
 tileset_names = [
 	'johto_traditional', 'johto_modern', 'battle_tower_outside', 'johto_overcast',
@@ -30,24 +31,24 @@ tileset_names = [
 	'safari_zone', 'ruins_of_alph', 'alph_word_room', 'pokemon_mansion'
 ]
 
-# {'TILESET_KANTO': 'kanto', ...}
+# {'TILESET_PC_JOHTO_1': 'johto1', ...}
 tileset_ids = {}
-# {'PalletTown': 'kanto', ...}
+# {'NewBarkTown': 'johto1', ...}
 map_tilesets = {}
-# {'kanto': {'PalletTown', ...}, ...}
+# {'johto1': {'NewBarkTown', ...}, ...}
 tileset_maps = defaultdict(lambda: set())
 
 # {'OlivineTimsHouse': 'House1', ...}
 map_block_data_exceptions = {}
 
-# {tileset 'kanto': {tile '01', tile '02', tile '03', ...}, ...}
+# {tileset 'johto1': {tile '01', tile '02', tile '03', ...}, ...}
 tileset_used_tile_ids = defaultdict(lambda: set())
-# {tileset 'kanto': {block '01', block '02', block '03', ...}, ...}
+# {tileset 'johto1': {block '01', block '02', block '03', ...}, ...}
 tileset_used_block_ids = defaultdict(lambda: set())
 
-# {tileset 'kanto': {tile '01', tile '02', tile '03', ...}, ...}
+# {tileset 'johto1': {tile '01', tile '02', tile '03', ...}, ...}
 tileset_unused_tile_ids = defaultdict(lambda: set())
-# {tileset 'kanto': {block '01', block '02', block '03', ...}, ...}
+# {tileset 'johto1': {block '01', block '02', block '03', ...}, ...}
 tileset_unused_block_ids = defaultdict(lambda: set())
 
 def pretty(n):
@@ -99,8 +100,8 @@ def read_tileset_ids():
 				tileset_id = int(parts[1])
 			elif line.startswith('const '):
 				parts = line.split()
-				tileset_const = parts[1]
-				tileset_ids[tileset_const] = tileset_names[tileset_id - 1]
+				tileset_name = parts[1]
+				tileset_ids[tileset_name] = tileset_names[tileset_id - 1]
 				tileset_id += 1
 
 def read_map_tilesets():
@@ -122,8 +123,8 @@ def read_block_filenames():
 			line = line.strip()
 			if line.endswith('_BlockData:'):
 				map_names.append(line[:-11])
-			elif line.startswith('INCBIN "maps/') and line.endswith('.blk"'):
-				block_data_name = line[13:-5]
+			elif line.startswith('INCBIN "maps/') and line.endswith('.ablk.lz"'):
+				block_data_name = line[13:-9]
 				for map_name in map_names:
 					if map_name != block_data_name:
 						map_block_data_exceptions[map_name] = block_data_name
@@ -153,14 +154,17 @@ def read_used_block_ids_2():
 
 def read_used_tile_ids():
 	for tileset_id in tileset_ids.values():
-		with open(code_directory + metatile_filename_fmt % tileset_id, 'rb') as f:
+		tileset_used_tile_ids[tileset_id] = set()
+		with open(code_directory + metatile_filename_fmt % tileset_id, 'rb') as f, open(code_directory + attribute_filename_fmt % tileset_id, 'rb') as g:
 			block_id = 0
 			while True:
 				used_tile_ids = [ord(b) for b in f.read(16)]
-				if not used_tile_ids:
+				used_tile_attrs = [ord(b) for b in g.read(16)]
+				if not used_tile_ids or not used_tile_attrs:
 					break
+				used_tile_indexes = [b + (0x80 if c & 0b1000 else 0) for (b, c) in zip(used_tile_ids, used_tile_attrs)]
 				if block_id in tileset_used_block_ids[tileset_id]:
-					tileset_used_tile_ids[tileset_id].update(used_tile_ids)
+					tileset_used_tile_ids[tileset_id].update(used_tile_indexes)
 				block_id += 1
 
 def find_unused_block_ids():
@@ -188,7 +192,7 @@ def main():
 	read_used_block_ids()
 	print('Reading used block IDs from %s...' % map_headers_2_filename, file=sys.stderr)
 	read_used_block_ids_2()
-	print('Reading used tile IDs from each %s...' % (metatile_filename_fmt % '##'), file=sys.stderr)
+	print('Reading used tile IDs from each %s and %s...' % (metatile_filename_fmt % '##', attribute_filename_fmt % '##'), file=sys.stderr)
 	read_used_tile_ids()
 	print('Finding unused block IDs...', file=sys.stderr)
 	find_unused_block_ids()

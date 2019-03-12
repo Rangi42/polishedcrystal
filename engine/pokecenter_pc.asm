@@ -177,7 +177,7 @@ _KrissHousePC: ; 156d9
 	call _PlayersPC
 	and a
 	jr nz, .asm_156f9
-	call OverworldTextModeSwitch
+	call LoadMapPart
 	call ApplyTilemap
 	call UpdateSprites
 	call PC_PlayShutdownSound

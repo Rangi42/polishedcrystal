@@ -106,6 +106,7 @@ MapSetupCommands: ; 15440
 	dba SuspendMapAnims ; 2a
 	dba RetainOldPalettes ; 2b
 	dba ReturnFromMapSetupScript ; 2c
+	dba DecompressMetatiles ; 2d
 ; 154ca
 
 ActivateMapAnims: ; 154cf
@@ -222,8 +223,8 @@ CheckReplaceKrisSprite: ; 154f7
 
 .CheckBiking: ; 1550c (5:550c)
 	and a
-	ld hl, wBikeFlags
-	bit 1, [hl]
+	ld hl, wOWState
+	bit OWSTATE_BIKING_FORCED, [hl]
 	ret z
 	ld a, PLAYER_BIKE
 	ld [wPlayerState], a
@@ -305,4 +306,24 @@ ForceMapMusic: ; 15587
 	ld [wMusicFade], a
 .notbiking
 	jp TryRestartMapMusic
-; 1559a
+
+DecompressMetatiles:
+	ld hl, wTilesetBlocksBank
+	ld c, BANK(wDecompressedMetatiles)
+	call .Decompress
+
+	ld hl, wTilesetAttributesBank
+	ld c, BANK(wDecompressedAttributes)
+
+.Decompress:
+	ld a, [hli]
+	ld b, a
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	ld de, wDecompressedMetatiles
+	ld a, c
+	call StackCallInWRAMBankA
+
+.Function
+	jp FarDecompressAtB_D000

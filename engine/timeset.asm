@@ -249,7 +249,7 @@ PrintTwoDigitNumberRightAlign: ; 90867 (24:4867)
 	ld [hli], a
 	ld [hl], a
 	pop hl
-	lb bc, PRINTNUM_RIGHTALIGN | 1, 2
+	lb bc, PRINTNUM_LEFTALIGN | 1, 2
 	jp PrintNum
 ; 90874 (24:4874)
 

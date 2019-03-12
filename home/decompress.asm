@@ -5,6 +5,14 @@ SwapDEHL::
 	pop hl
 	ret
 
+FarDecompressWRA6::
+	ld b, a
+FarDecompressWRA6InB:
+	call RunFunctionInWRA6
+FarDecompressAtB_D000::
+	ld a, b
+	ld de, wDecompressScratch
+
 FarDecompress::
 ; Decompress graphics data from a:hl to de.
 	call StackCallInBankA

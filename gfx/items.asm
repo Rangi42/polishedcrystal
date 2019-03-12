@@ -4,6 +4,14 @@ UpdateItemIconAndDescription::
 
 UpdateTMHMIconAndDescriptionAndOwnership::
 	farcall UpdateTMHMDescriptionAndOwnership
+	ld a, [wMenuSelection]
+	cp -1
+	jr z, .cancel
+	call LoadTMHMIcon
+	jr .ok
+.cancel
+	call ClearTMHMIcon
+.ok
 	farcall LoadTMHMIconPalette
 	jp SetPalettes
 
@@ -47,6 +55,12 @@ LoadTMHMIcon::
 	ld hl, TMHMIcon
 	ld de, VTiles2 tile $1e
 	lb bc, BANK(TMHMIcon), 9
+	jp DecompressRequest2bpp
+
+ClearTMHMIcon::
+	ld hl, NoItemIcon
+	ld de, VTiles2 tile $1e
+	lb bc, BANK(NoItemIcon), 9
 	jp DecompressRequest2bpp
 
 INCLUDE "data/items/icon_pointers.asm"

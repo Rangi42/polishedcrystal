@@ -2387,7 +2387,7 @@ PokeDoll: ; f48f
 	dec a
 	jr nz, .asm_f4a6
 	inc a
-	ld [wForcedSwitch], a
+	ld [wBattleEnded], a
 	ld a, [wBattleResult]
 	and 3 << 6
 	or $2
@@ -2432,8 +2432,8 @@ XItemEffect: ; f4c5
 	farcall CheckIfStatCanBeRaised
 	call WaitSFX
 
-	farcall BattleCommand_StatUpMessage
-	farcall BattleCommand_StatUpFailText
+	farcall BattleCommand_statupmessage
+	farcall BattleCommand_statupfailtext
 
 	ld a, [wCurBattleMon]
 	ld [wCurPartyMon], a

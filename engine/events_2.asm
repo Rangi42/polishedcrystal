@@ -37,8 +37,39 @@ ReturnFromMapSetupScript:: ; b8000
 	jr nz, .dont_do_map_sign
 .not_lucky_island
 
-; Display for 60 frames
-	ld a, 60
+; Landmark sign timer:
+; $80-$70: Sliding out (old sign)
+; $6f-$6d: Loading new graphics
+; $6c-$5d: Sliding in
+; $5c-$10: Remains visible
+; $0f-$00: Sliding out
+	ld a, [wLandmarkSignTimer]
+	sub $70
+	jr nc, .sliding_out
+	add $70
+	cp $10
+	jr c, .sliding_out
+	sub $5d
+	jr c, .visible
+	cp $10
+	jr c, .sliding_in
+
+	; was loading new graphics -- just reload them again
+	ld a, $70
+	jr .value_ok
+.sliding_in
+	push bc
+	ld b, a
+	ld a, $80
+	sub b
+	pop bc
+	jr .value_ok
+.visible
+	ld a, $80
+	jr .value_ok
+.sliding_out
+	add $70
+.value_ok
 	ld [wLandmarkSignTimer], a
 	ret
 
@@ -102,49 +133,64 @@ PlaceMapNameSign:: ; b8098 (2e:4098)
 	ld hl, wLandmarkSignTimer
 	ld a, [hl]
 	and a
-	jr z, .disappear
+	jr z, .sliding_out
 	dec [hl]
-	cp 57
+	sub $70
+	jr nc, .sliding_out
+	add $70
+	cp $6f
 	ret nc
-	cp 56
-	jr c, .skip2
-	call LoadMapNameSignGFX
+	sub $6d
+	jr c, .graphics_ok
+	jp nz, LoadMapNameSignGFX
+	push hl
 	call InitMapNameFrame
 	farcall HDMATransfer_OnlyTopFourRows
-.skip2
+	pop hl
+.graphics_ok
+	ld a, [hl]
+	cp $5d
+	jr nc, .sliding_in
+	cp $10
+	jr c, .sliding_out
 	ld a, $70
-	ld [rWY], a
-	ld [hWY], a
-	ret
-
-.disappear
+	jr .got_value
+.sliding_in
+	sub $5d
+	add a
+	add $70
+	jr .got_value
+.sliding_out
+	push bc
+	ld b, a
 	ld a, $90
+	sub b
+	sub b
+	pop bc
+.got_value
 	ld [rWY], a
 	ld [hWY], a
-	xor a
+	sub $90
+	ret nz
 	ld [hLCDCPointer], a
 	ret
 
 LoadMapNameSignGFX: ; b80c6
-	ld a, $1
-	ld [rVBK], a
+	; load opaque space
+	ld hl, VTiles0 tile POPUP_MAP_FRAME_SPACE
+	call GetOpaque1bppSpaceTile
 	; load sign frame
+	ld hl, VTiles0 tile POPUP_MAP_FRAME_START
 	ld de, MapEntryFrameGFX
-	ld hl, VTiles3 tile POPUP_MAP_FRAME_START
 	lb bc, BANK(MapEntryFrameGFX), POPUP_MAP_FRAME_SIZE
 	call Get2bpp
-	; load opaque space
-	ld hl, VTiles3 tile POPUP_MAP_FRAME_SPACE
-	ld de, TextBoxSpaceGFX
-	call GetOpaque1bppFontTile
 	; clear landmark name area
-	ld hl, VTiles3 tile POPUP_MAP_NAME_START
+	ld hl, VTiles0 tile POPUP_MAP_NAME_START
 	ld e, POPUP_MAP_NAME_SIZE
 .clear_loop
 	push hl
 	push de
-	ld de, TextBoxSpaceGFX
-	call GetOpaque1bppFontTile
+	call GetOpaque1bppSpaceTile
 	pop de
 	pop hl
 	ld bc, LEN_2BPP_TILE
@@ -189,7 +235,7 @@ endr
 	; a = tile offset into font graphic
 	ld a, [hli]
 	cp "@"
-	jr z, .done
+	ret z
 	; save position in landmark name
 	push hl
 	; spaces are unique
@@ -238,10 +284,6 @@ endr
 	; restore hl = position in landmark name
 	pop hl
 	jr .loop
-.done
-	xor a
-	ld [rVBK], a
-	ret
 ; b80d3
 
 InitMapNameFrame: ; b80d3
@@ -250,7 +292,7 @@ InitMapNameFrame: ; b80d3
 	ld de, wAttrMap - wTileMap
 	add hl, de
 	; top row
-	ld a, TILE_BANK | BEHIND_BG | PAL_BG_TEXT
+	ld a, BEHIND_BG | PAL_BG_TEXT
 	ld bc, SCREEN_WIDTH - 1
 	call ByteFill
 	or X_FLIP

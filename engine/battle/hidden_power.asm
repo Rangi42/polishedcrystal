@@ -20,7 +20,7 @@ HiddenPowerDamageStats: ; fbced
 ; Get the rest of the damage formula variables
 ; based on the new type.
 	push af
-	farcall BattleCommand_DamageStats ; damagestats
+	farcall BattleCommand_damagestats ; damagestats
 	pop af
 	ret
 ; fbd54

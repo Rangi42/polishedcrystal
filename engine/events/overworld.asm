@@ -273,7 +273,7 @@ CutDownGrass: ; c810
 	ld [hl], a
 	xor a
 	ld [hBGMapMode], a
-	call OverworldTextModeSwitch
+	call LoadMapPart
 	call UpdateSprites
 	call DelayFrame
 	ld a, [wBuffer6] ; Animation type (always 1)
@@ -332,7 +332,7 @@ Script_CutTree:
 CutDownTree:
 	xor a
 	ld [hBGMapMode], a
-	call OverworldTextModeSwitch
+	call LoadMapPart
 	call UpdateSprites
 	call DelayFrame
 	xor a ; Animation type
@@ -416,8 +416,8 @@ SurfFunction: ; c909
 	ld de, ENGINE_FOGBADGE
 	call CheckBadge
 	jr c, .asm_c956
-	ld hl, wBikeFlags
-	bit 1, [hl] ; always on bike
+	ld hl, wOWState
+	bit OWSTATE_BIKING_FORCED, [hl]
 	jr nz, .cannotsurf
 	ld a, [wPlayerState]
 	cp PLAYER_SURF
@@ -474,8 +474,10 @@ UsedSurfScript: ; c986
 	waitbutton
 	closetext
 
+	setflag ENGINE_AUTOSURF_ACTIVE
 	scall FieldMovePokepicScript
 
+AutoSurfScript:
 	copybytetovar wBuffer2
 	writevarcode VAR_MOVEMENT
 
@@ -575,8 +577,8 @@ TrySurfOW:: ; c9e7
 	call CheckPartyMove
 	jr c, .quit
 
-	ld hl, wBikeFlags
-	bit 1, [hl] ; always on bike (can't surf)
+	ld hl, wOWState
+	bit OWSTATE_BIKING_FORCED, [hl]
 	jr nz, .quit
 
 	call GetSurfType
@@ -595,6 +597,8 @@ TrySurfOW:: ; c9e7
 	ret
 
 AskSurfScript: ; ca2c
+	checkflag ENGINE_AUTOSURF_ACTIVE
+	iftrue AutoSurfScript
 	opentext
 	writetext AskSurfText
 	yesorno
@@ -786,6 +790,15 @@ Script_UsedWaterfall: ; 0xcb20
 	waitbutton
 	closetext
 	scall FieldMovePokepicScript
+	setflag ENGINE_AUTOWATERFALL_ACTIVE
+	jump Script_AutoWaterfall
+
+.Text_UsedWaterfall:
+	; used WATERFALL!
+	text_jump UnknownText_0x1c068e
+	db "@"
+
+Script_AutoWaterfall:
 	playsound SFX_BUBBLE_BEAM
 .loop
 	applymovement PLAYER, .WaterfallStep
@@ -806,11 +819,6 @@ Script_UsedWaterfall: ; 0xcb20
 .WaterfallStep: ; cb4f
 	turn_waterfall_up
 	step_end
-
-.Text_UsedWaterfall: ; 0xcb51
-	; used WATERFALL!
-	text_jump UnknownText_0x1c068e
-	db "@"
 
 TryWaterfallOW:: ; cb56
 	ld d, WATERFALL
@@ -843,6 +851,8 @@ Script_CantDoWaterfall: ; 0xcb7e
 	db "@"
 
 Script_AskWaterfall: ; 0xcb86
+	checkflag ENGINE_AUTOWATERFALL_ACTIVE
+	iftrue Script_AutoWaterfall
 	opentext
 	writetext .AskUseWaterfall
 	yesorno
@@ -1085,8 +1095,8 @@ StrengthFunction: ; cce5
 	ret
 
 SetStrengthFlag: ; cd12
-	ld hl, wBikeFlags
-	set 0, [hl]
+	ld hl, wOWState
+	set OWSTATE_STRENGTH, [hl]
 PrepareOverworldMove: ; cd1d
 	ld a, [wCurPartyMon]
 	ld e, a
@@ -1162,8 +1172,8 @@ TryStrengthOW: ; cd78
 	call CheckEngineFlag
 	jr c, .nope
 
-	ld hl, wBikeFlags
-	bit 0, [hl]
+	ld hl, wOWState
+	bit OWSTATE_STRENGTH, [hl]
 	jr z, .already_using
 
 	ld a, 2
@@ -1264,8 +1274,10 @@ Script_UsedWhirlpool: ; 0xce0f
 	writetext Text_UsedWhirlpool
 	closetext
 	scall FieldMovePokepicScript
-
+	setflag ENGINE_AUTOWHIRLPOOL_ACTIVE
 	waitsfx
+
+Script_AutoWhirlpool:
 	playsound SFX_SURF
 	checkcode VAR_FACING
 	ifequal UP, .Up
@@ -1336,6 +1348,8 @@ Script_MightyWhirlpool: ; 0xce66
 	db "@"
 
 Script_AskWhirlpoolOW: ; 0xce6e
+	checkflag ENGINE_AUTOWHIRLPOOL_ACTIVE
+	iftrue Script_AutoWhirlpool
 	opentext
 	writetext UnknownText_0xce78
 	yesorno
@@ -1387,6 +1401,9 @@ HeadbuttScript: ; 0xceab
 	closetext
 
 	scall FieldMovePokepicScript
+	setflag ENGINE_HEADBUTT_ACTIVE
+
+AutoHeadbuttScript:
 	callasm ShakeHeadbuttTree
 
 	callasm TreeMonEncounter
@@ -1422,6 +1439,8 @@ TryHeadbuttOW:: ; cec9
 	ret
 
 AskHeadbuttScript: ; 0xcedc
+	checkflag ENGINE_HEADBUTT_ACTIVE
+	iftrue AutoHeadbuttScript
 	opentext
 	writetext UnknownText_0xcee6
 	yesorno
@@ -1488,6 +1507,8 @@ RockSmashScript: ; cf32
 	closetext
 	waitsfx
 	scall FieldMovePokepicScript
+	setflag ENGINE_ROCK_SMASH_ACTIVE
+AutoRockSmashScript:
 	playsound SFX_STRENGTH
 	earthquake 84
 	applymovement2 MovementData_0xcf55
@@ -1522,6 +1543,8 @@ AskRockSmashScript: ; 0xcf5d
 	callasm HasRockSmash
 	ifequal 1, .no
 
+	checkflag ENGINE_ROCK_SMASH_ACTIVE
+	iftrue AutoRockSmashScript
 	opentext
 	writetext UnknownText_0xcf77
 	yesorno
@@ -1822,8 +1845,8 @@ BikeFunction: ; d0b3
 	jr .done
 
 .GetOffBike:
-	ld hl, wBikeFlags
-	bit 1, [hl]
+	ld hl, wOWState
+	bit OWSTATE_BIKING_FORCED, [hl]
 	jr nz, .CantGetOffBike
 	ld hl, Script_GetOffBike
 	ld de, Script_GetOffBike_Register

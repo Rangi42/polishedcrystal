@@ -38,7 +38,7 @@ ReanchorBGMap_NoOAMUpdate:: ; 6454
 	ld [hLCDCPointer], a
 	ld a, $90
 	ld [hWY], a
-	call OverworldTextModeSwitch
+	call LoadMapPart
 
 	ld a, VBGMap1 / $100
 	ld [hBGMapAddress + 1], a
@@ -99,7 +99,7 @@ ReanchorBGMap_NoOAMUpdate_NoDelay::
 	ld [hLCDCPointer], a
 	ld a, $90
 	ld [hWY], a
-	call OverworldTextModeSwitch
+	call LoadMapPart
 
 	ld a, VBGMap1 / $100
 	ld [hBGMapAddress + 1], a
@@ -153,10 +153,6 @@ INCLUDE "engine/printnum.asm"
 INCLUDE "engine/health.asm"
 INCLUDE "engine/events/overworld.asm"
 INCLUDE "engine/items.asm"
-; linked, do not separate
-INCLUDE "engine/player_step.asm"
-;INCLUDE "engine/load_map_part.asm"
-; end linked section
 INCLUDE "engine/anim_hp_bar.asm"
 INCLUDE "engine/move_mon.asm"
 INCLUDE "engine/billspctop.asm"
@@ -392,6 +388,11 @@ INCLUDE "engine/breeding.asm"
 SECTION "Code 6", ROMX
 
 INCLUDE "engine/clock_reset.asm"
+
+
+SECTION "Effect Command Pointers", ROMX
+
+INCLUDE "data/battle/effect_command_pointers.asm"
 
 
 SECTION "Code 7", ROMX
@@ -688,7 +689,7 @@ StartMenu_PrintBugContestStatus: ; 24be7
 	call PlaceString
 	hlcoord 8, 5
 	ld de, wParkBallsRemaining
-	lb bc, PRINTNUM_RIGHTALIGN | 1, 2
+	lb bc, PRINTNUM_LEFTALIGN | 1, 2
 	call PrintNum
 	hlcoord 1, 1
 	ld de, .Caught
@@ -866,7 +867,6 @@ ClearBattleRAM: ; 2ef18
 	ld [wBattleMonSpecies], a
 	ld [wBattleParticipantsNotFainted], a
 	ld [wCurBattleMon], a
-	ld [wForcedSwitch], a
 	ld [wTimeOfDayPal], a
 	ld [wPlayerTurnsTaken], a
 	ld [wEnemyTurnsTaken], a
@@ -1142,7 +1142,7 @@ DisplayDexEntry: ; 4424d
 	call Mul16
 	ld de, hTmpd
 	hlcoord 11, 7
-	lb bc, 2, PRINTNUM_RIGHTALIGN | 5
+	lb bc, 2, PRINTNUM_LEFTALIGN | 5
 	call PrintNum
 	pop hl
 	jr .skip_height
@@ -1183,7 +1183,7 @@ DisplayDexEntry: ; 4424d
 	call Mul16
 	ld de, hTmpd
 	hlcoord 11, 9
-	lb bc, 2, PRINTNUM_RIGHTALIGN | 5
+	lb bc, 2, PRINTNUM_LEFTALIGN | 5
 	call PrintNum
 	jr .skip_weight
 
@@ -1193,7 +1193,7 @@ DisplayDexEntry: ; 4424d
 	ld d, h
 	ld e, l
 	hlcoord 11, 9
-	lb bc, 2, PRINTNUM_RIGHTALIGN | 5
+	lb bc, 2, PRINTNUM_LEFTALIGN | 5
 	call PrintNum
 	pop de
 
@@ -1713,8 +1713,6 @@ TitleScreenNoYesMenuDataHeader: ; 0x4d585
 	db 2 ; items
 	db "No@"
 	db "Yes@"
-
-INCLUDE "data/tilesets.asm"
 
 FlagPredef: ; 4d7c1
 ; Perform action b on flag c in flag array hl.
@@ -3952,44 +3950,6 @@ INCLUDE "gfx/battle_anims.asm"
 INCLUDE "engine/events/halloffame.asm"
 INCLUDE "engine/copy_tilemap_at_once.asm"
 
-_LoadMapPart:: ; 4d15b
-
-	ld hl, wMisc
-	ld a, [wMetatileStandingY]
-	and a
-	jr z, .top_row
-	ld bc, WMISC_WIDTH * 2
-	add hl, bc
-
-.top_row
-	ld a, [wMetatileStandingX]
-	and a
-	jr z, .left_column
-	inc hl
-	inc hl
-
-.left_column
-	decoord 0, 0
-	ld b, SCREEN_HEIGHT
-.loop
-	ld c, SCREEN_WIDTH
-.loop2
-	ld a, [hli]
-	ld [de], a
-	inc de
-	dec c
-	jr nz, .loop2
-	ld a, l
-	add 4
-	ld l, a
-	jr nc, .carry
-	inc h
-
-.carry
-	dec b
-	jr nz, .loop
-	ret
-
 PrintAbility:
 ; Print ability b at hl.
 	ld l, b
@@ -4031,34 +3991,10 @@ PrintAbilityDescription:
 	add hl, hl
 	add hl, bc
 	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	decoord 1, 15
-	push de
-.loop
-	ld a, [hli]
-	cp "@"
-	jr z, .done
-	cp $4e
-	jr z, .line
-	ld [de], a
-	inc de
-	jr .loop
-
-.line
-	pop de
-	push hl
-	ld hl, $0014
-	add hl, de
-	ld d, h
-	ld e, l
-	pop hl
-	push de
-	jr .loop
-
-.done
-	pop de
-	ret
+	ld d, [hl]
+	ld e, a
+	hlcoord 1, 15
+	jp PlaceString
 
 INCLUDE "data/abilities.asm"
 
@@ -4149,6 +4085,12 @@ INCLUDE "engine/warp_connection.asm"
 INCLUDE "engine/battle/used_move_text.asm"
 INCLUDE "gfx/items.asm"
 
+SECTION "Load Map Part", ROMX
+; linked, do not separate
+INCLUDE "engine/player_step.asm"
+INCLUDE "engine/load_map_part.asm"
+; end linked section
+
 
 SECTION "Introduction", ROMX
 
@@ -4169,9 +4111,9 @@ SECTION "Diploma", ROMX
 INCLUDE "engine/diploma.asm"
 
 
-SECTION "Palette Maps", ROMX
+SECTION "Collision Permissions", ROMX
 
-INCLUDE "engine/map_palettes.asm"
+INCLUDE "data/collision_permissions.asm"
 
 
 SECTION "Typefaces", ROMX
@@ -4186,11 +4128,6 @@ INCLUDE "engine/battle/core.asm"
 SECTION "Effect Commands", ROMX
 
 INCLUDE "engine/battle/effect_commands.asm"
-
-
-SECTION "Effect Command Pointers", ROMX
-
-INCLUDE "data/battle/effect_command_pointers.asm"
 
 
 SECTION "Battle Animations", ROMX

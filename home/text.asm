@@ -167,7 +167,7 @@ PlaceNextChar::
 
 NextChar::
 	inc de
-	jp PlaceNextChar
+	jr PlaceNextChar
 
 CheckDict::
 	cp $60
@@ -207,6 +207,18 @@ endm
 	dict "<USER>",   PlaceMoveUsersName
 	dict "<ENEMY>",  PlaceEnemysName
 	dict "#",        PlacePoke
+	dict "le",       PlaceLe
+	dict "ng",       PlaceNg
+	dict "te",       PlaceTe
+	dict "as",       PlaceAs
+	dict "or",       PlaceOr
+	dict "ou",       PlaceOu
+	dict "re",       PlaceRe
+	dict "in",       PlaceIn
+	dict "er",       PlaceEr
+	dict "on",       PlaceOn
+	dict "th",       PlaceTh
+	dict "and",      PlaceAnd
 	dict "the",      PlaceThe
 	dict "you",      PlaceYou
 	dict "#mon",     PlacePokemon
@@ -215,8 +227,8 @@ endm
 	dict "that",     PlaceThat
 	dict "for",      PlaceFor
 	dict "with",     PlaceWith
-	dict "and",      PlaceAnd
-	dict "this",     PlaceThis
+	dict "an",       PlaceAn
+	dict "ing",      PlaceIng
 	dict2 "¯", " "
 
 .notDict
@@ -233,6 +245,42 @@ endm
 PrintPlayerName:   print_name wPlayerName
 PrintRivalName:    print_name wRivalName
 PrintTrendyPhrase: print_name wTrendyPhrase
+
+PlaceLe: print_name .LeText
+.LeText: db "l", "e", "@"
+
+PlaceNg: print_name .NgText
+.NgText: db "n", "g", "@"
+
+PlaceTe: print_name .TeText
+.TeText: db "t", "e", "@"
+
+PlaceAs: print_name .AsText
+.AsText: db "a", "s", "@"
+
+PlaceOr: print_name .OrText
+.OrText: db "o", "r", "@"
+
+PlaceOu: print_name .OuText
+.OuText: db "o", "u", "@"
+
+PlaceRe: print_name .ReText
+.ReText: db "r", "e", "@"
+
+PlaceIn: print_name .InText
+.InText: db "i", "n", "@"
+
+PlaceEr: print_name .ErText
+.ErText: db "e", "r", "@"
+
+PlaceOn: print_name .OnText
+.OnText: db "o", "n", "@"
+
+PlaceTh: print_name .ThText
+.ThText: db "t", "h", "@"
+
+PlaceAnd: print_name .AndText
+.AndText: db "a", "n", "d", "@"
 
 PlacePoke: print_name .PokeText
 .PokeText: db "Poké@"
@@ -261,11 +309,11 @@ PlaceFor: print_name .ForText
 PlaceWith: print_name .WithText
 .WithText: db "w", "i", "t", "h", "@"
 
-PlaceAnd: print_name .AndText
-.AndText: db "a", "n", "d", "@"
+PlaceAn: print_name .AnText
+.AnText: db "a", "n", "@"
 
-PlaceThis: print_name .ThisText
-.ThisText: db "t", "h", "i", "s", "@"
+PlaceIng: print_name .IngText
+.IngText: db "i", "n", "g", "@"
 
 PlaceMoveTargetsName::
 	ld a, [hBattleTurn]
@@ -301,12 +349,6 @@ PlaceEnemysName::
 	and a
 	jr nz, .linkbattle
 
-	ld a, [wTrainerClass]
-	cp RIVAL1
-	jr z, .rival
-	cp RIVAL2
-	jr z, .rival
-
 	ld de, wOTClassName
 	call PlaceString
 	ld h, b
@@ -317,18 +359,6 @@ PlaceEnemysName::
 	farcall Battle_GetTrainerName
 	pop hl
 	ld de, wStringBuffer1
-	jr PlaceCommandCharacter
-
-.rival:
-	ld de, wOTClassName
-	call PlaceString
-	ld h, b
-	ld l, c
-	ld de, .SpaceText
-	call PlaceString
-	ld h, b
-	ld l, c
-	ld de, wRivalName
 	jr PlaceCommandCharacter
 
 .linkbattle:
@@ -812,7 +842,7 @@ Text_PrintNum::
 	ld a, b
 	and $f0
 	swap a
-	set PRINTNUM_RIGHTALIGN_F, a
+	set PRINTNUM_LEFTALIGN_F, a
 	ld b, a
 	call PrintNum
 	ld b, h

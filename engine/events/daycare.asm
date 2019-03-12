@@ -637,7 +637,7 @@ PowerItems:
 
 InheritDV:
 ; Inherit DV e (0=HP, 1=Atk, 2=Def, 3=Speed, 4=Sp.Atk, 5=Sp.Def)
-; from parent DVs in hl. Returns z if we successfully inherited it.
+; from parent DVs in hl. Returns nz if we can't inherit anything else.
 ; b: inheritance counts left, c: already inherited bitfield
 ; Preserves de+hl
 	; Figure out if we can inherit the DV
@@ -813,10 +813,6 @@ DayCare_InitBreeding: ; 16a3b
 	ld [wEggMonItem], a
 
 	; Set moves for the egg
-	ld de, wEggMonMoves
-	xor a
-	ld [wBuffer1], a
-	predef FillMoves
 	farcall InitEggMoves
 
 	; Set OTID to the player

@@ -40,9 +40,8 @@ hObjectStructIndexBuffer EQU $ffb0
 hConnectionStripLength EQU $ffaf
 hConnectedMapWidth EQU $ffb0
 
-hMapBorderBlock    EQU $ffad
-hMapWidthPlus6     EQU $ffae
-hTilesetBlocksAddress  EQU $ffaf
+hMapBorderBlock     EQU $ffad
+hMapWidthPlus6      EQU $ffae
 
 hPredefTemp        EQU $ffb1
 
@@ -166,5 +165,7 @@ hTmpe              EQU $fff8
 hFastMusicUpdate   EQU $fff9
 
 hRequestOpaque1bpp EQU $fffb
+
+hTilesetGFXBank EQU $fffc
 
 HRAM_END EQU $ffff

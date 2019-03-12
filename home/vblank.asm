@@ -35,9 +35,6 @@ VBlank::
 	call _hl_
 
 .doGameTime
-	ld a, BANK(VBlankOWCheck)
-	rst Bankswitch
-	call VBlankOWCheck
 	call GameTimer
 
 	ld hl, wVBlankOccurred

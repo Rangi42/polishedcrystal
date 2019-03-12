@@ -13,9 +13,9 @@ FarCall_de::
 AnonBankPush::
 	ld [hFarCallSavedA], a
 	ld a, h
-	ld [hPredefTemp], a
-	ld a, l
 	ld [hPredefTemp + 1], a
+	ld a, l
+	ld [hPredefTemp], a
 	pop hl
 	ld a, [hROMBank]
 	push af
@@ -41,14 +41,29 @@ FarPointerCall::
 	ld l, a
 	jr DoFarCall
 
+CallOpponentTurn::
+	ld [hFarCallSavedA], a
+	ld a, h
+	ld [hPredefTemp + 1], a
+	ld a, l
+	ld [hPredefTemp], a
+
+	pop hl
+	call SwitchTurn
+	call RetrieveHLAndCallFunction
+	push af
+	call SwitchTurn
+	pop af
+	ret
+
 StackCallInBankB:
 	ld a, b
 StackCallInBankA:
 	ld [hBuffer], a
 	ld a, h
-	ld [hPredefTemp], a
-	ld a, l
 	ld [hPredefTemp + 1], a
+	ld a, l
+	ld [hPredefTemp], a
 	pop hl
 	ld a, [hROMBank]
 	push af
@@ -59,9 +74,9 @@ RstFarCall::
 ; Preserves a, bc, de, hl
 	ld [hFarCallSavedA], a
 	ld a, h
-	ld [hPredefTemp], a
-	ld a, l
 	ld [hPredefTemp + 1], a
+	ld a, l
+	ld [hPredefTemp], a
 	pop hl
 	ld a, [hli]
 	ld [hBuffer], a
@@ -107,7 +122,7 @@ RunFunctionInWRA6::
 	ld a, BANK(wDecompressScratch)
 
 ; fallthrough
-StackCallInWRAMBankA:
+StackCallInWRAMBankA::
 	ld [hBuffer], a
 	ld a, h
 	ld [hPredefTemp + 1], a
@@ -132,7 +147,7 @@ RetrieveHLAndCallFunction:
 	push hl
 	ld hl, hPredefTemp
 	ld a, [hli]
-	ld l, [hl]
-	ld h, a
+	ld h, [hl]
+	ld l, a
 	ld a, [hFarCallSavedA]
 	ret

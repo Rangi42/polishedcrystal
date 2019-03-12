@@ -83,7 +83,7 @@ PrintMagikarpLength: ; fbbdb
 	jr z, .imperial
 	ld hl, wStringBuffer1
 	ld de, wMagikarpLengthMm
-	lb bc, PRINTNUM_RIGHTALIGN | 2, 4
+	lb bc, PRINTNUM_LEFTALIGN | 2, 4
 	call PrintNum
 	dec hl
 	ld a, [hl]
@@ -158,12 +158,12 @@ PrintMagikarpLength: ; fbbdb
 	ld [wMagikarpLengthMmLo], a
 	ld hl, wStringBuffer1
 	ld de, wMagikarpLengthMmHi
-	lb bc, PRINTNUM_RIGHTALIGN | 1, 2
+	lb bc, PRINTNUM_LEFTALIGN | 1, 2
 	call PrintNum
 	ld [hl], "′"
 	inc hl
 	ld de, wMagikarpLengthMmLo
-	lb bc, PRINTNUM_RIGHTALIGN | 1, 2
+	lb bc, PRINTNUM_LEFTALIGN | 1, 2
 	call PrintNum
 	ld [hl], "″"
 	inc hl

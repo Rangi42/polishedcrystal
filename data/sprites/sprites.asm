@@ -141,8 +141,8 @@ SpriteHeaders:
 	overworld_sprite SkierSpriteGFX, WALKING_SPRITE, PAL_OW_RED
 	overworld_sprite SuperNerdSpriteGFX, WALKING_SPRITE, PAL_OW_BLUE
 	overworld_sprite RealSuperNerdSpriteGFX, WALKING_SPRITE, PAL_OW_BROWN
-	overworld_sprite SwimmerGirlSpriteGFX, WALKING_SPRITE, PAL_OW_BLUE
-	overworld_sprite SwimmerGuySpriteGFX, WALKING_SPRITE, PAL_OW_BLUE
+	overworld_sprite SwimmerGirlSpriteGFX, WALKING_SPRITE, PAL_OW_GREEN
+	overworld_sprite SwimmerGuySpriteGFX, WALKING_SPRITE, PAL_OW_RED
 	overworld_sprite TamerSpriteGFX, WALKING_SPRITE, PAL_OW_BROWN
 	overworld_sprite TeacherSpriteGFX, WALKING_SPRITE, PAL_OW_RED
 	overworld_sprite TwinSpriteGFX, WALKING_SPRITE, PAL_OW_RED

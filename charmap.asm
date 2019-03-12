@@ -24,19 +24,45 @@
 	charmap "<DAY>",    $15
 	charmap "<FAR>",    $16
 
+	; unused: $17 - $1e
+
 	charmap "¯",        $1f
+	; unused: $20
+	; unused: $21
 	charmap "<LNBRK>",  $22
+	; unused: $23
+	; unused: $24
 	charmap "<NEXT>",   $25
 
+	; unused: $26 - $2b
+
+	charmap "le",       $2c
+	charmap "ng",       $2d
+	charmap "te",       $2e
+	charmap "as",       $2f
+	charmap "or",       $30
+	charmap "ou",       $31
+	charmap "re",       $32
+	charmap "in",       $33
+	charmap "er",       $34
+	charmap "on",       $35
+	charmap "th",       $36
+	charmap "and",      $37
 	charmap "have",     $38
 	charmap "that",     $39
 	charmap "for",      $3a
 	charmap "with",     $3b
-	charmap "and",      $3c
-	charmap "this",     $3d
+	charmap "an",       $3c
+	charmap "ing",      $3d
+	charmap "to",       $3e
+
+	; unused: $3f - $4a
 
 	charmap "<_CONT>",  $4b
 	charmap "<SCRL2>",  $4c
+
+	; unused: $4d
+
 	charmap "<NL>",     $4e
 	charmap "<LINE>",   $4f
 
@@ -56,13 +82,39 @@
 	charmap "the",      $5c
 	charmap "you",      $5d
 	charmap "#mon",     $5e
-	charmap "to",       $5f
+
+; Battle characters
+
+BATTLEEXTRA_GFX_START EQU $5f
+
+	charmap "<BALL>",   $5f
+	charmap "<MALE>",   $60
+	charmap "<FEMALE>", $61
+	charmap "<STAR>",   $62
+
+	charmap "<HP1>",    $63
+	charmap "<HP2>",    $64
+	charmap "<NOHP>",   $65
+	; $66 - $6c for HP
+	charmap "<FULLHP>", $6d
+	charmap "<HPEND>",  $6e
+
+	charmap "_",        $6f
+	charmap "◢",        $70
+	charmap "—",        $71
+	charmap "◣",        $72
+
+	charmap "<XP1>",    $73
+	charmap "<XP2>",    $74
+	charmap "<NOXP>",   $75
+	; $76 - $7c for exp
+	charmap "<FULLXP>", $7d
+	charmap "<XPEND>",  $7e
 
 ; Actual characters
 
 ; map tiles:
 
-	charmap "<BLACK>",  $f2 ; aka "<PHONE>"; black edges are sufficient
 	charmap " ",        $7f
 
 ; typeface font:
@@ -196,15 +248,13 @@
 
 ; common font:
 	charmap "▷",        $ef
-
 	charmap "…",        $f0
-
-	charmap "★",        $f1
-	charmap "<PHONE>",  $f2
-	charmap "′",        $f3
-	charmap "″",        $f4
-	charmap "<—>",      $f5
-	charmap "<_>",      $f6
+	charmap "<PHONE>",  $f1
+	charmap "<BLACK>",  $f2
+	charmap "<NONO>",   $f3
+	charmap "′",        $f4
+	charmap "″",        $f5
+	charmap "★",        $f6
 	charmap "↑",        $f7
 	charmap "↓",        $f8
 	charmap "<UPDN>",   $f9
@@ -216,30 +266,3 @@
 	charmap "│",        $fd
 	charmap "└",        $fe
 	charmap "┘",        $ff
-
-; battle extra:
-BATTLEEXTRA_GFX_START EQU $5f
-
-	charmap "<BALL>",   $5f
-	charmap "<MALE>",   $60
-	charmap "<FEMALE>", $61
-	charmap "<STAR>",   $62
-
-	charmap "<HP1>",    $63
-	charmap "<HP2>",    $64
-	charmap "<NOHP>",   $65
-	charmap "<FULLHP>", $6d
-	charmap "<HPEND>",  $6e
-
-	charmap "_",        $6f
-	charmap "◢",        $70
-	charmap "—",        $71
-	charmap "◣",        $72
-
-	charmap "<XP1>",    $73
-	charmap "<XP2>",    $74
-	charmap "<NOXP>",   $75
-	charmap "<FULLXP>", $7d
-	charmap "<XPEND>",  $7e
-
-	charmap "<NONO>",   $f2 ; overwrites <PHONE> in battle

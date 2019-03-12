@@ -76,7 +76,7 @@ UnknownText_0x18c042:
 
 PewterCityCooltrainermText:
 	text "This gal thinks"
-	line "Rock-type Pokemon"
+	line "Rock-type #mon"
 	cont "are all that,"
 
 	para "but it's tied for"
@@ -173,7 +173,7 @@ PewterCityMtMoonGiftShopSignText:
 PewterCityTrainerTipsText:
 	text "Trainer Tips"
 
-	para "A Pokemon holding"
+	para "A #mon holding"
 	line "an Ability Cap"
 	cont "is more likely to"
 	cont "have a baby with"

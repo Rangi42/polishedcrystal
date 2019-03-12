@@ -49,6 +49,7 @@ ROMX $0B
 ROMX $0C
 	org $4000
 	"Code 12"
+	"Tileset Headers"
 
 ROMX $0D
 	org $4000

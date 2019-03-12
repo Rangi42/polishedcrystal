@@ -59,7 +59,7 @@ ViridianSchoolHouseYoungsterScript:
 
 .Text2:
 	text "“What doesn't KO"
-	line "a Pokemon makes"
+	line "a #mon makes"
 	cont "it stronger.”"
 
 	para "That's the effect"

@@ -26,7 +26,7 @@ MoveDeletion:
 	jr z, .declined
 	jr c, .declined ; no moves -- should never happen
 	push af
-	ld a, [wCurSpecies]
+	ld a, [wMoveScreenSelectedMove]
 	ld [wd265], a
 	call GetMoveName
 	ld hl, .ConfirmDeleteText

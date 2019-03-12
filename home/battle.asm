@@ -44,29 +44,29 @@ OTPartyAttr::
 	ld a, [wCurOTMon]
 	jr DoBattlePartyAttr
 
-ResetDamage:: ; 397d
+ResetDamage::
 	xor a
 	ld [wCurDamage], a
 	ld [wCurDamage + 1], a
 	ret
-; 3985
 
+BattleCommand_switchturn::
 SwitchTurn::
 	ld a, [hBattleTurn]
 	and a
 	jr z, SetEnemyTurn
-SetPlayerTurn:: ; 3985
+SetPlayerTurn::
 	xor a
 	ld [hBattleTurn], a
 	ret
-; 3989
 
-SetEnemyTurn:: ; 3989
+SetEnemyTurn::
 	ld a, 1
 	ld [hBattleTurn], a
 	ret
-; 398e
 
+UpdateOpponentInParty::
+	call CallOpponentTurn
 UpdateUserInParty::
 	ld a, [hBattleTurn]
 	and a
@@ -87,11 +87,6 @@ UpdateBattleMon::
 	rst CopyBytes
 	ret
 
-UpdateOpponentInParty::
-	ld a, [hBattleTurn]
-	and a
-	jr nz, UpdateBattleMonInParty
-	; fallthrough
 UpdateEnemyMonInParty::
 ; No wildmons.
 	ld a, [wBattleMode]
@@ -181,13 +176,7 @@ ToggleBattleItems:
 	jr .loop
 
 OpponentCanLoseItem::
-	call SwitchTurn
-	call UserCanLoseItem
-	push af
-	call SwitchTurn
-	pop af
-	ret
-
+	call CallOpponentTurn
 UserCanLoseItem::
 ; Returns z if user can't lose its held item. This happens if:
 ; - user doesn't have a held item
@@ -208,7 +197,7 @@ UserCanLoseItem::
 	ld de, 2
 	ld hl, .StuckItems
 	call IsInArray
-	jr nc, .pop_and_ret_z
+	jr nc, .pop_and_ret_nz
 	inc hl
 	ld a, [hBattleTurn]
 	and a
@@ -219,6 +208,7 @@ UserCanLoseItem::
 	ld a, [de]
 	cp [hl]
 	jr nz, .pop_and_ret_z
+.pop_and_ret_nz
 	pop bc
 	pop de
 	pop hl
@@ -235,6 +225,8 @@ UserCanLoseItem::
 	db ARMOR_SUIT, MEWTWO
 	db -1
 
+GetOpponentUsedItemAddr::
+	call CallOpponentTurn
 GetUsedItemAddr::
 ; Returns addr for user's POV's UsedItem
 	ld a, [hBattleTurn]
@@ -285,24 +277,10 @@ GetMoveAttr::
 	push bc
 	ld bc, MOVE_LENGTH
 	rst AddNTimes
-	call GetMoveByte
+	ld a, BANK(Moves)
+	call GetFarByte
 	pop bc
 	ret
-
-GetMoveData::
-; Copy move struct a to de.
-	ld hl, Moves
-	ld bc, MOVE_LENGTH
-	rst AddNTimes
-	ld a, Bank(Moves)
-	jp FarCopyBytes
-
-GetMoveByte::
-	ld a, BANK(Moves)
-	jp GetFarByte
-
-DisappearUser::
-	farjp _DisappearUser
 
 ; Damage modifiers. a contains $xy where damage is multiplied by x, then divided by y
 ApplyPhysicalAttackDamageMod::
@@ -409,6 +387,7 @@ LegendaryMons::
 	db ENTEI
 	db SUICUNE
 UberMons::
+; banned from Battle Tower
 	db MEWTWO
 	db MEW
 	db LUGIA
@@ -703,6 +682,8 @@ CompareHP::
 	pop hl
 	ret
 
+CheckOpponentContactMove::
+	call CallOpponentTurn
 CheckContactMove::
 ; Check if user's move made contact. Returns nc if it is
 	farcall GetUserItemAfterUnnerve

@@ -16,8 +16,8 @@ DoPlayerMovement:: ; 80000
 
 ; Standing downhill instead moves down.
 
-	ld hl, wBikeFlags
-	bit 2, [hl] ; downhill
+	ld hl, wOWState
+	bit OWSTATE_BIKING_DOWNHILL, [hl]
 	ret z
 
 	ld c, a
@@ -256,8 +256,8 @@ DoPlayerMovement:: ; 80000
 	call .BikeCheck
 	jr nz, .walk
 
-	ld hl, wBikeFlags
-	bit 2, [hl] ; downhill
+	ld hl, wOWState
+	bit OWSTATE_BIKING_DOWNHILL, [hl]
 	jr z, .fast
 
 	ld a, [wWalkingDirection]
@@ -329,6 +329,9 @@ DoPlayerMovement:: ; 80000
 	and a
 	jr nz, .ExitWater
 
+	ld a, [wOWState]
+	set OWSTATE_SURF, a
+	ld [wOWState], a
 	ld a, STEP_FAST
 	call .DoStep
 	scf
@@ -672,8 +675,8 @@ DoPlayerMovement:: ; 80000
 
 .CheckStrengthBoulder: ; 8036f
 
-	ld hl, wBikeFlags
-	bit 0, [hl] ; using strength
+	ld hl, wOWState
+	bit OWSTATE_STRENGTH, [hl]
 	jr z, .not_boulder
 
 	ld hl, OBJECT_DIRECTION_WALKING

@@ -1,4 +1,4 @@
-BattleCommand_Spikes:
+BattleCommand_spikes:
 	ld a, [hBattleTurn]
 	and a
 	ld hl, wEnemyScreens
@@ -18,7 +18,7 @@ BattleCommand_Spikes:
 	ld hl, SpikesText
 	jp StdBattleTextBox
 
-BattleCommand_ToxicSpikes:
+BattleCommand_toxicspikes:
 	ld a, [hBattleTurn]
 	and a
 	ld hl, wEnemyScreens

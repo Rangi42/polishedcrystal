@@ -86,61 +86,23 @@ endc
 ; 8c2a0
 
 .LoadPokeballTiles: ; 8c2a0
-	call LoadTrainerBattlePokeballTiles
-	hlbgcoord 0, 0
-	jp ConvertTrainerBattlePokeballTilesTo2bpp
-; 8c2aa
-
-LoadTrainerBattlePokeballTiles:
 ; Load the tiles used in the Pokeball Graphic that fills the screen
 ; at the start of every Trainer battle.
-	ld de, TrainerBattlePokeballTiles
-	ld hl, VTiles1 tile $7e
-	lb bc, BANK(TrainerBattlePokeballTiles), 2
-	call Request2bpp
-
-	ld a, [rVBK]
-	push af
 	ld a, $1
 	ld [rVBK], a
-
-	ld de, TrainerBattlePokeballTiles
-	ld hl, VTiles4 tile $7e
-	lb bc, BANK(TrainerBattlePokeballTiles), 2
+	ld de, .TrainerBattlePokeballTiles
+	ld hl, VTiles3 tile $fe
+	lb bc, BANK(.TrainerBattlePokeballTiles), 2
 	call Request2bpp
-
-	pop af
+	xor a
 	ld [rVBK], a
-	ret
-; 8c2cf
-
-ConvertTrainerBattlePokeballTilesTo2bpp: ; 8c2cf
-	ld a, [rSVBK]
-	push af
-	ld a, $6
-	ld [rSVBK], a
-	push hl
-	ld hl, wDecompressScratch
-	ld bc, $28 tiles
-
-.loop
-	ld [hl], -1
-	inc hl
-	dec bc
-	ld a, c
-	or b
-	jr nz, .loop
-
-	pop hl
-	ld de, wDecompressScratch
-	lb bc, BANK(ConvertTrainerBattlePokeballTilesTo2bpp), $28 ; BANK(@)
-	call Request2bpp
-	pop af
-	ld [rSVBK], a
-	ret
+	ld de, .TrainerBattlePokeballTiles
+	ld hl, VTiles0 tile $fe
+	lb bc, BANK(.TrainerBattlePokeballTiles), 2
+	jp Request2bpp
 ; 8c2f4
 
-TrainerBattlePokeballTiles: ; 8c2f4
+.TrainerBattlePokeballTiles: ; 8c2f4
 INCBIN "gfx/overworld/trainer_battle_pokeball_tiles.2bpp"
 
 

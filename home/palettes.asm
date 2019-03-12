@@ -288,14 +288,3 @@ Special_ReloadSpritesNoPalettes:: ; d91
 	ld [hCGBPalUpdate], a
 	jp DelayFrame
 ; db1
-
-
-FarCallSwapTextboxPalettes:: ; db1
-	homecall SwapTextboxPalettes
-	ret
-; dbd
-
-FarCallScrollBGMapPalettes:: ; dbd
-	homecall ScrollBGMapPalettes
-	ret
-; dc9

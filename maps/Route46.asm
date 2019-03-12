@@ -196,7 +196,7 @@ Route46HikerText:
 	line "me a lesson…"
 
 	para "Be careful around"
-	line "angry Pokemon!"
+	line "angry #mon!"
 	done
 
 Text_Route46TutorRollout:

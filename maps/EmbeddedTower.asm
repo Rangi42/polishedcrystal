@@ -114,7 +114,7 @@ EmbeddedTowerSteven1TowerText:
 
 EmbeddedTowerSteven1NotNowText:
 	text "Steven: Your"
-	line "Pokemon are look-"
+	line "#mon are look-"
 	cont "ing pretty good."
 
 	para "If you can beat"
@@ -126,7 +126,7 @@ EmbeddedTowerSteven1NotNowText:
 
 EmbeddedTowerSteven1ChallengeText:
 	text "Steven: Your"
-	line "Pokemon are look-"
+	line "#mon are look-"
 	cont "ing pretty good."
 
 	para "Since we're both"

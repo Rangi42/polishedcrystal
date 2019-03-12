@@ -439,14 +439,17 @@ wEastConnectionStripXOffset:: ds 1
 wEastConnectionWindow:: ds 2
 
 wTilesetHeader::
-wTilesetBank:: ds 1
-wTilesetAddress:: ds 2
+wTilesetGFXBank:: ds 1
+wTilesetGFXAddress:: ds 2
+wTilesetGFX2Address:: ds 2
 wTilesetBlocksBank:: ds 1
 wTilesetBlocksAddress:: ds 2
 wTilesetCollisionBank:: ds 1
 wTilesetCollisionAddress:: ds 2
+wTilesetAttributesBank:: ds 1
+wTilesetAttributesAddress:: ds 2
 wTilesetAnim:: ds 2 ; bank 3f
-wTilesetPalettes:: ds 2 ; bank 3f
+wTilesetHeaderEnd::
 
 wEvolvableFlags:: flag_array PARTY_LENGTH
 
@@ -540,8 +543,6 @@ wBattleType::
 	ds 1
 
 wOtherTrainerID:: ds 1
-
-wForcedSwitch:: ds 1
 
 wTrainerClass:: ds 1
 
@@ -711,14 +712,7 @@ wReceiveCallDelay_StartTime:: ds 3
 wBugContestMinsRemaining:: ds 1
 wBugContestSecsRemaining:: ds 1
 
-wVBlankOWAction::
-; 0: nothing going on
-; 1: do encounter check next vblank while moving
-; 2: found encounter
-; 3: no encounter this step (but dismiss regular check)
-	ds 1
-
-	ds 1
+	ds 2 ; unused
 
 wMapStatusEnd::
 
@@ -1058,7 +1052,7 @@ wCelebiEvent:: ds 1
 
 	ds 1 ; unused
 
-wBikeFlags::
+wOWState::
 ; bit 0: using strength
 ; bit 1: always on bike
 ; bit 2: downhill
@@ -1353,6 +1347,16 @@ SECTION "Sound Stack", WRAMX
 wSoundEngineBackup:: ds wChannelsEnd - wMusic
 
 
+SECTION "Metatiles", WRAMX
+
+wDecompressedMetatiles:: ds 256 * 16
+
+
+SECTION "Attributes", WRAMX
+
+wDecompressedAttributes:: ds 256 * 16
+
+
 SECTION "Music Player Notes", WRAMX
 
 wMPNotes:: ds 4 * 256
@@ -1455,8 +1459,7 @@ wScratchTileMap:: ds BG_MAP_WIDTH * BG_MAP_HEIGHT
 wScratchAttrMap:: ds BG_MAP_WIDTH * BG_MAP_HEIGHT
 ENDU
 
-
-SECTION "WRAM 7", WRAMX
+SECTION "Window Stack", WRAMX
 
 wWindowStack:: ds $1000 - 1
 wWindowStackBottom:: ds 1

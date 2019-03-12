@@ -28,6 +28,9 @@ endif
 ifeq ($(filter monochrome,$(MAKECMDGOALS)),monochrome)
 RGBASM_FLAGS += -DMONOCHROME
 endif
+ifeq ($(filter noir,$(MAKECMDGOALS)),noir)
+RGBASM_FLAGS += -DNOIR
+endif
 ifeq ($(filter hgss,$(MAKECMDGOALS)),hgss)
 RGBASM_FLAGS += -DHGSS
 endif
@@ -69,7 +72,7 @@ data/pokemon/egg_moves.o \
 data/pokemon/evos_attacks.o \
 data/maps/map_data.o \
 data/text/common.o \
-data/tileset_data.o \
+data/tilesets.o \
 engine/credits.o \
 engine/events.o \
 gfx/pics.o \
@@ -85,6 +88,7 @@ crystal: $(NAME)-$(VERSION).gbc
 faithful: crystal
 nortc: crystal
 monochrome: crystal
+noir: crystal
 hgss: crystal
 debug: crystal
 
@@ -141,5 +145,5 @@ gfx/pokemon/%/bitmask.asm gfx/pokemon/%/frames.asm: gfx/pokemon/%/front.2bpp
 %.png: ; $(error ERROR: Cannot find '$@')
 %.asm: ; $(error ERROR: Cannot find '$@')
 %.bin: ; $(error ERROR: Cannot find '$@')
-%.blk: ; $(error ERROR: Cannot find '$@')
+%.ablk: ; $(error ERROR: Cannot find '$@')
 %.tilemap: ; $(error ERROR: Cannot find '$@')

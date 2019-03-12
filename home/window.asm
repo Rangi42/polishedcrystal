@@ -37,7 +37,7 @@ CloseText:: ; 2dcf
 	call ClearWindowData
 	xor a
 	ld [hBGMapMode], a
-	call OverworldTextModeSwitch
+	call LoadMapPart
 	call BGMapAnchorTopLeft
 	xor a
 	ld [hBGMapMode], a

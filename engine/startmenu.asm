@@ -1478,10 +1478,11 @@ MoveScreenLoop:
 	ld b, 0
 	ld hl, wMoveScreenMoves
 	add hl, bc
-	ld a, [wMoveScreenMode]
-	cp MOVESCREEN_NEWMOVE
 	ld a, [hl]
 	ld [wMoveScreenSelectedMove], a
+	ld a, [wMoveScreenMode]
+	cp MOVESCREEN_NEWMOVE
+	ld a, c
 	jr nz, .ok
 	push bc
 	call IsHMMove
@@ -1495,6 +1496,7 @@ MoveScreenLoop:
 	jr .outer_loop
 .ok
 	inc a
+	and a
 	ret
 .pressed_b
 	ld de, SFX_READ_TEXT_2
@@ -1714,10 +1716,6 @@ MoveScreenLoop:
 GetForgottenMoves::
 ; retrieve a list of a mon's forgotten moves, excluding ones beyond level
 ; and moves the mon already knows
-	ld a, MON_LEVEL
-	call GetPartyParamLocation
-	ld a, [hl]
-	ld [wCurPartyLevel], a
 	ld a, MON_SPECIES
 	call GetPartyParamLocation
 	ld a, [hl]
@@ -1738,8 +1736,6 @@ GetForgottenMoves::
 
 	ld de, wMoveScreenMoves
 	ld c, a
-	ld a, [wCurPartyLevel]
-	ld b, a
 	ld b, 100 ; Gen VII behaviour
 	inc b ; so that we can use jr nc
 .loop
