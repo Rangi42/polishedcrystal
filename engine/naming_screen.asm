@@ -109,6 +109,11 @@ NamingScreen: ; 116c1
 	hlcoord 1, 2
 	ld [hl], a
 .genderless
+	farcall GetShininess
+	jr z, .not_shiny
+	hlcoord 1, 4
+	ld [hl], "★"
+.not_shiny
 	jp .StoreMonIconParams
 
 ; 11780 (4:5780)
