@@ -3128,9 +3128,72 @@ PrintStatDifferences: ; 50b7b
 	pop bc
 	ret
 
+GetShininess:
+; Return the shininess of a given monster (wCurPartyMon/wCurOTMon/CurWildMon)
+; based on wMonType.
+
+; Figure out what type of monster struct we're looking at.
+
+; 0: PartyMon
+	ld hl, wPartyMon1Shiny
+	ld bc, PARTYMON_STRUCT_LENGTH
+	ld a, [wMonType]
+	and a
+	jr z, .PartyMon
+
+; 1: OTPartyMon
+	ld hl, wOTPartyMon1Shiny
+	dec a
+	jr z, .PartyMon
+
+; 2: sBoxMon
+	ld hl, sBoxMon1Shiny
+	ld bc, BOXMON_STRUCT_LENGTH
+	dec a
+	jr z, .sBoxMon
+
+; 3: Other
+	ld hl, wTempMonShiny
+	dec a
+	jr z, .Shininess
+
+; else: WildMon
+	ld hl, wEnemyMonShiny
+	jr .Shininess
+
+; Get our place in the party/box.
+
+.PartyMon:
+.sBoxMon
+	ld a, [wCurPartyMon]
+	rst AddNTimes
+
+.Shininess:
+
+; sBoxMon data is read directly from SRAM.
+	ld a, [wMonType]
+	cp BOXMON
+	ld a, 1
+	call z, GetSRAMBank
+
+; Shininess
+	ld a, [hl]
+	and SHINY_MASK
+	ld b, a
+
+; Close SRAM if we were dealing with a sBoxMon.
+	ld a, [wMonType]
+	cp BOXMON
+	call z, CloseSRAM
+
+; Check the shininess value
+	ld a, b
+	and a
+	ret
+
 GetGender: ; 50bdd
-; Return the gender of a given monster (wCurPartyMon/wCurOTMon/CurWildMon).
-; When calling this function, a should be set to an appropriate wMonType value.
+; Return the gender of a given monster (wCurPartyMon/wCurOTMon/CurWildMon)
+; based on wMonType.
 
 ; return values:
 ; a = 1: f = nc|nz; male
