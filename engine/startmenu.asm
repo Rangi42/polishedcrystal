@@ -1484,6 +1484,7 @@ MoveScreenLoop:
 	cp MOVESCREEN_NEWMOVE
 	ld a, c
 	jr nz, .ok
+	ld a, [hl]
 	push bc
 	call IsHMMove
 	pop bc
