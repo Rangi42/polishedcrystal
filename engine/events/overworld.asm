@@ -1404,6 +1404,7 @@ HeadbuttScript: ; 0xceab
 	setflag ENGINE_HEADBUTT_ACTIVE
 
 AutoHeadbuttScript:
+	refreshscreen
 	callasm ShakeHeadbuttTree
 
 	callasm TreeMonEncounter
