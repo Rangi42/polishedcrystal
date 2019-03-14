@@ -138,6 +138,8 @@ Init:: ; 17d
 	ld a, CONNECTION_NOT_ESTABLISHED
 	ld [hSerialConnectionStatus], a
 
+	farcall InitSGBBorder
+
 	farcall InitCGBPals
 
 	ld a, VBGMap1 / $100

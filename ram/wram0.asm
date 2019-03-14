@@ -881,7 +881,9 @@ wHPPals:: ds PARTY_LENGTH
 wCurHPPal:: ds 1
 wHPPalIndex:: ds 1
 
-	ds 51
+wCopyingSGBTileData:: ds 1
+
+	ds 50
 
 wAttrMap::
 ; 20x18 grid of palettes for 8x8 tiles
