@@ -1,0 +1,28 @@
+
+	ds $100 ; 32 palettes
+
+	RGB 22, 18, 30
+	RGB 17, 07, 28
+	RGB 09, 06, 16
+	RGB 04, 04, 04
+
+	ds $18 ; 3 palettes
+
+	RGB 31, 31, 31
+	RGB 17, 07, 28
+	RGB 12, 12, 12
+	RGB 04, 04, 04
+
+	ds $18 ; 3 palettes
+
+	RGB 16, 25, 31
+	RGB 06, 16, 31
+	RGB 03, 10, 22
+	RGB 04, 04, 04
+
+	ds $18 ; 3 palettes
+
+	RGB 31, 14, 18
+	RGB 29, 06, 07
+	RGB 20, 03, 03
+	RGB 04, 04, 04

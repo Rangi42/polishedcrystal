@@ -1,4 +1,4 @@
-BSOD: ; 4ea82
+BSOD:
 	ld a, [hCGB]
 	and a
 	ret nz
