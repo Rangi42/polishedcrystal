@@ -45,12 +45,12 @@ FadePalettes::
 	jr DoFadePalettes
 
 FadeBGPalettes::
-	ld a, 1
+	ld a, PALFADE_BG
 	ld [wPalFadeMode], a
 	jr DoFadePalettes
 
 FadeOBPalettes::
-	ld a, 2
+	ld a, PALFADE_OBJ
 	ld [wPalFadeMode], a
 DoFadePalettes:
 	farjp _DoFadePalettes
