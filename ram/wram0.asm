@@ -965,6 +965,7 @@ wPalFadeMode::
 ; bit 0-1: which (0: everything, 1: BG, 2: OBJ)
 ; bit 2: perform a smooth dark flash
 ; bit 3: partial fade (fade b of c frames)
+; bit 4: skip the last palette
 	ds 1
 
 	ds 9 ; unused

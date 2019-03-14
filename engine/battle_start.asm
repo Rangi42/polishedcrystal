@@ -232,7 +232,7 @@ StartTrainerBattle_SetUpBGMap: ; 8c3a1 (23:43a1)
 	ret
 
 StartTrainerBattle_Flash: ; 8c3ab (23:43ab)
-	call SmoothFlash
+	call StartBattleFlash
 	jp StartTrainerBattle_NextScene
 
 StartTrainerBattle_SetUpForWavyOutro: ; 8c3e8 (23:43e8)
@@ -539,22 +539,6 @@ StartTrainerBattle_LoadPokeBallGraphics: ; 8c5dc (23:45dc)
 
 	xor a
 	ld [hBGMapMode], a
-	hlcoord 0, 0, wAttrMap
-	ld bc, SCREEN_HEIGHT * SCREEN_WIDTH
-	inc b
-	inc c
-	jr .enter_loop_midway
-
-.loop
-; set all pals to 7
-	ld a, [hl]
-	or %00000111
-	ld [hli], a
-.enter_loop_midway
-	dec c
-	jr nz, .loop
-	dec b
-	jr nz, .loop
 
 	ld a, [wOtherTrainerClass]
 	ld de, 1
@@ -580,6 +564,19 @@ StartTrainerBattle_LoadPokeBallGraphics: ; 8c5dc (23:45dc)
 	sla a
 	jr nc, .no_load
 	ld [hl], $fe
+
+	push af
+	push hl
+	push bc
+	ld bc, wAttrMap - wTileMap
+	add hl, bc
+	ld a, [hl]
+	or PAL_BG_TEXT
+	ld [hl], a
+	pop bc
+	pop hl
+	pop af
+
 .no_load
 	inc hl
 	jr .loop4
@@ -627,14 +624,6 @@ StartTrainerBattle_LoadPokeBallGraphics: ; 8c5dc (23:45dc)
 	ld a, $5 ; WRAM5 = palettes
 	ld [rSVBK], a
 	call .copypals
-	push hl
-	ld de, wUnknBGPals palette PAL_BATTLE_BG_TEXT
-	ld bc, 1 palettes
-	rst CopyBytes
-	pop hl
-	ld de, wBGPals palette PAL_BATTLE_BG_TEXT
-	ld bc, 1 palettes
-	rst CopyBytes
 	pop af
 	ld [rSVBK], a
 	ld a, $1
@@ -646,19 +635,37 @@ StartTrainerBattle_LoadPokeBallGraphics: ; 8c5dc (23:45dc)
 	jp StartTrainerBattle_NextScene
 
 .copypals ; 8c677 (23:4677)
-	ld de, wUnknBGPals palette PAL_BATTLE_BG_TEXT
+	ld de, wUnknBGPals palette PAL_BG_GRAY
 	call .copy
-	ld de, wBGPals palette PAL_BATTLE_BG_TEXT
+	ld de, wUnknBGPals palette PAL_BG_RED
 	call .copy
-	ld de, wUnknOBPals palette PAL_BATTLE_OB_BLUE
+	ld de, wUnknBGPals palette PAL_BG_GREEN
 	call .copy
-	ld de, wOBPals palette PAL_BATTLE_OB_BLUE
+	ld de, wUnknBGPals palette PAL_BG_WATER
 	call .copy
-	ld de, wUnknOBPals palette PAL_BATTLE_OB_BROWN
+	ld de, wUnknBGPals palette PAL_BG_YELLOW
 	call .copy
-	ld de, wOBPals palette PAL_BATTLE_OB_BROWN
+	ld de, wUnknBGPals palette PAL_BG_BROWN
+	call .copy
+	ld de, wUnknBGPals palette PAL_BG_ROOF
+	call .copy
+	ld de, wUnknBGPals palette PAL_BG_TEXT
+	call .copy
+	ld de, wUnknOBPals palette PAL_OW_ROCK
+	call .copy
+	ld de, wUnknOBPals palette PAL_OW_TREE
 
 .copy ; 8c698 (23:4698)
+	push hl
+	push de
+	ld bc, 1 palettes
+	rst CopyBytes
+	pop de
+	ld hl, wBGPals - wUnknBGPals
+	add hl, de
+	ld d, h
+	ld e, l
+	pop hl
 	push hl
 	ld bc, 1 palettes
 	rst CopyBytes
