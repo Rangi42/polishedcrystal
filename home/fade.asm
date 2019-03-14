@@ -11,7 +11,7 @@ SetWhitePals::
 	jp ByteFill
 
 SmoothFlash::
-	ld a, PALFADE_BOTH | PALFADE_FLASH
+	ld a, PALFADE_BOTH | PALFADE_FLASH | 1
 	ld [wPalFadeMode], a
 	ld c, 10
 	jr DoFadePalettes
