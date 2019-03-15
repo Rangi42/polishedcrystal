@@ -475,7 +475,7 @@ PokeBallEffect: ; e8a2
 	jp z, .shake_and_break_free
 
 .caught
-	ld a, [wEnemyBackupSpecies]
+	ld a, [wTempEnemyMonSpecies]
 	ld [wEnemyMonSpecies], a
 
 	ld hl, wEnemyBackupDVs

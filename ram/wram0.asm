@@ -485,9 +485,7 @@ wEnemyMetronomeCount:: ds 1
 wAITempAbility:: ds 1
 wAITempItem:: ds 1
 
-wEnemyBackupSpecies:: ds 1
-
-	ds 15
+	ds 16
 
 wBattleScriptBufferLoc:: ds 2
 

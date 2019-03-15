@@ -8748,8 +8748,6 @@ InitEnemyWildmon: ; 3f607
 	ld a, WILD_BATTLE
 	ld [wBattleMode], a
 	call LoadEnemyMon
-	ld a, [wEnemyMonSpecies]
-	ld [wEnemyBackupSpecies], a
 	ld hl, wEnemyMonMoves
 	ld de, wWildMonMoves
 	ld bc, NUM_MOVES
@@ -8828,7 +8826,7 @@ HandleNuzlockeFlags:
 	ret nz
 
 	; Dupes clause: don't count duplicate encounters
-	ld a, [wEnemyBackupSpecies]
+	ld a, [wTempEnemyMonSpecies]
 	dec a
 	call CheckCaughtMon
 	ret nz
