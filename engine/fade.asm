@@ -40,11 +40,18 @@ _DoFadePalettes::
 	and PALFADE_WHICH
 	ld hl, wBGPals
 	ld d, 4 * 16 ; colors, palettes
-	jr z, .inner_loop
+	jr z, .got_count
 	dec a
 	ld d, 4 * 8
-	jr z, .inner_loop
+	jr z, .got_count
 	ld hl, wOBPals
+.got_count
+	ld a, [wPalFadeMode]
+	and PALFADE_SKIP_LAST
+	jr z, .inner_loop
+	ld a, d
+	sub 4
+	ld d, a
 .inner_loop
 	push de
 	ld a, [hli]

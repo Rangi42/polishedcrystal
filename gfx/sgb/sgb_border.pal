@@ -1,28 +1,144 @@
 
-	ds $100 ; 32 palettes
+	ds 32 palettes
 
-	RGB 22, 18, 30
+if DEF(FAITHFUL) ; Grape
+
+	RGB 31, 31, 31
 	RGB 17, 07, 28
 	RGB 09, 06, 16
 	RGB 04, 04, 04
 
-	ds $18 ; 3 palettes
+	ds 3 palettes
 
 	RGB 31, 31, 31
 	RGB 17, 07, 28
 	RGB 12, 12, 12
 	RGB 04, 04, 04
 
-	ds $18 ; 3 palettes
+	ds 3 palettes
 
-	RGB 16, 25, 31
+	RGB 31, 31, 31
 	RGB 06, 16, 31
 	RGB 03, 10, 22
 	RGB 04, 04, 04
 
-	ds $18 ; 3 palettes
+	ds 3 palettes
 
-	RGB 31, 14, 18
+	RGB 31, 31, 31
 	RGB 29, 06, 07
 	RGB 20, 03, 03
 	RGB 04, 04, 04
+
+elif DEF(HGSS) ; Dandelion
+
+	RGB 31, 31, 31
+	RGB 30, 25, 07
+	RGB 24, 19, 00
+	RGB 04, 04, 04
+
+	ds 3 palettes
+
+	RGB 31, 31, 31
+	RGB 30, 25, 07
+	RGB 12, 12, 12
+	RGB 04, 04, 04
+
+	ds 3 palettes
+
+	RGB 31, 31, 31
+	RGB 31, 07, 15
+	RGB 23, 01, 07
+	RGB 04, 04, 04
+
+	ds 3 palettes
+
+	RGB 31, 31, 31
+	RGB 29, 06, 07
+	RGB 20, 03, 03
+	RGB 04, 04, 04
+
+elif DEF(NOIR) ; Atomic Purple
+
+	dw palred 31 + palgreen 31 + palblue 31
+	dw palred 18 + palgreen 14 + palblue 16
+	dw palred 12 + palgreen 07 + palblue 09
+	dw palred 04 + palgreen 04 + palblue 04
+
+	ds 3 palettes
+
+	dw palred 31 + palgreen 31 + palblue 31
+	dw palred 18 + palgreen 14 + palblue 16
+	dw palred 12 + palgreen 12 + palblue 12
+	dw palred 04 + palgreen 04 + palblue 04
+
+	ds 3 palettes
+
+	dw palred 31 + palgreen 31 + palblue 31
+	dw palred 19 + palgreen 21 + palblue 23
+	dw palred 10 + palgreen 10 + palblue 14
+	dw palred 04 + palgreen 04 + palblue 04
+
+	ds 3 palettes
+
+	dw palred 31 + palgreen 31 + palblue 31
+	dw palred 29 + palgreen 06 + palblue 07
+	dw palred 20 + palgreen 03 + palblue 03
+	dw palred 04 + palgreen 04 + palblue 04
+
+elif DEF(MONOCHROME) ; Gray
+
+	RGB 31, 31, 31
+	RGB 23, 23, 23
+	RGB 14, 13, 13
+	RGB 04, 04, 04
+
+	ds 3 palettes
+
+	RGB 31, 31, 31
+	RGB 23, 23, 23
+	RGB 12, 12, 12
+	RGB 04, 04, 04
+
+	ds 3 palettes
+
+	RGB 31, 31, 31
+	RGB 23, 05, 15
+	RGB 14, 04, 08
+	RGB 04, 04, 04
+
+	ds 3 palettes
+
+	RGB 31, 31, 31
+	RGB 29, 06, 07
+	RGB 20, 03, 03
+	RGB 04, 04, 04
+
+else ; Teal
+
+	RGB 31, 31, 31
+	RGB 00, 18, 25
+	RGB 01, 10, 16
+	RGB 04, 04, 04
+
+	ds 3 palettes
+
+	RGB 31, 31, 31
+	RGB 00, 18, 25
+	RGB 12, 12, 12
+	RGB 04, 04, 04
+
+	ds 3 palettes
+
+	RGB 31, 31, 31
+	RGB 19, 31, 13
+	RGB 05, 16, 06
+	RGB 04, 04, 04
+
+	ds 3 palettes
+
+	RGB 31, 31, 31
+	RGB 29, 06, 07
+	RGB 20, 03, 03
+	RGB 04, 04, 04
+
+endc

@@ -10,8 +10,8 @@ SetWhitePals::
 	ld bc, 16 palettes
 	jp ByteFill
 
-SmoothFlash::
-	ld a, PALFADE_BG | PALFADE_FLASH
+StartBattleFlash::
+	ld a, PALFADE_BG | PALFADE_FLASH | PALFADE_SKIP_LAST
 	ld [wPalFadeMode], a
 	ld c, 10
 	jr DoFadePalettes
