@@ -599,10 +599,9 @@ wNamedObjectIndexBuffer::
 wCurTMHMBuffer::
 wTypeMatchup::
 wFoundMatchingIDInParty::
-	ds 1
+; usually 1 byte, may be up to 3 in some cases for wNamedObjectIndexBuffer
+	ds 3
 
-wFailedToFlee:: ds 1
-wNumFleeAttempts:: ds 1
 wMonTriedToEvolve:: ds 1
 
 wTimeOfDay:: ds 1
@@ -617,7 +616,8 @@ SECTION "Enemy Party", WRAMX
 wPokedexShowPointerAddr:: ds 2
 wPokedexShowPointerBank:: ds 1
 
-	ds 2
+wFailedToFlee:: ds 1
+wNumFleeAttempts:: ds 1
 
 wOTPlayerName:: ds NAME_LENGTH
 wOTPlayerID:: ds 2
