@@ -1,32 +1,3 @@
-ResetMapBufferEventFlags:: ; 2e50
-	xor a
-	ld hl, wEventFlags
-	ld [hli], a
-	ret
-; 2e56
-
-ResetOWState:: ; 2e56
-	xor a
-	ld hl, wOWState
-	ld [hl], a
-	ret
-; 2e5d
-
-ResetFlashIfOutOfCave:: ; 2e5d
-	ld a, [wPermission]
-	cp ROUTE
-	jr z, .asm_2e69
-	cp TOWN
-	jr z, .asm_2e69
-	ret
-
-.asm_2e69
-	ld hl, wStatusFlags
-	res 2, [hl]
-	ret
-; 2e6f
-
-
 EventFlagAction:: ; 0x2e6f
 	ld hl, wEventFlags
 FlagAction:: ; 0x2e76

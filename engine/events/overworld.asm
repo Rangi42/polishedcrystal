@@ -325,6 +325,13 @@ Script_CutTree:
 	closetext
 	waitsfx
 	scall FieldMovePokepicScript
+	setflag ENGINE_AUTOCUT_ACTIVE
+	disappear -2
+	callasm CutDownTree
+	endtext
+
+AutoCutTreeScript:
+	callasm RefreshScreen_BridgeUpdate
 	disappear -2
 	callasm CutDownTree
 	endtext
@@ -1971,7 +1978,8 @@ HasCutAvailable:: ; d186
 AskCutTreeScript: ; 0xd1a9
 	callasm HasCutAvailable
 	ifequal 1, .no
-
+	checkflag ENGINE_AUTOCUT_ACTIVE
+	iftrue AutoCutTreeScript
 	opentext
 	writetext UnknownText_0xd1c8
 	yesorno

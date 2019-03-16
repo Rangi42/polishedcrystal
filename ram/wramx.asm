@@ -1052,13 +1052,7 @@ wCelebiEvent:: ds 1
 
 	ds 1 ; unused
 
-wOWState::
-; bit 0: using strength
-; bit 1: always on bike
-; bit 2: downhill
-	ds 1
-
-	ds 1 ; unused
+wOWState:: ds 2
 
 wCurrentMapTriggerPointer:: ds 2
 wCurrentCaller:: ds 2
