@@ -9,6 +9,8 @@ LearnMove: ; 6508
 	rst CopyBytes
 
 .loop
+	ld hl, wForgettingMove
+	res FORGETTING_MOVE_F, [hl]
 	ld hl, wPartyMon1Moves
 	ld bc, PARTYMON_STRUCT_LENGTH
 	ld a, [wCurPartyMon]
@@ -16,8 +18,6 @@ LearnMove: ; 6508
 	ld d, h
 	ld e, l
 	ld b, NUM_MOVES
-	xor a
-	ld [wForgettingMove], a
 ; Get the first empty move slot.  This routine also serves to
 ; determine whether the Pokemon learning the moves already has
 ; all four slots occupied, in which case one would need to be
@@ -55,11 +55,11 @@ LearnMove: ; 6508
 	call GetMoveName
 	ld hl, Text_1_2_and_Poof ; 1, 2 and…
 	call PrintText
+
+	ld hl, wForgettingMove
+	set FORGETTING_MOVE_F, [hl]
 	pop de
 	pop hl
-
-	ld a, TRUE
-	ld [wForgettingMove], a
 
 .learn
 	ld a, [wPutativeTMHMMove]
@@ -81,8 +81,8 @@ LearnMove: ; 6508
 
 ; Are we forgetting a move?
 	ld a, [wForgettingMove]
-	and a
-	jr z, .pp_ok
+	cp FORGETTING_MOVE | LEARNING_TM
+	jr nz, .pp_ok
 ; Is the old move's current PP less than the new move's PP?
 	ld a, [hl]
 	cp b
