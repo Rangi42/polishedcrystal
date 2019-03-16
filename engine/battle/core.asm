@@ -1860,25 +1860,6 @@ HandleWeatherEffects:
 	call GetSixteenthMaxHP
 	; fallthrough
 
-SubtractHPFromOpponent:
-	ld a, [hBattleTurn]
-	and a
-	jr nz, SubtractHPFromPlayer
-SubtractHPFromEnemy:
-	ld hl, wEnemyMonMaxHP
-	ld a, [hli]
-	ld [wBuffer2], a
-	ld a, [hl]
-	ld [wBuffer1], a
-	ld hl, wEnemyMonHP
-	ld a, [hBattleTurn]
-	push af
-	call SetEnemyTurn
-	call _SubtractHP
-	pop af
-	ld [hBattleTurn], a
-	ret
-
 SubtractHPFromUser:
 	ld a, [hBattleTurn]
 	and a
@@ -1893,6 +1874,25 @@ SubtractHPFromPlayer:
 	ld a, [hBattleTurn]
 	push af
 	call SetPlayerTurn
+	call _SubtractHP
+	pop af
+	ld [hBattleTurn], a
+	ret
+
+SubtractHPFromOpponent:
+	ld a, [hBattleTurn]
+	and a
+	jr nz, SubtractHPFromPlayer
+SubtractHPFromEnemy:
+	ld hl, wEnemyMonMaxHP
+	ld a, [hli]
+	ld [wBuffer2], a
+	ld a, [hl]
+	ld [wBuffer1], a
+	ld hl, wEnemyMonHP
+	ld a, [hBattleTurn]
+	push af
+	call SetEnemyTurn
 	call _SubtractHP
 	pop af
 	ld [hBattleTurn], a
