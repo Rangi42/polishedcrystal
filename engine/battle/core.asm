@@ -3333,7 +3333,7 @@ LoadEnemyPkmnToSwitchTo:
 	jr nz, .skip_unown
 	ld hl, wEnemyMonForm
 	predef GetVariant
-	ld a, [wMonVariant]
+	ld a, [wCurForm]
 	ld [wFirstUnownSeen], a
 .skip_unown
 
@@ -3345,7 +3345,7 @@ LoadEnemyPkmnToSwitchTo:
 	jr nz, .skip_magikarp
 	ld hl, wEnemyMonForm
 	predef GetVariant
-	ld a, [wMonVariant]
+	ld a, [wCurForm]
 	ld [wFirstMagikarpSeen], a
 .skip_magikarp
 
@@ -7236,7 +7236,7 @@ CheckUnownLetter: ; 3eb75
 	ld l, a
 
 	push de
-	ld a, [wMonVariant]
+	ld a, [wCurForm]
 	ld de, 1
 	push bc
 	call IsInArray
@@ -8769,7 +8769,7 @@ InitEnemyWildmon: ; 3f607
 	ld a, [wFirstUnownSeen]
 	and a
 	jr nz, .skip_unown
-	ld a, [wMonVariant]
+	ld a, [wCurForm]
 	ld [wFirstUnownSeen], a
 .skip_unown
 
@@ -8779,7 +8779,7 @@ InitEnemyWildmon: ; 3f607
 	ld a, [wFirstMagikarpSeen]
 	and a
 	jr nz, .skip_magikarp
-	ld a, [wMonVariant]
+	ld a, [wCurForm]
 	ld [wFirstMagikarpSeen], a
 .skip_magikarp
 

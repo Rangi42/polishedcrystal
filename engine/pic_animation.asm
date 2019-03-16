@@ -98,7 +98,7 @@ LoadMonAnimation: ; d00a3
 	ld [wPokeAnimSpecies], a
 
 	ld a, $1
-	ld hl, wMonVariant
+	ld hl, wCurForm
 	call GetFarWRAMByte
 	ld [wPokeAnimVariant], a
 

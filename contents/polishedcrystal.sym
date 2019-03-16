@@ -3177,6 +3177,7 @@
 00:CF66 wTitleScreenTimerHi
 00:CF66 wUnownPuzzleHeldPiece
 00:CF67 wPalFadeMode
+00:CF68 wCurForm
 00:CF71 wWindowStackPointer
 00:CF73 wMenuJoypad
 00:CF74 wMenuSelection
@@ -5991,7 +5992,6 @@
 01:D23A wBattleType
 01:D23B wOtherTrainerID
 01:D23C wTrainerClass
-01:D23D wMonVariant
 01:D23E wMoveSelectionMenuType
 01:D23F wBaseHP
 01:D23F wBaseStats

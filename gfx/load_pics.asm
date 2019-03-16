@@ -5,7 +5,7 @@ GetVariant: ; 51040
 	cp MEWTWO
 	jp z, .GetMewtwoVariant
 
-; Return MonVariant based on Form at hl
+; Return CurForm based on Form at hl
 	ld a, [hl]
 	and FORM_MASK
 	jr nz, .ok
@@ -26,11 +26,11 @@ GetVariant: ; 51040
 .not_kanto_arbok
 	ld a, 1 ; safeguard: form 0 becomes variant 1
 .ok
-	ld [wMonVariant], a
+	ld [wCurForm], a
 	ret
 
 .GetPikachuVariant:
-; Return Pikachu form (1-5) in wMonVariant
+; Return Pikachu form (1-5) in wCurForm
 ; hl-8 is ...MonMove1
 ; hl-7 is ...MonMove2
 ; hl-6 is ...MonMove3
@@ -59,7 +59,7 @@ GetVariant: ; 51040
 	pop bc
 
 	ld a, PIKACHU_SURF_FORM
-	ld [wMonVariant], a
+	ld [wCurForm], a
 rept NUM_MOVES
 	ld a, [hli]
 	cp SURF
@@ -70,7 +70,7 @@ rept NUM_MOVES
 	dec hl
 endr
 	ld a, PIKACHU_FLY_FORM
-	ld [wMonVariant], a
+	ld [wCurForm], a
 rept NUM_MOVES
 	ld a, [hli]
 	cp FLY
@@ -80,11 +80,11 @@ endr
 .plain
 	ld a, PIKACHU_PLAIN_FORM
 .use_form
-	ld [wMonVariant], a
+	ld [wCurForm], a
 	ret
 
 .GetMewtwoVariant:
-; Return Mewtwo form (1-2) in wMonVariant
+; Return Mewtwo form (1-2) in wCurForm
 ; hl-9 is ...MonItem
 ; hl is ...MonForm
 
@@ -110,7 +110,7 @@ endr
 	jr z, .armored_mewtwo
 	dec a ; MEWTWO_PLAIN_FORM
 .armored_mewtwo
-	ld [wMonVariant], a
+	ld [wCurForm], a
 	ret
 
 GetFrontpic: ; 51077
@@ -185,7 +185,7 @@ GetFrontpicPointer: ; 510d7
 	call GetRelevantPicPointers
 	ld a, [wCurPartySpecies]
 	jr nc, .notvariant
-	ld a, [wMonVariant]
+	ld a, [wCurForm]
 .notvariant
 	dec a
 	ld bc, 6
@@ -299,7 +299,7 @@ GetBackpic: ; 5116c
 
 	ld a, [wCurPartySpecies]
 	ld b, a
-	ld a, [wMonVariant]
+	ld a, [wCurForm]
 	ld c, a
 	ld a, [rSVBK]
 	push af

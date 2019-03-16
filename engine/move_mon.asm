@@ -595,7 +595,7 @@ AddTempmonToParty: ; da96
 	ld a, [wFirstUnownSeen]
 	and a
 	jr nz, .done
-	ld a, [wMonVariant]
+	ld a, [wCurForm]
 	ld [wFirstUnownSeen], a
 .not_unown
 
@@ -611,7 +611,7 @@ AddTempmonToParty: ; da96
 	ld a, [wFirstMagikarpSeen]
 	and a
 	jr nz, .done
-	ld a, [wMonVariant]
+	ld a, [wCurForm]
 	ld [wFirstMagikarpSeen], a
 
 .done

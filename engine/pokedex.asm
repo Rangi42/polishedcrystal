@@ -2373,7 +2373,7 @@ Pokedex_LoadSelectedMonTiles: ; 4143b
 .use_first_magikarp
 	ld a, [wFirstMagikarpSeen]
 .continue
-	ld [wMonVariant], a
+	ld [wCurForm], a
 	ld a, [wd265]
 	ld [wCurPartySpecies], a
 	call GetBaseData
@@ -2465,7 +2465,7 @@ Pokedex_LoadUnownFont: ; 41a2c
 	jp LoadStandardFont
 
 Pokedex_LoadUnownFrontpicTiles: ; 41a58 (10:5a58)
-	ld a, [wMonVariant]
+	ld a, [wCurForm]
 	push af
 	ld a, [wDexCurrentUnownIndex]
 	ld e, a
@@ -2473,14 +2473,14 @@ Pokedex_LoadUnownFrontpicTiles: ; 41a58 (10:5a58)
 	ld hl, wUnownDex
 	add hl, de
 	ld a, [hl]
-	ld [wMonVariant], a
+	ld [wCurForm], a
 	ld a, UNOWN
 	ld [wCurPartySpecies], a
 	call GetBaseData
 	ld de, VTiles2 tile $00
 	predef GetFrontpic
 	pop af
-	ld [wMonVariant], a
+	ld [wCurForm], a
 	ret
 
 NewPokedexEntry: ; fb877

@@ -546,7 +546,7 @@ wOtherTrainerID:: ds 1
 
 wTrainerClass:: ds 1
 
-wMonVariant:: ds 1
+	ds 1 ; unused
 
 wMoveSelectionMenuType:: ds 1
 ; 0: battle move selection

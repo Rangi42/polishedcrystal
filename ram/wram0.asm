@@ -966,7 +966,9 @@ wPalFadeMode::
 ; bit 4: skip the last palette
 	ds 1
 
-	ds 9 ; unused
+wCurForm:: ds 1
+
+	ds 8 ; unused
 
 wWindowStackPointer:: ds 2
 wMenuJoypad:: ds 1
