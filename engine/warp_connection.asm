@@ -1,8 +1,6 @@
 RunCallback_05_03: ; 1045b0
-	call ResetMapBufferEventFlags
-	call ResetFlashIfOutOfCave
+	call ResetOWMapState
 	call GetCurrentMapTrigger
-	call ResetOWState
 	ld a, MAPCALLBACK_NEWMAP
 	call RunMapCallback
 RunCallback_03: ; 1045c4
@@ -11,6 +9,26 @@ RunCallback_03: ; 1045c4
 	call RunMapCallback
 	call GetMapHeaderTimeOfDayNybble
 	ld [wMapTimeOfDay], a
+	ret
+
+ResetOWMapState:
+; reset flash if out of cave
+	ld a, [wPermission]
+	cp ROUTE
+	jr z, .reset_flash
+	cp TOWN
+	jr nz, .keep_flash
+.reset_flash
+	ld hl, wStatusFlags
+	res 2, [hl]
+.keep_flash
+	xor a
+; reset map buffer event flags
+	ld [wEventFlags], a
+; reset ow state
+	ld hl, wOWState
+	ld [hli], a
+	ld [hl], a
 	ret
 
 
