@@ -265,8 +265,48 @@ ReadMapScripts:: ; 234f
 	pop af
 	and a
 	ret nz
-	jp ReadObjectEvents
-; 235c
+	; fallthrough
+ReadObjectEvents:: ; 241f
+	push hl
+	call ClearObjectStructs
+	pop de
+	ld hl, wMap1Object
+	ld a, [de]
+	inc de
+	ld [wCurrentMapPersonEventCount], a
+	ld a, e
+	ld [wCurrentMapPersonEventHeaderPointer], a
+	ld a, d
+	ld [wCurrentMapPersonEventHeaderPointer + 1], a
+
+	ld a, [wCurrentMapPersonEventCount]
+	call CopyMapObjectHeaders
+
+; get NUM_OBJECTS - 1 - [wCurrentMapPersonEventCount]
+	ld a, [wCurrentMapPersonEventCount]
+	ld c, a
+	ld a, NUM_OBJECTS - 1
+	sub c
+	jr z, .skip
+	jr c, .skip
+	inc hl
+; Fill the remaining sprite IDs and y coords with 0 and -1, respectively.
+	ld bc, OBJECT_LENGTH
+.loop
+	ld [hl],  0
+	inc hl
+	ld [hl], -1
+	dec hl
+	add hl, bc
+	dec a
+	jr nz, .loop
+
+.skip
+	ld h, d
+	ld l, e
+	ret
+; 2457
+
 
 CopySecondMapHeader:: ; 235c
 	ld de, wMapHeader
@@ -416,47 +456,6 @@ ReadSignposts:: ; 2408
 	rst AddNTimes
 	ret
 ; 241f
-
-ReadObjectEvents:: ; 241f
-	push hl
-	call ClearObjectStructs
-	pop de
-	ld hl, wMap1Object
-	ld a, [de]
-	inc de
-	ld [wCurrentMapPersonEventCount], a
-	ld a, e
-	ld [wCurrentMapPersonEventHeaderPointer], a
-	ld a, d
-	ld [wCurrentMapPersonEventHeaderPointer + 1], a
-
-	ld a, [wCurrentMapPersonEventCount]
-	call CopyMapObjectHeaders
-
-; get NUM_OBJECTS - 1 - [wCurrentMapPersonEventCount]
-	ld a, [wCurrentMapPersonEventCount]
-	ld c, a
-	ld a, NUM_OBJECTS - 1
-	sub c
-	jr z, .skip
-	jr c, .skip
-	inc hl
-; Fill the remaining sprite IDs and y coords with 0 and -1, respectively.
-	ld bc, OBJECT_LENGTH
-.loop
-	ld [hl],  0
-	inc hl
-	ld [hl], -1
-	dec hl
-	add hl, bc
-	dec a
-	jr nz, .loop
-
-.skip
-	ld h, d
-	ld l, e
-	ret
-; 2457
 
 CopyMapObjectHeaders:: ; 2457
 	and a
