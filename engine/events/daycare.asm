@@ -1024,6 +1024,7 @@ DayCare_InitBreeding: ; 16a3b
 	push bc
 	ld hl, BASEMON_GENDER
 	ld bc, BASEMON_STRUCT_LENGTH
+	rst AddNTimes
 	ld a, BANK(BaseData)
 	call GetFarByte
 	swap a
