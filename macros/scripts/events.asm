@@ -1230,6 +1230,11 @@ paintingpic: macro
 	db \1 ; painting
 	endm
 
+	enum checkegg_command
+checkegg: macro
+	db checkegg_command
+	endm
+
 thisasm: macro
 	callasm .asm\@
 	end

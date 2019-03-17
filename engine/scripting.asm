@@ -259,6 +259,7 @@ ScriptCommandTable:
 	dw Script_loadgrottomon              ; c4
 	dw Script_giveapricorn               ; c5
 	dw Script_paintingpic                ; c6
+	dw Script_checkegg                   ; c7
 
 StartScript:
 	ld hl, wScriptFlags
@@ -2188,6 +2189,29 @@ Script_checkpoke:
 	ret nc
 	ld a, TRUE
 	ld [wScriptVar], a
+	ret
+
+Script_checkegg:
+	xor a
+	ld [wScriptVar], a
+	ld a, [wCurPartyMon]
+	push af
+	ld a, [wPartyCount]
+.loop
+	dec a
+	push af
+	ld [wCurPartyMon], a
+	ld a, MON_FORM
+	call GetPartyParamLocation
+	bit MON_IS_EGG_F, [hl]
+	jr z, .next
+	ld a, TRUE
+	ld [wScriptVar], a
+.next
+	pop af
+	jr nz, .loop
+	pop af
+	ld [wCurPartyMon], a
 	ret
 
 Script_addcellnum:

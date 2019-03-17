@@ -660,9 +660,10 @@ GiveItem: ; 103fd
 	call DelayFrame
 	farcall PartyMenuSelect
 	jr c, .finish
-	ld a, [wCurPartySpecies]
-	cp EGG
-	jr nz, .give
+	ld a, MON_FORM
+	call GetPartyParamLocation
+	bit MON_IS_EGG_F, [hl]
+	jr z, .give
 	ld hl, .Egg
 	call PrintText
 	jr .loop

@@ -274,7 +274,7 @@ Route32LyraIntroducesHiddenGrottoesMainScript:
 	opentext
 	writetext .GreetingText
 	buttonsound
-	checkpoke EGG
+	checkegg
 	iftrue .HaveEgg
 	writetext .NoEggText
 	jump .Continue
