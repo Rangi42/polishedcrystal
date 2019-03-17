@@ -7720,9 +7720,14 @@ GiveExperiencePoints: ; 3ee3b
 	ld [de], a
 	ld de, wBattleMonMaxHP
 	push bc
+	ld a, [wCurBattleMon]
+	ld b, a
+	ld a, [wCurPartyMon]
+	cp b
+	ld bc, PARTYMON_STRUCT_LENGTH - MON_MAXHP
+	jr nz, .got_copy_length
 	ld a, [wPlayerSubStatus2]
 	bit SUBSTATUS_TRANSFORMED, a
-	ld bc, PARTYMON_STRUCT_LENGTH - MON_MAXHP
 	jr z, .got_copy_length
 	ld bc, 2
 .got_copy_length
