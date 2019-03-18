@@ -144,7 +144,7 @@ Mom_GiveItemOrDoll: ; fd0c3
 	ld [wCurItem], a
 	ld a, 1
 	ld [wItemQuantityChangeBuffer], a
-	ld hl, wPCItems
+	ld hl, wNumPCItems
 	jp ReceiveItem
 ; fd0eb
 

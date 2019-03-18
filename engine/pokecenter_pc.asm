@@ -346,7 +346,7 @@ KrisWithdrawItemMenu: ; 0x157d1
 	ld [wItemQuantityChangeBuffer], a
 	ld a, [wBuffer2]
 	ld [wCurItemQuantity], a
-	ld hl, wPCItems
+	ld hl, wNumPCItems
 	call TossItem
 	predef PartyMonItemName
 	ld hl, .WithdrewText
@@ -377,7 +377,7 @@ KrisTossItemMenu: ; 0x1585f
 .loop
 	call PCItemsJoypad
 	jr c, .quit
-	ld de, wPCItems
+	ld de, wNumPCItems
 	farcall TossItemFromPC
 	jr .loop
 
@@ -507,7 +507,7 @@ KrisDepositItemMenu: ; 0x1588b
 	ld [wBuffer1], a
 	ld a, [wCurItemQuantity]
 	ld [wBuffer2], a
-	ld hl, wPCItems
+	ld hl, wNumPCItems
 	call ReceiveItem
 	jr nc, .NoRoomInPC
 	ld a, [wBuffer1]
@@ -629,7 +629,7 @@ PCItemsJoypad: ; 0x15985
 	db %10110000
 	db 4, 8 ; rows/cols?
 	db 2 ; horizontal spacing?
-	dbw 0, wPCItems
+	dbw 0, wNumPCItems
 	dba PlaceMartItemName
 	dba PlaceMenuItemQuantity
 	dba UpdateItemDescription

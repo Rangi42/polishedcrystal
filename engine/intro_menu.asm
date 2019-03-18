@@ -200,7 +200,7 @@ ResetWRAM: ; 5ba7
 	ld hl, wNumKeyItems
 	call _ResetWRAM_InitList
 
-	ld hl, wPCItems
+	ld hl, wNumPCItems
 	call _ResetWRAM_InitList
 
 	ld hl, wTMsHMs
