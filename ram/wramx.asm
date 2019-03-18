@@ -892,7 +892,8 @@ wNumKeyItems:: ds 1
 wKeyItems:: ds MAX_KEY_ITEMS + 1
 wKeyItemsEnd::
 
-wPCItems:: ds MAX_PC_ITEMS * 2 + 1
+; TODO: fix wram labels: wNumPCItems ds 1, wPCItems ds MAX_PC_ITEMS * 2 + 1
+wPCItems:: ds MAX_PC_ITEMS * 2 + 2
 wPCItemsEnd::
 
 wApricorns:: ds NUM_APRICORNS
