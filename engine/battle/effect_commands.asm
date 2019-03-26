@@ -3135,13 +3135,7 @@ BattleCommand_posthiteffects:
 	rr c
 	srl b
 	rr c
-	srl b
-	rr c
-	ld a, b
-	or c
-	jr nz, .damage_ok2
-	inc c
-.damage_ok2
+	call HalveBC
 	farcall ItemRecoveryAnim
 	farcall RestoreHP
 	ld hl, BattleText_UserRecoveredWithItem
@@ -3550,19 +3544,8 @@ TruncateHL_BC: ; 3534d
 	or b
 	jr z, .finish
 
-	srl b
-	rr c
-	srl b
-	rr c
+	call HalveBC
 
-	ld a, c
-	or b
-	jr nz, .done_bc
-	inc c
-
-.done_bc
-	srl h
-	rr l
 	srl h
 	rr l
 
@@ -3572,12 +3555,6 @@ TruncateHL_BC: ; 3534d
 	inc l
 
 .finish
-	ld a, [wLinkMode]
-	cp 3
-	jr z, .done
-; If we go back to the loop point,
-; it's the same as doing this exact
-; same check twice.
 	ld a, h
 	or b
 	jr nz, .loop
@@ -7047,16 +7024,10 @@ BattleCommand_recoil: ; 36cb2
 	ld b, a
 	ld a, [wCurDamage + 1]
 	ld c, a
-	srl b
-	rr c
-	srl b
-	rr c
+	call HalveBC
+	call HalveBC
 .recoil_floor
-	ld a, b
-	or c
-	jr nz, .min_damage
-	inc c
-.min_damage
+	call FloorBC
 	ld a, [hli]
 	ld [wBuffer2], a
 	ld a, [hl]
