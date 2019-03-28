@@ -2853,12 +2853,10 @@ AI_Status: ; 39453
 	inc de
 	call AIGetEnemyMove
 
-	; For some reason, this routine also handles ordinary move hits to discourage immune
-	; moves. This is redundant with AI_Types, but kept to avoid potential issues.
-	ld a, BATTLE_VARS_MOVE_CATEGORY
+	ld a, [wEnemyMoveStruct + MOVE_CATEGORY]
 	call GetBattleVar
 	cp STATUS
-	jp nz, .typematchup
+	jr nz, .checkmove
 
 	push bc
 	push de
@@ -2886,20 +2884,20 @@ AI_Status: ; 39453
 	jr .checkmove
 
 .poison
-	ld a, POISON
 	lb bc, IMMUNITY, HELD_PREVENT_POISON
+	lb de, POISON, 1
 	jr .checkstatus
 .paralyze
-	ld a, ELECTRIC
 	lb bc, LIMBER, HELD_PREVENT_PARALYZE
+	lb de, ELECTRIC, 1
 	jr .checkstatus
 .burn
-	ld a, FIRE
 	lb bc, WATER_VEIL, HELD_PREVENT_BURN
+	lb de, FIRE, 0
 	jr .checkstatus
 .freeze
-	ld a, ICE
 	lb bc, MAGMA_ARMOR, HELD_PREVENT_FREEZE
+	lb de, ICE, 0
 	jr .checkstatus
 .sleep
 	; has 2 abilities, check one of them here
@@ -2908,22 +2906,44 @@ AI_Status: ; 39453
 	jr z, .pop_and_discourage
 
 	lb bc, INSOMNIA, HELD_PREVENT_SLEEP
+	ld e, 1
 	jr .checkstatus_after_type
 .confusion
 	lb bc, OWN_TEMPO, HELD_PREVENT_CONFUSE
+	ld e, 0
 	jr .checkstatus_after_type
 .attract
 	ld b, OBLIVIOUS
+	ld e, 0
 	jr .checkstatus_after_items
 
 .checkstatus
 	; Check opponent typings (fire types can't be burned and similar)
 	push bc
+	push de
+	ld a, d
 	call CheckIfTargetIsSomeType
+	pop de
 	pop bc
 	jr z, .pop_and_discourage
 
 .checkstatus_after_type
+	; Check opponent type
+	ld a, e
+	and a
+	jr z, .checkstatus_after_matchup
+	push hl
+	push de
+	push bc
+	farcall BattleCheckTypeMatchup
+	pop bc
+	pop de
+	pop hl
+	ld a, [wd265]
+	and a
+	jr z, .pop_and_discourage
+
+.checkstatus_after_matchup
 	; Check opponent item (Poison Guard/etc)
 	push bc
 	farcall GetOpponentItem
@@ -2949,31 +2969,18 @@ AI_Status: ; 39453
 .no_leaf_guard
 	; Check Substitute
 	farcall CheckSubstituteOpp
-	jr nz, .pop_and_discourage
-
+	call nz, AIDiscourageMove
 	pop hl
 	pop de
 	pop bc
-.typematchup
-	; Check type matchups
-	push hl
-	farcall BattleCheckTypeMatchup
-	pop hl
-	ld a, [wd265]
-	and a
-	jr z, .immune
 	jp .checkmove
 
 .pop_and_discourage
 	pop hl
 	pop de
 	pop bc
-	; fallthrough
-.immune
 	call AIDiscourageMove
 	jp .checkmove
-; 394a9
-
 
 
 AI_Risky: ; 394a9
