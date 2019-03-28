@@ -28,6 +28,7 @@ AI_Redundant: ; 2c41a
 	dbw EFFECT_SLEEP_TALK,    .SleepTalk
 	dbw EFFECT_MEAN_LOOK,     .MeanLook
 	dbw EFFECT_SPIKES,        .Spikes
+	dbw EFFECT_TOXIC_SPIKES,  .ToxicSpikes
 	dbw EFFECT_FORESIGHT,     .Foresight
 	dbw EFFECT_PERISH_SONG,   .PerishSong
 	dbw EFFECT_SANDSTORM,     .Sandstorm
@@ -44,17 +45,7 @@ AI_Redundant: ; 2c41a
 	dbw EFFECT_ROOST,         .Roost
 	db -1
 
-.LightScreen: ; 2c487
-	ld a, [wEnemyScreens]
-	bit SCREENS_LIGHT_SCREEN, a
-	ret
-
-.FocusEnergy: ; 2c493
-	ld a, [wEnemySubStatus4]
-	bit SUBSTATUS_FOCUS_ENERGY, a
-	ret
-
-.Confuse: ; 2c499
+.Confuse:
 	ld a, [wPlayerSubStatus3]
 	bit SUBSTATUS_CONFUSED, a
 	ret nz
@@ -62,77 +53,104 @@ AI_Redundant: ; 2c41a
 	bit SCREENS_SAFEGUARD, a
 	ret
 
-.Transform: ; 2c4a5
-	ld a, [wEnemySubStatus2]
-	bit SUBSTATUS_TRANSFORMED, a
-	ret
-
-.Reflect: ; 2c4ab
-	ld a, [wEnemyScreens]
-	bit SCREENS_REFLECT, a
-	ret
-
-.Substitute: ; 2c4b1
-	ld a, [wEnemySubStatus4]
-	bit SUBSTATUS_SUBSTITUTE, a
-	ret
-
-.LeechSeed: ; 2c4b7
-	ld a, [wPlayerSubStatus4]
-	bit SUBSTATUS_LEECH_SEED, a
-	ret
-
-.Disable: ; 2c4bd
+.Disable:
 	ld a, [wPlayerDisableCount]
 	and a
 	ret
 
-.Encore: ; 2c4c2
+.Encore:
 	ld a, [wPlayerSubStatus2]
 	bit SUBSTATUS_ENCORED, a
 	ret
 
-.SleepTalk: ; 2c4c8
-	ld a, [wEnemyMonStatus]
-	and SLP
-	jr z, .Redundant
-	jr .NotRedundant
-
-.MeanLook: ; 2c4d1
-	ld a, [wEnemySubStatus2]
-	bit SUBSTATUS_CANT_RUN, a
+.FocusEnergy:
+	ld a, [wEnemySubStatus4]
+	bit SUBSTATUS_FOCUS_ENERGY, a
 	ret
 
-.Spikes: ; 2c4e3
-	ld a, [wPlayerScreens]
-	and SCREENS_SPIKES
-	cp SCREENS_SPIKES
-	jr z, .Redundant
-	jr .NotRedundant
-
-.Foresight: ; 2c4e9
+.Foresight:
 	ld a, [wPlayerSubStatus1]
 	bit SUBSTATUS_IDENTIFIED, a
 	ret
 
-.PerishSong: ; 2c4ef
+.FutureSight:
+	ld a, [wEnemyFutureSightCount]
+	and a
+	ret
+
+.LeechSeed:
+	ld a, [wPlayerSubStatus4]
+	bit SUBSTATUS_LEECH_SEED, a
+	ret
+
+.LightScreen:
+	ld a, [wEnemyScreens]
+	bit SCREENS_LIGHT_SCREEN, a
+	ret
+
+.MeanLook:
+	ld a, [wEnemySubStatus2]
+	bit SUBSTATUS_CANT_RUN, a
+	ret
+
+.PerishSong:
 	ld a, [wPlayerSubStatus1]
 	bit SUBSTATUS_PERISH, a
 	ret
 
-.Sandstorm: ; 2c4f5
+.Reflect:
+	ld a, [wEnemyScreens]
+	bit SCREENS_REFLECT, a
+	ret
+
+.Safeguard:
+	ld a, [wEnemyScreens]
+	bit SCREENS_SAFEGUARD, a
+	ret
+
+.Substitute:
+	ld a, [wEnemySubStatus4]
+	bit SUBSTATUS_SUBSTITUTE, a
+	ret
+
+.Swagger:
+	ld a, [wPlayerSubStatus3]
+	bit SUBSTATUS_CONFUSED, a
+	ret
+
+.Transform:
+	ld a, [wEnemySubStatus2]
+	bit SUBSTATUS_TRANSFORMED, a
+	ret
+
+.SleepTalk:
+	ld a, [wEnemyMonStatus]
+	and SLP
+	jr .InvertZero
+
+.Spikes:
+	ld a, [wPlayerScreens]
+	and SCREENS_SPIKES
+	cp SCREENS_SPIKES
+	jr .InvertZero
+
+.ToxicSpikes:
+	ld a, [wPlayerScreens]
+	and SCREENS_TOXIC_SPIKES
+	cp (SCREENS_TOXIC_SPIKES / 3) * 2
+	jr .InvertZero
+
+.Sandstorm:
 	ld a, [wWeather]
 	cp WEATHER_SANDSTORM
-	jr z, .Redundant
-	jr .NotRedundant
+	jr .InvertZero
 
 .Hail:
 	ld a, [wWeather]
 	cp WEATHER_HAIL
-	jr z, .Redundant
-	jr .NotRedundant
+	jr .InvertZero
 
-.Attract: ; 2c4fe
+.Attract:
 	farcall CheckOppositeGender
 	jr c, .Redundant
 	jr z, .Redundant
@@ -140,43 +158,28 @@ AI_Redundant: ; 2c41a
 	bit SUBSTATUS_IN_LOVE, a
 	ret
 
-.Safeguard: ; 2c50c
-	ld a, [wEnemyScreens]
-	bit SCREENS_SAFEGUARD, a
-	ret
-
-.RainDance: ; 2c512
+.RainDance:
 	ld a, [wWeather]
 	cp WEATHER_RAIN
-	jr z, .Redundant
-	jr .NotRedundant
+	jr .InvertZero
 
-.SunnyDay: ; 2c51b
+.SunnyDay:
 	ld a, [wWeather]
 	cp WEATHER_SUN
-	jr z, .Redundant
-	jr .NotRedundant
+	jr .InvertZero
 
-.DreamEater: ; 2c524
+.DreamEater:
 	ld a, [wBattleMonStatus]
 	and SLP
-	jr z, .Redundant
-	jr .NotRedundant
-
-.Swagger: ; 2c52d
-	ld a, [wPlayerSubStatus3]
-	bit SUBSTATUS_CONFUSED, a
-	ret
-
-.FutureSight: ; 2c533
-	ld a, [wEnemyFutureSightCount]
-	and a
-	ret
+	jr .InvertZero
 
 .BatonPass:
 	farcall CheckAnyOtherAliveMons
+.InvertZero:
 	jr z, .Redundant
-	jr .NotRedundant
+.NotRedundant:
+	xor a
+	ret
 
 .Heal:
 .HealingLight:
@@ -185,11 +188,7 @@ AI_Redundant: ; 2c41a
 	jr nc, .NotRedundant
 
 .Teleport:
-.Redundant: ; 2c541
+.Redundant:
 	ld a, 1
 	and a
-	ret
-
-.NotRedundant: ; 2c545
-	xor a
 	ret
