@@ -60,8 +60,12 @@ TrainerEncounterMusic: ; e9027
 	db MUSIC_SAGE_ENCOUNTER			; hex_maniac
 	db MUSIC_SAGE_ENCOUNTER			; sage
 	db MUSIC_SAGE_ENCOUNTER			; medium
-	db MUSIC_KIMONO_ENCOUNTER		; kimono_girl
 	db MUSIC_SAGE_ENCOUNTER			; elder
+	db MUSIC_KIMONO_ENCOUNTER		; kimono_girl_1
+	db MUSIC_KIMONO_ENCOUNTER		; kimono_girl_2
+	db MUSIC_KIMONO_ENCOUNTER		; kimono_girl_3
+	db MUSIC_KIMONO_ENCOUNTER		; kimono_girl_4
+	db MUSIC_KIMONO_ENCOUNTER		; kimono_girl_5
 	db MUSIC_LASS_ENCOUNTER			; sr_and_jr
 	db MUSIC_HIKER_ENCOUNTER		; couple
 	db MUSIC_HIKER_ENCOUNTER		; gentleman

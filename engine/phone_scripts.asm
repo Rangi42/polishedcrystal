@@ -1010,7 +1010,7 @@ UnknownScript_0xbd612:
 	jump UnknownScript_0xbd630
 
 UnknownScript_0xbd618:
-	trainerclassname KIMONO_GIRL, $1
+	trainerclassname KIMONO_GIRL_1, $1
 	jump UnknownScript_0xbd630
 
 UnknownScript_0xbd61e:

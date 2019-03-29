@@ -59,7 +59,11 @@ TrainerClassNames::
 	db "Hex Maniac@"       ; HEX_MANIAC
 	db "Sage@"             ; SAGE
 	db "Medium@"           ; MEDIUM
-	db "Kimono Girl@"      ; KIMONO_GIRL
+	db "Kimono Girl@"      ; KIMONO_GIRL_1
+	db "Kimono Girl@"      ; KIMONO_GIRL_2
+	db "Kimono Girl@"      ; KIMONO_GIRL_3
+	db "Kimono Girl@"      ; KIMONO_GIRL_4
+	db "Kimono Girl@"      ; KIMONO_GIRL_5
 	db "Elder@"            ; ELDER
 	db "Sr.& Jr.@"         ; SR_AND_JR
 	db "Couple@"           ; COUPLE

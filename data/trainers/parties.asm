@@ -6685,11 +6685,11 @@ MediumGroup:
 ; ================================
 
 
-KimonoGirlGroup:
+KimonoGirl1Group:
 ; ================================
 ; ================
 
-	; KIMONO_GIRL
+	; KIMONO_GIRL_1
 	db "Naoko@"
 	db TRAINERTYPE_ITEM
 	; party
@@ -6697,8 +6697,14 @@ KimonoGirlGroup:
 	db -1 ; end
 
 ; ================
+; ================================
 
-	; KIMONO_GIRL
+
+KimonoGirl2Group:
+; ================================
+; ================
+
+	; KIMONO_GIRL_2
 	db "Sayo@"
 	db TRAINERTYPE_ITEM
 	; party
@@ -6706,8 +6712,14 @@ KimonoGirlGroup:
 	db -1 ; end
 
 ; ================
+; ================================
 
-	; KIMONO_GIRL
+
+KimonoGirl3Group:
+; ================================
+; ================
+
+	; KIMONO_GIRL_3
 	db "Zuki@"
 	db TRAINERTYPE_ITEM
 	; party
@@ -6715,8 +6727,14 @@ KimonoGirlGroup:
 	db -1 ; end
 
 ; ================
+; ================================
 
-	; KIMONO_GIRL
+
+KimonoGirl4Group:
+; ================================
+; ================
+
+	; KIMONO_GIRL_4
 	db "Kuni@"
 	db TRAINERTYPE_ITEM
 	; party
@@ -6724,8 +6742,14 @@ KimonoGirlGroup:
 	db -1 ; end
 
 ; ================
+; ================================
 
-	; KIMONO_GIRL
+
+KimonoGirl5Group:
+; ================================
+; ================
+
+	; KIMONO_GIRL_5
 	db "Miki@"
 	db TRAINERTYPE_ITEM
 	; party

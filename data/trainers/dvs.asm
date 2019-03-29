@@ -90,7 +90,11 @@ TrainerClassDVsAndPersonality: ; 270d6
 	db  48, $AA, $CC, $EE, ABILITY_1 | QUIRKY, FEMALE ; hex maniac
 	db  48, $CC, $CC, $CC, ABILITY_1 | QUIRKY, MALE   ; sage
 	db  48, $CC, $CC, $CC, ABILITY_1 | QUIRKY, FEMALE ; medium
-	db  56, $DD, $DD, $DD, ABILITY_1 | QUIRKY, FEMALE ; kimono girl
+	db  56, $DD, $DD, $DD, ABILITY_1 | QUIRKY, FEMALE ; kimono girl 1
+	db  56, $DD, $DD, $DD, ABILITY_1 | QUIRKY, FEMALE ; kimono girl 2
+	db  56, $DD, $DD, $DD, ABILITY_1 | QUIRKY, FEMALE ; kimono girl 3
+	db  56, $DD, $DD, $DD, ABILITY_1 | QUIRKY, FEMALE ; kimono girl 4
+	db  56, $DD, $DD, $DD, ABILITY_1 | QUIRKY, FEMALE ; kimono girl 5
 	db  56, $DD, $DD, $DD, ABILITY_1 | QUIRKY, MALE   ; elder
 	db  48, $CC, $CC, $CC, ABILITY_1 | QUIRKY, FEMALE ; sr&jr
 	db  48, $CC, $CC, $CC, ABILITY_1 | QUIRKY, MALE   ; couple

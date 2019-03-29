@@ -874,7 +874,11 @@ PsychicTPic:              INCBIN "gfx/trainers/psychic_t.2bpp.lz"
 HexManiacPic:             INCBIN "gfx/trainers/hex_maniac.2bpp.lz"
 SagePic:                  INCBIN "gfx/trainers/sage.2bpp.lz"
 MediumPic:                INCBIN "gfx/trainers/medium.2bpp.lz"
-KimonoGirlPic:            INCBIN "gfx/trainers/kimono_girl.2bpp.lz"
+KimonoGirl1Pic:
+KimonoGirl2Pic:
+KimonoGirl3Pic:
+KimonoGirl4Pic:
+KimonoGirl5Pic:           INCBIN "gfx/trainers/kimono_girl.2bpp.lz"
 ElderPic:                 INCBIN "gfx/trainers/elder.2bpp.lz"
 SrAndJrPic:               INCBIN "gfx/trainers/sr_and_jr.2bpp.lz"
 CouplePic:                INCBIN "gfx/trainers/couple.2bpp.lz"

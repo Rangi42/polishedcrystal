@@ -64,7 +64,7 @@ BattleTowerTrainers:
 	db "J", "a", "m", "e", "s", "@", "@", "@", "@", "@", BOARDER
 	db "K", "u", "b", "r", "i", "c", "k", "@", "@", "@", HEX_MANIAC
 	db "A", "l", "i", "s", "h", "a", "@", "@", "@", "@", LASS
-	db "S", "u", "n", "n", "i", "@", "@", "@", "@", "@", KIMONO_GIRL
+	db "S", "u", "n", "n", "i", "@", "@", "@", "@", "@", KIMONO_GIRL_1
 	db "A", "n", "d", "r", "e", "@", "@", "@", "@", "@", ROUGHNECK
 	db "H", "i", "l", "l", "@", "@", "@", "@", "@", "@", COOLTRAINERM
 	db "T", "a", "r", "a", "@", "@", "@", "@", "@", "@", SWIMMERF
@@ -80,7 +80,7 @@ BattleTowerTrainers:
 	db "V", "a", "l", "e", "n", "t", "i", "n", "e", "@", BEAUTY
 	db "U", "r", "i", "@", "@", "@", "@", "@", "@", "@", PSYCHIC_T
 	db "W", "o", "n", "g", "@", "@", "@", "@", "@", "@", FIREBREATHER
-	db "C", "h", "i", "y", "o", "@", "@", "@", "@", "@", KIMONO_GIRL
+	db "C", "h", "i", "y", "o", "@", "@", "@", "@", "@", KIMONO_GIRL_1
 	db "S", "i", "d", "n", "e", "y", "@", "@", "@", "@", BIKER
 	db "N", "e", "r", "a", "i", "@", "@", "@", "@", "@", HIKER
 	db "G", "w", "e", "n", "@", "@", "@", "@", "@", "@", LADY

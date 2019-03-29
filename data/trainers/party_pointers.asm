@@ -61,7 +61,11 @@ TrainerGroups: ; 0x39999
 	dba HexManiacGroup
 	dba SageGroup
 	dba MediumGroup
-	dba KimonoGirlGroup
+	dba KimonoGirl1Group
+	dba KimonoGirl2Group
+	dba KimonoGirl3Group
+	dba KimonoGirl4Group
+	dba KimonoGirl5Group
 	dba ElderGroup
 	dba SrAndJrGroup
 	dba CoupleGroup
