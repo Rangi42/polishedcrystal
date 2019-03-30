@@ -24,7 +24,7 @@ CopycatsHouse2F_MapScriptHeader:
 	const COPYCATSHOUSE2F_COPYCAT2
 
 CopycatsHouse2FCallback:
-	variablesprite SPRITE_COPYCAT, SPRITE_LASS
+	variablesprite SPRITE_COPYCAT, SPRITE_CUTE_GIRL
 	checkflag ENGINE_PLAYER_IS_FEMALE
 	iftrue .Part1
 	disappear COPYCATSHOUSE2F_COPYCAT2
@@ -196,7 +196,7 @@ CopycatRetortScript:
 	faceplayer
 	writebyte (PAL_NPC_PURPLE) << 4
 	special Special_SetCopycatPalette
-	variablesprite SPRITE_COPYCAT, SPRITE_LASS
+	variablesprite SPRITE_COPYCAT, SPRITE_CUTE_GIRL
 	special MapCallbackSprites_LoadUsedSpritesGFX
 	thistext
 
@@ -211,7 +211,7 @@ CopycatWorriedScript:
 	faceplayer
 	writebyte (PAL_NPC_PURPLE) << 4
 	special Special_SetCopycatPalette
-	variablesprite SPRITE_COPYCAT, SPRITE_LASS
+	variablesprite SPRITE_COPYCAT, SPRITE_CUTE_GIRL
 	special MapCallbackSprites_LoadUsedSpritesGFX
 	setevent EVENT_MET_COPYCAT_FOUND_OUT_ABOUT_LOST_ITEM
 	thistext
@@ -280,7 +280,7 @@ CopycatFinalScript:
 	faceplayer
 	writebyte (PAL_NPC_PURPLE) << 4
 	special Special_SetCopycatPalette
-	variablesprite SPRITE_COPYCAT, SPRITE_LASS
+	variablesprite SPRITE_COPYCAT, SPRITE_CUTE_GIRL
 	special MapCallbackSprites_LoadUsedSpritesGFX
 	thistext
 

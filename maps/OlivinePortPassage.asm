@@ -15,7 +15,7 @@ OlivinePortPassage_MapScriptHeader:
 	db 0 ; bg events
 
 	db 1 ; object events
-	object_event  5, 23, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x76faf, EVENT_OLIVINE_PORT_PASSAGE_POKEFAN_M
+	object_event  5, 23, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x76faf, EVENT_OLIVINE_PORT_PASSAGE_POKEFAN_M
 
 UnknownText_0x76faf:
 	text "Fast Ship S.S.Aqua"

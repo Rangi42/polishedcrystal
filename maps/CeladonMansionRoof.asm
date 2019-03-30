@@ -14,7 +14,7 @@ CeladonMansionRoof_MapScriptHeader:
 	bg_event  6,  1, SIGNPOST_LEFT, MapCeladonMansionRoofSignpost0Script
 
 	db 1 ; object events
-	object_event  7,  5, SPRITE_FISHER, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x71a3f, -1
+	object_event  7,  5, SPRITE_FAT_GUY, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x71a3f, -1
 
 MapCeladonMansionRoofSignpost0Script:
 	jumptext UnknownText_0x71aa1

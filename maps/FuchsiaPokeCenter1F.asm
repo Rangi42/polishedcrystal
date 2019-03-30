@@ -48,7 +48,7 @@ JanineImpersonatorScript:
 	showtext .Text2
 	applymovement FUCHSIAPOKECENTER1F_JANINE_IMPERSONATOR, .SpinMovement
 	faceplayer
-	variablesprite SPRITE_COPYCAT, SPRITE_LASS
+	variablesprite SPRITE_COPYCAT, SPRITE_CUTE_GIRL
 	special MapCallbackSprites_LoadUsedSpritesGFX
 	end
 

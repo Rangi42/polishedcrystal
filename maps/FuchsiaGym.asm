@@ -42,10 +42,10 @@ JanineScript_0x195db9:
 	setevent EVENT_BEAT_LASS_LINDA
 	setevent EVENT_BEAT_PICNICKER_CINDY
 	setevent EVENT_BEAT_CAMPER_BARRY
-	variablesprite SPRITE_FUCHSIA_GYM_1, SPRITE_LASS
-	variablesprite SPRITE_FUCHSIA_GYM_2, SPRITE_LASS
-	variablesprite SPRITE_FUCHSIA_GYM_3, SPRITE_LASS
-	variablesprite SPRITE_FUCHSIA_GYM_4, SPRITE_YOUNGSTER
+	variablesprite SPRITE_FUCHSIA_GYM_1, SPRITE_CUTE_GIRL
+	variablesprite SPRITE_FUCHSIA_GYM_2, SPRITE_CUTE_GIRL
+	variablesprite SPRITE_FUCHSIA_GYM_3, SPRITE_CUTE_GIRL
+	variablesprite SPRITE_FUCHSIA_GYM_4, SPRITE_SCHOOLBOY
 	special MapCallbackSprites_LoadUsedSpritesGFX
 	opentext
 	writetext UnknownText_0x195feb
@@ -93,7 +93,7 @@ FuchsiaGym1Script_0x195e1b:
 	iftrue UnknownScript_0x195e2c
 	applymovement FUCHSIAGYM_FUCHSIA_GYM_1, MovementData_0x195f27
 	faceplayer
-	variablesprite SPRITE_FUCHSIA_GYM_1, SPRITE_LASS
+	variablesprite SPRITE_FUCHSIA_GYM_1, SPRITE_CUTE_GIRL
 	special MapCallbackSprites_LoadUsedSpritesGFX
 UnknownScript_0x195e2c:
 	checkevent EVENT_BEAT_LASS_AMANDA
@@ -118,7 +118,7 @@ FuchsiaGym2Script_0x195e55:
 	iftrue UnknownScript_0x195e66
 	applymovement FUCHSIAGYM_FUCHSIA_GYM_2, MovementData_0x195f27
 	faceplayer
-	variablesprite SPRITE_FUCHSIA_GYM_2, SPRITE_LASS
+	variablesprite SPRITE_FUCHSIA_GYM_2, SPRITE_CUTE_GIRL
 	special MapCallbackSprites_LoadUsedSpritesGFX
 UnknownScript_0x195e66:
 	checkevent EVENT_BEAT_LASS_LINDA
@@ -143,7 +143,7 @@ FuchsiaGym3Script_0x195e8f:
 	iftrue UnknownScript_0x195ea0
 	applymovement FUCHSIAGYM_FUCHSIA_GYM_3, MovementData_0x195f27
 	faceplayer
-	variablesprite SPRITE_FUCHSIA_GYM_3, SPRITE_LASS
+	variablesprite SPRITE_FUCHSIA_GYM_3, SPRITE_CUTE_GIRL
 	special MapCallbackSprites_LoadUsedSpritesGFX
 UnknownScript_0x195ea0:
 	checkevent EVENT_BEAT_PICNICKER_CINDY
@@ -168,7 +168,7 @@ FuchsiaGym4Script_0x195ec9:
 	iftrue UnknownScript_0x195eda
 	applymovement FUCHSIAGYM_FUCHSIA_GYM_4, MovementData_0x195f27
 	faceplayer
-	variablesprite SPRITE_FUCHSIA_GYM_4, SPRITE_YOUNGSTER
+	variablesprite SPRITE_FUCHSIA_GYM_4, SPRITE_SCHOOLBOY
 	special MapCallbackSprites_LoadUsedSpritesGFX
 UnknownScript_0x195eda:
 	checkevent EVENT_BEAT_CAMPER_BARRY

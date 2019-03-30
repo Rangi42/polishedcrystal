@@ -18,7 +18,7 @@ VermilionPort_MapScriptHeader:
 	db 3 ; object events
 	object_event  7, 17, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SailorScript_0x74dc4, EVENT_VERMILION_PORT_SAILOR_AT_GANGWAY
 	object_event  6, 11, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SailorScript_0x74e97, -1
-	object_event 11, 11, SPRITE_SUPER_NERD, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SuperNerdScript_0x74ee6, -1
+	object_event 11, 11, SPRITE_POKEMANIAC, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x750a6, -1
 
 	const_def 1 ; object constants
 	const VERMILIONPORT_SAILOR1
@@ -175,10 +175,6 @@ UnknownScript_0x74eda:
 
 UnknownScript_0x74ee0:
 	jumpopenedtext UnknownText_0x75080
-
-SuperNerdScript_0x74ee6:
-	faceplayer
-	jumptext UnknownText_0x750a6
 
 MovementData_0x74ef5:
 	step_right

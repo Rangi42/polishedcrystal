@@ -12,7 +12,7 @@ CeladonHotelRoom2_MapScriptHeader:
 	db 0 ; bg events
 
 	db 1 ; object events
-	object_event  3,  2, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_SCRIPT, 0, CeladonHotelRoom2SuperNerdScript, -1
+	object_event  3,  2, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CeladonHotelRoom2SuperNerdScript, -1
 
 CeladonHotelRoom2SuperNerdScript:
 	faceplayer
