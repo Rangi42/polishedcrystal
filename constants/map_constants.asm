@@ -356,7 +356,7 @@ MAP_NONE   EQU 0
 	map_const KOGAS_ROOM,                                  5,  9 ;  5
 	map_const BRUNOS_ROOM,                                 5,  9 ;  6
 	map_const KARENS_ROOM,                                 5,  9 ;  7
-	map_const LANCES_ROOM,                                 5, 12 ;  8
+	map_const LANCES_ROOM,                                 7, 12 ;  8
 	map_const HALL_OF_FAME,                                5,  7 ;  9
 	map_const BELLCHIME_TRAIL,                            12,  7 ; 10
 
