@@ -752,6 +752,8 @@ TryEnemyFlee: ; 3c543
 	jr z, .skip_traps
 
 	call SetEnemyTurn
+	call CheckIfUserIsGhostType
+	jr z, .skip_traps
 	farcall CheckIfTrappedByAbility
 	jr z, .Stay
 
@@ -5386,6 +5388,8 @@ TryPlayerSwitch: ; 3e358
 	ld a, b
 	cp HELD_SHED_SHELL
 	jr z, .try_switch
+	call CheckIfUserIsGhostType
+	jr z, .try_switch
 	farcall CheckIfTrappedByAbility
 	jr nz, .check_other_trapped
 	ld a, BATTLE_VARS_ABILITY_OPP
@@ -5622,6 +5626,9 @@ CheckRunSpeed:
 	jp .can_escape
 
 .no_flee_item
+	call CheckIfUserIsGhostType
+	jp z, .can_escape
+
 	ld a, [wEnemySubStatus2]
 	bit SUBSTATUS_CANT_RUN, a
 	jp nz, .cant_escape

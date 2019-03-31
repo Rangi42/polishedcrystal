@@ -20,13 +20,19 @@ AI_SwitchOrTryItem: ; 38000
 	; check if we're trapped by an ability
 	ld a, [hBattleTurn]
 	push af
-	ld a, 1
-	ld [hBattleTurn], a
+	call SetEnemyTurn
 	farcall CheckIfTrappedByAbility
 	pop bc
 	ld a, b
 	ld [hBattleTurn], a
 	jr z, DontSwitch
+	call SetEnemyTurn
+	push bc
+	call CheckIfUserIsGhostType
+	pop bc
+	ld a, b
+	ld [hBattleTurn], a
+	jr z, .can_switch
 
 	ld a, [wPlayerSubStatus2]
 	bit SUBSTATUS_CANT_RUN, a
