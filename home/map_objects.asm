@@ -23,12 +23,18 @@ GetSpriteVTile:: ; 180e
 	farcall GetSprite
 	ld hl, wSpriteFlags
 	res 5, [hl]
-	; SPRITE_BIG_GYARADOS uses the last object_struct
+	; SPRITE_BIG_GYARADOS and SPRITE_SAILBOAT use the last object_struct
+	; (SPRITE_BIG_GYARADOS has more than 12 tiles, and SPRITE_SAILBOAT
+	; needs to be in VRAM1)
 	ld a, [hUsedSpriteIndex]
 	cp SPRITE_BIG_GYARADOS
-	ld a, NUM_OBJECT_STRUCTS - 1
-	jr z, .got_sprite_tile
+	jr z, .use_last_struct
+	cp SPRITE_SAILBOAT
+	jr z, .use_last_struct
 	ld a, [hObjectStructIndexBuffer]
+	jr .got_sprite_tile
+.use_last_struct
+	ld a, NUM_OBJECT_STRUCTS - 1
 .got_sprite_tile
 	cp FIRST_VRAM1_OBJECT_STRUCT
 	jr c, .continue

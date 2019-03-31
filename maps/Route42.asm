@@ -29,10 +29,10 @@ Route42_MapScriptHeader:
 	object_event 26, 16, SPRITE_SUICUNE, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_SAW_SUICUNE_ON_ROUTE_42
 	object_event 10,  5, SPRITE_LYRA, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LYRA_ROUTE_42
 	object_event 40, 10, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 1, TrainerFisherTully1, -1
-	object_event 51,  9, SPRITE_HIKER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerHikerBenjamin, -1
+	object_event 51,  9, SPRITE_HIKER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerHikerBenjamin, -1
+	object_event 47,  8, SPRITE_POKEMANIAC, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerPokemaniacShane, -1
 	object_event  2,  8, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, Route42OfficerText, EVENT_BEAT_JASMINE
 	object_event  2,  9, SPRITE_OFFICER_F, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, Route42OfficerText, EVENT_BEAT_JASMINE
-	object_event 21, 20, SPRITE_POKEMANIAC, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_PURPLE, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
 	cuttree_event 24, 13, EVENT_ROUTE_42_CUT_TREE
 	fruittree_event 27, 16, FRUITTREE_ROUTE_42_1, PNK_APRICORN
 	fruittree_event 28, 16, FRUITTREE_ROUTE_42_2, GRN_APRICORN
@@ -278,6 +278,20 @@ GenericTrainerHikerBenjamin:
 	line "sky!"
 	done
 
+GenericTrainerPokemaniacShane:
+	generictrainer POKEMANIAC, SHANE, EVENT_BEAT_POKEMANIAC_SHANE, PokemaniacShaneSeenText, PokemaniacShaneBeatenText
+
+	text "You're working on"
+	line "a #dex?"
+
+	para "Wow, you must know"
+	line "some pretty rare"
+	cont "#mon!"
+
+	para "May I please see"
+	line "it. Please?"
+	done
+
 MovementData_Route42LyraApproach4:
 	step_down
 MovementData_Route42LyraApproach3:
@@ -408,6 +422,19 @@ HikerBenjaminSeenText:
 
 HikerBenjaminBeatenText:
 	text "Gahahah!"
+	done
+
+PokemaniacShaneSeenText:
+	text "HEY!"
+
+	para "This is my secret"
+	line "place! Get lost,"
+	cont "you outsider!"
+	done
+
+PokemaniacShaneBeatenText:
+	text "I should have used"
+	line "my Moon Stone…"
 	done
 
 Route42OfficerText:

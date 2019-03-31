@@ -16,7 +16,7 @@ OlivineLighthouse1F_MapScriptHeader:
 
 	db 2 ; object events
 	object_event  8,  2, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SailorScript_0x5ae67, -1
-	object_event 16,  9, SPRITE_POKEFAN_F, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x5aec2, -1
+	object_event 16,  9, SPRITE_MATRON, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x5aec2, -1
 
 SailorScript_0x5ae67:
 	checkevent EVENT_GOT_FULL_RESTORE_FROM_LIGHTHOUSE

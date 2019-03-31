@@ -29,9 +29,11 @@ Function_LoadOpponentTrainer: ; 1f8000
 	ld a, [hRandomAdd]
 	add b
 	ld b, a ; b contains the nr of the trainer
-	and (1 << 7) - 1
+	and %01111111
+if BATTLETOWER_NUM_TRAINERS != 128
 	cp BATTLETOWER_NUM_TRAINERS
 	jr nc, .resample
+endc
 	ld b, a
 
 	ld a, BANK(sBTTrainers)

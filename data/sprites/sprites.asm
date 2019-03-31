@@ -120,15 +120,16 @@ SpriteHeaders:
 	overworld_sprite KimonoGirlSpriteGFX, WALKING_SPRITE, PAL_OW_RED
 	overworld_sprite LadySpriteGFX, WALKING_SPRITE, PAL_OW_RED
 	overworld_sprite LassSpriteGFX, WALKING_SPRITE, PAL_OW_BLUE
+	overworld_sprite MatronSpriteGFX, WALKING_SPRITE, PAL_OW_BROWN
 	overworld_sprite NurseSpriteGFX, WALKING_SPRITE, PAL_OW_RED
 	overworld_sprite OfficerSpriteGFX, WALKING_SPRITE, PAL_OW_BLUE
 	overworld_sprite OfficerFSpriteGFX, WALKING_SPRITE, PAL_OW_BLUE
 	overworld_sprite PharmacistSpriteGFX, WALKING_SPRITE, PAL_OW_BLUE
 	overworld_sprite PISpriteGFX, WALKING_SPRITE, PAL_OW_BROWN
 	overworld_sprite PicnickerSpriteGFX, WALKING_SPRITE, PAL_OW_GREEN
-	overworld_sprite PokefanFSpriteGFX, WALKING_SPRITE, PAL_OW_BROWN
-	overworld_sprite PokefanMSpriteGFX, WALKING_SPRITE, PAL_OW_BROWN
-	overworld_sprite PokemaniacSpriteGFX, WALKING_SPRITE, PAL_OW_BLUE
+	overworld_sprite PokefanMSpriteGFX, WALKING_SPRITE, PAL_OW_RED
+	overworld_sprite PokefanFSpriteGFX, WALKING_SPRITE, PAL_OW_PURPLE
+	overworld_sprite PokemaniacSpriteGFX, WALKING_SPRITE, PAL_OW_PURPLE
 	overworld_sprite PsychicSpriteGFX, WALKING_SPRITE, PAL_OW_PURPLE
 	overworld_sprite RichBoySpriteGFX, WALKING_SPRITE, PAL_OW_BLUE
 	overworld_sprite RockerSpriteGFX, WALKING_SPRITE, PAL_OW_RED
@@ -138,6 +139,7 @@ SpriteHeaders:
 	overworld_sprite SageSpriteGFX, WALKING_SPRITE, PAL_OW_BLUE
 	overworld_sprite SailorSpriteGFX, WALKING_SPRITE, PAL_OW_BLUE
 	overworld_sprite SchoolboySpriteGFX, WALKING_SPRITE, PAL_OW_BLUE
+	overworld_sprite SchoolgirlSpriteGFX, WALKING_SPRITE, PAL_OW_RED
 	overworld_sprite ScientistSpriteGFX, WALKING_SPRITE, PAL_OW_BLUE
 	overworld_sprite ScientistFSpriteGFX, WALKING_SPRITE, PAL_OW_BLUE
 	overworld_sprite SightseerMSpriteGFX, WALKING_SPRITE, PAL_OW_RED
@@ -146,7 +148,7 @@ SpriteHeaders:
 	overworld_sprite SwimmerGirlSpriteGFX, WALKING_SPRITE, PAL_OW_GREEN
 	overworld_sprite SwimmerGuySpriteGFX, WALKING_SPRITE, PAL_OW_RED
 	overworld_sprite TamerSpriteGFX, WALKING_SPRITE, PAL_OW_BROWN
-	overworld_sprite TeacherSpriteGFX, WALKING_SPRITE, PAL_OW_RED
+	overworld_sprite TeacherSpriteGFX, WALKING_SPRITE, PAL_OW_GREEN
 	overworld_sprite TwinSpriteGFX, WALKING_SPRITE, PAL_OW_RED
 	overworld_sprite VeteranMSpriteGFX, WALKING_SPRITE, PAL_OW_BROWN
 	overworld_sprite VeteranFSpriteGFX, WALKING_SPRITE, PAL_OW_BROWN
@@ -161,6 +163,7 @@ SpriteHeaders:
 	overworld_sprite GameboyKidSpriteGFX, STANDING_SPRITE, PAL_OW_GREEN
 	overworld_sprite GamerGirlSpriteGFX, STANDING_SPRITE, PAL_OW_BLUE
 	overworld_sprite SilphEmployeeSpriteGFX, STANDING_SPRITE, PAL_OW_BROWN
+	overworld_sprite SafariOfficerSpriteGFX, STANDING_SPRITE, PAL_OW_BROWN
 	overworld_sprite SwimmingOfficerSpriteGFX, STANDING_SPRITE, PAL_OW_BLUE
 	overworld_sprite SwimmingOfficerFSpriteGFX, STANDING_SPRITE, PAL_OW_BLUE
 	overworld_sprite ClefairyWalkSpriteGFX, WALKING_SPRITE, PAL_OW_RED
@@ -189,6 +192,5 @@ SpriteHeaders:
 	overworld_sprite GoldTrophySpriteGFX, STANDING_SPRITE, PAL_OW_BROWN
 	overworld_sprite ElectricFenceLeftSpriteGFX, STANDING_SPRITE, PAL_OW_TREE
 	overworld_sprite ElectricFenceRightSpriteGFX, STANDING_SPRITE, PAL_OW_TREE
-	overworld_sprite SailboatTopSpriteGFX, STANDING_SPRITE, PAL_OW_PURPLE
-	overworld_sprite SailboatBottomSpriteGFX, STANDING_SPRITE, PAL_OW_PURPLE
+	overworld_sprite SailboatSpriteGFX, STANDING_SPRITE, PAL_OW_PURPLE
 	overworld_sprite MiscOverheadSpriteGFX, STANDING_SPRITE, PAL_OW_ROCK

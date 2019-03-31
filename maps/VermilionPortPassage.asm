@@ -15,7 +15,7 @@ VermilionPortPassage_MapScriptHeader:
 	db 0 ; bg events
 
 	db 1 ; object events
-	object_event  5, 23, SPRITE_TEACHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x7701d, -1
+	object_event  5, 23, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x7701d, -1
 
 UnknownText_0x7701d:
 	text "The Fast Ship"

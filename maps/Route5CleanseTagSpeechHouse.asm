@@ -14,7 +14,7 @@ Route5CleanseTagSpeechHouse_MapScriptHeader:
 
 	db 2 ; object events
 	object_event  2,  5, SPRITE_GRANNY, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GrannyScript_0x18b634, -1
-	object_event  5,  3, SPRITE_TEACHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x18b6de, -1
+	object_event  5,  3, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x18b6de, -1
 
 GrannyScript_0x18b634:
 	faceplayer

@@ -16,7 +16,7 @@ CeruleanPokeCenter1F_MapScriptHeader:
 	db 3 ; object events
 	pc_nurse_event  5, 1
 	object_event  1,  5, SPRITE_GYM_GUY, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_GREEN, PERSONTYPE_SCRIPT, 0, CeruleanPokeCenter1FGymGuyScript, -1
-	object_event  8,  4, SPRITE_POKEMANIAC, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_PURPLE, PERSONTYPE_COMMAND, jumptextfaceplayer, CeruleanPokeCenter1FSuperNerdText, -1
+	object_event  8,  4, SPRITE_POKEMANIAC, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, CeruleanPokeCenter1FSuperNerdText, -1
 
 PokemonJournalMistyScript:
 	setflag ENGINE_READ_MISTY_JOURNAL

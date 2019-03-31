@@ -10,6 +10,7 @@ BattleTowerTrainers:
 	db "M", "u", "r", "r", "a", "y", "@", "@", "@", "@", SAILOR
 	db "S", "u", "h", "@", "@", "@", "@", "@", "@", "@", ELDER
 	db "S", "i", "e", "g", "f", "r", "i", "e", "d", "@", TAMER
+	db "S", "c", "i", "p", "i", "o", "@", "@", "@", "@", BURGLAR
 	db "W", "a", "l", "t", "e", "r", "@", "@", "@", "@", ELDER
 	db "E", "l", "e", "n", "i", "@", "@", "@", "@", "@", BATTLE_GIRL
 	db "I", "c", "h", "i", "g", "o", "@", "@", "@", "@", BAKER
@@ -21,6 +22,7 @@ BattleTowerTrainers:
 	db "W", "i", "l", "d", "e", "r", "@", "@", "@", "@", COWGIRL
 	db "D", "e", "n", "n", "e", "t", "t", "@", "@", "@", GENTLEMAN
 	db "V", "i", "@", "@", "@", "@", "@", "@", "@", "@", OFFICERF
+	db "H", "i", "r", "o", "t", "o", "@", "@", "@", "@", WAITER
 	db "S", "a", "t", "o", "s", "h", "i", "@", "@", "@", BUG_MANIAC
 	db "A", "d", "a", "m", "@", "@", "@", "@", "@", "@", YOUNGSTER
 	db "O", "a", "k", "l", "e", "y", "@", "@", "@", "@", COWGIRL
@@ -30,6 +32,7 @@ BattleTowerTrainers:
 	db "R", "a", "j", "a", "n", "@", "@", "@", "@", "@", PICNICKER
 	db "D", "i", "a", "z", "@", "@", "@", "@", "@", "@", PICNICKER
 	db "M", "o", "z", "i", "@", "@", "@", "@", "@", "@", SAGE
+	db "A", "d", "r", "i", "á", "n", "@", "@", "@", "@", WAITER
 	db "T", "o", "m", "o", "y", "o", "@", "@", "@", "@", COSPLAYER
 	db "E", "b", "o", "n", "y", "@", "@", "@", "@", "@", COOLTRAINERF
 	db "P", "i", "r", "s", "i", "g", "@", "@", "@", "@", SAGE
@@ -40,6 +43,7 @@ BattleTowerTrainers:
 	db "L", "e", "n", "i", "e", "@", "@", "@", "@", "@", SWIMMERF
 	db "F", "r", "o", "s", "t", "@", "@", "@", "@", "@", COOLTRAINERM
 	db "S", "o", "p", "h", "i", "a", "@", "@", "@", "@", AROMA_LADY
+	db "J", "o", "a", "n", "n", "a", "@", "@", "@", "@", WAITRESS
 	db "N", "e", "w", "t", "o", "n", "@", "@", "@", "@", SCIENTIST
 	db "C", "h", "e", "l", "s", "e", "a", "@", "@", "@", MEDIUM
 	db "K", "u", "r", "o", "k", "i", "@", "@", "@", "@", HEX_MANIAC
@@ -52,9 +56,11 @@ BattleTowerTrainers:
 	db "S", "w", "a", "r", "t", "z", "@", "@", "@", "@", VETERANM
 	db "C", "o", "b", "b", "@", "@", "@", "@", "@", "@", SCHOOLBOY
 	db "Y", "u", "f", "u", "n", "e", "@", "@", "@", "@", BLACKBELT_T
+	db "M", "ó", "n", "i", "c", "a", "@", "@", "@", "@", WAITRESS
 	db "D", "a", "n", "i", "e", "l", "@", "@", "@", "@", TAMER
 	db "T", "o", "s", "h", "i", "@", "@", "@", "@", "@", BLACKBELT_T
 	db "C", "h", "a", "r", "l", "i", "e", "@", "@", "@", JUGGLER
+	db "F", "a", "g", "i", "n", "@", "@", "@", "@", "@", BURGLAR
 	db "B", "u", "c", "k", "l", "e", "y", "@", "@", "@", RICH_BOY
 	db "M", "a", "t", "e", "o", "@", "@", "@", "@", "@", VETERANM
 	db "N", "e", "w", "a", "n", "d", "y", "k", "e", "@", OFFICERM
@@ -91,6 +97,7 @@ BattleTowerTrainers:
 	db "P", "o", "v", "@", "@", "@", "@", "@", "@", "@", BOARDER
 	db "C", "o", "l", "l", "i", "n", "s", "@", "@", "@", POKEFANM
 	db "D", "a", "r", "w", "i", "n", "@", "@", "@", "@", BUG_CATCHER
+	db "T", "a", "t", "i", "a", "n", "a", "@", "@", "@", NURSE
 	db "P", "i", "t", "t", "@", "@", "@", "@", "@", "@", RUIN_MANIAC
 	db "T", "a", "j", "i", "r", "i", "@", "@", "@", "@", BUG_CATCHER
 	db "H", "e", "i", "n", "l", "e", "n", "@", "@", "@", CAMPER
@@ -117,6 +124,7 @@ BattleTowerTrainers:
 	db "L", "a", "v", "i", "g", "n", "e", "@", "@", "@", SCHOOLGIRL
 	db "P", "a", "u", "l", "@", "@", "@", "@", "@", "@", GUITARISTM
 	db "H", "o", "l", "m", "e", "s", "@", "@", "@", "@", PI
+	db "C", "r", "a", "m", "e", "r", "@", "@", "@", "@", NURSE
 	db "M", "a", "k", "o", "@", "@", "@", "@", "@", "@", BREEDER
 	db "A", "r", "g", "o", "@", "@", "@", "@", "@", "@", BIRD_KEEPER
 ;BattleTowerTycoon:

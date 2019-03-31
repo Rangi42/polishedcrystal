@@ -14,7 +14,7 @@ SeagallopFerryShamoutiGate_MapScriptHeader:
 
 	db 2 ; object events
 	object_event  6,  4, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SeagallopFerryShamoutiGateSailorScript, EVENT_OLIVINE_PORT_SAILOR_AT_GANGWAY
-	object_event  4,  1, SPRITE_TWIN, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, SeagallopFerryShamoutiGateTwinText, -1
+	object_event  4,  1, SPRITE_SCHOOLGIRL, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, SeagallopFerryShamoutiGateTwinText, -1
 
 	const_def 1 ; object constants
 	const SEAGALLOPFERRYSHAMOUTIGATE_SAILOR

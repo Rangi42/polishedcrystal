@@ -27,7 +27,7 @@ LavenderTown_MapScriptHeader:
 	db 8 ; object events
 	object_event 14,  7, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LAVENDER_TOWN_FLEEING_YOUNGSTER
 	object_event 12,  9, SPRITE_HIKER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, LavenderTownPokefanMText, -1
-	object_event  2, 17, SPRITE_TEACHER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, LavenderTownTeacherText, -1
+	object_event  2, 17, SPRITE_POKEFAN_F, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, LavenderTownTeacherText, -1
 	object_event 14, 14, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, LavenderTownGrampsText, -1
 	object_event  6, 13, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, LavenderTownYoungsterText, -1
 	object_event  8, 18, SPRITE_POKEMANIAC, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, LavenderTownSuperNerdText, EVENT_LAVENDER_TOWN_FLEEING_YOUNGSTER ; TODO: EVENT_EXORCISED_LAV_RADIO_TOWER
