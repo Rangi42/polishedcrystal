@@ -6793,12 +6793,11 @@ FlinchTarget: ; 36ab5
 CheckOpponentWentFirst:
 ; Returns a=0, z if user went first
 ; Returns a=1, nz if opponent went first
-	push bc
-	ld a, [wEnemyGoesFirst] ; 0 if player went first
-	ld b, a
-	ld a, [hBattleTurn] ; 0 if it's the player's turn
-	xor b ; 1 if opponent went first
-	pop bc
+	push hl
+	ld hl, wEnemyGoesFirst
+	ld a, [hBattleTurn]
+	xor [hl]
+	pop hl
 	ret
 
 BattleCommand_checkcharge: ; 36b3a
