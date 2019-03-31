@@ -4157,6 +4157,13 @@ HandleAirBalloon:
 	xor a
 	ret
 
+PursuitSwitchIfFirstAndAlive:
+	; Avoids double-usage of Pursuit when Pursuit user goes first
+	; Performed from Pursuit user's POV
+	call CheckOpponentWentFirst
+	jp z, PursuitSwitch_done
+	call HasUserFainted
+	jp z, PursuitSwitch_done
 PursuitSwitch: ; 3dc5b
 	ld a, BATTLE_VARS_MOVE
 	call GetBattleVar

@@ -8792,6 +8792,22 @@ DoCheckAnyOtherAliveMons:
 	jr nz, .loop
 	ret
 
+PursuitSwitchDuringMove:
+; Returns z if Pursuit caused us to faint
+	ld a, [hBattleTurn]
+	push af
+	call SwitchTurn
+	ld a, [wCurBattleMon]
+	ld [wLastPlayerMon], a
+	farcall PursuitSwitchIfFirstAndAlive
+.pursuit_done
+	pop af
+	ld [hBattleTurn], a
+
+	; if Pursuit fainted, abort the switch-out
+	call HasUserFainted
+	ret
+
 BattleCommand_switchout:
 	call CheckAnyOtherAliveMons
 	ret z
@@ -8804,6 +8820,8 @@ ContinueToSwitchOut:
 	ld hl, BattleText_WentBackToEnemy
 .got_text
 	call StdBattleTextBox
+	call PursuitSwitchDuringMove
+	ret z
 	farcall SlideUserPicOut
 	ld c, 20
 	call DelayFrames
@@ -8844,6 +8862,9 @@ ContinueToSwitchOut:
 BattleCommand_batonpass:
 	call CheckAnyOtherAliveMons
 	jp z, FailedBatonPass
+
+	call PursuitSwitchDuringMove
+	ret z
 
 	ld a, [hBattleTurn]
 	and a
