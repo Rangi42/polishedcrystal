@@ -636,7 +636,10 @@ wLastPlayerMon:: ds 1
 wLastPlayerMove:: ds 1
 wLastEnemyMove:: ds 1
 
-	ds 9
+wEnemyUsingItem:: ds 1
+wEnemySwitchItemCheck:: ds 1
+
+	ds 7
 
 wPlayerFutureSightCount:: ds 1
 wEnemyFutureSightCount:: ds 1

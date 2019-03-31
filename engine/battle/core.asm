@@ -173,6 +173,8 @@ BattleTurn: ; 3c12f
 	xor a
 	ld [wPlayerIsSwitching], a
 	ld [wEnemyIsSwitching], a
+	ld [wEnemyUsingItem], a
+	ld [wEnemySwitchItemCheck], a
 	ld [wBattleHasJustStarted], a
 	ld [wCurDamage], a
 	ld [wCurDamage + 1], a
@@ -5438,19 +5440,7 @@ PlayerSwitch: ; 3e3ad
 	call LoadStandardMenuDataHeader
 	call LinkBattleSendReceiveAction
 	call CloseWindow
-
-.not_linked
 	call ParseEnemyAction
-	ld a, [wLinkMode]
-	and a
-	jr nz, .linked
-
-.switch
-	call BattleMonEntrance
-	and a
-	ret
-
-.linked
 	ld a, [wBattleAction]
 	cp BATTLEACTION_STRUGGLE
 	jp z, .switch
@@ -5459,6 +5449,23 @@ PlayerSwitch: ; 3e3ad
 	cp BATTLEACTION_FORFEIT
 	jr nz, .dont_run
 	jp WildFled_EnemyFled_LinkBattleCanceled
+
+.not_linked
+	; Clear last enemy action to avoid Pursuit oddities
+	call SetEnemyTurn
+	ld a, BATTLE_VARS_MOVE
+	call GetBattleVarAddr
+	xor a
+	ld [hl], a
+
+	; Let AI choose to switch or try item *before* the player switches out
+	farcall AI_SwitchOrTryItem
+	call nc, ParseEnemyAction
+
+.switch
+	call BattleMonEntrance
+	and a
+	ret
 
 .dont_run
 	ld a, [hSerialConnectionStatus]
@@ -6398,6 +6405,9 @@ CheckUsableMove:
 
 ParseEnemyAction: ; 3e7c1
 	ld a, [wEnemyIsSwitching]
+	and a
+	ret nz
+	ld a, [wEnemyUsingItem]
 	and a
 	ret nz
 	ld a, [wLinkMode]

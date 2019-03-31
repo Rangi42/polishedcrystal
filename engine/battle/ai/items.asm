@@ -12,6 +12,13 @@ AI_SwitchOrTryItem: ; 38000
 	farcall CheckEnemyLockedIn
 	ret nz
 
+	; Avoid performing this check twice in a single turn
+	ld hl, wEnemySwitchItemCheck
+	ld a, [hl]
+	ld [hl], 1
+	and a
+	ret nz
+
 	farcall GetEnemyItem
 	ld a, b
 	cp HELD_SHED_SHELL
@@ -249,6 +256,9 @@ AI_TryItem: ; 38105
 
 	xor a
 	ld [wLastPlayerCounterMove], a
+
+	ld a, 1
+	ld [wEnemyUsingItem], a
 
 	scf
 	ret
