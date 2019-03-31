@@ -1710,6 +1710,9 @@ BattleCommand_checkhit:
 	ld a, ATKFAIL_GENERIC
 	jp nz, .Miss_skipset
 
+	call .PursuitCheck
+	ret z
+
 	call .PoisonTypeUsingToxic
 	ret z
 
@@ -1955,6 +1958,27 @@ BattleCommand_checkhit:
 	cp TOXIC
 	ret
 
+.PursuitCheck:
+; Pursuit used when a foe is switching always hits
+	ld a, BATTLE_VARS_MOVE_EFFECT
+	call GetBattleVar
+	cp EFFECT_PURSUIT
+	ret nz
+
+	ld a, [hBattleTurn]
+	and a
+	ld hl, wEnemyIsSwitching
+	jr z, .ok
+	ld hl, wPlayerIsSwitching
+.ok
+	ld a, [hl]
+	and a
+	jr nz, .pursuit_hits
+	or 1
+	ret
+.pursuit_hits
+	xor a
+	ret
 
 .FlyDigMoves:
 ; Check for moves that can hit underground/flying opponents.
