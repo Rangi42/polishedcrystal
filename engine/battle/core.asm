@@ -5490,12 +5490,55 @@ PlayerSwitch: ; 3e3ad
 	ret
 ; 3e3ff
 
-EnemyMonEntrance: ; 3e3ff
-	farcall AI_Switch
+EnemyMonEntrance:
+	ld a, $1
+	ld [wEnemyIsSwitching], a
+	ld [wEnemyGoesFirst], a
+	ld hl, wEnemySubStatus4
+	res SUBSTATUS_RAGE, [hl]
+	xor a
+	ld [hBattleTurn], a
+	call PursuitSwitch
+
+	push af
+	ld a, [wCurOTMon]
+	ld hl, wOTPartyMon1Status
+	ld bc, PARTYMON_STRUCT_LENGTH
+	rst AddNTimes
+	ld d, h
+	ld e, l
+	ld hl, wEnemyMonStatus
+	ld bc, MON_MAXHP - MON_STATUS
+	rst CopyBytes
+	pop af
+
+	jr c, .skiptext
+	ld hl, TextJump_EnemyWithdrew
+	call PrintText
+
+.skiptext
+	; Actively switched -- don't prompt the user about the switch
+	ld a, 1
+	ld [wBattleHasJustStarted], a
+	call NewEnemyMonStatus
+	call ResetEnemyStatLevels
+	call BreakAttraction
+	call EnemySwitch
+	call ResetBattleParticipants
 	call SetEnemyTurn
 	call SpikesDamage
-	jp RunActivationAbilities
-; 3e40b
+	call RunActivationAbilities
+	xor a
+	ld [wBattleHasJustStarted], a
+	ld a, [wLinkMode]
+	and a
+	ret nz
+	scf
+	ret
+
+TextJump_EnemyWithdrew:
+	text_jump Text_EnemyWithdrew
+	db "@"
 
 BattleMonEntrance: ; 3e40b
 	call WithdrawPkmnText
