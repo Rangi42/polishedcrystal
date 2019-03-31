@@ -125,6 +125,7 @@ TrainerClassDVsAndPersonality: ; 270d6
 	db  72, $DD, $DD, $DD, ABILITY_1 | QUIRKY, MALE   ; tamer
 	db  72, $DD, $DD, $DD, ABILITY_1 | QUIRKY, FEMALE ; artist
 	db  72, $DD, $DD, $DD, ABILITY_1 | QUIRKY, FEMALE ; aroma lady
+	db  72, $DD, $DD, $DD, ABILITY_1 | QUIRKY, MALE   ; waiter
 	db  72, $DD, $DD, $DD, ABILITY_1 | QUIRKY, FEMALE ; waitress
 	db  72, $DD, $DD, $DD, ABILITY_1 | QUIRKY, MALE   ; sightseerm
 	db  72, $DD, $DD, $DD, ABILITY_1 | QUIRKY, FEMALE ; sightseerf

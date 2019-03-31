@@ -96,6 +96,7 @@ TrainerGroups: ; 0x39999
 	dba TamerGroup
 	dba ArtistGroup
 	dba AromaLadyGroup
+	dba WaiterGroup
 	dba WaitressGroup
 	dba SightseerMGroup
 	dba SightseerFGroup
