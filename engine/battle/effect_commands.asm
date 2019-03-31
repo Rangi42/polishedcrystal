@@ -3124,6 +3124,8 @@ BattleCommand_posthiteffects:
 	ret z
 	call CheckSheerForceNegation
 	ret nz
+	farcall CheckFullHP
+	ret z
 
 	ld a, [wCurDamage]
 	ld b, a
