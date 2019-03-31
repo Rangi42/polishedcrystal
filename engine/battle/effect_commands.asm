@@ -6573,6 +6573,7 @@ BattleCommand_forceswitch: ; 3680f
 	call AnimateCurrentMove
 	ld c, $14
 	call DelayFrames
+	farcall RunSwitchAbilities
 	ld a, [hBattleTurn]
 	and a
 	jr nz, .enemy_trainer
@@ -6631,7 +6632,7 @@ BattleCommand_forceswitch: ; 3680f
 
 .enemy_trainer2
 	ld [wCurPartyMon], a
-	farcall SwitchPlayerMon
+	farcall ForcePlayerSwitch
 
 .done_forceswitch
 	ld hl, DraggedOutText

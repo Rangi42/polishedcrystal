@@ -3831,7 +3831,7 @@ endc
 ; 3db32
 
 
-SwitchPlayerMon: ; 3db32
+ForcePlayerSwitch: ; 3db32
 	call ClearSprites
 	ld a, [wCurBattleMon]
 	ld [wLastPlayerMon], a
