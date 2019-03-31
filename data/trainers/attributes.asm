@@ -570,6 +570,12 @@ TrainerClassAttributes: ; 3959c
 	dw AI_BASIC + AI_OPPORTUNIST + AI_CAUTIOUS + AI_STATUS
 	dw CONTEXT_USE + SWITCH_RARELY
 
+; Waiter
+	db 0, 0 ; items
+	db 12 ; base reward
+	dw AI_BASIC + AI_OPPORTUNIST + AI_CAUTIOUS + AI_STATUS
+	dw CONTEXT_USE + SWITCH_RARELY
+
 ; Waitress
 	db 0, 0 ; items
 	db 12 ; base reward

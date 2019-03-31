@@ -94,6 +94,7 @@ TrainerPicPointers::
 	dba TamerPic
 	dba ArtistPic
 	dba AromaLadyPic
+	dba WaiterPic
 	dba WaitressPic
 	dba SightseermPic
 	dba SightseerfPic

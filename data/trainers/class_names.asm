@@ -94,6 +94,7 @@ TrainerClassNames::
 	db "Tamer@"            ; TAMER
 	db "Artist@"           ; ARTIST
 	db "Aroma Lady@"       ; AROMA_LADY
+	db "Waiter@"           ; WAITER
 	db "Waitress@"         ; WAITRESS
 	db "Sightseer@"        ; SIGHTSEERM
 	db "Sightseer@"        ; SIGHTSEERF
