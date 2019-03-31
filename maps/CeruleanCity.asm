@@ -26,7 +26,7 @@ CeruleanCity_MapScriptHeader:
 	bg_event 25, 13, SIGNPOST_JUMPTEXT, CeruleanPoliceSignText
 	bg_event 23,  4, SIGNPOST_JUMPTEXT, CeruleanCapeSignText
 	bg_event 11, 19, SIGNPOST_JUMPTEXT, CeruleanBubblerText
-	bg_event 17, 27, SIGNPOST_JUMPTEXT, CeruleanTrainerTipsText
+	bg_event 21, 27, SIGNPOST_JUMPTEXT, CeruleanTrainerTipsText
 	bg_event  4, 13, SIGNPOST_ITEM + BERSERK_GENE, EVENT_FOUND_BERSERK_GENE_IN_CERULEAN_CITY
 
 	db 8 ; object events
