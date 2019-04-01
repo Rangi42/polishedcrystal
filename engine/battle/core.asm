@@ -5683,7 +5683,13 @@ CheckRunSpeed:
 	jp .can_escape
 
 .no_flee_item
+	push hl
+	push de
+	push bc
 	call CheckIfUserIsGhostType
+	pop bc
+	pop de
+	pop hl
 	jp z, .can_escape
 
 	ld a, [wEnemySubStatus2]
