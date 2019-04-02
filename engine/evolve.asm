@@ -350,7 +350,6 @@ endr
 	call LearnLevelMoves
 	pop af
 	ld [wd265], a
-	ld a, [wd265]
 	dec a
 	call SetSeenAndCaughtMon
 
