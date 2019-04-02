@@ -5462,9 +5462,13 @@ PlayerSwitch: ; 3e3ad
 	call SetEnemyTurn
 	ld a, BATTLE_VARS_MOVE
 	call GetBattleVarAddr
+	ld a, [hl]
+	cp PURSUIT
+	jr nz, .dont_reset_enemy_move
 	xor a
 	ld [hl], a
 
+.dont_reset_enemy_move
 	; Let AI choose to switch or try item *before* the player switches out
 	farcall AI_SwitchOrTryItem
 	call nc, ParseEnemyAction
