@@ -1814,14 +1814,6 @@ BattleCommand_checkhit:
 	ld [hMultiplicand + 1], a
 	ld a, BATTLE_VARS_MOVE_ACCURACY
 	call GetBattleVar
-	cp 255
-	jr nz, .got_base_acc
-	; If internal accuracy is 255, insert
-	; $100 instead to avoid 1/256 miss
-	ld a, 1
-	ld [hMultiplicand + 1], a
-	xor a
-.got_base_acc
 	ld [hMultiplicand + 2], a
 
 	ld hl, hMultiplier
@@ -1863,7 +1855,8 @@ BattleCommand_checkhit:
 	ret nz ; final acc ended up >=100%
 	ld a, [hMultiplicand + 2]
 	ld b, a
-	call BattleRandom
+	ld a, 100
+	call BattleRandomRange
 	cp b
 	ret c
 
@@ -2097,10 +2090,8 @@ BattleCommand_effectchance: ; 34ecc
 	jr c, .end ; Carry means the effect byte overflowed, so gurantee it
 
 .skip_serene_grace
-	ld a, b
-	cp 100 percent
-	jr z, .end
-	call BattleRandom
+	ld a, 100
+	call BattleRandomRange
 	cp b
 	jr c, .end
 

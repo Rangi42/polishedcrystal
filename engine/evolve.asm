@@ -344,9 +344,12 @@ endr
 	ld [wd265], a
 	xor a
 	ld [wMonType], a
+	ld a, [wd265]
+	push af
 	call LearnEvolutionMove
 	call LearnLevelMoves
-	ld a, [wd265]
+	pop af
+	ld [wd265], a
 	dec a
 	call SetSeenAndCaughtMon
 

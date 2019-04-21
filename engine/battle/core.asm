@@ -5462,9 +5462,13 @@ PlayerSwitch: ; 3e3ad
 	call SetEnemyTurn
 	ld a, BATTLE_VARS_MOVE
 	call GetBattleVarAddr
+	ld a, [hl]
+	cp PURSUIT
+	jr nz, .dont_reset_enemy_move
 	xor a
 	ld [hl], a
 
+.dont_reset_enemy_move
 	; Let AI choose to switch or try item *before* the player switches out
 	farcall AI_SwitchOrTryItem
 	call nc, ParseEnemyAction
@@ -6260,20 +6264,8 @@ MoveInfoBox: ; 3e6c8
 	ld hl, Moves + MOVE_ACC
 	ld bc, MOVE_LENGTH
 	rst AddNTimes
-	; convert internal accuracy representation to a number
-	; between 0-100
 	ld a, BANK(Moves)
 	call GetFarByte
-	ld [hMultiplicand], a
-	ld a, 100
-	ld [hMultiplier], a
-	call Multiply
-	ld a, [hProduct]
-	; don't increase a for 0% moves
-	and a
-	jr z, .no_inc
-	inc a
-.no_inc
 	hlcoord 6, 10
 	cp 2
 	jr c, .no_acc

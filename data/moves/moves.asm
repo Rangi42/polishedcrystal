@@ -3,9 +3,9 @@ move: MACRO
 	db \2 ; effect
 	db \3 ; power
 	db \4 ; type
-	db \5 percent ; accuracy
+	db \5 ; accuracy
 	db \6 ; pp
-	db \7 percent ; effect chance
+	db \7 ; effect chance
 	db \8 ; category
 ENDM
 
