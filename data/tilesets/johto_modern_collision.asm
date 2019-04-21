@@ -231,3 +231,6 @@
 	tilecoll WALL, HEADBUTT_TREE, WALL, HEADBUTT_TREE ; e6
 	tilecoll WATER, WATER, WATER, WATER ; e7
 	tilecoll PUDDLE, PUDDLE, PUDDLE, PUDDLE ; e8
+	tilecoll WALL, WALL, DOOR, WALL ; e9
+	tilecoll WALL, WALL, WALL, WALL ; ea
+	tilecoll WALL, WALL, WALL, WALL ; eb
