@@ -48,6 +48,7 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * Acrozz for many HGSS Pokémon palettes, and sprites and animations of Magikarp forms.
 * Freeline for animations of Honchkrow and Munchlax, and the Rocket Executives' and stat trainers' overworld sprites.
 * Megaman-Omega for some of Prism's overworld sprites.
+* SoupPotato for some move animations and Ace Duo's sprite.
 * spritershawn for sprites of Red, Blue, and Green.
 * isamuakai01 for sprites of Steven and Cynthia.
 * Luna for some sprites and tiles.
@@ -59,6 +60,7 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * Pyro for Tamer's sprite.
 * Constantine for Nurse's sprite.
 * Paps for Twins' sprite.
+* ShockSlayer for Yellow's overworld sprite.
 * coraldev for rowboat and sakura petal tiles.
 * lilbluedemon for some bridge tiles.
 * BettyNewbie for elements of Green's sprite (combined with spritershawn's by me).
