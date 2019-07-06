@@ -41,7 +41,7 @@ Pokémon Polished Crystal would never have been finished without the help of man
 
 * Blue Emerald, solo993, Chamber, Lake, Neslug, and Pikachu25 for many sprites and icons.
 * metalflygon08 for the many Pokémon and trainer sprites.
-* JaceDeane for the Goldenrod Museum paintings, many Pokémon and trainer sprites, and some tiles.
+* JaceDeane for the Goldenrod Museum paintings, many Pokémon and trainer sprites, Prof. Ivy's overworld sprite, and some tiles.
 * bloodless for sprites of Buck, Maylene, Skyla, Veteran♂, Pikachu, Diglett, and Dugtrio.
 * Kuroko Aizawa for sprites of Prof. Ivy, Looker, Cheryl, Officer♀, Aroma Lady, Artist.
 * SCMidna for animations of Alolan Diglett and Dugtrio, Munchlax, Unown ! and ?, and Surfing Pikachu, and the stat trainers' overworld sprites.
@@ -66,6 +66,7 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * BettyNewbie for elements of Green's sprite (combined with spritershawn's by me).
 * Fo0xerz for Lawrence III's sprite (devamped by me).
 * Bronzeswagger for the Grunt♂ and Grunt♀ sprite palettes.
+* SteppoBlazer, bloodless, and JaceDeane for Kiyo's sprite.
 * Mmmmmm, bloodless, and Kuroko Aizawa for help with Valerie's sprite.
 * Kuroko Aizawa, bloodless, and metalflygon08 for help with Pikachu's sprites.
 * jpmac26 for editing the Pokémon Center signs and fixing a typo.
