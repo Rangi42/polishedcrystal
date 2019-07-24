@@ -1087,7 +1087,7 @@ wPrinterOpcode:: db
 wPrinterConnectionOpen:: db
 
 
-SECTION "Video", WRAM0
+SECTION "Video", WRAM0, ALIGN[5]
 
 wBGMapBuffer:: ds 48
 wBGMapBufferEnd::
@@ -1373,6 +1373,14 @@ wWeatherFlags:: db
 wPrevWeather:: db
 wCurWeather:: db
 wPrevOvercastIndex:: db
+
+wTempLoopCounter:: db
+
+
+SECTION "16-bit WRAM home data", WRAM0, ALIGN[5]
+; align to $20
+
+wConversionTableBitmap:: ds $20
 
 
 SECTION "Options", WRAM0
