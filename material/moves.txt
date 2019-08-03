@@ -8,6 +8,8 @@ Qwilfish: Astonish
 Heracross: Rock Blast
 Munchlax: Pursuit
 
+Rhyperior: Submission, Wild Charge
+
 Houndoom: Bonemerang
 Qwilfish: Selfdestruct
 
