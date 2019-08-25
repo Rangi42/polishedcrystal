@@ -4282,6 +4282,8 @@ HandleHealingItems: ; 3dcf9
 .do_it
 	; runs instantly whenever possible, so don't prevent usage
 	; even if the user endturn switched
+	call HasUserFainted
+	ret z
 	call HandleHPHealingItem
 	call UseHeldStatusHealingItem
 	call HandleStatBoostBerry
