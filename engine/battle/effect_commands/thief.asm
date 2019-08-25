@@ -63,6 +63,8 @@ CanStealItem:
 	ld bc, wBattleMonItem
 .got_target
 	; Check if user is holding an item already
+	ld a, [bc]
+	ld d, a
 	ld a, [hl]
 	and a
 	ret
