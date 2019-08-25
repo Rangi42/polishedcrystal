@@ -2,7 +2,7 @@ Route34_MapScriptHeader:
 	db 0 ; scene scripts
 
 	db 1 ; callbacks
-	callback MAPCALLBACK_OBJECTS, Route34RebattleBreederAndEggCheckCallback
+	callback MAPCALLBACK_OBJECTS, Route34EggCheckCallback
 
 	db 5 ; warp events
 	warp_event 13, 37, ROUTE_34_ILEX_FOREST_GATE, 1
@@ -28,7 +28,7 @@ Route34_MapScriptHeader:
 	object_event 10, 15, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, DayCareManScript_Outside, EVENT_DAYCARE_MAN_ON_ROUTE_34
 	object_event  8, 12, SPRITE_LYRA, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LYRA_ROUTE_34
 	object_event 13,  7, SPRITE_CAMPER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 5, TrainerCamperTodd1, -1
-	object_event 15, 32, SPRITE_BREEDER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerBreederJulie, -1
+	object_event 15, 32, SPRITE_BREEDER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, GenericTrainerBreederJulie, -1
 	object_event 10, 26, SPRITE_PICNICKER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerPicnickerGina1, -1
 	object_event  6, 10, SPRITE_OFFICER_F, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, OfficerfMaraScript, -1
 	object_event 18, 28, SPRITE_POKEFAN_M, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerPokefanmBrandon, -1
@@ -44,8 +44,7 @@ Route34_MapScriptHeader:
 	const ROUTE34_GRAMPS
 	const ROUTE34_LYRA
 
-Route34RebattleBreederAndEggCheckCallback:
-	clearevent EVENT_BEAT_BREEDER_JULIE
+Route34EggCheckCallback:
 	checkflag ENGINE_DAYCARE_MAN_HAS_EGG
 	iftrue .PutDaycareManOutside
 	checkscene
@@ -428,13 +427,19 @@ OfficerfMaraScript:
 	setevent EVENT_BEAT_OFFICERF_MARA
 	endtext
 
-TrainerBreederJulie:
-	trainer BREEDER, JULIE, EVENT_BEAT_BREEDER_JULIE, BreederJulieSeenText, BreederJulieBeatenText, 0, .Script
+GenericTrainerBreederJulie:
+	generictrainer BREEDER, JULIE, EVENT_BEAT_BREEDER_JULIE, BreederJulieSeenText, BreederJulieBeatenText
 
-.Script:
-	setevent EVENT_BEAT_BREEDER_JULIE_ONCE
-	end_if_just_battled
-	jumptextfaceplayer BreederJulieAfterText
+	text "One of my #mon"
+	line "has an Adamant"
+
+	para "nature. Another"
+	line "has a Lax nature."
+
+	para "It seems to make"
+	line "a difference in"
+	cont "battle."
+	done
 
 Route34RichBoyIrvingScript:
 	checkevent EVENT_GOT_BIG_NUGGET_FROM_ROUTE_34_LEADER
@@ -450,7 +455,7 @@ Route34RichBoyIrvingScript:
 	iffalse_jumptext .IntroText
 	checkevent EVENT_BEAT_POKEFANM_BRANDON
 	iffalse_jumptext .IntroText
-	checkevent EVENT_BEAT_BREEDER_JULIE_ONCE
+	checkevent EVENT_BEAT_BREEDER_JULIE
 	iffalse_jumptext .IntroText
 	opentext
 	writetext .QuestionText
@@ -693,18 +698,6 @@ BreederJulieSeenText:
 BreederJulieBeatenText:
 	text "Beaten by a"
 	line "passing stranger!"
-	done
-
-BreederJulieAfterText:
-	text "One of my #mon"
-	line "has an Adamant"
-
-	para "nature. Another"
-	line "has a Lax nature."
-
-	para "It seems to make"
-	line "a difference in"
-	cont "battle."
 	done
 
 CamperTodd1SeenText:

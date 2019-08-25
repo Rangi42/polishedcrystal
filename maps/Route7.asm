@@ -1,8 +1,7 @@
 Route7_MapScriptHeader:
 	db 0 ; scene scripts
 
-	db 1 ; callbacks
-	callback MAPCALLBACK_OBJECTS, Route7RebattleBreeder
+	db 0 ; callbacks
 
 	db 2 ; warp events
 	warp_event 15,  6, ROUTE_7_SAFFRON_GATE, 1
@@ -21,10 +20,6 @@ Route7_MapScriptHeader:
 
 	const_def 1 ; object constants
 	const ROUTE7_BIG_SNORLAX
-
-Route7RebattleBreeder:
-	clearevent EVENT_BEAT_BREEDER_CARLENE
-	return
 
 GenericTrainerBreederCarlene:
 	generictrainer BREEDER, CARLENE, EVENT_BEAT_BREEDER_CARLENE, .SeenText, .BeatenText

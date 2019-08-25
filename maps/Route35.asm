@@ -1,8 +1,7 @@
 Route35_MapScriptHeader:
 	db 0 ; scene scripts
 
-	db 1 ; callbacks
-	callback MAPCALLBACK_OBJECTS, Route35RebattleBreeder
+	db 0 ; callbacks
 
 	db 4 ; warp events
 	warp_event 13, 33, ROUTE_35_GOLDENROD_GATE, 1
@@ -31,10 +30,6 @@ Route35_MapScriptHeader:
 	cuttree_event 21,  6, EVENT_ROUTE_35_CUT_TREE
 	fruittree_event  6, 25, FRUITTREE_ROUTE_35, LEPPA_BERRY
 	tmhmball_event 17, 16, TM_HONE_CLAWS, EVENT_ROUTE_35_TM_HONE_CLAWS
-
-Route35RebattleBreeder:
-	clearevent EVENT_BEAT_BREEDER_THERESA
-	return
 
 GenericTrainerBreederTheresa:
 	generictrainer BREEDER, THERESA, EVENT_BEAT_BREEDER_THERESA, BreederTheresaSeenText, BreederTheresaBeatenText

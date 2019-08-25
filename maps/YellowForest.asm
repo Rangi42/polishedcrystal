@@ -1,8 +1,7 @@
 YellowForest_MapScriptHeader:
 	db 0 ; scene scripts
 
-	db 2 ; callbacks
-	callback MAPCALLBACK_OBJECTS, YellowForestRebattleBreeder
+	db 1 ; callbacks
 	callback MAPCALLBACK_TILES, YellowForestTileScript
 
 	db 2 ; warp events
@@ -46,10 +45,6 @@ YellowForest_MapScriptHeader:
 	const YELLOWFOREST_SKARMORY
 	const YELLOWFOREST_YELLOW
 	const YELLOWFOREST_POKE_BALL5
-
-YellowForestRebattleBreeder:
-	clearevent EVENT_BEAT_BREEDER_SOPHIE
-	return
 
 YellowForestTileScript:
 	checkscene

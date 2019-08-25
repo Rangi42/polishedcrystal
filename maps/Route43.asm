@@ -1,10 +1,9 @@
 Route43_MapScriptHeader:
 	db 0 ; scene scripts
 
-	db 3 ; callbacks
+	db 2 ; callbacks
 	callback MAPCALLBACK_NEWMAP, UnknownScript_0x19d051
 	callback MAPCALLBACK_TILES, Route43RainScript
-	callback MAPCALLBACK_OBJECTS, Route43RebattleBreederScript
 
 	db 5 ; warp events
 	warp_event  9, 51, ROUTE_43_MAHOGANY_GATE, 1
@@ -28,7 +27,7 @@ Route43_MapScriptHeader:
 	object_event  4, 16, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerFisherMarvin, -1
 	object_event  8, 10, SPRITE_PICNICKER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 2, TrainerPicnickerTiffany1, -1
 	object_event 13, 40, SPRITE_CAMPER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerCamperSpencer, -1
-	object_event  8, 32, SPRITE_BREEDER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerBreederJody, -1
+	object_event  8, 32, SPRITE_BREEDER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, GenericTrainerBreederJody, -1
 	object_event 11, 24, SPRITE_CUTE_GIRL, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerSrandjrIvyandamy1, -1
 	object_event 11, 25, SPRITE_CUTE_GIRL, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerSrandjrIvyandamy2, -1
 	cuttree_event  2, 28, EVENT_ROUTE_43_CUT_TREE
@@ -37,10 +36,6 @@ Route43_MapScriptHeader:
 
 	const_def 1 ; object constants
 	const ROUTE43_SIGHTSEER_F
-
-Route43RebattleBreederScript:
-	clearevent EVENT_BEAT_BREEDER_JODY
-	return
 
 UnknownScript_0x19d051:
 	checkevent EVENT_CLEARED_ROCKET_HIDEOUT
@@ -68,7 +63,7 @@ Route43SightseerfScript:
 	faceplayer
 	checkevent EVENT_BEAT_SIGHTSEERF_LENIE
 	iftrue .Beaten
-	checkevent EVENT_BEAT_BREEDER_JODY_ONCE
+	checkevent EVENT_BEAT_BREEDER_JODY
 	iffalse_jumptext .IntroText
 	checkevent EVENT_BEAT_SR_AND_JR_IVY_AND_AMY
 	iffalse_jumptext .IntroText
@@ -184,13 +179,19 @@ Route43SightseerfScript:
 	cont "a #mon."
 	done
 
-TrainerBreederJody:
-	trainer BREEDER, JODY, EVENT_BEAT_BREEDER_JODY, BreederJodySeenText, BreederJodyBeatenText, 0, BreederJodyScript
+GenericTrainerBreederJody:
+	generictrainer BREEDER, JODY, EVENT_BEAT_BREEDER_JODY, BreederJodySeenText, BreederJodyBeatenText
 
-BreederJodyScript:
-	setevent EVENT_BEAT_BREEDER_JODY_ONCE
-	end_if_just_battled
-	jumptextfaceplayer BreederJodyAfterText
+	text "A baby #mon"
+	line "can sometimes"
+
+	para "inherit a move"
+	line "from its father,"
+
+	para "even one that it"
+	line "wouldn't normally"
+	cont "learn."
+	done
 
 GenericTrainerSrandjrIvyandamy1:
 	generictrainer SR_AND_JR, IVYANDAMY1, EVENT_BEAT_SR_AND_JR_IVY_AND_AMY, SrandjrIvyandamy1SeenText, SrandjrIvyandamy1BeatenText
@@ -580,18 +581,6 @@ BreederJodySeenText:
 
 BreederJodyBeatenText:
 	text "I lost anyway!"
-	done
-
-BreederJodyAfterText:
-	text "A baby #mon"
-	line "can sometimes"
-
-	para "inherit a move"
-	line "from its father,"
-
-	para "even one that it"
-	line "wouldn't normally"
-	cont "learn."
 	done
 
 SrandjrIvyandamy1SeenText:

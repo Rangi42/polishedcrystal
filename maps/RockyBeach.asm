@@ -1,8 +1,7 @@
 RockyBeach_MapScriptHeader:
 	db 0 ; scene scripts
 
-	db 1 ; callbacks
-	callback MAPCALLBACK_OBJECTS, RockyBeachRebattleBreeder
+	db 0 ; callbacks
 
 	db 3 ; warp events
 	warp_event 25, 20, ROCKY_BEACH_HOUSE, 1
@@ -27,10 +26,6 @@ RockyBeach_MapScriptHeader:
 	itemball_event 32,  3, PEARL_STRING, 1, EVENT_ROCKY_BEACH_PEARL_STRING
 	object_event 20, 32, SPRITE_FAT_GUY, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, (1 << DAY), PAL_NPC_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, ShamoutiIslandFisherText, -1
 	object_event 23, 32, SPRITE_FAT_GUY, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, (1 << DAY), PAL_NPC_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, ShamoutiIslandFisherText, -1
-
-RockyBeachRebattleBreeder:
-	clearevent EVENT_BEAT_BREEDER_BRENDA
-	return
 
 RockyBeachSign1Text:
 	text "Rocky Beach"
