@@ -2834,7 +2834,8 @@ CheckSheerForceNegation:
 ; Check if a secondary effect was suppressed due to Sheer Force.
 ; Most likely a bug introduced in Gen V, it is an established
 ; mechanic at this point (VII) that if Sheer Force negates the
-; secondary effect of a move, various side effects don't trigger
+; secondary effect of a move, various side effects don't trigger.
+; Returns z if an effect is negated.
 	ld a, BATTLE_VARS_ABILITY
 	call GetBattleVar
 	cp SHEER_FORCE
@@ -3138,7 +3139,7 @@ BattleCommand_posthiteffects:
 	call .checkfaint
 	ret z
 	call CheckSheerForceNegation
-	ret nz
+	ret z
 	farcall CheckFullHP
 	ret z
 
@@ -3167,7 +3168,7 @@ BattleCommand_posthiteffects:
 	ret z
 
 	call CheckSheerForceNegation
-	ret nz
+	ret z
 
 .no_sheer_force
 	xor a
@@ -3199,7 +3200,7 @@ BattleCommand_posthiteffects:
 BattleCommand_pickpocket:
 ; If the opponent has Pickpocket, proc the item steal now
 	call CheckSheerForceNegation
-	ret nz
+	ret z
 
 	; At this point, we can safely reset wEffectFailed (This runs after everything else)
 	xor a
