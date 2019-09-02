@@ -828,23 +828,18 @@ CompareMovePriority: ; 3c5b4
 GetMovePriority: ; 3c5c5
 ; Return the priority (0-9) of move being used.
 	push bc
+	push de
 	ld a, BATTLE_VARS_MOVE
 	call GetBattleVar
-	ld b, a
-	ld hl, MovePriorities
-.loop
-	ld a, [hli]
-	cp b
-	jr z, .done
-	inc hl
-	cp -1
-	jr nz, .loop
 
-	xor a
-	jr .check_prankster
-.done
+	ld de, 2
+	ld hl, MovePriorities
+	call IsInArray
+	inc a
+	jr z, .got_priority
+	inc hl
 	ld a, [hl]
-.check_prankster
+.got_priority
 	xor $80 ; treat it as a signed byte
 	ld b, a
 	ld a, BATTLE_VARS_ABILITY
@@ -858,6 +853,7 @@ GetMovePriority: ; 3c5c5
 	inc b
 .no_priority
 	ld a, b
+	pop de
 	pop bc
 	ret
 
