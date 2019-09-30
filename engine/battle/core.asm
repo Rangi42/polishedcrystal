@@ -1923,10 +1923,10 @@ _SubtractHP:
 	ret nc
 
 	ld a, [wBuffer3]
-	ld wCurDamage+1, a
+	ld [wCurDamage+1], a
 	ld c, a
 	ld a, [wBuffer4]
-	ld wCurDamage, a
+	ld [wCurDamage], a
 	ld b, a
 	xor a
 	ld [hli], a
