@@ -2102,6 +2102,7 @@ ContinueHandleEnemyMonFaint:
 	ret nz
 ContinueHandleEnemyMonFaint_FinishSplit:
 	ld [wEnemySplitHandleMonFaint], a
+	ld [wPlayerSplitHandleMonFaint], a
 	ld hl, wBattleMonHP
 	ld a, [hli]
 	or [hl]
@@ -2710,6 +2711,7 @@ ContinueHandlePlayerMonFaint:
 	ret nz
 ContinueHandlePlayerMonFaint_FinishSplit:
 	ld [wPlayerSplitHandleMonFaint], a
+	ld [wEnemySplitHandleMonFaint], a
 	ld hl, wEnemyMonHP
 	ld a, [hli]
 	or [hl]
