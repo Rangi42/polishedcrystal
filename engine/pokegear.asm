@@ -1760,6 +1760,7 @@ _TownMap: ; 9191c
 	call ClearTileMap
 	call ClearSprites
 	call DisableLCD
+	farcall InitPokegearPalettes
 	call Pokegear_LoadGFX
 	farcall ClearSpriteAnims
 	ld a, 8
