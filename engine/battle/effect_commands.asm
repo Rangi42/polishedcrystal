@@ -8779,7 +8779,14 @@ PursuitSwitchDuringMove:
 	call SwitchTurn
 	ld a, [wCurBattleMon]
 	ld [wLastPlayerMon], a
-	farcall PursuitSwitchIfFirstAndAlive
+			   
+    ; Avoids double-usage of Pursuit when Pursuit user goes first
+	; Performed from Pursuit user's POV
+	call CheckOpponentWentFirst
+	jr z, .pursuit_done
+	call HasUserFainted
+	jr z, .pursuit_done
+    	farcall PursuitSwitch
 .pursuit_done
 	pop af
 	ld [hBattleTurn], a
@@ -8791,6 +8798,23 @@ PursuitSwitchDuringMove:
 BattleCommand_switchout:
 	call CheckAnyOtherAliveMons
 	ret z
+	call HasOpponentFainted
+	jr nz, ContinueToSwitchOut
+	ld a, [hBattleTurn]
+	and a
+	jr z, .enemy_mon_fainted
+;.player_mon_fainted
+	ld [wPlayerSplitHandleMonFaint], a
+	farcall ContinueHandlePlayerMonFaint
+	jr .finish_mon_fainted
+.enemy_mon_fainted
+	inc a
+	ld [wEnemySplitHandleMonFaint], a
+	farcall ContinueHandleEnemyMonFaint
+.finish_mon_fainted
+	ld a, [wBattleEnded]
+	and a
+	ret nz ; no switch if the battle's already over
 ContinueToSwitchOut:
 	call UpdateUserInParty
 	ld a, [hBattleTurn]
