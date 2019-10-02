@@ -8786,7 +8786,7 @@ PursuitSwitchDuringMove:
 	jr z, .pursuit_done
 	call HasUserFainted
 	jr z, .pursuit_done
-    	farcall PursuitSwitch
+	farcall PursuitSwitch
 .pursuit_done
 	pop af
 	ld [hBattleTurn], a
@@ -8845,21 +8845,39 @@ ContinueToSwitchOut:
 	call DoPlayerBatonPass
 
 	; Baton Pass routines preserve some stuff, get rid of it
-	; unless we fainted
+	; unless we fainted (i.e. by spikes), in which case a double 
+	; switch occurs afterwards if the opponent also fainted
 	ld hl, wBattleMonHP
 	ld a, [hli]
 	or [hl]
+	jr nz, .player_nofaint
+	ld hl, wEnemySplitHandleMonFaint
+	ld a, [hld] ; after dec, hl = wPlayerSplitHandleMonFaint
+	and a
 	ret z
-
+	ld [hl], a
+	; calling the handler double faints the enemy, and we know we must
+	; have at least one surviving party member by this point anyway
+	farcall FaintYourPokemon
+	farjp PlayerMonFaintHappinessMod
+.player_nofaint
 	farcall NewBattleMonStatus
 	farjp ResetPlayerStatLevels
+
 .enemy
 	call DoEnemyBatonPass
 	ld hl, wEnemyMonHP
 	ld a, [hli]
 	or [hl]
+	jr nz, .enemy_nofaint
+	ld hl, wPlayerSplitHandleMonFaint
+	ld a, [hli] ; after inc, hl = wEnemySplitHandleMonFaint
+	and a
 	ret z
-
+	ld [hl], a
+	farcall FaintEnemyPokemon
+	farjp UpdateBattleStateAndExperienceAfterEnemyFaint
+.enemy_nofaint
 	farcall NewEnemyMonStatus
 	farjp ResetEnemyStatLevels
 
