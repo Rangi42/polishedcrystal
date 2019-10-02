@@ -2058,6 +2058,10 @@ UpdateHPBar: ; 3cd3c
 ; 3cd55
 
 HandleEnemyMonFaint: ; 3cd55
+	ld a, [wEnemySplitHandleMonFaint]
+	dec a
+	jr z, ContinueHandleEnemyMonFaint_FinishSplit
+ContinueHandleEnemyMonFaint:
 	call FaintEnemyPokemon
 	ld hl, wBattleMonHP
 	ld a, [hli]
@@ -2092,7 +2096,12 @@ HandleEnemyMonFaint: ; 3cd55
 .trainer
 	call CheckEnemyTrainerDefeated
 	jp z, WinTrainerBattle
-
+    
+	ld a, [wEnemySplitHandleMonFaint]
+	and a
+	ret nz
+ContinueHandleEnemyMonFaint_FinishSplit:
+	ld [wEnemySplitHandleMonFaint], a
 	ld hl, wBattleMonHP
 	ld a, [hli]
 	or [hl]
@@ -2680,6 +2689,10 @@ INCLUDE "data/trainers/leaders.asm"
 
 
 HandlePlayerMonFaint: ; 3d14e
+	ld a, [wPlayerSplitHandleMonFaint]
+	dec a
+	jr z, ContinueHandlePlayerMonFaint_FinishSplit
+ContinueHandlePlayerMonFaint:
 	call FaintYourPokemon
 	ld hl, wEnemyMonHP
 	ld a, [hli]
@@ -2692,6 +2705,11 @@ HandlePlayerMonFaint: ; 3d14e
 	ld a, d
 	and a
 	jp z, LostBattle
+	ld a, [wPlayerSplitHandleMonFaint]
+	and a
+	ret nz
+ContinueHandlePlayerMonFaint_FinishSplit:
+	ld [wPlayerSplitHandleMonFaint], a
 	ld hl, wEnemyMonHP
 	ld a, [hli]
 	or [hl]
@@ -4155,13 +4173,6 @@ HandleAirBalloon:
 	xor a
 	ret
 
-PursuitSwitchIfFirstAndAlive:
-	; Avoids double-usage of Pursuit when Pursuit user goes first
-	; Performed from Pursuit user's POV
-	call CheckOpponentWentFirst
-	jp z, PursuitSwitch_done
-	call HasUserFainted
-	jp z, PursuitSwitch_done
 PursuitSwitch: ; 3dc5b
 	ld a, BATTLE_VARS_MOVE
 	call GetBattleVar
@@ -5594,6 +5605,7 @@ PassedBattleMonEntrance: ; 3e459
 	ld [wCurBattleMon], a
 	call AddBattleParticipant
 	call InitBattleMon
+	call SendOutPkmnText
 	xor a
 	ld [wd265], a
 	call SendOutPlayerMon
@@ -8268,7 +8280,7 @@ SendOutPkmnText: ; 3f26d
 	ld hl, JumpText_GoPkmn
 	jr z, .skip_to_textbox
 
-	; compute enemy helth remaining as a percentage
+	; compute enemy health remaining as a percentage
 	xor a
 	ld [hMultiplicand + 0], a
 	ld hl, wEnemyMonHP
