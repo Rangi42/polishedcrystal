@@ -2789,7 +2789,6 @@ Script_verbosegivetmhm:
 
 GiveTMHMScript:
 	writetext ReceivedItemText
-	waitsfx
 	playsound SFX_GET_TM
 	waitsfx
 	waitbutton
