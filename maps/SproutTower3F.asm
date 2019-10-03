@@ -34,11 +34,9 @@ UnknownScript_0x184947:
 	showemote EMOTE_SHOCK, PLAYER, 15
 	special Special_FadeOutMusic
 	playsound SFX_TACKLE
-	playsound SFX_ELEVATOR
 	earthquake 79
 	pause 15
 	playsound SFX_TACKLE
-	playsound SFX_ELEVATOR
 	earthquake 79
 	applymovement PLAYER, MovementData_0x184a1d
 	applyonemovement SPROUTTOWER3F_SILVER, step_up
