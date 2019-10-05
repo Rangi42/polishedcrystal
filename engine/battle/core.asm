@@ -2706,12 +2706,6 @@ ContinueHandlePlayerMonFaint:
 	ld a, d
 	and a
 	jp z, LostBattle
-	ld a, [wPlayerSplitHandleMonFaint]
-	and a
-	ret nz
-ContinueHandlePlayerMonFaint_FinishSplit:
-	ld [wPlayerSplitHandleMonFaint], a
-	ld [wEnemySplitHandleMonFaint], a
 	ld hl, wEnemyMonHP
 	ld a, [hli]
 	or [hl]
@@ -2729,6 +2723,13 @@ ContinueHandlePlayerMonFaint_FinishSplit:
 	jp z, WinTrainerBattle
 
 .notfainted
+	ld a, [wPlayerSplitHandleMonFaint]
+	and a
+	ret nz
+ContinueHandlePlayerMonFaint_FinishSplit:
+	ld [wPlayerSplitHandleMonFaint], a
+	ld [wEnemySplitHandleMonFaint], a
+	
 	call AskUseNextPokemon
 	jr nc, .switch
 	ld a, $1
@@ -4184,19 +4185,12 @@ PursuitSwitch: ; 3dc5b
 	cp EFFECT_PURSUIT
 	jp nz, PursuitSwitch_done
 
-	ld a, [wCurBattleMon]
-	push af
-
-	; Kludge: if player is target, override CurPlayerMon to
-	; properly update party struct (TODO: make this unneccessary)
 	ld a, [hBattleTurn]
 	and a
 	jr nz, .enemy
 	farcall DoPlayerTurn
 	jr .finish_pursuit
 .enemy
-	ld a, [wLastPlayerMon]
-	ld [wCurBattleMon], a
 	farcall DoEnemyTurn
 .finish_pursuit
 	ld a, BATTLE_VARS_MOVE
@@ -4204,69 +4198,25 @@ PursuitSwitch: ; 3dc5b
 	xor a
 	ld [hl], a
 
-	pop af
-	ld [wCurBattleMon], a
-
 	ld a, [hBattleTurn]
 	and a
 	jr z, .check_enemy_fainted
-
-	ld a, [wLastPlayerMon]
+	ld a, [wCurBattleMon]
 	call UpdateBattleMon
 	call HasPlayerFainted
-	jp nz, PursuitSwitch_done
-
-	ld a, $f0
-	ld [wCryTracks], a
-	ld a, [wBattleMonSpecies]
-	ld b, a
-	farcall PlayFaintingCry
-	ld a, [wLastPlayerMon]
-	ld c, a
-	ld hl, wBattleParticipantsNotFainted
-	ld b, RESET_FLAG
-	predef FlagPredef
-	call PlayerMonFaintedAnimation
-	ld hl, BattleText_PkmnFainted
+	jr nz, PursuitSwitch_done
 	jr .done_fainted
-
 .check_enemy_fainted
 	call HasEnemyFainted
-	jp nz, PursuitSwitch_done
-
-	ld a, $f
-	ld [wCryTracks], a
-	ld a, [wEnemyMonSpecies]
-	ld b, a
-	farcall PlayFaintingCry
-	ld de, SFX_KINESIS
-	call PlaySFX
-	call WaitSFX
-	ld de, SFX_FAINT
-	call PlaySFX
-	call WaitSFX
-	call EnemyMonFaintedAnimation
-	ld hl, BattleText_EnemyPkmnFainted
-
+	jr nz, PursuitSwitch_done
 .done_fainted
-	call StdBattleTextBox
 	scf
 	ret
 
 PursuitSwitch_done
 	; run switch-out abilities
 	call SwitchTurn
-	ld a, [wCurBattleMon]
-	push af
-	ld a, [hBattleTurn]
-	and a
-	jr nz, .override_done
-	ld a, [wLastPlayerMon]
-	ld [wCurBattleMon], a
-.override_done
 	farcall RunSwitchAbilities
-	pop af
-	ld [wCurBattleMon], a
 	call SwitchTurn
 	and a
 	ret
@@ -5438,8 +5388,6 @@ TryPlayerSwitch: ; 3e358
 .try_switch
 	call CheckIfCurPartyMonIsFitToFight
 	jp z, BattleMenuPKMN_Loop
-	ld a, [wCurBattleMon]
-	ld [wLastPlayerMon], a
 	ld a, $2
 	ld [wBattlePlayerAction], a
 	call ClearPalettes
@@ -5449,8 +5397,6 @@ TryPlayerSwitch: ; 3e358
 	call CloseWindow
 	call GetMemCGBLayout
 	call SetPalettes
-	ld a, [wCurPartyMon]
-	ld [wCurBattleMon], a
 PlayerSwitch: ; 3e3ad
 	ld a, 1
 	ld [wPlayerIsSwitching], a
@@ -5471,17 +5417,6 @@ PlayerSwitch: ; 3e3ad
 	jp WildFled_EnemyFled_LinkBattleCanceled
 
 .not_linked
-	; Clear last enemy action to avoid Pursuit oddities
-	call SetEnemyTurn
-	ld a, BATTLE_VARS_MOVE
-	call GetBattleVarAddr
-	ld a, [hl]
-	cp PURSUIT
-	jr nz, .dont_reset_enemy_move
-	xor a
-	ld [hl], a
-
-.dont_reset_enemy_move
 	; Let AI choose to switch or try item *before* the player switches out
 	farcall AI_SwitchOrTryItem
 	call nc, ParseEnemyAction
@@ -5516,7 +5451,26 @@ EnemyMonEntrance:
 	xor a
 	ld [hBattleTurn], a
 	call PursuitSwitch
-
+	jr nc, .no_enemy_faint
+	ld a, 1
+	ld hl, wEnemySplitHandleMonFaint
+	ld [hld], a
+	ld [hl], a
+	call ContinueHandleEnemyMonFaint
+	jr .finishswitch
+	
+.no_enemy_faint
+	; check if player KO'd self after
+	; using Pursuit (i.e. by Life Orb)
+	call HasPlayerFainted
+	jr nz, .doswitch
+	inc a
+	ld [wPlayerSplitHandleMonFaint], a
+	call ContinueHandlePlayerMonFaint
+	ld a, [wBattleEnded]
+	and a
+	jr nz, .finishswitch
+.doswitch
 	push af
 	ld a, [wCurOTMon]
 	ld hl, wOTPartyMon1Status
@@ -5528,12 +5482,9 @@ EnemyMonEntrance:
 	ld bc, MON_MAXHP - MON_STATUS
 	rst CopyBytes
 	pop af
-
-	jr c, .skiptext
 	ld hl, TextJump_EnemyWithdrew
 	call PrintText
 
-.skiptext
 	; Actively switched -- don't prompt the user about the switch
 	ld a, 1
 	ld [wBattleHasJustStarted], a
@@ -5547,6 +5498,7 @@ EnemyMonEntrance:
 	call RunActivationAbilities
 	xor a
 	ld [wBattleHasJustStarted], a
+.finishswitch
 	ld a, [wLinkMode]
 	and a
 	ret nz
@@ -5568,16 +5520,36 @@ BattleMonEntrance: ; 3e40b
 
 	call SetEnemyTurn
 	call PursuitSwitch
-	jr c, .ok
-	call RecallPlayerMon
+	jr nc, .no_player_faint
+	ld a, 1
+	ld hl, wPlayerSplitHandleMonFaint
+	ld [hli], a
+	ld [hl], a
+	jp ContinueHandlePlayerMonFaint
+	
+.no_player_faint
+	call HasEnemyFainted
+	jr nz, .ok
+	inc a
+	ld [wEnemySplitHandleMonFaint], a
+	ld a, [wCurPartyMon] ; since ContinueHandleEnemyMonFaint overwrites this
+	push af
+ 	call ContinueHandleEnemyMonFaint
+	pop af
+	ld [wCurPartyMon], a
+	ld a, [wBattleEnded]
+	and a
+	ret nz
 .ok
-
+	call RecallPlayerMon
 	hlcoord 9, 7
 	lb bc, 5, 11
 	call ClearBox
 
 	ld a, [wCurBattleMon]
-	ld [wCurPartyMon], a
+	ld [wLastPlayerMon], a
+	ld a, [wCurPartyMon]
+	ld [wCurBattleMon], a
 	call AddBattleParticipant
 	call InitBattleMon
 	call ResetPlayerStatLevels
