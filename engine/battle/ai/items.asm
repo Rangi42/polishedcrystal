@@ -246,7 +246,7 @@ AI_TryItem: ; 38105
 
 	ld hl, wEnemySubStatus4
 	res SUBSTATUS_RAGE, [hl]
-	
+
 	xor a
 	ld [de], a
 	ld [wCurEnemyMove], a
