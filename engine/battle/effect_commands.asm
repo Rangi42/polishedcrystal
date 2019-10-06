@@ -8777,29 +8777,39 @@ PursuitSwitchDuringMove:
 	ld a, [hBattleTurn]
 	push af
 	call SwitchTurn
-	ld a, [wCurBattleMon]
-	ld [wLastPlayerMon], a
-			   
-    ; Avoids double-usage of Pursuit when Pursuit user goes first
+	
+	; Avoids double-usage of Pursuit when Pursuit user goes first
 	; Performed from Pursuit user's POV
 	call CheckOpponentWentFirst
 	jr z, .pursuit_done
 	call HasUserFainted
 	jr z, .pursuit_done
+    
+	ld hl, wBattleScriptBufferLoc
+	ld c, [hl]
+	inc hl
+	ld b, [hl]
+	push bc
+	push hl
 	farcall PursuitSwitch
+	pop hl
+	pop bc
+	ld [hl], b
+	dec hl
+	ld [hl], c
 .pursuit_done
 	pop af
 	ld [hBattleTurn], a
-
-	; if Pursuit fainted, abort the switch-out
+	; if Pursuit fainted opponent, abort the switch-out
 	call HasUserFainted
-	ret
-
-BattleCommand_switchout:
-	call CheckAnyOtherAliveMons
 	ret z
+	; If Pursuit user fainted (i.e. by Life Orb recoil) after
+	; hitting target, battle handler should be split
+	; Returns 0 if battle ends as a result
 	call HasOpponentFainted
-	jr nz, ContinueToSwitchOut
+	ret nz
+	;fallthrough
+SwitchOutHandleMonFaint:
 	ld a, [hBattleTurn]
 	and a
 	jr z, .enemy_mon_fainted
@@ -8813,8 +8823,15 @@ BattleCommand_switchout:
 	farcall ContinueHandleEnemyMonFaint
 .finish_mon_fainted
 	ld a, [wBattleEnded]
-	and a
-	ret nz ; no switch if the battle's already over
+	dec a ; WARNING: won't work if wBattleEnded is > 1 or < 0
+	ret ; no switch (returns 0) if the battle is over
+
+BattleCommand_switchout:
+	call CheckAnyOtherAliveMons
+	ret z
+	call HasOpponentFainted
+	call z, SwitchOutHandleMonFaint
+	ret z
 ContinueToSwitchOut:
 	call UpdateUserInParty
 	ld a, [hBattleTurn]
@@ -8824,8 +8841,11 @@ ContinueToSwitchOut:
 	ld hl, BattleText_WentBackToEnemy
 .got_text
 	call StdBattleTextBox
+	call HasOpponentFainted
+	jr z, .no_pursuit
 	call PursuitSwitchDuringMove
 	ret z
+.no_pursuit
 	farcall SlideUserPicOut
 	ld c, 20
 	call DelayFrames
@@ -8884,9 +8904,6 @@ ContinueToSwitchOut:
 BattleCommand_batonpass:
 	call CheckAnyOtherAliveMons
 	jp z, FailedBatonPass
-
-	call PursuitSwitchDuringMove
-	ret z
 
 	ld a, [hBattleTurn]
 	and a
