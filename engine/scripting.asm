@@ -653,13 +653,7 @@ Script_pocketisfull:
 	jp MapTextbox
 
 Script_specialsound:
-	farcall CheckItemPocket
-	ld a, [wItemAttributeParamBuffer]
-	cp TM_HM
-	ld de, SFX_GET_TM
-	jr z, .play
 	ld de, SFX_ITEM
-.play
 	call PlaySFX
 	jp WaitSFX
 
@@ -2763,14 +2757,8 @@ Script_givetmhm:
 ;     tmhm (TMHMLabelByte)
 	call GetScriptByte
 	ld [wCurTMHM], a
-	ld [wItemQuantityChangeBuffer], a
 	call ReceiveTMHM
-	jr nc, .full
 	ld a, TRUE
-	ld [wScriptVar], a
-	ret
-.full
-	xor a
 	ld [wScriptVar], a
 	ret
 
@@ -2801,8 +2789,8 @@ Script_verbosegivetmhm:
 
 GiveTMHMScript:
 	writetext ReceivedItemText
+	playsound SFX_GET_TM
 	waitsfx
-	specialsound
 	waitbutton
 	tmhmnotify
 	end
