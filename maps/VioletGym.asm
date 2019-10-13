@@ -171,7 +171,7 @@ UnknownText_0x68648:
 	line "as many times as"
 	cont "you want."
 
-	para "TM31 contains"
+	para "TM51 contains"
 	line "Roost."
 
 	para "It lands on the"

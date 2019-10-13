@@ -4,8 +4,7 @@ FindItemInBallScript:: ; 0x122ce
 	disappear LAST_TALKED
 	opentext
 	writetext .text_found
-	playsound SFX_ITEM
-	pause 60
+	specialsound
 	itemnotify
 	closetext
 	end
@@ -51,8 +50,8 @@ FindTMHMInBallScript::
 	disappear LAST_TALKED
 	opentext
 	writetext .text_found
-	playsound SFX_ITEM
-	pause 60
+	playsound SFX_GET_TM
+	waitsfx
 	tmhmnotify
 	closetext
 	end
