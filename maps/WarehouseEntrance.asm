@@ -256,6 +256,7 @@ OlderHaircutBrotherScript:
 	waitbutton
 	closetext
 	special FadeOutPalettes
+	special LoadMapPalettes
 	playmusic MUSIC_HEAL
 	pause 60
 	special FadeInPalettes
@@ -328,6 +329,7 @@ YoungerHaircutBrotherScript:
 	waitbutton
 	closetext
 	special FadeOutPalettes
+	special LoadMapPalettes
 	playmusic MUSIC_HEAL
 	pause 60
 	special FadeInPalettes
