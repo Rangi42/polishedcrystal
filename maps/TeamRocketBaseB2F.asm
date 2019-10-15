@@ -172,6 +172,7 @@ LanceHealsScript:
 	faceobject TEAMROCKETBASEB2F_LANCE, PLAYER
 	showtext LanceHealsText1
 	special FadeOutPalettes
+	special LoadMapPalettes
 	playsound SFX_FULL_HEAL
 	special HealParty
 	special FadeInPalettes
