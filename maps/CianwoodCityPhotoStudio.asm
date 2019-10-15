@@ -32,6 +32,7 @@ FishingGuruScript_0x9e0e0:
 	waitbutton
 	closetext
 	special FadeOutPalettes
+	special LoadMapPalettes
 	pause 10
 	playsound SFX_DOUBLE_SLAP
 	waitsfx
