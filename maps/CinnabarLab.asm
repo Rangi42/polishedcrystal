@@ -173,6 +173,7 @@ CinnabarLabCelebiEventScript:
 	applyonemovement CINNABARLAB_ARMORED_MEWTWO, slow_step_down
 	playsound SFX_KINESIS
 	special FadeOutPalettes
+	special LoadMapPalettes
 	pause 15
 	disappear CINNABARLAB_ARMORED_MEWTWO
 	appear CINNABARLAB_MEWTWO
@@ -185,6 +186,7 @@ CinnabarLabCelebiEventScript:
 	closetext
 	playsound SFX_GAME_FREAK_LOGO_GS
 	special FadeOutPalettes
+	special LoadMapPalettes
 	pause 30
 	appear CINNABARLAB_CELEBI
 	special FadeInPalettes
