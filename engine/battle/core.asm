@@ -242,6 +242,8 @@ SafariBattleTurn:
 
 	jr .loop
 
+HasOpponentEndturnSwitched:
+	call CallOpponentTurn
 HasUserEndturnSwitched:
 	ld a, [hBattleTurn]
 	and a
@@ -1102,6 +1104,8 @@ HandleResidualDamage:
 	jr z, .not_seeded
 
 	call HasOpponentFainted
+	jr z, .not_seeded
+	call HasOpponentEndturnSwitched
 	jr z, .not_seeded
 
 	call SwitchTurn

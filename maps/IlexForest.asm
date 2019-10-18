@@ -493,6 +493,7 @@ MapIlexForestSignpost4Script:
 	pause 30
 	playsound SFX_GAME_FREAK_LOGO_GS
 	special FadeOutPalettes
+	special LoadMapPalettes
 	turnobject ILEXFOREST_CELEBI, DOWN
 	pause 30
 	special FadeInPalettes

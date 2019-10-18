@@ -54,9 +54,11 @@ SacredAshScript: ; 0x50821
 	playsound SFX_WARP_TO
 rept 3
 	special FadeOutPalettes
+	special LoadMapPalettes
 	special FadeInPalettes
 endr
 	waitsfx
+	opentext
 	writetext UnknownText_0x50845
 	playsound SFX_CAUGHT_MON
 	waitsfx

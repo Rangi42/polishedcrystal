@@ -52,6 +52,7 @@ DaisyScript:
 	waitbutton
 	closetext
 	special FadeOutPalettes
+	special LoadMapPalettes
 	special SaveMusic
 	playmusic MUSIC_HEAL
 	pause 60

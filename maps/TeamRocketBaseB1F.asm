@@ -509,6 +509,7 @@ ExplodingTrap22:
 
 VoltorbExplodingTrap:
 	special FadeOutPalettes
+	special LoadMapPalettes
 	cry VOLTORB
 	special FadeInPalettes
 	setlasttalked -1
@@ -519,6 +520,7 @@ VoltorbExplodingTrap:
 
 GeodudeExplodingTrap:
 	special FadeOutPalettes
+	special LoadMapPalettes
 	cry GEODUDE
 	special FadeInPalettes
 	setlasttalked -1
@@ -529,6 +531,7 @@ GeodudeExplodingTrap:
 
 KoffingExplodingTrap:
 	special FadeOutPalettes
+	special LoadMapPalettes
 	cry KOFFING
 	special FadeInPalettes
 	setlasttalked -1
