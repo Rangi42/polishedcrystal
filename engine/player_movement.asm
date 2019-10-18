@@ -3,6 +3,8 @@ DoPlayerMovement:: ; 80000
 	call .GetDPad
 	ld a, movement_step_sleep_1
 	ld [wMovementAnimation], a
+	xor a
+	ld [wEngineBuffer4], a
 	call .TranslateIntoMovement
 	ld c, a
 	ld a, [wMovementAnimation]
@@ -38,8 +40,6 @@ DoPlayerMovement:: ; 80000
 	jr z, .Surf
 	cp PLAYER_SURF_PIKA
 	jr z, .Surf
-	cp PLAYER_BIKE
-	jr z, .Normal
 	cp PLAYER_SLIP
 	jr z, .Ice
 
@@ -188,7 +188,7 @@ DoPlayerMovement:: ; 80000
 ; the player change facing without moving by tapping a direction.
 
 	ld a, [wPlayerTurningDirection]
-	cp 0
+	and a
 	jr nz, .not_turning
 	ld a, [wWalkingDirection]
 	cp STANDING
@@ -404,11 +404,8 @@ DoPlayerMovement:: ; 80000
 	cp [hl]
 	jr nz, .not_warp
 
-	ld a, [wWalkingDirection]
-	cp STANDING
-	jr z, .not_warp
-
-	ld e, a
+	ld a, TRUE
+	ld [wEngineBuffer4], a
 	ld a, [wPlayerDirection]
 	rrca
 	rrca
@@ -559,7 +556,7 @@ DoPlayerMovement:: ; 80000
 	ret nc
 
 	ld a, [wPlayerTurningDirection]
-	cp 0
+	and a
 	ret z
 
 .force
@@ -833,7 +830,7 @@ DoPlayerMovement:: ; 80000
 
 CheckStandingOnIce:: ; 80404
 	ld a, [wPlayerTurningDirection]
-	cp 0
+	and a
 	jr z, .not_ice
 	cp $f0
 	jr z, .not_ice

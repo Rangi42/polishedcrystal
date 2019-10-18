@@ -1548,6 +1548,10 @@ RareCandy_StatBooster_GetParameters: ; eef5
 	ld a, [wCurPartySpecies]
 	ld [wCurSpecies], a
 	ld [wd265], a
+	ld a, MON_FORM
+	call GetPartyParamLocation
+	ld a, [hl]
+	ld [wCurForm], a
 	ld a, MON_LEVEL
 	call GetPartyParamLocation
 	ld a, [hl]

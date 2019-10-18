@@ -71,6 +71,7 @@ GiovannisCaveCelebiEventScript:
 	showtext GiovannisCaveLyraFeelsSorryText
 	playsound SFX_GAME_FREAK_LOGO_GS
 	special FadeOutPalettes
+	special LoadMapPalettes
 	pause 30
 	special FadeInPalettes
 	waitsfx

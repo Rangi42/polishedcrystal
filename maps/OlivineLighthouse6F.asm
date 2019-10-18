@@ -56,6 +56,7 @@ UnknownScript_0x60bab:
 	special RestartMapMusic
 	cry AMPHAROS
 	special FadeOutPalettes
+	special LoadMapPalettes
 	pause 10
 	special FadeInPalettes
 	showtext UnknownText_0x60f3d
@@ -102,8 +103,10 @@ MonsterScript_0x60c3a:
 UnknownScript_0x60c51:
 	showcrytext UnknownText_0x60f3d, AMPHAROS
 	special FadeOutPalettes
+	special LoadMapPalettes
 	special FadeInPalettes
 	special FadeOutPalettes
+	special LoadMapPalettes
 	special FadeInPalettes
 	end
 
