@@ -6,6 +6,7 @@ BattleTowerPokemon1:
 	db PERFECT_DVS
 	db HIDDEN_ABILITY | CALM, MALE ; Thick Fat, +SpDef -Atk
 
+BattleTowerPokemon2:
 	db VENUSAUR, LIFE_ORB
 	db GROWTH, SLUDGE_BOMB, GIGA_DRAIN, HIDDEN_POWER
 	db BTDVS_HP_FIRE
@@ -42,7 +43,6 @@ BattleTowerPokemon1:
 	db $bd, $db, $dd ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 
-BattleTowerPokemon2:
 	db ESPEON
 	db LEFTOVERS
 	db MUD_SLAP, PSYCHIC_M, CALM_MIND, TOXIC
