@@ -3189,6 +3189,10 @@ BattleCommand_pickpocket:
 	call CheckSheerForceNegation
 	ret z
 
+	; Don't steal items if we're fainted
+	call HasOpponentFainted
+	ret z
+
 	; At this point, we can safely reset wEffectFailed (This runs after everything else)
 	xor a
 	ld [wEffectFailed], a
