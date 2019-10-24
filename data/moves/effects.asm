@@ -1789,9 +1789,9 @@ Thief:
 	checkfaint
 	criticaltext
 	supereffectivetext
-	thief
 	postfainteffects
 	posthiteffects
+	thief
 	pickpocket
 	endmove
 
