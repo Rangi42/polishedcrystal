@@ -8777,19 +8777,60 @@ PursuitSwitchDuringMove:
 	ld a, [hBattleTurn]
 	push af
 	call SwitchTurn
-	ld a, [wCurBattleMon]
-	ld [wLastPlayerMon], a
-	farcall PursuitSwitchIfFirstAndAlive
+	
+	; Avoids double-usage of Pursuit when Pursuit user goes first
+	; Performed from Pursuit user's POV
+	call CheckOpponentWentFirst
+	jr z, .pursuit_done
+	call HasUserFainted
+	jr z, .pursuit_done
+    
+	ld hl, wBattleScriptBufferLoc
+	ld c, [hl]
+	inc hl
+	ld b, [hl]
+	push bc
+	push hl
+	farcall PursuitSwitch
+	pop hl
+	pop bc
+	ld [hl], b
+	dec hl
+	ld [hl], c
 .pursuit_done
 	pop af
 	ld [hBattleTurn], a
-
-	; if Pursuit fainted, abort the switch-out
+	; if Pursuit fainted opponent, abort the switch-out
 	call HasUserFainted
-	ret
+	ret z
+	; If Pursuit user fainted (i.e. by Life Orb recoil) after
+	; hitting target, battle handler should be split
+	; Returns 0 if battle ends as a result
+	call HasOpponentFainted
+	ret nz
+	;fallthrough
+SwitchOutHandleMonFaint:
+	ld a, [hBattleTurn]
+	and a
+	jr z, .enemy_mon_fainted
+;.player_mon_fainted
+	ld [wPlayerSplitHandleMonFaint], a
+	farcall ContinueHandlePlayerMonFaint
+	jr .finish_mon_fainted
+.enemy_mon_fainted
+	inc a
+	ld [wEnemySplitHandleMonFaint], a
+	farcall ContinueHandleEnemyMonFaint
+.finish_mon_fainted
+	ld a, [wBattleEnded]
+	dec a ; WARNING: won't work if wBattleEnded is > 1 or < 0
+	ret ; no switch (returns 0) if the battle is over
 
 BattleCommand_switchout:
 	call CheckAnyOtherAliveMons
+	ret z
+	call HasOpponentFainted
+	call z, SwitchOutHandleMonFaint
 	ret z
 ContinueToSwitchOut:
 	call UpdateUserInParty
@@ -8800,8 +8841,11 @@ ContinueToSwitchOut:
 	ld hl, BattleText_WentBackToEnemy
 .got_text
 	call StdBattleTextBox
+	call HasOpponentFainted
+	jr z, .no_pursuit
 	call PursuitSwitchDuringMove
 	ret z
+.no_pursuit
 	farcall SlideUserPicOut
 	ld c, 20
 	call DelayFrames
@@ -8821,30 +8865,45 @@ ContinueToSwitchOut:
 	call DoPlayerBatonPass
 
 	; Baton Pass routines preserve some stuff, get rid of it
-	; unless we fainted
+	; unless we fainted (i.e. by spikes), in which case a double 
+	; switch occurs afterwards if the opponent also fainted
 	ld hl, wBattleMonHP
 	ld a, [hli]
 	or [hl]
+	jr nz, .player_nofaint
+	ld hl, wEnemySplitHandleMonFaint
+	ld a, [hld] ; after dec, hl = wPlayerSplitHandleMonFaint
+	and a
 	ret z
-
+	ld [hl], a
+	; calling the handler double faints the enemy, and we know we must
+	; have at least one surviving party member by this point anyway
+	farcall FaintYourPokemon
+	farjp PlayerMonFaintHappinessMod
+.player_nofaint
 	farcall NewBattleMonStatus
 	farjp ResetPlayerStatLevels
+
 .enemy
 	call DoEnemyBatonPass
 	ld hl, wEnemyMonHP
 	ld a, [hli]
 	or [hl]
+	jr nz, .enemy_nofaint
+	ld hl, wPlayerSplitHandleMonFaint
+	ld a, [hli] ; after inc, hl = wEnemySplitHandleMonFaint
+	and a
 	ret z
-
+	ld [hl], a
+	farcall FaintEnemyPokemon
+	farjp UpdateBattleStateAndExperienceAfterEnemyFaint
+.enemy_nofaint
 	farcall NewEnemyMonStatus
 	farjp ResetEnemyStatLevels
 
 BattleCommand_batonpass:
 	call CheckAnyOtherAliveMons
 	jp z, FailedBatonPass
-
-	call PursuitSwitchDuringMove
-	ret z
 
 	ld a, [hBattleTurn]
 	and a

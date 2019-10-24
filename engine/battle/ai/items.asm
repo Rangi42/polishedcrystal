@@ -243,21 +243,18 @@ AI_TryItem: ; 38105
 	jr c, .loop
 
 .used_item
-	xor a
-	ld [de], a
-	inc a
-	ld [wEnemyGoesFirst], a
-
-	xor a
-	ld [wEnemyProtectCount], a
 
 	ld hl, wEnemySubStatus4
 	res SUBSTATUS_RAGE, [hl]
 
 	xor a
+	ld [de], a
+	ld [wCurEnemyMove], a
 	ld [wLastPlayerCounterMove], a
+	ld [wEnemyProtectCount], a
 
-	ld a, 1
+	inc a
+	ld [wEnemyGoesFirst], a
 	ld [wEnemyUsingItem], a
 
 	scf
