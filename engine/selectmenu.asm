@@ -199,12 +199,12 @@ GetRegisteredItem:
 	dec b
 	jr nz, .loop
 
-	call SetPalettes
-	farcall HDMATransfer_OnlyTopFourRows
-	xor a
 	ld a, $70
 	ld [rWY], a
 	ld [hWY], a
+	call SetPalettes
+	call DelayFrame
+	farcall HDMATransfer_OnlyTopFourRows
 
 	; wait for input
 .joy_loop
