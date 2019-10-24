@@ -8682,6 +8682,7 @@ BattleCommand_lowkick:
 	ld hl, wEnemyMonSpecies
 .got_species
 	ld a, [hl]
+	ld hl, PokedexDataPointerTable
 	dec a
 	ld e, a
 	ld d, 0
