@@ -606,6 +606,9 @@ CheckIfTargetIsDarkType::
 CheckIfTargetIsRockType::
 	ld a, ROCK
 	jr CheckIfTargetIsSomeType
+CheckIfTargetIsGroundType::
+	ld a, GROUND
+	jr CheckIfTargetIsSomeType
 CheckIfTargetIsGhostType::
 	ld a, GHOST
 CheckIfTargetIsSomeType::

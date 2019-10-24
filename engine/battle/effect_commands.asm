@@ -1525,9 +1525,16 @@ BattleCommand_checkpowder:
 	ld de, 1
 	ld a, BATTLE_VARS_MOVE
 	call GetBattleVar
+	cp THUNDER_WAVE
+	jr z, .twave
 	ld hl, PowderMoves
 	call IsInArray
 	ret nc
+	jr BattleCommand_resettypematchup
+.twave
+	call CheckIfTargetIsGroundType
+	ret z
+	; fallthrough
 BattleCommand_resettypematchup: ; 34833
 ; Reset the type matchup multiplier to 1.0, if the type matchup is not 0.
 ; If there is immunity in play, the move automatically misses.
