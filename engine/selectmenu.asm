@@ -151,7 +151,6 @@ GetRegisteredItem:
 	farcall ReanchorBGMap_NoOAMUpdate
 	call SafeUpdateSprites
 	call BGMapAnchorTopLeft
-	call DelayFrame
 	call LoadStandardOpaqueFont
 	ld hl, InvertedTextPalette
 	ld de, wUnknBGPals palette PAL_BG_TEXT

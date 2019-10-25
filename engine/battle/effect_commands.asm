@@ -4935,11 +4935,11 @@ SelfInflictDamageToSubstitute: ; 35de0
 	ld hl, SubTookDamageText
 	call StdBattleTextBox
 
-	ld de, wEnemySubstituteHP
+	ld de, wEnemySubstituteHP+1 ; hp is big-endian
 	ld a, [hBattleTurn]
 	and a
 	jr z, .got_hp
-	ld de, wPlayerSubstituteHP
+	ld de, wPlayerSubstituteHP+1
 .got_hp
 
 	ld hl, wCurDamage
