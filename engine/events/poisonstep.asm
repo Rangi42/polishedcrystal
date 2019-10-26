@@ -91,6 +91,8 @@ DoPoisonStep:: ; 505da
 	jr z, .heal_poison
 	cp POISON_HEAL
 	ret z ; keep poison, but don't deal damage for it
+	cp MAGIC_GUARD
+	ret z
 
 ; check if 1 HP
 	ld a, b
