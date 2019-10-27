@@ -1752,7 +1752,7 @@ KeyItemsPocketMenuDataHeader: ; 0x10a7f
 ; 0x10a87
 
 .MenuData2: ; 0x10a87
-	db $ee ; flags
+	db $ed ; flags, special workaround for registered item symbols
 	db 5, 8 ; rows, columns
 	db 1 ; horizontal spacing
 	dbw 0, wNumKeyItems
