@@ -3986,6 +3986,8 @@ PostBattleTasks::
 	push de
 	call RestoreBattleItems
 	ld a, [wPartyCount]
+	and a
+	jr z, .no_party
 .loop
 	dec a
 	push af
@@ -3996,6 +3998,7 @@ PostBattleTasks::
 	res TOX, [hl]
 	pop af
 	jr nz, .loop
+.no_party
 	pop de
 	pop bc
 	ret

@@ -425,11 +425,8 @@ ScrollingMenu_UpdateDisplay:
 	ld a, [wMenuData2Flags]
 	bit 0, a ; call function on cancel
 	jr nz, .call_function
-	ld de, .CancelString
+	ld de, ScrollingMenu_CancelString
 	jp PlaceString
-
-.CancelString
-	db "Cancel@"
 
 .call_function
 	ld d, h
@@ -437,6 +434,9 @@ ScrollingMenu_UpdateDisplay:
 	ld hl, wMenuData2_ScrollingMenuFunction1
 	jp FarPointerCall
 ; 2486e
+
+ScrollingMenu_CancelString:
+	db "Cancel@"
 
 ScrollingMenu_CallFunctions1and2: ; 2486e
 	push hl

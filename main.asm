@@ -483,7 +483,6 @@ GetQuantityInBag:
 
 PlaceMenuItemName:
 ; places a star near the name if registered
-	push hl
 	push de
 	dec de
 	dec de
@@ -526,12 +525,13 @@ PlaceMenuItemName:
 .not_registered
 	pop bc
 	pop de
-	pop hl
 PlaceMartItemName:
 	push de
 	ld a, [wMenuSelection]
+	cp a, -1 ; special case for Cancel in Key Items pocket
+	ld de, ScrollingMenu_CancelString ; found in scrolling_menu.asm
 	ld [wNamedObjectIndexBuffer], a
-	call GetItemName
+	call nz, GetItemName
 	pop hl
 	jp PlaceString
 
