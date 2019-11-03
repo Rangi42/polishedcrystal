@@ -10,12 +10,13 @@ MrPokemonsHouse_MapScriptHeader:
 
 	db 0 ; coord events
 
-	db 5 ; bg events
+	db 6 ; bg events
 	bg_event  0,  1, SIGNPOST_JUMPTEXT, MrPokemonsHouse_ForeignMagazinesText
 	bg_event  1,  1, SIGNPOST_JUMPTEXT, MrPokemonsHouse_ForeignMagazinesText
 	bg_event  6,  1, SIGNPOST_JUMPTEXT, MrPokemonsHouse_BrokenComputerText
 	bg_event  7,  1, SIGNPOST_JUMPTEXT, MrPokemonsHouse_BrokenComputerText
 	bg_event  6,  4, SIGNPOST_JUMPTEXT, MrPokemonsHouse_StrangeCoinsText
+	bg_event  3,  1, SIGNPOST_JUMPTEXT, MrPokemonsHouse_CabinetText
 
 	db 3 ; object events
 	object_event  3,  5, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, MrPokemonsHouse_MrPokemonScript, -1
@@ -382,4 +383,10 @@ MrPokemonsHouse_StrangeCoinsText:
 
 	para "Maybe they're from"
 	line "another country…"
+	done
+
+MrPokemonsHouse_CabinetText:
+	text "A collection of"
+	line "rare curiosities"
+	cont "from all over!"
 	done
