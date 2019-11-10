@@ -5176,10 +5176,10 @@ BattleMenu_SafariBall:
 	farcall CheckItemPocket
 	ld a, [wItemAttributeParamBuffer]
 	cp BALL
-	push af
-	call nz, ClearBGPalettes
-	pop af
-	call nz, ClearTileMap
+	jr z, .ball
+	call ClearBGPalettes
+	call ClearTileMap
+.ball
 	xor a
 	ld [hBGMapMode], a
 	call _LoadBattleFontsHPBar
