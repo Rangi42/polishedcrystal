@@ -242,6 +242,9 @@ endr
 .proceed
 	ld a, [wTempMonLevel]
 	ld [wCurPartyLevel], a
+	ld a, [wTempMonForm]
+	and FORM_MASK
+	ld [wCurForm], a
 	ld a, $1
 	ld [wMonTriedToEvolve], a
 

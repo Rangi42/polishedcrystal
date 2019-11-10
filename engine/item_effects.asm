@@ -383,7 +383,7 @@ PokeBallEffect: ; e8a2
 	ld a, c
 	and a
 	jr nz, .okay_1
-	ld c, $1
+	inc c
 .okay_1
 	ld b, e
 
@@ -406,7 +406,7 @@ PokeBallEffect: ; e8a2
 	ld a, [hQuotient + 2]
 	and a
 	jr nz, .statuscheck
-	ld a, 1
+	inc a
 .statuscheck
 	ld b, a
 	ld a, [wEnemyMonStatus]
@@ -461,16 +461,16 @@ PokeBallEffect: ; e8a2
 	and a
 	jr nz, .caught
 	ld a, [wBuffer2]
-	cp $1
+	dec a ; cp $1
 	ld hl, Text_NoShake
 	jp z, .shake_and_break_free
-	cp $2
+	dec a ; cp $2
 	ld hl, Text_OneShake
 	jp z, .shake_and_break_free
-	cp $3
+	dec a ; cp $3
 	ld hl, Text_TwoShakes
 	jp z, .shake_and_break_free
-	cp $4
+	dec a ; cp $4
 	ld hl, Text_ThreeShakes
 	jp z, .shake_and_break_free
 
@@ -669,7 +669,7 @@ PokeBallEffect: ; e8a2
 	ld a, [wCurItem]
 	cp FRIEND_BALL
 	jr nz, .SkipBoxMonFriendBall
-	; Bug: overwrites the happiness of the first mon in the box!
+	; caught Pokemon become the first Pokemon in the box
 	ld a, FRIEND_BALL_HAPPINESS
 	ld [sBoxMon1Happiness], a
 .SkipBoxMonFriendBall:
@@ -1415,15 +1415,13 @@ Bicycle: ; ee08
 EvoStoneEffect:
 	ld b, PARTYMENUACTION_EVO_STONE
 	call UseItem_SelectMon
-
-	jp c, .DecidedNotToUse
+	jp c, ItemNotUsed_ExitMenu
 
 	ld a, MON_ITEM
 	call GetPartyParamLocation
-
 	ld a, [hl]
 	cp EVERSTONE
-	jr z, .NoEffect
+	jr z, .no_effect
 
 	ld a, $1
 	ld [wForceEvolution], a
@@ -1431,28 +1429,18 @@ EvoStoneEffect:
 
 	ld a, [wMonTriedToEvolve]
 	and a
-	jr z, .NoEffect
-
-	jp UseDisposableItem
-
-.NoEffect:
-	call WontHaveAnyEffectMessage
-
-.DecidedNotToUse:
-	xor a
-	ld [wItemEffectSucceeded], a
-	ret
+	jp nz, UseDisposableItem
+.no_effect
+	jp WontHaveAnyEffectMessage
 ; ee3d
 
 
 VitaminEffect: ; ee3d
 	ld b, PARTYMENUACTION_HEALING_ITEM
 	call UseItem_SelectMon
+	jp c, ItemNotUsed_ExitMenu
 
-	jp c, RareCandy_StatBooster_ExitMenu
-
-	call RareCandy_StatBooster_GetParameters
-
+	call UseItem_GetBaseDataAndNickParameters
 	call GetEVRelativePointer
 
 	ld a, MON_EVS
@@ -1461,7 +1449,7 @@ VitaminEffect: ; ee3d
 	add hl, bc
 	ld a, [hl]
 	cp 252
-	jr nc, NoEffectMessage
+	jp nc, WontHaveAnyEffectMessage
 
 	add 10
 	jr c, .set_to_max
@@ -1495,20 +1483,7 @@ VitaminEffect: ; ee3d
 	farcall ChangeHappiness
 
 	jp UseDisposableItem
-
-
-NoEffectMessage: ; ee83
-	ld hl, WontHaveAnyEffectText
-	call PrintText
-	jp ClearPalettes
 ; ee8c
-
-
-RareCandy_StatBooster_ExitMenu: ; ee9f
-	xor a
-	ld [wItemEffectSucceeded], a
-	jp ClearPalettes
-; eea6
 
 
 Text_StatRose: ; 0xeea6
@@ -1544,39 +1519,19 @@ GetEVRelativePointer: ; eed9
 ; eeeb
 
 
-RareCandy_StatBooster_GetParameters: ; eef5
-	ld a, [wCurPartySpecies]
-	ld [wCurSpecies], a
-	ld [wd265], a
-	ld a, MON_FORM
-	call GetPartyParamLocation
-	ld a, [hl]
-	ld [wCurForm], a
-	ld a, MON_LEVEL
-	call GetPartyParamLocation
-	ld a, [hl]
-	ld [wCurPartyLevel], a
-	call GetBaseData
-	ld a, [wCurPartyMon]
-	ld hl, wPartyMonNicknames
-	jp GetNick
-; 0xef14
-
-
 RareCandy: ; ef14
 	ld b, PARTYMENUACTION_HEALING_ITEM
 	call UseItem_SelectMon
+	jp c, ItemNotUsed_ExitMenu
 
-	jp c, RareCandy_StatBooster_ExitMenu
-
-	call RareCandy_StatBooster_GetParameters
+	call UseItem_GetBaseDataAndNickParameters
 
 	ld a, MON_LEVEL
 	call GetPartyParamLocation
 
 	ld a, [hl]
 	cp MAX_LEVEL
-	jp nc, NoEffectMessage
+	jp nc, WontHaveAnyEffectMessage
 
 	inc a
 	ld [hl], a
@@ -1597,8 +1552,7 @@ RareCandy: ; ef14
 	ld [hl], a
 
 	push bc
-	ld a, MON_MAXHP
-	call GetPartyParamLocation
+	call UseItem_GetMaxHPParameter
 	push de
 	ld de, wStringBuffer3
 	ld bc, 12
@@ -1615,13 +1569,7 @@ RareCandy: ; ef14
 	xor a ; PARTYMON
 	ld [wMonType], a
 	predef CopyPkmnToTempMon
-
 	farcall PrintStatDifferences
-
-	xor a ; PARTYMON
-	ld [wMonType], a
-	ld a, [wCurPartySpecies]
-	ld [wd265], a
 	predef LearnLevelMoves
 
 	xor a
@@ -1635,50 +1583,52 @@ RareCandy: ; ef14
 HealPowder: ; efad
 	ld b, PARTYMENUACTION_HEALING_ITEM
 	call UseItem_SelectMon
-
-	jp c, StatusHealer_ExitMenu
+	jp c, ItemNotUsed_ExitMenu
 
 	call UseStatusHealer
+	and a
+	jp nz, WontHaveAnyEffectMessage
 
-	cp $0
-	jr nz, .asm_efc9
 	ld c, HAPPINESS_BITTERPOWDER
 	farcall ChangeHappiness
-
-	call LooksBitterMessage
-
-	xor a
-
-.asm_efc9
-	jp StatusHealer_Jumptable
+	jp LooksBitterMessage
 ; efcc
 
 
 HealStatusEffect: ; efcc
 	ld b, PARTYMENUACTION_HEALING_ITEM
 	call UseItem_SelectMon
-	jp c, StatusHealer_ExitMenu
+	jp c, ItemNotUsed_ExitMenu
 
 FullyHealStatus: ; efd4
 	call UseStatusHealer
-	jp StatusHealer_Jumptable
+	and a
+	jp nz, WontHaveAnyEffectMessage
+	ret
 ; efda
 
 
 UseStatusHealer: ; efda (3:6fda)
 	call IsMonFainted
-	ld a, $1
-	ret z
+	jr z, .no_good
 	call GetItemHealingAction
 	ld a, MON_STATUS
 	call GetPartyParamLocation
 	ld a, [hl]
 	and c
 	jr nz, .good
-	call IsItemUsedOnConfusedMon
-	ld a, $1
-	ret nc
+
+	; is item used on confused mon?
+	call IsItemUsedOnBattleMon
+	jr nc, .no_good
+	ld a, [wPlayerSubStatus3]
+	bit SUBSTATUS_CONFUSED, a
+	jr z, .no_good
+	ld a, c
+	inc a ; cp $ff
+	jr nz, .no_good
 	ld b, PARTYMENUTEXT_HEAL_CONFUSION
+
 .good
 	xor a
 	ld [hl], a
@@ -1691,27 +1641,14 @@ UseStatusHealer: ; efda (3:6fda)
 	xor a
 	ret
 
-IsItemUsedOnConfusedMon: ; f009 (3:7009)
-	call IsItemUsedOnBattleMon
-	jr nc, .nope
-	ld a, [wPlayerSubStatus3]
-	bit SUBSTATUS_CONFUSED, a
-	jr z, .nope
-	ld a, c
-	cp $ff
-	jr nz, .nope
-	scf
-	ret
-
-.nope
-	and a
+.no_good
+	ld a, $1
 	ret
 
 BattlemonRestoreHealth: ; f01e (3:701e)
 	call IsItemUsedOnBattleMon
 	ret nc
-	ld a, MON_HP
-	call GetPartyParamLocation
+	call UseItem_GetHPParameter
 	ld a, [hli]
 	ld [wBattleMonHP], a
 	ld a, [hld]
@@ -1759,18 +1696,6 @@ GetItemHealingAction: ; f058 (3:7058)
 	db SLP,      PARTYMENUTEXT_HEAL_SLP
 	db -1,       PARTYMENUTEXT_HEAL_ALL
 
-
-StatusHealer_Jumptable: ; f09e (3:709e)
-	ld hl, .dw
-	rst JumpTable
-	ret
-
-.dw ; f0a3 (3:70a3)
-	dw StatusHealer_ClearPalettes
-	dw StatusHealer_NoEffect
-	dw StatusHealer_ExitMenu
-
-
 RevivalHerb: ; f0a9
 	ld a, [wInitialOptions]
 	bit NUZLOCKE_MODE, a
@@ -1778,19 +1703,15 @@ RevivalHerb: ; f0a9
 
 	ld b, PARTYMENUACTION_HEALING_ITEM
 	call UseItem_SelectMon
-	jp c, StatusHealer_ExitMenu
+	jp c, ItemNotUsed_ExitMenu
 
 	call RevivePokemon
-	cp 0
-	jr nz, .asm_f0c5
+	and a
+	jp WontHaveAnyEffectMessage
 
 	ld c, HAPPINESS_REVIVALHERB
 	farcall ChangeHappiness
-	call LooksBitterMessage
-	xor a
-
-.asm_f0c5
-	jp StatusHealer_Jumptable
+	jp LooksBitterMessage
 ; f0c8
 
 
@@ -1801,10 +1722,12 @@ ReviveEffect: ; f0c8
 
 	ld b, PARTYMENUACTION_HEALING_ITEM
 	call UseItem_SelectMon
-	jp c, StatusHealer_ExitMenu
+	jp c, ItemNotUsed_ExitMenu
 
 	call RevivePokemon
-	jp StatusHealer_Jumptable
+	and a
+	jp nz, WontHaveAnyEffectMessage
+	ret
 ; f0d6
 
 
@@ -1859,10 +1782,10 @@ RevivePokemon: ; f0d6
 FullRestore: ; f128
 	ld b, PARTYMENUACTION_HEALING_ITEM
 	call UseItem_SelectMon
-	jp c, StatusHealer_ExitMenu
+	jp c, ItemNotUsed_ExitMenu
 
 	call IsMonFainted
-	jp z, StatusHealer_NoEffect
+	jp z, WontHaveAnyEffectMessage
 
 	call IsMonAtFullHealth
 	jp nc, FullyHealStatus
@@ -1881,17 +1804,14 @@ FullRestore: ; f128
 	ld a, PARTYMENUTEXT_HEAL_HP
 	ld [wPartyMenuActionText], a
 	call ItemActionTextWaitButton
-	call UseDisposableItem
-	xor a
-	jp StatusHealer_Jumptable
+	jp UseDisposableItem
 ; f144
 
 
 PersimBerry: ; f16a
 	ld hl, wPlayerSubStatus3
 	bit SUBSTATUS_CONFUSED, [hl]
-	ld a, 1
-	jr z, .done
+	jp z, WontHaveAnyEffectMessage
 
 	res SUBSTATUS_CONFUSED, [hl]
 	xor a
@@ -1899,18 +1819,19 @@ PersimBerry: ; f16a
 	call UseItemText
 
 	ld hl, ConfusedNoMoreText
-	call StdBattleTextBox
-
-	xor a
-
-.done
-	jp StatusHealer_Jumptable
+	jp StdBattleTextBox
 ; f186
 
 
 RestoreHPEffect: ; f186
+	ld b, PARTYMENUACTION_HEALING_ITEM
+	call UseItem_SelectMon
+	jp c, ItemNotUsed_ExitMenu
+
 	call ItemRestoreHP
-	jp StatusHealer_Jumptable
+	and a
+	jp nz, WontHaveAnyEffectMessage
+	ret
 ; f18c
 
 
@@ -1924,27 +1845,22 @@ EnergyRoot: ; f190
 ; f192
 
 EnergyPowderEnergyRootCommon: ; f192
+	ld b, PARTYMENUACTION_HEALING_ITEM
+	call UseItem_SelectMon
+	jp c, ItemNotUsed_ExitMenu
+    
 	push bc
 	call ItemRestoreHP
 	pop bc
-	cp 0
-	jr nz, .skip_happiness
+	and a
+	jp nz, WontHaveAnyEffectMessage
 
 	farcall ChangeHappiness
-	call LooksBitterMessage
-	xor a
-
-.skip_happiness
-	jp StatusHealer_Jumptable
+	jp LooksBitterMessage
 ; f1a9
 
 
 ItemRestoreHP:
-	ld b, PARTYMENUACTION_HEALING_ITEM
-	call UseItem_SelectMon
-	ld a, 2
-	ret c
-
 	call IsMonFainted
 	ld a, 1
 	ret z
@@ -2024,12 +1940,27 @@ UseItem_DoSelectMon:
 	and a
 	ret
 
+UseItem_GetBaseDataAndNickParameters: ; eef5
+; loads base data and nickname into memory
+	ld a, [wCurPartySpecies]
+	ld [wCurSpecies], a
+	ld [wd265], a
+	call GetBaseData
+	ld a, [wCurPartyMon]
+	ld hl, wPartyMonNicknames
+	jp GetNick
+; 0xef14
+
+UseItem_GetHPParameter:
+	ld a, MON_HP
+	jp GetPartyParamLocation
+
+UseItem_GetMaxHPParameter:
+	ld a, MON_MAXHP
+	jp GetPartyParamLocation
+
 ChoosePkmnToUseItemOn: ; f21c (3:721c)
-	farcall LoadPartyMenuGFX
-	farcall InitPartyMenuWithCancel
-	farcall InitPartyMenuGFX
-	farcall WritePartyMenuTilemap
-	farcall PrintPartyMenuText
+	farcall InitPartyMenuLayout
 	call ApplyTilemapInVBlank
 	call SetPalettes
 	call DelayFrame
@@ -2073,16 +2004,6 @@ ItemActionTextWaitButton: ; f279 (3:7279)
 	call DelayFrames
 	jp WaitPressAorB_BlinkCursor
 
-StatusHealer_NoEffect: ; f299 (3:7299)
-	call WontHaveAnyEffectMessage
-	jr StatusHealer_ClearPalettes
-
-StatusHealer_ExitMenu: ; f29e (3:729e)
-	xor a
-	ld [wItemEffectSucceeded], a
-StatusHealer_ClearPalettes: ; f2a2 (3:72a2)
-	jp ClearPalettes
-
 IsItemUsedOnBattleMon: ; f2a6 (3:72a6)
 	ld a, [wBattleMode]
 	and a
@@ -2109,16 +2030,15 @@ ReviveHalfHP: ; f2ba (3:72ba)
 ReviveFullHP: ; f2c3 (3:72c3)
 	call LoadHPFromBuffer1
 ContinueRevive: ; f2c6 (3:72c6)
-	ld a, MON_HP
-	call GetPartyParamLocation
+	call UseItem_GetHPParameter
 	ld [hl], d
 	inc hl
 	ld [hl], e
 	jp LoadCurHPIntoBuffer5
 
 RestoreHealth: ; f2d1 (3:72d1)
-	ld a, MON_HP + 1
-	call GetPartyParamLocation
+	call UseItem_GetHPParameter
+	inc hl
 	ld a, [hl]
 	add e
 	ld [hld], a
@@ -2127,12 +2047,11 @@ RestoreHealth: ; f2d1 (3:72d1)
 	ld [hl], a
 	jr c, .full_hp
 	call LoadCurHPIntoBuffer5
-	ld a, MON_HP + 1
-	call GetPartyParamLocation
+	inc hl
 	ld d, h
 	ld e, l
-	ld a, MON_MAXHP + 1
-	call GetPartyParamLocation
+	call UseItem_GetMaxHPParameter
+	inc hl
 	ld a, [de]
 	sub [hl]
 	dec de
@@ -2144,8 +2063,8 @@ RestoreHealth: ; f2d1 (3:72d1)
 	jp ReviveFullHP
 
 RemoveHP: ; f2f9 (3:72f9)
-	ld a, MON_HP + 1
-	call GetPartyParamLocation
+	call UseItem_GetHPParameter
+	inc hl
 	ld a, [hl]
 	sub e
 	ld [hld], a
@@ -2181,8 +2100,7 @@ IsMonAtFullHealth: ; f31b (3:731b)
 	ret
 
 LoadCurHPIntoBuffer5: ; f328 (3:7328)
-	ld a, MON_HP
-	call GetPartyParamLocation
+	call UseItem_GetHPParameter
 	ld a, [hli]
 	ld [wBuffer6], a
 	ld a, [hl]
@@ -2191,8 +2109,7 @@ LoadCurHPIntoBuffer5: ; f328 (3:7328)
 ; f336 (3:7336)
 
 LoadCurHPToBuffer3: ; f348 (3:7348)
-	ld a, MON_HP
-	call GetPartyParamLocation
+	call UseItem_GetHPParameter
 	ld a, [hli]
 	ld [wBuffer4], a
 	ld a, [hl]
@@ -2208,8 +2125,7 @@ LoadHPFromBuffer3: ; f356 (3:7356)
 
 LoadMaxHPToBuffer1: ; f35f (3:735f)
 	push hl
-	ld a, MON_MAXHP
-	call GetPartyParamLocation
+	call UseItem_GetMaxHPParameter
 	ld a, [hli]
 	ld [wBuffer2], a
 	ld a, [hl]
@@ -2226,8 +2142,7 @@ LoadHPFromBuffer1: ; f36f (3:736f)
 
 GetOneFifthMaxHP: ; f378 (3:7378)
 	push bc
-	ld a, MON_MAXHP
-	call GetPartyParamLocation
+	call UseItem_GetMaxHPParameter
 	ld a, [hli]
 	ld [hDividend + 0], a
 	ld a, [hl]
@@ -2277,8 +2192,7 @@ GetHealingItemAmount: ; f395 (3:7395)
 	ret
 
 .set_de_to_hp
-	ld a, MON_MAXHP
-	call GetPartyParamLocation
+	call UseItem_GetMaxHPParameter
 	ld a, [hli]
 	ld d, a
 	ld e, [hl]
@@ -2362,8 +2276,8 @@ EscapeRope: ; f44f
 	farcall EscapeRopeFunction
 
 	ld a, [wItemEffectSucceeded]
-	cp 1
-	call z, UseDisposableItem
+	dec a
+	jp z, UseDisposableItem
 	ret
 ; f462
 
@@ -2392,7 +2306,7 @@ TextJump_RepelUsedEarlierIsStillInEffect: ; 0xf47d
 PokeDoll: ; f48f
 	ld a, [wBattleMode]
 	dec a
-	jr nz, .asm_f4a6
+	jp nz, ItemNotUsed_ExitMenu ; not a wild battle
 	inc a
 	ld [wBattleEnded], a
 	ld a, [wBattleResult]
@@ -2400,11 +2314,6 @@ PokeDoll: ; f48f
 	or $2
 	ld [wBattleResult], a
 	jp UseItemText
-
-.asm_f4a6
-	xor a
-	ld [wItemEffectSucceeded], a
-	ret
 ; f4ab
 
 
@@ -2558,7 +2467,7 @@ RestorePPEffect: ; f5bf
 	; Party Screen opens to choose on which Pkmn to use the Item
 	ld b, PARTYMENUACTION_HEALING_ITEM
 	call UseItem_SelectMon
-	jp c, PPRestoreItem_Cancel
+	jp c, ItemNotUsed_ExitMenu
 
 .loop2
 	ld a, [wd002]
@@ -2650,7 +2559,6 @@ RestorePPEffect: ; f5bf
 	call PrintText
 
 FinishPPRestore: ; f64c
-	call ClearPalettes
 	jp UseDisposableItem
 ; f652
 
@@ -2712,7 +2620,7 @@ endr
 Not_PP_Up: ; f6a7
 	call RestorePP
 	jr nz, BattleRestorePP
-	jp PPRestoreItem_NoEffect
+	jp WontHaveAnyEffectMessage
 ; f6af
 
 Elixir_RestorePPofAllMoves: ; f6af
@@ -2744,16 +2652,7 @@ Elixir_RestorePPofAllMoves: ; f6af
 	ld a, [wMenuCursorX]
 	and a
 	jp nz, BattleRestorePP
-
-PPRestoreItem_NoEffect: ; f6dd
-	call WontHaveAnyEffectMessage
-
-PPRestoreItem_Cancel: ; f6e0
-	call ClearPalettes
-	xor a
-	ld [wItemEffectSucceeded], a
-	ret
-; f6e8
+	jp WontHaveAnyEffectMessage
 
 RestorePP: ; f6e8
 	xor a ; PARTYMON
@@ -2859,7 +2758,7 @@ SacredAsh: ; f753
 
 	farcall _SacredAsh
 	ld a, [wItemEffectSucceeded]
-	cp $1
+	dec a
 	ret nz
 	jp UseDisposableItem
 ; f763
@@ -2932,14 +2831,7 @@ Ball_MonCantBeCaughtMessage:
 
 Revive_NuzlockeFailureMessage:
 	ld hl, Revive_NuzlockeFailureText
-	; fallthrough
-
-ItemWasntUsedMessage:
-	; Item wasn't used.
-	ld a, $2
-	ld [wItemEffectSucceeded], a
-	jp PrintText
-; f7e8
+	jr ItemWasntUsedMessage
 
 Ball_NuzlockeFailureMessage:
 	ld hl, Ball_NuzlockeFailureText
@@ -2951,10 +2843,12 @@ Ball_NuzlockeFailureMessage:
 	cp SAFARI_BALL
 	ret z
 
+ItemWasntUsedMessage:
 	; Item wasn't used.
 	ld a, $2
 	ld [wItemEffectSucceeded], a
 	jp PrintText
+; f7e8
 
 CantUseOnEggMessage: ; f7e8
 	ld hl, CantUseOnEggText
@@ -2970,10 +2864,12 @@ WontHaveAnyEffectMessage: ; f7f2
 
 CantUseItemMessage: ; f804
 ; Item couldn't be used.
+	call PrintText
+	; fallthrough
+ItemNotUsed_ExitMenu:
 	xor a
 	ld [wItemEffectSucceeded], a
-	jp PrintText
-; f80b
+	ret
 
 LooksBitterText: ; 0xf80b
 	; It looks bitter…
@@ -3262,7 +3158,7 @@ AbilityCap:
 	ld b, PARTYMENUACTION_HEALING_ITEM
 	call UseItem_SelectMon
 .loop
-	jr c, .abort
+	ret c
 
 	push hl
 	ld a, MON_ABILITY
@@ -3277,11 +3173,7 @@ AbilityCap:
 	ld e, l
 	pop hl
 	push hl
-	ld a, MON_SPECIES
-	call GetPartyParamLocation
-	ld a, [hl]
-	ld [wCurSpecies], a
-	call GetBaseData
+	call UseItem_GetBaseDataAndNickParameters
 	ld a, [wBaseAbility1]
 	ld b, a
 	ld a, [wBaseAbility2]
@@ -3320,9 +3212,7 @@ AbilityCap:
 	ld [hl], a
 	call UseDisposableItem
 	ld hl, AbilityChangedText
-	call PrintText
-.abort
-	jp ClearPalettes
+	jp PrintText
 
 .no_effect
 	call WontHaveAnyEffectMessage

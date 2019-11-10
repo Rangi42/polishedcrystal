@@ -3241,6 +3241,8 @@ EnemySwitch: ; 3d4e1
 	inc a
 	ld [wEnemyIsSwitching], a
 	call LoadTileMapToTempTileMap
+	ld a, [wCurBattleMon]
+	ld [wCurPartyMon], a
 	jp PlayerSwitch
 ; 3d517
 
@@ -3484,8 +3486,6 @@ OfferSwitch: ; 3d74b
 	call SetUpBattlePartyMenu_NoLoop
 	call PickSwitchMonInBattle
 	jr c, .canceled_switch
-	ld a, [wCurBattleMon]
-	ld [wLastPlayerMon], a
 	ld a, [wCurPartyMon]
 	ld [wCurBattleMon], a
 	call ClearPalettes
@@ -4208,8 +4208,7 @@ PursuitSwitch: ; 3dc5b
 	ld a, [hBattleTurn]
 	and a
 	jr z, .check_enemy_fainted
-	ld a, [wCurBattleMon]
-	call UpdateBattleMon
+	call UpdateBattleMonInParty
 	call HasPlayerFainted
 	jr nz, PursuitSwitch_done
 	jr .done_fainted
@@ -5177,7 +5176,10 @@ BattleMenu_SafariBall:
 	farcall CheckItemPocket
 	ld a, [wItemAttributeParamBuffer]
 	cp BALL
-	call nz, ClearBGPalettes
+	jr z, .ball
+	call ClearBGPalettes
+	call ClearTileMap
+.ball
 	xor a
 	ld [hBGMapMode], a
 	call _LoadBattleFontsHPBar
@@ -5553,8 +5555,6 @@ BattleMonEntrance: ; 3e40b
 	lb bc, 5, 11
 	call ClearBox
 
-	ld a, [wCurBattleMon]
-	ld [wLastPlayerMon], a
 	ld a, [wCurPartyMon]
 	ld [wCurBattleMon], a
 	call AddBattleParticipant
