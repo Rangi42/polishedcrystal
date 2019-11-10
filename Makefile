@@ -85,16 +85,12 @@ crystal: FILLER = 0x00
 crystal: ROM_NAME = $(NAME)-$(VERSION)
 crystal: $(NAME)-$(VERSION).gbc
 
-faithful: ROM_NAME = $(NAME)-$(VERSION)-faithful
-faithful: $(NAME)-$(VERSION)-faithful.gbc
-
+faithful: crystal
 nortc: crystal
 monochrome: crystal
 noir: crystal
 hgss: crystal
-
-debug: ROM_NAME = $(NAME)-$(VERSION)-debug
-debug: $(NAME)-$(VERSION)-debug.gbc
+debug: crystal
 
 bankfree: FILLER = 0xff
 bankfree: ROM_NAME = $(NAME)-$(VERSION)-0xff
