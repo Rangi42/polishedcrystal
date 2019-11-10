@@ -16,7 +16,7 @@ MrPokemonsHouse_MapScriptHeader:
 	bg_event  6,  1, SIGNPOST_JUMPTEXT, MrPokemonsHouse_BrokenComputerText
 	bg_event  7,  1, SIGNPOST_JUMPTEXT, MrPokemonsHouse_BrokenComputerText
 	bg_event  6,  4, SIGNPOST_JUMPTEXT, MrPokemonsHouse_StrangeCoinsText
-	bg_event  3,  1, SIGNPOST_JUMPTEXT, MrPokemonsHouse_CabinetText
+	bg_event  3,  1, SIGNPOST_READ, MrPokemonsHouse_CabinetScript
 
 	db 3 ; object events
 	object_event  3,  5, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, MrPokemonsHouse_MrPokemonScript, -1
@@ -83,6 +83,7 @@ MrPokemonsHouse_MrPokemonScript:
 	playsound SFX_KEY_ITEM
 	waitsfx
 	takeitem RED_SCALE
+	setevent EVENT_TRADED_RED_SCALE
 	jumpopenedtext MrPokemonText_AlwaysNewDiscoveries
 
 .party_full
@@ -146,6 +147,18 @@ MrPokemonsHouse_OakScript:
 
 .RivalTakesCyndaquil:
 	setevent EVENT_CYNDAQUIL_POKEBALL_IN_ELMS_LAB
+	end
+
+MrPokemonsHouse_CabinetScript:
+	opentext
+	writetext MrPokemonsHouse_CabinetText
+	checkevent EVENT_TRADED_RED_SCALE
+	iffalse .NoRedScale
+	buttonsound
+	writetext MrPokemonsHouse_RedScaleCabinetText
+.NoRedScale
+	waitbutton
+	closetext
 	end
 
 MrPokemonsHouse_PlayerWalksToMrPokemon:
@@ -389,4 +402,9 @@ MrPokemonsHouse_CabinetText:
 	text "A collection of"
 	line "rare curiosities"
 	cont "from all over!"
+	done
+
+MrPokemonsHouse_RedScaleCabinetText:
+	text "One of them is the"
+	line "shiny red scale!"
 	done
