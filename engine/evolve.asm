@@ -343,10 +343,10 @@ endr
 	ld bc, PARTYMON_STRUCT_LENGTH
 	rst CopyBytes
 
-	ld a, [wCurSpecies]
-	ld [wd265], a
 	xor a
 	ld [wMonType], a
+	ld a, [wCurSpecies]
+	ld [wd265], a
 	dec a
 	call SetSeenAndCaughtMon
 
