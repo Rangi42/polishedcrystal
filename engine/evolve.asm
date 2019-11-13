@@ -348,10 +348,6 @@ endr
 	xor a
 	ld [wMonType], a
 	ld a, [wd265]
-	push af
-	call LearnEvolutionMove
-	call LearnLevelMoves
-	pop af
 	ld [wd265], a
 	dec a
 	call SetSeenAndCaughtMon
@@ -370,6 +366,10 @@ endr
 	ld a, [wTempMonSpecies]
 	ld [hl], a
 	push hl
+	push af
+	call LearnEvolutionMove
+	call LearnLevelMoves
+	pop af
 	ld l, e
 	ld h, d
 	jp EvolveAfterBattle_MasterLoop
@@ -506,8 +506,11 @@ LearnEvolutionMove:
 	ld [wd265], a
 	call GetMoveName
 	call CopyName1
-	predef LearnMove
 	ld a, [wCurPartySpecies]
+	push af
+	predef LearnMove
+	pop af
+	ld [wCurPartySpecies], a
 	ld [wd265], a
 
 .has_move
@@ -536,7 +539,7 @@ LearnLevelMoves: ; 42487
 .find_move
 	ld a, [hli]
 	and a
-	jr z, .done
+	ret z
 
 	ld b, a
 	ld a, [wCurPartyLevel]
@@ -570,14 +573,14 @@ LearnLevelMoves: ; 42487
 	ld [wd265], a
 	call GetMoveName
 	call CopyName1
+	ld a, [wCurPartySpecies]
+    push af
 	predef LearnMove
+	pop af
+	ld [wCurPartySpecies], a
+	ld [wd265], a
 	pop hl
 	jr .find_move
-
-.done
-	ld a, [wCurPartySpecies]
-	ld [wd265], a
-	ret
 ; 424e1
 
 
