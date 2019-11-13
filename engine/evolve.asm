@@ -574,7 +574,7 @@ LearnLevelMoves: ; 42487
 	call GetMoveName
 	call CopyName1
 	ld a, [wCurPartySpecies]
-    push af
+	push af
 	predef LearnMove
 	pop af
 	ld [wCurPartySpecies], a
