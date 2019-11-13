@@ -347,8 +347,6 @@ endr
 	ld [wd265], a
 	xor a
 	ld [wMonType], a
-	ld a, [wd265]
-	ld [wd265], a
 	dec a
 	call SetSeenAndCaughtMon
 
@@ -366,10 +364,8 @@ endr
 	ld a, [wTempMonSpecies]
 	ld [hl], a
 	push hl
-	push af
 	call LearnEvolutionMove
 	call LearnLevelMoves
-	pop af
 	ld l, e
 	ld h, d
 	jp EvolveAfterBattle_MasterLoop
