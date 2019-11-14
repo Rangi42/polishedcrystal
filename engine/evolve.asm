@@ -364,8 +364,10 @@ endr
 	ld a, [wTempMonSpecies]
 	ld [hl], a
 	push hl
+	push de
 	call LearnEvolutionMove
 	call LearnLevelMoves
+	pop de
 	ld l, e
 	ld h, d
 	jp EvolveAfterBattle_MasterLoop
