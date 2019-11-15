@@ -1303,11 +1303,11 @@ ChooseMoveToForget:
 	jr .done
 
 .tm_tutor
-	farcall LoadPartyMenuGFX
-	farcall InitPartyMenuWithCancel
-	farcall InitPartyMenuGFX
-	farcall WritePartyMenuTilemap
-	farcall PrintPartyMenuText
+	ld a, [wCurPartyMon]
+	push af
+	farcall InitPartyMenuLayout
+	pop af
+	ld [wCurPartyMon], a
 	call SpeechTextBox
 .done
 	call ApplyTilemapInVBlank
@@ -1333,11 +1333,7 @@ ChooseMoveToRelearn:
 	call ClearBGPalettes
 	ld a, [wCurPartyMon]
 	push af
-	farcall LoadPartyMenuGFX
-	farcall InitPartyMenuWithCancel
-	farcall InitPartyMenuGFX
-	farcall WritePartyMenuTilemap
-	farcall PrintPartyMenuText
+	farcall InitPartyMenuLayout
 	pop af
 	ld [wCurPartyMon], a
 	pop af

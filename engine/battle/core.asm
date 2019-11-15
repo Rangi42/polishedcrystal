@@ -5253,6 +5253,7 @@ BattleMenuPKMN_Loop:
 
 .Moves:
 	farcall ManagePokemonMoves
+	call GetMonBackpic
 
 .Cancel:
 	jr BattleMenuPKMN_Loop
