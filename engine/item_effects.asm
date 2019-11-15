@@ -2089,7 +2089,6 @@ RestoreHealth: ; f2d1 (3:72d1)
 	ld [hl], a
 	jr c, .full_hp
 	call LoadCurHPIntoBuffer5
-	inc hl
 	ld d, h
 	ld e, l
 	call UseItem_GetMaxHPParameter
