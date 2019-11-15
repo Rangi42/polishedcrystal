@@ -106,6 +106,7 @@ ItemDescriptions:
 	dw RowapBerryDesc
 	dw KeeBerryDesc
 	dw MarangaBerryDesc
+	dw BerryJuiceDesc
 	dw SilkScarfDesc
 	dw BlackBeltDesc
 	dw SharpBeakDesc

@@ -133,6 +133,7 @@ ItemEffects: ; e73c
 	dw NoEffect         ; ROWAP_BERRY
 	dw NoEffect         ; ROWAP_BERRY
 	dw NoEffect         ; MARANGABERRY
+	dw RestoreHPEffect  ; BERRY_JUICE
 	dw NoEffect         ; SILK_SCARF
 	dw NoEffect         ; BLACK_BELT
 	dw NoEffect         ; SHARP_BEAK

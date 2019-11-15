@@ -114,6 +114,7 @@ endc
 	db "Rowap Berry@"
 	db "Kee Berry@"
 	db "MarangaBerry@"
+	db "Berry Juice@"
 	db "Silk Scarf@"
 	db "Black Belt@"
 	db "Sharp Beak@"

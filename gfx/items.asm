@@ -203,6 +203,7 @@ JabocaBerryIcon:  INCBIN "gfx/items/jaboca_berry.2bpp.lz"
 RowapBerryIcon:   INCBIN "gfx/items/rowap_berry.2bpp.lz"
 KeeBerryIcon:     INCBIN "gfx/items/kee_berry.2bpp.lz"
 MarangaBerryIcon: INCBIN "gfx/items/marangaberry.2bpp.lz"
+BerryJuiceIcon:   INCBIN "gfx/items/berry_juice.2bpp.lz"
 SilkScarfIcon:
 ChoiceScarfIcon:  INCBIN "gfx/items/scarf.2bpp.lz"
 BlackBeltIcon:    INCBIN "gfx/items/black_belt.2bpp.lz"
