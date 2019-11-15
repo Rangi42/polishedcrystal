@@ -89,7 +89,7 @@ Buena:
 	ifless 18, UnknownScript_0x5d893
 	checkflag ENGINE_BUENAS_PASSWORD
 	iffalse UnknownScript_0x5d80a
-	checkitem BLUE_CARD
+	checkkeyitem BLUE_CARD
 	iffalse UnknownScript_0x5d86b
 	checkcode VAR_BLUECARDBALANCE
 	ifequal 30, UnknownScript_0x5d87f
@@ -133,7 +133,7 @@ UnknownScript_0x5d800:
 	writetext UnknownText_0x5dcf4
 	buttonsound
 	setevent EVENT_MET_BUENA
-	verbosegiveitem BLUE_CARD
+	verbosegivekeyitem BLUE_CARD
 UnknownScript_0x5d80a:
 	writetext UnknownText_0x5de10
 	waitbutton
@@ -267,7 +267,7 @@ UnknownScript_0x5d8fe:
 	end
 
 ReceptionistScript_0x5d8ff:
-	checkitem BLUE_CARD
+	checkkeyitem BLUE_CARD
 	iffalse_jumptextfaceplayer UnknownText_0x5e3d8
 	pokemart MARTTYPE_BLUECARD, 0
 

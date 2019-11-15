@@ -34,7 +34,7 @@ FlowerShopTeacherScript:
 	opentext
 	writetext UnknownText_0x554c2
 	buttonsound
-	verbosegiveitem SQUIRTBOTTLE
+	verbosegivekeyitem SQUIRTBOTTLE
 	setevent EVENT_GOT_SQUIRTBOTTLE
 	closetext
 	setevent EVENT_FLORIA_AT_SUDOWOODO

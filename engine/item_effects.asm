@@ -12,6 +12,18 @@ _DoItemEffect:: ; e722
 	ret
 ; e73c
 
+DoKeyItemEffect::
+	ld a, [wCurKeyItem]
+	ld [wd265], a
+	call GetKeyItemName
+	call CopyName1
+	ld a, 1
+	ld [wItemEffectSucceeded], a
+	ld a, [wCurKeyItem]
+	dec a
+	ld hl, KeyItemEffects
+	rst JumpTable
+	ret
 
 ItemEffects: ; e73c
 	dw PokeBallEffect   ; POKE_BALL
@@ -69,6 +81,7 @@ ItemEffects: ; e73c
 	dw RestoreHPEffect  ; LEMONADE
 	dw RestoreHPEffect  ; MOOMOO_MILK
 	dw HealStatusEffect ; RAGECANDYBAR
+	dw HealStatusEffect ; PEWTERCRUNCH
 	dw SacredAsh        ; SACRED_ASH
 	dw EnergyPowder     ; ENERGYPOWDER
 	dw EnergyRoot       ; ENERGY_ROOT
@@ -98,36 +111,36 @@ ItemEffects: ; e73c
 	dw EvoStoneEffect   ; SHINY_STONE
 	dw EvoStoneEffect   ; ICE_STONE
 	dw NoEffect         ; EVERSTONE
-	dw Bicycle          ; BICYCLE
-	dw OldRod           ; OLD_ROD
-	dw GoodRod          ; GOOD_ROD
-	dw SuperRod         ; SUPER_ROD
-	dw CoinCase         ; COIN_CASE
-	dw Itemfinder       ; ITEMFINDER
 	dw NoEffect         ; EXP_SHARE
-	dw NoEffect         ; MYSTERY_EGG
-	dw SquirtBottle     ; SQUIRTBOTTLE
-	dw NoEffect         ; SECRETPOTION
-	dw NoEffect         ; RED_SCALE
-	dw CardKey          ; CARD_KEY
-	dw BasementKey      ; BASEMENT_KEY
-	dw NoEffect         ; S_S_TICKET
-	dw NoEffect         ; PASS
-	dw NoEffect         ; MACHINE_PART
-	dw NoEffect         ; LOST_ITEM
-	dw NoEffect         ; RAINBOW_WING
-	dw NoEffect         ; SILVER_WING
-	dw NoEffect         ; CLEAR_BELL
-	dw NoEffect         ; GS_BALL
-	dw BlueCard         ; BLUE_CARD
-	dw NoEffect         ; ORANGETICKET
-	dw NoEffect         ; MYSTICTICKET
-	dw NoEffect         ; OLD_SEA_MAP
-	dw NoEffect         ; SHINY_CHARM
-	dw NoEffect         ; OVAL_CHARM
-	dw NoEffect         ; SILPHSCOPE2
-	dw ApricornBox      ; APRICORN_BOX
-	dw NoEffect         ; TERU_SAMA
+	dw NoEffect         ; TERU_SAMA_01
+	dw NoEffect         ; TERU_SAMA_02
+	dw NoEffect         ; TERU_SAMA_03
+	dw NoEffect         ; TERU_SAMA_04
+	dw NoEffect         ; TERU_SAMA_05
+	dw NoEffect         ; TERU_SAMA_06
+	dw NoEffect         ; TERU_SAMA_07
+	dw NoEffect         ; TERU_SAMA_08
+	dw NoEffect         ; TERU_SAMA_09
+	dw NoEffect         ; TERU_SAMA_10
+	dw NoEffect         ; TERU_SAMA_11
+	dw NoEffect         ; TERU_SAMA_12
+	dw NoEffect         ; TERU_SAMA_13
+	dw NoEffect         ; TERU_SAMA_14
+	dw NoEffect         ; TERU_SAMA_15
+	dw NoEffect         ; TERU_SAMA_16
+	dw NoEffect         ; TERU_SAMA_17
+	dw NoEffect         ; TERU_SAMA_18
+	dw NoEffect         ; TERU_SAMA_19
+	dw NoEffect         ; TERU_SAMA_20
+	dw NoEffect         ; TERU_SAMA_21
+	dw NoEffect         ; TERU_SAMA_22
+	dw NoEffect         ; TERU_SAMA_23
+	dw NoEffect         ; TERU_SAMA_24
+	dw NoEffect         ; TERU_SAMA_25
+	dw NoEffect         ; TERU_SAMA_26
+	dw NoEffect         ; TERU_SAMA_27
+	dw NoEffect         ; TERU_SAMA_28
+	dw NoEffect         ; TERU_SAMA_29
 	dw HealStatusEffect ; CHERI_BERRY
 	dw HealStatusEffect ; CHESTO_BERRY
 	dw HealStatusEffect ; PECHA_BERRY
@@ -148,7 +161,6 @@ ItemEffects: ; e73c
 	dw NoEffect         ; ROWAP_BERRY
 	dw NoEffect         ; ROWAP_BERRY
 	dw NoEffect         ; MARANGABERRY
-	dw HealStatusEffect ; PEWTERCRUNCH
 	dw NoEffect         ; SILK_SCARF
 	dw NoEffect         ; BLACK_BELT
 	dw NoEffect         ; SHARP_BEAK
@@ -269,6 +281,36 @@ ItemEffects: ; e73c
 	dw NoEffect         ; MUSIC_MAIL
 	dw NoEffect         ; MIRAGE_MAIL
 ; e8a2
+
+KeyItemEffects:
+	dw Bicycle          ; BICYCLE
+	dw OldRod           ; OLD_ROD
+	dw GoodRod          ; GOOD_ROD
+	dw SuperRod         ; SUPER_ROD
+	dw CoinCase         ; COIN_CASE
+	dw Itemfinder       ; ITEMFINDER
+	dw NoEffect         ; MYSTERY_EGG
+	dw SquirtBottle     ; SQUIRTBOTTLE
+	dw NoEffect         ; SECRETPOTION
+	dw NoEffect         ; RED_SCALE
+	dw CardKey          ; CARD_KEY
+	dw BasementKey      ; BASEMENT_KEY
+	dw NoEffect         ; S_S_TICKET
+	dw NoEffect         ; PASS
+	dw NoEffect         ; MACHINE_PART
+	dw NoEffect         ; LOST_ITEM
+	dw NoEffect         ; RAINBOW_WING
+	dw NoEffect         ; SILVER_WING
+	dw NoEffect         ; CLEAR_BELL
+	dw NoEffect         ; GS_BALL
+	dw BlueCard         ; BLUE_CARD
+	dw NoEffect         ; ORANGETICKET
+	dw NoEffect         ; MYSTICTICKET
+	dw NoEffect         ; OLD_SEA_MAP
+	dw NoEffect         ; SHINY_CHARM
+	dw NoEffect         ; OVAL_CHARM
+	dw NoEffect         ; SILPHSCOPE2
+	dw ApricornBox      ; APRICORN_BOX
 
 
 PokeBallEffect: ; e8a2

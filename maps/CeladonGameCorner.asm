@@ -81,7 +81,7 @@ FisherScript_0x72144:
 	iftrue .FisherOffer
 	writetext UnknownText_0x722dc
 	buttonsound
-	checkitem COIN_CASE
+	checkkeyitem COIN_CASE
 	iffalse UnknownScript_0x7217b
 	checkcoins 49999
 	ifequal $0, UnknownScript_0x72184

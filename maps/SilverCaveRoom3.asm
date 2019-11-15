@@ -40,7 +40,7 @@ Red:
 	waitbutton
 	checkevent EVENT_GOT_MYSTICTICKET_FROM_RED
 	iftrue .AlreadyHaveMysticTicket
-	verbosegiveitem MYSTICTICKET
+	verbosegivekeyitem MYSTICTICKET
 	setevent EVENT_GOT_MYSTICTICKET_FROM_RED
 .AlreadyHaveMysticTicket
 	closetext

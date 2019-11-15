@@ -78,7 +78,7 @@ GentlemanScript_0x7d9bf:
 	opentext
 	writetext UnknownText_0x7dbc6
 	buttonsound
-	verbosegiveitem CARD_KEY
+	verbosegivekeyitem CARD_KEY
 	setevent EVENT_RECEIVED_CARD_KEY
 	setevent EVENT_WAREHOUSE_LAYOUT_1
 	clearevent EVENT_WAREHOUSE_LAYOUT_2

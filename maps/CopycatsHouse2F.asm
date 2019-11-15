@@ -42,7 +42,7 @@ Copycat1Script:
 	iftrue .GotPass
 	checkevent EVENT_RETURNED_LOST_ITEM_TO_COPYCAT
 	iftrue CopycatReturnedLostItemScript
-	checkitem LOST_ITEM
+	checkkeyitem LOST_ITEM
 	iftrue CopycatFoundLostItemScript
 	applymovement COPYCATSHOUSE2F_COPYCAT1, CopycatSpinMovement
 	faceplayer
@@ -120,7 +120,7 @@ Copycat2Script:
 	iftrue .GotPass
 	checkevent EVENT_RETURNED_LOST_ITEM_TO_COPYCAT
 	iftrue CopycatReturnedLostItemScript
-	checkitem LOST_ITEM
+	checkkeyitem LOST_ITEM
 	iftrue CopycatFoundLostItemScript
 	applymovement COPYCATSHOUSE2F_COPYCAT2, CopycatSpinMovement
 	faceplayer
@@ -231,7 +231,7 @@ CopycatFoundLostItemScript:
 	opentext
 	writetext .FoundDollText
 	buttonsound
-	takeitem LOST_ITEM
+	takekeyitem LOST_ITEM
 	setevent EVENT_RETURNED_LOST_ITEM_TO_COPYCAT
 	clearevent EVENT_COPYCATS_HOUSE_2F_DOLL
 	jump CopycatGivePassScript
@@ -253,7 +253,7 @@ CopycatReturnedLostItemScript:
 CopycatGivePassScript:
 	writetext .GivePassText
 	buttonsound
-	verbosegiveitem PASS
+	verbosegivekeyitem PASS
 	iffalse_endtext
 	setevent EVENT_GOT_PASS_FROM_COPYCAT
 	thisopenedtext

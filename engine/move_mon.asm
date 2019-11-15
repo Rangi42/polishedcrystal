@@ -248,21 +248,20 @@ endr
 	call Random
 	and a
 	jr nz, .not_shiny ; 255/256 not shiny
-	ld a, [wCurItem]
+	ld a, [wCurKeyItem]
 	push af
 	ld a, SHINY_CHARM
-	ld [wCurItem], a
+	ld [wCurKeyItem], a
 	push hl
 	push bc
 	push de
-	ld hl, wNumItems
-	call CheckItem
+	call CheckKeyItem
 	pop de
 	pop bc
 	pop hl
 	jr c, .shiny_charm
 	pop af
-	ld [wCurItem], a
+	ld [wCurKeyItem], a
 	call Random
 	cp SHINY_NUMERATOR
 	jr nc, .not_shiny ; 240/256 still not shiny

@@ -197,8 +197,8 @@ ResetWRAM: ; 5ba7
 	ld hl, wNumBerries
 	call _ResetWRAM_InitList
 
-	ld hl, wNumKeyItems
-	call _ResetWRAM_InitList
+;	ld hl, wNumKeyItems
+;	call _ResetWRAM_InitList
 
 	ld hl, wNumPCItems
 	call _ResetWRAM_InitList
@@ -206,6 +206,12 @@ ResetWRAM: ; 5ba7
 	ld hl, wTMsHMs
 	xor a
 rept ((NUM_TMS + NUM_HMS) + 7) / 8
+	ld [hli], a
+endr
+
+	ld hl, wKeyItems
+	xor a
+rept ((NUM_KEY_ITEMS) + 7) / 8
 	ld [hli], a
 endr
 
@@ -232,6 +238,8 @@ endr
 
 	ld [wCoins], a
 	ld [wCoins + 1], a
+
+	ld [wRegisteredItemFlags], a
 
 	ld [wRegisteredItems], a
 	ld [wRegisteredItems + 1], a

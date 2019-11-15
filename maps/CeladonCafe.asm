@@ -68,7 +68,7 @@ MayleneScript:
 	end
 
 TeacherScript_0x73084:
-	checkitem COIN_CASE
+	checkkeyitem COIN_CASE
 	iftrue .NoCoinCase
 	showtext UnknownText_0x73201
 	showtextfaceplayer UnknownText_0x73212

@@ -482,9 +482,8 @@ _ChooseWildEncounter:
 	cp MAP_SOUL_HOUSE_B1F ; first Ghost map in its group
 	jr c, .not_ghost
 	ld a, SILPHSCOPE2
-	ld [wCurItem], a
-	ld hl, wNumKeyItems
-	call CheckItem
+	ld [wCurKeyItem], a
+	call CheckKeyItem
 	jr c, .not_ghost
 	ld a, BATTLETYPE_GHOST
 	ld [wBattleType], a

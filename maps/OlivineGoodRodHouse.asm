@@ -24,7 +24,7 @@ GoodRodGuru:
 	iffalse_jumpopenedtext DontWantGoodRodText
 	writetext GiveGoodRodText
 	buttonsound
-	verbosegiveitem GOOD_ROD
+	verbosegivekeyitem GOOD_ROD
 	writetext GaveGoodRodText
 	waitbutton
 	closetext

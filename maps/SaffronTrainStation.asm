@@ -31,7 +31,7 @@ OfficerScript_0x18a81e:
 	writetext UnknownText_0x18a8dd
 	yesorno
 	iffalse_jumpopenedtext UnknownText_0x18a978
-	checkitem PASS
+	checkkeyitem PASS
 	iffalse_jumpopenedtext UnknownText_0x18a956
 	writetext UnknownText_0x18a917
 	waitbutton

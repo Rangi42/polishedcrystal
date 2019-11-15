@@ -22,7 +22,7 @@ CeladonGameCornerTMVendor:
 	opentext
 	writetext CeladonPrizeRoom_PrizeVendorIntroText
 	waitbutton
-	checkitem COIN_CASE
+	checkkeyitem COIN_CASE
 	iffalse_jumpopenedtext CeladonPrizeRoom_NoCoinCaseText
 	writetext CeladonPrizeRoom_AskWhichPrizeText
 CeladonPrizeRoom_tmcounterloop:
@@ -119,7 +119,7 @@ CeladonGameCornerPokemonVendor:
 	opentext
 	writetext CeladonPrizeRoom_PrizeVendorIntroText
 	waitbutton
-	checkitem COIN_CASE
+	checkkeyitem COIN_CASE
 	iffalse_jumpopenedtext CeladonPrizeRoom_NoCoinCaseText
 .loop
 	writetext CeladonPrizeRoom_AskWhichPrizeText

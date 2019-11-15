@@ -115,7 +115,7 @@ Oak:
 	ifless NUM_POKEMON, .NoOvalCharm
 	writetext OakLabSeenAllText
 	buttonsound
-	verbosegiveitem OVAL_CHARM
+	verbosegivekeyitem OVAL_CHARM
 	setevent EVENT_GOT_OVAL_CHARM_FROM_OAK
 	writetext OakLabOvalCharmText
 	waitbutton
@@ -126,7 +126,7 @@ Oak:
 	ifless NUM_POKEMON, .NoShinyCharm
 	writetext OakLabCaughtAllText
 	buttonsound
-	verbosegiveitem SHINY_CHARM
+	verbosegivekeyitem SHINY_CHARM
 	setflag ENGINE_HAVE_SHINY_CHARM
 	setevent EVENT_GOT_SHINY_CHARM_FROM_OAK
 	writetext OakLabShinyCharmText

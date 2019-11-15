@@ -1240,3 +1240,32 @@ thisasm: macro
 	end
 .asm\@
 endm
+
+	enum givekeyitem_command
+givekeyitem: macro
+	db givekeyitem_command
+	db \1 ; key item
+endm
+
+	enum checkkeyitem_command
+checkkeyitem: macro
+	db checkkeyitem_command
+	db \1 ; key item
+endm
+
+	enum takekeyitem_command
+takekeyitem: macro
+	db takekeyitem_command
+	db \1 ; key item
+endm
+
+	enum verbosegivekeyitem_command
+verbosegivekeyitem: macro
+	db verbosegivekeyitem_command
+	db \1 ; key item
+endm
+
+	enum keyitemnotify_command
+keyitemnotify: macro
+	db keyitemnotify_command
+endm

@@ -55,6 +55,7 @@ ItemIconPointers:
 	dw LemonadeIcon
 	dw MoomooMilkIcon
 	dw RageCandyBarIcon
+	dw PewterCrunchIcon
 	dw SacredAshIcon
 	dw EnergyPowderIcon
 	dw EnergyRootIcon
@@ -84,35 +85,35 @@ ItemIconPointers:
 	dw ShinyStoneIcon
 	dw IceStoneIcon
 	dw EverstoneIcon
-	dw BicycleIcon
-	dw OldRodIcon
-	dw GoodRodIcon
-	dw SuperRodIcon
-	dw CoinCaseIcon
-	dw ItemfinderIcon
 	dw ExpShareIcon
-	dw MysteryEggIcon
-	dw SquirtBottleIcon
-	dw SecretPotionIcon
-	dw RedScaleIcon
-	dw CardKeyIcon
-	dw BasementKeyIcon
-	dw SSTicketIcon
-	dw PassIcon
-	dw MachinePartIcon
-	dw LostItemIcon
-	dw RainbowWingIcon
-	dw SilverWingIcon
-	dw ClearBellIcon
-	dw GSBallIcon
-	dw BlueCardIcon
-	dw OrangeTicketIcon
-	dw MysticTicketIcon
-	dw OldSeaMapIcon
-	dw ShinyCharmIcon
-	dw OvalCharmIcon
-	dw SilphScope2Icon
-	dw ApricornBoxIcon
+	dw NoItemIcon
+	dw NoItemIcon
+	dw NoItemIcon
+	dw NoItemIcon
+	dw NoItemIcon
+	dw NoItemIcon
+	dw NoItemIcon
+	dw NoItemIcon
+	dw NoItemIcon
+	dw NoItemIcon
+	dw NoItemIcon
+	dw NoItemIcon
+	dw NoItemIcon
+	dw NoItemIcon
+	dw NoItemIcon
+	dw NoItemIcon
+	dw NoItemIcon
+	dw NoItemIcon
+	dw NoItemIcon
+	dw NoItemIcon
+	dw NoItemIcon
+	dw NoItemIcon
+	dw NoItemIcon
+	dw NoItemIcon
+	dw NoItemIcon
+	dw NoItemIcon
+	dw NoItemIcon
+	dw NoItemIcon
 	dw NoItemIcon
 	dw CheriBerryIcon
 	dw ChestoBerryIcon
@@ -134,7 +135,6 @@ ItemIconPointers:
 	dw RowapBerryIcon
 	dw KeeBerryIcon
 	dw MarangaBerryIcon
-	dw PewterCrunchIcon
 	dw SilkScarfIcon
 	dw BlackBeltIcon
 	dw SharpBeakIcon
@@ -255,3 +255,33 @@ ItemIconPointers:
 	dw MusicMailIcon
 	dw MirageMailIcon
 	dw NoItemIcon
+
+KeyItemIconPointers:
+	dw BicycleIcon
+	dw OldRodIcon
+	dw GoodRodIcon
+	dw SuperRodIcon
+	dw CoinCaseIcon
+	dw ItemfinderIcon
+	dw MysteryEggIcon
+	dw SquirtBottleIcon
+	dw SecretPotionIcon
+	dw RedScaleIcon
+	dw CardKeyIcon
+	dw BasementKeyIcon
+	dw SSTicketIcon
+	dw PassIcon
+	dw MachinePartIcon
+	dw LostItemIcon
+	dw RainbowWingIcon
+	dw SilverWingIcon
+	dw ClearBellIcon
+	dw GSBallIcon
+	dw BlueCardIcon
+	dw OrangeTicketIcon
+	dw MysticTicketIcon
+	dw OldSeaMapIcon
+	dw ShinyCharmIcon
+	dw OvalCharmIcon
+	dw SilphScope2Icon
+	dw ApricornBoxIcon

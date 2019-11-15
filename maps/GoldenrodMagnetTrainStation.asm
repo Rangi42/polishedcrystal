@@ -33,7 +33,7 @@ OfficerScript_0x550ec:
 	writetext UnknownText_0x551b7
 	yesorno
 	iffalse_jumpopenedtext UnknownText_0x5524f
-	checkitem PASS
+	checkkeyitem PASS
 	iffalse_jumpopenedtext UnknownText_0x5522c
 	writetext UnknownText_0x551ed
 	waitbutton

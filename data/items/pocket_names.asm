@@ -4,7 +4,7 @@ ItemPocketNames:
 	dw .Ball
 	dw .TM ; impossible
 	dw .Berry
-	dw .Key
+	dw .Key ; impossible
 
 .Item:
 	db "Item Pocket@"

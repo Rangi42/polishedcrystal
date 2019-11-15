@@ -40,7 +40,7 @@ EcruteakHouseInitializeSages:
 	clearevent EVENT_RANG_CLEAR_BELL_1
 	setevent EVENT_RANG_CLEAR_BELL_2
 	setevent EVENT_ECRUTEAK_HOUSE_WANDERING_SAGE
-	checkitem CLEAR_BELL
+	checkkeyitem CLEAR_BELL
 	iftrue .NoClearBell
 	setscene $0
 .NoClearBell:
@@ -87,7 +87,7 @@ SageScript_0x98062:
 	iftrue_jumpopenedtext UnknownText_0x9837e
 	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	iftrue_jumpopenedtext UnknownText_0x98391
-	checkitem CLEAR_BELL
+	checkkeyitem CLEAR_BELL
 	iftrue .RingClearBell
 	jumpopenedtext UnknownText_0x981a4
 

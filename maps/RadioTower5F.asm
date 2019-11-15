@@ -57,7 +57,7 @@ Petrel1Script:
 	opentext
 	writetext FakeDirectorTextAfter
 	buttonsound
-	verbosegiveitem BASEMENT_KEY
+	verbosegivekeyitem BASEMENT_KEY
 	closetext
 	setevent EVENT_BEAT_PETREL_1
 	end
@@ -117,7 +117,7 @@ RadioTower5FRocketBossTrigger:
 	opentext
 	writetext RadioTower5FDirectorThankYouText
 	buttonsound
-	verbosegiveitem CLEAR_BELL
+	verbosegivekeyitem CLEAR_BELL
 	writetext RadioTower5FDirectorDescribeClearBellText
 	waitbutton
 	closetext

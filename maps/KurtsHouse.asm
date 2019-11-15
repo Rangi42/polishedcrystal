@@ -89,7 +89,7 @@ KurtScript_0x18e178:
 .ClearedSlowpokeWell:
 	writetext UnknownText_0x18e615
 	buttonsound
-	verbosegiveitem APRICORN_BOX
+	verbosegivekeyitem APRICORN_BOX
 	setevent EVENT_KURT_GAVE_YOU_APRICORN_BOX
 .GotApricornBox:
 	checkevent EVENT_GAVE_KURT_RED_APRICORN
@@ -270,13 +270,13 @@ endr
 .CanGiveGSBallToKurt:
 	checkevent EVENT_GAVE_GS_BALL_TO_KURT
 	iftrue .GaveGSBallToKurt
-	checkitem GS_BALL
+	checkkeyitem GS_BALL
 	iffalse .NoGSBall
 	writetext UnknownText_0x18e8ab
 	waitbutton
 	closetext
 	setevent EVENT_GAVE_GS_BALL_TO_KURT
-	takeitem GS_BALL
+	takekeyitem GS_BALL
 	setflag ENGINE_KURT_MAKING_BALLS
 	end
 

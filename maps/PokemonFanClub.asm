@@ -61,7 +61,7 @@ UnknownScript_0x191844:
 	writetext UnknownText_0x191c5a
 	buttonsound
 	waitsfx
-	giveitem LOST_ITEM
+	givekeyitem LOST_ITEM
 	iffalse_jumpopenedtext UnknownText_0x191d58
 	disappear POKEMONFANCLUB_CLEFAIRY_DOLL
 	writetext UnknownText_0x191d0a

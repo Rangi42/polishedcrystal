@@ -67,7 +67,7 @@ Route36SuicuneScript:
 	end
 
 SudowoodoScript:
-	checkitem SQUIRTBOTTLE
+	checkkeyitem SQUIRTBOTTLE
 	iftrue .Fight
 	waitsfx
 	playsound SFX_SANDSTORM

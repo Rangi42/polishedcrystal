@@ -26,7 +26,7 @@ CooltrainerMScript_0x9a5fb:
 	iffalse_jumpopenedtext UnknownText_0x9a805
 	writetext UnknownText_0x9a6b5
 	buttonsound
-	verbosegiveitem ITEMFINDER
+	verbosegivekeyitem ITEMFINDER
 	setevent EVENT_GOT_ITEMFINDER
 	thisopenedtext
 

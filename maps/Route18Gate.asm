@@ -26,25 +26,25 @@ Route18Gate_MapScriptHeader:
 	const ROUTE18GATE_OFFICER
 
 Route18GateStepUpOneTrigger:
-	checkitem BICYCLE
+	checkkeyitem BICYCLE
 	iftrue Route18GateDoNothingScript
 	applyonemovement PLAYER, step_up
 	jump UnknownScript_0x73617
 
 Route18GateStepUpTwoTrigger:
-	checkitem BICYCLE
+	checkkeyitem BICYCLE
 	iftrue Route18GateDoNothingScript
 	applymovement PLAYER, Route18GateStepUpTwoMovementData
 	jump UnknownScript_0x73617
 
 Route18GateStepUpThreeTrigger:
-	checkitem BICYCLE
+	checkkeyitem BICYCLE
 	iftrue Route18GateDoNothingScript
 	applymovement PLAYER, Route18GateStepUpThreeMovementData
 	jump UnknownScript_0x73617
 
 UnknownScript_0x73611:
-	checkitem BICYCLE
+	checkkeyitem BICYCLE
 	iftrue Route18GateDoNothingScript
 UnknownScript_0x73617:
 	showemote EMOTE_SHOCK, ROUTE18GATE_OFFICER, 15

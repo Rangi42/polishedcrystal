@@ -112,3 +112,34 @@ CountItem::
 	rst Bankswitch
 	pop bc
 	ret
+
+ReceiveKeyItem::
+	ld a, [wCurKeyItem]
+	ld e, a
+	ld d, 0
+	ld b, SET_FLAG
+	ld hl, wKeyItems
+	call FlagAction
+	scf
+	ret
+
+TossKeyItem::
+	ld a, [wCurKeyItem]
+	ld e, a
+	ld d, 0
+	ld b, RESET_FLAG
+	ld hl, wKeyItems
+	call FlagAction
+	scf
+	ret
+
+CheckKeyItem::
+	ld a, [wCurKeyItem]
+	ld e, a
+	ld d, 0
+	ld b, CHECK_FLAG
+	ld hl, wKeyItems
+	call FlagAction
+	ret z
+	scf
+	ret

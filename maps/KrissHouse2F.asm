@@ -69,6 +69,12 @@ if DEF(DEBUG)
 	; pokedex
 	setflag ENGINE_POKEDEX
 	setflag ENGINE_UNOWN_DEX
+	; all key items
+x = 0
+rept NUM_KEY_ITEMS
+	givekeyitem x
+x = x + 1
+endr
 	; all tms+hms
 x = 0
 rept NUM_TMS + NUM_HMS
@@ -77,7 +83,7 @@ x = x + 1
 endr
 	; all items
 x = 1
-rept $fe
+rept NUM_ITEMS
 	giveitem x, 99
 x = x + 1
 endr

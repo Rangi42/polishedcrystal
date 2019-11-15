@@ -472,6 +472,16 @@ OwnedTMString:
 UnownedTMString:
 	db "Unowned@"
 
+UpdateKeyItemDescription:
+	hlcoord 0, 12
+	lb bc, 4, SCREEN_WIDTH - 2
+	call TextBox
+	ld a, [wMenuSelection]
+	cp -1
+	ret z
+	decoord 1, 14
+	farjp PrintKeyItemDescription
+
 GetQuantityInBag:
 	ld a, [wCurItem]
 	push af
@@ -483,48 +493,15 @@ GetQuantityInBag:
 
 PlaceMenuItemName:
 ; places a star near the name if registered
+	push hl
 	push de
 	dec de
 	dec de
 	ld a, " "
 	ld [de], a
 	ld a, [wMenuSelection]
-	push bc
-	and a
-	jr z, .not_registered
-	ld b, a
-	ld hl, wRegisteredItems
-	ld a, [hli]
-	cp b
-	ld c, "▲"
-	jr z, .registered
-	ld a, [hli]
-	cp b
-	ld c, "◀"
-	jr z, .registered
-	ld a, [hli]
-	cp b
-	ld c, "▶"
-	jr z, .registered
-	ld a, [hli]
-	cp b
-	ld c, "▼"
-	jr nz, .not_registered
-.registered
-	push bc
-	push de
-	farcall CheckRegisteredItem
 	pop de
-	pop bc
-	dec a
-	jr nz, .not_unique
-	ld c, "★"
-.not_unique
-	ld a, c
-	ld [de], a
-.not_registered
-	pop bc
-	pop de
+	pop hl
 PlaceMartItemName:
 	push de
 	ld a, [wMenuSelection]
@@ -799,6 +776,7 @@ INCLUDE "data/battle/music.asm"
 INCLUDE "engine/battle/trainer_huds.asm"
 INCLUDE "engine/battle/ai/redundant.asm"
 INCLUDE "engine/events/move_deleter.asm"
+INCLUDE "engine/key_items.asm"
 INCLUDE "engine/tmhm2.asm"
 INCLUDE "engine/events/pokerus.asm"
 INCLUDE "data/trainers/class_names.asm"
@@ -4446,11 +4424,16 @@ SECTION "Item Text", ROMX
 
 INCLUDE "data/items/names.asm"
 
+PrintKeyItemDescription:
+	ld hl, KeyItemDescriptions
+	ld a, [wCurKeyItem]
+	jr PrintDescription
+
 PrintItemDescription: ; 0x1c8955
 ; Print the description for item [wCurSpecies] at de.
-
 	ld hl, ItemDescriptions
 	ld a, [wCurSpecies]
+PrintDescription:
 	dec a
 	ld c, a
 	ld b, 0

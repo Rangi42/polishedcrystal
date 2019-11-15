@@ -377,12 +377,12 @@ ElmAfterTheftDoneScript:
 
 ElmAfterTheftScript:
 	writetext ElmAfterTheftText1
-	checkitem MYSTERY_EGG
+	checkkeyitem MYSTERY_EGG
 	iffalse ElmAfterTheftDoneScript
 	buttonsound
 	writetext ElmAfterTheftText2
 	waitbutton
-	takeitem MYSTERY_EGG
+	takekeyitem MYSTERY_EGG
 	scall ElmJumpBackScript1
 	writetext ElmAfterTheftText3
 	waitbutton
@@ -442,7 +442,7 @@ ElmGiveTicketScript:
 	opentext
 	writetext ElmGiveTicketText1
 	buttonsound
-	verbosegiveitem S_S_TICKET
+	verbosegivekeyitem S_S_TICKET
 	writetext ElmGiveTicketText2
 	waitbutton
 	closetext

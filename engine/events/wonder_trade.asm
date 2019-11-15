@@ -1,4 +1,7 @@
 WonderTrade::
+	xor a
+	ld [wScriptVar], a
+
 	ld hl, .Text_WonderTradeQuestion
 	call PrintText
 	call YesNoBox
@@ -13,21 +16,9 @@ WonderTrade::
 
 	ld a, [wCurPartySpecies]
 ;	cp EGG
-;	jr nz, .check_gs_ball
+;	jr nz, .continue
 ;	ld hl, .Text_WonderTradeCantTradeEgg
 ;	jp PrintText
-
-.check_gs_ball
-	ld hl, wPartyMon1Item
-	ld bc, PARTYMON_STRUCT_LENGTH
-	ld a, [wCurPartyMon]
-	rst AddNTimes
-	ld b, [hl]
-	ld a, GS_BALL
-	cp b
-	jr nz, .continue
-	ld hl, .Text_WonderTradeCantTradeGSBall
-	jp PrintText
 
 .continue
 	ld hl, wPartyMonNicknames
@@ -50,28 +41,8 @@ WonderTrade::
 
 	call DisableSpriteUpdates
 	predef TradeAnimation
-	call ReturnToMapWithSpeechTextbox
 
-	ld hl, .Text_WonderTradeComplete
-	call PrintText
-
-	call RestartMapMusic
-
-	ld hl, wPartyMon1Item
-	ld bc, PARTYMON_STRUCT_LENGTH
-	call Trade_GetAttributeOfLastPartymon
-	ld a, [de]
-	ld b, a
-	ld a, GS_BALL
-	cp b
-	ret nz
-
-	eventflagset EVENT_GOT_GS_BALL_FROM_POKECOM_CENTER
-	eventflagset EVENT_CAN_GIVE_GS_BALL_TO_KURT
-	ld de, MUSIC_SPIKY_EARED_PICHU_HGSS
-	call PlayMusic
-	ld hl, .Text_WonderTradeForGSBallPichuText
-	jp PrintText
+	jp ReturnToMapWithSpeechTextbox
 
 .Text_WonderTradeQuestion:
 	text_jump WonderTradeQuestionText
@@ -85,10 +56,6 @@ WonderTrade::
 ;	text_jump WonderTradeCantTradeEggText
 ;	db "@"
 
-.Text_WonderTradeCantTradeGSBall
-	text_jump WonderTradeCantTradeGSBallText
-	db "@"
-
 .Text_WonderTradeConfirm:
 	text_jump WonderTradeConfirmText
 	db "@"
@@ -101,24 +68,10 @@ WonderTrade::
 	text_jump WonderTradeReadyText
 	db "@"
 
-.Text_WonderTradeComplete:
-	text_jump WonderTradeCompleteText
-	start_asm
-	ld de, MUSIC_NONE
-	call PlayMusic
-	call DelayFrame
-	ld hl, .trade_done
-	ret
-
-.trade_done
-	text_jump WonderTradeDoneFanfare
-	db "@"
-
-.Text_WonderTradeForGSBallPichuText:
-	text_jump WonderTradeForGSBallPichuText
-	db "@"
-
 DoWonderTrade:
+	ld a, 1
+	ld [wScriptVar], a
+
 	ld a, [wCurPartySpecies]
 	ld [wPlayerTrademonSpecies], a
 
@@ -389,6 +342,9 @@ endr
 
 
 GetGSBallPichu:
+	ld a, 2
+	ld [wScriptVar], a
+
 	ld a, PICHU
 	ld [wOTTrademonSpecies], a
 
@@ -522,7 +478,7 @@ GetGSBallPichu:
 	ld hl, wPartyMon1Item
 	ld bc, PARTYMON_STRUCT_LENGTH
 	call Trade_GetAttributeOfLastPartymon
-	ld a, GS_BALL
+	xor a
 	ld [de], a
 
 	ret

@@ -975,7 +975,9 @@ wPalFadeMode::
 
 wCurForm:: ds 1
 
-	ds 8 ; unused
+wJustGotGSBall:: ds 1
+
+	ds 7 ; unused
 
 wWindowStackPointer:: ds 2
 wMenuJoypad:: ds 1

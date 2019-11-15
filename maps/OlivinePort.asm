@@ -104,7 +104,7 @@ UnknownScript_0x7494e:
 	iffalse UnknownScript_0x74992
 	writetext UnknownText_0x74ada
 	buttonsound
-	checkitem S_S_TICKET
+	checkkeyitem S_S_TICKET
 	iffalse UnknownScript_0x7496d
 	writetext UnknownText_0x74b11
 	waitbutton
@@ -166,7 +166,7 @@ UnknownScript_0x749c0:
 	iffalse UnknownScript_0x7498c
 	writetext UnknownText_0x74ada
 	buttonsound
-	checkitem S_S_TICKET
+	checkkeyitem S_S_TICKET
 	iffalse UnknownScript_0x749ec
 	writetext UnknownText_0x74b11
 	waitbutton

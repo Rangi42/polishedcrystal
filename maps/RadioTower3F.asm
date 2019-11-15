@@ -121,7 +121,7 @@ MapRadioTower3FSignpost2Script::
 	waitbutton
 	checkevent EVENT_USED_THE_CARD_KEY_IN_THE_RADIO_TOWER
 	iftrue UnknownScript_0x5e603
-	checkitem CARD_KEY
+	checkkeyitem CARD_KEY
 	iftrue UnknownScript_0x5e605
 UnknownScript_0x5e603:
 	endtext

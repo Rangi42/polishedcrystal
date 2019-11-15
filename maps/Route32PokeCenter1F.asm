@@ -48,7 +48,7 @@ FishingGuruScript_0x69b55:
 	iffalse_jumpopenedtext .NoText
 	writetext .YesText
 	buttonsound
-	verbosegiveitem OLD_ROD
+	verbosegivekeyitem OLD_ROD
 	writetext .AfterText
 	waitbutton
 	closetext

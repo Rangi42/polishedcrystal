@@ -167,13 +167,12 @@ CeruleanGymHiddenMachinePart:
 	dw EVENT_FOUND_MACHINE_PART_IN_CERULEAN_GYM
 	checkevent EVENT_LEARNED_ABOUT_MACHINE_PART
 	iffalse_jumptext CeruleanGymSomethingUnderwaterText
-	giveitem MACHINE_PART
+	givekeyitem MACHINE_PART
 	opentext
-	itemtotext MACHINE_PART, $0
 	writetext CeruleanGymFoundMachinePartText
 	playsound SFX_ITEM
 	waitsfx
-	itemnotify
+	keyitemnotify
 	closetext
 	setevent EVENT_FOUND_MACHINE_PART_IN_CERULEAN_GYM
 	end
@@ -408,9 +407,7 @@ CeruleanGymGuyWinText:
 
 CeruleanGymFoundMachinePartText:
 	text "<PLAYER> found"
-	line "@"
-	text_from_ram wStringBuffer3
-	text "!"
+	line "Machine Part!"
 	done
 
 CeruleanGymSomethingUnderwaterText:

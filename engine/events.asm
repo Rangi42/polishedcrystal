@@ -1019,6 +1019,7 @@ PlayerEventScriptPointers: ; 96c0c
 	dba HatchEggScript           ; PLAYEREVENT_HATCH
 	dba ChangeDirectionScript    ; PLAYEREVENT_JOYCHANGEFACING
 	dba FindTMHMInBallScript     ; PLAYEREVENT_TMHMBALL
+	dba FindKeyItemInBallScript  ; PLAYEREVENT_KEYITEMBALL
 	dba Invalid_0x96c2d          ; NUM_PLAYER_EVENTS
 ; 96c2d
 

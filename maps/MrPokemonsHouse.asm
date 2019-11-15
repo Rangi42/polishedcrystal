@@ -41,7 +41,7 @@ MrPokemonsHouseTrigger0:
 	writetext MrPokemonIntroText2
 	buttonsound
 	waitsfx
-	giveitem MYSTERY_EGG
+	givekeyitem MYSTERY_EGG
 	writetext MrPokemonsHouse_GotEggText
 	playsound SFX_KEY_ITEM
 	waitsfx
@@ -65,7 +65,7 @@ endc
 MrPokemonsHouse_MrPokemonScript:
 	faceplayer
 	opentext
-	checkitem RED_SCALE
+	checkkeyitem RED_SCALE
 	iftrue .RedScale
 	checkevent EVENT_GAVE_MYSTERY_EGG_TO_ELM
 	iftrue_jumpopenedtext MrPokemonText_AlwaysNewDiscoveries
@@ -82,7 +82,7 @@ MrPokemonsHouse_MrPokemonScript:
 	writetext MrPokemonText_GotShinyDittoEgg
 	playsound SFX_KEY_ITEM
 	waitsfx
-	takeitem RED_SCALE
+	takekeyitem RED_SCALE
 	setevent EVENT_TRADED_RED_SCALE
 	jumpopenedtext MrPokemonText_AlwaysNewDiscoveries
 

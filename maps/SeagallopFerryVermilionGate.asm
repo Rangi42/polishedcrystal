@@ -40,21 +40,21 @@ SeagallopFerryVermilionGateSailorScript:
 	iftrue .got_orangeticket
 	writetext SeagallopFerryGiveOrangeTicketText
 	waitbutton
-	verbosegiveitem ORANGETICKET
+	verbosegivekeyitem ORANGETICKET
 	setevent EVENT_GOT_ORANGE_TICKET
 .got_orangeticket
-	checkitem ORANGETICKET
+	checkkeyitem ORANGETICKET
 	iftrue .have_orangeticket
-	checkitem MYSTICTICKET
+	checkkeyitem MYSTICTICKET
 	iftrue .have_mysticticket_no_orangeticket
-	checkitem OLD_SEA_MAP
+	checkkeyitem OLD_SEA_MAP
 	iftrue .use_old_sea_map
 	jumpopenedtext SeagallopFerryClosedText
 
 .have_orangeticket
-	checkitem MYSTICTICKET
+	checkkeyitem MYSTICTICKET
 	iftrue .have_orangeticket_and_mysticticket
-	checkitem OLD_SEA_MAP
+	checkkeyitem OLD_SEA_MAP
 	iftrue .use_orangeticket_or_old_sea_map
 .use_orangeticket
 	writetext SeagallopFerryOrangeTicketQuestionText
@@ -66,7 +66,7 @@ SeagallopFerryVermilionGateSailorScript:
 	end
 
 .have_mysticticket_no_orangeticket
-	checkitem OLD_SEA_MAP
+	checkkeyitem OLD_SEA_MAP
 	iftrue .use_mysticticket_or_old_sea_map
 .use_mysticticket
 	writetext SeagallopFerryMysticTicketQuestionText
@@ -78,7 +78,7 @@ SeagallopFerryVermilionGateSailorScript:
 	end
 
 .have_orangeticket_and_mysticticket
-	checkitem OLD_SEA_MAP
+	checkkeyitem OLD_SEA_MAP
 	iftrue .have_three_tickets
 	writetext SeagallopFerryWhichTicketText
 	loadmenu OrangeMysticMenuDataHeader

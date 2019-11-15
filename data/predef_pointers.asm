@@ -52,3 +52,4 @@ PredefPointers::
 	add_predef PrintNatureIndicators
 	add_predef PrintAbility
 	add_predef PrintAbilityDescription
+	add_predef DoKeyItemEffect

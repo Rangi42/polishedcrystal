@@ -454,6 +454,7 @@ NamesPointers:: ; 33ab
 	dbw 0, wPartyMonOT
 	dbw 0, wOTPartyMonOT
 	dba TrainerClassNames
+	dba KeyItemNames
 ; 33c0
 
 GetName:: ; 33c3
@@ -604,13 +605,21 @@ GetItemName:: ; 3468
 	ld a, [wNamedObjectIndexBuffer]
 	ld [wCurSpecies], a
 	ld a, ITEM_NAME
-	ld [wNamedObjectTypeBuffer], a
-	call GetName
-	ld de, wStringBuffer1
-	pop bc
-	pop hl
-	ret
+	jr PutNameInBufferAndGetName
 ; 3487
+
+GetCurKeyItemName::
+; Get item name from item in CurItem
+	ld a, [wCurKeyItem]
+	ld [wNamedObjectIndexBuffer], a
+GetKeyItemName:: ; 3468
+; Get key item item name wNamedObjectIndexBuffer.
+	push hl
+	push bc
+	ld a, [wNamedObjectIndexBuffer]
+	ld [wCurSpecies], a
+	ld a, KEY_ITEM_NAME
+	jr PutNameInBufferAndGetName
 
 GetApricornName::
 ; Get apricorn name wNamedObjectIndexBuffer.
@@ -619,6 +628,7 @@ GetApricornName::
 	ld a, [wNamedObjectIndexBuffer]
 	ld [wCurSpecies], a
 	ld a, APRICORN_NAME
+PutNameInBufferAndGetName::
 	ld [wNamedObjectTypeBuffer], a
 	call GetName
 	ld de, wStringBuffer1

@@ -260,6 +260,11 @@ ScriptCommandTable:
 	dw Script_giveapricorn               ; c5
 	dw Script_paintingpic                ; c6
 	dw Script_checkegg                   ; c7
+	dw Script_givekeyitem                ; c8
+	dw Script_checkkeyitem               ; c9
+	dw Script_takekeyitem                ; ca
+	dw Script_verbosegivekeyitem         ; cb
+	dw Script_keyitemnotify              ; cc
 
 StartScript:
 	ld hl, wScriptFlags
@@ -675,14 +680,22 @@ GetPocketName:
 
 INCLUDE "data/items/pocket_names.asm"
 
+GetKeyItemPocketName:
+	ld hl, KeyPocketName
+	jr CopySpecialPocketName
+
+KeyPocketName:
+	db "Key Pocket@"
+
 GetTMHMPocketName:
-	ld hl, .TMHMPocket
+	ld hl, TMHMPocketName
+CopySpecialPocketName:
 	ld d, h
 	ld e, l
 	ld hl, wStringBuffer3
 	jp CopyName2
 
-.TMHMPocket:
+TMHMPocketName:
 	db "TM Pocket@"
 
 CurItemName:
@@ -2945,3 +2958,69 @@ Script_paintingpic:
 .ok
 	ld [wTrainerClass], a
 	farjp Paintingpic
+
+Script_givekeyitem:
+	call GetScriptByte
+	ld [wCurKeyItem], a
+	ld [wItemQuantityChangeBuffer], a
+	call ReceiveKeyItem
+	jr nc, .full
+	ld a, TRUE
+	ld [wScriptVar], a
+	ret
+.full
+	xor a
+	ld [wScriptVar], a
+	ret
+
+Script_checkkeyitem:
+	call GetScriptByte
+	ld [wCurKeyItem], a
+	ld [wItemQuantityChangeBuffer], a
+	call CheckKeyItem
+	jr nc, .full
+	ld a, TRUE
+	ld [wScriptVar], a
+	ret
+.full
+	xor a
+	ld [wScriptVar], a
+	ret
+
+Script_takekeyitem:
+	call GetScriptByte
+	ld [wCurKeyItem], a
+	ld [wItemQuantityChangeBuffer], a
+	call TossKeyItem
+	jr nc, .full
+	ld a, TRUE
+	ld [wScriptVar], a
+	ret
+.full
+	xor a
+	ld [wScriptVar], a
+	ret
+
+Script_verbosegivekeyitem:
+	call Script_givekeyitem
+	call GetCurKeyItemName
+	ld de, wStringBuffer1
+	ld a, 1
+	call CopyConvertedText
+	ld b, BANK(GiveKeyItemScript)
+	ld de, GiveKeyItemScript
+	jp ScriptCall
+
+GiveKeyItemScript:
+	writetext ReceivedItemText
+	waitsfx
+	specialsound
+	keyitemnotify
+	end
+
+Script_keyitemnotify:
+	call GetKeyItemPocketName
+	call GetCurKeyItemName
+	ld b, BANK(PutItemInPocketText)
+	ld hl, PutItemInPocketText
+	jp MapTextbox

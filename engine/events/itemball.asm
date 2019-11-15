@@ -45,6 +45,37 @@ FindItemInBallScript:: ; 0x122ce
 	ret
 ; 12324
 
+FindKeyItemInBallScript::
+	callasm .ReceiveKeyItem
+	disappear LAST_TALKED
+	opentext
+	writetext .text_found
+	specialsound
+	waitsfx
+	keyitemnotify
+	closetext
+	end
+
+.text_found
+	; found @ !
+	text_jump UnknownText_0x1c0a1c
+	db "@"
+
+.ReceiveKeyItem:
+	xor a
+	ld [wScriptVar], a
+	ld a, [wCurItemBallContents]
+	ld [wNamedObjectIndexBuffer], a
+	call GetKeyItemName
+	ld hl, wStringBuffer3
+	call CopyName2
+	ld a, [wCurItemBallContents]
+	ld [wCurKeyItem], a
+	call ReceiveKeyItem
+	ld a, $1
+	ld [wScriptVar], a
+	ret
+
 FindTMHMInBallScript::
 	callasm .ReceiveTMHM
 	disappear LAST_TALKED

@@ -25,7 +25,7 @@ PokemonMansionB1F_MapScriptHeader:
 	itemball_event 13,  5, CARBOS, 1, EVENT_POKEMON_MANSION_B1F_CARBOS
 	itemball_event  7,  6, CALCIUM, 1, EVENT_POKEMON_MANSION_B1F_CALCIUM
 	itemball_event 16, 27, HP_UP, 1, EVENT_POKEMON_MANSION_B1F_HP_UP
-	itemball_event  4, 23, OLD_SEA_MAP, 1, EVENT_POKEMON_MANSION_B1F_OLD_SEA_MAP
+	keyitemball_event  4, 23, OLD_SEA_MAP, EVENT_POKEMON_MANSION_B1F_OLD_SEA_MAP
 
 GenericTrainerScientistBraydon:
 	generictrainer SCIENTIST, BRAYDON, EVENT_BEAT_SCIENTIST_BRAYDON, ScientistBraydonSeenText, ScientistBraydonBeatenText

@@ -95,7 +95,7 @@ GoldenrodGameCornerTMVendorScript:
 	opentext
 	writetext GoldenrodGameCornerPrizeVendorIntroText
 	waitbutton
-	checkitem COIN_CASE
+	checkkeyitem COIN_CASE
 	iffalse_jumpopenedtext GoldenrodGameCornerPrizeVendorNoCoinCaseText
 	writetext GoldenrodGameCornerPrizeVendorWhichPrizeText
 GoldenrodGameCornerTMVendor_LoopScript: ; 056c36
@@ -187,7 +187,7 @@ GoldenrodGameCornerPrizeMonVendorScript:
 	opentext
 	writetext GoldenrodGameCornerPrizeVendorIntroText
 	waitbutton
-	checkitem COIN_CASE
+	checkkeyitem COIN_CASE
 	iffalse_jumpopenedtext GoldenrodGameCornerPrizeVendorNoCoinCaseText
 .loop
 	writetext GoldenrodGameCornerPrizeVendorWhichPrizeText

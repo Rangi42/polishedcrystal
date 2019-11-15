@@ -58,7 +58,7 @@ PickBerryScript:
 ; 44041
 
 PickApricornScript:
-	checkitem APRICORN_BOX
+	checkkeyitem APRICORN_BOX
 	iffalse_jumpopenedtext NoApricornBoxText
 	copybytetovar wCurFruit
 	callasm .get_name

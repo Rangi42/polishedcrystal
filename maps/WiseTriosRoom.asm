@@ -35,7 +35,7 @@ UnknownScript_0x98574:
 	iftrue UnknownScript_0x98593
 	checkevent EVENT_KOJI_ALLOWS_YOU_PASSAGE_TO_TIN_TOWER
 	iftrue UnknownScript_0x9858c
-	checkitem CLEAR_BELL
+	checkkeyitem CLEAR_BELL
 	iftrue UnknownScript_0x9858c
 	clearevent EVENT_WISE_TRIOS_ROOM_WISE_TRIO_1
 	setevent EVENT_WISE_TRIOS_ROOM_WISE_TRIO_2

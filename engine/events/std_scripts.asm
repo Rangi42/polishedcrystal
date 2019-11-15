@@ -1732,7 +1732,7 @@ GameCornerCoinVendorScript: ; 0xbcdcd
 	opentext
 	farwritetext CoinVendor_WelcomeText
 	buttonsound
-	checkitem COIN_CASE
+	checkkeyitem COIN_CASE
 	iftrue CoinVendor_IntroScript
 	farwritetext CoinVendor_NoCoinCaseText
 	waitendtext

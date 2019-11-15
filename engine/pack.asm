@@ -214,7 +214,7 @@ Pack: ; 10000
 	lb bc, $7, $b ; TM/HM, Key Items
 	call Pack_InterpretJoypad
 	ret c
-	jr .ItemBallsKey_LoadSubmenu
+	jp .ItemBallsKey_LoadSubmenu
 
 .InitKeyItemsPocket: ; 10094 (4:4094)
 	ld a, KEY_ITEM - 1
@@ -224,21 +224,11 @@ Pack: ; 10000
 	jp Pack_JumptableNext
 
 .KeyItemsPocketMenu: ; 100a6 (4:40a6)
-	ld hl, KeyItemsPocketMenuDataHeader
-	call CopyMenuDataHeader
-	ld a, [wKeyItemsPocketCursor]
-	ld [wMenuCursorBuffer], a
-	ld a, [wKeyItemsPocketScrollPosition]
-	ld [wMenuScrollPosition], a
-	call ScrollingMenu
-	ld a, [wMenuScrollPosition]
-	ld [wKeyItemsPocketScrollPosition], a
-	ld a, [wMenuCursorY]
-	ld [wKeyItemsPocketCursor], a
+	farcall KeyItemsPocket
 	lb bc, $9, $1 ; Berries, Items
 	call Pack_InterpretJoypad
 	ret c
-	; fallthrough
+	jp KeyItems_LoadSubmenu
 
 .ItemBallsKey_LoadSubmenu: ; 101c5 (4:41c5)
 	jr nz, PackSortMenu
@@ -271,32 +261,32 @@ Pack: ; 10000
 	jr .tossable_unselectable
 
 .usable
-	ld hl, MenuDataHeader_UsableKeyItem
-	ld de, Jumptable_UseGiveTossRegisterQuit
+	ld hl, MenuDataHeader_UseGiveToss
+	ld de, Jumptable_UseGiveTossQuit
 	jr PackBuildMenu
 
 .selectable_usable
-	ld hl, MenuDataHeader_UsableItem
+	ld hl, MenuDataHeader_UseGiveToss
 	ld de, Jumptable_UseGiveTossQuit
 	jr PackBuildMenu
 
 .tossable_selectable
-	ld hl, MenuDataHeader_UnusableItem
+	ld hl, MenuDataHeader_Use
 	ld de, Jumptable_UseQuit
 	jr PackBuildMenu
 
 .tossable_unselectable
-	ld hl, MenuDataHeader_UnusableKeyItem
-	ld de, Jumptable_UseRegisterQuit
+	ld hl, MenuDataHeader_Use
+	ld de, Jumptable_UseQuit
 	jr PackBuildMenu
 
 .unusable
-	ld hl, MenuDataHeader_HoldableKeyItem
-	ld de, Jumptable_GiveTossRegisterQuit
+	ld hl, MenuDataHeader_GiveToss
+	ld de, Jumptable_GiveTossQuit
 	jr PackBuildMenu
 
 .selectable_unusable
-	ld hl, MenuDataHeader_HoldableItem
+	ld hl, MenuDataHeader_GiveToss
 	ld de, Jumptable_GiveTossQuit
 
 PackBuildMenu:
@@ -344,6 +334,68 @@ PackSortMenu:
 	ld l, e
 	jr PackMenuJump
 
+KeyItems_LoadSubmenu:
+	farcall CheckSelectableKeyItem
+	ld a, [wItemAttributeParamBuffer]
+	and a
+	jr z, .selectable_usable
+.usable
+	ld hl, MenuDataHeader_Use
+	ld de, Jumptable_KeyItem_UseQuit
+	jr PackBuildMenu
+
+.selectable_usable
+	ld hl, MenuDataHeader_UseSel
+	ld de, Jumptable_KeyItem_UseRegisterQuit
+	jr PackBuildMenu
+
+UseKeyItem:
+	farcall CheckKeyItemMenu
+	ld a, [wItemAttributeParamBuffer]
+	ld hl, .dw
+	rst JumpTable
+	ret
+
+.dw
+	dw .Oak
+	dw .Oak
+	dw .Oak
+	dw .Oak
+	dw .Current
+	dw .Party
+	dw .Field
+
+.Oak:
+	ld hl, Text_ThisIsntTheTime
+	jp Pack_PrintTextNoScroll
+
+.Current:
+	predef_jump DoKeyItemEffect
+
+.Party:
+	ld a, [wPartyCount]
+	and a
+	jr z, .NoPokemon
+	predef DoKeyItemEffect
+	xor a
+	ldh [hBGMapMode], a
+	call Pack_InitGFX
+	call WaitBGMap_DrawPackGFX
+	jp Pack_InitColors
+
+.NoPokemon:
+	ld hl, TextJump_YouDontHaveAPkmn
+	jp Pack_PrintTextNoScroll
+
+.Field:
+	predef DoKeyItemEffect
+	ld a, [wItemEffectSucceeded]
+	and a
+	jr z, .Oak
+	ld a, $e ; QuitRunScript
+	ld [wJumptableIndex], a
+	ret
+
 MenuDataHeader_SortItems:
 	db $40 ; flags
 	db 05, 10 ; start coords
@@ -367,34 +419,7 @@ SortItemsType:
 SortItemsName:
 	farjp SortItemsInBag
 
-MenuDataHeader_UsableKeyItem: ; 0x10249
-	db $40 ; flags
-	db 01, 13 ; start coords
-	db 11, 19 ; end coords
-	dw .MenuData2
-	db 1 ; default option
-; 0x10251
-
-.MenuData2: ; 0x10251
-	db $c0 ; flags
-	db 5 ; items
-	db "Use@"
-	db "Give@"
-	db "Toss@"
-	db "Sel@"
-	db "Quit@"
-; 0x1026a
-
-Jumptable_UseGiveTossRegisterQuit: ; 1026a
-
-	dw UseItem
-	dw GiveItem
-	dw TossMenu
-	dw RegisterItem
-	dw QuitItemSubmenu
-; 10274
-
-MenuDataHeader_UsableItem: ; 0x10274
+MenuDataHeader_UseGiveToss: ; 0x10274
 	db $40 ; flags
 	db 03, 13 ; start coords
 	db 11, 19 ; end coords
@@ -412,14 +437,13 @@ MenuDataHeader_UsableItem: ; 0x10274
 ; 0x10291
 
 Jumptable_UseGiveTossQuit: ; 10291
-
 	dw UseItem
 	dw GiveItem
 	dw TossMenu
 	dw QuitItemSubmenu
 ; 10299
 
-MenuDataHeader_UnusableItem: ; 0x10299
+MenuDataHeader_Use: ; 0x10299
 	db %01000000 ; flags
 	db 07, 13 ; start coords
 	db 11, 19 ; end coords
@@ -435,12 +459,15 @@ MenuDataHeader_UnusableItem: ; 0x10299
 ; 0x102ac
 
 Jumptable_UseQuit: ; 102ac
-
 	dw UseItem
 	dw QuitItemSubmenu
 ; 102b0
 
-MenuDataHeader_UnusableKeyItem: ; 0x102b0
+Jumptable_KeyItem_UseQuit:
+	dw UseKeyItem
+	dw QuitItemSubmenu
+
+MenuDataHeader_UseSel: ; 0x102b0
 	db %01000000 ; flags
 	db 05, 13 ; start coords
 	db 11, 19 ; end coords
@@ -456,39 +483,12 @@ MenuDataHeader_UnusableKeyItem: ; 0x102b0
 	db "Quit@"
 ; 0x102c7
 
-Jumptable_UseRegisterQuit: ; 102c7
-
-	dw UseItem
-	dw RegisterItem
+Jumptable_KeyItem_UseRegisterQuit:
+	dw UseKeyItem
+	dw RegisterKeyItem
 	dw QuitItemSubmenu
-; 102cd
 
-MenuDataHeader_HoldableKeyItem: ; 0x102cd
-	db $40 ; flags
-	db 03, 13 ; start coords
-	db 11, 19 ; end coords
-	dw .MenuData2
-	db 1 ; default option
-; 0x102d5
-
-.MenuData2: ; 0x102d5
-	db $c0 ; flags
-	db 4 ; items
-	db "Give@"
-	db "Toss@"
-	db "Sel@"
-	db "Quit@"
-; 0x102ea
-
-Jumptable_GiveTossRegisterQuit: ; 102ea
-
-	dw GiveItem
-	dw TossMenu
-	dw RegisterItem
-	dw QuitItemSubmenu
-; 102f2
-
-MenuDataHeader_HoldableItem: ; 0x102f2
+MenuDataHeader_GiveToss: ; 0x102f2
 	db $40 ; flags
 	db 05, 13 ; start coords
 	db 11, 19 ; end coords
@@ -587,17 +587,18 @@ TossMenu: ; 10364
 	jp Pack_PrintTextNoScroll
 ; 1039d
 
-RegisterItem: ; 103c2
-	farcall CheckSelectableItem
+RegisterKeyItem: ; 103c2
+	farcall CheckSelectableKeyItem
 	ld a, [wItemAttributeParamBuffer]
 	and a
 	jr nz, .cant_register
 
 	; Check if the item is registered
 	ld hl, wRegisteredItems
-	ld a, [wCurItem]
+	ld a, [wCurKeyItem]
 	ld e, a
 	ld d, 4
+
 .already_registered_loop
 	ld a, [hl]
 	cp e
@@ -605,6 +606,7 @@ RegisterItem: ; 103c2
 	inc hl
 	dec d
 	jr nz, .already_registered_loop
+
 	ld hl, wRegisteredItems
 	ld d, 4
 .loop
@@ -618,9 +620,9 @@ RegisterItem: ; 103c2
 	jr .print
 
 .found_empty_slot
-	ld a, [wCurItem]
+	ld a, [wCurKeyItem]
 	ld [hl], a
-	call Pack_GetItemName
+	call Pack_GetKeyItemName
 	ld de, SFX_FULL_HEAL
 	call WaitPlaySFX
 	ld hl, Text_RegisteredItem
@@ -628,8 +630,8 @@ RegisterItem: ; 103c2
 
 .found_registered_slot
 	ld [hl], 0
-	ld a, [wCurItem]
-	call Pack_GetItemName
+	ld a, [wCurKeyItem]
+	call Pack_GetKeyItemName
 	ld hl, Text_UnregisteredItem
 	jr .print
 
@@ -880,30 +882,27 @@ BattlePack: ; 10493
 	ld a, KEY_ITEM - 1
 	ld [wCurrPocket], a
 	call ClearPocketList
+	xor a
+	ldh [hBGMapMode], a
 	call WaitBGMap_DrawPackGFX
+	ld hl, Text_PackEmptyString
+	call Pack_PrintTextNoScroll
 	jp Pack_JumptableNext
 
 .KeyItemsPocketMenu: ; 10539 (4:4539)
-	ld hl, KeyItemsPocketMenuDataHeader
-	call CopyMenuDataHeader
-	ld a, [wKeyItemsPocketCursor]
-	ld [wMenuCursorBuffer], a
-	ld a, [wKeyItemsPocketScrollPosition]
-	ld [wMenuScrollPosition], a
-	call ScrollingMenu
-	ld a, [wMenuScrollPosition]
-	ld [wKeyItemsPocketScrollPosition], a
-	ld a, [wMenuCursorY]
-	ld [wKeyItemsPocketCursor], a
+	farcall KeyItemsPocket
 	lb bc, $9, $1 ; Berries, Items
 	call Pack_InterpretJoypad
 	ret c
-	; fallthrough
+	farcall CheckKeyItemContext
+	ld a, [wItemAttributeParamBuffer]
+	jp KeyItemSubmenu
 
 ItemSubmenu: ; 105d3 (4:45d3)
 	jp nz, PackSortMenu
 	farcall CheckItemContext
 	ld a, [wItemAttributeParamBuffer]
+KeyItemSubmenu:
 TMHMSubmenu: ; 105dc (4:45dc)
 	and a
 	ld hl, .UsableMenuDataHeader
@@ -1147,17 +1146,9 @@ DepositSellPack: ; 106be
 .KeyItemsPocket: ; 106ff (4:46ff)
 	ld a, KEY_ITEM - 1
 	call InitPocket
-	ld hl, PC_Mart_KeyItemsPocketMenuDataHeader
-	call CopyMenuDataHeader
-	ld a, [wKeyItemsPocketCursor]
-	ld [wMenuCursorBuffer], a
-	ld a, [wKeyItemsPocketScrollPosition]
-	ld [wMenuScrollPosition], a
-	call ScrollingMenu
-	ld a, [wMenuScrollPosition]
-	ld [wKeyItemsPocketScrollPosition], a
-	ld a, [wMenuCursorY]
-	ld [wKeyItemsPocketCursor], a
+	call WaitBGMap_DrawPackGFX
+	farcall KeyItemsPocket
+	ld a, [wCurItem]
 	ret
 
 InitPocket: ; 10762 (4:4762)
@@ -1595,6 +1586,12 @@ Pack_GetItemName: ; 10a1d
 	jp CopyName1
 ; 10a2a
 
+Pack_GetKeyItemName:
+	ld a, [wCurKeyItem]
+	ld [wNamedObjectIndexBuffer], a
+	call GetKeyItemName
+	jp CopyName1
+
 ClearPocketList: ; 10a36 (4:4a36)
 	hlcoord 5, 2
 	lb bc, 10, SCREEN_WIDTH - 5
@@ -1755,7 +1752,7 @@ KeyItemsPocketMenuDataHeader: ; 0x10a7f
 	db $ed ; flags, special workaround for registered item symbols
 	db 5, 8 ; rows, columns
 	db 1 ; horizontal spacing
-	dbw 0, wNumKeyItems
+;	dbw 0, wNumKeyItems
 	dba PlaceMenuItemName
 	dba PlaceMenuItemQuantity
 	dba UpdateItemIconAndDescription
@@ -1773,7 +1770,7 @@ PC_Mart_KeyItemsPocketMenuDataHeader: ; 0x10a97
 	db $2e ; flags
 	db 5, 8 ; rows, columns
 	db 1 ; horizontal spacing
-	dbw 0, wNumKeyItems
+;	dbw 0, wNumKeyItems
 	dba PlaceMartItemName
 	dba PlaceMenuItemQuantity
 	dba UpdateItemIconAndDescription

@@ -195,7 +195,7 @@ SageScript_0x185188:
 	iftrue UnknownScript_0x1851b0
 	writetext UnknownText_0x185629
 	buttonsound
-	verbosegiveitem RAINBOW_WING
+	verbosegivekeyitem RAINBOW_WING
 	closetext
 	refreshscreen
 	earthquake 72

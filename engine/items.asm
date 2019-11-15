@@ -16,7 +16,7 @@ _ReceiveItem:: ; d1d5
 	dw .Ball
 	dw TMHM_Dummy
 	dw .Berry
-	dw .KeyItem
+	dw KeyItem_Dummy
 
 .Item: ; d1f1
 	ld hl, wNumItems
@@ -33,10 +33,6 @@ _ReceiveItem:: ; d1d5
 .Berry:
 	ld hl, wNumBerries
 	jp PutItemInPocket
-
-.KeyItem: ; d1f6
-	ld hl, wNumKeyItems
-	jp ReceiveKeyItem
 
 _TossItem:: ; d20d
 	call DoesHLEqualNumItems
@@ -56,7 +52,7 @@ _TossItem:: ; d20d
 	dw .Ball
 	dw TMHM_Dummy
 	dw .Berry
-	dw .KeyItem
+	dw KeyItem_Dummy
 
 .Medicine:
 	ld hl, wNumMedicine
@@ -69,11 +65,6 @@ _TossItem:: ; d20d
 .Berry:
 	ld hl, wNumBerries
 	jp RemoveItemFromPocket
-
-.KeyItem: ; d23a
-	ld h, d
-	ld l, e
-	jp TossKeyItem
 
 .Item: ; d23f
 	ld h, d
@@ -99,7 +90,7 @@ _CheckItem:: ; d244
 	dw .Ball
 	dw TMHM_Dummy
 	dw .Berry
-	dw .KeyItem
+	dw KeyItem_Dummy
 
 .Medicine:
 	ld hl, wNumMedicine
@@ -112,11 +103,6 @@ _CheckItem:: ; d244
 .Berry:
 	ld hl, wNumBerries
 	jp CheckTheItem
-
-.KeyItem: ; d271
-	ld h, d
-	ld l, e
-	jp CheckKeyItems
 
 .Item: ; d276
 	ld h, d
@@ -332,94 +318,6 @@ CheckTheItem: ; d349
 	and a
 	ret
 
-ReceiveKeyItem: ; d35a
-	ld hl, wNumKeyItems
-	ld a, [hli]
-	cp MAX_KEY_ITEMS
-	jr nc, .nope
-	ld c, a
-	ld b, 0
-	add hl, bc
-	ld a, [wCurItem]
-	ld [hli], a
-	ld [hl], -1
-	ld hl, wNumKeyItems
-	inc [hl]
-	scf
-	ret
-
-.nope
-	and a
-	ret
-
-TossKeyItem: ; d374
-	ld a, [wCurItemQuantity]
-	ld e, a
-	ld d, 0
-	ld hl, wNumKeyItems
-	ld a, [hl]
-	cp e
-	jr nc, .ok
-	call .Toss
-	ret nc
-	jr .ok2
-
-.ok
-	dec [hl]
-	inc hl
-	add hl, de
-
-.ok2
-	ld d, h
-	ld e, l
-	inc hl
-.loop
-	ld a, [hli]
-	ld [de], a
-	inc de
-	cp -1
-	jr nz, .loop
-	scf
-	ret
-
-.Toss: ; d396
-	ld hl, wNumKeyItems
-	ld a, [wCurItem]
-	ld c, a
-.loop3
-	inc hl
-	ld a, [hl]
-	cp c
-	jr z, .ok3
-	cp -1
-	jr nz, .loop3
-	xor a
-	ret
-
-.ok3
-	ld a, [wNumKeyItems]
-	dec a
-	ld [wNumKeyItems], a
-	scf
-	ret
-
-CheckKeyItems: ; d3b1
-	ld a, [wCurItem]
-	ld c, a
-	ld hl, wKeyItems
-.loop
-	ld a, [hli]
-	cp c
-	jr z, .done
-	cp -1
-	jr nz, .loop
-	and a
-	ret
-
-.done
-	scf
-	ret
-
 _CheckTossableItem:: ; d427
 ; Return 1 in wItemAttributeParamBuffer and carry if wCurItem can't be removed from the bag.
 	ld a, ITEMATTR_PERMISSIONS
@@ -433,6 +331,15 @@ CheckSelectableItem: ; d432
 ; Return 1 in wItemAttributeParamBuffer and carry if wCurItem can't be selected.
 	ld a, ITEMATTR_PERMISSIONS
 	call GetItemAttr
+	bit CANT_SELECT_F, a
+	jr nz, ItemAttr_ReturnCarry
+	and a
+	ret
+
+CheckSelectableKeyItem:
+; Return 1 in wItemAttributeParamBuffer and carry if wCurKeyItem can't be selected.
+	ld a, KEYITEMATTR_PERMISSIONS
+	call GetKeyItemAttr
 	bit CANT_SELECT_F, a
 	jr nz, ItemAttr_ReturnCarry
 	and a
@@ -454,10 +361,25 @@ CheckItemContext: ; d448
 	ld [wItemAttributeParamBuffer], a
 	ret
 
+CheckKeyItemContext:
+	ld a, KEYITEMATTR_HELP
+	call GetKeyItemAttr
+	and $f
+	ld [wItemAttributeParamBuffer], a
+	ret
+
 CheckItemMenu: ; d453
 ; Return the menu for wCurItem in wItemAttributeParamBuffer.
 	ld a, ITEMATTR_HELP
 	call GetItemAttr
+	swap a
+	and $f
+	ld [wItemAttributeParamBuffer], a
+	ret
+
+CheckKeyItemMenu:
+	ld a, KEYITEMATTR_HELP
+	call GetKeyItemAttr
 	swap a
 	and $f
 	ld [wItemAttributeParamBuffer], a
@@ -468,6 +390,12 @@ CheckItemParam:
 	ld a, ITEMATTR_PARAM
 	call GetItemAttr
 	ld [wItemAttributeParamBuffer], a
+	ret
+
+ItemAttr_ReturnCarry: ; d47f
+	ld a, 1
+	ld [wItemAttributeParamBuffer], a
+	scf
 	ret
 
 GetItemAttr: ; d460
@@ -496,10 +424,28 @@ GetItemAttr: ; d460
 	pop hl
 	ret
 
-ItemAttr_ReturnCarry: ; d47f
-	ld a, 1
+GetKeyItemAttr:
+	push hl
+	push bc
+
+	ld hl, KeyItemAttributes
+	ld c, a
+	ld b, 0
+	add hl, bc
+
+	xor a
 	ld [wItemAttributeParamBuffer], a
-	scf
+
+	ld a, [wCurKeyItem]
+	dec a
+	ld c, a
+	ld a, NUM_KEYITEMATTRS
+	rst AddNTimes
+	ld a, BANK(KeyItemAttributes)
+	call GetFarByte
+
+	pop bc
+	pop hl
 	ret
 
 GetItemPrice: ; d486

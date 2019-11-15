@@ -207,7 +207,7 @@ AzaleaTown_CelebiTrigger:
 	buttonsound
 	writetext AzaleaTownKurtText
 	waitbutton
-	verbosegiveitem GS_BALL
+	verbosegivekeyitem GS_BALL
 	turnobject AZALEATOWN_KURT, LEFT
 	setflag ENGINE_HAVE_EXAMINED_GS_BALL
 	clearevent EVENT_ILEX_FOREST_LASS

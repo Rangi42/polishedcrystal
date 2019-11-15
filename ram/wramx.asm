@@ -300,6 +300,7 @@ ENDU
 
 wCurIconMonHasItemOrMail:: ds 1
 
+wCurKeyItem::
 wCurTMHM::
 wCurItem::
 	ds 1
@@ -596,6 +597,7 @@ wBattleHasJustStarted:: ds 1
 
 wd265:: ; TODO: replace with meaningful labels
 wNamedObjectIndexBuffer::
+wCurKeyItemBuffer::
 wCurTMHMBuffer::
 wTypeMatchup::
 wFoundMatchingIDInParty::
@@ -876,6 +878,9 @@ wPokemonJournalsEnd::
 wTMsHMs:: flag_array NUM_TMS + NUM_HMS
 wTMsHMsEnd::
 
+wKeyItems:: flag_array NUM_KEY_ITEMS
+wKeyItemsEnd::
+
 wNumItems:: ds 1
 wItems:: ds MAX_ITEMS * 2 + 1
 wItemsEnd::
@@ -888,9 +893,6 @@ wBallsEnd::
 wNumBerries:: ds 1
 wBerries:: ds MAX_BERRIES * 2 + 1
 wBerriesEnd::
-wNumKeyItems:: ds 1
-wKeyItems:: ds MAX_KEY_ITEMS + 1
-wKeyItemsEnd::
 wNumPCItems:: ds 1
 wPCItems:: ds MAX_PC_ITEMS * 2 + 1
 wPCItemsEnd::
@@ -1269,6 +1271,18 @@ wBestMagikarpLengthMm::
 wBestMagikarpLengthMmHi:: ds 1
 wBestMagikarpLengthMmLo:: ds 1
 wMagikarpRecordHoldersName:: ds NAME_LENGTH
+
+wRegisteredItemFlags:: 
+	; 0 - wRegisteredItems key item flag 
+	; 1 - wRegisteredItems + 1 key item flag
+	; 2 - wRegisteredItems + 2 key item flag
+	; 3 - wRegisteredItems + 3 key item flag
+
+	; 4 - wRegisteredItems second item list flag
+	; 5 - wRegisteredItems + 1 second item list flag
+	; 6 - wRegisteredItems + 2 second item list flag
+	; 7 - wRegisteredItems + 3 second item list flag
+	ds 1
 
 wRegisteredItems::
 ; You can map 4 items, to select + directions

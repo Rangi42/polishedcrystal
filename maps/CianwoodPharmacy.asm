@@ -26,7 +26,7 @@ CianwoodPharmacist:
 	opentext
 	writetext PharmacistGiveSecretpotionText
 	buttonsound
-	giveitem SECRETPOTION
+	givekeyitem SECRETPOTION
 	writetext ReceivedSecretpotionText
 	playsound SFX_KEY_ITEM
 	waitsfx

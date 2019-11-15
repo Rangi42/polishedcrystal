@@ -81,7 +81,7 @@ GoldenrodCityMoveTutorAndRocketScoutAndGymLass:
 ; Move Tutor
 	checkevent EVENT_BEAT_WHITNEY
 	iffalse .MoveTutorDisappear
-	checkitem COIN_CASE
+	checkkeyitem COIN_CASE
 	iffalse .MoveTutorDisappear
 	appear GOLDENRODCITY_POKEFAN_M2
 	jump .MoveTutorDone

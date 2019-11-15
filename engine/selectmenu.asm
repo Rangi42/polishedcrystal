@@ -21,8 +21,7 @@ CheckRegisteredItem:: ; 13345
 ; Returns amount of registered items and z if none is. Populates wCurItem
 ; with a valid registered item, useful if there's only a single one.
 	ld hl, wRegisteredItems
-	ld b, 4
-	ld c, 0
+	lb bc, 4, 0
 .loop
 	ld a, [hl]
 	and a
@@ -30,31 +29,16 @@ CheckRegisteredItem:: ; 13345
 	push hl
 	push bc
 	push af
-	ld hl, wKeyItems
-	ld de, 1
-	call IsInArray
-	jr c, .registration_ok
+	call CheckKeyItem
+	jr nc, .registration_ok ; ???
 
-	; We can register regular items too (e.g. Repel)
-	pop af
-	push af
-	ld hl, wItems
-	ld de, 2
-	call IsInArray
-	jr c, .registration_ok
-	pop af
-	pop bc
-	pop hl
-	xor a
-	ld [hl], a
-	jr .next
 .registration_ok
 	pop af
 	pop bc
 	pop hl
 
 	; Useful if we only have a single registered item
-	ld [wCurItem], a
+	ld [wCurKeyItem], a
 	inc c
 .next
 	inc hl
@@ -80,7 +64,7 @@ UseRegisteredItem:
 	ld c, 3
 	call SFXDelayFrames
 	pop de
-	farcall CheckItemMenu
+	farcall CheckKeyItemMenu
 	ld a, [wItemAttributeParamBuffer]
 	ld hl, .SwitchTo
 	rst JumpTable
@@ -104,7 +88,7 @@ UseRegisteredItem:
 
 .Current:
 	call OpenText
-	call DoItemEffect
+	predef DoKeyItemEffect
 	call CloseText
 	and a
 	ret
@@ -112,7 +96,7 @@ UseRegisteredItem:
 .Party:
 	call RefreshScreen
 	call FadeToMenu
-	call DoItemEffect
+	predef DoKeyItemEffect
 	call CloseSubmenu
 	call CloseText
 	and a
@@ -122,7 +106,7 @@ UseRegisteredItem:
 	call RefreshScreen
 	ld a, 1
 	ld [wUsingItemWithSelect], a
-	call DoItemEffect
+	predef DoKeyItemEffect
 	xor a
 	ld [wUsingItemWithSelect], a
 	ld a, [wItemEffectSucceeded]
@@ -183,7 +167,9 @@ GetRegisteredItem:
 	ld [wNamedObjectIndexBuffer], a
 	push de
 	push hl
-	call GetItemName
+	push af
+	call GetKeyItemName
+	pop af
 	pop hl
 	push hl
 	ld de, wStringBuffer1
@@ -214,6 +200,7 @@ GetRegisteredItem:
 	jr nz, .got_input
 	call DelayFrame
 	jr .joy_loop
+
 .got_input
 	bit A_BUTTON_F, a
 	jr nz, .first
@@ -233,7 +220,7 @@ GetRegisteredItem:
 .got_item
 	ld a, [de]
 .got_item_a
-	ld [wCurItem], a
+	ld [wCurKeyItem], a
 	and a
 	jr z, .joy_loop
 	jr .ret

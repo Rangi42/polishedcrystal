@@ -37,7 +37,7 @@ ShamoutiShrineRuinsLawrenceScript:
 	opentext
 	writetext .AfterText
 	buttonsound
-	verbosegiveitem SILVER_WING
+	verbosegivekeyitem SILVER_WING
 	writetext .SilverWingText
 	waitbutton
 	closetext
