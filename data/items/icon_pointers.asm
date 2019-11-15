@@ -22,6 +22,7 @@ ItemIconPointers:
 	dw HealBallIcon
 	dw QuickBallIcon
 	dw DuskBallIcon
+	dw DreamBallIcon
 	dw PremierBallIcon
 	dw CherishBallIcon
 	dw PotionIcon
@@ -86,35 +87,6 @@ ItemIconPointers:
 	dw IceStoneIcon
 	dw EverstoneIcon
 	dw ExpShareIcon
-	dw NoItemIcon
-	dw NoItemIcon
-	dw NoItemIcon
-	dw NoItemIcon
-	dw NoItemIcon
-	dw NoItemIcon
-	dw NoItemIcon
-	dw NoItemIcon
-	dw NoItemIcon
-	dw NoItemIcon
-	dw NoItemIcon
-	dw NoItemIcon
-	dw NoItemIcon
-	dw NoItemIcon
-	dw NoItemIcon
-	dw NoItemIcon
-	dw NoItemIcon
-	dw NoItemIcon
-	dw NoItemIcon
-	dw NoItemIcon
-	dw NoItemIcon
-	dw NoItemIcon
-	dw NoItemIcon
-	dw NoItemIcon
-	dw NoItemIcon
-	dw NoItemIcon
-	dw NoItemIcon
-	dw NoItemIcon
-	dw NoItemIcon
 	dw CheriBerryIcon
 	dw ChestoBerryIcon
 	dw PechaBerryIcon
@@ -193,6 +165,12 @@ ItemIconPointers:
 	dw WeakPolicyIcon
 	dw WideLensIcon
 	dw WiseGlassesIcon
+	dw EjectPackIcon
+	dw RoomServiceIcon
+	dw BlundrPolicyIcon
+	dw ThroatSprayIcon
+	dw HeavyBootsIcon
+	dw UtilUmbrellaIcon
 	dw ZoomLensIcon
 	dw MentalHerbIcon
 	dw PowerHerbIcon
@@ -244,6 +222,7 @@ ItemIconPointers:
 	dw OldAmberIcon
 	dw MulchIcon
 	dw SweetHoneyIcon
+	dw MintIcon
 	dw FlowerMailIcon
 	dw SurfMailIcon
 	dw LiteBlueMailIcon
@@ -254,7 +233,6 @@ ItemIconPointers:
 	dw BlueSkyMailIcon
 	dw MusicMailIcon
 	dw MirageMailIcon
-	dw NoItemIcon
 
 KeyItemIconPointers:
 	dw BicycleIcon
@@ -283,5 +261,6 @@ KeyItemIconPointers:
 	dw OldSeaMapIcon
 	dw ShinyCharmIcon
 	dw OvalCharmIcon
+	dw CatchCharmIcon
 	dw SilphScope2Icon
 	dw ApricornBoxIcon

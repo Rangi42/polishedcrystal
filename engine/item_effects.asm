@@ -48,6 +48,7 @@ ItemEffects: ; e73c
 	dw PokeBallEffect   ; HEAL_BALL
 	dw PokeBallEffect   ; QUICK_BALL
 	dw PokeBallEffect   ; DUSK_BALL
+	dw PokeBallEffect   ; DREAM_BALL
 	dw PokeBallEffect   ; PREMIER_BALL
 	dw PokeBallEffect   ; CHERISH_BALL
 	dw RestoreHPEffect  ; POTION
@@ -112,35 +113,6 @@ ItemEffects: ; e73c
 	dw EvoStoneEffect   ; ICE_STONE
 	dw NoEffect         ; EVERSTONE
 	dw NoEffect         ; EXP_SHARE
-	dw NoEffect         ; TERU_SAMA_01
-	dw NoEffect         ; TERU_SAMA_02
-	dw NoEffect         ; TERU_SAMA_03
-	dw NoEffect         ; TERU_SAMA_04
-	dw NoEffect         ; TERU_SAMA_05
-	dw NoEffect         ; TERU_SAMA_06
-	dw NoEffect         ; TERU_SAMA_07
-	dw NoEffect         ; TERU_SAMA_08
-	dw NoEffect         ; TERU_SAMA_09
-	dw NoEffect         ; TERU_SAMA_10
-	dw NoEffect         ; TERU_SAMA_11
-	dw NoEffect         ; TERU_SAMA_12
-	dw NoEffect         ; TERU_SAMA_13
-	dw NoEffect         ; TERU_SAMA_14
-	dw NoEffect         ; TERU_SAMA_15
-	dw NoEffect         ; TERU_SAMA_16
-	dw NoEffect         ; TERU_SAMA_17
-	dw NoEffect         ; TERU_SAMA_18
-	dw NoEffect         ; TERU_SAMA_19
-	dw NoEffect         ; TERU_SAMA_20
-	dw NoEffect         ; TERU_SAMA_21
-	dw NoEffect         ; TERU_SAMA_22
-	dw NoEffect         ; TERU_SAMA_23
-	dw NoEffect         ; TERU_SAMA_24
-	dw NoEffect         ; TERU_SAMA_25
-	dw NoEffect         ; TERU_SAMA_26
-	dw NoEffect         ; TERU_SAMA_27
-	dw NoEffect         ; TERU_SAMA_28
-	dw NoEffect         ; TERU_SAMA_29
 	dw HealStatusEffect ; CHERI_BERRY
 	dw HealStatusEffect ; CHESTO_BERRY
 	dw HealStatusEffect ; PECHA_BERRY
@@ -220,6 +192,12 @@ ItemEffects: ; e73c
 	dw NoEffect         ; WIDE_LENS
 	dw NoEffect         ; WISE_GLASSES
 	dw NoEffect         ; ZOOM_LENS
+	dw NoEffect         ; EJECT_PACK
+	dw NoEffect         ; ROOM_SERVICE
+	dw NoEffect         ; BLUNDRPOLICY
+	dw NoEffect         ; THROAT_SPRAY
+	dw NoEffect         ; HEAVY_BOOTS
+	dw NoEffect         ; UTILUMBRELLA
 	dw NoEffect         ; MENTAL_HERB
 	dw NoEffect         ; POWER_HERB
 	dw NoEffect         ; WHITE_HERB
@@ -270,6 +248,7 @@ ItemEffects: ; e73c
 	dw NoEffect         ; OLD_AMBER
 	dw NoEffect         ; MULCH
 	dw NoEffect         ; SWEET_HONEY
+	dw NoEffect         ; MINT
 	dw NoEffect         ; FLOWER_MAIL
 	dw NoEffect         ; SURF_MAIL
 	dw NoEffect         ; LITEBLUEMAIL

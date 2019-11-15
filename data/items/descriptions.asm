@@ -21,6 +21,7 @@ ItemDescriptions:
 	dw HealBallDesc
 	dw QuickBallDesc
 	dw DuskBallDesc
+	dw DreamBallDesc
 	dw PremierBallDesc
 	dw CherishBallDesc
 	dw PotionDesc
@@ -85,35 +86,6 @@ ItemDescriptions:
 	dw IceStoneDesc
 	dw EverstoneDesc
 	dw ExpShareDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
 	dw CheriBerryDesc
 	dw ChestoBerryDesc
 	dw PechaBerryDesc
@@ -192,6 +164,12 @@ ItemDescriptions:
 	dw WeakPolicyDesc
 	dw WideLensDesc
 	dw WiseGlassesDesc
+	dw EjectPackDesc
+	dw RoomServiceDesc
+	dw BlundrPolicyDesc
+	dw ThroatSprayDesc
+	dw HeavyBootsDesc
+	dw UtilUmbrellaDesc
 	dw ZoomLensDesc
 	dw MentalHerbDesc
 	dw PowerHerbDesc
@@ -243,6 +221,7 @@ ItemDescriptions:
 	dw OldAmberDesc
 	dw MulchDesc
 	dw SweetHoneyDesc
+	dw MintDesc
 	dw FlowerMailDesc
 	dw SurfMailDesc
 	dw LiteBlueMailDesc
@@ -253,8 +232,6 @@ ItemDescriptions:
 	dw BlueSkyMailDesc
 	dw MusicMailDesc
 	dw MirageMailDesc
-	dw TeruSamaDesc
-	dw TeruSamaDesc
 
 KeyItemDescriptions:
 	dw BicycleDesc
@@ -283,6 +260,7 @@ KeyItemDescriptions:
 	dw OldSeaMapDesc
 	dw ShinyCharmDesc
 	dw OvalCharmDesc
+	dw CatchCharmDesc
 	dw SilphScope2Desc
 	dw ApricornBoxDesc
 
@@ -374,6 +352,10 @@ QuickBallDesc:
 DuskBallDesc:
 	db   "A Ball for night-"
 	next "time or caves.@"
+
+DreamBallDesc:
+	db   "A Ball for sleep-"
+	next "ing #mon.@"
 
 PremierBallDesc:
 	db   "A rare commemor-"
@@ -1152,7 +1134,13 @@ MirageMailDesc:
 	db   "Mew-print Mail."
 	next "(Hold)@"
 
-TeruSamaDesc:
+EjectPackDesc:
+RoomServiceDesc:
+BlundrPolicyDesc:
+ThroatSprayDesc:
+HeavyBootsDesc:
+UtilUmbrellaDesc:
+MintDesc:
 	db   "?@"
 
 
@@ -1255,6 +1243,10 @@ ShinyCharmDesc:
 OvalCharmDesc:
 	db   "A charm for find-"
 	next "ing Eggs.@"
+
+CatchCharmDesc:
+	db   "A charm for catch-"
+	next "ing #mon.@"
 
 SilphScope2Desc:
 	db   "A scope to see in-"
