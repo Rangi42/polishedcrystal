@@ -476,9 +476,9 @@ UpdateKeyItemDescription:
 	hlcoord 0, 12
 	lb bc, 4, SCREEN_WIDTH - 2
 	call TextBox
-	ld a, [wMenuSelection]
-	cp -1
-	ret z
+	; ld a, [wMenuSelection]
+	; cp -1
+	; ret z
 	decoord 1, 14
 	farjp PrintKeyItemDescription
 

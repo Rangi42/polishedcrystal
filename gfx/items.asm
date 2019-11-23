@@ -19,7 +19,11 @@ UpdateItemIconAndDescriptionAndBagQuantity::
 	farcall UpdateItemDescriptionAndBagQuantity
 UpdateItemIcon::
 	ld hl, ItemIconPointers
-	ld a, [wCurSpecies]
+	ld a, [wCurItem]
+	inc a
+	jr z, .cancel
+	dec a
+.cancel
 	ld e, a
 	ld d, 0
 	add hl, de
