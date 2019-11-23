@@ -39,7 +39,7 @@ ClerkScript_0x54750:
 	writetext UnknownText_0x54848
 	playsound SFX_KEY_ITEM
 	waitsfx
-	itemnotify
+	keyitemnotify
 	setflag ENGINE_BIKE_SHOP_CALL_ENABLED
 	setevent EVENT_GOT_BICYCLE
 	thisopenedtext

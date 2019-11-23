@@ -233,7 +233,7 @@ LakeOfRageRedGyaradosScript:
 	writetext .RedScaleText
 	playsound SFX_ITEM
 	waitsfx
-	itemnotify
+	keyitemnotify
 	closetext
 	appear LAKEOFRAGE_LANCE
 	end

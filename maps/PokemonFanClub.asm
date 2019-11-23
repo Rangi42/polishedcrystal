@@ -67,7 +67,7 @@ UnknownScript_0x191844:
 	writetext UnknownText_0x191d0a
 	playsound SFX_KEY_ITEM
 	waitsfx
-	itemnotify
+	keyitemnotify
 	setevent EVENT_GOT_LOST_ITEM_FROM_FAN_CLUB
 	endtext
 

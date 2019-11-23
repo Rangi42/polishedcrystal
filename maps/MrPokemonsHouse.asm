@@ -45,7 +45,7 @@ MrPokemonsHouseTrigger0:
 	writetext MrPokemonsHouse_GotEggText
 	playsound SFX_KEY_ITEM
 	waitsfx
-	itemnotify
+	keyitemnotify
 	setevent EVENT_GOT_MYSTERY_EGG_FROM_MR_POKEMON
 	blackoutmod CHERRYGROVE_CITY
 if !DEF(DEBUG)
