@@ -494,8 +494,15 @@ GetName:: ; 33c3
 	ld h, [hl]
 	ld l, a
 
+	ld a, [wNamedObjectTypeBuffer]
+	cp KEY_ITEM_NAME
+	jr nz, .NotKeyItem
+	ld a, [wCurSpecies]
+	jr .continue
+.NotKeyItem:
 	ld a, [wCurSpecies]
 	dec a
+.continue
 	call GetNthString
 
 	ld de, wStringBuffer1
