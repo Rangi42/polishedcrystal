@@ -295,7 +295,7 @@ KeyItems_LoadSubmenu:
 	farcall CheckSelectableKeyItem
 	ld a, [wItemAttributeParamBuffer]
 	and a
-	jr z, .selectable
+	jr nz, .selectable
 
 	ld hl, MenuDataHeader_Use
 	ld de, Jumptable_KeyItem_UseQuit
@@ -548,7 +548,7 @@ RegisterKeyItem: ; 103c2
 	farcall CheckSelectableKeyItem
 	ld a, [wItemAttributeParamBuffer]
 	and a
-	jr nz, .cant_register
+	jr z, .cant_register
 
 	; Check if the item is registered
 	ld hl, wRegisteredItems

@@ -319,12 +319,14 @@ CheckTheItem: ; d349
 	ret
 
 CheckSelectableKeyItem:
-; Return 1 in wItemAttributeParamBuffer and carry if wCurKeyItem can't be selected.
+; Return 1 in wItemAttributeParamBuffer and carry if wCurKeyItem can be selected.
 	ld a, KEYITEMATTR_PERMISSIONS
 	call GetKeyItemAttr
-	bit CANT_SELECT_F, a
-	jr nz, ItemAttr_ReturnCarry
 	and a
+	ret z
+	ld a, 1
+	ld [wItemAttributeParamBuffer], a
+	scf
 	ret
 
 CheckItemPocket:: ; d43d
@@ -372,12 +374,6 @@ CheckItemParam:
 	ld a, ITEMATTR_PARAM
 	call GetItemAttr
 	ld [wItemAttributeParamBuffer], a
-	ret
-
-ItemAttr_ReturnCarry: ; d47f
-	ld a, 1
-	ld [wItemAttributeParamBuffer], a
-	scf
 	ret
 
 GetItemAttr: ; d460
