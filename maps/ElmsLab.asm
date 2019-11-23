@@ -575,6 +575,12 @@ LyraBattleScript:
 .AfterYourDefeat:
 	showtext ElmsLabLyraText_YouLost
 .FinishLyra:
+	turnobject ELMSLAB_LYRA, UP
+	opentext
+	writetext ElmsLabLyraThankYouText
+	turnobject ELMSLAB_LYRA, LEFT
+	writetext ElmsLabLyraSeeYouText
+	closetext
 	turnobject PLAYER, DOWN
 	applymovement ELMSLAB_LYRA, LyraLeavesMovement
 	disappear ELMSLAB_LYRA
@@ -1604,12 +1610,16 @@ ElmsLabLyraText_YouWon:
 ElmsLabLyraText_YouLost:
 	text "That was an"
 	line "exciting battle!"
+	done
 
-	para "Thank you for the"
+ElmsLabLyraThankYouText:
+	text "Thank you for the"
 	line "#mon, Prof."
 	cont "Elm."
+	done
 
-	para "<PLAYER>, I'll"
+ElmsLabLyraSeeYouText:
+	text "<PLAYER>, I'll"
 	line "see you later!"
 
 	para "Have fun on your"
