@@ -315,18 +315,6 @@ KrisWithdrawItemMenu: ; 0x157d1
 	ret
 
 .Submenu:
-	; check if the item has a quantity
-	farcall _CheckTossableItem
-	ld a, [wItemAttributeParamBuffer]
-	and a
-	jr z, .askquantity
-
-	; items without quantity are always ×1
-	ld a, 1
-	ld [wItemQuantityChangeBuffer], a
-	jr .withdraw
-
-.askquantity
 	ld hl, .HowManyText
 	call MenuTextBox
 	farcall SelectQuantityToToss
@@ -334,7 +322,6 @@ KrisWithdrawItemMenu: ; 0x157d1
 	call ExitMenu
 	ret c
 
-.withdraw
 	ld a, [wItemQuantityChangeBuffer]
 	ld [wBuffer1], a ; quantity
 	ld a, [wCurItemQuantity]
@@ -438,10 +425,7 @@ KrisDepositItemMenu: ; 0x1588b
 	db "@"
 
 .TryDepositItem:
-	ld a, [wCurrPocket]
-	cp TM_HM - 1
-	jr z, .CantDepositItem
-	cp KEY_ITEM - 1
+	call CheckUniqueItemPocket
 	jr z, .CantDepositItem
 	ld a, [wSpriteUpdatesEnabled]
 	push af
@@ -484,15 +468,6 @@ KrisDepositItemMenu: ; 0x1588b
 	ret
 
 .DepositItem_:
-	farcall _CheckTossableItem
-	ld a, [wItemAttributeParamBuffer]
-	and a
-	jr z, .AskQuantity
-	ld a, $1
-	ld [wItemQuantityChangeBuffer], a
-	jr .DepositItem
-
-.AskQuantity:
 	ld hl, .HowManyText
 	call MenuTextBox
 	farcall SelectQuantityToToss
@@ -502,7 +477,6 @@ KrisDepositItemMenu: ; 0x1588b
 	pop af
 	jr c, .DeclinedToDeposit
 
-.DepositItem:
 	ld a, [wItemQuantityChangeBuffer]
 	ld [wBuffer1], a
 	ld a, [wCurItemQuantity]

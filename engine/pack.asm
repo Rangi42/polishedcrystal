@@ -75,7 +75,7 @@ Pack: ; 10000
 	lb bc, $b, $3 ; Key Items, Medicine
 	call Pack_InterpretJoypad
 	ret c
-	jp .ItemBallsKey_LoadSubmenu
+	jp .ItemMedsBallsBerries_LoadSubmenu
 
 .InitMedicinePocket:
 	ld a, MEDICINE - 1
@@ -99,7 +99,7 @@ Pack: ; 10000
 	lb bc, $1, $5 ; Items, Balls
 	call Pack_InterpretJoypad
 	ret c
-	jp .ItemBallsKey_LoadSubmenu
+	jp .ItemMedsBallsBerries_LoadSubmenu
 
 .InitBallsPocket: ; 10186 (4:4186)
 	ld a, BALL - 1
@@ -123,7 +123,7 @@ Pack: ; 10000
 	lb bc, $3, $7 ; Medicine, TM/HM
 	call Pack_InterpretJoypad
 	ret c
-	jp .ItemBallsKey_LoadSubmenu
+	jp .ItemMedsBallsBerries_LoadSubmenu
 
 .InitTMHMPocket: ; 100d3 (4:40d3)
 	ld a, TM_HM - 1
@@ -214,7 +214,7 @@ Pack: ; 10000
 	lb bc, $7, $b ; TM/HM, Key Items
 	call Pack_InterpretJoypad
 	ret c
-	jp .ItemBallsKey_LoadSubmenu
+	jr .ItemMedsBallsBerries_LoadSubmenu
 
 .InitKeyItemsPocket: ; 10094 (4:4094)
 	ld a, KEY_ITEM - 1
@@ -230,64 +230,21 @@ Pack: ; 10000
 	ret c
 	jp KeyItems_LoadSubmenu
 
-.ItemBallsKey_LoadSubmenu: ; 101c5 (4:41c5)
+.ItemMedsBallsBerries_LoadSubmenu: ; 101c5 (4:41c5)
 	jr nz, PackSortMenu
-	farcall _CheckTossableItem
-	ld a, [wItemAttributeParamBuffer]
-	and a
-	jr nz, .tossable
-	farcall CheckSelectableItem
-	ld a, [wItemAttributeParamBuffer]
-	and a
-	jr nz, .selectable
 	farcall CheckItemMenu
 	ld a, [wItemAttributeParamBuffer]
 	and a
-	jr nz, .usable
-	jr .unusable
+	jr z, .cant_use
 
-.selectable
-	farcall CheckItemMenu
-	ld a, [wItemAttributeParamBuffer]
-	and a
-	jr nz, .selectable_usable
-	jr .selectable_unusable
-
-.tossable
-	farcall CheckSelectableItem
-	ld a, [wItemAttributeParamBuffer]
-	and a
-	jr nz, .tossable_selectable
-	jr .tossable_unselectable
-
-.usable
 	ld hl, MenuDataHeader_UseGiveToss
 	ld de, Jumptable_UseGiveTossQuit
 	jr PackBuildMenu
 
-.selectable_usable
-	ld hl, MenuDataHeader_UseGiveToss
-	ld de, Jumptable_UseGiveTossQuit
-	jr PackBuildMenu
-
-.tossable_selectable
-	ld hl, MenuDataHeader_Use
-	ld de, Jumptable_UseQuit
-	jr PackBuildMenu
-
-.tossable_unselectable
-	ld hl, MenuDataHeader_Use
-	ld de, Jumptable_UseQuit
-	jr PackBuildMenu
-
-.unusable
+.cant_use
 	ld hl, MenuDataHeader_GiveToss
 	ld de, Jumptable_GiveTossQuit
-	jr PackBuildMenu
-
-.selectable_unusable
-	ld hl, MenuDataHeader_GiveToss
-	ld de, Jumptable_GiveTossQuit
+	; fallthrough
 
 PackBuildMenu:
 	push de
@@ -338,13 +295,13 @@ KeyItems_LoadSubmenu:
 	farcall CheckSelectableKeyItem
 	ld a, [wItemAttributeParamBuffer]
 	and a
-	jr z, .selectable_usable
-.usable
+	jr z, .selectable
+
 	ld hl, MenuDataHeader_Use
 	ld de, Jumptable_KeyItem_UseQuit
 	jr PackBuildMenu
 
-.selectable_usable
+.selectable
 	ld hl, MenuDataHeader_UseSel
 	ld de, Jumptable_KeyItem_UseRegisterQuit
 	jr PackBuildMenu
@@ -1871,16 +1828,8 @@ Special_ChooseItem::
 	and a
 	ret z
 
-	ld a, [wCurrPocket]
-	cp KEY_ITEM - 1
+	call CheckUniqueItemPocket
 	jr z, .next
-	cp TM_HM - 1
-	jr z, .next
-
-	call CheckTossableItem
-	ld a, [wItemAttributeParamBuffer]
-	and a
-	jr nz, .next
 
 	ld a, TRUE
 	ld [wScriptVar], a

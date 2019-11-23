@@ -530,14 +530,10 @@ PlaceMenuApricornQuantity:
 	jr _PlaceMenuQuantity
 
 PlaceMenuItemQuantity: ; 0x24ac3
-	push de
 	ld a, [wMenuSelection]
 	ld [wCurItem], a
-	farcall _CheckTossableItem
-	ld a, [wItemAttributeParamBuffer]
+	push de
 	pop hl
-	and a
-	ret nz
 _PlaceMenuQuantity:
 	ld de, $15
 	add hl, de

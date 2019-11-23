@@ -83,6 +83,7 @@ ItemIconPointers:
 	dw MoonStoneIcon
 	dw SunStoneIcon
 	dw DuskStoneIcon
+	dw DawnStoneIcon
 	dw ShinyStoneIcon
 	dw IceStoneIcon
 	dw EverstoneIcon

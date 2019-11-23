@@ -82,6 +82,7 @@ ItemDescriptions:
 	dw MoonStoneDesc
 	dw SunStoneDesc
 	dw DuskStoneDesc
+	dw DawnStoneDesc
 	dw ShinyStoneDesc
 	dw IceStoneDesc
 	dw EverstoneDesc
@@ -571,6 +572,7 @@ ThunderStoneDesc:
 MoonStoneDesc:
 SunStoneDesc:
 DuskStoneDesc:
+DawnStoneDesc:
 ShinyStoneDesc:
 IceStoneDesc:
 	db   "Evolves certain"

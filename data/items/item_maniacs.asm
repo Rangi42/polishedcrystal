@@ -44,6 +44,7 @@ OreManiacItemRewards:
 	dbw MOON_STONE,    3000
 	dbw SUN_STONE,     3000
 	dbw DUSK_STONE,    3000
+	dbw DAWN_STONE,    3000
 	dbw SHINY_STONE,   3000
 	dbw ICE_STONE,     3000
 	dbw EVERSTONE,     3000

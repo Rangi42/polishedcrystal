@@ -318,24 +318,6 @@ CheckTheItem: ; d349
 	and a
 	ret
 
-_CheckTossableItem:: ; d427
-; Return 1 in wItemAttributeParamBuffer and carry if wCurItem can't be removed from the bag.
-	ld a, ITEMATTR_PERMISSIONS
-	call GetItemAttr
-	bit CANT_TOSS_F, a
-	jr nz, ItemAttr_ReturnCarry
-	and a
-	ret
-
-CheckSelectableItem: ; d432
-; Return 1 in wItemAttributeParamBuffer and carry if wCurItem can't be selected.
-	ld a, ITEMATTR_PERMISSIONS
-	call GetItemAttr
-	bit CANT_SELECT_F, a
-	jr nz, ItemAttr_ReturnCarry
-	and a
-	ret
-
 CheckSelectableKeyItem:
 ; Return 1 in wItemAttributeParamBuffer and carry if wCurKeyItem can't be selected.
 	ld a, KEYITEMATTR_PERMISSIONS

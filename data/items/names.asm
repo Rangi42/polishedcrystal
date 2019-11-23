@@ -90,6 +90,7 @@ endc
 	db "Moon Stone@"
 	db "Sun Stone@"
 	db "Dusk Stone@"
+	db "Dawn Stone@"
 	db "Shiny Stone@"
 	db "Ice Stone@"
 	db "Everstone@"

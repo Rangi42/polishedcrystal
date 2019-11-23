@@ -1483,9 +1483,8 @@ SellMenu: ; 15eb3
 ; 15ed3
 
 .TryToSellItem: ; 15ee0
-	ld a, [wCurrPocket]
-	cp TM_HM - 1
-	jr z, .cant_sell_tm
+	call CheckUniqueItemPocket
+	jr z, .cant_sell
 	farcall CheckItemMenu
 	ld a, [wItemAttributeParamBuffer]
 	ld hl, .dw
@@ -1494,25 +1493,20 @@ SellMenu: ; 15eb3
 ; 15eee
 
 .dw ; 15eee
-	dw .try_sell
+	dw .okay_to_sell
 	dw .cant_buy
 	dw .cant_buy
 	dw .cant_buy
-	dw .try_sell
-	dw .try_sell
-	dw .try_sell
+	dw .okay_to_sell
+	dw .okay_to_sell
+	dw .okay_to_sell
 ; 15efc
 
-.try_sell ; 15efd
-	farcall _CheckTossableItem
-	ld a, [wItemAttributeParamBuffer]
-	and a
-	jr z, .okay_to_sell
-.cant_sell_tm
+.cant_sell
 	ld hl, TextMart_CantBuyFromYou
 	call PrintText
 	and a
-.cant_buy ; 15efc
+.cant_buy
 	ret
 
 .okay_to_sell

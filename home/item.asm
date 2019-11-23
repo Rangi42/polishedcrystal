@@ -1,14 +1,3 @@
-CheckTossableItem:: ; 2f46
-	push hl
-	push de
-	push bc
-	farcall _CheckTossableItem
-	pop bc
-	pop de
-	pop hl
-	ret
-; 2f53
-
 TossItem:: ; 2f53
 	push hl
 	push de
@@ -142,4 +131,11 @@ CheckKeyItem::
 	call FlagAction
 	ret z
 	scf
+	ret
+
+CheckUniqueItemPocket::
+	ld a, [wCurrPocket]
+	cp TM_HM - 1
+	ret z
+	cp KEY_ITEM - 1
 	ret

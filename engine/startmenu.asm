@@ -497,10 +497,6 @@ HasNoItems: ; 129d5
 TossItemFromPC: ; 129f4
 	push de
 	call PartyMonItemName
-	farcall _CheckTossableItem
-	ld a, [wItemAttributeParamBuffer]
-	and a
-	jr nz, .key_item
 	ld hl, .TossHowMany
 	call MenuTextBox
 	farcall SelectQuantityToToss
@@ -526,8 +522,6 @@ TossItemFromPC: ; 129f4
 	and a
 	ret
 
-.key_item
-	call .CantToss
 .quit
 	pop hl
 	scf
@@ -547,16 +541,6 @@ TossItemFromPC: ; 129f4
 	; Discarded @ (S).
 	text_jump UnknownText_0x1c1aca
 	db "@"
-
-.CantToss:
-	ld hl, .TooImportantToToss
-	jp MenuTextBoxBackup
-
-.TooImportantToToss:
-	; That's too impor- tant to toss out!
-	text_jump UnknownText_0x1c1adf
-	db "@"
-; 0x12a60
 
 CantUseItem: ; 12a60
 	ld hl, CantUseItemText
@@ -749,18 +733,10 @@ GiveTakePartyMonItem: ; 12b60
 	and a
 	ret z
 
-	ld a, [wCurrPocket]
-	cp KEY_ITEM - 1
-	jr z, .next
-	cp TM_HM - 1
+	call CheckUniqueItemPocket
 	jr z, .next
 
-	call CheckTossableItem
-	ld a, [wItemAttributeParamBuffer]
-	and a
-	jr nz, .next
-
-	jp TryGiveItemToPartymon
+	jr TryGiveItemToPartymon
 
 .next
 	ld hl, CantBeHeldText

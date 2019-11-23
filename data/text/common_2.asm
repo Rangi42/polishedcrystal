@@ -1154,11 +1154,6 @@ UnknownText_0x1c1aca::
 	text "(s)."
 	prompt
 
-UnknownText_0x1c1adf::
-	text "That's too impor-"
-	line "tant to toss out!"
-	prompt
-
 UnknownText_0x1c1b03::
 	text "Oak: <PLAYER>!"
 	line "This isn't the"
