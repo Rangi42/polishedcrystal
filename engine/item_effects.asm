@@ -109,6 +109,7 @@ ItemEffects: ; e73c
 	dw EvoStoneEffect   ; MOON_STONE
 	dw EvoStoneEffect   ; SUN_STONE
 	dw EvoStoneEffect   ; DUSK_STONE
+	dw EvoStoneEffect   ; DAWN_STONE
 	dw EvoStoneEffect   ; SHINY_STONE
 	dw EvoStoneEffect   ; ICE_STONE
 	dw NoEffect         ; EVERSTONE
@@ -289,6 +290,7 @@ KeyItemEffects:
 	dw NoEffect         ; OLD_SEA_MAP
 	dw NoEffect         ; SHINY_CHARM
 	dw NoEffect         ; OVAL_CHARM
+	dw NoEffect         ; CATCH_CHARM
 	dw NoEffect         ; SILPHSCOPE2
 	dw ApricornBox      ; APRICORN_BOX
 

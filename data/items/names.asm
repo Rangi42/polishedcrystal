@@ -270,5 +270,6 @@ KeyItemNames::
 	db "Old Sea Map@"
 	db "Shiny Charm@"
 	db "Oval Charm@"
+	db "Catch Charm@"
 	db "SilphScope2@"
 	db "Apricorn Box@"
