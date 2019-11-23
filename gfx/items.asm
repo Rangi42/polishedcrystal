@@ -20,10 +20,10 @@ UpdateItemIconAndDescriptionAndBagQuantity::
 UpdateItemIcon::
 	ld hl, ItemIconPointers
 	ld a, [wCurItem]
-	inc a
-	jr z, .cancel
-	dec a
-.cancel
+	cp NUM_ITEMS + 1
+	jr c, .has_icon
+	xor a
+.has_icon
 	ld e, a
 	ld d, 0
 	add hl, de
