@@ -270,4 +270,8 @@ ItemNameOrder:
 	db NAM_MUSIC_MAIL
 	db NAM_MIRAGE_MAIL
 
+	; +1 due to "no item"
+	assert (@ - ItemNameOrder) <= NUM_ITEMS+1, "ItemNameOrder: Too many items"
+	assert (@ - ItemNameOrder) >= NUM_ITEMS+1, "ItemNameOrder: Too few items"
+
 	db -1 ; end
