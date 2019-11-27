@@ -1,8 +1,6 @@
 name: Build Nightly
 
 on:
-  schedule:
-    - cron: '0 5 * * *' # run at 12 AM EDT
   push:
     branches:
     - master
