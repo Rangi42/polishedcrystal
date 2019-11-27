@@ -17,7 +17,7 @@ In the installer, select the following packages: `git`, `python`, `make`, and `g
 In the **Cygwin terminal**:
 
 ```bash
-git clone https://github.com/roukaour/polishedcrystal.git
+git clone https://github.com/Rangi42/polishedcrystal.git
 cd polishedcrystal
 mkdir rgbds
 ```
@@ -55,7 +55,7 @@ cd rgbds
 sudo make install
 cd ..
 
-git clone https://github.com/roukaour/polishedcrystal.git
+git clone https://github.com/Rangi42/polishedcrystal.git
 cd polishedcrystal
 ```
 
@@ -84,7 +84,7 @@ cd rgbds
 sudo make install
 cd ..
 
-git clone https://github.com/roukaour/polishedcrystal.git
+git clone https://github.com/Rangi42/polishedcrystal.git
 cd polishedcrystal
 ```
 
