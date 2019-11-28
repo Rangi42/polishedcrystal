@@ -10,6 +10,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Set environment variables
+      run: echo "::set-env name=SHORT_SHA::$(echo ${GITHUB_SHA} | cut -c1-8)"
     - name: Install dependencies
       run: |
         sudo apt-get install make python gcc git bison
@@ -59,7 +61,7 @@ jobs:
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}  
         asset_path: ./polishedcrystal/build/polishedcrystal-3.0.0-beta.gbc
-        asset_name: polishedcrystal-3.0.0-$(echo ${GITHUB_SHA} | cut -c1-8).gbc
+        asset_name: polishedcrystal-3.0.0-${{ env.SHORT_SHA }}.gbc
         asset_content_type: application/octet-stream
     - name: Upload Release Asset (faithful)
       id: upload-faithful
@@ -69,7 +71,7 @@ jobs:
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}  
         asset_path: ./polishedcrystal/build/polishedcrystal-3.0.0-faithful-beta.gbc
-        asset_name: polishedcrystal-3.0.0-faithful-$(echo ${GITHUB_SHA} | cut -c1-8).gbc
+        asset_name: polishedcrystal-3.0.0-faithful-${{ env.SHORT_SHA }}.gbc
         asset_content_type: application/octet-stream
     - name: Upload Release Asset (non-faithful debug)
       id: upload-debug 
@@ -79,7 +81,7 @@ jobs:
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}  
         asset_path: ./polishedcrystal/build/polishedcrystal-3.0.0-debug-beta.gbc
-        asset_name: polishedcrystal-3.0.0-debug-$(echo ${GITHUB_SHA} | cut -c1-8).gbc
+        asset_name: polishedcrystal-3.0.0-debug-${{ env.SHORT_SHA }}.gbc
         asset_content_type: application/octet-stream
     - name: Upload Release Asset (faithful debug)
       id: upload-faithful-debug 
@@ -89,7 +91,7 @@ jobs:
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}  
         asset_path: ./polishedcrystal/build/polishedcrystal-3.0.0-faithful-debug-beta.gbc
-        asset_name: polishedcrystal-3.0.0-faithful-debug-$(echo ${GITHUB_SHA} | cut -c1-8).gbc
+        asset_name: polishedcrystal-3.0.0-faithful-debug-${{ env.SHORT_SHA }}.gbc
         asset_content_type: application/octet-stream
 
      
