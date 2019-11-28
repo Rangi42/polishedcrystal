@@ -56,7 +56,7 @@ jobs:
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}  
         asset_path: ./polishedcrystal/build/polishedcrystal-3.0.0-beta.gbc
-        asset_name: polishedcrystal-3.0.0-${{ github.sha }}.gbc
+        asset_name: polishedcrystal-3.0.0-${GITHUB_SHA::8}.gbc
         asset_content_type: application/octet-stream
     - name: Upload Release Asset (faithful)
       id: upload-faithful
@@ -66,7 +66,7 @@ jobs:
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}  
         asset_path: ./polishedcrystal/build/polishedcrystal-3.0.0-faithful-beta.gbc
-        asset_name: polishedcrystal-3.0.0-faithful-${{ github.sha }}.gbc
+        asset_name: polishedcrystal-3.0.0-faithful-${GITHUB_SHA::8}.gbc
         asset_content_type: application/octet-stream
     - name: Upload Release Asset (non-faithful debug)
       id: upload-debug 
@@ -76,7 +76,7 @@ jobs:
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}  
         asset_path: ./polishedcrystal/build/polishedcrystal-3.0.0-debug-beta.gbc
-        asset_name: polishedcrystal-3.0.0-debug-${{ github.sha }}.gbc
+        asset_name: polishedcrystal-3.0.0-debug-${GITHUB_SHA::8}.gbc
         asset_content_type: application/octet-stream
     - name: Upload Release Asset (faithful debug)
       id: upload-faithful-debug 
@@ -86,7 +86,7 @@ jobs:
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}  
         asset_path: ./polishedcrystal/build/polishedcrystal-3.0.0-faithful-debug-beta.gbc
-        asset_name: polishedcrystal-3.0.0-faithful-debug-${{ github.sha }}.gbc
+        asset_name: polishedcrystal-3.0.0-faithful-debug-${GITHUB_SHA::8}.gbc
         asset_content_type: application/octet-stream
 
      
