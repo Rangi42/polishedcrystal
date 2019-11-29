@@ -1468,6 +1468,15 @@ TraceFailureText:
 	cont "<TARGET>!"
 	prompt
 
+BattleText_IntimidateResisted:
+	text "<TARGET>'s"
+	line "@"
+	text_from_ram wStringBuffer1
+	text ""
+	para "protects it from"
+	line "Intimidate!"
+	prompt
+
 NotifyCloudNine:
 	text "The weather was"
 	line "suppressed!"

@@ -187,6 +187,21 @@ WeatherAbility:
 	jp EnableAnimations
 
 IntimidateAbility:
+	; does not work against Inner Focus, Own Tempo, Oblivious, Scrappy
+	ld a, BATTLE_VARS_ABILITY_OPP
+	call GetBattleVar
+	ld b, a
+	push af
+	farcall BufferAbility
+	pop af
+	ld de, 1
+	ld hl, .no_intimidate_abilities
+	call IsInArray
+	jr nc, .intimidate_ok
+	ld hl, BattleText_IntimidateResisted
+	jp StdBattleTextBox
+
+.intimidate_ok
 	call ShowAbilityActivation
 	call DisableAnimations
 	ld a, [wAttackMissed]
@@ -198,11 +213,32 @@ IntimidateAbility:
 	ld [wEffectFailed], a
 	farcall BattleCommand_attackdown
 	farcall BattleCommand_statdownmessage
+
+	; if stat decrease happened, proc Rattled
+	call SwitchTurn
+	ld a, [wFailedMessage]
+	and a
+	jr nz, .continue
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	cp RATTLED
+	ld b, SPEED
+	call z, StatUpAbility
+
+.continue
+	call SwitchTurn
 	pop af
 	ld [wEffectFailed], a
 	pop af
 	ld [wAttackMissed], a
 	jp EnableAnimations
+
+.no_intimidate_abilities
+	db INNER_FOCUS
+	db OWN_TEMPO
+	db OBLIVIOUS
+	db SCRAPPY
+	db -1
 
 DownloadAbility:
 ; Increase Atk if enemy Def is lower than SpDef, otherwise SpAtk
