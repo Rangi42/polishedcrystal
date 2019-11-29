@@ -39,26 +39,26 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: nightly 
+        tag_name: 3.0.0-beta-nightly
     - name: Create Release
       id: create_release
       uses: actions/create-release@v1.0.0
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: nightly
-        release_name: Polished Crystal 3.0.0 Nightly
+        tag_name: 3.0.0-beta-nightly
+        release_name: 3.0.0 beta nightly
         draft: false
         prerelease: true
     - name: Upload releases
-      id: upload 
+      id: upload
       uses: actions/upload-release-asset@v1.0.1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }}  
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
         asset_path: ./polishedcrystal/build/polishedcrystal-3.0.0-beta.gbc
-        asset_name: polishedcrystal-3.0.0-${{ env.SHORT_SHA }}.gbc
+        asset_name: polishedcrystal-3.0.0-beta-${{ env.SHORT_SHA }}.gbc
         asset_content_type: application/octet-stream
     - name: Upload Release Asset (faithful)
       id: upload-faithful
@@ -66,31 +66,27 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }}  
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
         asset_path: ./polishedcrystal/build/polishedcrystal-3.0.0-faithful-beta.gbc
-        asset_name: polishedcrystal-3.0.0-faithful-${{ env.SHORT_SHA }}.gbc
+        asset_name: polishedcrystal-3.0.0-beta-faithful-${{ env.SHORT_SHA }}.gbc
         asset_content_type: application/octet-stream
     - name: Upload Release Asset (non-faithful debug)
-      id: upload-debug 
+      id: upload-debug
       uses: actions/upload-release-asset@v1.0.1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }}  
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
         asset_path: ./polishedcrystal/build/polishedcrystal-3.0.0-debug-beta.gbc
-        asset_name: polishedcrystal-3.0.0-debug-${{ env.SHORT_SHA }}.gbc
+        asset_name: polishedcrystal-3.0.0-beta-debug-${{ env.SHORT_SHA }}.gbc
         asset_content_type: application/octet-stream
     - name: Upload Release Asset (faithful debug)
-      id: upload-faithful-debug 
+      id: upload-faithful-debug
       uses: actions/upload-release-asset@v1.0.1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }}  
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
         asset_path: ./polishedcrystal/build/polishedcrystal-3.0.0-faithful-debug-beta.gbc
-        asset_name: polishedcrystal-3.0.0-faithful-debug-${{ env.SHORT_SHA }}.gbc
+        asset_name: polishedcrystal-3.0.0-beta-faithful-debug-${{ env.SHORT_SHA }}.gbc
         asset_content_type: application/octet-stream
-
-     
-
-     
