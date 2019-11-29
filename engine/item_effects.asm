@@ -1447,6 +1447,7 @@ EvoStoneEffect:
 	cp EVERSTONE
 	jr z, .no_effect
 
+.force_evolution
 	ld a, $1
 	ld [wForceEvolution], a
 	farcall EvolvePokemon
@@ -1555,7 +1556,7 @@ RareCandy: ; ef14
 
 	ld a, [hl]
 	cp MAX_LEVEL
-	jp nc, WontHaveAnyEffectMessage
+	jp nc, EvoStoneEffect.force_evolution
 
 	inc a
 	ld [hl], a
