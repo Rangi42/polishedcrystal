@@ -4461,7 +4461,7 @@ _HeldHPHealingItem:
 	ld a, [hl]
 	cp FIGY_BERRY
 	jr nz, .not_figy
-	call GetHalfMaxHP
+	call GetThirdMaxHP
 	jr .got_hp_to_restore
 
 .not_figy
