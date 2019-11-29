@@ -1310,8 +1310,8 @@ MoodyAbility:
 .loop2
 	call BattleRandom
 	and $7
-	cp 7
-	jr z, .loop2 ; there are only 7 stats (0-6)
+	cp 5
+	jr nc, .loop2 ; don't raise acc/eva, only 0-4 (atk/def/spe/sat/sdf)
 	lb de, 1, 0 ; e = counter
 .loop3
 	cp e
@@ -1347,8 +1347,8 @@ MoodyAbility:
 .loop4
 	call BattleRandom
 	and $7
-	cp 7
-	jr z, .loop4
+	cp 5
+	jr nc, .loop4
 	lb de, 1, 0 ; e = counter
 .loop5
 	cp e
