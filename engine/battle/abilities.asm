@@ -226,12 +226,14 @@ IntimidateAbility:
 	call z, StatUpAbility
 
 .continue
+	call EnableAnimations
+	farcall CheckWhiteHerb
 	call SwitchTurn
 	pop af
 	ld [wEffectFailed], a
 	pop af
 	ld [wAttackMissed], a
-	jp EnableAnimations
+	ret
 
 .no_intimidate_abilities
 	db INNER_FOCUS
