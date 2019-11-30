@@ -14,7 +14,8 @@ _BattleMenuCommon:
 	call LoadMenuDataHeader
 	ld a, [wBattleMenuCursorBuffer]
 	ld [wMenuCursorBuffer], a
-	ld a, 1
+	ld a, [wBattleMode]
+	sub $2
 	ld [wIsBattleMenu], a
 	call _2DMenu
 	xor a
