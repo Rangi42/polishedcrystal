@@ -5653,7 +5653,7 @@ CheckRunSpeed:
 
 	ld a, [wBattleMode]
 	dec a
-	jp nz, .cant_run_from_trainer
+	jp nz, .forfeit_to_trainer
 
 	ld a, [wPlayerAbility]
 	cp RUN_AWAY
@@ -5724,7 +5724,7 @@ CheckRunSpeed:
 	sub e
 	ld a, h
 	sbc d
-	jr nc, .can_escape
+	jp nc, .can_escape
 	; multiply player speed by 32
 	add hl, hl ; x2
 	add hl, hl ; x4
@@ -5745,21 +5745,21 @@ CheckRunSpeed:
 	rr e
 	ld a, e
 	and a ; prevent division by 0
-	jr z, .can_escape
+	jp z, .can_escape
 	; calculate PSpeed*32/(ESpeed/4)
 	ld [hDivisor], a
 	ld b, 2
 	call Divide
 	ld a, [hQuotient + 1]
 	and a ; player can escape if result is greater than 255
-	jr nz, .can_escape
+	jp nz, .can_escape
 	ld a, [wNumFleeAttempts]
 	ld c, a
 	ld a, [hQuotient + 2]
 	jr .handleLoop
 .loop
 	add 30
-	jr c, .can_escape
+	jp c, .can_escape
 .handleLoop
 	dec c
 	jr nz, .loop
@@ -5778,10 +5778,6 @@ CheckRunSpeed:
 	ld hl, BattleText_CantEscape
 	jr .print_inescapable_text
 
-.cant_run_from_trainer
-	ld hl, BattleText_TheresNoEscapeFromTrainerBattle
-	jr .print_inescapable_text
-
 .ability_prevents_escape
 	ld a, BATTLE_VARS_ABILITY_OPP
 	call GetBattleVar
@@ -5791,11 +5787,38 @@ CheckRunSpeed:
 
 .print_inescapable_text
 	call StdBattleTextBox
+.dont_forfeit
 	ld a, 1
 	ld [wFailedToFlee], a
 	call LoadTileMapToTempTileMap
 	and a
 	ret
+
+.forfeit_to_trainer
+	ld hl, BattleText_AskForfeitTrainerBattle
+	call StdBattleTextBox
+	ld hl, NoYesMenuDataHeader
+	call CopyMenuDataHeader
+	call VerticalMenu
+	jr c, .dont_forfeit
+	ld a, [wMenuCursorY]
+	cp $1
+	jr z, .dont_forfeit
+
+	call StopDangerSound
+	call WaitSFX
+	ld de, SFX_KINESIS
+	call PlaySFX
+	call PlayerMonFaintedAnimation
+	hlcoord 9, 7
+	lb bc, 5, 11
+	call ClearBox
+	call WaitSFX
+	ld a, BATTLEACTION_FORFEIT
+	ld [wBattlePlayerAction], a
+	ld a, $1
+	ld [wBattleResult], a
+	jp LostBattle
 
 .can_escape
 	ld a, [wLinkMode]
@@ -5837,6 +5860,18 @@ CheckRunSpeed:
 	scf
 	ret
 
+NoYesMenuDataHeader:
+	db $40 ; tile backup
+	db 07, 14 ; start coords
+	db 11, 19 ; end coords
+	dw .MenuData2
+	db 1 ; default option
+
+.MenuData2
+	db $c0 ; flags
+	db 2
+	db "No@"
+	db "Yes@"
 
 CheckAmuletCoin:
 	push hl

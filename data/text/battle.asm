@@ -427,11 +427,10 @@ BattleText_CantEscape: ; 0x80ba0
 	prompt
 ; 0x80bae
 
-BattleText_TheresNoEscapeFromTrainerBattle: ; 0x80b49
-	text "No! There's no"
-	line "running from a"
-	cont "trainer battle!"
-	prompt
+BattleText_AskForfeitTrainerBattle: ; 0x80b49
+	text "Are you sure you"
+	line "want to forfeit?"
+	done
 
 BattleText_GotAwaySafely: ; 0x80b77
 	text "Got away safely!"

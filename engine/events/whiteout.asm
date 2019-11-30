@@ -10,9 +10,14 @@ Script_OverworldWhiteout:: ; 0x124c8
 Script_Whiteout: ; 0x124ce
 	callasm LoseMoney
 	iffalse .whiteout_text
+	copybytetovar wBattlePlayerAction
+	ifequal BATTLEACTION_FORFEIT, .forfeit_text
 	callasm DetermineWildBattlePanic
 	iffalse .whiteout_wild_text
 	writetext .WhitedOutToTrainerText
+	jump .text_done
+.forfeit_text
+	writetext .ForfeitText
 	jump .text_done
 .whiteout_wild_text
 	writetext .WhitedOutToWildText
@@ -48,6 +53,10 @@ Script_Whiteout: ; 0x124ce
 
 .WhitedOutToTrainerText:
 	text_jump WhiteoutToTrainerText
+	db "@"
+
+.ForfeitText:
+	text_jump ForfeitToTrainerText
 	db "@"
 
 OverworldWhiteoutFade

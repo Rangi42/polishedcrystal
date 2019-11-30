@@ -451,6 +451,23 @@ WhiteoutToTrainerText::
 	line "out!"
 	done
 
+ForfeitToTrainerText::
+	text "<PLAYER> forfeit-"
+	line "ed the battle…"
+
+	para "<PLAYER> paid"
+	line "¥@"
+	deciram hMoneyTemp, 3, 7
+	text " to the"
+	cont "winner…"
+
+	para "………………"
+	line "………………"
+
+	para "<PLAYER> blacked"
+	line "out!"
+	done
+
 UnknownText_0x1c0a77::
 	text "Yes! Itemfinder"
 	line "indicates there's"
