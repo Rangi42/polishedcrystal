@@ -185,15 +185,13 @@ else
 
 	para "She said that our"
 	line "neighbor, Prof."
-
-	para "Elm, was looking"
-	line "for you."
+	cont "Elm, was looking"
+	cont "for you."
 
 	para "Oh! I almost for-"
 	line "got! Your #mon"
-
-	para "Gear is back from"
-	line "the repair shop."
+	cont "Gear is back from"
+	cont "the repair shop."
 
 	para "Here you go!"
 	done
@@ -228,9 +226,8 @@ MomRunningShoesText:
 
 	para "By the way, do"
 	line "you know how to"
-
-	para "use your new"
-	line "Running Shoes?"
+	cont "use your new"
+	cont "Running Shoes?"
 	done
 
 MomInstructionsText:

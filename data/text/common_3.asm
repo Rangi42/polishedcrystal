@@ -18,9 +18,8 @@ if !DEF(DEBUG)
 
 	para "A world of dreams"
 	line "and adventures"
-
-	para "with #mon"
-	line "awaits! Let's go!"
+	cont "with #mon"
+	cont "awaits! Let's go!"
 endc
 
 	para "I'll be seeing you"
