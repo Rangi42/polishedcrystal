@@ -972,10 +972,11 @@ if !DEF(MONOCHROME)
 	RGB 07, 26, 31
 	RGB 00, 21, 00
 else
-rept 255
+rept NUM_ITEMS + 1
 	MONOCHROME_RGB_TWO
 endr
 endc
+
 CancelPalette:
 if !DEF(MONOCHROME)
 ; CANCEL
@@ -985,12 +986,14 @@ else
 	RGB_MONOCHROME_WHITE
 	RGB_MONOCHROME_WHITE
 endc
+
 WhitePalette:
 if !DEF(MONOCHROME)
 	RGB 31, 31, 31
 else
 	RGB_MONOCHROME_WHITE
 endc
+
 BlackPalette:
 if !DEF(MONOCHROME)
 	RGB 00, 00, 00
@@ -1000,6 +1003,7 @@ endc
 
 
 KeyItemIconPalettes:
+if !DEF(MONOCHROME)
 ; BICYCLE
 	RGB 22, 12, 12
 	RGB 12, 12, 12
@@ -1087,6 +1091,11 @@ KeyItemIconPalettes:
 ; APRICORN BOX
 	RGB 31, 21, 08
 	RGB 25, 14, 02
+else
+rept NUM_KEY_ITEMS
+	MONOCHROME_RGB_TWO
+endr
+endc
 
 
 TMHMTypeIconPals:
