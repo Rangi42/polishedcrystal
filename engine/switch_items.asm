@@ -293,6 +293,9 @@ GetSortingItemIndex:
 	dec a
 	jr z, .done
 	ld c, [hl]
+	inc c
+	jr z, .done
+	dec c
 	ld b, 0
 	ld hl, ItemNameOrder
 	add hl, bc
