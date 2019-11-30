@@ -493,18 +493,9 @@ GetName:: ; 33c3
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-
-	ld a, [wNamedObjectTypeBuffer]
-	cp KEY_ITEM_NAME
-	jr nz, .NotKeyItem
-	ld a, [wCurSpecies]
-	jr .continue
-.NotKeyItem:
 	ld a, [wCurSpecies]
 	dec a
-.continue
 	call GetNthString
-
 	ld de, wStringBuffer1
 	ld bc, ITEM_NAME_LENGTH
 	rst CopyBytes
@@ -618,6 +609,7 @@ GetItemName:: ; 3468
 GetCurKeyItemName::
 ; Get item name from item in CurItem
 	ld a, [wCurKeyItem]
+	inc a
 	ld [wNamedObjectIndexBuffer], a
 GetKeyItemName:: ; 3468
 ; Get key item item name wNamedObjectIndexBuffer.

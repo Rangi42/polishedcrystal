@@ -5800,11 +5800,15 @@ CheckRunSpeed:
 	ld hl, NoYesMenuDataHeader
 	call CopyMenuDataHeader
 	call VerticalMenu
+	push af
+	call Call_LoadTempTileMapToTileMap
+	pop af
 	jr c, .dont_forfeit
 	ld a, [wMenuCursorY]
 	cp $1
 	jr z, .dont_forfeit
 
+	call EmptyBattleTextBox
 	call StopDangerSound
 	call WaitSFX
 	ld de, SFX_KINESIS
