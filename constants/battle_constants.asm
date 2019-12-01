@@ -154,13 +154,13 @@ endc
 
 ; attack failure modes, higher gives priority
 ; TODO: complete this functionality
-	const_def 1
+	const_def
+	const ATKFAIL_CUSTOM  ; custom message
 	const ATKFAIL_MISSED  ; "<USER>'s attack missed!"
 	const ATKFAIL_PROTECT ; "<TARGET> is protecting itself!"
 	const ATKFAIL_ABILITY ; ability immunity, might have side effects
 	const ATKFAIL_GENERIC ; "But it failed!"
 	const ATKFAIL_IMMUNE  ; "It doesn't affect <TARGET>!"
-	const ATKFAIL_CUSTOM  ; custom message
 
 ; battle variables
 	const_def

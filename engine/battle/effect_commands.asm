@@ -2635,6 +2635,7 @@ FailText_CheckOpponentProtect: ; 35157
 	and a
 	jr z, .printmsg
 	dec a
+	ld hl, AttackMissedText
 	jr z, .printmsg
 	dec a
 	ld hl, ProtectingItselfText
