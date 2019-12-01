@@ -66,9 +66,7 @@ Pack: ; 10000
 	ld a, [wItemsPocketCursor]
 	ld [wMenuCursorBuffer], a
 	ld a, [wItemsPocketScrollPosition]
-	ld [wMenuScrollPosition], a
-	call ScrollingMenu
-	ld a, [wMenuScrollPosition]
+	call PackScrollingMenu
 	ld [wItemsPocketScrollPosition], a
 	ld a, [wMenuCursorY]
 	ld [wItemsPocketCursor], a
@@ -90,9 +88,7 @@ Pack: ; 10000
 	ld a, [wMedicinePocketCursor]
 	ld [wMenuCursorBuffer], a
 	ld a, [wMedicinePocketScrollPosition]
-	ld [wMenuScrollPosition], a
-	call ScrollingMenu
-	ld a, [wMenuScrollPosition]
+	call PackScrollingMenu
 	ld [wMedicinePocketScrollPosition], a
 	ld a, [wMenuCursorY]
 	ld [wMedicinePocketCursor], a
@@ -114,9 +110,7 @@ Pack: ; 10000
 	ld a, [wBallsPocketCursor]
 	ld [wMenuCursorBuffer], a
 	ld a, [wBallsPocketScrollPosition]
-	ld [wMenuScrollPosition], a
-	call ScrollingMenu
-	ld a, [wMenuScrollPosition]
+	call PackScrollingMenu
 	ld [wBallsPocketScrollPosition], a
 	ld a, [wMenuCursorY]
 	ld [wBallsPocketCursor], a
@@ -205,9 +199,7 @@ Pack: ; 10000
 	ld a, [wBerriesPocketCursor]
 	ld [wMenuCursorBuffer], a
 	ld a, [wBerriesPocketScrollPosition]
-	ld [wMenuScrollPosition], a
-	call ScrollingMenu
-	ld a, [wMenuScrollPosition]
+	call PackScrollingMenu
 	ld [wBerriesPocketScrollPosition], a
 	ld a, [wMenuCursorY]
 	ld [wBerriesPocketCursor], a
@@ -351,6 +343,12 @@ UseKeyItem:
 	jr z, .Oak
 	ld a, $e ; QuitRunScript
 	ld [wJumptableIndex], a
+	ret
+
+PackScrollingMenu:
+	ld [wMenuScrollPosition], a
+	call ScrollingMenu
+	ld a, [wMenuScrollPosition]
 	ret
 
 MenuDataHeader_SortItems:
@@ -733,9 +731,7 @@ BattlePack: ; 10493
 	ld a, [wItemsPocketCursor]
 	ld [wMenuCursorBuffer], a
 	ld a, [wItemsPocketScrollPosition]
-	ld [wMenuScrollPosition], a
-	call ScrollingMenu
-	ld a, [wMenuScrollPosition]
+	call PackScrollingMenu
 	ld [wItemsPocketScrollPosition], a
 	ld a, [wMenuCursorY]
 	ld [wItemsPocketCursor], a
@@ -757,9 +753,7 @@ BattlePack: ; 10493
 	ld a, [wMedicinePocketCursor]
 	ld [wMenuCursorBuffer], a
 	ld a, [wMedicinePocketScrollPosition]
-	ld [wMenuScrollPosition], a
-	call ScrollingMenu
-	ld a, [wMenuScrollPosition]
+	call PackScrollingMenu
 	ld [wMedicinePocketScrollPosition], a
 	ld a, [wMenuCursorY]
 	ld [wMedicinePocketCursor], a
@@ -781,9 +775,7 @@ BattlePack: ; 10493
 	ld a, [wBallsPocketCursor]
 	ld [wMenuCursorBuffer], a
 	ld a, [wBallsPocketScrollPosition]
-	ld [wMenuScrollPosition], a
-	call ScrollingMenu
-	ld a, [wMenuScrollPosition]
+	call PackScrollingMenu
 	ld [wBallsPocketScrollPosition], a
 	ld a, [wMenuCursorY]
 	ld [wBallsPocketCursor], a
@@ -824,9 +816,7 @@ BattlePack: ; 10493
 	ld a, [wBerriesPocketCursor]
 	ld [wMenuCursorBuffer], a
 	ld a, [wBerriesPocketScrollPosition]
-	ld [wMenuScrollPosition], a
-	call ScrollingMenu
-	ld a, [wMenuScrollPosition]
+	call PackScrollingMenu
 	ld [wBerriesPocketScrollPosition], a
 	ld a, [wMenuCursorY]
 	ld [wBerriesPocketCursor], a
@@ -1195,6 +1185,7 @@ TutorialPack: ; 107bb
 	db NO_INPUT, $40
 	db D_RIGHT,  $00
 	db NO_INPUT, $40
+.autoselect
 	db A_BUTTON, $00
 	db NO_INPUT, $ff ; end
 ; 107d7

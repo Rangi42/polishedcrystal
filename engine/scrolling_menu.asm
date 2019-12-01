@@ -48,6 +48,9 @@ ScrollingMenu_InitDisplay:
 	ret
 
 ScrollingMenuJoyAction:
+	ld a, [wBattleMenuFlags]
+	and QUICK_PACK
+	jr nz, .a_button
 	call _DoMenuJoypadLoop
 	call GetMenuJoypad
 	rrca
@@ -57,7 +60,7 @@ ScrollingMenuJoyAction:
 	rrca
 	jr c, .select
 	rrca
-	jr c, .start
+	jp c, .start
 	rrca
 	jp c, .d_right
 	rrca
@@ -88,8 +91,26 @@ ScrollingMenuJoyAction:
 	dec a
 	ld [wScrollingMenuCursorPosition], a
 	ld [wCurItemQuantity], a
+	ld a, [wBattleMenuFlags]
+	and QUICK_PACK
+	jr z, .not_quick_pack
+	xor a
+	ld [wBattleMenuFlags], a
+
+	; if Cancel is preselected, just fallback to regular bag function
 	ld a, [wMenuSelection]
-	cp -1
+	inc a
+	jr z, ScrollingMenuJoyAction
+
+	; same with unusable items
+	farcall CheckItemContext
+	ld a, [wItemAttributeParamBuffer]
+	and a
+	jr z, ScrollingMenuJoyAction
+
+.not_quick_pack
+	ld a, [wMenuSelection]
+	inc a
 	jr z, .b_button
 	ld a, A_BUTTON
 	scf

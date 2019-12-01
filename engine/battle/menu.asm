@@ -14,12 +14,23 @@ _BattleMenuCommon:
 	call LoadMenuDataHeader
 	ld a, [wBattleMenuCursorBuffer]
 	ld [wMenuCursorBuffer], a
+	ld b, QUICK_B
 	ld a, [wBattleMode]
-	sub $2
-	ld [wIsBattleMenu], a
+	cp BATTLETYPE_SAFARI
+	jr z, .ok
+	cp BATTLETYPE_CONTEST
+	jr z, .ok
+	ld b, QUICK_B | QUICK_START | QUICK_SELECT
+	cp BATTLETYPE_CANLOSE
+	jr z, .ok2
+.ok
+	ld a, b
+	ld [wBattleMenuFlags], a
+.ok2
 	call _2DMenu
-	xor a
-	ld [wIsBattleMenu], a
+	ld a, [wBattleMenuFlags]
+	and QUICK_PACK
+	ld [wBattleMenuFlags], a
 	ld a, [wMenuCursorBuffer]
 	ld [wBattleMenuCursorBuffer], a
 	jp ExitMenu
@@ -33,7 +44,7 @@ BattleMenuDataHeader: ; 24f2c
 ; 24f34
 
 .MenuData2: ; 0x24f34
-	db $81 ; flags
+	db $87 ; flags
 	dn 2, 2 ; rows, columns
 	db 6 ; spacing
 	dba .Strings

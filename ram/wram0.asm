@@ -1010,7 +1010,7 @@ wMenuData2Flags::
 ; bit 5: ????
 ; bit 4: ????
 ; bit 3: ????
-; bit 2: ????
+; bit 2: Enable Start button
 ; bit 1: Enable Select button
 ; bit 0: Disable B button
 	ds 1
@@ -1079,7 +1079,10 @@ wInputFlags::
 
 wInBattleTowerBattle:: ds 1
 
-wIsBattleMenu:: ds 1
+wBattleMenuFlags::
+; bit 0-2: quick-access buttons (b/start/select)
+; bit 3: quick-select last pack item
+	ds 1
 
 wFXAnimID::
 wFXAnimIDLo:: ds 1

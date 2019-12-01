@@ -16,7 +16,9 @@ Get2DMenuSelection: ; 2408f
 	jr z, .skip
 	call GetMenuJoypad
 	bit SELECT_F, a
-	jr nz, .quit
+	jr nz, .select
+	bit START_F, a
+	jr nz, .start
 
 .skip
 	ld a, [wMenuData2Flags]
@@ -39,6 +41,16 @@ Get2DMenuSelection: ; 2408f
 	and a
 	ret
 
+.start
+	ld a, [wBattleMenuFlags]
+	and QUICK_START
+	jr nz, .skip2
+	jr .quit
+
+.select
+	ld a, [wBattleMenuFlags]
+	and QUICK_SELECT
+	jr nz, .skip2
 .quit
 	scf
 	ret
@@ -192,6 +204,10 @@ Init2DMenuCursorPosition: ; 2411a (9:411a)
 	jr z, .skip2
 	or SELECT
 .skip2
+	bit 2, [hl]
+	jr z, .skip3
+	or START
+.skip3
 	ld [wMenuJoypadFilter], a
 	ret
 ; 241a8
@@ -280,13 +296,13 @@ Menu_WasButtonPressed: ; 24259
 _2DMenuInterpretJoypad: ; 24270
 	call GetMenuJoypad
 	bit A_BUTTON_F, a
-	jp nz, .a_start_select
+	jp nz, .a_button
 	bit B_BUTTON_F, a
 	jp nz, .b_button
 	bit SELECT_F, a
-	jp nz, .a_start_select
+	jp nz, .select_button
 	bit START_F, a
-	jp nz, .a_start_select
+	jp nz, .start_button
 	bit D_RIGHT_F, a
 	jr nz, .d_right
 	bit D_LEFT_F, a
@@ -395,22 +411,44 @@ _2DMenuInterpretJoypad: ; 24270
 
 .wrap_around_right
 	ld [hl], $1
+.a_button
+.finish
 	xor a
 	ret
 ; 24318
 
 .b_button
-	ld a, [wIsBattleMenu]
-	and a ; should B move to Run?
-	jr z, .no_b_run
+	ld a, [wBattleMenuFlags]
+	and QUICK_B ; should B move to Run?
+	jr z, .finish
 	; Run is the bottom-right item
 	ld a, $2
 	ld [wMenuCursorX], a
 	ld [wMenuCursorY], a
-.a_start_select
-.no_b_run
-	xor a
-	ret
+	jr .finish
+
+.select_button
+	ld a, [wBattleMenuFlags]
+	and QUICK_SELECT
+	jr z, .finish
+	ld a, 2
+	ld [wMenuCursorX], a
+	dec a
+	ld [wMenuCursorY], a
+	jr .finish
+
+.start_button
+	ld a, [wBattleMenuFlags]
+	and QUICK_START
+	jr z, .finish
+	ld a, 1
+	ld [wMenuCursorX], a
+	inc a
+	ld [wMenuCursorY], a
+	ld a, [wBattleMenuFlags]
+	or QUICK_PACK
+	ld [wBattleMenuFlags], a
+	jr .finish
 
 Move2DMenuCursor: ; 2431a
 	ld hl, wCursorCurrentTile
