@@ -1929,6 +1929,22 @@ ReleasePKMN_ByePKMN: ; e3180 (38:7180)
 
 	ld a, [wCurPartySpecies]
 	ld [wd265], a
+
+	cp RAIKOU
+	jr nz, .not_raikou
+	farcall RespawnRoamingRaikou
+	jr .not_suicune
+.not_raikou
+	cp ENTEI
+	jr nz, .not_entei
+	farcall RespawnRoamingEntei
+	jr .not_suicune
+.not_entei
+	cp SUICUNE
+	jr nz, .not_suicune
+	farcall RespawnRoamingSuicune
+.not_suicune
+
 	call GetPokemonName
 	hlcoord 1, 16
 	ld de, PCString_ReleasedPKMN

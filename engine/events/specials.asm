@@ -446,17 +446,7 @@ RespawnOneOffs:
 	ld hl, wRoamMon1Species
 	ld a, [hl]
 	and a
-	jr nz, .CaughtRaikou
-	ld a, RAIKOU
-	ld [wRoamMon1Species], a
-	ld a, 50
-	ld [wRoamMon1Level], a
-	ld a, GROUP_ROUTE_42
-	ld [wRoamMon1MapGroup], a
-	ld a, MAP_ROUTE_42
-	ld [wRoamMon1MapNumber], a
-	xor a ; generate new stats
-	ld [wRoamMon1HP], a
+	call z, RespawnRoamingRaikou
 .CaughtRaikou
 
 	ld a, ENTEI - 1
@@ -465,17 +455,7 @@ RespawnOneOffs:
 	ld hl, wRoamMon2Species
 	ld a, [hl]
 	and a
-	jr nz, .CaughtEntei
-	ld a, ENTEI
-	ld [wRoamMon2Species], a
-	ld a, 50
-	ld [wRoamMon2Level], a
-	ld a, GROUP_ROUTE_37
-	ld [wRoamMon2MapGroup], a
-	ld a, MAP_ROUTE_37
-	ld [wRoamMon2MapNumber], a
-	xor a ; generate new stats
-	ld [wRoamMon2HP], a
+	call z, RespawnRoamingEntei
 .CaughtEntei
 
 	eventflagcheck EVENT_FOUGHT_SUICUNE
@@ -486,17 +466,7 @@ RespawnOneOffs:
 	ld hl, wRoamMon3Species
 	ld a, [hl]
 	and a
-	jr nz, .CaughtSuicune
-	ld a, SUICUNE
-	ld [wRoamMon3Species], a
-	ld a, 50
-	ld [wRoamMon3Level], a
-	ld a, GROUP_ROUTE_38
-	ld [wRoamMon3MapGroup], a
-	ld a, MAP_ROUTE_38
-	ld [wRoamMon3MapNumber], a
-	xor a ; generate new stats
-	ld [wRoamMon3HP], a
+	call z, RespawnRoamingSuicune
 .CaughtSuicune
 
 	ld a, LUGIA - 1
@@ -511,6 +481,45 @@ RespawnOneOffs:
 	ret nz
 	eventflagreset EVENT_TIN_TOWER_ROOF_HO_OH
 	eventflagreset EVENT_FOUGHT_HO_OH
+	ret
+
+RespawnRoamingRaikou:
+	ld a, RAIKOU
+	ld [wRoamMon1Species], a
+	ld a, 50
+	ld [wRoamMon1Level], a
+	ld a, GROUP_ROUTE_42
+	ld [wRoamMon1MapGroup], a
+	ld a, MAP_ROUTE_42
+	ld [wRoamMon1MapNumber], a
+	xor a ; generate new stats
+	ld [wRoamMon1HP], a
+	ret
+
+RespawnRoamingEntei:
+	ld a, ENTEI
+	ld [wRoamMon2Species], a
+	ld a, 50
+	ld [wRoamMon2Level], a
+	ld a, GROUP_ROUTE_37
+	ld [wRoamMon2MapGroup], a
+	ld a, MAP_ROUTE_37
+	ld [wRoamMon2MapNumber], a
+	xor a ; generate new stats
+	ld [wRoamMon2HP], a
+	ret
+
+RespawnRoamingSuicune:
+	ld a, SUICUNE
+	ld [wRoamMon3Species], a
+	ld a, 50
+	ld [wRoamMon3Level], a
+	ld a, GROUP_ROUTE_38
+	ld [wRoamMon3MapGroup], a
+	ld a, MAP_ROUTE_38
+	ld [wRoamMon3MapNumber], a
+	xor a ; generate new stats
+	ld [wRoamMon3HP], a
 	ret
 
 BillBoxSwitchCheck:

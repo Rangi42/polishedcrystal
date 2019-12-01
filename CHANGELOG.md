@@ -102,6 +102,7 @@ These changes have been made since the current 2.2.0 release. If you build the p
 * Add: Grass-green for Faraway Island.
 * Add: TM prices from OR/AS.
 * Add: Update random Wonder Trade OT names.
+* Add: Respawn roaming beasts when released.
 * Add: Mr. Pokémon gives you a non-OT Ditto, not an Egg, for the Masuda breeding method.
 * Add: Use original Jynx sprite.
 * Add: Make overworld sprites darker at night.
