@@ -1,6 +1,7 @@
 Pack: ; 10000
 	ld hl, wOptions1
 	set NO_TEXT_SCROLL, [hl]
+	ld a, [wLastPocket]
 	call InitPackBuffers
 .loop
 	call JoyTextDelay
@@ -666,6 +667,7 @@ QuitItemSubmenu: ; 10492
 BattlePack: ; 10493
 	ld hl, wOptions1
 	set NO_TEXT_SCROLL, [hl]
+	ld a, [wLastBattlePocket]
 	call InitPackBuffers
 .loop
 	call JoyTextDelay
@@ -678,7 +680,7 @@ BattlePack: ; 10493
 
 .end
 	ld a, [wCurrPocket]
-	ld [wLastPocket], a
+	ld [wLastBattlePocket], a
 	ld hl, wOptions1
 	res NO_TEXT_SCROLL, [hl]
 	ret
@@ -728,13 +730,13 @@ BattlePack: ; 10493
 .ItemsPocketMenu: ; 104fa (4:44fa)
 	ld hl, ItemsPocketMenuDataHeader
 	call CopyMenuDataHeader
-	ld a, [wItemsPocketCursor]
+	ld a, [wBattleItemsPocketCursor]
 	ld [wMenuCursorBuffer], a
-	ld a, [wItemsPocketScrollPosition]
+	ld a, [wBattleItemsPocketScrollPosition]
 	call PackScrollingMenu
-	ld [wItemsPocketScrollPosition], a
+	ld [wBattleItemsPocketScrollPosition], a
 	ld a, [wMenuCursorY]
-	ld [wItemsPocketCursor], a
+	ld [wBattleItemsPocketCursor], a
 	lb bc, $b, $3 ; Key Items, Medicine
 	call Pack_InterpretJoypad
 	ret c
@@ -750,13 +752,13 @@ BattlePack: ; 10493
 .MedicinePocketMenu:
 	ld hl, MedicinePocketMenuDataHeader
 	call CopyMenuDataHeader
-	ld a, [wMedicinePocketCursor]
+	ld a, [wBattleMedicinePocketCursor]
 	ld [wMenuCursorBuffer], a
-	ld a, [wMedicinePocketScrollPosition]
+	ld a, [wBattleMedicinePocketScrollPosition]
 	call PackScrollingMenu
-	ld [wMedicinePocketScrollPosition], a
+	ld [wBattleMedicinePocketScrollPosition], a
 	ld a, [wMenuCursorY]
-	ld [wMedicinePocketCursor], a
+	ld [wBattleMedicinePocketCursor], a
 	lb bc, $1, $5 ; Items, Balls
 	call Pack_InterpretJoypad
 	ret c
@@ -772,13 +774,13 @@ BattlePack: ; 10493
 .BallsPocketMenu: ; 105a6 (4:45a6)
 	ld hl, BallsPocketMenuDataHeader
 	call CopyMenuDataHeader
-	ld a, [wBallsPocketCursor]
+	ld a, [wBattleBallsPocketCursor]
 	ld [wMenuCursorBuffer], a
-	ld a, [wBallsPocketScrollPosition]
+	ld a, [wBattleBallsPocketScrollPosition]
 	call PackScrollingMenu
-	ld [wBallsPocketScrollPosition], a
+	ld [wBattleBallsPocketScrollPosition], a
 	ld a, [wMenuCursorY]
-	ld [wBallsPocketCursor], a
+	ld [wBattleBallsPocketCursor], a
 	lb bc, $3, $7 ; Medicine, TM/HM
 	call Pack_InterpretJoypad
 	ret c
@@ -813,13 +815,13 @@ BattlePack: ; 10493
 .BerriesPocketMenu:
 	ld hl, BerriesPocketMenuDataHeader
 	call CopyMenuDataHeader
-	ld a, [wBerriesPocketCursor]
+	ld a, [wBattleBerriesPocketCursor]
 	ld [wMenuCursorBuffer], a
-	ld a, [wBerriesPocketScrollPosition]
+	ld a, [wBattleBerriesPocketScrollPosition]
 	call PackScrollingMenu
-	ld [wBerriesPocketScrollPosition], a
+	ld [wBattleBerriesPocketScrollPosition], a
 	ld a, [wMenuCursorY]
-	ld [wBerriesPocketCursor], a
+	ld [wBattleBerriesPocketCursor], a
 	lb bc, $7, $b ; TM/HM, Key Items
 	call Pack_InterpretJoypad
 	ret c
@@ -963,12 +965,11 @@ TMHMSubmenu: ; 105dc (4:45dc)
 	ret
 ; 1068a
 
-InitPackBuffers: ; 1068a
-	xor a
-	ld [wJumptableIndex], a
-	ld a, [wLastPocket]
+InitPackBuffers:
 	and $7
 	ld [wCurrPocket], a
+	xor a
+	ld [wJumptableIndex], a
 	inc a
 	add a
 	dec a
@@ -978,7 +979,6 @@ InitPackBuffers: ; 1068a
 	xor a
 	ld [wSwitchItem], a
 	ret
-; 106a5
 
 DepositSellInitPackBuffers: ; 106a5
 	xor a

@@ -218,7 +218,17 @@ ENDU
 
 ENDU
 
-	ds 12 ; unused
+	ds 3 ; unused
+
+wLastBattlePocket:: ds 1
+wBattleItemsPocketCursor:: ds 1
+wBattleMedicinePocketCursor:: ds 1
+wBattleBallsPocketCursor:: ds 1
+wBattleBerriesPocketCursor:: ds 1
+wBattleItemsPocketScrollPosition:: ds 1
+wBattleMedicinePocketScrollPosition:: ds 1
+wBattleBallsPocketScrollPosition:: ds 1
+wBattleBerriesPocketScrollPosition:: ds 1
 
 wTMHMMoveNameBackup:: ds MOVE_NAME_LENGTH
 
