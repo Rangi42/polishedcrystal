@@ -2629,10 +2629,14 @@ FailText_CheckOpponentProtect: ; 35157
 ; An wAttackMissed value of something other than 1 can override
 ; the message, used for Protect and some abilities.
 ; Important: To ensure proper message order, wAttackMissed=3
-; has side effects -- it triggers the ability.
+; has side effects -- it triggers the ability. Also,
+; cp ATKFAIL_CUSTOM is used first since ATKFAIL_CUSTOM!=1 and
+; hl is otherwise overwritten.
 ; TODO: use this function more extensively
 	ld a, [wAttackMissed]
 	and a
+	ret z
+	cp ATKFAIL_CUSTOM
 	jr z, .printmsg
 	dec a
 	ld hl, AttackMissedText
