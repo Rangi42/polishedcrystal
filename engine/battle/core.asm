@@ -1729,18 +1729,6 @@ HandleWeather:
 	call .PrintWeatherMessage
 	call SetPlayerTurn
 	call .ShowWeatherAnimation
-
-	call CheckSpeed
-	jr nz, .enemy_first
-	call SetPlayerTurn
-	call HandleWeatherEffects
-	call SetEnemyTurn
-	jp HandleWeatherEffects
-
-.enemy_first
-	call SetEnemyTurn
-	call HandleWeatherEffects
-	call SetPlayerTurn
 	jp HandleWeatherEffects
 
 .ended
@@ -1799,6 +1787,11 @@ HandleWeather:
 
 HandleWeatherEffects:
 ; sandstorm/hail damage, abilities like rain dish, etc.
+	call SetFastestTurn
+	call .do_it
+	call SwitchTurn
+
+.do_it
 	call HasUserEndturnSwitched
 	ret z
 	farcall GetUserItemAfterUnnerve
