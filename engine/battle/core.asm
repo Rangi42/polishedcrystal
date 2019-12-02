@@ -245,6 +245,10 @@ SafariBattleTurn:
 HasOpponentEndturnSwitched:
 	call CallOpponentTurn
 HasUserEndturnSwitched:
+; 4gen+ handles endturn switches (after faints) rather late. To avoid the need
+; to rewrite switching extensively, this function is used to bypass endturn
+; events that happens before a 4gen faint switch-in happens, since in 2gen,
+; the switch happens earlier.
 	ld a, [hBattleTurn]
 	and a
 	ld a, [wPlayerEndturnSwitched]
