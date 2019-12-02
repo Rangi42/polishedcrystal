@@ -643,7 +643,9 @@ wLastEnemyMove:: ds 1
 wEnemyUsingItem:: ds 1
 wEnemySwitchItemCheck:: ds 1
 
-	ds 7
+wEndturnWeather:: ds 1
+
+	ds 6
 
 wPlayerFutureSightCount:: ds 1
 wEnemyFutureSightCount:: ds 1

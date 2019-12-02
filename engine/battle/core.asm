@@ -1714,6 +1714,11 @@ HandleWeather:
 	and a ; cp WEATHER_NONE
 	ret z
 
+	ld hl, wEndturnWeather
+	dec [hl]
+	ret z
+	inc [hl]
+
 	ld hl, wWeatherCount
 	dec [hl]
 	jp z, .ended
