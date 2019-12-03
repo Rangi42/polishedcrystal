@@ -1114,7 +1114,6 @@ WeatherAbilities:
 	dbw SOLAR_POWER, SolarPowerWeatherAbility
 	dbw ICE_BODY, IceBodyAbility
 	dbw RAIN_DISH, RainDishAbility
-	dbw HYDRATION, HydrationAbility
 	dbw -1, -1
 
 DrySkinWeatherAbility:
@@ -1152,6 +1151,17 @@ WeatherRecoveryAbility:
 .restore
 	farjp RestoreHP
 
+EndturnAbilitiesA:
+	ld hl, .ability_table
+	call UserAbilityJumptable
+	ld hl, StatusHealAbilities
+	jp UserAbilityJumptable
+
+.ability_table
+	dbw SHED_SKIN, ShedSkinAbility
+	dbw HYDRATION, HydrationAbility
+	dbw -1, -1
+
 HandleAbilities:
 ; Abilities handled at the end of the turn.
 	farcall SetFastestTurn
@@ -1171,7 +1181,6 @@ EndTurnAbilities:
 	dbw HARVEST, HarvestAbility
 	dbw MOODY, MoodyAbility
 	dbw PICKUP, PickupAbility
-	dbw SHED_SKIN, ShedSkinAbility
 	dbw SPEED_BOOST, SpeedBoostAbility
 	dbw -1, -1
 

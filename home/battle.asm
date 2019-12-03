@@ -828,7 +828,7 @@ CheckSpeed::
 	ret
 
 GetBattleVar:: ; 39e1
-; Preserves hl.
+; Preserves bc, de, hl.
 	push hl
 	call GetBattleVarAddr
 	pop hl
@@ -838,7 +838,7 @@ GetBattleVar:: ; 39e1
 GetBattleVarAddr:: ; 39e7
 ; Get variable from pair a, depending on whose turn it is.
 ; There are 22 variable pairs.
-
+; Preserves bc, de.
 	push bc
 
 	ld hl, .battlevarpairs
