@@ -134,7 +134,7 @@ Low priority:
 
 ### Optimizations
 
-* LZ-compress metatiles.bin data, collision.asm data, and various tilemaps (potentially save ~2.7% space)
+* LZ-compress collision.asm data and various tilemaps
 * Optimize battle command engine, including parameterized commands
 * Optimize map scripts with the various new commands and PERSONTYPE_GENERICTRAINER
 
@@ -143,7 +143,7 @@ Low priority:
 
 Some of these may never be added; they're just suggestions.
 
-* Alolan forms (update GetBaseData and everything that refers to EvosAttacksPointers)
+* Alolan and Galarian forms (update GetBaseData and everything that refers to EvosAttacksPointers)
    * Persian as a one-time trade from an Alolan tourist (you can breed it for more)
    * Rattata/Raticate in Kanto
    * Grimer/Muk in Goldenrod City (Celadon's Muk are a sign of its pollution, Goldenrod's Alolan Muk would be a sign that they manage pollution better)
@@ -151,6 +151,9 @@ Some of these may never be added; they're just suggestions.
    * Diglett/Dugtrio on Cinnabar Island (right now I replaced all Diglett with the Alolan ones, with the explanation that the volcano affected climate everywhere, but I'd rather have the ones in Diglett's Cave be normal)
    * Geodude/Graveler/Golem in Rock Tunnel (the Lodestone there is already used to evolve Magnezone)
    * Marowak, Exeggutor, and Raichu evolve while holding the Odd Souvenir (bought on Shamouti Island)
+   * Ponyta/Rapidash on Shamouti Island
+   * Corsola/Cursola in Scary Cave
+   * Farfetch'd/Sirfetch'd instead of non-faithful Farfetch'd
 * More Pokémon
    * Rewrite Eggs to use the IsEgg bitflag instead of $fe
    * Rewrite everything to use two-byte IDs, allowing 65,534 Pokémon
@@ -197,7 +200,7 @@ Some of these may never be added; they're just suggestions.
       * Phione from an Egg given by Wallace
       * Victini on a cruise to Liberty Garden
       * Magearna in the Ruins of Alph
-   * Add certain other Gen 3 and 4 Pokémon; Prism's dex is similar to my own taste
+   * Add certain other Gen 3+ Pokémon; Prism's dex is similar to my own taste
       * Ralts → Kirlia → Gardevoir / Gallade
       * Surskit → Masquerain (buff and retype to Bug/Water with Levitate)
       * Mawile and Sableye
@@ -214,9 +217,10 @@ Some of these may never be added; they're just suggestions.
       * Rotom (switch forms in Silph Co.)
       * Sigilyph in the Ruins of Alph grass
       * Litwick → Lampent → Chandelure
-      * Pawniard → Bisharp
       * Skiddo → Gogoat
-      * Mareanie → Toxapek (in Cherrygrove Bay with Corsola)
+      * Mareanie → Toxapex (in Cherrygrove Bay with Corsola)
+      * Wooloo → Dubwool
+      * Cufant → Copperajah
 * More music
    * PGo Overworld/Walking (for Safari Game)
    * PGo Battle! Legendary Raid (for Mew)
@@ -244,11 +248,6 @@ Some of these may never be added; they're just suggestions.
 * Championship title defense like in Gen VII (challengers: rival, Lyra, Lance, Prof.Oak, Prof.Elm, Clair, Blue, Eusine, Kimono Girl Naoko, Palmer, Lorelei, Agatha, Steven, Cynthia, Caitlin, and Lawrence)
 * Phone uses a bitfield to allow storing all numbers
 * Make more trainers rematchable
-* Ambient wild Pokémon cries from Gen III (see pokeruby and pokeemerald)
-   * Ruby [sub_8054164](https://github.com/pret/pokeruby/blob/master/src/rom4.c#L937), Emerald [sub_8085B2C](https://github.com/pret/pokeemerald/blob/master/asm/rom4.s#L2662): picks the random wild Pokémon (called on map initialization and every step), stored in gUnknown_02029814
-   * Ruby [sub_8054050](https://github.com/pret/pokeruby/blob/master/src/rom4.c#L893): plays the cry of gUnknown_02029814 if on a non-water encounter tile at volume 50–80 instead of the usual 125
-   * Ruby [sub_80540D0](https://github.com/pret/pokeruby/blob/master/src/rom4.c#L906): might randomly play the cry (run with time-based events)
-   * Emerald [wild_encounter_related](https://github.com/pret/pokeemerald/blob/master/asm/rom4.s#L2544): raises call probability for Swarm ability
 * Catch rate formula from Gen III
 * Port critical captures from Prism
 * Allow evolution during battle
