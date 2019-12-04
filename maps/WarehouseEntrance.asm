@@ -370,7 +370,7 @@ UnknownScript_0x7c2cd:
 BasementDoorScript::
 	checkevent EVENT_USED_BASEMENT_KEY
 	iftrue_jumptext UnknownText_0x7c5c3
-	checkitem BASEMENT_KEY
+	checkkeyitem BASEMENT_KEY
 	iffalse_jumptext UnknownText_0x7c5b0
 	opentext
 	playsound SFX_TRANSACTION
