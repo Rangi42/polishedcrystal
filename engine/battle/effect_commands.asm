@@ -1533,7 +1533,7 @@ BattleCommand_checkpowder:
 	jr BattleCommand_resettypematchup
 .twave
 	call CheckIfTargetIsGroundType
-	ret z
+	ret nz
 	; fallthrough
 BattleCommand_resettypematchup: ; 34833
 ; Reset the type matchup multiplier to 1.0, if the type matchup is not 0.
