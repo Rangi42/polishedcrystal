@@ -345,7 +345,6 @@ StatsScreen_InitUpperHalf: ; 4deea (13:5eea)
 	ld [wd265], a
 	call GetPokemonName
 	call PlaceString
-	call StatsScreen_PlaceHorizontalDivider
 	call StatsScreen_PlacePageSwitchArrows
 	jp StatsScreen_PlaceShinyIcon
 
@@ -388,11 +387,34 @@ StatsScreen_InitUpperHalf: ; 4deea (13:5eea)
 StatsScreen_PlaceHorizontalDivider: ; 4df8f (13:5f8f)
 	hlcoord 0, 7
 	ld b, SCREEN_WIDTH
-	ld a, "_"
+	ld a, $36
 .loop
 	ld [hli], a
 	dec b
 	jr nz, .loop
+
+	; Place T divider
+	ld a, [wcf64]
+	and $3
+	ld c, a
+	rrca
+	jr c, .skip_t_divider
+	and a
+	hlcoord 9, 7
+	jr z, .got_vertical_pos
+	inc hl
+.got_vertical_pos
+	ld [hl], $37
+.skip_t_divider
+	hlcoord 0, 7, wAttrMap
+	ld a, c
+	add $3
+	ld b, SCREEN_WIDTH
+.loop2
+	ld [hli], a
+	dec b
+	jr nz, .loop2
+	ld b, 0
 	ret
 
 StatsScreen_PlacePageSwitchArrows: ; 4df9b (13:5f9b)
@@ -422,17 +444,16 @@ StatsScreen_LoadGFX: ; 4dfb6 (13:5fb6)
 	call .LoadPals
 	ld hl, wcf64
 	bit 4, [hl]
-	jr nz, .place_frontpic
-	jp SetPalettes
-
-.place_frontpic
-	jp StatsScreen_PlaceFrontpic
+	call nz, StatsScreen_PlaceFrontpic
+	ld b, 2
+	jp SafeCopyTilemapAtOnce
 
 .ClearBox: ; 4dfda (13:5fda)
 	ld a, [wcf64]
 	and $3
 	ld c, a
 	call StatsScreen_LoadPageIndicators
+	call StatsScreen_PlaceHorizontalDivider
 	hlcoord 0, 8
 	lb bc, 10, 20
 	jp ClearBox
@@ -1210,34 +1231,32 @@ StatsScreen_AnimateEgg: ; 4e497 (13:6497)
 	ret
 
 StatsScreen_LoadPageIndicators: ; 4e4cd (13:64cd)
+	; Write the smaller squares for page display.
 	hlcoord 11, 5
-	ld a, $36
-	call .load_square
-	hlcoord 13, 5
-	ld a, $36
-	call .load_square
-	hlcoord 15, 5
-	ld a, $36
-	call .load_square
-	hlcoord 17, 5
-	ld a, $36
-	call .load_square
-	ld a, c
-	and a
-	jr z, .zero
-	cp $2
-	ld a, $3a
-	hlcoord 13, 5
-	jr c, .load_square
-	hlcoord 15, 5
-	jr z, .load_square
-	hlcoord 17, 5
-	jr .load_square
-.zero
-	ld a, $3a
+	ld a, $7f
+	ld b, 8
+.loop
+	ld [hli], a
+	dec b
+	jr nz, .loop
+
+	hlcoord 11, 6
+	ld a, $38
+	ld b, 4
+.loop2
+	ld [hli], a
+	inc a
+	ld [hli], a
+	dec a
+	dec b
+	jr nz, .loop2
+
+	; Write the bigger (selected) square for selected page.
+	; c contains current page (0-3)
+	sla c
 	hlcoord 11, 5
-.load_square ; 4e4f7 (13:64f7)
-	push bc
+	add hl, bc
+	ld a, $3a
 	ld [hli], a
 	inc a
 	ld [hld], a
@@ -1247,7 +1266,6 @@ StatsScreen_LoadPageIndicators: ; 4e4cd (13:64cd)
 	ld [hli], a
 	inc a
 	ld [hl], a
-	pop bc
 	ret
 
 CopyNickname: ; 4e505 (13:6505)
