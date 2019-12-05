@@ -15,18 +15,20 @@ _BattleMenuCommon:
 	ld a, [wBattleMenuCursorBuffer]
 	ld [wMenuCursorBuffer], a
 	ld b, QUICK_B
-	ld a, [wBattleMode]
+	ld a, [wBattleType]
 	cp BATTLETYPE_SAFARI
 	jr z, .ok
 	cp BATTLETYPE_CONTEST
 	jr z, .ok
 	ld b, QUICK_B | QUICK_START | QUICK_SELECT
-	cp BATTLETYPE_CANLOSE
-	jr z, .ok2
+	ld a, [wBattleMode]
+	dec a
+	ld a, QUICK_START | QUICK_SELECT
+	jr nz, .ok2
 .ok
 	ld a, b
-	ld [wBattleMenuFlags], a
 .ok2
+	ld [wBattleMenuFlags], a
 	call _2DMenu
 	ld a, [wBattleMenuFlags]
 	and QUICK_PACK

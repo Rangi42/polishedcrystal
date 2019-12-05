@@ -966,10 +966,12 @@ TMHMSubmenu: ; 105dc (4:45dc)
 ; 1068a
 
 InitPackBuffers:
-	and $7
-	ld [wCurrPocket], a
+	push af
 	xor a
 	ld [wJumptableIndex], a
+	pop af
+	and $7
+	ld [wCurrPocket], a
 	inc a
 	add a
 	dec a
