@@ -196,6 +196,6 @@ LoadStatsScreenGFX: ; fb53e
 LoadStatsGFX: ; fb571
 	ld de, GFX_Stats
 	ld hl, VTiles2 tile $31
-	lb bc, BANK(GFX_Stats), 14
+	lb bc, BANK(GFX_Stats), 15
 	jp Get2bpp
 ; fb57e
