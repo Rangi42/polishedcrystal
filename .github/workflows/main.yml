@@ -1,11 +1,10 @@
-name: Build Nightly
+name: Nightly build
 
 on: [push]
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
     - name: Set environment variables
       run: echo "::set-env name=SHORT_SHA::$(echo ${GITHUB_SHA} | cut -c1-8)"
@@ -33,24 +32,24 @@ jobs:
         make -j4 faithful debug
         mv polishedcrystal-3.0.0-beta.gbc build/polishedcrystal-3.0.0-faithful-debug-beta.gbc
         make clean
-    - name: Delete old nightly build
+    - name: Delete old release
       id: delete_release
       uses: jagger27/delete-release@master
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: 3.0.0-beta-nightly
-    - name: Create Release
+        tag_name: v3.0.0-beta-nightly
+    - name: Create release
       id: create_release
       uses: actions/create-release@v1.0.0
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: 3.0.0-beta-nightly
+        tag_name: v3.0.0-beta-nightly
         release_name: 3.0.0 beta nightly
         draft: false
         prerelease: true
-    - name: Upload releases
+    - name: Upload ROM
       id: upload
       uses: actions/upload-release-asset@v1.0.1
       env:
@@ -60,7 +59,7 @@ jobs:
         asset_path: ./polishedcrystal/build/polishedcrystal-3.0.0-beta.gbc
         asset_name: polishedcrystal-3.0.0-beta-${{ env.SHORT_SHA }}.gbc
         asset_content_type: application/octet-stream
-    - name: Upload Release Asset (faithful)
+    - name: Upload faithful ROM
       id: upload-faithful
       uses: actions/upload-release-asset@v1.0.1
       env:
@@ -70,7 +69,7 @@ jobs:
         asset_path: ./polishedcrystal/build/polishedcrystal-3.0.0-faithful-beta.gbc
         asset_name: polishedcrystal-3.0.0-beta-faithful-${{ env.SHORT_SHA }}.gbc
         asset_content_type: application/octet-stream
-    - name: Upload Release Asset (non-faithful debug)
+    - name: Upload debug ROM
       id: upload-debug
       uses: actions/upload-release-asset@v1.0.1
       env:
@@ -80,7 +79,7 @@ jobs:
         asset_path: ./polishedcrystal/build/polishedcrystal-3.0.0-debug-beta.gbc
         asset_name: polishedcrystal-3.0.0-beta-debug-${{ env.SHORT_SHA }}.gbc
         asset_content_type: application/octet-stream
-    - name: Upload Release Asset (faithful debug)
+    - name: Upload faithful debug ROM
       id: upload-faithful-debug
       uses: actions/upload-release-asset@v1.0.1
       env:
