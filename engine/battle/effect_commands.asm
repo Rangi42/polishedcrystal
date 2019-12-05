@@ -8882,7 +8882,7 @@ ContinueToSwitchOut:
 	call DoPlayerBatonPass
 
 	; Baton Pass routines preserve some stuff, get rid of it
-	; unless we fainted (i.e. by spikes), in which case a double 
+	; unless we fainted (i.e. by spikes), in which case a double
 	; switch occurs afterwards if the opponent also fainted
 	ld hl, wBattleMonHP
 	ld a, [hli]

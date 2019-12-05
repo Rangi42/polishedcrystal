@@ -532,188 +532,152 @@ Movement_do_run:
 	ld d, PERSON_ACTION_RUN
 	jr Movement_normal_step
 
-Movement_turn_away_down: ; 533c
+Movement_turn_away_down:
 	ld a, STEP_SLOW << 2 | DOWN
-	jp TurningStep
-; 5341
+	jr Movement_turning_step
 
-Movement_turn_away_up: ; 5341
+Movement_turn_away_up:
 	ld a, STEP_SLOW << 2 | UP
-	jp TurningStep
-; 5346
+	jr Movement_turning_step
 
-Movement_turn_away_left: ; 5346
+Movement_turn_away_left:
 	ld a, STEP_SLOW << 2 | LEFT
-	jp TurningStep
-; 534b
+	jr Movement_turning_step
 
-Movement_turn_away_right: ; 534b
+Movement_turn_away_right:
 	ld a, STEP_SLOW << 2 | RIGHT
-	jp TurningStep
-; 5350
+	jr Movement_turning_step
 
-Movement_turn_in_down: ; 5350
+Movement_turn_in_down:
 	ld a, STEP_WALK << 2 | DOWN
-	jp TurningStep
-; 5355
+	jr Movement_turning_step
 
-Movement_turn_in_up: ; 5355
+Movement_turn_in_up:
 	ld a, STEP_WALK << 2 | UP
-	jp TurningStep
-; 535a
+	jr Movement_turning_step
 
-Movement_turn_in_left: ; 535a
+Movement_turn_in_left:
 	ld a, STEP_WALK << 2 | LEFT
-	jp TurningStep
-; 535f
+	jr Movement_turning_step
 
-Movement_turn_in_right: ; 535f
+Movement_turn_in_right:
 	ld a, STEP_WALK << 2 | RIGHT
-	jp TurningStep
-; 5364
+	jr Movement_turning_step
 
-Movement_turn_waterfall_down: ; 5364
+Movement_turn_waterfall_down:
 	ld a, STEP_WALK << 2 | DOWN
-	jp TurningStep
-; 5369
+	jr Movement_turning_step
 
-Movement_turn_waterfall_up: ; 5369
+Movement_turn_waterfall_up:
 	ld a, STEP_WALK << 2 | UP
-	jp TurningStep
-; 536e
+	jr Movement_turning_step
 
-Movement_turn_waterfall_left: ; 536e
+Movement_turn_waterfall_left:
 	ld a, STEP_WALK << 2 | LEFT
-	jp TurningStep
-; 5373
+	jr Movement_turning_step
 
-Movement_turn_waterfall_right: ; 5373
+Movement_turn_waterfall_right:
 	ld a, STEP_WALK << 2 | RIGHT
+Movement_turning_step:
 	jp TurningStep
-; 5378
 
-
-Movement_slow_slide_step_down: ; 5378
+Movement_slow_slide_step_down:
 	ld a, STEP_SLOW << 2 | DOWN
-	jp SlideStep
-; 537d
+	jr Movement_slide_step
 
-Movement_slow_slide_step_up: ; 537d
+Movement_slow_slide_step_up:
 	ld a, STEP_SLOW << 2 | UP
-	jp SlideStep
-; 5382
+	jr Movement_slide_step
 
-Movement_slow_slide_step_left: ; 5382
+Movement_slow_slide_step_left:
 	ld a, STEP_SLOW << 2 | LEFT
-	jp SlideStep
-; 5387
+	jr Movement_slide_step
 
-Movement_slow_slide_step_right: ; 5387
+Movement_slow_slide_step_right:
 	ld a, STEP_SLOW << 2 | RIGHT
-	jp SlideStep
-; 538c
+	jr Movement_slide_step
 
-Movement_slide_step_down: ; 538c
+Movement_slide_step_down:
 	ld a, STEP_WALK << 2 | DOWN
-	jp SlideStep
-; 5391
+	jr Movement_slide_step
 
-Movement_slide_step_up: ; 5391
+Movement_slide_step_up:
 	ld a, STEP_WALK << 2 | UP
-	jp SlideStep
-; 5396
+	jr Movement_slide_step
 
-Movement_slide_step_left: ; 5396
+Movement_slide_step_left:
 	ld a, STEP_WALK << 2 | LEFT
-	jp SlideStep
-; 539b
+	jr Movement_slide_step
 
-Movement_slide_step_right: ; 539b
+Movement_slide_step_right:
 	ld a, STEP_WALK << 2 | RIGHT
-	jp SlideStep
-; 53a0
+	jr Movement_slide_step
 
-Movement_fast_slide_step_down: ; 53a0
+Movement_fast_slide_step_down:
 	ld a, STEP_RUN << 2 | DOWN
-	jp SlideStep
-; 53a5
+	jr Movement_slide_step
 
-Movement_fast_slide_step_up: ; 53a5
+Movement_fast_slide_step_up:
 	ld a, STEP_RUN << 2 | UP
-	jp SlideStep
-; 53aa
+	jr Movement_slide_step
 
-Movement_fast_slide_step_left: ; 53aa
+Movement_fast_slide_step_left:
 	ld a, STEP_RUN << 2 | LEFT
-	jp SlideStep
-; 53af
+	jr Movement_slide_step
 
-Movement_fast_slide_step_right: ; 53af
+Movement_fast_slide_step_right:
 	ld a, STEP_RUN << 2 | RIGHT
+Movement_slide_step:
 	jp SlideStep
-; 53b4
 
-
-Movement_slow_jump_step_down: ; 53b4
+Movement_slow_jump_step_down:
 	ld a, STEP_SLOW << 2 | DOWN
-	jp JumpStep
-; 53b9
+	jr Movement_jump_step
 
-Movement_slow_jump_step_up: ; 53b9
+Movement_slow_jump_step_up:
 	ld a, STEP_SLOW << 2 | UP
-	jp JumpStep
-; 53be
+	jr Movement_jump_step
 
-Movement_slow_jump_step_left: ; 53be
+Movement_slow_jump_step_left:
 	ld a, STEP_SLOW << 2 | LEFT
-	jp JumpStep
-; 53c3
+	jr Movement_jump_step
 
-Movement_slow_jump_step_right: ; 53c3
+Movement_slow_jump_step_right:
 	ld a, STEP_SLOW << 2 | RIGHT
-	jp JumpStep
-; 53c8
+	jr Movement_jump_step
 
-Movement_jump_step_down: ; 53c8
+Movement_jump_step_down:
 	ld a, STEP_WALK << 2 | DOWN
-	jp JumpStep
-; 53cd
+	jr Movement_jump_step
 
-Movement_jump_step_up: ; 53cd
+Movement_jump_step_up:
 	ld a, STEP_WALK << 2 | UP
-	jp JumpStep
-; 53d2
+	jr Movement_jump_step
 
-Movement_jump_step_left: ; 53d2
+Movement_jump_step_left:
 	ld a, STEP_WALK << 2 | LEFT
-	jp JumpStep
-; 53d7
+	jr Movement_jump_step
 
-Movement_jump_step_right: ; 53d7
+Movement_jump_step_right:
 	ld a, STEP_WALK << 2 | RIGHT
-	jp JumpStep
-; 53dc
+	jr Movement_jump_step
 
-Movement_fast_jump_step_down: ; 53dc
+Movement_fast_jump_step_down:
 	ld a, STEP_BIKE << 2 | DOWN
-	jp JumpStep
-; 53e1
+	jr Movement_jump_step
 
-Movement_fast_jump_step_up: ; 53e1
+Movement_fast_jump_step_up:
 	ld a, STEP_BIKE << 2 | UP
-	jp JumpStep
-; 53e6
+	jr Movement_jump_step
 
-Movement_fast_jump_step_left: ; 53e6
+Movement_fast_jump_step_left:
 	ld a, STEP_BIKE << 2 | LEFT
-	jp JumpStep
-; 53eb
+	jr Movement_jump_step
 
-Movement_fast_jump_step_right: ; 53eb
+Movement_fast_jump_step_right:
 	ld a, STEP_BIKE << 2 | RIGHT
-	jp JumpStep
-; 53f0
-
+Movement_jump_step:
+	jr JumpStep
 
 Movement_turn_step_down: ; 53f0
 	ld a, OW_DOWN
@@ -759,7 +723,7 @@ NormalStep: ; 5412
 	ld hl, OBJECT_FLAGS1
 	add hl, bc
 	bit INVISIBLE, [hl]
-	jr nz, .skip_effect
+	jr nz, SetWalkStepType
 
 	ld hl, OBJECT_NEXT_TILE
 	add hl, bc
@@ -770,84 +734,45 @@ NormalStep: ; 5412
 	jr z, .shake_grass
 
 	cp COLL_PUDDLE
-	jr nz, .skip_effect
+	jr nz, SetWalkStepType
 	call SplashPuddle
-	jr .skip_effect
+	jr SetWalkStepType
 
 .shake_grass
 	call ShakeGrass
-
-.skip_effect
+SetWalkStepType:
 	ld hl, wCenteredObject
 	ld a, [hMapObjectIndexBuffer]
 	cp [hl]
-	jr z, .player
-
 	ld hl, OBJECT_STEP_TYPE
 	add hl, bc
 	ld [hl], STEP_TYPE_NPC_WALK
-	ret
-
-.player
-	ld hl, OBJECT_STEP_TYPE
-	add hl, bc
+	ret nz
 	ld [hl], STEP_TYPE_PLAYER_WALK
 	ret
 ; 5446
 
-TurningStep: ; 5446
+TurningStep:
 	call InitStep
 	call UpdateTallGrassFlags
 
 	ld hl, OBJECT_ACTION
 	add hl, bc
 	ld [hl], PERSON_ACTION_SPIN
-
-	ld hl, wCenteredObject
-	ld a, [hMapObjectIndexBuffer]
-	cp [hl]
-	jr z, .player
-
-	ld hl, OBJECT_STEP_TYPE
-	add hl, bc
-	ld [hl], STEP_TYPE_NPC_WALK
-	ret
-
-.player
-	ld hl, OBJECT_STEP_TYPE
-	add hl, bc
-	ld [hl], STEP_TYPE_PLAYER_WALK
-	ret
-; 5468
+	jr SetWalkStepType
 
 
-SlideStep: ; 5468
+SlideStep:
 	call InitStep
 	call UpdateTallGrassFlags
 
 	ld hl, OBJECT_ACTION
 	add hl, bc
 	ld [hl], PERSON_ACTION_STAND
-
-	ld hl, wCenteredObject
-	ld a, [hMapObjectIndexBuffer]
-	cp [hl]
-	jr z, .player
-
-	ld hl, OBJECT_STEP_TYPE
-	add hl, bc
-	ld [hl], STEP_TYPE_NPC_WALK
-	ret
-
-.player
-	ld hl, OBJECT_STEP_TYPE
-	add hl, bc
-	ld [hl], STEP_TYPE_PLAYER_WALK
-	ret
-; 548a
+	jr SetWalkStepType
 
 
-JumpStep: ; 548a
+JumpStep:
 	call InitStep
 	ld hl, OBJECT_31
 	add hl, bc
@@ -866,16 +791,9 @@ JumpStep: ; 548a
 	ld hl, wCenteredObject
 	ld a, [hMapObjectIndexBuffer]
 	cp [hl]
-	jr z, .player
-
 	ld hl, OBJECT_STEP_TYPE
 	add hl, bc
 	ld [hl], STEP_TYPE_NPC_JUMP
-	ret
-
-.player
-	ld hl, OBJECT_STEP_TYPE
-	add hl, bc
+	ret nz
 	ld [hl], STEP_TYPE_PLAYER_JUMP
 	ret
-; 54b8
