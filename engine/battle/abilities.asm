@@ -562,7 +562,7 @@ AftermathAbility:
 .is_contact
 	call ShowAbilityActivation
 	call SwitchTurn
-	farcall GetQuarterMaxHP
+	call GetQuarterMaxHP
 	farcall SubtractHPFromUser
 	jp SwitchTurn
 
@@ -1004,7 +1004,7 @@ WaterAbsorbAbility:
 	call ShowAbilityActivation
 	farcall CheckFullHP
 	jr z, .full_hp
-	farcall GetQuarterMaxHP
+	call GetQuarterMaxHP
 	farjp RestoreHP
 .full_hp
 	ld hl, HPIsFullText
@@ -1124,7 +1124,7 @@ SolarPowerWeatherAbility:
 	cp WEATHER_SUN
 	ret nz
 	call ShowAbilityActivation
-	farcall GetEighthMaxHP
+	call GetEighthMaxHP
 	farjp SubtractHPFromUser
 
 IceBodyAbility:
@@ -1144,10 +1144,10 @@ WeatherRecoveryAbility:
 	call GetBattleVar
 	cp DRY_SKIN
 	jr z, .eighth_max_hp
-	farcall GetSixteenthMaxHP
+	call GetSixteenthMaxHP
 	jr .restore
 .eighth_max_hp
-	farcall GetEighthMaxHP
+	call GetEighthMaxHP
 .restore
 	farjp RestoreHP
 
@@ -1702,7 +1702,7 @@ RegeneratorAbility:
 	farcall CheckFullHP
 	ret z
 	call ShowAbilityActivation
-	farcall GetThirdMaxHP
+	call GetThirdMaxHP
 	farcall RestoreHP
 	ld a, [hBattleTurn]
 	and a

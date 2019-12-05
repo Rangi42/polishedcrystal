@@ -2610,7 +2610,7 @@ GetFailureResultText: ; 350e4
 	cp EFFECT_JUMP_KICK
 	ret nz
 
-	farcall GetHalfMaxHP
+	call GetHalfMaxHP
 	ld hl, wCurDamage
 	ld a, b
 	ld [hli], a
@@ -2942,7 +2942,7 @@ BattleCommand_postfainteffects:
 	ld hl, TookDownWithItText
 	call StdBattleTextBox
 
-	farcall GetMaxHP
+	call GetMaxHP
 	farcall SubtractHPFromUser
 	call SwitchTurn
 	xor a
@@ -3078,12 +3078,12 @@ BattleCommand_posthiteffects:
 	jr .rocky_helmet_done
 .held_offend_hit
 	call ConsumeOpponentItem
-	farcall GetEighthMaxHP
+	call GetEighthMaxHP
 	jr .got_hurt_item_damage
 .rocky_helmet
 	call CheckContactMove
 	jr c, .rocky_helmet_done
-	farcall GetSixthMaxHP
+	call GetSixthMaxHP
 .got_hurt_item_damage
 	ld a, b
 	or c
@@ -3171,7 +3171,7 @@ BattleCommand_posthiteffects:
 
 .no_sheer_force
 	xor a
-	farcall GetMaxHP
+	call GetMaxHP
 	ld a, b
 	ld [hDividend], a
 	ld a, c
@@ -4484,7 +4484,7 @@ BattleCommand_painsplit:
 .share
 	; updates HP anim buffers
 	push bc
-	farcall GetMaxHP
+	call GetMaxHP
 	pop bc
 	srl b
 	rr c
@@ -4495,7 +4495,7 @@ BattleCommand_painsplit:
 	farcall SubtractHPFromUser
 	call UpdateUserInParty
 	call SwitchTurn
-	farcall GetMaxHP
+	call GetMaxHP
 	pop bc
 	farcall RestoreHP
 	call UpdateUserInParty
@@ -7280,7 +7280,7 @@ BattleCommand_substitute: ; 36e7c
 	call GetBattleVar
 	bit SUBSTATUS_SUBSTITUTE, a
 	jr nz, .already_has_sub
-	farcall GetQuarterMaxHP
+	call GetQuarterMaxHP
 	push bc
 	call CompareHP
 	pop bc
@@ -7933,10 +7933,10 @@ BattleCommand_heal:
 	ld hl, RestedText
 .no_status_to_heal
 	call StdBattleTextBox
-	farcall GetMaxHP
+	call GetMaxHP
 	jr .finish
 .not_rest
-	farcall GetHalfMaxHP
+	call GetHalfMaxHP
 .finish
 	call AnimateCurrentMove
 	farcall RestoreHP
@@ -9172,13 +9172,13 @@ BattleCommand_healweather:
 	jr z, .goodheal
 	and a
 	jr nz, .badheal
-	farcall GetHalfMaxHP
+	call GetHalfMaxHP
 	jr .amount_ok
 .badheal
-	farcall GetQuarterMaxHP
+	call GetQuarterMaxHP
 	jr .amount_ok
 .goodheal
-	farcall GetThirdMaxHP
+	call GetThirdMaxHP
 	sla c
 	rl b
 .amount_ok
@@ -9232,7 +9232,7 @@ StartWeather:
 
 BattleCommand_bellydrum: ; 37c1a
 ; bellydrum
-	farcall GetHalfMaxHP
+	call GetHalfMaxHP
 	call CompareHP
 	jr c, .failed
 	jr z, .failed
@@ -9245,7 +9245,7 @@ BattleCommand_bellydrum: ; 37c1a
 	push bc
 	call AnimateCurrentMove
 	pop bc
-	farcall GetHalfMaxHP
+	call GetHalfMaxHP
 	farcall SubtractHPFromUser
 	call UpdateUserInParty
 	ld a, 5

@@ -60,9 +60,70 @@ SetPlayerTurn::
 	ld [hBattleTurn], a
 	ret
 
+SetFastestTurn::
+	call CheckSpeed
+	jr z, SetPlayerTurn
 SetEnemyTurn::
 	ld a, 1
 	ld [hBattleTurn], a
+	ret
+
+GetThirdMaxHP::
+; Assumes HP<768
+	call GetMaxHP
+	xor a
+	inc b
+.loop
+	dec b
+	inc a
+	dec bc
+	dec bc
+	dec bc
+	inc b
+	jr nz, .loop
+	dec a
+	ld c, a
+	ret nz
+	inc c
+	ret
+
+GetSixteenthMaxHP::
+	call GetEighthMaxHP
+	jr HalfHP
+
+GetEighthMaxHP::
+	call GetQuarterMaxHP
+	jr HalfHP
+
+GetSixthMaxHP::
+	call GetThirdMaxHP
+	jr HalfHP
+
+GetQuarterMaxHP::
+	call GetHalfMaxHP
+	jr HalfHP
+
+GetHalfMaxHP::
+	call GetMaxHP
+HalfHP::
+	jp HalveBC
+
+GetMaxHP::
+; output: bc, wBuffer1-2
+
+	ld hl, wBattleMonMaxHP
+	ld a, [hBattleTurn]
+	and a
+	jr z, .ok
+	ld hl, wEnemyMonMaxHP
+.ok
+	ld a, [hli]
+	ld [wBuffer2], a
+	ld b, a
+
+	ld a, [hl]
+	ld [wBuffer1], a
+	ld c, a
 	ret
 
 UpdateOpponentInParty::
@@ -658,7 +719,7 @@ CheckIfSomeoneIsSomeType
 CheckPinch::
 ; return z if we are in a pinch (HP<=1/3)
 	push hl
-	farcall GetThirdMaxHP
+	call GetThirdMaxHP
 	call CompareHP
 	pop hl
 	jr c, .ok

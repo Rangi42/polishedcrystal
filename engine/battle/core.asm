@@ -339,7 +339,25 @@ EnemyTriesToFlee: ; 3c300
 	ret
 ; 3c314
 
-DetermineMoveOrder: ; 3c314
+DetermineMoveOrder:
+	ld a, [wLinkMode]
+	and a
+	jr z, .no_linked_switching
+	ld a, [wBattleAction]
+	sub BATTLEACTION_SWITCH1
+	jr c, .no_linked_switching
+	cp 6
+	jr nc, .no_linked_switching
+	ld a, [wBattlePlayerAction]
+	cp 2
+	jr nz, .linked_switching
+
+	; Both are switching. Fastest mon switches first.
+	call CheckSpeed
+	jr z, .player_first
+	jr .enemy_first
+
+.no_linked_switching
 	ld a, [wBattlePlayerAction]
 	and a
 
@@ -357,12 +375,12 @@ DetermineMoveOrder: ; 3c314
 .player_first
 	scf
 	ret
-; 3c3f3
 
-.enemy_first ; 3c3f3
+.linked_switching
+	call EnemyMonEntrance
+.enemy_first
 	and a
 	ret
-; 3c3f5
 
 GetSpeed::
 ; Sets bc to speed after items and stat changes.
@@ -906,11 +924,6 @@ EndUserDestinyBond:
 	res SUBSTATUS_DESTINY_BOND, [hl]
 	ret
 
-SetFastestTurn:
-	call CheckSpeed
-	jp nz, SetEnemyTurn
-	jp SetPlayerTurn
-
 CheckOpponentFullHP:
 	call CallOpponentTurn
 CheckFullHP:
@@ -1196,65 +1209,6 @@ _SubtractHP:
 	ld [wBuffer5], a
 	ld [wBuffer6], a
 	ret
-
-GetThirdMaxHP::
-; Assumes HP<768
-	call GetMaxHP
-	xor a
-	inc b
-.loop
-	dec b
-	inc a
-	dec bc
-	dec bc
-	dec bc
-	inc b
-	jr nz, .loop
-	dec a
-	ld c, a
-	ret nz
-	inc c
-	ret
-
-GetSixteenthMaxHP:
-	call GetEighthMaxHP
-	jr HalfHP
-
-GetEighthMaxHP:
-	call GetQuarterMaxHP
-	jr HalfHP
-
-GetSixthMaxHP:
-	call GetThirdMaxHP
-	jr HalfHP
-
-GetQuarterMaxHP:
-	call GetHalfMaxHP
-	jr HalfHP
-
-GetHalfMaxHP:
-	call GetMaxHP
-HalfHP:
-	jp HalveBC
-
-GetMaxHP: ; 3ccac
-; output: bc, wBuffer1-2
-
-	ld hl, wBattleMonMaxHP
-	ld a, [hBattleTurn]
-	and a
-	jr z, .ok
-	ld hl, wEnemyMonMaxHP
-.ok
-	ld a, [hli]
-	ld [wBuffer2], a
-	ld b, a
-
-	ld a, [hl]
-	ld [wBuffer1], a
-	ld c, a
-	ret
-; 3ccc2
 
 RestoreOpponentHP:
 	call CallOpponentTurn
@@ -1991,7 +1945,7 @@ ContinueHandlePlayerMonFaint:
 ContinueHandlePlayerMonFaint_FinishSplit:
 	ld [wPlayerSplitHandleMonFaint], a
 	ld [wEnemySplitHandleMonFaint], a
-	
+
 	call AskUseNextPokemon
 	jr nc, .switch
 	ld a, $1
@@ -4695,7 +4649,7 @@ BattleMonEntrance: ; 3e40b
 	ld [hli], a
 	ld [hl], a
 	jp ContinueHandlePlayerMonFaint
-	
+
 .no_player_faint
 	call HasEnemyFainted
 	jr nz, .ok
