@@ -241,10 +241,6 @@ Gen2ToGen2LinkComms: ; 28177
 	rst CopyBytes
 	ld de, MUSIC_NONE
 	call PlayMusic
-	ld a, [hSerialConnectionStatus]
-	cp USING_INTERNAL_CLOCK
-	ld c, 66
-	call z, DelayFrames
 	ld a, [wLinkMode]
 	cp LINK_COLOSSEUM
 	jr nz, .ready_to_trade
