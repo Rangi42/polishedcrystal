@@ -478,12 +478,12 @@ StatsScreen_LoadGFX: ; 4dfb6 (13:5fb6)
 	; load center graphics
 	ld d, h
 	ld e, l
-	ld hl, VTiles2 tile $3e
+	ld hl, VTiles2 tile $3f
 	lb bc, BANK(CaughtBallsGFX), 1
 	call Request2bpp
 	; draw center
 	hlcoord 8, 6
-	ld a, $3e ; center
+	ld a, $3f ; center
 	ld [hl], a
 	ret
 
@@ -784,8 +784,9 @@ OrangePage_:
 	call TN_PrintLocation
 	call TN_PrintLV
 	hlcoord 0, 11
-	ld de, .horizontal_divider
-	call PlaceString
+	ld bc, SCREEN_WIDTH
+	ld a, $3e
+	call ByteFill
 	hlcoord 1, 12
 	ld de, .ability
 	call PlaceString
@@ -801,8 +802,6 @@ OrangePage_:
 	predef PrintAbilityDescription
 	ret
 
-.horizontal_divider
-	db "____________________@"
 .ability
 	db "Ability/@"
 

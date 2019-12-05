@@ -480,7 +480,6 @@ GetName:: ; 33c3
 	jr .done
 
 .NotPokeName:
-	ld a, [wNamedObjectTypeBuffer]
 	dec a
 	ld e, a
 	ld d, 0
