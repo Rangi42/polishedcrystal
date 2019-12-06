@@ -5,11 +5,6 @@ SwapDEHL::
 	pop hl
 	ret
 
-FarDecompressAtB_DC00::
-	ld a, b
-	ld de, wDecompressedCollisions
-	jr FarDecompress
-
 FarDecompressWRA6::
 	ld b, a
 FarDecompressWRA6InB:

@@ -44,11 +44,11 @@ WRAMX $4
 
 WRAMX $5
 	org $d000
-	"GBC Video"
-	org $d300
-	"Battle Animations RAM"
-	org $dc00
 	"Collisions"
+	org $d400
+	"GBC Video"
+	org $d700
+	"Battle Animations RAM"
 
 WRAMX $6
 	org $d000

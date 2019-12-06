@@ -134,7 +134,6 @@ Low priority:
 
 ### Optimizations
 
-* LZ-compress collision.asm data and various tilemaps
 * Optimize battle command engine, including parameterized commands
 * Optimize map scripts with the various new commands and PERSONTYPE_GENERICTRAINER
 

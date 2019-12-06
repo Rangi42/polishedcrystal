@@ -310,27 +310,18 @@ DecompressMetatiles:
 	ld hl, wTilesetBlocksBank
 	ld c, BANK(wDecompressedMetatiles)
 	ld de, wDecompressedMetatiles
-	call .DecompressD000
+	call .Decompress
 
 	ld hl, wTilesetAttributesBank
 	ld c, BANK(wDecompressedAttributes)
 	ld de, wDecompressedAttributes
-	call .DecompressD000
+	call .Decompress
 
 	ld hl, wTilesetCollisionBank
+	ld c, BANK(wDecompressedCollisions)
 	ld de, wDecompressedCollisions
-	ld a, [hli]
-	ld b, a
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	ld a, BANK(wDecompressedCollisions)
-	call StackCallInWRAMBankA
 
-.FunctionDC00
-	jp FarDecompressAtB_DC00
-
-.DecompressD000:
+.Decompress:
 	ld a, [hli]
 	ld b, a
 	ld a, [hli]
