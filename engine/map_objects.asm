@@ -1771,12 +1771,18 @@ SkyfallTop: ; 4f83
 
 UpdateJumpPosition: ; 4fd5
 	call GetStepVector
+	push af
 	ld a, h
 	ld hl, OBJECT_31
 	add hl, bc
 	ld e, [hl]
 	add e
 	ld [hl], a
+	pop af
+	cp 32 ; is duration slow jump?
+	jr nz, .not_slow_jump
+	srl e
+.not_slow_jump
 	srl e
 	ld d, 0
 	ld hl, .y

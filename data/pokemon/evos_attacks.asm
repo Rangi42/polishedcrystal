@@ -1469,8 +1469,8 @@ SlowpokeEvosAttacks:
 	db EVOLVE_HOLDING, KINGS_ROCK, SLOWKING
 	db EVOLVE_LEVEL, 37, SLOWBRO
 	db 0 ; no more evolutions
-	db 1, CURSE
 	db 1, TACKLE
+	db 1, CURSE
 	db 5, GROWL
 	db 9, WATER_GUN
 	db 14, CONFUSION
