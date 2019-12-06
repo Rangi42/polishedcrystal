@@ -346,13 +346,7 @@ wOTClassName:: ds TRAINER_CLASS_NAME_LENGTH
 
 wCurOTMon:: ds 1
 
-wBattleParticipantsNotFainted::
-; Bit array.  Bits 0 - 5 correspond to party members 1 - 6.
-; Bit set if the mon appears in battle.
-; Bit cleared if the mon faints.
-; Backed up if the enemy switches.
-; All bits cleared if the enemy faints.
-	ds 1
+	ds 1 ; unused
 
 wTypeModifier::
 ; >10: super-effective
@@ -489,7 +483,9 @@ wEnemySplitHandleMonFaint:: ds 1
 wAITempAbility:: ds 1
 wAITempItem:: ds 1
 
-	ds 14
+wPartyParticipants:: ds 6
+
+	ds 8 ; unused
 
 wBattleScriptBufferLoc:: ds 2
 
@@ -576,7 +572,7 @@ wEnemyMinimized:: ds 1
 
 wAlreadyFailed:: ds 1
 
-wBattleParticipantsIncludingFainted:: ds 1
+	ds 1 ; unused
 
 wBattleLowHealthAlarm:: ds 1
 

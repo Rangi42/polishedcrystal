@@ -8794,14 +8794,14 @@ PursuitSwitchDuringMove:
 	ld a, [hBattleTurn]
 	push af
 	call SwitchTurn
-	
+
 	; Avoids double-usage of Pursuit when Pursuit user goes first
 	; Performed from Pursuit user's POV
 	call CheckOpponentWentFirst
 	jr z, .pursuit_done
 	call HasUserFainted
 	jr z, .pursuit_done
-    
+
 	ld hl, wBattleScriptBufferLoc
 	ld c, [hl]
 	inc hl
@@ -8971,10 +8971,8 @@ DoEnemyBatonPass:
 	; Passed enemy PartyMon entrance
 	xor a
 	ld [wEnemySwitchMonIndex], a
-	ld hl, EnemySwitch_SetMode
-	call CallBattleCore
-	ld hl, ResetBattleParticipants
-	call CallBattleCore
+	farcall EnemySwitch_SetMode
+	farcall SetParticipant
 	ld a, 1
 	ld [wTypeMatchup], a
 

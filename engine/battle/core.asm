@@ -2,9 +2,8 @@
 BattleCore:
 DoBattle: ; 3c000
 	call BackupBattleItems
+	call ResetParticipants
 	xor a
-	ld [wBattleParticipantsNotFainted], a
-	ld [wBattleParticipantsIncludingFainted], a
 	ld [wBattlePlayerAction], a
 	ld [wBattleEnded], a
 	ld [wInverseBattleScore], a
@@ -92,7 +91,7 @@ DoBattle: ; 3c000
 	ld [wTempBattleMonSpecies], a
 	call SlidePlayerPicOut
 	call LoadTileMapToTempTileMap
-	call ResetBattleParticipants
+	call SetParticipant
 	call InitBattleMon
 	call ResetPlayerStatLevels
 	call SendOutPkmnText
@@ -1436,35 +1435,26 @@ UpdateBattleStateAndExperienceAfterEnemyFaint: ; 3ce01
 ; fallthrough
 
 GiveExperiencePointsAfterCatch:
-	call IsAnyMonHoldingExpShare
+	call GetExpShareParticipants
+	ld a, d
+	ld [wGivingExperienceToExpShareHolders], a
+	and a
+	jr z, .skip_exp_share
+
+	; Give exp to exp share holders
 	ld a, [wEnemyMonBaseExp]
-	jr z, .skip_exp_halving
 	srl a
-	ld [wEnemyMonBaseExp], a
-.skip_exp_halving
 	ld [wBackupEnemyMonBaseExp], a
-; give experience to participants
+	call GiveExperiencePoints
 	xor a
 	ld [wGivingExperienceToExpShareHolders], a
-	call GiveExperiencePoints
-	call IsAnyMonHoldingExpShare
-	ret z
-; give experience to Exp.Share holders
-	ld a, [wBattleParticipantsNotFainted]
-	push af
-	ld a, d
-	ld [wBattleParticipantsNotFainted], a
 	ld a, [wBackupEnemyMonBaseExp]
 	ld [wEnemyMonBaseExp], a
-	ld a, $1
-	ld [wGivingExperienceToExpShareHolders], a
-	call GiveExperiencePoints
-	pop af
-	ld [wBattleParticipantsNotFainted], a
-	ret
-; 3ceaa
 
-IsAnyMonHoldingExpShare: ; 3ceaa
+.skip_exp_share
+	jp GiveExperiencePoints
+
+GetExpShareParticipants:
 	ld a, [wPartyCount]
 	ld b, a
 	ld hl, wPartyMon1
@@ -1518,7 +1508,6 @@ IsAnyMonHoldingExpShare: ; 3ceaa
 	ld a, e
 	and a
 	ret
-; 3ceec
 
 
 
@@ -1630,7 +1619,7 @@ EnemyPartyMonEntrance: ; 3cf78
 .set
 	call EnemySwitch_SetMode
 .done_switch
-	call ResetBattleParticipants
+	call SetParticipant
 	call SetEnemyTurn
 	call SpikesDamage
 	call RunActivationAbilities
@@ -1848,15 +1837,11 @@ PlayVictoryMusic: ; 3d0ea
 	ld a, [wBattleMode]
 	dec a
 	jr nz, .trainer_victory
-	push de
-	call IsAnyMonHoldingExpShare
-	pop de
-	jr nz, .play_music
 	ld hl, wPayDayMoney
 	ld a, [hli]
 	or [hl]
 	jr nz, .play_music
-	ld a, [wBattleParticipantsNotFainted]
+	call GetParticipantsNotFainted
 	and a
 	jr z, .lost
 	jr .play_music
@@ -1965,11 +1950,6 @@ ContinueHandlePlayerMonFaint_FinishSplit:
 ; 3d1aa
 
 PlayerMonFaintHappinessMod: ; 3d1aa
-	ld a, [wCurBattleMon]
-	ld c, a
-	ld hl, wBattleParticipantsNotFainted
-	ld b, RESET_FLAG
-	predef FlagPredef
 	ld hl, wEnemySubStatus3
 	res SUBSTATUS_IN_LOOP, [hl]
 	xor a
@@ -2067,7 +2047,7 @@ ForcePlayerMonChoice: ; 3d227
 	ld [wLastPlayerMon], a
 	ld a, [wCurPartyMon]
 	ld [wCurBattleMon], a
-	call AddBattleParticipant
+	call SetParticipant
 	call InitBattleMon
 	call ResetPlayerStatLevels
 	call ClearPalettes
@@ -2096,7 +2076,7 @@ PlayerPartyMonEntrance: ; 3d2b3
 	ld [wLastPlayerMon], a
 	ld a, [wCurPartyMon]
 	ld [wCurBattleMon], a
-	call AddBattleParticipant
+	call SetParticipant
 	call InitBattleMon
 	call ResetPlayerStatLevels
 	call SendOutPkmnText
@@ -2422,7 +2402,7 @@ ForceEnemySwitch: ; 3d4c3
 	call ResetEnemyStatLevels
 	call Function_SetEnemyPkmnAndSendOutAnimation
 	call BreakAttraction
-	jp ResetBattleParticipants
+	jp SetParticipant
 ; 3d4e1
 
 
@@ -2447,8 +2427,6 @@ EnemySwitch: ; 3d4e1
 	ret c
 	; If we're here, then we're switching too
 	xor a
-	ld [wBattleParticipantsNotFainted], a
-	ld [wBattleParticipantsIncludingFainted], a
 	ld [wBattlePlayerAction], a
 	inc a
 	ld [wEnemyIsSwitching], a
@@ -2524,22 +2502,6 @@ ResetEnemyBattleVars: ; 3d557
 	call EmptyBattleTextBox
 	jp LoadStandardMenuDataHeader
 ; 3d57a
-
-ResetBattleParticipants: ; 3d57a
-	xor a
-	ld [wBattleParticipantsNotFainted], a
-	ld [wBattleParticipantsIncludingFainted], a
-AddBattleParticipant: ; 3d581
-	ld a, [wCurBattleMon]
-	ld c, a
-	ld hl, wBattleParticipantsNotFainted
-	ld b, SET_FLAG
-	push bc
-	predef FlagPredef
-	pop bc
-	ld hl, wBattleParticipantsIncludingFainted
-	predef_jump FlagPredef
-; 3d599
 
 FindPkmnInOTPartyToSwitchIntoBattle:
 	farcall GetSwitchScores
@@ -3072,7 +3034,7 @@ ForcePlayerSwitch: ; 3db32
 	ld [wLastPlayerMon], a
 	ld a, [wCurPartyMon]
 	ld [wCurBattleMon], a
-	call AddBattleParticipant
+	call SetParticipant
 	call InitBattleMon
 	call ResetPlayerStatLevels
 	call NewBattleMonStatus
@@ -4615,7 +4577,7 @@ EnemyMonEntrance:
 	call ResetEnemyStatLevels
 	call BreakAttraction
 	call EnemySwitch
-	call ResetBattleParticipants
+	call SetParticipant
 	call SetEnemyTurn
 	call SpikesDamage
 	call RunActivationAbilities
@@ -4671,7 +4633,7 @@ BattleMonEntrance: ; 3e40b
 
 	ld a, [wCurPartyMon]
 	ld [wCurBattleMon], a
-	call AddBattleParticipant
+	call SetParticipant
 	call InitBattleMon
 	call ResetPlayerStatLevels
 	call SendOutPkmnText
@@ -4698,7 +4660,7 @@ PassedBattleMonEntrance: ; 3e459
 
 	ld a, [wCurPartyMon]
 	ld [wCurBattleMon], a
-	call AddBattleParticipant
+	call SetParticipant
 	call InitBattleMon
 	call SendOutPkmnText
 	xor a
@@ -6719,6 +6681,103 @@ FinishBattleAnim: ; 3ee27
 ; 3ee3b
 
 
+ResetParticipants::
+	push hl
+	push bc
+	push af
+	xor a
+	ld hl, wPartyParticipants
+	ld bc, 6
+	call ByteFill
+	pop af
+	pop bc
+	pop hl
+	ret
+
+SetParticipant::
+; Sets current active mon as participant vs target mon. Preserves registers.
+	push hl
+	push bc
+	push af
+	call GetParticipantVar
+	ld a, [wCurBattleMon]
+	ld c, a
+
+	ld a, 1
+	inc c
+	rrca
+.loop
+	rlca
+	dec c
+	jr nz, .loop
+
+	or [hl]
+	ld [hl], a
+	pop af
+	pop bc
+	pop hl
+	ret
+
+GetParticipantsIncludingFainted::
+; Returns participants, including fainted, vs target mon to a.
+	push hl
+	push bc
+	call GetParticipantVar
+	ld a, [hl]
+	pop bc
+	pop hl
+	ret
+
+GetParticipantsNotFainted::
+; Returns non-fainted participants vs target mon to a.
+	push hl
+	push de
+	push bc
+	call GetParticipantVar
+	ld a, [hl]
+	ld e, a
+	ld a, [wPartyCount]
+	ld d, a
+	ld a, %11111110
+	ld hl, wPartyMon1HP
+	ld bc, wPartyMon2HP - (wPartyMon1HP + 1)
+.loop
+	push af
+	ld a, [hli]
+	or [hl]
+	jr nz, .not_fainted
+	pop af
+	push af
+	and e
+	ld e, a
+.not_fainted
+	pop af
+	rlca
+	add hl, bc
+	dec d
+	jr nz, .loop
+	ld a, e
+	pop bc
+	pop de
+	pop hl
+	ret
+
+GetParticipantVar::
+	ld hl, wGivingExperienceToExpShareHolders
+	ld a, [hl]
+	and a
+	ret nz
+	ld a, [wBattleMode]
+	dec a
+	jr z, .got_ot_index
+	ld a, [wCurOTMon]
+.got_ot_index
+	ld b, 0
+	ld c, a
+	ld hl, wPartyParticipants
+	add hl, bc
+	ret
+
 GiveExperiencePoints: ; 3ee3b
 ; Give experience.
 ; Don't give experience if linked or in the Battle Tower.
@@ -6743,7 +6802,7 @@ GiveExperiencePoints: ; 3ee3b
 	jp z, .next_mon ; fainted
 
 	push bc
-	ld hl, wBattleParticipantsNotFainted
+	call GetParticipantVar
 	ld a, [wCurPartyMon]
 	ld c, a
 	ld b, CHECK_FLAG
@@ -7011,7 +7070,7 @@ GiveExperiencePoints: ; 3ee3b
 	ld a, [wCurPartyMon]
 	inc a
 	cp b
-	jp z, ResetBattleParticipants
+	jp z, SetParticipant
 	ld [wCurPartyMon], a
 	ld a, MON_SPECIES
 	call GetPartyParamLocation
@@ -7021,7 +7080,7 @@ GiveExperiencePoints: ; 3ee3b
 
 .EvenlyDivideExpAmongParticipants:
 ; count number of battle participants
-	ld a, [wBattleParticipantsNotFainted]
+	call GetParticipantsNotFainted
 	ld b, a
 	ld c, PARTY_LENGTH
 	ld d, 0

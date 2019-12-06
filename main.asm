@@ -839,7 +839,6 @@ ClearBattleRAM: ; 2ef18
 	ld [wMenuScrollPosition], a
 	ld [wCriticalHit], a
 	ld [wBattleMonSpecies], a
-	ld [wBattleParticipantsNotFainted], a
 	ld [wCurBattleMon], a
 	ld [wTimeOfDayPal], a
 	ld [wPlayerTurnsTaken], a

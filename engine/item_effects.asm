@@ -1760,27 +1760,7 @@ RevivePokemon: ; f0d6
 	call IsMonFainted
 	ld a, 1
 	ret nz
-	ld a, [wBattleMode]
-	and a
-	jr z, .skip_to_revive
 
-	ld a, [wCurPartyMon]
-	ld c, a
-	ld d, 0
-	ld hl, wBattleParticipantsIncludingFainted
-	ld b, CHECK_FLAG
-	predef FlagPredef
-	ld a, c
-	and a
-	jr z, .skip_to_revive
-
-	ld a, [wCurPartyMon]
-	ld c, a
-	ld hl, wBattleParticipantsNotFainted
-	ld b, SET_FLAG
-	predef FlagPredef
-
-.skip_to_revive
 	xor a
 	ld [wLowHealthAlarm], a
 	ld a, [wCurItem]
