@@ -148,7 +148,7 @@ data/tilesets/%_collision.bin: data/tilesets/%_collision.asm
 	echo 'INCLUDE "$<"' >> "$$TEMP_ASM" ; \
 	$(RGBDS_DIR)rgbasm -o "$$TEMP_O" "$$TEMP_ASM" ; \
 	tail -c +32 "$$TEMP_O" | head -c -4 > $@ ; \
-#	$(RM) "$$TEMP_ASM" "$$TEMP_O"
+	$(RM) "$$TEMP_ASM" "$$TEMP_O"
 
 %.lz: % ; $(LZ) $< $@
 
