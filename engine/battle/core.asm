@@ -1841,8 +1841,13 @@ PlayVictoryMusic: ; 3d0ea
 	ld a, [hli]
 	or [hl]
 	jr nz, .play_music
-	call GetParticipantsNotFainted
+	push de
+	push bc
+	call CheckPlayerPartyForFitPkmn
+	ld a, d
 	and a
+	pop bc
+	pop de
 	jr z, .lost
 	jr .play_music
 
