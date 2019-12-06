@@ -4156,6 +4156,12 @@ SECTION "Typefaces", ROMX
 
 INCLUDE "gfx/font.asm"
 
+
+SECTION "Battle Endturn", ROMX
+
+INCLUDE "engine/battle/endturn.asm"
+
+
 SECTION "Battle Core", ROMX
 
 INCLUDE "engine/battle/core.asm"

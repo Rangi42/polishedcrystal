@@ -541,8 +541,8 @@ BattleText_PkmnHasNoMovesLeft: ; 0x80c72
 	done
 ; 0x80c8a
 
-BattleText_TargetsEncoreEnded: ; 0x80c8a
-	text "<TARGET>'s"
+BattleText_UserEncoreEnded: ; 0x80c8a
+	text "<USER>'s"
 	line "encore ended!"
 	prompt
 ; 0x80c9c

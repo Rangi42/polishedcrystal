@@ -30,7 +30,7 @@ CheckFaint:
 .check_player
 	call HasPlayerFainted
 	jr nz, .ok
-	call HandlePlayerMonFaint
+	farcall HandlePlayerMonFaint
 	ld a, [wBattleEnded]
 	and a
 	jr nz, .over
@@ -39,7 +39,7 @@ CheckFaint:
 .check_enemy
 	call HasEnemyFainted
 	jr nz, .ok
-	call HandleEnemyMonFaint
+	farcall HandleEnemyMonFaint
 	ld a, [wBattleEnded]
 	and a
 	jr nz, .over
@@ -86,7 +86,7 @@ HandleBetweenTurnEffects:
 	call CheckFaint
 	ret c
 	; taunt
-	; encore (currently not at endturn)
+	call HandleEncore
 	; disable (currently not at endturn)
 	; magnet rise
 	; telekinesis
@@ -111,8 +111,7 @@ HandleBetweenTurnEffects:
 	call HandleStatusOrbs
 	call HandleRoost
 	call UpdateBattleMonInParty
-	call LoadTileMapToTempTileMap
-	jp HandleEncore
+	jp LoadTileMapToTempTileMap
 
 HandleEndturnBlockA:
 	call SetFastestTurn
@@ -191,7 +190,7 @@ HandleWeather:
 	ld [wNumHits], a
 	inc a
 	ld [wKickCounter], a
-	jp Call_PlayBattleAnim
+	farjp Call_PlayBattleAnim
 
 .WeatherMessages:
 	dw BattleText_RainContinuesToFall
@@ -259,7 +258,7 @@ HandleWeatherEffects:
 	ld hl, SandstormHitsText
 	call StdBattleTextBox
 	call GetSixteenthMaxHP
-	jp SubtractHPFromUser
+	farjp SubtractHPFromUser
 
 .HandleHail
 	ld a, BATTLE_VARS_SUBSTATUS3
@@ -283,7 +282,7 @@ HandleWeatherEffects:
 	ld hl, HailHitsText
 	call StdBattleTextBox
 	call GetSixteenthMaxHP
-	jp SubtractHPFromUser
+	farjp SubtractHPFromUser
 
 HandleFutureSight:
 	call SetFastestTurn
@@ -359,14 +358,14 @@ HandleLeftovers:
 
 	; damage instead
 	call GetEighthMaxHP
-	call SubtractHPFromUser
+	farcall SubtractHPFromUser
 	ld hl, BattleText_UserHurtByItem
 	jr .print
 .leftovers
-	call CheckFullHP
+	farcall CheckFullHP
 	ret z
 	call GetSixteenthMaxHP
-	call RestoreHP
+	farcall RestoreHP
 	ld hl, BattleText_UserRecoveredWithItem
 .print
 	jp StdBattleTextBox
@@ -401,12 +400,14 @@ HandleLeechSeed:
 	ld a, BATTLE_VARS_SUBSTATUS3_OPP
 	call GetBattleVar
 	and 1 << SUBSTATUS_FLYING | 1 << SUBSTATUS_UNDERGROUND
-	call z, Call_PlayBattleAnim_OnlyIfVisible
+	jr nz, .no_anim
+	farcall Call_PlayBattleAnim_OnlyIfVisible
+.no_anim
 	call SwitchTurn
 
 	call GetEighthMaxHP
 	push bc
-	call SubtractHPFromUser
+	farcall SubtractHPFromUser
 	pop bc
 	call SwitchTurn
 	farcall GetHPAbsorption
@@ -416,11 +417,11 @@ HandleLeechSeed:
 	call GetBattleVar
 	cp LIQUID_OOZE
 	jr z, .hurt
-	call RestoreHP
+	farcall RestoreHP
 	jr .sap_text
 .hurt
 	farcall ShowEnemyAbilityActivation
-	call SubtractHPFromUser
+	farcall SubtractHPFromUser
 .sap_text
 	call SwitchTurn
 	ld hl, LeechSeedSapsText
@@ -465,11 +466,11 @@ DoPoisonBurnDamage:
 	cp POISON_HEAL
 	jr nz, .got_anim
 	; check if we are at full HP
-	call CheckFullHP
+	farcall CheckFullHP
 	ret z
 	ld hl, PoisonHealText
 	call .do_anim
-	jp RestoreHP
+	farjp RestoreHP
 
 .do_anim
 	push de
@@ -477,7 +478,7 @@ DoPoisonBurnDamage:
 	pop de
 	xor a
 	ld [wNumHits], a
-	call Call_PlayBattleAnim_OnlyIfVisible
+	farcall Call_PlayBattleAnim_OnlyIfVisible
 	jp GetEighthMaxHP
 
 .got_anim
@@ -511,7 +512,7 @@ DoPoisonBurnDamage:
 	ld b, h
 	ld c, l
 .did_toxic
-	jp SubtractHPFromUser
+	farjp SubtractHPFromUser
 
 HandleCurse:
 	call SetFastestTurn
@@ -528,9 +529,9 @@ HandleCurse:
 	xor a
 	ld [wNumHits], a
 	ld de, ANIM_UNDER_CURSE
-	call Call_PlayBattleAnim_OnlyIfVisible
+	farcall Call_PlayBattleAnim_OnlyIfVisible
 	call GetQuarterMaxHP
-	call SubtractHPFromUser
+	farcall SubtractHPFromUser
 	ld hl, HurtByCurseText
 	jp StdBattleTextBox
 
@@ -589,7 +590,7 @@ HandleWrap:
 .no_binding_band
 	call GetEighthMaxHP
 .subtract_hp
-	call SubtractHPFromUser
+	farcall SubtractHPFromUser
 	ld hl, BattleText_UsersHurtByStringBuffer1
 
 .print_text
@@ -597,6 +598,47 @@ HandleWrap:
 	ld a, [de]
 	ld [wNamedObjectIndexBuffer], a
 	call GetMoveName
+	jp StdBattleTextBox
+
+HandleEncore:
+	call SetFastestTurn
+	call .do_it
+	call SwitchTurn
+
+.do_it
+	ld a, BATTLE_VARS_SUBSTATUS2
+	call GetBattleVarAddr
+	bit SUBSTATUS_ENCORED, [hl]
+	ret z
+
+	ld a, [hBattleTurn]
+	and a
+	ld hl, wPlayerEncoreCount
+	jr z, .got_encore_count
+	ld hl, wEnemyEncoreCount
+.got_encore_count
+	dec [hl]
+	jr z, .end_encore
+
+	ld a, [hBattleTurn]
+	and a
+	ld hl, wBattleMonPP
+	jr z, .got_pp
+	ld hl, wEnemyMonPP
+.got_pp
+	ld a, [wCurMoveNum]
+	ld c, a
+	ld b, 0
+	add hl, bc
+	ld a, [hl]
+	and $3f
+	ret nz
+
+.end_encore
+	ld a, BATTLE_VARS_SUBSTATUS2
+	call GetBattleVarAddr
+	res SUBSTATUS_ENCORED, [hl]
+	ld hl, BattleText_UserEncoreEnded
 	jp StdBattleTextBox
 
 HandlePerishSong:
@@ -670,13 +712,13 @@ HandleLeppaBerry:
 	ld a, b
 	cp HELD_RESTORE_PP
 	ret nz
-	call PreparePPRestore
-	call GetZeroPPMove
+	farcall PreparePPRestore
+	farcall GetZeroPPMove
 	ret z
 	push bc
-	call ConsumeUserItem
+	farcall ConsumeUserItem
 	pop bc
-	jp LeppaRestorePP
+	farjp LeppaRestorePP
 
 HandleScreens:
 	call CheckSpeed
@@ -778,7 +820,7 @@ HandleSafeguard:
 	ld hl, BattleText_SafeguardFaded
 	jp StdBattleTextBox
 
-HandleHealingItems: ; 3dcf9
+HandleHealingItems:
 	call SetFastestTurn
 	call .do_it
 	call SwitchTurn
@@ -788,10 +830,10 @@ HandleHealingItems: ; 3dcf9
 	; even if the user endturn switched
 	call HasUserFainted
 	ret z
-	call HandleHPHealingItem
-	call UseHeldStatusHealingItem
-	call HandleStatBoostBerry
-	jp UseConfusionHealingItem
+	farcall HandleHPHealingItem
+	farcall UseHeldStatusHealingItem
+	farcall HandleStatBoostBerry
+	farjp UseConfusionHealingItem
 
 HandleStatusOrbs:
 	call SetFastestTurn
