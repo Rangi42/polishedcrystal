@@ -309,20 +309,35 @@ ForceMapMusic: ; 15587
 DecompressMetatiles:
 	ld hl, wTilesetBlocksBank
 	ld c, BANK(wDecompressedMetatiles)
-	call .Decompress
+	ld de, wDecompressedMetatiles
+	call .DecompressD000
 
 	ld hl, wTilesetAttributesBank
 	ld c, BANK(wDecompressedAttributes)
+	ld de, wDecompressedAttributes
+	call .DecompressD000
 
-.Decompress:
+	ld hl, wTilesetCollisionBank
+	ld de, wDecompressedCollisions
 	ld a, [hli]
 	ld b, a
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	ld de, wDecompressedMetatiles
+	ld a, BANK(wDecompressedCollisions)
+	call StackCallInWRAMBankA
+
+.FunctionDC00
+	jp FarDecompressAtB_DC00
+
+.DecompressD000:
+	ld a, [hli]
+	ld b, a
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
 	ld a, c
 	call StackCallInWRAMBankA
 
-.Function
+.FunctionD000
 	jp FarDecompressAtB_D000

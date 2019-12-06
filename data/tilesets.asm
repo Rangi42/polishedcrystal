@@ -1,10 +1,6 @@
 INCLUDE "constants.asm"
 
 
-tilecoll: MACRO
-	db COLL_\1, COLL_\2, COLL_\3, COLL_\4
-ENDM
-
 SECTION "Tileset Data - johto_traditional", ROMX
 
 TilesetJohto1GFX::
@@ -19,7 +15,7 @@ TilesetJohto1Attr::
 INCBIN "data/tilesets/johto_traditional_attributes.bin.lz"
 
 TilesetJohto1Coll::
-INCLUDE "data/tilesets/johto_traditional_collision.asm"
+INCBIN "data/tilesets/johto_traditional_collision.bin.lz"
 
 
 SECTION "Tileset Data - johto_modern", ROMX
@@ -36,7 +32,7 @@ TilesetJohto2Attr::
 INCBIN "data/tilesets/johto_modern_attributes.bin.lz"
 
 TilesetJohto2Coll::
-INCLUDE "data/tilesets/johto_modern_collision.asm"
+INCBIN "data/tilesets/johto_modern_collision.bin.lz"
 
 
 SECTION "Tileset Data - battle_tower_outside", ROMX
@@ -53,7 +49,7 @@ TilesetJohto3Attr::
 INCBIN "data/tilesets/battle_tower_outside_attributes.bin.lz"
 
 TilesetJohto3Coll::
-INCLUDE "data/tilesets/battle_tower_outside_collision.asm"
+INCBIN "data/tilesets/battle_tower_outside_collision.bin.lz"
 
 
 SECTION "Tileset Data - johto_overcast", ROMX
@@ -70,7 +66,7 @@ TilesetJohto4Attr::
 INCBIN "data/tilesets/johto_overcast_attributes.bin.lz"
 
 TilesetJohto4Coll::
-INCLUDE "data/tilesets/johto_overcast_collision.asm"
+INCBIN "data/tilesets/johto_overcast_collision.bin.lz"
 
 
 SECTION "Tileset Data - kanto", ROMX
@@ -87,7 +83,7 @@ TilesetKanto1Attr::
 INCBIN "data/tilesets/kanto_attributes.bin.lz"
 
 TilesetKanto1Coll::
-INCLUDE "data/tilesets/kanto_collision.asm"
+INCBIN "data/tilesets/kanto_collision.bin.lz"
 
 
 SECTION "Tileset Data - indigo_plateau", ROMX
@@ -104,7 +100,7 @@ TilesetKanto2Attr::
 INCBIN "data/tilesets/indigo_plateau_attributes.bin.lz"
 
 TilesetKanto2Coll::
-INCLUDE "data/tilesets/indigo_plateau_collision.asm"
+INCBIN "data/tilesets/indigo_plateau_collision.bin.lz"
 
 
 SECTION "Tileset Data - shamouti_island", ROMX
@@ -121,7 +117,7 @@ TilesetShamoutiAttr::
 INCBIN "data/tilesets/shamouti_island_attributes.bin.lz"
 
 TilesetShamoutiColl::
-INCLUDE "data/tilesets/shamouti_island_collision.asm"
+INCBIN "data/tilesets/shamouti_island_collision.bin.lz"
 
 
 SECTION "Tileset Data - valencia_island", ROMX
@@ -138,7 +134,7 @@ TilesetValenciaAttr::
 INCBIN "data/tilesets/valencia_island_attributes.bin.lz"
 
 TilesetValenciaColl::
-INCLUDE "data/tilesets/valencia_island_collision.asm"
+INCBIN "data/tilesets/valencia_island_collision.bin.lz"
 
 
 SECTION "Tileset Data - faraway_island", ROMX
@@ -155,7 +151,7 @@ TilesetFarawayAttr::
 INCBIN "data/tilesets/faraway_island_attributes.bin.lz"
 
 TilesetFarawayColl::
-INCLUDE "data/tilesets/faraway_island_collision.asm"
+INCBIN "data/tilesets/faraway_island_collision.bin.lz"
 
 
 SECTION "Tileset Data - johto_house", ROMX
@@ -172,7 +168,7 @@ TilesetHouse1Attr::
 INCBIN "data/tilesets/johto_house_attributes.bin.lz"
 
 TilesetHouse1Coll::
-INCLUDE "data/tilesets/johto_house_collision.asm"
+INCBIN "data/tilesets/johto_house_collision.bin.lz"
 
 
 SECTION "Tileset Data - kanto_house", ROMX
@@ -189,7 +185,7 @@ TilesetHouse2Attr::
 INCBIN "data/tilesets/kanto_house_attributes.bin.lz"
 
 TilesetHouse2Coll::
-INCLUDE "data/tilesets/kanto_house_collision.asm"
+INCBIN "data/tilesets/kanto_house_collision.bin.lz"
 
 
 SECTION "Tileset Data - traditional_house", ROMX
@@ -206,7 +202,7 @@ TilesetHouse3Attr::
 INCBIN "data/tilesets/traditional_house_attributes.bin.lz"
 
 TilesetHouse3Coll::
-INCLUDE "data/tilesets/traditional_house_collision.asm"
+INCBIN "data/tilesets/traditional_house_collision.bin.lz"
 
 
 SECTION "Tileset Data - pokecenter", ROMX
@@ -223,7 +219,7 @@ TilesetPokeCenterAttr::
 INCBIN "data/tilesets/pokecenter_attributes.bin.lz"
 
 TilesetPokeCenterColl::
-INCLUDE "data/tilesets/pokecenter_collision.asm"
+INCBIN "data/tilesets/pokecenter_collision.bin.lz"
 
 
 SECTION "Tileset Data - pokecom_center", ROMX
@@ -240,7 +236,7 @@ TilesetPokeComAttr::
 INCBIN "data/tilesets/pokecom_center_attributes.bin.lz"
 
 TilesetPokeComColl::
-INCLUDE "data/tilesets/pokecom_center_collision.asm"
+INCBIN "data/tilesets/pokecom_center_collision.bin.lz"
 
 
 SECTION "Tileset Data - mart", ROMX
@@ -257,7 +253,7 @@ TilesetMartAttr::
 INCBIN "data/tilesets/mart_attributes.bin.lz"
 
 TilesetMartColl::
-INCLUDE "data/tilesets/mart_collision.asm"
+INCBIN "data/tilesets/mart_collision.bin.lz"
 
 
 SECTION "Tileset Data - gate", ROMX
@@ -274,7 +270,7 @@ TilesetGateAttr::
 INCBIN "data/tilesets/gate_attributes.bin.lz"
 
 TilesetGateColl::
-INCLUDE "data/tilesets/gate_collision.asm"
+INCBIN "data/tilesets/gate_collision.bin.lz"
 
 
 SECTION "Tileset Data - gym", ROMX
@@ -291,7 +287,7 @@ TilesetGym1Attr::
 INCBIN "data/tilesets/gym_attributes.bin.lz"
 
 TilesetGym1Coll::
-INCLUDE "data/tilesets/gym_collision.asm"
+INCBIN "data/tilesets/gym_collision.bin.lz"
 
 
 SECTION "Tileset Data - magnet_train", ROMX
@@ -308,7 +304,7 @@ TilesetGym2Attr::
 INCBIN "data/tilesets/magnet_train_attributes.bin.lz"
 
 TilesetGym2Coll::
-INCLUDE "data/tilesets/magnet_train_collision.asm"
+INCBIN "data/tilesets/magnet_train_collision.bin.lz"
 
 
 SECTION "Tileset Data - champions_room", ROMX
@@ -325,7 +321,7 @@ TilesetGym3Attr::
 INCBIN "data/tilesets/champions_room_attributes.bin.lz"
 
 TilesetGym3Coll::
-INCLUDE "data/tilesets/champions_room_collision.asm"
+INCBIN "data/tilesets/champions_room_collision.bin.lz"
 
 
 SECTION "Tileset Data - port", ROMX
@@ -342,7 +338,7 @@ TilesetPortAttr::
 INCBIN "data/tilesets/port_attributes.bin.lz"
 
 TilesetPortColl::
-INCLUDE "data/tilesets/port_collision.asm"
+INCBIN "data/tilesets/port_collision.bin.lz"
 
 
 SECTION "Tileset Data - lab", ROMX
@@ -359,7 +355,7 @@ TilesetLabAttr::
 INCBIN "data/tilesets/lab_attributes.bin.lz"
 
 TilesetLabColl::
-INCLUDE "data/tilesets/lab_collision.asm"
+INCBIN "data/tilesets/lab_collision.bin.lz"
 
 
 SECTION "Tileset Data - facility", ROMX
@@ -376,7 +372,7 @@ TilesetFacilityAttr::
 INCBIN "data/tilesets/facility_attributes.bin.lz"
 
 TilesetFacilityColl::
-INCLUDE "data/tilesets/facility_collision.asm"
+INCBIN "data/tilesets/facility_collision.bin.lz"
 
 
 SECTION "Tileset Data - celadon_mansion", ROMX
@@ -393,7 +389,7 @@ TilesetMansionAttr::
 INCBIN "data/tilesets/celadon_mansion_attributes.bin.lz"
 
 TilesetMansionColl::
-INCLUDE "data/tilesets/celadon_mansion_collision.asm"
+INCBIN "data/tilesets/celadon_mansion_collision.bin.lz"
 
 
 SECTION "Tileset Data - game_corner", ROMX
@@ -410,7 +406,7 @@ TilesetGameCornerAttr::
 INCBIN "data/tilesets/game_corner_attributes.bin.lz"
 
 TilesetGameCornerColl::
-INCLUDE "data/tilesets/game_corner_collision.asm"
+INCBIN "data/tilesets/game_corner_collision.bin.lz"
 
 
 SECTION "Tileset Data - home_decor_store", ROMX
@@ -427,7 +423,7 @@ TilesetDecorAttr::
 INCBIN "data/tilesets/home_decor_store_attributes.bin.lz"
 
 TilesetDecorColl::
-INCLUDE "data/tilesets/home_decor_store_collision.asm"
+INCBIN "data/tilesets/home_decor_store_collision.bin.lz"
 
 
 SECTION "Tileset Data - museum", ROMX
@@ -444,7 +440,7 @@ TilesetMuseumAttr::
 INCBIN "data/tilesets/museum_attributes.bin.lz"
 
 TilesetMuseumColl::
-INCLUDE "data/tilesets/museum_collision.asm"
+INCBIN "data/tilesets/museum_collision.bin.lz"
 
 
 SECTION "Tileset Data - hotel", ROMX
@@ -461,7 +457,7 @@ TilesetHotelAttr::
 INCBIN "data/tilesets/hotel_attributes.bin.lz"
 
 TilesetHotelColl::
-INCLUDE "data/tilesets/hotel_collision.asm"
+INCBIN "data/tilesets/hotel_collision.bin.lz"
 
 
 SECTION "Tileset Data - sprout_tower", ROMX
@@ -478,7 +474,7 @@ TilesetTowerAttr::
 INCBIN "data/tilesets/sprout_tower_attributes.bin.lz"
 
 TilesetTowerColl::
-INCLUDE "data/tilesets/sprout_tower_collision.asm"
+INCBIN "data/tilesets/sprout_tower_collision.bin.lz"
 
 
 SECTION "Tileset Data - battle_tower_inside", ROMX
@@ -495,7 +491,7 @@ TilesetBattleTowerAttr::
 INCBIN "data/tilesets/battle_tower_inside_attributes.bin.lz"
 
 TilesetBattleTowerColl::
-INCLUDE "data/tilesets/battle_tower_inside_collision.asm"
+INCBIN "data/tilesets/battle_tower_inside_collision.bin.lz"
 
 
 SECTION "Tileset Data - radio_tower", ROMX
@@ -512,7 +508,7 @@ TilesetRadioTowerAttr::
 INCBIN "data/tilesets/radio_tower_attributes.bin.lz"
 
 TilesetRadioTowerColl::
-INCLUDE "data/tilesets/radio_tower_collision.asm"
+INCBIN "data/tilesets/radio_tower_collision.bin.lz"
 
 
 SECTION "Tileset Data - lighthouse", ROMX
@@ -529,7 +525,7 @@ TilesetLighthouseAttr::
 INCBIN "data/tilesets/lighthouse_attributes.bin.lz"
 
 TilesetLighthouseColl::
-INCLUDE "data/tilesets/lighthouse_collision.asm"
+INCBIN "data/tilesets/lighthouse_collision.bin.lz"
 
 
 SECTION "Tileset Data - underground", ROMX
@@ -546,7 +542,7 @@ TilesetWarehouseAttr::
 INCBIN "data/tilesets/underground_attributes.bin.lz"
 
 TilesetWarehouseColl::
-INCLUDE "data/tilesets/underground_collision.asm"
+INCBIN "data/tilesets/underground_collision.bin.lz"
 
 
 SECTION "Tileset Data - cave", ROMX
@@ -571,7 +567,7 @@ INCBIN "data/tilesets/cave_attributes.bin.lz"
 
 TilesetCaveColl::
 TilesetQuietCaveColl::
-INCLUDE "data/tilesets/cave_collision.asm"
+INCBIN "data/tilesets/cave_collision.bin.lz"
 
 
 SECTION "Tileset Data - ice_path", ROMX
@@ -588,7 +584,7 @@ TilesetIcePathAttr::
 INCBIN "data/tilesets/ice_path_attributes.bin.lz"
 
 TilesetIcePathColl::
-INCLUDE "data/tilesets/ice_path_collision.asm"
+INCBIN "data/tilesets/ice_path_collision.bin.lz"
 
 
 SECTION "Tileset Data - tunnel", ROMX
@@ -605,7 +601,7 @@ TilesetTunnelAttr::
 INCBIN "data/tilesets/tunnel_attributes.bin.lz"
 
 TilesetTunnelColl::
-INCLUDE "data/tilesets/tunnel_collision.asm"
+INCBIN "data/tilesets/tunnel_collision.bin.lz"
 
 
 SECTION "Tileset Data - forest", ROMX
@@ -622,7 +618,7 @@ TilesetForestAttr::
 INCBIN "data/tilesets/forest_attributes.bin.lz"
 
 TilesetForestColl::
-INCLUDE "data/tilesets/forest_collision.asm"
+INCBIN "data/tilesets/forest_collision.bin.lz"
 
 
 SECTION "Tileset Data - park", ROMX
@@ -639,7 +635,7 @@ TilesetParkAttr::
 INCBIN "data/tilesets/park_attributes.bin.lz"
 
 TilesetParkColl::
-INCLUDE "data/tilesets/park_collision.asm"
+INCBIN "data/tilesets/park_collision.bin.lz"
 
 
 SECTION "Tileset Data - safari_zone", ROMX
@@ -656,7 +652,7 @@ TilesetSafariAttr::
 INCBIN "data/tilesets/safari_zone_attributes.bin.lz"
 
 TilesetSafariColl::
-INCLUDE "data/tilesets/safari_zone_collision.asm"
+INCBIN "data/tilesets/safari_zone_collision.bin.lz"
 
 
 SECTION "Tileset Data - ruins_of_alph", ROMX
@@ -675,7 +671,7 @@ TilesetRuinsAttr::
 INCBIN "data/tilesets/ruins_of_alph_attributes.bin.lz"
 
 TilesetRuinsColl::
-INCLUDE "data/tilesets/ruins_of_alph_collision.asm"
+INCBIN "data/tilesets/ruins_of_alph_collision.bin.lz"
 
 
 SECTION "Tileset Data - alph_word_room", ROMX
@@ -687,7 +683,7 @@ TilesetAlphAttr::
 INCBIN "data/tilesets/alph_word_room_attributes.bin.lz"
 
 TilesetAlphColl::
-INCLUDE "data/tilesets/alph_word_room_collision.asm"
+INCBIN "data/tilesets/alph_word_room_collision.bin.lz"
 
 
 SECTION "Tileset Data - pokemon_mansion", ROMX
@@ -704,7 +700,7 @@ TilesetPokemonMansionAttr::
 INCBIN "data/tilesets/pokemon_mansion_attributes.bin.lz"
 
 TilesetPokemonMansionColl::
-INCLUDE "data/tilesets/pokemon_mansion_collision.asm"
+INCBIN "data/tilesets/pokemon_mansion_collision.bin.lz"
 
 
 SECTION "Tileset Headers", ROMX

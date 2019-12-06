@@ -1617,11 +1617,9 @@ GetCoordTile:: ; 2a3c
 	ld h, $0
 	add hl, hl
 	add hl, hl
-	ld a, [wTilesetCollisionAddress]
-	ld c, a
-	ld a, [wTilesetCollisionAddress + 1]
-	ld b, a
-	add hl, bc
+	ld a, h
+	add HIGH(wDecompressedCollisions)
+	ld h, a
 	rr d
 	jr nc, .nocarry
 	inc hl
@@ -1633,8 +1631,8 @@ GetCoordTile:: ; 2a3c
 	inc hl
 
 .nocarry2
-	ld a, [wTilesetCollisionBank]
-	jp GetFarByte
+	ld a, BANK(wDecompressedCollisions)
+	jp GetFarWRAMByte
 ; 2a66
 
 GetBlockLocation:: ; 2a66

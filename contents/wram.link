@@ -47,10 +47,12 @@ WRAMX $5
 	"GBC Video"
 	org $d300
 	"Battle Animations RAM"
+	org $dc00
+	"Collisions"
 
 WRAMX $6
 	org $d000
-	"WRAM 6"
+	"Scratch RAM"
 
 WRAMX $7
 	org $d000

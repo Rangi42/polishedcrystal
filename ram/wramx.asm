@@ -1468,7 +1468,12 @@ wBattleAnimEnd::
 wSurfWaveBGEffectEnd::
 
 
-SECTION "WRAM 6", WRAMX
+SECTION "Collisions", WRAMX
+
+wDecompressedCollisions:: ds 256 * 4
+
+
+SECTION "Scratch RAM", WRAMX
 
 UNION
 wDecompressScratch:: ds $80 tiles
@@ -1476,6 +1481,7 @@ NEXTU
 wScratchTileMap:: ds BG_MAP_WIDTH * BG_MAP_HEIGHT
 wScratchAttrMap:: ds BG_MAP_WIDTH * BG_MAP_HEIGHT
 ENDU
+
 
 SECTION "Window Stack", WRAMX
 

@@ -406,7 +406,7 @@ GetPaintingPic:
 	jr _Decompress7x7Pic
 
 DecompressPredef: ; 5125d
-; Decompress lz data from b:hl to scratch space at 6:d000, then copy it to address de.
+; Decompress lz data from b:hl to wDecompressScratch, then copy it to hROMBank:de.
 
 	ld a, [rSVBK]
 	push af

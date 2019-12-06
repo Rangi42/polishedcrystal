@@ -139,6 +139,17 @@ $(sorted_sym): crystal ; tail -n +3 $(NAME)-$(VERSION).sym | sort -o $@
 
 gfx/pokemon/%/bitmask.asm gfx/pokemon/%/frames.asm: gfx/pokemon/%/front.2bpp
 
+data/tilesets/%_collision.bin: data/tilesets/%_collision.asm
+	@ TEMP_ASM=`mktemp -p /tmp collision.asm.XXX` ; \
+	TEMP_O=`mktemp -p /tmp collision.o.XXX` ; \
+	echo 'INCLUDE "constants/collision_constants.asm"' > "$$TEMP_ASM" ; \
+	echo 'INCLUDE "macros/collision.asm"' >> "$$TEMP_ASM" ; \
+	echo 'SECTION "C", ROM0[$$0]' >> "$$TEMP_ASM" ; \
+	echo 'INCLUDE "$<"' >> "$$TEMP_ASM" ; \
+	$(RGBDS_DIR)rgbasm -o "$$TEMP_O" "$$TEMP_ASM" ; \
+	tail -c +32 "$$TEMP_O" | head -c -4 > $@ ; \
+#	$(RM) "$$TEMP_ASM" "$$TEMP_O"
+
 %.lz: % ; $(LZ) $< $@
 
 %.pal: ; $(error ERROR: Cannot find '$@')
