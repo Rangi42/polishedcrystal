@@ -225,7 +225,6 @@ Some of these may never be added; they're just suggestions.
    * PGo Overworld/Walking (for Safari Game)
    * PGo Battle! Legendary Raid (for Mew)
    * S/M Malie City (Day) (for Shamouti Shrine)
-   * R/S/E Bicycle (for bicycling in Orange Islands)
 * More Orange Islands
 * Add [Sweet Honey](http://iimarck.us/i/sweet-honey/) that acts like Sweet Scent and attracts rare Pokémon
 * First Pokémon walks behind you ([comet's prototype](https://hax.iimarck.us/topic/6248/) and [diff](https://github.com/yenatch/pokecrystal/commit/dbc5cd2025a0214c5b2cd1e3330f50603a0bb9d1))

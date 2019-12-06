@@ -190,15 +190,16 @@ INCLUDE "audio/music/rby/surfingpikachu.asm"
 SECTION "RSE Music 1", ROMX
 
 INCLUDE "audio/music/rse/surfing.asm"
+INCLUDE "audio/music/rse/bicycle.asm"
 INCLUDE "audio/music/rse/abandonedship.asm"
 INCLUDE "audio/music/rse/championbattle.asm"
 INCLUDE "audio/music/rse/evergrandecity.asm"
 INCLUDE "audio/music/rse/dewfordtown.asm"
-INCLUDE "audio/music/rse/frontierbrainbattle.asm"
 
 
 SECTION "RSE Music 2", ROMX
 
+INCLUDE "audio/music/rse/frontierbrainbattle.asm"
 INCLUDE "audio/music/rse/gymleaderbattle.asm"
 INCLUDE "audio/music/rse/meteorfalls.asm"
 INCLUDE "audio/music/rse/mountchimney.asm"

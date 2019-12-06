@@ -137,6 +137,7 @@ Music:
 	dba Music_ZinniaEncounterORAS
 	dba Music_Route205DPPt
 	dba Music_SurfRSE
+	dba Music_BicycleRSE
 	dba Music_WildBattleSM
 	dba Music_SunyshoreCityDPPt
 	dba Music_TrainerBattleSM
