@@ -12,13 +12,13 @@ jobs:
       run: |
         sudo apt-get install make python gcc git bison
         git clone https://github.com/rednex/rgbds.git
-        cd rgbds
+        pushd rgbds
         sudo make install
-        cd ..
+        popd
     - name: Build Rangi42/polishedcrystal
       run: |
         git clone https://github.com/Rangi42/polishedcrystal.git
-        cd polishedcrystal
+        pushd polishedcrystal
         mkdir build
         make -j4
         mv polishedcrystal-3.0.0-beta.gbc build/polishedcrystal-3.0.0-beta.gbc
@@ -32,6 +32,7 @@ jobs:
         make -j4 faithful debug
         mv polishedcrystal-3.0.0-beta.gbc build/polishedcrystal-3.0.0-faithful-debug-beta.gbc
         make clean
+        popd
     - name: Delete old release
       id: delete_release
       uses: jagger27/delete-release@master
@@ -39,7 +40,15 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         tag_name: v3.0.0-beta-nightly
-    - name: Create release
+    - name: Advance nightly tag to master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        pushd polishedcrystal
+        git tag v3.0.0-beta-nightly -f
+        git push --tags -f "https://Rangi42:$GITHUB_TOKEN@github.com/Rangi42/polishedcrystal.git"
+        popd
+    - name: Create new release
       id: create_release
       uses: actions/create-release@v1.0.0
       env:
