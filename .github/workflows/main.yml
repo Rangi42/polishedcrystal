@@ -1,6 +1,9 @@
 name: Nightly build
 
-on: [push]
+on:
+  push:
+    branches-ignore:
+      - 'polishedcrystal'
 
 jobs:
   build:
