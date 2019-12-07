@@ -675,7 +675,6 @@ BattlePack: ; 10493
 	bit 7, a
 	jr nz, .end
 	call .RunJumptable
-	call DelayFrame
 	jr .loop
 
 .end

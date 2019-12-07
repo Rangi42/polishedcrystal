@@ -572,7 +572,7 @@ wEnemyMinimized:: ds 1
 
 wAlreadyFailed:: ds 1
 
-	ds 1 ; unused
+wTrickRoom:: ds 1
 
 wBattleLowHealthAlarm:: ds 1
 

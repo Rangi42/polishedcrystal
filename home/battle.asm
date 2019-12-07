@@ -843,6 +843,15 @@ CheckSpeedWithQuickClaw::
 	ret
 
 CheckSpeed::
+	ld a, [wTrickRoom]
+	and a
+	jr z, _CheckSpeed
+	call _CheckSpeed
+	ret c ; was random anyway, and we don't want to unset carry
+	xor 1
+	ret
+
+_CheckSpeed::
 ; Compares speed stat, applying items (usually, see above) and
 ; stat changes. and see who ends up on top. Returns z if the player
 ; outspeeds, otherwise nz, randomly on tie (which also sets carry)

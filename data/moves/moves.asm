@@ -162,7 +162,7 @@ else
 	move METRONOME,    EFFECT_METRONOME,           0, UNKNOWN_T, 100, 10,   0, STATUS
 endc
 	move SCALD,        EFFECT_BURN_HIT,           80, WATER,     100, 15,  30, SPECIAL
-	move TRICK_ROOM,   EFFECT_NORMAL_HIT,          0, PSYCHIC,   100,  5,   0, STATUS
+	move TRICK_ROOM,   EFFECT_TRICK_ROOM,          0, PSYCHIC,   100,  5,   0, STATUS
 	move SKILL_SWAP,   EFFECT_SKILL_SWAP,          0, PSYCHIC,   100, 10,   0, STATUS
 	move LICK,         EFFECT_PARALYZE_HIT,       30, GHOST,     100, 30,  30, PHYSICAL
 	move GUNK_SHOT,    EFFECT_POISON_HIT,        120, POISON,     80,  5,  30, PHYSICAL

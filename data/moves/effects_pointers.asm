@@ -151,3 +151,4 @@ MoveEffectsPointers:
 	dw BodySlam
 	dw LowKick
 	dw BrickBreak
+	dw TrickRoom
