@@ -7607,6 +7607,8 @@ BattleCommand_skillswap:
 	call CheckHiddenOpponent
 	jr nz, .failed
 
+	call AnimateCurrentMove
+
 	ld a, [wPlayerAbility]
 	ld b, a
 	ld a, [wEnemyAbility]
@@ -7644,6 +7646,9 @@ BattleCommand_trick:
 	jr z, .failed
 	call OpponentCanLoseItem
 	jr z, .failed
+
+	call AnimateCurrentMove
+
 	call GetUserItem
 	push hl
 	call GetOpponentItem

@@ -48,7 +48,8 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * Acrozz for many HGSS Pokémon palettes, and sprites and animations of Magikarp forms.
 * Freeline for animations of Honchkrow and Munchlax, and the Rocket Executives' and stat trainers' overworld sprites.
 * Megaman-Omega for some of Prism's overworld sprites.
-* SoupPotato for some move animations and Ace Duo's sprite.
+* SoupPotato (aka SourApple) for some move animations and Ace Duo's sprite.
+* slempa for some move animations.
 * spritershawn for sprites of Red, Blue, and Green.
 * isamuakai01 for sprites of Steven and Cynthia.
 * Luna for some sprites and tiles.
