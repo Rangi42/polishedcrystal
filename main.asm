@@ -4157,14 +4157,19 @@ SECTION "Typefaces", ROMX
 INCLUDE "gfx/font.asm"
 
 
+SECTION "Battle Core", ROMX
+
+INCLUDE "engine/battle/core.asm"
+
+
 SECTION "Battle Endturn", ROMX
 
 INCLUDE "engine/battle/endturn.asm"
 
 
-SECTION "Battle Core", ROMX
+SECTION "Unique Wild Moves", ROMX
 
-INCLUDE "engine/battle/core.asm"
+INCLUDE "engine/battle/unique_wild_moves.asm"
 
 
 SECTION "Effect Commands", ROMX

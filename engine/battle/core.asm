@@ -6208,7 +6208,7 @@ endr
 	; Fill moves based on level
 	predef FillMoves
 
-	call CheckUniqueWildMove
+	farcall CheckUniqueWildMove
 
 	; Fill wild PP
 	ld hl, wEnemyMonMoves
@@ -8935,53 +8935,3 @@ BoostGiovannisArmoredMewtwo:
 	ld de, ANIM_SHARPEN
 	call Call_PlayBattleAnim
 	farjp BattleCommand_allstatsup
-
-CheckUniqueWildMove:
-	ld a, [wMapGroup]
-	ld b, a
-	ld a, [wMapNumber]
-	ld c, a
-	call GetWorldMapLocation
-	ld c, a
-	ld hl, UniqueWildMoves
-.loop
-	ld a, [hli] ; landmark
-	cp -1
-	ret z
-	cp c
-	jr nz, .inc2andloop
-	ld a, [hli] ; species
-	ld b, a
-	ld a, [wCurPartySpecies]
-	cp b
-	jr nz, .inc1andloop
-	ld a, [hli] ; move
-	ld b, a
-	cp FLY
-	jr nz, .ChanceToTeach
-	ld a, [wPlayerState]
-	cp PLAYER_SURF
-	jr z, .SurfingPikachu
-	cp PLAYER_SURF_PIKA
-	jr nz, .ChanceToTeach
-.SurfingPikachu
-	ld a, SURF
-	ld b, a
-	jr .TeachMove
-.ChanceToTeach
-	call Random
-	cp 50 percent + 1
-	ret nc
-.TeachMove
-	ld hl, wEnemyMonMoves + 1 ; second move
-	ld a, b
-	ld [hl], a
-	ret
-
-.inc2andloop
-	inc hl
-.inc1andloop
-	inc hl
-	jr .loop
-
-INCLUDE "data/pokemon/unique_wild_moves.asm"
