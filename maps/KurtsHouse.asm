@@ -526,10 +526,10 @@ KurtsHouseKurtGetStartedText:
 
 UnknownText_0x18e779:
 	text "Kurt: It'll take a"
-	line "while to make you"
+	line "moment to make you"
 
-	para "a Ball. Come back"
-	line "for it later."
+	para "a Ball. Give me"
+	line "just a second."
 	done
 
 UnknownText_0x18e7bc:
