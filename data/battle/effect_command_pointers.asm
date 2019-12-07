@@ -187,6 +187,7 @@ BattleCommandPointers:
 	command checkpowder             ; ad
 	command lowkick                 ; ae
 	command brickbreak              ; ae
+	command trickroom               ; af
 
 	enum_start -1, -1
 	commandonly endmove

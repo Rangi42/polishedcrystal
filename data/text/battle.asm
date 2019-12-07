@@ -1163,6 +1163,20 @@ TransformedText: ; 0x81499
 	prompt
 ; 0x814b4
 
+TrickRoomText:
+	text "<USER>"
+	line "twisted the"
+	cont "dimensions!"
+	prompt
+
+TrickRoomEndedText:
+	text "The twisted"
+	line "dimensions"
+
+	para "returned to"
+	line "normal!"
+	prompt
+
 LightScreenEffectText: ; 0x814b4
 	text "<USER>'s"
 	line "Spcl.Def rose!"

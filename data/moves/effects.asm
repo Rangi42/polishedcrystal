@@ -1,6 +1,5 @@
 MoveEffects:
 
-TrickRoom: ; TODO
 NormalHit:
 AerialAce:
 Aeroblast:
@@ -1307,6 +1306,13 @@ LightScreen:
 	usedmovetext
 	doturn
 	screen
+	endmove
+
+TrickRoom:
+	checkobedience
+	usedmovetext
+	doturn
+	trickroom
 	endmove
 
 Heal:

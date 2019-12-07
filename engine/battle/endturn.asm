@@ -97,6 +97,7 @@ HandleBetweenTurnEffects:
 	call CheckFaint
 	ret c
 	; Things below are yet to be updated to be handled in correct order
+	call HandleTrickRoom
 	call HandleLeppaBerry
 	call HandleScreens
 	call HandleSafeguard
@@ -699,6 +700,16 @@ HandlePerishSong:
 	ld [hli], a
 	ld [hl], a
 	ret
+
+HandleTrickRoom:
+	ld hl, wTrickRoom
+	ld a, [hl]
+	and a
+	ret z
+	dec [hl]
+	ret nz
+	ld hl, TrickRoomEndedText
+	jp StdBattleTextBox
 
 HandleLeppaBerry:
 	call SetFastestTurn

@@ -8047,6 +8047,19 @@ ResetActorDisable: ; 372e7
 
 ; 372fc
 
+BattleCommand_trickroom:
+	ld hl, wTrickRoom
+	ld a, [hl]
+	and a
+	jr nz, .failed
+	ld [hl], 5
+	call AnimateCurrentMove
+	ld hl, TrickRoomText
+	jp StdBattleTextBox
+
+.failed
+	call AnimateFailedMove
+	jp PrintButItFailed
 
 BattleCommand_screen: ; 372fc
 ; screen
