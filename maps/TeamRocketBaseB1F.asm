@@ -22,7 +22,7 @@ TeamRocketBaseB1F_MapScriptHeader:
 	coord_event 22, 16, 0, SecurityCamera4
 	coord_event  8, 16, 0, SecurityCamera5
 	; There are spots on the floor that trigger a Pokémon battle.
-	; Each Pokémon (Voltorb, Koffing, Geodude) knows Selfdestruct.
+	; Each Pokémon (Voltorb, Koffing, Geodude) knows Explosion as a unique wild move.
 	coord_event  2,  7, 0, ExplodingTrap1
 	coord_event  3,  7, 0, ExplodingTrap2
 	coord_event  4,  7, 0, ExplodingTrap3

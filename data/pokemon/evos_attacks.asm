@@ -1374,9 +1374,9 @@ GeodudeEvosAttacks:
 	db 16, ROCK_THROW
 	db 18, ANCIENTPOWER ; Smack Down → HGSS tutor move
 	db 22, BULLDOZE
-	db 24, SELFDESTRUCT
+	db 24, ROCK_BLAST ; Self-Destruct → Rock Blast
 	db 28, SANDSTORM ; Stealth Rock → TM move
-	db 30, ROCK_BLAST
+	db 30, ROCK_SLIDE ; Rock Blast → TM move
 	db 34, EARTHQUAKE
 	db 36, EXPLOSION
 	db 40, DOUBLE_EDGE
@@ -1395,9 +1395,9 @@ GravelerEvosAttacks:
 	db 16, ROCK_THROW
 	db 18, ANCIENTPOWER ; Smack Down → HGSS tutor move
 	db 22, BULLDOZE
-	db 24, SELFDESTRUCT
+	db 24, ROCK_BLAST ; Self-Destruct → Rock Blast
 	db 30, SANDSTORM ; Stealth Rock → TM move
-	db 34, ROCK_BLAST
+	db 34, ROCK_SLIDE ; Rock Blast → TM move
 	db 40, EARTHQUAKE
 	db 44, EXPLOSION
 	db 50, DOUBLE_EDGE
@@ -1415,9 +1415,9 @@ GolemEvosAttacks:
 	db 16, ROCK_THROW
 	db 18, ANCIENTPOWER ; Smack Down → HGSS tutor move
 	db 22, BULLDOZE
-	db 24, SELFDESTRUCT
+	db 24, ROCK_BLAST ; Self-Destruct → Rock Blast
 	db 30, SANDSTORM ; Stealth Rock → TM move
-	db 34, ROCK_BLAST
+	db 34, ROCK_SLIDE ; Rock Blast → TM move
 	db 40, EARTHQUAKE
 	db 44, EXPLOSION
 	db 50, DOUBLE_EDGE
@@ -1518,10 +1518,10 @@ MagnemiteEvosAttacks:
 	db 17, SONIC_BOOM
 	db 19, SPARK
 	db 23, SWIFT ; Mirror Shot → TM move
-	db 25, SELFDESTRUCT ; Metal Sound → TCG move
+	db 25, SCREECH ; Metal Sound → Screech
 	db 29, THUNDERBOLT ; Electro Ball → TM move
 	db 31, FLASH_CANNON
-	db 35, SCREECH
+	db 35, EXPLOSION ; Screech → TM move
 	db 37, HIDDEN_POWER ; Discharge → TM move
 	db 41, AGILITY ; Lock-On → event move
 	db 43, GYRO_BALL ; Magnet Rise → Gyro Ball
@@ -1542,10 +1542,10 @@ MagnetonEvosAttacks:
 	db 17, SONIC_BOOM
 	db 19, SPARK
 	db 23, SWIFT ; Mirror Shot → TM move
-	db 25, SELFDESTRUCT ; Metal Sound → TCG move
+	db 25, SCREECH ; Metal Sound → Screech
 	db 29, THUNDERBOLT ; Electro Ball → TM move
 	db 33, FLASH_CANNON
-	db 39, SCREECH
+	db 39, EXPLOSION ; Screech → TM move
 	db 43, HIDDEN_POWER ; Discharge → TM move
 	db 49, AGILITY ; Lock-On → event move
 	db 53, GYRO_BALL ; Magnet Rise → Gyro Ball
@@ -1730,7 +1730,7 @@ ShellderEvosAttacks:
 	db 20, LEER
 	db 25, ICE_SHARD
 	db 28, BUBBLE_BEAM ; Clamp → egg move
-	db 32, SELFDESTRUCT ; Razor Shell → RBY TM move
+	db 32, PIN_MISSILE ; Razor Shell → Cloyster move
 	db 37, AURORA_BEAM
 	db 40, WHIRLPOOL
 	db 44, EXPLOSION ; Brine → RBY TM move
@@ -1751,6 +1751,7 @@ CloysterEvosAttacks:
 	db 1, AURORA_BEAM
 	db 1, SPIKES ; evolution move
 	db 28, ICICLE_SPEAR ; Spikes → Icicle Spear
+	db 32, PIN_MISSILE ; Sw/Sh TM move
 	db 50, ICICLE_CRASH
 	db 0 ; no more level-up moves
 
@@ -1933,11 +1934,11 @@ VoltorbEvosAttacks:
 	db 16, THUNDER_WAVE ; Charge Beam → TM move
 	db 20, SWIFT
 	db 22, THUNDERBOLT ; Electro Ball → TM move
-	db 26, SELFDESTRUCT
+	db 26, REFLECT ; Self-Destruct → TM move
 	db 29, LIGHT_SCREEN
-	db 34, REFLECT ; Magnet Rise → TM move
+	db 34, EXPLOSION ; Magnet Rise → Explosion
 	db 37, THUNDER ; Discharge → TM move
-	db 41, EXPLOSION
+	db 41, HYPER_BEAM ; Explosion → TM move
 	db 46, GYRO_BALL
 	db 48, MIRROR_COAT
 	db 0 ; no more level-up moves
@@ -1954,11 +1955,11 @@ ElectrodeEvosAttacks:
 	db 16, THUNDER_WAVE ; Charge Beam → TM move
 	db 20, SWIFT
 	db 22, THUNDERBOLT ; Electro Ball → TM move
-	db 26, SELFDESTRUCT
+	db 26, REFLECT ; Self-Destruct → TM move
 	db 29, LIGHT_SCREEN
-	db 36, REFLECT ; Magnet Rise → TM move
+	db 36, EXPLOSION ; Magnet Rise → Explosion
 	db 41, THUNDER ; Discharge → TM move
-	db 47, EXPLOSION
+	db 47, HYPER_BEAM ; Explosion → TM move
 	db 54, GYRO_BALL
 	db 58, MIRROR_COAT
 	db 0 ; no more level-up moves
@@ -1971,7 +1972,7 @@ ExeggcuteEvosAttacks:
 	db 7, REFLECT
 	db 11, LEECH_SEED
 	db 14, CONFUSION
-	db 17, SELFDESTRUCT ; Bullet Seed → RBY TM move
+	db 17, RAGE ; Bullet Seed → RBY TM move
 	db 19, STUN_SPORE
 	db 21, POISONPOWDER
 	db 23, SLEEP_POWDER
@@ -2091,7 +2092,7 @@ KoffingEvosAttacks:
 	db 12, ENDURE ; Assurance → TM move
 	db 15, WILL_O_WISP ; Clear Smog → TM move
 	db 18, VENOSHOCK ; Sludge → tutor move
-	db 23, SELFDESTRUCT
+	db 23, RAGE ; Self-Destruct → RMY TM move
 	db 26, HAZE
 	db 29, GYRO_BALL
 	db 34, SLUDGE_BOMB
@@ -2109,7 +2110,7 @@ WeezingEvosAttacks:
 	db 12, ENDURE ; Assurance → TM move
 	db 15, WILL_O_WISP ; Clear Smog → TM move
 	db 18, VENOSHOCK ; Sludge → tutor move
-	db 23, SELFDESTRUCT
+	db 23, RAGE ; Self-Destruct → RMY TM move
 	db 26, HAZE
 	db 29, GYRO_BALL
 	db 34, SLUDGE_BOMB
@@ -3409,10 +3410,10 @@ MagnezoneEvosAttacks:
 	db 17, SONIC_BOOM
 	db 19, SPARK
 	db 23, SWIFT ; Mirror Shot → TM move
-	db 25, SELFDESTRUCT ; Metal Sound → TCG move
+	db 25, SCREECH ; Metal Sound → Screech
 	db 29, THUNDERBOLT ; Electro Ball → TM move
 	db 33, FLASH_CANNON
-	db 39, SCREECH
+	db 39, EXPLOSION ; Screech → TM move
 	db 43, HIDDEN_POWER ; Discharge → TM move
 	db 49, AGILITY ; Lock-On → event move
 	db 53, GYRO_BALL ; Magnet Rise → Gyro Ball
@@ -3965,7 +3966,7 @@ PinecoEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, TACKLE
 	db 1, PROTECT
-	db 6, SELFDESTRUCT
+	db 6, FOCUS_ENERGY ; Self-Destruct → TCG move
 	db 9, BUG_BITE
 	db 12, SUBSTITUTE ; Take Down → event move
 	db 17, RAPID_SPIN
@@ -3986,7 +3987,7 @@ ForretressEvosAttacks:
 	db 1, TOXIC_SPIKES
 	db 1, TACKLE
 	db 1, PROTECT
-	db 6, SELFDESTRUCT
+	db 6, FOCUS_ENERGY ; Self-Destruct → TCG move
 	db 9, BUG_BITE
 	db 12, SUBSTITUTE ; Take Down → event move
 	db 17, RAPID_SPIN
@@ -4390,11 +4391,11 @@ CorsolaEvosAttacks:
 	db 17, ANCIENTPOWER
 	db 20, ICICLE_SPEAR ; Spike Cannon → new move
 	db 23, CONFUSE_RAY ; Lucky Chant → egg move
-	db 27, SELFDESTRUCT ; Brine → new move
+	db 27, ENDURE ; Brine → Endure
 	db 29, BARRIER ; Iron Defense → similar move
 	db 31, ROCK_BLAST
-	db 35, ENDURE
-	db 38, RECOVER ; Aqua Ring → similar move
+	db 35, RECOVER ; Endure → new move
+	db 38, HYDRO_PUMP ; Aqua Ring → Sw/Sh move
 	db 41, POWER_GEM
 	db 45, MIRROR_COAT
 	db 47, EARTH_POWER
@@ -4969,6 +4970,7 @@ SylveonEvosAttacks:
 
 PorygonZEvosAttacks:
 	db 0 ; no more evolutions
+	db 1, TRICK_ROOM
 	db 1, TACKLE
 	db 1, CONVERSION
 	db 1, NASTY_PLOT ; evolution move

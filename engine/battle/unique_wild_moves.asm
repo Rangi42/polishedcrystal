@@ -19,6 +19,8 @@ CheckUniqueWildMove:
 	jr nz, .inc1andloop
 	ld a, [hli] ; move
 	ld b, a
+	cp EXPLOSION
+	jr z, .TeachMove ; assume this is in TeamRocketBaseB1F
 	cp FLY
 	jr nz, .ChanceToTeach
 	ld a, [wPlayerState]

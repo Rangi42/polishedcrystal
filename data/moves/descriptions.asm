@@ -118,7 +118,7 @@ MoveDescriptions::
 	dw FlashCannonDescription
 	dw MetronomeDescription
 	dw ScaldDescription
-	dw SelfdestructDescription
+	dw TrickRoomDescription
 	dw SkillSwapDescription
 	dw LickDescription
 	dw GunkShotDescription
@@ -621,9 +621,9 @@ WrapDescription:
 	db   "Traps the foe for"
 	next "2-5 turns.@"
 
-SelfdestructDescription:
-	db   "Powerful but makes"
-	next "the user faint.@"
+TrickRoomDescription:
+	db   "Slow #mon move"
+	next "first for 5 turns.@"
 
 ExplosionDescription:
 	db   "Very powerful but"

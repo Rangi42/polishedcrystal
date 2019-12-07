@@ -119,7 +119,7 @@ BattleAnimations::
 	dw BattleAnim_FlashCannon
 	dw BattleAnim_Metronome
 	dw BattleAnim_Scald
-	dw BattleAnim_Selfdestruct
+	dw BattleAnim_TrickRoom
 	dw BattleAnim_SkillSwap
 	dw BattleAnim_Lick
 	dw BattleAnim_GunkShot
@@ -1397,24 +1397,6 @@ BattleAnim_Gust:
 	anim_wait 16
 	anim_ret
 
-BattleAnim_Selfdestruct:
-	anim_1gfx ANIM_GFX_EXPLOSION
-	anim_bgeffect ANIM_BG_FLASH_INVERTED, $0, $8, $24
-	anim_jumpif $1, .loop
-	anim_call BattleAnim_Selfdestruct_branch_cbb8f
-	anim_wait 16
-	anim_bgp $e4
-	anim_ret
-
-.loop
-	anim_call BattleAnim_Selfdestruct_branch_cbb62
-	anim_wait 5
-	anim_bgeffect ANIM_BG_HIDE_MON, $0, $1, $0
-	anim_loop 2, .loop
-	anim_wait 16
-	anim_bgp $e4
-	anim_ret
-
 BattleAnim_Explosion:
 	anim_1gfx ANIM_GFX_EXPLOSION
 	anim_bgeffect ANIM_BG_1F, $60, $4, $10
@@ -2675,6 +2657,7 @@ BattleAnim_NightShade:
 	anim_bgp $e4
 	anim_ret
 
+BattleAnim_TrickRoom: ; TODO: design new animation for Trick Room
 BattleAnim_SkillSwap: ; TODO: design new animation for Skill Swap
 BattleAnim_Detect: ; removed
 	anim_1gfx ANIM_GFX_SHINE
@@ -4903,7 +4886,7 @@ BattleAnim_SolarBeam_branch_cbb39:
 	anim_ret
 
 BattleAnim_Explosion_branch_cbb62:
-BattleAnim_Selfdestruct_branch_cbb62:
+BattleAnim_Selfdestruct_branch_cbb62: ; removed
 	anim_sound 0, 0, SFX_EGG_BOMB
 	anim_obj ANIM_OBJ_17,   3, 0,   8, 0, $0
 	anim_wait 5
@@ -4922,7 +4905,7 @@ BattleAnim_Selfdestruct_branch_cbb62:
 
 BattleAnim_Dynamicpunch_branch_cbb8f:
 BattleAnim_Explosion_branch_cbb8f:
-BattleAnim_Selfdestruct_branch_cbb8f:
+BattleAnim_Selfdestruct_branch_cbb8f: ; removed
 BattleAnim_Present_branch_cbb8f: ; removed
 	anim_sound 0, 1, SFX_EGG_BOMB
 	anim_obj ANIM_OBJ_17, -14, 4,   4, 0, $0
@@ -5624,4 +5607,22 @@ BattleAnim_Sharpen: ; removed
 ;	anim_wait 6
 ;	anim_obj ANIM_OBJ_01, -16, 4,   4, 0, $0
 ;	anim_wait 8
+;	anim_ret
+
+;BattleAnim_Selfdestruct:
+;	anim_1gfx ANIM_GFX_EXPLOSION
+;	anim_bgeffect ANIM_BG_FLASH_INVERTED, $0, $8, $24
+;	anim_jumpif $1, .loop
+;	anim_call BattleAnim_Selfdestruct_branch_cbb8f
+;	anim_wait 16
+;	anim_bgp $e4
+;	anim_ret
+;
+;.loop
+;	anim_call BattleAnim_Selfdestruct_branch_cbb62
+;	anim_wait 5
+;	anim_bgeffect ANIM_BG_HIDE_MON, $0, $1, $0
+;	anim_loop 2, .loop
+;	anim_wait 16
+;	anim_bgp $e4
 ;	anim_ret

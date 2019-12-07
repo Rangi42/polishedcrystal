@@ -1,6 +1,9 @@
 UniqueWildMoves:
 	; landmark, species, move
 	; TODO: finish unique moves
+	db MAHOGANY_TOWN, VOLTORB, EXPLOSION ; TeamRocketBaseB1F
+	db MAHOGANY_TOWN, KOFFING, EXPLOSION ; TeamRocketBaseB1F
+	db MAHOGANY_TOWN, GEODUDE, EXPLOSION ; TeamRocketBaseB1F
 	db CHERRYGROVE_BAY, CORSOLA, SUCKER_PUNCH ; HGSS tutor move
 	db SPROUT_TOWER, BELLSPROUT, GROWTH ; knows Growth early
 	db ROUTE_32_COAST, FLAAFFY, PURSUIT ; Prism tutor move
@@ -20,7 +23,7 @@ UniqueWildMoves:
 	db WHIRL_ISLANDS, 0, 0
 	db CLIFF_CAVE, 0, 0
 	db YELLOW_FOREST, PIKACHU, FLY ; replaced with Surf if Surfing
-	db QUIET_CAVE, MUNCHLAX, SELFDESTRUCT ; Pokéwalker move
+	db QUIET_CAVE, MUNCHLAX, GIGA_IMPACT ; Snorlax move
 	db MT_MORTAR, 0, 0
 	db LAKE_OF_RAGE, MAGIKARP, HYDRO_PUMP ; Pokéwalker move
 	db ICE_PATH, 0, 0

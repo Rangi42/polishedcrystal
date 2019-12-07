@@ -446,7 +446,7 @@ AI_Smart_LeechHit: ; 387f7
 
 
 AI_Smart_Explosion:
-; Selfdestruct, Explosion
+; Explosion
 	; If opponent only has 1 mon left
 	push hl
 	farcall CheckAnyOtherAliveEnemyMons

@@ -643,7 +643,7 @@ MareepEggMoves:
 
 SudowoodoEggMoves:
 	db DEFENSE_CURL
-	db SELFDESTRUCT
+	db EXPLOSION
 	db $ff
 
 SunkernEggMoves:

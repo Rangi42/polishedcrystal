@@ -48,7 +48,6 @@ Vulpix: Encore
 Ninetales: Agility
 Arcanine: Scary Face
 Bellossom: Baton Pass
-Cloyster: Pin Missile
 Gengar: Nasty Plot, Encore
 Farfetch'd: Close Combat, Baton Pass
 Rapidash: Baton Pass
@@ -68,7 +67,6 @@ Hoothoot/Noctowl: Nasty Plot, Screech, Amnesia
 Natu/Xatu: Baton Pass
 Quagsire: Hydro Pump
 Togekiss: Tri Attack, Fairy Wind, Swift, Draining Kiss, Amnesia
-Corsola: Hydro Pump
 Qwilfish: Hex, Scary Face
 Mantine: Hurricane, Rock Blast
 Tyranitar: Rock Throw, Rock Blast

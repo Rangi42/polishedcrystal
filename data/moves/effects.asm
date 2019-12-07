@@ -1,5 +1,6 @@
 MoveEffects:
 
+TrickRoom: ; TODO
 NormalHit:
 AerialAce:
 Aeroblast:
@@ -1381,7 +1382,6 @@ Whirlpool:
 	pickpocket
 	endmove
 
-Selfdestruct:
 Explosion:
 	checkobedience
 	usedmovetext

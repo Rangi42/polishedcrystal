@@ -106,4 +106,5 @@ TMHMMoves:
 	db TRICK        ; MT24 (Battle Tower)
 	db ZAP_CANNON   ; MT25 (Power Plant)
 	db ZEN_HEADBUTT ; MT26 (Saffron City)
+; TODO: Baton Pass, Trick Room, Agility
 	db 0 ; end
