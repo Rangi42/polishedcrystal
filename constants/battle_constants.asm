@@ -173,6 +173,17 @@ endc
 	const ATKFAIL_IMMUNE  ; "It doesn't affect <TARGET>!"
 	const ATKFAIL_CUSTOM  ; custom message
 
+; deferred switch types
+	const_def
+	const SWITCH_DEFERRED
+	const SWITCH_EXPLICIT
+	const SWITCH_TARGET
+	const SWITCH_FORCED
+	const SWITCH_PURSUIT
+	const SWITCH_ITEM
+	const SWITCH_OPPITEM
+	const SWITCH_BATON_PASS
+
 ; battle variables
 	const_def
 	const BATTLE_VARS_SUBSTATUS1
@@ -229,6 +240,7 @@ ALL_STATUS EQU (1 << PSN) | (1 << BRN) | (1 << FRZ) | (1 << PAR) | (1 << TOX) | 
 	enum SUBSTATUS_ENCORED
 	enum SUBSTATUS_TRANSFORMED
 	enum SUBSTATUS_MAGIC_BOUNCE
+	enum SUBSTATUS_FAINTED
 
 	enum_start 7, -1
 	enum SUBSTATUS_CONFUSED

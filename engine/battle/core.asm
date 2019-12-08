@@ -197,18 +197,18 @@ BattleTurn: ; 3c12f
 	ret c
 
 	call DetermineMoveOrder
-	jr c, .false
-	call Battle_EnemyFirst
-	jr .proceed
-.false
-	call Battle_PlayerFirst
-.proceed
-	ld a, [wBattleEnded]
-	and a
+	ld a, 1
+	jr nc, .enemy_first
+	xor a
+.enemy_first
+	ld [hBattleTurn], a
+	ld [wEnemyGoesFirst], a
+	call .do_move
 	ret nz
-
-	ld a, [wBattleEnded]
-	and a
+	ld a, [wEnemyGoesFirst]
+	xor 1
+	ld [hBattleTurn], a
+	call .do_move
 	ret nz
 
 	farcall HandleBetweenTurnEffects
@@ -216,7 +216,17 @@ BattleTurn: ; 3c12f
 	and a
 	ret nz
 	jp .loop
-; 3c1bf
+
+.do_move
+	call PerformMove
+	ld a, [wBattleEnded]
+	and a
+	ret nz
+
+	call DeferredSwitch
+	ld a, [wBattleEnded]
+	and a
+	ret
 
 SafariBattleTurn:
 .loop
@@ -744,109 +754,20 @@ GetMoveEffect: ; 3c5ec
 ; 3c5fe
 
 
-Battle_EnemyFirst: ; 3c5fe
-	call LoadTileMapToTempTileMap
-	call TryEnemyFlee
-	jp c, WildFled_EnemyFled_LinkBattleCanceled
-	call SetEnemyTurn
-	ld a, $1
-	ld [wEnemyGoesFirst], a
-	farcall AI_SwitchOrTryItem
-	jr c, .switch_item
-	call EnemyTurn_EndOpponentProtectEndureDestinyBond
-	ld a, [wBattleEnded]
-	and a
-	ret nz
-	call HasPlayerFainted
-	jp z, HandlePlayerMonFaint
-	call HasEnemyFainted
-	jp z, HandleEnemyMonFaint
-
-.switch_item
-	call SetEnemyTurn
+PerformMove:
+	ld a, BATTLE_VARS_SUBSTATUS2
+	call GetBattleVarAddr
+	res SUBSTATUS_DESTINY_BOND, [hl]
 	call HasUserFainted
-	jp z, HandleEnemyMonFaint
-	call RefreshBattleHuds
-	call PlayerTurn_EndOpponentProtectEndureDestinyBond
-	ld a, [wBattleEnded]
+	jr z, .end_protect_destinybond
+	ld a, [hBattleTurn]
 	and a
-	ret nz
-	call HasEnemyFainted
-	jp z, HandleEnemyMonFaint
-	call HasPlayerFainted
-	jp z, HandlePlayerMonFaint
-	call SetPlayerTurn
-	call HasUserFainted
-	jp z, HandlePlayerMonFaint
-	call RefreshBattleHuds
-	xor a
-	ld [wBattlePlayerAction], a
-	ret
-; 3c664
-
-Battle_PlayerFirst: ; 3c664
-	xor a
-	ld [wEnemyGoesFirst], a
-	call SetEnemyTurn
-	farcall AI_SwitchOrTryItem
-	push af
-	jr nc, .enemy_used_move
-	ld a, 1
-	ld [wEnemyGoesFirst], a
-.enemy_used_move
-	call PlayerTurn_EndOpponentProtectEndureDestinyBond
-	pop bc
-	ld a, [wBattleEnded]
-	and a
-	ret nz
-	call HasEnemyFainted
-	jp z, HandleEnemyMonFaint
-	call HasPlayerFainted
-	jp z, HandlePlayerMonFaint
-	push bc
-	call SetPlayerTurn
-	call HasUserFainted
-	pop bc
-	jp z, HandlePlayerMonFaint
-	push bc
-	call RefreshBattleHuds
-	pop af
-	jr c, .switched_or_used_item
-	call LoadTileMapToTempTileMap
-	call TryEnemyFlee
-	jp c, WildFled_EnemyFled_LinkBattleCanceled
-	call EnemyTurn_EndOpponentProtectEndureDestinyBond
-	ld a, [wBattleEnded]
-	and a
-	ret nz
-	call HasPlayerFainted
-	jp z, HandlePlayerMonFaint
-	call HasEnemyFainted
-	jp z, HandleEnemyMonFaint
-
-.switched_or_used_item
-	call SetEnemyTurn
-	call HasUserFainted
-	jp z, HandleEnemyMonFaint
-	call RefreshBattleHuds
-	xor a
-	ld [wBattlePlayerAction], a
-	ret
-; 3c6cf
-
-PlayerTurn_EndOpponentProtectEndureDestinyBond: ; 3c6cf
-	call SetPlayerTurn
-	call EndUserDestinyBond
+	jr nz, .enemy
 	farcall DoPlayerTurn
-	jr EndOpponentProtectEndureDestinyBond
-
-EnemyTurn_EndOpponentProtectEndureDestinyBond: ; 3c6de
-	call SetEnemyTurn
-	call EndUserDestinyBond
+	jr .end_protect_destinybond
+.enemy
 	farcall DoEnemyTurn
-	; fallthrough
-
-EndOpponentProtectEndureDestinyBond:
+.end_protect_destinybond
 	ld a, BATTLE_VARS_SUBSTATUS1_OPP
 	call GetBattleVarAddr
 	res SUBSTATUS_PROTECT, [hl]
@@ -854,6 +775,631 @@ EndOpponentProtectEndureDestinyBond:
 	ld a, BATTLE_VARS_SUBSTATUS2_OPP
 	call GetBattleVarAddr
 	res SUBSTATUS_DESTINY_BOND, [hl]
+	ret
+
+DeferredSwitch:
+; user switches out
+	ld hl, wDeferredSwitch
+	bit SWITCH_DEFERRED, [hl]
+	ret z
+
+ForceDeferredSwitch:
+; player switches out due to "switch mode"
+	; Check if we can switch out
+	bit SWITCH_TARGET, [hl]
+	jr nz, .check_target_alive
+	farcall CheckAnyOtherAliveMons
+	jr .alive_check_done
+.check_target_alive
+	farcall CheckAnyOtherAliveOpponentMons
+.alive_check_done
+	jp z, .all_done
+
+	; Do item consumption
+	bit SWITCH_ITEM, [hl]
+	call nz, .consume_item
+	bit SWITCH_OPPITEM, [hl]
+	jr z, .items_done
+
+	call SwitchTurn
+	call .consume_item
+	call SwitchTurn
+
+.items_done
+	; Figure out which side is switching
+	bit SWITCH_TARGET, [hl]
+	jr z, .do_switch
+
+	call SwitchTurn
+	call .do_switch
+	jp SwitchTurn
+
+.do_switch
+	; Clear used move
+	push hl
+	ld a, BATTLE_VARS_MOVE
+	call GetBattleVarAddr
+	ld [hl], 0
+	pop hl
+
+	; Message
+	push hl
+	bit SWITCH_EXPLICIT, [hl]
+	jr z, .no_explicit_withdraw
+
+	; Enemy always uses "Trainer withdrew Pokémon!" Player has several messages.
+	ld a, [hBattleTurn]
+	and a
+	ld hl, BattleText_EnemyWithdrew
+	jr nz, .got_text
+
+	call WithdrawPkmnText
+	jr .msg_done
+
+.no_explicit_withdraw
+	; For forced switches, say nothing until post-switch
+	bit SWITCH_FORCED, [hl]
+	jr nz, .msg_done
+
+	ld a, [hBattleTurn]
+	and a
+	ld hl, BattleText_WentBackToPlayer
+	jr z, .got_text
+	ld hl, BattleText_WentBackToEnemy
+.got_text
+	call StdBattleTextBox
+
+.msg_done
+	pop hl
+
+	; Handle Pursuit
+	push hl
+	bit SWITCH_PURSUIT, [hl]
+	call nz, PursuitSwitch
+
+	; If we ended up fainting, abort the switch
+	call HasUserFainted
+	pop hl
+	jr z, .all_done
+
+	; Withdraw animation
+	bit SWITCH_BATON_PASS, [hl]
+	jr nz, .anim_done
+	bit SWITCH_FORCED, [hl]
+	jr nz, .forced_anim
+
+	xor a
+	ld [wNumHits], a
+	ld de, ANIM_RETURN_MON
+	call Call_PlayBattleAnim
+	jr .anim_done
+
+.forced_anim
+	call SlideUserPicOut
+
+.anim_done
+	; Clear battle UI display
+	hlcoord TEXTBOX_INNERX, TEXTBOX_INNERY
+	lb bc, TEXTBOX_INNERH - 1, TEXTBOX_INNERW
+	call ClearBox
+
+	ld a, [hBattleTurn]
+	and a
+	hlcoord 9, 7
+	lb bc, 5, 11
+	jr z, .got_hp_display
+	hlcoord 1, 0
+	lb bc, 4, 10
+.got_hp_display
+	call ClearBox
+
+	ld c, 20
+	call DelayFrames
+
+	; Endturn switches due to "switch mode" (as opposed to set) skips the rest
+	ld a, [wDeferredSwitch]
+	bit SWITCH_DEFERRED, a
+	jr z, .all_done
+
+	call GetUserSwitchTarget
+	call SendInUserPkmn
+	ld a, [wDeferredSwitch]
+	cp 1 << SWITCH_DEFERRED | 1 << SWITCH_TARGET | 1 << SWITCH_FORCED
+	jr nz, .regular_spikes
+	call SpikesDamage_CheckMoldBreaker
+	jr .done_spikes
+.regular_spikes
+	call SpikesDamage
+.done_spikes
+	call RunActivationAbilities
+	ld a, [hBattleTurn]
+	and a
+	ld hl, wPlayerSwitchTarget
+	jr z, .got_switch_target
+	ld hl, wEnemySwitchTarget
+.got_switch_target
+	ld [hl], 0
+
+.all_done
+	xor a
+	ld [wDeferredSwitch], a
+	ret
+
+.consume_item
+	push hl
+	call ItemRecoveryAnim
+	farcall GetUserItem
+	call GetCurItemName
+	ld hl, BattleText_UsersStringBuffer1Activated
+	call StdBattleTextBox
+	farcall ConsumeUserItem
+	pop hl
+	ret
+
+GetBothSwitchTarget:
+; Forces both user and target to choose who to switch into.
+	; Check if both player and enemy already has a switch target.
+	ld a, [wPlayerSwitchTarget]
+	ld hl, wEnemySwitchTarget
+	or [hl]
+	jr z, .both_needs_switch
+
+	; only one of these will actually do anything
+	call GetUserSwitchTarget
+	call SwitchTurn
+	call GetUserSwitchTarget
+	call SwitchTurn
+	ret
+.both_needs_switch
+	call GetPlayerSwitchTarget
+	jr GetEnemySwitchTarget
+
+GetPlayerSwitchTarget:
+	call LoadStandardMenuDataHeader
+	call SetUpBattlePartyMenu_NoLoop
+	call ForcePickSwitchMonInBattle
+
+	call ClearPalettes
+	farcall _LoadBattleFontsHPBar
+	call CloseWindow
+	call ClearSprites
+	ld b, CGB_BATTLE_COLORS
+	call GetCGBLayout
+	call SetPalettes
+	ld a, [wLinkMode]
+	and a
+	ld a, 1
+	ld [wBattlePlayerAction], a
+	call nz, LinkBattleSendReceiveAction
+	xor a
+	ld [wBattlePlayerAction], a
+	ld a, [wCurPartyMon]
+	inc a
+	ld [wPlayerSwitchTarget], a
+	ret
+
+GetEnemySwitchTarget:
+	ld a, [wLinkMode]
+	and a
+	jr z, .ai_switch
+	; we've already performed LinkBattleSendReceiveAction
+	ld a, [wBattleAction]
+	sub BATTLEACTION_SWITCH1 - 1
+	ld [wEnemySwitchTarget], a
+	ret
+.ai_switch
+	farcall GetSwitchScores
+	ld a, [wEnemySwitchMonParam]
+	inc a
+	ld [wEnemySwitchTarget], a
+	ret
+
+GetUserSwitchTarget:
+; Sets target to switch into if not already set.
+; Do not use this for endturn mutual faints, because
+; this would allow a malicious client to switch based on
+; the opponent's choice.
+	ld hl, wDeferredSwitch
+	bit SWITCH_FORCED, [hl]
+	jr nz, .random_select
+
+	; Check if we've already made a selection.
+	ld a, [hBattleTurn]
+	and a
+	ld hl, wPlayerSwitchTarget
+	jr z, .got_switch_target
+	ld hl, wEnemySwitchTarget
+.got_switch_target
+	ld a, [hl]
+	and a
+	ret nz
+
+	; Allow user selection of switch target
+	ld a, [hBattleTurn]
+	and a
+	jr z, GetPlayerSwitchTarget
+
+.enemy_switch
+	ld a, [wLinkMode]
+	and a
+	call nz, LinkBattleSendReceiveAction
+	jr GetEnemySwitchTarget
+
+.random_select
+	ld a, [hBattleTurn]
+	and a
+	ld a, [wPartyCount]
+	ld b, a
+	ld a, [wCurBattleMon]
+	ld c, a
+	ld hl, wPartyMon1HP
+	jr z, .got_party_vars
+	ld a, [wOTPartyCount]
+	ld b, a
+	ld a, [wCurOTMon]
+	ld c, a
+	ld hl, wOTPartyMon1HP
+.got_party_vars
+	call BattleRandom
+	and $7
+	cp b
+	jr nc, .got_party_vars
+	cp c
+	jr z, .got_party_vars
+	push hl
+	push af
+	call GetPartyLocation
+	ld a, [hli]
+	or [hl]
+	pop de
+	pop hl
+	jr z, .got_party_vars
+
+	; Got an appropriate target. Select it.
+	inc d
+	ld a, [hBattleTurn]
+	and a
+	ld hl, wPlayerSwitchTarget
+	jr z, .got_switch_target2
+	ld hl, wEnemySwitchTarget
+.got_switch_target2
+	ld [hl], d
+	ret
+
+SendInUserPkmn:
+; sends in the new pokémon
+	; volatile statuses that baton pass doesn't preserve
+	call BreakAttraction
+	ld a, BATTLE_VARS_SUBSTATUS1
+	call GetBattleVarAddr
+	res SUBSTATUS_ROLLOUT, [hl]
+	res SUBSTATUS_ENDURE, [hl]
+	res SUBSTATUS_PROTECT, [hl]
+	inc hl
+	res SUBSTATUS_CANT_RUN, [hl]
+	res SUBSTATUS_DESTINY_BOND, [hl]
+	res SUBSTATUS_ENCORED, [hl]
+	res SUBSTATUS_TRANSFORMED, [hl]
+	res SUBSTATUS_MAGIC_BOUNCE, [hl]
+	res SUBSTATUS_FAINTED, [hl]
+	inc hl
+	res SUBSTATUS_FLYING, [hl]
+	res SUBSTATUS_UNDERGROUND, [hl]
+	res SUBSTATUS_CHARGED, [hl]
+	res SUBSTATUS_FLINCHED, [hl]
+	res SUBSTATUS_IN_LOOP, [hl]
+	res SUBSTATUS_RAMPAGE, [hl]
+	inc hl
+	res SUBSTATUS_RAGE, [hl]
+	res SUBSTATUS_RECHARGE, [hl]
+	res SUBSTATUS_CURLED, [hl]
+	ld a, [hBattleTurn]
+	and a
+	jr nz, .reset_used_moves_done
+	ld hl, wPlayerUsedMoves
+rept NUM_MOVES + -1
+	ld [hli], a
+endr
+	ld [hl], a
+
+.reset_used_moves_done
+	; for non-baton pass, just reset everything
+	ld a, [wDeferredSwitch]
+	bit SWITCH_BATON_PASS, a
+	jr nz, .volatile_done
+	ld a, BATTLE_VARS_SUBSTATUS1
+	call GetBattleVarAddr
+	xor a
+	ld [hli], a
+	ld [hli], a
+	ld [hli], a
+	ld [hl], a
+
+	ld a, BASE_STAT_LEVEL
+	ld bc, NUM_LEVEL_STATS
+	ld a, [hBattleTurn]
+	and a
+	ld hl, wPlayerStatLevels
+	jr z, .got_stat_levels
+	ld hl, wEnemyStatLevels
+.got_stat_levels
+	call ByteFill
+	ld a, [hBattleTurn]
+	and a
+	jr nz, .new_enemy_mon_status
+	call NewBattleMonStatus
+	jr .volatile_done
+.new_enemy_mon_status
+	call NewEnemyMonStatus
+
+.volatile_done
+	; Switch active mon
+	ld a, [hBattleTurn]
+	and a
+	ld de, wPlayerSwitchTarget
+	ld hl, wCurBattleMon
+	jr z, .got_cur_mon
+	ld de, wEnemySwitchTarget
+	ld hl, wCurOTMon
+.got_cur_mon
+	ld a, [de]
+	dec a
+	ld [hl], a
+	ld [wCurPartyMon], a
+
+	ld a, [hBattleTurn]
+	and a
+	ld hl, wPartyMon1Species
+	jr z, .got_partymon
+	ld hl, wOTPartyMon1Species
+.got_partymon
+	call GetPartyLocation
+	ld de, wBattleMonSpecies
+	call GetUserMonAttr_de
+	push de
+	ld bc, MON_ID - MON_SPECIES
+	rst CopyBytes ; copy Species, Item, Moves
+	ld bc, MON_DVS - MON_ID
+	add hl, bc ; skip ID, Exp, EVs
+	ld de, wBattleMonDVs
+	call GetUserMonAttr_de
+	ld bc, MON_PKRUS - MON_DVS
+	rst CopyBytes ; copy DVs, Personality, PP, Happiness
+	ld bc, MON_LEVEL - MON_PKRUS
+	add hl, bc ; skip PokerusStatus, CaughtData
+	ld de, wBattleMonLevel
+	call GetUserMonAttr_de
+	ld bc, PARTYMON_STRUCT_LENGTH - MON_LEVEL
+	rst CopyBytes ; copy Level, Status, Unused, HP, MaxHP, Stats
+	pop de
+	ld a, [hBattleTurn]
+	and a
+	ld hl, wTempBattleMonSpecies
+	jr z, .got_temp_species
+	ld hl, wTempEnemyMonSpecies
+.got_temp_species
+	ld a, [de]
+	ld [wCurSpecies], a
+	ld [wCurPartySpecies], a
+	ld [hl], a
+	push de
+	call GetBaseData
+	ld de, wBattleMonType1
+	call GetUserMonAttr_de
+	ld hl, wBaseType1
+	ld bc, 2
+	rst CopyBytes
+	pop de
+
+if !DEF(FAITHFUL)
+	; Armored Mewtwo is Psychic/Steel
+	ld a, [de]
+	cp MEWTWO
+	jr nz, .not_armored_mewtwo
+	ld hl, wBattleMonItem
+	call GetUserMonAttr
+	ld a, [hl]
+	cp ARMOR_SUIT
+	jr nz, .not_armored_mewtwo
+	ld a, STEEL
+	ld bc, wBattleMonType2 - wBattleMonItem
+	add hl, bc
+	ld [hl], a
+.not_armored_mewtwo
+endc
+
+	ld a, [hBattleTurn]
+	and a
+	ld hl, wPartyMonNicknames
+	jr z, .got_nicknames
+	ld hl, wOTPartyMonNicknames
+.got_nicknames
+	ld a, [wCurPartyMon]
+	call SkipNames
+	ld a, [hBattleTurn]
+	and a
+	ld de, wBattleMonNick
+	jr z, .got_battle_nick
+	ld de, wEnemyMonNick
+.got_battle_nick
+	ld bc, PKMN_NAME_LENGTH
+	call CopyBytes
+	ld a, [hBattleTurn]
+	and a
+	jr nz, .enemy_ability
+	call ResetPlayerAbility
+	jr .done_ability
+.enemy_ability
+	call ResetEnemyAbility
+.done_ability
+	; print "Go! X/TRAINER sends out X!"
+	ld a, [wDeferredSwitch]
+	bit SWITCH_FORCED, a
+	call z, UserSentOutText
+
+	; For enemy, we need to mark as seen and set base exp unless link/BT
+	ld a, [hBattleTurn]
+	and a
+	jr z, .enemy_extras_done
+
+	ld hl, wEnemyMonHP
+	ld a, [hli]
+	ld [wEnemyHPAtTimeOfPlayerSwitch], a
+	ld a, [hl]
+	ld [wEnemyHPAtTimeOfPlayerSwitch + 1], a
+
+	ld a, [wLinkMode]
+	and a
+	jr nz, .enemy_extras_done
+	ld a, [wInBattleTowerBattle]
+	bit 0, a
+	jr nz, .enemy_extras_done
+
+	ld a, [wCurSpecies]
+	dec a
+	ld c, a
+	ld b, SET_FLAG
+	ld hl, wPokedexSeen
+	predef FlagPredef
+
+	ld a, [wBaseExp]
+	ld [wEnemyMonBaseExp], a
+
+	ld a, [wCurPartySpecies]
+	cp UNOWN
+	jr nz, .skip_unown
+	ld a, [wFirstUnownSeen]
+	and a
+	jr nz, .skip_unown
+	ld hl, wEnemyMonForm
+	predef GetVariant
+	ld a, [wCurForm]
+	ld [wFirstUnownSeen], a
+.skip_unown
+
+	ld a, [wCurPartySpecies]
+	cp MAGIKARP
+	jr nz, .enemy_extras_done
+	ld a, [wFirstMagikarpSeen]
+	and a
+	jr nz, .enemy_extras_done
+	ld hl, wEnemyMonForm
+	predef GetVariant
+	ld a, [wCurForm]
+	ld [wFirstMagikarpSeen], a
+
+.enemy_extras_done
+	; Send-out animation
+	ld a, [hBattleTurn]
+	and a
+	jr z, .player_sends_out
+	call Function_SetEnemyPkmnAndSendOutAnimation
+	jr .send_out_anim_done
+.player_sends_out
+	call SendOutPlayerMon
+.send_out_anim_done
+	; Give a "X was dragged out!" message if applicable
+	ld hl, DraggedOutText
+	ld a, [wDeferredSwitch]
+	bit SWITCH_FORCED, a
+	call nz, StdBattleTextBox
+	; fallthrough
+
+SetParticipant::
+; Sets current active mon as participant vs target mon. Preserves registers.
+	push hl
+	push bc
+	push af
+	call GetParticipantVar
+	ld a, [wCurBattleMon]
+	ld c, a
+
+	ld a, 1
+	inc c
+	rrca
+.loop
+	rlca
+	dec c
+	jr nz, .loop
+
+	or [hl]
+	ld [hl], a
+	pop af
+	pop bc
+	pop hl
+	ret
+
+ResetParticipants::
+	push hl
+	push bc
+	push af
+	xor a
+	ld hl, wPartyParticipants
+	ld bc, 6
+	call ByteFill
+	pop af
+	pop bc
+	pop hl
+	ret
+
+GetParticipantsIncludingFainted::
+; Returns participants, including fainted, vs target mon to a.
+	push hl
+	push bc
+	call GetParticipantVar
+	ld a, [hl]
+	pop bc
+	pop hl
+	ret
+
+GetParticipantsNotFainted::
+; Returns non-fainted participants vs target mon to a.
+	push hl
+	push de
+	push bc
+	call GetParticipantVar
+	ld a, [hl]
+	ld e, a
+	ld a, [wPartyCount]
+	ld d, a
+	ld a, %11111110
+	ld hl, wPartyMon1HP
+	ld bc, wPartyMon2HP - (wPartyMon1HP + 1)
+.loop
+	push af
+	ld a, [hli]
+	or [hl]
+	jr nz, .not_fainted
+	pop af
+	push af
+	and e
+	ld e, a
+.not_fainted
+	pop af
+	rlca
+	add hl, bc
+	dec d
+	jr nz, .loop
+	ld a, e
+	pop bc
+	pop de
+	pop hl
+	ret
+
+GetParticipantVar::
+	ld hl, wGivingExperienceToExpShareHolders
+	ld a, [hl]
+	and a
+	ret nz
+	ld a, [wBattleMode]
+	dec a
+	jr z, .got_ot_index
+	ld a, [wCurOTMon]
+.got_ot_index
+	ld b, 0
+	ld c, a
+	ld hl, wPartyParticipants
+	add hl, bc
 	ret
 
 EndUserDestinyBond:
@@ -1250,7 +1796,7 @@ ContinueHandleEnemyMonFaint:
 .trainer
 	call CheckEnemyTrainerDefeated
 	jp z, WinTrainerBattle
-    
+
 	ld a, [wEnemySplitHandleMonFaint]
 	and a
 	ret nz
@@ -1456,7 +2002,12 @@ StopDangerSound: ; 3ceec
 	ret
 ; 3cef1
 
-FaintYourPokemon: ; 3cef1
+FaintYourPokemon:
+	ld hl, wPlayerSubStatus2
+	bit SUBSTATUS_FAINTED, [hl]
+	ret nz
+	set SUBSTATUS_FAINTED, [hl]
+
 	call StopDangerSound
 	call WaitSFX
 	ld a, $f0
@@ -1475,6 +2026,11 @@ FaintYourPokemon: ; 3cef1
 ; 3cf14
 
 FaintEnemyPokemon: ; 3cf14
+	ld hl, wEnemySubStatus2
+	bit SUBSTATUS_FAINTED, [hl]
+	ret nz
+	set SUBSTATUS_FAINTED, [hl]
+
 	call WaitSFX
 	ld a, $f
 	ld [wCryTracks], a
@@ -2640,13 +3196,6 @@ ClearEnemyMonBox: ; 3d7a0
 	call ApplyTilemapInVBlank
 	jp FinishBattleAnim
 ; 3d7b8
-
-Function_BattleTextEnemySentOut: ; 3d7b8
-	farcall Battle_GetTrainerName
-	ld hl, BattleText_EnemySentOut
-	call StdBattleTextBox
-	jp ApplyTilemapInVBlank
-; 3d7c7
 
 Function_SetEnemyPkmnAndSendOutAnimation: ; 3d7c7
 	ld a, [wTempEnemyMonSpecies]
@@ -4538,7 +5087,7 @@ TextJump_EnemyWithdrew:
 	text_jump Text_EnemyWithdrew
 	db "@"
 
-BattleMonEntrance: ; 3e40b
+BattleMonEntrance:
 	call WithdrawPkmnText
 
 	ld c, 50
@@ -4561,9 +5110,9 @@ BattleMonEntrance: ; 3e40b
 	jr nz, .ok
 	inc a
 	ld [wEnemySplitHandleMonFaint], a
-	ld a, [wCurPartyMon] ; since ContinueHandleEnemyMonFaint overwrites this
+	ld a, [wCurPartyMon]
 	push af
- 	call ContinueHandleEnemyMonFaint
+	call ContinueHandleEnemyMonFaint
 	pop af
 	ld [wCurPartyMon], a
 	ld a, [wBattleEnded]
@@ -4592,7 +5141,6 @@ BattleMonEntrance: ; 3e40b
 	ld a, $2
 	ld [wMenuCursorY], a
 	ret
-; 3e459
 
 PassedBattleMonEntrance: ; 3e459
 	ld c, 50
@@ -6625,103 +7173,6 @@ FinishBattleAnim: ; 3ee27
 ; 3ee3b
 
 
-ResetParticipants::
-	push hl
-	push bc
-	push af
-	xor a
-	ld hl, wPartyParticipants
-	ld bc, 6
-	call ByteFill
-	pop af
-	pop bc
-	pop hl
-	ret
-
-SetParticipant::
-; Sets current active mon as participant vs target mon. Preserves registers.
-	push hl
-	push bc
-	push af
-	call GetParticipantVar
-	ld a, [wCurBattleMon]
-	ld c, a
-
-	ld a, 1
-	inc c
-	rrca
-.loop
-	rlca
-	dec c
-	jr nz, .loop
-
-	or [hl]
-	ld [hl], a
-	pop af
-	pop bc
-	pop hl
-	ret
-
-GetParticipantsIncludingFainted::
-; Returns participants, including fainted, vs target mon to a.
-	push hl
-	push bc
-	call GetParticipantVar
-	ld a, [hl]
-	pop bc
-	pop hl
-	ret
-
-GetParticipantsNotFainted::
-; Returns non-fainted participants vs target mon to a.
-	push hl
-	push de
-	push bc
-	call GetParticipantVar
-	ld a, [hl]
-	ld e, a
-	ld a, [wPartyCount]
-	ld d, a
-	ld a, %11111110
-	ld hl, wPartyMon1HP
-	ld bc, wPartyMon2HP - (wPartyMon1HP + 1)
-.loop
-	push af
-	ld a, [hli]
-	or [hl]
-	jr nz, .not_fainted
-	pop af
-	push af
-	and e
-	ld e, a
-.not_fainted
-	pop af
-	rlca
-	add hl, bc
-	dec d
-	jr nz, .loop
-	ld a, e
-	pop bc
-	pop de
-	pop hl
-	ret
-
-GetParticipantVar::
-	ld hl, wGivingExperienceToExpShareHolders
-	ld a, [hl]
-	and a
-	ret nz
-	ld a, [wBattleMode]
-	dec a
-	jr z, .got_ot_index
-	ld a, [wCurOTMon]
-.got_ot_index
-	ld b, 0
-	ld c, a
-	ld hl, wPartyParticipants
-	add hl, bc
-	ret
-
 GiveExperiencePoints: ; 3ee3b
 ; Give experience.
 ; Don't give experience if linked or in the Battle Tower.
@@ -7396,7 +7847,15 @@ AnimateExpBar: ; 3f136
 	ret
 
 
+Function_BattleTextEnemySentOut:
+	farcall Battle_GetTrainerName
+	ld hl, BattleText_EnemySentOut
+	jp StdBattleTextBox
 
+UserSentOutText:
+	ld a, [hBattleTurn]
+	and a
+	jr nz, Function_BattleTextEnemySentOut
 SendOutPkmnText: ; 3f26d
 	ld a, [wLinkMode]
 	and a

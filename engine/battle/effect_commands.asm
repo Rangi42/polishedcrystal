@@ -6421,7 +6421,12 @@ BattleCommand_teleport: ; 36778
 
 .trainer_battle
 	call CheckAnyOtherAliveMons
-	jp nz, ContinueToSwitchOut
+	jr z, .failed
+	call AnimateCurrentMove
+	ld c, 20
+	call DelayFrames
+	ld a, 1 << SWITCH_DEFERRED
+	jp SetDeferredSwitch
 
 .failed
 	call AnimateFailedMove
@@ -6558,83 +6563,23 @@ BattleCommand_forceswitch: ; 3680f
 .trainer
 	call CheckAnyOtherAliveOpponentMons
 	jr z, .but_it_failed
-	ld a, BATTLE_VARS_MOVE_OPP
-	call GetBattleVarAddr
-	xor a
-	ld [hl], a
-	call UpdateOpponentInParty
-	ld a, $1
-	ld [wKickCounter], a
 	call AnimateCurrentMove
-	ld c, $14
-	call DelayFrames
-	farcall RunSwitchAbilities
-	ld a, [hBattleTurn]
-	and a
-	jr nz, .enemy_trainer
-	hlcoord 1, 0
-	lb bc, 4, 10
-	call ClearBox
 	ld c, 20
 	call DelayFrames
-	ld a, [wOTPartyCount]
-	ld b, a
-	ld a, [wCurOTMon]
-	ld c, a
-	ld hl, wOTPartyMon1HP
-	jr .trainer_got_party_vars
+	ld a, 1 << SWITCH_DEFERRED | 1 << SWITCH_TARGET | 1 << SWITCH_FORCED
+	; fallthrough
 
-.enemy_trainer
-	hlcoord 9, 7
-	lb bc, 5, 11
-	call ClearBox
-	ld c, 20
-	call DelayFrames
-	ld a, [wPartyCount]
-	ld b, a
-	ld a, [wCurBattleMon]
-	ld c, a
-	ld hl, wPartyMon1HP
-
-.trainer_got_party_vars
-	push hl
-.random_loop_trainer
-	call BattleRandom
-	and $7
-	cp b
-	jr nc, .random_loop_trainer
-	cp c
-	jr z, .random_loop_trainer
-	pop hl
-	push hl
+SetDeferredSwitch:
 	push af
-	call GetPartyLocation
-	ld a, [hli]
-	or [hl]
-	pop de
-	jr z, .random_loop_trainer
-	pop hl
-
-	ld a, [hBattleTurn]
+	ld a, [wDeferredSwitch]
 	and a
-	ld a, d
-	jr nz, .enemy_trainer2
-
-	inc a
-	ld [wEnemySwitchMonIndex], a
-	farcall ForceEnemySwitch
-	jr .done_forceswitch
-
-.enemy_trainer2
-	ld [wCurPartyMon], a
-	farcall ForcePlayerSwitch
-
-.done_forceswitch
-	ld hl, DraggedOutText
-	call StdBattleTextBox
-
-	farcall SpikesDamage_CheckMoldBreaker
-	farjp RunActivationAbilities
+	jr nz, .done
+	pop af
+	ld [wDeferredSwitch], a
+	push af
+.done
+	pop af
+	ret
 
 CheckPlayerHasMonToSwitchTo: ; 36994
 	ld a, [wPartyCount]
@@ -8802,138 +8747,15 @@ DoCheckAnyOtherAliveMons:
 	jr nz, .loop
 	ret
 
-PursuitSwitchDuringMove:
-; Returns z if Pursuit caused us to faint
-	ld a, [hBattleTurn]
-	push af
-	call SwitchTurn
-
-	; Avoids double-usage of Pursuit when Pursuit user goes first
-	; Performed from Pursuit user's POV
-	call CheckOpponentWentFirst
-	jr z, .pursuit_done
-	call HasUserFainted
-	jr z, .pursuit_done
-
-	ld hl, wBattleScriptBufferLoc
-	ld c, [hl]
-	inc hl
-	ld b, [hl]
-	push bc
-	push hl
-	farcall PursuitSwitch
-	pop hl
-	pop bc
-	ld [hl], b
-	dec hl
-	ld [hl], c
-.pursuit_done
-	pop af
-	ld [hBattleTurn], a
-	; if Pursuit fainted opponent, abort the switch-out
-	call HasUserFainted
-	ret z
-	; If Pursuit user fainted (i.e. by Life Orb recoil) after
-	; hitting target, battle handler should be split
-	; Returns 0 if battle ends as a result
-	call HasOpponentFainted
-	ret nz
-	;fallthrough
-SwitchOutHandleMonFaint:
-	ld a, [hBattleTurn]
-	and a
-	jr z, .enemy_mon_fainted
-;.player_mon_fainted
-	ld [wPlayerSplitHandleMonFaint], a
-	farcall ContinueHandlePlayerMonFaint
-	jr .finish_mon_fainted
-.enemy_mon_fainted
-	inc a
-	ld [wEnemySplitHandleMonFaint], a
-	farcall ContinueHandleEnemyMonFaint
-.finish_mon_fainted
-	ld a, [wBattleEnded]
-	dec a ; WARNING: won't work if wBattleEnded is > 1 or < 0
-	ret ; no switch (returns 0) if the battle is over
-
 BattleCommand_switchout:
 	call CheckAnyOtherAliveMons
 	ret z
-	call HasOpponentFainted
-	call z, SwitchOutHandleMonFaint
-	ret z
-ContinueToSwitchOut:
-	call UpdateUserInParty
-	ld a, [hBattleTurn]
-	and a
-	ld hl, BattleText_WentBackToPlayer
-	jr z, .got_text
-	ld hl, BattleText_WentBackToEnemy
-.got_text
-	call StdBattleTextBox
-	call HasOpponentFainted
-	jr z, .no_pursuit
-	call PursuitSwitchDuringMove
-	ret z
-.no_pursuit
-	farcall SlideUserPicOut
-	ld c, 20
-	call DelayFrames
-	hlcoord TEXTBOX_INNERX, TEXTBOX_INNERY
-	lb bc, TEXTBOX_INNERH - 1, TEXTBOX_INNERW
-	call ClearBox
-
-	ld a, [hBattleTurn]
-	and a
-	jr nz, .enemy
-
-	hlcoord 9, 7
-	lb bc, 5, 11
-	call ClearBox
-
-	; Piggyback on Baton Pass routines
-	call DoPlayerBatonPass
-
-	; Baton Pass routines preserve some stuff, get rid of it
-	; unless we fainted (i.e. by spikes), in which case a double
-	; switch occurs afterwards if the opponent also fainted
-	ld hl, wBattleMonHP
-	ld a, [hli]
-	or [hl]
-	jr nz, .player_nofaint
-	ld hl, wEnemySplitHandleMonFaint
-	ld a, [hld] ; after dec, hl = wPlayerSplitHandleMonFaint
-	and a
-	ret z
-	ld [hl], a
-	; calling the handler double faints the enemy, and we know we must
-	; have at least one surviving party member by this point anyway
-	farcall FaintYourPokemon
-	farjp PlayerMonFaintHappinessMod
-.player_nofaint
-	farcall NewBattleMonStatus
-	farjp ResetPlayerStatLevels
-
-.enemy
-	call DoEnemyBatonPass
-	ld hl, wEnemyMonHP
-	ld a, [hli]
-	or [hl]
-	jr nz, .enemy_nofaint
-	ld hl, wPlayerSplitHandleMonFaint
-	ld a, [hli] ; after inc, hl = wEnemySplitHandleMonFaint
-	and a
-	ret z
-	ld [hl], a
-	farcall FaintEnemyPokemon
-	farjp UpdateBattleStateAndExperienceAfterEnemyFaint
-.enemy_nofaint
-	farcall NewEnemyMonStatus
-	farjp ResetEnemyStatLevels
+	ld a, 1 << SWITCH_DEFERRED | 1 << SWITCH_PURSUIT
+	jp SetDeferredSwitch
 
 BattleCommand_batonpass:
 	call CheckAnyOtherAliveMons
-	jp z, FailedBatonPass
+	jr z, .failed
 
 	ld a, [hBattleTurn]
 	and a
@@ -8945,120 +8767,12 @@ BattleCommand_batonpass:
 	ld [hl], a
 
 	call AnimateCurrentMove
-	ld c, 30
+	ld c, 20
 	call DelayFrames
-	call UpdateUserInParty
+	ld a, 1 << SWITCH_DEFERRED | 1 << SWITCH_BATON_PASS
+	jp SetDeferredSwitch
 
-	ld a, [hBattleTurn]
-	and a
-	jr nz, DoEnemyBatonPass
-	; fallthrough
-DoPlayerBatonPass:
-	; Transition into switchmon menu
-	call LoadStandardMenuDataHeader
-	farcall SetUpBattlePartyMenu_NoLoop
-
-	farcall ForcePickSwitchMonInBattle
-
-	; Return to battle scene
-	call ClearPalettes
-	farcall _LoadBattleFontsHPBar
-	call CloseWindow
-	call ClearSprites
-	hlcoord 1, 0
-	lb bc, 4, 10
-	call ClearBox
-	ld b, CGB_BATTLE_COLORS
-	call GetCGBLayout
-	call SetPalettes
-	call BatonPass_LinkPlayerSwitch
-
-	ld hl, PassedBattleMonEntrance
-	call CallBattleCore
-
-	jr ResetBatonPassStatus
-
-DoEnemyBatonPass:
-	call BatonPass_LinkEnemySwitch
-
-	; Passed enemy PartyMon entrance
-	xor a
-	ld [wEnemySwitchMonIndex], a
-	farcall EnemySwitch_SetMode
-	farcall SetParticipant
-	ld a, 1
-	ld [wTypeMatchup], a
-
-	ld hl, SpikesDamage
-	call CallBattleCore
-
-	ld hl, RunActivationAbilities
-	call CallBattleCore
-	; fallthrough
-
-ResetBatonPassStatus:
-; Reset status changes that aren't passed by Baton Pass.
-	; Disable isn't passed.
-	call ResetActorDisable
-	farcall BreakAttraction
-	ld a, BATTLE_VARS_SUBSTATUS2
-	call GetBattleVarAddr
-	res SUBSTATUS_TRANSFORMED, [hl]
-	res SUBSTATUS_ENCORED, [hl]
-
-	; New mon hasn't used a move yet.
-	ld a, BATTLE_VARS_LAST_MOVE
-	call GetBattleVarAddr
-	ld [hl], 0
-
-	xor a
-	ld [wPlayerWrapCount], a
-	ld [wEnemyWrapCount], a
-	ret
-
-BatonPass_LinkPlayerSwitch:
-	ld a, [wLinkMode]
-	and a
-	ret z
-
-	ld a, 1
-	ld [wBattlePlayerAction], a
-
-	call LoadStandardMenuDataHeader
-	ld hl, LinkBattleSendReceiveAction
-	call CallBattleCore
-	call CloseWindow
-
-	xor a
-	ld [wBattlePlayerAction], a
-	ret
-
-BatonPass_LinkEnemySwitch:
-	ld a, [wLinkMode]
-	and a
-	ret z
-
-	call LoadStandardMenuDataHeader
-	ld hl, LinkBattleSendReceiveAction
-	call CallBattleCore
-
-	ld a, [wOTPartyCount]
-	add BATTLEACTION_SWITCH1
-	ld b, a
-	ld a, [wBattleAction]
-	cp BATTLEACTION_SWITCH1
-	jr c, .baton_pass
-	cp b
-	jr c, .switch
-
-.baton_pass
-	ld a, [wCurOTMon]
-	add BATTLEACTION_SWITCH1
-	ld [wBattleAction], a
-.switch
-	jp CloseWindow
-
-FailedBatonPass:
+.failed
 	call AnimateFailedMove
 	jp PrintButItFailed
 

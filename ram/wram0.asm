@@ -485,7 +485,12 @@ wAITempItem:: ds 1
 
 wPartyParticipants:: ds 6
 
-	ds 8 ; unused
+wDeferredSwitch:: ds 1
+
+wPlayerSwitchTarget:: ds 1
+wEnemySwitchTarget:: ds 1
+
+	ds 5 ; unused
 
 wBattleScriptBufferLoc:: ds 2
 

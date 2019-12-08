@@ -126,6 +126,30 @@ GetMaxHP::
 	ld c, a
 	ret
 
+GetOpponentMonAttr::
+	call CallOpponentTurn
+GetUserMonAttr::
+	ld a, [hBattleTurn]
+	and a
+	ret z
+	push bc
+	ld bc, wEnemyMonSpecies - wBattleMonSpecies
+	add hl, bc
+	pop bc
+	ret
+
+GetOpponentMonAttr_de::
+	call CallOpponentTurn
+GetUserMonAttr_de::
+	push hl
+	ld h, d
+	ld l, e
+	call GetUserMonAttr
+	ld d, h
+	ld e, l
+	pop hl
+	ret
+
 UpdateOpponentInParty::
 	call CallOpponentTurn
 UpdateUserInParty::

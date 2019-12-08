@@ -1576,6 +1576,14 @@ ForewarnText: ; 0x80f02
 	text "!"
 	prompt
 
+BattleText_EnemyWithdrew::
+	text "<ENEMY>"
+	line "withdrew"
+	cont "@"
+	text_from_ram wEnemyMonNick
+	text "!"
+	prompt
+
 BattleText_WentBackToPlayer:
 	text "<USER> went"
 	line "back to <PLAYER>!"
