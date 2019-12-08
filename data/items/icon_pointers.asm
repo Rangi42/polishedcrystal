@@ -110,6 +110,10 @@ ItemIconPointers:
 	dba SalacBerryIcon
 	dba PetayaBerryIcon
 	dba ApicotBerryIcon
+	dba LansatBerryIcon
+	dba StarfBerryIcon
+	dba EnigmaBerryIcon
+	dba CustapBerryIcon
 	dba JabocaBerryIcon
 	dba RowapBerryIcon
 	dba KeeBerryIcon

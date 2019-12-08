@@ -109,6 +109,10 @@ ItemDescriptions:
 	dw SalacBerryDesc
 	dw PetayaBerryDesc
 	dw ApicotBerryDesc
+	dw LansatBerryDesc
+	dw StarfBerryDesc
+	dw EnigmaBerryDesc
+	dw CustapBerryDesc
 	dw JabocaBerryDesc
 	dw RowapBerryDesc
 	dw KeeBerryDesc
@@ -688,6 +692,22 @@ PetayaBerryDesc:
 ApicotBerryDesc:
 	db   "Raises Spcl.Def"
 	next "in a pinch.@"
+
+LansatBerryDesc:
+	db   "Ups critical hit"
+	next "ratio in a pinch.@"
+
+StarfBerryDesc:
+	db   "Ups a random stat"
+	next "in a pinch.@"
+
+EnigmaBerryDesc:
+	db   "Restores HP on su-"
+	next "per-effective hit.@"
+
+CustapBerryDesc:
+	db   "Moves first in"
+	next "a pinch.@"
 
 JabocaBerryDesc:
 	db   "Damages foe on"
