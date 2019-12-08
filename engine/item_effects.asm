@@ -194,6 +194,15 @@ ItemEffects: ; e73c
 	dw NoEffect         ; WIDE_LENS
 	dw NoEffect         ; WISE_GLASSES
 	dw NoEffect         ; ZOOM_LENS
+	dw NoEffect         ; EJECT_BUTTON
+	dw NoEffect         ; LAGGING_TAIL
+	dw NoEffect         ; IRON_BALL
+	dw NoEffect         ; RING_TARGET
+	dw NoEffect         ; RED_CARD
+	dw NoEffect         ; ABSORB_BULB
+	dw NoEffect         ; CELL_BATTERY
+	dw NoEffect         ; LUMINOUSMOSS
+	dw NoEffect         ; SNOWBALL
 	dw NoEffect         ; EJECT_PACK
 	dw NoEffect         ; ROOM_SERVICE
 	dw NoEffect         ; BLUNDRPOLICY

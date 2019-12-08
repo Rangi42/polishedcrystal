@@ -104,7 +104,6 @@ dsprite: MACRO
 	db (\1 * 8) % $100 + \2, (\3 * 8) % $100 + \4, \5, \6
 endm
 
-
 bcd: MACRO
 	rept _NARG
 	dn ((\1) % 100) / 10, (\1) % 10
@@ -115,7 +114,6 @@ ENDM
 
 sine_wave: MACRO
 ; \1: amplitude
-
 x = 0
 	rept $20
 	; Round up.
@@ -124,15 +122,6 @@ x = x + (\1) * $40000
 	endr
 ENDM
 
-assert: MACRO
-	if !(\1)
-		if _NARG > 1
-			fail \2
-		else
-			fail "Assertion failed: \1"
-		endc
-	endc
-ENDM
 
 genders: MACRO
 ; eight arguments, all MALE ($00) or FEMALE ($80)

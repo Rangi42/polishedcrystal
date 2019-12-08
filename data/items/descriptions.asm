@@ -166,13 +166,22 @@ ItemDescriptions:
 	dw WeakPolicyDesc
 	dw WideLensDesc
 	dw WiseGlassesDesc
+	dw ZoomLensDesc
+	dw EjectButtonDesc
+	dw LaggingTailDesc
+	dw IronBallDesc
+	dw RingTargetDesc
+	dw RedCardDesc
+	dw AbsorbBulbDesc
+	dw CellBatteryDesc
+	dw LuminousMossDesc
+	dw SnowballDesc
 	dw EjectPackDesc
 	dw RoomServiceDesc
 	dw BlundrPolicyDesc
 	dw ThroatSprayDesc
 	dw HeavyBootsDesc
 	dw UtilUmbrellaDesc
-	dw ZoomLensDesc
 	dw MentalHerbDesc
 	dw PowerHerbDesc
 	dw WhiteHerbDesc
@@ -752,8 +761,8 @@ RazorClawDesc:
 	next "hit ratio. (Hold)@"
 
 QuickClawDesc:
-	db   "Raises 1st strike"
-	next "ratio. (Hold)@"
+	db   "Boosts chances of"
+	next "moving 1st. (Hold)@"
 
 KingsRockDesc:
 RazorFangDesc:
@@ -870,7 +879,7 @@ RockyHelmetDesc:
 
 SafeGogglesDesc:
 	db   "Protects from"
-	next "weather effects.@"
+	next "weather damage.@"
 
 ShedShellDesc:
 	db   "Allows switching"
@@ -1137,14 +1146,69 @@ MirageMailDesc:
 	db   "Mew-print Mail."
 	next "(Hold)@"
 
+EjectButtonDesc:
+	db   "Switches out when"
+	next "hit. (Hold)@"
+
+LaggingTailDesc:
+	db   "Always moves last."
+	next "(Hold)@"
+
+IronBallDesc:
+	db   "Lowers Speed and"
+	next "grounds. (Hold)@" 
+
+RingTargetDesc:
+	db   "Loses type immun-"
+	next "ities. (Hold)@"
+
+RedCardDesc:
+	db   "Switches out foe"
+	next "when hit. (Hold)@"
+
+AbsorbBulbDesc:
+	db   "Raises Spcl.Atk on"
+	next "a Water hit.@"
+
+CellBatteryDesc:
+	db   "Raises Attack on"
+	next "an Electric hit.@"
+
+LuminousMossDesc:
+	db   "Raises Spcl.Def on"
+	next "a Water hit.@"
+
+SnowballDesc:
+	db   "Raises Attack on"
+	next "an Ice hit.@"
+
 EjectPackDesc:
+	db   "Switches out when"
+	next "stats fall. (Hold)@"
+
 RoomServiceDesc:
+	db   "Lowers Speed in"
+	next "Trick Room. (Hold)@"
+
 BlundrPolicyDesc:
+	db   "Raises Speed when"
+	next "a move misses.@"
+
 ThroatSprayDesc:
+	db   "Raises Spcl.Atk on"
+	next "a sound move.@"
+
 HeavyBootsDesc:
+	db   "Protects from"
+	next "traps. (Hold)@"
+
 UtilUmbrellaDesc:
+	db   "Protects from"
+	next "weather effects.@"
+
 MintDesc:
-	db   "?@"
+	db   "A fragrant sprig"
+	next "of mint.@"
 
 
 BicycleDesc:

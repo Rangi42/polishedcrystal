@@ -192,6 +192,16 @@ ItemNameOrder:
 	db NAM_WISE_GLASSES
 	db NAM_ZOOM_LENS
 
+	db NAM_EJECT_BUTTON
+	db NAM_LAGGING_TAIL
+	db NAM_IRON_BALL
+	db NAM_RING_TARGET
+	db NAM_RED_CARD
+	db NAM_ABSORB_BULB
+	db NAM_CELL_BATTERY
+	db NAM_LUMINOUSMOSS
+	db NAM_SNOWBALL
+
 	db NAM_EJECT_PACK
 	db NAM_ROOM_SERVICE
 	db NAM_BLUNDRPOLICY
@@ -270,7 +280,7 @@ ItemNameOrder:
 	db NAM_MUSIC_MAIL
 	db NAM_MIRAGE_MAIL
 
-	; +1 due to "no item"
+	; +1 due to NO_ITEM
 	assert (@ - ItemNameOrder) <= NUM_ITEMS+1, "ItemNameOrder: Too many items"
 	assert (@ - ItemNameOrder) >= NUM_ITEMS+1, "ItemNameOrder: Too few items"
 
