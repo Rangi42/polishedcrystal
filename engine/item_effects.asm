@@ -837,6 +837,7 @@ BallMultiplierFunctionTable:
 	dbw DIVE_BALL,   DiveBallMultiplier
 	dbw QUICK_BALL,  QuickBallMultiplier
 	dbw DUSK_BALL,   DuskBallMultiplier
+	dbw DREAM_BALL,  DreamBallMultiplier
 	db $ff
 
 UltraBallMultiplier:
@@ -1373,6 +1374,22 @@ rept 3
 	jr c, .max
 endr
 	ret
+
+.max
+	ld b, $ff
+	ret
+
+DreamBallMultiplier:
+; multiply catch rate by 4 if mon is asleep
+	ld a, [wEnemyMonStatus]
+	and SLP
+	ret z
+
+	sla b
+	jr c, .max
+
+	sla b
+	ret nc
 
 .max
 	ld b, $ff
