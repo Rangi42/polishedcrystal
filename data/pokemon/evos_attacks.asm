@@ -2943,7 +2943,7 @@ ChikoritaEvosAttacks:
 	db 9, POISONPOWDER
 	db 12, HEALINGLIGHT ; Synthesis → similar move
 	db 17, REFLECT
-	db 20, DISARM_VOICE ; Magical Leaf → new move
+	db 19, DISARM_VOICE ; Magical Leaf → new move
 	db 23, ENERGY_BALL ; Natural Gift → tutor move
 	db 28, ANCIENTPOWER ; Sweet Scent → HGSS tutor move
 	db 31, LIGHT_SCREEN
@@ -2999,7 +2999,7 @@ MeganiumEvosAttacks:
 	db 72, OUTRAGE ; HGSS tutor move
 	db 80, MOONBLAST ; new move
 	db 0 ; no more level-up moves
-
+	
 CyndaquilEvosAttacks:
 	db EVOLVE_LEVEL, 14, QUILAVA
 	db 0 ; no more evolutions
@@ -3008,6 +3008,7 @@ CyndaquilEvosAttacks:
 	db 6, SMOKESCREEN
 	db 10, EMBER
 	db 13, QUICK_ATTACK
+	db 15, MUD_SLAP
 	db 19, FLAME_WHEEL
 	db 22, DEFENSE_CURL
 	db 28, DIG ; Flame Charge → TM move
@@ -3029,6 +3030,7 @@ QuilavaEvosAttacks:
 	db 6, SMOKESCREEN
 	db 10, EMBER
 	db 13, QUICK_ATTACK
+	db 17, MUD_SLAP
 	db 20, FLAME_WHEEL
 	db 24, DEFENSE_CURL
 	db 31, SWIFT
@@ -3041,25 +3043,26 @@ QuilavaEvosAttacks:
 	db 68, EARTHQUAKE ; Burn Up → TM move
 	db 75, FLARE_BLITZ ; Eruption → egg move
 	db 0 ; no more level-up moves
-
+	
 TyphlosionEvosAttacks:
 	db 0 ; no more evolutions
-	db 1, FIRE_PUNCH ; evolution move
+	db 1, EARTH_POWER ; evolution move
 	db 1, TACKLE
 	db 1, LEER
 	db 6, SMOKESCREEN
 	db 10, EMBER
 	db 13, QUICK_ATTACK
+	db 17, MUD_SLAP
 	db 20, FLAME_WHEEL
 	db 24, DEFENSE_CURL
 	db 31, SWIFT
 	db 35, DIG ; Flame Charge → TM move
 	db 43, REVERSAL ; Lava Plume → egg move
 	db 48, FLAMETHROWER
-	db 56, EARTH_POWER ; Inferno → new move
+	db 56, FIRE_BLAST ; Inferno → new move
 	db 61, ROLLOUT
 	db 69, DOUBLE_EDGE
-	db 74, EARTHQUAKE ; Burn Up → TM move
+	db 74, NASTY_PLOT ; Burn Up → TM move
 	db 81, FLARE_BLITZ ; Eruption → egg move
 	db 0 ; no more level-up moves
 
@@ -3072,7 +3075,7 @@ TotodileEvosAttacks:
 	db 8, RAGE
 	db 13, BITE
 	db 15, SCARY_FACE
-	db 20, METAL_CLAW ; Ice Fang → egg move
+	db 19, METAL_CLAW ; Ice Fang → egg move
 	db 22, REVERSAL ; Flail → similar move
 	db 27, AGILITY ; Feraligatr move
 	db 29, CRUNCH
@@ -3631,13 +3634,13 @@ SunkernEvosAttacks:
 	db 22, GIGA_DRAIN
 	db 25, AGILITY ; Endeavor → new move
 	db 28, HEALINGLIGHT ; Synthesis → similar move
-	db 31, EARTH_POWER ; Natural Gift → tutor move
+	db 30, EARTH_POWER ; Natural Gift → tutor move
 	db 34, SOLAR_BEAM
 	db 37, DOUBLE_EDGE
 	db 40, SUNNY_DAY
 	db 43, SEED_BOMB
 	db 0 ; no more level-up moves
-
+	
 SunfloraEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, SPLASH ; Growth → Hoppip move
@@ -3655,9 +3658,8 @@ endc
 	db 22, GIGA_DRAIN
 	db 25, AGILITY ; Bullet Seed → TM move
 	db 28, PETAL_DANCE
-if DEF(FAITHFUL)
-	db 31, EARTH_POWER ; Natural Gift → tutor move
-else
+	db 30, EARTH_POWER ; Natural Gift → tutor move
+if !DEF(FAITHFUL)
 	db 31, FLAMETHROWER ; Natural Gift → TM move
 endc
 	db 34, SOLAR_BEAM
