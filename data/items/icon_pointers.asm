@@ -99,6 +99,12 @@ ItemIconPointers:
 	dba LumBerryIcon
 	dba SitrusBerryIcon
 	dba FigyBerryIcon
+	dba PomegBerryIcon
+	dba KelpsyBerryIcon
+	dba QualotBerryIcon
+	dba HondewBerryIcon
+	dba GrepaBerryIcon
+	dba TamatoBerryIcon
 	dba LiechiBerryIcon
 	dba GanlonBerryIcon
 	dba SalacBerryIcon

@@ -125,6 +125,12 @@ ItemEffects: ; e73c
 	dw HealStatusEffect ; LUM_BERRY
 	dw RestoreHPEffect  ; SITRUS_BERRY
 	dw RestoreHPEffect  ; FIGY_BERRY
+	dw NoEffect         ; POMEG_BERRY
+	dw NoEffect         ; KELPSY_BERRY
+	dw NoEffect         ; QUALOT_BERRY
+	dw NoEffect         ; HONDEW_BERRY
+	dw NoEffect         ; GREPA_BERRY
+	dw NoEffect         ; TAMATO_BERRY
 	dw NoEffect         ; LIECHI_BERRY
 	dw NoEffect         ; GANLON_BERRY
 	dw NoEffect         ; SALAC_BERRY
@@ -132,7 +138,7 @@ ItemEffects: ; e73c
 	dw NoEffect         ; APICOT_BERRY
 	dw NoEffect         ; JABOCA_BERRY
 	dw NoEffect         ; ROWAP_BERRY
-	dw NoEffect         ; ROWAP_BERRY
+	dw NoEffect         ; KEE_BERRY
 	dw NoEffect         ; MARANGABERRY
 	dw RestoreHPEffect  ; BERRY_JUICE
 	dw NoEffect         ; SILK_SCARF

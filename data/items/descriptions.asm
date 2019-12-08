@@ -98,6 +98,12 @@ ItemDescriptions:
 	dw LumBerryDesc
 	dw SitrusBerryDesc
 	dw FigyBerryDesc
+	dw PomegBerryDesc
+	dw KelpsyBerryDesc
+	dw QualotBerryDesc
+	dw HondewBerryDesc
+	dw GrepaBerryDesc
+	dw TamatoBerryDesc
 	dw LiechiBerryDesc
 	dw GanlonBerryDesc
 	dw SalacBerryDesc
@@ -638,6 +644,30 @@ SitrusBerryDesc:
 FigyBerryDesc:
 	db   "Self-restore item."
 	next "(1/2 max HP, Hold)@"
+
+PomegBerryDesc:
+	db   "Raises friendship"
+	next "but lowers HP.@"
+
+KelpsyBerryDesc:
+	db   "Raises friendship"
+	next "but lowers Attack.@"
+
+QualotBerryDesc:
+	db   "Raises friendship,"
+	next "lowers Defense.@"
+
+HondewBerryDesc:
+	db   "Raises friendship,"
+	next "lowers Spcl.Atk.@"
+
+GrepaBerryDesc:
+	db   "Raises friendship,"
+	next "lowers Spcl.Def.@"
+
+TamatoBerryDesc:
+	db   "Raises friendship"
+	next "but lowers Speed.@"
 
 LiechiBerryDesc:
 	db   "Raises Attack in"
