@@ -786,6 +786,7 @@ DeferredSwitch:
 ForceDeferredSwitch:
 ; player switches out due to "switch mode"
 	; Check if we can switch out
+	push hl
 	bit SWITCH_TARGET, [hl]
 	jr nz, .check_target_alive
 	farcall CheckAnyOtherAliveMons
@@ -793,6 +794,7 @@ ForceDeferredSwitch:
 .check_target_alive
 	farcall CheckAnyOtherAliveOpponentMons
 .alive_check_done
+	pop hl
 	jp z, .all_done
 
 	; Do item consumption
