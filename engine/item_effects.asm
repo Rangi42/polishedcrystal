@@ -125,12 +125,12 @@ ItemEffects: ; e73c
 	dw HealStatusEffect ; LUM_BERRY
 	dw RestoreHPEffect  ; SITRUS_BERRY
 	dw RestoreHPEffect  ; FIGY_BERRY
-	dw LowerEVEffect    ; POMEG_BERRY
-	dw LowerEVEffect    ; KELPSY_BERRY
-	dw LowerEVEffect    ; QUALOT_BERRY
-	dw LowerEVEffect    ; HONDEW_BERRY
-	dw LowerEVEffect    ; GREPA_BERRY
-	dw LowerEVEffect    ; TAMATO_BERRY
+	dw LowerEVBerry     ; POMEG_BERRY
+	dw LowerEVBerry     ; KELPSY_BERRY
+	dw LowerEVBerry     ; QUALOT_BERRY
+	dw LowerEVBerry     ; HONDEW_BERRY
+	dw LowerEVBerry     ; GREPA_BERRY
+	dw LowerEVBerry     ; TAMATO_BERRY
 	dw NoEffect         ; LIECHI_BERRY
 	dw NoEffect         ; GANLON_BERRY
 	dw NoEffect         ; SALAC_BERRY
@@ -1495,7 +1495,7 @@ EvoStoneEffect:
 	jp WontHaveAnyEffectMessage
 ; ee3d
 
-LowerEVEffect:
+LowerEVBerry:
 	ld b, PARTYMENUACTION_HEALING_ITEM
 	call UseItem_SelectMon
 	jp c, ItemNotUsed_ExitMenu
@@ -1504,7 +1504,8 @@ LowerEVEffect:
 	add hl, bc
 	ld a, [hl]
 	and a
-	jp z, WontHaveAnyEffectMessage
+	push af
+	jr z, .check_happiness
 
 	sub 10
 	jr nc, .ev_value_ok
@@ -1514,12 +1515,24 @@ LowerEVEffect:
 	ld [hl], a
 	farcall UpdatePkmnStats
 
+.check_happiness
+	ld a, MON_HAPPINESS
+	call GetPartyParamLocation
+	ld a, [hl]
+	inc a
+	jr nz, .happiness_changed
+	pop af
+	jr nz, .ev_changed
+	jp WontHaveAnyEffectMessage
+
+.happiness_changed
+	pop af
+	ld c, HAPPINESS_USEDEVBERRY
+	farcall ChangeHappiness
+.ev_changed
 	call GetStatStringAndPlayFullHealSFX
 	ld hl, ItemHappinessRoseButStatFellText
 	call PrintText
-
-	ld c, HAPPINESS_USEDEVBERRY
-	farcall ChangeHappiness
 	jp UseDisposableItem
 
 ItemHappinessRoseButStatFellText:
