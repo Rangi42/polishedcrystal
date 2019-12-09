@@ -43,10 +43,11 @@ CHARMED_SHINY_NUMERATOR EQU 48 ; 48/65536 = 3/4096
 	const STEP_SPIN
 	const STEP_FAST ; same as STEP_RUN but without doubling animation speed
 
-const_value = 1
-	const HAPPINESS_GAINLEVEL         ; 01
-	const HAPPINESS_USEDITEM          ; 02
-	const HAPPINESS_USEDXITEM         ; 03
+	const_def
+	const HAPPINESS_GAINLEVEL         ; 00
+	const HAPPINESS_USEDITEM          ; 01
+	const HAPPINESS_USEDXITEM         ; 02
+	const HAPPINESS_USEDEVBERRY       ; 03
 	const HAPPINESS_GYMBATTLE         ; 04
 	const HAPPINESS_LEARNMOVE         ; 05
 	const HAPPINESS_FAINTED           ; 06
