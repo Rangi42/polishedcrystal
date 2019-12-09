@@ -774,7 +774,16 @@ UnknownText_0x1c5b7f::
 	text "?"
 	done
 
-UnknownText_0x1c5b9a::
+_ItemHappinessRoseButStatFellText::
+	text_from_ram wStringBuffer1
+	text " became"
+	line "friendly. Base"
+	cont "@"
+	text_from_ram wStringBuffer2
+	text " fell!"
+	prompt
+
+_ItemStatRoseText::
 	text_from_ram wStringBuffer1
 	text "'s"
 	line "@"

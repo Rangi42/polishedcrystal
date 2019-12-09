@@ -125,17 +125,21 @@ ItemEffects: ; e73c
 	dw HealStatusEffect ; LUM_BERRY
 	dw RestoreHPEffect  ; SITRUS_BERRY
 	dw RestoreHPEffect  ; FIGY_BERRY
-	dw NoEffect         ; POMEG_BERRY
-	dw NoEffect         ; KELPSY_BERRY
-	dw NoEffect         ; QUALOT_BERRY
-	dw NoEffect         ; HONDEW_BERRY
-	dw NoEffect         ; GREPA_BERRY
-	dw NoEffect         ; TAMATO_BERRY
+	dw LowerEVEffect    ; POMEG_BERRY
+	dw LowerEVEffect    ; KELPSY_BERRY
+	dw LowerEVEffect    ; QUALOT_BERRY
+	dw LowerEVEffect    ; HONDEW_BERRY
+	dw LowerEVEffect    ; GREPA_BERRY
+	dw LowerEVEffect    ; TAMATO_BERRY
 	dw NoEffect         ; LIECHI_BERRY
 	dw NoEffect         ; GANLON_BERRY
 	dw NoEffect         ; SALAC_BERRY
 	dw NoEffect         ; PETAYA_BERRY
 	dw NoEffect         ; APICOT_BERRY
+	dw NoEffect         ; LANSAT_BERRY
+	dw NoEffect         ; STARF_BERRY
+	dw NoEffect         ; ENIGMA_BERRY
+	dw NoEffect         ; CUSTAP_BERRY
 	dw NoEffect         ; JABOCA_BERRY
 	dw NoEffect         ; ROWAP_BERRY
 	dw NoEffect         ; KEE_BERRY
@@ -1491,18 +1495,43 @@ EvoStoneEffect:
 	jp WontHaveAnyEffectMessage
 ; ee3d
 
+LowerEVEffect:
+	ld b, PARTYMENUACTION_HEALING_ITEM
+	call UseItem_SelectMon
+	jp c, ItemNotUsed_ExitMenu
+
+	call SetUpEVModifier
+	add hl, bc
+	ld a, [hl]
+	and a
+	jp z, WontHaveAnyEffectMessage
+
+	sub 10
+	jr nc, .ev_value_ok
+	xor a
+
+.ev_value_ok
+	ld [hl], a
+	farcall UpdatePkmnStats
+
+	call GetStatStringAndPlayFullHealSFX
+	ld hl, ItemHappinessRoseButStatFellText
+	call PrintText
+
+	ld c, HAPPINESS_USEDEVBERRY
+	farcall ChangeHappiness
+	jp UseDisposableItem
+
+ItemHappinessRoseButStatFellText:
+	text_jump _ItemHappinessRoseButStatFellText
+	db "@"
 
 VitaminEffect: ; ee3d
 	ld b, PARTYMENUACTION_HEALING_ITEM
 	call UseItem_SelectMon
 	jp c, ItemNotUsed_ExitMenu
 
-	call UseItem_GetBaseDataAndNickParameters
-	call GetEVRelativePointer
-
-	ld a, MON_EVS
-	call GetPartyParamLocation
-
+	call SetUpEVModifier
 	add hl, bc
 	ld a, [hl]
 	cp 252
@@ -1519,8 +1548,30 @@ VitaminEffect: ; ee3d
 	ld [hl], a
 	farcall UpdatePkmnStats
 
-	call GetEVRelativePointer
+	call GetStatStringAndPlayFullHealSFX
+	ld hl, ItemStatRoseText
+	call PrintText
 
+	ld c, HAPPINESS_USEDITEM
+	farcall ChangeHappiness
+	jp UseDisposableItem
+; ee8c
+
+
+ItemStatRoseText: ; 0xeea6
+	; 's @ rose.
+	text_jump _ItemStatRoseText
+	db "@"
+; 0xeeab
+
+SetUpEVModifier:
+	call UseItem_GetBaseDataAndNickParameters
+	call GetEVRelativePointer
+	ld a, MON_EVS
+	jp GetPartyParamLocation
+
+GetStatStringAndPlayFullHealSFX:
+	call GetEVRelativePointer
 	ld hl, StatStrings
 	add hl, bc
 	add hl, bc
@@ -1530,25 +1581,7 @@ VitaminEffect: ; ee3d
 	ld de, wStringBuffer2
 	ld bc, ITEM_NAME_LENGTH
 	rst CopyBytes
-
-	call Play_SFX_FULL_HEAL
-
-	ld hl, Text_StatRose
-	call PrintText
-
-	ld c, HAPPINESS_USEDITEM
-	farcall ChangeHappiness
-
-	jp UseDisposableItem
-; ee8c
-
-
-Text_StatRose: ; 0xeea6
-	; 's @  rose.
-	text_jump UnknownText_0x1c5b9a
-	db "@"
-; 0xeeab
-
+	jp Play_SFX_FULL_HEAL
 
 StatStrings: ; eeab
 	dw .health
