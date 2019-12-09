@@ -858,11 +858,18 @@ ForceDeferredSwitch:
 	push hl
 	bit SWITCH_PURSUIT, [hl]
 	call nz, PursuitSwitch
+	call UpdateUserInParty
 
 	; If we ended up fainting, abort the switch
 	call HasUserFainted
 	pop hl
 	jr z, .all_done
+
+	; Regenerator, Natural Cure
+	push hl
+	farcall RunSwitchAbilities
+	call UpdateUserInParty
+	pop hl
 
 	; Withdraw animation
 	bit SWITCH_BATON_PASS, [hl]
@@ -1155,6 +1162,7 @@ endr
 	jr z, .got_partymon
 	ld hl, wOTPartyMon1Species
 .got_partymon
+	ld a, [wCurPartyMon]
 	call GetPartyLocation
 	ld de, wBattleMonSpecies
 	call GetUserMonAttr_de
