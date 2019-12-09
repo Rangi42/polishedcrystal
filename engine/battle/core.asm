@@ -840,7 +840,6 @@ ForceDeferredSwitch:
 	push hl
 	bit SWITCH_PURSUIT, [hl]
 	call nz, PursuitSwitch
-	call UpdateUserInParty
 
 	; If we ended up fainting, abort the switch
 	call HasUserFainted
@@ -3845,40 +3844,23 @@ HandleAirBalloon:
 	xor a
 	ret
 
-PursuitSwitch: ; 3dc5b
+PursuitSwitch:
+	call CallOpponentTurn
+.Function:
+	call CheckOpponentWentFirst
+	ret z
+
 	ld a, BATTLE_VARS_MOVE
 	call GetBattleVar
 	ld b, a
 	call GetMoveEffect
 	ld a, b
 	cp EFFECT_PURSUIT
-	jp nz, PursuitSwitch_done
-
-	ld a, [hBattleTurn]
-	and a
-	jr nz, .enemy
-	farcall DoPlayerTurn
-	jr .finish_pursuit
-.enemy
-	farcall DoEnemyTurn
-.finish_pursuit
+	ret nz
+	call PerformMove
 	ld a, BATTLE_VARS_MOVE
 	call GetBattleVarAddr
-	xor a
-	ld [hl], a
-
-	ld a, [hBattleTurn]
-	and a
-	jr z, .check_enemy_fainted
-	call UpdateBattleMonInParty
-	call HasPlayerFainted
-	jr nz, PursuitSwitch_done
-	jr .done_fainted
-.check_enemy_fainted
-	call HasEnemyFainted
-	jr nz, PursuitSwitch_done
-.done_fainted
-	scf
+	ld [hl], 0
 	ret
 
 PursuitSwitch_done
