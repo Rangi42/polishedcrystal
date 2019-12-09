@@ -77,30 +77,12 @@ DoBattle: ; 3c000
 	jr .loop2
 
 .alive2
-	ld a, [wCurBattleMon]
-	ld [wLastPlayerMon], a
 	ld a, [wCurPartyMon]
-	ld [wCurBattleMon], a
 	inc a
-	ld hl, wPartySpecies - 1
-	ld c, a
-	ld b, 0
-	add hl, bc
-	ld a, [hl]
-	ld [wCurPartySpecies], a
-	ld [wTempBattleMonSpecies], a
+	ld [wPlayerSwitchTarget], a
 	call SlidePlayerPicOut
-	call LoadTileMapToTempTileMap
-	call SetParticipant
-	call InitBattleMon
-	call ResetPlayerStatLevels
-	call SendOutPkmnText
-	call NewBattleMonStatus
-	call BreakAttraction
-	call SendOutPlayerMon
-	call EmptyBattleTextBox
-	call LoadTileMapToTempTileMap
 	call SetPlayerTurn
+	call SendInUserPkmn
 	ld a, [wLinkMode]
 	and a
 	jr z, .not_linked_2
@@ -1317,6 +1299,7 @@ endc
 	ld a, [wDeferredSwitch]
 	bit SWITCH_FORCED, a
 	call nz, StdBattleTextBox
+	call LoadTileMapToTempTileMap
 	; fallthrough
 
 SetParticipant::
