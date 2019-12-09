@@ -1500,12 +1500,16 @@ LowerEVBerry:
 	call UseItem_SelectMon
 	jp c, ItemNotUsed_ExitMenu
 
+	ld a, MON_HAPPINESS
+	call GetPartyParamLocation
+	ld a, [hl]
+	inc a
+	push af
 	call SetUpEVModifier
 	add hl, bc
-	ld a, [hl]
-	and a
-	push af
-	jr z, .check_happiness
+	pop af
+	or [hl]
+	jp z, WontHaveAnyEffectMessage
 
 	sub 10
 	jr nc, .ev_value_ok
@@ -1514,22 +1518,8 @@ LowerEVBerry:
 .ev_value_ok
 	ld [hl], a
 	farcall UpdatePkmnStats
-
-.check_happiness
-	ld a, MON_HAPPINESS
-	call GetPartyParamLocation
-	ld a, [hl]
-	inc a
-	jr nz, .happiness_changed
-	pop af
-	jr nz, .ev_changed
-	jp WontHaveAnyEffectMessage
-
-.happiness_changed
-	pop af
 	ld c, HAPPINESS_USEDEVBERRY
 	farcall ChangeHappiness
-.ev_changed
 	call GetStatStringAndPlayFullHealSFX
 	ld hl, ItemHappinessRoseButStatFellText
 	call PrintText
