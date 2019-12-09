@@ -1965,13 +1965,7 @@ BattleCommand_checkhit:
 	cp EFFECT_PURSUIT
 	ret nz
 
-	ld a, [hBattleTurn]
-	and a
-	ld hl, wEnemyIsSwitching
-	jr z, .ok
-	ld hl, wPlayerIsSwitching
-.ok
-	ld a, [hl]
+	ld a, [wDeferredSwitch]
 	and a
 	jr nz, .pursuit_hits
 	or 1

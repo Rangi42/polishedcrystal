@@ -1239,6 +1239,10 @@ endc
 	bit SWITCH_FORCED, a
 	call z, UserSentOutText
 
+	ld b, CGB_BATTLE_COLORS
+	call GetCGBLayout
+	call SetPalettes
+
 	; For enemy, we need to mark as seen and set base exp unless link/BT
 	ld a, [hBattleTurn]
 	and a
@@ -1621,6 +1625,8 @@ LeppaRestorePP:
 	ld [hl], d
 	ret
 
+SubtractHPFromOpponent:
+	call CallOpponentTurn
 SubtractHPFromUser:
 	ld a, [hBattleTurn]
 	and a
@@ -1640,10 +1646,6 @@ SubtractHPFromPlayer:
 	ld [hBattleTurn], a
 	ret
 
-SubtractHPFromOpponent:
-	ld a, [hBattleTurn]
-	and a
-	jr nz, SubtractHPFromPlayer
 SubtractHPFromEnemy:
 	ld hl, wEnemyMonMaxHP
 	ld a, [hli]
