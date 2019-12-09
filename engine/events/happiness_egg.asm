@@ -32,7 +32,7 @@ CheckFirstMonIsEgg: ; 71ac
 
 ChangeHappiness: ; 71c2
 ; Perform happiness action c on wCurPartyMon
-
+; Returns non-carry if happiness changed, carry otherwise
 	ld a, [wCurPartyMon]
 	inc a
 	ld e, a
@@ -41,11 +41,16 @@ ChangeHappiness: ; 71c2
 	add hl, de
 	ld a, [hl]
 	cp EGG
+	scf
 	ret z
 
 	ld hl, wPartyMon1Happiness
 	ld a, [wCurPartyMon]
 	call GetPartyLocation
+	ld a, [hl]
+	inc a ; cp 255
+	scf
+	ret z
 
 	ld d, h
 	ld e, l
@@ -100,6 +105,7 @@ ChangeHappiness: ; 71c2
 	ret nz
 	ld a, [de]
 	ld [wBattleMonHappiness], a
+	xor a
 	ret
 
 INCLUDE "data/events/happiness_changes.asm"

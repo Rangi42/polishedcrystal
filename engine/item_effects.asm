@@ -1504,7 +1504,8 @@ LowerEVEffect:
 	add hl, bc
 	ld a, [hl]
 	and a
-	jp z, WontHaveAnyEffectMessage
+	push af
+	jr z, .check_happiness
 
 	sub 10
 	jr nc, .ev_value_ok
@@ -1514,12 +1515,20 @@ LowerEVEffect:
 	ld [hl], a
 	farcall UpdatePkmnStats
 
+.check_happiness
+	ld c, HAPPINESS_USEDEVBERRY
+	farcall ChangeHappiness
+	jr nc, .happiness_changed
+	pop af
+	jr nz, .ev_changed
+	jp WontHaveAnyEffectMessage
+
+.happiness_changed
+	pop af
+.ev_changed
 	call GetStatStringAndPlayFullHealSFX
 	ld hl, ItemHappinessRoseButStatFellText
 	call PrintText
-
-	ld c, HAPPINESS_USEDEVBERRY
-	farcall ChangeHappiness
 	jp UseDisposableItem
 
 ItemHappinessRoseButStatFellText:
