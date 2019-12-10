@@ -798,6 +798,8 @@ ResolveFaints:
 
 	; Figure out if any side is out of Pokémon
 	call .check_battle_over
+	xor a
+	ld [wWhichMonFaintedFirst], a
 	ld a, [wBattleEnded]
 	dec a
 	sub 1
