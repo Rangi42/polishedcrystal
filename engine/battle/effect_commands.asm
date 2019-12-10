@@ -2776,6 +2776,13 @@ BattleCommand_supereffectivetext: ; 351ad
 	cp HELD_WEAKNESS_POLICY
 	ret nz
 
+	ld a, [wAttackMissed]
+	ld b, a
+	ld a, [wEffectFailed]
+	ld c, a
+	xor a
+	ld [wEffectFailed], a
+	push bc
 	push hl
 	call SwitchTurn
 	call ResetMiss
@@ -2821,6 +2828,11 @@ BattleCommand_supereffectivetext: ; 351ad
 	call ConsumeUserItem
 .end
 	pop hl
+	pop bc
+	ld a, b
+	ld [wAttackMissed], a
+	ld a, c
+	ld [wEffectFailed], a
 	jp SwitchTurn
 .print_msg
 	ld b, a
