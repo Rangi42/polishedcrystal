@@ -4547,11 +4547,6 @@ BattleCommand_sketch: ; 35a74
 ; If the opponent has a substitute up, fail.
 	call CheckSubstituteOpp
 	jp nz, .fail
-; If the opponent is transformed, fail.
-	ld a, BATTLE_VARS_SUBSTATUS2_OPP
-	call GetBattleVarAddr
-	bit SUBSTATUS_TRANSFORMED, [hl]
-	jp nz, .fail
 ; If the user is transformed, fail.
 	ld a, BATTLE_VARS_SUBSTATUS2
 	call GetBattleVarAddr
