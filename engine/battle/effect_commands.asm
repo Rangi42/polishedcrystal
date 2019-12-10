@@ -2825,7 +2825,7 @@ BattleCommand_supereffectivetext: ; 351ad
 .print_msg
 	ld b, a
 	inc b
-	farcall GetStatName
+	call GetStatName
 	ld hl, BattleText_ItemSharplyRaised
 	jp StdBattleTextBox
 
@@ -8060,7 +8060,26 @@ BattleCommand_trickroom:
 	ld [hl], 5
 	call AnimateCurrentMove
 	ld hl, TrickRoomText
-	jp StdBattleTextBox
+	call StdBattleTextBox
+
+	call GetUserItemAfterUnnerve
+	ld a, b
+	cp HELD_ROOM_SERVICE
+	ret nz
+
+	ld b, SPEED + 1
+	call GetStatName
+	dec b
+	call LowerStat
+	ld a, [wFailedMessage]
+	and a
+	ret nz
+
+	call GetCurItemName
+	farcall ItemRecoveryAnim
+	ld hl, BattleText_ItemLowered
+	call StdBattleTextBox
+	jp ConsumeUserItem
 
 .failed
 	call AnimateFailedMove
