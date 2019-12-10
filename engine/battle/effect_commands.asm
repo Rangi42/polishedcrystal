@@ -8150,6 +8150,13 @@ BattleCommand_selfdestruct: ; 37380
 	call GetOpponentAbilityAfterMoldBreaker
 	cp DAMP
 	ret z ; nullification ability checks handle messages
+	ld hl, wWhichMonFaintedFirst
+	and a
+	jr nz, .faint_target_chosen
+	ld a, [hBattleTurn]
+	inc a
+	ld [hl], a
+.faint_target_chosen
 	ld a, BATTLEANIM_PLAYER_DAMAGE
 	ld [wNumHits], a
 	ld c, 3

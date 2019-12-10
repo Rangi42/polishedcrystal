@@ -15,42 +15,7 @@ HasUserEndturnSwitched:
 	ret
 
 CheckFaint:
-	ld a, [hSerialConnectionStatus]
-	cp USING_EXTERNAL_CLOCK
-	jr z, .enemy_first
-	call .check_player
-	call nc, .check_enemy
-	ret
-
-.enemy_first
-	call .check_enemy
-	call nc, .check_player
-	ret
-
-.check_player
-	call HasPlayerFainted
-	jr nz, .ok
-	farcall HandlePlayerMonFaint
-	ld a, [wBattleEnded]
-	and a
-	jr nz, .over
-	ret
-
-.check_enemy
-	call HasEnemyFainted
-	jr nz, .ok
-	farcall HandleEnemyMonFaint
-	ld a, [wBattleEnded]
-	and a
-	jr nz, .over
-	ret
-
-.ok
-	and a
-	ret
-.over
-	scf
-	ret
+	farjp ResolveFaints
 
 HandleBetweenTurnEffects:
 ; Things handled at endturn. Things commented out are currently not in Polished.

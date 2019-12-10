@@ -757,7 +757,101 @@ PerformMove:
 	ld a, BATTLE_VARS_SUBSTATUS2_OPP
 	call GetBattleVarAddr
 	res SUBSTATUS_DESTINY_BOND, [hl]
+	; fallthrough
+
+ResolveFaints:
+; Deal with unresolved faint events, experience, battle loss check, etc.
+; Returns carry if battle is over.
+	ld a, [hBattleTurn]
+	push af
+
+	; If faint animations hasn't run yet, do that now
+	call SetFastestTurn
+	call FaintUserPokemon
+	call SwitchTurn
+	call FaintUserPokemon
+	call SwitchTurn
+
+	pop af
+	ld [hBattleTurn], a
+
+	call UpdateBattleMonInParty
+	call UpdateEnemyMonInParty
+
+	; Play victory music if wildmon fainted and we still have alive mons
+	ld a, [wBattleMode]
+	dec a
+	jr nz, .not_wild
+
+	call HasEnemyFainted
+	jr nz, .not_wild
+
+	call CheckPlayerPartyForFitPkmn
+	ld a, d
+	and a
+	call nz, PlayVictoryMusic
+
+.not_wild
+	; If enemy has fainted, maybe award experience
+	call HasEnemyFainted
+	call z, GiveExperience
+
+	; Figure out if any side is out of Pokémon
+	call .check_battle_over
+	ld a, [wBattleEnded]
+	dec a
+	sub 1
 	ret
+
+.check_battle_over
+	call CheckPlayerPartyForFitPkmn
+	ld a, d
+	and a
+	jr nz, .player_not_out
+	call HasEnemyFainted
+	jr nz, .lost
+
+	ld a, [wBattleMode]
+	dec a
+	jr z, .draw
+	call CheckEnemyTrainerDefeated
+	jr z, .draw
+
+.lost
+	jp LostBattle
+
+.player_not_out
+	call HasEnemyFainted
+	ret nz
+
+	ld a, [wBattleMode]
+	dec a
+	jr z, .won
+	call CheckEnemyTrainerDefeated
+	jr z, .wontrainer
+	ret
+
+.won
+	ld a, 1
+	ld [wBattleEnded], a
+	ret
+
+.draw
+	; In-game draws count as losses. Sorry.
+	ld a, [wLinkMode]
+	and a
+	jr nz, .draw2
+
+	ld a, [wInBattleTowerBattle]
+	bit 0, a
+	jr z, .lost
+
+.draw2
+	ld a, [wWhichMonFaintedFirst]
+	dec a
+	jr z, .lost
+.wontrainer
+	jp WinTrainerBattle
 
 DeferredSwitch:
 ; user switches out
@@ -1105,7 +1199,6 @@ endr
 	ld [hli], a
 	ld [hl], a
 
-	ld a, BASE_STAT_LEVEL
 	ld bc, NUM_LEVEL_STATS
 	ld a, [hBattleTurn]
 	and a
@@ -1113,6 +1206,7 @@ endr
 	jr z, .got_stat_levels
 	ld hl, wEnemyStatLevels
 .got_stat_levels
+	ld a, BASE_STAT_LEVEL
 	call ByteFill
 	ld a, [hBattleTurn]
 	and a
@@ -1658,7 +1752,7 @@ _SubtractHP:
 	push af
 	call UpdateHPBarBattleHuds
 	pop af
-	ret z
+	jp z, FaintUserPokemon
 	farjp HandleHealingItems
 
 .do_subtract
@@ -1751,82 +1845,6 @@ UpdateHPBar: ; 3cd3c
 	ret
 ; 3cd55
 
-HandleEnemyMonFaint: ; 3cd55
-	ld a, [wEnemySplitHandleMonFaint]
-	dec a
-	jr z, ContinueHandleEnemyMonFaint_FinishSplit
-ContinueHandleEnemyMonFaint:
-	call FaintEnemyPokemon
-	ld hl, wBattleMonHP
-	ld a, [hli]
-	or [hl]
-	call z, FaintYourPokemon
-	xor a
-	ld [wWhichMonFaintedFirst], a
-	call UpdateBattleStateAndExperienceAfterEnemyFaint
-	call CheckPlayerPartyForFitPkmn
-	ld a, d
-	and a
-	jp z, LostBattle
-
-	ld hl, wBattleMonHP
-	ld a, [hli]
-	or [hl]
-	call nz, UpdatePlayerHUD
-
-	ld a, $1
-	ld [hBGMapMode], a
-	ld c, 60
-	call DelayFrames
-
-	ld a, [wBattleMode]
-	dec a
-	jr nz, .trainer
-
-	ld a, 1
-	ld [wBattleEnded], a
-	ret
-
-.trainer
-	call CheckEnemyTrainerDefeated
-	jp z, WinTrainerBattle
-
-	ld a, [wEnemySplitHandleMonFaint]
-	and a
-	ret nz
-ContinueHandleEnemyMonFaint_FinishSplit:
-	ld [wEnemySplitHandleMonFaint], a
-	ld [wPlayerSplitHandleMonFaint], a
-	ld hl, wBattleMonHP
-	ld a, [hli]
-	or [hl]
-	jr nz, .player_mon_not_fainted
-
-	call AskUseNextPokemon
-	jr nc, .dont_flee
-
-	ld a, 1
-	ld [wBattleEnded], a
-	ret
-
-.dont_flee
-	call ForcePlayerMonChoice
-
-	ld [wPlayerAction], a
-	call HandleEnemySwitch
-	jp z, WildFled_EnemyFled_LinkBattleCanceled
-	jr DoubleSwitch
-
-.player_mon_not_fainted
-	ld a, $1
-	ld [wBattlePlayerAction], a
-	call HandleEnemySwitch
-	jp z, WildFled_EnemyFled_LinkBattleCanceled
-	xor a
-	ld [wBattlePlayerAction], a
-	ret
-; 3cdca
-
 DoubleSwitch: ; 3cdca
 	ld a, [hSerialConnectionStatus]
 	cp USING_EXTERNAL_CLOCK
@@ -1857,61 +1875,12 @@ DoubleSwitch: ; 3cdca
 	ret
 ; 3ce01
 
-UpdateBattleStateAndExperienceAfterEnemyFaint: ; 3ce01
-	call UpdateBattleMonInParty
-	ld a, [wBattleMode]
-	dec a
-	jr z, .wild
-	ld a, [wCurOTMon]
-	ld hl, wOTPartyMon1HP
-	call GetPartyLocation
-	xor a
-	ld [hli], a
-	ld [hl], a
-
-.wild
-	ld hl, wPlayerSubStatus3
-	res SUBSTATUS_IN_LOOP, [hl]
-	xor a
-	ld hl, wEnemyDamageTaken
-	ld [hli], a
-	ld [hl], a
-	call NewEnemyMonStatus
-	call BreakAttraction
-	ld a, [wBattleMode]
-	dec a
-	jr z, .wild2
-	jr .trainer
-
-.wild2
-	call StopDangerSound
-	ld a, $1
-	ld [wBattleLowHealthAlarm], a
-
-.trainer
-	ld hl, wBattleMonHP
-	ld a, [hli]
-	or [hl]
-	jr nz, .player_mon_did_not_faint
-	ld a, [wWhichMonFaintedFirst]
-	and a
-	jr nz, .player_mon_did_not_faint
-	call PlayerMonFaintHappinessMod
-
-.player_mon_did_not_faint
-	call CheckPlayerPartyForFitPkmn
-	ld a, d
-	and a
-	ret z
-	ld a, [wBattleMode]
-	dec a
-	call z, PlayVictoryMusic
-	call EmptyBattleTextBox
-	call LoadTileMapToTempTileMap
-	ld a, [wBattleResult]
-	and $c0
-	ld [wBattleResult], a
-; fallthrough
+GiveExperience:
+	call GetParticipantVar
+	bit 7, [hl]
+	ret nz
+	set 7, [hl]
+	; fallthrough
 
 GiveExperiencePointsAfterCatch:
 	call GetExpShareParticipants
@@ -1996,52 +1965,74 @@ StopDangerSound: ; 3ceec
 	ret
 ; 3cef1
 
-FaintYourPokemon:
-	ld hl, wPlayerSubStatus2
+FaintUserPokemon:
+	call HasUserFainted
+	ret nz
+
+	ld a, BATTLE_VARS_SUBSTATUS2
+	call GetBattleVarAddr
 	bit SUBSTATUS_FAINTED, [hl]
 	ret nz
 	set SUBSTATUS_FAINTED, [hl]
 
-	call StopDangerSound
+	ld hl, wWhichMonFaintedFirst
+	ld a, [hl]
+	and a
+	ld a, [hBattleTurn]
+	jr nz, .faint_target_chosen
+	ld [hl], a
+	inc [hl]
+.faint_target_chosen
+	and a
+	push af
+	call z, StopDangerSound
 	call WaitSFX
+	pop af
 	ld a, $f0
+	jr z, .got_cry_tracks
+	swap a
+.got_cry_tracks
 	ld [wCryTracks], a
-	ld a, [wBattleMonSpecies]
-	ld b, a
+
+	ld hl, wBattleMonSpecies
+	call GetUserMonAttr
+	ld b, [hl]
 	farcall PlayFaintingCry
 	ld de, SFX_KINESIS
 	call PlaySFX
+
+	ld a, [hBattleTurn]
+	and a
+	jr nz, .enemy_faint
 	call PlayerMonFaintedAnimation
+
+	; unless enemy also fainted, reduce happiness
+	call HasEnemyFainted
+	call nz, PlayerMonFaintHappinessMod
+
 	hlcoord 9, 7
 	lb bc, 5, 11
-	call ClearBox
-	ld hl, BattleText_PkmnFainted
-	jp StdBattleTextBox
-; 3cf14
-
-FaintEnemyPokemon: ; 3cf14
-	ld hl, wEnemySubStatus2
-	bit SUBSTATUS_FAINTED, [hl]
-	ret nz
-	set SUBSTATUS_FAINTED, [hl]
-
-	call WaitSFX
-	ld a, $f
-	ld [wCryTracks], a
-	ld a, [wEnemyMonSpecies]
-	ld b, a
-	farcall PlayFaintingCry
-	ld de, SFX_KINESIS
-	call PlaySFX
+	jr .done
+.enemy_faint
 	call EnemyMonFaintedAnimation
-	ld de, SFX_FAINT
-	call PlaySFX
 	hlcoord 0, 0
 	lb bc, 4, 11
+.done
 	call ClearBox
+	ld de, SFX_FAINT
+	call PlaySFX
+	call LoadTileMapToTempTileMap
+	ld a, BATTLE_VARS_SUBSTATUS3
+	call GetBattleVarAddr
+	res SUBSTATUS_IN_LOOP, [hl]
+
+	ld hl, BattleText_PkmnFainted
+	ld a, [hBattleTurn]
+	and a
+	jr z, .text
 	ld hl, BattleText_EnemyPkmnFainted
+.text
 	jp StdBattleTextBox
-; 3cf35
 
 CheckEnemyTrainerDefeated: ; 3cf35
 	ld a, [wOTPartyCount]
@@ -2389,11 +2380,11 @@ HandlePlayerMonFaint: ; 3d14e
 	dec a
 	jr z, ContinueHandlePlayerMonFaint_FinishSplit
 ContinueHandlePlayerMonFaint:
-	call FaintYourPokemon
+;	call FaintYourPokemon
 	ld hl, wEnemyMonHP
 	ld a, [hli]
 	or [hl]
-	call z, FaintEnemyPokemon
+;	call z, FaintEnemyPokemon
 	ld a, $1
 	ld [wWhichMonFaintedFirst], a
 	call PlayerMonFaintHappinessMod
@@ -2405,7 +2396,7 @@ ContinueHandlePlayerMonFaint:
 	ld a, [hli]
 	or [hl]
 	jr nz, .notfainted
-	call UpdateBattleStateAndExperienceAfterEnemyFaint
+;	call UpdateBattleStateAndExperienceAfterEnemyFaint
 	ld a, [wBattleMode]
 	dec a
 	jr nz, .trainer
@@ -5011,7 +5002,7 @@ EnemyMonEntrance:
 	ld hl, wEnemySplitHandleMonFaint
 	ld [hld], a
 	ld [hl], a
-	call ContinueHandleEnemyMonFaint
+;	call ContinueHandleEnemyMonFaint
 	jr .finishswitch
 
 .no_enemy_faint
@@ -5089,7 +5080,7 @@ BattleMonEntrance:
 	ld [wEnemySplitHandleMonFaint], a
 	ld a, [wCurPartyMon]
 	push af
-	call ContinueHandleEnemyMonFaint
+;	call ContinueHandleEnemyMonFaint
 	pop af
 	ld [wCurPartyMon], a
 	ld a, [wBattleEnded]
