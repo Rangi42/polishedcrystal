@@ -1078,6 +1078,25 @@ BattleAnim_Blizzard:
 	anim_ret
 
 BattleAnim_WaterPulse: ; TODO: write an original animation
+	anim_2gfx ANIM_GFX_BUBBLE, ANIM_GFX_PSYCHIC
+	anim_bgeffect ANIM_BG_WHIRLPOOL, $0, $0, $0
+	anim_sound 6, 2, SFX_BUBBLE_BEAM
+	anim_wait 64
+.loop
+	anim_sound 0, 1, SFX_TOXIC
+	anim_obj ANIM_OBJ_WATER_PULSE, 64, 88, $2
+	anim_wait 6
+	anim_loop 3, .loop
+	anim_wait 6
+	anim_incbgeffect ANIM_BG_WHIRLPOOL
+	anim_bgeffect ANIM_BG_VIBRATE_MON, $0, $0, $0
+.loop2
+	anim_sound 0, 1, SFX_LICK
+	anim_wait 3
+	anim_loop 3, .loop2
+	anim_wait 40
+	anim_ret
+
 BattleAnim_BubbleBeam:
 	anim_1gfx ANIM_GFX_BUBBLE
 .loop
