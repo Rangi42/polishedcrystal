@@ -955,14 +955,14 @@ BattleBGEffect_Whirlpool: ; c8599 (32:4599)
 .zero
 	call BattleBGEffects_IncrementJumptable
 	call BattleBGEffects_ClearLYOverrides
-	ld a, $42
+	ld a, rSCY & $ff
 	ld [hLCDCPointer], a
 	xor a
 	ld [hLYOverrideStart], a
 	ld a, $5e
 	ld [hLYOverrideEnd], a
 	lb de, 2, 2
-	jp Functionc8f2e
+	jp BattleBGEffect_SineWave
 
 .one
 	jp BattleBGEffect_WavyScreenFX
@@ -1029,7 +1029,7 @@ BattleBGEffect_Psychic: ; c8607 (32:4607)
 	ld a, $5f
 	ld [hLYOverrideEnd], a
 	lb de, 6, 5
-	call Functionc8f2e
+	call BattleBGEffect_SineWave
 	ld hl, BG_EFFECT_STRUCT_03
 	add hl, bc
 	ld [hl], $0
@@ -1061,7 +1061,7 @@ BattleBGEffect_Teleport: ; c863f (32:463f)
 	ld a, $43
 	call BattleBGEffect_SetLCDStatCustoms1
 	lb de, 6, 5
-	jp Functionc8f2e
+	jp BattleBGEffect_SineWave
 
 .one
 	jp BattleBGEffect_WavyScreenFX
@@ -1086,7 +1086,7 @@ BattleBGEffect_NightShade: ; c8662 (32:4662)
 	add hl, bc
 	ld e, [hl]
 	ld d, 2
-	jp Functionc8f2e
+	jp BattleBGEffect_SineWave
 
 .one
 	jp BattleBGEffect_WavyScreenFX
@@ -1201,8 +1201,8 @@ BattleBGEffect_AcidArmor: ; c8709 (32:4709)
 	add hl, bc
 	ld e, [hl]
 	ld d, 2
-	call Functionc8f2e
-	ld h, $d2
+	call BattleBGEffect_SineWave
+	ld h, HIGH(wLYOverridesBackup)
 	ld a, [hLYOverrideEnd]
 	ld l, a
 	ld [hl], $0
@@ -1213,7 +1213,7 @@ BattleBGEffect_AcidArmor: ; c8709 (32:4709)
 .one
 	ld a, [hLYOverrideEnd]
 	ld l, a
-	ld h, $d2
+	ld h, HIGH(wLYOverridesBackup)
 	ld e, l
 	ld d, h
 	dec de
@@ -1684,7 +1684,7 @@ BattleBGEffect_28: ; c89b5 (32:49b5)
 	inc [hl]
 	ld d, a
 	ld e, 4
-	jp Functionc8f2e
+	jp BattleBGEffect_SineWave
 
 .two
 	ld hl, BG_EFFECT_STRUCT_03
@@ -1695,7 +1695,7 @@ BattleBGEffect_28: ; c89b5 (32:49b5)
 	dec [hl]
 	ld d, a
 	ld e, 4
-	jp Functionc8f2e
+	jp BattleBGEffect_SineWave
 
 .reset
 	jp BattleAnim_ResetLCDStatCustom
@@ -1771,7 +1771,7 @@ BattleBGEffect_2a: ; c8a3a (32:4a3a)
 	ld [hLYOverrideEnd], a
 	ld a, [hLYOverrideStart]
 	ld l, a
-	ld h, $d2
+	ld h, HIGH(wLYOverridesBackup)
 .loop
 	ld a, [hLYOverrideEnd]
 	cp l
@@ -1885,7 +1885,7 @@ BattleBGEffect_2b: ; c8acc (32:4acc)
 	and $f
 	ld d, a
 	ld e, a
-	jp Functionc8f2e
+	jp BattleBGEffect_SineWave
 
 .done
 	jp BattleAnim_ResetLCDStatCustom
@@ -2461,7 +2461,7 @@ BattleBGEffects_ResetVideoHRAM: ; c8f19 (32:4f19)
 	ld [hLYOverrideEnd], a
 	jp BattleBGEffects_ClearLYOverrides
 
-Functionc8f2e: ; c8f2e (32:4f2e)
+BattleBGEffect_SineWave:
 	push bc
 	xor a
 	ld [wBattleAnimTemp0], a
@@ -2589,7 +2589,7 @@ BattleBGEffect_WavyScreenFX: ; c8fef (32:4fef)
 	ld l, a
 	inc a
 	ld e, a
-	ld h, $d2
+	ld h, HIGH(wLYOverridesBackup)
 	ld d, h
 	ld a, [hLYOverrideEnd]
 	sub l
