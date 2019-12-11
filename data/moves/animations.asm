@@ -1077,7 +1077,7 @@ BattleAnim_Blizzard:
 	anim_wait 24
 	anim_ret
 
-BattleAnim_WaterPulse: ; TODO: write an original animation
+BattleAnim_WaterPulse:
 	anim_2gfx ANIM_GFX_BUBBLE, ANIM_GFX_PSYCHIC
 	anim_bgeffect ANIM_BG_WHIRLPOOL, $0, $0, $0
 	anim_sound 6, 2, SFX_BUBBLE_BEAM
@@ -1545,7 +1545,6 @@ BattleAnim_StunSpore:
 	anim_ret
 
 BattleAnim_HyperBeam:
-BattleAnim_GigaImpact: ; TODO: design custom animation for Giga Impact
 	anim_1gfx ANIM_GFX_BEAM
 	anim_bgeffect ANIM_BG_1F, $30, $4, $10
 	anim_bgeffect ANIM_BG_FLASH_INVERTED, $0, $8, $40
@@ -3018,12 +3017,11 @@ BattleAnim_Barrier:
 	anim_enemyfeetobj
 	anim_bgeffect ANIM_BG_06, $0, $2, $0
 	anim_wait 8
+.loop
 	anim_sound 0, 0, SFX_SHINE
 	anim_obj ANIM_OBJ_50,   9, 0,  10, 0, $0
 	anim_wait 32
-	anim_sound 0, 0, SFX_SHINE
-	anim_obj ANIM_OBJ_50,   9, 0,  10, 0, $0
-	anim_wait 32
+	anim_loop 2, .loop
 	anim_ret
 
 BattleAnim_AquaTail: ; TODO: design custom animation for Aqua Tail
@@ -3191,7 +3189,6 @@ BattleAnim_DrainPunch:
 
 BattleAnim_Thief:
 BattleAnim_KnockOff: ; TODO: design new animation for Knock Off
-BattleAnim_Trick: ; TODO: design new animation for Trick
 	anim_1gfx ANIM_GFX_HIT
 	anim_call BattleAnim_FollowEnemyFeet_0
 	anim_bgeffect ANIM_BG_TACKLE, $0, $1, $0
@@ -3317,22 +3314,6 @@ BattleAnim_Curse:
 	anim_loop 3, .loop
 	anim_wait 8
 	anim_incbgeffect ANIM_BG_16
-	anim_call BattleAnim_ShowMon_0
-	anim_ret
-
-BattleAnim_Flail: ; removed
-	anim_1gfx ANIM_GFX_HIT
-	anim_call BattleAnim_FollowEnemyFeet_0
-	anim_sound 0, 0, SFX_SUBMISSION
-	anim_bgeffect ANIM_BG_2C, $0, $1, $0
-	anim_wait 8
-	anim_obj ANIM_OBJ_01,  15, 0,   6, 0, $0
-	anim_wait 8
-	anim_obj ANIM_OBJ_01, -13, 0,   6, 0, $0
-	anim_wait 8
-	anim_obj ANIM_OBJ_01, -15, 0,   6, 0, $0
-	anim_wait 8
-	anim_incbgeffect ANIM_BG_2C
 	anim_call BattleAnim_ShowMon_0
 	anim_ret
 
@@ -3545,42 +3526,28 @@ BattleAnim_SweetKiss:
 
 BattleAnim_BellyDrum:
 	anim_2gfx ANIM_GFX_HIT, ANIM_GFX_NOISE
+.loop1
 	anim_sound 0, 0, SFX_BELLY_DRUM
 	anim_obj ANIM_OBJ_AA,   8, 0,  13, 0, $0
 	anim_obj ANIM_OBJ_AB,   8, 0,  11, 4, $f8
 	anim_wait 24
+	anim_loop 2, .loop1
+.loop2
+	anim_sound 0, 0, SFX_BELLY_DRUM
+	anim_obj ANIM_OBJ_AA,   8, 0,  13, 0, $0
+	anim_obj ANIM_OBJ_AB,   8, 0,  11, 4, $f8
+	anim_wait 12
+	anim_loop 2, .loop2
 	anim_sound 0, 0, SFX_BELLY_DRUM
 	anim_obj ANIM_OBJ_AA,   8, 0,  13, 0, $0
 	anim_obj ANIM_OBJ_AB,   8, 0,  11, 4, $f8
 	anim_wait 24
+.loop3
 	anim_sound 0, 0, SFX_BELLY_DRUM
 	anim_obj ANIM_OBJ_AA,   8, 0,  13, 0, $0
 	anim_obj ANIM_OBJ_AB,   8, 0,  11, 4, $f8
 	anim_wait 12
-	anim_sound 0, 0, SFX_BELLY_DRUM
-	anim_obj ANIM_OBJ_AA,   8, 0,  13, 0, $0
-	anim_obj ANIM_OBJ_AB,   8, 0,  11, 4, $f8
-	anim_wait 12
-	anim_sound 0, 0, SFX_BELLY_DRUM
-	anim_obj ANIM_OBJ_AA,   8, 0,  13, 0, $0
-	anim_obj ANIM_OBJ_AB,   8, 0,  11, 4, $f8
-	anim_wait 24
-	anim_sound 0, 0, SFX_BELLY_DRUM
-	anim_obj ANIM_OBJ_AA,   8, 0,  13, 0, $0
-	anim_obj ANIM_OBJ_AB,   8, 0,  11, 4, $f8
-	anim_wait 12
-	anim_sound 0, 0, SFX_BELLY_DRUM
-	anim_obj ANIM_OBJ_AA,   8, 0,  13, 0, $0
-	anim_obj ANIM_OBJ_AB,   8, 0,  11, 4, $f8
-	anim_wait 12
-	anim_sound 0, 0, SFX_BELLY_DRUM
-	anim_obj ANIM_OBJ_AA,   8, 0,  13, 0, $0
-	anim_obj ANIM_OBJ_AB,   8, 0,  11, 4, $f8
-	anim_wait 12
-	anim_sound 0, 0, SFX_BELLY_DRUM
-	anim_obj ANIM_OBJ_AA,   8, 0,  13, 0, $0
-	anim_obj ANIM_OBJ_AB,   8, 0,  11, 4, $f8
-	anim_wait 12
+	anim_loop 4, .loop3
 	anim_ret
 
 BattleAnim_GunkShot: ; TODO: design new animation for Gunk Shot
@@ -5257,6 +5224,62 @@ BattleAnim_SuckerPunch:
 	anim_wait 4
 	anim_ret
 
+BattleAnim_GigaImpact:
+	anim_2gfx ANIM_GFX_HIT, ANIM_GFX_CHARGE
+	anim_bgeffect ANIM_BG_WHITE_HUES, $0, $8, $0
+	anim_sound 0, 0, SFX_OUTRAGE
+.loop
+	anim_obj ANIM_OBJ_72, 48, 108, $0
+	anim_obj ANIM_OBJ_72, 48, 108, $20
+	anim_wait 4
+	anim_loop 4, .loop
+	anim_wait 48
+	anim_bgeffect ANIM_BG_FLASH_INVERTED, $0, $8, $40
+	anim_call BattleAnim_FollowEnemyFeet_0
+	anim_bgeffect ANIM_BG_TACKLE, $0, $1, $0
+	anim_sound 0, 0, SFX_SPARK
+	anim_wait 8
+	anim_call BattleAnim_ShowMon_0
+	anim_sound 0, 1, SFX_THUNDER
+	anim_bgeffect ANIM_BG_1F, $60, $4, $10
+.loop2
+	anim_obj ANIM_OBJ_00, 136, 48, $0
+	anim_wait 20
+	anim_loop 3, .loop2
+	anim_wait 16
+	anim_ret
+
+BattleAnim_Trick:
+	anim_2gfx ANIM_GFX_STATUS, ANIM_GFX_BUBBLE
+.loop
+	anim_sound 6, 2, SFX_SHARPEN
+	anim_obj ANIM_OBJ_TRICK_FROM, 128, 64, $2
+	anim_wait 38
+	anim_sound 6, 2, SFX_SHARPEN
+	anim_obj ANIM_OBJ_TRICK_TO, 64, 76, $2
+	anim_wait 38
+	anim_loop 2, .loop
+.loop2
+	anim_sound 6, 2, SFX_THROW_BALL
+	anim_obj ANIM_OBJ_TRICK_FROM, 128, 64, $4
+	anim_wait 16
+	anim_sound 6, 2, SFX_THROW_BALL
+	anim_obj ANIM_OBJ_TRICK_TO, 64, 76, $4
+	anim_wait 16
+	anim_loop 2, .loop2
+	anim_sound 0, 1, SFX_KINESIS
+	anim_obj ANIM_OBJ_CHICK, 136, 24, $15
+	anim_obj ANIM_OBJ_CHICK, 136, 24, $aa
+	anim_obj ANIM_OBJ_CHICK, 136, 24, $bf
+	anim_sound 6, 2, SFX_THROW_BALL
+	anim_obj ANIM_OBJ_TRICK_FROM, 128, 64, $4
+	anim_wait 16
+	anim_sound 6, 2, SFX_THROW_BALL
+	anim_obj ANIM_OBJ_TRICK_TO, 64, 76, $4
+	anim_wait 16
+	anim_wait 32
+	anim_ret
+
 ; ================================
 ; unused animations below here
 ; ================================
@@ -5829,4 +5852,20 @@ BattleAnim_SuckerPunch:
 ;	anim_obj ANIM_OBJ_21,   8, 0,  11, 4, $d1
 ;	anim_wait 128
 ;	anim_wait 32
+;	anim_ret
+
+;BattleAnim_Flail: ; removed
+;	anim_1gfx ANIM_GFX_HIT
+;	anim_call BattleAnim_FollowEnemyFeet_0
+;	anim_sound 0, 0, SFX_SUBMISSION
+;	anim_bgeffect ANIM_BG_2C, $0, $1, $0
+;	anim_wait 8
+;	anim_obj ANIM_OBJ_01,  15, 0,   6, 0, $0
+;	anim_wait 8
+;	anim_obj ANIM_OBJ_01, -13, 0,   6, 0, $0
+;	anim_wait 8
+;	anim_obj ANIM_OBJ_01, -15, 0,   6, 0, $0
+;	anim_wait 8
+;	anim_incbgeffect ANIM_BG_2C
+;	anim_call BattleAnim_ShowMon_0
 ;	anim_ret

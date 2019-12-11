@@ -94,14 +94,6 @@ Shamouti Island:
 
 Refer to [B/W animations with sound effects](https://www.youtube.com/watch?v=TFDV0HeBz_0).
 
-High priority:
-
-* Giga Impact
-* Trick
-* Water Pulse
-
-Low priority:
-
 * Aerial Ace
 * Aqua Tail
 * Bug Bite
