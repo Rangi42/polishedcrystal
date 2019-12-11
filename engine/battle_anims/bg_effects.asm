@@ -1956,78 +1956,6 @@ BattleBGEffect_1c: ; c8b00 (32:4b00)
 	db $f8, $90
 ; c8be8
 
-BattleBGEffect_RapidFlash: ; c8be8 (32:4be8)
-	ld de, .FlashPals
-	jp BGEffect_RapidCyclePals
-
-.FlashPals:
-	db $e4, $6c, $fe
-; c8bf2
-
-BattleBGEffect_16: ; c8bf2 (32:4bf2)
-	ld de, .Pals
-	jp BGEffect_RapidCyclePals
-
-.Pals:
-	db $e4, $90, $40, $ff
-; c8bfd
-
-BattleBGEffect_17: ; c8bfd (32:4bfd)
-	ld de, .Pals
-	jp BGEffect_RapidCyclePals
-
-.Pals:
-	db $e4, $f8, $fc, $ff
-; c8c08
-
-BattleBGEffect_18: ; c8c08 (32:4c08)
-	ld de, .Pals
-	jp BGEffect_RapidCyclePals
-
-.Pals:
-	db $e4, $90, $40, $90, $fe
-; c8c14
-
-BattleBGEffect_19: ; c8c14 (32:4c14)
-	ld de, .Pals
-	jp BGEffect_RapidCyclePals
-
-.Pals:
-	db $e4, $f8, $fc, $f8, $fe
-; c8c20
-
-BattleBGEffect_1a: ; c8c20 (32:4c20)
-	ld de, .Pals
-	jp BGEffect_RapidCyclePals
-
-.Pals:
-	db $e4, $f8, $fc, $f8, $e4, $90, $40, $90, $fe
-; c8c30
-
-BattleBGEffect_1b: ; c8c30 (32:4c30)
-	ld de, .Pals
-	jp BGEffect_RapidCyclePals
-
-.Pals:
-	db $e4, $fc, $e4, $00, $fe
-; c8c3c
-
-BattleBGEffect_1d: ; c8c3c (32:4c3c)
-	ld de, .Pals
-	jp BGEffect_RapidCyclePals
-
-.Pals:
-	db $e4, $90, $40, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $40, $90, $e4, $ff
-; c8c55
-
-BattleBGEffect_1e: ; c8c55 (32:4c55)
-	ld de, .Pals
-	jp BGEffect_RapidCyclePals
-
-.Pals:
-	db $00, $40, $90, $e4, $ff
-; c8c61
-
 BattleBGEffect_VibrateMon: ; c8c61 (32:4c61)
 	call BattleBGEffects_AnonJumptable
 .anon_dw
@@ -2224,6 +2152,69 @@ BattleBGEffect_GetNthDMGPal: ; c8d57 (32:4d57)
 	add hl, bc
 	ld [hl], a
 	jp BattleBGEffect_GetFirstDMGPal
+
+BattleBGEffect_RapidFlash:
+	ld de, .FlashPals
+	jr BGEffect_RapidCyclePals
+
+.FlashPals
+	db $e4, $6c, $fe
+
+BattleBGEffect_16:
+	ld de, .Pals
+	jr BGEffect_RapidCyclePals
+
+.Pals
+	db $e4, $90, $40, $ff
+
+BattleBGEffect_17:
+	ld de, .Pals
+	jr BGEffect_RapidCyclePals
+
+.Pals
+	db $e4, $f8, $fc, $ff
+
+BattleBGEffect_18:
+	ld de, .Pals
+	jr BGEffect_RapidCyclePals
+
+.Pals
+	db $e4, $90, $40, $90, $fe
+
+BattleBGEffect_19:
+	ld de, .Pals
+	jr BGEffect_RapidCyclePals
+
+.Pals
+	db $e4, $f8, $fc, $f8, $fe
+
+BattleBGEffect_1a:
+	ld de, .Pals
+	jr BGEffect_RapidCyclePals
+
+.Pals
+	db $e4, $f8, $fc, $f8, $e4, $90, $40, $90, $fe
+
+BattleBGEffect_1b:
+	ld de, .Pals
+	jr BGEffect_RapidCyclePals
+
+.Pals
+	db $e4, $fc, $e4, $00, $fe
+
+BattleBGEffect_1d:
+	ld de, .Pals
+	jr BGEffect_RapidCyclePals
+
+.Pals
+	db $e4, $90, $40, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $40, $90, $e4, $ff
+
+BattleBGEffect_1e:
+	ld de, .Pals
+	jr BGEffect_RapidCyclePals
+
+.Pals
+	db $00, $40, $90, $e4, $ff
 
 BGEffect_RapidCyclePals: ; c8d77 (32:4d77)
 	push de
