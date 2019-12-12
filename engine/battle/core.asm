@@ -2878,21 +2878,6 @@ SlideBattlePicOut: ; 3d490
 ; 3d4c3
 
 
-ForceEnemySwitch: ; 3d4c3
-	call ResetEnemyBattleVars
-	ld a, [wEnemySwitchMonIndex]
-	dec a
-	ld b, a
-	call LoadEnemyPkmnToSwitchTo
-	call ClearEnemyMonBox
-	call NewEnemyMonStatus
-	call ResetEnemyStatLevels
-	call Function_SetEnemyPkmnAndSendOutAnimation
-	call BreakAttraction
-	jp SetParticipant
-; 3d4e1
-
-
 EnemySwitch: ; 3d4e1
 	call CheckWhetherToAskSwitch
 	jr nc, EnemySwitch_SetMode
