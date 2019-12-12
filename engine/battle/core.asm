@@ -9,6 +9,9 @@ DoBattle: ; 3c000
 	ld [wInverseBattleScore], a
 	ld [wPlayerEndturnSwitched], a
 	ld [wEnemyEndturnSwitched], a
+	ld [wDeferredSwitch], a
+	ld [wPlayerSwitchTarget], a
+	ld [wEnemySwitchTarget], a
 	inc a
 	ld [wBattleHasJustStarted], a
 	ld hl, wOTPartyMon1HP
@@ -1316,6 +1319,15 @@ endc
 .enemy_ability
 	call ResetEnemyAbility
 .done_ability
+	; Wild Pokémon are already out
+	ld a, [hBattleTurn]
+	and a
+	jr z, .sendout_text
+	ld a, [wBattleMode]
+	dec a
+	jr z, .wild
+
+.sendout_text
 	; print "Go! X/TRAINER sends out X!"
 	ld a, [wDeferredSwitch]
 	bit SWITCH_FORCED, a
@@ -1325,6 +1337,7 @@ endc
 	call GetCGBLayout
 	call SetPalettes
 
+.wild
 	; For enemy, we need to mark as seen and set base exp unless link/BT
 	ld a, [hBattleTurn]
 	and a
@@ -1381,7 +1394,9 @@ endc
 	ld a, [hBattleTurn]
 	and a
 	jr z, .player_sends_out
-	call Function_SetEnemyPkmnAndSendOutAnimation
+	ld a, [wBattleMode]
+	dec a
+	call nz, Function_SetEnemyPkmnAndSendOutAnimation
 	jr .send_out_anim_done
 .player_sends_out
 	call SendOutPlayerMon
@@ -3665,6 +3680,10 @@ RunActivationAbilities:
 ; on double switch-ins or similar, we need to do some extra
 ; handling around it.
 	farcall RunActivationAbilitiesInner
+	call HasUserFainted
+	call nz, HasOpponentFainted
+	ret z
+
 	ld a, BATTLE_VARS_ABILITY
 	call GetBattleVar
 	cp TRACE
