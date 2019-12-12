@@ -868,9 +868,13 @@ ForceDeferredSwitch:
 	bit SWITCH_TARGET, [hl]
 	jr nz, .check_target_alive
 	farcall CheckAnyOtherAliveMons
+	jr nz, .alive_check_done
+	call HasUserFainted
 	jr .alive_check_done
 .check_target_alive
 	farcall CheckAnyOtherAliveOpponentMons
+	jr nz, .alive_check_done
+	call HasOpponentFainted
 .alive_check_done
 	pop hl
 	jp z, .all_done

@@ -126,7 +126,7 @@ HandleBetweenTurnEffects:
 	jr nz, .player_set_mode
 
 	; Enemy, but not player, has chosen a switch-in. Maybe prompt a switch
-	farcall CheckAnyOtherAliveMons
+	farcall CheckAnyOtherAlivePartyMons
 	jr z, .player_set_mode
 
 	; In Battle Tower or Link mode, always use "Set" mode.
