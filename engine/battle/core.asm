@@ -3176,6 +3176,13 @@ SpikesDamage_GotAbility:
 	pop bc
 	ret z
 
+	push bc
+	farcall GetUserItemAfterUnnerve
+	ld a, b
+	cp HELD_HEAVY_BOOTS
+	pop bc
+	ret z
+
 	ld a, b
 	cp LEVITATE
 	ret z

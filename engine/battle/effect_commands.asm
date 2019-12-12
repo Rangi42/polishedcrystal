@@ -1491,7 +1491,7 @@ _CheckTypeMatchup: ; 347d3
 	; no need to continue if we encountered a 0x matchup
 	ld a, [hli]
 	and a
-	jr z, .Immune
+	jr z, .RingTarget
 	cp SUPER_EFFECTIVE
 	jr z, .se
 	cp NOT_VERY_EFFECTIVE
@@ -1508,6 +1508,15 @@ _CheckTypeMatchup: ; 347d3
 	ld [wTypeMatchup], a
 	jr .TypesLoop
 
+.RingTarget:
+	; if opponent is holding Ring Target, ignore type-based immunity
+	push hl
+	call GetOpponentItemAfterUnnerve
+	pop hl
+	ld a, b
+	cp HELD_RING_TARGET
+	jr z, .TypesLoop
+	jr .Immune
 .AbilImmune:
 	; most abilities are checked seperately, but Overcoat ends up here (powder)
 	ld a, 3
@@ -1533,7 +1542,11 @@ BattleCommand_checkpowder:
 	jr BattleCommand_resettypematchup
 .twave
 	call CheckIfTargetIsGroundType
-	ret nz
+	jr nz, BattleCommand_resettypematchup
+	call GetOpponentItemAfterUnnerve
+	ld a, b
+	cp HELD_RING_TARGET
+	ret z
 	; fallthrough
 BattleCommand_resettypematchup: ; 34833
 ; Reset the type matchup multiplier to 1.0, if the type matchup is not 0.
@@ -3048,9 +3061,10 @@ BattleCommand_posthiteffects:
 .rage_done_switchturn
 	call SwitchTurn
 .rage_done
-	; Do Jaboca, Rowap, Kee, Maranga berries and Rocky Helmet
+	; Do Jaboca, Rowap, Kee, Maranga berries, Rocky Helmet,
+	; Absorb Bulb, Snowball, Cell Battery, Luminous Moss
 	call HasUserFainted
-	jr z, .rocky_helmet_done
+	jp z, .rocky_helmet_done
 	call GetOpponentItemAfterUnnerve
 	call GetCurItemName
 	ld a, b
@@ -3059,17 +3073,33 @@ BattleCommand_posthiteffects:
 	ld a, BATTLE_VARS_MOVE_CATEGORY
 	call GetBattleVar
 	cp c
-	jr nz, .rocky_helmet_done
+	jr nz, .check_type_hit
 	ld a, b
 	cp HELD_OFFEND_HIT
 	jr z, .held_offend_hit
 	cp HELD_DEFEND_HIT
-	jr nz, .rocky_helmet_done
+	jr nz, .check_type_hit
 	ld a, c
 	cp PHYSICAL
 	ld b, DEFENSE
 	jr z, .got_stat
 	ld b, SP_DEFENSE
+	jr .got_stat
+.check_type_hit
+	ld a, BATTLE_VARS_MOVE_TYPE
+	call GetBattleVar
+	cp c
+	jr nz, .rocky_helmet_done
+	ld a, b
+	cp HELD_HIT_RAISE_ATK
+	ld b, ATTACK
+	jr z, .got_stat
+	cp HELD_HIT_RAISE_SAT
+	ld b, SP_ATTACK
+	jr z, .got_stat
+	cp HELD_HIT_RAISE_SDF
+	ld b, SP_DEFENSE
+	jr nz, .rocky_helmet_done
 .got_stat
 	call SwitchTurn
 	call BattleCommand_statup
