@@ -1495,11 +1495,7 @@ GetParticipantVar::
 	ld a, [hl]
 	and a
 	ret nz
-	ld a, [wBattleMode]
-	dec a
-	jr z, .got_ot_index
 	ld a, [wCurOTMon]
-.got_ot_index
 	ld b, 0
 	ld c, a
 	ld hl, wPartyParticipants
@@ -2483,7 +2479,6 @@ AskUseNextPokemon: ; 3d1f8
 ; We don't need to be here if we're in a Trainer battle,
 ; as that decision is made for us.
 	ld a, [wBattleMode]
-	and a
 	dec a
 	ret nz
 
@@ -3400,29 +3395,17 @@ GetPartyMonDVs: ; 3da85
 ; 3da97
 
 GetEnemyMonDVs: ; 3da97
-	ld hl, wEnemyBackupDVs
-	ld a, [wBattleMode]
-	dec a
-	ret z
 	ld hl, wOTPartyMon1DVs
 	ld a, [wCurOTMon]
 	jp GetPartyLocation
 ; 3dab1
 
 GetPartyMonPersonality:
-	ld hl, wBattleMonPersonality
-	ld a, [wPlayerSubStatus2]
-	bit SUBSTATUS_TRANSFORMED, a
-	ret z
 	ld hl, wPartyMon1Personality
 	ld a, [wCurBattleMon]
 	jp GetPartyLocation
 
 GetEnemyMonPersonality:
-	ld hl, wEnemyBackupPersonality
-	ld a, [wBattleMode]
-	dec a
-	ret z
 	ld hl, wOTPartyMon1Personality
 	ld a, [wCurOTMon]
 	jp GetPartyLocation
@@ -4074,7 +4057,7 @@ _HeldStatusHealingItem:
 
 UseOpponentConfusionHealingItem:
 	call CallOpponentTurn
-UseConfusionHealingItem: ; 3de51
+UseConfusionHealingItem:
 	ld a, BATTLE_VARS_SUBSTATUS3
 	call GetBattleVar
 	bit SUBSTATUS_CONFUSED, a
@@ -4094,25 +4077,14 @@ UseConfusionHealingItem: ; 3de51
 	call ItemRecoveryAnim
 	ld hl, BattleText_ItemHealedConfusion
 	call StdBattleTextBox
+	call GetPartymonItem
 	ld a, [hBattleTurn]
 	and a
-	jr z, .do_partymon
-	call GetOTPartymonItem
-	xor a
-	ld [bc], a
-	ld a, [wBattleMode]
-	dec a
-	ret z
-	ld [hl], $0
-	ret
-
-.do_partymon
-	call GetPartymonItem
+	call nz, GetOTPartymonItem
 	xor a
 	ld [bc], a
 	ld [hl], a
 	ret
-; 3de97
 
 GetPartymonItem: ; 3df12
 	ld hl, wPartyMon1Item
@@ -6190,6 +6162,7 @@ LoadEnemyMon: ; 3e8eb
 ; Initialize wildmon data
 	xor a
 	ld [wOTPartyCount], a
+	ld [wCurOTMon], a
 	inc a
 	ld [wMonType], a
 
@@ -7967,7 +7940,7 @@ BattleIntro: ; 3f4dd
 	call ClearBox
 	call ClearSprites
 	ld a, [wBattleMode]
-	cp WILD_BATTLE
+	dec a
 	call z, UpdateEnemyHUD
 	ld a, $1
 	ld [hBGMapMode], a
@@ -8070,11 +8043,7 @@ InitEnemyWildmon: ; 3f607
 	ld a, 1
 	ld [wEnemySwitchTarget], a
 	call SendInUserPkmn
-	ld hl, wEnemyMonDVs
-	ld de, wEnemyBackupDVs
-	ld bc, 5
-	rst CopyBytes
-	ld hl, wEnemyMonForm
+	ld hl, wOTPartyMon1Form
 	predef GetVariant
 
 	ld a, [wCurPartySpecies]
@@ -8136,7 +8105,7 @@ ExitBattle: ; 3f69e
 
 HandleNuzlockeFlags:
 	ld a, [wBattleMode]
-	cp WILD_BATTLE
+	dec a
 	ret nz
 
 	; Dupes clause: don't count duplicate encounters

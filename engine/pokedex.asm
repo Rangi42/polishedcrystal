@@ -2486,7 +2486,7 @@ Pokedex_LoadUnownFrontpicTiles: ; 41a58 (10:5a58)
 NewPokedexEntry: ; fb877
 	ld a, [hMapAnims]
 	push af
-	ld a, [wEnemyBackupShiny]
+	ld a, [wOTPartyMon1Shiny]
 	ld [wDexMonShiny], a
 	xor a
 	ld [hMapAnims], a

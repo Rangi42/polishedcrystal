@@ -21,10 +21,10 @@ BattleCommand_thief:
 	ld [hl], a
 	ld b, a
 
-	; Wilds don't have a party struct, but update backup item for them if we stole it
+	; Update backup item if we stole from wildmon
 	ld a, [wBattleMode]
 	dec a
-	jp z, SetBackupItem
+	call z, SetBackupItem
 
 	ld a, [wCurOTMon]
 	ld hl, wOTPartyMon1Item

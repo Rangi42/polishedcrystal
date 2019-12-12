@@ -766,9 +766,6 @@ HandlePerishSong:
 	xor a
 	ld [hli], a
 	ld [hl], a
-	ld a, [wBattleMode]
-	dec a
-	ret z
 	ld hl, wOTPartyMon1HP
 	ld a, [wCurOTMon]
 	call GetPartyLocation

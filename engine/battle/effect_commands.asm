@@ -2880,16 +2880,6 @@ ConsumeUserItem::
 	xor a
 	ld [de], a
 
-	; Wildmons has no wOTPartyMon1Item, but we want to consume our own items still
-	ld a, [hBattleTurn]
-	and a
-	jr z, .has_party_struct
-
-	ld a, [wBattleMode]
-	dec a
-	jr z, .apply_unburden
-
-.has_party_struct
 	ld a, [hl]
 	ld d, a
 	xor a
@@ -8293,15 +8283,6 @@ BattleCommand_defrost: ; 37563
 
 ; Don't update the enemy's party struct in a wild battle.
 
-	ld a, [hBattleTurn]
-	and a
-	jr z, .party
-
-	ld a, [wBattleMode]
-	dec a
-	jr z, .done
-
-.party
 	ld a, MON_STATUS
 	call UserPartyAttr
 	res FRZ, [hl]

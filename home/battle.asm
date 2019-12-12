@@ -1,8 +1,6 @@
 ; *PartyAttr returns address to attribute in hl, content
-; in a. Returns z if dealing with a wildmon (no party
-; struct), otherwise nz.
+; in a. Always returns nz (used to return z for wildmon).
 UserPartyAttr::
-; Return z if wildmon
 	push af
 	ld a, [hBattleTurn]
 	and a
@@ -10,7 +8,6 @@ UserPartyAttr::
 BattlePartyAttrPre:
 	pop af
 BattlePartyAttr::
-; Returns nz (not a wildmon)
 	ld hl, wPartyMons
 	push bc
 	ld c, a
@@ -25,7 +22,6 @@ DoBattlePartyAttr:
 	ret
 
 OpponentPartyAttr::
-; Return z if wildmon
 	push af
 	ld a, [hBattleTurn]
 	and a
@@ -33,11 +29,6 @@ OpponentPartyAttr::
 OTPartyAttrPre:
 	pop af
 OTPartyAttr::
-; Return z if wildmon
-	ld a, [wBattleMode]
-	dec a
-	ret z
-
 	ld hl, wOTPartyMons
 	push bc
 	ld c, a
@@ -174,10 +165,6 @@ UpdateBattleMon::
 
 UpdateEnemyMonInParty::
 ; No wildmons.
-	ld a, [wBattleMode]
-	dec a
-	ret z
-
 	ld a, [wCurOTMon]
 	ld hl, wOTPartyMon1Level
 	call GetPartyLocation
@@ -320,11 +307,6 @@ GetUsedItemAddr::
 	ld a, [wCurBattleMon]
 	jr z, .got_target
 	ld hl, wOTPartyUsedItems
-
-	; Wildmons use the 1st index
-	ld a, [wBattleMode]
-	dec a
-	ret z
 	ld a, [wCurOTMon]
 .got_target
 	add l

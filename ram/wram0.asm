@@ -548,19 +548,7 @@ wPayDayMoney:: ds 3
 wSafariMonAngerCount:: ds 1
 wSafariMonEating:: ds 1
 
-	ds 1
-
-; used when enemy is transformed
-wEnemyBackupDVs:: ds 3
-wEnemyBackupPersonality:: ; assumed to be after DVs
-wEnemyBackupShiny::
-wEnemyBackupAbility::
-wEnemyBackupNature::
-	ds 1
-wEnemyBackupGender::
-wEnemyBackupFainted::
-wEnemyBackupForm::
-	ds 1
+	ds 6 ; unused
 
 wAlreadyDisobeyed:: ds 1
 

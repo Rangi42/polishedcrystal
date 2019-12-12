@@ -877,13 +877,6 @@ JustifiedAbility:
 	jr AttackUpAbility
 MoxieAbility:
 	; Don't run if battle is over
-	ld a, [hBattleTurn]
-	and a
-	jr nz, .enemy
-	ld a, [wBattleMode]
-	dec a
-	ret z
-.enemy
 	farcall CheckAnyOtherAliveOpponentMons
 	ret z
 SapSipperAbility:
@@ -1280,9 +1273,6 @@ RegainItemByAbility:
 	ld a, [wCurPartyMon]
 	ld hl, wPartyMon1Item
 	jr z, .got_item_addr
-	ld a, [wBattleMode]
-	dec a
-	ret z
 	ld a, [wCurOTMon]
 	ld hl, wOTPartyMon1Item
 .got_item_addr

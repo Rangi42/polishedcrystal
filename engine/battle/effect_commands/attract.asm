@@ -198,7 +198,7 @@ CheckOppositeGender: ; 377f5
 	ld a, [wEnemySubStatus2]
 	bit SUBSTATUS_TRANSFORMED, a
 	jr z, .not_transformed
-	ld hl, wEnemyBackupGender
+	ld hl, wOTPartyMon1Gender
 .not_transformed
 	ld a, [hl]
 	ld [wTempMonGender], a
