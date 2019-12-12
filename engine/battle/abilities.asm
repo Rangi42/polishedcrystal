@@ -1,4 +1,6 @@
 RunActivationAbilitiesInner:
+	call HasUserFainted
+	ret z
 	ld hl, BattleEntryAbilities
 	jr UserAbilityJumptable
 

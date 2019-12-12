@@ -998,13 +998,6 @@ ForceDeferredSwitch:
 	call SpikesDamage
 .done_spikes
 	call RunActivationAbilities
-	ld a, [hBattleTurn]
-	and a
-	ld hl, wPlayerSwitchTarget
-	jr z, .got_switch_target
-	ld hl, wEnemySwitchTarget
-.got_switch_target
-	ld [hl], 0
 
 .all_done
 	xor a
@@ -1395,6 +1388,13 @@ endc
 	bit SWITCH_FORCED, a
 	call nz, StdBattleTextBox
 	call LoadTileMapToTempTileMap
+	ld a, [hBattleTurn]
+	and a
+	ld hl, wPlayerSwitchTarget
+	jr z, .got_switch_target
+	ld hl, wEnemySwitchTarget
+.got_switch_target
+	ld [hl], 0
 	; fallthrough
 
 SetParticipant::
@@ -3119,11 +3119,17 @@ CheckWhetherToAskSwitch: ; 3d714
 	ret
 ; 3d74b
 
-OfferSwitch: ; 3d74b
-	ld a, [wCurPartyMon]
-	push af
-	farcall Battle_GetTrainerName
+OfferSwitch:
+	; Copy target mon's nickname into active enemy mon nickname
+	ld hl, wOTPartyMonNicknames
+	ld a, [wEnemySwitchTarget]
+	dec a
+	call SkipNames
+	ld de, wEnemyMonNick
+	ld bc, PKMN_NAME_LENGTH
+	rst CopyBytes
 
+	; Actually print the message
 	ld a, [wOptions2]
 	bit BATTLE_PREDICT, a
 	jr nz, .predict
@@ -3146,24 +3152,17 @@ OfferSwitch: ; 3d74b
 	jr nz, .said_no
 	call SetUpBattlePartyMenu_NoLoop
 	call PickSwitchMonInBattle
-	jr c, .canceled_switch
-	ld a, [wCurPartyMon]
-	ld [wCurBattleMon], a
-	call ClearPalettes
-	call DelayFrame
-	call _LoadStatusIcons
-	pop af
-	ld [wCurPartyMon], a
-	xor a
-	ld [wCurEnemyMove], a
-	ld [wCurPlayerMove], a
-	and a
-	ret
+	jr c, OfferSwitch
 
-.canceled_switch
-	call ClearPalettes
-	call DelayFrame
-	call _LoadStatusIcons
+	; Player chose to switch. Force an explicit switch-out.
+	ld a, [wCurPartyMon]
+	inc a
+	ld [wPlayerSwitchTarget], a
+
+	ld a, 1 << SWITCH_EXPLICIT
+	ld [wDeferredSwitch], a
+	call SetPlayerTurn
+	jp ForceDeferredSwitch
 
 .said_no
 	pop af

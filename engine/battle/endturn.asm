@@ -77,7 +77,118 @@ HandleBetweenTurnEffects:
 	call HandleStatusOrbs
 	call HandleRoost
 	call UpdateBattleMonInParty
-	jp LoadTileMapToTempTileMap
+	call UpdateEnemyMonInParty
+
+.endturn_loop
+	; Resolve faints, just in case
+	call CheckFaint
+	ret c
+	call LoadTileMapToTempTileMap
+
+	; If player is fainted in wild battle, maybe try flee
+	call HasPlayerFainted
+	jr nz, .player_not_fleeing
+
+	farcall AskUseNextPokemon
+	jr nc, .player_not_fleeing
+	ld a, 1
+	ld [wBattleEnded], a
+	ret
+
+.player_not_fleeing
+	; figure out which Pokémon fainted
+	ld e, 0
+	call HasPlayerFainted
+	jr nz, .player_not_fainted
+	set 0, e
+.player_not_fainted
+	call HasEnemyFainted
+	jr nz, .enemy_not_fainted
+	set 1, e
+.enemy_not_fainted
+	ld a, e
+	and a
+	ret z
+	cp 3
+	jr nz, .not_both
+	farcall GetBothSwitchTarget
+.not_both
+	call SetPlayerTurn
+	bit 1, e
+	call nz, SetEnemyTurn
+	farcall GetUserSwitchTarget
+
+.got_target
+	; If player has a switch target, continue as if we're in "Set" mode
+	push de
+	ld a, [wPlayerSwitchTarget]
+	and a
+	jr nz, .player_set_mode
+
+	; Enemy, but not player, has chosen a switch-in. Maybe prompt a switch
+	farcall CheckAnyOtherAliveMons
+	jr z, .player_set_mode
+
+	; In Battle Tower or Link mode, always use "Set" mode.
+	ld a, [wLinkMode]
+	and a
+	jr nz, .player_set_mode
+	ld a, [wInBattleTowerBattle]
+	bit 0, a
+	jr nz, .player_set_mode
+
+	; Obviously, if we're playing in Set mode, assume Set mode...
+	ld a, [wOptions2]
+	and 1 << BATTLE_SWITCH | 1 << BATTLE_PREDICT
+	jr z, .player_set_mode
+	farcall OfferSwitch
+
+.player_set_mode
+	ld a, [wPlayerSwitchTarget]
+	and a
+	jr z, .enemy_only
+	ld a, [wEnemySwitchTarget]
+	and a
+	jr z, .player_only
+
+	call SetPlayerTurn
+	ld a, [wLinkMode]
+	and a
+	jr z, .got_first_switchin
+	ld a, [hSerialConnectionStatus]
+	cp USING_INTERNAL_CLOCK
+	call z, SetEnemyTurn
+.got_first_switchin
+	farcall SendInUserPkmn
+	call SwitchTurn
+	farcall SendInUserPkmn
+	jr .finish_sendin
+.player_only
+	call SetPlayerTurn
+	farcall SendInUserPkmn
+	jr .finish_sendin
+.enemy_only
+	call SetEnemyTurn
+	farcall SendInUserPkmn
+
+.finish_sendin
+	pop de
+
+	; Run Spikes and entry abilities depending on which mons are alive
+	ld a, e
+	cp 3
+	jr nz, .not_both2
+
+	farcall HandleFirstAirBalloon
+	farcall RunBothActivationAbilities
+	jp .endturn_loop
+.not_both2
+	call SetEnemyTurn
+	dec e
+	call z, SetPlayerTurn
+	farcall SpikesDamage
+	farcall RunActivationAbilities
+	jp .endturn_loop
 
 HandleEndturnBlockA:
 	call SetFastestTurn
