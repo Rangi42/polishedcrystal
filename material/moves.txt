@@ -57,6 +57,7 @@ Kingler: Hydro Pump
 Hitmonlee: Aura Sphere
 Hitmonchan: Aura Sphere
 Mr. Mime: Dazzling Gleam
+Gyarados: Power Whip
 Lapras: Sparkling Aria, Charm
 Umbreon: Crunch, Thief
 Leafeon: Leech Seed

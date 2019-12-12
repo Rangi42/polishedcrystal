@@ -61,7 +61,6 @@ ChangeHappiness: ; 71c2
 	inc e
 
 .ok
-	dec c
 	ld b, 0
 	ld hl, HappinessChanges
 	add hl, bc

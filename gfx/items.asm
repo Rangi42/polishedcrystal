@@ -24,16 +24,7 @@ UpdateItemIcon::
 	jr c, .has_icon
 	xor a
 .has_icon
-	ld e, a
-	ld d, 0
-	add hl, de
-	add hl, de
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	ld de, VTiles2 tile $1e
-	call GetItemIconBank
-	call DecompressRequest2bpp
+	call LoadItemOrKeyItemIcon
 	farcall LoadItemIconPalette
 	jp SetPalettes
 
@@ -43,36 +34,24 @@ UpdateKeyItemIcon::
 	ld hl, KeyItemIconPointers
 	ld a, [wCurKeyItem]
 	dec a
+	call LoadItemOrKeyItemIcon
+	farcall LoadKeyItemIconPalette
+	jp SetPalettes
+
+LoadItemOrKeyItemIcon:
 	ld e, a
 	ld d, 0
 	add hl, de
 	add hl, de
+	add hl, de
+	ld a, [hli]
+	ld b, a
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
 	ld de, VTiles2 tile $1e
-	lb bc, BANK(KeyItemIcons), 9
-	call DecompressRequest2bpp
-	farcall LoadKeyItemIconPalette
-	jp SetPalettes
-
-GetItemIconBank:
-	lb bc, BANK(ItemIcons1), 9
-	ld a, [wCurSpecies]
-	cp SCOPE_LENS ; first icon in ItemIcons2
-	ret c
-	cp METAL_POWDER ; after Scope Lens, but in ItemIcons1
-	ret z
-	cp QUICK_POWDER ; after Scope Lens, but in ItemIcons1
-	ret z
-	cp STARDUST ; after Scope Lens, but in ItemIcons1
-	ret z
-	cp CHOICE_SCARF ; after Scope Lens, but in ItemIcons1
-	ret z
-	cp ITEM_FROM_MEM
-	ret z
-	lb bc, BANK(ItemIcons2), 9
-	ret
+	ld c, 9
+	jp DecompressRequest2bpp
 
 LoadTMHMIcon::
 	ld hl, TMHMIcon
@@ -87,12 +66,12 @@ ClearTMHMIcon::
 	lb bc, BANK(NoItemIcon), 9
 	jp DecompressRequest2bpp
 
+
 INCLUDE "data/items/icon_pointers.asm"
 
 
 SECTION "Item Icons 1", ROMX
 
-ItemIcons1:
 NoItemIcon:       INCBIN "gfx/items/no_item.2bpp.lz"
 PokeBallIcon:     INCBIN "gfx/items/poke_ball.2bpp.lz"
 GreatBallIcon:    INCBIN "gfx/items/great_ball.2bpp.lz"
@@ -109,6 +88,10 @@ LoveBallIcon:     INCBIN "gfx/items/love_ball.2bpp.lz"
 ParkBallIcon:     INCBIN "gfx/items/park_ball.2bpp.lz"
 RepeatBallIcon:   INCBIN "gfx/items/repeat_ball.2bpp.lz"
 TimerBallIcon:    INCBIN "gfx/items/timer_ball.2bpp.lz"
+
+
+SECTION "Item Icons 2", ROMX
+
 NestBallIcon:     INCBIN "gfx/items/nest_ball.2bpp.lz"
 NetBallIcon:      INCBIN "gfx/items/net_ball.2bpp.lz"
 DiveBallIcon:     INCBIN "gfx/items/dive_ball.2bpp.lz"
@@ -132,6 +115,10 @@ IceHealIcon:      INCBIN "gfx/items/antidote.2bpp.lz"
 FullHealIcon:     INCBIN "gfx/items/full_heal.2bpp.lz"
 ReviveIcon:       INCBIN "gfx/items/revive.2bpp.lz"
 MaxReviveIcon:    INCBIN "gfx/items/max_revive.2bpp.lz"
+
+
+SECTION "Item Icons 3", ROMX
+
 EtherIcon:
 MaxEtherIcon:
 ElixirIcon:
@@ -162,6 +149,10 @@ HealPowderIcon:
 SilverPowderIcon: INCBIN "gfx/items/powder.2bpp.lz"
 EnergyRootIcon:   INCBIN "gfx/items/energy_root.2bpp.lz"
 RevivalHerbIcon:  INCBIN "gfx/items/revival_herb.2bpp.lz"
+
+
+SECTION "Item Icons 4", ROMX
+
 XAttackIcon:
 XDefendIcon:
 XSpeedIcon:
@@ -187,6 +178,10 @@ DawnStoneIcon:    INCBIN "gfx/items/dawn_stone.2bpp.lz"
 ShinyStoneIcon:   INCBIN "gfx/items/shiny_stone.2bpp.lz"
 IceStoneIcon:     INCBIN "gfx/items/ice_stone.2bpp.lz"
 EverstoneIcon:    INCBIN "gfx/items/everstone.2bpp.lz"
+
+
+SECTION "Item Icons 5", ROMX
+
 ExpShareIcon:     INCBIN "gfx/items/exp_share.2bpp.lz"
 CheriBerryIcon:   INCBIN "gfx/items/cheri_berry.2bpp.lz"
 ChestoBerryIcon:  INCBIN "gfx/items/chesto_berry.2bpp.lz"
@@ -199,16 +194,34 @@ PersimBerryIcon:  INCBIN "gfx/items/persim_berry.2bpp.lz"
 LumBerryIcon:     INCBIN "gfx/items/lum_berry.2bpp.lz"
 SitrusBerryIcon:  INCBIN "gfx/items/sitrus_berry.2bpp.lz"
 FigyBerryIcon:    INCBIN "gfx/items/figy_berry.2bpp.lz"
+PomegBerryIcon:   INCBIN "gfx/items/pomeg_berry.2bpp.lz"
+KelpsyBerryIcon:  INCBIN "gfx/items/kelpsy_berry.2bpp.lz"
+QualotBerryIcon:  INCBIN "gfx/items/qualot_berry.2bpp.lz"
+HondewBerryIcon:  INCBIN "gfx/items/hondew_berry.2bpp.lz"
+
+
+SECTION "Item Icons 6", ROMX
+
+GrepaBerryIcon:   INCBIN "gfx/items/grepa_berry.2bpp.lz"
+TamatoBerryIcon:  INCBIN "gfx/items/tamato_berry.2bpp.lz"
 LiechiBerryIcon:  INCBIN "gfx/items/liechi_berry.2bpp.lz"
 GanlonBerryIcon:  INCBIN "gfx/items/ganlon_berry.2bpp.lz"
 SalacBerryIcon:   INCBIN "gfx/items/salac_berry.2bpp.lz"
 PetayaBerryIcon:  INCBIN "gfx/items/petaya_berry.2bpp.lz"
 ApicotBerryIcon:  INCBIN "gfx/items/apicot_berry.2bpp.lz"
+LansatBerryIcon:  INCBIN "gfx/items/lansat_berry.2bpp.lz"
+StarfBerryIcon:   INCBIN "gfx/items/starf_berry.2bpp.lz"
+EnigmaBerryIcon:  INCBIN "gfx/items/enigma_berry.2bpp.lz"
+CustapBerryIcon:  INCBIN "gfx/items/custap_berry.2bpp.lz"
 JabocaBerryIcon:  INCBIN "gfx/items/jaboca_berry.2bpp.lz"
 RowapBerryIcon:   INCBIN "gfx/items/rowap_berry.2bpp.lz"
 KeeBerryIcon:     INCBIN "gfx/items/kee_berry.2bpp.lz"
 MarangaBerryIcon: INCBIN "gfx/items/marangaberry.2bpp.lz"
 BerryJuiceIcon:   INCBIN "gfx/items/berry_juice.2bpp.lz"
+
+
+SECTION "Item Icons 7", ROMX
+
 SilkScarfIcon:
 ChoiceScarfIcon:  INCBIN "gfx/items/scarf.2bpp.lz"
 BlackBeltIcon:    INCBIN "gfx/items/black_belt.2bpp.lz"
@@ -228,9 +241,8 @@ BlackGlassesIcon: INCBIN "gfx/items/blackglasses.2bpp.lz"
 PinkBowIcon:      INCBIN "gfx/items/pink_bow.2bpp.lz"
 
 
-SECTION "Item Icons 2", ROMX
+SECTION "Item Icons 8", ROMX
 
-ItemIcons2:
 ScopeLensIcon:    INCBIN "gfx/items/scope_lens.2bpp.lz"
 QuickClawIcon:    INCBIN "gfx/items/quick_claw.2bpp.lz"
 KingsRockIcon:    INCBIN "gfx/items/kings_rock.2bpp.lz"
@@ -248,6 +260,10 @@ RareBoneIcon:     INCBIN "gfx/items/bone.2bpp.lz"
 LuckyPunchIcon:   INCBIN "gfx/items/lucky_punch.2bpp.lz"
 ArmorSuitIcon:    INCBIN "gfx/items/armor_suit.2bpp.lz"
 AirBalloonIcon:   INCBIN "gfx/items/air_balloon.2bpp.lz"
+
+
+SECTION "Item Icons 9", ROMX
+
 AssaultVestIcon:  INCBIN "gfx/items/assault_vest.2bpp.lz"
 BigRootIcon:      INCBIN "gfx/items/big_root.2bpp.lz"
 BindingBandIcon:  INCBIN "gfx/items/binding_band.2bpp.lz"
@@ -264,6 +280,10 @@ ProtectPadsIcon:  INCBIN "gfx/items/protect_pads.2bpp.lz"
 RockyHelmetIcon:  INCBIN "gfx/items/rocky_helmet.2bpp.lz"
 SafeGogglesIcon:  INCBIN "gfx/items/safe_goggles.2bpp.lz"
 ShedShellIcon:    INCBIN "gfx/items/shed_shell.2bpp.lz"
+
+
+SECTION "Item Icons 10", ROMX
+
 ShellBellIcon:    INCBIN "gfx/items/shell_bell.2bpp.lz"
 SootheBellIcon:   INCBIN "gfx/items/soothe_bell.2bpp.lz"
 WeakPolicyIcon:
@@ -271,7 +291,20 @@ BlundrPolicyIcon: INCBIN "gfx/items/policy.2bpp.lz"
 WideLensIcon:     INCBIN "gfx/items/wide_lens.2bpp.lz"
 WiseGlassesIcon:  INCBIN "gfx/items/wise_glasses.2bpp.lz"
 ZoomLensIcon:     INCBIN "gfx/items/zoom_lens.2bpp.lz"
+EjectButtonIcon:  INCBIN "gfx/items/eject_button.2bpp.lz"
+LaggingTailIcon:  INCBIN "gfx/items/lagging_tail.2bpp.lz"
+IronBallIcon:     INCBIN "gfx/items/iron_ball.2bpp.lz"
+RingTargetIcon:   INCBIN "gfx/items/ring_target.2bpp.lz"
+RedCardIcon:      INCBIN "gfx/items/red_card.2bpp.lz"
+AbsorbBulbIcon:   INCBIN "gfx/items/absorb_bulb.2bpp.lz"
+CellBatteryIcon:  INCBIN "gfx/items/cell_battery.2bpp.lz"
+LuminousMossIcon: INCBIN "gfx/items/luminousmoss.2bpp.lz"
+SnowballIcon:     INCBIN "gfx/items/snowball.2bpp.lz"
 EjectPackIcon:    INCBIN "gfx/items/eject_pack.2bpp.lz"
+
+
+SECTION "Item Icons 11", ROMX
+
 RoomServiceIcon:  INCBIN "gfx/items/room_service.2bpp.lz"
 ThroatSprayIcon:  INCBIN "gfx/items/throat_spray.2bpp.lz"
 HeavyBootsIcon:   INCBIN "gfx/items/heavy_boots.2bpp.lz"
@@ -290,6 +323,10 @@ ToxicOrbIcon:     INCBIN "gfx/items/toxic_orb.2bpp.lz"
 BlackSludgeIcon:  INCBIN "gfx/items/black_sludge.2bpp.lz"
 MachoBraceIcon:   INCBIN "gfx/items/macho_brace.2bpp.lz"
 PowerWeightIcon:  INCBIN "gfx/items/power_weight.2bpp.lz"
+
+
+SECTION "Item Icons 12", ROMX
+
 PowerBracerIcon:  INCBIN "gfx/items/power_bracer.2bpp.lz"
 PowerBeltIcon:    INCBIN "gfx/items/power_belt.2bpp.lz"
 PowerLensIcon:    INCBIN "gfx/items/power_lens.2bpp.lz"
@@ -306,6 +343,10 @@ RazorClawIcon:    INCBIN "gfx/items/razor_claw.2bpp.lz"
 OddSouvenirIcon:  INCBIN "gfx/items/odd_souvenir.2bpp.lz"
 NuggetIcon:       INCBIN "gfx/items/nugget.2bpp.lz"
 BigNuggetIcon:    INCBIN "gfx/items/big_nugget.2bpp.lz"
+
+
+SECTION "Item Icons 13", ROMX
+
 TinyMushroomIcon: INCBIN "gfx/items/tinymushroom.2bpp.lz"
 BigMushroomIcon:  INCBIN "gfx/items/big_mushroom.2bpp.lz"
 BalmMushroomIcon: INCBIN "gfx/items/balmmushroom.2bpp.lz"
@@ -323,6 +364,10 @@ DomeFossilIcon:   INCBIN "gfx/items/dome_fossil.2bpp.lz"
 OldAmberIcon:     INCBIN "gfx/items/old_amber.2bpp.lz"
 MulchIcon:        INCBIN "gfx/items/mulch.2bpp.lz"
 SweetHoneyIcon:   INCBIN "gfx/items/sweet_honey.2bpp.lz"
+
+
+SECTION "Item Icons 14", ROMX
+
 MintIcon:         INCBIN "gfx/items/mint.2bpp.lz"
 FlowerMailIcon:   INCBIN "gfx/items/flower_mail.2bpp.lz"
 SurfMailIcon:
@@ -338,9 +383,8 @@ MirageMailIcon:   INCBIN "gfx/items/mirage_mail.2bpp.lz"
 TMHMIcon:         INCBIN "gfx/items/tm_hm.2bpp.lz"
 
 
-SECTION "Key Item Icons", ROMX
+SECTION "Key Item Icons 1", ROMX
 
-KeyItemIcons:
 BicycleIcon:      INCBIN "gfx/items/bicycle.2bpp.lz"
 OldRodIcon:       INCBIN "gfx/items/old_rod.2bpp.lz"
 GoodRodIcon:      INCBIN "gfx/items/good_rod.2bpp.lz"
@@ -357,6 +401,10 @@ SSTicketIcon:     INCBIN "gfx/items/s_s_ticket.2bpp.lz"
 PassIcon:         INCBIN "gfx/items/pass.2bpp.lz"
 MachinePartIcon:  INCBIN "gfx/items/machine_part.2bpp.lz"
 LostItemIcon:     INCBIN "gfx/items/lost_item.2bpp.lz"
+
+
+SECTION "Key Item Icons 2", ROMX
+
 RainbowWingIcon:  INCBIN "gfx/items/rainbow_wing.2bpp.lz"
 SilverWingIcon:   INCBIN "gfx/items/silver_wing.2bpp.lz"
 ClearBellIcon:    INCBIN "gfx/items/clear_bell.2bpp.lz"

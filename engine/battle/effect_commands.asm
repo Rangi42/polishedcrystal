@@ -2770,6 +2770,13 @@ BattleCommand_supereffectivetext: ; 351ad
 	cp HELD_WEAKNESS_POLICY
 	ret nz
 
+	ld a, [wAttackMissed]
+	ld b, a
+	ld a, [wEffectFailed]
+	ld c, a
+	xor a
+	ld [wEffectFailed], a
+	push bc
 	push hl
 	call SwitchTurn
 	call ResetMiss
@@ -2815,11 +2822,16 @@ BattleCommand_supereffectivetext: ; 351ad
 	call ConsumeUserItem
 .end
 	pop hl
+	pop bc
+	ld a, b
+	ld [wAttackMissed], a
+	ld a, c
+	ld [wEffectFailed], a
 	jp SwitchTurn
 .print_msg
 	ld b, a
 	inc b
-	farcall GetStatName
+	call GetStatName
 	ld hl, BattleText_ItemSharplyRaised
 	jp StdBattleTextBox
 
@@ -4528,11 +4540,6 @@ BattleCommand_sketch: ; 35a74
 .not_linked
 ; If the opponent has a substitute up, fail.
 	call CheckSubstituteOpp
-	jp nz, .fail
-; If the opponent is transformed, fail.
-	ld a, BATTLE_VARS_SUBSTATUS2_OPP
-	call GetBattleVarAddr
-	bit SUBSTATUS_TRANSFORMED, [hl]
 	jp nz, .fail
 ; If the user is transformed, fail.
 	ld a, BATTLE_VARS_SUBSTATUS2
@@ -7546,6 +7553,8 @@ BattleCommand_skillswap:
 	call CheckHiddenOpponent
 	jr nz, .failed
 
+	call AnimateCurrentMove
+
 	ld a, [wPlayerAbility]
 	ld b, a
 	ld a, [wEnemyAbility]
@@ -7583,6 +7592,9 @@ BattleCommand_trick:
 	jr z, .failed
 	call OpponentCanLoseItem
 	jr z, .failed
+
+	call AnimateCurrentMove
+
 	call GetUserItem
 	push hl
 	call GetOpponentItem
@@ -7994,7 +8006,26 @@ BattleCommand_trickroom:
 	ld [hl], 5
 	call AnimateCurrentMove
 	ld hl, TrickRoomText
-	jp StdBattleTextBox
+	call StdBattleTextBox
+
+	call GetUserItemAfterUnnerve
+	ld a, b
+	cp HELD_ROOM_SERVICE
+	ret nz
+
+	ld b, SPEED + 1
+	call GetStatName
+	dec b
+	call LowerStat
+	ld a, [wFailedMessage]
+	and a
+	ret nz
+
+	call GetCurItemName
+	farcall ItemRecoveryAnim
+	ld hl, BattleText_ItemLowered
+	call StdBattleTextBox
+	jp ConsumeUserItem
 
 .failed
 	call AnimateFailedMove
@@ -9196,25 +9227,30 @@ GetUserItemAfterUnnerve::
 	ret
 
 EdibleBerries:
-	db ORAN_BERRY
-	db SITRUS_BERRY
-	db PECHA_BERRY
-	db RAWST_BERRY
 	db CHERI_BERRY
 	db CHESTO_BERRY
+	db PECHA_BERRY
+	db RAWST_BERRY
 	db ASPEAR_BERRY
+	db LEPPA_BERRY
+	db ORAN_BERRY
 	db PERSIM_BERRY
 	db LUM_BERRY
-	db LEPPA_BERRY
+	db SITRUS_BERRY
 	db FIGY_BERRY
 	db LIECHI_BERRY
 	db GANLON_BERRY
 	db SALAC_BERRY
 	db PETAYA_BERRY
 	db APICOT_BERRY
+	db LANSAT_BERRY
+	db STARF_BERRY
+	db ENIGMA_BERRY
+	db CUSTAP_BERRY
 	db KEE_BERRY
 	db MARANGABERRY
-	; not eaten, so unaffected: jaboca, rowap
+	; not eaten, so unaffected:
+	; pomeg, kelpsy, qualot, hondew, grepa, tamato, jaboca, rowap
 	db -1
 NoItem:
 	db NO_ITEM

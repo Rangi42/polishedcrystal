@@ -1077,27 +1077,20 @@ GLOBAL BattleText
 	ret
 ; 3ae1
 
-GetBattleAnimPointer:: ; 3ae1
+GetBattleAnimPointer::
+	anonbankpush BattleAnimations
 
-GLOBAL BattleAnimations
-GLOBAL BattleAnimCommands
-
-	ld a, BANK(BattleAnimations)
-	rst Bankswitch
-
+.Function:
 	ld a, [hli]
 	ld [wBattleAnimAddress], a
 	ld a, [hl]
 	ld [wBattleAnimAddress + 1], a
-
-	ld a, BANK(BattleAnimCommands)
-	rst Bankswitch
-
 	ret
-; 3af0
 
 GetBattleAnimByte:: ; 3af0
+	anonbankpush BattleAnimations
 
+.Function:
 	push hl
 	push de
 
@@ -1106,18 +1099,12 @@ GetBattleAnimByte:: ; 3af0
 	inc hl
 	ld d, [hl]
 
-	ld a, BANK(BattleAnimations)
-	rst Bankswitch
-
 	ld a, [de]
 	ld [wBattleAnimByte], a
 	inc de
 
-	ld a, BANK(BattleAnimCommands)
-	rst Bankswitch
-
-	ld [hl], d
-	dec hl
+	ld a, d
+	ld [hld], a
 	ld [hl], e
 
 	pop de

@@ -97,13 +97,7 @@ Refer to [B/W animations with sound effects](https://www.youtube.com/watch?v=TFD
 High priority:
 
 * Giga Impact
-* Gyro Ball
-* Rock Blast
-* Skill Swap
-* Stone Edge
-* Sucker Punch
 * Trick
-* U-turn
 * Water Pulse
 
 Low priority:
@@ -114,7 +108,6 @@ Low priority:
 * Bulldoze
 * Close Combat
 * DazzlinGleam
-* Disarm Voice
 * Earth Power
 * Extrasensory
 * Facade
@@ -122,7 +115,6 @@ Low priority:
 * Hex
 * Knock Off
 * Roost
-* Toxic Spikes
 * Venoshock
 * Volt Switch
 

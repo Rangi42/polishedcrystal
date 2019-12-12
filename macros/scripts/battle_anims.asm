@@ -10,10 +10,16 @@ endc
 	enum anim_obj_command ; d0
 anim_obj: macro
 	db anim_obj_command
-	db \1 ; obj
+	db \1 ; object
+if _NARG == 4
+	db \2 ; x
+	db \3 ; y
+	db \4 ; param
+else
 	db \2 * 8 + \3 ; x
 	db \4 * 8 + \5 ; y
 	db \6 ; param
+endc
 	endm
 
 	enum anim_1gfx_command ; d1

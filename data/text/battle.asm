@@ -183,6 +183,17 @@ BrokeReflectText:
 	cont "Reflect!"
 	prompt
 
+BattleText_ItemLowered:
+	text "The @"
+	text_from_ram wStringBuffer1
+	text ""
+	line "lowered"
+	cont "<USER>'s"
+	cont "@"
+	text_from_ram wStringBuffer2
+	text "!"
+	prompt
+
 BattleText_ItemRaised:
 	text "The @"
 	text_from_ram wStringBuffer1

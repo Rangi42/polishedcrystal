@@ -4084,6 +4084,10 @@ INCLUDE "engine/phone_scripts.asm"
 SECTION "Code 21", ROMX
 
 INCLUDE "engine/battle_anims/bg_effects.asm"
+
+
+SECTION "Battle Animation data", ROMX
+
 INCLUDE "data/moves/animations.asm"
 
 

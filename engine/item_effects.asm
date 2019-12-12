@@ -125,14 +125,24 @@ ItemEffects: ; e73c
 	dw HealStatusEffect ; LUM_BERRY
 	dw RestoreHPEffect  ; SITRUS_BERRY
 	dw RestoreHPEffect  ; FIGY_BERRY
+	dw LowerEVBerry     ; POMEG_BERRY
+	dw LowerEVBerry     ; KELPSY_BERRY
+	dw LowerEVBerry     ; QUALOT_BERRY
+	dw LowerEVBerry     ; HONDEW_BERRY
+	dw LowerEVBerry     ; GREPA_BERRY
+	dw LowerEVBerry     ; TAMATO_BERRY
 	dw NoEffect         ; LIECHI_BERRY
 	dw NoEffect         ; GANLON_BERRY
 	dw NoEffect         ; SALAC_BERRY
 	dw NoEffect         ; PETAYA_BERRY
 	dw NoEffect         ; APICOT_BERRY
+	dw NoEffect         ; LANSAT_BERRY
+	dw NoEffect         ; STARF_BERRY
+	dw NoEffect         ; ENIGMA_BERRY
+	dw NoEffect         ; CUSTAP_BERRY
 	dw NoEffect         ; JABOCA_BERRY
 	dw NoEffect         ; ROWAP_BERRY
-	dw NoEffect         ; ROWAP_BERRY
+	dw NoEffect         ; KEE_BERRY
 	dw NoEffect         ; MARANGABERRY
 	dw RestoreHPEffect  ; BERRY_JUICE
 	dw NoEffect         ; SILK_SCARF
@@ -194,6 +204,15 @@ ItemEffects: ; e73c
 	dw NoEffect         ; WIDE_LENS
 	dw NoEffect         ; WISE_GLASSES
 	dw NoEffect         ; ZOOM_LENS
+	dw NoEffect         ; EJECT_BUTTON
+	dw NoEffect         ; LAGGING_TAIL
+	dw NoEffect         ; IRON_BALL
+	dw NoEffect         ; RING_TARGET
+	dw NoEffect         ; RED_CARD
+	dw NoEffect         ; ABSORB_BULB
+	dw NoEffect         ; CELL_BATTERY
+	dw NoEffect         ; LUMINOUSMOSS
+	dw NoEffect         ; SNOWBALL
 	dw NoEffect         ; EJECT_PACK
 	dw NoEffect         ; ROOM_SERVICE
 	dw NoEffect         ; BLUNDRPOLICY
@@ -822,6 +841,7 @@ BallMultiplierFunctionTable:
 	dbw DIVE_BALL,   DiveBallMultiplier
 	dbw QUICK_BALL,  QuickBallMultiplier
 	dbw DUSK_BALL,   DuskBallMultiplier
+	dbw DREAM_BALL,  DreamBallMultiplier
 	db $ff
 
 UltraBallMultiplier:
@@ -1363,6 +1383,22 @@ endr
 	ld b, $ff
 	ret
 
+DreamBallMultiplier:
+; multiply catch rate by 4 if mon is asleep
+	ld a, [wEnemyMonStatus]
+	and SLP
+	ret z
+
+	sla b
+	jr c, .max
+
+	sla b
+	ret nc
+
+.max
+	ld b, $ff
+	ret
+
 Text_NoShake: ; 0xedb5
 	; Oh no! The #MON broke free!
 	text_jump UnknownText_0x1c5aa6
@@ -1459,18 +1495,46 @@ EvoStoneEffect:
 	jp WontHaveAnyEffectMessage
 ; ee3d
 
+LowerEVBerry:
+	ld b, PARTYMENUACTION_HEALING_ITEM
+	call UseItem_SelectMon
+	jp c, ItemNotUsed_ExitMenu
+
+	ld a, MON_HAPPINESS
+	call GetPartyParamLocation
+	ld a, [hl]
+	inc a
+	push af
+	call SetUpEVModifier
+	add hl, bc
+	pop af
+	or [hl]
+	jp z, WontHaveAnyEffectMessage
+
+	sub 10
+	jr nc, .ev_value_ok
+	xor a
+
+.ev_value_ok
+	ld [hl], a
+	farcall UpdatePkmnStats
+	ld c, HAPPINESS_USEDEVBERRY
+	farcall ChangeHappiness
+	call GetStatStringAndPlayFullHealSFX
+	ld hl, ItemHappinessRoseButStatFellText
+	call PrintText
+	jp UseDisposableItem
+
+ItemHappinessRoseButStatFellText:
+	text_jump _ItemHappinessRoseButStatFellText
+	db "@"
 
 VitaminEffect: ; ee3d
 	ld b, PARTYMENUACTION_HEALING_ITEM
 	call UseItem_SelectMon
 	jp c, ItemNotUsed_ExitMenu
 
-	call UseItem_GetBaseDataAndNickParameters
-	call GetEVRelativePointer
-
-	ld a, MON_EVS
-	call GetPartyParamLocation
-
+	call SetUpEVModifier
 	add hl, bc
 	ld a, [hl]
 	cp 252
@@ -1487,8 +1551,30 @@ VitaminEffect: ; ee3d
 	ld [hl], a
 	farcall UpdatePkmnStats
 
-	call GetEVRelativePointer
+	call GetStatStringAndPlayFullHealSFX
+	ld hl, ItemStatRoseText
+	call PrintText
 
+	ld c, HAPPINESS_USEDITEM
+	farcall ChangeHappiness
+	jp UseDisposableItem
+; ee8c
+
+
+ItemStatRoseText: ; 0xeea6
+	; 's @ rose.
+	text_jump _ItemStatRoseText
+	db "@"
+; 0xeeab
+
+SetUpEVModifier:
+	call UseItem_GetBaseDataAndNickParameters
+	call GetEVRelativePointer
+	ld a, MON_EVS
+	jp GetPartyParamLocation
+
+GetStatStringAndPlayFullHealSFX:
+	call GetEVRelativePointer
 	ld hl, StatStrings
 	add hl, bc
 	add hl, bc
@@ -1498,25 +1584,7 @@ VitaminEffect: ; ee3d
 	ld de, wStringBuffer2
 	ld bc, ITEM_NAME_LENGTH
 	rst CopyBytes
-
-	call Play_SFX_FULL_HEAL
-
-	ld hl, Text_StatRose
-	call PrintText
-
-	ld c, HAPPINESS_USEDITEM
-	farcall ChangeHappiness
-
-	jp UseDisposableItem
-; ee8c
-
-
-Text_StatRose: ; 0xeea6
-	; 's @  rose.
-	text_jump UnknownText_0x1c5b9a
-	db "@"
-; 0xeeab
-
+	jp Play_SFX_FULL_HEAL
 
 StatStrings: ; eeab
 	dw .health
