@@ -148,7 +148,9 @@ BattleTurn: ; 3c12f
 	ret c
 
 	xor a
-	ld [wPlayerIsSwitching], a
+	ld [wBattlePlayerAction], a
+	ld [wPlayerSwitchTarget], a
+	ld [wEnemySwitchTarget], a
 	ld [wEnemyIsSwitching], a
 	ld [wEnemyUsingItem], a
 	ld [wEnemySwitchItemCheck], a
@@ -159,8 +161,9 @@ BattleTurn: ; 3c12f
 	call HandleBerserkGene
 	call UpdateBattleMonInParty
 	farcall AIChooseMove
-	call CheckPlayerLockedIn
-	jr c, .skip_iteration
+	call SetPlayerTurn
+	call CheckLockedIn
+	jr nz, .skip_iteration
 .loop1
 	call BattleMenu
 	ret c
@@ -485,39 +488,41 @@ CheckSafariBattleOver:
 	scf
 	ret
 
-CheckPlayerLockedIn: ; 3c410
-	ld a, [wPlayerSubStatus4]
-	and 1 << SUBSTATUS_RECHARGE
-	jp nz, .quit
-
-	ld hl, wEnemySubStatus3
-	res SUBSTATUS_FLINCHED, [hl]
-	ld hl, wPlayerSubStatus3
-	res SUBSTATUS_FLINCHED, [hl]
-
-	ld a, [hl]
-	and 1 << SUBSTATUS_CHARGED | 1 << SUBSTATUS_RAMPAGE
-	jp nz, .quit
-
-	ld hl, wPlayerSubStatus1
+CheckLockedIn:
+	ld a, BATTLE_VARS_SUBSTATUS1
+	call GetBattleVarAddr
 	bit SUBSTATUS_ROLLOUT, [hl]
-	jp nz, .quit
+	ret nz
+	inc hl
+	inc hl
+	ld a, [hli]
+	and 1 << SUBSTATUS_CHARGED | 1 << SUBSTATUS_RAMPAGE
+	ret nz
+	bit SUBSTATUS_RECHARGE, [hl]
+	ret
 
+ParsePlayerAction:
+	ld a, [wBattlePlayerAction]
 	and a
-	ret
+	jr z, .using_move
 
-.quit
-	scf
-	ret
-; 3c434
+	call SetPlayerTurn
+	ld a, BATTLE_VARS_MOVE
+	call GetBattleVarAddr
+	xor a
+	ld [hl], a
+	jr .encored
 
-ParsePlayerAction: ; 3c434
+.using_move
+	xor a
+	ld [wBattlePlayerAction], a
 	ld a, [wBattleType]
 	cp BATTLETYPE_GHOST
 	jp z, .lavender_ghost
 
-	call CheckPlayerLockedIn
-	jp c, .locked_in
+	call SetPlayerTurn
+	call CheckLockedIn
+	jr nz, .locked_in
 	ld hl, wPlayerSubStatus2
 	bit SUBSTATUS_ENCORED, [hl]
 	jr z, .not_encored
@@ -761,13 +766,18 @@ ResolveFaints:
 	ld a, [hBattleTurn]
 	push af
 
-	; If faint animations hasn't run yet, do that now
-	call SetFastestTurn
+	; If faint animations hasn't run yet, do that, starting with first faint
+	ld a, [wWhichMonFaintedFirst]
+	and a
+	jr z, .no_fainted_mons
+	dec a
+	ld [hBattleTurn], a
 	call FaintUserPokemon
 	call SwitchTurn
 	call FaintUserPokemon
 	call SwitchTurn
 
+.no_fainted_mons
 	pop af
 	ld [hBattleTurn], a
 
@@ -1752,14 +1762,25 @@ SubtractHPFromEnemy:
 	ret
 
 _SubtractHP:
+; Subtracts HP. If HP drops to zero, marks this Pokémon as first fainted mon.
 	call .do_subtract
 	ld a, [hli]
 	or [hl]
 	push af
 	call UpdateHPBarBattleHuds
 	pop af
-	jp z, FaintUserPokemon
+	jr z, .set_first_faint
 	farjp HandleHealingItems
+
+.set_first_faint
+	ld hl, wWhichMonFaintedFirst
+	ld a, [hl]
+	and a
+	ret nz
+	ld a, [hBattleTurn]
+	inc a
+	ld [hl], a
+	ret
 
 .do_subtract
 	inc hl
@@ -2908,7 +2929,8 @@ EnemySwitch: ; 3d4e1
 	call LoadTileMapToTempTileMap
 	ld a, [wCurBattleMon]
 	ld [wCurPartyMon], a
-	jp PlayerSwitch
+	ret
+	; jp PlayerSwitch
 ; 3d517
 
 EnemySwitch_SetMode: ; 3d517
@@ -3810,7 +3832,7 @@ HandleAirBalloon:
 PursuitSwitch:
 	call CallOpponentTurn
 .Function:
-	call CheckOpponentWentFirst
+	farcall CheckOpponentWentFirst
 	ret z
 
 	ld a, BATTLE_VARS_MOVE
@@ -4895,59 +4917,20 @@ TryPlayerSwitch: ; 3e358
 .try_switch
 	call CheckIfCurPartyMonIsFitToFight
 	jp z, BattleMenuPKMN_Loop
-	ld a, $2
+
+	ld a, [wCurPartyMon]
+	inc a
+	ld [wPlayerSwitchTarget], a
+	ld a, 1
 	ld [wBattlePlayerAction], a
+
 	call ClearPalettes
-	call DelayFrame
 	call ClearSprites
 	call _LoadStatusIcons
 	call CloseWindow
 	call GetMemCGBLayout
 	call SetPalettes
-PlayerSwitch: ; 3e3ad
-	ld a, 1
-	ld [wPlayerIsSwitching], a
-	ld a, [wLinkMode]
-	and a
-	jr z, .not_linked
-	call LoadStandardMenuDataHeader
-	call LinkBattleSendReceiveAction
-	call CloseWindow
-	call ParseEnemyAction
-	ld a, [wBattleAction]
-	cp BATTLEACTION_STRUGGLE
-	jp z, .switch
-	cp BATTLEACTION_SWITCH1
-	jp c, .switch
-	cp BATTLEACTION_FORFEIT
-	jr nz, .dont_run
-	jp WildFled_EnemyFled_LinkBattleCanceled
-
-.not_linked
-	; Let AI choose to switch or try item *before* the player switches out
-	farcall AI_SwitchOrTryItem
-	call nc, ParseEnemyAction
-
-.switch
-	call BattleMonEntrance
-	and a
 	ret
-
-.dont_run
-	ld a, [hSerialConnectionStatus]
-	cp USING_EXTERNAL_CLOCK
-	jr z, .player_1
-	call BattleMonEntrance
-	call EnemyMonEntrance
-	and a
-	ret
-
-.player_1
-	call EnemyMonEntrance
-	call BattleMonEntrance
-	and a
-	ret
-; 3e3ff
 
 EnemyMonEntrance:
 	ld a, $1
@@ -5980,10 +5963,7 @@ CheckUsableMove:
 	pop bc
 	ret
 
-ParseEnemyAction: ; 3e7c1
-	ld a, [wEnemyIsSwitching]
-	and a
-	ret nz
+ParseEnemyAction:
 	ld a, [wEnemyUsingItem]
 	and a
 	ret nz
@@ -6035,13 +6015,14 @@ ParseEnemyAction: ; 3e7c1
 	jp .finish
 
 .skip_encore
-	call CheckEnemyLockedIn
+	call SetEnemyTurn
+	call CheckLockedIn
 	jp nz, ResetVarsForSubstatusRage
 
 .skip_load
 	call SetEnemyTurn
 	farcall UpdateMoveData
-	call CheckEnemyLockedIn
+	call CheckLockedIn
 	jr nz, .raging
 	xor a
 	ld [wEnemyCharging], a
@@ -6077,30 +6058,15 @@ ResetVarsForSubstatusRage: ; 3e8c1
 	ret
 ; 3e8d1
 
-CheckEnemyLockedIn: ; 3e8d1
-	ld a, [wEnemySubStatus4]
-	and 1 << SUBSTATUS_RECHARGE
-	ret nz
-
-	ld hl, wEnemySubStatus3
-	ld a, [hl]
-	and 1 << SUBSTATUS_CHARGED | 1 << SUBSTATUS_RAMPAGE
-	ret nz
-
-	ld hl, wEnemySubStatus1
-	bit SUBSTATUS_ROLLOUT, [hl]
-	ret
-; 3e8e4
-
 LinkBattleError:
 ; TODO: handle link battle errors gracefully
 	ld hl, LinkBattleErrorText
 	call StdBattleTextBox
 	jp SoftReset
 
-LinkBattleSendReceiveAction: ; 3e8e4
-; Note that only the lower 4 bits is usable. The higher 4 determines what kind of
-; linking we are performing.
+LinkBattleSendReceiveAction:
+; Note that only the lower 4 bits is usable. The higher 4 determines what kind
+; of linking we are performing.
 	call .StageForSend
 	ld [wLinkBattleSentAction], a
 	farcall PlaceWaitingText
@@ -6133,7 +6099,6 @@ LinkBattleSendReceiveAction: ; 3e8e4
 	ld a, [wOtherPlayerLinkAction]
 	ld [wBattleAction], a
 	ret
-; 100a2e
 
 .StageForSend: ; 100a2e
 	ld a, [wBattlePlayerAction]
@@ -6147,8 +6112,8 @@ LinkBattleSendReceiveAction: ; 3e8e4
 	jr .use_move
 
 .switch
-	ld a, [wCurPartyMon]
-	add BATTLEACTION_SWITCH1
+	ld a, [wPlayerSwitchTarget]
+	add BATTLEACTION_SWITCH1 - 1
 	jr .use_move
 
 .struggle

@@ -9,9 +9,6 @@ AI_SwitchOrTryItem: ; 38000
 	and a
 	ret nz
 
-	farcall CheckEnemyLockedIn
-	ret nz
-
 	; Avoid performing this check twice in a single turn
 	ld hl, wEnemySwitchItemCheck
 	ld a, [hl]

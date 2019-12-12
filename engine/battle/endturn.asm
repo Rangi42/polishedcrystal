@@ -74,6 +74,11 @@ HandleBetweenTurnEffects:
 	ld [wEnemyEndturnSwitched], a
 
 	; these run even if the user switched at endturn
+	ld hl, wPlayerSubStatus3
+	res SUBSTATUS_FLINCHED, [hl]
+	ld hl, wEnemySubStatus3
+	res SUBSTATUS_FLINCHED, [hl]
+
 	call HandleStatusOrbs
 	call HandleRoost
 	call UpdateBattleMonInParty

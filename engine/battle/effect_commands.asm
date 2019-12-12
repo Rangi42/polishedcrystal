@@ -1,10 +1,6 @@
 DoPlayerTurn: ; 34000
 	call SetPlayerTurn
 
-	ld a, [wBattlePlayerAction]
-	and a
-	ret nz
-
 	ld a, [wBattleType]
 	cp BATTLETYPE_GHOST
 	jr nz, DoTurn
@@ -43,6 +39,17 @@ DoTurn: ; 3401d
 ; Read in and execute the user's move effects for this turn.
 	xor a
 	ld [wTurnEnded], a
+
+	ld a, [hBattleTurn]
+	and a
+	ld hl, wPlayerSwitchTarget
+	jr z, .got_switch_target
+	ld hl, wEnemySwitchTarget
+.got_switch_target
+	ld a, [hl]
+	and a
+	ld a, 1 << SWITCH_DEFERRED | 1 << SWITCH_EXPLICIT | 1 << SWITCH_PURSUIT
+	call nz, SetDeferredSwitch
 
 	; Effect command checkturn is called for every move.
 	call CheckTurn
@@ -2649,14 +2656,6 @@ FailText_CheckOpponentProtect: ; 35157
 
 BattleCommand_suckerpunch:
 	call CheckOpponentWentFirst
-	jr nz, .failed
-
-	; TODO: Is there a better way to check "player didn't fight"?
-	; Because of how the battle core is designed, a player switch
-	; or item use won't neccessarily imply going first from the
-	; battle move scripts' point of view...
-	ld a, [wBattlePlayerAction]
-	and a
 	jr nz, .failed
 
 	; Now we know that the opponent did pick a move
@@ -8769,13 +8768,7 @@ BattleCommand_pursuit: ; 37b1d
 ; pursuit
 ; Double damage if the opponent is switching.
 
-	ld hl, wEnemyIsSwitching
-	ld a, [hBattleTurn]
-	and a
-	jr z, .ok
-	ld hl, wPlayerIsSwitching
-.ok
-	ld a, [hl]
+	ld a, [wDeferredSwitch]
 	and a
 	ret z
 

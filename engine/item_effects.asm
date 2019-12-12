@@ -635,6 +635,13 @@ PokeBallEffect: ; e8a2
 	ld bc, PKMN_NAME_LENGTH
 	rst CopyBytes
 	pop af
+	ld b, 0
+	ld c, a
+	ld hl, wPartySpecies
+	add hl, bc
+	ld a, [wOTPartyMon1Species]
+	ld [hli], a
+	ld [hl], $ff
 
 	farcall SetCaughtData
 

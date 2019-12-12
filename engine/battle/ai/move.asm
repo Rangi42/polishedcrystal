@@ -7,10 +7,6 @@ AIChooseMove: ; 440ce
 	and a
 	ret nz
 
-	; No use picking a move if there's no choice.
-	farcall CheckEnemyLockedIn
-	ret nz
-
 	; Default score is 20, unusable moves are set to 80.
 	call SetEnemyTurn
 	ld hl, wBuffer1 + 3
