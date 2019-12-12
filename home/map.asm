@@ -1559,8 +1559,6 @@ GetMovementPermissions:: ; 2914
 .CheckHiNybble:
 	and $f0
 	cp $b0
-	ret z
-	cp $c0
 	ret
 ; 2a07
 
