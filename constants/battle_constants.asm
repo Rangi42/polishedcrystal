@@ -61,9 +61,12 @@ STAT_MIN_HP EQU 10
 
 ; $00 is used instead of $ff for DVs because $ff is the end-of-trainer marker
 ; ReadTrainerParty converts $00 to $ff when reading DVs
+; DV order: HP atk def spe sat sdf
 
 PERFECT_DVS      EQUS "$ff, $ff, $ff"
 FAKE_PERFECT_DVS EQUS "$00, $00, $00"
+DVS_TRICK_ROOM   EQUS "$00, $f0, $00"
+BTDVS_TRICK_ROOM EQUS "$ff, $f0, $ff"
 
 ; Hidden Power DVs ($00 is converted to $ff in regular trainer sets)
 ; Chosen for stat importance: Speed > * > Atk
