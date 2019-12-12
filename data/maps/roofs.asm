@@ -37,6 +37,7 @@ MapGroupRoofs:
 	db -1 ; group 33
 	db  2 ; group 34 (Sinjoh Ruins)
 	db -1 ; group 35
+	db -1 ; group 36 (Lacunosa Town)
 
 Roofs:
 INCBIN "gfx/tilesets/roofs/0.2bpp"

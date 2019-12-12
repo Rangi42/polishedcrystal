@@ -165,10 +165,6 @@ GetSprite:: ; 1423c
 	ld l, [hl]
 	ld h, a
 	; load the length into c
-	ld c, 15
-	ld a, l
-	cp BIG_GYARADOS_SPRITE
-	ret z
 	ld c, 12
 	ret
 ; 14259

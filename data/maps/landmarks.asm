@@ -149,6 +149,8 @@ Landmarks: ; 0x1ca8c3
 	landmark 144, 136, NavelRockName
 	landmark  32, 136, FarawayIslandName
 
+	landmark 32,   32, LacunosaTownName
+
 
 NewBarkTownName:       db "N","e","w"," ","B","a","r","k","¯","T","o","w","n","@"
 CherrygroveCityName:   db "C","h","e","r","r","y","g","r","o","v","e","¯","C","i","t","y","@"
@@ -293,4 +295,5 @@ FarawayIslandName:     db "F","a","r","a","w","a","y","¯","I","s","l","a","n","
 SinjohRuinsName:       db "S","i","n","j","o","h","¯","R","u","i","n","s","@"
 MystriStageName:       db "M","y","s","t","r","i","¯","S","t","a","g","e","@"
 CinnabarLabName:       db "P","o","k","é","m","o","n","¯","L","a","b","@"
+LacunosaTownName:      db "L","a","c","u","n","o","s","a","¯","T","o","w","n","@"
 SpecialMapName:        db "?","@"

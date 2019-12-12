@@ -105,4 +105,5 @@ MapTriggers::
 	scene_var WILLS_ROOM,                             wWillsRoomTrigger
 	scene_var WISE_TRIOS_ROOM,                        wWiseTriosRoomTrigger
 	scene_var YELLOW_FOREST,                          wYellowForestTrigger
+	scene_var LACUNOSA_TOWN,                          wLacunosaTownTrigger
 	db -1

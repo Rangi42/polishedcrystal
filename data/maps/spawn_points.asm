@@ -5,7 +5,7 @@ spawn: MACRO
 ENDM
 
 SpawnPoints: ; 0x152ab
-	spawn KRISS_HOUSE_2F,              3,  3
+	spawn LACUNOSA_TOWN,              22, 22
 
 	spawn PALLET_TOWN,                 5,  6
 	spawn VIRIDIAN_CITY,              23, 26

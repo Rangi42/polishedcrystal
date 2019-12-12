@@ -164,7 +164,7 @@ HandleMapObjectAction_Stationary:
 	ld hl, OBJECT_FLAGS1
 	add hl, bc
 	bit INVISIBLE, [hl]
-	jr nz, SetFacingStanding
+	jp nz, SetFacingStanding
 asm_4448: ; use second column
 	ld de, Pointers445f + 2
 	; fallthrough
@@ -533,12 +533,18 @@ MapObjectMovementPattern:
 	dw .MovementShakingGrass         ; SPRITEMOVEFN_GRASS
 	dw .MovementSplashingPuddle      ; SPRITEMOVEFN_PUDDLE
 	dw .MovementCutTree              ; SPRITEMOVEFN_CUT_TREE
-	dw .MovementBigGyarados          ; SPRITEMOVEFN_BIG_GYARADOS
-	dw .StandingFlip                 ; SPRITEMOVEFN_STANDING_FLIP
-	dw .MovementPokecomNews          ; SPRITEMOVEFN_POKECOM_NEWS
-	dw .MovementArchTree             ; SPRITEMOVEFN_ARCH_TREE
-	dw .MovementSailboatTop          ; SPRITEMOVEFN_SAILBOAT_TOP
-	dw .MovementSailboatBottom       ; SPRITEMOVEFN_SAILBOAT_BOTTOM
+	dw .MovementRailUpperHi          ; SPRITEMOVEFN_RAIL_UPPER_HI
+	dw .MovementRailUpperLo          ; SPRITEMOVEFN_RAIL_UPPER_LO
+	dw .MovementRailLowerHi          ; SPRITEMOVEFN_RAIL_LOWER_HI
+	dw .MovementRailLowerLo          ; SPRITEMOVEFN_RAIL_LOWER_LO
+	dw .MovementRailUpperHiFlip      ; SPRITEMOVEFN_RAIL_UPPER_HI_FLIP
+	dw .MovementRailUpperLoFlip      ; SPRITEMOVEFN_RAIL_UPPER_LO_FLIP
+	dw .MovementRailLowerHiFlip      ; SPRITEMOVEFN_RAIL_LOWER_HI_FLIP
+	dw .MovementRailLowerLoFlip      ; SPRITEMOVEFN_RAIL_LOWER_LO_FLIP
+	dw .MovementEdgeHi               ; SPRITEMOVEFN_EDGE_HI
+	dw .MovementEdgeLo               ; SPRITEMOVEFN_EDGE_LO
+	dw .MovementArchLeft             ; SPRITEMOVEFN_ARCH_LEFT
+	dw .MovementArchRight            ; SPRITEMOVEFN_ARCH_RIGHT
 
 .RandomWalkY:
 	call Random
@@ -727,32 +733,56 @@ MapObjectMovementPattern:
 	ld a, PERSON_ACTION_BOUNCE
 	jr ._ActionA_StepType04
 
-.MovementBigGyarados:
-	ld a, PERSON_ACTION_BIG_GYARADOS
+.MovementRailUpperHi:
+	ld a, PERSON_ACTION_RAIL_UPPER_HI
 	jr ._ActionA_StepType04
 
-.MovementPokecomNews:
-	ld a, PERSON_ACTION_POKECOM_NEWS
+.MovementRailUpperLo:
+	ld a, PERSON_ACTION_RAIL_UPPER_LO
+	jr ._ActionA_StepType04
+
+.MovementRailLowerHi:
+	ld a, PERSON_ACTION_RAIL_LOWER_HI
+	jr ._ActionA_StepType04
+
+.MovementRailLowerLo:
+	ld a, PERSON_ACTION_RAIL_LOWER_LO
+	jr ._ActionA_StepType04
+
+.MovementRailUpperHiFlip:
+	ld a, PERSON_ACTION_RAIL_UPPER_HI_FLIP
+	jr ._ActionA_StepType04
+
+.MovementRailUpperLoFlip:
+	ld a, PERSON_ACTION_RAIL_UPPER_LO_FLIP
+	jr ._ActionA_StepType04
+
+.MovementRailLowerHiFlip:
+	ld a, PERSON_ACTION_RAIL_LOWER_HI_FLIP
+	jr ._ActionA_StepType04
+
+.MovementRailLowerLoFlip:
+	ld a, PERSON_ACTION_RAIL_LOWER_LO_FLIP
+	jr ._ActionA_StepType04
+
+.MovementEdgeHi:
+	ld a, PERSON_ACTION_EDGE_HI
+	jr ._ActionA_StepType04
+
+.MovementEdgeLo:
+	ld a, PERSON_ACTION_EDGE_LO
+	jr ._ActionA_StepType04
+
+.MovementArchLeft:
+	ld a, PERSON_ACTION_ARCH_LEFT
+	jr ._ActionA_StepType04
+
+.MovementArchRight:
+	ld a, PERSON_ACTION_ARCH_RIGHT
 	jr ._ActionA_StepType04
 
 .MovementCutTree:
 	ld a, PERSON_ACTION_CUT_TREE
-	jr ._ActionA_StepType04
-
-.MovementArchTree:
-	ld a, PERSON_ACTION_ARCH_TREE
-	jr ._ActionA_StepType04
-
-.MovementSailboatTop:
-	ld a, PERSON_ACTION_SAILBOAT_TOP
-	jr ._ActionA_StepType04
-
-.MovementSailboatBottom:
-	ld a, PERSON_ACTION_SAILBOAT_BOTTOM
-	jr ._ActionA_StepType04
-
-.StandingFlip:
-	ld a, PERSON_ACTION_STAND_FLIP
 ._ActionA_StepType04
 	push af
 	call EndSpriteMovement

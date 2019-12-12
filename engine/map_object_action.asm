@@ -17,13 +17,19 @@ Pointers445f: ; 445f
 	dw SetFacingPuddleSplash,          SetFacingStanding          ; PERSON_ACTION_PUDDLE_SPLASH
 	dw SetFacingCutTree,               SetFacingCutTree           ; PERSON_ACTION_CUT_TREE
 	dw SetFacingSkyfall,               SetFacingCurrent           ; PERSON_ACTION_SKYFALL
-	dw SetFacingBigGyarados,           SetFacingFreezeBigGyarados ; PERSON_ACTION_BIG_GYARADOS
-	dw SetFacingStandFlip,             SetFacingStandFlip         ; PERSON_ACTION_STAND_FLIP
-	dw SetFacingPokecomNews,           SetFacingPokecomNews       ; PERSON_ACTION_POKECOM_NEWS
-	dw SetFacingArchTree,              SetFacingArchTree          ; PERSON_ACTION_ARCH_TREE
 	dw SetFacingRun,                   SetFacingCurrent           ; PERSON_ACTION_RUN
-	dw SetFacingSailboatTop,           SetFacingSailboatTop       ; PERSON_ACTION_SAILBOAT_TOP
-	dw SetFacingSailboatBottom,        SetFacingSailboatBottom    ; PERSON_ACTION_SAILBOAT_BOTTOM
+	dw SetFacingRailUpperHi,           SetFacingRailUpperHi       ; PERSON_ACTION_RAIL_UPPER_HI
+	dw SetFacingRailUpperLo,           SetFacingRailUpperLo       ; PERSON_ACTION_RAIL_UPPER_LO
+	dw SetFacingRailLowerHi,           SetFacingRailLowerHi       ; PERSON_ACTION_RAIL_LOWER_HI
+	dw SetFacingRailLowerLo,           SetFacingRailLowerLo       ; PERSON_ACTION_RAIL_LOWER_LO
+	dw SetFacingRailUpperHiFlip,       SetFacingRailUpperHiFlip   ; PERSON_ACTION_RAIL_UPPER_HI_FLIP
+	dw SetFacingRailUpperLoFlip,       SetFacingRailUpperLoFlip   ; PERSON_ACTION_RAIL_UPPER_LO_FLIP
+	dw SetFacingRailLowerHiFlip,       SetFacingRailLowerHiFlip   ; PERSON_ACTION_RAIL_LOWER_HI_FLIP
+	dw SetFacingRailLowerLoFlip,       SetFacingRailLowerLoFlip   ; PERSON_ACTION_RAIL_LOWER_LO_FLIP
+	dw SetFacingEdgeHi,                SetFacingEdgeHi            ; PERSON_ACTION_EDGE_HI
+	dw SetFacingEdgeLo,                SetFacingEdgeLo            ; PERSON_ACTION_EDGE_LO
+	dw SetFacingArchLeft,              SetFacingArchLeft          ; PERSON_ACTION_ARCH_LEFT
+	dw SetFacingArchRight,             SetFacingArchRight         ; PERSON_ACTION_ARCH_RIGHT
 ; 44a3
 
 SetFacingStanding: ; 44a3
@@ -50,16 +56,52 @@ SetFacingCutTree:
 	ld a, FACING_CUT_TREE
 	jr SetFixedFacing
 
-SetFacingPokecomNews:
-	ld a, FACING_POKECOM_NEWS
+SetFacingRailUpperHi:
+	ld a, FACING_RAIL_UPPER_HI
 	jr SetFixedFacing
 
-SetFacingSailboatTop:
-	ld a, FACING_SAILBOAT_TOP
+SetFacingRailUpperLo:
+	ld a, FACING_RAIL_UPPER_LO
 	jr SetFixedFacing
 
-SetFacingSailboatBottom:
-	ld a, FACING_SAILBOAT_BOTTOM
+SetFacingRailLowerHi:
+	ld a, FACING_RAIL_LOWER_HI
+	jr SetFixedFacing
+
+SetFacingRailLowerLo:
+	ld a, FACING_RAIL_LOWER_LO
+	jr SetFixedFacing
+
+SetFacingRailUpperHiFlip:
+	ld a, FACING_RAIL_UPPER_HI_FLIP
+	jr SetFixedFacing
+
+SetFacingRailUpperLoFlip:
+	ld a, FACING_RAIL_UPPER_LO_FLIP
+	jr SetFixedFacing
+
+SetFacingRailLowerHiFlip:
+	ld a, FACING_RAIL_LOWER_HI_FLIP
+	jr SetFixedFacing
+
+SetFacingRailLowerLoFlip:
+	ld a, FACING_RAIL_LOWER_LO_FLIP
+	jr SetFixedFacing
+
+SetFacingEdgeHi:
+	ld a, FACING_EDGE_HI
+	jr SetFixedFacing
+
+SetFacingEdgeLo:
+	ld a, FACING_EDGE_LO
+	jr SetFixedFacing
+
+SetFacingArchLeft:
+	ld a, FACING_ARCH_LEFT
+	jr SetFixedFacing
+
+SetFacingArchRight:
+	ld a, FACING_ARCH_RIGHT
 	jr SetFixedFacing
 
 SetFacingBigDoll: ; 45c5
@@ -79,19 +121,6 @@ SetFacingFish: ; 456e
 	add FACING_FISH_DOWN
 	jr SetFixedFacing
 ; 457b
-
-SetFacingArchTree:
-	call GetSpriteDirection
-	rrca
-	rrca
-	add FACING_ARCH_TREE_DOWN
-	jr SetFixedFacing
-
-SetFacingStandFlip:
-	call GetSpriteDirection
-	rrca
-	rrca
-	add FACING_STEP_DOWN_FLIP
 SetFixedFacing:
 	ld hl, OBJECT_FACING_STEP
 	add hl, bc
@@ -134,7 +163,7 @@ SetFacingSkyfall:
 	ld hl, OBJECT_FLAGS1
 	add hl, bc
 	bit SLIDING, [hl]
-	jr nz, SetFacingCurrent
+	jp nz, SetFacingCurrent
 
 	ld hl, OBJECT_STEP_FRAME
 	add hl, bc
@@ -216,20 +245,6 @@ SetFacingFreezeBounce: ; 45a4
 	xor a ; FACING_STEP_DOWN_0
 	jp SetFixedFacing
 ; 45ab
-
-SetFacingBigGyarados:
-	ld hl, OBJECT_STEP_FRAME
-	add hl, bc
-	ld a, [hl]
-	inc a
-	and %00001111
-	ld [hl], a
-	and %00001000
-	ld a, FACING_BIG_GYARADOS_2
-	jp nz, SetFixedFacing
-SetFacingFreezeBigGyarados:
-	ld a, FACING_BIG_GYARADOS_1
-	jp SetFixedFacing
 
 SetFacingWeirdTree: ; 45ab
 	ld hl, OBJECT_STEP_FRAME

@@ -5,12 +5,12 @@ overworld_sprite: MACRO
 ENDM
 
 SpriteHeaders:
-	overworld_sprite ChrisSpriteGFX, WALKING_SPRITE, PAL_OW_RED
-	overworld_sprite ChrisBikeSpriteGFX, WALKING_SPRITE, PAL_OW_RED
-	overworld_sprite ChrisSurfSpriteGFX, WALKING_SPRITE, PAL_OW_RED
-	overworld_sprite KrisSpriteGFX, WALKING_SPRITE, PAL_OW_BLUE
-	overworld_sprite KrisBikeSpriteGFX, WALKING_SPRITE, PAL_OW_BLUE
-	overworld_sprite KrisSurfSpriteGFX, WALKING_SPRITE, PAL_OW_BLUE
+	overworld_sprite ChrisSpriteGFX, WALKING_SPRITE, PAL_OW_BLUE
+	overworld_sprite ChrisBikeSpriteGFX, WALKING_SPRITE, PAL_OW_BLUE
+	overworld_sprite ChrisSurfSpriteGFX, WALKING_SPRITE, PAL_OW_BLUE
+	overworld_sprite KrisSpriteGFX, WALKING_SPRITE, PAL_OW_RED
+	overworld_sprite KrisBikeSpriteGFX, WALKING_SPRITE, PAL_OW_RED
+	overworld_sprite KrisSurfSpriteGFX, WALKING_SPRITE, PAL_OW_RED
 	overworld_sprite MomSpriteGFX, WALKING_SPRITE, PAL_OW_RED
 	overworld_sprite DadSpriteGFX, STANDING_SPRITE, PAL_OW_BROWN
 	overworld_sprite LyraSpriteGFX, WALKING_SPRITE, PAL_OW_RED
@@ -178,7 +178,7 @@ SpriteHeaders:
 	overworld_sprite BigSnorlaxSpriteGFX, STANDING_SPRITE, PAL_OW_BLUE
 	overworld_sprite BigLaprasSpriteGFX, STANDING_SPRITE, PAL_OW_BLUE
 	overworld_sprite BigOnixSpriteGFX, STANDING_SPRITE, PAL_OW_BROWN
-	overworld_sprite BigGyaradosSpriteGFX, BIG_GYARADOS_SPRITE, PAL_OW_RED
+	overworld_sprite SilverSpriteGFX, STANDING_SPRITE, PAL_OW_RED ; SPRITE_LACUNOSA_TILES
 	overworld_sprite SlowpoketailSpriteGFX, STANDING_SPRITE, PAL_OW_RED
 	overworld_sprite WeirdTreeSpriteGFX, STANDING_SPRITE, PAL_OW_GREEN
 	overworld_sprite BallCutFruitSpriteGFX, STANDING_SPRITE, PAL_OW_TREE

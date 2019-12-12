@@ -188,6 +188,7 @@
 	const MUSIC_TRAINER_BATTLE_PRISM           ; ba ; unused
 	const MUSIC_GYM_LEADER_BATTLE_PRISM        ; bb ; unused
 	const MUSIC_PALETTE_BATTLE_PRISM           ; bc ; unused
+	const MUSIC_LACUNOSA_TOWN_BW               ; bd
 NUM_SONGS EQU const_value
 
 ; special

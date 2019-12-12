@@ -1480,3 +1480,9 @@ Route48_BlockData:
 
 Route49_BlockData:
 	INCBIN "maps/Route49.ablk.lz"
+
+
+SECTION "Map Blockdata 10", ROMX
+
+LacunosaTown_BlockData:
+	INCBIN "maps/LacunosaTown.ablk.lz"

@@ -1299,10 +1299,11 @@ if !DEF(DEBUG)
 	para "Welcome to the"
 	line "world of #mon!"
 
-	para "My name is Elm."
+	para "My name is"
+	line "Juniper."
 
 	para "People call me the"
-	line "#mon Prof."
+	line "#mon Professor!"
 endc
 	prompt
 

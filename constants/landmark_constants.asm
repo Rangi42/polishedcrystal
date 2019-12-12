@@ -158,4 +158,6 @@ SHAMOUTI_LANDMARK EQU const_value
 	const NAVEL_ROCK         ; 8e
 	const FARAWAY_ISLAND     ; 8f
 
+	const LACUNOSA_TOWN      ; 90
+
 NUM_LANDMARKS EQU const_value

@@ -1,8 +1,8 @@
-NAME := polishedcrystal
-VERSION := 3.0.0-beta
+NAME := lacunosatown
+VERSION := 1.0.0
 
-TITLE := PKPCRYSTAL
-MCODE := PKPC
+TITLE := BWLACUNOSA
+MCODE := TOWN
 ROMVERSION := 0x30
 
 FILLER = 0x00

@@ -712,3 +712,7 @@ MAP_NONE   EQU 0
 
 	map_const SAFFRON_CITY,                               20, 19 ;  1
 	map_const SHAMOUTI_SHRINE_RUINS,                      12, 17 ;  2
+
+	newgroup                                                     ; 36
+
+	map_const LACUNOSA_TOWN,                              18, 15 ;  1

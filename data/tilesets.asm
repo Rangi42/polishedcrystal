@@ -703,6 +703,24 @@ TilesetPokemonMansionColl::
 INCBIN "data/tilesets/pokemon_mansion_collision.bin.lz"
 
 
+SECTION "Tileset Data - lacunosa", ROMX
+
+TilesetLacunosaGFX::
+INCBIN "gfx/tilesets/lacunosa.2bpp.lz"
+
+TilesetLacunosaGFX2::
+INCBIN "gfx/tilesets/lacunosa.extra.2bpp.lz"
+
+TilesetLacunosaMeta::
+INCBIN "data/tilesets/lacunosa_metatiles.bin.lz"
+
+TilesetLacunosaAttr::
+INCBIN "data/tilesets/lacunosa_attributes.bin.lz"
+
+TilesetLacunosaColl::
+INCBIN "data/tilesets/lacunosa_collision.bin.lz"
+
+
 SECTION "Tileset Headers", ROMX
 
 tileset: macro
@@ -755,3 +773,4 @@ Tilesets::
 	tileset TilesetRuins
 	tileset TilesetAlph
 	tileset TilesetPokemonMansion
+	tileset TilesetLacunosa

@@ -24,7 +24,7 @@ mkdir rgbds
 
 Then download [**rgbds**](https://github.com/bentley/rgbds/). You'll need version 0.3.3 or later. Extract the archive and put all the .exe and .dll files in polishedcrystal/rgbds.
 
-To build **polishedcrystal.gbc**:
+To build **lacunosatown.gbc**:
 
 ```bash
 make
@@ -59,7 +59,7 @@ git clone https://github.com/Rangi42/polishedcrystal.git
 cd polishedcrystal
 ```
 
-To build **polishedcrystal.gbc**:
+To build **lacunosatown.gbc**:
 
 ```bash
 make
@@ -88,7 +88,7 @@ git clone https://github.com/Rangi42/polishedcrystal.git
 cd polishedcrystal
 ```
 
-To build **polishedcrystal.gbc**:
+To build **lacunosatown.gbc**:
 
 ```bash
 make

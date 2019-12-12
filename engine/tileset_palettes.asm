@@ -29,6 +29,10 @@ LoadSpecialMapPalette: ; 494ac
 
 	ld a, [wTileset]
 
+	ld hl, LacunosaPalette
+	cp TILESET_LACUNOSA
+	jp z, .load_eight_time_of_day_bg_palettes
+
 	ld hl, PokeComPalette
 	cp TILESET_POKECOM_CENTER
 	jp z, .load_eight_bg_palettes
@@ -538,6 +542,45 @@ LoadSpecialMapPalette: ; 494ac
 	call FarCopyWRAM
 	scf
 	ret
+
+LacunosaPalette:
+if !DEF(MONOCHROME)
+INCLUDE "gfx/tilesets/lacunosa.pal"
+else
+rept 6
+	MONOCHROME_RGB_FOUR
+endr
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_LIGHT
+	RGB_MONOCHROME_BLACK
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_BLACK
+rept 6
+	MONOCHROME_RGB_FOUR
+endr
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_LIGHT
+	RGB_MONOCHROME_BLACK
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_BLACK
+rept 6
+	MONOCHROME_RGB_FOUR_NIGHT
+endr
+	RGB_MONOCHROME_LIGHT
+	RGB_MONOCHROME_LIGHT
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_BLACK
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_BLACK
+endc
 
 PokeComPalette:
 if !DEF(MONOCHROME)
@@ -1821,6 +1864,16 @@ LoadSpecialMapOBPalette:
 
 .not_overcast
 	ld a, [wTileset]
+	cp TILESET_LACUNOSA
+	jr nz, .not_lacunosa
+	ld hl, LacunosaOverworldPalettes
+	ld a, [wTimeOfDayPal]
+	and 3
+	ld bc, 2 palettes
+	rst AddNTimes
+	ld de, wUnknOBPals palette PAL_OW_TREE
+	jr .load_ob_palettes
+.not_lacunosa
 	cp TILESET_SHAMOUTI_ISLAND
 	jr z, .load_bg_tree_palette
 	cp TILESET_SAFARI_ZONE
@@ -2123,5 +2176,25 @@ rept 6
 endr
 rept 3
 	MONOCHROME_RGB_FOUR_OW_NIGHT
+endr
+endc
+
+LacunosaOverworldPalettes:
+if !DEF(MONOCHROME)
+; morn
+	RGB 30,31,25, 10,22,23, 09,14,16, 07,07,07 ; water
+	RGB 30,31,25, 30,31,25, 23,23,21, 07,07,07 ; roof
+; day
+	RGB 28,31,28, 10,22,23, 09,14,16, 07,07,07 ; water
+	RGB 28,31,28, 28,31,28, 23,23,21, 07,07,07 ; roof
+; nite
+	RGB 14,16,21, 05,11,17, 04,07,12, 00,00,00 ; water
+	RGB 14,16,21, 14,16,21, 11,11,15, 00,00,00 ; roof
+else
+rept 4
+	MONOCHROME_RGB_FOUR
+endr
+rept 2
+	MONOCHROME_RGB_FOUR_NIGHT
 endr
 endc

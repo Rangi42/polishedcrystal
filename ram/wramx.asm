@@ -833,6 +833,17 @@ wMapObjects::
 	map_object wMap18
 	map_object wMap19
 	map_object wMap20
+	map_object wMap21
+	map_object wMap22
+	map_object wMap23
+	map_object wMap24
+	map_object wMap25
+	map_object wMap26
+	map_object wMap27
+	map_object wMap28
+	map_object wMap29
+	map_object wMap30
+	map_object wMap31
 wMapObjectsEnd::
 
 wObjectMasks:: ds NUM_OBJECTS
@@ -1025,6 +1036,7 @@ wVioletGymTrigger:: ds 1
 wWillsRoomTrigger:: ds 1
 wWiseTriosRoomTrigger:: ds 1
 wYellowForestTrigger:: ds 1
+wLacunosaTownTrigger:: ds 1
 
 ; fight counts
 wJackFightCount::    ds 1

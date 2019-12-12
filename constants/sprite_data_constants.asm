@@ -3,7 +3,6 @@
 	const WALKING_SPRITE
 	const STANDING_SPRITE
 	const MON_SPRITE
-	const BIG_GYARADOS_SPRITE
 
 ; sprite header fields
 	const_def
