@@ -521,21 +521,6 @@ PokeBallEffect: ; e8a2
 	ld a, [wTempEnemyMonSpecies]
 	ld [wEnemyMonSpecies], a
 
-	ld hl, wEnemyBackupDVs
-	ld de, wEnemyMonDVs
-	ld bc, 5
-	rst CopyBytes
-
-	ld hl, wWildMonMoves
-	ld de, wEnemyMonMoves
-	ld bc, NUM_MOVES
-	rst CopyBytes
-
-	ld hl, wWildMonPP
-	ld de, wEnemyMonPP
-	ld bc, NUM_MOVES
-	rst CopyBytes
-
 	ld a, [wEnemyMonSpecies]
 	push af
 	ld [wWildMon], a
@@ -564,18 +549,13 @@ PokeBallEffect: ; e8a2
 
 	farcall GiveExperiencePointsAfterCatch
 
-	ld a, [wEnemyMonLevel]
+	ld a, [wOTPartyMon1Level]
 	ld [wCurPartyLevel], a
 
-	ld a, [wEnemyMonSpecies]
+	ld a, [wOTPartyMon1Species]
 	ld [wCurSpecies], a
 	ld [wCurPartySpecies], a
 	call GetBaseData
-
-	ld de, wEnemyMonMaxHP
-	ld b, FALSE
-	ld hl, wEnemyMonDVs - (MON_DVS - (MON_EVS -1))
-	predef CalcPkmnStats
 
 	pop af
 	ld [wWildMon], a
@@ -602,7 +582,7 @@ PokeBallEffect: ; e8a2
 
 	call ClearSprites
 
-	ld a, [wEnemyMonSpecies]
+	ld a, [wOTPartyMon1Species]
 	ld [wd265], a
 	predef NewPokedexEntry
 
@@ -624,7 +604,37 @@ PokeBallEffect: ; e8a2
 	ld [wMonType], a
 	call ClearSprites
 
-	predef TryAddMonToParty
+	; Copy to player party
+	ld hl, wPartyCount
+	ld a, [hl]
+	inc [hl]
+	ld hl, wPartyMon1
+	push af
+	call GetPartyLocation
+	ld d, h
+	ld e, l
+	ld hl, wOTPartyMon1
+	ld bc, PARTYMON_STRUCT_LENGTH
+	rst CopyBytes
+	pop af
+	push af
+	ld hl, wPartyMonOT
+	call SkipNames
+	ld d, h
+	ld e, l
+	ld hl, wOTPartyMonOT
+	ld bc, NAME_LENGTH
+	rst CopyBytes
+	pop af
+	push af
+	ld hl, wPartyMonNicknames
+	call SkipNames
+	ld d, h
+	ld e, l
+	ld hl, wOTPartyMonNicknames
+	ld bc, PKMN_NAME_LENGTH
+	rst CopyBytes
+	pop af
 
 	farcall SetCaughtData
 

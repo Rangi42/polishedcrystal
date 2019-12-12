@@ -40,12 +40,11 @@ DoBattle: ; 3c000
 	ld a, [wBattleMode]
 	dec a
 	jr z, .wild
-	xor a
-	ld [wEnemySwitchMonIndex], a
-	call NewEnemyMonStatus
-	call ResetEnemyStatLevels
-	call BreakAttraction
-	call EnemySwitch
+	ld a, 1
+	ld [wEnemySwitchTarget], a
+	call SlideEnemyPicOut
+	call SetEnemyTurn
+	call SendInUserPkmn
 
 .wild
 	; Wild mons bypass NewEnemyMonStatus, so set
@@ -92,20 +91,14 @@ DoBattle: ; 3c000
 	ld a, [hSerialConnectionStatus]
 	cp USING_INTERNAL_CLOCK
 	jr nz, .not_linked_2
-	xor a
-	ld [wEnemySwitchMonIndex], a
-	call NewEnemyMonStatus
-	call ResetEnemyStatLevels
-	call BreakAttraction
-	call EnemySwitch
+	ld a, 1
+	ld [wEnemySwitchTarget], a
+	call SlideEnemyPicOut
 	call SetEnemyTurn
-	call HandleFirstAirBalloon
-	call RunBothActivationAbilities
-	jp BattleTurn
-
+	call SendInUserPkmn
 .not_linked_2
-	call HandleFirstAirBalloon
 	call AutomaticRainWhenOvercast
+	call HandleFirstAirBalloon
 	call BoostGiovannisArmoredMewtwo
 	call RunBothActivationAbilities
 	jp BattleTurn
@@ -1713,11 +1706,7 @@ LeppaRestorePP:
 	ld a, [wCurPartyMon]
 	ld hl, wPartyMon1PP
 	jr z, .set_party_pp
-	ld a, [wBattleMode]
-	dec a
 	ld a, [wCurOTMon]
-	ld hl, wWildMonPP
-	jr z, .pp_vars_ok
 	ld hl, wOTPartyMon1PP
 .set_party_pp
 	push bc
@@ -3496,15 +3485,6 @@ if !DEF(FAITHFUL)
 .not_armored_mewtwo
 endc
 
-	ld hl, wBaseStats
-	ld de, wEnemyMonBaseStats
-	ld b, 5
-.loop
-	ld a, [hli]
-	ld [de], a
-	inc de
-	dec b
-	jr nz, .loop
 	ld a, [wCurPartyMon]
 	ld [wCurOTMon], a
 	jp ResetEnemyAbility
@@ -6207,26 +6187,11 @@ LinkBattleSendReceiveAction: ; 3e8e4
 ; 3e8eb
 
 LoadEnemyMon: ; 3e8eb
-; Initialize enemy monster parameters
-; To do this we pull the species from wTempEnemyMonSpecies
-
-; Notes:
-;   BattleRandom is used to ensure sync between Game Boys
-
-	; Clear the whole wEnemyMon struct
+; Initialize wildmon data
 	xor a
-	ld hl, wEnemyMonSpecies
-	ld bc, wEnemyMonEnd - wEnemyMon
-	call ByteFill
-
-	; We don't need to be here if we're in a link battle or battle tower. In a trainer
-	; battle, we need the base experience, so that check is (slightly) later.
-	ld a, [wLinkMode]
-	and a
-	jr nz, .initenemymon
-	ld a, [wInBattleTowerBattle]
-	bit 0, a
-	jr nz, .initenemymon
+	ld [wOTPartyCount], a
+	inc a
+	ld [wMonType], a
 
 	; Make sure everything knows what species we're working with
 	ld a, [wTempEnemyMonSpecies]
@@ -6234,23 +6199,7 @@ LoadEnemyMon: ; 3e8eb
 	ld [wCurSpecies], a
 	ld [wCurPartySpecies], a
 
-	; Mark as seen
-	dec a
-	ld c, a
-	ld b, SET_FLAG
-	ld hl, wPokedexSeen
-	predef FlagPredef
-
-	; Grab the BaseData for this species
-	call GetBaseData
-
-	ld a, [wBaseExp]
-	ld [wEnemyMonBaseExp], a
-
-	ld a, [wBattleMode]
-	dec a
-.initenemymon
-	jp nz, InitEnemyMon
+	predef TryAddMonToParty
 
 	ld a, [wBaseCatchRate]
 	ld [wEnemyMonCatchRate], a
@@ -6316,221 +6265,7 @@ endc
 	; 45% chance of not getting an item (100% - 50% - 5% = 45%)
 	ld a, NO_ITEM
 .UpdateItem:
-	ld [wEnemyMonItem], a
-
-	; Initialize DVs and personality
-	; Roaming monsters (Entei, Raikou) work differently
-	; They have their own structs, which are shorter than normal
-	ld a, [wBattleType]
-	cp BATTLETYPE_ROAMING
-	jr nz, .GenerateDVs
-
-	; Grab DVs and personality
-	push bc
-	call GetRoamMonDVsAndPersonality
-	ld b, h
-	ld c, l
-	; Grab HP
-	push hl
-	call GetRoamMonHP
-	ld a, [hl]
-	pop hl
-	pop bc
-	; Check if the HP has been initialized
-	and a
-	; If the RoamMon struct has already been initialized, we're done
-	jr z, .GenerateRoamDVs
-	ld b, h
-	ld c, l
-	jp .UpdateDVs
-
-	; If it hasn't, we need to initialize the DVs
-	; (HP is initialized at the end of the battle)
-	; Skip the setting of the DV/Personality buffer since we already have it
-.GenerateDVs:
-	ld hl, wDVAndPersonalityBuffer
-.GenerateRoamDVs:
-	push hl
-	; Random DVs
-	call BattleRandom
-	ld [hli], a
-	call BattleRandom
-	ld [hli], a
-	call BattleRandom
-	ld [hl], a
-	call ApplyLegendaryDVs
-	inc hl
-
-	; Random nature from 0 to 24
-	; 50% chance of same nature with Synchronize ability
-	call GetLeadAbility
-	cp SYNCHRONIZE
-	jr nz, .no_synchronize
-	call BattleRandom
-	and $1
-	jr z, .no_synchronize
-	ld a, [wPartyMon1Nature]
-	and NATURE_MASK
-	jr .got_nature
-.no_synchronize
-	ld a, NUM_NATURES
-	call BattleRandomRange
-.got_nature
-	ld b, a
-
-	; Random ability
-	; 5% hidden ability, otherwise 50% either main ability
-	ld a, [wBattleType]
-	cp BATTLETYPE_GROTTO
-	jr z, .hidden_ability
-	call BattleRandom
-	cp 1 + 5 percent
-	jr c, .hidden_ability
-	and $1
-	jr z, .ability_2
-.ability_1
-	ld a, ABILITY_1
-	jr .got_ability
-.ability_2
-	ld a, ABILITY_2
-	jr .got_ability
-.hidden_ability
-	ld a, HIDDEN_ABILITY
-.got_ability
-	add b
-	ld b, a
-
-	; If the ability is Pickup, 10% chance of holding an item from that instead
-	push hl
-	push bc
-	ld b, a ; still the ability index, 1/2/hidden
-	ld a, [wCurPartySpecies]
-	ld c, a
-	call GetAbility
-	ld a, b
-	cp PICKUP
-	jr nz, .not_pickup
-	call Random
-	cp 1 + (10 percent)
-	jr nc, .not_pickup
-	ld a, [wEnemyMonLevel]
-	farcall GetRandomPickupItem
-	ld [wEnemyMonItem], a
-.not_pickup
-	pop bc
-	pop hl
-
-	; Random shininess
-	; 1/4096 chance to be shiny, 3/4096 with Shiny Charm
-	ld a, [wBattleType]
-	cp BATTLETYPE_RED_GYARADOS
-	jr z, .not_shiny
-	cp BATTLETYPE_GROTTO
-	jr z, .not_shiny
-	call BattleRandom
-	and a
-	jr nz, .not_shiny ; 255/256 not shiny
-	ld a, [wCurKeyItem]
-	push af
-	ld a, SHINY_CHARM
-	ld [wCurKeyItem], a
-	push hl
-	push bc
-	push de
-	call CheckKeyItem
-	pop de
-	pop bc
-	pop hl
-	jr c, .shiny_charm
-	pop af
-	ld [wCurKeyItem], a
-	call BattleRandom
-	cp SHINY_NUMERATOR
-	jr nc, .not_shiny ; 240/256 still not shiny
-.shiny
-	ld a, SHINY_MASK
-	jr .got_shininess
-.shiny_charm
-	pop af
-	ld [wCurItem], a
-	call BattleRandom
-	cp CHARMED_SHINY_NUMERATOR
-	jr c, .shiny ; 208/256 still not shiny
-.not_shiny
-	xor a
-.got_shininess
-	add b
-	ld [hli], a
-
-	; Gender. If lead has Cute Charm, force opposite gender 2/3
-	; of the time
-	call GetLeadAbility
-	cp CUTE_CHARM
-	jr nz, .not_cute_charm
-	ld a, 3
-	call BattleRandomRange
-	and a
-	jr z, .not_cute_charm
-	ld a, [wPartyMon1Gender]
-	cp FEMALE
-	ld a, %111
-	jr z, .cute_charm_ok
-	ld a, %000
-	jr .cute_charm_ok
-
-.not_cute_charm
-	; Random gender
-	; Derived from base ratio
-	; Random gender selection value
-	call BattleRandom
-	and %111
-.cute_charm_ok
-	ld b, a
-	; We need the gender ratio to do anything with this.
-	push hl
-	push bc
-	ld a, [wCurPartySpecies]
-	dec a
-	ld hl, BASEMON_GENDER
-	ld bc, BASEMON_STRUCT_LENGTH
-	rst AddNTimes
-	ld a, BANK(BaseData)
-	call GetFarByte
-	swap a
-	and $f
-	pop bc
-	pop hl
-	ld c, a
-	ld a, b
-	; Ratios below the value are female, and vice-versa.
-	cp c
-	ld a, FEMALE
-	jr c, .Female
-	xor a ; ld a, MALE
-.Female
-	ld b, a
-
-	; Form
-	ld a, [wBattleType]
-	cp BATTLETYPE_RED_GYARADOS
-	ld a, GYARADOS_RED_FORM
-	jr z, .red_form
-	ld a, 1 ; default form 1
-.red_form
-	add b
-	ld [hl], a
-
-	pop bc
-
-.UpdateDVs:
-	ld hl, wEnemyMonDVs
-rept 4
-	ld a, [bc]
-	ld [hli], a
-	inc bc
-endr
-	ld a, [bc]
-	ld [hl], a
+	ld [wOTPartyMon1Item], a
 
 	; Unown
 	ld a, [wTempEnemyMonSpecies]
@@ -6542,12 +6277,12 @@ endr
 	call BattleRandomRange
 	inc a
 	ld b, a
-	ld a, [wEnemyMonForm]
+	ld a, [wOTPartyMon1Form]
 	and $ff - FORM_MASK
 	add b
-	ld [wEnemyMonForm], a
+	ld [wOTPartyMon1Form], a
 	; Get letter based on form
-	ld hl, wEnemyMonForm
+	ld hl, wOTPartyMon1Form
 	predef GetVariant
 	; Can't use any letters that haven't been unlocked
 	push de
@@ -6571,7 +6306,7 @@ endr
 	jr z, .johto_form
 	ld d, ARBOK_KANTO_FORM
 .johto_form
-	ld a, [wEnemyMonForm]
+	ld a, [wOTPartyMon1Form]
 	and $ff - FORM_MASK
 	add d
 	ld [wEnemyMonForm], a
@@ -6587,13 +6322,13 @@ endr
 	call BattleRandomRange
 	inc a
 	ld b, a
-	ld a, [wEnemyMonForm]
+	ld a, [wOTPartyMon1Form]
 	and $ff - FORM_MASK
 	add b
-	ld [wEnemyMonForm], a
+	ld [wOTPartyMon1Form], a
 
 	; Get Magikarp's length
-	ld de, wEnemyMonDVs
+	ld de, wOTPartyMon1DVs
 	ld bc, wPlayerID
 	farcall CalcMagikarpLength
 
@@ -6609,7 +6344,7 @@ endr
 	; Try again if > 3"
 	ld a, [wMagikarpLengthMmLo]
 	cp 3
-	jp nc, .GenerateDVs
+	jp nc, LoadEnemyMon
 
 	; 20% chance of skipping this check
 	call Random
@@ -6618,7 +6353,7 @@ endr
 	; Try again if > 2"
 	ld a, [wMagikarpLengthMmLo]
 	cp 2
-	jp nc, .GenerateDVs
+	jp nc, LoadEnemyMon
 
 .CheckMagikarpArea:
 	ld a, [wMapGroup]
@@ -6635,24 +6370,10 @@ endr
 	; Floor at length 1024
 	ld a, [wMagikarpLengthMmHi]
 	cp 1024 >> 8
-	jp c, .GenerateDVs ; try again
+	jp c, LoadEnemyMon
 
-
-	; Finally done with DVs
 
 .Happiness:
-	; Set happiness
-	ld a, BASE_HAPPINESS
-	ld [wEnemyMonHappiness], a
-	; Set level
-	ld a, [wCurPartyLevel]
-	ld [wEnemyMonLevel], a
-	; Fill stats
-	ld de, wEnemyMonMaxHP
-	ld b, FALSE
-	ld hl, wEnemyMonDVs - (MON_DVS - (MON_EVS - 1))
-	predef CalcPkmnStats
-
 	; If we're headbutting trees, some monsters enter battle asleep
 	call CheckSleepingTreeMon
 	ld a, SLP & 3 ; Asleep for 3 turns
@@ -6661,20 +6382,14 @@ endr
 	xor a
 
 .UpdateStatus:
-	ld hl, wEnemyMonStatus
+	ld hl, wOTPartyMon1Status
 	ld [hli], a
 
 	; Unused byte
 	xor a
 	ld [hli], a
 
-	; Full HP..
-	ld a, [wEnemyMonMaxHP]
-	ld [hli], a
-	ld a, [wEnemyMonMaxHP + 1]
-	ld [hl], a
-
-	; ..unless it's a RoamMon
+	; Set roam mon HP
 	ld a, [wBattleType]
 	cp BATTLETYPE_ROAMING
 	jr nz, .Moves
@@ -6687,78 +6402,22 @@ endr
 	jr z, .InitRoamHP
 	; Update from the struct if it has
 	ld a, [hl]
-	ld [wEnemyMonHP + 1], a
+	ld [wOTPartyMon1HP + 1], a
 	jr .Moves
 
 .InitRoamHP:
 	; HP only uses the lo byte in the RoamMon struct since
 	; Raikou/Entei/Suicune will have < 256 hp at level 40
-	ld a, [wEnemyMonHP + 1]
+	ld a, [wOTPartyMon1HP + 1]
 	ld [hl], a
 
 .Moves:
-	ld hl, wBaseType1
-	ld de, wEnemyMonType1
-	ld a, [hli]
-	ld [de], a
-	inc de
-	ld a, [hl]
-	ld [de], a
-
-if !DEF(FAITHFUL)
-	; Armored Mewtwo is Psychic/Steel
-	ld a, [wEnemyMonSpecies]
-	cp MEWTWO
-	jr nz, .not_armored_mewtwo
-	ld a, [wEnemyMonItem]
-	cp ARMOR_SUIT
-	jr nz, .not_armored_mewtwo
-	ld a, STEEL
-	ld [wEnemyMonType2], a
-.not_armored_mewtwo
-endc
-
-	; Get moves
-	ld de, wEnemyMonMoves
-	; Clear wEnemyMonMoves
-	xor a
-	ld h, d
-	ld l, e
-rept NUM_MOVES + -1
-	ld [hli], a
-endr
-	ld [hl], a
-	; Make sure the predef knows this isn't a partymon
-	ld [wEvolutionOldSpecies], a
-	; Fill moves based on level
-	predef FillMoves
-
 	farcall CheckUniqueWildMove
 
 	; Fill wild PP
-	ld hl, wEnemyMonMoves
-	ld de, wEnemyMonPP
-	predef FillPP
-
-	; Only the first five base stats are copied..
-	ld hl, wBaseStats
-	ld de, wEnemyMonBaseStats
-	ld b, wBaseSpecialDefense - wBaseStats
-.loop
-	ld a, [hli]
-	ld [de], a
-	inc de
-	dec b
-	jr nz, .loop
-
-	ld a, [wTempEnemyMonSpecies]
-	ld [wNamedObjectIndexBuffer], a
-	call GetPokemonName
-	ld hl, wStringBuffer1
-	ld de, wEnemyMonNick
-	ld bc, PKMN_NAME_LENGTH
-	rst CopyBytes
-	ret
+	ld hl, wOTPartyMon1Moves
+	ld de, wOTPartyMon1PP
+	predef_jump FillPP
 
 ApplyLegendaryDVs:
 	push de
@@ -8407,14 +8066,10 @@ InitEnemyWildmon: ; 3f607
 	ld a, WILD_BATTLE
 	ld [wBattleMode], a
 	call LoadEnemyMon
-	ld hl, wEnemyMonMoves
-	ld de, wWildMonMoves
-	ld bc, NUM_MOVES
-	rst CopyBytes
-	ld hl, wEnemyMonPP
-	ld de, wWildMonPP
-	ld bc, NUM_MOVES
-	rst CopyBytes
+	call SetEnemyTurn
+	ld a, 1
+	ld [wEnemySwitchTarget], a
+	call SendInUserPkmn
 	ld hl, wEnemyMonDVs
 	ld de, wEnemyBackupDVs
 	ld bc, 5
@@ -9346,6 +9001,12 @@ CheckPluralTrainer:
 	ret
 
 AutomaticRainWhenOvercast:
+	ld a, [wLinkMode]
+	and a
+	ret nz
+	ld a, [wInBattleTowerBattle]
+	bit 0, a
+	ret nz
 	call GetOvercastIndex
 	and a
 	ret z

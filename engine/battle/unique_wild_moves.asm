@@ -37,7 +37,7 @@ CheckUniqueWildMove:
 	cp 50 percent + 1
 	ret nc
 .TeachMove
-	ld hl, wEnemyMonMoves + 1 ; second move
+	ld hl, wOTPartyMon1Moves + 1 ; second move
 	ld a, [hl]
 	and a
 	jr z, .ok
@@ -49,7 +49,7 @@ CheckUniqueWildMove:
 	ld a, [hl]
 	and a
 	jr z, .ok
-	ld hl, wEnemyMonMoves ; first move
+	ld hl, wOTPartyMon1Moves ; first move
 .ok
 	ld a, b
 	ld [hl], a

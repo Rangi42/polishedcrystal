@@ -519,7 +519,9 @@ wTempBattleMonSpecies:: ds 1
 ENDU
 
 wEnemyMon:: battle_struct wEnemyMon
-wEnemyMonBaseStats:: ds 5
+
+	ds 5 ; unused
+
 wEnemyMonCatchRate:: ds 1
 wEnemyMonBaseExp:: ds 1
 wEnemyMonEnd::
@@ -636,6 +638,9 @@ wOTPlayerID:: ds 2
 wOTPartyCount:: ds 1
 wOTPartySpecies:: ds PARTY_LENGTH + 1 ; legacy scripts don't check PartyCount
 
+; OT party data -- OTPartyMon1 and nicknames is always available
+wOTPartyMons::
+wOTPartyMon1:: party_struct wOTPartyMon1
 UNION
 ; catch tutorial dude bag
 wDudeBag::
@@ -651,19 +656,16 @@ wDudeBallsEnd:: ds 1
 wDudeBagEnd::
 
 NEXTU
-; OT party data
-wOTPartyMons::
-wOTPartyMon1:: party_struct wOTPartyMon1
 wOTPartyMon2:: party_struct wOTPartyMon2
 wOTPartyMon3:: party_struct wOTPartyMon3
 wOTPartyMon4:: party_struct wOTPartyMon4
 wOTPartyMon5:: party_struct wOTPartyMon5
 wOTPartyMon6:: party_struct wOTPartyMon6
+ENDU
 wOTPartyMonsEnd::
 wOTPartyMonOT:: ds NAME_LENGTH * PARTY_LENGTH
 wOTPartyMonNicknames:: ds PKMN_NAME_LENGTH * PARTY_LENGTH
 wOTPartyDataEnd::
-ENDU
 
 wBattleAction:: ds 1
 wLinkBattleSentAction:: ds 1

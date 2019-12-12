@@ -665,8 +665,7 @@ wAnimationsDisabled:: ds 1 ; used to temporarily disable animations for abilitie
 
 wBattleEnded:: ds 1
 
-wWildMonMoves:: ds NUM_MOVES
-wWildMonPP:: ds NUM_MOVES
+	ds 8 ; unused
 
 wAmuletCoin:: ds 1
 

@@ -1025,13 +1025,9 @@ BattleConsumePP:
 	ld de, wBattleMonPP
 	ld hl, wPartyMon1PP
 	jr z, .set_party_pp
-	ld a, [wBattleMode]
-	dec a
 	ld a, [wCurOTMon]
 	ld bc, wCurEnemyMoveNum
 	ld de, wEnemyMonPP
-	ld hl, wWildMonPP
-	jr z, .pp_vars_ok
 	ld hl, wOTPartyMon1PP
 .set_party_pp
 	call GetPartyLocation
@@ -4602,26 +4598,6 @@ BattleCommand_sketch: ; 35a74
 	ld [hl], a
 	pop bc
 
-	ld a, [hBattleTurn]
-	and a
-	jr z, .user_trainer
-	ld a, [wBattleMode]
-	dec a
-	jr nz, .user_trainer
-; wildmon
-	ld a, [hl]
-	push bc
-	ld hl, wWildMonPP
-	ld b, 0
-	add hl, bc
-	ld [hl], a
-	ld hl, wWildMonMoves
-	add hl, bc
-	pop bc
-	ld [hl], b
-	jr .done_copy
-
-.user_trainer
 	ld a, [hl]
 	push af
 	ld l, c

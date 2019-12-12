@@ -175,7 +175,7 @@ CalcMagikarpLength: ; fbbfc
 ; Return Magikarp's length (in mm) at wMagikarpLengthMm (big endian).
 ;
 ; input:
-;   de: wEnemyMonDVs
+;   de: wOTPartyMon1DVs
 ;   bc: wPlayerID
 
 ; This function is poorly commented.

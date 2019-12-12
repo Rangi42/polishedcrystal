@@ -87,11 +87,7 @@ GeneratePartyMonStats: ; d906
 	ld a, [wCurSpecies]
 	ld [de], a
 	inc de
-	ld a, [wBattleMode]
-	and a
-	ld a, NO_ITEM ; not xor a; preserve carry flag
-	jr z, .skipitem
-	ld a, [wEnemyMonItem]
+	xor a
 
 .skipitem
 	ld [de], a
@@ -99,23 +95,7 @@ GeneratePartyMonStats: ; d906
 	push de
 	ld h, d
 	ld l, e
-	ld a, [wBattleMode]
-	and a
-	jr z, .randomlygeneratemoves
-	ld a, [wMonType]
-	and $f
-	jr nz, .randomlygeneratemoves
-	ld de, wEnemyMonMoves
-rept NUM_MOVES + -1
-	ld a, [de]
-	inc de
-	ld [hli], a
-endr
-	ld a, [de]
-	ld [hl], a
-	jr .next
 
-.randomlygeneratemoves
 	xor a
 rept NUM_MOVES + -1
 	ld [hli], a
@@ -156,6 +136,9 @@ endr
 	ld a, [wMonType]
 	and $f
 	jr z, .generateEVsDVsAndPersonality
+	ld a, [wBattleMode]
+	dec a
+	jr z, .generateEVsDVsAndPersonality
 	farcall GetTrainerEVsDVsAndPersonality
 	pop hl
 	push hl
@@ -167,6 +150,11 @@ rept 6 ; EVs
 	ld [de], a
 	inc de
 endr
+	ld a, [wBattleMode]
+	dec a
+	pop hl
+	push hl
+	jr z, .wildmon
 	ld a, [wCurPartySpecies]
 	ld [wd265], a
 	dec a
@@ -178,10 +166,28 @@ endr
 	pop de
 	pop hl
 	push hl
-	ld a, [wBattleMode]
-	and a
-	jp nz, .copywildmonstats
+	jr .random_dvs
 
+.wildmon
+	push bc
+	farcall GetRoamMonDVsAndPersonality
+	push hl
+	farcall GetRoamMonHP
+	ld a, [hl]
+	pop hl
+	and a
+	pop bc
+	jr z, .random_dvs
+	push bc
+	push de
+	ld de, wDVAndPersonalityBuffer
+	ld bc, 5
+	rst CopyBytes
+	pop de
+	pop bc
+	jp .initializetrainermonstats
+
+.random_dvs
 ; Random DVs
 	call Random
 	ld [wDVAndPersonalityBuffer], a
@@ -355,6 +361,10 @@ endr
 	and $f
 	ld a, BASE_HAPPINESS
 	jr z, .set_happiness
+	ld a, [wBattleMode]
+	dec a
+	ld a, BASE_HAPPINESS
+	jr z, .set_happiness
 	ld a, $ff
 .set_happiness
 	ld [de], a
@@ -384,68 +394,6 @@ endr
 	ld a, [hProduct + 3]
 	ld [de], a
 	inc de
-	jr .next2
-
-.copywildmonstats
-	push hl
-	ld hl, wEnemyMonDVs
-rept 5
-	ld a, [hli]
-	ld [de], a
-	inc de
-endr
-	pop hl
-
-	push hl
-	ld hl, wEnemyMonPP
-	ld b, NUM_MOVES
-.wildmonpploop
-	ld a, [hli]
-	ld [de], a
-	inc de
-	dec b
-	jr nz, .wildmonpploop
-	pop hl
-
-	ld a, BASE_HAPPINESS
-	ld [de], a
-	inc de
-	xor a
-rept 4 ; PokerusStatus + CaughtData
-	ld [de], a
-	inc de
-endr
-	ld a, [wCurPartyLevel]
-	ld [de], a
-	inc de
-	ld hl, wEnemyMonStatus
-	; Copy wEnemyMonStatus
-	ld a, [hli]
-	ld [de], a
-	inc de
-	; Copy wEnemyMonUnused
-	ld a, [hli]
-	ld [de], a
-	inc de
-	; Copy wEnemyMonHP
-	ld a, [hli]
-	ld [de], a
-	inc de
-	ld a, [hl]
-	ld [de], a
-	inc de
-
-.next2
-	ld a, [wBattleMode]
-	dec a
-	jr nz, .generatestats
-	ld hl, wEnemyMonMaxHP
-	ld bc, 2 * 6 ; MaxHP + 5 Stats
-	rst CopyBytes
-	pop hl
-	jr .next3
-
-.generatestats
 	pop hl
 	ld bc, MON_EVS - 1
 	add hl, bc
@@ -1130,65 +1078,11 @@ SentPkmnIntoBox: ; de6e
 	ld bc, PKMN_NAME_LENGTH
 	rst CopyBytes
 
-	ld hl, wEnemyMon
+	ld hl, wOTPartyMon1
 	ld de, sBoxMon1
-	ld bc, 1 + 1 + NUM_MOVES ; species + item + moves
+	ld bc, BOXMON_STRUCT_LENGTH
 	rst CopyBytes
 
-	ld hl, wPlayerID
-	ld a, [hli]
-	ld [de], a
-	inc de
-	ld a, [hl]
-	ld [de], a
-	inc de
-	push de
-	ld a, [wCurPartyLevel]
-	ld d, a
-	farcall CalcExpAtLevel
-	pop de
-	ld a, [hProduct + 1]
-	ld [de], a
-	inc de
-	ld a, [hProduct + 2]
-	ld [de], a
-	inc de
-	ld a, [hProduct + 3]
-	ld [de], a
-	inc de
-
-	; Set all 6 EVs to 0
-	xor a
-	ld b, 6
-.loop2
-	ld [de], a
-	inc de
-	dec b
-	jr nz, .loop2
-
-	ld hl, wEnemyMonDVs
-	ld b, 3 + 2 + NUM_MOVES ; DVs, Personality, and PP ; wEnemyMonHappiness - wEnemyMonDVs
-.loop3
-	ld a, [hli]
-	ld [de], a
-	inc de
-	dec b
-	jr nz, .loop3
-
-	ld a, BASE_HAPPINESS
-	ld [de], a
-	inc de
-	xor a
-	ld [de], a
-	inc de
-	ld [de], a
-	inc de
-	ld [de], a
-	inc de
-	ld [de], a
-	inc de
-	ld a, [wCurPartyLevel]
-	ld [de], a
 	ld a, [wCurPartySpecies]
 	dec a
 	call SetSeenAndCaughtMon
