@@ -235,8 +235,11 @@ BugContest_SetCaughtContestMon: ; e6ce
 	call ByteFill
 	xor a
 	ld [wMonType], a
-	ld hl, wContestMon
-	jp GeneratePartyMonStats
+	ld hl, wOTPartyMon1
+	ld de, wContestMon
+	ld bc, PARTYMON_STRUCT_LENGTH
+	rst CopyBytes
+	ret
 
 .caughttext ; 0xe71d
 	; Caught @ !
