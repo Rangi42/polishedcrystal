@@ -2181,6 +2181,8 @@ CheckPartyFullAfterContest: ; 4d9e5
 	ld a, [sBoxMon1Level]
 	ld [wCurPartyLevel], a
 	call CloseSRAM
+	ld a, PARK_BALL
+	ld [wCurItem], a
 	call SetBoxMonCaughtData
 	ld a, BANK(sBoxMon1CaughtLocation)
 	call GetSRAMBank
