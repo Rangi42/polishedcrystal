@@ -94,9 +94,11 @@ HandleBetweenTurnEffects:
 	ld a, e
 	and a
 	ret z
+	push de
 	cp 3
 	jr nz, .not_both
 	farcall GetBothSwitchTarget
+	jr .got_target
 .not_both
 	call SetPlayerTurn
 	bit 1, e
@@ -105,7 +107,6 @@ HandleBetweenTurnEffects:
 
 .got_target
 	; If player has a switch target, continue as if we're in "Set" mode
-	push de
 	ld a, [wPlayerSwitchTarget]
 	and a
 	jr nz, .player_set_mode
