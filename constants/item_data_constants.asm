@@ -1,4 +1,4 @@
-; item attributes
+								; item attributes
 	const_def
 	const ITEMATTR_PRICE
 	const ITEMATTR_PRICE_HI

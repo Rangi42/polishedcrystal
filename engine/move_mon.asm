@@ -232,6 +232,16 @@ endr
 
 ; Random ability
 ; 5% hidden ability, otherwise 50% either main ability
+	ld a, [wBattleMode]
+	dec a
+	jr nz, .ability_check
+
+	ld a, [wBattleType]
+	cp BATTLETYPE_GROTTO
+	ld a, HIDDEN_ABILITY
+	jr z, .got_ability
+
+.ability_check
 	call Random
 	cp 1 + 5 percent
 	jr c, .hidden_ability
@@ -251,6 +261,17 @@ endr
 
 ; Random shininess
 ; 1/4096 chance to be shiny, 3/4096 with Shiny Charm
+	ld a, [wBattleMode]
+	dec a
+	jr nz, .shiny_check
+
+	ld a, [wBattleType]
+	cp BATTLETYPE_RED_GYARADOS
+	jr z, .not_shiny
+	cp BATTLETYPE_GROTTO
+	jr z, .not_shiny
+
+.shiny_check
 	call Random
 	and a
 	jr nz, .not_shiny ; 255/256 not shiny

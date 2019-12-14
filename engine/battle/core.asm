@@ -5715,12 +5715,12 @@ endc
 	call BattleRandomRange
 	inc a
 	ld b, a
-	ld a, [wOTPartyMon1Form]
+	ld hl, wOTPartyMon1Form
+	ld a, [hl]
 	and $ff - FORM_MASK
 	add b
-	ld [wOTPartyMon1Form], a
+	ld [hl], a
 	; Get letter based on form
-	ld hl, wOTPartyMon1Form
 	predef GetVariant
 	; Can't use any letters that haven't been unlocked
 	push de
@@ -5753,7 +5753,7 @@ endc
 .Magikarp:
 	ld a, [wTempEnemyMonSpecies]
 	cp MAGIKARP
-	jr nz, .Happiness
+	jr nz, .Gyarados
 
 	; Random Magikarp pattern
 	ld a, NUM_MAGIKARP
@@ -5810,6 +5810,18 @@ endc
 	cp 1024 >> 8
 	jp c, LoadEnemyMon
 
+.Gyarados:
+	ld a, [wTempEnemyMonSpecies]
+	cp GYARADOS
+	jr nz, .Happiness
+	ld a, [wBattleType]
+	cp BATTLETYPE_RED_GYARADOS
+	ld b, GYARADOS_RED_FORM
+	jr nz, .Happiness
+	ld a, [wOTPartyMon1Form]
+	and $ff - FORM_MASK
+	add b
+	ld [wOTPartyMon1Form], a
 
 .Happiness:
 	; If we're headbutting trees, some monsters enter battle asleep
