@@ -7,15 +7,23 @@ AI_SwitchOrTryItem: ; 38000
 
 	ld a, [wLinkMode]
 	and a
-	ret nz
+	jr z, .not_linked
 
-	; Avoid performing this check twice in a single turn
-	ld hl, wEnemySwitchItemCheck
-	ld a, [hl]
-	ld [hl], 1
-	and a
-	ret nz
+	; For switching out in link, register action here
+	ld a, [wBattleAction]
+	sub BATTLEACTION_SWITCH1
+	ccf
+	ret nc
+	cp NUM_POKEMON
+	ret nc
 
+	; Link enemy is switching
+	inc a
+	ld [wEnemySwitchTarget], a
+	scf
+	ret
+
+.not_linked
 	farcall GetEnemyItem
 	ld a, b
 	cp HELD_SHED_SHELL
@@ -672,11 +680,11 @@ AI_TrySwitch: ; 3844b
 	jp nc, AI_Switch
 	and a
 	ret
-; 3846c
 
 AI_Switch:
 	ld a, [wEnemySwitchMonIndex]
 	ld [wEnemySwitchTarget], a
+	scf
 	ret
 
 AI_HealStatus: ; 384e0

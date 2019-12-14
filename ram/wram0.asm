@@ -629,7 +629,8 @@ wLastPlayerMove:: ds 1
 wLastEnemyMove:: ds 1
 
 wEnemyUsingItem:: ds 1
-wEnemySwitchItemCheck:: ds 1
+
+	ds 1 ; unused
 
 wEndturnWeather:: ds 1
 

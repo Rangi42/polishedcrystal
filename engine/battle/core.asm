@@ -152,14 +152,12 @@ BattleTurn: ; 3c12f
 	ld [wPlayerSwitchTarget], a
 	ld [wEnemySwitchTarget], a
 	ld [wEnemyUsingItem], a
-	ld [wEnemySwitchItemCheck], a
 	ld [wBattleHasJustStarted], a
 	ld [wCurDamage], a
 	ld [wCurDamage + 1], a
 
 	call HandleBerserkGene
 	call UpdateBattleMonInParty
-	farcall AIChooseMove
 	call SetPlayerTurn
 	call CheckLockedIn
 	jr nz, .skip_iteration
@@ -493,8 +491,6 @@ ParsePlayerAction:
 	jr .encored
 
 .using_move
-	xor a
-	ld [wBattlePlayerAction], a
 	ld a, [wBattleType]
 	cp BATTLETYPE_GHOST
 	jp z, .lavender_ghost
@@ -1327,7 +1323,7 @@ endc
 
 	ld a, [wBattleMode]
 	dec a
-	call z, FinalPkmnMusicAndAnimation
+	call nz, FinalPkmnMusicAndAnimation
 
 	ld hl, wEnemyMonHP
 	ld a, [hli]
@@ -2355,70 +2351,6 @@ AskUseNextPokemon: ; 3d1f8
 	cp $1 ; YES
 	jr z, .loop
 	jp CheckRunSpeed
-
-ForcePlayerMonChoice: ; 3d227
-	ld a, 1
-	ld [wPlayerEndturnSwitched], a
-	call EmptyBattleTextBox
-	call LoadStandardMenuDataHeader
-	call SetUpBattlePartyMenu_NoLoop
-	call ForcePickPartyMonInBattle
-	ld a, [wLinkMode]
-	and a
-	jr z, .skip_link
-	ld a, $1
-	ld [wBattlePlayerAction], a
-	call LinkBattleSendReceiveAction
-
-.skip_link
-	xor a
-	ld [wBattlePlayerAction], a
-	ld hl, wEnemyMonHP
-	ld a, [hli]
-	or [hl]
-	jr nz, .send_out_pokemon
-
-	call ClearSprites
-	call ClearBGPalettes
-	call _LoadStatusIcons
-	call ExitMenu
-	call LoadTileMapToTempTileMap
-	call ApplyTilemapInVBlank
-	call GetMemCGBLayout
-	call SetPalettes
-	xor a
-	ld c, a
-	ret
-
-.send_out_pokemon
-	call ClearSprites
-	ld a, [wCurBattleMon]
-	ld [wLastPlayerMon], a
-	ld a, [wCurPartyMon]
-	ld [wCurBattleMon], a
-	call SetParticipant
-	call InitBattleMon
-	call ResetPlayerStatLevels
-	call ClearPalettes
-	call DelayFrame
-	call _LoadStatusIcons
-	call CloseWindow
-	call GetMemCGBLayout
-	call SetPalettes
-	call SendOutPkmnText
-	call NewBattleMonStatus
-	call BreakAttraction
-	call SendOutPlayerMon
-	call EmptyBattleTextBox
-	call LoadTileMapToTempTileMap
-	call SetPlayerTurn
-	call SpikesDamage
-	call RunActivationAbilities
-	ld a, $1
-	and a
-	ld c, a
-	ret
-; 3d2b3
 
 SetUpBattlePartyMenu_NoLoop: ; 3d2f7
 	call ClearBGPalettes
@@ -5483,9 +5415,24 @@ CheckUsableMove:
 	ret
 
 ParseEnemyAction:
-	ld a, [wEnemyUsingItem]
+; Unconditionally perform at least one link exchange
+	ld a, [wLinkMode]
 	and a
+	call nz, LinkBattleSendReceiveAction
+	call SetEnemyTurn
+	call CheckLockedIn
 	ret nz
+	farcall AIChooseMove
+	farcall AI_SwitchOrTryItem
+	jr nc, .using_move
+	call SetEnemyTurn
+	ld a, BATTLE_VARS_MOVE
+	call GetBattleVarAddr
+	xor a
+	ld [hl], a
+	jr .skip_load
+
+.using_move
 	ld a, [wLinkMode]
 	and a
 	jr z, .not_linked
