@@ -144,8 +144,6 @@ Function6f7f: ; 6f7f
 	and $f0
 	cp $b0
 	jr z, .done
-	cp $c0
-	jr z, .done
 	xor a
 	ret
 
