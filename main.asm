@@ -883,8 +883,6 @@ ClearBattleRAM: ; 2ef18
 	xor a
 	call ByteFill
 
-	farcall ResetEnemyStatLevels
-
 	call ClearWindowData
 
 	ld hl, hBGMapAddress

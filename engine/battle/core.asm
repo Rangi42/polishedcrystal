@@ -1950,6 +1950,8 @@ FaintUserPokemon:
 	call HasUserFainted
 	ret nz
 
+	call BreakAttraction
+
 	ld a, BATTLE_VARS_SUBSTATUS2
 	call GetBattleVarAddr
 	bit SUBSTATUS_FAINTED, [hl]
@@ -2701,36 +2703,6 @@ FinalPkmnMusicAndAnimation:
 	call DelayFrames
 	jp FinalPkmnSlideInEnemyMonFrontpic
 
-CheckWhetherToAskSwitch: ; 3d714
-	ld a, [wBattleHasJustStarted]
-	dec a
-	jp z, .return_nc
-	ld a, [wPartyCount]
-	dec a
-	jp z, .return_nc
-	ld a, [wLinkMode]
-	and a
-	jp nz, .return_nc
-	ld a, [wOptions2]
-	and (1 << BATTLE_SWITCH) | (1 << BATTLE_PREDICT)
-	jr z, .return_nc
-	ld a, [wCurPartyMon]
-	push af
-	ld a, [wCurBattleMon]
-	ld [wCurPartyMon], a
-	farcall CheckCurPartyMonFainted
-	pop bc
-	ld a, b
-	ld [wCurPartyMon], a
-	jr c, .return_nc
-	scf
-	ret
-
-.return_nc
-	and a
-	ret
-; 3d74b
-
 OfferSwitch:
 	; Copy target mon's nickname into active enemy mon nickname
 	ld hl, wOTPartyMonNicknames
@@ -2791,18 +2763,6 @@ OfferSwitch:
 	scf
 	ret
 ; 3d7a0
-
-ClearEnemyMonBox: ; 3d7a0
-	xor a
-	ld [hBGMapMode], a
-	call ExitMenu
-	call ClearSprites
-	hlcoord 0, 0
-	lb bc, 4, 11
-	call ClearBox
-	call ApplyTilemapInVBlank
-	jp FinishBattleAnim
-; 3d7b8
 
 Function_SetEnemyPkmnAndSendOutAnimation: ; 3d7c7
 	ld a, [wTempEnemyMonSpecies]
@@ -2898,17 +2858,6 @@ ResetEnemyAbility:
 	xor a
 	ret
 
-ResetEnemyStatLevels: ; 3d867
-	ld a, BASE_STAT_LEVEL
-	ld b, NUM_LEVEL_STATS
-	ld hl, wEnemyStatLevels
-.loop
-	ld [hli], a
-	dec b
-	jr nz, .loop
-	ret
-; 3d873
-
 CheckPlayerPartyForFitPkmn: ; 3d873
 ; Has the player any Pkmn in his Party that can fight?
 	ld a, [wPartyCount]
@@ -2960,54 +2909,6 @@ CheckIfCurPartyMonIsFitToFight: ; 3d887
 ; 3d8b3
 
 
-InitBattleMon: ; 3da0d
-	ld a, MON_SPECIES
-	call GetPartyParamLocation
-	ld de, wBattleMonSpecies
-	ld bc, MON_ID - MON_SPECIES
-	rst CopyBytes ; copy Species, Item, Moves
-	ld bc, MON_DVS - MON_ID
-	add hl, bc ; skip ID, Exp, EVs
-	ld de, wBattleMonDVs
-	ld bc, MON_PKRUS - MON_DVS
-	rst CopyBytes ; copy DVs, Personality, PP, Happiness
-	ld bc, MON_LEVEL - MON_PKRUS
-	add hl, bc ; skip PokerusStatus, CaughtData
-	ld de, wBattleMonLevel
-	ld bc, PARTYMON_STRUCT_LENGTH - MON_LEVEL
-	rst CopyBytes ; copy Level, Status, Unused, HP, MaxHP, Stats
-	ld a, [wBattleMonSpecies]
-	ld [wTempBattleMonSpecies], a
-	ld [wCurPartySpecies], a
-	ld [wCurSpecies], a
-	call GetBaseData
-	ld a, [wBaseType1]
-	ld [wBattleMonType1], a
-	ld a, [wBaseType2]
-	ld [wBattleMonType2], a
-
-if !DEF(FAITHFUL)
-	; Armored Mewtwo is Psychic/Steel
-	ld a, [wBattleMonSpecies]
-	cp MEWTWO
-	jr nz, .not_armored_mewtwo
-	ld a, [wBattleMonItem]
-	cp ARMOR_SUIT
-	jr nz, .not_armored_mewtwo
-	ld a, STEEL
-	ld [wBattleMonType2], a
-.not_armored_mewtwo
-endc
-
-	ld hl, wPartyMonNicknames
-	ld a, [wCurBattleMon]
-	call SkipNames
-	ld de, wBattleMonNick
-	ld bc, PKMN_NAME_LENGTH
-	rst CopyBytes
-	jp ResetPlayerAbility
-; 3da74
-
 BattleCheckPlayerShininess: ; 3da74
 	call GetPartyMonPersonality
 	jr BattleCheckShininess
@@ -3042,91 +2943,6 @@ GetEnemyMonPersonality:
 	ld hl, wOTPartyMon1Personality
 	ld a, [wCurOTMon]
 	jp GetPartyLocation
-
-ResetPlayerStatLevels: ; 3dab1
-	ld a, BASE_STAT_LEVEL
-	ld b, NUM_LEVEL_STATS
-	ld hl, wPlayerStatLevels
-.loop
-	ld [hli], a
-	dec b
-	jr nz, .loop
-	ret
-; 3dabd
-
-InitEnemyMon: ; 3dabd
-	ld a, [wCurPartyMon]
-	ld hl, wOTPartyMon1Species
-	call GetPartyLocation
-	ld de, wEnemyMonSpecies
-	ld bc, MON_ID - MON_SPECIES
-	rst CopyBytes ; copy Species, Item, Moves
-	ld bc, MON_DVS - MON_ID
-	add hl, bc ; skip ID, Exp, EVs
-	ld de, wEnemyMonDVs
-	ld bc, MON_PKRUS - MON_DVS
-	rst CopyBytes ; copy DVs, Personality, PP, Happiness
-	ld bc, MON_LEVEL - MON_PKRUS
-	add hl, bc ; skip PokerusStatus, CaughtData
-	ld de, wEnemyMonLevel
-	ld bc, PARTYMON_STRUCT_LENGTH - MON_LEVEL
-	rst CopyBytes ; copy Level, Status, Unused, HP, MaxHP, Stats
-	ld a, [wEnemyMonSpecies]
-	ld [wCurSpecies], a
-	call GetBaseData
-	ld hl, wOTPartyMonNicknames
-	ld a, [wCurPartyMon]
-	call SkipNames
-	ld de, wEnemyMonNick
-	ld bc, PKMN_NAME_LENGTH
-	rst CopyBytes
-	ld hl, wBaseType1
-	ld de, wEnemyMonType1
-	ld a, [hli]
-	ld [de], a
-	inc de
-	ld a, [hl]
-	ld [de], a
-
-if !DEF(FAITHFUL)
-	; Armored Mewtwo is Psychic/Steel
-	ld a, [wEnemyMonSpecies]
-	cp MEWTWO
-	jr nz, .not_armored_mewtwo
-	ld a, [wEnemyMonItem]
-	cp ARMOR_SUIT
-	jr nz, .not_armored_mewtwo
-	ld a, STEEL
-	ld [wEnemyMonType2], a
-.not_armored_mewtwo
-endc
-
-	ld a, [wCurPartyMon]
-	ld [wCurOTMon], a
-	jp ResetEnemyAbility
-; 3db32
-
-
-ForcePlayerSwitch: ; 3db32
-	call ClearSprites
-	ld a, [wCurBattleMon]
-	ld [wLastPlayerMon], a
-	ld a, [wCurPartyMon]
-	ld [wCurBattleMon], a
-	call SetParticipant
-	call InitBattleMon
-	call ResetPlayerStatLevels
-	call NewBattleMonStatus
-	call BreakAttraction
-	call SendOutPlayerMon
-	call EmptyBattleTextBox
-	call LoadTileMapToTempTileMap
-	ld hl, wEnemyMonHP
-	ld a, [hli]
-	or [hl]
-	ret
-; 3db5f
-
 
 SendOutPlayerMon: ; 3db5f
 	ld hl, wBattleMonForm
