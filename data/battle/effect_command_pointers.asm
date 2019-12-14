@@ -77,7 +77,7 @@ BattleCommandPointers:
 	command destinybond             ; 3f
 	command falseswipe              ; 40
 	command healbell                ; 41
-	command pressure                ; 42
+	command hastarget               ; 42
 	command triplekick              ; 43
 	command kickcounter             ; 44
 	command thief                   ; 45

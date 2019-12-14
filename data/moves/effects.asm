@@ -48,7 +48,7 @@ XScissor:
 	checkobedience
 	usedmovetext
 	doturn
-	pressure
+	hastarget
 	critical
 	damagestats
 	damagecalc
@@ -69,7 +69,7 @@ SuckerPunch:
 	checkobedience
 	usedmovetext
 	doturn
-	pressure
+	hastarget
 	suckerpunch
 	critical
 	damagestats
@@ -97,7 +97,7 @@ DrainPunch:
 	checkobedience
 	usedmovetext
 	doturn
-	pressure
+	hastarget
 	critical
 	damagestats
 	damagecalc
@@ -121,7 +121,7 @@ SwitchHit:
 	checkobedience
 	usedmovetext
 	doturn
-	pressure
+	hastarget
 	critical
 	damagestats
 	damagecalc
@@ -152,7 +152,7 @@ FuryStrikes:
 	checkobedience
 	usedmovetext
 	doturn
-	pressure
+	hastarget
 	startloop
 	lowersub
 	checkhit
@@ -184,7 +184,7 @@ BraveBird:
 	checkobedience
 	usedmovetext
 	doturn
-	pressure
+	hastarget
 	critical
 	damagestats
 	damagecalc
@@ -218,7 +218,7 @@ ZenHeadbutt:
 	checkobedience
 	usedmovetext
 	doturn
-	pressure
+	hastarget
 	critical
 	effectchance
 	damagestats
@@ -245,7 +245,7 @@ GunkShot:
 	checkobedience
 	usedmovetext
 	doturn
-	pressure
+	hastarget
 	critical
 	effectchance
 	damagestats
@@ -272,7 +272,7 @@ FireBlast:
 	checkobedience
 	usedmovetext
 	doturn
-	pressure
+	hastarget
 	critical
 	effectchance
 	damagestats
@@ -302,7 +302,7 @@ ZapCannon:
 	checkobedience
 	usedmovetext
 	doturn
-	pressure
+	hastarget
 	critical
 	effectchance
 	damagestats
@@ -325,7 +325,7 @@ BodySlam:
 	checkobedience
 	usedmovetext
 	doturn
-	pressure
+	hastarget
 	critical
 	effectchance
 	damagestats
@@ -349,7 +349,7 @@ SleepHit:
 	checkobedience
 	usedmovetext
 	doturn
-	pressure
+	hastarget
 	critical
 	effectchance
 	damagestats
@@ -375,7 +375,7 @@ Blizzard:
 	checkobedience
 	usedmovetext
 	doturn
-	pressure
+	hastarget
 	critical
 	effectchance
 	damagestats
@@ -404,7 +404,7 @@ Hurricane:
 	checkobedience
 	usedmovetext
 	doturn
-	pressure
+	hastarget
 	critical
 	effectchance
 	damagestats
@@ -428,7 +428,7 @@ MetalClaw:
 	checkobedience
 	usedmovetext
 	doturn
-	pressure
+	hastarget
 	critical
 	effectchance
 	damagestats
@@ -453,7 +453,7 @@ SteelWing:
 	checkobedience
 	usedmovetext
 	doturn
-	pressure
+	hastarget
 	critical
 	effectchance
 	damagestats
@@ -478,7 +478,7 @@ Ancientpower:
 	checkobedience
 	usedmovetext
 	doturn
-	pressure
+	hastarget
 	critical
 	effectchance
 	damagestats
@@ -502,7 +502,7 @@ AuroraBeam:
 	checkobedience
 	usedmovetext
 	doturn
-	pressure
+	hastarget
 	critical
 	effectchance
 	damagestats
@@ -528,7 +528,7 @@ IronTail:
 	checkobedience
 	usedmovetext
 	doturn
-	pressure
+	hastarget
 	critical
 	effectchance
 	damagestats
@@ -552,7 +552,7 @@ BrickBreak:
 	checkobedience
 	usedmovetext
 	doturn
-	pressure
+	hastarget
 	critical
 	effectchance
 	resettypematchup
@@ -581,7 +581,7 @@ Bulldoze:
 	checkobedience
 	usedmovetext
 	doturn
-	pressure
+	hastarget
 	critical
 	effectchance
 	damagestats
@@ -606,7 +606,7 @@ Moonblast:
 	checkobedience
 	usedmovetext
 	doturn
-	pressure
+	hastarget
 	critical
 	effectchance
 	damagestats
@@ -638,7 +638,7 @@ ShadowBall:
 	checkobedience
 	usedmovetext
 	doturn
-	pressure
+	hastarget
 	critical
 	effectchance
 	damagestats
@@ -664,7 +664,7 @@ Octazooka:
 	checkobedience
 	usedmovetext
 	doturn
-	pressure
+	hastarget
 	critical
 	effectchance
 	damagestats
@@ -688,7 +688,7 @@ EvasionDownHit:
 	checkobedience
 	usedmovetext
 	doturn
-	pressure
+	hastarget
 	critical
 	effectchance
 	damagestats
@@ -712,7 +712,7 @@ CloseCombat:
 	checkobedience
 	usedmovetext
 	doturn
-	pressure
+	hastarget
 	critical
 	effectchance
 	damagestats
@@ -740,7 +740,7 @@ SuperFang:
 	checkobedience
 	usedmovetext
 	doturn
-	pressure
+	hastarget
 	constantdamage
 	checkhit
 	resettypematchup
@@ -757,7 +757,7 @@ Poisonpowder:
 	checkobedience
 	usedmovetext
 	doturn
-	pressure
+	hastarget
 	checkpowder
 	checkhit
 	bounceback
@@ -770,7 +770,7 @@ Toxic:
 	checkobedience
 	usedmovetext
 	doturn
-	pressure
+	hastarget
 	checkhit
 	bounceback
 	stab
@@ -783,7 +783,7 @@ WillOWisp:
 	checkobedience
 	usedmovetext
 	doturn
-	pressure
+	hastarget
 	checkhit
 	bounceback
 	stab
@@ -798,7 +798,7 @@ Glare:
 	checkobedience
 	usedmovetext
 	doturn
-	pressure
+	hastarget
 	checkpowder
 	checkhit
 	bounceback
@@ -814,7 +814,7 @@ Spore:
 	checkobedience
 	usedmovetext
 	doturn
-	pressure
+	hastarget
 	checkpowder
 	checkhit
 	bounceback
@@ -826,7 +826,7 @@ DoFreeze:
 	checkobedience
 	usedmovetext
 	doturn
-	pressure
+	hastarget
 	checkhit
 	bounceback
 	checksafeguard
@@ -840,7 +840,7 @@ SweetKiss:
 	checkobedience
 	usedmovetext
 	doturn
-	pressure
+	hastarget
 	checkhit
 	bounceback
 	checksafeguard
@@ -1071,7 +1071,7 @@ Growl:
 	checkobedience
 	usedmovetext
 	doturn
-	pressure
+	hastarget
 	checkhit
 	bounceback
 	attackdown
@@ -1087,7 +1087,7 @@ Leer:
 	checkobedience
 	usedmovetext
 	doturn
-	pressure
+	hastarget
 	checkhit
 	bounceback
 	defensedown
@@ -1103,7 +1103,7 @@ StringShot:
 	checkobedience
 	usedmovetext
 	doturn
-	pressure
+	hastarget
 	checkhit
 	bounceback
 	speeddown
@@ -1118,7 +1118,7 @@ SpecialAttackDown:
 	checkobedience
 	usedmovetext
 	doturn
-	pressure
+	hastarget
 	checkhit
 	bounceback
 	specialattackdown
@@ -1133,7 +1133,7 @@ SpecialDefenseDown:
 	checkobedience
 	usedmovetext
 	doturn
-	pressure
+	hastarget
 	checkhit
 	bounceback
 	specialdefensedown
@@ -1150,7 +1150,7 @@ Flash:
 	checkobedience
 	usedmovetext
 	doturn
-	pressure
+	hastarget
 	checkhit
 	bounceback
 	accuracydown
@@ -1165,7 +1165,7 @@ EvasionDown:
 	checkobedience
 	usedmovetext
 	doturn
-	pressure
+	hastarget
 	checkhit
 	bounceback
 	evasiondown
@@ -1181,7 +1181,7 @@ Charm:
 	checkobedience
 	usedmovetext
 	doturn
-	pressure
+	hastarget
 	checkhit
 	bounceback
 	attackdown2
@@ -1197,7 +1197,7 @@ Screech:
 	checkobedience
 	usedmovetext
 	doturn
-	pressure
+	hastarget
 	checkhit
 	bounceback
 	defensedown2
@@ -1213,7 +1213,7 @@ ScaryFace:
 	checkobedience
 	usedmovetext
 	doturn
-	pressure
+	hastarget
 	checkhit
 	bounceback
 	speeddown2
@@ -1228,7 +1228,7 @@ SpecialAttackDown2:
 	checkobedience
 	usedmovetext
 	doturn
-	pressure
+	hastarget
 	checkhit
 	bounceback
 	specialattackdown2
@@ -1243,7 +1243,7 @@ SpecialDefenseDown2:
 	checkobedience
 	usedmovetext
 	doturn
-	pressure
+	hastarget
 	checkhit
 	bounceback
 	specialdefensedown2
@@ -1258,7 +1258,7 @@ AccuracyDown2:
 	checkobedience
 	usedmovetext
 	doturn
-	pressure
+	hastarget
 	checkhit
 	bounceback
 	accuracydown2
@@ -1273,7 +1273,7 @@ EvasionDown2:
 	checkobedience
 	usedmovetext
 	doturn
-	pressure
+	hastarget
 	checkhit
 	bounceback
 	evasiondown2
@@ -1341,7 +1341,7 @@ Outrage:
 	checkrampage
 	checkobedience
 	doturn
-	pressure
+	hastarget
 	rampage
 	usedmovetext
 	checkhit
@@ -1369,7 +1369,7 @@ Whirlpool:
 	checkobedience
 	usedmovetext
 	doturn
-	pressure
+	hastarget
 	checkhit
 	critical
 	damagestats
@@ -1392,7 +1392,7 @@ Explosion:
 	checkobedience
 	usedmovetext
 	doturn
-	pressure
+	hastarget
 	critical
 	damagestats
 	damagecalc
@@ -1413,7 +1413,7 @@ DreamEater:
 	checkobedience
 	usedmovetext
 	doturn
-	pressure
+	hastarget
 	critical
 	damagestats
 	damagecalc
@@ -1435,7 +1435,7 @@ Roar:
 	checkobedience
 	usedmovetext
 	doturn
-	pressure
+	hastarget
 	checkhit
 	bounceback
 	forceswitch
@@ -1445,7 +1445,7 @@ SkillSwap:
 	checkobedience
 	usedmovetext
 	doturn
-	pressure
+	hastarget
 	skillswap
 	endmove
 
@@ -1453,7 +1453,7 @@ Trick:
 	checkobedience
 	usedmovetext
 	doturn
-	pressure
+	hastarget
 	checkhit
 	trick
 	endmove
@@ -1469,7 +1469,7 @@ PayDay:
 	checkobedience
 	usedmovetext
 	doturn
-	pressure
+	hastarget
 	critical
 	damagestats
 	damagecalc
@@ -1491,7 +1491,7 @@ KnockOff:
 	checkobedience
 	usedmovetext
 	doturn
-	pressure
+	hastarget
 	critical
 	damagestats
 	damagecalc
@@ -1514,7 +1514,7 @@ BugBite:
 	checkobedience
 	usedmovetext
 	doturn
-	pressure
+	hastarget
 	critical
 	damagestats
 	damagecalc
@@ -1536,7 +1536,7 @@ TriAttack:
 	checkobedience
 	usedmovetext
 	doturn
-	pressure
+	hastarget
 	critical
 	damagestats
 	damagecalc
@@ -1558,7 +1558,7 @@ Transform:
 	checkobedience
 	usedmovetext
 	doturn
-	pressure
+	hastarget
 	transform
 	endmove
 
@@ -1574,7 +1574,7 @@ GigaImpact:
 	checkobedience
 	usedmovetext
 	doturn
-	pressure
+	hastarget
 	critical
 	damagestats
 	damagecalc
@@ -1596,7 +1596,7 @@ Rage:
 	checkobedience
 	usedmovetext
 	doturn
-	pressure
+	hastarget
 	critical
 	damagestats
 	damagecalc
@@ -1625,7 +1625,7 @@ LeechSeed:
 	checkobedience
 	usedmovetext
 	doturn
-	pressure
+	hastarget
 	checkhit
 	bounceback
 	leechseed
@@ -1642,7 +1642,7 @@ Disable:
 	checkobedience
 	usedmovetext
 	doturn
-	pressure
+	hastarget
 	checkhit
 	bounceback
 	disable
@@ -1664,7 +1664,7 @@ Encore:
 	checkobedience
 	usedmovetext
 	doturn
-	pressure
+	hastarget
 	checkhit
 	bounceback
 	encore
@@ -1674,7 +1674,7 @@ PainSplit:
 	checkobedience
 	usedmovetext
 	doturn
-	pressure
+	hastarget
 	checkhit
 	painsplit
 	endmove
@@ -1683,7 +1683,7 @@ Sketch:
 	checkobedience
 	usedmovetext
 	doturn
-	pressure
+	hastarget
 	sketch
 	endmove
 
@@ -1698,7 +1698,7 @@ DestinyBond:
 	checkobedience
 	usedmovetext
 	doturn
-	pressure
+	hastarget
 	destinybond
 	endmove
 
@@ -1706,7 +1706,7 @@ Reversal:
 	checkobedience
 	usedmovetext
 	doturn
-	pressure
+	hastarget
 	constantdamage
 	stab
 	checkhit
@@ -1723,7 +1723,7 @@ FalseSwipe:
 	checkobedience
 	usedmovetext
 	doturn
-	pressure
+	hastarget
 	critical
 	damagestats
 	damagecalc
@@ -1752,7 +1752,7 @@ TripleKick:
 	checkobedience
 	usedmovetext
 	doturn
-	pressure
+	hastarget
 	startloop
 	lowersub
 	checkhit
@@ -1781,7 +1781,7 @@ Thief:
 	checkobedience
 	usedmovetext
 	doturn
-	pressure
+	hastarget
 	critical
 	effectchance
 	damagestats
@@ -1805,7 +1805,7 @@ MeanLook:
 	checkobedience
 	usedmovetext
 	doturn
-	pressure
+	hastarget
 	bounceback
 	arenatrap
 	endmove
@@ -1814,7 +1814,7 @@ FlameWheel:
 	checkobedience
 	usedmovetext
 	doturn
-	pressure
+	hastarget
 	critical
 	effectchance
 	damagestats
@@ -1852,7 +1852,7 @@ Spikes:
 	checkobedience
 	usedmovetext
 	doturn
-	pressure
+	hastarget
 	bounceback
 	spikes
 	endmove
@@ -1861,7 +1861,7 @@ ToxicSpikes:
 	checkobedience
 	usedmovetext
 	doturn
-	pressure
+	hastarget
 	bounceback
 	toxicspikes
 	endmove
@@ -1870,7 +1870,7 @@ Foresight:
 	checkobedience
 	usedmovetext
 	doturn
-	pressure
+	hastarget
 	checkhit
 	bounceback
 	foresight
@@ -1908,7 +1908,7 @@ Rollout:
 	checkcurl
 	checkobedience
 	doturn
-	pressure
+	hastarget
 	usedmovetext
 	critical
 	damagestats
@@ -1931,7 +1931,7 @@ Swagger:
 	checkobedience
 	usedmovetext
 	doturn
-	pressure
+	hastarget
 	checkhit
 	bounceback
 	switchturn
@@ -1956,7 +1956,7 @@ ConditionalBoostHit:
 	checkobedience
 	usedmovetext
 	doturn
-	pressure
+	hastarget
 	critical
 	damagestats
 	damagecalc
@@ -1978,7 +1978,7 @@ Attract:
 	checkobedience
 	usedmovetext
 	doturn
-	pressure
+	hastarget
 	checkhit
 	bounceback
 	attract
@@ -1988,7 +1988,7 @@ Return:
 	checkobedience
 	usedmovetext
 	doturn
-	pressure
+	hastarget
 	critical
 	damagestats
 	happinesspower
@@ -2010,7 +2010,7 @@ SacredFire:
 	checkobedience
 	usedmovetext
 	doturn
-	pressure
+	hastarget
 	critical
 	effectchance
 	damagestats
@@ -2034,7 +2034,7 @@ Magnitude:
 	checkobedience
 	usedmovetext
 	doturn
-	pressure
+	hastarget
 	critical
 	damagestats
 	getmagnitude
@@ -2057,7 +2057,7 @@ GyroBall:
 	checkobedience
 	usedmovetext
 	doturn
-	pressure
+	hastarget
 	critical
 	damagestats
 	gyroball
@@ -2079,7 +2079,7 @@ LowKick:
 	checkobedience
 	usedmovetext
 	doturn
-	pressure
+	hastarget
 	critical
 	damagestats
 	lowkick
@@ -2108,7 +2108,7 @@ Pursuit:
 	checkobedience
 	usedmovetext
 	doturn
-	pressure
+	hastarget
 	critical
 	damagestats
 	damagecalc
@@ -2130,7 +2130,7 @@ RapidSpin:
 	checkobedience
 	usedmovetext
 	doturn
-	pressure
+	hastarget
 	critical
 	damagestats
 	damagecalc
@@ -2159,7 +2159,7 @@ HiddenPower:
 	checkobedience
 	usedmovetext
 	doturn
-	pressure
+	hastarget
 	critical
 	hiddenpower
 	damagecalc
@@ -2213,7 +2213,7 @@ Earthquake:
 	checkobedience
 	usedmovetext
 	doturn
-	pressure
+	hastarget
 	critical
 	effectchance
 	damagestats
@@ -2237,7 +2237,7 @@ FutureSight:
 	checkobedience
 	usedmovetext
 	doturn
-	pressure
+	hastarget
 	damagestats
 	damagecalc
 	futuresight
@@ -2254,7 +2254,7 @@ Gust:
 	checkobedience
 	usedmovetext
 	doturn
-	pressure
+	hastarget
 	critical
 	damagestats
 	damagecalc
@@ -2276,7 +2276,7 @@ Stomp:
 	checkobedience
 	usedmovetext
 	doturn
-	pressure
+	hastarget
 	critical
 	effectchance
 	damagestats
@@ -2300,7 +2300,7 @@ SolarBeam:
 	checkcharge
 	checkobedience
 	doturn
-	pressure
+	hastarget
 	skipsuncharge
 	charge
 	usedmovetext
@@ -2324,7 +2324,7 @@ Thunder:
 	checkobedience
 	usedmovetext
 	doturn
-	pressure
+	hastarget
 	critical
 	effectchance
 	damagestats
@@ -2356,7 +2356,7 @@ Dig:
 	checkcharge
 	checkobedience
 	doturn
-	pressure
+	hastarget
 	charge
 	usedmovetext
 	critical
@@ -2393,7 +2393,7 @@ FlareBlitz:
 	checkobedience
 	usedmovetext
 	doturn
-	pressure
+	hastarget
 	critical
 	effectchance
 	damagestats

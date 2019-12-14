@@ -1003,8 +1003,17 @@ BattleCommand_doturn:
 	db $ff
 ; 3460b
 
-BattleCommand_pressure:
-	; Ignores Mold Breaker
+BattleCommand_hastarget:
+	; If the target is fainted, abort the move
+	call HasOpponentFainted
+	jr nz, .not_fainted
+
+	ld hl, ButItFailedText
+	call StdBattleTextBox
+	jp EndMoveEffect
+
+.not_fainted
+	; Handle Pressure
 	ld a, BATTLE_VARS_ABILITY_OPP
 	call GetBattleVar
 	cp PRESSURE
