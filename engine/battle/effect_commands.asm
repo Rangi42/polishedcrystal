@@ -7987,14 +7987,14 @@ BattleCommand_trickroom:
 	cp HELD_ROOM_SERVICE
 	ret nz
 
-	ld b, SPEED + 1
-	call GetStatName
-	dec b
+	ld b, SPEED
 	call LowerStat
 	ld a, [wFailedMessage]
 	and a
 	ret nz
 
+	ld b, SPEED + 1
+	call GetStatName
 	call GetCurItemName
 	farcall ItemRecoveryAnim
 	ld hl, BattleText_ItemLowered

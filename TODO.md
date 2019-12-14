@@ -92,15 +92,7 @@ Shamouti Island:
 
 ### Move animations
 
-Refer to [B/W animations with sound effects](https://www.youtube.com/watch?v=TFDV0HeBz_0).
-
-High priority:
-
-* Giga Impact
-* Trick
-* Water Pulse
-
-Low priority:
+Refer to [B/W animations with sound effects](https://www.dropbox.com/s/003d1w32gm60fdt/Pok%C3%A9mon%20Black%20%26%20White%20-%20All%20move%20animations%20with%20SOUND%20EFFECTS%20ONLY%21.mp4?dl=0).
 
 * Aerial Ace
 * Aqua Tail
