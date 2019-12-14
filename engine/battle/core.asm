@@ -2294,7 +2294,7 @@ IsBossTrainerCommon:
 INCLUDE "data/trainers/leaders.asm"
 
 
-PlayerMonFaintHappinessMod: ; 3d1aa
+PlayerMonFaintHappinessMod:
 	ld hl, wEnemySubStatus3
 	res SUBSTATUS_IN_LOOP, [hl]
 	xor a
@@ -2317,15 +2317,7 @@ PlayerMonFaintHappinessMod: ; 3d1aa
 .got_param
 	ld a, [wCurBattleMon]
 	ld [wCurPartyMon], a
-	farcall ChangeHappiness
-	ld a, [wBattleResult]
-	and %11000000
-	add $1
-	ld [wBattleResult], a
-	ld a, [wWhichMonFaintedFirst]
-	and a
-	ret
-; 3d1f8
+	farjp ChangeHappiness
 
 AskUseNextPokemon: ; 3d1f8
 	call EmptyBattleTextBox
