@@ -156,6 +156,12 @@ BattleTurn: ; 3c12f
 
 	call HandleBerserkGene
 	call UpdateBattleMonInParty
+	call SetEnemyTurn
+	call CheckLockedIn
+	jr nz, .skip_ai_move
+	farcall AIChooseMove
+	farcall AI_MaybeSwitch
+.skip_ai_move
 	call SetPlayerTurn
 	call CheckLockedIn
 	jr nz, .skip_iteration
@@ -166,12 +172,6 @@ BattleTurn: ; 3c12f
 	and a
 	ret nz
 .skip_iteration
-	call SetEnemyTurn
-	call CheckLockedIn
-	jr nz, .skip_ai_move
-	farcall AIChooseMove
-	farcall AI_MaybeSwitch
-.skip_ai_move
 	call SetPlayerTurn
 	call ParsePlayerAction
 	jr nz, .loop1
@@ -1326,10 +1326,6 @@ endc
 	and a
 	jr z, .enemy_extras_done
 
-	ld a, [wBattleMode]
-	dec a
-	call nz, FinalPkmnMusicAndAnimation
-
 	ld hl, wEnemyMonHP
 	ld a, [hli]
 	ld [wEnemyHPAtTimeOfPlayerSwitch], a
@@ -1398,6 +1394,10 @@ endc
 	and a
 	ld hl, wPlayerSwitchTarget
 	jr z, .got_switch_target
+
+	ld a, [wBattleMode]
+	dec a
+	call nz, FinalPkmnMusicAndAnimation
 	ld hl, wEnemySwitchTarget
 .got_switch_target
 	ld [hl], 0
