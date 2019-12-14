@@ -610,8 +610,7 @@ wFailedMessage:: ds 1
 
 wEnemyGoesFirst:: ds 1
 
-wPlayerIsSwitching:: ds 1
-wEnemyIsSwitching::  ds 1
+	ds 2 ; unused
 
 wPlayerUsedMoves::
 ; add a move that has been used once by the player

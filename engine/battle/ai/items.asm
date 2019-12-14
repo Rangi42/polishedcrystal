@@ -675,7 +675,9 @@ AI_TrySwitch: ; 3844b
 ; 3846c
 
 AI_Switch:
-	farjp EnemyMonEntrance
+	ld a, [wEnemySwitchMonIndex]
+	ld [wEnemySwitchTarget], a
+	ret
 
 AI_HealStatus: ; 384e0
 	ld a, [wCurOTMon]

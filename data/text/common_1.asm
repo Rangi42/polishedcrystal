@@ -984,14 +984,6 @@ _BuenaOffTheAirText::
 	line ""
 	done
 
-Text_EnemyWithdrew::
-	text "<ENEMY>"
-	line "withdrew"
-	cont "@"
-	text_from_ram wEnemyMonNick
-	text "!"
-	prompt
-
 Text_EnemyUsedOn::
 	text "<ENEMY>"
 	line "used @"
