@@ -166,6 +166,13 @@ BattleTurn: ; 3c12f
 	and a
 	ret nz
 .skip_iteration
+	call SetEnemyTurn
+	call CheckLockedIn
+	jr nz, .skip_ai_move
+	farcall AIChooseMove
+	farcall AI_MaybeSwitch
+.skip_ai_move
+	call SetPlayerTurn
 	call ParsePlayerAction
 	jr nz, .loop1
 
@@ -5420,9 +5427,29 @@ ParseEnemyAction:
 	call SetEnemyTurn
 	call CheckLockedIn
 	ret nz
-	farcall AIChooseMove
-	farcall AI_SwitchOrTryItem
+
+	ld a, [wLinkMode]
+	and a
+	jr z, .no_linkswitch
+
+	; For switching out in link, register action here
+	ld a, [wBattleAction]
+	sub BATTLEACTION_SWITCH1
+	jr c, .no_linkswitch
+	cp NUM_POKEMON
+	jr nc, .no_linkswitch
+
+	; Link enemy is switching
+	inc a
+	ld [wEnemySwitchTarget], a
+
+.no_linkswitch
+	ld a, [wEnemySwitchTarget]
+	and a
+	jr nz, .is_switching
+	farcall AI_TryItem
 	jr nc, .using_move
+.is_switching
 	call SetEnemyTurn
 	ld a, BATTLE_VARS_MOVE
 	call GetBattleVarAddr

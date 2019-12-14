@@ -1,4 +1,4 @@
-AI_SwitchOrTryItem: ; 38000
+AI_MaybeSwitch:
 	and a
 
 	ld a, [wBattleMode]
@@ -7,23 +7,8 @@ AI_SwitchOrTryItem: ; 38000
 
 	ld a, [wLinkMode]
 	and a
-	jr z, .not_linked
+	ret nz
 
-	; For switching out in link, register action here
-	ld a, [wBattleAction]
-	sub BATTLEACTION_SWITCH1
-	ccf
-	ret nc
-	cp NUM_POKEMON
-	ret nc
-
-	; Link enemy is switching
-	inc a
-	ld [wEnemySwitchTarget], a
-	scf
-	ret
-
-.not_linked
 	farcall GetEnemyItem
 	ld a, b
 	cp HELD_SHED_SHELL
@@ -37,7 +22,7 @@ AI_SwitchOrTryItem: ; 38000
 	pop bc
 	ld a, b
 	ld [hBattleTurn], a
-	jr z, DontSwitch
+	ret z
 	call SetEnemyTurn
 	push bc
 	call CheckIfUserIsGhostType
@@ -48,11 +33,11 @@ AI_SwitchOrTryItem: ; 38000
 
 	ld a, [wPlayerSubStatus2]
 	bit SUBSTATUS_CANT_RUN, a
-	jr nz, DontSwitch
+	ret nz
 
 	ld a, [wEnemyWrapCount]
 	and a
-	jr nz, DontSwitch
+	ret nz
 
 .can_switch
 	ld hl, TrainerClassAttributes + TRNATTR_AI_ITEM_SWITCH
@@ -71,24 +56,20 @@ AI_SwitchOrTryItem: ; 38000
 	jp nz, SwitchRarely
 	bit SWITCH_SOMETIMES_F, [hl]
 	jp nz, SwitchSometimes
-	; fallthrough
-
-DontSwitch: ; 38041
-	jp AI_TryItem
-; 38045
+	ret
 
 SwitchOften: ; 38045
 	farcall AIWantsSwitchCheck
 	ld a, [wEnemySwitchMonParam]
 	and $f0
-	jp z, DontSwitch
+	ret z
 
 	cp $10
 	jr nz, .not_10
 	call Random
 	cp 1 + 50 percent
 	jr c, .switch
-	jp DontSwitch
+	ret
 .not_10
 
 	cp $20
@@ -96,13 +77,13 @@ SwitchOften: ; 38045
 	call Random
 	cp -1 + 79 percent
 	jr c, .switch
-	jp DontSwitch
+	ret
 .not_20
 
 	; $30
 	call Random
 	cp 4 percent
-	jp c, DontSwitch
+	ret c
 
 .switch
 	ld a, [wEnemySwitchMonParam]
@@ -117,14 +98,14 @@ SwitchRarely: ; 38083
 	farcall AIWantsSwitchCheck
 	ld a, [wEnemySwitchMonParam]
 	and $f0
-	jp z, DontSwitch
+	ret z
 
 	cp $10
 	jr nz, .not_10
 	call Random
 	cp 8 percent
 	jr c, .switch
-	jp DontSwitch
+	ret
 .not_10
 
 	cp $20
@@ -132,13 +113,13 @@ SwitchRarely: ; 38083
 	call Random
 	cp 12 percent
 	jr c, .switch
-	jp DontSwitch
+	ret
 .not_20
 
 	; $30
 	call Random
 	cp -1 + 79 percent
-	jp c, DontSwitch
+	ret c
 
 .switch
 	ld a, [wEnemySwitchMonParam]
@@ -152,14 +133,14 @@ SwitchSometimes: ; 380c1
 	farcall AIWantsSwitchCheck
 	ld a, [wEnemySwitchMonParam]
 	and $f0
-	jp z, DontSwitch
+	ret z
 
 	cp $10
 	jr nz, .not_10
 	call Random
 	cp -1 + 20 percent
 	jr c, .switch
-	jp DontSwitch
+	ret
 .not_10
 
 	cp $20
@@ -167,13 +148,13 @@ SwitchSometimes: ; 380c1
 	call Random
 	cp 1 + 50 percent
 	jr c, .switch
-	jp DontSwitch
+	ret
 .not_20
 
 	; $30
 	call Random
 	cp -1 + 20 percent
-	jp c, DontSwitch
+	ret c
 
 .switch
 	ld a, [wEnemySwitchMonParam]
