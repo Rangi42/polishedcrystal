@@ -670,7 +670,7 @@ CompareMovePriority: ; 3c5b4
 ; 3c5c5
 
 GetMovePriority: ; 3c5c5
-; Return the priority (0-9) of move being used.
+; Return the priority of move being used.
 	push bc
 	push de
 	ld a, BATTLE_VARS_MOVE
@@ -1496,12 +1496,6 @@ GetParticipantVar::
 	add hl, bc
 	ret
 
-EndUserDestinyBond:
-	ld a, BATTLE_VARS_SUBSTATUS2
-	call GetBattleVarAddr
-	res SUBSTATUS_DESTINY_BOND, [hl]
-	ret
-
 CheckOpponentFullHP:
 	call CallOpponentTurn
 CheckFullHP:
@@ -1937,8 +1931,6 @@ GetExpShareParticipants:
 	ld a, e
 	and a
 	ret
-
-
 
 StopDangerSound: ; 3ceec
 	xor a
@@ -3274,28 +3266,6 @@ PursuitSwitch:
 	call GetBattleVarAddr
 	ld [hl], 0
 	ret
-
-PursuitSwitch_done
-	; run switch-out abilities
-	call SwitchTurn
-	farcall RunSwitchAbilities
-	call SwitchTurn
-	and a
-	ret
-; 3dce6
-
-RecallPlayerMon: ; 3dce6
-	ld a, [hBattleTurn]
-	push af
-	xor a
-	ld [hBattleTurn], a
-	ld [wNumHits], a
-	ld de, ANIM_RETURN_MON
-	call Call_PlayBattleAnim
-	pop af
-	ld [hBattleTurn], a
-	ret
-; 3dcf9
 
 StealDefendHitBerry:
 ; treat it as a stat boost berry
@@ -6758,7 +6728,7 @@ UserSentOutText:
 	ld a, [hBattleTurn]
 	and a
 	jr nz, Function_BattleTextEnemySentOut
-SendOutPkmnText: ; 3f26d
+
 	ld a, [wLinkMode]
 	and a
 	jr z, .not_linked
