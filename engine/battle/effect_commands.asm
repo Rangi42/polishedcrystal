@@ -8186,6 +8186,7 @@ BattleCommand_selfdestruct: ; 37380
 	cp DAMP
 	ret z ; nullification ability checks handle messages
 	ld hl, wWhichMonFaintedFirst
+	ld a, [hl]
 	and a
 	jr nz, .faint_target_chosen
 	ld a, [hBattleTurn]
