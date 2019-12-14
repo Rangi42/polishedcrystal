@@ -1528,6 +1528,7 @@ LowerEVBerry:
 	or [hl]
 	jp z, WontHaveAnyEffectMessage
 
+	ld a, [hl]
 	sub 10
 	jr nc, .ev_value_ok
 	xor a
