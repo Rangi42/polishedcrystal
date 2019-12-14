@@ -2745,16 +2745,16 @@ OfferSwitch:
 	ld a, [wOptions2]
 	bit BATTLE_PREDICT, a
 	jr nz, .predict
-	ld hl, BattleText_EnemyAreAboutToSwitchWillPlayerSwitchPkmn
-	call CheckPluralTrainer
-	jr nz, .PlaceBattleChangeText
-	ld hl, BattleText_EnemyIsAboutToSwitchWillPlayerSwitchPkmn
-	jr .PlaceBattleChangeText
-.predict
 	ld hl, BattleText_EnemyAreAboutToUseWillPlayerSwitchPkmn
 	call CheckPluralTrainer
 	jr nz, .PlaceBattleChangeText
 	ld hl, BattleText_EnemyIsAboutToUseWillPlayerSwitchPkmn
+	jr .PlaceBattleChangeText
+.predict
+	ld hl, BattleText_EnemyAreAboutToSwitchWillPlayerSwitchPkmn
+	call CheckPluralTrainer
+	jr nz, .PlaceBattleChangeText
+	ld hl, BattleText_EnemyIsAboutToSwitchWillPlayerSwitchPkmn
 
 .PlaceBattleChangeText
 	call StdBattleTextBox
@@ -2764,6 +2764,16 @@ OfferSwitch:
 	jr nz, .said_no
 	call SetUpBattlePartyMenu_NoLoop
 	call PickSwitchMonInBattle
+
+	push af
+	call ClearPalettes
+	call ClearSprites
+	call _LoadStatusIcons
+	call DelayFrame
+	call GetMemCGBLayout
+	call SetPalettes
+	call Call_LoadTempTileMapToTileMap
+	pop af
 	jr c, OfferSwitch
 
 	; Player chose to switch. Force an explicit switch-out.
@@ -2777,7 +2787,6 @@ OfferSwitch:
 	jp ForceDeferredSwitch
 
 .said_no
-	pop af
 	ld [wCurPartyMon], a
 	scf
 	ret
