@@ -1944,6 +1944,10 @@ FaintUserPokemon:
 
 	call BreakAttraction
 
+	ld a, BATTLE_VARS_STATUS
+	call GetBattleVarAddr
+	ld [hl], 0
+
 	ld a, BATTLE_VARS_SUBSTATUS2
 	call GetBattleVarAddr
 	bit SUBSTATUS_FAINTED, [hl]
