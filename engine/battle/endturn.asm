@@ -1,19 +1,3 @@
-HasOpponentEndturnSwitched:
-	call CallOpponentTurn
-HasUserEndturnSwitched:
-; 4gen+ handles endturn switches (after faints) rather late. To avoid the need
-; to rewrite switching extensively, this function is used to bypass endturn
-; events that happens before a 4gen faint switch-in happens, since in 2gen,
-; the switch happens earlier.
-	ld a, [hBattleTurn]
-	and a
-	ld a, [wPlayerEndturnSwitched]
-	jr z, .got_endturnswitch
-	ld a, [wEnemyEndturnSwitched]
-.got_endturnswitch
-	xor 1 ; return z if we have endturn switched
-	ret
-
 CheckFaint:
 	farjp ResolveFaints
 
@@ -68,10 +52,6 @@ HandleBetweenTurnEffects:
 	call HandleSafeguard
 	call HandleHealingItems
 	farcall HandleAbilities
-
-	xor a
-	ld [wPlayerEndturnSwitched], a
-	ld [wEnemyEndturnSwitched], a
 
 	; these run even if the user switched at endturn
 	ld hl, wPlayerSubStatus3
@@ -203,7 +183,7 @@ HandleEndturnBlockA:
 .do_it
 	; sea of fire
 	; Grassy Terrain recovery
-	call HasUserEndturnSwitched
+	call HasUserFainted
 	ret z
 	farcall EndturnAbilitiesA
 	jp HandleLeftovers
@@ -213,11 +193,6 @@ HandleWeather:
 	ld a, [wWeather]
 	and a ; cp WEATHER_NONE
 	ret z
-
-	ld hl, wEndturnWeather
-	dec [hl]
-	ret z
-	inc [hl]
 
 	ld hl, wWeatherCount
 	dec [hl]
@@ -297,7 +272,7 @@ HandleWeatherEffects:
 	call SwitchTurn
 
 .do_it
-	call HasUserEndturnSwitched
+	call HasUserFainted
 	ret z
 	farcall GetUserItemAfterUnnerve
 	ld a, b
@@ -387,7 +362,7 @@ HandleFutureSight:
 	cp $1
 	ret nz
 
-	call HasUserEndturnSwitched
+	call HasUserFainted
 	jr nz, .do_future_sight
 
 	; Future Sight misses automatically
@@ -458,7 +433,6 @@ PreventEndturnDamage:
 	call GetBattleVar
 	cp MAGIC_GUARD
 	call nz, HasUserFainted
-	call nz, HasUserEndturnSwitched
 	ret
 
 HandleLeechSeed:
@@ -472,7 +446,6 @@ HandleLeechSeed:
 	bit SUBSTATUS_LEECH_SEED, [hl]
 	call nz, PreventEndturnDamage
 	call nz, HasOpponentFainted
-	call nz, HasOpponentEndturnSwitched
 	ret z
 
 	call SwitchTurn
@@ -688,6 +661,9 @@ HandleEncore:
 	call SwitchTurn
 
 .do_it
+	call HasUserFainted
+	ret z
+
 	ld a, BATTLE_VARS_SUBSTATUS2
 	call GetBattleVarAddr
 	bit SUBSTATUS_ENCORED, [hl]
@@ -729,6 +705,9 @@ HandlePerishSong:
 	call SwitchTurn
 
 .do_it
+	call HasUserFainted
+	ret z
+
 	ld hl, wPlayerPerishCount
 	ld a, [hBattleTurn]
 	and a
@@ -795,7 +774,7 @@ HandleLeppaBerry:
 	call SwitchTurn
 
 .do_it
-	call HasUserEndturnSwitched
+	call HasUserFainted
 	ret z
 	farcall GetUserItemAfterUnnerve
 	ld a, b
@@ -933,6 +912,9 @@ HandleStatusOrbs:
 	call SwitchTurn
 
 .do_it
+	call HasUserFainted
+	ret z
+
 	farcall GetOpponentItemAfterUnnerve
 	ld a, b
 	cp HELD_SELF_BRN
@@ -978,6 +960,9 @@ HandleRoost:
 	call SwitchTurn
 
 .do_it
+	call HasUserFainted
+	ret z
+
 	ld a, BATTLE_VARS_SUBSTATUS4
 	call GetBattleVarAddr
 	bit SUBSTATUS_ROOST, [hl]

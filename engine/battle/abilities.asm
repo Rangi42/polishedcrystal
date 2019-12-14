@@ -157,20 +157,6 @@ WeatherAbility:
 	cp b
 	ret z ; don't re-activate it
 
-	; If weather setter is setting this up at endturn, don't run weather effects
-	ld a, [hBattleTurn]
-	and a
-	ld hl, wPlayerEndturnSwitched
-	jr z, .got_endturn
-	ld hl, wEnemyEndturnSwitched
-.got_endturn
-	ld a, [hl]
-	and a
-	jr z, .no_endturn_switch
-	ld a, 1
-	ld [wEndturnWeather], a
-
-.no_endturn_switch
 	call ShowAbilityActivation
 	; Disable running animations as part of Start(wWeather) commands. This will not block
 	; Call_PlayBattleAnim that plays the animation manually.
@@ -1164,9 +1150,6 @@ HandleAbilities:
 	call SwitchTurn
 
 .do_it
-	farcall HasUserEndturnSwitched
-	ret z
-
 	ld hl, EndTurnAbilities
 	call UserAbilityJumptable
 	ld hl, StatusHealAbilities

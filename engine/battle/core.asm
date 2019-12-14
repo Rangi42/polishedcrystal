@@ -7,8 +7,6 @@ DoBattle: ; 3c000
 	ld [wBattlePlayerAction], a
 	ld [wBattleEnded], a
 	ld [wInverseBattleScore], a
-	ld [wPlayerEndturnSwitched], a
-	ld [wEnemyEndturnSwitched], a
 	ld [wDeferredSwitch], a
 	ld [wPlayerSwitchTarget], a
 	ld [wEnemySwitchTarget], a

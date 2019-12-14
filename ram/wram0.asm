@@ -630,11 +630,7 @@ wLastEnemyMove:: ds 1
 
 wEnemyUsingItem:: ds 1
 
-	ds 1 ; unused
-
-wEndturnWeather:: ds 1
-
-	ds 6
+	ds 8 ; unused
 
 wPlayerFutureSightCount:: ds 1
 wEnemyFutureSightCount:: ds 1
@@ -659,8 +655,7 @@ wAmuletCoin:: ds 1
 
 wSomeoneIsRampaging:: ds 1
 
-wPlayerEndturnSwitched:: ds 1
-wEnemyEndturnSwitched:: ds 1
+	ds 2 ; unused
 
 wDVAndPersonalityBuffer:: ds 5
 wBattleEnd::
