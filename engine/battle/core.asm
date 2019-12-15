@@ -3339,7 +3339,8 @@ DoStealStatBoostBerry:
 	ret nz
 	farjp ConsumeOpponentItem
 
-HandleStatBoostBerry:
+QuarterPinchOrGluttony::
+; Returns z if we're in a 1/4-HP pinch or if we have Gluttony
 	ld a, BATTLE_VARS_ABILITY
 	call GetBattleVar
 	cp GLUTTONY
@@ -3350,9 +3351,13 @@ HandleStatBoostBerry:
 	call GetHalfMaxHP
 .compare_hp
 	call CompareHP
-	jr z, .ok
 	ret nc
-.ok
+	xor a
+	ret
+
+HandleStatBoostBerry:
+	call QuarterPinchOrGluttony
+	ret nz
 	farcall GetUserItemAfterUnnerve
 	call _HeldStatBoostBerry
 	ret nz
@@ -3463,15 +3468,8 @@ HandleHPHealingItem:
 	cp FIGY_BERRY
 	jr nz, .figy_ok
 
-	; Gluttony makes Figy activate at 50%HP like the others
-	ld a, BATTLE_VARS_ABILITY
-	call GetBattleVar
-	cp GLUTTONY
-	jr z, .figy_ok
-	call GetQuarterMaxHP
-	call CompareHP
-	jr z, .figy_ok
-	ret nc
+	call QuarterPinchOrGluttony
+	ret nz
 .figy_ok
 	farcall GetUserItemAfterUnnerve
 	call _HeldHPHealingItem

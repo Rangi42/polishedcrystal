@@ -832,12 +832,27 @@ CheckSpeedWithQuickClaw::
 	pop de
 	ld a, b
 	cp HELD_QUICK_CLAW
+	jr z, .quick_claw
+	cp HELD_CUSTAP_BERRY
 	ret nz
+
+	push de
+	farcall QuarterPinchOrGluttony
+	pop de
+	ret nz
+	call .activate_item
+	push de
+	farcall ConsumeUserItem
+	pop de
+	ret
+
+.quick_claw
 	ld a, 100
 	call BattleRandomRange
 	cp c
 	ret nc
 	push de
+.activate_item
 	farcall ItemRecoveryAnim
 	farcall GetUserItemAfterUnnerve
 	call GetCurItemName
