@@ -3733,12 +3733,6 @@ BattleAnim_GunkShot:
 	anim_wait 3
 	anim_obj ANIM_OBJ_GUNKSHOT, 64, 92, $4
 	anim_wait 3
-	anim_obj ANIM_OBJ_1A, 132, 72, $0
-	anim_sound 6, 2, SFX_BUBBLE_BEAM
-	anim_obj ANIM_OBJ_GUNKSHOT, 64, 92, $4
-	anim_wait 3
-	anim_obj ANIM_OBJ_GUNKSHOT, 64, 92, $4
-	anim_wait 3
 	anim_obj ANIM_OBJ_1A, 116, 72, $0
 	anim_sound 6, 2, SFX_BUBBLE_BEAM
 	anim_obj ANIM_OBJ_GUNKSHOT, 64, 92, $4
@@ -3746,6 +3740,11 @@ BattleAnim_GunkShot:
 	anim_obj ANIM_OBJ_GUNKSHOT, 64, 92, $4
 	anim_wait 3
 	anim_obj ANIM_OBJ_1A, 148, 72, $0
+	anim_sound 6, 2, SFX_BUBBLE_BEAM
+	anim_obj ANIM_OBJ_GUNKSHOT, 64, 92, $4
+	anim_wait 3
+	anim_obj ANIM_OBJ_GUNKSHOT, 64, 92, $4
+	anim_wait 3
 	anim_loop 4, .loop
 	anim_wait 32
 	anim_ret
