@@ -216,6 +216,14 @@ BattleText_ItemSharplyRaised:
 	text "!"
 	prompt
 
+BattleText_ItemRaisedCrit:
+	text "<USER>"
+	line "used @"
+	text_from_ram wStringBuffer1
+	text ""
+	cont "to get pumped!"
+	prompt
+
 BattleText_UserChargedWithItem:
 	text "<USER>"
 	line "became charged"

@@ -3362,7 +3362,25 @@ _HeldStatBoostBerry:
 	ld a, b
 	ld b, c
 	cp HELD_RAISE_STAT
+	jr z, .raise_stat
+	cp HELD_RAISE_CRIT
 	ret nz
+
+	ld a, BATTLE_VARS_SUBSTATUS4
+	push hl
+	call GetBattleVarAddr
+	bit SUBSTATUS_FOCUS_ENERGY, [hl]
+	set SUBSTATUS_FOCUS_ENERGY, [hl]
+	pop hl
+	ret nz
+	call ItemRecoveryAnim
+	call GetCurItemName
+	ld hl, BattleText_ItemRaisedCrit
+	call StdBattleTextBox
+	xor a
+	ret
+
+.raise_stat
 	push hl
 	farcall BattleCommand_statup
 	pop hl

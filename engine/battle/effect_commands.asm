@@ -1175,7 +1175,7 @@ BattleCommand_critical: ; 34631
 	bit SUBSTATUS_FOCUS_ENERGY, a
 	jr z, .CheckCritical
 
-; +2 critical level (TODO: this also affects Dire Hit)
+; +2 critical level
 	inc c
 	inc c
 
