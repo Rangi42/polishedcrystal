@@ -14,13 +14,6 @@ WonderTrade::
 	farcall SelectTradeOrDaycareMon
 	ret c
 
-	ld a, [wCurPartySpecies]
-;	cp EGG
-;	jr nz, .continue
-;	ld hl, .Text_WonderTradeCantTradeEgg
-;	jp PrintText
-
-.continue
 	ld hl, wPartyMonNicknames
 	ld bc, PKMN_NAME_LENGTH
 	call Trade_GetAttributeOfCurrentPartymon

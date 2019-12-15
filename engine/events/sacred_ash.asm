@@ -1,4 +1,3 @@
-
 _SacredAsh: ; 507e6
 	xor a
 	ld [wItemEffectSucceeded], a
@@ -14,7 +13,6 @@ _SacredAsh: ; 507e6
 
 CheckAnyFaintedMon: ; 507fb
 	ld de, PARTYMON_STRUCT_LENGTH
-	ld bc, wPartySpecies
 	ld hl, wPartyMon1HP
 	ld a, [wPartyCount]
 	and a
@@ -23,10 +21,12 @@ CheckAnyFaintedMon: ; 507fb
 .loop
 	push af
 	push hl
-	ld a, [bc]
-	inc bc
-	cp EGG
-	jr z, .next
+	ld bc, wPartyMon1IsEgg - wPartyMon1HP
+	add hl, bc
+	bit MON_IS_EGG_F, [hl]
+	pop hl
+	push hl
+	jr nz, .next
 
 	ld a, [hli]
 	or [hl]

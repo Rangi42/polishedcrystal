@@ -51,20 +51,6 @@ SpecialSeenMon: ; c252
 	jp SetSeenMon
 ; c25a
 
-Special_FindGreaterThanThatLevel: ; c25a
-	ld a, [wScriptVar]
-	ld b, a
-	farcall _FindGreaterThanThatLevel
-	jr z, FoundNone
-	jr FoundOne
-
-Special_FindAtLeastThatHappy: ; c268
-	ld a, [wScriptVar]
-	ld b, a
-	farcall _FindAtLeastThatHappy
-	jr z, FoundNone
-	jr FoundOne
-
 Special_FindThatSpecies: ; c276
 	ld a, [wScriptVar]
 	ld b, a

@@ -153,10 +153,15 @@ GetHallOfFameParty: ; 8653f
 	ld c, 0
 .next
 	ld a, [hli]
-	cp -1
+	inc a
 	jr z, .done
-	cp EGG
-	jr nz, .mon
+	ld a, c
+	push hl
+	ld hl, wPartyMon1IsEgg
+	call GetPartyLocation
+	bit MON_IS_EGG_F, [hl]
+	pop hl
+	jr z, .mon
 	inc c
 	jr .next
 

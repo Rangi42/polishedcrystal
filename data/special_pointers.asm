@@ -63,8 +63,6 @@ SpecialsPointers::
 	add_special RestartMapMusic
 	add_special HealMachineAnim
 	add_special Special_SurfStartStep
-	add_special Special_FindGreaterThanThatLevel ; unused
-	add_special Special_FindAtLeastThatHappy ; unused
 	add_special Special_FindThatSpecies
 	add_special Special_FindThatSpeciesYourTrainerID
 	add_special Special_DayCareMon1
