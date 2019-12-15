@@ -138,6 +138,12 @@ HandleBetweenTurnEffects:
 	ld a, [wPlayerSwitchTarget]
 	and a
 	jr z, .enemy_only
+
+	; Mark the need to run Spikes+Abilities for players using Switch/Predict
+	pop de
+	set 0, e
+	push de
+
 	ld a, [wEnemySwitchTarget]
 	and a
 	jr z, .player_only
