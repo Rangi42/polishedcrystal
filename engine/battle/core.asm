@@ -3381,12 +3381,37 @@ _HeldStatBoostBerry:
 	ret
 
 .raise_stat
+	ld a, b
+	and $f
+	cp MULTIPLE_STATS
+	jr nz, .got_stat
+
+	ld a, [wAttackMissed]
+	push af
+	push hl
+	farcall GetCappedStats
+	farcall SharplyRaiseRandomStat
+	pop hl
+	jr z, .failed
+	jr .finished_raising_stat
+
+.got_stat
+	ld a, [wAttackMissed]
+	push af
 	push hl
 	farcall BattleCommand_statup
 	pop hl
+.finished_raising_stat
 	ld a, [wFailedMessage]
 	and a
-	ret nz
+	jr z, .success
+.failed
+	pop af
+	ld [wAttackMissed], a
+	or 1
+	ret
+
+.success
 	call ItemRecoveryAnim
 	call GetCurItemName
 	ld a, [wLoweredStat]
@@ -3394,8 +3419,15 @@ _HeldStatBoostBerry:
 	ld b, a
 	inc b
 	farcall GetStatName
+	ld a, [wLoweredStat]
+	and $f0
 	ld hl, BattleText_ItemRaised
+	jr z, .got_msg
+	ld hl, BattleText_ItemSharplyRaised
+.got_msg
 	call StdBattleTextBox
+	pop af
+	ld [wAttackMissed], a
 	xor a
 	ret
 

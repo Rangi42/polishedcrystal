@@ -3234,7 +3234,7 @@ BattleCommand_posthiteffects:
 	cp HELD_SHELL_BELL
 	jr z, .shell_bell
 	cp HELD_SWITCH
-	jr z, .not_switch
+	jr nz, .not_switch
 	ld a, c
 	call SetDeferredSwitch
 	jp .checkfaint

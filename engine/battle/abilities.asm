@@ -1263,14 +1263,7 @@ RegainItemByAbility:
 	ld [hl], b
 	ret
 
-MoodyAbility:
-; Moody raises one stat by 2 stages and lowers another (not the same one!) by 1.
-; It will not try to raise a stat at +6 (or lower one at -6). This means that, should all
-; stats be +6, Moody will not raise any stat, and vice versa.
-
-	call ShowAbilityActivation ; Safe -- Moody is certain to work for at least one part.
-	call DisableAnimations
-
+GetCappedStats:
 	; First, check how many stats aren't maxed out
 	ld hl, wPlayerStatLevels
 	ld a, [hBattleTurn]
@@ -1299,31 +1292,33 @@ MoodyAbility:
 	inc e
 	sla d
 	ld a, e
-	cp 7
+	cp 5
 	jr c, .loop1
+	ret
 
+SharplyRaiseRandomStat:
 	; If all stats are maxed (b=0), skip increasing stats
 	ld a, b
 	and a
-	jr z, .all_stats_maxed
+	ret z
 
 	; Randomize values until we get one matching a nonmaxed stat
-.loop2
+.loop1
 	call BattleRandom
 	and $7
 	cp 5
-	jr nc, .loop2 ; don't raise acc/eva, only 0-4 (atk/def/spe/sat/sdf)
+	jr nc, .loop1 ; don't raise acc/eva, only 0-4 (atk/def/spe/sat/sdf)
 	lb de, 1, 0 ; e = counter
-.loop3
+.loop2
 	cp e
-	jr z, .loop3_done
+	jr z, .loop2_done
 	sla d
 	inc e
-	jr .loop3
-.loop3_done
+	jr .loop2
+.loop2_done
 	ld a, b
 	and d
-	jr z, .loop2
+	jr z, .loop1
 
 	; We got the stat to raise. Set the e:th bit (using d) in c to 0
 	; to avoid lowering the stat as well.
@@ -1337,37 +1332,66 @@ MoodyAbility:
 	push bc
 	farcall ResetMiss
 	farcall BattleCommand_statup
-	farcall BattleCommand_statupmessage
 	pop bc
+	or 1
+	ret
 
-.all_stats_maxed
+LowerRandomStat:
+	; If all stats are minimized (c=0), skip decreasing stats
 	ld a, c
 	and a
-	jp z, EnableAnimations ; no stat to lower
+	ret z
 
-.loop4
+.loop1
 	call BattleRandom
 	and $7
 	cp 5
-	jr nc, .loop4
+	jr nc, .loop1
 	lb de, 1, 0 ; e = counter
-.loop5
+.loop2
 	cp e
-	jr z, .loop5_done
+	jr z, .loop2_done
 	sla d
 	inc e
-	jr .loop5
-.loop5_done
+	jr .loop2
+.loop2_done
 	ld a, c
 	and d
-	jr z, .loop4
+	jr z, .loop1
 
 	ld b, e
+	push bc
 	farcall ResetMiss
 	farcall LowerStat
+	pop bc
+	or 1
+	ret
+
+MoodyAbility:
+; Moody raises one stat by 2 stages and lowers another (not the same one!) by 1.
+; It will not try to raise a stat at +6 (or lower one at -6). This means that, should all
+; stats be +6, Moody will not raise any stat, and vice versa.
+
+	call ShowAbilityActivation ; Safe -- Moody is certain to work for at least one part.
+	call DisableAnimations
+
+	ld a, [wAttackMissed]
+	push af
+	call GetCappedStats
+	call SharplyRaiseRandomStat
+	jr z, .no_up_msg
+	push bc
+	farcall BattleCommand_statupmessage
+	pop bc
+.no_up_msg
+	call LowerRandomStat
+	jr z, .no_down_msg
 	call SwitchTurn
 	farcall BattleCommand_statdownmessage
 	call SwitchTurn
+.no_down_msg
+	pop af
+	ld [wAttackMissed], a
 	jp EnableAnimations
 
 ApplyDamageAbilities_AfterTypeMatchup:
