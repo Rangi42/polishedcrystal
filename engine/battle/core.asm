@@ -1389,6 +1389,15 @@ endc
 	call nz, Function_SetEnemyPkmnAndSendOutAnimation
 	jr .send_out_anim_done
 .player_sends_out
+	; Get rid of pokéball icons for trainers in case it's present
+	call HasEnemyFainted
+	jr nz, .send_out_player_mon
+	hlcoord 0, 0
+	lb bc, 4, 12
+	call ClearBox
+	call ClearSprites
+
+.send_out_player_mon
 	call SendOutPlayerMon
 .send_out_anim_done
 	; Give a "X was dragged out!" message if applicable
@@ -3631,6 +3640,8 @@ CheckDanger: ; 3df9e
 ; 3dfbf
 
 PrintPlayerHUD: ; 3dfbf
+	call HasPlayerFainted
+	ret z
 
 	ld de, wBattleMonNick
 	hlcoord 11, 7
@@ -3709,6 +3720,9 @@ UpdateEnemyHUD:: ; 3e036
 ; 3e043
 
 DrawEnemyHUD: ; 3e043
+	call HasEnemyFainted
+	ret z
+
 	xor a
 	ld [hBGMapMode], a
 
