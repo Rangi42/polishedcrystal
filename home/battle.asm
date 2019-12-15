@@ -44,10 +44,14 @@ ResetDamage::
 BattleCommand_switchturn::
 SwitchTurn::
 	ld a, [hBattleTurn]
-	and a
-	jr z, SetEnemyTurn
+	push af
+	xor 1
+	ld [hBattleTurn], a
+	pop af
+	ret
+
 SetPlayerTurn::
-	xor a
+	ld a, 0
 	ld [hBattleTurn], a
 	ret
 

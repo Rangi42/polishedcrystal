@@ -1416,6 +1416,48 @@ BattleCommand_stab: ; 346d2
 	ld [hl], a
 	ret
 
+CheckAirborneAfterMoldBreaker:
+	call SwitchTurn
+	call GetOpponentAbilityAfterMoldBreaker
+	ld b, a
+	call SwitchTurn
+	jr CheckAirborne_GotAbility
+CheckAirborne:
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	ld b, a
+CheckAirborne_GotAbility:
+; Returns a=0 and z if grounded. Returns nz if not.
+; a contains ATKFAIL_MISSED for air balloon, ATKFAIL_IMMUNE for flying type,
+; ATKFAIL_ABILITY for Levitate.
+	push bc
+
+	; Check Iron Ball
+	call GetUserItemAfterUnnerve
+	ld a, b
+	cp HELD_IRON_BALL
+	pop bc
+	ld c, a
+	ld a, 0
+	ret z
+	push bc
+	call CheckIfUserIsFlyingType
+	pop bc
+	ld a, ATKFAIL_IMMUNE
+	jr z, .airborne
+	ld a, c
+	cp HELD_AIR_BALLOON
+	ld a, ATKFAIL_MISSED
+	jr z, .airborne
+	ld a, b
+	cp LEVITATE
+	ld a, ATKFAIL_ABILITY
+	jr z, .airborne
+	xor a
+.airborne
+	and a
+	ret
+
 BattleCheckTypeMatchup:
 	ld a, [hBattleTurn]
 	and a
@@ -1436,18 +1478,27 @@ CheckTypeMatchup:
 	and a
 	jr z, .end
 
-	; check Air Balloon for Ground-type attacks
+	; check Ground-type attacks
 	ld a, BATTLE_VARS_MOVE_TYPE
 	call GetBattleVar
 	cp GROUND
-	jr nz, .done_air_balloon
+	jr nz, .done_ground_type
 
-	call CheckAirBalloon
-	jr nz, .done_air_balloon
+	call SwitchTurn
+	call CheckAirborneAfterMoldBreaker
+	push af
+	call SwitchTurn
+	pop af
+	jr z, .done_ground_type
+	cp ATKFAIL_ABILITY
+	jr nz, .no_levitate
+	ld [wAttackMissed], a
+
+.no_levitate
 	xor a
 	ld [wTypeMatchup], a
 
-.done_air_balloon
+.done_ground_type
 	farcall CheckNullificationAbilities
 .end
 	pop bc
@@ -6523,14 +6574,9 @@ CheckIfTrappedByAbility:
 	; Only works on Steel types
 	jp CheckIfUserIsSteelType
 .has_arena_trap
-	; Doesn't work on flying types or levitate users
-	call CheckIfUserIsFlyingType
-	jr z, .not_trapped
-	ld a, BATTLE_VARS_ABILITY
-	cp LEVITATE
-	jr z, .not_trapped
-	call CheckAirBalloon
-	jr z, .not_trapped
+	; Doesn't work on airborne mons
+	call CheckAirborne
+	jr nz, .not_trapped
 	xor a
 	ret
 

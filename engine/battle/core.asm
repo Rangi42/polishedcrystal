@@ -404,6 +404,9 @@ GetSpeed::
 	ld a, b
 	cp HELD_QUICK_POWDER
 	jr z, .quick_powder
+	cp HELD_IRON_BALL
+	ld a, $12
+	jr .apply_item_mod
 	cp HELD_CHOICE
 	jr nz, .done
 	ld a, c
@@ -3164,6 +3167,8 @@ SpikesDamage_GotAbility:
 	cp HELD_HEAVY_BOOTS
 	pop bc
 	ret z
+	cp HELD_IRON_BALL
+	jr z, .iron_ball
 
 	ld a, b
 	cp LEVITATE
@@ -3175,6 +3180,7 @@ SpikesDamage_GotAbility:
 	pop bc
 	ret z
 
+.iron_ball
 	ld a, [hBattleTurn]
 	and a
 	ld hl, wPlayerScreens

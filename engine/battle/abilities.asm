@@ -801,7 +801,7 @@ CheckNullificationAbilities:
 	db WATER_ABSORB,  WATER
 	db FLASH_FIRE,    FIRE
 	db SAP_SIPPER,    GRASS
-	db LEVITATE,      GROUND
+; Levitate is checked seperately due to Iron Ball shenanigans
 	db -1
 
 
