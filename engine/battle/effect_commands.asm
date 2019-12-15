@@ -122,9 +122,6 @@ DoMove:
 	; Proc White Herb
 	push af
 	call CheckWhiteHerb
-	call SwitchTurn
-	call CheckWhiteHerb
-	call SwitchTurn
 	call CheckPowerHerb
 	pop af
 	ret
@@ -489,12 +486,36 @@ IncreaseMetronomeCount:
 	ret
 
 CheckWhiteHerb:
+	ld a, [hBattleTurn]
+	ld b, a
+	push bc
+	call SetFastestTurn
+	pop bc
+	push bc
+	call .do_it
+	call SwitchTurn
+	pop bc
+	push bc
+	call .do_it
+	pop bc
+	ld a, b
+	ld [hBattleTurn], a
+	ret
+
+.do_it
+	push bc
 	call GetUserItemAfterUnnerve
 	ld a, b
+	pop bc
 	cp HELD_WHITE_HERB
+	jr z, .item_valid
+	cp HELD_EJECT_PACK
 	ret nz
 
+.item_valid
+	push bc
 	call HasUserFainted
+	pop bc
 	ret z
 
 	; Check if we have any reduced stat changes
@@ -504,18 +525,38 @@ CheckWhiteHerb:
 	jr z, .got_stat_levels
 	ld hl, wEnemyStatLevels
 .got_stat_levels
-	lb bc, NUM_LEVEL_STATS, 0
+	lb de, NUM_LEVEL_STATS, 0
 .stat_loop
 	ld a, [hl]
 	cp BASE_STAT_LEVEL
 	jr nc, .not_lowered
+	push bc
+	push de
+	push hl
+	call GetUserItemAfterUnnerve
+	ld a, b
+	pop hl
+	pop de
+	pop bc
+	cp HELD_EJECT_PACK
+	jr nz, .not_eject_pack
+
+	ld a, [hBattleTurn]
+	cp b
+	ld a, 1 << SWITCH_DEFERRED | 1 << SWITCH_ITEM
+	jr z, .move_user_switching
+	ld a, 1 << SWITCH_DEFERRED | 1 << SWITCH_TARGET | 1 << SWITCH_OPPITEM
+.move_user_switching
+	jp SetDeferredSwitch
+
+.not_eject_pack
 	ld [hl], BASE_STAT_LEVEL
-	ld c, 1
+	ld e, 1
 .not_lowered
 	inc hl
-	dec b
+	dec d
 	jr nz, .stat_loop
-	dec c
+	dec e
 	ret nz
 	farcall ItemRecoveryAnim
 	call GetUserItem
@@ -3058,6 +3099,13 @@ BattleCommand_posthiteffects:
 	ld a, b
 	cp HELD_ROCKY_HELMET
 	jr z, .rocky_helmet
+	cp HELD_SWITCH_TARGET
+	jr nz, .not_switch_target
+	ld a, c
+	call SetDeferredSwitch
+	jr .rocky_helmet_done
+
+.not_switch_target
 	ld a, BATTLE_VARS_MOVE_CATEGORY
 	call GetBattleVar
 	cp c
@@ -3134,6 +3182,13 @@ BattleCommand_posthiteffects:
 	jr z, .life_orb
 	cp HELD_SHELL_BELL
 	jr z, .shell_bell
+	cp HELD_SWITCH
+	jr z, .not_switch
+	ld a, c
+	call SetDeferredSwitch
+	jp .checkfaint
+
+.not_switch
 	cp HELD_FLINCH_UP
 	call z, .flinch_up
 	jp .checkfaint
