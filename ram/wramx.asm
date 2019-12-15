@@ -288,7 +288,14 @@ wVramState::
 ;        flickers when climbing waterfall
 	ds 1
 
-wBattleResult:: ds 1
+wBattleResult::
+; bit 7: mon is captured and sent to PC
+; bit 6: legendary is captured (used for Celebi)
+; bit 1: set on fleeing
+; value of %xxxx0002: link battle draw (x is ignored)
+; value of %xx000001: whiteout
+	ds 1
+
 wUsingItemWithSelect:: ds 1
 
 UNION
