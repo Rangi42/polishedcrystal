@@ -9177,12 +9177,12 @@ CheckHiddenOpponent: ; 37daa
 
 ; 37db2
 
-GetPlayerItem:
+GetPlayerItem::
 	ld hl, wBattleMonItem
 	ld b, [hl]
 	jr GetItemHeldEffect
 
-GetEnemyItem:
+GetEnemyItem::
 	ld hl, wEnemyMonItem
 	ld b, [hl]
 	jr GetItemHeldEffect

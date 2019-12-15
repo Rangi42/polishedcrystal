@@ -145,6 +145,7 @@ ITEMMENU_CLOSE   EQU 6
 	const HELD_SWITCH
 	const HELD_SWITCH_TARGET
 	const HELD_EJECT_PACK
+	const HELD_LAGGING_TAIL
 
 
 ; mart types

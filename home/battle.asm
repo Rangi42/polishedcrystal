@@ -849,6 +849,30 @@ CheckSpeedWithQuickClaw::
 	ret
 
 CheckSpeed::
+; Compares speed stat, applying items (usually, see above) and
+; stat changes. and see who ends up on top. Returns z if the player
+; outspeeds, otherwise nz, randomly on tie (which also sets carry)
+	farcall GetPlayerItem
+	ld c, 0
+	ld a, b
+	cp HELD_LAGGING_TAIL
+	jr nz, .no_player_lagging_tail
+	dec c
+.no_player_lagging_tail
+	push bc
+	farcall GetEnemyItem
+	ld a, b
+	pop bc
+	cp HELD_LAGGING_TAIL
+	jr nz, .no_enemy_lagging_tail
+	inc c
+.no_enemy_lagging_tail
+	; c=0: both/none holds, 255: player holds, 1: enemy holds
+	dec c
+	ret z
+	inc c
+	ret nz
+
 	ld a, [wTrickRoom]
 	and a
 	jr z, _CheckSpeed
@@ -858,9 +882,6 @@ CheckSpeed::
 	ret
 
 _CheckSpeed::
-; Compares speed stat, applying items (usually, see above) and
-; stat changes. and see who ends up on top. Returns z if the player
-; outspeeds, otherwise nz, randomly on tie (which also sets carry)
 	; save battle turn so this can be used without screwing it up
 	; (needed for AI)
 	ld a, [hBattleTurn]
