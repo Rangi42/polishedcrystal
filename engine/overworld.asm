@@ -324,6 +324,9 @@ GetUsedSprite:: ; 143c8
 	call SafeGetSprite
 	ld a, [hUsedSpriteTile]
 	call .GetTileAddr
+	ld a, d
+	or e
+	ret z
 	push hl
 	push de
 	push bc

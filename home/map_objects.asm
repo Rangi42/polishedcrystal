@@ -23,15 +23,18 @@ GetSpriteVTile:: ; 180e
 	farcall GetSprite
 	ld hl, wSpriteFlags
 	res 5, [hl]
-	; SPRITE_LACUNOSA_TILES and SPRITE_SAILBOAT use the last object_struct
-	; (SPRITE_LACUNOSA_TILES uses VRAM1 tileset tiles, and SPRITE_SAILBOAT
-	; needs to be in VRAM1)
 	ld a, [hUsedSpriteIndex]
+	; SPRITE_LACUNOSA_TILES uses one past the last object_struct (it has NULL
+	; graphics so none get loaded)
 	cp SPRITE_LACUNOSA_TILES
-	jr z, .use_last_struct
+	jr z, .use_past_last_struct
+	; SPRITE_SAILBOAT uses the last object_struct (it needs to be in VRAM1)
 	cp SPRITE_SAILBOAT
 	jr z, .use_last_struct
 	ld a, [hObjectStructIndexBuffer]
+	jr .got_sprite_tile
+.use_past_last_struct
+	ld a, NUM_OBJECT_STRUCTS
 	jr .got_sprite_tile
 .use_last_struct
 	ld a, NUM_OBJECT_STRUCTS - 1

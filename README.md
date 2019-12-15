@@ -22,9 +22,9 @@ It's identical to the one built by the [pokecrystal](https://github.com/pret/pok
 
 This is the patch you should use:
 
-* [lacunosatown-1.0.0.ips](patches/lacunosatown-1.0.0.ips)  
-  (IPS patch file `md5: 1cd1fcfacb22706741393ca413884ce3`)  
-  (Patched GBC ROM `md5: 3b8246e8cd8fad9a8f802a84dedda01c`)
+* [lacunosatown-1.0.1.ips](patches/lacunosatown-1.0.1.ips)  
+  (IPS patch file `md5: 2558b82fbf02a1b0f2a29c356a73f161`)  
+  (Patched GBC ROM `md5: 3ff6bec41ea51c47b9857be4f28a3a8a`)
 
 Or you can follow the instructions in [INSTALL.md](INSTALL.md) to build it yourself from the source code, no base ROM necessary.
 

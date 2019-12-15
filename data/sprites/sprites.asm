@@ -178,7 +178,7 @@ SpriteHeaders:
 	overworld_sprite BigSnorlaxSpriteGFX, STANDING_SPRITE, PAL_OW_BLUE
 	overworld_sprite BigLaprasSpriteGFX, STANDING_SPRITE, PAL_OW_BLUE
 	overworld_sprite BigOnixSpriteGFX, STANDING_SPRITE, PAL_OW_BROWN
-	overworld_sprite SilverSpriteGFX, STANDING_SPRITE, PAL_OW_RED ; SPRITE_LACUNOSA_TILES
+	overworld_sprite NULL, STANDING_SPRITE, PAL_OW_RED ; SPRITE_LACUNOSA_TILES
 	overworld_sprite SlowpoketailSpriteGFX, STANDING_SPRITE, PAL_OW_RED
 	overworld_sprite WeirdTreeSpriteGFX, STANDING_SPRITE, PAL_OW_GREEN
 	overworld_sprite BallCutFruitSpriteGFX, STANDING_SPRITE, PAL_OW_TREE

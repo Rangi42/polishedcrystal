@@ -38,7 +38,7 @@ LacunosaTown_MapScriptHeader:
 	object_event 30, 23, SPRITE_FISHER, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, (1 << MORN) | (1 << DAY), PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, LacunosaTownFisherText, -1
 	object_event 26,  3, SPRITE_BLACK_BELT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, (1 << MORN) | (1 << DAY), PAL_NPC_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, LacunosaTownBlackBeltText, -1
 	object_event 15, 18, SPRITE_BATTLE_GIRL, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, (1 << MORN) | (1 << DAY), PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, LacunosaTownBattleGirlText, -1
-	object_event  8, 12, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, (1 << MORN) | (1 << DAY), PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, LacunosaTownOfficerText, -1
+	object_event  8, 11, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, (1 << MORN) | (1 << DAY), PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, LacunosaTownOfficerText, -1
 	object_event  4, 11, SPRITE_EEVEE, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, (1 << MORN) | (1 << DAY), PAL_NPC_BROWN, PERSONTYPE_SCRIPT, 0, LacunosaTownEeveeScript, -1
 	object_event 22, 11, SPRITE_FAT_GUY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, (1 << MORN) | (1 << DAY), PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, LacunosaTownFatGuyText, -1
 	itemball_event 16,  7, FULL_HEAL, 1, EVENT_MURKY_SWAMP_FULL_HEAL
