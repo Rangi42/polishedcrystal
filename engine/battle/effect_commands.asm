@@ -2877,8 +2877,24 @@ BattleCommand_supereffectivetext: ; 351ad
 	call GetOpponentItemAfterUnnerve
 	ld a, b
 	cp HELD_WEAKNESS_POLICY
+	jr z, .weakness_policy
+	cp HELD_ENIGMA_BERRY
 	ret nz
 
+	push bc
+	push hl
+	farcall CheckFullHP
+	pop hl
+	pop bc
+	ret z
+
+	; treat as HP-restoring berry
+	ld b, HELD_BERRY
+	farcall _HeldHPHealingItem
+	ret nz
+	farjp UseBattleItem
+
+.weakness_policy
 	ld a, [wAttackMissed]
 	ld b, a
 	ld a, [wEffectFailed]
@@ -7556,8 +7572,8 @@ BattleCommand_bugbite:
 	; OK, we will eat the berry. Done by reusing item effect functions,
 	; and if the opponent still has an item, eating it with no effect
 	farcall StealHeldStatusHealingItem
-	farcall StealHPHealingItem
-	farcall StealStatBoostBerry
+	farcall StealHPHealingItem ; also Enigma Berry
+	farcall StealStatBoostBerry ; also Lansat Berry
 	farcall StealDefendHitBerry
 	farcall StealLeppaBerry
 

@@ -3432,9 +3432,15 @@ _HeldStatBoostBerry:
 	ret
 
 StealHPHealingItem:
+; treat Enigma Berry as a HP-recovery berry
 	call CheckFullHP
 	ret z
 	farcall GetOpponentItem
+	ld a, b
+	cp HELD_ENIGMA_BERRY
+	jr nz, .continue
+	ld b, HELD_BERRY
+.continue
 	call _HeldHPHealingItem
 	ret nz
 StealBattleItem:
@@ -3484,14 +3490,17 @@ _HeldHPHealingItem:
 	ret nz
 	ld b, 0 ; bc contains HP to restore unless Figy or Sitrus
 	ld a, [hl]
+	; for Bug Bite, treat Enigma Berry as Sitrus Berry
+	cp ENIGMA_BERRY
+	jr z, .quarter_maxhp
+	cp SITRUS_BERRY
+	jr z, .quarter_maxhp
 	cp FIGY_BERRY
-	jr nz, .not_figy
+	jr nz, .got_hp_to_restore
 	call GetThirdMaxHP
 	jr .got_hp_to_restore
 
-.not_figy
-	cp SITRUS_BERRY
-	jr nz, .got_hp_to_restore
+.quarter_maxhp
 	call GetQuarterMaxHP
 .got_hp_to_restore
 	call ItemRecoveryAnim

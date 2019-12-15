@@ -148,6 +148,7 @@ ITEMMENU_CLOSE   EQU 6
 	const HELD_EJECT_PACK
 	const HELD_LAGGING_TAIL
 	const HELD_IRON_BALL
+	const HELD_ENIGMA_BERRY
 
 
 ; mart types
