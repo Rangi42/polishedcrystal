@@ -806,7 +806,9 @@ ResolveFaints:
 	jr z, .draw
 
 .lost
-	jp LostBattle
+	call LostBattle
+	scf
+	ret
 
 .player_not_out
 	call HasEnemyFainted
@@ -817,11 +819,13 @@ ResolveFaints:
 	jr z, .won
 	call CheckEnemyTrainerDefeated
 	jr z, .wontrainer
+	xor a
 	ret
 
 .won
 	ld a, 1
 	ld [wBattleEnded], a
+	scf
 	ret
 
 .draw
@@ -839,7 +843,9 @@ ResolveFaints:
 	dec a
 	jr z, .lost
 .wontrainer
-	jp WinTrainerBattle
+	call WinTrainerBattle
+	scf
+	ret
 
 DeferredSwitch:
 ; user switches out
