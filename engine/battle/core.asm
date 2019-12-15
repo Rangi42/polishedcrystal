@@ -3417,20 +3417,7 @@ _HeldStatBoostBerry:
 	ret
 
 .success
-	call ItemRecoveryAnim
-	call GetCurItemName
-	ld a, [wLoweredStat]
-	and $f
-	ld b, a
-	inc b
-	farcall GetStatName
-	ld a, [wLoweredStat]
-	and $f0
-	ld hl, BattleText_ItemRaised
-	jr z, .got_msg
-	ld hl, BattleText_ItemSharplyRaised
-.got_msg
-	call StdBattleTextBox
+	farcall GetItemStatMessage
 	pop af
 	ld [wAttackMissed], a
 	xor a

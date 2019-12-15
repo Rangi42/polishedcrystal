@@ -119,9 +119,9 @@ DoMove:
 	jr .ReadMoveEffectCommand
 
 .endturn_herb
-	; Proc White Herb
 	push af
-	call CheckWhiteHerb
+	call CheckWhiteHerb ; also Eject Pack
+	call CheckThroatSpray
 	call CheckPowerHerb
 	pop af
 	ret
@@ -565,6 +565,31 @@ CheckWhiteHerb:
 	call StdBattleTextBox
 	jp ConsumeUserItem
 
+CheckThroatSpray:
+	ld a, BATTLE_VARS_MOVE_ANIM
+	call GetBattleVar
+	ld hl, SoundMoves
+	ld de, 1
+	call IsInArray
+	ret nc
+
+	call GetUserItemAfterUnnerve
+	ld a, b
+	cp HELD_THROAT_SPRAY
+	ret nz
+
+	ld a, [wAttackMissed]
+	and a
+	ret nz
+
+	ld b, c
+	call BattleCommand_statup
+	ld a, [wFailedMessage]
+	and a
+	ret nz
+	call GetItemStatMessage
+	jp ConsumeUserItem
+
 CheckPowerHerb:
 	call GetUserItemAfterUnnerve
 	ld a, b
@@ -589,6 +614,22 @@ CheckPowerHerb:
 	call StdBattleTextBox
 	call ConsumeUserItem
 	jp ResetTurn
+
+GetItemStatMessage:
+	farcall ItemRecoveryAnim
+	call GetCurItemName
+	ld a, [wLoweredStat]
+	and $f
+	ld b, a
+	inc b
+	call GetStatName
+	ld a, [wLoweredStat]
+	and $f0
+	ld hl, BattleText_ItemRaised
+	jr z, .got_msg
+	ld hl, BattleText_ItemSharplyRaised
+.got_msg
+	jp StdBattleTextBox
 
 MoveDisabled: ; 3438d
 
@@ -3209,14 +3250,7 @@ BattleCommand_posthiteffects:
 	ld a, [wFailedMessage]
 	and a
 	jr nz, .defend_hit_done
-	farcall ItemRecoveryAnim
-	ld a, [wLoweredStat]
-	and $f
-	ld b, a
-	inc b
-	call GetStatName
-	ld hl, BattleText_ItemRaised
-	call StdBattleTextBox
+	call GetItemStatMessage
 	call ConsumeUserItem
 .defend_hit_done
 	call SwitchTurn
