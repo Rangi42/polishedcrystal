@@ -1966,6 +1966,10 @@ FaintUserPokemon:
 
 	call BreakAttraction
 
+	xor a
+	ld [wPlayerWrapCount], a
+	ld [wEnemyWrapCount], a
+
 	ld a, BATTLE_VARS_STATUS
 	call GetBattleVarAddr
 	ld [hl], 0
