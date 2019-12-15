@@ -2083,7 +2083,24 @@ BattleAnim_Rest:
 	anim_wait 32
 	anim_ret
 
-BattleAnim_Facade: ; TODO: design custom animation for Facade
+BattleAnim_Facade:
+	anim_2gfx ANIM_GFX_HIT, ANIM_GFX_SAND
+	anim_call BattleAnim_FollowEnemyFeet_0
+	anim_bgeffect ANIM_BG_2C, $0, $1, $0
+	anim_bgeffect ANIM_BG_1A, $0, $1, $20
+	anim_wait 8
+.loop
+	anim_sound 0, 0, SFX_RETURN
+	anim_obj ANIM_OBJ_SWEAT, 56, 80, $0
+	anim_wait 28
+	anim_loop 3, .loop
+	anim_sound 0, 1, SFX_COMET_PUNCH
+	anim_obj ANIM_OBJ_00, 136, 48, $0
+	anim_wait 24
+	anim_incbgeffect ANIM_BG_2C
+	anim_call BattleAnim_ShowMon_0
+	anim_ret
+
 BattleAnim_Splash:
 	anim_1gfx ANIM_GFX_HIT
 	anim_sound 0, 0, SFX_VICEGRIP
@@ -2237,7 +2254,50 @@ BattleAnim_DoubleEdge:
 	anim_call BattleAnim_ShowMon_0
 	anim_ret
 
-BattleAnim_CloseCombat: ; TODO: design new animation for Close Combat
+BattleAnim_CloseCombat:
+	anim_2gfx ANIM_GFX_WIND, ANIM_GFX_HIT
+	anim_sound 0, 0, SFX_RAZOR_WIND
+	anim_obj ANIM_OBJ_7D, 8, 24, $10
+	anim_obj ANIM_OBJ_7D, 8, 48, $2
+	anim_obj ANIM_OBJ_7D, 8, 88, $8
+	anim_wait 4
+	anim_obj ANIM_OBJ_7D, 8, 32, $6
+	anim_obj ANIM_OBJ_7D, 8, 56, $c
+	anim_obj ANIM_OBJ_7D, 8, 80, $4
+	anim_obj ANIM_OBJ_7D, 8, 104, $e
+	anim_wait 12
+	anim_bgeffect ANIM_BG_1F, $60, $2, $0
+	anim_bgp $90
+.loop
+	anim_sound 0, 1, SFX_KARATE_CHOP
+	anim_obj ANIM_OBJ_06, 148, 56, $0
+	anim_wait 1
+	anim_obj ANIM_OBJ_01, 148, 56, $0
+	anim_wait 2
+	anim_sound 0, 1, SFX_KARATE_CHOP
+	anim_obj ANIM_OBJ_06, 122, 34, $0
+	anim_wait 1
+	anim_obj ANIM_OBJ_01, 122, 34, $0
+	anim_wait 2
+	anim_sound 0, 1, SFX_KARATE_CHOP
+	anim_obj ANIM_OBJ_06, 132, 64, $0
+	anim_wait 1
+	anim_obj ANIM_OBJ_01, 132, 64, $0
+	anim_wait 2
+	anim_sound 0, 1, SFX_KARATE_CHOP
+	anim_obj ANIM_OBJ_06, 140, 42, $0
+	anim_wait 1
+	anim_obj ANIM_OBJ_01, 140, 42, $0
+	anim_wait 2
+	anim_sound 0, 1, SFX_KARATE_CHOP
+	anim_obj ANIM_OBJ_06, 114, 52, $0
+	anim_wait 1
+	anim_obj ANIM_OBJ_01, 114, 52, $0
+	anim_wait 2
+	anim_loop 4, .loop
+	anim_wait 16
+	anim_ret
+
 BattleAnim_Submission: ; removed
 	anim_1gfx ANIM_GFX_HIT
 	anim_call BattleAnim_FollowEnemyFeet_1
@@ -2667,7 +2727,26 @@ BattleAnim_NightShade:
 	anim_bgp $e4
 	anim_ret
 
-BattleAnim_TrickRoom: ; TODO: design new animation for Trick Room
+BattleAnim_TrickRoom:
+	anim_1gfx ANIM_GFX_EXPLOSION
+	anim_bgeffect ANIM_BG_WHIRLPOOL, $0, $0, $0
+	anim_bgeffect ANIM_BG_ALTERNATE_HUES, $0, $2, $0
+	anim_obj ANIM_OBJ_TRICK_ROOM, 88, 0, $0
+	anim_obj ANIM_OBJ_TRICK_ROOM, 88, 0, $8
+	anim_obj ANIM_OBJ_TRICK_ROOM, 88, 0, $10
+	anim_obj ANIM_OBJ_TRICK_ROOM, 88, 0, $18
+	anim_obj ANIM_OBJ_TRICK_ROOM, 88, 0, $20
+	anim_obj ANIM_OBJ_TRICK_ROOM, 88, 0, $28
+	anim_obj ANIM_OBJ_TRICK_ROOM, 88, 0, $30
+	anim_obj ANIM_OBJ_TRICK_ROOM, 88, 0, $38
+.loop
+	anim_sound 0, 2, SFX_SHARPEN
+	anim_wait 18
+	anim_loop 4, .loop
+	anim_wait 36
+	anim_incbgeffect ANIM_BG_WHIRLPOOL
+	anim_ret
+
 BattleAnim_Detect: ; removed
 	anim_1gfx ANIM_GFX_SHINE
 	anim_bgeffect ANIM_BG_07, $0, $0, $0
@@ -2748,7 +2827,30 @@ BattleAnim_LeechLife:
 	anim_wait 48
 	anim_ret
 
-BattleAnim_Extrasensory: ; TODO: design new animation for Extrasensory
+BattleAnim_Extrasensory:
+	anim_1gfx ANIM_GFX_SHINE
+	anim_sound 0, 1, SFX_CUT
+	anim_bgp $1b
+	anim_obj ANIM_OBJ_9D, 44, 96, $0
+	anim_wait 40
+	anim_call BattleAnim_FollowPlayerHead_1
+	anim_sound 0, 1, SFX_CUT
+	anim_bgeffect ANIM_BG_NIGHT_SHADE, $0, $0, $8
+	anim_obj ANIM_OBJ_9D, 44, 96, $0
+	anim_wait 32
+	anim_incbgeffect ANIM_BG_NIGHT_SHADE
+	anim_wait 8
+	anim_call BattleAnim_FollowPlayerHead_1
+	anim_sound 0, 1, SFX_CUT
+	anim_bgeffect ANIM_BG_TELEPORT, $0, $0, $0
+	anim_obj ANIM_OBJ_9D, 44, 96, $0
+	anim_wait 4
+	anim_sound 0, 1, SFX_PSYCHIC
+	anim_wait 64
+	anim_incbgeffect ANIM_BG_TELEPORT
+	anim_call BattleAnim_ShowMon_1
+	anim_ret
+
 BattleAnim_Psywave: ; removed
 	anim_1gfx ANIM_GFX_PSYCHIC
 	anim_bgeffect ANIM_BG_PSYCHIC, $0, $0, $0
@@ -2864,7 +2966,7 @@ BattleAnim_DragonDance:
 	anim_ret
 
 BattleAnim_HoneClaws:
-    anim_1gfx ANIM_GFX_CUT
+	anim_1gfx ANIM_GFX_CUT
 .loop
 	anim_sound 0, 1, SFX_SCRATCH
 	anim_obj ANIM_OBJ_HONE_CLAWS_LEFT,   8, 0,  11, 0, $0
@@ -3002,7 +3104,39 @@ BattleAnim_Agility:
 	anim_call BattleAnim_ShowMon_0
 	anim_ret
 
-BattleAnim_EarthPower: ; TODO: design new animation for Earth Power
+BattleAnim_EarthPower:
+	anim_2gfx ANIM_GFX_FIRE, ANIM_GFX_ROCKS
+	anim_sound 0, 0, SFX_EGG_BOMB
+	anim_bgp $1b
+	anim_bgeffect ANIM_BG_1F, $28, $2, $0
+	anim_obj ANIM_OBJ_B5, 120, 68, $5c
+	anim_obj ANIM_OBJ_B5, 120, 68, $e8
+	anim_obj ANIM_OBJ_B5, 120, 68, $9c
+	anim_obj ANIM_OBJ_B5, 120, 68, $50
+	anim_obj ANIM_OBJ_0B, 120, 68, $30
+	anim_wait 40
+	anim_clearobjs
+	anim_wait 8
+	anim_sound 0, 0, SFX_EGG_BOMB
+	anim_bgeffect ANIM_BG_1F, $28, $2, $0
+	anim_obj ANIM_OBJ_B5, 144, 68, $5c
+	anim_obj ANIM_OBJ_B5, 144, 68, $e8
+	anim_obj ANIM_OBJ_B5, 144, 68, $d0
+	anim_obj ANIM_OBJ_B5, 144, 68, $10
+	anim_obj ANIM_OBJ_0B, 144, 68, $30
+	anim_wait 40
+	anim_clearobjs
+	anim_wait 8
+	anim_sound 0, 0, SFX_EGG_BOMB
+	anim_bgeffect ANIM_BG_1F, $28, $2, $0
+	anim_obj ANIM_OBJ_B5, 132, 68, $28
+	anim_obj ANIM_OBJ_B5, 132, 68, $e8
+	anim_obj ANIM_OBJ_B5, 132, 68, $d0
+	anim_obj ANIM_OBJ_B5, 132, 68, $50
+	anim_obj ANIM_OBJ_0B, 132, 68, $30
+	anim_wait 48
+	anim_ret
+
 BattleAnim_Fissure: ; removed
 	anim_bgeffect ANIM_BG_FLASH_INVERTED, $0, $8, $40
 	anim_bgeffect ANIM_BG_1F, $60, $4, $0
@@ -3915,7 +4049,28 @@ BattleAnim_Charm:
 	anim_wait 4
 	anim_ret
 
-BattleAnim_Bulldoze: ; TODO: design new animation for Bulldoze
+BattleAnim_Bulldoze:
+	anim_1gfx ANIM_GFX_HIT
+	anim_call BattleAnim_FollowPlayerHead_0
+	anim_bgeffect ANIM_BG_21, $0, $1, $50
+	anim_wait 4
+	anim_incbgeffect ANIM_BG_21
+	anim_call BattleAnim_ShowMon_0
+	anim_wait 1
+.loop
+	anim_bgeffect ANIM_BG_1F, $08, $2, $0
+	anim_sound 0, 1, SFX_SPARK
+	anim_wait 8
+	anim_loop 6, .loop
+	anim_bgeffect ANIM_BG_1F, $40, $2, $0
+.loop2
+	anim_sound 0, 1, SFX_SPARK
+	anim_wait 4
+	anim_loop 12, .loop2
+	anim_wait 48
+	anim_incbgeffect ANIM_BG_1F
+	anim_ret
+
 BattleAnim_Rollout:
 	anim_1gfx ANIM_GFX_HIT
 	anim_sound 0, 0, SFX_SPARK
@@ -4014,7 +4169,29 @@ BattleAnim_WildCharge:
 	anim_bgp $e4
 	anim_ret
 
-BattleAnim_BugBite: ; TODO: write an original animation
+BattleAnim_BugBite:
+	anim_2gfx ANIM_GFX_ROCKS, ANIM_GFX_HIT
+.loop
+	anim_sound 0, 1, SFX_BITE
+	anim_obj ANIM_OBJ_02, 132, 64, $0
+	anim_obj ANIM_OBJ_B5, 132, 64, $5c
+	anim_wait 4
+	anim_sound 0, 1, SFX_BITE
+	anim_obj ANIM_OBJ_02, 128, 48, $0
+	anim_obj ANIM_OBJ_B5, 128, 48, $5c
+	anim_wait 4
+	anim_sound 0, 1, SFX_BITE
+	anim_obj ANIM_OBJ_02, 144, 56, $0
+	anim_obj ANIM_OBJ_B5, 144, 56, $d0
+	anim_wait 4
+	anim_sound 0, 1, SFX_BITE
+	anim_obj ANIM_OBJ_02, 122, 52, $0
+	anim_obj ANIM_OBJ_B5, 122, 52, $50
+	anim_wait 4
+	anim_loop 5, .loop
+	anim_wait 32
+	anim_ret
+
 BattleAnim_FuryCutter: ; removed
 	anim_1gfx ANIM_GFX_CUT
 .loop
@@ -4679,7 +4856,28 @@ BattleAnim_PsychUp: ; removed
 	anim_wait 16
 	anim_ret
 
-BattleAnim_AerialAce: ; TODO: design custom animation for Aerial Ace
+BattleAnim_AerialAce:
+	anim_2gfx ANIM_GFX_SPEED, ANIM_GFX_CUT
+	anim_sound 0, 0, SFX_MENU
+	anim_bgeffect ANIM_BG_HIDE_MON, $0, $1, $0
+	anim_obj ANIM_OBJ_77, 24, 88, $2
+	anim_obj ANIM_OBJ_77, 32, 88, $1
+	anim_obj ANIM_OBJ_77, 40, 88, $0
+	anim_obj ANIM_OBJ_77, 48, 88, $80
+	anim_obj ANIM_OBJ_77, 56, 88, $81
+	anim_obj ANIM_OBJ_77, 64, 88, $82
+	anim_wait 12
+	anim_sound 0, 1, SFX_WING_ATTACK
+	anim_obj ANIM_OBJ_3A, 160, 40, $0
+	anim_wait 24
+	anim_sound 0, 1, SFX_CUT
+	anim_bgeffect ANIM_BG_FLASH_INVERTED, $0, $8, $2
+	anim_obj ANIM_OBJ_39, 120, 68, $0
+	anim_wait 8
+	anim_bgeffect ANIM_BG_SHOW_MON, $0, $1, $0
+	anim_wait 24
+	anim_ret
+
 BattleAnim_Extremespeed:
 	anim_2gfx ANIM_GFX_SPEED, ANIM_GFX_CUT
 	anim_bgeffect ANIM_BG_HIDE_MON, $0, $1, $0
