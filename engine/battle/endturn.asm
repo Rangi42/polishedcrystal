@@ -106,6 +106,11 @@ HandleBetweenTurnEffects:
 	farcall GetUserSwitchTarget
 
 .got_target
+	; If enemy has fainted, display enemy trainer mons left (pokéballs)
+	call HasEnemyFainted
+	jr nz, .skip_trainerhud
+	farcall EnemySwitch_TrainerHud
+.skip_trainerhud
 	; If player has a switch target, continue as if we're in "Set" mode
 	ld a, [wPlayerSwitchTarget]
 	and a

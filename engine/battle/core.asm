@@ -1377,6 +1377,13 @@ endc
 	ld a, [hBattleTurn]
 	and a
 	jr z, .player_sends_out
+
+	; Get rid of pokéball icons for trainers in case it's present
+	hlcoord 0, 0
+	lb bc, 4, 12
+	call ClearBox
+	call ClearSprites
+
 	ld a, [wBattleMode]
 	dec a
 	call nz, Function_SetEnemyPkmnAndSendOutAnimation
@@ -2692,6 +2699,8 @@ FinalPkmnMusicAndAnimation:
 	jp FinalPkmnSlideInEnemyMonFrontpic
 
 OfferSwitch:
+	farcall EnemySwitch_TrainerHud
+
 	; Copy target mon's nickname into active enemy mon nickname
 	ld hl, wOTPartyMonNicknames
 	ld a, [wEnemySwitchTarget]
