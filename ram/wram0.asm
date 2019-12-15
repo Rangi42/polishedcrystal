@@ -475,9 +475,7 @@ wEnemySelectedMove:: ds 1
 wPlayerMetronomeCount:: ds 1
 wEnemyMetronomeCount:: ds 1
 
-; Faint handler should be split if opponent used switchout move to KO
-wPlayerSplitHandleMonFaint:: ds 1
-wEnemySplitHandleMonFaint:: ds 1
+	ds 2 ; unused
 
 ; Stores enemy struct data temporarily when checking non-current mons
 wAITempAbility:: ds 1
