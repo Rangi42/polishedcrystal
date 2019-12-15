@@ -2604,7 +2604,40 @@ BattleAnim_NightSlash:
 	anim_bgp $e4
 	anim_ret
 
-BattleAnim_DazzlinGleam: ; TODO: design custom animation for DazzlinGleam
+BattleAnim_DazzlinGleam:
+	anim_3gfx ANIM_GFX_SPEED, ANIM_GFX_HIT, ANIM_GFX_SHINE
+	anim_sound 0, 1, SFX_MOONLIGHT
+	anim_bgeffect ANIM_BG_06, $0, $2, $0
+	anim_bgeffect ANIM_BG_ALTERNATE_HUES, $0, $2, $0
+	anim_obj ANIM_OBJ_DAZZLE, 44, 88, $0
+	anim_obj ANIM_OBJ_DAZZLE, 44, 88, $8
+	anim_obj ANIM_OBJ_DAZZLE, 44, 88, $10
+	anim_obj ANIM_OBJ_DAZZLE, 44, 88, $18
+	anim_obj ANIM_OBJ_DAZZLE, 44, 88, $20
+	anim_obj ANIM_OBJ_DAZZLE, 44, 88, $28
+	anim_obj ANIM_OBJ_DAZZLE, 44, 88, $30
+	anim_obj ANIM_OBJ_DAZZLE, 44, 88, $38
+	anim_wait 64
+	anim_incbgeffect ANIM_BG_ALTERNATE_HUES
+	anim_sound 0, 1, SFX_FLASH
+	anim_bgeffect ANIM_BG_FLASH_INVERTED, $0, $6, $20
+	anim_wait 4
+	anim_bgeffect ANIM_BG_1A, $0, $1, $20
+	anim_bgeffect ANIM_BG_07, $0, $2, $0
+	anim_obj ANIM_OBJ_9D, 24, 64, $0
+	anim_wait 5
+	anim_obj ANIM_OBJ_9D, 56, 104, $0
+	anim_wait 5
+	anim_obj ANIM_OBJ_00, 136, 56, $0
+	anim_obj ANIM_OBJ_9D, 24, 104, $0
+	anim_wait 5
+	anim_obj ANIM_OBJ_9D, 56, 64, $0
+	anim_wait 5
+	anim_obj ANIM_OBJ_9D, 40, 84, $0
+	anim_wait 5
+	anim_wait 32
+	anim_ret
+
 BattleAnim_Flash:
 	anim_1gfx ANIM_GFX_SPEED
 	anim_sound 0, 1, SFX_FLASH
