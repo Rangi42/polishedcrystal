@@ -806,23 +806,12 @@ ResolveFaints:
 	jr z, .draw
 
 .lost
-	call LostBattle
-
 	ld hl, wBattleResult
-	ld a, [wBattleType]
-	cp BATTLETYPE_CANLOSE
-	jr z, .set_draw
 	ld a, [hl]
 	and $f0
 	add 1
 	ld [hl], a
-	scf
-	ret
-.set_draw
-	ld a, [hl]
-	and $f0
-	add 2
-	ld [hl], a
+	call LostBattle
 	scf
 	ret
 

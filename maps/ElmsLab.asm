@@ -543,8 +543,8 @@ LyraBattleScript:
 	reloadmap
 	special DeleteSavedMusic
 	playmusic MUSIC_LYRA_DEPARTURE_HGSS
-	iftrue .AfterVictorious
-	jump .AfterYourDefeat
+	iftrue .AfterYourDefeat
+	jump .AfterVictorious
 
 .Totodile:
 	loadtrainer LYRA1, LYRA1_2
