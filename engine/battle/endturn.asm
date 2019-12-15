@@ -738,8 +738,7 @@ HandlePerishSong:
 	res SUBSTATUS_PERISH, [hl]
 
 	call GetMaxHP
-	call SubtractHPFromUser
-	ret
+	farjp SubtractHPFromUser
 
 HandleTrickRoom:
 	ld hl, wTrickRoom
