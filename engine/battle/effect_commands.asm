@@ -232,7 +232,7 @@ BattleCommand_checkturn:
 	call StdBattleTextBox
 
 	; Sleep Talk bypasses sleep.
-	ld a, BATTLE_VARS_MOVE
+	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
 	cp SLEEP_TALK
 	jr z, .not_asleep
@@ -247,7 +247,7 @@ BattleCommand_checkturn:
 	jr z, .not_frozen
 
 	; Flame Wheel, Sacred Fire, Scald, and Flare Blitz thaw the user.
-	ld a, BATTLE_VARS_MOVE
+	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
 	cp FLAME_WHEEL
 	jr z, .thaw
@@ -1263,7 +1263,7 @@ BattleCommand_stab: ; 346d2
 ; Base value: $10
 ; Max value: $c0 (quad-weak, STAB, good weather modifier
 	; Struggle doesn't apply STAB or matchups
-	ld a, BATTLE_VARS_MOVE
+	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
 	cp STRUGGLE
 	ret z
@@ -1418,7 +1418,7 @@ _CheckTypeMatchup: ; 347d3
 	push hl
 	ld de, 1 ; IsInArray checks below use single-byte arrays
 ; Handle powder moves
-	ld a, BATTLE_VARS_MOVE
+	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
 	ld hl, PowderMoves
 	call IsInArray
@@ -1544,7 +1544,7 @@ _CheckTypeMatchup: ; 347d3
 
 BattleCommand_checkpowder:
 	ld de, 1
-	ld a, BATTLE_VARS_MOVE
+	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
 	cp THUNDER_WAVE
 	jr z, .twave
@@ -4690,7 +4690,7 @@ BattleCommand_sleeptalk: ; 35b33
 	and a
 	jr z, .sample_move
 	ld e, a
-	ld a, BATTLE_VARS_MOVE_ANIM
+	ld a, BATTLE_VARS_MOVE
 	call GetBattleVar
 	cp e
 	jr z, .sample_move
@@ -5330,7 +5330,7 @@ SapHealth: ; 36011
 	ld c, [hl]
 
 	; for Drain Kiss, we want 75% drain instead of 50%
-	ld a, BATTLE_VARS_MOVE
+	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
 	cp DRAIN_KISS
 	jr nz, .skip_drain_kiss
@@ -6961,15 +6961,8 @@ BattleCommand_focusenergy: ; 36c98
 BattleCommand_recoil: ; 36cb2
 ; recoil
 
-	ld hl, wBattleMonMaxHP
-	ld a, [hBattleTurn]
-	and a
-	ld a, [wLastPlayerMove]
-	jr z, .got_hp
-	ld hl, wEnemyMonMaxHP
-	ld a, [wLastEnemyMove]
-.got_hp
-	ld b, a
+	ld a, BATTLE_VARS_MOVE_ANIM
+	call GetBattleVar
 	cp STRUGGLE
 	jp z, .StruggleRecoil
 
@@ -6999,52 +6992,15 @@ BattleCommand_recoil: ; 36cb2
 	call HalveBC
 .recoil_floor
 	call FloorBC
-	ld a, [hli]
-	ld [wBuffer2], a
-	ld a, [hl]
-	ld [wBuffer1], a
-	dec hl
-	dec hl
-	ld a, [hl]
-	ld [wBuffer3], a
-	sub c
-	ld [hld], a
-	ld [wBuffer5], a
-	ld a, [hl]
-	ld [wBuffer4], a
-	sbc b
-	ld [hl], a
-	ld [wBuffer6], a
-	jr nc, .dont_ko
-	xor a
-	ld [hli], a
-	ld [hl], a
-	ld hl, wBuffer5
-	ld [hli], a
-	ld [hl], a
-.dont_ko
-	hlcoord 11, 9
-	ld a, [hBattleTurn]
-	and a
-	ld a, 1
-	jr z, .animate_hp_bar
-	hlcoord 1, 2
-	xor a
-.animate_hp_bar
-	ld [wWhichHPBar], a
-	farcall BattleAnimateHPBar
-	call RefreshBattleHuds
+	farcall SubtractHPFromUser
+
 .recoil_text
 	ld hl, RecoilText
 	jp StdBattleTextBox
 
 .StruggleRecoil
-	ld hl, GetQuarterMaxHP
-	call CallBattleCore
-	ld hl, SubtractHPFromUser
-	call CallBattleCore
-	call UpdateUserInParty
-	jp .recoil_text
+	call GetQuarterMaxHP
+	jr .recoil_floor
 
 .OneThirdRecoil
 	ld a, BATTLE_VARS_MOVE_ANIM
@@ -7861,7 +7817,7 @@ BattleCommand_resetstats:
 BattleCommand_heal:
 	farcall CheckFullHP
 	jr z, .hp_full
-	ld a, BATTLE_VARS_MOVE
+	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
 	cp REST
 	jr nz, .not_rest
@@ -8161,7 +8117,7 @@ CheckSubstituteOpp: ; 37378
 	push bc
 	push de
 	push hl
-	ld a, BATTLE_VARS_MOVE
+	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
 	ld hl, SoundMoves
 	ld de, 1
@@ -8359,7 +8315,7 @@ BoostJumptable:
 
 BattleCommand_conditionalboost:
 	ld hl, BoostJumptable
-	ld a, BATTLE_VARS_MOVE
+	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
 	jp BattleJumptable
 
