@@ -1458,12 +1458,14 @@ BattleCommand_stab: ; 346d2
 	ret
 
 CheckAirborneAfterMoldBreaker:
+	push de
 	call SwitchTurn
 	call GetOpponentAbilityAfterMoldBreaker
 	ld b, a
 	call SwitchTurn
 	jr CheckAirborne_GotAbility
 CheckAirborne:
+	push de
 	ld a, BATTLE_VARS_ABILITY
 	call GetBattleVar
 	ld b, a
@@ -1480,12 +1482,19 @@ CheckAirborne_GotAbility:
 	pop bc
 	ld c, a
 	ld a, 0
+	pop de
 	ret z
+
+	; d=1 (inverse matchup checks) skips hardcoded immunity check
+	ld a, d
+	and a
+	jr nz, .typecheck_done
 	push bc
 	call CheckIfUserIsFlyingType
 	pop bc
 	ld a, ATKFAIL_IMMUNE
 	jr z, .airborne
+.typecheck_done
 	ld a, c
 	cp HELD_AIR_BALLOON
 	ld a, ATKFAIL_MISSED
@@ -1526,6 +1535,12 @@ CheckTypeMatchup:
 	jr nz, .done_ground_type
 
 	call SwitchTurn
+	ld a, [wBattleType]
+	cp BATTLETYPE_INVERSE
+	ld d, 1
+	jr z, .check_airborne
+	ld d, 0
+.check_airborne
 	call CheckAirborneAfterMoldBreaker
 	push af
 	call SwitchTurn
