@@ -736,32 +736,9 @@ HandlePerishSong:
 	ld a, BATTLE_VARS_SUBSTATUS1
 	call GetBattleVarAddr
 	res SUBSTATUS_PERISH, [hl]
-	ld a, [hBattleTurn]
-	and a
-	jr nz, .kill_enemy
-	ld hl, wBattleMonHP
-	xor a
-	ld [hli], a
-	ld [hl], a
-	ld hl, wPartyMon1HP
-	ld a, [wCurBattleMon]
-	call GetPartyLocation
-	xor a
-	ld [hli], a
-	ld [hl], a
-	ret
 
-.kill_enemy
-	ld hl, wEnemyMonHP
-	xor a
-	ld [hli], a
-	ld [hl], a
-	ld hl, wOTPartyMon1HP
-	ld a, [wCurOTMon]
-	call GetPartyLocation
-	xor a
-	ld [hli], a
-	ld [hl], a
+	call GetMaxHP
+	call SubtractHPFromUser
 	ret
 
 HandleTrickRoom:

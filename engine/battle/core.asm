@@ -3575,6 +3575,10 @@ UpdatePlayerHUD:: ; 3df48
 ; 3df58
 
 DrawPlayerHUD: ; 3df58
+	ld a, [wPlayerSubStatus2]
+	bit SUBSTATUS_FAINTED, a
+	ret nz
+
 	xor a
 	ld [hBGMapMode], a
 
@@ -3640,9 +3644,6 @@ CheckDanger: ; 3df9e
 ; 3dfbf
 
 PrintPlayerHUD: ; 3dfbf
-	call HasPlayerFainted
-	ret z
-
 	ld de, wBattleMonNick
 	hlcoord 11, 7
 	ld a, [wBattleMonNick + PKMN_NAME_LENGTH - 2]
@@ -3720,8 +3721,9 @@ UpdateEnemyHUD:: ; 3e036
 ; 3e043
 
 DrawEnemyHUD: ; 3e043
-	call HasEnemyFainted
-	ret z
+	ld a, [wEnemySubStatus2]
+	bit SUBSTATUS_FAINTED, a
+	ret nz
 
 	xor a
 	ld [hBGMapMode], a
