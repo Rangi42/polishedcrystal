@@ -120,7 +120,7 @@ GetMonMenuString: ; 24db0
 
 GetMonSubmenuItems: ; 24dd4
 	call ResetMonSubmenu
-	ld a, MON_MOVES
+	ld a, MON_IS_EGG
 	call GetPartyParamLocation
 	bit MON_IS_EGG_F, [hl]
 	jr nz, .egg
