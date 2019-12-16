@@ -257,4 +257,3 @@ MenuMonIconColors::
 	iconpal PINK, BLUE ; SYLVEON
 	iconpal BLUE, PURPLE ; PORYGON_Z
 	iconpal RED, BLUE ; EGG
-	iconpal PURPLE, GRAY ; RATTATA_BACK

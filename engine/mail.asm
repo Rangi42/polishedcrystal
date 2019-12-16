@@ -506,9 +506,8 @@ MailboxPC: ; 0x44806
 	push hl
 	ld a, MON_IS_EGG
 	call GetPartyParamLocation
-	ld a, [hl]
+	bit MON_IS_EGG_F, [hl]
 	pop hl
-	bit MON_IS_EGG_F, a
 	jr nz, .egg
 	ld a, MON_ITEM
 	call GetPartyParamLocation
