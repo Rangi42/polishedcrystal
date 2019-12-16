@@ -2,7 +2,7 @@ SilphCo1F_MapScriptHeader:
 	db 0 ; scene scripts
 
 	db 1 ; callbacks
-	callback MAPCALLBACK_SPRITES, SilphCo1FMoveOfficerCallback
+	callback MAPCALLBACK_OBJECTS, .SilphCo1FMoveOfficerCallback
 
 	db 3 ; warp events
 	warp_event  2,  7, SAFFRON_CITY, 7
@@ -22,7 +22,7 @@ SilphCo1F_MapScriptHeader:
 	const_def 1 ; object constants
 	const SILPHCO1F_OFFICER
 
-SilphCo1FMoveOfficerCallback:
+.SilphCo1FMoveOfficerCallback:
 	checkevent EVENT_RETURNED_MACHINE_PART
 	iffalse .Nothing
 	moveobject SILPHCO1F_OFFICER, 14, 1
