@@ -2557,6 +2557,29 @@ SECTION "Code 13", ROMX
 
 INCLUDE "engine/party_menu.asm"
 
+CopyPkmnOrEggToTempMon:
+	ld a, [wMonType]
+	ld hl, wPartyMon1IsEgg
+	ld bc, PARTYMON_STRUCT_LENGTH
+	and a
+	jr z, .got_addr
+	ld hl, wOTPartyMon1IsEgg
+	cp OTPARTYMON
+	jr z, .got_addr
+	ld hl, sBoxMon1IsEgg
+	ld bc, BOXMON_STRUCT_LENGTH
+	ld a, BANK(sBoxMon1Species)
+	call GetSRAMBank
+.got_addr
+	ld a, [wCurPartyMon]
+	rst AddNTimes
+	bit MON_IS_EGG_F, [hl]
+	jr z, CopyPkmnToTempMon
+	ld a, EGG
+	ld [wCurPartySpecies], a
+	ld [wCurSpecies], a
+	jr _CopyPkmnToTempMon
+
 CopyPkmnToTempMon: ; 5084a
 ; gets the BaseData of a Pkmn
 ; and copys the PkmnStructure to wTempMon
@@ -2566,6 +2589,7 @@ CopyPkmnToTempMon: ; 5084a
 	call GetPkmnSpecies
 	ld a, [wCurPartySpecies]
 	ld [wCurSpecies], a
+_CopyPkmnToTempMon:
 	call GetBaseData
 
 	ld a, [wMonType]

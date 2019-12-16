@@ -178,7 +178,7 @@ StatsScreen_CopyToTempMon: ; 4ddf2 (13:5df2)
 	jr .done
 
 .breedmon
-	farcall CopyPkmnToTempMon
+	farcall CopyPkmnOrEggToTempMon
 	ld a, [wTempMonIsEgg]
 	bit MON_IS_EGG_F, a
 	jr nz, .done
