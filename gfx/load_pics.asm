@@ -116,8 +116,8 @@ endr
 GetFrontpic: ; 51077
 	ld a, [wCurPartySpecies]
 	ld [wCurSpecies], a
-	call IsAPokemon
-	ret c
+	and a
+	ret z
 	ld a, [rSVBK]
 	push af
 	call _GetFrontpic
@@ -128,8 +128,8 @@ GetFrontpic: ; 51077
 FrontpicPredef: ; 5108b
 	ld a, [wCurPartySpecies]
 	ld [wCurSpecies], a
-	call IsAPokemon
-	ret c
+	and a
+	ret z
 	ld a, [rSVBK]
 	push af
 	xor a
@@ -294,8 +294,8 @@ LoadFrontpicTiles: ; 5114f
 
 GetBackpic: ; 5116c
 	ld a, [wCurPartySpecies]
-	call IsAPokemon
-	ret c
+	and a
+	ret z
 
 	ld a, [wCurPartySpecies]
 	ld b, a

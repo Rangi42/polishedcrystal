@@ -2568,7 +2568,7 @@ CopyPkmnOrEggToTempMon:
 	jr z, .got_addr
 	ld hl, sBoxMon1IsEgg
 	ld bc, BOXMON_STRUCT_LENGTH
-	ld a, BANK(sBoxMon1Species)
+	ld a, BANK(sBoxMon1IsEgg)
 	call GetSRAMBank
 .got_addr
 	ld a, [wCurPartyMon]

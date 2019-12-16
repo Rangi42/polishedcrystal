@@ -527,3 +527,4 @@ PicPointers::
 	dba PorygonZFrontpic
 	dba PorygonZBackpic
 	dba EggPic
+	dba EggPic

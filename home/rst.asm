@@ -11,8 +11,8 @@ SECTION "rst8", ROM0
 	jp RstFarCall
 
 IsAPokemon::
-; Return carry if species a is not a Pokemon.
-; Since every ID other than $0 and $ff is valid, we can simplify this function.
+; For functions using EGG as sentinel, use "and a" instead (EGG is $ff)
+; Returns carry if species a is not a Pokemon (including $ff)
 	inc a
 	cp $2 ; sets carry for $0 (inc'ed to $1) and $ff (inc'ed to $0)
 	dec a
