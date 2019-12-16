@@ -501,9 +501,8 @@ DayCare_GiveEgg: ; 169ac
 	ld c, a
 	ld b, 0
 	add hl, bc
-	ld a, EGG
-	ld [hli], a
 	ld a, [wEggMonSpecies]
+	ld [hli], a
 	ld [wCurSpecies], a
 	ld [wCurPartySpecies], a
 	ld a, -1
