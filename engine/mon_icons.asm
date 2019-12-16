@@ -281,11 +281,19 @@ InitPartyMenuIcon: ; 8e908 (23:6908)
 	ld a, [wCurIconTile]
 	push af
 	ld a, [hObjectStructIndexBuffer]
-	ld hl, wPartySpecies
 	ld e, a
-	ld d, $0
+	ld d, 0
+	ld hl, wPartyMon1IsEgg
+	push de
+	call GetPartyLocation
+	pop de
+	bit MON_IS_EGG_F, [hl]
+	ld a, EGG
+	jr nz, .got_icon
+	ld hl, wPartySpecies
 	add hl, de
 	ld a, [hl]
+.got_icon
 	ld [wCurIcon], a
 	call GetMemIconGFX
 	ld a, [hObjectStructIndexBuffer]
