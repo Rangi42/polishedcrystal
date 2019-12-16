@@ -485,9 +485,9 @@ DisplayHOFMon: ; 86748
 	ld [wBoxAlignment], a
 	hlcoord 6, 5
 	call _PrepMonFrontpic
-	ld a, [wCurPartySpecies]
-	cp EGG
-	jr z, .print_id_no
+	ld a, [wTempMonIsEgg]
+	bit MON_IS_EGG_F, a
+	jr nz, .print_id_no
 	hlcoord 1, 13
 	ld a, "№"
 	ld [hli], a
