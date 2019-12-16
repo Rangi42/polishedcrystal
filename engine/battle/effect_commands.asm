@@ -1470,6 +1470,7 @@ CheckAirborne:
 	call GetBattleVar
 	ld b, a
 CheckAirborne_GotAbility:
+; d=1: Skip type checks (used for Inverse Battle Ground->Flying matchup)
 ; Returns a=0 and z if grounded. Returns nz if not.
 ; a contains ATKFAIL_MISSED for air balloon, ATKFAIL_IMMUNE for flying type,
 ; ATKFAIL_ABILITY for Levitate.
@@ -6640,6 +6641,7 @@ CheckIfTrappedByAbility:
 	jp CheckIfUserIsSteelType
 .has_arena_trap
 	; Doesn't work on airborne mons
+	ld d, 0
 	call CheckAirborne
 	jr nz, .not_trapped
 	xor a
