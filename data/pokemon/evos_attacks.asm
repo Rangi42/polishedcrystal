@@ -4172,6 +4172,7 @@ ScizorEvosAttacks:
 	db 57, SWORDS_DANCE
 	db 0 ; no more level-up moves
 
+ShuckleEvosAttacks: ; todo
 HeracrossEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, NIGHT_SLASH

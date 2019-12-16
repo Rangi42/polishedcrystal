@@ -215,6 +215,7 @@ EvosAttacksPointers:: ; 0x425b1
 	dw GranbullEvosAttacks
 	dw QwilfishEvosAttacks
 	dw ScizorEvosAttacks
+	dw ShuckleEvosAttacks
 	dw HeracrossEvosAttacks
 	dw SneaselEvosAttacks
 	dw WeavileEvosAttacks

@@ -212,50 +212,51 @@
 	const GRANBULL   ; $d2
 	const QWILFISH   ; $d3
 	const SCIZOR     ; $d4
-	const HERACROSS  ; $d5
-	const SNEASEL    ; $d6
-	const WEAVILE    ; $d7
-	const TEDDIURSA  ; $d8
-	const URSARING   ; $d9
-	const SLUGMA     ; $da
-	const MAGCARGO   ; $db
-	const SWINUB     ; $dc
-	const PILOSWINE  ; $dd
-	const MAMOSWINE  ; $de
-	const CORSOLA    ; $df
-	const REMORAID   ; $e0
-	const OCTILLERY  ; $e1
-	const MANTINE    ; $e2
-	const SKARMORY   ; $e3
-	const HOUNDOUR   ; $e4
-	const HOUNDOOM   ; $e5
-	const KINGDRA    ; $e6
-	const PHANPY     ; $e7
-	const DONPHAN    ; $e8
-	const PORYGON2   ; $e9
-	const SMEARGLE   ; $ea
-	const TYROGUE    ; $eb
-	const HITMONTOP  ; $ec
-	const ELEKID     ; $ed
-	const ELECTIVIRE ; $ee
-	const MAGBY      ; $ef
-	const MAGMORTAR  ; $f0
-	const MILTANK    ; $f1
-	const BLISSEY    ; $f2
-	const RAIKOU     ; $f3
-	const ENTEI      ; $f4
-	const SUICUNE    ; $f5
-	const LARVITAR   ; $f6
-	const PUPITAR    ; $f7
-	const TYRANITAR  ; $f8
-	const LUGIA      ; $f9
-	const HO_OH      ; $fa
-	const CELEBI     ; $fb
-	const SYLVEON    ; $fc
-	const PORYGON_Z  ; $fd
+	const SHUCKLE    ; $d5
+	const HERACROSS  ; $d6
+	const SNEASEL    ; $d7
+	const WEAVILE    ; $d8
+	const TEDDIURSA  ; $d9
+	const URSARING   ; $da
+	const SLUGMA     ; $db
+	const MAGCARGO   ; $dc
+	const SWINUB     ; $dd
+	const PILOSWINE  ; $de
+	const MAMOSWINE  ; $df
+	const CORSOLA    ; $e0
+	const REMORAID   ; $e1
+	const OCTILLERY  ; $e2
+	const MANTINE    ; $e3
+	const SKARMORY   ; $e4
+	const HOUNDOUR   ; $e5
+	const HOUNDOOM   ; $e6
+	const KINGDRA    ; $e7
+	const PHANPY     ; $e8
+	const DONPHAN    ; $e9
+	const PORYGON2   ; $ea
+	const SMEARGLE   ; $eb
+	const TYROGUE    ; $ec
+	const HITMONTOP  ; $ed
+	const ELEKID     ; $ee
+	const ELECTIVIRE ; $ef
+	const MAGBY      ; $f0
+	const MAGMORTAR  ; $f1
+	const MILTANK    ; $f2
+	const BLISSEY    ; $f3
+	const RAIKOU     ; $f4
+	const ENTEI      ; $f5
+	const SUICUNE    ; $f6
+	const LARVITAR   ; $f7
+	const PUPITAR    ; $f8
+	const TYRANITAR  ; $f9
+	const LUGIA      ; $fa
+	const HO_OH      ; $fb
+	const CELEBI     ; $fc
+	const SYLVEON    ; $fd
+	const PORYGON_Z  ; $fe
 NUM_POKEMON EQU const_value +- 1
-	const EGG        ; $fe
 	const CANCEL     ; $ff
+EGG EQU CANCEL ; EGG is used as sentinel for egg pic/icon/etc
 
 
 ; form values

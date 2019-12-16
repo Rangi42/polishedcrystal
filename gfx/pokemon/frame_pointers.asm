@@ -211,6 +211,7 @@ FramesPointers:
 	dw GranbullFrames
 	dw QwilfishFrames
 	dw ScizorFrames
+	dw ShuckleFrames
 	dw HeracrossFrames
 	dw SneaselFrames
 	dw WeavileFrames
