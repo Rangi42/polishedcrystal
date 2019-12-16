@@ -1075,8 +1075,9 @@ PCMonInfo: ; e2ac6 (38:6ac6)
 	ld [wBillsPC_MonHasMail], a
 	ld a, [wCurPartySpecies]
 	ld [wd265], a
-	cp EGG
-	ret z
+	ld a, [wTempMonIsEgg]
+	bit MON_IS_EGG_F, a
+	ret nz
 
 	call GetBasePokemonName
 	hlcoord 1, 14
@@ -1682,9 +1683,47 @@ BillsPC_CheckMail_PreventBlackout: ; e2f18 (38:6f18)
 	ret
 
 BillsPC_IsMonAnEgg: ; e2f5f (38:6f5f)
-	ld a, [wCurPartySpecies]
-	cp EGG
-	jr z, .egg
+	call BillsPC_GetSelectedPokemonSpecies ; sets hl and e
+	inc hl
+	ld a, [hl]
+	and a
+	jr z, .party
+	cp NUM_BOXES + 1
+	jr z, .sBox
+
+	ld b, a
+	call GetBoxPointer
+	ld a, b
+	call GetSRAMBank
+	ld bc, sBoxMon1IsEgg - sBox
+	add hl, bc
+	jr .okay_sBox
+
+.party
+	ld hl, wPartyMon1IsEgg
+	ld bc, PARTYMON_STRUCT_LENGTH
+	ld a, e
+	rst AddNTimes
+	ld a, [hl]
+	ld e, a
+	jr .okay_party
+
+.sBox
+	ld a, BANK(sBox)
+	call GetSRAMBank
+	ld hl, sBoxMon1IsEgg
+
+.okay_sBox
+	ld bc, BOXMON_STRUCT_LENGTH
+	ld a, e
+	rst AddNTimes
+	ld a, [hl]
+	ld e, a
+	call CloseSRAM
+	ld a, e
+.okay_party
+	bit MON_IS_EGG_F, a
+	jr nz, .egg
 	and a
 	ret
 

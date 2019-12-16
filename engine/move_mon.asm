@@ -538,8 +538,15 @@ AddTempmonToParty: ; da96
 
 	ld a, [wCurPartySpecies]
 	ld [wNamedObjectIndexBuffer], a
-	cp EGG
-	jr z, .egg
+
+	ld hl, wPartyMon1IsEgg
+	ld a, [wPartyCount]
+	dec a
+	ld bc, PARTYMON_STRUCT_LENGTH
+	rst AddNTimes
+	bit MON_IS_EGG_F, [hl]
+	jr nz, .egg
+	ld a, [wCurPartySpecies]
 	dec a
 	call SetSeenAndCaughtMon
 	ld hl, wPartyMon1Happiness
@@ -783,9 +790,12 @@ SentGetPkmnIntoFromBox: ; db3f
 	add hl, bc
 	ld d, h
 	ld e, l
-	ld a, [wCurPartySpecies]
-	cp EGG
-	jr z, .egg
+	push hl
+	ld hl, MON_IS_EGG
+	add hl, bc
+	bit MON_IS_EGG_F, [hl]
+	pop hl
+	jr nz, .egg
 	inc hl
 	inc hl
 	ld a, [hli]

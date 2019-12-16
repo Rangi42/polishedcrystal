@@ -130,7 +130,7 @@ PlacePartyHPBar: ; 500cf
 	push bc
 	push hl
 	call PartyMenuCheckEgg
-	jr z, .skip
+	jr nz, .skip
 	push hl
 	call PlacePartymonHPBar
 	pop hl
@@ -195,7 +195,7 @@ PlacePartyMenuHPDigits: ; 50138
 	push bc
 	push hl
 	call PartyMenuCheckEgg
-	jr z, .next
+	jr nz, .next
 	push hl
 	ld a, b
 	ld bc, PARTYMON_STRUCT_LENGTH
@@ -237,7 +237,7 @@ PlacePartyMonLevel: ; 50176
 	push bc
 	push hl
 	call PartyMenuCheckEgg
-	jr z, .next
+	jr nz, .next
 	push hl
 	ld a, b
 	ld bc, PARTYMON_STRUCT_LENGTH
@@ -280,7 +280,7 @@ PlacePartyMonStatus: ; 501b2
 	push bc
 	push hl
 	call PartyMenuCheckEgg
-	jr z, .next
+	jr nz, .next
 	push hl
 	ld a, b
 	ld bc, PARTYMON_STRUCT_LENGTH
@@ -313,7 +313,7 @@ PlacePartyMonTMHMCompatibility: ; 501e0
 	push bc
 	push hl
 	call PartyMenuCheckEgg
-	jr z, .next
+	jr nz, .next
 	push hl
 	ld hl, wPartySpecies
 	ld e, b
@@ -369,7 +369,7 @@ PlacePartyMonEvoStoneCompatibility: ; 5022f
 	push bc
 	push hl
 	call PartyMenuCheckEgg
-	jr z, .next
+	jr nz, .next
 	push hl
 	ld a, b
 	ld bc, PARTYMON_STRUCT_LENGTH
@@ -455,7 +455,7 @@ PlacePartyMonGender: ; 502b1
 	push bc
 	push hl
 	call PartyMenuCheckEgg
-	jr z, .next
+	jr nz, .next
 	ld [wCurPartySpecies], a
 	ld a, [wCurPartyMon]
 	push af
@@ -502,7 +502,7 @@ PlacePartyMonRemindable: ; 501e0
 	push bc
 	push hl
 	call PartyMenuCheckEgg
-	jr z, .next
+	jr nz, .next
 	push hl
 	ld hl, wPartySpecies
 	ld e, b
@@ -548,14 +548,13 @@ PlacePartyMonRemindable: ; 501e0
 
 
 PartyMenuCheckEgg: ; 50389
-	ld a, wPartySpecies % $100
-	add b
-	ld e, a
-	ld a, wPartySpecies / $100
-	adc 0
-	ld d, a
-	ld a, [de]
-	cp EGG
+	push hl
+	ld a, b
+	ld hl, wPartyMon1IsEgg
+	call GetPartyLocation
+	ld a, [hl]
+	pop hl
+	bit MON_IS_EGG_F, a
 	ret
 ; 50396
 

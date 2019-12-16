@@ -619,6 +619,7 @@ InheritMove:
 
 GetEggFrontpic: ; 17224 (5:7224)
 	push de
+	ld a, EGG
 	ld [wCurPartySpecies], a
 	ld [wCurSpecies], a
 	call GetBaseData
@@ -695,7 +696,6 @@ EggHatch_AnimationSequence: ; 1728f (5:728f)
 	ld a, [wJumptableIndex]
 	call GetHatchlingFrontpic
 	ld de, VTiles2 tile $31
-	ld a, EGG
 	call GetEggFrontpic
 	ld de, MUSIC_EVOLUTION
 	call PlayMusic

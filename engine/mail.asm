@@ -503,9 +503,13 @@ MailboxPC: ; 0x44806
 	call DelayFrame
 	farcall PartyMenuSelect
 	jr c, .exit2
-	ld a, [wCurPartySpecies]
-	cp EGG
-	jr z, .egg
+	push hl
+	ld a, MON_IS_EGG
+	call GetPartyParamLocation
+	ld a, [hl]
+	pop hl
+	bit MON_IS_EGG_F, a
+	jr nz, .egg
 	ld a, MON_ITEM
 	call GetPartyParamLocation
 	ld a, [hl]

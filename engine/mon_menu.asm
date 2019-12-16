@@ -120,9 +120,10 @@ GetMonMenuString: ; 24db0
 
 GetMonSubmenuItems: ; 24dd4
 	call ResetMonSubmenu
-	ld a, [wCurPartySpecies]
-	cp EGG
-	jr z, .egg
+	ld a, MON_MOVES
+	call GetPartyParamLocation
+	bit MON_IS_EGG_F, [hl]
+	jr nz, .egg
 	ld a, [wLinkMode]
 	and a
 	jr nz, .skip_moves

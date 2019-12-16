@@ -1320,9 +1320,10 @@ ChooseMoveToRelearn:
 	ret
 
 ManagePokemonMoves: ; 12fba
-	ld a, [wCurPartySpecies]
-	cp EGG
-	jr z, .egg
+	ld a, MON_IS_EGG
+	call GetPartyParamLocation
+	bit MON_IS_EGG_F, [hl]
+	jr nz, .egg
 	ld hl, wOptions1
 	ld a, [hl]
 	push af
