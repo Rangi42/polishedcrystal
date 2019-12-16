@@ -552,9 +552,8 @@ PartyMenuCheckEgg: ; 50389
 	ld a, b
 	ld hl, wPartyMon1IsEgg
 	call GetPartyLocation
-	ld a, [hl]
+	bit MON_IS_EGG_F, [hl]
 	pop hl
-	bit MON_IS_EGG_F, a
 	ret
 ; 50396
 
