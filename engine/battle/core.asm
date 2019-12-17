@@ -4267,6 +4267,11 @@ BattleMenuPKMN_Loop:
 	jr .loop
 
 .Moves:
+	ld a, [wCurPartyMon]
+	ld hl, wPartyMon1IsEgg
+	call GetPartyLocation
+	bit MON_IS_EGG_F, [hl]
+	jr nz, .Cancel
 	farcall ManagePokemonMoves
 	call GetMonBackpic
 
@@ -4291,7 +4296,14 @@ BattleMenuPKMN_Loop:
 ; 3e2f5
 
 .GetMenu:
+	ld a, [wCurPartyMon]
+	ld hl, wPartyMon1IsEgg
+	call GetPartyLocation
+	bit MON_IS_EGG_F, [hl]
 	ld hl, .MenuHeader
+	jr z, .got_menuheader
+	ld hl, .EggMenuHeader
+.got_menuheader
 	call CopyMenuDataHeader
 	xor a
 	ld [hBGMapMode], a
@@ -4322,22 +4334,34 @@ BattleMenuPKMN_Loop:
 	and a
 	ret
 
-.MenuHeader: ; 24ed4
+.MenuHeader:
 	db $00 ; flags
 	db 9, 11 ; start coords
 	db 17, 19 ; end coords
 	dw .MenuData
 	db 1 ; default option
-; 24edc
 
-.MenuData: ; 24edc
+.MenuData:
 	db $c0 ; flags
 	db 4 ; items
 	db "Stats@"
 	db "Switch@"
 	db "Moves@"
 	db "Cancel@"
-; 24ef2
+
+.EggMenuHeader:
+	db $00 ; flags
+	db 11, 11 ; start coords
+	db 17, 19 ; end coords
+	dw .EggMenuData
+	db 1 ; default option
+
+.EggMenuData:
+	db $c0 ; flags
+	db 3 ; items
+	db "Stats@"
+	db "Switch@"
+	db "Cancel@"
 
 Battle_StatsScreen: ; 3e308
 	call DisableLCD
