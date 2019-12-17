@@ -1870,7 +1870,21 @@ DepositPokemon: ; e307c (38:707c)
 	xor a
 	ld [wPokemonWithdrawDepositParameter], a
 	farcall RemoveMonFromPartyOrBox
+	hlcoord 1, 16
+	ld de, PCString_Stored
+	call PlaceString
+	ld l, c
+	ld h, b
+	ld de, wStringBuffer1
+	call PlaceString
+	ld a, "!"
+	ld [bc], a
+	ld a, [wTempMonIsEgg]
+	bit MON_IS_EGG_F, a
+	ld a, EGG
+	jr nz, .got_species
 	ld a, [wCurPartySpecies]
+.got_species
 	call PlayCry
 	hlcoord 0, 0
 	lb bc, 15, 8
@@ -1882,15 +1896,6 @@ DepositPokemon: ; e307c (38:707c)
 	lb bc, 1, 18
 	call TextBox
 	call ApplyTilemapInVBlank
-	hlcoord 1, 16
-	ld de, PCString_Stored
-	call PlaceString
-	ld l, c
-	ld h, b
-	ld de, wStringBuffer1
-	call PlaceString
-	ld a, "!"
-	ld [bc], a
 	and a
 	ret
 
@@ -1921,7 +1926,21 @@ TryWithdrawPokemon: ; e30fa (38:70fa)
 	ld a, PC_DEPOSIT
 	ld [wPokemonWithdrawDepositParameter], a
 	farcall RemoveMonFromPartyOrBox
+	hlcoord 1, 16
+	ld de, PCString_Got
+	call PlaceString
+	ld l, c
+	ld h, b
+	ld de, wStringBuffer1
+	call PlaceString
+	ld a, "!"
+	ld [bc], a
+	ld a, [wTempMonIsEgg]
+	bit MON_IS_EGG_F, a
+	ld a, EGG
+	jr nz, .got_species
 	ld a, [wCurPartySpecies]
+.got_species
 	call PlayCry
 	hlcoord 0, 0
 	lb bc, 15, 8
@@ -1933,15 +1952,6 @@ TryWithdrawPokemon: ; e30fa (38:70fa)
 	lb bc, 1, 18
 	call TextBox
 	call ApplyTilemapInVBlank
-	hlcoord 1, 16
-	ld de, PCString_Got
-	call PlaceString
-	ld l, c
-	ld h, b
-	ld de, wStringBuffer1
-	call PlaceString
-	ld a, "!"
-	ld [bc], a
 	and a
 	ret
 
@@ -1965,15 +1975,21 @@ ReleasePKMN_ByePKMN: ; e3180 (38:7180)
 	hlcoord 0, 15
 	lb bc, 1, 18
 	call TextBox
+	hlcoord 1, 16
+	ld de, PCString_Bye
+	call PlaceString
+	ld l, c
+	ld h, b
+	inc hl
+	ld de, wStringBuffer1
+	call PlaceString
+	ld l, c
+	ld h, b
+	ld [hl], "!"
 
 	call ApplyTilemapInVBlank
 	ld a, [wCurPartySpecies]
-	call GetCryIndex
-	jr c, .skip_cry
-	ld e, c
-	ld d, b
-	call PlayCryHeader
-.skip_cry
+	call PlayCry
 
 	ld a, [wCurPartySpecies]
 	ld [wd265], a
@@ -1999,19 +2015,7 @@ ReleasePKMN_ByePKMN: ; e3180 (38:7180)
 	call PlaceString
 	hlcoord 0, 15
 	lb bc, 1, 18
-	call TextBox
-	hlcoord 1, 16
-	ld de, PCString_Bye
-	call PlaceString
-	ld l, c
-	ld h, b
-	inc hl
-	ld de, wStringBuffer1
-	call PlaceString
-	ld l, c
-	ld h, b
-	ld [hl], "!"
-	ret
+	jp TextBox
 ; e31e7 (38:71e7)
 
 MovePKMNWitoutMail_InsertMon: ; e31e7
