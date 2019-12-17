@@ -105,6 +105,7 @@
 	const RECKLESS
 	const PICKPOCKET
 	const SHEER_FORCE
+	const CONTRARY
 	const UNNERVE
 	const DEFIANT
 	const CURSED_BODY
