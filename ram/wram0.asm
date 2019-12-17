@@ -561,7 +561,7 @@ wLastPlayerCounterMove:: ds 1
 
 wEnemyMinimized:: ds 1
 
-wAlreadyFailed:: ds 1
+wAlreadyExecuted:: ds 1
 
 wTrickRoom:: ds 1
 
@@ -602,7 +602,11 @@ wWeather::
 
 wWeatherCount:: ds 1 ; # turns remaining
 
-wLoweredStat:: ds 1
+wLoweredStat::
+; bit 4-7: how many stages to raise/lower + 1 (between +1 and +12)
+; bit 0-3: which stat to raise/lower
+	ds 1
+
 wEffectFailed:: ds 1
 wFailedMessage:: ds 1
 

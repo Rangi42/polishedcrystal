@@ -725,7 +725,8 @@ CloseCombat:
 	checkfaint
 	criticaltext
 	supereffectivetext
-	closecombat
+	lowerstat DEFENSE
+	lowerstat SP_DEFENSE
 	postfainteffects
 	posthiteffects
 	pickpocket

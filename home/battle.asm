@@ -418,7 +418,7 @@ ApplyDamageMod::
 
 GetOpponentAbilityAfterMoldBreaker:: ; 39e1
 ; Returns an opponent's ability unless Mold Breaker
-; will suppress it.
+; will suppress it. Preserves bc/de/hl.
 	push de
 	push bc
 	ld a, BATTLE_VARS_ABILITY_OPP

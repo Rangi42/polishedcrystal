@@ -61,7 +61,6 @@ DoTurn: ; 3401d
 	call UpdateMoveData
 ; 3402c
 
-
 DoMove:
 ; Get the user's move effect.
 	; Increase move usage counter if applicable
@@ -82,20 +81,7 @@ DoMove:
 	ld [wBattleScriptBufferLoc + 1], a
 
 .ReadMoveEffectCommand:
-	ld a, [wBattleScriptBufferLoc]
-	ld l, a
-	ld a, [wBattleScriptBufferLoc + 1]
-	ld h, a
-
-	inc hl
-	ld a, l
-	ld [wBattleScriptBufferLoc], a
-	ld a, h
-	ld [wBattleScriptBufferLoc + 1], a
-	dec hl
-
-	ld a, BANK(MoveEffectsPointers)
-	call GetFarByte
+	call ReadMoveScriptByte
 
 	; endturn_command (-2) is used to terminate branches without ending the read cycle
 	cp endturn_command
@@ -126,6 +112,22 @@ DoMove:
 	pop af
 	ret
 
+ReadMoveScriptByte:
+	ld a, [wBattleScriptBufferLoc]
+	ld l, a
+	ld a, [wBattleScriptBufferLoc + 1]
+	ld h, a
+
+	inc hl
+	ld a, l
+	ld [wBattleScriptBufferLoc], a
+	ld a, h
+	ld [wBattleScriptBufferLoc + 1], a
+	dec hl
+
+	ld a, BANK(MoveEffectsPointers)
+	jp GetFarByte
+
 CheckTurn:
 BattleCommand_checkturn:
 ; Repurposed as hardcoded turn handling. Useless as a command.
@@ -140,7 +142,7 @@ BattleCommand_checkturn:
 	ld [wEffectFailed], a
 	ld [wKickCounter], a
 	ld [wAlreadyDisobeyed], a
-	ld [wAlreadyFailed], a
+	ld [wAlreadyExecuted], a
 	ld [wSomeoneIsRampaging], a
 
 	ld a, $10 ; 1.0
@@ -5688,33 +5690,6 @@ BattleCommand_paralyzetarget:
 	call PrintParalyze
 	jp PostStatusWithSynchronize
 
-BattleCommand_closecombat:
-	ld a, [wAttackMissed]
-	and a
-	ret nz
-
-	lb bc, DEFENSE, SP_DEFENSE
-BattleCommand_selfstatdownhit:
-; input: 1-2 stats to decrease in b and c respectivey
-	push bc
-	call .lower
-	pop bc
-	ld b, c
-.lower
-	ld a, b
-	and a
-	ret z
-	push bc
-	call ResetMiss
-	pop bc
-	call LowerStat
-	call SwitchTurn
-	ld a, [wLoweredStat]
-	or $80
-	ld [wLoweredStat], a
-	call BattleCommand_statdownmessage
-	jp SwitchTurn
-
 BattleCommand_bulkup:
 	lb bc, ATTACK, DEFENSE
 	jr DoubleUp
@@ -5845,16 +5820,114 @@ BattleCommand_evasionup2: ; 361e0
 	ld b, $10 | EVASION
 	; fallthrough
 
-BattleCommand_statup: ; 361e4
-; statup
-	call CheckIfStatCanBeRaised
-	ld a, [wFailedMessage]
+BattleCommand_statup:
+	jp ForceRaiseStat
+
+CheckAlreadyExecuted:
+	ld a, [wAlreadyExecuted]
 	and a
 	ret nz
-	jp StatUpAnimation
+	inc a
+	ld [wAlreadyExecuted], a
+	dec a
+	ret
 
-; 361ef
+BattleCommand_raisestat:
+	ld b, -1
+RaiseStat:
+	xor a
+_RaiseStat:
+	or STAT_MISS | STAT_SILENT
+	jr ChangeStat
 
+BattleCommand_lowerstat:
+	ld b, -1
+LowerStat:
+	xor a
+_LowerStat:
+	or STAT_LOWER | STAT_MISS | STAT_SILENT
+	jr ChangeStat
+
+BattleCommand_forceraisestat:
+	ld b, -1
+ForceRaiseStat:
+	xor a
+_ForceRaiseStat:
+	jr ChangeStat
+
+BattleCommand_forcelowerstat:
+	ld b, -1
+ForceLowerStat:
+	xor a
+_ForceLowerStat:
+	or STAT_LOWER
+	jr ChangeStat
+
+BattleCommand_raisestathit:
+	ld b, -1
+RaiseStatHit:
+	xor a
+_RaiseStatHit:
+	or STAT_MISS | STAT_SECONDARY | STAT_SILENT
+	jr ChangeStat
+
+BattleCommand_lowerstathit:
+	ld b, -1
+LowerStatHit:
+	xor a
+_LowerStatHit:
+	or STAT_LOWER | STAT_MISS | STAT_SECONDARY | STAT_SILENT
+	jr ChangeStat
+
+BattleCommand_forceraiseoppstat:
+	ld b, -1
+ForceRaiseOppStat:
+	xor a
+_ForceRaiseOppStat:
+	or STAT_TARGET | STAT_MISS
+	jr ChangeStat
+
+BattleCommand_forceloweroppstat:
+	ld b, -1
+ForceLowerOppStat:
+	xor a
+_ForceLowerOppStat:
+	or STAT_TARGET | STAT_LOWER | STAT_MISS
+	jr ChangeStat
+
+BattleCommand_raiseoppstat:
+	ld b, -1
+RaiseOppStat:
+	xor a
+_RaiseOppStat:
+	or STAT_TARGET
+	jr ChangeStat
+
+BattleCommand_loweroppstat:
+	ld b, -1
+LowerOppStat:
+	xor a
+_LowerOppStat:
+	or STAT_TARGET | STAT_LOWER
+	jr ChangeStat
+
+BattleCommand_raiseoppstathit:
+	ld b, -1
+RaiseOppStatHit:
+	xor a
+_RaiseOppStatHit:
+	or STAT_TARGET | STAT_MISS | STAT_SECONDARY | STAT_SILENT
+	jr ChangeStat
+
+BattleCommand_loweroppstathit:
+	ld b, 0
+LowerOppStatHit:
+	xor a
+_LowerOppStatHit:
+	or STAT_TARGET | STAT_LOWER | STAT_MISS | STAT_SECONDARY | STAT_SILENT
+ChangeStat:
+; b contains stat to alter, or zero if it should be read from the move script
+	farjp FarChangeStat
 
 CheckIfStatCanBeRaised:
 	ld a, b
@@ -6330,48 +6403,6 @@ ResetMiss: ; 3652d
 
 ; 36532
 
-LowerStat:: ; 36532
-	ld a, b
-	ld [wLoweredStat], a
-
-	ld hl, wPlayerStatLevels
-	ld a, [hBattleTurn]
-	and a
-	jr z, .got_target
-	ld hl, wEnemyStatLevels
-
-.got_target
-	ld a, [wLoweredStat]
-	and $f
-	ld c, a
-	ld b, 0
-	add hl, bc
-	ld b, [hl]
-	dec b
-	jr z, .cant_lower_anymore
-
-	ld a, [wLoweredStat]
-	and $f0
-	jr z, .got_num_stages
-	dec b
-	jr nz, .got_num_stages
-	inc b
-
-.got_num_stages
-	ld [hl], b
-	xor a
-	ld [wFailedMessage], a
-	ret
-
-.failed
-	inc [hl]
-
-.cant_lower_anymore
-	ld a, 2
-	ld [wFailedMessage], a
-	ret
-
-; 3658f
 
 
 BattleCommand_tristatuschance: ; 3658f
@@ -8142,17 +8173,13 @@ BattleCommand_trickroom:
 	ret nz
 
 	ld b, SPEED
-	call LowerStat
+	ld a, STAT_SKIPTEXT
+	call _ForceLowerStat
 	ld a, [wFailedMessage]
 	and a
 	ret nz
 
-	ld b, SPEED + 1
-	call GetStatName
-	call GetCurItemName
-	farcall ItemRecoveryAnim
-	ld hl, BattleText_ItemLowered
-	call StdBattleTextBox
+	farcall UseStatItemText
 	jp ConsumeUserItem
 
 .failed
@@ -8235,15 +8262,9 @@ PrintNothingHappened: ; 37343
 ; 37349
 
 
-TryPrintButItFailed: ; 37349
-	ld a, [wAlreadyFailed]
-	and a
+TryPrintButItFailed:
+	call CheckAlreadyExecuted
 	ret nz
-
-	; fallthrough
-; 3734e
-
-
 PrintButItFailed: ; 3734e
 ; 'but it failed!'
 	ld hl, ButItFailedText
@@ -9399,6 +9420,10 @@ GetItemHeldEffect: ; 37dd0
 	ret
 
 
+TryAnimateCurrentMove:
+	call CheckAlreadyExecuted
+	ret nz
+	; fallthrough
 AnimateCurrentMove: ; 37e01
 	ld a, [wAnimationsDisabled]
 	and a
@@ -9493,9 +9518,25 @@ ShowPotentialAbilityActivation:
 	ld a, [wAnimationsDisabled]
 	and a
 	ret z
-	; push/pop hl isn't redundant, farcall clobbers it
 	push hl
+	ld h, a
+	ld a, [hBattleTurn]
+	inc a
+	rrca
+	rrca
+	and h
+	pop hl
+	ret nz
 	farcall ShowAbilityActivation
+	ld a, [hBattleTurn]
+	inc a
+	rrca
+	rrca
+	push hl
+	ld h, a
+	ld a, [wAnimationsDisabled]
+	or h
+	ld [wAnimationsDisabled], a
 	pop hl
 	ret
 
@@ -9561,6 +9602,17 @@ BattleCommandJump:
 	jr .loop
 
 .got_target
+	; Verify that this isn't actually a command argument
+	dec hl
+	ld a, BANK(MoveEffects)
+	call GetFarByte
+	inc hl
+	cp FIRST_MOVEARG_COMMAND
+	jr c, .target_valid
+	cp LAST_MOVEARG_COMMAND + 1
+	jr c, .loop
+
+.target_valid
 	ld a, c
 	cp 2
 	jr nz, .jump_done

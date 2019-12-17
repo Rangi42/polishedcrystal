@@ -205,17 +205,9 @@ IntimidateAbility:
 	jp StdBattleTextBox
 
 .intimidate_ok
-	call ShowAbilityActivation
 	call DisableAnimations
-	ld a, [wAttackMissed]
-	push af
-	ld a, [wEffectFailed]
-	push af
-	xor a
-	ld [wAttackMissed], a
-	ld [wEffectFailed], a
-	farcall BattleCommand_attackdown
-	farcall BattleCommand_statdownmessage
+	ld b, ATTACK
+	farcall ForceLowerOppStat
 
 	; if stat decrease happened, proc Rattled
 	call SwitchTurn
@@ -231,12 +223,7 @@ IntimidateAbility:
 .continue
 	call EnableAnimations
 	farcall CheckWhiteHerb
-	call SwitchTurn
-	pop af
-	ld [wEffectFailed], a
-	pop af
-	ld [wAttackMissed], a
-	ret
+	jp SwitchTurn
 
 .no_intimidate_abilities
 	db INNER_FOCUS
@@ -838,6 +825,8 @@ DampAbility:
 	ld hl, DampAbilityText
 	jp StdBattleTextBox
 
+RunStatIncreaseAbilities:
+	call CallOpponentTurn
 RunEnemyStatIncreaseAbilities:
 	call SwitchTurn
 	ld hl, StatIncreaseAbilities
@@ -938,7 +927,7 @@ WeakArmorAbility:
 	ld b, DEFENSE
 	call DisableAnimations
 	farcall ResetMiss
-	farcall LowerStat ; can't be resisted
+	farcall ForceLowerStat ; can't be resisted
 	ld a, [wFailedMessage]
 	and a
 	jr nz, .failed_defensedown
@@ -1362,7 +1351,7 @@ LowerRandomStat:
 	ld b, e
 	push bc
 	farcall ResetMiss
-	farcall LowerStat
+	farcall ForceLowerStat
 	pop bc
 	or 1
 	ret

@@ -41,7 +41,7 @@ BattleCommand_curse:
 	ld [wKickCounter], a
 	call AnimateCurrentMove
 	ld b, SPEED
-	call LowerStat
+	call ForceLowerStat
 	call SwitchTurn
 	call BattleCommand_statdownmessage
 	call ResetMiss

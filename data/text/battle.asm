@@ -194,6 +194,28 @@ BattleText_ItemLowered:
 	text "!"
 	prompt
 
+BattleText_ItemHarshlyLowered:
+	text "The @"
+	text_from_ram wStringBuffer1
+	text ""
+	line "sharply lowered"
+	cont "<USER>'s"
+	cont "@"
+	text_from_ram wStringBuffer2
+	text "!"
+	prompt
+
+BattleText_ItemSeverelyLowered:
+	text "The @"
+	text_from_ram wStringBuffer1
+	text ""
+	line "severely lowered"
+	cont "<USER>'s"
+	cont "@"
+	text_from_ram wStringBuffer2
+	text "!"
+	prompt
+
 BattleText_ItemRaised:
 	text "The @"
 	text_from_ram wStringBuffer1
@@ -210,6 +232,17 @@ BattleText_ItemSharplyRaised:
 	text_from_ram wStringBuffer1
 	text ""
 	line "sharply raised"
+	cont "<USER>'s"
+	cont "@"
+	text_from_ram wStringBuffer2
+	text "!"
+	prompt
+
+BattleText_ItemDrasticallyRaised:
+	text "The @"
+	text_from_ram wStringBuffer1
+	text ""
+	line "drastically raised"
 	cont "<USER>'s"
 	cont "@"
 	text_from_ram wStringBuffer2
@@ -1047,13 +1080,59 @@ WontRiseAnymoreText: ; 0x81272
 ; 0x8128f
 
 WontDropAnymoreText: ; 0x8128f
-	text "<TARGET>'s"
+	text "<USER>'s"
 	line "@"
 	text_from_ram wStringBuffer2
 	text " won't go"
 	cont "any lower!"
 	prompt
 ; 0x812ac
+
+StatRoseText:
+	text "<USER>'s"
+	line "@"
+	text_from_ram wStringBuffer2
+	text " rose!"
+	prompt
+
+StatRoseSharplyText:
+	text "<USER>'s"
+	line "@"
+	text_from_ram wStringBuffer2
+	text " rose"
+	cont "sharply!"
+	prompt
+
+StatRoseDrasticallyText:
+	text "<USER>'s"
+	line "@"
+	text_from_ram wStringBuffer2
+	text " rose"
+	cont "drastically!"
+	prompt
+
+StatFellText:
+	text "<USER>'s"
+	line "@"
+	text_from_ram wStringBuffer2
+	text " fell!"
+	prompt
+
+StatHarshlyFellText:
+	text "<USER>'s"
+	line "@"
+	text_from_ram wStringBuffer2
+	text " harshly"
+	cont "fell!"
+	prompt
+
+StatSeverelyFellText:
+	text "<USER>'s"
+	line "@"
+	text_from_ram wStringBuffer2
+	text " severely"
+	cont "fell!"
+	prompt
 
 FledFromBattleText:: ; 0x812ac
 	text "<USER>"
@@ -1195,6 +1274,8 @@ TrickRoomEndedText:
 	para "returned to"
 	line "normal!"
 	prompt
+
+
 
 LightScreenEffectText: ; 0x814b4
 	text "<USER>'s"
