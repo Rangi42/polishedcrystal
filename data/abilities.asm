@@ -104,6 +104,7 @@ AbilityNames:
 	dw Reckless
 	dw Pickpocket
 	dw SheerForce
+	dw Contrary
 	dw Unnerve
 	dw Defiant
 	dw CursedBody
@@ -237,6 +238,7 @@ Frisk:         db "F","r","i","s","k","@"
 Reckless:      db "R","e","c","k","l","e","s","s","@"
 Pickpocket:    db "P","i","c","k","p","o","c","k","e","t","@"
 SheerForce:    db "S","h","e","e","r"," ","F","o","r","c","e","@"
+Contrary:      db "C","o","n","t","r","a","r","y","@"
 Unnerve:       db "U","n","n","e","r","v","e","@"
 Defiant:       db "D","e","f","i","a","n","t","@"
 CursedBody:    db "C","u","r","s","e","d"," ","B","o","d","y","@"
@@ -372,6 +374,7 @@ AbilityDescriptions:
 	dw RecklessDescription
 	dw PickpocketDescription
 	dw SheerForceDescription
+	dw ContraryDescription
 	dw UnnerveDescription
 	dw DefiantDescription
 	dw CursedBodyDescription
@@ -810,6 +813,10 @@ PickpocketDescription:
 SheerForceDescription:
 	db    "Removes effects to"
 	next1 "increase damage.@"
+
+ContraryDescription:
+	db    "Inverts the effect"
+	next1 "of stat changes.@"
 
 UnnerveDescription:
 	db    "Prevents foes from"

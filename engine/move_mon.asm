@@ -599,7 +599,12 @@ SentGetPkmnIntoFromBox: ; db3f
 ; wPokemonWithdrawDepositParameter == 1: sent Pkmn into Box
 ; wPokemonWithdrawDepositParameter == 2: get Pkmn from DayCare
 ; wPokemonWithdrawDepositParameter == 3: put Pkmn into DayCare
-
+	; Failsafe: never allow writing $ff to species bytes
+	ld a, [wCurPartySpecies]
+	cp EGG
+	jr nz, .species_valid
+	rst 0 ; crash
+.species_valid
 	ld a, BANK(sBoxCount)
 	call GetSRAMBank
 	ld a, [wPokemonWithdrawDepositParameter]

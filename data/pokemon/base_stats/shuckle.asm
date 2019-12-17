@@ -10,7 +10,7 @@
 	dn 5, 5 ; frontpic dimensions
 	db STURDY ; ability 1
 	db GLUTTONY ; ability 2
-	db STURDY ; hidden ability (TODO: Contrary)
+	db CONTRARY ; hidden ability
 	db MEDIUM_SLOW ; growth rate
 	dn INSECT, INSECT ; egg groups
 
