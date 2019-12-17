@@ -21,7 +21,7 @@ FarChangeStat:
 
 	; The attack missed
 	bit STAT_SILENT_F, b
-	ret z
+	ret nz
 	farcall CheckAlreadyExecuted
 	ret nz
 	farcall AnimateFailedMove
@@ -47,7 +47,7 @@ FarChangeStat:
 	ld a, b
 	xor STAT_LOWER
 	ld b, a
-	jr .ability_done
+	jp .ability_done
 
 .is_target
 	call GetOpponentAbilityAfterMoldBreaker
@@ -62,6 +62,8 @@ FarChangeStat:
 	pop bc
 	jr z, .check_lowering
 
+	bit STAT_SILENT_F, b
+	ret nz
 	farcall ShowPotentialAbilityActivation
 	farcall CheckAlreadyExecuted
 	ret nz
@@ -75,6 +77,8 @@ FarChangeStat:
 	call GetBattleVar
 	bit SUBSTATUS_MIST, a
 	jr z, .check_ability
+	bit STAT_SILENT_F, b
+	ret nz
 	farcall CheckAlreadyExecuted
 	ret nz
 	farcall ShowPotentialAbilityActivation
