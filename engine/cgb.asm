@@ -1023,7 +1023,7 @@ _CGB_BillsPC: ; 8fca
 	call LoadHLPaletteIntoDE
 
 	ld a, [wCurPartySpecies]
-	cp $ff
+	and a
 	jr nz, .GetMonPalette
 	ld hl, .OrangePalette
 	call LoadHLPaletteIntoDE

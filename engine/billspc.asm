@@ -63,7 +63,7 @@ _DepositPKMN: ; e2391 (38:6391)
 	call BillsPC_RefreshTextboxes
 	call PCMonInfo
 	call BillsPC_PrintBoxCountAndCapacityInsideBox
-	ld a, $ff
+	xor a
 	ld [wCurPartySpecies], a
 	ld a, CGB_BILLS_PC
 	call BillsPC_ApplyPalettes
@@ -118,10 +118,7 @@ _DepositPKMN: ; e2391 (38:6391)
 	xor a
 	ld [hBGMapMode], a
 	call ClearSprites
-	call BillsPC_GetSelectedPokemonSpecies
-	ld [wCurPartySpecies], a
-	ld a, CGB_BILLS_PC
-	call BillsPC_ApplyPalettes
+	call BillsPC_GetSelectedMonPal
 	ld de, PCString_WhatsUp
 	call BillsPC_PlaceString
 	ld a, $1
@@ -176,10 +173,7 @@ BillsPCDepositFuncStats: ; e24c8 (38:64c8)
 	call BillsPC_StatsScreen
 	call ExitMenu
 	call PCMonInfo
-	call BillsPC_GetSelectedPokemonSpecies
-	ld [wCurPartySpecies], a
-	ld a, CGB_BILLS_PC
-	jp BillsPC_ApplyPalettes
+	jp BillsPC_GetSelectedMonPal
 
 BillsPCDepositFuncRelease: ; e24e0 (38:64e0)
 	call BillsPC_CheckMail_PreventBlackout
@@ -310,7 +304,7 @@ _WithdrawPKMN: ; e2583 (38:6583)
 	call BillsPC_RefreshTextboxes
 	call PCMonInfo
 	call BillsPC_PrintBoxCountAndCapacityInsideBox
-	ld a, $ff
+	xor a
 	ld [wCurPartySpecies], a
 	ld a, CGB_BILLS_PC
 	call BillsPC_ApplyPalettes
@@ -360,10 +354,7 @@ _WithdrawPKMN: ; e2583 (38:6583)
 	xor a
 	ld [hBGMapMode], a
 	call ClearSprites
-	call BillsPC_GetSelectedPokemonSpecies
-	ld [wCurPartySpecies], a
-	ld a, CGB_BILLS_PC
-	call BillsPC_ApplyPalettes
+	call BillsPC_GetSelectedMonPal
 	ld de, PCString_WhatsUp
 	call BillsPC_PlaceString
 	ld a, $1
@@ -416,10 +407,7 @@ BillsPC_Withdraw: ; e2675 (38:6675)
 	call BillsPC_StatsScreen
 	call ExitMenu
 	call PCMonInfo
-	call BillsPC_GetSelectedPokemonSpecies
-	ld [wCurPartySpecies], a
-	ld a, CGB_BILLS_PC
-	jp BillsPC_ApplyPalettes
+	jp BillsPC_GetSelectedMonPal
 
 .release ; e26d8 (38:66d8)
 	ld a, [wMenuCursorY]
@@ -552,7 +540,7 @@ _MovePKMNWithoutMail: ; e2759
 	call BillsPC_MoveMonWOMail_BoxNameAndArrows
 	call PCMonInfo
 	call BillsPC_PrintBoxCountAndCapacityInsideBox
-	ld a, $ff
+	xor a
 	ld [wCurPartySpecies], a
 	ld a, CGB_BILLS_PC
 	call BillsPC_ApplyPalettes
@@ -611,10 +599,7 @@ _MovePKMNWithoutMail: ; e2759
 	xor a
 	ld [hBGMapMode], a
 	call ClearSprites
-	call BillsPC_GetSelectedPokemonSpecies
-	ld [wCurPartySpecies], a
-	ld a, CGB_BILLS_PC
-	call BillsPC_ApplyPalettes
+	call BillsPC_GetSelectedMonPal
 	ld de, PCString_WhatsUp
 	call BillsPC_PlaceString
 	ld a, $1
@@ -668,10 +653,7 @@ _MovePKMNWithoutMail: ; e2759
 	call BillsPC_StatsScreen
 	call ExitMenu
 	call PCMonInfo
-	call BillsPC_GetSelectedPokemonSpecies
-	ld [wCurPartySpecies], a
-	ld a, CGB_BILLS_PC
-	jp BillsPC_ApplyPalettes
+	jp BillsPC_GetSelectedMonPal
 ; e28bd
 
 .Cancel: ; e28bd
@@ -1063,7 +1045,13 @@ PCMonInfo: ; e2ac6 (38:6ac6)
 	jr nz, .row
 
 	call BillsPC_LoadMonStats
+	ld a, [wTempMonIsEgg]
+	bit MON_IS_EGG_F, a
 	ld a, [wd265]
+	jr z, .not_egg
+	ld a, EGG
+
+.not_egg
 	ld [wCurPartySpecies], a
 	ld [wCurSpecies], a
 	ld hl, wTempMonForm
@@ -1503,6 +1491,27 @@ CopyBoxmonSpecies: ; e2d30 (38:6d30)
 	call GetSRAMBank
 	ld hl, sBoxSpecies
 	copy_box_data 1
+	ret
+
+BillsPC_GetSelectedMonPal:
+; Sets Pokémon palette, even for eggs, and sets target mon (not EGG) to
+; wCurPartySpecies.
+	call BillsPC_GetSelectedPokemonSpecies
+	push af
+
+	; Get target species or EGG
+	ld a, [wTempMonIsEgg]
+	bit MON_IS_EGG_F, a
+	ld a, EGG
+	jr nz, .got_species
+	pop af
+	push af
+.got_species
+	ld [wCurPartySpecies], a
+	ld a, CGB_BILLS_PC
+	call BillsPC_ApplyPalettes
+	pop af
+	ld [wCurPartySpecies], a
 	ret
 
 BillsPC_GetSelectedPokemonSpecies: ; e2def (38:6def)
