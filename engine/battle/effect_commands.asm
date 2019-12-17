@@ -8793,9 +8793,9 @@ BattleCommand_lowkick:
 	ld a, [hBattleTurn]
 	and a
 	ld hl, wBattleMonSpecies
-	jr z, .got_species
+	jr nz, .got_opp_species
 	ld hl, wEnemyMonSpecies
-.got_species
+.got_opp_species
 	ld a, [hl]
 	ld hl, PokedexDataPointerTable
 	dec a
@@ -8822,6 +8822,14 @@ BattleCommand_lowkick:
 	ld d, h
 	ld e, l
 
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	cp LIGHT_METAL
+	jr nz, .not_light_metal
+	srl d
+	rr e
+
+.not_light_metal
 	ld hl, .WeightTable
 .loop2
 	ld a, [hli]

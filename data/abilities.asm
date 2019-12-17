@@ -109,6 +109,7 @@ AbilityNames:
 	dw Defiant
 	dw CursedBody
 	dw WeakArmor
+	dw LightMetal
 	dw Multiscale
 	dw Harvest
 	dw Moody
@@ -243,6 +244,7 @@ Unnerve:       db "U","n","n","e","r","v","e","@"
 Defiant:       db "D","e","f","i","a","n","t","@"
 CursedBody:    db "C","u","r","s","e","d"," ","B","o","d","y","@"
 WeakArmor:     db "W","e","a","k"," ","A","r","m","o","r","@"
+LightMetal:    db "L","i","g","h","t"," ","M","e","t","a","l","@"
 Multiscale:    db "M","u","l","t","i","s","c","a","l","e","@"
 Harvest:       db "H","a","r","v","e","s","t","@"
 Moody:         db "M","o","o","d","y","@"
@@ -379,6 +381,7 @@ AbilityDescriptions:
 	dw DefiantDescription
 	dw CursedBodyDescription
 	dw WeakArmorDescription
+	dw LightMetalDescription
 	dw MultiscaleDescription
 	dw HarvestDescription
 	dw MoodyDescription
@@ -833,6 +836,10 @@ CursedBodyDescription:
 WeakArmorDescription:
 	db    "Physical attacks"
 	next1 "trade Def for Spd.@"
+
+LightMetalDescription:
+	db    "Halves the"
+	next1 "Pokémon's weight."
 
 MultiscaleDescription:
 	db    "Reduces damage"

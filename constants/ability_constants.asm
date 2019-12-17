@@ -110,6 +110,7 @@
 	const DEFIANT
 	const CURSED_BODY
 	const WEAK_ARMOR
+	const LIGHT_METAL
 	const MULTISCALE
 	const HARVEST
 	const MOODY
