@@ -192,8 +192,6 @@
 	dw QuagsirePokedexEntry
 	dw EspeonPokedexEntry
 	dw UmbreonPokedexEntry
-	dw LeafeonPokedexEntry
-	dw GlaceonPokedexEntry
 	dw MurkrowPokedexEntry
 	dw HonchkrowPokedexEntry
 	dw SlowkingPokedexEntry
@@ -234,6 +232,7 @@
 	dw PhanpyPokedexEntry
 	dw DonphanPokedexEntry
 	dw Porygon2PokedexEntry
+	dw PorygonZPokedexEntry
 	dw SmearglePokedexEntry
 	dw TyroguePokedexEntry
 	dw HitmontopPokedexEntry
@@ -252,5 +251,6 @@
 	dw LugiaPokedexEntry
 	dw HoOhPokedexEntry
 	dw CelebiPokedexEntry
+	dw LeafeonPokedexEntry
+	dw GlaceonPokedexEntry
 	dw SylveonPokedexEntry
-	dw PorygonZPokedexEntry

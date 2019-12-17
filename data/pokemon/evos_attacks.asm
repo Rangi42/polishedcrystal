@@ -3796,44 +3796,6 @@ UmbreonEvosAttacks:
 	db 45, MEAN_LOOK ; Guard Swap → Mean Look
 	db 0 ; no more level-up moves
 
-LeafeonEvosAttacks:
-	db 0 ; no more evolutions
-	db 1, GROWL
-	db 1, TACKLE
-	db 1, LEER ; Tail Whip → similar move
-	db 1, RAZOR_LEAF ; evolution move
-	db 5, MUD_SLAP ; Sand Attack → similar move
-	db 9, DOUBLE_KICK ; Baby-Doll Eyes → Let's Go move
-	db 13, QUICK_ATTACK
-	db 17, BITE ; Grass Whistle → new move
-	db 20, ENERGY_BALL ; Magical Leaf → TM move
-	db 25, GIGA_DRAIN
-	db 29, SWORDS_DANCE
-	db 33, HEALINGLIGHT ; Synthesis → similar move
-	db 37, SEED_BOMB ; Sunny Day → tutor move
-	db 41, DOUBLE_EDGE ; Last Resort → tutor move
-	db 45, SUNNY_DAY ; Leaf Blade → Sunny Day
-	db 0 ; no more level-up moves
-
-GlaceonEvosAttacks:
-	db 0 ; no more evolutions
-	db 1, GROWL
-	db 1, TACKLE
-	db 1, LEER ; Tail Whip → similar move
-	db 1, ICY_WIND ; evolution move
-	db 5, MUD_SLAP ; Sand Attack → similar move
-	db 9, DOUBLE_KICK ; Baby-Doll Eyes → Let's Go move
-	db 13, QUICK_ATTACK
-	db 17, BITE
-	db 20, ICE_SHARD ; Ice Fang → Ice Shard
-	db 25, HAIL ; Ice Shard → Hail
-	db 29, BARRIER
-	db 33, MIRROR_COAT
-	db 37, ICE_BEAM ; Hail → TM move
-	db 41, DOUBLE_EDGE ; Last Resort → tutor move
-	db 45, BLIZZARD
-	db 0 ; no more level-up moves
-
 MurkrowEvosAttacks:
 	db EVOLVE_ITEM, DUSK_STONE, HONCHKROW
 	db 0 ; no more evolutions
@@ -4623,6 +4585,26 @@ Porygon2EvosAttacks:
 	db 67, HYPER_BEAM
 	db 0 ; no more level-up moves
 
+PorygonZEvosAttacks:
+	db 0 ; no more evolutions
+	db 1, TRICK_ROOM
+	db 1, TACKLE
+	db 1, CONVERSION
+	db 1, NASTY_PLOT ; evolution move
+	db 7, PSYBEAM
+	db 12, AGILITY
+	db 18, RECOVER
+	db 23, GROWTH ; Magnet Rise → new move
+	db 29, ICE_BEAM ; Signal Beam → TM move
+	db 34, PAIN_SPLIT ; Embargo → HGSS tutor move
+	db 40, THUNDERBOLT ; Discharge → TM move
+	db 45, MIRROR_COAT ; Lock-On → new move
+	db 50, TRI_ATTACK
+	db 56, MIRROR_COAT ; Magic Coat → new move
+	db 62, ZAP_CANNON
+	db 67, HYPER_BEAM
+	db 0 ; no more level-up moves
+
 SmeargleEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, SKETCH
@@ -4970,6 +4952,44 @@ CelebiEvosAttacks:
 	db 100, AURA_SPHERE ; Sw/Sh move
 	db 0 ; no more level-up moves
 
+LeafeonEvosAttacks:
+	db 0 ; no more evolutions
+	db 1, GROWL
+	db 1, TACKLE
+	db 1, LEER ; Tail Whip → similar move
+	db 1, RAZOR_LEAF ; evolution move
+	db 5, MUD_SLAP ; Sand Attack → similar move
+	db 9, DOUBLE_KICK ; Baby-Doll Eyes → Let's Go move
+	db 13, QUICK_ATTACK
+	db 17, BITE ; Grass Whistle → new move
+	db 20, ENERGY_BALL ; Magical Leaf → TM move
+	db 25, GIGA_DRAIN
+	db 29, SWORDS_DANCE
+	db 33, HEALINGLIGHT ; Synthesis → similar move
+	db 37, SEED_BOMB ; Sunny Day → tutor move
+	db 41, DOUBLE_EDGE ; Last Resort → tutor move
+	db 45, SUNNY_DAY ; Leaf Blade → Sunny Day
+	db 0 ; no more level-up moves
+
+GlaceonEvosAttacks:
+	db 0 ; no more evolutions
+	db 1, GROWL
+	db 1, TACKLE
+	db 1, LEER ; Tail Whip → similar move
+	db 1, ICY_WIND ; evolution move
+	db 5, MUD_SLAP ; Sand Attack → similar move
+	db 9, DOUBLE_KICK ; Baby-Doll Eyes → Let's Go move
+	db 13, QUICK_ATTACK
+	db 17, BITE
+	db 20, ICE_SHARD ; Ice Fang → Ice Shard
+	db 25, HAIL ; Ice Shard → Hail
+	db 29, BARRIER
+	db 33, MIRROR_COAT
+	db 37, ICE_BEAM ; Hail → TM move
+	db 41, DOUBLE_EDGE ; Last Resort → tutor move
+	db 45, BLIZZARD
+	db 0 ; no more level-up moves
+
 SylveonEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, GROWL
@@ -4987,24 +5007,4 @@ SylveonEvosAttacks:
 	db 37, MOONBLAST
 	db 41, DOUBLE_EDGE ; Last Resort → tutor move
 	db 45, PLAY_ROUGH ; Psych Up → new move
-	db 0 ; no more level-up moves
-
-PorygonZEvosAttacks:
-	db 0 ; no more evolutions
-	db 1, TRICK_ROOM
-	db 1, TACKLE
-	db 1, CONVERSION
-	db 1, NASTY_PLOT ; evolution move
-	db 7, PSYBEAM
-	db 12, AGILITY
-	db 18, RECOVER
-	db 23, GROWTH ; Magnet Rise → new move
-	db 29, ICE_BEAM ; Signal Beam → TM move
-	db 34, PAIN_SPLIT ; Embargo → HGSS tutor move
-	db 40, THUNDERBOLT ; Discharge → TM move
-	db 45, MIRROR_COAT ; Lock-On → new move
-	db 50, TRI_ATTACK
-	db 56, MIRROR_COAT ; Magic Coat → new move
-	db 62, ZAP_CANNON
-	db 67, HYPER_BEAM
 	db 0 ; no more level-up moves

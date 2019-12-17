@@ -195,8 +195,6 @@ endc
 	db ANCIENTPOWER ; QUAGSIRE
 	db CONFUSION    ; ESPEON
 	db PURSUIT      ; UMBREON
-	db RAZOR_LEAF   ; LEAFEON
-	db ICY_WIND     ; GLACEON
 	db NO_MOVE      ; MURKROW
 	db NO_MOVE      ; HONCHKROW
 	db NO_MOVE      ; SLOWKING
@@ -236,6 +234,7 @@ endc
 	db NO_MOVE      ; PHANPY
 	db FURY_STRIKES ; DONPHAN
 	db NO_MOVE      ; PORYGON2
+	db NASTY_PLOT   ; PORYGON_Z
 	db NO_MOVE      ; SMEARGLE
 	db NO_MOVE      ; TYROGUE
 	db LOW_KICK     ; HITMONTOP
@@ -254,5 +253,6 @@ endc
 	db NO_MOVE      ; LUGIA
 	db NO_MOVE      ; HO_OH
 	db NO_MOVE      ; CELEBI
+	db RAZOR_LEAF   ; LEAFEON
+	db ICY_WIND     ; GLACEON
 	db DISARM_VOICE ; SYLVEON
-	db NASTY_PLOT   ; PORYGON_Z

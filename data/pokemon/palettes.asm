@@ -404,10 +404,6 @@ EspeonPalette:          INCLUDE "gfx/pokemon/espeon/hgss/normal.pal"
 EspeonShinyPalette:     INCLUDE "gfx/pokemon/espeon/hgss/shiny.pal"
 UmbreonPalette:         INCLUDE "gfx/pokemon/umbreon/hgss/normal.pal"
 UmbreonShinyPalette:    INCLUDE "gfx/pokemon/umbreon/hgss/shiny.pal"
-LeafeonPalette:         INCLUDE "gfx/pokemon/leafeon/hgss/normal.pal"
-LeafeonShinyPalette:    INCLUDE "gfx/pokemon/leafeon/hgss/shiny.pal"
-GlaceonPalette:         INCLUDE "gfx/pokemon/glaceon/hgss/normal.pal"
-GlaceonShinyPalette:    INCLUDE "gfx/pokemon/glaceon/hgss/shiny.pal"
 MurkrowPalette:         INCLUDE "gfx/pokemon/murkrow/hgss/normal.pal"
 MurkrowShinyPalette:    INCLUDE "gfx/pokemon/murkrow/hgss/shiny.pal"
 HonchkrowPalette:       INCLUDE "gfx/pokemon/honchkrow/hgss/normal.pal"
@@ -488,6 +484,8 @@ DonphanPalette:         INCLUDE "gfx/pokemon/donphan/hgss/normal.pal"
 DonphanShinyPalette:    INCLUDE "gfx/pokemon/donphan/hgss/shiny.pal"
 Porygon2Palette:        INCLUDE "gfx/pokemon/porygon2/hgss/normal.pal"
 Porygon2ShinyPalette:   INCLUDE "gfx/pokemon/porygon2/hgss/shiny.pal"
+PorygonZPalette:        INCLUDE "gfx/pokemon/porygon_z/hgss/normal.pal"
+PorygonZShinyPalette:   INCLUDE "gfx/pokemon/porygon_z/hgss/shiny.pal"
 SmearglePalette:        INCLUDE "gfx/pokemon/smeargle/hgss/normal.pal"
 SmeargleShinyPalette:   INCLUDE "gfx/pokemon/smeargle/hgss/shiny.pal"
 TyroguePalette:         INCLUDE "gfx/pokemon/tyrogue/hgss/normal.pal"
@@ -524,18 +522,14 @@ HoOhPalette:            INCLUDE "gfx/pokemon/ho_oh/hgss/normal.pal"
 HoOhShinyPalette:       INCLUDE "gfx/pokemon/ho_oh/hgss/shiny.pal"
 CelebiPalette:          INCLUDE "gfx/pokemon/celebi/hgss/normal.pal"
 CelebiShinyPalette:     INCLUDE "gfx/pokemon/celebi/hgss/shiny.pal"
+LeafeonPalette:         INCLUDE "gfx/pokemon/leafeon/hgss/normal.pal"
+LeafeonShinyPalette:    INCLUDE "gfx/pokemon/leafeon/hgss/shiny.pal"
+GlaceonPalette:         INCLUDE "gfx/pokemon/glaceon/hgss/normal.pal"
+GlaceonShinyPalette:    INCLUDE "gfx/pokemon/glaceon/hgss/shiny.pal"
 SylveonPalette:         INCLUDE "gfx/pokemon/sylveon/hgss/normal.pal"
 SylveonShinyPalette:    INCLUDE "gfx/pokemon/sylveon/hgss/shiny.pal"
-PorygonZPalette:        INCLUDE "gfx/pokemon/porygon_z/hgss/normal.pal"
-PorygonZShinyPalette:   INCLUDE "gfx/pokemon/porygon_z/hgss/shiny.pal"
 EggPalette:             INCLUDE "gfx/pokemon/egg/hgss/normal.pal"
 EggShinyPalette:        INCLUDE "gfx/pokemon/egg/hgss/shiny.pal"
-; 255
-	RGB 30, 22, 17
-	RGB 16, 14, 19
-; 255 shiny
-	RGB 30, 22, 17
-	RGB 16, 14, 19
 
 else
 ; 000
@@ -935,10 +929,6 @@ EspeonPalette:          INCLUDE "gfx/pokemon/espeon/normal.pal"
 EspeonShinyPalette:     INCLUDE "gfx/pokemon/espeon/shiny.pal"
 UmbreonPalette:         INCLUDE "gfx/pokemon/umbreon/normal.pal"
 UmbreonShinyPalette:    INCLUDE "gfx/pokemon/umbreon/shiny.pal"
-LeafeonPalette:         INCLUDE "gfx/pokemon/leafeon/normal.pal"
-LeafeonShinyPalette:    INCLUDE "gfx/pokemon/leafeon/shiny.pal"
-GlaceonPalette:         INCLUDE "gfx/pokemon/glaceon/normal.pal"
-GlaceonShinyPalette:    INCLUDE "gfx/pokemon/glaceon/shiny.pal"
 MurkrowPalette:         INCLUDE "gfx/pokemon/murkrow/normal.pal"
 MurkrowShinyPalette:    INCLUDE "gfx/pokemon/murkrow/shiny.pal"
 HonchkrowPalette:       INCLUDE "gfx/pokemon/honchkrow/normal.pal"
@@ -1019,6 +1009,8 @@ DonphanPalette:         INCLUDE "gfx/pokemon/donphan/normal.pal"
 DonphanShinyPalette:    INCLUDE "gfx/pokemon/donphan/shiny.pal"
 Porygon2Palette:        INCLUDE "gfx/pokemon/porygon2/normal.pal"
 Porygon2ShinyPalette:   INCLUDE "gfx/pokemon/porygon2/shiny.pal"
+PorygonZPalette:        INCLUDE "gfx/pokemon/porygon_z/normal.pal"
+PorygonZShinyPalette:   INCLUDE "gfx/pokemon/porygon_z/shiny.pal"
 SmearglePalette:        INCLUDE "gfx/pokemon/smeargle/normal.pal"
 SmeargleShinyPalette:   INCLUDE "gfx/pokemon/smeargle/shiny.pal"
 TyroguePalette:         INCLUDE "gfx/pokemon/tyrogue/normal.pal"
@@ -1055,18 +1047,14 @@ HoOhPalette:            INCLUDE "gfx/pokemon/ho_oh/normal.pal"
 HoOhShinyPalette:       INCLUDE "gfx/pokemon/ho_oh/shiny.pal"
 CelebiPalette:          INCLUDE "gfx/pokemon/celebi/normal.pal"
 CelebiShinyPalette:     INCLUDE "gfx/pokemon/celebi/shiny.pal"
+LeafeonPalette:         INCLUDE "gfx/pokemon/leafeon/normal.pal"
+LeafeonShinyPalette:    INCLUDE "gfx/pokemon/leafeon/shiny.pal"
+GlaceonPalette:         INCLUDE "gfx/pokemon/glaceon/normal.pal"
+GlaceonShinyPalette:    INCLUDE "gfx/pokemon/glaceon/shiny.pal"
 SylveonPalette:         INCLUDE "gfx/pokemon/sylveon/normal.pal"
 SylveonShinyPalette:    INCLUDE "gfx/pokemon/sylveon/shiny.pal"
-PorygonZPalette:        INCLUDE "gfx/pokemon/porygon_z/normal.pal"
-PorygonZShinyPalette:   INCLUDE "gfx/pokemon/porygon_z/shiny.pal"
 EggPalette:             INCLUDE "gfx/pokemon/egg/normal.pal"
 EggShinyPalette:        INCLUDE "gfx/pokemon/egg/shiny.pal"
-; 255
-	RGB 30, 22, 17
-	RGB 16, 14, 19
-; 255 shiny
-	RGB 30, 22, 17
-	RGB 16, 14, 19
 endc
 
 RedGyaradosPalette:

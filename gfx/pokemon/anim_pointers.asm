@@ -191,8 +191,6 @@ AnimationPointers:
 	dw QuagsireAnimation
 	dw EspeonAnimation
 	dw UmbreonAnimation
-	dw LeafeonAnimation
-	dw GlaceonAnimation
 	dw MurkrowAnimation
 	dw HonchkrowAnimation
 	dw SlowkingAnimation
@@ -233,6 +231,7 @@ AnimationPointers:
 	dw PhanpyAnimation
 	dw DonphanAnimation
 	dw Porygon2Animation
+	dw PorygonZAnimation
 	dw SmeargleAnimation
 	dw TyrogueAnimation
 	dw HitmontopAnimation
@@ -251,7 +250,7 @@ AnimationPointers:
 	dw LugiaAnimation
 	dw HoOhAnimation
 	dw CelebiAnimation
+	dw LeafeonAnimation
+	dw GlaceonAnimation
 	dw SylveonAnimation
-	dw PorygonZAnimation
 	dw EggAnimation
-	dw -1 ; unused

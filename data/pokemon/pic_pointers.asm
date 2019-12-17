@@ -399,10 +399,6 @@ PicPointers::
 	dba EspeonBackpic
 	dba UmbreonFrontpic
 	dba UmbreonBackpic
-	dba LeafeonFrontpic
-	dba LeafeonBackpic
-	dba GlaceonFrontpic
-	dba GlaceonBackpic
 	dba MurkrowFrontpic
 	dba MurkrowBackpic
 	dba HonchkrowFrontpic
@@ -486,6 +482,8 @@ PicPointers::
 	dba DonphanBackpic
 	dba Porygon2Frontpic
 	dba Porygon2Backpic
+	dba PorygonZFrontpic
+	dba PorygonZBackpic
 	dba SmeargleFrontpic
 	dba SmeargleBackpic
 	dba TyrogueFrontpic
@@ -522,9 +520,11 @@ PicPointers::
 	dba HoOhBackpic
 	dba CelebiFrontpic
 	dba CelebiBackpic
+	dba LeafeonFrontpic
+	dba LeafeonBackpic
+	dba GlaceonFrontpic
+	dba GlaceonBackpic
 	dba SylveonFrontpic
 	dba SylveonBackpic
-	dba PorygonZFrontpic
-	dba PorygonZBackpic
 	dba EggPic
 	dba EggPic

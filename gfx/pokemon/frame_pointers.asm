@@ -191,8 +191,6 @@ FramesPointers:
 	dw QuagsireFrames
 	dw EspeonFrames
 	dw UmbreonFrames
-	dw LeafeonFrames
-	dw GlaceonFrames
 	dw MurkrowFrames
 	dw HonchkrowFrames
 	dw SlowkingFrames
@@ -233,6 +231,7 @@ FramesPointers:
 	dw PhanpyFrames
 	dw DonphanFrames
 	dw Porygon2Frames
+	dw PorygonZFrames
 	dw SmeargleFrames
 	dw TyrogueFrames
 	dw HitmontopFrames
@@ -251,7 +250,7 @@ FramesPointers:
 	dw LugiaFrames
 	dw HoOhFrames
 	dw CelebiFrames
+	dw LeafeonFrames
+	dw GlaceonFrames
 	dw SylveonFrames
-	dw PorygonZFrames
 	dw EggFrames
-	dw -1 ; unused

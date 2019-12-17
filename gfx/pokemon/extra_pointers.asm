@@ -191,8 +191,6 @@ AnimationExtraPointers:
 	dw QuagsireAnimationExtra
 	dw EspeonAnimationExtra
 	dw UmbreonAnimationExtra
-	dw LeafeonAnimationExtra
-	dw GlaceonAnimationExtra
 	dw MurkrowAnimationExtra
 	dw HonchkrowAnimationExtra
 	dw SlowkingAnimationExtra
@@ -233,6 +231,7 @@ AnimationExtraPointers:
 	dw PhanpyAnimationExtra
 	dw DonphanAnimationExtra
 	dw Porygon2AnimationExtra
+	dw PorygonZAnimationExtra
 	dw SmeargleAnimationExtra
 	dw TyrogueAnimationExtra
 	dw HitmontopAnimationExtra
@@ -251,7 +250,7 @@ AnimationExtraPointers:
 	dw LugiaAnimationExtra
 	dw HoOhAnimationExtra
 	dw CelebiAnimationExtra
+	dw LeafeonAnimationExtra
+	dw GlaceonAnimationExtra
 	dw SylveonAnimationExtra
-	dw PorygonZAnimationExtra
 	dw EggAnimationExtra
-	dw -1 ; unused

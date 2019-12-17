@@ -2412,29 +2412,17 @@ Pokedex_LoadAnyFootprint: ; 4147b
 	dec a
 	and 7
 	swap a ; * $10
+	add a, a
 	ld l, a
 	ld h, 0
 	add hl, de
 	ld de, Footprints
 	add hl, de
 
-	push hl
 	ld e, l
 	ld d, h
 	ld hl, VTiles2 tile $65
-	lb bc, BANK(Footprints), 2
-	call Request1bpp
-	pop hl
-
-	; Whoever was editing footprints forgot to fix their
-	; tile editor. Now each bottom half is 8 tiles off.
-	ld de, 8 tiles
-	add hl, de
-
-	ld e, l
-	ld d, h
-	ld hl, VTiles2 tile $67
-	lb bc, BANK(Footprints), 2
+	lb bc, BANK(Footprints), 4
 	jp Request1bpp
 
 Pokedex_LoadGFX:
@@ -2592,5 +2580,5 @@ QuestionMarkLZ: ; 1de0e1
 INCBIN "gfx/pokedex/question_mark.2bpp.lz"
 
 Footprints: ; f9434
-INCBIN "gfx/pokedex/footprints.w128.1bpp"
+INCLUDE "gfx/footprints.asm"
 ; fb434
