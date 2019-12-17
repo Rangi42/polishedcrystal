@@ -1560,7 +1560,7 @@ VitaminEffect: ; ee3d
 
 	add 10
 	jr c, .set_to_max
-	cp 253
+	cp 252 + 1
 	jr c, .ev_value_ok
 .set_to_max
 	ld a, 252

@@ -213,6 +213,7 @@ ValidPokemonLevels:
 	db  23, 100 ; Granbull
 	db   1, 100 ; Qwilfish
 	db  20, 100 ; Scizor
+	db   1, 100 ; Shuckle
 	db  10, 100 ; Heracross
 	db   1,  39 ; Sneasel
 	db  40, 100 ; Weavile
@@ -255,4 +256,3 @@ ValidPokemonLevels:
 	db  20, 100 ; Sylveon
 	db  40, 100 ; Porygon-Z
 	db 255, 255 ; Egg
-	db 255, 255 ; ?????

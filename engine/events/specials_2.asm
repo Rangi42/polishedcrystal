@@ -86,16 +86,16 @@ endr
 .Nickname:
 	db "Masuda@"
 
-KIRK_BUFFY_ID EQU 00518
+KIRK_SHUCKIE_ID EQU 00518
 
-SpecialGiveWobbuffet: ; 7305
+SpecialGiveShuckie: ; 7305
 
 ; Adding to the party.
 	xor a
 	ld [wMonType], a
 
-; Level 20 Wobbuffet.
-	ld a, WOBBUFFET
+; Level 20 Shuckle.
+	ld a, SHUCKLE
 	ld [wCurPartySpecies], a
 	ld a, 20
 	ld [wCurPartyLevel], a
@@ -104,27 +104,27 @@ SpecialGiveWobbuffet: ; 7305
 	jr nc, .NotGiven
 
 ; Caught data.
-	lb bc, MALE, DUSK_BALL
+	lb bc, MALE, NET_BALL
 	farcall SetGiftPartyMonCaughtData
 
-; Holding a Berry.
+; Holding a Berry Juice.
 	ld hl, wPartyMon1Item
 	call _GetLastPartyMonAttribute
-	ld [hl], SITRUS_BERRY
+	ld [hl], BERRY_JUICE
 
 ; OT ID.
 	ld hl, wPartyMon1ID
 	call _GetLastPartyMonAttribute
-	ld a, KIRK_BUFFY_ID / $100
+	ld a, KIRK_SHUCKIE_ID / $100
 	ld [hli], a
-	ld [hl], KIRK_BUFFY_ID % $100
+	ld [hl], KIRK_SHUCKIE_ID % $100
 
 ; Nickname.
 	ld a, [wPartyCount]
 	dec a
 	ld hl, wPartyMonNicknames
 	call SkipNames
-	ld de, SpecialWobbuffetNick
+	ld de, SpecialShuckieNick
 	call CopyName2
 
 ; OT.
@@ -132,12 +132,12 @@ SpecialGiveWobbuffet: ; 7305
 	dec a
 	ld hl, wPartyMonOT
 	call SkipNames
-	ld de, SpecialWobbuffetOT
+	ld de, SpecialShuckieOT
 	call CopyName2
 
 ; Engine flag for this event.
 	ld hl, wDailyFlags
-	set 5, [hl] ; ENGINE_WOBBUFFET_GIVEN
+	set 5, [hl] ; ENGINE_SHUCKIE_GIVEN
 	ld a, TRUE
 	ld [wScriptVar], a
 	ret
@@ -154,12 +154,12 @@ _GetLastPartyMonAttribute:
 	rst AddNTimes
 	ret
 
-SpecialReturnWobbuffet: ; 737e
+SpecialReturnShuckie: ; 737e
 	farcall SelectMonFromParty
 	jr c, .refused
 
 	ld a, [wCurPartySpecies]
-	cp WOBBUFFET
+	cp SHUCKLE
 	jr nz, .DontReturn
 
 	ld a, [wCurPartyMon]
@@ -169,17 +169,17 @@ SpecialReturnWobbuffet: ; 737e
 
 ; OT ID
 	ld a, [hli]
-	cp KIRK_BUFFY_ID / $100
+	cp KIRK_SHUCKIE_ID / $100
 	jr nz, .DontReturn
 	ld a, [hl]
-	cp KIRK_BUFFY_ID % $100
+	cp KIRK_SHUCKIE_ID % $100
 	jr nz, .DontReturn
 
 ; OT
 	ld a, [wCurPartyMon]
 	ld hl, wPartyMonOT
 	call SkipNames
-	ld de, SpecialWobbuffetOT
+	ld de, SpecialShuckieOT
 .CheckOT:
 	ld a, [de]
 	cp [hl]
@@ -224,10 +224,10 @@ SpecialReturnWobbuffet: ; 737e
 	ld [wScriptVar], a
 	ret
 
-SpecialWobbuffetOT:
+SpecialShuckieOT:
 	db "Kirk@"
-SpecialWobbuffetNick:
-	db "Buffy@"
+SpecialShuckieNick:
+	db "Shuckie@"
 
 Special_BillsGrandfather: ; 73f7
 	farcall SelectMonFromParty

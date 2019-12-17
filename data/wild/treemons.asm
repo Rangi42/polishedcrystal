@@ -117,5 +117,6 @@ TreeMons6:
 
 RockMons:
 	db 70, KRABBY,     15
-	db 30, GEODUDE,    15
+	db 25, GEODUDE,    15
+	db  5, SHUCKLE,    15
 	db -1

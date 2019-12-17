@@ -743,8 +743,12 @@ QwilfishEggMoves:
 	db WATER_PULSE
 	db $ff
 
-ShuckleEggMoves: ; TODO
+ShuckleEggMoves:
 	db ROLLOUT
+	db ACID
+	db KNOCK_OFF
+	db MUD_SLAP
+	db ROCK_BLAST
 	db $ff
 
 HeracrossEggMoves:
