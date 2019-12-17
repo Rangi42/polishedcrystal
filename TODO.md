@@ -94,9 +94,6 @@ Shamouti Island:
 
 Refer to [B/W animations with sound effects](https://www.dropbox.com/s/003d1w32gm60fdt/Pok%C3%A9mon%20Black%20%26%20White%20-%20All%20move%20animations%20with%20SOUND%20EFFECTS%20ONLY%21.mp4?dl=0).
 
-* Aqua Tail
-* Hex
-* Knock Off
 * Roost
 * Venoshock
 
