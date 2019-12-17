@@ -686,6 +686,10 @@ EggHatch_AnimationSequence: ; 1728f (5:728f)
 	call PlayMusic
 	farcall BlankScreen
 	call DisableLCD
+	ld a, " "
+	ld bc, VBGMap1 - VBGMap0
+	hlbgcoord 0, 0
+	call ByteFill
 	ld hl, EggHatchGFX
 	ld de, VTiles0 tile $00
 	ld bc, $20
