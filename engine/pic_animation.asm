@@ -291,8 +291,6 @@ PokeAnim_DeinitFrames: ; d01a9
 
 AnimateMon_CheckIfPokemon: ; d01c6
 	ld a, [wCurPartySpecies]
-	cp EGG
-	jr z, .fail
 	call IsAPokemon
 	jr c, .fail
 	and a

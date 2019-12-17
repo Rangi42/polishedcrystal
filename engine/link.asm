@@ -1225,12 +1225,9 @@ ValidateOTTrademon: ; fb57e
 	add hl, bc
 	ld a, [hl]
 	pop hl
-	cp EGG
-	jr z, .matching_or_egg
 	cp [hl]
 	jr nz, .abnormal
 
-.matching_or_egg
 	ld b, h
 	ld c, l
 	ld hl, MON_LEVEL

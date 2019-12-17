@@ -215,6 +215,7 @@ MenuMonIconColors::
 	iconpal PURPLE, GRAY ; GRANBULL
 	iconpal BLUE, PURPLE ; QWILFISH
 	iconpal RED, GRAY ; SCIZOR
+	iconpal RED, PURPLE ; SHUCKLE
 	iconpal BLUE, PURPLE ; HERACROSS
 	iconpal BLUE, RED ; SNEASEL
 	iconpal BLUE, RED ; WEAVILE

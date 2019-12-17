@@ -19,41 +19,42 @@ ManiasHouse_MapScriptHeader:
 ManiaScript:
 	faceplayer
 	opentext
-	checkevent EVENT_MANIA_TOOK_BUFFY_OR_LET_YOU_KEEP_HIM
+	checkevent EVENT_MANIA_TOOK_SHUCKIE_OR_LET_YOU_KEEP_HIM
 	iftrue .default_postevent
-	checkevent EVENT_GOT_BUFFY
-	iftrue .alreadyhavebuffy
-	writetext ManiaText_AskLookAfterWobbuffet
+	checkevent EVENT_GOT_SHUCKIE
+	iftrue .alreadyhaveshuckie
+	writetext ManiaText_AskLookAfterShuckie
 	yesorno
-	iffalse .refusetotakebuffy
-	special SpecialGiveWobbuffet
+	iffalse .refusetotakeshuckie
+	special SpecialGiveShuckie
 	iffalse .partyfull
-	writetext ManiaText_TakeCareOfWobbuffet
+	special TeachShuckiePoisonJab
+	writetext ManiaText_TakeCareOfShuckie
 	buttonsound
 	waitsfx
-	writetext ManiaText_GotWobbuffet
+	writetext ManiaText_GotShuckie
 	playsound SFX_KEY_ITEM
 	waitsfx
 	closetext
-	setevent EVENT_GOT_BUFFY
+	setevent EVENT_GOT_SHUCKIE
 	end
 
-.alreadyhavebuffy
-	checkflag ENGINE_WOBBUFFET_GIVEN
-	iffalse .returnbuffy
-	jumpopenedtext ManiaText_TakeCareOfWobbuffet
+.alreadyhaveshuckie
+	checkflag ENGINE_SHUCKIE_GIVEN
+	iffalse .returnshuckie
+	jumpopenedtext ManiaText_TakeCareOfShuckie
 
 .partyfull
 	jumpopenedtext ManiaText_PartyFull
 
-.refusetotakebuffy
+.refusetotakeshuckie
 	jumpopenedtext ManiaText_IfHeComesBack
 
-.returnbuffy
+.returnshuckie
 	writetext ManiaText_CanIHaveMyMonBack
 	yesorno
 	iffalse .refused
-	special SpecialReturnWobbuffet
+	special SpecialReturnShuckie
 	ifequal $0, .wrong
 	ifequal $1, .refused
 	ifequal $3, .superhappy
@@ -61,29 +62,29 @@ ManiaScript:
 	writetext ManiaText_ThankYou
 	waitbutton
 	closetext
-	setevent EVENT_MANIA_TOOK_BUFFY_OR_LET_YOU_KEEP_HIM
+	setevent EVENT_MANIA_TOOK_SHUCKIE_OR_LET_YOU_KEEP_HIM
 	end
 
 .wrong
-	jumpopenedtext ManiaText_WobbuffetNotThere
+	jumpopenedtext ManiaText_ShuckieNotThere
 
 .superhappy
-	writetext ManiaText_WobbuffetLikesYou
+	writetext ManiaText_ShuckieLikesYou
 	waitbutton
 	closetext
-	setevent EVENT_MANIA_TOOK_BUFFY_OR_LET_YOU_KEEP_HIM
+	setevent EVENT_MANIA_TOOK_SHUCKIE_OR_LET_YOU_KEEP_HIM
 	end
 
 .refused
 	jumpopenedtext ManiaText_SameAsBeingRobbed
 
 .nothingleft
-	jumpopenedtext ManiaText_WobbuffetIsYourLastMon
+	jumpopenedtext ManiaText_ShuckieIsYourLastMon
 
 .default_postevent
 	jumpopenedtext ManiaText_HappinessSpeech
 
-ManiaText_AskLookAfterWobbuffet:
+ManiaText_AskLookAfterShuckie:
 	text "I, I'm in shock!"
 
 	para "A guy about your"
@@ -107,14 +108,14 @@ ManiaText_AskLookAfterWobbuffet:
 	line "for a while?"
 	done
 
-ManiaText_TakeCareOfWobbuffet:
+ManiaText_TakeCareOfShuckie:
 	text "Oh, thank you!"
 
 	para "Take good care of"
 	line "it, please!"
 	done
 
-ManiaText_GotWobbuffet:
+ManiaText_GotShuckie:
 	text "<PLAYER> received a"
 	line "#mon."
 	done
@@ -143,13 +144,13 @@ ManiaText_ThankYou:
 	text "Thank you!"
 	done
 
-ManiaText_WobbuffetNotThere:
+ManiaText_ShuckieNotThere:
 	text "Hey, you don't"
 	line "have my #mon"
 	cont "with you."
 	done
 
-ManiaText_WobbuffetLikesYou:
+ManiaText_ShuckieLikesYou:
 	text "My #mon has"
 	line "come to like you."
 
@@ -174,7 +175,7 @@ ManiaText_HappinessSpeech:
 	line "treats them well."
 	done
 
-ManiaText_WobbuffetIsYourLastMon:
+ManiaText_ShuckieIsYourLastMon:
 	text "If I take my #-"
 	line "mon back, what are"
 

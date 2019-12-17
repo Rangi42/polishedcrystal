@@ -211,6 +211,7 @@ EggMovePointers:: ; 0x23b11
 	dw NoEggMoves
 	dw QwilfishEggMoves
 	dw NoEggMoves
+	dw ShuckleEggMoves
 	dw HeracrossEggMoves
 	dw SneaselEggMoves
 	dw NoEggMoves

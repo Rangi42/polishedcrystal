@@ -4172,6 +4172,27 @@ ScizorEvosAttacks:
 	db 57, SWORDS_DANCE
 	db 0 ; no more level-up moves
 
+ShuckleEvosAttacks:
+	db 0 ; no more evolutions
+	db 1, MUD_SLAP ; Constrict → GSC TM move
+	db 1, DEFENSE_CURL ; Withdraw → similar move
+	db 1, ROLLOUT
+	db 5, ENCORE
+	db 9, WRAP
+	db 12, STRING_SHOT ; Struggle Bug → HGSS tutor move
+	db 16, SAFEGUARD
+	db 20, REST
+	db 23, ROCK_THROW
+	db 27, ACID ; Gastro Acid → egg move
+	db 31, DISABLE ; Power Trick → new move
+	db 34, VENOSHOCK ; Shell Smash → TM move
+	db 38, ROCK_BLAST ; Rock Slide → Sw/Sh move
+	db 42, BUG_BITE
+	db 45, ROCK_SLIDE ; Power Split + Guard Split → Rock Slide
+	db 49, REVERSAL ; Stone Edge → Sw/Sh move
+	db 53, STONE_EDGE ; Sticky Web → Stone Edge
+	db 0 ; no more level-up moves
+
 HeracrossEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, NIGHT_SLASH

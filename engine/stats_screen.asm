@@ -417,6 +417,16 @@ StatsScreen_PlaceHorizontalDivider: ; 4df8f (13:5f8f)
 	ld b, 0
 	ret
 
+StatsScreen_PlaceEggDivider:
+	hlcoord 0, 7
+	ld b, SCREEN_WIDTH
+	ld a, $3e
+.loop
+	ld [hli], a
+	dec b
+	jr nz, .loop
+	ret
+
 StatsScreen_PlacePageSwitchArrows: ; 4df9b (13:5f9b)
 	hlcoord 10, 6
 	ld [hl], "◀"
@@ -1140,7 +1150,7 @@ EggStatsScreen: ; 4e33a
 	call SetHPPal
 	ld b, CGB_STATS_SCREEN_HP_PALS
 	call GetCGBLayout
-	call StatsScreen_PlaceHorizontalDivider
+	call StatsScreen_PlaceEggDivider
 	ld de, EggString
 	hlcoord 8, 1
 	call PlaceString

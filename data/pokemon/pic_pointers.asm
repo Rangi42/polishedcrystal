@@ -442,6 +442,8 @@ PicPointers::
 	dba QwilfishBackpic
 	dba ScizorFrontpic
 	dba ScizorBackpic
+	dba ShuckleFrontpic
+	dba ShuckleBackpic
 	dba HeracrossFrontpic
 	dba HeracrossBackpic
 	dba SneaselFrontpic
@@ -524,4 +526,5 @@ PicPointers::
 	dba SylveonBackpic
 	dba PorygonZFrontpic
 	dba PorygonZBackpic
+	dba EggPic
 	dba EggPic

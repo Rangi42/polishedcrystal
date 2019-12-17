@@ -1271,7 +1271,7 @@ GiveEgg:: ; df8c
 	ld b, 0
 	ld c, a
 	add hl, bc
-	ld a, EGG
+	ld a, [wCurPartySpecies]
 	ld [hl], a
 	ld a, [wPartyCount]
 	dec a

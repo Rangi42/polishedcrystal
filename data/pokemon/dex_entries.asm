@@ -208,7 +208,7 @@ EspeonPokedexEntry::     INCLUDE "data/pokemon/dex_entries/196.asm"
 UmbreonPokedexEntry::    INCLUDE "data/pokemon/dex_entries/197.asm"
 
 
-SECTION "Pokedex Entries 193-253", ROMX
+SECTION "Pokedex Entries 193-254", ROMX
 
 PokedexEntries4::
 LeafeonPokedexEntry::    INCLUDE "data/pokemon/dex_entries/470.asm"
@@ -231,6 +231,7 @@ SnubbullPokedexEntry::   INCLUDE "data/pokemon/dex_entries/209.asm"
 GranbullPokedexEntry::   INCLUDE "data/pokemon/dex_entries/210.asm"
 QwilfishPokedexEntry::   INCLUDE "data/pokemon/dex_entries/211.asm"
 ScizorPokedexEntry::     INCLUDE "data/pokemon/dex_entries/212.asm"
+ShucklePokedexEntry::    INCLUDE "data/pokemon/dex_entries/213.asm"
 HeracrossPokedexEntry::  INCLUDE "data/pokemon/dex_entries/214.asm"
 SneaselPokedexEntry::    INCLUDE "data/pokemon/dex_entries/215.asm"
 WeavilePokedexEntry::    INCLUDE "data/pokemon/dex_entries/461.asm"

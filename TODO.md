@@ -128,9 +128,7 @@ Some of these may never be added; they're just suggestions.
    * Corsola/Cursola in Scary Cave
    * Farfetch'd/Sirfetch'd instead of non-faithful Farfetch'd
 * More Pokémon
-   * Rewrite Eggs to use the IsEgg bitflag instead of $fe
    * Rewrite everything to use two-byte IDs, allowing 65,534 Pokémon
-   * Restore Shuckle as the Cianwood guy's Pokémon
    * Restore Stantler as a Normal/Psychic type, and make Girafarig Psychic/Dark
    * Add all the new babies and evolutions of Gen 1 and 2 Pokémon
       * Lickilicky
@@ -225,8 +223,6 @@ Some of these may never be added; they're just suggestions.
 * Allow evolution during battle
 * Itemfinder makes you face towards the item
 * Itemfinder beeps N times for an item N steps away
-* Add more Berries
-* Restore Berry Juice, and make it heal full HP but cause confusion (in non-Faithful)
 * Battle [En and Madoka](http://bulbapedia.bulbagarden.net/wiki/The_Legendary_Rotation_Battle!) somewhere (Trainer House after catching the legendary trios, different trainer each day?)
    * Madoka:
    * She entered this tournament with new Pokémon! Which Pokémon wil she use?

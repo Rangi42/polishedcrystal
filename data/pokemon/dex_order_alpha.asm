@@ -195,6 +195,7 @@ AlphabeticalPokedexOrder:
 	db SEEL
 	db SENTRET
 	db SHELLDER
+	db SHUCKLE
 	db SKARMORY
 	db SLOWBRO
 	db SLOWKING

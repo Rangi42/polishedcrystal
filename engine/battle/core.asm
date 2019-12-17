@@ -6546,7 +6546,7 @@ GiveBattleEVs:
 
 	; Check if our EV is >252 in the stat, and if so,
 	; revert it to 252.
-	cp 253
+	cp 252 + 1
 	jr c, .add_done
 .ev_overflow
 	ld a, 252
@@ -7462,7 +7462,7 @@ ExitBattle: ; 3f69e
 	xor a
 	ld [wForceEvolution], a
 	predef EvolveAfterBattle
-	farjp GivePokerus
+	farjp GivePokerusAndConvertBerries
 ; 3f6d0
 
 HandleNuzlockeFlags:

@@ -217,6 +217,7 @@ CryHeaders::
 	mon_cry CRY_DUNSPARCE,   $000,  $180 ; Granbull
 	mon_cry CRY_SLOWKING,    $160,  $0e0 ; Qwilfish
 	mon_cry CRY_AMPHAROS,    $000,  $160 ; Scizor
+	mon_cry CRY_DUNSPARCE,   $290,  $0a8 ; Shuckle
 	mon_cry CRY_AMPHAROS,    $035,  $0e0 ; Heracross
 	mon_cry CRY_WOOPER,      $053,  $0af ; Sneasel
 	mon_cry CRY_WOOPER,      $053,  $0af ; Weavile
@@ -259,4 +260,3 @@ CryHeaders::
 	mon_cry CRY_VENONAT,     $0b0,  $16f ; Sylveon
 	mon_cry CRY_GIRAFARIG,   $073,  $240 ; PorygonZ
 	mon_cry CRY_NIDORAN_M,      0,     0 ; Egg
-	mon_cry CRY_NIDORAN_M,      0,     0 ; 255

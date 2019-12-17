@@ -10,6 +10,18 @@ TeachDratiniExtremeSpeed: ; 0x8b170
 	db DRAGON_RAGE
 	db 0
 
+TeachShuckiePoisonJab:
+	call GetLastPartyMonMoveset
+	ld hl, .Moveset
+	jp GiveSpecialMoveset
+
+.Moveset:
+	db POISON_JAB
+	db SAFEGUARD
+	db REST
+	db ROCK_THROW
+	db 0
+
 TeachMagikarpDragonRage:
 	call GetLastPartyMonMoveset
 	ld hl, .Moveset

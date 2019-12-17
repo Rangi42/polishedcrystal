@@ -1304,8 +1304,8 @@ PrepMonFrontpic:: ; 3786
 
 _PrepMonFrontpic:: ; 378b
 	ld a, [wCurPartySpecies]
-	call IsAPokemon
-	jr c, .not_pokemon
+	and a
+	jr z, .not_pokemon
 
 	push hl
 	ld de, VTiles2
