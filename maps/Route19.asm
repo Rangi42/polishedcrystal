@@ -111,12 +111,12 @@ GenericTrainerCosplayerBrooke:
 
 EngineerScript_0x19ea4d:
 	checkevent EVENT_CINNABAR_ROCKS_CLEARED
-	iftrue_jumptextfaceplayer UnknownText_0x19ecaf
+	iffalse_jumptextfaceplayer UnknownText_0x19ecaf
 	jumptextfaceplayer UnknownText_0x19ed24
 
 EngineerScript_0x19ea61:
 	checkevent EVENT_CINNABAR_ROCKS_CLEARED
-	iftrue_jumptextfaceplayer Route19EngineerText2
+	iffalse_jumptextfaceplayer Route19EngineerText2
 	jumptextfaceplayer Route19EngineerText1
 
 SwimmerfDawnSeenText:
