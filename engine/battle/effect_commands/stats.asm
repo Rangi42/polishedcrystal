@@ -146,6 +146,8 @@ FarChangeStat:
 	bit STAT_TARGET_F, b
 	call nz, SwitchTurn
 	farcall ShowPotentialAbilityActivation
+	ld c, 60
+	call DelayFrames
 	bit STAT_TARGET_F, b
 	call nz, SwitchTurn
 	ld hl, WontRiseAnymoreText
