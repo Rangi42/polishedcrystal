@@ -5690,65 +5690,18 @@ BattleCommand_paralyzetarget:
 	call PrintParalyze
 	jp PostStatusWithSynchronize
 
-BattleCommand_bulkup:
-	lb bc, ATTACK, DEFENSE
-	jr DoubleUp
-BattleCommand_calmmind:
-	lb bc, SP_ATTACK, SP_DEFENSE
-	jr DoubleUp
-BattleCommand_dragondance:
-	lb bc, ATTACK, SPEED
-	jr DoubleUp
 BattleCommand_growth:
 	lb bc, ATTACK, SP_ATTACK
 	call GetWeatherAfterCloudNine
 	cp WEATHER_SUN
-	jr nz, DoubleUp
+	jr nz, .got_stats_to_raise
 	lb bc, ($10 | ATTACK), ($10 | SP_ATTACK)
-	jr DoubleUp
-BattleCommand_honeclaws:
-	lb bc, ATTACK, ACCURACY
-DoubleUp:
-; stats to raise are in bc
-	push bc ; StatUp clobbers c (via CheckIfStatCanBeRaised), which we want to retain
-	call ResetMiss
-	call BattleCommand_statup
-	ld a, [wFailedMessage]
-	ld d, a ; note for 2nd stat
-	ld e, 0	; track if we've shown animation
-	and a
-	call z, .msg_animate
+.got_stats_to_raise
+	push bc
+	call ForceRaiseStat
 	pop bc
 	ld b, c
-	push de
-	call ResetMiss
-	call BattleCommand_statup
-	pop de
-	ld a, [wFailedMessage]
-	and a
-	jr z, .msg_animate
-	and d ; if this result in a being nonzero, we want to give a failure message
-	ret z
-	ld b, MULTIPLE_STATS + 1
-	call GetStatName
-	call AnimateFailedMove
-	ld hl, WontRiseAnymoreText
-	jp StdBattleTextBox
-.msg_animate
-	ld a, e
-	and a
-	push de
-	jr nz, .statupmessage
-	inc a
-	ld [wKickCounter], a
-	call AnimateCurrentMove
-	pop de
-	inc e
-	push de
-.statupmessage
-	call BattleCommand_statupmessage
-	pop de
-	ret
+	jp ForceRaiseStat
 
 BattleCommand_attackup: ; 361ac
 ; attackup
@@ -5920,7 +5873,7 @@ _RaiseOppStatHit:
 	jr ChangeStat
 
 BattleCommand_loweroppstathit:
-	ld b, 0
+	ld b, -1
 LowerOppStatHit:
 	xor a
 _LowerOppStatHit:

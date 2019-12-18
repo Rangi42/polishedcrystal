@@ -93,7 +93,6 @@ BattleCommandPointers:
 	command endure
 	command checkcurl
 	command rolloutpower
-	command bulkup
 	command conditionalboost
 	command attract
 	command happinesspower
@@ -108,41 +107,7 @@ BattleCommandPointers:
 	command hiddenpower
 	command startrain
 	command startsun
-	command attackup
-	command defenseup
-	command speedup
-	command specialattackup
-	command specialdefenseup
-	command accuracyup
-	command evasionup
-	command attackup2
-	command defenseup2
-	command speedup2
-	command specialattackup2
-	command specialdefenseup2
-	command accuracyup2
-	command evasionup2
-	command attackdown
-	command defensedown
-	command speeddown
-	command specialattackdown
-	command specialdefensedown
-	command accuracydown
-	command evasiondown
-	command attackdown2
-	command defensedown2
-	command speeddown2
-	command specialattackdown2
-	command specialdefensedown2
-	command accuracydown2
-	command evasiondown2
-	command statupmessage
-	command statdownmessage
-	command statupfailtext
-	command statdownfailtext
 	command effectchance
-	command statdownanim
-	command statupanim
 	command switchturn
 	command bellydrum
 	command rage
@@ -159,11 +124,8 @@ BattleCommandPointers:
 	command ragedamage
 	command resettypematchup
 	command allstatsup
-	command calmmind
 	command raisesubnoanim
 	command lowersubnoanim
-	command dragondance
-	command honeclaws
 	command clearmissdamage
 	command movedelay
 	command hittarget
@@ -210,7 +172,7 @@ lowerstat: macro
 	endm
 	dw BattleCommand_lowerstat
 
-	enum raisestat_command
+	enum forceraisestat_command
 forceraisestat: macro
 	db forceraisestat_command
 	db \1
@@ -224,7 +186,7 @@ forcelowerstat: macro
 	endm
 	dw BattleCommand_forcelowerstat
 
-	enum raisestat_command
+	enum raisestathit_command
 raisestathit: macro
 	db raisestathit_command
 	db \1
@@ -237,20 +199,6 @@ lowerstathit: macro
 	db \1
 	endm
 	dw BattleCommand_lowerstathit
-
-	enum forceraiseoppstat_command
-forceraiseoppstat: macro
-	db forceraiseoppstat_command
-	db \1
-	endm
-	dw BattleCommand_forceraiseoppstat
-
-	enum forceloweroppstat_command
-forceloweroppstat: macro
-	db forceloweroppstat_command
-	db \1
-	endm
-	dw BattleCommand_forceloweroppstat
 
 	enum raiseoppstat_command
 raiseoppstat: macro
@@ -266,7 +214,21 @@ loweroppstat: macro
 	endm
 	dw BattleCommand_loweroppstat
 
-	enum raiseoppstat_command
+	enum forceraiseoppstat_command
+forceraiseoppstat: macro
+	db forceraiseoppstat_command
+	db \1
+	endm
+	dw BattleCommand_forceraiseoppstat
+
+	enum forceloweroppstat_command
+forceloweroppstat: macro
+	db forceloweroppstat_command
+	db \1
+	endm
+	dw BattleCommand_forceloweroppstat
+
+	enum raiseoppstathit_command
 raiseoppstathit: macro
 	db raiseoppstathit_command
 	db \1
