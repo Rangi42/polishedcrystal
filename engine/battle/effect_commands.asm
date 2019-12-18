@@ -2481,21 +2481,6 @@ BattleCommand_statupanim: ; 34fd1
 ; 34fdb
 
 
-BattleCommand_statdownanim: ; 34fdb
-	ld a, [wAttackMissed]
-	and a
-	jp nz, BattleCommand_movedelay
-
-	ld a, [hBattleTurn]
-	and a
-	ld a, BATTLEANIM_ENEMY_STAT_DOWN
-	jr z, StatUpDownAnim
-	ld a, BATTLEANIM_WOBBLE
-
-	; fallthrough
-; 34feb
-
-
 StatUpDownAnim: ; 34feb
 	ld [wNumHits], a
 
@@ -5728,16 +5713,6 @@ BattleCommand_specialdefenseup: ; 361bc
 	ld b, SP_DEFENSE
 	jr BattleCommand_statup
 
-BattleCommand_accuracyup: ; 361c0
-; accuracyup
-	ld b, ACCURACY
-	jr BattleCommand_statup
-
-BattleCommand_evasionup: ; 361c4
-; evasionup
-	ld b, EVASION
-	jr BattleCommand_statup
-
 BattleCommand_attackup2: ; 361c8
 ; attackup2
 	ld b, $10 | ATTACK
@@ -5762,16 +5737,6 @@ BattleCommand_specialdefenseup2: ; 361d8
 ; specialdefenseup2
 	ld b, $10 | SP_DEFENSE
 	jr BattleCommand_statup
-
-BattleCommand_accuracyup2: ; 361dc
-; accuracyup2
-	ld b, $10 | ACCURACY
-	jr BattleCommand_statup
-
-BattleCommand_evasionup2: ; 361e0
-; evasionup2
-	ld b, $10 | EVASION
-	; fallthrough
 
 BattleCommand_statup:
 	jp ForceRaiseStat
@@ -5961,208 +5926,6 @@ StatUpAnimation:
 ; 362ad
 
 
-BattleCommand_attackdown: ; 362ad
-; attackdown
-	ld a, ATTACK
-	jr BattleCommand_statdown
-
-BattleCommand_defensedown: ; 362b1
-; defensedown
-	ld a, DEFENSE
-	jr BattleCommand_statdown
-
-BattleCommand_speeddown: ; 362b5
-; speeddown
-	ld a, SPEED
-	jr BattleCommand_statdown
-
-BattleCommand_specialattackdown: ; 362b9
-; specialattackdown
-	ld a, SP_ATTACK
-	jr BattleCommand_statdown
-
-BattleCommand_specialdefensedown: ; 362bd
-; specialdefensedown
-	ld a, SP_DEFENSE
-	jr BattleCommand_statdown
-
-BattleCommand_accuracydown: ; 362c1
-; accuracydown
-	ld a, ACCURACY
-	jr BattleCommand_statdown
-
-BattleCommand_evasiondown: ; 362c5
-; evasiondown
-	ld a, EVASION
-	jr BattleCommand_statdown
-
-BattleCommand_attackdown2: ; 362c9
-; attackdown2
-	ld a, $10 | ATTACK
-	jr BattleCommand_statdown
-
-BattleCommand_defensedown2: ; 362cd
-; defensedown2
-	ld a, $10 | DEFENSE
-	jr BattleCommand_statdown
-
-BattleCommand_speeddown2: ; 362d1
-; speeddown2
-	ld a, $10 | SPEED
-	jr BattleCommand_statdown
-
-BattleCommand_specialattackdown2: ; 362d5
-; specialattackdown2
-	ld a, $10 | SP_ATTACK
-	jr BattleCommand_statdown
-
-BattleCommand_specialdefensedown2: ; 362d9
-; specialdefensedown2
-	ld a, $10 | SP_DEFENSE
-	jr BattleCommand_statdown
-
-BattleCommand_accuracydown2: ; 362dd
-; accuracydown2
-	ld a, $10 | ACCURACY
-	jr BattleCommand_statdown
-
-BattleCommand_evasiondown2: ; 362e1
-; evasiondown2
-	ld a, $10 | EVASION
-
-BattleCommand_statdown: ; 362e3
-; statdown
-
-	ld [wLoweredStat], a
-
-; check abilities
-	and $f
-	ld c, a
-	call GetOpponentAbilityAfterMoldBreaker
-	cp CLEAR_BODY
-	jp z, .Failed
-	cp HYPER_CUTTER
-	jr z, .atk
-	cp BIG_PECKS
-	jr z, .def
-	cp KEEN_EYE
-	jr z, .acc
-	jr .no_relevant_ability
-.atk
-	ld a, c
-	and a ; cp ATTACK
-	jr z, .Failed
-.def
-	ld a, c
-	cp DEFENSE
-	jr z, .Failed
-.acc
-	ld a, c
-	cp ACCURACY
-	jr z, .Failed
-
-.no_relevant_ability
-	call CheckMist
-	jp nz, .Mist
-
-	ld hl, wEnemyStatLevels
-	ld a, [hBattleTurn]
-	and a
-	jr z, .GetStatLevel
-	ld hl, wPlayerStatLevels
-
-.GetStatLevel:
-; Attempt to lower the stat.
-	ld a, [wLoweredStat]
-	and $f
-	ld c, a
-	ld b, 0
-	add hl, bc
-	ld b, [hl]
-	dec b
-	jp z, .CantLower
-
-; Sharply lower the stat if applicable.
-	ld a, [wLoweredStat]
-	and $f0
-	jr z, .ComputerMiss
-	dec b
-	jr nz, .ComputerMiss
-	inc b
-
-.ComputerMiss:
-	call CheckSubstituteOpp
-	jr nz, .Failed
-
-	ld a, [wAttackMissed]
-	and a
-	jr nz, .Failed
-
-	ld a, [wEffectFailed]
-	and a
-	jr nz, .Failed
-
-	call CheckHiddenOpponent
-	jr nz, .Failed
-
-	ld [hl], b
-	xor a
-	ld [wFailedMessage], a
-	ret
-
-.CouldntLower:
-	inc [hl]
-.CantLower:
-	ld a, 3
-	ld [wFailedMessage], a
-	ld a, 1
-	ld [wAttackMissed], a
-	ret
-
-.Failed:
-	ld a, 1
-	ld [wFailedMessage], a
-	ld [wAttackMissed], a
-	ret
-
-.Mist:
-	ld a, 2
-	ld [wFailedMessage], a
-	ld a, 1
-	ld [wAttackMissed], a
-	ret
-
-; 36391
-
-
-CheckMist: ; 36391
-	ld a, BATTLE_VARS_MOVE_EFFECT
-	call GetBattleVar
-	cp EFFECT_ATTACK_DOWN
-	jr c, .dont_check_mist
-	cp EFFECT_EVASION_DOWN + 1
-	jr c, .check_mist
-	cp EFFECT_ATTACK_DOWN_2
-	jr c, .dont_check_mist
-	cp EFFECT_EVASION_DOWN_2 + 1
-	jr c, .check_mist
-	cp EFFECT_ATTACK_DOWN_HIT
-	jr c, .dont_check_mist
-	cp EFFECT_EVASION_DOWN_HIT + 1
-	jr c, .check_mist
-.dont_check_mist
-	xor a
-	ret
-
-.check_mist
-	ld a, BATTLE_VARS_SUBSTATUS4_OPP
-	call GetBattleVar
-	bit SUBSTATUS_MIST, a
-	ret
-
-; 363b8
-
-
 BattleCommand_statupmessage: ; 363b8
 	ld a, [wFailedMessage]
 	and a
@@ -6191,41 +5954,6 @@ BattleCommand_statupmessage: ; 363b8
 
 .up
 	text_jump UnknownText_0x1c0ce0
-	db "@"
-
-BattleCommand_statdownmessage:
-	ld a, [wFailedMessage]
-	and a
-	ret nz
-	ld a, [wLoweredStat]
-	and $f
-	ld b, a
-	inc b
-	call GetStatName
-	ld hl, .stat
-	call BattleTextBox
-	; Competitive/Defiant activates here to give proper messages. A bit awkward,
-	; but the alternative is to rewrite the stat-down logic.
-	ld a, [wLoweredStat]
-	and $80
-	ret nz
-	farjp RunEnemyStatIncreaseAbilities
-
-.stat
-	text_jump UnknownText_0x1c0ceb
-	start_asm
-	ld hl, .fell
-	ld a, [wLoweredStat]
-	and $70
-	ret z
-	ld hl, .sharplyfell
-	ret
-
-.sharplyfell
-	text_jump UnknownText_0x1c0cf5
-	db "@"
-.fell
-	text_jump UnknownText_0x1c0d06
 	db "@"
 
 BattleCommand_statupfailtext: ; 3644c
@@ -6322,31 +6050,16 @@ StatLevelMultipliers: ; 364e6
 BattleCommand_allstatsup: ; 36500
 ; allstatsup
 
-; Attack
-	call ResetMiss
-	call BattleCommand_attackup
-	call BattleCommand_statupmessage
-
-; Defense
-	call ResetMiss
-	call BattleCommand_defenseup
-	call BattleCommand_statupmessage
-
-; Speed
-	call ResetMiss
-	call BattleCommand_speedup
-	call BattleCommand_statupmessage
-
-; Special Attack
-	call ResetMiss
-	call BattleCommand_specialattackup
-	call BattleCommand_statupmessage
-
-; Special Defense
-	call ResetMiss
-	call BattleCommand_specialdefenseup
-	jp   BattleCommand_statupmessage
-; 3652d
+	ld b, ATTACK
+	call RaiseStat
+	ld b, DEFENSE
+	call RaiseStat
+	ld b, SPEED
+	call RaiseStat
+	ld b, SP_ATTACK
+	call RaiseStat
+	ld b, SP_DEFENSE
+	jp RaiseStat
 
 
 ResetMiss: ; 3652d

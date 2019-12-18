@@ -585,21 +585,6 @@ UnknownText_0x1c0ce0::
 	text " rose!"
 	prompt
 
-UnknownText_0x1c0ceb::
-	text "<TARGET>'s"
-	line "@"
-	text_from_ram wStringBuffer2
-	db "@@"
-
-UnknownText_0x1c0cf5::
-	interpret_data
-	text $4c, "harshly fell!"
-	prompt
-
-UnknownText_0x1c0d06::
-	text " fell!"
-	prompt
-
 UnknownText_0x1c0d0e::
 	text "<USER>@@"
 

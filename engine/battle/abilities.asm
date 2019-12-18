@@ -263,14 +263,12 @@ DownloadAbility:
 	cp e
 	jr c, .inc_atk
 .inc_spatk
-	farcall ResetMiss
-	farcall BattleCommand_specialattackup
-	farcall BattleCommand_statupmessage
-	jp EnableAnimations
+	ld b, SP_ATTACK
+	jr .got_stat
 .inc_atk
-	farcall ResetMiss
-	farcall BattleCommand_attackup
-	farcall BattleCommand_statupmessage
+	ld b, ATTACK
+.got_stat
+	farcall ForceRaiseStat
 	jp EnableAnimations
 
 ImposterAbility:
@@ -924,33 +922,12 @@ WeakArmorAbility:
 	and a ; cp PHYSICAL
 	ret nz
 
-	ld b, DEFENSE
 	call DisableAnimations
-	farcall ResetMiss
-	farcall ForceLowerStat ; can't be resisted
-	ld a, [wFailedMessage]
-	and a
-	jr nz, .failed_defensedown
-	call ShowAbilityActivation
-	call SwitchTurn
-	farcall BattleCommand_statdownmessage
-	call SwitchTurn
-	farcall ResetMiss
-	farcall BattleCommand_speedup2
-	ld a, [wFailedMessage]
-	and a
-	jp nz, EnableAnimations
-.speedupmessage
-	farjp BattleCommand_statupmessage
-.failed_defensedown
-; If we can still raise Speed, do that and show ability activation anyway
-	farcall ResetMiss
-	farcall BattleCommand_speedup2
-	ld a, [wFailedMessage]
-	and a
-	jp nz, EnableAnimations
-	call ShowAbilityActivation
-	jr .speedupmessage
+	ld b, DEFENSE
+	farcall LowerStat
+	ld b, $10 | SPEED
+	farcall RaiseStat
+	jp EnableAnimations
 
 FlashFireAbility:
 	call ShowAbilityActivation
@@ -1350,7 +1327,6 @@ LowerRandomStat:
 
 	ld b, e
 	push bc
-	farcall ResetMiss
 	farcall ForceLowerStat
 	pop bc
 	or 1
@@ -1364,8 +1340,6 @@ MoodyAbility:
 	call ShowAbilityActivation ; Safe -- Moody is certain to work for at least one part.
 	call DisableAnimations
 
-	ld a, [wAttackMissed]
-	push af
 	call GetCappedStats
 	call SharplyRaiseRandomStat
 	jr z, .no_up_msg
@@ -1374,13 +1348,6 @@ MoodyAbility:
 	pop bc
 .no_up_msg
 	call LowerRandomStat
-	jr z, .no_down_msg
-	call SwitchTurn
-	farcall BattleCommand_statdownmessage
-	call SwitchTurn
-.no_down_msg
-	pop af
-	ld [wAttackMissed], a
 	jp EnableAnimations
 
 ApplyDamageAbilities_AfterTypeMatchup:

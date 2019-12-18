@@ -39,7 +39,6 @@ BattleCommandPointers:
 	command paralyzetarget
 	command selfdestruct
 	command statup
-	command statdown
 	command payday
 	command conversion
 	command resetstats
