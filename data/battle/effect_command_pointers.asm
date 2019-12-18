@@ -4,6 +4,16 @@ command: macro
 	dw BattleCommand_\1
 endm
 
+commandx: macro
+	enum \1_command
+\1_macro: macro
+	db \1
+	db \2
+endm
+\1 equs "\1_macro \1_command,"
+	dw BattleCommand_\1
+endm
+
 commandonly: macro
 	enum \1_command
 \1 equs "db \1_command"
@@ -157,89 +167,18 @@ BattleCommandPointers:
 	; force(raise|lower)oppstat: respects sub+mist+clear body
 	; (raise|lower)oppstathit: can miss, respects secondary+sub+mist+clear body, silent
 
-	enum raisestat_command
-raisestat: macro
-	db raisestat_command
-	db \1
-	endm
-	dw BattleCommand_raisestat
-
-	enum lowerstat_command
-lowerstat: macro
-	db lowerstat_command
-	db \1
-	endm
-	dw BattleCommand_lowerstat
-
-	enum forceraisestat_command
-forceraisestat: macro
-	db forceraisestat_command
-	db \1
-	endm
-	dw BattleCommand_forceraisestat
-
-	enum forcelowerstat_command
-forcelowerstat: macro
-	db forcelowerstat_command
-	db \1
-	endm
-	dw BattleCommand_forcelowerstat
-
-	enum raisestathit_command
-raisestathit: macro
-	db raisestathit_command
-	db \1
-	endm
-	dw BattleCommand_raisestathit
-
-	enum lowerstathit_command
-lowerstathit: macro
-	db lowerstathit_command
-	db \1
-	endm
-	dw BattleCommand_lowerstathit
-
-	enum raiseoppstat_command
-raiseoppstat: macro
-	db raiseoppstat_command
-	db \1
-	endm
-	dw BattleCommand_raiseoppstat
-
-	enum loweroppstat_command
-loweroppstat: macro
-	db loweroppstat_command
-	db \1
-	endm
-	dw BattleCommand_loweroppstat
-
-	enum forceraiseoppstat_command
-forceraiseoppstat: macro
-	db forceraiseoppstat_command
-	db \1
-	endm
-	dw BattleCommand_forceraiseoppstat
-
-	enum forceloweroppstat_command
-forceloweroppstat: macro
-	db forceloweroppstat_command
-	db \1
-	endm
-	dw BattleCommand_forceloweroppstat
-
-	enum raiseoppstathit_command
-raiseoppstathit: macro
-	db raiseoppstathit_command
-	db \1
-	endm
-	dw BattleCommand_raiseoppstathit
-
-	enum loweroppstathit_command
-loweroppstathit: macro
-	db loweroppstathit_command
-	db \1
-	endm
-	dw BattleCommand_loweroppstathit
+	commandx raisestat
+	commandx lowerstat
+	commandx forceraisestat
+	commandx forcelowerstat
+	commandx raisestathit
+	commandx lowerstathit
+	commandx raiseoppstat
+	commandx loweroppstat
+	commandx forceraiseoppstat
+	commandx forceloweroppstat
+	commandx raiseoppstathit
+	commandx loweroppstathit
 
 FIRST_MOVEARG_COMMAND EQU raisestat_command
 LAST_MOVEARG_COMMAND EQU loweroppstathit_command
