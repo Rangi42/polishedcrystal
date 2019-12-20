@@ -90,14 +90,6 @@ Shamouti Island:
 * Shamouti Restaurant (works like Seven Stars Restaurant) (different subset of all trainers every day of the week)
 
 
-### Move animations
-
-Refer to [B/W animations with sound effects](https://www.dropbox.com/s/003d1w32gm60fdt/Pok%C3%A9mon%20Black%20%26%20White%20-%20All%20move%20animations%20with%20SOUND%20EFFECTS%20ONLY%21.mp4?dl=0).
-
-* Roost
-* Venoshock
-
-
 ### Music player
 
 * Use the UnlockedMusic flag_array to hide unheard song titles

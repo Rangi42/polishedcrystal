@@ -1739,7 +1739,6 @@ BattleAnim_DoubleTeam:
 	anim_call BattleAnim_ShowMon_0
 	anim_ret
 
-BattleAnim_Roost: ; TODO: design custom animation for Roost
 BattleAnim_Recover:
 	anim_1gfx ANIM_GFX_BUBBLE
 	anim_call BattleAnim_FollowEnemyFeet_0
@@ -1756,6 +1755,30 @@ BattleAnim_Recover:
 	anim_wait 64
 	anim_incbgeffect ANIM_BG_18
 	anim_call BattleAnim_ShowMon_0
+	anim_ret
+
+BattleAnim_Roost:
+	anim_2gfx ANIM_GFX_MISC, ANIM_GFX_SHINE
+	anim_bgeffect ANIM_BG_18, $0, $1, $40
+	anim_wait 16
+.loop
+	anim_sound 0, 0, SFX_SWORDS_DANCE
+	anim_obj ANIM_OBJ_76, 48, 108, $0
+	anim_obj ANIM_OBJ_76, 48, 108, $d
+	anim_obj ANIM_OBJ_76, 48, 108, $1a
+	anim_obj ANIM_OBJ_76, 48, 108, $27
+	anim_obj ANIM_OBJ_76, 48, 108, $34
+	anim_wait 34
+	anim_loop 3, .loop
+	anim_wait 28
+	anim_sound 0, 0, SFX_METRONOME
+	anim_obj ANIM_OBJ_9D, 44, 64, $0
+	anim_wait 5
+	anim_obj ANIM_OBJ_9D, 24, 96, $0
+	anim_wait 5
+	anim_obj ANIM_OBJ_9D, 56, 104, $0
+	anim_wait 21
+	anim_incbgeffect ANIM_BG_18
 	anim_ret
 
 BattleAnim_Absorb:
@@ -3219,13 +3242,6 @@ BattleAnim_PsychicM:
 	anim_wait 4
 	anim_ret
 
-BattleAnim_Venoshock: ; TODO: design new animation for Venoshock
-BattleAnim_Sludge: ; removed
-	anim_1gfx ANIM_GFX_POISON
-	anim_call BattleAnim_Sludge_branch_cbc15
-	anim_wait 56
-	anim_ret
-
 BattleAnim_Toxic:
 	anim_1gfx ANIM_GFX_POISON
 	anim_bgeffect ANIM_BG_BLACK_HUES, $0, $8, $0
@@ -3762,6 +3778,33 @@ BattleAnim_GunkShot:
 	anim_wait 32
 	anim_ret
 
+BattleAnim_Venoshock:
+	anim_1gfx ANIM_GFX_POISON
+	anim_call BattleAnim_FollowEnemyFeet_1
+	anim_bgeffect ANIM_BG_BLACK_HUES, $0, $8, $0
+	anim_sound 6, 2, SFX_SLUDGE_BOMB
+	anim_obj ANIM_OBJ_19, 64, 92, $10
+	anim_wait 36
+	anim_sound 0, 1, SFX_THUNDER
+	anim_wait 8
+	anim_bgp $1b
+	anim_obp0 $30
+	anim_bgeffect ANIM_BG_VIBRATE_MON, $0, $0, $0
+.loop
+	anim_sound 0, 1, SFX_TOXIC
+	anim_obj ANIM_OBJ_1A, 132, 72, $0
+	anim_wait 8
+	anim_sound 0, 1, SFX_TOXIC
+	anim_obj ANIM_OBJ_1A, 116, 72, $0
+	anim_wait 8
+	anim_sound 0, 1, SFX_TOXIC
+	anim_obj ANIM_OBJ_1A, 148, 72, $0
+	anim_wait 8
+	anim_loop 4, .loop
+	anim_wait 16
+	anim_call BattleAnim_ShowMon_1
+	anim_ret
+
 BattleAnim_SludgeBomb:
 	anim_2gfx ANIM_GFX_EGG, ANIM_GFX_POISON
 	anim_bgeffect ANIM_BG_BLACK_HUES, $0, $8, $0
@@ -4006,22 +4049,24 @@ BattleAnim_Guillotine: ; removed
 	anim_ret
 
 BattleAnim_Outrage:
-	anim_1gfx ANIM_GFX_HIT
-	anim_call BattleAnim_FollowEnemyFeet_0
+	anim_2gfx ANIM_GFX_HIT, ANIM_GFX_FIRE
 	anim_bgeffect ANIM_BG_1A, $0, $1, $20
+.loop
 	anim_sound 0, 0, SFX_OUTRAGE
-	anim_wait 72
+	anim_obj ANIM_OBJ_7F, 48, 96, $0
+	anim_wait 6
+	anim_loop 8, .loop
+	anim_wait 96
 	anim_incbgeffect ANIM_BG_1A
-	anim_call BattleAnim_ShowMon_0
 	anim_bgeffect ANIM_BG_FLASH_INVERTED, $0, $4, $3
 	anim_sound 0, 1, SFX_MOVE_PUZZLE_PIECE
-	anim_obj ANIM_OBJ_00,  15, 0,   9, 0, $0
+	anim_obj ANIM_OBJ_00, 120, 72, $0
 	anim_wait 6
 	anim_sound 0, 1, SFX_COMET_PUNCH
-	anim_obj ANIM_OBJ_00, -15, 0,   7, 0, $0
+	anim_obj ANIM_OBJ_00, 136, 56, $0
 	anim_wait 6
 	anim_sound 0, 1, SFX_MEGA_PUNCH
-	anim_obj ANIM_OBJ_00, -13, 0,   5, 0, $0
+	anim_obj ANIM_OBJ_00, 152, 40, $0
 	anim_wait 16
 	anim_ret
 
@@ -6228,4 +6273,10 @@ BattleAnim_Trick:
 ;.okay
 ;	anim_wait 16
 ;	anim_jumpuntil .loop
+;	anim_ret
+
+;BattleAnim_Sludge: ; removed
+;	anim_1gfx ANIM_GFX_POISON
+;	anim_call BattleAnim_Sludge_branch_cbc15
+;	anim_wait 56
 ;	anim_ret
