@@ -106,7 +106,7 @@ PsychicInverNoText:
 	done
 
 PsychicInverYesText:
-	text "Super-effective"
+	text "Super effective"
 	line "moves will not be"
 	cont "very effective,"
 	cont "and vice-versa."
@@ -186,7 +186,7 @@ PsychicInversHouseHexManiacText:
 	line "type matchups!"
 	cont "It's really crazy!"
 
-	para "Super-effective"
+	para "Super effective"
 	line "and not very eff-"
 	cont "moves get swapped!"
 	done

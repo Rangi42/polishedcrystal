@@ -157,7 +157,7 @@ AI_Setup: ; 385e0
 
 AI_Types: ; 38635
 ; Dismiss any move that the player is immune to.
-; Encourage super-effective moves.
+; Encourage super effective moves.
 ; Discourage not very effective moves unless
 ; all damaging moves are of the same type.
 
@@ -773,7 +773,7 @@ AI_Smart_Haze: ; 389f5
 
 AI_Smart_Roar: ; 38a2a
 ; Discourage this move if the player has not shown
-; a super-effective move against the enemy.
+; a super effective move against the enemy.
 ; Consider player's type(s) if its moves are unknown.
 
 	push hl
@@ -1974,7 +1974,7 @@ AI_Smart_HiddenPower: ; 3909e
 	cp 50
 	jr c, .bad
 
-; Encourage Hidden Power if super-effective.
+; Encourage Hidden Power if super effective.
 	ld a, [wd265]
 	cp 11
 	jr nc, .good

@@ -227,7 +227,7 @@ SaffronCitySuperNerdText:
 	line "types the weakest."
 
 	para "The irony is, Bug"
-	line "is super-effective"
+	line "is super effective"
 	cont "against Psychic!"
 	done
 

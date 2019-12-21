@@ -786,7 +786,7 @@ TintedLensDescription:
 
 FilterDescription:
 SolidRockDescription:
-	db    "Reduces super-"
+	db    "Reduces super"
 	next1 "effective damage.@"
 
 ScrappyDescription:

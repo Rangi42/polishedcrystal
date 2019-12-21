@@ -206,7 +206,7 @@ PlateauRivalText1:
 	para "That's not going"
 	line "to happen."
 
-	para "My super-well-"
+	para "My super well-"
 	line "trained #mon"
 
 	para "are going to pound"

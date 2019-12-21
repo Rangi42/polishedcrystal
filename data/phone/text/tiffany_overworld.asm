@@ -25,7 +25,7 @@ TiffanyAskNumber2Text:
 
 TiffanyNumberAcceptedText:
 	text "Isn't my Clefairy"
-	line "super-adorable?"
+	line "super adorable?"
 	done
 
 TiffanyNumberDeclinedText:

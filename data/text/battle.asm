@@ -928,7 +928,7 @@ CriticalHitText: ; 0x81086
 ; 0x81097
 
 SuperEffectiveText: ; 0x810aa
-	text "It's super-"
+	text "It's super"
 	line "effective!"
 	prompt
 ; 0x810c1

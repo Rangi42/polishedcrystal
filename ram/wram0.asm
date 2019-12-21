@@ -349,7 +349,7 @@ wCurOTMon:: ds 1
 	ds 1 ; unused
 
 wTypeModifier::
-; >10: super-effective
+; >10: super effective
 ;  10: normal
 ; <10: not very effective
 ; bit 7: stab

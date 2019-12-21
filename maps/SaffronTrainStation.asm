@@ -133,7 +133,7 @@ UnknownText_0x18a993:
 
 UnknownText_0x18a9ca:
 	text "The Magnet Train"
-	line "is a super-modern"
+	line "is a super modern"
 
 	para "rail liner that"
 	line "uses electricity"

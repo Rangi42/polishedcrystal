@@ -192,7 +192,7 @@ UnknownText_0x54122:
 	cont "into it too!"
 
 	para "#mon are"
-	line "super-cute!"
+	line "super cute!"
 
 	para "You want to bat-"
 	line "tle? I'm warning"
