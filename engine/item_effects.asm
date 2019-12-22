@@ -3263,7 +3263,9 @@ AbilityCap:
 	ld e, l
 	pop hl
 	push hl
+	push de
 	call UseItem_GetBaseDataAndNickParameters
+	pop de
 	ld a, [wBaseAbility1]
 	ld b, a
 	ld a, [wBaseAbility2]
