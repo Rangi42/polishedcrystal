@@ -3293,13 +3293,11 @@ AbilityCap:
 	jr c, .loopnext
 
 	; Change ability
-	ld a, ABILITY_MASK
-	cpl
-	ld h, d
-	ld l, e
-	and [hl]
+	ld a, [de]
+	and $ff ^ ABILITY_MASK
 	or c
-	ld [hl], a
+	ld [de], a
+
 	call UseDisposableItem
 	ld hl, AbilityChangedText
 	jp PrintText

@@ -1481,9 +1481,9 @@ GetNick:: ; 38a2
 	push bc
 
 	call SkipNames
-	ld de, wStringBuffer1
 
 	push de
+	ld de, wStringBuffer1
 	ld bc, PKMN_NAME_LENGTH
 	rst CopyBytes
 	pop de
