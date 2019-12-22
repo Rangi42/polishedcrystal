@@ -164,7 +164,9 @@ FarChangeStat:
 
 	bit STAT_TARGET_F, b
 	call nz, SwitchTurn
+	push bc
 	farcall TryAnimateCurrentMove
+	pop bc
 	bit STAT_TARGET_F, b
 	call nz, SwitchTurn
 
