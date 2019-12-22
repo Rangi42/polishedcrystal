@@ -191,7 +191,9 @@ BlastoiseEvosAttacks:
 	db 53, RAIN_DANCE
 	db 60, HYDRO_PUMP
 	db 67, SHELL_SMASH ; Sw/Sw move
+if !DEF(FAITHFUL)
 	db 75, IRON_HEAD ; TM move
+endc
 	db 0 ; no more level-up moves
 
 CaterpieEvosAttacks:

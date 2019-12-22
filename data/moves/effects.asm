@@ -1141,6 +1141,17 @@ EvasionDown2:
 	loweroppstat $10 | EVASION
 	endmove
 
+ShellSmash:
+	checkobedience
+	usedmovetext
+	doturn
+	forcelowerstat DEFENSE
+	forcelowerstat SP_DEFENSE
+	forceraisestat $10 | ATTACK
+	forceraisestat $10 | SP_ATTACK
+	forceraisestat $10 | SPEED
+	endmove
+
 ResetStats:
 Haze:
 	checkobedience
