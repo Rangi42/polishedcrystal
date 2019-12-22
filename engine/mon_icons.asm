@@ -316,10 +316,7 @@ endr
 
 SetPartyMonIconAnimSpeed: ; 8e936 (23:6936)
 	push bc
-	ld a, [hObjectStructIndexBuffer]
-	ld b, a
 	call .getspeed
-	ld a, b
 	pop bc
 	ld hl, SPRITEANIMSTRUCT_DURATIONOFFSET
 	add hl, bc
@@ -332,15 +329,38 @@ SetPartyMonIconAnimSpeed: ; 8e936 (23:6936)
 	ret
 
 .getspeed ; 8e94c (23:694c)
+	ld a, [hObjectStructIndexBuffer]
+	ld hl, wPartyMon1IsEgg
+	call GetPartyLocation
+	bit MON_IS_EGG_F, [hl]
+	jr nz, .egg
+	ld a, [hObjectStructIndexBuffer]
+	ld b, a
 	farcall PlacePartymonHPBar
 	call GetHPPal
+.gotindex
 	ld e, d
 	ld d, 0
 	ld hl, .speeds
 	add hl, de
-	ld b, [hl]
+	ld a, [hl]
 	ret
 ; 8e95e (23:695e)
+
+.egg
+	ld a, [hObjectStructIndexBuffer]
+	ld hl, wPartyMon1Happiness
+	call GetPartyLocation
+	ld a, [hl]
+; same happiness thresholds as EggStatsScreen
+	ld d, 0
+	cp $6
+	jr c, .gotindex
+	inc d ; 1
+	cp $b
+	jr c, .gotindex
+	inc d ; 2
+	jr .gotindex
 
 .speeds ; 8e95e
 	db $00, $40, $80
