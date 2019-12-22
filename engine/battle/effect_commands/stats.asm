@@ -247,6 +247,7 @@ DoChangeStat:
 	xor a
 	ld [wFailedMessage], a
 	ld a, [hBattleTurn]
+	and a
 	ld hl, wPlayerStatLevels
 	jr z, .got_stat_levels
 	ld hl, wEnemyStatLevels
