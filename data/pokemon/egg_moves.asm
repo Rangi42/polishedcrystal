@@ -109,7 +109,7 @@ ClefairyEggMoves:
 	db METRONOME
 	db AMNESIA
 	db SPLASH ; requires Hoppip
-	db SOFTBOILED
+	db FRESH_SNACK
 	db $ff
 
 VulpixEggMoves:

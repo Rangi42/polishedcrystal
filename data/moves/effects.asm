@@ -1174,9 +1174,7 @@ TrickRoom:
 
 Heal:
 Recover:
-Softboiled:
 Rest:
-MilkDrink:
 	checkobedience
 	usedmovetext
 	doturn

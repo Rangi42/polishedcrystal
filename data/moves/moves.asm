@@ -177,7 +177,7 @@ endc
 	move BULLDOZE,     EFFECT_SPEED_DOWN_HIT,     60, GROUND,    100, 20, 100, PHYSICAL
 	move AMNESIA,      EFFECT_SP_DEF_UP_2,         0, PSYCHIC,   100, 20,   0, STATUS
 	move ROOST,        EFFECT_ROOST,               0, FLYING,    100, 10,   0, STATUS
-	move SOFTBOILED,   EFFECT_HEAL,                0, NORMAL,    100, 10,   0, STATUS
+	move FRESH_SNACK,  EFFECT_HEAL,                0, NORMAL,    100, 10,   0, STATUS
 	move HI_JUMP_KICK, EFFECT_JUMP_KICK,         130, FIGHTING,   90, 10,   0, PHYSICAL
 	move GLARE,        EFFECT_PARALYZE,            0, NORMAL,    100, 30,   0, STATUS
 	move DREAM_EATER,  EFFECT_DREAM_EATER,       100, PSYCHIC,   100, 15,   0, SPECIAL
@@ -262,7 +262,7 @@ endc
 	move ROLLOUT,      EFFECT_ROLLOUT,            30, ROCK,       90, 20,   0, PHYSICAL
 	move FALSE_SWIPE,  EFFECT_FALSE_SWIPE,        40, NORMAL,    100, 40,   0, PHYSICAL
 	move SWAGGER,      EFFECT_SWAGGER,             0, NORMAL,     85, 15, 100, STATUS
-	move MILK_DRINK,   EFFECT_HEAL,                0, NORMAL,    100, 10,   0, STATUS
+	move SHELL_SMASH,  EFFECT_CALM_MIND,           0, NORMAL,    100, 15,   0, STATUS
 	move SPARK,        EFFECT_PARALYZE_HIT,       65, ELECTRIC,  100, 20,  30, PHYSICAL
 	move BUG_BITE,     EFFECT_BUG_BITE,           60, BUG,       100, 20,   0, PHYSICAL
 	move STEEL_WING,   EFFECT_DEFENSE_UP_HIT,     70, STEEL,      90, 25,  10, PHYSICAL

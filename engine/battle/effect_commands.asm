@@ -2484,6 +2484,8 @@ BattleCommand_statupanim: ; 34fd1
 StatUpDownAnim: ; 34feb
 	ld [wNumHits], a
 
+; Defense Curl, Withdraw, and Harden were merged, so use the correct
+; animation for the Pokémon that learned each one
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
 	ld e, a
@@ -7714,6 +7716,28 @@ BattleCommand_heal:
 .not_rest
 	call GetHalfMaxHP
 .finish
+
+; Softboiled and Milk Drink were merged into Fresh Snack, so use the correct
+; animation for the Pokémon that learned each one
+	ld a, BATTLE_VARS_MOVE_ANIM
+	call GetBattleVar
+	cp FRESH_SNACK
+	ld a, 0
+	jr nz, .not_fresh_snack
+	ld a, [hBattleTurn]
+	and a
+	ld a, [wBattleMonSpecies]
+	jr z, .got_user_species
+	ld a, [wEnemyMonSpecies]
+.got_user_species
+	cp MILTANK
+	ld a, 0
+	jr nz, .got_kick_counter
+	inc a
+.got_kick_counter
+	ld [wKickCounter], a
+.not_fresh_snack
+
 	call AnimateCurrentMove
 	farcall RestoreHP
 	call UpdateUserInParty

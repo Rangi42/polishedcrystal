@@ -134,7 +134,7 @@ BattleAnimations::
 	dw BattleAnim_Bulldoze
 	dw BattleAnim_Amnesia
 	dw BattleAnim_Roost
-	dw BattleAnim_Softboiled
+	dw BattleAnim_FreshSnack
 	dw BattleAnim_HiJumpKick
 	dw BattleAnim_Glare
 	dw BattleAnim_DreamEater
@@ -207,7 +207,7 @@ BattleAnimations::
 	dw BattleAnim_Rollout
 	dw BattleAnim_FalseSwipe
 	dw BattleAnim_Swagger
-	dw BattleAnim_MilkDrink
+	dw BattleAnim_ShellSmash
 	dw BattleAnim_Spark
 	dw BattleAnim_BugBite
 	dw BattleAnim_SteelWing
@@ -1839,7 +1839,9 @@ BattleAnim_Amnesia:
 	anim_wait 64
 	anim_ret
 
-BattleAnim_Softboiled:
+BattleAnim_FreshSnack:
+	anim_jumpif $2, BattleAnim_MilkDrink
+BattleAnim_Softboiled: ; removed
 	anim_2gfx ANIM_GFX_EGG, ANIM_GFX_BUBBLE
 	anim_call BattleAnim_FollowEnemyFeet_0
 	anim_sound 0, 0, SFX_SWITCH_POKEMON
@@ -1850,6 +1852,22 @@ BattleAnim_Softboiled:
 	anim_wait 16
 	anim_bgeffect ANIM_BG_18, $0, $1, $40
 	anim_sound 0, 0, SFX_METRONOME
+.loop
+	anim_obj ANIM_OBJ_2C,   5, 4,  11, 0, $20
+	anim_wait 8
+	anim_loop 8, .loop
+	anim_wait 128
+	anim_incbgeffect ANIM_BG_18
+	anim_call BattleAnim_ShowMon_0
+	anim_ret
+
+BattleAnim_MilkDrink: ; removed
+	anim_2gfx ANIM_GFX_MISC, ANIM_GFX_BUBBLE
+	anim_call BattleAnim_FollowEnemyFeet_0
+	anim_obj ANIM_OBJ_82,   9, 2,  13, 0, $0
+	anim_wait 16
+	anim_bgeffect ANIM_BG_18, $0, $1, $40
+	anim_sound 0, 0, SFX_MILK_DRINK
 .loop
 	anim_obj ANIM_OBJ_2C,   5, 4,  11, 0, $20
 	anim_wait 8
@@ -3085,6 +3103,7 @@ BattleAnim_DefenseCurl:
 	anim_call BattleAnim_ShowMon_0
 	anim_ret
 
+BattleAnim_ShellSmash: ; TODO: new Shell Smash animation
 BattleAnim_Withdraw: ; removed
 	anim_1gfx ANIM_GFX_REFLECT
 	anim_call BattleAnim_FollowPlayerHead_0
@@ -4227,22 +4246,6 @@ BattleAnim_Swagger:
 	anim_sound 0, 1, SFX_KINESIS_2
 	anim_obj ANIM_OBJ_83,  13, 0,   5, 0, $0
 	anim_wait 40
-	anim_ret
-
-BattleAnim_MilkDrink:
-	anim_2gfx ANIM_GFX_MISC, ANIM_GFX_BUBBLE
-	anim_call BattleAnim_FollowEnemyFeet_0
-	anim_obj ANIM_OBJ_82,   9, 2,  13, 0, $0
-	anim_wait 16
-	anim_bgeffect ANIM_BG_18, $0, $1, $40
-	anim_sound 0, 0, SFX_MILK_DRINK
-.loop
-	anim_obj ANIM_OBJ_2C,   5, 4,  11, 0, $20
-	anim_wait 8
-	anim_loop 8, .loop
-	anim_wait 128
-	anim_incbgeffect ANIM_BG_18
-	anim_call BattleAnim_ShowMon_0
 	anim_ret
 
 BattleAnim_VoltSwitch:

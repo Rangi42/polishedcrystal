@@ -2288,12 +2288,12 @@ GetHealingItemAmount: ; f395 (3:7395)
 	ld e, [hl]
 	ret
 
-Softboiled_MilkDrinkFunction: ; f3df (3:73df)
-; Softboiled/Milk Drink in the field
+FreshSnackFunction: ; f3df (3:73df)
+; Fresh Snack in the field
 	ld a, [wPartyMenuCursor]
 	dec a
 	ld b, a
-	call .SelectMilkDrinkRecipient ; select pokemon
+	call .SelectFreshSnackRecipient ; select pokemon
 	jr c, .skip
 	ld a, b
 	ld [wCurPartyMon], a
@@ -2318,7 +2318,7 @@ Softboiled_MilkDrinkFunction: ; f3df (3:73df)
 	ld [wPartyMenuCursor], a
 	ret
 
-.SelectMilkDrinkRecipient: ; f419 (3:7419)
+.SelectFreshSnackRecipient: ; f419 (3:7419)
 .loop
 	push bc
 	ld a, PARTYMENUACTION_HEALING_ITEM

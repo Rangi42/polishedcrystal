@@ -600,8 +600,7 @@ PokemonActionSubmenu: ; 12a88
 	dbw MONMENU_WHIRLPOOL,  MonMenu_Whirlpool ; Whirlpool
 	dbw MONMENU_DIG,        MonMenu_Dig ; Dig
 	dbw MONMENU_TELEPORT,   MonMenu_Teleport ; Teleport
-	dbw MONMENU_SOFTBOILED, MonMenu_Softboiled_MilkDrink ; Softboiled
-	dbw MONMENU_MILKDRINK,  MonMenu_Softboiled_MilkDrink ; MilkDrink
+	dbw MONMENU_FRESHSNACK, MonMenu_FreshSnack ; FreshSnack
 	dbw MONMENU_HEADBUTT,   MonMenu_Headbutt ; Headbutt
 	dbw MONMENU_WATERFALL,  MonMenu_Waterfall ; Waterfall
 	dbw MONMENU_ROCKSMASH,  MonMenu_RockSmash ; RockSmash
@@ -1176,10 +1175,10 @@ MonMenu_RockSmash: ; 12f3b
 	jr _MonMenu_StandardCheck
 ; 12f50
 
-MonMenu_Softboiled_MilkDrink: ; 12ee6
+MonMenu_FreshSnack: ; 12ee6
 	call .CheckMonHasEnoughHP
 	jr nc, .NotEnoughHP
-	farcall Softboiled_MilkDrinkFunction
+	farcall FreshSnackFunction
 	jr .finish
 
 .NotEnoughHP:
