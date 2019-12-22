@@ -117,13 +117,7 @@ FarChangeStat:
 
 .ability_done
 	bit STAT_TARGET_F, b
-	jr z, .do_stat
-
-	call SwitchTurn
-	call .do_stat
-	jp SwitchTurn
-
-.do_stat
+	call nz, SwitchTurn
 	push bc
 	bit STAT_LOWER_F, b
 	jr nz, .lower
@@ -138,68 +132,78 @@ FarChangeStat:
 	inc b
 	farcall GetStatName
 	pop bc
+	bit STAT_TARGET_F, b
+	call nz, SwitchTurn
 	ld a, [wFailedMessage]
 	and a
 	jr z, .check_anim
 	bit STAT_SILENT_F, b
 	ret nz
-	bit STAT_TARGET_F, b
-	call nz, SwitchTurn
+	push bc
 	farcall ShowPotentialAbilityActivation
 	ld c, 60
 	call DelayFrames
-	bit STAT_TARGET_F, b
-	call nz, SwitchTurn
+	pop bc
 	ld hl, WontRiseAnymoreText
-	bit STAT_LOWER_F, b
-	jr z, .print
-	ld hl, WontDropAnymoreText
-	jp StdBattleTextBox
+	ld de, WontDropAnymoreText
+	or 1
+	jp .print
 
 .check_anim
 	bit STAT_SKIPTEXT_F, b
 	ret nz
 	bit STAT_SILENT_F, b
-	jr nz, .anim_done
-
-	bit STAT_TARGET_F, b
-	call nz, SwitchTurn
 	push bc
+	jr nz, .anim_done
 	farcall TryAnimateCurrentMove
-	pop bc
-	bit STAT_TARGET_F, b
-	call nz, SwitchTurn
-
 .anim_done
-	bit STAT_TARGET_F, b
-	call nz, SwitchTurn
 	farcall ShowPotentialAbilityActivation
-	bit STAT_TARGET_F, b
-	call nz, SwitchTurn
+	pop bc
 	ld a, [wLoweredStat]
 	and $f0
 	swap a
 	and a
 	ld hl, StatRoseText
 	ld de, StatFellText
-	jr z, .gotmsg
+	jr z, .print
 	dec a
 	ld hl, StatRoseSharplyText
 	ld de, StatHarshlyFellText
-	jr z, .gotmsg
+	jr z, .print
 	ld hl, StatRoseDrasticallyText
 	ld de, StatSeverelyFellText
-.gotmsg
+	xor a
+.print
+	bit STAT_TARGET_F, b
+	jr z, .do_print
+	push af
+	call SwitchTurn
+	pop af
+	call .do_print
+	jp SwitchTurn
+
+.do_print
 	bit STAT_LOWER_F, b
-	jr z, .print
+	jr z, .printmsg
 	ld h, d
 	ld l, e
+	push af
+	push bc
 	call StdBattleTextBox
+	pop bc
+	pop af
 	bit STAT_TARGET_F, b
 	ret z
-	farjp RunStatIncreaseAbilities
+	and a
+	ret nz
+	ld a, [wFailedMessage]
+	push af
+	farcall RunStatIncreaseAbilities
+	pop af
+	ld [wFailedMessage], a
+	ret
 
-.print
+.printmsg
 	jp StdBattleTextBox
 
 UseStatItemText:
@@ -247,6 +251,7 @@ DoChangeStat:
 	xor a
 	ld [wFailedMessage], a
 	ld a, [hBattleTurn]
+	and a
 	ld hl, wPlayerStatLevels
 	jr z, .got_stat_levels
 	ld hl, wEnemyStatLevels

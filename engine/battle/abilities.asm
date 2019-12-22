@@ -274,7 +274,6 @@ DownloadAbility:
 ImposterAbility:
 	call ShowAbilityActivation
 	call DisableAnimations
-	farcall ResetMiss
 	farcall BattleCommand_transform
 	jp EnableAnimations
 
