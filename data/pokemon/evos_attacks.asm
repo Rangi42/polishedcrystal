@@ -2717,13 +2717,15 @@ KabutoEvosAttacks:
 	db 46, ANCIENTPOWER
 	db 51, GIGA_DRAIN ; Wring Out → TM move
 	db 56, IRON_HEAD ; new move
+	db 61, SHELL_SMASH ; new move
 	db 0 ; no more level-up moves
 
 KabutopsEvosAttacks:
 	db 0 ; no more evolutions
+	db 1, SLASH ; evolution move
+	db 1, LOW_KICK ; HGSS tutor move
 	db 1, SCRATCH
 	db 1, DEFENSE_CURL ; Harden → similar move
-	db 1, SLASH ; evolution move
 	db 6, ABSORB
 	db 11, MUD_SLAP ; Leer → GSC TM move
 	db 16, ROCK_THROW ; Mud Shot → Rock Throw (event move)
@@ -2733,8 +2735,9 @@ KabutopsEvosAttacks:
 	db 36, MEGA_DRAIN
 	db 45, SCREECH ; Metal Sound → similar move
 	db 54, ANCIENTPOWER
-	db 63, LOW_KICK ; Wring Out → HGSS tutor move
+	db 63, LEECH_LIFE ; Wring Out → Let's Go move
 	db 72, NIGHT_SLASH
+	db 81, SHELL_SMASH ; new move
 	db 0 ; no more level-up moves
 
 AerodactylEvosAttacks:
