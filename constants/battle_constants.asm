@@ -189,6 +189,7 @@ endc
 	const ATKFAIL_ABILITY ; ability immunity, might have side effects
 	const ATKFAIL_GENERIC ; "But it failed!"
 	const ATKFAIL_IMMUNE  ; "It doesn't affect <TARGET>!"
+	const ATKFAIL_ACCMISS ; missed from accuracy
 	const ATKFAIL_CUSTOM  ; custom message
 
 ; deferred switch types

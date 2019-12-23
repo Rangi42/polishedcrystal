@@ -2042,6 +2042,8 @@ BattleCommand_checkhit:
 	call BattleRandomRange
 	cp b
 	ret c
+	ld a, ATKFAIL_ACCMISS
+	jr .Miss_skipset
 
 .Miss:
 ; Keep the damage value intact if we're using (Hi) Jump Kick.
@@ -2806,7 +2808,35 @@ FailText_CheckOpponentProtect: ; 35157
 	dec a
 	ld hl, ButItFailedText
 	jr z, .printmsg
+	dec a
 	ld hl, DoesntAffectText
+	jr z, .printmsg
+	ld hl, AttackMissedText
+	call StdBattleTextBox
+	call GetUserItemAfterUnnerve
+	ld a, b
+	cp HELD_BLUNDER_POLICY
+	ret nz
+	ld a, [wAlreadyExecuted]
+	push af
+	ld a, [wFailedMessage]
+	push af
+	xor a
+	ld [wAlreadyExecuted], a
+	ld a, STAT_SKIPTEXT | STAT_SILENT
+	ld b, $10 | SPEED
+	call _ForceRaiseStat
+	ld a, [wFailedMessage]
+	and a
+	jr nz, .policy_done
+	farcall UseStatItemText
+	call ConsumeUserItem
+.policy_done
+	pop af
+	ld [wFailedMessage], a
+	pop af
+	ld [wAlreadyExecuted], a
+	ret
 .printmsg
 	jp StdBattleTextBox
 .ability_immune
@@ -2941,70 +2971,38 @@ BattleCommand_supereffectivetext: ; 351ad
 	farjp UseBattleItem
 
 .weakness_policy
-	ld a, [wAttackMissed]
-	ld b, a
-	ld a, [wEffectFailed]
-	ld c, a
-	xor a
-	ld [wEffectFailed], a
-	push bc
-	push hl
 	call SwitchTurn
-	call ResetMiss
-	call BattleCommand_attackup2
+	ld a, STAT_SKIPTEXT
+	ld b, $10 | ATTACK
+	call _RaiseStat
+	ld a, [wFailedMessage]
+	ld b, 0
+	push bc
+	and a
+	jr nz, .atk_done
+	farcall UseStatItemText
+	pop bc
+	inc b
+	push bc
+.atk_done
+	ld a, STAT_SKIPTEXT
+	ld b, $10 | SP_ATTACK
+	call _RaiseStat
+	ld a, [wFailedMessage]
+	and a
+	jr nz, .spatk_done
+	farcall UseStatItemText
+	pop bc
+	inc b
+	push bc
+.spatk_done
+	pop bc
+	ld a, b
+	and a
+	call nz, ConsumeUserItem
 	xor a
-	ld b, a
-	ld c, a
-	ld a, [wFailedMessage]
-	and a
-	jr z, .ok
-	inc b
-.ok
-	push bc
-	call ResetMiss
-	call BattleCommand_specialattackup2
-	pop bc
-	ld a, [wFailedMessage]
-	and a
-	jr z, .ok2
-	inc c
-	ld a, b
-	and a
-	jr nz, .end
-.ok2
-	farcall ItemRecoveryAnim
-	ld a, b
-	and a
-	pop hl
-	push hl
-	push bc
-	jr nz, .atk_msg_done
-	call GetCurItemName
-	ld a, ATTACK
-	call .print_msg
-.atk_msg_done
-	pop bc
-	ld a, c
-	and a
-	jr nz, .satk_msg_done
-	ld a, SP_ATTACK
-	call .print_msg
-.satk_msg_done
-	call ConsumeUserItem
-.end
-	pop hl
-	pop bc
-	ld a, b
-	ld [wAttackMissed], a
-	ld a, c
-	ld [wEffectFailed], a
+	ld [wAlreadyExecuted], a
 	jp SwitchTurn
-.print_msg
-	ld b, a
-	inc b
-	call GetStatName
-	ld hl, BattleText_ItemSharplyRaised
-	jp StdBattleTextBox
 
 CheckSheerForceNegation:
 ; Check if a secondary effect was suppressed due to Sheer Force.
@@ -3191,7 +3189,7 @@ BattleCommand_posthiteffects:
 	call ResetMiss
 	call BattleCommand_attackup
 
-	; don't print a failure message if we're maxed out in atk
+	; don't print a failuress message if we're maxed out in atk
 	ld a, [wFailedMessage]
 	and a
 	jr nz, .rage_done_switchturn

@@ -25,8 +25,7 @@ FarChangeStat:
 	farcall CheckAlreadyExecuted
 	ret nz
 	farcall AnimateFailedMove
-	ld hl, AttackMissedText
-	jp StdBattleTextBox
+	farjp GetFailureResultText
 
 .no_miss
 	; check secondary
@@ -196,10 +195,12 @@ FarChangeStat:
 	ret z
 	and a
 	ret nz
-	ld a, [wFailedMessage]
+	ld a, [wAlreadyExecuted]
 	push af
 	farcall RunStatIncreaseAbilities
 	pop af
+	ld [wAlreadyExecuted], a
+	xor a
 	ld [wFailedMessage], a
 	ret
 
@@ -238,8 +239,9 @@ UseStatItemText:
 	ld l, e
 
 .print
+	call StdBattleTextBox
 	pop bc
-	jp StdBattleTextBox
+	ret
 
 DoLowerStat:
 	or 1

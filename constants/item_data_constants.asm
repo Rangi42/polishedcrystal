@@ -151,7 +151,7 @@ ITEMMENU_CLOSE   EQU 6
 	const HELD_ENIGMA_BERRY
 	const HELD_CUSTAP_BERRY
 	const HELD_THROAT_SPRAY
-
+	const HELD_BLUNDER_POLICY
 
 ; mart types
 	const_def
