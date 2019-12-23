@@ -3186,17 +3186,20 @@ BattleCommand_posthiteffects:
 	jr z, .rage_done
 
 	call SwitchTurn
-	call ResetMiss
-	call BattleCommand_attackup
 
-	; don't print a failuress message if we're maxed out in atk
+	; use skiptext so we can print the rage msg first
+	ld b, ATTACK
+	ld a, STAT_SKIPTEXT
+	call _RaiseStat
 	ld a, [wFailedMessage]
 	and a
 	jr nz, .rage_done_switchturn
 
+	push bc
 	ld hl, RageBuildingText
 	call StdBattleTextBox
-	call BattleCommand_statupmessage
+	pop bc
+	farcall PrintStatChange
 
 .rage_done_switchturn
 	call SwitchTurn
