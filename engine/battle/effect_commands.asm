@@ -576,20 +576,18 @@ CheckThroatSpray:
 	ret nc
 
 	call GetUserItemAfterUnnerve
+	call GetCurItemName
 	ld a, b
 	cp HELD_THROAT_SPRAY
 	ret nz
 
-	ld a, [wAttackMissed]
-	and a
-	ret nz
-
 	ld b, c
-	call BattleCommand_statup
+	ld a, STAT_SKIPTEXT
+	call _RaiseStat
 	ld a, [wFailedMessage]
 	and a
 	ret nz
-	call GetItemStatMessage
+	farcall UseStatItemText
 	jp ConsumeUserItem
 
 CheckPowerHerb:
@@ -2817,6 +2815,7 @@ FailText_CheckOpponentProtect: ; 35157
 	ld a, b
 	cp HELD_BLUNDER_POLICY
 	ret nz
+	call GetCurItemName
 	ld a, [wAlreadyExecuted]
 	push af
 	ld a, [wFailedMessage]
@@ -3252,11 +3251,13 @@ BattleCommand_posthiteffects:
 	jr nz, .rocky_helmet_done
 .got_stat
 	call SwitchTurn
-	call BattleCommand_statup
+	ld a, STAT_SKIPTEXT
+	call _RaiseStat
 	ld a, [wFailedMessage]
 	and a
 	jr nz, .defend_hit_done
-	call GetItemStatMessage
+	call GetCurItemName
+	farcall UseStatItemText
 	call ConsumeUserItem
 .defend_hit_done
 	call SwitchTurn
@@ -5693,11 +5694,6 @@ BattleCommand_growth:
 	ld b, c
 	jp ForceRaiseStat
 
-BattleCommand_attackup2: ; 361c8
-; attackup2
-	ld b, $10 | ATTACK
-	jr BattleCommand_statup
-
 BattleCommand_statup:
 	jp ForceRaiseStat
 
@@ -5935,30 +5931,6 @@ BattleCommand_statupfailtext: ; 3644c
 	jp StdBattleTextBox
 
 ; 3646a
-
-
-BattleCommand_statdownfailtext: ; 3646a
-; statdownfailtext
-	ld a, [wFailedMessage]
-	and a
-	ret z
-	push af
-	call BattleCommand_movedelay
-	pop af
-	dec a
-	jp z, TryPrintButItFailed
-	dec a
-	ld hl, ProtectedByMistText
-	jp z, StdBattleTextBox
-	ld a, [wLoweredStat]
-	and $f
-	ld b, a
-	inc b
-	call GetStatName
-	ld hl, WontDropAnymoreText
-	jp StdBattleTextBox
-
-; 3648f
 
 
 GetStatName:

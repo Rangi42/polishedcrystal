@@ -1617,29 +1617,16 @@ HealAllStatusAbility:
 	jp HealStatusAbility
 
 AngerPointAbility:
-; preserves attack miss result to avoid multi-hit moves aborting
-	ld a, [wAttackMissed]
-	push af
-	call _AngerPointAbility
-	pop af
-	ld [wAttackMissed], a
-	ret
-
-_AngerPointAbility:
 	call DisableAnimations
-	farcall ResetMiss
-	farcall BattleCommand_attackup2
+	ld b, $f0 | ATTACK
+	ld a, STAT_SILENT | STAT_SKIPTEXT
+	farcall _RaiseStat
 	ld a, [wFailedMessage]
 	and a
-	jp nz, EnableAnimations
-	call ShowAbilityActivation
-	farcall BattleCommand_attackup2
-	farcall BattleCommand_attackup2
-	farcall BattleCommand_attackup2
-	farcall BattleCommand_attackup2
-	farcall BattleCommand_attackup2
+	jr nz, .done
 	ld hl, AngerPointMaximizedAttackText
 	call StdBattleTextBox
+.done
 	jp EnableAnimations
 
 RunSwitchAbilities:

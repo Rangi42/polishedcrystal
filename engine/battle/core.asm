@@ -235,81 +235,46 @@ SafariBattleTurn:
 	jr .loop
 
 HandleBerserkGene: ; 3c27c
-	ld a, [hSerialConnectionStatus]
-	cp USING_EXTERNAL_CLOCK
-	jr z, .reverse
+	call SetFastestTurn
+	call .do_it
+	call SwitchTurn
 
-	call .player
-	jr .enemy
-
-.reverse
-	call .enemy
-;	jr .player
-
-.player
-	call SetPlayerTurn
-	ld de, wPartyMon1Item
-	ld a, [wCurBattleMon]
-	ld b, a
-	jr .go
-
-.enemy
-	call SetEnemyTurn
-	ld de, wOTPartyMon1Item
-	ld a, [wCurOTMon]
-	ld b, a
-;	jr .go
-
-.go
-	push de
-	push bc
-	farcall GetUserItem
-	ld a, [hl]
-	ld [wd265], a
-	sub BERSERK_GENE
-	pop bc
-	pop de
-	ret nz
-
-	ld [hl], a
-
-	ld h, d
-	ld l, e
+.do_it
+	farcall GetUserItemAfterUnnerve
 	ld a, b
-	call GetPartyLocation
-	xor a
-	ld [hl], a
+	cp HELD_BERSERK_GENE
+	ret nz
+	call GetCurItemName
+	ld a, STAT_SKIPTEXT | STAT_SILENT
+	ld b, $10 | ATTACK
+	farcall _ForceRaiseStat
+	ld a, [wFailedMessage]
+	and a
+	ret nz
+	farcall UseStatItemText
+	farcall ConsumeUserItem
 	ld a, BATTLE_VARS_SUBSTATUS3
 	call GetBattleVarAddr
-	push af
-	set SUBSTATUS_CONFUSED, [hl]
-	ld a, BATTLE_VARS_MOVE_ANIM
-	call GetBattleVarAddr
-	push hl
-	push af
-	xor a
-	ld [hl], a
-	ld [wAttackMissed], a
-	ld [wEffectFailed], a
-	farcall BattleCommand_attackup2
-	pop af
-	pop hl
-	ld [hl], a
-	call GetItemName
-	ld hl, BattleText_UsersStringBuffer1Activated
-	call StdBattleTextBox
-	farcall BattleCommand_statupmessage
-	pop af
-	bit SUBSTATUS_CONFUSED, a
+	bit SUBSTATUS_CONFUSED, [hl]
 	ret nz
-	xor a
+	set SUBSTATUS_CONFUSED, [hl]
+	ld a, [hBattleTurn]
+	and a
+	ld hl, wPlayerConfuseCount
+	jr z, .got_confuse_count
+	ld hl, wEnemyConfuseCount
+.got_confuse_count
+	call BattleRandom
+	and 1
+	add 2
+	ld [hl], a
 	ld [wNumHits], a
 	ld de, ANIM_CONFUSED
 	call Call_PlayBattleAnim_OnlyIfVisible
 	call SwitchTurn
 	ld hl, BecameConfusedText
-	jp StdBattleTextBox
-; 3c300
+	call StdBattleTextBox
+	jp SwitchTurn
 
 EnemyTriesToFlee: ; 3c300
 	ld a, [wLinkMode]
