@@ -1542,6 +1542,12 @@ BellyDrumText: ; 0x817d2
 	prompt
 ; 0x817f6
 
+BellyDrumContraryText:
+	text "<USER>"
+	line "cut its HP and"
+	cont "minimized Attack!"
+	prompt
+
 ForesawAttackText: ; 0x81817
 	text "<USER>"
 	line "foresaw an attack!"

@@ -5693,54 +5693,9 @@ BattleCommand_growth:
 	ld b, c
 	jp ForceRaiseStat
 
-BattleCommand_attackup: ; 361ac
-; attackup
-	ld b, ATTACK
-	jr BattleCommand_statup
-
-BattleCommand_defenseup: ; 361b0
-; defenseup
-	ld b, DEFENSE
-	jr BattleCommand_statup
-
-BattleCommand_speedup: ; 361b4
-; speedup
-	ld b, SPEED
-	jr BattleCommand_statup
-
-BattleCommand_specialattackup: ; 361b8
-; specialattackup
-	ld b, SP_ATTACK
-	jr BattleCommand_statup
-
-BattleCommand_specialdefenseup: ; 361bc
-; specialdefenseup
-	ld b, SP_DEFENSE
-	jr BattleCommand_statup
-
 BattleCommand_attackup2: ; 361c8
 ; attackup2
 	ld b, $10 | ATTACK
-	jr BattleCommand_statup
-
-BattleCommand_defenseup2: ; 361cc
-; defenseup2
-	ld b, $10 | DEFENSE
-	jr BattleCommand_statup
-
-BattleCommand_speedup2: ; 361d0
-; speedup2
-	ld b, $10 | SPEED
-	jr BattleCommand_statup
-
-BattleCommand_specialattackup2: ; 361d4
-; specialattackup2
-	ld b, $10 | SP_ATTACK
-	jr BattleCommand_statup
-
-BattleCommand_specialdefenseup2: ; 361d8
-; specialdefenseup2
-	ld b, $10 | SP_DEFENSE
 	jr BattleCommand_statup
 
 BattleCommand_statup:
@@ -8830,27 +8785,23 @@ BattleCommand_bellydrum: ; 37c1a
 	jr c, .failed
 	jr z, .failed
 
-	call BattleCommand_attackup2
-	ld a, [wAttackMissed]
+	ld b, $f0 | ATTACK
+	ld a, STAT_SKIPTEXT
+	call _ForceRaiseStat
+	ld a, [wFailedMessage]
 	and a
 	jr nz, .failed
 
-	push bc
-	call AnimateCurrentMove
-	pop bc
 	call GetHalfMaxHP
 	farcall SubtractHPFromUser
 	call UpdateUserInParty
-	ld a, 5
-
-.max_attack_loop
-	push af
-	call BattleCommand_attackup2
-	pop af
-	dec a
-	jr nz, .max_attack_loop
-
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	cp CONTRARY
+	ld hl, BellyDrumContraryText
+	jr z, .print
 	ld hl, BellyDrumText
+.print
 	jp StdBattleTextBox
 
 .failed
