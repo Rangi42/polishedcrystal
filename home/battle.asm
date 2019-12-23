@@ -794,6 +794,24 @@ CheckIfHPIsZero::
 	or [hl]
 	ret
 
+GetWeatherAfterOpponentUmbrella::
+	call CallOpponentTurn
+GetWeatherAfterUserUmbrella::
+	call GetWeatherAfterCloudNine
+	cp WEATHER_HAIL
+	ret z
+	cp WEATHER_SANDSTORM
+	ret z
+	and a
+	ret z
+	push bc
+	push hl
+	call GetUserItemAfterUnnerve
+	ld a, b
+	xor HELD_UTILITY_UMBRELLA
+	pop hl
+	pop bc
+	ret z
 GetWeatherAfterCloudNine::
 ; Returns 0 if a cloud nine user is on the field,
 ; [wWeather] otherwise.

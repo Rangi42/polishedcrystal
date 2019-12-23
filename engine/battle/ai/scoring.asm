@@ -2962,7 +2962,7 @@ AI_Status: ; 39453
 	; Also check for Leaf Guard
 	cp LEAF_GUARD
 	jr nz, .no_leaf_guard
-	call GetWeatherAfterCloudNine
+	call GetWeatherAfterOpponentUmbrella
 	cp WEATHER_SUN
 	jr z, .pop_and_discourage
 

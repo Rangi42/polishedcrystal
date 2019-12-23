@@ -982,7 +982,7 @@ ApplySpeedAbilities:
 .sand_rush
 	ld h, WEATHER_SANDSTORM
 .weather_ability
-	call GetWeatherAfterCloudNine
+	call GetWeatherAfterUserUmbrella
 	cp h
 	ret nz
 	ld a, $21
@@ -1045,7 +1045,7 @@ SnowCloakAbility:
 	ld b, WEATHER_HAIL
 WeatherAccAbility:
 ; Decrease target accuracy by 20% in relevant weather
-	call GetWeatherAfterCloudNine
+	call GetWeatherAfterOpponentUmbrella
 	cp b
 	ret nz
 	ld a, $45
@@ -1066,7 +1066,7 @@ DrySkinWeatherAbility:
 	call RainRecoveryAbility
 	; fallthrough (these need different weather so calling both is OK)
 SolarPowerWeatherAbility:
-	call GetWeatherAfterCloudNine
+	call GetWeatherAfterUserUmbrella
 	cp WEATHER_SUN
 	ret nz
 	call ShowAbilityActivation
@@ -1080,7 +1080,7 @@ RainDishAbility:
 RainRecoveryAbility:
 	ld b, WEATHER_RAIN
 WeatherRecoveryAbility:
-	call GetWeatherAfterCloudNine
+	call GetWeatherAfterUserUmbrella
 	cp b
 	ret nz
 	farcall CheckFullHP
@@ -1129,7 +1129,7 @@ EndTurnAbilities:
 
 HarvestAbility:
 ; At end of turn, re-harvest an used up Berry (100% in sun, 50% otherwise)
-	call GetWeatherAfterCloudNine
+	call GetWeatherAfterUserUmbrella
 	cp WEATHER_SUN
 	jr z, .ok
 	call BattleRandom
@@ -1480,7 +1480,7 @@ TintedLensAbility:
 
 SolarPowerAbility:
 ; 150% special attack in sun, take 1/8 damage at turn end in sun (done elsewhere)
-	call GetWeatherAfterCloudNine
+	call GetWeatherAfterUserUmbrella
 	cp WEATHER_SUN
 	ret nz
 	ld a, $32
@@ -1498,7 +1498,7 @@ IronFistAbility:
 
 SandForceAbility:
 ; 130% damage for Ground/Rock/Steel-type moves in a sandstorm, not hurt by Sandstorm
-	call GetWeatherAfterCloudNine
+	call GetWeatherAfterUserUmbrella
 	cp WEATHER_SANDSTORM
 	ret nz
 	ld a, BATTLE_VARS_MOVE_TYPE
@@ -1601,7 +1601,7 @@ EnemyFurCoatAbility:
 
 
 HydrationAbility:
-	call GetWeatherAfterCloudNine
+	call GetWeatherAfterUserUmbrella
 	cp WEATHER_RAIN
 	ret nz
 	jr HealAllStatusAbility

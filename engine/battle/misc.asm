@@ -53,7 +53,7 @@ GetPlayerBackpicCoords: ; fbd9d (3e:7d9d)
 DoWeatherModifiers: ; fbda4
 ; checks attacking move type in b with current weather for a x1.5 boost or x0.5 penalty to
 ; apply for wTypeMatchup for later damage calc adjustment (alongside STAB and type matchup)
-	call GetWeatherAfterCloudNine
+	call GetWeatherAfterOpponentUmbrella
 	cp WEATHER_SUN
 	jr z, .sun
 	cp WEATHER_RAIN

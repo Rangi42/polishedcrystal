@@ -2186,7 +2186,7 @@ BattleCommand_checkhit:
 
 .WeatherAccCheck:
 ; Returns z if the move used always hits in the current weather
-	call GetWeatherAfterCloudNine
+	call GetWeatherAfterOpponentUmbrella
 	cp WEATHER_RAIN
 	jr z, .RainAccCheck
 	cp WEATHER_HAIL
@@ -3872,7 +3872,7 @@ HailDefenseBoost:
 	push bc
 	lb bc, WEATHER_HAIL, ICE
 WeatherDefenseBoost:
-	call GetWeatherAfterCloudNine
+	call GetWeatherAfterOpponentUmbrella
 	cp b
 	ld a, c
 	pop bc
@@ -5186,14 +5186,16 @@ GetMoveData::
 	jp FarCopyBytes
 
 IsOpponentLeafGuardActive:
-	call CallOpponentTurn
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	jr DoLeafGuardCheck
 IsLeafGuardActive:
 ; returns z if leaf guard applies for enemy
 	call GetOpponentAbilityAfterMoldBreaker
 DoLeafGuardCheck:
 	cp LEAF_GUARD
 	ret nz
-	call GetWeatherAfterCloudNine
+	call GetWeatherAfterOpponentUmbrella
 	cp WEATHER_SUN
 	ret
 
@@ -5615,7 +5617,7 @@ BattleCommand_freezetarget:
 	ld a, [wTypeModifier]
 	and a
 	ret z
-	call GetWeatherAfterCloudNine
+	call GetWeatherAfterOpponentUmbrella
 	cp WEATHER_SUN
 	ret z
 	call CheckIfTargetIsIceType
@@ -5677,7 +5679,7 @@ BattleCommand_paralyzetarget:
 
 BattleCommand_growth:
 	lb bc, ATTACK, SP_ATTACK
-	call GetWeatherAfterCloudNine
+	call GetWeatherAfterUserUmbrella
 	cp WEATHER_SUN
 	jr nz, .got_stats_to_raise
 	lb bc, ($10 | ATTACK), ($10 | SP_ATTACK)
@@ -8755,7 +8757,7 @@ BattleCommand_healweather:
 	ld [wKickCounter], a
 	call AnimateCurrentMove
 
-	call GetWeatherAfterCloudNine
+	call GetWeatherAfterUserUmbrella
 	cp WEATHER_SUN
 	jr z, .goodheal
 	and a
@@ -8882,7 +8884,7 @@ BattleCommand_doubleminimizedamage: ; 37ce6
 
 BattleCommand_skipsuncharge: ; 37d02
 ; mimicsuncharge
-	call GetWeatherAfterCloudNine
+	call GetWeatherAfterUserUmbrella
 	cp WEATHER_SUN
 	ret nz
 	ld b, charge_command
@@ -8984,7 +8986,7 @@ BattleCommand_thunderaccuracy: ; 37d94
 	ld a, BATTLE_VARS_MOVE_TYPE
 	call GetBattleVarAddr
 	inc hl
-	call GetWeatherAfterCloudNine
+	call GetWeatherAfterOpponentUmbrella
 	cp WEATHER_RAIN
 	jr z, .rain
 	cp WEATHER_SUN
