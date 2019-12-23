@@ -578,8 +578,10 @@ LyraBattleScript:
 	turnobject ELMSLAB_LYRA, UP
 	opentext
 	writetext ElmsLabLyraThankYouText
+	waitbutton
 	turnobject ELMSLAB_LYRA, LEFT
 	writetext ElmsLabLyraSeeYouText
+	waitbutton
 	closetext
 	turnobject PLAYER, DOWN
 	applymovement ELMSLAB_LYRA, LyraLeavesMovement
