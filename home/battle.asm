@@ -806,7 +806,7 @@ GetWeatherAfterUserUmbrella::
 	ret z
 	push bc
 	push hl
-	call GetUserItemAfterUnnerve
+	farcall GetUserItemAfterUnnerve
 	ld a, b
 	xor HELD_UTILITY_UMBRELLA
 	pop hl
