@@ -286,6 +286,8 @@ endc
 	const ANIM_SHAKE             ; $115
 	const ANIM_HIT_CONFUSION     ; $116
 	const ANIM_SHARPEN           ; $117
+	const ANIM_STAT_UP           ; $118
+	const ANIM_STAT_DOWN         ; $119
 
 ; wNumHits uses offsets from ANIM_MISS
 	const_def

@@ -1,11 +1,17 @@
 anim_wait: macro
-if \1 >= $d0
+if \1 >= $cf
 	flip out
 endc
 	db \1
 	endm
 
-	enum_start $d0
+	enum_start $cf
+
+	enum anim_statloop_command ; cf
+anim_statloop: macro
+	db anim_statloop_command
+	dw \1 ; address
+	endm
 
 	enum anim_obj_command ; d0
 anim_obj: macro

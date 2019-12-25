@@ -280,6 +280,8 @@ BattleAnimations::
 	dw BattleAnim_Shake
 	dw BattleAnim_HitConfusion
 	dw BattleAnim_Sharpen
+	dw BattleAnim_StatUp
+	dw BattleAnim_StatDown
 
 BattleAnim_0:
 	anim_ret
@@ -5613,6 +5615,62 @@ BattleAnim_Trick:
 	anim_wait 16
 	anim_wait 32
 	anim_ret
+
+
+BattleAnim_StatUp:
+	anim_1gfx ANIM_GFX_SPEED
+	anim_call BattleAnim_FollowEnemyFeet_0
+	anim_bgeffect ANIM_BG_16, $0, $1, $40
+	anim_bgeffect ANIM_BG_06, $0, $2, $0
+.loop
+	; anim_sound 0, 0, SFX_SWORDS_DANCE
+	anim_obj ANIM_OBJ_STAT_UP,   5, 4,  13, 6, $6
+	anim_wait 2
+	anim_obj ANIM_OBJ_STAT_UP,   4, 4,  13, 6, $6
+	anim_wait 2
+	anim_obj ANIM_OBJ_STAT_UP,   6, 4,  13, 6, $8
+	anim_wait 2
+	anim_obj ANIM_OBJ_STAT_UP,   3, 4,  13, 6, $8
+	anim_wait 2
+	anim_obj ANIM_OBJ_STAT_UP,   7, 4,  13, 6, $6
+	anim_wait 2
+	anim_obj ANIM_OBJ_STAT_UP,   2, 4,  13, 6, $8
+	anim_wait 2
+	anim_obj ANIM_OBJ_STAT_UP,   8, 4,  13, 6, $8
+	anim_wait 2
+	anim_statloop .loop
+	anim_wait 8
+	anim_incbgeffect ANIM_BG_16
+	anim_call BattleAnim_ShowMon_0
+	anim_ret
+
+BattleAnim_StatDown:
+	anim_1gfx ANIM_GFX_SPEED
+	anim_call BattleAnim_FollowEnemyFeet_0
+	anim_bgeffect ANIM_BG_16, $0, $1, $40
+	anim_bgeffect ANIM_BG_06, $0, $2, $0
+.loop
+	; anim_sound 0, 0, SFX_SWORDS_DANCE
+	anim_obj ANIM_OBJ_STAT_DOWN, 5, 4,  7, 6, $6
+	anim_wait 2
+	anim_obj ANIM_OBJ_STAT_DOWN, 4, 4,  7, 6, $6
+	anim_wait 2
+	anim_obj ANIM_OBJ_STAT_DOWN, 6, 4,  7, 6, $8
+	anim_wait 2
+	anim_obj ANIM_OBJ_STAT_DOWN, 3, 4,  7, 6, $8
+	anim_wait 2
+	anim_obj ANIM_OBJ_STAT_DOWN, 7, 4,  7, 6, $6
+	anim_wait 2
+	anim_obj ANIM_OBJ_STAT_DOWN, 2, 4,  7, 6, $8
+	anim_wait 2
+	anim_obj ANIM_OBJ_STAT_DOWN, 8, 4,  7, 6, $8
+	anim_wait 2
+	anim_statloop .loop
+	anim_wait 8
+	anim_incbgeffect ANIM_BG_16
+	anim_call BattleAnim_ShowMon_0
+	anim_ret
+
 
 ; ================================
 ; unused animations below here

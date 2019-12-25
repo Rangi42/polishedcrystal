@@ -174,6 +174,11 @@ PrintStatChange:
 	ld de, StatSeverelyFellText
 	xor a
 DoPrintStatChange:
+	push af
+	and a
+	call z, PlayStatChangeAnim
+	pop af
+
 	bit STAT_TARGET_F, b
 	jr z, .do_print
 	push af
@@ -234,6 +239,7 @@ UseStatItemText:
 	ld hl, BattleText_ItemDrasticallyRaised
 	ld de, BattleText_ItemSeverelyLowered
 .gotmsg
+	xor a
 	call DoPrintStatChange
 	pop bc
 	ret
@@ -304,3 +310,85 @@ DoChangeStat:
 	ld a, 1
 	ld [wFailedMessage], a
 	ret
+
+PlayStatChangeAnim:
+	bit STAT_TARGET_F, b
+	jr z, .do_it
+
+	call SwitchTurn
+	call .do_it
+	jp SwitchTurn
+
+.do_it
+	push hl
+	push de
+	push bc
+if !DEF(MONOCHROME)
+	ld hl, StatPals
+	ld de, wUnknOBPals palette PAL_BATTLE_OB_GRAY
+	ld a, [wLoweredStat]
+	and $f
+	add a
+	add a
+	add a
+	ld c, a
+	ld b, 0
+	add hl, bc
+	ld bc, 1 palettes
+	ld a, BANK(wUnknOBPals)
+	call FarCopyWRAM
+	ld b, 2
+	call SafeCopyTilemapAtOnce
+endc
+	pop bc
+	push bc
+	ld de, ANIM_STAT_UP
+	bit STAT_LOWER_F, b
+	jr z, .got_anim
+	ld de, ANIM_STAT_DOWN
+.got_anim
+	farcall FarPlayBattleAnimation
+	ld b, CGB_BATTLE_COLORS
+	call GetCGBLayout
+	call SetPalettes
+	pop bc
+	pop de
+	pop hl
+	ret
+
+StatPals:
+	; atk
+	RGB 31, 19, 24
+	RGB 31, 19, 24
+	RGB 30, 10, 06
+	RGB 00, 00, 00
+	; def
+	RGB 19, 31, 24
+	RGB 19, 31, 24
+	RGB 10, 30, 06
+	RGB 00, 00, 00
+	; spe
+	RGB 19, 24, 31
+	RGB 19, 24, 31
+	RGB 10, 06, 30
+	RGB 00, 30, 00
+	; sat
+	RGB 31, 19, 31
+	RGB 31, 19, 31
+	RGB 30, 10, 30
+	RGB 00, 00, 00
+	; sdf
+	RGB 28, 28, 28
+	RGB 28, 28, 28
+	RGB 25, 25, 25
+	RGB 00, 00, 00
+	; acc
+	RGB 31, 19, 28
+	RGB 31, 19, 28
+	RGB 31, 10, 24
+	RGB 00, 00, 00
+	; eva
+	RGB 31, 31, 19
+	RGB 31, 31, 19
+	RGB 30, 30, 10
+	RGB 00, 00, 00
