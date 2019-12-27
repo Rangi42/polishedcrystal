@@ -357,38 +357,38 @@ endc
 	ret
 
 StatPals:
-	; atk
+; attack - red
 	RGB 31, 19, 24
 	RGB 31, 19, 24
 	RGB 30, 10, 06
 	RGB 00, 00, 00
-	; def
-	RGB 19, 31, 24
-	RGB 19, 31, 24
-	RGB 10, 30, 06
+; defense - green
+	RGB 12, 25, 01
+	RGB 12, 25, 01
+	RGB 05, 14, 00
 	RGB 00, 00, 00
-	; spe
-	RGB 19, 24, 31
-	RGB 19, 24, 31
-	RGB 10, 06, 30
-	RGB 00, 30, 00
-	; sat
-	RGB 31, 19, 31
-	RGB 31, 19, 31
-	RGB 30, 10, 30
+; speed - cyan
+	RGB 13, 27, 31
+	RGB 13, 27, 31
+	RGB 05, 20, 30
 	RGB 00, 00, 00
-	; sdf
-	RGB 28, 28, 28
-	RGB 28, 28, 28
+; spcl.atk - blue
+	RGB 12, 14, 31
+	RGB 12, 14, 31
+	RGB 01, 04, 31
+	RGB 00, 00, 00
+; spcl.def - purple
+	RGB 27, 13, 31
+	RGB 27, 13, 31
+	RGB 23, 00, 31
+	RGB 00, 00, 00
+; accuracy - gray
 	RGB 25, 25, 25
+	RGB 25, 25, 25
+	RGB 13, 13, 13
 	RGB 00, 00, 00
-	; acc
-	RGB 31, 19, 28
-	RGB 31, 19, 28
-	RGB 31, 10, 24
-	RGB 00, 00, 00
-	; eva
-	RGB 31, 31, 19
-	RGB 31, 31, 19
-	RGB 30, 30, 10
+; evasion - yellow
+	RGB 31, 31, 07
+	RGB 31, 31, 07
+	RGB 29, 23, 01
 	RGB 00, 00, 00
