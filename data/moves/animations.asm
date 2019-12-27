@@ -5663,7 +5663,7 @@ BattleAnim_StatUp:
 	anim_1gfx ANIM_GFX_SPEED
 	anim_call BattleAnim_FollowEnemyFeet_0
 	anim_bgeffect ANIM_BG_16, $0, $1, $40
-	anim_bgeffect ANIM_BG_06, $0, $2, $0
+	; anim_bgeffect ANIM_BG_06, $0, $2, $0
 .loop
 	; anim_sound 0, 0, SFX_SWORDS_DANCE
 	anim_obj ANIM_OBJ_STAT_UP,   5, 4,  13, 6, $6
@@ -5690,7 +5690,7 @@ BattleAnim_StatDown:
 	anim_1gfx ANIM_GFX_SPEED
 	anim_call BattleAnim_FollowEnemyFeet_0
 	anim_bgeffect ANIM_BG_16, $0, $1, $40
-	anim_bgeffect ANIM_BG_06, $0, $2, $0
+	; anim_bgeffect ANIM_BG_06, $0, $2, $0
 .loop
 	; anim_sound 0, 0, SFX_SWORDS_DANCE
 	anim_obj ANIM_OBJ_STAT_DOWN, 5, 4,  7, 6, $6
