@@ -325,16 +325,15 @@ PlayStatChangeAnim:
 	push bc
 if !DEF(MONOCHROME)
 	ld hl, StatPals
-	ld de, wUnknOBPals palette PAL_BATTLE_OB_GRAY
+	ld de, wUnknOBPals palette PAL_BATTLE_OB_GRAY + 2
 	ld a, [wLoweredStat]
 	and $f
-	add a
 	add a
 	add a
 	ld c, a
 	ld b, 0
 	add hl, bc
-	ld bc, 1 palettes
+	ld bc, 4
 	ld a, BANK(wUnknOBPals)
 	call FarCopyWRAM
 	ld b, 2
@@ -356,39 +355,25 @@ endc
 	pop hl
 	ret
 
-StatPals:
+StatPals: ; similar to X items
 ; attack - red
 	RGB 31, 19, 24
-	RGB 31, 19, 24
 	RGB 30, 10, 06
-	RGB 00, 00, 00
-; defense - green
-	RGB 12, 25, 01
-	RGB 12, 25, 01
-	RGB 05, 14, 00
-	RGB 00, 00, 00
-; speed - cyan
-	RGB 13, 27, 31
-	RGB 13, 27, 31
-	RGB 05, 20, 30
-	RGB 00, 00, 00
-; spcl.atk - blue
-	RGB 12, 14, 31
+; defense - blue
 	RGB 12, 14, 31
 	RGB 01, 04, 31
-	RGB 00, 00, 00
-; spcl.def - purple
-	RGB 27, 13, 31
-	RGB 27, 13, 31
-	RGB 23, 00, 31
-	RGB 00, 00, 00
-; accuracy - gray
-	RGB 25, 25, 25
-	RGB 25, 25, 25
-	RGB 13, 13, 13
-	RGB 00, 00, 00
-; evasion - yellow
-	RGB 31, 31, 07
+; speed - cyan
+	RGB 13, 27, 31
+	RGB 05, 20, 30
+; spcl.atk - yellow
 	RGB 31, 31, 07
 	RGB 29, 23, 01
-	RGB 00, 00, 00
+; spcl.def - green
+	RGB 12, 25, 01
+	RGB 05, 14, 00
+; accuracy - purple
+	RGB 27, 13, 31
+	RGB 23, 00, 31
+; evasion - gray
+	RGB 25, 25, 25
+	RGB 13, 13, 13
