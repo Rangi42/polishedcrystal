@@ -3105,7 +3105,6 @@ BattleAnim_DefenseCurl:
 	anim_call BattleAnim_ShowMon_0
 	anim_ret
 
-BattleAnim_ShellSmash: ; TODO: new Shell Smash animation
 BattleAnim_Withdraw: ; removed
 	anim_1gfx ANIM_GFX_REFLECT
 	anim_call BattleAnim_FollowPlayerHead_0
@@ -4248,6 +4247,49 @@ BattleAnim_Swagger:
 	anim_sound 0, 1, SFX_KINESIS_2
 	anim_obj ANIM_OBJ_83,  13, 0,   5, 0, $0
 	anim_wait 40
+	anim_ret
+
+BattleAnim_ShellSmash:
+	anim_3gfx ANIM_GFX_REFLECT, ANIM_GFX_HIT, ANIM_GFX_ROCKS
+	anim_sound 0, 0, SFX_SHINE
+	anim_obj ANIM_OBJ_70, 48, 88, $0
+	anim_wait 8
+	anim_bgeffect ANIM_BG_1F, $80, $2, $0
+	anim_bgeffect ANIM_BG_1A, $0, $1, $20
+	anim_sound 0, 0, SFX_OUTRAGE
+	anim_wait 72
+	anim_incobj  1
+	anim_wait 1
+	anim_sound 0, 1, SFX_KARATE_CHOP
+	anim_obj ANIM_OBJ_00, 48, 88, $0
+	anim_obj ANIM_OBJ_SHELL_SMASH, 48, 88, $5c
+	anim_obj ANIM_OBJ_SHELL_SMASH, 48, 88, $e8
+	anim_obj ANIM_OBJ_SHELL_SMASH, 48, 88, $d0
+	anim_obj ANIM_OBJ_SHELL_SMASH, 48, 88, $50
+	anim_wait 8
+	anim_2gfx ANIM_GFX_SPEED, ANIM_GFX_ROCKS
+	anim_incbgeffect ANIM_BG_1A
+	anim_bgeffect ANIM_BG_19, $0, $1, $40
+.loop
+	anim_sound 0, 0, SFX_SWORDS_DANCE
+	anim_obj ANIM_OBJ_47, 44, 108, $6
+	anim_wait 2
+	anim_obj ANIM_OBJ_47, 36, 108, $6
+	anim_wait 2
+	anim_obj ANIM_OBJ_47, 52, 108, $8
+	anim_wait 2
+	anim_obj ANIM_OBJ_47, 28, 108, $8
+	anim_wait 2
+	anim_obj ANIM_OBJ_47, 60, 108, $6
+	anim_wait 2
+	anim_obj ANIM_OBJ_47, 20, 108, $8
+	anim_wait 2
+	anim_obj ANIM_OBJ_47, 68, 108, $8
+	anim_wait 2
+	anim_loop 2, .loop
+	anim_wait 8
+	anim_incbgeffect ANIM_BG_16
+	anim_call BattleAnim_ShowMon_0
 	anim_ret
 
 BattleAnim_VoltSwitch:
