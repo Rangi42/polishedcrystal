@@ -159,20 +159,7 @@ FarChangeStat:
 	farcall ShowPotentialAbilityActivation
 	pop bc
 PrintStatChange:
-	ld a, [wLoweredStat]
-	and $f0
-	swap a
-	and a
-	ld hl, StatRoseText
-	ld de, StatFellText
-	jr z, DoPrintStatChange
-	dec a
-	ld hl, StatRoseSharplyText
-	ld de, StatHarshlyFellText
-	jr z, DoPrintStatChange
-	ld hl, StatRoseDrasticallyText
-	ld de, StatSeverelyFellText
-	xor a
+	call GetStatRaiseMessage
 DoPrintStatChange:
 	push af
 	and a
@@ -212,6 +199,23 @@ DoPrintStatChange:
 
 .printmsg
 	jp StdBattleTextBox
+
+GetStatRaiseMessage:
+	ld a, [wLoweredStat]
+	and $f0
+	swap a
+	and a
+	ld hl, StatRoseText
+	ld de, StatFellText
+	ret z
+	dec a
+	ld hl, StatRoseSharplyText
+	ld de, StatHarshlyFellText
+	ret z
+	ld hl, StatRoseDrasticallyText
+	ld de, StatSeverelyFellText
+	xor a
+	ret
 
 UseStatItemText:
 ; doesn't consume the item in case of multiple stats

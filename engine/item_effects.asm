@@ -2426,20 +2426,23 @@ DireHit: ; f4b8
 
 
 XItemEffect: ; f4c5
-	call UseItemText
-
 	farcall CheckItemParam
 	ld b, a
 
-	xor a
-	ld [hBattleTurn], a
-	ld [wAttackMissed], a
-	ld [wEffectFailed], a
-	farcall CheckIfStatCanBeRaised
-	call WaitSFX
+	ld a, STAT_SKIPTEXT | STAT_SILENT
+	farcall _ForceRaiseStat
+	ld a, [wFailedMessage]
+	and a
+	jp nz, WontHaveAnyEffect_NotUsedMessage
 
-	farcall BattleCommand_statupmessage
-	farcall BattleCommand_statupfailtext
+	push bc
+	call UseItemText
+	pop bc
+
+	; skip stat raise anim since we're in bag
+	farcall GetStatRaiseMessage
+	or 1
+	farcall DoPrintStatChange
 
 	ld a, [wCurBattleMon]
 	ld [wCurPartyMon], a
