@@ -312,6 +312,8 @@ DoChangeStat:
 	ret
 
 PlayStatChangeAnim:
+	farcall CheckBattleEffects
+	ret c
 	bit STAT_TARGET_F, b
 	jr z, .do_it
 
