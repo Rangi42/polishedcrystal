@@ -4127,9 +4127,9 @@ SECTION "Effect Commands", ROMX
 INCLUDE "engine/battle/effect_commands.asm"
 
 
-SECTION "Effect Commands 2", ROMX
+SECTION "Battle Stat Changes", ROMX
 
-INCLUDE "engine/battle/effect_commands/stats.asm"
+INCLUDE "engine/battle/stats.asm"
 
 
 SECTION "Battle Animations", ROMX
