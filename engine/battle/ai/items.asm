@@ -398,7 +398,7 @@ AI_Items: ; 39196
 .HyperPotion: ; 38284
 	call .HealItem
 	jp c, .DontUse
-	ld b, 200
+	ld b, 120
 	call EnemyUsedHyperPotion
 	jp .Use
 ; 38292 (e:4292)
@@ -406,7 +406,7 @@ AI_Items: ; 39196
 .SuperPotion: ; 38292
 	call .HealItem
 	jp c, .DontUse
-	ld b, 50
+	ld b, 60
 	call EnemyUsedSuperPotion
 	jp .Use
 ; 382a0
@@ -433,46 +433,41 @@ AI_Items: ; 39196
 	jp .Use
 ; 3831d (e:431d)
 
-.XAttack: ; 3831d
+.XAttack:
 	call .XItem
-	jp c, .DontUse
-	call EnemyUsedXAttack
-	jp .Use
-; 38329
+	ret c
+	ld a, X_ATTACK
+	jp EnemyUsedXItem
 
-.XDefend: ; 38329
+.XDefend:
 	call .XItem
-	jp c, .DontUse
-	call EnemyUsedXDefend
-	jp .Use
-; 38335
+	ret c
+	ld a, X_DEFEND
+	jp EnemyUsedXItem
 
-.XSpeed: ; 38335
+.XSpeed:
 	call .XItem
-	jp c, .DontUse
-	call EnemyUsedXSpeed
-	jp .Use
-; 38341
+	ret c
+	ld a, X_SPEED
+	jp EnemyUsedXItem
 
-.XSpclAtk: ; 38341
+.XSpclAtk:
 	call .XItem
-	jp c, .DontUse
-	call EnemyUsedXSpclAtk
-	jp .Use
-; 3834d
+	ret c
+	ld a, X_SPCL_ATK
+	jp EnemyUsedXItem
 
 .XSpclDef: ; 38341
 	call .XItem
-	jp c, .DontUse
-	call EnemyUsedXSpclDef
-	jp .Use
+	ret c
+	ld a, X_SPCL_DEF
+	jp EnemyUsedXItem
 
 .XAccuracy: ; 382f9
 	call .XItem
-	jp c, .DontUse
-	call EnemyUsedXAccuracy
-	jp .Use
-; 38305
+	ret c
+	ld a, X_ACCURACY
+	jp EnemyUsedXItem
 
 .XItem: ; 3834d (e:434d)
 	ld a, [wEnemyTurnsTaken]
@@ -697,52 +692,32 @@ EnemyUsedDireHit: ; 38511
 	jp PrintText_UsedItemOn_AND_AIUpdateHUD
 ; 3851e
 
-EnemyUsedXAttack: ; 38541
-	ld b, ATTACK
-	ld a, X_ATTACK
-	jr EnemyUsedXItem
-; 38547
-
-EnemyUsedXDefend: ; 38547
-	ld b, DEFENSE
-	ld a, X_DEFEND
-	jr EnemyUsedXItem
-; 3854d
-
-EnemyUsedXSpeed: ; 3854d
-	ld b, SPEED
-	ld a, X_SPEED
-	jr EnemyUsedXItem
-; 38553
-
-EnemyUsedXSpclAtk: ; 38553
-	ld b, SP_ATTACK
-	ld a, X_SPCL_ATK
-	jr EnemyUsedXItem
-
-EnemyUsedXSpclDef: ; 38553
-	ld b, SP_DEFENSE
-	ld a, X_SPCL_DEF
-	jr EnemyUsedXItem
-
-EnemyUsedXAccuracy: ; 384f7
-	ld b, ACCURACY
-	ld a, X_ACCURACY
-; 38504
-
-
-; Parameter
-; a = ITEM_CONSTANT
-; b = BATTLE_CONSTANT (ATTACK, DEFENSE, SPEED, SP_ATTACK, SP_DEFENSE, ACCURACY, EVASION)
 EnemyUsedXItem:
 	ld [wCurEnemyItem], a
+	ld b, a
+	farcall GetItemHeldEffect
+	ld b, c
+
+	ld a, STAT_SKIPTEXT | STAT_SILENT
+	farcall _ForceRaiseStat
+	ld a, [wFailedMessage]
+	and a
+	jr nz, .fail
+
 	push bc
 	call PrintText_UsedItemOn
 	pop bc
-	farcall CheckIfStatCanBeRaised
-	jp AIUpdateHUD
-; 38568
 
+	farcall PrintStatChange
+	call AIUpdateHUD
+	xor a
+	ret
+
+.fail
+	xor a
+	ld [wCurEnemyItem], a
+	scf
+	ret
 
 ; Parameter
 ; a = ITEM_CONSTANT
