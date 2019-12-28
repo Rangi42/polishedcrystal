@@ -43,18 +43,7 @@ GetVariant: ; 51040
 	jr nc, .use_form
 
 	push bc
-	ld bc, wTempMonForm
-	ld a, b
-	cp h
-	jr nz, .nottemp1
-	ld a, c
-	cp l
-	jr nz, .nottemp1
-	; skip wTempMonID through wTempMonSdfEV
-	ld bc, -11
-	add hl, bc
-.nottemp1
-	ld bc, -8
+	ld bc, MON_MOVES - MON_FORM
 	add hl, bc
 	pop bc
 
@@ -89,18 +78,7 @@ endr
 ; hl is ...MonForm
 
 	push bc
-	ld bc, wTempMonForm
-	ld a, b
-	cp h
-	jr nz, .nottemp2
-	ld a, c
-	cp l
-	jr nz, .nottemp2
-	; skip wTempMonID through wTempMonSdfEV
-	ld bc, -11
-	add hl, bc
-.nottemp2
-	ld bc, -9
+	ld bc, MON_ITEM - MON_FORM
 	add hl, bc
 	pop bc
 
