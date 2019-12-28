@@ -384,17 +384,15 @@ else
 endc
 
 VaryBGPal0ByTempMonDVs:
-	ld hl, wTempMonDVs
-	ld a, [wTempMonSpecies]
-	ld b, a
-	call CopyDVsToColorVaryDVs
 	ld hl, wUnknBGPals palette 0 + 2
-	jp VaryColorsByDVs
-
+	jr VaryBGPalByTempMonDVs
 VaryBGPal1ByTempMonDVs:
+	ld hl, wUnknBGPals palette 1 + 2
+VaryBGPalByTempMonDVs:
+	push hl
 	ld hl, wTempMonDVs
 	ld a, [wTempMonSpecies]
 	ld b, a
 	call CopyDVsToColorVaryDVs
-	ld hl, wUnknBGPals palette 1 + 2
+	pop hl
 	jp VaryColorsByDVs
