@@ -229,6 +229,7 @@ UseStatItemText:
 	jr nz, .item_anim_done
 	farcall ItemRecoveryAnim
 .item_anim_done
+	call GetCurItemName
 	ld a, [wLoweredStat]
 	and $f0
 	swap a

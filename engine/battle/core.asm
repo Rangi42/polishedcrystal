@@ -3368,36 +3368,25 @@ _HeldStatBoostBerry:
 	cp MULTIPLE_STATS
 	jr nz, .got_stat
 
-	ld a, [wAttackMissed]
-	push af
-	push hl
 	farcall GetCappedStats
-	farcall SharplyRaiseRandomStat
-	pop hl
+	farcall SelectRandomRaiseStat
 	jr z, .failed
-	jr .finished_raising_stat
+	ld a, $10
+	or e
+	ld b, a
 
 .got_stat
-	ld a, [wAttackMissed]
-	push af
-	push hl
-	farcall BattleCommand_statup
-	pop hl
-.finished_raising_stat
+	ld a, STAT_SKIPTEXT | STAT_SILENT
+	farcall _ForceRaiseStat
 	ld a, [wFailedMessage]
 	and a
-	jr z, .success
+	ret nz
+	farcall UseStatItemText
+	xor a
+	ret
 .failed
-	pop af
 	ld [wAttackMissed], a
 	or 1
-	ret
-
-.success
-	farcall GetItemStatMessage
-	pop af
-	ld [wAttackMissed], a
-	xor a
 	ret
 
 StealHPHealingItem:

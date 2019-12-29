@@ -1261,12 +1261,45 @@ GetCappedStats:
 	jr c, .loop1
 	ret
 
-SharplyRaiseRandomStat:
+SelectRandomRaiseStat:
+; Returns stat to raise in e.
+; Intended for use after GetCappedStats.
+; Automatically disallows the stat from SelectRandomLowerStat. If this is
+; unwanted, just re-run GetCappedStats after performing the stat raise.
+; Returns z if all stats are maxed.
 	; If all stats are maxed (b=0), skip increasing stats
 	ld a, b
 	and a
 	ret z
 
+	ld h, b
+	call SelectRandomStat
+
+	; Disallow the stat to be lowered
+	ld a, d
+	cpl
+	and c
+	ld c, a
+	or 1
+	ret
+
+SelectRandomLowerStat:
+	; If all stats are minimized (c=0), skip decreasing stats
+	ld a, c
+	and a
+	ret z
+
+	ld h, c
+	call SelectRandomStat
+
+	ld a, d
+	cpl
+	and c
+	ld c, a
+	or 1
+	ret
+
+SelectRandomStat:
 	; Randomize values until we get one matching a nonmaxed stat
 .loop1
 	call BattleRandom
@@ -1281,54 +1314,9 @@ SharplyRaiseRandomStat:
 	inc e
 	jr .loop2
 .loop2_done
-	ld a, b
+	ld a, h
 	and d
 	jr z, .loop1
-
-	; We got the stat to raise. Set the e:th bit (using d) in c to 0
-	; to avoid lowering the stat as well.
-	ld a, d
-	cpl
-	and c
-	ld c, a
-	ld a, e
-	or $10 ; raise it sharply
-	ld b, a
-	push bc
-	farcall ResetMiss
-	farcall BattleCommand_statup
-	pop bc
-	or 1
-	ret
-
-LowerRandomStat:
-	; If all stats are minimized (c=0), skip decreasing stats
-	ld a, c
-	and a
-	ret z
-
-.loop1
-	call BattleRandom
-	and $7
-	cp 5
-	jr nc, .loop1
-	lb de, 1, 0 ; e = counter
-.loop2
-	cp e
-	jr z, .loop2_done
-	sla d
-	inc e
-	jr .loop2
-.loop2_done
-	ld a, c
-	and d
-	jr z, .loop1
-
-	ld b, e
-	push bc
-	farcall ForceLowerStat
-	pop bc
-	or 1
 	ret
 
 MoodyAbility:
@@ -1336,17 +1324,23 @@ MoodyAbility:
 ; It will not try to raise a stat at +6 (or lower one at -6). This means that, should all
 ; stats be +6, Moody will not raise any stat, and vice versa.
 
-	call ShowAbilityActivation ; Safe -- Moody is certain to work for at least one part.
 	call DisableAnimations
 
 	call GetCappedStats
-	call SharplyRaiseRandomStat
-	jr z, .no_up_msg
+	call SelectRandomRaiseStat
+	jr z, .raise_done
 	push bc
-	farcall BattleCommand_statupmessage
+	ld a, $10
+	or e
+	ld b, a
+	farcall ForceRaiseStat
 	pop bc
-.no_up_msg
-	call LowerRandomStat
+.raise_done
+	call SelectRandomLowerStat
+	jr z, .lower_done
+	ld b, e
+	farcall ForceLowerStat
+.lower_done
 	jp EnableAnimations
 
 ApplyDamageAbilities_AfterTypeMatchup:
