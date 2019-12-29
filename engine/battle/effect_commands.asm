@@ -7380,7 +7380,9 @@ BattleCommand_conversion:
 	ld a, [hBattleTurn]
 	and a
 	ld hl, InvalidTypeChangeText
+	push de
 	call z, StdBattleTextBox
+	pop de
 
 	; skip move delay after the first selection
 	ld a, [hBattleTurn]
