@@ -113,7 +113,13 @@ MonStatsInit: ; 4dd72 (13:5d72)
 	jp StatsScreen_SetJumptableIndex
 
 EggStatsInit: ; 4dda1
+	ld a, [wCurPartySpecies]
+	push af
+	ld a, EGG
+	ld [wCurPartySpecies], a
 	call EggStatsScreen
+	pop af
+	ld [wCurPartySpecies], a
 	ld a, [wJumptableIndex]
 	inc a
 	ld [wJumptableIndex], a
