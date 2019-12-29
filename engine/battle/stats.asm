@@ -129,7 +129,7 @@ FarChangeStat:
 	and $f
 	ld b, a
 	inc b
-	farcall GetStatName
+	call GetStatName
 	pop bc
 	bit STAT_TARGET_F, b
 	call nz, SwitchTurn
@@ -154,7 +154,7 @@ FarChangeStat:
 	bit STAT_SILENT_F, b
 	push bc
 	jr nz, .anim_done
-	farcall TryAnimateCurrentMove
+	farcall StatUpDownAnim
 .anim_done
 	farcall ShowPotentialAbilityActivation
 	pop bc
@@ -224,7 +224,7 @@ UseStatItemText:
 	and $f
 	ld b, a
 	inc b
-	farcall GetStatName
+	call GetStatName
 	farcall CheckAlreadyExecuted
 	jr nz, .item_anim_done
 	farcall ItemRecoveryAnim
@@ -248,6 +248,35 @@ UseStatItemText:
 	call DoPrintStatChange
 	pop bc
 	ret
+
+GetStatName:
+	ld hl, .names
+	ld c, "@"
+.CheckName:
+	dec b
+	jr z, .Copy
+.GetName:
+	ld a, [hli]
+	cp c
+	jr z, .CheckName
+	jr .GetName
+
+.Copy:
+	ld de, wStringBuffer2
+	ld bc, wStringBuffer3 - wStringBuffer2
+	rst CopyBytes
+	ret
+
+.names
+	db "Attack@"
+	db "Defense@"
+	db "Speed@"
+	db "Spcl.Atk@"
+	db "Spcl.Def@"
+	db "Accuracy@"
+	db "Evasion@"
+	db "stats@"
+
 
 DoLowerStat:
 	or 1

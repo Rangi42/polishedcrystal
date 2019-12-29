@@ -615,22 +615,6 @@ CheckPowerHerb:
 	call ConsumeUserItem
 	jp ResetTurn
 
-GetItemStatMessage:
-	farcall ItemRecoveryAnim
-	call GetCurItemName
-	ld a, [wLoweredStat]
-	and $f
-	ld b, a
-	inc b
-	call GetStatName
-	ld a, [wLoweredStat]
-	and $f0
-	ld hl, BattleText_ItemRaised
-	jr z, .got_msg
-	ld hl, BattleText_ItemSharplyRaised
-.got_msg
-	jp StdBattleTextBox
-
 MoveDisabled: ; 3438d
 
 	; Make sure any charged moves fail
@@ -2470,18 +2454,11 @@ BattleCommand_hittargetnosub: ; 34f60
 ; 34fd1
 
 
-BattleCommand_statupanim: ; 34fd1
-	ld a, [wAttackMissed]
-	and a
-	jp nz, BattleCommand_movedelay
+StatUpDownAnim: ; 34feb
+	call CheckAlreadyExecuted
+	ret nz
 
 	xor a
-	jr StatUpDownAnim
-
-; 34fdb
-
-
-StatUpDownAnim: ; 34feb
 	ld [wNumHits], a
 
 ; Defense Curl, Withdraw, and Harden were merged, so use the correct
@@ -5694,9 +5671,6 @@ BattleCommand_growth:
 	ld b, c
 	jp ForceRaiseStat
 
-BattleCommand_statup:
-	jp ForceRaiseStat
-
 CheckAlreadyExecuted:
 	ld a, [wAlreadyExecuted]
 	and a
@@ -5802,86 +5776,6 @@ _LowerOppStatHit:
 ChangeStat:
 ; b contains stat to alter, or zero if it should be read from the move script
 	farjp FarChangeStat
-
-BattleCommand_statupmessage: ; 363b8
-	ld a, [wFailedMessage]
-	and a
-	ret nz
-	ld a, [wLoweredStat]
-	and $f
-	ld b, a
-	inc b
-	call GetStatName
-	ld hl, .stat
-	jp BattleTextBox
-
-.stat
-	text_jump UnknownText_0x1c0cc6
-	start_asm
-	ld hl, .up
-	ld a, [wLoweredStat]
-	and $f0
-	ret z
-	ld hl, .wayup
-	ret
-
-.wayup
-	text_jump UnknownText_0x1c0cd0
-	db "@"
-
-.up
-	text_jump UnknownText_0x1c0ce0
-	db "@"
-
-BattleCommand_statupfailtext: ; 3644c
-; statupfailtext
-	ld a, [wFailedMessage]
-	and a
-	ret z
-	push af
-	call BattleCommand_movedelay
-	pop af
-	dec a
-	jp z, TryPrintButItFailed
-	ld a, [wLoweredStat]
-	and $f
-	ld b, a
-	inc b
-	call GetStatName
-	ld hl, WontRiseAnymoreText
-	jp StdBattleTextBox
-
-; 3646a
-
-
-GetStatName:
-	ld hl, .names
-	ld c, "@"
-.CheckName:
-	dec b
-	jr z, .Copy
-.GetName:
-	ld a, [hli]
-	cp c
-	jr z, .CheckName
-	jr .GetName
-
-.Copy:
-	ld de, wStringBuffer2
-	ld bc, wStringBuffer3 - wStringBuffer2
-	rst CopyBytes
-	ret
-
-.names
-	db "Attack@"
-	db "Defense@"
-	db "Speed@"
-	db "Spcl.Atk@"
-	db "Spcl.Def@"
-	db "Accuracy@"
-	db "Evasion@"
-	db "stats@" ; used by Curse
-
 
 StatLevelMultipliers: ; 364e6
 	db 25, 100 ; 0.25x

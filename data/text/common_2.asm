@@ -570,21 +570,6 @@ Text_SoYoureAGirl::
 	text "So you're a girl?"
 	done
 
-UnknownText_0x1c0cc6::
-	text "<USER>'s"
-	line "@"
-	text_from_ram wStringBuffer2
-	db "@@"
-
-UnknownText_0x1c0cd0::
-	interpret_data
-	text $4c, "rose sharply!"
-	prompt
-
-UnknownText_0x1c0ce0::
-	text " rose!"
-	prompt
-
 UnknownText_0x1c0d0e::
 	text "<USER>@@"
 

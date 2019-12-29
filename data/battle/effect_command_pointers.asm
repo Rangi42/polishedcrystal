@@ -48,7 +48,6 @@ BattleCommandPointers:
 	command freezetarget
 	command paralyzetarget
 	command selfdestruct
-	command statup
 	command payday
 	command conversion
 	command resetstats

@@ -877,24 +877,12 @@ SpeedBoostAbility:
 StatUpAbility:
 	call HasUserFainted
 	ret z
-	ld a, [wAttackMissed]
-	push af
-	call DisableAnimations
-	farcall ResetMiss
-	ld a, [wEffectFailed]
-	push af
-	xor a
-	ld [wEffectFailed], a
-	farcall BattleCommand_statup
-	pop af
-	ld [wEffectFailed], a
-	ld a, [wAttackMissed]
+	ld a, STAT_SKIPTEXT | STAT_SILENT
+	farcall _ForceRaiseStat
+	ld a, [wFailedMessage]
 	and a
-	jr nz, .cant_raise
-	call ShowAbilityActivation
-	farcall BattleCommand_statupmessage
-	jr .done
-.cant_raise
+	jr z, .done
+
 ; Lightning Rod, Motor Drive and Sap Sipper prints a "doesn't affect" message instead.
 	ld a, BATTLE_VARS_ABILITY
 	call GetBattleVar
@@ -911,8 +899,6 @@ StatUpAbility:
 	call StdBattleTextBox
 	call SwitchTurn
 .done
-	pop af
-	ld [wAttackMissed], a
 	jp EnableAnimations
 
 WeakArmorAbility:
