@@ -5781,15 +5781,15 @@ BattleCommand_allstatsup: ; 36500
 ; allstatsup
 
 	ld b, ATTACK
-	call RaiseStat
+	call RaiseStatHit
 	ld b, DEFENSE
-	call RaiseStat
+	call RaiseStatHit
 	ld b, SPEED
-	call RaiseStat
+	call RaiseStatHit
 	ld b, SP_ATTACK
-	call RaiseStat
+	call RaiseStatHit
 	ld b, SP_DEFENSE
-	jp RaiseStat
+	jp RaiseStatHit
 
 
 ResetMiss: ; 3652d

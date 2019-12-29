@@ -476,7 +476,7 @@ RunEnemySynchronizeAbility:
 SynchronizeAbility:
 	ld a, BATTLE_VARS_STATUS
 	call GetBattleVar
-	and ALL_STATUS
+	and 1 << PAR | 1 << BRN | 1 << PSN
 	ret z ; not statused
 	call ShowAbilityActivation
 	farcall ResetMiss
