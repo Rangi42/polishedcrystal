@@ -5777,23 +5777,6 @@ ChangeStat:
 ; b contains stat to alter, or zero if it should be read from the move script
 	farjp FarChangeStat
 
-StatLevelMultipliers: ; 364e6
-	db 25, 100 ; 0.25x
-	db 28, 100 ; 0.28x
-	db 33, 100 ; 0.33x
-	db 40, 100 ; 0.40x
-	db 50, 100 ; 0.50x
-	db 66, 100 ; 0.66x
-	db  1,   1 ; 1.00x
-	db 15,  10 ; 1.50x
-	db  2,   1 ; 2.00x
-	db 25,  10 ; 2.50x
-	db  3,   1 ; 3.00x
-	db 35,  10 ; 3.50x
-	db  4,   1 ; 4.00x
-; 36500
-
-
 BattleCommand_allstatsup: ; 36500
 ; allstatsup
 
