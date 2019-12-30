@@ -66,7 +66,7 @@ HBlankCopy2bpp::
 
 IsInArray::
 ; Find value a for every de bytes in array hl.
-; Return index in b and carry if found.
+; Return index in b, and carry if found.
 	ld b, 0
 	ld c, a
 .loop

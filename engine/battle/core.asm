@@ -6168,6 +6168,9 @@ GiveExperiencePoints: ; 3ee3b
 	ld [hMultiplicand + 1], a
 	ld a, [wEnemyMonBaseExp]
 	ld [hMultiplicand + 2], a
+	ld a, [wInitialOptions]
+	bit SCALED_EXP, a
+	call nz, GetNewBaseExp
 	ld a, [wEnemyMonLevel]
 	ld [hMultiplier], a
 	call Multiply
@@ -6652,7 +6655,10 @@ GiveBattleEVs:
 	ld hl, MON_EVS
 	add hl, bc
 	push bc
-	ld a, [wEnemyMonSpecies]
+	ld a, MON_SPECIES
+	push hl
+	call OTPartyAttr
+	pop hl
 	ld [wCurSpecies], a
 	call GetBaseData
 	; EV yield format:
@@ -6943,6 +6949,85 @@ AnimateExpBar: ; 3f136
 	ld [hBGMapMode], a
 	ret
 
+GetNewBaseExp:
+; basic stage mons: BST*0.2
+; stage 1 or non-evolver: BST*0.35
+; stage 2: BST*0.5
+; exceptions: Chansey, Blissey
+	ld a, MON_SPECIES
+	call OTPartyAttr
+	ld de, 3
+	ld hl, NewBaseExpExceptions
+	call IsInArray
+	jr nc, .calc_base_exp
+	inc hl
+	ld a, [hli]
+	ld [hMultiplicand + 2], a
+	ld a, [hl]
+	ld [hMultiplicand + 1], a
+	ret
+
+.calc_base_exp
+	ld hl, 0
+	ld de, wBaseHP
+	ld b, 6
+.bst_loop
+	ld a, [de]
+	ld c, a
+	inc de
+	push bc
+	ld b, 0
+	add hl, bc
+	pop bc
+	dec b
+	jr nz, .bst_loop
+
+	ld a, h
+	ld [hMultiplicand + 1], a
+	ld a, l
+	ld [hMultiplicand + 2], a
+
+	ld a, [wCurSpecies]
+	ld [wCurPartySpecies], a
+
+	farcall GetPreEvolution
+	jr c, .not_basic
+
+	; let's see if we have an evolution
+	ld hl, EvosAttacksPointers
+	ld a, [wCurPartySpecies]
+	ld c, a
+	ld b, 0
+	add hl, bc
+	add hl, bc
+	ld a, BANK(EvosAttacksPointers)
+	call GetFarHalfword
+
+	ld a, BANK(EvosAttacks)
+	call GetFarByte
+	and a
+	ld a, 4
+	jr nz, .got_multiplier
+	jr .stage_1_or_nonevolver
+
+.not_basic
+	farcall GetPreEvolution
+	ld a, 10
+	jr c, .got_multiplier
+.stage_1_or_nonevolver
+	ld a, 7
+.got_multiplier
+	ld [hMultiplier], a
+	call Multiply
+	ld a, 20
+	ld [hDivisor], a
+	ld b, 4
+	jp Divide
+
+NewBaseExpExceptions:
+	dbw CHANSEY, 395
+	dbw BLISSEY, 608
+	db -1
 
 Function_BattleTextEnemySentOut:
 	farcall Battle_GetTrainerName
