@@ -6457,7 +6457,7 @@ GiveExperiencePoints: ; 3ee3b
 	; Distribute among participants as follows:
 	; p=participats e=exp share holders
 	; If p or e is zero, just do 1/p or 1/e.
-	; Otherwise; P=p if participant, otherwise 0, E=e if holder, otherwise 0
+	; Otherwise; P=e if participant, otherwise 0, E=p if holder, otherwise 0
 	; exp = current(E+P)/(2ep)
 	ld a, [wGivingExperienceToExpShareHolders]
 	ld d, a
@@ -6485,7 +6485,7 @@ GiveExperiencePoints: ; 3ee3b
 	ld d, a
 	pop af
 	jr z, .done_exp_share_pe
-	ld b, d
+	inc b
 
 .done_exp_share_pe
 	push de
@@ -6500,13 +6500,19 @@ GiveExperiencePoints: ; 3ee3b
 	ld e, a
 	pop af
 	jr z, .done_participants_pe
-	ld a, e
-	add b
-	ld b, a
+	set 1, b
 
 .done_participants_pe
 	push de
-	ld a, b
+	xor a
+	bit 0, b
+	jr z, .not_a_participant
+	add e
+.not_a_participant
+	bit 1, b
+	jr z, .not_a_holder
+	add d
+.not_a_holder
 	ld [hMultiplier], a
 	call Multiply
 	pop de
