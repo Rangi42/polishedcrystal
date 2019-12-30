@@ -1580,6 +1580,7 @@ GetPartyParamLocation:: ; 3917
 	ld a, [wCurPartyMon]
 	call GetPartyLocation
 	pop bc
+	ld a, [hl]
 	ret
 ; 3927
 

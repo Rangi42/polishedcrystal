@@ -14,6 +14,13 @@ WonderTrade::
 	farcall SelectTradeOrDaycareMon
 	ret c
 
+	ld a, MON_IS_EGG
+	call GetPartyParamLocation
+	bit MON_IS_EGG_F, [hl]
+	jr z, .not_egg
+	ld a, EGG
+	ld [wCurPartySpecies], a
+.not_egg
 	ld hl, wPartyMonNicknames
 	ld bc, PKMN_NAME_LENGTH
 	call Trade_GetAttributeOfCurrentPartymon
