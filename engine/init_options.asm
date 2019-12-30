@@ -1,4 +1,4 @@
-NUM_INITIAL_OPTIONS EQU 6
+NUM_INITIAL_OPTIONS EQU 7
 
 SetInitialOptions:
 	ld a, $10
@@ -138,7 +138,7 @@ INCBIN "gfx/new_game/init_bg.2bpp"
 	db "            :<LNBRK>"
 	db "Nuzlocke mode<LNBRK>"
 	db "            :<LNBRK>"
-	db "<LNBRK>"
+	db "EXP Scaling :<LNBRK>"
 	db "Done@"
 
 GetInitialOptionPointer: ; e42d6
@@ -161,6 +161,7 @@ GetInitialOptionPointer: ; e42d6
 	dw InitialOptions_PerfectIVs
 	dw InitialOptions_TradedMon
 	dw InitialOptions_NuzlockeMode
+	dw InitialOptions_ExpScaling
 	dw InitialOptions_Done
 
 InitialOptions_Natures:
@@ -307,6 +308,30 @@ InitialOptions_NuzlockeMode:
 	and a
 	ret
 
+InitialOptions_ExpScaling:
+	ld hl, wInitialOptions
+	ld a, [hJoyPressed]
+	and D_LEFT | D_RIGHT | A_BUTTON
+	jr nz, .Toggle
+	bit SCALED_EXP, [hl]
+	jr z, .SetNo
+	jr .SetYes
+.Toggle
+	bit SCALED_EXP, [hl]
+	jr z, .SetYes
+.SetNo:
+	res SCALED_EXP, [hl]
+	ld de, NoString
+	jr .Display
+.SetYes:
+	set SCALED_EXP, [hl]
+	ld de, YesString
+.Display:
+	hlcoord 15, 15
+	call PlaceString
+	and a
+	ret
+
 InitialOptions_Done:
 	ld hl, wInitialOptions
 	res RESET_INIT_OPTS, [hl]
@@ -381,4 +406,4 @@ InitialOptions_UpdateCursorPosition: ; e455c
 ; e4579
 
 .InitialOptions_CursorPositions:
-	db 2, 4, 6, 8, 10, 13, 16
+	db 2, 4, 6, 8, 10, 13, 15, 16
