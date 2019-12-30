@@ -6171,7 +6171,12 @@ GiveExperiencePoints: ; 3ee3b
 	ld a, [wEnemyMonLevel]
 	ld [hMultiplier], a
 	call Multiply
+	ld a, [wInitialOptions]
+	bit SCALED_EXP, a
 	ld a, 7
+	jr z, .got_exp_divisor
+	ld a, 5
+.got_exp_divisor
 	ld [hDivisor], a
 	ld b, 4
 	call Divide
@@ -6213,6 +6218,15 @@ GiveExperiencePoints: ; 3ee3b
 
 	call .MaybeScaleExp
 
+	; make sure to give at least 1 exp
+	ld hl, hQuotient
+	ld a, [hli]
+	or [hl]
+	inc hl
+	or [hl]
+	jr nz, .exp_ok
+	inc [hl]
+.exp_ok
 	ld a, [hQuotient + 2]
 	ld [wStringBuffer2 + 2], a
 	ld a, [hQuotient + 1]
@@ -6440,13 +6454,6 @@ GiveExperiencePoints: ; 3ee3b
 ; Distribute Exp Points evenly among participants, and maybe scale Exp on level
 	push bc
 
-	; Level multiplier
-	ld a, [wEnemyMonLevel]
-	ld [hMultiplier], a
-	ld a, [wInitialOptions]
-	bit SCALED_EXP, a
-	call nz, Multiply
-
 	; Distribute among participants as follows:
 	; p=participats e=exp share holders
 	; If p or e is zero, just do 1/p or 1/e.
@@ -6519,16 +6526,66 @@ GiveExperiencePoints: ; 3ee3b
 	call Divide
 
 .done_sharing_exp
+	ld a, [wInitialOptions]
+	bit SCALED_EXP, a
+	jr z, .done_scaling
+
+	; Level multiplier
+	ld a, [wEnemyMonLevel]
+	ld c, a
+	add a
+	add 10
+	ld d, a
+
 	; Level divider
 	ld hl, wPartyMon1Level
 	ld a, [wCurPartyMon]
 	call GetPartyLocation
 	ld a, [hl]
+	add c
+	add 10
+	ld e, a
+
+	call .ScaleMod
+	call .ScaleMod
+	ld a, d
+	call .GetSqrt
+	ld d, a
+	ld a, e
+	call .GetSqrt
+	ld e, a
+	call .ScaleMod
+
+.done_scaling
+	pop bc
+	ret
+
+.ScaleMod:
+	ld a, d
+	ld [hMultiplier], a
+	call Multiply
+	ld a, e
 	ld [hDivisor], a
-	ld a, [wInitialOptions]
-	bit SCALED_EXP, a
 	ld b, 4
-	call nz, Divide
+	jp Divide
+
+.GetSqrt:
+	push bc
+	cp 225
+	ld c, 15
+	jr nc, .got_result
+	ld b, a
+	ld c, 0
+.squareloop
+	inc c
+	ld a, c
+	call SimpleMultiply
+	cp b
+	jr c, .squareloop
+	jr z, .got_result
+	dec c
+.got_result
+	ld a, c
 	pop bc
 	ret
 
