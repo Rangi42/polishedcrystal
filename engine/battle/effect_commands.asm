@@ -2455,6 +2455,12 @@ BattleCommand_hittargetnosub: ; 34f60
 
 
 StatUpDownAnim: ; 34feb
+	ld a, [wAnimationsDisabled]
+	and a
+	ret nz
+	call _CheckBattleEffects
+	ret c
+
 	call CheckAlreadyExecuted
 	ret nz
 
