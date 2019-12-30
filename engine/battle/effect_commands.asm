@@ -5746,7 +5746,7 @@ BattleCommand_forceloweroppstat:
 ForceLowerOppStat:
 	xor a
 _ForceLowerOppStat:
-	or STAT_TARGET | STAT_LOWER | STAT_MISS
+	or STAT_TARGET | STAT_LOWER
 	jr ChangeStat
 
 BattleCommand_raiseoppstat:
@@ -5762,7 +5762,7 @@ BattleCommand_loweroppstat:
 LowerOppStat:
 	xor a
 _LowerOppStat:
-	or STAT_TARGET | STAT_LOWER
+	or STAT_TARGET | STAT_LOWER | STAT_MISS
 	jr ChangeStat
 
 BattleCommand_raiseoppstathit:
