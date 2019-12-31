@@ -188,3 +188,4 @@ Music:
 	dba Music_TrainerBattlePrism
 	dba Music_GymLeaderBattlePrism
 	dba Music_PaletteBattlePrism
+	dba Music_Megalovania
