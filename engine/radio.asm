@@ -1162,9 +1162,8 @@ PeoplePlaces4: ; People
 .ok
 	pop af
 	ld c, a
-	ld de, 1
 	push bc
-	call IsInArray
+	call SimpleIsInArray
 	pop bc
 	jr c, PeoplePlaces4
 	push bc

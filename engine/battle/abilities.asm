@@ -197,9 +197,8 @@ IntimidateAbility:
 	push af
 	farcall BufferAbility
 	pop af
-	ld de, 1
 	ld hl, .no_intimidate_abilities
-	call IsInArray
+	call SimpleIsInArray
 	jr nc, .intimidate_ok
 	ld hl, BattleText_IntimidateResisted
 	jp StdBattleTextBox
@@ -382,9 +381,8 @@ ForewarnAbility:
 	push af
 	push hl
 	; Check for special cases
-	ld de, 1
 	ld hl, DynamicPowerMoves
-	call IsInArray
+	call SimpleIsInArray
 	pop hl
 	pop bc
 	jr nc, .not_special
@@ -764,8 +762,7 @@ CheckNullificationAbilities:
 	ld a, BATTLE_VARS_MOVE
 	call GetBattleVar
 	ld hl, SoundMoves
-	ld de, 1
-	call IsInArray
+	call SimpleIsInArray
 	ret nc
 
 .ability_ok
@@ -1471,7 +1468,7 @@ IronFistAbility:
 	ld a, BATTLE_VARS_MOVE
 	call GetBattleVar
 	ld hl, PunchingMoves
-	call IsInArray
+	call SimpleIsInArray
 	ret c
 	ld a, $65
 	jp ApplyDamageMod

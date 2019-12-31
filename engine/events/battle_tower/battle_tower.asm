@@ -657,13 +657,10 @@ Function_UberRestriction:
 	push af
 	ld a, [de]
 	push bc
-	push de
 	push hl
-	ld de, 1
 	ld hl, UberMons
-	call IsInArray
+	call SimpleIsInArray
 	pop bc
-	pop de
 	pop hl
 	jr nc, .next
 .uber

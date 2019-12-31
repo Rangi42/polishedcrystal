@@ -585,9 +585,8 @@ TryEnemyFlee: ; 3c543
 	jr nz, .Stay
 
 	ld a, [wTempEnemyMonSpecies]
-	ld de, 1
 	ld hl, AlwaysFleeMons
-	call IsInArray
+	call SimpleIsInArray
 	jr c, .Flee
 
 	call BattleRandom
@@ -597,9 +596,8 @@ TryEnemyFlee: ; 3c543
 
 	push bc
 	ld a, [wTempEnemyMonSpecies]
-	ld de, 1
 	ld hl, OftenFleeMons
-	call IsInArray
+	call SimpleIsInArray
 	pop bc
 	jr c, .Flee
 
@@ -608,9 +606,8 @@ TryEnemyFlee: ; 3c543
 	jr nc, .Stay
 
 	ld a, [wTempEnemyMonSpecies]
-	ld de, 1
 	ld hl, SometimesFleeMons
-	call IsInArray
+	call SimpleIsInArray
 	jr c, .Flee
 
 .Stay:
@@ -2290,12 +2287,8 @@ IsJohtoGymLeader: ; 0x3d128
 IsBossTrainer:
 	ld hl, BossTrainers
 IsBossTrainerCommon:
-	push de
 	ld a, [wOtherTrainerClass]
-	ld de, $1
-	call IsInArray
-	pop de
-	ret
+	jp SimpleIsInArray
 ; 0x3d137
 
 INCLUDE "data/trainers/leaders.asm"
@@ -5734,9 +5727,8 @@ ApplyLegendaryDVs:
 	push bc
 	push hl
 	ld a, [wCurPartySpecies]
-	ld de, 1
 	ld hl, LegendaryMons
-	call IsInArray
+	call SimpleIsInArray
 	pop hl
 	jr nc, .done
 	push hl
@@ -5813,8 +5805,7 @@ CheckSleepingTreeMon: ; 3eb38
 
 .Check:
 	ld a, [wTempEnemyMonSpecies]
-	ld de, 1 ; length of species id
-	call IsInArray
+	call SimpleIsInArray
 ; If it's a match, the opponent is asleep
 	ret c
 
@@ -5845,14 +5836,10 @@ CheckUnownLetter: ; 3eb75
 	ld h, [hl]
 	ld l, a
 
-	push de
 	ld a, [wCurForm]
-	ld de, 1
 	push bc
-	call IsInArray
+	call SimpleIsInArray
 	pop bc
-	pop de
-
 	jr c, .match
 
 .next
@@ -7011,9 +6998,8 @@ GetNewBaseExp:
 	jr .stage_1_or_nonevolver
 
 .not_basic
-	ld de, 1
 	ld hl, LegendaryMons
-	call IsInArray
+	call SimpleIsInArray
 	jr c, .legendary
 	farcall GetPreEvolution
 .legendary
