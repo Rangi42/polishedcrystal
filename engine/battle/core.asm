@@ -1978,8 +1978,8 @@ FaintUserPokemon:
 
 	ld hl, wBattleMonSpecies
 	call GetUserMonAttr
-	ld b, [hl]
-	farcall PlayFaintingCry
+	ld a, [hl]
+	farcall PlaySlowCryA
 	ld de, SFX_KINESIS
 	call PlaySFX
 
