@@ -154,8 +154,7 @@ ITEMMENU_CLOSE   EQU 6
 	const HELD_BLUNDER_POLICY
 	const HELD_UTILITY_UMBRELLA
 	const HELD_BERSERK_GENE
-	; not a held item effect, used to prevent Bug Bite
-	const HELD_REDUCE_EV
+	const HELD_NO_BUG_BITE
 
 ; mart types
 	const_def

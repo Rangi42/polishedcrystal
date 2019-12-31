@@ -7039,10 +7039,10 @@ BattleCommand_bugbite:
 	cp UNNERVE
 	ret z
 
-	; EV reducing berries are forbidden fruit
+	; these held item effects prevent us from eating it
 	call GetOpponentItem
 	ld a, b
-	cp HELD_REDUCE_EV
+	cp HELD_NO_BUG_BITE
 	ret z
 
 	; does the opponent even have a berry? DON'T check EdibleBerries,
