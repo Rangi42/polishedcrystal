@@ -36,10 +36,14 @@ AI_Basic: ; 38591
 ; Dismiss status-only moves if the player can't be statused.
 	ld a, [wEnemyMoveStruct + MOVE_EFFECT]
 	push hl
+	push de
 	push bc
 	ld hl, .statusonlyeffects
-	call SimpleIsInArray
+	ld de, 1
+	call IsInArray
+
 	pop bc
+	pop de
 	pop hl
 	jr nc, .checkmove
 
@@ -1161,7 +1165,8 @@ AI_Smart_Encore: ; 38c3b
 	push hl
 	ld a, [wPlayerSelectedMove]
 	ld hl, .EncoreMoves
-	call SimpleIsInArray
+	ld de, 1
+	call IsInArray
 	pop hl
 	jr nc, .asm_38c81
 
@@ -1370,7 +1375,9 @@ AI_Smart_Disable: ; 38dd1
 	push hl
 	ld a, [wPlayerSelectedMove]
 	ld hl, UsefulMoves
-	call SimpleIsInArray
+	ld de, 1
+	call IsInArray
+
 	pop hl
 	jr nc, .asm_38dee
 
@@ -1684,14 +1691,16 @@ AI_Smart_Sandstorm: ; 38f7a
 	ld a, [wBattleMonType1]
 	push hl
 	ld hl, .SandstormImmuneTypes
-	call SimpleIsInArray
+	ld de, 1
+	call IsInArray
 	pop hl
 	jr c, .asm_38fa5
 
 	ld a, [wBattleMonType2]
 	push hl
 	ld hl, .SandstormImmuneTypes
-	call SimpleIsInArray
+	ld de, 1
+	call IsInArray
 	pop hl
 	jr c, .asm_38fa5
 
@@ -2584,10 +2593,14 @@ AI_Opportunist: ; 39315
 	ret z
 
 	push hl
+	push de
 	push bc
 	ld hl, .stallmoves
-	call SimpleIsInArray
+	ld de, 1
+	call IsInArray
+
 	pop bc
+	pop de
 	pop hl
 	jr nc, .checkmove
 
@@ -2714,11 +2727,14 @@ AI_Aggressive: ; 39369
 
 ; Ignore this move if it is reckless.
 	push hl
+	push de
 	push bc
 	ld a, [wEnemyMoveStruct + MOVE_EFFECT]
 	ld hl, .RecklessMoves
-	call SimpleIsInArray
+	ld de, 1
+	call IsInArray
 	pop bc
+	pop de
 	pop hl
 	jr c, .checkmove2
 
@@ -2740,8 +2756,9 @@ AIDamageCalc: ; 393e7
 	ld a, 1
 	ld [hBattleTurn], a
 	ld a, [wEnemyMoveStruct + MOVE_EFFECT]
+	ld de, 1
 	ld hl, .ConstantDamageEffects
-	call SimpleIsInArray
+	call IsInArray
 	jr nc, .no_special_damage
 	farjp BattleCommand_constantdamage
 
@@ -2783,11 +2800,14 @@ AI_Cautious: ; 39418
 	ret z
 
 	push hl
+	push de
 	push bc
 	ld hl, .residualmoves
 	ld de, 1
-	call SimpleIsInArray
+	call IsInArray
+
 	pop bc
+	pop de
 	pop hl
 	jr nc, .asm_39425
 
@@ -2991,8 +3011,9 @@ AI_Risky: ; 394a9
 
 ; Don't use risky moves at max hp.
 	ld a, [wEnemyMoveStruct + MOVE_EFFECT]
+	ld de, 1
 	ld hl, .RiskyMoves
-	call SimpleIsInArray
+	call IsInArray
 	jr nc, .checkko
 
 	call AICheckEnemyMaxHP

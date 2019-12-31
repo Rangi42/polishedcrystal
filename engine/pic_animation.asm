@@ -982,7 +982,8 @@ GetMonBitmaskPointer: ; d061b
 PokeAnim_GetSpeciesOrVariant: ; d065c
 	ld a, [wPokeAnimSpecies]
 	ld hl, VariantSpeciesTable
-	call SimpleIsInArray
+	ld de, 1
+	call IsInArray
 	ld a, [wPokeAnimSpecies]
 	ret nc
 	ld a, [wPokeAnimVariant]

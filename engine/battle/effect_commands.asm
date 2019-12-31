@@ -571,7 +571,8 @@ CheckThroatSpray:
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
 	ld hl, SoundMoves
-	call SimpleIsInArray
+	ld de, 1
+	call IsInArray
 	ret nc
 
 	call GetUserItemAfterUnnerve
@@ -1050,7 +1051,8 @@ BattleCommand_doturn:
 	ld a, BATTLE_VARS_MOVE_EFFECT
 	call GetBattleVar
 	ld hl, .continuousmoves
-	call SimpleIsInArray
+	ld de, 1
+	call IsInArray
 
 	ld hl, HasNoPPLeftText
 	jr c, .print
@@ -1205,9 +1207,10 @@ BattleCommand_critical: ; 34631
 .CheckCritical:
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
+	ld de, 1
 	ld hl, .Criticals
 	push bc
-	call SimpleIsInArray
+	call IsInArray
 	pop bc
 	jr nc, .ScopeLens
 
@@ -1546,11 +1549,12 @@ CheckTypeMatchup:
 
 _CheckTypeMatchup: ; 347d3
 	push hl
+	ld de, 1 ; IsInArray checks below use single-byte arrays
 ; Handle powder moves
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
 	ld hl, PowderMoves
-	call SimpleIsInArray
+	call IsInArray
 	jr nc, .skip_powder
 	call GetOpponentItemAfterUnnerve
 	ld a, b
@@ -1672,12 +1676,13 @@ _CheckTypeMatchup: ; 347d3
 ; 34833
 
 BattleCommand_checkpowder:
+	ld de, 1
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
 	cp THUNDER_WAVE
 	jr z, .twave
 	ld hl, PowderMoves
-	call SimpleIsInArray
+	call IsInArray
 	ret nc
 	jr BattleCommand_resettypematchup
 .twave
@@ -1794,8 +1799,9 @@ BattleCommand_bounceback:
 	ret z
 
 	; Some moves bypass Substitute
+	ld de, 1
 	ld hl, SubstituteBypassMoves
-	call SimpleIsInArray
+	call IsInArray
 	jr c, .sub_ok
 
 	; Otherwise, Substitute blocks it
@@ -2409,6 +2415,7 @@ BattleCommand_hittargetnosub: ; 34f60
 ; Fury Swipes and Fury Attack were merged into Fury Strikes, so use the correct
 ; animation for the Pokémon that learned each one
 .fury_strikes
+	push de
 	ld a, [hBattleTurn]
 	and a
 	ld a, [wBattleMonSpecies]
@@ -2416,7 +2423,9 @@ BattleCommand_hittargetnosub: ; 34f60
 	ld a, [wEnemyMonSpecies]
 .got_user_species
 	ld hl, .fury_attack_users
-	call SimpleIsInArray
+	ld de, 1
+	call IsInArray
+	pop de
 	jr nc, .multihit
 	ld a, $2
 	ld [wKickCounter], a
@@ -2473,8 +2482,9 @@ StatUpDownAnim: ; 34feb
 	ld a, [wEnemyMonSpecies]
 .got_user_species
 	ld hl, .withdraw_users
+	ld de, 1
 	push af
-	call SimpleIsInArray
+	call IsInArray
 	jr nc, .not_withdraw
 	pop af
 	ld a, $1
@@ -2482,7 +2492,8 @@ StatUpDownAnim: ; 34feb
 .not_withdraw
 	pop af ; restore species to a
 	inc hl ; ld hl, .harden_users
-	call SimpleIsInArray
+	; ld de, 1
+	call IsInArray
 	jr nc, .not_harden
 	ld a, $2
 	jr .got_kick_counter
@@ -7725,12 +7736,15 @@ CheckSubstituteOpp: ; 37378
 	and a
 	jr nz, .no_sound_move
 	push bc
+	push de
 	push hl
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
 	ld hl, SoundMoves
-	call SimpleIsInArray
+	ld de, 1
+	call IsInArray
 	pop hl
+	pop de
 	pop bc
 	jr nc, .no_sound_move
 	xor a
@@ -8771,10 +8785,13 @@ GetUserItemAfterUnnerve::
 	cp UNNERVE
 	ret nz
 	ld a, [hl]
+	push de
 	push hl
+	ld de, 1
 	ld hl, EdibleBerries
-	call SimpleIsInArray
+	call IsInArray
 	pop hl
+	pop de
 	ret c
 	ld hl, NoItem
 	ld b, HELD_NONE

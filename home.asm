@@ -726,25 +726,12 @@ IsHM:: ; 34df
 	ret
 ; 34e7
 
-
-
 IsHMMove:: ; 34e7
-	ld hl, HMMoves
-	; fallthrough
+	ld hl, .HMMoves
+	ld de, 1
+	jp IsInArray
 
-SimpleIsInArray::
-; Find value a in array hl.
-; Return carry if found.
-	ld b, a
-	ld a, [hli]
-	cp -1
-	ret z ; carry can never be set for "cp -1"
-	cp b
-	scf
-	ret z
-	jr SimpleIsInArray
-
-HMMoves:
+.HMMoves:
 	db CUT
 	db FLY
 	db SURF

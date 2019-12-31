@@ -2191,7 +2191,8 @@ Script_checkpoke:
 	ld [wScriptVar], a
 	call GetScriptByte
 	ld hl, wPartySpecies
-	call SimpleIsInArray
+	ld de, 1
+	call IsInArray
 	ret nc
 	ld a, TRUE
 	ld [wScriptVar], a

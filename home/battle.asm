@@ -419,6 +419,7 @@ ApplyDamageMod::
 GetOpponentAbilityAfterMoldBreaker:: ; 39e1
 ; Returns an opponent's ability unless Mold Breaker
 ; will suppress it. Preserves bc/de/hl.
+	push de
 	push bc
 	ld a, BATTLE_VARS_ABILITY_OPP
 	call GetBattleVar
@@ -432,10 +433,11 @@ GetOpponentAbilityAfterMoldBreaker:: ; 39e1
 	jr .end
 .cont_check
 	ld a, b
+	ld de, 1
 	push hl
 	push bc
 	ld hl, MoldBreakerSuppressedAbilities
-	call SimpleIsInArray
+	call IsInArray
 	pop bc
 	pop hl
 	jr c, .suppressed
@@ -445,6 +447,7 @@ GetOpponentAbilityAfterMoldBreaker:: ; 39e1
 	ld a, NO_ABILITY
 .end
 	pop bc
+	pop de
 	ret
 
 LegendaryMons::
@@ -766,7 +769,8 @@ CheckContactMove::
 	cp STRUGGLE
 	ret z
 	ld hl, ContactMoves
-	call SimpleIsInArray
+	ld de, 1
+	call IsInArray
 .protective_pads
 	ccf
 	ret

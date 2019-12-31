@@ -541,8 +541,9 @@ StartTrainerBattle_LoadPokeBallGraphics: ; 8c5dc (23:45dc)
 	ld [hBGMapMode], a
 
 	ld a, [wOtherTrainerClass]
+	ld de, 1
 	ld hl, .RocketTrainerClasses
-	call SimpleIsInArray
+	call IsInArray
 	ld de, RocketTransition
 	jr c, .got_transition
 	ld de, PokeBallTransition
