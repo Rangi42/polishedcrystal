@@ -352,6 +352,11 @@ SECTION "Movie 2000 Music", ROMX
 INCLUDE "audio/music/m02/lugiassong.asm"
 
 
+SECTION "Undertale Music", ROMX
+
+INCLUDE "audio/music/undertale/megalovania.asm"
+
+
 SECTION "Sound Effects", ROMX
 
 INCLUDE "audio/sfx.asm"
