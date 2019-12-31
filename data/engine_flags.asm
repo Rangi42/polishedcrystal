@@ -108,6 +108,8 @@ EngineFlags: ; 80462
 	engine_flag wVisitedSpawns, 24 ; lake of rage
 	engine_flag wVisitedSpawns, 25 ; blackthorn
 	engine_flag wVisitedSpawns, 26 ; silver cave
+	engine_flag wVisitedSpawns, 27 ; yellow forest
+	engine_flag wVisitedSpawns, 28 ; cerulean cape
 
 	engine_flag wLuckyNumberShowFlag, 0 ; lucky number show
 

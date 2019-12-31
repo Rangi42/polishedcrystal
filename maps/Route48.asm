@@ -28,6 +28,7 @@ Route48_MapScriptHeader:
 	const ROUTE48_NURSE
 
 Route48JessieJamesCallback:
+	setflag ENGINE_FLYPOINT_YELLOW_FOREST
 	disappear ROUTE48_JESSIE
 	disappear ROUTE48_JAMES
 	return

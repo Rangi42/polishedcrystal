@@ -1,7 +1,8 @@
 CeruleanCape_MapScriptHeader:
 	db 0 ; scene scripts
 
-	db 0 ; callbacks
+	db 1 ; callbacks
+	callback MAPCALLBACK_NEWMAP, CeruleanCapeFlyPoint
 
 	db 2 ; warp events
 	warp_event  9,  5, BILLS_HOUSE, 1
@@ -37,6 +38,10 @@ CeruleanCape_MapScriptHeader:
 	const_def 1 ; object constants
 	const CERULEANCAPE_MISTY
 	const CERULEANCAPE_BOYFRIEND
+
+CeruleanCapeFlyPoint:
+	setflag ENGINE_FLYPOINT_CERULEAN_CAPE
+	return
 
 CeruleanCapeDateInterruptedTrigger1:
 	showemote EMOTE_HEART, CERULEANCAPE_MISTY, 15

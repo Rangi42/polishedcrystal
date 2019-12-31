@@ -12,6 +12,7 @@ SpawnPoints: ; 0x152ab
 	spawn PEWTER_CITY,                13, 26
 	spawn ROUTE_3,                    61,  4
 	spawn CERULEAN_CITY,              19, 18
+	spawn CERULEAN_CAPE,               9,  6
 	spawn ROUTE_10_NORTH,             11, 36
 	spawn VERMILION_CITY,              9,  6
 	spawn LAVENDER_TOWN,               5,  8
@@ -31,6 +32,7 @@ SpawnPoints: ; 0x152ab
 	spawn OLIVINE_CITY,               13, 18
 	spawn ECRUTEAK_CITY,              23, 28
 	spawn MAHOGANY_TOWN,              15, 14
+	spawn ROUTE_48,                   11,  6
 	spawn LAKE_OF_RAGE,               21, 29
 	spawn BLACKTHORN_CITY,            21, 30
 	spawn SILVER_CAVE_OUTSIDE,        23, 14
