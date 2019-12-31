@@ -6952,7 +6952,7 @@ AnimateExpBar: ; 3f136
 GetNewBaseExp:
 ; basic stage mons: BST*0.2
 ; stage 1 or non-evolver: BST*0.35
-; stage 2: BST*0.5
+; stage 2 or legendaries: BST*0.45
 ; exceptions: Chansey, Blissey
 	ld a, MON_SPECIES
 	call OTPartyAttr
@@ -7006,16 +7006,21 @@ GetNewBaseExp:
 	ld a, BANK(EvosAttacks)
 	call GetFarByte
 	and a
-	ld a, 4
+	ld a, 4 ; basic mon (not evolved, but can evolve): *4/20 -> *0.2
 	jr nz, .got_multiplier
 	jr .stage_1_or_nonevolver
 
 .not_basic
+	ld de, 1
+	ld hl, LegendaryMons
+	call IsInArray
+	jr c, .legendary
 	farcall GetPreEvolution
-	ld a, 10
+.legendary
+	ld a, 9 ; stage 2 or legendary: *9/20 -> *0.45
 	jr c, .got_multiplier
 .stage_1_or_nonevolver
-	ld a, 7
+	ld a, 7 ; stage 1 or non-evolver: *7/20 -> *0.35
 .got_multiplier
 	ld [hMultiplier], a
 	call Multiply
