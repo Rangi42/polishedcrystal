@@ -19,10 +19,15 @@ CheckUniqueWildMove:
 	jr nz, .inc1andloop
 	ld a, [hli] ; move
 	ld b, a
-	cp EXPLOSION
-	jr z, .TeachMove ; assume this is in TeamRocketBaseB1F
-	cp FLY
+	; always teach moves for certain Pokémon
+	ld a, c
+	cp MAHOGANY_TOWN
+	jr z, .TeachMove ; assume this is for Explosion in TeamRocketBaseB1F
+	cp UNION_CAVE
+	jr z, .TeachMove ; assume this is a Lapras in UnionCaveB2F
+	cp YELLOW_FOREST
 	jr nz, .ChanceToTeach
+	; assume this is a Pikachu in YellowForest; Surf (always teach) or Fly?
 	ld a, [wPlayerState]
 	cp PLAYER_SURF
 	jr z, .SurfingPikachu
