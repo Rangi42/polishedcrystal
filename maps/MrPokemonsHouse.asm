@@ -350,8 +350,13 @@ MrPokemonText_GimmeTheScale:
 	line "What's that?"
 	cont "A red Gyarados?"
 
-	para "That's rare!"
-	line "I, I want it…"
+	para "It must have kept"
+	line "its coloration as"
+	cont "a Magikarp!"
+
+	para "That could be"
+	line "one of a kind!"
+	cont "I, I want it…"
 
 	para "<PLAYER>, would you"
 	line "care to trade it?"
