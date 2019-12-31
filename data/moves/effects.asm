@@ -2095,16 +2095,21 @@ FutureSight:
 	usedmovetext
 	doturn
 	hastarget
+	futuresight
+	critical
 	damagestats
 	damagecalc
-	futuresight
-	damagevariation ; skip here if last turn
+	stab
+	damagevariation
 	checkhit
 	hittargetnosub
 	failuretext
 	checkfaint
+	criticaltext
+	supereffectivetext
 	postfainteffects
 	posthiteffects
+	pickpocket
 	endmove
 
 Gust:

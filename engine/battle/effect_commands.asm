@@ -458,6 +458,10 @@ IncreaseMetronomeCount:
 	call CheckUserIsCharging
 	ret nz
 
+	; unaffected by Metronome
+	call GetFutureSightUser
+	ret nc
+
 	ld a, [hBattleTurn]
 	and a
 	ld de, wPlayerSelectedMove
@@ -1158,6 +1162,9 @@ BattleCommand_critical: ; 34631
 	ret z
 	cp SHELL_ARMOR
 	ret z
+	call GetFutureSightUser
+	ld c, 0
+	jr nz, .Ability
 	ld a, [hBattleTurn]
 	and a
 	jr nz, .EnemyTurn
@@ -1229,8 +1236,7 @@ BattleCommand_critical: ; 34631
 	inc c
 
 .Ability:
-	ld a, BATTLE_VARS_ABILITY
-	call GetBattleVar
+	call GetTrueUserAbility
 	cp SUPER_LUCK
 	jr nz, .Tally
 
@@ -1359,6 +1365,15 @@ BattleCommand_stab: ; 346d2
 	ld a, BATTLE_VARS_MOVE_TYPE
 	call GetBattleVar
 	ld b, a
+	call GetFutureSightUser
+	jr z, .not_external
+	ld a, MON_SPECIES
+	call TrueUserPartyAttr
+	ld [wCurSpecies], a
+	call GetBaseData
+	ld hl, wBaseType
+	jr .got_attacker_types
+.not_external
 	ld a, [hBattleTurn]
 	and a
 	ld hl, wBattleMonType1
@@ -1373,8 +1388,7 @@ BattleCommand_stab: ; 346d2
 	jr nz, .stab_done
 .stab
 	; Adaptability gives 2x, otherwise STAB is 1.5x
-	ld a, BATTLE_VARS_ABILITY
-	call GetBattleVar
+	call GetTrueUserAbility
 	cp ADAPTABILITY
 	ld a, [wTypeMatchup]
 	jr nz, .no_adaptability
@@ -1577,8 +1591,7 @@ _CheckTypeMatchup: ; 347d3
 	ld a, BATTLE_VARS_MOVE_TYPE
 	call GetBattleVar
 	ld d, a
-	ld a, BATTLE_VARS_ABILITY
-	call GetBattleVar
+	call GetTrueUserAbility
 	cp PIXILATE
 	jr nz, .no_pixilate
 	ld a, NORMAL
@@ -1927,10 +1940,14 @@ BattleCommand_checkhit:
 	ld c, a
 
 .got_acc_eva
+	call GetFutureSightUser
+	jr z, .not_external_acc
+	ld b, 7
+
+.not_external_acc
 	; Handle stat modifiers
 	; Unaware ignores enemy stat changes, identification also does if above 0
-	ld a, BATTLE_VARS_ABILITY
-	call GetBattleVar
+	call GetTrueUserAbility
 	cp UNAWARE
 	jr z, .reset_evasion
 
@@ -1939,8 +1956,7 @@ BattleCommand_checkhit:
 	call GetBattleVar
 	bit SUBSTATUS_IDENTIFIED, a
 	jr nz, .avoid_evasion_boost
-	ld a, BATTLE_VARS_ABILITY
-	call GetBattleVar
+	call GetTrueUserAbility
 	cp KEEN_EYE
 	jr nz, .check_opponent_unaware
 .avoid_evasion_boost
@@ -2192,10 +2208,11 @@ BattleCommand_checkhit:
 	ret
 
 .NoGuardCheck:
-	ld a, [wPlayerAbility]
+	call GetTrueUserAbility
 	cp NO_GUARD
 	ret z
-	ld a, [wEnemyAbility]
+	ld a, BATTLE_VARS_ABILITY_OPP
+	call GetBattleVar
 	cp NO_GUARD
 	ret
 
@@ -2346,6 +2363,9 @@ BattleCommand_hittargetnosub: ; 34f60
 	ld a, [wAttackMissed]
 	and a
 	jp nz, BattleCommand_movedelay
+
+	call GetFutureSightUser
+	jr nc, .normal_move
 
 	ld a, [hBattleTurn]
 	and a
@@ -2688,15 +2708,8 @@ BattleCommand_checkfaint:
 	ret
 
 .check_sub
-	ld a, BATTLE_VARS_ABILITY
-	call GetBattleVar
-	cp INFILTRATOR
-	jr z, .bypass_sub
-	ld a, BATTLE_VARS_SUBSTATUS4_OPP
-	call GetBattleVar
-	bit SUBSTATUS_SUBSTITUTE, a
+	call CheckSubstituteOpp
 	ret nz
-.bypass_sub
 	ld de, wPlayerDamageTaken + 1
 	ld a, [hBattleTurn]
 	and a
@@ -3086,6 +3099,9 @@ BattleCommand_postfainteffects:
 	bit SUBSTATUS_DESTINY_BOND, a
 	jr z, .no_dbond
 
+	call GetFutureSightUser
+	jr c, .no_dbond
+
 	ld hl, TookDownWithItText
 	call StdBattleTextBox
 
@@ -3190,6 +3206,8 @@ BattleCommand_posthiteffects:
 	; Absorb Bulb, Snowball, Cell Battery, Luminous Moss
 	call HasUserFainted
 	jp z, .rocky_helmet_done
+	call GetFutureSightUser
+	jp nz, .rocky_helmet_done
 	call GetOpponentItemAfterUnnerve
 	call GetCurItemName
 	ld a, b
@@ -3295,8 +3313,7 @@ BattleCommand_posthiteffects:
 	ret z
 
 	; Serene Grace boosts King's Rock
-	ld a, BATTLE_VARS_ABILITY
-	call GetBattleVar
+	call GetTrueUserAbility
 	cp SERENE_GRACE
 	jr nz, .no_serene_grace
 	ld a, c
@@ -3376,6 +3393,8 @@ BattleCommand_pickpocket:
 ; If the opponent has Pickpocket, proc the item steal now
 	call CheckSheerForceNegation
 	ret z
+	call GetFutureSightUser
+	ret nz
 
 	; Don't steal items if we're fainted
 	call HasOpponentFainted
@@ -3560,6 +3579,11 @@ if !DEF(FAITHFUL)
 endc
 
 	ld hl, wBattleMonAttack
+	call GetFutureSightUser
+	jr z, .atk_ok
+	ld a, MON_ATK
+	call TrueUserPartyAttr
+.atk_ok
 	ld a, [wEnemyAbility]
 	cp INFILTRATOR
 	jr z, .thickcluborlightball
@@ -3596,6 +3620,11 @@ endc
 
 .lightscreen
 	ld hl, wBattleMonSpclAtk
+	call GetFutureSightUser
+	jr z, .sat_ok
+	ld a, MON_SAT
+	call TrueUserPartyAttr
+.sat_ok
 	ld a, [wEnemyAbility]
 	cp INFILTRATOR
 	jr z, .lightball
@@ -3620,7 +3649,10 @@ endc
 .done
 	call TruncateHL_BC
 
-	ld a, [wBattleMonLevel]
+	ld a, MON_LEVEL
+	push hl
+	call TrueUserPartyAttr
+	pop hl
 	ld e, a
 	call DittoMetalPowder
 	call UnevolvedEviolite
@@ -3660,6 +3692,11 @@ if !DEF(FAITHFUL)
 endc
 
 	ld hl, wEnemyMonAttack
+	call GetFutureSightUser
+	jr z, .atk_ok
+	ld a, MON_ATK
+	call TrueUserPartyAttr
+.atk_ok
 	ld a, [wPlayerAbility]
 	cp INFILTRATOR
 	jr z, .thickcluborlightball
@@ -3696,6 +3733,11 @@ endc
 
 .lightscreen
 	ld hl, wEnemyMonSpclAtk
+	call GetFutureSightUser
+	jr z, .sat_ok
+	ld a, MON_SAT
+	call TrueUserPartyAttr
+.sat_ok
 	ld a, [wPlayerAbility]
 	cp INFILTRATOR
 	jr z, .lightball
@@ -3720,7 +3762,10 @@ endc
 .done
 	call TruncateHL_BC
 
-	ld a, [wEnemyMonLevel]
+	ld a, MON_LEVEL
+	push hl
+	call TrueUserPartyAttr
+	pop hl
 	ld e, a
 	call DittoMetalPowder
 	call UnevolvedEviolite
@@ -3770,13 +3815,7 @@ ThickClubOrLightBallBoost: ; 353b5
 	push de
 	push hl
 	ld a, MON_SPECIES
-	call UserPartyAttr
-	ld a, [hBattleTurn]
-	and a
-	ld a, [hl]
-	jr z, .checkpikachu
-	ld a, [wTempEnemyMonSpecies]
-.checkpikachu:
+	call TrueUserPartyAttr
 	pop hl
 	cp PIKACHU
 	lb bc, PIKACHU, PIKACHU
@@ -3822,13 +3861,7 @@ SpeciesItemBoost: ; 353d1
 
 	push hl
 	ld a, MON_SPECIES
-	call UserPartyAttr
-	ld a, [hBattleTurn]
-	and a
-	ld a, [hl]
-	jr z, .CompareSpecies
-	ld a, [wTempEnemyMonSpecies]
-.CompareSpecies:
+	call TrueUserPartyAttr
 	pop hl
 
 	cp b
@@ -3959,6 +3992,8 @@ GetStatBoost:
 	ret
 
 ApplyStatBoostDamageAfterUnaware:
+	call GetFutureSightUser
+	ret z
 	call GetOpponentAbilityAfterMoldBreaker
 	cp UNAWARE
 	ret z
@@ -4080,18 +4115,26 @@ BattleCommand_damagecalc: ; 35612
 	farcall ApplyDamageAbilities
 
 	; If we're burned (and don't have Guts), halve damage
+	call GetFutureSightUser
+	jr z, .not_external_burn
+	ld a, MON_STATUS
+	call TrueUserPartyAttr
+	jr .check_burn
+.not_external_burn
 	ld a, BATTLE_VARS_STATUS
 	call GetBattleVar
+.check_burn
 	bit BRN, a
 	jr z, .burn_done
-	ld a, BATTLE_VARS_ABILITY
-	call GetBattleVar
+	call GetTrueUserAbility
 	cp GUTS
 	ld a, $12 ; 1/2 = 50%
 	call nz, ApplyPhysicalAttackDamageMod
 
 .burn_done
 	; Flash Fire
+	call GetFutureSightUser
+	jr nz, .no_flash_fire
 	ld a, BATTLE_VARS_SUBSTATUS3
 	call GetBattleVar
 	bit SUBSTATUS_FLASH_FIRE, a
@@ -4108,8 +4151,7 @@ BattleCommand_damagecalc: ; 35612
 	and a
 	jr z, .no_crit
 
-	ld a, BATTLE_VARS_ABILITY
-	call GetBattleVar
+	call GetTrueUserAbility
 	cp SNIPER
 	ld a, $94 ; 9/4 = 225%
 	jr z, .got_crit_mod
@@ -4166,6 +4208,9 @@ BattleCommand_damagecalc: ; 35612
 	call ApplySpecialAttackDamageMod
 	jr .done_attacker_item
 .metronome_item
+	; Skip Metronome for Future Sight
+	call GetFutureSightUser
+	jr nc, .done_attacker_item
 	ld b, $55 ; (5+n)/5 = 100% + 20% * n
 	ld a, [hBattleTurn]
 	and a
@@ -7727,10 +7772,15 @@ PrintParalyze: ; 37372
 
 CheckSubstituteOpp: ; 37378
 ; returns z when not behind a sub (or if overridden by Infiltrator or sound)
-	ld a, BATTLE_VARS_ABILITY
-	call GetBattleVar
+	call GetTrueUserAbility
 	cp INFILTRATOR
 	ret z
+	call GetFutureSightUser
+	jr c, .not_future_sight
+	xor a
+	ret
+
+.not_future_sight
 	; don't let move effects impact ability processing
 	ld a, [wAnimationsDisabled]
 	and a
@@ -8630,92 +8680,125 @@ BattleCommand_skipsuncharge: ; 37d02
 
 ; 37d0d
 
-
-BattleCommand_checkfuturesight: ; 37d0d
-; checkfuturesight
-
-	ld hl, wPlayerFutureSightCount
-	ld de, wPlayerFutureSightDamage
+GetFutureSightUser::
+; Returns:
+; c|z: Regular user in a (Future Sight not involved)
+; nc|z: Active user in a (Future Sight applying)
+; nc|nz: External user in a (or active fainted), future sight applying.
+	push hl
+	push de
+	push bc
 	ld a, [hBattleTurn]
 	and a
-	jr z, .ok
+	ld hl, wPlayerFutureSightCount
+	ld bc, wCurBattleMon
+	jr z, .got_future
 	ld hl, wEnemyFutureSightCount
-	ld de, wEnemyFutureSightDamage
-.ok
-
+	ld bc, wCurOTMon
+.got_future
 	ld a, [hl]
 	and a
-	ret z
-	cp 1
+	jr z, .future_sight_offline
+	and $f
+	jr nz, .future_sight_offline
+	ld a, [hl]
+	swap a
+	dec a
+	and $f
+	ld d, a
+	ld a, [bc]
+	cp d
+	ld a, d
+	pop bc
+	pop de
+	pop hl
+	scf
+	ccf
 	ret nz
 
-	ld [hl], 0
-	ld a, [de]
-	inc de
-	ld [wCurDamage], a
-	ld a, [de]
-	ld [wCurDamage + 1], a
+	; If user is fainted, treat as non-active
+	push af
+	push hl
+	call HasUserFainted
+	pop hl
+	jr z, .active_fainted
+	pop af
+	ret
+
+.active_fainted
+	pop af
+	and a
+	ret nz
+	rrca
+	ret
+
+.future_sight_offline
+	xor a
+	ld a, [bc]
+	pop bc
+	pop de
+	pop hl
+	scf
+	ret
+
+GetTrueUserAbility::
+; Returns current user's ability, or external future sight user ability
+	call GetFutureSightUser
+	jr nz, .external
+
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
+	ret z
+
+.external
+	push bc
+	push hl
+	ld a, MON_ABILITY
+	call TrueUserPartyAttr
+	ld b, a
+	ld a, MON_SPECIES
+	call TrueUserPartyAttr
+	ld c, a
+	call GetAbility
+	ld a, b
+	pop hl
+	pop bc
+	ret
+
+BattleCommand_checkfuturesight:
+	call GetFutureSightUser
+	ret c
 	ld b, futuresight_command
 	jp SkipToBattleCommandAfter
 
-; 37d34
-
-BattleCommand_futuresight: ; 37d34
-; futuresight
-
-	call CheckUserIsCharging
-	jr nz, .AlreadyChargingFutureSight
-	ld a, BATTLE_VARS_MOVE_ANIM
-	call GetBattleVar
-	ld b, a
-	ld a, BATTLE_VARS_LAST_COUNTER_MOVE
-	call GetBattleVarAddr
-	ld [hl], b
-	ld a, BATTLE_VARS_LAST_MOVE
-	call GetBattleVarAddr
-	ld [hl], b
-.AlreadyChargingFutureSight:
-	ld hl, wPlayerFutureSightCount
+BattleCommand_futuresight:
 	ld a, [hBattleTurn]
 	and a
-	jr z, .GotFutureSightCount
+	ld hl, wPlayerFutureSightCount
+	ld bc, wCurBattleMon
+	jr z, .got_future
 	ld hl, wEnemyFutureSightCount
-.GotFutureSightCount:
+	ld bc, wCurOTMon
+.got_future
 	ld a, [hl]
 	and a
 	jr nz, .failed
-	ld a, 4
+
+	; end of turn 2 turns later (3 ticks)
+	ld a, [bc]
+	inc a
+	swap a
+	or $3
 	ld [hl], a
-	call BattleCommand_lowersub
-	call BattleCommand_movedelay
+
 	ld hl, ForesawAttackText
 	call StdBattleTextBox
-	call BattleCommand_raisesub
-	ld de, wPlayerFutureSightDamage
-	ld a, [hBattleTurn]
-	and a
-	jr z, .StoreDamage
-	ld de, wEnemyFutureSightDamage
-.StoreDamage:
-	ld hl, wCurDamage
-	ld a, [hl]
-	ld [de], a
-	ld [hl], 0
-	inc hl
-	inc de
-	ld a, [hl]
-	ld [de], a
-	ld [hl], 0
 	jp EndMoveEffect
 
 .failed
-	pop bc
-	call ResetDamage
 	call AnimateFailedMove
 	call PrintButItFailed
 	jp EndMoveEffect
-
-; 37d94
 
 
 BattleCommand_thunderaccuracy: ; 37d94
@@ -8763,6 +8846,13 @@ GetUserItem::
 ; Return the effect of the user's item in bc, and its id at hl.
 ; Also updates the object name buffer, allowing you to just
 ; GetCurItemName to get the item name
+	call GetFutureSightUser
+	jr z, .not_external
+
+	; External users may not use their items
+	xor a
+	jr .got_item
+.not_external
 	ld hl, wBattleMonItem
 	ld a, [hBattleTurn]
 	and a
@@ -8770,6 +8860,7 @@ GetUserItem::
 	ld hl, wEnemyMonItem
 .go
 	ld a, [hl]
+.got_item
 	ld [wCurItem], a
 	ld b, a
 	jp GetItemHeldEffect

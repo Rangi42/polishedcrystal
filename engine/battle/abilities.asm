@@ -503,6 +503,8 @@ SynchronizeAbility:
 
 RunFaintAbilities:
 ; abilities that run after an attack faints an enemy
+	farcall GetFutureSightUser
+	ret nz
 	ld a, BATTLE_VARS_ABILITY
 	call GetBattleVar
 	call .user_abilities
@@ -616,6 +618,12 @@ RunContactAbilities:
 	ret
 
 CursedBodyAbility:
+	call SwitchTurn
+	farcall GetFutureSightUser
+	push af
+	call SwitchTurn
+	pop af
+	ret nz
 	ld a, 10
 	call BattleRandomRange
 	cp 3
@@ -976,8 +984,7 @@ ApplySpeedAbilities:
 	jp ApplyDamageMod
 
 ApplyAccuracyAbilities:
-	ld a, BATTLE_VARS_ABILITY
-	call GetBattleVar
+	farcall GetTrueUserAbility
 	ld hl, UserAccuracyAbilities
 	call AbilityJumptable
 	call GetOpponentAbilityAfterMoldBreaker
@@ -1348,8 +1355,7 @@ DefensiveDamageAbilities_AfterTypeMatchup:
 	dbw -1, -1
 
 ApplyDamageAbilities:
-	ld a, BATTLE_VARS_ABILITY
-	call GetBattleVar
+	farcall GetTrueUserAbility
 	ld hl, OffensiveDamageAbilities
 	call AbilityJumptable
 	call GetOpponentAbilityAfterMoldBreaker
@@ -1442,11 +1448,14 @@ SheerForceAbility:
 
 AnalyticAbility:
 ; 130% damage if opponent went first
+	farcall GetFutureSightUser
+	jr nc, .future_sight
 	ld a, [wEnemyGoesFirst] ; 0 = player goes first
 	ld b, a
 	ld a, [hBattleTurn] ; 0 = player's turn
 	xor b ; nz if opponent went first
 	ret z
+.future_sight
 	ld a, $da
 	jp ApplyDamageMod
 
@@ -1511,8 +1520,15 @@ RecklessAbility:
 
 GutsAbility:
 ; 150% physical attack if user is statused
+	farcall GetFutureSightUser
+	jr z, .not_external
+	ld a, MON_STATUS
+	call TrueUserPartyAttr
+	jr .got_status
+.not_external
 	ld a, BATTLE_VARS_STATUS
 	call GetBattleVar
+.got_status
 	and a
 	ret z
 	ld a, $32

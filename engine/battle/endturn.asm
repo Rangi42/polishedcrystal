@@ -359,22 +359,23 @@ HandleFutureSight:
 	call SwitchTurn
 
 .do_it
-	ld hl, wPlayerFutureSightCount
 	ld a, [hBattleTurn]
 	and a
-	jr z, .okay
+	ld hl, wPlayerFutureSightCount
+	jr z, .got_future
 	ld hl, wEnemyFutureSightCount
-
-.okay
+.got_future
 	ld a, [hl]
 	and a
 	ret z
-	dec a
-	ld [hl], a
-	cp $1
+	dec [hl]
+	ld a, [hl]
+	and $f
 	ret nz
 
-	call HasUserFainted
+	push hl
+	call HasOpponentFainted
+	pop hl
 	jr nz, .do_future_sight
 
 	; Future Sight misses automatically
@@ -384,6 +385,7 @@ HandleFutureSight:
 	jp StdBattleTextBox
 
 .do_future_sight
+	push hl
 	ld hl, BattleText_TargetWasHitByFutureSight
 	call StdBattleTextBox
 
@@ -392,8 +394,8 @@ HandleFutureSight:
 	push af
 	ld a, FUTURE_SIGHT
 	ld [hl], a
-
 	farcall UpdateMoveData
+
 	xor a
 	ld [wAttackMissed], a
 	ld [wAlreadyDisobeyed], a
@@ -408,7 +410,9 @@ HandleFutureSight:
 	call GetBattleVarAddr
 	pop af
 	ld [hl], a
-
+	farcall UpdateMoveData
+	pop hl
+	ld [hl], 0
 	call UpdateBattleMonInParty
 	jp UpdateEnemyMonInParty
 

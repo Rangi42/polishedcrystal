@@ -1,5 +1,23 @@
 ; *PartyAttr returns address to attribute in hl, content
 ; in a. Always returns nz (used to return z for wildmon).
+TrueUserPartyAttr::
+	push bc
+	ld c, a
+	ld a, [hBattleTurn]
+	and a
+	ld hl, wPartyMons
+	jr z, .got_partymons
+	ld hl, wOTPartyMons
+.got_partymons
+	ld b, 0
+	add hl, bc
+	farcall GetFutureSightUser
+	call GetPartyLocation
+	or 1
+	ld a, [hl]
+	pop bc
+	ret
+
 UserPartyAttr::
 	push af
 	ld a, [hBattleTurn]
@@ -106,12 +124,8 @@ HalfHP::
 GetMaxHP::
 ; output: bc, wBuffer1-2
 
-	ld hl, wBattleMonMaxHP
-	ld a, [hBattleTurn]
-	and a
-	jr z, .ok
-	ld hl, wEnemyMonMaxHP
-.ok
+	ld a, MON_MAXHP
+	call TrueUserPartyAttr
 	ld a, [hli]
 	ld [wBuffer2], a
 	ld b, a
@@ -424,9 +438,7 @@ GetOpponentAbilityAfterMoldBreaker:: ; 39e1
 	ld a, BATTLE_VARS_ABILITY_OPP
 	call GetBattleVar
 	ld b, a
-	ld a, BATTLE_VARS_ABILITY
-	call GetBattleVar
-	and a
+	farcall GetTrueUserAbility
 	cp MOLD_BREAKER
 	jr z, .cont_check
 	ld a, b
@@ -741,12 +753,8 @@ CheckPinch::
 CompareHP::
 ; return c if HP<bc, z if HP=bc, nc+nz if HP>bc
 	push hl
-	ld hl, wBattleMonHP
-	ld a, [hBattleTurn]
-	and a
-	jr z, .got_hp
-	ld hl, wEnemyMonHP
-.got_hp
+	ld a, MON_HP
+	call TrueUserPartyAttr
 	ld a, [hli]
 	sub b
 	jr nz, .ok
