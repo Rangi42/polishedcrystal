@@ -23,7 +23,7 @@ SetMenuMonIconColor:
 	ld a, [wd265]
 	ld [wCurPartySpecies], a
 	call GetMenuMonIconPalette
-	jr ProcessMenuMonIconColor
+	jp ProcessMenuMonIconColor
 
 SetMenuMonIconColor_NoShiny:
 	push hl
@@ -64,14 +64,22 @@ LoadPartyMenuMonIconColors:
 	ld d, 0
 	ld e, a
 
+	push af
 	ld hl, wPartyMon1Item
 	call GetPartyLocation
 	ld a, [hl]
 	ld [wCurIconMonHasItemOrMail], a
+	pop af
 
+	ld hl, wPartyMon1IsEgg
+	call GetPartyLocation
+	bit MON_IS_EGG_F, [hl]
+	ld a, EGG
+	jr nz, .got_species
 	ld hl, wPartySpecies
 	add hl, de
 	ld a, [hl]
+.got_species
 	ld [wCurPartySpecies], a
 	ld a, MON_SHINY
 	call GetPartyParamLocation
@@ -215,6 +223,13 @@ LoadNamingScreenMonIcon:
 	push de
 	push bc
 
+	ld hl, wTempMonIsEgg
+	bit MON_IS_EGG_F, [hl]
+	ld a, [wd265]
+	jr z, .got_species
+	ld a, EGG
+.got_species
+	ld [wd265], a
 	ld hl, wTempMonShiny
 	call SetMenuMonIconColor
 
@@ -239,6 +254,14 @@ LoadMoveMenuMonIcon:
 	push de
 	push bc
 
+	ld a, MON_IS_EGG
+	call GetPartyParamLocation
+	bit MON_IS_EGG_F, [hl]
+	ld a, [wd265]
+	jr z, .got_species
+	ld a, EGG
+.got_species
+	ld [wd265], a
 	ld a, MON_SHINY
 	call GetPartyParamLocation
 	call SetMenuMonIconColor
