@@ -213,6 +213,7 @@ endc
 	db NO_MOVE      ; GRANBULL
 	db NO_MOVE      ; QWILFISH
 	db METAL_CLAW   ; SCIZOR
+	db NO_MOVE      ; SHUCKLE
 	db NO_MOVE      ; HERACROSS
 	db NO_MOVE      ; SNEASEL
 	db NO_MOVE      ; WEAVILE
