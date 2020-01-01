@@ -99,6 +99,8 @@ SetInitialOptions:
 	jr .joypad_loop
 
 .ExitOptions:
+	ld hl, wInitialOptions
+	res RESET_INIT_OPTS, [hl]
 	ld de, SFX_TRANSACTION
 	call PlaySFX
 	call WaitSFX
