@@ -886,8 +886,6 @@ HandleHealingItems:
 	call SwitchTurn
 
 .do_it
-	; runs instantly whenever possible, so don't prevent usage
-	; even if the user endturn switched
 	call HasUserFainted
 	ret z
 	farcall HandleHPHealingItem
@@ -974,11 +972,11 @@ HandleRoost:
 	inc hl
 	ld a, [hl]
 	cp UNKNOWN_T
-	jr nz, .aerliate
+	jr nz, .aerilate
 .got_target
 	ld [hl], FLYING
 	ret
-.aerliate
+.aerilate
 	; Set Flying types on both
 	ld a, FLYING
 	ld [hld], a
