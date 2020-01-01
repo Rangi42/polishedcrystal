@@ -5195,12 +5195,25 @@ UpdateMoveData:
 	ld d, h
 	ld e, l
 
-	; Don't update if the move doesn't exist
+	; Zerofill if the move doesn't exist
 	ld a, BATTLE_VARS_MOVE
 	call GetBattleVar
 	and a
-	ret z
+	jr nz, .not_null
+	push hl
+	push de
+	push bc
+	ld a, BATTLE_VARS_MOVE_ANIM
+	call GetBattleVarAddr
+	ld bc, wPlayerMoveStructEnd - wPlayerMoveStruct
+	xor a
+	call ByteFill
+	pop bc
+	pop de
+	pop hl
+	ret
 
+.not_null
 	ld [wCurMove], a
 	ld [wNamedObjectIndexBuffer], a
 

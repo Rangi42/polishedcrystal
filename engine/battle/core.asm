@@ -461,6 +461,7 @@ ParsePlayerAction:
 	call GetBattleVarAddr
 	xor a
 	ld [hl], a
+	farcall UpdateMoveData
 	jr .encored
 
 .using_move
@@ -5324,6 +5325,7 @@ ParseEnemyAction:
 	call GetBattleVarAddr
 	xor a
 	ld [hl], a
+	farcall UpdateMoveData
 	jr .skip_load
 
 .using_move
