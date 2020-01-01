@@ -3993,7 +3993,7 @@ GetStatBoost:
 
 ApplyStatBoostDamageAfterUnaware:
 	call GetFutureSightUser
-	ret z
+	ret nz
 	call GetOpponentAbilityAfterMoldBreaker
 	cp UNAWARE
 	ret z
