@@ -488,13 +488,10 @@ wDeferredSwitch:: ds 1
 wPlayerSwitchTarget:: ds 1
 wEnemySwitchTarget:: ds 1
 
-	ds 5 ; unused
-
 wBattleScriptBufferLoc:: ds 2
+wMoveState:: ds 1
 
-wTurnEnded:: ds 1
-
-	ds 13
+	ds 18 ; unused
 
 wPlayerStatLevels::
 ; 07 neutral

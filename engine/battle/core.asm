@@ -692,13 +692,7 @@ PerformMove:
 	res SUBSTATUS_DESTINY_BOND, [hl]
 	call HasUserFainted
 	jr z, .end_protect_destinybond
-	ld a, [hBattleTurn]
-	and a
-	jr nz, .enemy
-	farcall DoPlayerTurn
-	jr .end_protect_destinybond
-.enemy
-	farcall DoEnemyTurn
+	farcall DoTurn
 .end_protect_destinybond
 	ld a, BATTLE_VARS_SUBSTATUS1_OPP
 	call GetBattleVarAddr

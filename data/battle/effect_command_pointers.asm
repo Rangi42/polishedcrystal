@@ -121,7 +121,6 @@ BattleCommandPointers:
 	command rage
 	command doubleflyingdamage
 	command doubleundergrounddamage
-	command mirrorcoat
 	command checkfuturesight
 	command futuresight
 	command doubleminimizedamage
