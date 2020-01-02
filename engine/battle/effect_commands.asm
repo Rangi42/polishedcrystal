@@ -3316,6 +3316,9 @@ BattleCommand_posthiteffects:
 	; Ensure that the move doesn't already have a flinch rate.
 	call HasOpponentFainted
 	ret z
+	call GetOpponentAbilityAfterMoldBreaker
+	cp SHIELD_DUST
+	ret z
 	ld a, BATTLE_VARS_MOVE_EFFECT
 	call GetBattleVar
 	cp EFFECT_FLINCH_HIT
