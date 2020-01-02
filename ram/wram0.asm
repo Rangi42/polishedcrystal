@@ -25,8 +25,6 @@ wChannel6:: channel_struct wChannel6
 wChannel7:: channel_struct wChannel7
 wChannel8:: channel_struct wChannel8
 
-	ds 1 ; unused
-
 wCurTrackDuty:: ds 1
 wCurTrackIntensity:: ds 1
 wCurTrackFrequency:: ds 2
@@ -346,8 +344,6 @@ wOTClassName:: ds TRAINER_CLASS_NAME_LENGTH
 
 wCurOTMon:: ds 1
 
-	ds 1 ; unused
-
 wTypeModifier::
 ; >10: super effective
 ;  10: normal
@@ -475,13 +471,7 @@ wEnemySelectedMove:: ds 1
 wPlayerMetronomeCount:: ds 1
 wEnemyMetronomeCount:: ds 1
 
-	ds 2 ; unused
-
-; Stores enemy struct data temporarily when checking non-current mons
-wAITempAbility:: ds 1
-wAITempItem:: ds 1
-
-wPartyParticipants:: ds 6
+wPartyParticipants:: ds PARTY_LENGTH
 
 wDeferredSwitch:: ds 1
 
@@ -490,8 +480,6 @@ wEnemySwitchTarget:: ds 1
 
 wBattleScriptBufferLoc:: ds 2
 wMoveState:: ds 1
-
-	ds 18 ; unused
 
 wPlayerStatLevels::
 ; 07 neutral
@@ -542,8 +530,6 @@ wPayDayMoney:: ds 3
 
 wSafariMonAngerCount:: ds 1
 wSafariMonEating:: ds 1
-
-	ds 6 ; unused
 
 wAlreadyDisobeyed:: ds 1
 
@@ -609,8 +595,6 @@ wFailedMessage:: ds 1
 
 wEnemyGoesFirst:: ds 1
 
-	ds 2 ; unused
-
 wPlayerUsedMoves::
 ; add a move that has been used once by the player
 ; added in order of use
@@ -629,8 +613,6 @@ wLastEnemyMove:: ds 1
 
 wEnemyUsingItem:: ds 1
 
-	ds 8 ; unused
-
 wPlayerFutureSightCount:: ds 1
 wEnemyFutureSightCount:: ds 1
 wPlayerFutureSightDamage:: ds 2
@@ -648,13 +630,9 @@ wAnimationsDisabled:: ds 1 ; used to temporarily disable animations for abilitie
 
 wBattleEnded:: ds 1
 
-	ds 8 ; unused
-
 wAmuletCoin:: ds 1
 
 wSomeoneIsRampaging:: ds 1
-
-	ds 2 ; unused
 
 wDVAndPersonalityBuffer:: ds 5
 wBattleEnd::
@@ -961,8 +939,6 @@ wCurForm:: ds 1
 
 wJustGotGSBall:: ds 1
 
-	ds 7 ; unused
-
 wWindowStackPointer:: ds 2
 wMenuJoypad:: ds 1
 wMenuSelection:: ds 1
@@ -1050,8 +1026,6 @@ wOverworldDelay:: ds 1
 wTextDelayFrames:: ds 1
 wVBlankOccurred:: ds 1
 wGenericDelay:: ds 1
-
-	ds 7 ; unused
 
 wGameTimerPause::
 ; bit 0

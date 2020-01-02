@@ -105,9 +105,9 @@ wMoveScreenMoves:: ds 55
 
 NEXTU
 ; miscellaneous
-wTempDayOfWeek::
-wUnusedApricorns:: ds 1
-	ds 2
+wTempDayOfWeek:: ds 1
+
+	ds 2 ; unused
 
 wStartFlypoint:: ds 1
 wEndFlypoint:: ds 1

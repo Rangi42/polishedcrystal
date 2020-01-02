@@ -10,9 +10,9 @@ GetSwitchScores:
 
 	; Store active mon's info so we can overwrite it to check stuff
 	ld a, [wEnemyAbility]
-	ld [wAITempAbility], a
+	push af
 	ld a, [wEnemyMonItem]
-	ld [wAITempItem], a
+	push af
 
 	ld hl, wOTPartyMon1
 	ld a, [wOTPartyCount]
@@ -100,9 +100,9 @@ GetSwitchScores:
 	jr .loop
 .reset_vars_and_return
 	; Reset item and ability
-	ld a, [wAITempAbility]
+	pop af
 	ld [wEnemyAbility], a
-	ld a, [wAITempItem]
+	pop af
 	ld [wEnemyMonItem], a
 	ret
 
