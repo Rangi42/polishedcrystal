@@ -124,8 +124,15 @@ HalfHP::
 GetMaxHP::
 ; output: bc, wBuffer1-2
 
+	farcall GetFutureSightUser
+	jr z, .not_external
 	ld a, MON_MAXHP
 	call TrueUserPartyAttr
+	jr .got_maxhp
+.not_external
+	ld hl, wBattleMonMaxHP
+	call GetUserMonAttr
+.got_maxhp
 	ld a, [hli]
 	ld [wBuffer2], a
 	ld b, a
@@ -753,8 +760,15 @@ CheckPinch::
 CompareHP::
 ; return c if HP<bc, z if HP=bc, nc+nz if HP>bc
 	push hl
+	farcall GetFutureSightUser
+	jr z, .not_external
 	ld a, MON_HP
 	call TrueUserPartyAttr
+	jr .got_hp
+.not_external
+	ld hl, wBattleMonHP
+	call GetUserMonAttr
+.got_hp
 	ld a, [hli]
 	sub b
 	jr nz, .ok
