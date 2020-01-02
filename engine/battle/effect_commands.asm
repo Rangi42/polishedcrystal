@@ -480,6 +480,8 @@ IncreaseMetronomeCount:
 	ret
 
 CheckWhiteHerb:
+	call CheckSheerForceNegation
+	ret z
 	ld a, [hBattleTurn]
 	ld b, a
 	push bc
@@ -3226,6 +3228,8 @@ BattleCommand_posthiteffects:
 	jr z, .rocky_helmet
 	cp HELD_SWITCH_TARGET
 	jr nz, .not_switch_target
+	call CheckSheerForceNegation
+	jr z, .not_switch_target
 	ld a, c
 	call SetDeferredSwitch
 	jr .rocky_helmet_done
@@ -3240,6 +3244,8 @@ BattleCommand_posthiteffects:
 	jr z, .held_offend_hit
 	cp HELD_DEFEND_HIT
 	jr nz, .check_type_hit
+	call CheckSheerForceNegation
+	jr z, .rocky_helmet_done
 	ld a, c
 	cp PHYSICAL
 	ld b, DEFENSE
@@ -3304,6 +3310,8 @@ BattleCommand_posthiteffects:
 	jr z, .shell_bell
 	cp HELD_SWITCH
 	jr nz, .not_switch
+	call CheckSheerForceNegation
+	jr z, .not_switch
 	ld a, c
 	call SetDeferredSwitch
 	jp .checkfaint
