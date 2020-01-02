@@ -1544,11 +1544,18 @@ LinkTrade: ; 28b87
 	ld bc, NAME_LENGTH
 	rst CopyBytes
 	ld a, [wd002]
+	ld hl, wPartyMon1IsEgg
+	call GetPartyLocation
+	bit MON_IS_EGG_F, [hl]
+	ld a, EGG
+	jr nz, .got_tradeparty_species
+	ld a, [wd002]
 	ld hl, wPartySpecies
 	ld b, $0
 	ld c, a
 	add hl, bc
 	ld a, [hl]
+.got_tradeparty_species
 	ld [wPlayerTrademonSpecies], a
 	push af
 	ld a, [wd002]
@@ -1586,11 +1593,18 @@ LinkTrade: ; 28b87
 	ld bc, NAME_LENGTH
 	rst CopyBytes
 	ld a, [wd003]
+	ld hl, wOTPartyMon1IsEgg
+	call GetPartyLocation
+	bit MON_IS_EGG_F, [hl]
+	ld a, EGG
+	jr nz, .got_tradeot_species
+	ld a, [wd003]
 	ld hl, wOTPartySpecies
 	ld b, $0
 	ld c, a
 	add hl, bc
 	ld a, [hl]
+.got_tradeot_species
 	ld [wOTTrademonSpecies], a
 	ld a, [wd003]
 	ld hl, wOTPartyMonOT
