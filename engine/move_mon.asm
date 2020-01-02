@@ -218,9 +218,6 @@ endr
 	ld a, b
 	cp SYNCHRONIZE
 	jr nz, .no_synchronize
-	call Random
-	and $1
-	jr z, .no_synchronize
 	ld a, [wPartyMon1Nature]
 	and NATURE_MASK
 	jr .got_nature
