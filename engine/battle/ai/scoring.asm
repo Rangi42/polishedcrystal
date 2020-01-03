@@ -790,25 +790,34 @@ AI_Smart_Roar: ; 38a2a
 AI_Smart_Heal:
 AI_Smart_HealingLight:
 AI_Smart_Roost:
-; 90% chance to greatly encourage this move if enemy's HP is below 25%.
-; Discourage this move if enemy's HP is higher than 50%.
-; Do nothing otherwise.
+; Score the move as follows (lower is better):
+; <33%: -2
+; 33-50%: -1
+; 50-66%: +0
+; >66%: +2
+	dec [hl]
+	call CheckPinch
+	jr nz, .no_pinch
+	dec [hl]
+	ret
 
-	call AICheckEnemyQuarterHP
-	jr nc, .asm_38a45
-	call AICheckEnemyHalfHP
-	ret nc
+.no_pinch
+	push hl
+	call GetHalfMaxHP
+	call CompareHP
+	pop hl
+	ret c
+	inc [hl]
+	push hl
+	call GetThirdMaxHP
+	sla c
+	rl b
+	call CompareHP
+	pop hl
+	ret c
+	inc [hl]
 	inc [hl]
 	ret
-
-.asm_38a45
-	call Random
-	cp $19
-	ret c
-	dec [hl]
-	dec [hl]
-	ret
-; 38a4e
 
 
 AI_Smart_Toxic:
