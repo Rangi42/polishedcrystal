@@ -640,6 +640,7 @@ wPokedexShowPointerBank:: ds 1
 wFailedToFlee:: ds 1
 wNumFleeAttempts:: ds 1
 
+wLinkOTExchangeStart::
 wOTPlayerName:: ds NAME_LENGTH
 wOTPlayerID:: ds 2
 wOTPartyCount:: ds 1
@@ -673,6 +674,7 @@ wOTPartyMonsEnd::
 wOTPartyMonOT:: ds NAME_LENGTH * PARTY_LENGTH
 wOTPartyMonNicknames:: ds PKMN_NAME_LENGTH * PARTY_LENGTH
 wOTPartyDataEnd::
+wLinkOTExchangeEnd::
 
 wBattleAction:: ds 1
 wLinkBattleSentAction:: ds 1
