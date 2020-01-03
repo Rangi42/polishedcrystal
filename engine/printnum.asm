@@ -1,3 +1,71 @@
+GetDEValue:
+	ld c, 0
+	ret c
+	ld a, [de]
+	inc de
+	ld c, a
+	ld a, b
+	ret
+
+PrintHLNum:
+; Possibly print a number at hl and increase it
+	bit 0, b
+	jr nz, .b_odd
+	swap a
+	jr .b_ok
+.b_odd
+	inc de
+.b_ok
+	and $f
+	jr z, .maybe_not_yet
+	set PRINTNUM_LEADINGZEROS_F, b
+.maybe_not_yet
+	ld [hPrintNum + 4], a
+
+	; We might still be higher bytewise than we're printing
+	ld a, b
+	and $f
+	cp c
+	jr z, .ok
+	ret nc
+
+.ok
+	; Now print the number stored in hPrintNum5
+	ld a, [hPrintNum + 4]
+	and a
+	jr nz, .check_money
+
+	; just print a zero if we're in zero-mode
+	bit PRINTNUM_LEADINGZEROS_F, b
+	jr nz, .check_money
+
+	; if we're left-aligning the number, don't print anything
+	bit PRINTNUM_LEFTALIGN_F, b
+	ret nz
+
+	; print a space
+	ld a, b
+	and $f
+	dec a
+	jr z, .check_money
+	ld a, " "
+	jr .got_value
+
+.check_money
+	bit PRINTNUM_MONEY_F, b
+	jr z, .got_number
+	res PRINTNUM_MONEY_F, b
+	push af
+	ld a, "¥"
+	ld [hli], a
+	pop af
+
+.got_number
+	add "0"
+.got_value
+	ld [hli], a
+	ret
+
 _PrintNum:: ; c4c7
 ; Print c digits of the b-byte value from de to hl.
 ; Allows 2 to 7 digits. For 1-digit numbers, add
@@ -9,313 +77,80 @@ _PrintNum:: ; c4c7
 
 	push bc
 
-	bit PRINTNUM_MONEY_F, b
-	jr z, .main
 	bit PRINTNUM_LEADINGZEROS_F, b
-	jr nz, .moneyflag
-	bit PRINTNUM_LEFTALIGN_F, b
 	jr z, .main
-
-.moneyflag ; 101xxxxx or 011xxxxx
-	ld a, "¥"
-	ld [hli], a
-	res PRINTNUM_MONEY_F, b ; 100xxxxx or 010xxxxx
+	res PRINTNUM_LEFTALIGN_F, b
 
 .main
-	bit PRINTNUM_LEFTALIGN_F, b
-	jr z, .continue
-	ld a, c
-	dec a
-	jr nz, .continue
-	inc c
-.continue
-	ld a, c
-	dec a
-	jr z, .one
-	call .do_it
-	pop bc
-	ret
-
-.one
-	dec hl
-	ld a, [hl]
+	; Zerofill printnum data
 	push hl
-	push af
-	call .do_it
-	pop af
-	pop hl
-	ld [hl], a
-	pop bc
-	ret
-
-.do_it
-	push bc
+	ld hl, hPrintNum
 	xor a
-	ld [hPrintNum1], a
-	ld [hPrintNum2], a
-	ld [hPrintNum3], a
-	ld a, b
-	and $f
-	dec a
-	jr z, .byte
-	dec a
-	jr z, .word
-; maximum 3 bytes
-.long
-	ld a, [de]
-	ld [hPrintNum2], a
-	inc de
-
-.word
-	ld a, [de]
-	ld [hPrintNum3], a
-	inc de
-
-.byte
-	ld a, [de]
-	ld [hPrintNum4], a
-
-	push de
-
-	ld d, b
-	ld a, c
-	swap a
-	and $f
-	ld e, a
-	ld a, c
-	and $f
-	ld b, a
-	ld c, 0
-	dec a
-	jr z, .two
-	dec a
-	jr z, .two
-	dec a
-	jr z, .three
-	dec a
-	jr z, .four
-	dec a
-	jr z, .five
-	dec a
-	jr z, .six
-
-; seven
-	ld a, 1000000 / $10000 % $100
-	ld [hPrintNum5], a
-	ld a, 1000000 / $100 % $100
-	ld [hPrintNum6], a
-	ld a, 1000000 % $100
-	ld [hPrintNum7], a
-	call .PrintDigit
-	call .AdvancePointer
-
-.six
-	ld a, 100000 / $10000 % $100
-	ld [hPrintNum5], a
-	ld a, 100000 / $100 % $100
-	ld [hPrintNum6], a
-	ld a, 100000 % $100
-	ld [hPrintNum7], a
-	call .PrintDigit
-	call .AdvancePointer
-
-.five
-	xor a
-	ld [hPrintNum5], a
-	ld a, 10000 / $100
-	ld [hPrintNum6], a
-	ld a, 10000 % $100
-	ld [hPrintNum7], a
-	call .PrintDigit
-	call .AdvancePointer
-
-.four
-	xor a
-	ld [hPrintNum5], a
-	ld a, 1000 / $100
-	ld [hPrintNum6], a
-	ld a, 1000 % $100
-	ld [hPrintNum7], a
-	call .PrintDigit
-	call .AdvancePointer
-
-.three
-	xor a
-	ld [hPrintNum5], a
-	xor a
-	ld [hPrintNum6], a
-	ld a, 100
-	ld [hPrintNum7], a
-	call .PrintDigit
-	call .AdvancePointer
-
-.two
-	dec e
-	jr nz, .two_skip
-	ld a, "0"
-	ld [hPrintNum1], a
-.two_skip
-
-	ld c, 0
-	ld a, [hPrintNum4]
-	jr .handleLoop
-.mod_10
-	sub 10
-	inc c
-.handleLoop
-	cp 10
-	jr nc, .mod_10
-.modded_10
-
-	ld b, a
-	ld a, [hPrintNum1]
-	or c
-	jr nz, .money
-	call .PrintLeadingZero
-	jr .money_leading_zero
-
-.money
-	call .PrintYen
-	push af
-	ld a, "0"
-	add c
-	ld [hl], a
-	pop af
-	ld [hPrintNum1], a
-	inc e
-	dec e
-	jr nz, .money_leading_zero
-	inc hl
-	ld [hl], "."
-
-.money_leading_zero
-	call .AdvancePointer
-	call .PrintYen
-	ld a, "0"
-	add b
 	ld [hli], a
+	ld [hli], a
+	ld [hli], a
+	ld [hl], a
+	pop hl
 
+	; Initialize registers, reading from de bytes, or 0 if unused.
+	push bc
+	push de
+	push hl
+	ld a, b
+	and $1f
+	ld b, a
+	cp 4
+	call GetDEValue
+	ld l, c
+	cp 3
+	call GetDEValue
+	ld h, c
+	cp 2
+	call GetDEValue
+	push bc
+	cp 1
+	call GetDEValue
+	ld a, c
+	pop bc
+	ld b, a
+	ld e, l
+	ld d, h
+	ld a, 32
+	ld [hPrintNum + 4], a
+
+.loop
+	ld hl, hPrintNum + 3
+	sla b
+	rl c
+	rl d
+	rl e
+rept 4
+	ld a, [hl]
+	adc a
+	daa
+	ld [hld], a
+endr
+	ld a, [hPrintNum + 4]
+	dec a
+	ld [hPrintNum + 4], a
+	jr nz, .loop
+	pop hl
 	pop de
 	pop bc
-	ret
 
-.PrintYen: ; c5ba
-	push af
-	ld a, [hPrintNum1]
-	and a
-	jr nz, .stop
-	bit PRINTNUM_MONEY_F, d
-	jr z, .stop
-	ld a, "¥"
-	ld [hli], a
-	res 5, d
-
-.stop
-	pop af
-	ret
-
-.PrintDigit: ; c5cb (3:45cb)
-	dec e
-	jr nz, .ok
-	ld a, "0"
-	ld [hPrintNum1], a
-.ok
-	ld c, 0
-.loop
-	ld a, [hPrintNum5]
+	; At this point, hPrintNum+0 to +3 has zerofilled BCD-format numbers.
+	; Figure out the size of the number.
+	ld a, b
+	and $e0
+	add 8
 	ld b, a
-	ld a, [hPrintNum2]
-	ld [hPrintNum8], a
-	cp b
-	jr c, .skip1
-	sub b
-	ld [hPrintNum2], a
-	ld a, [hPrintNum6]
-	ld b, a
-	ld a, [hPrintNum3]
-	ld [hPrintNum9], a
-	cp b
-	jr nc, .skip2
-	ld a, [hPrintNum2]
-	and a
-	jr z, .skip3
-	dec a
-	ld [hPrintNum2], a
-	ld a, [hPrintNum3]
-.skip2
-	sub b
-	ld [hPrintNum3], a
-	ld a, [hPrintNum7]
-	ld b, a
-	ld a, [hPrintNum4]
-	ld [hPrintNum10], a
-	cp b
-	jr nc, .skip4
-	ld a, [hPrintNum3]
-	and a
-	jr nz, .skip5
-	ld a, [hPrintNum2]
-	and a
-	jr z, .skip6
-	dec a
-	ld [hPrintNum2], a
-	xor a
-.skip5
-	dec a
-	ld [hPrintNum3], a
-	ld a, [hPrintNum4]
-.skip4
-	sub b
-	ld [hPrintNum4], a
-	inc c
-	jr .loop
-.skip6
-	ld a, [hPrintNum9]
-	ld [hPrintNum3], a
-.skip3
-	ld a, [hPrintNum8]
-	ld [hPrintNum2], a
-.skip1
-	ld a, [hPrintNum1]
-	or c
-	jr z, .PrintLeadingZero
-	ld a, [hPrintNum1]
-	and a
-	jr nz, .done
-	bit PRINTNUM_MONEY_F, d
-	jr z, .done
-	ld a, "¥"
-	ld [hli], a
-	res 5, d
-.done
-	ld a, "0"
-	add c
-	ld [hl], a
-	ld [hPrintNum1], a
-	inc e
-	dec e
-	ret nz
-	inc hl
-	ld [hl], "."
-	ret
-
-.PrintLeadingZero: ; c644
-; prints a leading zero unless they are turned off in the flags
-	bit PRINTNUM_LEADINGZEROS_F, d ; print leading zeroes?
-	ret z
-	ld [hl], "0"
-	ret
-
-.AdvancePointer: ; c64a
-; increments the pointer unless leading zeroes are not being printed,
-; the number is left-aligned, and no nonzero digits have been printed yet
-	bit PRINTNUM_LEADINGZEROS_F, d ; print leading zeroes?
-	jr nz, .inc
-	bit PRINTNUM_LEFTALIGN_F, d ; left alignment or right alignment?
-	jr z, .inc
-	ld a, [hPrintNum1]
-	and a
-	ret z
-.inc
-	inc hl
+	ld de, hPrintNum
+.loop2
+	ld a, [de]
+	call PrintHLNum
+	dec b
+	ld a, b
+	and $7
+	jr nz, .loop2
+	pop bc
 	ret
