@@ -74,7 +74,7 @@ Gen2ToGen2LinkComms: ; 28177
 	ld [de], a
 	ld hl, wLinkData
 	ld de, wOTPlayerName
-	ld bc, $1c2
+	ld bc, wOTPartyDataEnd - wOTPlayerName
 	call Serial_ExchangeBytes
 	ld a, SERIAL_NO_DATA_BYTE
 	ld [de], a
