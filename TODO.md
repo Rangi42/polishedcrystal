@@ -202,7 +202,6 @@ Some of these may never be added; they're just suggestions.
 * Restore [unused memory game](http://iimarck.us/i/memory/) ([more info](https://tcrf.net/Pok%C3%A9mon_Gold_and_Silver#Unused_Memory_Game))
 * Restore the Pikachu's Beach minigame
 * Level ranges for wild Pokémon, instead of single values
-* Optional scaled experience formula from Gen V and Gen VII (port from [pokecrystal-speedchoice](https://github.com/Dabomstew/pokecrystal-speedchoice))
 * Use the News Machine for something (Mystery Gift?)
 * Championship title defense like in Gen VII (challengers: rival, Lyra, Lance, Prof.Oak, Prof.Elm, Clair, Blue, Eusine, Kimono Girl Naoko, Palmer, Lorelei, Agatha, Steven, Cynthia, Caitlin, and Lawrence)
 * Phone uses a bitfield to allow storing all numbers
