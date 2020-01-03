@@ -64,7 +64,7 @@ hRemainder         EQU $ffb7
 hMultiplicand      EQU $ffb4 ; 3 bytes long
 hMultiplier        EQU $ffb7 ; 1 byte long
 hProduct           EQU $ffb3 ; result (4 bytes long)
-hPrintNum          EQU $ffb3 ; used by PrintNum (5 bytes)
+hPrintNum          EQU $ffb3 ; used by PrintNum (4 bytes)
 
 hMathBuffer        EQU $ffb8
 

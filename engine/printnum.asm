@@ -1,38 +1,33 @@
-GetDEValue:
-	ld c, 0
-	ret c
-	ld a, [de]
-	inc de
-	ld c, a
-	ld a, b
-	ret
-
 PrintHLNum:
-; Possibly print a number at hl and increase it
-	bit 0, b
-	jr nz, .b_odd
+; Possibly print a number at hl and increase it.
+; [de] contains a BCD-encoded number that we print from.
+; c is the loop counter (how many digits are left).
+; b & $f contains the maximum string length. (b & $e0 is flags).
+; hl is where we print to (usually the screen).
+	bit 0, c
+	jr nz, .c_odd
 	swap a
-	jr .b_ok
-.b_odd
+	jr .c_ok
+.c_odd
 	inc de
-.b_ok
+.c_ok
 	and $f
 	jr z, .maybe_not_yet
 	set PRINTNUM_LEADINGZEROS_F, b
 .maybe_not_yet
-	ld [hPrintNum + 4], a
+	push af
 
 	; We might still be higher bytewise than we're printing
 	ld a, b
 	and $f
 	cp c
-	jr z, .ok
-	ret nc
+	jr nc, .ok
+	pop af
+	ret
 
 .ok
 	; Now print the number stored in hPrintNum5
-	ld a, [hPrintNum + 4]
-	and a
+	pop af
 	jr nz, .check_money
 
 	; just print a zero if we're in zero-mode
@@ -40,8 +35,7 @@ PrintHLNum:
 	jr nz, .check_money
 
 	; for the last digit, print 0 anyway
-	ld a, b
-	and $f
+	ld a, c
 	dec a
 	jr z, .check_money
 
@@ -70,13 +64,12 @@ PrintHLNum:
 
 _PrintNum:: ; c4c7
 ; Print c digits of the b-byte value from de to hl.
-; Allows 2 to 7 digits. For 1-digit numbers, add
-; the value to char "0" instead of calling PrintNum.
-; Some extra flags can be given in bits 5-7 of b.
+; Works on up to 1-8 digits and up to 4 bytes (up to 99999999).
+; The higher b nibble has some flags:
 ; Bit 5: money if set (unless left-aligned without leading zeros)
 ; Bit 6: right-aligned if set
 ; Bit 7: print leading zeros if set
-
+; Preserves bc.
 	push bc
 
 	bit PRINTNUM_LEADINGZEROS_F, b
@@ -84,75 +77,75 @@ _PrintNum:: ; c4c7
 	res PRINTNUM_LEFTALIGN_F, b
 
 .main
-	; Zerofill printnum data
+	; Extend the number at de to 32bit into hPrintNum
 	push hl
 	ld hl, hPrintNum
-	xor a
-	ld [hli], a
-	ld [hli], a
-	ld [hli], a
-	ld [hl], a
-	pop hl
-
-	; Initialize registers, reading from de bytes, or 0 if unused.
 	push bc
-	push de
 	push hl
+	ld c, 4
 	ld a, b
 	and $1f
 	ld b, a
-	cp 4
-	call GetDEValue
-	ld l, c
-	cp 3
-	call GetDEValue
-	ld h, c
-	cp 2
-	call GetDEValue
-	push bc
-	cp 1
-	call GetDEValue
-	ld a, c
-	pop bc
-	ld b, a
-	ld e, l
-	ld d, h
-	ld a, 32
-	ld [hPrintNum + 4], a
-
 .loop
+	ld a, b
+	cp c
+	ld a, 0
+	jr c, .loopnext
+	ld a, [de]
+	inc de
+.loopnext
+	ld [hli], a
+	dec c
+	jr nz, .loop
+	pop hl
+
+	; Zero hPrintNum, moving its content to bcde
+	push de
+	xor a
+	ld b, [hl]
+	ld [hli], a
+	ld c, [hl]
+	ld [hli], a
+	ld d, [hl]
+	ld [hli], a
+	ld e, [hl]
+	ld [hl], a
+	ld h, 32
+
+.loop2
+	push hl
 	ld hl, hPrintNum + 3
-	sla b
-	rl c
+	sla e
 	rl d
-	rl e
+	rl c
+	rl b
 rept 4
 	ld a, [hl]
 	adc a
 	daa
 	ld [hld], a
 endr
-	ld a, [hPrintNum + 4]
-	dec a
-	ld [hPrintNum + 4], a
-	jr nz, .loop
 	pop hl
+	dec h
+	jr nz, .loop2
 	pop de
 	pop bc
+	pop hl
 
-	; At this point, hPrintNum+0 to +3 has zerofilled BCD-format numbers.
-	; Figure out the size of the number.
+	; At this point, hPrintNum has zerofilled BCD-format numbers.
+	; Now print the number to the screen.
+	; Store maximum string length in the lower b nibble instead of c.
+	; Use c as a loop counter instead. This simplifies code a bit.
 	ld a, b
 	and $e0
-	add 8
+	add c
+	ld c, 8
 	ld b, a
 	ld de, hPrintNum
-.loop2
+.loop3
 	ld a, [de]
 	call PrintHLNum
-	dec b
-	ld a, b
-	and $7
-	jr nz, .loop2
+	dec c
+	jr nz, .loop3
 	pop bc
 	ret
