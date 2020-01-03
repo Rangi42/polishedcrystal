@@ -71,12 +71,6 @@ _PrintNum:: ; c4c7
 ; Bit 7: print leading zeros if set
 ; Preserves bc.
 	push bc
-
-	bit PRINTNUM_LEADINGZEROS_F, b
-	jr z, .main
-	res PRINTNUM_LEFTALIGN_F, b
-
-.main
 	; Extend the number at de to 32bit into hPrintNum
 	push hl
 	ld hl, hPrintNum
