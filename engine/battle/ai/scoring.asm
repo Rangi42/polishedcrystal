@@ -787,8 +787,21 @@ AI_Smart_Roar: ; 38a2a
 ; 38a3a
 
 
-AI_Smart_Heal:
 AI_Smart_HealingLight:
+; use healing scoring, then -1 in sun, +2 in other weather
+	call AI_Smart_Heal
+
+	call GetWeatherAfterUserUmbrella
+	and a
+	ret z
+	dec [hl]
+	cp WEATHER_SUN
+	ret z
+	inc [hl]
+	inc [hl]
+	ret
+
+AI_Smart_Heal:
 AI_Smart_Roost:
 ; Score the move as follows (lower is better):
 ; <33%: -2
