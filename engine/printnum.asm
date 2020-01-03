@@ -39,15 +39,17 @@ PrintHLNum:
 	bit PRINTNUM_LEADINGZEROS_F, b
 	jr nz, .check_money
 
+	; for the last digit, print 0 anyway
+	ld a, b
+	and $f
+	dec a
+	jr z, .check_money
+
 	; if we're left-aligning the number, don't print anything
 	bit PRINTNUM_LEFTALIGN_F, b
 	ret nz
 
 	; print a space
-	ld a, b
-	and $f
-	dec a
-	jr z, .check_money
 	ld a, " "
 	jr .got_value
 
