@@ -66,9 +66,9 @@ _PrintNum:: ; c4c7
 ; Print c digits of the b-byte value from de to hl.
 ; Works on up to 1-8 digits and up to 4 bytes (up to 99999999).
 ; The higher b nibble has some flags:
-; Bit 5: money if set (unless left-aligned without leading zeros)
-; Bit 6: right-aligned if set
-; Bit 7: print leading zeros if set
+; Bit 5: Print a pokedollar sign before the number itself
+; Bit 6: Left-aligned number instead of right-aligned
+; Bit 7: Print leading zeros
 ; Preserves bc.
 	push bc
 	; Extend the number at de to 32bit into hPrintNum
