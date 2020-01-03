@@ -26,7 +26,7 @@ PrintHLNum:
 	ret
 
 .ok
-	; Now print the number stored in hPrintNum5
+	; Now print the number in a
 	pop af
 	jr nz, .check_money
 
