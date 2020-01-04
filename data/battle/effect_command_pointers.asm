@@ -2,7 +2,6 @@ command: macro
 	enum \1_command
 \1 equs "db \1_command"
 	dw BattleCommand_\1
-	dw AICommand_\1
 endm
 
 commandx: macro
@@ -13,7 +12,6 @@ commandx: macro
 endm
 \1 equs "\1_macro \1_command,"
 	dw BattleCommand_\1
-	dw AICommand_\1
 endm
 
 commandonly: macro
