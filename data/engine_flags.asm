@@ -87,29 +87,29 @@ EngineFlags: ; 80462
 	engine_flag wVisitedSpawns, 3  ; pewter
 	engine_flag wVisitedSpawns, 4  ; mt moon
 	engine_flag wVisitedSpawns, 5  ; cerulean
-	engine_flag wVisitedSpawns, 6  ; rock tunnel
-	engine_flag wVisitedSpawns, 7  ; vermilion
-	engine_flag wVisitedSpawns, 8  ; lavender
-	engine_flag wVisitedSpawns, 9  ; saffron
-	engine_flag wVisitedSpawns, 10 ; celadon
-	engine_flag wVisitedSpawns, 11 ; fuchsia
-	engine_flag wVisitedSpawns, 12 ; cinnabar
-	engine_flag wVisitedSpawns, 13 ; indigo plateau
-	engine_flag wVisitedSpawns, 14 ; new bark
-	engine_flag wVisitedSpawns, 15 ; cherrygrove
-	engine_flag wVisitedSpawns, 16 ; violet
-	engine_flag wVisitedSpawns, 17 ; union cave
-	engine_flag wVisitedSpawns, 18 ; azalea
-	engine_flag wVisitedSpawns, 19 ; cianwood
-	engine_flag wVisitedSpawns, 20 ; goldenrod
-	engine_flag wVisitedSpawns, 21 ; olivine
-	engine_flag wVisitedSpawns, 22 ; ecruteak
-	engine_flag wVisitedSpawns, 23 ; mahogany
-	engine_flag wVisitedSpawns, 24 ; lake of rage
-	engine_flag wVisitedSpawns, 25 ; blackthorn
-	engine_flag wVisitedSpawns, 26 ; silver cave
-	engine_flag wVisitedSpawns, 27 ; yellow forest
-	engine_flag wVisitedSpawns, 28 ; cerulean cape
+	engine_flag wVisitedSpawns, 6  ; cerulean cape
+	engine_flag wVisitedSpawns, 7  ; rock tunnel
+	engine_flag wVisitedSpawns, 8  ; vermilion
+	engine_flag wVisitedSpawns, 9  ; lavender
+	engine_flag wVisitedSpawns, 10 ; saffron
+	engine_flag wVisitedSpawns, 11 ; celadon
+	engine_flag wVisitedSpawns, 12 ; fuchsia
+	engine_flag wVisitedSpawns, 13 ; cinnabar
+	engine_flag wVisitedSpawns, 14 ; indigo plateau
+	engine_flag wVisitedSpawns, 15 ; new bark
+	engine_flag wVisitedSpawns, 16 ; cherrygrove
+	engine_flag wVisitedSpawns, 17 ; violet
+	engine_flag wVisitedSpawns, 18 ; union cave
+	engine_flag wVisitedSpawns, 19 ; azalea
+	engine_flag wVisitedSpawns, 20 ; cianwood
+	engine_flag wVisitedSpawns, 21 ; goldenrod
+	engine_flag wVisitedSpawns, 22 ; olivine
+	engine_flag wVisitedSpawns, 23 ; ecruteak
+	engine_flag wVisitedSpawns, 24 ; mahogany
+	engine_flag wVisitedSpawns, 25 ; yellow forest
+	engine_flag wVisitedSpawns, 26 ; lake of rage
+	engine_flag wVisitedSpawns, 27 ; blackthorn
+	engine_flag wVisitedSpawns, 28 ; silver cave
 
 	engine_flag wLuckyNumberShowFlag, 0 ; lucky number show
 
