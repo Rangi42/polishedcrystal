@@ -597,20 +597,23 @@ Options_Typeface:
 	dw .Bold
 	dw .Italic
 	dw .Serif
+	dw .Braille
 	dw .Unown
 
 .Normal:
-	db "Normal@"
+	db "Normal @"
 .Narrow:
-	db "Narrow@"
+	db "Narrow @"
 .Bold:
-	db "Bold  @"
+	db "Bold   @"
 .Italic:
-	db "Italic@"
+	db "Italic @"
 .Serif:
-	db "Serif @"
+	db "Serif  @"
+.Braille:
+	db "Braille@"
 .Unown:
-	db "Unown @"
+	db "Unown  @"
 
 
 Options_Unused:
