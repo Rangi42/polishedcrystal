@@ -660,7 +660,7 @@ DynamicPowerMoves::
 	db COUNTER
 	db DRAGON_RAGE
 	db GYRO_BALL
-;   db LOW_KICK
+	db LOW_KICK
 	db MAGNITUDE
 	db MIRROR_COAT
 	db NIGHT_SHADE
