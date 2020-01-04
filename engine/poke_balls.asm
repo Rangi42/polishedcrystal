@@ -26,11 +26,11 @@ GetModifiedCaptureRate:
 	ld e, [hl]
 	ld h, d
 	ld l, e
-	add hl, de
-	add hl, de
 
-	; Save 3M for later division
+	; Save M for later division
 	push hl
+	add hl, de
+	add hl, de
 
 	sla c
 	rl b
@@ -78,7 +78,11 @@ GetModifiedCaptureRate:
 	jr z, .pop_hl_and_gurantee
 
 .status_done
-	; Divide by 3M
+	; Divide by 3
+	ld a, $13
+	call ApplyDamageMod
+
+	; Divide by M (first reduce it to a 1-byte number)
 	pop hl
 
 .loop
