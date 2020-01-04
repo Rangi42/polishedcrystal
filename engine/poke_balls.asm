@@ -158,10 +158,6 @@ CheckCriticalCapture:
 	or b
 	call ApplyDamageMod
 	ld a, [hQuotient + 2]
-	and a
-	jr nz, .got_rate
-	inc a
-.got_rate
 	ld b, a
 	call Random
 	cp b
