@@ -1,88 +1,168 @@
 GetPokeBallWobble: ; f971 (3:7971)
 ; Returns whether a Poke Ball will wobble in the catch animation.
 ; Whether a Pokemon is caught is determined beforehand.
-
-	push de
-
-	ld a, [rSVBK]
-	ld d, a
-	push de
-
 	ld a, BANK(wBuffer2)
-	ld [rSVBK], a
-
-	ld a, [wBuffer2]
-	inc a
-	ld [wBuffer2], a
-
+	call StackCallInWRAMBankA
+.Function:
 ; Wobble up to 3 times.
-	cp 3 + 1
-	jr z, .finished
-
-	ld a, [wWildMon]
-	and a
-	ld c, 0 ; next
-	jr nz, .done
-
 	ld hl, .WobbleProbabilities
 	ld a, [wBuffer1]
+
+	; If a is 255, always capture
+	inc a
+	jr z, .ok
+	dec a
 	ld b, a
 .loop
 	ld a, [hli]
 	cp b
-	jr nc, .checkwobble
+	jr z, .checkwobble
+	jr nc, .use_previous
 	inc hl
 	jr .loop
+
+.use_previous
+	dec hl
+	dec hl
 
 .checkwobble
 	ld b, [hl]
 	call Random
 	cp b
-	ld c, 0 ; next
-	jr c, .done
 	ld c, 2 ; escaped
-	jr .done
+	jr nc, .done
 
-.finished
-	ld a, [wWildMon]
-	and a
-	ld c, 1 ; caught
-	jr nz, .done
-	ld c, 2 ; escaped
+.ok
+	; Check how many wobbles we've done so far. If this would've been our 4th,
+	; we've successfully caught the Pokémon.
+	ld c, 0 ; shake
+	ld a, [wBuffer2]
+	inc a
+	ld [wBuffer2], a
+	cp 4
+	jr c, .done
+	inc c ; captured
 
 .done
-	pop de
-	ld e, a
-	ld a, d
-	ld [rSVBK], a
-	ld a, e
-	pop de
 	ret
 
 .WobbleProbabilities: ; f9ba
-; catch rate, chance of wobbling / 255
-; nLeft/255 = (nRight/255) ** 4
-	db   1,  63
-	db   2,  75
-	db   3,  84
-	db   4,  90
-	db   5,  95
-	db   7, 103
-	db  10, 113
-	db  15, 126
-	db  20, 134
-	db  30, 149
-	db  40, 160
-	db  50, 169
-	db  60, 177
-	db  80, 191
-	db 100, 201
-	db 120, 211
-	db 140, 220
-	db 160, 227
-	db 180, 234
-	db 200, 240
-	db 220, 246
-	db 240, 251
-	db 254, 253
+; With a catch rate of a, each wobble is calculated
+; as happening if a random number 0-255 <= b.
+; b is 256/(255/a)^0.1875, so use a lookup table.
+;        a,   b
+	db   1,  90
+	db   2, 103
+	db   3, 111
+	db   4, 117
+	db   5, 122
+	db   6, 126
+	db   7, 130
+	db   8, 133
+	db   9, 136
+	db  10, 139
+	db  11, 141
+	db  12, 144
+	db  13, 146
+	db  14, 148
+	db  15, 150
+	db  16, 152
+	db  17, 154
+	db  18, 155
+	db  19, 157
+	db  20, 158
+	db  21, 160
+	db  22, 161
+	db  23, 163
+	db  24, 164
+	db  25, 165
+	db  26, 166
+	db  27, 168
+	db  28, 169
+	db  29, 170
+	db  30, 171
+	db  31, 172
+	db  32, 173
+	db  33, 174
+	db  34, 175
+	db  35, 176
+	db  36, 177
+	db  37, 178
+	db  38, 179
+	db  39, 180
+	db  41, 181
+	db  42, 182
+	db  43, 183
+	db  44, 184
+	db  46, 185
+	db  47, 186
+	db  48, 187
+	db  50, 188
+	db  51, 189
+	db  52, 190
+	db  54, 191
+	db  55, 192
+	db  57, 193
+	db  59, 194
+	db  60, 195
+	db  62, 196
+	db  64, 197
+	db  65, 198
+	db  67, 199
+	db  69, 200
+	db  71, 201
+	db  73, 202
+	db  75, 203
+	db  76, 204
+	db  78, 205
+	db  81, 206
+	db  83, 207
+	db  85, 208
+	db  87, 209
+	db  89, 210
+	db  91, 211
+	db  94, 212
+	db  96, 213
+	db  99, 214
+	db 101, 215
+	db 104, 216
+	db 106, 217
+	db 109, 218
+	db 111, 219
+	db 114, 220
+	db 117, 221
+	db 120, 222
+	db 123, 223
+	db 126, 224
+	db 129, 225
+	db 132, 226
+	db 135, 227
+	db 138, 228
+	db 141, 229
+	db 145, 230
+	db 148, 231
+	db 151, 232
+	db 155, 233
+	db 158, 234
+	db 162, 235
+	db 166, 236
+	db 170, 237
+	db 173, 238
+	db 177, 239
+	db 181, 240
+	db 185, 241
+	db 189, 242
+	db 194, 243
+	db 198, 244
+	db 202, 245
+	db 207, 246
+	db 211, 247
+	db 216, 248
+	db 220, 249
+	db 225, 250
+	db 230, 251
+	db 235, 252
+	db 240, 253
+	db 245, 254
+	db 250, 255
 	db 255, 255

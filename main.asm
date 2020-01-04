@@ -145,6 +145,9 @@ INCLUDE "data/predef_pointers.asm"
 INCLUDE "engine/color.asm"
 INCLUDE "engine/trainer_scripts.asm"
 
+SECTION "Poke Ball Code", ROMX
+
+INCLUDE "engine/poke_balls.asm"
 
 SECTION "Code 3", ROMX
 
