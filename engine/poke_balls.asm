@@ -141,6 +141,8 @@ CheckCriticalCapture:
 	jr .loop
 .got_multiplier
 	; Catch Charm doubles capture rate (Unverified for SwSh!)
+	ld a, [wCurItem]
+	push af
 	ld a, CATCH_CHARM
 	ld [wCurKeyItem], a
 	push hl
@@ -157,6 +159,8 @@ CheckCriticalCapture:
 	swap b
 	or b
 	call ApplyDamageMod
+	pop af
+	ld [wCurItem], a
 	ld a, [hQuotient + 2]
 	ld b, a
 	call Random
