@@ -9,9 +9,9 @@ GetSwitchScores:
 	ld [wEnemyAISwitchScore], a
 
 	; Store active mon's info so we can overwrite it to check stuff
-	ld a, [wEnemyAbility]
-	push af
 	ld a, [wEnemyMonItem]
+	push af
+	ld a, [wEnemyAbility]
 	push af
 
 	ld hl, wOTPartyMon1
