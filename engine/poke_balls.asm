@@ -115,6 +115,68 @@ GetModifiedCaptureRate:
 	ld a, 255
 	ret
 
+CheckCriticalCapture:
+; Returns c on critical capture
+	xor a
+	ld hl, hMultiplier
+	ld [hli], a
+	ld [hli], a
+	ld a, [wBuffer1]
+	ld [hl], a
+
+	ld hl, wPokedexCaught
+	ld b, wEndPokedexCaught - wPokedexCaught
+	call CountSetBits
+	inc a
+	ld b, 5
+	jr z, .got_multiplier
+	dec a
+	ld b, 0
+	ld hl, .multipliers
+.loop
+	cp [hl]
+	jr c, .got_multiplier
+	inc b
+	inc hl
+	jr .loop
+.got_multiplier
+	; Catch Charm doubles capture rate (Unverified for SwSh!)
+	ld a, CATCH_CHARM
+	ld [wCurKeyItem], a
+	push hl
+	push de
+	push bc
+	call CheckKeyItem
+	pop bc
+	pop de
+	pop hl
+	ld a, $6
+	jr c, .catch_charm
+	add a
+.catch_charm
+	swap b
+	or b
+	call ApplyDamageMod
+	ld a, [hQuotient + 2]
+	and a
+	jr nz, .got_rate
+	inc a
+.got_rate
+	ld b, a
+	call Random
+	cp b
+	ret
+
+.multipliers
+	; Taken from Prism. Vanilla numbers don't work since we only have 254 mons.
+	; Multiplier applies if we have less than that amount of mons.
+	db 31 ; x0
+	db 101 ; x0.5
+	db 151 ; x1
+	db 201 ; x1.5
+	db 231 ; x2
+	db 255 ; x2.5
+
 CheckBallOverflow:
 ; Returns z if capture rate math is currently more than 24bit, which means
 ; it has overflowed what we can calculate. This allows us to simply return

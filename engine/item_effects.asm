@@ -376,11 +376,18 @@ PokeBallEffect: ; e8a2
 	ld [wWildMon], a
 
 	farcall GetModifiedCaptureRate
-
 	ld [wBuffer1], a
 	ld a, [wTempEnemyMonSpecies]
 	ld [wEnemyMonSpecies], a
 	ld [wWildMon], a
+
+	; Figure out if we should do a critical capture
+	farcall CheckCriticalCapture
+	ld a, 0
+	jr nc, .not_critical
+	ld a, $10
+.not_critical
+	ld [wBuffer2], a
 
 	ld c, 20
 	call DelayFrames
@@ -395,7 +402,6 @@ PokeBallEffect: ; e8a2
 	ld [wFXAnimIDHi], a
 	xor a
 	ld [hBattleTurn], a
-	ld [wBuffer2], a
 	ld [wNumHits], a
 	predef PlayBattleAnim
 

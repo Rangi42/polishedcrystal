@@ -5,6 +5,17 @@ GetPokeBallWobble: ; f971 (3:7971)
 	call StackCallInWRAMBankA
 .Function:
 ; Wobble up to 3 times.
+	; Check for critical capture flag
+	ld a, [wBuffer2]
+	and $10
+	jr z, .no_critical
+
+	; skip the first 3 checks
+	ld a, 3
+	ld c, 0
+	jr .critical_shake
+
+.no_critical
 	ld hl, .WobbleProbabilities
 	ld a, [wBuffer1]
 
@@ -38,6 +49,7 @@ GetPokeBallWobble: ; f971 (3:7971)
 	ld c, 0 ; shake
 	ld a, [wBuffer2]
 	inc a
+.critical_shake
 	ld [wBuffer2], a
 	cp 4
 	jr c, .done
