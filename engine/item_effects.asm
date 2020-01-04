@@ -1234,6 +1234,8 @@ TimerBallMultiplier:
 	ld a, b
 	ld [hMultiplicand + 2], a
 
+	push bc
+
 	; hProduct = catch rate * (turns passed * 3)
 	call Multiply
 
@@ -1256,10 +1258,21 @@ TimerBallMultiplier:
 	ld b, 4
 	call Divide
 
-	; b = hQuotient = catch rate * (turns passed * 3) / 10
-	ld a, [hQuotient + 2]
-	ld b, a
+	pop bc
 
+	ld a, [hQuotient + 1]
+	and a
+	jr nz, .max
+
+	; a = b + hQuotient = catch rate * (1 + (turns passed * 3) / 10)
+	ld a, [hQuotient + 2]
+	add b
+	jr nc, .nomax
+
+.max
+	ld a, $ff
+.nomax
+	ld b, a
 	ret
 
 NestBallMultiplier:
