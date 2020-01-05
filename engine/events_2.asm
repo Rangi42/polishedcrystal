@@ -393,16 +393,18 @@ endr
 
 
 CheckForHiddenItems: ; b8172
-; Checks to see if there are hidden items on the screen that have not yet been found.  If it finds one, returns carry.
+; Checks to see if there are unfound hidden items on the screen.
+; Returns nc if no item was found. Otherwise, return c.
+; a has the following information if an item is found:
+; bit 7: Item is on the same column (straight up or down)
+; bit 6: Item is on the same row (straight left or right)
+; bit 4-5: Direction (00=up 01=down 10=left 11=right)
+; bit 0-3: Distance to item (taxicab)
 	ld a, [wMapScriptHeaderBank]
 	ld [wBuffer1], a
-; Get the coordinate of the bottom right corner of the screen.
-	ld a, [wXCoord]
-	add SCREEN_WIDTH / 4
+	; Reset wBuffer4. This is used to figure out the closest item to the player.
+	ld a, -1
 	ld [wBuffer4], a
-	ld a, [wYCoord]
-	add SCREEN_HEIGHT / 4
-	ld [wBuffer3], a
 ; Get the pointer for the first signpost header in the map...
 	ld hl, wCurrentMapSignpostHeaderPointer
 	ld a, [hli]
@@ -411,7 +413,8 @@ CheckForHiddenItems: ; b8172
 ; ... before even checking to see if there are any signposts on this map.
 	ld a, [wCurrentMapSignpostCount]
 	and a
-	jr z, .nosignpostitems
+	jp z, .nosignpostitems
+
 ; For i = 1:wCurrentMapSignpostCount...
 .loop
 ; Store the counter in wBuffer2, and store the signpost header pointer in the stack.
@@ -421,19 +424,27 @@ CheckForHiddenItems: ; b8172
 	call .GetFarByte
 	ld e, a
 ; Is the Y coordinate of the signpost on the screen?  If not, go to the next signpost.
-	ld a, [wBuffer3]
+	ld a, [wYCoord]
+	add SCREEN_HEIGHT / 4
 	sub e
 	jr c, .next
 	cp SCREEN_HEIGHT / 2
 	jr nc, .next
+	ld [wBuffer3], a
 ; Is the X coordinate of the signpost on the screen?  If not, go to the next signpost.
 	call .GetFarByte
 	ld d, a
-	ld a, [wBuffer4]
+	ld a, [wXCoord]
+	add SCREEN_WIDTH / 4
 	sub d
 	jr c, .next
 	cp SCREEN_WIDTH / 2
 	jr nc, .next
+	swap a
+	ld d, a
+	ld a, [wBuffer3]
+	or d
+	ld [wBuffer3], a
 ; Is this signpost a hidden item?  If not, go to the next signpost.
 	call .GetFarByte
 	cp SIGNPOST_GROTTOITEM
@@ -455,7 +466,25 @@ CheckForHiddenItems: ; b8172
 	call EventFlagAction
 	ld a, c
 	and a
-	jr z, .itemnearby
+	jr nz, .next
+
+	; If old buffer is -1, it's unused, so just write to it directly.
+	; Otherwise, compare and figure out which one is closest.
+	ld a, [wBuffer4]
+	inc a
+	jr z, .current_is_closer
+	dec a
+	call CalculateItemDistance
+	and $f
+	ld c, a
+	ld a, [wBuffer3]
+	call CalculateItemDistance
+	and $f
+	cp c
+	jr nc, .next
+.current_is_closer
+	ld a, [wBuffer3]
+	ld [wBuffer4], a
 
 .next
 ; Restore the signpost header pointer and increment it by the length of a signpost header.
@@ -465,17 +494,16 @@ CheckForHiddenItems: ; b8172
 ; Restore the signpost counter and decrement it.  If it hits zero, there are no hidden items in range.
 	ld a, [wBuffer2]
 	dec a
-	jr nz, .loop
+	jp nz, .loop
 
+	; Check if we found anything. Return carry if we did.
 .nosignpostitems
-	xor a
-	ret
-
-.itemnearby
-	pop hl
+	ld a, [wBuffer4]
+	cp -1
+	ret nc
+	call CalculateItemDistance
 	scf
 	ret
-; b81e2
 
 .GetFarByte: ; b81e2
 	ld a, [wBuffer1]
@@ -483,6 +511,92 @@ CheckForHiddenItems: ; b8172
 	inc hl
 	ret
 ; b81ea
+
+CalculateItemDistance:
+; Calculate how close a is to the player.
+; a: $xy (literally) where 0 is topleft and height (or width)/2 bottom right
+	push bc
+	push de
+	push hl
+	ld b, a
+	and $f
+	ld e, a
+	ld a, b
+	and $f0
+	swap a
+	ld d, a
+	lb bc, SCREEN_WIDTH / 4, SCREEN_HEIGHT / 4
+
+	; bc: wh of player, de: wh of item
+
+	; Compare them. h is set as follows:
+	; Bit 7: Same column
+	; Bit 6: Same row
+	; Bit 3: Right
+	; Bit 2: Left
+	; Bit 1: Down
+	; Bit 0: Up
+	ld h, %11000000
+	ld a, c
+	sub e
+	jr nc, .positive_height
+
+	; We want aboslute distance...
+	set 0, h
+	dec a
+	cpl
+.positive_height
+	jr z, .got_height
+	; We know height isn't equal so unset absolute height
+	res 6, h
+	set 1, h ; Might be set incorrectly, which is OK (see loop)
+
+.got_height
+	ld c, a
+	ld a, b
+	sub d
+	jr nc, .positive_width
+
+	set 2, h
+	dec a
+	cpl
+.positive_width
+	jr z, .got_width
+	res 7, h
+	set 3, h
+
+.got_width
+	; The direction we want to return is the one with the
+	; biggest directional distance.
+	ld b, a
+	cp c
+	jr nc, .left_right
+	res 2, h
+	res 3, h
+	jr .got_direction
+.left_right
+	res 0, h
+	res 1, h
+.got_direction
+
+	ld a, $f
+	and h
+	jr z, .skip
+	; Store direction in bit 5-6
+	ld a, h
+	sub %10000
+.loop
+	add %10000
+	srl h
+	jr nc, .loop
+.skip
+	and $f0
+	or b
+	add c
+	pop hl
+	pop de
+	pop bc
+	ret
 
 TreeItemEncounter:
 	call Random
