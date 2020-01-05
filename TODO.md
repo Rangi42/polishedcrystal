@@ -90,11 +90,6 @@ Shamouti Island:
 * Shamouti Restaurant (works like Seven Stars Restaurant) (different subset of all trainers every day of the week)
 
 
-### Music player
-
-* Use the UnlockedMusic flag_array to hide unheard song titles
-
-
 ### Optimizations
 
 * Optimize battle command engine, including parameterized commands
@@ -206,8 +201,6 @@ Some of these may never be added; they're just suggestions.
 * Championship title defense like in Gen VII (challengers: rival, Lyra, Lance, Prof.Oak, Prof.Elm, Clair, Blue, Eusine, Kimono Girl Naoko, Palmer, Lorelei, Agatha, Steven, Cynthia, Caitlin, and Lawrence)
 * Phone uses a bitfield to allow storing all numbers
 * Make more trainers rematchable
-* Catch rate formula from Gen III
-* Port critical captures from Prism
 * Allow evolution during battle
 * Itemfinder makes you face towards the item
 * Itemfinder beeps N times for an item N steps away
