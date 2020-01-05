@@ -5,6 +5,7 @@ ItemFinder: ; 12580
 	jr .resume
 
 .found_something
+	ld [wBuffer1], a
 	ld hl, .Script_FoundSomething
 
 .resume
@@ -15,7 +16,16 @@ ItemFinder: ; 12580
 ; 12599
 
 .ItemfinderSound: ; 12599
-	ld c, 4
+	call WaitSFX
+	ld a, [wBuffer1]
+	and $f
+	jr z, .beneath_you
+	srl a
+	srl a
+	cpl
+.beneath_you
+	add 5
+	ld c, a
 .sfx_loop
 	push bc
 	ld de, SFX_SECOND_PART_OF_ITEMFINDER
