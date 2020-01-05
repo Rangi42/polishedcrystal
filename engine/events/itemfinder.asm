@@ -44,6 +44,9 @@ ItemFinder: ; 12580
 	jr nz, .sfx_loop
 	ld d, PLAYER
 	ld a, [wBuffer1]
+	and $f
+	ld [wScriptVar], a
+	ld a, [wBuffer1]
 	rrca
 	rrca
 	ld e, a
@@ -54,39 +57,33 @@ ItemFinder: ; 12580
 	reloadmappart
 	special UpdateTimePals
 	callasm .ItemfinderEffect
-	writetext .Text_FoundSomething
-	closetext
-	end
+	iffalse_jumpopenedtext .UnderfootText
+	thisopenedtext
+
+	text "Yes! Itemfinder"
+	line "is responding!"
+	done
+
+.UnderfootText:
+	text "Oh! Itemfinder is"
+	line "shaking wildly!"
+	done
 ; 0x125ba
 
 .Script_FoundNothingNearby:
 	reloadmappart
 	special UpdateTimePals
-	writetext .Text_FoundNothingNearby
-	closetext
-	end
+	thisopenedtext
+
+	text "…Nope! Itemfinder"
+	line "isn't responding."
+	done
 
 .Script_FoundNothingAtAll:
 	reloadmappart
 	special UpdateTimePals
-	writetext .Text_FoundNothingAtAll
-	closetext
-	end
+	thisopenedtext
 
-.Text_FoundNothingAtAll:
-	text "No response. There"
-	line "seems to be no"
-	cont "items in the area."
-	prompt
-
-.Text_FoundSomething: ; 0x125c3
-	; Yes! ITEMFINDER indicates there's an item nearby.
-	text_jump UnknownText_0x1c0a77
-	db "@"
-; 0x125c8
-
-.Text_FoundNothingNearby: ; 0x125c8
-	; Nope! ITEMFINDER isn't responding.
-	text_jump UnknownText_0x1c0aa9
-	db "@"
-; 0x125cd
+	text "Nope! There's no-"
+	line "thing hidden here."
+	done
