@@ -17,20 +17,16 @@ ItemFinder: ; 12580
 
 .ItemfinderEffect: ; 12599
 	ld a, [wBuffer1]
-	and $f
-	jr z, .beneath_you
+	and $f ; taxicab distance, 0-15
+	inc a ; 1-16
 	cp 9
 	jr c, .dist_ok
-	ld a, 9
+	ld a, 9 ; cap, 1-9
 .dist_ok
-	srl a
-	and a
-	jr z, .no_decrement
-	dec a
-.no_decrement
-	cpl
-.beneath_you
-	add 5
+	srl a ; 0-4
+	ld c, a
+	ld a, 5
+	sub c ; 5-1
 	ld c, a
 .sfx_loop
 	push bc
