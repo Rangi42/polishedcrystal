@@ -1,12 +1,9 @@
 ItemFinder: ; 12580
 	farcall CheckForHiddenItems
 	jr c, .found_something
-	jr z, .ExistsInArea
-	ld hl, .Script_FoundNothingAtAll
-	jr .resume
-
-.ExistsInArea:
 	ld hl, .Script_FoundNothingNearby
+	jr z, .resume
+	ld hl, .Script_FoundNothingAtAll
 	jr .resume
 
 .found_something
