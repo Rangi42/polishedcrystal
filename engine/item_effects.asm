@@ -701,8 +701,37 @@ PokeBallEffect: ; e8a2
 .FinishTutorial:
 	pop af
 	ld hl, Text_GotchaMonWasCaught
+	jr .print
 
 .shake_and_break_free
+	push hl
+	farcall BattleCheckEnemyShininess
+	jr nc, .not_shiny
+	ld a, 1 ; shiny anim
+	ld [wBattleAnimParam], a
+	ld de, ANIM_SEND_OUT_MON
+	farcall Call_PlayBattleAnim
+.not_shiny
+
+	ld bc, wTempMonSpecies
+	farcall CheckFaintedFrzSlp
+	jr c, .skip_cry
+	farcall CheckBattleEffects
+	jr c, .cry_no_anim
+	hlcoord 12, 0
+	lb de, $0, ANIM_MON_SLOW
+	predef AnimateFrontpic
+	jr .skip_cry
+
+.cry_no_anim
+	ld a, $f
+	ld [wCryTracks], a
+	ld a, [wTempEnemyMonSpecies]
+	call PlayStereoCry
+
+.skip_cry
+	pop hl
+.print
 	ld a, 0
 	ld [wWildMon], a
 	call PrintText
