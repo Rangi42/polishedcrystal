@@ -15,13 +15,19 @@ ItemFinder: ; 12580
 	ret
 ; 12599
 
-.ItemfinderSound: ; 12599
-	call WaitSFX
+.ItemfinderEffect: ; 12599
 	ld a, [wBuffer1]
 	and $f
+	cp 9
+	jr c, .dist_ok
+	ld a, 9
+.dist_ok
 	jr z, .beneath_you
 	srl a
-	srl a
+	and a
+	jr z, .no_decrement
+	dec a
+.no_decrement
 	cpl
 .beneath_you
 	add 5
@@ -35,13 +41,18 @@ ItemFinder: ; 12580
 	pop bc
 	dec c
 	jr nz, .sfx_loop
-	ret
+	ld d, PLAYER
+	ld a, [wBuffer1]
+	rrca
+	rrca
+	ld e, a
+	farjp ApplyPersonFacing
 ; 125ad
 
 .Script_FoundSomething: ; 0x125ad
 	reloadmappart
 	special UpdateTimePals
-	callasm .ItemfinderSound
+	callasm .ItemfinderEffect
 	writetext .Text_FoundSomething
 	closetext
 	end

@@ -398,7 +398,7 @@ CheckForHiddenItems: ; b8172
 ; a has the following information if an item is found:
 ; bit 7: Item is on the same column (straight up or down)
 ; bit 6: Item is on the same row (straight left or right)
-; bit 4-5: Direction (00=up 01=down 10=left 11=right)
+; bit 4-5: Direction (00=down 01=up 10=left 11=right)
 ; bit 0-3: Distance to item (taxicab)
 	ld a, [wMapScriptHeaderBank]
 	ld [wBuffer1], a
@@ -534,23 +534,22 @@ CalculateItemDistance:
 	; Bit 6: Same row
 	; Bit 3: Right
 	; Bit 2: Left
-	; Bit 1: Down
-	; Bit 0: Up
+	; Bit 1: Up
+	; Bit 0: Down
+	; Note that directions are the same as facing index order.
 	ld h, %11000000
 	ld a, c
 	sub e
-	jr nc, .positive_height
+	jr z, .got_height
+	res 6, h
+	jr c, .negative_height
 
-	; We want aboslute distance...
 	set 0, h
+	jr .got_height
+.negative_height
 	dec a
 	cpl
-.positive_height
-	jr z, .got_height
-	; We know height isn't equal so unset absolute height
-	res 6, h
-	set 1, h ; Might be set incorrectly, which is OK (see loop)
-
+	set 1, h
 .got_height
 	ld c, a
 	ld a, b
