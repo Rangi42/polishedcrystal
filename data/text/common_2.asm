@@ -475,8 +475,8 @@ UnknownText_0x1c0a77::
 	prompt
 
 UnknownText_0x1c0aa9::
-	text "Nope! Itemfinder"
-	line "isn't responding."
+	text "Nope! No hidden"
+	line "items nearby."
 	prompt
 
 UnknownText_0x1c0acc::

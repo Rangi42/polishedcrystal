@@ -1,7 +1,12 @@
 ItemFinder: ; 12580
 	farcall CheckForHiddenItems
 	jr c, .found_something
-	ld hl, .Script_FoundNothing
+	jr z, .ExistsInArea
+	ld hl, .Script_FoundNothingAtAll
+	jr .resume
+
+.ExistsInArea:
+	ld hl, .Script_FoundNothingNearby
 	jr .resume
 
 .found_something
@@ -58,13 +63,25 @@ ItemFinder: ; 12580
 	end
 ; 0x125ba
 
-.Script_FoundNothing: ; 0x125ba
+.Script_FoundNothingNearby:
 	reloadmappart
 	special UpdateTimePals
-	writetext .Text_FoundNothing
+	writetext .Text_FoundNothingNearby
 	closetext
 	end
-; 0x125c3
+
+.Script_FoundNothingAtAll:
+	reloadmappart
+	special UpdateTimePals
+	writetext .Text_FoundNothingAtAll
+	closetext
+	end
+
+.Text_FoundNothingAtAll:
+	text "No response. There"
+	line "seems to be no"
+	cont "items in the area."
+	prompt
 
 .Text_FoundSomething: ; 0x125c3
 	; Yes! ITEMFINDER indicates there's an item nearby.
@@ -72,7 +89,7 @@ ItemFinder: ; 12580
 	db "@"
 ; 0x125c8
 
-.Text_FoundNothing: ; 0x125c8
+.Text_FoundNothingNearby: ; 0x125c8
 	; Nope! ITEMFINDER isn't responding.
 	text_jump UnknownText_0x1c0aa9
 	db "@"

@@ -421,59 +421,39 @@ CheckForHiddenItems: ; b8172
 	ld [wBuffer2], a
 	push hl
 ; Get the Y coordinate of the signpost.
-	call .GetFarByte
+	call ItemFinder_GetFarByte
 	ld e, a
 ; Is the Y coordinate of the signpost on the screen?  If not, go to the next signpost.
 	ld a, [wYCoord]
 	add SCREEN_HEIGHT / 4
 	sub e
-	jr c, .next
+	jr c, .next_y
 	cp SCREEN_HEIGHT / 2
-	jr nc, .next
+	jr nc, .next_y
 	ld [wBuffer3], a
 ; Is the X coordinate of the signpost on the screen?  If not, go to the next signpost.
-	call .GetFarByte
+	call ItemFinder_GetFarByte
 	ld d, a
 	ld a, [wXCoord]
 	add SCREEN_WIDTH / 4
 	sub d
-	jr c, .next
+	jr c, .next_x
 	cp SCREEN_WIDTH / 2
-	jr nc, .next
+	jr nc, .next_x
 	swap a
 	ld d, a
 	ld a, [wBuffer3]
 	or d
 	ld [wBuffer3], a
 ; Is this signpost a hidden item?  If not, go to the next signpost.
-	call .GetFarByte
-	cp SIGNPOST_GROTTOITEM
-	jr z, .grottoitem
-	cp SIGNPOST_ITEM
-	jr c, .next
-; Has this item already been found?  If not, set off the Itemfinder.
-	call .GetFarByte
-	ld e, a
-	call .GetFarByte
-	ld d, a
-	jr .checkitem
-.grottoitem
-	call .GetFarByte
-	call .GetFarByte
-	ld de, EVENT_TEMPORARY_UNTIL_MAP_RELOAD_3
-.checkitem
-	ld b, CHECK_FLAG
-	call EventFlagAction
-	ld a, c
-	and a
+	call IsHiddenItem
 	jr nz, .next
 
 	; If old buffer is -1, it's unused, so just write to it directly.
 	; Otherwise, compare and figure out which one is closest.
 	ld a, [wBuffer4]
-	inc a
-	jr z, .current_is_closer
-	dec a
+	cp -2
+	jr nc, .current_is_closer
 	call CalculateItemDistance
 	and $f
 	ld c, a
@@ -484,6 +464,18 @@ CheckForHiddenItems: ; b8172
 	jr nc, .next
 .current_is_closer
 	ld a, [wBuffer3]
+	ld [wBuffer4], a
+	jr .next
+
+.next_y
+	call ItemFinder_GetFarByte
+.next_x
+	call IsHiddenItem
+	jr nz, .next
+	ld a, [wBuffer4]
+	cp -2
+	jr c, .next
+	ld a, -2
 	ld [wBuffer4], a
 
 .next
@@ -499,18 +491,40 @@ CheckForHiddenItems: ; b8172
 	; Check if we found anything. Return carry if we did.
 .nosignpostitems
 	ld a, [wBuffer4]
-	cp -1
+	cp -2
 	ret nc
 	call CalculateItemDistance
 	scf
 	ret
 
-.GetFarByte: ; b81e2
+IsHiddenItem:
+; Returns nz if current object is not a hidden item we haven't found yet
+	call ItemFinder_GetFarByte
+	cp SIGNPOST_GROTTOITEM
+	jr z, .grotto
+	cp SIGNPOST_ITEM
+	ret c
+	call ItemFinder_GetFarByte
+	ld e, a
+	call ItemFinder_GetFarByte
+	ld d, a
+	jr .checkitem
+.grotto
+	call ItemFinder_GetFarByte
+	call ItemFinder_GetFarByte
+	ld de, EVENT_TEMPORARY_UNTIL_MAP_RELOAD_3
+.checkitem
+	ld b, CHECK_FLAG
+	call EventFlagAction
+	ld a, c
+	and a
+	ret
+
+ItemFinder_GetFarByte:
 	ld a, [wBuffer1]
 	call GetFarByte
 	inc hl
 	ret
-; b81ea
 
 CalculateItemDistance:
 ; Calculate how close a is to the player.
