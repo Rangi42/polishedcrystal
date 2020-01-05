@@ -18,11 +18,11 @@ ItemFinder: ; 12580
 .ItemfinderEffect: ; 12599
 	ld a, [wBuffer1]
 	and $f
+	jr z, .beneath_you
 	cp 9
 	jr c, .dist_ok
 	ld a, 9
 .dist_ok
-	jr z, .beneath_you
 	srl a
 	and a
 	jr z, .no_decrement
