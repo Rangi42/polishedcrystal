@@ -2392,13 +2392,10 @@ BattleCommand_hittargetnosub: ; 34f60
 	jr z, .conversion
 	cp EFFECT_DOUBLE_HIT
 	jr z, .doublehit
-	cp EFFECT_TRIPLE_KICK
-	jr z, .triplekick
 
 .normal_move
 	xor a
 	ld [wKickCounter], a
-.triplekick
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
 	ld e, a
@@ -2894,23 +2891,48 @@ BattleCommand_criticaltext: ; 35175
 	jp DelayFrames
 
 
-BattleCommand_startloop: ; 35197
-; startloop
-
-	ld hl, wPlayerRolloutCount
-	ld a, [hBattleTurn]
-	and a
-	jr z, .ok
-	ld hl, wEnemyRolloutCount
-.ok
-	xor a
-	ld [hl], a
+BattleCommand_startloop:
+	; mark that we're currently in a loop
 	ld a, BATTLE_VARS_SUBSTATUS3
 	call GetBattleVarAddr
-	res SUBSTATUS_IN_LOOP, [hl]
-	ret
+	set SUBSTATUS_IN_LOOP, [hl]
 
-; 351a5
+	ld a, [hBattleTurn]
+	and a
+	ld hl, wPlayerRolloutCount
+	ld de, wPlayerDamageTaken
+	jr z, .got_counter
+	ld hl, wEnemyRolloutCount
+	ld de, wEnemyDamageTaken
+.got_counter
+	; Reset hit counter
+	ld a, 1
+	ld [de], a
+
+	; Figure out how many hits we should do.
+	ld a, BATTLE_VARS_MOVE_EFFECT
+	call GetBattleVar
+	cp EFFECT_DOUBLE_HIT
+	ld a, 2
+	jr z, .got_count
+
+	call GetTrueUserAbility
+	cp SKILL_LINK
+	ld a, 5
+	jr z, .got_count
+
+	; Hit 2-5 times with 2 and 3 being twice as common.
+	; So randomize a number 0-5, take (result mod 4) + 2.
+	ld a, 6
+	call BattleRandomRange
+	cp 4
+	jr c, .random_ok
+	sub 4
+.random_ok
+	add 2
+.got_count
+	ld [hl], a
+	ret
 
 
 BattleCommand_supereffectivelooptext: ; 351a5
@@ -3135,16 +3157,23 @@ BattleCommand_postfainteffects:
 .no_dbond
 	farcall RunFaintAbilities
 	call BattleCommand_posthiteffects
+	ld a, BATTLE_VARS_SUBSTATUS3
+	call GetBattleVar
+	bit SUBSTATUS_IN_LOOP, a
+	jr z, .no_multi
+	ld a, [hBattleTurn]
+	and a
+	ld hl, wPlayerRolloutCount
+	jr z, .got_multi_count
+	ld hl, wEnemyRolloutCount
+.got_multi_count
+	ld [hl], 1
+	call BattleCommand_endloop
+	jr .finish
+
+.no_multi
 	ld a, BATTLE_VARS_MOVE_EFFECT
 	call GetBattleVar
-	cp EFFECT_MULTI_HIT
-	jr z, .multiple_hit_raise_sub
-	cp EFFECT_DOUBLE_HIT
-	jr z, .multiple_hit_raise_sub
-	cp EFFECT_TRIPLE_KICK
-	jr z, .multiple_hit_raise_sub
-	cp EFFECT_FURY_STRIKES
-	jr z, .multiple_hit_raise_sub
 	cp EFFECT_SWITCH_HIT
 	jr nz, .finish
 	call HasUserFainted
@@ -3152,6 +3181,8 @@ BattleCommand_postfainteffects:
 	jr .finish
 
 .multiple_hit_raise_sub
+	ld a, [hBattleTurn]
+	and a
 	call BattleCommand_raisesub
 
 .finish
@@ -5059,8 +5090,6 @@ SelfInflictDamageToSubstitute: ; 35de0
 	jr z, .ok
 	cp EFFECT_DOUBLE_HIT
 	jr z, .ok
-	cp EFFECT_TRIPLE_KICK
-	jr z, .ok
 	cp EFFECT_FURY_STRIKES
 	jr z, .ok
 	xor a
@@ -6155,90 +6184,37 @@ CheckPlayerHasMonToSwitchTo: ; 36994
 ; 369b6
 
 
-BattleCommand_endloop: ; 369b6
-; endloop
-
-; Loop back to the command before 'critical'.
-
-	ld de, wPlayerRolloutCount
-	ld bc, wPlayerDamageTaken
+BattleCommand_endloop:
 	ld a, [hBattleTurn]
 	and a
-	jr z, .got_addrs
-	ld de, wEnemyRolloutCount
-	ld bc, wEnemyDamageTaken
-.got_addrs
-
-	ld a, BATTLE_VARS_SUBSTATUS3
-	call GetBattleVarAddr
-	bit SUBSTATUS_IN_LOOP, [hl]
-	jp nz, .in_loop
-	set SUBSTATUS_IN_LOOP, [hl]
-	ld a, BATTLE_VARS_MOVE_EFFECT
-	call GetBattleVarAddr
-	ld a, [hl]
-	cp EFFECT_DOUBLE_HIT
-	ld a, 1
-	jr z, .double_hit
-	ld a, [hl]
-	cp EFFECT_TRIPLE_KICK
-	jr nz, .not_triple_kick
-.reject_triple_kick_sample
-	call BattleRandom
-	and $3
-	jr z, .reject_triple_kick_sample
-	dec a
-	jr nz, .double_hit
-	ld a, 1
-	ld [bc], a
-	jr .done_loop
-
-.not_triple_kick
-	call GetTrueUserAbility
-	cp SKILL_LINK
-	jr nz, .no_skill_link
-	ld a, 3 ; ends up being 5 hits
-	jr .got_number_hits
-.no_skill_link
-	call BattleRandom
-	and $3
-	cp 2
-	jr c, .got_number_hits
-	call BattleRandom
-	and $3
-.got_number_hits
-	inc a
-.double_hit
-	ld [de], a
-	inc a
-	ld [bc], a
-	jr .loop_back_to_critical
-
-.in_loop
-	ld a, [de]
-	dec a
-	ld [de], a
+	ld hl, wPlayerRolloutCount
+	ld de, wPlayerDamageTaken
+	jr z, .got_counter
+	ld hl, wEnemyRolloutCount
+	ld de, wEnemyDamageTaken
+.got_counter
+	dec [hl]
 	jr nz, .loop_back_to_critical
-.done_loop
+
 	ld a, BATTLE_VARS_SUBSTATUS3
 	call GetBattleVarAddr
 	res SUBSTATUS_IN_LOOP, [hl]
 
-	ld a, [hBattleTurn]
-	and a
-	ld hl, PlayerHitTimesText
+	ld hl, wStringBuffer1
+	ld a, [de]
+	ld [hl], a
+	dec a
+	ld hl, Hit1TimeText
 	jr z, .got_hit_n_times_text
-	ld hl, EnemyHitTimesText
+	ld hl, HitNTimesText
 .got_hit_n_times_text
-	push bc
-	call StdBattleTextBox
-	pop bc
-	xor a
-	ld [bc], a
-	ret
+	jp StdBattleTextBox
 
 ; Loop back to the command before 'critical'.
 .loop_back_to_critical
+	ld a, [de]
+	inc a
+	ld [de], a
 	ld b, critical_command
 	jp SkipToBattleCommandBackwards
 

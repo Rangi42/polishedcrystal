@@ -1146,19 +1146,17 @@ FledInFearText: ; 0x812c1
 	prompt
 ; 0x812d2
 
-PlayerHitTimesText: ; 0x812e5
+Hit1TimeText:
 	text "Hit @"
-	deciram wPlayerDamageTaken, 1, 1
-	text " times!"
+	deciram wStringBuffer1, 1, 1
+	text " time!"
 	prompt
-; 0x812f8
 
-EnemyHitTimesText: ; 0x812f8
+HitNTimesText:
 	text "Hit @"
-	deciram wEnemyDamageTaken, 1, 1
+	deciram wStringBuffer1, 1, 1
 	text " times!"
 	prompt
-; 0x8130b
 
 ProtectedByMistText: ; 0x81321
 	text "<TARGET> is"
