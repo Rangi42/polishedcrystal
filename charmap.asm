@@ -1,3 +1,4 @@
+	newcharmap no_ngrams
 ; Control characters
 
 	charmap "<START>",  $00
@@ -36,25 +37,7 @@
 
 	; unused: $26 - $2b
 
-	charmap "le",       $2c
-	charmap "ng",       $2d
-	charmap "te",       $2e
-	charmap "as",       $2f
-	charmap "or",       $30
-	charmap "ou",       $31
-	charmap "re",       $32
-	charmap "in",       $33
-	charmap "er",       $34
-	charmap "on",       $35
-	charmap "th",       $36
-	charmap "and",      $37
-	charmap "have",     $38
-	charmap "that",     $39
-	charmap "for",      $3a
-	charmap "with",     $3b
-	charmap "an",       $3c
-	charmap "ing",      $3d
-	charmap "to",       $3e
+	; n-grams: $2c - $3e (defined below)
 
 	; unused: $3f - $4a
 
@@ -79,8 +62,7 @@
 	charmap "<USER>",   $5a
 	charmap "<ENEMY>",  $5b
 
-	charmap "the",      $5c
-	charmap "you",      $5d
+	; the=$5c, you=$5d, set in the n-gram version below
 	charmap "#mon",     $5e
 
 ; Battle characters
@@ -266,3 +248,39 @@ BATTLEEXTRA_GFX_START EQU $5f
 	charmap "│",        $fd
 	charmap "└",        $fe
 	charmap "┘",        $ff
+
+	newcharmap default, no_ngrams
+
+	charmap "le",       $2c
+	charmap "ng",       $2d
+	charmap "te",       $2e
+	charmap "as",       $2f
+	charmap "or",       $30
+	charmap "ou",       $31
+	charmap "re",       $32
+	charmap "in",       $33
+	charmap "er",       $34
+	charmap "on",       $35
+	charmap "th",       $36
+	charmap "and",      $37
+	charmap "have",     $38
+	charmap "that",     $39
+	charmap "for",      $3a
+	charmap "with",     $3b
+	charmap "an",       $3c
+	charmap "ing",      $3d
+	charmap "to",       $3e
+
+	charmap "the",      $5c
+	charmap "you",      $5d
+
+	setcharmap default
+
+rawchar: macro
+	setcharmap no_ngrams
+	rept _NARG
+		db \1
+		shift
+	endr
+	setcharmap default
+endm

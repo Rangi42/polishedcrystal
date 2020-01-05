@@ -1060,9 +1060,9 @@ Pokedex_DrawMainScreenBG: ; 4074c (10:474c)
 	jp Pokedex_PlaceFrontpicTopLeftCorner
 
 String_SEEN: ; 407e1
-	db "S","e","e","n", $ff
+	db "Seen", $ff
 String_OWN: ; 407e6
-	db "O","w","n", $ff
+	db "Own", $ff
 String_SELECT_OPTION: ; 407ea
 ;	db $3b, $48, $49, $4a, $44, $45, $46, $47 ; SELECT > OPTION
 	db $3b, $41, $42, $43, $44, $45, $46, $47
@@ -1120,17 +1120,17 @@ Pokedex_DrawDexEntryScreenBG: ; 407fd
 	jp Pokedex_PlaceFrontpicTopLeftCorner
 
 .HeightImperial: ; 40852
-	db "Ht  ?′??″", $ff ; HT  ?'??"
+	rawchar "Ht  ?′??″", $ff ; HT  ?'??"
 .WeightImperial: ; 4085c
-	db "Wt   ???lb", $ff ; WT   ???lb
+	rawchar "Wt   ???lb", $ff ; WT   ???lb
 .HeightMetric:
-	db "Ht   ???m", $ff ; HT   ???m"
+	rawchar "Ht   ???m", $ff ; HT   ???m"
 .WeightMetric:
-	db "Wt   ???kg", $ff ; WT   ???kg
+	rawchar "Wt   ???kg", $ff ; WT   ???kg
 .MenuItems: ; 40867
-	db $3b, " ","P","a","g","e"," A","r","e","a"," ","C","r","y"," "," "," "," "," ", $ff
+	rawchar $3b, " Page Area Cry     ", $ff
 .MenuItemsShinyCharm:
-	db $3b, " ","P","a","g","e"," A","r","e","a"," ","C","r","y"," ","S","h","n","y", $ff
+	rawchar $3b, " Page Area Cry Shny", $ff
 
 Pokedex_DrawDexEntryScreenRightEdge: ; 1de247
 	ld a, [hBGMapAddress]
@@ -1186,7 +1186,7 @@ Pokedex_DrawOptionScreenBG: ; 4087c (10:487c)
 	jp PlaceString
 
 .Title: ; 408b2
-	db $3b, " ","O","p","t","i","o","n"," ", $3c, $ff
+	rawchar $3b, " Option ", $3c, $ff
 
 .Modes: ; 408bd
 	db   "Johto Mode"
@@ -1219,10 +1219,10 @@ Pokedex_DrawSearchScreenBG: ; 408f0 (10:48f0)
 	jp PlaceString
 
 .Title: ; 4092a
-	db $3b, " ","S","e","a","r","c","h"," ", $3c, $ff
+	rawchar $3b, " Search ", $3c, $ff
 
 .TypeLeftRightArrows: ; 40935
-	db $3d, " "," "," "," "," "," "," "," ","▷", $ff
+	db $3d, "        ▷", $ff
 
 .Types: ; 40940
 	db   "Type1"
