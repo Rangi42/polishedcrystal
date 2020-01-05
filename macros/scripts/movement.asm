@@ -1,517 +1,516 @@
-
 	enum_start
 
 	enum movement_turn_head_down
-turn_head_down: macro
+turn_head_down: MACRO
 	db movement_turn_head_down ; $00
-	endm
+	ENDM
 
 	enum movement_turn_head_up
-turn_head_up: macro
+turn_head_up: MACRO
 	db movement_turn_head_up ; $01
-	endm
+	ENDM
 
 	enum movement_turn_head_left
-turn_head_left: macro
+turn_head_left: MACRO
 	db movement_turn_head_left ; $02
-	endm
+	ENDM
 
 	enum movement_turn_head_right
-turn_head_right: macro
+turn_head_right: MACRO
 	db movement_turn_head_right ; $03
-	endm
+	ENDM
 
 	enum movement_turn_step_down
-turn_step_down: macro
+turn_step_down: MACRO
 	db movement_turn_step_down ; $04
-	endm
+	ENDM
 
 	enum movement_turn_step_up
-turn_step_up: macro
+turn_step_up: MACRO
 	db movement_turn_step_up ; $05
-	endm
+	ENDM
 
 	enum movement_turn_step_left
-turn_step_left: macro
+turn_step_left: MACRO
 	db movement_turn_step_left ; $06
-	endm
+	ENDM
 
 	enum movement_turn_step_right
-turn_step_right: macro
+turn_step_right: MACRO
 	db movement_turn_step_right ; $07
-	endm
+	ENDM
 
 	enum movement_slow_step_down
-slow_step_down: macro
+slow_step_down: MACRO
 	db movement_slow_step_down ; $08
-	endm
+	ENDM
 
 	enum movement_slow_step_up
-slow_step_up: macro
+slow_step_up: MACRO
 	db movement_slow_step_up ; $09
-	endm
+	ENDM
 
 	enum movement_slow_step_left
-slow_step_left: macro
+slow_step_left: MACRO
 	db movement_slow_step_left ; $0a
-	endm
+	ENDM
 
 	enum movement_slow_step_right
-slow_step_right: macro
+slow_step_right: MACRO
 	db movement_slow_step_right ; $0b
-	endm
+	ENDM
 
 	enum movement_step_down
-step_down: macro
+step_down: MACRO
 	db movement_step_down ; $0c
-	endm
+	ENDM
 
 	enum movement_step_up
-step_up: macro
+step_up: MACRO
 	db movement_step_up ; $0d
-	endm
+	ENDM
 
 	enum movement_step_left
-step_left: macro
+step_left: MACRO
 	db movement_step_left ; $0e
-	endm
+	ENDM
 
 	enum movement_step_right
-step_right: macro
+step_right: MACRO
 	db movement_step_right ; $0f
-	endm
+	ENDM
 
 	enum movement_big_step_down
-big_step_down: macro
+big_step_down: MACRO
 	db movement_big_step_down ; $10
-	endm
+	ENDM
 
 	enum movement_big_step_up
-big_step_up: macro
+big_step_up: MACRO
 	db movement_big_step_up ; $11
-	endm
+	ENDM
 
 	enum movement_big_step_left
-big_step_left: macro
+big_step_left: MACRO
 	db movement_big_step_left ; $12
-	endm
+	ENDM
 
 	enum movement_big_step_right
-big_step_right: macro
+big_step_right: MACRO
 	db movement_big_step_right ; $13
-	endm
+	ENDM
 
 	enum movement_slow_slide_step_down
-slow_slide_step_down: macro
+slow_slide_step_down: MACRO
 	db movement_slow_slide_step_down ; $14
-	endm
+	ENDM
 
 	enum movement_slow_slide_step_up
-slow_slide_step_up: macro
+slow_slide_step_up: MACRO
 	db movement_slow_slide_step_up ; $15
-	endm
+	ENDM
 
 	enum movement_slow_slide_step_left
-slow_slide_step_left: macro
+slow_slide_step_left: MACRO
 	db movement_slow_slide_step_left ; $16
-	endm
+	ENDM
 
 	enum movement_slow_slide_step_right
-slow_slide_step_right: macro
+slow_slide_step_right: MACRO
 	db movement_slow_slide_step_right ; $17
-	endm
+	ENDM
 
 	enum movement_slide_step_down
-slide_step_down: macro
+slide_step_down: MACRO
 	db movement_slide_step_down ; $18
-	endm
+	ENDM
 
 	enum movement_slide_step_up
-slide_step_up: macro
+slide_step_up: MACRO
 	db movement_slide_step_up ; $19
-	endm
+	ENDM
 
 	enum movement_slide_step_left
-slide_step_left: macro
+slide_step_left: MACRO
 	db movement_slide_step_left ; $1a
-	endm
+	ENDM
 
 	enum movement_slide_step_right
-slide_step_right: macro
+slide_step_right: MACRO
 	db movement_slide_step_right ; $1b
-	endm
+	ENDM
 
 	enum movement_fast_slide_step_down
-fast_slide_step_down: macro
+fast_slide_step_down: MACRO
 	db movement_fast_slide_step_down ; $1c
-	endm
+	ENDM
 
 	enum movement_fast_slide_step_up
-fast_slide_step_up: macro
+fast_slide_step_up: MACRO
 	db movement_fast_slide_step_up ; $1d
-	endm
+	ENDM
 
 	enum movement_fast_slide_step_left
-fast_slide_step_left: macro
+fast_slide_step_left: MACRO
 	db movement_fast_slide_step_left ; $1e
-	endm
+	ENDM
 
 	enum movement_fast_slide_step_right
-fast_slide_step_right: macro
+fast_slide_step_right: MACRO
 	db movement_fast_slide_step_right ; $1f
-	endm
+	ENDM
 
 	enum movement_turn_away_down
-turn_away_down: macro
+turn_away_down: MACRO
 	db movement_turn_away_down ; $20
-	endm
+	ENDM
 
 	enum movement_turn_away_up
-turn_away_up: macro
+turn_away_up: MACRO
 	db movement_turn_away_up ; $21
-	endm
+	ENDM
 
 	enum movement_turn_away_left
-turn_away_left: macro
+turn_away_left: MACRO
 	db movement_turn_away_left ; $22
-	endm
+	ENDM
 
 	enum movement_turn_away_right
-turn_away_right: macro
+turn_away_right: MACRO
 	db movement_turn_away_right ; $23
-	endm
+	ENDM
 
 	enum movement_turn_in_down
-turn_in_down: macro
+turn_in_down: MACRO
 	db movement_turn_in_down ; $24
-	endm
+	ENDM
 
 	enum movement_turn_in_up
-turn_in_up: macro
+turn_in_up: MACRO
 	db movement_turn_in_up ; $25
-	endm
+	ENDM
 
 	enum movement_turn_in_left
-turn_in_left: macro
+turn_in_left: MACRO
 	db movement_turn_in_left ; $26
-	endm
+	ENDM
 
 	enum movement_turn_in_right
-turn_in_right: macro
+turn_in_right: MACRO
 	db movement_turn_in_right ; $27
-	endm
+	ENDM
 
 	enum movement_turn_waterfall_down
-turn_waterfall_down: macro
+turn_waterfall_down: MACRO
 	db movement_turn_waterfall_down ; $28
-	endm
+	ENDM
 
 	enum movement_turn_waterfall_up
-turn_waterfall_up: macro
+turn_waterfall_up: MACRO
 	db movement_turn_waterfall_up ; $29
-	endm
+	ENDM
 
 	enum movement_turn_waterfall_left
-turn_waterfall_left: macro
+turn_waterfall_left: MACRO
 	db movement_turn_waterfall_left ; $2a
-	endm
+	ENDM
 
 	enum movement_turn_waterfall_right
-turn_waterfall_right: macro
+turn_waterfall_right: MACRO
 	db movement_turn_waterfall_right ; $2b
-	endm
+	ENDM
 
 	enum movement_slow_jump_step_down
-slow_jump_step_down: macro
+slow_jump_step_down: MACRO
 	db movement_slow_jump_step_down ; $2c
-	endm
+	ENDM
 
 	enum movement_slow_jump_step_up
-slow_jump_step_up: macro
+slow_jump_step_up: MACRO
 	db movement_slow_jump_step_up ; $2d
-	endm
+	ENDM
 
 	enum movement_slow_jump_step_left
-slow_jump_step_left: macro
+slow_jump_step_left: MACRO
 	db movement_slow_jump_step_left ; $2e
-	endm
+	ENDM
 
 	enum movement_slow_jump_step_right
-slow_jump_step_right: macro
+slow_jump_step_right: MACRO
 	db movement_slow_jump_step_right ; $2f
-	endm
+	ENDM
 
 	enum movement_jump_step_down
-jump_step_down: macro
+jump_step_down: MACRO
 	db movement_jump_step_down ; $30
-	endm
+	ENDM
 
 	enum movement_jump_step_up
-jump_step_up: macro
+jump_step_up: MACRO
 	db movement_jump_step_up ; $31
-	endm
+	ENDM
 
 	enum movement_jump_step_left
-jump_step_left: macro
+jump_step_left: MACRO
 	db movement_jump_step_left ; $32
-	endm
+	ENDM
 
 	enum movement_jump_step_right
-jump_step_right: macro
+jump_step_right: MACRO
 	db movement_jump_step_right ; $33
-	endm
+	ENDM
 
 	enum movement_fast_jump_step_down
-fast_jump_step_down: macro
+fast_jump_step_down: MACRO
 	db movement_fast_jump_step_down ; $34
-	endm
+	ENDM
 
 	enum movement_fast_jump_step_up
-fast_jump_step_up: macro
+fast_jump_step_up: MACRO
 	db movement_fast_jump_step_up ; $35
-	endm
+	ENDM
 
 	enum movement_fast_jump_step_left
-fast_jump_step_left: macro
+fast_jump_step_left: MACRO
 	db movement_fast_jump_step_left ; $36
-	endm
+	ENDM
 
 	enum movement_fast_jump_step_right
-fast_jump_step_right: macro
+fast_jump_step_right: MACRO
 	db movement_fast_jump_step_right ; $37
-	endm
+	ENDM
 
 	enum movement_remove_sliding
-remove_sliding: macro
+remove_sliding: MACRO
 	db movement_remove_sliding ; $38
-	endm
+	ENDM
 
 	enum movement_set_sliding
-set_sliding: macro
+set_sliding: MACRO
 	db movement_set_sliding ; $39
-	endm
+	ENDM
 
 	enum movement_remove_fixed_facing
-remove_fixed_facing: macro
+remove_fixed_facing: MACRO
 	db movement_remove_fixed_facing ; $3a
-	endm
+	ENDM
 
 	enum movement_fix_facing
-fix_facing: macro
+fix_facing: MACRO
 	db movement_fix_facing ; $3b
-	endm
+	ENDM
 
 	enum movement_show_person
-show_person: macro
+show_person: MACRO
 	db movement_show_person ; $3c
-	endm
+	ENDM
 
 	enum movement_hide_person
-hide_person: macro
+hide_person: MACRO
 	db movement_hide_person ; $3d
-	endm
+	ENDM
 
 	enum movement_step_sleep_1
-step_sleep_1: macro
+step_sleep_1: MACRO
 	db movement_step_sleep_1 ; $3e
-	endm
+	ENDM
 
 	enum movement_step_sleep_2
-step_sleep_2: macro
+step_sleep_2: MACRO
 	db movement_step_sleep_2 ; $3f
-	endm
+	ENDM
 
 	enum movement_step_sleep_3
-step_sleep_3: macro
+step_sleep_3: MACRO
 	db movement_step_sleep_3 ; $40
-	endm
+	ENDM
 
 	enum movement_step_sleep_4
-step_sleep_4: macro
+step_sleep_4: MACRO
 	db movement_step_sleep_4 ; $41
-	endm
+	ENDM
 
 	enum movement_step_sleep_5
-step_sleep_5: macro
+step_sleep_5: MACRO
 	db movement_step_sleep_5 ; $42
-	endm
+	ENDM
 
 	enum movement_step_sleep_6
-step_sleep_6: macro
+step_sleep_6: MACRO
 	db movement_step_sleep_6 ; $43
-	endm
+	ENDM
 
 	enum movement_step_sleep_7
-step_sleep_7: macro
+step_sleep_7: MACRO
 	db movement_step_sleep_7 ; $44
-	endm
+	ENDM
 
 	enum movement_step_sleep_8
-step_sleep_8: macro
+step_sleep_8: MACRO
 	db movement_step_sleep_8 ; $45
-	endm
+	ENDM
 
 	enum movement_step_sleep
-step_sleep: macro
+step_sleep: MACRO
 	db movement_step_sleep ; $46
 	db \1 ; duration
-	endm
+	ENDM
 
 	enum movement_step_end
-step_end: macro
+step_end: MACRO
 	db movement_step_end ; $47
-	endm
+	ENDM
 
 	enum movement_step_resume
-step_resume: macro
+step_resume: MACRO
 	db movement_step_resume ; $48
-	endm
+	ENDM
 
 	enum movement_remove_person
-remove_person: macro
+remove_person: MACRO
 	db movement_remove_person ; $49
-	endm
+	ENDM
 
 	enum movement_step_loop
-step_loop: macro
+step_loop: MACRO
 	db movement_step_loop ; $4a
-	endm
+	ENDM
 
 	enum movement_step_4b
-step_4b: macro
+step_4b: MACRO
 	db movement_step_4b ; $4b
-	endm
+	ENDM
 
 	enum movement_teleport_from
-teleport_from: macro
+teleport_from: MACRO
 	db movement_teleport_from ; $4c
-	endm
+	ENDM
 
 	enum movement_teleport_to
-teleport_to: macro
+teleport_to: MACRO
 	db movement_teleport_to ; $4d
-	endm
+	ENDM
 
 	enum movement_skyfall
-skyfall: macro
+skyfall: MACRO
 	db movement_skyfall ; $4e
-	endm
+	ENDM
 
 	enum movement_step_dig
-step_dig: macro
+step_dig: MACRO
 	db movement_step_dig ; $4f
 	db \1
-	endm
+	ENDM
 
 	enum movement_step_bump
-step_bump: macro
+step_bump: MACRO
 	db movement_step_bump ; $50
-	endm
+	ENDM
 
 	enum movement_fish_got_bite
-fish_got_bite: macro
+fish_got_bite: MACRO
 	db movement_fish_got_bite ; $51
-	endm
+	ENDM
 
 	enum movement_fish_cast_rod
-fish_cast_rod: macro
+fish_cast_rod: MACRO
 	db movement_fish_cast_rod ; $52
-	endm
+	ENDM
 
 	enum movement_hide_emote
-hide_emote: macro
+hide_emote: MACRO
 	db movement_hide_emote ; $53
-	endm
+	ENDM
 
 	enum movement_show_emote
-show_emote: macro
+show_emote: MACRO
 	db movement_show_emote ; $54
-	endm
+	ENDM
 
 	enum movement_step_shake
-step_shake: macro
+step_shake: MACRO
 	db movement_step_shake ; $55
 	db \1 ; displacement
-	endm
+	ENDM
 
 	enum movement_tree_shake
-tree_shake: macro
+tree_shake: MACRO
 	db movement_tree_shake
-	endm
+	ENDM
 
 	enum movement_rock_smash
-rock_smash: macro
+rock_smash: MACRO
 	db movement_rock_smash ; $57
 	db \1
-	endm
+	ENDM
 
 	enum movement_return_dig
-return_dig: macro
+return_dig: MACRO
 	db movement_return_dig ; $58
 	db \1
-	endm
+	ENDM
 
 	enum movement_skyfall_top
-skyfall_top: macro
+skyfall_top: MACRO
 	db movement_skyfall_top ; $59
-	endm
+	ENDM
 
 	enum movement_run_step_down
-run_step_down: macro
+run_step_down: MACRO
 	db movement_run_step_down ; $5a
-	endm
+	ENDM
 
 	enum movement_run_step_up
-run_step_up: macro
+run_step_up: MACRO
 	db movement_run_step_up ; $5b
-	endm
+	ENDM
 
 	enum movement_run_step_left
-run_step_left: macro
+run_step_left: MACRO
 	db movement_run_step_left ; $5c
-	endm
+	ENDM
 
 	enum movement_run_step_right
-run_step_right: macro
+run_step_right: MACRO
 	db movement_run_step_right ; $5d
-	endm
+	ENDM
 
 	enum movement_fast_step_down
-fast_step_down: macro
+fast_step_down: MACRO
 	db movement_fast_step_down ; $5e
-	endm
+	ENDM
 
 	enum movement_fast_step_up
-fast_step_up: macro
+fast_step_up: MACRO
 	db movement_fast_step_up ; $5f
-	endm
+	ENDM
 
 	enum movement_fast_step_left
-fast_step_left: macro
+fast_step_left: MACRO
 	db movement_fast_step_left ; $60
-	endm
+	ENDM
 
 	enum movement_fast_step_right
-fast_step_right: macro
+fast_step_right: MACRO
 	db movement_fast_step_right ; $61
-	endm
+	ENDM
 
 	enum movement_stairs_step_down
-stairs_step_down: macro
+stairs_step_down: MACRO
 	db movement_stairs_step_down ; $62
-	endm
+	ENDM
 
 	enum movement_stairs_step_up
-stairs_step_up: macro
+stairs_step_up: MACRO
 	db movement_stairs_step_up ; $63
-	endm
+	ENDM
 
 	enum movement_stairs_step_left
-stairs_step_left: macro
+stairs_step_left: MACRO
 	db movement_stairs_step_left ; $64
-	endm
+	ENDM
 
 	enum movement_stairs_step_right
-stairs_step_right: macro
+stairs_step_right: MACRO
 	db movement_stairs_step_right ; $65
-	endm
+	ENDM

@@ -98,11 +98,11 @@ if _NARG >= 4
 else
 	db \1 * 8, \2 * 8
 endc
-endm
+ENDM
 
 dsprite: MACRO
 	db (\1 * 8) % $100 + \2, (\3 * 8) % $100 + \4, \5, \6
-endm
+ENDM
 
 bcd: MACRO
 	rept _NARG

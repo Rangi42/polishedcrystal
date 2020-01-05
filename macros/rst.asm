@@ -5,22 +5,22 @@ CopyBytes  EQU $20
 JumpTable  EQU $28
 Predef     EQU $30
 
-anonbankpush: macro
+anonbankpush: MACRO
 	call AnonBankPush
 	db BANK(\1)
-endm
+ENDM
 
-farcall: macro ; bank, address
+farcall: MACRO ; bank, address
 	rst FarCall
 	dbw BANK(\1), \1
-endm
+ENDM
 
-farjp: macro ; bank, address
+farjp: MACRO ; bank, address
 	rst FarCall
 	dbw BANK(\1) | $80, \1
-endm
+ENDM
 
-homecall: macro ; bank, address
+homecall: MACRO ; bank, address
 	ld a, [hROMBank]
 	push af
 if _NARG == 2
@@ -32,4 +32,4 @@ endc
 	call \1
 	pop af
 	rst Bankswitch
-endm
+ENDM

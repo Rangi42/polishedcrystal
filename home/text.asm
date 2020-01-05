@@ -172,21 +172,21 @@ NextChar::
 CheckDict::
 	cp $60
 	jp nc, .notDict
-dict: macro
+dict: MACRO
 if \1 == 0
 	and a
 else
 	cp \1
 endc
 	jp z, \2
-endm
+ENDM
 
-dict2: macro
+dict2: MACRO
 	cp \1
 	jr nz, ._\@
 	ld a, \2
 ._\@:
-endm
+ENDM
 
 	dict "<START>",  NullChar
 	dict "<FAR>",    TextFar
@@ -236,11 +236,11 @@ endm
 	call PrintLetterDelay
 	jp NextChar
 
-print_name: macro
+print_name: MACRO
 	push de
 	ld de, \1
 	jp PlaceCommandCharacter
-endm
+ENDM
 
 PrintPlayerName:   print_name wPlayerName
 PrintRivalName:    print_name wRivalName

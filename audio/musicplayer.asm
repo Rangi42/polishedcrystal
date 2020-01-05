@@ -23,21 +23,21 @@ INCBIN "gfx/music_player/waveforms.2bpp"
 
 SECTION "Music Player", ROMX
 
-jrbutton: macro
+jrbutton: MACRO
 ; assumes hl == hJoyPressed
 	ld a, [hl]
 	and \1
 	jr nz, \2
-endm
+ENDM
 
-jpbutton: macro
+jpbutton: MACRO
 ; assumes hl == hJoyPressed
 	ld a, [hl]
 	and \1
 	jp nz, \2
-endm
+ENDM
 
-jrheldbutton: macro
+jrheldbutton: MACRO
 ; assumes hl == hJoyDown
 	ld a, [wTextDelayFrames]
 	and a
@@ -49,9 +49,9 @@ jrheldbutton: macro
 	ld [wTextDelayFrames], a
 	jr \2
 .no\@:
-endm
+ENDM
 
-jpheldbutton: macro
+jpheldbutton: MACRO
 ; assumes hl == hJoyDown
 	ld a, [wTextDelayFrames]
 	and a
@@ -63,7 +63,7 @@ jpheldbutton: macro
 	ld [wTextDelayFrames], a
 	jp \2
 .no\@:
-endm
+ENDM
 
 MusicPlayerPals:
 if !DEF(MONOCHROME)

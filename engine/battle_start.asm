@@ -788,11 +788,11 @@ WipeLYOverrides: ; 8c6d8
 ; 8c6f7
 
 
-zoombox: macro
+zoombox: MACRO
 ; width, height, start y, start x
 	db \1, \2
 	dwcoord \3, \4
-endm
+ENDM
 
 StartTrainerBattle_ZoomToBlack: ; 8c768 (23:4768)
 	farcall BattleStart_HideAllSpritesExceptBattleParticipants

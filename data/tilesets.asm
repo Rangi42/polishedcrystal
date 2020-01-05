@@ -705,12 +705,12 @@ INCBIN "data/tilesets/pokemon_mansion_collision.bin.lz"
 
 SECTION "Tileset Headers", ROMX
 
-tileset: macro
+tileset: MACRO
 	dba \1GFX
 	dw \1GFX2
 	dba \1Meta, \1Coll, \1Attr
 	dw \1Anim
-endm
+ENDM
 
 Tilesets::
 	tileset TilesetJohto1
