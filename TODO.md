@@ -25,8 +25,6 @@ The final, non-beta 3.0 release should include all of these.
 * Variety Channel with daily unique music
 * Separate radio channels for March and Lullaby, available every day
 * Send gift Pokémon to the PC if the party is full
-* Get better Wonder Trade items at higher levels
-* Play Pokémon cry+animation when they escape a Poké Ball (from Prism)
 * Generate Battle Tower Pokémon
 * Generate random team for Psychic Inver
 * Wild Ghosts and the SilphScope2
@@ -202,8 +200,6 @@ Some of these may never be added; they're just suggestions.
 * Phone uses a bitfield to allow storing all numbers
 * Make more trainers rematchable
 * Allow evolution during battle
-* Itemfinder makes you face towards the item
-* Itemfinder beeps N times for an item N steps away
 * Battle [En and Madoka](http://bulbapedia.bulbagarden.net/wiki/The_Legendary_Rotation_Battle!) somewhere (Trainer House after catching the legendary trios, different trainer each day?)
    * Madoka:
    * She entered this tournament with new Pokémon! Which Pokémon wil she use?
