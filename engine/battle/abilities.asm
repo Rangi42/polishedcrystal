@@ -1757,55 +1757,13 @@ RunPostBattleAbilities::
 	ret
 
 GetRandomPickupItem::
-; a = level
-
-; bc = floor((level - 1) / 10)
-	ld bc, 0
-	dec a ; 1-10 → 0-9, etc
-.loop
-	sub 10
-	jr c, .done
-	inc bc
-	jr .loop
-.done
-
-; Pickup selects from a table, giving better rewards scaling with level and randomness
-	ld a, 100
-	call RandomRange
-	cp 2
-	jr c, .rare
-	cp 6
-	call c, .inc_bc
-	cp 10
-	call c, .inc_bc
-	cp 20
-	call c, .inc_bc
-	cp 30
-	call c, .inc_bc
-	cp 40
-	call c, .inc_bc
-	cp 50
-	call c, .inc_bc
-	cp 60
-	call c, .inc_bc
-	cp 70
-	call c, .inc_bc
+	push de
 	ld hl, .BasePickupTable
-	jr .ok
-
-.rare:
-; 2% of Pickup results use a different table with generally better items
-	call Random
-	cp 1 + 50 percent
-	call c, .inc_bc
-	ld hl, .RarePickupTable
-.ok:
-	add hl, bc
-	ld a, [hl]
-	ret
-
-.inc_bc:
-	inc bc
+	ld de, .RarePickupTable
+	ld b, a
+	ld a, BANK(.BasePickupTable)
+	call GetScaledItemReward
+	pop de
 	ret
 
 .BasePickupTable:
@@ -1840,3 +1798,65 @@ GetRandomPickupItem::
 	db BIG_NUGGET
 	db LEFTOVERS
 	db BOTTLE_CAP
+
+GetScaledItemReward:
+; Returns a scaled item reward from item tables in de (rare) and hl (base).
+; The base table has 18 entries, the rare one 11.
+; The rewards scale like pre-7gen (starting from Emerald) Pickup.
+; a = bank of item tables
+; b = level
+; de = rare table
+; hl = base table
+	push de
+	ld d, a
+	ld a, b
+	ld bc, 0
+	dec a ; 1-10 → 0-9, etc
+.loop
+	sub 10
+	jr c, .done
+	inc bc
+	jr .loop
+.done
+
+; Pickup selects from a table, giving better rewards scaling with level and randomness
+	ld a, 100
+	call RandomRange
+	cp 2
+	jr c, .rare
+	cp 6
+	call c, .inc_bc
+	cp 10
+	call c, .inc_bc
+	cp 20
+	call c, .inc_bc
+	cp 30
+	call c, .inc_bc
+	cp 40
+	call c, .inc_bc
+	cp 50
+	call c, .inc_bc
+	cp 60
+	call c, .inc_bc
+	cp 70
+	call c, .inc_bc
+	ld a, d
+	pop de
+	jr .ok
+
+.rare:
+; 2% of Pickup results use a different table with generally better items
+	call Random
+	cp 1 + 50 percent
+	call c, .inc_bc
+	ld a, d
+	pop de
+	ld h, d
+	ld l, e
+.ok:
+	add hl, bc
+	jp GetFarByte
+
+.inc_bc:
+	inc bc
+	ret
