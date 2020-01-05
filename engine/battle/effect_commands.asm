@@ -3563,35 +3563,27 @@ BattleCommand_brickbreak:
 	ld hl, BrokeReflectText
 	jp StdBattleTextBox
 
-BattleCommand_damagestats: ; 352dc
-; damagestats
-
-	ld a, [hBattleTurn]
-	and a
-	jp nz, EnemyAttackDamage
-
-	; fallthrough
-; 352e2
-
-PlayerAttackDamage: ; 352e2
+BattleCommand_damagestats:
+AttackDamage:
 ; Return move power d, player level e, enemy defense c and player attack b.
 
 	call ResetDamage
 
 ; No damage dealt with 0 power.
-	ld hl, wPlayerMoveStructPower
-	ld a, [hl]
+	ld a, BATTLE_VARS_MOVE_POWER
+	call GetBattleVar
 	and a
 	ld d, a
 	ret z
 
-	ld hl, wPlayerMoveStructCategory
-	ld a, [hl]
+	ld a, BATTLE_VARS_MOVE_CATEGORY
+	call GetBattleVar
 	cp SPECIAL
 	jr nc, .special
 
 .physical
-	ld hl, wEnemyMonDefense
+	ld hl, wBattleMonDefense
+	call GetOpponentMonAttr
 	ld a, [hli]
 	ld b, a
 	ld c, [hl]
@@ -3601,15 +3593,22 @@ if !DEF(FAITHFUL)
 endc
 
 	ld hl, wBattleMonAttack
+	call GetUserMonAttr
 	call GetFutureSightUser
 	jr z, .atk_ok
 	ld a, MON_ATK
 	call TrueUserPartyAttr
 .atk_ok
-	ld a, [wEnemyAbility]
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
 	cp INFILTRATOR
 	jr z, .thickcluborlightball
+	ld a, [hBattleTurn]
+	and a
 	ld a, [wEnemyScreens]
+	jr z, .got_opp_screens
+	ld a, [wPlayerScreens]
+.got_opp_screens
 	bit SCREENS_REFLECT, a
 	jr z, .thickcluborlightball
 	ld a, [wCriticalHit]
@@ -3625,7 +3624,8 @@ endc
 	cp EFFECT_PSYSTRIKE
 	jr z, .psystrike
 
-	ld hl, wEnemyMonSpclDef
+	ld hl, wBattleMonSpclDef
+	call GetOpponentMonAttr
 	ld a, [hli]
 	ld b, a
 	ld c, [hl]
@@ -3635,22 +3635,30 @@ endc
 	jr .lightscreen
 
 .psystrike
-	ld hl, wEnemyMonDefense
+	ld hl, wBattleMonDefense
+	call GetOpponentMonAttr
 	ld a, [hli]
 	ld b, a
 	ld c, [hl]
 
 .lightscreen
 	ld hl, wBattleMonSpclAtk
+	call GetUserMonAttr
 	call GetFutureSightUser
 	jr z, .sat_ok
 	ld a, MON_SAT
 	call TrueUserPartyAttr
 .sat_ok
-	ld a, [wEnemyAbility]
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVar
 	cp INFILTRATOR
 	jr z, .lightball
+	ld a, [hBattleTurn]
+	and a
 	ld a, [wEnemyScreens]
+	jr z, .got_opp_screens2
+	ld a, [wPlayerScreens]
+.got_opp_screens2
 	bit SCREENS_LIGHT_SCREEN, a
 	jr z, .lightball
 	ld a, [wCriticalHit]
@@ -3682,121 +3690,6 @@ endc
 	ld a, 1
 	and a
 	ret
-
-; 3534d
-
-
-EnemyAttackDamage: ; 353f6
-; Return move power d, enemy level e, player defense c and enemy attack b.
-
-	call ResetDamage
-
-; No damage dealt with 0 power.
-	ld hl, wEnemyMoveStructPower
-	ld a, [hl]
-	and a
-	ld d, a
-	ret z
-
-	ld hl, wEnemyMoveStructCategory
-	ld a, [hl]
-	cp SPECIAL
-	jr nc, .special
-
-.physical
-	ld hl, wBattleMonDefense
-	ld a, [hli]
-	ld b, a
-	ld c, [hl]
-
-if !DEF(FAITHFUL)
-	call HailDefenseBoost
-endc
-
-	ld hl, wEnemyMonAttack
-	call GetFutureSightUser
-	jr z, .atk_ok
-	ld a, MON_ATK
-	call TrueUserPartyAttr
-.atk_ok
-	ld a, [wPlayerAbility]
-	cp INFILTRATOR
-	jr z, .thickcluborlightball
-	ld a, [wPlayerScreens]
-	bit SCREENS_REFLECT, a
-	jr z, .thickcluborlightball
-	ld a, [wCriticalHit]
-	and a
-	jr nz, .thickcluborlightball
-	sla c
-	rl b
-	jr .thickcluborlightball
-
-.special
-	ld a, BATTLE_VARS_MOVE_EFFECT
-	call GetBattleVar
-	cp EFFECT_PSYSTRIKE
-	jr z, .psystrike
-
-	ld hl, wBattleMonSpclDef
-	ld a, [hli]
-	ld b, a
-	ld c, [hl]
-
-	call SandstormSpDefBoost
-
-	jr .lightscreen
-
-.psystrike
-	ld hl, wBattleMonDefense
-	ld a, [hli]
-	ld b, a
-	ld c, [hl]
-
-.lightscreen
-	ld hl, wEnemyMonSpclAtk
-	call GetFutureSightUser
-	jr z, .sat_ok
-	ld a, MON_SAT
-	call TrueUserPartyAttr
-.sat_ok
-	ld a, [wPlayerAbility]
-	cp INFILTRATOR
-	jr z, .lightball
-	ld a, [wPlayerScreens]
-	bit SCREENS_LIGHT_SCREEN, a
-	jr z, .lightball
-	ld a, [wCriticalHit]
-	and a
-	jr nz, .lightball
-	sla c
-	rl b
-
-.lightball
-; Note: Returns enemy special attack at hl in hl.
-	call LightBallBoost
-	jr .done
-
-.thickcluborlightball
-; Note: Returns enemy attack at hl in hl.
-	call ThickClubOrLightBallBoost
-
-.done
-	call TruncateHL_BC
-
-	ld a, MON_LEVEL
-	push hl
-	call TrueUserPartyAttr
-	pop hl
-	ld e, a
-	call DittoMetalPowder
-	call UnevolvedEviolite
-
-	ld a, 1
-	and a
-	ret
-
-; 35461
 
 
 TruncateHL_BC: ; 3534d
@@ -4468,24 +4361,14 @@ BattleCommand_constantdamage: ; 35726
 	jr .reversal_loop
 
 .break_loop
-	ld a, [hBattleTurn]
-	and a
 	ld a, [hl]
-	jr nz, .notPlayersTurn
-
-	ld hl, wPlayerMoveStructPower
+	push af
+	ld a, BATTLE_VARS_MOVE_POWER
+	call GetBattleVarAddr
+	pop af
 	ld [hl], a
 	push hl
-	call PlayerAttackDamage
-	jr .notEnemysTurn
-
-.notPlayersTurn
-	ld hl, wEnemyMoveStructPower
-	ld [hl], a
-	push hl
-	call EnemyAttackDamage
-
-.notEnemysTurn
+	call AttackDamage
 	call BattleCommand_damagecalc
 	pop hl
 	ld [hl], 1
