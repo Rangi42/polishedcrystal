@@ -1,4 +1,5 @@
 	newcharmap no_ngrams
+
 ; Control characters
 
 	charmap "<START>",  $00
@@ -62,8 +63,7 @@
 	charmap "<USER>",   $5a
 	charmap "<ENEMY>",  $5b
 
-	; the=$5c, you=$5d, set in the n-gram version below
-	charmap "#mon",     $5e
+	; n-grams: $5c - $5e (defined below)
 
 ; Battle characters
 
@@ -77,7 +77,7 @@ BATTLEEXTRA_GFX_START EQU $5f
 	charmap "<HP1>",    $63
 	charmap "<HP2>",    $64
 	charmap "<NOHP>",   $65
-	; $66 - $6c for HP
+	; HP: $66 - $6c
 	charmap "<FULLHP>", $6d
 	charmap "<HPEND>",  $6e
 
@@ -89,7 +89,7 @@ BATTLEEXTRA_GFX_START EQU $5f
 	charmap "<XP1>",    $73
 	charmap "<XP2>",    $74
 	charmap "<NOXP>",   $75
-	; $76 - $7c for exp
+	; EXP: $76 - $7c
 	charmap "<FULLXP>", $7d
 	charmap "<XPEND>",  $7e
 
@@ -249,6 +249,7 @@ BATTLEEXTRA_GFX_START EQU $5f
 	charmap "└",        $fe
 	charmap "┘",        $ff
 
+
 	newcharmap default, no_ngrams
 
 	charmap "le",       $2c
@@ -273,14 +274,17 @@ BATTLEEXTRA_GFX_START EQU $5f
 
 	charmap "the",      $5c
 	charmap "you",      $5d
+	charmap "#mon",     $5e
+
 
 	setcharmap default
 
-rawchar: macro
+
+rawchar: MACRO
 	setcharmap no_ngrams
 	rept _NARG
 		db \1
 		shift
 	endr
 	setcharmap default
-endm
+ENDM
