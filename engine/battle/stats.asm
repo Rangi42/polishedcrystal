@@ -39,8 +39,7 @@ FarChangeStat:
 	; Do target-only checks
 	bit STAT_TARGET_F, b
 	jr nz, .is_target
-	ld a, BATTLE_VARS_ABILITY
-	call GetBattleVar
+	call GetTrueUserAbility
 	cp CONTRARY
 	jp nz, .ability_done
 	ld a, b

@@ -36,8 +36,7 @@ BattleCommand_attract: ; 377ce
 	cp HELD_DESTINY_KNOT
 	jr nz, .destiny_knot_done
 
-	ld a, BATTLE_VARS_ABILITY
-	call GetBattleVar
+	call GetTrueUserAbility
 	cp OBLIVIOUS
 	jr nz, .no_user_ability_protection
 

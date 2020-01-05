@@ -1618,6 +1618,13 @@ NotifyUnnerve:
 	cont "Berries!"
 	prompt
 
+NotifyNeutralizingGas:
+	text "<USER>"
+	line "suppresses"
+	cont "abilities using"
+	cont "Neutralizing Gas!"
+	prompt
+
 FriskedItemText:
 	text "<USER>"
 	line "frisked its foe"

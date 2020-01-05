@@ -304,8 +304,7 @@ HandleWeatherEffects:
 	call GetBattleVar
 	bit SUBSTATUS_UNDERGROUND, a
 	ret nz
-	ld a, BATTLE_VARS_ABILITY
-	call GetBattleVar
+	call GetTrueUserAbility
 	cp MAGIC_GUARD
 	ret z
 	cp OVERCOAT
@@ -334,8 +333,7 @@ HandleWeatherEffects:
 	call GetBattleVar
 	bit SUBSTATUS_UNDERGROUND, a
 	ret nz
-	ld a, BATTLE_VARS_ABILITY
-	call GetBattleVar
+	call GetTrueUserAbility
 	cp MAGIC_GUARD
 	ret z
 	cp OVERCOAT
@@ -445,8 +443,7 @@ HandleLeftovers:
 
 PreventEndturnDamage:
 ; returns z if residual damage at endturn is prevented
-	ld a, BATTLE_VARS_ABILITY
-	call GetBattleVar
+	call GetTrueUserAbility
 	cp MAGIC_GUARD
 	call nz, HasUserFainted
 	ret
@@ -484,8 +481,7 @@ HandleLeechSeed:
 	farcall GetHPAbsorption
 	ld a, $1
 	ld [hBGMapMode], a
-	ld a, BATTLE_VARS_ABILITY_OPP
-	call GetBattleVar
+	call GetOpponentAbility
 	cp LIQUID_OOZE
 	jr z, .hurt
 	farcall RestoreHP
@@ -532,8 +528,7 @@ DoPoisonBurnDamage:
 	pop hl
 	ret z
 
-	ld a, BATTLE_VARS_ABILITY
-	call GetBattleVar
+	call GetTrueUserAbility
 	cp POISON_HEAL
 	jr nz, .got_anim
 	; check if we are at full HP

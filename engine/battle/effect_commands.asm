@@ -153,8 +153,7 @@ BattleCommand_checkturn:
 	jr z, .not_flinched
 
 	res SUBSTATUS_FLINCHED, [hl]
-	ld a, BATTLE_VARS_ABILITY
-	call GetBattleVar
+	call GetTrueUserAbility
 	cp INNER_FOCUS
 	jr z, .not_flinched
 	push af
@@ -180,8 +179,7 @@ BattleCommand_checkturn:
 	jr z, .woke_up
 
 	; Early Bird decreases the sleep timer twice as fast (including Rest).
-	ld a, BATTLE_VARS_ABILITY
-	call GetBattleVar
+	call GetTrueUserAbility
 	cp EARLY_BIRD
 	jr nz, .no_early_bird
 	; duplicated, but too few lines to make merging it worth it
@@ -1074,8 +1072,7 @@ BattleCommand_hastarget:
 
 .not_fainted
 	; Handle Pressure
-	ld a, BATTLE_VARS_ABILITY_OPP
-	call GetBattleVar
+	call GetOpponentAbility
 	cp PRESSURE
 	ret nz
 	; fallthrough
@@ -1454,8 +1451,7 @@ CheckAirborneAfterMoldBreaker:
 	jr CheckAirborne_GotAbility
 CheckAirborne:
 	push de
-	ld a, BATTLE_VARS_ABILITY
-	call GetBattleVar
+	call GetTrueUserAbility
 	ld b, a
 CheckAirborne_GotAbility:
 ; d=1: Skip type checks (used for Inverse Battle Ground->Flying matchup)
@@ -1611,8 +1607,7 @@ _CheckTypeMatchup: ; 347d3
 	call GetBattleVar
 	bit SUBSTATUS_IDENTIFIED, a
 	jr nz, .End
-	ld a, BATTLE_VARS_ABILITY
-	call GetBattleVar
+	call GetTrueUserAbility
 	cp SCRAPPY
 	jp z, .End
 	jr .TypesLoop
@@ -1776,8 +1771,7 @@ BattleCommand_damagevariation: ; 34cfd
 BattleCommand_bounceback:
 ; Possibly bounce back an attack with Magic Bounce, or don't do anything if opponent is
 ; immune due to Prankster.
-	ld a, BATTLE_VARS_ABILITY
-	call GetBattleVar
+	call GetTrueUserAbility
 	cp PRANKSTER
 	jr nz, .prankster_done
 	call CheckIfTargetIsDarkType
@@ -2201,8 +2195,7 @@ BattleCommand_checkhit:
 	call GetTrueUserAbility
 	cp NO_GUARD
 	ret z
-	ld a, BATTLE_VARS_ABILITY_OPP
-	call GetBattleVar
+	call GetOpponentAbility
 	cp NO_GUARD
 	ret
 
@@ -2248,8 +2241,7 @@ BattleCommand_effectchance: ; 34ecc
 
 	ld a, [hl]
 	ld b, a
-	ld a, BATTLE_VARS_ABILITY
-	call GetBattleVar
+	call GetTrueUserAbility
 	cp SHEER_FORCE
 	jr z, .failed
 	cp SERENE_GRACE
@@ -3018,8 +3010,7 @@ CheckSheerForceNegation:
 ; mechanic at this point (VII) that if Sheer Force negates the
 ; secondary effect of a move, various side effects don't trigger.
 ; Returns z if an effect is negated.
-	ld a, BATTLE_VARS_ABILITY
-	call GetBattleVar
+	call GetTrueUserAbility
 	cp SHEER_FORCE
 	ret nz
 	ld a, [wEffectFailed]
@@ -3092,8 +3083,7 @@ ConsumeUserItem::
 
 .apply_unburden
 	; Unburden doubles Speed when an item is consumed
-	ld a, BATTLE_VARS_ABILITY
-	call GetBattleVar
+	call GetTrueUserAbility
 	cp UNBURDEN
 	ret nz
 
@@ -3376,8 +3366,7 @@ BattleCommand_posthiteffects:
 .life_orb
 	call .checkfaint
 	ret z
-	ld a, BATTLE_VARS_ABILITY
-	call GetBattleVar
+	call GetTrueUserAbility
 	cp MAGIC_GUARD
 	ret z
 
@@ -3599,8 +3588,7 @@ endc
 	ld a, MON_ATK
 	call TrueUserPartyAttr
 .atk_ok
-	ld a, BATTLE_VARS_ABILITY
-	call GetBattleVar
+	call GetTrueUserAbility
 	cp INFILTRATOR
 	jr z, .thickcluborlightball
 	ld a, [hBattleTurn]
@@ -3649,8 +3637,7 @@ endc
 	ld a, MON_SAT
 	call TrueUserPartyAttr
 .sat_ok
-	ld a, BATTLE_VARS_ABILITY
-	call GetBattleVar
+	call GetTrueUserAbility
 	cp INFILTRATOR
 	jr z, .lightball
 	ld a, [hBattleTurn]
@@ -3923,8 +3910,7 @@ ApplyStatBoostDamage:
 	ld a, b
 	jr GotStatLevel
 ApplyDefStatBoostDamageAfterUnaware:
-	ld a, BATTLE_VARS_ABILITY
-	call GetBattleVar
+	call GetTrueUserAbility
 	cp UNAWARE
 	ret z
 ApplyDefStatBoostDamage:
@@ -5125,8 +5111,7 @@ GetMoveData::
 	jp FarCopyBytes
 
 IsOpponentLeafGuardActive:
-	ld a, BATTLE_VARS_ABILITY
-	call GetBattleVar
+	call GetTrueUserAbility
 	jr DoLeafGuardCheck
 IsLeafGuardActive:
 ; returns z if leaf guard applies for enemy
@@ -5254,8 +5239,7 @@ CanStatusTarget:
 	call GetOpponentAbilityAfterMoldBreaker
 	jr .got_ability
 .no_mold_breaker
-	ld a, BATTLE_VARS_ABILITY_OPP
-	call GetBattleVar
+	call GetOpponentAbility
 .got_ability
 	; Vital Spirit does the same thing as Insomnia so treat it as Insomnia.
 	cp VITAL_SPIRIT
@@ -5891,8 +5875,7 @@ BattleCommand_checkrampage: ; 3671a
 	call SwitchTurn
 	call SafeCheckSafeguard
 	jr nz, .switchturn_continue_rampage
-	ld a, BATTLE_VARS_ABILITY
-	call GetBattleVar
+	call GetTrueUserAbility
 	cp OWN_TEMPO
 	jr z, .switchturn_continue_rampage
 
@@ -5954,8 +5937,7 @@ BattleCommand_teleport: ; 36778
 	dec a
 	jr nz, .trainer_battle
 
-	ld a, BATTLE_VARS_ABILITY
-	call GetBattleVar
+	call GetTrueUserAbility
 	cp RUN_AWAY
 	jr z, .run_away
 	ld a, BATTLE_VARS_SUBSTATUS2_OPP
@@ -6013,8 +5995,7 @@ CheckIfTrappedByAbility:
 	; Ghost types are immune to all trapping abilities
 	call CheckIfUserIsGhostType
 	jr z, .not_trapped
-	ld a, BATTLE_VARS_ABILITY_OPP
-	call GetBattleVar
+	call GetOpponentAbility
 	cp MAGNET_PULL
 	jr z, .has_magnet_pull
 	cp ARENA_TRAP
@@ -6210,8 +6191,7 @@ BattleCommand_endloop: ; 369b6
 	jr .done_loop
 
 .not_triple_kick
-	ld a, BATTLE_VARS_ABILITY
-	call GetBattleVar
+	call GetTrueUserAbility
 	cp SKILL_LINK
 	jr nz, .no_skill_link
 	ld a, 3 ; ends up being 5 hits
@@ -6521,8 +6501,7 @@ BattleCommand_recoil: ; 36cb2
 
 	; For all other moves, potentially disable
 	; recoil based on ability
-	ld a, BATTLE_VARS_ABILITY
-	call GetBattleVar
+	call GetTrueUserAbility
 	cp ROCK_HEAD
 	ret z
 	cp MAGIC_GUARD
@@ -7069,17 +7048,26 @@ BattleCommand_payday:
 ; 3707f
 
 BattleCommand_skillswap:
+; Does not work if either side has no Ability.
 	call CheckHiddenOpponent
 	jr nz, .failed
 
-	call AnimateCurrentMove
-
 	ld a, [wPlayerAbility]
+	inc a
+	jr z, .failed
+	dec a
+	jr z, .failed
 	ld b, a
 	ld a, [wEnemyAbility]
+	inc a
+	jr z, .failed
+	dec a
+	jr z, .failed
 	ld [wPlayerAbility], a
 	ld a, b
 	ld [wEnemyAbility], a
+
+	call AnimateCurrentMove
 
 	ld hl, SwappedAbilitiesText
 	call StdBattleTextBox
@@ -7386,8 +7374,7 @@ BattleCommand_heal:
 	call GetBattleVar
 	and SLP
 	jp nz, BattleEffect_ButItFailed
-	ld a, BATTLE_VARS_ABILITY
-	call GetBattleVar
+	call GetTrueUserAbility
 	cp INSOMNIA
 	jr z, .ability_prevents_rest
 	cp VITAL_SPIRIT
@@ -8037,47 +8024,27 @@ BattleCommand_safeguard: ; 37939
 ; 37962
 
 
-SafeCheckSafeguard: ; 37962
+SafeCheckSafeguard:
 	push hl
-	ld hl, wEnemyScreens
-	ld a, [wEnemyAbility]
-	ld b, a
 	ld a, [hBattleTurn]
 	and a
-	jr z, .got_turn
+	ld hl, wEnemyScreens
+	jr z, .got_screens
 	ld hl, wPlayerScreens
-	ld a, [wPlayerAbility]
-	ld b, a
-
-.got_turn
+.got_screens
+	call GetTrueUserAbility
 	bit SCREENS_SAFEGUARD, [hl]
 	jr z, .done
-	ld a, b
 	cp INFILTRATOR
 
 .done
 	pop hl
 	ret
 
-; 37972
-
 
 BattleCommand_checksafeguard: ; 37972
 ; checksafeguard
-	ld hl, wEnemyScreens
-	ld a, [wEnemyAbility]
-	ld b, a
-	ld a, [hBattleTurn]
-	and a
-	jr z, .got_turn
-	ld hl, wPlayerScreens
-	ld a, [wPlayerAbility]
-	ld b, a
-.got_turn
-	bit SCREENS_SAFEGUARD, [hl]
-	ret z
-	ld a, b
-	cp INFILTRATOR
+	call SafeCheckSafeguard
 	ret z
 	ld a, 1
 	ld [wAttackMissed], a
@@ -8232,8 +8199,7 @@ BattleCommand_lowkick:
 	ld d, h
 	ld e, l
 
-	ld a, BATTLE_VARS_ABILITY
-	call GetBattleVar
+	call GetTrueUserAbility
 	cp LIGHT_METAL
 	jr nz, .not_light_metal
 	srl d
@@ -8536,8 +8502,7 @@ BattleCommand_bellydrum: ; 37c1a
 	call GetHalfMaxHP
 	farcall SubtractHPFromUser
 	call UpdateUserInParty
-	ld a, BATTLE_VARS_ABILITY
-	call GetBattleVar
+	call GetTrueUserAbility
 	cp CONTRARY
 	ld hl, BellyDrumContraryText
 	jr z, .print
@@ -8648,14 +8613,15 @@ GetFutureSightUser::
 	scf
 	ret
 
-GetTrueUserAbility::
-; Returns current user's ability, or external future sight user ability
+_GetTrueUserAbility::
+; Returns current user's ability, or external future sight user ability.
+; Returns 0 (no ability) if opponent has Neutralizing Gas and user doesn't,
 	call GetFutureSightUser
 	jr nz, .external
 
 	ld a, BATTLE_VARS_ABILITY
 	call GetBattleVar
-	ret z
+	jr z, .got_ability
 
 .external
 	push bc
@@ -8670,6 +8636,20 @@ GetTrueUserAbility::
 	ld a, b
 	pop hl
 	pop bc
+.got_ability
+	push bc
+	ld b, a
+	call GetOpponentAbility
+	cp b
+	jr z, .same_ability
+	cp NEUTRALIZING_GAS
+	ld a, b
+	pop bc
+	ret nz
+	xor a
+	ret
+.same_ability
+	pop af
 	ret
 
 BattleCommand_checkfuturesight:
@@ -8778,8 +8758,7 @@ GetUserItemAfterUnnerve::
 ; Returns the effect of the user's item in bc, and its id at hl,
 ; unless it's a Berry and Unnerve is in effect.
 	call GetUserItem
-	ld a, BATTLE_VARS_ABILITY_OPP
-	call GetBattleVar
+	call GetOpponentAbility
 	cp UNNERVE
 	ret nz
 	ld a, [hl]

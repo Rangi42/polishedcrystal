@@ -1,7 +1,10 @@
 RunActivationAbilitiesInner:
 	call HasUserFainted
 	ret z
+	call HasOpponentFainted
 	ld hl, BattleEntryAbilities
+	jr z, UserAbilityJumptable
+	ld hl, BattleEntryAbilitiesNonfainted
 	jr UserAbilityJumptable
 
 RunEnemyStatusHealAbilities:
@@ -9,29 +12,30 @@ RunEnemyStatusHealAbilities:
 RunStatusHealAbilities:
 	ld hl, StatusHealAbilities
 UserAbilityJumptable:
-	ld a, BATTLE_VARS_ABILITY
-	call GetBattleVar
+	call GetTrueUserAbility
 AbilityJumptable:
 	; If we at some point make the AI learn abilities, keep this.
 	; For now it just jumps to the general jumptable function
 	jp BattleJumptable
 
-BattleEntryAbilities:
+BattleEntryAbilitiesNonfainted:
 	dbw TRACE, TraceAbility
 	dbw IMPOSTER, ImposterAbility
+	dbw INTIMIDATE, IntimidateAbility
+	dbw DOWNLOAD, DownloadAbility
+	dbw ANTICIPATION, AnticipationAbility
+	dbw FOREWARN, ForewarnAbility
+	dbw FRISK, FriskAbility
+	dbw UNNERVE, UnnerveAbility
+BattleEntryAbilities:
 	dbw DRIZZLE, DrizzleAbility
 	dbw DROUGHT, DroughtAbility
 	dbw SAND_STREAM, SandStreamAbility
 	dbw SNOW_WARNING, SnowWarningAbility
 	dbw CLOUD_NINE, CloudNineAbility
-	dbw INTIMIDATE, IntimidateAbility
 	dbw PRESSURE, PressureAbility
-	dbw DOWNLOAD, DownloadAbility
 	dbw MOLD_BREAKER, MoldBreakerAbility
-	dbw ANTICIPATION, AnticipationAbility
-	dbw FOREWARN, ForewarnAbility
-	dbw FRISK, FriskAbility
-	dbw UNNERVE, UnnerveAbility
+	dbw NEUTRALIZING_GAS, NeutralizingGasAbility
 	; fallthrough
 StatusHealAbilities:
 ; Status immunity abilities that autoproc if the user gets the status or the ability
@@ -56,6 +60,9 @@ MoldBreakerAbility:
 	jr NotificationAbilities
 UnnerveAbility:
 	ld hl, NotifyUnnerve
+	jr NotificationAbilities
+NeutralizingGasAbility:
+	ld hl, NotifyNeutralizingGas
 NotificationAbilities:
 	jp StdBattleTextBox
 
@@ -118,17 +125,24 @@ ObliviousAbility:
 	jp StdBattleTextBox
 
 TraceAbility:
-	ld a, BATTLE_VARS_ABILITY_OPP
-	call GetBattleVar
+	call HasOpponentFainted
+	ret z
+	call GetOpponentAbility
+	inc a
+	ret z
+	dec a
+	ret z
 	cp TRACE
 	jr z, .trace_failure
 	cp IMPOSTER
 	jr z, .trace_failure
+	; just in case
+	cp NEUTRALIZING_GAS
+	ret z
 	push af
 	ld b, a
 	farcall BufferAbility
-	ld a, BATTLE_VARS_ABILITY
-	call GetBattleVarAddr
+	call GetTrueUserAbility
 	pop af
 	ld [hl], a
 	ld hl, TraceActivationText
@@ -191,8 +205,7 @@ WeatherAbility:
 
 IntimidateAbility:
 	; does not work against Inner Focus, Own Tempo, Oblivious, Scrappy
-	ld a, BATTLE_VARS_ABILITY_OPP
-	call GetBattleVar
+	call GetOpponentAbility
 	ld b, a
 	push af
 	farcall BufferAbility
@@ -214,8 +227,7 @@ IntimidateAbility:
 	ld a, [wFailedMessage]
 	and a
 	jr nz, .continue
-	ld a, BATTLE_VARS_ABILITY
-	call GetBattleVar
+	call GetTrueUserAbility
 	cp RATTLED
 	ld b, SPEED
 	call z, StatUpAbility
@@ -459,16 +471,14 @@ FriskAbility:
 
 RunEnemyOwnTempoAbility:
 	call SwitchTurn
-	ld a, BATTLE_VARS_ABILITY
-	call GetBattleVar
+	call GetTrueUserAbility
 	cp OWN_TEMPO
 	call z, OwnTempoAbility
 	jp SwitchTurn
 
 RunEnemySynchronizeAbility:
 	call SwitchTurn
-	ld a, BATTLE_VARS_ABILITY
-	call GetBattleVar
+	call GetTrueUserAbility
 	cp SYNCHRONIZE
 	call z, SynchronizeAbility
 	jp SwitchTurn
@@ -505,8 +515,7 @@ RunFaintAbilities:
 ; abilities that run after an attack faints an enemy
 	farcall GetFutureSightUser
 	ret nz
-	ld a, BATTLE_VARS_ABILITY
-	call GetBattleVar
+	call GetTrueUserAbility
 	call .user_abilities
 	call GetOpponentAbilityAfterMoldBreaker
 	push af
@@ -526,8 +535,7 @@ RunFaintAbilities:
 
 AftermathAbility:
 	; Damp protects against this
-	ld a, BATTLE_VARS_ABILITY_OPP
-	call GetBattleVar
+	call GetOpponentAbility
 	cp DAMP
 	ret z
 	; Only contact moves proc Aftermath
@@ -586,8 +594,7 @@ RunContactAbilities:
 	call BattleRandom
 	cp 1 + 30 percent
 	jr nc, .skip_user_ability
-	ld a, BATTLE_VARS_ABILITY
-	call GetBattleVar
+	call GetTrueUserAbility
 	cp POISON_TOUCH
 	call z, PoisonTouchAbility
 .skip_user_ability
@@ -644,8 +651,7 @@ CuteCharmAbility:
 EffectSporeAbility:
 	call CheckIfTargetIsGrassType
 	ret z
-	ld a, BATTLE_VARS_ABILITY_OPP
-	call GetBattleVar
+	call GetOpponentAbility
 	cp OVERCOAT
 	ret z
 	call BattleRandom
@@ -654,8 +660,7 @@ EffectSporeAbility:
 	cp 1 + 66 percent
 	jr c, StaticAbility
 	; there are 2 sleep resistance abilities, so check one here
-	ld a, BATTLE_VARS_ABILITY_OPP
-	call GetBattleVar
+	call GetOpponentAbility
 	cp VITAL_SPIRIT
 	ret z
 	lb bc, INSOMNIA, HELD_PREVENT_SLEEP
@@ -696,10 +701,7 @@ AfflictStatusAbility
 ; anything.
 	call HasOpponentFainted
 	ret z
-	ld a, BATTLE_VARS_ABILITY_OPP
-	push de
-	call GetBattleVar
-	pop de
+	call GetOpponentAbility
 	cp b
 	ret z
 	push de
@@ -895,8 +897,7 @@ StatUpAbility:
 	jr z, .done
 
 ; Lightning Rod, Motor Drive and Sap Sipper prints a "doesn't affect" message instead.
-	ld a, BATTLE_VARS_ABILITY
-	call GetBattleVar
+	call GetTrueUserAbility
 	cp LIGHTNING_ROD
 	jr z, .print_immunity
 	cp MOTOR_DRIVE
@@ -955,8 +956,7 @@ WaterAbsorbAbility:
 
 ApplySpeedAbilities:
 ; Passive speed boost abilities
-	ld a, BATTLE_VARS_ABILITY
-	call GetBattleVar
+	call GetTrueUserAbility
 	cp SWIFT_SWIM
 	jr z, .swift_swim
 	cp CHLOROPHYLL
@@ -987,7 +987,7 @@ ApplySpeedAbilities:
 	jp ApplyDamageMod
 
 ApplyAccuracyAbilities:
-	farcall GetTrueUserAbility
+	call GetTrueUserAbility
 	ld hl, UserAccuracyAbilities
 	call AbilityJumptable
 	call GetOpponentAbilityAfterMoldBreaker
@@ -1082,8 +1082,7 @@ WeatherRecoveryAbility:
 	farcall CheckFullHP
 	ret z
 	call ShowAbilityActivation
-	ld a, BATTLE_VARS_ABILITY
-	call GetBattleVar
+	call GetTrueUserAbility
 	cp DRY_SKIN
 	jr z, .eighth_max_hp
 	call GetSixteenthMaxHP
@@ -1340,8 +1339,7 @@ MoodyAbility:
 	jp EnableAnimations
 
 ApplyDamageAbilities_AfterTypeMatchup:
-	ld a, BATTLE_VARS_ABILITY
-	call GetBattleVar
+	call GetTrueUserAbility
 	ld hl, OffensiveDamageAbilities_AfterTypeMatchup
 	call AbilityJumptable
 	call GetOpponentAbilityAfterMoldBreaker
@@ -1358,7 +1356,7 @@ DefensiveDamageAbilities_AfterTypeMatchup:
 	dbw -1, -1
 
 ApplyDamageAbilities:
-	farcall GetTrueUserAbility
+	call GetTrueUserAbility
 	ld hl, OffensiveDamageAbilities
 	call AbilityJumptable
 	call GetOpponentAbilityAfterMoldBreaker
@@ -1630,8 +1628,7 @@ AngerPointAbility:
 
 RunSwitchAbilities:
 ; abilities that activate when you switch out
-	ld a, BATTLE_VARS_ABILITY
-	call GetBattleVar
+	call GetTrueUserAbility
 	cp NATURAL_CURE
 	jr z, NaturalCureAbility
 	cp REGENERATOR
@@ -1648,6 +1645,79 @@ RegeneratorAbility:
 	and a
 	jp z, UpdateBattleMonInParty
 	jp UpdateEnemyMonInParty
+
+_GetOpponentAbilityAfterMoldBreaker:: ; 39e1
+; Returns an opponent's ability unless Mold Breaker
+; will suppress it. Preserves bc/de/hl.
+	push de
+	push bc
+	call GetOpponentAbility
+	ld b, a
+	call GetTrueUserAbility
+	cp MOLD_BREAKER
+	jr z, .cont_check
+	ld a, b
+	jr .end
+.cont_check
+	ld a, b
+	ld de, 1
+	push hl
+	push bc
+	ld hl, .MoldBreakerSuppressedAbilities
+	call IsInArray
+	pop bc
+	pop hl
+	jr c, .suppressed
+	ld a, b
+	jr .end
+.suppressed:
+	ld a, NO_ABILITY
+.end
+	pop bc
+	pop de
+	ret
+.MoldBreakerSuppressedAbilities:
+	db BATTLE_ARMOR
+	db BIG_PECKS
+	db DAMP
+	db DRY_SKIN
+	db FILTER
+	db FLASH_FIRE
+	db HYPER_CUTTER
+	db IMMUNITY
+	db INNER_FOCUS
+	db INSOMNIA
+	db KEEN_EYE
+	db LEAF_GUARD
+	db LEVITATE
+	db LIGHTNING_ROD
+	db LIMBER
+	db MAGIC_BOUNCE
+	db MAGMA_ARMOR
+	db MARVEL_SCALE
+	db MOTOR_DRIVE
+	db MULTISCALE
+	db OBLIVIOUS
+	db OVERCOAT
+	db OWN_TEMPO
+	db SAND_VEIL
+	db SAP_SIPPER
+	db SHELL_ARMOR
+	db SHIELD_DUST
+	db SNOW_CLOAK
+	db SOLID_ROCK
+	db SOUNDPROOF
+	db STICKY_HOLD
+	db STURDY
+	db SUCTION_CUPS
+	db THICK_FAT
+	db UNAWARE
+	db VITAL_SPIRIT
+	db VOLT_ABSORB
+	db WATER_ABSORB
+	db WATER_VEIL
+	db WONDER_SKIN
+	db -1
 
 DisableAnimations:
 	ld a, 1

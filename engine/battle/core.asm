@@ -347,8 +347,7 @@ GetSpeed::
 	call GetBattleVar
 	bit PAR, a
 	jr z, .paralyze_done
-	ld a, BATTLE_VARS_ABILITY
-	call GetBattleVar
+	call GetTrueUserAbility
 	cp QUICK_FEET
 	ld a, $12
 	call nz, ApplyDamageMod
@@ -562,10 +561,13 @@ TryEnemyFlee: ; 3c543
 	dec a
 	jr nz, .Stay
 
+	call CheckNeutralizingGas
+	jr nz, .no_gas
 	ld a, [wEnemyAbility]
 	cp RUN_AWAY
 	jr z, .skip_traps
 
+.no_gas
 	call SetEnemyTurn
 	call CheckIfUserIsGhostType
 	jr z, .skip_traps
@@ -655,8 +657,7 @@ GetMovePriority: ; 3c5c5
 .got_priority
 	xor $80 ; treat it as a signed byte
 	ld b, a
-	ld a, BATTLE_VARS_ABILITY
-	call GetBattleVar
+	call GetTrueUserAbility
 	cp PRANKSTER
 	jr nz, .no_priority
 	ld a, BATTLE_VARS_MOVE_CATEGORY
@@ -912,9 +913,10 @@ ForceDeferredSwitch:
 	pop hl
 	jr z, .all_done
 
-	; Regenerator, Natural Cure
+	; Regenerator, Natural Cure, suppress Neutralizing Gas
 	push hl
 	farcall RunSwitchAbilities
+	call SuppressUserNeutralizingGas
 	call UpdateUserInParty
 	pop hl
 
@@ -2009,7 +2011,28 @@ FaintUserPokemon:
 	jr z, .text
 	ld hl, BattleText_EnemyPkmnFainted
 .text
-	jp StdBattleTextBox
+	call StdBattleTextBox
+
+SuppressUserNeutralizingGas:
+; Use -1 as sentinel, not 0. This is because Transform (via Imposter) should
+; regain Neutralizing Gas in case it procs.
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVarAddr
+	ld a, [hl]
+	cp NEUTRALIZING_GAS
+	ret nz
+	ld [hl], -1
+
+	; Unless opponent also has Neutralizing Gas or Unnerve, (re-)run its
+	; activation abilities. Yes, this means that it might run more than once.
+	call GetOpponentAbility
+	cp NEUTRALIZING_GAS
+	ret z
+	cp UNNERVE
+	ret z
+	call SwitchTurn
+	call RunActivationAbilities
+	jp SwitchTurn
 
 CheckEnemyTrainerDefeated: ; 3cf35
 	ld a, [wOTPartyCount]
@@ -3063,11 +3086,25 @@ RunBothActivationAbilities:
 ; runs both pokémon's activation abilities (Intimidate, etc.).
 ; The faster Pokémon activates abilities first. This mostly
 ; just matter for weather abilities.
+	; Only show Neutralizing Gas message once.
+	call GetTrueUserAbility
+	cp NEUTRALIZING_GAS
+	jr nz, .no_double_gas
+	call GetOpponentAbility
+	cp NEUTRALIZING_GAS
+	jr nz, .no_double_gas
+	ld a, [hBattleTurn]
+	push af
+	call SetFastestTurn
+	jr .single_run
+
+.no_double_gas
 	ld a, [hBattleTurn]
 	push af
 	call SetFastestTurn
 	farcall RunActivationAbilitiesInner
 	call SwitchTurn
+.single_run
 	farcall RunActivationAbilitiesInner
 	pop af
 	ld [hBattleTurn], a
@@ -3083,12 +3120,10 @@ RunActivationAbilities:
 	call nz, HasOpponentFainted
 	ret z
 
-	ld a, BATTLE_VARS_ABILITY
-	call GetBattleVar
+	call GetTrueUserAbility
 	cp TRACE
 	ret z ; trace failed, so don't check opponent trace
-	ld a, BATTLE_VARS_ABILITY_OPP
-	call GetBattleVar
+	call GetOpponentAbility
 	cp TRACE
 	ret nz
 	; invert whose turn it is to properly handle abilities.
@@ -3107,8 +3142,7 @@ SpikesDamage_CheckMoldBreaker:
 	ld c, 1
 	jr SpikesDamage_GotAbility
 SpikesDamage: ; 3dc23
-	ld a, BATTLE_VARS_ABILITY
-	call GetBattleVar
+	call GetTrueUserAbility
 	ld b, a
 	ld c, 0
 SpikesDamage_GotAbility:
@@ -3298,8 +3332,7 @@ DoStealStatBoostBerry:
 
 QuarterPinchOrGluttony::
 ; Returns z if we're in a 1/4-HP pinch or if we have Gluttony
-	ld a, BATTLE_VARS_ABILITY
-	call GetBattleVar
+	call GetTrueUserAbility
 	cp GLUTTONY
 	jr z, .gluttony
 	call GetQuarterMaxHP
@@ -4359,8 +4392,7 @@ TryPlayerSwitch: ; 3e358
 	jr z, .try_switch
 	farcall CheckIfTrappedByAbility
 	jr nz, .check_other_trapped
-	ld a, BATTLE_VARS_ABILITY_OPP
-	call GetBattleVar
+	call GetOpponentAbility
 	ld b, a
 	farcall BufferAbility
 	ld hl, BattleText_PkmnCantBeRecalledAbility
@@ -4454,6 +4486,8 @@ CheckRunSpeed:
 	dec a
 	jp nz, .forfeit_to_trainer
 
+	call CheckNeutralizingGas
+	jr z, .no_flee_ability
 	ld a, [wPlayerAbility]
 	cp RUN_AWAY
 	jr nz, .no_flee_ability
@@ -4578,8 +4612,7 @@ CheckRunSpeed:
 	jr .print_inescapable_text
 
 .ability_prevents_escape
-	ld a, BATTLE_VARS_ABILITY_OPP
-	call GetBattleVar
+	call GetOpponentAbility
 	ld b, a
 	farcall BufferAbility
 	ld hl, BattleText_PkmnCantBeRecalledAbility
