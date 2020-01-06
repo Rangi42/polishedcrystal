@@ -44,7 +44,6 @@ TMHM_PocketLoop: ; 2c8d3 (b:48d3)
 	jr TMHM_ShowTMMoveDescription
 
 TMHM_JoypadLoop: ; 2c915 (b:4915)
-	call TMHM_DisplayPocketItems
 	call DoMenuJoypadLoop
 	ld b, a
 	ld a, [wMenuCursorY]
@@ -61,21 +60,19 @@ TMHM_JoypadLoop: ; 2c915 (b:4915)
 	jp nz, TMHM_ChooseTMorHM
 	bit B_BUTTON_F, a
 	jp nz, TMHM_ExitPack
-	bit D_RIGHT_F, a
-	jp nz, TMHM_ExitPocket
-	bit D_LEFT_F, a
-	jp nz, TMHM_ExitPocket
+	and D_RIGHT | D_LEFT
+	ret nz
 TMHM_ShowTMMoveDescription: ; 2c946 (b:4946)
 	call TMHM_GetCurrentTMHM
 	hlcoord 0, 12
 	lb bc, 4, SCREEN_WIDTH - 2
 	call TextBox
-	farcall LoadTMHMIconPalette
-	call SetPalettes
 	ld a, [wCurTMHM]
 	cp NUM_TMS + NUM_HMS + 1
 	jr nc, .Cancel
 	ld [wd265], a
+	farcall LoadTMHMIconPalette
+	call SetPalettes
 	predef GetTMHMMove
 	ld a, [wd265]
 	ld [wCurSpecies], a
@@ -100,7 +97,7 @@ TMHM_ChooseTMorHM: ; 2c974 (b:4974)
 	ld a, [wd265]
 	cp b
 	jr z, _TMHM_ExitPack ; our cursor was hovering over CANCEL
-TMHM_GetCurrentTMHM: ; 2c98a (b:498a)
+TMHM_GetCurrentTMHM:
 	call TMHM_GetCurrentPocketPosition
 	ld a, [wMenuCursorY]
 	ld b, a
