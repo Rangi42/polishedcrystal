@@ -468,17 +468,6 @@ ForfeitToTrainerText::
 	line "out!"
 	done
 
-UnknownText_0x1c0a77::
-	text "Yes! Itemfinder"
-	line "indicates there's"
-	cont "an item nearby."
-	prompt
-
-UnknownText_0x1c0aa9::
-	text "Nope! No hidden"
-	line "items nearby."
-	prompt
-
 UnknownText_0x1c0acc::
 	text_from_ram wStringBuffer3
 	text ""
