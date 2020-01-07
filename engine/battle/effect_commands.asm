@@ -4388,7 +4388,7 @@ BattleCommand_constantdamage: ; 35726
 	pop af
 	ld [hl], a
 	push hl
-	call AttackDamage
+	call BattleCommand_damagestats
 	call BattleCommand_damagecalc
 	pop hl
 	ld [hl], 1
