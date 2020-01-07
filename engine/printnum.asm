@@ -4,6 +4,13 @@ PrintHLNum:
 ; c is the loop counter (how many digits are left).
 ; b & $f contains the maximum string length. (b & $e0 is flags).
 ; hl is where we print to (usually the screen).
+	push af
+	ld a, [hPrintNum + 4]
+	dec a
+	jr nz, .no_zero_set
+	set PRINTNUM_LEADINGZEROS_F, b
+.no_zero_set
+	pop af
 	bit 0, c
 	jr nz, .c_odd
 	swap a
@@ -60,17 +67,34 @@ PrintHLNum:
 	add "0"
 .got_value
 	ld [hli], a
+	ld a, [hPrintNum + 4]
+	and a
+	ret z
+	dec a
+	ld [hPrintNum + 4], a
+	ret nz
+	ld [hl], "."
+	inc hl
 	ret
 
 _PrintNum:: ; c4c7
 ; Print c digits of the b-byte value from de to hl.
+; High nibble of c denotes decimal point location.
 ; Works on up to 1-8 digits and up to 4 bytes (up to 99999999).
 ; The higher b nibble has some flags:
 ; Bit 5: Print a pokedollar sign before the number itself
 ; Bit 6: Left-aligned number instead of right-aligned
 ; Bit 7: Print leading zeros
 ; Preserves bc.
+	ld a, c
+	push af
+	swap a
+	and $f
+	ld [hPrintNum + 4], a
+	pop af
+	and $f
 	push bc
+	ld c, a
 	; Extend the number at de to 32bit into hPrintNum
 	push hl
 	ld hl, hPrintNum
