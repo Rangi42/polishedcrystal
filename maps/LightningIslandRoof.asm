@@ -31,15 +31,17 @@ LightningIslandRoofSparkScript:
 	reloadmapafterbattle
 	setevent EVENT_BEAT_SPARK
 	checkevent EVENT_BEAT_BLANCHE
-	iftrue .BlancheUndefeated
+	iffalse .BlancheUndefeated
 	checkevent EVENT_BEAT_CANDELA
-	iftrue .CandelaUndefeated
-	jump .BothUndefeated
+	iffalse .CandelaUndefeated
+	checkevent EVENT_BEAT_LAWRENCE
+	iffalse .NeedSilverWing
+	jump .AllBeaconsLit
 	return
 
 .BlancheUndefeated
 	checkevent EVENT_BEAT_CANDELA
-	iftrue .BothUndefeated
+	iffalse .BothUndefeated
 	showtext .BlancheUndefeatedText
 	playsound SFX_WARP_TO
 	applyonemovement LIGHTNINGISLANDROOF_SPARK, teleport_from
@@ -62,6 +64,22 @@ LightningIslandRoofSparkScript:
 	disappear LIGHTNINGISLANDROOF_SPARK
 	clearevent EVENT_CELADON_UNIVERSITY_SPARK
 	end
+
+.NeedSilverWing
+	showtext .NeedSilverWingText
+	playsound SFX_WARP_TO
+	applyonemovement LIGHTNINGISLANDROOF_SPARK, teleport_from
+	disappear LIGHTNINGISLANDROOF_SPARK
+	clearevent EVENT_CELADON_UNIVERSITY_SPARK
+	end
+
+.AllBeaconsLit
+	showtext .AllBeaconsLitText
+	playsound SFX_WARP_TO
+	applyonemovement LIGHTNINGISLANDROOF_SPARK, teleport_from
+	disappear LIGHTNINGISLANDROOF_SPARK
+	clearevent EVENT_CELADON_UNIVERSITY_SPARK
+	end'
 
 .Refused:
 	jumpopenedtext .RefusedText
@@ -134,6 +152,33 @@ LightningIslandRoofSparkScript:
 	para "the last beacon."
 	done
 
+.NeedSilverWingText:
+	text "You've lit all the"
+	line "beacons?"
+
+	para "If you had an item"
+	line "familiar to Lugia,"
+	cont "I'm sure it would"
+
+	para "appear for you!"
+	done
+
+.AllBeaconsLitText:
+	text "You've lit all the"
+	line "beacons?"
+
+	para "And is that the"
+	line "SILVER WING you're"
+	cont "carrying?"
+
+	para "The mighty Lugia"
+	line "will certainly"
+	cont "appear for you!"
+
+	para "It's said to dwell"
+	line "Deep within the"
+	cont "Whirlpool Islands."
+	done	
 
 .RefusedText:
 	text "Fair enough!"
