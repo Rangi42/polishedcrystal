@@ -37,6 +37,7 @@ TMHM_PocketLoop: ; 2c8d3 (b:48d3)
 	ld a, A_BUTTON | B_BUTTON | D_UP | D_DOWN | D_LEFT | D_RIGHT
 	ld [wMenuJoypadFilter], a
 	ld a, [wTMHMPocketCursor]
+	and $7f
 	inc a
 	ld [wMenuCursorY], a
 	ld a, $1
@@ -46,9 +47,16 @@ TMHM_PocketLoop: ; 2c8d3 (b:48d3)
 TMHM_JoypadLoop: ; 2c915 (b:4915)
 	call DoMenuJoypadLoop
 	ld b, a
+	push hl
+	ld hl, wTMHMPocketCursor
+	ld a, $80
+	and [hl]
+	ld [hl], a
 	ld a, [wMenuCursorY]
 	dec a
-	ld [wTMHMPocketCursor], a
+	or [hl]
+	ld [hl], a
+	pop hl
 	xor a
 	ld [hBGMapMode], a
 	ld a, [w2DMenuFlags2]
@@ -56,6 +64,8 @@ TMHM_JoypadLoop: ; 2c915 (b:4915)
 	jp nz, TMHM_ScrollPocket
 	ld a, b
 	ld [wMenuJoypad], a
+	bit START_F, a
+	jr nz, TMHM_SortMenu
 	bit A_BUTTON_F, a
 	jp nz, TMHM_ChooseTMorHM
 	bit B_BUTTON_F, a
@@ -85,6 +95,15 @@ TMHM_ShowTMMoveDescription: ; 2c946 (b:4946)
 	farcall ClearTMHMIcon
 	jp TMHM_JoypadLoop
 
+TMHM_SortMenu:
+	ld hl, Text_SortTMsHow
+	hlcoord 1, 14
+	jp PlaceString
+
+Text_SortTMsHow:
+	text "How do you want"
+	line "to sort items?@@"
+
 TMHM_ChooseTMorHM: ; 2c974 (b:4974)
 	call TMHM_PlaySFX_ReadText2
 	call CountTMsHMs ; This stores the count to wd265.
@@ -112,6 +131,7 @@ TMHM_GetCurrentTMHM:
 	jr nz, .loop
 	ld a, c
 .okay
+	call TMHM_GetAlpha
 	ld [wCurTMHM], a
 	ret
 
@@ -176,6 +196,7 @@ TMHM_DisplayPocketItems: ; 2c9e2 (b:49e2)
 	jr z, .loop2
 	ld b, a
 	ld a, c
+	call TMHM_GetAlpha
 	ld [wd265], a
 	push hl
 	push de
@@ -284,9 +305,31 @@ CountTMsHMs: ; 2cb2a (b:4b2a)
 	ld b, wTMsHMsEnd - wTMsHMs
 	jp CountSetBits
 
-InnerCheckTMHM:
-	and a
+TMHM_CheckSorting:
+; Returns z if we should sort TMs numerically, nz if alphabetically
+	push hl
+	ld hl, wTMHMPocketCursor
+	bit 7, [hl]
+	pop hl
+	ret
+
+TMHM_GetAlpha:
+; If alpha mode is enabled, convert ordered alphanumeric to internal TM number
+	call TMHM_CheckSorting
 	ret z
+	push bc
+	ld c, a
+	ld b, 0
+	dec c
+	ld hl, TMListAlpha
+	add hl, bc
+	ld a, [hl]
+	pop bc
+	inc a
+	ret
+
+InnerCheckTMHM:
+	call TMHM_GetAlpha
 	push bc
 	push de
 	dec a
@@ -504,3 +547,95 @@ Text_TMHMNotCompatible: ; 0x2c8ce
 	text_jump UnknownText_0x1c03c2
 	db "@"
 ; 0x2c8d3
+
+TMListAlpha:
+	db TM_ACROBATICS
+	db TM_AERIAL_ACE
+	db TM_ATTRACT
+	db TM_AVALANCHE
+	db TM_BLIZZARD
+if !DEF(FAITHFUL)
+	db TM_BRICK_BREAK
+endc
+	db TM_BULK_UP
+	db TM_BULLDOZE
+	db TM_CALM_MIND
+	db TM_CURSE
+	db HM_CUT
+	db TM_DARK_PULSE
+	db TM_DAZZLINGLEAM
+	db TM_DIG
+	db TM_DOUBLE_TEAM
+	db TM_DRAGON_CLAW
+	db TM_DRAGON_PULSE
+	db TM_DRAIN_PUNCH
+	db TM_DYNAMICPUNCH
+	db TM_EARTHQUAKE
+	db TM_ENDURE
+	db TM_ENERGY_BALL
+	db TM_EXPLOSION
+	db TM_FACADE
+	db TM_FALSE_SWIPE
+	db TM_FIRE_BLAST
+	db TM_FLAMETHROWER
+	db TM_FLASH
+	db TM_FLASH_CANNON
+	db HM_FLY
+	db TM_FOCUS_BLAST
+	db TM_GIGA_DRAIN
+	db TM_GIGA_IMPACT
+	db TM_GYRO_BALL
+	db TM_HAIL
+	db TM_HIDDEN_POWER
+	db TM_HONE_CLAWS
+	db TM_HYPER_BEAM
+	db TM_ICE_BEAM
+	db TM_IRON_TAIL
+	db TM_LEECH_LIFE
+	db TM_LIGHT_SCREEN
+	db TM_POISON_JAB
+	db TM_PROTECT
+	db TM_PSYCHIC
+	db TM_RAIN_DANCE
+	db TM_REFLECT
+	db TM_REST
+	db TM_RETURN
+	db TM_ROAR
+	db TM_ROCK_SLIDE
+if DEF(FAITHFUL)
+	db TM_ROCK_SMASH
+endc
+	db TM_ROOST
+	db TM_SAFEGUARD
+	db TM_SANDSTORM
+	db TM_SCALD
+	db TM_SHADOW_BALL
+	db TM_SHADOW_CLAW
+	db TM_SLUDGE_BOMB
+	db TM_SOLAR_BEAM
+	db TM_STEEL_WING
+	db TM_STONE_EDGE
+	db HM_STRENGTH
+	db TM_SUBSTITUTE
+	db TM_SUNNY_DAY
+	db HM_SURF
+	db TM_SWIFT
+	db TM_SWORDS_DANCE
+	db TM_THIEF
+	db TM_THUNDER
+	db TM_THUNDERBOLT
+	db TM_THUNDER_WAVE
+	db TM_TOXIC
+	db TM_U_TURN
+	db TM_VENOSHOCK
+	db TM_VOLT_SWITCH
+	db HM_WATERFALL
+	db TM_WATER_PULSE
+	db HM_WHIRLPOOL
+	db TM_WILD_CHARGE
+	db TM_WILL_O_WISP
+	db TM_X_SCISSOR
+	db NUM_TMS + NUM_HMS
+TMListAlphaEnd:
+	assert (TMListAlphaEnd - TMListAlpha) <= NUM_TMS + NUM_HMS + 1, "Too many A-Z TMs"
+	assert (TMListAlphaEnd - TMListAlpha) >= NUM_TMS + NUM_HMS + 1, "Too few A-Z TMs"
