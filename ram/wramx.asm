@@ -250,7 +250,6 @@ wPartyMenuCursor:: ds 1
 wItemsPocketCursor:: ds 1
 wMedicinePocketCursor:: ds 1
 wBallsPocketCursor:: ds 1
-wTMHMPocketCursor:: ds 1
 wBerriesPocketCursor:: ds 1
 wKeyItemsPocketCursor:: ds 1
 
@@ -259,7 +258,6 @@ wPartyMenuScrollPosition:: ds 1 ; unused
 wItemsPocketScrollPosition:: ds 1
 wMedicinePocketScrollPosition:: ds 1
 wBallsPocketScrollPosition:: ds 1
-wTMHMPocketScrollPosition:: ds 1
 wBerriesPocketScrollPosition:: ds 1
 wKeyItemsPocketScrollPosition:: ds 1
 
@@ -930,7 +928,8 @@ wPokegearFlags::
 wRadioTuningKnob:: ds 1
 wLastDexMode:: ds 1
 
-	ds 2 ; unused
+wTMHMPocketScrollPosition:: ds 1
+wTMHMPocketCursor:: ds 1
 
 wPlayerState:: ds 1
 

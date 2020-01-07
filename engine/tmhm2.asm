@@ -34,7 +34,7 @@ TMHM_PocketLoop: ; 2c8d3 (b:48d3)
 	ld [w2DMenuFlags2], a
 	ld a, $20
 	ld [w2DMenuCursorOffsets], a
-	ld a, A_BUTTON | B_BUTTON | D_UP | D_DOWN | D_LEFT | D_RIGHT
+	ld a, A_BUTTON | B_BUTTON | START | D_UP | D_DOWN | D_LEFT | D_RIGHT
 	ld [wMenuJoypadFilter], a
 	ld a, [wTMHMPocketCursor]
 	and $7f
@@ -96,13 +96,8 @@ TMHM_ShowTMMoveDescription: ; 2c946 (b:4946)
 	jp TMHM_JoypadLoop
 
 TMHM_SortMenu:
-	ld hl, Text_SortTMsHow
-	hlcoord 1, 14
-	jp PlaceString
-
-Text_SortTMsHow:
-	text "How do you want"
-	line "to sort items?@@"
+	or 1
+	ret
 
 TMHM_ChooseTMorHM: ; 2c974 (b:4974)
 	call TMHM_PlaySFX_ReadText2
