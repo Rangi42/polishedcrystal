@@ -125,8 +125,6 @@ ObliviousAbility:
 	jp StdBattleTextBox
 
 TraceAbility:
-	call HasOpponentFainted
-	ret z
 	call GetOpponentAbility
 	inc a
 	ret z
@@ -142,7 +140,8 @@ TraceAbility:
 	push af
 	ld b, a
 	farcall BufferAbility
-	call GetTrueUserAbility
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVarAddr
 	pop af
 	ld [hl], a
 	ld hl, TraceActivationText

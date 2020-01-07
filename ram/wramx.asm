@@ -929,7 +929,9 @@ wRadioTuningKnob:: ds 1
 wLastDexMode:: ds 1
 
 wTMHMPocketScrollPosition:: ds 1
-wTMHMPocketCursor:: ds 1
+wTMHMPocketCursor::
+; beyond the cursor position, bit 7 also controls how TMs are sorted
+	ds 1
 
 wPlayerState:: ds 1
 

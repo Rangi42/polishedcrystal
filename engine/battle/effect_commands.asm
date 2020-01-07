@@ -8628,7 +8628,7 @@ _GetTrueUserAbility::
 	xor a
 	ret
 .same_ability
-	pop af
+	pop bc
 	ret
 
 BattleCommand_checkfuturesight:
