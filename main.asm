@@ -1134,8 +1134,8 @@ DisplayDexEntry: ; 4424d
 	lb bc, 2, PRINTNUM_MONEY | 4
 	call PrintNum
 	hlcoord 14, 7
-	ld [hl], "′"
-	inc hl
+	ld a, "′"
+	ld [hli], a
 	ld a, [hl]
 	cp "0"
 	jr nz, .imheight_ok
