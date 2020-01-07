@@ -1135,6 +1135,12 @@ DisplayDexEntry: ; 4424d
 	call PrintNum
 	hlcoord 14, 7
 	ld [hl], "′"
+	inc hl
+	ld a, [hl]
+	cp "0"
+	jr nz, .imheight_ok
+	ld [hl], " "
+.imheight_ok
 	pop af
 	pop hl
 
