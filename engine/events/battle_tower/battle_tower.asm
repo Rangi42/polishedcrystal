@@ -409,18 +409,18 @@ CheckForBattleTowerRules: ; 8b201
 
 .Functions: ; 8b21a
 	dw Function_PartyCountEq3
+	dw Function_HasPartyAnEgg
 	dw Function_PartySpeciesAreUnique
 	dw Function_PartyItemsAreUnique
-	dw Function_HasPartyAnEgg
 	dw Function_UberRestriction
 ; 8b222
 
 .TextPointers: ; 8b222
 	dw JumpText_ExcuseMeYoureNotReady
 	dw JumpText_OnlyThreePkmnMayBeEntered
+	dw JumpText_YouCantTakeAnEgg
 	dw JumpText_ThePkmnMustAllBeDifferentKinds
 	dw JumpText_ThePkmnMustNotHoldTheSameItems
-	dw JumpText_YouCantTakeAnEgg
 	dw JumpText_UberRestriction
 ; 8b22c
 
@@ -592,15 +592,11 @@ VerifyUniqueness: ; 8b2e9
 	push hl
 	push de
 	ld c, b
-	call .isegg
-	jr z, .next
 	ld a, [hl]
 	and a
 	jr z, .next
 .loop2
 	call .nextmon
-	call .isegg
-	jr z, .next2
 	cp [hl]
 	jr z, .gotcha
 
@@ -633,26 +629,16 @@ VerifyUniqueness: ; 8b2e9
 	inc de
 	pop bc
 	ret
-; 8b322
 
-.isegg ; 8b322
-	push bc
-	ld b, a
-	ld a, [de]
-	cp EGG
-	ld a, b
-	pop bc
-	ret
-; 8b32a
-
-Function_HasPartyAnEgg: ; 8b331
-	ld hl, wPartyCount
-	ld a, [hli]
+Function_HasPartyAnEgg:
+	ld hl, wPartyMon1IsEgg
+	ld a, [wPartyCount]
 	ld c, a
+	ld de, PARTYMON_STRUCT_LENGTH
 .loop
-	ld a, [hli]
-	cp EGG
-	jr z, .found
+	bit MON_IS_EGG_F, [hl]
+	jr nz, .found
+	add hl, de
 	dec c
 	jr nz, .loop
 	and a
@@ -661,7 +647,6 @@ Function_HasPartyAnEgg: ; 8b331
 .found
 	scf
 	ret
-; 8b342
 
 Function_UberRestriction:
 	ld hl, wPartyMon1Level

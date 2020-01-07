@@ -34,14 +34,12 @@ HealParty: ; c658
 	ld a, [hli]
 	cp -1
 	ret z
-	cp EGG
-	jr z, .next
-
 	push hl
-	call HealPartyMon
+	ld a, MON_IS_EGG
+	call GetPartyParamLocation
+	bit MON_IS_EGG_F, [hl]
+	call z, HealPartyMon
 	pop hl
-
-.next
 	ld a, [wCurPartyMon]
 	inc a
 	ld [wCurPartyMon], a

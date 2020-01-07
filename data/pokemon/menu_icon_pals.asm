@@ -1,6 +1,6 @@
 iconpal: MACRO
 	dn PAL_OW_\1, PAL_OW_\2
-endm
+ENDM
 
 MenuMonIconColors::
 	iconpal TEAL, GREEN ; BULBASAUR
@@ -195,8 +195,6 @@ MenuMonIconColors::
 	iconpal BLUE, RED ; QUAGSIRE
 	iconpal PURPLE, GREEN ; ESPEON
 	iconpal PURPLE, GREEN ; UMBREON
-	iconpal GREEN, BROWN ; LEAFEON
-	iconpal BLUE, BLUE ; GLACEON
 	iconpal BLUE, PURPLE ; MURKROW
 	iconpal BLUE, PURPLE ; HONCHKROW
 	iconpal PINK, PURPLE ; SLOWKING
@@ -215,6 +213,7 @@ MenuMonIconColors::
 	iconpal PURPLE, GRAY ; GRANBULL
 	iconpal BLUE, PURPLE ; QWILFISH
 	iconpal RED, GRAY ; SCIZOR
+	iconpal RED, BLUE ; SHUCKLE
 	iconpal BLUE, PURPLE ; HERACROSS
 	iconpal BLUE, RED ; SNEASEL
 	iconpal BLUE, RED ; WEAVILE
@@ -236,6 +235,7 @@ MenuMonIconColors::
 	iconpal BLUE, GRAY ; PHANPY
 	iconpal GRAY, RED ; DONPHAN
 	iconpal BLUE, PURPLE ; PORYGON2
+	iconpal BLUE, PURPLE ; PORYGON_Z
 	iconpal BROWN, GREEN ; SMEARGLE
 	iconpal BROWN, BLUE ; TYROGUE
 	iconpal BROWN, BLUE ; HITMONTOP
@@ -254,7 +254,7 @@ MenuMonIconColors::
 	iconpal BLUE, RED ; LUGIA
 	iconpal RED, GREEN ; HO_OH
 	iconpal GREEN, RED ; CELEBI
+	iconpal GREEN, BROWN ; LEAFEON
+	iconpal BLUE, BLUE ; GLACEON
 	iconpal PINK, BLUE ; SYLVEON
-	iconpal BLUE, PURPLE ; PORYGON_Z
 	iconpal RED, BLUE ; EGG
-	iconpal PURPLE, GRAY ; RATTATA_BACK

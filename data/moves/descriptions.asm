@@ -133,7 +133,7 @@ MoveDescriptions::
 	dw BulldozeDescription
 	dw AmnesiaDescription
 	dw RoostDescription
-	dw SoftboiledDescription
+	dw FreshSnackDescription
 	dw HiJumpKickDescription
 	dw GlareDescription
 	dw DreamEaterDescription
@@ -206,7 +206,7 @@ MoveDescriptions::
 	dw RolloutDescription
 	dw FalseSwipeDescription
 	dw SwaggerDescription
-	dw MilkDrinkDescription
+	dw ShellSmashDescription
 	dw SparkDescription
 	dw BugBiteDescription
 	dw SteelWingDescription
@@ -600,8 +600,7 @@ RecoverDescription:
 	db   "Restores HP by 1/2"
 	next "the max HP.@"
 
-SoftboiledDescription:
-MilkDrinkDescription:
+FreshSnackDescription:
 	db   "Restores HP by 1/2"
 	next "the user's max HP.@"
 
@@ -963,6 +962,10 @@ RolloutDescription:
 SwaggerDescription:
 	db   "Causes confusion"
 	next "but raises Attack.@"
+
+ShellSmashDescription:
+	db   "Lowers defenses,"
+	next "raises offenses.@"
 
 BugBiteDescription:
 	db   "Bites the foe and"

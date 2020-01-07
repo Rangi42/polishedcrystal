@@ -192,8 +192,6 @@ IconPointers:
 	dw QuagsireIcon
 	dw EspeonIcon
 	dw UmbreonIcon
-	dw LeafeonIcon
-	dw GlaceonIcon
 	dw MurkrowIcon
 	dw HonchkrowIcon
 	dw SlowkingIcon
@@ -212,6 +210,7 @@ IconPointers:
 	dw GranbullIcon
 	dw QwilfishIcon
 	dw ScizorIcon
+	dw ShuckleIcon
 	dw HeracrossIcon
 	dw SneaselIcon
 	dw WeavileIcon
@@ -233,6 +232,7 @@ IconPointers:
 	dw PhanpyIcon
 	dw DonphanIcon
 	dw Porygon2Icon
+	dw PorygonZIcon
 	dw SmeargleIcon
 	dw TyrogueIcon
 	dw HitmontopIcon
@@ -251,7 +251,7 @@ IconPointers:
 	dw LugiaIcon
 	dw HoOhIcon
 	dw CelebiIcon
+	dw LeafeonIcon
+	dw GlaceonIcon
 	dw SylveonIcon
-	dw PorygonZIcon
 	dw EggIcon
-	dw RattataBackIcon

@@ -161,7 +161,7 @@ AzaleaGymGuyScript:
 	cont "fire."
 
 	para "Flying-type moves"
-	line "are super-effec-"
+	line "are super effec-"
 	cont "tive too."
 	done
 

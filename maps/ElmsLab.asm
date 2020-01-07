@@ -543,8 +543,8 @@ LyraBattleScript:
 	reloadmap
 	special DeleteSavedMusic
 	playmusic MUSIC_LYRA_DEPARTURE_HGSS
-	iftrue .AfterVictorious
-	jump .AfterYourDefeat
+	iftrue .AfterYourDefeat
+	jump .AfterVictorious
 
 .Totodile:
 	loadtrainer LYRA1, LYRA1_2
@@ -578,8 +578,10 @@ LyraBattleScript:
 	turnobject ELMSLAB_LYRA, UP
 	opentext
 	writetext ElmsLabLyraThankYouText
+	waitbutton
 	turnobject ELMSLAB_LYRA, LEFT
 	writetext ElmsLabLyraSeeYouText
+	waitbutton
 	closetext
 	turnobject PLAYER, DOWN
 	applymovement ELMSLAB_LYRA, LyraLeavesMovement

@@ -1,193 +1,185 @@
-command: macro
+command: MACRO
 	enum \1_command
 \1 equs "db \1_command"
 	dw BattleCommand_\1
-endm
+ENDM
 
-commandonly: macro
+commandx: MACRO
+	enum \1_command
+\1_macro: MACRO
+	db \1
+	db \2
+ENDM
+\1 equs "\1_macro \1_command,"
+	dw BattleCommand_\1
+ENDM
+
+commandonly: MACRO
 	enum \1_command
 \1 equs "db \1_command"
-endm
+ENDM
 
 	enum_start 1
 
 BattleCommandPointers:
-	command checkturn               ; 01
-	command checkobedience          ; 02
-	command usedmovetext            ; 03
-	command doturn                  ; 04
-	command critical                ; 05
-	command damagestats             ; 06
-	command stab                    ; 07
-	command damagevariation         ; 08
-	command checkhit                ; 09
-	command lowersub                ; 0a
-	command hittargetnosub          ; 0b
-	command raisesub                ; 0c
-	command failuretext             ; 0d
-	command checkfaint              ; 0e
-	command criticaltext            ; 0f
-	command supereffectivetext      ; 10
-	command postfainteffects        ; 11
-	command posthiteffects          ; 12
-	command poisontarget            ; 13
-	command sleeptarget             ; 14
-	command draintarget             ; 15
-	command eatdream                ; 16
-	command burntarget              ; 17
-	command freezetarget            ; 18
-	command paralyzetarget          ; 19
-	command selfdestruct            ; 1a
-	command statup                  ; 1b
-	command statdown                ; 1c
-	command payday                  ; 1d
-	command conversion              ; 1e
-	command resetstats              ; 1f
-	command forceswitch             ; 20
-	command endloop                 ; 21
-	command flinchtarget            ; 22
-	command recoil                  ; 23
-	command focusenergy             ; 24
-	command confuse                 ; 25
-	command confusetarget           ; 26
-	command heal                    ; 27
-	command transform               ; 28
-	command screen                  ; 29
-	command poison                  ; 2a
-	command paralyze                ; 2b
-	command substitute              ; 2c
-	command rechargenextturn        ; 2d
-	command metronome               ; 2e
-	command leechseed               ; 2f
-	command splash                  ; 30
-	command disable                 ; 31
-	command cleartext               ; 32
-	command charge                  ; 33
-	command checkcharge             ; 34
-	command traptarget              ; 35
-	command growth                  ; 36
-	command rampage                 ; 37
-	command checkrampage            ; 38
-	command constantdamage          ; 39
-	command counter                 ; 3a
-	command encore                  ; 3b
-	command painsplit               ; 3c
-	command sketch                  ; 3d
-	command sleeptalk               ; 3e
-	command destinybond             ; 3f
-	command falseswipe              ; 40
-	command healbell                ; 41
-	command pressure                ; 42
-	command triplekick              ; 43
-	command kickcounter             ; 44
-	command thief                   ; 45
-	command arenatrap               ; 46
-	command defrost                 ; 47
-	command curse                   ; 48
-	command protect                 ; 49
-	command spikes                  ; 4a
-	command foresight               ; 4b
-	command perishsong              ; 4c
-	command startsandstorm          ; 4d
-	command starthail               ; 4e
-	command endure                  ; 4f
-	command checkcurl               ; 50
-	command rolloutpower            ; 51
-	command bulkup                  ; 52
-	command conditionalboost        ; 53
-	command attract                 ; 54
-	command happinesspower          ; 55
-	command damagecalc              ; 56
-	command safeguard               ; 57
-	command checksafeguard          ; 58
-	command getmagnitude            ; 59
-	command batonpass               ; 5a
-	command pursuit                 ; 5b
-	command clearhazards            ; 5c
-	command healweather             ; 5d
-	command hiddenpower             ; 5e
-	command startrain               ; 5f
-	command startsun                ; 60
-	command attackup                ; 61
-	command defenseup               ; 62
-	command speedup                 ; 63
-	command specialattackup         ; 64
-	command specialdefenseup        ; 65
-	command accuracyup              ; 66
-	command evasionup               ; 67
-	command attackup2               ; 68
-	command defenseup2              ; 69
-	command speedup2                ; 6a
-	command specialattackup2        ; 6b
-	command specialdefenseup2       ; 6c
-	command accuracyup2             ; 6d
-	command evasionup2              ; 6e
-	command attackdown              ; 6f
-	command defensedown             ; 70
-	command speeddown               ; 71
-	command specialattackdown       ; 72
-	command specialdefensedown      ; 73
-	command accuracydown            ; 74
-	command evasiondown             ; 75
-	command attackdown2             ; 76
-	command defensedown2            ; 77
-	command speeddown2              ; 78
-	command specialattackdown2      ; 79
-	command specialdefensedown2     ; 7a
-	command accuracydown2           ; 7b
-	command evasiondown2            ; 7c
-	command statupmessage           ; 7d
-	command statdownmessage         ; 7e
-	command statupfailtext          ; 7f
-	command statdownfailtext        ; 80
-	command effectchance            ; 81
-	command statdownanim            ; 82
-	command statupanim              ; 83
-	command switchturn              ; 84
-	command bellydrum               ; 85
-	command rage                    ; 86
-	command doubleflyingdamage      ; 87
-	command doubleundergrounddamage ; 88
-	command mirrorcoat              ; 89
-	command checkfuturesight        ; 8a
-	command futuresight             ; 8b
-	command doubleminimizedamage    ; 8c
-	command skipsuncharge           ; 8d
-	command thunderaccuracy         ; 8e
-	command teleport                ; 8f
-	command switchout               ; 90
-	command ragedamage              ; 91
-	command resettypematchup        ; 92
-	command allstatsup              ; 93
-	command calmmind                ; 94
-	command raisesubnoanim          ; 95
-	command lowersubnoanim          ; 96
-	command dragondance             ; 97
-	command honeclaws               ; 98
-	command clearmissdamage         ; 99
-	command movedelay               ; 9a
-	command hittarget               ; 9b
-	command tristatuschance         ; 9c
-	command supereffectivelooptext  ; 9d
-	command startloop               ; 9e
-	command curl                    ; 9f
-	command burn                    ; a0
-	command bounceback              ; a1
-	command pickpocket              ; a2
-	command suckerpunch             ; a3
-	command toxicspikes             ; a4
-	command roost                   ; a5
-	command closecombat             ; a6
-	command skillswap               ; a7
-	command trick                   ; a8
-	command knockoff                ; a9
-	command bugbite                 ; aa
-	command toxic                   ; ab
-	command gyroball                ; ac
-	command checkpowder             ; ad
-	command lowkick                 ; ae
-	command brickbreak              ; ae
-	command trickroom               ; af
+	command checkturn
+	command checkobedience
+	command usedmovetext
+	command doturn
+	command critical
+	command damagestats
+	command stab
+	command damagevariation
+	command checkhit
+	command lowersub
+	command hittargetnosub
+	command raisesub
+	command failuretext
+	command checkfaint
+	command criticaltext
+	command supereffectivetext
+	command postfainteffects
+	command posthiteffects
+	command poisontarget
+	command sleeptarget
+	command draintarget
+	command eatdream
+	command burntarget
+	command freezetarget
+	command paralyzetarget
+	command selfdestruct
+	command payday
+	command conversion
+	command resetstats
+	command forceswitch
+	command endloop
+	command flinchtarget
+	command recoil
+	command focusenergy
+	command confuse
+	command confusetarget
+	command heal
+	command transform
+	command screen
+	command poison
+	command paralyze
+	command substitute
+	command rechargenextturn
+	command metronome
+	command leechseed
+	command splash
+	command disable
+	command cleartext
+	command charge
+	command checkcharge
+	command traptarget
+	command growth
+	command rampage
+	command checkrampage
+	command constantdamage
+	command counter
+	command encore
+	command painsplit
+	command sketch
+	command sleeptalk
+	command destinybond
+	command falseswipe
+	command healbell
+	command hastarget
+	command triplekick
+	command kickcounter
+	command thief
+	command arenatrap
+	command defrost
+	command curse
+	command protect
+	command spikes
+	command foresight
+	command perishsong
+	command startsandstorm
+	command starthail
+	command endure
+	command checkcurl
+	command rolloutpower
+	command conditionalboost
+	command attract
+	command happinesspower
+	command damagecalc
+	command safeguard
+	command checksafeguard
+	command getmagnitude
+	command batonpass
+	command pursuit
+	command clearhazards
+	command healweather
+	command hiddenpower
+	command startrain
+	command startsun
+	command effectchance
+	command switchturn
+	command bellydrum
+	command rage
+	command doubleflyingdamage
+	command doubleundergrounddamage
+	command checkfuturesight
+	command futuresight
+	command doubleminimizedamage
+	command skipsuncharge
+	command thunderaccuracy
+	command teleport
+	command switchout
+	command ragedamage
+	command resettypematchup
+	command allstatsup
+	command raisesubnoanim
+	command lowersubnoanim
+	command clearmissdamage
+	command movedelay
+	command hittarget
+	command tristatuschance
+	command supereffectivelooptext
+	command startloop
+	command curl
+	command burn
+	command bounceback
+	command pickpocket
+	command suckerpunch
+	command toxicspikes
+	command roost
+	command skillswap
+	command trick
+	command knockoff
+	command bugbite
+	command toxic
+	command gyroball
+	command checkpowder
+	command lowkick
+	command brickbreak
+	command trickroom
+
+	; The following commands have an argument: stat to raise/lower.
+	; (raise|lower)stat: can miss, silent
+	; force(raise|lower)stat: (always)
+	; (raise|lower)stathit: can miss, respects secondary, silent
+	; (raise|lower)oppstat: can miss, respects sub+mist+clear body
+	; force(raise|lower)oppstat: respects sub+mist+clear body
+	; (raise|lower)oppstathit: can miss, respects secondary+sub+mist+clear body, silent
+
+	commandx raisestat
+	commandx lowerstat
+	commandx forceraisestat
+	commandx forcelowerstat
+	commandx raisestathit
+	commandx lowerstathit
+	commandx raiseoppstat
+	commandx loweroppstat
+	commandx forceraiseoppstat
+	commandx forceloweroppstat
+	commandx raiseoppstathit
+	commandx loweroppstathit
+
+FIRST_MOVEARG_COMMAND EQU raisestat_command
+LAST_MOVEARG_COMMAND EQU loweroppstathit_command
 
 	enum_start -1, -1
 	commandonly endmove

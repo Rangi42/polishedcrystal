@@ -36,8 +36,7 @@ BattleCommand_attract: ; 377ce
 	cp HELD_DESTINY_KNOT
 	jr nz, .destiny_knot_done
 
-	ld a, BATTLE_VARS_ABILITY
-	call GetBattleVar
+	call GetTrueUserAbility
 	cp OBLIVIOUS
 	jr nz, .no_user_ability_protection
 
@@ -174,17 +173,15 @@ CheckOppositeGender: ; 377f5
 ; Returns c (either mon is genderless), nc|z (same gender), nc|nz (opposite gender).
 ; Don't remove the possibility to check for same gender, Rivalry needs this.
 	ld a, MON_SPECIES
-	call BattlePartyAttr
-	ld a, [hl]
+	call TrueUserPartyAttr
 	ld [wCurPartySpecies], a
-
-	ld a, [wCurBattleMon]
-	ld [wCurPartyMon], a
-	xor a
+	ld a, MON_GENDER
+	call TrueUserPartyAttr
+	ld [wTempMonGender], a
+	ld a, BREEDMON
 	ld [wMonType], a
-
 	farcall GetGender
-	ret c ; Player mon is genderless
+	ret c ; User mon is genderless
 
 	ld b, 1
 	jr nz, .got_gender
@@ -192,21 +189,17 @@ CheckOppositeGender: ; 377f5
 
 .got_gender
 	push bc
-	ld a, [wTempEnemyMonSpecies]
+	ld a, MON_SPECIES
+	call OpponentPartyAttr
 	ld [wCurPartySpecies], a
-	ld hl, wEnemyMonGender
-	ld a, [wEnemySubStatus2]
-	bit SUBSTATUS_TRANSFORMED, a
-	jr z, .not_transformed
-	ld hl, wEnemyBackupGender
-.not_transformed
-	ld a, [hl]
+	ld a, MON_GENDER
+	call OpponentPartyAttr
 	ld [wTempMonGender], a
-	ld a, 3
+	ld a, BREEDMON
 	ld [wMonType], a
 	farcall GetGender
 	pop bc
-	ret c ; Enemy mon is genderless
+	ret c ; Opponent mon is genderless
 
 	ld a, 1
 	jr nz, .got_enemy_gender

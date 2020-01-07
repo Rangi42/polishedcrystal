@@ -540,7 +540,7 @@ FisherMarvinBeatenText:
 CamperSpencerSeenText:
 	text "I can do so much"
 	line "with my #mon--"
-	cont "it's super-fun!"
+	cont "it's super fun!"
 	done
 
 CamperSpencerBeatenText:

@@ -167,7 +167,7 @@ battle_tower_struct: MACRO
 \1Pkmn3NameEnd::
 \1Padding: ds BATTLETOWER_PADDING_SIZE
 \1TrainerEnd::
-endm
+ENDM
 
 mailmsg: MACRO
 \1Message:: ds MAIL_MSG_LENGTH
@@ -178,7 +178,7 @@ mailmsg: MACRO
 \1Species:: ds 1
 \1Type:: ds 1
 \1End::
-endm
+ENDM
 
 hof_mon: MACRO
 \1Species:: ds 1
@@ -187,7 +187,7 @@ hof_mon: MACRO
 \1Level:: ds 1
 \1Nickname:: ds PKMN_NAME_LENGTH +- 1
 \1End::
-endm
+ENDM
 
 roam_struct: MACRO
 \1Species::     db
@@ -200,11 +200,11 @@ roam_struct: MACRO
 \1End::
 ENDM
 
-bugcontestwinner: macro
+bugcontestwinner: MACRO
 \1PersonID:: ds 1
 \1Mon:: ds 1
 \1Score:: ds 2
-endm
+ENDM
 
 hall_of_fame: MACRO
 \1::
@@ -250,7 +250,8 @@ move_struct: MACRO
 \1PP:: ds 1
 \1EffectChance:: ds 1
 \1Category:: ds 1
-endm
+\1End::
+ENDM
 
 slot_reel: MACRO
 \1ReelAction::   db
@@ -267,7 +268,7 @@ slot_reel: MACRO
 \1Slot0d::       ds 1
 \1Slot0e::       ds 1
 \1Slot0f::       ds 1
-endm
+ENDM
 
 object_struct: MACRO
 \1Struct::
@@ -320,7 +321,7 @@ map_object: MACRO
 \1ObjectRange::     ds 1
 \1ObjectScript::    ds 2
 \1ObjectEventFlag:: ds 2
-endm
+ENDM
 
 sprite_anim_struct: MACRO
 \1Index:: ds 1          ; 0
@@ -367,11 +368,11 @@ battle_anim_struct: MACRO
 \1_Anim15:: ds 1
 \1_Anim16:: ds 1
 \1_Anim17:: ds 1
-endm
+ENDM
 
 battle_bg_effect: MACRO
 \1_Function:: ds 1
 \1_01:: ds 1
 \1_02:: ds 1
 \1_03:: ds 1
-endm
+ENDM

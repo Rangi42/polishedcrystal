@@ -160,10 +160,16 @@ DoEggStep:: ; 16f3e
 .ability_loop
 	ld a, [de]
 	inc de
-	cp -1
+	inc a
 	jr z, .no_ability_bonus
-	cp EGG
-	jr z, .ability_next
+	push hl
+	push de
+	ld de, wPartyMon1IsEgg - wPartyMon1Ability
+	add hl, de
+	bit MON_IS_EGG_F, [hl]
+	pop de
+	pop hl
+	jr nz, .ability_next
 	ld c, a
 	ld b, [hl]
 	push de
@@ -188,10 +194,16 @@ DoEggStep:: ; 16f3e
 .loop
 	ld a, [de]
 	inc de
-	cp -1
+	inc a
 	jr z, .done
-	cp EGG
-	jr nz, .next
+	push hl
+	push de
+	ld de, wPartyMon1IsEgg - wPartyMon1Happiness
+	add hl, de
+	bit MON_IS_EGG_F, [hl]
+	pop de
+	pop hl
+	jr z, .next
 	dec [hl]
 	jr z, .hatch
 	ld a, c
@@ -234,13 +246,19 @@ HatchEggs: ; 16f70 (5:6f70)
 .loop ; 16f7a (5:6f7a)
 	ld a, [de]
 	inc de
-	cp -1
+	inc a
 	ret z
 
 	push de
 	push hl
-	cp EGG
-	jp nz, .next
+	push de
+	ld de, wPartyMon1IsEgg - wPartyMon1Happiness
+	add hl, de
+	bit MON_IS_EGG_F, [hl]
+	pop de
+	pop hl
+	push hl
+	jp z, .next
 	ld a, [hl]
 	and a
 	jp nz, .next
@@ -601,6 +619,7 @@ InheritMove:
 
 GetEggFrontpic: ; 17224 (5:7224)
 	push de
+	ld a, EGG
 	ld [wCurPartySpecies], a
 	ld [wCurSpecies], a
 	call GetBaseData
@@ -667,6 +686,10 @@ EggHatch_AnimationSequence: ; 1728f (5:728f)
 	call PlayMusic
 	farcall BlankScreen
 	call DisableLCD
+	ld a, " "
+	ld bc, VBGMap1 - VBGMap0
+	hlbgcoord 0, 0
+	call ByteFill
 	ld hl, EggHatchGFX
 	ld de, VTiles0 tile $00
 	ld bc, $20
@@ -677,7 +700,6 @@ EggHatch_AnimationSequence: ; 1728f (5:728f)
 	ld a, [wJumptableIndex]
 	call GetHatchlingFrontpic
 	ld de, VTiles2 tile $31
-	ld a, EGG
 	call GetEggFrontpic
 	ld de, MUSIC_EVOLUTION
 	call PlayMusic

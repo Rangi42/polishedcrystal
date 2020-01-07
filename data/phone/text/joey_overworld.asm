@@ -41,7 +41,7 @@ JoeyPhoneFullText:
 
 JoeyTopPercentageText:
 	text "Hey, do you remem-"
-	line "ber my super-cool"
+	line "ber my super cool"
 	cont "@"
 	text_from_ram wStringBuffer4
 	text "?"

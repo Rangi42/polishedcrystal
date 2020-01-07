@@ -1,3 +1,5 @@
+	newcharmap no_ngrams
+
 ; Control characters
 
 	charmap "<START>",  $00
@@ -36,25 +38,7 @@
 
 	; unused: $26 - $2b
 
-	charmap "le",       $2c
-	charmap "ng",       $2d
-	charmap "te",       $2e
-	charmap "as",       $2f
-	charmap "or",       $30
-	charmap "ou",       $31
-	charmap "re",       $32
-	charmap "in",       $33
-	charmap "er",       $34
-	charmap "on",       $35
-	charmap "th",       $36
-	charmap "and",      $37
-	charmap "have",     $38
-	charmap "that",     $39
-	charmap "for",      $3a
-	charmap "with",     $3b
-	charmap "an",       $3c
-	charmap "ing",      $3d
-	charmap "to",       $3e
+	; n-grams: $2c - $3e (defined below)
 
 	; unused: $3f - $4a
 
@@ -79,9 +63,7 @@
 	charmap "<USER>",   $5a
 	charmap "<ENEMY>",  $5b
 
-	charmap "the",      $5c
-	charmap "you",      $5d
-	charmap "#mon",     $5e
+	; n-grams: $5c - $5e (defined below)
 
 ; Battle characters
 
@@ -95,7 +77,7 @@ BATTLEEXTRA_GFX_START EQU $5f
 	charmap "<HP1>",    $63
 	charmap "<HP2>",    $64
 	charmap "<NOHP>",   $65
-	; $66 - $6c for HP
+	; HP: $66 - $6c
 	charmap "<FULLHP>", $6d
 	charmap "<HPEND>",  $6e
 
@@ -107,7 +89,7 @@ BATTLEEXTRA_GFX_START EQU $5f
 	charmap "<XP1>",    $73
 	charmap "<XP2>",    $74
 	charmap "<NOXP>",   $75
-	; $76 - $7c for exp
+	; EXP: $76 - $7c
 	charmap "<FULLXP>", $7d
 	charmap "<XPEND>",  $7e
 
@@ -266,3 +248,43 @@ BATTLEEXTRA_GFX_START EQU $5f
 	charmap "│",        $fd
 	charmap "└",        $fe
 	charmap "┘",        $ff
+
+
+	newcharmap default, no_ngrams
+
+	charmap "le",       $2c
+	charmap "ng",       $2d
+	charmap "te",       $2e
+	charmap "as",       $2f
+	charmap "or",       $30
+	charmap "ou",       $31
+	charmap "re",       $32
+	charmap "in",       $33
+	charmap "er",       $34
+	charmap "on",       $35
+	charmap "th",       $36
+	charmap "and",      $37
+	charmap "have",     $38
+	charmap "that",     $39
+	charmap "for",      $3a
+	charmap "with",     $3b
+	charmap "an",       $3c
+	charmap "ing",      $3d
+	charmap "to",       $3e
+
+	charmap "the",      $5c
+	charmap "you",      $5d
+	charmap "#mon",     $5e
+
+
+	setcharmap default
+
+
+rawchar: MACRO
+	setcharmap no_ngrams
+	rept _NARG
+		db \1
+		shift
+	endr
+	setcharmap default
+ENDM

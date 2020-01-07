@@ -22,7 +22,7 @@ cd polishedcrystal
 mkdir rgbds
 ```
 
-Then download [**rgbds**](https://github.com/bentley/rgbds/). You'll need version 0.3.3 or later. Extract the archive and put all the .exe and .dll files in polishedcrystal/rgbds.
+Then download [**rgbds**](https://github.com/bentley/rgbds/). You'll need version 0.3.9 or later. Extract the archive and put all the .exe and .dll files in polishedcrystal/rgbds.
 
 To build **polishedcrystal.gbc**:
 

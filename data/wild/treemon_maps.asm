@@ -1,7 +1,7 @@
-treemon_map: macro
+treemon_map: MACRO
 	map_id \1
 	db  \2 ; treemon set
-endm
+ENDM
 
 TreeMonMaps:
 	treemon_map ROUTE_26, 4
@@ -51,6 +51,7 @@ TreeMonMaps:
 RockMonMaps:
 	treemon_map ROUTE_19, 7
 	treemon_map ROUTE_40, 7
+	treemon_map OLIVINE_CITY, 7
 	treemon_map CIANWOOD_CITY, 7
 	treemon_map VERMILION_CITY, 7
 	treemon_map RUINS_OF_ALPH_OUTSIDE, 7
@@ -59,5 +60,7 @@ RockMonMaps:
 	treemon_map UNION_CAVE_B1F_SOUTH, 7
 	treemon_map SLOWPOKE_WELL_B1F, 7
 	treemon_map BURNED_TOWER_B1F, 7
+	treemon_map MAGNET_TUNNEL_EAST, 7
+	treemon_map MAGNET_TUNNEL_WEST, 7
 	treemon_map GIOVANNIS_CAVE, 7
 	db -1

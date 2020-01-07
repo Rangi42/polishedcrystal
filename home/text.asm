@@ -172,21 +172,21 @@ NextChar::
 CheckDict::
 	cp $60
 	jp nc, .notDict
-dict: macro
+dict: MACRO
 if \1 == 0
 	and a
 else
 	cp \1
 endc
 	jp z, \2
-endm
+ENDM
 
-dict2: macro
+dict2: MACRO
 	cp \1
 	jr nz, ._\@
 	ld a, \2
 ._\@:
-endm
+ENDM
 
 	dict "<START>",  NullChar
 	dict "<FAR>",    TextFar
@@ -236,84 +236,85 @@ endm
 	call PrintLetterDelay
 	jp NextChar
 
-print_name: macro
+print_name: MACRO
 	push de
 	ld de, \1
 	jp PlaceCommandCharacter
-endm
+ENDM
 
 PrintPlayerName:   print_name wPlayerName
 PrintRivalName:    print_name wRivalName
 PrintTrendyPhrase: print_name wTrendyPhrase
 
 PlaceLe: print_name .LeText
-.LeText: db "l", "e", "@"
+.LeText: rawchar "le@"
 
 PlaceNg: print_name .NgText
-.NgText: db "n", "g", "@"
+.NgText: rawchar "ng@"
 
 PlaceTe: print_name .TeText
-.TeText: db "t", "e", "@"
+.TeText: rawchar "te@"
 
 PlaceAs: print_name .AsText
-.AsText: db "a", "s", "@"
+.AsText: rawchar "as@"
 
 PlaceOr: print_name .OrText
-.OrText: db "o", "r", "@"
+.OrText: rawchar "or@"
 
 PlaceOu: print_name .OuText
-.OuText: db "o", "u", "@"
+.OuText: rawchar "ou@"
 
 PlaceRe: print_name .ReText
-.ReText: db "r", "e", "@"
+.ReText: rawchar "re@"
 
 PlaceIn: print_name .InText
-.InText: db "i", "n", "@"
+.InText: rawchar "in@"
 
 PlaceEr: print_name .ErText
-.ErText: db "e", "r", "@"
+.ErText: rawchar "er@"
 
 PlaceOn: print_name .OnText
-.OnText: db "o", "n", "@"
+.OnText: rawchar "on@"
 
 PlaceTh: print_name .ThText
-.ThText: db "t", "h", "@"
+.ThText: rawchar "th@"
 
 PlaceAnd: print_name .AndText
-.AndText: db "a", "n", "d", "@"
+.AndText: rawchar "and@"
 
 PlacePoke: print_name .PokeText
-.PokeText: db "Poké@"
+.PokeText: rawchar "Poké@"
 
 PlaceThe: print_name .TheText
-.TheText: db "t", "h", "e", "@"
+.TheText: rawchar "the@"
 
 PlaceYou: print_name .YouText
-.YouText: db "y", "o", "u", "@"
+.YouText: rawchar "you@"
 
 PlacePokemon: print_name .PokemonText
+	; no rawchar?
 .PokemonText: db "Pokémon@"
 
 PlaceTo: print_name .ToText
-.ToText: db "t", "o", "@"
+.ToText: rawchar "to@"
 
 PlaceHave: print_name .HaveText
-.HaveText: db "h", "a", "v", "e", "@"
+.HaveText: rawchar "have@"
 
 PlaceThat: print_name .ThatText
-.ThatText: db "t", "h", "a", "t", "@"
+.ThatText: rawchar "that@"
 
 PlaceFor: print_name .ForText
-.ForText: db "f", "o", "r", "@"
+.ForText: rawchar "for@"
 
 PlaceWith: print_name .WithText
-.WithText: db "w", "i", "t", "h", "@"
+.WithText: rawchar "with@"
 
 PlaceAn: print_name .AnText
-.AnText: db "a", "n", "@"
+.AnText: rawchar "an@"
 
 PlaceIng: print_name .IngText
-.IngText: db "i", "n", "g", "@"
+.IngText: rawchar "ing@"
 
 PlaceMoveTargetsName::
 	ld a, [hBattleTurn]

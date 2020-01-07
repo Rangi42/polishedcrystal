@@ -88,7 +88,6 @@ AddEggMonToParty:
 	jr nz, .loop1
 	ld a, e
 	ld [wCurPartyMon], a
-	ld a, EGG
 	ld [bc], a
 	inc bc
 	ld a, -1

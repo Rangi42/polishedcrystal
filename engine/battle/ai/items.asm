@@ -1,4 +1,4 @@
-AI_SwitchOrTryItem: ; 38000
+AI_MaybeSwitch:
 	and a
 
 	ld a, [wBattleMode]
@@ -6,16 +6,6 @@ AI_SwitchOrTryItem: ; 38000
 	ret z
 
 	ld a, [wLinkMode]
-	and a
-	ret nz
-
-	farcall CheckEnemyLockedIn
-	ret nz
-
-	; Avoid performing this check twice in a single turn
-	ld hl, wEnemySwitchItemCheck
-	ld a, [hl]
-	ld [hl], 1
 	and a
 	ret nz
 
@@ -32,7 +22,7 @@ AI_SwitchOrTryItem: ; 38000
 	pop bc
 	ld a, b
 	ld [hBattleTurn], a
-	jr z, DontSwitch
+	ret z
 	call SetEnemyTurn
 	push bc
 	call CheckIfUserIsGhostType
@@ -43,11 +33,11 @@ AI_SwitchOrTryItem: ; 38000
 
 	ld a, [wPlayerSubStatus2]
 	bit SUBSTATUS_CANT_RUN, a
-	jr nz, DontSwitch
+	ret nz
 
 	ld a, [wEnemyWrapCount]
 	and a
-	jr nz, DontSwitch
+	ret nz
 
 .can_switch
 	ld hl, TrainerClassAttributes + TRNATTR_AI_ITEM_SWITCH
@@ -66,24 +56,20 @@ AI_SwitchOrTryItem: ; 38000
 	jp nz, SwitchRarely
 	bit SWITCH_SOMETIMES_F, [hl]
 	jp nz, SwitchSometimes
-	; fallthrough
-
-DontSwitch: ; 38041
-	jp AI_TryItem
-; 38045
+	ret
 
 SwitchOften: ; 38045
 	farcall AIWantsSwitchCheck
 	ld a, [wEnemySwitchMonParam]
 	and $f0
-	jp z, DontSwitch
+	ret z
 
 	cp $10
 	jr nz, .not_10
 	call Random
 	cp 1 + 50 percent
 	jr c, .switch
-	jp DontSwitch
+	ret
 .not_10
 
 	cp $20
@@ -91,13 +77,13 @@ SwitchOften: ; 38045
 	call Random
 	cp -1 + 79 percent
 	jr c, .switch
-	jp DontSwitch
+	ret
 .not_20
 
 	; $30
 	call Random
 	cp 4 percent
-	jp c, DontSwitch
+	ret c
 
 .switch
 	ld a, [wEnemySwitchMonParam]
@@ -112,14 +98,14 @@ SwitchRarely: ; 38083
 	farcall AIWantsSwitchCheck
 	ld a, [wEnemySwitchMonParam]
 	and $f0
-	jp z, DontSwitch
+	ret z
 
 	cp $10
 	jr nz, .not_10
 	call Random
 	cp 8 percent
 	jr c, .switch
-	jp DontSwitch
+	ret
 .not_10
 
 	cp $20
@@ -127,13 +113,13 @@ SwitchRarely: ; 38083
 	call Random
 	cp 12 percent
 	jr c, .switch
-	jp DontSwitch
+	ret
 .not_20
 
 	; $30
 	call Random
 	cp -1 + 79 percent
-	jp c, DontSwitch
+	ret c
 
 .switch
 	ld a, [wEnemySwitchMonParam]
@@ -147,14 +133,14 @@ SwitchSometimes: ; 380c1
 	farcall AIWantsSwitchCheck
 	ld a, [wEnemySwitchMonParam]
 	and $f0
-	jp z, DontSwitch
+	ret z
 
 	cp $10
 	jr nz, .not_10
 	call Random
 	cp -1 + 20 percent
 	jr c, .switch
-	jp DontSwitch
+	ret
 .not_10
 
 	cp $20
@@ -162,13 +148,13 @@ SwitchSometimes: ; 380c1
 	call Random
 	cp 1 + 50 percent
 	jr c, .switch
-	jp DontSwitch
+	ret
 .not_20
 
 	; $30
 	call Random
 	cp -1 + 20 percent
-	jp c, DontSwitch
+	ret c
 
 .switch
 	ld a, [wEnemySwitchMonParam]
@@ -412,7 +398,7 @@ AI_Items: ; 39196
 .HyperPotion: ; 38284
 	call .HealItem
 	jp c, .DontUse
-	ld b, 200
+	ld b, 120
 	call EnemyUsedHyperPotion
 	jp .Use
 ; 38292 (e:4292)
@@ -420,7 +406,7 @@ AI_Items: ; 39196
 .SuperPotion: ; 38292
 	call .HealItem
 	jp c, .DontUse
-	ld b, 50
+	ld b, 60
 	call EnemyUsedSuperPotion
 	jp .Use
 ; 382a0
@@ -447,46 +433,41 @@ AI_Items: ; 39196
 	jp .Use
 ; 3831d (e:431d)
 
-.XAttack: ; 3831d
+.XAttack:
 	call .XItem
-	jp c, .DontUse
-	call EnemyUsedXAttack
-	jp .Use
-; 38329
+	ret c
+	ld a, X_ATTACK
+	jp EnemyUsedXItem
 
-.XDefend: ; 38329
+.XDefend:
 	call .XItem
-	jp c, .DontUse
-	call EnemyUsedXDefend
-	jp .Use
-; 38335
+	ret c
+	ld a, X_DEFEND
+	jp EnemyUsedXItem
 
-.XSpeed: ; 38335
+.XSpeed:
 	call .XItem
-	jp c, .DontUse
-	call EnemyUsedXSpeed
-	jp .Use
-; 38341
+	ret c
+	ld a, X_SPEED
+	jp EnemyUsedXItem
 
-.XSpclAtk: ; 38341
+.XSpclAtk:
 	call .XItem
-	jp c, .DontUse
-	call EnemyUsedXSpclAtk
-	jp .Use
-; 3834d
+	ret c
+	ld a, X_SPCL_ATK
+	jp EnemyUsedXItem
 
 .XSpclDef: ; 38341
 	call .XItem
-	jp c, .DontUse
-	call EnemyUsedXSpclDef
-	jp .Use
+	ret c
+	ld a, X_SPCL_DEF
+	jp EnemyUsedXItem
 
 .XAccuracy: ; 382f9
 	call .XItem
-	jp c, .DontUse
-	call EnemyUsedXAccuracy
-	jp .Use
-; 38305
+	ret c
+	ld a, X_ACCURACY
+	jp EnemyUsedXItem
 
 .XItem: ; 3834d (e:434d)
 	ld a, [wEnemyTurnsTaken]
@@ -675,10 +656,12 @@ AI_TrySwitch: ; 3844b
 	jp nc, AI_Switch
 	and a
 	ret
-; 3846c
 
 AI_Switch:
-	farjp EnemyMonEntrance
+	ld a, [wEnemySwitchMonIndex]
+	ld [wEnemySwitchTarget], a
+	scf
+	ret
 
 AI_HealStatus: ; 384e0
 	ld a, [wCurOTMon]
@@ -709,52 +692,32 @@ EnemyUsedDireHit: ; 38511
 	jp PrintText_UsedItemOn_AND_AIUpdateHUD
 ; 3851e
 
-EnemyUsedXAttack: ; 38541
-	ld b, ATTACK
-	ld a, X_ATTACK
-	jr EnemyUsedXItem
-; 38547
-
-EnemyUsedXDefend: ; 38547
-	ld b, DEFENSE
-	ld a, X_DEFEND
-	jr EnemyUsedXItem
-; 3854d
-
-EnemyUsedXSpeed: ; 3854d
-	ld b, SPEED
-	ld a, X_SPEED
-	jr EnemyUsedXItem
-; 38553
-
-EnemyUsedXSpclAtk: ; 38553
-	ld b, SP_ATTACK
-	ld a, X_SPCL_ATK
-	jr EnemyUsedXItem
-
-EnemyUsedXSpclDef: ; 38553
-	ld b, SP_DEFENSE
-	ld a, X_SPCL_DEF
-	jr EnemyUsedXItem
-
-EnemyUsedXAccuracy: ; 384f7
-	ld b, ACCURACY
-	ld a, X_ACCURACY
-; 38504
-
-
-; Parameter
-; a = ITEM_CONSTANT
-; b = BATTLE_CONSTANT (ATTACK, DEFENSE, SPEED, SP_ATTACK, SP_DEFENSE, ACCURACY, EVASION)
 EnemyUsedXItem:
 	ld [wCurEnemyItem], a
+	ld b, a
+	farcall GetItemHeldEffect
+	ld b, c
+
+	ld a, STAT_SKIPTEXT | STAT_SILENT
+	farcall _ForceRaiseStat
+	ld a, [wFailedMessage]
+	and a
+	jr nz, .fail
+
 	push bc
 	call PrintText_UsedItemOn
 	pop bc
-	farcall CheckIfStatCanBeRaised
-	jp AIUpdateHUD
-; 38568
 
+	farcall PrintStatChange
+	call AIUpdateHUD
+	xor a
+	ret
+
+.fail
+	xor a
+	ld [wCurEnemyItem], a
+	scf
+	ret
 
 ; Parameter
 ; a = ITEM_CONSTANT

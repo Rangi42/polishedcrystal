@@ -10,7 +10,7 @@
 	dn 7, 7 ; frontpic dimensions
 	db SWARM ; ability 1
 	db TECHNICIAN ; ability 2
-	db SWARM ; hidden ability
+	db LIGHT_METAL ; hidden ability
 	db MEDIUM_FAST ; growth rate
 	dn INSECT, INSECT ; egg groups
 

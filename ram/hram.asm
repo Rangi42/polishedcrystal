@@ -64,6 +64,7 @@ hRemainder         EQU $ffb7
 hMultiplicand      EQU $ffb4 ; 3 bytes long
 hMultiplier        EQU $ffb7 ; 1 byte long
 hProduct           EQU $ffb3 ; result (4 bytes long)
+hPrintNum          EQU $ffb3 ; used by PrintNum (4 bytes)
 
 hMathBuffer        EQU $ffb8
 
@@ -72,16 +73,6 @@ hTilesetPalettesHigh   EQU $ffb3
 hMetatileCountWidth    EQU $ffb3
 hMetatileCountHeight   EQU $ffb4
 
-hPrintNum1         EQU $ffb3
-hPrintNum2         EQU $ffb4
-hPrintNum3         EQU $ffb5
-hPrintNum4         EQU $ffb6
-hPrintNum5         EQU $ffb7
-hPrintNum6         EQU $ffb8
-hPrintNum7         EQU $ffb9
-hPrintNum8         EQU $ffba
-hPrintNum9         EQU $ffbb
-hPrintNum10        EQU $ffbc
 
 hUsedSpriteIndex   EQU $ffbd
 hUsedSpriteTile    EQU $ffbe

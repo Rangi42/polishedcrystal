@@ -23,7 +23,7 @@ SetMenuMonIconColor:
 	ld a, [wd265]
 	ld [wCurPartySpecies], a
 	call GetMenuMonIconPalette
-	jr ProcessMenuMonIconColor
+	jp ProcessMenuMonIconColor
 
 SetMenuMonIconColor_NoShiny:
 	push hl
@@ -64,14 +64,22 @@ LoadPartyMenuMonIconColors:
 	ld d, 0
 	ld e, a
 
+	push af
 	ld hl, wPartyMon1Item
 	call GetPartyLocation
 	ld a, [hl]
 	ld [wCurIconMonHasItemOrMail], a
+	pop af
 
+	ld hl, wPartyMon1IsEgg
+	call GetPartyLocation
+	bit MON_IS_EGG_F, [hl]
+	ld a, EGG
+	jr nz, .got_species
 	ld hl, wPartySpecies
 	add hl, de
 	ld a, [hl]
+.got_species
 	ld [wCurPartySpecies], a
 	ld a, MON_SHINY
 	call GetPartyParamLocation
@@ -215,6 +223,13 @@ LoadNamingScreenMonIcon:
 	push de
 	push bc
 
+	ld hl, wTempMonIsEgg
+	bit MON_IS_EGG_F, [hl]
+	ld a, [wd265]
+	jr z, .got_species
+	ld a, EGG
+.got_species
+	ld [wd265], a
 	ld hl, wTempMonShiny
 	call SetMenuMonIconColor
 
@@ -239,6 +254,14 @@ LoadMoveMenuMonIcon:
 	push de
 	push bc
 
+	ld a, MON_IS_EGG
+	call GetPartyParamLocation
+	bit MON_IS_EGG_F, [hl]
+	ld a, [wd265]
+	jr z, .got_species
+	ld a, EGG
+.got_species
+	ld [wd265], a
 	ld a, MON_SHINY
 	call GetPartyParamLocation
 	call SetMenuMonIconColor
@@ -281,11 +304,19 @@ InitPartyMenuIcon: ; 8e908 (23:6908)
 	ld a, [wCurIconTile]
 	push af
 	ld a, [hObjectStructIndexBuffer]
-	ld hl, wPartySpecies
 	ld e, a
-	ld d, $0
+	ld d, 0
+	ld hl, wPartyMon1IsEgg
+	push de
+	call GetPartyLocation
+	pop de
+	bit MON_IS_EGG_F, [hl]
+	ld a, EGG
+	jr nz, .got_icon
+	ld hl, wPartySpecies
 	add hl, de
 	ld a, [hl]
+.got_icon
 	ld [wCurIcon], a
 	call GetMemIconGFX
 	ld a, [hObjectStructIndexBuffer]
@@ -308,10 +339,7 @@ endr
 
 SetPartyMonIconAnimSpeed: ; 8e936 (23:6936)
 	push bc
-	ld a, [hObjectStructIndexBuffer]
-	ld b, a
 	call .getspeed
-	ld a, b
 	pop bc
 	ld hl, SPRITEANIMSTRUCT_DURATIONOFFSET
 	add hl, bc
@@ -324,15 +352,38 @@ SetPartyMonIconAnimSpeed: ; 8e936 (23:6936)
 	ret
 
 .getspeed ; 8e94c (23:694c)
+	ld a, [hObjectStructIndexBuffer]
+	ld hl, wPartyMon1IsEgg
+	call GetPartyLocation
+	bit MON_IS_EGG_F, [hl]
+	jr nz, .egg
+	ld a, [hObjectStructIndexBuffer]
+	ld b, a
 	farcall PlacePartymonHPBar
 	call GetHPPal
+.gotindex
 	ld e, d
 	ld d, 0
 	ld hl, .speeds
 	add hl, de
-	ld b, [hl]
+	ld a, [hl]
 	ret
 ; 8e95e (23:695e)
+
+.egg
+	ld a, [hObjectStructIndexBuffer]
+	ld hl, wPartyMon1Happiness
+	call GetPartyLocation
+	ld a, [hl]
+; same happiness thresholds as EggStatsScreen
+	ld d, 0
+	cp $6
+	jr c, .gotindex
+	inc d ; 1
+	cp $b
+	jr c, .gotindex
+	inc d ; 2
+	jr .gotindex
 
 .speeds ; 8e95e
 	db $00, $40, $80

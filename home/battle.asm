@@ -1,8 +1,24 @@
 ; *PartyAttr returns address to attribute in hl, content
-; in a. Returns z if dealing with a wildmon (no party
-; struct), otherwise nz.
+; in a. Always returns nz (used to return z for wildmon).
+TrueUserPartyAttr::
+	push bc
+	ld c, a
+	ld a, [hBattleTurn]
+	and a
+	ld hl, wPartyMons
+	jr z, .got_partymons
+	ld hl, wOTPartyMons
+.got_partymons
+	ld b, 0
+	add hl, bc
+	farcall GetFutureSightUser
+	call GetPartyLocation
+	or 1
+	ld a, [hl]
+	pop bc
+	ret
+
 UserPartyAttr::
-; Return z if wildmon
 	push af
 	ld a, [hBattleTurn]
 	and a
@@ -10,7 +26,6 @@ UserPartyAttr::
 BattlePartyAttrPre:
 	pop af
 BattlePartyAttr::
-; Returns nz (not a wildmon)
 	ld hl, wPartyMons
 	push bc
 	ld c, a
@@ -25,7 +40,6 @@ DoBattlePartyAttr:
 	ret
 
 OpponentPartyAttr::
-; Return z if wildmon
 	push af
 	ld a, [hBattleTurn]
 	and a
@@ -33,11 +47,6 @@ OpponentPartyAttr::
 OTPartyAttrPre:
 	pop af
 OTPartyAttr::
-; Return z if wildmon
-	ld a, [wBattleMode]
-	dec a
-	ret z
-
 	ld hl, wOTPartyMons
 	push bc
 	ld c, a
@@ -53,10 +62,14 @@ ResetDamage::
 BattleCommand_switchturn::
 SwitchTurn::
 	ld a, [hBattleTurn]
-	and a
-	jr z, SetEnemyTurn
+	push af
+	xor 1
+	ld [hBattleTurn], a
+	pop af
+	ret
+
 SetPlayerTurn::
-	xor a
+	ld a, 0
 	ld [hBattleTurn], a
 	ret
 
@@ -111,12 +124,15 @@ HalfHP::
 GetMaxHP::
 ; output: bc, wBuffer1-2
 
+	farcall GetFutureSightUser
+	jr z, .not_external
+	ld a, MON_MAXHP
+	call TrueUserPartyAttr
+	jr .got_maxhp
+.not_external
 	ld hl, wBattleMonMaxHP
-	ld a, [hBattleTurn]
-	and a
-	jr z, .ok
-	ld hl, wEnemyMonMaxHP
-.ok
+	call GetUserMonAttr
+.got_maxhp
 	ld a, [hli]
 	ld [wBuffer2], a
 	ld b, a
@@ -124,6 +140,30 @@ GetMaxHP::
 	ld a, [hl]
 	ld [wBuffer1], a
 	ld c, a
+	ret
+
+GetOpponentMonAttr::
+	call CallOpponentTurn
+GetUserMonAttr::
+	ld a, [hBattleTurn]
+	and a
+	ret z
+	push bc
+	ld bc, wEnemyMonSpecies - wBattleMonSpecies
+	add hl, bc
+	pop bc
+	ret
+
+GetOpponentMonAttr_de::
+	call CallOpponentTurn
+GetUserMonAttr_de::
+	push hl
+	ld h, d
+	ld l, e
+	call GetUserMonAttr
+	ld d, h
+	ld e, l
+	pop hl
 	ret
 
 UpdateOpponentInParty::
@@ -150,10 +190,6 @@ UpdateBattleMon::
 
 UpdateEnemyMonInParty::
 ; No wildmons.
-	ld a, [wBattleMode]
-	dec a
-	ret z
-
 	ld a, [wCurOTMon]
 	ld hl, wOTPartyMon1Level
 	call GetPartyLocation
@@ -296,11 +332,6 @@ GetUsedItemAddr::
 	ld a, [wCurBattleMon]
 	jr z, .got_target
 	ld hl, wOTPartyUsedItems
-
-	; Wildmons use the 1st index
-	ld a, [wBattleMode]
-	dec a
-	ret z
 	ld a, [wCurOTMon]
 .got_target
 	add l
@@ -405,40 +436,31 @@ ApplyDamageMod::
 	pop bc
 	ret
 
-
-GetOpponentAbilityAfterMoldBreaker:: ; 39e1
-; Returns an opponent's ability unless Mold Breaker
-; will suppress it.
-	push de
-	push bc
+GetOpponentAbility::
 	ld a, BATTLE_VARS_ABILITY_OPP
 	call GetBattleVar
+	cp NEUTRALIZING_GAS
+	ret z
+	push bc
 	ld b, a
 	ld a, BATTLE_VARS_ABILITY
 	call GetBattleVar
-	and a
-	cp MOLD_BREAKER
-	jr z, .cont_check
+	cp NEUTRALIZING_GAS
 	ld a, b
-	jr .end
-.cont_check
-	ld a, b
-	ld de, 1
-	push hl
-	push bc
-	ld hl, MoldBreakerSuppressedAbilities
-	call IsInArray
 	pop bc
-	pop hl
-	jr c, .suppressed
-	ld a, b
-	jr .end
-.suppressed:
-	ld a, NO_ABILITY
-.end
-	pop bc
-	pop de
+	ret nz
+	xor a
 	ret
+
+GetTrueUserAbility::
+; Get true user ability after Neutralizing Gas.
+; A "true" user might be external, if Future Sight is active.
+	farjp _GetTrueUserAbility
+
+GetOpponentAbilityAfterMoldBreaker:: ; 39e1
+; Returns an opponent's ability unless Mold Breaker
+; will suppress it. Preserves bc/de/hl.
+	farjp _GetOpponentAbilityAfterMoldBreaker
 
 LegendaryMons::
 	db ARTICUNO
@@ -454,136 +476,6 @@ UberMons::
 	db LUGIA
 	db HO_OH
 	db CELEBI
-	db -1
-
-MoldBreakerSuppressedAbilities:
-	db BATTLE_ARMOR
-	db BIG_PECKS
-	db DAMP
-	db DRY_SKIN
-	db FILTER
-	db FLASH_FIRE
-	db HYPER_CUTTER
-	db IMMUNITY
-	db INNER_FOCUS
-	db INSOMNIA
-	db KEEN_EYE
-	db LEAF_GUARD
-	db LEVITATE
-	db LIGHTNING_ROD
-	db LIMBER
-	db MAGIC_BOUNCE
-	db MAGMA_ARMOR
-	db MARVEL_SCALE
-	db MOTOR_DRIVE
-	db MULTISCALE
-	db OBLIVIOUS
-	db OVERCOAT
-	db OWN_TEMPO
-	db SAND_VEIL
-	db SAP_SIPPER
-	db SHELL_ARMOR
-	db SHIELD_DUST
-	db SNOW_CLOAK
-	db SOLID_ROCK
-	db SOUNDPROOF
-	db STICKY_HOLD
-	db STURDY
-	db SUCTION_CUPS
-	db THICK_FAT
-	db UNAWARE
-	db VITAL_SPIRIT
-	db VOLT_ABSORB
-	db WATER_ABSORB
-	db WATER_VEIL
-	db WONDER_SKIN
-	db -1
-
-ContactMoves::
-	db AERIAL_ACE
-	db AQUA_TAIL
-	db ASTONISH
-	db BITE
-	db BODY_SLAM
-	db BUG_BITE
-	db BULLET_PUNCH
-	db CLOSE_COMBAT
-	db COUNTER
-	db CRABHAMMER
-	db CROSS_CHOP
-	db CRUNCH
-	db CUT
-	db DIG
-	db DIZZY_PUNCH
-	db DOUBLE_KICK
-	db DOUBLE_EDGE
-	db DRAGON_CLAW
-	db DRAIN_KISS
-	db DRAIN_PUNCH
-	db DRILL_PECK
-	db DYNAMICPUNCH
-	db EXTREMESPEED
-	db FALSE_SWIPE
-	db FEINT_ATTACK
-	db FIRE_PUNCH
-	db FLAME_WHEEL
-	db FLARE_BLITZ
-	db FLY
-	db FURY_STRIKES
-	db GYRO_BALL
-	db GIGA_IMPACT
-	db HEADBUTT
-	db HI_JUMP_KICK
-	db HORN_ATTACK
-	db HYPER_FANG
-	db ICE_PUNCH
-	db IRON_HEAD
-	db IRON_TAIL
-	db KARATE_CHOP
-	db KNOCK_OFF
-	db LEECH_LIFE
-	db LICK
-	db LOW_KICK
-	db MACH_PUNCH
-	db MEGAHORN
-	db METAL_CLAW
-	db NIGHT_SLASH
-	db OUTRAGE
-	db PECK
-	db PETAL_DANCE
-	db PLAY_ROUGH
-	db POISON_JAB
-	db POWER_WHIP
-	db PURSUIT
-	db QUICK_ATTACK
-	db RAGE
-	db RAPID_SPIN
-	db RETURN
-	db REVERSAL
-	db ROCK_SMASH
-	db ROLLOUT
-	db SCRATCH
-	db SEISMIC_TOSS
-	db SHADOW_CLAW
-	db SLASH
-	db SPARK
-	db STEEL_WING
-	db STOMP
-	db STRENGTH
-	db SUPER_FANG
-	db TACKLE
-	db TAKE_DOWN
-	db THIEF
-	db THRASH
-	db THUNDERPUNCH
-	db U_TURN
-	db VINE_WHIP
-	db WATERFALL
-	db WILD_CHARGE
-	db WING_ATTACK
-	db WRAP
-	db X_SCISSOR
-	db ZEN_HEADBUTT
 	db -1
 
 PowderMoves::
@@ -631,7 +523,7 @@ DynamicPowerMoves::
 	db COUNTER
 	db DRAGON_RAGE
 	db GYRO_BALL
-;   db LOW_KICK
+	db LOW_KICK
 	db MAGNITUDE
 	db MIRROR_COAT
 	db NIGHT_SHADE
@@ -731,11 +623,14 @@ CheckPinch::
 CompareHP::
 ; return c if HP<bc, z if HP=bc, nc+nz if HP>bc
 	push hl
+	farcall GetFutureSightUser
+	jr z, .not_external
+	ld a, MON_HP
+	call TrueUserPartyAttr
+	jr .got_hp
+.not_external
 	ld hl, wBattleMonHP
-	ld a, [hBattleTurn]
-	and a
-	jr z, .got_hp
-	ld hl, wEnemyMonHP
+	call GetUserMonAttr
 .got_hp
 	ld a, [hli]
 	sub b
@@ -750,20 +645,7 @@ CheckOpponentContactMove::
 	call CallOpponentTurn
 CheckContactMove::
 ; Check if user's move made contact. Returns nc if it is
-	farcall GetUserItemAfterUnnerve
-	ld a, b
-	cp HELD_PROTECTIVE_PADS
-	jr z, .protective_pads
-	ld a, BATTLE_VARS_MOVE
-	call GetBattleVar
-	cp STRUGGLE
-	ret z
-	ld hl, ContactMoves
-	ld de, 1
-	call IsInArray
-.protective_pads
-	ccf
-	ret
+	farjp _CheckContactMove
 
 HasUserFainted::
 	ld a, [hBattleTurn]
@@ -784,16 +666,45 @@ CheckIfHPIsZero::
 	or [hl]
 	ret
 
+GetWeatherAfterOpponentUmbrella::
+	call CallOpponentTurn
+GetWeatherAfterUserUmbrella::
+	call GetWeatherAfterCloudNine
+	cp WEATHER_HAIL
+	ret z
+	cp WEATHER_SANDSTORM
+	ret z
+	and a
+	ret z
+	push bc
+	push hl
+	farcall GetUserItemAfterUnnerve
+	ld a, b
+	xor HELD_UTILITY_UMBRELLA
+	pop hl
+	pop bc
+	ret z
 GetWeatherAfterCloudNine::
 ; Returns 0 if a cloud nine user is on the field,
 ; [wWeather] otherwise.
+	call CheckNeutralizingGas
+	jr z, .weather
 	ld a, [wPlayerAbility]
 	xor CLOUD_NINE
 	ret z
 	ld a, [wEnemyAbility]
 	xor CLOUD_NINE
 	ret z
+.weather
 	ld a, [wWeather]
+	ret
+
+CheckNeutralizingGas::
+	ld a, [wPlayerAbility]
+	cp NEUTRALIZING_GAS
+	ret z
+	ld a, [wEnemyAbility]
+	cp NEUTRALIZING_GAS
 	ret
 
 CheckSpeedWithQuickClaw::
@@ -822,12 +733,27 @@ CheckSpeedWithQuickClaw::
 	pop de
 	ld a, b
 	cp HELD_QUICK_CLAW
+	jr z, .quick_claw
+	cp HELD_CUSTAP_BERRY
 	ret nz
+
+	push de
+	farcall QuarterPinchOrGluttony
+	pop de
+	ret nz
+	call .activate_item
+	push de
+	farcall ConsumeUserItem
+	pop de
+	ret
+
+.quick_claw
 	ld a, 100
 	call BattleRandomRange
 	cp c
 	ret nc
 	push de
+.activate_item
 	farcall ItemRecoveryAnim
 	farcall GetUserItemAfterUnnerve
 	call GetCurItemName
@@ -843,6 +769,30 @@ CheckSpeedWithQuickClaw::
 	ret
 
 CheckSpeed::
+; Compares speed stat, applying items (usually, see above) and
+; stat changes. and see who ends up on top. Returns z if the player
+; outspeeds, otherwise nz, randomly on tie (which also sets carry)
+	farcall GetPlayerItem
+	ld c, 0
+	ld a, b
+	cp HELD_LAGGING_TAIL
+	jr nz, .no_player_lagging_tail
+	dec c
+.no_player_lagging_tail
+	push bc
+	farcall GetEnemyItem
+	ld a, b
+	pop bc
+	cp HELD_LAGGING_TAIL
+	jr nz, .no_enemy_lagging_tail
+	inc c
+.no_enemy_lagging_tail
+	; c=0: both/none holds, 255: player holds, 1: enemy holds
+	dec c
+	ret z
+	inc c
+	ret nz
+
 	ld a, [wTrickRoom]
 	and a
 	jr z, _CheckSpeed
@@ -852,9 +802,6 @@ CheckSpeed::
 	ret
 
 _CheckSpeed::
-; Compares speed stat, applying items (usually, see above) and
-; stat changes. and see who ends up on top. Returns z if the player
-; outspeeds, otherwise nz, randomly on tie (which also sets carry)
 	; save battle turn so this can be used without screwing it up
 	; (needed for AI)
 	ld a, [hBattleTurn]
@@ -1053,27 +1000,20 @@ GLOBAL BattleText
 	ret
 ; 3ae1
 
-GetBattleAnimPointer:: ; 3ae1
+GetBattleAnimPointer::
+	anonbankpush BattleAnimations
 
-GLOBAL BattleAnimations
-GLOBAL BattleAnimCommands
-
-	ld a, BANK(BattleAnimations)
-	rst Bankswitch
-
+.Function:
 	ld a, [hli]
 	ld [wBattleAnimAddress], a
 	ld a, [hl]
 	ld [wBattleAnimAddress + 1], a
-
-	ld a, BANK(BattleAnimCommands)
-	rst Bankswitch
-
 	ret
-; 3af0
 
 GetBattleAnimByte:: ; 3af0
+	anonbankpush BattleAnimations
 
+.Function:
 	push hl
 	push de
 
@@ -1082,18 +1022,12 @@ GetBattleAnimByte:: ; 3af0
 	inc hl
 	ld d, [hl]
 
-	ld a, BANK(BattleAnimations)
-	rst Bankswitch
-
 	ld a, [de]
 	ld [wBattleAnimByte], a
 	inc de
 
-	ld a, BANK(BattleAnimCommands)
-	rst Bankswitch
-
-	ld [hl], d
-	dec hl
+	ld a, d
+	ld [hld], a
 	ld [hl], e
 
 	pop de

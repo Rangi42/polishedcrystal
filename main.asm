@@ -145,6 +145,9 @@ INCLUDE "data/predef_pointers.asm"
 INCLUDE "engine/color.asm"
 INCLUDE "engine/trainer_scripts.asm"
 
+SECTION "Poke Ball Code", ROMX
+
+INCLUDE "engine/poke_balls.asm"
 
 SECTION "Code 3", ROMX
 
@@ -235,8 +238,11 @@ BugContest_SetCaughtContestMon: ; e6ce
 	call ByteFill
 	xor a
 	ld [wMonType], a
-	ld hl, wContestMon
-	jp GeneratePartyMonStats
+	ld hl, wOTPartyMon1
+	ld de, wContestMon
+	ld bc, PARTYMON_STRUCT_LENGTH
+	rst CopyBytes
+	ret
 
 .caughttext ; 0xe71d
 	; Caught @ !
@@ -882,8 +888,6 @@ ClearBattleRAM: ; 2ef18
 	ld bc, 6
 	xor a
 	call ByteFill
-
-	farcall ResetEnemyStatLevels
 
 	call ClearWindowData
 
@@ -1833,14 +1837,14 @@ Special_CheckForLuckyNumberWinners: ; 4d87a
 	ld hl, wPartyMon1ID
 	ld bc, wPartySpecies
 .PartyLoop:
-	ld a, [bc]
-	inc bc
-	cp EGG
-	call nz, .CompareLuckyNumberToMonID
-	push bc
+	push hl
+	ld bc, wPartyMon1IsEgg - wPartyMon1ID
+	add hl, bc
+	bit MON_IS_EGG_F, [hl]
+	pop hl
+	call z, .CompareLuckyNumberToMonID
 	ld bc, PARTYMON_STRUCT_LENGTH
 	add hl, bc
-	pop bc
 	dec d
 	jr nz, .PartyLoop
 	ld a, BANK(sBox)
@@ -1852,20 +1856,20 @@ Special_CheckForLuckyNumberWinners: ; 4d87a
 	ld hl, sBoxMon1ID
 	ld bc, sBoxSpecies
 .OpenBoxLoop:
-	ld a, [bc]
-	inc bc
-	cp EGG
-	jr z, .SkipOpenBoxMon
+	push hl
+	ld bc, wPartyMon1IsEgg - wPartyMon1ID
+	add hl, bc
+	bit MON_IS_EGG_F, [hl]
+	pop hl
+	jr nz, .SkipOpenBoxMon
 	call .CompareLuckyNumberToMonID
 	jr nc, .SkipOpenBoxMon
 	ld a, 1
 	ld [wFoundMatchingIDInParty], a
 
 .SkipOpenBoxMon:
-	push bc
 	ld bc, BOXMON_STRUCT_LENGTH
 	add hl, bc
-	pop bc
 	dec d
 	jr nz, .OpenBoxLoop
 
@@ -1898,10 +1902,12 @@ Special_CheckForLuckyNumberWinners: ; 4d87a
 	add hl, de
 	ld d, a
 .BoxNLoop:
-	ld a, [bc]
-	inc bc
-	cp EGG
-	jr z, .SkipBoxMon
+	push hl
+	ld bc, wPartyMon1IsEgg - wPartyMon1ID
+	add hl, bc
+	bit MON_IS_EGG_F, [hl]
+	pop hl
+	jr nz, .SkipBoxMon
 
 	call .CompareLuckyNumberToMonID ; sets wScriptVar and wCurPartySpecies appropriately
 	jr nc, .SkipBoxMon
@@ -1909,10 +1915,8 @@ Special_CheckForLuckyNumberWinners: ; 4d87a
 	ld [wFoundMatchingIDInParty], a
 
 .SkipBoxMon:
-	push bc
 	ld bc, BOXMON_STRUCT_LENGTH
 	add hl, bc
-	pop bc
 	dec d
 	jr nz, .BoxNLoop
 	pop bc
@@ -2181,6 +2185,8 @@ CheckPartyFullAfterContest: ; 4d9e5
 	ld a, [sBoxMon1Level]
 	ld [wCurPartyLevel], a
 	call CloseSRAM
+	ld a, PARK_BALL
+	ld [wCurItem], a
 	call SetBoxMonCaughtData
 	ld a, BANK(sBoxMon1CaughtLocation)
 	call GetSRAMBank
@@ -2316,14 +2322,6 @@ SetEggMonCaughtData: ; 4dbb8 (13:5bb8)
 	ld [wCurPartyLevel], a
 	ret
 
-_FindGreaterThanThatLevel: ; 4dbd2
-	ld hl, wPartyMon1Level
-	jp FindGreaterThanThatLevel
-
-_FindAtLeastThatHappy: ; 4dbd9
-	ld hl, wPartyMon1Happiness
-	jp FindAtLeastThatHappy
-
 _FindThatSpecies: ; 4dbe0
 	ld hl, wPartyMon1Species
 	jp FindThatSpecies
@@ -2351,63 +2349,6 @@ _FindThatSpeciesYourTrainerID: ; 4dbe6
 	xor a
 	ret
 
-FindAtLeastThatHappy: ; 4dc0a
-; Sets the bits for the Pokemon that have a happiness greater than or equal to b.
-; The lowest bits are used.  Sets z if no Pokemon in your party is at least that happy.
-	ld c, $0
-	ld a, [wPartyCount]
-	ld d, a
-.loop
-	ld a, d
-	dec a
-	push hl
-	call GetPartyLocation
-	ld a, b
-	cp [hl]
-	pop hl
-	jr z, .greater_equal
-	jr nc, .lower
-
-.greater_equal
-	ld a, c
-	or $1
-	ld c, a
-
-.lower
-	sla c
-	dec d
-	jr nz, .loop
-	call RetroactivelyIgnoreEggs
-	ld a, c
-	and a
-	ret
-
-FindGreaterThanThatLevel: ; 4dc31
-	ld c, $0
-	ld a, [wPartyCount]
-	ld d, a
-.loop
-	ld a, d
-	dec a
-	push hl
-	call GetPartyLocation
-	ld a, b
-	cp [hl]
-	pop hl
-	jr c, .greater
-	ld a, c
-	or $1
-	ld c, a
-
-.greater
-	sla c
-	dec d
-	jr nz, .loop
-	call RetroactivelyIgnoreEggs
-	ld a, c
-	and a
-	ret
-
 FindThatSpecies: ; 4dc56
 ; Find species b in your party.
 ; If you have no Pokemon, returns c = -1 and z.
@@ -2425,23 +2366,6 @@ FindThatSpecies: ; 4dc56
 	ld a, $1
 	and a
 	ret
-
-RetroactivelyIgnoreEggs: ; 4dc67
-	ld e, -2
-	ld hl, wPartySpecies
-.loop
-	ld a, [hli]
-	cp -1
-	ret z
-	cp EGG
-	jr nz, .skip_notegg
-	ld a, c
-	and e
-	ld c, a
-
-.skip_notegg
-	rlc e
-	jr .loop
 
 INCLUDE "engine/stats_screen.asm"
 
@@ -2636,6 +2560,29 @@ SECTION "Code 13", ROMX
 
 INCLUDE "engine/party_menu.asm"
 
+CopyPkmnOrEggToTempMon:
+	ld a, [wMonType]
+	ld hl, wPartyMon1IsEgg
+	ld bc, PARTYMON_STRUCT_LENGTH
+	and a
+	jr z, .got_addr
+	ld hl, wOTPartyMon1IsEgg
+	cp OTPARTYMON
+	jr z, .got_addr
+	ld hl, sBoxMon1IsEgg
+	ld bc, BOXMON_STRUCT_LENGTH
+	ld a, BANK(sBoxMon1IsEgg)
+	call GetSRAMBank
+.got_addr
+	ld a, [wCurPartyMon]
+	rst AddNTimes
+	bit MON_IS_EGG_F, [hl]
+	jr z, CopyPkmnToTempMon
+	ld a, EGG
+	ld [wCurPartySpecies], a
+	ld [wCurSpecies], a
+	jr _CopyPkmnToTempMon
+
 CopyPkmnToTempMon: ; 5084a
 ; gets the BaseData of a Pkmn
 ; and copys the PkmnStructure to wTempMon
@@ -2645,6 +2592,7 @@ CopyPkmnToTempMon: ; 5084a
 	call GetPkmnSpecies
 	ld a, [wCurPartySpecies]
 	ld [wCurSpecies], a
+_CopyPkmnToTempMon:
 	call GetBaseData
 
 	ld a, [wMonType]
@@ -2692,9 +2640,10 @@ _TempMonStatsCalculation: ; 50893
 	add hl, bc
 	ld d, h
 	ld e, l
-	ld a, [wCurPartySpecies]
-	cp EGG
-	jr nz, .not_egg
+	ld hl, MON_IS_EGG
+	add hl, bc
+	bit MON_IS_EGG_F, [hl]
+	jr z, .not_egg
 	xor a
 	ld [de], a
 	inc de
@@ -4084,6 +4033,10 @@ INCLUDE "engine/phone_scripts.asm"
 SECTION "Code 21", ROMX
 
 INCLUDE "engine/battle_anims/bg_effects.asm"
+
+
+SECTION "Battle Animation data", ROMX
+
 INCLUDE "data/moves/animations.asm"
 
 
@@ -4175,6 +4128,11 @@ INCLUDE "engine/battle/unique_wild_moves.asm"
 SECTION "Effect Commands", ROMX
 
 INCLUDE "engine/battle/effect_commands.asm"
+
+
+SECTION "Battle Stat Changes", ROMX
+
+INCLUDE "engine/battle/stats.asm"
 
 
 SECTION "Battle Animations", ROMX

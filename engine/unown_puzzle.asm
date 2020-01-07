@@ -112,13 +112,13 @@ InitUnownPuzzlePiecePositions: ; e124e
 ; e126d
 
 .PuzzlePieceInitialPositions: ; e126d
-initpuzcoord: macro
+initpuzcoord: MACRO
 rept _NARG / 2
 	db \1 puzcoord \2
 	shift
 	shift
 endr
-endm
+ENDM
 	initpuzcoord 0,0, 0,1, 0,2, 0,3, 0,4, 0,5
 	initpuzcoord 1,0,                     1,5
 	initpuzcoord 2,0,                     2,5
@@ -595,11 +595,11 @@ RedrawUnownPuzzlePieces: ; e14d9
 
 UnownPuzzleCoordData: ; e1559
 
-puzzle_coords: macro
+puzzle_coords: MACRO
 	dbpixel \1, \2, \3, \4
 	dwcoord \5, \6
 	db \7
-endm
+ENDM
 ; OAM coords, tilemap coords, vacant tile
 	puzzle_coords  3,  3, 4, 4,  1,  0, PUZZLE_BORDER
 	puzzle_coords  6,  3, 4, 4,  4,  0, PUZZLE_BORDER

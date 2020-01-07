@@ -197,8 +197,6 @@ CryHeaders::
 	mon_cry CRY_WOOPER,     -$0c6,  $140 ; Quagsire
 	mon_cry CRY_TYROGUE,     $0a2,  $140 ; Espeon
 	mon_cry CRY_VENONAT,    -$0e9,  $0f0 ; Umbreon
-	mon_cry CRY_VENONAT,     $03d,  $160 ; Leafeon
-	mon_cry CRY_VENONAT,     $0b0,  $16f ; Glaceon
 	mon_cry CRY_MARILL,     -$01f,  $180 ; Murkrow
 	mon_cry CRY_MARILL,     -$01f,  $180 ; Honchkrow
 	mon_cry CRY_SLOWKING,    $104,  $200 ; Slowking
@@ -217,6 +215,7 @@ CryHeaders::
 	mon_cry CRY_DUNSPARCE,   $000,  $180 ; Granbull
 	mon_cry CRY_SLOWKING,    $160,  $0e0 ; Qwilfish
 	mon_cry CRY_AMPHAROS,    $000,  $160 ; Scizor
+	mon_cry CRY_DUNSPARCE,   $290,  $0a8 ; Shuckle
 	mon_cry CRY_AMPHAROS,    $035,  $0e0 ; Heracross
 	mon_cry CRY_WOOPER,      $053,  $0af ; Sneasel
 	mon_cry CRY_WOOPER,      $053,  $0af ; Weavile
@@ -238,6 +237,7 @@ CryHeaders::
 	mon_cry CRY_SENTRET,     $048,  $230 ; Phanpy
 	mon_cry CRY_DONPHAN,     $000,  $1a0 ; Donphan
 	mon_cry CRY_GIRAFARIG,   $073,  $240 ; Porygon2
+	mon_cry CRY_GIRAFARIG,   $073,  $240 ; PorygonZ
 	mon_cry CRY_PICHU,      -$21a,  $1f0 ; Smeargle
 	mon_cry CRY_TYROGUE,     $02c,  $108 ; Tyrogue
 	mon_cry CRY_SLUGMA,      $000,  $100 ; Hitmontop
@@ -256,7 +256,7 @@ CryHeaders::
 	mon_cry CRY_TYPHLOSION,  $000,  $100 ; Lugia
 	mon_cry CRY_TYROGUE,     $000,  $180 ; HoOh
 	mon_cry CRY_ENTEI,       $14a,  $111 ; Celebi
+	mon_cry CRY_VENONAT,     $03d,  $160 ; Leafeon
+	mon_cry CRY_VENONAT,     $0b0,  $16f ; Glaceon
 	mon_cry CRY_VENONAT,     $0b0,  $16f ; Sylveon
-	mon_cry CRY_GIRAFARIG,   $073,  $240 ; PorygonZ
 	mon_cry CRY_NIDORAN_M,      0,     0 ; Egg
-	mon_cry CRY_NIDORAN_M,      0,     0 ; 255

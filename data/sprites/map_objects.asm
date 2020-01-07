@@ -1,7 +1,7 @@
-sprite_movement_data: macro
+sprite_movement_data: MACRO
 	db \1, \2, \3, \4, \5
 	dn \6, 0
-endm
+ENDM
 
 SpriteMovementData::
 	; function,                                              facing, action,                        flags1, flags2, palette flags

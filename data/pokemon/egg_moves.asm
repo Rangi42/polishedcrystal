@@ -109,7 +109,7 @@ ClefairyEggMoves:
 	db METRONOME
 	db AMNESIA
 	db SPLASH ; requires Hoppip
-	db SOFTBOILED
+	db FRESH_SNACK
 	db $ff
 
 VulpixEggMoves:
@@ -741,6 +741,14 @@ QwilfishEggMoves:
 	db SUPERSONIC
 	db POISON_JAB
 	db WATER_PULSE
+	db $ff
+
+ShuckleEggMoves:
+	db ROLLOUT
+	db ACID
+	db KNOCK_OFF
+	db MUD_SLAP
+	db ROCK_BLAST
 	db $ff
 
 HeracrossEggMoves:

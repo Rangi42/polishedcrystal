@@ -54,6 +54,8 @@ DoPlayerMovement:: ; 80000
 	ret c
 	call .TryJump
 	ret c
+	call .TryStairs
+	ret c
 	call .CheckWarp
 	ret c
 	jr .NotMoving
@@ -79,6 +81,8 @@ DoPlayerMovement:: ; 80000
 	call .TryStep
 	ret c
 	call .TryJump
+	ret c
+	call .TryStairs
 	ret c
 	call .CheckWarp
 	ret c
@@ -391,6 +395,47 @@ DoPlayerMovement:: ; 80000
 	db FACE_UP | FACE_LEFT
 ; 80226
 
+.TryStairs:
+	ld a, [wPlayerStandingTile]
+	ld e, a
+	and $f0
+	cp $c0 ; sideways stairs
+	jr nz, .DontStairs
+
+	ld a, e
+	and 7
+	ld e, a
+	ld d, 0
+	ld hl, .FacingStairsTable
+	add hl, de
+	ld a, [wFacingDirection]
+	and [hl]
+	jr z, .DontStairs
+
+	ld a, [wPlayerStandingTile]
+	cp COLL_STAIRS_RIGHT_UP
+	ld a, FALSE
+	jr c, .goingdown
+	inc a
+.goingdown
+	ld [wPlayerGoingUpStairs], a
+
+	ld a, STEP_STAIRS
+	call .DoStep
+	ld a, 7
+	scf
+	ret
+
+.FacingStairsTable:
+	db FACE_RIGHT
+	db FACE_LEFT
+	db FACE_RIGHT
+	db FACE_LEFT
+
+.DontStairs:
+	xor a
+	ret
+
 .CheckWarp: ; 80226
 
 	ld a, [wWalkingDirection]
@@ -470,6 +515,7 @@ DoPlayerMovement:: ; 80000
 	dw .InPlace
 	dw .SpinStep
 	dw .Fast ; x2
+	dw .StairsStep
 
 .SlowStep:
 	slow_step_down
@@ -526,6 +572,11 @@ DoPlayerMovement:: ; 80000
 	fast_step_up
 	fast_step_left
 	fast_step_right
+.StairsStep
+	stairs_step_down
+	stairs_step_up
+	stairs_step_left
+	stairs_step_right
 
 .StandInPlace: ; 802b3
 	ld a, movement_step_sleep_1

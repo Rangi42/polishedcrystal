@@ -273,7 +273,7 @@ RunBattleAnimCommand: ; cc25f
 	ret
 
 .not_done_with_anim
-	cp $d0
+	cp $cf
 	jr nc, .do_anim
 
 	ld [wBattleAnimDuration], a
@@ -288,7 +288,7 @@ RunBattleAnimCommand: ; cc25f
 .DoCommand: ; cc293
 ; Execute battle animation command in [wBattleAnimByte].
 	ld a, [wBattleAnimByte]
-	sub $d0
+	sub $cf
 
 	ld e, a
 	ld d, 0
@@ -304,6 +304,7 @@ RunBattleAnimCommand: ; cc25f
 
 
 BattleAnimCommands:: ; cc2a4 (33:42a4)
+	dw BattleAnimCmd_StatLoop
 	dw BattleAnimCmd_Obj
 	dw BattleAnimCmd_1GFX
 	dw BattleAnimCmd_2GFX
@@ -411,8 +412,15 @@ BattleAnimCmd_Jump: ; cc339 (33:4339)
 	ld [hl], d
 	ret
 
+BattleAnimCmd_StatLoop:
+	ld a, [wLoweredStat]
+	swap a
+	and $f
+	inc a
+	jr DoBattleAnimLoop
 BattleAnimCmd_Loop: ; cc348 (33:4348)
 	call GetBattleAnimByte
+DoBattleAnimLoop:
 	ld hl, wBattleAnimFlags
 	bit 2, [hl]
 	jr nz, .continue_loop
@@ -869,8 +877,7 @@ BattleAnimCmd_Transform: ; cc5dc (33:45dc)
 
 	ld a, [wTempBattleMonSpecies] ; TempBattleMonSpecies
 	ld [wCurPartySpecies], a ; CurPartySpecies
-	ld hl, wBattleMonForm
-	predef GetVariant
+	farcall GetBattleMonVariant
 	ld de, VTiles0 tile $00
 	predef GetFrontpic
 	jr .done
@@ -878,8 +885,7 @@ BattleAnimCmd_Transform: ; cc5dc (33:45dc)
 .player
 	ld a, [wTempEnemyMonSpecies] ; TempEnemyMonSpecies
 	ld [wCurPartySpecies], a ; CurPartySpecies
-	ld hl, wEnemyMonForm
-	predef GetVariant
+	farcall GetEnemyMonVariant
 	ld de, VTiles0 tile $00
 	predef GetBackpic
 
@@ -1136,15 +1142,13 @@ BattleAnimCmd_BeatUp: ; cc776 (33:4776)
 	and a
 	jr z, .player
 
-	ld hl, wBattleMonForm
-	predef GetVariant
+	farcall GetBattleMonVariant
 	ld de, VTiles2 tile $00
 	predef GetFrontpic
 	jr .done
 
 .player
-	ld hl, wEnemyMonForm
-	predef GetVariant
+	farcall GetEnemyMonVariant
 	ld de, VTiles2 tile $31
 	predef GetBackpic
 

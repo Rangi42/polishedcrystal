@@ -8,5 +8,5 @@ DefaultOptions:
 	             ;           imperial units, battle style set
 	db %00000111 ; InitialOptions: natures on, abilities on, color variation on,
 	             ;                 perfect IVs off, traded as OT off,
-	             ;                 nuzlocke mode off
+	             ;                 nuzlocke mode off, scaled exp off
 	db $0        ; ???

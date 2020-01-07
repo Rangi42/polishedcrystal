@@ -73,8 +73,8 @@ Gen2ToGen2LinkComms: ; 28177
 	ld a, SERIAL_NO_DATA_BYTE
 	ld [de], a
 	ld hl, wLinkData
-	ld de, wOTPlayerName
-	ld bc, $1c2
+	ld de, wLinkOTExchangeStart
+	ld bc, wLinkOTExchangeEnd - wLinkOTExchangeStart
 	call Serial_ExchangeBytes
 	ld a, SERIAL_NO_DATA_BYTE
 	ld [de], a
@@ -684,16 +684,36 @@ PlaceTradePartnerNamesAndParty: ; fb60d
 	ld a, $14
 	ld [bc], a
 	hlcoord 7, 1
-	ld de, wPartySpecies
+	ld a, [wPartyCount]
+	ld de, wPartyMons
 	call .PlaceSpeciesNames
 	hlcoord 7, 9
-	ld de, wOTPartySpecies
+	ld a, [wOTPartyCount]
+	ld de, wOTPartyMons
 .PlaceSpeciesNames: ; fb634
-	ld c, $0
+	push bc
+	ld b, a
+	ld c, 0
 .loop
-	ld a, [de]
-	cp -1
-	ret z
+	push hl
+	push bc
+	ld hl, MON_IS_EGG
+	add hl, de
+	ld a, c
+	call GetPartyLocation
+	bit MON_IS_EGG_F, [hl]
+	ld a, EGG
+	jr nz, .got_species
+	ld hl, MON_SPECIES
+	add hl, de
+	pop bc
+	push bc
+	ld a, c
+	call GetPartyLocation
+	ld a, [hl]
+.got_species
+	pop bc
+	pop hl
 	ld [wd265], a
 	push bc
 	push hl
@@ -705,14 +725,15 @@ PlaceTradePartnerNamesAndParty: ; fb60d
 	pop hl
 	call PlaceString
 	pop de
-	inc de
 	pop hl
 	ld bc, SCREEN_WIDTH
 	add hl, bc
 	pop bc
 	inc c
-	jr .loop
-; fb656
+	dec b
+	jr nz, .loop
+	pop bc
+	ret
 
 LinkTrade_OTPartyMenu: ; 28803
 	ld a, OTPARTYMON
@@ -1167,11 +1188,18 @@ Function28926: ; 28926
 	ld [wcf57], a
 	ld [wOtherPlayerLinkAction], a
 	ld a, [wd003]
+	ld hl, wOTPartyMon1IsEgg
+	call GetPartyLocation
+	bit MON_IS_EGG_F, [hl]
+	ld a, EGG
+	jr nz, .got_ot_species
+	ld a, [wd003]
 	ld hl, wOTPartySpecies
 	ld c, a
 	ld b, $0
 	add hl, bc
 	ld a, [hl]
+.got_ot_species
 	ld [wd265], a
 	call GetPokemonName
 	hlcoord 0, 12
@@ -1225,12 +1253,9 @@ ValidateOTTrademon: ; fb57e
 	add hl, bc
 	ld a, [hl]
 	pop hl
-	cp EGG
-	jr z, .matching_or_egg
 	cp [hl]
 	jr nz, .abnormal
 
-.matching_or_egg
 	ld b, h
 	ld c, l
 	ld hl, MON_LEVEL
@@ -1371,23 +1396,37 @@ LinkTrade: ; 28b87
 	call LinkTextbox
 	call Link_WaitBGMap
 	ld a, [wd002]
+	ld hl, wPartyMon1IsEgg
+	call GetPartyLocation
+	bit MON_IS_EGG_F, [hl]
+	ld a, EGG
+	jr nz, .got_party_species
+	ld a, [wd002]
 	ld hl, wPartySpecies
 	ld c, a
 	ld b, $0
 	add hl, bc
 	ld a, [hl]
-	ld [wd265], a
+.got_party_species
+	ld [wNamedObjectIndexBuffer], a
 	call GetPokemonName
 	ld hl, wStringBuffer1
 	ld de, wd004
 	ld bc, PKMN_NAME_LENGTH
 	rst CopyBytes
 	ld a, [wd003]
+	ld hl, wOTPartyMon1IsEgg
+	call GetPartyLocation
+	bit MON_IS_EGG_F, [hl]
+	ld a, EGG
+	jr nz, .got_ot_species
+	ld a, [wd003]
 	ld hl, wOTPartySpecies
 	ld c, a
 	ld b, $0
 	add hl, bc
 	ld a, [hl]
+.got_ot_species
 	ld [wd265], a
 	call GetPokemonName
 	ld hl, .TradeThisForThat
@@ -1505,11 +1544,18 @@ LinkTrade: ; 28b87
 	ld bc, NAME_LENGTH
 	rst CopyBytes
 	ld a, [wd002]
+	ld hl, wPartyMon1IsEgg
+	call GetPartyLocation
+	bit MON_IS_EGG_F, [hl]
+	ld a, EGG
+	jr nz, .got_tradeparty_species
+	ld a, [wd002]
 	ld hl, wPartySpecies
 	ld b, $0
 	ld c, a
 	add hl, bc
 	ld a, [hl]
+.got_tradeparty_species
 	ld [wPlayerTrademonSpecies], a
 	push af
 	ld a, [wd002]
@@ -1547,11 +1593,18 @@ LinkTrade: ; 28b87
 	ld bc, NAME_LENGTH
 	rst CopyBytes
 	ld a, [wd003]
+	ld hl, wOTPartyMon1IsEgg
+	call GetPartyLocation
+	bit MON_IS_EGG_F, [hl]
+	ld a, EGG
+	jr nz, .got_tradeot_species
+	ld a, [wd003]
 	ld hl, wOTPartySpecies
 	ld b, $0
 	ld c, a
 	add hl, bc
 	ld a, [hl]
+.got_tradeot_species
 	ld [wOTTrademonSpecies], a
 	ld a, [wd003]
 	ld hl, wOTPartyMonOT

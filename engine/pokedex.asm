@@ -1060,9 +1060,9 @@ Pokedex_DrawMainScreenBG: ; 4074c (10:474c)
 	jp Pokedex_PlaceFrontpicTopLeftCorner
 
 String_SEEN: ; 407e1
-	db "S","e","e","n", $ff
+	db "Seen", $ff
 String_OWN: ; 407e6
-	db "O","w","n", $ff
+	db "Own", $ff
 String_SELECT_OPTION: ; 407ea
 ;	db $3b, $48, $49, $4a, $44, $45, $46, $47 ; SELECT > OPTION
 	db $3b, $41, $42, $43, $44, $45, $46, $47
@@ -1120,17 +1120,17 @@ Pokedex_DrawDexEntryScreenBG: ; 407fd
 	jp Pokedex_PlaceFrontpicTopLeftCorner
 
 .HeightImperial: ; 40852
-	db "Ht  ?′??″", $ff ; HT  ?'??"
+	rawchar "Ht  ?′??″", $ff ; HT  ?'??"
 .WeightImperial: ; 4085c
-	db "Wt   ???lb", $ff ; WT   ???lb
+	rawchar "Wt   ???lb", $ff ; WT   ???lb
 .HeightMetric:
-	db "Ht   ???m", $ff ; HT   ???m"
+	rawchar "Ht   ???m", $ff ; HT   ???m"
 .WeightMetric:
-	db "Wt   ???kg", $ff ; WT   ???kg
+	rawchar "Wt   ???kg", $ff ; WT   ???kg
 .MenuItems: ; 40867
-	db $3b, " ","P","a","g","e"," A","r","e","a"," ","C","r","y"," "," "," "," "," ", $ff
+	rawchar $3b, " Page Area Cry     ", $ff
 .MenuItemsShinyCharm:
-	db $3b, " ","P","a","g","e"," A","r","e","a"," ","C","r","y"," ","S","h","n","y", $ff
+	rawchar $3b, " Page Area Cry Shny", $ff
 
 Pokedex_DrawDexEntryScreenRightEdge: ; 1de247
 	ld a, [hBGMapAddress]
@@ -1186,7 +1186,7 @@ Pokedex_DrawOptionScreenBG: ; 4087c (10:487c)
 	jp PlaceString
 
 .Title: ; 408b2
-	db $3b, " ","O","p","t","i","o","n"," ", $3c, $ff
+	rawchar $3b, " Option ", $3c, $ff
 
 .Modes: ; 408bd
 	db   "Johto Mode"
@@ -1219,10 +1219,10 @@ Pokedex_DrawSearchScreenBG: ; 408f0 (10:48f0)
 	jp PlaceString
 
 .Title: ; 4092a
-	db $3b, " ","S","e","a","r","c","h"," ", $3c, $ff
+	rawchar $3b, " Search ", $3c, $ff
 
 .TypeLeftRightArrows: ; 40935
-	db $3d, " "," "," "," "," "," "," "," ","▷", $ff
+	db $3d, "        ▷", $ff
 
 .Types: ; 40940
 	db   "Type1"
@@ -2412,29 +2412,17 @@ Pokedex_LoadAnyFootprint: ; 4147b
 	dec a
 	and 7
 	swap a ; * $10
+	add a, a
 	ld l, a
 	ld h, 0
 	add hl, de
 	ld de, Footprints
 	add hl, de
 
-	push hl
 	ld e, l
 	ld d, h
 	ld hl, VTiles2 tile $65
-	lb bc, BANK(Footprints), 2
-	call Request1bpp
-	pop hl
-
-	; Whoever was editing footprints forgot to fix their
-	; tile editor. Now each bottom half is 8 tiles off.
-	ld de, 8 tiles
-	add hl, de
-
-	ld e, l
-	ld d, h
-	ld hl, VTiles2 tile $67
-	lb bc, BANK(Footprints), 2
+	lb bc, BANK(Footprints), 4
 	jp Request1bpp
 
 Pokedex_LoadGFX:
@@ -2486,7 +2474,7 @@ Pokedex_LoadUnownFrontpicTiles: ; 41a58 (10:5a58)
 NewPokedexEntry: ; fb877
 	ld a, [hMapAnims]
 	push af
-	ld a, [wEnemyBackupShiny]
+	ld a, [wOTPartyMon1Shiny]
 	ld [wDexMonShiny], a
 	xor a
 	ld [hMapAnims], a
@@ -2557,11 +2545,10 @@ NewPokedexEntry: ; fb877
 	call LoadStandardFont
 	call Pokedex_PlaceFrontpicTopLeftCorner
 	call ApplyAttrAndTilemapInVBlank
-	farcall GetEnemyMonPersonality
-	ld a, [hli]
-	ld [wTempMonPersonality], a
-	ld a, [hl]
-	ld [wTempMonPersonality + 1], a
+	farcall GetEnemyMonDVs
+	ld de, wTempMonDVs
+	ld bc, 5
+	rst CopyBytes
 	ld b, CGB_TRAINER_OR_MON_FRONTPIC_PALS
 	call GetCGBLayout
 	jp SetPalettes
@@ -2592,5 +2579,5 @@ QuestionMarkLZ: ; 1de0e1
 INCBIN "gfx/pokedex/question_mark.2bpp.lz"
 
 Footprints: ; f9434
-INCBIN "gfx/pokedex/footprints.w128.1bpp"
+INCLUDE "gfx/footprints.asm"
 ; fb434

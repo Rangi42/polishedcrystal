@@ -35,7 +35,7 @@ CeruleanGymBadgeSpeechHouseGentlemanScript:
 	line "burglaries a few"
 
 	para "years back, so now"
-	line "everyone's super-"
+	line "everyone's super"
 	cont "cautious."
 
 	para "Who are you?"

@@ -98,11 +98,21 @@ ItemDescriptions:
 	dw LumBerryDesc
 	dw SitrusBerryDesc
 	dw FigyBerryDesc
+	dw PomegBerryDesc
+	dw KelpsyBerryDesc
+	dw QualotBerryDesc
+	dw HondewBerryDesc
+	dw GrepaBerryDesc
+	dw TamatoBerryDesc
 	dw LiechiBerryDesc
 	dw GanlonBerryDesc
 	dw SalacBerryDesc
 	dw PetayaBerryDesc
 	dw ApicotBerryDesc
+	dw LansatBerryDesc
+	dw StarfBerryDesc
+	dw EnigmaBerryDesc
+	dw CustapBerryDesc
 	dw JabocaBerryDesc
 	dw RowapBerryDesc
 	dw KeeBerryDesc
@@ -166,13 +176,22 @@ ItemDescriptions:
 	dw WeakPolicyDesc
 	dw WideLensDesc
 	dw WiseGlassesDesc
+	dw ZoomLensDesc
+	dw EjectButtonDesc
+	dw LaggingTailDesc
+	dw IronBallDesc
+	dw RingTargetDesc
+	dw RedCardDesc
+	dw AbsorbBulbDesc
+	dw CellBatteryDesc
+	dw LuminousMossDesc
+	dw SnowballDesc
 	dw EjectPackDesc
 	dw RoomServiceDesc
 	dw BlundrPolicyDesc
 	dw ThroatSprayDesc
 	dw HeavyBootsDesc
 	dw UtilUmbrellaDesc
-	dw ZoomLensDesc
 	dw MentalHerbDesc
 	dw PowerHerbDesc
 	dw WhiteHerbDesc
@@ -630,6 +649,30 @@ FigyBerryDesc:
 	db   "Self-restore item."
 	next "(1/2 max HP, Hold)@"
 
+PomegBerryDesc:
+	db   "Raises friendship"
+	next "but lowers HP.@"
+
+KelpsyBerryDesc:
+	db   "Raises friendship"
+	next "but lowers Attack.@"
+
+QualotBerryDesc:
+	db   "Raises friendship,"
+	next "lowers Defense.@"
+
+HondewBerryDesc:
+	db   "Raises friendship,"
+	next "lowers Spcl.Atk.@"
+
+GrepaBerryDesc:
+	db   "Raises friendship,"
+	next "lowers Spcl.Def.@"
+
+TamatoBerryDesc:
+	db   "Raises friendship"
+	next "but lowers Speed.@"
+
 LiechiBerryDesc:
 	db   "Raises Attack in"
 	next "a pinch.@"
@@ -649,6 +692,22 @@ PetayaBerryDesc:
 ApicotBerryDesc:
 	db   "Raises Spcl.Def"
 	next "in a pinch.@"
+
+LansatBerryDesc:
+	db   "Ups critical hit"
+	next "ratio in a pinch.@"
+
+StarfBerryDesc:
+	db   "Ups a random stat"
+	next "in a pinch.@"
+
+EnigmaBerryDesc:
+	db   "Restores HP on su-"
+	next "per-effective hit.@"
+
+CustapBerryDesc:
+	db   "Moves first in"
+	next "a pinch.@"
 
 JabocaBerryDesc:
 	db   "Damages foe on"
@@ -752,8 +811,8 @@ RazorClawDesc:
 	next "hit ratio. (Hold)@"
 
 QuickClawDesc:
-	db   "Raises 1st strike"
-	next "ratio. (Hold)@"
+	db   "Boosts chances of"
+	next "moving 1st. (Hold)@"
 
 KingsRockDesc:
 RazorFangDesc:
@@ -837,7 +896,7 @@ DestinyKnotDesc:
 	next "back. (Hold)@"
 
 ExpertBeltDesc:
-	db   "Ups super-effect-"
+	db   "Ups super effect-"
 	next "ive moves. (Hold)@"
 
 FocusSashDesc:
@@ -870,7 +929,7 @@ RockyHelmetDesc:
 
 SafeGogglesDesc:
 	db   "Protects from"
-	next "weather effects.@"
+	next "weather damage.@"
 
 ShedShellDesc:
 	db   "Allows switching"
@@ -885,7 +944,7 @@ SootheBellDesc:
 	next "friendship. (Hold)@"
 
 WeakPolicyDesc:
-	db   "Super-effective"
+	db   "Super effective"
 	next "hit ups offenses.@"
 
 WideLensDesc:
@@ -1137,14 +1196,69 @@ MirageMailDesc:
 	db   "Mew-print Mail."
 	next "(Hold)@"
 
+EjectButtonDesc:
+	db   "Switches out when"
+	next "hit. (Hold)@"
+
+LaggingTailDesc:
+	db   "Always moves last."
+	next "(Hold)@"
+
+IronBallDesc:
+	db   "Lowers Speed and"
+	next "grounds. (Hold)@" 
+
+RingTargetDesc:
+	db   "Loses type immun-"
+	next "ities. (Hold)@"
+
+RedCardDesc:
+	db   "Switches out foe"
+	next "when hit. (Hold)@"
+
+AbsorbBulbDesc:
+	db   "Raises Spcl.Atk on"
+	next "a Water hit.@"
+
+CellBatteryDesc:
+	db   "Raises Attack on"
+	next "an Electric hit.@"
+
+LuminousMossDesc:
+	db   "Raises Spcl.Def on"
+	next "a Water hit.@"
+
+SnowballDesc:
+	db   "Raises Attack on"
+	next "an Ice hit.@"
+
 EjectPackDesc:
+	db   "Switches out when"
+	next "stats fall. (Hold)@"
+
 RoomServiceDesc:
+	db   "Lowers Speed in"
+	next "Trick Room. (Hold)@"
+
 BlundrPolicyDesc:
+	db   "Raises Speed when"
+	next "a move misses.@"
+
 ThroatSprayDesc:
+	db   "Raises Spcl.Atk on"
+	next "a sound move.@"
+
 HeavyBootsDesc:
+	db   "Protects from"
+	next "traps. (Hold)@"
+
 UtilUmbrellaDesc:
+	db   "Protects from"
+	next "weather effects.@"
+
 MintDesc:
-	db   "?@"
+	db   "A fragrant sprig"
+	next "of mint.@"
 
 
 BicycleDesc:

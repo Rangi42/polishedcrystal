@@ -8,99 +8,99 @@ cont   EQUS "db \"<CONT>\","  ; Scroll to the next line.
 done   EQUS "db \"<DONE>\""   ; End a text box.
 prompt EQUS "db \"<PROMPT>\"" ; Prompt the player to end a text box (initiating some other event).
 
-text_from_ram: macro
+text_from_ram: MACRO
 	db "<RAM>"
 	dw \1
-endm
+ENDM
 
-text_bcd: macro
+text_bcd: MACRO
 	db "<BCD>"
 	dw \1
 	db \2
-endm
+ENDM
 
-text_move: macro
+text_move: MACRO
 	db "<MOVE>"
 	dw \1
-endm
+ENDM
 
-text_box: macro
+text_box: MACRO
 	db "<BOX>"
 	dw \1
 	db \2, \3
 ENDM
 
-text_low: macro
+text_low: MACRO
 	db "<LOW>"
-endm
+ENDM
 
-text_waitbutton: macro
+text_waitbutton: MACRO
 	db "<WAIT>"
-endm
+ENDM
 
-text_scroll: macro
+text_scroll: MACRO
 	db "<SCROLL>"
-endm
+ENDM
 
-start_asm: macro
+start_asm: MACRO
 	db "<ASM>"
-endm
+ENDM
 
-deciram: macro
+deciram: MACRO
 	db "<NUM>"
 	dw \1 ; address
 	dn \2, \3 ; bytes, digits
-endm
+ENDM
 
-interpret_data: macro
+interpret_data: MACRO
 	db "<EXIT>"
-endm
+ENDM
 
-sound_dex_fanfare_50_79: macro
+sound_dex_fanfare_50_79: MACRO
 	db "<DEX2>"
-endm
+ENDM
 
-limited_interpret_data: macro
+limited_interpret_data: MACRO
 	db "<DOTS>"
 	db \1
-endm
+ENDM
 
-link_wait_button: macro
+link_wait_button: MACRO
 	db "<LINK>"
-endm
+ENDM
 
-sound_dex_fanfare_20_49: macro
+sound_dex_fanfare_20_49: MACRO
 	db "<DEX1>"
-endm
+ENDM
 
-sound_item: macro
+sound_item: MACRO
 	db "<ITEM>"
-endm
+ENDM
 
-sound_caught_mon: macro
+sound_caught_mon: MACRO
 	db "<CAUGHT>"
-endm
+ENDM
 
-sound_dex_fanfare_80_109: macro
+sound_dex_fanfare_80_109: MACRO
 	db "<DEX3>"
-endm
+ENDM
 
-sound_fanfare: macro
+sound_fanfare: MACRO
 	db "<BEEP>"
-endm
+ENDM
 
-sound_slot_machine_start: macro
+sound_slot_machine_start: MACRO
 	db "<SLOTS>"
-endm
+ENDM
 
-text_buffer: macro
+text_buffer: MACRO
 	db "<BUFFER>"
 	db \1
-endm
+ENDM
 
-current_day: macro
+current_day: MACRO
 	db "<DAY>"
-endm
+ENDM
 
 text_jump: MACRO
 	db "<FAR>"

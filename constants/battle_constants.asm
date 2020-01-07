@@ -23,6 +23,21 @@ NO_EFFECT          EQU $00
 	const MULTIPLE_STATS ; used by Curse
 NUM_LEVEL_STATS EQU const_value
 
+	const_def
+	const STAT_TARGET_F
+	const STAT_LOWER_F
+	const STAT_MISS_F
+	const STAT_SECONDARY_F
+	const STAT_SILENT_F
+	const STAT_SKIPTEXT_F
+
+STAT_TARGET    EQU 1 << STAT_TARGET_F
+STAT_LOWER     EQU 1 << STAT_LOWER_F
+STAT_MISS      EQU 1 << STAT_MISS_F
+STAT_SECONDARY EQU 1 << STAT_SECONDARY_F
+STAT_SILENT    EQU 1 << STAT_SILENT_F
+STAT_SKIPTEXT  EQU 1 << STAT_SKIPTEXT_F
+
 ; move struct
 	const_def
 	const MOVE_ANIM
@@ -61,9 +76,12 @@ STAT_MIN_HP EQU 10
 
 ; $00 is used instead of $ff for DVs because $ff is the end-of-trainer marker
 ; ReadTrainerParty converts $00 to $ff when reading DVs
+; DV order: HP atk def spe sat sdf
 
 PERFECT_DVS      EQUS "$ff, $ff, $ff"
 FAKE_PERFECT_DVS EQUS "$00, $00, $00"
+DVS_TRICK_ROOM   EQUS "$00, $f0, $00"
+BTDVS_TRICK_ROOM EQUS "$ff, $f0, $ff"
 
 ; Hidden Power DVs ($00 is converted to $ff in regular trainer sets)
 ; Chosen for stat importance: Speed > * > Atk
@@ -171,7 +189,19 @@ endc
 	const ATKFAIL_ABILITY ; ability immunity, might have side effects
 	const ATKFAIL_GENERIC ; "But it failed!"
 	const ATKFAIL_IMMUNE  ; "It doesn't affect <TARGET>!"
+	const ATKFAIL_ACCMISS ; missed from accuracy
 	const ATKFAIL_CUSTOM  ; custom message
+
+; deferred switch types
+	const_def
+	const SWITCH_DEFERRED
+	const SWITCH_EXPLICIT
+	const SWITCH_TARGET
+	const SWITCH_FORCED
+	const SWITCH_PURSUIT
+	const SWITCH_ITEM
+	const SWITCH_OPPITEM
+	const SWITCH_BATON_PASS
 
 ; battle variables
 	const_def
@@ -229,6 +259,7 @@ ALL_STATUS EQU (1 << PSN) | (1 << BRN) | (1 << FRZ) | (1 << PAR) | (1 << TOX) | 
 	enum SUBSTATUS_ENCORED
 	enum SUBSTATUS_TRANSFORMED
 	enum SUBSTATUS_MAGIC_BOUNCE
+	enum SUBSTATUS_FAINTED
 
 	enum_start 7, -1
 	enum SUBSTATUS_CONFUSED

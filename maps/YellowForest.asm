@@ -1,7 +1,8 @@
 YellowForest_MapScriptHeader:
 	db 0 ; scene scripts
 
-	db 1 ; callbacks
+	db 2 ; callbacks
+	callback MAPCALLBACK_NEWMAP, YellowForestFlyPoint
 	callback MAPCALLBACK_TILES, YellowForestTileScript
 
 	db 2 ; warp events
@@ -45,6 +46,10 @@ YellowForest_MapScriptHeader:
 	const YELLOWFOREST_SKARMORY
 	const YELLOWFOREST_YELLOW
 	const YELLOWFOREST_POKE_BALL5
+
+YellowForestFlyPoint:
+	setflag ENGINE_FLYPOINT_YELLOW_FOREST
+	return
 
 YellowForestTileScript:
 	checkscene

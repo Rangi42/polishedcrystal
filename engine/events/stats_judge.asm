@@ -13,12 +13,11 @@ SpecialStatsJudge: ; 4f0bc
 	farcall SelectMonFromParty
 	jr c, .cancel
 
-	ld a, [wCurPartySpecies]
-	cp EGG
-	jr z, .egg
-
-	call IsAPokemon
-	ret c
+	ld a, [wCurPartyMon]
+	ld hl, wPartyMon1IsEgg
+	call GetPartyLocation
+	bit MON_IS_EGG_F, [hl]
+	jr nz, .egg
 
 	jp JudgePokemon
 

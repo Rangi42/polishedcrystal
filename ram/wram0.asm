@@ -25,8 +25,6 @@ wChannel6:: channel_struct wChannel6
 wChannel7:: channel_struct wChannel7
 wChannel8:: channel_struct wChannel8
 
-	ds 1 ; unused
-
 wCurTrackDuty:: ds 1
 wCurTrackIntensity:: ds 1
 wCurTrackFrequency:: ds 2
@@ -346,10 +344,8 @@ wOTClassName:: ds TRAINER_CLASS_NAME_LENGTH
 
 wCurOTMon:: ds 1
 
-	ds 1 ; unused
-
 wTypeModifier::
-; >10: super-effective
+; >10: super effective
 ;  10: normal
 ; <10: not very effective
 ; bit 7: stab
@@ -475,23 +471,15 @@ wEnemySelectedMove:: ds 1
 wPlayerMetronomeCount:: ds 1
 wEnemyMetronomeCount:: ds 1
 
-; Faint handler should be split if opponent used switchout move to KO
-wPlayerSplitHandleMonFaint:: ds 1
-wEnemySplitHandleMonFaint:: ds 1
+wPartyParticipants:: ds PARTY_LENGTH
 
-; Stores enemy struct data temporarily when checking non-current mons
-wAITempAbility:: ds 1
-wAITempItem:: ds 1
+wDeferredSwitch:: ds 1
 
-wPartyParticipants:: ds 6
-
-	ds 8 ; unused
+wPlayerSwitchTarget:: ds 1
+wEnemySwitchTarget:: ds 1
 
 wBattleScriptBufferLoc:: ds 2
-
-wTurnEnded:: ds 1
-
-	ds 13
+wMoveState:: ds 1
 
 wPlayerStatLevels::
 ; 07 neutral
@@ -543,20 +531,6 @@ wPayDayMoney:: ds 3
 wSafariMonAngerCount:: ds 1
 wSafariMonEating:: ds 1
 
-	ds 1
-
-; used when enemy is transformed
-wEnemyBackupDVs:: ds 3
-wEnemyBackupPersonality:: ; assumed to be after DVs
-wEnemyBackupShiny::
-wEnemyBackupAbility::
-wEnemyBackupNature::
-	ds 1
-wEnemyBackupGender::
-wEnemyBackupFainted::
-wEnemyBackupForm::
-	ds 1
-
 wAlreadyDisobeyed:: ds 1
 
 wDisabledMove:: ds 1
@@ -570,7 +544,7 @@ wLastPlayerCounterMove:: ds 1
 
 wEnemyMinimized:: ds 1
 
-wAlreadyFailed:: ds 1
+wAlreadyExecuted:: ds 1
 
 wTrickRoom:: ds 1
 
@@ -611,14 +585,15 @@ wWeather::
 
 wWeatherCount:: ds 1 ; # turns remaining
 
-wLoweredStat:: ds 1
+wLoweredStat::
+; bit 4-7: how many stages to raise/lower + 1 (between +1 and +12)
+; bit 0-3: which stat to raise/lower
+	ds 1
+
 wEffectFailed:: ds 1
 wFailedMessage:: ds 1
 
 wEnemyGoesFirst:: ds 1
-
-wPlayerIsSwitching:: ds 1
-wEnemyIsSwitching::  ds 1
 
 wPlayerUsedMoves::
 ; add a move that has been used once by the player
@@ -637,11 +612,6 @@ wLastPlayerMove:: ds 1
 wLastEnemyMove:: ds 1
 
 wEnemyUsingItem:: ds 1
-wEnemySwitchItemCheck:: ds 1
-
-wEndturnWeather:: ds 1
-
-	ds 6
 
 wPlayerFutureSightCount:: ds 1
 wEnemyFutureSightCount:: ds 1
@@ -660,15 +630,9 @@ wAnimationsDisabled:: ds 1 ; used to temporarily disable animations for abilitie
 
 wBattleEnded:: ds 1
 
-wWildMonMoves:: ds NUM_MOVES
-wWildMonPP:: ds NUM_MOVES
-
 wAmuletCoin:: ds 1
 
 wSomeoneIsRampaging:: ds 1
-
-wPlayerEndturnSwitched:: ds 1
-wEnemyEndturnSwitched:: ds 1
 
 wDVAndPersonalityBuffer:: ds 5
 wBattleEnd::
@@ -975,8 +939,6 @@ wCurForm:: ds 1
 
 wJustGotGSBall:: ds 1
 
-	ds 7 ; unused
-
 wWindowStackPointer:: ds 2
 wMenuJoypad:: ds 1
 wMenuSelection:: ds 1
@@ -1064,8 +1026,6 @@ wOverworldDelay:: ds 1
 wTextDelayFrames:: ds 1
 wVBlankOccurred:: ds 1
 wGenericDelay:: ds 1
-
-	ds 7 ; unused
 
 wGameTimerPause::
 ; bit 0

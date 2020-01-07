@@ -57,15 +57,16 @@
 const_value = -1
 	const SPAWN_N_A
 
-	const SPAWN_HOME
+	const SPAWN_HOME ; $00
 
 	const SPAWN_PALLET
 	const SPAWN_VIRIDIAN
 	const SPAWN_PEWTER
 	const SPAWN_MT_MOON
 	const SPAWN_CERULEAN
+	const SPAWN_CERULEAN_CAPE
 	const SPAWN_ROCK_TUNNEL
-	const SPAWN_VERMILION
+	const SPAWN_VERMILION ; $08
 	const SPAWN_LAVENDER
 	const SPAWN_SAFFRON
 	const SPAWN_CELADON
@@ -74,7 +75,7 @@ const_value = -1
 	const SPAWN_INDIGO
 
 	const SPAWN_NEW_BARK
-	const SPAWN_CHERRYGROVE
+	const SPAWN_CHERRYGROVE ; $10
 	const SPAWN_VIOLET
 	const SPAWN_UNION_CAVE
 	const SPAWN_AZALEA
@@ -82,9 +83,11 @@ const_value = -1
 	const SPAWN_GOLDENROD
 	const SPAWN_OLIVINE
 	const SPAWN_ECRUTEAK
-	const SPAWN_MAHOGANY
-	const SPAWN_LAKE
+	const SPAWN_MAHOGANY ; $18
+	const SPAWN_YELLOW_FOREST
+	const SPAWN_LAKE_OF_RAGE
 	const SPAWN_BLACKTHORN
 	const SPAWN_MT_SILVER
+
 	const SPAWN_FAST_SHIP
 NUM_SPAWNS EQU const_value

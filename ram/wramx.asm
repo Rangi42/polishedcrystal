@@ -105,9 +105,9 @@ wMoveScreenMoves:: ds 55
 
 NEXTU
 ; miscellaneous
-wTempDayOfWeek::
-wUnusedApricorns:: ds 1
-	ds 2
+wTempDayOfWeek:: ds 1
+
+	ds 2 ; unused
 
 wStartFlypoint:: ds 1
 wEndFlypoint:: ds 1
@@ -288,7 +288,14 @@ wVramState::
 ;        flickers when climbing waterfall
 	ds 1
 
-wBattleResult:: ds 1
+wBattleResult::
+; bit 7: mon is captured and sent to PC
+; bit 6: legendary is captured (used for Celebi)
+; bit 1: set on fleeing
+; value of %xxxx0002: link battle draw (x is ignored)
+; value of %xx000001: whiteout
+	ds 1
+
 wUsingItemWithSelect:: ds 1
 
 UNION
@@ -519,7 +526,9 @@ wTempBattleMonSpecies:: ds 1
 ENDU
 
 wEnemyMon:: battle_struct wEnemyMon
-wEnemyMonBaseStats:: ds 5
+
+	ds 5 ; unused
+
 wEnemyMonCatchRate:: ds 1
 wEnemyMonBaseExp:: ds 1
 wEnemyMonEnd::
@@ -631,11 +640,15 @@ wPokedexShowPointerBank:: ds 1
 wFailedToFlee:: ds 1
 wNumFleeAttempts:: ds 1
 
+wLinkOTExchangeStart::
 wOTPlayerName:: ds NAME_LENGTH
 wOTPlayerID:: ds 2
 wOTPartyCount:: ds 1
 wOTPartySpecies:: ds PARTY_LENGTH + 1 ; legacy scripts don't check PartyCount
 
+; OT party data -- OTPartyMon1 and nicknames is always available
+wOTPartyMons::
+wOTPartyMon1:: party_struct wOTPartyMon1
 UNION
 ; catch tutorial dude bag
 wDudeBag::
@@ -651,19 +664,17 @@ wDudeBallsEnd:: ds 1
 wDudeBagEnd::
 
 NEXTU
-; OT party data
-wOTPartyMons::
-wOTPartyMon1:: party_struct wOTPartyMon1
 wOTPartyMon2:: party_struct wOTPartyMon2
 wOTPartyMon3:: party_struct wOTPartyMon3
 wOTPartyMon4:: party_struct wOTPartyMon4
 wOTPartyMon5:: party_struct wOTPartyMon5
 wOTPartyMon6:: party_struct wOTPartyMon6
+ENDU
 wOTPartyMonsEnd::
 wOTPartyMonOT:: ds NAME_LENGTH * PARTY_LENGTH
 wOTPartyMonNicknames:: ds PKMN_NAME_LENGTH * PARTY_LENGTH
 wOTPartyDataEnd::
-ENDU
+wLinkOTExchangeEnd::
 
 wBattleAction:: ds 1
 wLinkBattleSentAction:: ds 1
@@ -783,7 +794,7 @@ else
 	ds 5
 endc
 
-	ds 1
+wPlayerGoingUpStairs:: ds 1
 
 wObjectFollow_Leader:: ds 1
 wObjectFollow_Follower:: ds 1

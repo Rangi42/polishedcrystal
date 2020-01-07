@@ -152,7 +152,7 @@ GenericTrainerCosplayerChloe:
 
 .SeenText:
 	text "Like my costume?"
-	line "It's super-effect-"
+	line "It's super effect-"
 	cont "ive!"
 	done
 

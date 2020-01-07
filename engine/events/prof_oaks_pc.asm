@@ -97,7 +97,7 @@ OakRatings: ; 0x2667f
 oakrating: MACRO
 	db \1
 	dw \2, \3
-endm
+ENDM
 
 ; if you caught at most this many, play this sound, load this text
 	oakrating   9, SFX_DEX_FANFARE_LESS_THAN_20, OakRating01

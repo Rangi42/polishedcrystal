@@ -1,515 +1,515 @@
 WonderTradeOTNames1:
-	db "R", "e", "d", "@", "@", "@", "@", "@" ; $00
-	db "B", "l", "u", "e", "@", "@", "@", "@" ; $01
-	db "G", "r", "e", "e", "n", "@", "@", "@" ; $02
-	db "Y", "e", "l", "l", "o", "w", "@", "@" ; $03
-	db "O", "r", "a", "n", "g", "e", "@", "@" ; $04
-	db "G", "o", "l", "d", "@", "@", "@", "@" ; $05
-	db "S", "i", "l", "v", "e", "r", "@", "@" ; $06
-	db "C", "r", "y", "s", "t", "a", "l", "@" ; $07
-	db "R", "u", "b", "y", "@", "@", "@", "@" ; $08
-	db "S", "a", "f", "i", "r", "e", "@", "@" ; $09
-	db "E", "m", "e", "r", "a", "l", "d", "@" ; $0a
-	db "J", "a", "d", "e", "@", "@", "@", "@" ; $0b
-	db "D", "i", "a", "m", "o", "n", "d", "@" ; $0c
-	db "P", "e", "a", "r", "l", "@", "@", "@" ; $0d
-	db "P", "l", "a", "t", "i", "n", "a", "@" ; $0e
-	db "H", "e", "a", "r", "t", "@", "@", "@" ; $0f
-	db "S", "o", "u", "l", "@", "@", "@", "@" ; $10
-	db "M", "i", "n", "d", "@", "@", "@", "@" ; $11
-	db "B", "l", "a", "c", "k", "@", "@", "@" ; $12
-	db "W", "h", "i", "t", "e", "@", "@", "@" ; $13
-	db "G", "r", "a", "y", "@", "@", "@", "@" ; $14
-	db "X", "@", "@", "@", "@", "@", "@", "@" ; $15
-	db "Y", "@", "@", "@", "@", "@", "@", "@" ; $16
-	db "Z", "@", "@", "@", "@", "@", "@", "@" ; $17
-	db "A", "l", "p", "h", "a", "@", "@", "@" ; $18
-	db "O", "m", "e", "g", "a", "@", "@", "@" ; $19
-	db "D", "e", "l", "t", "a", "@", "@", "@" ; $1a
-	db "L", "a", "m", "b", "d", "a", "@", "@" ; $1b
-	db "T", "h", "e", "t", "a", "@", "@", "@" ; $1c
-	db "Z", "e", "t", "a", "@", "@", "@", "@" ; $1d
-	db "S", "u", "n", "@", "@", "@", "@", "@" ; $1e
-	db "M", "o", "o", "n", "@", "@", "@", "@" ; $1f
-	db "S", "t", "a", "r", "@", "@", "@", "@" ; $20
-	db "A", "s", "h", "@", "@", "@", "@", "@" ; $21
-	db "G", "a", "r", "y", "@", "@", "@", "@" ; $22
-	db "L", "e", "a", "f", "@", "@", "@", "@" ; $23
-	db "E", "t", "h", "a", "n", "@", "@", "@" ; $24
-	db "L", "y", "r", "a", "@", "@", "@", "@" ; $25
-	db "H", "i", "r", "o", "@", "@", "@", "@" ; $26
-	db "K", "r", "i", "s", "@", "@", "@", "@" ; $27
-	db "B", "r", "e", "n", "d", "a", "n", "@" ; $28
-	db "M", "a", "y", "@", "@", "@", "@", "@" ; $29
-	db "W", "a", "l", "l", "y", "@", "@", "@" ; $2a
-	db "L", "u", "c", "a", "s", "@", "@", "@" ; $2b
-	db "D", "a", "w", "n", "@", "@", "@", "@" ; $2c
-	db "B", "a", "r", "r", "y", "@", "@", "@" ; $2d
-	db "H", "i", "l", "b", "e", "r", "t", "@" ; $2e
-	db "H", "i", "l", "d", "a", "@", "@", "@" ; $2f
-	db "C", "h", "e", "r", "e", "n", "@", "@" ; $30
-	db "B", "i", "a", "n", "c", "a", "@", "@" ; $31
-	db "N", "a", "t", "e", "@", "@", "@", "@" ; $32
-	db "R", "o", "s", "a", "@", "@", "@", "@" ; $33
-	db "H", "u", "g", "h", "@", "@", "@", "@" ; $34
-	db "C", "a", "l", "e", "m", "@", "@", "@" ; $35
-	db "S", "e", "r", "e", "n", "a", "@", "@" ; $36
-	db "S", "h", "a", "u", "n", "a", "@", "@" ; $37
-	db "T", "r", "e", "v", "o", "r", "@", "@" ; $38
-	db "T", "i", "e", "r", "n", "o", "@", "@" ; $39
-	db "H", "a", "u", "@", "@", "@", "@", "@" ; $3a
-	db "L", "i", "l", "l", "i", "e", "@", "@" ; $3b
-	db "G", "l", "a", "d", "i", "o", "n", "@" ; $3c
-	db "W", "e", "s", "@", "@", "@", "@", "@" ; $3d
-	db "M", "i", "c", "h", "a", "e", "l", "@" ; $3e
-	db "T", "o", "d", "d", "@", "@", "@", "@" ; $3f
-	db "O", "a", "k", "@", "@", "@", "@", "@" ; $40
-	db "E", "l", "m", "@", "@", "@", "@", "@" ; $41
-	db "I", "v", "y", "@", "@", "@", "@", "@" ; $42
-	db "B", "i", "r", "c", "h", "@", "@", "@" ; $43
-	db "R", "o", "w", "a", "n", "@", "@", "@" ; $44
-	db "J", "u", "n", "i", "p", "e", "r", "@" ; $45
-	db "S", "y", "c", "a", "m", "o", "r", "@" ; $46
-	db "K", "u", "k", "u", "i", "@", "@", "@" ; $47
-	db "W", "i", "l", "l", "o", "w", "@", "@" ; $48
-	db "S", "a", "m", "u", "e", "l", "@", "@" ; $49
-	db "S", "a", "m", "s", "o", "n", "@", "@" ; $4a
-	db "C", "o", "z", "m", "o", "@", "@", "@" ; $4b
-	db "F", "e", "n", "n", "e", "l", "@", "@" ; $4c
-	db "C", "e", "d", "r", "i", "c", "@", "@" ; $4d
-	db "S", "i", "l", "k", "t", "r", "e", "@" ; $4e
-	db "B", "u", "r", "n", "e", "t", "@", "@" ; $4f
-	db "M", "o", "h", "n", "@", "@", "@", "@" ; $50
-	db "K", "r", "a", "n", "e", "@", "@", "@" ; $51
-	db "B", "i", "l", "l", "@", "@", "@", "@" ; $52
-	db "L", "a", "n", "e", "t", "t", "e", "@" ; $53
-	db "B", "r", "i", "g", "e", "t", "t", "@" ; $54
-	db "C", "e", "l", "i", "o", "@", "@", "@" ; $55
-	db "B", "e", "b", "e", "@", "@", "@", "@" ; $56
-	db "A", "m", "a", "n", "i", "t", "a", "@" ; $57
-	db "C", "a", "s", "s", "i", "u", "s", "@" ; $58
-	db "M", "o", "l", "a", "y", "n", "e", "@" ; $59
-	db "B", "r", "o", "c", "k", "@", "@", "@" ; $5a
-	db "M", "i", "s", "t", "y", "@", "@", "@" ; $5b
-	db "S", "u", "r", "g", "e", "@", "@", "@" ; $5c
-	db "E", "r", "i", "k", "a", "@", "@", "@" ; $5d
-	db "J", "a", "n", "i", "n", "e", "@", "@" ; $5e
-	db "S", "a", "b", "r", "i", "n", "a", "@" ; $5f
-	db "B", "l", "a", "i", "n", "e", "@", "@" ; $60
-	db "G", "i", "o", "v", "a", "n", "i", "@" ; $61
-	db "L", "o", "r", "e", "l", "e", "i", "@" ; $62
-	db "B", "r", "u", "n", "o", "@", "@", "@" ; $63
-	db "A", "g", "a", "t", "h", "a", "@", "@" ; $64
-	db "L", "a", "n", "c", "e", "@", "@", "@" ; $65
-	db "C", "i", "s", "s", "y", "@", "@", "@" ; $66
-	db "D", "a", "n", "n", "y", "@", "@", "@" ; $67
-	db "R", "u", "d", "y", "@", "@", "@", "@" ; $68
-	db "L", "u", "a", "n", "a", "@", "@", "@" ; $69
-	db "P", "r", "i", "m", "a", "@", "@", "@" ; $6a
-	db "F", "a", "l", "k", "n", "e", "r", "@" ; $6b
-	db "B", "u", "g", "s", "y", "@", "@", "@" ; $6c
-	db "W", "h", "i", "t", "n", "e", "y", "@" ; $6d
-	db "M", "o", "r", "t", "y", "@", "@", "@" ; $6e
-	db "C", "h", "u", "c", "k", "@", "@", "@" ; $6f
-	db "J", "a", "s", "m", "i", "n", "e", "@" ; $70
-	db "P", "r", "y", "c", "e", "@", "@", "@" ; $71
-	db "C", "l", "a", "i", "r", "@", "@", "@" ; $72
-	db "W", "i", "l", "l", "@", "@", "@", "@" ; $73
-	db "K", "o", "g", "a", "@", "@", "@", "@" ; $74
-	db "K", "a", "r", "e", "n", "@", "@", "@" ; $75
-	db "R", "o", "x", "a", "n", "n", "e", "@" ; $76
-	db "B", "r", "a", "w", "l", "y", "@", "@" ; $77
-	db "W", "a", "t", "t", "s", "o", "n", "@" ; $78
-	db "F", "l", "a", "n", "e", "r", "y", "@" ; $79
-	db "N", "o", "r", "m", "a", "n", "@", "@" ; $7a
-	db "W", "i", "n", "o", "n", "a", "@", "@" ; $7b
-	db "L", "i", "z", "a", "@", "@", "@", "@" ; $7c
-	db "T", "a", "t", "e", "@", "@", "@", "@" ; $7d
-	db "W", "a", "l", "l", "a", "c", "e", "@" ; $7e
-	db "J", "u", "a", "n", "@", "@", "@", "@" ; $7f
-	db "S", "i", "d", "n", "e", "y", "@", "@" ; $80
-	db "P", "h", "o", "e", "b", "e", "@", "@" ; $81
-	db "G", "l", "a", "c", "i", "a", "@", "@" ; $82
-	db "D", "r", "a", "k", "e", "@", "@", "@" ; $83
-	db "S", "t", "e", "v", "e", "n", "@", "@" ; $84
-	db "R", "o", "a", "r", "k", "@", "@", "@" ; $85
-	db "G", "a", "r", "d", "e", "n", "@", "@" ; $86
-	db "M", "a", "y", "l", "e", "n", "e", "@" ; $87
-	db "W", "a", "k", "e", "@", "@", "@", "@" ; $88
-	db "F", "a", "n", "t", "i", "n", "a", "@" ; $89
-	db "B", "y", "r", "o", "n", "@", "@", "@" ; $8a
-	db "C", "a", "n", "d", "i", "c", "e", "@" ; $8b
-	db "V", "o", "l", "k", "n", "e", "r", "@" ; $8c
-	db "A", "a", "r", "o", "n", "@", "@", "@" ; $8d
-	db "B", "e", "r", "t", "h", "a", "@", "@" ; $8e
-	db "F", "l", "i", "n", "t", "@", "@", "@" ; $8f
-	db "L", "u", "c", "i", "a", "n", "@", "@" ; $90
-	db "C", "y", "n", "t", "h", "i", "a", "@" ; $91
-	db "C", "i", "l", "a", "n", "@", "@", "@" ; $92
-	db "C", "h", "i", "l", "i", "@", "@", "@" ; $93
-	db "C", "r", "e", "s", "s", "@", "@", "@" ; $94
-	db "R", "o", "x", "i", "e", "@", "@", "@" ; $95
-	db "L", "e", "n", "o", "r", "a", "@", "@" ; $96
-	db "B", "u", "r", "g", "h", "@", "@", "@" ; $97
-	db "E", "l", "e", "s", "a", "@", "@", "@" ; $98
-	db "C", "l", "a", "y", "@", "@", "@", "@" ; $99
-	db "S", "k", "y", "l", "a", "@", "@", "@" ; $9a
-	db "B", "r", "y", "c", "e", "n", "@", "@" ; $9b
-	db "D", "r", "a", "y", "d", "e", "n", "@" ; $9c
-	db "I", "r", "i", "s", "@", "@", "@", "@" ; $9d
-	db "M", "a", "r", "l", "o", "n", "@", "@" ; $9e
-	db "S", "h", "a", "n", "t", "a", "l", "@" ; $9f
-	db "M", "a", "r", "s", "h", "a", "l", "@" ; $a0
-	db "G", "r", "i", "m", "s", "l", "y", "@" ; $a1
-	db "C", "a", "i", "t", "l", "i", "n", "@" ; $a2
-	db "A", "l", "d", "e", "r", "@", "@", "@" ; $a3
-	db "V", "i", "o", "l", "a", "@", "@", "@" ; $a4
-	db "G", "r", "a", "n", "t", "@", "@", "@" ; $a5
-	db "K", "o", "r", "r", "i", "n", "a", "@" ; $a6
-	db "R", "a", "m", "o", "s", "@", "@", "@" ; $a7
-	db "C", "l", "e", "m", "o", "n", "t", "@" ; $a8
-	db "V", "a", "l", "e", "r", "i", "e", "@" ; $a9
-	db "O", "l", "y", "m", "p", "i", "a", "@" ; $aa
-	db "W", "u", "l", "f", "r", "i", "c", "@" ; $ab
-	db "M", "a", "l", "v", "a", "@", "@", "@" ; $ac
-	db "S", "i", "e", "b", "o", "l", "d", "@" ; $ad
-	db "W", "i", "k", "t", "r", "o", "m", "@" ; $ae
-	db "D", "r", "a", "s", "n", "a", "@", "@" ; $af
-	db "D", "i", "a", "n", "t", "h", "a", "@" ; $b0
-	db "I", "l", "i", "m", "a", "@", "@", "@" ; $b1
-	db "L", "a", "n", "a", "@", "@", "@", "@" ; $b2
-	db "K", "i", "a", "w", "e", "@", "@", "@" ; $b3
-	db "M", "a", "l", "l", "o", "w", "@", "@" ; $b4
-	db "S", "o", "p", "h", "c", "l", "s", "@" ; $b5
-	db "A", "c", "e", "r", "o", "l", "a", "@" ; $b6
-	db "M", "i", "n", "a", "@", "@", "@", "@" ; $b7
-	db "H", "a", "l", "a", "@", "@", "@", "@" ; $b8
-	db "O", "l", "i", "v", "i", "a", "@", "@" ; $b9
-	db "N", "a", "n", "u", "@", "@", "@", "@" ; $ba
-	db "H", "a", "p", "u", "@", "@", "@", "@" ; $bb
-	db "K", "a", "h", "i", "l", "i", "@", "@" ; $bc
-	db "N", "o", "l", "a", "n", "d", "@", "@" ; $bd
-	db "G", "r", "e", "t", "a", "@", "@", "@" ; $be
-	db "T", "u", "c", "k", "e", "r", "@", "@" ; $bf
-	db "L", "u", "c", "y", "@", "@", "@", "@" ; $c0
-	db "S", "p", "e", "n", "s", "e", "r", "@" ; $c1
-	db "B", "r", "a", "n", "d", "o", "n", "@" ; $c2
-	db "A", "n", "a", "b", "e", "l", "@", "@" ; $c3
-	db "P", "a", "l", "m", "e", "r", "@", "@" ; $c4
-	db "T", "h", "o", "r", "t", "o", "n", "@" ; $c5
-	db "D", "a", "h", "l", "i", "a", "@", "@" ; $c6
-	db "D", "a", "r", "a", "c", "h", "@", "@" ; $c7
-	db "A", "r", "g", "e", "n", "t", "a", "@" ; $c8
-	db "P", "r", "o", "t", "o", "n", "@", "@" ; $c9
-	db "P", "e", "t", "r", "e", "l", "@", "@" ; $ca
-	db "A", "r", "c", "h", "e", "r", "@", "@" ; $cb
-	db "A", "r", "i", "a", "n", "a", "@", "@" ; $cc
-	db "J", "e", "s", "s", "i", "e", "@", "@" ; $cd
-	db "J", "a", "m", "e", "s", "@", "@", "@" ; $ce
-	db "C", "a", "s", "s", "i", "d", "y", "@" ; $cf
-	db "B", "u", "t", "c", "h", "@", "@", "@" ; $d0
-	db "B", "o", "n", "n", "i", "e", "@", "@" ; $d1
-	db "C", "l", "y", "d", "e", "@", "@", "@" ; $d2
-	db "A", "t", "t", "i", "l", "a", "@", "@" ; $d3
-	db "H", "u", "n", "@", "@", "@", "@", "@" ; $d4
-	db "D", "o", "m", "i", "n", "o", "@", "@" ; $d5
-	db "M", "i", "r", "o", "r", " ", "B", "@" ; $d6
-	db "M", "a", "t", "t", "@", "@", "@", "@" ; $d7
-	db "S", "h", "e", "l", "l", "y", "@", "@" ; $d8
-	db "A", "r", "c", "h", "i", "e", "@", "@" ; $d9
-	db "T", "a", "b", "i", "t", "h", "a", "@" ; $da
-	db "C", "o", "u", "r", "t", "n", "y", "@" ; $db
-	db "M", "a", "x", "i", "e", "@", "@", "@" ; $dc
-	db "M", "a", "r", "s", "@", "@", "@", "@" ; $dd
-	db "J", "u", "p", "i", "t", "e", "r", "@" ; $de
-	db "S", "a", "t", "u", "r", "n", "@", "@" ; $df
-	db "C", "h", "a", "r", "o", "n", "@", "@" ; $e0
-	db "C", "y", "r", "u", "s", "@", "@", "@" ; $e1
-	db "N", "@", "@", "@", "@", "@", "@", "@" ; $e2
-	db "C", "o", "l", "r", "e", "s", "s", "@" ; $e3
-	db "G", "o", "r", "m", "@", "@", "@", "@" ; $e4
-	db "B", "r", "o", "n", "i", "u", "s", "@" ; $e5
-	db "R", "o", "o", "d", "@", "@", "@", "@" ; $e6
-	db "Z", "i", "n", "z", "o", "l", "n", "@" ; $e7
-	db "G", "i", "a", "l", "l", "o", "@", "@" ; $e8
-	db "R", "y", "o", "k", "u", "@", "@", "@" ; $e9
-	db "G", "h", "e", "t", "s", "i", "s", "@" ; $ea
-	db "A", "n", "t", "h", "e", "a", "@", "@" ; $eb
-	db "C", "o", "n", "c", "o", "r", "d", "@" ; $ec
-	db "A", "l", "i", "a", "n", "a", "@", "@" ; $ed
-	db "B", "r", "y", "o", "n", "y", "@", "@" ; $ee
-	db "C", "e", "l", "o", "s", "i", "a", "@" ; $ef
-	db "M", "a", "b", "l", "e", "@", "@", "@" ; $f0
-	db "X", "e", "r", "o", "s", "i", "c", "@" ; $f1
-	db "L", "y", "s", "a", "n", "d", "r", "@" ; $f2
-	db "T", "u", "p", "p", "@", "@", "@", "@" ; $f3
-	db "Z", "i", "p", "p", "@", "@", "@", "@" ; $f4
-	db "R", "a", "p", "p", "@", "@", "@", "@" ; $f5
-	db "P", "l", "u", "m", "e", "r", "a", "@" ; $f6
-	db "G", "u", "z", "m", "a", "@", "@", "@" ; $f7
-	db "F", "a", "b", "a", "@", "@", "@", "@" ; $f8
-	db "W", "i", "c", "k", "e", "@", "@", "@" ; $f9
-	db "L", "u", "s", "a", "m", "i", "n", "@" ; $fa
-	db "C", "a", "n", "d", "e", "l", "a", "@" ; $fb
-	db "B", "l", "a", "n", "c", "h", "e", "@" ; $fc
-	db "S", "p", "a", "r", "k", "@", "@", "@" ; $fd
-	db "S", "a", "t", "o", "s", "h", "i", "@" ; $fe
-	db "T", "a", "j", "i", "r", "i", "@", "@" ; $ff
+	rawchar "Red@@@@@" ; $00
+	rawchar "Blue@@@@" ; $01
+	rawchar "Green@@@" ; $02
+	rawchar "Yellow@@" ; $03
+	rawchar "Orange@@" ; $04
+	rawchar "Gold@@@@" ; $05
+	rawchar "Silver@@" ; $06
+	rawchar "Crystal@" ; $07
+	rawchar "Ruby@@@@" ; $08
+	rawchar "Safire@@" ; $09
+	rawchar "Emerald@" ; $0a
+	rawchar "Jade@@@@" ; $0b
+	rawchar "Diamond@" ; $0c
+	rawchar "Pearl@@@" ; $0d
+	rawchar "Platina@" ; $0e
+	rawchar "Heart@@@" ; $0f
+	rawchar "Soul@@@@" ; $10
+	rawchar "Mind@@@@" ; $11
+	rawchar "Black@@@" ; $12
+	rawchar "White@@@" ; $13
+	rawchar "Gray@@@@" ; $14
+	rawchar "X@@@@@@@" ; $15
+	rawchar "Y@@@@@@@" ; $16
+	rawchar "Z@@@@@@@" ; $17
+	rawchar "Alpha@@@" ; $18
+	rawchar "Omega@@@" ; $19
+	rawchar "Delta@@@" ; $1a
+	rawchar "Lambda@@" ; $1b
+	rawchar "Theta@@@" ; $1c
+	rawchar "Zeta@@@@" ; $1d
+	rawchar "Sun@@@@@" ; $1e
+	rawchar "Moon@@@@" ; $1f
+	rawchar "Star@@@@" ; $20
+	rawchar "Ash@@@@@" ; $21
+	rawchar "Gary@@@@" ; $22
+	rawchar "Leaf@@@@" ; $23
+	rawchar "Ethan@@@" ; $24
+	rawchar "Lyra@@@@" ; $25
+	rawchar "Hiro@@@@" ; $26
+	rawchar "Kris@@@@" ; $27
+	rawchar "Brendan@" ; $28
+	rawchar "May@@@@@" ; $29
+	rawchar "Wally@@@" ; $2a
+	rawchar "Lucas@@@" ; $2b
+	rawchar "Dawn@@@@" ; $2c
+	rawchar "Barry@@@" ; $2d
+	rawchar "Hilbert@" ; $2e
+	rawchar "Hilda@@@" ; $2f
+	rawchar "Cheren@@" ; $30
+	rawchar "Bianca@@" ; $31
+	rawchar "Nate@@@@" ; $32
+	rawchar "Rosa@@@@" ; $33
+	rawchar "Hugh@@@@" ; $34
+	rawchar "Calem@@@" ; $35
+	rawchar "Serena@@" ; $36
+	rawchar "Shauna@@" ; $37
+	rawchar "Trevor@@" ; $38
+	rawchar "Tierno@@" ; $39
+	rawchar "Hau@@@@@" ; $3a
+	rawchar "Lillie@@" ; $3b
+	rawchar "Gladion@" ; $3c
+	rawchar "Wes@@@@@" ; $3d
+	rawchar "Michael@" ; $3e
+	rawchar "Todd@@@@" ; $3f
+	rawchar "Oak@@@@@" ; $40
+	rawchar "Elm@@@@@" ; $41
+	rawchar "Ivy@@@@@" ; $42
+	rawchar "Birch@@@" ; $43
+	rawchar "Rowan@@@" ; $44
+	rawchar "Juniper@" ; $45
+	rawchar "Sycamor@" ; $46
+	rawchar "Kukui@@@" ; $47
+	rawchar "Willow@@" ; $48
+	rawchar "Samuel@@" ; $49
+	rawchar "Samson@@" ; $4a
+	rawchar "Cozmo@@@" ; $4b
+	rawchar "Fennel@@" ; $4c
+	rawchar "Cedric@@" ; $4d
+	rawchar "Silktre@" ; $4e
+	rawchar "Burnet@@" ; $4f
+	rawchar "Mohn@@@@" ; $50
+	rawchar "Krane@@@" ; $51
+	rawchar "Bill@@@@" ; $52
+	rawchar "Lanette@" ; $53
+	rawchar "Brigett@" ; $54
+	rawchar "Celio@@@" ; $55
+	rawchar "Bebe@@@@" ; $56
+	rawchar "Amanita@" ; $57
+	rawchar "Cassius@" ; $58
+	rawchar "Molayne@" ; $59
+	rawchar "Brock@@@" ; $5a
+	rawchar "Misty@@@" ; $5b
+	rawchar "Surge@@@" ; $5c
+	rawchar "Erika@@@" ; $5d
+	rawchar "Janine@@" ; $5e
+	rawchar "Sabrina@" ; $5f
+	rawchar "Blaine@@" ; $60
+	rawchar "Giovani@" ; $61
+	rawchar "Lorelei@" ; $62
+	rawchar "Bruno@@@" ; $63
+	rawchar "Agatha@@" ; $64
+	rawchar "Lance@@@" ; $65
+	rawchar "Cissy@@@" ; $66
+	rawchar "Danny@@@" ; $67
+	rawchar "Rudy@@@@" ; $68
+	rawchar "Luana@@@" ; $69
+	rawchar "Prima@@@" ; $6a
+	rawchar "Falkner@" ; $6b
+	rawchar "Bugsy@@@" ; $6c
+	rawchar "Whitney@" ; $6d
+	rawchar "Morty@@@" ; $6e
+	rawchar "Chuck@@@" ; $6f
+	rawchar "Jasmine@" ; $70
+	rawchar "Pryce@@@" ; $71
+	rawchar "Clair@@@" ; $72
+	rawchar "Will@@@@" ; $73
+	rawchar "Koga@@@@" ; $74
+	rawchar "Karen@@@" ; $75
+	rawchar "Roxanne@" ; $76
+	rawchar "Brawly@@" ; $77
+	rawchar "Wattson@" ; $78
+	rawchar "Flanery@" ; $79
+	rawchar "Norman@@" ; $7a
+	rawchar "Winona@@" ; $7b
+	rawchar "Liza@@@@" ; $7c
+	rawchar "Tate@@@@" ; $7d
+	rawchar "Wallace@" ; $7e
+	rawchar "Juan@@@@" ; $7f
+	rawchar "Sidney@@" ; $80
+	rawchar "Phoebe@@" ; $81
+	rawchar "Glacia@@" ; $82
+	rawchar "Drake@@@" ; $83
+	rawchar "Steven@@" ; $84
+	rawchar "Roark@@@" ; $85
+	rawchar "Garden@@" ; $86
+	rawchar "Maylene@" ; $87
+	rawchar "Wake@@@@" ; $88
+	rawchar "Fantina@" ; $89
+	rawchar "Byron@@@" ; $8a
+	rawchar "Candice@" ; $8b
+	rawchar "Volkner@" ; $8c
+	rawchar "Aaron@@@" ; $8d
+	rawchar "Bertha@@" ; $8e
+	rawchar "Flint@@@" ; $8f
+	rawchar "Lucian@@" ; $90
+	rawchar "Cynthia@" ; $91
+	rawchar "Cilan@@@" ; $92
+	rawchar "Chili@@@" ; $93
+	rawchar "Cress@@@" ; $94
+	rawchar "Roxie@@@" ; $95
+	rawchar "Lenora@@" ; $96
+	rawchar "Burgh@@@" ; $97
+	rawchar "Elesa@@@" ; $98
+	rawchar "Clay@@@@" ; $99
+	rawchar "Skyla@@@" ; $9a
+	rawchar "Brycen@@" ; $9b
+	rawchar "Drayden@" ; $9c
+	rawchar "Iris@@@@" ; $9d
+	rawchar "Marlon@@" ; $9e
+	rawchar "Shantal@" ; $9f
+	rawchar "Marshal@" ; $a0
+	rawchar "Grimsly@" ; $a1
+	rawchar "Caitlin@" ; $a2
+	rawchar "Alder@@@" ; $a3
+	rawchar "Viola@@@" ; $a4
+	rawchar "Grant@@@" ; $a5
+	rawchar "Korrina@" ; $a6
+	rawchar "Ramos@@@" ; $a7
+	rawchar "Clemont@" ; $a8
+	rawchar "Valerie@" ; $a9
+	rawchar "Olympia@" ; $aa
+	rawchar "Wulfric@" ; $ab
+	rawchar "Malva@@@" ; $ac
+	rawchar "Siebold@" ; $ad
+	rawchar "Wiktrom@" ; $ae
+	rawchar "Drasna@@" ; $af
+	rawchar "Diantha@" ; $b0
+	rawchar "Ilima@@@" ; $b1
+	rawchar "Lana@@@@" ; $b2
+	rawchar "Kiawe@@@" ; $b3
+	rawchar "Mallow@@" ; $b4
+	rawchar "Sophcls@" ; $b5
+	rawchar "Acerola@" ; $b6
+	rawchar "Mina@@@@" ; $b7
+	rawchar "Hala@@@@" ; $b8
+	rawchar "Olivia@@" ; $b9
+	rawchar "Nanu@@@@" ; $ba
+	rawchar "Hapu@@@@" ; $bb
+	rawchar "Kahili@@" ; $bc
+	rawchar "Noland@@" ; $bd
+	rawchar "Greta@@@" ; $be
+	rawchar "Tucker@@" ; $bf
+	rawchar "Lucy@@@@" ; $c0
+	rawchar "Spenser@" ; $c1
+	rawchar "Brandon@" ; $c2
+	rawchar "Anabel@@" ; $c3
+	rawchar "Palmer@@" ; $c4
+	rawchar "Thorton@" ; $c5
+	rawchar "Dahlia@@" ; $c6
+	rawchar "Darach@@" ; $c7
+	rawchar "Argenta@" ; $c8
+	rawchar "Proton@@" ; $c9
+	rawchar "Petrel@@" ; $ca
+	rawchar "Archer@@" ; $cb
+	rawchar "Ariana@@" ; $cc
+	rawchar "Jessie@@" ; $cd
+	rawchar "James@@@" ; $ce
+	rawchar "Cassidy@" ; $cf
+	rawchar "Butch@@@" ; $d0
+	rawchar "Bonnie@@" ; $d1
+	rawchar "Clyde@@@" ; $d2
+	rawchar "Attila@@" ; $d3
+	rawchar "Hun@@@@@" ; $d4
+	rawchar "Domino@@" ; $d5
+	rawchar "Miror B@" ; $d6
+	rawchar "Matt@@@@" ; $d7
+	rawchar "Shelly@@" ; $d8
+	rawchar "Archie@@" ; $d9
+	rawchar "Tabitha@" ; $da
+	rawchar "Courtny@" ; $db
+	rawchar "Maxie@@@" ; $dc
+	rawchar "Mars@@@@" ; $dd
+	rawchar "Jupiter@" ; $de
+	rawchar "Saturn@@" ; $df
+	rawchar "Charon@@" ; $e0
+	rawchar "Cyrus@@@" ; $e1
+	rawchar "N@@@@@@@" ; $e2
+	rawchar "Colress@" ; $e3
+	rawchar "Gorm@@@@" ; $e4
+	rawchar "Bronius@" ; $e5
+	rawchar "Rood@@@@" ; $e6
+	rawchar "Zinzoln@" ; $e7
+	rawchar "Giallo@@" ; $e8
+	rawchar "Ryoku@@@" ; $e9
+	rawchar "Ghetsis@" ; $ea
+	rawchar "Anthea@@" ; $eb
+	rawchar "Concord@" ; $ec
+	rawchar "Aliana@@" ; $ed
+	rawchar "Bryony@@" ; $ee
+	rawchar "Celosia@" ; $ef
+	rawchar "Mable@@@" ; $f0
+	rawchar "Xerosic@" ; $f1
+	rawchar "Lysandr@" ; $f2
+	rawchar "Tupp@@@@" ; $f3
+	rawchar "Zipp@@@@" ; $f4
+	rawchar "Rapp@@@@" ; $f5
+	rawchar "Plumera@" ; $f6
+	rawchar "Guzma@@@" ; $f7
+	rawchar "Faba@@@@" ; $f8
+	rawchar "Wicke@@@" ; $f9
+	rawchar "Lusamin@" ; $fa
+	rawchar "Candela@" ; $fb
+	rawchar "Blanche@" ; $fc
+	rawchar "Spark@@@" ; $fd
+	rawchar "Satoshi@" ; $fe
+	rawchar "Tajiri@@" ; $ff
 
 WonderTradeOTNames2:
-	db "S", "h", "i", "g", "e", "r", "u", "@" ; $00
-	db "H", "i", "b", "i", "k", "i", "@", "@" ; $01
-	db "K", "o", "t", "o", "n", "e", "@", "@" ; $02
-	db "K", "a", "m", "o", "n", "@", "@", "@" ; $03
-	db "Y", "u", "u", "k", "i", "@", "@", "@" ; $04
-	db "H", "a", "r", "u", "k", "a", "@", "@" ; $05
-	db "M", "i", "t", "s", "u", "r", "u", "@" ; $06
-	db "K", "o", "u", "k", "i", "@", "@", "@" ; $07
-	db "H", "i", "k", "a", "r", "i", "@", "@" ; $08
-	db "J", "u", "n", "@", "@", "@", "@", "@" ; $09
-	db "T", "o", "u", "y", "a", "@", "@", "@" ; $0a
-	db "T", "o", "u", "k", "o", "@", "@", "@" ; $0b
-	db "B", "e", "l", "@", "@", "@", "@", "@" ; $0c
-	db "K", "y", "o", "u", "h", "e", "i", "@" ; $0d
-	db "M", "e", "i", "@", "@", "@", "@", "@" ; $0e
-	db "H", "e", "l", "i", "o", "s", "@", "@" ; $0f
-	db "S", "e", "l", "e", "n", "e", "@", "@" ; $10
-	db "M", "i", "k", "e", "@", "@", "@", "@" ; $11
-	db "K", "y", "l", "e", "@", "@", "@", "@" ; $12
-	db "T", "i", "m", "@", "@", "@", "@", "@" ; $13
-	db "E", "m", "y", "@", "@", "@", "@", "@" ; $14
-	db "C", "h", "r", "i", "s", "@", "@", "@" ; $15
-	db "K", "i", "m", "@", "@", "@", "@", "@" ; $16
-	db "J", "a", "c", "q", "u", "e", "s", "@" ; $17
-	db "H", "a", "r", "i", "@", "@", "@", "@" ; $18
-	db "J", "o", "y", "@", "@", "@", "@", "@" ; $19
-	db "J", "e", "n", "n", "y", "@", "@", "@" ; $1a
-	db "D", "e", "l", "i", "a", "@", "@", "@" ; $1b
-	db "D", "a", "i", "s", "y", "@", "@", "@" ; $1c
-	db "F", "u", "j", "i", "@", "@", "@", "@" ; $1d
-	db "B", "a", "o", "b", "a", "@", "@", "@" ; $1e
-	db "C", "o", "p", "y", "c", "a", "t", "@" ; $1f
-	db "P", "r", "i", "m", "o", "@", "@", "@" ; $20
-	db "L", "o", "s", "t", "e", "l", "e", "@" ; $21
-	db "T", "e", "a", "l", "a", "@", "@", "@" ; $22
-	db "S", "e", "l", "p", "h", "y", "@", "@" ; $23
-	db "J", "o", "e", "y", "@", "@", "@", "@" ; $24
-	db "C", "a", "l", "@", "@", "@", "@", "@" ; $25
-	db "C", "a", "r", "r", "i", "e", "@", "@" ; $26
-	db "M", "r", ".", "<PK>", "<MN>", "@", "@", "@" ; $27
-	db "E", "u", "s", "i", "n", "e", "@", "@" ; $28
-	db "C", "a", "m", "e", "r", "o", "n", "@" ; $29
-	db "E", "a", "r", "l", "@", "@", "@", "@" ; $2a
-	db "K", "u", "r", "t", "@", "@", "@", "@" ; $2b
-	db "B", "e", "n", "@", "@", "@", "@", "@" ; $2c
-	db "M", "a", "r", "y", "@", "@", "@", "@" ; $2d
-	db "R", "e", "e", "d", "@", "@", "@", "@" ; $2e
-	db "F", "e", "r", "n", "@", "@", "@", "@" ; $2f
-	db "L", "i", "l", "y", "@", "@", "@", "@" ; $30
-	db "B", "u", "e", "n", "a", "@", "@", "@" ; $31
-	db "R", "a", "n", "d", "y", "@", "@", "@" ; $32
-	db "M", "a", "x", "i", "m", "o", "@", "@" ; $33
-	db "F", "e", "l", "i", "c", "t", "y", "@" ; $34
-	db "M", "o", "n", "i", "c", "a", "@", "@" ; $35
-	db "T", "u", "s", "c", "a", "n", "y", "@" ; $36
-	db "W", "e", "s", "l", "e", "y", "@", "@" ; $37
-	db "A", "r", "t", "h", "u", "r", "@", "@" ; $38
-	db "F", "r", "i", "e", "d", "a", "@", "@" ; $39
-	db "S", "a", "n", "t", "o", "s", "@", "@" ; $3a
-	db "S", "u", "n", "n", "y", "@", "@", "@" ; $3b
-	db "N", "a", "o", "k", "o", "@", "@", "@" ; $3c
-	db "S", "a", "y", "o", "@", "@", "@", "@" ; $3d
-	db "Z", "u", "k", "i", "@", "@", "@", "@" ; $3e
-	db "K", "u", "n", "i", "@", "@", "@", "@" ; $3f
-	db "M", "i", "k", "i", "@", "@", "@", "@" ; $40
-	db "L", "i", "@", "@", "@", "@", "@", "@" ; $41
-	db "K", "i", "y", "o", "@", "@", "@", "@" ; $42
-	db "S", "c", "o", "t", "t", "@", "@", "@" ; $43
-	db "B", "r", "i", "n", "e", "y", "@", "@" ; $44
-	db "S", "t", "o", "n", "e", "@", "@", "@" ; $45
-	db "W", "a", "n", "d", "a", "@", "@", "@" ; $46
-	db "G", "a", "b", "b", "y", "@", "@", "@" ; $47
-	db "T", "y", "@", "@", "@", "@", "@", "@" ; $48
-	db "R", "y", "d", "e", "l", "@", "@", "@" ; $49
-	db "S", "t", "e", "r", "n", "@", "@", "@" ; $4a
-	db "A", "a", "r", "u", "n", "e", "@", "@" ; $4b
-	db "L", "i", "s", "i", "a", "@", "@", "@" ; $4c
-	db "Z", "i", "n", "n", "i", "a", "@", "@" ; $4d
-	db "I", "n", "v", "e", "r", "@", "@", "@" ; $4e
-	db "C", "h", "a", "z", "@", "@", "@", "@" ; $4f
-	db "K", "i", "r", "i", "@", "@", "@", "@" ; $50
-	db "J", "o", "h", "a", "n", "n", "a", "@" ; $51
-	db "L", "o", "o", "k", "e", "r", "@", "@" ; $52
-	db "C", "h", "e", "r", "y", "l", "@", "@" ; $53
-	db "R", "i", "l", "e", "y", "@", "@", "@" ; $54
-	db "B", "u", "c", "k", "@", "@", "@", "@" ; $55
-	db "M", "a", "r", "l", "e", "y", "@", "@" ; $56
-	db "M", "i", "r", "a", "@", "@", "@", "@" ; $57
-	db "R", "o", "s", "a", "n", "n", "e", "@" ; $58
-	db "J", "u", "l", "i", "a", "@", "@", "@" ; $59
-	db "J", "o", "r", "d", "a", "n", "@", "@" ; $5a
-	db "D", "e", "x", "t", "e", "r", "@", "@" ; $5b
-	db "K", "e", "i", "r", "a", "@", "@", "@" ; $5c
-	db "F", "u", "e", "g", "o", "@", "@", "@" ; $5d
-	db "H", "e", "l", "e", "n", "a", "@", "@" ; $5e
-	db "H", "a", "w", "e", "s", "@", "@", "@" ; $5f
-	db "C", "h", "a", "r", "l", "e", "s", "@" ; $60
-	db "C", "u", "r", "t", "i", "s", "@", "@" ; $61
-	db "Y", "a", "n", "c", "y", "@", "@", "@" ; $62
-	db "I", "n", "g", "o", "@", "@", "@", "@" ; $63
-	db "E", "m", "m", "e", "t", "@", "@", "@" ; $64
-	db "G", "r", "a", "c", "e", "@", "@", "@" ; $65
-	db "A", "l", "e", "x", "a", "@", "@", "@" ; $66
-	db "D", "e", "x", "i", "o", "@", "@", "@" ; $67
-	db "S", "i", "n", "a", "@", "@", "@", "@" ; $68
-	db "G", "u", "r", "k", "i", "n", "n", "@" ; $69
-	db "A", "Z", "@", "@", "@", "@", "@", "@" ; $6a
-	db "E", "m", "m", "a", "@", "@", "@", "@" ; $6b
-	db "P", "h", "i", "l", "@", "@", "@", "@" ; $6c
-	db "N", "i", "t", "a", "@", "@", "@", "@" ; $6d
-	db "E", "v", "e", "l", "y", "n", "@", "@" ; $6e
-	db "D", "a", "n", "a", "@", "@", "@", "@" ; $6f
-	db "M", "o", "r", "g", "a", "n", "@", "@" ; $70
-	db "R", "y", "u", "k", "i", "@", "@", "@" ; $71
-	db "G", "e", "s", "t", "e", "r", "@", "@" ; $72
-	db "I", "m", "a", "k", "u", "n", "i", "@" ; $73
-	db "R", "i", "c", "h", "i", "e", "@", "@" ; $74
-	db "A", "s", "s", "u", "n", "t", "a", "@" ; $75
-	db "T", "r", "a", "c", "e", "y", "@", "@" ; $76
-	db "D", "u", "p", "l", "i", "c", "a", "@" ; $77
-	db "C", "a", "s", "e", "y", "@", "@", "@" ; $78
-	db "G", "i", "s", "e", "l", "l", "e", "@" ; $79
-	db "M", "e", "l", "a", "n", "i", "e", "@" ; $7a
-	db "D", "a", "m", "i", "a", "n", "@", "@" ; $7b
-	db "A", "l", "a", "i", "n", "@", "@", "@" ; $7c
-	db "R", "e", "i", "k", "o", "@", "@", "@" ; $7d
-	db "A", "y", "a", "@", "@", "@", "@", "@" ; $7e
-	db "R", "a", "i", "n", "e", "r", "@", "@" ; $7f
-	db "S", "p", "a", "r", "k", "y", "@", "@" ; $80
-	db "P", "y", "r", "o", "@", "@", "@", "@" ; $81
-	db "M", "i", "k", "e", "y", "@", "@", "@" ; $82
-	db "O", "r", "v", "i", "l", "l", "e", "@" ; $83
-	db "A", ".", "J", ".", "@", "@", "@", "@" ; $84
-	db "C", "a", "m", "i", "l", "a", "@", "@" ; $85
-	db "A", "@", "@", "@", "@", "@", "@", "@" ; $86
-	db "S", "l", "a", "s", "h", "@", "@", "@" ; $87
-	db "A", "l", "i", "c", "e", "@", "@", "@" ; $88
-	db "L", "e", "o", "@", "@", "@", "@", "@" ; $89
-	db "A", "o", "o", "o", "o", "@", "@", "@" ; $8a
-	db "J", "i", "m", "m", "y", "@", "@", "@" ; $8b
-	db "C", "l", "y", "@", "@", "@", "@", "@" ; $8c
-	db "L", "i", "'l", " ", "D", "@", "@", "@" ; $8d
-	db "A", "r", "t", "y", "@", "@", "@", "@" ; $8e
-	db "A", "b", "e", "@", "@", "@", "@", "@" ; $8f
-	db "B", "a", "b", "a", "@", "@", "@", "@" ; $90
-	db "E", "v", "a", "n", "@", "@", "@", "@" ; $91
-	db "P", "a", "u", "l", "@", "@", "@", "@" ; $92
-	db "C", "y", "a", "n", "@", "@", "@", "@" ; $93
-	db "R", "e", "v", "o", "@", "@", "@", "@" ; $94
-	db "E", "v", "e", "r", "y", "l", "e", "@" ; $95
-	db "Z", "e", "t", "s", "u", "@", "@", "@" ; $96
-	db "K", "a", "r", "u", "t", "a", "@", "@" ; $97
-	db "N", "o", "z", "o", "m", "i", "@", "@" ; $98
-	db "A", "m", "o", "s", "@", "@", "@", "@" ; $99
-	db "K", "a", "i", "t", "o", "@", "@", "@" ; $9a
-	db "M", "e", "i", "k", "o", "@", "@", "@" ; $9b
-	db "M", "i", "k", "u", "@", "@", "@", "@" ; $9c
-	db "R", "i", "n", "@", "@", "@", "@", "@" ; $9d
-	db "L", "e", "n", "@", "@", "@", "@", "@" ; $9e
-	db "L", "u", "k", "a", "@", "@", "@", "@" ; $9f
-	db "T", "e", "t", "o", "@", "@", "@", "@" ; $a0
-	db "A", "m", "i", "@", "@", "@", "@", "@" ; $a1
-	db "M", "i", "n", "a", "k", "o", "@", "@" ; $a2
-	db "U", "s", "a", "g", "i", "@", "@", "@" ; $a3
-	db "R", "e", "i", "@", "@", "@", "@", "@" ; $a4
-	db "M", "a", "k", "o", "t", "o", "@", "@" ; $a5
-	db "M", "a", "m", "o", "r", "u", "@", "@" ; $a6
-	db "L", "u", "n", "a", "@", "@", "@", "@" ; $a7
-	db "A", "r", "t", "e", "m", "i", "s", "@" ; $a8
-	db "D", "i", "a", "n", "a", "@", "@", "@" ; $a9
-	db "S", "a", "k", "u", "r", "a", "@", "@" ; $aa
-	db "T", "o", "m", "o", "y", "o", "@", "@" ; $ab
-	db "S", "y", "a", "o", "r", "a", "n", "@" ; $ac
-	db "S", "h", "i", "n", "j", "i", "@", "@" ; $ad
-	db "A", "s", "u", "k", "a", "@", "@", "@" ; $ae
-	db "M", "a", "r", "i", "@", "@", "@", "@" ; $af
-	db "G", "e", "n", "d", "o", "@", "@", "@" ; $b0
-	db "Y", "u", "i", "@", "@", "@", "@", "@" ; $b1
-	db "K", "a", "w", "o", "r", "u", "@", "@" ; $b2
-	db "O", "k", "a", "b", "e", "@", "@", "@" ; $b3
-	db "D", "a", "r", "u", "@", "@", "@", "@" ; $b4
-	db "K", "u", "r", "i", "s", "u", "@", "@" ; $b5
-	db "S", "u", "z", "u", "h", "a", "@", "@" ; $b6
-	db "M", "a", "y", "u", "r", "i", "@", "@" ; $b7
-	db "R", "u", "k", "a", "@", "@", "@", "@" ; $b8
-	db "K", "y", "o", "n", "@", "@", "@", "@" ; $b9
-	db "H", "a", "r", "u", "h", "i", "@", "@" ; $ba
-	db "Y", "u", "k", "i", "@", "@", "@", "@" ; $bb
-	db "M", "i", "k", "u", "r", "u", "@", "@" ; $bc
-	db "T", "s", "u", "r", "u", "y", "a", "@" ; $bd
-	db "R", "y", "o", "k", "o", "@", "@", "@" ; $be
-	db "I", "t", "s", "u", "k", "i", "@", "@" ; $bf
-	db "J", "o", "j", "o", "@", "@", "@", "@" ; $c0
-	db "J", "o", "t", "a", "r", "o", "@", "@" ; $c1
-	db "J", "o", "s", "u", "k", "e", "@", "@" ; $c2
-	db "D", "i", "o", "@", "@", "@", "@", "@" ; $c3
-	db "K", "e", "i", "@", "@", "@", "@", "@" ; $c4
-	db "S", "a", "i", "k", "a", "@", "@", "@" ; $c5
-	db "H", "a", "y", "a", "t", "e", "@", "@" ; $c6
-	db "D", "a", "r", "u", "k", "u", "@", "@" ; $c7
-	db "N", "a", "g", "i", "s", "a", "@", "@" ; $c8
-	db "B", "r", "i", "d", "g", "e", "t", "@" ; $c9
-	db "R", "y", "o", "@", "@", "@", "@", "@" ; $ca
-	db "C", "l", "a", "r", "a", "@", "@", "@" ; $cb
-	db "H", "a", "n", "a", "@", "@", "@", "@" ; $cc
-	db "M", "i", "y", "u", "k", "i", "@", "@" ; $cd
-	db "L", "u", "k", "e", "@", "@", "@", "@" ; $ce
-	db "L", "u", "n", "@", "@", "@", "@", "@" ; $cf
-	db "R", "h", "u", "e", "@", "@", "@", "@" ; $d0
-	db "T", "r", "a", "z", "i", "u", "n", "@" ; $d1
-	db "G", "a", "i", "u", "s", "@", "@", "@" ; $d2
-	db "L", "y", "r", "r", "a", "@", "@", "@" ; $d3
-	db "K", "l", "o", "e", "@", "@", "@", "@" ; $d4
-	db "C", "e", "t", "s", "a", "@", "@", "@" ; $d5
-	db "L", "e", "x", "u", "s", "@", "@", "@" ; $d6
-	db "S", "o", "r", "y", "a", "@", "@", "@" ; $d7
-	db "S", "t", "r", "a", "t", "a", "@", "@" ; $d8
-	db "S", "l", "a", "d", "e", "@", "@", "@" ; $d9
-	db "D", "i", "r", "k", "@", "@", "@", "@" ; $da
-	db "T", "a", "l", "a", "n", "@", "@", "@" ; $db
-	db "K", "e", "r", "s", "h", "@", "@", "@" ; $dc
-	db "R", "a", "n", "g", "i", "@", "@", "@" ; $dd
-	db "R", "e", "m", "y", "@", "@", "@", "@" ; $de
-	db "S", "y", "l", "v", "i", "e", "@", "@" ; $df
-	db "M", "a", "t", "t", "h", "e", "w", "@" ; $e0
-	db "M", "a", "t", "e", "o", "@", "@", "@" ; $e1
-	db "B", "a", "b", "s", "@", "@", "@", "@" ; $e2
-	db "P", "i", "a", "@", "@", "@", "@", "@" ; $e3
-	db "A", "i", "z", "a", "w", "a", "@", "@" ; $e4
-	db "S", "u", "k", "i", "@", "@", "@", "@" ; $e5
-	db "F", "r", "e", "d", "r", "i", "k", "@" ; $e6
-	db "D", "r", "a", "y", "a", "n", "o", "@" ; $e7
-	db "H", "l", "i", "n", "@", "@", "@", "@" ; $e8
-	db "M", "a", "r", "c", "k", "u", "s", "@" ; $e9
-	db "P", "u", "m", "@", "@", "@", "@", "@" ; $ea
-	db "B", "r", "y", "a", "n", "@", "@", "@" ; $eb
-	db "D", "o", "n", "@", "@", "@", "@", "@" ; $ec
-	db "M", "i", "g", "u", "e", "l", "@", "@" ; $ed
-	db "S", "a", "t", "o", "r", "u", "@", "@" ; $ee
-	db "I", "w", "a", "t", "a", "@", "@", "@" ; $ef
-	db "J", "u", "n", "i", "c", "h", "i", "@" ; $f0
-	db "M", "a", "s", "u", "d", "a", "@", "@" ; $f1
-	db "K", "o", "j", "i", "@", "@", "@", "@" ; $f2
-	db "N", "i", "s", "h", "i", "n", "o", "@" ; $f3
-	db "S", "o", "s", "u", "k", "e", "@", "@" ; $f4
-	db "T", "a", "m", "a", "d", "a", "@", "@" ; $f5
-	db "H", "i", "s", "a", "s", "h", "i", "@" ; $f6
-	db "S", "o", "g", "a", "b", "e", "@", "@" ; $f7
-	db "K", "e", "i", "t", "a", "@", "@", "@" ; $f8
-	db "K", "a", "g", "a", "y", "a", "@", "@" ; $f9
-	db "Y", "o", "s", "h", "i", "@", "@", "@" ; $fa
-	db "M", "a", "t", "s", "u", "d", "a", "@" ; $fb
-	db "S", "h", "i", "g", "e", "k", "i", "@" ; $fc
-	db "T", "e", "t", "s", "u", "y", "a", "@" ; $fd
-	db "O", "o", "t", "a", "@", "@", "@", "@" ; $fe
-	db "T", "u", "r", "n", "e", "r", "@", "@" ; $ff
+	rawchar "Shigeru@" ; $00
+	rawchar "Hibiki@@" ; $01
+	rawchar "Kotone@@" ; $02
+	rawchar "Kamon@@@" ; $03
+	rawchar "Yuuki@@@" ; $04
+	rawchar "Haruka@@" ; $05
+	rawchar "Mitsuru@" ; $06
+	rawchar "Kouki@@@" ; $07
+	rawchar "Hikari@@" ; $08
+	rawchar "Jun@@@@@" ; $09
+	rawchar "Touya@@@" ; $0a
+	rawchar "Touko@@@" ; $0b
+	rawchar "Bel@@@@@" ; $0c
+	rawchar "Kyouhei@" ; $0d
+	rawchar "Mei@@@@@" ; $0e
+	rawchar "Helios@@" ; $0f
+	rawchar "Selene@@" ; $10
+	rawchar "Mike@@@@" ; $11
+	rawchar "Kyle@@@@" ; $12
+	rawchar "Tim@@@@@" ; $13
+	rawchar "Emy@@@@@" ; $14
+	rawchar "Chris@@@" ; $15
+	rawchar "Kim@@@@@" ; $16
+	rawchar "Jacques@" ; $17
+	rawchar "Hari@@@@" ; $18
+	rawchar "Joy@@@@@" ; $19
+	rawchar "Jenny@@@" ; $1a
+	rawchar "Delia@@@" ; $1b
+	rawchar "Daisy@@@" ; $1c
+	rawchar "Fuji@@@@" ; $1d
+	rawchar "Baoba@@@" ; $1e
+	rawchar "Copycat@" ; $1f
+	rawchar "Primo@@@" ; $20
+	rawchar "Lostele@" ; $21
+	rawchar "Teala@@@" ; $22
+	rawchar "Selphy@@" ; $23
+	rawchar "Joey@@@@" ; $24
+	rawchar "Cal@@@@@" ; $25
+	rawchar "Carrie@@" ; $26
+	rawchar "Mr.<PK><MN>@@@" ; $27
+	rawchar "Eusine@@" ; $28
+	rawchar "Cameron@" ; $29
+	rawchar "Earl@@@@" ; $2a
+	rawchar "Kurt@@@@" ; $2b
+	rawchar "Ben@@@@@" ; $2c
+	rawchar "Mary@@@@" ; $2d
+	rawchar "Reed@@@@" ; $2e
+	rawchar "Fern@@@@" ; $2f
+	rawchar "Lily@@@@" ; $30
+	rawchar "Buena@@@" ; $31
+	rawchar "Randy@@@" ; $32
+	rawchar "Maximo@@" ; $33
+	rawchar "Felicty@" ; $34
+	rawchar "Monica@@" ; $35
+	rawchar "Tuscany@" ; $36
+	rawchar "Wesley@@" ; $37
+	rawchar "Arthur@@" ; $38
+	rawchar "Frieda@@" ; $39
+	rawchar "Santos@@" ; $3a
+	rawchar "Sunny@@@" ; $3b
+	rawchar "Naoko@@@" ; $3c
+	rawchar "Sayo@@@@" ; $3d
+	rawchar "Zuki@@@@" ; $3e
+	rawchar "Kuni@@@@" ; $3f
+	rawchar "Miki@@@@" ; $40
+	rawchar "Li@@@@@@" ; $41
+	rawchar "Kiyo@@@@" ; $42
+	rawchar "Scott@@@" ; $43
+	rawchar "Briney@@" ; $44
+	rawchar "Stone@@@" ; $45
+	rawchar "Wanda@@@" ; $46
+	rawchar "Gabby@@@" ; $47
+	rawchar "Ty@@@@@@" ; $48
+	rawchar "Rydel@@@" ; $49
+	rawchar "Stern@@@" ; $4a
+	rawchar "Aarune@@" ; $4b
+	rawchar "Lisia@@@" ; $4c
+	rawchar "Zinnia@@" ; $4d
+	rawchar "Inver@@@" ; $4e
+	rawchar "Chaz@@@@" ; $4f
+	rawchar "Kiri@@@@" ; $50
+	rawchar "Johanna@" ; $51
+	rawchar "Looker@@" ; $52
+	rawchar "Cheryl@@" ; $53
+	rawchar "Riley@@@" ; $54
+	rawchar "Buck@@@@" ; $55
+	rawchar "Marley@@" ; $56
+	rawchar "Mira@@@@" ; $57
+	rawchar "Rosanne@" ; $58
+	rawchar "Julia@@@" ; $59
+	rawchar "Jordan@@" ; $5a
+	rawchar "Dexter@@" ; $5b
+	rawchar "Keira@@@" ; $5c
+	rawchar "Fuego@@@" ; $5d
+	rawchar "Helena@@" ; $5e
+	rawchar "Hawes@@@" ; $5f
+	rawchar "Charles@" ; $60
+	rawchar "Curtis@@" ; $61
+	rawchar "Yancy@@@" ; $62
+	rawchar "Ingo@@@@" ; $63
+	rawchar "Emmet@@@" ; $64
+	rawchar "Grace@@@" ; $65
+	rawchar "Alexa@@@" ; $66
+	rawchar "Dexio@@@" ; $67
+	rawchar "Sina@@@@" ; $68
+	rawchar "Gurkinn@" ; $69
+	rawchar "AZ@@@@@@" ; $6a
+	rawchar "Emma@@@@" ; $6b
+	rawchar "Phil@@@@" ; $6c
+	rawchar "Nita@@@@" ; $6d
+	rawchar "Evelyn@@" ; $6e
+	rawchar "Dana@@@@" ; $6f
+	rawchar "Morgan@@" ; $70
+	rawchar "Ryuki@@@" ; $71
+	rawchar "Gester@@" ; $72
+	rawchar "Imakuni@" ; $73
+	rawchar "Richie@@" ; $74
+	rawchar "Assunta@" ; $75
+	rawchar "Tracey@@" ; $76
+	rawchar "Duplica@" ; $77
+	rawchar "Casey@@@" ; $78
+	rawchar "Giselle@" ; $79
+	rawchar "Melanie@" ; $7a
+	rawchar "Damian@@" ; $7b
+	rawchar "Alain@@@" ; $7c
+	rawchar "Reiko@@@" ; $7d
+	rawchar "Aya@@@@@" ; $7e
+	rawchar "Rainer@@" ; $7f
+	rawchar "Sparky@@" ; $80
+	rawchar "Pyro@@@@" ; $81
+	rawchar "Mikey@@@" ; $82
+	rawchar "Orville@" ; $83
+	rawchar "A.J.@@@@" ; $84
+	rawchar "Camila@@" ; $85
+	rawchar "A@@@@@@@" ; $86
+	rawchar "Slash@@@" ; $87
+	rawchar "Alice@@@" ; $88
+	rawchar "Leo@@@@@" ; $89
+	rawchar "Aoooo@@@" ; $8a
+	rawchar "Jimmy@@@" ; $8b
+	rawchar "Cly@@@@@" ; $8c
+	rawchar "Li'l D@@@" ; $8d
+	rawchar "Arty@@@@" ; $8e
+	rawchar "Abe@@@@@" ; $8f
+	rawchar "Baba@@@@" ; $90
+	rawchar "Evan@@@@" ; $91
+	rawchar "Paul@@@@" ; $92
+	rawchar "Cyan@@@@" ; $93
+	rawchar "Revo@@@@" ; $94
+	rawchar "Everyle@" ; $95
+	rawchar "Zetsu@@@" ; $96
+	rawchar "Karuta@@" ; $97
+	rawchar "Nozomi@@" ; $98
+	rawchar "Amos@@@@" ; $99
+	rawchar "Kaito@@@" ; $9a
+	rawchar "Meiko@@@" ; $9b
+	rawchar "Miku@@@@" ; $9c
+	rawchar "Rin@@@@@" ; $9d
+	rawchar "Len@@@@@" ; $9e
+	rawchar "Luka@@@@" ; $9f
+	rawchar "Teto@@@@" ; $a0
+	rawchar "Ami@@@@@" ; $a1
+	rawchar "Minako@@" ; $a2
+	rawchar "Usagi@@@" ; $a3
+	rawchar "Rei@@@@@" ; $a4
+	rawchar "Makoto@@" ; $a5
+	rawchar "Mamoru@@" ; $a6
+	rawchar "Luna@@@@" ; $a7
+	rawchar "Artemis@" ; $a8
+	rawchar "Diana@@@" ; $a9
+	rawchar "Sakura@@" ; $aa
+	rawchar "Tomoyo@@" ; $ab
+	rawchar "Syaoran@" ; $ac
+	rawchar "Shinji@@" ; $ad
+	rawchar "Asuka@@@" ; $ae
+	rawchar "Mari@@@@" ; $af
+	rawchar "Gendo@@@" ; $b0
+	rawchar "Yui@@@@@" ; $b1
+	rawchar "Kaworu@@" ; $b2
+	rawchar "Okabe@@@" ; $b3
+	rawchar "Daru@@@@" ; $b4
+	rawchar "Kurisu@@" ; $b5
+	rawchar "Suzuha@@" ; $b6
+	rawchar "Mayuri@@" ; $b7
+	rawchar "Ruka@@@@" ; $b8
+	rawchar "Kyon@@@@" ; $b9
+	rawchar "Haruhi@@" ; $ba
+	rawchar "Yuki@@@@" ; $bb
+	rawchar "Mikuru@@" ; $bc
+	rawchar "Tsuruya@" ; $bd
+	rawchar "Ryoko@@@" ; $be
+	rawchar "Itsuki@@" ; $bf
+	rawchar "Jojo@@@@" ; $c0
+	rawchar "Jotaro@@" ; $c1
+	rawchar "Josuke@@" ; $c2
+	rawchar "Dio@@@@@" ; $c3
+	rawchar "Kei@@@@@" ; $c4
+	rawchar "Saika@@@" ; $c5
+	rawchar "Hayate@@" ; $c6
+	rawchar "Daruku@@" ; $c7
+	rawchar "Nagisa@@" ; $c8
+	rawchar "Bridget@" ; $c9
+	rawchar "Ryo@@@@@" ; $ca
+	rawchar "Clara@@@" ; $cb
+	rawchar "Hana@@@@" ; $cc
+	rawchar "Miyuki@@" ; $cd
+	rawchar "Luke@@@@" ; $ce
+	rawchar "Lun@@@@@" ; $cf
+	rawchar "Rhue@@@@" ; $d0
+	rawchar "Traziun@" ; $d1
+	rawchar "Gaius@@@" ; $d2
+	rawchar "Lyrra@@@" ; $d3
+	rawchar "Kloe@@@@" ; $d4
+	rawchar "Cetsa@@@" ; $d5
+	rawchar "Lexus@@@" ; $d6
+	rawchar "Sorya@@@" ; $d7
+	rawchar "Strata@@" ; $d8
+	rawchar "Slade@@@" ; $d9
+	rawchar "Dirk@@@@" ; $da
+	rawchar "Talan@@@" ; $db
+	rawchar "Kersh@@@" ; $dc
+	rawchar "Rangi@@@" ; $dd
+	rawchar "Remy@@@@" ; $de
+	rawchar "Sylvie@@" ; $df
+	rawchar "Matthew@" ; $e0
+	rawchar "Mateo@@@" ; $e1
+	rawchar "Babs@@@@" ; $e2
+	rawchar "Pia@@@@@" ; $e3
+	rawchar "Aizawa@@" ; $e4
+	rawchar "Suki@@@@" ; $e5
+	rawchar "Fredrik@" ; $e6
+	rawchar "Drayano@" ; $e7
+	rawchar "Hlin@@@@" ; $e8
+	rawchar "Marckus@" ; $e9
+	rawchar "Pum@@@@@" ; $ea
+	rawchar "Bryan@@@" ; $eb
+	rawchar "Don@@@@@" ; $ec
+	rawchar "Miguel@@" ; $ed
+	rawchar "Satoru@@" ; $ee
+	rawchar "Iwata@@@" ; $ef
+	rawchar "Junichi@" ; $f0
+	rawchar "Masuda@@" ; $f1
+	rawchar "Koji@@@@" ; $f2
+	rawchar "Nishino@" ; $f3
+	rawchar "Sosuke@@" ; $f4
+	rawchar "Tamada@@" ; $f5
+	rawchar "Hisashi@" ; $f6
+	rawchar "Sogabe@@" ; $f7
+	rawchar "Keita@@@" ; $f8
+	rawchar "Kagaya@@" ; $f9
+	rawchar "Yoshi@@@" ; $fa
+	rawchar "Matsuda@" ; $fb
+	rawchar "Shigeki@" ; $fc
+	rawchar "Tetsuya@" ; $fd
+	rawchar "Oota@@@@" ; $fe
+	rawchar "Turner@@" ; $ff

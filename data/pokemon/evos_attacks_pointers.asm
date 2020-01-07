@@ -195,8 +195,6 @@ EvosAttacksPointers:: ; 0x425b1
 	dw QuagsireEvosAttacks
 	dw EspeonEvosAttacks
 	dw UmbreonEvosAttacks
-	dw LeafeonEvosAttacks
-	dw GlaceonEvosAttacks
 	dw MurkrowEvosAttacks
 	dw HonchkrowEvosAttacks
 	dw SlowkingEvosAttacks
@@ -215,6 +213,7 @@ EvosAttacksPointers:: ; 0x425b1
 	dw GranbullEvosAttacks
 	dw QwilfishEvosAttacks
 	dw ScizorEvosAttacks
+	dw ShuckleEvosAttacks
 	dw HeracrossEvosAttacks
 	dw SneaselEvosAttacks
 	dw WeavileEvosAttacks
@@ -236,6 +235,7 @@ EvosAttacksPointers:: ; 0x425b1
 	dw PhanpyEvosAttacks
 	dw DonphanEvosAttacks
 	dw Porygon2EvosAttacks
+	dw PorygonZEvosAttacks
 	dw SmeargleEvosAttacks
 	dw TyrogueEvosAttacks
 	dw HitmontopEvosAttacks
@@ -254,5 +254,6 @@ EvosAttacksPointers:: ; 0x425b1
 	dw LugiaEvosAttacks
 	dw HoOhEvosAttacks
 	dw CelebiEvosAttacks
+	dw LeafeonEvosAttacks
+	dw GlaceonEvosAttacks
 	dw SylveonEvosAttacks
-	dw PorygonZEvosAttacks

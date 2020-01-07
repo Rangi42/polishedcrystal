@@ -134,7 +134,7 @@
 	const BULLDOZE     ; $84
 	const AMNESIA      ; $85
 	const ROOST        ; $86
-	const SOFTBOILED   ; $87
+	const FRESH_SNACK  ; $87
 	const HI_JUMP_KICK ; $88
 	const GLARE        ; $89
 	const DREAM_EATER  ; $8a
@@ -207,7 +207,7 @@
 	const ROLLOUT      ; $cd
 	const FALSE_SWIPE  ; $ce
 	const SWAGGER      ; $cf
-	const MILK_DRINK   ; $d0
+	const SHELL_SMASH  ; $d0
 	const SPARK        ; $d1
 	const BUG_BITE     ; $d2
 	const STEEL_WING   ; $d3
@@ -286,6 +286,8 @@ endc
 	const ANIM_SHAKE             ; $115
 	const ANIM_HIT_CONFUSION     ; $116
 	const ANIM_SHARPEN           ; $117
+	const ANIM_STAT_UP           ; $118
+	const ANIM_STAT_DOWN         ; $119
 
 ; wNumHits uses offsets from ANIM_MISS
 	const_def

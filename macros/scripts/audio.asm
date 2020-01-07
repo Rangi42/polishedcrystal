@@ -66,7 +66,11 @@ ENDM
 	enum sound_duty_cmd
 sound_duty: MACRO
 	db sound_duty_cmd
+if _NARG == 4
 	db \1 | (\2 << 2) | (\3 << 4) | (\4 << 6) ; duty sequence
+else
+	db \1 ; duty sequence byte
+endc
 ENDM
 
 	enum togglesfx_cmd
@@ -216,9 +220,10 @@ music0xf8: MACRO
 	db music0xf8_cmd
 ENDM
 
-	enum unknownmusic0xf9_cmd
-unknownmusic0xf9: MACRO
-	db unknownmusic0xf9_cmd
+	enum noisesampleset_cmd
+noisesampleset: MACRO
+	db noisesampleset_cmd
+	db \1 ; noise
 ENDM
 
 	enum setcondition_cmd

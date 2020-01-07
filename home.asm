@@ -1304,8 +1304,8 @@ PrepMonFrontpic:: ; 3786
 
 _PrepMonFrontpic:: ; 378b
 	ld a, [wCurPartySpecies]
-	call IsAPokemon
-	jr c, .not_pokemon
+	and a
+	jr z, .not_pokemon
 
 	push hl
 	ld de, VTiles2
@@ -1476,18 +1476,14 @@ GetCurNick:: ; 389c
 
 GetNick:: ; 38a2
 ; Get nickname a from list hl.
-
 	push hl
 	push bc
-
 	call SkipNames
 	ld de, wStringBuffer1
-
 	push de
 	ld bc, PKMN_NAME_LENGTH
 	rst CopyBytes
 	pop de
-
 	pop bc
 	pop hl
 	ret
@@ -1584,6 +1580,7 @@ GetPartyParamLocation:: ; 3917
 	ld a, [wCurPartyMon]
 	call GetPartyLocation
 	pop bc
+	ld a, [hl]
 	ret
 ; 3927
 

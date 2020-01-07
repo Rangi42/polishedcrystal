@@ -23,13 +23,13 @@ PartyMenuQualityPointers: ; 503b2
 	dw .Reminder
 ; 503c6
 
-placepartymon: macro
+placepartymon: MACRO
 rept _NARG
 	db PLACE_PARTYMON_\1
 shift
 endr
 	db -1
-endm
+ENDM
 
 .Default:
 .Gender:   placepartymon NICKNAMES, HP_BAR, HP_DIGITS, LEVEL, GENDER, STATUS

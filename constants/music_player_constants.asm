@@ -22,23 +22,24 @@ MAX_TEMPO_ADJUSTMENT EQU 120
 NUM_MP_EDIT_FIELDS EQU const_value
 
 	const_def
-	const ORIGIN_RB      ; 00
-	const ORIGIN_Y       ; 01
-	const ORIGIN_GS      ; 02
-	const ORIGIN_C       ; 03
-	const ORIGIN_RSE     ; 04
-	const ORIGIN_FRLG    ; 05
-	const ORIGIN_DPPT    ; 06
-	const ORIGIN_HGSS    ; 07
-	const ORIGIN_BW      ; 08
-	const ORIGIN_B2W2    ; 09
-	const ORIGIN_XY      ; 0a
-	const ORIGIN_ORAS    ; 0b
-	const ORIGIN_SM      ; 0c
-	const ORIGIN_STADIUM ; 0d
-	const ORIGIN_GO      ; 0e
-	const ORIGIN_M02     ; 0f
-	const ORIGIN_PRISM   ; 10
+	const ORIGIN_RB        ; 00
+	const ORIGIN_Y         ; 01
+	const ORIGIN_GS        ; 02
+	const ORIGIN_C         ; 03
+	const ORIGIN_RSE       ; 04
+	const ORIGIN_FRLG      ; 05
+	const ORIGIN_DPPT      ; 06
+	const ORIGIN_HGSS      ; 07
+	const ORIGIN_BW        ; 08
+	const ORIGIN_B2W2      ; 09
+	const ORIGIN_XY        ; 0a
+	const ORIGIN_ORAS      ; 0b
+	const ORIGIN_SM        ; 0c
+	const ORIGIN_STADIUM   ; 0d
+	const ORIGIN_GO        ; 0e
+	const ORIGIN_M02       ; 0f
+	const ORIGIN_PRISM     ; 10
+	const ORIGIN_UNDERTALE ; 11
 
 	const_def
 	const COMPOSER_NONE                          ; 00
@@ -66,3 +67,5 @@ NUM_MP_EDIT_FIELDS EQU const_value
 	const COMPOSER_GRONNOC                       ; 16
 	const COMPOSER_CAT333POKEMON                 ; 17
 	const COMPOSER_NOTFROGGESTSPIRIT             ; 18
+	const COMPOSER_TOBY_FOX                      ; 19
+	const COMPOSER_SHINKONETCAVY_SHOCKSLAYER     ; 1a

@@ -43,18 +43,20 @@ MystriStageCynthiaSafeguardScript:
 	opentext
 	writetext MystriStageCynthiaLeadText2
 	waitbutton
+	closetext
+	pause 10
 	appear MYSTRISTAGE_CYNTHIA2
 	disappear MYSTRISTAGE_CYNTHIA1
+	setlasttalked MYSTRISTAGE_CYNTHIA2
 	setevent EVENT_LISTENED_TO_CYNTHIA_INTRO
 	setscene $0
-	jump MystriStageCynthiaContinueScript
+	; fallthrough
 
 MystriStageCynthiaScript:
 	faceplayer
 	opentext
 	checkevent EVENT_BEAT_CYNTHIA
 	iftrue MystriStageBeatCynthiaScript
-MystriStageCynthiaContinueScript:
 	writetext MystriStageCynthiaIdeaText
 	waitbutton
 	checkevent EVENT_BEAT_ELITE_FOUR

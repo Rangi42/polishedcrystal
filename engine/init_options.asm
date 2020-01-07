@@ -1,4 +1,4 @@
-NUM_INITIAL_OPTIONS EQU 6
+NUM_INITIAL_OPTIONS EQU 7
 
 SetInitialOptions:
 	ld a, $10
@@ -53,7 +53,7 @@ SetInitialOptions:
 	lb bc, SCREEN_HEIGHT - 2, SCREEN_WIDTH - 2
 	call TextBox
 
-	hlcoord 2, 2
+	hlcoord 2, 1
 	ld de, .InitialOptionsString
 	call PlaceString
 
@@ -99,6 +99,8 @@ SetInitialOptions:
 	jr .joypad_loop
 
 .ExitOptions:
+	ld hl, wInitialOptions
+	res RESET_INIT_OPTS, [hl]
 	ld de, SFX_TRANSACTION
 	call PlaySFX
 	call WaitSFX
@@ -129,16 +131,17 @@ INCBIN "gfx/new_game/init_bg.2bpp"
 	db "            :<LNBRK>"
 	db "Abilities<LNBRK>"
 	db "            :<LNBRK>"
-	db "Color variation<LNBRK>"
+	db "EXP scaling<LNBRK>"
 	db "            :<LNBRK>"
-	db "Perfect IVs<LNBRK>"
+	db "IVs vary colors<LNBRK>"
+	db "            :<LNBRK>"
+	db "Perfect stats<LNBRK>"
 	db "            :<LNBRK>"
 	db "Traded #mon<LNBRK>"
 	db "treat you as OT<LNBRK>"
 	db "            :<LNBRK>"
 	db "Nuzlocke mode<LNBRK>"
 	db "            :<LNBRK>"
-	db "<LNBRK>"
 	db "Done@"
 
 GetInitialOptionPointer: ; e42d6
@@ -157,6 +160,7 @@ GetInitialOptionPointer: ; e42d6
 .Pointers:
 	dw InitialOptions_Natures
 	dw InitialOptions_Abilities
+	dw InitialOptions_ExpScaling
 	dw InitialOptions_ColorVariation
 	dw InitialOptions_PerfectIVs
 	dw InitialOptions_TradedMon
@@ -182,7 +186,7 @@ InitialOptions_Natures:
 	set NATURES_OPT, [hl]
 	ld de, YesString
 .Display:
-	hlcoord 15, 3
+	hlcoord 15, 2
 	call PlaceString
 	and a
 	ret
@@ -206,7 +210,31 @@ InitialOptions_Abilities:
 	set ABILITIES_OPT, [hl]
 	ld de, YesString
 .Display:
-	hlcoord 15, 5
+	hlcoord 15, 4
+	call PlaceString
+	and a
+	ret
+
+InitialOptions_ExpScaling:
+	ld hl, wInitialOptions
+	ld a, [hJoyPressed]
+	and D_LEFT | D_RIGHT | A_BUTTON
+	jr nz, .Toggle
+	bit SCALED_EXP, [hl]
+	jr z, .SetNo
+	jr .SetYes
+.Toggle
+	bit SCALED_EXP, [hl]
+	jr z, .SetYes
+.SetNo:
+	res SCALED_EXP, [hl]
+	ld de, NoString
+	jr .Display
+.SetYes:
+	set SCALED_EXP, [hl]
+	ld de, YesString
+.Display:
+	hlcoord 15, 6
 	call PlaceString
 	and a
 	ret
@@ -230,7 +258,7 @@ InitialOptions_ColorVariation:
 	set COLOR_VARY_OPT, [hl]
 	ld de, YesString
 .Display:
-	hlcoord 15, 7
+	hlcoord 15, 8
 	call PlaceString
 	and a
 	ret
@@ -254,7 +282,7 @@ InitialOptions_PerfectIVs:
 	set PERFECT_IVS_OPT, [hl]
 	ld de, YesString
 .Display:
-	hlcoord 15, 9
+	hlcoord 15, 10
 	call PlaceString
 	and a
 	ret
@@ -278,7 +306,7 @@ InitialOptions_TradedMon:
 	set TRADED_AS_OT_OPT, [hl]
 	ld de, YesString
 .Display:
-	hlcoord 15, 12
+	hlcoord 15, 13
 	call PlaceString
 	and a
 	ret
@@ -302,7 +330,7 @@ InitialOptions_NuzlockeMode:
 	set NUZLOCKE_MODE, [hl]
 	ld de, YesString
 .Display:
-	hlcoord 15, 14
+	hlcoord 15, 15
 	call PlaceString
 	and a
 	ret
@@ -381,4 +409,4 @@ InitialOptions_UpdateCursorPosition: ; e455c
 ; e4579
 
 .InitialOptions_CursorPositions:
-	db 2, 4, 6, 8, 10, 13, 16
+	db 1, 3, 5, 7, 9, 11, 14, 16

@@ -5,7 +5,7 @@ LoadSpawnPoint: ; 1531f
 	push de
 	ld a, [wDefaultSpawnpoint]
 	cp SPAWN_N_A
-	jr z, .spawn_n_a
+	jr z, .done
 	ld l, a
 	ld h, 0
 	add hl, hl
@@ -20,7 +20,24 @@ LoadSpawnPoint: ; 1531f
 	ld [wXCoord], a
 	ld a, [hli]
 	ld [wYCoord], a
-.spawn_n_a
+	ld a, [wDefaultSpawnpoint]
+	; don't spawn on top of Archer
+	cp SPAWN_YELLOW_FOREST
+	jr nz, .not_yellow_forest
+	eventflagcheck EVENT_CLEARED_YELLOW_FOREST
+	jr nz, .done
+	ld a, 12
+	ld [wXCoord], a
+	jr .done
+.not_yellow_forest
+	; don't spawn within the area of Misty's date
+	cp SPAWN_CERULEAN_CAPE
+	jr nz, .done
+	eventflagcheck EVENT_CERULEAN_CAPE_BOYFRIEND
+	jr nz, .done
+	ld a, 14
+	ld [wYCoord], a
+.done
 	pop de
 	pop hl
 	ret

@@ -113,7 +113,13 @@ MonStatsInit: ; 4dd72 (13:5d72)
 	jp StatsScreen_SetJumptableIndex
 
 EggStatsInit: ; 4dda1
+	ld a, [wCurPartySpecies]
+	push af
+	ld a, EGG
+	ld [wCurPartySpecies], a
 	call EggStatsScreen
+	pop af
+	ld [wCurPartySpecies], a
 	ld a, [wJumptableIndex]
 	inc a
 	ld [wJumptableIndex], a
@@ -178,7 +184,7 @@ StatsScreen_CopyToTempMon: ; 4ddf2 (13:5df2)
 	jr .done
 
 .breedmon
-	farcall CopyPkmnToTempMon
+	farcall CopyPkmnOrEggToTempMon
 	ld a, [wTempMonIsEgg]
 	bit MON_IS_EGG_F, a
 	jr nz, .done
@@ -415,6 +421,16 @@ StatsScreen_PlaceHorizontalDivider: ; 4df8f (13:5f8f)
 	dec b
 	jr nz, .loop2
 	ld b, 0
+	ret
+
+StatsScreen_PlaceEggDivider:
+	hlcoord 0, 7
+	ld b, SCREEN_WIDTH
+	ld a, $3e
+.loop
+	ld [hli], a
+	dec b
+	jr nz, .loop
 	ret
 
 StatsScreen_PlacePageSwitchArrows: ; 4df9b (13:5f9b)
@@ -1140,7 +1156,7 @@ EggStatsScreen: ; 4e33a
 	call SetHPPal
 	ld b, CGB_STATS_SCREEN_HP_PALS
 	call GetCGBLayout
-	call StatsScreen_PlaceHorizontalDivider
+	call StatsScreen_PlaceEggDivider
 	ld de, EggString
 	hlcoord 8, 1
 	call PlaceString

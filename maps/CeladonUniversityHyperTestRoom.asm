@@ -262,7 +262,7 @@ CeladonUniversityHyperTestRoomWestwoodScript:
 	text "Congratulations!"
 
 	para "You passed the"
-	line "Hyper Text with"
+	line "Hyper Test with"
 	cont "flying colors!"
 
 	para "Here's your prize--"

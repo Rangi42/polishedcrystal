@@ -153,10 +153,15 @@ GetHallOfFameParty: ; 8653f
 	ld c, 0
 .next
 	ld a, [hli]
-	cp -1
+	inc a
 	jr z, .done
-	cp EGG
-	jr nz, .mon
+	ld a, c
+	push hl
+	ld hl, wPartyMon1IsEgg
+	call GetPartyLocation
+	bit MON_IS_EGG_F, [hl]
+	pop hl
+	jr z, .mon
 	inc c
 	jr .next
 
@@ -480,9 +485,9 @@ DisplayHOFMon: ; 86748
 	ld [wBoxAlignment], a
 	hlcoord 6, 5
 	call _PrepMonFrontpic
-	ld a, [wCurPartySpecies]
-	cp EGG
-	jr z, .print_id_no
+	ld a, [wTempMonIsEgg]
+	bit MON_IS_EGG_F, a
+	jr nz, .print_id_no
 	hlcoord 1, 13
 	ld a, "№"
 	ld [hli], a

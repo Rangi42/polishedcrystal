@@ -44,7 +44,7 @@ Route2NuggetSpeechHouseFisherScript:
 	line "visitor I've had"
 	cont "in a long time."
 
-	para "I'm super-happy!"
+	para "I'm super happy!"
 	line "Let me give you a"
 	cont "little present."
 	done

@@ -22,8 +22,7 @@ BattleCommand_transform:
 	jp z, BattleEffect_ButItFailed
 .not_armored_mewtwo
 
-	ld a, BATTLE_VARS_ABILITY
-	call GetBattleVar
+	call GetTrueUserAbility
 	cp INFILTRATOR
 	jr z, .bypass_sub
 	ld a, BATTLE_VARS_SUBSTATUS4_OPP
@@ -172,19 +171,17 @@ BattleCommand_transform:
 	rst CopyBytes
 
 .move_reveal_done
-	; Copy ability
-	ld a, [hBattleTurn]
-	and a
-	jr nz, .copy_player_ability
-	ld a, [wEnemyAbility]
-	ld [wPlayerAbility], a
-	jr .done_ability_copy
-.copy_player_ability
-	ld a, [wPlayerAbility]
-	ld [wEnemyAbility], a
-.done_ability_copy
+	; Copy ability. -1 is sentinel used when NG mon is about to switch out.
+	ld a, BATTLE_VARS_ABILITY
+	call GetBattleVarAddr
 	ld a, BATTLE_VARS_ABILITY_OPP
 	call GetBattleVar
+	inc a
+	jr nz, .no_gas
+	ld a, NEUTRALIZING_GAS + 1 ; since we decrease a immediately
+.no_gas
+	dec a
+	ld [hl], a
 	cp IMPOSTER
 	ret z ; avoid infinite loop
 	farjp RunActivationAbilitiesInner

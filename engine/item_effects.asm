@@ -125,14 +125,24 @@ ItemEffects: ; e73c
 	dw HealStatusEffect ; LUM_BERRY
 	dw RestoreHPEffect  ; SITRUS_BERRY
 	dw RestoreHPEffect  ; FIGY_BERRY
+	dw LowerEVBerry     ; POMEG_BERRY
+	dw LowerEVBerry     ; KELPSY_BERRY
+	dw LowerEVBerry     ; QUALOT_BERRY
+	dw LowerEVBerry     ; HONDEW_BERRY
+	dw LowerEVBerry     ; GREPA_BERRY
+	dw LowerEVBerry     ; TAMATO_BERRY
 	dw NoEffect         ; LIECHI_BERRY
 	dw NoEffect         ; GANLON_BERRY
 	dw NoEffect         ; SALAC_BERRY
 	dw NoEffect         ; PETAYA_BERRY
 	dw NoEffect         ; APICOT_BERRY
+	dw NoEffect         ; LANSAT_BERRY
+	dw NoEffect         ; STARF_BERRY
+	dw NoEffect         ; ENIGMA_BERRY
+	dw NoEffect         ; CUSTAP_BERRY
 	dw NoEffect         ; JABOCA_BERRY
 	dw NoEffect         ; ROWAP_BERRY
-	dw NoEffect         ; ROWAP_BERRY
+	dw NoEffect         ; KEE_BERRY
 	dw NoEffect         ; MARANGABERRY
 	dw RestoreHPEffect  ; BERRY_JUICE
 	dw NoEffect         ; SILK_SCARF
@@ -194,6 +204,15 @@ ItemEffects: ; e73c
 	dw NoEffect         ; WIDE_LENS
 	dw NoEffect         ; WISE_GLASSES
 	dw NoEffect         ; ZOOM_LENS
+	dw NoEffect         ; EJECT_BUTTON
+	dw NoEffect         ; LAGGING_TAIL
+	dw NoEffect         ; IRON_BALL
+	dw NoEffect         ; RING_TARGET
+	dw NoEffect         ; RED_CARD
+	dw NoEffect         ; ABSORB_BULB
+	dw NoEffect         ; CELL_BATTERY
+	dw NoEffect         ; LUMINOUSMOSS
+	dw NoEffect         ; SNOWBALL
 	dw NoEffect         ; EJECT_PACK
 	dw NoEffect         ; ROOM_SERVICE
 	dw NoEffect         ; BLUNDRPOLICY
@@ -294,7 +313,6 @@ KeyItemEffects:
 	dw NoEffect         ; SILPHSCOPE2
 	dw ApricornBox      ; APRICORN_BOX
 
-
 PokeBallEffect: ; e8a2
 	farcall DoesNuzlockeModePreventCapture
 	jp c, Ball_NuzlockeFailureMessage
@@ -354,116 +372,23 @@ PokeBallEffect: ; e8a2
 	ld hl, UsedItemText
 	call PrintText
 
-	ld a, [wEnemyMonCatchRate]
-	ld b, a
-	ld a, [wBattleType]
-	cp BATTLETYPE_TUTORIAL
-	jp z, .catch_without_fail
-	ld a, [wCurItem]
-	cp MASTER_BALL
-	jp z, .catch_without_fail
-	ld a, [wCurItem]
-	ld hl, BallMultiplierFunctionTable
-	call BattleJumptable
-
-	ld a, [wCurItem]
-	cp LEVEL_BALL
-	ld a, b
-	jp z, .skip_hp_calc
-
-	ld a, b
-	ld [hMultiplicand + 2], a
-
-	ld hl, wEnemyMonHP
-	ld b, [hl]
-	inc hl
-	ld c, [hl]
-	inc hl
-	ld d, [hl]
-	inc hl
-	ld e, [hl]
-	sla c
-	rl b
-
-	ld h, d
-	ld l, e
-	add hl, de
-	add hl, de
-	ld d, h
-	ld e, l
-	ld a, d
-	and a
-	jr z, .okay_1
-
-	srl d
-	rr e
-	srl d
-	rr e
-	srl b
-	rr c
-	srl b
-	rr c
-
-	ld a, c
-	and a
-	jr nz, .okay_1
-	inc c
-.okay_1
-	ld b, e
-
-	push bc
-	ld a, b
-	sub c
-	ld [hMultiplier], a
-	xor a
-	ld [hDividend + 0], a
-	ld [hMultiplicand + 0], a
-	ld [hMultiplicand + 1], a
-	call Multiply
-	pop bc
-
-	ld a, b
-	ld [hDivisor], a
-	ld b, 4
-	call Divide
-
-	ld a, [hQuotient + 2]
-	and a
-	jr nz, .statuscheck
-	inc a
-.statuscheck
-	ld b, a
-	ld a, [wEnemyMonStatus]
-	and 1 << FRZ | SLP
-	ld c, 10
-	jr nz, .addstatus
-	ld a, [wEnemyMonStatus]
-	and a
-	ld c, 5
-	jr nz, .addstatus
-	ld c, 0
-.addstatus
-	ld a, b
-	add c
-	jr nc, .max_1
-	ld a, $ff
-.max_1
-
-.skip_hp_calc
-	ld b, a
-	ld [wBuffer1], a
-	call Random
-
-	cp b
-	ld a, 0 ; not xor a; preserve carry flag
-	jr z, .catch_without_fail
-	jr nc, .fail_to_catch
-
-.catch_without_fail
-	ld a, [wEnemyMonSpecies]
-
-.fail_to_catch
+	ld a, [wOTPartyMon1Species]
 	ld [wWildMon], a
+
+	farcall GetModifiedCaptureRate
+	ld [wBuffer1], a
+	ld a, [wTempEnemyMonSpecies]
+	ld [wEnemyMonSpecies], a
+	ld [wWildMon], a
+
+	; Figure out if we should do a critical capture
+	farcall CheckCriticalCapture
+	ld a, 0
+	jr nc, .not_critical
+	ld a, $10
+.not_critical
+	ld [wBuffer2], a
+
 	ld c, 20
 	call DelayFrames
 
@@ -477,45 +402,26 @@ PokeBallEffect: ; e8a2
 	ld [wFXAnimIDHi], a
 	xor a
 	ld [hBattleTurn], a
-	ld [wBuffer2], a
 	ld [wNumHits], a
 	predef PlayBattleAnim
 
-	ld a, [wWildMon]
+	ld a, [wBuffer2] ; amount of shakes
 	and a
-	jr nz, .caught
-	ld a, [wBuffer2]
-	dec a ; cp $1
 	ld hl, Text_NoShake
 	jp z, .shake_and_break_free
-	dec a ; cp $2
+	dec a
 	ld hl, Text_OneShake
 	jp z, .shake_and_break_free
-	dec a ; cp $3
+	dec a
 	ld hl, Text_TwoShakes
 	jp z, .shake_and_break_free
-	dec a ; cp $4
+	dec a
 	ld hl, Text_ThreeShakes
 	jp z, .shake_and_break_free
 
 .caught
 	ld a, [wTempEnemyMonSpecies]
 	ld [wEnemyMonSpecies], a
-
-	ld hl, wEnemyBackupDVs
-	ld de, wEnemyMonDVs
-	ld bc, 5
-	rst CopyBytes
-
-	ld hl, wWildMonMoves
-	ld de, wEnemyMonMoves
-	ld bc, NUM_MOVES
-	rst CopyBytes
-
-	ld hl, wWildMonPP
-	ld de, wEnemyMonPP
-	ld bc, NUM_MOVES
-	rst CopyBytes
 
 	ld a, [wEnemyMonSpecies]
 	push af
@@ -545,18 +451,13 @@ PokeBallEffect: ; e8a2
 
 	farcall GiveExperiencePointsAfterCatch
 
-	ld a, [wEnemyMonLevel]
+	ld a, [wOTPartyMon1Level]
 	ld [wCurPartyLevel], a
 
-	ld a, [wEnemyMonSpecies]
+	ld a, [wOTPartyMon1Species]
 	ld [wCurSpecies], a
 	ld [wCurPartySpecies], a
 	call GetBaseData
-
-	ld de, wEnemyMonMaxHP
-	ld b, FALSE
-	ld hl, wEnemyMonDVs - (MON_DVS - (MON_EVS -1))
-	predef CalcPkmnStats
 
 	pop af
 	ld [wWildMon], a
@@ -583,7 +484,7 @@ PokeBallEffect: ; e8a2
 
 	call ClearSprites
 
-	ld a, [wEnemyMonSpecies]
+	ld a, [wOTPartyMon1Species]
 	ld [wd265], a
 	predef NewPokedexEntry
 
@@ -605,7 +506,44 @@ PokeBallEffect: ; e8a2
 	ld [wMonType], a
 	call ClearSprites
 
-	predef TryAddMonToParty
+	; Copy to player party
+	ld hl, wPartyCount
+	ld a, [hl]
+	inc [hl]
+	ld hl, wPartyMon1
+	push af
+	call GetPartyLocation
+	ld d, h
+	ld e, l
+	ld hl, wOTPartyMon1
+	ld bc, PARTYMON_STRUCT_LENGTH
+	rst CopyBytes
+	pop af
+	push af
+	ld hl, wPartyMonOT
+	call SkipNames
+	ld d, h
+	ld e, l
+	ld hl, wOTPartyMonOT
+	ld bc, NAME_LENGTH
+	rst CopyBytes
+	pop af
+	push af
+	ld hl, wPartyMonNicknames
+	call SkipNames
+	ld d, h
+	ld e, l
+	ld hl, wOTPartyMonNicknames
+	ld bc, PKMN_NAME_LENGTH
+	rst CopyBytes
+	pop af
+	ld b, 0
+	ld c, a
+	ld hl, wPartySpecies
+	add hl, bc
+	ld a, [wOTPartyMon1Species]
+	ld [hli], a
+	ld [hl], $ff
 
 	farcall SetCaughtData
 
@@ -637,12 +575,12 @@ PokeBallEffect: ; e8a2
 	bit NUZLOCKE_MODE, a
 	jr nz, .AlwaysNickname
 
-	ld hl, Text_AskNicknameNewlyCaughtMon
-	call PrintText
-
 	ld a, [wCurPartySpecies]
 	ld [wd265], a
 	call GetPokemonName
+
+	ld hl, Text_AskNicknameNewlyCaughtMon
+	call PrintText
 
 	call YesNoBox
 	jp c, .return_from_capture
@@ -703,12 +641,12 @@ PokeBallEffect: ; e8a2
 	bit NUZLOCKE_MODE, a
 	jr nz, .AlwaysNicknameBox
 
-	ld hl, Text_AskNicknameNewlyCaughtMon
-	call PrintText
-
 	ld a, [wCurPartySpecies]
 	ld [wd265], a
 	call GetPokemonName
+
+	ld hl, Text_AskNicknameNewlyCaughtMon
+	call PrintText
 
 	call YesNoBox
 	jr c, .SkipBoxMonNickname
@@ -763,8 +701,39 @@ PokeBallEffect: ; e8a2
 .FinishTutorial:
 	pop af
 	ld hl, Text_GotchaMonWasCaught
+	jr .print
 
 .shake_and_break_free
+	push hl
+	farcall BattleCheckEnemyShininess
+	jr nc, .not_shiny
+	ld a, 1 ; shiny anim
+	ld [wBattleAnimParam], a
+	ld de, ANIM_SEND_OUT_MON
+	farcall Call_PlayBattleAnim
+.not_shiny
+
+	ld bc, wTempMonSpecies
+	farcall CheckFaintedFrzSlp
+	jr c, .skip_cry
+	farcall CheckBattleEffects
+	jr c, .cry_no_anim
+	hlcoord 12, 0
+	lb de, $0, ANIM_MON_SLOW
+	predef AnimateFrontpic
+	jr .skip_cry
+
+.cry_no_anim
+	ld a, $f
+	ld [wCryTracks], a
+	ld a, [wTempEnemyMonSpecies]
+	call PlayStereoCry
+
+.skip_cry
+	pop hl
+.print
+	ld a, 0
+	ld [wWildMon], a
 	call PrintText
 	call ClearSprites
 
@@ -800,568 +769,6 @@ PokeBallEffect: ; e8a2
 	dec [hl]
 	ret
 ; ec0a
-
-
-BallMultiplierFunctionTable:
-; table of routines that increase or decrease the catch rate based on
-; which ball is used in a certain situation.
-	dbw GREAT_BALL,  GreatBallMultiplier
-	dbw ULTRA_BALL,  UltraBallMultiplier
-	dbw SAFARI_BALL, SafariBallMultiplier
-	dbw LEVEL_BALL,  LevelBallMultiplier
-	dbw LURE_BALL,   LureBallMultiplier
-	dbw MOON_BALL,   MoonBallMultiplier
-	dbw FAST_BALL,   FastBallMultiplier
-	dbw HEAVY_BALL,  HeavyBallMultiplier
-	dbw LOVE_BALL,   LoveBallMultiplier
-	dbw PARK_BALL,   ParkBallMultiplier
-	dbw REPEAT_BALL, RepeatBallMultiplier
-	dbw TIMER_BALL,  TimerBallMultiplier
-	dbw NEST_BALL,   NestBallMultiplier
-	dbw NET_BALL,    NetBallMultiplier
-	dbw DIVE_BALL,   DiveBallMultiplier
-	dbw QUICK_BALL,  QuickBallMultiplier
-	dbw DUSK_BALL,   DuskBallMultiplier
-	db $ff
-
-UltraBallMultiplier:
-SafariBallMultiplier:
-; multiply catch rate by 2
-	sla b
-	ret nc
-	ld b, $ff
-	ret
-
-GreatBallMultiplier:
-ParkBallMultiplier:
-; multiply catch rate by 1.5
-	ld a, b
-	srl a
-	add b
-	ld b, a
-	ret nc
-	ld b, $ff
-	ret
-
-GetPokedexEntryBank:
-	push hl
-	push de
-	ld a, [wEnemyMonSpecies]
-	rlca
-	rlca
-	and 3
-	ld hl, .PokedexEntryBanks
-	ld d, 0
-	ld e, a
-	add hl, de
-	ld a, [hl]
-	pop de
-	pop hl
-	ret
-
-.PokedexEntryBanks:
-
-GLOBAL PokedexEntries1
-GLOBAL PokedexEntries2
-GLOBAL PokedexEntries3
-GLOBAL PokedexEntries4
-
-	db BANK(PokedexEntries1)
-	db BANK(PokedexEntries2)
-	db BANK(PokedexEntries3)
-	db BANK(PokedexEntries4)
-
-HeavyBallMultiplier:
-; subtract 20 from catch rate if weight < 102.4 kg
-; else add 0 to catch rate if weight < 204.8 kg
-; else add 20 to catch rate if weight < 307.2 kg
-; else add 30 to catch rate if weight < 409.6 kg
-; else add 40 to catch rate (never happens)
-	ld a, [wEnemyMonSpecies]
-	ld hl, PokedexDataPointerTable
-	dec a
-	ld e, a
-	ld d, 0
-	add hl, de
-	add hl, de
-	ld a, BANK(PokedexDataPointerTable)
-	call GetFarHalfword
-
-.SkipText:
-	call GetPokedexEntryBank
-	call GetFarByte
-	inc hl
-	cp "@"
-	jr nz, .SkipText
-
-	call GetPokedexEntryBank
-	push bc
-	inc hl
-	inc hl
-	call GetFarHalfword
-
-	srl h
-	rr l
-	ld b, h
-	ld c, l
-
-	rept 4
-	srl b
-	rr c
-	endr
-	call .subbc
-
-	srl b
-	rr c
-	call .subbc
-
-	ld a, h
-	pop bc
-	jr .compare
-
-.subbc
-	; subtract bc from hl
-	push bc
-	ld a, b
-	cpl
-	ld b, a
-	ld a, c
-	cpl
-	ld c, a
-	inc bc
-	add hl, bc
-	pop bc
-	ret
-
-.compare
-	ld c, a
-	cp 1024 >> 8 ; 102.4 kg
-	jr c, .lightmon
-
-	ld hl, .WeightsTable
-.lookup
-	ld a, c
-	cp [hl]
-	jr c, .heavymon
-	inc hl
-	inc hl
-	jr .lookup
-
-.heavymon
-	inc hl
-	ld a, b
-	add [hl]
-	ld b, a
-	ret nc
-	ld b, $ff
-	ret
-
-.lightmon
-	ld a, b
-	sub 20
-	ld b, a
-	ret nc
-	ld b, $1
-	ret
-
-.WeightsTable:
-; weight factor, boost
-	db 2048 >> 8, 0
-	db 3072 >> 8, 20
-	db 4096 >> 8, 30
-	db 65280 >> 8, 40
-
-LureBallMultiplier:
-; multiply catch rate by 3 if this is a fishing rod battle
-	ld a, [wBattleType]
-	cp BATTLETYPE_FISH
-	ret nz
-
-	ld a, b
-	add a
-	jr c, .max
-
-	add b
-	jr nc, .done
-.max
-	ld a, $ff
-.done
-	ld b, a
-	ret
-
-MoonBallMultiplier:
-; multiply catch rate by 4 if mon evolves with moon stone
-GLOBAL EvosAttacks
-GLOBAL EvosAttacksPointers
-
-	push bc
-	ld a, [wTempEnemyMonSpecies]
-	dec a
-	ld c, a
-	ld b, 0
-	ld hl, EvosAttacksPointers
-	add hl, bc
-	add hl, bc
-	ld a, BANK(EvosAttacksPointers)
-	call GetFarHalfword
-	pop bc
-
-	push bc
-	ld a, BANK(EvosAttacks)
-	call GetFarByte
-	cp EVOLVE_ITEM
-	pop bc
-	ret nz
-
-	inc hl
-	inc hl
-	inc hl
-
-	push bc
-	ld a, BANK(EvosAttacks)
-	call GetFarByte
-	cp MOON_STONE
-	pop bc
-	ret nz
-
-	sla b
-	jr c, .max
-	sla b
-	ret nc
-.max
-	ld b, $ff
-	ret
-
-LoveBallMultiplier:
-; multiply catch rate by 8 if mons are of same species, different sex
-
-	; does species match?
-	ld a, [wTempEnemyMonSpecies]
-	ld c, a
-	ld a, [wTempBattleMonSpecies]
-	cp c
-	ret nz
-
-	; check player mon species
-	push bc
-	ld a, [wTempBattleMonSpecies]
-	ld [wCurPartySpecies], a
-	xor a ; PARTYMON
-	ld [wMonType], a
-	ld a, [wCurBattleMon]
-	ld [wCurPartyMon], a
-	farcall GetGender
-	jr c, .done1 ; no effect on genderless
-
-	ld d, 0 ; male
-	jr nz, .playermale
-	inc d   ; female
-.playermale
-
-	; check wild mon species
-	push de
-	ld a, [wTempEnemyMonSpecies]
-	ld [wCurPartySpecies], a
-	ld a, WILDMON
-	ld [wMonType], a
-	farcall GetGender
-	jr c, .done2 ; no effect on genderless
-
-	ld d, 0 ; male
-	jr nz, .wildmale
-	inc d   ; female
-.wildmale
-
-	ld a, d
-	pop de
-	cp d
-	pop bc
-	ret z
-
-	sla b
-	jr c, .max
-	sla b
-	jr c, .max
-	sla b
-	ret nc
-.max
-	ld b, $ff
-	ret
-
-.done2
-	pop de
-
-.done1
-	pop bc
-	ret
-
-FastBallMultiplier:
-; multiply catch rate by 4 if enemy mon is in one of the three
-; FleeMons tables.
-	ld a, [wTempEnemyMonSpecies]
-	ld c, a
-	ld hl, FleeMons
-	ld d, 3
-
-.loop
-	ld a, BANK(FleeMons)
-	call GetFarByte
-
-	inc hl
-	cp -1
-	jr z, .next
-	cp c
-	jr nz, .loop
-	sla b
-	jr c, .max
-
-	sla b
-	ret nc
-
-.max
-	ld b, $ff
-	ret
-
-.next
-	dec d
-	jr nz, .loop
-	ret
-
-LevelBallMultiplier:
-; multiply catch rate by 8 if player mon level / 4 > enemy mon level
-; multiply catch rate by 4 if player mon level / 2 > enemy mon level
-; multiply catch rate by 2 if player mon level > enemy mon level
-	ld a, [wBattleMonLevel]
-	ld c, a
-	ld a, [wEnemyMonLevel]
-	cp c
-	ret nc ; if player is lower level, we're done here
-	sla b
-	jr c, .max
-
-	srl c
-	cp c
-	ret nc ; if player/2 is lower level, we're done here
-	sla b
-	jr c, .max
-
-	srl c
-	cp c
-	ret nc ; if player/4 is lower level, we're done here
-	sla b
-	ret nc
-
-.max
-	ld b, $ff
-	ret
-
-RepeatBallMultiplier:
-; multiply catch rate by 3 if enemy mon is already in Pokédex
-	ld a, [wTempEnemyMonSpecies]
-	dec a
-	push bc
-	call CheckCaughtMon
-	pop bc
-	ret z
-
-	ld a, b
-	add a
-	jr c, .max
-
-	add b
-	jr nc, .done
-.max
-	ld a, $ff
-.done
-	ld b, a
-	ret
-
-TimerBallMultiplier:
-; multiply catch rate by 1 + (turns passed * 3) / 10, capped at 4
-	ld a, [wPlayerTurnsTaken]
-	cp 10
-	jr nc, .nocap
-	ld a, 10
-.nocap
-	ld c, a
-	add c
-	add c
-
-	; hMultiplier = turns passed * 3
-	ld [hMultiplier], a
-
-	; hMultiplicand = catch rate
-	xor a
-	ld [hMultiplicand + 0], a
-	ld [hMultiplicand + 1], a
-	ld a, b
-	ld [hMultiplicand + 2], a
-
-	; hProduct = catch rate * (turns passed * 3)
-	call Multiply
-
-	; hDividend = hProduct = catch rate * (turns passed * 3)
-	ld hl, hDividend
-	ld a, [hProduct + 0]
-	ld [hli], a
-	ld a, [hProduct + 1]
-	ld [hli], a
-	ld a, [hProduct + 2]
-	ld [hli], a
-	ld a, [hProduct + 3]
-	ld [hl], a
-
-	; hDivisor = 10
-	ld a, 10
-	ld [hDivisor], a
-
-	; hQuotient = catch rate * (turns passed * 3) / 10
-	ld b, 4
-	call Divide
-
-	; b = hQuotient = catch rate * (turns passed * 3) / 10
-	ld a, [hQuotient + 2]
-	ld b, a
-
-	ret
-
-NestBallMultiplier:
-; multiply catch rate by (41 - enemy mon level) / 5, floored at 1
-	ld a, [wEnemyMonLevel]
-	cp 30
-	ret nc
-
-	push bc
-	ld b, a
-	ld a, 41
-	sub b
-	pop bc
-
-	; hMultiplier = 41 - level
-	ld [hMultiplier], a
-
-	; hMultiplicand = catch rate
-	xor a
-	ld [hMultiplicand + 0], a
-	ld [hMultiplicand + 1], a
-	ld a, b
-	ld [hMultiplicand + 2], a
-
-	; hProduct = catch rate * (41 - level)
-	call Multiply
-
-	; hDivisor = 5
-	ld a, 5
-	ld [hDivisor], a
-
-	; hQuotient = catch rate * (41 - level) / 5
-	ld b, 4
-	call Divide
-
-	; b = hQuotient = catch rate * (41 - level) / 5
-	ld a, [hQuotient + 2]
-	ld b, a
-
-	ret
-
-NetBallMultiplier:
-; multiply catch rate by 3 if mon is water or bug type
-	ld a, [wEnemyMonType1]
-	cp WATER
-	jr z, .ok
-	cp BUG
-	jr z, .ok
-	ld a, [wEnemyMonType2]
-	cp WATER
-	jr z, .ok
-	cp BUG
-	ret nz
-
-.ok
-	ld a, b
-	add a
-	jr c, .max
-
-	add b
-	jr nc, .done
-.max
-	ld a, $ff
-.done
-	ld b, a
-	ret
-
-DiveBallMultiplier:
-; multiply catch rate by 3.5 if surfing or fishing
-	ld a, [wPlayerState]
-	cp PLAYER_SURF
-	jr z, .water
-	cp PLAYER_SURF_PIKA
-	jr z, .water
-
-	ld a, [wBattleType]
-	cp BATTLETYPE_FISH
-	jr z, .water
-
-	ret
-
-.water
-	ld a, b
-	srl a
-rept 3
-	add b
-	jr c, .max
-endr
-	ret
-
-.max
-	ld b, $ff
-	ret
-
-QuickBallMultiplier:
-; multiply catch rate by 5 on first turn
-	ld a, [wPlayerTurnsTaken]
-	and a
-	ret nz
-
-	ld a, b
-
-	sla b
-	jr c, .max
-
-	sla b
-	jr c, .max
-
-	add a
-	ret nc
-
-.max
-	ld b, $ff
-	ret
-
-DuskBallMultiplier:
-; multiply catch rate by 3.5 at night or in caves
-	ld a, [wPermission]
-	cp CAVE
-	jr z, .dusk
-
-	ld a, [wTimeOfDay]
-	cp 1 << NITE
-	jr z, .dusk
-
-	ret
-
-.dusk
-	ld a, b
-	srl a
-rept 3
-	add b
-	jr c, .max
-endr
-	ret
-
-.max
-	ld b, $ff
-	ret
 
 Text_NoShake: ; 0xedb5
 	; Oh no! The #MON broke free!
@@ -1459,18 +866,47 @@ EvoStoneEffect:
 	jp WontHaveAnyEffectMessage
 ; ee3d
 
+LowerEVBerry:
+	ld b, PARTYMENUACTION_HEALING_ITEM
+	call UseItem_SelectMon
+	jp c, ItemNotUsed_ExitMenu
+
+	ld a, MON_HAPPINESS
+	call GetPartyParamLocation
+	ld a, [hl]
+	inc a
+	push af
+	call SetUpEVModifier
+	add hl, bc
+	pop af
+	or [hl]
+	jp z, WontHaveAnyEffectMessage
+
+	ld a, [hl]
+	sub 10
+	jr nc, .ev_value_ok
+	xor a
+
+.ev_value_ok
+	ld [hl], a
+	farcall UpdatePkmnStats
+	ld c, HAPPINESS_USEDEVBERRY
+	farcall ChangeHappiness
+	call GetStatStringAndPlayFullHealSFX
+	ld hl, ItemHappinessRoseButStatFellText
+	call PrintText
+	jp UseDisposableItem
+
+ItemHappinessRoseButStatFellText:
+	text_jump _ItemHappinessRoseButStatFellText
+	db "@"
 
 VitaminEffect: ; ee3d
 	ld b, PARTYMENUACTION_HEALING_ITEM
 	call UseItem_SelectMon
 	jp c, ItemNotUsed_ExitMenu
 
-	call UseItem_GetBaseDataAndNickParameters
-	call GetEVRelativePointer
-
-	ld a, MON_EVS
-	call GetPartyParamLocation
-
+	call SetUpEVModifier
 	add hl, bc
 	ld a, [hl]
 	cp 252
@@ -1478,7 +914,7 @@ VitaminEffect: ; ee3d
 
 	add 10
 	jr c, .set_to_max
-	cp 253
+	cp 252 + 1
 	jr c, .ev_value_ok
 .set_to_max
 	ld a, 252
@@ -1487,8 +923,30 @@ VitaminEffect: ; ee3d
 	ld [hl], a
 	farcall UpdatePkmnStats
 
-	call GetEVRelativePointer
+	call GetStatStringAndPlayFullHealSFX
+	ld hl, ItemStatRoseText
+	call PrintText
 
+	ld c, HAPPINESS_USEDITEM
+	farcall ChangeHappiness
+	jp UseDisposableItem
+; ee8c
+
+
+ItemStatRoseText: ; 0xeea6
+	; 's @ rose.
+	text_jump _ItemStatRoseText
+	db "@"
+; 0xeeab
+
+SetUpEVModifier:
+	call UseItem_GetBaseDataAndNickParameters
+	call GetEVRelativePointer
+	ld a, MON_EVS
+	jp GetPartyParamLocation
+
+GetStatStringAndPlayFullHealSFX:
+	call GetEVRelativePointer
 	ld hl, StatStrings
 	add hl, bc
 	add hl, bc
@@ -1498,25 +956,7 @@ VitaminEffect: ; ee3d
 	ld de, wStringBuffer2
 	ld bc, ITEM_NAME_LENGTH
 	rst CopyBytes
-
-	call Play_SFX_FULL_HEAL
-
-	ld hl, Text_StatRose
-	call PrintText
-
-	ld c, HAPPINESS_USEDITEM
-	farcall ChangeHappiness
-
-	jp UseDisposableItem
-; ee8c
-
-
-Text_StatRose: ; 0xeea6
-	; 's @  rose.
-	text_jump UnknownText_0x1c5b9a
-	db "@"
-; 0xeeab
-
+	jp Play_SFX_FULL_HEAL
 
 StatStrings: ; eeab
 	dw .health
@@ -2202,12 +1642,12 @@ GetHealingItemAmount: ; f395 (3:7395)
 	ld e, [hl]
 	ret
 
-Softboiled_MilkDrinkFunction: ; f3df (3:73df)
-; Softboiled/Milk Drink in the field
+FreshSnackFunction: ; f3df (3:73df)
+; Fresh Snack in the field
 	ld a, [wPartyMenuCursor]
 	dec a
 	ld b, a
-	call .SelectMilkDrinkRecipient ; select pokemon
+	call .SelectFreshSnackRecipient ; select pokemon
 	jr c, .skip
 	ld a, b
 	ld [wCurPartyMon], a
@@ -2232,7 +1672,7 @@ Softboiled_MilkDrinkFunction: ; f3df (3:73df)
 	ld [wPartyMenuCursor], a
 	ret
 
-.SelectMilkDrinkRecipient: ; f419 (3:7419)
+.SelectFreshSnackRecipient: ; f419 (3:7419)
 .loop
 	push bc
 	ld a, PARTYMENUACTION_HEALING_ITEM
@@ -2340,20 +1780,23 @@ DireHit: ; f4b8
 
 
 XItemEffect: ; f4c5
-	call UseItemText
-
 	farcall CheckItemParam
 	ld b, a
 
-	xor a
-	ld [hBattleTurn], a
-	ld [wAttackMissed], a
-	ld [wEffectFailed], a
-	farcall CheckIfStatCanBeRaised
-	call WaitSFX
+	ld a, STAT_SKIPTEXT | STAT_SILENT
+	farcall _ForceRaiseStat
+	ld a, [wFailedMessage]
+	and a
+	jp nz, WontHaveAnyEffect_NotUsedMessage
 
-	farcall BattleCommand_statupmessage
-	farcall BattleCommand_statupfailtext
+	push bc
+	call UseItemText
+	pop bc
+
+	; skip stat raise anim since we're in bag
+	farcall GetStatRaiseMessage
+	or 1
+	farcall DoPrintStatChange
 
 	ld a, [wCurBattleMon]
 	ld [wCurPartyMon], a
@@ -3177,7 +2620,9 @@ AbilityCap:
 	ld e, l
 	pop hl
 	push hl
+	push de
 	call UseItem_GetBaseDataAndNickParameters
+	pop de
 	ld a, [wBaseAbility1]
 	ld b, a
 	ld a, [wBaseAbility2]
@@ -3207,13 +2652,11 @@ AbilityCap:
 	jr c, .loopnext
 
 	; Change ability
-	ld a, ABILITY_MASK
-	cpl
-	ld h, d
-	ld l, e
-	and [hl]
+	ld a, [de]
+	and $ff ^ ABILITY_MASK
 	or c
-	ld [hl], a
+	ld [de], a
+
 	call UseDisposableItem
 	ld hl, AbilityChangedText
 	jp PrintText

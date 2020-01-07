@@ -63,8 +63,6 @@ SpecialsPointers::
 	add_special RestartMapMusic
 	add_special HealMachineAnim
 	add_special Special_SurfStartStep
-	add_special Special_FindGreaterThanThatLevel ; unused
-	add_special Special_FindAtLeastThatHappy ; unused
 	add_special Special_FindThatSpecies
 	add_special Special_FindThatSpeciesYourTrainerID
 	add_special Special_DayCareMon1
@@ -73,8 +71,9 @@ SpecialsPointers::
 	add_special Special_ActivateFishingSwarm
 	add_special ToggleMaptileDecorations
 	add_special ToggleDecorationsVisibility
-	add_special SpecialGiveWobbuffet
-	add_special SpecialReturnWobbuffet
+	add_special SpecialGiveShuckie
+	add_special SpecialReturnShuckie
+	add_special TeachShuckiePoisonJab
 	add_special Special_BillsGrandfather
 	add_special SpecialCheckPokerus
 	add_special Special_DisplayCoinCaseBalance

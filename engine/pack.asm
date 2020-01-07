@@ -1370,7 +1370,7 @@ DrawPackGFX: ; 1089d
 	jr z, .female
 	ld a, [wPlayerGender]
 	rrca
-	jr c, .male
+	jr nc, .male
 .female
 	ld hl, PackFGFX
 	ld e, BANK(PackFGFX)

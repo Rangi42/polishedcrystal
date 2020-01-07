@@ -14,13 +14,13 @@ WonderTrade::
 	farcall SelectTradeOrDaycareMon
 	ret c
 
-	ld a, [wCurPartySpecies]
-;	cp EGG
-;	jr nz, .continue
-;	ld hl, .Text_WonderTradeCantTradeEgg
-;	jp PrintText
-
-.continue
+	ld a, MON_IS_EGG
+	call GetPartyParamLocation
+	bit MON_IS_EGG_F, [hl]
+	jr z, .not_egg
+	ld a, EGG
+	ld [wCurPartySpecies], a
+.not_egg
 	ld hl, wPartyMonNicknames
 	ld bc, PKMN_NAME_LENGTH
 	call Trade_GetAttributeOfCurrentPartymon
@@ -526,20 +526,18 @@ GetWonderTradeOTGender:
 INCLUDE "data/events/wonder_trade/ot_genders.asm"
 
 GetWonderTradeHeldItem:
-	ld hl, WonderTradeHeldItems
-	call Random
-.loop
-	sub [hl]
-	jr c, .ok
-	inc hl
-	inc hl
-	jr .loop
-.ok
-	ld a, [hli]
-	cp -1
-	ld a, NO_ITEM
-	ret z
-	ld a, [hli]
+; Returns a level-scaled item reward
+	push de
+	ld hl, wPartyMon1Level
+	ld bc, PARTYMON_STRUCT_LENGTH
+	call Trade_GetAttributeOfLastPartymon
+	ld a, [de]
+	ld b, a
+	ld a, BANK(WonderTradeBaseItems)
+	ld hl, WonderTradeBaseItems
+	ld de, WonderTradeRareItems
+	farcall GetScaledItemReward
+	pop de
 	ret
 
 INCLUDE "data/events/wonder_trade/held_items.asm"

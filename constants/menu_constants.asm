@@ -8,18 +8,17 @@
 	const MONMENU_WHIRLPOOL  ; 7
 	const MONMENU_DIG        ; 8
 	const MONMENU_TELEPORT   ; 9
-	const MONMENU_SOFTBOILED ; 10
+	const MONMENU_FRESHSNACK ; 10
 	const MONMENU_HEADBUTT   ; 11
 	const MONMENU_ROCKSMASH  ; 12
-	const MONMENU_MILKDRINK  ; 13
 
-	const MONMENU_STATS      ; 14
-	const MONMENU_SWITCH     ; 15
-	const MONMENU_ITEM       ; 16
-	const MONMENU_CANCEL     ; 17
-	const MONMENU_MOVE       ; 18
-	const MONMENU_MAIL       ; 19
-	const MONMENU_ERROR      ; 20
+	const MONMENU_STATS      ; 13
+	const MONMENU_SWITCH     ; 14
+	const MONMENU_ITEM       ; 15
+	const MONMENU_CANCEL     ; 16
+	const MONMENU_MOVE       ; 17
+	const MONMENU_MAIL       ; 18
+	const MONMENU_ERROR      ; 19
 
 MONMENU_FIELD_MOVE EQU 0
 MONMENU_MENUOPTION EQU 1

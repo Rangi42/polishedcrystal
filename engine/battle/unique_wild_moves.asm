@@ -19,10 +19,15 @@ CheckUniqueWildMove:
 	jr nz, .inc1andloop
 	ld a, [hli] ; move
 	ld b, a
-	cp EXPLOSION
-	jr z, .TeachMove ; assume this is in TeamRocketBaseB1F
-	cp FLY
+	; always teach moves for certain Pokémon
+	ld a, c
+	cp MAHOGANY_TOWN
+	jr z, .TeachMove ; assume this is for Explosion in TeamRocketBaseB1F
+	cp UNION_CAVE
+	jr z, .TeachMove ; assume this is a Lapras in UnionCaveB2F
+	cp YELLOW_FOREST
 	jr nz, .ChanceToTeach
+	; assume this is a Pikachu in YellowForest; Surf (always teach) or Fly?
 	ld a, [wPlayerState]
 	cp PLAYER_SURF
 	jr z, .SurfingPikachu
@@ -37,7 +42,7 @@ CheckUniqueWildMove:
 	cp 50 percent + 1
 	ret nc
 .TeachMove
-	ld hl, wEnemyMonMoves + 1 ; second move
+	ld hl, wOTPartyMon1Moves + 1 ; second move
 	ld a, [hl]
 	and a
 	jr z, .ok
@@ -49,7 +54,7 @@ CheckUniqueWildMove:
 	ld a, [hl]
 	and a
 	jr z, .ok
-	ld hl, wEnemyMonMoves ; first move
+	ld hl, wOTPartyMon1Moves ; first move
 .ok
 	ld a, b
 	ld [hl], a

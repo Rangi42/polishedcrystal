@@ -2,6 +2,8 @@ https://bulbapedia.bulbagarden.net/wiki/List_of_Gotta_Catch_%27Em_All_event_Pok√
 https://bulbapedia.bulbagarden.net/wiki/Game_move_errors
 https://www.pokecommunity.com/showthread.php?t=184717
 
+Shell Smash: Forretress, Corsola, Lapras, Pupitar
+
 Hoothoot: Healing Light
 Qwilfish: Aqua Jet
 Qwilfish: Astonish
@@ -57,6 +59,7 @@ Kingler: Hydro Pump
 Hitmonlee: Aura Sphere
 Hitmonchan: Aura Sphere
 Mr. Mime: Dazzling Gleam
+Gyarados: Power Whip
 Lapras: Sparkling Aria, Charm
 Umbreon: Crunch, Thief
 Leafeon: Leech Seed

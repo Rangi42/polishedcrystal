@@ -63,7 +63,7 @@ _DepositPKMN: ; e2391 (38:6391)
 	call BillsPC_RefreshTextboxes
 	call PCMonInfo
 	call BillsPC_PrintBoxCountAndCapacityInsideBox
-	ld a, $ff
+	xor a
 	ld [wCurPartySpecies], a
 	ld a, CGB_BILLS_PC
 	call BillsPC_ApplyPalettes
@@ -118,10 +118,7 @@ _DepositPKMN: ; e2391 (38:6391)
 	xor a
 	ld [hBGMapMode], a
 	call ClearSprites
-	call BillsPC_GetSelectedPokemonSpecies
-	ld [wCurPartySpecies], a
-	ld a, CGB_BILLS_PC
-	call BillsPC_ApplyPalettes
+	call BillsPC_GetSelectedMonPal
 	ld de, PCString_WhatsUp
 	call BillsPC_PlaceString
 	ld a, $1
@@ -176,10 +173,7 @@ BillsPCDepositFuncStats: ; e24c8 (38:64c8)
 	call BillsPC_StatsScreen
 	call ExitMenu
 	call PCMonInfo
-	call BillsPC_GetSelectedPokemonSpecies
-	ld [wCurPartySpecies], a
-	ld a, CGB_BILLS_PC
-	jp BillsPC_ApplyPalettes
+	jp BillsPC_GetSelectedMonPal
 
 BillsPCDepositFuncRelease: ; e24e0 (38:64e0)
 	call BillsPC_CheckMail_PreventBlackout
@@ -310,7 +304,7 @@ _WithdrawPKMN: ; e2583 (38:6583)
 	call BillsPC_RefreshTextboxes
 	call PCMonInfo
 	call BillsPC_PrintBoxCountAndCapacityInsideBox
-	ld a, $ff
+	xor a
 	ld [wCurPartySpecies], a
 	ld a, CGB_BILLS_PC
 	call BillsPC_ApplyPalettes
@@ -360,10 +354,7 @@ _WithdrawPKMN: ; e2583 (38:6583)
 	xor a
 	ld [hBGMapMode], a
 	call ClearSprites
-	call BillsPC_GetSelectedPokemonSpecies
-	ld [wCurPartySpecies], a
-	ld a, CGB_BILLS_PC
-	call BillsPC_ApplyPalettes
+	call BillsPC_GetSelectedMonPal
 	ld de, PCString_WhatsUp
 	call BillsPC_PlaceString
 	ld a, $1
@@ -416,10 +407,7 @@ BillsPC_Withdraw: ; e2675 (38:6675)
 	call BillsPC_StatsScreen
 	call ExitMenu
 	call PCMonInfo
-	call BillsPC_GetSelectedPokemonSpecies
-	ld [wCurPartySpecies], a
-	ld a, CGB_BILLS_PC
-	jp BillsPC_ApplyPalettes
+	jp BillsPC_GetSelectedMonPal
 
 .release ; e26d8 (38:66d8)
 	ld a, [wMenuCursorY]
@@ -552,7 +540,7 @@ _MovePKMNWithoutMail: ; e2759
 	call BillsPC_MoveMonWOMail_BoxNameAndArrows
 	call PCMonInfo
 	call BillsPC_PrintBoxCountAndCapacityInsideBox
-	ld a, $ff
+	xor a
 	ld [wCurPartySpecies], a
 	ld a, CGB_BILLS_PC
 	call BillsPC_ApplyPalettes
@@ -611,10 +599,7 @@ _MovePKMNWithoutMail: ; e2759
 	xor a
 	ld [hBGMapMode], a
 	call ClearSprites
-	call BillsPC_GetSelectedPokemonSpecies
-	ld [wCurPartySpecies], a
-	ld a, CGB_BILLS_PC
-	call BillsPC_ApplyPalettes
+	call BillsPC_GetSelectedMonPal
 	ld de, PCString_WhatsUp
 	call BillsPC_PlaceString
 	ld a, $1
@@ -668,10 +653,7 @@ _MovePKMNWithoutMail: ; e2759
 	call BillsPC_StatsScreen
 	call ExitMenu
 	call PCMonInfo
-	call BillsPC_GetSelectedPokemonSpecies
-	ld [wCurPartySpecies], a
-	ld a, CGB_BILLS_PC
-	jp BillsPC_ApplyPalettes
+	jp BillsPC_GetSelectedMonPal
 ; e28bd
 
 .Cancel: ; e28bd
@@ -1063,7 +1045,13 @@ PCMonInfo: ; e2ac6 (38:6ac6)
 	jr nz, .row
 
 	call BillsPC_LoadMonStats
+	ld a, [wTempMonIsEgg]
+	bit MON_IS_EGG_F, a
 	ld a, [wd265]
+	jr z, .not_egg
+	ld a, EGG
+
+.not_egg
 	ld [wCurPartySpecies], a
 	ld [wCurSpecies], a
 	ld hl, wTempMonForm
@@ -1075,8 +1063,9 @@ PCMonInfo: ; e2ac6 (38:6ac6)
 	ld [wBillsPC_MonHasMail], a
 	ld a, [wCurPartySpecies]
 	ld [wd265], a
-	cp EGG
-	ret z
+	ld a, [wTempMonIsEgg]
+	bit MON_IS_EGG_F, a
+	ret nz
 
 	call GetBasePokemonName
 	hlcoord 1, 14
@@ -1468,7 +1457,7 @@ ENDC
 	ld a, [wd004]
 	inc a
 	ld [wBillsPC_NumMonsInBox], a
-endm
+ENDM
 
 CopyBoxmonSpecies: ; e2d30 (38:6d30)
 	xor a
@@ -1502,6 +1491,27 @@ CopyBoxmonSpecies: ; e2d30 (38:6d30)
 	call GetSRAMBank
 	ld hl, sBoxSpecies
 	copy_box_data 1
+	ret
+
+BillsPC_GetSelectedMonPal:
+; Sets Pokémon palette, even for eggs, and sets target mon (not EGG) to
+; wCurPartySpecies.
+	call BillsPC_GetSelectedPokemonSpecies
+	push af
+
+	; Get target species or EGG
+	ld a, [wTempMonIsEgg]
+	bit MON_IS_EGG_F, a
+	ld a, EGG
+	jr nz, .got_species
+	pop af
+	push af
+.got_species
+	ld [wCurPartySpecies], a
+	ld a, CGB_BILLS_PC
+	call BillsPC_ApplyPalettes
+	pop af
+	ld [wCurPartySpecies], a
 	ret
 
 BillsPC_GetSelectedPokemonSpecies: ; e2def (38:6def)
@@ -1682,9 +1692,47 @@ BillsPC_CheckMail_PreventBlackout: ; e2f18 (38:6f18)
 	ret
 
 BillsPC_IsMonAnEgg: ; e2f5f (38:6f5f)
-	ld a, [wCurPartySpecies]
-	cp EGG
-	jr z, .egg
+	call BillsPC_GetSelectedPokemonSpecies ; sets hl and e
+	inc hl
+	ld a, [hl]
+	and a
+	jr z, .party
+	cp NUM_BOXES + 1
+	jr z, .sBox
+
+	ld b, a
+	call GetBoxPointer
+	ld a, b
+	call GetSRAMBank
+	ld bc, sBoxMon1IsEgg - sBox
+	add hl, bc
+	jr .okay_sBox
+
+.party
+	ld hl, wPartyMon1IsEgg
+	ld bc, PARTYMON_STRUCT_LENGTH
+	ld a, e
+	rst AddNTimes
+	ld a, [hl]
+	ld e, a
+	jr .okay_party
+
+.sBox
+	ld a, BANK(sBox)
+	call GetSRAMBank
+	ld hl, sBoxMon1IsEgg
+
+.okay_sBox
+	ld bc, BOXMON_STRUCT_LENGTH
+	ld a, e
+	rst AddNTimes
+	ld a, [hl]
+	ld e, a
+	call CloseSRAM
+	ld a, e
+.okay_party
+	bit MON_IS_EGG_F, a
+	jr nz, .egg
 	and a
 	ret
 
@@ -1822,7 +1870,21 @@ DepositPokemon: ; e307c (38:707c)
 	xor a
 	ld [wPokemonWithdrawDepositParameter], a
 	farcall RemoveMonFromPartyOrBox
+	hlcoord 1, 16
+	ld de, PCString_Stored
+	call PlaceString
+	ld l, c
+	ld h, b
+	ld de, wStringBuffer1
+	call PlaceString
+	ld a, "!"
+	ld [bc], a
+	ld a, [wTempMonIsEgg]
+	bit MON_IS_EGG_F, a
+	ld a, EGG
+	jr nz, .got_species
 	ld a, [wCurPartySpecies]
+.got_species
 	call PlayCry
 	hlcoord 0, 0
 	lb bc, 15, 8
@@ -1834,15 +1896,6 @@ DepositPokemon: ; e307c (38:707c)
 	lb bc, 1, 18
 	call TextBox
 	call ApplyTilemapInVBlank
-	hlcoord 1, 16
-	ld de, PCString_Stored
-	call PlaceString
-	ld l, c
-	ld h, b
-	ld de, wStringBuffer1
-	call PlaceString
-	ld a, "!"
-	ld [bc], a
 	and a
 	ret
 
@@ -1873,7 +1926,21 @@ TryWithdrawPokemon: ; e30fa (38:70fa)
 	ld a, PC_DEPOSIT
 	ld [wPokemonWithdrawDepositParameter], a
 	farcall RemoveMonFromPartyOrBox
+	hlcoord 1, 16
+	ld de, PCString_Got
+	call PlaceString
+	ld l, c
+	ld h, b
+	ld de, wStringBuffer1
+	call PlaceString
+	ld a, "!"
+	ld [bc], a
+	ld a, [wTempMonIsEgg]
+	bit MON_IS_EGG_F, a
+	ld a, EGG
+	jr nz, .got_species
 	ld a, [wCurPartySpecies]
+.got_species
 	call PlayCry
 	hlcoord 0, 0
 	lb bc, 15, 8
@@ -1885,15 +1952,6 @@ TryWithdrawPokemon: ; e30fa (38:70fa)
 	lb bc, 1, 18
 	call TextBox
 	call ApplyTilemapInVBlank
-	hlcoord 1, 16
-	ld de, PCString_Got
-	call PlaceString
-	ld l, c
-	ld h, b
-	ld de, wStringBuffer1
-	call PlaceString
-	ld a, "!"
-	ld [bc], a
 	and a
 	ret
 
@@ -1917,15 +1975,21 @@ ReleasePKMN_ByePKMN: ; e3180 (38:7180)
 	hlcoord 0, 15
 	lb bc, 1, 18
 	call TextBox
+	hlcoord 1, 16
+	ld de, PCString_Bye
+	call PlaceString
+	ld l, c
+	ld h, b
+	inc hl
+	ld de, wStringBuffer1
+	call PlaceString
+	ld l, c
+	ld h, b
+	ld [hl], "!"
 
 	call ApplyTilemapInVBlank
 	ld a, [wCurPartySpecies]
-	call GetCryIndex
-	jr c, .skip_cry
-	ld e, c
-	ld d, b
-	call PlayCryHeader
-.skip_cry
+	call PlayCry
 
 	ld a, [wCurPartySpecies]
 	ld [wd265], a
@@ -1951,19 +2015,7 @@ ReleasePKMN_ByePKMN: ; e3180 (38:7180)
 	call PlaceString
 	hlcoord 0, 15
 	lb bc, 1, 18
-	call TextBox
-	hlcoord 1, 16
-	ld de, PCString_Bye
-	call PlaceString
-	ld l, c
-	ld h, b
-	inc hl
-	ld de, wStringBuffer1
-	call PlaceString
-	ld l, c
-	ld h, b
-	ld [hl], "!"
-	ret
+	jp TextBox
 ; e31e7 (38:71e7)
 
 MovePKMNWitoutMail_InsertMon: ; e31e7

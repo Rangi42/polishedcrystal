@@ -1,4 +1,15 @@
-; Syntactic sugar macros
+assert: MACRO
+	if !(\1)
+		if _NARG > 1
+			fail \2
+		else
+			fail "Assertion failed: \1"
+		endc
+	endc
+ENDM
+
+
+; Syntactic sugar MACROs
 
 lb: MACRO ; r, hi, lo
 	ld \1, ((\2) & $ff) << 8 | ((\3) & $ff)
@@ -54,7 +65,7 @@ flagcheck: MACRO
 	bit (\2 & $7), [hl]
 ENDM
 
-changebridgeblock: macro
+changebridgeblock: MACRO
 	; lb de, \1 + 4, \2 + 4
 	; call GetBlockLocation
 	ld hl, wOverworldMap + (\2 / 2 + 3) * (\4_WIDTH + 6) + \1 / 2 + 3

@@ -157,7 +157,7 @@ AI_Setup: ; 385e0
 
 AI_Types: ; 38635
 ; Dismiss any move that the player is immune to.
-; Encourage super-effective moves.
+; Encourage super effective moves.
 ; Discourage not very effective moves unless
 ; all damaging moves are of the same type.
 
@@ -773,7 +773,7 @@ AI_Smart_Haze: ; 389f5
 
 AI_Smart_Roar: ; 38a2a
 ; Discourage this move if the player has not shown
-; a super-effective move against the enemy.
+; a super effective move against the enemy.
 ; Consider player's type(s) if its moves are unknown.
 
 	push hl
@@ -787,28 +787,50 @@ AI_Smart_Roar: ; 38a2a
 ; 38a3a
 
 
-AI_Smart_Heal:
 AI_Smart_HealingLight:
-AI_Smart_Roost:
-; 90% chance to greatly encourage this move if enemy's HP is below 25%.
-; Discourage this move if enemy's HP is higher than 50%.
-; Do nothing otherwise.
+; use healing scoring, then -1 in sun, +2 in other weather
+	call AI_Smart_Heal
 
-	call AICheckEnemyQuarterHP
-	jr nc, .asm_38a45
-	call AICheckEnemyHalfHP
-	ret nc
+	call GetWeatherAfterUserUmbrella
+	and a
+	ret z
+	dec [hl]
+	cp WEATHER_SUN
+	ret z
+	inc [hl]
 	inc [hl]
 	ret
 
-.asm_38a45
-	call Random
-	cp $19
-	ret c
+AI_Smart_Heal:
+AI_Smart_Roost:
+; Score the move as follows (lower is better):
+; <33%: -2
+; 33-50%: -1
+; 50-66%: +0
+; >66%: +2
 	dec [hl]
+	call CheckPinch
+	jr nz, .no_pinch
 	dec [hl]
 	ret
-; 38a4e
+
+.no_pinch
+	push hl
+	call GetHalfMaxHP
+	call CompareHP
+	pop hl
+	ret c
+	inc [hl]
+	push hl
+	call GetThirdMaxHP
+	sla c
+	rl b
+	call CompareHP
+	pop hl
+	ret c
+	inc [hl]
+	inc [hl]
+	ret
 
 
 AI_Smart_Toxic:
@@ -1338,7 +1360,7 @@ AI_Smart_PriorityHit: ; 38d5a
 	ld a, $1
 	ld [hBattleTurn], a
 	push hl
-	farcall EnemyAttackDamage
+	farcall AttackDamage
 	farcall BattleCommand_damagecalc
 	farcall BattleCommand_stab
 	pop hl
@@ -1974,7 +1996,7 @@ AI_Smart_HiddenPower: ; 3909e
 	cp 50
 	jr c, .bad
 
-; Encourage Hidden Power if super-effective.
+; Encourage Hidden Power if super effective.
 	ld a, [wd265]
 	cp 11
 	jr nc, .good
@@ -2554,7 +2576,7 @@ UsefulMoves: ; 39301
 	db WILL_O_WISP
 	db RECOVER
 	db FIRE_BLAST
-	db SOFTBOILED
+	db FRESH_SNACK
 	db SUPER_FANG
 	db MOONBLAST
 	db PLAY_ROUGH
@@ -2763,7 +2785,7 @@ AIDamageCalc: ; 393e7
 	farjp BattleCommand_constantdamage
 
 .no_special_damage
-	farcall EnemyAttackDamage
+	farcall AttackDamage
 	farcall BattleCommand_damagecalc
 	farcall BattleCommand_stab
 
@@ -2962,7 +2984,7 @@ AI_Status: ; 39453
 	; Also check for Leaf Guard
 	cp LEAF_GUARD
 	jr nz, .no_leaf_guard
-	call GetWeatherAfterCloudNine
+	call GetWeatherAfterOpponentUmbrella
 	cp WEATHER_SUN
 	jr z, .pop_and_discourage
 

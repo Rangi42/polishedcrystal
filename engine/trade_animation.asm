@@ -865,29 +865,30 @@ TraideAnim_Wait96: ; 294f9
 
 TraideAnim_Wait80IfOTEgg: ; 29502
 	call IsOTTrademonEgg
-	ret nz
+	ret z
 	ld c, 80
 	jp DelayFrames
 ; 2950c
 
 TraideAnim_Wait180IfOTEgg: ; 2950c
 	call IsOTTrademonEgg
-	ret nz
+	ret z
 	ld c, 180
 	jp DelayFrames
 ; 29516
 
 IsOTTrademonEgg: ; 29516
 	call TradeAnim_AdvanceScriptPointer
-	ld a, [wOTTrademonSpecies]
-	cp EGG
+	ld a, [wOTTrademonIsEgg]
+	bit MON_IS_EGG_F, a
 	ret
 ; 2951f
 ShowPlayerTrademonStats: ; 2951f
-	ld de, wPlayerTrademonSpecies
+	ld de, wPlayerTrademonIsEgg
 	ld a, [de]
-	cp EGG
-	jr z, TrademonStats_Egg
+	bit MON_IS_EGG_F, a
+	ld de, wPlayerTrademonSpecies
+	jr nz, TrademonStats_Egg
 	call TrademonStats_MonTemplate
 	ld de, wPlayerTrademonSpecies
 	call TrademonStats_PrintSpeciesNumber
@@ -902,10 +903,11 @@ ShowPlayerTrademonStats: ; 2951f
 ; 29549
 
 ShowOTTrademonStats: ; 29549
-	ld de, wOTTrademonSpecies
+	ld de, wOTTrademonIsEgg
 	ld a, [de]
-	cp EGG
-	jr z, TrademonStats_Egg
+	bit MON_IS_EGG_F, a
+	ld de, wOTTrademonSpecies
+	jr nz, TrademonStats_Egg
 	call TrademonStats_MonTemplate
 	ld de, wOTTrademonSpecies
 	call TrademonStats_PrintSpeciesNumber

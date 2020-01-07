@@ -54,7 +54,7 @@ const_value = 1
 deco: MACRO
 	const DECO_\1
 	enum DECOFLAG_\1
-endm
+ENDM
 
 const_value = 1
 __enum__ = 0

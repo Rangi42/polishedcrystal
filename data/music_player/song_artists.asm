@@ -24,3 +24,5 @@ SongArtists:
 	db "GRonnoc@"
 	db "Cat333Pokemon@"
 	db "NotFroggestSpirit@"
+	db "Toby Fox@"
+	db "ShinkoNetCavy,      ShockSlayer@"

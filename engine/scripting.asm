@@ -1106,7 +1106,7 @@ Script_turnobject:
 	ld e, a
 	; fallthrough
 
-ApplyPersonFacing:
+ApplyPersonFacing::
 	ld a, d
 	push de
 	call CheckObjectVisibility

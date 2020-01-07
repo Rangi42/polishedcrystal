@@ -191,8 +191,6 @@ BitmasksPointers:
 	dw QuagsireBitmasks
 	dw EspeonBitmasks
 	dw UmbreonBitmasks
-	dw LeafeonBitmasks
-	dw GlaceonBitmasks
 	dw MurkrowBitmasks
 	dw HonchkrowBitmasks
 	dw SlowkingBitmasks
@@ -211,6 +209,7 @@ BitmasksPointers:
 	dw GranbullBitmasks
 	dw QwilfishBitmasks
 	dw ScizorBitmasks
+	dw ShuckleBitmasks
 	dw HeracrossBitmasks
 	dw SneaselBitmasks
 	dw WeavileBitmasks
@@ -232,6 +231,7 @@ BitmasksPointers:
 	dw PhanpyBitmasks
 	dw DonphanBitmasks
 	dw Porygon2Bitmasks
+	dw PorygonZBitmasks
 	dw SmeargleBitmasks
 	dw TyrogueBitmasks
 	dw HitmontopBitmasks
@@ -250,7 +250,7 @@ BitmasksPointers:
 	dw LugiaBitmasks
 	dw HoOhBitmasks
 	dw CelebiBitmasks
+	dw LeafeonBitmasks
+	dw GlaceonBitmasks
 	dw SylveonBitmasks
-	dw PorygonZBitmasks
 	dw EggBitmasks
-	dw -1 ; unused

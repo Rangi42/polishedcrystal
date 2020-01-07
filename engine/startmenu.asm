@@ -600,8 +600,7 @@ PokemonActionSubmenu: ; 12a88
 	dbw MONMENU_WHIRLPOOL,  MonMenu_Whirlpool ; Whirlpool
 	dbw MONMENU_DIG,        MonMenu_Dig ; Dig
 	dbw MONMENU_TELEPORT,   MonMenu_Teleport ; Teleport
-	dbw MONMENU_SOFTBOILED, MonMenu_Softboiled_MilkDrink ; Softboiled
-	dbw MONMENU_MILKDRINK,  MonMenu_Softboiled_MilkDrink ; MilkDrink
+	dbw MONMENU_FRESHSNACK, MonMenu_FreshSnack ; FreshSnack
 	dbw MONMENU_HEADBUTT,   MonMenu_Headbutt ; Headbutt
 	dbw MONMENU_WATERFALL,  MonMenu_Waterfall ; Waterfall
 	dbw MONMENU_ROCKSMASH,  MonMenu_RockSmash ; RockSmash
@@ -1176,10 +1175,10 @@ MonMenu_RockSmash: ; 12f3b
 	jr _MonMenu_StandardCheck
 ; 12f50
 
-MonMenu_Softboiled_MilkDrink: ; 12ee6
+MonMenu_FreshSnack: ; 12ee6
 	call .CheckMonHasEnoughHP
 	jr nc, .NotEnoughHP
-	farcall Softboiled_MilkDrinkFunction
+	farcall FreshSnackFunction
 	jr .finish
 
 .NotEnoughHP:
@@ -1320,9 +1319,10 @@ ChooseMoveToRelearn:
 	ret
 
 ManagePokemonMoves: ; 12fba
-	ld a, [wCurPartySpecies]
-	cp EGG
-	jr z, .egg
+	ld a, MON_IS_EGG
+	call GetPartyParamLocation
+	bit MON_IS_EGG_F, [hl]
+	jr nz, .egg
 	ld hl, wOptions1
 	ld a, [hl]
 	push af
@@ -1409,13 +1409,7 @@ MoveScreenLoop:
 	farcall PlaySpriteAnimationsAndDelayFrame
 	call JoyTextDelay
 
-	; allow d-pad to be held, but not a/b/start/select
 	ld a, [hJoyPressed]
-	and BUTTONS
-	ld b, a
-	ld a, [hJoyDown]
-	and D_PAD
-	or b
 	rrca
 	jr c, .pressed_a
 	rrca

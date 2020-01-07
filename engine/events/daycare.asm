@@ -115,9 +115,11 @@ DayCareAskDepositPokemon: ; 16798
 	ld b, 6
 	farcall SelectTradeOrDaycareMon
 	jr c, .Declined
-	ld a, [wCurPartySpecies]
-	cp EGG
-	jr z, .Egg
+	ld hl, wPartyMon1IsEgg
+	ld a, [wCurPartyMon]
+	call GetPartyLocation
+	bit MON_IS_EGG_F, [hl]
+	jr nz, .Egg
 	farcall CheckCurPartyMonFainted
 	jr c, .OutOfUsableMons
 	ld hl, wPartyMon1Item
@@ -499,9 +501,8 @@ DayCare_GiveEgg: ; 169ac
 	ld c, a
 	ld b, 0
 	add hl, bc
-	ld a, EGG
-	ld [hli], a
 	ld a, [wEggMonSpecies]
+	ld [hli], a
 	ld [wCurSpecies], a
 	ld [wCurPartySpecies], a
 	ld a, -1
