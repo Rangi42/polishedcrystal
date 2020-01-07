@@ -30,6 +30,32 @@ LightningIslandRoofSparkScript:
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_SPARK
+	checkevent EVENT_BEAT_BLANCHE
+	iftrue .BlancheUndefeated
+	checkevent EVENT_BEAT_CANDELA
+	iftrue .CandelaUndefeated
+	jump .BothUndefeated
+	return
+
+.BlancheUndefeated
+	checkevent EVENT_BEAT_CANDELA
+	iftrue .BothUndefeated
+	showtext .BlancheUndefeatedText
+	playsound SFX_WARP_TO
+	applyonemovement LIGHTNINGISLANDROOF_SPARK, teleport_from
+	disappear LIGHTNINGISLANDROOF_SPARK
+	clearevent EVENT_CELADON_UNIVERSITY_SPARK
+	end
+
+.CandelaUndefeated
+	showtext .CandelaUndefeatedText
+	playsound SFX_WARP_TO
+	applyonemovement LIGHTNINGISLANDROOF_SPARK, teleport_from
+	disappear LIGHTNINGISLANDROOF_SPARK
+	clearevent EVENT_CELADON_UNIVERSITY_SPARK
+	end
+
+.BothUndefeated
 	showtext .AfterText
 	playsound SFX_WARP_TO
 	applyonemovement LIGHTNINGISLANDROOF_SPARK, teleport_from
@@ -41,21 +67,76 @@ LightningIslandRoofSparkScript:
 	jumpopenedtext .RefusedText
 
 .GreetingText:
-	text "TODO"
+	text "So you're the one"
+	line "who caught Zapdos?"
+
+	para "If you can do that"
+	line "you might stand a"
+	cont "chance against me."
+
+	para "You're going to"
+	line "have to be atleast"
+	cont "that good if you're"
+
+	para "hoping to find"
+	line "Lugia."
+
+	para "What do you say,"
+	line "beat me and I'll"
+	cont "light this beacon."
+
+	para "You ready???"
 	done
 
 .SeenText:
-	text "TODO"
+	text "Let's go!"
 	done
 
 .BeatenText:
-	text "TODO"
+	text "You just might"
+	line "stand a chance"
+	cont "against Lugia..."
 	done
 
 .AfterText:
-	text "TODO"
+	text "Lugia won't just"
+	line "appear for anyone."
+
+	para "Find Articuno"
+	line "and Moltres."
+
+	para "Then Blanche and"
+	line "Candela will"
+	cont "help you light"
+
+	para "the other beacons."
 	done
 
+.CandelaUndefeatedText:
+	text "Lugia won't just"
+	line "appear for anyone."
+
+	para "Find Moltres."
+	line "Then Candela will"
+	cont "help you light"
+
+	para "the last beacon."
+	done
+
+.BlancheUndefeatedText:
+	text "Lugia won't just"
+	line "appear for anyone."
+
+	para "Find Articuno."
+	line "Then Blanche will"
+	cont "help you light"
+
+	para "the last beacon."
+	done
+
+
 .RefusedText:
-	text "TODO"
+	text "Fair enough!"
+	line "Taking on Lugia is"
+	cont "no easy task."
 	done
