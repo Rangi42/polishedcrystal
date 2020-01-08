@@ -1375,6 +1375,8 @@ OffensiveDamageAbilities:
 	dbw ANALYTIC, AnalyticAbility
 	dbw SOLAR_POWER, SolarPowerAbility
 	dbw IRON_FIST, IronFistAbility
+	dbw TOUGH_CLAWS, ToughClawsAbility
+	dbw MEGA_LAUNCHER, MegaLauncherAbility
 	dbw SAND_FORCE, SandForceAbility
 	dbw RECKLESS, RecklessAbility
 	dbw GUTS, GutsAbility
@@ -1475,14 +1477,46 @@ SolarPowerAbility:
 	ld a, $32
 	jp ApplySpecialAttackDamageMod
 
+ToughClawsAbility:
+	call CheckContactMove
+	ret c
+	ld a, $da
+	jp ApplyDamageMod
+
+MegaLauncherAbility:
+	ld hl, .LauncherMoves
+	ld b, $32
+	jr MoveBoostAbility
+.LauncherMoves:
+	db AURA_SPHERE
+	db DARK_PULSE
+	db DRAGON_PULSE
+	db WATER_PULSE
+	db -1
+
 IronFistAbility:
 ; 120% damage for punching moves
+	ld hl, .PunchingMoves
+	ld b, $65
+	jr MoveBoostAbility
+.PunchingMoves:
+	db BULLET_PUNCH
+	db DIZZY_PUNCH
+	db DRAIN_PUNCH
+	db DYNAMICPUNCH
+	db FIRE_PUNCH
+	db MACH_PUNCH
+	db THUNDERPUNCH
+	db -1
+
+MoveBoostAbility:
 	ld a, BATTLE_VARS_MOVE
 	call GetBattleVar
-	ld hl, PunchingMoves
+	push bc
 	call IsInArray
+	pop bc
 	ret c
-	ld a, $65
+	ld a, b
 	jp ApplyDamageMod
 
 SandForceAbility:

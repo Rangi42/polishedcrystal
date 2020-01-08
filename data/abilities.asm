@@ -131,6 +131,8 @@ AbilityNames:
 	dw SandForce
 	dw FurCoat
 	dw Competitive
+	dw MegaLauncher
+	dw ToughClaws
 	dw Pixilate
 	dw TanglingHair
 	dw NeutralizingGas
@@ -267,6 +269,8 @@ Prankster:       rawchar "Prankster@"
 SandForce:       rawchar "Sand Force@"
 FurCoat:         rawchar "Fur Coat@"
 Competitive:     rawchar "Competitive@"
+MegaLauncher:    rawchar "Mega Launcher@"
+ToughClaws:      rawchar "Tough Claws@"
 Pixilate:        rawchar "Pixilate@"
 TanglingHair:    rawchar "Tangling Hair@"
 NeutralizingGas: rawchar "Neutralizing Gas@"
@@ -404,6 +408,8 @@ AbilityDescriptions:
 	dw SandForceDescription
 	dw FurCoatDescription
 	dw CompetitiveDescription
+	dw MegaLauncherDescription
+	dw ToughClawsDescription
 	dw PixilateDescription
 	dw TanglingHairDescription
 	dw NeutralizingGasDescription
@@ -926,6 +932,14 @@ FurCoatDescription:
 CompetitiveDescription:
 	db    "Boosts Spcl.Atk on"
 	next1 "stat reduction.@"
+
+MegaLauncherDescription:
+	db    "Powers up aura"
+	next1 "and pulse moves.@"
+
+ToughClawsDescription:
+	db    "Boosts moves that"
+	next1 "makes contact.@"
 
 PixilateDescription:
 	db    "Normal-type moves"

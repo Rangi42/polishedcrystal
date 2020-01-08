@@ -13,12 +13,8 @@ endc
 	dn FEMALE_12_5, 3 ; gender, step cycles to hatch
 	dn 7, 7 ; frontpic dimensions
 	db TORRENT ; ability 1
-if DEF(FAITHFUL)
-	db TORRENT ; ability 2
-else
-	db SHELL_ARMOR ; ability 2
-endc
-	db RAIN_DISH ; hidden ability
+	db RAIN_DISH ; ability 2
+	db MEGA_LAUNCHER ; hidden ability
 	db MEDIUM_SLOW ; growth rate
 	dn MONSTER, AMPHIBIAN ; egg groups
 

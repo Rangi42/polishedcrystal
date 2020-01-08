@@ -9,12 +9,8 @@
 	dn FEMALE_12_5, 3 ; gender, step cycles to hatch
 	dn 6, 6 ; frontpic dimensions
 	db OVERGROW ; ability 1
-if DEF(FAITHFUL)
-	db OVERGROW ; ability 2
-else
-	db EFFECT_SPORE ; ability 2
-endc
-	db CHLOROPHYLL ; hidden ability
+	db CHLOROPHYLL ; ability 2
+	db EFFECT_SPORE ; hidden ability
 	db MEDIUM_SLOW ; growth rate
 	dn MONSTER, PLANT ; egg groups
 

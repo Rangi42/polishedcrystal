@@ -10,7 +10,11 @@
 	dn 7, 7 ; frontpic dimensions
 	db ROCK_HEAD ; ability 1
 	db PRESSURE ; ability 2
+if DEF(FAITHFUL)
 	db UNNERVE ; hidden ability
+else
+	db TOUGH_CLAWS ; hidden ability
+endc
 	db SLOW ; growth rate
 	dn AVIAN, AVIAN ; egg groups
 

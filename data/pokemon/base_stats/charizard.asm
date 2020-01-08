@@ -13,12 +13,12 @@ endc
 	dn FEMALE_12_5, 3 ; gender, step cycles to hatch
 	dn 7, 7 ; frontpic dimensions
 	db BLAZE ; ability 1
+	db SOLAR_POWER ; ability 2
 if DEF(FAITHFUL)
-	db BLAZE ; ability 2
+	db DROUGHT ; hidden ability
 else
-	db LEVITATE ; ability 2
+	db TOUGH_CLAWS ; hidden ability
 endc
-	db SOLAR_POWER ; hidden ability
 	db MEDIUM_SLOW ; growth rate
 	dn MONSTER, REPTILE ; egg groups
 
