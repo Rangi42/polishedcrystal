@@ -296,10 +296,6 @@ SCREENS_TOXIC_SPIKES EQU     %11000000
 	const WEATHER_SUN
 	const WEATHER_SANDSTORM
 	const WEATHER_HAIL
-	const WEATHER_RAIN_END
-	const WEATHER_SUN_END
-	const WEATHER_SANDSTORM_END
-	const WEATHER_HAIL_END
 
 ; Battle vars used in home/battle.asm
 	const_def
