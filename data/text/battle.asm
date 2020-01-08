@@ -69,6 +69,11 @@ BattleText_EnemyFled: ; 0x807cf
 	prompt
 ; 0x807e2
 
+BattleText_EnemyCantEscape:
+	text "<USER>"
+	line "can't escape!"
+	prompt
+
 HurtByPoisonText: ; 0x807e2
 	text "<USER> is"
 	line "hurt by poison!"

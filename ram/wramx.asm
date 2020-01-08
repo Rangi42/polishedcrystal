@@ -635,7 +635,7 @@ SECTION "Enemy Party", WRAMX
 wPokedexShowPointerAddr:: ds 2
 wPokedexShowPointerBank:: ds 1
 
-wFailedToFlee:: ds 1
+wEnemyFleeing:: ds 1
 wNumFleeAttempts:: ds 1
 
 wLinkOTExchangeStart::

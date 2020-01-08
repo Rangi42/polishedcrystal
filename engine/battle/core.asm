@@ -161,6 +161,7 @@ BattleTurn: ; 3c12f
 	jr nz, .skip_ai_move
 	farcall AIChooseMove
 	farcall AI_MaybeSwitch
+	call TryEnemyFlee
 .skip_ai_move
 	call SetPlayerTurn
 	call CheckLockedIn
@@ -176,7 +177,7 @@ BattleTurn: ; 3c12f
 	call ParsePlayerAction
 	jr nz, .loop1
 
-	call EnemyTriesToFlee
+	call CheckOpponentForfeit
 	ret c
 
 	call DetermineMoveOrder
@@ -192,6 +193,11 @@ BattleTurn: ; 3c12f
 	xor 1
 	ld [hBattleTurn], a
 	call .do_move
+	ret nz
+
+	call ProcessEnemyFleeing
+	ld a, [wBattleEnded]
+	and a
 	ret nz
 
 	farcall HandleBetweenTurnEffects
@@ -276,7 +282,7 @@ HandleBerserkGene: ; 3c27c
 	call StdBattleTextBox
 	jp SwitchTurn
 
-EnemyTriesToFlee: ; 3c300
+CheckOpponentForfeit:
 	ld a, [wLinkMode]
 	and a
 	jr z, .not_linked
@@ -292,7 +298,6 @@ EnemyTriesToFlee: ; 3c300
 	call WildFled_EnemyFled_LinkBattleCanceled
 	scf
 	ret
-; 3c314
 
 DetermineMoveOrder:
 	ld a, [wBattlePlayerAction]
@@ -556,35 +561,8 @@ ParsePlayerAction:
 
 ; 3c4df
 
-TryEnemyFlee: ; 3c543
-	ld a, [wBattleMode]
-	dec a
-	jr nz, .Stay
-
-	call CheckNeutralizingGas
-	jr nz, .no_gas
-	ld a, [wEnemyAbility]
-	cp RUN_AWAY
-	jr z, .skip_traps
-
-.no_gas
-	call SetEnemyTurn
-	call CheckIfUserIsGhostType
-	jr z, .skip_traps
-	farcall CheckIfTrappedByAbility
-	jr z, .Stay
-
-	ld a, [wPlayerSubStatus2]
-	bit SUBSTATUS_CANT_RUN, a
-	jr nz, .Stay
-
-	ld a, [wEnemyWrapCount]
-	and a
-	jr nz, .Stay
-
-.skip_traps
-	ld a, [wEnemyMonStatus]
-	and 1 << FRZ | SLP
+TryEnemyFlee:
+	call EnemyCanFlee
 	jr nz, .Stay
 
 	ld a, [wTempEnemyMonSpecies]
@@ -617,13 +595,61 @@ TryEnemyFlee: ; 3c543
 	jr c, .Flee
 
 .Stay:
-	and a
+	xor a
+	ld [wEnemyFleeing], a
 	ret
 
 .Flee:
-	scf
+	ld a, 1
+	ld [wEnemyFleeing], a
 	ret
-; 3c59a
+
+ProcessEnemyFleeing:
+	ld a, [wEnemyFleeing]
+	and a
+	ret z
+
+	call EnemyCanFlee
+	jp z, WildFled_EnemyFled_LinkBattleCanceled
+
+	; enemy failed to flee
+	call SetEnemyTurn
+	ld hl, BattleText_EnemyCantEscape
+	jp StdBattleTextBox
+
+EnemyCanFlee:
+	ld a, [wBattleMode]
+	dec a
+	ret nz
+
+	call CheckNeutralizingGas
+	jr nz, .no_gas
+	ld a, [wEnemyAbility]
+	cp RUN_AWAY
+	jr z, .skip_traps
+
+.no_gas
+	call SetEnemyTurn
+	call CheckIfUserIsGhostType
+	jr z, .skip_traps
+	farcall CheckIfTrappedByAbility
+	jr nz, .not_ability_trapped
+	or 1
+	ret
+
+.not_ability_trapped
+	ld a, [wPlayerSubStatus2]
+	bit SUBSTATUS_CANT_RUN, a
+	ret nz
+
+	ld a, [wEnemyWrapCount]
+	and a
+	ret nz
+
+.skip_traps
+	ld a, [wEnemyMonStatus]
+	and 1 << FRZ | SLP
+	ret
 
 INCLUDE "data/wild/flee_mons.asm"
 
@@ -4435,8 +4461,6 @@ BattleMenu_Run: ; 3e489
 	ld a, $3
 	ld [wMenuCursorY], a
 	call CheckRunSpeed
-	ld a, 0 ; not xor a; preserve carry flag
-	ld [wFailedToFlee], a
 	ret c
 	ld a, [wBattlePlayerAction]
 	and a
@@ -4449,6 +4473,11 @@ CheckRunSpeed:
 	ld a, [wBattleType]
 	cp BATTLETYPE_SAFARI
 	jp z, .can_escape
+
+	; if enemy is also trying to flee, always succeed
+	ld a, [wEnemyFleeing]
+	and a
+	jp nz, .can_escape
 
 ; Sets up speed stats properly and attempts to flee.
 	ld a, [hBattleTurn]
@@ -4620,8 +4649,6 @@ CheckRunSpeed:
 .print_inescapable_text
 	call StdBattleTextBox
 .dont_forfeit
-	ld a, 1
-	ld [wFailedToFlee], a
 	call LoadTileMapToTempTileMap
 	and a
 	ret
@@ -5343,10 +5370,13 @@ ParseEnemyAction:
 .no_linkswitch
 	ld a, [wEnemySwitchTarget]
 	and a
-	jr nz, .is_switching
+	jr nz, .not_using_move
+	ld a, [wEnemyFleeing]
+	and a
+	jr nz, .not_using_move
 	farcall AI_TryItem
 	jr nc, .using_move
-.is_switching
+.not_using_move
 	call SetEnemyTurn
 	ld a, BATTLE_VARS_MOVE
 	call GetBattleVarAddr
@@ -7745,7 +7775,7 @@ CleanUpBattleRAM: ; 3f6d0
 	ld [wAttackMissed], a
 	ld [wTempWildMonSpecies], a
 	ld [wOtherTrainerClass], a
-	ld [wFailedToFlee], a
+	ld [wEnemyFleeing], a
 	ld [wNumFleeAttempts], a
 	ld [wPartyMenuCursor], a
 	ld [wKeyItemsPocketCursor], a
