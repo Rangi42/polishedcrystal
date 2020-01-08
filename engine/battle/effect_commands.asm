@@ -8600,7 +8600,7 @@ _GetTrueUserAbility::
 
 	ld a, BATTLE_VARS_ABILITY
 	call GetBattleVar
-	jr z, .got_ability
+	jr .got_ability
 
 .external
 	push bc
