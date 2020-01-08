@@ -2746,7 +2746,7 @@ BattleAnimFunction_3C: ; cdfcb (33:5fcb)
 	ld hl, BATTLEANIMSTRUCT_10
 	add hl, bc
 	ld a, [hl]
-	cp $cf
+	cp $d0
 	jr z, .asm_ce007
 	dec [hl]
 	dec [hl]
@@ -3179,7 +3179,7 @@ Functionce289: ; ce289 (33:6289)
 	ld hl, BATTLEANIMSTRUCT_XCOORD
 	add hl, bc
 	ld a, [hl]
-	cp $cf
+	cp $d0
 	jr nc, .asm_ce29b
 	ld a, $4
 	jp Functionce70a
@@ -3750,7 +3750,7 @@ BattleAnimFunction_48: ; ce5dc (33:65dc)
 	ld hl, BATTLEANIMSTRUCT_YOFFSET
 	add hl, bc
 	ld a, [hl]
-	cp $cf
+	cp $d0
 	jr z, .disappear
 rept 4
 	dec [hl]
