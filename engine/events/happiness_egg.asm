@@ -1,9 +1,10 @@
 GetFirstPokemonHappiness:
 ; returns first non-Egg party mon's happiness
-	ld hl, wPartyMon1Happiness
+	ld hl, wPartyMon1Species
 .loop
+	ld a, [hl]
 	push hl
-	ld bc, wPartyMon1IsEgg - wPartyMon1Happiness
+	ld bc, wPartyMon1IsEgg - wPartyMon1Species
 	add hl, bc
 	bit MON_IS_EGG_F, [hl]
 	pop hl
@@ -13,6 +14,8 @@ GetFirstPokemonHappiness:
 	jr .loop
 
 .done
+	ld bc, wPartyMon1Happiness - wPartyMon1Species
+	add hl, bc
 	ld [wd265], a
 	ld a, [hl]
 	ld [wScriptVar], a
