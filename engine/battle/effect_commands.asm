@@ -2935,21 +2935,22 @@ BattleCommand_startloop:
 	ret
 
 
-BattleCommand_supereffectivelooptext: ; 351a5
-; supereffectivelooptext
-
+BattleCommand_supereffectivetext:
 	ld a, BATTLE_VARS_SUBSTATUS3
-	call GetBattleVarAddr
+	call GetBattleVar
 	bit SUBSTATUS_IN_LOOP, a
+	jr z, .continue
+	ld a, [hBattleTurn]
+	and a
+	ld hl, wPlayerRolloutCount
+	jr z, .got_multi_count
+	ld hl, wEnemyRolloutCount
+.got_multi_count
+	ld a, [hl]
+	dec a
 	ret nz
 
-	; fallthrough
-; 351ad
-
-
-BattleCommand_supereffectivetext: ; 351ad
-; supereffectivetext
-
+.continue
 	ld a, [wTypeModifier]
 	cp $10 ; 1.0
 	ret z
@@ -3122,6 +3123,22 @@ BattleCommand_postfainteffects:
 	call HasOpponentFainted
 	ret nz
 
+	ld a, BATTLE_VARS_SUBSTATUS3
+	call GetBattleVar
+	bit SUBSTATUS_IN_LOOP, a
+	jr z, .no_multi
+	ld a, [hBattleTurn]
+	and a
+	ld hl, wPlayerRolloutCount
+	jr z, .got_multi_count
+	ld hl, wEnemyRolloutCount
+.got_multi_count
+	ld [hl], 1
+	call BattleCommand_supereffectivetext
+	call BattleCommand_endloop
+	call BattleCommand_raisesub
+
+.no_multi
 	ld a, BATTLE_VARS_SUBSTATUS2_OPP
 	call GetBattleVar
 	bit SUBSTATUS_DESTINY_BOND, a
@@ -3157,34 +3174,13 @@ BattleCommand_postfainteffects:
 .no_dbond
 	farcall RunFaintAbilities
 	call BattleCommand_posthiteffects
-	ld a, BATTLE_VARS_SUBSTATUS3
-	call GetBattleVar
-	bit SUBSTATUS_IN_LOOP, a
-	jr z, .no_multi
-	ld a, [hBattleTurn]
-	and a
-	ld hl, wPlayerRolloutCount
-	jr z, .got_multi_count
-	ld hl, wEnemyRolloutCount
-.got_multi_count
-	ld [hl], 1
-	call BattleCommand_endloop
-	jr .finish
 
-.no_multi
 	ld a, BATTLE_VARS_MOVE_EFFECT
 	call GetBattleVar
 	cp EFFECT_SWITCH_HIT
 	jr nz, .finish
 	call HasUserFainted
 	call nz, BattleCommand_switchout
-	jr .finish
-
-.multiple_hit_raise_sub
-	ld a, [hBattleTurn]
-	and a
-	call BattleCommand_raisesub
-
 .finish
 	jp EndMoveEffect
 
