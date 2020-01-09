@@ -1037,7 +1037,7 @@ PowerAnkletDesc:
 
 MulchDesc:
 	db   "Plant fertilizer"
-	next "for Berry soil.@"
+	next "for Berry trees.@"
 
 SweetHoneyDesc:
 	db   "The aroma attracts"
