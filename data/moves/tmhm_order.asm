@@ -1,4 +1,4 @@
-TMListAlpha:
+TMHMListAlpha:
 	db TM_ACROBATICS
 	db TM_AERIAL_ACE
 	db TM_ATTRACT
@@ -86,6 +86,6 @@ endc
 	db TM_WILL_O_WISP
 	db TM_X_SCISSOR
 	db NUM_TMS + NUM_HMS
-TMListAlphaEnd:
-	assert (TMListAlphaEnd - TMListAlpha) <= NUM_TMS + NUM_HMS + 1, "Too many A-Z TMs"
-	assert (TMListAlphaEnd - TMListAlpha) >= NUM_TMS + NUM_HMS + 1, "Too few A-Z TMs"
+TMHMListAlphaEnd:
+	assert (TMHMListAlphaEnd - TMHMListAlpha) <= NUM_TMS + NUM_HMS + 1, "Too many A-Z TMs"
+	assert (TMHMListAlphaEnd - TMHMListAlpha) >= NUM_TMS + NUM_HMS + 1, "Too few A-Z TMs"
