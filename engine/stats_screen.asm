@@ -494,12 +494,12 @@ StatsScreen_LoadGFX: ; 4dfb6 (13:5fb6)
 	; load center graphics
 	ld d, h
 	ld e, l
-	ld hl, VTiles2 tile $3f
+	ld hl, VTiles2 tile $40
 	lb bc, BANK(CaughtBallsGFX), 1
 	call Request2bpp
 	; draw center
 	hlcoord 8, 6
-	ld a, $3f ; center
+	ld a, $40 ; center
 	ld [hl], a
 	ret
 
@@ -806,6 +806,22 @@ OrangePage_:
 	hlcoord 1, 12
 	ld de, .ability
 	call PlaceString
+	ld a, [wTempMonAbility]
+	and ABILITY_MASK
+	cp ABILITY_1
+	jr z, .ability_1
+	cp ABILITY_2
+	jr z, .ability_2
+	ld a, $3f ; bold H
+	jr .got_ability
+.ability_1
+	ld a, "1"
+	jr .got_ability
+.ability_2
+	ld a, "2"
+.got_ability
+	hlcoord 9, 12
+	ld [hl], a
 	ld a, [wTempMonAbility]
 	ld b, a
 	ld a, [wTempMonSpecies]
