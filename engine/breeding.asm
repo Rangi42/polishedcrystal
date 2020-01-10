@@ -298,6 +298,15 @@ HatchEggs: ; 16f70 (5:6f70)
 	ld [wd265], a
 	ld [wCurSpecies], a
 	call GetPokemonName
+
+	ld a, [wCurPartyMon]
+	ld hl, wPartyMonNicknames
+	call SkipNames
+	ld d, h
+	ld e, l
+	ld hl, wStringBuffer1
+	ld bc, PKMN_NAME_LENGTH
+	rst CopyBytes
 	call GetBaseData
 	ld a, [wCurPartyMon]
 	ld hl, wPartyMons
@@ -355,6 +364,7 @@ HatchEggs: ; 16f70 (5:6f70)
 	rst CopyBytes
 	ld hl, .Text_HatchEgg
 	call PrintText
+	ld de, wStringBuffer1
 	ld a, [wCurPartyMon]
 	ld hl, wPartyMonNicknames
 	ld bc, PKMN_NAME_LENGTH
