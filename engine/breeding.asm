@@ -364,7 +364,6 @@ HatchEggs: ; 16f70 (5:6f70)
 	rst CopyBytes
 	ld hl, .Text_HatchEgg
 	call PrintText
-	ld de, wStringBuffer1
 	ld a, [wCurPartyMon]
 	ld hl, wPartyMonNicknames
 	ld bc, PKMN_NAME_LENGTH
