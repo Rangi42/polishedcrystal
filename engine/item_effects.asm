@@ -732,15 +732,16 @@ PokeBallEffect: ; e8a2
 .skip_cry
 	pop hl
 .print
-	ld a, 0
-	ld [wWildMon], a
 	call PrintText
 	call ClearSprites
-
-.return_from_capture
 	ld a, [wBattleType]
 	cp BATTLETYPE_TUTORIAL
 	ret z
+	xor a
+	ld [wWildMon], a
+
+.return_from_capture
+	ld a, [wBattleType]
 	cp BATTLETYPE_CONTEST
 	jr z, .used_park_ball
 	cp BATTLETYPE_SAFARI
