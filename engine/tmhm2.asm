@@ -324,6 +324,8 @@ TMHM_GetAlpha:
 	ret
 
 InnerCheckTMHM:
+	and a
+	ret z
 	call TMHM_GetAlpha
 	push bc
 	push de
