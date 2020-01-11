@@ -539,8 +539,8 @@ wEnemyDisabledMove:: ds 1
 wWhichMonFaintedFirst:: ds 1
 
 ; exists so you can't counter on switch
-wLastEnemyCounterMove:: ds 1
 wLastPlayerCounterMove:: ds 1
+wLastEnemyCounterMove:: ds 1
 
 wEnemyMinimized:: ds 1
 

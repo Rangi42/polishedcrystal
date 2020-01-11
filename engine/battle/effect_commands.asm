@@ -957,7 +957,7 @@ BattleCommand_checkobedience: ; 343db
 .EndDisobedience:
 	xor a
 	ld [wLastPlayerMove], a
-	ld [wLastEnemyCounterMove], a
+	ld [wLastPlayerCounterMove], a
 
 	; Break Encore too.
 	ld hl, wPlayerSubStatus2

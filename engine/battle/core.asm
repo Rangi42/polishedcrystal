@@ -2852,8 +2852,8 @@ Function_SetEnemyPkmnAndSendOutAnimation: ; 3d7c7
 NewEnemyMonStatus: ; 3d834
 	xor a
 	ld [wEnemySelectedMove], a
-	ld [wLastEnemyCounterMove], a
 	ld [wLastPlayerCounterMove], a
+	ld [wLastEnemyCounterMove], a
 	ld [wLastEnemyMove], a
 	ld hl, wEnemySubStatus1
 	ld [hli], a
@@ -2997,8 +2997,8 @@ SendOutPlayerMon: ; 3db5f
 	ld [wTypeModifier], a
 	ld [wPlayerMoveStruct + MOVE_ANIM], a
 	ld [wPlayerSelectedMove], a
-	ld [wLastEnemyCounterMove], a
 	ld [wLastPlayerCounterMove], a
+	ld [wLastEnemyCounterMove], a
 	ld [wLastPlayerMove], a
 	call CheckAmuletCoin
 	call FinishBattleAnim
@@ -3039,8 +3039,8 @@ SendOutPlayerMon: ; 3db5f
 NewBattleMonStatus: ; 3dbde
 	xor a
 	ld [wPlayerSelectedMove], a
-	ld [wLastEnemyCounterMove], a
 	ld [wLastPlayerCounterMove], a
+	ld [wLastEnemyCounterMove], a
 	ld [wLastPlayerMove], a
 	ld hl, wPlayerSubStatus1
 	ld [hli], a

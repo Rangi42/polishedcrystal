@@ -236,7 +236,7 @@ AI_TryItem: ; 38105
 	xor a
 	ld [de], a
 	ld [wCurEnemyMove], a
-	ld [wLastPlayerCounterMove], a
+	ld [wLastEnemyCounterMove], a
 	ld [wEnemyProtectCount], a
 
 	inc a

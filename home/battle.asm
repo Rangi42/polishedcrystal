@@ -924,14 +924,14 @@ GetBattleVarAddr:: ; 39e7
 	dw wPlayerSubStatus4,             wEnemySubStatus4
 	dw wPlayerAbility,                wEnemyAbility
 	dw wBattleMonStatus,              wEnemyMonStatus
-	dw wPlayerMoveStructAnimation,   wEnemyMoveStructAnimation
-	dw wPlayerMoveStructEffect,      wEnemyMoveStructEffect
-	dw wPlayerMoveStructPower,       wEnemyMoveStructPower
-	dw wPlayerMoveStructAccuracy,    wEnemyMoveStructAccuracy
-	dw wPlayerMoveStructType,        wEnemyMoveStructType
-	dw wPlayerMoveStructCategory,    wEnemyMoveStructCategory
+	dw wPlayerMoveStructAnimation,    wEnemyMoveStructAnimation
+	dw wPlayerMoveStructEffect,       wEnemyMoveStructEffect
+	dw wPlayerMoveStructPower,        wEnemyMoveStructPower
+	dw wPlayerMoveStructAccuracy,     wEnemyMoveStructAccuracy
+	dw wPlayerMoveStructType,         wEnemyMoveStructType
+	dw wPlayerMoveStructCategory,     wEnemyMoveStructCategory
 	dw wCurPlayerMove,                wCurEnemyMove
-	dw wLastEnemyCounterMove,         wLastPlayerCounterMove
+	dw wLastPlayerCounterMove,        wLastEnemyCounterMove
 	dw wLastPlayerMove,               wLastEnemyMove
 ; 3a90
 
