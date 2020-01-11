@@ -9,7 +9,7 @@ AIChooseMove: ; 440ce
 
 	; Default score is 20, unusable moves are set to 80.
 	call SetEnemyTurn
-	ld hl, wBuffer1 + 3
+	ld hl, wStringBuffer5 + 3
 	ld a, 4
 .unusable_loop
 	dec a
@@ -89,7 +89,7 @@ AIChooseMove: ; 440ce
 
 ; Decrement the scores of all moves one by one until one reaches 0.
 .DecrementScores:
-	ld hl, wBuffer1
+	ld hl, wStringBuffer5
 	ld de, wEnemyMonMoves
 	ld c, NUM_MOVES
 
@@ -124,7 +124,7 @@ AIChooseMove: ; 440ce
 	cp NUM_MOVES + 1
 	jr nz, .move_loop
 
-	ld hl, wBuffer1
+	ld hl, wStringBuffer5
 	ld de, wEnemyMonMoves
 	ld c, NUM_MOVES
 
@@ -154,7 +154,7 @@ AIChooseMove: ; 440ce
 
 ; Randomly choose one of the moves with a score of 1
 .ChooseMove:
-	ld hl, wBuffer1
+	ld hl, wStringBuffer5
 	call Random
 	and 3
 	ld c, a

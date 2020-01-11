@@ -3,7 +3,7 @@ AI_Basic: ; 38591
 ;  -Using status-only moves if the player can't be statused
 ;  -Using moves that fail if they've already been used
 
-	ld hl, wBuffer1 - 1
+	ld hl, wStringBuffer5 - 1
 	ld de, wEnemyMonMoves
 	ld b, NUM_MOVES + 1
 .checkmove
@@ -85,7 +85,7 @@ AI_Setup: ; 385e0
 ; 50% chance to greatly encourage stat-down moves during the first turn of player's Pokemon.
 ; Almost 90% chance to greatly discourage stat-modifying moves otherwise.
 
-	ld hl, wBuffer1 - 1
+	ld hl, wStringBuffer5 - 1
 	ld de, wEnemyMonMoves
 	ld b, NUM_MOVES + 1
 .checkmove
@@ -161,7 +161,7 @@ AI_Types: ; 38635
 ; Discourage not very effective moves unless
 ; all damaging moves are of the same type.
 
-	ld hl, wBuffer1 - 1
+	ld hl, wStringBuffer5 - 1
 	ld de, wEnemyMonMoves
 	ld b, NUM_MOVES + 1
 .checkmove
@@ -249,7 +249,7 @@ AI_Types: ; 38635
 AI_Offensive: ; 386a2
 ; Greatly discourage non-damaging moves.
 
-	ld hl, wBuffer1 - 1
+	ld hl, wStringBuffer5 - 1
 	ld de, wEnemyMonMoves
 	ld b, NUM_MOVES + 1
 .checkmove
@@ -278,7 +278,7 @@ AI_Offensive: ; 386a2
 AI_Smart: ; 386be
 ; Context-specific scoring.
 
-	ld hl, wBuffer1
+	ld hl, wStringBuffer5
 	ld de, wEnemyMonMoves
 	ld b, NUM_MOVES + 1
 .checkmove
@@ -2601,7 +2601,7 @@ AI_Opportunist: ; 39315
 	ret c
 
 .asm_39322
-	ld hl, wBuffer1 - 1
+	ld hl, wStringBuffer5 - 1
 	ld de, wEnemyMonMoves
 	ld c, NUM_MOVES + 1
 .checkmove
@@ -2722,7 +2722,7 @@ AI_Aggressive: ; 39369
 	ret z
 
 ; Discourage moves that do less damage unless they're reckless too.
-	ld hl, wBuffer1 - 1
+	ld hl, wStringBuffer5 - 1
 	ld de, wEnemyMonMoves
 	ld b, 0
 .checkmove2
@@ -2808,7 +2808,7 @@ AI_Cautious: ; 39418
 	and a
 	ret z
 
-	ld hl, wBuffer1 - 1
+	ld hl, wStringBuffer5 - 1
 	ld de, wEnemyMonMoves
 	ld c, NUM_MOVES + 1
 .asm_39425
@@ -2860,7 +2860,7 @@ AI_Status: ; 39453
 ; Dismiss status moves that don't affect the player.
 	ld a, 1
 	ld [hBattleTurn], a
-	ld hl, wBuffer1 - 1
+	ld hl, wStringBuffer5 - 1
 	ld de, wEnemyMonMoves
 	ld b, NUM_MOVES + 1
 .checkmove
@@ -3009,7 +3009,7 @@ AI_Risky: ; 394a9
 ; Use any move that will KO the target.
 ; Risky moves will often be an exception (see below).
 
-	ld hl, wBuffer1 - 1
+	ld hl, wStringBuffer5 - 1
 	ld de, wEnemyMonMoves
 	ld c, NUM_MOVES + 1
 .checkmove
