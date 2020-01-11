@@ -1343,7 +1343,7 @@ BattleCommand_stab: ; 346d2
 	ld a, [wAttackMissed]
 	and a
 	ret nz
-	ld a, 1
+	ld a, ATKFAIL_IMMUNE
 	ld [wAttackMissed], a
 	ret
 
