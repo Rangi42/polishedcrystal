@@ -1006,7 +1006,7 @@ _CGB_PokedexUnownMode: ; 903e
 
 	call WipeAttrMap
 
-	hlcoord 7, 5, wAttrMap
+	hlcoord 6, 5, wAttrMap
 	lb bc, 7, 7
 	ld a, $1
 	call FillBoxCGB
