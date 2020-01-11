@@ -1476,6 +1476,7 @@ GetParticipantsIncludingFainted::
 	push bc
 	call GetParticipantVar
 	ld a, [hl]
+	and $3f
 	pop bc
 	pop hl
 	ret
@@ -1487,6 +1488,7 @@ GetParticipantsNotFainted::
 	push bc
 	call GetParticipantVar
 	ld a, [hl]
+	and $3f
 	ld e, a
 	ld a, [wPartyCount]
 	ld d, a
