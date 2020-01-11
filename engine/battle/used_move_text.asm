@@ -11,11 +11,6 @@ DisplayUsedMoveText: ; 105db0
 .start
 	ld a, BATTLE_VARS_LAST_MOVE
 	call GetBattleVarAddr
-	ld d, h
-	ld e, l
-
-	ld a, BATTLE_VARS_LAST_COUNTER_MOVE
-	call GetBattleVarAddr
 
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
@@ -29,7 +24,6 @@ DisplayUsedMoveText: ; 105db0
 	; update last move
 	ld a, [wd265]
 	ld [hl], a
-	ld [de], a
 
 .charging
 	; check obedience
