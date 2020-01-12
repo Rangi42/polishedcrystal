@@ -381,7 +381,13 @@ endc
 	jr z, .got_anim
 	ld de, ANIM_STAT_DOWN
 .got_anim
+	ld a, [wNumHits]
+	push af
+	xor a
+	ld [wNumHits], a
 	farcall FarPlayBattleAnimation
+	pop af
+	ld [wNumHits], a
 	ld b, CGB_BATTLE_COLORS
 	call GetCGBLayout
 	call SetPalettes
