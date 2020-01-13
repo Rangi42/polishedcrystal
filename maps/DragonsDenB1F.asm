@@ -41,6 +41,8 @@ DragonsDenB1FSilverCallback:
 	return
 
 .CheckDay:
+	checkevent EVENT_GOT_RIVALS_EGG
+	iffalse .AppearSilver
 	checkcode VAR_WEEKDAY
 	ifequal TUESDAY, .AppearSilver
 	ifequal THURSDAY, .AppearSilver
