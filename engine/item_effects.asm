@@ -463,6 +463,15 @@ PokeBallEffect: ; e8a2
 	ld [wCurPartySpecies], a
 	ld [wd265], a
 
+	push af
+	cp UNOWN
+	jr nz, .unown_done
+	ld hl, wOTPartyMon1Form
+	predef GetVariant
+	farcall UpdateUnownDex
+.unown_done
+	pop af
+
 	dec a
 	call CheckCaughtMon
 
