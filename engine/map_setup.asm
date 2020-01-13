@@ -307,19 +307,17 @@ ForceMapMusic: ; 15587
 	jp TryRestartMapMusic
 
 DecompressMetatiles:
+	; Decompressed RAM is all at $d000
 	ld hl, wTilesetBlocksBank
 	ld c, BANK(wDecompressedMetatiles)
-	ld de, wDecompressedMetatiles
 	call .Decompress
 
 	ld hl, wTilesetAttributesBank
 	ld c, BANK(wDecompressedAttributes)
-	ld de, wDecompressedAttributes
 	call .Decompress
 
 	ld hl, wTilesetCollisionBank
 	ld c, BANK(wDecompressedCollisions)
-	ld de, wDecompressedCollisions
 
 .Decompress:
 	ld a, [hli]
@@ -327,6 +325,7 @@ DecompressMetatiles:
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
+	ld de, wDecompressedMetatiles
 	ld a, c
 	call StackCallInWRAMBankA
 

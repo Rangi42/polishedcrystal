@@ -31,8 +31,6 @@ WRAMX $2
 	align 8
 	"Battle Tower"
 	"Sound Stack"
-	align 8
-	"Music Player Notes"
 
 WRAMX $3
 	org $d000
@@ -44,7 +42,7 @@ WRAMX $4
 
 WRAMX $5
 	org $d000
-	"Collisions"
+	"Collisions or Music Player"
 	org $d400
 	"GBC Video"
 	org $d700
