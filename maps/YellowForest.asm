@@ -88,7 +88,7 @@ YellowForestBridgeUnderfootTrigger:
 YellowForest_FinishBridge:
 	ld [wWalkingOnBridge], a
 	ld [wYellowForestTrigger], a ; setscene a
-	jp RefreshScreen_BridgeUpdate ; refreshscreen (optimized)
+	jp GetMovementPermissions
 
 GenericTrainerSchoolgirlSarah:
 	generictrainer SCHOOLGIRL, SARAH, EVENT_BEAT_SCHOOLGIRL_SARAH, SchoolgirlSarahSeenText, SchoolgirlSarahBeatenText

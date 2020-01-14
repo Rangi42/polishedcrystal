@@ -831,9 +831,9 @@ ENDU
 
 SECTION "Video", WRAM0
 
-wBGMapBuffer:: ds 40
-wBGMapPalBuffer:: ds 40
-wBGMapBufferPtrs:: ds 40 ; 20 bg map addresses (16x8 tiles)
+wBGMapBuffer:: ds 48
+wBGMapPalBuffer:: ds 48
+wBGMapBufferPtrs:: ds 48 ; 24 bg map addresses (16x8 tiles)
 
 wCreditsPos:: ds 2
 wCreditsTimer:: ds 1
@@ -848,7 +848,7 @@ wHPPalIndex:: ds 1
 
 wCopyingSGBTileData:: ds 1
 
-	ds 50
+	ds 26
 
 wAttrMap::
 ; 20x18 grid of palettes for 8x8 tiles

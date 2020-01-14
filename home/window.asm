@@ -14,7 +14,8 @@ RefreshScreen:: ; 2dba
 	ret
 ; 2dcf
 
-RefreshScreen_BridgeUpdate::
+RefreshScreenFast::
+	; Don't use for bridge updates, just call GetMovementPermissions
 	call GetMovementPermissions
 	farjp ReanchorBGMap_NoOAMUpdate_NoDelay
 
