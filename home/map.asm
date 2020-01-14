@@ -1106,13 +1106,13 @@ ScrollMapLeft:: ; 278f
 	ld de, wBGMapPalBuffer
 	call BackupBGMapColumn
 	ld a, [wBGMapAnchor]
-	ld e, a
-	and %11100000
-	ld b, a
-	ld a, e
-	add SCREEN_HEIGHT
-	and %00011111
-	or b
+
+	; add SCREEN_HEIGHT, but wrap-around the last 5 bits
+	swap a
+	rrca
+	add SCREEN_HEIGHT << 3
+	rlca
+	swap a
 	ld e, a
 	ld a, [wBGMapAnchor + 1]
 	ld d, a
