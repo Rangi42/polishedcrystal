@@ -1062,7 +1062,7 @@ ReloadWalkedTile:
 	ld de, wBGMapBufferPtrs
 .ptr_loop
 	ld a, h
-	and $9b
+	and HIGH($9800 | $9900 | $9a00 | $9b00) ; clamp within VRAM addresses
 	ld h, a
 	ld a, l
 	ld [de], a
@@ -1071,7 +1071,7 @@ ReloadWalkedTile:
 	ld [de], a
 	inc de
 
-	ld a, $20
+	ld a, BG_MAP_WIDTH
 	call .AddHLDecC
 	jr nz, .ptr_loop
 	ret
@@ -1223,7 +1223,7 @@ UpdateBGMapRow:: ; 27d3
 	push de
 	call .iteration
 	pop de
-	ld a, $20
+	ld a, BG_MAP_WIDTH
 	add e
 	ld e, a
 
@@ -1258,7 +1258,7 @@ UpdateBGMapColumn:: ; 27f8
 	ld [hli], a
 	ld a, d
 	ld [hli], a
-	ld a, $20
+	ld a, BG_MAP_HEIGHT
 	add e
 	ld e, a
 	jr nc, .skip
