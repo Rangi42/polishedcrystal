@@ -283,6 +283,11 @@ DownloadAbility:
 	jp EnableAnimations
 
 ImposterAbility:
+	; Disallowed on Neutralizing Gas (even in switch-out mode)
+	call GetOpponentAbility
+	inc a
+	ret z
+
 	call ShowAbilityActivation
 	call DisableAnimations
 	farcall BattleCommand_transform
