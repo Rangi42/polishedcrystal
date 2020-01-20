@@ -3,135 +3,14 @@ INCLUDE "constants.asm"
 
 SECTION "Code 1", ROMX
 
-LoadPushOAM:: ; 4031
-	lb bc, (PushOAMCodeEnd - PushOAMCode), hPushOAM & $ff
-	ld hl, PushOAMCode
-.loop
-	ld a, [hli]
-	ld [$ff00+c], a
-	inc c
-	dec b
-	jr nz, .loop
-	ret
-
-PushOAMCode: ; 403f
-	ld a, wSprites / $100
-	ld [rDMA], a
-	ld a, 40
-.loop
-	dec a
-	jr nz, .loop
-	ret
-PushOAMCodeEnd
-
-ReanchorBGMap_NoOAMUpdate:: ; 6454
-	ld a, [hOAMUpdate]
-	push af
-
-	ld a, $1
-	ld [hOAMUpdate], a
-	ld a, [hBGMapMode]
-	push af
-
-	xor a
-	ld [hBGMapMode], a
-	ld [hLCDCPointer], a
-	ld a, $90
-	ld [hWY], a
-	call LoadMapPart
-
-	ld a, VBGMap1 / $100
-	ld [hBGMapAddress + 1], a
-	xor a
-	ld [hBGMapAddress], a
-	call BGMapAnchorTopLeft
-	farcall LoadBlindingFlashPalette
-	farcall ApplyPals
-	xor a
-	ld [hBGMapMode], a
-	ld [hWY], a
-	ld [hBGMapAddress], a
-	ld [wBGMapAnchor], a
-	ld [hSCX], a
-	ld [hSCY], a
-	inc a
-	ld [hCGBPalUpdate], a
-	ld a, VBGMap0 / $100 ; overworld
-	ld [hBGMapAddress + 1], a
-	ld [wBGMapAnchor + 1], a
-	call ApplyBGMapAnchorToObjects
-
-	pop af
-	ld [hBGMapMode], a
-	pop af
-	ld [hOAMUpdate], a
-	ld hl, wVramState
-	set 6, [hl]
-	ret
-
-LoadFonts_NoOAMUpdate:: ; 64bf
-	ld a, [hOAMUpdate]
-	push af
-	ld a, $1
-	ld [hOAMUpdate], a
-
-	call LoadFontsExtra
-	ld a, $90
-	ld [hWY], a
-	call SafeUpdateSprites
-	call LoadStandardFont
-
-	pop af
-	ld [hOAMUpdate], a
-	ret
-
-ReanchorBGMap_NoOAMUpdate_NoDelay::
-	ld a, [hOAMUpdate]
-	push af
-
-	ld a, $1
-	ld [hOAMUpdate], a
-	ld a, [hBGMapMode]
-	push af
-
-	xor a
-	ld [hBGMapMode], a
-	ld [hLCDCPointer], a
-	ld a, $90
-	ld [hWY], a
-	call LoadMapPart
-
-	ld a, VBGMap1 / $100
-	ld [hBGMapAddress + 1], a
-	xor a
-	ld [hBGMapAddress], a
-	call CopyTilemapAtOnce
-	xor a
-	ld [hWY], a
-	ld [hBGMapAddress], a
-	ld [wBGMapAnchor], a
-	ld [hSCX], a
-	ld [hSCY], a
-	inc a
-	ld [hCGBPalUpdate], a
-	ld a, VBGMap0 / $100 ; overworld
-	ld [hBGMapAddress + 1], a
-	ld [wBGMapAnchor + 1], a
-	pop af
-	ld [hBGMapMode], a
-	pop af
-	ld [hOAMUpdate], a
-	ld hl, wVramState
-	set 6, [hl]
-	ld b, 0
-	jp SafeCopyTilemapAtOnce
-
-INCLUDE "engine/map_objects.asm"
+INCLUDE "engine/gfx/load_push_oam.asm"
+INCLUDE "engine/overworld/init_map.asm"
+INCLUDE "engine/overworld/map_objects.asm"
 INCLUDE "engine/intro_menu.asm"
 INCLUDE "engine/init_options.asm"
 INCLUDE "engine/learn.asm"
 INCLUDE "engine/math.asm"
-INCLUDE "engine/npc_movement.asm"
+INCLUDE "engine/overworld/npc_movement.asm"
 INCLUDE "engine/events/happiness_egg.asm"
 INCLUDE "engine/events/specials_2.asm"
 INCLUDE "data/items/attributes.asm"
@@ -139,10 +18,10 @@ INCLUDE "data/items/attributes.asm"
 
 SECTION "Code 2", ROMX
 
-INCLUDE "engine/player_object.asm"
+INCLUDE "engine/overworld/player_object.asm"
 INCLUDE "engine/sine.asm"
 INCLUDE "data/predef_pointers.asm"
-INCLUDE "engine/color.asm"
+INCLUDE "engine/gfx/color.asm"
 INCLUDE "engine/trainer_scripts.asm"
 
 SECTION "Poke Ball Code", ROMX
@@ -353,7 +232,7 @@ SwitchMonText: ; cc0c2
 SECTION "Code 4", ROMX
 
 INCLUDE "engine/pack.asm"
-INCLUDE "engine/time.asm"
+INCLUDE "engine/overworld/time.asm"
 INCLUDE "engine/tmhm.asm"
 INCLUDE "engine/naming_screen.asm"
 INCLUDE "engine/events/itemball.asm"
@@ -362,7 +241,7 @@ INCLUDE "engine/events/whiteout.asm"
 INCLUDE "engine/events/forced_movement.asm"
 INCLUDE "engine/events/itemfinder.asm"
 INCLUDE "engine/startmenu.asm"
-INCLUDE "engine/selectmenu.asm"
+INCLUDE "engine/overworld/select_menu.asm"
 INCLUDE "engine/events/elevator.asm"
 INCLUDE "engine/events/bug_contest.asm"
 INCLUDE "engine/events/safari_game.asm"
@@ -377,11 +256,11 @@ INCLUDE "engine/mapgroup_roofs.asm"
 SECTION "Code 5", ROMX
 
 INCLUDE "engine/rtc.asm"
-INCLUDE "engine/overworld.asm"
-INCLUDE "engine/tile_events.asm"
+INCLUDE "engine/overworld/overworld.asm"
+INCLUDE "engine/overworld/tile_events.asm"
 INCLUDE "engine/save.asm"
-INCLUDE "engine/spawn_points.asm"
-INCLUDE "engine/map_setup.asm"
+INCLUDE "engine/overworld/spawn_points.asm"
+INCLUDE "engine/overworld/map_setup.asm"
 INCLUDE "engine/pokecenter_pc.asm"
 INCLUDE "engine/mart.asm"
 INCLUDE "engine/money.asm"
@@ -412,7 +291,7 @@ INCLUDE "engine/battle/menu.asm"
 INCLUDE "engine/buy_sell_toss.asm"
 INCLUDE "engine/trainer_card.asm"
 INCLUDE "engine/events/prof_oaks_pc.asm"
-INCLUDE "engine/decorations.asm"
+INCLUDE "engine/overworld/decorations.asm"
 INCLUDE "data/trainers/dvs.asm"
 
 UpdateItemDescriptionAndBagQuantity:
@@ -897,62 +776,7 @@ ClearBattleRAM: ; 2ef18
 	ld [hl], VBGMap0 / $100
 	ret
 
-PlaceGraphic: ; 2ef6e
-; Fill wBoxAlignment-aligned box width b height c
-; with iterating tile starting from hGraphicStartTile at hl.
-; Predef $13
-
-	ld de, SCREEN_WIDTH
-
-	ld a, [wBoxAlignment]
-	and a
-	jr nz, .right
-
-	ld a, [hGraphicStartTile]
-.x1
-	push bc
-	push hl
-
-.y1
-	ld [hl], a
-	add hl, de
-	inc a
-	dec c
-	jr nz, .y1
-
-	pop hl
-	inc hl
-	pop bc
-	dec b
-	jr nz, .x1
-	ret
-
-.right
-; Right-aligned.
-	push bc
-	ld b, 0
-	dec c
-	add hl, bc
-	pop bc
-
-	ld a, [hGraphicStartTile]
-.x2
-	push bc
-	push hl
-
-.y2
-	ld [hl], a
-	add hl, de
-	inc a
-	dec c
-	jr nz, .y2
-
-	pop hl
-	dec hl
-	pop bc
-	dec b
-	jr nz, .x2
-	ret
+INCLUDE "engine/gfx/place_graphic.asm"
 
 
 SECTION "Code 10", ROMX
@@ -1768,43 +1592,7 @@ FlagPredef: ; 4d7c1
 	ld c, a
 	ret
 
-GetTrademonFrontpic: ; 4d7fd
-	ld a, [wOTTrademonSpecies]
-	ld hl, wOTTrademonForm
-	ld de, VTiles2
-	push de
-	push af
-	predef GetVariant
-	pop af
-	ld [wCurPartySpecies], a
-	ld [wCurSpecies], a
-	call GetBaseData
-	pop de
-	predef FrontpicPredef
-	ret
-
-AnimateTrademonFrontpic: ; 4d81e
-	ld a, [wOTTrademonSpecies]
-	call IsAPokemon
-	ret c
-	farcall ShowOTTrademonStats
-	ld a, [wOTTrademonSpecies]
-	ld [wCurPartySpecies], a
-	ld a, [wOTTrademonPersonality]
-	ld [wTempMonPersonality], a
-	ld a, [wOTTrademonPersonality + 1]
-	ld [wTempMonPersonality + 1], a
-	ld b, CGB_PLAYER_OR_MON_FRONTPIC_PALS
-	call GetCGBLayout
-	ld a, %11100100 ; 3,2,1,0
-	call DmgToCgbBGPals
-	farcall TradeAnim_ShowGetmonFrontpic
-	ld a, [wOTTrademonSpecies]
-	ld [wCurPartySpecies], a
-	hlcoord 7, 2
-	lb de, $0, ANIM_MON_TRADE
-	predef AnimateFrontpic
-	ret
+INCLUDE "engine/gfx/trademon_frontpic.asm"
 
 CheckPokerus: ; 4d860
 ; Return carry if a monster in your party has Pokerus
@@ -3786,7 +3574,7 @@ _SwitchPartyMons:
 	rst CopyBytes
 	ret
 
-INCLUDE "gfx/load_pics.asm"
+INCLUDE "engine/gfx/load_pics.asm"
 
 InsertPokemonIntoBox: ; 51322
 	ld a, BANK(sBoxCount)
@@ -3929,9 +3717,9 @@ SECTION "Code 14", ROMX
 
 INCLUDE "engine/battle/abilities.asm"
 INCLUDE "data/trainers/final_text.asm"
-INCLUDE "engine/player_movement.asm"
+INCLUDE "engine/overworld/player_movement.asm"
 INCLUDE "engine/engine_flags.asm"
-INCLUDE "engine/variables.asm"
+INCLUDE "engine/overworld/variables.asm"
 INCLUDE "data/text/battle.asm"
 
 
@@ -3992,7 +3780,7 @@ INCLUDE "data/abilities.asm"
 
 SECTION "Code 16", ROMX
 
-INCLUDE "engine/player_gfx.asm"
+INCLUDE "engine/gfx/player_gfx.asm"
 INCLUDE "engine/events/kurt.asm"
 INCLUDE "engine/events/unown.asm"
 INCLUDE "engine/events/buena.asm"
@@ -4006,8 +3794,8 @@ SECTION "Code 17", ROMX
 
 INCLUDE "engine/timeofdaypals.asm"
 INCLUDE "engine/battle_start.asm"
-INCLUDE "engine/sprites.asm"
-INCLUDE "engine/mon_icons.asm"
+INCLUDE "engine/gfx/sprites.asm"
+INCLUDE "engine/gfx/mon_icons.asm"
 INCLUDE "engine/events/field_moves.asm"
 INCLUDE "engine/events/magnet_train.asm"
 INCLUDE "data/pokemon/menu_icon_pointers.asm"
@@ -4075,15 +3863,16 @@ INCLUDE "engine/events/mom_phone.asm"
 
 SECTION "Code 25", ROMX
 
-INCLUDE "engine/misc_gfx.asm"
-INCLUDE "engine/warp_connection.asm"
+INCLUDE "engine/gfx/dma_transfer.asm"
+INCLUDE "gfx/emotes.asm"
+INCLUDE "engine/overworld/warp_connection.asm"
 INCLUDE "engine/battle/used_move_text.asm"
 INCLUDE "gfx/items.asm"
 
 SECTION "Load Map Part", ROMX
 ; linked, do not separate
-INCLUDE "engine/player_step.asm"
-INCLUDE "engine/load_map_part.asm"
+INCLUDE "engine/overworld/player_step.asm"
+INCLUDE "engine/overworld/load_map_part.asm"
 ; end linked section
 
 
@@ -4113,7 +3902,7 @@ INCLUDE "data/collision_permissions.asm"
 
 SECTION "Typefaces", ROMX
 
-INCLUDE "gfx/font.asm"
+INCLUDE "engine/gfx/load_font.asm"
 
 
 SECTION "Battle Core", ROMX
@@ -4254,7 +4043,7 @@ INCLUDE "data/trainers/parties.asm"
 
 SECTION "Wild Data", ROMX
 
-INCLUDE "engine/wildmons.asm"
+INCLUDE "engine/overworld/wildmons.asm"
 
 
 SECTION "Pokedex", ROMX
@@ -4269,7 +4058,7 @@ INCLUDE "engine/evolve.asm"
 
 SECTION "Pic Animations", ROMX
 
-INCLUDE "engine/pic_animation.asm"
+INCLUDE "engine/gfx/pic_animation.asm"
 
 ; Pic animations are assembled in 3 parts:
 
@@ -4440,7 +4229,7 @@ SECTION "Move and Landmark Text", ROMX
 
 INCLUDE "data/moves/names.asm"
 
-INCLUDE "engine/landmarks.asm"
+INCLUDE "engine/overworld/landmarks.asm"
 
 
 SECTION "Battle Tower Text", ROMX

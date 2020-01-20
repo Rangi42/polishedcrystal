@@ -1,6 +1,6 @@
 INCLUDE "engine/vary_colors.asm"
 
-INCLUDE "engine/cgb.asm"
+INCLUDE "engine/gfx/cgb_layouts.asm"
 
 CheckShininess:
 ; Check if a mon is shiny by personality at bc.

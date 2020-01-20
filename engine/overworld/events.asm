@@ -1503,4 +1503,4 @@ HandleQueuedCommand: ; 97f42
 	ret
 ; 97ea3
 
-INCLUDE "engine/scripting.asm"
+INCLUDE "engine/overworld/scripting.asm"

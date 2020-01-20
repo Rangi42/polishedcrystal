@@ -184,7 +184,7 @@ asm_444d:
 	ld l, a
 	jp hl
 
-INCLUDE "engine/map_object_action.asm"
+INCLUDE "engine/overworld/map_object_action.asm"
 
 CopyNextCoordsTileToStandingCoordsTile:
 	ld hl, OBJECT_NEXT_MAP_X
@@ -1961,7 +1961,7 @@ DoMovementFunction: ; 506b
 	ret
 ; 5075
 
-INCLUDE "engine/movement.asm"
+INCLUDE "engine/overworld/movement.asm"
 ; 54b8
 
 ApplyMovementToFollower: ; 54b8

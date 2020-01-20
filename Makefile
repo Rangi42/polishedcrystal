@@ -74,7 +74,7 @@ data/maps/map_data.o \
 data/text/common.o \
 data/tilesets.o \
 engine/credits.o \
-engine/events.o \
+engine/overworld/events.o \
 gfx/pics.o \
 gfx/sprites.o
 

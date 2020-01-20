@@ -1,4 +1,4 @@
-ClearSpriteAnims: ; 8cf53
+ClearSpriteAnims:
 	ld hl, wSpriteAnimDict
 	ld bc, wSpriteAnimsEnd - wSpriteAnimDict
 .loop
@@ -9,14 +9,12 @@ ClearSpriteAnims: ; 8cf53
 	or b
 	jr nz, .loop
 	ret
-; 8cf62
 
-PlaySpriteAnimationsAndDelayFrame: ; 8cf62
+PlaySpriteAnimationsAndDelayFrame:
 	call PlaySpriteAnimations
 	jp DelayFrame
-; 8cf69
 
-PlaySpriteAnimations: ; 8cf69
+PlaySpriteAnimations:
 	push hl
 	push de
 	push bc
@@ -31,9 +29,8 @@ PlaySpriteAnimations: ; 8cf69
 	pop de
 	pop hl
 	ret
-; 8cf7a
 
-DoNextFrameForAllSprites: ; 8cf7a
+DoNextFrameForAllSprites:
 	ld hl, wSpriteAnimationStructs
 	ld e, 10 ; There are 10 structs here.
 
@@ -68,9 +65,8 @@ DoNextFrameForAllSprites: ; 8cf7a
 	xor a
 	ld [hli], a
 	jr .loop2
-; 8cfa8
 
-DoNextFrameForFirst16Sprites: ; 8cfa8 (23:4fa8)
+DoNextFrameForFirst16Sprites:
 	ld hl, wSpriteAnimationStructs
 	ld e, 10
 
@@ -106,7 +102,7 @@ DoNextFrameForFirst16Sprites: ; 8cfa8 (23:4fa8)
 	ld [hli], a
 	jr .loop2
 
-InitSpriteAnimStruct:: ; 8cfd6
+InitSpriteAnimStruct::
 ; Initialize animation a at pixel x=e, y=d
 ; Find if there's any room in the wSpriteAnimationStructs array, which is 10x16
 	push de
@@ -200,18 +196,16 @@ endr
 	ld a, b
 	ld [wSpriteAnimAddrBackup + 1], a
 	ret
-; 8d036
 
-DeinitializeSprite: ; 8d036
+DeinitializeSprite:
 ; Clear the index field of the struct in bc.
 	ld hl, SPRITEANIMSTRUCT_INDEX
 	add hl, bc
 	ld [hl], $0
 	ret
-; 8d03d
 
 
-DeinitializeAllSprites: ; 8d03d (23:503d)
+DeinitializeAllSprites:
 ; Clear the index field of every struct in the wSpriteAnimationStructs array.
 	ld hl, wSpriteAnimationStructs
 	ld bc, $10
@@ -225,7 +219,7 @@ DeinitializeAllSprites: ; 8d03d (23:503d)
 	ret
 
 
-UpdateAnimFrame: ; 8d04c
+UpdateAnimFrame:
 	call InitSpriteAnimBuffer ; init WRAM
 	call GetSpriteAnimFrame ; read from a memory array
 	cp -3
@@ -315,9 +309,8 @@ UpdateAnimFrame: ; 8d04c
 	pop bc
 	scf
 	ret
-; 8d0be
 
-AddOrSubtractY: ; 8d0be
+AddOrSubtractY:
 	push hl
 	ld a, [hl]
 	ld hl, wCurrSpriteAddSubFlags
@@ -331,9 +324,8 @@ AddOrSubtractY: ; 8d0be
 .ok
 	pop hl
 	ret
-; 8d0ce
 
-AddOrSubtractX: ; 8d0ce
+AddOrSubtractX:
 	push hl
 	ld a, [hl]
 	ld hl, wCurrSpriteAddSubFlags
@@ -347,9 +339,8 @@ AddOrSubtractX: ; 8d0ce
 .ok
 	pop hl
 	ret
-; 8d0de
 
-GetSpriteOAMAttr: ; 8d0de
+GetSpriteOAMAttr:
 	ld a, [wCurrSpriteAddSubFlags]
 	ld b, a
 	ld a, [hl]
@@ -360,9 +351,8 @@ GetSpriteOAMAttr: ; 8d0de
 	and $1f
 	or b
 	ret
-; 8d0ec
 
-InitSpriteAnimBuffer: ; 8d0ec
+InitSpriteAnimBuffer:
 	xor a
 	ld [wCurrSpriteAddSubFlags], a
 	ld hl, SPRITEANIMSTRUCT_TILE_ID
@@ -378,9 +368,8 @@ InitSpriteAnimBuffer: ; 8d0ec
 	ld a, [hli]
 	ld [wCurrAnimYOffset], a
 	ret
-; 8d109
 
-GetSpriteAnimVTile: ; 8d109
+GetSpriteAnimVTile:
 ; a = wSpriteAnimDict[a] if a in wSpriteAnimDict else 0
 ; VTiles offset
 	push hl
@@ -405,9 +394,8 @@ GetSpriteAnimVTile: ; 8d109
 	pop bc
 	pop hl
 	ret
-; 8d120
 
-_ReinitSpriteAnimFrame:: ; 8d120
+_ReinitSpriteAnimFrame::
 	ld hl, SPRITEANIMSTRUCT_FRAMESET_ID
 	add hl, bc
 	ld [hl], a
@@ -418,10 +406,9 @@ _ReinitSpriteAnimFrame:: ; 8d120
 	add hl, bc
 	ld [hl], -1
 	ret
-; 8d132
 
 
-GetSpriteAnimFrame: ; 8d132
+GetSpriteAnimFrame:
 .loop
 	ld hl, SPRITEANIMSTRUCT_DURATION
 	add hl, bc
@@ -487,9 +474,8 @@ GetSpriteAnimFrame: ; 8d132
 	add hl, bc
 	ld [hl], a
 	jr .loop
-; 8d189
 
-.GetPointer: ; 8d189
+.GetPointer:
 	; Get the data for the current frame for the current animation sequence
 
 	; SpriteAnimFrameData[SpriteAnim[SPRITEANIMSTRUCT_FRAMESET_ID]][SpriteAnim[SPRITEANIMSTRUCT_FRAME]]
@@ -510,9 +496,8 @@ GetSpriteAnimFrame: ; 8d132
 	add hl, hl
 	add hl, de
 	ret
-; 8d1a2
 
-GetFrameOAMPointer: ; 8d1a2
+GetFrameOAMPointer:
 ; Load OAM data pointer
 	ld e, a
 	ld d, 0
@@ -521,16 +506,15 @@ GetFrameOAMPointer: ; 8d1a2
 	add hl, de
 	add hl, de
 	ret
-; 8d1ac
 
 INCLUDE "data/sprite_anims/sequences.asm"
 
-INCLUDE "engine/sprite_anims.asm"
+INCLUDE "engine/gfx/sprite_anims.asm"
 
 INCLUDE "data/sprite_anims/framesets.asm"
 INCLUDE "data/sprite_anims/oam.asm"
 
-AnimateEndOfExpBar: ; 8e79d
+AnimateEndOfExpBar:
 	ld de, EndOfExpBarGFX
 	ld hl, VTiles0 tile $00
 	lb bc, BANK(EndOfExpBarGFX), 1
@@ -547,9 +531,8 @@ AnimateEndOfExpBar: ; 8e79d
 	dec c
 	jr nz, .loop
 	jp ClearSprites
-; 8e7c6
 
-.AnimateFrame: ; 8e7c6
+.AnimateFrame:
 	ld hl, wSprites
 	ld c, $8
 .anim_loop
@@ -586,12 +569,11 @@ AnimateEndOfExpBar: ; 8e79d
 	ld a, $6 ; OBJ 6
 	ld [hli], a
 	jr .anim_loop
-; 8e7f4
 
-EndOfExpBarGFX: ; 8e7f4
+EndOfExpBarGFX:
 INCBIN "gfx/battle/expbarend.2bpp"
 
-ClearSpriteAnims2: ; 8e814
+ClearSpriteAnims2:
 	push hl
 	push de
 	push bc
@@ -610,4 +592,3 @@ ClearSpriteAnims2: ; 8e814
 	pop de
 	pop hl
 	ret
-; 8e82b
