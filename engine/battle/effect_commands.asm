@@ -3252,7 +3252,7 @@ BattleCommand_posthiteffects:
 	jr z, .not_switch_target
 	ld a, c
 	call SetDeferredSwitch
-	jr .rocky_helmet_done
+	jp .rocky_helmet_done
 
 .not_switch_target
 	ld a, BATTLE_VARS_MOVE_CATEGORY
@@ -3314,7 +3314,12 @@ BattleCommand_posthiteffects:
 	jr nz, .damage_ok
 	inc c
 .damage_ok
+	ld a, [wCurItem]
+	push af
 	farcall SubtractHPFromUser
+	pop af
+	ld [wCurItem], a
+	call GetCurItemName
 	ld hl, BattleText_UserHurtByItem
 	call StdBattleTextBox
 
