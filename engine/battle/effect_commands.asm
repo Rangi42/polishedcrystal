@@ -6908,6 +6908,10 @@ BattleCommand_disable: ; 36fed
 	jp CheckOpponentMentalHerb
 
 .failed
+	; If this was by an ability, don't display anything
+	ld a, [wAnimationsDisabled]
+	and a
+	ret nz
 	jp FailDisable
 
 ; 3705c
