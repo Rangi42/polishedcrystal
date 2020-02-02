@@ -174,14 +174,14 @@
 	const PICHU      ; $ac
 	const MUNCHLAX   ; $ad
 	const MAGNEZONE  ; $ae
-	const TANGROWTH  ; $af
-	const NATU       ; $b0
-	const XATU       ; $b1
-	const MAREEP     ; $b2
-	const FLAAFFY    ; $b3
-	const AMPHAROS   ; $b4
-	const BELLOSSOM  ; $b5
-	const RHYPERIOR  ; $b6
+	const RHYPERIOR  ; $af
+	const TANGROWTH  ; $b0
+	const NATU       ; $b1
+	const XATU       ; $b2
+	const MAREEP     ; $b3
+	const FLAAFFY    ; $b4
+	const AMPHAROS   ; $b5
+	const BELLOSSOM  ; $b6
 	const SUDOWOODO  ; $b7
 	const POLITOED   ; $b8
 	const SUNKERN    ; $b9

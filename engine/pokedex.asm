@@ -2579,5 +2579,5 @@ QuestionMarkLZ: ; 1de0e1
 INCBIN "gfx/pokedex/question_mark.2bpp.lz"
 
 Footprints: ; f9434
-INCLUDE "gfx/footprints.asm"
+INCLUDE "gfx/pokemon/footprints.asm"
 ; fb434

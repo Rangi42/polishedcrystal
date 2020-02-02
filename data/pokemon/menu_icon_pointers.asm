@@ -174,6 +174,7 @@ IconPointers:
 	dw PichuIcon
 	dw MunchlaxIcon
 	dw MagnezoneIcon
+	dw RhyperiorIcon
 	dw TangrowthIcon
 	dw NatuIcon
 	dw XatuIcon
@@ -181,7 +182,6 @@ IconPointers:
 	dw FlaaffyIcon
 	dw AmpharosIcon
 	dw BellossomIcon
-	dw RhyperiorIcon
 	dw SudowoodoIcon
 	dw PolitoedIcon
 	dw SunkernIcon

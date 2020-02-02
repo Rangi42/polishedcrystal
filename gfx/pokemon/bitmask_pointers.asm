@@ -173,6 +173,7 @@ BitmasksPointers:
 	dw -1 ; see PichuBitmasksPointers
 	dw MunchlaxBitmasks
 	dw MagnezoneBitmasks
+	dw RhyperiorBitmasks
 	dw TangrowthBitmasks
 	dw NatuBitmasks
 	dw XatuBitmasks
@@ -180,7 +181,6 @@ BitmasksPointers:
 	dw FlaaffyBitmasks
 	dw AmpharosBitmasks
 	dw BellossomBitmasks
-	dw RhyperiorBitmasks
 	dw SudowoodoBitmasks
 	dw PolitoedBitmasks
 	dw SunkernBitmasks

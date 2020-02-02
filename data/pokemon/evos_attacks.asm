@@ -3433,6 +3433,30 @@ MagnezoneEvosAttacks:
 	db 63, ZAP_CANNON
 	db 0 ; no more level-up moves
 
+RhyperiorEvosAttacks:
+	db 0 ; no more evolutions
+	db 1, OUTRAGE ; Hammer Arm → HGSS tutor move ; evolution move
+	db 1, POISON_JAB
+	db 1, TACKLE
+	db 1, MUD_SLAP ; Sand-Attack → similar move
+	db 1, LEER ; Tail Whip → similar move
+	db 3, HORN_ATTACK
+	db 6, FURY_STRIKES ; Fury Attack → similar move
+	db 9, SCARY_FACE
+	db 13, MAGNITUDE ; Smack Down → egg move
+	db 17, STOMP
+	db 21, BULLDOZE
+	db 25, ANCIENTPOWER ; Chip Away → HGSS tutor move
+	db 29, ROCK_BLAST
+	db 33, DOUBLE_EDGE ; Drill Run → event move
+	db 37, TAKE_DOWN
+	db 41, STONE_EDGE
+	db 48, EARTHQUAKE
+	db 55, CLOSE_COMBAT ; Megahorn → new move
+	db 62, MEGAHORN ; Horn Drill → Megahorn
+	db 69, ROCK_SLIDE ; Rock Wrecker → similar move
+	db 0 ; no more level-up moves
+
 TangrowthEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, WRAP ; Constrict → similar move
@@ -3573,30 +3597,6 @@ BellossomEvosAttacks:
 	db 49, MOONBLAST ; Petal Blizzard → Gloom move
 	db 59, PETAL_DANCE ; evolution move
 	db 69, PLAY_ROUGH ; Leaf Storm → Sw/Sh move
-	db 0 ; no more level-up moves
-
-RhyperiorEvosAttacks:
-	db 0 ; no more evolutions
-	db 1, OUTRAGE ; Hammer Arm → HGSS tutor move ; evolution move
-	db 1, POISON_JAB
-	db 1, TACKLE
-	db 1, MUD_SLAP ; Sand-Attack → similar move
-	db 1, LEER ; Tail Whip → similar move
-	db 3, HORN_ATTACK
-	db 6, FURY_STRIKES ; Fury Attack → similar move
-	db 9, SCARY_FACE
-	db 13, MAGNITUDE ; Smack Down → egg move
-	db 17, STOMP
-	db 21, BULLDOZE
-	db 25, ANCIENTPOWER ; Chip Away → HGSS tutor move
-	db 29, ROCK_BLAST
-	db 33, DOUBLE_EDGE ; Drill Run → event move
-	db 37, TAKE_DOWN
-	db 41, STONE_EDGE
-	db 48, EARTHQUAKE
-	db 55, CLOSE_COMBAT ; Megahorn → new move
-	db 62, MEGAHORN ; Horn Drill → Megahorn
-	db 69, ROCK_SLIDE ; Rock Wrecker → similar move
 	db 0 ; no more level-up moves
 
 SudowoodoEvosAttacks:

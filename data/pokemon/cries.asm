@@ -179,6 +179,7 @@ CryHeaders::
 	mon_cry CRY_PICHU,       $000,  $140 ; Pichu
 	mon_cry CRY_GRIMER,      $055,  $081 ; Munchlax
 	mon_cry CRY_METAPOD,     $020,  $140 ; Magnezone
+	mon_cry CRY_RHYDON,      $000,  $100 ; Rhyperior
 	mon_cry CRY_GOLEM,       $000,  $100 ; Tangrowth
 	mon_cry CRY_NATU,       -$067,  $100 ; Natu
 	mon_cry CRY_NATU,       -$0a7,  $168 ; Xatu
@@ -186,7 +187,6 @@ CryHeaders::
 	mon_cry CRY_MAREEP,     -$007,  $180 ; Flaaffy
 	mon_cry CRY_AMPHAROS,   -$07c,  $0e8 ; Ampharos
 	mon_cry CRY_BELLOSSOM,   $084,  $150 ; Bellossom
-	mon_cry CRY_RHYDON,      $000,  $100 ; Rhyperior
 	mon_cry CRY_BELLOSSOM,   $f40,  $180 ; Sudowoodo
 	mon_cry CRY_BELLOSSOM,  -$2a3,  $1c8 ; Politoed
 	mon_cry CRY_MARILL,      $12b,  $0b8 ; Sunkern

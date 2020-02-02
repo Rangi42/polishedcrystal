@@ -177,6 +177,7 @@ EvosAttacksPointers:: ; 0x425b1
 	dw PichuEvosAttacks
 	dw MunchlaxEvosAttacks
 	dw MagnezoneEvosAttacks
+	dw RhyperiorEvosAttacks
 	dw TangrowthEvosAttacks
 	dw NatuEvosAttacks
 	dw XatuEvosAttacks
@@ -184,7 +185,6 @@ EvosAttacksPointers:: ; 0x425b1
 	dw FlaaffyEvosAttacks
 	dw AmpharosEvosAttacks
 	dw BellossomEvosAttacks
-	dw RhyperiorEvosAttacks
 	dw SudowoodoEvosAttacks
 	dw PolitoedEvosAttacks
 	dw SunkernEvosAttacks

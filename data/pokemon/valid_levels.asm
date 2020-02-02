@@ -175,6 +175,7 @@ ValidPokemonLevels:
 	db   1,  19 ; Pichu
 	db   1,  19 ; Munchlax
 	db  50, 100 ; Magnezone
+	db  55, 100 ; Rhyperior
 	db  39, 100 ; Tangrowth
 	db   1,  24 ; Natu
 	db  25, 100 ; Xatu
@@ -182,7 +183,6 @@ ValidPokemonLevels:
 	db  15,  29 ; Flaaffy
 	db  30, 100 ; Ampharos
 	db  32, 100 ; Bellossom
-	db  55, 100 ; Rhyperior
 	db  10, 100 ; Sudowoodo
 	db  36, 100 ; Politoed
 	db   1,  31 ; Sunkern

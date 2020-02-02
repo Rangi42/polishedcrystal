@@ -173,6 +173,7 @@ EvolutionMoves::
 	db NO_MOVE      ; PICHU
 	db NO_MOVE      ; MUNCHLAX
 	db TRI_ATTACK   ; MAGNEZONE
+	db OUTRAGE      ; RHYPERIOR
 	db NO_MOVE      ; TANGROWTH
 	db NO_MOVE      ; NATU
 	db AIR_SLASH    ; XATU
@@ -180,7 +181,6 @@ EvolutionMoves::
 	db NO_MOVE      ; FLAAFFY
 	db THUNDERPUNCH ; AMPHAROS
 	db PETAL_DANCE  ; BELLOSSOM
-	db OUTRAGE      ; RHYPERIOR
 	db NO_MOVE      ; SUDOWOODO
 	db GIGA_DRAIN   ; POLITOED
 	db NO_MOVE      ; SUNKERN

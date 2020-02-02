@@ -174,10 +174,10 @@ EggMovePointers:: ; 0x23b11
 	dw MunchlaxEggMoves
 	dw NoEggMoves
 	dw NoEggMoves
+	dw NoEggMoves
 	dw NatuEggMoves
 	dw NoEggMoves
 	dw MareepEggMoves
-	dw NoEggMoves
 	dw NoEggMoves
 	dw NoEggMoves
 	dw NoEggMoves

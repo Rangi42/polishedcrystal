@@ -173,6 +173,7 @@ FramesPointers:
 	dw -1 ; see PichuFramesPointers
 	dw MunchlaxFrames
 	dw MagnezoneFrames
+	dw RhyperiorFrames
 	dw TangrowthFrames
 	dw NatuFrames
 	dw XatuFrames
@@ -180,7 +181,6 @@ FramesPointers:
 	dw FlaaffyFrames
 	dw AmpharosFrames
 	dw BellossomFrames
-	dw RhyperiorFrames
 	dw SudowoodoFrames
 	dw PolitoedFrames
 	dw SunkernFrames

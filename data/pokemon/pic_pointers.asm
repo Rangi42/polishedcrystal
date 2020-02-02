@@ -363,6 +363,8 @@ PicPointers::
 	dba MunchlaxBackpic
 	dba MagnezoneFrontpic
 	dba MagnezoneBackpic
+	dba RhyperiorFrontpic
+	dba RhyperiorBackpic
 	dba TangrowthFrontpic
 	dba TangrowthBackpic
 	dba NatuFrontpic
@@ -377,8 +379,6 @@ PicPointers::
 	dba AmpharosBackpic
 	dba BellossomFrontpic
 	dba BellossomBackpic
-	dba RhyperiorFrontpic
-	dba RhyperiorBackpic
 	dba SudowoodoFrontpic
 	dba SudowoodoBackpic
 	dba PolitoedFrontpic

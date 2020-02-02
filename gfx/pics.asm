@@ -450,6 +450,8 @@ SECTION "Pokemon Pics 21", ROMX
 
 MagnezoneFrontpic:        INCBIN "gfx/pokemon/magnezone/front.2bpp.lz"
 MagnezoneBackpic:         INCBIN "gfx/pokemon/magnezone/back.2bpp.lz"
+RhyperiorFrontpic:        INCBIN "gfx/pokemon/rhyperior/front.2bpp.lz"
+RhyperiorBackpic:         INCBIN "gfx/pokemon/rhyperior/back.2bpp.lz"
 TangrowthFrontpic:        INCBIN "gfx/pokemon/tangrowth/front.2bpp.lz"
 TangrowthBackpic:         INCBIN "gfx/pokemon/tangrowth/back.2bpp.lz"
 NatuFrontpic:             INCBIN "gfx/pokemon/natu/front.2bpp.lz"
@@ -462,14 +464,12 @@ FlaaffyFrontpic:          INCBIN "gfx/pokemon/flaaffy/front.2bpp.lz"
 FlaaffyBackpic:           INCBIN "gfx/pokemon/flaaffy/back.2bpp.lz"
 AmpharosFrontpic:         INCBIN "gfx/pokemon/ampharos/front.2bpp.lz"
 AmpharosBackpic:          INCBIN "gfx/pokemon/ampharos/back.2bpp.lz"
-BellossomFrontpic:        INCBIN "gfx/pokemon/bellossom/front.2bpp.lz"
-BellossomBackpic:         INCBIN "gfx/pokemon/bellossom/back.2bpp.lz"
 
 
 SECTION "Pokemon Pics 22", ROMX
 
-RhyperiorFrontpic:        INCBIN "gfx/pokemon/rhyperior/front.2bpp.lz"
-RhyperiorBackpic:         INCBIN "gfx/pokemon/rhyperior/back.2bpp.lz"
+BellossomFrontpic:        INCBIN "gfx/pokemon/bellossom/front.2bpp.lz"
+BellossomBackpic:         INCBIN "gfx/pokemon/bellossom/back.2bpp.lz"
 SudowoodoFrontpic:        INCBIN "gfx/pokemon/sudowoodo/front.2bpp.lz"
 SudowoodoBackpic:         INCBIN "gfx/pokemon/sudowoodo/back.2bpp.lz"
 PolitoedFrontpic:         INCBIN "gfx/pokemon/politoed/front.2bpp.lz"

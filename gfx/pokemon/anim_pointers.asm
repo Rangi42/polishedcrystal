@@ -173,6 +173,7 @@ AnimationPointers:
 	dw -1 ; see PichuAnimationPointers
 	dw MunchlaxAnimation
 	dw MagnezoneAnimation
+	dw RhyperiorAnimation
 	dw TangrowthAnimation
 	dw NatuAnimation
 	dw XatuAnimation
@@ -180,7 +181,6 @@ AnimationPointers:
 	dw FlaaffyAnimation
 	dw AmpharosAnimation
 	dw BellossomAnimation
-	dw RhyperiorAnimation
 	dw SudowoodoAnimation
 	dw PolitoedAnimation
 	dw SunkernAnimation

@@ -174,6 +174,7 @@
 	dw PichuPokedexEntry
 	dw MunchlaxPokedexEntry
 	dw MagnezonePokedexEntry
+	dw RhyperiorPokedexEntry
 	dw TangrowthPokedexEntry
 	dw NatuPokedexEntry
 	dw XatuPokedexEntry
@@ -181,7 +182,6 @@
 	dw FlaaffyPokedexEntry
 	dw AmpharosPokedexEntry
 	dw BellossomPokedexEntry
-	dw RhyperiorPokedexEntry
 	dw SudowoodoPokedexEntry
 	dw PolitoedPokedexEntry
 	dw SunkernPokedexEntry

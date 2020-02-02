@@ -177,6 +177,7 @@ MenuMonIconColors::
 	iconpal RED, BLUE ; PICHU
 	iconpal RED, BLUE ; MUNCHLAX
 	iconpal GRAY, BROWN ; MAGNEZONE
+	iconpal GRAY, RED ; RHYPERIOR
 	iconpal BLUE, GREEN ; TANGROWTH
 	iconpal GREEN, RED ; NATU
 	iconpal GREEN, RED ; XATU
@@ -184,7 +185,6 @@ MenuMonIconColors::
 	iconpal PINK, RED ; FLAAFFY
 	iconpal BROWN, RED ; AMPHAROS
 	iconpal GREEN, RED ; BELLOSSOM
-	iconpal GRAY, RED ; RHYPERIOR
 	iconpal GREEN, RED ; SUDOWOODO
 	iconpal GREEN, TEAL ; POLITOED
 	iconpal GREEN, BROWN ; SUNKERN
