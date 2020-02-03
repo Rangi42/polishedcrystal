@@ -1020,7 +1020,7 @@ wTrainerCardBadgePaletteAddr:: ds 2
 
 wBTTempOTSprite:: ds 1
 
-wOverworldDelay:: ds 1
+wPendingOverworldGraphics:: ds 1
 wTextDelayFrames:: ds 1
 wVBlankOccurred:: ds 1
 wGenericDelay:: ds 1
@@ -1033,8 +1033,7 @@ wInputFlags::
 ; bits 7, 6, and 4 can be used to disable joypad input
 	ds 1
 
-wPendingOverworldGraphics::
-	ds 1
+	ds 1 ; unused
 
 wInBattleTowerBattle:: ds 1
 
