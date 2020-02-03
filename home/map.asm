@@ -1283,10 +1283,12 @@ LoadGraphicsAndDelay::
 	push bc
 	ld a, [rVBK]
 	push af
+	xor a
+	ld [hDelayFrameLY], a
 
-	; only allow this if we have time to spare (takes approx $30 rows)
+	; only allow this if we have time to spare
 	ld a, [rLY]
-	cp $50
+	cp $20
 	jr nc, .done
 
 	ld a, [wPendingOverworldGraphics]
@@ -1300,17 +1302,21 @@ LoadGraphicsAndDelay::
 	ld [hTileAnimFrame], a
 
 .done
+	ld a, [hDelayFrameLY]
+	and a
+	call z, DelayFrame
 	pop af
 	ld [rVBK], a
 	pop bc
 	pop de
 	pop hl
-	jp DelayFrame
+	ret
 
 _LoadTileset:
+; Loads one of up to 3 tileset groups depending on a
 	jr z, _LoadTileset0
 	dec a
-	jr z, _LoadTileset2
+	jr z, _LoadTileset1
 _LoadTileset2:
 	ld a, 1
 	ld [rVBK], a
