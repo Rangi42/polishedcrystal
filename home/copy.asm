@@ -43,23 +43,20 @@ SafeCopyTilemapAtOnce::
 CopyTilemapAtOnce::
 	farjp _CopyTilemapAtOnce
 
-DecompressRequest2bpp:: ; e73
+DecompressRequest2bpp::
+; Decompress lz data from b:hl to scratch space at 6:d000, then copy c tiles to de.
 	push de
-	ld a, BANK(sScratch)
-	call GetSRAMBank
 	push bc
-
-	ld de, sScratch
-	ld a, b
-	call FarDecompress
-
+	call FarDecompressWRA6InB
 	pop bc
 	pop hl
+	ld de, wDecompressScratch
 
-	ld de, sScratch
-	call Request2bpp
-	jp CloseSRAM
-; e8d
+; fallthrough
+Request2bppInWRA6:
+	ldh a, [hROMBank]
+	ld b, a
+	call RunFunctionInWRA6
 
 Get2bpp::
 	ld a, [rLCDC]

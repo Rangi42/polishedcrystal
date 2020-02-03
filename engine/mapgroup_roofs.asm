@@ -1,4 +1,4 @@
-LoadMapGroupRoof:: ; 1c000
+LoadMapGroupRoof::
 	ld a, [wMapGroup]
 	ld e, a
 	ld d, 0
@@ -10,10 +10,10 @@ LoadMapGroupRoof:: ; 1c000
 	ld hl, Roofs
 	ld bc, 9 tiles
 	rst AddNTimes
-	ld de, VTiles2 tile $0a
-	ld bc, 9 tiles
-	rst CopyBytes
-	ret
-; 1c021
+	ld d, h
+	ld e, l
+	lb bc, BANK(Roofs), 9
+	ld hl, VTiles2 tile $0a
+	jp Get2bpp
 
 INCLUDE "data/maps/roofs.asm"

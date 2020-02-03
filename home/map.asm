@@ -1277,84 +1277,17 @@ UpdateBGMapColumn:: ; 27f8
 	ret
 ; 2816
 
-LoadTileset:: ; 2821
+LoadTileset::
 	ld a, [wTilesetGFXBank]
 	ld [hTilesetGFXBank], a
-
-; gfx 0
-
-	ld hl, wTilesetGFX0Address
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-
-	ld a, BANK(wDecompressScratch)
-	ld [rSVBK], a
-
-	ld a, [hTilesetGFXBank]
-	ld de, wDecompressScratch
-	call FarDecompress
-
-	ld hl, wDecompressScratch
-	ld de, VTiles2
-	ld bc, $7f tiles
-	rst CopyBytes
-
-; gfx 1
-
-	ld a, $1
+	ld a, 1
 	ld [rVBK], a
-
-	ld a, BANK(wTilesetGFX1Address)
-	ld [rSVBK], a
-
 	ld hl, wTilesetGFX1Address
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	or h
-	jr z, .no_gfx1
-
-	ld a, BANK(wDecompressScratch)
-	ld [rSVBK], a
-
-	ld a, [hTilesetGFXBank]
-	ld de, wDecompressScratch
-	call FarDecompress
-
-	ld hl, wDecompressScratch
 	ld de, VTiles5
-	ld bc, $80 tiles
-	rst CopyBytes
-
-.no_gfx1
-
-; gfx 2
-
-	ld a, BANK(wTilesetGFX2Address)
-	ld [rSVBK], a
-
+	call .LoadTiles
 	ld hl, wTilesetGFX2Address
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	or h
-	jr z, .no_gfx2
-
-	ld a, BANK(wDecompressScratch)
-	ld [rSVBK], a
-
-	ld a, [hTilesetGFXBank]
-	ld de, wDecompressScratch
-	call FarDecompress
-
-	ld hl, wDecompressScratch
 	ld de, VTiles4
-	ld bc, $80 tiles
-	rst CopyBytes
-
-.no_gfx2
-
+	call .LoadTiles
 	xor a
 	ld [rVBK], a
 
@@ -1371,12 +1304,52 @@ LoadTileset:: ; 2821
 
 .load_roof
 	farcall LoadMapGroupRoof
+	ld hl, wTilesetGFX0Address
+	ld de, VTiles2
+	ld c, $ff
+	call .DoLoadTiles
+	jr .done
 
 .skip_roof
+	ld hl, wTilesetGFX0Address
+	ld de, VTiles2
+	ld c, $7f
+	call .DoLoadTiles
+.done
 	xor a
 	ld [hTileAnimFrame], a
 	ret
-; 2879
+
+.LoadTiles:
+	ld c, $80
+.DoLoadTiles:
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	or h
+	ret z
+
+	ld a, [hTilesetGFXBank]
+	ld b, a
+	inc c
+	jr z, .special_load
+	dec c
+	jp DecompressRequest2bpp
+.special_load
+	; Skip roof tiles when writing to VRAM
+	ld c, $7f
+	push de
+	push bc
+	call FarDecompressWRA6InB
+	pop bc
+	pop hl
+	ld de, wDecompressScratch
+	ld c, $a ; write tiles $00-09
+	call Request2bppInWRA6
+	ld de, wDecompressScratch tile $13
+	ld hl, VTiles2 tile $13
+	ld c, $6c ; write tiles $13-$7e
+	jp Request2bppInWRA6
 
 BufferScreen:: ; 2879
 	ld hl, wOverworldMapAnchor

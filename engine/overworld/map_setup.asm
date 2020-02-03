@@ -60,7 +60,7 @@ ReadMapSetupScript: ; 1541d
 	jr .loop
 ; 15440
 
-MapSetupCommands: ; 15440
+MapSetupCommands:
 	dba EnableLCD ; 00
 	dba DisableLCD ; 01
 	dba MapSetup_Sound_Off ; 02
@@ -107,7 +107,7 @@ MapSetupCommands: ; 15440
 	dba RetainOldPalettes ; 2b
 	dba ReturnFromMapSetupScript ; 2c
 	dba DecompressMetatiles ; 2d
-; 154ca
+	dba LoadGraphicsFast ; 2e
 
 ActivateMapAnims: ; 154cf
 	ld a, $1
