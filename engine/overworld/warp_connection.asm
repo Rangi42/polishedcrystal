@@ -314,8 +314,6 @@ DeferredLoadGraphics:
 	ret
 
 LoadGraphics:
-	call TilesetUnchanged
-	jr z, .done
 	call LoadTilesetHeader
 	call LoadTileset
 .done
