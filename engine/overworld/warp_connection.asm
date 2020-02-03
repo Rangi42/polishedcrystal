@@ -316,7 +316,6 @@ DeferredLoadGraphics:
 LoadGraphics:
 	call LoadTilesetHeader
 	call LoadTileset
-.done
 	xor a
 	ld [hMapAnims], a
 	ld [hTileAnimFrame], a
