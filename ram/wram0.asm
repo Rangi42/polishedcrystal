@@ -1033,7 +1033,9 @@ wInputFlags::
 ; bits 7, 6, and 4 can be used to disable joypad input
 	ds 1
 
-	ds 1 ; unused
+wOverworldDelaySkip::
+; amount of overworld frames to skip DelayFrame for
+	ds 1
 
 wInBattleTowerBattle:: ds 1
 

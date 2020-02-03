@@ -80,7 +80,7 @@ Route24BridgeUnderfootTrigger:
 Route24_FinishBridge:
 	ld [wWalkingOnBridge], a
 	ld [wRoute24Trigger], a ; setscene a
-	jp GetMovementPermissions
+	jp GenericFinishBridge
 
 TrainerGruntM31:
 	trainer GRUNTM, 31, EVENT_BEAT_ROCKET_GRUNTM_31, UnknownText_0x1adc2e, UnknownText_0x1add67, 0, RocketScript_0x1adbfa

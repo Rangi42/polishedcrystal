@@ -138,7 +138,7 @@ Route47_FinishUnderfootBridge:
 Route47_FinishBridge:
 	ld [wWalkingOnBridge], a
 	ld [wRoute47Trigger], a ; setscene a
-	jp GetMovementPermissions
+	jp GenericFinishBridge
 
 Route47Bridge1OverheadTrigger:
 	thisasm

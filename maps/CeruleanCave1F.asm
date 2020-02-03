@@ -72,4 +72,4 @@ CeruleanCave1FBridgeUnderfootTrigger:
 CeruleanCave1F_FinishBridge:
 	ld [wWalkingOnBridge], a
 	ld [wCeruleanCave1FTrigger], a ; setscene a
-	jp GetMovementPermissions
+	jp GenericFinishBridge

@@ -1523,6 +1523,9 @@ SaveScreen_LoadNeighbor:: ; 28f7
 	ret
 ; 2914
 
+GenericFinishBridge::
+	ld a, 1
+	ld [wOverworldDelaySkip], a
 GetMovementPermissions:: ; 2914
 	xor a
 	ld [wTilePermissions], a
