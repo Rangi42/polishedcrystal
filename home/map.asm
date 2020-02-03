@@ -239,14 +239,17 @@ CheckIndoorMap:: ; 22f4
 	ret
 ; 2300
 
-LoadMapAttributes:: ; 2309
+LoadMapAttributes::
+	ld a, [wTileset]
+	ld [wOldTileset], a
 	call CopyMapHeaders
 	call SwitchToMapScriptHeaderBank
 	xor a ; FALSE
 	jr ReadMapScripts
-; 2317
 
-LoadMapAttributes_SkipPeople:: ; 2317
+LoadMapAttributes_Continue::
+	ld a, -1
+	ld [wOldTileset], a
 	call CopyMapHeaders
 	call SwitchToMapScriptHeaderBank
 	ld a, TRUE
@@ -2354,7 +2357,19 @@ GetFishingGroup:: ; 2d19
 	ret
 ; 2d27
 
-LoadTilesetHeader:: ; 2d27
+TilesetUnchanged::
+; returns z if tileset is unchanged from last tileset
+	push bc
+	ld a, [wOldTileset]
+	ld b, a
+	ld a, [wTileset]
+	cp b
+	pop bc
+	ret
+
+LoadTilesetHeader::
+	call TilesetUnchanged
+	ret z
 	push hl
 	push bc
 
@@ -2373,7 +2388,6 @@ LoadTilesetHeader:: ; 2d27
 	pop bc
 	pop hl
 	ret
-; 2d43
 
 GetOvercastIndex::
 ; Some maps are overcast, depending on certain conditions

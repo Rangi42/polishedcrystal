@@ -389,7 +389,9 @@ wSpinning:: ds 1
 
 wBGMapAnchor:: ds 2
 
-	ds 64 ; unused
+wOldTileset:: ds 1
+
+	ds 63 ; unused
 
 wOverworldMapAnchor:: ds 2
 wMetatileStandingY:: ds 1

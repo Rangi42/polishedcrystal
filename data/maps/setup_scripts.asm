@@ -79,6 +79,7 @@ MapSetupScript_Connection: ; 153bf
 	db map_load_tileset_header
 	db map_save_screen
 	db map_deferred_load_graphics
+	db map_decompress_metatiles
 	db map_load_objects
 	db map_fade_music
 	db map_palettes

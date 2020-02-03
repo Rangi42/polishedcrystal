@@ -88,7 +88,7 @@ MapSetupCommands:
 	dba EnterMapConnection ; 18
 	dba LoadWarpData ; 19
 	dba LoadMapAttributes ; 1a
-	dba LoadMapAttributes_SkipPeople ; 1b
+	dba LoadMapAttributes_Continue ; 1b
 	dba ClearBGPalettes ; 1c
 	dba FadeOutPalettes ; 1d
 	dba FadeInPalettes ; 1e
@@ -307,6 +307,9 @@ ForceMapMusic: ; 15587
 	jp TryRestartMapMusic
 
 DecompressMetatiles:
+	call TilesetUnchanged
+	ret z
+
 	; Decompressed RAM is all at $d000
 	ld hl, wTilesetBlocksBank
 	ld c, BANK(wDecompressedMetatiles)
