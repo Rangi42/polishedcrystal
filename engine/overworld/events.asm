@@ -138,7 +138,7 @@ ResetOverworldDelay:
 NextOverworldFrame:
 	ld a, [wOverworldDelay]
 	and a
-	jp nz, DelayFrame
+	jp nz, LoadGraphicsAndDelay
 	ld a, $82
 	ld [wOverworldDelay], a
 	ret

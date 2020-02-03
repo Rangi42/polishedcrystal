@@ -107,7 +107,7 @@ MapSetupCommands:
 	dba RetainOldPalettes ; 2b
 	dba ReturnFromMapSetupScript ; 2c
 	dba DecompressMetatiles ; 2d
-	dba LoadGraphicsFast ; 2e
+	dba DeferredLoadGraphics ; 2e
 
 ActivateMapAnims: ; 154cf
 	ld a, $1

@@ -1031,7 +1031,10 @@ wGameTimerPause::
 
 wInputFlags::
 ; bits 7, 6, and 4 can be used to disable joypad input
-	ds 2
+	ds 1
+
+wPendingOverworldGraphics::
+	ds 1
 
 wInBattleTowerBattle:: ds 1
 

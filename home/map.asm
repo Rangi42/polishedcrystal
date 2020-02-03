@@ -1277,23 +1277,56 @@ UpdateBGMapColumn:: ; 27f8
 	ret
 ; 2816
 
-LoadTileset::
-	ld a, [wTilesetGFXBank]
-	ld [hTilesetGFXBank], a
+LoadGraphicsAndDelay::
+	push hl
+	push de
+	push bc
+	ld a, [rVBK]
+	push af
+
+	; only allow this if we have time to spare (takes approx $30 rows)
+	ld a, [rLY]
+	cp $50
+	jr nc, .done
+
+	ld a, [wPendingOverworldGraphics]
+	and a
+	jr z, .done
+
+	dec a
+	ld [wPendingOverworldGraphics], a
+	call _LoadTileset
+	xor a
+	ld [hTileAnimFrame], a
+
+.done
+	pop af
+	ld [rVBK], a
+	pop bc
+	pop de
+	pop hl
+	jp DelayFrame
+
+_LoadTileset:
+	jr z, _LoadTileset0
+	dec a
+	jr z, _LoadTileset2
+_LoadTileset2:
 	ld a, 1
 	ld [rVBK], a
-	ld hl, wTilesetGFX1Address
-	ld de, VTiles5
-	call .LoadTiles
 	ld hl, wTilesetGFX2Address
 	ld de, VTiles4
-	call .LoadTiles
+	jr _DoLoadTileset
+
+_LoadTileset0:
+	ld a, [rSVBK]
+	push af
 	xor a
 	ld [rVBK], a
-
-	inc a ; BANK(wTileset) == 1
+	inc a
 	ld [rSVBK], a
 
+	; Check roof tiles
 	ld a, [wTileset]
 	cp TILESET_JOHTO_TRADITIONAL
 	jr z, .load_roof
@@ -1307,22 +1340,31 @@ LoadTileset::
 	ld hl, wTilesetGFX0Address
 	ld de, VTiles2
 	ld c, $ff
-	call .DoLoadTiles
+	call _DoLoadTileset0
 	jr .done
 
 .skip_roof
 	ld hl, wTilesetGFX0Address
 	ld de, VTiles2
 	ld c, $7f
-	call .DoLoadTiles
+	call _DoLoadTileset0
 .done
-	xor a
-	ld [hTileAnimFrame], a
+	pop af
+	ld [rSVBK], a
 	ret
 
-.LoadTiles:
+_LoadTileset1:
+	ld a, 1
+	ld [rVBK], a
+	ld hl, wTilesetGFX1Address
+	ld de, VTiles5
+	; fallthrough
+
+_DoLoadTileset:
 	ld c, $80
-.DoLoadTiles:
+_DoLoadTileset0:
+	ld a, [wTilesetGFXBank]
+	ld [hTilesetGFXBank], a
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
@@ -1350,6 +1392,16 @@ LoadTileset::
 	ld hl, VTiles2 tile $13
 	ld c, $6c ; write tiles $13-$7e
 	jp Request2bppInWRA6
+
+LoadTileset::
+	xor a
+	ld [wPendingOverworldGraphics], a
+	call _LoadTileset1
+	call _LoadTileset2
+	call _LoadTileset0
+	xor a
+	ld [hTileAnimFrame], a
+	ret
 
 BufferScreen:: ; 2879
 	ld hl, wOverworldMapAnchor

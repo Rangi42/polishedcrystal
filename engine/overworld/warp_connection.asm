@@ -301,9 +301,10 @@ LoadMapTimeOfDay: ; 104750
 	hlbgcoord 0, 0
 	jp ByteFill
 
-LoadGraphicsFast:
+DeferredLoadGraphics:
 	call LoadTilesetHeader
-	call LoadTileset
+	ld a, 3
+	ld [wPendingOverworldGraphics], a
 	xor a
 	ld [hMapAnims], a
 	ld [hTileAnimFrame], a
