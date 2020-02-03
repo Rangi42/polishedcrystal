@@ -134,6 +134,14 @@ $(sorted_sym): crystal ; tail -n +3 $(NAME)-$(VERSION).sym | sort -o $@
 	$(RGBDS_DIR)rgblink $(RGBLINK_FLAGS) -o $@ $^
 	$(RGBDS_DIR)rgbfix $(RGBFIX_FLAGS) $@
 
+%.2bpp.vram0: %.2bpp
+# take the first 128 tiles (= 8192 px = 16384 bits = 2048 bytes)
+	head -c 2048 $< > $@
+
+%.2bpp.vram1: %.2bpp
+# skip the first 128 tiles
+	tail -c +2049 $< > $@
+
 %.2bpp: %.png ; $(GFX) 2bpp $<
 %.1bpp: %.png ; $(GFX) 1bpp $<
 
