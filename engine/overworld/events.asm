@@ -132,8 +132,6 @@ NextOverworldFrame:
 	ld a, [wOverworldDelaySkip]
 	and a
 	jr nz, .done
-	inc a
-	ld [wOverworldDelaySkip], a
 	ld a, [hDelayFrameLY]
 	inc a
 	jp nz, LoadGraphicsAndDelay
@@ -141,6 +139,8 @@ NextOverworldFrame:
 	ld [hDelayFrameLY], a
 .done
 	ld a, [wOverworldDelaySkip]
+	and a
+	ret z
 	dec a
 	ld [wOverworldDelaySkip], a
 	ret
