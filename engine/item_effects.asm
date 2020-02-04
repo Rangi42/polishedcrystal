@@ -2317,7 +2317,6 @@ ItemWasntUsedMessage:
 ; f7e8
 
 Ball_ReplacePartyMonCaughtBall:
-	ld b, b
 	ld b, PARTYMENUACTION_00
 	call UseItem_SelectMon
 	jp c, ItemNotUsed_ExitMenu
