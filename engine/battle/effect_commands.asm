@@ -3301,12 +3301,16 @@ BattleCommand_posthiteffects:
 	call SwitchTurn
 	jr .rocky_helmet_done
 .held_offend_hit
+	; we want to ensure we have the correct item name for hurt message
+	call GetOpponentItem
 	call ConsumeOpponentItem
 	call GetEighthMaxHP
 	jr .got_hurt_item_damage
 .rocky_helmet
 	call CheckContactMove
 	jr c, .rocky_helmet_done
+	; see above comment
+	call GetOpponentItem
 	call GetSixthMaxHP
 .got_hurt_item_damage
 	ld a, b
