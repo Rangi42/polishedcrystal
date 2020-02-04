@@ -1,5 +1,5 @@
 _PrintNum:: ; c4c7
-; Print c digits of the b-byte value from de to hl.
+; Print c digits of byte length b (big endian) from de to hl.
 ; High nibble of c denotes decimal point location.
 ; Works on up to 1-8 digits and up to 4 bytes (up to 99999999).
 ; The higher b nibble has some flags:

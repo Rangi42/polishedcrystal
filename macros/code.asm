@@ -15,8 +15,12 @@ lb: MACRO ; r, hi, lo
 	ld \1, ((\2) & $ff) << 8 | ((\3) & $ff)
 ENDM
 
-ln: MACRO ; r, hi, lo
+ln: MACRO ; r, hi, lo[, hi, lo]
+if _NARG == 3
 	ld \1, ((\2) & $f) << 4 | ((\3) & $f)
+else
+	lb \1, ((\2) & $f) << 4 | ((\3) & $f), ((\4) & $f) << 4 | ((\5) & $f)
+endc
 ENDM
 
 ldpixel: MACRO
