@@ -114,6 +114,10 @@ Pokegear_LoadGFX: ; 90c4e
 	cp MYSTRI_STAGE
 	jr z, .sinjoh
 	farcall GetPlayerIcon
+	ld a, [rSVBK]
+	push af
+	ld a, 6
+	ld [rSVBK], a
 	push de
 	ld h, d
 	ld l, e
@@ -130,7 +134,10 @@ Pokegear_LoadGFX: ; 90c4e
 	add hl, de
 	ld de, VTiles0 tile $14
 	ld bc, 4 tiles
-	jp FarCopyBytes
+	call FarCopyBytes
+	pop af
+	ld [rSVBK], a
+	ret
 
 .ssaqua
 	ld hl, FastShipGFX
@@ -2348,7 +2355,7 @@ _Area: ; 91d11
 	call .GetPlayerOrFastShipIcon
 	ld hl, VTiles0 tile $78
 	ld c, 4
-	call Request2bpp
+	call Request2bppInWRA6
 	call LoadTownMapGFX
 
 	ld a, [wTownMapPlayerIconLandmark]
@@ -2880,7 +2887,7 @@ TownMapPlayerIcon: ; 91fa6
 	ld c, 4 ; # tiles
 	push bc
 	push de
-	call Request2bpp
+	call Request2bppInWRA6
 	pop de
 	pop bc
 ; Walking icon
@@ -2889,7 +2896,7 @@ TownMapPlayerIcon: ; 91fa6
 	ld d, h
 	ld e, l
 	ld hl, VTiles0 tile $14
-	call Request2bpp
+	call Request2bppInWRA6
 ; Animation/palette
 	depixel 0, 0
 	ld b, SPRITE_ANIM_INDEX_RED_WALK ; Male

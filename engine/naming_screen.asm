@@ -125,7 +125,7 @@ NamingScreen: ; 116c1
 ; 1178d
 
 .Player: ; 1178d (4:578d)
-	farcall GetPlayerIcon
+	farcall _GetPlayerIcon
 	ld a, [wPlayerGender]
 	bit 0, a
 	ld c, SPRITE_ANIM_INDEX_RED_WALK
@@ -207,7 +207,7 @@ NamingScreen: ; 116c1
 	ld c, $4
 	push bc
 	push de
-	call Request2bpp
+	call DecompressRequest2bpp_SwapDEHL
 	pop de
 	pop bc
 	ld hl, 12 tiles

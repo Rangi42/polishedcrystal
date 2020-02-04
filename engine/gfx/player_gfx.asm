@@ -2,6 +2,16 @@ GetPlayerIcon: ; 8832c
 ; Get the player icon corresponding to gender
 
 ; Male
+	push hl
+	call _GetPlayerIcon
+	ld h, d
+	ld l, e
+	call FarDecompressWRA6InB
+	pop hl
+	ld de, wDecompressScratch
+	ret
+
+_GetPlayerIcon:
 	ld de, ChrisSpriteGFX
 	ld b, BANK(ChrisSpriteGFX)
 
@@ -13,7 +23,6 @@ GetPlayerIcon: ; 8832c
 	ld de, KrisSpriteGFX
 	ld b, BANK(KrisSpriteGFX)
 	ret
-
 
 GetCardPic: ; 8833e
 	ld hl, ChrisCardPic

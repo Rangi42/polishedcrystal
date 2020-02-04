@@ -328,6 +328,18 @@ GetUsedSprite:: ; 143c8
 	call SafeGetSprite
 	ld a, [hUsedSpriteTile]
 	call .GetTileAddr
+	push bc
+	push hl
+	push de
+	push hl
+	ld h, d
+	ld l, e
+	pop de
+	call FarDecompressWRA6InB
+	pop de
+	pop hl
+	pop bc
+	ld de, wDecompressScratch
 	push hl
 	push de
 	push bc
@@ -376,7 +388,7 @@ endr
 	inc a
 .bankswitch
 	ld [rVBK], a
-	call Get2bpp
+	call Request2bppInWRA6
 	pop af
 	ld [rVBK], a
 	ret

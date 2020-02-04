@@ -998,7 +998,7 @@ Intro_PlacePlayerSprite: ; 61cd
 	farcall GetPlayerIcon
 	ld c, $c
 	ld hl, VTiles0
-	call Request2bpp
+	call Request2bppInWRA6
 
 	ld hl, wSprites
 	ld de, .sprites

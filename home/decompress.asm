@@ -7,7 +7,7 @@ SwapDEHL::
 
 FarDecompressWRA6::
 	ld b, a
-FarDecompressWRA6InB:
+FarDecompressWRA6InB::
 	call RunFunctionInWRA6
 FarDecompressAtB_D000::
 	ld a, b

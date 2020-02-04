@@ -454,11 +454,11 @@ endr
 	ld de, IconPointers
 	add hl, de
 	ld a, [hli]
-	ld e, a
-	ld d, [hl]
-	pop hl
+	ld h, [hl]
+	ld l, a
+	pop de
 	call GetMonIconBank
-	call Request2bpp
+	call DecompressRequest2bpp
 	pop hl
 	ret
 ; 8ea3f

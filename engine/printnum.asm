@@ -78,8 +78,9 @@ endr
 	ld a, b
 	and $e0
 	add c
-	ld c, 8
 	ld b, a
+_DoPrintNum::
+	ld c, 8
 	ld de, hPrintNum
 .loop3
 	ld a, [de]

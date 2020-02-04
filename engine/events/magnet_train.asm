@@ -142,7 +142,7 @@ MagntTrain_LoadGFX_PlayMusic: ; 8ccc9
 	ld c, 4
 	push bc
 	push de
-	call Request2bpp
+	call Request2bppInWRA6
 	pop de
 	pop bc
 	ld hl, 12 tiles
@@ -151,7 +151,7 @@ MagntTrain_LoadGFX_PlayMusic: ; 8ccc9
 	ld e, l
 	ld hl, VTiles0 tile $04
 	ld c, 4
-	call Request2bpp
+	call Request2bppInWRA6
 	call MagnetTrain_InitLYOverrides
 	ld hl, wJumptableIndex
 	xor a
