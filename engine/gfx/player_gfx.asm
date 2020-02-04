@@ -1,7 +1,5 @@
-GetPlayerIcon: ; 8832c
+GetPlayerIcon:
 ; Get the player icon corresponding to gender
-
-; Male
 	push hl
 	call _GetPlayerIcon
 	ld h, d
@@ -12,6 +10,7 @@ GetPlayerIcon: ; 8832c
 	ret
 
 _GetPlayerIcon:
+; Male
 	ld de, ChrisSpriteGFX
 	ld b, BANK(ChrisSpriteGFX)
 
