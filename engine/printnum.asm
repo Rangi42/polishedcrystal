@@ -1,82 +1,3 @@
-PrintHLNum:
-; Possibly print a number at hl and increase it.
-; [de] contains a BCD-encoded number that we print from.
-; c is the loop counter (how many digits are left).
-; b & $f contains the maximum string length. (b & $e0 is flags).
-; hl is where we print to (usually the screen).
-	push af
-	ld a, [hPrintNum + 4]
-	dec a
-	jr nz, .no_zero_set
-	set PRINTNUM_LEADINGZEROS_F, b
-.no_zero_set
-	pop af
-	bit 0, c
-	jr nz, .c_odd
-	swap a
-	jr .c_ok
-.c_odd
-	inc de
-.c_ok
-	and $f
-	jr z, .maybe_not_yet
-	set PRINTNUM_LEADINGZEROS_F, b
-.maybe_not_yet
-	push af
-
-	; We might still be higher bytewise than we're printing
-	ld a, b
-	and $f
-	cp c
-	jr nc, .ok
-	pop af
-	ret
-
-.ok
-	; Now print the number in a
-	pop af
-	jr nz, .check_money
-
-	; just print a zero if we're in zero-mode
-	bit PRINTNUM_LEADINGZEROS_F, b
-	jr nz, .check_money
-
-	; for the last digit, print 0 anyway
-	ld a, c
-	dec a
-	jr z, .check_money
-
-	; if we're left-aligning the number, don't print anything
-	bit PRINTNUM_LEFTALIGN_F, b
-	ret nz
-
-	; print a space
-	ld a, " "
-	jr .got_value
-
-.check_money
-	bit PRINTNUM_MONEY_F, b
-	jr z, .got_number
-	res PRINTNUM_MONEY_F, b
-	push af
-	ld a, "¥"
-	ld [hli], a
-	pop af
-
-.got_number
-	add "0"
-.got_value
-	ld [hli], a
-	ld a, [hPrintNum + 4]
-	and a
-	ret z
-	dec a
-	ld [hPrintNum + 4], a
-	ret nz
-	ld [hl], "."
-	inc hl
-	ret
-
 _PrintNum:: ; c4c7
 ; Print c digits of the b-byte value from de to hl.
 ; High nibble of c denotes decimal point location.
@@ -166,4 +87,83 @@ endr
 	dec c
 	jr nz, .loop3
 	pop bc
+	ret
+
+PrintHLNum:
+; Possibly print a number at hl and increase it.
+; [de] contains a BCD-encoded number that we print from.
+; c is the loop counter (how many digits are left).
+; b & $f contains the maximum string length. (b & $e0 is flags).
+; hl is where we print to (usually the screen).
+	push af
+	ld a, [hPrintNum + 4]
+	dec a
+	jr nz, .no_zero_set
+	set PRINTNUM_LEADINGZEROS_F, b
+.no_zero_set
+	pop af
+	bit 0, c
+	jr nz, .c_odd
+	swap a
+	jr .c_ok
+.c_odd
+	inc de
+.c_ok
+	and $f
+	jr z, .maybe_not_yet
+	set PRINTNUM_LEADINGZEROS_F, b
+.maybe_not_yet
+	push af
+
+	; We might still be higher bytewise than we're printing
+	ld a, b
+	and $f
+	cp c
+	jr nc, .ok
+	pop af
+	ret
+
+.ok
+	; Now print the number in a
+	pop af
+	jr nz, .check_money
+
+	; just print a zero if we're in zero-mode
+	bit PRINTNUM_LEADINGZEROS_F, b
+	jr nz, .check_money
+
+	; for the last digit, print 0 anyway
+	ld a, c
+	dec a
+	jr z, .check_money
+
+	; if we're left-aligning the number, don't print anything
+	bit PRINTNUM_LEFTALIGN_F, b
+	ret nz
+
+	; print a space
+	ld a, " "
+	jr .got_value
+
+.check_money
+	bit PRINTNUM_MONEY_F, b
+	jr z, .got_number
+	res PRINTNUM_MONEY_F, b
+	push af
+	ld a, "¥"
+	ld [hli], a
+	pop af
+
+.got_number
+	add "0"
+.got_value
+	ld [hli], a
+	ld a, [hPrintNum + 4]
+	and a
+	ret z
+	dec a
+	ld [hPrintNum + 4], a
+	ret nz
+	ld [hl], "."
+	inc hl
 	ret
