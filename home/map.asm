@@ -1324,6 +1324,7 @@ _LoadTileset2:
 	ld a, 1
 	ld [rVBK], a
 	ld hl, wTilesetGFX2Address
+	ld a, [wTilesetGFX2Bank]
 	ld de, VTiles4
 	jr _DoLoadTileset
 
@@ -1347,6 +1348,7 @@ _LoadTileset0:
 .load_roof
 	farcall LoadMapGroupRoof
 	ld hl, wTilesetGFX0Address
+	ld a, [wTilesetGFX0Bank]
 	ld de, VTiles2
 	ld c, $ff
 	call _DoLoadTileset0
@@ -1354,6 +1356,7 @@ _LoadTileset0:
 
 .skip_roof
 	ld hl, wTilesetGFX0Address
+	ld a, [wTilesetGFX0Bank]
 	ld de, VTiles2
 	ld c, $7f
 	call _DoLoadTileset0
@@ -1366,22 +1369,20 @@ _LoadTileset1:
 	ld a, 1
 	ld [rVBK], a
 	ld hl, wTilesetGFX1Address
+	ld a, [wTilesetGFX1Bank]
 	ld de, VTiles5
 	; fallthrough
 
 _DoLoadTileset:
 	ld c, $80
 _DoLoadTileset0:
-	ld a, [wTilesetGFXBank]
-	ld [hTilesetGFXBank], a
+	ld b, a
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
 	or h
 	ret z
 
-	ld a, [hTilesetGFXBank]
-	ld b, a
 	inc c
 	jr z, .special_load
 	dec c
