@@ -81,7 +81,7 @@ NamingScreen: ; 116c1
 	dw .Pokemon
 	dw .Player
 	dw .Rival
-	dw .wTrendyPhrase
+	dw .TrendyPhrase
 	dw .Box
 
 .Pokemon: ; 1173e (4:573e)
@@ -146,7 +146,7 @@ NamingScreen: ; 116c1
 ; 117ae
 
 .Rival: ; 117ae (4:57ae)
-	ld de, SilverSpriteGFX
+	ld hl, SilverSpriteGFX
 	lb bc, BANK(SilverSpriteGFX), SPRITE_ANIM_INDEX_RED_WALK
 	call .LoadSprite
 	hlcoord 5, 2
@@ -161,8 +161,8 @@ NamingScreen: ; 116c1
 
 ; 117d1
 
-.wTrendyPhrase:
-	ld de, ArtistSpriteGFX
+.TrendyPhrase:
+	ld hl, ArtistSpriteGFX
 	lb bc, BANK(ArtistSpriteGFX), SPRITE_ANIM_INDEX_BLUE_WALK
 	call .LoadSprite
 	hlcoord 5, 2
@@ -174,10 +174,10 @@ NamingScreen: ; 116c1
 	db "What's trendy?@"
 
 .Box: ; 117f5 (4:57f5)
-	ld de, BallCutFruitSpriteGFX
-	ld hl, VTiles0 tile $00
-	lb bc, BANK(BallCutFruitSpriteGFX), $4
-	call Request2bpp
+	ld de, VTiles0 tile $00
+	ld hl, BallCutFruitSpriteGFX
+	lb bc, BANK(BallCutFruitSpriteGFX), 4
+	call DecompressRequest2bpp
 	xor a
 	ld hl, wSpriteAnimDict
 	ld [hli], a
@@ -202,26 +202,18 @@ NamingScreen: ; 116c1
 
 .LoadSprite: ; 11847 (4:5847)
 	push bc
-	push de
-	ld hl, VTiles0 tile $00
-	ld c, $4
-	push bc
-	push de
-	call DecompressRequest2bpp_SwapDEHL
-	pop de
-	pop bc
-	ld hl, 12 tiles
-	add hl, de
-	ld e, l
-	ld d, h
+	ld de, VTiles0 tile $00
+	ld c, 4
+	call DecompressRequest2bpp
+	ld de, wDecompressScratch + 12 tiles
 	ld hl, VTiles0 tile $04
-	call Request2bpp
+	lb bc, BANK(wDecompressScratch), 4
+	call Request2bppInWRA6
+	pop bc
 	xor a
 	ld hl, wSpriteAnimDict
 	ld [hli], a
 	ld [hl], a
-	pop de
-	pop bc
 	ld a, c
 	depixel 4, 4, 4, 0
 	jp _InitSpriteAnimStruct

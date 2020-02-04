@@ -43,11 +43,6 @@ SafeCopyTilemapAtOnce::
 CopyTilemapAtOnce::
 	farjp _CopyTilemapAtOnce
 
-DecompressRequest2bpp_SwapDEHL::
-	push hl
-	ld h, d
-	ld l, e
-	pop de
 DecompressRequest2bpp::
 ; Decompress lz data from b:hl to scratch space at 6:d000, then copy c tiles to de.
 	push de
