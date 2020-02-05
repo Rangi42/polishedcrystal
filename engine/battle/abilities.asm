@@ -245,7 +245,6 @@ IntimidateAbility:
 
 DownloadAbility:
 ; Increase Atk if enemy Def is lower than SpDef, otherwise SpAtk
-	call ShowAbilityActivation
 	call DisableAnimations
 	ld hl, wEnemyMonDefense
 	ld a, [hBattleTurn]
