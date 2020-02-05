@@ -893,7 +893,8 @@ SpeedBoostAbility:
 StatUpAbility:
 	call HasUserFainted
 	ret z
-	ld a, STAT_SKIPTEXT | STAT_SILENT
+	call DisableAnimations
+	ld a, STAT_SILENT
 	farcall _ForceRaiseStat
 	ld a, [wFailedMessage]
 	and a
