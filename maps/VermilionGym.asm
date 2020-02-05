@@ -448,7 +448,7 @@ CheckVermilionGymTrashCan:
 	jr z, .done
 	dec a
 .done
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	pop af
 	ld [rSVBK], a
 	ret

@@ -1850,7 +1850,7 @@ Special_ChooseItem::
 
 .PickItem:
 	xor a ; ld a, FALSE
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 .loop
 	call DepositSellPack
 
@@ -1862,7 +1862,7 @@ Special_ChooseItem::
 	jr z, .next
 
 	ld a, TRUE
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	ret
 
 .next

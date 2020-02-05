@@ -27,7 +27,7 @@ FindItemInBallScript:: ; 0x122ce
 
 .TryReceiveItem: ; 122f8
 	xor a
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	ld a, [wCurItemBallContents]
 	ld [wNamedObjectIndexBuffer], a
 	call GetItemName
@@ -41,7 +41,7 @@ FindItemInBallScript:: ; 0x122ce
 	call ReceiveItem
 	ret nc
 	ld a, $1
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	ret
 ; 12324
 
@@ -63,7 +63,7 @@ FindKeyItemInBallScript::
 
 .ReceiveKeyItem:
 	xor a
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	ld a, [wCurItemBallContents]
 	inc a
 	ld [wNamedObjectIndexBuffer], a
@@ -74,7 +74,7 @@ FindKeyItemInBallScript::
 	ld [wCurKeyItem], a
 	call ReceiveKeyItem
 	ld a, $1
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	ret
 
 FindTMHMInBallScript::
@@ -95,7 +95,7 @@ FindTMHMInBallScript::
 
 .ReceiveTMHM:
 	xor a
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	ld a, [wCurItemBallContents]
 	ld [wNamedObjectIndexBuffer], a
 	call GetTMHMName
@@ -121,5 +121,5 @@ FindTMHMInBallScript::
 	ld [wCurTMHM], a
 	call ReceiveTMHM
 	ld a, $1
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	ret

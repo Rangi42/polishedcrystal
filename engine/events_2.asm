@@ -625,7 +625,7 @@ TreeItemEncounter:
 .gold_leaf
 	ld a, GOLD_LEAF
 .item
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	ret
 
 RockItemEncounter:
@@ -644,7 +644,7 @@ RockItemEncounter:
 	jr z, .done
 	ld a, [hl]
 .done
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	ret
 
 .RockItems:
@@ -682,12 +682,12 @@ TreeMonEncounter: ; b81ea
 	ld a, BATTLETYPE_TREE
 	ld [wBattleType], a
 	ld a, 1
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	ret
 
 .no_battle
 	xor a
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	ret
 ; b8219
 

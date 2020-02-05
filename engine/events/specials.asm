@@ -20,46 +20,46 @@ SpecialNone: ; c224
 ; c225
 
 Special_SetPlayerPalette: ; c225
-	ld a, [wScriptVar]
+	ld a, [hScriptVar]
 	ld d, a
 	farjp SetPlayerPalette
 ; c230
 
 Special_SetCopycatPalette:
-	ld a, [wScriptVar]
+	ld a, [hScriptVar]
 	ld d, a
 	farjp SetCopycatPalette
 
 Special_GameCornerPrizeMonCheckDex: ; c230
-	ld a, [wScriptVar]
+	ld a, [hScriptVar]
 	dec a
 	call CheckCaughtMon
 	ret nz
-	ld a, [wScriptVar]
+	ld a, [hScriptVar]
 	dec a
 	call SetSeenAndCaughtMon
 	call FadeToMenu
-	ld a, [wScriptVar]
+	ld a, [hScriptVar]
 	ld [wd265], a
 	farcall NewPokedexEntry
 	jp ExitAllMenus
 ; c252
 
 SpecialSeenMon: ; c252
-	ld a, [wScriptVar]
+	ld a, [hScriptVar]
 	dec a
 	jp SetSeenMon
 ; c25a
 
 Special_FindThatSpecies: ; c276
-	ld a, [wScriptVar]
+	ld a, [hScriptVar]
 	ld b, a
 	farcall _FindThatSpecies
 	jr z, FoundNone
 	jr FoundOne
 
 Special_FindThatSpeciesYourTrainerID: ; c284
-	ld a, [wScriptVar]
+	ld a, [hScriptVar]
 	ld b, a
 	farcall _FindThatSpeciesYourTrainerID
 	jr z, FoundNone
@@ -67,12 +67,12 @@ Special_FindThatSpeciesYourTrainerID: ; c284
 
 FoundOne: ; c292
 	ld a, TRUE
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	ret
 
 FoundNone: ; c298
 	xor a
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	ret
 ; c29d
 
@@ -120,17 +120,17 @@ Special_DisplayLinkRecord: ; c2da
 
 Special_KrissHousePC: ; c2e7
 	xor a
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	farcall _KrissHousePC
 	ld a, c
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	ret
 ; c2f6
 
 BugContestJudging: ; c34a
 	farcall _BugContestJudging
 	ld a, b
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	dec a
 	jr z, .firstplace
 	dec a
@@ -159,7 +159,7 @@ BugContestJudging: ; c34a
 ; c355
 
 MapRadio: ; c355
-	ld a, [wScriptVar]
+	ld a, [hScriptVar]
 	ld e, a
 	farjp PlayRadio
 ; c360
@@ -168,7 +168,7 @@ Special_UnownPuzzle: ; c360
 	call FadeToMenu
 	farcall UnownPuzzle
 	ld a, [wSolvedUnownPuzzle]
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	jp ExitAllMenus
 ; c373
 
@@ -251,16 +251,16 @@ Special_CheckCoins: ; c3ae
 ScriptReturnCarry: ; c3e2
 	jr c, .carry
 	xor a
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	ret
 .carry
 	ld a, 1
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	ret
 ; c3ef
 
 Special_ActivateFishingSwarm: ; c3fc
-	ld a, [wScriptVar]
+	ld a, [hScriptVar]
 	ld [wFishingSwarmFlag], a
 	ret
 ; c403
@@ -306,7 +306,7 @@ SpecialSnorlaxAwake: ; 0xc43d
 ; Check if the Poké Flute channel is playing.
 
 ; outputs:
-; wScriptVar is 1 if the conditions are met, otherwise 0.
+; hScriptVar is 1 if the conditions are met, otherwise 0.
 
 ; check background music
 	ld a, [wMapMusic]
@@ -317,7 +317,7 @@ SpecialSnorlaxAwake: ; 0xc43d
 .nope
 	xor a
 .done
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	ret
 
 PlayCurMonCry: ; c472
@@ -343,12 +343,12 @@ Diploma: ; c49f
 
 Special_GetOvercastIndex::
 	call GetOvercastIndex
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	ret
 
 CheckIfTrendyPhraseIsLucky:
 	xor a
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	ld hl, wTrendyPhrase
 	ld bc, .KeyPhrase
 	ld d, 6
@@ -362,7 +362,7 @@ CheckIfTrendyPhraseIsLucky:
 	dec d
 	jr nz, .loop
 	ld a, 1
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	ret
 
 .KeyPhrase:
@@ -535,13 +535,13 @@ BillBoxSwitchCheck:
 	ld a, c
 	jr nz, .billboxloop
 	xor a
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	ret
 
 .foundspace
 	pop af
 	dec a
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	ld [wEngineBuffer1], a
 	ret
 

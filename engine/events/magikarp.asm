@@ -52,22 +52,22 @@ Special_CheckMagikarpLength: ; fbb32
 	call SkipNames
 	rst CopyBytes
 	ld a, 3
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	ret
 
 .not_long_enough
 	ld a, 2
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	ret
 
 .declined
 	ld a, 1
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	ret
 
 .not_magikarp
 	xor a
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	ret
 ; fbba9
 

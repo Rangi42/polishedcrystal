@@ -1,5 +1,5 @@
 Special_MagnetTrain: ; 8cc04
-	ld a, [wScriptVar]
+	ld a, [hScriptVar]
 	and a
 	jr nz, .ToGoldenrod
 	ld a, 1 ; forwards

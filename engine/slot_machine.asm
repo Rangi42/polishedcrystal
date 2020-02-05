@@ -1483,7 +1483,7 @@ Slots_InitBias: ; 93002 (24:7002)
 	and a
 	ret z
 	ld hl, .Normal
-	ld a, [wScriptVar]
+	ld a, [hScriptVar]
 	and a
 	jr z, .okay
 	ld hl, .Lucky

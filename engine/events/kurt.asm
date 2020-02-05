@@ -34,7 +34,7 @@ Special_SelectApricornForKurt: ; 88018
 	ld [wMenuSelection], a
 	call Kurt_SelectApricorn
 	ld a, c
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	and a
 	jr z, .done
 	ld [wCurItem], a

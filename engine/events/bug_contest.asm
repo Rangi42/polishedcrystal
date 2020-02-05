@@ -15,12 +15,12 @@ ContestDropOffMons: ; 13a12
 ; ... and replacing it with the terminator byte
 	ld [hl], $ff
 	xor a
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	ret
 
 .fainted
 	ld a, $1
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	ret
 ; 13a31
 

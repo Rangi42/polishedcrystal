@@ -118,12 +118,12 @@ CheckForSurfingPikachu:
 	cp PIKACHU
 	jr nz, .no
 	ld a, TRUE
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	ret
 
 .no:
 	xor a ; FALSE
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	ret
 
 FieldMovePokepicScript:
@@ -261,7 +261,7 @@ Script_CutFromMenu: ; c7fe
 
 GetBuffer6:
 	ld a, [wBuffer6]
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	ret
 
 CutDownGrass: ; c810
@@ -815,12 +815,12 @@ Script_AutoWaterfall:
 
 .CheckContinueWaterfall: ; cb38
 	xor a
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	ld a, [wPlayerStandingTile]
 	cp COLL_WATERFALL
 	ret z
 	ld a, $1
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	ret
 
 .WaterfallStep: ; cb4f
@@ -1195,7 +1195,7 @@ TryStrengthOW: ; cd78
 	; fallthrough
 
 .done
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	ret
 
 WhirlpoolFunction: ; cd9d
@@ -1578,7 +1578,7 @@ HasRockSmash: ; cf7c
 	jr c, .done
 	xor a
 .done
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	ret
 
 FishFunction: ; cf8e
@@ -1789,7 +1789,7 @@ Fishing_CheckFacingUp: ; d06c
 	xor a
 
 .up
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	ret
 
 Script_FishCastRod: ; 0xd07c
@@ -1817,7 +1817,7 @@ PutTheRodAway: ; d095
 
 CurItemToScriptVar:
 	ld a, [wCurItem]
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	ret
 
 UnknownText_0xd0a4: ; 0xd0a4
@@ -1972,7 +1972,7 @@ HasCutAvailable:: ; d186
 .no
 	ld a, 1
 .done
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	ret
 
 AskCutTreeScript: ; 0xd1a9

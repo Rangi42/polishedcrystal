@@ -1,5 +1,7 @@
 HRAM_START         EQU $ff80
-hPushOAM           EQU $ff80 ; 10 bytes
+hPushOAM           EQU $ff80 ; 5 bytes
+
+hScriptVar         EQU $ff85
 
 hROMBankBackup     EQU $ff8a
 hBuffer            EQU $ff8b
@@ -67,11 +69,6 @@ hProduct           EQU $ffb3 ; result (4 bytes long)
 hPrintNum          EQU $ffb3 ; used by PrintNum (5 bytes)
 
 hMathBuffer        EQU $ffb8
-
-hTilesetPalettesHigh   EQU $ffb3
-
-hMetatileCountWidth    EQU $ffb3
-hMetatileCountHeight   EQU $ffb4
 
 
 hUsedSpriteIndex   EQU $ffbd

@@ -35,7 +35,7 @@ Gen2ToGen2LinkComms: ; 28177
 	call Link_PrepPartyData_Gen2
 	call FixDataForLinkTransfer
 	call Function29dba
-	ld a, [wScriptVar]
+	ld a, [hScriptVar]
 	and a
 	jp z, LinkTimeout
 	ld a, [hSerialConnectionStatus]
@@ -1993,12 +1993,12 @@ Special_WaitForLinkedFriend: ; 29d11
 	ld c, $32
 	call DelayFrames
 	ld a, $1
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	ret
 
 .done
 	xor a
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	ret
 ; 29d92
 
@@ -2018,7 +2018,7 @@ Special_CheckLinkTimeout: ; 29d92
 	call Link_CheckCommunicationError
 	xor a
 	ld [hVBlank], a
-	ld a, [wScriptVar]
+	ld a, [hScriptVar]
 	and a
 	ret nz
 	jp Link_ResetSerialRegistersAfterLinkClosure
@@ -2038,7 +2038,7 @@ Function29dba: ; 29dba
 	call DelayFrame
 	call DelayFrame
 	call Link_CheckCommunicationError
-	ld a, [wScriptVar]
+	ld a, [hScriptVar]
 	and a
 	jr z, .vblank
 	ld bc, -1
@@ -2063,7 +2063,7 @@ Function29dba: ; 29dba
 
 .script_var
 	xor a
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	ret
 
 .vblank
@@ -2095,7 +2095,7 @@ Link_CheckCommunicationError: ; 29e0c
 	ld a, $1
 
 .load_scriptvar
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	ld hl, wLinkTimeoutFrames
 	xor a
 	ld [hli], a
@@ -2146,7 +2146,7 @@ Special_TryQuickSave: ; 29e66
 	jr nc, .return_result
 	xor a
 .return_result
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	pop af
 	ld [wd265], a
 	ret
@@ -2170,12 +2170,12 @@ Special_CheckBothSelectedSameRoom: ; 29e82
 	xor a
 	ld [hVBlank], a
 	ld a, $1
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	ret
 
 .fail
 	xor a
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	ret
 ; 29eaf
 
@@ -2261,7 +2261,7 @@ Special_CableClubCheckWhichChris: ; 29f47
 	dec a
 
 .yes
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	ret
 ; 29f54
 

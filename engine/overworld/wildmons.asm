@@ -1077,12 +1077,12 @@ RandomPhoneRareWildMon: ; 2a4ab
 	ld hl, .SawRareMonText
 	call PrintText
 	xor a
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	ret
 
 .done
 	ld a, $1
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	ret
 
 .SawRareMonText:

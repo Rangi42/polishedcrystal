@@ -35,5 +35,5 @@ AlreadyBeatenTrainerScript:
 
 CheckTrainerClass:
 	ld a, [wTempTrainerClass]
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	ret

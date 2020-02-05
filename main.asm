@@ -1184,7 +1184,7 @@ Special_MoveTutor: ; 4925b
 	call GetCGBLayout
 	xor a
 	ld [wItemAttributeParamBuffer], a
-	ld a, [wScriptVar]
+	ld a, [hScriptVar]
 	and a
 	ld [wPutativeTMHMMove], a
 	jr z, .relearner
@@ -1208,7 +1208,7 @@ Special_MoveTutor: ; 4925b
 .cancel
 	ld a, -1
 .quit
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	jp CloseSubmenu
 
 CheckCanLearnMoveTutorMove: ; 492b9
@@ -1298,7 +1298,7 @@ AskRememberPassword: ; 4ae12
 	ld a, $1
 
 .okay
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	ret
 
 .DoMenu: ; 4ae1f
@@ -1622,7 +1622,7 @@ CheckPokerus: ; 4d860
 
 Special_CheckForLuckyNumberWinners: ; 4d87a
 	xor a
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	ld [wFoundMatchingIDInParty], a
 	ld a, [wPartyCount]
 	and a
@@ -1703,7 +1703,7 @@ Special_CheckForLuckyNumberWinners: ; 4d87a
 	pop hl
 	jr nz, .SkipBoxMon
 
-	call .CompareLuckyNumberToMonID ; sets wScriptVar and wCurPartySpecies appropriately
+	call .CompareLuckyNumberToMonID ; sets hScriptVar and wCurPartySpecies appropriately
 	jr nc, .SkipBoxMon
 	ld a, 1
 	ld [wFoundMatchingIDInParty], a
@@ -1722,7 +1722,7 @@ Special_CheckForLuckyNumberWinners: ; 4d87a
 	jr c, .BoxesLoop
 
 	call CloseSRAM
-	ld a, [wScriptVar]
+	ld a, [hScriptVar]
 	and a
 	ret z ; found nothing
 	ld a, [wFoundMatchingIDInParty]
@@ -1790,7 +1790,7 @@ Special_CheckForLuckyNumberWinners: ; 4d87a
 
 .okay
 	inc b
-	ld a, [wScriptVar]
+	ld a, [hScriptVar]
 	and a
 	jr z, .bettermatch
 	cp b
@@ -1799,7 +1799,7 @@ Special_CheckForLuckyNumberWinners: ; 4d87a
 .bettermatch
 	dec b
 	ld a, b
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	pop bc
 	ld a, b
 	ld [wCurPartySpecies], a
@@ -1931,7 +1931,7 @@ CheckPartyFullAfterContest: ; 4d9e5
 	xor a
 	ld [wContestMon], a
 	and a
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	ret
 
 .TryAddToBox: ; 4daa3
@@ -1991,12 +1991,12 @@ CheckPartyFullAfterContest: ; 4d9e5
 	xor a
 	ld [wContestMon], a
 	ld a, $1
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	ret
 
 .DidntCatchAnything: ; 4db35
 	ld a, $2
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	ret
 
 GiveANickname_YesNo: ; 4db3b

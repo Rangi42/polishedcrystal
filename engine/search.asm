@@ -1,97 +1,97 @@
 SpecialBeastsCheck: ; 0x4a6e8
 ; Check if the player owns all three legendary beasts.
 ; They must exist in either party or PC, and have the player's OT and ID.
-; Return the result in wScriptVar.
+; Return the result in hScriptVar.
 
 	ld a, RAIKOU
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	call CheckOwnMonAnywhere
 	jr nc, SpecialMonCheckFailed
 
 	ld a, ENTEI
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	call CheckOwnMonAnywhere
 	jr nc, SpecialMonCheckFailed
 
 	ld a, SUICUNE
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	call CheckOwnMonAnywhere
 	jr nc, SpecialMonCheckFailed
 
 	; they exist
 	ld a, 1
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	ret
 
 
 SpecialBirdsCheck:
 ; Check if the player owns all three legendary birds.
 ; They must exist in either party or PC, and have the player's OT and ID.
-; Return the result in wScriptVar.
+; Return the result in hScriptVar.
 
 	ld a, ARTICUNO
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	call CheckOwnMonAnywhere
 	jr nc, SpecialMonCheckFailed
 
 	ld a, ZAPDOS
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	call CheckOwnMonAnywhere
 	jr nc, SpecialMonCheckFailed
 
 	ld a, MOLTRES
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	call CheckOwnMonAnywhere
 	jr nc, SpecialMonCheckFailed
 
 	; they exist
 	ld a, 1
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	ret
 
 
 SpecialDuoCheck:
 ; Check if the player owns Lugia and Ho-Oh.
 ; They must exist in either party or PC, and have the player's OT and ID.
-; Return the result in wScriptVar.
+; Return the result in hScriptVar.
 
 	ld a, LUGIA
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	call CheckOwnMonAnywhere
 	jr nc, SpecialMonCheckFailed
 
 	ld a, HO_OH
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	call CheckOwnMonAnywhere
 	jr nc, SpecialMonCheckFailed
 
 	; they exist
 	ld a, 1
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	ret
 
 
 SpecialMonCheck: ; 0x4a711
-; Check if the player owns any monsters of the species in wScriptVar.
-; Return the result in wScriptVar.
+; Check if the player owns any monsters of the species in hScriptVar.
+; Return the result in hScriptVar.
 
 	call CheckOwnMonAnywhere
 	jr nc, SpecialMonCheckFailed
 
 	; they exist
 	ld a, 1
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	ret
 
 
 SpecialMonCheckFailed:
 	xor a
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	ret
 
 
 CheckOwnMonAnywhere: ; 0x4a721
-; Check if the player owns any monsters of the species in wScriptVar.
+; Check if the player owns any monsters of the species in hScriptVar.
 ; It must exist in either party or PC, and have the player's OT and ID.
 
 	; If there are no monsters in the party,
@@ -226,7 +226,7 @@ CheckOwnMon: ; 0x4a7ba
 ; inputs:
 ; hl, pointer to PartyMonNSpecies
 ; bc, pointer to PartyMonNOT
-; wScriptVar should contain the species we're looking for
+; hScriptVar should contain the species we're looking for
 
 ; outputs:
 ; sets carry if monster matches species, ID, and OT name.
@@ -238,7 +238,7 @@ CheckOwnMon: ; 0x4a7ba
 	ld e, c
 
 ; check species
-	ld a, [wScriptVar] ; species we're looking for
+	ld a, [hScriptVar] ; species we're looking for
 	ld b, [hl] ; species we have
 	cp b
 	jr nz, .notfound ; species doesn't match

@@ -132,7 +132,7 @@ rept NUM_APRICORNS +- 1
 	inc hl
 	or [hl]
 endr
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	ret
 
 .AskApricorn:

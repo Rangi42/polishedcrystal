@@ -272,12 +272,12 @@ CheckCaughtCelebi: ; 49bf9
 	bit 6, a
 	jr z, .false
 	ld a, $1
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	ret
 
 .false
 	xor a
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	ret
 
 ; 49c0c

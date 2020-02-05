@@ -143,7 +143,7 @@ wLinkMode::
 ; 4 mobile battle
 	ds 1
 
-wScriptVar:: ds 1
+	ds 1 ; unused
 
 wPlayerNextMovement:: ds 1
 wPlayerMovement:: ds 1

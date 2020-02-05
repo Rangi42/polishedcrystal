@@ -80,7 +80,7 @@ InitializeHiddenGrotto::
 	ld a, d
 .Done:
 ; return content type
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	ret
 
 INCLUDE "data/events/hidden_grottoes/probabilities.asm"
@@ -136,7 +136,7 @@ GetHiddenGrottoContents::
 	call GetHiddenGrottoContentPointer
 	inc hl
 	ld a, [hl]
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	ret
 
 GetCurHiddenGrottoLevel::

@@ -82,7 +82,7 @@ SpecialKabutoChamber: ; 8ae4e
 ; 8ae68
 
 Special_DisplayUnownWords: ; 8ae68
-	ld a, [wScriptVar]
+	ld a, [hScriptVar]
 	ld hl, UnownWallMenuDataHeaders
 	and a
 	jr z, .load
@@ -105,7 +105,7 @@ Special_DisplayUnownWords: ; 8ae68
 	ld de, $14
 	add hl, de
 	add hl, de
-	ld a, [wScriptVar]
+	ld a, [hScriptVar]
 	ld c, a
 	ld de, UnownWallWords
 	and a

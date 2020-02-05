@@ -18,7 +18,7 @@ GetFirstPokemonHappiness:
 	add hl, bc
 	ld [wd265], a
 	ld a, [hl]
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	call GetPokemonName
 	jp CopyPokemonName_Buffer1_Buffer3
 
@@ -32,7 +32,7 @@ CheckFirstMonIsEgg: ; 71ac
 	xor a
 
 .egg
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	call GetPokemonName
 	jp CopyPokemonName_Buffer1_Buffer3
 

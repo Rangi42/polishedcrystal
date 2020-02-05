@@ -331,7 +331,7 @@ Text_ConfirmBattleRoomLevel:
 
 	para "Battle Room at"
 	line "<LV>@"
-	deciram wScriptVar, 1, 2
+	deciram hScriptVar, 1, 2
 	text "0. Is that OK?"
 	done
 

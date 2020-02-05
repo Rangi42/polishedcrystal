@@ -447,14 +447,14 @@ Special_DayCareManOutside: ; 16936
 .Load0:
 	call PrintText
 	xor a
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	ret
 
 .PartyFull:
 	ld hl, .PartyFullText
 	call PrintText
 	ld a, $1
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	ret
 ; 16993
 

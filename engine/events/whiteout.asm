@@ -137,7 +137,7 @@ LoseMoney: ; 12513
 	farcall TakeMoney
 	ld a, 1
 .load
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	ret
 
 .copy
@@ -167,7 +167,7 @@ DetermineWildBattlePanic:
 	ld hl, wWildBattlePanic
 	ld a, [hl]
 	and $1
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	xor a
 	ld [hl], a
 	ret

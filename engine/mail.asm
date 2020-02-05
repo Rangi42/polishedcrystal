@@ -188,7 +188,7 @@ CheckPokeItem:: ; 44654
 	pop bc
 
 .return
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	ret
 ; 446cc
 

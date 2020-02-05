@@ -10,11 +10,9 @@ WriteOAMDMACodeToHRAM::
 	ret
 
 .PushOAM:
-	ld a, HIGH(wSprites)
-	ld [rDMA], a
-	ld a, (wSpritesEnd - wSprites) / 4
+	ld [c], a
 .pushoam_loop
-	dec a
+	dec b
 	jr nz, .pushoam_loop
 	ret
 .PushOAMEnd

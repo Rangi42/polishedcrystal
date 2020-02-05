@@ -1,5 +1,5 @@
 PlaySlowCry: ; fb841
-	ld a, [wScriptVar]
+	ld a, [hScriptVar]
 PlaySlowCryA:
 	call LoadCryHeader
 	ret c

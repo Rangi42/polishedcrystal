@@ -73,12 +73,12 @@ endr
 	call CopyName2
 
 	ld a, TRUE
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	ret
 
 .NotGiven:
 	xor a ; ld a, FALSE
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	ret
 
 .OT:
@@ -139,12 +139,12 @@ SpecialGiveShuckie: ; 7305
 	ld hl, wDailyFlags
 	set 5, [hl] ; ENGINE_SHUCKIE_GIVEN
 	ld a, TRUE
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	ret
 
 .NotGiven:
 	xor a ; ld a, FALSE
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	ret
 
 _GetLastPartyMonAttribute:
@@ -206,22 +206,22 @@ SpecialReturnShuckie: ; 737e
 	farcall RemoveMonFromPartyOrBox
 	ld a, $2
 .HappyToStayWithYou:
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	ret
 
 .refused
 	ld a, $1
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	ret
 
 .DontReturn:
 	xor a
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	ret
 
 .fainted
 	ld a, $4
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	ret
 
 SpecialShuckieOT:
@@ -233,14 +233,14 @@ Special_BillsGrandfather: ; 73f7
 	farcall SelectMonFromParty
 	jr c, .cancel
 	ld a, [wCurPartySpecies]
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	ld [wNamedObjectIndexBuffer], a
 	call GetPokemonName
 	jp CopyPokemonName_Buffer1_Buffer3
 
 .cancel
 	xor a
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	ret
 
 Special_HiddenPowerGuru:
@@ -262,7 +262,7 @@ Special_HiddenPowerGuru:
 	farcall GetTypeName
 	ld a, $2
 .done
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	ret
 
 .cancel
@@ -319,18 +319,18 @@ MassageOrHaircut: ; 7420
 .ok
 	inc hl
 	ld a, [hli]
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	ld c, [hl]
 	jp ChangeHappiness
 
 .nope
 	xor a
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	ret
 
 .egg
 	ld a, 1
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	ret
 
 INCLUDE "data/events/happiness_probabilities.asm"

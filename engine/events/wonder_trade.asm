@@ -1,6 +1,6 @@
 WonderTrade::
 	xor a
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 
 	ld hl, .Text_WonderTradeQuestion
 	call PrintText
@@ -70,7 +70,7 @@ WonderTrade::
 
 DoWonderTrade:
 	ld a, 1
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 
 	ld a, [wCurPartySpecies]
 	ld [wPlayerTrademonSpecies], a
@@ -343,7 +343,7 @@ endr
 
 GetGSBallPichu:
 	ld a, 2
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 
 	ld a, PICHU
 	ld [wOTTrademonSpecies], a

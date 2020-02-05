@@ -67,7 +67,7 @@ CheckWildEncountersScriptFlag: ; 9671e
 
 StartMap: ; 96724
 	xor a
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	xor a
 	ld [wScriptRunning], a
 	ld hl, wMapStatus
@@ -543,7 +543,7 @@ TryObjectEvent: ; 969b5
 	ld hl, MAPOBJECT_RANGE
 	add hl, bc
 	ld a, [hli]
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	ld de, wTemporaryScriptBuffer
 	ld a, showcrytext_command
 	ld [de], a

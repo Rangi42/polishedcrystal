@@ -39,7 +39,7 @@ BattleTowerHallwayTrigger0:
 	ld a, BANK(wBTChoiceOfLvlGroup)
 	ld [rSVBK], a
 	ld a, [wBTChoiceOfLvlGroup]
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 
 	pop af
 	ld [rSVBK], a

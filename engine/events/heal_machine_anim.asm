@@ -3,11 +3,11 @@ HealMachineAnim: ; 12324
 	ld a, [wPartyCount]
 	and a
 	ret z
-	; The location of the healing machine relative to the player is stored in wScriptVar.
+	; The location of the healing machine relative to the player is stored in hScriptVar.
 	; 0: Up and left (Pokemon Center)
 	; 1: Left (Elm's Lab)
 	; 2: Up (Hall of Fame)
-	ld a, [wScriptVar]
+	ld a, [hScriptVar]
 	ld [wBuffer1], a
 	ld a, [rOBP1]
 	ld [wBuffer2], a

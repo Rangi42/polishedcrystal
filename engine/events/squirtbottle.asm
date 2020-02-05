@@ -41,11 +41,11 @@ _Squirtbottle: ; 50730
 	jr nz, .nope
 
 	ld a, $1
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	ret
 
 .nope
 	xor a
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	ret
 ; 50779

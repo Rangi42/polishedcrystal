@@ -24,7 +24,7 @@ SpecialBuenasPassword: ; 8af6b
 
 .wrong
 	ld a, b
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	ret
 ; 8afa9
 

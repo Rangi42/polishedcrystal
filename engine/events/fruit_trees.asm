@@ -95,7 +95,7 @@ PickApricornScript:
 	jumpopenedtext FruitPackIsFullText
 
 .get_name:
-	ld a, [wScriptVar]
+	ld a, [hScriptVar]
 	ld [wd265], a
 	call GetApricornName
 	ld de, wStringBuffer1
@@ -121,7 +121,7 @@ CheckFruitTree: ; 44055
 	ld b, CHECK_FLAG
 	call GetFruitTreeFlag
 	ld a, c
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	ret
 ; 4405f
 
@@ -150,7 +150,7 @@ GetFruitTreeCount:
 	ld a, 3
 	call RandomRange
 	inc a
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	ret
 
 FruitBearingTreeText: ; 440b5

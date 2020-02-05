@@ -34,7 +34,7 @@ Special_BattleTower_FindChallengeLevel: ; 1700b0
 	ld [rSVBK], a
 	ld a, b
 	ld [wBTChoiceOfLvlGroup], a
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	pop af
 	ld [rSVBK], a
 	ret
@@ -94,7 +94,7 @@ RunBattleTowerTrainer: ; 17024d
 	farcall LoadPokemonData
 	farcall HealPartyEvenForNuzlocke
 	ld a, [wBattleResult]
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	and a
 	jr nz, .lost
 	ld a, BANK(sNrOfBeatenBattleTowerTrainers)
@@ -211,7 +211,7 @@ Special_BattleTower_ResetTrainersSRAM: ; 1706d6 (5c:46d6)
 
 Special_BattleTower_CheckNewSaveFile: ; 17075f (5c:475f)
 	call Special_BattleTower_CheckSaveFileExistsAndIsYours
-	ld a, [wScriptVar]
+	ld a, [hScriptVar]
 	and a
 	ret z
 
@@ -219,7 +219,7 @@ Special_BattleTower_CheckNewSaveFile: ; 17075f (5c:475f)
 	call GetSRAMBank
 	ld a, [sBattleTowerNewSaveFile]
 	and $2
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	jp CloseSRAM
 
 Special_BattleTower_GetChallengeState: ; 170778 (5c:4778)
@@ -227,11 +227,11 @@ Special_BattleTower_GetChallengeState: ; 170778 (5c:4778)
 	ld a, BANK(sBattleTowerChallengeState)
 	call GetSRAMBank
 	ld a, [hl]
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	jp CloseSRAM
 
 Special_BattleTower_SetChallengeState:
-	ld a, [wScriptVar]
+	ld a, [hScriptVar]
 	ld c, a
 	ld a, BANK(sBattleTowerChallengeState)
 	call GetSRAMBank
@@ -284,7 +284,7 @@ Special_BattleTower_CheckSaveFileExistsAndIsYours: ; 17089a
 .yes
 	ld a, $1
 .nope
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	ret
 ; 1708b1
 
@@ -339,13 +339,13 @@ Special_BattleTower_CheckForRules: ; 170bd3
 .yes
 	ld a, 1
 .done
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	ret
 ; 170c06
 
 Special_BattleTower_MainMenu: ; 17d224
 	ld a, $4
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	ld hl, MenuDataHeader_ChallengeExplanationCancel
 	call LoadMenuDataHeader
 	call ChallengeExplanationCancelMenu
@@ -355,7 +355,7 @@ Special_BattleTower_MainMenu: ; 17d224
 ChallengeExplanationCancelMenu: ; 17d246
 	call VerticalMenu
 	jr c, .Exit
-	ld a, [wScriptVar]
+	ld a, [hScriptVar]
 	cp $5
 	jr nz, .UsewMenuCursorY
 	ld a, [wMenuCursorY]
@@ -369,12 +369,12 @@ ChallengeExplanationCancelMenu: ; 17d246
 	ld a, [wMenuCursorY]
 
 .LoadToScriptVar:
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	ret
 
 .Exit:
 	ld a, $4
-	ld [wScriptVar], a
+	ld [hScriptVar], a
 	ret
 ; 17d26a
 
