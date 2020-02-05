@@ -3474,14 +3474,7 @@ BattleCommand_ragedamage:
 
 DittoMetalPowder: ; 352b1
 	ld a, MON_SPECIES
-	call UserPartyAttr
-	ld a, [hBattleTurn]
-	and a
-	ld a, [hl]
-	jr nz, .continue
-	ld a, [wTempEnemyMonSpecies]
-
-.continue:
+	call OpponentPartyAttr
 	cp DITTO
 	ret nz
 
@@ -3513,14 +3506,8 @@ DittoMetalPowder: ; 352b1
 
 UnevolvedEviolite:
 	ld a, MON_SPECIES
-	call UserPartyAttr
-	ld a, [hBattleTurn]
-	and a
-	ld a, [hl]
-	jr nz, .continue
-	ld a, [wTempEnemyMonSpecies]
+	call OpponentPartyAttr
 
-.continue:
 	dec a
 	push hl
 	push bc
