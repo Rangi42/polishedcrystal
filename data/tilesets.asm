@@ -9,9 +9,6 @@ INCBIN "gfx/tilesets/johto_traditional.2bpp.vram0.lz"
 TilesetJohto1GFX1::
 INCBIN "gfx/tilesets/johto_traditional.2bpp.vram1.lz"
 
-TilesetJohto1GFX2::
-	db $ff
-
 TilesetJohto1Meta::
 INCBIN "data/tilesets/johto_traditional_metatiles.bin.lz"
 
@@ -29,9 +26,6 @@ INCBIN "gfx/tilesets/johto_modern.2bpp.vram0.lz"
 
 TilesetJohto2GFX1::
 INCBIN "gfx/tilesets/johto_modern.2bpp.vram1.lz"
-
-TilesetJohto2GFX2::
-	db $ff
 
 TilesetJohto2Meta::
 INCBIN "data/tilesets/johto_modern_metatiles.bin.lz"
@@ -51,9 +45,6 @@ INCBIN "gfx/tilesets/battle_tower_outside.2bpp.vram0.lz"
 TilesetJohto3GFX1::
 INCBIN "gfx/tilesets/battle_tower_outside.2bpp.vram1.lz"
 
-TilesetJohto3GFX2::
-	db $ff
-
 TilesetJohto3Meta::
 INCBIN "data/tilesets/battle_tower_outside_metatiles.bin.lz"
 
@@ -71,9 +62,6 @@ INCBIN "gfx/tilesets/johto_overcast.2bpp.vram0.lz"
 
 TilesetJohto4GFX1::
 INCBIN "gfx/tilesets/johto_overcast.2bpp.vram1.lz"
-
-TilesetJohto4GFX2::
-	db $ff
 
 TilesetJohto4Meta::
 INCBIN "data/tilesets/johto_overcast_metatiles.bin.lz"
@@ -93,9 +81,6 @@ INCBIN "gfx/tilesets/kanto.2bpp.vram0.lz"
 TilesetKanto1GFX1::
 INCBIN "gfx/tilesets/kanto.2bpp.vram1.lz"
 
-TilesetKanto1GFX2::
-	db $ff
-
 TilesetKanto1Meta::
 INCBIN "data/tilesets/kanto_metatiles.bin.lz"
 
@@ -113,9 +98,6 @@ INCBIN "gfx/tilesets/indigo_plateau.2bpp.vram0.lz"
 
 TilesetKanto2GFX1::
 INCBIN "gfx/tilesets/indigo_plateau.2bpp.vram1.lz"
-
-TilesetKanto2GFX2::
-	db $ff
 
 TilesetKanto2Meta::
 INCBIN "data/tilesets/indigo_plateau_metatiles.bin.lz"
@@ -135,9 +117,6 @@ INCBIN "gfx/tilesets/shamouti_island.2bpp.vram0.lz"
 TilesetShamoutiGFX1::
 INCBIN "gfx/tilesets/shamouti_island.2bpp.vram1.lz"
 
-TilesetShamoutiGFX2::
-	db $ff
-
 TilesetShamoutiMeta::
 INCBIN "data/tilesets/shamouti_island_metatiles.bin.lz"
 
@@ -155,9 +134,6 @@ INCBIN "gfx/tilesets/valencia_island.2bpp.vram0.lz"
 
 TilesetValenciaGFX1::
 INCBIN "gfx/tilesets/valencia_island.2bpp.vram1.lz"
-
-TilesetValenciaGFX2::
-	db $ff
 
 TilesetValenciaMeta::
 INCBIN "data/tilesets/valencia_island_metatiles.bin.lz"
@@ -177,9 +153,6 @@ INCBIN "gfx/tilesets/faraway_island.2bpp.vram0.lz"
 TilesetFarawayGFX1::
 INCBIN "gfx/tilesets/faraway_island.2bpp.vram1.lz"
 
-TilesetFarawayGFX2::
-	db $ff
-
 TilesetFarawayMeta::
 INCBIN "data/tilesets/faraway_island_metatiles.bin.lz"
 
@@ -197,9 +170,6 @@ INCBIN "gfx/tilesets/johto_house.2bpp.vram0.lz"
 
 TilesetHouse1GFX1::
 INCBIN "gfx/tilesets/johto_house.2bpp.vram1.lz"
-
-TilesetHouse1GFX2::
-	db $ff
 
 TilesetHouse1Meta::
 INCBIN "data/tilesets/johto_house_metatiles.bin.lz"
@@ -219,9 +189,6 @@ INCBIN "gfx/tilesets/kanto_house.2bpp.vram0.lz"
 TilesetHouse2GFX1::
 INCBIN "gfx/tilesets/kanto_house.2bpp.vram1.lz"
 
-TilesetHouse2GFX2::
-	db $ff
-
 TilesetHouse2Meta::
 INCBIN "data/tilesets/kanto_house_metatiles.bin.lz"
 
@@ -239,9 +206,6 @@ INCBIN "gfx/tilesets/traditional_house.2bpp.vram0.lz"
 
 TilesetHouse3GFX1::
 INCBIN "gfx/tilesets/traditional_house.2bpp.vram1.lz"
-
-TilesetHouse3GFX2::
-	db $ff
 
 TilesetHouse3Meta::
 INCBIN "data/tilesets/traditional_house_metatiles.bin.lz"
@@ -261,9 +225,6 @@ INCBIN "gfx/tilesets/pokecenter.2bpp.vram0.lz"
 TilesetPokeCenterGFX1::
 INCBIN "gfx/tilesets/pokecenter.2bpp.vram1.lz"
 
-TilesetPokeCenterGFX2::
-	db $ff
-
 TilesetPokeCenterMeta::
 INCBIN "data/tilesets/pokecenter_metatiles.bin.lz"
 
@@ -281,9 +242,6 @@ INCBIN "gfx/tilesets/pokecom_center.2bpp.vram0.lz"
 
 TilesetPokeComGFX1::
 INCBIN "gfx/tilesets/pokecom_center.2bpp.vram1.lz"
-
-TilesetPokeComGFX2::
-	db $ff
 
 TilesetPokeComMeta::
 INCBIN "data/tilesets/pokecom_center_metatiles.bin.lz"
@@ -303,9 +261,6 @@ INCBIN "gfx/tilesets/mart.2bpp.vram0.lz"
 TilesetMartGFX1::
 INCBIN "gfx/tilesets/mart.2bpp.vram1.lz"
 
-TilesetMartGFX2::
-	db $ff
-
 TilesetMartMeta::
 INCBIN "data/tilesets/mart_metatiles.bin.lz"
 
@@ -323,9 +278,6 @@ INCBIN "gfx/tilesets/gate.2bpp.vram0.lz"
 
 TilesetGateGFX1::
 INCBIN "gfx/tilesets/gate.2bpp.vram1.lz"
-
-TilesetGateGFX2::
-	db $ff
 
 TilesetGateMeta::
 INCBIN "data/tilesets/gate_metatiles.bin.lz"
@@ -345,9 +297,6 @@ INCBIN "gfx/tilesets/gym.2bpp.vram0.lz"
 TilesetGym1GFX1::
 INCBIN "gfx/tilesets/gym.2bpp.vram1.lz"
 
-TilesetGym1GFX2::
-	db $ff
-
 TilesetGym1Meta::
 INCBIN "data/tilesets/gym_metatiles.bin.lz"
 
@@ -365,9 +314,6 @@ INCBIN "gfx/tilesets/magnet_train.2bpp.vram0.lz"
 
 TilesetGym2GFX1::
 INCBIN "gfx/tilesets/magnet_train.2bpp.vram1.lz"
-
-TilesetGym2GFX2::
-	db $ff
 
 TilesetGym2Meta::
 INCBIN "data/tilesets/magnet_train_metatiles.bin.lz"
@@ -387,9 +333,6 @@ INCBIN "gfx/tilesets/champions_room.2bpp.vram0.lz"
 TilesetGym3GFX1::
 INCBIN "gfx/tilesets/champions_room.2bpp.vram1.lz"
 
-TilesetGym3GFX2::
-	db $ff
-
 TilesetGym3Meta::
 INCBIN "data/tilesets/champions_room_metatiles.bin.lz"
 
@@ -407,9 +350,6 @@ INCBIN "gfx/tilesets/port.2bpp.vram0.lz"
 
 TilesetPortGFX1::
 INCBIN "gfx/tilesets/port.2bpp.vram1.lz"
-
-TilesetPortGFX2::
-	db $ff
 
 TilesetPortMeta::
 INCBIN "data/tilesets/port_metatiles.bin.lz"
@@ -429,9 +369,6 @@ INCBIN "gfx/tilesets/lab.2bpp.vram0.lz"
 TilesetLabGFX1::
 INCBIN "gfx/tilesets/lab.2bpp.vram1.lz"
 
-TilesetLabGFX2::
-	db $ff
-
 TilesetLabMeta::
 INCBIN "data/tilesets/lab_metatiles.bin.lz"
 
@@ -449,9 +386,6 @@ INCBIN "gfx/tilesets/facility.2bpp.vram0.lz"
 
 TilesetFacilityGFX1::
 INCBIN "gfx/tilesets/facility.2bpp.vram1.lz"
-
-TilesetFacilityGFX2::
-	db $ff
 
 TilesetFacilityMeta::
 INCBIN "data/tilesets/facility_metatiles.bin.lz"
@@ -471,9 +405,6 @@ INCBIN "gfx/tilesets/celadon_mansion.2bpp.vram0.lz"
 TilesetMansionGFX1::
 INCBIN "gfx/tilesets/celadon_mansion.2bpp.vram1.lz"
 
-TilesetMansionGFX2::
-	db $ff
-
 TilesetMansionMeta::
 INCBIN "data/tilesets/celadon_mansion_metatiles.bin.lz"
 
@@ -491,9 +422,6 @@ INCBIN "gfx/tilesets/game_corner.2bpp.vram0.lz"
 
 TilesetGameCornerGFX1::
 INCBIN "gfx/tilesets/game_corner.2bpp.vram1.lz"
-
-TilesetGameCornerGFX2::
-	db $ff
 
 TilesetGameCornerMeta::
 INCBIN "data/tilesets/game_corner_metatiles.bin.lz"
@@ -513,9 +441,6 @@ INCBIN "gfx/tilesets/home_decor_store.2bpp.vram0.lz"
 TilesetDecorGFX1::
 INCBIN "gfx/tilesets/home_decor_store.2bpp.vram1.lz"
 
-TilesetDecorGFX2::
-	db $ff
-
 TilesetDecorMeta::
 INCBIN "data/tilesets/home_decor_store_metatiles.bin.lz"
 
@@ -533,9 +458,6 @@ INCBIN "gfx/tilesets/museum.2bpp.vram0.lz"
 
 TilesetMuseumGFX1::
 INCBIN "gfx/tilesets/museum.2bpp.vram1.lz"
-
-TilesetMuseumGFX2::
-	db $ff
 
 TilesetMuseumMeta::
 INCBIN "data/tilesets/museum_metatiles.bin.lz"
@@ -555,9 +477,6 @@ INCBIN "gfx/tilesets/hotel.2bpp.vram0.lz"
 TilesetHotelGFX1::
 INCBIN "gfx/tilesets/hotel.2bpp.vram1.lz"
 
-TilesetHotelGFX2::
-	db $ff
-
 TilesetHotelMeta::
 INCBIN "data/tilesets/hotel_metatiles.bin.lz"
 
@@ -575,9 +494,6 @@ INCBIN "gfx/tilesets/sprout_tower.2bpp.vram0.lz"
 
 TilesetTowerGFX1::
 INCBIN "gfx/tilesets/sprout_tower.2bpp.vram1.lz"
-
-TilesetTowerGFX2::
-	db $ff
 
 TilesetTowerMeta::
 INCBIN "data/tilesets/sprout_tower_metatiles.bin.lz"
@@ -597,9 +513,6 @@ INCBIN "gfx/tilesets/battle_tower_inside.2bpp.vram0.lz"
 TilesetBattleTowerGFX1::
 INCBIN "gfx/tilesets/battle_tower_inside.2bpp.vram1.lz"
 
-TilesetBattleTowerGFX2::
-	db $ff
-
 TilesetBattleTowerMeta::
 INCBIN "data/tilesets/battle_tower_inside_metatiles.bin.lz"
 
@@ -617,9 +530,6 @@ INCBIN "gfx/tilesets/radio_tower.2bpp.vram0.lz"
 
 TilesetRadioTowerGFX1::
 INCBIN "gfx/tilesets/radio_tower.2bpp.vram1.lz"
-
-TilesetRadioTowerGFX2::
-	db $ff
 
 TilesetRadioTowerMeta::
 INCBIN "data/tilesets/radio_tower_metatiles.bin.lz"
@@ -639,9 +549,6 @@ INCBIN "gfx/tilesets/lighthouse.2bpp.vram0.lz"
 TilesetLighthouseGFX1::
 INCBIN "gfx/tilesets/lighthouse.2bpp.vram1.lz"
 
-TilesetLighthouseGFX2::
-	db $ff
-
 TilesetLighthouseMeta::
 INCBIN "data/tilesets/lighthouse_metatiles.bin.lz"
 
@@ -659,9 +566,6 @@ INCBIN "gfx/tilesets/underground.2bpp.vram0.lz"
 
 TilesetWarehouseGFX1::
 INCBIN "gfx/tilesets/underground.2bpp.vram1.lz"
-
-TilesetWarehouseGFX2::
-	db $ff
 
 TilesetWarehouseMeta::
 INCBIN "data/tilesets/underground_metatiles.bin.lz"
@@ -681,17 +585,11 @@ INCBIN "gfx/tilesets/cave.2bpp.vram0.lz"
 TilesetCaveGFX1::
 INCBIN "gfx/tilesets/cave.2bpp.vram1.lz"
 
-TilesetCaveGFX2::
-	db $ff
-
 TilesetQuietCaveGFX0::
 INCBIN "gfx/tilesets/quiet_cave.2bpp.vram0.lz"
 
 TilesetQuietCaveGFX1::
 INCBIN "gfx/tilesets/quiet_cave.2bpp.vram1.lz"
-
-TilesetQuietCaveGFX2::
-	db $ff
 
 TilesetCaveMeta::
 TilesetQuietCaveMeta::
@@ -714,9 +612,6 @@ INCBIN "gfx/tilesets/ice_path.2bpp.vram0.lz"
 TilesetIcePathGFX1::
 INCBIN "gfx/tilesets/ice_path.2bpp.vram1.lz"
 
-TilesetIcePathGFX2::
-	db $ff
-
 TilesetIcePathMeta::
 INCBIN "data/tilesets/ice_path_metatiles.bin.lz"
 
@@ -734,9 +629,6 @@ INCBIN "gfx/tilesets/tunnel.2bpp.vram0.lz"
 
 TilesetTunnelGFX1::
 INCBIN "gfx/tilesets/tunnel.2bpp.vram1.lz"
-
-TilesetTunnelGFX2::
-	db $ff
 
 TilesetTunnelMeta::
 INCBIN "data/tilesets/tunnel_metatiles.bin.lz"
@@ -756,9 +648,6 @@ INCBIN "gfx/tilesets/forest.2bpp.vram0.lz"
 TilesetForestGFX1::
 INCBIN "gfx/tilesets/forest.2bpp.vram1.lz"
 
-TilesetForestGFX2::
-	db $ff
-
 TilesetForestMeta::
 INCBIN "data/tilesets/forest_metatiles.bin.lz"
 
@@ -777,9 +666,6 @@ INCBIN "gfx/tilesets/park.2bpp.vram0.lz"
 TilesetParkGFX1::
 INCBIN "gfx/tilesets/park.2bpp.vram1.lz"
 
-TilesetParkGFX2::
-	db $ff
-
 TilesetParkMeta::
 INCBIN "data/tilesets/park_metatiles.bin.lz"
 
@@ -797,9 +683,6 @@ INCBIN "gfx/tilesets/safari_zone.2bpp.vram0.lz"
 
 TilesetSafariGFX1::
 INCBIN "gfx/tilesets/safari_zone.2bpp.vram1.lz"
-
-TilesetSafariGFX2::
-	db $ff
 
 TilesetSafariMeta::
 INCBIN "data/tilesets/safari_zone_metatiles.bin.lz"
@@ -820,11 +703,6 @@ INCBIN "gfx/tilesets/ruins_of_alph.2bpp.vram0.lz"
 TilesetRuinsGFX1::
 TilesetAlphGFX1::
 INCBIN "gfx/tilesets/ruins_of_alph.2bpp.vram1.lz"
-
-TilesetRuinsGFX2::
-	db $ff
-TilesetAlphGFX2::
-	db $ff
 
 TilesetRuinsMeta::
 INCBIN "data/tilesets/ruins_of_alph_metatiles.bin.lz"
@@ -856,9 +734,6 @@ INCBIN "gfx/tilesets/pokemon_mansion.2bpp.vram0.lz"
 TilesetPokemonMansionGFX1::
 INCBIN "gfx/tilesets/pokemon_mansion.2bpp.vram1.lz"
 
-TilesetPokemonMansionGFX2::
-	db $ff
-
 TilesetPokemonMansionMeta::
 INCBIN "data/tilesets/pokemon_mansion_metatiles.bin.lz"
 
@@ -867,6 +742,54 @@ INCBIN "data/tilesets/pokemon_mansion_attributes.bin.lz"
 
 TilesetPokemonMansionColl::
 INCBIN "data/tilesets/pokemon_mansion_collision.bin.lz"
+
+
+SECTION "Tileset Data - GFX2", ROMX
+
+; None of the tilesets need "★" GFX, so consolidate them here.
+TilesetJohto1GFX2::
+TilesetJohto2GFX2::
+TilesetJohto3GFX2::
+TilesetJohto4GFX2::
+TilesetKanto1GFX2::
+TilesetKanto2GFX2::
+TilesetShamoutiGFX2::
+TilesetValenciaGFX2::
+TilesetFarawayGFX2::
+TilesetHouse1GFX2::
+TilesetHouse2GFX2::
+TilesetHouse3GFX2::
+TilesetPokeCenterGFX2::
+TilesetPokeComGFX2::
+TilesetMartGFX2::
+TilesetGateGFX2::
+TilesetGym1GFX2::
+TilesetGym2GFX2::
+TilesetGym3GFX2::
+TilesetPortGFX2::
+TilesetLabGFX2::
+TilesetFacilityGFX2::
+TilesetMansionGFX2::
+TilesetGameCornerGFX2::
+TilesetDecorGFX2::
+TilesetMuseumGFX2::
+TilesetHotelGFX2::
+TilesetTowerGFX2::
+TilesetBattleTowerGFX2::
+TilesetRadioTowerGFX2::
+TilesetLighthouseGFX2::
+TilesetWarehouseGFX2::
+TilesetCaveGFX2::
+TilesetQuietCaveGFX2::
+TilesetIcePathGFX2::
+TilesetTunnelGFX2::
+TilesetForestGFX2::
+TilesetParkGFX2::
+TilesetSafariGFX2::
+TilesetRuinsGFX2::
+TilesetAlphGFX2::
+TilesetPokemonMansionGFX2::
+	db $ff ; Compressed data is terminated with $ff.
 
 
 SECTION "Tileset Headers", ROMX
