@@ -505,6 +505,20 @@ DayCare_GiveEgg: ; 169ac
 	ld [hli], a
 	ld [wCurSpecies], a
 	ld [wCurPartySpecies], a
+
+	; Red Gyarados' Eggs should be plain
+	cp MAGIKARP
+	jr nz, .not_red_magikarp
+	ld a, [wEggMonForm]
+	and FORM_MASK
+	cp NUM_MAGIKARP + 1
+	jr c, .not_red_magikarp
+	ld a, [wEggMonForm]
+	and $ff - FORM_MASK
+	or MAGIKARP_PLAIN_FORM
+	ld [wEggMonForm], a
+.not_red_magikarp
+
 	ld a, -1
 	ld [hl], a
 
