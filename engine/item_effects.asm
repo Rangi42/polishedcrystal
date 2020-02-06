@@ -2337,12 +2337,8 @@ Ball_ReplacePartyMonCaughtBall:
 	ld [hl], a
 	call UseDisposableItem
 
-	call GetCurItemName
-	ld hl, wStringBuffer1
-	ld bc, wStringBuffer2 - wStringBuffer1
-	ld de, wStringBuffer2
+	; wStringBuffer2 already contains the item name from GetItemName + CopyName1
 	call GetCurNick
-
 	ld hl, BallReplacedText
 	jp PrintText
 
