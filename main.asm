@@ -37,37 +37,10 @@ INCLUDE "engine/events/overworld.asm"
 INCLUDE "engine/items.asm"
 INCLUDE "engine/anim_hp_bar.asm"
 INCLUDE "engine/move_mon.asm"
-INCLUDE "engine/billspctop.asm"
+INCLUDE "engine/pokemon/bills_pc_top.asm"
 INCLUDE "engine/item_effects.asm"
 INCLUDE "engine/events/checktime.asm"
-
-GetBreedMon1LevelGrowth: ; e698
-	ld hl, wBreedMon1Stats
-	ld de, wTempMon
-	ld bc, BOXMON_STRUCT_LENGTH
-	rst CopyBytes
-	farcall CalcLevel
-	ld a, [wBreedMon1Level]
-	ld b, a
-	ld a, d
-	ld e, a
-	sub b
-	ld d, a
-	ret
-
-GetBreedMon2LevelGrowth: ; e6b3
-	ld hl, wBreedMon2Stats
-	ld de, wTempMon
-	ld bc, BOXMON_STRUCT_LENGTH
-	rst CopyBytes
-	farcall CalcLevel
-	ld a, [wBreedMon2Level]
-	ld b, a
-	ld a, d
-	ld e, a
-	sub b
-	ld d, a
-	ret
+INCLUDE "engine/pokemon/breedmon_level_growth.asm"
 
 BugContest_SetCaughtContestMon: ; e6ce
 	ld a, [wContestMon]
@@ -248,7 +221,7 @@ INCLUDE "engine/money.asm"
 INCLUDE "data/items/marts.asm"
 INCLUDE "engine/events/mom.asm"
 INCLUDE "engine/events/daycare.asm"
-INCLUDE "engine/breeding.asm"
+INCLUDE "engine/pokemon/breeding.asm"
 
 
 SECTION "Code 6", ROMX
@@ -3820,7 +3793,7 @@ SECTION "Code 22", ROMX
 INCLUDE "engine/card_flip.asm"
 INCLUDE "engine/unown_puzzle.asm"
 ;INCLUDE "engine/dummy_game.asm"
-INCLUDE "engine/billspc.asm"
+INCLUDE "engine/pokemon/bills_pc.asm"
 INCLUDE "engine/fade.asm"
 
 
