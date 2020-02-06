@@ -315,7 +315,7 @@ KeyItemEffects:
 
 PokeBallEffect: ; e8a2
 	ld a, [wBattleMode]
-	cp 0 ; overworld
+	and a ; overworld
 	jp z, Ball_ReplacePartyMonCaughtBall
 	farcall DoesNuzlockeModePreventCapture
 	jp c, Ball_NuzlockeFailureMessage
@@ -2330,17 +2330,29 @@ Ball_ReplacePartyMonCaughtBall:
 	and CAUGHTBALL_MASK
 	cp b
 	
-	jp z, AlreadyInThatBallMessage
+	jr z, AlreadyInThatBallMessage
 	ld a, [hl]
-	and -CAUGHTBALL_MASK-1 ; One's complement
+	and $ff ^ CAUGHTBALL_MASK
 	add b
 	ld [hl], a
 	call UseDisposableItem
+	
+	call GetCurItemName
+	ld hl, wStringBuffer1
+	ld bc, wStringBuffer2 - wStringBuffer1
+	ld de, wStringBuffer2
+	call GetCurNick
+	
 	ld hl, BallReplacedText
 	jp PrintText
 
 BallReplacedText:
-	text "Ball changed."
+	text "Put @"
+	text_from_ram wStringBuffer1
+	text " in"
+	line "the @"
+	text_from_ram wStringBuffer2
+	text "."
 	prompt
 
 AlreadyInThatBallMessage:

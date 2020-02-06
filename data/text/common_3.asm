@@ -1106,5 +1106,5 @@ ItemCantBeSelectedText::
 
 AlreadyInThatBallTextData::
 	text "Your #mon is in"
-	line "that ball already."
+	line "that Ball already."
 	prompt
