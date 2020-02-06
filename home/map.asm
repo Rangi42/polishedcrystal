@@ -1380,13 +1380,19 @@ _DoLoadTileset0:
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	or h
+
+	; if the compressed GFX data starts with $ff, the decompressed data would
+	; be empty, so don't decompress or copy
+	ld a, b
+	call GetFarByte
+	inc a
 	ret z
 
 	inc c
 	jr z, .special_load
 	dec c
 	jp DecompressRequest2bpp
+
 .special_load
 	; Skip roof tiles when writing to VRAM
 	ld c, $7f
