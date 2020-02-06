@@ -20,7 +20,9 @@ KrissHouse1F_MapScriptHeader:
 	bg_event  3,  1, SIGNPOST_JUMPTEXT, StoveText
 	bg_event  6,  1, SIGNPOST_UP, TVScript
 
-	db 5 ; object events
+	db 7 ; object events
+	strengthboulder_event 5, 5
+	object_event  3, 3, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3,  TrainerYoungsterJoj, EVENT_GOT_A_POKEMON_FROM_ELM
 	object_event  9,  4, SPRITE_MOM, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, MomScript, EVENT_KRISS_HOUSE_MOM_1
 	object_event  3,  2, SPRITE_MOM, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, (1 << MORN), 0, PERSONTYPE_SCRIPT, 0, MomScript, EVENT_KRISS_HOUSE_MOM_2
 	object_event  9,  4, SPRITE_MOM, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, (1 << DAY), 0, PERSONTYPE_SCRIPT, 0, MomScript, EVENT_KRISS_HOUSE_MOM_2
@@ -29,6 +31,9 @@ KrissHouse1F_MapScriptHeader:
 
 	const_def 1 ; object constants
 	const KRISSHOUSE1F_MOM1
+
+TrainerYoungsterJoj:
+	trainer YOUNGSTER, JOEY1, EVENT_BEAT_YOUNGSTER_JOEY, FridgeText, FridgeText, 0, TVScript
 
 MomTrigger1:
 	playmusic MUSIC_MOM

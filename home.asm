@@ -998,23 +998,16 @@ CheckTrainerBattle:: ; 360d
 	push af
 	push de
 
+; Isn't occluded by any other objects and is a trainer
+	farcall CheckOccludingObjectsAndTrainer
+	jr nc, .next
+
 ; Has a sprite
 	ld hl, MAPOBJECT_SPRITE
 	add hl, de
 	ld a, [hl]
 	and a
 	jr z, .next
-
-; Is a trainer
-	ld hl, MAPOBJECT_COLOR
-	add hl, de
-	ld a, [hl]
-	and $f
-	cp PERSONTYPE_TRAINER
-	jr z, .is_trainer
-	cp PERSONTYPE_GENERICTRAINER
-	jr nz, .next
-.is_trainer
 
 ; Is visible on the map
 	ld hl, MAPOBJECT_OBJECT_STRUCT_ID

@@ -94,13 +94,11 @@ Init:: ; 17d
 
 ; Initialize the RNG state. It can be initialized to anything but zero; this is just a simple way of doing it.
 	ld hl, wRNGState
-	ld a, "R"
+	ld a , 1
 	ld [hli], a
-	ld a, "N"
 	ld [hli], a
-	ld a, "G"
 	ld [hli], a
-	ld [hl], "!"
+	ld [hl], a
 
 	ld a, BANK(WriteOAMDMACodeToHRAM)
 	rst Bankswitch

@@ -15,6 +15,127 @@ INCLUDE "engine/events/happiness_egg.asm"
 INCLUDE "engine/events/specials_2.asm"
 INCLUDE "data/items/attributes.asm"
 
+; ld a, [wMapObjects + MAPOBJECT_X_COORD]
+; ld a, [wMapObjects + MAPOBJECT_Y_COORD]
+
+CheckOccludingObjectsAndTrainer:: ; for space reasons
+	push de
+; returns carry = can't use
+
+	ld [wCurTrainer], a
+	ld b, b
+	; Save location of current trainer
+	ld bc, OBJECT_LENGTH
+	ld hl, wMapObjects + MAPOBJECT_X_COORD
+	rst AddNTimes
+	ld a, [hl]
+	ld [wCurTrainerX], a
+	inc hl
+	ld a, [hl]
+	ld [wCurTrainerY], a
+
+; Is a trainer?
+	ld hl, MAPOBJECT_COLOR
+	add hl, de
+	ld a, [hl]
+	and $f
+	cp PERSONTYPE_TRAINER
+	jr z, .is_trainer
+	cp PERSONTYPE_GENERICTRAINER
+	jr nz, .next
+.is_trainer
+
+; Skip the player object.
+	ld a, 1
+	ld de, wMapObjects + OBJECT_LENGTH
+
+.loop
+
+; The object is occluding if it:
+
+	push af
+	push de
+
+; Isn't the object trying to see the player
+	ld hl, wCurTrainer
+	ld b, [hl]
+	cp b
+	jr z, .next
+	
+; Has a sprite
+	ld b, a ; backup current potential occluder
+	ld hl, MAPOBJECT_SPRITE
+	add hl, de
+	ld a, [hl]
+	and a
+	jr z, .next
+	ld a, b
+	
+; Is between the player and the trainer
+	ld bc, OBJECT_LENGTH
+	ld hl, wMapObjects + MAPOBJECT_X_COORD
+	rst AddNTimes
+	ld a, [hl]
+	ld [wCurPotentialOccluderX], a
+	inc hl
+	ld a, [hl]
+	ld [wCurPotentialOccluderY], a
+
+	ld a, [wCurTrainerX]
+	ld b, a
+	ld a, [wMapObjects + MAPOBJECT_X_COORD] ; player x
+	cp b
+	ld c, b
+	ld a, [wCurPotentialOccluderX]
+	jr z, .check
+
+; Same x and y is an "imaginary case"
+
+	ld a, [wCurTrainerY]
+	ld b, a
+	ld a, [wMapObjects + MAPOBJECT_Y_COORD] ; player y
+	cp b
+	jr nz, .next ; x and y are both different, not in any potential line of sight
+	ld c, b
+	ld a, [wCurPotentialOccluderY]
+
+.check
+	; jr .next if not (b < a < c or c < a < b)
+
+	; b < a < c first
+	cp b
+	jr c, .trySwapped
+	cp c
+	jr c, .occludes
+
+.trySwapped
+	cp c
+	jr c, .next
+	cp b
+	jr c, .occludes
+	; fallthrough
+
+.next
+	pop de
+	ld hl, OBJECT_LENGTH
+	add hl, de
+	ld d, h
+	ld e, l
+
+	pop af
+	inc a
+	cp NUM_OBJECTS
+	jr nz, .loop
+	pop de
+	ccf ; Clear!
+	ret
+
+.occludes
+	pop de
+	pop af
+	pop de
+	scf ; Hit something.
+	ret
 
 SECTION "Code 2", ROMX
 
