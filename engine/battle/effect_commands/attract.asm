@@ -178,7 +178,7 @@ CheckOppositeGender: ; 377f5
 	ld a, MON_GENDER
 	call TrueUserPartyAttr
 	ld [wTempMonGender], a
-	ld a, BREEDMON
+	ld a, TEMPMON
 	ld [wMonType], a
 	farcall GetGender
 	ret c ; User mon is genderless
@@ -195,7 +195,7 @@ CheckOppositeGender: ; 377f5
 	ld a, MON_GENDER
 	call OpponentPartyAttr
 	ld [wTempMonGender], a
-	ld a, BREEDMON
+	ld a, TEMPMON
 	ld [wMonType], a
 	farcall GetGender
 	pop bc

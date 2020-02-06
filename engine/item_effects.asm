@@ -2598,11 +2598,11 @@ GetMaxPPOfMove: ; f8ec
 	dec a
 	jr z, .got_nonpartymon ; BOXMON
 	dec a
-	jr z, .got_nonpartymon ; BREEDMON
+	jr z, .got_nonpartymon ; TEMPMON
 
 	ld hl, wBattleMonMoves ; WILDMON
 
-.got_nonpartymon ; BOXMON, BREEDMON, WILDMON
+.got_nonpartymon ; BOXMON, TEMPMON, WILDMON
 	call GetMthMoveOfCurrentMon
 	jr .gotdatmove
 

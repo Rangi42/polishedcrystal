@@ -1,6 +1,6 @@
 INCLUDE "data/mon_menu.asm"
 
-MonSubmenu: ; 24d19
+MonSubmenu:
 	xor a
 	ld [hBGMapMode], a
 	call GetMonSubmenuItems
@@ -16,17 +16,15 @@ MonSubmenu: ; 24d19
 	ld [wMenuSelection], a
 
 	jp ExitMenu
-; 24d3f
 
-.MenuDataHeader: ; 24d3f
+.MenuDataHeader:
 	db $40 ; tile backup
 	db 00, 06 ; start coords
 	db 17, 19 ; end coords
 	dw 0
 	db 1 ; default option
-; 24d47
 
-.GetTopCoord: ; 24d47
+.GetTopCoord:
 ; TopCoord = 1 + BottomCoord - 2 * (NumSubmenuItems + 1)
 	ld a, [wBuffer1]
 	inc a
@@ -37,9 +35,8 @@ MonSubmenu: ; 24d19
 	inc a
 	ld [wMenuBorderTopCoord], a
 	jp MenuBox
-; 24d59
 
-MonMenuLoop: ; 24d59
+MonMenuLoop:
 .loop
 	ld a, $a0 ; flags
 	ld [wMenuData2Flags], a
@@ -71,9 +68,8 @@ MonMenuLoop: ; 24d59
 	add hl, bc
 	ld a, [hl]
 	ret
-; 24d91
 
-PopulateMonMenu: ; 24d91
+PopulateMonMenu:
 	call MenuBoxCoord2Tile
 	ld bc, $2a ; 42
 	add hl, bc
@@ -92,9 +88,8 @@ PopulateMonMenu: ; 24d91
 	add hl, bc
 	pop de
 	jr .loop
-; 24db0
 
-GetMonMenuString: ; 24db0
+GetMonMenuString:
 	ld hl, MonMenuOptions + 1
 	ld de, 3
 	call IsInArray
@@ -116,9 +111,8 @@ GetMonMenuString: ; 24db0
 	ld d, h
 	ld e, l
 	ret
-; 24dd4
 
-GetMonSubmenuItems: ; 24dd4
+GetMonSubmenuItems:
 	call ResetMonSubmenu
 	ld a, MON_IS_EGG
 	call GetPartyParamLocation
@@ -192,9 +186,8 @@ GetMonSubmenuItems: ; 24dd4
 	ld a, MONMENU_CANCEL
 	call AddMonMenuItem
 	jp TerminateMonSubmenu
-; 24e52
 
-IsFieldMove: ; 24e52
+IsFieldMove:
 	ld b, a
 	ld hl, MonMenuOptions
 .next
@@ -211,17 +204,15 @@ IsFieldMove: ; 24e52
 	ld a, d
 	scf
 	ret
-; 24e68
 
-ResetMonSubmenu: ; 24e68
+ResetMonSubmenu:
 	xor a
 	ld [wBuffer1], a
 	ld hl, wBuffer2
 	ld bc, NUM_MON_SUBMENU_ITEMS + 1
 	jp ByteFill
-; 24e76
 
-TerminateMonSubmenu: ; 24e76
+TerminateMonSubmenu:
 	ld a, [wBuffer1]
 	ld e, a
 	ld d, $0
@@ -229,9 +220,8 @@ TerminateMonSubmenu: ; 24e76
 	add hl, de
 	ld [hl], -1
 	ret
-; 24e83
 
-AddMonMenuItem: ; 24e83
+AddMonMenuItem:
 	push hl
 	push de
 	push af
@@ -247,4 +237,3 @@ AddMonMenuItem: ; 24e83
 	pop de
 	pop hl
 	ret
-; 24e99

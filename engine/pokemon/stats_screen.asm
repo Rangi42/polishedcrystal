@@ -1,4 +1,4 @@
-StatsScreenInit: ; 4dc8a
+StatsScreenInit:
 	ld hl, StatsScreenMain
 	ld a, [hMapAnims]
 	push af
@@ -33,13 +33,12 @@ StatsScreenInit: ; 4dc8a
 	pop af
 	ld [hMapAnims], a
 	ret
-; 0x4dcd2
 
-StatsScreenMain: ; 0x4dcd2
+StatsScreenMain:
 	xor a
 	ld [wJumptableIndex], a
 	ld [wcf64], a
-.loop ; 4dce3
+.loop
 	ld a, [wJumptableIndex]
 	and $7f
 	ld hl, StatsScreenPointerTable
@@ -49,9 +48,8 @@ StatsScreenMain: ; 0x4dcd2
 	bit 7, a
 	jr z, .loop
 	ret
-; 0x4dcf7
 
-StatsScreenPointerTable: ; 4dd2a
+StatsScreenPointerTable:
 	dw MonStatsInit       ; regular pokémon
 	dw EggStatsInit       ; egg
 	dw StatsScreenWaitCry
@@ -60,9 +58,8 @@ StatsScreenPointerTable: ; 4dd2a
 	dw StatsScreenWaitCry
 	dw MonStatsJoypad
 	dw StatsScreen_Exit
-; 4dd3a
 
-StatsScreen_WaitAnim: ; 4dd3a (13:5d3a)
+StatsScreen_WaitAnim:
 	ld hl, wcf64
 	bit 6, [hl]
 	jr nz, .try_anim
@@ -80,19 +77,19 @@ StatsScreen_WaitAnim: ; 4dd3a (13:5d3a)
 	res 5, [hl]
 	farjp HDMATransferTileMapToWRAMBank3
 
-StatsScreen_SetJumptableIndex: ; 4dd62 (13:5d62)
+StatsScreen_SetJumptableIndex:
 	ld a, [wJumptableIndex]
 	and $80
 	or h
 	ld [wJumptableIndex], a
 	ret
 
-StatsScreen_Exit: ; 4dd6c (13:5d6c)
+StatsScreen_Exit:
 	ld hl, wJumptableIndex
 	set 7, [hl]
 	ret
 
-MonStatsInit: ; 4dd72 (13:5d72)
+MonStatsInit:
 	ld hl, wcf64
 	res 6, [hl]
 	call ClearBGPalettes
@@ -112,7 +109,7 @@ MonStatsInit: ; 4dd72 (13:5d72)
 	ld h, 1
 	jp StatsScreen_SetJumptableIndex
 
-EggStatsInit: ; 4dda1
+EggStatsInit:
 	ld a, [wCurPartySpecies]
 	push af
 	ld a, EGG
@@ -124,10 +121,9 @@ EggStatsInit: ; 4dda1
 	inc a
 	ld [wJumptableIndex], a
 	ret
-; 0x4ddac
 
 
-EggStatsJoypad: ; 4ddac (13:5dac)
+EggStatsJoypad:
 	call StatsScreen_GetJoypad
 	jr nc, .check
 	ld h, 0
@@ -143,7 +139,7 @@ EggStatsJoypad: ; 4ddac (13:5dac)
 	ld h, 7
 	jp StatsScreen_SetJumptableIndex
 
-StatsScreen_LoadPage: ; 4ddc6 (13:5dc6)
+StatsScreen_LoadPage:
 	call StatsScreen_LoadGFX
 	ld hl, wcf64
 	res 4, [hl]
@@ -152,7 +148,7 @@ StatsScreen_LoadPage: ; 4ddc6 (13:5dc6)
 	ld [wJumptableIndex], a
 	ret
 
-MonStatsJoypad: ; 4ddd6 (13:5dd6)
+MonStatsJoypad:
 	call StatsScreen_GetJoypad
 	jr nc, .next
 	ld h, 0
@@ -162,7 +158,7 @@ MonStatsJoypad: ; 4ddd6 (13:5dd6)
 	and D_DOWN | D_UP | D_LEFT | D_RIGHT | A_BUTTON | B_BUTTON
 	jp StatsScreen_JoypadAction
 
-StatsScreenWaitCry: ; 4dde6 (13:5de6)
+StatsScreenWaitCry:
 	call IsSFXPlaying
 	ret nc
 	ld a, [wJumptableIndex]
@@ -170,9 +166,9 @@ StatsScreenWaitCry: ; 4dde6 (13:5de6)
 	ld [wJumptableIndex], a
 	ret
 
-StatsScreen_CopyToTempMon: ; 4ddf2 (13:5df2)
+StatsScreen_CopyToTempMon:
 	ld a, [wMonType]
-	cp BREEDMON
+	cp TEMPMON
 	jr nz, .breedmon
 	ld a, [wBufferMon]
 	ld [wCurSpecies], a
@@ -196,10 +192,10 @@ StatsScreen_CopyToTempMon: ; 4ddf2 (13:5df2)
 	and a
 	ret
 
-StatsScreen_GetJoypad: ; 4de2c (13:5e2c)
+StatsScreen_GetJoypad:
 	call GetJoypad
 	ld a, [wMonType]
-	cp BREEDMON
+	cp TEMPMON
 	jr nz, .notbreedmon
 	push hl
 	push de
@@ -224,7 +220,7 @@ StatsScreen_GetJoypad: ; 4de2c (13:5e2c)
 	scf
 	ret
 
-StatsScreen_JoypadAction: ; 4de54 (13:5e54)
+StatsScreen_JoypadAction:
 	push af
 	ld a, [wcf64]
 	and $3
@@ -319,7 +315,7 @@ StatsScreen_JoypadAction: ; 4de54 (13:5e54)
 	ld h, 7
 	jp StatsScreen_SetJumptableIndex
 
-StatsScreen_InitUpperHalf: ; 4deea (13:5eea)
+StatsScreen_InitUpperHalf:
 	call .PlaceHPBar
 	xor a
 	ld [hBGMapMode], a
@@ -354,7 +350,7 @@ StatsScreen_InitUpperHalf: ; 4deea (13:5eea)
 	call StatsScreen_PlacePageSwitchArrows
 	jp StatsScreen_PlaceShinyIcon
 
-.PlaceHPBar: ; 4df45 (13:5f45)
+.PlaceHPBar:
 	ld hl, wTempMonHP
 	ld a, [hli]
 	ld b, a
@@ -370,7 +366,7 @@ StatsScreen_InitUpperHalf: ; 4deea (13:5eea)
 	call GetCGBLayout
 	jp DelayFrame
 
-.PlaceGenderChar: ; 4df66 (13:5f66)
+.PlaceGenderChar:
 	push hl
 	farcall GetGender
 	pop hl
@@ -381,16 +377,14 @@ StatsScreen_InitUpperHalf: ; 4deea (13:5eea)
 .got_gender
 	ld [hl], a
 	ret
-; 4df77 (13:5f77)
 
-.NicknamePointers: ; 4df77
+.NicknamePointers:
 	dw wPartyMonNicknames
 	dw wOTPartyMonNicknames
 	dw sBoxMonNicknames
 	dw wBufferMonNick
-; 4df7f
 
-StatsScreen_PlaceHorizontalDivider: ; 4df8f (13:5f8f)
+StatsScreen_PlaceHorizontalDivider:
 	hlcoord 0, 7
 	ld b, SCREEN_WIDTH
 	ld a, $36
@@ -433,14 +427,14 @@ StatsScreen_PlaceEggDivider:
 	jr nz, .loop
 	ret
 
-StatsScreen_PlacePageSwitchArrows: ; 4df9b (13:5f9b)
+StatsScreen_PlacePageSwitchArrows:
 	hlcoord 10, 6
 	ld [hl], "◀"
 	hlcoord 19, 6
 	ld [hl], "▶"
 	ret
 
-StatsScreen_PlaceShinyIcon: ; 4dfa6 (13:5fa6)
+StatsScreen_PlaceShinyIcon:
 	ld bc, wTempMonShiny
 	farcall CheckShininess
 	ret nc
@@ -448,7 +442,7 @@ StatsScreen_PlaceShinyIcon: ; 4dfa6 (13:5fa6)
 	ld [hl], "★"
 	ret
 
-StatsScreen_LoadGFX: ; 4dfb6 (13:5fb6)
+StatsScreen_LoadGFX:
 	ld a, [wCurPartySpecies]
 	ld [wd265], a
 	ld [wCurSpecies], a
@@ -464,7 +458,7 @@ StatsScreen_LoadGFX: ; 4dfb6 (13:5fb6)
 	ld b, 2
 	jp SafeCopyTilemapAtOnce
 
-.ClearBox: ; 4dfda (13:5fda)
+.ClearBox:
 	ld a, [wcf64]
 	and $3
 	ld c, a
@@ -503,7 +497,7 @@ StatsScreen_LoadGFX: ; 4dfb6 (13:5fb6)
 	ld [hl], a
 	ret
 
-.LoadPals: ; 4dfed (13:5fed)
+.LoadPals:
 	ld a, [wcf64]
 	and $3
 	ld c, a
@@ -513,20 +507,20 @@ StatsScreen_LoadGFX: ; 4dfb6 (13:5fb6)
 	set 5, [hl]
 	ret
 
-.PageTilemap: ; 4e002 (13:6002)
+.PageTilemap:
 	ld a, [wcf64]
 	and $3
 	ld hl, .Jumptable
 	rst JumpTable
 	ret
 
-.Jumptable: ; 4e00d (13:600d)
+.Jumptable:
 	dw .PinkPage
 	dw .GreenPage
 	dw .BluePage
 	dw .OrangePage
 
-.PinkPage: ; 4e013 (13:6013)
+.PinkPage:
 	ld de, .Status_Type
 	hlcoord 0, 9
 	call PlaceString
@@ -604,7 +598,7 @@ StatsScreen_LoadGFX: ; 4dfb6 (13:5fb6)
 	ld [hl], "<XPEND>" ; exp bar end cap
 	ret
 
-.PrintNextLevel: ; 4e0d3 (13:60d3)
+.PrintNextLevel:
 	ld a, [wTempMonLevel]
 	push af
 	cp MAX_LEVEL
@@ -617,7 +611,7 @@ StatsScreen_LoadGFX: ; 4dfb6 (13:5fb6)
 	ld [wTempMonLevel], a
 	ret
 
-.CalcExpToNextLevel: ; 4e0e7 (13:60e7)
+.CalcExpToNextLevel:
 	ld a, [wTempMonLevel]
 	cp MAX_LEVEL
 	jr z, .AlreadyAtMaxLevel
@@ -646,9 +640,8 @@ StatsScreen_LoadGFX: ; 4dfb6 (13:5fb6)
 	ld [hli], a
 	ld [hl], a
 	ret
-; 4e119 (13:6119)
 
-.PlaceOTInfo: ; 4e1cc (13:61cc)
+.PlaceOTInfo:
 	ld de, .OT_ID_str
 	hlcoord 0, 14
 	call PlaceString
@@ -672,46 +665,37 @@ StatsScreen_LoadGFX: ; 4dfb6 (13:5fb6)
 	hlcoord 8, 15
 	ld [hl], a
 	ret
-; 4e216 (13:6216)
 
-.OTNamePointers: ; 4e216
+.OTNamePointers:
 	dw wPartyMonOT
 	dw wOTPartyMonOT
 	dw sBoxMonOT
 	dw wBufferMonOT
-; 4e21e
 
-.Status_Type: ; 4e119
+.Status_Type:
 	db   "Status/"
 	next "Type/@"
-; 4e127
 
-.OK_str: ; 4e127
+.OK_str:
 	db " OK@"
-; 4e12b
 
-.OT_ID_str: ; 4e222 / 4e21e
+.OT_ID_str:
 	db   "OT/"
 	next "<ID>№.@"
-; 4e226
 
-.ExpPointStr: ; 4e12b
+.ExpPointStr:
 	db "Exp.Points@"
-; 4e136
 
-.LevelUpStr: ; 4e136
+.LevelUpStr:
 	db "Level Up@"
-; 4e13f
 
-.ToStr: ; 4e13f
+.ToStr:
 	db "to@"
-; 4e142
 
-.PkrsStr: ; 4e142
+.PkrsStr:
 	db "#rus@"
-; 4e147
 
-.GreenPage: ; 4e147 (13:6147)
+.GreenPage:
 	ld de, .Item
 	hlcoord 0, 8
 	call PlaceString
@@ -735,28 +719,24 @@ StatsScreen_LoadGFX: ; 4dfb6 (13:5fb6)
 	predef ListMovePP
 	ret
 
-.GetItemName: ; 4e189 (13:6189)
+.GetItemName:
 	ld de, .ThreeDashes
 	ld a, [wTempMonItem]
 	and a
 	ret z
 	ld [wd265], a
 	jp GetItemName
-; 4e1a0 (13:61a0)
 
-.Item: ; 4e1a0
+.Item:
 	db "Item@"
-; 4e1a5
 
-.ThreeDashes: ; 4e1a5
+.ThreeDashes:
 	db "---@"
-; 4e1a9
 
-.Move: ; 4e1a9
+.Move:
 	db "Moves@"
-; 4e1ae
 
-.BluePage: ; 4e1ae (13:61ae)
+.BluePage:
 	hlcoord 0, 9
 	predef DrawPlayerHP
 	call .PlaceNatureInfo
@@ -837,7 +817,7 @@ OrangePage_:
 .ability
 	db "Ability/@"
 
-TN_PrintToD
+TN_PrintToD:
 	ld de, .caughtat
 	hlcoord 1, 8
 	call PlaceString
@@ -1013,7 +993,7 @@ TN_PrintCharacteristics:
 INCLUDE "data/characteristics.asm"
 
 
-StatsScreen_PlaceFrontpic: ; 4e226 (13:6226)
+StatsScreen_PlaceFrontpic:
 	ld hl, wTempMonForm
 	predef GetVariant
 	call StatsScreen_GetAnimationParam
@@ -1036,7 +1016,7 @@ StatsScreen_PlaceFrontpic: ; 4e226 (13:6226)
 	ld a, [wCurPartySpecies]
 	jp PlayCry2
 
-.AnimateMon: ; 4e253 (13:6253)
+.AnimateMon:
 	ld hl, wcf64
 	set 5, [hl]
 	ld a, [wCurPartySpecies]
@@ -1051,7 +1031,7 @@ StatsScreen_PlaceFrontpic: ; 4e226 (13:6226)
 	hlcoord 0, 0
 	jp _PrepMonFrontpic
 
-.AnimateEgg: ; 4e271 (13:6271)
+.AnimateEgg:
 	ld a, [wCurPartySpecies]
 	cp UNOWN
 	jr z, .unownegg
@@ -1064,7 +1044,7 @@ StatsScreen_PlaceFrontpic: ; 4e226 (13:6226)
 	ld [wBoxAlignment], a
 	; fallthrough
 
-.get_animation ; 4e289 (13:6289)
+.get_animation
 	ld a, [wCurPartySpecies]
 	call IsAPokemon
 	ret c
@@ -1078,13 +1058,13 @@ StatsScreen_PlaceFrontpic: ; 4e226 (13:6226)
 	set 6, [hl]
 	ret
 
-StatsScreen_GetAnimationParam: ; 4e2ad (13:62ad)
+StatsScreen_GetAnimationParam:
 	ld a, [wMonType]
 	ld hl, .Jumptable
 	rst JumpTable
 	ret
 
-.Jumptable: ; 4e2b5 (13:62b5)
+.Jumptable:
 	dw .PartyMon
 	dw .OTPartyMon
 	dw .BoxMon
@@ -1092,7 +1072,7 @@ StatsScreen_GetAnimationParam: ; 4e2ad (13:62ad)
 	dw .Wildmon
 
 
-.PartyMon: ; 4e2bf (13:62bf)
+.PartyMon:
 	ld a, [wCurPartyMon]
 	ld hl, wPartyMon1Species
 	ld bc, PARTYMON_STRUCT_LENGTH
@@ -1101,11 +1081,11 @@ StatsScreen_GetAnimationParam: ; 4e2ad (13:62ad)
 	ld c, l
 	jr .CheckEggFaintedFrzSlp
 
-.OTPartyMon: ; 4e2cf (13:62cf)
+.OTPartyMon:
 	xor a
 	ret
 
-.BoxMon: ; 4e2d1 (13:62d1)
+.BoxMon:
 	ld hl, sBoxMons
 	ld bc, PARTYMON_STRUCT_LENGTH
 	ld a, [wCurPartyMon]
@@ -1120,9 +1100,9 @@ StatsScreen_GetAnimationParam: ; 4e2ad (13:62ad)
 	pop af
 	ret
 
-.Tempmon: ; 4e2ed (13:62ed)
+.Tempmon:
 	ld bc, wTempMon
-.CheckEggFaintedFrzSlp: ; 4e2f2 (13:62f2)
+.CheckEggFaintedFrzSlp:
 	ld a, [wTempMonIsEgg]
 	bit MON_IS_EGG_F, a
 	jr nz, .egg
@@ -1133,16 +1113,16 @@ StatsScreen_GetAnimationParam: ; 4e2ad (13:62ad)
 	scf
 	ret
 
-.Wildmon: ; 4e301 (13:6301)
+.Wildmon:
 	ld a, $1
 	and a
 	ret
 
-.FaintedFrzSlp: ; 4e305 (13:6305)
+.FaintedFrzSlp:
 	xor a
 	ret
 
-StatsScreen_LoadTextBoxSpaceGFX: ; 4e307 (13:6307)
+StatsScreen_LoadTextBoxSpaceGFX:
 	push hl
 	push de
 	push bc
@@ -1163,9 +1143,8 @@ StatsScreen_LoadTextBoxSpaceGFX: ; 4e307 (13:6307)
 	pop de
 	pop hl
 	ret
-; 4e32a (13:632a)
 
-EggStatsScreen: ; 4e33a
+EggStatsScreen:
 	xor a
 	ld [hBGMapMode], a
 	ld hl, wCurHPPal
@@ -1204,37 +1183,35 @@ EggStatsScreen: ; 4e33a
 	ret nc
 	ld de, SFX_2_BOOPS
 	jp PlaySFX
-; 0x4e3c0
 
-EggString: ; 4e3c0
+EggString:
 	db   "Egg"
 	next "OT/?????"
 	next "<ID>№.?????@"
 
-EggSoonString: ; 0x4e3ca
+EggSoonString:
 	db   "It's making sounds"
 	next "inside. It's going"
 	next "to hatch soon!@"
 
-EggCloseString: ; 0x4e3fd
+EggCloseString:
 	db   "It moves around"
 	next "inside sometimes."
 	next "It must be close"
 	next "to hatching.@"
 
-EggMoreTimeString: ; 0x4e43d
+EggMoreTimeString:
 	db   "Wonder what's"
 	next "inside? It needs"
 	next "more time, though.@"
 
-EggALotMoreTimeString: ; 0x4e46e
+EggALotMoreTimeString:
 	db   "This Egg needs a"
 	next "lot more time to"
 	next "hatch.@"
-; 0x4e497
 
 
-StatsScreen_AnimateEgg: ; 4e497 (13:6497)
+StatsScreen_AnimateEgg:
 	call StatsScreen_GetAnimationParam
 	ret nc
 	ld a, [wTempMonHappiness]
@@ -1261,7 +1238,7 @@ StatsScreen_AnimateEgg: ; 4e497 (13:6497)
 	set 6, [hl]
 	ret
 
-StatsScreen_LoadPageIndicators: ; 4e4cd (13:64cd)
+StatsScreen_LoadPageIndicators:
 	; Write the smaller squares for page display.
 	hlcoord 11, 5
 	ld a, $7f
@@ -1299,7 +1276,7 @@ StatsScreen_LoadPageIndicators: ; 4e4cd (13:64cd)
 	ld [hl], a
 	ret
 
-CopyNickname: ; 4e505 (13:6505)
+CopyNickname:
 	ld de, wStringBuffer1
 	ld bc, PKMN_NAME_LENGTH
 	ld a, [wMonType]
@@ -1318,7 +1295,7 @@ CopyNickname: ; 4e505 (13:6505)
 	pop de
 	ret
 
-GetNicknamePointer: ; 4e528 (13:6528)
+GetNicknamePointer:
 	ld a, [wMonType]
 	add a
 	ld c, a
@@ -1328,13 +1305,13 @@ GetNicknamePointer: ; 4e528 (13:6528)
 	ld h, [hl]
 	ld l, a
 	ld a, [wMonType]
-	cp BREEDMON
+	cp TEMPMON
 	ret z
 	ld a, [wCurPartyMon]
 	jp SkipNames
 
 
-CheckFaintedFrzSlp: ; 4e53f
+CheckFaintedFrzSlp:
 	ld hl, MON_HP
 	add hl, bc
 	ld a, [hli]
@@ -1351,7 +1328,6 @@ CheckFaintedFrzSlp: ; 4e53f
 .fainted_frz_slp
 	scf
 	ret
-; 4e554
 
 CaughtBallsGFX:
 INCBIN "gfx/stats/balls.2bpp"

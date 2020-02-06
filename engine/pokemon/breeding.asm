@@ -139,7 +139,7 @@ CheckBreedmonCompatibility: ; 16e1d
 	cp DITTO
 	ld a, 1 << BREEDGEN_DITTO
 	ret z
-	ld a, BREEDMON
+	ld a, TEMPMON
 	ld [wMonType], a
 	push bc
 	predef GetGender

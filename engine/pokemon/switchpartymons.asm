@@ -1,0 +1,142 @@
+_SwitchPartyMons:
+	ld a, [wSwitchMon]
+	dec a
+	ld [wBuffer3], a
+	ld b, a
+	ld a, [wMenuCursorY]
+	dec a
+	ld [wBuffer2], a
+	cp b
+	ret z
+	call .SwapMonAndMail
+	ld a, [wBuffer3]
+	call .ClearSprite
+	ld a, [wBuffer2]
+	; fallthrough
+
+.ClearSprite:
+	push af
+	hlcoord 0, 1
+	ld bc, 2 * SCREEN_WIDTH
+	rst AddNTimes
+	ld bc, 2 * SCREEN_WIDTH
+	ld a, " "
+	call ByteFill
+	pop af
+	ld hl, wSprites
+	ld bc, $10
+	rst AddNTimes
+	ld de, $4
+	ld c, $4
+.gfx_loop
+	ld [hl], $a0
+	add hl, de
+	dec c
+	jr nz, .gfx_loop
+	ld de, SFX_SWITCH_POKEMON
+	jp WaitPlaySFX
+
+.SwapMonAndMail:
+	push hl
+	push de
+	push bc
+	ld bc, wPartySpecies
+	ld a, [wBuffer2]
+	ld l, a
+	ld h, $0
+	add hl, bc
+	ld d, h
+	ld e, l
+	ld a, [wBuffer3]
+	ld l, a
+	ld h, $0
+	add hl, bc
+	ld a, [hl]
+	push af
+	ld a, [de]
+	ld [hl], a
+	pop af
+	ld [de], a
+	ld a, [wBuffer2]
+	ld hl, wPartyMons
+	ld bc, PARTYMON_STRUCT_LENGTH
+	rst AddNTimes
+	push hl
+	ld de, wd002
+	ld bc, PARTYMON_STRUCT_LENGTH
+	rst CopyBytes
+	ld a, [wBuffer3]
+	ld hl, wPartyMons
+	ld bc, PARTYMON_STRUCT_LENGTH
+	rst AddNTimes
+	pop de
+	push hl
+	ld bc, PARTYMON_STRUCT_LENGTH
+	rst CopyBytes
+	pop de
+	ld hl, wd002
+	ld bc, PARTYMON_STRUCT_LENGTH
+	rst CopyBytes
+	ld a, [wBuffer2]
+	ld hl, wPartyMonOT
+	call SkipNames
+	push hl
+	call .CopyNameTowd002
+	ld a, [wBuffer3]
+	ld hl, wPartyMonOT
+	call SkipNames
+	pop de
+	push hl
+	call .CopyName
+	pop de
+	ld hl, wd002
+	call .CopyName
+	ld hl, wPartyMonNicknames
+	ld a, [wBuffer2]
+	call SkipNames
+	push hl
+	call .CopyNameTowd002
+	ld hl, wPartyMonNicknames
+	ld a, [wBuffer3]
+	call SkipNames
+	pop de
+	push hl
+	call .CopyName
+	pop de
+	ld hl, wd002
+	call .CopyName
+	ld hl, sPartyMail
+	ld a, [wBuffer2]
+	ld bc, MAIL_STRUCT_LENGTH
+	rst AddNTimes
+	push hl
+	ld de, wd002
+	ld bc, MAIL_STRUCT_LENGTH
+	ld a, BANK(sPartyMail)
+	call GetSRAMBank
+	rst CopyBytes
+	ld hl, sPartyMail
+	ld a, [wBuffer3]
+	ld bc, MAIL_STRUCT_LENGTH
+	rst AddNTimes
+	pop de
+	push hl
+	ld bc, MAIL_STRUCT_LENGTH
+	rst CopyBytes
+	pop de
+	ld hl, wd002
+	ld bc, MAIL_STRUCT_LENGTH
+	rst CopyBytes
+	call CloseSRAM
+	pop bc
+	pop de
+	pop hl
+	ret
+
+.CopyNameTowd002:
+	ld de, wd002
+
+.CopyName:
+	ld bc, NAME_LENGTH
+	rst CopyBytes
+	ret

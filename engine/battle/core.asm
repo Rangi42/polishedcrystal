@@ -3772,7 +3772,7 @@ endr
 	ld [hl], a
 
 .not_own_shiny
-	ld a, BREEDMON
+	ld a, TEMPMON
 	ld [wMonType], a
 	farcall GetGender
 	ld a, " "
@@ -3847,7 +3847,7 @@ endr
 	ld [hl], a
 
 .not_shiny
-	ld a, BREEDMON
+	ld a, TEMPMON
 	ld [wMonType], a
 	farcall GetGender
 	ld a, " "
