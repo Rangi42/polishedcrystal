@@ -23,6 +23,7 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * pfero for the improved GetAnimatedFrontpic routine and the BGMap0 fill-tile bug.
 * Armada651 for the playable Celadon Game Corner lucky slot machine.
 * tonyism for the in-battle shiny icon code.
+* Tachytaenius for the ability to change the Ball a Pokémon is in.
 
 
 ## Music
