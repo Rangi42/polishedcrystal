@@ -9,7 +9,7 @@ INCLUDE "engine/overworld/map_objects.asm"
 INCLUDE "engine/intro_menu.asm"
 INCLUDE "engine/init_options.asm"
 INCLUDE "engine/learn.asm"
-INCLUDE "engine/math.asm"
+INCLUDE "engine/math/math.asm"
 INCLUDE "engine/overworld/npc_movement.asm"
 INCLUDE "engine/events/happiness_egg.asm"
 INCLUDE "engine/events/specials_2.asm"
@@ -19,7 +19,7 @@ INCLUDE "data/items/attributes.asm"
 SECTION "Code 2", ROMX
 
 INCLUDE "engine/overworld/player_object.asm"
-INCLUDE "engine/sine.asm"
+INCLUDE "engine/math/sine.asm"
 INCLUDE "data/predef_pointers.asm"
 INCLUDE "engine/gfx/color.asm"
 INCLUDE "engine/trainer_scripts.asm"
@@ -31,7 +31,7 @@ INCLUDE "engine/poke_balls.asm"
 SECTION "Code 3", ROMX
 
 INCLUDE "engine/events/specials.asm"
-INCLUDE "engine/printnum.asm"
+INCLUDE "engine/math/print_num.asm"
 INCLUDE "engine/health.asm"
 INCLUDE "engine/events/overworld.asm"
 INCLUDE "engine/items.asm"
@@ -39,26 +39,7 @@ INCLUDE "engine/anim_hp_bar.asm"
 INCLUDE "engine/move_mon.asm"
 INCLUDE "engine/billspctop.asm"
 INCLUDE "engine/item_effects.asm"
-
-CheckTime:: ; c000
-	ld a, [wTimeOfDay]
-	ld hl, TimeOfDayTable
-	ld de, 2
-	call IsInArray
-	inc hl
-	ld c, [hl]
-	ret c
-
-	xor a
-	ld c, a
-	ret
-
-TimeOfDayTable: ; c012
-	db MORN, 1 << MORN
-	db DAY,  1 << DAY
-	db NITE, 1 << NITE
-	db NITE, 1 << NITE
-	db -1
+INCLUDE "engine/events/checktime.asm"
 
 GetBreedMon1LevelGrowth: ; e698
 	ld hl, wBreedMon1Stats
