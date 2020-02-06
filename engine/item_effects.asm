@@ -314,6 +314,9 @@ KeyItemEffects:
 	dw ApricornBox      ; APRICORN_BOX
 
 PokeBallEffect: ; e8a2
+	ld a, [wBattleMode]
+	and a ; overworld
+	jp z, Ball_ReplacePartyMonCaughtBall
 	farcall DoesNuzlockeModePreventCapture
 	jp c, Ball_NuzlockeFailureMessage
 
@@ -2313,6 +2316,49 @@ ItemWasntUsedMessage:
 	jp PrintText
 ; f7e8
 
+Ball_ReplacePartyMonCaughtBall:
+	ld b, PARTYMENUACTION_00
+	call UseItem_SelectMon
+	jp c, ItemNotUsed_ExitMenu
+
+	ld a, [wCurItem]
+	ld b, a
+	ld a, [wCurPartyMon]
+	ld hl, wPartyMon1CaughtBall
+	call GetPartyLocation
+	ld a, [hl]
+	and CAUGHTBALL_MASK
+	cp b
+	
+	jr z, AlreadyInThatBallMessage
+	ld a, [hl]
+	and $ff ^ CAUGHTBALL_MASK
+	add b
+	ld [hl], a
+	call UseDisposableItem
+	
+	call GetCurItemName
+	ld hl, wStringBuffer1
+	ld bc, wStringBuffer2 - wStringBuffer1
+	ld de, wStringBuffer2
+	call GetCurNick
+	
+	ld hl, BallReplacedText
+	jp PrintText
+
+BallReplacedText:
+	text "Put @"
+	text_from_ram wStringBuffer1
+	text " in"
+	line "the @"
+	text_from_ram wStringBuffer2
+	text "."
+	prompt
+
+AlreadyInThatBallMessage:
+	ld hl, AlreadyInThatBallText
+	jr CantUseItemMessage
+
 CantUseOnEggMessage: ; f7e8
 	ld hl, CantUseOnEggText
 	jr CantUseItemMessage
@@ -2345,6 +2391,10 @@ CantUseOnEggText: ; 0xf810
 	text_jump UnknownText_0x1c5d50
 	db "@"
 ; 0xf815
+
+AlreadyInThatBallText:
+	text_jump AlreadyInThatBallTextData
+	db "@"
 
 IsntTheTimeText: ; 0xf815
 	; OAK:  ! This isn't the time to use that!

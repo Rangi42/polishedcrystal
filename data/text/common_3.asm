@@ -1103,3 +1103,8 @@ ItemCantBeSelectedText::
 	text "That item can't be"
 	line "selected."
 	prompt
+
+AlreadyInThatBallTextData::
+	text "Your #mon is in"
+	line "that Ball already."
+	prompt
