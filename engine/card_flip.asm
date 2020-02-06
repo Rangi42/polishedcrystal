@@ -16,20 +16,20 @@ _CardFlip: ; e00ee (38:40ee)
 	call LoadFontsExtra
 
 	ld hl, CardFlipLZ01
-	ld de, VTiles2 tile $00
+	ld de, vTiles2 tile $00
 	call Decompress
 	ld hl, CardFlipLZ02
-	ld de, VTiles2 tile $3e
+	ld de, vTiles2 tile $3e
 	call Decompress
 	ld hl, CardFlipLZ03
-	ld de, VTiles0 tile $00
+	ld de, vTiles0 tile $00
 	call Decompress
 	ld hl, CardFlipOffButtonGFX
-	ld de, VTiles1 tile (CARDFLIP_LIGHT_OFF - $80)
+	ld de, vTiles1 tile (CARDFLIP_LIGHT_OFF - $80)
 	ld bc, 1 tiles
 	rst CopyBytes
 	ld hl, CardFlipOnButtonGFX
-	ld de, VTiles1 tile (CARDFLIP_LIGHT_ON - $80)
+	ld de, vTiles1 tile (CARDFLIP_LIGHT_ON - $80)
 	ld bc, 1 tiles
 	rst CopyBytes
 

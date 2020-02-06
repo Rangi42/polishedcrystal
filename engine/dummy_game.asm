@@ -12,10 +12,10 @@ _DummyGame: ; e1e5b (38:5e5b)
 	call GetCGBLayout
 	farcall ClearSpriteAnims
 	ld hl, DummyGameGFX
-	ld de, VTiles2 tile $00
+	ld de, vTiles2 tile $00
 	call Decompress
 	ld hl, MissingDummyGameGFX
-	ld de, VTiles0 tile $00
+	ld de, vTiles0 tile $00
 	ld bc, 4 tiles
 	ld a, BANK(MissingDummyGameGFX)
 	call FarCopyBytes

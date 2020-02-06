@@ -23,7 +23,7 @@ Pokepic:: ; 244e3
 	ld a, [wCurPartySpecies]
 	ld [wCurSpecies], a
 	call GetBaseData
-	ld de, VTiles1
+	ld de, vTiles1
 	predef GetFrontpic
 _Displaypic:
 	ld a, [wMenuBorderTopCoord]
@@ -51,7 +51,7 @@ Trainerpic::
 	xor a
 	ld [hBGMapMode], a
 	ld a, [wTrainerClass]
-	ld de, VTiles1
+	ld de, vTiles1
 	farcall GetTrainerPic
 	jr _Displaypic
 
@@ -59,7 +59,7 @@ Paintingpic::
 	farcall LoadPaintingPalette
 	call UpdateTimePals
 	ld de, PaintingFrameGFX
-	ld hl, VTiles0 tile ("┌" - 3)
+	ld hl, vTiles0 tile ("┌" - 3)
 	lb bc, BANK(PaintingFrameGFX), 9
 	call Get2bpp
 	ld hl, PokepicMenuDataHeader
@@ -76,7 +76,7 @@ Paintingpic::
 	xor a
 	ld [hBGMapMode], a
 	ld a, [wTrainerClass]
-	ld de, VTiles1
+	ld de, vTiles1
 	farcall GetPaintingPic
 	jp _Displaypic
 

@@ -27,7 +27,7 @@ BSOD:
 	call DelayFrame
 
 	ld de, FontNormal
-	ld hl, VTiles1
+	ld hl, vTiles1
 	lb bc, BANK(FontNormal), 111
 	call Get1bpp
 

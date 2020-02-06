@@ -45,7 +45,7 @@ PokeGear: ; 90b8d (24:4b8d)
 	xor a
 	ld [hBGMapAddress], a
 	ld [wInPokegear], a
-	ld a, VBGMap0 / $100
+	ld a, vBGMap0 / $100
 	ld [hBGMapAddress + 1], a
 	ld a, $90
 	ld [hWY], a
@@ -91,15 +91,15 @@ PokeGear: ; 90b8d (24:4b8d)
 Pokegear_LoadGFX: ; 90c4e
 	call ClearVBank1
 	ld hl, TownMapGFX
-	ld de, VTiles2
+	ld de, vTiles2
 	ld a, BANK(TownMapGFX)
 	call FarDecompress
 	ld hl, PokegearGFX
-	ld de, VTiles2 tile $40
+	ld de, vTiles2 tile $40
 	ld a, BANK(PokegearGFX)
 	call Decompress
 	ld hl, PokegearSpritesGFX
-	ld de, VTiles0
+	ld de, vTiles0
 	ld a, BANK(PokegearSpritesGFX)
 	call Decompress
 	ld a, [wMapGroup]
@@ -124,7 +124,7 @@ Pokegear_LoadGFX: ; 90c4e
 	ld a, b
 	; standing sprite
 	push af
-	ld de, VTiles0 tile $10
+	ld de, vTiles0 tile $10
 	ld bc, 4 tiles
 	call FarCopyBytes
 	pop af
@@ -132,7 +132,7 @@ Pokegear_LoadGFX: ; 90c4e
 	; walking sprite
 	ld de, 12 tiles
 	add hl, de
-	ld de, VTiles0 tile $14
+	ld de, vTiles0 tile $14
 	ld bc, 4 tiles
 	call FarCopyBytes
 	pop af
@@ -142,7 +142,7 @@ Pokegear_LoadGFX: ; 90c4e
 .ssaqua
 	ld hl, FastShipGFX
 .loadaltsprite
-	ld de, VTiles0 tile $10
+	ld de, vTiles0 tile $10
 	ld bc, 8 tiles
 	rst CopyBytes
 	ret
@@ -241,7 +241,7 @@ InitPokegearTilemap: ; 90da8 (24:4da8)
 	jr nz, .transition
 	xor a
 	ld [hBGMapAddress], a
-	ld a, VBGMap0 / $100
+	ld a, vBGMap0 / $100
 	ld [hBGMapAddress + 1], a
 	call .UpdateBGMap
 	ld a, $90
@@ -250,7 +250,7 @@ InitPokegearTilemap: ; 90da8 (24:4da8)
 .transition
 	xor a
 	ld [hBGMapAddress], a
-	ld a, VBGMap1 / $100
+	ld a, vBGMap1 / $100
 	ld [hBGMapAddress + 1], a
 	call .UpdateBGMap
 	xor a
@@ -2067,7 +2067,7 @@ _FlyMap: ; 91af3
 	ld [hWY], a
 	xor a
 	ld [hBGMapAddress], a
-	ld a, VBGMap0 / $100
+	ld a, vBGMap0 / $100
 	ld [hBGMapAddress + 1], a
 	ld a, [wTownMapPlayerIconLandmark]
 	ld e, a
@@ -2349,11 +2349,11 @@ _Area: ; 91d11
 	ld a, $1
 	ld [hInMenu], a
 	ld de, PokedexNestIconGFX
-	ld hl, VTiles0 tile $7f
+	ld hl, vTiles0 tile $7f
 	lb bc, BANK(PokedexNestIconGFX), 1
 	call Request2bpp
 	call .GetPlayerOrFastShipIcon
-	ld hl, VTiles0 tile $78
+	ld hl, vTiles0 tile $78
 	ld c, 4
 	call Request2bppInWRA6
 	call LoadTownMapGFX
@@ -2883,7 +2883,7 @@ TownMapPlayerIcon: ; 91fa6
 	push af
 	farcall GetPlayerIcon
 ; Standing icon
-	ld hl, VTiles0 tile $10
+	ld hl, vTiles0 tile $10
 	ld c, 4 ; # tiles
 	push bc
 	push de
@@ -2895,7 +2895,7 @@ TownMapPlayerIcon: ; 91fa6
 	add hl, de
 	ld d, h
 	ld e, l
-	ld hl, VTiles0 tile $14
+	ld hl, vTiles0 tile $14
 	call Request2bppInWRA6
 ; Animation/palette
 	depixel 0, 0
@@ -2927,7 +2927,7 @@ TownMapPlayerIcon: ; 91fa6
 
 LoadTownMapGFX: ; 91ff2
 	ld hl, TownMapGFX
-	ld de, VTiles2
+	ld de, vTiles2
 	lb bc, BANK(TownMapGFX), $40
 	jp DecompressRequest2bpp
 

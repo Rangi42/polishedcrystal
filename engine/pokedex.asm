@@ -769,7 +769,7 @@ Pokedex_UpdateUnownMode: ; 405df (10:45df)
 	ld [wJumptableIndex], a
 	call DelayFrame
 	ld hl, PokedexLZ
-	ld de, VTiles2 tile $31
+	ld de, vTiles2 tile $31
 	lb bc, BANK(PokedexLZ), $34
 	jp DecompressRequest2bpp
 
@@ -2377,7 +2377,7 @@ Pokedex_LoadSelectedMonTiles: ; 4143b
 	ld a, [wd265]
 	ld [wCurPartySpecies], a
 	call GetBaseData
-	ld de, VTiles2
+	ld de, vTiles2
 	predef GetFrontpic
 	ret
 
@@ -2387,7 +2387,7 @@ Pokedex_LoadSelectedMonTiles: ; 4143b
 	ld hl, QuestionMarkLZ
 	ld de, sScratch
 	call Decompress
-	ld hl, VTiles2
+	ld hl, vTiles2
 	ld de, sScratch
 	ld c, 7 * 7
 	ld a, [hROMBank]
@@ -2421,24 +2421,24 @@ Pokedex_LoadAnyFootprint: ; 4147b
 
 	ld e, l
 	ld d, h
-	ld hl, VTiles2 tile $65
+	ld hl, vTiles2 tile $65
 	lb bc, BANK(Footprints), 4
 	jp Request1bpp
 
 Pokedex_LoadGFX:
 	call DisableLCD
 Pokedex_LoadGFX2:
-	ld hl, VTiles2
+	ld hl, vTiles2
 	ld bc, $31 tiles
 	xor a
 	call ByteFill
 	call LoadStandardFont
 	call LoadFontsExtra
 	ld hl, PokedexLZ
-	ld de, VTiles2 tile $31
+	ld de, vTiles2 tile $31
 	call Decompress
 	ld hl, PokedexSlowpokeLZ
-	ld de, VTiles0
+	ld de, vTiles0
 	call Decompress
 	ld a, 6
 	call SkipMusic
@@ -2465,7 +2465,7 @@ Pokedex_LoadUnownFrontpicTiles: ; 41a58 (10:5a58)
 	ld a, UNOWN
 	ld [wCurPartySpecies], a
 	call GetBaseData
-	ld de, VTiles2 tile $00
+	ld de, vTiles2 tile $00
 	predef GetFrontpic
 	pop af
 	ld [wCurForm], a
@@ -2532,7 +2532,7 @@ NewPokedexEntry: ; fb877
 	call EnableLCD
 	call ApplyTilemapInVBlank
 	call GetBaseData
-	ld de, VTiles2
+	ld de, vTiles2
 	predef GetFrontpic
 	ld a, CGB_POKEDEX
 	call Pokedex_GetCGBLayout

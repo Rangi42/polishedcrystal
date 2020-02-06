@@ -18,7 +18,7 @@ debgcoord EQUS "bgcoord de,"
 bgcoord: MACRO
 ; register, x, y[, origin]
 	if _NARG < 4
-	ld \1, (\3) * BG_MAP_WIDTH + (\2) + VBGMap0
+	ld \1, (\3) * BG_MAP_WIDTH + (\2) + vBGMap0
 	else
 	ld \1, (\3) * BG_MAP_WIDTH + (\2) + \4
 	endc

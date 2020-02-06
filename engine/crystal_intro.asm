@@ -3,7 +3,7 @@ Copyright_GFPresents: ; e4579
 	call PlayMusic
 	call ClearBGPalettes
 	call ClearTileMap
-	ld a, VBGMap0 / $100
+	ld a, vBGMap0 / $100
 	ld [hBGMapAddress + 1], a
 	xor a
 	ld [hBGMapAddress], a
@@ -55,7 +55,7 @@ Copyright_GFPresents: ; e4579
 
 .GetGFLogoGFX: ; e45e8
 	ld de, GameFreakLogo
-	ld hl, VTiles2
+	ld hl, vTiles2
 	lb bc, BANK(GameFreakLogo), $1c
 	call Get1bpp
 
@@ -69,12 +69,12 @@ Copyright_GFPresents: ; e4579
 	ld a, BANK(IntroLogoGFX)
 	call Decompress
 
-	ld hl, VTiles0
+	ld hl, vTiles0
 	ld de, wDecompressScratch
 	lb bc, 1, 8 tiles
 	call Request2bpp
 
-	ld hl, VTiles1
+	ld hl, vTiles1
 	ld de, wDecompressScratch + $80 tiles
 	lb bc, 1, 8 tiles
 	call Request2bpp
@@ -499,10 +499,10 @@ IntroScene1: ; e495b (39:495b)
 	xor a
 	ld [rVBK], a
 	ld hl, IntroUnownsGFX
-	ld de, VTiles2 tile $00
+	ld de, vTiles2 tile $00
 	call Intro_DecompressRequest2bpp_128Tiles
 	ld hl, IntroPulseGFX
-	ld de, VTiles0 tile $00
+	ld de, vTiles0 tile $00
 	call Intro_DecompressRequest2bpp_128Tiles
 	ld hl, IntroTilemap002
 	debgcoord 0, 0
@@ -607,10 +607,10 @@ IntroScene5: ; e4a7a (39:4a7a)
 	xor a
 	ld [rVBK], a
 	ld hl, IntroUnownsGFX
-	ld de, VTiles2 tile $00
+	ld de, vTiles2 tile $00
 	call Intro_DecompressRequest2bpp_128Tiles
 	ld hl, IntroPulseGFX
-	ld de, VTiles0 tile $00
+	ld de, vTiles0 tile $00
 	call Intro_DecompressRequest2bpp_128Tiles
 	ld hl, IntroTilemap006
 	debgcoord 0, 0
@@ -700,13 +700,13 @@ IntroScene7: ; e4b3f (39:4b3f)
 	call Intro_DecompressRequest2bpp_64Tiles
 
 	ld hl, IntroPichuWooperGFX
-	ld de, VTiles0 tile $00
+	ld de, vTiles0 tile $00
 	call Intro_DecompressRequest2bpp_128Tiles
 
 	xor a
 	ld [rVBK], a
 	ld hl, IntroSuicuneRunGFX
-	ld de, VTiles0 tile $00
+	ld de, vTiles0 tile $00
 	call Intro_DecompressRequest2bpp_255Tiles
 
 	call Intro_SetupCommonScenery
@@ -833,7 +833,7 @@ IntroScene11: ; e4c86 (39:4c86)
 	xor a
 	ld [rVBK], a
 	ld hl, IntroUnownsGFX
-	ld de, VTiles2 tile $00
+	ld de, vTiles2 tile $00
 	call Intro_DecompressRequest2bpp_128Tiles
 	ld hl, IntroTilemap008
 	debgcoord 0, 0
@@ -952,7 +952,7 @@ IntroScene13: ; e4d6d (39:4d6d)
 	xor a
 	ld [rVBK], a
 	ld hl, IntroSuicuneRunGFX
-	ld de, VTiles0 tile $00
+	ld de, vTiles0 tile $00
 	call Intro_DecompressRequest2bpp_255Tiles
 	call Intro_SetupCommonScenery
 	farcall ClearSpriteAnims
@@ -1027,13 +1027,13 @@ IntroScene15: ; e4e40 (39:4e40)
 	xor a
 	ld [rVBK], a
 	ld hl, IntroSuicuneJumpGFX
-	ld de, VTiles2 tile $00
+	ld de, vTiles2 tile $00
 	call Intro_DecompressRequest2bpp_128Tiles
 	ld hl, IntroUnownBackGFX
-	ld de, VTiles0 tile $00
+	ld de, vTiles0 tile $00
 	call Intro_DecompressRequest2bpp_128Tiles
 	ld de, IntroGrass4GFX
-	ld hl, VTiles1 tile $00
+	ld hl, vTiles1 tile $00
 	lb bc, BANK(IntroGrass4GFX), 1
 	call Request2bpp
 	ld hl, IntroTilemap010
@@ -1107,7 +1107,7 @@ IntroScene17: ; e4ef5 (39:4ef5)
 	xor a
 	ld [rVBK], a
 	ld hl, IntroSuicuneCloseGFX
-	ld de, VTiles1 tile $00
+	ld de, vTiles1 tile $00
 	call Intro_DecompressRequest2bpp_255Tiles
 	ld hl, IntroTilemap012
 	debgcoord 0, 0
@@ -1171,13 +1171,13 @@ IntroScene19: ; e4f7e (39:4f7e)
 	xor a
 	ld [rVBK], a
 	ld hl, IntroSuicuneBackGFX
-	ld de, VTiles2 tile $00
+	ld de, vTiles2 tile $00
 	call Intro_DecompressRequest2bpp_128Tiles
 	ld hl, IntroUnownsGFX
-	ld de, VTiles1 tile $00
+	ld de, vTiles1 tile $00
 	call Intro_DecompressRequest2bpp_128Tiles
 	ld de, IntroGrass4GFX
-	ld hl, VTiles1 tile $7f
+	ld hl, vTiles1 tile $7f
 	lb bc, BANK(IntroGrass4GFX), 1
 	call Request2bpp
 	ld hl, IntroTilemap014
@@ -1331,7 +1331,7 @@ IntroScene26: ; e50bb (39:50bb)
 	xor a
 	ld [rVBK], a
 	ld hl, IntroCrystalUnownsGFX
-	ld de, VTiles2 tile $00
+	ld de, vTiles2 tile $00
 	call Intro_DecompressRequest2bpp_128Tiles
 	ld hl, IntroTilemap017
 	debgcoord 0, 0
@@ -1990,9 +1990,9 @@ Intro_RustleGrass: ; e546d (39:546d)
 	ld [hRequestedVTileSource], a
 	ld a, [hli]
 	ld [hRequestedVTileSource + 1], a
-	ld a, (VTiles2 tile $09) % $100
+	ld a, (vTiles2 tile $09) % $100
 	ld [hRequestedVTileDest], a
-	ld a, (VTiles2 tile $09) / $100
+	ld a, (vTiles2 tile $09) / $100
 	ld [hRequestedVTileDest + 1], a
 	ld a, 4
 	ld [hRequested2bpp], a
@@ -2133,7 +2133,7 @@ INCBIN "gfx/intro/003.tilemap.lz"
 
 Intro_SetupCommonScenery:
 	ld hl, IntroBackgroundGFX
-	ld de, VTiles2 tile $00
+	ld de, vTiles2 tile $00
 	call Intro_DecompressRequest2bpp_128Tiles
 
 	ld hl, IntroTilemap004

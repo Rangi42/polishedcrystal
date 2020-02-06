@@ -1863,7 +1863,7 @@ ApricornBox:
 	db $40 ; flags
 	db 01, 05 ; start coords
 	db 11, 19 ; end coords
-	dw VTiles0
+	dw vTiles0
 	db 0 ; default option
 
 .Text

@@ -649,7 +649,7 @@ BattleAnimCmd_5GFX: ; cc485 (33:4485)
 	ld [wBattleAnimTemp0], a
 .loop
 	ld a, [wBattleAnimTemp0]
-	cp (VTiles1 - VTiles0) / $10 - $31
+	cp (vTiles1 - vTiles0) / $10 - $31
 	ret nc
 	call GetBattleAnimByte
 	ld [hli], a
@@ -662,7 +662,7 @@ BattleAnimCmd_5GFX: ; cc485 (33:4485)
 rept 4
 	add hl, hl
 endr
-	ld de, VTiles0 tile $31
+	ld de, vTiles0 tile $31
 	add hl, de
 	ld a, [wBattleAnimByte]
 	call LoadBattleAnimObj
@@ -771,13 +771,13 @@ BattleAnimCmd_EnemyFeetObj: ; cc52c (33:452c)
 	ld a, $49
 	ld [hl], a
 
-	ld hl, VTiles0 tile $73
-	ld de, VTiles2 tile $06
+	ld hl, vTiles0 tile $73
+	ld de, vTiles2 tile $06
 	ld a, $70
 	ld [wBattleAnimTemp0], a
 	ld a, $7
 	call .LoadFootprint
-	ld de, VTiles2 tile $31
+	ld de, vTiles2 tile $31
 	ld a, $60
 	ld [wBattleAnimTemp0], a
 	ld a, $6
@@ -824,13 +824,13 @@ BattleAnimCmd_PlayerHeadObj: ; cc57e (33:457e)
 	ld a, $43
 	ld [hl], a
 
-	ld hl, VTiles0 tile $66
-	ld de, VTiles2 tile $05
+	ld hl, vTiles0 tile $66
+	ld de, vTiles2 tile $05
 	ld a, $70
 	ld [wBattleAnimTemp0], a
 	ld a, $7
 	call .LoadHead
-	ld de, VTiles2 tile $31
+	ld de, vTiles2 tile $31
 	ld a, $60
 	ld [wBattleAnimTemp0], a
 	ld a, $6
@@ -878,7 +878,7 @@ BattleAnimCmd_Transform: ; cc5dc (33:45dc)
 	ld a, [wTempBattleMonSpecies] ; TempBattleMonSpecies
 	ld [wCurPartySpecies], a ; CurPartySpecies
 	farcall GetBattleMonVariant
-	ld de, VTiles0 tile $00
+	ld de, vTiles0 tile $00
 	predef GetFrontpic
 	jr .done
 
@@ -886,7 +886,7 @@ BattleAnimCmd_Transform: ; cc5dc (33:45dc)
 	ld a, [wTempEnemyMonSpecies] ; TempEnemyMonSpecies
 	ld [wCurPartySpecies], a ; CurPartySpecies
 	farcall GetEnemyMonVariant
-	ld de, VTiles0 tile $00
+	ld de, vTiles0 tile $00
 	predef GetBackpic
 
 .done
@@ -898,17 +898,17 @@ BattleAnimCmd_Transform: ; cc5dc (33:45dc)
 
 BattleAnimCmd_UpdateActorPic: ; cc622 (33:4622)
 
-	ld de, VTiles0 tile $00
+	ld de, vTiles0 tile $00
 	ld a, [hBattleTurn]
 	and a
 	jr z, .player
 
-	ld hl, VTiles2 tile $00
+	ld hl, vTiles2 tile $00
 	lb bc, 0, $31
 	jp Request2bpp
 
 .player
-	ld hl, VTiles2 tile $31
+	ld hl, vTiles2 tile $31
 	lb bc, 0, $24
 	jp Request2bpp
 
@@ -940,7 +940,7 @@ GetSubstitutePic: ; cc64c
 	ld de, wTempTileMap
 	call FarDecompress
 	call .CopyPic
-	ld hl, VTiles2 tile $00
+	ld hl, vTiles2 tile $00
 	ld de, sScratch
 	lb bc, BANK(GetSubstitutePic), 7 * 7
 	call Request2bpp
@@ -952,7 +952,7 @@ GetSubstitutePic: ; cc64c
 	ld de, wTempTileMap
 	call FarDecompress
 	call .CopyPic
-	ld hl, VTiles2 tile $31
+	ld hl, vTiles2 tile $31
 	ld de, sScratch
 	lb bc, BANK(GetSubstitutePic), 6 * 6
 	call Request2bpp
@@ -1063,7 +1063,7 @@ GetMinimizePic: ; cc6e7 (33:46e7)
 
 	ld de, sScratch + $1a tiles
 	call CopyMinimizePic
-	ld hl, VTiles2 tile $00
+	ld hl, vTiles2 tile $00
 	ld de, sScratch
 	lb bc, BANK(GetMinimizePic), 7 * 7
 	ret
@@ -1071,7 +1071,7 @@ GetMinimizePic: ; cc6e7 (33:46e7)
 .player
 	ld de, sScratch + $16 tiles
 	call CopyMinimizePic
-	ld hl, VTiles2 tile $31
+	ld hl, vTiles2 tile $31
 	ld de, sScratch
 	lb bc, BANK(GetMinimizePic), 6 * 6
 	ret
@@ -1095,7 +1095,7 @@ BattleAnimCmd_Minimize: ; cc735 (33:4735)
 	xor a
 	call GetSRAMBank
 	call GetMinimizePic
-	ld hl, VTiles0 tile $00
+	ld hl, vTiles0 tile $00
 	call Request2bpp
 	call CloseSRAM
 	pop af
@@ -1143,13 +1143,13 @@ BattleAnimCmd_BeatUp: ; cc776 (33:4776)
 	jr z, .player
 
 	farcall GetBattleMonVariant
-	ld de, VTiles2 tile $00
+	ld de, vTiles2 tile $00
 	predef GetFrontpic
 	jr .done
 
 .player
 	farcall GetEnemyMonVariant
-	ld de, VTiles2 tile $31
+	ld de, vTiles2 tile $31
 	predef GetBackpic
 
 .done

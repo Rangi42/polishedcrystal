@@ -159,12 +159,12 @@ MusicPlayer::
 ; Load graphics
 	ld de, PianoGFX ; 
 	lb bc, BANK(PianoGFX), 32 + 13 ; PianoGFX + MusicTestGFX
-	ld hl, VTiles2
+	ld hl, vTiles2
 	call Request2bpp
 
 	ld de, NotesGFX
 	lb bc, BANK(NotesGFX), $80
-	ld hl, VTiles0
+	ld hl, vTiles0
 	call Request2bpp
 
 ; Prerender all waveforms
@@ -182,7 +182,7 @@ MusicPlayer::
 ; Here we just use a static image.
 	ld de, WaveformsGFX
 	lb bc, BANK(WaveformsGFX), NUM_WAVEFORMS * 2
-	ld hl, VTiles2 tile $40
+	ld hl, vTiles2 tile $40
 	call Request2bpp
 
 	call DelayFrame
@@ -1069,7 +1069,7 @@ _DrawCh1_2_3:
 ;	jr .loop
 ;
 ;.done
-;	ld hl, VTiles2 tile $40
+;	ld hl, vTiles2 tile $40
 ;	ld a, [wRenderedWaveform]
 ;	swap a
 ;	sla a

@@ -13,7 +13,7 @@ LoadMapGroupRoof::
 	ld d, h
 	ld e, l
 	lb bc, BANK(Roofs), 9
-	ld hl, VTiles2 tile $0a
+	ld hl, vTiles2 tile $0a
 	jp Get2bpp
 
 INCLUDE "data/maps/roofs.asm"

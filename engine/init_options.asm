@@ -30,7 +30,7 @@ SetInitialOptions:
 	call FarCopyWRAM
 
 	ld de, .BGTile
-	ld hl, VTiles2 tile $00
+	ld hl, vTiles2 tile $00
 	lb bc, BANK(.BGTile), 1
 	call Get2bpp
 

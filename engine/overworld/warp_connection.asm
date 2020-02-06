@@ -279,7 +279,7 @@ LoadMapTimeOfDay: ; 104750
 	ret
 
 .ClearBGMap: ; 104770 (41:4770)
-	ld a, VBGMap0 / $100
+	ld a, vBGMap0 / $100
 	ld [wBGMapAnchor + 1], a
 	xor a
 	ld [wBGMapAnchor], a
@@ -291,13 +291,13 @@ LoadMapTimeOfDay: ; 104750
 	ld a, $1
 	ld [rVBK], a
 	xor a
-	ld bc, VBGMap1 - VBGMap0
+	ld bc, vBGMap1 - vBGMap0
 	hlbgcoord 0, 0
 	call ByteFill
 	pop af
 	ld [rVBK], a
 	ld a, "<BLACK>"
-	ld bc, VBGMap1 - VBGMap0
+	ld bc, vBGMap1 - vBGMap0
 	hlbgcoord 0, 0
 	jp ByteFill
 

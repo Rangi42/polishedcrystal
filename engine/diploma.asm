@@ -5,7 +5,7 @@ _Diploma: ; 1dd702
 	call ClearSprites
 	call DisableLCD
 	ld hl, DiplomaGFX
-	ld de, VTiles2
+	ld de, vTiles2
 	call Decompress
 	ld hl, DiplomaTilemap
 	decoord 0, 0

@@ -1975,7 +1975,7 @@ PlaceMoveData:
 	rst AddNTimes
 	ld d, h
 	ld e, l
-	ld hl, VTiles2 tile $59
+	ld hl, vTiles2 tile $59
 	lb bc, BANK(CategoryIconGFX), 2
 	call Request2bpp
 	hlcoord 1, 12
@@ -2003,7 +2003,7 @@ PlaceMoveData:
 	rst AddNTimes
 	ld d, h
 	ld e, l
-	ld hl, VTiles2 tile $5b
+	ld hl, vTiles2 tile $5b
 	lb bc, BANK(TypeIconGFX), 4
 	call Request1bpp
 	hlcoord 3, 12

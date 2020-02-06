@@ -4377,12 +4377,12 @@ BattleMenuPKMN_Loop:
 
 Battle_StatsScreen: ; 3e308
 	call DisableLCD
-	ld hl, VTiles2 tile $31
-	ld de, VTiles0
+	ld hl, vTiles2 tile $31
+	ld de, vTiles0
 	ld bc, $11 tiles
 	rst CopyBytes
-	ld hl, VTiles2
-	ld de, VTiles0 tile $11
+	ld hl, vTiles2
+	ld de, vTiles0 tile $11
 	ld bc, $31 tiles
 	rst CopyBytes
 	call EnableLCD
@@ -4393,12 +4393,12 @@ Battle_StatsScreen: ; 3e308
 	farcall StatsScreenInit
 	call MaxVolume
 	call DisableLCD
-	ld hl, VTiles0
-	ld de, VTiles2 tile $31
+	ld hl, vTiles0
+	ld de, vTiles2 tile $31
 	ld bc, $11 tiles
 	rst CopyBytes
-	ld hl, VTiles0 tile $11
-	ld de, VTiles2
+	ld hl, vTiles0 tile $11
+	ld de, vTiles2
 	ld bc, $31 tiles
 	rst CopyBytes
 	jp EnableLCD
@@ -5186,7 +5186,7 @@ MoveInfoBox: ; 3e6c8
 	rst AddNTimes
 	ld d, h
 	ld e, l
-	ld hl, VTiles2 tile $59
+	ld hl, vTiles2 tile $59
 	lb bc, BANK(CategoryIconGFX), 2
 	call Request2bpp
 	ld hl, TypeIconGFX
@@ -5195,7 +5195,7 @@ MoveInfoBox: ; 3e6c8
 	rst AddNTimes
 	ld d, h
 	ld e, l
-	ld hl, VTiles2 tile $5b
+	ld hl, vTiles2 tile $5b
 	lb bc, BANK(TypeIconGFX), 4
 	call Request1bpp
 	hlcoord 1, 9
@@ -6008,7 +6008,7 @@ BattleWinSlideInEnemyTrainerFrontpic: ; 3ebd8
 	call FinishBattleAnim
 	ld a, [wOtherTrainerClass]
 	ld [wTrainerClass], a
-	ld de, VTiles2
+	ld de, vTiles2
 	farcall GetTrainerPic
 	hlcoord 19, 0
 	ld c, 0
@@ -7468,7 +7468,7 @@ DropPlayerSub: ; 3f447
 	ld a, [wBattleMonSpecies]
 	ld [wCurPartySpecies], a
 	call GetBattleMonVariant
-	ld de, VTiles2 tile $31
+	ld de, vTiles2 tile $31
 	predef GetBackpic
 	pop af
 	ld [wCurPartySpecies], a
@@ -7506,7 +7506,7 @@ DropEnemySub: ; 3f486
 	ld [wCurPartySpecies], a
 	call GetBaseData
 	call GetEnemyMonVariant
-	ld de, VTiles2
+	ld de, vTiles2
 	predef FrontpicPredef
 	pop af
 	ld [wCurPartySpecies], a
@@ -7562,7 +7562,7 @@ BattleIntro: ; 3f4dd
 	call DisableSpriteUpdates
 	farcall ClearBattleRAM
 	call InitEnemy
-	call BackUpVBGMap2
+	call BackUpBGMap2
 	ld b, CGB_BATTLE_GRAYSCALE
 	call GetCGBLayout
 	ld hl, rLCDC
@@ -7608,13 +7608,13 @@ InitEnemy: ; 3f55e
 	jp InitEnemyWildmon ; wild
 ; 3f568
 
-BackUpVBGMap2: ; 3f568
+BackUpBGMap2: ; 3f568
 	ld a, [rSVBK]
 	push af
 	ld a, BANK(wDecompressScratch)
 	ld [rSVBK], a
 	ld hl, wDecompressScratch
-	ld bc, $40 tiles ; VBGMap3 - VBGMap2
+	ld bc, $40 tiles ; vBGMap3 - vBGMap2
 	ld a, $2
 	call ByteFill
 	ld a, [rVBK]
@@ -7622,8 +7622,8 @@ BackUpVBGMap2: ; 3f568
 	ld a, $1
 	ld [rVBK], a
 	ld de, wDecompressScratch
-	hlbgcoord 0, 0 ; VBGMap2
-	lb bc, BANK(BackUpVBGMap2), $40
+	hlbgcoord 0, 0 ; vBGMap2
+	lb bc, BANK(BackUpBGMap2), $40
 	call Request2bpp
 	pop af
 	ld [rVBK], a
@@ -7639,7 +7639,7 @@ InitEnemyTrainer: ; 3f594
 	farcall GetTrainerAttributes
 	farcall ReadTrainerParty
 	farcall ComputeTrainerReward
-	ld de, VTiles2
+	ld de, vTiles2
 	farcall GetTrainerPic
 	xor a
 	ld [hGraphicStartTile], a
@@ -7708,7 +7708,7 @@ InitEnemyWildmon: ; 3f607
 	ld [wFirstMagikarpSeen], a
 .skip_magikarp
 
-	ld de, VTiles2
+	ld de, vTiles2
 	predef FrontpicPredef
 	xor a
 	ld [wTrainerClass], a
@@ -8425,7 +8425,7 @@ InitBattleDisplay: ; 3fb6c
 
 
 GetTrainerBackpic: ; 3fbff
-; Load the player character's backpic (6x6) into VRAM starting from VTiles2 tile $31.
+; Load the player character's backpic (6x6) into VRAM starting from vTiles2 tile $31.
 
 	ld b, BANK(LyraBackpic) ; BANK(ChrisBackpic), BANK(KrisBackpic)
 
@@ -8447,7 +8447,7 @@ GetTrainerBackpic: ; 3fbff
 	ld hl, KrisBackpic
 
 .Decompress:
-	ld de, VTiles2 tile $31
+	ld de, vTiles2 tile $31
 	ld c, 6 * 6
 	predef DecompressPredef
 	ret
@@ -8458,8 +8458,8 @@ CopyBackpic: ; 3fc30
 	push af
 	ld a, $6
 	ld [rSVBK], a
-	ld hl, VTiles0
-	ld de, VTiles2 tile $31
+	ld hl, vTiles0
+	ld de, vTiles2 tile $31
 	ld a, [hROMBank]
 	ld b, a
 	ld c, 7 * 7

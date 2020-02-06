@@ -23,7 +23,7 @@ InitClock: ; 90672 (24:4672)
 	ld [hBGMapMode], a
 	call LoadStandardFont
 	ld de, TimesetBackgroundGFX
-	ld hl, VTiles2 tile $00
+	ld hl, vTiles2 tile $00
 	lb bc, BANK(TimesetBackgroundGFX), 1
 	call Request1bpp
 	call .ClearScreen

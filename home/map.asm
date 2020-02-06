@@ -1134,10 +1134,10 @@ ScrollMapUp:: ; 2748
 	ld h, a
 	ld bc, $0200
 	add hl, bc
-; cap d at VBGMap1 / $100
+; cap d at vBGMap1 / $100
 	ld a, h
 	and %00000011
-	or VBGMap0 / $100
+	or vBGMap0 / $100
 	ld e, l
 	ld d, a
 	call UpdateBGMapRow
@@ -1266,10 +1266,10 @@ UpdateBGMapColumn:: ; 27f8
 	ld e, a
 	jr nc, .skip
 	inc d
-; cap d at VBGMap1 / $100
+; cap d at vBGMap1 / $100
 	ld a, d
 	and $3
-	or VBGMap0 / $100
+	or vBGMap0 / $100
 	ld d, a
 
 .skip
@@ -1325,7 +1325,7 @@ _LoadTileset2:
 	ld [rVBK], a
 	ld hl, wTilesetGFX2Address
 	ld a, [wTilesetGFX2Bank]
-	ld de, VTiles4
+	ld de, vTiles4
 	jr _DoLoadTileset
 
 _LoadTileset0:
@@ -1349,7 +1349,7 @@ _LoadTileset0:
 	farcall LoadMapGroupRoof
 	ld hl, wTilesetGFX0Address
 	ld a, [wTilesetGFX0Bank]
-	ld de, VTiles2
+	ld de, vTiles2
 	ld c, $ff
 	call _DoLoadTileset0
 	jr .done
@@ -1357,7 +1357,7 @@ _LoadTileset0:
 .skip_roof
 	ld hl, wTilesetGFX0Address
 	ld a, [wTilesetGFX0Bank]
-	ld de, VTiles2
+	ld de, vTiles2
 	ld c, $7f
 	call _DoLoadTileset0
 .done
@@ -1370,7 +1370,7 @@ _LoadTileset1:
 	ld [rVBK], a
 	ld hl, wTilesetGFX1Address
 	ld a, [wTilesetGFX1Bank]
-	ld de, VTiles5
+	ld de, vTiles5
 	; fallthrough
 
 _DoLoadTileset:
@@ -1405,7 +1405,7 @@ _DoLoadTileset0:
 	ld c, $a ; write tiles $00-09
 	call Request2bppInWRA6
 	ld de, wDecompressScratch tile $13
-	ld hl, VTiles2 tile $13
+	ld hl, vTiles2 tile $13
 	ld c, $6c ; write tiles $13-$7e
 	jp Request2bppInWRA6
 

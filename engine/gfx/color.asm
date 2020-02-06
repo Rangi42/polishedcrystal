@@ -625,7 +625,7 @@ LoadPaintingPalette:
 InitCGBPals::
 	ld a, $1
 	ld [rVBK], a
-	ld hl, VTiles0
+	ld hl, vTiles0
 	ld bc, $200 tiles
 	xor a
 	call ByteFill

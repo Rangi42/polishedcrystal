@@ -1,7 +1,7 @@
 GetTrademonFrontpic:
 	ld a, [wOTTrademonSpecies]
 	ld hl, wOTTrademonForm
-	ld de, VTiles2
+	ld de, vTiles2
 	push de
 	push af
 	predef GetVariant

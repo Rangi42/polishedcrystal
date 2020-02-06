@@ -39,13 +39,13 @@ TrainerCard: ; 25105
 	farcall GetCardPic
 
 	ld hl, CardBorderGFX
-	ld de, VTiles1 tile (TRAINERCARD_BORDERGFX_START - $80)
+	ld de, vTiles1 tile (TRAINERCARD_BORDERGFX_START - $80)
 	ld bc, 12 tiles
 	ld a, BANK(CardBorderGFX)
 	call FarCopyBytes
 
 	ld hl, CardDividerGFX
-	ld de, VTiles2 tile $23
+	ld de, vTiles2 tile $23
 	ld bc, (6 + 4) tiles ; CardDividerGFX + CardStatusGFX
 	ld a, BANK(CardDividerGFX) ; BANK(CardStatusGFX)
 	call FarCopyBytes
@@ -134,12 +134,12 @@ TrainerCard_Page2_LoadGFX: ; 251f4 (9:51f4)
 	call TrainerCard_LoadHeaderGFX
 
 	ld de, LeaderGFX
-	ld hl, VTiles2 tile $2f
+	ld hl, vTiles2 tile $2f
 	lb bc, BANK(LeaderGFX), $50
 	call Request2bpp
 
 	ld de, BadgeGFX
-	ld hl, VTiles0 tile $00
+	ld hl, vTiles0 tile $00
 	lb bc, BANK(BadgeGFX), $2c
 	call Request2bpp
 
@@ -201,12 +201,12 @@ TrainerCard_Page3_LoadGFX: ; 2524c (9:524c)
 	call TrainerCard_LoadHeaderGFX
 
 	ld de, LeaderGFX2
-	ld hl, VTiles2 tile $2f
+	ld hl, vTiles2 tile $2f
 	lb bc, BANK(LeaderGFX2), $50
 	call Request2bpp
 
 	ld de, BadgeGFX2
-	ld hl, VTiles0 tile $00
+	ld hl, vTiles0 tile $00
 	lb bc, BANK(BadgeGFX2), $2c
 	call Request2bpp
 
@@ -236,7 +236,7 @@ TrainerCard_Page3_Joypad: ; 25279 (9:5279)
 	ret
 
 TrainerCard_LoadHeaderGFX:
-	ld hl, VTiles2 tile $29
+	ld hl, vTiles2 tile $29
 	lb bc, BANK(CardStatusGFX), $4 ; BANK(CardBadgesGFX)
 	jp Request2bpp
 

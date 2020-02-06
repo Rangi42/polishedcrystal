@@ -49,20 +49,20 @@ LoadItemOrKeyItemIcon:
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	ld de, VTiles2 tile $1e
+	ld de, vTiles2 tile $1e
 	ld c, 9
 	jp DecompressRequest2bpp
 
 LoadTMHMIcon::
 	ld hl, TMHMIcon
-	ld de, VTiles2 tile $1e
+	ld de, vTiles2 tile $1e
 	lb bc, BANK(TMHMIcon), 9
 	jp DecompressRequest2bpp
 
 ClearKeyItemIcon::
 ClearTMHMIcon::
 	ld hl, NoItemIcon
-	ld de, VTiles2 tile $1e
+	ld de, vTiles2 tile $1e
 	lb bc, BANK(NoItemIcon), 9
 	jp DecompressRequest2bpp
 

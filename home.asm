@@ -1220,7 +1220,7 @@ _PrepMonFrontpic:: ; 378b
 	jr z, .not_pokemon
 
 	push hl
-	ld de, VTiles2
+	ld de, vTiles2
 	predef GetFrontpic
 	pop hl
 	xor a

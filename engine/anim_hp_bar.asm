@@ -237,7 +237,7 @@ HPBarAnim_BGMapUpdate:
 	ld a, b
 	ld [hBGMapHalf], a
 	ld a, c
-	hlbgcoord 12, 2, VBGMap2
+	hlbgcoord 12, 2, vBGMap2
 	ld bc, BG_MAP_WIDTH * 2
 	rst AddNTimes
 	ld a, [wCurHPAnimPal]

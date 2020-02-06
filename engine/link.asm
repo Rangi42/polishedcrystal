@@ -1852,7 +1852,7 @@ Function16d6ce: ; 16d6ce
 
 LoadTradeScreenGFX: ; 28ef8
 	ld de, TradeScreenGFX
-	ld hl, VTiles2
+	ld hl, vTiles2
 	lb bc, BANK(TradeScreenGFX), 70
 	jp Get2bpp
 ; 28eff

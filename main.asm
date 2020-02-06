@@ -773,7 +773,7 @@ ClearBattleRAM: ; 2ef18
 	ld hl, hBGMapAddress
 	xor a
 	ld [hli], a
-	ld [hl], VBGMap0 / $100
+	ld [hl], vBGMap0 / $100
 	ret
 
 INCLUDE "engine/gfx/place_graphic.asm"
@@ -2250,7 +2250,7 @@ InitDisplayForHallOfFame: ; 4e881
 	call LoadStandardFont
 	call LoadFontsBattleExtra
 	hlbgcoord 0, 0
-	ld bc, VBGMap1 - VBGMap0
+	ld bc, vBGMap1 - vBGMap0
 	ld a, " "
 	call ByteFill
 	hlcoord 0, 0, wAttrMap
@@ -2279,7 +2279,7 @@ InitDisplayForLeafCredits: ; 4e8c2
 	call LoadStandardFont
 	call LoadFontsBattleExtra
 	hlbgcoord 0, 0
-	ld bc, VBGMap1 - VBGMap0
+	ld bc, vBGMap1 - vBGMap0
 	ld a, " "
 	call ByteFill
 	hlcoord 0, 0, wAttrMap

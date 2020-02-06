@@ -82,8 +82,8 @@ InitSGBBorder::
 	ld hl, SGBBorderMap ; not SGBBorderPalettes
 	call CopyGfxToSuperNintendoVRAM
 
-	ld hl, VTiles0
-	ld bc, VRAM_End - VTiles0
+	ld hl, vTiles0
+	ld bc, VRAM_End - vTiles0
 	xor a
 	call ByteFill
 
@@ -96,7 +96,7 @@ CopyGfxToSuperNintendoVRAM:
 	call DisableLCD
 	ld a, $e4
 	ld [rBGP], a
-	ld de, VTiles1
+	ld de, vTiles1
 	ld a, [wCopyingSGBTileData]
 	and a
 	jr z, .notCopyingTileData
@@ -106,7 +106,7 @@ CopyGfxToSuperNintendoVRAM:
 	ld bc, $1000
 	call CopyData
 .next
-	ld hl, VBGMap0
+	ld hl, vBGMap0
 	ld de, $c
 	ld a, $80
 	ld c, $d

@@ -28,7 +28,7 @@ GetCardPic: ; 8833e
 	jr z, .GotClass
 	ld hl, KrisCardPic
 .GotClass:
-	ld de, VTiles2 tile $00
+	ld de, vTiles2 tile $00
 	ld bc, $23 tiles
 	ld a, BANK(ChrisCardPic) ; BANK(KrisCardPic)
 	jp FarCopyBytes
@@ -47,7 +47,7 @@ GetPlayerBackpic: ; 88825
 	jr z, .ok
 	ld hl, KrisBackpic
 .ok
-	ld de, VTiles2 tile $31
+	ld de, vTiles2 tile $31
 	lb bc, BANK(ChrisBackpic), 6 * 6 ; dimensions
 	predef DecompressPredef
 	ret
@@ -82,7 +82,7 @@ HOF_LoadTrainerFrontpic: ; 88840
 	ld de, KrisCardPic
 
 .GotPic:
-	ld hl, VTiles2
+	ld hl, vTiles2
 	lb bc, BANK(ChrisCardPic), 5 * 7 ; BANK(KrisCardPic)
 	call Get2bpp
 	call ApplyTilemapInVBlank

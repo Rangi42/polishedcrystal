@@ -492,7 +492,7 @@ BuyMenu_InitGFX:
 	call DisableSpriteUpdates
 	call DisableLCD
 	ld hl, PackLeftColumnGFX
-	ld de, VTiles2 tile $15
+	ld de, vTiles2 tile $15
 	ld bc, 18 tiles
 	ld a, BANK(PackLeftColumnGFX)
 	call FarCopyBytes

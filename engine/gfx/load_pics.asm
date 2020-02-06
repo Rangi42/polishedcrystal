@@ -113,7 +113,7 @@ FrontpicPredef: ; 5108b
 	xor a
 	ld [hBGMapMode], a
 	call _GetFrontpic
-	ld a, BANK(VTiles3)
+	ld a, BANK(vTiles3)
 	ld [rVBK], a
 	call GetAnimatedFrontpic
 	xor a
@@ -231,7 +231,7 @@ GetAnimatedFrontpic: ; 51103
 	call Get2bpp
 	; Then move up a bit and load the rest
 	ld de, wDecompressScratch + (127 - 7 * 7) tiles
-	ld hl, VTiles4
+	ld hl, vTiles4
 	ld a, [hROMBank]
 	ld b, a
 	ld a, [sScratch]

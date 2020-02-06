@@ -138,7 +138,7 @@ MagntTrain_LoadGFX_PlayMusic: ; 8ccc9
 	farcall GetPlayerIcon
 	pop af
 	ld [rSVBK], a
-	ld hl, VTiles0
+	ld hl, vTiles0
 	ld c, 4
 	push bc
 	push de
@@ -149,7 +149,7 @@ MagntTrain_LoadGFX_PlayMusic: ; 8ccc9
 	add hl, de
 	ld d, h
 	ld e, l
-	ld hl, VTiles0 tile $04
+	ld hl, vTiles0 tile $04
 	ld c, 4
 	call Request2bppInWRA6
 	call MagnetTrain_InitLYOverrides

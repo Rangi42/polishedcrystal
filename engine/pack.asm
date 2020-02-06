@@ -1419,7 +1419,7 @@ DrawPackGFX: ; 1089d
 	ld c, 25
 	ld d, h
 	ld e, l
-	ld hl, VTiles2 tile $27
+	ld hl, vTiles2 tile $27
 	jp Request2bpp
 
 Pack_InterpretJoypad: ; 108d4 (4:48d4)
@@ -1519,7 +1519,7 @@ Pack_InitGFX: ; 10955
 	call ClearSprites
 	call DisableLCD
 	ld hl, PackMenuGFX ; PackLeftColumnGFX is after it
-	ld de, VTiles2 tile $01
+	ld de, vTiles2 tile $01
 	ld bc, (20 + 18) tiles
 	ld a, BANK(PackMenuGFX)
 	call FarCopyBytes

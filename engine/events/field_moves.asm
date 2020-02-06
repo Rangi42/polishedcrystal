@@ -13,11 +13,11 @@ BlindingFlash:: ; 8c7e1
 ShakeHeadbuttTree: ; 8c80a
 	farcall ClearSpriteAnims
 	ld de, CutGrassGFX
-	ld hl, VTiles1
+	ld hl, vTiles1
 	lb bc, BANK(CutGrassGFX), 4
 	call Request2bpp
 	ld de, HeadbuttTreeGFX
-	ld hl, VTiles1 tile $04
+	ld hl, vTiles1 tile $04
 	lb bc, BANK(HeadbuttTreeGFX), 8
 	call Request2bpp
 	call Cut_Headbutt_GetPixelFacing
@@ -60,7 +60,7 @@ ShakeHeadbuttTree: ; 8c80a
 	farcall LoadStandardFontPointer
 	ld d, h
 	ld e, l
-	ld hl, VTiles1
+	ld hl, vTiles1
 	lb bc, BANK(FontNormal), 12
 	call Get1bpp
 	jp ReplaceKrisSprite
@@ -130,11 +130,11 @@ OWCutAnimation: ; 8c940
 .LoadCutGFX: ; 8c96d
 	call ClearSpriteAnims
 	ld de, CutGrassGFX
-	ld hl, VTiles1
+	ld hl, vTiles1
 	lb bc, BANK(CutGrassGFX), 4
 	call Request2bpp
 	ld de, CutTreeGFX
-	ld hl, VTiles1 tile $4
+	ld hl, vTiles1 tile $4
 	lb bc, BANK(CutTreeGFX), 4
 	jp Request2bpp
 ; 8c98c
@@ -396,7 +396,7 @@ FlyToAnim: ; 8cb33
 FlyFunction_InitGFX: ; 8cb9b (23:4b9b)
 	farcall ClearSpriteAnims
 	ld de, CutGrassGFX
-	ld hl, VTiles1 tile $00
+	ld hl, vTiles1 tile $00
 	lb bc, BANK(CutGrassGFX), 4
 	call Request2bpp
 	ld a, [wCurPartyMon]

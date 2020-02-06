@@ -174,7 +174,7 @@ NamingScreen: ; 116c1
 	db "What's trendy?@"
 
 .Box: ; 117f5 (4:57f5)
-	ld de, VTiles0 tile $00
+	ld de, vTiles0 tile $00
 	ld hl, BallCutFruitSpriteGFX
 	lb bc, BANK(BallCutFruitSpriteGFX), 4
 	call DecompressRequest2bpp
@@ -202,11 +202,11 @@ NamingScreen: ; 116c1
 
 .LoadSprite: ; 11847 (4:5847)
 	push bc
-	ld de, VTiles0 tile $00
+	ld de, vTiles0 tile $00
 	ld c, 4
 	call DecompressRequest2bpp
 	ld de, wDecompressScratch + 12 tiles
-	ld hl, VTiles0 tile $04
+	ld hl, vTiles0 tile $04
 	lb bc, BANK(wDecompressScratch), 4
 	call Request2bppInWRA6
 	pop bc
@@ -829,19 +829,19 @@ LoadNamingScreenGFX: ; 11c51
 	call LoadStandardFont
 	call LoadFontsExtra
 
-	ld de, VTiles2 tile NAMINGSCREEN_BORDER
+	ld de, vTiles2 tile NAMINGSCREEN_BORDER
 	ld hl, NamingScreenGFX_Border
 	ld bc, 1 tiles
 	ld a, BANK(NamingScreenGFX_Border)
 	call FarCopyBytes
 
-	ld de, VTiles0 tile NAMINGSCREEN_CURSOR
+	ld de, vTiles0 tile NAMINGSCREEN_CURSOR
 	ld hl, NamingScreenGFX_Cursor
 	ld bc, 2 tiles
 	ld a, BANK(NamingScreenGFX_Cursor)
 	call FarCopyBytes
 
-	ld de, VTiles0 tile NAMINGSCREEN_MIDDLELINE
+	ld de, vTiles0 tile NAMINGSCREEN_MIDDLELINE
 	ld hl, NamingScreenGFX_Lines
 	ld bc, 2 tiles
 	ld a, BANK(NamingScreenGFX_Lines)
@@ -911,7 +911,7 @@ _ComposeMailMessage: ; 11e75 (mail?)
 	call ClearBGPalettes
 	call DisableLCD
 	call LoadNamingScreenGFX
-	ld de, VTiles0 tile $00
+	ld de, vTiles0 tile $00
 	ld hl, .MailIcon
 	ld bc, 8 tiles
 	ld a, BANK(.MailIcon)

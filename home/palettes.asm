@@ -262,8 +262,8 @@ ClearVBank1:: ; d79
 	ld a, 1
 	ld [rVBK], a
 
-	ld hl, VTiles0
-	ld bc, VRAM_End - VTiles0
+	ld hl, vTiles0
+	ld bc, VRAM_End - vTiles0
 	xor a
 	call ByteFill
 

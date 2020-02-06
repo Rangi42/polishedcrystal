@@ -184,7 +184,7 @@ SECTION "Sprite Animations", WRAM0
 
 ; wSpriteAnimDict is a 10x2 dictionary.
 ; keys: taken from third column of SpriteAnimSeqData
-; values: VTiles
+; values: vTiles
 wSpriteAnimDict:: ds 10 * 2
 
 wSpriteAnimationStructs::

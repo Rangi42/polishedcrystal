@@ -177,15 +177,15 @@ PlaceMapNameSign:: ; b8098 (2e:4098)
 
 LoadMapNameSignGFX: ; b80c6
 	; load opaque space
-	ld hl, VTiles0 tile POPUP_MAP_FRAME_SPACE
+	ld hl, vTiles0 tile POPUP_MAP_FRAME_SPACE
 	call GetOpaque1bppSpaceTile
 	; load sign frame
-	ld hl, VTiles0 tile POPUP_MAP_FRAME_START
+	ld hl, vTiles0 tile POPUP_MAP_FRAME_START
 	ld de, MapEntryFrameGFX
 	lb bc, BANK(MapEntryFrameGFX), POPUP_MAP_FRAME_SIZE
 	call Get2bpp
 	; clear landmark name area
-	ld hl, VTiles0 tile POPUP_MAP_NAME_START
+	ld hl, vTiles0 tile POPUP_MAP_NAME_START
 	ld e, POPUP_MAP_NAME_SIZE
 .clear_loop
 	push hl
@@ -224,7 +224,7 @@ rept 4
 endr
 	ld b, h
 	ld c, l
-	ld hl, VTiles3 tile POPUP_MAP_NAME_START
+	ld hl, vTiles3 tile POPUP_MAP_NAME_START
 	add hl, bc
 	; de = start of vram buffer
 	ld d, h
@@ -953,13 +953,13 @@ LoadFishingGFX: ; b84b3
 	ld de, KrisFishingGFX
 .got_gender
 
-	ld hl, VTiles0 tile $02
+	ld hl, vTiles0 tile $02
 	call .LoadGFX
-	ld hl, VTiles0 tile $06
+	ld hl, vTiles0 tile $06
 	call .LoadGFX
-	ld hl, VTiles0 tile $0a
+	ld hl, vTiles0 tile $0a
 	call .LoadGFX
-	ld hl, VTiles0 tile $7c
+	ld hl, vTiles0 tile $7c
 	call .LoadGFX
 
 	pop af

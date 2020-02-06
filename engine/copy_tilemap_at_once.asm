@@ -169,7 +169,7 @@ Copy5RowsOfTilemapInHBlank:
 
 ; fallthrough
 CopyTilemapInHBlank:
-; Copy all tiles to VBGMap
+; Copy all tiles to vBGMap
 	ld [hSPBuffer], sp
 
 	ld sp, hl

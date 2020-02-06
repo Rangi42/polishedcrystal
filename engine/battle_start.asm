@@ -91,13 +91,13 @@ endc
 	ld a, $1
 	ld [rVBK], a
 	ld de, .TrainerBattlePokeballTiles
-	ld hl, VTiles3 tile $fe
+	ld hl, vTiles3 tile $fe
 	lb bc, BANK(.TrainerBattlePokeballTiles), 2
 	call Request2bpp
 	xor a
 	ld [rVBK], a
 	ld de, .TrainerBattlePokeballTiles
-	ld hl, VTiles0 tile $fe
+	ld hl, vTiles0 tile $fe
 	lb bc, BANK(.TrainerBattlePokeballTiles), 2
 	jp Request2bpp
 ; 8c2f4

@@ -100,10 +100,10 @@ hWX                EQU $ffd1
 hWY                EQU $ffd2
 hTilesPerCycle     EQU $ffd3
 ; 0 - no update
-; 1 - VBGMap0 tiles
-; 2 - VBGMap0 attributes
-; 3 - VBGMap0 tiles
-; 4 - VBGMap0 attributes
+; 1 - vBGMap0 tiles
+; 2 - vBGMap0 attributes
+; 3 - vBGMap0 tiles
+; 4 - vBGMap0 attributes
 hBGMapMode         EQU $ffd4
 ; 0 - top third
 ; 1 - middle third

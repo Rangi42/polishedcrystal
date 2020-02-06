@@ -67,7 +67,7 @@ HealMachineAnim: ; 12324
 .LoadGFX: ; 12383
 	call .LoadPalettes
 	ld de, .HealMachineGFX
-	ld hl, VTiles0 tile $7c
+	ld hl, vTiles0 tile $7c
 	lb bc, BANK(.HealMachineGFX), $2
 	jp Request2bpp
 ; 12393

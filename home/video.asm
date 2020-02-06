@@ -141,7 +141,7 @@ UpdateBGMap:: ; 164c
 	jr z, .DoAttributes
 
 ; BG Map 1
-	ld hl, VBGMap1
+	ld hl, vBGMap1
 	dec a
 	jr z, .DoBGMap1Tiles
 	dec a

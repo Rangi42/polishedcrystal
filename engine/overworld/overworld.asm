@@ -397,10 +397,10 @@ rept 4
 	add hl, hl
 endr
 	ld a, l
-	add VTiles0 % $100
+	add vTiles0 % $100
 	ld l, a
 	ld a, h
-	adc VTiles0 / $100
+	adc vTiles0 / $100
 	ld h, a
 	ret
 

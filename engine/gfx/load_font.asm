@@ -3,7 +3,7 @@ INCLUDE "gfx/font.asm"
 _LoadStandardOpaqueFont::
 	ld a, TRUE
 	call _LoadStandardMaybeOpaqueFont
-	ld hl, VTiles2 tile " "
+	ld hl, vTiles2 tile " "
 	ld de, TextBoxSpaceGFX
 	jp GetOpaque1bppFontTile
 
@@ -14,14 +14,14 @@ _LoadStandardMaybeOpaqueFont:
 	call LoadStandardFontPointer
 	ld d, h
 	ld e, l
-	ld hl, VTiles0 tile "A"
+	ld hl, vTiles0 tile "A"
 	lb bc, BANK(FontNormal), 111
 	pop af
 	ld [hRequestOpaque1bpp], a
 	push af
 	call GetMaybeOpaque1bpp
 	ld de, FontCommon
-	ld hl, VTiles0 tile "▷"
+	ld hl, vTiles0 tile "▷"
 	lb bc, BANK(FontCommon), 11
 	pop af
 	ld [hRequestOpaque1bpp], a
@@ -54,7 +54,7 @@ LoadStandardFontPointer::
 
 _LoadFontsBattleExtra::
 	ld de, BattleExtrasGFX
-	ld hl, VTiles2 tile BATTLEEXTRA_GFX_START
+	ld hl, vTiles2 tile BATTLEEXTRA_GFX_START
 	lb bc, BANK(BattleExtrasGFX), 32
 	call Get2bpp
 
@@ -65,10 +65,10 @@ LoadFrame::
 	rst AddNTimes
 	ld d, h
 	ld e, l
-	ld hl, VTiles0 tile "┌"
+	ld hl, vTiles0 tile "┌"
 	lb bc, BANK(Frames), TILES_PER_FRAME
 	call Get1bpp
-	ld hl, VTiles2 tile " "
+	ld hl, vTiles2 tile " "
 	ld de, TextBoxSpaceGFX
 	lb bc, BANK(TextBoxSpaceGFX), 1
 	jp Get1bpp
@@ -96,7 +96,7 @@ LoadPlayerStatusIcon:
 .done
 	ld d, h
 	ld e, l
-	ld hl, VTiles2 tile $55
+	ld hl, vTiles2 tile $55
 	lb bc, BANK(StatusIconGFX), 2
 	call Request2bpp
 	farcall LoadPlayerStatusIconPalette
@@ -119,7 +119,7 @@ LoadEnemyStatusIcon:
 .done
 	ld d, h
 	ld e, l
-	ld hl, VTiles2 tile $57
+	ld hl, vTiles2 tile $57
 	lb bc, BANK(EnemyStatusIconGFX), 2
 	call Request2bpp
 	farcall LoadEnemyStatusIconPalette
@@ -131,6 +131,6 @@ LoadStatsScreenGFX:
 
 LoadStatsGFX:
 	ld de, GFX_Stats
-	ld hl, VTiles2 tile $31
+	ld hl, vTiles2 tile $31
 	lb bc, BANK(GFX_Stats), 15
 	jp Get2bpp
