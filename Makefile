@@ -53,7 +53,7 @@ PYTHON = python2
 CC     = gcc
 RM     = rm -f
 GFX    = $(PYTHON) gfx.py
-MD5    = md5sum
+MD5    = md5sum -b
 
 LZ            = tools/lzcomp
 SCAN_INCLUDES = tools/scan_includes
