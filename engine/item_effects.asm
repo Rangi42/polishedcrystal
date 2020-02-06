@@ -1312,7 +1312,7 @@ EnergyPowderEnergyRootCommon: ; f192
 	ld b, PARTYMENUACTION_HEALING_ITEM
 	call UseItem_SelectMon
 	jp c, ItemNotUsed_ExitMenu
-    
+
 	push bc
 	call ItemRestoreHP
 	pop bc
@@ -2329,20 +2329,20 @@ Ball_ReplacePartyMonCaughtBall:
 	ld a, [hl]
 	and CAUGHTBALL_MASK
 	cp b
-	
 	jr z, AlreadyInThatBallMessage
+
 	ld a, [hl]
 	and $ff ^ CAUGHTBALL_MASK
 	add b
 	ld [hl], a
 	call UseDisposableItem
-	
+
 	call GetCurItemName
 	ld hl, wStringBuffer1
 	ld bc, wStringBuffer2 - wStringBuffer1
 	ld de, wStringBuffer2
 	call GetCurNick
-	
+
 	ld hl, BallReplacedText
 	jp PrintText
 

@@ -131,6 +131,7 @@ These changes have been made since the current 2.2.0 release. If you build the p
 * Add: Three battle styles: set, switch, and predict.
 * Add: Battle Scene → Battle Effects.
 * Add: Final Lyra battle.
+* Add: Use a Ball on an already-caught Pokémon to change its Ball.
 * Add: Kurt makes Balls right away.
 * Add: Bug-Catching Contest prizes from HGSS.
 * Add: Hidden Grottoes.
