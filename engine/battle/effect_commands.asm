@@ -8182,7 +8182,7 @@ BattleCommand_lowkick:
 	ld d, h
 	ld e, l
 
-	call GetTrueUserAbility
+	call GetOpponentAbilityAfterMoldBreaker
 	cp LIGHT_METAL
 	jr nz, .not_light_metal
 	srl d
