@@ -975,12 +975,9 @@ IgnoreSleepOnly: ; 3451f
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
 
-	cp SLEEP_TALK
-	jr z, .CheckSleep
-	and a
-	ret
+	xor SLEEP_TALK
+	ret nz
 
-.CheckSleep:
 	ld a, BATTLE_VARS_STATUS
 	call GetBattleVar
 	and SLP
