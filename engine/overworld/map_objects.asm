@@ -3061,3 +3061,134 @@ PRIORITY_HIGH EQU $30
 	dw wObject11Struct
 	dw wObject12Struct
 ; 5ae8
+
+CheckOccludingObjects:: ; here for space reasons
+	push de
+; returns carry = occluded
+
+	; Save location of current trainer
+	ld a, [wCurTrainer]
+	ld bc, OBJECT_LENGTH
+	ld hl, wMapObjects + MAPOBJECT_X_COORD
+	rst AddNTimes
+	ld a, [hl]
+	ld [wCurTrainerX], a
+	dec hl
+	ld a, [hl]
+	ld [wCurTrainerY], a
+
+; Skip the player object.
+	ld a, 1
+	ld de, wMapObjects + OBJECT_LENGTH
+
+.loop
+
+; The object is occluding if it:
+
+	push af
+	push de
+
+; Isn't the object trying to see the player
+	ld hl, wCurTrainer
+	ld b, [hl]
+	cp b
+	jr z, .next
+	
+; Has a sprite
+	ld b, a ; backup current potential occluder
+	ld hl, MAPOBJECT_SPRITE
+	add hl, de
+	ld a, [hl]
+	and a
+	jr z, .next
+	ld a, b ; restore
+	
+; Is between the player and the trainer
+; Save potential occluder coords
+	ld bc, OBJECT_LENGTH
+	ld hl, wMapObjects + MAPOBJECT_X_COORD
+	rst AddNTimes
+	ld a, [hl]
+	ld [wCurPotentialOccluderX], a
+	dec hl
+	ld a, [hl]
+	ld [wCurPotentialOccluderY], a
+
+; Start checking here
+	ld a, [wCurTrainerX]
+	ld a, [wPlayerStandingMapX]
+	ld b, a
+	cp b
+	jr nz, .checkIfShouldCheckYCoords
+	ld a, [wCurPotentialOccluderX]
+	ld b, a
+	cp b
+	jr z, .checkYCoords
+
+; Same x and y is an "imaginary case"
+.checkIfShouldCheckYCoords
+	ld a, [wCurTrainerY]
+	ld a, [wPlayerStandingMapY]
+	ld b, a
+	cp b
+	jr nz, .next ; x and y are both different, not in any potential line of sight
+	ld a, [wCurPotentialOccluderY]
+	ld b, a
+	cp b
+	jr nz, .next ; ditto
+
+.checkXCoords
+	ld a, [wCurTrainerX]
+	ld b, a
+	ld a, [wPlayerStandingMapX]
+	ld c, a
+	ld a, [wCurPotentialOccluderX]
+	jr .check
+
+.checkYCoords
+	ld a, [wCurTrainerY]
+	ld b, a
+	ld a, [wPlayerStandingMapY]
+	ld c, a
+	ld a, [wCurPotentialOccluderY]
+
+.check
+	ld b, b
+	; jr .next if not (b < a < c or c < a < b)
+
+	; b < a < c first
+	cp b
+	jr c, .trySwapped
+	cp c
+	jr c, .occludes
+
+.trySwapped
+	; now c < a < b
+	cp c
+	jr c, .next
+	cp b
+	jr c, .occludes
+	; fallthrough
+
+.next
+	pop de
+	ld hl, OBJECT_LENGTH
+	add hl, de
+	ld d, h
+	ld e, l
+
+	pop af
+	inc a
+	cp NUM_OBJECTS
+	jr nz, .loop
+	pop de
+	scf
+	ccf
+	ret
+
+.occludes
+	pop de
+	pop af
+	pop de
+	scf ; Hit something.
+	ret

@@ -1110,3 +1110,14 @@ wSecondsSince:: ds 1
 wMinutesSince:: ds 1
 wHoursSince:: ds 1
 wDaysSince:: ds 1
+
+wCurPotentialOccluderY::
+	ds 1
+wCurPotentialOccluderX::
+	ds 1
+wCurTrainer::
+	ds 1
+wCurTrainerY::
+	ds 1
+wCurTrainerX::
+	ds 1

@@ -904,6 +904,7 @@ CheckTrainerBattle:: ; 360d
 	ld de, wMapObjects + OBJECT_LENGTH
 
 .loop
+	ld [wCurTrainer], a
 
 ; Start a battle if the object:
 
@@ -947,7 +948,7 @@ CheckTrainerBattle:: ; 360d
 	cp b
 	jr c, .next
 
-; And hasn't already been beaten
+; hasn't already been beaten
 	push bc
 	push de
 	ld hl, MAPOBJECT_SCRIPT_POINTER
@@ -964,7 +965,11 @@ CheckTrainerBattle:: ; 360d
 	pop de
 	pop bc
 	and a
-	jr z, .startbattle
+	jr nz, .next
+	
+; And is unoccluded
+	farcall CheckOccludingObjects ; rst farcall says it retains "a, bc, de, and hl" but return farcall says it tries to save f?
+	jr nc, .startbattle
 
 .next
 	pop de
