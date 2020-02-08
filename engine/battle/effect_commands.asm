@@ -3122,7 +3122,7 @@ BattleCommand_posthiteffects:
 .rage_done_switchturn
 	call SwitchTurn
 .rage_done
-	; Do Jaboca, Rowap, Kee, Maranga berries, Rocky Helmet,
+	; Do Jaboca and Rowap berries, Rocky Helmet,
 	; Absorb Bulb, Snowball, Cell Battery, Luminous Moss
 	call HasUserFainted
 	jp z, .rocky_helmet_done
@@ -3133,23 +3133,9 @@ BattleCommand_posthiteffects:
 	ld a, b
 	cp HELD_ROCKY_HELMET
 	jr z, .rocky_helmet
-	cp HELD_SWITCH_TARGET
-	jr nz, .not_switch_target
-	call CheckSheerForceNegation
-	jr z, .not_switch_target
-	ld a, c
-	call SetDeferredSwitch
-	jp .rocky_helmet_done
-
-.not_switch_target
-	ld a, BATTLE_VARS_MOVE_CATEGORY
-	call GetBattleVar
-	cp c
-	jr nz, .check_type_hit
-	ld a, b
 	cp HELD_OFFEND_HIT
-	jr z, .held_offend_hit
-.check_type_hit
+	jr z, .offend_hit
+
 	ld a, BATTLE_VARS_MOVE_TYPE
 	call GetBattleVar
 	cp c
@@ -3170,38 +3156,35 @@ BattleCommand_posthiteffects:
 	call RaiseStatWithItem
 	call SwitchTurn
 	jr .rocky_helmet_done
-.held_offend_hit
-	; we want to ensure we have the correct item name for hurt message
-	call GetTrueUserAbility
-	cp MAGIC_GUARD
-	jr z, .rocky_helmet_done
-	call GetOpponentItem
-	call ConsumeOpponentItem
+
+.offend_hit
+	ld a, BATTLE_VARS_MOVE_CATEGORY
+	call GetBattleVar
+	cp c
+	jr nz, .rocky_helmet_done
+
 	call GetEighthMaxHP
 	jr .got_hurt_item_damage
 .rocky_helmet
+	call CheckContactMove
+	jr c, .rocky_helmet_done
+	call GetSixthMaxHP
+.got_hurt_item_damage
 	call GetTrueUserAbility
 	cp MAGIC_GUARD
 	jr z, .rocky_helmet_done
-	call CheckContactMove
-	jr c, .rocky_helmet_done
-	; see above comment
-	call GetOpponentItem
-	call GetSixthMaxHP
-.got_hurt_item_damage
-	ld a, b
-	or c
-	jr nz, .damage_ok
-	inc c
-.damage_ok
-	ld a, [wCurItem]
-	push af
 	farcall SubtractHPFromUser
-	pop af
-	ld [wCurItem], a
+	call GetOpponentItem
 	call GetCurItemName
 	ld hl, BattleText_UserHurtByItem
+	push bc
 	call StdBattleTextBox
+	pop bc
+
+	; unless the item is Rocky Helmet, consume it
+	ld a, b
+	cp HELD_ROCKY_HELMET
+	call nz, ConsumeOpponentItem
 
 .rocky_helmet_done
 	call GetUserItem
