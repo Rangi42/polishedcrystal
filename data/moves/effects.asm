@@ -62,7 +62,6 @@ XScissor:
 	supereffectivetext
 	postfainteffects
 	posthiteffects
-	pickpocket
 	endmove
 
 SuckerPunch:
@@ -84,7 +83,6 @@ SuckerPunch:
 	supereffectivetext
 	postfainteffects
 	posthiteffects
-	pickpocket
 	endmove
 
 LeechHit:
@@ -112,7 +110,6 @@ DrainPunch:
 	draintarget
 	postfainteffects
 	posthiteffects
-	pickpocket
 	endmove
 
 UTurn:
@@ -135,7 +132,6 @@ SwitchHit:
 	supereffectivetext
 	postfainteffects
 	posthiteffects
-	pickpocket
 	switchout
 	endmove
 
@@ -171,7 +167,6 @@ FuryStrikes:
 	posthiteffects
 	supereffectivetext
 	endloop
-	pickpocket
 	raisesub
 	endmove
 
@@ -199,7 +194,6 @@ BraveBird:
 	recoil
 	postfainteffects
 	posthiteffects
-	pickpocket
 	endmove
 
 FlinchHit:
@@ -234,7 +228,6 @@ ZenHeadbutt:
 	postfainteffects
 	posthiteffects
 	flinchtarget
-	pickpocket
 	endmove
 
 PoisonHit:
@@ -261,7 +254,6 @@ GunkShot:
 	postfainteffects
 	posthiteffects
 	poisontarget
-	pickpocket
 	endmove
 
 BurnHit:
@@ -288,7 +280,6 @@ FireBlast:
 	postfainteffects
 	posthiteffects
 	burntarget
-	pickpocket
 	endmove
 
 ParalyzeHit:
@@ -318,7 +309,6 @@ ZapCannon:
 	postfainteffects
 	posthiteffects
 	paralyzetarget
-	pickpocket
 	endmove
 
 BodySlam:
@@ -342,7 +332,6 @@ BodySlam:
 	postfainteffects
 	posthiteffects
 	paralyzetarget
-	pickpocket
 	endmove
 
 SleepHit:
@@ -365,7 +354,6 @@ SleepHit:
 	postfainteffects
 	posthiteffects
 	sleeptarget
-	pickpocket
 	endmove
 
 FreezeHit:
@@ -391,7 +379,6 @@ Blizzard:
 	postfainteffects
 	posthiteffects
 	freezetarget
-	pickpocket
 	endmove
 
 ConfuseHit:
@@ -420,7 +407,6 @@ Hurricane:
 	postfainteffects
 	posthiteffects
 	confusetarget
-	pickpocket
 	endmove
 
 AttackUpHit:
@@ -444,7 +430,6 @@ MetalClaw:
 	postfainteffects
 	posthiteffects
 	raisestathit ATTACK
-	pickpocket
 	endmove
 
 DefenseUpHit:
@@ -468,7 +453,6 @@ SteelWing:
 	postfainteffects
 	posthiteffects
 	raisestathit DEFENSE
-	pickpocket
 	endmove
 
 AllUpHit:
@@ -496,7 +480,6 @@ Ancientpower:
 	raisestathit SPEED
 	raisestathit SP_ATTACK
 	raisestathit SP_DEFENSE
-	pickpocket
 	endmove
 
 AttackDownHit:
@@ -520,7 +503,6 @@ AuroraBeam:
 	postfainteffects
 	posthiteffects
 	loweroppstathit ATTACK
-	pickpocket
 	endmove
 
 DefenseDownHit:
@@ -545,7 +527,6 @@ IronTail:
 	postfainteffects
 	posthiteffects
 	loweroppstathit DEFENSE
-	pickpocket
 	endmove
 
 BrickBreak:
@@ -569,7 +550,6 @@ BrickBreak:
 	supereffectivetext
 	postfainteffects
 	posthiteffects
-	pickpocket
 	endmove
 
 SpeedDownHit:
@@ -595,7 +575,6 @@ Bulldoze:
 	postfainteffects
 	posthiteffects
 	loweroppstathit SPEED
-	pickpocket
 	endmove
 
 SpecialAttackDownHit:
@@ -619,7 +598,6 @@ Moonblast:
 	postfainteffects
 	posthiteffects
 	loweroppstathit SP_ATTACK
-	pickpocket
 	endmove
 
 SpecialDefenseDownHit:
@@ -650,7 +628,6 @@ ShadowBall:
 	postfainteffects
 	posthiteffects
 	loweroppstathit SP_DEFENSE
-	pickpocket
 	endmove
 
 AccuracyDownHit:
@@ -675,7 +652,6 @@ Octazooka:
 	postfainteffects
 	posthiteffects
 	loweroppstathit ACCURACY
-	pickpocket
 	endmove
 
 EvasionDownHit:
@@ -698,7 +674,6 @@ EvasionDownHit:
 	postfainteffects
 	posthiteffects
 	loweroppstathit EVASION
-	pickpocket
 	endmove
 
 CloseCombat:
@@ -722,7 +697,6 @@ CloseCombat:
 	lowerstat SP_DEFENSE
 	postfainteffects
 	posthiteffects
-	pickpocket
 	endmove
 
 StaticDamage:
@@ -743,7 +717,6 @@ SuperFang:
 	checkfaint
 	postfainteffects
 	posthiteffects
-	pickpocket
 	endmove
 
 DoPoison:
@@ -1224,7 +1197,6 @@ Outrage:
 	supereffectivetext
 	postfainteffects
 	posthiteffects
-	pickpocket
 	endmove
 
 Trap:
@@ -1251,7 +1223,6 @@ Whirlpool:
 	postfainteffects
 	posthiteffects
 	traptarget
-	pickpocket
 	endmove
 
 Explosion:
@@ -1294,7 +1265,6 @@ DreamEater:
 	eatdream
 	postfainteffects
 	posthiteffects
-	pickpocket
 	endmove
 
 Roar:
@@ -1350,7 +1320,6 @@ PayDay:
 	payday
 	postfainteffects
 	posthiteffects
-	pickpocket
 	endmove
 
 KnockOff:
@@ -1373,7 +1342,6 @@ KnockOff:
 	knockoff
 	postfainteffects
 	posthiteffects
-	pickpocket
 	endmove
 
 BugBite:
@@ -1417,7 +1385,6 @@ TriAttack:
 	postfainteffects
 	posthiteffects
 	tristatuschance
-	pickpocket
 	endmove
 
 Transform:
@@ -1455,7 +1422,6 @@ GigaImpact:
 	rechargenextturn
 	postfainteffects
 	posthiteffects
-	pickpocket
 	endmove
 
 Rage:
@@ -1477,7 +1443,6 @@ Rage:
 	supereffectivetext
 	postfainteffects
 	posthiteffects
-	pickpocket
 	endmove
 
 Metronome:
@@ -1582,7 +1547,6 @@ Reversal:
 	supereffectivetext
 	postfainteffects
 	posthiteffects
-	pickpocket
 	endmove
 
 FalseSwipe:
@@ -1604,7 +1568,6 @@ FalseSwipe:
 	supereffectivetext
 	postfainteffects
 	posthiteffects
-	pickpocket
 	endmove
 
 HealBell:
@@ -1635,7 +1598,6 @@ Thief:
 	postfainteffects
 	posthiteffects
 	thief
-	pickpocket
 	endmove
 
 MeanLook:
@@ -1668,7 +1630,6 @@ FlameWheel:
 	postfainteffects
 	posthiteffects
 	burntarget
-	pickpocket
 	endmove
 
 Curse:
@@ -1761,7 +1722,6 @@ Rollout:
 	supereffectivetext
 	postfainteffects
 	posthiteffects
-	pickpocket
 	endmove
 
 Swagger:
@@ -1799,7 +1759,6 @@ ConditionalBoostHit:
 	supereffectivetext
 	postfainteffects
 	posthiteffects
-	pickpocket
 	endmove
 
 Attract:
@@ -1831,7 +1790,6 @@ Return:
 	supereffectivetext
 	postfainteffects
 	posthiteffects
-	pickpocket
 	endmove
 
 SacredFire:
@@ -1855,7 +1813,6 @@ SacredFire:
 	postfainteffects
 	posthiteffects
 	burntarget
-	pickpocket
 	endmove
 
 Magnitude:
@@ -1878,7 +1835,6 @@ Magnitude:
 	supereffectivetext
 	postfainteffects
 	posthiteffects
-	pickpocket
 	endmove
 
 GyroBall:
@@ -1900,7 +1856,6 @@ GyroBall:
 	supereffectivetext
 	postfainteffects
 	posthiteffects
-	pickpocket
 	endmove
 
 LowKick:
@@ -1922,7 +1877,6 @@ LowKick:
 	supereffectivetext
 	postfainteffects
 	posthiteffects
-	pickpocket
 	endmove
 
 BatonPass:
@@ -1951,7 +1905,6 @@ Pursuit:
 	supereffectivetext
 	postfainteffects
 	posthiteffects
-	pickpocket
 	endmove
 
 RapidSpin:
@@ -1973,7 +1926,6 @@ RapidSpin:
 	clearhazards
 	postfainteffects
 	posthiteffects
-	pickpocket
 	endmove
 
 HealingLight:
@@ -2001,7 +1953,6 @@ HiddenPower:
 	supereffectivetext
 	postfainteffects
 	posthiteffects
-	pickpocket
 	endmove
 
 RainDance:
@@ -2057,7 +2008,6 @@ Earthquake:
 	supereffectivetext
 	postfainteffects
 	posthiteffects
-	pickpocket
 	endmove
 
 FutureSight:
@@ -2080,7 +2030,6 @@ FutureSight:
 	supereffectivetext
 	postfainteffects
 	posthiteffects
-	pickpocket
 	endmove
 
 Gust:
@@ -2102,7 +2051,6 @@ Gust:
 	supereffectivetext
 	postfainteffects
 	posthiteffects
-	pickpocket
 	endmove
 
 Stomp:
@@ -2126,7 +2074,6 @@ Stomp:
 	postfainteffects
 	posthiteffects
 	flinchtarget
-	pickpocket
 	endmove
 
 SolarBeam:
@@ -2150,7 +2097,6 @@ SolarBeam:
 	supereffectivetext
 	postfainteffects
 	posthiteffects
-	pickpocket
 	endmove
 
 Thunder:
@@ -2174,7 +2120,6 @@ Thunder:
 	postfainteffects
 	posthiteffects
 	paralyzetarget
-	pickpocket
 	endmove
 
 Teleport:
@@ -2206,7 +2151,6 @@ Dig:
 	supereffectivetext
 	postfainteffects
 	posthiteffects
-	pickpocket
 	endmove
 
 DefenseCurl:
@@ -2239,5 +2183,4 @@ FlareBlitz:
 	postfainteffects
 	posthiteffects
 	burntarget
-	pickpocket
 	endmove

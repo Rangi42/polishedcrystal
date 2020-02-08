@@ -442,8 +442,11 @@ wEnemyProtectCount:: ds 1
 	ds 1
 wBattleSubStatusWRAMEnd::
 
-wPlayerDamageTaken:: ds 2
-wEnemyDamageTaken:: ds 2
+wDamageTaken::
+; Format: $xy yy, x = total multihit hits, y = total damage
+	ds 2
+
+	ds 2 ; unused
 
 wBattleReward:: ds 3
 wBattleAnimParam::

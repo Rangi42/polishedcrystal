@@ -93,8 +93,7 @@ DoMove:
 
 .endturn_herb
 	push af
-	call CheckWhiteHerb ; also Eject Pack
-	call CheckThroatSpray
+	call CheckEndMoveEffects
 	call CheckPowerHerb
 	pop af
 	ret
@@ -476,111 +475,6 @@ IncreaseMetronomeCount:
 	xor a
 	ld [hl], a
 	ret
-
-CheckWhiteHerb:
-	call CheckSheerForceNegation
-	ret z
-	ld a, [hBattleTurn]
-	ld b, a
-	push bc
-	call SetFastestTurn
-	pop bc
-	push bc
-	call .do_it
-	call SwitchTurn
-	pop bc
-	push bc
-	call .do_it
-	pop bc
-	ld a, b
-	ld [hBattleTurn], a
-	ret
-
-.do_it
-	push bc
-	call GetUserItemAfterUnnerve
-	ld a, b
-	pop bc
-	cp HELD_WHITE_HERB
-	jr z, .item_valid
-	cp HELD_EJECT_PACK
-	ret nz
-
-.item_valid
-	push bc
-	call HasUserFainted
-	pop bc
-	ret z
-
-	; Check if we have any reduced stat changes
-	ld a, [hBattleTurn]
-	and a
-	ld hl, wPlayerStatLevels
-	jr z, .got_stat_levels
-	ld hl, wEnemyStatLevels
-.got_stat_levels
-	lb de, NUM_LEVEL_STATS, 0
-.stat_loop
-	ld a, [hl]
-	cp BASE_STAT_LEVEL
-	jr nc, .not_lowered
-	push bc
-	push de
-	push hl
-	call GetUserItemAfterUnnerve
-	ld a, b
-	pop hl
-	pop de
-	pop bc
-	cp HELD_EJECT_PACK
-	jr nz, .not_eject_pack
-
-	ld a, [hBattleTurn]
-	cp b
-	ld a, 1 << SWITCH_DEFERRED | 1 << SWITCH_ITEM
-	jr z, .move_user_switching
-	ld a, 1 << SWITCH_DEFERRED | 1 << SWITCH_TARGET | 1 << SWITCH_OPPITEM
-.move_user_switching
-	jp SetDeferredSwitch
-
-.not_eject_pack
-	ld [hl], BASE_STAT_LEVEL
-	ld e, 1
-.not_lowered
-	inc hl
-	dec d
-	jr nz, .stat_loop
-	dec e
-	ret nz
-	farcall ItemRecoveryAnim
-	call GetUserItem
-	call GetCurItemName
-	ld hl, RegainedStatsWithItem
-	call StdBattleTextBox
-	jp ConsumeUserItem
-
-CheckThroatSpray:
-	ld a, BATTLE_VARS_MOVE_ANIM
-	call GetBattleVar
-	ld hl, SoundMoves
-	ld de, 1
-	call IsInArray
-	ret nc
-
-	call GetUserItemAfterUnnerve
-	call GetCurItemName
-	ld a, b
-	cp HELD_THROAT_SPRAY
-	ret nz
-
-	ld b, c
-	ld a, STAT_SKIPTEXT
-	call _RaiseStat
-	ld a, [wFailedMessage]
-	and a
-	ret nz
-	farcall UseStatItemText
-	jp ConsumeUserItem
 
 CheckPowerHerb:
 	call GetUserItemAfterUnnerve
@@ -2677,7 +2571,7 @@ BattleCommand_checkfaint:
 	ld b, $0
 .okay
 	push bc
-	call .check_sub
+	call .damage_taken
 	ld c, $0
 	call TakeDamage
 	pop bc
@@ -2706,35 +2600,32 @@ BattleCommand_checkfaint:
 	jp nz, ConsumeOpponentItem
 	ret
 
-.check_sub
-	call CheckSubstituteOpp
-	ret nz
-	ld de, wPlayerDamageTaken + 1
-	ld a, [hBattleTurn]
-	and a
-	jr nz, .damage_taken
-	ld de, wEnemyDamageTaken + 1
-
 .damage_taken
-	ld a, [wCurDamage + 1]
-	ld b, a
+	ld hl, wCurDamage + 1
+	ld de, wDamageTaken + 1
 	ld a, [de]
-	add b
+	add [hl]
 	ld [de], a
 	dec de
-	ld a, [wCurDamage]
-	ld b, a
+	dec hl
 	ld a, [de]
-	adc b
-	ld [de], a
-	ret nc
-	ld a, $ff
-	ld [de], a
-	inc de
+	push af
+	and $f0
+	ld b, a
+	pop af
+	ld a, [de]
+	adc [hl]
+	ld c, a
+	sub b
+	and $f0
+	ld a, $f
+	jr nz, .got_hi_damage
+	ld a, c
+.got_hi_damage
+	and $f
+	or b
 	ld [de], a
 	ret
-
-; 350e4
 
 
 GetFailureResultText: ; 350e4
@@ -2897,13 +2788,12 @@ BattleCommand_startloop:
 	ld a, [hBattleTurn]
 	and a
 	ld hl, wPlayerRolloutCount
-	ld de, wPlayerDamageTaken
 	jr z, .got_counter
 	ld hl, wEnemyRolloutCount
-	ld de, wEnemyDamageTaken
 .got_counter
+	ld de, wDamageTaken
 	; Reset hit counter
-	ld a, 1
+	ld a, $10
 	ld [de], a
 
 	; Figure out how many hits we should do.
@@ -3259,16 +3149,6 @@ BattleCommand_posthiteffects:
 	ld a, b
 	cp HELD_OFFEND_HIT
 	jr z, .held_offend_hit
-	cp HELD_DEFEND_HIT
-	jr nz, .check_type_hit
-	call CheckSheerForceNegation
-	jp z, .rocky_helmet_done
-	ld a, c
-	cp PHYSICAL
-	ld b, DEFENSE
-	jr z, .got_stat
-	ld b, SP_DEFENSE
-	jr .got_stat
 .check_type_hit
 	ld a, BATTLE_VARS_MOVE_TYPE
 	call GetBattleVar
@@ -3286,15 +3166,8 @@ BattleCommand_posthiteffects:
 	jr nz, .rocky_helmet_done
 .got_stat
 	call SwitchTurn
-	ld a, STAT_SKIPTEXT
-	call _RaiseStat
-	ld a, [wFailedMessage]
-	and a
-	jr nz, .defend_hit_done
 	call GetCurItemName
-	farcall UseStatItemText
-	call ConsumeUserItem
-.defend_hit_done
+	call RaiseStatWithItem
 	call SwitchTurn
 	jr .rocky_helmet_done
 .held_offend_hit
@@ -3336,19 +3209,6 @@ BattleCommand_posthiteffects:
 	call GetCurItemName
 	pop bc
 	ld a, b
-	cp HELD_LIFE_ORB
-	jr z, .life_orb
-	cp HELD_SHELL_BELL
-	jr z, .shell_bell
-	cp HELD_SWITCH
-	jr nz, .not_switch
-	call CheckSheerForceNegation
-	jr z, .not_switch
-	ld a, c
-	call SetDeferredSwitch
-	jp .checkfaint
-
-.not_switch
 	cp HELD_FLINCH_UP
 	call z, .flinch_up
 	jp .checkfaint
@@ -3381,58 +3241,6 @@ BattleCommand_posthiteffects:
 	cp c
 	call c, FlinchTarget
 	ret
-.shell_bell
-	call .checkfaint
-	ret z
-	call CheckSheerForceNegation
-	ret z
-	farcall CheckFullHP
-	ret z
-
-	ld a, [wCurDamage]
-	ld b, a
-	ld a, [wCurDamage + 1]
-	ld c, a
-	or b
-	ret z ; No damage was done
-	srl b
-	rr c
-	srl b
-	rr c
-	call HalveBC
-	farcall ItemRecoveryAnim
-	farcall RestoreHP
-	ld hl, BattleText_UserRecoveredWithItem
-	jp StdBattleTextBox
-
-.life_orb
-	call .checkfaint
-	ret z
-	call GetTrueUserAbility
-	cp MAGIC_GUARD
-	ret z
-
-	call CheckSheerForceNegation
-	ret z
-
-.no_sheer_force
-	xor a
-	call GetMaxHP
-	ld a, b
-	ld [hDividend], a
-	ld a, c
-	ld [hDividend + 1], a
-	ld a, 10
-	ld [hDivisor], a
-	ld b, 2
-	call Divide
-	ld a, [hQuotient + 1]
-	ld b, a
-	ld a, [hQuotient + 2]
-	ld c, a
-	farcall SubtractHPFromUser
-	ld hl, BattleText_UserLostSomeOfItsHP
-	call StdBattleTextBox
 
 .checkfaint
 	; if we fainted, abort the rest of the move sequence
@@ -3442,13 +3250,105 @@ BattleCommand_posthiteffects:
 	xor a
 	ret
 
-BattleCommand_pickpocket:
-; If the opponent has Pickpocket, proc the item steal now
+CheckEndMoveEffects:
+; Effects handled at move end Skipped by Sheer Force negation
 	call CheckSheerForceNegation
 	ret z
 	call GetFutureSightUser
 	ret nz
 
+	; Only check white herb if we didn't do damage
+	ld a, [wDamageTaken]
+	ld b, a
+	ld a, [wDamageTaken + 1]
+	or b
+	call nz, EndMoveDamageChecks
+	; fallthrough
+CheckWhiteHerb:
+	ld a, [hBattleTurn]
+	ld b, a
+	push bc
+	call SetFastestTurn
+	pop bc
+	push bc
+	call .do_it
+	call SwitchTurn
+	pop bc
+	push bc
+	call .do_it
+	pop bc
+	ld a, b
+	ld [hBattleTurn], a
+	ret
+
+.do_it
+	push bc
+	call GetUserItemAfterUnnerve
+	ld a, b
+	pop bc
+	cp HELD_WHITE_HERB
+	jr z, .item_valid
+	cp HELD_EJECT_PACK
+	ret nz
+
+.item_valid
+	push bc
+	call HasUserFainted
+	pop bc
+	ret z
+
+	; Check if we have any reduced stat changes
+	ld a, [hBattleTurn]
+	and a
+	ld hl, wPlayerStatLevels
+	jr z, .got_stat_levels
+	ld hl, wEnemyStatLevels
+.got_stat_levels
+	lb de, NUM_LEVEL_STATS, 0
+.stat_loop
+	ld a, [hl]
+	cp BASE_STAT_LEVEL
+	jr nc, .not_lowered
+	push bc
+	push de
+	push hl
+	call GetUserItemAfterUnnerve
+	ld a, b
+	pop hl
+	pop de
+	pop bc
+	cp HELD_EJECT_PACK
+	jr nz, .not_eject_pack
+
+	ld a, [hBattleTurn]
+	cp b
+	ld a, 1 << SWITCH_DEFERRED | 1 << SWITCH_ITEM
+	jr z, .move_user_switching
+	ld a, 1 << SWITCH_DEFERRED | 1 << SWITCH_TARGET | 1 << SWITCH_OPPITEM
+.move_user_switching
+	jp SetDeferredSwitch
+
+.not_eject_pack
+	ld [hl], BASE_STAT_LEVEL
+	ld e, 1
+.not_lowered
+	inc hl
+	dec d
+	jr nz, .stat_loop
+	dec e
+	ret nz
+	farcall ItemRecoveryAnim
+	call GetUserItem
+	call GetCurItemName
+	ld hl, RegainedStatsWithItem
+	call StdBattleTextBox
+	jp ConsumeUserItem
+
+EndMoveDamageChecks:
+	call .EndMoveUserItems
+	call .EndMoveOpponentItems
+
+	; Pickpocket
 	; Don't steal items if we're fainted
 	call HasOpponentFainted
 	ret z
@@ -3470,10 +3370,117 @@ BattleCommand_pickpocket:
 .no_pickpocket
 	jp SwitchTurn
 
-BattleCommand_ragedamage:
-; unused (Rage is now Attack boosts again)
-	ret
+.EndMoveUserItems:
+	; life orb, shell bell
+	call HasUserFainted
+	ret z
+	call GetUserItemAfterUnnerve
+	push bc
+	call GetCurItemName
+	pop bc
+	ld a, b
+	cp HELD_LIFE_ORB
+	jr z, .life_orb
+	cp HELD_SHELL_BELL
+	jr z, .shell_bell
+	cp HELD_THROAT_SPRAY
+	jr z, .throat_spray
+	cp HELD_SWITCH
+.deferred_switch
+	ret nz
+	ld a, c
+	jp SetDeferredSwitch
 
+.EndMoveOpponentItems:
+	call HasOpponentFainted
+	ret z
+	call GetOpponentItemAfterUnnerve
+	push bc
+	call GetCurItemName
+	pop bc
+	ld a, b
+	cp HELD_DEFEND_HIT
+	jr z, .defend_hit
+	cp HELD_SWITCH_TARGET
+	jr .deferred_switch
+
+.shell_bell
+	farcall CheckFullHP
+	ret z
+	ld a, [wDamageTaken]
+	and $f
+	ld b, a
+	ld a, [wDamageTaken + 1]
+	ld c, a
+	or b
+	ret z ; No damage was done
+	call HalveBC
+	call HalveBC
+	call HalveBC
+	farcall ItemRecoveryAnim
+	farcall RestoreHP
+	ld hl, BattleText_UserRecoveredWithItem
+	jp StdBattleTextBox
+
+.life_orb
+	call GetTrueUserAbility
+	cp MAGIC_GUARD
+	ret z
+
+	xor a
+	call GetMaxHP
+	ld a, b
+	ld [hDividend], a
+	ld a, c
+	ld [hDividend + 1], a
+	ld a, 10
+	ld [hDivisor], a
+	ld b, 2
+	call Divide
+	ld a, [hQuotient + 1]
+	ld b, a
+	ld a, [hQuotient + 2]
+	ld c, a
+	farcall SubtractHPFromUser
+	ld hl, BattleText_UserLostSomeOfItsHP
+	jp StdBattleTextBox
+
+.throat_spray
+	push bc
+	ld a, BATTLE_VARS_MOVE_ANIM
+	call GetBattleVar
+	ld hl, SoundMoves
+	ld de, 1
+	call IsInArray
+	pop bc
+	ret nc
+
+	ld b, c
+	jr RaiseStatWithItem
+
+.defend_hit
+	ld a, c
+	cp PHYSICAL
+	ld b, DEFENSE
+	jr z, .got_stat
+	ld b, SP_DEFENSE
+.got_stat
+	ld a, BATTLE_VARS_MOVE_CATEGORY
+	call GetBattleVar
+	cp c
+	ret nz
+	call SwitchTurn
+	call RaiseStatWithItem
+	jp SwitchTurn
+
+RaiseStatWithItem:
+	ld a, STAT_SKIPTEXT
+	call _RaiseStat
+	ld a, [wFailedMessage]
+	and a
+	ret nz
+	farcall UseStatItemText
+	jp ConsumeUserItem
 
 DittoMetalPowder:
 if !DEF(FAITHFUL)
@@ -6191,11 +6198,10 @@ BattleCommand_endloop:
 	ld a, [hBattleTurn]
 	and a
 	ld hl, wPlayerRolloutCount
-	ld de, wPlayerDamageTaken
 	jr z, .got_counter
 	ld hl, wEnemyRolloutCount
-	ld de, wEnemyDamageTaken
 .got_counter
+	ld de, wDamageTaken
 	dec [hl]
 	jr nz, .loop_back_to_critical
 
@@ -6205,6 +6211,8 @@ BattleCommand_endloop:
 
 	ld hl, wStringBuffer1
 	ld a, [de]
+	swap a
+	and $f
 	ld [hl], a
 	dec a
 	ld hl, Hit1TimeText
@@ -6216,7 +6224,7 @@ BattleCommand_endloop:
 ; Loop back to the command before 'critical'.
 .loop_back_to_critical
 	ld a, [de]
-	inc a
+	add $10
 	ld [de], a
 	ld b, critical_command
 	jp SkipToBattleCommandBackwards

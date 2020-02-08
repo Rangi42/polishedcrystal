@@ -714,6 +714,9 @@ GetMoveEffect: ; 3c5ec
 
 
 PerformMove:
+	xor a
+	ld [wDamageTaken], a
+	ld [wDamageTaken + 1], a
 	ld a, BATTLE_VARS_SUBSTATUS2
 	call GetBattleVarAddr
 	res SUBSTATUS_DESTINY_BOND, [hl]
@@ -2357,9 +2360,6 @@ PlayerMonFaintHappinessMod:
 	res SUBSTATUS_IN_LOOP, [hl]
 	xor a
 	ld [wLowHealthAlarm], a
-	ld hl, wPlayerDamageTaken
-	ld [hli], a
-	ld [hl], a
 	ld [wBattleMonStatus], a
 	call UpdateBattleMonInParty
 	ld c, HAPPINESS_FAINTED

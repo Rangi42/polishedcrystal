@@ -128,7 +128,6 @@ BattleCommandPointers:
 	command thunderaccuracy
 	command teleport
 	command switchout
-	command ragedamage
 	command resettypematchup
 	command allstatsup
 	command raisesubnoanim
@@ -141,7 +140,6 @@ BattleCommandPointers:
 	command curl
 	command burn
 	command bounceback
-	command pickpocket
 	command suckerpunch
 	command toxicspikes
 	command roost
