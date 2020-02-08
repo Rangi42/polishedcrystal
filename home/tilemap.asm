@@ -243,7 +243,7 @@ MenuBoxCoord2Attr::
 	call LoadMenuBoxCoords
 	; fallthrough
 
-Coord2Attr:
+Coord2Attr::
 ; Return the address of wAttrMap(c, b) in hl.
 	call Coord2Absolute
 	bccoord 0, 0, wAttrMap

@@ -2444,10 +2444,15 @@ CheckCurSpriteCoveredByTextBox: ; 56cd
 	jr nc, .ok8
 	ld c, a
 	push bc
+	call Coord2Attr
+	pop bc
+	bit OAM_TILE_BANK, [hl] ; show sprites standing on tiles $1:00-FF
+	jr nz, .ok8
+	push bc
 	call Coord2Tile
 	pop bc
 	ld a, [hl]
-	cp $7f ; hide sprites standing on tiles $$7f or $ff
+	cp $7f ; hide sprites standing on tiles $1:7F-FF
 	jr nc, .nope
 .ok8
 	dec d
