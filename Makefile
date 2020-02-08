@@ -139,8 +139,12 @@ $(sorted_sym): crystal ; tail -n +3 $(NAME)-$(VERSION).sym | sort -o $@
 	head -c 2048 $< > $@
 
 %.2bpp.vram1: %.2bpp
-# skip the first 128 tiles
-	tail -c +2049 $< > $@
+# skip the first 128 tiles, take the next 128 tiles
+	tail -c +2049 $< | head -c 2048 > $@
+
+%.2bpp.vram2: %.2bpp
+# skip the first 256 tiles
+	tail -c +4097 $< > $@
 
 %.2bpp: %.png ; $(GFX) 2bpp $<
 %.1bpp: %.png ; $(GFX) 1bpp $<
