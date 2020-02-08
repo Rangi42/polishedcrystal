@@ -1309,24 +1309,19 @@ PnP_odd:
 
 PeoplePlaces6: ; Places
 	call Random
-	cp (PnP_HiddenPlaces.End - PnP_HiddenPlaces) / 2
+	cp PnP_Places.End - PnP_Places
 	jr nc, PeoplePlaces6
-	ld hl, PnP_HiddenPlaces
+	ld hl, PnP_Places
 	ld c, a
 	ld b, 0
 	add hl, bc
-	add hl, bc
-	ld b, [hl]
-	inc hl
-	ld c, [hl]
-	call GetWorldMapLocation
-	ld e, a
+	ld e, [hl]
 	farcall GetLandmarkName
 	ld hl, PnP_Text5
 	ld a, PLACES_AND_PEOPLE_7
 	jp NextRadioLine
 
-INCLUDE "data/radio/pnp_hidden_places.asm"
+INCLUDE "data/radio/pnp_places.asm"
 
 PnP_Text5:
 	; @ @
