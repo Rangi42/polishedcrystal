@@ -19,7 +19,7 @@ HealMachineAnim: ; 12324
 .DoJumptableFunctions: ; 1233e
 	xor a
 	ld [wBuffer3], a
-.jumpable_loop
+.jumptable_loop
 	ld a, [wBuffer1]
 	ld e, a
 	ld d, 0
@@ -39,7 +39,7 @@ HealMachineAnim: ; 12324
 	ret z
 	ld hl, .Jumptable
 	rst JumpTable
-	jr .jumpable_loop
+	jr .jumptable_loop
 ; 12365
 
 .Pointers: ; 12365

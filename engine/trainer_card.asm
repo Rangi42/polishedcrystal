@@ -19,7 +19,9 @@ TrainerCard: ; 25105
 	ld a, [hJoyLast]
 	and B_BUTTON
 	jr nz, .quit
-	call .RunJumptable
+	ld a, [wJumptableIndex]
+	ld hl, .Jumptable
+	rst JumpTable
 	call DelayFrame
 	jr .loop
 
@@ -65,12 +67,6 @@ TrainerCard: ; 25105
 	ld [hli], a
 	ld [hli], a
 	ld [hl], a
-	ret
-
-.RunJumptable: ; 2518e (9:518e)
-	ld a, [wJumptableIndex]
-	ld hl, .Jumptable
-	rst JumpTable
 	ret
 
 .Jumptable: ; 2519d (9:519d)

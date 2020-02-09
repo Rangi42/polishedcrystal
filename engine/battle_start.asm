@@ -38,7 +38,8 @@ Predef_StartBattle: ; 8c20f
 
 	jr .handleLoop
 .loop
-	call FlashyTransitionToBattle
+	ld hl, .BattleTransitionScenes
+	rst JumpTable
 	call DelayFrame
 .handleLoop
 	ld a, [wJumptableIndex]
@@ -93,15 +94,7 @@ endc
 .TrainerBattlePokeballTile:
 INCBIN "gfx/overworld/trainer_battle_pokeball_tile.2bpp"
 
-
-FlashyTransitionToBattle: ; 8c314
-	ld a, [wJumptableIndex]
-	ld hl, .scenes
-	rst JumpTable
-	ret
-; 8c323
-
-.scenes ; 8c323 (23:4323)
+.BattleTransitionScenes ; 8c323 (23:4323)
 	dw StartTrainerBattle_DetermineWhichAnimation ; 00
 
 	; Animation 1: cave

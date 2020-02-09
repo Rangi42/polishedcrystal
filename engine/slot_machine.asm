@@ -115,12 +115,23 @@ SlotsLoop: ; 927af (24:67af)
 	ld a, [wJumptableIndex]
 	bit 7, a
 	jr nz, .stop
-	call SlotsJumptable
+	ld hl, .Jumptable
+	rst JumpTable
+
 	call Slots_SpinReels
 	xor a
 	ld [wCurrSpriteOAMAddr], a
 	farcall DoNextFrameForFirst16Sprites
-	call .PrintCoinsAndPayout
+
+	hlcoord 4, 1
+	ld de, wCoins
+	lb bc, PRINTNUM_LEADINGZEROS | 2, 5
+	call PrintNum
+	hlcoord 11, 1
+	ld de, wPayout
+	lb bc, PRINTNUM_LEADINGZEROS | 2, 4
+	call PrintNum
+
 	call DelayFrame
 	and a
 	ret
@@ -129,24 +140,6 @@ SlotsLoop: ; 927af (24:67af)
 	scf
 	ret
 ; 927f8
-
-.PrintCoinsAndPayout: ; 927f8 (24:67f8)
-	hlcoord 4, 1
-	ld de, wCoins
-	lb bc, PRINTNUM_LEADINGZEROS | 2, 5
-	call PrintNum
-	hlcoord 11, 1
-	ld de, wPayout
-	lb bc, PRINTNUM_LEADINGZEROS | 2, 4
-	jp PrintNum
-
-; 92811 (24:6811)
-
-SlotsJumptable: ; 92844 (24:6844)
-	ld a, [wJumptableIndex]
-	ld hl, .Jumptable
-	rst JumpTable
-	ret
 
 .Jumptable:
 	dw Slots_Init        ; 00

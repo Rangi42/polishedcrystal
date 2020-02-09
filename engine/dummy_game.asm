@@ -45,7 +45,8 @@ _DummyGame: ; e1e5b (38:5e5b)
 	ld a, [wJumptableIndex]
 	bit 7, a
 	jr nz, .quit
-	call .ExecuteJumptable
+	ld hl, .Jumptable
+	rst JumpTable
 	farcall PlaySpriteAnimations
 	call DelayFrame
 	and a
@@ -53,12 +54,6 @@ _DummyGame: ; e1e5b (38:5e5b)
 
 .quit
 	scf
-	ret
-
-.ExecuteJumptable:
-	ld a, [wJumptableIndex]
-	ld hl, .Jumptable
-	rst JumpTable
 	ret
 
 .Jumptable:
