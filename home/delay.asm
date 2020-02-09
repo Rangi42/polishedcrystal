@@ -2,10 +2,14 @@ ClearBGPalettes::
 	call ClearPalettes
 	jr ApplyTilemapInVBlank
 
-ApplyAttrAndTilemapInVBlank::
+ApplyAttrmapInVBlank::
+; Tell VBlank to update Attr Map
 	ld a, 2
 	ld [hBGMapMode], a
-	call Delay2
+	jr Delay2
+
+ApplyAttrAndTilemapInVBlank::
+	call ApplyAttrmapInVBlank
 
 ApplyTilemapInVBlank::
 ; Tell VBlank to update BG Map

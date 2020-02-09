@@ -48,11 +48,15 @@ _DoFadePalettes::
 	ld hl, wOBPals
 .got_count
 	ld a, [wPalFadeMode]
-	and PALFADE_SKIP_LAST
+
+	and PALFADE_SKIP_FIRST
 	jr z, .inner_loop
+	ld bc, 1 palettes
+	add hl, bc
 	ld a, d
 	sub 4
 	ld d, a
+
 .inner_loop
 	push de
 	ld a, [hli]

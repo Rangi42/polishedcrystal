@@ -10,12 +10,6 @@ SetWhitePals::
 	ld bc, 16 palettes
 	jp ByteFill
 
-StartBattleFlash::
-	ld a, PALFADE_BG | PALFADE_FLASH | PALFADE_SKIP_LAST
-	ld [wPalFadeMode], a
-	ld c, 10
-	jr DoFadePalettes
-
 SetBlackPals::
 	ld a, BANK(wUnknBGPals)
 	call StackCallInWRAMBankA
@@ -52,7 +46,7 @@ FadeBGPalettes::
 FadeOBPalettes::
 	ld a, PALFADE_OBJ
 	ld [wPalFadeMode], a
-DoFadePalettes:
+DoFadePalettes::
 	farjp _DoFadePalettes
 
 WhitePal::
