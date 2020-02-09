@@ -1,3 +1,48 @@
+ClearVRAM: MACRO
+; Wipe VRAM banks 0 and 1
+
+	ld a, 1
+	ld [rVBK], a
+	call .clear
+
+	xor a
+	ld [rVBK], a
+.clear
+	ld hl, vTiles0
+	ld bc, $2000
+	xor a
+	call ByteFill
+ENDM
+
+ClearWRAM: MACRO
+; Wipe swappable WRAM banks (1-7)
+
+	ld a, 1
+.bank_loop
+	push af
+	ld [rSVBK], a
+	xor a
+	ld hl, wRAM1Start
+	ld bc, $1000
+	call ByteFill
+	pop af
+	inc a
+	cp 8
+	jr c, .bank_loop
+ENDM
+
+ClearScratch: MACRO
+	xor a
+	call GetSRAMBank
+	ld hl, sScratch
+	ld bc, $20
+	xor a
+	call ByteFill
+	call CloseSRAM
+ENDM
+
+; above functions are macros and not calls to save space
+
 SoftReset:: ; 150
 	di
 	call MapSetup_Sound_Off
@@ -85,19 +130,22 @@ Init:: ; 17d
 	pop af
 	ld [hCGB], a
 
-	call ClearWRAM
+	ClearWRAM
 	ld a, 1
 	ld [rSVBK], a
-	call ClearVRAM
+	ClearVRAM
 	call ClearSprites
-	call ClearsScratch
+	ClearScratch
 
 ; Initialize the RNG state. It can be initialized to anything but zero; this is just a simple way of doing it.
 	ld hl, wRNGState
-	ld a, 1
+	ld a, "R"
 	ld [hli], a
+	ld a, "N"
 	ld [hli], a
+	ld a, "G"
 	ld [hli], a
+	ld a, "!"
 	ld [hl], a
 
 	ld a, BANK(WriteOAMDMACodeToHRAM)
@@ -168,48 +216,3 @@ Init:: ; 17d
 	ld [wMapMusic], a
 	jp GameInit
 ; 245
-
-
-ClearVRAM:: ; 245
-; Wipe VRAM banks 0 and 1
-
-	ld a, 1
-	ld [rVBK], a
-	call .clear
-
-	xor a
-	ld [rVBK], a
-.clear
-	ld hl, vTiles0
-	ld bc, $2000
-	xor a
-	jp ByteFill
-; 25a
-
-ClearWRAM:: ; 25a
-; Wipe swappable WRAM banks (1-7)
-
-	ld a, 1
-.bank_loop
-	push af
-	ld [rSVBK], a
-	xor a
-	ld hl, wRAM1Start
-	ld bc, $1000
-	call ByteFill
-	pop af
-	inc a
-	cp 8
-	jr c, .bank_loop
-	ret
-; 270
-
-ClearsScratch:: ; 270
-	xor a
-	call GetSRAMBank
-	ld hl, sScratch
-	ld bc, $20
-	xor a
-	call ByteFill
-	jp CloseSRAM
-; 283

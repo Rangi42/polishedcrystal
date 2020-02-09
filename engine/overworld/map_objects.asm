@@ -3071,9 +3071,8 @@ CheckOccludingObjects:: ; here for space reasons
 	ld bc, OBJECT_LENGTH
 	ld hl, wMapObjects + MAPOBJECT_X_COORD
 	rst AddNTimes
-	ld a, [hl]
+	ld a, [hld]
 	ld [wCurTrainerX], a
-	dec hl
 	ld a, [hl]
 	ld [wCurTrainerY], a
 
@@ -3153,7 +3152,6 @@ CheckOccludingObjects:: ; here for space reasons
 	ld a, [wCurPotentialOccluderY]
 
 .check
-	ld b, b
 	; jr .next if not (b < a < c or c < a < b)
 
 	; b < a < c first

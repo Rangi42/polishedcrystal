@@ -968,7 +968,7 @@ CheckTrainerBattle:: ; 360d
 	jr nz, .next
 	
 ; And is unoccluded
-	farcall CheckOccludingObjects ; rst farcall says it retains "a, bc, de, and hl" but return farcall says it tries to save f?
+	farcall CheckOccludingObjects
 	jr nc, .startbattle
 
 .next
