@@ -143,7 +143,10 @@ SlotsLoop: ; 927af (24:67af)
 ; 92811 (24:6811)
 
 SlotsJumptable: ; 92844 (24:6844)
-	jumptable .Jumptable, wJumptableIndex
+	ld a, [wJumptableIndex]
+	ld hl, .Jumptable
+	rst JumpTable
+	ret
 
 .Jumptable:
 	dw Slots_Init        ; 00

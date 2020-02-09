@@ -68,7 +68,10 @@ TrainerCard: ; 25105
 	ret
 
 .RunJumptable: ; 2518e (9:518e)
-	jumptable .Jumptable, wJumptableIndex
+	ld a, [wJumptableIndex]
+	ld hl, .Jumptable
+	rst JumpTable
+	ret
 
 .Jumptable: ; 2519d (9:519d)
 	dw TrainerCard_Page1_LoadGFX

@@ -56,7 +56,10 @@ _DummyGame: ; e1e5b (38:5e5b)
 	ret
 
 .ExecuteJumptable:
-	jumptable .Jumptable, wJumptableIndex
+	ld a, [wJumptableIndex]
+	ld hl, .Jumptable
+	rst JumpTable
+	ret
 
 .Jumptable:
 	dw .RestartGame

@@ -1,5 +1,29 @@
 Predef_StartBattle: ; 8c20f
-	call .InitGFX
+	farcall ReanchorBGMap_NoOAMUpdate
+	call UpdateSprites
+	call DelayFrame
+
+	ld de, .TrainerBattlePokeballTile
+	ld hl, vTiles0 tile "<PHONE>"
+	lb bc, BANK(.TrainerBattlePokeballTile), 1
+	call Request2bpp
+
+	ld b, 3
+	call SafeCopyTilemapAtOnce
+
+	ld a, SCREEN_HEIGHT_PX
+	ld [hWY], a
+	call DelayFrame
+
+	xor a
+	ld [hBGMapMode], a
+	ld hl, wJumptableIndex
+	ld [hli], a
+	ld [hli], a
+	ld [hl], a
+
+	call WipeLYOverrides
+
 	ld a, [rBGP]
 	ld [wBGP], a
 	ld a, [rOBP0]
@@ -11,8 +35,8 @@ Predef_StartBattle: ; 8c20f
 	ld a, [hl]
 	push af
 	ld [hl], 3
-	jr .handleLoop
 
+	jr .handleLoop
 .loop
 	call FlashyTransitionToBattle
 	call DelayFrame
@@ -21,7 +45,6 @@ Predef_StartBattle: ; 8c20f
 	bit 7, a
 	jr z, .loop
 
-.done
 	ld a, [rSVBK]
 	push af
 	ld a, BANK(wUnknBGPals)
@@ -50,6 +73,7 @@ endc
 	ld [wBGP], a
 	call DmgToCgbBGPals
 	call DelayFrame
+
 	xor a
 	ld [hLCDCPointer], a
 	ld [hLYOverrideStart], a
@@ -60,49 +84,24 @@ endc
 	ld [rSVBK], a
 	ld hl, rIE
 	res LCD_STAT, [hl]
+
 	pop af
 	ld [hVBlank], a
 	jp DelayFrame
 ; 8c26d
 
-.InitGFX: ; 8c26d
-	farcall ReanchorBGMap_NoOAMUpdate
-	call UpdateSprites
-	call DelayFrame
-	call .LoadPokeballTiles
-	ld b, 3
-	call SafeCopyTilemapAtOnce
-	ld a, SCREEN_HEIGHT_PX
-	ld [hWY], a
-	call DelayFrame
-	xor a
-	ld [hBGMapMode], a
-	ld hl, wJumptableIndex
-	xor a
-	ld [hli], a
-	ld [hli], a
-	ld [hl], a
-	jp WipeLYOverrides
-; 8c2a0
-
-.LoadPokeballTiles: ; 8c2a0
-; Load the tile used in the Pokeball Graphic that fills the screen
-; at the start of every Trainer battle.
-	ld de, .TrainerBattlePokeballTile
-	ld hl, vTiles0 tile "<BLACK>"
-	lb bc, BANK(.TrainerBattlePokeballTile), 1
-	jp Request2bpp
-; 8c2f4
-
-.TrainerBattlePokeballTile: ; 8c2f4
+.TrainerBattlePokeballTile:
 INCBIN "gfx/overworld/trainer_battle_pokeball_tile.2bpp"
 
 
 FlashyTransitionToBattle: ; 8c314
-	jumptable .dw, wJumptableIndex
+	ld a, [wJumptableIndex]
+	ld hl, .scenes
+	rst JumpTable
+	ret
 ; 8c323
 
-.dw ; 8c323 (23:4323)
+.scenes ; 8c323 (23:4323)
 	dw StartTrainerBattle_DetermineWhichAnimation ; 00
 
 	; Animation 1: cave
@@ -603,7 +602,7 @@ StartTrainerBattle_LoadPokeBallGraphics: ; 8c5dc (23:45dc)
 	jr nc, .no_load
 
 	; poke ball tile; use PAL_BG_GRAY, bank 0, no flips or priority
-	ld [hl], "<BLACK>"
+	ld [hl], "<PHONE>"
 	push hl
 	push bc
 	ld bc, wAttrMap - wTileMap
