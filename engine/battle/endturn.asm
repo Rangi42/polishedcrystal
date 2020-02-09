@@ -897,7 +897,7 @@ HandleStatusOrbs:
 	call SwitchTurn
 
 .do_it
-	call HasUserFainted
+	call HasOpponentFainted
 	ret z
 
 	farcall GetOpponentItemAfterUnnerve
