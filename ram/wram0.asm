@@ -771,7 +771,7 @@ SECTION "Overworld Map", WRAM0
 
 UNION
 ; overworld map
-wOverworldMap:: ds 1300
+wOverworldMap:: ds $570 ; large enough for 45x20 NavelRockInside.blk; (45+6)x(20+6) = 1326 < 1392
 wOverworldMapEnd::
 
 NEXTU
@@ -850,8 +850,6 @@ wCurHPPal:: ds 1
 wHPPalIndex:: ds 1
 
 wCopyingSGBTileData:: ds 1
-
-	ds 26
 
 wAttrMap::
 ; 20x18 grid of palettes for 8x8 tiles
@@ -937,8 +935,6 @@ wPalFadeMode::
 	ds 1
 
 wCurForm:: ds 1
-
-	ds 1 ; unused
 
 wWindowStackPointer:: ds 2
 wMenuJoypad:: ds 1
@@ -1081,8 +1077,6 @@ wTextBoxFrame::
 	ds 1
 
 wTextBoxFlags:: ds 1
-
-	ds 1
 
 wOptions2::
 ; bit 0-2: typeface
