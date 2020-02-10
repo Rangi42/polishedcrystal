@@ -25,15 +25,19 @@ jobs:
         mkdir build
         make -j4
         mv polishedcrystal-3.0.0-beta.gbc build/polishedcrystal-3.0.0-beta.gbc
+        mv polishedcrystal-3.0.0-beta.sym build/polishedcrystal-3.0.0-beta.sym
         make clean
         make -j4 faithful
         mv polishedcrystal-3.0.0-beta.gbc build/polishedcrystal-3.0.0-faithful-beta.gbc
+        mv polishedcrystal-3.0.0-beta.sym build/polishedcrystal-3.0.0-faithful-beta.sym
         make clean
         make -j4 debug
         mv polishedcrystal-3.0.0-beta.gbc build/polishedcrystal-3.0.0-debug-beta.gbc
+        mv polishedcrystal-3.0.0-beta.sym build/polishedcrystal-3.0.0-debug-beta.sym
         make clean
         make -j4 faithful debug
         mv polishedcrystal-3.0.0-beta.gbc build/polishedcrystal-3.0.0-faithful-debug-beta.gbc
+        mv polishedcrystal-3.0.0-beta.sym build/polishedcrystal-3.0.0-faithful-debug-beta.sym
         make clean
         popd
     - name: Delete old release
@@ -71,6 +75,16 @@ jobs:
         asset_path: ./polishedcrystal/build/polishedcrystal-3.0.0-beta.gbc
         asset_name: polishedcrystal-3.0.0-beta-${{ env.SHORT_SHA }}.gbc
         asset_content_type: application/octet-stream
+    - name: Upload SYM
+      id: upload-sym
+      uses: actions/upload-release-asset@v1.0.1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./polishedcrystal/build/polishedcrystal-3.0.0-beta.sym
+        asset_name: polishedcrystal-3.0.0-beta-${{ env.SHORT_SHA }}.sym
+        asset_content_type: text/plain
     - name: Upload faithful ROM
       id: upload-faithful
       uses: actions/upload-release-asset@v1.0.1
@@ -81,6 +95,16 @@ jobs:
         asset_path: ./polishedcrystal/build/polishedcrystal-3.0.0-faithful-beta.gbc
         asset_name: polishedcrystal-3.0.0-beta-faithful-${{ env.SHORT_SHA }}.gbc
         asset_content_type: application/octet-stream
+    - name: Upload faithful SYM
+      id: upload-faithful-sym
+      uses: actions/upload-release-asset@v1.0.1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./polishedcrystal/build/polishedcrystal-3.0.0-faithful-beta.sym
+        asset_name: polishedcrystal-3.0.0-beta-faithful-${{ env.SHORT_SHA }}.sym
+        asset_content_type: text/plain
     - name: Upload debug ROM
       id: upload-debug
       uses: actions/upload-release-asset@v1.0.1
@@ -91,6 +115,16 @@ jobs:
         asset_path: ./polishedcrystal/build/polishedcrystal-3.0.0-debug-beta.gbc
         asset_name: polishedcrystal-3.0.0-beta-debug-${{ env.SHORT_SHA }}.gbc
         asset_content_type: application/octet-stream
+    - name: Upload debug SYM
+      id: upload-debug-sym
+      uses: actions/upload-release-asset@v1.0.1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./polishedcrystal/build/polishedcrystal-3.0.0-debug-beta.sym
+        asset_name: polishedcrystal-3.0.0-beta-debug-${{ env.SHORT_SHA }}.sym
+        asset_content_type: text/plain
     - name: Upload faithful debug ROM
       id: upload-faithful-debug
       uses: actions/upload-release-asset@v1.0.1
@@ -101,3 +135,13 @@ jobs:
         asset_path: ./polishedcrystal/build/polishedcrystal-3.0.0-faithful-debug-beta.gbc
         asset_name: polishedcrystal-3.0.0-beta-faithful-debug-${{ env.SHORT_SHA }}.gbc
         asset_content_type: application/octet-stream
+    - name: Upload faithful debug SYM
+      id: upload-faithful-debug-sym
+      uses: actions/upload-release-asset@v1.0.1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./polishedcrystal/build/polishedcrystal-3.0.0-faithful-debug-beta.sym
+        asset_name: polishedcrystal-3.0.0-beta-faithful-debug-${{ env.SHORT_SHA }}.sym
+        asset_content_type: text/plain
