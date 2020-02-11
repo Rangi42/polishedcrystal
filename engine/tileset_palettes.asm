@@ -1,541 +1,240 @@
-LoadBlindingFlashPalette:: ; 49409
-	ld a, $5
-	ld de, wUnknBGPals palette PAL_BG_TEXT
-	ld hl, BlindingFlashPalette
-	ld bc, 1 palettes
-	jp FarCopyWRAM
-; 49418
+	const_def 1
+	const PAL_SINGLE
+	const PAL_TIMEOFDAY
+	const PAL_SPECIAL
 
-BlindingFlashPalette: ; 49418
-if !DEF(MONOCHROME)
-	RGB 31, 31, 31
-	RGB 08, 19, 28
-	RGB 05, 05, 16
-	RGB 00, 00, 00
-else
-	MONOCHROME_RGB_FOUR
-endc
-; 49420
 
 LoadSpecialMapPalette: ; 494ac
-	GLOBAL GenericMart_BlockData
+; Don't load a special palette if it's dark and we haven't used Flash.
 	call GetMapHeaderTimeOfDayNybble
 	cp PALETTE_DARK
 	jr nz, .not_dark
 	ld a, [wStatusFlags]
 	bit 2, a ; Flash
-	jp z, .do_nothing
+	jr z, NoSpecialPalettes
 .not_dark
 
+	ld a, [wMapGroup]
+	ld b, a
+	ld a, [wMapNumber]
+	ld c, a
+
+; Check individual maps' palettes.
+	ld hl, SpecialMapPalettes
+.map_loop
+	ld a, [hli]
+	and a ; end?
+	jr z, .not_map
+	cp b ; [wMapGroup]
+	jr nz, .next_map_4
+	ld a, [hli]
+	cp c ; [wMapNumber]
+	jr nz, .next_map_3
+	jp CheckSpecialMapPaletteType
+.next_map_4
+	inc hl
+.next_map_3
+	inc hl
+	inc hl
+	inc hl
+	jr .map_loop
+.not_map
+
+; Check landmarks' palettes.
+	call GetWorldMapLocation ; b, c == [wMapGroup], [wMapNumber]
+	ld b, a
+	ld hl, SpecialLandmarkPalettes
+	call ScanThreeByteSpecialPaletteTable
+	ret c
+
+; Check tilesets' palettes.
 	ld a, [wTileset]
+	ld b, a
+	ld hl, SpecialTilesetPalettes
+	call ScanThreeByteSpecialPaletteTable
+	ret c
 
-	ld hl, PokeComPalette
-	cp TILESET_POKECOM_CENTER
-	jp z, .load_eight_bg_palettes
-	ld hl, BattleTowerPalette
-	cp TILESET_BATTLE_TOWER_INSIDE
-	jp z, .load_eight_bg_palettes
-	ld hl, GatePalette
-	cp TILESET_GATE
-	jp z, .load_eight_bg_palettes
-	ld hl, HotelPalette
-	cp TILESET_HOTEL
-	jp z, .load_eight_bg_palettes
-	ld hl, QuietCavePalette
-	cp TILESET_QUIET_CAVE
-	jp z, .load_eight_bg_palettes
-	ld hl, RuinsPalette
-	cp TILESET_RUINS_OF_ALPH
-	jp z, .load_eight_bg_palettes
-	cp TILESET_ALPH_WORD_ROOM
-	jp z, .load_eight_bg_palettes
-
-	ld hl, SafariZonePalette
-	cp TILESET_SAFARI_ZONE
-	jp z, .load_eight_time_of_day_bg_palettes
-	ld hl, FarawayIslandPalette
-	cp TILESET_FARAWAY_ISLAND
-	jp z, .load_eight_time_of_day_bg_palettes
-	ld hl, ShamoutiIslandPalette
-	cp TILESET_SHAMOUTI_ISLAND
-	jp z, .load_eight_time_of_day_bg_palettes
-	ld hl, ValenciaIslandPalette
-	cp TILESET_VALENCIA_ISLAND
-	jp z, .load_eight_time_of_day_bg_palettes
-
-	cp TILESET_POKECENTER
-	jp z, .pokecenter
-	cp TILESET_ICE_PATH
-	jp z, .ice_path_or_hall_of_fame
-	cp TILESET_RADIO_TOWER
-	jp z, .radio_towers
-	cp TILESET_GYM
-	jp z, .maybe_elite_room
-	cp TILESET_MAGNET_TRAIN
-	jp z, .maybe_viridian_gym
-	cp TILESET_CHAMPIONS_ROOM
-	jp z, .maybe_lances_room
-	cp TILESET_PORT
-	jp z, .maybe_cerulean_gym
-	cp TILESET_GAME_CORNER
-	jp z, .maybe_saffron_gym
-	cp TILESET_UNDERGROUND
-	jp z, .maybe_fuchsia_gym
-	cp TILESET_LAB
-	jp z, .maybe_lab_or_dragon_shrine
-	cp TILESET_TUNNEL
-	jp z, .maybe_lightning_island_or_magnet_tunnel
-	cp TILESET_SPROUT_TOWER
-	jp z, .maybe_mystri_or_tower
-	cp TILESET_POKEMON_MANSION
-	jp z, .maybe_cinnabar_lab
-	cp TILESET_MUSEUM
-	jp z, .maybe_goldenrod_museum
-	cp TILESET_CELADON_MANSION
-	jp z, .maybe_celadon_mansion_roof
-	cp TILESET_MART
-	jp z, .maybe_goldenrod_dept_store_roof
-	cp TILESET_LIGHTHOUSE
-	jp z, .maybe_olivine_lighthouse_roof
-	cp TILESET_HOME_DECOR_STORE
-	jp z, .maybe_celadon_home_decor_store_4f
-	cp TILESET_JOHTO_TRADITIONAL
-	jp z, .maybe_special_johto_1
-	cp TILESET_FOREST
-	jp z, .maybe_special_forest
-	cp TILESET_CAVE
-	jp z, .maybe_special_cave
-
+; Load the overcast palette if it applies.
 	call GetOvercastIndex
 	and a
-	jp z, .maybe_sinjoh_ruins
+	jr z, NoSpecialPalettes
 	ld hl, OvercastBGPalette
-	jp .load_eight_time_of_day_bg_palettes
+	jr LoadEightTimeOfDayBGPalettes
 
-.do_nothing
+NoSpecialPalettes:
 	and a
 	ret
-; 494f2
 
-.pokecenter
-	ld a, [wMapGroup]
-	cp GROUP_POKECENTER_2F
-	jr nz, .ok
-	ld a, [wMapNumber]
-	cp MAP_POKECENTER_2F
-	jr nz, .ok
-	ld a, [wBackupMapGroup]
-	cp GROUP_SHAMOUTI_POKECENTER_1F
-	jr nz, .normal_pokecenter
-	ld a, [wBackupMapNumber]
-	cp MAP_SHAMOUTI_POKECENTER_1F
-	jr nz, .normal_pokecenter
-	jr .shamouti_pokecenter
-.ok
-	ld a, [wMapGroup]
-	cp GROUP_SHAMOUTI_POKECENTER_1F
-	jr nz, .normal_pokecenter
-	ld a, [wMapNumber]
-	cp MAP_SHAMOUTI_POKECENTER_1F
-	jr nz, .normal_pokecenter
-.shamouti_pokecenter
-	ld hl, ShamoutiPokeCenterPalette
-	jp .load_eight_bg_palettes
-
-.normal_pokecenter
-	ld hl, PokeCenterPalette
-.load_eight_bg_palettes:
+LoadEightTimeOfDayBGPalettes:
+	ld a, [wTimeOfDayPal]
+	and 3
+	ld bc, 8 palettes
+	rst AddNTimes
+LoadEightBGPalettes:
 	ld a, $5
 	ld de, wUnknBGPals
 	ld bc, 8 palettes
 	call FarCopyWRAM
+	scf
+	ret
 
-; replace green with Poké Mart blue for maps using Mart.ablk
+CheckSpecialMapPaletteType:
+	ld a, [hli]
+	ld b, a
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	ld a, b
+	dec a ; PAL_SINGLE?
+	jr z, LoadEightBGPalettes
+	dec a ; PAL_TIMEOFDAY
+	jr z, LoadEightTimeOfDayBGPalettes
+	; PAL_SPECIAL
+	jp hl
+
+ScanThreeByteSpecialPaletteTable:
+	ld a, [hli]
+	and a ; end?
+	ret z
+	cp b
+	jr z, CheckSpecialMapPaletteType
+	inc hl
+	inc hl
+	inc hl
+	jr ScanThreeByteSpecialPaletteTable
+
+
+SpecialMapPalettes:
+special_map_pal: MACRO
+	map_id \1
+	db \2
+	dw \3
+ENDM
+	special_map_pal OLIVINE_LIGHTHOUSE_ROOF, PAL_TIMEOFDAY, GoldenrodDeptStoreRoofPalette
+	special_map_pal SILVER_CAVE_ROOM_1, PAL_SINGLE, SilverCavePalette
+	special_map_pal SILVER_CAVE_ROOM_2, PAL_SINGLE, SilverCavePalette
+	special_map_pal SILVER_CAVE_ROOM_3, PAL_SINGLE, SilverCavePalette
+	special_map_pal SILVER_CAVE_ITEM_ROOMS, PAL_SINGLE, SilverCavePalette
+	special_map_pal DRAGON_SHRINE, PAL_SINGLE, DragonShrinePalette
+	special_map_pal ECRUTEAK_CITY, PAL_TIMEOFDAY, VioletEcruteakPalette
+	special_map_pal CINNABAR_LAB, PAL_SINGLE, CinnabarLabPalette
+	special_map_pal CERULEAN_GYM, PAL_SINGLE, CeruleanGymPalette
+	special_map_pal VIOLET_CITY, PAL_TIMEOFDAY, VioletEcruteakPalette
+	special_map_pal MURKY_SWAMP, PAL_SINGLE, MurkySwampPalette
+	special_map_pal GOLDENROD_DEPT_STORE_ROOF, PAL_TIMEOFDAY, GoldenrodDeptStoreRoofPalette
+	special_map_pal GOLDENROD_MUSEUM_1F, PAL_SINGLE, GoldenrodMuseumPalette
+	special_map_pal GOLDENROD_MUSEUM_2F, PAL_SINGLE, GoldenrodMuseumPalette
+	special_map_pal MAGNET_TUNNEL_INSIDE, PAL_SINGLE, MagnetTunnelPalette
+	special_map_pal OAKS_LAB, PAL_SINGLE, OaksLabPalette
+	special_map_pal TIN_TOWER_ROOF, PAL_TIMEOFDAY, TinTowerRoofPalette
+	special_map_pal WILLS_ROOM, PAL_SINGLE, WillsRoomPalette
+	special_map_pal KOGAS_ROOM, PAL_SINGLE, KogasRoomPalette
+	special_map_pal BRUNOS_ROOM, PAL_SINGLE, BrunosRoomPalette
+	special_map_pal KARENS_ROOM, PAL_SINGLE, KarensRoomPalette
+	special_map_pal LANCES_ROOM, PAL_SINGLE, LancesRoomPalette
+	special_map_pal HALL_OF_FAME, PAL_SINGLE, LancesRoomPalette
+	special_map_pal BELLCHIME_TRAIL, PAL_TIMEOFDAY, BellchimeTrailPalette
+	special_map_pal FUCHSIA_GYM, PAL_SINGLE, FuchsiaGymPalette
+	special_map_pal HAUNTED_RADIO_TOWER_2F, PAL_SINGLE, HauntedRadioTowerPalette
+	special_map_pal HAUNTED_RADIO_TOWER_3F, PAL_SINGLE, HauntedRadioTowerPalette
+	special_map_pal HAUNTED_RADIO_TOWER_4F, PAL_SINGLE, HauntedPokemonTowerPalette
+	special_map_pal HAUNTED_RADIO_TOWER_5F, PAL_SINGLE, HauntedPokemonTowerPalette
+	special_map_pal HAUNTED_RADIO_TOWER_6F, PAL_SINGLE, HauntedPokemonTowerPalette
+	special_map_pal NAVEL_ROCK_INSIDE, PAL_SINGLE, NavelRockPalette
+	special_map_pal NAVEL_ROCK_ROOF, PAL_TIMEOFDAY, NavelRockPalette
+	special_map_pal HIDDEN_TREE_GROTTO, PAL_SINGLE, HiddenTreeGrottoPalette
+	special_map_pal HIDDEN_CAVE_GROTTO, PAL_SINGLE, HiddenCaveGrottoPalette
+	special_map_pal YELLOW_FOREST, PAL_TIMEOFDAY, YellowForestPalette
+	special_map_pal CELADON_MANSION_ROOF, PAL_TIMEOFDAY, CeladonMansionRoofPalette
+	special_map_pal CELADON_HOME_DECOR_STORE_4F, PAL_SINGLE, CeladonHomeDecorStore4FPalette
+	special_map_pal VIRIDIAN_GYM, PAL_SINGLE, ViridianGymPalette
+	special_map_pal SAFFRON_GYM, PAL_SINGLE, SaffronGymPalette
+	special_map_pal LIGHTNING_ISLAND, PAL_SINGLE, LightningIslandPalette
+	special_map_pal IVYS_LAB, PAL_SINGLE, IvysLabPalette
+	special_map_pal SINJOH_RUINS, PAL_TIMEOFDAY, SinjohRuinsPalette
+	special_map_pal MYSTRI_STAGE, PAL_SINGLE, MystriStagePalette
+	special_map_pal EMBEDDED_TOWER, PAL_SINGLE, EmbeddedTowerPalette
+	db 0 ; end
+
+SpecialLandmarkPalettes:
+special_landmark_pal: MACRO
+	db \1, \2
+	dw \3
+ENDM
+	special_landmark_pal WHIRL_ISLANDS, PAL_SINGLE, WhirlIslandsPalette
+	special_landmark_pal MT_MORTAR, PAL_SINGLE, DarkCavePalette
+	special_landmark_pal DARK_CAVE, PAL_SINGLE, DarkCavePalette
+	special_landmark_pal CERULEAN_CAVE, PAL_SINGLE, CeruleanCavePalette
+	special_landmark_pal DIM_CAVE, PAL_SINGLE, DimCavePalette
+	special_landmark_pal SCARY_CAVE, PAL_SINGLE, ScaryCavePalette
+	special_landmark_pal CINNABAR_VOLCANO, PAL_SINGLE, CinnabarVolcanoPalette
+	db 0 ; end
+
+SpecialTilesetPalettes:
+special_tileset_pal: MACRO
+	db \1, \2
+	dw \3
+ENDM
+	special_tileset_pal TILESET_SHAMOUTI_ISLAND,     PAL_TIMEOFDAY, ShamoutiIslandPalette
+	special_tileset_pal TILESET_VALENCIA_ISLAND,     PAL_TIMEOFDAY, ValenciaIslandPalette
+	special_tileset_pal TILESET_FARAWAY_ISLAND,      PAL_TIMEOFDAY, FarawayIslandPalette
+	special_tileset_pal TILESET_POKECENTER,          PAL_SPECIAL,   PokeCenterSpecialCase
+	special_tileset_pal TILESET_POKECOM_CENTER,      PAL_SINGLE,    PokeComPalette
+	special_tileset_pal TILESET_MART,                PAL_SPECIAL,   MartSpecialCase
+	special_tileset_pal TILESET_GATE,                PAL_SINGLE,    GatePalette
+	special_tileset_pal TILESET_GAME_CORNER,         PAL_SINGLE,    GameCornerPalette
+	special_tileset_pal TILESET_HOTEL,               PAL_SINGLE,    HotelPalette
+	special_tileset_pal TILESET_BATTLE_TOWER_INSIDE, PAL_SINGLE,    BattleTowerPalette
+	special_tileset_pal TILESET_RADIO_TOWER,         PAL_SINGLE,    RadioTowerPalette
+	special_tileset_pal TILESET_QUIET_CAVE,          PAL_SINGLE,    QuietCavePalette
+	special_tileset_pal TILESET_ICE_PATH,            PAL_SINGLE,    IcePathPalette
+	special_tileset_pal TILESET_SAFARI_ZONE,         PAL_TIMEOFDAY, SafariZonePalette
+	special_tileset_pal TILESET_RUINS_OF_ALPH,       PAL_SINGLE,    RuinsPalette
+	special_tileset_pal TILESET_ALPH_WORD_ROOM,      PAL_SINGLE,    RuinsPalette
+	db 0 ; end
+
+
+PokeCenterSpecialCase:
+	ld hl, wMapGroup
+	call .check_shamouti_pokecenter
+	jr z, .shamouti_pokecenter
+	ld hl, wBackupMapGroup
+	call .check_shamouti_pokecenter
+	jr z, .shamouti_pokecenter
+	ld hl, PokeCenterPalette
+	jp LoadEightBGPalettes
+
+.shamouti_pokecenter
+	ld hl, ShamoutiPokeCenterPalette
+	jp LoadEightBGPalettes
+
+.check_shamouti_pokecenter
+	ld a, [hli]
+	cp GROUP_SHAMOUTI_POKECENTER_1F
+	ret nz
+	ld a, [hl]
+	cp MAP_SHAMOUTI_POKECENTER_1F
+	ret
+
+MartSpecialCase:
+	GLOBAL GenericMart_BlockData
+	ld hl, MartPalette
+	call LoadEightBGPalettes
 	ld a, [wMapBlockDataBank]
 	cp BANK(GenericMart_BlockData)
-	jr nz, .not_mart
+	jr nz, .not_generic_mart
 	ld a, [wMapBlockDataPointer]
-	cp GenericMart_BlockData % $100
-	jr nz, .not_mart
+	cp LOW(GenericMart_BlockData)
+	jr nz, .not_generic_mart
 	ld a, [wMapBlockDataPointer + 1]
-	cp GenericMart_BlockData / $100
-	jr nz, .not_mart
+	cp HIGH(GenericMart_BlockData)
+	jr nz, .not_generic_mart
 	ld hl, MartBluePalette
 	ld a, $5
 	ld de, wUnknBGPals palette PAL_BG_GREEN
 	ld bc, 1 palettes
 	call FarCopyWRAM
-.not_mart
-
-	scf
-	ret
-
-.ice_path_or_hall_of_fame
-	ld hl, LancesRoomPalette
-	ld a, [wPermission] ; permission
-	and 7
-	cp INDOOR ; Hall of Fame
-	jp z, .load_eight_bg_palettes
-	ld hl, IcePathPalette
-	jp .load_eight_bg_palettes
-
-.radio_towers
-	ld hl, RadioTowerPalette
-	ld a, [wMapGroup]
-	cp GROUP_RADIO_TOWER_1F
-	jp z, .load_eight_bg_palettes
-	ld hl, HauntedRadioTowerPalette
-	ld a, [wMapNumber]
-	cp MAP_HAUNTED_RADIO_TOWER_2F
-	jp z, .load_eight_bg_palettes
-	cp MAP_HAUNTED_RADIO_TOWER_3F
-	jp z, .load_eight_bg_palettes
-	ld hl, HauntedPokemonTowerPalette
-	cp MAP_HAUNTED_RADIO_TOWER_4F
-	jp z, .load_eight_bg_palettes
-	cp MAP_HAUNTED_RADIO_TOWER_5F
-	jp z, .load_eight_bg_palettes
-	cp MAP_HAUNTED_RADIO_TOWER_6F
-	jp z, .load_eight_bg_palettes
-	ld hl, RadioTowerPalette
-	jp .load_eight_bg_palettes
-
-.maybe_elite_room
-	ld a, [wMapGroup]
-	cp GROUP_WILLS_ROOM ; same as GROUP_KOGAS_ROOM, GROUP_BRUNOS_ROOM, and GROUP_KARENS_ROOM
-	jp nz, .do_nothing
-	ld a, [wMapNumber]
-	ld hl, WillsRoomPalette
-	cp MAP_WILLS_ROOM
-	jp z, .load_eight_bg_palettes
-	ld hl, KogasRoomPalette
-	cp MAP_KOGAS_ROOM
-	jp z, .load_eight_bg_palettes
-	ld hl, BrunosRoomPalette
-	cp MAP_BRUNOS_ROOM
-	jp z, .load_eight_bg_palettes
-	ld hl, KarensRoomPalette
-	cp MAP_KARENS_ROOM
-	jp z, .load_eight_bg_palettes
-	jp .do_nothing
-
-.maybe_lances_room
-	ld a, [wMapGroup]
-	cp GROUP_LANCES_ROOM
-	jp nz, .do_nothing
-	ld a, [wMapNumber]
-	cp MAP_LANCES_ROOM
-	jp nz, .do_nothing
-	ld hl, LancesRoomPalette
-	jp .load_eight_bg_palettes
-
-.maybe_cerulean_gym
-	ld a, [wMapGroup]
-	cp GROUP_CERULEAN_GYM
-	jp nz, .do_nothing
-	ld a, [wMapNumber]
-	cp MAP_CERULEAN_GYM
-	jp nz, .do_nothing
-	ld hl, CeruleanGymPalette
-	jp .load_eight_bg_palettes
-
-.maybe_saffron_gym
-	ld hl, GameCornerPalette
-	ld a, [wMapGroup]
-	cp GROUP_SAFFRON_GYM
-	jp nz, .load_eight_bg_palettes
-	ld a, [wMapNumber]
-	cp MAP_SAFFRON_GYM
-	jp nz, .load_eight_bg_palettes
-	ld hl, SaffronGymPalette
-	jp .load_eight_bg_palettes
-
-.maybe_fuchsia_gym
-	ld a, [wMapGroup]
-	cp GROUP_FUCHSIA_GYM
-	jp nz, .do_nothing
-	ld a, [wMapNumber]
-	cp MAP_FUCHSIA_GYM
-	jp nz, .do_nothing
-	ld hl, FuchsiaGymPalette
-	jp .load_eight_bg_palettes
-
-.maybe_lab_or_dragon_shrine
-	ld a, [wMapGroup]
-	cp GROUP_OAKS_LAB
-	jp nz, .not_oaks_lab
-	ld a, [wMapNumber]
-	cp MAP_OAKS_LAB
-	jp nz, .not_oaks_lab
-	ld hl, OaksLabPalette
-	jp .load_eight_bg_palettes
-
-.not_oaks_lab
-	ld a, [wMapGroup]
-	cp GROUP_IVYS_LAB
-	jp nz, .not_ivys_lab
-	ld a, [wMapNumber]
-	cp MAP_IVYS_LAB
-	jp nz, .not_ivys_lab
-	ld hl, IvysLabPalette
-	jp .load_eight_bg_palettes
-
-.not_ivys_lab
-	ld a, [wMapGroup]
-	cp GROUP_DRAGON_SHRINE
-	jp nz, .do_nothing
-	ld a, [wMapNumber]
-	cp MAP_DRAGON_SHRINE
-	jp nz, .do_nothing
-	ld hl, DragonShrinePalette
-	jp .load_eight_bg_palettes
-
-.maybe_lightning_island_or_magnet_tunnel
-	ld a, [wMapGroup]
-	cp GROUP_LIGHTNING_ISLAND
-	jr nz, .not_lightning_island
-	ld a, [wMapNumber]
-	cp MAP_LIGHTNING_ISLAND
-	jr nz, .not_lightning_island
-	ld hl, LightningIslandPalette
-	jp .load_eight_bg_palettes
-
-.not_lightning_island
-	ld a, [wMapGroup]
-	cp GROUP_MAGNET_TUNNEL_INSIDE
-	jp nz, .do_nothing
-	ld a, [wMapNumber]
-	cp MAP_MAGNET_TUNNEL_INSIDE
-	jp nz, .do_nothing
-	ld hl, MagnetTunnelPalette
-	jp .load_eight_bg_palettes
-
-.maybe_viridian_gym
-	ld a, [wMapGroup]
-	cp GROUP_VIRIDIAN_GYM
-	jp nz, .do_nothing
-	ld a, [wMapNumber]
-	cp MAP_VIRIDIAN_GYM
-	jp nz, .do_nothing
-	ld hl, ViridianGymPalette
-	jp .load_eight_bg_palettes
-
-.maybe_mystri_or_tower
-	ld a, [wMapGroup]
-	cp GROUP_MYSTRI_STAGE
-	jr nz, .maybe_embedded_tower
-	ld a, [wMapNumber]
-	cp MAP_MYSTRI_STAGE
-	jr nz, .maybe_embedded_tower
-	ld hl, MystriStagePalette
-	jp .load_eight_bg_palettes
-
-.maybe_embedded_tower
-	ld a, [wMapGroup]
-	cp GROUP_EMBEDDED_TOWER
-	jr nz, .maybe_tin_tower_roof
-	ld a, [wMapNumber]
-	cp MAP_EMBEDDED_TOWER
-	jr nz, .maybe_tin_tower_roof
-	ld hl, EmbeddedTowerPalette
-	jp .load_eight_bg_palettes
-
-.maybe_tin_tower_roof
-	ld a, [wMapGroup]
-	cp GROUP_TIN_TOWER_ROOF
-	jp nz, .do_nothing
-	ld a, [wMapNumber]
-	cp MAP_TIN_TOWER_ROOF
-	jp nz, .do_nothing
-	ld hl, TinTowerRoofPalette
-	jp .load_eight_time_of_day_bg_palettes
-
-.maybe_cinnabar_lab
-	ld a, [wMapGroup]
-	cp GROUP_CINNABAR_LAB
-	jp nz, .do_nothing
-	ld a, [wMapNumber]
-	cp MAP_CINNABAR_LAB
-	jp nz, .do_nothing
-	ld hl, CinnabarLabPalette
-	jp .load_eight_bg_palettes
-
-.maybe_goldenrod_museum
-	ld a, [wMapGroup]
-	cp GROUP_GOLDENROD_MUSEUM_1F
-	jp nz, .do_nothing
-	ld a, [wMapNumber]
-	cp MAP_GOLDENROD_MUSEUM_1F
-	ld hl, GoldenrodMuseumPalette
-	jp z, .load_eight_bg_palettes
-	cp MAP_GOLDENROD_MUSEUM_2F
-	jp z, .load_eight_bg_palettes
-	jp .do_nothing
-
-.maybe_celadon_mansion_roof
-	ld a, [wMapGroup]
-	cp GROUP_CELADON_MANSION_ROOF
-	jp nz, .do_nothing
-	ld a, [wMapNumber]
-	cp MAP_CELADON_MANSION_ROOF
-	jp nz, .do_nothing
-	ld hl, CeladonMansionRoofPalette
-	jp .load_eight_time_of_day_bg_palettes
-
-.maybe_goldenrod_dept_store_roof
-	ld hl, MartPalette
-	ld a, [wMapGroup]
-	cp GROUP_GOLDENROD_DEPT_STORE_ROOF
-	jp nz, .load_eight_bg_palettes
-	ld a, [wMapNumber]
-	cp MAP_GOLDENROD_DEPT_STORE_ROOF
-	jp nz, .load_eight_bg_palettes
-	ld hl, GoldenrodDeptStoreRoofPalette
-	jp .load_eight_time_of_day_bg_palettes
-
-.maybe_olivine_lighthouse_roof
-	ld a, [wMapGroup]
-	cp GROUP_OLIVINE_LIGHTHOUSE_ROOF
-	jp nz, .do_nothing
-	ld a, [wMapNumber]
-	cp MAP_OLIVINE_LIGHTHOUSE_ROOF
-	jp nz, .do_nothing
-	ld hl, GoldenrodDeptStoreRoofPalette
-	jp .load_eight_time_of_day_bg_palettes
-
-.maybe_celadon_home_decor_store_4f
-	ld a, [wMapGroup]
-	cp GROUP_CELADON_HOME_DECOR_STORE_4F
-	jp nz, .do_nothing
-	ld a, [wMapNumber]
-	cp MAP_CELADON_HOME_DECOR_STORE_4F
-	jp nz, .do_nothing
-	ld hl, CeladonHomeDecorStore4FPalette
-	jp .load_eight_bg_palettes
-
-.maybe_sinjoh_ruins
-	ld a, [wMapGroup]
-	cp GROUP_SINJOH_RUINS
-	jp nz, .do_nothing
-	ld a, [wMapNumber]
-	cp MAP_SINJOH_RUINS
-	jp nz, .do_nothing
-	ld hl, SinjohRuinsPalette
-	jp .load_eight_time_of_day_bg_palettes
-
-.maybe_special_johto_1
-	ld hl, VioletEcruteakPalette
-	ld a, [wMapGroup]
-	cp GROUP_VIOLET_CITY
-	jr nz, .not_violet_city
-	ld a, [wMapNumber]
-	cp MAP_VIOLET_CITY
-	jp z, .load_eight_time_of_day_bg_palettes
-.not_violet_city
-	ld a, [wMapGroup]
-	cp GROUP_ECRUTEAK_CITY
-	jr nz, .not_ecruteak_city
-	ld a, [wMapNumber]
-	cp MAP_ECRUTEAK_CITY
-	jp z, .load_eight_time_of_day_bg_palettes
-.not_ecruteak_city
-	ld hl, BellchimeTrailPalette
-	ld a, [wMapGroup]
-	cp GROUP_BELLCHIME_TRAIL
-	jr nz, .not_bellchime_trail
-	ld a, [wMapNumber]
-	cp MAP_BELLCHIME_TRAIL
-	jp z, .load_eight_time_of_day_bg_palettes
-.not_bellchime_trail
-	jp .do_nothing
-
-.maybe_special_forest
-	ld a, [wMapGroup]
-	cp GROUP_YELLOW_FOREST
-	jr nz, .not_yellow_forest
-	ld a, [wMapNumber]
-	cp MAP_YELLOW_FOREST
-	jr nz, .not_yellow_forest
-	ld hl, YellowForestPalette
-	jp .load_eight_time_of_day_bg_palettes
-
-.not_yellow_forest
-	ld a, [wMapGroup]
-	cp GROUP_MURKY_SWAMP
-	jr nz, .not_murky_swamp
-	ld a, [wMapNumber]
-	cp MAP_MURKY_SWAMP
-	jr nz, .not_murky_swamp
-	ld hl, MurkySwampPalette
-	jp .load_eight_bg_palettes
-
-.not_murky_swamp
-	ld a, [wMapGroup]
-	cp GROUP_HIDDEN_TREE_GROTTO
-	jp nz, .do_nothing
-	ld a, [wMapNumber]
-	cp MAP_HIDDEN_TREE_GROTTO
-	jp nz, .do_nothing
-	ld hl, HiddenTreeGrottoPalette
-	jp .load_eight_bg_palettes
-
-.maybe_special_cave
-	ld a, [wMapGroup]
-	cp GROUP_HIDDEN_CAVE_GROTTO
-	jr nz, .not_hidden_cave_grotto
-	ld a, [wMapNumber]
-	cp MAP_HIDDEN_CAVE_GROTTO
-	jr nz, .not_hidden_cave_grotto
-	ld hl, HiddenCaveGrottoPalette
-	jp .load_eight_bg_palettes
-
-.not_hidden_cave_grotto
-	ld a, [wMapGroup]
-	ld b, a
-	ld a, [wMapNumber]
-	ld c, a
-	call GetWorldMapLocation
-	ld hl, DimCavePalette
-	cp DIM_CAVE
-	jp z, .load_eight_bg_palettes
-	ld hl, CinnabarVolcanoPalette
-	cp CINNABAR_VOLCANO
-	jp z, .load_eight_bg_palettes
-	ld hl, CeruleanCavePalette
-	cp CERULEAN_CAVE
-	jp z, .load_eight_bg_palettes
-	ld hl, SilverCavePalette
-	cp SILVER_CAVE
-	jp z, .load_eight_bg_palettes
-	ld hl, DarkCavePalette
-	cp MT_MORTAR
-	jp z, .load_eight_bg_palettes
-	cp DARK_CAVE
-	jp z, .load_eight_bg_palettes
-	ld hl, WhirlIslandsPalette
-	cp WHIRL_ISLANDS
-	jp z, .load_eight_bg_palettes
-	ld hl, ScaryCavePalette
-	cp SCARY_CAVE
-	jp z, .load_eight_bg_palettes
-	cp NAVEL_ROCK
-	jp nz, .do_nothing
-	ld hl, NavelRockPalette
-	ld a, [wMapGroup]
-	cp GROUP_NAVEL_ROCK_ROOF
-	jp nz, .load_eight_bg_palettes
-	ld a, [wMapNumber]
-	cp MAP_NAVEL_ROCK_ROOF
-	jp nz, .load_eight_bg_palettes
-.load_eight_time_of_day_bg_palettes:
-	ld a, [wTimeOfDayPal]
-	and 3
-	ld bc, 8 palettes
-	rst AddNTimes
-	ld a, $5
-	ld de, wUnknBGPals
-	ld bc, 8 palettes
-	call FarCopyWRAM
+.not_generic_mart
 	scf
 	ret
 
@@ -1716,6 +1415,28 @@ else
 	MONOCHROME_RGB_FOUR
 endc
 
+
+
+LoadBlindingFlashPalette::
+	ld a, $5
+	ld de, wUnknBGPals palette PAL_BG_TEXT
+	ld hl, .BlindingFlashPalette
+	ld bc, 1 palettes
+	jp FarCopyWRAM
+; 49418
+
+.BlindingFlashPalette:
+if !DEF(MONOCHROME)
+	RGB 31, 31, 31
+	RGB 08, 19, 28
+	RGB 05, 05, 16
+	RGB 00, 00, 00
+else
+	MONOCHROME_RGB_FOUR
+endc
+
+
+
 LinkTrade_Layout_FillBox: ; 49336
 .row
 	push bc
@@ -1804,6 +1525,8 @@ rept 8
 	RGB_MONOCHROME_WHITE
 endr
 endc
+
+
 
 LoadSpecialMapOBPalette:
 	call GetOvercastIndex
