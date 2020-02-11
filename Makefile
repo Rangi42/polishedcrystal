@@ -55,9 +55,10 @@ RM     = rm -f
 GFX    = $(PYTHON) gfx.py
 MD5    = md5sum -b
 
-LZ            = tools/lzcomp
-SCAN_INCLUDES = tools/scan_includes
-SUB_2BPP      = tools/sub_2bpp.sh
+LZ                = tools/lzcomp
+SCAN_INCLUDES     = tools/scan_includes
+SUB_2BPP          = tools/sub_2bpp.sh
+COLLISION_ASM2BIN = tools/collision_asm2bin.sh
 
 bank_ends := $(PYTHON) contents/bank_ends.py $(NAME)-$(VERSION)
 
@@ -150,15 +151,7 @@ $(sorted_sym): crystal ; tail -n +3 $(NAME)-$(VERSION).sym | sort -o $@
 gfx/pokemon/%/bitmask.asm gfx/pokemon/%/frames.asm: gfx/pokemon/%/front.2bpp
 
 data/tilesets/%_collision.bin: data/tilesets/%_collision.asm
-	@ TEMP_ASM=`mktemp -p /tmp collision.asm.XXX` ; \
-	TEMP_O=`mktemp -p /tmp collision.o.XXX` ; \
-	echo 'INCLUDE "constants/collision_constants.asm"' > "$$TEMP_ASM" ; \
-	echo 'INCLUDE "macros/collision.asm"' >> "$$TEMP_ASM" ; \
-	echo 'SECTION "C", ROM0[$$0]' >> "$$TEMP_ASM" ; \
-	echo 'INCLUDE "$<"' >> "$$TEMP_ASM" ; \
-	$(RGBDS_DIR)rgbasm -o "$$TEMP_O" "$$TEMP_ASM" ; \
-	tail -c +32 "$$TEMP_O" | head -c -4 > $@ ; \
-	$(RM) "$$TEMP_ASM" "$$TEMP_O"
+	RGBDS_DIR=$(RGBDS_DIR) $(COLLISION_ASM2BIN) $< $@
 
 %.lz: % ; $(LZ) $< $@
 
