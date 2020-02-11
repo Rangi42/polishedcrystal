@@ -771,7 +771,7 @@ SECTION "Overworld Map", WRAM0
 
 UNION
 ; overworld map
-wOverworldMap:: ds $570 ; large enough for 45x20 NavelRockInside.blk; (45+6)x(20+6) = 1326 < 1392
+wOverworldMap:: ds $570 ; large enough for 45x20 NavelRockInside.ablk; (45+6)x(20+6) = 1326 < 1392
 wOverworldMapEnd::
 
 NEXTU
