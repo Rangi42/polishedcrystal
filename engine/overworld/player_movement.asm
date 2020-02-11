@@ -660,7 +660,19 @@ DoPlayerMovement:: ; 80000
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
+if DEF(DEBUG)
+	ld a, [hJoyDown]
+	and A_BUTTON | B_BUTTON
+	cp A_BUTTON | B_BUTTON
 	ld a, [hl]
+	jr nz, .no_wtw
+	cp COLL_VOID
+	jr z, .no_wtw
+	ld a, COLL_LADDER
+.no_wtw
+else
+	ld a, [hl]
+endc
 	ld [wWalkingTile], a
 	ret
 

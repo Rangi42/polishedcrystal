@@ -1,4 +1,4 @@
-	tilecoll WALL, WALL, WALL, WALL
+	tilecoll VOID, VOID, VOID, VOID
 	tilecoll TOP_WALL, TOP_WALL, FLOOR, FLOOR
 	tilecoll TOP_WALL, FLOOR, TOP_WALL, FLOOR
 	tilecoll FLOOR, FLOOR, FLOOR, FLOOR

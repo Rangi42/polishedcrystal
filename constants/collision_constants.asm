@@ -5,6 +5,7 @@ WALLTILE  EQU $f
 TALK     EQU $1 << 4
 
 COLL_FLOOR             EQU $00
+COLL_VOID              EQU $01
 COLL_WALL              EQU $07
 COLL_LONG_GRASS        EQU $14
 COLL_HEADBUTT_TREE     EQU $15

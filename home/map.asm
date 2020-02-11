@@ -1746,17 +1746,6 @@ GetCoordTile:: ; 2a3c
 ; Get the collision byte for tile d, e
 	call GetBlockLocation
 	ld a, [hl]
-if DEF(DEBUG)
-	and a
-	jr z, .no_wtw
-	ld a, [hJoyDown]
-	and A_BUTTON | B_BUTTON
-	cp A_BUTTON | B_BUTTON
-	ld a, COLL_LADDER
-	ret z
-	ld a, [hl]
-.no_wtw
-endc
 	ld l, a
 	ld h, $0
 	add hl, hl
@@ -1775,6 +1764,19 @@ endc
 	inc hl
 
 .nocarry2
+if DEF(DEBUG)
+	ld a, [hJoyDown]
+	and A_BUTTON | B_BUTTON
+	cp A_BUTTON | B_BUTTON
+	jr nz, .no_wtw
+	ld a, BANK(wDecompressedCollisions)
+	call GetFarWRAMByte
+	cp COLL_VOID
+	ret z
+	ld a, COLL_LADDER
+	ret
+.no_wtw
+endc
 	ld a, BANK(wDecompressedCollisions)
 	jp GetFarWRAMByte
 ; 2a66
