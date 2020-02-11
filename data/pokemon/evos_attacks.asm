@@ -1536,6 +1536,7 @@ MagnemiteEvosAttacks:
 
 MagnetonEvosAttacks:
 	db EVOLVE_LOCATION, MAGNET_TUNNEL, MAGNEZONE
+	db EVOLVE_LOCATION, ROCK_TUNNEL, MAGNEZONE
 	db 0 ; no more evolutions
 	db 1, TRI_ATTACK ; evolution move
 	db 1, SUPERSONIC
