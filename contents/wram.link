@@ -11,11 +11,11 @@ WRAM0
 	align 8
 	"Sprites"
 	org $c4a0
-	"Tilemap"
+	"Tilemap and Attrmap"
 	"Battle"
-	org $c800
+	org $c960
 	"Overworld Map"
-	org $cd70
+	org $cee0
 	"Video"
 
 WRAMX $1
