@@ -152,8 +152,6 @@ hTmpe              EQU $fff8
 
 hBattlePalFadeMode EQU $fff8
 
-hFastMusicUpdate   EQU $fff9
-
-hRequestOpaque1bpp EQU $fffb
+hRequestOpaque1bpp EQU $fff9
 
 HRAM_END EQU $ffff
