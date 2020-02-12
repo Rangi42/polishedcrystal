@@ -900,6 +900,10 @@ HandleStatusOrbs:
 	call HasOpponentFainted
 	ret z
 
+	; bypass ineffectiveness checks to avoid residual results from last attack
+	ld a, $10
+	ld [wTypeModifier], a
+
 	farcall GetOpponentItemAfterUnnerve
 	ld a, b
 	cp HELD_SELF_BRN
