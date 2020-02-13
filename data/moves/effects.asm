@@ -1926,6 +1926,7 @@ RapidSpin:
 	clearhazards
 	postfainteffects
 	posthiteffects
+	raisestathit SPEED
 	endmove
 
 HealingLight:
