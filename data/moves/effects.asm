@@ -1913,6 +1913,7 @@ RapidSpin:
 	doturn
 	hastarget
 	critical
+	effectchance
 	damagestats
 	damagecalc
 	stab
