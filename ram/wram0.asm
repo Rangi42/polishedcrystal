@@ -119,7 +119,6 @@ wNamedObjectTypeBuffer:: ds 1
 
 wCurrentOptionsPage:: ds 1
 
-wJumptableIndex::
 wBattleTowerBattleEnded::
 	ds 1
 
@@ -887,6 +886,8 @@ wPlayerLinkAction:: ds 1
 wcf57:: ds 4 ; TODO: replace with meaningful label
 wLinkTimeoutFrames:: ds 2
 wcf5d:: ds 2 ; TODO: replace with meaningful label
+
+wJumptableIndex:: ds 1 ; must come right before the union
 
 UNION
 ; intro and title data
