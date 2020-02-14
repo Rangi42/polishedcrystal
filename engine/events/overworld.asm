@@ -433,7 +433,7 @@ SurfFunction: ; c909
 	jr z, .alreadyfail
 	call GetFacingTileCoord
 	call GetTileCollision
-	cp $1
+	cp WATER_TILE
 	jr nz, .cannotsurf
 	call CheckDirection
 	jr c, .cannotsurf
@@ -569,7 +569,7 @@ TrySurfOW:: ; c9e7
 ; Must be facing water.
 	ld a, [wEngineBuffer1]
 	call GetTileCollision
-	cp WATERTILE ; surfable
+	cp WATER_TILE ; surfable
 	jr nz, .quit
 
 ; Check tile permissions.
@@ -1611,7 +1611,7 @@ FishFunction: ; cf8e
 	jr z, .fail
 	call GetFacingTileCoord
 	call GetTileCollision
-	cp $1
+	cp WATER_TILE
 	jr z, .facingwater
 .fail
 	ld a, $3
@@ -1896,7 +1896,7 @@ BikeFunction: ; d0b3
 
 .ok
 	call GetPlayerStandingTile
-	and $f ; cp LANDTILE ; can't use our bike in a wall or on water
+	and a ; LAND_TILE (can't use our bike except on land)
 	jr nz, .nope
 	xor a
 	ret

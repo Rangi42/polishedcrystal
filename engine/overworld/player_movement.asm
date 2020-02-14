@@ -840,7 +840,7 @@ endc
 ; Return 0 if tile a is land. Otherwise, return carry.
 
 	call GetTileCollision
-	and a ; cp LANDTILE
+	and a ; cp LAND_TILE
 	ret z
 	scf
 	ret
@@ -851,11 +851,11 @@ endc
 ; Otherwise, return carry.
 
 	call GetTileCollision
-	cp WATERTILE
+	cp WATER_TILE
 	jr z, .Water
 
 ; Can walk back onto land from water.
-	and a ; cp LANDTILE
+	and a ; cp LAND_TILE
 	jr z, .Land
 
 	jr .Neither
