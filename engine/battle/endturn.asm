@@ -37,7 +37,6 @@ HandleBetweenTurnEffects:
 	; taunt
 	call HandleEncore
 	call HandleDisable
-	; disable (currently not at endturn)
 	; magnet rise
 	; telekinesis
 	; heal block
