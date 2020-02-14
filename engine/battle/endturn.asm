@@ -36,6 +36,7 @@ HandleBetweenTurnEffects:
 	ret c
 	; taunt
 	call HandleEncore
+	call HandleDisable
 	; disable (currently not at endturn)
 	; magnet rise
 	; telekinesis
@@ -675,40 +676,60 @@ HandleEncore:
 	call HasUserFainted
 	ret z
 
-	ld a, BATTLE_VARS_SUBSTATUS2
-	call GetBattleVarAddr
-	bit SUBSTATUS_ENCORED, [hl]
-	ret z
-
 	ld a, [hBattleTurn]
 	and a
 	ld hl, wPlayerEncoreCount
 	jr z, .got_encore_count
 	ld hl, wEnemyEncoreCount
 .got_encore_count
-	dec [hl]
-	jr z, .end_encore
-
-	ld a, [hBattleTurn]
-	and a
-	ld hl, wBattleMonPP
-	jr z, .got_pp
-	ld hl, wEnemyMonPP
-.got_pp
-	ld a, [wCurMoveNum]
+	ld a, [hl]
+	and $f
+	ret z
+	push hl
+	ld a, [hl]
+	swap a
+	and $f
+	dec a
 	ld c, a
 	ld b, 0
+	ld hl, wBattleMonPP
+	call GetUserMonAttr
 	add hl, bc
 	ld a, [hl]
 	and $3f
+	pop hl
+	ld de, BattleText_UserEncoreEnded
+	jr z, EndturnEncoreDisable_End
+EndturnEncoreDisable:
+	ld a, [hl]
+	and $f
+	ret z
+	dec [hl]
+	ld a, [hl]
+	and $f
 	ret nz
-
-.end_encore
-	ld a, BATTLE_VARS_SUBSTATUS2
-	call GetBattleVarAddr
-	res SUBSTATUS_ENCORED, [hl]
-	ld hl, BattleText_UserEncoreEnded
+EndturnEncoreDisable_End:
+	ld [hl], 0
+	ld h, d
+	ld l, e
 	jp StdBattleTextBox
+
+HandleDisable:
+	call SetFastestTurn
+	call .do_it
+	call SwitchTurn
+
+.do_it
+	call HasUserFainted
+	ret z
+	ld de, DisabledNoMoreText
+
+	ld a, [hBattleTurn]
+	and a
+	ld hl, wPlayerDisableCount
+	jr z, EndturnEncoreDisable
+	ld hl, wEnemyDisableCount
+	jr EndturnEncoreDisable
 
 HandlePerishSong:
 	call SetFastestTurn

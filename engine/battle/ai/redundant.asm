@@ -59,8 +59,8 @@ AI_Redundant: ; 2c41a
 	ret
 
 .Encore:
-	ld a, [wPlayerSubStatus2]
-	bit SUBSTATUS_ENCORED, a
+	ld a, [wPlayerEncoreCount]
+	and a
 	ret
 
 .FocusEnergy:

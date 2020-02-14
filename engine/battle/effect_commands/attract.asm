@@ -104,40 +104,31 @@ CheckMentalHerb:
 
 .infatuation_done
 	; Check Encore
-	ld a, BATTLE_VARS_SUBSTATUS2
-	call GetBattleVarAddr
-	bit SUBSTATUS_ENCORED, [hl]
-	jr z, .encore_done
-	res SUBSTATUS_ENCORED, [hl]
-	set 1, b
-
-	; Also remove other encore vars
 	ld a, [hBattleTurn]
 	and a
 	ld hl, wPlayerEncoreCount
 	jr z, .got_encorecount
 	ld hl, wEnemyEncoreCount
 .got_encorecount
-	xor a
-	ld [hl], a
+	ld a, [hl]
+	and a
+	jr z, .encore_done
+	set 1, b
+	ld [hl], 0
 
 .encore_done
 	; Check Disable
 	ld a, [hBattleTurn]
 	and a
-	ld de, wPlayerDisableCount
-	ld hl, wDisabledMove
+	ld hl, wPlayerDisableCount
 	jr z, .got_disable_vars
-	ld de, wEnemyDisableCount
-	ld hl, wEnemyDisabledMove
+	ld hl, wEnemyDisableCount
 .got_disable_vars
-	ld a, [de]
+	ld a, [hl]
 	and a
 	jr z, .disable_done
-	xor a
-	ld [de], a
-	ld [hl], a
 	set 2, b
+	ld [hl], 0
 
 .disable_done
 	ld a, b

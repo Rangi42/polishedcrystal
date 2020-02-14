@@ -111,7 +111,7 @@ endc
 	move STUN_SPORE,   EFFECT_PARALYZE,            0, GRASS,      75, 30,   0, STATUS
 	move SLEEP_POWDER, EFFECT_SLEEP,               0, GRASS,      75, 15,   0, STATUS
 	move PETAL_DANCE,  EFFECT_RAMPAGE,           120, GRASS,     100, 10,   0, SPECIAL
-	move STRING_SHOT,  EFFECT_SPEED_DOWN_2,        0, BUG,        95, 40,   0, STATUS
+	move STRING_SHOT,  EFFECT_ENCORE,        0, BUG,        95, 40,   0, STATUS
 	move DRAGON_RAGE,  EFFECT_STATIC_DAMAGE,      40, DRAGON,    100, 10,   0, SPECIAL
 if DEF(FAITHFUL)
 	move FIRE_SPIN,    EFFECT_TRAP,               35, FIRE,       85, 15,   0, SPECIAL

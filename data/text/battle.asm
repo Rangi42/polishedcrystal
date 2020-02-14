@@ -577,6 +577,14 @@ BattleText_ItemOnlyAllowsMove: ; choice items
 	text "!"
 	prompt
 
+BattleText_EncoreOnlyAllowsMove:
+	text "The encore"
+	line "only allows use"
+	cont "of @"
+	text_from_ram wStringBuffer1
+	text "!"
+	prompt
+
 BattleText_ItemPreventsStatusMoves: ; assault vest
 	text "The @"
 	text_from_ram wStringBuffer1

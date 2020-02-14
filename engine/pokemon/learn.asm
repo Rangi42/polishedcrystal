@@ -39,19 +39,30 @@ LearnMove: ; 6508
 	push hl
 	push de
 	ld [wd265], a
-
 	ld b, a
-	ld a, [wBattleMode]
+
+	ld a, [wPlayerDisableCount]
 	and a
 	jr z, .not_disabled
-	ld a, [wDisabledMove]
-	cp b
+	swap a
+	and $f
+	dec a
+	xor c
 	jr nz, .not_disabled
-	xor a
-	ld [wDisabledMove], a
 	ld [wPlayerDisableCount], a
-.not_disabled
 
+.not_disabled
+	ld a, [wPlayerEncoreCount]
+	and a
+	jr z, .not_encored
+	swap a
+	and $f
+	dec a
+	xor c
+	jr nz, .not_encored
+	ld [wPlayerEncoreCount], a
+
+.not_encored
 	call GetMoveName
 	ld hl, Text_1_2_and_Poof ; 1, 2 and…
 	call PrintText

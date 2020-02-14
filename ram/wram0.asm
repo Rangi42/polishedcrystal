@@ -558,8 +558,7 @@ wSafariMonEating:: ds 1
 
 wAlreadyDisobeyed:: ds 1
 
-wDisabledMove:: ds 1
-wEnemyDisabledMove:: ds 1
+	ds 2 ; unused
 
 wWhichMonFaintedFirst:: ds 1
 
