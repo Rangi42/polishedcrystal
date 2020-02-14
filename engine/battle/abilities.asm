@@ -1114,6 +1114,8 @@ HandleAbilities:
 	call SwitchTurn
 
 .do_it
+	call HasUserFainted
+	ret z
 	ld hl, EndTurnAbilities
 	call UserAbilityJumptable
 	ld hl, StatusHealAbilities
