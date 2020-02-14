@@ -86,21 +86,15 @@ DoesSpriteHaveFacings:: ; 1836
 	ret
 ; 184a
 
-GetPlayerStandingTile:: ; 184a
-	ld a, [wPlayerStandingTile]
-	call GetTileCollision
-	ld b, a
-	ret
-; 1852
-
 CheckOnWater:: ; 1852
-	ld a, [wPlayerStandingTile]
-	call GetTileCollision
-	sub WATER_TILE
-	ret z
-	and a
+	call GetPlayerStandingTile
+	dec a ; cp WATER_TILE
 	ret
 ; 185d
+
+GetPlayerStandingTile:: ; 184a
+	ld a, [wPlayerStandingTile]
+	; fallthrough
 
 GetTileCollision:: ; 185d
 ; Get the collision type of tile a.
@@ -128,32 +122,6 @@ GetTileCollision:: ; 185d
 	pop de
 	ret
 ; 1875
-
-CheckSpinTile::
-	cp COLL_SPIN_UP
-	ld c, UP
-	ret z
-	cp COLL_SPIN_DOWN
-	ld c, DOWN
-	ret z
-	cp COLL_SPIN_LEFT
-	ld c, LEFT
-	ret z
-	cp COLL_SPIN_RIGHT
-	ld c, RIGHT
-	ret z
-	ld c, STANDING
-	ret
-
-CheckStandingOnEntrance:: ; 18c3
-	ld a, [wPlayerStandingTile]
-	cp COLL_DOOR
-	ret z
-	cp COLL_STAIRCASE
-	ret z
-	cp COLL_CAVE
-	ret
-; 18d2
 
 GetMapObject:: ; 18d2
 ; Return the location of map object a in bc.

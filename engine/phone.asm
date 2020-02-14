@@ -114,7 +114,12 @@ FarPlaceString: ; 90069
 CheckPhoneCall:: ; 90074 (24:4074)
 ; Check if the phone is ringing in the overworld.
 
-	call CheckStandingOnEntrance
+	ld a, [wPlayerStandingTile]
+	cp COLL_DOOR
+	jr z, .no_call
+	cp COLL_STAIRCASE
+	jr z, .no_call
+	cp COLL_CAVE
 	jr z, .no_call
 
 	call .timecheck

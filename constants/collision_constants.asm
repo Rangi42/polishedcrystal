@@ -1,5 +1,5 @@
-LAND_TILE  EQU %00
-WATER_TILE EQU %01
+LAND_TILE  EQU %00 ; 'and a' checks
+WATER_TILE EQU %01 ; 'dec a' checks
 WALL_TILE  EQU %10
 
 COLL_FLOOR             EQU $00

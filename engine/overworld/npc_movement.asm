@@ -82,7 +82,7 @@ Function6f2c: ; 6f2c
 	add hl, bc
 	ld a, [hl]
 	call GetTileCollision
-	cp WATER_TILE
+	dec a ; cp WATER_TILE
 	jr z, Function6f3e
 	scf
 	ret
