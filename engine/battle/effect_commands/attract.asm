@@ -111,10 +111,12 @@ CheckMentalHerb:
 	ld hl, wEnemyEncoreCount
 .got_encorecount
 	ld a, [hl]
-	and a
+	and $f
 	jr z, .encore_done
 	set 1, b
-	ld [hl], 0
+	ld a, [hl]
+	and $f0
+	ld [hl], a
 
 .encore_done
 	; Check Disable

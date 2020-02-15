@@ -681,6 +681,26 @@ HandleEncore:
 	jr z, .got_encore_count
 	ld hl, wEnemyEncoreCount
 .got_encore_count
+	; We don't want to delete the move index, which is used for Choice-locking
+	ld a, [hl]
+	and a
+	ret z ; no move used yet, and no encore
+	ld b, a
+
+	push bc
+	push hl
+	call .do_encore
+	pop hl
+	pop bc
+	ld a, [hl]
+	and a
+	ret nz ; encore not yet finished
+	ld a, b
+	and $f0
+	ld [hl], a
+	ret
+
+.do_encore
 	ld a, [hl]
 	and $f
 	ret z

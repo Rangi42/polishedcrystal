@@ -448,7 +448,7 @@ wPlayerRolloutCount:: ds 1
 wPlayerConfuseCount:: ds 1
 wPlayerToxicCount:: ds 1
 wPlayerDisableCount:: ds 1
-wPlayerEncoreCount:: ds 1
+wPlayerEncoreCount:: ds 1 ; also for choice-locking
 wPlayerPerishCount:: ds 1
 wPlayerProtectCount:: ds 1
 	ds 1
