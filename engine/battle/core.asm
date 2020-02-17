@@ -723,11 +723,6 @@ PerformMove:
 	ld a, BATTLE_VARS_SUBSTATUS2_OPP
 	call GetBattleVarAddr
 	res SUBSTATUS_DESTINY_BOND, [hl]
-	ld a, BATTLE_VARS_LAST_COUNTER_MOVE
-	call GetBattleVarAddr
-	ld a, BATTLE_VARS_MOVE_ANIM
-	call GetBattleVar
-	ld [hl], a
 	; fallthrough
 
 ResolveFaints:

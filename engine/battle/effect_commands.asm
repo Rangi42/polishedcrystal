@@ -329,8 +329,6 @@ BattleCommand_checkturn:
 	jp EndTurn
 
 .not_infatuated
-
-
 	; Are we using a disabled move?
 	ld a, [hBattleTurn]
 	and a
@@ -343,18 +341,18 @@ BattleCommand_checkturn:
 	ld hl, wCurEnemyMoveNum
 .ok6
 	and a
-	jr z, .no_disabled_move ; can't disable a move that doesn't exist
+	jr z, .not_disabled ; can't disable a move that doesn't exist
 	swap a
 	and $f
 	dec a
 	cp [hl]
-	jr nz, .no_disabled_move
+	jr nz, .not_disabled
 
 	call MoveDisabled
 	call CantMove
 	jp EndTurn
 
-.no_disabled_move
+.not_disabled
 	ld a, BATTLE_VARS_STATUS
 	call GetBattleVarAddr
 	bit PAR, [hl]
@@ -470,7 +468,31 @@ CheckPowerHerb:
 	ld hl, BattleText_UserChargedWithItem
 	call StdBattleTextBox
 	call ConsumeUserItem
-	jp ResetTurn
+
+	; If already called from a seperate move, don't change charging.
+	; Otherwise, mark as repeated due to Power Herb
+	call CheckUserIsCharging
+	ld a, 2
+	jr z, _ResetTurn
+	; fallthrough
+ResetTurn:
+	ld a, 1
+_ResetTurn:
+	push af
+	ld a, [hBattleTurn]
+	and a
+	ld hl, wPlayerCharging
+	jr z, .player
+	ld hl, wEnemyCharging
+
+.player
+	pop af
+	ld [hl], a
+	xor a
+	ld [wAlreadyDisobeyed], a
+	call DoMove
+	jp EndMoveEffect
+
 
 MoveDisabled: ; 3438d
 
@@ -6311,17 +6333,6 @@ BattleCommand_charge:
 	set SUBSTATUS_FLYING, [hl]
 
 .dont_set_digging
-	; If we called this move from something else, update last move appropriately.
-	call CheckUserIsCharging
-	jr nz, .last_move_ok
-	ld a, BATTLE_VARS_LAST_COUNTER_MOVE
-	call GetBattleVarAddr
-	ld [hl], b
-	ld a, BATTLE_VARS_LAST_MOVE
-	call GetBattleVarAddr
-	ld [hl], b
-
-.last_move_ok
 	call ResetDamage
 
 	ld hl, .UsedText
@@ -7651,23 +7662,6 @@ CheckUserMove: ; 37462
 	ret
 
 ; 3747b
-
-
-ResetTurn: ; 3747b
-	ld hl, wPlayerCharging
-	ld a, [hBattleTurn]
-	and a
-	jr z, .player
-	ld hl, wEnemyCharging
-
-.player
-	ld [hl], 1
-	xor a
-	ld [wAlreadyDisobeyed], a
-	call DoMove
-	jp EndMoveEffect
-
-; 37492
 
 
 INCLUDE "engine/battle/effect_commands/thief.asm"
