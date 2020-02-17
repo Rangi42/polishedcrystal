@@ -658,7 +658,7 @@ InitTradeSpeciesList: ; 16d673
 	decoord 0, 0
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
 	rst CopyBytes
-	farcall InitLinkTradePalMap
+	call InitLinkTradePalMap
 	call PlaceTradePartnerNamesAndParty
 	hlcoord 10, 17
 	ld de, .Cancel
@@ -819,7 +819,7 @@ LinkMonStatsScreen: ; 4d319
 	jp ApplyAttrAndTilemapInVBlank
 
 LinkTrade_PlayerPartyMenu: ; 2888b
-	farcall InitLinkTradePalMap
+	call InitLinkTradePalMap
 	xor a
 	ld [wMonType], a
 	ld a, A_BUTTON | D_UP | D_DOWN
@@ -1863,6 +1863,7 @@ INCBIN "gfx/link_trade/border.2bpp"
 
 SetTradeRoomBGPals: ; 28eff
 	farcall LoadLinkTradePalette
+	farcall ApplyPals
 	jp SetPalettes
 ; 28f09
 
@@ -2425,4 +2426,70 @@ DetermineLinkBattleResult: ; 2b930
 	pop de
 	dec d
 	jr nz, .loop3
+	ret
+
+InitLinkTradePalMap:
+	hlcoord 0, 0, wAttrMap
+	lb bc, 16, 2
+	ld a, $4
+	call .fill_box
+	ld a, $3
+	ldcoord_a 0, 1, wAttrMap
+	ldcoord_a 0, 14, wAttrMap
+	hlcoord 2, 0, wAttrMap
+	lb bc, 8, 18
+	ld a, $5
+	call .fill_box
+	hlcoord 2, 8, wAttrMap
+	lb bc, 8, 18
+	ld a, $6
+	call .fill_box
+	hlcoord 0, 16, wAttrMap
+	lb bc, 2, SCREEN_WIDTH
+	ld a, $4
+	call .fill_box
+	ld a, $3
+	lb bc, 6, 1
+	hlcoord 6, 1, wAttrMap
+	call .fill_box
+	ld a, $3
+	lb bc, 6, 1
+	hlcoord 17, 1, wAttrMap
+	call .fill_box
+	ld a, $3
+	lb bc, 6, 1
+	hlcoord 6, 9, wAttrMap
+	call .fill_box
+	ld a, $3
+	lb bc, 6, 1
+	hlcoord 17, 9, wAttrMap
+	call .fill_box
+	ld a, $2
+	hlcoord 2, 16, wAttrMap
+	ld [hli], a
+	ld a, $7
+	ld [hli], a
+	ld [hli], a
+	ld [hli], a
+	ld a, $2
+	ld [hl], a
+	hlcoord 2, 17, wAttrMap
+	ld a, $3
+	ld bc, 6
+	jp ByteFill
+
+.fill_box:
+.row
+	push bc
+	push hl
+.col
+	ld [hli], a
+	dec c
+	jr nz, .col
+	pop hl
+	ld bc, SCREEN_WIDTH
+	add hl, bc
+	pop bc
+	dec b
+	jr nz, .row
 	ret
