@@ -57,12 +57,7 @@ ShakeHeadbuttTree: ; 8c80a
 	ld bc, wSpritesEnd - (wSprites + 36 * 4)
 	xor a
 	call ByteFill
-	farcall LoadStandardFontPointer
-	ld d, h
-	ld e, l
-	ld hl, vTiles1
-	lb bc, BANK(FontNormal), 12
-	call Get1bpp
+	call DelayFrame
 	jp ReplaceKrisSprite
 ; 8c893
 
