@@ -4508,6 +4508,14 @@ DoEncoreDisable:
 	push af
 	ld [wNamedObjectIndexBuffer], a
 	call GetMoveName
+
+	; since abilities use strbuf1, copy to strbuf2 to not overwrite it
+	ld hl, wStringBuffer1
+	ld de, wStringBuffer2
+	push bc
+	ld bc, MOVE_NAME_LENGTH
+	rst CopyBytes
+	pop bc
 	pop af
 	pop de
 	pop hl

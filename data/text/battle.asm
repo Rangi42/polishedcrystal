@@ -1236,7 +1236,7 @@ EvadedText: ; 0x81407
 WasDisabledText: ; 0x8141d
 	text "<TARGET>'s"
 	line "@"
-	text_from_ram wStringBuffer1
+	text_from_ram wStringBuffer2
 	text " was"
 	cont "disabled!"
 	prompt
