@@ -226,10 +226,9 @@ CheckIfSpecialPaletteApplies:
 	push hl
 	call GetOvercastIndex
 	pop hl
-	; invert z, assuming GetOvercastIndex < $80
-	xor $7f
-	inc a
-	and $80
+	; invert z
+	sub 1 ; underflows if a == 0, setting carry
+	sbc a ; sets a to 0 if carry was not set, i.e. a != 0
 	ret
 
 
