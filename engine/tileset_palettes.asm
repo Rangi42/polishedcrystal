@@ -62,9 +62,9 @@ LoadSpecialMapPalette: ; 494ac
 	jp hl
 
 .next
+rept 3
 	inc hl
-	inc hl
-	inc hl
+endr
 	jr .loop
 
 .not_special
@@ -88,12 +88,11 @@ LoadEightBGPalettes:
 PokeCenterSpecialCase:
 	ld hl, wMapGroup
 	call .check_shamouti_pokecenter
-	jr z, .shamouti_pokecenter
+	jr z, LoadEightBGPalettes
 	ld hl, wBackupMapGroup
 	call .check_shamouti_pokecenter
-	jr z, .shamouti_pokecenter
+	jr z, LoadEightBGPalettes
 	ld hl, PokeCenterPalette
-.shamouti_pokecenter
 	jr LoadEightBGPalettes
 
 .check_shamouti_pokecenter
@@ -109,13 +108,14 @@ MartSpecialCase:
 	GLOBAL GenericMart_BlockData
 	ld hl, MartPalette
 	call LoadEightBGPalettes
-	ld a, [wMapBlockDataBank]
+	ld hl, wMapBlockDataBank
+	ld a, [hli]
 	cp BANK(GenericMart_BlockData)
 	jr nz, .not_generic_mart
-	ld a, [wMapBlockDataPointer]
+	ld a, [hli]
 	cp LOW(GenericMart_BlockData)
 	jr nz, .not_generic_mart
-	ld a, [wMapBlockDataPointer + 1]
+	ld a, [hl]
 	cp HIGH(GenericMart_BlockData)
 	jr nz, .not_generic_mart
 	ld hl, MartBluePalette
@@ -179,12 +179,9 @@ LoadSpecialMapOBPalette:
 	jp FarCopyWRAM
 
 .next
+rept 6
 	inc hl
-	inc hl
-	inc hl
-	inc hl
-	inc hl
-	inc hl
+endr
 	jr .loop
 
 
