@@ -121,8 +121,7 @@ RefreshPlayerCoords: ; 80b8
 	ld [hl], e
 	ld e, a
 	ld a, [wObjectFollow_Leader]
-	cp $0
-	ret nz ; wtf
+	and a
 	ret
 
 CopyObjectStruct:: ; 80e7

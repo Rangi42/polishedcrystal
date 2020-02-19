@@ -259,17 +259,16 @@ MenuJoypadLoop:
 	ret
 ; 24249
 
-Do2DMenuRTCJoypad: ; 24249
-	jr .handleLoop
-.loopRTC
+
+Do2DMenuRTCJoypad_loop:
 	call DelayFrame
-.handleLoop
+Do2DMenuRTCJoypad: ; 24249
 	call RTC
 	call Menu_WasButtonPressed
 	ret c
 	ld a, [w2DMenuFlags1]
 	bit 7, a
-	jr z, .loopRTC
+	jr z, Do2DMenuRTCJoypad_loop
 	and a
 	ret
 ; 24259

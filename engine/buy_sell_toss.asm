@@ -189,10 +189,6 @@ BuySellToss_UpdateQuantityDisplay: ; 25072
 	jp FarCall_de
 ; 25097
 
-ret_25097: ; 25097
-	ret
-; 25098
-
 DisplayPurchasePrice: ; 25098
 	call BuySell_MultiplyPrice
 	jp BuySell_DisplaySubtotal
@@ -266,6 +262,7 @@ DisplayPurchasePriceCommon:
 	pop hl
 	inc hl
 	ld de, hMoneyTemp
+ret_25097:
 	ret
 
 TossItem_MenuDataHeader: ; 0x250ed

@@ -213,9 +213,7 @@ endc
 ; Play starting sound effect
 	call SFXChannelsOff
 	ld de, SFX_TITLE_SCREEN_ENTRANCE
-	call PlaySFX
-
-	ret
+	jp PlaySFX
 ; 10eea7
 
 SuicuneFrameIterator: ; 10eea7
@@ -265,12 +263,19 @@ LoadSuicuneFrame: ; 10eed2
 	inc d
 	dec c
 	jr nz, .col
-	ld a, SCREEN_WIDTH - 8
-	add l
-	ld l, a
-	ld a, 0 ; not xor a; preserve carry flag
-	adc h
-	ld h, a
+; "add hl, SCREEN_WIDTH - 8"
+; 6 bytes, 12 cycles
+	push de
+	ld de, SCREEN_WIDTH - 8
+	add hl, de
+	pop de
+;; 8 bytes, 8 cycles
+;	ld a, SCREEN_WIDTH - 8
+;	add l
+;	ld l, a
+;	ld a, 0
+;	adc h
+;	ld h, a
 	ld a, 8
 	add d
 	ld d, a

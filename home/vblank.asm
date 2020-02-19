@@ -138,14 +138,12 @@ VBlank0::
 	ld [hSecondsBackup], a
 	; fallthrough
 
+VBlank2::
 VBlankUpdateSound::
 ; sound only
 	ld a, BANK(_UpdateSound)
 	rst Bankswitch
 	jp _UpdateSound
-
-VBlank2::
-	jr VBlankUpdateSound
 
 VBlank6::
 ; palettes

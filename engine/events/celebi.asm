@@ -192,7 +192,6 @@ UpdateCelebiPosition: ; 49aa2 (12:5aa2)
 	add hl, bc
 	ld a, SPRITE_ANIM_FRAMESET_CELEBI_LEFT
 	jp ReinitSpriteAnimFrame
-	ret
 
 .FreezeCelebiPosition: ; 49b30 (12:5b30)
 	pop af
@@ -204,22 +203,16 @@ UpdateCelebiPosition: ; 49aa2 (12:5aa2)
 GetCelebiSpriteTile: ; 49bae
 	push hl
 	push bc
-	push de
 	ld a, d
-	ld d, $3
-	ld e, d
-	cp $0
+	and a
 	jr z, .Frame1
-	cp d
+	cp 3
 	jr z, .Frame2
-	call .AddE
-	cp d
+	cp 6
 	jr z, .Frame3
-	call .AddE
-	cp d
+	cp 9
 	jr z, .Frame4
-	call .AddE
-	cp d
+	cp 12
 	jr c, .done
 	jr .restart
 
@@ -245,9 +238,7 @@ GetCelebiSpriteTile: ; 49bae
 	jr .done
 
 .restart
-	pop de
 	ld d, $ff
-	push de
 
 .done
 	pop de
@@ -256,16 +247,6 @@ GetCelebiSpriteTile: ; 49bae
 	ret
 
 ; 49bed
-
-.AddE: ; 49bed
-	push af
-	ld a, d
-	add e
-	ld d, a
-	pop af
-	ret
-
-; 49bf3
 
 CheckCaughtCelebi: ; 49bf9
 	ld a, [wBattleResult]

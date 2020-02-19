@@ -518,7 +518,7 @@ UseItem: ; 10311
 	dw .Oak
 	dw .Oak
 	dw .Oak
-	dw .Current
+	dw DoItemEffect
 	dw .Party
 	dw .Field
 ; 1035c
@@ -526,9 +526,6 @@ UseItem: ; 10311
 .Oak: ; 1032d (4:432d)
 	ld hl, Text_ThisIsntTheTime
 	jp Pack_PrintTextNoScroll
-
-.Current: ; 10334 (4:4334)
-	jp DoItemEffect
 
 .Party: ; 10338 (4:4338)
 	ld a, [wPartyCount]

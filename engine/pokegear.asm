@@ -1475,15 +1475,12 @@ UpdateRadioStation: ; 9166f (24:566f)
 .loop
 	ld a, [hli]
 	cp -1
-	jr z, .nostation
+	jp z, NoRadioStation
 	cp d
 	jr z, .foundstation
 	inc hl
 	inc hl
 	jr .loop
-
-.nostation
-	jp NoRadioStation
 
 .foundstation
 	ld a, [hli]
@@ -1527,7 +1524,7 @@ RadioChannels:
 
 ; Oak's Pokémon Talk in the afternoon and evening
 	call .InJohto
-	jr nc, .NoSignal
+	jr nc, NoRadioStation
 	ld a, [wTimeOfDay]
 	and a
 	jp z, LoadStation_PokedexShow
@@ -1535,66 +1532,63 @@ RadioChannels:
 
 .PokemonMusic:
 	call .InJohto
-	jr nc, .NoSignal
+	jr nc, NoRadioStation
 	jp LoadStation_PokemonMusic
 
 .LuckyChannel:
 	call .InJohto
-	jr nc, .NoSignal
+	jr nc, NoRadioStation
 	jp LoadStation_LuckyChannel
 
 .BuenasPassword:
 	call .InJohto
-	jr nc, .NoSignal
+	jr nc, NoRadioStation
 	jp LoadStation_BuenasPassword
 
 .RuinsOfAlphRadio:
 	ld a, [wPokegearMapPlayerIconLandmark]
 	cp RUINS_OF_ALPH
-	jr nz, .NoSignal
+	jr nz, NoRadioStation
 	jp LoadStation_UnownRadio
 
 .PlacesAndPeople:
 	call .InJohto
-	jr c, .NoSignal
+	jr c, NoRadioStation
 	ld a, [wPokegearFlags]
 	bit 3, a
-	jr z, .NoSignal
+	jr z, NoRadioStation
 	jp LoadStation_PlacesAndPeople
 
 .LetsAllSing:
 	call .InJohto
-	jr c, .NoSignal
+	jr c, NoRadioStation
 	ld a, [wPokegearFlags]
 	bit 3, a
-	jr z, .NoSignal
+	jr z, NoRadioStation
 	jp LoadStation_LetsAllSing
 
 .PokeFluteRadio:
 	call .InJohto
-	jr c, .NoSignal
+	jr c, NoRadioStation
 	ld a, [wPokegearFlags]
 	bit 3, a
-	jr z, .NoSignal
+	jr z, NoRadioStation
 	jp LoadStation_PokeFluteRadio
 
 .EvolutionRadio:
 ; This station airs in the Lake of Rage area when Rocket are still in Mahogany.
 	ld a, [wStatusFlags]
 	bit 4, a
-	jr z, .NoSignal
+	jr z, NoRadioStation
 	ld a, [wPokegearMapPlayerIconLandmark]
 	cp MAHOGANY_TOWN
 	jr z, .ok
 	cp ROUTE_43
 	jr z, .ok
 	cp LAKE_OF_RAGE
-	jr nz, .NoSignal
+	jr nz, NoRadioStation
 .ok
 	jp LoadStation_EvolutionRadio
-
-.NoSignal:
-	jp NoRadioStation
 
 .InJohto:
 ; if in Johto or on the S.S. Aqua, set carry
@@ -1607,6 +1601,17 @@ RadioChannels:
 
 .kanto_or_orange
 	and a
+	ret
+
+NoRadioStation: ; 91888 (24:5888)
+	call NoRadioMusic
+	call NoRadioName
+	xor a
+	ld [wPokegearRadioChannelBank], a
+	ld [wPokegearRadioChannelAddr], a
+	ld [wPokegearRadioChannelAddr + 1], a
+	ld a, $1
+	ld [hBGMapMode], a
 	ret
 
 LoadStation_OaksPokemonTalk: ; 91753 (24:5753)
@@ -1705,17 +1710,6 @@ RadioMusicRestartPokemonChannel: ; 91868 (24:5868)
 	pop de
 	ld de, MUSIC_POKEMON_CHANNEL
 	jp PlayMusic
-
-NoRadioStation: ; 91888 (24:5888)
-	call NoRadioMusic
-	call NoRadioName
-	xor a
-	ld [wPokegearRadioChannelBank], a
-	ld [wPokegearRadioChannelAddr], a
-	ld [wPokegearRadioChannelAddr + 1], a
-	ld a, $1
-	ld [hBGMapMode], a
-	ret
 
 NoRadioMusic: ; 9189d (24:589d)
 	ld de, MUSIC_NONE

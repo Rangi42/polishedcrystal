@@ -252,14 +252,11 @@ _CardFlip: ; e00ee (38:40ee)
 	call JoyTextDelay
 	ld a, [hJoyLast]
 	and A_BUTTON
-	jr nz, .betdone
+	jp nz, .Increment
 	call ChooseCard_HandleJoypad
 	call CardFlip_UpdateCursorOAM
 	call DelayFrame
 	jr .betloop
-
-.betdone
-	jp .Increment
 ; e02d5
 
 .PlaceYourBetText: ; 0xe02d5

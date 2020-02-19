@@ -1457,6 +1457,7 @@ Pokedex_FillBackgroundColor2: ; 40aa6
 Pokedex_PlaceFrontpicTopLeftCorner: ; 40ab2
 	hlcoord 1, 1
 Pokedex_PlaceFrontpicAtHL: ; 40ab5
+	ld de, SCREEN_WIDTH
 	xor a
 	ld b, $7
 .row
@@ -1469,7 +1470,6 @@ Pokedex_PlaceFrontpicAtHL: ; 40ab5
 	dec c
 	jr nz, .col
 	pop hl
-	ld de, SCREEN_WIDTH
 	add hl, de
 	pop af
 	inc a

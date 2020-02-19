@@ -140,12 +140,9 @@ PlaceGameFreakPresents: ; e4670
 PlaceGameFreakPresents_AdvanceIndex: ; e4687
 	ld hl, wJumptableIndex
 	inc [hl]
-	ret
-; e468c
-
 PlaceGameFreakPresents_0: ; e468c
 	ret
-; e468d
+; e468c
 
 PlaceGameFreakPresents_1: ; e468d
 	ld hl, wcf65
@@ -235,6 +232,7 @@ GameFreakLogoScene1: ; e4707 (39:4707)
 	ld hl, SPRITEANIMSTRUCT_JUMPTABLE_INDEX
 	add hl, bc
 	inc [hl]
+GameFreakLogoScene5:
 	ret
 
 GameFreakLogoScene2: ; e470d (39:470d)
@@ -331,9 +329,7 @@ GameFreakLogoScene4: ; e4776 (39:4776)
 	ld hl, SPRITEANIMSTRUCT_JUMPTABLE_INDEX
 	add hl, bc
 	inc [hl]
-	call PlaceGameFreakPresents_AdvanceIndex
-GameFreakLogoScene5: ; e47ab (39:47ab)
-	ret
+	jp PlaceGameFreakPresents_AdvanceIndex
 ; e47ac (39:47ac)
 
 GameFreakLogoPalettes: ; e47ac
@@ -541,7 +537,7 @@ IntroScene2: ; e49d6 (39:49d6)
 	ld a, [hl]
 	inc [hl]
 	cp $80
-	jr nc, .endscene
+	jp nc, NextIntroScene
 	cp $60
 	jr nz, .DontPlaySound
 	push af
@@ -554,8 +550,6 @@ IntroScene2: ; e49d6 (39:49d6)
 	ld [wcf65], a
 	xor a
 	jp CrystalIntro_UnownFade
-.endscene
-	jp NextIntroScene
 
 IntroScene3: ; e49fd (39:49fd)
 ; More setup. Transition to the outdoor scene.
@@ -584,12 +578,9 @@ IntroScene4: ; e4a69 (39:4a69)
 	ld hl, wIntroSceneFrameCounter
 	ld a, [hl]
 	cp $80
-	jr z, .endscene
+	jp z, NextIntroScene
 	inc [hl]
 	ret
-
-.endscene
-	jp NextIntroScene
 
 IntroScene5: ; e4a7a (39:4a7a)
 ; Go back to the Unown.
@@ -649,7 +640,7 @@ IntroScene6: ; e4af7 (39:4af7)
 	ld a, [hl]
 	inc [hl]
 	cp $80
-	jr nc, .endscene
+	jp nc, NextIntroScene
 	cp $60
 	jr z, .SecondUnown
 	cp $40
@@ -681,9 +672,6 @@ IntroScene6: ; e4af7 (39:4af7)
 	ld [wcf65], a
 	ld a, $1
 	jp CrystalIntro_UnownFade
-
-.endscene
-	jp NextIntroScene
 
 IntroScene7: ; e4b3f (39:4b3f)
 ; Back to the outdoor scene.
@@ -794,7 +782,7 @@ IntroScene10: ; e4c4f (39:4c4f)
 	ld a, [hl]
 	inc [hl]
 	cp $c0
-	jr z, .done
+	jp z, NextIntroScene
 	cp $20
 	jr z, .wooper
 	cp $40
@@ -804,18 +792,15 @@ IntroScene10: ; e4c4f (39:4c4f)
 .pichu
 	depixel 21, 16, 1, 0
 	ld a, SPRITE_ANIM_INDEX_INTRO_PICHU
-	call _InitSpriteAnimStruct
-	ld de, SFX_INTRO_PICHU
-	jp PlaySFX
+	jr .got_anim
 
 .wooper
 	depixel 22, 6
 	ld a, SPRITE_ANIM_INDEX_INTRO_WOOPER
+.got_anim
 	call _InitSpriteAnimStruct
 	ld de, SFX_INTRO_PICHU
 	jp PlaySFX
-.done
-	jp NextIntroScene
 
 IntroScene11: ; e4c86 (39:4c86)
 ; Back to Unown again.
@@ -873,7 +858,7 @@ IntroScene12: ; e4cfa (39:4cfa)
 	ld a, [hl]
 	inc [hl]
 	cp $c0
-	jr nc, .done
+	jp nc, NextIntroScene
 	cp $80
 	jr nc, .second_half
 ; first half
@@ -899,9 +884,6 @@ IntroScene12: ; e4cfa (39:4cfa)
 	or $40
 	swap a
 	jp CrystalIntro_UnownFade
-
-.done
-	jp NextIntroScene
 
 .PlayUnownSound: ; e4d36 (39:4d36)
 	ld a, [wIntroSceneFrameCounter]
@@ -978,7 +960,7 @@ IntroScene14: ; e4dfa (39:4dfa)
 	ld a, [hl]
 	inc [hl]
 	cp $80
-	jr z, .done
+	jp z, NextIntroScene
 	cp $60
 	jr z, .jump
 	jr nc, .asm_e4e1a
@@ -1008,9 +990,6 @@ IntroScene14: ; e4dfa (39:4dfa)
 	sub $2
 	ld [wGlobalAnimXOffset], a
 	ret
-
-.done
-	jp NextIntroScene
 
 IntroScene15: ; e4e40 (39:4e40)
 ; Transition to a new scene.
@@ -1081,7 +1060,7 @@ IntroScene16: ; e4edc (39:4edc)
 	ld a, [hl]
 	inc [hl]
 	cp $80
-	jr nc, .done
+	jp nc, NextIntroScene
 	call Intro_Scene16_AnimateSuicune
 	ld a, [hSCY]
 	and a
@@ -1089,8 +1068,6 @@ IntroScene16: ; e4edc (39:4edc)
 	add 8
 	ld [hSCY], a
 	ret
-.done
-	jp NextIntroScene
 
 IntroScene17: ; e4ef5 (39:4ef5)
 ; ...
@@ -1146,15 +1123,13 @@ IntroScene18: ; e4f67 (39:4f67)
 	ld a, [hl]
 	inc [hl]
 	cp $60
-	jr nc, .done
+	jp nc, NextIntroScene
 	ld a, [hSCX]
 	cp $60
 	ret z
 	add 8
 	ld [hSCX], a
 	ret
-.done
-	jp NextIntroScene
 
 IntroScene19: ; e4f7e (39:4f7e)
 ; More setup.
@@ -1226,7 +1201,7 @@ IntroScene20: ; e5019 (39:5019)
 	ld a, [hl]
 	inc [hl]
 	cp $98
-	jr nc, .finished
+	jp nc, NextIntroScene
 	cp $58
 	ret nc
 	cp $40
@@ -1252,9 +1227,6 @@ IntroScene20: ; e5019 (39:5019)
 	xor a
 	jp Intro_Scene20_AppearUnown
 ; e5049 (39:5049)
-
-.finished
-	jp NextIntroScene
 
 IntroScene21: ; e505d (39:505d)
 ; Suicune gets more distant and turns black.
@@ -1309,12 +1281,9 @@ IntroScene25: ; e50ad (39:50ad)
 ; Wait around a bit.
 	ld a, [wIntroSceneFrameCounter]
 	dec a
-	jr z, .done
+	jp z, NextIntroScene
 	ld [wIntroSceneFrameCounter], a
 	ret
-
-.done
-	jp NextIntroScene
 
 IntroScene26: ; e50bb (39:50bb)
 ; Load the final scene.
@@ -1396,15 +1365,11 @@ IntroScene28: ; e5152 (39:5152)
 	jr z, .done
 	dec [hl]
 	cp $30
-	jr z, .clear
+	jp z, ClearBGPalettes
 	cp $10
 	ret nz
-
 	ld de, SFX_TITLE_SCREEN_INTRO
 	jp PlaySFX
-
-.clear
-	jp ClearBGPalettes
 
 .done
 	ld hl, wJumptableIndex
@@ -1928,13 +1893,19 @@ Intro_LoadTilemap: ; e541b (39:541b)
 	inc de
 	dec c
 	jr nz, .col
-	; add hl, $20 - SCREEN_WIDTH
-	ld a, $20 - SCREEN_WIDTH
-	add l
-	ld l, a
-	ld a, 0 ; not xor a; preserve carry flag?
-	adc h
-	ld h, a
+; "add hl, BG_MAP_WIDTH - SCREEN_WIDTH"
+; 6 bytes, 12 cycles
+	push de
+	ld de, BG_MAP_WIDTH - SCREEN_WIDTH
+	add hl, de
+	pop de
+;; 8 bytes, 8 cycles
+;	ld a, BG_MAP_WIDTH - SCREEN_WIDTH
+;	add l
+;	ld l, a
+;	ld a, 0
+;	adc h
+;	ld h, a
 	dec b
 	jr nz, .row
 

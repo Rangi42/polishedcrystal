@@ -1677,7 +1677,7 @@ GetMovementPermissions:: ; 2914
 	ret nz
 	ld a, [wTileLeft]
 	and 7
-	cp $0
+	and a
 	jr z, .ok_left
 	cp $4
 	jr z, .ok_left

@@ -456,14 +456,14 @@ StartMenu_Pokemon: ; 12976
 	push af
 	call SFXDelay2
 	pop af
-	cp 3
-	jr z, .menu
-	cp 0
+	and a ; 0?
 	jr z, .choosemenu
-	cp 1
+	dec a ; 1?
 	jr z, .menunoreload
-	cp 2
+	dec a ; 2?
 	jr z, .quit
+	dec a ; 3?
+	jr z, .menu
 
 .return
 	call CloseSubmenu

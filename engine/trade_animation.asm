@@ -487,12 +487,9 @@ TradeAnim_TubeToPlayer7: ; 2925d
 	ld hl, wcf64
 	ld a, [hl]
 	and a
-	jr z, .done
+	jp z, TradeAnim_IncrementJumptableIndex
 	dec [hl]
 	ret
-
-.done
-	jp TradeAnim_IncrementJumptableIndex
 ; 2926d
 
 TradeAnim_GiveTrademonSFX: ; 2926d
@@ -1390,24 +1387,18 @@ TradeAnim_WaitAnim: ; 29879
 	ld hl, wcf64
 	ld a, [hl]
 	and a
-	jr z, .done
+	jp z, TradeAnim_AdvanceScriptPointer
 	dec [hl]
 	ret
-
-.done
-	jp TradeAnim_AdvanceScriptPointer
 ; 29886
 
 TradeAnim_WaitAnim2: ; 29886
 	ld hl, wcf64
 	ld a, [hl]
 	and a
-	jr z, .done
+	jp z, TradeAnim_AdvanceScriptPointer
 	dec [hl]
 	ret
-
-.done
-	jp TradeAnim_AdvanceScriptPointer
 ; 29893
 
 TradeGameBoyTilemap: ; 298c7

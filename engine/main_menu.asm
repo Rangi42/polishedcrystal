@@ -154,13 +154,10 @@ MainMenu_PrintCurrentTimeAndDay: ; 49e09
 .PlaceBox: ; 49e27
 	call CheckRTCStatus
 	and $80
-	jr nz, .TimeFail
+	jp nz, SpeechTextBox
 	hlcoord 0, 14
 	lb bc, 2, 18
 	jp TextBox
-
-.TimeFail:
-	jp SpeechTextBox
 ; 49e3d
 
 .PlaceTime: ; 49e3d

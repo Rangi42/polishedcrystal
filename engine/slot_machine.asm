@@ -225,7 +225,7 @@ Slots_WaitReel1: ; 928d6 (24:68d6)
 	ld [wReel1ReelAction], a
 Slots_WaitStopReel1: ; 928e6 (24:68e6)
 	ld a, [wReel1ReelAction]
-	cp $0
+	and a
 	ret nz
 	ld a, SFX_STOP_SLOT
 	call Slots_PlaySFX
@@ -245,7 +245,7 @@ Slots_WaitReel2: ; 92900 (24:6900)
 	ld [wReel2ReelAction], a
 Slots_WaitStopReel2: ; 92910 (24:6910)
 	ld a, [wReel2ReelAction]
-	cp $0
+	and a
 	ret nz
 	ld a, SFX_STOP_SLOT
 	call Slots_PlaySFX
@@ -265,7 +265,7 @@ Slots_WaitReel3: ; 9292a (24:692a)
 	ld [wReel3ReelAction], a
 Slots_WaitStopReel3: ; 9293a (24:693a)
 	ld a, [wReel3ReelAction]
-	cp $0
+	and a
 	ret nz
 	ld a, SFX_STOP_SLOT
 	call Slots_PlaySFX
@@ -331,7 +331,7 @@ Slots_PayoutAnim: ; 929a4 (24:69a4)
 	ld a, [hli]
 	ld d, a
 	or [hl]
-	jr z, .done
+	jp z, Slots_Next
 	ld e, [hl]
 	dec de
 	ld [hl], e
@@ -353,9 +353,6 @@ Slots_PayoutAnim: ; 929a4 (24:69a4)
 	ret nz
 	ld de, SFX_GET_COIN_FROM_SLOTS
 	jp PlaySFX
-
-.done
-	jp Slots_Next
 
 Slots_RestartOrQuit: ; 929d9 (24:69d9)
 	call Slots_DeilluminateBetLights
