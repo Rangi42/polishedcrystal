@@ -69,7 +69,7 @@ if __name__ == '__main__':
     png_data = []
     for i, row in enumerate(hit_data):
         bank = i // rows_per_bank
-        hue = 210 if bank % 2 else 270
+        hue = 0 if not bank else 210 if bank % 2 else 270
         row_png_data = ()
         for col in row:
             hls = (hue/360.0, 1.0 - (col/bpp * (100 - 15))/100.0, 1.0)
