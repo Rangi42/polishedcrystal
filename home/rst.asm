@@ -1,13 +1,13 @@
 ; rst vectors
 
-SECTION "rst0", ROM0
+SECTION "rst00 EntryPoint", ROM0
 	di
 	jp Start
 
 DisappearUser::
 	farjp _DisappearUser
 
-SECTION "rst8", ROM0
+SECTION "rst08 FarCall", ROM0
 	jp RstFarCall
 
 IsAPokemon::
@@ -18,22 +18,25 @@ IsAPokemon::
 	dec a
 	ret
 
-SECTION "rst10", ROM0
+SECTION "rst10 Bankswitch", ROM0
 	ld [hROMBank], a
 	ld [MBC3RomBank], a
 	ret
 
-SECTION "rst18", ROM0
+	ds 2 ; free space
+
+SECTION "rst18 AddNTimes", ROM0
 	jp _AddNTimes
 
 _de_::
 	push de
+DoNothing::
 	ret
 
 FarCopyWRAM::
 	call StackCallInWRAMBankA
 
-SECTION "rst20", ROM0
+SECTION "rst20 CopyBytes", ROM0
 	jp _CopyBytes
 
 BattleRandom::
@@ -44,20 +47,24 @@ BattleRandom::
 _hl_::
 	jp hl
 
-SECTION "rst28", ROM0
+SECTION "rst28 JumpTable", ROM0
 	jp _Jumptable
 
 DoItemEffect::
 	farjp _DoItemEffect
 
-SECTION "rst30", ROM0
+	ds 1 ; free space
+
+SECTION "rst30 Predef", ROM0
 	jp _Predef
 
 PushWindow::
 	farjp _PushWindow
 
-SECTION "rst38", ROM0
-	rst $38
+	ds 1 ; free space
+
+SECTION "rst38 InfiniteLoop", ROM0
+	rst InfiniteLoop
 
 ExitMenu::
 	push af

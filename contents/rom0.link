@@ -1,21 +1,21 @@
 ROM0
 	org $0000
 	"NULL"
-	"rst0"
-	org $0008 ; FarCall
-	"rst8"
-	org $0010 ; Bankswitch
-	"rst10"
-	org $0018 ; unused
-	"rst18"
-	org $0020 ; unused
-	"rst20"
-	org $0028 ; JumpTable
-	"rst28"
-	org $0030 ; Predef
-	"rst30"
-	org $0038 ; unused
-	"rst38"
+	"rst00 EntryPoint"
+	org $0008
+	"rst08 FarCall"
+	org $0010
+	"rst10 Bankswitch"
+	org $0018
+	"rst18 AddNTimes"
+	org $0020
+	"rst20 CopyBytes"
+	org $0028
+	"rst28 JumpTable"
+	org $0030
+	"rst30 Predef"
+	org $0038
+	"rst38 InfiniteLoop"
 	org $0040
 	"vblank"
 	org $0048

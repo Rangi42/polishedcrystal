@@ -1,9 +1,11 @@
-FarCall    EQU $08
-Bankswitch EQU $10
-AddNTimes  EQU $18
-CopyBytes  EQU $20
-JumpTable  EQU $28
-Predef     EQU $30
+EntryPoint   EQU $00
+FarCall      EQU $08
+Bankswitch   EQU $10
+AddNTimes    EQU $18
+CopyBytes    EQU $20
+JumpTable    EQU $28
+Predef       EQU $30
+InfiniteLoop EQU $38
 
 anonbankpush: MACRO
 	call AnonBankPush

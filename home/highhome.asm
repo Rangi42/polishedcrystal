@@ -79,3 +79,5 @@ IsInArray::
 	inc b
 	add hl, de
 	jr .loop
+
+	ds 2 ; free space

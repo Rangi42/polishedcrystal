@@ -25,8 +25,12 @@ SECTION "timer", ROM0
 	scf
 	reti
 
+	ds 6 ; free space
+
 SECTION "serial", ROM0
 	jp Serial
+
+	ds 5 ; free space
 
 SECTION "joypad", ROM0
 	reti
