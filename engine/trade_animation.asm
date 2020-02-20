@@ -806,8 +806,7 @@ TradeAnim_GetFrontpic: ; 29491
 	ld [wCurSpecies], a
 	call GetBaseData
 	pop de
-	predef GetFrontpic
-	ret
+	predef_jump GetFrontpic
 ; 294a9
 
 TradeAnim_GetNickname: ; 294a9
