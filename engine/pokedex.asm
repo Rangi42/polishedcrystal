@@ -422,7 +422,7 @@ DexEntryScreen_MenuActionJumptable: ; 402f2
 	call Pokedex_GetSelectedMon
 	ld a, [wDexCurrentLocation]
 	ld e, a
-	predef _Area
+	farcall Pokedex_GetArea
 	call Pokedex_BlackOutBG
 	call DelayFrame
 	xor a

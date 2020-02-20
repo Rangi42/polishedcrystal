@@ -25,7 +25,10 @@ SECTION "timer", ROM0
 	scf
 	reti
 
-	ds 6 ; free space
+GetMemCGBLayout::
+	ld b, CGB_RAM
+GetCGBLayout::
+	farjp LoadCGBLayout
 
 SECTION "serial", ROM0
 	jp Serial

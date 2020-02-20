@@ -366,12 +366,6 @@ endc
 	ret
 ; 333e
 
-GetMemCGBLayout:: ; 333e
-	ld b, CGB_RAM
-GetCGBLayout:: ; 3340
-	predef_jump Predef_LoadCGBLayout
-; 334e
-
 SetHPPal:: ; 334e
 ; Set palette for hp bar pixel length e at hl.
 	call GetHPPal

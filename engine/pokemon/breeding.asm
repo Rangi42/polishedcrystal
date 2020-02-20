@@ -142,7 +142,7 @@ CheckBreedmonCompatibility: ; 16e1d
 	ld a, TEMPMON
 	ld [wMonType], a
 	push bc
-	predef GetGender
+	farcall GetGender
 	pop bc
 	ld a, 1 << BREEDGEN_GENDERLESS
 	ret c

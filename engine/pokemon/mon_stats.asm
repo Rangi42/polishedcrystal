@@ -94,7 +94,7 @@ PrintTempMonStats: ; 50b7b
 rept 8
 	inc hl
 endr
-	predef PrintNatureIndicators
+	farcall PrintNatureIndicators
 	pop hl
 	pop bc
 

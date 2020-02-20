@@ -1,4 +1,4 @@
-Predef_StartBattle: ; 8c20f
+DoBattleTransition:
 	farcall ReanchorBGMap_NoOAMUpdate
 	call UpdateSprites
 	call DelayFrame

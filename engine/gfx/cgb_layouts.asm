@@ -1,4 +1,4 @@
-Predef_LoadCGBLayout: ; 8d59
+LoadCGBLayout:: ; 8d59
 	ld a, b
 	cp CGB_RAM
 	jr nz, .not_ram

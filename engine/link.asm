@@ -1672,7 +1672,7 @@ LinkTrade: ; 28b87
 	predef TradeAnimation
 	jr .done_animation
 .player_2
-	predef TradeAnimationPlayer2
+	farcall TradeAnimationPlayer2
 .done_animation
 	pop af
 	ld c, a
@@ -1689,7 +1689,7 @@ LinkTrade: ; 28b87
 	ld de, wTempMonSpecies
 	ld bc, PARTYMON_STRUCT_LENGTH
 	rst CopyBytes
-	predef AddTempmonToParty
+	farcall AddTempmonToParty
 	ld a, [wPartyCount]
 	dec a
 	ld [wCurPartyMon], a

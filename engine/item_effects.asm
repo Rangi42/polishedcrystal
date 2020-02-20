@@ -497,7 +497,7 @@ PokeBallEffect: ; e8a2
 
 	ld a, [wOTPartyMon1Species]
 	ld [wd265], a
-	predef NewPokedexEntry
+	farcall NewPokedexEntry
 
 .skip_pokedex
 	ld a, [wBattleType]
@@ -626,7 +626,7 @@ PokeBallEffect: ; e8a2
 .SendToPC:
 	call ClearSprites
 
-	predef SentPkmnIntoBox
+	farcall SentPkmnIntoBox
 
 	farcall SetBoxMonCaughtData
 
