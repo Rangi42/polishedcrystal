@@ -706,10 +706,10 @@ INCBIN "data/tilesets/pokemon_mansion_collision.bin.lz"
 SECTION "Tileset Data - lacunosa", ROMX
 
 TilesetLacunosaGFX::
-INCBIN "gfx/tilesets/lacunosa.2bpp.lz"
+INCBIN "gfx/tilesets/lacunosa.2bpp.normal.lz"
 
 TilesetLacunosaGFX2::
-INCBIN "gfx/tilesets/lacunosa.extra.2bpp.lz"
+INCBIN "gfx/tilesets/lacunosa.2bpp.extra.lz"
 
 TilesetLacunosaMeta::
 INCBIN "data/tilesets/lacunosa_metatiles.bin.lz"

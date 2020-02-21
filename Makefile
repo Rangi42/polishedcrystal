@@ -134,6 +134,12 @@ $(sorted_sym): crystal ; tail -n +3 $(NAME)-$(VERSION).sym | sort -o $@
 	$(RGBDS_DIR)rgblink $(RGBLINK_FLAGS) -o $@ $^
 	$(RGBDS_DIR)rgbfix $(RGBFIX_FLAGS) $@
 
+%.2bpp.normal: %.2bpp
+	head -c 4096 $< > $@
+
+%.2bpp.extra: %.2bpp
+	tail -c +4097 $< > $@
+
 %.2bpp: %.png ; $(GFX) 2bpp $<
 %.1bpp: %.png ; $(GFX) 1bpp $<
 
