@@ -35,35 +35,6 @@ _MainMenu: ; 5ae8
 	jp StartTitleScreen
 ; 5b04
 
-PrintDayOfWeek: ; 5b05
-	push de
-	ld hl, .Days
-	ld a, b
-	call GetNthString
-	ld d, h
-	ld e, l
-	pop hl
-	call PlaceString
-	ld h, b
-	ld l, c
-	ld de, .Day
-	jp PlaceString
-; 5b1c
-
-.Days: ; 5b1c
-	db "Sun@"
-	db "Mon@"
-	db "Tues@"
-	db "Wednes@"
-	db "Thurs@"
-	db "Fri@"
-	db "Satur@"
-; 5b40
-
-.Day: ; 5b40
-	db "day@"
-; 5b44
-
 NewGame_ClearTileMapEtc: ; 5b44
 	xor a
 	ld [hMapAnims], a
@@ -72,10 +43,6 @@ NewGame_ClearTileMapEtc: ; 5b44
 	call LoadStandardFont
 	jp ClearWindowData
 ; 5b54
-
-OptionsMenu: ; 5b64
-	farjp _OptionsMenu
-; 5b6b
 
 NewGamePlus:
 	xor a

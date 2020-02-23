@@ -198,10 +198,9 @@ RestartClock: ; 20021 (8:4021)
 	hlcoord 0, 5
 	lb bc, 5, 18
 	call TextBox
-	decoord 1, 8
+	bccoord 1, 8
 	ld a, [wBuffer4]
-	ld b, a
-	farcall PrintDayOfWeek
+	call PrintDayOfWeek
 	ld a, [wBuffer5]
 	ld b, a
 	ld a, [wBuffer6]

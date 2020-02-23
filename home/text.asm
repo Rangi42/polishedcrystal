@@ -986,6 +986,7 @@ Text_StringBuffer::
 
 Text_WeekDay::
 	call GetWeekday
+PrintDayOfWeek::
 	push hl
 	push bc
 	ld c, a

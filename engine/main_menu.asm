@@ -1,6 +1,6 @@
 MainMenu: ; 49cdc
 	call DeleteSavedMusic
-	call Function49ed0
+	farcall NewGame_ClearTileMapEtc
 	ld b, CGB_DIPLOMA
 	call GetCGBLayout
 	call SetPalettes
@@ -118,8 +118,7 @@ MainMenuJoypadLoop: ; 49de4
 	cp B_BUTTON
 	jr z, .b_button
 	cp A_BUTTON
-	jr z, .a_button
-	jr .loop
+	jr nz, .loop
 
 .a_button
 	call PlayClickSFX
@@ -182,10 +181,8 @@ if DEF(NO_RTC)
 endc
 
 	call UpdateTime
-	call GetWeekday
-	ld b, a
-	decoord 1, 15
-	call .PlaceCurrentDay
+	bccoord 1, 15
+	call Text_WeekDay
 	decoord 4, 16
 	ld a, [hHours]
 	ld c, a
@@ -206,42 +203,6 @@ endc
 .TimeNotSet: ; 49e7f
 	db "Time not set@"
 ; 49e8c
-
-.PlaceCurrentDay: ; 49e91
-	push de
-	ld hl, .Days
-	ld a, b
-	call GetNthString
-	ld d, h
-	ld e, l
-	pop hl
-	call PlaceString
-	ld h, b
-	ld l, c
-	ld de, .Day
-	jp PlaceString
-; 49ea8
-
-.Days:
-	db "Sun@"
-	db "Mon@"
-	db "Tues@"
-	db "Wednes@"
-	db "Thurs@"
-	db "Fri@"
-	db "Satur@"
-.Day:
-	db "day@"
-; 49ed0
-
-Function49ed0: ; 49ed0
-	xor a
-	ld [hMapAnims], a
-	call ClearTileMap
-	call LoadFontsExtra
-	call LoadStandardFont
-	jp ClearWindowData
-; 49ee0
 
 
 MainMenu_NewGame: ; 49ee0

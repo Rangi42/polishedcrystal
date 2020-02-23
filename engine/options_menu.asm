@@ -1,4 +1,4 @@
-_OptionsMenu: ; e41d0
+OptionsMenu: ; e41d0
 	ld hl, hInMenu
 	ld a, [hl]
 	push af
