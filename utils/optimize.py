@@ -46,11 +46,9 @@ for filename in iglob('**/*.asm'):
 			if code[0].isalpha() and ':' in code:
 				cur_label = Line(i+1, code, text)
 				continue
-			# Skip non-code lines
-			if code[0] not in {' ', '\t'}:
-				continue
-			# This is a code line; proceed according to the state
+			# Remove indentation from code, if any
 			code = code.lstrip()
+			# Record the line's properties
 			cur_line = Line(i+1, code, text)
 			# Check the condition for the current state
 			condition = conditions[state]
