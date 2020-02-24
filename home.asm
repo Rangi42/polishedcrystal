@@ -17,6 +17,11 @@ Start::
 	nop
 	jp _Start
 
+; rgbfix patches the cartridge header here
+rept $0150 - $0104
+	db $00
+endr
+
 
 SECTION "Home", ROM0
 
