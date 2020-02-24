@@ -646,8 +646,7 @@ IntroScene6: ; e4af7 (39:4af7)
 	cp $40
 	jr nc, .StopUnown
 	cp $20
-	jr z, .FirstUnown
-	jr .NoUnown
+	jr nz, .NoUnown
 
 .FirstUnown:
 	push af

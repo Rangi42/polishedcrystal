@@ -1948,9 +1948,9 @@ Music_StereoPanning: ; e89ba
 	; stereo on?
 	ld a, [wOptions1]
 	bit STEREO, a
-	jr nz, Music_Panning
 	; skip param
-	jp GetMusicByte
+	jp z, GetMusicByte
+	; fallthrough
 
 ; e89c5
 

@@ -2,8 +2,8 @@ GetSRAMBank:: ; 2fcb
 ; load sram bank a
 ; if invalid bank, sram is disabled
 	cp NUM_SRAM_BANKS
-	jr c, OpenSRAM
-	jr CloseSRAM
+	jr nc, CloseSRAM
+	; fallthrough
 ; 2fd1
 
 OpenSRAM:: ; 2fd1

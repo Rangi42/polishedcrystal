@@ -305,10 +305,7 @@ _CardFlip: ; e00ee (38:40ee)
 	ld hl, .PlayAgainText
 	call CardFlip_UpdateCoinBalanceDisplay
 	call YesNoBox
-	jr nc, .Continue
-	jp .Increment
-
-.Continue:
+	jp c, .Increment
 	ld a, [wCardFlipNumCardsPlayed]
 	inc a
 	ld [wCardFlipNumCardsPlayed], a
@@ -876,8 +873,8 @@ CardFlip_CheckWinCondition: ; e0637
 .PoliOddish: ; e06b0
 	ld a, [wCardFlipFaceUpCard]
 	and $2
-	jr nz, .WinSix
-	jp .Lose
+	jp z, .Lose
+	; fallthrough
 
 .WinSix: ; e06ba
 	ld c, $6
@@ -902,8 +899,8 @@ CardFlip_CheckWinCondition: ; e0637
 	ld a, [wCardFlipFaceUpCard]
 	and $18
 	cp $10
-	jr z, .WinNine
-	jp .Lose
+	jp nz, .Lose
+	; fallthrough
 
 .WinNine: ; e06e4
 	ld c, $9
@@ -935,8 +932,8 @@ CardFlip_CheckWinCondition: ; e0637
 	ld a, [wCardFlipFaceUpCard]
 	and $3
 	cp $3
-	jr z, .WinTwelve
-	jp .Lose
+	jp nz, .Lose
+	; fallthrough
 
 .WinTwelve: ; e071a
 	ld c, $c
@@ -982,8 +979,8 @@ CardFlip_CheckWinCondition: ; e0637
 	ld a, [wCardFlipFaceUpCard]
 	and $1c
 	cp $14
-	jr z, .WinEighteen
-	jp .Lose
+	jp nz, .Lose
+	; fallthrough
 
 .WinEighteen: ; e0768
 	ld c, $12

@@ -1260,13 +1260,13 @@ DrawLongerNote:
 	cp $9
 	jr nc, .fading_up
 	call CheckEndedNote
-	jr c, _WriteBlankNote
-	jr DrawNewNote
+	jr nc, DrawNewNote
+	jr _WriteBlankNote
 
 .fading_up
 	call CheckNoteDuration
-	jr c, _WriteBlankNote
-	jr DrawNewNote
+	jr nc, DrawNewNote
+	; fallthrough
 
 _WriteBlankNote:
 	xor a
