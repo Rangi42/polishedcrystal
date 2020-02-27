@@ -888,8 +888,8 @@ GetBattleVarAddr:: ; 39e7
 	dw .substatus1, .substatus2, .substatus3, .substatus4
 	dw .substatus1opp, .substatus2opp, .substatus3opp, .substatus4opp
 	dw .ability, .abilityopp, .status, .statusopp, .animation, .effect
-	dw .power, .accuracy, .type, .category, .curmove, .lastcounter
-	dw .lastcounteropp, .lastmove, .lastmoveopp
+	dw .power, .accuracy, .type, .category, .curmove, .curmoveopp
+	dw .lastcounter, .lastcounteropp, .lastmove, .lastmoveopp
 
 ;                       player                     enemy
 .substatus1     db PLAYER_SUBSTATUS_1,    ENEMY_SUBSTATUS_1

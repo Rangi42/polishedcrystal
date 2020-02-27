@@ -4487,7 +4487,7 @@ BattleCommand_disable:
 	ld hl, wBattleMonMoves
 DoEncoreDisable:
 	ld a, [de]
-	and a
+	and $f
 	jr nz, .failed
 
 	ld a, BATTLE_VARS_LAST_COUNTER_MOVE_OPP
