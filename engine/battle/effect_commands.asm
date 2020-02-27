@@ -4882,15 +4882,11 @@ BattleCommand_sleeptalk: ; 35b33
 BattleCommand_destinybond: ; 35bff
 ; destinybond
 
-	ld a, BATTLE_VARS_LAST_COUNTER_MOVE
-	call GetBattleVarAddr
-	ld a, [hl]
-	ld [hl], $0
-	cp DESTINY_BOND
-	jr z, .failed
-	ld [hl], DESTINY_BOND
 	ld a, BATTLE_VARS_SUBSTATUS2
 	call GetBattleVarAddr
+	bit SUBSTATUS_DESTINY_BOND, [hl]
+	res SUBSTATUS_DESTINY_BOND, [hl]
+	jr nz, .failed
 	set SUBSTATUS_DESTINY_BOND, [hl]
 	call AnimateCurrentMove
 	ld hl, DestinyBondEffectText

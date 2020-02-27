@@ -709,20 +709,22 @@ PerformMove:
 	xor a
 	ld [wDamageTaken], a
 	ld [wDamageTaken + 1], a
+	ld a, BATTLE_VARS_MOVE
+	call GetBattleVar
+	cp DESTINY_BOND
+	jr z, .skip_destinybond_reset
 	ld a, BATTLE_VARS_SUBSTATUS2
 	call GetBattleVarAddr
 	res SUBSTATUS_DESTINY_BOND, [hl]
+.skip_destinybond_reset
 	call HasUserFainted
-	jr z, .end_protect_destinybond
+	jr z, .end_protect
 	farcall DoTurn
-.end_protect_destinybond
+.end_protect
 	ld a, BATTLE_VARS_SUBSTATUS1_OPP
 	call GetBattleVarAddr
 	res SUBSTATUS_PROTECT, [hl]
 	res SUBSTATUS_ENDURE, [hl]
-	ld a, BATTLE_VARS_SUBSTATUS2_OPP
-	call GetBattleVarAddr
-	res SUBSTATUS_DESTINY_BOND, [hl]
 	; fallthrough
 
 ResolveFaints:
