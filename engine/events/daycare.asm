@@ -920,7 +920,8 @@ DayCare_InitBreeding: ; 16a3b
 	jr z, .got_ability
 
 .no_ha_boost
-	; 80% to get mother's ability
+	; 60% to get mother's ability
+	; (after coincidences: 79% to inherit ability 1 or 2, 62% to inherit HA)
 	ld a, [wBreedMotherOrNonDitto]
 	and a
 	ld a, [wBreedMon1Ability]
@@ -929,16 +930,18 @@ DayCare_InitBreeding: ; 16a3b
 .got_mother_ability
 	ld b, a
 
+	; 2/5 = 40% random ability
 	ld a, 5
 	call RandomRange
-	and a
-	jr z, .random_ability
+	cp 2
+	jr c, .random_ability
 
 	ld a, b
 	and ABILITY_MASK
 	jr .got_ability
 
 .random_ability
+	; 2/40 = 5% HA; 19/40 = 47.5% either other ability
 	ld a, 40
 	call RandomRange
 	cp 2
