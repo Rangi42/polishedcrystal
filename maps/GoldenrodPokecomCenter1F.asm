@@ -171,7 +171,7 @@ WonderTradeReceptionistScript:
 	buttonsound
 	special WonderTrade
 	iffalse .done
-	playmapmusic
+	playmusic MUSIC_POKECOM_CENTER
 	writetext WonderTradeCompleteText
 	playsound SFX_DEX_FANFARE_80_109
 	waitsfx
