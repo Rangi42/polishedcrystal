@@ -43,9 +43,12 @@ FindNest: ; 2a01f
 	call .FindGrass
 	ld hl, JohtoWaterWildMons
 	call .FindWater
-	call .RoamMon1
-	call .RoamMon2
-	jp .RoamMon3
+	ld hl, wRoamMon1Species
+	call .RoamMon
+	ld hl, wRoamMon2Species
+	call .RoamMon
+	ld hl, wRoamMon3Species
+	jp .RoamMon
 
 .kanto
 	decoord 0, 0
@@ -168,15 +171,16 @@ FindNest: ; 2a01f
 	ret
 ; 2a0b7
 
-.RoamMon1: ; 2a0b7
-	ld a, [wRoamMon1Species]
+.RoamMon: ; 2a0b7
+	ld a, [hli]
+	inc hl ; skip wRoamMon#Level
 	ld b, a
 	ld a, [wNamedObjectIndexBuffer]
 	cp b
 	ret nz
-	ld a, [wRoamMon1MapGroup]
+	ld a, [hli]
 	ld b, a
-	ld a, [wRoamMon1MapNumber]
+	ld a, [hl]
 	ld c, a
 	call .AppendNest
 	ret nc
@@ -184,39 +188,6 @@ FindNest: ; 2a01f
 	inc de
 	ret
 ; 2a0cf
-
-.RoamMon2: ; 2a0cf
-	ld a, [wRoamMon2Species]
-	ld b, a
-	ld a, [wNamedObjectIndexBuffer]
-	cp b
-	ret nz
-	ld a, [wRoamMon2MapGroup]
-	ld b, a
-	ld a, [wRoamMon2MapNumber]
-	ld c, a
-	call .AppendNest
-	ret nc
-	ld [de], a
-	inc de
-	ret
-; 2a0e7
-
-.RoamMon3: ; 2a0cf
-	ld a, [wRoamMon3Species]
-	ld b, a
-	ld a, [wNamedObjectIndexBuffer]
-	cp b
-	ret nz
-	ld a, [wRoamMon3MapGroup]
-	ld b, a
-	ld a, [wRoamMon3MapNumber]
-	ld c, a
-	call .AppendNest
-	ret nc
-	ld [de], a
-	inc de
-	ret
 
 TryWildEncounter::
 ; Try to trigger a wild encounter.
