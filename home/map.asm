@@ -2455,7 +2455,7 @@ GetOvercastIndex::
 	ret
 
 .stormy_beach:
-; Stormy Beach or Goldenrod City, Route 34, and ROute 34 Coast
+; Stormy Beach or Goldenrod City, Route 34, and Route 34 Coast
 	ld a, [wMapNumber]
 ; Stormy Beach is always overcast
 	cp MAP_STORMY_BEACH

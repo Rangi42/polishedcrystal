@@ -40,7 +40,16 @@ PryceScript_0x199a9e:
 	playsound SFX_GET_BADGE
 	waitsfx
 	setflag ENGINE_GLACIERBADGE
-	callstd radiotowerrockets
+	; Begin Team Rocket takeover of Radio Tower
+	setflag ENGINE_ROCKETS_IN_RADIO_TOWER
+	setevent EVENT_GOLDENROD_CITY_CIVILIANS
+	setevent EVENT_RADIO_TOWER_BLACKBELT_BLOCKS_STAIRS
+	clearevent EVENT_GOLDENROD_CITY_ROCKET_SCOUT
+	clearevent EVENT_RADIO_TOWER_ROCKET_TAKEOVER
+	clearevent EVENT_USED_THE_CARD_KEY_IN_THE_RADIO_TOWER
+	specialphonecall SPECIALCALL_WEIRDBROADCAST
+	setevent EVENT_MAHOGANY_TOWN_POKEFAN_M_BLOCKS_EAST
+	setmapscene MAHOGANY_TOWN, $1
 .FightDone:
 	checkevent EVENT_GOT_TM67_AVALANCHE
 	iftrue_jumpopenedtext UnknownText_0x199e59

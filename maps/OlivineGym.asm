@@ -37,7 +37,7 @@ JasmineScript_0x9c12f:
 	playsound SFX_GET_BADGE
 	waitsfx
 	setflag ENGINE_MINERALBADGE
-	callstd goldenrodrockets
+	clearevent EVENT_GOLDENROD_CITY_ROCKET_TAKEOVER
 	setmapscene ROUTE_42, $1
 .FightDone:
 	checkevent EVENT_GOT_TM23_IRON_TAIL

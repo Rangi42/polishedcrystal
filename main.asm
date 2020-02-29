@@ -2167,6 +2167,7 @@ INCLUDE "engine/pokemon/mail_2.asm"
 SECTION "Code 20", ROMX
 
 INCLUDE "engine/events/std_scripts.asm"
+INCLUDE "engine/events/initialize_events.asm"
 INCLUDE "engine/phone_scripts.asm"
 
 

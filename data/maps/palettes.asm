@@ -103,6 +103,7 @@ endc
 	dw wUnknOBPals palette \4 ; destination
 	db \5 palettes ; length
 ENDM
+	special_ob_pal overcast, (unused),                        OvercastOBPalette,                      PAL_OW_RED,    8, 8
 	special_ob_pal map,      MURKY_SWAMP,                     wUnknBGPals palette PAL_BG_GREEN,       PAL_OW_TREE,   1
 	special_ob_pal map,      ROUTE_34,                        OverworldPartyMonPalettes,              PAL_OW_ROCK,   1, 3
 	special_ob_pal map,      VERMILION_GYM,                   VermilionGymOBPalette_Tree,             PAL_OW_TREE,   1
@@ -125,7 +126,6 @@ ENDM
 	special_ob_pal tileset,  TILESET_SHAMOUTI_ISLAND,         wUnknBGPals palette PAL_BG_GREEN,       PAL_OW_TREE,   1
 	special_ob_pal tileset,  TILESET_SAFARI_ZONE,             wUnknBGPals palette PAL_BG_GREEN,       PAL_OW_TREE,   1
 	special_ob_pal tileset,  TILESET_FARAWAY_ISLAND,          wUnknBGPals palette PAL_BG_RED,         PAL_OW_TREE,   1
-	special_ob_pal overcast, (unused),                        OvercastOBPalette,                      PAL_OW_RED,    8, 8
 	db 0 ; end
 
 
