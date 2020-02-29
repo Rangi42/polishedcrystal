@@ -806,13 +806,13 @@ CooltrainerfIreneAfterText2:
 
 CooltrainerfJennSeenText:
 	text "Jenn: You can't"
-	line "beat Kate and go"
+	line "beat Irene and go"
 	cont "unpunished!"
 	done
 
 CooltrainerfJennBeatenText:
 	text "Jenn: So sorry,"
-	line "Kate! Sis!"
+	line "Irene! Sis!"
 	done
 
 CooltrainerfJennAfterText2:
