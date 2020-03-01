@@ -382,7 +382,6 @@ GetFixedMoveStruct::
 ; a = move + 1
 ; de = destination
 	dec a
-GetFixedMoveStructNoSub::
 	ld hl, Moves
 	ld bc, MOVE_LENGTH
 	rst AddNTimes

@@ -5135,7 +5135,7 @@ UpdateMoveData:
 	pop bc
 	pop de
 	pop hl
-	call GetFixedMoveStructNoSub
+	call GetFixedMoveStruct
 	call GetMoveName
 	jp CopyName1
 
