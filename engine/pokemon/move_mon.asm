@@ -459,21 +459,12 @@ FillPP: ; da6d
 	ld a, [hli]
 	and a
 	jr z, .next
-	dec a
 	push hl
-	push de
 	push bc
-	ld hl, Moves
-	ld bc, MOVE_LENGTH
-	rst AddNTimes
-	ld de, wStringBuffer1
-	ld a, BANK(Moves)
-	call FarCopyBytes
+	ld hl, Moves + MOVE_PP
+	call GetMoveProperty
 	pop bc
-	pop de
 	pop hl
-	ld a, [wStringBuffer1 + MOVE_PP]
-
 .next
 	ld [de], a
 	inc de

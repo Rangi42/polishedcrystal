@@ -1092,11 +1092,14 @@ wInitialOptions::
 ; bit 3: perfect IVs off/on
 ; bit 4: traded behavior off/on
 ; bit 5: nuzlocke mode off/on
-; bit 6: unused
+; bit 6: scaled exp on/off
 ; bit 7: ask to reset at start
 	ds 1
 
-wOptionsBuffer:: ds 1
+wInitialOptions2::
+; bit 0: physical-special split on/off
+; bits 1-7: unused
+	ds 1
 wOptionsEnd::
 
 ; Time buffer, for counting the amount of time since an event began
@@ -1104,3 +1107,6 @@ wSecondsSince:: ds 1
 wMinutesSince:: ds 1
 wHoursSince:: ds 1
 wDaysSince:: ds 1
+
+; Temporary backup for options
+wOptionsBuffer:: ds 1

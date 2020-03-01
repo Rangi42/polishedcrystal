@@ -318,18 +318,15 @@ AnticipationAbility:
 	; copy the current move into the move structure to make CheckTypeMatchup happy
 	push hl
 	push bc
-	dec a
-	ld hl, Moves
-	ld bc, MOVE_LENGTH
-	rst AddNTimes
+	push af
 	ld a, [hBattleTurn]
 	and a
 	ld de, wPlayerMoveStruct
 	jr z, .got_move_struct
 	ld de, wEnemyMoveStruct
 .got_move_struct
-	ld a, BANK(Moves)
-	call FarCopyBytes
+	pop af
+	call GetFixedMoveStruct
 	; Ignore status moves. Don't ignore Counter/Mirror Coat (counterintuitive)
 	ld a, BATTLE_VARS_MOVE_CATEGORY
 	call GetBattleVar
@@ -355,18 +352,15 @@ AnticipationAbility:
 .done
 	; now restore the move struct
 	pop af
-	dec a
-	ld hl, Moves
-	ld bc, MOVE_LENGTH
-	rst AddNTimes
+	push af
 	ld a, [hBattleTurn]
 	and a
 	ld de, wPlayerMoveStruct
 	jr z, .got_move_struct2
 	ld de, wEnemyMoveStruct
 .got_move_struct2
-	ld a, BANK(Moves)
-	call FarCopyBytes
+	pop af
+	call GetFixedMoveStruct
 	jp SwitchTurn
 
 ForewarnAbility:

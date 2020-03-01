@@ -1,4 +1,4 @@
-NUM_INITIAL_OPTIONS EQU 7
+NUM_INITIAL_OPTIONS EQU 8
 
 SetInitialOptions:
 	ld a, $10
@@ -50,10 +50,22 @@ SetInitialOptions:
 ;	call ClearBGPalettes
 
 	hlcoord 0, 0
-	lb bc, SCREEN_HEIGHT - 2, SCREEN_WIDTH - 2
-	call TextBox
+	ld a, " "
+	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
+	call ByteFill
 
-	hlcoord 2, 1
+	hlcoord 0, 0
+	ld bc, SCREEN_WIDTH - 2
+	ld a, "│"
+	ld d, SCREEN_HEIGHT
+.edge_loop
+	ld [hli], a
+	add hl, bc
+	ld [hli], a
+	dec d
+	jr nz, .edge_loop
+
+	hlcoord 2, 0
 	ld de, .InitialOptionsString
 	call PlaceString
 
@@ -127,6 +139,8 @@ endc
 INCBIN "gfx/new_game/init_bg.2bpp"
 
 .InitialOptionsString:
+	db "Phys/Spcl split<LNBRK>"
+	db "            :<LNBRK>"
 	db "Natures<LNBRK>"
 	db "            :<LNBRK>"
 	db "Abilities<LNBRK>"
@@ -158,6 +172,7 @@ GetInitialOptionPointer: ; e42d6
 ; e42e5
 
 .Pointers:
+	dw InitialOptions_PSS
 	dw InitialOptions_Natures
 	dw InitialOptions_Abilities
 	dw InitialOptions_ExpScaling
@@ -166,6 +181,30 @@ GetInitialOptionPointer: ; e42d6
 	dw InitialOptions_TradedMon
 	dw InitialOptions_NuzlockeMode
 	dw InitialOptions_Done
+
+InitialOptions_PSS:
+	ld hl, wInitialOptions2
+	ld a, [hJoyPressed]
+	and D_LEFT | D_RIGHT | A_BUTTON
+	jr nz, .Toggle
+	bit PSS_OPT, [hl]
+	jr z, .SetNo
+	jr .SetYes
+.Toggle
+	bit PSS_OPT, [hl]
+	jr z, .SetYes
+.SetNo:
+	res PSS_OPT, [hl]
+	ld de, NoString
+	jr .Display
+.SetYes:
+	set PSS_OPT, [hl]
+	ld de, YesString
+.Display:
+	hlcoord 15, 1
+	call PlaceString
+	and a
+	ret
 
 InitialOptions_Natures:
 	ld hl, wInitialOptions
@@ -186,7 +225,7 @@ InitialOptions_Natures:
 	set NATURES_OPT, [hl]
 	ld de, YesString
 .Display:
-	hlcoord 15, 2
+	hlcoord 15, 3
 	call PlaceString
 	and a
 	ret
@@ -210,7 +249,7 @@ InitialOptions_Abilities:
 	set ABILITIES_OPT, [hl]
 	ld de, YesString
 .Display:
-	hlcoord 15, 4
+	hlcoord 15, 5
 	call PlaceString
 	and a
 	ret
@@ -234,7 +273,7 @@ InitialOptions_ExpScaling:
 	set SCALED_EXP, [hl]
 	ld de, YesString
 .Display:
-	hlcoord 15, 6
+	hlcoord 15, 7
 	call PlaceString
 	and a
 	ret
@@ -258,7 +297,7 @@ InitialOptions_ColorVariation:
 	set COLOR_VARY_OPT, [hl]
 	ld de, YesString
 .Display:
-	hlcoord 15, 8
+	hlcoord 15, 9
 	call PlaceString
 	and a
 	ret
@@ -282,7 +321,7 @@ InitialOptions_PerfectIVs:
 	set PERFECT_IVS_OPT, [hl]
 	ld de, YesString
 .Display:
-	hlcoord 15, 10
+	hlcoord 15, 11
 	call PlaceString
 	and a
 	ret
@@ -306,7 +345,7 @@ InitialOptions_TradedMon:
 	set TRADED_AS_OT_OPT, [hl]
 	ld de, YesString
 .Display:
-	hlcoord 15, 13
+	hlcoord 15, 14
 	call PlaceString
 	and a
 	ret
@@ -330,7 +369,7 @@ InitialOptions_NuzlockeMode:
 	set NUZLOCKE_MODE, [hl]
 	ld de, YesString
 .Display:
-	hlcoord 15, 15
+	hlcoord 15, 16
 	call PlaceString
 	and a
 	ret
@@ -385,9 +424,9 @@ InitialOptionsControl: ; e452a
 ; e455c
 
 InitialOptions_UpdateCursorPosition: ; e455c
-	hlcoord 1, 1
+	hlcoord 1, 0
 	ld de, SCREEN_WIDTH
-	ld c, SCREEN_HEIGHT - 2
+	ld c, SCREEN_HEIGHT
 .loop
 	ld [hl], " "
 	add hl, de
@@ -409,4 +448,4 @@ InitialOptions_UpdateCursorPosition: ; e455c
 ; e4579
 
 .InitialOptions_CursorPositions:
-	db 1, 3, 5, 7, 9, 11, 14, 16
+	db 0, 2, 4, 6, 8, 10, 12, 15, 17

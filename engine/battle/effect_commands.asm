@@ -5135,18 +5135,9 @@ UpdateMoveData:
 	pop bc
 	pop de
 	pop hl
-	dec a
-	call GetMoveData
+	call GetFixedMoveStructNoSub
 	call GetMoveName
 	jp CopyName1
-
-GetMoveData::
-; Copy move struct a to de.
-	ld hl, Moves
-	ld bc, MOVE_LENGTH
-	rst AddNTimes
-	ld a, Bank(Moves)
-	jp FarCopyBytes
 
 IsOpponentLeafGuardActive:
 	call GetTrueUserAbility

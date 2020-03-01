@@ -3097,14 +3097,9 @@ AIGetEnemyMove: ; 39508
 	push hl
 	push de
 	push bc
-	dec a
-	ld hl, Moves
-	ld bc, MOVE_LENGTH
-	rst AddNTimes
 
 	ld de, wEnemyMoveStruct
-	ld a, BANK(Moves)
-	call FarCopyBytes
+	call GetFixedMoveStruct
 
 	pop bc
 	pop de

@@ -74,12 +74,8 @@ GiveSpecialMoveset:
 	ld [de], a ; give the Pokémon the new move
 
 	; get the PP of the new move
-	dec a
 	ld hl, Moves + MOVE_PP
-	ld bc, MOVE_LENGTH
-	rst AddNTimes
-	ld a, BANK(Moves)
-	call GetFarByte
+	call GetMoveProperty
 
 	; get the address of the move's PP and update the PP
 	ld hl, MON_PP - MON_MOVES

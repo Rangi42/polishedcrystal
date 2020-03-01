@@ -80,12 +80,8 @@ LearnMove: ; 6508
 
 	push hl
 	push de
-	dec a
 	ld hl, Moves + MOVE_PP
-	ld bc, MOVE_LENGTH
-	rst AddNTimes
-	ld a, BANK(Moves)
-	call GetFarByte
+	call GetMoveProperty
 	pop de
 	pop hl
 	ld b, a

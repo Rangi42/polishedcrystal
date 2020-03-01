@@ -1306,17 +1306,11 @@ MoveScreen_ListMoves:
 .defaultpp_loop
 	ld a, [hli]
 	push hl
-	push bc
 	ld hl, Moves + MOVE_PP
-	ld bc, MOVE_LENGTH
-	dec a
-	rst AddNTimes
-	ld a, BANK(Moves)
-	call GetFarByte
+	call GetMoveProperty
+	pop hl
 	ld [de], a
 	inc de
-	pop bc
-	pop hl
 	dec c
 	jr nz, .defaultpp_loop
 
@@ -1428,13 +1422,7 @@ PlaceMoveData:
 	ld de, String_PowAcc
 	call PlaceString
 
-	ld a, [wCurMove]
-	dec a
-	ld hl, Moves + MOVE_CATEGORY
-	ld bc, MOVE_LENGTH
-	rst AddNTimes
-	ld a, BANK(Moves)
-	call GetFarByte
+	call GetCurMoveFixedCategory
 	ld b, a
 	push bc
 	ld hl, CategoryIconGFX
@@ -1450,13 +1438,8 @@ PlaceMoveData:
 	inc hl
 	ld [hl], $5a
 
-	ld a, [wCurMove]
-	dec a
 	ld hl, Moves + MOVE_TYPE
-	ld bc, MOVE_LENGTH
-	rst AddNTimes
-	ld a, BANK(Moves)
-	call GetFarByte
+	call GetCurMoveProperty
 	pop bc
 	ld c, a
 	ld de, wUnknBGPals palette 0 + 2
@@ -1482,13 +1465,8 @@ PlaceMoveData:
 	inc hl
 	ld [hl], $5e
 
-	ld a, [wCurMove]
-	dec a
 	ld hl, Moves + MOVE_POWER
-	ld bc, MOVE_LENGTH
-	rst AddNTimes
-	ld a, BANK(Moves)
-	call GetFarByte
+	call GetCurMoveProperty
 	hlcoord 10, 12
 	cp 2
 	jr c, .no_power
@@ -1502,13 +1480,8 @@ PlaceMoveData:
 	call PlaceString
 
 .place_accuracy
-	ld a, [wCurMove]
-	dec a
 	ld hl, Moves + MOVE_ACC
-	ld bc, MOVE_LENGTH
-	rst AddNTimes
-	ld a, BANK(Moves)
-	call GetFarByte
+	call GetCurMoveProperty
 	hlcoord 15, 12
 	cp 2
 	jr c, .no_acc

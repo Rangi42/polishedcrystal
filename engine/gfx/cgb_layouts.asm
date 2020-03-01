@@ -603,13 +603,7 @@ _CGB_MoveList: ; 9373
 	xor a
 	call ByteFill
 
-	ld a, [wCurMove]
-	dec a
-	ld hl, Moves + MOVE_CATEGORY
-	ld bc, MOVE_LENGTH
-	rst AddNTimes
-	ld a, BANK(Moves)
-	call GetFarByte
+	call GetCurMoveFixedCategory
 	add a
 	add a
 	ld hl, CategoryIconPals
@@ -621,13 +615,8 @@ _CGB_MoveList: ; 9373
 	ld a, $5
 	call FarCopyWRAM
 
-	ld a, [wCurMove]
-	dec a
 	ld hl, Moves + MOVE_TYPE
-	ld bc, MOVE_LENGTH
-	rst AddNTimes
-	ld a, BANK(Moves)
-	call GetFarByte
+	call GetCurMoveProperty
 	ld hl, TypeIconPals
 	add a
 	ld c, a

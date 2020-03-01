@@ -694,16 +694,11 @@ INCLUDE "data/moves/priorities.asm"
 
 GetMoveEffect: ; 3c5ec
 	ld a, b
-	dec a
 	ld hl, Moves + MOVE_EFFECT
-	ld bc, MOVE_LENGTH
-	rst AddNTimes
-	ld a, BANK(Moves)
-	call GetFarByte
+	call GetMoveProperty
 	ld b, a
 	ret
 ; 3c5fe
-
 
 PerformMove:
 	xor a
@@ -5158,15 +5153,8 @@ MoveInfoBox: ; 3e6c8
 	ld de, .PowAcc
 	call PlaceString
 
-; Power and accuracy display code copied from engine/startmenu.asm
-
-	ld a, [wCurMove]
-	dec a
 	ld hl, Moves + MOVE_POWER
-	ld bc, MOVE_LENGTH
-	rst AddNTimes
-	ld a, BANK(Moves)
-	call GetFarByte
+	call GetCurMoveProperty
 	hlcoord 1, 10
 	cp 2
 	jr c, .no_power
@@ -5180,13 +5168,8 @@ MoveInfoBox: ; 3e6c8
 	call PlaceString
 
 .place_accuracy
-	ld a, [wCurMove]
-	dec a
 	ld hl, Moves + MOVE_ACC
-	ld bc, MOVE_LENGTH
-	rst AddNTimes
-	ld a, BANK(Moves)
-	call GetFarByte
+	call GetCurMoveProperty
 	hlcoord 6, 10
 	cp 2
 	jr c, .no_acc
@@ -5362,10 +5345,8 @@ CheckUsableMove:
 	jr nz, .usable
 
 	; Assault Vest check
-	ld hl, Moves + MOVE_CATEGORY
 	ld a, b
-	dec a
-	call GetMoveAttr
+	call GetMoveFixedCategory
 	cp STATUS
 	ld a, 4
 	jr z, .end

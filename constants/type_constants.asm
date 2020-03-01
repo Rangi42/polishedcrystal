@@ -1,6 +1,5 @@
 	const_def
-MOVE_TYPES EQU const_value
-	; Type order matters for Hidden Power
+	; Type order matters for Hidden Power and non-PSS category
 	const NORMAL    ; 0
 	const FIGHTING  ; 1
 	const FLYING    ; 2
@@ -10,6 +9,7 @@ MOVE_TYPES EQU const_value
 	const BUG       ; 6
 	const GHOST     ; 7
 	const STEEL     ; 8
+SPECIAL_TYPES EQU const_value
 	const FIRE      ; 9
 	const WATER     ; 10
 	const GRASS     ; 11
@@ -21,12 +21,7 @@ MOVE_TYPES EQU const_value
 	const FAIRY     ; 17
 	const UNKNOWN_T ; 18
 
-TYPES_END EQU const_value
-
 	const_def
-MOVE_CATEGORIES EQU const_value
 	const PHYSICAL
 	const SPECIAL
 	const STATUS
-
-CATEGORIES_END EQU const_value

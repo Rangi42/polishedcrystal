@@ -201,7 +201,7 @@ EvolveAfterBattle_MasterLoop
 	push bc
 	ld b, a
 	ld hl, wTempMonMoves
-rept 4
+rept NUM_MOVES
 	ld a, [hli]
 	cp b
 	jp z, .move_proceed
@@ -675,12 +675,8 @@ FillMoves: ; 424e1
 	ld hl, MON_PP - MON_MOVES
 	add hl, de
 	push hl
-	dec a
 	ld hl, Moves + MOVE_PP
-	ld bc, MOVE_LENGTH
-	rst AddNTimes
-	ld a, BANK(Moves)
-	call GetFarByte
+	call GetMoveProperty
 	pop hl
 	ld [hl], a
 	pop hl

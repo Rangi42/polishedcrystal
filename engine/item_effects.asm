@@ -2603,14 +2603,9 @@ GetMaxPPOfMove: ; f8ec
 
 .gotdatmove
 	ld a, [hl]
-	dec a
-
 	push hl
 	ld hl, Moves + MOVE_PP
-	ld bc, MOVE_LENGTH
-	rst AddNTimes
-	ld a, BANK(Moves)
-	call GetFarByte
+	call GetMoveProperty
 	ld b, a
 	ld de, wStringBuffer1
 	ld [de], a

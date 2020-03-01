@@ -258,28 +258,8 @@ endr
 	add hl, de
 	pop de
 
-	ld b, NUM_MOVES
-.copy_pp
-	ld a, [hli]
-	and a
-	jr z, .copied_pp
+	predef FillPP
 
-	push hl
-	push bc
-	dec a
-	ld hl, Moves + MOVE_PP
-	ld bc, MOVE_LENGTH
-	rst AddNTimes
-	ld a, BANK(Moves)
-	call GetFarByte
-	pop bc
-	pop hl
-
-	ld [de], a
-	inc de
-	dec b
-	jr nz, .copy_pp
-.copied_pp
 	pop hl
 
 .not_moves

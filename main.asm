@@ -1437,7 +1437,7 @@ _ResetInitialOptions:
 	ld a, BANK(sOptions)
 	call GetSRAMBank
 	ld a, [wInitialOptions]
-	ld [sOptions + 6], a ; sInitialOptions
+	ld [sOptions + wInitialOptions - wOptions1], a ; sInitialOptions
 	jp CloseSRAM
 
 .Text_ResetInitialOptions: ; 0x4d580

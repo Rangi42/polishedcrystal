@@ -1,12 +1,15 @@
 DefaultOptions:
-	db %11000001 ; Options1: fast text speed, stereo sound, battle scene on
-	db $00       ; wSaveFileExists: no
-	db $00       ; TextBoxFrame: frame 0
-	db $01       ; TextBoxFlags: ?
-	db $0        ; ???
-	db %00000000 ; Options2: default typeface, running shoes off, 12-hour clock,
-	             ;           imperial units, battle style set
-	db %00000111 ; InitialOptions: natures on, abilities on, color variation on,
-	             ;                 perfect IVs off, traded as OT off,
-	             ;                 nuzlocke mode off, scaled exp off
-	db $0        ; ???
+; wOptions1
+	db (1 << BATTLE_EFFECTS) | (1 << STEREO) | FAST_TEXT
+; wSaveFileExists
+	db FALSE
+; wTextBoxFrame
+	db 0
+; wTextBoxFlags
+	db $01 ; ???
+; wOptions2
+	db 0
+; wInitialOptions
+	db (1 << NATURES_OPT) | (1 << ABILITIES_OPT) | (1 << COLOR_VARY_OPT)
+; wInitialOptions2
+	db (1 << PSS_OPT)
