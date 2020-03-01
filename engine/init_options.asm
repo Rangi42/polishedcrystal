@@ -29,9 +29,9 @@ SetInitialOptions:
 	ld a, $5
 	call FarCopyWRAM
 
-	ld de, .BGTile
+	ld de, .BGTiles
 	ld hl, vTiles2 tile $00
-	lb bc, BANK(.BGTile), 1
+	lb bc, BANK(.BGTiles), 3
 	call Get2bpp
 
 	farcall ApplyPals
@@ -55,13 +55,15 @@ SetInitialOptions:
 	call ByteFill
 
 	hlcoord 0, 0
+	ld a, $01 ; left
 	ld bc, SCREEN_WIDTH - 2
-	ld a, "│"
 	ld d, SCREEN_HEIGHT
 .edge_loop
 	ld [hli], a
+	inc a ; right
 	add hl, bc
 	ld [hli], a
+	dec a ; left
 	dec d
 	jr nz, .edge_loop
 
@@ -135,17 +137,17 @@ else
 	MONOCHROME_RGB_FOUR
 endc
 
-.BGTile:
+.BGTiles:
 INCBIN "gfx/new_game/init_bg.2bpp"
 
 .InitialOptionsString:
-	db "Phys/Spcl split<LNBRK>"
-	db "            :<LNBRK>"
 	db "Natures<LNBRK>"
 	db "            :<LNBRK>"
 	db "Abilities<LNBRK>"
 	db "            :<LNBRK>"
-	db "EXP scaling<LNBRK>"
+	db "Phys/Spcl split<LNBRK>"
+	db "            :<LNBRK>"
+	db "Exp. scaling<LNBRK>"
 	db "            :<LNBRK>"
 	db "IVs vary colors<LNBRK>"
 	db "            :<LNBRK>"
@@ -172,39 +174,15 @@ GetInitialOptionPointer: ; e42d6
 ; e42e5
 
 .Pointers:
-	dw InitialOptions_PSS
 	dw InitialOptions_Natures
 	dw InitialOptions_Abilities
+	dw InitialOptions_PSS
 	dw InitialOptions_ExpScaling
 	dw InitialOptions_ColorVariation
 	dw InitialOptions_PerfectIVs
 	dw InitialOptions_TradedMon
 	dw InitialOptions_NuzlockeMode
 	dw InitialOptions_Done
-
-InitialOptions_PSS:
-	ld hl, wInitialOptions2
-	ld a, [hJoyPressed]
-	and D_LEFT | D_RIGHT | A_BUTTON
-	jr nz, .Toggle
-	bit PSS_OPT, [hl]
-	jr z, .SetNo
-	jr .SetYes
-.Toggle
-	bit PSS_OPT, [hl]
-	jr z, .SetYes
-.SetNo:
-	res PSS_OPT, [hl]
-	ld de, NoString
-	jr .Display
-.SetYes:
-	set PSS_OPT, [hl]
-	ld de, YesString
-.Display:
-	hlcoord 15, 1
-	call PlaceString
-	and a
-	ret
 
 InitialOptions_Natures:
 	ld hl, wInitialOptions
@@ -225,7 +203,7 @@ InitialOptions_Natures:
 	set NATURES_OPT, [hl]
 	ld de, YesString
 .Display:
-	hlcoord 15, 3
+	hlcoord 15, 1
 	call PlaceString
 	and a
 	ret
@@ -247,6 +225,30 @@ InitialOptions_Abilities:
 	jr .Display
 .SetYes:
 	set ABILITIES_OPT, [hl]
+	ld de, YesString
+.Display:
+	hlcoord 15, 3
+	call PlaceString
+	and a
+	ret
+
+InitialOptions_PSS:
+	ld hl, wInitialOptions2
+	ld a, [hJoyPressed]
+	and D_LEFT | D_RIGHT | A_BUTTON
+	jr nz, .Toggle
+	bit PSS_OPT, [hl]
+	jr z, .SetNo
+	jr .SetYes
+.Toggle
+	bit PSS_OPT, [hl]
+	jr z, .SetYes
+.SetNo:
+	res PSS_OPT, [hl]
+	ld de, NoString
+	jr .Display
+.SetYes:
+	set PSS_OPT, [hl]
 	ld de, YesString
 .Display:
 	hlcoord 15, 5
