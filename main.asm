@@ -1431,13 +1431,13 @@ _ResetInitialOptions:
 	ld a, [wMenuCursorY]
 	cp $1
 	ret z
-	ld a, [wInitialOptions]
+	ld a, [wInitialOptions2]
 	set RESET_INIT_OPTS, a
-	ld [wInitialOptions], a
+	ld [wInitialOptions2], a
 	ld a, BANK(sOptions)
 	call GetSRAMBank
-	ld a, [wInitialOptions]
-	ld [sOptions + wInitialOptions - wOptions1], a ; sInitialOptions
+	ld a, [wInitialOptions2]
+	ld [sOptions + wInitialOptions2 - wOptions1], a ; sInitialOptions2
 	jp CloseSRAM
 
 .Text_ResetInitialOptions: ; 0x4d580

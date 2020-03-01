@@ -415,7 +415,7 @@ GetFixedCategory::
 	ret z
 ; if PSS_OPT is on, return the category
 	ld b, a
-	ld a, [wInitialOptions2]
+	ld a, [wInitialOptions]
 	bit PSS_OPT, a
 	ld a, b
 	ret nz

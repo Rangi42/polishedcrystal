@@ -1093,12 +1093,12 @@ wInitialOptions::
 ; bit 4: traded behavior off/on
 ; bit 5: nuzlocke mode off/on
 ; bit 6: scaled exp on/off
-; bit 7: ask to reset at start
+; bit 7: physical-special split on/off
 	ds 1
 
 wInitialOptions2::
-; bit 0: physical-special split on/off
-; bits 1-7: unused
+; bits 0-6: unused
+; bit 7: ask to reset at start
 	ds 1
 wOptionsEnd::
 

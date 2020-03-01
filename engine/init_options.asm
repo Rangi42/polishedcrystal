@@ -113,7 +113,7 @@ SetInitialOptions:
 	jr .joypad_loop
 
 .ExitOptions:
-	ld hl, wInitialOptions
+	ld hl, wInitialOptions2
 	res RESET_INIT_OPTS, [hl]
 	ld de, SFX_TRANSACTION
 	call PlaySFX
@@ -233,7 +233,7 @@ InitialOptions_Abilities:
 	ret
 
 InitialOptions_PSS:
-	ld hl, wInitialOptions2
+	ld hl, wInitialOptions
 	ld a, [hJoyPressed]
 	and D_LEFT | D_RIGHT | A_BUTTON
 	jr nz, .Toggle
@@ -377,7 +377,7 @@ InitialOptions_NuzlockeMode:
 	ret
 
 InitialOptions_Done:
-	ld hl, wInitialOptions
+	ld hl, wInitialOptions2
 	res RESET_INIT_OPTS, [hl]
 	ld a, [hJoyPressed]
 	and A_BUTTON
