@@ -165,6 +165,7 @@ These changes have been made since the current 2.2.0 release. If you build the p
 * Add: Dark battle intro at night.
 * Add: Trainer battles can be forfeited.
 * Add: Show genders in party menu.
+* Add: Show weather icons during battle like Gen 5+.
 * Add: Vending machines have a 1/32 chance of giving an extra item.
 * Add: Cross whirlpools, don't remove them (like HGSS).
 * Add: Rename RageCandyBar to Cake of Rage.

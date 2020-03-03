@@ -208,29 +208,9 @@ HandleWeather:
 
 	ld hl, wWeatherCount
 	dec [hl]
-	jp z, .ended
+	jr nz, .ongoing
 
-	; the above needs actual [wWeather] to be
-	; able to time it out, but otherwise check
-	; Cloud Nine
-	call GetWeatherAfterCloudNine
-	and a ; cp WEATHER_NONE
-	ret z
-
-	ld hl, .WeatherMessages
-	call .PrintWeatherMessage
-	call SetPlayerTurn
-	call .ShowWeatherAnimation
-	jp HandleWeatherEffects
-
-.ended
 	ld hl, .WeatherEndedMessages
-	call .PrintWeatherMessage
-	xor a
-	ld [wWeather], a
-	ret
-
-.PrintWeatherMessage:
 	ld a, [wWeather]
 	dec a
 	add a
@@ -240,45 +220,28 @@ HandleWeather:
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	jp StdBattleTextBox
-
-.ShowWeatherAnimation:
-	farcall CheckBattleEffects
-	ret c
-	ld hl, .WeatherAnimations
-	ld a, [wWeather]
-	dec a
-	ld b, 0
-	ld c, a
-	add hl, bc
-	add hl, bc
-	ld a, [hli]
-	ld d, [hl]
-	ld e, a
+	call StdBattleTextBox
 	xor a
-	ld [wNumHits], a
-	inc a
-	ld [wKickCounter], a
-	farjp Call_PlayBattleAnim
+	ld [wWeather], a
+	ret
 
-.WeatherMessages:
-	dw BattleText_RainContinuesToFall
-	dw BattleText_TheSunlightIsStrong
-	dw BattleText_TheSandstormRages
-	dw BattleText_TheHailContinuesToFall
 .WeatherEndedMessages:
 	dw BattleText_TheRainStopped
 	dw BattleText_TheSunlightFaded
 	dw BattleText_TheSandstormSubsided
 	dw BattleText_TheHailStopped
-.WeatherAnimations:
-	dw RAIN_DANCE
-	dw SUNNY_DAY
-	dw ANIM_IN_SANDSTORM
-	dw ANIM_IN_HAIL
 
-HandleWeatherEffects:
+.ongoing
+	; the above needs actual [wWeather] to be
+	; able to time it out, but otherwise check
+	; Cloud Nine
+	call GetWeatherAfterCloudNine
+	and a ; cp WEATHER_NONE
+	ret z
+
 ; sandstorm/hail damage, abilities like rain dish, etc.
+	xor a
+	ld [wAlreadySawWeather], a
 	call SetFastestTurn
 	call .do_it
 	call SwitchTurn
@@ -323,6 +286,18 @@ HandleWeatherEffects:
 	call CheckIfUserIsSteelType
 	ret z
 
+	ld a, [wAlreadySawWeather]
+	and a
+	jr nz, .saw_sandstorm
+	ld de, ANIM_IN_SANDSTORM
+	xor a
+	ld [wNumHits], a
+	inc a
+	ld [wKickCounter], a
+	ld [wAlreadySawWeather], a
+	farcall Call_PlayBattleAnim
+.saw_sandstorm
+
 	ld hl, SandstormHitsText
 	call StdBattleTextBox
 	call GetSixteenthMaxHP
@@ -345,6 +320,18 @@ HandleWeatherEffects:
 
 	call CheckIfUserIsIceType
 	ret z
+
+	ld a, [wAlreadySawWeather]
+	and a
+	jr nz, .saw_hail
+	ld de, ANIM_IN_HAIL
+	xor a
+	ld [wNumHits], a
+	inc a
+	ld [wKickCounter], a
+	ld [wAlreadySawWeather], a
+	farcall Call_PlayBattleAnim
+.saw_hail
 
 	ld hl, HailHitsText
 	call StdBattleTextBox

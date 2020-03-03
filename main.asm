@@ -2223,6 +2223,15 @@ INCLUDE "engine/overworld/load_map_part.asm"
 ; end linked section
 
 
+SECTION "Weather Icons", ROMX
+
+WeatherIcons::
+WeatherRainIconGFX:      INCBIN "gfx/weather/rain.2bpp"
+WeatherSunIconGFX:       INCBIN "gfx/weather/sun.2bpp"
+WeatherSandstormIconGFX: INCBIN "gfx/weather/sandstorm.2bpp"
+WeatherHailIconGFX:      INCBIN "gfx/weather/hail.2bpp"
+
+
 SECTION "Introduction", ROMX
 
 INCLUDE "engine/options_menu.asm"

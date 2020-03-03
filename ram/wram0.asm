@@ -558,7 +558,9 @@ wSafariMonEating:: ds 1
 
 wAlreadyDisobeyed:: ds 1
 
-	ds 2 ; unused
+	ds 1 ; unused
+
+wAlreadySawWeather:: ds 1
 
 wWhichMonFaintedFirst:: ds 1
 

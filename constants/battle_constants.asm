@@ -278,7 +278,7 @@ ALL_STATUS EQU (1 << PSN) | (1 << BRN) | (1 << FRZ) | (1 << PAR) | (1 << TOX) | 
 	enum SUBSTATUS_ROOST
 	enum SUBSTATUS_FOCUS_ENERGY
 	enum SUBSTATUS_MIST
-	enum SUBSTATUS_CURLED ; formely in its own substatus
+	enum SUBSTATUS_CURLED ; formerly in its own substatus
 
 ; environmental, things that stack are bitmasks
 SCREENS_REFLECT      EQU 0 ; %00000001

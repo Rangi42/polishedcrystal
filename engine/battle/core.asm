@@ -177,6 +177,8 @@ BattleTurn: ; 3c12f
 	call ParsePlayerAction
 	jr nz, .loop1
 
+	call ClearSprites
+
 	call CheckOpponentForfeit
 	ret c
 
@@ -3964,6 +3966,8 @@ BattleMenu: ; 3e139
 	call LoadTileMapToTempTileMap
 .ok
 
+	call LoadWeatherIconSprite
+
 .loop
 	ld a, [wBattleType]
 	cp BATTLETYPE_SAFARI
@@ -3986,7 +3990,8 @@ BattleMenu: ; 3e139
 	call StartAutoInput
 .skip_lyra_pack_select
 
-	call LoadBattleMenu2
+	farcall LoadBattleMenu
+	and a
 	ret c
 
 .next
@@ -4100,12 +4105,6 @@ CheckSafariMonRan:
 	cp b
 	ret nc
 	jp WildFled_EnemyFled_LinkBattleCanceled ; if b was greater than the random value, the enemy runs
-
-LoadBattleMenu2: ; 3e19b
-	farcall LoadBattleMenu
-	and a
-	ret
-; 3e1c7
 
 BattleMenu_Pack: ; 3e1c7
 	ld a, [wBattleType]
@@ -4966,6 +4965,9 @@ MoveSelectionScreen:
 	ld hl, BattleText_TheresNoPPLeftForThisMove
 
 .place_textbox_start_over
+	push hl
+	call ClearSprites
+	pop hl
 	call StdBattleTextBox
 	call Call_LoadTempTileMapToTileMap
 	jp MoveSelectionScreen
@@ -8665,3 +8667,54 @@ BoostGiovannisArmoredMewtwo:
 	ld de, ANIM_SHARPEN
 	call Call_PlayBattleAnim
 	farjp BattleCommand_allstatsup
+
+LoadWeatherIconSprite:
+	ld a, [wWeather]
+	and a ; WEATHER_NONE?
+	ret z
+	dec a ; WEATHER_RAIN?
+	ld de, WeatherRainIconGFX
+	lb bc, PAL_BATTLE_OB_BLUE, 4
+	jr z, .ok
+	dec a ; WEATHER_SUN?
+	ld de, WeatherSunIconGFX
+	ld b, PAL_BATTLE_OB_YELLOW
+	jr z, .ok
+	dec a ; WEATHER_SANDSTORM?
+	ld de, WeatherSandstormIconGFX
+	ld b, PAL_BATTLE_OB_BROWN
+	jr z, .ok
+	dec a ; WEATHER_HAIL?
+	ld de, WeatherHailIconGFX
+	ld b, PAL_BATTLE_OB_GRAY
+	ret nz
+
+.ok
+	push bc
+	ld b, BANK(WeatherIcons) ; c == 4
+	ld hl, vTiles0 tile $00
+	call Request2bpp
+	pop bc
+	ld hl, wSprites
+	ld de, .WeatherIconOAMData
+.loop
+	ld a, [de]
+	inc de
+	ld [hli], a ; y
+	ld a, [de]
+	inc de
+	ld [hli], a ; x
+	dec c
+	ld a, c
+	ld [hli], a ; tile id
+	ld a, b
+	ld [hli], a ; attributes
+	jr nz, .loop
+	ret
+
+.WeatherIconOAMData
+	; y, x
+	db $80 + 8, $14 + 8 ; 3: bottom-right
+	db $80 + 8, $14 + 0 ; 2: bottom-left
+	db $80 + 0, $14 + 8 ; 1: top-right
+	db $80 + 0, $14 + 0 ; 0: top-left

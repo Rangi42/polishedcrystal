@@ -306,29 +306,6 @@ BattleText_PkmnReflectFaded: ; 0x80905
 	prompt
 ; 0x8091f
 
-BattleText_RainContinuesToFall: ; 0x8091f
-	text "Rain continues to"
-	line "fall."
-	prompt
-; 0x80938
-
-BattleText_TheSunlightIsStrong: ; 0x80938
-	text "The sunlight is"
-	line "strong."
-	prompt
-; 0x80951
-
-BattleText_TheSandstormRages: ; 0x80951
-	text "The sandstorm"
-	line "rages."
-	prompt
-; 0x80967
-
-BattleText_TheHailContinuesToFall:
-	text "The hail continues"
-	line "to fall."
-	prompt
-
 BattleText_TheRainStopped: ; 0x80967
 	text "The rain stopped."
 	prompt
