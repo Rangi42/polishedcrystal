@@ -62,7 +62,7 @@ BattleMenuDataHeader: ; 24f2c
 
 ContestBattleMenuDataHeader: ; 24f89
 	db $40 ; flags
-	db 12, 02 ; start coords
+	db 12, 05 ; start coords
 	db 17, 19 ; end coords
 	dw .MenuData2
 	db 1 ; default option
@@ -71,7 +71,7 @@ ContestBattleMenuDataHeader: ; 24f89
 .MenuData2: ; 24f91
 	db $81 ; flags
 	dn 2, 2 ; rows, columns
-	db 12 ; spacing
+	db 8 ; spacing
 	dba .Strings
 	dba ShowParkBallsRemaining
 ; 24f9a
@@ -79,12 +79,12 @@ ContestBattleMenuDataHeader: ; 24f89
 .Strings: ; 24f9a
 	db "Fight@"
 	db "<PK><MN>@"
-	db "ParkBall×  @"
+	db "Ball×  @"
 	db "Run@"
 ; 24fb2
 
 ShowParkBallsRemaining: ; 24fb2
-	hlcoord 13, 16
+	hlcoord 12, 16
 	ld de, wParkBallsRemaining
 	lb bc, PRINTNUM_LEADINGZEROS | 1, 2
 	jp PrintNum
@@ -92,7 +92,7 @@ ShowParkBallsRemaining: ; 24fb2
 
 SafariBattleMenuDataHeader:
 	db $40 ; flags
-	db 12, 00 ; start coords
+	db 12, 04 ; start coords
 	db 17, 19 ; end coords
 	dw .MenuData2
 	db 1 ; default option
@@ -100,18 +100,18 @@ SafariBattleMenuDataHeader:
 .MenuData2:
 	db $81 ; flags
 	dn 2, 2 ; rows, columns
-	db 12 ; spacing
+	db 8 ; spacing
 	dba .Strings
 	dba ShowSafariBallsRemaining
 
 .Strings:
 	db "Ball×  @"
 	db "Bait@"
-	db "Throw Rock@"
+	db "Rock@"
 	db "Run@"
 
 ShowSafariBallsRemaining:
-	hlcoord 7, 14
+	hlcoord 11, 14
 	ld de, wSafariBallsRemaining
 	lb bc, PRINTNUM_LEADINGZEROS | 1, 2
 	jp PrintNum

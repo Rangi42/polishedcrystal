@@ -3991,8 +3991,6 @@ BattleMenu: ; 3e139
 .skip_lyra_pack_select
 
 	farcall LoadBattleMenu
-	and a
-	ret c
 
 .next
 	ld a, $1
@@ -4017,6 +4015,8 @@ BattleMenu: ; 3e139
 ; 3e192
 
 BattleMenu_Fight: ; 3e192
+	call ClearSprites
+
 	ld a, [wBattleType]
 	cp BATTLETYPE_SAFARI
 	jp z, BattleMenu_SafariBall
@@ -4107,6 +4107,8 @@ CheckSafariMonRan:
 	jp WildFled_EnemyFled_LinkBattleCanceled ; if b was greater than the random value, the enemy runs
 
 BattleMenu_Pack: ; 3e1c7
+	call ClearSprites
+
 	ld a, [wBattleType]
 	cp BATTLETYPE_SAFARI
 	jp z, BattleMenu_Rock
@@ -4228,6 +4230,8 @@ BattleMenu_SafariBall:
 ; 3e28d
 
 BattleMenu_PKMN: ; 3e28d
+	call ClearSprites
+
 	ld a, [wBattleType]
 	cp BATTLETYPE_SAFARI
 	jp z, BattleMenu_Bait ; "PKMN" is replaced with "Bait" in that mode
@@ -4446,6 +4450,8 @@ TryPlayerSwitch: ; 3e358
 	ret
 
 BattleMenu_Run: ; 3e489
+	call ClearSprites
+
 	call Call_LoadTempTileMapToTileMap
 	ld a, $3
 	ld [wMenuCursorY], a
