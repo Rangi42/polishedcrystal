@@ -210,22 +210,8 @@ BattleAnim_ClearCGB_OAMFlags: ; cc23d
 
 	ld a, [wBattleAnimFlags]
 	bit 3, a
-	jr z, .delete
+	ret nz
 
-	ld hl, wSprites + 3
-	ld c, (wSpritesEnd - wSprites) / 4
-.loop
-	ld a, [hl]
-	and $f0
-	ld [hli], a
-	inc hl
-	inc hl
-	inc hl
-	dec c
-	jr nz, .loop
-	ret
-
-.delete
 	ld hl, wSprites
 	ld c, wSpritesEnd - wSprites
 	xor a

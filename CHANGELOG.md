@@ -151,6 +151,7 @@ These changes have been made since the current 2.2.0 release. If you build the p
 * Add: Imperial or metric units.
 * Add: 12-hour or 24-hour clock.
 * Add: Item icons in the Bag.
+* Add: Thrown Balls use individual icons.
 * Add: Pokédex shows shiny palettes after getting the Shiny Charm.
 * Add: New Game+ preserves your money, Battle Points, and PC Pokémon.
 * Add: Phone call trainers ask automatically for your number.

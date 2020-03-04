@@ -83,7 +83,11 @@ rept NUM_TMS + NUM_HMS
 x = x + 1
 endr
 	; useful items
-	giveitem MASTER_BALL, 99
+x = POKE_BALL
+rept CHERISH_BALL - POKE_BALL + 1 
+	giveitem x, 99
+x = x + 1
+endr
 	giveitem MAX_POTION, 99
 	giveitem FULL_RESTORE, 99
 	giveitem MAX_REVIVE, 99

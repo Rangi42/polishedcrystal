@@ -116,7 +116,11 @@ LoadBattleAnimObj: ; ce846 (33:6846)
 	add hl, de
 	ld c, [hl]
 	inc hl
+.got_ball
 	ld b, [hl]
+	ld a, b
+	and a ; bank 0 means it's a poke ball
+	jr z, .ball
 	inc hl
 	ld a, [hli]
 	ld h, [hl]
@@ -126,5 +130,69 @@ LoadBattleAnimObj: ; ce846 (33:6846)
 	call DecompressRequest2bpp
 	pop bc
 	ret
+
+.ball
+	ld a, [rSVBK]
+	push af
+
+	; which ball?
+	ld a, BANK(wCurItem)
+	ld [rSVBK], a
+	ld a, [wCurItem]
+	dec a
+	ld e, a
+	ld d, 0
+	; get the palette
+	push bc
+	push de
+	ld a, BANK(wUnknOBPals)
+	ld [rSVBK], a
+	ld hl, CaughtBallPals + 4 ; skip NO_ITEM
+rept 4
+	add hl, de
+endr
+	ld de, wUnknOBPals palette PAL_BATTLE_OB_RED + 2 ; see GetBallAnimPal
+	ld bc, 4
+	ld a, BANK(CaughtBallPals)
+	call FarCopyBytes
+	ld b, 2
+	call SafeCopyTilemapAtOnce
+	pop de
+	pop bc
+	pop af
+	ld [rSVBK], a
+	; get the gfx pointer
+	ld hl, .ball_gfx
+	add hl, de
+	add hl, de
+	add hl, de
+	jr .got_ball
+
+.ball_gfx:
+	dba AnimObjPokeBallGFX
+	dba AnimObjGreatBallGFX
+	dba AnimObjUltraBallGFX
+	dba AnimObjMasterBallGFX
+	dba AnimObjSafariBallGFX
+	dba AnimObjLevelBallGFX
+	dba AnimObjLureBallGFX
+	dba AnimObjMoonBallGFX
+	dba AnimObjFriendBallGFX
+	dba AnimObjFastBallGFX
+	dba AnimObjHeavyBallGFX
+	dba AnimObjLoveBallGFX
+	dba AnimObjParkBallGFX
+	dba AnimObjRepeatBallGFX
+	dba AnimObjTimerBallGFX
+	dba AnimObjNestBallGFX
+	dba AnimObjNetBallGFX
+	dba AnimObjDiveBallGFX
+	dba AnimObjLuxuryBallGFX
+	dba AnimObjHealBallGFX
+	dba AnimObjQuickBallGFX
+	dba AnimObjDuskBallGFX
+	dba AnimObjDreamBallGFX
+	dba AnimObjPremierBallGFX
+	dba AnimObjCherishBallGFX
 
 ; ce85e (33:685e)

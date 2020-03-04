@@ -2232,6 +2232,35 @@ WeatherSandstormIconGFX: INCBIN "gfx/weather/sandstorm.2bpp"
 WeatherHailIconGFX:      INCBIN "gfx/weather/hail.2bpp"
 
 
+SECTION "Battle Ball Icons", ROMX
+
+AnimObjPokeBallGFX:    INCBIN "gfx/battle_balls/poke_ball.2bpp.lz"
+AnimObjGreatBallGFX:   INCBIN "gfx/battle_balls/great_ball.2bpp.lz"
+AnimObjUltraBallGFX:   INCBIN "gfx/battle_balls/ultra_ball.2bpp.lz"
+AnimObjMasterBallGFX:  INCBIN "gfx/battle_balls/master_ball.2bpp.lz"
+AnimObjSafariBallGFX:  INCBIN "gfx/battle_balls/safari_ball.2bpp.lz"
+AnimObjLevelBallGFX:   INCBIN "gfx/battle_balls/level_ball.2bpp.lz"
+AnimObjLureBallGFX:    INCBIN "gfx/battle_balls/lure_ball.2bpp.lz"
+AnimObjMoonBallGFX:    INCBIN "gfx/battle_balls/moon_ball.2bpp.lz"
+AnimObjFriendBallGFX:  INCBIN "gfx/battle_balls/friend_ball.2bpp.lz"
+AnimObjFastBallGFX:    INCBIN "gfx/battle_balls/fast_ball.2bpp.lz"
+AnimObjHeavyBallGFX:   INCBIN "gfx/battle_balls/heavy_ball.2bpp.lz"
+AnimObjLoveBallGFX:    INCBIN "gfx/battle_balls/love_ball.2bpp.lz"
+AnimObjParkBallGFX:    INCBIN "gfx/battle_balls/park_ball.2bpp.lz"
+AnimObjRepeatBallGFX:  INCBIN "gfx/battle_balls/repeat_ball.2bpp.lz"
+AnimObjTimerBallGFX:   INCBIN "gfx/battle_balls/timer_ball.2bpp.lz"
+AnimObjNestBallGFX:    INCBIN "gfx/battle_balls/nest_ball.2bpp.lz"
+AnimObjNetBallGFX:     INCBIN "gfx/battle_balls/net_ball.2bpp.lz"
+AnimObjDiveBallGFX:    INCBIN "gfx/battle_balls/dive_ball.2bpp.lz"
+AnimObjLuxuryBallGFX:  INCBIN "gfx/battle_balls/luxury_ball.2bpp.lz"
+AnimObjHealBallGFX:    INCBIN "gfx/battle_balls/heal_ball.2bpp.lz"
+AnimObjQuickBallGFX:   INCBIN "gfx/battle_balls/quick_ball.2bpp.lz"
+AnimObjDuskBallGFX:    INCBIN "gfx/battle_balls/dusk_ball.2bpp.lz"
+AnimObjDreamBallGFX:   INCBIN "gfx/battle_balls/dream_ball.2bpp.lz"
+AnimObjPremierBallGFX: INCBIN "gfx/battle_balls/premier_ball.2bpp.lz"
+AnimObjCherishBallGFX: INCBIN "gfx/battle_balls/cherish_ball.2bpp.lz"
+
+
 SECTION "Introduction", ROMX
 
 INCLUDE "engine/options_menu.asm"

@@ -410,33 +410,13 @@ BattleAnimFunction_PokeBallBlocked: ; cd212 (33:5212)
 	jp DeinitBattleAnimation
 
 GetBallAnimPal: ; cd249 (33:5249)
-	ld hl, BallColors
-	ld a, [rSVBK]
-	push af
-	ld a, $1
-	ld [rSVBK], a
-	ld a, [wCurItem] ; CurItem
-	ld e, a
-	pop af
-	ld [rSVBK], a
-.IsInArray:
-	ld a, [hli]
-	cp -1
-	jr z, .load
-	cp e
-	jr z, .load
-	inc hl
-	jr .IsInArray
-
-.load
-	ld a, [hl]
 	ld hl, BATTLEANIMSTRUCT_PALETTE
 	add hl, bc
-	ld [hl], a
+	; poof uses GRAY, sparkle uses YELLOW, weather uses YELLOW/BLUE/BROWN/GRAY
+	; RED and GREEN are free
+	ld [hl], PAL_BATTLE_OB_RED
 	ret
 ; cd26c (33:526c)
-
-INCLUDE "data/battle_anims/ball_colors.asm"
 
 BattleAnimFunction_10: ; cd284 (33:5284)
 	call BattleAnim_AnonJumptable
