@@ -4015,8 +4015,6 @@ BattleMenu: ; 3e139
 ; 3e192
 
 BattleMenu_Fight: ; 3e192
-	call ClearSprites
-
 	ld a, [wBattleType]
 	cp BATTLETYPE_SAFARI
 	jp z, BattleMenu_SafariBall
@@ -4038,6 +4036,8 @@ BattleMenu_Bait:
 	jr BattleMenu_BaitRock_Common
 
 BattleMenu_Rock:
+	call ClearSprites
+
 	ld hl, BattleText_ThrewRock
 	call StdBattleTextBox
 	ld hl, wEnemyMonCatchRate
@@ -4107,14 +4107,14 @@ CheckSafariMonRan:
 	jp WildFled_EnemyFled_LinkBattleCanceled ; if b was greater than the random value, the enemy runs
 
 BattleMenu_Pack: ; 3e1c7
-	call ClearSprites
-
 	ld a, [wBattleType]
 	cp BATTLETYPE_SAFARI
 	jp z, BattleMenu_Rock
 	; fallthrough
 
 BattleMenu_SafariBall:
+	call ClearSprites
+
 	ld a, [wLinkMode]
 	and a
 	jp nz, .ItemsCantBeUsed
