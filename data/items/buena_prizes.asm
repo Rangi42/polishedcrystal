@@ -8,5 +8,5 @@ BlueCardMartData:
 	db RARE_CANDY,   4
 	db EVIOLITE,     5
 	db PP_UP,        6
-	db AMULET_COIN,  7
+	db ABILITY_CAP,  7
 	db -1
