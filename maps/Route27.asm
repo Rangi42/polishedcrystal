@@ -27,7 +27,7 @@ Route27_MapScriptHeader:
 	object_event 58, 13, SPRITE_BIRD_KEEPER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerBird_keeperJose1, -1
 	itemball_event 53, 12, RARE_CANDY, 1, EVENT_ROUTE_27_RARE_CANDY
 	itemball_event 71,  4, DESTINY_KNOT, 1, EVENT_ROUTE_27_DESTINY_KNOT
-	fruittree_event 60, 12, FRUITTREE_ROUTE_27, LUM_BERRY
+	fruittree_event 60, 12, FRUITTREE_ROUTE_27, LUM_BERRY, PAL_NPC_GREEN
 
 	const_def 1 ; object constants
 	const ROUTE27_VETERAN_F

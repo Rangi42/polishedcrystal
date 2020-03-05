@@ -240,3 +240,8 @@
 	tilecoll WALL, WALL, WALL, WALL ; ef
 	tilecoll WALL, WALL, WALL, WALL ; f0
 	tilecoll WALL, WALL, WALL, WALL ; f1
+	tilecoll FLOOR, FLOOR, WALL, FLOOR ; f2
+	tilecoll WALL, FLOOR, FLOOR, FLOOR ; f3
+	tilecoll FLOOR, FLOOR, FLOOR, WALL ; f4
+	tilecoll FLOOR, WALL, FLOOR, FLOOR ; f5
+	tilecoll WALL, WALL, FLOOR, FLOOR ; f6

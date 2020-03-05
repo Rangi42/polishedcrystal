@@ -12,9 +12,9 @@ VioletOutskirts_MapScriptHeader:
 
 	db 4 ; object events
 	object_event 16, -2, SPRITE_SUICUNE, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_SAW_SUICUNE_ON_ROUTE_42
-	fruittree_event 17, -2, FRUITTREE_ROUTE_42_1, PNK_APRICORN
-	fruittree_event 18, -2, FRUITTREE_ROUTE_42_2, GRN_APRICORN
-	fruittree_event 19, -2, FRUITTREE_ROUTE_42_3, YLW_APRICORN
+	fruittree_event 17, -2, FRUITTREE_ROUTE_42_1, PNK_APRICORN, PAL_NPC_RED
+	fruittree_event 18, -2, FRUITTREE_ROUTE_42_2, GRN_APRICORN, PAL_NPC_GREEN
+	fruittree_event 19, -2, FRUITTREE_ROUTE_42_3, YLW_APRICORN, PAL_NPC_BROWN
 
 VioletOutskirtsAvalanche:
 	checkevent EVENT_BEAT_JASMINE

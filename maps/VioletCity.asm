@@ -37,7 +37,7 @@ VioletCity_MapScriptHeader:
 	object_event 26, 13, SPRITE_FAT_GUY, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, VioletCityFisherText, -1
 	object_event 35, 29, SPRITE_COOL_DUDE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_PURPLE, PERSONTYPE_COMMAND, jumptextfaceplayer, VioletCityCooltrainerM2Text, -1
 	cuttree_event 36, 23, EVENT_VIOLET_CITY_CUT_TREE
-	fruittree_event 14, 33, FRUITTREE_VIOLET_CITY, CHERI_BERRY
+	fruittree_event 14, 33, FRUITTREE_VIOLET_CITY, CHERI_BERRY, PAL_NPC_RED
 	itemball_event 10,  6, PP_UP, 1, EVENT_VIOLET_CITY_PP_UP
 	itemball_event 35, 12, RARE_CANDY, 1, EVENT_VIOLET_CITY_RARE_CANDY
 

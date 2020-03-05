@@ -41,7 +41,7 @@ FuchsiaCity_MapScriptHeader:
 	object_event 16, 13, SPRITE_TEACHER, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x194bd3, -1
 	object_event 28,  8, SPRITE_POKEFAN_F, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, FuchsiaCityPokefanFText, -1
 	cuttree_event 16, 19, EVENT_FUCHSIA_CITY_CUT_TREE
-	fruittree_event 14, 17, FRUITTREE_FUCHSIA_CITY, LIECHI_BERRY
+	fruittree_event 14, 17, FRUITTREE_FUCHSIA_CITY, LIECHI_BERRY, PAL_NPC_RED
 
 FuchsiaCityFlyPoint:
 	setflag ENGINE_FLYPOINT_FUCHSIA

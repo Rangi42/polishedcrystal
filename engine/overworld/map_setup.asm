@@ -170,12 +170,16 @@ CheckObjectFlag: ; 2457d (9:457d)
 	ld e, a
 	ld a, [hl]
 	ld d, a
-	cp -1
+	inc a ; cp -1
 	jr nz, .check
 	ld a, e
-	cp -1
+	inc a ; cp -1
 	jr z, .unmasked
-	jr .masked
+.masked
+	ld a, -1
+	scf
+	ret
+
 .check
 	ld b, CHECK_FLAG
 	call EventFlagAction
@@ -184,11 +188,6 @@ CheckObjectFlag: ; 2457d (9:457d)
 	jr nz, .masked
 .unmasked
 	xor a
-	ret
-
-.masked
-	ld a, -1
-	scf
 	ret
 
 GetObjectTimeMask: ; 245a7 (9:45a7)

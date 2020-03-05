@@ -28,7 +28,7 @@ Route35_MapScriptHeader:
 	object_event  9, 10, SPRITE_JUGGLER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 2, TrainerJugglerIrwin, -1
 	object_event  9,  6, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, OfficermScript_0x19ca49, -1
 	cuttree_event 21,  6, EVENT_ROUTE_35_CUT_TREE
-	fruittree_event  6, 25, FRUITTREE_ROUTE_35, LEPPA_BERRY
+	fruittree_event  6, 25, FRUITTREE_ROUTE_35, LEPPA_BERRY, PAL_NPC_RED
 	tmhmball_event 17, 16, TM_HONE_CLAWS, EVENT_ROUTE_35_TM_HONE_CLAWS
 
 GenericTrainerBreederTheresa:

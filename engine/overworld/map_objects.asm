@@ -264,9 +264,9 @@ EndSpriteMovement:
 	ld [hl], a
 	ld hl, OBJECT_MOVEMENT_BYTE_INDEX
 	add hl, bc
-	ld [hli], a
-	ld [hli], a
-	ld [hli], a
+	ld [hli], a ; OBJECT_MOVEMENT_BYTE_INDEX
+	ld [hli], a ; OBJECT_28
+	ld [hli], a ; OBJECT_29
 	ld [hl], a ; OBJECT_30
 	ld hl, OBJECT_DIRECTION_WALKING
 	add hl, bc
@@ -533,6 +533,7 @@ MapObjectMovementPattern:
 	dw .MovementShakingGrass         ; SPRITEMOVEFN_GRASS
 	dw .MovementSplashingPuddle      ; SPRITEMOVEFN_PUDDLE
 	dw .MovementCutTree              ; SPRITEMOVEFN_CUT_TREE
+	dw .MovementFruit                ; SPRITEMOVEFN_FRUIT
 	dw .MovementBigGyarados          ; SPRITEMOVEFN_BIG_GYARADOS
 	dw .StandingFlip                 ; SPRITEMOVEFN_STANDING_FLIP
 	dw .MovementPokecomNews          ; SPRITEMOVEFN_POKECOM_NEWS
@@ -737,6 +738,10 @@ MapObjectMovementPattern:
 
 .MovementCutTree:
 	ld a, PERSON_ACTION_CUT_TREE
+	jr ._ActionA_StepType04
+
+.MovementFruit:
+	ld a, PERSON_ACTION_FRUIT
 	jr ._ActionA_StepType04
 
 .MovementArchTree:

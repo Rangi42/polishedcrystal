@@ -19,7 +19,7 @@ Route2North_MapScriptHeader:
 	db 6 ; object events
 	object_event  6,  6, SPRITE_BUG_MANIAC, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerBug_maniacEd, -1
 	itemball_event 19,  4, CARBOS, 1, EVENT_ROUTE_2_CARBOS
-	fruittree_event  7, 13, FRUITTREE_ROUTE_2, LUM_BERRY
+	fruittree_event  7, 13, FRUITTREE_ROUTE_2, LUM_BERRY, PAL_NPC_GREEN
 	cuttree_event  5, 10, EVENT_ROUTE_2_CUT_TREE_1
 	cuttree_event 15, 22, EVENT_ROUTE_2_CUT_TREE_2
 	object_event 12, 10, SPRITE_ACE_TRAINER_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, Route2NorthCooltrainermText, EVENT_VERMILION_CITY_SNORLAX

@@ -20,7 +20,7 @@ Route49_MapScriptHeader:
 	object_event 25,  7, SPRITE_ROCKER, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerGuitaristmGeddy, -1
 	itemball_event 21,  6, WHITE_HERB, 1, EVENT_ROUTE_49_WHITE_HERB
 	itemball_event 18, 20, CALCIUM, 1, EVENT_ROUTE_49_CALCIUM
-	fruittree_event 29, 14, FRUITTREE_ROUTE_49, LUM_BERRY
+	fruittree_event 29, 14, FRUITTREE_ROUTE_49, LUM_BERRY, PAL_NPC_GREEN
 	cuttree_event 26, 12, EVENT_ROUTE_49_CUT_TREE_1
 	cuttree_event 20, 15, EVENT_ROUTE_49_CUT_TREE_2
 

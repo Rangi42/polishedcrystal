@@ -17,6 +17,7 @@ Pointers445f: ; 445f
 	dw SetFacingPuddleSplash,          SetFacingStanding          ; PERSON_ACTION_PUDDLE_SPLASH
 	dw SetFacingCutTree,               SetFacingCutTree           ; PERSON_ACTION_CUT_TREE
 	dw SetFacingSkyfall,               SetFacingCurrent           ; PERSON_ACTION_SKYFALL
+	dw SetFacingFruit,                 SetFacingFruit             ; PERSON_ACTION_FRUIT
 	dw SetFacingBigGyarados,           SetFacingFreezeBigGyarados ; PERSON_ACTION_BIG_GYARADOS
 	dw SetFacingStandFlip,             SetFacingStandFlip         ; PERSON_ACTION_STAND_FLIP
 	dw SetFacingPokecomNews,           SetFacingPokecomNews       ; PERSON_ACTION_POKECOM_NEWS
@@ -216,6 +217,31 @@ SetFacingFreezeBounce: ; 45a4
 	xor a ; FACING_STEP_DOWN_0
 	jp SetFixedFacing
 ; 45ab
+
+SetFacingFruit:
+	ld hl, OBJECT_RADIUS
+	add hl, bc
+	ld a, [hl]
+	push bc
+	ld hl, wFruitTreeFlags
+	ld e, a
+	ld d, 0
+	ld b, CHECK_FLAG
+	push de
+	call FlagAction
+	pop de
+	ld a, c
+	pop bc
+	and a ; 0 = show fruit, 1 = hide fruit
+	ld a, FACING_PICKED_FRUIT
+	jr nz, .ok
+	ld a, e
+	cp FIRST_BERRY_TREE - 1
+	ld a, FACING_APRICORN
+	jr c, .ok
+	dec a ; ld a, FACING_BERRY
+.ok
+	jp SetFixedFacing
 
 SetFacingBigGyarados:
 	ld hl, OBJECT_STEP_FRAME
