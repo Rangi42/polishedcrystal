@@ -11,20 +11,21 @@ CopycatsHouse2F_MapScriptHeader:
 
 	db 0 ; bg events
 
-	db 6 ; object events
-	object_event  4,  3, SPRITE_COPYCAT, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_PURPLE, PERSONTYPE_SCRIPT, 0, Copycat1Script, EVENT_COPYCAT_1
-	object_event  4,  3, SPRITE_COPYCAT, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_PURPLE, PERSONTYPE_SCRIPT, 0, Copycat2Script, EVENT_COPYCAT_2
+	db 7 ; object events
+	object_event  4,  3, SPRITE_COPYCAT, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_SCRIPT, 0, Copycat1Script, EVENT_COPYCAT_1
+	object_event  4,  3, SPRITE_COPYCAT, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_SCRIPT, 0, Copycat2Script, EVENT_COPYCAT_2
 	object_event  6,  4, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, DODRIO, -1, -1, PAL_NPC_BROWN, PERSONTYPE_SCRIPT, 0, CopycatsDodrioScript, -1
 	object_event  6,  1, SPRITE_MON_ICON, SPRITEMOVEDATA_DOLL, 0, CLEFAIRY, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptext, CopycatsHouse2FDollText, EVENT_COPYCATS_HOUSE_2F_DOLL
 	object_event  2,  1, SPRITE_MON_ICON, SPRITEMOVEDATA_DOLL, 0, GENGAR, -1, -1, PAL_NPC_PURPLE, PERSONTYPE_COMMAND, jumptext, CopycatsHouse2FDollText, -1
 	object_event  7,  1, SPRITE_MON_ICON, SPRITEMOVEDATA_DOLL, 0, MURKROW, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptext, CopycatsHouse2FDollText, -1
+	pokemon_event  0,  4, DITTO, -1, -1, PAL_NPC_PURPLE, CopycatsHouse2FDittoText, -1
 
 	const_def 1 ; object constants
 	const COPYCATSHOUSE2F_COPYCAT1
 	const COPYCATSHOUSE2F_COPYCAT2
 
 CopycatsHouse2FCallback:
-	variablesprite SPRITE_COPYCAT, SPRITE_CUTE_GIRL
+	variablesprite SPRITE_COPYCAT, SPRITE_LASS
 	checkflag ENGINE_PLAYER_IS_FEMALE
 	iftrue .Part1
 	disappear COPYCATSHOUSE2F_COPYCAT2
@@ -194,9 +195,9 @@ Copycat2Script:
 	done
 CopycatRetortScript:
 	faceplayer
-	writebyte (PAL_NPC_PURPLE) << 4
+	writebyte (PAL_NPC_GREEN) << 4
 	special Special_SetCopycatPalette
-	variablesprite SPRITE_COPYCAT, SPRITE_CUTE_GIRL
+	variablesprite SPRITE_COPYCAT, SPRITE_LASS
 	special MapCallbackSprites_LoadUsedSpritesGFX
 	thistext
 
@@ -209,9 +210,9 @@ CopycatRetortScript:
 
 CopycatWorriedScript:
 	faceplayer
-	writebyte (PAL_NPC_PURPLE) << 4
+	writebyte (PAL_NPC_GREEN) << 4
 	special Special_SetCopycatPalette
-	variablesprite SPRITE_COPYCAT, SPRITE_CUTE_GIRL
+	variablesprite SPRITE_COPYCAT, SPRITE_LASS
 	special MapCallbackSprites_LoadUsedSpritesGFX
 	setevent EVENT_MET_COPYCAT_FOUND_OUT_ABOUT_LOST_ITEM
 	thistext
@@ -278,9 +279,9 @@ CopycatGivePassScript:
 
 CopycatFinalScript:
 	faceplayer
-	writebyte (PAL_NPC_PURPLE) << 4
+	writebyte (PAL_NPC_GREEN) << 4
 	special Special_SetCopycatPalette
-	variablesprite SPRITE_COPYCAT, SPRITE_CUTE_GIRL
+	variablesprite SPRITE_COPYCAT, SPRITE_LASS
 	special MapCallbackSprites_LoadUsedSpritesGFX
 	thistext
 
@@ -321,4 +322,8 @@ CopycatsHouse2FDollText:
 	line "#mon! Huh?"
 
 	para "It's only a doll…"
+	done
+
+CopycatsHouse2FDittoText:
+	text "Ditto: Dii…"
 	done

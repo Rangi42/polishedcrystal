@@ -5,6 +5,7 @@ InitializeEventsScript::
 	variablesprite SPRITE_FUCHSIA_GYM_3, SPRITE_JANINE
 	variablesprite SPRITE_FUCHSIA_GYM_4, SPRITE_JANINE
 	variablesprite SPRITE_COPYCAT, SPRITE_LASS
+	variablesprite SPRITE_JANINE_IMPERSONATOR, SPRITE_CUTE_GIRL
 
 	setmapscene GOLDENROD_CITY, $1
 	setmapscene BATTLE_TOWER_OUTSIDE, $1

@@ -192,24 +192,25 @@
 	const SPRITE_SAILBOAT ; bd
 	const SPRITE_MISC_OVERHEAD ; be
 
-	; bf-f0 = 50 unused
+	; bf-ef = 49 unused
 
-	const_def $f1
+	const_def $f0
 SPRITE_POKEMON EQU const_value
-	const SPRITE_MON_ICON ; f1
-	const SPRITE_MON_DOLL_1 ; f2
-	const SPRITE_MON_DOLL_2 ; f3
-	const SPRITE_DAYCARE_MON_1 ; f4
-	const SPRITE_DAYCARE_MON_2 ; f5
-	const SPRITE_GROTTO_MON ; f6
+	const SPRITE_MON_ICON ; f0
+	const SPRITE_MON_DOLL_1 ; f1
+	const SPRITE_MON_DOLL_2 ; f2
+	const SPRITE_DAYCARE_MON_1 ; f3
+	const SPRITE_DAYCARE_MON_2 ; f4
+	const SPRITE_GROTTO_MON ; f5
 
 SPRITE_VARS EQU const_value
-	const SPRITE_CONSOLE ; f7
-	const SPRITE_DOLL_1 ; f8
-	const SPRITE_DOLL_2 ; f9
-	const SPRITE_BIG_DOLL ; fa
-	const SPRITE_FUCHSIA_GYM_1 ; fb
-	const SPRITE_FUCHSIA_GYM_2 ; fc
-	const SPRITE_FUCHSIA_GYM_3 ; fd
-	const SPRITE_FUCHSIA_GYM_4 ; fe
-	const SPRITE_COPYCAT ; ff
+	const SPRITE_CONSOLE ; f6
+	const SPRITE_DOLL_1 ; f7
+	const SPRITE_DOLL_2 ; f8
+	const SPRITE_BIG_DOLL ; f9
+	const SPRITE_FUCHSIA_GYM_1 ; fa
+	const SPRITE_FUCHSIA_GYM_2 ; fb
+	const SPRITE_FUCHSIA_GYM_3 ; fc
+	const SPRITE_FUCHSIA_GYM_4 ; fd
+	const SPRITE_COPYCAT ; fe
+	const SPRITE_JANINE_IMPERSONATOR ; ff
