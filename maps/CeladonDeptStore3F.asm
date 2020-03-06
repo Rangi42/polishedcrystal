@@ -24,7 +24,7 @@ CeladonDeptStore3F_MapScriptHeader:
 	object_event 13,  4, SPRITE_POKEMANIAC, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x70e61, -1
 	object_event  0,  4, SPRITE_CLERK, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, VideoGameClerkText, -1
 	object_event  1,  3, SPRITE_SNES, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CeladonDeptStore3FSnesScript, -1
-	object_event  1,  5, SPRITE_N64, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CeladonDeptStore3FN64Script, -1
+	object_event  1,  5, SPRITE_N64, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, PAL_NPC_ROCK, PERSONTYPE_SCRIPT, 0, CeladonDeptStore3FN64Script, -1
 	object_event  4,  3, SPRITE_GAMECUBE, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CeladonDeptStore3FGameCubeScript, -1
 	object_event  4,  5, SPRITE_WII, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CeladonDeptStore3FWiiScript, -1
 

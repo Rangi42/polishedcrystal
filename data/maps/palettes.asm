@@ -116,6 +116,7 @@ ENDM
 	special_ob_pal map,      GOLDENROD_POKECOM_CENTER_OFFICE, PokecomCenterOfficeOBPalette_Purple,    PAL_OW_PURPLE, 1
 	special_ob_pal map,      GOLDENROD_MUSEUM_1F,             GoldenrodMuseumOBPalettes_TreeRock,     PAL_OW_TREE,   2
 	special_ob_pal map,      GOLDENROD_MUSEUM_2F,             GoldenrodMuseumOBPalettes_TreeRock,     PAL_OW_TREE,   2
+	special_ob_pal map,      CELADON_DEPT_STORE_3F,           OverworldPartyMonPalettes + 3 palettes, PAL_OW_ROCK,   1
 	special_ob_pal map,      MOUNT_MOON_SQUARE,               wUnknBGPals palette PAL_BG_GRAY,        PAL_OW_ROCK,   1
 	special_ob_pal map,      MAGNET_TUNNEL_INSIDE,            wUnknBGPals palette PAL_BG_GRAY,        PAL_OW_ROCK,   1
 	special_ob_pal landmark, CINNABAR_VOLCANO,                wUnknBGPals palette PAL_BG_BROWN,       PAL_OW_ROCK,   1
