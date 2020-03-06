@@ -48,6 +48,8 @@ endif
 roms_md5      = roms.md5
 bank_ends_txt = contents/bank_ends.txt
 sorted_sym    = contents/$(NAME).sym
+copied_map    = contents/$(NAME).map
+copied_gbc    = contents/$(NAME).gbc
 
 PYTHON = python2
 CC     = gcc
@@ -98,7 +100,7 @@ bankfree: FILLER = 0xff
 bankfree: ROM_NAME = $(NAME)-$(VERSION)-0xff
 bankfree: $(NAME)-$(VERSION)-0xff.gbc
 
-freespace: $(bank_ends_txt) $(roms_md5) $(sorted_sym)
+freespace: $(bank_ends_txt) $(roms_md5) $(sorted_sym) $(copied_map) $(copied_gbc)
 
 
 # Build tools when building the rom
@@ -125,6 +127,8 @@ compare: crystal
 $(bank_ends_txt): crystal bankfree ; $(bank_ends) > $@
 $(roms_md5): crystal ; $(MD5) $(NAME)-$(VERSION).gbc > $@
 $(sorted_sym): crystal ; tail -n +3 $(NAME)-$(VERSION).sym | sort -o $@
+$(copied_map): crystal ; cp $(NAME)-$(VERSION).map $@
+$(copied_gbc): crystal ; cp $(NAME)-$(VERSION).gbc $@
 
 
 %.o: dep = $(shell $(SCAN_INCLUDES) $(@D)/$*.asm)
