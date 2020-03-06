@@ -14,7 +14,7 @@ GoldenrodHPUpHouse_MapScriptHeader:
 	db 3 ; object events
 	object_event  2,  3, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GoldenrodHPUpHousePokefanMScript, -1
 	object_event  5,  4, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, GoldenrodHPUpHousePokefanFText, -1
-	object_event  6,  3, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, PIKACHU, -1, -1, PAL_NPC_RED, PERSONTYPE_POKEMON, PIKACHU, GoldenrodHPUpHousePikachuText, -1
+	pokemon_event  6,  3, PIKACHU, -1, -1, PAL_NPC_RED, GoldenrodHPUpHousePikachuText, -1
 
 GoldenrodHPUpHousePokefanMScript:
 	checkevent EVENT_GOT_HP_UP_FROM_GOLDENROD

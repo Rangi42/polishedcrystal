@@ -14,9 +14,9 @@ MrFujisHouse_MapScriptHeader:
 	db 5 ; object events
 	object_event  4,  1, SPRITE_POKEMANIAC, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x7e8f1, -1
 	object_event  3,  4, SPRITE_CUTE_GIRL, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x7e940, -1
-	object_event  8,  4, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, PSYDUCK, -1, -1, PAL_NPC_BROWN, PERSONTYPE_POKEMON, PSYDUCK, MrFujisPsyduckText, -1
-	object_event  5,  5, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, NIDORINO, -1, -1, PAL_NPC_PURPLE, PERSONTYPE_POKEMON, NIDORINO, MrFujisNidorinoText, -1
-	object_event  1,  3, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, PIDGEY, -1, -1, PAL_NPC_BROWN, PERSONTYPE_POKEMON, PIDGEY, MrFujisPidgeyText, -1
+	pokemon_event  8,  4, PSYDUCK, -1, -1, PAL_NPC_BROWN, MrFujisPsyduckText, -1
+	pokemon_event  5,  5, NIDORINO, -1, -1, PAL_NPC_PURPLE, MrFujisNidorinoText, -1
+	pokemon_event  1,  3, PIDGEY, -1, -1, PAL_NPC_BROWN, MrFujisPidgeyText, -1
 
 UnknownText_0x7e8f1:
 	text "Mr.Fuji does live"

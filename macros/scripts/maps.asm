@@ -111,6 +111,10 @@ else
 endc
 ENDM
 
+pokemon_event: MACRO
+	object_event \1, \2, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, \3, \4, \5, \6, PERSONTYPE_POKEMON, \3, \7, \8
+ENDM
+
 pc_nurse_event: MACRO
 	object_event \1, \2, SPRITE_BOWING_NURSE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumpstd, pokecenternurse, -1
 ENDM

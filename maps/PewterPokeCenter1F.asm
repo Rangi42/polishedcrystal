@@ -15,7 +15,7 @@ PewterPokeCenter1F_MapScriptHeader:
 
 	db 5 ; object events
 	pc_nurse_event  5, 1
-	object_event  2,  3, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, JIGGLYPUFF, -1, -1, PAL_NPC_RED, PERSONTYPE_POKEMON, JIGGLYPUFF, PewterJigglypuffText, -1
+	pokemon_event  2,  3, JIGGLYPUFF, -1, -1, PAL_NPC_RED, PewterJigglypuffText, -1
 	object_event  8,  2, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, trade, TRADE_WITH_CHRIS_FOR_HERACROSS, -1
 	object_event 11,  5, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, PewterPokeCenter1FTeacherText, -1
 	object_event  3,  3, SPRITE_CHILD, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, PewterPokeCenter1FChildText, -1

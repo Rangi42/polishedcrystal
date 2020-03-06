@@ -14,7 +14,7 @@ BlackthornDragonSpeechHouse_MapScriptHeader:
 
 	db 2 ; object events
 	object_event  2,  3, SPRITE_GRANNY, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, BlackthornDragonSpeechHouseGrannyText, -1
-	object_event  5,  5, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, DRATINI, -1, -1, PAL_NPC_BLUE, PERSONTYPE_POKEMON, DRATINI, BlackthornDragonSpeechHouseDratiniText, -1
+	pokemon_event  5,  5, DRATINI, -1, -1, PAL_NPC_BLUE, BlackthornDragonSpeechHouseDratiniText, -1
 
 BlackthornDragonSpeechHouseGrannyText:
 	text "A clan of trainers"

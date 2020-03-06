@@ -14,8 +14,8 @@ CeruleanTradeSpeechHouse_MapScriptHeader:
 	db 4 ; object events
 	object_event  2,  4, SPRITE_GRANNY, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x18814d, -1
 	object_event  3,  2, SPRITE_GRAMPS, SPRITEMOVEDATA_WANDER, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x18818a, -1
-	object_event  6,  2, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, POLIWRATH, -1, -1, PAL_NPC_BLUE, PERSONTYPE_POKEMON, POLIWRATH, UnknownText_0x18819c, -1
-	object_event  5,  6, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, IVYSAUR, -1, -1, PAL_NPC_GREEN, PERSONTYPE_POKEMON, IVYSAUR, UnknownText_0x1881b5, -1
+	pokemon_event  6,  2, POLIWRATH, -1, -1, PAL_NPC_BLUE, UnknownText_0x18819c, -1
+	pokemon_event  5,  6, IVYSAUR, -1, -1, PAL_NPC_GREEN, UnknownText_0x1881b5, -1
 
 UnknownText_0x18814d:
 	text "My husband lives"
