@@ -12,7 +12,7 @@ TinTowerRoof_MapScriptHeader:
 	db 0 ; bg events
 
 	db 1 ; object events
-	object_event  7,  3, SPRITE_HO_OH, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, TinTowerHoOh, EVENT_TIN_TOWER_ROOF_HO_OH
+	object_event  7,  3, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, HO_OH, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, TinTowerHoOh, EVENT_TIN_TOWER_ROOF_HO_OH
 
 	const_def 1 ; object constants
 	const TINTOWERROOF_HO_OH

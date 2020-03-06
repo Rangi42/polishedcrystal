@@ -26,7 +26,7 @@ CherrygroveCity_MapScriptHeader:
 	object_event 25, 13, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 1, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, CherrygroveTeacherText_HaveMapCard, -1
 	object_event 23,  7, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, CherrygroveYoungsterScript, -1
 	object_event  7, 12, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, MysticWaterGuy, -1
-	object_event 26, 13, SPRITE_PIDGEY, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_POKEMON, PIDGEY, CherrygrovePidgeyText, -1
+	object_event 26, 13, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, PIDGEY, -1, -1, PAL_NPC_BROWN, PERSONTYPE_POKEMON, PIDGEY, CherrygrovePidgeyText, -1
 
 	const_def 1 ; object constants
 	const CHERRYGROVECITY_GRAMPS

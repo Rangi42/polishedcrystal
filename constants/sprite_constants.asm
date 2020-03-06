@@ -192,59 +192,11 @@
 	const SPRITE_SAILBOAT ; bd
 	const SPRITE_MISC_OVERHEAD ; be
 
-SPRITE_POKEMON EQU const_value
-	const SPRITE_BULBASAUR ; bf
-	const SPRITE_CHARMANDER ; c0
-	const SPRITE_SQUIRTLE ; c1
-	const SPRITE_PIDGEY ; c2
-	const SPRITE_PIDGEOTTO ; c3
-	const SPRITE_RATTATA ; c4
-	const SPRITE_PIKACHU ; c5
-	const SPRITE_NIDORAN_F ; c6
-	const SPRITE_NIDORAN_M ; c7
-	const SPRITE_NIDORINO ; c8
-	const SPRITE_JIGGLYPUFF ; c9
-	const SPRITE_ODDISH ; ca
-	const SPRITE_VILEPLUME ; cb
-	const SPRITE_DIGLETT ; cc
-	const SPRITE_MEOWTH ; cd
-	const SPRITE_PERSIAN ; ce
-	const SPRITE_PSYDUCK ; cf
-	const SPRITE_POLIWRATH ; d0
-	const SPRITE_ABRA ; d1
-	const SPRITE_MACHOKE ; d2
-	const SPRITE_SLOWPOKE ; d3
-	const SPRITE_SLOWBRO ; d4
-	const SPRITE_DODRIO ; d5
-	const SPRITE_GENGAR ; d6
-	const SPRITE_ELECTRODE ; d7
-	const SPRITE_RHYDON ; d8
-	const SPRITE_CHANSEY ; d9
-	const SPRITE_MAGIKARP ; da
-	const SPRITE_ARTICUNO ; db
-	const SPRITE_ZAPDOS ; dc
-	const SPRITE_MOLTRES ; dd
-	const SPRITE_DRATINI ; de
-	const SPRITE_MEWTWO ; df
-	const SPRITE_FURRET ; e0
-	const SPRITE_HOOTHOOT ; e1
-	const SPRITE_AMPHAROS ; e2
-	const SPRITE_MARILL ; e3
-	const SPRITE_MURKROW ; e4
-	const SPRITE_SLOWKING ; e5
-	const SPRITE_HERACROSS ; e6
-	const SPRITE_URSARING ; e7
-	const SPRITE_SKARMORY ; e8
-	const SPRITE_SMEARGLE ; e9
-	const SPRITE_MILTANK ; ea
-	const SPRITE_BLISSEY ; eb
-	const SPRITE_RAIKOU ; ec
-	const SPRITE_ENTEI ; ed
-	const SPRITE_SUICUNE ; ee
-	const SPRITE_LUGIA ; ef
-	const SPRITE_HO_OH ; f0
-	const SPRITE_EGG ; f1
+	; bf-f0 = 50 unused
 
+	const_def $f1
+SPRITE_POKEMON EQU const_value
+	const SPRITE_MON_ICON ; f1
 	const SPRITE_MON_DOLL_1 ; f2
 	const SPRITE_MON_DOLL_2 ; f3
 	const SPRITE_DAYCARE_MON_1 ; f4

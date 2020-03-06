@@ -15,7 +15,7 @@ CopycatsHouse1F_MapScriptHeader:
 	db 3 ; object events
 	object_event  2,  3, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, CopycatsHouse1FPokefanMText, -1
 	object_event  5,  4, SPRITE_MATRON, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_SCRIPT, 0, CopycatsHouse1FPokefanFScript, -1
-	object_event  4,  5, SPRITE_BLISSEY, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_POKEMON, BLISSEY, CopycatsHouse1FBlisseyText, -1
+	object_event  4,  5, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, BLISSEY, -1, -1, PAL_NPC_RED, PERSONTYPE_POKEMON, BLISSEY, CopycatsHouse1FBlisseyText, -1
 
 CopycatsHouse1FPokefanMText:
 	text "My daughter likes"

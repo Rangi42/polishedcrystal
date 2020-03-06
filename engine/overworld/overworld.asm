@@ -97,12 +97,20 @@ ReloadSpriteIndex::
 	jr nz, .done
 .continue
 	push hl
+	; hl points to an object_struct; we want bc to point to a map_object,
+	; to get the radius (actually the SPRITE_MON_ICON species).
+	push bc
+	ld bc, OBJECT_RADIUS - MAPOBJECT_RADIUS
+	add hl, bc
+	ld b, h
+	ld c, l
 	call GetSpriteVTile
+	pop bc
 	pop hl
 	push hl
-	inc hl
-	inc hl
-	ld [hl], a
+	inc hl ; skip OBJECT_SPRITE
+	inc hl ; skip OBJECT_MAP_OBJECT_INDEX
+	ld [hl], a ; OBJECT_SPRITE_TILE
 	pop hl
 .done
 	add hl, de
@@ -174,8 +182,8 @@ GetSprite:: ; 1423c
 
 GetMonSprite: ; 14259
 ; Return carry if a monster sprite was loaded.
-	cp SPRITE_POKEMON
-	jr c, .Normal
+	cp SPRITE_MON_ICON
+	jr z, .MonIcon
 	cp SPRITE_MON_DOLL_1
 	jr z, .MonDoll1
 	cp SPRITE_MON_DOLL_2
@@ -186,24 +194,9 @@ GetMonSprite: ; 14259
 	jr z, .BreedMon2
 	cp SPRITE_GROTTO_MON
 	jr z, .GrottoMon
-	cp SPRITE_VARS
-	jr nc, .Variable
-; icon
-	sub SPRITE_POKEMON
-	ld e, a
-	ld d, 0
-	ld hl, SpriteMons
-	add hl, de
-	ld a, [hl]
-.Mon:
-	and a
-	jr z, .NoSprite
-	farcall LoadOverworldMonIcon
-	lb hl, 0, MON_SPRITE
-	scf
-	ret
 
-.Variable:
+	cp SPRITE_VARS
+	jr c, .Normal
 	sub SPRITE_VARS
 	ld e, a
 	ld d, 0
@@ -220,6 +213,17 @@ GetMonSprite: ; 14259
 .Normal:
 	and a
 	ret
+
+.MonIcon:
+; Everything that calls GetMonSprite either points to a map_object struct in bc,
+; or will not be used for Pokémon icons, so this SPRITE_MON_ICON can assume
+; that bc takes MAPOBJECT_* offsets.
+; (That means the player, Battle Tower trainers, and variable sprites cannot
+;  use Pokémon icons.)
+	ld hl, MAPOBJECT_RADIUS
+	add hl, bc
+	ld a, [hl]
+	jr .Mon
 
 .BreedMon1:
 	ld a, [wBreedMon1Species]
@@ -242,7 +246,15 @@ GetMonSprite: ; 14259
 	ld a, [wRightOrnament]
 .MonDoll:
 	farcall GetDecorationSpecies
-	jr .Mon
+	; fallthrough
+
+.Mon:
+	and a
+	jr z, .NoSprite
+	farcall LoadOverworldMonIcon
+	lb hl, 0, MON_SPRITE
+	scf
+	ret
 ; 142a7
 
 
@@ -427,7 +439,5 @@ LoadEmote:: ; 1442f
 
 
 INCLUDE "data/sprites/emotes.asm"
-
-INCLUDE "data/sprites/sprite_mons.asm"
 
 INCLUDE "data/sprites/sprites.asm"

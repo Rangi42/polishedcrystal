@@ -443,6 +443,12 @@ CopyTempObjectToObjectStruct: ; 8286
 	cp SPRITEMOVEDATA_FRUIT
 	ld a, [wTempObjectCopyRadius]
 	jr z, .keep_radius
+	; the "radius" for Pokémon icons is the species, so don't alter it
+	ld a, [wTempObjectCopySprite]
+	cp SPRITE_MON_ICON
+	ld a, [wTempObjectCopyRadius]
+	jr z, .keep_radius
+	; add 1 to the y and x radii
 	ld h, a
 	inc a
 	and $f

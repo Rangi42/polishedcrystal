@@ -14,7 +14,7 @@ CeruleanPoliceStation_MapScriptHeader:
 	db 3 ; object events
 	object_event  3,  1, SPRITE_FISHING_GURU, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x18805a, -1
 	object_event  5,  4, SPRITE_MATRON, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1880c3, -1
-	object_event  3,  5, SPRITE_DIGLETT, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_POKEMON, DIGLETT, CeruleanDiglettText, -1
+	object_event  3,  5, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, DIGLETT, -1, -1, PAL_NPC_BROWN, PERSONTYPE_POKEMON, DIGLETT, CeruleanDiglettText, -1
 
 UnknownText_0x18805a:
 	text "I heard that some"

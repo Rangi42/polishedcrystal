@@ -16,7 +16,9 @@ GetSpriteVTile:: ; 180e
 	push de
 	push bc
 	ld [hUsedSpriteIndex], a
+	push bc
 	farcall GetSprite
+	pop bc
 	ld hl, wSpriteFlags
 	res 5, [hl]
 	; SPRITE_BIG_GYARADOS and SPRITE_SAILBOAT use the last object_struct
@@ -39,16 +41,16 @@ GetSpriteVTile:: ; 180e
 .continue
 	add a, a
 	add a, a
-	ld b, a
-	add a, b
-	add a, b
+	ld d, a
+	add a, d
+	add a, d
 	ld [hUsedSpriteTile], a
 	push af
 	farcall GetUsedSprite
 	pop af
-	ld b, a
+	ld d, a
 	xor a
-	ld a, b
+	ld a, d
 	ld hl, wSpriteFlags
 	bit 5, [hl]
 	jr nz, .using_vbk1

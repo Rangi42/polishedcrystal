@@ -18,7 +18,7 @@ EcruteakShrineOutside_MapScriptHeader:
 
 	db 3 ; object events
 	object_event  8,  4, SPRITE_SCHOOLGIRL, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, EcruteakShrineOutsideTwinText, -1
-	object_event  9,  4, SPRITE_HOOTHOOT, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_POKEMON, HOOTHOOT, EcruteakShrineOutsideHoothootText, -1
+	object_event  9,  4, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, HOOTHOOT, -1, -1, PAL_NPC_BROWN, PERSONTYPE_POKEMON, HOOTHOOT, EcruteakShrineOutsideHoothootText, -1
 	object_event  2, 10, SPRITE_SAGE, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, EcruteakShrineOutsideSageText, -1
 
 EcruteakShrineOutsideTwinText:

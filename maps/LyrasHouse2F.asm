@@ -15,7 +15,7 @@ LyrasHouse2F_MapScriptHeader:
 
 	db 3 ; object events
 	object_event  2,  3, SPRITE_LYRA, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, LyrasHouseLyraText, EVENT_LYRA_IN_HER_ROOM
-	object_event  3,  3, SPRITE_AMPHAROS, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_POKEMON, AMPHAROS, LyrasHouseAmpharosText, EVENT_LYRA_IN_HER_ROOM
+	object_event  3,  3, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, PIDGEOT, -1, -1, PAL_NPC_BROWN, PERSONTYPE_POKEMON, PIDGEOT, LyrasHousePidgeotText, EVENT_LYRA_IN_HER_ROOM
 	object_event  6,  2, SPRITE_N64, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, PAL_NPC_ROCK, PERSONTYPE_COMMAND, jumptext, LyrasHouseN64Text, -1
 
 LyrasHouseRadio:
@@ -57,9 +57,8 @@ LyrasHouseLyraText:
 	line "lately…"
 	done
 
-LyrasHouseAmpharosText:
-	text "Ampharos: Palu!"
-	line "Palulu!"
+LyrasHousePidgeotText:
+	text "Pidgeot: Pijiii!"
 	done
 
 LyrasRadioText1:

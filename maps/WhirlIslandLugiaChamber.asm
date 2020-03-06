@@ -12,7 +12,7 @@ WhirlIslandLugiaChamber_MapScriptHeader:
 	db 0 ; bg events
 
 	db 1 ; object events
-	object_event  9,  5, SPRITE_LUGIA, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, Lugia, EVENT_WHIRL_ISLAND_LUGIA_CHAMBER_LUGIA
+	object_event  9,  5, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, LUGIA, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, Lugia, EVENT_WHIRL_ISLAND_LUGIA_CHAMBER_LUGIA
 
 	const_def 1 ; object constants
 	const WHIRLISLANDLUGIACHAMBER_LUGIA
