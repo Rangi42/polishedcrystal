@@ -1,5 +1,5 @@
 
-_Diploma: ; 1dd702
+_Diploma:
 	call ClearBGPalettes
 	call ClearTileMap
 	call ClearSprites
@@ -7,7 +7,7 @@ _Diploma: ; 1dd702
 	ld hl, DiplomaGFX
 	ld de, vTiles2
 	call Decompress
-	ld hl, DiplomaTilemap
+	ld hl, DiplomaPage1Tilemap
 	decoord 0, 0
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
 	rst CopyBytes
@@ -26,8 +26,32 @@ _Diploma: ; 1dd702
 	call GetCGBLayout
 	call SetPalettes
 	call DelayFrame
+	call WaitPressAorB_BlinkCursor
+
+	hlcoord 0, 0
+	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
+	ld a, $7f
+	call ByteFill
+	ld hl, DiplomaPage2Tilemap
+	decoord 0, 0
+	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
+	call CopyBytes
+	ld de, .PolishedCrystal
+	hlcoord 2, 1
+	call PlaceString
+	ld de, .PlayTime
+	hlcoord 3, 15
+	call PlaceString
+	hlcoord 12, 15
+	ld de, wGameTimeHours
+	lb bc, 2, 4
+	call PrintNum
+	ld [hl], ":"
+	inc hl
+	ld de, wGameTimeMinutes
+	lb bc, PRINTNUM_LEADINGZEROS | 1, 2
+	call PrintNum
 	jp WaitPressAorB_BlinkCursor
-; 1dd760
 
 .PlayerString:
 	db "Player@"
@@ -39,10 +63,18 @@ _Diploma: ; 1dd702
 	next "new #dex."
 	next "Congratulations!"
 	db   "@"
-; 1dd7ae
 
-DiplomaGFX: ; 1dd805
+.PlayTime:
+	db "Play Time@"
+
+.PolishedCrystal:
+	db "Polished Crystal@"
+
+DiplomaGFX:
 INCBIN "gfx/diploma/diploma.2bpp.lz"
 
-DiplomaTilemap: ; 1ddc4b
-INCBIN "gfx/diploma/diploma.tilemap"
+DiplomaPage1Tilemap:
+INCBIN "gfx/diploma/page1.tilemap"
+
+DiplomaPage2Tilemap:
+INCBIN "gfx/diploma/page2.tilemap"

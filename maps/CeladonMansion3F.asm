@@ -77,12 +77,8 @@ UnknownText_0x71760:
 	done
 
 UnknownText_0x71763:
-	text "The Graphic Artist"
-	line "will print out a"
-	cont "Diploma for you."
-
-	para "You should go show"
-	line "it off."
+	text "You should go show"
+	line "that off!"
 	done
 
 UnknownText_0x717b4:
