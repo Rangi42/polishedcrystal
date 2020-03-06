@@ -15,7 +15,7 @@ PokemonFanClub_MapScriptHeader:
 	bg_event  0,  1, SIGNPOST_READ, PokemonJournalGreenScript
 
 	db 6 ; object events
-	object_event  3,  3, SPRITE_CLEFAIRY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptext, ClefairyDollText, EVENT_VERMILION_FAN_CLUB_DOLL
+	object_event  3,  3, SPRITE_MON_ICON, SPRITEMOVEDATA_DOLL, 0, CLEFAIRY, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptext, ClefairyDollText, EVENT_VERMILION_FAN_CLUB_DOLL
 	object_event  5,  1, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GentlemanScript_0x1917e9, -1
 	object_event  6,  1, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x191b6d, -1
 	object_event  3,  4, SPRITE_FAT_GUY, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FisherScript_0x191824, -1
