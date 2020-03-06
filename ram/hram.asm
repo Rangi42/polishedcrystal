@@ -154,4 +154,6 @@ hBattlePalFadeMode EQU $fff8
 
 hRequestOpaque1bpp EQU $fff9
 
+hTimeOfDayPalOffset EQU $fffa
+
 HRAM_END EQU $ffff

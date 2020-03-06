@@ -530,6 +530,14 @@ StartTrainerBattle_LoadPokeBallGraphics: ; 8c5dc (23:45dc)
 	xor a
 	ld [hBGMapMode], a
 
+	; store this in HRAM to avoid bank-switching later
+	ld a, [wTimeOfDayPal]
+	and %00000011
+	sla a
+	sla a
+	sla a
+	ld [hTimeOfDayPalOffset], a
+
 	ld a, [wOtherTrainerClass]
 	and a
 	jr nz, .trainer_battle
@@ -542,6 +550,7 @@ StartTrainerBattle_LoadPokeBallGraphics: ; 8c5dc (23:45dc)
 	ld a, $5 ; WRAM5 = palettes
 	ld [rSVBK], a
 	ld hl, .black_pals
+	call .timeofdaypal
 	ld de, wUnknBGPals palette PAL_BG_TEXT ; black
 	call .copy
 	pop af
@@ -635,16 +644,7 @@ StartTrainerBattle_LoadPokeBallGraphics: ; 8c5dc (23:45dc)
 
 .not_armored_mewtwo
 	ld hl, .timepals
-	ld a, [wTimeOfDayPal]
-	and %00000011
-	sla a
-	sla a
-	sla a
-	push bc
-	ld b, 0
-	ld c, a
-	add hl, bc
-	pop bc
+	call .timeofdaypal
 .got_palette
 	ld a, [rSVBK]
 	push af
@@ -679,6 +679,7 @@ StartTrainerBattle_LoadPokeBallGraphics: ; 8c5dc (23:45dc)
 	ld de, wUnknOBPals palette PAL_OW_TREE
 	call .copy
 	ld hl, .black_pals
+	call .timeofdaypal
 	ld de, wUnknBGPals palette PAL_BG_TEXT ; black
 
 .copy ; 8c698 (23:4698)
@@ -696,6 +697,15 @@ StartTrainerBattle_LoadPokeBallGraphics: ; 8c5dc (23:45dc)
 	ld bc, 1 palettes
 	rst CopyBytes
 	pop hl
+	ret
+
+.timeofdaypal
+	ld a, [hTimeOfDayPalOffset]
+	push bc
+	ld b, 0
+	ld c, a
+	add hl, bc
+	pop bc
 	ret
 ; 8c6a1 (23:46a1)
 
