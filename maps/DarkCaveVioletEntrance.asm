@@ -16,7 +16,7 @@ DarkCaveVioletEntrance_MapScriptHeader:
 
 	db 11 ; object events
 	object_event 10,  2, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, URSARING, -1, -1, PAL_NPC_BROWN, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_DARK_CAVE_URSARING
-	object_event  9,  2, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, PIDGEOTTO, -1, -1, PAL_NPC_BROWN, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_DARK_CAVE_PIDGEOTTO
+	object_event  9,  2, SPRITE_PIDGEOTTO_SIDE, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_DARK_CAVE_PIDGEOTTO
 	object_event  8,  2, SPRITE_FALKNER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_DARK_CAVE_FALKNER
 	itemball_event  6,  8, POTION, 1, EVENT_DARK_CAVE_VIOLET_ENTRANCE_POTION
 	smashrock_event 16, 14
@@ -99,10 +99,8 @@ DarkCaveVioletEntranceFalknerTrigger:
 	end
 
 DarkCaveVioletEntranceMovementData_PidgeottoAttack:
-	fix_facing
 	run_step_right
 	run_step_left
-	remove_fixed_facing
 	step_end
 
 DarkCaveVioletEntranceMovementData_FalknerHeadBack:

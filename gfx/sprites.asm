@@ -210,6 +210,7 @@ BigLaprasSpriteGFX::           INCBIN "gfx/sprites/big_lapras.2bpp.lz"
 BigOnixSpriteGFX::             INCBIN "gfx/sprites/big_onix.2bpp.lz"
 BigGyaradosSpriteGFX::         INCBIN "gfx/sprites/big_gyarados.2bpp.lz"
 SlowpoketailSpriteGFX::        INCBIN "gfx/sprites/slowpoketail.2bpp.lz"
+PidgeottoSideSpriteGFX::       INCBIN "gfx/sprites/pidgeotto_side.2bpp.lz"
 RattataBackSpriteGFX::         INCBIN "gfx/sprites/rattata_back.2bpp.lz"
 WeirdTreeSpriteGFX::           INCBIN "gfx/sprites/weird_tree.2bpp.lz"
 BallCutFruitSpriteGFX::        INCBIN "gfx/sprites/ball_cut_fruit.2bpp.lz"
@@ -223,5 +224,9 @@ SilverTrophySpriteGFX::        INCBIN "gfx/sprites/silver_trophy.2bpp.lz"
 GoldTrophySpriteGFX::          INCBIN "gfx/sprites/gold_trophy.2bpp.lz"
 ElectricFenceLeftSpriteGFX::   INCBIN "gfx/sprites/electric_fence_left.2bpp.lz"
 ElectricFenceRightSpriteGFX::  INCBIN "gfx/sprites/electric_fence_right.2bpp.lz"
+
+
+SECTION "Overworld Sprites 10", ROMX
+
 SailboatSpriteGFX::            INCBIN "gfx/sprites/sailboat.2bpp.lz"
 MiscOverheadSpriteGFX::        INCBIN "gfx/sprites/misc_overhead.2bpp.lz"
