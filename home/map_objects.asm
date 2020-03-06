@@ -4,11 +4,7 @@ GetSpritePalette:: ; 17ff
 	push hl
 	push de
 	push bc
-	ld c, a
-
 	farcall _GetSpritePalette
-
-	ld a, c
 	pop bc
 	pop de
 	pop hl

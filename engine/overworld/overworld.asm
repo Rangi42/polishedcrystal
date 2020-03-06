@@ -83,7 +83,6 @@ ReloadSpriteIndex::
 ; Used to reload variable sprites
 	ld hl, wObjectStructs
 	ld de, OBJECT_STRUCT_LENGTH
-	push bc
 	ld a, [hUsedSpriteIndex]
 	ld b, a
 	xor a
@@ -111,7 +110,6 @@ ReloadSpriteIndex::
 	inc a
 	cp NUM_OBJECT_STRUCTS
 	jr nz, .loop
-	pop bc
 	ret
 
 LoadEmoteGFX::
@@ -176,7 +174,6 @@ GetSprite:: ; 1423c
 
 GetMonSprite: ; 14259
 ; Return carry if a monster sprite was loaded.
-
 	cp SPRITE_POKEMON
 	jr c, .Normal
 	cp SPRITE_MON_DOLL_1
@@ -191,20 +188,38 @@ GetMonSprite: ; 14259
 	jr z, .GrottoMon
 	cp SPRITE_VARS
 	jr nc, .Variable
-	jr .Icon
-
-.Normal:
-	and a
-	ret
-
-.Icon:
+; icon
 	sub SPRITE_POKEMON
 	ld e, a
 	ld d, 0
 	ld hl, SpriteMons
 	add hl, de
 	ld a, [hl]
-	jr .Mon
+.Mon:
+	ld e, a
+	and a
+	jr z, .NoBreedmon
+	farcall LoadOverworldMonIcon
+	lb hl, 0, MON_SPRITE
+	scf
+	ret
+
+.NoBreedmon:
+	ld a, 1
+	lb hl, 0, MON_SPRITE
+.Normal:
+	and a
+	ret
+
+.Variable:
+	sub SPRITE_VARS
+	ld e, a
+	ld d, 0
+	ld hl, wVariableSprites
+	add hl, de
+	ld a, [hl]
+	and a
+	jr nz, GetMonSprite
 
 .BreedMon1
 	ld a, [wBreedMon1Species]
@@ -221,39 +236,13 @@ GetMonSprite: ; 14259
 
 .MonDoll1
 	ld a, [wLeftOrnament]
-	farcall GetDecorationSpecies
-	jr .Mon
+	jr .MonDoll
 
 .MonDoll2
 	ld a, [wRightOrnament]
+.MonDoll
 	farcall GetDecorationSpecies
-
-.Mon:
-	ld e, a
-	and a
-	jr z, .NoBreedmon
-
-	farcall LoadOverworldMonIcon
-
-	lb hl, 0, MON_SPRITE
-	scf
-	ret
-
-.Variable:
-	sub SPRITE_VARS
-	ld e, a
-	ld d, 0
-	ld hl, wVariableSprites
-	add hl, de
-	ld a, [hl]
-	and a
-	jp nz, GetMonSprite
-
-.NoBreedmon:
-	ld a, 1
-	lb hl, 0, MON_SPRITE
-	and a
-	ret
+	jr .Mon
 ; 142a7
 
 
@@ -274,7 +263,6 @@ _DoesSpriteHaveFacings:: ; 142a7
 
 
 _GetSpritePalette:: ; 142c4
-	ld a, c
 	call GetMonSprite
 	jr c, .is_pokemon
 
@@ -284,7 +272,7 @@ _GetSpritePalette:: ; 142c4
 	ld b, 0
 	ld a, NUM_SPRITEHEADER_FIELDS
 	rst AddNTimes
-	ld c, [hl]
+	ld a, [hl]
 	ret
 
 .is_pokemon
@@ -294,9 +282,7 @@ _GetSpritePalette:: ; 142c4
 	ld a, [wMapNumber]
 	cp MAP_KRISS_HOUSE_2F
 	jr nz, .not_doll
-	farcall GetMonIconPalette
-	ld c, a
-	ret
+	farjp GetMonIconPalette
 
 .not_doll
 	cp GROUP_ROUTE_34
@@ -305,21 +291,27 @@ _GetSpritePalette:: ; 142c4
 	cp MAP_ROUTE_34
 	jr nz, .not_daycare
 	farcall GetMonIconPalette
+
+	; gray, pink, and teal exist in the party menu and the player's room,
+	; but not on Route 34 for the Daycare
 	cp PAL_OW_GRAY
-	ld c, PAL_OW_ROCK
-	ret z
-	cp PAL_OW_PINK
-	ld c, PAL_OW_RED
-	ret z
+	jr z, .use_rock
 	cp PAL_OW_TEAL
-	ld c, PAL_OW_GREEN
-	ret z
-	ld c, a
+	jr z, .use_green
+	cp PAL_OW_PINK
+	ret nz
+.not_daycare
+	xor a ; PAL_OW_RED
 	ret
 
-.not_daycare
-	ld c, PAL_OW_RED
+.use_rock
+	ld a, PAL_OW_ROCK
 	ret
+
+.use_green
+	ld a, PAL_OW_GREEN
+	ret
+
 ; 142db
 
 
