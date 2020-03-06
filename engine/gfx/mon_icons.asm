@@ -1,7 +1,6 @@
 INCLUDE "data/pokemon/menu_icon_pals.asm"
 
 LoadOverworldMonIcon: ; 8e82b
-	ld a, e
 	ld [wCurIcon], a
 	ld l, a
 	ld h, 0
@@ -11,8 +10,15 @@ LoadOverworldMonIcon: ; 8e82b
 	ld a, [hli]
 	ld e, a
 	ld d, [hl]
-	jp GetMonIconBank
-; 8e83f
+; Extended icon bank routine by com3tiin
+; http://www.pokecommunity.com/showthread.php?t=338470
+GetMonIconBank:
+	ld a, [wCurIcon]
+	cp TAUROS ; first mon in Icons2
+	lb bc, BANK(Icons1), 8
+	ret c
+	ld b, BANK(Icons2)
+	ret
 
 SetMenuMonIconColor:
 	push hl
@@ -462,16 +468,6 @@ endr
 	pop hl
 	ret
 ; 8ea3f
-
-; Extended icon bank routine by com3tiin
-; http://www.pokecommunity.com/showthread.php?t=338470
-GetMonIconBank:
-	ld a, [wCurIcon]
-	cp TAUROS ; first mon in Icons2
-	lb bc, BANK(Icons1), 8
-	ret c
-	lb bc, BANK(Icons2), 8
-	ret
 
 FreezeMonIcons: ; 8ea4a
 	ld hl, wSpriteAnimationStructs

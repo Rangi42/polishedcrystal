@@ -196,19 +196,11 @@ GetMonSprite: ; 14259
 	add hl, de
 	ld a, [hl]
 .Mon:
-	ld e, a
 	and a
-	jr z, .NoBreedmon
+	jr z, .NoSprite
 	farcall LoadOverworldMonIcon
 	lb hl, 0, MON_SPRITE
 	scf
-	ret
-
-.NoBreedmon:
-	ld a, 1
-	lb hl, 0, MON_SPRITE
-.Normal:
-	and a
 	ret
 
 .Variable:
@@ -220,27 +212,35 @@ GetMonSprite: ; 14259
 	ld a, [hl]
 	and a
 	jr nz, GetMonSprite
+	; fallthrough
 
-.BreedMon1
+.NoSprite:
+	ld a, 1
+	lb hl, 0, MON_SPRITE
+.Normal:
+	and a
+	ret
+
+.BreedMon1:
 	ld a, [wBreedMon1Species]
 	jr .Mon
 
-.BreedMon2
+.BreedMon2:
 	ld a, [wBreedMon2Species]
 	jr .Mon
 
-.GrottoMon
+.GrottoMon:
 	farcall GetHiddenGrottoContents
 	ld a, [hl]
 	jr .Mon
 
-.MonDoll1
+.MonDoll1:
 	ld a, [wLeftOrnament]
 	jr .MonDoll
 
-.MonDoll2
+.MonDoll2:
 	ld a, [wRightOrnament]
-.MonDoll
+.MonDoll:
 	farcall GetDecorationSpecies
 	jr .Mon
 ; 142a7

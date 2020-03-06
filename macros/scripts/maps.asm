@@ -89,9 +89,9 @@ ENDM
 
 fruittree_event: MACRO
 if _NARG == 5
-	object_event \1, \2, SPRITE_BALL_CUT_FRUIT, SPRITEMOVEDATA_FRUIT, ((\3 - 1) & $f0) >> 4, ((\3 - 1) & $0f), -1, -1, \5, PERSONTYPE_COMMAND, fruittree, \3, \4, -1
+	object_event \1, \2, SPRITE_BALL_CUT_FRUIT, SPRITEMOVEDATA_FRUIT, 0, \3 - 1, -1, -1, \5, PERSONTYPE_COMMAND, fruittree, \3, \4, -1
 else
-	object_event \1, \2, SPRITE_BALL_CUT_FRUIT, SPRITEMOVEDATA_FRUIT, ((\3 - 1) & $f0) >> 4, ((\3 - 1) & $0f), -1, -1, \5, PERSONTYPE_COMMAND, fruittree, \3, \4, \6
+	object_event \1, \2, SPRITE_BALL_CUT_FRUIT, SPRITEMOVEDATA_FRUIT, 0, \3 - 1, -1, -1, \5, PERSONTYPE_COMMAND, fruittree, \3, \4, \6
 endc
 ENDM
 
