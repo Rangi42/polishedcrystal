@@ -400,8 +400,6 @@ _ChooseWildEncounter:
 	ld b, [hl]
 	ld a, b
 	pop hl
-	call ValidateTempWildMonSpecies
-	jr c, .nowildbattle
 
 	cp UNOWN
 	jr nz, .unown_check_done
@@ -953,19 +951,6 @@ _BackUpMapIndices:
 	ret
 
 INCLUDE "data/wild/roammon_maps.asm"
-
-ValidateTempWildMonSpecies:
-; Due to a development oversight, this function is called with the wild Pokemon's level, not its species, in a.
-	and a
-	jr z, .nowildmon ; = 0
-	cp NUM_POKEMON + 1 ; 252
-	jr nc, .nowildmon ; >= 252
-	and a ; 1 <= Species <= 251
-	ret
-
-.nowildmon
-	scf
-	ret
 
 RandomPhoneRareWildMon:
 ; Related to the phone?
