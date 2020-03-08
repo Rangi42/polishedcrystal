@@ -1,24 +1,24 @@
 _Predef::
 ; Call predefined function on the stack.
 ; Preserves a, bc, de, hl.
-	ld [hFarCallSavedA], a
+	ldh [hFarCallSavedA], a
 	ld a, h
-	ld [hPredefTemp + 1], a
+	ldh [hPredefTemp + 1], a
 	ld a, l
-	ld [hPredefTemp], a
+	ldh [hPredefTemp], a
 	pop hl
 	ld a, [hli]
-	ld [hBuffer], a
+	ldh [hBuffer], a
 	add a
 	jr c, .jump
 	push hl
 .jump
-	ld a, [hROMBank]
+	ldh a, [hROMBank]
 	push af
 	ld a, BANK(PredefPointers)
 	rst Bankswitch
 	push de
-	ld a, [hBuffer]
+	ldh a, [hBuffer]
 	and $7f
 	ld e, a
 	ld d, 0

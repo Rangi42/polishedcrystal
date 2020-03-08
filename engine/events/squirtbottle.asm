@@ -37,10 +37,10 @@ _Squirtbottle:
 	jr nz, .nope
 
 	ld a, $1
-	ld [hScriptVar], a
+	ldh [hScriptVar], a
 	ret
 
 .nope
 	xor a
-	ld [hScriptVar], a
+	ldh [hScriptVar], a
 	ret

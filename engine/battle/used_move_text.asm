@@ -1,7 +1,7 @@
 DisplayUsedMoveText:
 ; battle command 03
 
-	ld a, [hBattleTurn]
+	ldh a, [hBattleTurn]
 	and a
 	jr nz, .start
 
@@ -17,7 +17,7 @@ DisplayUsedMoveText:
 	ld [wd265], a
 
 	; Skip last move update if move was called (1=called, 2=Power Herb)
-	ld a, [hBattleTurn]
+	ldh a, [hBattleTurn]
 	and a
 	ld a, [wPlayerCharging]
 	jr z, .got_charging

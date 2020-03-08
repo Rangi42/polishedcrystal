@@ -4,20 +4,20 @@ _Multiply::
 
 ; hMultiplier is one byte.
 ; performs dehl * a
-	ld a, [hMultiplicand]
+	ldh a, [hMultiplicand]
 	ld e, a
-	ld a, [hMultiplicand + 1]
+	ldh a, [hMultiplicand + 1]
 	ld h, a
-	ld a, [hMultiplicand + 2]
+	ldh a, [hMultiplicand + 2]
 	ld l, a
 
 	xor a
 	ld d, a
-	ld [hProduct], a
-	ld [hProduct + 1], a
-	ld [hProduct + 2], a
-	ld [hProduct + 3], a
-	ld a, [hMultiplier]
+	ldh [hProduct], a
+	ldh [hProduct + 1], a
+	ldh [hProduct + 2], a
+	ldh [hProduct + 3], a
+	ldh a, [hMultiplier]
 	and a
 	ret z
 .loop
@@ -26,18 +26,18 @@ _Multiply::
 
 	ld c, a ; store multiplier in c
 
-	ld a, [hProduct + 3]
+	ldh a, [hProduct + 3]
 	add l
-	ld [hProduct + 3], a
-	ld a, [hProduct + 2]
+	ldh [hProduct + 3], a
+	ldh a, [hProduct + 2]
 	adc h
-	ld [hProduct + 2], a
-	ld a, [hProduct + 1]
+	ldh [hProduct + 2], a
+	ldh a, [hProduct + 1]
 	adc e
-	ld [hProduct + 1], a
-	ld a, [hProduct]
+	ldh [hProduct + 1], a
+	ldh a, [hProduct]
 	adc d
-	ld [hProduct], a
+	ldh [hProduct], a
 
 	ld a, c ; retrieve multiplier
 
@@ -52,11 +52,11 @@ _Multiply::
 _Divide::
 ; Divide hDividend length b (max 4 bytes) by hDivisor. Result in hQuotient.
 ; All values are big endian.
-	ld a, [hDivisor]
+	ldh a, [hDivisor]
 	and a
 	jr z, .div0
 
-	ld a, [hDivisor]
+	ldh a, [hDivisor]
 	ld d, a
 	ld c, hDividend % $100
 	ld e, 0
@@ -97,12 +97,12 @@ _Divide::
 	jr nz, .loop
 
 	xor a
-	ld [hDividend], a
-	ld [hDividend + 1], a
-	ld [hDividend + 2], a
-	ld [hDividend + 3], a
+	ldh [hDividend], a
+	ldh [hDividend + 1], a
+	ldh [hDividend + 2], a
+	ldh [hDividend + 3], a
 	ld a, e
-	ld [hRemainder], a
+	ldh [hRemainder], a
 	ld a, c
 	sub hDividend % $100
 	ld b, a
@@ -110,22 +110,22 @@ _Divide::
 	add hMathBuffer - hDividend - 1
 	ld c, a
 	ld a, [$ff00+c]
-	ld [hDividend + 3], a
+	ldh [hDividend + 3], a
 	dec b
 	ret z
 	dec c
 	ld a, [$ff00+c]
-	ld [hDividend + 2], a
+	ldh [hDividend + 2], a
 	dec b
 	ret z
 	dec c
 	ld a, [$ff00+c]
-	ld [hDividend + 1], a
+	ldh [hDividend + 1], a
 	dec b
 	ret z
 	dec c
 	ld a, [$ff00+c]
-	ld [hDividend], a
+	ldh [hDividend], a
 	ret
 .div0
 	; deliberately crash the game (maybe make a real crash handler?)

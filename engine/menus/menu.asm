@@ -68,7 +68,7 @@ GetMenuNumberOfRows:
 
 Draw2DMenu:
 	xor a
-	ld [hBGMapMode], a
+	ldh [hBGMapMode], a
 	call MenuBox
 
 Place2DMenuItemStrings:
@@ -207,11 +207,11 @@ Init2DMenuCursorPosition:
 _DoMenuJoypadLoop::
 	ld hl, w2DMenuFlags2
 	res 7, [hl]
-	ld a, [hBGMapMode]
+	ldh a, [hBGMapMode]
 	push af
 	call MenuJoypadLoop
 	pop af
-	ld [hBGMapMode], a
+	ldh [hBGMapMode], a
 	ret
 
 MenuJoypadLoop:
@@ -234,19 +234,19 @@ MenuJoypadLoop:
 	jp Move2DMenuCursor
 
 .BGMap_OAM:
-	ld a, [hOAMUpdate]
+	ldh a, [hOAMUpdate]
 	push af
 	ld a, $1
-	ld [hOAMUpdate], a
-	ld [hBGMapMode], a
+	ldh [hOAMUpdate], a
+	ldh [hBGMapMode], a
 	ld a, [w2DMenuFlags1]
 	bit 6, a
 	call z, DelayFrame
 	call Delay2
 	pop af
-	ld [hOAMUpdate], a
+	ldh [hOAMUpdate], a
 	xor a
-	ld [hBGMapMode], a
+	ldh [hBGMapMode], a
 	ret
 
 Do2DMenuRTCJoypad_loop:
@@ -266,10 +266,10 @@ Menu_WasButtonPressed:
 	bit 6, a
 	jr z, .skip_to_joypad
 	ld a, $1
-	ld [hBGMapMode], a
+	ldh [hBGMapMode], a
 	farcall PlaySpriteAnimationsAndDelayFrame
 	xor a
-	ld [hBGMapMode], a
+	ldh [hBGMapMode], a
 
 .skip_to_joypad
 	call JoyTextDelay
@@ -500,10 +500,10 @@ Place2DMenuCursor:
 	ret
 
 _PushWindow::
-	ld a, [rSVBK]
+	ldh a, [rSVBK]
 	push af
 	ld a, $7
-	ld [rSVBK], a
+	ldh [rSVBK], a
 
 	ld hl, wWindowStackPointer
 	ld e, [hl]
@@ -560,7 +560,7 @@ _PushWindow::
 	ld [hl], d
 
 	pop af
-	ld [rSVBK], a
+	ldh [rSVBK], a
 	ld hl, wWindowStackSize
 	inc [hl]
 	ret
@@ -589,12 +589,12 @@ _PushWindow::
 
 _ExitMenu::
 	xor a
-	ld [hBGMapMode], a
+	ldh [hBGMapMode], a
 
-	ld a, [rSVBK]
+	ldh a, [rSVBK]
 	push af
 	ld a, $7
-	ld [rSVBK], a
+	ldh [rSVBK], a
 
 	call GetWindowStackTop
 	ld a, l
@@ -621,7 +621,7 @@ _ExitMenu::
 
 .done
 	pop af
-	ld [rSVBK], a
+	ldh [rSVBK], a
 	ld hl, wWindowStackSize
 	dec [hl]
 	ret

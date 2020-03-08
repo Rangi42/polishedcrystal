@@ -71,7 +71,7 @@ _PrepMonFrontpic::
 	predef GetFrontpic
 	pop hl
 	xor a
-	ld [hGraphicStartTile], a
+	ldh [hGraphicStartTile], a
 	lb bc, 7, 7
 	predef PlaceGraphic
 	xor a
@@ -112,7 +112,7 @@ GetBaseData::
 	push bc
 	push de
 	push hl
-	ld a, [hROMBank]
+	ldh a, [hROMBank]
 	push af
 	ld a, BANK(BaseData)
 	rst Bankswitch

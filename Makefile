@@ -134,7 +134,7 @@ $(copied_gbc): crystal ; cp $(NAME)-$(VERSION).gbc $@
 
 %.o: dep = $(shell $(SCAN_INCLUDES) $(@D)/$*.asm)
 %.o: %.asm $$(dep)
-	$(RGBDS_DIR)rgbasm $(RGBASM_FLAGS) -o $@ $<
+	$(RGBDS_DIR)rgbasm $(RGBASM_FLAGS) -L -o $@ $<
 
 .gbc:
 %.gbc: $(crystal_obj)

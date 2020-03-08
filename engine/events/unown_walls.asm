@@ -78,7 +78,7 @@ SpecialKabutoChamber:
 	ret
 
 Special_DisplayUnownWords:
-	ld a, [hScriptVar]
+	ldh a, [hScriptVar]
 	ld hl, UnownWallMenuDataHeaders
 	and a
 	jr z, .load
@@ -92,7 +92,7 @@ Special_DisplayUnownWords:
 .load
 	call LoadMenuDataHeader
 	xor a
-	ld [hBGMapMode], a
+	ldh [hBGMapMode], a
 	call MenuBox
 	call UpdateSprites
 	call ApplyTilemap
@@ -101,7 +101,7 @@ Special_DisplayUnownWords:
 	ld de, $14
 	add hl, de
 	add hl, de
-	ld a, [hScriptVar]
+	ldh a, [hScriptVar]
 	ld c, a
 	ld de, UnownWallWords
 	and a

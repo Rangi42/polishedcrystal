@@ -72,12 +72,12 @@ endr
 	call CopyName2
 
 	ld a, TRUE
-	ld [hScriptVar], a
+	ldh [hScriptVar], a
 	ret
 
 .NotGiven:
 	xor a ; ld a, FALSE
-	ld [hScriptVar], a
+	ldh [hScriptVar], a
 	ret
 
 .OT:

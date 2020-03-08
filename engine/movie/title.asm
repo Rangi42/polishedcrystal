@@ -6,7 +6,7 @@ _TitleScreen:
 
 ; Turn BG Map update off
 	xor a
-	ld [hBGMapMode], a
+	ldh [hBGMapMode], a
 
 ; Reset timing variables
 	ld hl, wJumptableIndex
@@ -20,7 +20,7 @@ _TitleScreen:
 
 ; VRAM bank 1
 	ld a, 1
-	ld [rVBK], a
+	ldh [rVBK], a
 
 ; Decompress running Suicune gfx
 	ld hl, TitleSuicuneGFX
@@ -87,7 +87,7 @@ _TitleScreen:
 
 ; Back to VRAM bank 0
 	xor a
-	ld [rVBK], a
+	ldh [rVBK], a
 
 ; Decompress logo
 	ld hl, TitleLogoGFX
@@ -132,11 +132,11 @@ endc
 	call InitializeBackground
 
 ; Save WRAM bank
-	ld a, [rSVBK]
+	ldh a, [rSVBK]
 	push af
 ; WRAM bank 5
 	ld a, 5
-	ld [rSVBK], a
+	ldh [rSVBK], a
 
 ; Update palette colors
 	ld hl, TitleScreenPalettes
@@ -151,14 +151,14 @@ endc
 
 ; Restore WRAM bank
 	pop af
-	ld [rSVBK], a
+	ldh [rSVBK], a
 
 ; LY/SCX trickery starts here
 
-	ld a, [rSVBK]
+	ldh a, [rSVBK]
 	push af
 	ld a, BANK(wLYOverrides)
-	ld [rSVBK], a
+	ldh [rSVBK], a
 
 ; Make sure the LYOverrides buffer is empty
 	ld hl, wLYOverrides
@@ -168,33 +168,33 @@ endc
 
 ; Let LCD Stat know we're messing around with SCX
 	ld a, rSCX - rJOYP
-	ld [hLCDCPointer], a
+	ldh [hLCDCPointer], a
 
 	pop af
-	ld [rSVBK], a
+	ldh [rSVBK], a
 
 ; Reset audio
 	call ChannelsOff
 	call EnableLCD
 
-	ld a, [rLCDC]
+	ldh a, [rLCDC]
 	set 2, a ; 8x16 sprites
-	ld [rLCDC], a
+	ldh [rLCDC], a
 
 	ld a, +112
-	ld [hSCX], a
+	ldh [hSCX], a
 	ld a, 8
-	ld [hSCY], a
+	ldh [hSCY], a
 	ld a, 7
-	ld [hWX], a
+	ldh [hWX], a
 	ld a, -112
-	ld [hWY], a
+	ldh [hWY], a
 
 	ld a, $1
-	ld [hCGBPalUpdate], a
+	ldh [hCGBPalUpdate], a
 
 ; Update BG Map 0 (bank 0)
-	ld [hBGMapMode], a
+	ldh [hBGMapMode], a
 
 	xor a
 	ld [wUnknBGPals palette 0 + 2], a
@@ -224,11 +224,11 @@ SuicuneFrameIterator:
 	add hl, de
 	ld d, [hl]
 	xor a
-	ld [hBGMapMode], a
+	ldh [hBGMapMode], a
 	call LoadSuicuneFrame
 	ld a, $1
-	ld [hBGMapMode], a
-	ld [hBGMapHalf], a
+	ldh [hBGMapMode], a
+	ldh [hBGMapHalf], a
 	ret
 
 .Frames:

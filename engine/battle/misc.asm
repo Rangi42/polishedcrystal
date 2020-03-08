@@ -103,8 +103,8 @@ _CheckContactMove::
 
 _DisappearUser::
 	xor a
-	ld [hBGMapMode], a
-	ld a, [hBattleTurn]
+	ldh [hBGMapMode], a
+	ldh a, [hBattleTurn]
 	and a
 	jr z, .player
 	call GetEnemyFrontpicCoords
@@ -124,8 +124,8 @@ _AppearUserLowerSub:
 
 AppearUser:
 	xor a
-	ld [hBGMapMode], a
-	ld a, [hBattleTurn]
+	ldh [hBGMapMode], a
+	ldh a, [hBattleTurn]
 	and a
 	jr z, .player
 	call GetEnemyFrontpicCoords
@@ -135,11 +135,11 @@ AppearUser:
 	call GetPlayerBackpicCoords
 	ld a, $31
 .okay
-	ld [hGraphicStartTile], a
+	ldh [hGraphicStartTile], a
 	predef PlaceGraphic
 FinishAppearDisappearUser:
 	ld a, $1
-	ld [hBGMapMode], a
+	ldh [hBGMapMode], a
 	ret
 
 GetEnemyFrontpicCoords:

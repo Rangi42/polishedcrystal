@@ -16,7 +16,7 @@ LoadFontsExtra::
 ApplyTilemap::
 ; Tell VBlank to update BG Map
 	ld a, 1
-	ld [hBGMapMode], a
+	ldh [hBGMapMode], a
 	ld a, [wSpriteUpdatesEnabled]
 	and a
 	ld b, 3
@@ -55,7 +55,7 @@ Request2bppInWRA6::
 	call RunFunctionInWRA6
 
 Get2bpp::
-	ld a, [rLCDC]
+	ldh a, [rLCDC]
 	bit 7, a ; lcd on?
 	jp nz, Request2bpp
 
@@ -73,48 +73,48 @@ Request2bpp::
 	call StackCallInBankB
 
 .Function:
-	ld a, [hBGMapMode]
+	ldh a, [hBGMapMode]
 	push af
 	xor a
-	ld [hBGMapMode], a
+	ldh [hBGMapMode], a
 
 	call WriteVCopyRegistersToHRAM
-	ld a, [rLY]
+	ldh a, [rLY]
 	cp $88
 	jr c, .handleLoop
 ; fallthrough to vblank copy handler if LY is too high
 .loop
-	ld a, [hTilesPerCycle]
+	ldh a, [hTilesPerCycle]
 	sub $10
-	ld [hTilesPerCycle], a
+	ldh [hTilesPerCycle], a
 	jr c, .copyRemainingTilesAndExit
 	jr nz, .copySixteenTilesAndContinue
 .copyRemainingTilesAndExit
 	add $10
-	ld [hRequested2bpp], a
+	ldh [hRequested2bpp], a
 	xor a
-	ld [hTilesPerCycle], a
+	ldh [hTilesPerCycle], a
 	call DelayFrame
-	ld a, [hRequested2bpp]
+	ldh a, [hRequested2bpp]
 	and a
 	jr z, .clearTileCountAndFinish
 .addUncopiedTilesToCount
 	ld b, a
-	ld a, [hTilesPerCycle]
+	ldh a, [hTilesPerCycle]
 	add b
-	ld [hTilesPerCycle], a
+	ldh [hTilesPerCycle], a
 	xor a
-	ld [hRequested2bpp], a
+	ldh [hRequested2bpp], a
 	jr .handleLoop
 .clearTileCountAndFinish
 	xor a
-	ld [hTilesPerCycle], a
+	ldh [hTilesPerCycle], a
 	jr .done
 .copySixteenTilesAndContinue
 	ld a, $10
-	ld [hRequested2bpp], a
+	ldh [hRequested2bpp], a
 	call DelayFrame
-	ld a, [hRequested2bpp]
+	ldh a, [hRequested2bpp]
 	and a
 	jr nz, .addUncopiedTilesToCount
 .handleLoop
@@ -123,11 +123,11 @@ Request2bpp::
 .done
 
 	pop af
-	ld [hBGMapMode], a
+	ldh [hBGMapMode], a
 	ret
 
 GetMaybeOpaque1bpp::
-	ld a, [rLCDC]
+	ldh a, [rLCDC]
 	bit 7, a
 	jr nz, _Request1bpp
 	jr _Copy1bpp
@@ -141,21 +141,21 @@ GetOpaque1bppFontTile::
 ; %00 = white, %11 = black, %10 = light, %01 = dark
 	lb bc, BANK(FontTiles), 1
 GetOpaque1bpp::
-	ld a, [rLCDC]
+	ldh a, [rLCDC]
 	bit 7, a ; lcd on?
 	jr nz, RequestOpaque1bpp
 CopyOpaque1bpp:
 	ld a, 1
-	ld [hRequestOpaque1bpp], a
+	ldh [hRequestOpaque1bpp], a
 	jr _Copy1bpp
 
 Get1bpp::
-	ld a, [rLCDC]
+	ldh a, [rLCDC]
 	bit 7, a ; lcd on?
 	jr nz, Request1bpp
 Copy1bpp::
 	xor a
-	ld [hRequestOpaque1bpp], a
+	ldh [hRequestOpaque1bpp], a
 _Copy1bpp::
 ; copy c 1bpp tiles from b:de to hl
 	call StackCallInBankB
@@ -167,57 +167,57 @@ _Copy1bpp::
 
 RequestOpaque1bpp:
 	ld a, 1
-	ld [hRequestOpaque1bpp], a
+	ldh [hRequestOpaque1bpp], a
 	jr _Request1bpp
 Request1bpp::
 	xor a
-	ld [hRequestOpaque1bpp], a
+	ldh [hRequestOpaque1bpp], a
 _Request1bpp:
 ; Load 1bpp at b:de to occupy c tiles of hl.
 	call StackCallInBankB
 
 .Function:
-	ld a, [hBGMapMode]
+	ldh a, [hBGMapMode]
 	push af
 	xor a
-	ld [hBGMapMode], a
+	ldh [hBGMapMode], a
 
 	call WriteVCopyRegistersToHRAM
-	ld a, [rLY]
+	ldh a, [rLY]
 	cp $88
 	jr c, .handleLoop
 .loop
-	ld a, [hTilesPerCycle]
+	ldh a, [hTilesPerCycle]
 	sub 16
-	ld [hTilesPerCycle], a
+	ldh [hTilesPerCycle], a
 	jr c, .copyRemainingTilesAndExit
 	jr nz, .copySixteenTilesAndContinue
 .copyRemainingTilesAndExit
 	add 16
-	ld [hRequested1bpp], a
+	ldh [hRequested1bpp], a
 	xor a
-	ld [hTilesPerCycle], a
+	ldh [hTilesPerCycle], a
 	call DelayFrame
-	ld a, [hRequested1bpp]
+	ldh a, [hRequested1bpp]
 	and a
 	jr z, .clearTileCountAndFinish
 .addUncopiedTilesToCount
 	ld b, a
-	ld a, [hTilesPerCycle]
+	ldh a, [hTilesPerCycle]
 	add b
-	ld [hTilesPerCycle], a
+	ldh [hTilesPerCycle], a
 	xor a
-	ld [hRequested1bpp], a
+	ldh [hRequested1bpp], a
 	jr .handleLoop
 .clearTileCountAndFinish
 	xor a
-	ld [hTilesPerCycle], a
+	ldh [hTilesPerCycle], a
 	jr .done
 .copySixteenTilesAndContinue
 	ld a, 16
-	ld [hRequested1bpp], a
+	ldh [hRequested1bpp], a
 	call DelayFrame
-	ld a, [hRequested1bpp]
+	ldh a, [hRequested1bpp]
 	and a
 	jr nz, .addUncopiedTilesToCount
 .handleLoop
@@ -225,7 +225,7 @@ _Request1bpp:
 	jr c, .loop
 .done
 	pop af
-	ld [hBGMapMode], a
+	ldh [hBGMapMode], a
 	ret
 
 HBlankCopy1bpp:
@@ -246,21 +246,21 @@ HBlankCopy1bpp:
 	jr .innerLoop
 
 .outerLoop
-	ld a, [rLY]
+	ldh a, [rLY]
 	cp $88
 	jr nc, ContinueHBlankCopy
 .innerLoop
 	pop bc
 	pop de
-	ld a, [hRequestOpaque1bpp]
+	ldh a, [hRequestOpaque1bpp]
 	dec a
 	jr z, .waithblank2opaque
 .waithblank2
-	ld a, [rSTAT]
+	ldh a, [rSTAT]
 	and 3
 	jr z, .waithblank2
 .waithblank
-	ld a, [rSTAT]
+	ldh a, [rSTAT]
 	and 3
 	jr nz, .waithblank
 	ld a, c
@@ -284,17 +284,17 @@ HBlankCopy1bpp:
 	ld [hli], a
 	ld [hli], a
 	endr
-	ld a, [hTilesPerCycle]
+	ldh a, [hTilesPerCycle]
 	dec a
-	ld [hTilesPerCycle], a
+	ldh [hTilesPerCycle], a
 	jr nz, .outerLoop
 	jr DoneHBlankCopy
 .waithblank2opaque
-	ld a, [rSTAT]
+	ldh a, [rSTAT]
 	and 3
 	jr z, .waithblank2opaque
 .waithblankopaque
-	ld a, [rSTAT]
+	ldh a, [rSTAT]
 	and 3
 	jr nz, .waithblankopaque
 	ld a, c
@@ -324,9 +324,9 @@ HBlankCopy1bpp:
 	inc hl
 	ld [hli], a
 	endr
-	ld a, [hTilesPerCycle]
+	ldh a, [hTilesPerCycle]
 	dec a
-	ld [hTilesPerCycle], a
+	ldh [hTilesPerCycle], a
 	jr nz, .outerLoop
 	jr DoneHBlankCopy
 
@@ -336,31 +336,31 @@ ContinueHBlankCopy:
 	ld [hRequestedVTileDest], sp
 	scf
 DoneHBlankCopy:
-	ld a, [hSPBuffer]
+	ldh a, [hSPBuffer]
 	ld l, a
-	ld a, [hSPBuffer + 1]
+	ldh a, [hSPBuffer + 1]
 	ld h, a
 	ld sp, hl
 	reti
 
 WriteVCopyRegistersToHRAM:
 	ld a, e
-	ld [hRequestedVTileSource], a
+	ldh [hRequestedVTileSource], a
 	ld a, d
-	ld [hRequestedVTileSource + 1], a
+	ldh [hRequestedVTileSource + 1], a
 	ld a, l
-	ld [hRequestedVTileDest], a
+	ldh [hRequestedVTileDest], a
 	ld a, h
-	ld [hRequestedVTileDest + 1], a
+	ldh [hRequestedVTileDest + 1], a
 	ld a, c
-	ld [hTilesPerCycle], a
+	ldh [hTilesPerCycle], a
 	ret
 
 VRAMToVRAMCopy::
 	lb bc, %11, rSTAT & $ff ; predefine bitmask and rSTAT source for speed and size
 	jr .waitNoHBlank2
 .outerLoop2
-	ld a, [rLY]
+	ldh a, [rLY]
 	cp $88
 	jp nc, ContinueHBlankCopy
 .waitNoHBlank2
@@ -386,8 +386,8 @@ VRAMToVRAMCopy::
 	ld a, l
 	and $f
 	jr nz, .waitNoHBlank2
-	ld a, [hTilesPerCycle]
+	ldh a, [hTilesPerCycle]
 	dec a
-	ld [hTilesPerCycle], a
+	ldh [hTilesPerCycle], a
 	jr nz, .outerLoop2
 	jp DoneHBlankCopy

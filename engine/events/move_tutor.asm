@@ -7,7 +7,7 @@ Special_MoveTutor:
 	call GetCGBLayout
 	xor a
 	ld [wItemAttributeParamBuffer], a
-	ld a, [hScriptVar]
+	ldh a, [hScriptVar]
 	and a
 	ld [wPutativeTMHMMove], a
 	jr z, .relearner
@@ -31,7 +31,7 @@ Special_MoveTutor:
 .cancel
 	ld a, -1
 .quit
-	ld [hScriptVar], a
+	ldh [hScriptVar], a
 	jp CloseSubmenu
 
 CheckCanLearnMoveTutorMove:

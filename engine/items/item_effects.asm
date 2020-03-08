@@ -401,7 +401,7 @@ PokeBallEffect:
 	ld a, d
 	ld [wFXAnimIDHi], a
 	xor a
-	ld [hBattleTurn], a
+	ldh [hBattleTurn], a
 	ld [wNumHits], a
 	predef PlayBattleAnim
 
@@ -1005,11 +1005,11 @@ RareCandy:
 	ld a, MON_EXP
 	call GetPartyParamLocation
 
-	ld a, [hMultiplicand]
+	ldh a, [hMultiplicand]
 	ld [hli], a
-	ld a, [hMultiplicand + 1]
+	ldh a, [hMultiplicand + 1]
 	ld [hli], a
-	ld a, [hMultiplicand + 2]
+	ldh a, [hMultiplicand + 2]
 	ld [hl], a
 
 	push bc
@@ -1241,7 +1241,7 @@ PersimBerry:
 
 	res SUBSTATUS_CONFUSED, [hl]
 	xor a
-	ld [hBattleTurn], a
+	ldh [hBattleTurn], a
 	call UseItemText
 
 	ld hl, ConfusedNoMoreText
@@ -1408,7 +1408,7 @@ ItemActionText:
 
 ItemActionTextWaitButton:
 	xor a
-	ld [hBGMapMode], a
+	ldh [hBGMapMode], a
 	hlcoord 0, 0
 	ld bc, wTileMapEnd - wTileMap
 	ld a, " "
@@ -1416,7 +1416,7 @@ ItemActionTextWaitButton:
 	ld a, [wPartyMenuActionText]
 	call ItemActionText
 	ld a, $1
-	ld [hBGMapMode], a
+	ldh [hBGMapMode], a
 	ld c, 50
 	call DelayFrames
 	jp WaitPressAorB_BlinkCursor
@@ -1559,16 +1559,16 @@ GetOneFifthMaxHP:
 	push bc
 	call UseItem_GetMaxHPParameter
 	ld a, [hli]
-	ld [hDividend + 0], a
+	ldh [hDividend + 0], a
 	ld a, [hl]
-	ld [hDividend + 1], a
+	ldh [hDividend + 1], a
 	ld a, 5
-	ld [hDivisor], a
+	ldh [hDivisor], a
 	ld b, 2
 	call Divide
-	ld a, [hQuotient + 1]
+	ldh a, [hQuotient + 1]
 	ld d, a
-	ld a, [hQuotient + 2]
+	ldh a, [hQuotient + 2]
 	ld e, a
 	pop bc
 	ret
@@ -2164,7 +2164,7 @@ UseBallInTrainerBattle:
 	ld [wFXAnimIDHi], a
 	xor a
 	ld [wBattleAnimParam], a
-	ld [hBattleTurn], a
+	ldh [hBattleTurn], a
 	ld [wNumHits], a
 	predef PlayBattleAnim
 	ld hl, BlockedTheBallText
@@ -2375,13 +2375,13 @@ ComputeMaxPP:
 	push bc
 	; Divide the base PP by 5.
 	ld a, [de]
-	ld [hDividend + 3], a
+	ldh [hDividend + 3], a
 	xor a
-	ld [hDividend], a
-	ld [hDividend + 1], a
-	ld [hDividend + 2], a
+	ldh [hDividend], a
+	ldh [hDividend + 1], a
+	ldh [hDividend + 2], a
 	ld a, 5
-	ld [hDivisor], a
+	ldh [hDivisor], a
 	ld b, 4
 	call Divide
 	; Get the number of PP, which are bits 6 and 7 of the PP value stored in RAM.
@@ -2401,7 +2401,7 @@ ComputeMaxPP:
 	; Since this would overflow into bit 6, we prevent that from happening
 	; by decreasing the extra amount of PP each PP Up provides, resulting
 	; in a maximum of 61.
-	ld a, [hQuotient + 2]
+	ldh a, [hQuotient + 2]
 	cp $8
 	jr c, .okay
 	ld a, $7

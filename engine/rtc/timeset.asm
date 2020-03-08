@@ -1,9 +1,9 @@
 InitClock:
 ; Ask the player to set the time.
-	ld a, [hInMenu]
+	ldh a, [hInMenu]
 	push af
 	ld a, $1
-	ld [hInMenu], a
+	ldh [hInMenu], a
 
 	xor a
 	ld [wSpriteUpdatesEnabled], a
@@ -20,7 +20,7 @@ InitClock:
 	ld a, CGB_DIPLOMA
 	call GetCGBLayout
 	xor a
-	ld [hBGMapMode], a
+	ldh [hBGMapMode], a
 	call LoadStandardFont
 	ld de, TimesetBackgroundGFX
 	ld hl, vTiles2 tile $00
@@ -108,22 +108,22 @@ endc
 	call PrintText
 	call WaitPressAorB_BlinkCursor
 	pop af
-	ld [hInMenu], a
+	ldh [hInMenu], a
 	ret
 
 .ClearScreen:
 	xor a
-	ld [hBGMapMode], a
+	ldh [hBGMapMode], a
 	hlcoord 0, 0
 	ld bc, SCREEN_HEIGHT * SCREEN_WIDTH
 	xor a
 	call ByteFill
 	ld a, $1
-	ld [hBGMapMode], a
+	ldh [hBGMapMode], a
 	ret
 
 SetHour:
-	ld a, [hJoyPressed]
+	ldh a, [hJoyPressed]
 	and A_BUTTON
 	jr nz, .Confirm
 
@@ -188,7 +188,7 @@ DisplayHourOClock:
 	ret
 
 SetMinutes:
-	ld a, [hJoyPressed]
+	ldh a, [hJoyPressed]
 	and A_BUTTON
 	jr nz, .a_button
 	ld hl, hJoyLast
@@ -350,12 +350,12 @@ TimesetBackgroundGFX:
 INCBIN "gfx/new_game/timeset_bg.1bpp"
 
 Special_SetDayOfWeek:
-	ld a, [hInMenu]
+	ldh a, [hInMenu]
 	push af
 	xor a
 	ld [wTempDayOfWeek], a
 	inc a
-	ld [hInMenu], a
+	ldh [hInMenu], a
 .loop
 	hlcoord 0, 12
 	lb bc, 4, 18
@@ -390,11 +390,11 @@ Special_SetDayOfWeek:
 	call SetDayOfWeek
 	call LoadStandardFont
 	pop af
-	ld [hInMenu], a
+	ldh [hInMenu], a
 	ret
 
 .GetJoypadAction:
-	ld a, [hJoyPressed]
+	ldh a, [hJoyPressed]
 	and A_BUTTON
 	jr z, .not_A
 	scf
@@ -437,7 +437,7 @@ Special_SetDayOfWeek:
 
 .finish_dpad
 	xor a
-	ld [hBGMapMode], a
+	ldh [hBGMapMode], a
 	hlcoord 10, 4
 	lb bc, 2, 9
 	call ClearBox
@@ -509,9 +509,9 @@ Special_InitialSetDSTFlag:
 .Text:
 	start_asm
 	call UpdateTime
-	ld a, [hHours]
+	ldh a, [hHours]
 	ld b, a
-	ld a, [hMinutes]
+	ldh a, [hMinutes]
 	ld c, a
 	decoord 1, 14
 	call PrintHoursMins
@@ -536,9 +536,9 @@ Special_InitialClearDSTFlag:
 .Text:
 	start_asm
 	call UpdateTime
-	ld a, [hHours]
+	ldh a, [hHours]
 	ld b, a
-	ld a, [hMinutes]
+	ldh a, [hMinutes]
 	ld c, a
 	decoord 1, 14
 	call PrintHoursMins

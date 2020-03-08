@@ -247,11 +247,11 @@ CheckCaughtCelebi:
 	bit 6, a
 	jr z, .false
 	ld a, $1
-	ld [hScriptVar], a
+	ldh [hScriptVar], a
 	ret
 
 .false
 	xor a
-	ld [hScriptVar], a
+	ldh [hScriptVar], a
 	ret
 

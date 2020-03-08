@@ -36,7 +36,7 @@ _MainMenu:
 
 NewGame_ClearTileMapEtc:
 	xor a
-	ld [hMapAnims], a
+	ldh [hMapAnims], a
 	call ClearTileMap
 	call LoadFontsExtra
 	call LoadStandardFont
@@ -44,14 +44,14 @@ NewGame_ClearTileMapEtc:
 
 NewGamePlus:
 	xor a
-	ld [hBGMapMode], a
+	ldh [hBGMapMode], a
 	farcall TryLoadSaveFile
 	ret c
 	jr _NewGame_FinishSetup
 
 NewGame:
 	xor a
-	ld [hBGMapMode], a
+	ldh [hBGMapMode], a
 	call ResetWRAM_NotPlus
 _NewGame_FinishSetup:
 	call ResetWRAM
@@ -66,7 +66,7 @@ _NewGame_FinishSetup:
 	ld [wDefaultSpawnpoint], a
 
 	ld a, MAPSETUP_WARP
-	ld [hMapEntryMethod], a
+	ldh [hMapEntryMethod], a
 	jp FinishContinueFunction
 
 ResetWRAM_NotPlus:
@@ -124,15 +124,15 @@ ResetWRAM:
 	call ByteFill
 
 	call Random
-	ld a, [rLY]
-	ld [hSecondsBackup], a
+	ldh a, [rLY]
+	ldh [hSecondsBackup], a
 	call DelayFrame
-	ld a, [hRandomSub]
+	ldh a, [hRandomSub]
 	ld [wPlayerID], a
-	ld a, [rLY]
-	ld [hSecondsBackup], a
+	ldh a, [rLY]
+	ldh [hSecondsBackup], a
 	call DelayFrame
-	ld a, [hRandomAdd]
+	ldh a, [hRandomAdd]
 	ld [wPlayerID + 1], a
 
 	call Random
@@ -339,7 +339,7 @@ Continue:
 	call LoadStandardMenuDataHeader
 	call DisplaySaveInfoOnContinue
 	ld a, $1
-	ld [hBGMapMode], a
+	ldh [hBGMapMode], a
 	ld c, 20
 	call DelayFrames
 	call ConfirmContinue
@@ -365,7 +365,7 @@ Continue:
 	cp SPAWN_LANCE
 	jr z, .SpawnAfterE4
 	ld a, MAPSETUP_CONTINUE
-	ld [hMapEntryMethod], a
+	ldh [hMapEntryMethod], a
 	jp FinishContinueFunction
 
 .SpawnAfterE4:
@@ -382,7 +382,7 @@ PostCreditsSpawn:
 	xor a
 	ld [wSpawnAfterChampion], a
 	ld a, MAPSETUP_WARP
-	ld [hMapEntryMethod], a
+	ldh [hMapEntryMethod], a
 	ret
 
 ConfirmContinue:
@@ -469,7 +469,7 @@ DisplayContinueDataWithRTCError:
 
 Continue_LoadMenuHeader:
 	xor a
-	ld [hBGMapMode], a
+	ldh [hBGMapMode], a
 	ld hl, .MenuDataHeader_Dex
 	ld a, [wStatusFlags]
 	bit 0, a ; pokedex
@@ -807,7 +807,7 @@ INCLUDE "data/default_player_names.asm"
 
 ShrinkPlayer:
 
-	ld a, [hROMBank]
+	ldh a, [hROMBank]
 	push af
 
 	ld a, 0 << 7 | 32 ; fade out
@@ -901,7 +901,7 @@ ShrinkFrame:
 	predef DecompressPredef
 FinishPrepIntroPic:
 	xor a
-	ld [hGraphicStartTile], a
+	ldh [hGraphicStartTile], a
 	hlcoord 6, 4
 	lb bc, 7, 7
 	predef_jump PlaceGraphic
@@ -957,10 +957,10 @@ CrystalIntroSequence:
 StartTitleScreen:
 	ld hl, rIE
 	set LCD_STAT, [hl]
-	ld a, [rSVBK]
+	ldh a, [rSVBK]
 	push af
 	ld a, $5
-	ld [rSVBK], a
+	ldh [rSVBK], a
 
 	farcall _TitleScreen
 	call DelayFrame
@@ -972,7 +972,7 @@ StartTitleScreen:
 	call ClearBGPalettes
 
 	pop af
-	ld [rSVBK], a
+	ldh [rSVBK], a
 
 	ld hl, rIE
 	res LCD_STAT, [hl]
@@ -981,13 +981,13 @@ StartTitleScreen:
 	call ClearScreen
 	call ApplyAttrAndTilemapInVBlank
 	xor a
-	ld [hLCDCPointer], a
-	ld [hSCX], a
-	ld [hSCY], a
+	ldh [hLCDCPointer], a
+	ldh [hSCX], a
+	ldh [hSCY], a
 	ld a, $7
-	ld [hWX], a
+	ldh [hWX], a
 	ld a, $90
-	ld [hWY], a
+	ldh [hWY], a
 	ld a, CGB_DIPLOMA
 	call GetCGBLayout
 	call UpdateTimePals
@@ -1049,11 +1049,11 @@ TitleScreenEntrance:
 
 ; Animate the logo:
 ; Move each line by 4 pixels until our count hits 0.
-	ld a, [hSCX]
+	ldh a, [hSCX]
 	and a
 	jr z, .done
 	sub 4
-	ld [hSCX], a
+	ldh [hSCX], a
 
 ; Lay out a base (all lines scrolling together).
 	ld e, a
@@ -1083,7 +1083,7 @@ TitleScreenEntrance:
 	inc [hl]
 
 	xor a
-	ld [hLCDCPointer], a
+	ldh [hLCDCPointer], a
 
 	ld a, BANK(sPlayerData)
 	call GetSRAMBank
@@ -1106,7 +1106,7 @@ TitleScreenEntrance:
 	call PlayMusic
 
 	ld a, $88
-	ld [hWY], a
+	ldh [hWY], a
 	ret
 
 TitleScreenTimer:
@@ -1285,13 +1285,13 @@ GameInit::
 	call ClearBGPalettes
 	call ClearTileMap
 	ld a, vBGMap0 / $100
-	ld [hBGMapAddress + 1], a
+	ldh [hBGMapAddress + 1], a
 	xor a
-	ld [hBGMapAddress], a
-	ld [hJoyDown], a
-	ld [hSCX], a
-	ld [hSCY], a
+	ldh [hBGMapAddress], a
+	ldh [hJoyDown], a
+	ldh [hSCX], a
+	ldh [hSCY], a
 	ld a, $90
-	ld [hWY], a
+	ldh [hWY], a
 	call ApplyTilemapInVBlank
 	jp CrystalIntroSequence

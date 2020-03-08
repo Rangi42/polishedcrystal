@@ -7,9 +7,9 @@ HealMachineAnim:
 	; 0: Up and left (Pokemon Center)
 	; 1: Left (Elm's Lab)
 	; 2: Up (Hall of Fame)
-	ld a, [hScriptVar]
+	ldh a, [hScriptVar]
 	ld [wBuffer1], a
-	ld a, [rOBP1]
+	ldh a, [rOBP1]
 	ld [wBuffer2], a
 	call .DoJumptableFunctions
 	ld a, [wBuffer2]
@@ -133,7 +133,7 @@ INCBIN "gfx/overworld/heal_machine.2bpp"
 	ld a, $5
 	call FarCopyWRAM
 	ld a, $1
-	ld [hCGBPalUpdate], a
+	ldh [hCGBPalUpdate], a
 	ret
 
 .palettes
@@ -159,10 +159,10 @@ endc
 	ret
 
 .FlashPalettes:
-	ld a, [rSVBK]
+	ldh a, [rSVBK]
 	push af
 	ld a, $5
-	ld [rSVBK], a
+	ldh [rSVBK], a
 
 	ld hl, wOBPals palette PAL_OW_TREE
 	ld a, [hli]
@@ -194,9 +194,9 @@ endc
 	ld [hl], a
 
 	pop af
-	ld [rSVBK], a
+	ldh [rSVBK], a
 	ld a, $1
-	ld [hCGBPalUpdate], a
+	ldh [hCGBPalUpdate], a
 	ret
 
 .PlaceHealingMachineTile:

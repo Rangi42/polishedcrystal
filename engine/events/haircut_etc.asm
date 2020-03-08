@@ -44,18 +44,18 @@ MassageOrHaircut:
 .ok
 	inc hl
 	ld a, [hli]
-	ld [hScriptVar], a
+	ldh [hScriptVar], a
 	ld c, [hl]
 	jp ChangeHappiness
 
 .nope
 	xor a
-	ld [hScriptVar], a
+	ldh [hScriptVar], a
 	ret
 
 .egg
 	ld a, 1
-	ld [hScriptVar], a
+	ldh [hScriptVar], a
 	ret
 
 INCLUDE "data/events/happiness_probabilities.asm"

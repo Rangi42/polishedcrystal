@@ -285,7 +285,7 @@ DoChangeStat:
 	push af
 	xor a
 	ld [wFailedMessage], a
-	ld a, [hBattleTurn]
+	ldh a, [hBattleTurn]
 	and a
 	ld hl, wPlayerStatLevels
 	jr z, .got_stat_levels

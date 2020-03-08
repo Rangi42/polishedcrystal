@@ -52,22 +52,22 @@ Special_CheckMagikarpLength:
 	call SkipNames
 	rst CopyBytes
 	ld a, 3
-	ld [hScriptVar], a
+	ldh [hScriptVar], a
 	ret
 
 .not_long_enough
 	ld a, 2
-	ld [hScriptVar], a
+	ldh [hScriptVar], a
 	ret
 
 .declined
 	ld a, 1
-	ld [hScriptVar], a
+	ldh [hScriptVar], a
 	ret
 
 .not_magikarp
 	xor a
-	ld [hScriptVar], a
+	ldh [hScriptVar], a
 	ret
 
 .MeasureItText:
@@ -102,37 +102,37 @@ PrintMagikarpLength:
 	ld c, a
 	ld de, 2580 ; (1/25.4) << 16
 	xor a
-	ld [hTmpd], a
-	ld [hTmpe], a
+	ldh [hTmpd], a
+	ldh [hTmpe], a
 	ld hl, 0
 	ld a, 16
-	ld [hProduct], a
+	ldh [hProduct], a
 .loop
 	add hl, hl
-	ld a, [hTmpe]
+	ldh a, [hTmpe]
 	rla
-	ld [hTmpe], a
-	ld a, [hTmpd]
+	ldh [hTmpe], a
+	ldh a, [hTmpd]
 	rla
-	ld [hTmpd], a
+	ldh [hTmpd], a
 	sla e
 	rl d
 	jr nc, .noadd
 	add hl, bc
-	ld a, [hTmpe]
+	ldh a, [hTmpe]
 	adc 0
-	ld [hTmpe], a
-	ld a, [hTmpd]
+	ldh [hTmpe], a
+	ldh a, [hTmpd]
 	adc 0
-	ld [hTmpd], a
+	ldh [hTmpd], a
 .noadd
-	ld a, [hProduct]
+	ldh a, [hProduct]
 	dec a
-	ld [hProduct], a
+	ldh [hProduct], a
 	jr nz, .loop
-	ld a, [hTmpd]
+	ldh a, [hTmpd]
 	ld h, a
-	ld a, [hTmpe]
+	ldh a, [hTmpe]
 	ld l, a
 	ld bc, -12
 	ld e, 0
@@ -262,30 +262,30 @@ CalcMagikarpLength:
 	; c = (bc - de) / [hl]
 	call .BCMinusDE
 	ld a, b
-	ld [hDividend + 0], a
+	ldh [hDividend + 0], a
 	ld a, c
-	ld [hDividend + 1], a
+	ldh [hDividend + 1], a
 	ld a, [hl]
-	ld [hDivisor], a
+	ldh [hDivisor], a
 	ld b, 2
 	call Divide
-	ld a, [hQuotient + 2]
+	ldh a, [hQuotient + 2]
 	ld c, a
 
 	; de = c + 100 × (2 + i)
 	xor a
-	ld [hMultiplicand + 0], a
-	ld [hMultiplicand + 1], a
+	ldh [hMultiplicand + 0], a
+	ldh [hMultiplicand + 1], a
 	ld a, 100
-	ld [hMultiplicand + 2], a
+	ldh [hMultiplicand + 2], a
 	ld a, [wd265]
-	ld [hMultiplier], a
+	ldh [hMultiplier], a
 	call Multiply
 	ld b, 0
-	ld a, [hProduct + 3]
+	ldh a, [hProduct + 3]
 	add c
 	ld e, a
-	ld a, [hProduct + 2]
+	ldh a, [hProduct + 2]
 	adc b
 	ld d, a
 	jr .done

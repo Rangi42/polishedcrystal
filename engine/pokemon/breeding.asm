@@ -654,9 +654,9 @@ Hatch_UpdateFrontpicBGMapCenter:
 	pop bc
 	pop hl
 	ld a, b
-	ld [hBGMapAddress + 1], a
+	ldh [hBGMapAddress + 1], a
 	ld a, c
-	ld [hGraphicStartTile], a
+	ldh [hGraphicStartTile], a
 	lb bc, 7, 7
 	predef PlaceGraphic
 	pop af
@@ -710,7 +710,7 @@ EggHatch_AnimationSequence:
 	call DelayFrames
 	xor a
 	ld [wcf64], a
-	ld a, [hSCX]
+	ldh a, [hSCX]
 	ld b, a
 .outerloop
 	ld hl, wcf64
@@ -722,14 +722,14 @@ EggHatch_AnimationSequence:
 .loop
 ; wobble e times
 	ld a, 2
-	ld [hSCX], a
+	ldh [hSCX], a
 	ld a, -2
 	ld [wGlobalAnimXOffset], a
 	call EggHatch_DoAnimFrame
 	ld c, 2
 	call DelayFrames
 	ld a, -2
-	ld [hSCX], a
+	ldh [hSCX], a
 	ld a, 2
 	ld [wGlobalAnimXOffset], a
 	call EggHatch_DoAnimFrame
@@ -746,7 +746,7 @@ EggHatch_AnimationSequence:
 	ld de, SFX_EGG_HATCH
 	call PlaySFX
 	xor a
-	ld [hSCX], a
+	ldh [hSCX], a
 	ld [wGlobalAnimXOffset], a
 	call ClearSprites
 	call Hatch_InitShellFragments

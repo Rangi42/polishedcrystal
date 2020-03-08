@@ -1,9 +1,9 @@
 StatsScreenInit:
 	ld hl, StatsScreenMain
-	ld a, [hMapAnims]
+	ldh a, [hMapAnims]
 	push af
 	xor a
-	ld [hMapAnims], a ; disable overworld tile animations
+	ldh [hMapAnims], a ; disable overworld tile animations
 	ld a, [wBoxAlignment] ; whether sprite is to be mirrorred
 	push af
 	ld a, [wJumptableIndex]
@@ -31,7 +31,7 @@ StatsScreenInit:
 	pop af
 	ld [wBoxAlignment], a
 	pop af
-	ld [hMapAnims], a
+	ldh [hMapAnims], a
 	ret
 
 StatsScreenMain:
@@ -210,7 +210,7 @@ StatsScreen_GetJoypad:
 	jr .clear_flags
 
 .notbreedmon
-	ld a, [hJoyPressed]
+	ldh a, [hJoyPressed]
 .clear_flags
 	and a
 	ret
@@ -317,7 +317,7 @@ StatsScreen_JoypadAction:
 StatsScreen_InitUpperHalf:
 	call .PlaceHPBar
 	xor a
-	ld [hBGMapMode], a
+	ldh [hBGMapMode], a
 	ld a, [wCurPartySpecies]
 	ld [wd265], a
 	ld [wCurSpecies], a
@@ -446,7 +446,7 @@ StatsScreen_LoadGFX:
 	ld [wd265], a
 	ld [wCurSpecies], a
 	xor a
-	ld [hBGMapMode], a
+	ldh [hBGMapMode], a
 	call .ClearBox
 	call .LoadPokeBall
 	call .PageTilemap
@@ -619,15 +619,15 @@ StatsScreen_LoadGFX:
 	farcall CalcExpAtLevel
 	ld hl, wTempMonExp + 2
 	ld hl, wTempMonExp + 2
-	ld a, [hQuotient + 2]
+	ldh a, [hQuotient + 2]
 	sub [hl]
 	dec hl
 	ld [wBuffer3], a
-	ld a, [hQuotient + 1]
+	ldh a, [hQuotient + 1]
 	sbc [hl]
 	dec hl
 	ld [wBuffer2], a
-	ld a, [hQuotient]
+	ldh a, [hQuotient]
 	sbc [hl]
 	ld [wBuffer1], a
 	ret
@@ -1120,16 +1120,16 @@ StatsScreen_LoadTextBoxSpaceGFX:
 	push bc
 	push af
 	call DelayFrame
-	ld a, [rVBK]
+	ldh a, [rVBK]
 	push af
 	ld a, $1
-	ld [rVBK], a
+	ldh [rVBK], a
 	ld de, TextBoxSpaceGFX
 	lb bc, BANK(TextBoxSpaceGFX), 1
 	ld hl, vTiles2 tile $7f
 	call Get1bpp
 	pop af
-	ld [rVBK], a
+	ldh [rVBK], a
 	pop af
 	pop bc
 	pop de
@@ -1138,7 +1138,7 @@ StatsScreen_LoadTextBoxSpaceGFX:
 
 EggStatsScreen:
 	xor a
-	ld [hBGMapMode], a
+	ldh [hBGMapMode], a
 	ld hl, wCurHPPal
 	call SetHPPal
 	ld a, CGB_STATS_SCREEN_HP_PALS

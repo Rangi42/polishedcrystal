@@ -77,10 +77,10 @@ ReturnFromMapSetupScript::
 	ld a, [wCurrentLandmark]
 	ld [wPreviousLandmark], a
 	ld a, $90
-	ld [rWY], a
-	ld [hWY], a
+	ldh [rWY], a
+	ldh [hWY], a
 	xor a
-	ld [hLCDCPointer], a
+	ldh [hLCDCPointer], a
 	ret
 
 .CheckMovingWithinLandmark:
@@ -163,11 +163,11 @@ PlaceMapNameSign::
 	sub b
 	pop bc
 .got_value
-	ld [rWY], a
-	ld [hWY], a
+	ldh [rWY], a
+	ldh [hWY], a
 	sub $90
 	ret nz
-	ld [hLCDCPointer], a
+	ldh [hLCDCPointer], a
 	ret
 
 LoadMapNameSignGFX:

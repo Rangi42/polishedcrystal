@@ -18,43 +18,43 @@ SpecialNone:
 	ret
 
 Special_SetPlayerPalette:
-	ld a, [hScriptVar]
+	ldh a, [hScriptVar]
 	ld d, a
 	farjp SetPlayerPalette
 
 Special_SetCopycatPalette:
-	ld a, [hScriptVar]
+	ldh a, [hScriptVar]
 	ld d, a
 	farjp SetCopycatPalette
 
 Special_GameCornerPrizeMonCheckDex:
-	ld a, [hScriptVar]
+	ldh a, [hScriptVar]
 	dec a
 	call CheckCaughtMon
 	ret nz
-	ld a, [hScriptVar]
+	ldh a, [hScriptVar]
 	dec a
 	call SetSeenAndCaughtMon
 	call FadeToMenu
-	ld a, [hScriptVar]
+	ldh a, [hScriptVar]
 	ld [wd265], a
 	farcall NewPokedexEntry
 	jp ExitAllMenus
 
 SpecialSeenMon:
-	ld a, [hScriptVar]
+	ldh a, [hScriptVar]
 	dec a
 	jp SetSeenMon
 
 Special_FindThatSpecies:
-	ld a, [hScriptVar]
+	ldh a, [hScriptVar]
 	ld b, a
 	farcall _FindThatSpecies
 	jr z, FoundNone
 	jr FoundOne
 
 Special_FindThatSpeciesYourTrainerID:
-	ld a, [hScriptVar]
+	ldh a, [hScriptVar]
 	ld b, a
 	farcall _FindThatSpeciesYourTrainerID
 	jr z, FoundNone
@@ -62,12 +62,12 @@ Special_FindThatSpeciesYourTrainerID:
 
 FoundOne:
 	ld a, TRUE
-	ld [hScriptVar], a
+	ldh [hScriptVar], a
 	ret
 
 FoundNone:
 	xor a
-	ld [hScriptVar], a
+	ldh [hScriptVar], a
 	ret
 
 SpecialNameRival:
@@ -109,16 +109,16 @@ Special_DisplayLinkRecord:
 
 Special_KrissHousePC:
 	xor a
-	ld [hScriptVar], a
+	ldh [hScriptVar], a
 	farcall _KrissHousePC
 	ld a, c
-	ld [hScriptVar], a
+	ldh [hScriptVar], a
 	ret
 
 BugContestJudging:
 	farcall _BugContestJudging
 	ld a, b
-	ld [hScriptVar], a
+	ldh [hScriptVar], a
 	dec a
 	jr z, .firstplace
 	dec a
@@ -146,7 +146,7 @@ BugContestJudging:
 	ret
 
 MapRadio:
-	ld a, [hScriptVar]
+	ldh a, [hScriptVar]
 	ld e, a
 	farjp PlayRadio
 
@@ -154,7 +154,7 @@ Special_UnownPuzzle:
 	call FadeToMenu
 	farcall UnownPuzzle
 	ld a, [wSolvedUnownPuzzle]
-	ld [hScriptVar], a
+	ldh [hScriptVar], a
 	jp ExitAllMenus
 
 Special_SlotMachine:
@@ -229,15 +229,15 @@ Special_CheckCoins:
 ScriptReturnCarry:
 	jr c, .carry
 	xor a
-	ld [hScriptVar], a
+	ldh [hScriptVar], a
 	ret
 .carry
 	ld a, 1
-	ld [hScriptVar], a
+	ldh [hScriptVar], a
 	ret
 
 Special_ActivateFishingSwarm:
-	ld a, [hScriptVar]
+	ldh a, [hScriptVar]
 	ld [wFishingSwarmFlag], a
 	ret
 
@@ -289,7 +289,7 @@ SpecialSnorlaxAwake:
 .nope
 	xor a
 .done
-	ld [hScriptVar], a
+	ldh [hScriptVar], a
 	ret
 
 PlayCurMonCry:
@@ -312,12 +312,12 @@ Diploma:
 
 Special_GetOvercastIndex::
 	call GetOvercastIndex
-	ld [hScriptVar], a
+	ldh [hScriptVar], a
 	ret
 
 CheckIfTrendyPhraseIsLucky:
 	xor a
-	ld [hScriptVar], a
+	ldh [hScriptVar], a
 	ld hl, wTrendyPhrase
 	ld bc, .KeyPhrase
 	ld d, 6
@@ -331,7 +331,7 @@ CheckIfTrendyPhraseIsLucky:
 	dec d
 	jr nz, .loop
 	ld a, 1
-	ld [hScriptVar], a
+	ldh [hScriptVar], a
 	ret
 
 .KeyPhrase:
@@ -504,13 +504,13 @@ BillBoxSwitchCheck:
 	ld a, c
 	jr nz, .billboxloop
 	xor a
-	ld [hScriptVar], a
+	ldh [hScriptVar], a
 	ret
 
 .foundspace
 	pop af
 	dec a
-	ld [hScriptVar], a
+	ldh [hScriptVar], a
 	ld [wEngineBuffer1], a
 	ret
 

@@ -14,8 +14,8 @@ InitDisplayForHallOfFame:
 	xor a
 	call ByteFill
 	xor a
-	ld [hSCY], a
-	ld [hSCX], a
+	ldh [hSCY], a
+	ldh [hSCX], a
 	call EnableLCD
 	ld hl, .SavingRecordDontTurnOff
 	call PrintText
@@ -59,17 +59,17 @@ endc
 	dec c
 	jr nz, .load_white_palettes
 	xor a
-	ld [hSCY], a
-	ld [hSCX], a
+	ldh [hSCY], a
+	ldh [hSCX], a
 	call EnableLCD
 	call ApplyAttrAndTilemapInVBlank
 	jp SetPalettes
 
 ResetDisplayBetweenHallOfFameMons:
-	ld a, [rSVBK]
+	ldh a, [rSVBK]
 	push af
 	ld a, $6
-	ld [rSVBK], a
+	ldh [rSVBK], a
 	ld hl, wScratchTileMap
 	ld bc, BG_MAP_WIDTH * BG_MAP_HEIGHT
 	ld a, " "
@@ -79,5 +79,5 @@ ResetDisplayBetweenHallOfFameMons:
 	lb bc, $0, $40
 	call Request2bpp
 	pop af
-	ld [rSVBK], a
+	ldh [rSVBK], a
 	ret

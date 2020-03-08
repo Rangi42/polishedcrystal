@@ -2,12 +2,12 @@ SoftReset::
 	di
 	call MapSetup_Sound_Off
 	xor a
-	ld [hMapAnims], a
+	ldh [hMapAnims], a
 	call ClearPalettes
 	xor a
-	ld [rIF], a
+	ldh [rIF], a
 	ld a, 1 ; VBlank int
-	ld [rIE], a
+	ldh [rIE], a
 	ei
 
 	ld hl, wInputFlags
@@ -28,7 +28,7 @@ _Start::
 	ld a, $1
 
 .load
-	ld [hCGB], a
+	ldh [hCGB], a
 	; fallthrough
 
 Init::
@@ -36,29 +36,29 @@ Init::
 	di
 
 	xor a
-	ld [rIF], a
-	ld [rIE], a
-	ld [rRP], a
-	ld [rSCX], a
-	ld [rSCY], a
-	ld [rSB], a
-	ld [rSC], a
-	ld [rWX], a
-	ld [rWY], a
-	ld [rBGP], a
-	ld [rOBP0], a
-	ld [rOBP1], a
-	ld [rTMA], a
-	ld [rTAC], a
+	ldh [rIF], a
+	ldh [rIE], a
+	ldh [rRP], a
+	ldh [rSCX], a
+	ldh [rSCY], a
+	ldh [rSB], a
+	ldh [rSC], a
+	ldh [rWX], a
+	ldh [rWY], a
+	ldh [rBGP], a
+	ldh [rOBP0], a
+	ldh [rOBP1], a
+	ldh [rTMA], a
+	ldh [rTAC], a
 	ld [wRAM1Start], a
 
 .wait
-	ld a, [rLY]
+	ldh a, [rLY]
 	cp 145
 	jr nz, .wait
 
 	xor a
-	ld [rLCDC], a
+	ldh [rLCDC], a
 
 ; Clear WRAM bank 0
 	ld hl, wRAM0Start
@@ -74,18 +74,18 @@ Init::
 	ld sp, wStack
 
 ; Clear HRAM
-	ld a, [hCGB]
+	ldh a, [hCGB]
 	push af
 	xor a
 	ld hl, HRAM_START
 	ld bc, HRAM_END - HRAM_START
 	call ByteFill
 	pop af
-	ld [hCGB], a
+	ldh [hCGB], a
 
 	call ClearWRAM
 	ld a, 1
-	ld [rSVBK], a
+	ldh [rSVBK], a
 	call ClearVRAM
 	call ClearSprites
 	call ClearsScratch
@@ -106,21 +106,21 @@ Init::
 	call WriteOAMDMACodeToHRAM
 
 	xor a
-	ld [hMapAnims], a
-	ld [hSCX], a
-	ld [hSCY], a
-	ld [rJOYP], a
+	ldh [hMapAnims], a
+	ldh [hSCX], a
+	ldh [hSCY], a
+	ldh [rJOYP], a
 
 	ld a, $8 ; HBlank int enable
-	ld [rSTAT], a
+	ldh [rSTAT], a
 
 	ld a, $90
-	ld [hWY], a
-	ld [rWY], a
+	ldh [hWY], a
+	ldh [rWY], a
 
 	ld a, 7
-	ld [hWX], a
-	ld [rWX], a
+	ldh [hWX], a
+	ldh [rWX], a
 
 	ld a, %11100011
 	; LCD on
@@ -131,19 +131,19 @@ Init::
 	; OBJ 8x8
 	; OBJ on
 	; BG on
-	ld [rLCDC], a
+	ldh [rLCDC], a
 
 	ld a, CONNECTION_NOT_ESTABLISHED
-	ld [hSerialConnectionStatus], a
+	ldh [hSerialConnectionStatus], a
 
 	farcall InitSGBBorder
 
 	farcall InitCGBPals
 
 	ld a, vBGMap1 / $100
-	ld [hBGMapAddress + 1], a
+	ldh [hBGMapAddress + 1], a
 	xor a ; vBGMap1 % $100
-	ld [hBGMapAddress], a
+	ldh [hBGMapAddress], a
 
 	farcall StartClock
 
@@ -151,14 +151,14 @@ Init::
 	ld [MBC3LatchClock], a
 	ld [MBC3SRamEnable], a
 
-	ld a, [hCGB]
+	ldh a, [hCGB]
 	and a
 	call nz, DoubleSpeed
 
 	xor a
-	ld [rIF], a
+	ldh [rIF], a
 	ld a, 1 << VBLANK | 1 << SERIAL
-	ld [rIE], a
+	ldh [rIE], a
 	ei
 
 	call DelayFrame
@@ -172,11 +172,11 @@ ClearVRAM::
 ; Wipe VRAM banks 0 and 1
 
 	ld a, 1
-	ld [rVBK], a
+	ldh [rVBK], a
 	call .clear
 
 	xor a
-	ld [rVBK], a
+	ldh [rVBK], a
 .clear
 	ld hl, vTiles0
 	ld bc, $2000
@@ -189,7 +189,7 @@ ClearWRAM::
 	ld a, 1
 .bank_loop
 	push af
-	ld [rSVBK], a
+	ldh [rSVBK], a
 	xor a
 	ld hl, wRAM1Start
 	ld bc, $1000

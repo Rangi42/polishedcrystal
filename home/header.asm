@@ -21,7 +21,7 @@ LoadMapPart::
 
 
 SECTION "rst10 Bankswitch", ROM0[$0010]
-	ld [hROMBank], a
+	ldh [hROMBank], a
 	ld [MBC3RomBank], a
 	ret
 

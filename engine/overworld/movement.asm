@@ -226,7 +226,7 @@ Movement_step_end:
 Movement_remove_person:
 	call DeleteMapObject
 	ld hl, wObjectFollow_Leader
-	ld a, [hMapObjectIndexBuffer]
+	ldh a, [hMapObjectIndexBuffer]
 	cp [hl]
 	jr nz, .not_leading
 	ld [hl], -1
@@ -719,7 +719,7 @@ NormalStep:
 	call ShakeGrass
 SetWalkStepType:
 	ld hl, wCenteredObject
-	ld a, [hMapObjectIndexBuffer]
+	ldh a, [hMapObjectIndexBuffer]
 	cp [hl]
 	ld hl, OBJECT_STEP_TYPE
 	add hl, bc
@@ -763,7 +763,7 @@ JumpStep:
 	call SpawnShadow
 
 	ld hl, wCenteredObject
-	ld a, [hMapObjectIndexBuffer]
+	ldh a, [hMapObjectIndexBuffer]
 	cp [hl]
 	ld hl, OBJECT_STEP_TYPE
 	add hl, bc
@@ -798,7 +798,7 @@ DiagonalStairsStep:
 	ld [hl], PERSON_ACTION_STEP
 
 	ld hl, wCenteredObject
-	ld a, [hMapObjectIndexBuffer]
+	ldh a, [hMapObjectIndexBuffer]
 	cp [hl]
 	ld hl, OBJECT_STEP_TYPE
 	add hl, bc

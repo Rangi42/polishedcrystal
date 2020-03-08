@@ -1,9 +1,9 @@
 _ReplaceKrisSprite::
 	call GetPlayerSprite
 	ld a, [wPlayerSprite]
-	ld [hUsedSpriteIndex], a
+	ldh [hUsedSpriteIndex], a
 	xor a
-	ld [hUsedSpriteTile], a
+	ldh [hUsedSpriteTile], a
 	ld hl, wSpriteFlags
 	res 5, [hl]
 	jp GetUsedSprite
@@ -67,7 +67,7 @@ ReloadVisibleSprites::
 	push bc
 	call GetPlayerSprite
 	xor a
-	ld [hUsedSpriteIndex], a
+	ldh [hUsedSpriteIndex], a
 	call ReloadSpriteIndex
 	call LoadEmoteGFX
 	pop bc
@@ -80,11 +80,11 @@ ReloadSpriteIndex::
 ; Used to reload variable sprites
 	ld hl, wObjectStructs
 	ld de, OBJECT_STRUCT_LENGTH
-	ld a, [hUsedSpriteIndex]
+	ldh a, [hUsedSpriteIndex]
 	ld b, a
 	xor a
 .loop
-	ld [hObjectStructIndexBuffer], a
+	ldh [hObjectStructIndexBuffer], a
 	ld a, [hl]
 	and a
 	jr z, .done
@@ -111,7 +111,7 @@ ReloadSpriteIndex::
 	pop hl
 .done
 	add hl, de
-	ld a, [hObjectStructIndexBuffer]
+	ldh a, [hObjectStructIndexBuffer]
 	inc a
 	cp NUM_OBJECT_STRUCTS
 	jr nz, .loop
@@ -312,9 +312,9 @@ _GetSpritePalette::
 	ret
 
 GetUsedSprite::
-	ld a, [hUsedSpriteIndex]
+	ldh a, [hUsedSpriteIndex]
 	call SafeGetSprite
-	ld a, [hUsedSpriteTile]
+	ldh a, [hUsedSpriteTile]
 	call .GetTileAddr
 	push bc
 	push hl
@@ -348,7 +348,7 @@ endr
 	bit 6, a
 	ret nz
 
-	ld a, [hUsedSpriteIndex]
+	ldh a, [hUsedSpriteIndex]
 	call _DoesSpriteHaveFacings
 	ret c
 
@@ -362,7 +362,7 @@ endr
 	ld h, a
 
 .CopyToVram:
-	ld a, [rVBK]
+	ldh a, [rVBK]
 	push af
 	ld a, [wSpriteFlags]
 	bit 5, a
@@ -370,10 +370,10 @@ endr
 	jr z, .bankswitch
 	inc a
 .bankswitch
-	ld [rVBK], a
+	ldh [rVBK], a
 	call Request2bppInWRA6
 	pop af
-	ld [rVBK], a
+	ldh [rVBK], a
 	ret
 
 .GetTileAddr:

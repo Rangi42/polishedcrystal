@@ -24,7 +24,7 @@ GetPartyLocation::
 TrueUserPartyAttr::
 	push bc
 	ld c, a
-	ld a, [hBattleTurn]
+	ldh a, [hBattleTurn]
 	and a
 	ld hl, wPartyMons
 	jr z, .got_partymons
@@ -41,7 +41,7 @@ TrueUserPartyAttr::
 
 UserPartyAttr::
 	push af
-	ld a, [hBattleTurn]
+	ldh a, [hBattleTurn]
 	and a
 	jr nz, OTPartyAttrPre
 BattlePartyAttrPre:
@@ -62,7 +62,7 @@ DoBattlePartyAttr:
 
 OpponentPartyAttr::
 	push af
-	ld a, [hBattleTurn]
+	ldh a, [hBattleTurn]
 	and a
 	jr nz, BattlePartyAttrPre
 OTPartyAttrPre:
@@ -82,16 +82,16 @@ ResetDamage::
 
 BattleCommand_switchturn::
 SwitchTurn::
-	ld a, [hBattleTurn]
+	ldh a, [hBattleTurn]
 	push af
 	xor 1
-	ld [hBattleTurn], a
+	ldh [hBattleTurn], a
 	pop af
 	ret
 
 SetPlayerTurn::
 	ld a, 0
-	ld [hBattleTurn], a
+	ldh [hBattleTurn], a
 	ret
 
 SetFastestTurn::
@@ -99,7 +99,7 @@ SetFastestTurn::
 	jr z, SetPlayerTurn
 SetEnemyTurn::
 	ld a, 1
-	ld [hBattleTurn], a
+	ldh [hBattleTurn], a
 	ret
 
 GetThirdMaxHP::
@@ -166,7 +166,7 @@ GetMaxHP::
 GetOpponentMonAttr::
 	call CallOpponentTurn
 GetUserMonAttr::
-	ld a, [hBattleTurn]
+	ldh a, [hBattleTurn]
 	and a
 	ret z
 	push bc
@@ -190,7 +190,7 @@ GetUserMonAttr_de::
 UpdateOpponentInParty::
 	call CallOpponentTurn
 UpdateUserInParty::
-	ld a, [hBattleTurn]
+	ldh a, [hBattleTurn]
 	and a
 	jr nz, UpdateEnemyMonInParty
 	; fallthrough
@@ -244,7 +244,7 @@ GetBackupItemAddr::
 
 SetBackupItem::
 	; If backup is empty, replace with b if our turn (even in trainer battles)
-	ld a, [hBattleTurn]
+	ldh a, [hBattleTurn]
 	and a
 	ret nz
 
@@ -316,7 +316,7 @@ UserCanLoseItem::
 	call IsInArray
 	jr nc, .pop_and_ret_nz
 	inc hl
-	ld a, [hBattleTurn]
+	ldh a, [hBattleTurn]
 	and a
 	ld de, wBattleMonSpecies
 	jr z, .got_species
@@ -346,7 +346,7 @@ GetOpponentUsedItemAddr::
 	call CallOpponentTurn
 GetUsedItemAddr::
 ; Returns addr for user's POV's UsedItem
-	ld a, [hBattleTurn]
+	ldh a, [hBattleTurn]
 	and a
 	ld hl, wPartyUsedItems
 	ld a, [wCurBattleMon]
@@ -572,7 +572,7 @@ CheckIfTargetIsGhostType::
 	ld a, GHOST
 CheckIfTargetIsSomeType::
 	ld b, a
-	ld a, [hBattleTurn]
+	ldh a, [hBattleTurn]
 	jr CheckIfSomeoneIsSomeType
 CheckIfUserIsFlyingType::
 	ld a, FLYING
@@ -596,7 +596,7 @@ CheckIfUserIsIceType::
 	ld a, ICE
 CheckIfUserIsSomeType::
 	ld b, a
-	ld a, [hBattleTurn]
+	ldh a, [hBattleTurn]
 	xor 1
 CheckIfSomeoneIsSomeType
 	ld c, a
@@ -654,7 +654,7 @@ CheckContactMove::
 	farjp _CheckContactMove
 
 HasUserFainted::
-	ld a, [hBattleTurn]
+	ldh a, [hBattleTurn]
 	and a
 	jr z, HasPlayerFainted
 HasEnemyFainted::
@@ -662,7 +662,7 @@ HasEnemyFainted::
 	jr CheckIfHPIsZero
 
 HasOpponentFainted::
-	ld a, [hBattleTurn]
+	ldh a, [hBattleTurn]
 	and a
 	jr z, HasEnemyFainted
 HasPlayerFainted::
@@ -715,7 +715,7 @@ CheckNeutralizingGas::
 
 CheckSpeedWithQuickClaw::
 	; Quick Claw has a chance to override speed
-	ld a, [hBattleTurn]
+	ldh a, [hBattleTurn]
 	ld e, a
 	ld d, 0
 	push de
@@ -727,7 +727,7 @@ CheckSpeedWithQuickClaw::
 	call SwitchTurn
 	call .do_it
 	ld a, e
-	ld [hBattleTurn], a
+	ldh [hBattleTurn], a
 	ld a, d ; +1: player, -1: enemy, 0: both/neither
 	and a
 	jr z, CheckSpeed
@@ -767,7 +767,7 @@ CheckSpeedWithQuickClaw::
 	call StdBattleTextBox
 	pop de
 	inc d
-	ld a, [hBattleTurn]
+	ldh a, [hBattleTurn]
 	and a
 	ret z
 	dec d
@@ -810,7 +810,7 @@ CheckSpeed::
 _CheckSpeed::
 	; save battle turn so this can be used without screwing it up
 	; (needed for AI)
-	ld a, [hBattleTurn]
+	ldh a, [hBattleTurn]
 	ld e, a
 	call SetPlayerTurn
 	farcall GetSpeed
@@ -819,7 +819,7 @@ _CheckSpeed::
 	farcall GetSpeed
 	; restore turn
 	ld a, e
-	ld [hBattleTurn], a
+	ldh [hBattleTurn], a
 	pop de
 	; bc is enemy speed, de player
 	ld a, b
@@ -831,7 +831,7 @@ _CheckSpeed::
 	jr c, .player_first
 	jr nz, .enemy_first
 	; Speed is equal, so randomize. Account for linking.
-	ld a, [hSerialConnectionStatus]
+	ldh a, [hSerialConnectionStatus]
 	cp USING_INTERNAL_CLOCK
 	ld b, 0
 	jr z, .secondary_player
@@ -875,7 +875,7 @@ GetBattleVarAddr::
 
 ; Enemy turn uses the second byte instead.
 ; This lets battle variable calls be side-neutral.
-	ld a, [hBattleTurn]
+	ldh a, [hBattleTurn]
 	and a
 	jr z, .getvar
 	inc hl
@@ -963,7 +963,7 @@ StdBattleTextBox::
 
 GLOBAL BattleText
 
-	ld a, [hROMBank]
+	ldh a, [hROMBank]
 	push af
 
 	ld a, BANK(BattleText)
@@ -1022,20 +1022,20 @@ FloorBC::
 	ret
 
 PushLYOverrides::
-	ld a, [hLCDCPointer]
+	ldh a, [hLCDCPointer]
 	and a
 	ret z
 
 	ld a, wLYOverridesBackup % $100
-	ld [hRequestedVTileSource], a
+	ldh [hRequestedVTileSource], a
 	ld a, wLYOverridesBackup / $100
-	ld [hRequestedVTileSource + 1], a
+	ldh [hRequestedVTileSource + 1], a
 
 	ld a, wLYOverrides % $100
-	ld [hRequestedVTileDest], a
+	ldh [hRequestedVTileDest], a
 	ld a, wLYOverrides / $100
-	ld [hRequestedVTileDest + 1], a
+	ldh [hRequestedVTileDest + 1], a
 
 	ld a, (wLYOverridesEnd - wLYOverrides) / 16
-	ld [hLYOverrideStackCopyAmount], a
+	ldh [hLYOverrideStackCopyAmount], a
 	ret

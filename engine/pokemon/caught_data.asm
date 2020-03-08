@@ -81,7 +81,7 @@ CheckPartyFullAfterContest:
 	xor a
 	ld [wContestMon], a
 	and a
-	ld [hScriptVar], a
+	ldh [hScriptVar], a
 	ret
 
 .TryAddToBox:
@@ -141,12 +141,12 @@ CheckPartyFullAfterContest:
 	xor a
 	ld [wContestMon], a
 	ld a, $1
-	ld [hScriptVar], a
+	ldh [hScriptVar], a
 	ret
 
 .DidntCatchAnything:
 	ld a, $2
-	ld [hScriptVar], a
+	ldh [hScriptVar], a
 	ret
 
 GiveANickname_YesNo:

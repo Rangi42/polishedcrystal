@@ -16,7 +16,7 @@ TryAddMonToParty:
 	; Increase the party count
 	ld [de], a
 	ld a, [de] ; Why are we doing this?
-	ld [hMoveMon], a ; HRAM backup
+	ldh [hMoveMon], a ; HRAM backup
 	add e
 	ld e, a
 	jr nc, .loadspecies
@@ -39,7 +39,7 @@ TryAddMonToParty:
 	ld hl, wOTPartyMonOT
 
 .loadOTname
-	ld a, [hMoveMon] ; Restore index from backup
+	ldh a, [hMoveMon] ; Restore index from backup
 	dec a
 	call SkipNames
 	ld d, h
@@ -56,7 +56,7 @@ TryAddMonToParty:
 	jr nz, .got_target_nick
 	ld hl, wPartyMonNicknames
 .got_target_nick
-	ld a, [hMoveMon]
+	ldh a, [hMoveMon]
 	dec a
 	call SkipNames
 	ld d, h
@@ -73,7 +73,7 @@ TryAddMonToParty:
 	ld hl, wOTPartyMon1Species
 
 .initializeStats
-	ld a, [hMoveMon]
+	ldh a, [hMoveMon]
 	dec a
 	ld bc, PARTYMON_STRUCT_LENGTH
 	rst AddNTimes
@@ -120,13 +120,13 @@ endr
 	ld d, a
 	farcall CalcExpAtLevel
 	pop de
-	ld a, [hProduct + 1]
+	ldh a, [hProduct + 1]
 	ld [de], a
 	inc de
-	ld a, [hProduct + 2]
+	ldh a, [hProduct + 2]
 	ld [de], a
 	inc de
-	ld a, [hProduct + 3]
+	ldh a, [hProduct + 3]
 	ld [de], a
 	inc de
 
@@ -406,10 +406,10 @@ endr
 	add hl, bc
 	lb bc, FALSE, STAT_HP
 	call CalcPkmnStatC
-	ld a, [hProduct + 2]
+	ldh a, [hProduct + 2]
 	ld [de], a
 	inc de
-	ld a, [hProduct + 3]
+	ldh a, [hProduct + 3]
 	ld [de], a
 	inc de
 	pop hl
@@ -999,11 +999,11 @@ Functiondd64:
 	pop bc
 	ld hl, $8 ; Experience
 	add hl, bc
-	ld a, [hMultiplicand]
+	ldh a, [hMultiplicand]
 	ld [hli], a
-	ld a, [hMultiplicand + 1]
+	ldh a, [hMultiplicand + 1]
 	ld [hli], a
-	ld a, [hMultiplicand + 2]
+	ldh a, [hMultiplicand + 2]
 	ld [hl], a
 	and a
 	ret
@@ -1545,10 +1545,10 @@ CalcPkmnStats:
 .loop
 	inc c
 	call CalcPkmnStatC
-	ld a, [hMultiplicand + 1]
+	ldh a, [hMultiplicand + 1]
 	ld [de], a
 	inc de
-	ld a, [hMultiplicand + 2]
+	ldh a, [hMultiplicand + 2]
 	ld [de], a
 	inc de
 	ld a, c
@@ -1679,22 +1679,22 @@ CalcPkmnStatC:
 	inc d
 
 .no_overflow_2
-	ld [hMultiplicand + 2], a
+	ldh [hMultiplicand + 2], a
 	ld a, d
-	ld [hMultiplicand + 1], a
+	ldh [hMultiplicand + 1], a
 	xor a
-	ld [hMultiplicand + 0], a
+	ldh [hMultiplicand + 0], a
 	ld a, [wCurPartyLevel]
-	ld [hMultiplier], a
+	ldh [hMultiplier], a
 	call Multiply
-	ld a, [hProduct + 1]
-	ld [hDividend + 0], a
-	ld a, [hProduct + 2]
-	ld [hDividend + 1], a
-	ld a, [hProduct + 3]
-	ld [hDividend + 2], a
+	ldh a, [hProduct + 1]
+	ldh [hDividend + 0], a
+	ldh a, [hProduct + 2]
+	ldh [hDividend + 1], a
+	ldh a, [hProduct + 3]
+	ldh [hDividend + 2], a
 	ld a, 100
-	ld [hDivisor], a
+	ldh [hDivisor], a
 	ld a, 3
 	ld b, a
 	call Divide
@@ -1704,47 +1704,47 @@ CalcPkmnStatC:
 	jr nz, .not_hp
 	ld a, [wCurPartyLevel]
 	ld b, a
-	ld a, [hQuotient + 2]
+	ldh a, [hQuotient + 2]
 	add b
-	ld [hMultiplicand + 2], a
+	ldh [hMultiplicand + 2], a
 	jr nc, .no_overflow_3
-	ld a, [hQuotient + 1]
+	ldh a, [hQuotient + 1]
 	inc a
-	ld [hMultiplicand + 1], a
+	ldh [hMultiplicand + 1], a
 
 .no_overflow_3
 	ld a, STAT_MIN_HP
 
 .not_hp
 	ld b, a
-	ld a, [hQuotient + 2]
+	ldh a, [hQuotient + 2]
 	add b
-	ld [hMultiplicand + 2], a
+	ldh [hMultiplicand + 2], a
 	jr nc, .no_overflow_4
-	ld a, [hQuotient + 1]
+	ldh a, [hQuotient + 1]
 	inc a
-	ld [hMultiplicand + 1], a
+	ldh [hMultiplicand + 1], a
 
 .no_overflow_4
-	ld a, [hQuotient + 1]
+	ldh a, [hQuotient + 1]
 	cp (1000 / $100) + 1
 	jr nc, .max_stat
 	cp 1000 / $100
 	jr c, .stat_value_okay
-	ld a, [hQuotient + 2]
+	ldh a, [hQuotient + 2]
 	cp 1000 % $100
 	jr c, .stat_value_okay
 
 .max_stat
 	ld a, 999 / $100
-	ld [hMultiplicand + 1], a
+	ldh [hMultiplicand + 1], a
 	ld a, 999 % $100
-	ld [hMultiplicand + 2], a
+	ldh [hMultiplicand + 2], a
 
 .stat_value_okay
 	; do natures here
 	xor a
-	ld [hMultiplicand + 0], a
+	ldh [hMultiplicand + 0], a
 	push hl
 	push bc
 	ld bc, MON_NATURE - MON_DVS
@@ -1756,23 +1756,23 @@ CalcPkmnStatC:
 	call GetNatureStatMultiplier
 	pop bc
 	pop hl
-	ld [hMultiplier], a
+	ldh [hMultiplier], a
 	call Multiply
-	ld a, [hProduct + 1]
-	ld [hDividend + 0], a
-	ld a, [hProduct + 2]
-	ld [hDividend + 1], a
-	ld a, [hProduct + 3]
-	ld [hDividend + 2], a
+	ldh a, [hProduct + 1]
+	ldh [hDividend + 0], a
+	ldh a, [hProduct + 2]
+	ldh [hDividend + 1], a
+	ldh a, [hProduct + 3]
+	ldh [hDividend + 2], a
 	ld a, 10
-	ld [hDivisor], a
+	ldh [hDivisor], a
 	ld a, 3
 	ld b, a
 	call Divide
-	ld a, [hQuotient + 1]
-	ld [hMultiplicand + 1], a
-	ld a, [hQuotient + 2]
-	ld [hMultiplicand + 2], a
+	ldh a, [hQuotient + 1]
+	ldh [hMultiplicand + 1], a
+	ldh a, [hQuotient + 2]
+	ldh [hMultiplicand + 2], a
 	pop bc
 	pop de
 	pop hl

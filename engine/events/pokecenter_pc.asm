@@ -10,7 +10,7 @@ PokemonCenterPC:
 	call LoadMenuDataHeader
 .loop
 	xor a
-	ld [hBGMapMode], a
+	ldh [hBGMapMode], a
 	call .ChooseWhichPCListToUse
 	ld [wWhichIndexSet], a
 	call DoNthMenu
@@ -325,7 +325,7 @@ KrisWithdrawItemMenu:
 	ld hl, .WithdrewText
 	call MenuTextBox
 	xor a
-	ld [hBGMapMode], a
+	ldh [hBGMapMode], a
 	jp ExitMenu
 
 .PackFull:

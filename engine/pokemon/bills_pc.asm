@@ -7,12 +7,12 @@ _DepositPKMN:
 	push af
 	xor a
 	ld [wVramState], a
-	ld a, [hInMenu]
+	ldh a, [hInMenu]
 	push af
 	ld a, $1
-	ld [hInMenu], a
+	ldh [hInMenu], a
 	xor a
-	ld [hMapAnims], a
+	ldh [hMapAnims], a
 	call BillsPC_InitRAM
 	xor a
 	ld [wBillsPC_LoadedBox], a
@@ -28,7 +28,7 @@ _DepositPKMN:
 .done
 	call ClearSprites
 	pop af
-	ld [hInMenu], a
+	ldh [hInMenu], a
 	pop af
 	ld [wVramState], a
 	pop af
@@ -51,7 +51,7 @@ _DepositPKMN:
 
 .Init:
 	xor a
-	ld [hBGMapMode], a
+	ldh [hBGMapMode], a
 	call ClearSprites
 	call CopyBoxmonSpecies
 	call BillsPC_BoxName
@@ -83,12 +83,12 @@ _DepositPKMN:
 	ret z
 	call BillsPC_UpdateSelectionCursor
 	xor a
-	ld [hBGMapMode], a
+	ldh [hBGMapMode], a
 	call BillsPC_RefreshTextboxes
 	call PCMonInfo
 	call BillsPC_PrintBoxCountAndCapacityInsideBox
 	ld a, $1
-	ld [hBGMapMode], a
+	ldh [hBGMapMode], a
 	call DelayFrame
 	jp DelayFrame
 
@@ -114,7 +114,7 @@ _DepositPKMN:
 
 .WhatsUp:
 	xor a
-	ld [hBGMapMode], a
+	ldh [hBGMapMode], a
 	call ClearSprites
 	call BillsPC_GetSelectedMonPal
 	ld de, PCString_WhatsUp
@@ -240,12 +240,12 @@ _WithdrawPKMN:
 	push af
 	xor a
 	ld [wVramState], a
-	ld a, [hInMenu]
+	ldh a, [hInMenu]
 	push af
 	ld a, $1
-	ld [hInMenu], a
+	ldh [hInMenu], a
 	xor a
-	ld [hMapAnims], a
+	ldh [hMapAnims], a
 	call BillsPC_InitRAM
 	ld a, NUM_BOXES + 1
 	ld [wBillsPC_LoadedBox], a
@@ -261,7 +261,7 @@ _WithdrawPKMN:
 .done
 	call ClearSprites
 	pop af
-	ld [hInMenu], a
+	ldh [hInMenu], a
 	pop af
 	ld [wVramState], a
 	pop af
@@ -286,7 +286,7 @@ _WithdrawPKMN:
 	ld a, NUM_BOXES + 1
 	ld [wBillsPC_LoadedBox], a
 	xor a
-	ld [hBGMapMode], a
+	ldh [hBGMapMode], a
 	call ClearSprites
 	call CopyBoxmonSpecies
 	call BillsPC_BoxName
@@ -318,12 +318,12 @@ _WithdrawPKMN:
 	ret z
 	call BillsPC_UpdateSelectionCursor
 	xor a
-	ld [hBGMapMode], a
+	ldh [hBGMapMode], a
 	call BillsPC_RefreshTextboxes
 	call PCMonInfo
 	call BillsPC_PrintBoxCountAndCapacityInsideBox
 	ld a, $1
-	ld [hBGMapMode], a
+	ldh [hBGMapMode], a
 	call DelayFrame
 	jp DelayFrame
 
@@ -344,7 +344,7 @@ _WithdrawPKMN:
 
 .PrepSubmenu:
 	xor a
-	ld [hBGMapMode], a
+	ldh [hBGMapMode], a
 	call ClearSprites
 	call BillsPC_GetSelectedMonPal
 	ld de, PCString_WhatsUp
@@ -465,12 +465,12 @@ _MovePKMNWithoutMail:
 	push af
 	xor a
 	ld [wVramState], a
-	ld a, [hInMenu]
+	ldh a, [hInMenu]
 	push af
 	ld a, $1
-	ld [hInMenu], a
+	ldh [hInMenu], a
 	xor a
-	ld [hMapAnims], a
+	ldh [hMapAnims], a
 	call BillsPC_InitRAM
 	ld a, [wCurBox]
 	and $f
@@ -489,7 +489,7 @@ _MovePKMNWithoutMail:
 .asm_e2793
 	call ClearSprites
 	pop af
-	ld [hInMenu], a
+	ldh [hInMenu], a
 	pop af
 	ld [wVramState], a
 	pop af
@@ -514,7 +514,7 @@ _MovePKMNWithoutMail:
 
 .Init:
 	xor a
-	ld [hBGMapMode], a
+	ldh [hBGMapMode], a
 	call ClearSprites
 	call CopyBoxmonSpecies
 	ld de, PCString_ChooseaPKMN
@@ -547,12 +547,12 @@ _MovePKMNWithoutMail:
 	ret z
 	call BillsPC_UpdateSelectionCursor
 	xor a
-	ld [hBGMapMode], a
+	ldh [hBGMapMode], a
 	call BillsPC_RefreshTextboxes
 	call PCMonInfo
 	call BillsPC_PrintBoxCountAndCapacityInsideBox
 	ld a, $1
-	ld [hBGMapMode], a
+	ldh [hBGMapMode], a
 	call DelayFrame
 	jp DelayFrame
 
@@ -580,7 +580,7 @@ _MovePKMNWithoutMail:
 
 .PrepSubmenu:
 	xor a
-	ld [hBGMapMode], a
+	ldh [hBGMapMode], a
 	call ClearSprites
 	call BillsPC_GetSelectedMonPal
 	ld de, PCString_WhatsUp
@@ -655,7 +655,7 @@ _MovePKMNWithoutMail:
 
 .PrepInsertCursor:
 	xor a
-	ld [hBGMapMode], a
+	ldh [hBGMapMode], a
 	call CopyBoxmonSpecies
 	ld de, PCString_MoveToWhere
 	call BillsPC_PlaceString
@@ -682,10 +682,10 @@ _MovePKMNWithoutMail:
 	ret z
 	call BillsPC_UpdateInsertCursor
 	xor a
-	ld [hBGMapMode], a
+	ldh [hBGMapMode], a
 	call BillsPC_RefreshTextboxes
 	ld a, $1
-	ld [hBGMapMode], a
+	ldh [hBGMapMode], a
 	call DelayFrame
 	jp DelayFrame
 
@@ -2272,7 +2272,7 @@ _ChangeBox:
 	call BillsPC_ClearTilemap
 .loop
 	xor a
-	ld [hBGMapMode], a
+	ldh [hBGMapMode], a
 	call BillsPC_PrintBoxName
 	call BillsPC_PlaceChooseABoxString
 	ld hl, _ChangeBox_menudataheader
@@ -2294,7 +2294,7 @@ _ChangeBox:
 
 BillsPC_ClearTilemap:
 	xor a
-	ld [hBGMapMode], a
+	ldh [hBGMapMode], a
 	hlcoord 0, 0
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
 	ld a, " "
@@ -2580,5 +2580,5 @@ BillsPC_PlaceChangeBoxString:
 	hlcoord 1, 16
 	call PlaceString
 	ld a, $1
-	ld [hBGMapMode], a
+	ldh [hBGMapMode], a
 	ret

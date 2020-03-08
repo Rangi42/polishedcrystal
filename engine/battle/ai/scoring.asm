@@ -177,7 +177,7 @@ AI_Types:
 	push bc
 	push de
 	ld a, 1
-	ld [hBattleTurn], a
+	ldh [hBattleTurn], a
 	farcall BattleCheckTypeMatchup
 	pop de
 	pop bc
@@ -399,7 +399,7 @@ AI_Smart_Sleep:
 AI_Smart_LeechHit:
 	push hl
 	ld a, 1
-	ld [hBattleTurn], a
+	ldh [hBattleTurn], a
 	farcall BattleCheckTypeMatchup
 	pop hl
 
@@ -1292,7 +1292,7 @@ AI_Smart_PriorityHit:
 
 ; Greatly encourage this move if it will KO the player.
 	ld a, $1
-	ld [hBattleTurn], a
+	ldh [hBattleTurn], a
 	push hl
 	farcall AttackDamage
 	farcall BattleCommand_damagecalc
@@ -1874,7 +1874,7 @@ AI_Smart_RapidSpin:
 AI_Smart_HiddenPower:
 	push hl
 	ld a, 1
-	ld [hBattleTurn], a
+	ldh [hBattleTurn], a
 
 ; Calculate Hidden Power's type and base power based on enemy's DVs.
 	farcall HiddenPowerDamageStats
@@ -2618,7 +2618,7 @@ AI_Aggressive:
 
 AIDamageCalc:
 	ld a, 1
-	ld [hBattleTurn], a
+	ldh [hBattleTurn], a
 	ld a, [wEnemyMoveStruct + MOVE_EFFECT]
 	ld de, 1
 	ld hl, .ConstantDamageEffects
@@ -2698,7 +2698,7 @@ AI_Cautious:
 AI_Status:
 ; Dismiss status moves that don't affect the player.
 	ld a, 1
-	ld [hBattleTurn], a
+	ldh [hBattleTurn], a
 	ld hl, wStringBuffer5 - 1
 	ld de, wEnemyMonMoves
 	ld b, NUM_MOVES + 1

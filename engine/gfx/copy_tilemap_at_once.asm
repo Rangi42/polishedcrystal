@@ -1,25 +1,25 @@
 _SafeCopyTilemapAtOnce::
-	ld a, [hBGMapMode]
+	ldh a, [hBGMapMode]
 	push af
-	ld a, [hMapAnims]
+	ldh a, [hMapAnims]
 	push af
-	ld a, [hVBlank]
+	ldh a, [hVBlank]
 	push af
 	xor a
-	ld [hBGMapMode], a
-	ld [hMapAnims], a
+	ldh [hBGMapMode], a
+	ldh [hMapAnims], a
 
 	ld a, b
 	and %11
 	jr nz, .notZero
-	ld a, [hCGBPalUpdate]
+	ldh a, [hCGBPalUpdate]
 	ld d, a
 	ld e, 0
 	jr .gotPalUpdate
 .notZero
 	cp 3
 	jr nz, .doNotUseOldValue
-	ld a, [hCGBPalUpdate]
+	ldh a, [hCGBPalUpdate]
 	ld e, a
 	ld d, 0
 	jr .gotPalUpdate
@@ -29,58 +29,58 @@ _SafeCopyTilemapAtOnce::
 	lb de, 0, 1
 .gotPalUpdate
 	xor a
-	ld [hCGBPalUpdate], a
-	ld a, [rLY]
+	ldh [hCGBPalUpdate], a
+	ldh a, [rLY]
 	cp $70
 	call nc, DelayFrame ; not enough time to update music, so wait a frame
 	ld a, e
-	ld [hCGBPalUpdate], a
+	ldh [hCGBPalUpdate], a
 .waitLYAndUpdateMusic
-	ld a, [rLY]
+	ldh a, [rLY]
 	cp $70
 	jr nz, .waitLYAndUpdateMusic
 	xor a
-	ld [hBGMapHalf], a
+	ldh [hBGMapHalf], a
 	inc a
 	call SkipMusic
 	bit 2, b
 	jr z, .noForceOAMUpdate
 	xor a
-	ld [hOAMUpdate], a
+	ldh [hOAMUpdate], a
 .noForceOAMUpdate
 	bit 3, b
 	ld a, 3
 	jr z, .gotTileCount
 	ld a, 9
 .gotTileCount
-	ld [hTilesPerCycle], a
+	ldh [hTilesPerCycle], a
 	ld a, b
 	and %1000
 	swap a
 	or 5
-	ld [hBGMapMode], a ; bit 7 = skip attr map
+	ldh [hBGMapMode], a ; bit 7 = skip attr map
 	ld a, 1 << 7 | 7 ; execute actual vblank 7
-	ld [hVBlank], a
+	ldh [hVBlank], a
 	call DelayFrame
 	ld a, d
-	ld [hCGBPalUpdate], a
+	ldh [hCGBPalUpdate], a
 	pop af
-	ld [hVBlank], a
+	ldh [hVBlank], a
 	pop af
-	ld [hMapAnims], a
+	ldh [hMapAnims], a
 	pop af
-	ld [hBGMapMode], a
+	ldh [hBGMapMode], a
 	ret
 
 _CopyTilemapAtOnce::
-	ld a, [hBGMapMode]
+	ldh a, [hBGMapMode]
 	push af
-	ld a, [hMapAnims]
+	ldh a, [hMapAnims]
 	push af
 
 	xor a
-	ld [hBGMapMode], a
-	ld [hMapAnims], a
+	ldh [hBGMapMode], a
+	ldh [hMapAnims], a
 
 	di
 	coord hl, 0, 0, wAttrMap
@@ -93,33 +93,33 @@ _CopyTilemapAtOnce::
 	ei ; in case we've passed vblank
 
 	pop af
-	ld [hMapAnims], a
+	ldh [hMapAnims], a
 	pop af
-	ld [hBGMapMode], a
+	ldh [hBGMapMode], a
 	ret
 
 VBlankSafeCopyTilemapAtOnce::
-	ld a, [hSCX]
-	ld [rSCX], a
-	ld a, [hSCY]
-	ld [rSCY], a
-	ld a, [hWY]
-	ld [rWY], a
-	ld a, [hWX]
-	ld [rWX], a
+	ldh a, [hSCX]
+	ldh [rSCX], a
+	ldh a, [hSCY]
+	ldh [rSCY], a
+	ldh a, [hWY]
+	ldh [rWY], a
+	ldh a, [hWX]
+	ldh [rWX], a
 	call UpdateCGBPals
 ; values for the bg map update part should already be loaded
 	call UpdateBGMap
 ; specify the values for attr map update
-	ld a, [hBGMapMode]
+	ldh a, [hBGMapMode]
 	bit 7, a
 	jr nz, .skipAttr
 	ld a, 6
-	ld [hBGMapMode], a
+	ldh [hBGMapMode], a
 	call UpdateBGMap
 .skipAttr
 	call PushOAM
-	ld a, [hBGMapMode]
+	ldh a, [hBGMapMode]
 	bit 7, a
 	jr z, .attrAndBGCopy
 ; if we only need to update tiles, copy the remaining half in hblank
@@ -150,18 +150,18 @@ VBlankSafeCopyTilemapAtOnce::
 ; fallthrough
 Copy5RowsOfTilemapInHBlank_VBK0:
 	xor a
-	ld [rVBK], a
+	ldh [rVBK], a
 	jr Copy5RowsOfTilemapInHBlank
 
 CopyFullTilemapInHBlank:
-	ld [rVBK], a
+	ldh [rVBK], a
 	ld de, 0
 	ld b, SCREEN_HEIGHT
 	jr CopyTilemapInHBlank
 
 Copy5RowsOfTilemapInHBlank_VBK1:
 	ld a, 1
-	ld [rVBK], a
+	ldh [rVBK], a
 
 ; fallthrough
 Copy5RowsOfTilemapInHBlank:
@@ -173,27 +173,27 @@ CopyTilemapInHBlank:
 	ld [hSPBuffer], sp
 
 	ld sp, hl
-	ld a, [hBGMapAddress + 1]
+	ldh a, [hBGMapAddress + 1]
 	ld h, a
-	ld a, [hBGMapAddress]
+	ldh a, [hBGMapAddress]
 	ld l, a
 	add hl, de
 
 	ld a, b
 .loop
-	ld [hTilesPerCycle], a
+	ldh [hTilesPerCycle], a
 ; if in v/hblank, wait until not in v/hblank
 	pop bc
 	pop de
-	ld a, [rLY]
+	ldh a, [rLY]
 	cp $90
 	jr nc, .inVBlank1
 .waitnohbl1
-	ld a, [rSTAT]
+	ldh a, [rSTAT]
 	and %10
 	jr z, .waitnohbl1
 .waithbl1
-	ld a, [rSTAT]
+	ldh a, [rSTAT]
 	and %10
 	jr nz, .waithbl1
 ; load BGMap0
@@ -224,15 +224,15 @@ CopyTilemapInHBlank:
 
 	pop bc
 	pop de
-	ld a, [rLY]
+	ldh a, [rLY]
 	cp $90
 	jr nc, .inVBlank2
 .waitnohbl2
-	ld a, [rSTAT]
+	ldh a, [rSTAT]
 	and %10
 	jr z, .waitnohbl2
 .waithbl2
-	ld a, [rSTAT]
+	ldh a, [rSTAT]
 	and %10
 	jr nz, .waithbl2
 ; load BGMap0
@@ -266,7 +266,7 @@ CopyTilemapInHBlank:
 	jr nc, .noCarry
 	inc h
 .noCarry
-	ld a, [hTilesPerCycle]
+	ldh a, [hTilesPerCycle]
 	dec a
 	jr nz, .loop
 

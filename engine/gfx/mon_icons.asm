@@ -204,7 +204,7 @@ LoadPartyMenuMonIcon:
 	ret
 
 .SpawnItemIcon:
-	ld a, [hObjectStructIndexBuffer]
+	ldh a, [hObjectStructIndexBuffer]
 	ld hl, wPartyMon1Item
 	call GetPartyLocation
 	ld a, [hl]
@@ -309,7 +309,7 @@ LoadTradeAnimationMonIcon:
 InitPartyMenuIcon:
 	ld a, [wCurIconTile]
 	push af
-	ld a, [hObjectStructIndexBuffer]
+	ldh a, [hObjectStructIndexBuffer]
 	ld e, a
 	ld d, 0
 	ld hl, wPartyMon1IsEgg
@@ -325,7 +325,7 @@ InitPartyMenuIcon:
 .got_icon
 	ld [wCurIcon], a
 	call GetMemIconGFX
-	ld a, [hObjectStructIndexBuffer]
+	ldh a, [hObjectStructIndexBuffer]
 ; y coord
 rept 4
 	add a
@@ -358,12 +358,12 @@ SetPartyMonIconAnimSpeed:
 	ret
 
 .getspeed
-	ld a, [hObjectStructIndexBuffer]
+	ldh a, [hObjectStructIndexBuffer]
 	ld hl, wPartyMon1IsEgg
 	call GetPartyLocation
 	bit MON_IS_EGG_F, [hl]
 	jr nz, .egg
-	ld a, [hObjectStructIndexBuffer]
+	ldh a, [hObjectStructIndexBuffer]
 	ld b, a
 	farcall PlacePartymonHPBar
 	call GetHPPal
@@ -376,7 +376,7 @@ SetPartyMonIconAnimSpeed:
 	ret
 
 .egg
-	ld a, [hObjectStructIndexBuffer]
+	ldh a, [hObjectStructIndexBuffer]
 	ld hl, wPartyMon1Happiness
 	call GetPartyLocation
 	ld a, [hl]

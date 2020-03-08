@@ -32,7 +32,7 @@ _InitString::
 
 FarCopyRadioText::
 	inc hl
-	ld a, [hROMBank]
+	ldh a, [hROMBank]
 	push af
 	ld a, [hli]
 	ld e, a

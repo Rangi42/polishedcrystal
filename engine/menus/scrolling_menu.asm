@@ -3,16 +3,16 @@ _InitScrollingMenu::
 	call ApplyTilemap
 	call ConsumeGenericDelay
 	xor a
-	ld [hBGMapMode], a
+	ldh [hBGMapMode], a
 	ld [wGenericDelay], a
 	ret
 
 _InitScrollingMenuNoBGMapUpdate::
 	xor a
 	ld [wMenuJoypad], a
-	ld [hBGMapMode], a
+	ldh [hBGMapMode], a
 	inc a
-	ld [hInMenu], a
+	ldh [hInMenu], a
 	call InitScrollingMenuCursor
 	call ScrollingMenu_InitFlags
 	call ScrollingMenu_ValidateSwitchItem
@@ -30,12 +30,12 @@ _ScrollingMenu::
 	call MenuClickSound
 	ld [wMenuJoypad], a
 	xor a
-	ld [hInMenu], a
+	ldh [hInMenu], a
 	ret
 
 ScrollingMenu_InitDisplay:
 	xor a
-	ld [hBGMapMode], a
+	ldh [hBGMapMode], a
 	ld hl, wOptions1
 	ld a, [hl]
 	push af

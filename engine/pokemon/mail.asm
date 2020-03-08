@@ -184,7 +184,7 @@ CheckPokeItem::
 	pop bc
 
 .return
-	ld [hScriptVar], a
+	ldh [hScriptVar], a
 	ret
 
 GivePokeItem::
@@ -367,7 +367,7 @@ MailboxPC:
 	ld hl, .TopMenuDataHeader
 	call CopyMenuDataHeader
 	xor a
-	ld [hBGMapMode], a
+	ldh [hBGMapMode], a
 	call InitScrollingMenu
 	call UpdateSprites
 

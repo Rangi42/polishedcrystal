@@ -118,12 +118,12 @@ CheckForSurfingPikachu:
 	cp PIKACHU
 	jr nz, .no
 	ld a, TRUE
-	ld [hScriptVar], a
+	ldh [hScriptVar], a
 	ret
 
 .no:
 	xor a ; FALSE
-	ld [hScriptVar], a
+	ldh [hScriptVar], a
 	ret
 
 FieldMovePokepicScript:
@@ -261,7 +261,7 @@ Script_CutFromMenu:
 
 GetBuffer6:
 	ld a, [wBuffer6]
-	ld [hScriptVar], a
+	ldh [hScriptVar], a
 	ret
 
 CutDownGrass:
@@ -272,7 +272,7 @@ CutDownGrass:
 	ld a, [wBuffer5] ; ReplacementTile
 	ld [hl], a
 	xor a
-	ld [hBGMapMode], a
+	ldh [hBGMapMode], a
 	call LoadMapPart
 	call UpdateSprites
 	call DelayFrame
@@ -338,7 +338,7 @@ AutoCutTreeScript:
 
 CutDownTree:
 	xor a
-	ld [hBGMapMode], a
+	ldh [hBGMapMode], a
 	call LoadMapPart
 	call UpdateSprites
 	call DelayFrame
@@ -683,7 +683,7 @@ FlyFunction:
 
 .outdoors
 	xor a
-	ld [hMapAnims], a
+	ldh [hMapAnims], a
 	call LoadStandardMenuDataHeader
 	call ClearSprites
 	farcall _FlyMap
@@ -815,12 +815,12 @@ Script_AutoWaterfall:
 
 .CheckContinueWaterfall:
 	xor a
-	ld [hScriptVar], a
+	ldh [hScriptVar], a
 	ld a, [wPlayerStandingTile]
 	cp COLL_WATERFALL
 	ret z
 	ld a, $1
-	ld [hScriptVar], a
+	ldh [hScriptVar], a
 	ret
 
 .WaterfallStep:
@@ -1195,7 +1195,7 @@ TryStrengthOW:
 	; fallthrough
 
 .done
-	ld [hScriptVar], a
+	ldh [hScriptVar], a
 	ret
 
 WhirlpoolFunction:
@@ -1487,12 +1487,12 @@ GetFacingObject:
 	farcall CheckFacingObject
 	jr nc, .fail
 
-	ld a, [hObjectStructIndexBuffer]
+	ldh a, [hObjectStructIndexBuffer]
 	call GetObjectStruct
 	ld hl, OBJECT_MAP_OBJECT_INDEX
 	add hl, bc
 	ld a, [hl]
-	ld [hLastTalked], a
+	ldh [hLastTalked], a
 	call GetMapObject
 	ld hl, MAPOBJECT_MOVEMENT
 	add hl, bc
@@ -1578,7 +1578,7 @@ HasRockSmash:
 	jr c, .done
 	xor a
 .done
-	ld [hScriptVar], a
+	ldh [hScriptVar], a
 	ret
 
 FishFunction:
@@ -1789,7 +1789,7 @@ Fishing_CheckFacingUp:
 	xor a
 
 .up
-	ld [hScriptVar], a
+	ldh [hScriptVar], a
 	ret
 
 Script_FishCastRod:
@@ -1809,7 +1809,7 @@ MovementData_0xd093:
 
 PutTheRodAway:
 	xor a
-	ld [hBGMapMode], a
+	ldh [hBGMapMode], a
 	ld a, $1
 	ld [wPlayerAction], a
 	call UpdateSprites
@@ -1817,7 +1817,7 @@ PutTheRodAway:
 
 CurItemToScriptVar:
 	ld a, [wCurItem]
-	ld [hScriptVar], a
+	ldh [hScriptVar], a
 	ret
 
 UnknownText_0xd0a4:
@@ -1971,7 +1971,7 @@ HasCutAvailable::
 .no
 	ld a, 1
 .done
-	ld [hScriptVar], a
+	ldh [hScriptVar], a
 	ret
 
 AskCutTreeScript:

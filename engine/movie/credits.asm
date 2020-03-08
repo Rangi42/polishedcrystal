@@ -130,10 +130,10 @@ Credits::
 .okay
 	ld [wJumptableIndex], a
 
-	ld a, [rSVBK]
+	ldh a, [rSVBK]
 	push af
 	ld a, $5
-	ld [rSVBK], a
+	ldh [rSVBK], a
 
 	call ClearBGPalettes
 	call ClearTileMap
@@ -188,20 +188,20 @@ Credits::
 	call ByteFill
 
 	ld a, rSCX & $ff
-	ld [hLCDCPointer], a
+	ldh [hLCDCPointer], a
 
 	ld hl, rIE
 	set LCD_STAT, [hl]
 	call GetCreditsPalette
 	call SetPalettes
-	ld a, [hVBlank]
+	ldh a, [hVBlank]
 	push af
 	ld a, $5
-	ld [hVBlank], a
+	ldh [hVBlank], a
 	ld a, $1
-	ld [hInMenu], a
+	ldh [hInMenu], a
 	xor a
-	ld [hBGMapMode], a
+	ldh [hBGMapMode], a
 	ld [wCreditsPos], a
 	ld [wCreditsPos+1], a
 	ld [wCreditsTimer], a
@@ -218,18 +218,18 @@ Credits::
 .exit_credits
 	call ClearBGPalettes
 	xor a
-	ld [hLCDCPointer], a
-	ld [hBGMapAddress], a
+	ldh [hLCDCPointer], a
+	ldh [hBGMapAddress], a
 	ld hl, rIE
 	res LCD_STAT, [hl]
 	pop af
-	ld [hVBlank], a
+	ldh [hVBlank], a
 	pop af
-	ld [rSVBK], a
+	ldh [rSVBK], a
 	ret
 
 Credits_HandleAButton:
-	ld a, [hJoypadDown]
+	ldh a, [hJoypadDown]
 	and A_BUTTON
 	ret z
 	ld a, [wJumptableIndex]
@@ -237,7 +237,7 @@ Credits_HandleAButton:
 	ret
 
 Credits_HandleBButton:
-	ld a, [hJoypadDown]
+	ldh a, [hJoypadDown]
 	and B_BUTTON
 	ret z
 	ld a, [wJumptableIndex]
@@ -301,30 +301,30 @@ Credits_LoopBack:
 
 Credits_PrepBGMapUpdate:
 	xor a
-	ld [hBGMapMode], a
+	ldh [hBGMapMode], a
 	jp Credits_Next
 
 Credits_UpdateGFXRequestPath:
 	call Credits_LoadBorderGFX
 	ld a, l
-	ld [hRequestedVTileSource], a
+	ldh [hRequestedVTileSource], a
 	ld a, h
-	ld [hRequestedVTileSource + 1], a
+	ldh [hRequestedVTileSource + 1], a
 	ld a, vTiles2 % $100
-	ld [hRequestedVTileDest], a
+	ldh [hRequestedVTileDest], a
 	ld a, vTiles2 / $100
-	ld [hRequestedVTileDest + 1], a
+	ldh [hRequestedVTileDest + 1], a
 	; fallthrough
 
 Credits_RequestGFX:
 	xor a
-	ld [hBGMapMode], a
+	ldh [hBGMapMode], a
 	ld a, $8
-	ld [hRequested2bpp], a
+	ldh [hRequested2bpp], a
 	jp Credits_Next
 
 Credits_LYOverride:
-	ld a, [rLY]
+	ldh a, [rLY]
 	cp $30
 	jr c, Credits_LYOverride
 	ld a, [wCreditsLYOverride]
@@ -364,7 +364,7 @@ ParseCredits:
 ; First, let's clear the current text display,
 ; starting from line 5.
 	xor a
-	ld [hBGMapMode], a
+	ldh [hBGMapMode], a
 	hlcoord 0, 5
 	ld bc, 20 * 12
 	ld a, " "
@@ -486,9 +486,9 @@ ParseCredits:
 	ld [wCreditsTimer], a
 
 	xor a
-	ld [hBGMapHalf], a
+	ldh [hBGMapHalf], a
 	ld a, 1
-	ld [hBGMapMode], a
+	ldh [hBGMapMode], a
 
 .done
 	jp Credits_Next
@@ -528,9 +528,9 @@ ParseCredits:
 
 ConstructCreditsTilemap:
 	xor a
-	ld [hBGMapMode], a
+	ldh [hBGMapMode], a
 	ld a, $c
-	ld [hBGMapAddress], a
+	ldh [hBGMapAddress], a
 
 	ld a, $28
 	hlcoord 0, 0
@@ -572,8 +572,8 @@ ConstructCreditsTilemap:
 
 	call ApplyAttrAndTilemapInVBlank
 	xor a
-	ld [hBGMapMode], a
-	ld [hBGMapAddress], a
+	ldh [hBGMapMode], a
+	ldh [hBGMapAddress], a
 	hlcoord 0, 0
 	call .InitTopPortion
 	jp ApplyAttrAndTilemapInVBlank

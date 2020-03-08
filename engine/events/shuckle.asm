@@ -50,12 +50,12 @@ SpecialGiveShuckie:
 	ld hl, wDailyFlags
 	set 5, [hl] ; ENGINE_SHUCKIE_GIVEN
 	ld a, TRUE
-	ld [hScriptVar], a
+	ldh [hScriptVar], a
 	ret
 
 .NotGiven:
 	xor a ; ld a, FALSE
-	ld [hScriptVar], a
+	ldh [hScriptVar], a
 	ret
 
 _GetLastPartyMonAttribute:
@@ -117,22 +117,22 @@ SpecialReturnShuckie:
 	farcall RemoveMonFromPartyOrBox
 	ld a, $2
 .HappyToStayWithYou:
-	ld [hScriptVar], a
+	ldh [hScriptVar], a
 	ret
 
 .refused
 	ld a, $1
-	ld [hScriptVar], a
+	ldh [hScriptVar], a
 	ret
 
 .DontReturn:
 	xor a
-	ld [hScriptVar], a
+	ldh [hScriptVar], a
 	ret
 
 .fainted
 	ld a, $4
-	ld [hScriptVar], a
+	ldh [hScriptVar], a
 	ret
 
 SpecialShuckieOT:

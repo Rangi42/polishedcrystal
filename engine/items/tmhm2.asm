@@ -1,9 +1,9 @@
 TMHMPocket:
 	ld a, $1
-	ld [hInMenu], a
+	ldh [hInMenu], a
 	call TMHM_PocketLoop
 	ld a, 0 ; not xor a; preserve carry flag
-	ld [hInMenu], a
+	ldh [hInMenu], a
 	ret nc
 	call PlaceHollowCursor
 	ld a, [wCurTMHM]
@@ -12,7 +12,7 @@ TMHMPocket:
 
 TMHM_PocketLoop:
 	xor a
-	ld [hBGMapMode], a
+	ldh [hBGMapMode], a
 	call TMHM_DisplayPocketItems
 	ld a, 2
 	ld [w2DMenuCursorInitY], a
@@ -58,7 +58,7 @@ TMHM_JoypadLoop:
 	ld [hl], a
 	pop hl
 	xor a
-	ld [hBGMapMode], a
+	ldh [hBGMapMode], a
 	ld a, [w2DMenuFlags2]
 	bit 7, a
 	jp nz, TMHM_ScrollPocket

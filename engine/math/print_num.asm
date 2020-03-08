@@ -11,7 +11,7 @@ _PrintNum::
 	push af
 	swap a
 	and $f
-	ld [hPrintNum + 4], a
+	ldh [hPrintNum + 4], a
 	pop af
 	and $f
 	push bc
@@ -97,7 +97,7 @@ PrintHLNum:
 ; b & $f contains the maximum string length. (b & $e0 is flags).
 ; hl is where we print to (usually the screen).
 	push af
-	ld a, [hPrintNum + 4]
+	ldh a, [hPrintNum + 4]
 	dec a
 	jr nz, .no_zero_set
 	set PRINTNUM_LEADINGZEROS_F, b
@@ -159,11 +159,11 @@ PrintHLNum:
 	add "0"
 .got_value
 	ld [hli], a
-	ld a, [hPrintNum + 4]
+	ldh a, [hPrintNum + 4]
 	and a
 	ret z
 	dec a
-	ld [hPrintNum + 4], a
+	ldh [hPrintNum + 4], a
 	ret nz
 	ld [hl], "."
 	inc hl

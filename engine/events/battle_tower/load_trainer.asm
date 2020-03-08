@@ -1,8 +1,8 @@
 Function_LoadOpponentTrainer:
-	ld a, [rSVBK]
+	ldh a, [rSVBK]
 	push af
 	ld a, BANK(wBT_OTTrainer)
-	ld [rSVBK], a
+	ldh [rSVBK], a
 
 	; Fill BT_OTTrainer with zeros
 	xor a
@@ -22,11 +22,11 @@ Function_LoadOpponentTrainer:
 	inc a
 	jr z, .load_tycoon
 
-	ld a, [hRandomAdd]
+	ldh a, [hRandomAdd]
 	ld b, a
 .resample ; loop to find a random trainer
 	call Random
-	ld a, [hRandomAdd]
+	ldh a, [hRandomAdd]
 	add b
 	ld b, a ; b contains the nr of the trainer
 	and %01111111
@@ -75,7 +75,7 @@ endc
 	call CloseSRAM
 
 	pop af
-	ld [rSVBK], a
+	ldh [rSVBK], a
 	ret
 
 INCLUDE "data/battle_tower/classes.asm"
@@ -333,11 +333,11 @@ BT_SetLevel:
 	farcall CalcExpAtLevel
 	pop hl
 	push hl
-	ld a, [hProduct + 1]
+	ldh a, [hProduct + 1]
 	ld [hli], a
-	ld a, [hProduct + 2]
+	ldh a, [hProduct + 2]
 	ld [hli], a
-	ld a, [hProduct + 3]
+	ldh a, [hProduct + 3]
 	ld [hl], a
 	pop hl
 

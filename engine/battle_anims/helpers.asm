@@ -126,12 +126,12 @@ LoadBattleAnimObj:
 	ret
 
 .ball
-	ld a, [rSVBK]
+	ldh a, [rSVBK]
 	push af
 
 	; which ball?
 	ld a, BANK(wCurItem)
-	ld [rSVBK], a
+	ldh [rSVBK], a
 	ld a, [wCurItem]
 	dec a
 	ld e, a
@@ -140,7 +140,7 @@ LoadBattleAnimObj:
 	push bc
 	push de
 	ld a, BANK(wUnknOBPals)
-	ld [rSVBK], a
+	ldh [rSVBK], a
 	ld hl, CaughtBallPals + 4 ; skip NO_ITEM
 rept 4
 	add hl, de
@@ -154,7 +154,7 @@ endr
 	pop de
 	pop bc
 	pop af
-	ld [rSVBK], a
+	ldh [rSVBK], a
 	; get the gfx pointer
 	ld hl, .ball_gfx
 	add hl, de

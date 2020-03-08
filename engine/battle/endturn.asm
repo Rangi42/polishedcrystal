@@ -152,7 +152,7 @@ HandleBetweenTurnEffects:
 	ld a, [wLinkMode]
 	and a
 	jr z, .got_first_switchin
-	ld a, [hSerialConnectionStatus]
+	ldh a, [hSerialConnectionStatus]
 	cp USING_INTERNAL_CLOCK
 	call z, SetEnemyTurn
 .got_first_switchin
@@ -344,7 +344,7 @@ HandleFutureSight:
 	call SwitchTurn
 
 .do_it
-	ld a, [hBattleTurn]
+	ldh a, [hBattleTurn]
 	and a
 	ld hl, wPlayerFutureSightCount
 	jr z, .got_future
@@ -467,7 +467,7 @@ HandleLeechSeed:
 	call SwitchTurn
 	farcall GetHPAbsorption
 	ld a, $1
-	ld [hBGMapMode], a
+	ldh [hBGMapMode], a
 	call GetOpponentAbility
 	cp LIQUID_OOZE
 	jr z, .hurt
@@ -545,7 +545,7 @@ DoPoisonBurnDamage:
 	call GetSixteenthMaxHP
 
 .got_damage_amount
-	ld a, [hBattleTurn]
+	ldh a, [hBattleTurn]
 	and a
 	ld hl, wPlayerToxicCount
 	jr z, .got_toxic_count
@@ -599,7 +599,7 @@ HandleWrap:
 
 	ld hl, wPlayerWrapCount
 	ld de, wPlayerTrappingMove
-	ld a, [hBattleTurn]
+	ldh a, [hBattleTurn]
 	and a
 	jr z, .got_addrs
 	ld hl, wEnemyWrapCount
@@ -662,7 +662,7 @@ HandleEncore:
 	call HasUserFainted
 	ret z
 
-	ld a, [hBattleTurn]
+	ldh a, [hBattleTurn]
 	and a
 	ld hl, wPlayerEncoreCount
 	jr z, .got_encore_count
@@ -730,7 +730,7 @@ HandleDisable:
 	ret z
 	ld de, DisabledNoMoreText
 
-	ld a, [hBattleTurn]
+	ldh a, [hBattleTurn]
 	and a
 	ld hl, wPlayerDisableCount
 	jr z, EndturnEncoreDisable
@@ -747,7 +747,7 @@ HandlePerishSong:
 	ret z
 
 	ld hl, wPlayerPerishCount
-	ld a, [hBattleTurn]
+	ldh a, [hBattleTurn]
 	and a
 	jr z, .got_count
 	ld hl, wEnemyPerishCount
@@ -897,7 +897,7 @@ HandleSafeguard:
 	ld a, $1
 
 .print
-	ld [hBattleTurn], a
+	ldh [hBattleTurn], a
 	ld hl, BattleText_SafeguardFaded
 	jp StdBattleTextBox
 
@@ -984,7 +984,7 @@ HandleRoost:
 	res SUBSTATUS_ROOST, [hl]
 	ret z
 
-	ld a, [hBattleTurn]
+	ldh a, [hBattleTurn]
 	and a
 	ld hl, wBattleMonType1
 	jr z, .got_types

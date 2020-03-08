@@ -36,12 +36,12 @@ GetModifiedCaptureRate:
 	rl b
 	ld a, l
 	sub c
-	ld [hMultiplicand + 2], a
+	ldh [hMultiplicand + 2], a
 	ld a, h
 	sbc b
-	ld [hMultiplicand + 1], a
+	ldh [hMultiplicand + 1], a
 	xor a
-	ld [hMultiplicand], a
+	ldh [hMultiplicand], a
 
 	; * ball bonus
 	ld a, [wCurItem]
@@ -50,7 +50,7 @@ GetModifiedCaptureRate:
 
 	; * base capture rate (might have been modified by Heavy Ball)
 	ld a, [wEnemyMonCatchRate]
-	ld [hMultiplier], a
+	ldh [hMultiplier], a
 	call Multiply
 	call CheckBallOverflow
 	jr z, .pop_hl_and_gurantee
@@ -96,7 +96,7 @@ GetModifiedCaptureRate:
 	jr .loop
 .done
 	ld a, l
-	ld [hDivisor], a
+	ldh [hDivisor], a
 	ld b, 4
 	call Divide
 
@@ -165,7 +165,7 @@ CheckCriticalCapture:
 	call ApplyDamageMod
 	pop af
 	ld [wCurItem], a
-	ld a, [hQuotient + 2]
+	ldh a, [hQuotient + 2]
 	ld b, a
 	call Random
 	cp b
@@ -185,7 +185,7 @@ CheckBallOverflow:
 ; Returns z if capture rate math is currently more than 24bit, which means
 ; it has overflowed what we can calculate. This allows us to simply return
 ; early, because at that point, nothing can stop it from being >255.
-	ld a, [hProduct]
+	ldh a, [hProduct]
 	and a
 	jr nz, .overflow
 	or 1
@@ -498,7 +498,7 @@ TimerBallMultiplier:
 	add a
 	add b
 	add 10
-	ld [hMultiplier], a
+	ldh [hMultiplier], a
 	call Multiply
 	ld a, $1a ; x0.1 after the above multiplier gives 1.3x, 1.6x, 1.9x, ..., 4x.
 	jp ApplyDamageMod
@@ -511,7 +511,7 @@ NestBallMultiplier:
 	ld b, a
 	ld a, 41
 	sub b
-	ld [hMultiplier], a
+	ldh [hMultiplier], a
 	call Multiply
 	ld a, $15
 	jp ApplyDamageMod

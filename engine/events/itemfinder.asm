@@ -41,7 +41,7 @@ ItemFinder:
 	ld d, PLAYER
 	ld a, [wBuffer1]
 	and $f
-	ld [hScriptVar], a
+	ldh [hScriptVar], a
 	ld a, [wBuffer1]
 	rrca
 	rrca

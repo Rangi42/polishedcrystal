@@ -59,7 +59,7 @@ CheckWildEncountersScriptFlag:
 
 StartMap:
 	xor a
-	ld [hScriptVar], a
+	ldh [hScriptVar], a
 	xor a
 	ld [wScriptRunning], a
 	ld hl, wMapStatus
@@ -72,13 +72,13 @@ EnterMap:
 	farcall RunMapSetupScript
 	call DisableEvents
 
-	ld a, [hMapEntryMethod]
+	ldh a, [hMapEntryMethod]
 	cp MAPSETUP_CONNECTION
 	jr nz, .dont_enable
 	call EnableEvents
 .dont_enable
 
-	ld a, [hMapEntryMethod]
+	ldh a, [hMapEntryMethod]
 	cp MAPSETUP_RELOADMAP
 	jr nz, .dontresetpoison
 	xor a
@@ -86,7 +86,7 @@ EnterMap:
 .dontresetpoison
 
 	xor a ; end map entry
-	ld [hMapEntryMethod], a
+	ldh [hMapEntryMethod], a
 	ld a, 2 ; HandleMap
 	ld [wMapStatus], a
 	jp DeleteSavedMusic
@@ -123,11 +123,11 @@ NextOverworldFrame:
 	ld a, [wOverworldDelaySkip]
 	and a
 	jr nz, .done
-	ld a, [hDelayFrameLY]
+	ldh a, [hDelayFrameLY]
 	inc a
 	jp nz, LoadGraphicsAndDelay
 	xor a
-	ld [hDelayFrameLY], a
+	ldh [hDelayFrameLY], a
 .done
 	ld a, [wOverworldDelaySkip]
 	and a
@@ -430,7 +430,7 @@ OWPlayerInput:
 	ret
 
 CheckAPressOW:
-	ld a, [hJoyPressed]
+	ldh a, [hJoyPressed]
 	and A_BUTTON
 	ret z
 	call TryObjectEvent
@@ -458,14 +458,14 @@ TryObjectEvent:
 	ret nc
 
 	call PlayTalkObject
-	ld a, [hObjectStructIndexBuffer]
+	ldh a, [hObjectStructIndexBuffer]
 	call GetObjectStruct
 	ld hl, OBJECT_MAP_OBJECT_INDEX
 	add hl, bc
 	ld a, [hl]
-	ld [hLastTalked], a
+	ldh [hLastTalked], a
 
-	ld a, [hLastTalked]
+	ldh a, [hLastTalked]
 	call GetMapObject
 	ld hl, MAPOBJECT_COLOR
 	add hl, bc
@@ -519,7 +519,7 @@ TryObjectEvent:
 	ld hl, MAPOBJECT_RANGE
 	add hl, bc
 	ld a, [hli]
-	ld [hScriptVar], a
+	ldh [hScriptVar], a
 	ld de, wTemporaryScriptBuffer
 	ld a, showcrytext_command
 	ld [de], a
@@ -783,9 +783,9 @@ PlayerMovement:
 
 CheckMenuOW:
 	xor a
-	ld [hMenuReturn], a
-	ld [hMenuReturn + 1], a
-	ld a, [hJoyPressed]
+	ldh [hMenuReturn], a
+	ldh [hMenuReturn + 1], a
+	ldh a, [hJoyPressed]
 
 	bit 2, a ; SELECT
 	jr nz, .Select
@@ -1205,7 +1205,7 @@ _TryWildEncounter_BugContest:
 	ld c, a
 	inc c
 	call Random
-	ld a, [hRandomAdd]
+	ldh a, [hRandomAdd]
 	call SimpleDivide
 	add d
 .GotLevel:
@@ -1224,7 +1224,7 @@ TryWildEncounter_BugContest:
 	farcall ApplyMusicEffectOnEncounterRate
 	farcall ApplyCleanseTagEffectOnEncounterRate
 	call Random
-	ld a, [hRandomAdd]
+	ldh a, [hRandomAdd]
 	cp b
 	ret c
 	ld a, 1
@@ -1315,7 +1315,7 @@ HandleCmdQueue::
 	ld hl, wCmdQueue
 	xor a
 .loop
-	ld [hMapObjectIndexBuffer], a
+	ldh [hMapObjectIndexBuffer], a
 	ld a, [hl]
 	and a
 	jr z, .skip
@@ -1328,7 +1328,7 @@ HandleCmdQueue::
 .skip
 	ld de, CMDQUEUE_ENTRY_SIZE
 	add hl, de
-	ld a, [hMapObjectIndexBuffer]
+	ldh a, [hMapObjectIndexBuffer]
 	inc a
 	cp CMDQUEUE_CAPACITY
 	jr nz, .loop

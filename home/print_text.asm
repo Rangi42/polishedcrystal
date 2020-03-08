@@ -21,7 +21,7 @@ PrintLetterDelay::
 	and %11
 	ret z
 	ld a, $1
-	ld [hBGMapHalf], a
+	ldh [hBGMapHalf], a
 .forceFastScroll
 	push hl
 	push de
@@ -45,7 +45,7 @@ PrintLetterDelay::
 	call DelayFrame
 	call GetJoypad
 ; Finish execution if A or B is pressed
-	ld a, [hJoyDown]
+	ldh a, [hJoyDown]
 	and A_BUTTON | B_BUTTON
 	jr z, .textDelayLoop
 .done
@@ -77,6 +77,6 @@ PrintNum::
 	ret
 
 FarPrintText::
-	ld [hBuffer], a
+	ldh [hBuffer], a
 	homecall PrintText, [hBuffer]
 	ret

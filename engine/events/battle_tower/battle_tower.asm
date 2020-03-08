@@ -1,9 +1,9 @@
 Special_BattleTower_FindChallengeLevel:
 	; e = maximum party level [1-100]
-	ld a, [rSVBK]
+	ldh a, [rSVBK]
 	push af
 	ld a, $1
-	ld [rSVBK], a
+	ldh [rSVBK], a
 	ld hl, wPartyMon1Level
 	ld bc, PARTYMON_STRUCT_LENGTH
 	ld a, [wPartyCount]
@@ -20,7 +20,7 @@ Special_BattleTower_FindChallengeLevel:
 	ld a, d
 	jr nz, .loop
 	pop af
-	ld [rSVBK], a
+	ldh [rSVBK], a
 
 	; wBTChoiceOfLvlGroup = (e + 9) / 10 [1-10]
 	ld a, 9
@@ -28,15 +28,15 @@ Special_BattleTower_FindChallengeLevel:
 	ld c, 10
 	call SimpleDivide
 
-	ld a, [rSVBK]
+	ldh a, [rSVBK]
 	push af
 	ld a, $3
-	ld [rSVBK], a
+	ldh [rSVBK], a
 	ld a, b
 	ld [wBTChoiceOfLvlGroup], a
-	ld [hScriptVar], a
+	ldh [hScriptVar], a
 	pop af
-	ld [rSVBK], a
+	ldh [rSVBK], a
 	ret
 
 Special_BattleTower_Battle:
@@ -90,7 +90,7 @@ RunBattleTowerTrainer:
 	farcall LoadPokemonData
 	farcall HealPartyEvenForNuzlocke
 	ld a, [wBattleResult]
-	ld [hScriptVar], a
+	ldh [hScriptVar], a
 	and a
 	jr nz, .lost
 	ld a, BANK(sNrOfBeatenBattleTowerTrainers)
@@ -171,10 +171,10 @@ ReadBTTrainerParty:
 
 CopyBTTrainerToTemp:
 ; copy the BattleTower-Trainer data that lies at 'wBT_OTTrainer' to 'wBT_OTTemp'
-	ld a, [rSVBK]
+	ldh a, [rSVBK]
 	push af
 	ld a, BANK(wBT_OTTrainer)
-	ld [rSVBK], a
+	ldh [rSVBK], a
 
 	ld hl, wBT_OTTrainer
 	ld de, wBT_OTTemp ; wMisc
@@ -182,7 +182,7 @@ CopyBTTrainerToTemp:
 	rst CopyBytes
 
 	pop af
-	ld [rSVBK], a
+	ldh [rSVBK], a
 
 	ld a, BANK(sBattleTowerChallengeState)
 	call GetSRAMBank
@@ -205,7 +205,7 @@ Special_BattleTower_ResetTrainersSRAM:
 
 Special_BattleTower_CheckNewSaveFile:
 	call Special_BattleTower_CheckSaveFileExistsAndIsYours
-	ld a, [hScriptVar]
+	ldh a, [hScriptVar]
 	and a
 	ret z
 
@@ -213,7 +213,7 @@ Special_BattleTower_CheckNewSaveFile:
 	call GetSRAMBank
 	ld a, [sBattleTowerNewSaveFile]
 	and $2
-	ld [hScriptVar], a
+	ldh [hScriptVar], a
 	jp CloseSRAM
 
 Special_BattleTower_GetChallengeState:
@@ -221,11 +221,11 @@ Special_BattleTower_GetChallengeState:
 	ld a, BANK(sBattleTowerChallengeState)
 	call GetSRAMBank
 	ld a, [hl]
-	ld [hScriptVar], a
+	ldh [hScriptVar], a
 	jp CloseSRAM
 
 Special_BattleTower_SetChallengeState:
-	ld a, [hScriptVar]
+	ldh a, [hScriptVar]
 	ld c, a
 	ld a, BANK(sBattleTowerChallengeState)
 	call GetSRAMBank
@@ -244,27 +244,27 @@ Special_BattleTower_MarkNewSaveFile:
 Special_BattleTower_SaveLevelGroup:
 	ld a, BANK(sBTChoiceOfLevelGroup)
 	call GetSRAMBank
-	ld a, [rSVBK]
+	ldh a, [rSVBK]
 	push af
 	ld a, $3
-	ld [rSVBK], a
+	ldh [rSVBK], a
 	ld a, [wBTChoiceOfLvlGroup]
 	ld [sBTChoiceOfLevelGroup], a
 	pop af
-	ld [rSVBK], a
+	ldh [rSVBK], a
 	jp CloseSRAM
 
 Special_BattleTower_LoadLevelGroup:
 	ld a, BANK(sBTChoiceOfLevelGroup)
 	call GetSRAMBank
-	ld a, [rSVBK]
+	ldh a, [rSVBK]
 	push af
 	ld a, $3
-	ld [rSVBK], a
+	ldh [rSVBK], a
 	ld a, [sBTChoiceOfLevelGroup]
 	ld [wBTChoiceOfLvlGroup], a
 	pop af
-	ld [rSVBK], a
+	ldh [rSVBK], a
 	jp CloseSRAM
 
 Special_BattleTower_CheckSaveFileExistsAndIsYours:
@@ -278,7 +278,7 @@ Special_BattleTower_CheckSaveFileExistsAndIsYours:
 .yes
 	ld a, $1
 .nope
-	ld [hScriptVar], a
+	ldh [hScriptVar], a
 	ret
 
 Special_BattleTower_MaxVolume:
@@ -296,17 +296,17 @@ Special_BattleTower_BeginChallenge:
 
 Special_BattleTower_LoadOpponentTrainerAndPokemonsWithOTSprite:
 	farcall Function_LoadOpponentTrainer
-	ld a, [rSVBK]
+	ldh a, [rSVBK]
 	push af
 	ld a, BANK(wBT_OTTrainerClass)
-	ld [rSVBK], a
+	ldh [rSVBK], a
 	ld hl, wBT_OTTrainerClass
 	ld a, [hl]
 	dec a
 	ld c, a
 	ld b, $0
 	pop af
-	ld [rSVBK], a
+	ldh [rSVBK], a
 	ld hl, BTTrainerClassSprites
 	add hl, bc
 	ld a, [hl]
@@ -316,9 +316,9 @@ Special_BattleTower_LoadOpponentTrainerAndPokemonsWithOTSprite:
 ; because s/he is chosen randomly and appears out of nowhere
 	ld a, [wBTTempOTSprite]
 	ld [wMap1ObjectSprite], a
-	ld [hUsedSpriteIndex], a
+	ldh [hUsedSpriteIndex], a
 	ld a, 24
-	ld [hUsedSpriteTile], a
+	ldh [hUsedSpriteTile], a
 	farjp GetUsedSprite
 
 INCLUDE "data/trainers/sprites.asm"
@@ -331,12 +331,12 @@ Special_BattleTower_CheckForRules:
 .yes
 	ld a, 1
 .done
-	ld [hScriptVar], a
+	ldh [hScriptVar], a
 	ret
 
 Special_BattleTower_MainMenu:
 	ld a, $4
-	ld [hScriptVar], a
+	ldh [hScriptVar], a
 	ld hl, MenuDataHeader_ChallengeExplanationCancel
 	call LoadMenuDataHeader
 	call ChallengeExplanationCancelMenu
@@ -345,7 +345,7 @@ Special_BattleTower_MainMenu:
 ChallengeExplanationCancelMenu:
 	call VerticalMenu
 	jr c, .Exit
-	ld a, [hScriptVar]
+	ldh a, [hScriptVar]
 	cp $5
 	jr nz, .UsewMenuCursorY
 	ld a, [wMenuCursorY]
@@ -359,12 +359,12 @@ ChallengeExplanationCancelMenu:
 	ld a, [wMenuCursorY]
 
 .LoadToScriptVar:
-	ld [hScriptVar], a
+	ldh [hScriptVar], a
 	ret
 
 .Exit:
 	ld a, $4
-	ld [hScriptVar], a
+	ldh [hScriptVar], a
 	ret
 
 MenuDataHeader_ChallengeExplanationCancel:

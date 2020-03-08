@@ -2,24 +2,24 @@ CalculateMaximumQuantity:
 ; limit [wItemQuantityBuffer] so that de * [wItemQuantityBuffer] <= wMoney
 ; 1 <= [wItemQuantityBuffer] <= 99
 	xor a
-	ld [hMoneyTemp + 0], a
-	ld [hMoneyTemp + 1], a
-	ld [hMoneyTemp + 2], a
+	ldh [hMoneyTemp + 0], a
+	ldh [hMoneyTemp + 1], a
+	ldh [hMoneyTemp + 2], a
 	ld b, -1
 	jr .start
 .loop
 	cp 99
 	jr nc, .done
 .start
-	ld a, [hMoneyTemp + 2]
+	ldh a, [hMoneyTemp + 2]
 	add e
-	ld [hMoneyTemp + 2], a
-	ld a, [hMoneyTemp + 1]
+	ldh [hMoneyTemp + 2], a
+	ldh a, [hMoneyTemp + 1]
 	adc d
-	ld [hMoneyTemp + 1], a
-	ld a, [hMoneyTemp + 0]
+	ldh [hMoneyTemp + 1], a
+	ldh a, [hMoneyTemp + 0]
 	adc 0
-	ld [hMoneyTemp + 0], a
+	ldh [hMoneyTemp + 0], a
 	inc b
 	push de
 	push bc
@@ -195,13 +195,13 @@ DisplaySellingPrice:
 
 BuySell_MultiplyPrice:
 	xor a
-	ld [hMultiplicand + 0], a
+	ldh [hMultiplicand + 0], a
 	ld a, [wBuffer1]
-	ld [hMultiplicand + 1], a
+	ldh [hMultiplicand + 1], a
 	ld a, [wBuffer2]
-	ld [hMultiplicand + 2], a
+	ldh [hMultiplicand + 2], a
 	ld a, [wItemQuantityChangeBuffer]
-	ld [hMultiplier], a
+	ldh [hMultiplier], a
 	push hl
 	call Multiply
 	pop hl
@@ -243,11 +243,11 @@ BTDisplayPurchaseCost:
 DisplayPurchasePriceCommon:
 	push hl
 	ld hl, hMoneyTemp
-	ld a, [hProduct + 1]
+	ldh a, [hProduct + 1]
 	ld [hli], a
-	ld a, [hProduct + 2]
+	ldh a, [hProduct + 2]
 	ld [hli], a
-	ld a, [hProduct + 3]
+	ldh a, [hProduct + 3]
 	ld [hl], a
 	pop hl
 	inc hl

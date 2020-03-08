@@ -4,23 +4,23 @@ SpecialBeastsCheck:
 ; Return the result in hScriptVar.
 
 	ld a, RAIKOU
-	ld [hScriptVar], a
+	ldh [hScriptVar], a
 	call CheckOwnMonAnywhere
 	jr nc, SpecialMonCheckFailed
 
 	ld a, ENTEI
-	ld [hScriptVar], a
+	ldh [hScriptVar], a
 	call CheckOwnMonAnywhere
 	jr nc, SpecialMonCheckFailed
 
 	ld a, SUICUNE
-	ld [hScriptVar], a
+	ldh [hScriptVar], a
 	call CheckOwnMonAnywhere
 	jr nc, SpecialMonCheckFailed
 
 	; they exist
 	ld a, 1
-	ld [hScriptVar], a
+	ldh [hScriptVar], a
 	ret
 
 SpecialBirdsCheck:
@@ -29,23 +29,23 @@ SpecialBirdsCheck:
 ; Return the result in hScriptVar.
 
 	ld a, ARTICUNO
-	ld [hScriptVar], a
+	ldh [hScriptVar], a
 	call CheckOwnMonAnywhere
 	jr nc, SpecialMonCheckFailed
 
 	ld a, ZAPDOS
-	ld [hScriptVar], a
+	ldh [hScriptVar], a
 	call CheckOwnMonAnywhere
 	jr nc, SpecialMonCheckFailed
 
 	ld a, MOLTRES
-	ld [hScriptVar], a
+	ldh [hScriptVar], a
 	call CheckOwnMonAnywhere
 	jr nc, SpecialMonCheckFailed
 
 	; they exist
 	ld a, 1
-	ld [hScriptVar], a
+	ldh [hScriptVar], a
 	ret
 
 SpecialDuoCheck:
@@ -54,18 +54,18 @@ SpecialDuoCheck:
 ; Return the result in hScriptVar.
 
 	ld a, LUGIA
-	ld [hScriptVar], a
+	ldh [hScriptVar], a
 	call CheckOwnMonAnywhere
 	jr nc, SpecialMonCheckFailed
 
 	ld a, HO_OH
-	ld [hScriptVar], a
+	ldh [hScriptVar], a
 	call CheckOwnMonAnywhere
 	jr nc, SpecialMonCheckFailed
 
 	; they exist
 	ld a, 1
-	ld [hScriptVar], a
+	ldh [hScriptVar], a
 	ret
 
 SpecialMonCheck:
@@ -77,12 +77,12 @@ SpecialMonCheck:
 
 	; they exist
 	ld a, 1
-	ld [hScriptVar], a
+	ldh [hScriptVar], a
 	ret
 
 SpecialMonCheckFailed:
 	xor a
-	ld [hScriptVar], a
+	ldh [hScriptVar], a
 	ret
 
 CheckOwnMonAnywhere:
@@ -232,7 +232,7 @@ CheckOwnMon:
 	ld e, c
 
 ; check species
-	ld a, [hScriptVar] ; species we're looking for
+	ldh a, [hScriptVar] ; species we're looking for
 	ld b, [hl] ; species we have
 	cp b
 	jr nz, .notfound ; species doesn't match

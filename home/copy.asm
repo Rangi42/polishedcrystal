@@ -34,10 +34,10 @@ ByteFill::
 GetFarHalfword::
 ; retrieve a halfword from a:hl, and return it in hl.
 	; bankswitch to new bank
-	ld [hBuffer], a
-	ld a, [hROMBank]
+	ldh [hBuffer], a
+	ldh a, [hROMBank]
 	push af
-	ld a, [hBuffer]
+	ldh a, [hBuffer]
 	rst Bankswitch
 
 	; get halfword from new bank, put it in hl

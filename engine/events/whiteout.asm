@@ -92,7 +92,7 @@ LoseMoney:
 	ld hl, .BasePayouts
 	add hl, bc
 	ld a, [hl]
-	ld [hMultiplier], a
+	ldh [hMultiplier], a
 	ld a, [wPartyCount]
 	ld c, a
 	ld b, 0
@@ -108,10 +108,10 @@ LoseMoney:
 	dec c
 	jr nz, .loop
 	xor a
-	ld [hMultiplicand], a
-	ld [hMultiplicand + 1], a
+	ldh [hMultiplicand], a
+	ldh [hMultiplicand + 1], a
 	ld a, b
-	ld [hMultiplicand + 2], a
+	ldh [hMultiplicand + 2], a
 	call Multiply
 	ld de, hMoneyTemp
 	ld hl, hProduct + 1
@@ -131,7 +131,7 @@ LoseMoney:
 	farcall TakeMoney
 	ld a, 1
 .load
-	ld [hScriptVar], a
+	ldh [hScriptVar], a
 	ret
 
 .copy
@@ -160,7 +160,7 @@ DetermineWildBattlePanic:
 	ld hl, wWildBattlePanic
 	ld a, [hl]
 	and $1
-	ld [hScriptVar], a
+	ldh [hScriptVar], a
 	xor a
 	ld [hl], a
 	ret

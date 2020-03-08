@@ -1,6 +1,6 @@
 _InitSpriteAnimStruct::
 	ld [wSpriteAnimIDBuffer], a
-	ld a, [hROMBank]
+	ldh a, [hROMBank]
 	push af
 
 	ld a, BANK(InitSpriteAnimStruct)
@@ -15,7 +15,7 @@ _InitSpriteAnimStruct::
 
 ReinitSpriteAnimFrame::
 	ld [wSpriteAnimIDBuffer], a
-	ld a, [hROMBank]
+	ldh a, [hROMBank]
 	push af
 
 	ld a, BANK(_ReinitSpriteAnimFrame)

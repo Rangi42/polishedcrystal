@@ -12,7 +12,7 @@ TreeItemEncounter:
 .gold_leaf
 	ld a, GOLD_LEAF
 .item
-	ld [hScriptVar], a
+	ldh [hScriptVar], a
 	ret
 
 RockItemEncounter:
@@ -31,7 +31,7 @@ RockItemEncounter:
 	jr z, .done
 	ld a, [hl]
 .done
-	ld [hScriptVar], a
+	ldh [hScriptVar], a
 	ret
 
 .RockItems:
@@ -69,12 +69,12 @@ TreeMonEncounter:
 	ld a, BATTLETYPE_TREE
 	ld [wBattleType], a
 	ld a, 1
-	ld [hScriptVar], a
+	ldh [hScriptVar], a
 	ret
 
 .no_battle
 	xor a
-	ld [hScriptVar], a
+	ldh [hScriptVar], a
 	ret
 
 RockMonEncounter:
@@ -287,34 +287,34 @@ GetTreeScore:
 	add hl, bc
 
 	ld a, h
-	ld [hDividend], a
+	ldh [hDividend], a
 	ld a, l
-	ld [hDividend + 1], a
+	ldh [hDividend + 1], a
 	ld a, 5
-	ld [hDivisor], a
+	ldh [hDivisor], a
 	ld b, 2
 	call Divide
 
-	ld a, [hQuotient + 1]
-	ld [hDividend], a
-	ld a, [hQuotient + 2]
-	ld [hDividend + 1], a
+	ldh a, [hQuotient + 1]
+	ldh [hDividend], a
+	ldh a, [hQuotient + 2]
+	ldh [hDividend + 1], a
 	ld a, 10
-	ld [hDivisor], a
+	ldh [hDivisor], a
 	ld b, 2
 	call Divide
 
-	ld a, [hQuotient + 3]
+	ldh a, [hQuotient + 3]
 	ret
 
 .OTIDScore:
 	ld a, [wPlayerID]
-	ld [hDividend], a
+	ldh [hDividend], a
 	ld a, [wPlayerID + 1]
-	ld [hDividend + 1], a
+	ldh [hDividend + 1], a
 	ld a, 10
-	ld [hDivisor], a
+	ldh [hDivisor], a
 	ld b, 2
 	call Divide
-	ld a, [hQuotient + 3]
+	ldh a, [hQuotient + 3]
 	ret

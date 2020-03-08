@@ -24,7 +24,7 @@ SpecialBuenasPassword:
 
 .wrong
 	ld a, b
-	ld [hScriptVar], a
+	ldh [hScriptVar], a
 	ret
 
 .MenuDataHeader:

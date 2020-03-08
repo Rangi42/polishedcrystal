@@ -91,7 +91,7 @@ SetLastPartyMonBall:
 	call GetLastPartyMon
 	ld de, MON_CAUGHTBALL
 	add hl, de
-	ld a, [hScriptVar]
+	ldh a, [hScriptVar]
 	ld c, a
 	ld a, [hl]
 	and $ff - CAUGHTBALL_MASK

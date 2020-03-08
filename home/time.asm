@@ -39,25 +39,25 @@ else
 	ld [hl], RTC_S
 	ld a, [de]
 	and $3f
-	ld [hRTCSeconds], a
+	ldh [hRTCSeconds], a
 
 	ld [hl], RTC_M
 	ld a, [de]
 	and $3f
-	ld [hRTCMinutes], a
+	ldh [hRTCMinutes], a
 
 	ld [hl], RTC_H
 	ld a, [de]
 	and $1f
-	ld [hRTCHours], a
+	ldh [hRTCHours], a
 
 	ld [hl], RTC_DL
 	ld a, [de]
-	ld [hRTCDayLo], a
+	ldh [hRTCDayLo], a
 
 	ld [hl], RTC_DH
 	ld a, [de]
-	ld [hRTCDayHi], a
+	ldh [hRTCDayHi], a
 
 ; unlatch clock / disable clock r/w
 	jp CloseSRAM
@@ -68,16 +68,16 @@ FixDays::
 ; mod by 140
 
 ; check if day count > 255 (bit 8 set)
-	ld a, [hRTCDayHi] ; DH
+	ldh a, [hRTCDayHi] ; DH
 	bit 0, a
 	jr z, .daylo
 ; reset dh (bit 8)
 	res 0, a
-	ld [hRTCDayHi], a ; DH
+	ldh [hRTCDayHi], a ; DH
 
 ; mod 140
 ; mod twice since bit 8 (DH) was set
-	ld a, [hRTCDayLo] ; DL
+	ldh a, [hRTCDayLo] ; DL
 .modh
 	sub 140
 	jr nc, .modh
@@ -87,7 +87,7 @@ FixDays::
 	add 140
 
 ; update dl
-	ld [hRTCDayLo], a ; DL
+	ldh [hRTCDayLo], a ; DL
 
 ; flag for sRTCStatusFlags
 	ld a, %01000000
@@ -95,7 +95,7 @@ FixDays::
 
 .daylo
 ; quit if fewer than 140 days have passed
-	ld a, [hRTCDayLo] ; DL
+	ldh a, [hRTCDayLo] ; DL
 	cp 140
 	jr c, .quit
 
@@ -106,7 +106,7 @@ FixDays::
 	add 140
 
 ; update dl
-	ld [hRTCDayLo], a ; DL
+	ldh [hRTCDayLo], a ; DL
 
 ; flag for sRTCStatusFlags
 	ld a, %00100000
@@ -128,7 +128,7 @@ FixTime::
 ;				  day     hr    min    sec
 ; store time in wCurDay, hHours, hMinutes, hSeconds
 
-	ld a, [hRTCSeconds]
+	ldh a, [hRTCSeconds]
 	ld c, a
 	ld a, [wStartSecond]
 	add c
@@ -136,10 +136,10 @@ FixTime::
 	jr nc, .updatesec
 	add 60
 .updatesec
-	ld [hSeconds], a
+	ldh [hSeconds], a
 
 	ccf ; carry is set, so turn it off
-	ld a, [hRTCMinutes]
+	ldh a, [hRTCMinutes]
 	ld c, a
 	ld a, [wStartMinute]
 	adc c
@@ -147,10 +147,10 @@ FixTime::
 	jr nc, .updatemin
 	add 60
 .updatemin
-	ld [hMinutes], a
+	ldh [hMinutes], a
 
 	ccf ; carry is set, so turn it off
-	ld a, [hRTCHours]
+	ldh a, [hRTCHours]
 	ld c, a
 	ld a, [wStartHour]
 	adc c
@@ -158,10 +158,10 @@ FixTime::
 	jr nc, .updatehr
 	add 24
 .updatehr
-	ld [hHours], a
+	ldh [hHours], a
 
 	ccf ; carry is set, so turn it off
-	ld a, [hRTCDayLo]
+	ldh a, [hRTCDayLo]
 	ld c, a
 	ld a, [wStartDay]
 	adc c
@@ -176,11 +176,11 @@ SetTimeOfDay::
 
 SetDayOfWeek::
 	call UpdateTime
-	ld a, [hHours]
+	ldh a, [hHours]
 	ld [wStringBuffer2 + 1], a
-	ld a, [hMinutes]
+	ldh a, [hMinutes]
 	ld [wStringBuffer2 + 2], a
-	ld a, [hSeconds]
+	ldh a, [hSeconds]
 	ld [wStringBuffer2 + 3], a
 
 InitTime::
@@ -188,11 +188,11 @@ InitTime::
 
 PanicResetClock::
 	xor a
-	ld [hRTCSeconds], a
-	ld [hRTCMinutes], a
-	ld [hRTCHours], a
-	ld [hRTCDayLo], a
-	ld [hRTCDayHi], a
+	ldh [hRTCSeconds], a
+	ldh [hRTCMinutes], a
+	ldh [hRTCHours], a
+	ldh [hRTCDayLo], a
+	ldh [hRTCDayHi], a
 ; fallthrough
 
 SetClock::
@@ -217,23 +217,23 @@ else
 	ld de, MBC3RTC
 
 	ld [hl], RTC_S
-	ld a, [hRTCSeconds]
+	ldh a, [hRTCSeconds]
 	ld [de], a
 
 	ld [hl], RTC_M
-	ld a, [hRTCMinutes]
+	ldh a, [hRTCMinutes]
 	ld [de], a
 
 	ld [hl], RTC_H
-	ld a, [hRTCHours]
+	ldh a, [hRTCHours]
 	ld [de], a
 
 	ld [hl], RTC_DL
-	ld a, [hRTCDayLo]
+	ldh a, [hRTCDayLo]
 	ld [de], a
 
 	ld [hl], RTC_DH
-	ld a, [hRTCDayHi]
+	ldh a, [hRTCDayHi]
 	res 6, a ; make sure timer is active
 	ld [de], a
 

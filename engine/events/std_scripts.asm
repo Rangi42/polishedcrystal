@@ -260,7 +260,7 @@ IsKantoRadioOffAir:
 .no
 	xor a ; ld a, FALSE
 .ok
-	ld [hScriptVar], a
+	ldh [hScriptVar], a
 	ret
 
 TrashCanScript:
@@ -1742,7 +1742,7 @@ _HiddenGrottoInitScript:
 	end
 
 .StoreCurHiddenGrotto:
-	ld a, [hScriptVar]
+	ldh a, [hScriptVar]
 	ld [wCurHiddenGrotto], a
 	ret
 

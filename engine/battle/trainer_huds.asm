@@ -1,6 +1,6 @@
 BattleStart_TrainerHuds:
 	ld a, $e4
-	ld [rOBP0], a
+	ldh [rOBP0], a
 	call LoadBallIconGFX
 	call ShowPlayerMonsRemaining
 	ld a, [wBattleMode]
@@ -10,7 +10,7 @@ BattleStart_TrainerHuds:
 
 EnemySwitch_TrainerHud:
 	ld a, $e4
-	ld [rOBP0], a
+	ldh [rOBP0], a
 	call LoadBallIconGFX
 	jp ShowOTTrainerMonsRemaining
 
@@ -251,7 +251,7 @@ _ShowLinkBattleParticipants:
 	call GetCGBLayout
 	call SetPalettes
 	ld a, $e4
-	ld [rOBP0], a
+	ldh [rOBP0], a
 	ret
 
 DoesNuzlockeModePreventCapture:

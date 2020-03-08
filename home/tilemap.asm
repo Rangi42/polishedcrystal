@@ -11,11 +11,11 @@ SetPalettes::
 
 ClearPalettes::
 ; Make all palettes white
-	ld a, [rSVBK]
+	ldh a, [rSVBK]
 	push af
 
 	ld a, BANK(wBGPals)
-	ld [rSVBK], a
+	ldh [rSVBK], a
 
 ; Fill wBGPals and wOBPals with $ffff (white)
 	ld hl, wBGPals
@@ -35,11 +35,11 @@ else
 endc
 
 	pop af
-	ld [rSVBK], a
+	ldh [rSVBK], a
 
 ; Request palette update
 	ld a, 1
-	ld [hCGBPalUpdate], a
+	ldh [hCGBPalUpdate], a
 	ret
 
 SetHPPal::

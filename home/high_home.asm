@@ -42,18 +42,18 @@ HBlankCopy2bpp::
 	jr nc, .innerLoop
 	jp VRAMToVRAMCopy
 .outerLoop
-	ld a, [rLY]
+	ldh a, [rLY]
 	cp $88
 	jp nc, ContinueHBlankCopy
 .innerLoop
 	pop bc
 	pop de
 .waitNoHBlank
-	ld a, [rSTAT]
+	ldh a, [rSTAT]
 	and 3
 	jr z, .waitNoHBlank
 .waitHBlank
-	ld a, [rSTAT]
+	ldh a, [rSTAT]
 	and 3
 	jr nz, .waitHBlank
 ; preloads r us
@@ -77,8 +77,8 @@ endr ; 47 (12 + 7 * 5)
 	ld [hli], a ; 53
 	ld [hl], d ; 55
 	inc hl
-	ld a, [hTilesPerCycle]
+	ldh a, [hTilesPerCycle]
 	dec a
-	ld [hTilesPerCycle], a
+	ldh [hTilesPerCycle], a
 	jr nz, .outerLoop
 	jp DoneHBlankCopy

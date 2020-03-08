@@ -62,25 +62,25 @@ endr
 	ld a, d
 	ld [hli], a
 	ld [hl], e
-	ld a, [rDIV]
+	ldh a, [rDIV]
 	add a, [hl]
-	ld [hRandomAdd], a
+	ldh [hRandomAdd], a
 	ld a, [hli]
 	inc hl
 	inc hl
 	sub [hl]
-	ld [hRandomSub], a
+	ldh [hRandomSub], a
 	pop de
 	pop bc
 	pop hl
 	ret
 
 UpdateDividerCounters::
-	ld a, [rDIV]
+	ldh a, [rDIV]
 	ld hl, wRNGCumulativeDividerMinus
 	sbc [hl]
 	ld [hld], a
-	ld a, [rDIV]
+	ldh a, [rDIV]
 	adc [hl]
 	ld [hld], a
 	ret nc
@@ -100,7 +100,7 @@ AdvanceRNGState::
 	ld a, [hli]
 	ld l, [hl] ; wRNGCumulativeDividerPlus[1]
 	ld h, a ; wRNGCumulativeDividerPlus[0]
-	ld a, [rDIV]
+	ldh a, [rDIV]
 	rra
 	jr nc, .try_upper
 .try_lower
@@ -165,7 +165,7 @@ RandomRange::
 	push bc
 .loop
 	call Random
-	ld a, [hRandomAdd]
+	ldh a, [hRandomAdd]
 	ld c, a
 	add b
 	jr c, .loop

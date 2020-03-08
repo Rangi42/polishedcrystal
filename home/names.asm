@@ -10,7 +10,7 @@ NamesPointers::
 
 GetName::
 ; Return name wCurSpecies from name list wNamedObjectTypeBuffer in wStringBuffer1.
-	ld a, [hROMBank]
+	ldh a, [hROMBank]
 	push af
 	push hl
 	push bc
@@ -98,7 +98,7 @@ GetBasePokemonName::
 
 GetPokemonName::
 ; Get Pokemon name wNamedObjectIndexBuffer.
-	ld a, [hROMBank]
+	ldh a, [hROMBank]
 	push af
 	push hl
 	ld a, BANK(PokemonNames)

@@ -275,33 +275,33 @@ DisplayDexEntry:
 Mul16:
 	;[hTmpd][hTmpe]hl = bc * de
 	xor a
-	ld [hTmpd], a
-	ld [hTmpe], a
+	ldh [hTmpd], a
+	ldh [hTmpe], a
 	ld hl, 0
 	ld a, 16
-	ld [hProduct], a
+	ldh [hProduct], a
 .loop
 	add hl, hl
-	ld a, [hTmpe]
+	ldh a, [hTmpe]
 	rla
-	ld [hTmpe], a
-	ld a, [hTmpd]
+	ldh [hTmpe], a
+	ldh a, [hTmpd]
 	rla
-	ld [hTmpd], a
+	ldh [hTmpd], a
 	sla e
 	rl d
 	jr nc, .noadd
 	add hl, bc
-	ld a, [hTmpe]
+	ldh a, [hTmpe]
 	adc 0
-	ld [hTmpe], a
-	ld a, [hTmpd]
+	ldh [hTmpe], a
+	ldh a, [hTmpd]
 	adc 0
-	ld [hTmpd], a
+	ldh [hTmpd], a
 .noadd
-	ld a, [hProduct]
+	ldh a, [hProduct]
 	dec a
-	ld [hProduct], a
+	ldh [hProduct], a
 	jr nz, .loop
 	ret
 

@@ -45,7 +45,7 @@ Pack:
 
 .InitGFX:
 	xor a
-	ld [hBGMapMode], a
+	ldh [hBGMapMode], a
 	call Pack_InitGFX
 	ld a, [wcf64]
 	ld [wJumptableIndex], a
@@ -175,7 +175,7 @@ Pack:
 	ld [wOptions1], a
 .declined
 	xor a
-	ld [hBGMapMode], a
+	ldh [hBGMapMode], a
 	call Pack_InitGFX
 	call WaitBGMap_DrawPackGFX
 	jp Pack_InitColors
@@ -511,7 +511,7 @@ UseItem:
 	jr z, .NoPokemon
 	call DoItemEffect
 	xor a
-	ld [hBGMapMode], a
+	ldh [hBGMapMode], a
 	call Pack_InitGFX
 	call WaitBGMap_DrawPackGFX
 	jp Pack_InitColors
@@ -654,7 +654,7 @@ GiveItem:
 	pop af
 	ld [wOptions1], a
 	xor a
-	ld [hBGMapMode], a
+	ldh [hBGMapMode], a
 	call Pack_InitGFX
 	call WaitBGMap_DrawPackGFX
 	jp Pack_InitColors
@@ -716,7 +716,7 @@ BattlePack:
 
 .InitGFX:
 	xor a
-	ld [hBGMapMode], a
+	ldh [hBGMapMode], a
 	call Pack_InitGFX
 	ld a, [wcf64]
 	ld [wJumptableIndex], a
@@ -793,7 +793,7 @@ BattlePack:
 	ld [wCurrPocket], a
 	call ClearPocketList
 	xor a
-	ld [hBGMapMode], a
+	ldh [hBGMapMode], a
 	call WaitBGMap_DrawPackGFX
 	ld hl, Text_PackEmptyString
 	call Pack_PrintTextNoScroll
@@ -934,7 +934,7 @@ KeyItemSubmenu:
 	and a
 	jr nz, .quit_run_script
 	xor a
-	ld [hBGMapMode], a
+	ldh [hBGMapMode], a
 	call Pack_InitGFX
 	call WaitBGMap_DrawPackGFX
 	jp Pack_InitColors
@@ -980,7 +980,7 @@ InitPackBuffers:
 
 DepositSellInitPackBuffers:
 	xor a
-	ld [hBGMapMode], a
+	ldh [hBGMapMode], a
 	ld [wJumptableIndex], a
 	ld [wcf64], a
 	ld [wCurrPocket], a
@@ -1767,7 +1767,7 @@ Special_ChooseItem::
 
 .PickItem:
 	xor a ; ld a, FALSE
-	ld [hScriptVar], a
+	ldh [hScriptVar], a
 .loop
 	call DepositSellPack
 
@@ -1779,7 +1779,7 @@ Special_ChooseItem::
 	jr z, .next
 
 	ld a, TRUE
-	ld [hScriptVar], a
+	ldh [hScriptVar], a
 	ret
 
 .next

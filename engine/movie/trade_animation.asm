@@ -107,10 +107,10 @@ RunTradeAnimSequence:
 	ld [hl], e
 	inc hl
 	ld [hl], d
-	ld a, [hMapAnims]
+	ldh a, [hMapAnims]
 	push af
 	xor a
-	ld [hMapAnims], a
+	ldh [hMapAnims], a
 	ld hl, wVramState
 	ld a, [hl]
 	push af
@@ -133,7 +133,7 @@ RunTradeAnimSequence:
 	pop af
 	ld [wVramState], a
 	pop af
-	ld [hMapAnims], a
+	ldh [hMapAnims], a
 	ret
 
 .TradeAnimLayout:
@@ -146,13 +146,13 @@ RunTradeAnimSequence:
 	call LoadFontsBattleExtra
 	farcall ClearSpriteAnims
 	ld a, $1
-	ld [rVBK], a
+	ldh [rVBK], a
 	ld hl, vTiles0
 	ld bc, sScratch - vTiles0
 	xor a
 	call ByteFill
 	xor a
-	ld [rVBK], a
+	ldh [rVBK], a
 	hlbgcoord 0, 0
 	ld bc, sScratch - vBGMap0
 	ld a, " "
@@ -171,12 +171,12 @@ RunTradeAnimSequence:
 	ld a, BANK(TradeArrowGFX)
 	call FarCopyBytes
 	xor a
-	ld [hSCX], a
-	ld [hSCY], a
+	ldh [hSCX], a
+	ldh [hSCY], a
 	ld a, $7
-	ld [hWX], a
+	ldh [hWX], a
 	ld a, $90
-	ld [hWY], a
+	ldh [hWY], a
 	farcall GetTrademonFrontpic
 	call EnableLCD
 	call LoadTradeBallAndCableGFX
@@ -334,11 +334,11 @@ TradeAnim_InitTubeAnim:
 	call TradeAnim_TubeAnimJumptable
 
 	xor a
-	ld [hSCX], a
+	ldh [hSCX], a
 	ld a, $7
-	ld [hWX], a
+	ldh [hWX], a
 	ld a, $70
-	ld [hWY], a
+	ldh [hWY], a
 	call EnableLCD
 	call LoadTradeBubbleGFX
 
@@ -375,9 +375,9 @@ TradeAnim_InitTubeAnim:
 
 TradeAnim_TubeToOT2:
 	call TradeAnim_FlashBGPals
-	ld a, [hSCX]
+	ldh a, [hSCX]
 	add $2
-	ld [hSCX], a
+	ldh [hSCX], a
 	cp $50
 	ret nz
 	ld a, $1
@@ -386,9 +386,9 @@ TradeAnim_TubeToOT2:
 
 TradeAnim_TubeToOT3:
 	call TradeAnim_FlashBGPals
-	ld a, [hSCX]
+	ldh a, [hSCX]
 	add $2
-	ld [hSCX], a
+	ldh [hSCX], a
 	cp $a0
 	ret nz
 	ld a, $2
@@ -397,18 +397,18 @@ TradeAnim_TubeToOT3:
 
 TradeAnim_TubeToOT4:
 	call TradeAnim_FlashBGPals
-	ld a, [hSCX]
+	ldh a, [hSCX]
 	add $2
-	ld [hSCX], a
+	ldh [hSCX], a
 	and a
 	ret nz
 	jp TradeAnim_IncrementJumptableIndex
 
 TradeAnim_TubeToPlayer3:
 	call TradeAnim_FlashBGPals
-	ld a, [hSCX]
+	ldh a, [hSCX]
 	sub $2
-	ld [hSCX], a
+	ldh [hSCX], a
 	cp $b0
 	ret nz
 	ld a, $1
@@ -417,9 +417,9 @@ TradeAnim_TubeToPlayer3:
 
 TradeAnim_TubeToPlayer4:
 	call TradeAnim_FlashBGPals
-	ld a, [hSCX]
+	ldh a, [hSCX]
 	sub $2
-	ld [hSCX], a
+	ldh [hSCX], a
 	cp $60
 	ret nz
 	xor a
@@ -428,9 +428,9 @@ TradeAnim_TubeToPlayer4:
 
 TradeAnim_TubeToPlayer5:
 	call TradeAnim_FlashBGPals
-	ld a, [hSCX]
+	ldh a, [hSCX]
 	sub $2
-	ld [hSCX], a
+	ldh [hSCX], a
 	and a
 	ret nz
 	jp TradeAnim_IncrementJumptableIndex
@@ -453,9 +453,9 @@ TradeAnim_TubeToPlayer8:
 	ld a, " "
 	call ByteFill
 	xor a
-	ld [hSCX], a
+	ldh [hSCX], a
 	ld a, $90
-	ld [hWY], a
+	ldh [hWY], a
 	call EnableLCD
 	call LoadTradeBallAndCableGFX
 	call ApplyTilemapInVBlank
@@ -558,7 +558,7 @@ TradeAnim_PlaceTrademonStatsOnTubeAnim:
 	call ClearBGPalettes
 	call WaitTop
 	ld a, vBGMap1 / $100
-	ld [hBGMapAddress + 1], a
+	ldh [hBGMapAddress + 1], a
 	call ClearTileMap
 	hlcoord 0, 0
 	ld bc, SCREEN_WIDTH
@@ -588,14 +588,14 @@ TradeAnim_PlaceTrademonStatsOnTubeAnim:
 	call ApplyTilemapInVBlank
 	call WaitTop
 	ld a, vBGMap0 / $100
-	ld [hBGMapAddress + 1], a
+	ldh [hBGMapAddress + 1], a
 	jp ClearTileMap
 
 TradeAnim_EnterLinkTube1:
 	call ClearTileMap
 	call WaitTop
 	ld a, $a0
-	ld [hSCX], a
+	ldh [hSCX], a
 	call DelayFrame
 	hlcoord 8, 2
 	ld de, TradeLinkTubeTilemap
@@ -613,11 +613,11 @@ TradeAnim_EnterLinkTube1:
 	jp TradeAnim_IncrementJumptableIndex
 
 TradeAnim_EnterLinkTube2:
-	ld a, [hSCX]
+	ldh a, [hSCX]
 	and a
 	jr z, .done
 	add $4
-	ld [hSCX], a
+	ldh [hSCX], a
 	ret
 
 .done
@@ -626,94 +626,94 @@ TradeAnim_EnterLinkTube2:
 	jp TradeAnim_AdvanceScriptPointer
 
 TradeAnim_ExitLinkTube:
-	ld a, [hSCX]
+	ldh a, [hSCX]
 	cp $a0
 	jr z, .done
 	sub $4
-	ld [hSCX], a
+	ldh [hSCX], a
 	ret
 
 .done
 	call ClearTileMap
 	xor a
-	ld [hSCX], a
+	ldh [hSCX], a
 	jp TradeAnim_AdvanceScriptPointer
 
 TradeAnim_SetupGivemonScroll:
 	ld a, $8f
-	ld [hWX], a
+	ldh [hWX], a
 	ld a, $88
-	ld [hSCX], a
+	ldh [hSCX], a
 	ld a, $50
-	ld [hWY], a
+	ldh [hWY], a
 	jp TradeAnim_AdvanceScriptPointer
 
 TradeAnim_DoGivemonScroll:
-	ld a, [hWX]
+	ldh a, [hWX]
 	cp $7
 	jr z, .done
 	sub $4
-	ld [hWX], a
-	ld a, [hSCX]
+	ldh [hWX], a
+	ldh a, [hSCX]
 	sub $4
-	ld [hSCX], a
+	ldh [hSCX], a
 	ret
 
 .done
 	ld a, $7
-	ld [hWX], a
+	ldh [hWX], a
 	xor a
-	ld [hSCX], a
+	ldh [hSCX], a
 	jp TradeAnim_AdvanceScriptPointer
 
 TradeAnim_FrontpicScrollStart:
 	ld a, $7
-	ld [hWX], a
+	ldh [hWX], a
 	ld a, $50
-	ld [hWY], a
+	ldh [hWY], a
 	jp TradeAnim_AdvanceScriptPointer
 
 TradeAnim_TextboxScrollStart:
 	ld a, $7
-	ld [hWX], a
+	ldh [hWX], a
 	ld a, $90
-	ld [hWY], a
+	ldh [hWY], a
 	jp TradeAnim_AdvanceScriptPointer
 
 TradeAnim_ScrollOutRight:
 	call WaitTop
 	ld a, vBGMap1 / $100
-	ld [hBGMapAddress + 1], a
+	ldh [hBGMapAddress + 1], a
 	call ApplyTilemapInVBlank
 	ld a, $7
-	ld [hWX], a
+	ldh [hWX], a
 	xor a
-	ld [hWY], a
+	ldh [hWY], a
 	call DelayFrame
 	call WaitTop
 	ld a, vBGMap0 / $100
-	ld [hBGMapAddress + 1], a
+	ldh [hBGMapAddress + 1], a
 	call ClearTileMap
 	jp TradeAnim_IncrementJumptableIndex
 
 TradeAnim_ScrollOutRight2:
-	ld a, [hWX]
+	ldh a, [hWX]
 	cp $a1
 	jr nc, .done
 	add $4
-	ld [hWX], a
+	ldh [hWX], a
 	ret
 
 .done
 	ld a, vBGMap1 / $100
-	ld [hBGMapAddress + 1], a
+	ldh [hBGMapAddress + 1], a
 	call ApplyTilemapInVBlank
 	ld a, $7
-	ld [hWX], a
+	ldh [hWX], a
 	ld a, $90
-	ld [hWY], a
+	ldh [hWY], a
 	ld a, vBGMap0 / $100
-	ld [hBGMapAddress + 1], a
+	ldh [hBGMapAddress + 1], a
 	jp TradeAnim_AdvanceScriptPointer
 
 TradeAnim_ShowGivemonData:
@@ -795,7 +795,7 @@ TradeAnim_ShowFrontpic:
 	call TradeAnim_BlankTileMap
 	hlcoord 7, 2
 	xor a
-	ld [hGraphicStartTile], a
+	ldh [hGraphicStartTile], a
 	lb bc, 7, 7
 	predef PlaceGraphic
 	jp ApplyTilemapInVBlank
@@ -872,7 +872,7 @@ TrademonStats_MonTemplate:
 	call WaitTop
 	call TradeAnim_BlankTileMap
 	ld a, vBGMap1 / $100
-	ld [hBGMapAddress + 1], a
+	ldh [hBGMapAddress + 1], a
 	hlcoord 3, 0
 	lb bc, $6, $d
 	call TextBox
@@ -890,7 +890,7 @@ TrademonStats_Egg:
 	call WaitTop
 	call TradeAnim_BlankTileMap
 	ld a, vBGMap1 / $100
-	ld [hBGMapAddress + 1], a
+	ldh [hBGMapAddress + 1], a
 	hlcoord 3, 0
 	lb bc, $6, $d
 	call TextBox
@@ -908,7 +908,7 @@ TrademonStats_WaitBGMap:
 	call ApplyTilemapInVBlank
 	call WaitTop
 	ld a, vBGMap0 / $100
-	ld [hBGMapAddress + 1], a
+	ldh [hBGMapAddress + 1], a
 	ret
 
 TrademonStats_PrintSpeciesNumber:
@@ -1256,7 +1256,7 @@ TradeAnim_FlashBGPals:
 	ld a, [wcf65]
 	and $7
 	ret nz
-	ld a, [rBGP]
+	ldh a, [rBGP]
 	xor %00111100
 	jp DmgToCgbBGPals
 

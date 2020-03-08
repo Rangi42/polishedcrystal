@@ -120,7 +120,7 @@ AICheckMatchupForEnemyMon:
 	ld d, a
 	ld a, [wCurEnemyMove]
 	ld e, a
-	ld a, [hBattleTurn]
+	ldh a, [hBattleTurn]
 	push af
 	push de
 
@@ -192,7 +192,7 @@ AICheckMatchupForEnemyMon:
 
 	; Reset whose turn it is
 	pop af
-	ld [hBattleTurn], a
+	ldh [hBattleTurn], a
 
 	ld a, b
 	ret

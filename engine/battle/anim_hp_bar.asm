@@ -124,21 +124,21 @@ HPBarAnim_UpdateVariables:
 	dec hl
 	ld [hl], a
 ; wCurHPAnimOldHP = a * wCurHPAnimMaxHP / (HP_BAR_LENGTH_PX * 2)
-	ld [hMultiplier], a
+	ldh [hMultiplier], a
 	xor a
-	ld [hMultiplicand], a
+	ldh [hMultiplicand], a
 	ld a, [wCurHPAnimMaxHP + 1]
-	ld [hMultiplicand + 1], a
+	ldh [hMultiplicand + 1], a
 	ld a, [wCurHPAnimMaxHP]
-	ld [hMultiplicand + 2], a
+	ldh [hMultiplicand + 2], a
 	call Multiply
 	ld a, HP_BAR_LENGTH_PX * 2
-	ld [hDivisor], a
+	ldh [hDivisor], a
 	ld b, 4
 	call Divide
-	ld a, [hQuotient + 1]
+	ldh a, [hQuotient + 1]
 	ld [wCurHPAnimOldHP + 1], a
-	ld a, [hQuotient + 2]
+	ldh a, [hQuotient + 2]
 	ld [wCurHPAnimOldHP], a
 	xor a ; clear carry flag
 	ret
@@ -223,10 +223,10 @@ HPBarAnim_BGMapUpdate:
 	dec a
 	jr z, .player_hp_bar
 	xor a
-	ld [hCGBPalUpdate], a
+	ldh [hCGBPalUpdate], a
 	inc a
 	ld b, a
-	ld [hBGMapMode], a
+	ldh [hBGMapMode], a
 
 	ld a, [wCurPartyMon]
 	ld c, a
@@ -235,7 +235,7 @@ HPBarAnim_BGMapUpdate:
 	dec b
 .lowerHalf
 	ld a, b
-	ld [hBGMapHalf], a
+	ldh [hBGMapHalf], a
 	ld a, c
 	hlbgcoord 12, 2, vBGMap2
 	ld bc, BG_MAP_WIDTH * 2
@@ -245,13 +245,13 @@ HPBarAnim_BGMapUpdate:
 	ld b, a
 	di
 	ld a, 1
-	ld [rVBK], a
+	ldh [rVBK], a
 .waitnohb1
-	ld a, [rSTAT]
+	ldh a, [rSTAT]
 	and 3
 	jr z, .waitnohb1
 .waithbl1
-	ld a, [rSTAT]
+	ldh a, [rSTAT]
 	and 3
 	jr nz, .waithbl1
 	ld a, b
@@ -259,7 +259,7 @@ HPBarAnim_BGMapUpdate:
 	ld [hli], a
 	endr
 	xor a
-	ld [rVBK], a
+	ldh [rVBK], a
 	ei
 	jp DelayFrame
 
@@ -273,29 +273,29 @@ HPBarAnim_BGMapUpdate:
 	ld hl, wBGPals + 3 palettes + 4
 .finish
 	xor a
-	ld [hCGBPalUpdate], a
+	ldh [hCGBPalUpdate], a
 	ld a, c
-	ld [hBGMapHalf], a
-	ld a, [rSVBK]
+	ldh [hBGMapHalf], a
+	ldh a, [rSVBK]
 	push af
 	ld a, BANK(wBGPals)
-	ld [rSVBK], a
+	ldh [rSVBK], a
 	di
 .waitnohb3
-	ld a, [rSTAT]
+	ldh a, [rSTAT]
 	and 3
 	jr z, .waitnohb3
 .waithb3
-	ld a, [rSTAT]
+	ldh a, [rSTAT]
 	and 3
 	jr nz, .waithb3
 	ld a, b
-	ld [rBGPI], a
+	ldh [rBGPI], a
 	ld a, [hli]
-	ld [rBGPD], a
+	ldh [rBGPD], a
 	ld a, [hl]
-	ld [rBGPD], a
+	ldh [rBGPD], a
 	ei
 	pop af
-	ld [rSVBK], a
+	ldh [rSVBK], a
 	jp DelayFrame

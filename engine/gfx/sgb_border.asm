@@ -8,9 +8,9 @@ SendSGBPacket:
 	ld a, 1
 	ld [wInputFlags], a
 	xor a
-	ld [rJOYP], a
+	ldh [rJOYP], a
 	ld a, $30
-	ld [rJOYP], a
+	ldh [rJOYP], a
 	ld b, $10
 .nextByte
 	ld e, $8
@@ -22,18 +22,18 @@ SendSGBPacket:
 	jr nz, .next0
 	ld a, $20
 .next0
-	ld [rJOYP], a
+	ldh [rJOYP], a
 	ld a, $30
-	ld [rJOYP], a
+	ldh [rJOYP], a
 	rr d
 	dec e
 	jr nz, .nextBit0
 	dec b
 	jr nz, .nextByte
 	ld a, $20
-	ld [rJOYP], a
+	ldh [rJOYP], a
 	ld a, $30
-	ld [rJOYP], a
+	ldh [rJOYP], a
 	xor a
 	ld [wInputFlags], a
 	call SGBDelayCycles
@@ -55,7 +55,7 @@ SGBDelayCycles:
 	ret
 
 InitSGBBorder::
-	ld a, [hCGB]
+	ldh a, [hCGB]
 	and a
 	ret nz
 
@@ -95,7 +95,7 @@ CopyGfxToSuperNintendoVRAM:
 	push de
 	call DisableLCD
 	ld a, $e4
-	ld [rBGP], a
+	ldh [rBGP], a
 	ld de, vTiles1
 	ld a, [wCopyingSGBTileData]
 	and a
@@ -121,11 +121,11 @@ CopyGfxToSuperNintendoVRAM:
 	dec c
 	jr nz, .loop
 	ld a, $e3
-	ld [rLCDC], a ; enables LCD
+	ldh [rLCDC], a ; enables LCD
 	pop hl
 	call SendSGBPacket
 	xor a
-	ld [rBGP], a
+	ldh [rBGP], a
 	ei
 	ret
 

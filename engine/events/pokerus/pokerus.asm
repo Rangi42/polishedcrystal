@@ -21,10 +21,10 @@ GivePokerusAndConvertBerries:
 	bit 6, [hl] ; ENGINE_GIVE_POKERUS
 	ret z
 	call Random
-	ld a, [hRandomAdd]
+	ldh a, [hRandomAdd]
 	and a
 	ret nz
-	ld a, [hRandomSub]
+	ldh a, [hRandomSub]
 	cp $3
 	ret nc                 ; 3/65536 chance (00 00, 00 01 or 00 02)
 	ld a, [wPartyCount]
@@ -61,10 +61,10 @@ ContinueGivingPokerus:
 
 GivePokerusToWonderTradeMon:
 	call Random
-	ld a, [hRandomAdd]
+	ldh a, [hRandomAdd]
 	and a
 	ret nz
-	ld a, [hRandomSub]
+	ldh a, [hRandomSub]
 	cp $20
 	ret nc                 ; 32/65536 = 1/2048 chance
 	ld a, [wCurPartyMon]

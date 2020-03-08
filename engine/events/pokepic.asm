@@ -19,7 +19,7 @@ Pokepic::
 .got_palette
 	call UpdateTimePals
 	xor a
-	ld [hBGMapMode], a
+	ldh [hBGMapMode], a
 	ld a, [wCurPartySpecies]
 	ld [wCurSpecies], a
 	call GetBaseData
@@ -34,7 +34,7 @@ _Displaypic:
 	ld c, a
 	call Coord2Tile
 	ld a, $80
-	ld [hGraphicStartTile], a
+	ldh [hGraphicStartTile], a
 	lb bc, 7, 7
 	predef PlaceGraphic
 	ld b, 1
@@ -49,7 +49,7 @@ Trainerpic::
 	farcall LoadTrainerPalette
 	call UpdateTimePals
 	xor a
-	ld [hBGMapMode], a
+	ldh [hBGMapMode], a
 	ld a, [wTrainerClass]
 	ld de, vTiles1
 	farcall GetTrainerPic
@@ -74,7 +74,7 @@ Paintingpic::
 	ld [hl], a
 	call UpdateSprites
 	xor a
-	ld [hBGMapMode], a
+	ldh [hBGMapMode], a
 	ld a, [wTrainerClass]
 	ld de, vTiles1
 	farcall GetPaintingPic
@@ -86,7 +86,7 @@ ClosePokepic::
 	call ClearMenuBoxInterior
 	call GetMemCGBLayout
 	xor a
-	ld [hBGMapMode], a
+	ldh [hBGMapMode], a
 	call LoadMapPart
 	call UpdateSprites
 	ld b, 1

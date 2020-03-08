@@ -1085,11 +1085,11 @@ BattleAnimFunction_0D:
 .zero
 	call BattleAnim_IncAnonJumptableIndex
 	ld a, rSCY - $ff00
-	ld [hLCDCPointer], a
+	ldh [hLCDCPointer], a
 	ld a, $58
-	ld [hLYOverrideStart], a
+	ldh [hLYOverrideStart], a
 	ld a, $5e
-	ld [hLYOverrideEnd], a
+	ldh [hLYOverrideEnd], a
 	ret
 
 .one
@@ -1103,7 +1103,7 @@ BattleAnimFunction_0D:
 	jr nc, .asm_cd69b
 	call BattleAnim_IncAnonJumptableIndex
 	xor a
-	ld [hLYOverrideStart], a
+	ldh [hLYOverrideStart], a
 	ret
 
 .asm_cd69b
@@ -1122,7 +1122,7 @@ BattleAnimFunction_0D:
 	add [hl]
 	sub $10
 	ret c
-	ld [hLYOverrideStart], a
+	ldh [hLYOverrideStart], a
 	ld hl, BATTLEANIMSTRUCT_XOFFSET
 	add hl, bc
 	ld a, [hl]
@@ -1143,9 +1143,9 @@ BattleAnimFunction_0D:
 	cp $70
 	jr c, asm_cd6da
 	xor a
-	ld [hLCDCPointer], a
-	ld [hLYOverrideStart], a
-	ld [hLYOverrideEnd], a
+	ldh [hLCDCPointer], a
+	ldh [hLYOverrideStart], a
+	ldh [hLYOverrideEnd], a
 .four
 	jp DeinitBattleAnimation
 
@@ -1155,7 +1155,7 @@ asm_cd6da:
 	ld [hl], a
 	sub $10
 	ret c
-	ld [hLYOverrideStart], a
+	ldh [hLYOverrideStart], a
 	ret
 
 BattleAnimFunction_0E:
@@ -2160,7 +2160,7 @@ BattleAnimFunction_21:
 	dw Functioncdcca
 	dw Functioncdced
 Functioncdcca:
-	ld a, [hBattleTurn]
+	ldh a, [hBattleTurn]
 	and a
 	jr z, .asm_cdcd9
 	ld hl, BATTLEANIMSTRUCT_0B
@@ -3102,7 +3102,7 @@ BattleAnimFunction_32:
 	dw Functionce289
 Functionce260:
 	call BattleAnim_IncAnonJumptableIndex
-	ld a, [hBattleTurn]
+	ldh a, [hBattleTurn]
 	and a
 	jr nz, .asm_ce26c
 	ld a, $f0

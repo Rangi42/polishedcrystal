@@ -3,7 +3,7 @@ loadmapblock: MACRO
 	inc de
 	and a
 	jr nz, .notMapBorderBlock\@
-	ld a, [hMapBorderBlock]
+	ldh a, [hMapBorderBlock]
 .notMapBorderBlock\@
 ENDM
 
@@ -14,7 +14,7 @@ nocarry: MACRO
 ENDM
 
 addmapwidthoffset: MACRO
-	ld a, [hMapWidthPlus6]
+	ldh a, [hMapWidthPlus6]
 	add e
 	ld e, a
 	jr nc, .noCarry\@
@@ -23,17 +23,17 @@ addmapwidthoffset: MACRO
 ENDM
 
 _LoadMapPart::
-	ld a, [rSVBK]
+	ldh a, [rSVBK]
 	push af
 	ld a, [wOverworldMapAnchor]
 	ld e, a
 	ld a, [wOverworldMapAnchor + 1]
 	ld d, a
 	ld a, [wMapBorderBlock]
-	ld [hMapBorderBlock], a
+	ldh [hMapBorderBlock], a
 	ld a, [wMapWidth]
 	inc a
-	ld [hMapWidthPlus6], a
+	ldh [hMapWidthPlus6], a
 	ld c, a
 	ld a, [wMetatileStandingY]
 	add a
@@ -42,19 +42,19 @@ _LoadMapPart::
 	or b
 	ld b, a
 	ld a, BANK(wDecompressedMetatiles)
-	ld [rSVBK], a
+	ldh [rSVBK], a
 	push de
 	push bc
 	call .Function1
 	pop bc
 	pop de
 	ld a, c
-	ld [hMapWidthPlus6], a
+	ldh [hMapWidthPlus6], a
 	ld a, BANK(wDecompressedAttributes)
-	ld [rSVBK], a
+	ldh [rSVBK], a
 	call .Function2
 	pop af
-	ld [rSVBK], a
+	ldh [rSVBK], a
 	ret
 
 function_macro: MACRO
@@ -320,7 +320,7 @@ function_macro: MACRO
 	ld a, [de]
 	ld [hl], a
 	pop de
-	ld a, [hMapWidthPlus6]
+	ldh a, [hMapWidthPlus6]
 	add e
 	ld e, a
 	ret nc
@@ -687,7 +687,7 @@ function_macro: MACRO
 	ld a, [de]
 	ld [hl], a
 	pop de
-	ld a, [hMapWidthPlus6]
+	ldh a, [hMapWidthPlus6]
 	add e
 	ld e, a
 	ret nc
@@ -905,7 +905,7 @@ function_macro: MACRO
 	ld a, [de]
 	and a
 	jr nz, .notMapBorderBlock3\@
-	ld a, [hMapBorderBlock]
+	ldh a, [hMapBorderBlock]
 .notMapBorderBlock3\@
 	swap a
 	ld d, a

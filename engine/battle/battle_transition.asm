@@ -12,11 +12,11 @@ DoBattleTransition:
 	call SafeCopyTilemapAtOnce
 
 	ld a, SCREEN_HEIGHT_PX
-	ld [hWY], a
+	ldh [hWY], a
 	call DelayFrame
 
 	xor a
-	ld [hBGMapMode], a
+	ldh [hBGMapMode], a
 	ld hl, wJumptableIndex
 	ld [hli], a
 	ld [hli], a
@@ -24,11 +24,11 @@ DoBattleTransition:
 
 	call WipeLYOverrides
 
-	ld a, [rBGP]
+	ldh a, [rBGP]
 	ld [wBGP], a
-	ld a, [rOBP0]
+	ldh a, [rOBP0]
 	ld [wOBP0], a
-	ld a, [rOBP1]
+	ldh a, [rOBP1]
 	ld [wOBP1], a
 	call DelayFrame
 	ld hl, hVBlank
@@ -46,10 +46,10 @@ DoBattleTransition:
 	bit 7, a
 	jr z, .loop
 
-	ld a, [rSVBK]
+	ldh a, [rSVBK]
 	push af
 	ld a, BANK(wUnknBGPals)
-	ld [rSVBK], a
+	ldh [rSVBK], a
 
 	ld hl, wUnknBGPals
 if !DEF(MONOCHROME)
@@ -68,7 +68,7 @@ else
 endc
 
 	pop af
-	ld [rSVBK], a
+	ldh [rSVBK], a
 
 	ld a, %11111111
 	ld [wBGP], a
@@ -76,18 +76,18 @@ endc
 	call DelayFrame
 
 	xor a
-	ld [hLCDCPointer], a
-	ld [hLYOverrideStart], a
-	ld [hLYOverrideEnd], a
-	ld [hSCY], a
+	ldh [hLCDCPointer], a
+	ldh [hLYOverrideStart], a
+	ldh [hLYOverrideEnd], a
+	ldh [hSCY], a
 
 	ld a, BANK(wEnemyMon)
-	ld [rSVBK], a
+	ldh [rSVBK], a
 	ld hl, rIE
 	res LCD_STAT, [hl]
 
 	pop af
-	ld [hVBlank], a
+	ldh [hVBlank], a
 	jp DelayFrame
 
 .TrainerBattlePokeballTile:
@@ -208,11 +208,11 @@ StartTrainerBattle_SetUpBGMap:
 	call StartTrainerBattle_NextScene
 	xor a
 	ld [wcf64], a
-	ld [hBGMapMode], a
+	ldh [hBGMapMode], a
 	ret
 
 StartTrainerBattle_Flash:
-	ld a, [hBattlePalFadeMode]
+	ldh a, [hBattlePalFadeMode]
 	ld [wPalFadeMode], a
 	ld c, 10
 	call DoFadePalettes
@@ -221,16 +221,16 @@ StartTrainerBattle_Flash:
 StartTrainerBattle_SetUpForWavyOutro:
 	farcall BattleStart_HideAllSpritesExceptBattleParticipants
 	ld a, BANK(wLYOverrides)
-	ld [rSVBK], a
+	ldh [rSVBK], a
 
 	call StartTrainerBattle_NextScene
 
 	ld a, $43
-	ld [hLCDCPointer], a
+	ldh [hLCDCPointer], a
 	xor a
-	ld [hLYOverrideStart], a
+	ldh [hLYOverrideStart], a
 	ld a, $90
-	ld [hLYOverrideEnd], a
+	ldh [hLYOverrideEnd], a
 	xor a
 	ld [wcf64], a
 	ld [wcf65], a
@@ -280,7 +280,7 @@ StartTrainerBattle_SineWave:
 StartTrainerBattle_SetUpForSpinOutro:
 	farcall BattleStart_HideAllSpritesExceptBattleParticipants
 	ld a, BANK(wLYOverrides)
-	ld [rSVBK], a
+	ldh [rSVBK], a
 	call StartTrainerBattle_NextScene
 	xor a
 	ld [wcf64], a
@@ -301,7 +301,7 @@ ENDM
 
 StartTrainerBattle_SpinToBlack:
 	xor a
-	ld [hBGMapMode], a
+	ldh [hBGMapMode], a
 	ld a, [wcf64]
 	ld e, a
 	ld d, 0
@@ -315,7 +315,7 @@ endr
 	ld [wcf65], a
 	call .load
 	ld a, $2
-	ld [hBGMapMode], a
+	ldh [hBGMapMode], a
 	ld hl, wcf64
 	ld a, [hl]
 	inc [hl]
@@ -329,7 +329,7 @@ endr
 
 .end
 	xor a
-	ld [hBGMapMode], a
+	ldh [hBGMapMode], a
 	ld a, $20
 	ld [wJumptableIndex], a
 	ret
@@ -448,12 +448,12 @@ endr
 StartTrainerBattle_SetUpForRandomScatterOutro:
 	farcall BattleStart_HideAllSpritesExceptBattleParticipants
 	ld a, BANK(wLYOverrides)
-	ld [rSVBK], a
+	ldh [rSVBK], a
 	call StartTrainerBattle_NextScene
 	ld a, $10
 	ld [wcf64], a
 	ld a, $2
-	ld [hBGMapMode], a
+	ldh [hBGMapMode], a
 	ret
 
 StartTrainerBattle_SpeckleToBlack:
@@ -473,12 +473,12 @@ StartTrainerBattle_SpeckleToBlack:
 
 .done
 	ld a, $2
-	ld [hBGMapMode], a
+	ldh [hBGMapMode], a
 	call DelayFrame
 	call DelayFrame
 	call DelayFrame
 	xor a
-	ld [hBGMapMode], a
+	ldh [hBGMapMode], a
 	ld a, $20
 	ld [wJumptableIndex], a
 	ret
@@ -520,7 +520,7 @@ StartTrainerBattle_SpeckleToBlack:
 
 StartTrainerBattle_LoadPokeBallGraphics:
 	xor a
-	ld [hBGMapMode], a
+	ldh [hBGMapMode], a
 
 	; store this in HRAM to avoid bank-switching later
 	ld a, [wTimeOfDayPal]
@@ -528,7 +528,7 @@ StartTrainerBattle_LoadPokeBallGraphics:
 	sla a
 	sla a
 	sla a
-	ld [hTimeOfDayPalOffset], a
+	ldh [hTimeOfDayPalOffset], a
 
 	ld a, [wOtherTrainerClass]
 	and a
@@ -536,19 +536,19 @@ StartTrainerBattle_LoadPokeBallGraphics:
 
 	; wild battles just need PAL_BG_TEXT to be black, and do flash PAL_BG_GRAY
 	ld a, PALFADE_BG | PALFADE_FLASH
-	ld [hBattlePalFadeMode], a
-	ld a, [rSVBK]
+	ldh [hBattlePalFadeMode], a
+	ldh a, [rSVBK]
 	push af
 	ld a, $5 ; WRAM5 = palettes
-	ld [rSVBK], a
+	ldh [rSVBK], a
 	ld hl, .black_pals
 	call .timeofdaypal
 	ld de, wUnknBGPals palette PAL_BG_TEXT ; black
 	call .copy
 	pop af
-	ld [rSVBK], a
+	ldh [rSVBK], a
 	ld a, $1
-	ld [hCGBPalUpdate], a
+	ldh [hCGBPalUpdate], a
 	call DelayFrame
 	call CopyTilemapAtOnce
 	jp StartTrainerBattle_NextScene
@@ -556,7 +556,7 @@ StartTrainerBattle_LoadPokeBallGraphics:
 .trainer_battle
 	; don't flash PAL_BG_GRAY, the poke ball palette
 	ld a, PALFADE_BG | PALFADE_FLASH | PALFADE_SKIP_FIRST
-	ld [hBattlePalFadeMode], a
+	ldh [hBattlePalFadeMode], a
 
 	; use PAL_BG_RED for the whole flashing screen
 	hlcoord 0, 0, wAttrMap
@@ -638,15 +638,15 @@ StartTrainerBattle_LoadPokeBallGraphics:
 	ld hl, .timepals
 	call .timeofdaypal
 .got_palette
-	ld a, [rSVBK]
+	ldh a, [rSVBK]
 	push af
 	ld a, $5 ; WRAM5 = palettes
-	ld [rSVBK], a
+	ldh [rSVBK], a
 	call .copypals
 	pop af
-	ld [rSVBK], a
+	ldh [rSVBK], a
 	ld a, $1
-	ld [hCGBPalUpdate], a
+	ldh [hCGBPalUpdate], a
 	call DelayFrame
 	call CopyTilemapAtOnce
 	jp StartTrainerBattle_NextScene
@@ -692,7 +692,7 @@ StartTrainerBattle_LoadPokeBallGraphics:
 	ret
 
 .timeofdaypal
-	ld a, [hTimeOfDayPalOffset]
+	ldh a, [hTimeOfDayPalOffset]
 	push bc
 	ld b, 0
 	ld c, a
@@ -816,10 +816,10 @@ RocketTransition:
 	db %11111000, %00011111
 
 WipeLYOverrides:
-	ld a, [rSVBK]
+	ldh a, [rSVBK]
 	push af
 	ld a, $5
-	ld [rSVBK], a
+	ldh [rSVBK], a
 
 	ld hl, wLYOverrides
 	call .wipe
@@ -827,7 +827,7 @@ WipeLYOverrides:
 	call .wipe
 
 	pop af
-	ld [rSVBK], a
+	ldh [rSVBK], a
 	ret
 
 .wipe
@@ -865,7 +865,7 @@ StartTrainerBattle_ZoomToBlack:
 	inc de
 	ld h, a
 	xor a
-	ld [hBGMapMode], a
+	ldh [hBGMapMode], a
 	call .Copy
 	call ApplyAttrmapInVBlank
 	jr .loop

@@ -215,10 +215,10 @@ SavedTheGame:
 	jp WaitSFX
 
 SaveGameData::
-	ld a, [hVBlank]
+	ldh a, [hVBlank]
 	push af
 	ld a, 2
-	ld [hVBlank], a
+	ldh [hVBlank], a
 	dec a ; ld a, TRUE
 	ld [wSaveFileExists], a
 	farcall StageRTCTimeForSave
@@ -245,7 +245,7 @@ SaveGameData::
 .ok
 	call CloseSRAM
 	pop af
-	ld [hVBlank], a
+	ldh [hVBlank], a
 	ret
 
 ErasePreviousSave:

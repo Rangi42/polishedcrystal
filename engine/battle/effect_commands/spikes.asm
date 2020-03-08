@@ -1,5 +1,5 @@
 BattleCommand_spikes:
-	ld a, [hBattleTurn]
+	ldh a, [hBattleTurn]
 	and a
 	ld hl, wEnemyScreens
 	jr z, .got_screens
@@ -19,7 +19,7 @@ BattleCommand_spikes:
 	jp StdBattleTextBox
 
 BattleCommand_toxicspikes:
-	ld a, [hBattleTurn]
+	ldh a, [hBattleTurn]
 	and a
 	ld hl, wEnemyScreens
 	jr z, .got_screens

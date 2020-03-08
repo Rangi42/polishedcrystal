@@ -112,7 +112,7 @@ UseRegisteredItem:
 	jr nz, ._cantuse
 	scf
 	ld a, HMENURETURN_SCRIPT
-	ld [hMenuReturn], a
+	ldh [hMenuReturn], a
 	ret
 
 .CantUse:
@@ -183,8 +183,8 @@ GetRegisteredItem:
 	jr nz, .loop
 
 	ld a, $70
-	ld [rWY], a
-	ld [hWY], a
+	ldh [rWY], a
+	ldh [hWY], a
 	call SetPalettes
 	call DelayFrame
 	farcall HDMATransfer_OnlyTopFourRows
@@ -228,8 +228,8 @@ GetRegisteredItem:
 .ret
 	push af
 	ld a, $90
-	ld [rWY], a
-	ld [hWY], a
+	ldh [rWY], a
+	ldh [hWY], a
 	farcall ReloadVisibleSprites
 	pop af
 	ret

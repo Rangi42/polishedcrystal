@@ -1,5 +1,5 @@
 CheckTrainerBattle2::
-	ld a, [hROMBank]
+	ldh a, [hROMBank]
 	push af
 
 	call SwitchToMapScriptHeaderBank
@@ -97,7 +97,7 @@ CheckTrainerBattle::
 .startbattle
 	pop de
 	pop af
-	ld [hLastTalked], a
+	ldh [hLastTalked], a
 	ld a, b
 	ld [wEngineBuffer2], a
 	ld a, c
@@ -114,7 +114,7 @@ LoadTrainer_continue::
 	ld a, [wMapScriptHeaderBank]
 	ld [wEngineBuffer1], a
 
-	ld a, [hLastTalked]
+	ldh a, [hLastTalked]
 	call GetMapObject
 
 	ld hl, MAPOBJECT_COLOR

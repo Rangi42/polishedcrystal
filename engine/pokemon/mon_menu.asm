@@ -654,19 +654,19 @@ MonMenu_FreshSnack:
 	ld a, MON_MAXHP
 	call GetPartyParamLocation
 	ld a, [hli]
-	ld [hDividend + 0], a
+	ldh [hDividend + 0], a
 	ld a, [hl]
-	ld [hDividend + 1], a
+	ldh [hDividend + 1], a
 	ld a, 5
-	ld [hDivisor], a
+	ldh [hDivisor], a
 	ld b, 2
 	call Divide
 	ld a, MON_HP + 1
 	call GetPartyParamLocation
-	ld a, [hQuotient + 2]
+	ldh a, [hQuotient + 2]
 	sub [hl]
 	dec hl
-	ld a, [hQuotient + 1]
+	ldh a, [hQuotient + 1]
 	sbc [hl]
 	ret
 
@@ -858,7 +858,7 @@ MoveScreenLoop:
 	farcall PlaySpriteAnimationsAndDelayFrame
 	call JoyTextDelay
 
-	ld a, [hJoyPressed]
+	ldh a, [hJoyPressed]
 	rrca
 	jr c, .pressed_a
 	rrca
@@ -1214,7 +1214,7 @@ SetUpMoveScreenBG:
 	call ClearTileMap
 	call ClearSprites
 	xor a
-	ld [hBGMapMode], a
+	ldh [hBGMapMode], a
 	ld a, CGB_PARTY_MENU
 	call GetCGBLayout
 	farcall LoadStatsGFX
@@ -1261,7 +1261,7 @@ MoveScreen_ListMoves:
 	lb bc, 14, 18
 	call ClearBox
 	xor a
-	ld [hBGMapMode], a
+	ldh [hBGMapMode], a
 	ld hl, wMoveScreenMoves
 	ld b, a
 	ld a, [wMoveScreenOffset]
@@ -1393,12 +1393,12 @@ PlaceMoveData:
 	ld de, String_MoveSwap
 	call PlaceString
 	ld a, $1
-	ld [hBGMapMode], a
+	ldh [hBGMapMode], a
 	ret
 
 .not_swapping
 	xor a
-	ld [hBGMapMode], a
+	ldh [hBGMapMode], a
 
 	hlcoord 10, 12
 	ld de, String_PowAcc
@@ -1480,7 +1480,7 @@ PlaceMoveData:
 	hlcoord 1, 14
 	predef PrintMoveDesc
 	ld a, $1
-	ld [hBGMapMode], a
+	ldh [hBGMapMode], a
 	ret
 
 String_na:

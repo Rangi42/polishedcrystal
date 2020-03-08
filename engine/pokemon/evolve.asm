@@ -262,13 +262,13 @@ endr
 	call DelayFrames
 
 	xor a
-	ld [hBGMapMode], a
+	ldh [hBGMapMode], a
 	hlcoord 0, 0
 	lb bc, 12, 20
 	call ClearBox
 
 	ld a, $1
-	ld [hBGMapMode], a
+	ldh [hBGMapMode], a
 	call ClearSprites
 
 	farcall EvolutionAnimation

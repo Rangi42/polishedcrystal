@@ -48,7 +48,7 @@ CanStealItem:
 	call OpponentCanLoseItem
 	jr z, .cant
 
-	ld a, [hBattleTurn]
+	ldh a, [hBattleTurn]
 	and a
 	ld hl, wBattleMonItem
 	ld bc, wEnemyMonItem

@@ -1,20 +1,20 @@
 LCD::
 	push af
-	ld a, [hMPState]
+	ldh a, [hMPState]
 	and a
 	jr nz, .musicplayer
-	ld a, [hLCDCPointer]
+	ldh a, [hLCDCPointer]
 	and a
 	jr z, .done
 
 ; At this point it's assumed we're in WRAM bank 5!
 	push bc
-	ld a, [rLY]
+	ldh a, [rLY]
 	ld c, a
 	ld b, wLYOverrides >> 8
 	ld a, [bc]
 	ld b, a
-	ld a, [hLCDCPointer]
+	ldh a, [hLCDCPointer]
 	ld c, a
 	ld a, b
 	ld [$ff00+c], a
@@ -25,7 +25,7 @@ LCD::
 	reti
 
 .musicplayer
-	ld a, [rLY]
+	ldh a, [rLY]
 	cp PIANO_ROLL_HEIGHT_PX
 	jr nc, .donemp
 
@@ -37,7 +37,7 @@ LCD::
 	ld [$fe00+4*1], a ; OAM 1 y
 	ld [$fe00+4*2], a ; OAM 2 y
 
-	ld a, [hMPState]
+	ldh a, [hMPState]
 	inc a
 	add l
 	jr nc, .ok
@@ -78,39 +78,39 @@ DisableLCD::
 ; Turn the LCD off
 
 ; Don't need to do anything if the LCD is already off
-	ld a, [rLCDC]
+	ldh a, [rLCDC]
 	bit 7, a ; lcd enable
 	ret z
 
 	xor a
-	ld [rIF], a
-	ld a, [rIE]
+	ldh [rIF], a
+	ldh a, [rIE]
 	ld b, a
 
 ; Disable VBlank
 	res 0, a ; vblank
-	ld [rIE], a
+	ldh [rIE], a
 
 .wait
 ; Wait until VBlank would normally happen
-	ld a, [rLY]
+	ldh a, [rLY]
 	cp $90
 	jr c, .wait
 	cp $99
 	jr z, .wait
 
-	ld a, [rLCDC]
+	ldh a, [rLCDC]
 	and %01111111 ; lcd enable off
-	ld [rLCDC], a
+	ldh [rLCDC], a
 
 	xor a
-	ld [rIF], a
+	ldh [rIF], a
 	ld a, b
-	ld [rIE], a
+	ldh [rIE], a
 	ret
 
 EnableLCD::
-	ld a, [rLCDC]
+	ldh a, [rLCDC]
 	set 7, a ; lcd enable
-	ld [rLCDC], a
+	ldh [rLCDC], a
 	ret

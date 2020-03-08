@@ -211,7 +211,7 @@ Slots_WaitStart:
 .proceed
 	call Slots_Next
 	xor a
-	ld [hJoypadSum], a
+	ldh [hJoypadSum], a
 	ret
 
 Slots_WaitReel1:
@@ -233,7 +233,7 @@ Slots_WaitStopReel1:
 	call Slots_LoadReelState
 	call Slots_Next
 	xor a
-	ld [hJoypadSum], a
+	ldh [hJoypadSum], a
 Slots_WaitReel2:
 	ld hl, hJoypadSum
 	ld a, [hl]
@@ -253,7 +253,7 @@ Slots_WaitStopReel2:
 	call Slots_LoadReelState
 	call Slots_Next
 	xor a
-	ld [hJoypadSum], a
+	ldh [hJoypadSum], a
 Slots_WaitReel3:
 	ld hl, hJoypadSum
 	ld a, [hl]
@@ -273,7 +273,7 @@ Slots_WaitStopReel3:
 	call Slots_LoadReelState
 	call Slots_Next
 	xor a
-	ld [hJoypadSum], a
+	ldh [hJoypadSum], a
 	ret
 
 Slots_FlashIfWin:
@@ -296,7 +296,7 @@ Slots_FlashScreen:
 	srl a
 	ret z
 
-	ld a, [rOBP0]
+	ldh a, [rOBP0]
 	cpl
 	ld e, a
 	ld d, a
@@ -1393,7 +1393,7 @@ Slots_InitBias:
 	and a
 	ret z
 	ld hl, .Normal
-	ld a, [hScriptVar]
+	ldh a, [hScriptVar]
 	and a
 	jr z, .okay
 	ld hl, .Lucky
@@ -1793,7 +1793,7 @@ SlotMachine_AnimateGolem:
 	cpl
 	inc a
 	ld [hl], a
-	ld [hSCY], a
+	ldh [hSCY], a
 	ret
 
 .restart
@@ -1801,7 +1801,7 @@ SlotMachine_AnimateGolem:
 	add hl, bc
 	xor a
 	ld [hl], a
-	ld [hSCY], a
+	ldh [hSCY], a
 	ret
 
 Slots_AnimateChansey:

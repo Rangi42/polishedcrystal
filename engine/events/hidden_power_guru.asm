@@ -17,7 +17,7 @@ Special_HiddenPowerGuru:
 	farcall GetTypeName
 	ld a, $2
 .done
-	ld [hScriptVar], a
+	ldh [hScriptVar], a
 	ret
 
 .cancel

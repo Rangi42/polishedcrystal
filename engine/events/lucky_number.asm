@@ -1,6 +1,6 @@
 Special_CheckForLuckyNumberWinners:
 	xor a
-	ld [hScriptVar], a
+	ldh [hScriptVar], a
 	ld [wFoundMatchingIDInParty], a
 	ld a, [wPartyCount]
 	and a
@@ -100,7 +100,7 @@ Special_CheckForLuckyNumberWinners:
 	jr c, .BoxesLoop
 
 	call CloseSRAM
-	ld a, [hScriptVar]
+	ldh a, [hScriptVar]
 	and a
 	ret z ; found nothing
 	ld a, [wFoundMatchingIDInParty]
@@ -168,7 +168,7 @@ Special_CheckForLuckyNumberWinners:
 
 .okay
 	inc b
-	ld a, [hScriptVar]
+	ldh a, [hScriptVar]
 	and a
 	jr z, .bettermatch
 	cp b
@@ -177,7 +177,7 @@ Special_CheckForLuckyNumberWinners:
 .bettermatch
 	dec b
 	ld a, b
-	ld [hScriptVar], a
+	ldh [hScriptVar], a
 	pop bc
 	ld a, b
 	ld [wCurPartySpecies], a

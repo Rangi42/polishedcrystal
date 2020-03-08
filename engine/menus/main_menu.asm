@@ -129,7 +129,7 @@ MainMenu_PrintCurrentTimeAndDay:
 	and a
 	ret z
 	xor a
-	ld [hBGMapMode], a
+	ldh [hBGMapMode], a
 	call .PlaceBox
 	ld hl, wOptions1
 	ld a, [hl]
@@ -139,7 +139,7 @@ MainMenu_PrintCurrentTimeAndDay:
 	pop af
 	ld [wOptions1], a
 	ld a, $1
-	ld [hBGMapMode], a
+	ldh [hBGMapMode], a
 	ret
 
 .PlaceBox:
@@ -175,7 +175,7 @@ endc
 	bccoord 1, 15
 	call Text_WeekDay
 	decoord 4, 16
-	ld a, [hHours]
+	ldh a, [hHours]
 	ld c, a
 	farcall PrintHour
 	ld [hl], ":"

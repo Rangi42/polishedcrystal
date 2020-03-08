@@ -24,7 +24,7 @@ endc
 
 ; get time of day based on the current hour
 GetTimeOfDay::
-	ld a, [hHours]
+	ldh a, [hHours]
 	ld hl, TimesOfDay
 .check
 	cp [hl]
@@ -51,11 +51,11 @@ StageRTCTimeForSave:
 	ld hl, wGameSaveTime
 	ld a, [wCurDay]
 	ld [hli], a
-	ld a, [hHours]
+	ldh a, [hHours]
 	ld [hli], a
-	ld a, [hMinutes]
+	ldh a, [hMinutes]
 	ld [hli], a
-	ld a, [hSeconds]
+	ldh a, [hSeconds]
 	ld [hli], a
 	ret
 
