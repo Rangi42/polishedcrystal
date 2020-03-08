@@ -297,7 +297,7 @@ FacingCutTree:
 
 FacingBerry:
 	db 1 ; #
-	db  8,  4, 0, $08
+	db 10,  3, 0, $08
 
 FacingApricorn:
 	db 1 ; #
