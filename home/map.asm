@@ -72,9 +72,6 @@ GetMapTrigger::
 	pop hl
 	ret
 
-LoadMapPart:: ; 217a
-	farjp _LoadMapPart
-
 ReturnToMapFromSubmenu::
 	ld a, MAPSETUP_SUBMENU
 	ld [hMapEntryMethod], a
@@ -809,11 +806,6 @@ FillSouthConnectionStrip:: ; 25d3
 	ld [rSVBK], a
 	ret
 ; 25f6
-
-LoadMapStatus:: ; 261b
-	ld [wMapStatus], a
-	ret
-; 261f
 
 CallScript:: ; 261f
 ; Call a script at a:hl.

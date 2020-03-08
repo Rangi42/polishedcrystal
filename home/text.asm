@@ -129,11 +129,6 @@ TextBoxPalette::
 	jr nz, .col
 	ret
 
-RadioTerminator::
-	ld hl, .stop
-	ret
-.stop	db "@"
-
 PrintText::
 	call SetUpTextBox
 PrintTextNoBox::

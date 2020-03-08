@@ -5,6 +5,12 @@ ConsumeGenericDelay::
 	ld c, a
 	jp DelayFrames
 
+ExitMenu::
+	push af
+	farcall _ExitMenu
+	pop af
+	ret
+
 InitVerticalMenuCursor::
 	farjp _InitVerticalMenuCursor
 

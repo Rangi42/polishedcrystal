@@ -14,10 +14,8 @@ PushWindow::
 SECTION "rst08 FarCall", ROM0[$0008]
 	jp RstFarCall
 
-Cosine::
-; Return d * cos(a) in hl
-	add $10 ; 90 degrees
-	jr Sine
+LoadMapPart::
+	farjp _LoadMapPart
 
 	ds 1 ; free space
 
@@ -68,6 +66,18 @@ GetFarWRAMByte::
 SECTION "rst30 Predef", ROM0[$0030]
 	jp _Predef
 
+DoItemEffect::
+	farjp _DoItemEffect
+
+	ds 1 ; free space
+
+
+SECTION "rst38 InfiniteLoop", ROM0[$0038]
+	rst InfiniteLoop
+
+Cosine::
+; Return d * cos(a) in hl
+	add $10 ; 90 degrees
 Sine::
 ; Return d * sin(a) in hl
 ; a is a signed 6-bit value.
@@ -75,27 +85,16 @@ Sine::
 	farjp _Sine
 
 
-SECTION "rst38 InfiniteLoop", ROM0[$0038]
-	rst InfiniteLoop
-
-ExitMenu::
-	push af
-	farcall _ExitMenu
-	pop af
-	ret
-
-
 ; Game Boy hardware interrupts
 
 SECTION "vblank", ROM0[$0040]
 	jp VBlank
 
-BattleRandom::
-; Handles all RNG calls in the battle engine, allowing
-; link battles to remain in sync using a shared PRNG.
-	farjp _BattleRandom
-
-	ds 1 ; free space
+ItemIsMail::
+	ld a, d
+	cp FLOWER_MAIL
+	ccf
+	ret
 
 
 SECTION "lcd", ROM0[$0048]
@@ -120,10 +119,10 @@ GetCGBLayout::
 SECTION "serial", ROM0[$0058]
 	jp Serial
 
-DoItemEffect::
-	farjp _DoItemEffect
-
-	ds 1 ; free space
+CheckOnWater::
+	call GetPlayerStandingTile
+	dec a ; cp WATER_TILE
+	ret
 
 
 SECTION "joypad", ROM0[$0060]

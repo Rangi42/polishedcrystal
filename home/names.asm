@@ -199,13 +199,6 @@ IsHMMove:: ; 34e7
 	db -1
 ; 34f8
 
-ItemIsMail:: ; b9e76
-	ld a, d
-	cp FLOWER_MAIL
-	ccf
-	ret
-; b9e80
-
 GetMoveName:: ; 34f8
 	push hl
 

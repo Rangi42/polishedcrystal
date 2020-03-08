@@ -84,12 +84,6 @@ DoesSpriteHaveFacings:: ; 1836
 	ret
 ; 184a
 
-CheckOnWater:: ; 1852
-	call GetPlayerStandingTile
-	dec a ; cp WATER_TILE
-	ret
-; 185d
-
 GetPlayerStandingTile:: ; 184a
 	ld a, [wPlayerStandingTile]
 	; fallthrough
