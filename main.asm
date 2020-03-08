@@ -151,7 +151,6 @@ INCLUDE "engine/items/key_items.asm"
 INCLUDE "data/moves/descriptions.asm"
 INCLUDE "engine/events/pokerus/pokerus.asm"
 INCLUDE "engine/battle/start_battle.asm"
-INCLUDE "data/battle/music.asm"
 INCLUDE "engine/gfx/place_graphic.asm"
 
 
@@ -278,7 +277,7 @@ INCLUDE "engine/overworld/player_movement.asm"
 INCLUDE "engine/events/engine_flags.asm"
 INCLUDE "engine/overworld/variables.asm"
 INCLUDE "data/text/battle.asm"
-INCLUDE "data/trainers/final_text.asm"
+INCLUDE "engine/battle/final_text.asm"
 INCLUDE "engine/battle/abilities.asm"
 
 

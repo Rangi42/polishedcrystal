@@ -1,106 +1,34 @@
-GetFinalPkmnTextPointer::
-	; Silver and Lyra have a phrase for each set of three IDs
-	ld a, [wOtherTrainerClass]
-	ld hl, .triple_phrases
-	call .findinarray
-	jr c, .rival_or_lyra
-	; Proton to Giovanni have a phrase for each ID
-	ld a, [wOtherTrainerClass]
-	cp PROTON
-	jr c, .not_rocket
-	cp GIOVANNI + 1
-	jr c, .rocket
-.not_rocket
-	; Leaf and below, and Prof. Oak and above, have one unique phrase
-	dec a
-	cp LEAF
-	jr c, .single_phrase
-	cp PROF_OAK - 1
-	jr c, .nothing
-	sub PROF_OAK - LEAF - 1
-	jr .single_phrase
-
-.nothing:
-	xor a
-	and a
-	ret
-
-.rival_or_lyra:
-	ld a, [wOtherTrainerID]
-	dec a
-	ld c, 3
-	call SimpleDivide
-	ld a, b
-	jr .get_text
-
-.rocket:
-	; a = ([wOtherTrainerClass] - PROTON) * 2 + [wOtherTrainerID] - 1
-	sub PROTON
-	add a
-	ld b, a
-	ld a, [wOtherTrainerID]
-	dec a
-	add b
-	ld hl, .TeamRocketFinalTexts
-	jr .get_text
-
-.single_phrase:
-	ld hl, .SinglePhraseFinalTexts
-.get_text:
-	ld b, 0
-	ld c, a
-	add hl, bc
-	add hl, bc
-	jr .finish
-
-.findinarray:
-	push de
-	ld de, 3
-	call IsInArray
-	pop de
-	ret nc
-	inc hl
-.finish:
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	or h
-	jr z, .nothing
-.done:
-	scf
-	ret
-
-.triple_phrases:
-	dbw RIVAL0, .Rival0FinalTexts
-	dbw RIVAL1, .Rival1FinalTexts
-	dbw RIVAL2, .Rival2FinalTexts
-	dbw LYRA1, .Lyra1FinalTexts
-	dbw LYRA2, .Lyra2FinalTexts
+FinalTextList_TriplePhrases:
+	dbw RIVAL0, .FinalText_Rival0
+	dbw RIVAL1, .FinalText_Rival1
+	dbw RIVAL2, .FinalText_Rival2
+	dbw LYRA1,  .FinalText_Lyra1
+	dbw LYRA2,  .FinalText_Lyra2
 	db -1
 
-.Rival0FinalTexts:
+.FinalText_Rival0:
 	dw Rival1_1FinalPkmnText
 
-.Rival1FinalTexts:
+.FinalText_Rival1:
 	dw Rival1_2FinalPkmnText
 	dw Rival1_3FinalPkmnText
 	dw Rival1_4FinalPkmnText
 	dw Rival1_5FinalPkmnText
 
-.Rival2FinalTexts:
+.FinalText_Rival2:
 	dw Rival2_1FinalPkmnText
 	dw Rival2_2FinalPkmnText
 
-.Lyra1FinalTexts:
+.FinalText_Lyra1:
 	dw Lyra1_1FinalPkmnText
 	dw Lyra1_2FinalPkmnText
 	dw Lyra1_3FinalPkmnText
 	dw Lyra1_4FinalPkmnText
 
-.Lyra2FinalTexts:
+.FinalText_Lyra2:
 	dw Lyra2_1FinalPkmnText
 
-.TeamRocketFinalTexts:
+FinalText_TeamRocket:
 	dw Proton1FinalPkmnText
 	dw Proton2FinalPkmnText
 	dw Petrel1FinalPkmnText
@@ -112,7 +40,7 @@ GetFinalPkmnTextPointer::
 	dw Giovanni1FinalPkmnText
 	dw Giovanni2FinalPkmnText
 
-.SinglePhraseFinalTexts:
+FinalText_SinglePhrases:
 	dw CarrieFinalPkmnText
 	dw CalFinalPkmnText
 	dw FalknerFinalPkmnText
