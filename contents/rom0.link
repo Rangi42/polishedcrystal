@@ -1,6 +1,7 @@
 ROM0
 	org $0000
 	"NULL"
+	org $0000
 	"rst00 EntryPoint"
 	org $0008
 	"rst08 FarCall"
@@ -26,6 +27,7 @@ ROM0
 	"serial"
 	org $0060
 	"joypad"
+	org $0061
 	"High Home"
 	org $0100
 	"Header"

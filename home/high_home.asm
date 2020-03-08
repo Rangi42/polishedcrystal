@@ -1,4 +1,23 @@
-INCLUDE "home/delay.asm"
+_Jumptable:
+	push de
+	ld e, a
+	ld d, 0
+	add hl, de
+	add hl, de
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	pop de
+_hl_::
+	jp hl
+
+IsAPokemon::
+; For functions using EGG as sentinel, use "and a" instead (EGG is $ff)
+; Returns carry if species a is not a Pokemon (including $ff)
+	inc a
+	cp $2 ; sets carry for $0 (inc'ed to $1) and $ff (inc'ed to $0)
+	dec a
+	ret
 
 HBlankCopy2bpp::
 	di
@@ -46,13 +65,13 @@ HBlankCopy2bpp::
 	ld [hli], a ; 9
 	ld a, d ; 10
 	ld [hli], a ; 12
-	rept 5
+rept 5
 	pop de
 	ld a, e
 	ld [hli], a
 	ld a, d
 	ld [hli], a
-	endr ; 47 (12 + 7 * 5)
+endr ; 47 (12 + 7 * 5)
 	pop de ; 50
 	ld a, e ; 51
 	ld [hli], a ; 53
@@ -63,21 +82,3 @@ HBlankCopy2bpp::
 	ld [hTilesPerCycle], a
 	jr nz, .outerLoop
 	jp DoneHBlankCopy
-
-IsInArray::
-; Find value a for every de bytes in array hl.
-; Return index in b, and carry if found.
-	ld b, 0
-	ld c, a
-.loop
-	ld a, [hl]
-	cp -1
-	ret z ; carry can never be set for "cp -1"
-	cp c
-	scf
-	ret z
-	inc b
-	add hl, de
-	jr .loop
-
-	ds 2 ; free space

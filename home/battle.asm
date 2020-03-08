@@ -1,3 +1,25 @@
+GetPartyParamLocation:: ; 3917
+; Get the location of parameter a from wCurPartyMon in hl
+	push bc
+	ld hl, wPartyMons
+	ld c, a
+	ld b, 0
+	add hl, bc
+	ld a, [wCurPartyMon]
+	call GetPartyLocation
+	pop bc
+	ld a, [hl]
+	ret
+; 3927
+
+GetPartyLocation::
+; Add the length of a PartyMon struct to hl a times.
+	push bc
+	ld bc, PARTYMON_STRUCT_LENGTH
+	rst AddNTimes
+	pop bc
+	ret
+
 ; *PartyAttr returns address to attribute in hl, content
 ; in a. Always returns nz (used to return z for wildmon).
 TrueUserPartyAttr::
@@ -1084,3 +1106,33 @@ GetBattleAnimByte:: ; 3af0
 	ld a, [wBattleAnimByte]
 	ret
 ; 3b0c
+
+HalveBC::
+	srl b
+	rr c
+FloorBC::
+	ld a, c
+	or b
+	ret nz
+	inc c
+	ret
+
+PushLYOverrides:: ; 3b0c
+	ld a, [hLCDCPointer]
+	and a
+	ret z
+
+	ld a, wLYOverridesBackup % $100
+	ld [hRequestedVTileSource], a
+	ld a, wLYOverridesBackup / $100
+	ld [hRequestedVTileSource + 1], a
+
+	ld a, wLYOverrides % $100
+	ld [hRequestedVTileDest], a
+	ld a, wLYOverrides / $100
+	ld [hRequestedVTileDest + 1], a
+
+	ld a, (wLYOverridesEnd - wLYOverrides) / 16
+	ld [hLYOverrideStackCopyAmount], a
+	ret
+; 3b2a
