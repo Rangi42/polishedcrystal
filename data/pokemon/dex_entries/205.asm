@@ -1,4 +1,4 @@
-; ForretressPokedexEntry: ; 0x1d0524
+; ForretressPokedexEntry:
 	db "Bagworm@" ; species name
 	dw 311, 2770 ; height, width
 

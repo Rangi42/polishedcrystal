@@ -1,4 +1,4 @@
-; MareepPokedexEntry: ; 0x1cd551
+; MareepPokedexEntry:
 	db "Wool@" ; species name
 	dw 200, 170 ; height, width
 

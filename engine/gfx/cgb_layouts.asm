@@ -1,4 +1,4 @@
-LoadCGBLayout:: ; 8d59
+LoadCGBLayout::
 	and a ; CGB_RAM?
 	jr nz, .not_ram
 	ld a, [wMemCGBLayout]
@@ -18,13 +18,11 @@ LoadCGBLayout:: ; 8d59
 	ld de, .ReturnFromJumpTable
 	push de
 	jp hl
-; 8d79
 
-.ReturnFromJumpTable: ; 8d79
+.ReturnFromJumpTable:
 	ret
-; 8d7a
 
-.dw ; 8d7a
+.dw
 	dw _CGB_BattleGrayscale
 	dw _CGB_BattleColors
 	dw _CGB_PokegearPals
@@ -51,10 +49,8 @@ LoadCGBLayout:: ; 8d59
 	dw _CGB_IntroPals
 	dw _CGB_PlayerOrMonFrontpicPals
 	dw _CGB_TrainerOrMonFrontpicPals
-; 8db8
 
-
-_CGB_BattleGrayscale: ; 8db8
+_CGB_BattleGrayscale:
 	push bc
 	ld de, wUnknBGPals
 rept 8
@@ -68,8 +64,7 @@ rept 2
 endr
 	jp _CGB_FinishBattleScreenLayout
 
-
-_CGB_BattleColors: ; 8ddb
+_CGB_BattleColors:
 	push bc
 	ld de, wUnknBGPals
 	call GetBattlemonBackpicPalettePointer
@@ -154,7 +149,7 @@ _CGB_BattleColors: ; 8ddb
 	ld [wMemCGBLayout], a
 	call ApplyPals
 
-_CGB_FinishBattleScreenLayout: ; 8e23
+_CGB_FinishBattleScreenLayout:
 	hlcoord 0, 0, wAttrMap
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
 	ld a, $2
@@ -220,10 +215,8 @@ _CGB_FinishBattleScreenLayout: ; 8e23
 	call FarCopyWRAM
 
 	jp ApplyAttrMap
-; 8e85
 
-
-_CGB_PokegearPals: ; 8eb9
+_CGB_PokegearPals:
 	ld hl, PokegearPals
 	ld de, wUnknBGPals
 	ld bc, 8 palettes
@@ -244,8 +237,6 @@ _CGB_PokegearPals: ; 8eb9
 	ld a, $1
 	ld [hCGBPalUpdate], a
 	ret
-; 8edb
-
 
 _CGB_PokedexAreaPals:
 	ld hl, PokegearPals
@@ -278,8 +269,7 @@ else
 	RGB_MONOCHROME_WHITE
 endc
 
-
-_CGB_StatsScreenHPPals: ; 8edb
+_CGB_StatsScreenHPPals:
 	ld de, wUnknBGPals
 	ld a, [wCurHPPal]
 	ld l, a
@@ -352,10 +342,8 @@ _CGB_StatsScreenHPPals: ; 8edb
 	call FillBoxCGB
 
 	jp _CGB_FinishLayout
-; 8f52
 
-
-_CGB_Pokedex: ; 8f70
+_CGB_Pokedex:
 	ld de, wUnknBGPals
 	ld hl, PokedexRedPalette
 	call LoadHLPaletteIntoDE
@@ -392,9 +380,8 @@ _CGB_Pokedex: ; 8f70
 	call FarCopyWRAM
 
 	jp _CGB_FinishLayout
-; 8fba
 
-.GreenPicPalette: ; 8fba
+.GreenPicPalette:
 if !DEF(MONOCHROME)
 	RGB 11, 23, 00
 	RGB 07, 17, 00
@@ -404,7 +391,7 @@ else
 	MONOCHROME_RGB_FOUR
 endc
 
-.CursorPalette: ; 8fc2
+.CursorPalette:
 if !DEF(MONOCHROME)
 	RGB 00, 00, 00
 	RGB 11, 23, 00
@@ -413,10 +400,8 @@ if !DEF(MONOCHROME)
 else
 	MONOCHROME_RGB_FOUR
 endc
-; 8fca
 
-
-_CGB_SlotMachine: ; 906e
+_CGB_SlotMachine:
 	ld hl, SlotMachinePals
 	ld de, wUnknBGPals
 	ld bc, 16 palettes
@@ -476,10 +461,8 @@ _CGB_SlotMachine: ; 906e
 	call ByteFill
 
 	jp _CGB_FinishLayout
-; 90f8
 
-
-_CGB_Diploma: ; 91ad
+_CGB_Diploma:
 	ld hl, DiplomaPals
 	ld de, wUnknBGPals
 	ld bc, 16 palettes
@@ -492,7 +475,6 @@ _CGB_Diploma: ; 91ad
 
 	call WipeAttrMap
 	jp ApplyAttrMap
-; 91c8
 
 .DiplomaPalette
 if !DEF(MONOCHROME)
@@ -504,15 +486,13 @@ else
 	MONOCHROME_RGB_FOUR
 endc
 
-_CGB_MapPals: ; 91c8
+_CGB_MapPals:
 	call LoadMapPals
 	ld a, CGB_MAPPALS
 	ld [wMemCGBLayout], a
 	ret
-; 91d1
 
-
-_CGB_PartyMenu: ; 91d1
+_CGB_PartyMenu:
 	ld de, wUnknBGPals
 	ld hl, .PartyMenuBGPalette
 	call LoadHLPaletteIntoDE
@@ -536,7 +516,6 @@ _CGB_PartyMenu: ; 91d1
 	ld a, $4
 	call FillBoxCGB
 	jp ApplyAttrMap
-; 91e4
 
 .PartyMenuBGPalette:
 if !DEF(MONOCHROME)
@@ -548,7 +527,7 @@ else
 	MONOCHROME_RGB_FOUR
 endc
 
-_CGB_Evolution: ; 91e4
+_CGB_Evolution:
 	ld de, wUnknBGPals
 	ld a, c
 	and a
@@ -589,10 +568,8 @@ _CGB_Evolution: ; 91e4
 .got_palette
 	call WipeAttrMap
 	jp _CGB_FinishLayout
-; 9228
 
-
-_CGB_MoveList: ; 9373
+_CGB_MoveList:
 	hlcoord 0, 0, wAttrMap
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
 	ld a, $7
@@ -628,20 +605,16 @@ _CGB_MoveList: ; 9373
 	call FarCopyWRAM
 
 	jp _CGB_FinishLayout
-; 93a6
 
-
-_CGB_PokedexSearchOption: ; 93ba
+_CGB_PokedexSearchOption:
 	ld de, wUnknBGPals
 	ld hl, PokedexRedPalette
 	call LoadHLPaletteIntoDE
 
 	call WipeAttrMap
 	jp _CGB_FinishLayout
-; 93d3
 
-
-_CGB_BuyMenu: ; 9499
+_CGB_BuyMenu:
 	ld a, [wEngineBuffer1]
 	cp MARTTYPE_BLUECARD
 	ld hl, BlueCardMartMenuPals
@@ -674,10 +647,8 @@ endr
 	call FillBoxCGB
 
 	jp _CGB_FinishLayout
-; 94d0
 
-
-_CGB_PackPals: ; 93d3
+_CGB_PackPals:
 ; pack pals
 	ld a, [wBattleType]
 	cp BATTLETYPE_TUTORIAL
@@ -740,8 +711,6 @@ endr
 	call FillBoxCGB
 
 	jp _CGB_FinishLayout
-; 9439
-
 
 _CGB_TrainerCard:
 	call LoadFirstTwoTrainerCardPals
@@ -771,8 +740,7 @@ _CGB_TrainerCard:
 
 	jp _CGB_FinishLayout
 
-
-_CGB_TrainerCard2: ; 9289
+_CGB_TrainerCard2:
 	call LoadFirstTwoTrainerCardPals
 
 	ld a, FALKNER
@@ -855,8 +823,6 @@ _CGB_TrainerCard2: ; 9289
 	call FillBoxCGB
 
 	jp _CGB_FinishLayout
-; 9373
-
 
 _CGB_TrainerCard3:
 	call LoadFirstTwoTrainerCardPals
@@ -942,7 +908,6 @@ _CGB_TrainerCard3:
 
 	jp _CGB_FinishLayout
 
-
 LoadFirstTwoTrainerCardPals:
 	; trainer card
 	ld c, VAR_TRAINER_STARS
@@ -983,8 +948,7 @@ LoadFirstTwoTrainerCardPals:
 	pop de
 	ret
 
-
-_CGB_PokedexUnownMode: ; 903e
+_CGB_PokedexUnownMode:
 	ld de, wUnknBGPals
 	ld hl, PokedexRedPalette
 	call LoadHLPaletteIntoDE
@@ -1003,10 +967,8 @@ _CGB_PokedexUnownMode: ; 903e
 	call InitPartyMenuOBPals
 
 	jp _CGB_FinishLayout
-; 906e
 
-
-_CGB_BillsPC: ; 8fca
+_CGB_BillsPC:
 	ld de, wUnknBGPals
 	ld hl, .MenuPalette
 	call LoadHLPaletteIntoDE
@@ -1035,7 +997,6 @@ _CGB_BillsPC: ; 8fca
 	call InitPartyMenuOBPals
 
 	jp _CGB_FinishLayout
-; 9009
 
 .MenuPalette:
 if !DEF(MONOCHROME)
@@ -1047,7 +1008,7 @@ else
 	MONOCHROME_RGB_FOUR
 endc
 
-.OrangePalette: ; 9036
+.OrangePalette:
 if !DEF(MONOCHROME)
 	RGB 31, 15, 00
 	RGB 23, 12, 00
@@ -1056,10 +1017,8 @@ if !DEF(MONOCHROME)
 else
 	MONOCHROME_RGB_FOUR
 endc
-; 903e
 
-
-_CGB_UnownPuzzle: ; 925e
+_CGB_UnownPuzzle:
 	ld de, wUnknBGPals
 	ld hl, .UnownPuzzlePalette
 	call LoadHLPaletteIntoDE
@@ -1095,7 +1054,6 @@ endc
 
 	call WipeAttrMap
 	jp ApplyAttrMap
-; 9289
 
 .UnownPuzzlePalette:
 if !DEF(MONOCHROME)
@@ -1107,8 +1065,7 @@ else
 	MONOCHROME_RGB_FOUR
 endc
 
-
-_CGB_GameFreakLogo: ; 94fa
+_CGB_GameFreakLogo:
 	ld de, wUnknBGPals
 	ld hl, .GameFreakLogoPalette
 	call LoadHLPaletteIntoDE
@@ -1133,7 +1090,7 @@ else
 	RGB_MONOCHROME_WHITE
 endc
 
-.GameFreakDittoPalette: ; 9521
+.GameFreakDittoPalette:
 if !DEF(MONOCHROME)
 	RGB 31, 31, 31
 	RGB 13, 11, 00
@@ -1145,10 +1102,8 @@ else
 	RGB_MONOCHROME_LIGHT
 	RGB_MONOCHROME_BLACK
 endc
-; 9529
 
-
-_CGB_TradeTube: ; 9555
+_CGB_TradeTube:
 	ld de, wUnknBGPals
 	ld hl, .TradeTubeBluePalette
 	call LoadHLPaletteIntoDE
@@ -1164,7 +1119,6 @@ _CGB_TradeTube: ; 9555
 	call LoadHLPaletteIntoDE
 
 	jp WipeAttrMap
-; 9578
 
 .TradeTubeBluePalette:
 if !DEF(MONOCHROME)
@@ -1186,8 +1140,7 @@ else
 	MONOCHROME_RGB_FOUR
 endc
 
-
-_CGB_IntroPals: ; 9591
+_CGB_IntroPals:
 	ld de, wUnknBGPals
 	ld a, [wCurPartySpecies]
 	ld bc, wTempMonPersonality
@@ -1211,7 +1164,6 @@ _CGB_IntroPals: ; 9591
 
 	call ApplyAttrMap
 	jp ApplyPals
-; 95e0
 
 .IntroGradientPalette:
 if !DEF(MONOCHROME)
@@ -1223,8 +1175,7 @@ else
 	MONOCHROME_RGB_FOUR
 endc
 
-
-_CGB_PlayerOrMonFrontpicPals: ; 9529
+_CGB_PlayerOrMonFrontpicPals:
 	ld de, wUnknBGPals
 	ld a, [wCurPartySpecies]
 	ld bc, wTempMonPersonality
@@ -1234,10 +1185,8 @@ _CGB_PlayerOrMonFrontpicPals: ; 9529
 	call WipeAttrMap
 	call ApplyAttrMap
 	jp ApplyPals
-; 9542
 
-
-_CGB_TrainerOrMonFrontpicPals: ; 9578
+_CGB_TrainerOrMonFrontpicPals:
 	ld de, wUnknBGPals
 	ld a, [wCurPartySpecies]
 	ld bc, wTempMonPersonality
@@ -1247,8 +1196,6 @@ _CGB_TrainerOrMonFrontpicPals: ; 9578
 	call WipeAttrMap
 	call ApplyAttrMap
 	jp ApplyPals
-; 9591
-
 
 _CGB_FinishLayout:
 	call ApplyAttrMap

@@ -1,7 +1,7 @@
 ; Stats Judge code originally by TPP Anniversary Crystal 251
 ; https://github.com/TwitchPlaysPokemon/tppcrystal251pub/blob/public/event/poke_seer.asm
 
-SpecialStatsJudge: ; 4f0bc
+SpecialStatsJudge:
 	ld hl, .Intro
 	call PrintText
 	call YesNoBox
@@ -28,7 +28,6 @@ SpecialStatsJudge: ; 4f0bc
 .egg
 	ld hl, .Egg
 	jp PrintText
-; 4f0ee
 
 .Intro
 	text "You can call me"

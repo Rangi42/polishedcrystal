@@ -1,4 +1,4 @@
-; FarfetchDPokedexEntry: ; 0x1b876c
+; FarfetchDPokedexEntry:
 	db "Wild Duck@" ; species name
 	dw 207, 330 ; height, width
 

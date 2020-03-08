@@ -1,4 +1,4 @@
-; ArcaninePokedexEntry: ; 0x182f1c
+; ArcaninePokedexEntry:
 	db "Legendary@" ; species name
 	dw 603, 3420 ; height, width
 

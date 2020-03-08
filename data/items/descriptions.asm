@@ -285,7 +285,6 @@ KeyItemDescriptions:
 	dw SilphScope2Desc
 	dw ApricornBoxDesc
 
-
 PokeBallDesc:
 	db   "An item for catch-"
 	next "ing #mon.@"
@@ -1259,7 +1258,6 @@ UtilUmbrellaDesc:
 MintDesc:
 	db   "A fragrant sprig"
 	next "of mint.@"
-
 
 BicycleDesc:
 	db   "A collapsible bike"

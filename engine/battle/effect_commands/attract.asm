@@ -1,4 +1,4 @@
-BattleCommand_attract: ; 377ce
+BattleCommand_attract:
 ; attract
 	ld a, [wAttackMissed]
 	and a
@@ -162,7 +162,7 @@ CheckMentalHerb:
 	pop bc
 	ret
 
-CheckOppositeGender: ; 377f5
+CheckOppositeGender:
 ; Returns c (either mon is genderless), nc|z (same gender), nc|nz (opposite gender).
 ; Don't remove the possibility to check for same gender, Rivalry needs this.
 	ld a, MON_SPECIES

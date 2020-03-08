@@ -1,4 +1,4 @@
-_SacredAsh: ; 507e6
+_SacredAsh:
 	xor a
 	ld [wItemEffectSucceeded], a
 	call CheckAnyFaintedMon
@@ -9,9 +9,8 @@ _SacredAsh: ; 507e6
 	ld a, $1
 	ld [wItemEffectSucceeded], a
 	ret
-; 507fb
 
-CheckAnyFaintedMon: ; 507fb
+CheckAnyFaintedMon:
 	ld de, PARTYMON_STRUCT_LENGTH
 	ld hl, wPartyMon1HP
 	ld a, [wPartyCount]
@@ -46,9 +45,8 @@ CheckAnyFaintedMon: ; 507fb
 	pop af
 	scf
 	ret
-; 50821
 
-SacredAshScript: ; 0x50821
+SacredAshScript:
 	special HealParty
 	reloadmappart
 	playsound SFX_WARP_TO
@@ -63,10 +61,8 @@ endr
 	playsound SFX_CAUGHT_MON
 	waitsfx
 	waitendtext
-; 0x50845
 
-UnknownText_0x50845: ; 0x50845
+UnknownText_0x50845:
 	; 's #MON were all healed!
 	text_jump UnknownText_0x1c0b65
 	db "@"
-; 0x5084a

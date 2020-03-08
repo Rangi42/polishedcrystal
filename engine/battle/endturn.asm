@@ -842,7 +842,6 @@ HandleScreens:
 .Enemy:
 	db "Foe@"
 
-
 .LightScreenTick:
 	ld a, [de]
 	dec a

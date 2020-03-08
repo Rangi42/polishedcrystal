@@ -1,4 +1,4 @@
-; TyphlosionPokedexEntry: ; 0x1ccba0
+; TyphlosionPokedexEntry:
 	db "Volcano@" ; species name
 	dw 507, 1750 ; height, width
 

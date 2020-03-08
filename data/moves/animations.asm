@@ -5644,7 +5644,6 @@ BattleAnim_Trick:
 	anim_wait 32
 	anim_ret
 
-
 BattleAnim_StatUp:
 	anim_1gfx ANIM_GFX_SPEED
 	anim_call BattleAnim_FollowEnemyFeet_0
@@ -5698,7 +5697,6 @@ BattleAnim_StatDown:
 	anim_incbgeffect ANIM_BG_16
 	anim_call BattleAnim_ShowMon_0
 	anim_ret
-
 
 ; ================================
 ; unused animations below here

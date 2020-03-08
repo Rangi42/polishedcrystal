@@ -1,4 +1,4 @@
-; ChanseyPokedexEntry: ; 0x1b942e
+; ChanseyPokedexEntry:
 	db "Egg@" ; species name
 	dw 307, 760 ; height, width
 

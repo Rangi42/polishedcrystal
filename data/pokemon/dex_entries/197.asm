@@ -1,4 +1,4 @@
-; UmbreonPokedexEntry: ; 0x1d01af
+; UmbreonPokedexEntry:
 	db "Moonlight@" ; species name
 	dw 303, 600 ; height, width
 

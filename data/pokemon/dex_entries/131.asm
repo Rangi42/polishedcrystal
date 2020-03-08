@@ -1,4 +1,4 @@
-; LaprasPokedexEntry: ; 0x1cc0cd
+; LaprasPokedexEntry:
 	db "Transport@" ; species name
 	dw 802, 4850 ; height, width
 

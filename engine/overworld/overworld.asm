@@ -1,4 +1,4 @@
-_ReplaceKrisSprite:: ; 14135
+_ReplaceKrisSprite::
 	call GetPlayerSprite
 	ld a, [wPlayerSprite]
 	ld [hUsedSpriteIndex], a
@@ -7,9 +7,8 @@ _ReplaceKrisSprite:: ; 14135
 	ld hl, wSpriteFlags
 	res 5, [hl]
 	jp GetUsedSprite
-; 14146
 
-GetPlayerSprite: ; 14183
+GetPlayerSprite:
 ; Get Chris or Kris's sprite.
 	ld hl, .Chris
 	ld a, [wPlayerSpriteSetupFlags]
@@ -58,10 +57,8 @@ GetPlayerSprite: ; 14183
 	db PLAYER_SURF,      SPRITE_KRIS_SURF
 	db PLAYER_SURF_PIKA, SPRITE_SURFING_PIKACHU
 	db $ff
-; 141c9
 
-
-MapCallbackSprites_LoadUsedSpritesGFX: ; 14209
+MapCallbackSprites_LoadUsedSpritesGFX:
 	ld a, MAPCALLBACK_SPRITES
 	call RunMapCallback
 ReloadVisibleSprites::
@@ -138,18 +135,14 @@ LoadEmoteGFX::
 	call LoadEmote
 	ld c, EMOTE_PUDDLE_SPLASH
 	jp LoadEmote
-; 14236
 
-
-
-SafeGetSprite: ; 14236
+SafeGetSprite:
 	push hl
 	call GetSprite
 	pop hl
 	ret
-; 1423c
 
-GetSprite:: ; 1423c
+GetSprite::
 	call GetMonSprite
 	ret c
 
@@ -177,10 +170,8 @@ GetSprite:: ; 1423c
 	ret z
 	ld c, 12
 	ret
-; 14259
 
-
-GetMonSprite: ; 14259
+GetMonSprite:
 ; Return carry if a monster sprite was loaded.
 	cp SPRITE_MON_ICON
 	jr z, .MonIcon
@@ -255,10 +246,8 @@ GetMonSprite: ; 14259
 	lb hl, 0, MON_SPRITE
 	scf
 	ret
-; 142a7
 
-
-_DoesSpriteHaveFacings:: ; 142a7
+_DoesSpriteHaveFacings::
 ; Checks to see whether we can apply a facing to a sprite.
 ; Returns zero for Pokémon sprites, carry for the rest.
 	cp SPRITE_POKEMON
@@ -271,10 +260,8 @@ _DoesSpriteHaveFacings:: ; 142a7
 .facings
 	and a
 	ret
-; 142c4
 
-
-_GetSpritePalette:: ; 142c4
+_GetSpritePalette::
 	call GetMonSprite
 	jr c, .is_pokemon
 
@@ -324,10 +311,7 @@ _GetSpritePalette:: ; 142c4
 	ld a, PAL_OW_GREEN
 	ret
 
-; 142db
-
-
-GetUsedSprite:: ; 143c8
+GetUsedSprite::
 	ld a, [hUsedSpriteIndex]
 	call SafeGetSprite
 	ld a, [hUsedSpriteTile]
@@ -408,7 +392,7 @@ endr
 	ld h, a
 	ret
 
-LoadEmote:: ; 1442f
+LoadEmote::
 ; Get the address of the pointer to emote c.
 	ld a, c
 	ld bc, 6
@@ -436,7 +420,6 @@ LoadEmote:: ; 1442f
 	ret z
 ; load into vram0
 	jp Get2bpp
-
 
 INCLUDE "data/sprites/emotes.asm"
 

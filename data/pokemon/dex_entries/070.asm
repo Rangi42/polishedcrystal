@@ -1,4 +1,4 @@
-; WeepinbellPokedexEntry: ; 0x1b81fd
+; WeepinbellPokedexEntry:
 	db "Flycatcher@" ; species name
 	dw 303, 140 ; height, width
 

@@ -1,4 +1,4 @@
-EvolutionAnimation: ; 4e5e1
+EvolutionAnimation:
 	push hl
 	push de
 	push bc
@@ -21,9 +21,8 @@ EvolutionAnimation: ; 4e5e1
 
 	scf
 	ret
-; 4e607
 
-.EvolutionAnimation: ; 4e607
+.EvolutionAnimation:
 	ld a, %11100100
 	ld [rOBP0], a
 
@@ -139,20 +138,17 @@ EvolutionAnimation: ; 4e5e1
 
 	ld a, [wPlayerHPPal]
 	jp PlayCry
-; 4e703
 
-.GetCGBLayout: ; 4e703
+.GetCGBLayout:
 	ld a, CGB_EVOLUTION
 	jp GetCGBLayout
-; 4e708
 
-.PlaceFrontpic: ; 4e708
+.PlaceFrontpic:
 	call GetBaseData
 	hlcoord 7, 2
 	jp PrepMonFrontpic
-; 4e711
 
-.LoadFrontpic: ; 4e711
+.LoadFrontpic:
 	call GetBaseData
 	ld a, $1
 	ld [wBoxAlignment], a
@@ -161,9 +157,8 @@ EvolutionAnimation: ; 4e5e1
 	xor a
 	ld [wBoxAlignment], a
 	ret
-; 4e726
 
-.AnimationSequence: ; 4e726
+.AnimationSequence:
 	call ClearJoypad
 	lb bc, 1, 2 * 7 ; flash b times, wait c frames in between
 .loop
@@ -184,9 +179,8 @@ EvolutionAnimation: ; 4e5e1
 .exit_sequence
 	scf
 	ret
-; 4e741
 
-.Flash: ; 4e741
+.Flash:
 	ld a, -7 * 7 ; new stage
 	ld [wEvolutionPicOffset], a
 	call .ReplaceFrontpic
@@ -196,9 +190,8 @@ EvolutionAnimation: ; 4e5e1
 	dec b
 	jr nz, .Flash
 	ret
-; 4e755
 
-.ReplaceFrontpic: ; 4e755
+.ReplaceFrontpic:
 	push bc
 	xor a
 	ld [hBGMapMode], a
@@ -222,9 +215,8 @@ EvolutionAnimation: ; 4e5e1
 	call ApplyTilemapInVBlank
 	pop bc
 	ret
-; 4e779
 
-.WaitFrames_CheckPressedB: ; 4e779
+.WaitFrames_CheckPressedB:
 	call DelayFrame
 	push bc
 	call JoyTextDelay
@@ -244,18 +236,16 @@ EvolutionAnimation: ; 4e5e1
 	jr nz, .loop3
 	scf
 	ret
-; 4e794
 
-.check_statused ; 4e794
+.check_statused
 	ld a, [wCurPartyMon]
 	ld hl, wPartyMon1Species
 	call GetPartyLocation
 	ld b, h
 	ld c, l
 	farjp CheckFaintedFrzSlp
-; 4e7a6
 
-.PlayEvolvedSFX: ; 4e7a6
+.PlayEvolvedSFX:
 	ld a, [wEvolutionCanceled]
 	and a
 	ret nz
@@ -280,9 +270,8 @@ EvolutionAnimation: ; 4e5e1
 	pop af
 	ld [wJumptableIndex], a
 	ret
-; 4e7cf
 
-.balls_of_light ; 4e7cf
+.balls_of_light
 	ld hl, wJumptableIndex
 	ld a, [hl]
 	cp 32
@@ -299,9 +288,8 @@ EvolutionAnimation: ; 4e5e1
 .done_balls
 	scf
 	ret
-; 4e7e8
 
-.GenerateBallOfLight: ; 4e7e8
+.GenerateBallOfLight:
 	push de
 	depixel 9, 11
 	ld a, SPRITE_ANIM_INDEX_EVOLUTION_BALL_OF_LIGHT
@@ -321,9 +309,8 @@ EvolutionAnimation: ; 4e5e1
 	add hl, bc
 	ld [hl], $10
 	ret
-; 4e80c
 
-.AnimateBallsOfLight: ; 4e80c
+.AnimateBallsOfLight:
 	push bc
 	farcall PlaySpriteAnimations
 	; a = (([hVBlankCounter] + 4) / 2) % NUM_PALETTES
@@ -347,8 +334,6 @@ EvolutionAnimation: ; 4e5e1
 	jr nz, .loop6
 	pop bc
 	jp DelayFrame
-; 4e831
-
 
 .GFX:
 INCBIN "gfx/evo/bubble_large.2bpp"

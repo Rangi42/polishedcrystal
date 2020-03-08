@@ -1,4 +1,4 @@
-_AnimateTileset:: ; fc000
+_AnimateTileset::
 ; Iterate over a given pointer array of
 ; animation functions (one per frame).
 
@@ -32,8 +32,6 @@ _AnimateTileset:: ; fc000
 	ld l, a
 
 	jp hl
-; fc01b
-
 
 TilesetJohto1Anim::
 	dw vTiles2 tile $14, AnimateWaterTile
@@ -366,27 +364,23 @@ TilesetHotelAnim::
 	dw NULL,  WaitTileAnimation
 	dw NULL,  DoneTileAnimation
 
-
-DoneTileAnimation: ; fc2fb
+DoneTileAnimation:
 ; Reset the animation command loop.
 	xor a
 	ld [hTileAnimFrame], a
 
-WaitTileAnimation: ; fc2fe
+WaitTileAnimation:
 ; Do nothing this frame.
 	ret
-; fc2ff
 
-StandingTileFrame8: ; fc2ff
+StandingTileFrame8:
 	ld a, [wTileAnimationTimer]
 	inc a
 	and a, 7
 	ld [wTileAnimationTimer], a
 	ret
-; fc309
 
-
-ScrollTileRightLeft: ; fc309
+ScrollTileRightLeft:
 ; Scroll right for 4 ticks, then left for 4 ticks.
 	ld a, [wTileAnimationTimer]
 	inc a
@@ -395,9 +389,8 @@ ScrollTileRightLeft: ; fc309
 	and 4
 	jr nz, ScrollTileLeft
 	; fallthrough
-; fc318
 
-ScrollTileRight: ; fc33b
+ScrollTileRight:
 	ld h, d
 	ld l, e
 	ld c, 4
@@ -410,9 +403,8 @@ ScrollTileRight: ; fc33b
 	dec c
 	jr nz, .loop
 	ret
-; fc34f
 
-ScrollTileLeft: ; fc327
+ScrollTileLeft:
 	ld h, d
 	ld l, e
 	ld c, 4
@@ -425,9 +417,8 @@ ScrollTileLeft: ; fc327
 	dec c
 	jr nz, .loop
 	ret
-; fc33b
 
-;ScrollTileUpDown: ; fc318
+;ScrollTileUpDown:
 ;; Scroll up for 4 ticks, then down for 4 ticks.
 ;	ld a, [wTileAnimationTimer]
 ;	inc a
@@ -436,9 +427,8 @@ ScrollTileLeft: ; fc327
 ;	and 4
 ;	jr nz, ScrollTileDown
 ;	; fallthrough
-;; fc327
 
-ScrollTileUp: ; fc34f
+ScrollTileUp:
 	ld h, d
 	ld l, e
 	ld d, [hl]
@@ -463,9 +453,8 @@ ScrollTileUp: ; fc34f
 	dec a
 	jr nz, .loop
 	ret
-; fc36a
 
-ScrollTileDown: ; fc36a
+ScrollTileDown:
 	ld h, d
 	ld l, e
 	ld de, $e
@@ -492,10 +481,8 @@ ScrollTileDown: ; fc36a
 	dec a
 	jr nz, .loop
 	ret
-; fc387
 
-
-AnimateFountain: ; fc387
+AnimateFountain:
 	ld hl, sp+$0
 	ld b, h
 	ld c, l
@@ -531,10 +518,8 @@ AnimateFountain: ; fc387
 .frame3 INCBIN "gfx/tilesets/fountain/3.2bpp"
 .frame4 INCBIN "gfx/tilesets/fountain/4.2bpp"
 .frame5 INCBIN "gfx/tilesets/fountain/5.2bpp"
-; fc402
 
-
-AnimateWaterTile: ; fc402
+AnimateWaterTile:
 ; Draw a water tile for the current frame in VRAM tile at de.
 
 ; Save sp in bc (see WriteTile).
@@ -565,12 +550,9 @@ AnimateWaterTile: ; fc402
 	ld h, d
 
 	jp WriteTile
-; fc41c
 
-WaterTileFrames: ; fc41c
+WaterTileFrames:
 	INCBIN "gfx/tilesets/water/johto_water.2bpp"
-; fc45c
-
 
 AnimateRainPuddleTile:
 ; Draw a rain puddle tile for the current frame in VRAM tile at de.
@@ -603,7 +585,6 @@ AnimateRainPuddleTile:
 RainPuddleTileFrames:
 	INCBIN "gfx/tilesets/rain/rain_puddle.2bpp"
 
-
 AnimateRainWaterTile:
 ; Draw a rain water tile for the current frame in VRAM tile at de.
 
@@ -634,7 +615,6 @@ AnimateRainWaterTile:
 
 RainWaterTileFrames:
 	INCBIN "gfx/tilesets/rain/rain_water.2bpp"
-
 
 AnimateKantoWaterTile:
 ; Draw a Kanto water tile for the current frame in VRAM tile at de.
@@ -667,11 +647,9 @@ AnimateKantoWaterTile:
 	ld h, d
 
 	jp WriteTile
-; fc41c
 
 KantoWaterTileFrames:
 	INCBIN "gfx/tilesets/water/kanto_water.2bpp"
-
 
 AnimateFarawayWaterTile:
 ; Draw a faraway water tile for the current frame in VRAM tile at de.
@@ -717,8 +695,7 @@ AnimateFarawayWaterTile:
 
 	jp WriteTile
 
-
-ForestTreeLeftAnimation: ; fc45c
+ForestTreeLeftAnimation:
 ; Only during the Celebi event.
 	ld a, [wCelebiEvent]
 	bit 2, a
@@ -740,9 +717,8 @@ ForestTreeLeftAnimation: ; fc45c
 	ld sp, hl
 	ld hl, vTiles2 tile $50
 	jp WriteTile
-; fc484
 
-ForestTreeRightAnimation: ; fc4c4
+ForestTreeRightAnimation:
 ; Only during the Celebi event.
 	ld a, [wCelebiEvent]
 	bit 2, a
@@ -768,10 +744,8 @@ ForestTreeRightAnimation: ; fc4c4
 	ld sp, hl
 	ld hl, vTiles2 tile $53
 	jp WriteTile
-; fc4f2
 
-
-ForestTreeLeftAnimation2: ; fc4f2
+ForestTreeLeftAnimation2:
 ; Only during the Celebi event.
 	ld a, [wCelebiEvent]
 	bit 2, a
@@ -794,10 +768,8 @@ ForestTreeLeftAnimation2: ; fc4f2
 	ld sp, hl
 	ld hl, vTiles2 tile $50
 	jp WriteTile
-; fc51c
 
-
-ForestTreeRightAnimation2: ; fc51c
+ForestTreeRightAnimation2:
 ; Only during the Celebi event.
 	ld a, [wCelebiEvent]
 	bit 2, a
@@ -824,17 +796,13 @@ ForestTreeRightAnimation2: ; fc51c
 	ld sp, hl
 	ld hl, vTiles2 tile $53
 	jp WriteTile
-; fc54c
 
-ForestTreeLeftFrames: ; fc484
+ForestTreeLeftFrames:
 	INCBIN "gfx/tilesets/forest-tree/1.2bpp"
 	INCBIN "gfx/tilesets/forest-tree/2.2bpp"
-; fc4a4
-ForestTreeRightFrames: ; fc4a4
+ForestTreeRightFrames:
 	INCBIN "gfx/tilesets/forest-tree/3.2bpp"
 	INCBIN "gfx/tilesets/forest-tree/4.2bpp"
-; fc4c4
-
 
 ForestTree2LeftAnimation:
 ; Only during the Celebi event.
@@ -886,7 +854,6 @@ ForestTree2RightAnimation:
 	ld hl, vTiles2 tile $5f
 	jp WriteTile
 
-
 ForestTree2LeftAnimation2:
 ; Only during the Celebi event.
 	ld a, [wCelebiEvent]
@@ -910,7 +877,6 @@ ForestTree2LeftAnimation2:
 	ld sp, hl
 	ld hl, vTiles2 tile $5c
 	jp WriteTile
-
 
 ForestTree2RightAnimation2:
 ; Only during the Celebi event.
@@ -947,16 +913,13 @@ ForestTree2RightFrames:
 	INCBIN "gfx/tilesets/forest-tree-2/3.2bpp"
 	INCBIN "gfx/tilesets/forest-tree-2/4.2bpp"
 
-
-GetForestTreeFrame: ; fc54c
+GetForestTreeFrame:
 ; Return 0 if a is even, or 2 if odd.
 	and 1
 	sla a
 	ret
-; fc56d
 
-
-AnimateFlowerTile: ; fc56d
+AnimateFlowerTile:
 ; No parameters.
 
 ; Save sp in bc (see WriteTile).
@@ -979,13 +942,10 @@ AnimateFlowerTile: ; fc56d
 	ld hl, vTiles2 tile $03
 
 	jp WriteTile
-; fc58c
 
-FlowerTileFrames: ; fc58c
+FlowerTileFrames:
 	INCBIN "gfx/tilesets/flower/1.2bpp"
 	INCBIN "gfx/tilesets/flower/2.2bpp"
-; fc5cc
-
 
 AnimateKantoFlowerTile:
 ; No parameters.
@@ -1017,8 +977,7 @@ KantoFlowerTileFrames:
 	INCBIN "gfx/tilesets/kanto-flower/3.2bpp"
 	INCBIN "gfx/tilesets/kanto-flower/1.2bpp"
 
-
-SafariFountainAnim1: ; fc5cc
+SafariFountainAnim1:
 ; Splash in the bottom-right corner of the fountain.
 	ld hl, sp+$0
 	ld b, h
@@ -1037,10 +996,8 @@ SafariFountainAnim1: ; fc5cc
 	ld sp, hl
 	ld hl, vTiles2 tile $5b
 	jp WriteTile
-; fc5eb
 
-
-SafariFountainAnim2: ; fc5eb
+SafariFountainAnim2:
 ; Splash in the top-left corner of the fountain.
 	ld hl, sp+$0
 	ld b, h
@@ -1057,8 +1014,6 @@ SafariFountainAnim2: ; fc5eb
 	ld sp, hl
 	ld hl, vTiles2 tile $38
 	jp WriteTile
-; fc605
-
 
 SafariFountainAnim3:
 ; Splash in the bottom-right corner of the fountain.
@@ -1080,7 +1035,6 @@ SafariFountainAnim3:
 	ld hl, vTiles2 tile $3d
 	jp WriteTile
 
-
 SafariFountainAnim4:
 ; Splash in the top-left corner of the fountain.
 	ld hl, sp+$0
@@ -1099,16 +1053,13 @@ SafariFountainAnim4:
 	ld hl, vTiles2 tile $3c
 	jp WriteTile
 
-
-SafariFountainFrames: ; fc605
+SafariFountainFrames:
 	INCBIN "gfx/tilesets/safari/1.2bpp"
 	INCBIN "gfx/tilesets/safari/2.2bpp"
 	INCBIN "gfx/tilesets/safari/3.2bpp"
 	INCBIN "gfx/tilesets/safari/4.2bpp"
-; fc645
 
-
-AnimateSproutPillarTile: ; fc645
+AnimateSproutPillarTile:
 ; Read from struct at de:
 ; 	Destination (VRAM)
 ;	Address of the first tile in the frame array
@@ -1153,17 +1104,13 @@ AnimateSproutPillarTile: ; fc645
 
 .frames
 	db $00, $10, $20, $30, $40, $30, $20, $10
-; fc673
 
-
-StandingTileFrame: ; fc673
+StandingTileFrame:
 	ld hl, wTileAnimationTimer
 	inc [hl]
 	ret
-; fc678
 
-
-AnimateWhirlpoolTile: ; fc678
+AnimateWhirlpoolTile:
 ; Update whirlpool tile using struct at de.
 
 ; Struct:
@@ -1206,8 +1153,6 @@ AnimateWhirlpoolTile: ; fc678
 	ld h, d
 
 	jp WriteTile
-; fc696
-
 
 AnimateLCDTile:
 ; No parameters.
@@ -1242,8 +1187,7 @@ LCDTileFrames:
 	INCBIN "gfx/tilesets/lcd/7.2bpp"
 	INCBIN "gfx/tilesets/lcd/8.2bpp"
 
-
-WriteTileFromBuffer: ; fc696
+WriteTileFromBuffer:
 ; Write tiledata at wTileAnimBuffer to de.
 ; wTileAnimBuffer is loaded to sp for WriteTile.
 
@@ -1257,10 +1201,8 @@ WriteTileFromBuffer: ; fc696
 	ld h, d
 	ld l, e
 	jr WriteTile
-; fc6a2
 
-
-WriteTileToBuffer: ; fc6a2
+WriteTileToBuffer:
 ; Write tiledata de to wTileAnimBuffer.
 ; de is loaded to sp for WriteTile.
 
@@ -1276,7 +1218,7 @@ WriteTileToBuffer: ; fc6a2
 
 	; fallthrough
 
-WriteTile: ; fc6ac
+WriteTile:
 ; Write one 8x8 tile ($10 bytes) from sp to hl.
 
 ; Warning: sp is saved in bc so we can abuse pop.
@@ -1300,10 +1242,8 @@ endr
 	ld l, c
 	ld sp, hl
 	ret
-; fc6d7
 
-
-FlickeringCaveEntrancePalette: ; fc71e
+FlickeringCaveEntrancePalette:
 ; We don't want to mess with non-standard palettes.
 	ld a, [rBGP]
 	cp %11100100
@@ -1338,8 +1278,6 @@ FlickeringCaveEntrancePalette: ; fc71e
 	pop af
 	ld [rSVBK], a
 	ret
-; fc750
-
 
 SproutPillarTilePointer1:  dw vTiles2 tile $2d, SproutPillarTile1
 SproutPillarTilePointer2:  dw vTiles2 tile $2f, SproutPillarTile2
@@ -1362,26 +1300,20 @@ SproutPillarTile7:  INCBIN "gfx/tilesets/sprout-pillar/7.2bpp"
 SproutPillarTile8:  INCBIN "gfx/tilesets/sprout-pillar/8.2bpp"
 SproutPillarTile9:  INCBIN "gfx/tilesets/sprout-pillar/9.2bpp"
 SproutPillarTile10: INCBIN "gfx/tilesets/sprout-pillar/10.2bpp"
-; fca98
-
 
 WhirlpoolFrames1: dw vTiles2 tile $32, WhirlpoolTiles1
 WhirlpoolFrames2: dw vTiles2 tile $33, WhirlpoolTiles2
 WhirlpoolFrames3: dw vTiles2 tile $42, WhirlpoolTiles3
 WhirlpoolFrames4: dw vTiles2 tile $43, WhirlpoolTiles4
-; fcaa8
 
 WhirlpoolTiles1: INCBIN "gfx/tilesets/whirlpool/1.2bpp"
 WhirlpoolTiles2: INCBIN "gfx/tilesets/whirlpool/2.2bpp"
 WhirlpoolTiles3: INCBIN "gfx/tilesets/whirlpool/3.2bpp"
 WhirlpoolTiles4: INCBIN "gfx/tilesets/whirlpool/4.2bpp"
-; fcba8
-
 
 LCDFrames: dw vTiles2 tile $6d, LCDTiles
 
 LCDTiles:
-
 
 FarawayWaterFrames1: dw vTiles2 tile $14, FarawayWaterTiles1
 FarawayWaterFrames2: dw vTiles2 tile $15, FarawayWaterTiles2

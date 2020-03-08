@@ -1,4 +1,4 @@
-Function_LoadOpponentTrainer: ; 1f8000
+Function_LoadOpponentTrainer:
 	ld a, [rSVBK]
 	push af
 	ld a, BANK(wBT_OTTrainer)

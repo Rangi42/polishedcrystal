@@ -1,4 +1,4 @@
-DisplayUsedMoveText: ; 105db0
+DisplayUsedMoveText:
 ; battle command 03
 
 	ld a, [hBattleTurn]
@@ -45,10 +45,8 @@ DisplayUsedMoveText: ; 105db0
 .ok
 	call StdBattleTextBox
 	jp ApplyTilemapInVBlank
-; 105db9
 
-
-UpdateUsedMoves: ; 105ed0
+UpdateUsedMoves:
 ; append move a to wPlayerUsedMoves unless it has already been used
 
 	push bc
@@ -102,4 +100,3 @@ UpdateUsedMoves: ; 105ed0
 ; list updated
 	pop bc
 	ret
-; 105ef6

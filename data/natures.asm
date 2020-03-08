@@ -33,7 +33,6 @@ NatureNames:
 .Quirky:   db "Quirky@"
 .NoNature: db "---@"
 
-
 NatureIndicators:
 	dw .HardyInd,  .LonelyInd, .BraveInd,   .AdamantInd, .NaughtyInd
 	dw .BoldInd,   .DocileInd, .RelaxedInd, .ImpishInd,  .LaxInd

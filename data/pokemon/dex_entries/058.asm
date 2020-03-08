@@ -1,4 +1,4 @@
-; GrowlithePokedexEntry: ; 0x182eaa
+; GrowlithePokedexEntry:
 	db "Puppy@" ; species name
 	dw 204, 420 ; height, width
 

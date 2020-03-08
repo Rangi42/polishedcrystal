@@ -1,4 +1,4 @@
-MapSetupScripts: ; 15377
+MapSetupScripts:
 	dw MapSetupScript_Warp
 	dw MapSetupScript_Continue
 	dw MapSetupScript_ReloadMap
@@ -11,14 +11,13 @@ MapSetupScripts: ; 15377
 	dw MapSetupScript_Submenu
 	dw MapSetupScript_BadWarp
 	dw MapSetupScript_Fly
-; 1538f
 
-MapSetupScript_Teleport: ; 1538f
+MapSetupScript_Teleport:
 	db map_prolong_sprites
-MapSetupScript_Fly: ; 15390
+MapSetupScript_Fly:
 	db map_fade_out_palettes
 	db map_keep_roam
-MapSetupScript_Warp: ; 15392
+MapSetupScript_Warp:
 	db map_lcd_off
 	db map_sound_off
 	db map_load_spawn
@@ -44,7 +43,7 @@ MapSetupScript_Warp: ; 15392
 	db map_wildmons
 	db map_end
 
-MapSetupScript_BadWarp: ; 153a9
+MapSetupScript_BadWarp:
 	db map_load_spawn
 	db map_load_attributes
 	db map_change_callback
@@ -69,7 +68,7 @@ MapSetupScript_BadWarp: ; 153a9
 	db map_wildmons
 	db map_end
 
-MapSetupScript_Connection: ; 153bf
+MapSetupScript_Connection:
 	db map_animations_off
 	db map_load_connection
 	db map_load_attributes
@@ -90,11 +89,11 @@ MapSetupScript_Connection: ; 153bf
 	db map_animations_on
 	db map_end
 
-MapSetupScript_Fall: ; 153d0
+MapSetupScript_Fall:
 	db map_prolong_sprites
-MapSetupScript_Door: ; 153d1
+MapSetupScript_Door:
 	db map_fade_out_palettes
-MapSetupScript_Train: ; 153d2
+MapSetupScript_Train:
 	db map_load_warp
 	db map_load_attributes
 	db map_warp_face
@@ -118,7 +117,7 @@ MapSetupScript_Train: ; 153d2
 	db map_update_roam
 	db map_end
 
-MapSetupScript_ReloadMap: ; 153e7
+MapSetupScript_ReloadMap:
 	db map_fade
 	db map_clear_bg_palettes
 	db map_lcd_off
@@ -137,7 +136,7 @@ MapSetupScript_ReloadMap: ; 153e7
 	db map_wildmons
 	db map_end
 
-MapSetupScript_LinkReturn: ; 153f7
+MapSetupScript_LinkReturn:
 	db map_fade
 	db map_lcd_off
 	db map_sound_off
@@ -156,7 +155,7 @@ MapSetupScript_LinkReturn: ; 153f7
 	db map_wildmons
 	db map_end
 
-MapSetupScript_Continue: ; 15408
+MapSetupScript_Continue:
 	db map_lcd_off
 	db map_sound_off
 	db map_load_attributes_2
@@ -177,7 +176,7 @@ MapSetupScript_Continue: ; 15408
 	db map_wildmons
 	db map_end
 
-MapSetupScript_Submenu: ; 1541a
+MapSetupScript_Submenu:
 	db map_load_blocks
 	db map_connection_blocks
 	db map_end

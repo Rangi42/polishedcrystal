@@ -1,4 +1,4 @@
-SpriteAnimOAMData: ; 8d94d
+SpriteAnimOAMData:
 	; vtile offset, pointer
 	dbw $00, .OAMData_85 ; SPRITE_ANIM_FRAME_IDX_00
 	dbw $04, .OAMData_85 ; SPRITE_ANIM_FRAME_IDX_01
@@ -99,9 +99,7 @@ SpriteAnimOAMData: ; 8d94d
 	dsprite -1,  0,  0,  0, $00, $7 | X_FLIP
 	dsprite  0,  0, -1,  0, $00, $7 | Y_FLIP
 	dsprite  0,  0,  0,  0, $00, $7 | X_FLIP | Y_FLIP
-; 8db4b
 
-; 8db4b
 	db 4
 	dsprite -1,  0, -1,  0, $00, $0 | BEHIND_BG
 	dsprite -1,  0,  0,  0, $00, $0 | X_FLIP | BEHIND_BG
@@ -629,4 +627,3 @@ SpriteAnimOAMData: ; 8d94d
 	dsprite  0,  0, -1,  4, $51, $1
 	dsprite  0,  0,  0,  4, $52, $1
 	dsprite  0,  0,  1,  4, $53, $1
-; 8e706

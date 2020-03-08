@@ -1,7 +1,7 @@
 DoItemEffect::
 	farjp _DoItemEffect
 
-TossItem:: ; 2f53
+TossItem::
 	push hl
 	push de
 	push bc
@@ -19,9 +19,8 @@ TossItem:: ; 2f53
 	pop de
 	pop hl
 	ret
-; 2f66
 
-ReceiveItem:: ; 2f66
+ReceiveItem::
 	push bc
 	ld a, [hROMBank]
 	push af
@@ -39,9 +38,8 @@ ReceiveItem:: ; 2f66
 	rst Bankswitch
 	pop bc
 	ret
-; 2f79
 
-ReceiveTMHM:: ; d3c4
+ReceiveTMHM::
 	ld a, [wCurTMHM]
 	ld e, a
 	ld d, 0
@@ -51,7 +49,7 @@ ReceiveTMHM:: ; d3c4
 	scf
 	ret
 
-CheckItem:: ; 2f79
+CheckItem::
 	push hl
 	push de
 	push bc
@@ -69,9 +67,8 @@ CheckItem:: ; 2f79
 	pop de
 	pop hl
 	ret
-; 2f8c
 
-CheckTMHM:: ; d3fb
+CheckTMHM::
 	ld a, [wCurTMHM]
 	ld e, a
 	ld d, 0

@@ -1,4 +1,4 @@
-DisplayCaughtContestMonStats: ; cc000
+DisplayCaughtContestMonStats:
 	call ClearBGPalettes
 	call ClearTileMap
 	call ClearSprites
@@ -83,7 +83,7 @@ DisplayCaughtContestMonStats: ; cc000
 .This:
 	db " This <PK><MN>  @"
 
-SwitchMonText: ; cc0c2
+SwitchMonText:
 	; Switch #MON?
 	text_jump UnknownText_0x1c10cf
 	db "@"

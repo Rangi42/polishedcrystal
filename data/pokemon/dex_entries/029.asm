@@ -1,4 +1,4 @@
-; NidoranFPokedexEntry: ; 0x18224b
+; NidoranFPokedexEntry:
 	db "Poison Pin@" ; species name
 	dw 104, 150 ; height, width
 

@@ -1,4 +1,4 @@
-HiddenPowerDamageStats: ; fbced
+HiddenPowerDamageStats:
 ; Override Hidden Power's type based on the user's DVs.
 
 	ld hl, wBattleMonDVs
@@ -23,7 +23,6 @@ HiddenPowerDamageStats: ; fbced
 	farcall BattleCommand_damagestats ; damagestats
 	pop af
 	ret
-; fbd54
 
 GetHiddenPowerType::
 ; return Hidden Power type in a from DVs at hl

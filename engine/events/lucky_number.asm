@@ -1,4 +1,4 @@
-Special_CheckForLuckyNumberWinners: ; 4d87a
+Special_CheckForLuckyNumberWinners:
 	xor a
 	ld [hScriptVar], a
 	ld [wFoundMatchingIDInParty], a
@@ -117,7 +117,7 @@ Special_CheckForLuckyNumberWinners: ; 4d87a
 .print
 	jp PrintText
 
-.CompareLuckyNumberToMonID: ; 4d939
+.CompareLuckyNumberToMonID:
 	push bc
 	push de
 	push hl
@@ -191,7 +191,7 @@ Special_CheckForLuckyNumberWinners: ; 4d87a
 	and a
 	ret
 
-.BoxBankAddresses: ; 4d99f
+.BoxBankAddresses:
 	dba sBox1
 	dba sBox2
 	dba sBox3
@@ -207,17 +207,17 @@ Special_CheckForLuckyNumberWinners: ; 4d87a
 	dba sBox13
 	dba sBox14
 
-.FoundPartymonText: ; 0x4d9c9
+.FoundPartymonText:
 	; Congratulations! We have a match with the ID number of @  in your party.
 	text_jump UnknownText_0x1c1261
 	db "@"
 
-.FoundBoxmonText: ; 0x4d9ce
+.FoundBoxmonText:
 	; Congratulations! We have a match with the ID number of @  in your PC BOX.
 	text_jump UnknownText_0x1c12ae
 	db "@"
 
-Special_PrintTodaysLuckyNumber: ; 4d9d3
+Special_PrintTodaysLuckyNumber:
 	ld hl, wStringBuffer3
 	ld de, wLuckyIDNumber
 	lb bc, PRINTNUM_LEADINGZEROS | 2, 5

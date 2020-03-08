@@ -1,4 +1,4 @@
-PlaySlowCry: ; fb841
+PlaySlowCry:
 	ld a, [hScriptVar]
 PlaySlowCryA:
 	call LoadCryHeader
@@ -26,4 +26,3 @@ PlaySlowCryA:
 	ld [wCryLength + 1], a
 	farcall _PlayCryHeader
 	jp WaitSFX
-; fb877

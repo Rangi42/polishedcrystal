@@ -1,4 +1,4 @@
-; KoffingPokedexEntry: ; 0x1b9276
+; KoffingPokedexEntry:
 	db "Poison Gas@" ; species name
 	dw 200, 20 ; height, width
 

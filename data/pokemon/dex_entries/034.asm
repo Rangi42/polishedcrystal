@@ -1,4 +1,4 @@
-; NidokingPokedexEntry: ; 0x182463
+; NidokingPokedexEntry:
 	db "Drill@" ; species name
 	dw 407, 1370 ; height, width
 

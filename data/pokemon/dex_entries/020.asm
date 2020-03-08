@@ -1,4 +1,4 @@
-; RaticatePokedexEntry: ; 0x181ea3
+; RaticatePokedexEntry:
 	db "Rat@" ; species name
 	dw 204, 410 ; height, width
 

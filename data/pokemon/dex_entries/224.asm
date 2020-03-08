@@ -1,4 +1,4 @@
-; OctilleryPokedexEntry: ; 0x1d0d42
+; OctilleryPokedexEntry:
 	db "Jet@" ; species name
 	dw 211, 630 ; height, width
 

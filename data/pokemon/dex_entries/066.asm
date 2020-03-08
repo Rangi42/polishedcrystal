@@ -1,4 +1,4 @@
-; MachopPokedexEntry: ; 0x1b8065
+; MachopPokedexEntry:
 	db "Superpower@" ; species name
 	dw 207, 430 ; height, width
 

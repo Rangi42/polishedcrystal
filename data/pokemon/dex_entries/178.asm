@@ -1,4 +1,4 @@
-; XatuPokedexEntry: ; 0x1cd4e9
+; XatuPokedexEntry:
 	db "Mystic@" ; species name
 	dw 411, 330 ; height, width
 

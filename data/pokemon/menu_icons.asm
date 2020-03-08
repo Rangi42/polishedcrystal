@@ -3,6 +3,7 @@ INCLUDE "data/pokemon/menu_icon_pointers.asm"
 ; Unique icons by Blue Emerald, Soloo993, Chamber, Lake, Neslug, Pikachu253, and Ryta
 ; http://www.pokecommunity.com/showthread.php?t=338470
 
+
 SECTION "Mon Icons 1", ROMX
 
 Icons1:
@@ -134,6 +135,7 @@ JynxIcon:         INCBIN "gfx/icons/jynx.2bpp.lz"
 ElectabuzzIcon:   INCBIN "gfx/icons/electabuzz.2bpp.lz"
 MagmarIcon:       INCBIN "gfx/icons/magmar.2bpp.lz"
 PinsirIcon:       INCBIN "gfx/icons/pinsir.2bpp.lz"
+
 
 SECTION "Mon Icons 2", ROMX
 

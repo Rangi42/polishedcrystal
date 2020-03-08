@@ -1,21 +1,17 @@
-ReplaceKrisSprite:: ; e4a
+ReplaceKrisSprite::
 	farjp _ReplaceKrisSprite
-; e51
 
 LoadStandardOpaqueFont::
 	farjp _LoadStandardOpaqueFont
 
-LoadStandardFont:: ; e51
+LoadStandardFont::
 	farjp _LoadStandardFont
-; e58
 
-LoadFontsBattleExtra:: ; e58
+LoadFontsBattleExtra::
 	farjp _LoadFontsBattleExtra
-; e5f
 
-LoadFontsExtra:: ; e5f
+LoadFontsExtra::
 	farjp LoadFrame
-; e6c
 
 ApplyTilemap::
 ; Tell VBlank to update BG Map
@@ -72,7 +68,7 @@ Copy2bpp::
 	ld b, c
 	jp _Serve2bppRequest
 
-Request2bpp:: ; eba
+Request2bpp::
 ; Load 2bpp at b:de to occupy c tiles of hl.
 	call StackCallInBankB
 
@@ -153,7 +149,7 @@ CopyOpaque1bpp:
 	ld [hRequestOpaque1bpp], a
 	jr _Copy1bpp
 
-Get1bpp:: ; f9d
+Get1bpp::
 	ld a, [rLCDC]
 	bit 7, a ; lcd on?
 	jr nz, Request1bpp

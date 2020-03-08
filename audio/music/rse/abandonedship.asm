@@ -255,7 +255,6 @@ Music_AbandonedShipRSE_Ch1_loop:
 	note G#, 2
 	loopchannel 0, Music_AbandonedShipRSE_Ch1_loop
 
-
 Music_AbandonedShipRSE_Ch2:
 	dutycycle $3
 	vibrato $1c, $12

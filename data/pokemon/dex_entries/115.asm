@@ -1,4 +1,4 @@
-; KangaskhanPokedexEntry: ; 0x1b94f6
+; KangaskhanPokedexEntry:
 	db "Parent@" ; species name
 	dw 703, 1760 ; height, width
 

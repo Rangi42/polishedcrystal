@@ -1,4 +1,4 @@
-; NoctowlPokedexEntry: ; 0x1cceb9
+; NoctowlPokedexEntry:
 	db "Owl@" ; species name
 	dw 503, 900 ; height, width
 

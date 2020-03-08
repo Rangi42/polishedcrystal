@@ -1,4 +1,4 @@
-; MagnetonPokedexEntry: ; 0x1b870a
+; MagnetonPokedexEntry:
 	db "Magnet@" ; species name
 	dw 303, 1320 ; height, width
 

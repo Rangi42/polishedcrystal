@@ -1,4 +1,4 @@
-InitDisplayForHallOfFame: ; 4e881
+InitDisplayForHallOfFame:
 	call ClearBGPalettes
 	call ClearTileMap
 	call ClearSprites
@@ -22,12 +22,12 @@ InitDisplayForHallOfFame: ; 4e881
 	call ApplyAttrAndTilemapInVBlank
 	jp SetPalettes
 
-.SavingRecordDontTurnOff: ; 0x4e8bd
+.SavingRecordDontTurnOff:
 	; SAVING RECORD… DON'T TURN OFF!
 	text_jump UnknownText_0x1bd39e
 	db "@"
 
-InitDisplayForLeafCredits: ; 4e8c2
+InitDisplayForLeafCredits:
 	call ClearBGPalettes
 	call ClearTileMap
 	call ClearSprites
@@ -65,7 +65,7 @@ endc
 	call ApplyAttrAndTilemapInVBlank
 	jp SetPalettes
 
-ResetDisplayBetweenHallOfFameMons: ; 4e906
+ResetDisplayBetweenHallOfFameMons:
 	ld a, [rSVBK]
 	push af
 	ld a, $6

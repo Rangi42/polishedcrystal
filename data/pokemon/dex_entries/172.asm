@@ -1,4 +1,4 @@
-; PichuPokedexEntry: ; 0x1cd243
+; PichuPokedexEntry:
 	db "Tiny Mouse@" ; species name
 	dw 100, 40 ; height, width
 

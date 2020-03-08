@@ -106,7 +106,6 @@ GetSwitchScores:
 	ld [wEnemyMonItem], a
 	ret
 
-
 CheckPlayerMoveTypeMatchups:
 	ld hl, wEnemyMonMoves
 	ld bc, wEnemyMonType

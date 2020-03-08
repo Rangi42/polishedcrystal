@@ -201,16 +201,15 @@ ScrollingMenuJoyAction:
 	dec a
 	ret
 
-ScrollingMenu_GetCursorPosition: ; 246fc
+ScrollingMenu_GetCursorPosition:
 	ld a, [wMenuScrollPosition]
 	ld c, a
 	ld a, [wMenuCursorY]
 	add c
 	ld c, a
 	ret
-; 24706
 
-ScrollingMenu_ClearLeftColumn: ; 24706 (9:4706)
+ScrollingMenu_ClearLeftColumn:
 	call MenuBoxCoord2Tile
 	ld de, SCREEN_WIDTH
 	add hl, de
@@ -223,7 +222,7 @@ ScrollingMenu_ClearLeftColumn: ; 24706 (9:4706)
 	jr nz, .loop
 	ret
 
-InitScrollingMenuCursor: ; 2471a
+InitScrollingMenuCursor:
 	ld hl, wMenuData2_ItemsPointerAddr
 	ld a, [hli]
 	ld h, [hl]
@@ -267,9 +266,8 @@ InitScrollingMenuCursor: ; 2471a
 	ld a, $1
 	ld [wMenuCursorBuffer], a
 	ret
-; 24764
 
-ScrollingMenu_InitFlags: ; 24764
+ScrollingMenu_InitFlags:
 	ld a, [wMenuData2Flags]
 	ld c, a
 	ld a, [wScrollingMenuListSize]
@@ -454,12 +452,11 @@ ScrollingMenu_UpdateDisplay:
 	ld e, l
 	ld hl, wMenuData2_ScrollingMenuFunction1
 	jp FarPointerCall
-; 2486e
 
 ScrollingMenu_CancelString:
 	db "Cancel@"
 
-ScrollingMenu_CallFunctions1and2: ; 2486e
+ScrollingMenu_CallFunctions1and2:
 	push hl
 	ld d, h
 	ld e, l
@@ -490,7 +487,7 @@ ScrollingMenu_CallFunctions1and2: ; 2486e
 	ld hl, wMenuData2_ScrollingMenuFunction2
 	jp FarPointerCall
 
-ScrollingMenu_PlaceCursor: ; 2488b
+ScrollingMenu_PlaceCursor:
 	ld a, [wSwitchItem]
 	and a
 	ret z
@@ -521,9 +518,8 @@ ScrollingMenu_PlaceCursor: ; 2488b
 	call Coord2Tile
 	ld [hl], "▷"
 	ret
-; 248b8
 
-ScrollingMenu_CheckCallFunction3: ; 248b8
+ScrollingMenu_CheckCallFunction3:
 	ld a, [wMenuData2Flags]
 	bit 5, a ; call function 3
 	ret z
@@ -539,7 +535,6 @@ ScrollingMenu_CheckCallFunction3: ; 248b8
 	call ScrollingMenu_GetListItemCoordAndFunctionArgs
 	ld hl, wMenuData2_ScrollingMenuFunction3
 	jp FarPointerCall
-; 248d5
 
 ScrollingMenu_GetListItemCoordAndFunctionArgs:
 	push bc

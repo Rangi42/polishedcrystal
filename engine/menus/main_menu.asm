@@ -1,4 +1,4 @@
-MainMenu: ; 49cdc
+MainMenu:
 	call DeleteSavedMusic
 	farcall NewGame_ClearTileMapEtc
 	ld a, CGB_DIPLOMA
@@ -19,38 +19,34 @@ MainMenu: ; 49cdc
 	ld hl, .Jumptable
 	rst JumpTable
 	jr MainMenu
-; 49d14
 
-.MenuDataHeader: ; 49d14
+.MenuDataHeader:
 	db $40 ; flags
 	db 00, 00 ; start coords
 	db 07, 16 ; end coords
 	dw .MenuData2
 	db 1 ; default option
-; 49d1c
 
-.MenuData2: ; 49d1c
+.MenuData2:
 	db $80 ; flags
 	db 0 ; items
 	dw MainMenuItems
 	dw PlaceMenuStrings
 	dw .Strings
-; 49d20
 
-.Strings: ; 49d24
+.Strings:
 	db "Continue@"
 	db "New Game@"
 	db "New Game+@"
 	db "Options@"
 	db "Music Player@"
 
-.Jumptable: ; 0x49d60
+.Jumptable:
 	dw MainMenu_Continue
 	dw MainMenu_NewGame
 	dw MainMenu_NewGamePlus
 	dw MainMenu_Options
 	dw MainMenu_MusicPlayer
-; 0x49d6c
 
 CONTINUE       EQU 0
 NEW_GAME       EQU 1
@@ -59,13 +55,13 @@ OPTION         EQU 3
 MUSIC_PLAYER   EQU 4
 
 MainMenuItems:
-; .NewGameMenu: ; 0x49d6c
+; .NewGameMenu:
 	db 3
 	db NEW_GAME
 	db OPTION
 	db MUSIC_PLAYER
 	db -1
-; .ContinueMenu: ; 0x49d70
+; .ContinueMenu:
 	db 4
 	db CONTINUE
 	db NEW_GAME
@@ -81,7 +77,7 @@ MainMenuItems:
 	db MUSIC_PLAYER
 	db -1
 
-MainMenu_GetWhichMenu: ; 49da4
+MainMenu_GetWhichMenu:
 	ld a, [wSaveFileExists]
 	and a
 	jr nz, .next
@@ -104,9 +100,8 @@ MainMenu_GetWhichMenu: ; 49da4
 .next2
 	ld a, $2 ; New Game+
 	ret
-; 49de4
 
-MainMenuJoypadLoop: ; 49de4
+MainMenuJoypadLoop:
 	call SetUpMenu
 .loop
 	call MainMenu_PrintCurrentTimeAndDay
@@ -128,9 +123,8 @@ MainMenuJoypadLoop: ; 49de4
 .b_button
 	scf
 	ret
-; 49e09
 
-MainMenu_PrintCurrentTimeAndDay: ; 49e09
+MainMenu_PrintCurrentTimeAndDay:
 	ld a, [wSaveFileExists]
 	and a
 	ret z
@@ -147,19 +141,16 @@ MainMenu_PrintCurrentTimeAndDay: ; 49e09
 	ld a, $1
 	ld [hBGMapMode], a
 	ret
-; 49e27
 
-
-.PlaceBox: ; 49e27
+.PlaceBox:
 	call CheckRTCStatus
 	and $80
 	jp nz, SpeechTextBox
 	hlcoord 0, 14
 	lb bc, 2, 18
 	jp TextBox
-; 49e3d
 
-.PlaceTime: ; 49e3d
+.PlaceTime:
 	ld a, [wSaveFileExists]
 	and a
 	ret z
@@ -192,33 +183,26 @@ endc
 	ld de, hMinutes
 	lb bc, PRINTNUM_LEADINGZEROS | 1, 2
 	jp PrintNum
-; 49e75
 
-.PrintTimeNotSet: ; 49e75
+.PrintTimeNotSet:
 	hlcoord 1, 14
 	ld de, .TimeNotSet
 	jp PlaceString
-; 49e7f
 
-.TimeNotSet: ; 49e7f
+.TimeNotSet:
 	db "Time not set@"
-; 49e8c
 
-
-MainMenu_NewGame: ; 49ee0
+MainMenu_NewGame:
 	farjp NewGame
-; 49ee7
 
 MainMenu_NewGamePlus:
 	farjp NewGamePlus
 
-MainMenu_Options: ; 49ee7
+MainMenu_Options:
 	farjp OptionsMenu
-; 49eee
 
-MainMenu_Continue: ; 49eee
+MainMenu_Continue:
 	farjp Continue
-; 49ef5
 
 MainMenu_MusicPlayer:
 	farjp MusicPlayer

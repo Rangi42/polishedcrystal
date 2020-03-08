@@ -1,4 +1,4 @@
-ReturnFromMapSetupScript:: ; b8000
+ReturnFromMapSetupScript::
 	ld a, [wMapGroup]
 	ld b, a
 	ld a, [wMapNumber]
@@ -82,9 +82,8 @@ ReturnFromMapSetupScript:: ; b8000
 	xor a
 	ld [hLCDCPointer], a
 	ret
-; b8064
 
-.CheckMovingWithinLandmark: ; b8064
+.CheckMovingWithinLandmark:
 	ld a, [wCurrentLandmark]
 	ld c, a
 	ld a, [wPreviousLandmark]
@@ -92,9 +91,8 @@ ReturnFromMapSetupScript:: ; b8000
 	ret z
 	and a ; cp SPECIAL_MAP
 	ret
-; b8070
 
-.CheckSpecialMap: ; b8070
+.CheckSpecialMap:
 	cp -1
 	ret z
 	and a ; cp SPECIAL_MAP
@@ -114,9 +112,8 @@ ReturnFromMapSetupScript:: ; b8000
 	ld a, $1
 	and a
 	ret
-; b8089
 
-.CheckNationalParkGate: ; b8089
+.CheckNationalParkGate:
 	ld a, [wMapGroup]
 	cp GROUP_ROUTE_35_NATIONAL_PARK_GATE
 	ret nz
@@ -125,10 +122,8 @@ ReturnFromMapSetupScript:: ; b8000
 	ret z
 	cp MAP_ROUTE_36_NATIONAL_PARK_GATE
 	ret
-; b8098
 
-
-PlaceMapNameSign:: ; b8098 (2e:4098)
+PlaceMapNameSign::
 	; Sign is slightly delayed to move it away from the map connection setup
 	ld hl, wLandmarkSignTimer
 	ld a, [hl]
@@ -175,7 +170,7 @@ PlaceMapNameSign:: ; b8098 (2e:4098)
 	ld [hLCDCPointer], a
 	ret
 
-LoadMapNameSignGFX: ; b80c6
+LoadMapNameSignGFX:
 	; load opaque space
 	ld hl, vTiles0 tile POPUP_MAP_FRAME_SPACE
 	call GetOpaque1bppSpaceTile
@@ -284,9 +279,8 @@ endr
 	; restore hl = position in landmark name
 	pop hl
 	jr .loop
-; b80d3
 
-InitMapNameFrame: ; b80d3
+InitMapNameFrame:
 ; InitMapSignAttrMap
 	hlcoord 0, 0
 	ld de, wAttrMap - wTileMap
@@ -347,9 +341,8 @@ endr
 	dec a ; $fd
 	ld [hl], a
 	ret
-; b815b
 
-.FillUpperMiddle: ; b815b
+.FillUpperMiddle:
 	push af
 	ld a, POPUP_MAP_FRAME_SPACE
 	ld c, SCREEN_WIDTH - 2
@@ -371,9 +364,8 @@ endr
 	jr nz, .loop2
 	pop af
 	ret
-; b8164
 
-.FillTopBottom: ; b8164
+.FillTopBottom:
 	ld c, 5
 	jr .enterloop
 
@@ -389,4 +381,3 @@ endr
 	dec c
 	jr nz, .continueloop
 	ret
-; b8172

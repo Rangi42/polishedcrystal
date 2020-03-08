@@ -1,4 +1,4 @@
-Pokepic:: ; 244e3
+Pokepic::
 	ld hl, PokepicMenuDataHeader
 	call CopyMenuDataHeader
 	call MenuBox
@@ -80,7 +80,7 @@ Paintingpic::
 	farcall GetPaintingPic
 	jp _Displaypic
 
-ClosePokepic:: ; 24528
+ClosePokepic::
 	ld hl, PokepicMenuDataHeader
 	call CopyMenuDataHeader
 	call ClearMenuBoxInterior
@@ -93,7 +93,7 @@ ClosePokepic:: ; 24528
 	call SafeCopyTilemapAtOnce
 	farjp ReloadVisibleSprites
 
-PokepicMenuDataHeader: ; 0x24547
+PokepicMenuDataHeader:
 	db $40 ; flags
 	db 04, 06 ; start coords
 	db 12, 14 ; end coords

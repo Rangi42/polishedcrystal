@@ -1,4 +1,4 @@
-AnimateHPBar: ; c6e0
+AnimateHPBar:
 	call ApplyTilemapInVBlank
 	call _AnimateHPBar
 	jp ApplyTilemapInVBlank

@@ -290,7 +290,6 @@ Music_WallyBattleORAS_Ch2_loop_1:
 	dutycycle 0
 	loopchannel 0, Music_WallyBattleORAS_Ch2
 
-
 Music_WallyBattleORAS_Ch2_branch_1:
 	notetype $c, $b7
 	octave 2

@@ -1,4 +1,4 @@
-RunMapSetupScript:: ; 15363
+RunMapSetupScript::
 	ld a, [hMapEntryMethod]
 	and $f
 	dec a
@@ -11,12 +11,10 @@ RunMapSetupScript:: ; 15363
 	ld h, [hl]
 	ld l, a
 	jp ReadMapSetupScript
-; 15377
 
 INCLUDE "data/maps/setup_scripts.asm"
 
-
-ReadMapSetupScript: ; 1541d
+ReadMapSetupScript:
 .loop
 	ld a, [hli]
 	cp -1
@@ -58,7 +56,6 @@ ReadMapSetupScript: ; 1541d
 
 	pop hl
 	jr .loop
-; 15440
 
 MapSetupCommands:
 	dba EnableLCD ; 00
@@ -109,26 +106,23 @@ MapSetupCommands:
 	dba DecompressMetatiles ; 2d
 	dba DeferredLoadGraphics ; 2e
 
-ActivateMapAnims: ; 154cf
+ActivateMapAnims:
 	ld a, $1
 	ld [hMapAnims], a
 	ret
-; 154d3
 
-SuspendMapAnims: ; 154d3
+SuspendMapAnims:
 	xor a
 	ld [hMapAnims], a
 	ret
-; 154d7
 
-LoadObjectsRunCallback_02: ; 154d7
+LoadObjectsRunCallback_02:
 	ld a, MAPCALLBACK_OBJECTS
 	call RunMapCallback
 	call LoadObjectMasks
 	farjp InitializeVisibleSprites
-; 154ea (5:54ea)
 
-LoadObjectMasks: ; 2454f
+LoadObjectMasks:
 	ld hl, wObjectMasks
 	xor a
 	ld bc, NUM_OBJECTS
@@ -158,7 +152,7 @@ LoadObjectMasks: ; 2454f
 	jr nz, .loop
 	ret
 
-CheckObjectFlag: ; 2457d (9:457d)
+CheckObjectFlag:
 	ld hl, MAPOBJECT_SPRITE
 	add hl, bc
 	ld a, [hl]
@@ -190,25 +184,24 @@ CheckObjectFlag: ; 2457d (9:457d)
 	xor a
 	ret
 
-GetObjectTimeMask: ; 245a7 (9:45a7)
+GetObjectTimeMask:
 	call CheckObjectTime
 	ld a, -1
 	ret c
 	xor a
 	ret
 
-DelayClearingOldSprites: ; 154eb
+DelayClearingOldSprites:
 	ld hl, wPlayerSpriteSetupFlags
 	set 7, [hl]
 	ret
-; 154f1
 
-DelayLoadingNewSprites: ; 154f1
+DelayLoadingNewSprites:
 	ld hl, wPlayerSpriteSetupFlags
 	set 6, [hl]
 	ret
 
-CheckReplaceKrisSprite: ; 154f7
+CheckReplaceKrisSprite:
 	call .CheckBiking
 	jr c, .ok
 	call .CheckSurfing
@@ -220,7 +213,7 @@ CheckReplaceKrisSprite: ; 154f7
 .ok
 	jp ReplaceKrisSprite
 
-.CheckBiking: ; 1550c (5:550c)
+.CheckBiking:
 	and a
 	ld hl, wOWState
 	bit OWSTATE_BIKING_FORCED, [hl]
@@ -230,7 +223,7 @@ CheckReplaceKrisSprite: ; 154f7
 	scf
 	ret
 
-.CheckSurfing2: ; 1551a (5:551a)
+.CheckSurfing2:
 	ld a, [wPlayerState]
 	and a ; cp PLAYER_NORMAL
 	jr z, .nope
@@ -260,7 +253,7 @@ CheckReplaceKrisSprite: ; 154f7
 	and a
 	ret
 
-.CheckSurfing: ; 1554e (5:554e)
+.CheckSurfing:
 	call CheckOnWater
 	jr nz, .ret_nc
 	ld a, [wPlayerState]
@@ -276,14 +269,12 @@ CheckReplaceKrisSprite: ; 154f7
 .ret_nc
 	and a
 	ret
-; 15567
 
-FadeOldMapMusic: ; 15567
+FadeOldMapMusic:
 	ld a, 6
 	jp SkipMusic
-; 1556d
 
-RetainOldPalettes: ; 1556d
+RetainOldPalettes:
 	farjp _UpdateTimePals
 
 RotatePalettesRightMapAndMusic:
@@ -295,7 +286,7 @@ RotatePalettesRightMapAndMusic:
 	ld [wMusicFade], a
 	farjp FadeOutPalettes
 
-ForceMapMusic: ; 15587
+ForceMapMusic:
 	ld a, [wPlayerState]
 	cp PLAYER_BIKE
 	jr nz, .notbiking

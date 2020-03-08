@@ -340,7 +340,6 @@ endr
 	pop af
 	ret
 
-
 GetGSBallPichu:
 	ld a, 2
 	ld [hScriptVar], a

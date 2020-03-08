@@ -1,4 +1,4 @@
-AddPhoneNumber:: ; 90000
+AddPhoneNumber::
 	call CheckCellNum
 	jr c, .cant_add
 	call Phone_FindOpenSlot
@@ -10,10 +10,8 @@ AddPhoneNumber:: ; 90000
 .cant_add
 	scf
 	ret
-; 9000f
 
-
-DelCellNum:: ; 9000f
+DelCellNum::
 	call CheckCellNum
 	jr nc, .not_in_list
 	xor a
@@ -23,9 +21,8 @@ DelCellNum:: ; 9000f
 .not_in_list
 	scf
 	ret
-; 90019
 
-CheckCellNum:: ; 90019
+CheckCellNum::
 	ld hl, wPhoneList
 	ld b, CONTACT_LIST_SIZE
 .loop
@@ -41,9 +38,8 @@ CheckCellNum:: ; 90019
 	dec hl
 	scf
 	ret
-; 9002d
 
-Phone_FindOpenSlot: ; 9002d
+Phone_FindOpenSlot:
 	call GetRemainingSpaceInPhoneList
 	ld b, a
 	ld hl, wPhoneList
@@ -60,9 +56,8 @@ Phone_FindOpenSlot: ; 9002d
 	dec hl
 	scf
 	ret
-; 90040
 
-GetRemainingSpaceInPhoneList: ; 90040
+GetRemainingSpaceInPhoneList:
 	xor a
 	ld [wBuffer1], a
 	ld hl, PermanentNumbers
@@ -92,12 +87,10 @@ GetRemainingSpaceInPhoneList: ; 90040
 	ld hl, wBuffer1
 	sub [hl]
 	ret
-; 90066
 
 INCLUDE "data/phone/permanent_numbers.asm"
 
-
-FarPlaceString: ; 90069
+FarPlaceString:
 	ld a, [hROMBank]
 	push af
 	ld a, b
@@ -108,10 +101,8 @@ FarPlaceString: ; 90069
 	pop af
 	rst Bankswitch
 	ret
-; 90074
 
-
-CheckPhoneCall:: ; 90074 (24:4074)
+CheckPhoneCall::
 ; Check if the phone is ringing in the overworld.
 
 	ld a, [wPlayerStandingTile]
@@ -151,10 +142,10 @@ CheckPhoneCall:: ; 90074 (24:4074)
 	xor a
 	ret
 
-.timecheck ; 900a6 (24:40a6)
+.timecheck
 	farjp CheckReceiveCallTimer
 
-CheckPhoneContactTimeOfDay: ; 900ad (24:40ad)
+CheckPhoneContactTimeOfDay:
 	push hl
 	push bc
 	push de
@@ -170,7 +161,7 @@ CheckPhoneContactTimeOfDay: ; 900ad (24:40ad)
 	pop hl
 	ret
 
-ChooseRandomCaller: ; 900bf (24:40bf)
+ChooseRandomCaller:
 ; If no one is available to call, don't return anything.
 	ld a, [wEngineBuffer3]
 	and a
@@ -197,7 +188,7 @@ ChooseRandomCaller: ; 900bf (24:40bf)
 	xor a
 	ret
 
-GetAvailableCallers: ; 900de (24:40de)
+GetAvailableCallers:
 	farcall CheckTime
 	ld a, c
 	ld [wEngineBuffer1], a
@@ -245,7 +236,7 @@ GetAvailableCallers: ; 900de (24:40de)
 	jr nz, .loop
 	ret
 
-CheckSpecialPhoneCall:: ; 90136 (24:4136)
+CheckSpecialPhoneCall::
 	ld a, [wSpecialPhoneCallID]
 	and a
 	jr z, .NoPhoneCall
@@ -287,14 +278,12 @@ CheckSpecialPhoneCall:: ; 90136 (24:4136)
 .NoPhoneCall:
 	xor a
 	ret
-; 90173 (24:4173)
 
-.script ; 0x90173
+.script
 	pause 30
 	jump Script_ReceivePhoneCall
-; 0x90178
 
-.DoSpecialPhoneCall: ; 90178 (24:4178)
+.DoSpecialPhoneCall:
 	ld a, [wSpecialPhoneCallID]
 	dec a
 	ld c, a
@@ -304,7 +293,7 @@ CheckSpecialPhoneCall:: ; 90136 (24:4136)
 	rst AddNTimes
 	ret
 
-SpecialCallOnlyWhenOutside: ; 90188
+SpecialCallOnlyWhenOutside:
 	ld a, [wPermission]
 	cp TOWN
 	jr z, .outside
@@ -317,11 +306,11 @@ SpecialCallOnlyWhenOutside: ; 90188
 	scf
 	ret
 
-SpecialCallWhereverYouAre: ; 90197
+SpecialCallWhereverYouAre:
 	scf
 	ret
 
-Function90199: ; 90199 (24:4199)
+Function90199:
 	; Don't do the call if you're in a link communication
 	ld a, [wLinkMode]
 	and a
@@ -385,19 +374,16 @@ Function90199: ; 90199 (24:4199)
 	ld b, BANK(UnknownScript_0x90205)
 	ld de, UnknownScript_0x90205
 	jp ExecuteCallbackScript
-; 90205 (24:4205)
 
-UnknownScript_0x90205: ; 0x90205
+UnknownScript_0x90205:
 	ptcall wd002
 	return
-; 0x90209
 
-UnknownScript_0x90209: ; 0x90209
+UnknownScript_0x90209:
 	scall UnknownScript_0x90657
 	return
-; 0x9020d
 
-LoadCallerScript: ; 9020d (24:420d)
+LoadCallerScript:
 	ld a, e
 	ld [wCurrentCaller], a
 	and a
@@ -416,9 +402,8 @@ LoadCallerScript: ; 9020d (24:420d)
 	ld de, wEngineBuffer2
 	ld bc, 12
 	jp FarCopyBytes
-; 90233 (24:4233)
 
-WrongNumber: ; 90233
+WrongNumber:
 	db TRAINER_NONE, PHONE_00
 	dba .script
 .script
@@ -428,9 +413,8 @@ WrongNumber: ; 90233
 	; Huh? Sorry, wrong number!
 	text_jump UnknownText_0x1c5565
 	db "@"
-; 90241
 
-Script_ReceivePhoneCall: ; 0x90241
+Script_ReceivePhoneCall:
 	refreshscreen
 	callasm RingTwice_StartCall
 	ptcall wPhoneScriptPointer
@@ -439,32 +423,30 @@ Script_ReceivePhoneCall: ; 0x90241
 	closetext
 	callasm InitCallReceiveDelay
 	end
-; 0x90255
 
-Script_SpecialBillCall:: ; 0x90255
+Script_SpecialBillCall::
 	callasm .LoadBillScript
 	jump Script_ReceivePhoneCall
 
 .LoadBillScript:
 	ld e, PHONE_BILL
 	jp LoadCallerScript
-; 90261
 
-RingTwice_StartCall: ; 9026f
+RingTwice_StartCall:
 	call .Ring
-.Ring: ; 9027c (24:427c)
+.Ring:
 	call Phone_StartRinging
 	call Phone_Wait20Frames
 	call Phone_CallerTextboxWithName
 	call Phone_Wait20Frames
 	call Phone_CallerTextbox
 	call Phone_Wait20Frames
-Phone_CallerTextboxWithName: ; 90292 (24:4292)
+Phone_CallerTextboxWithName:
 	ld a, [wCurrentCaller]
 	ld b, a
 	jp Function90363
 
-PhoneCall:: ; 9029a
+PhoneCall::
 	ld a, b
 	ld [wPhoneScriptBank], a
 	ld a, e
@@ -472,14 +454,14 @@ PhoneCall:: ; 9029a
 	ld a, d
 	ld [wPhoneCallerHi], a
 	call Phone_FirstOfTwoRings
-Phone_FirstOfTwoRings: ; 902b3
+Phone_FirstOfTwoRings:
 	call Phone_StartRinging
 	call Phone_Wait20Frames
 	call Phone_CallerTextboxWithName2
 	call Phone_Wait20Frames
 	call Phone_CallerTextbox
 	call Phone_Wait20Frames
-Phone_CallerTextboxWithName2: ; 902c9
+Phone_CallerTextboxWithName2:
 	call Phone_CallerTextbox
 	hlcoord 1, 2
 	ld [hl], "<PHONE>"
@@ -492,15 +474,13 @@ Phone_CallerTextboxWithName2: ; 902c9
 	ld a, [wPhoneCallerHi]
 	ld d, a
 	jp FarPlaceString
-; 902e3
 
-
-Phone_NoSignal: ; 902e3 (24:42e3)
+Phone_NoSignal:
 	ld de, SFX_NO_SIGNAL
 	call PlaySFX
 	jr Phone_CallEnd
 
-HangUp:: ; 902eb
+HangUp::
 	call HangUp_Beep
 	call HangUp_Wait20Frames
 Phone_CallEnd:
@@ -516,33 +496,26 @@ Phone_CallEnd:
 	call HangUp_Wait20Frames
 	call SpeechTextBox
 	jp HangUp_Wait20Frames
-; 90316
 
-HangUp_Beep: ; 9031d
+HangUp_Beep:
 	ld hl, UnknownText_0x9032a
 	call PrintText
 	ld de, SFX_HANG_UP
 	jp PlaySFX
-; 9032a
 
-UnknownText_0x9032a: ; 9032a
+UnknownText_0x9032a:
 	text_jump UnknownText_0x1c5580
 	db "@"
-; 9032f
 
-
-HangUp_BoopOn: ; 9032f
+HangUp_BoopOn:
 	ld hl, UnknownText_0x90336
 	jp PrintText
-; 90336
 
-UnknownText_0x90336: ; 0x90336
+UnknownText_0x90336:
 	text_jump UnknownText_0x1c5588
 	db "@"
-; 0x9033b
 
-
-Phone_StartRinging: ; 9033f
+Phone_StartRinging:
 	call WaitSFX
 	ld de, SFX_CALL
 	call PlaySFX
@@ -550,13 +523,13 @@ Phone_StartRinging: ; 9033f
 	call UpdateSprites
 	jp ApplyTilemap
 
-HangUp_Wait20Frames: ; 90355
+HangUp_Wait20Frames:
 Phone_Wait20Frames:
 	ld c, 20
 	call DelayFrames
 	jp ApplyTilemap
 
-Function90363: ; 90363 (24:4363)
+Function90363:
 	push bc
 	call Phone_CallerTextbox
 	hlcoord 1, 1
@@ -568,22 +541,19 @@ Function90363: ; 90363 (24:4363)
 	pop bc
 	jp Function90380
 
-
-Phone_CallerTextbox: ; 90375
+Phone_CallerTextbox:
 	hlcoord 0, 0
 	lb bc, 2, SCREEN_WIDTH - 2
 	jp TextBox
-; 90380
 
-
-Function90380: ; 90380 (24:4380)
+Function90380:
 	ld h, d
 	ld l, e
 	ld a, b
 	call GetCallerTrainerClass
 	jp GetCallerName
 
-CheckCanDeletePhoneNumber: ; 9038a (24:438a)
+CheckCanDeletePhoneNumber:
 	ld a, c
 	call GetCallerTrainerClass
 	ld a, c
@@ -599,7 +569,7 @@ CheckCanDeletePhoneNumber: ; 9038a (24:438a)
 	ld c, $1
 	ret
 
-GetCallerTrainerClass: ; 9039a
+GetCallerTrainerClass:
 	push hl
 	ld hl, PhoneContacts + PHONE_CONTACT_TRAINER_CLASS
 	ld bc, PHONE_TABLE_WIDTH
@@ -609,10 +579,8 @@ GetCallerTrainerClass: ; 9039a
 	ld c, a
 	pop hl
 	ret
-; 903a9
 
-
-GetCallerName: ; 903a9 (24:43a9)
+GetCallerName:
 	ld a, c
 	and a
 	jr z, .NotTrainer
@@ -663,9 +631,8 @@ GetCallerName: ; 903a9 (24:43a9)
 
 .filler
 	db " -------@"
-; 903d6 (24:43d6)
 
-NonTrainerCallerNames: ; 903d6
+NonTrainerCallerNames:
 	dw .none
 	dw .mom
 	dw .bikeshop
@@ -681,9 +648,8 @@ NonTrainerCallerNames: ; 903d6
 .bikeshop db "Miracle Cycle:@"
 .lyra db "Lyra:<LNBRK>   <PK><MN> Trainer@"
 .buena db "Buena:<LNBRK>   Disc Jockey@"
-; 90423
 
-Phone_GetTrainerName: ; 90423 (24:4423)
+Phone_GetTrainerName:
 	push hl
 	push bc
 	farcall GetTrainerName
@@ -691,7 +657,7 @@ Phone_GetTrainerName: ; 90423 (24:4423)
 	pop hl
 	ret
 
-Phone_GetTrainerClassName: ; 9042e (24:442e)
+Phone_GetTrainerClassName:
 	push hl
 	push bc
 	farcall GetTrainerClassName
@@ -699,7 +665,7 @@ Phone_GetTrainerClassName: ; 9042e (24:442e)
 	pop hl
 	ret
 
-GetCallerLocation: ; 90439
+GetCallerLocation:
 	ld a, [wCurrentCaller]
 	call GetCallerTrainerClass
 	ld d, c
@@ -719,30 +685,25 @@ GetCallerLocation: ; 90439
 	pop bc
 	pop de
 	ret
-; 9045f
 
 INCLUDE "data/phone/phone_contacts.asm"
 
 INCLUDE "data/phone/special_calls.asm"
 
-UnknownScript_0x90657: ; 0x90657
+UnknownScript_0x90657:
 	writetext UnknownText_0x9065b
 	end
-; 0x9065b
 
-UnknownText_0x9065b: ; 0x9065b
+UnknownText_0x9065b:
 	; That number is out of the area.
 	text_jump UnknownText_0x1c558b
 	db "@"
-; 0x90660
 
-PhoneScript_JustTalkToThem: ; 0x90660
+PhoneScript_JustTalkToThem:
 	writetext UnknownText_0x90664
 	end
-; 0x90664
 
-UnknownText_0x90664: ; 0x90664
+UnknownText_0x90664:
 	; Just go talk to that person!
 	text_jump UnknownText_0x1c55ac
 	db "@"
-; 0x90669

@@ -9,7 +9,7 @@ ForcePushOAM:
 	ld a, wSprites >> 8
 	jp hPushOAM
 
-DMATransfer:: ; 15d8
+DMATransfer::
 ; Return carry if the transfer is completed.
 
 	ld a, [hDMATransfer]
@@ -25,10 +25,8 @@ DMATransfer:: ; 15d8
 	ld [hDMATransfer], a
 	scf
 	ret
-; 15e3
 
-
-UpdateBGMapBuffer:: ; 15e3
+UpdateBGMapBuffer::
 ; Copy [hBGMapTileCount] 16x8 tiles from wBGMapBuffer
 ; to bg map addresses in wBGMapBufferPtrs.
 
@@ -51,7 +49,6 @@ UpdateBGMapBuffer:: ; 15e3
 
 	ld hl, wBGMapPalBuffer
 	ld de, wBGMapBuffer
-
 
 .next
 ; Copy a pair of 16x8 blocks (one 16x16 block)
@@ -92,7 +89,6 @@ endr
 
 	jr nz, .next
 
-
 	ld sp, hSPBuffer
 	pop hl
 	ld sp, hl
@@ -104,8 +100,6 @@ endr
 	ld [hBGMapUpdate], a
 	scf
 	ret
-; 163a
-
 
 WaitTop::
 ; Wait until the top half of the BG Map is being updated.
@@ -127,7 +121,7 @@ WaitTop::
 
 HALF_HEIGHT EQU SCREEN_HEIGHT / 2
 
-UpdateBGMap:: ; 164c
+UpdateBGMap::
 ; Update the BG Map, in halves, from wTileMap and wAttrMap.
 
 	ld a, [hBGMapMode]
@@ -282,7 +276,7 @@ UpdateBGMap:: ; 164c
 	ld sp, hl
 	ret
 
-Serve1bppRequest:: ; 170a
+Serve1bppRequest::
 ; Only call during the first fifth of VBlank
 
 	ld a, [hRequested1bpp]

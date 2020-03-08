@@ -122,7 +122,6 @@ EggStatsInit:
 	ld [wJumptableIndex], a
 	ret
 
-
 EggStatsJoypad:
 	call StatsScreen_GetJoypad
 	jr nc, .check
@@ -311,7 +310,7 @@ StatsScreen_JoypadAction:
 	ld h, 0
 	jp StatsScreen_SetJumptableIndex
 
-.b_button ; 4dee4 (13:5ee4)
+.b_button
 	ld h, 7
 	jp StatsScreen_SetJumptableIndex
 
@@ -769,7 +768,6 @@ StatsScreen_LoadGFX:
 .OrangePage:
 	farjp OrangePage_
 
-
 ; Fourth stats page code by TPP Anniversary Crystal 251
 ; Ported by FredrIQ
 OrangePage_:
@@ -988,7 +986,6 @@ TN_PrintCharacteristics:
 
 INCLUDE "data/characteristics.asm"
 
-
 StatsScreen_PlaceFrontpic:
 	ld hl, wTempMonForm
 	predef GetVariant
@@ -1066,7 +1063,6 @@ StatsScreen_GetAnimationParam:
 	dw .BoxMon
 	dw .Tempmon
 	dw .Wildmon
-
 
 .PartyMon:
 	ld a, [wCurPartyMon]
@@ -1206,7 +1202,6 @@ EggALotMoreTimeString:
 	next "lot more time to"
 	next "hatch.@"
 
-
 StatsScreen_AnimateEgg:
 	call StatsScreen_GetAnimationParam
 	ret nc
@@ -1305,7 +1300,6 @@ GetNicknamePointer:
 	ret z
 	ld a, [wCurPartyMon]
 	jp SkipNames
-
 
 CheckFaintedFrzSlp:
 	ld hl, MON_HP

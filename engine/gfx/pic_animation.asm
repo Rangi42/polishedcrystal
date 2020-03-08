@@ -15,8 +15,7 @@ endc
 	db (PokeAnim_Finish_ - PokeAnim_SetupCommands) / 2
 ENDM
 
-
-PokeAnims: ; d0042
+PokeAnims:
 	dw .Slow
 	dw .Normal
 	dw .Menu
@@ -36,8 +35,7 @@ PokeAnims: ; d0042
 .Egg1:   POKEANIM Setup, Play
 .Egg2:   POKEANIM Extra, Play
 
-
-AnimateFrontpic: ; d008e
+AnimateFrontpic:
 	call AnimateMon_CheckIfPokemon
 	ret c
 	call LoadMonAnimation
@@ -48,9 +46,8 @@ AnimateFrontpic: ; d008e
 	pop af
 	jr nc, .loop
 	ret
-; d00a3
 
-LoadMonAnimation: ; d00a3
+LoadMonAnimation:
 	push hl
 	ld c, e
 	ld b, 0
@@ -114,9 +111,8 @@ LoadMonAnimation: ; d00a3
 	pop af
 	ld [rSVBK], a
 	ret
-; d0228
 
-SetUpPokeAnim: ; d00b4
+SetUpPokeAnim:
 	ld a, [rSVBK]
 	push af
 	ld a, $2
@@ -141,9 +137,8 @@ SetUpPokeAnim: ; d00b4
 	ret z
 	scf
 	ret
-; d00da
 
-PokeAnim_SetupCommands: ; d00da
+PokeAnim_SetupCommands:
 setup_command: MACRO
 \1_: dw \1
 ENDM
@@ -159,16 +154,15 @@ ENDM
 	setup_command PokeAnim_Cry
 	setup_command PokeAnim_CryNoWait
 	setup_command PokeAnim_StereoCry
-; d00f2
 
-PokeAnim_SetWait: ; d00f2
+PokeAnim_SetWait:
 	ld a, 18
 	ld [wPokeAnimWaitCounter], a
 	ld a, [wPokeAnimSceneIndex]
 	inc a
 	ld [wPokeAnimSceneIndex], a
 
-PokeAnim_Wait: ; d00fe
+PokeAnim_Wait:
 	ld hl, wPokeAnimWaitCounter
 	dec [hl]
 	ret nz
@@ -176,9 +170,8 @@ PokeAnim_Wait: ; d00fe
 	inc a
 	ld [wPokeAnimSceneIndex], a
 	ret
-; d010b
 
-PokeAnim_Setup: ; d010b
+PokeAnim_Setup:
 	lb bc, 0, FALSE
 	call PokeAnim_InitAnim
 	call PokeAnim_SetVBank1
@@ -186,9 +179,8 @@ PokeAnim_Setup: ; d010b
 	inc a
 	ld [wPokeAnimSceneIndex], a
 	ret
-; d011d
 
-PokeAnim_Setup2: ; d011d
+PokeAnim_Setup2:
 	lb bc, 4, FALSE
 	call PokeAnim_InitAnim
 	call PokeAnim_SetVBank1
@@ -196,9 +188,8 @@ PokeAnim_Setup2: ; d011d
 	inc a
 	ld [wPokeAnimSceneIndex], a
 	ret
-; d012f
 
-PokeAnim_Extra: ; d012f
+PokeAnim_Extra:
 	lb bc, 0, TRUE
 	call PokeAnim_InitAnim
 	call PokeAnim_SetVBank1
@@ -206,9 +197,8 @@ PokeAnim_Extra: ; d012f
 	inc a
 	ld [wPokeAnimSceneIndex], a
 	ret
-; d0141
 
-PokeAnim_Play: ; d0141
+PokeAnim_Play:
 	call PokeAnim_DoAnimScript
 	ld a, [wPokeAnimJumptableIndex]
 	bit 7, a
@@ -218,9 +208,8 @@ PokeAnim_Play: ; d0141
 	inc a
 	ld [wPokeAnimSceneIndex], a
 	ret
-; d0155
 
-PokeAnim_Play2: ; d0155
+PokeAnim_Play2:
 	call PokeAnim_DoAnimScript
 	ld a, [wPokeAnimJumptableIndex]
 	bit 7, a
@@ -229,42 +218,37 @@ PokeAnim_Play2: ; d0155
 	inc a
 	ld [wPokeAnimSceneIndex], a
 	ret
-; d0166
 
-PokeAnim_BasePic: ; d0166
+PokeAnim_BasePic:
 	call PokeAnim_DeinitFrames
 	ld a, [wPokeAnimSceneIndex]
 	inc a
 	ld [wPokeAnimSceneIndex], a
 	ret
-; d0171
 
-PokeAnim_Finish: ; d0171
+PokeAnim_Finish:
 	call PokeAnim_DeinitFrames
 	ld hl, wPokeAnimSceneIndex
 	set 7, [hl]
 	ret
-; d017a
 
-PokeAnim_Cry: ; d017a
+PokeAnim_Cry:
 	ld a, [wPokeAnimSpecies]
 	call _PlayCry
 	ld a, [wPokeAnimSceneIndex]
 	inc a
 	ld [wPokeAnimSceneIndex], a
 	ret
-; d0188
 
-PokeAnim_CryNoWait: ; d0188
+PokeAnim_CryNoWait:
 	ld a, [wPokeAnimSpecies]
 	call PlayCry2
 	ld a, [wPokeAnimSceneIndex]
 	inc a
 	ld [wPokeAnimSceneIndex], a
 	ret
-; d0196
 
-PokeAnim_StereoCry: ; d0196
+PokeAnim_StereoCry:
 	ld a, $f
 	ld [wCryTracks], a
 	ld a, [wPokeAnimSpecies]
@@ -273,9 +257,8 @@ PokeAnim_StereoCry: ; d0196
 	inc a
 	ld [wPokeAnimSceneIndex], a
 	ret
-; d01a9
 
-PokeAnim_DeinitFrames: ; d01a9
+PokeAnim_DeinitFrames:
 	ld a, [rSVBK]
 	push af
 	ld a, $2
@@ -287,9 +270,8 @@ PokeAnim_DeinitFrames: ; d01a9
 	pop af
 	ld [rSVBK], a
 	ret
-; d01c6
 
-AnimateMon_CheckIfPokemon: ; d01c6
+AnimateMon_CheckIfPokemon:
 	ld a, [wCurPartySpecies]
 	call IsAPokemon
 	jr c, .fail
@@ -299,9 +281,8 @@ AnimateMon_CheckIfPokemon: ; d01c6
 .fail
 	scf
 	ret
-; d01d6
 
-PokeAnim_InitAnim: ; d0228
+PokeAnim_InitAnim:
 	ld a, [rSVBK]
 	push af
 	ld a, $2
@@ -322,26 +303,23 @@ PokeAnim_InitAnim: ; d0228
 	pop af
 	ld [rSVBK], a
 	ret
-; d0250
 
-PokeAnim_DoAnimScript: ; d0250
+PokeAnim_DoAnimScript:
 	xor a
 	ld [hBGMapMode], a
 
-.loop: ; d0253
+.loop:
 	ld a, [wPokeAnimJumptableIndex]
 	and $7f
 	ld hl, .Jumptable
 	rst JumpTable
 	ret
-; d025d
 
-.Jumptable: ; d025d
+.Jumptable:
 	dw .RunAnim
 	dw .WaitAnim
-; d0261
 
-.RunAnim: ; d0261
+.RunAnim:
 	call PokeAnim_GetPointer
 	ld a, [wPokeAnimCommand]
 	cp $ff ; endanim
@@ -355,21 +333,19 @@ PokeAnim_DoAnimScript: ; d0250
 	call PokeAnim_GetDuration
 	ld [wPokeAnimWaitCounter], a
 	call PokeAnim_StartWaitAnim
-.WaitAnim: ; d0282
+.WaitAnim:
 	ld a, [wPokeAnimWaitCounter]
 	dec a
 	ld [wPokeAnimWaitCounter], a
 	ret nz
 	jp PokeAnim_StopWaitAnim
-; d028e
 
-.SetRepeat: ; d028e
+.SetRepeat:
 	ld a, [wPokeAnimParameter]
 	ld [wPokeAnimRepeatTimer], a
 	jr .loop
-; d0296
 
-.DoRepeat: ; d0296
+.DoRepeat:
 	ld a, [wPokeAnimRepeatTimer]
 	and a
 	ret z
@@ -379,15 +355,13 @@ PokeAnim_DoAnimScript: ; d0250
 	ld a, [wPokeAnimParameter]
 	ld [wPokeAnimFrame], a
 	jr .loop
-; d02a8
 
-PokeAnim_End: ; d02a8
+PokeAnim_End:
 	ld hl, wPokeAnimJumptableIndex
 	set 7, [hl]
 	ret
-; d02ae
 
-PokeAnim_GetDuration: ; d02ae
+PokeAnim_GetDuration:
 ; a * (1 + [wPokeAnimSpeed] / 16)
 	ld c, a
 	ld b, $0
@@ -404,9 +378,8 @@ PokeAnim_GetDuration: ; d02ae
 	or h
 	add c
 	ret
-; d02c8
 
-PokeAnim_GetFrame: ; d02c8
+PokeAnim_GetFrame:
 	call PokeAnim_PlaceGraphic
 	ld a, [wPokeAnimCommand]
 	and a
@@ -416,23 +389,20 @@ PokeAnim_GetFrame: ; d02c8
 	call PokeAnim_CopyBitmaskToBuffer
 	pop hl
 	jp PokeAnim_ConvertAndApplyBitmask
-; d02dc
 
-PokeAnim_StartWaitAnim: ; d02dc
+PokeAnim_StartWaitAnim:
 	ld a, [wPokeAnimJumptableIndex]
 	inc a
 	ld [wPokeAnimJumptableIndex], a
 	ret
-; d02e4
 
-PokeAnim_StopWaitAnim: ; d02e4
+PokeAnim_StopWaitAnim:
 	ld a, [wPokeAnimJumptableIndex]
 	dec a
 	ld [wPokeAnimJumptableIndex], a
 	ret
-; d02ec
 
-PokeAnim_GetPointer: ; d02f8
+PokeAnim_GetPointer:
 	push hl
 	ld a, [wPokeAnimFrame]
 	ld e, a
@@ -453,9 +423,8 @@ PokeAnim_GetPointer: ; d02f8
 	inc [hl]
 	pop hl
 	ret
-; d031b
 
-PokeAnim_GetBitmaskIndex: ; d031b
+PokeAnim_GetBitmaskIndex:
 	ld a, [wPokeAnimCommand]
 	dec a
 	ld c, a
@@ -473,9 +442,8 @@ PokeAnim_GetBitmaskIndex: ; d031b
 	ld [wPokeAnimCurBitmask], a
 	inc hl
 	ret
-; d033b
 
-PokeAnim_CopyBitmaskToBuffer: ; d033b
+PokeAnim_CopyBitmaskToBuffer:
 	call .GetSize
 	push bc
 	ld hl, wPokeAnimBitmaskAddr
@@ -488,9 +456,8 @@ PokeAnim_CopyBitmaskToBuffer: ; d033b
 	ld de, wPokeAnimBitmaskBuffer
 	ld a, [wPokeAnimBitmaskBank]
 	jp FarCopyBytes
-; d0356
 
-.GetSize: ; d0356
+.GetSize:
 	push hl
 	ld a, [wPokeAnimFrontpicHeight]
 	sub 5 ; to get a number 0, 1, or 2
@@ -502,11 +469,10 @@ PokeAnim_CopyBitmaskToBuffer: ; d033b
 	ld b, 0
 	pop hl
 	ret
-; d0368
 
 .Sizes: db 4, 5, 7
 
-PokeAnim_ConvertAndApplyBitmask: ; d036b
+PokeAnim_ConvertAndApplyBitmask:
 	xor a
 	ld [wPokeAnimBitmaskCurBit], a
 	ld [wPokeAnimBitmaskCurRow], a
@@ -532,9 +498,8 @@ PokeAnim_ConvertAndApplyBitmask: ; d036b
 	pop hl
 	jr nc, .loop
 	ret
-; d0392
 
-.IsCurBitSet: ; d0392
+.IsCurBitSet:
 ; which byte
 	ld a, [wPokeAnimBitmaskCurBit]
 	and $f8
@@ -570,9 +535,8 @@ PokeAnim_ConvertAndApplyBitmask: ; d036b
 	ld hl, wPokeAnimBitmaskCurBit
 	inc [hl]
 	ret
-; d03bd
 
-.ApplyFrame: ; d03bd
+.ApplyFrame:
 	push af
 	call .GetCoord
 	pop af
@@ -583,9 +547,8 @@ PokeAnim_ConvertAndApplyBitmask: ; d036b
 	pop hl
 	ld [hl], a
 	ret
-; d03cd
 
-.GetCoord: ; d03cd
+.GetCoord:
 	call .GetStartCoord
 	ld a, [wPokeAnimBitmaskCurRow]
 	ld bc, SCREEN_WIDTH
@@ -609,9 +572,8 @@ PokeAnim_ConvertAndApplyBitmask: ; d036b
 	sbc 0
 	ld h, a
 	ret
-; d03f4
 
-.GetTilemap: ; d03f7
+.GetTilemap:
 	push af
 	ld a, [wPokeAnimFrontpicHeight]
 	cp 5
@@ -658,7 +620,6 @@ PokeAnim_ConvertAndApplyBitmask: ; d036b
 .add_13
 	add 13
 	ret
-; d042f
 
 poke_anim_box: MACRO
 y = 7
@@ -689,8 +650,7 @@ ENDM
 	; db 36, 37, 38, 39, 40, 41
 	; db 43, 44, 45, 46, 47, 48
 
-
-.GetStartCoord: ; d046c
+.GetStartCoord:
 	ld hl, wPokeAnimCoord
 	ld a, [hli]
 	ld h, [hl]
@@ -718,9 +678,8 @@ ENDM
 .add_bc
 	add hl, bc
 	ret
-; d0499
 
-.NextBit: ; d0499
+.NextBit:
 	ld a, [wPokeAnimBitmaskCurRow]
 	inc a
 	ld [wPokeAnimBitmaskCurRow], a
@@ -743,9 +702,8 @@ ENDM
 .no_carry
 	xor a
 	ret
-; d04bd
 
-PokeAnim_PlaceGraphic: ; d04bd
+PokeAnim_PlaceGraphic:
 	call .ClearBox
 	ld a, [wBoxAlignment]
 	and a
@@ -784,18 +742,16 @@ PokeAnim_PlaceGraphic: ; d04bd
 	dec c
 	jr nz, .loop
 	ret
-; d04f6
 
-.ClearBox: ; d04f6
+.ClearBox:
 	ld hl, wPokeAnimCoord
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
 	lb bc, 7, 7
 	jp ClearBox
-; d0504
 
-PokeAnim_SetVBank1: ; d0504
+PokeAnim_SetVBank1:
 	ld a, [rSVBK]
 	push af
 	ld a, $2
@@ -807,9 +763,8 @@ PokeAnim_SetVBank1: ; d0504
 	pop af
 	ld [rSVBK], a
 	ret
-; d051b
 
-.SetFlag: ; d051b
+.SetFlag:
 	call PokeAnim_GetAttrMapCoord
 	lb bc, 7, 7
 	ld de, SCREEN_WIDTH
@@ -829,9 +784,8 @@ PokeAnim_SetVBank1: ; d0504
 	dec b
 	jr nz, .row
 	ret
-; d0536
 
-PokeAnim_SetVBank0: ; d0536
+PokeAnim_SetVBank0:
 	call PokeAnim_GetAttrMapCoord
 	lb bc, 7, 7
 	ld de, SCREEN_WIDTH
@@ -851,9 +805,8 @@ PokeAnim_SetVBank0: ; d0536
 	dec b
 	jr nz, .row
 	ret
-; d0551
 
-PokeAnim_GetAttrMapCoord: ; d0551
+PokeAnim_GetAttrMapCoord:
 	ld hl, wPokeAnimCoord
 	ld a, [hli]
 	ld h, [hl]
@@ -861,9 +814,8 @@ PokeAnim_GetAttrMapCoord: ; d0551
 	ld de, wAttrMap - wTileMap
 	add hl, de
 	ret
-; d055c
 
-GetMonAnimPointer: ; d055c
+GetMonAnimPointer:
 	ld a, [wPokeAnimSpecies]
 	ld hl, VariantAnimPointerTable
 	ld de, 6
@@ -897,9 +849,8 @@ GetMonAnimPointer: ; d055c
 	ld a, h
 	ld [wPokeAnimPointerAddr + 1], a
 	ret
-; d05b4
 
-PokeAnim_GetFrontpicDims: ; d05b4
+PokeAnim_GetFrontpicDims:
 	ld a, [rSVBK]
 	push af
 	ld a, $1
@@ -913,9 +864,8 @@ PokeAnim_GetFrontpicDims: ; d05b4
 	pop af
 	ld [rSVBK], a
 	ret
-; d05ce
 
-GetMonFramesPointer: ; d05ce
+GetMonFramesPointer:
 	ld a, [wPokeAnimSpecies]
 	ld hl, VariantFramesPointerTable
 	ld de, 5
@@ -950,9 +900,8 @@ GetMonFramesPointer: ; d05ce
 	ld a, h
 	ld [wPokeAnimFramesAddr + 1], a
 	ret
-; d061b
 
-GetMonBitmaskPointer: ; d061b
+GetMonBitmaskPointer:
 	ld a, [wPokeAnimSpecies]
 	ld hl, VariantBitmasksPointerTable
 	ld de, 4
@@ -977,9 +926,8 @@ GetMonBitmaskPointer: ; d061b
 	ld a, h
 	ld [wPokeAnimBitmaskAddr + 1], a
 	ret
-; d065c
 
-PokeAnim_GetSpeciesOrVariant: ; d065c
+PokeAnim_GetSpeciesOrVariant:
 	ld a, [wPokeAnimSpecies]
 	ld hl, VariantSpeciesTable
 	ld de, 1
@@ -988,9 +936,8 @@ PokeAnim_GetSpeciesOrVariant: ; d065c
 	ret nc
 	ld a, [wPokeAnimVariant]
 	ret
-; d0669
 
-HOF_AnimateFrontpic: ; d066e
+HOF_AnimateFrontpic:
 	call AnimateMon_CheckIfPokemon
 	jr c, .fail
 	ld h, d
@@ -1014,6 +961,5 @@ HOF_AnimateFrontpic: ; d066e
 	inc a
 	ld [wCurPartySpecies], a
 	ret
-; d0695
 
 INCLUDE "gfx/pokemon/variant_anim_data_tables.asm"

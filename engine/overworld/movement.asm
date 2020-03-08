@@ -102,35 +102,31 @@ MovementPointers:
 	dw Movement_stairs_step_left      ; 64
 	dw Movement_stairs_step_right     ; 65
 
-Movement_teleport_from: ; 5129
+Movement_teleport_from:
 	ld hl, OBJECT_STEP_TYPE
 	add hl, bc
 	ld [hl], STEP_TYPE_TELEPORT_FROM
 	ret
-; 5130
 
-Movement_teleport_to: ; 5130
+Movement_teleport_to:
 	ld hl, OBJECT_STEP_TYPE
 	add hl, bc
 	ld [hl], STEP_TYPE_TELEPORT_TO
 	ret
-; 5137
 
-Movement_skyfall: ; 5137
+Movement_skyfall:
 	ld hl, OBJECT_STEP_TYPE
 	add hl, bc
 	ld [hl], STEP_TYPE_SKYFALL
 	ret
-; 513e
 
-Movement_skyfall_top: ; 513e
+Movement_skyfall_top:
 	ld hl, OBJECT_STEP_TYPE
 	add hl, bc
 	ld [hl], STEP_TYPE_SKYFALL_TOP
 	ret
-; 5145
 
-Movement_step_dig: ; 5145
+Movement_step_dig:
 	call GetSpriteDirection
 	rlca
 	rlca
@@ -151,9 +147,8 @@ Movement_step_dig: ; 5145
 	add hl, bc
 	ld [hl], STANDING
 	ret
-; 516a
 
-Movement_return_dig: ; 516a
+Movement_return_dig:
 	call GetSpriteDirection
 	rlca
 	rlca
@@ -171,9 +166,8 @@ Movement_return_dig: ; 516a
 	add hl, bc
 	ld [hl], STEP_TYPE_RETURN_DIG
 	ret
-; 5189
 
-Movement_fish_got_bite: ; 5189
+Movement_fish_got_bite:
 	ld hl, OBJECT_ACTION
 	add hl, bc
 	ld [hl], PERSON_ACTION_FISHING
@@ -181,9 +175,8 @@ Movement_fish_got_bite: ; 5189
 	add hl, bc
 	ld [hl], STEP_TYPE_GOT_BITE
 	ret
-; 5196
 
-Movement_rock_smash: ; 5196
+Movement_rock_smash:
 	call JumpMovementPointer
 	ld hl, OBJECT_STEP_DURATION
 	add hl, bc
@@ -195,9 +188,8 @@ Movement_rock_smash: ; 5196
 	add hl, bc
 	ld [hl], STEP_TYPE_ROCK_SMASH
 	ret
-; 51ab
 
-Movement_fish_cast_rod: ; 51ab
+Movement_fish_cast_rod:
 	ld hl, OBJECT_ACTION
 	add hl, bc
 	ld [hl], PERSON_ACTION_FISHING
@@ -205,14 +197,12 @@ Movement_fish_cast_rod: ; 51ab
 	add hl, bc
 	ld [hl], STEP_TYPE_SLEEP
 	ret
-; 51b8
 
-Movement_step_loop: ; 51b8
+Movement_step_loop:
 	ld hl, OBJECT_MOVEMENT_BYTE_INDEX
 	add hl, bc
 	ld [hl], $0
 	jp ContinueReadingMovement
-; 51c1
 
 Movement_step_resume:
 Movement_step_end:
@@ -232,9 +222,8 @@ Movement_step_end:
 	add hl, bc
 	ld [hl], STEP_TYPE_SLEEP
 	ret
-; 51fd
 
-Movement_remove_person: ; 51fd
+Movement_remove_person:
 	call DeleteMapObject
 	ld hl, wObjectFollow_Leader
 	ld a, [hMapObjectIndexBuffer]
@@ -246,9 +235,8 @@ Movement_remove_person: ; 51fd
 	ld hl, wVramState
 	res 7, [hl]
 	ret
-; 5210
 
-Movement_4b: ; 5210
+Movement_4b:
 	ld hl, OBJECT_ACTION
 	add hl, bc
 	ld [hl], PERSON_ACTION_STAND
@@ -260,47 +248,46 @@ Movement_4b: ; 5210
 	ld hl, wVramState
 	res 7, [hl]
 	ret
-; 5222
 
-Movement_step_sleep_1: ; 5222
+Movement_step_sleep_1:
 	ld a, 1
 	jr Movement_step_sleep_common
 
-Movement_step_sleep_2: ; 5226
+Movement_step_sleep_2:
 	ld a, 2
 	jr Movement_step_sleep_common
 
-Movement_step_sleep_3: ; 522a
+Movement_step_sleep_3:
 	ld a, 3
 	jr Movement_step_sleep_common
 
-Movement_step_sleep_4: ; 522e
+Movement_step_sleep_4:
 	ld a, 4
 	jr Movement_step_sleep_common
 
-Movement_step_sleep_5: ; 5232
+Movement_step_sleep_5:
 	ld a, 5
 	jr Movement_step_sleep_common
 
-Movement_step_sleep_6: ; 5236
+Movement_step_sleep_6:
 	ld a, 6
 	jr Movement_step_sleep_common
 
-Movement_step_sleep_7: ; 523a
+Movement_step_sleep_7:
 	ld a, 7
 	jr Movement_step_sleep_common
 
-Movement_step_sleep_8: ; 523e
+Movement_step_sleep_8:
 	ld a, 8
 	jr Movement_step_sleep_common
 
-Movement_step_sleep: ; 5242
+Movement_step_sleep:
 ; parameters:
 ;	duration (DecimalParam)
 	call JumpMovementPointer
 	; fallthrough
 
-Movement_step_sleep_common: ; 5247
+Movement_step_sleep_common:
 	ld hl, OBJECT_STEP_DURATION
 	add hl, bc
 	ld [hl], a
@@ -317,9 +304,8 @@ Movement_step_sleep_common: ; 5247
 	add hl, bc
 	ld [hl], STANDING
 	ret
-; 525f
 
-Movement_step_bump: ; 525f
+Movement_step_bump:
 	ld a, 1
 	ld hl, OBJECT_STEP_DURATION
 	add hl, bc
@@ -337,9 +323,8 @@ Movement_step_bump: ; 525f
 	add hl, bc
 	ld [hl], STANDING
 	ret
-; 5279
 
-Movement_tree_shake: ; 5279
+Movement_tree_shake:
 	ld a, 24
 	ld hl, OBJECT_STEP_DURATION
 	add hl, bc
@@ -357,86 +342,76 @@ Movement_tree_shake: ; 5279
 	add hl, bc
 	ld [hl], STANDING
 	ret
-; 5293
 
-Movement_remove_sliding: ; 5293
+Movement_remove_sliding:
 	ld hl, OBJECT_FLAGS1
 	add hl, bc
 	res SLIDING, [hl]
 	jp ContinueReadingMovement
-; 529c
 
-Movement_set_sliding: ; 529c
+Movement_set_sliding:
 	ld hl, OBJECT_FLAGS1
 	add hl, bc
 	set SLIDING, [hl]
 	jp ContinueReadingMovement
-; 52a5
 
-Movement_remove_fixed_facing: ; 52a5
+Movement_remove_fixed_facing:
 	ld hl, OBJECT_FLAGS1
 	add hl, bc
 	res FIXED_FACING, [hl]
 	jp ContinueReadingMovement
-; 52ae
 
-Movement_fix_facing: ; 52ae
+Movement_fix_facing:
 	ld hl, OBJECT_FLAGS1
 	add hl, bc
 	set FIXED_FACING, [hl]
 	jp ContinueReadingMovement
-; 52b7
 
-Movement_show_person: ; 52b7
+Movement_show_person:
 	ld hl, OBJECT_FLAGS1
 	add hl, bc
 	res INVISIBLE, [hl]
 	jp ContinueReadingMovement
-; 52c0
 
-Movement_hide_person: ; 52c0
+Movement_hide_person:
 	ld hl, OBJECT_FLAGS1
 	add hl, bc
 	set INVISIBLE, [hl]
 	jp ContinueReadingMovement
-; 52c9
 
-Movement_hide_emote: ; 52c9
+Movement_hide_emote:
 	call DespawnEmote
 	jp ContinueReadingMovement
-; 52cf
 
-Movement_show_emote: ; 52cf
+Movement_show_emote:
 	call SpawnEmote
 	jp ContinueReadingMovement
-; 52d5
 
-Movement_step_shake: ; 52d5
+Movement_step_shake:
 ; parameters:
 ;	displacement (DecimalParam)
 
 	call JumpMovementPointer
 	call ShakeScreen
 	jp ContinueReadingMovement
-; 52de
 
-Movement_turn_head_down: ; 52de
+Movement_turn_head_down:
 	ld a, OW_DOWN
 	jr TurnHead
 
-Movement_turn_head_up: ; 52e2
+Movement_turn_head_up:
 	ld a, OW_UP
 	jr TurnHead
 
-Movement_turn_head_left: ; 52e6
+Movement_turn_head_left:
 	ld a, OW_LEFT
 	jr TurnHead
 
-Movement_turn_head_right: ; 52ea
+Movement_turn_head_right:
 	ld a, OW_RIGHT
 	; fallthrough
 
-TurnHead: ; 52ee
+TurnHead:
 	ld hl, OBJECT_FACING
 	add hl, bc
 	ld [hl], a
@@ -449,7 +424,6 @@ TurnHead: ; 52ee
 	add hl, bc
 	ld [hl], STANDING
 	ret
-; 5300
 
 Movement_slow_step_down:
 	ld a, STEP_SLOW << 2 | DOWN
@@ -683,23 +657,23 @@ Movement_fast_jump_step_right:
 Movement_jump_step:
 	jr JumpStep
 
-Movement_turn_step_down: ; 53f0
+Movement_turn_step_down:
 	ld a, OW_DOWN
 	jr TurnStep
 
-Movement_turn_step_up: ; 53f4
+Movement_turn_step_up:
 	ld a, OW_UP
 	jr TurnStep
 
-Movement_turn_step_left: ; 53f8
+Movement_turn_step_left:
 	ld a, OW_LEFT
 	jr TurnStep
 
-Movement_turn_step_right: ; 53fc
+Movement_turn_step_right:
 	ld a, OW_RIGHT
 	; fallthrough
 
-TurnStep: ; 5400
+TurnStep:
 	ld hl, OBJECT_29 ; new facing
 	add hl, bc
 	ld [hl], a
@@ -712,9 +686,8 @@ TurnStep: ; 5400
 	add hl, bc
 	ld [hl], STEP_TYPE_HALF_STEP
 	ret
-; 5412
 
-NormalStep: ; 5412
+NormalStep:
 	push de
 	call InitStep
 	call UpdateTallGrassFlags
@@ -754,7 +727,6 @@ SetWalkStepType:
 	ret nz
 	ld [hl], STEP_TYPE_PLAYER_WALK
 	ret
-; 5446
 
 TurningStep:
 	call InitStep
@@ -765,7 +737,6 @@ TurningStep:
 	ld [hl], PERSON_ACTION_SPIN
 	jr SetWalkStepType
 
-
 SlideStep:
 	call InitStep
 	call UpdateTallGrassFlags
@@ -774,7 +745,6 @@ SlideStep:
 	add hl, bc
 	ld [hl], PERSON_ACTION_STAND
 	jr SetWalkStepType
-
 
 JumpStep:
 	call InitStep
@@ -801,7 +771,6 @@ JumpStep:
 	ret nz
 	ld [hl], STEP_TYPE_PLAYER_JUMP
 	ret
-
 
 Movement_stairs_step_down:
 	ld a, STEP_WALK << 2 | DOWN

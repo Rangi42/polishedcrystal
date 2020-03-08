@@ -16,7 +16,7 @@ NormalSpeed::
 	bit 7, [hl]
 	ret z
 
-SwitchSpeed:: ; 2ffd
+SwitchSpeed::
 	set 0, [hl]
 	xor a
 	ld [rIF], a
@@ -25,4 +25,3 @@ SwitchSpeed:: ; 2ffd
 	ld [rJOYP], a
 	stop ; rgbasm adds a nop after this instruction by default
 	ret
-; 300b

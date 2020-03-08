@@ -1,4 +1,4 @@
-; SunkernPokedexEntry: ; 0x1cda87
+; SunkernPokedexEntry:
 	db "Seed@" ; species name
 	dw 100, 40 ; height, width
 

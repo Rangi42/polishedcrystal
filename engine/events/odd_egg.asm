@@ -41,7 +41,6 @@ GiveOddEgg:
 	rst AddNTimes
 	jr GiveEggMon
 
-
 GiveMystriEgg::
 	ld hl, MystriEgg
 ; fallthrough
@@ -117,6 +116,5 @@ AddEggMonToParty:
 	ld [de], a
 
 	jp CloseSRAM
-
 
 INCLUDE "data/events/odd_eggs.asm"

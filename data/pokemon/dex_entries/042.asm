@@ -1,4 +1,4 @@
-; GolbatPokedexEntry: ; 0x1827c4
+; GolbatPokedexEntry:
 	db "Bat@" ; species name
 	dw 503, 1210 ; height, width
 

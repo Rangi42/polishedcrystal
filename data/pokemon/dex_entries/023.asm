@@ -1,4 +1,4 @@
-; EkansPokedexEntry: ; 0x181fd4
+; EkansPokedexEntry:
 	db "Snake@" ; species name
 	dw 607, 150 ; height, width
 

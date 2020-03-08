@@ -40,7 +40,6 @@ BSOD:
 .infiniteloop
 	call DelayFrame
 	jr .infiniteloop
-; 4eac5
 
 .Palette:
 if !DEF(MONOCHROME)
@@ -55,7 +54,7 @@ else
 	RGB_MONOCHROME_WHITE
 endc
 
-.Message: ; 4eb38
+.Message:
 	db   "      Pokémon"
 	next " Polished Crystal"
 	next "       ERROR"
@@ -64,4 +63,3 @@ endc
 	next "crash to the deve-"
 	next "loper, Rangi42, at"
 	next "tinyurl.com/pkpc3.@"
-; 4eb76

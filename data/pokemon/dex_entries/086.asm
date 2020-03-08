@@ -1,4 +1,4 @@
-; SeelPokedexEntry: ; 0x1b88bf
+; SeelPokedexEntry:
 	db "Sea Lion@" ; species name
 	dw 307, 1980 ; height, width
 

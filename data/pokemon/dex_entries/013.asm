@@ -1,4 +1,4 @@
-; WeedlePokedexEntry: ; 0x181bb4
+; WeedlePokedexEntry:
 	db "Hairy Bug@" ; species name
 	dw 100, 70 ; height, width
 

@@ -1,4 +1,4 @@
-BattleAnimFrameData: ; ce85e
+BattleAnimFrameData:
 	dw .Frameset_00 ; 00
 	dw .Frameset_01 ; 01
 	dw .Frameset_02 ; 02
@@ -1267,4 +1267,3 @@ BattleAnimFrameData: ; ce85e
 	db BATTLEANIMOAMSET_D7, $08
 	db -1
 
-; ceeae

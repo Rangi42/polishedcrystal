@@ -1,4 +1,4 @@
-; JolteonPokedexEntry: ; 0x1cc28b
+; JolteonPokedexEntry:
 	db "Lightning@" ; species name
 	dw 207, 540 ; height, width
 

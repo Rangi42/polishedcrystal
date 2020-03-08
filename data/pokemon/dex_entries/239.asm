@@ -1,4 +1,4 @@
-; ElekidPokedexEntry: ; 0x1d1398
+; ElekidPokedexEntry:
 	db "Electric@" ; species name
 	dw 200, 520 ; height, width
 

@@ -1,4 +1,4 @@
-FruitTreeScript:: ; 44000
+FruitTreeScript::
 	opentext
 	writetext FruitBearingTreeText
 	buttonsound
@@ -55,7 +55,6 @@ PickBerryScript:
 .packisfull
 	buttonsound
 	jumpopenedtext FruitPackIsFullText
-; 44041
 
 PickApricornScript:
 	checkkeyitem APRICORN_BOX
@@ -102,7 +101,7 @@ PickApricornScript:
 	ld hl, wStringBuffer3
 	jp CopyName2
 
-TryResetFruitTrees: ; 4404c
+TryResetFruitTrees:
 	ld hl, wDailyFlags
 	bit 4, [hl] ; ENGINE_ALL_FRUIT_TREES
 	ret nz
@@ -115,24 +114,21 @@ endr
 	ld hl, wDailyFlags
 	set 4, [hl] ; ENGINE_ALL_FRUIT_TREES
 	ret
-; 44078
 
-CheckFruitTree: ; 44055
+CheckFruitTree:
 	ld b, CHECK_FLAG
 	call GetFruitTreeFlag
 	ld a, c
 	ld [hScriptVar], a
 	ret
-; 4405f
 
-PickedFruitTree: ; 4405f
+PickedFruitTree:
 	ld b, SET_FLAG
 	jr GetFruitTreeFlag
-; 4406a
 
 FertilizedFruitTree:
 	ld b, RESET_FLAG
-GetFruitTreeFlag: ; 44078
+GetFruitTreeFlag:
 	push hl
 	push de
 	ld a, [wCurFruitTree]
@@ -144,7 +140,6 @@ GetFruitTreeFlag: ; 44078
 	pop de
 	pop hl
 	ret
-; 4408a
 
 GetFruitTreeCount:
 	ld a, 3
@@ -153,20 +148,17 @@ GetFruitTreeCount:
 	ld [hScriptVar], a
 	ret
 
-FruitBearingTreeText: ; 440b5
+FruitBearingTreeText:
 	text_jump _FruitBearingTreeText
 	db "@"
-; 440ba
 
-HeyItsFruitText: ; 440ba
+HeyItsFruitText:
 	text_jump _HeyItsFruitText
 	db "@"
-; 440bf
 
-ObtainedOneFruitText: ; 440bf
+ObtainedOneFruitText:
 	text_jump _ObtainedOneFruitText
 	db "@"
-; 440c4
 
 ObtainedTwoFruitText:
 	text_jump _ObtainedTwoFruitText
@@ -176,10 +168,9 @@ ObtainedThreeFruitText:
 	text_jump _ObtainedThreeFruitText
 	db "@"
 
-FruitPackIsFullText: ; 440c4
+FruitPackIsFullText:
 	text_jump _FruitPackIsFullText
 	db "@"
-; 440c9
 
 NoApricornBoxText:
 	text_jump _NoApricornBoxText
@@ -193,10 +184,9 @@ PutAwayTheApricornText:
 	text_jump _PutAwayTheApricornText
 	db "@"
 
-NothingHereText: ; 440c9
+NothingHereText:
 	text_jump _NothingHereText
 	db "@"
-; 440ce
 
 WantToUseMulchText:
 	text_jump _WantToUseMulchText

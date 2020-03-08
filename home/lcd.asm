@@ -1,4 +1,4 @@
-LCD:: ; 552
+LCD::
 	push af
 	ld a, [hMPState]
 	and a
@@ -73,10 +73,8 @@ endc
 .donemp
 	pop af
 	reti
-; 568
 
-
-DisableLCD:: ; 568
+DisableLCD::
 ; Turn the LCD off
 
 ; Don't need to do anything if the LCD is already off
@@ -110,12 +108,9 @@ DisableLCD:: ; 568
 	ld a, b
 	ld [rIE], a
 	ret
-; 58a
 
-
-EnableLCD:: ; 58a
+EnableLCD::
 	ld a, [rLCDC]
 	set 7, a ; lcd enable
 	ld [rLCDC], a
 	ret
-; 591

@@ -1,4 +1,4 @@
-PokemonCenterPC: ; 1559a
+PokemonCenterPC:
 	call PC_CheckPartyForPokemon
 	ret c
 	call PC_PlayBootSound
@@ -81,9 +81,8 @@ PokemonCenterPC: ; 1559a
 	ret z
 	ld a, $2
 	ret
-; 15650
 
-PC_CheckPartyForPokemon: ; 15650
+PC_CheckPartyForPokemon:
 	ld a, [wPartyCount]
 	and a
 	ret nz
@@ -98,18 +97,16 @@ PC_CheckPartyForPokemon: ; 15650
 	; Bzzzzt! You must have a #MON to use this!
 	text_jump UnknownText_0x1c1328
 	db "@"
-; 0x15668
 
-BillsPC: ; 15668
+BillsPC:
 	call PC_PlayChoosePCSound
 	ld hl, PokeCenterPCText_AccessedBillsPC
 	call PC_DisplayText
 	farcall _BillsPC
 	and a
 	ret
-; 15679 (5:5679)
 
-PlayersPC: ; 15679
+PlayersPC:
 	call PC_PlayChoosePCSound
 	ld hl, PokeCenterPCText_AccessedOwnPC
 	call PC_DisplayText
@@ -117,59 +114,54 @@ PlayersPC: ; 15679
 	call _PlayersPC
 	and a
 	ret
-; 15689
 
-OaksPC: ; 15689
+OaksPC:
 	call PC_PlayChoosePCSound
 	ld hl, PokeCenterPCText_AccessedOaksPC
 	call PC_DisplayText
 	farcall ProfOaksPC
 	and a
 	ret
-; 1569a
 
-HallOfFamePC: ; 1569a
+HallOfFamePC:
 	call PC_PlayChoosePCSound
 	call FadeToMenu
 	farcall _HallOfFamePC
 	call CloseSubmenu
 	and a
 	ret
-; 156ab
 
-TurnOffPC: ; 156ab
+TurnOffPC:
 	ld hl, PokeCenterPCText_LinkClosed
 	call PrintText
 	scf
 	ret
-; 156b3
 
-PC_PlayBootSound: ; 156b3
+PC_PlayBootSound:
 	ld de, SFX_BOOT_PC
 	jr PC_WaitPlaySFX
 
-PC_PlayShutdownSound: ; 156b8
+PC_PlayShutdownSound:
 	ld de, SFX_SHUT_DOWN_PC
 	call PC_WaitPlaySFX
 	jp WaitSFX
 
-PC_PlayChoosePCSound: ; 156c2
+PC_PlayChoosePCSound:
 	ld de, SFX_CHOOSE_PC_OPTION
 	jr PC_WaitPlaySFX
 
-PC_PlaySwapItemsSound: ; 156c7
+PC_PlaySwapItemsSound:
 	ld de, SFX_SWITCH_POKEMON
 	call PC_WaitPlaySFX
 	ld de, SFX_SWITCH_POKEMON
 
-PC_WaitPlaySFX: ; 156d0
+PC_WaitPlaySFX:
 	push de
 	call WaitSFX
 	pop de
 	jp PlaySFX
-; 156d9
 
-_KrissHousePC: ; 156d9
+_KrissHousePC:
 	call PC_PlayBootSound
 	ld hl, UnknownText_0x156ff
 	call PC_DisplayText
@@ -188,24 +180,21 @@ _KrissHousePC: ; 156d9
 	call ClearBGPalettes
 	ld c, $1
 	ret
-; 156ff
 
-UnknownText_0x156ff: ; 0x156ff
+UnknownText_0x156ff:
 	; turned on the PC.
 	text_jump UnknownText_0x1c1353
 	db "@"
-; 0x15704
 
-_PlayersPC: ; 15704
+_PlayersPC:
 	ld a, b
 	ld [wWhichIndexSet], a
 	ld hl, UnknownText_0x157cc
 	call PC_DisplayTextWaitMenu
 	call Function15715
 	jp ExitMenu
-; 15715
 
-Function15715: ; 15715
+Function15715:
 	xor a
 	ld [wPCItemsCursor], a
 	ld [wPCItemsScrollPosition], a
@@ -224,9 +213,8 @@ Function15715: ; 15715
 
 .asm_15732
 	jp ExitMenu
-; 15736
 
-KrissPCMenuData: ; 0x15736
+KrissPCMenuData:
 	db %01000000
 	db  0,  0 ; top left corner coords (y, x)
 	db 12, 15 ; bottom right corner coords (y, x)
@@ -240,7 +228,7 @@ KrissPCMenuData: ; 0x15736
 	dw PlaceNthMenuStrings
 	dw .KrissPCMenuPointers
 
-.KrissPCMenuPointers: ; 0x15746
+.KrissPCMenuPointers:
 	dw KrisWithdrawItemMenu, .WithdrawItem
 	dw KrisDepositItemMenu,  .DepositItem
 	dw KrisTossItemMenu,     .TossItem
@@ -283,7 +271,7 @@ LOG_OFF       EQU 6
 	db LOG_OFF
 	db -1
 
-PC_DisplayTextWaitMenu: ; 157bb
+PC_DisplayTextWaitMenu:
 	ld a, [wOptions1]
 	push af
 	set NO_TEXT_SCROLL, a
@@ -292,15 +280,13 @@ PC_DisplayTextWaitMenu: ; 157bb
 	pop af
 	ld [wOptions1], a
 	ret
-; 157cc
 
-UnknownText_0x157cc: ; 0x157cc
+UnknownText_0x157cc:
 	; What do you want to do?
 	text_jump UnknownText_0x1c1368
 	db "@"
-; 0x157d1
 
-KrisWithdrawItemMenu: ; 0x157d1
+KrisWithdrawItemMenu:
 	call LoadStandardMenuDataHeader
 	farcall ClearPCItemScreen
 .loop
@@ -346,19 +332,19 @@ KrisWithdrawItemMenu: ; 0x157d1
 	ld hl, .NoRoomText
 	jp MenuTextBoxBackup
 
-.HowManyText: ; 0x15850
+.HowManyText:
 	text_jump _KrissPCHowManyWithdrawText
 	db "@"
 
-.WithdrewText: ; 0x15855
+.WithdrewText:
 	text_jump _KrissPCWithdrewItemsText
 	db "@"
 
-.NoRoomText: ; 0x1585a
+.NoRoomText:
 	text_jump _KrissPCNoRoomWithdrawText
 	db "@"
 
-KrisTossItemMenu: ; 0x1585f
+KrisTossItemMenu:
 	call LoadStandardMenuDataHeader
 	farcall ClearPCItemScreen
 .loop
@@ -372,24 +358,21 @@ KrisTossItemMenu: ; 0x1585f
 	call CloseSubmenu
 	xor a
 	ret
-; 0x1587d
 
-KrisDecorationMenu: ; 0x1587d
+KrisDecorationMenu:
 	farcall _KrisDecorationMenu
 	ld a, c
 	and a
 	ret z
 	scf
 	ret
-; 0x15888
 
-KrisLogOffMenu: ; 0x15888
+KrisLogOffMenu:
 	xor a
 	scf
 	ret
-; 0x1588b
 
-KrisDepositItemMenu: ; 0x1588b
+KrisDepositItemMenu:
 	call .CheckItemsInBag
 	jr c, .nope
 	call DisableSpriteUpdates
@@ -506,25 +489,24 @@ KrisDepositItemMenu: ; 0x1588b
 	text_jump _KrissPCCantDepositItemText
 	db "@"
 
-.HowManyText: ; 0x1596e
+.HowManyText:
 	text_jump _KrissPCHowManyDepositText
 	db "@"
 
-.DepositText: ; 0x15973
+.DepositText:
 	text_jump _KrissPCDepositItemsText
 	db "@"
 
-.NoRoomText: ; 0x15978
+.NoRoomText:
 	text_jump _KrissPCNoRoomDepositText
 	db "@"
 
-KrisMailBoxMenu: ; 0x1597d
+KrisMailBoxMenu:
 	farcall _KrisMailBoxMenu
 	xor a
 	ret
-; 0x15985
 
-PCItemsJoypad: ; 0x15985
+PCItemsJoypad:
 	xor a
 	ld [wSwitchItem], a
 .loop
@@ -608,43 +590,36 @@ PCItemsJoypad: ; 0x15985
 	dba PlaceMenuItemQuantity
 	dba UpdateItemDescription
 
-PC_DisplayText: ; 15a20
+PC_DisplayText:
 	call MenuTextBox
 	jp ExitMenu
-; 15a27
 
-PokeCenterPCText_BootedUpPC: ; 0x15a27
+PokeCenterPCText_BootedUpPC:
 	; turned on the PC.
 	text_jump UnknownText_0x1c144d
 	db "@"
-; 0x15a2c
 
-PokeCenterPCText_AccessWhosePC: ; 0x15a2c
+PokeCenterPCText_AccessWhosePC:
 	; Access whose PC?
 	text_jump UnknownText_0x1c1462
 	db "@"
-; 0x15a31
 
-PokeCenterPCText_AccessedBillsPC: ; 0x15a31
+PokeCenterPCText_AccessedBillsPC:
 	; BILL's PC accessed. #MON Storage System opened.
 	text_jump UnknownText_0x1c1474
 	db "@"
-; 0x15a36
 
-PokeCenterPCText_AccessedOwnPC: ; 0x15a36
+PokeCenterPCText_AccessedOwnPC:
 	; Accessed own PC. Item Storage System opened.
 	text_jump UnknownText_0x1c14a4
 	db "@"
-; 0x15a3b
 
-PokeCenterPCText_AccessedOaksPC: ; 0x15a3b
+PokeCenterPCText_AccessedOaksPC:
 	; PROF.OAK's PC accessed. #DEX Rating System opened.
 	text_jump UnknownText_0x1c14d2
 	db "@"
-; 0x15a40
 
-PokeCenterPCText_LinkClosed: ; 0x15a40
+PokeCenterPCText_LinkClosed:
 	; … Link closed…
 	text_jump UnknownText_0x1c1505
 	db "@"
-; 0x15a45

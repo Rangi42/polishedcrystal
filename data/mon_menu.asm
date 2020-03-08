@@ -1,4 +1,4 @@
-MonMenuOptionStrings: ; 24caf
+MonMenuOptionStrings:
 	db "Stats@"
 	db "Switch@"
 	db "Item@"
@@ -6,9 +6,8 @@ MonMenuOptionStrings: ; 24caf
 	db "Moves@"
 	db "Mail@"
 	db "Error!@"
-; 24cd9
 
-MonMenuOptions: ; 24cd9
+MonMenuOptions:
 ; Moves
 	db MONMENU_FIELD_MOVE, MONMENU_CUT,        CUT
 	db MONMENU_FIELD_MOVE, MONMENU_FLY,        FLY
@@ -31,4 +30,3 @@ MonMenuOptions: ; 24cd9
 	db MONMENU_MENUOPTION, MONMENU_MAIL,       6 ; MAIL
 	db MONMENU_MENUOPTION, MONMENU_ERROR,      7 ; ERROR!
 	db -1
-; 24d19

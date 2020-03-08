@@ -21,7 +21,7 @@ _GetPlayerIcon:
 	ld b, BANK(KrisSpriteGFX)
 	ret
 
-GetCardPic: ; 8833e
+GetCardPic:
 	ld hl, ChrisCardPic
 	ld a, [wPlayerGender]
 	bit 0, a
@@ -33,14 +33,13 @@ GetCardPic: ; 8833e
 	ld a, BANK(ChrisCardPic) ; BANK(KrisCardPic)
 	jp FarCopyBytes
 
-ChrisCardPic: ; 88365
+ChrisCardPic:
 INCBIN "gfx/trainer_card/chris_card.5x7.2bpp"
 
-KrisCardPic: ; 88595
+KrisCardPic:
 INCBIN "gfx/trainer_card/kris_card.5x7.2bpp"
 
-
-GetPlayerBackpic: ; 88825
+GetPlayerBackpic:
 	ld hl, ChrisBackpic
 	ld a, [wPlayerGender]
 	bit 0, a
@@ -51,17 +50,16 @@ GetPlayerBackpic: ; 88825
 	lb bc, BANK(ChrisBackpic), 6 * 6 ; dimensions
 	predef_jump DecompressPredef
 
-ChrisBackpic: ; 2ba1a
+ChrisBackpic:
 INCBIN "gfx/player/chris_back.6x6.2bpp.lz"
 
-KrisBackpic: ; 88ed6
+KrisBackpic:
 INCBIN "gfx/player/kris_back.6x6.2bpp.lz"
 
-LyraBackpic: ; 2bbaa
+LyraBackpic:
 INCBIN "gfx/battle/lyra_back.6x6.2bpp.lz"
 
-
-HOF_LoadTrainerFrontpic: ; 88840
+HOF_LoadTrainerFrontpic:
 	call ApplyTilemapInVBlank
 	xor a
 	ld [hBGMapMode], a

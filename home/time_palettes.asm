@@ -1,4 +1,4 @@
-RTC:: ; 46f
+RTC::
 ; update time and time-sensitive palettes
 
 ; rtc enabled?
@@ -14,10 +14,8 @@ RTC:: ; 46f
 	ret z
 	; fallthrough
 
-TimeOfDayPals:: ; 47e
+TimeOfDayPals::
 	farjp _TimeOfDayPals
-; 485
 
-UpdateTimePals:: ; 485
+UpdateTimePals::
 	farjp _UpdateTimePals
-; 48c

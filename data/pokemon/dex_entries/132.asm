@@ -1,4 +1,4 @@
-; DittoPokedexEntry: ; 0x1cc13c
+; DittoPokedexEntry:
 	db "Transform@" ; species name
 	dw 100, 90 ; height, width
 

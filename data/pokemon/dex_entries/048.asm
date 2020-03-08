@@ -1,4 +1,4 @@
-; VenonatPokedexEntry: ; 0x182a53
+; VenonatPokedexEntry:
 	db "Insect@" ; species name
 	dw 303, 660 ; height, width
 

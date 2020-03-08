@@ -1,4 +1,4 @@
-; MeganiumPokedexEntry: ; 0x1cca54
+; MeganiumPokedexEntry:
 	db "Herb@" ; species name
 	dw 511, 2220 ; height, width
 

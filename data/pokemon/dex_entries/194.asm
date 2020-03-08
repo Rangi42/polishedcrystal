@@ -1,4 +1,4 @@
-; WooperPokedexEntry: ; 0x1d0078
+; WooperPokedexEntry:
 	db "Water Fish@" ; species name
 	dw 104, 190 ; height, width
 

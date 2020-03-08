@@ -1,10 +1,10 @@
-UnusedPhoneScript: ; 0xbcea5
+UnusedPhoneScript:
 	farwritetext UnusedPhoneText
 	end
 
 ; Mom
 
-MomPhoneScript: ; 0xbceaa
+MomPhoneScript:
 	checkevent EVENT_TALKED_TO_MOM_AFTER_MYSTERY_EGG_QUEST
 	iftrue .bcec5
 	checkevent EVENT_LEARNED_TO_CATCH_POKEMON
@@ -15,7 +15,7 @@ MomPhoneScript: ; 0xbceaa
 	iftrue MomPhoneNoPokedexScript
 	jump MomPhoneNoPokemonScript
 
-.bcec5 ; 0xbcec5
+.bcec5
 	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_8
 	iftrue MomPhoneHangUpScript
 	farwritetext MomPhoneGreetingText
@@ -26,12 +26,12 @@ MomPhoneScript: ; 0xbceaa
 	ifequal $2, UnknownScript_0xbcf27
 	jump UnknownScript_0xbcf2f
 
-UnknownScript_0xbcedf: ; 0xbcedf
+UnknownScript_0xbcedf:
 	farwritetext UnknownText_0x1b4021
 	buttonsound
 	jump UnknownScript_0xbcf37
 
-UnknownScript_0xbcee7: ; 0xbcee7
+UnknownScript_0xbcee7:
 	checkcode VAR_MAPGROUP
 	ifequal GROUP_NEW_BARK_TOWN, .newbark
 	ifequal GROUP_CHERRYGROVE_CITY, .cherrygrove
@@ -42,103 +42,103 @@ UnknownScript_0xbcee7: ; 0xbcee7
 	buttonsound
 	jump UnknownScript_0xbcf37
 
-.newbark ; 0xbcf05
+.newbark
 	farwritetext MomPhoneNewBarkText
 	buttonsound
 	jump UnknownScript_0xbcf37
 
-.cherrygrove ; 0xbcf0d
+.cherrygrove
 	farwritetext MomPhoneCherrygroveText
 	buttonsound
 	jump UnknownScript_0xbcf37
 
-.violet ; 0xbcf15
+.violet
 	landmarktotext SPROUT_TOWER, 1
 	jump UnknownScript_0xbcedf
-.azalea ; 0xbcf1b
+.azalea
 	landmarktotext SLOWPOKE_WELL, 1
 	jump UnknownScript_0xbcedf
-.goldenrod ; 0xbcf21
+.goldenrod
 	landmarktotext RADIO_TOWER, 1
 	jump UnknownScript_0xbcedf
 
-UnknownScript_0xbcf27: ; 0xbcf27
+UnknownScript_0xbcf27:
 	farwritetext UnknownText_0x1b411c
 	buttonsound
 	jump UnknownScript_0xbcf37
 
-UnknownScript_0xbcf2f: ; 0xbcf2f
+UnknownScript_0xbcf2f:
 	farwritetext UnknownText_0x1b4150
 	buttonsound
 	jump UnknownScript_0xbcf37
 
-UnknownScript_0xbcf37: ; 0xbcf37
+UnknownScript_0xbcf37:
 	checkflag ENGINE_MOM_SAVING_MONEY
 	iffalse UnknownScript_0xbcf49
 	checkmoney $1, 0
 	ifequal $0, UnknownScript_0xbcf55
 	jump UnknownScript_0xbcf63
 
-UnknownScript_0xbcf49: ; 0xbcf49
+UnknownScript_0xbcf49:
 	checkmoney $1, 0
 	ifequal $0, UnknownScript_0xbcf79
 	jump UnknownScript_0xbcf6e
 
-UnknownScript_0xbcf55: ; 0xbcf55
+UnknownScript_0xbcf55:
 	readmoney $1, $0
 	farwritetext UnknownText_0x1b41a7
 	yesorno
 	iftrue MomPhoneSaveMoneyScript
 	jump MomPhoneWontSaveMoneyScript
 
-UnknownScript_0xbcf63: ; 0xbcf63
+UnknownScript_0xbcf63:
 	farwritetext UnknownText_0x1b41ea
 	yesorno
 	iftrue MomPhoneSaveMoneyScript
 	jump MomPhoneWontSaveMoneyScript
 
-UnknownScript_0xbcf6e: ; 0xbcf6e
+UnknownScript_0xbcf6e:
 	farwritetext UnknownText_0x1b420d
 	yesorno
 	iftrue MomPhoneSaveMoneyScript
 	jump MomPhoneWontSaveMoneyScript
 
-UnknownScript_0xbcf79: ; 0xbcf79
+UnknownScript_0xbcf79:
 	readmoney $1, $0
 	farwritetext UnknownText_0x1b4249
 	yesorno
 	iftrue MomPhoneSaveMoneyScript
 	jump MomPhoneWontSaveMoneyScript
 
-MomPhoneSaveMoneyScript: ; 0xbcf87
+MomPhoneSaveMoneyScript:
 	setflag ENGINE_MOM_SAVING_MONEY
 	farwritetext UnknownText_0x1b4289
 	buttonsound
 	jump MomPhoneHangUpScript
 
-MomPhoneWontSaveMoneyScript: ; 0xbcf92
+MomPhoneWontSaveMoneyScript:
 	clearflag ENGINE_MOM_SAVING_MONEY
 	farwritetext MomPhoneWontSaveMoneyText
 	buttonsound
 	jump MomPhoneHangUpScript
 
-MomPhoneHangUpScript: ; 0xbcf9d
+MomPhoneHangUpScript:
 	farwritetext MomPhoneHangUpText
 	end
 
-MomPhoneNoPokemonScript: ; 0xbcfa2
+MomPhoneNoPokemonScript:
 	farwritetext MomPhoneNoPokemonText
 	end
 
-MomPhoneNoPokedexScript: ; 0xbcfa7
+MomPhoneNoPokedexScript:
 	farwritetext MomPhoneNoPokedexText
 	end
 
-MomPhoneNoGymQuestScript: ; 0xbcfac
+MomPhoneNoGymQuestScript:
 	farwritetext MomPhoneNoGymQuestText
 	end
 
-MomPhoneLectureScript: ; 0xbcfb1
+MomPhoneLectureScript:
 	setevent EVENT_TALKED_TO_MOM_AFTER_MYSTERY_EGG_QUEST
 	setflag ENGINE_DST
 	specialphonecall SPECIALCALL_NONE
@@ -149,7 +149,7 @@ MomPhoneLectureScript: ; 0xbcfb1
 
 ; Bill
 
-BillPhoneScript1: ; 0xbcfc5
+BillPhoneScript1:
 	checktime 1 << DAY
 	iftrue .daygreet
 	checktime 1 << NITE
@@ -158,17 +158,17 @@ BillPhoneScript1: ; 0xbcfc5
 	buttonsound
 	jump .main
 
-.daygreet ; 0xbcfd7
+.daygreet
 	farwritetext BillPhoneDayGreetingText
 	buttonsound
 	jump .main
 
-.nitegreet ; 0xbcfdf
+.nitegreet
 	farwritetext BillPhoneNiteGreetingText
 	buttonsound
 	jump .main
 
-.main ; 0xbcfe7
+.main
 	farwritetext BillPhoneGenericText
 	buttonsound
 	checkcode VAR_BOXSPACE
@@ -178,15 +178,15 @@ BillPhoneScript1: ; 0xbcfc5
 	farwritetext BillPhoneNotFullText
 	end
 
-.nearlyfull ; 0xbcffd
+.nearlyfull
 	farwritetext BillPhoneNearlyFullText
 	end
 
-.full ; 0xbd002
+.full
 	farwritetext BillPhoneFullText
 	jump BillPhoneScriptCheckForBoxes
 
-BillPhoneScript2: ; 0xbd007
+BillPhoneScript2:
 	checkcode VAR_SPECIALPHONECALL
 	ifequal SPECIALCALL_SECONDBADGE, BillPhoneScriptSecondBadge
 	farwritetext BillPhoneNewlyFullText
@@ -218,7 +218,7 @@ BillPhoneWholePCFull:
 
 ; Elm
 
-ElmPhoneScript1: ; 0xbd00d
+ElmPhoneScript1:
 	checkcode VAR_SPECIALPHONECALL
 	ifequal SPECIALCALL_POKERUS, .pokerus
 	checkevent EVENT_SHOWED_TOGEPI_TO_ELM
@@ -241,47 +241,47 @@ ElmPhoneScript1: ; 0xbd00d
 	farwritetext ElmPhoneStartText
 	end
 
-.sawmrpokemon ; 0xbd048
+.sawmrpokemon
 	farwritetext ElmPhoneSawMrPokemonText
 	end
 
-.stolen ; 0xbd04d
+.stolen
 	farwritetext ElmPhonePokemonStolenText
 	end
 
-.checkingegg ; 0xbd052
+.checkingegg
 	farwritetext ElmPhoneCheckingEggText
 	end
 
-.assistant ; 0xbd057
+.assistant
 	farwritetext ElmPhoneAssistantText
 	end
 
-.eggunhatched ; 0xbd05c
+.eggunhatched
 	farwritetext ElmPhoneEggUnhatchedText
 	end
 
-.egghatched ; 0xbd061
+.egghatched
 	farwritetext ElmPhoneEggHatchedText
 	setevent EVENT_TOLD_ELM_ABOUT_TOGEPI_OVER_THE_PHONE
 	end
 
-.discovery ; 0xbd069
+.discovery
 	random $2
 	ifequal $0, .nextdiscovery
 	farwritetext ElmPhoneDiscovery1Text
 	end
 
-.nextdiscovery ; 0xbd074
+.nextdiscovery
 	farwritetext ElmPhoneDiscovery2Text
 	end
 
-.pokerus ; 0xbd079
+.pokerus
 	farwritetext ElmPhonePokerusText
 	specialphonecall SPECIALCALL_NONE
 	end
 
-ElmPhoneScript2: ; 0xbd081
+ElmPhoneScript2:
 	checkcode VAR_SPECIALPHONECALL
 	ifequal SPECIALCALL_ROBBED, .disaster
 	ifequal SPECIALCALL_ASSISTANT, .assistant
@@ -292,25 +292,25 @@ ElmPhoneScript2: ; 0xbd081
 	specialphonecall SPECIALCALL_NONE
 	end
 
-.disaster ; 0xbd09f
+.disaster
 	farwritetext ElmPhoneDisasterText
 	specialphonecall SPECIALCALL_NONE
 	setevent EVENT_ELM_CALLED_ABOUT_STOLEN_POKEMON
 	end
 
-.assistant ; 0xbd0aa
+.assistant
 	farwritetext ElmPhoneEggAssistantText
 	specialphonecall SPECIALCALL_NONE
 	clearevent EVENT_ELMS_AIDE_IN_VIOLET_POKEMON_CENTER
 	setevent EVENT_ELMS_AIDE_IN_LAB
 	end
 
-.rocket ; 0xbd0b8
+.rocket
 	farwritetext ElmPhoneRocketText
 	specialphonecall SPECIALCALL_NONE
 	end
 
-.gift ; 0xbd0c0
+.gift
 	farwritetext ElmPhoneGiftText
 	specialphonecall SPECIALCALL_NONE
 	end
@@ -3225,8 +3225,6 @@ PhoneScript_MonFlavorText:
 	farwritetext UnknownText_0x1b522b
 	buttonsound
 	farjump PhoneScript_HangupText_Male
-; be643
-
 
 Phone_GrandmaString: db "Grandma@"
 Phone_GrandpaString: db "Grandpa@"

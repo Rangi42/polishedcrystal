@@ -1,4 +1,4 @@
-; BlisseyPokedexEntry: ; 0x1d14f7
+; BlisseyPokedexEntry:
 	db "Happiness@" ; species name
 	dw 411, 1030 ; height, width
 

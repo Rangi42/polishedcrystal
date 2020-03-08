@@ -1,4 +1,4 @@
-; ClefairyPokedexEntry: ; 0x1824c8
+; ClefairyPokedexEntry:
 	db "Fairy@" ; species name
 	dw 200, 170 ; height, width
 

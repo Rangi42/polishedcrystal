@@ -66,5 +66,4 @@ ClearTMHMIcon::
 	lb bc, BANK(NoItemIcon), 9
 	jp DecompressRequest2bpp
 
-
 INCLUDE "data/items/icon_pointers.asm"

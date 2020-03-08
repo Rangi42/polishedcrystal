@@ -1,4 +1,4 @@
-; TogeticPokedexEntry: ; 0x1cd402
+; TogeticPokedexEntry:
 	db "Happiness@" ; species name
 	dw 200, 70 ; height, width
 

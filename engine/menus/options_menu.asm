@@ -1,4 +1,4 @@
-OptionsMenu: ; e41d0
+OptionsMenu:
 	ld hl, hInMenu
 	ld a, [hl]
 	push af
@@ -43,7 +43,6 @@ OptionsMenu: ; e41d0
 	pop af
 	ld [hInMenu], a
 	ret
-; e4241
 
 OptionsMenu_LoadOptions:
 	xor a
@@ -67,7 +66,7 @@ OptionsMenu_LoadOptions:
 	ld [hBGMapMode], a
 	jp ApplyTilemapInVBlank
 
-StringOptions1: ; e4241
+StringOptions1:
 	db "Text Speed<LNBRK>"
 	db "        :<LNBRK>"
 	db "Battle Effects<LNBRK>"
@@ -83,7 +82,6 @@ StringOptions1: ; e4241
 	db "Next<LNBRK>"
 	db "        <LNBRK>"
 	db "Done@"
-; e42d6
 
 StringOptions2:
 	db "Clock Format<LNBRK>"
@@ -102,7 +100,7 @@ StringOptions2:
 	db "        <LNBRK>"
 	db "Done@"
 
-GetOptionPointer: ; e42d6
+GetOptionPointer:
 	ld a, [wJumptableIndex] ; load the cursor position to a
 	ld e, a ; copy it to de
 	ld a, [wCurrentOptionsPage]
@@ -120,7 +118,6 @@ GetOptionPointer: ; e42d6
 	ld h, [hl]
 	ld l, a
 	jp hl ; jump to the code of the current highlighted item
-; e42e5
 
 .Pointers:
 	dw Options_TextSpeed
@@ -140,10 +137,8 @@ GetOptionPointer: ; e42d6
 	dw Options_Unused
 	dw Options_NextPrevious
 	dw Options_Done
-; e42f5
 
-
-Options_TextSpeed: ; e42f5
+Options_TextSpeed:
 	ld a, [wOptions1]
 	and %11
 	ld c, a
@@ -176,7 +171,6 @@ Options_TextSpeed: ; e42f5
 	call PlaceString
 	and a
 	ret
-; e4331
 
 .Strings:
 	dw .Instant
@@ -192,10 +186,8 @@ Options_TextSpeed: ; e42f5
 	db "Slow   @"
 .Instant:
 	db "Instant@"
-; e4346
 
-
-Options_BattleEffects: ; e4365
+Options_BattleEffects:
 	ld hl, wOptions1
 	ld a, [hJoyPressed]
 	and D_LEFT | D_RIGHT
@@ -218,16 +210,13 @@ Options_BattleEffects: ; e4365
 	call PlaceString
 	and a
 	ret
-; e4398
 
 .Off:
 	db "Off@"
 .On:
 	db "On @"
-; e43a0
 
-
-Options_BattleStyle: ; e43a0
+Options_BattleStyle:
 	ld hl, wOptions2
 	ld a, [hJoyPressed]
 	bit D_LEFT_F, a
@@ -271,7 +260,6 @@ Options_BattleStyle: ; e43a0
 	call PlaceString
 	and a
 	ret
-; e43d1
 
 .Set:
 	db "Set    @"
@@ -279,10 +267,8 @@ Options_BattleStyle: ; e43a0
 	db "Switch @"
 .Predict:
 	db "Predict@"
-; e43dd
 
-
-Options_RunningShoes: ; e44c1
+Options_RunningShoes:
 	ld hl, wOptions2
 	ld a, [hJoyPressed]
 	and D_LEFT | D_RIGHT
@@ -305,16 +291,13 @@ Options_RunningShoes: ; e44c1
 	call PlaceString
 	and a
 	ret
-; e44f2
 
 .Off:
 	db "Off@"
 .On:
 	db "On @"
-; e44fa
 
-
-Options_Frame: ; e44fa
+Options_Frame:
 	ld hl, wTextBoxFrame
 	ld a, [hJoyPressed]
 	bit D_LEFT_F, a
@@ -341,7 +324,7 @@ Options_Frame: ; e44fa
 
 .Save:
 	ld [hl], a
-UpdateFrame: ; e4512
+UpdateFrame:
 	ld a, [wTextBoxFrame]
 	hlcoord 16, 11 ; where on the screen the number is drawn
 	add "1"
@@ -349,10 +332,8 @@ UpdateFrame: ; e4512
 	call LoadFontsExtra
 	and a
 	ret
-; e4520
 
-
-Options_Sound: ; e43dd
+Options_Sound:
 	ld hl, wOptions1
 	ld a, [hJoyPressed]
 	and D_LEFT | D_RIGHT
@@ -380,14 +361,11 @@ Options_Sound: ; e43dd
 	call PlaceString
 	and a
 	ret
-; e4416
 
 .Mono:
 	db "Mono  @"
 .Stereo:
 	db "Stereo@"
-; e4424
-
 
 Options_ClockFormat:
 	ld hl, wOptions2
@@ -418,7 +396,6 @@ Options_ClockFormat:
 .TwentyFour:
 	db "24-hour@"
 
-
 Options_PokedexUnits:
 	ld hl, wOptions2
 	ld a, [hJoyPressed]
@@ -447,7 +424,6 @@ Options_PokedexUnits:
 	db "Imperial@"
 .Metric:
 	db "Metric  @"
-
 
 Options_TextAutoscroll:
 	ld a, [hJoyPressed]
@@ -499,7 +475,6 @@ Options_TextAutoscroll:
 .AorB:
 	db "A or B @"
 
-
 Options_TurningSpeed:
 	ld a, [hJoyPressed]
 	and D_LEFT | D_RIGHT
@@ -533,7 +508,6 @@ Options_TurningSpeed:
 	db "Slow@"
 .Fast:
 	db "Fast@"
-
 
 Options_Typeface:
 	ld hl, wOptions2
@@ -615,11 +589,9 @@ Options_Typeface:
 .Unown:
 	db "Unown  @"
 
-
 Options_Unused:
 	and a
 	ret
-
 
 Options_NextPrevious:
 	ld hl, wCurrentOptionsPage
@@ -650,7 +622,7 @@ Options_NextPrevious:
 	and a
 	ret
 
-Options_Done: ; e4520
+Options_Done:
 	ld a, [hJoyPressed]
 	and A_BUTTON
 	jr nz, .Exit
@@ -660,9 +632,8 @@ Options_Done: ; e4520
 .Exit:
 	scf
 	ret
-; e452a
 
-OptionsControl: ; e452a
+OptionsControl:
 	ld hl, wJumptableIndex
 	ld a, [hJoyLast]
 	cp D_DOWN
@@ -714,9 +685,8 @@ OptionsControl: ; e452a
 	dec [hl]
 	scf
 	ret
-; e455c
 
-Options_UpdateCursorPosition: ; e455c
+Options_UpdateCursorPosition:
 	hlcoord 1, 1
 	ld de, SCREEN_WIDTH
 	ld c, $10
@@ -731,4 +701,3 @@ Options_UpdateCursorPosition: ; e455c
 	rst AddNTimes
 	ld [hl], "▶"
 	ret
-; e4579

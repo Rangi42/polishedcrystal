@@ -21,7 +21,6 @@ prob_total = 0
 	prob 10
 	prob 10
 
-
 OddEggs:
 
 OddEgg1:
@@ -255,7 +254,6 @@ OddEgg2:
 	bigdw 6 ; SAtk
 	bigdw 7 ; SDef
 	db "Egg@@@@@@@@"
-
 
 MystriEgg:
 	db TOGEPI

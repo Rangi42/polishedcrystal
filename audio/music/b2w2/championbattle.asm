@@ -593,7 +593,6 @@ Music_ChampionBattleB2W2_Ch1_branch_1:
 	note E_, 1
 	endchannel
 
-
 Music_ChampionBattleB2W2_Ch1_branch_2:
 	note G_, 2
 	intensity $50

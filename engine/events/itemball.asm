@@ -1,4 +1,4 @@
-FindItemInBallScript:: ; 0x122ce
+FindItemInBallScript::
 	callasm .TryReceiveItem
 	iffalse .no_room
 	disappear LAST_TALKED
@@ -8,24 +8,21 @@ FindItemInBallScript:: ; 0x122ce
 	itemnotify
 	closetext
 	end
-; 0x122e3
 
-.no_room ; 0x122e3
+.no_room
 	opentext
 	writetext .text_found
 	waitbutton
 	pocketisfull
 	closetext
 	end
-; 0x122ee
 
-.text_found ; 0x122ee
+.text_found
 	; found @ !
 	text_jump UnknownText_0x1c0a1c
 	db "@"
-; 0x122f3
 
-.TryReceiveItem: ; 122f8
+.TryReceiveItem:
 	xor a
 	ld [hScriptVar], a
 	ld a, [wCurItemBallContents]
@@ -43,7 +40,6 @@ FindItemInBallScript:: ; 0x122ce
 	ld a, $1
 	ld [hScriptVar], a
 	ret
-; 12324
 
 FindKeyItemInBallScript::
 	callasm .ReceiveKeyItem

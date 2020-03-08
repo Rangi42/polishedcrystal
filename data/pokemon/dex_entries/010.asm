@@ -1,4 +1,4 @@
-; CaterpiePokedexEntry: ; 0x181a60
+; CaterpiePokedexEntry:
 	db "Worm@" ; species name
 	dw 100, 60 ; height, width
 

@@ -1,4 +1,4 @@
-; ScizorPokedexEntry: ; 0x1d0821
+; ScizorPokedexEntry:
 	db "Scissors@" ; species name
 	dw 511, 2600 ; height, width
 

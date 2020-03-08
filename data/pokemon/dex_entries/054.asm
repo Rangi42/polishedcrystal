@@ -1,4 +1,4 @@
-; PsyduckPokedexEntry: ; 0x182cee
+; PsyduckPokedexEntry:
 	db "Duck@" ; species name
 	dw 207, 430 ; height, width
 

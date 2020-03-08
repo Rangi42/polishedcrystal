@@ -1,6 +1,6 @@
 KIRK_SHUCKIE_ID EQU 00518
 
-SpecialGiveShuckie: ; 7305
+SpecialGiveShuckie:
 ; Adding to the party.
 	xor a
 	ld [wMonType], a
@@ -65,7 +65,7 @@ _GetLastPartyMonAttribute:
 	rst AddNTimes
 	ret
 
-SpecialReturnShuckie: ; 737e
+SpecialReturnShuckie:
 	farcall SelectMonFromParty
 	jr c, .refused
 

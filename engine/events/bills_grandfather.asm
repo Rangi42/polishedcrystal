@@ -1,4 +1,4 @@
-Special_BillsGrandfather: ; 73f7
+Special_BillsGrandfather:
 	farcall SelectMonFromParty
 	jr c, .cancel
 	ld a, [wCurPartySpecies]

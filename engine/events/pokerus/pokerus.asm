@@ -1,4 +1,4 @@
-GivePokerusAndConvertBerries: ; 2ed44
+GivePokerusAndConvertBerries:
 	call ConvertBerriesToBerryJuice
 	ld a, [wPartyCount]
 	ld b, a
@@ -133,7 +133,7 @@ TrySpreadPokerus:
 	ld [hl], a
 	ret
 
-ApplyPokerusTick: ; 13988
+ApplyPokerusTick:
 ; decreases all pokemon's pokerus counter by b. if the lower nybble reaches zero, the pokerus is cured.
 	ld hl, wPartyMon1PokerusStatus ; PartyMon1 + MON_PKRS
 	ld a, [wPartyCount]

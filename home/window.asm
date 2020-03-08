@@ -1,4 +1,4 @@
-RefreshScreen:: ; 2dba
+RefreshScreen::
 	call ClearWindowData
 	ld a, [hROMBank]
 	push af
@@ -12,14 +12,13 @@ RefreshScreen:: ; 2dba
 	pop af
 	rst Bankswitch
 	ret
-; 2dcf
 
 RefreshScreenFast::
 	; Don't use for bridge updates, just call GenericFinishBridge
 	call GetMovementPermissions
 	farjp ReanchorBGMap_NoOAMUpdate_NoDelay
 
-CloseText:: ; 2dcf
+CloseText::
 	ld a, [hOAMUpdate]
 	push af
 	ld a, $1
@@ -32,9 +31,8 @@ CloseText:: ; 2dcf
 	ld hl, wVramState
 	res 6, [hl]
 	ret
-; 2de2
 
-.CloseText: ; 2de2
+.CloseText:
 	call ClearWindowData
 	xor a
 	ld [hBGMapMode], a
@@ -51,9 +49,8 @@ CloseText:: ; 2dcf
 	ld [hBGMapMode], a
 
 	farjp ReturnFromMapSetupScript
-; 2e08
 
-OpenText:: ; 2e08
+OpenText::
 	call ClearWindowData
 	ld a, [hROMBank]
 	push af
@@ -68,7 +65,6 @@ OpenText:: ; 2e08
 	rst Bankswitch
 
 	ret
-; 2e20
 
 BGMapAnchorTopLeft::
 	ld a, [hOAMUpdate]
@@ -82,9 +78,8 @@ BGMapAnchorTopLeft::
 	pop af
 	ld [hOAMUpdate], a
 	ret
-; 2e31
 
-SafeUpdateSprites:: ; 2e31
+SafeUpdateSprites::
 	ld a, [hOAMUpdate]
 	push af
 	ld a, [hBGMapMode]
@@ -102,4 +97,3 @@ SafeUpdateSprites:: ; 2e31
 	pop af
 	ld [hOAMUpdate], a
 	ret
-; 2e4e

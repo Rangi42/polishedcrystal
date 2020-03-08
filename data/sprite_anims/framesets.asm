@@ -1,4 +1,4 @@
-SpriteAnimFrameData: ; 8d6e6
+SpriteAnimFrameData:
 	dw .Frameset_00 ; SPRITE_ANIM_FRAMESET_NULL
 	dw .Frameset_01 ; SPRITE_ANIM_FRAMESET_PARTY_MON
 	dw .Frameset_02 ; SPRITE_ANIM_FRAMESET_PARTY_MON_WITH_MAIL
@@ -47,7 +47,6 @@ SpriteAnimFrameData: ; 8d6e6
 	dw .Frameset_3f ; SPRITE_ANIM_FRAMESET_INTRO_UNOWN_F
 	dw .Frameset_40 ; SPRITE_ANIM_FRAMESET_CELEBI_LEFT
 	dw .Frameset_41 ; SPRITE_ANIM_FRAMESET_CELEBI_RIGHT
-; 8d76a
 
 ; OAM idx (see SpriteAnimOAMData), flip flags/duration
 .Frameset_00:
@@ -322,4 +321,3 @@ SpriteAnimFrameData: ; 8d6e6
 	frame SPRITE_ANIM_FRAME_IDX_7F,  8, OAM_X_FLIP
 	frame SPRITE_ANIM_FRAME_IDX_80,  8, OAM_X_FLIP
 	endanim
-; 8d94d

@@ -121,7 +121,6 @@ SetInitialOptions:
 	pop af
 	ld [hInMenu], a
 	ret
-; e4241
 
 .InitialOptionsText:
 	text_jump _InitialOptionsText
@@ -160,7 +159,7 @@ INCBIN "gfx/new_game/init_bg.2bpp"
 	db "            :<LNBRK>"
 	db "Done@"
 
-GetInitialOptionPointer: ; e42d6
+GetInitialOptionPointer:
 	ld a, [wJumptableIndex] ; load the cursor position to a
 	ld e, a ; copy it to de
 	ld d, 0
@@ -171,7 +170,6 @@ GetInitialOptionPointer: ; e42d6
 	ld h, [hl]
 	ld l, a
 	jp hl ; jump to the code of the current highlighted item
-; e42e5
 
 .Pointers:
 	dw InitialOptions_Natures
@@ -394,7 +392,7 @@ NoString:
 YesString:
 	db "Yes@"
 
-InitialOptionsControl: ; e452a
+InitialOptionsControl:
 	ld hl, wJumptableIndex
 	ld a, [hJoyLast]
 	cp D_DOWN
@@ -423,9 +421,8 @@ InitialOptionsControl: ; e452a
 	dec [hl]
 	scf
 	ret
-; e455c
 
-InitialOptions_UpdateCursorPosition: ; e455c
+InitialOptions_UpdateCursorPosition:
 	hlcoord 1, 0
 	ld de, SCREEN_WIDTH
 	ld c, SCREEN_HEIGHT
@@ -447,7 +444,6 @@ InitialOptions_UpdateCursorPosition: ; e455c
 	inc hl
 	ld [hl], "▶"
 	ret
-; e4579
 
 .InitialOptions_CursorPositions:
 	db 0, 2, 4, 6, 8, 10, 12, 15, 17

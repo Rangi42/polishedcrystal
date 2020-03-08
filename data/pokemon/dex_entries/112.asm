@@ -1,4 +1,4 @@
-; RhydonPokedexEntry: ; 0x1b93c5
+; RhydonPokedexEntry:
 	db "Drill@" ; species name
 	dw 603, 2650 ; height, width
 

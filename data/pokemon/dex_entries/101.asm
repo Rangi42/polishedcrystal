@@ -1,4 +1,4 @@
-; ElectrodePokedexEntry: ; 0x1b8f19
+; ElectrodePokedexEntry:
 	db "Ball@" ; species name
 	dw 311, 1470 ; height, width
 

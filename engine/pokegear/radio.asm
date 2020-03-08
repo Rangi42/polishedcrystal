@@ -125,7 +125,6 @@ RadioJumptable:
 	dw PokedexShow7 ; $56
 	dw PokedexShow8 ; $57
 
-
 PrintRadioLine:
 	ld [wNextRadioLine], a
 	ld hl, wRadioText
@@ -1597,7 +1596,6 @@ GetBuenasPassword:
 	dw .Item
 	dw .Move
 	dw .RawString
-
 
 .Mon:
 	call .GetTheIndex

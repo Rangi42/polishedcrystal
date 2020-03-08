@@ -1,11 +1,11 @@
-_BillsPC: ; e3fd
+_BillsPC:
 	call .CheckCanUsePC
 	ret c
 	call .LogIn
 	call .UseBillsPC
 	jp .LogOut
 
-.CheckCanUsePC: ; e40a (3:640a)
+.CheckCanUsePC:
 	ld a, [wPartyCount]
 	and a
 	ret nz
@@ -14,12 +14,12 @@ _BillsPC: ; e3fd
 	scf
 	ret
 
-.Text_GottaHavePokemon: ; 0xe417
+.Text_GottaHavePokemon:
 	; You gotta have #MON to call!
 	text_jump UnknownText_0x1c1006
 	db "@"
 
-.LogIn: ; e41c (3:641c)
+.LogIn:
 	xor a
 	ld [hBGMapMode], a
 	call LoadStandardMenuDataHeader
@@ -34,15 +34,15 @@ _BillsPC: ; e3fd
 	ld [wOptions1], a
 	jp LoadFontsBattleExtra
 
-.Text_What: ; 0xe43a
+.Text_What:
 	; What?
 	text_jump UnknownText_0x1c1024
 	db "@"
 
-.LogOut: ; e43f (3:643f)
+.LogOut:
 	jp CloseSubmenu
 
-.UseBillsPC: ; e443 (3:6443)
+.UseBillsPC:
 	ld hl, .MenuDataHeader
 	call LoadMenuDataHeader
 	ld a, $1
@@ -65,35 +65,35 @@ _BillsPC: ; e3fd
 .cancel
 	jp CloseWindow
 
-.MenuDataHeader: ; 0xe46f
+.MenuDataHeader:
 	db $40 ; flags
 	db 00, 00 ; start coords
 	db 17, 19 ; end coords
 	dw .MenuData2
 	db 1 ; default option
 
-.MenuData2: ; 0xe477
+.MenuData2:
 	db $80 ; flags
 	db 0 ; items
 	dw .items
 	dw PlaceMenuStrings
 	dw .strings
 
-.strings ; e47f
+.strings
 	db "Withdraw <PK><MN>@"
 	db "Deposit <PK><MN>@"
 	db "Change Box@"
 	db "Move <PK><MN> w/o Mail@"
 	db "See ya!@"
 
-.Jumptable: ; e4ba (3:64ba)
+.Jumptable:
 	dw BillsPC_WithdrawMenu
 	dw BillsPC_DepositMenu
 	dw BillsPC_ChangeBoxMenu
 	dw BillsPC_MovePKMNMenu
 	dw BillsPC_SeeYa
 
-.items ; e4c4
+.items
 	db 5
 	db 0 ; WITHDRAW
 	db 1;  DEPOSIT
@@ -102,11 +102,11 @@ _BillsPC: ; e3fd
 	db 4 ; SEE YA!
 	db -1
 
-BillsPC_SeeYa: ; e4cb
+BillsPC_SeeYa:
 	scf
 	ret
 
-BillsPC_MovePKMNMenu: ; e4cd
+BillsPC_MovePKMNMenu:
 	call LoadStandardMenuDataHeader
 	farcall IsAnyMonHoldingMail
 	jr nc, .no_mail
@@ -126,12 +126,12 @@ BillsPC_MovePKMNMenu: ; e4cd
 	and a
 	ret
 
-.Text_MonHoldingMail: ; 0xe4f9
+.Text_MonHoldingMail:
 	; There is a #MON holding MAIL. Please remove the MAIL.
 	text_jump UnknownText_0x1c102b
 	db "@"
 
-BillsPC_DepositMenu: ; e4fe (3:64fe)
+BillsPC_DepositMenu:
 	call LoadStandardMenuDataHeader
 	farcall _DepositPKMN
 	call ReturnToMapFromSubmenu
@@ -140,7 +140,7 @@ BillsPC_DepositMenu: ; e4fe (3:64fe)
 	and a
 	ret
 
-CheckCurPartyMonFainted: ; e538
+CheckCurPartyMonFainted:
 	ld hl, wPartyMon1HP
 	ld de, PARTYMON_STRUCT_LENGTH
 	ld b, $0
@@ -169,7 +169,7 @@ CheckCurPartyMonFainted: ; e538
 	and a
 	ret
 
-BillsPC_WithdrawMenu: ; e559 (3:6559)
+BillsPC_WithdrawMenu:
 	call LoadStandardMenuDataHeader
 	farcall _WithdrawPKMN
 	call ReturnToMapFromSubmenu
@@ -178,12 +178,12 @@ BillsPC_WithdrawMenu: ; e559 (3:6559)
 	and a
 	ret
 
-BillsPC_ChangeBoxMenu: ; e583 (3:6583)
+BillsPC_ChangeBoxMenu:
 	farcall _ChangeBox
 	and a
 	ret
 
-ClearPCItemScreen: ; e58b
+ClearPCItemScreen:
 	call DisableSpriteUpdates
 	xor a
 	ld [hBGMapMode], a
@@ -202,7 +202,7 @@ ClearPCItemScreen: ; e58b
 	call ApplyAttrAndTilemapInVBlank
 	jp SetPalettes ; load regular palettes?
 
-CopyBoxmonToTempMon: ; e5bb
+CopyBoxmonToTempMon:
 	ld a, [wCurPartyMon]
 	ld hl, sBoxMon1Species
 	ld bc, BOXMON_STRUCT_LENGTH

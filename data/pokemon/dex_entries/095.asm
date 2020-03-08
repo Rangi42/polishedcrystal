@@ -1,4 +1,4 @@
-; OnixPokedexEntry: ; 0x1b8c98
+; OnixPokedexEntry:
 	db "Rock Snake@" ; species name
 	dw 2810, 4630 ; height, width
 

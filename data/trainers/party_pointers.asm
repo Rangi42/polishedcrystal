@@ -1,6 +1,6 @@
 ; Each trainer class has its own group. See trainers.asm.
 
-TrainerGroups: ; 0x39999
+TrainerGroups:
 	dba CarrieGroup
 	dba CalGroup
 	dba FalknerGroup

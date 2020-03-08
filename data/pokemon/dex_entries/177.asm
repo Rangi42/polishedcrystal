@@ -1,4 +1,4 @@
-; NatuPokedexEntry: ; 0x1cd47d
+; NatuPokedexEntry:
 	db "Little Bird@" ; species name
 	dw 8, 40 ; height, width
 

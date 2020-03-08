@@ -1,4 +1,4 @@
-SimpleMultiply:: ; 3105
+SimpleMultiply::
 ; Return a * c.
 	and a
 	ret z
@@ -12,8 +12,6 @@ SimpleMultiply:: ; 3105
 	jr nz, .loop
 	pop bc
 	ret
-; 3110
-
 
 SimpleDivide::
 ; Divide a by c. Return quotient b and remainder a.
@@ -34,8 +32,7 @@ SimpleDivide::
 .div0
 	rst 0 ; crash
 
-
-Multiply:: ; 3119
+Multiply::
 ; Multiply hMultiplicand (3 bytes) by hMultiplier. Result in hProduct.
 ; All values are big endian.
 	push hl
@@ -48,10 +45,8 @@ Multiply:: ; 3119
 	pop bc
 	pop hl
 	ret
-; 3124
 
-
-Divide:: ; 3124
+Divide::
 ; Divide hDividend length b (max 4 bytes) by hDivisor. Result in hQuotient.
 ; All values are big endian.
 	push hl
@@ -64,4 +59,3 @@ Divide:: ; 3124
 	pop de
 	pop hl
 	ret
-; 3136

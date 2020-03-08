@@ -1,4 +1,4 @@
-; ShucklePokedexEntry: ; 0x1d088e
+; ShucklePokedexEntry:
 	db "Mold@" ; species name
 	dw 200, 450 ; height, weight
 

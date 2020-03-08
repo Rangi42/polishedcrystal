@@ -1,4 +1,4 @@
-; PidgeottoPokedexEntry: ; 0x181d75
+; PidgeottoPokedexEntry:
 	db "Bird@" ; species name
 	dw 307, 660 ; height, width
 

@@ -263,7 +263,7 @@ IsKantoRadioOffAir:
 	ld [hScriptVar], a
 	ret
 
-TrashCanScript: ; 0xbc1a5
+TrashCanScript:
 	farjumptext TrashCanText
 
 PCScript:
@@ -428,9 +428,8 @@ BugContestResultsScript:
 	setflag ENGINE_DAILY_BUG_CONTEST
 	special PlayMapMusic
 	end
-; 0xbc31e
 
-BugContestResults_CopyContestantsToResults ; 0xbc380
+BugContestResults_CopyContestantsToResults
 	checkevent EVENT_BUG_CATCHING_CONTESTANT_1A
 	iftrue .skip1
 	clearevent EVENT_BUG_CATCHING_CONTESTANT_1B
@@ -1248,7 +1247,7 @@ RegisteredNumberFScript:
 	buttonsound
 	end
 
-NumberAcceptedFScript: ; 0xbcbd3
+NumberAcceptedFScript:
 	checkcode VAR_CALLERID
 	ifequal PHONE_POKEFAN_BEVERLY, .Beverly
 	ifequal PHONE_COOLTRAINERF_BETH, .Beth
@@ -1507,15 +1506,14 @@ GymStatue3Script:
 	farwritetext GymStatue_ThreeWinningTrainersText
 	waitendtext
 
-ReceiveItemScript: ; 0xbcdb9
+ReceiveItemScript:
 	waitsfx
 	farwritetext ReceivedItemText
 	playsound SFX_ITEM
 	waitsfx
 	end
-; 0xbcdc3
 
-GameCornerCoinVendorScript: ; 0xbcdcd
+GameCornerCoinVendorScript:
 	faceplayer
 	opentext
 	farwritetext CoinVendor_WelcomeText
@@ -1524,12 +1522,11 @@ GameCornerCoinVendorScript: ; 0xbcdcd
 	iftrue CoinVendor_IntroScript
 	farwritetext CoinVendor_NoCoinCaseText
 	waitendtext
-; 0xbcde0
 
-CoinVendor_IntroScript: ; 0xbcde0
+CoinVendor_IntroScript:
 	farwritetext CoinVendor_IntroText
 
-.loop ; 0xbcde4
+.loop
 	special Special_DisplayMoneyAndCoinBalance
 	loadmenu .MenuDataHeader
 	verticalmenu
@@ -1537,9 +1534,8 @@ CoinVendor_IntroScript: ; 0xbcde0
 	ifequal $1, .Buy50
 	ifequal $2, .Buy500
 	jump .Cancel
-; 0xbcdf7
 
-.Buy50: ; 0xbcdf7
+.Buy50:
 	checkcoins 49950
 	ifequal $0, .CoinCaseFull
 	checkmoney $0, 1000
@@ -1551,9 +1547,8 @@ CoinVendor_IntroScript: ; 0xbcde0
 	farwritetext CoinVendor_Buy50CoinsText
 	waitbutton
 	jump .loop
-; 0xbce1b
 
-.Buy500: ; 0xbce1b
+.Buy500:
 	checkcoins 49500
 	ifequal $0, .CoinCaseFull
 	checkmoney $0, 10000
@@ -1565,22 +1560,18 @@ CoinVendor_IntroScript: ; 0xbcde0
 	farwritetext CoinVendor_Buy500CoinsText
 	waitbutton
 	jump .loop
-; 0xbce3f
 
-.NotEnoughMoney: ; 0xbce3f
+.NotEnoughMoney:
 	farwritetext CoinVendor_NotEnoughMoneyText
 	waitendtext
-; 0xbce46
 
-.CoinCaseFull: ; 0xbce46
+.CoinCaseFull:
 	farwritetext CoinVendor_CoinCaseFullText
 	waitendtext
-; 0xbce4d
 
-.Cancel: ; 0xbce4d
+.Cancel:
 	farwritetext CoinVendor_CancelText
 	waitendtext
-; 0xbce54
 
 .MenuDataHeader:
 	db $40 ; flags
@@ -1595,8 +1586,6 @@ CoinVendor_IntroScript: ; 0xbcde0
 	db " 50 :  ¥1000@"
 	db "500 : ¥10000@"
 	db "Cancel@"
-; 0xbce7f
-
 
 HappinessCheckScript:
 	faceplayer
@@ -1615,12 +1604,11 @@ HappinessCheckScript:
 	farwritetext HappinessText1
 	waitendtext
 
-Movement_ContestResults_WalkAfterWarp: ; bcea1
+Movement_ContestResults_WalkAfterWarp:
 	step_right
 	step_down
 	turn_head_up
 	step_end
-; bcea5
 
 CutTreeScript:
 	farjump AskCutTreeScript

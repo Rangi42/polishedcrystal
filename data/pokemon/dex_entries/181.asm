@@ -1,4 +1,4 @@
-; AmpharosPokedexEntry: ; 0x1cd626
+; AmpharosPokedexEntry:
 	db "Light@" ; species name
 	dw 407, 1360 ; height, width
 

@@ -1,10 +1,10 @@
 InitName::
 ; Intended for names, so this function is limited to ten characters.
 	ld c, 10
-InitString:: ; 2ef6
+InitString::
 ; Init a string of length c.
 	push hl
-_InitString:: ; 2efc
+_InitString::
 ; if the string pointed to by hl is empty (defined as "zero or more spaces
 ; followed by a null"), then initialize it to the string pointed to by de.
 	push bc

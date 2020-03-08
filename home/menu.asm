@@ -9,7 +9,7 @@ CloseWindow::
 	pop af
 	ret
 
-RestoreTileBackup:: ; 0x1c23
+RestoreTileBackup::
 	call PushWindow_MenuBoxCoordToTile
 	call .copy
 	call PushWindow_MenuBoxCoordToAttr
@@ -212,7 +212,6 @@ PushWindow_MenuBoxCoordToAbsolute:
 	pop bc
 	add hl, bc
 	ret
-
 
 MenuBoxCoord2Tile::
 	call LoadMenuBoxCoords
@@ -632,7 +631,6 @@ PlaceNthMenuStrings::
 	pop hl
 	jp PlaceString
 
-
 MenuJumptable::
 	ld a, [wMenuSelection]
 	call GetMenuDataPointerTableEntry
@@ -698,7 +696,6 @@ MenuClickSound::
 .nosound
 	pop af
 	ret
-
 
 PlayClickSFX::
 	push de

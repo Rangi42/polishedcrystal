@@ -3,7 +3,7 @@ landmark: MACRO
 	dw \3
 ENDM
 
-Landmarks: ; 0x1ca8c3
+Landmarks:
 	landmark   0,   0, SpecialMapName
 	landmark 148, 116, NewBarkTownName
 	landmark 128, 116, Route29Name
@@ -148,7 +148,6 @@ Landmarks: ; 0x1ca8c3
 	landmark  84, 124, ValenciaIslandName
 	landmark 144, 136, NavelRockName
 	landmark  32, 136, FarawayIslandName
-
 
 NewBarkTownName:       rawchar "New Bark¯Town@"
 CherrygroveCityName:   rawchar "Cherrygrove¯City@"

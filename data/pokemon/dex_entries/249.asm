@@ -1,4 +1,4 @@
-; LugiaPokedexEntry: ; 0x1d17e9
+; LugiaPokedexEntry:
 	db "Diving@" ; species name
 	dw 1701, 4760 ; height, width
 

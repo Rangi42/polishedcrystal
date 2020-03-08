@@ -1,4 +1,4 @@
-BattleStart_TrainerHuds: ; 2c000
+BattleStart_TrainerHuds:
 	ld a, $e4
 	ld [rOBP0], a
 	call LoadBallIconGFX
@@ -7,16 +7,14 @@ BattleStart_TrainerHuds: ; 2c000
 	dec a
 	ret z
 	jp ShowOTTrainerMonsRemaining
-; 2c012
 
-EnemySwitch_TrainerHud: ; 2c012
+EnemySwitch_TrainerHud:
 	ld a, $e4
 	ld [rOBP0], a
 	call LoadBallIconGFX
 	jp ShowOTTrainerMonsRemaining
-; 2c01c
 
-ShowPlayerMonsRemaining: ; 2c01c
+ShowPlayerMonsRemaining:
 	call DrawPlayerPartyIconHUDBorder
 	ld hl, wPartyMon1HP
 	ld de, wPartyCount
@@ -30,9 +28,8 @@ ShowPlayerMonsRemaining: ; 2c01c
 	ld [wPlaceBallsDirection], a
 	ld hl, wSprites
 	jp LoadTrainerHudOAM
-; 2c03a
 
-ShowOTTrainerMonsRemaining: ; 2c03a
+ShowOTTrainerMonsRemaining:
 	call DrawEnemyPartyIconHUDBorder
 	ld hl, wOTPartyMon1HP
 	ld de, wOTPartyCount
@@ -46,9 +43,8 @@ ShowOTTrainerMonsRemaining: ; 2c03a
 	ld [wPlaceBallsDirection], a
 	ld hl, wSprites + PARTY_LENGTH * 4
 	jp LoadTrainerHudOAM
-; 2c059
 
-StageBallTilesData: ; 2c059
+StageBallTilesData:
 	ld a, [de]
 	push af
 	ld de, wBuffer1
@@ -69,9 +65,8 @@ StageBallTilesData: ; 2c059
 	dec a
 	jr nz, .loop2
 	ret
-; 2c075
 
-.GetHUDTile: ; 2c075
+.GetHUDTile:
 	ld a, [hli]
 	and a
 	jr nz, .got_hp
@@ -102,9 +97,8 @@ StageBallTilesData: ; 2c059
 	ld bc, PARTYMON_STRUCT_LENGTH + MON_HP - MON_STATUS
 	add hl, bc
 	ret
-; 2c095
 
-DrawPlayerHUDBorder: ; 2c095
+DrawPlayerHUDBorder:
 	hlcoord 19, 11
 	ld [hl], "<XPEND>"
 	hlcoord 10, 11
@@ -113,7 +107,7 @@ DrawPlayerHUDBorder: ; 2c095
 	ld [hl], "<XP2>"
 	ret
 
-DrawPlayerPartyIconHUDBorder: ; 2c0ad
+DrawPlayerPartyIconHUDBorder:
 	ld hl, .tiles
 	ld de, wTrainerHUDTiles
 	ld bc, 4
@@ -127,7 +121,6 @@ DrawPlayerPartyIconHUDBorder: ; 2c0ad
 	db "—" ; right end
 	db "—" ; bar
 	db "◢" ; left end
-; 2c0c5
 
 DrawEnemyPartyIconHUDBorder:
 	ld hl, .tiles
@@ -145,7 +138,7 @@ DrawEnemyPartyIconHUDBorder:
 	db "—" ; bar
 	db "◣" ; right end
 
-DrawEnemyHUDBorder: ; 2c0c5
+DrawEnemyHUDBorder:
 	ld a, [wBattleMode]
 	dec a
 	ret nz
@@ -163,9 +156,8 @@ DrawEnemyHUDBorder: ; 2c0c5
 	hlcoord 1, 1
 	ld [hl], "<NONO>"
 	ret
-; 2c0f1
 
-PlaceHUDBorderTiles: ; 2c0f1
+PlaceHUDBorderTiles:
 	ld a, [wTrainerHUDTiles]
 	ld [hl], a
 	ld b, $8
@@ -182,9 +174,8 @@ PlaceHUDBorderTiles: ; 2c0f1
 	ld a, [wTrainerHUDTiles + 3]
 	ld [hl], a
 	ret
-; 2c10d
 
-LinkBattle_TrainerHuds: ; 2c10d
+LinkBattle_TrainerHuds:
 	call LoadBallIconGFX
 	ld hl, wPartyMon1HP
 	ld de, wPartyCount
@@ -208,7 +199,7 @@ LinkBattle_TrainerHuds: ; 2c10d
 	ld hl, wSprites + PARTY_LENGTH * 4
 	; fallthrough
 
-LoadTrainerHudOAM: ; 2c143
+LoadTrainerHudOAM:
 	ld de, wBuffer1
 	ld c, PARTY_LENGTH
 .loop
@@ -229,20 +220,17 @@ LoadTrainerHudOAM: ; 2c143
 	dec c
 	jr nz, .loop
 	ret
-; 2c165
 
-LoadBallIconGFX: ; 2c165
+LoadBallIconGFX:
 	ld de, .gfx
 	ld hl, vTiles0 tile $31
 	lb bc, BANK(LoadBallIconGFX), 4
 	jp Get2bpp
-; 2c172
 
-.gfx ; 2c172
+.gfx
 INCBIN "gfx/battle/balls.2bpp"
-; 2c1b2
 
-_ShowLinkBattleParticipants: ; 2c1b2
+_ShowLinkBattleParticipants:
 	call ClearBGPalettes
 	call LoadFontsExtra
 	hlcoord 2, 3
@@ -265,7 +253,6 @@ _ShowLinkBattleParticipants: ; 2c1b2
 	ld a, $e4
 	ld [rOBP0], a
 	ret
-; 2c1ef
 
 DoesNuzlockeModePreventCapture:
 	; Is nuzlocke mode on?

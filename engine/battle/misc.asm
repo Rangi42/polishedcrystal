@@ -101,7 +101,7 @@ _CheckContactMove::
 	db ZEN_HEADBUTT
 	db -1
 
-_DisappearUser:: ; fbd54
+_DisappearUser::
 	xor a
 	ld [hBGMapMode], a
 	ld a, [hBattleTurn]
@@ -115,14 +115,14 @@ _DisappearUser:: ; fbd54
 	call ClearBox
 	jr FinishAppearDisappearUser
 
-_AppearUserRaiseSub: ; fbd69 (3e:7d69)
+_AppearUserRaiseSub:
 	farcall BattleCommand_raisesubnoanim
 	jr AppearUser
 
-_AppearUserLowerSub: ; fbd71 (3e:7d71)
+_AppearUserLowerSub:
 	farcall BattleCommand_lowersubnoanim
 
-AppearUser: ; fbd77 (3e:7d77)
+AppearUser:
 	xor a
 	ld [hBGMapMode], a
 	ld a, [hBattleTurn]
@@ -137,23 +137,22 @@ AppearUser: ; fbd77 (3e:7d77)
 .okay
 	ld [hGraphicStartTile], a
 	predef PlaceGraphic
-FinishAppearDisappearUser: ; fbd91 (3e:7d91)
+FinishAppearDisappearUser:
 	ld a, $1
 	ld [hBGMapMode], a
 	ret
 
-GetEnemyFrontpicCoords: ; fbd96 (3e:7d96)
+GetEnemyFrontpicCoords:
 	hlcoord 12, 0
 	lb bc, 7, 7
 	ret
 
-GetPlayerBackpicCoords: ; fbd9d (3e:7d9d)
+GetPlayerBackpicCoords:
 	hlcoord 2, 6
 	lb bc, 6, 6
 	ret
 
-
-DoWeatherModifiers: ; fbda4
+DoWeatherModifiers:
 ; checks attacking move type in b with current weather for a x1.5 boost or x0.5 penalty to
 ; apply for wTypeMatchup for later damage calc adjustment (alongside STAB and type matchup)
 	call GetWeatherAfterOpponentUmbrella

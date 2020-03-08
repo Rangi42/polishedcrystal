@@ -22,7 +22,7 @@ GetFirstPokemonHappiness:
 	call GetPokemonName
 	jp CopyPokemonName_Buffer1_Buffer3
 
-CheckFirstMonIsEgg: ; 71ac
+CheckFirstMonIsEgg:
 	ld a, [wPartyMon1Species]
 	ld [wd265], a
 	ld a, [wPartyMon1IsEgg]
@@ -36,7 +36,7 @@ CheckFirstMonIsEgg: ; 71ac
 	call GetPokemonName
 	jp CopyPokemonName_Buffer1_Buffer3
 
-ChangeHappiness: ; 71c2
+ChangeHappiness:
 ; Perform happiness action c on wCurPartyMon
 
 	ld a, [wCurPartyMon]
@@ -147,7 +147,7 @@ GetExtraHappiness:
 	ld a, b
 	ret
 
-StepHappiness:: ; 725a
+StepHappiness::
 ; Raise the party's happiness by 1 point every other step cycle.
 
 	ld hl, wHappinessStepCount
@@ -182,7 +182,7 @@ StepHappiness:: ; 725a
 	jr nz, .loop
 	ret
 
-DaycareStep:: ; 7282
+DaycareStep::
 
 	ld a, [wDaycareMan]
 	bit 0, a

@@ -1,4 +1,4 @@
-; OmanytePokedexEntry: ; 0x1cc3c1
+; OmanytePokedexEntry:
 	db "Spiral@" ; species name
 	dw 104, 170 ; height, width
 

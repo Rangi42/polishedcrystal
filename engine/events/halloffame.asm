@@ -1,6 +1,6 @@
 HOF_MASTER_COUNT EQU 200
 
-HallOfFame:: ; 0x8640e
+HallOfFame::
 	call HallOfFame_FadeOutMusic
 	ld a, [wStatusFlags]
 	push af
@@ -34,9 +34,8 @@ HallOfFame:: ; 0x8640e
 	pop af
 	ld b, a
 	farjp Credits
-; 0x86455
 
-LeafCredits:: ; 86455
+LeafCredits::
 	ld a, MUSIC_NONE % $100
 	ld [wMusicFadeIDLo], a
 	ld a, MUSIC_NONE / $100
@@ -58,9 +57,8 @@ LeafCredits:: ; 86455
 	ld a, [wStatusFlags]
 	ld b, a
 	farjp Credits
-; 8648e
 
-HallOfFame_FadeOutMusic: ; 8648e
+HallOfFame_FadeOutMusic:
 	ld a, MUSIC_NONE % $100
 	ld [wMusicFadeIDLo], a
 	ld a, MUSIC_NONE / $100
@@ -72,18 +70,16 @@ HallOfFame_FadeOutMusic: ; 8648e
 	ld [wVramState], a
 	ld [hMapAnims], a
 	farjp InitDisplayForHallOfFame
-; 864b4
 
-HallOfFame_PlayMusicDE: ; 864b4
+HallOfFame_PlayMusicDE:
 	push de
 	ld de, MUSIC_NONE
 	call PlayMusic
 	call DelayFrame
 	pop de
 	jp PlayMusic
-; 864c3
 
-AnimateHallOfFame: ; 864c3
+AnimateHallOfFame:
 	xor a
 	ld [wJumptableIndex], a
 	call LoadHOFTeam
@@ -118,9 +114,8 @@ AnimateHallOfFame: ; 864c3
 	farcall FadeOutPalettes
 	ld c, 8
 	jp DelayFrames
-; 8650c
 
-.DisplayNewHallOfFamer: ; 8650c
+.DisplayNewHallOfFamer:
 	call DisplayHOFMon
 	ld de, .String_NewHallOfFamer
 	hlcoord 1, 2
@@ -133,14 +128,11 @@ AnimateHallOfFame: ; 864c3
 	call DelayFrames
 	and a
 	ret
-; 8652c
 
 .String_NewHallOfFamer:
 	db "New Hall of Famer!@"
-; 8653f
 
-
-GetHallOfFameParty: ; 8653f
+GetHallOfFameParty:
 	ld hl, wOverworldMap
 	ld bc, HOF_LENGTH
 	xor a
@@ -230,9 +222,8 @@ GetHallOfFameParty: ; 8653f
 	ld a, $ff
 	ld [de], a
 	ret
-; 865b5
 
-AnimateHOFMonEntrance: ; 865b5
+AnimateHOFMonEntrance:
 	push hl
 	call ClearBGPalettes
 	farcall ResetDisplayBetweenHallOfFameMons
@@ -283,7 +274,6 @@ AnimateHOFMonEntrance: ; 865b5
 	ld [hBGMapMode], a
 	ld [hSCY], a
 	jp HOF_SlideFrontpic
-; 86635
 
 HOF_SlideBackpic:
 .backpicloop
@@ -294,7 +284,6 @@ HOF_SlideBackpic:
 	ld [hSCX], a
 	call DelayFrame
 	jr .backpicloop
-; 86643
 
 HOF_SlideFrontpic:
 .frontpicloop
@@ -306,9 +295,8 @@ HOF_SlideFrontpic:
 	ld [hSCX], a
 	call DelayFrame
 	jr .frontpicloop
-; 86650
 
-_HallOfFamePC: ; 86650
+_HallOfFamePC:
 	call LoadFontsBattleExtra
 	xor a
 	ld [wJumptableIndex], a
@@ -417,9 +405,8 @@ _HallOfFamePC: ; 86650
 
 .TimeFamer:
 	db "    -Time Famer@"
-; 8671c
 
-LoadHOFTeam: ; 8671c
+LoadHOFTeam:
 	ld a, [wJumptableIndex]
 	cp NUM_HOF_TEAMS
 	jr nc, .invalid
@@ -444,9 +431,8 @@ LoadHOFTeam: ; 8671c
 .invalid
 	scf
 	ret
-; 86748
 
-DisplayHOFMon: ; 86748
+DisplayHOFMon:
 	xor a
 	ld [hBGMapMode], a
 	ld a, [hli]
@@ -530,9 +516,8 @@ DisplayHOFMon: ; 86748
 	ld de, wTempMonID
 	lb bc, PRINTNUM_LEADINGZEROS | 2, 5
 	jp PrintNum
-; 86810
 
-HOF_AnimatePlayerPic: ; 86810
+HOF_AnimatePlayerPic:
 	call ClearBGPalettes
 	hlcoord 0, 0
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
@@ -610,9 +595,7 @@ HOF_AnimatePlayerPic: ; 86810
 	call PrintNum
 	call ApplyTilemapInVBlank
 	farjp ProfOaksPCRating
-; 868ed
 
 .PlayTime:
 	db "Play Time@"
-; 868f7
 

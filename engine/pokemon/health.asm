@@ -26,7 +26,7 @@ HealPartyMonEvenForNuzlocke:
 	ld [wInitialOptions], a
 	ret
 
-HealParty: ; c658
+HealParty:
 	xor a
 	ld [wCurPartyMon], a
 	ld hl, wPartySpecies
@@ -45,7 +45,7 @@ HealParty: ; c658
 	ld [wCurPartyMon], a
 	jr .loop
 
-HealPartyMon: ; c677
+HealPartyMon:
 	ld a, MON_SPECIES
 	call GetPartyParamLocation
 	ld d, h
@@ -87,7 +87,7 @@ HealPartyMon: ; c677
 
 	farjp RestoreAllPP
 
-ComputeHPBarPixels: ; c699
+ComputeHPBarPixels:
 ; e = bc * (6 * 8) / de
 	ld a, b
 	or c

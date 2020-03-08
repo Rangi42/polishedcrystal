@@ -2,7 +2,7 @@ engine_flag: MACRO
 	dwb \1 + (\2 / 8), 1 << (\2 % 8)
 ENDM
 
-EngineFlags: ; 80462
+EngineFlags:
 ; All locations are in WRAM bank 1.
 
 	; location, bit

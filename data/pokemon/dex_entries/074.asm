@@ -1,4 +1,4 @@
-; GeodudePokedexEntry: ; 0x1b83a1
+; GeodudePokedexEntry:
 	db "Rock@" ; species name
 	dw 104, 440 ; height, width
 

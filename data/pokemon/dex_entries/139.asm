@@ -1,4 +1,4 @@
-; OmastarPokedexEntry: ; 0x1cc42e
+; OmastarPokedexEntry:
 	db "Spiral@" ; species name
 	dw 303, 770 ; height, width
 

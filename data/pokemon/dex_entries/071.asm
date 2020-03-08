@@ -1,4 +1,4 @@
-; VictreebelPokedexEntry: ; 0x1b826e
+; VictreebelPokedexEntry:
 	db "Flycatcher@" ; species name
 	dw 507, 340 ; height, width
 

@@ -232,7 +232,6 @@ Music_CeruleanCaveRBY_branch_7dfd5:
 	note __, 1
 	endchannel
 
-
 Music_CeruleanCaveRBY_Ch2:
 	vibrato 11, 21
 	dutycycle 3
@@ -447,7 +446,6 @@ Music_CeruleanCaveRBY_branch_7e0cd:
 	note F#, 6
 	endchannel
 
-
 Music_CeruleanCaveRBY_Ch3:
 	notetype 12, 17
 	vibrato 8, 38
@@ -601,7 +599,6 @@ Music_CeruleanCaveRBY_branch_7e177:
 	note E_, 1
 	note A#, 4
 	endchannel
-
 
 Music_CeruleanCaveRBY_Ch4:
 	notetype 12

@@ -1,12 +1,12 @@
-Special_YoungerHaircutBrother: ; 7413
+Special_YoungerHaircutBrother:
 	ld hl, Data_YoungerHaircutBrother
 	jr MassageOrHaircut
 
-Special_OlderHaircutBrother: ; 7418
+Special_OlderHaircutBrother:
 	ld hl, Data_OlderHaircutBrother
 	jr MassageOrHaircut
 
-Special_DaisyMassage: ; 741d
+Special_DaisyMassage:
 	ld hl, Data_DaisyMassage
 	jr MassageOrHaircut
 
@@ -17,7 +17,7 @@ Special_CianwoodPhotograph:
 Special_ReiBlessing:
 	ld hl, Data_ReiBlessing
 
-MassageOrHaircut: ; 7420
+MassageOrHaircut:
 	push hl
 	farcall SelectMonFromParty
 	pop hl
@@ -60,7 +60,7 @@ MassageOrHaircut: ; 7420
 
 INCLUDE "data/events/happiness_probabilities.asm"
 
-CopyPokemonName_Buffer1_Buffer3: ; 746e
+CopyPokemonName_Buffer1_Buffer3:
 	ld hl, wStringBuffer1
 	ld de, wStringBuffer3
 	ld bc, PKMN_NAME_LENGTH

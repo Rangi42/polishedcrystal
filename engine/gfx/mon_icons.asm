@@ -1,6 +1,6 @@
 INCLUDE "data/pokemon/menu_icon_pals.asm"
 
-LoadOverworldMonIcon: ; 8e82b
+LoadOverworldMonIcon:
 	ld [wCurIcon], a
 	ld l, a
 	ld h, 0
@@ -203,7 +203,7 @@ LoadPartyMenuMonIcon:
 	pop hl
 	ret
 
-.SpawnItemIcon: ; 8e8df (23:68df)
+.SpawnItemIcon:
 	ld a, [hObjectStructIndexBuffer]
 	ld hl, wPartyMon1Item
 	call GetPartyLocation
@@ -306,7 +306,7 @@ LoadTradeAnimationMonIcon:
 	pop hl
 	ret
 
-InitPartyMenuIcon: ; 8e908 (23:6908)
+InitPartyMenuIcon:
 	ld a, [wCurIconTile]
 	push af
 	ld a, [hObjectStructIndexBuffer]
@@ -343,7 +343,7 @@ endr
 	ld [hl], a
 	ret
 
-SetPartyMonIconAnimSpeed: ; 8e936 (23:6936)
+SetPartyMonIconAnimSpeed:
 	push bc
 	call .getspeed
 	pop bc
@@ -357,7 +357,7 @@ SetPartyMonIconAnimSpeed: ; 8e936 (23:6936)
 	ld [hl], a
 	ret
 
-.getspeed ; 8e94c (23:694c)
+.getspeed
 	ld a, [hObjectStructIndexBuffer]
 	ld hl, wPartyMon1IsEgg
 	call GetPartyLocation
@@ -374,7 +374,6 @@ SetPartyMonIconAnimSpeed: ; 8e936 (23:6936)
 	add hl, de
 	ld a, [hl]
 	ret
-; 8e95e (23:695e)
 
 .egg
 	ld a, [hObjectStructIndexBuffer]
@@ -391,11 +390,10 @@ SetPartyMonIconAnimSpeed: ; 8e936 (23:6936)
 	inc d ; 2
 	jr .gotindex
 
-.speeds ; 8e95e
+.speeds
 	db $00, $40, $80
-; 8e961
 
-PokegearFlyMap_GetMonIcon: ; 8e9ac
+PokegearFlyMap_GetMonIcon:
 ; Load species icon into VRAM at tile a
 	push de
 	ld a, [wd265]
@@ -403,20 +401,18 @@ PokegearFlyMap_GetMonIcon: ; 8e9ac
 	pop de
 	ld a, e
 	jp GetIconGFX
-; 8e9bc
 
-FlyFunction_GetMonIcon: ; 8e9bc (23:69bc)
+FlyFunction_GetMonIcon:
 	push de
 	ld a, [wd265]
 	ld [wCurIcon], a
 	pop de
 	ld a, e
 	jp GetIcon_a
-; 8e9cc (23:69cc)
 
-GetMemIconGFX: ; 8e9db (23:69db)
+GetMemIconGFX:
 	ld a, [wCurIconTile]
-GetIconGFX: ; 8e9de
+GetIconGFX:
 	call GetIcon_a
 	ld de, $80 ; 8 tiles
 	add hl, de
@@ -431,14 +427,13 @@ GetIconGFX: ; 8e9de
 HeldItemIcons:
 INCBIN "gfx/icons/mail.2bpp"
 INCBIN "gfx/icons/item.2bpp"
-; 8ea17
 
-GetIcon_a: ; 8ea1b
+GetIcon_a:
 ; Load icon graphics into VRAM starting from tile a.
 	ld l, a
 	ld h, 0
 
-GetIcon: ; 8ea1e
+GetIcon:
 ; Load icon graphics into VRAM starting from tile hl.
 
 ; One tile is 16 bytes long.
@@ -467,9 +462,8 @@ endr
 	call DecompressRequest2bpp
 	pop hl
 	ret
-; 8ea3f
 
-FreezeMonIcons: ; 8ea4a
+FreezeMonIcons:
 	ld hl, wSpriteAnimationStructs
 	ld e, PARTY_LENGTH
 	ld a, [wMenuCursorY]
@@ -501,9 +495,8 @@ FreezeMonIcons: ; 8ea4a
 	dec e
 	jr nz, .loop
 	ret
-; 8ea71
 
-UnfreezeMonIcons: ; 8ea71
+UnfreezeMonIcons:
 	ld hl, wSpriteAnimationStructs
 	ld e, PARTY_LENGTH
 .loop
@@ -523,9 +516,8 @@ UnfreezeMonIcons: ; 8ea71
 	dec e
 	jr nz, .loop
 	ret
-; 8ea8c (23:6a8c)
 
-HoldSwitchmonIcon: ; 8ea8c
+HoldSwitchmonIcon:
 	ld hl, wSpriteAnimationStructs
 	ld e, PARTY_LENGTH
 	ld a, [wSwitchMon]

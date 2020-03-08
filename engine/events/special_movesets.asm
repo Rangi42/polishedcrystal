@@ -1,4 +1,4 @@
-TeachDratiniExtremeSpeed: ; 0x8b170
+TeachDratiniExtremeSpeed:
 	call GetLastPartyMonMoveset
 	ld hl, .Moveset
 	jp GiveSpecialMoveset
@@ -32,7 +32,7 @@ TeachMagikarpDragonRage:
 	db DRAGON_RAGE
 	db 0
 
-GetLastPartyMon: ; 0x8b1ce
+GetLastPartyMon:
 	ld bc, wPartyCount
 	ld a, [bc]
 	ld hl, MON_SPECIES
@@ -53,7 +53,6 @@ GetLastPartyMon: ; 0x8b1ce
 .EmptyParty:
 	scf
 	ret
-; 8b1e1
 
 GetLastPartyMonMoveset:
 	call GetLastPartyMon

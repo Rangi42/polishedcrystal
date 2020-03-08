@@ -1,4 +1,4 @@
-; StarmiePokedexEntry: ; 0x1b9776
+; StarmiePokedexEntry:
 	db "Mysterious@" ; species name
 	dw 307, 1760 ; height, width
 

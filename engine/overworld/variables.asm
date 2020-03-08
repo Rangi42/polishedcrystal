@@ -1,4 +1,4 @@
-_GetVarAction:: ; 80648 (20:4648)
+_GetVarAction::
 	ld a, c
 	cp NUM_VARS
 	jr c, .valid
@@ -22,13 +22,12 @@ _GetVarAction:: ; 80648 (20:4648)
 	and RETVAR_ADDR_DE
 	ret nz
 	ld a, [de]
-.loadstringbuffer2 ; 8066c (20:466c)
+.loadstringbuffer2
 	ld de, wStringBuffer2
 	ld [de], a
 	ret
-; 80671 (20:4671)
 
-.VarActionTable: ; 80671
+.VarActionTable:
 ; $00: copy [de] to wStringBuffer2
 ; $40: return address in de
 ; $80: call function
@@ -63,51 +62,45 @@ _GetVarAction:: ; 80648 (20:4648)
 	dwb .CountPokemonJournals,          RETVAR_EXECUTE
 	dwb .CountTrainerStars,             RETVAR_EXECUTE
 	dwb NULL,                           RETVAR_STRBUF2
-; 806c5
 
-.CountCaughtMons: ; 806c5
+.CountCaughtMons:
 ; Caught mons.
 	ld hl, wPokedexCaught
 	ld b, wEndPokedexCaught - wPokedexCaught
 	call CountSetBits
 	ld a, [wd265]
 	jp .loadstringbuffer2
-; 806d3
 
-.CountSeenMons: ; 806d3
+.CountSeenMons:
 ; Seen mons.
 	ld hl, wPokedexSeen
 	ld b, wEndPokedexSeen - wPokedexSeen
 	call CountSetBits
 	ld a, [wd265]
 	jp .loadstringbuffer2
-; 806e1
 
-.CountBadges: ; 806e1
+.CountBadges:
 ; Number of owned badges.
 	ld hl, wBadges
 	ld b, wBadgesEnd - wBadges
 	call CountSetBits
 	ld a, [wd265]
 	jp .loadstringbuffer2
-; 806ef
 
-.wPlayerFacing: ; 806ef
+.wPlayerFacing:
 ; The direction the player is facing.
 	ld a, [wPlayerDirection]
 	and $c
 	rrca
 	rrca
 	jp .loadstringbuffer2
-; 806f9
 
-.DayOfWeek: ; 806f9
+.DayOfWeek:
 ; The day of the week.
 	call GetWeekday
 	jp .loadstringbuffer2
-; 806ff
 
-.UnownCaught: ; 806ff
+.UnownCaught:
 ; Number of unique Unown caught.
 	call .count
 	ld a, b
@@ -125,9 +118,8 @@ _GetVarAction:: ; 80648 (20:4648)
 	cp NUM_UNOWN
 	jr c, .loop
 	ret
-; 80715
 
-.BoxFreeSpace: ; 80715
+.BoxFreeSpace:
 ; Remaining slots in the current box.
 	ld a, BANK(sBoxCount)
 	call GetSRAMBank
@@ -138,13 +130,11 @@ _GetVarAction:: ; 80648 (20:4648)
 	call CloseSRAM
 	ld a, b
 	jp .loadstringbuffer2
-; 80728
 
-.BattleResult: ; 80728
+.BattleResult:
 	ld a, [wBattleResult]
 	and $3f
 	jp .loadstringbuffer2
-; 80730
 
 .CountPokemonJournals:
 	ld hl, wPokemonJournals

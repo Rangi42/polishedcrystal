@@ -1,4 +1,4 @@
-; DodrioPokedexEntry: ; 0x1b884a
+; DodrioPokedexEntry:
 	db "Triple Bird@" ; species name
 	dw 511, 1880 ; height, width
 

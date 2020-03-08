@@ -1,4 +1,4 @@
-SpecialBuenasPassword: ; 8af6b
+SpecialBuenasPassword:
 	xor a
 	ld [wWhichIndexSet], a
 	ld hl, .MenuDataHeader
@@ -26,31 +26,28 @@ SpecialBuenasPassword: ; 8af6b
 	ld a, b
 	ld [hScriptVar], a
 	ret
-; 8afa9
 
-.MenuDataHeader: ; 0x8afa9
+.MenuDataHeader:
 	db $40 ; flags
 	db 00, 00 ; start coords
 	db 07, 10 ; end coords
 	dw .MenuData2
 	db 1 ; default option
-; 0x8afb1
 
 	db 0
 
-.MenuData2: ; 0x8afb2
+.MenuData2:
 	db $81 ; flags
 	db 0 ; items
 	dw .PasswordIndices
 	dw .PlacePasswordChoices
-; 0x8afb4
 
-.PasswordIndices: ; 8afb8
+.PasswordIndices:
 	db 3
 	db 0, 1, 2
 	db -1
 
-.PlacePasswordChoices: ; 8afbd
+.PlacePasswordChoices:
 	push de
 	ld a, [wBuenasPassword]
 	and $f0
@@ -61,4 +58,3 @@ SpecialBuenasPassword: ; 8af6b
 	farcall GetBuenasPassword
 	pop hl
 	jp PlaceString
-; 8afd4

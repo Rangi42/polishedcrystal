@@ -1,21 +1,19 @@
-InitMovementBuffer:: ; 1b1e
+InitMovementBuffer::
 	ld [wMovementBufferPerson], a
 	xor a
 	ld [wMovementBufferCount], a
 	ld [wd004], a
 	ret
-; 1b35
 
-DecrementMovementBufferCount:: ; 1b35
+DecrementMovementBufferCount::
 	ld a, [wMovementBufferCount]
 	and a
 	ret z
 	dec a
 	ld [wMovementBufferCount], a
 	ret
-; 1b3f
 
-AppendToMovementBuffer:: ; 1b3f
+AppendToMovementBuffer::
 	push hl
 	push de
 	ld hl, wMovementBufferCount
@@ -28,9 +26,8 @@ AppendToMovementBuffer:: ; 1b3f
 	pop de
 	pop hl
 	ret
-; 1b50
 
-AppendToMovementBufferNTimes:: ; 1b50
+AppendToMovementBufferNTimes::
 	push af
 	ld a, c
 	and a
@@ -45,9 +42,8 @@ AppendToMovementBufferNTimes:: ; 1b50
 	dec c
 	jr nz, .loop
 	ret
-; 1b5f
 
-ComputePathToWalkToPlayer:: ; 1b5f
+ComputePathToWalkToPlayer::
 	push af
 ; compare x coords, load left/right into h, and x distance into d
 	ld a, b
@@ -94,9 +90,8 @@ ComputePathToWalkToPlayer:: ; 1b5f
 	call .GetMovementData
 	ld c, e
 	jp AppendToMovementBufferNTimes
-; 1b92
 
-.GetMovementData: ; 1b92
+.GetMovementData:
 	push de
 	push hl
 	ld l, b
@@ -112,7 +107,6 @@ ComputePathToWalkToPlayer:: ; 1b5f
 	pop hl
 	pop de
 	ret
-; 1ba5
 
 .MovementData:
 	slow_step_down
@@ -127,4 +121,3 @@ ComputePathToWalkToPlayer:: ; 1b5f
 	big_step_up
 	big_step_left
 	big_step_right
-; 1bb1

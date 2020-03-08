@@ -1,4 +1,4 @@
-; MarillPokedexEntry: ; 0x1cd705
+; MarillPokedexEntry:
 	db "Aqua Mouse@" ; species name
 	dw 104, 190 ; height, width
 

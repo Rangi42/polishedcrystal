@@ -1,4 +1,4 @@
-SetPalettes:: ; 32f9
+SetPalettes::
 ; Inits the Palettes
 ; depending on the system the monochromes palettes or color palettes
 	push de
@@ -8,9 +8,8 @@ SetPalettes:: ; 32f9
 	call DmgToCgbObjPals
 	pop de
 	ret
-; 3317
 
-ClearPalettes:: ; 3317
+ClearPalettes::
 ; Make all palettes white
 	ld a, [rSVBK]
 	push af
@@ -42,16 +41,14 @@ endc
 	ld a, 1
 	ld [hCGBPalUpdate], a
 	ret
-; 333e
 
-SetHPPal:: ; 334e
+SetHPPal::
 ; Set palette for hp bar pixel length e at hl.
 	call GetHPPal
 	ld [hl], d
 	ret
-; 3353
 
-GetHPPal:: ; 3353
+GetHPPal::
 ; Get palette for hp bar pixel length e in d.
 	ld d, HP_GREEN
 	ld a, e
@@ -62,4 +59,3 @@ GetHPPal:: ; 3353
 	ret nc
 	inc d ; HP_RED
 	ret
-; 335f

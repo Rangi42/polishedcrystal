@@ -1,4 +1,4 @@
-DrawPlayerHP: ; 50b0a
+DrawPlayerHP:
 	ld a, $1
 	ld [wWhichHPBar], a
 	push hl
@@ -75,7 +75,7 @@ DrawPlayerHP: ; 50b0a
 	pop de
 	ret
 
-PrintTempMonStats: ; 50b7b
+PrintTempMonStats:
 ; Print wTempMon's stats at hl, with spacing bc.
 	push bc
 	push hl
@@ -113,7 +113,7 @@ endr
 	ld de, wTempMonSpeed
 	jp PrintNum
 
-.PrintStat: ; 50bab
+.PrintStat:
 	push hl
 	call PrintNum
 	pop hl
@@ -131,7 +131,7 @@ MostStatNames:
 	next "Speed"
 	next "@"
 
-PrintStatDifferences: ; 50b7b
+PrintStatDifferences:
 	ld a, [wTextBoxFlags]
 	push af
 	set NO_LINE_SPACING, a
@@ -376,7 +376,7 @@ GetShininess:
 	and a
 	ret
 
-GetGender: ; 50bdd
+GetGender:
 ; Return the gender of a given monster (wCurPartyMon/wCurOTMon/CurWildMon)
 ; based on wMonType.
 
@@ -482,7 +482,7 @@ GetGender: ; 50bdd
 	scf
 	ret
 
-ListMovePP: ; 50c50
+ListMovePP:
 	ld a, [wNumMoves]
 	inc a
 	ld c, a
@@ -567,7 +567,7 @@ ListMovePP: ; 50c50
 	jr nz, .loop
 	ret
 
-.load_loop ; 50cc9
+.load_loop
 	ld [hli], a
 	ld [hld], a
 	add hl, de
@@ -622,7 +622,7 @@ GetStatusConditionIndex:
 .done
 	ret
 
-PlaceStatusString: ; 50d0a
+PlaceStatusString:
 	xor a
 	call GetStatusConditionIndex
 	and a
@@ -674,7 +674,7 @@ FrzString: db "Frz@"
 FntString: db "Fnt@"
 ToxString: db "Tox@"
 
-ListMoves: ; 50d6f
+ListMoves:
 ; List moves at hl, spaced every [wBuffer1] tiles.
 	ld de, wListMoves_MoveIndicesBuffer
 	ld b, $0

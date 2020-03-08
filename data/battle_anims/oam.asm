@@ -1,4 +1,4 @@
-BattleAnimOAMData: ; ceeae
+BattleAnimOAMData:
 ; vtile offset (?), length, address
 	dbbw $00, 16, .OAMData_00 ; 00
 	dbbw $04,  9, .OAMData_01 ; 01
@@ -1082,4 +1082,3 @@ BattleAnimOAMData: ; ceeae
 	dsprite  -2, 0,   6, 4, $00, $0
 	dsprite  -4, 0,   8, 4, $00, $0
 	dsprite  -2, 0,  10, 4, $00, $0
-; cfcf6

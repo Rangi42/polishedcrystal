@@ -515,7 +515,6 @@ ItemAttributes:
 ; MIRAGE MAIL
 	item_attribute 50, 0, 0, ITEM, ITEMMENU_NOUSE, ITEMMENU_NOUSE
 
-
 key_item_attribute: MACRO
 ; selectable, field menu, battle menu
 	db \1

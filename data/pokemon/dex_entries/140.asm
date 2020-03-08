@@ -1,4 +1,4 @@
-; KabutoPokedexEntry: ; 0x1cc497
+; KabutoPokedexEntry:
 	db "Shellfish@" ; species name
 	dw 108, 250 ; height, width
 

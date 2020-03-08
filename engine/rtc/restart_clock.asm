@@ -1,5 +1,5 @@
 
-ResetClock_GetWraparoundTime: ; 20000 (8:4000)
+ResetClock_GetWraparoundTime:
 	push hl
 	dec a
 	ld e, a
@@ -17,9 +17,8 @@ endr
 	ld c, [hl]
 	pop hl
 	ret
-; 20015 (8:4015)
 
-.WrapAroundTimes: ; 20015
+.WrapAroundTimes:
 	dw wBuffer4
 	db 7, 4
 
@@ -28,9 +27,8 @@ endr
 
 	dw wBuffer6
 	db 60, 15
-; 20021
 
-RestartClock: ; 20021 (8:4021)
+RestartClock:
 ; If we're here, we had an RTC overflow.
 	ld hl, .Text_ClockTimeMayBeWrong
 	call PrintText
@@ -49,21 +47,18 @@ RestartClock: ; 20021 (8:4021)
 	ld [hl], b
 	ld c, a
 	ret
-; 20047 (8:4047)
 
-.Text_ClockTimeMayBeWrong: ; 0x20047
+.Text_ClockTimeMayBeWrong:
 	; The clock's time may be wrong. Please reset the time.
 	text_jump UnknownText_0x1c40e6
 	db "@"
-; 0x2004c
 
-.Text_SetWithControlPad: ; 0x2004c
+.Text_SetWithControlPad:
 	; Set with the Control Pad. Confirm: A Button Cancel:  B Button
 	text_jump UnknownText_0x1c411c
 	db "@"
-; 0x20051
 
-.SetClock: ; 20051 (8:4051)
+.SetClock:
 	ld a, 1
 	ld [wBuffer1], a ; which digit
 	ld [wBuffer2], a
@@ -106,19 +101,16 @@ RestartClock: ; 20021 (8:4021)
 .cancel
 	ld a, $1
 	ret
-; 200b0 (8:40b0)
 
-.Text_IsThisOK: ; 0x200b0
+.Text_IsThisOK:
 	; Is this OK?
 	text_jump UnknownText_0x1c415b
 	db "@"
-; 0x200b5
 
-.Text_ClockReset: ; 0x200b5
+.Text_ClockReset:
 	; The clock has been reset.
 	text_jump UnknownText_0x1c4168
 	db "@"
-; 0x200ba
 
 .joy_loop
 	call JoyTextDelay_ForcehJoyDown
@@ -194,7 +186,7 @@ RestartClock: ; 20021 (8:4021)
 	xor a
 	ret
 
-.PrintTime: ; 2011f (8:411f)
+.PrintTime:
 	hlcoord 0, 5
 	lb bc, 5, 18
 	call TextBox
@@ -216,9 +208,8 @@ RestartClock: ; 20021 (8:4021)
 	ld a, [wBuffer1]
 	ld [wBuffer2], a
 	ret
-; 20160 (8:4160)
 
-.PlaceChars: ; 20168 (8:4168)
+.PlaceChars:
 	push de
 	call ResetClock_GetWraparoundTime
 	ld a, [wBuffer3]
@@ -231,4 +222,3 @@ RestartClock: ; 20021 (8:4021)
 	add hl, bc
 	ld [hl], e
 	ret
-; 2017c (8:417c)

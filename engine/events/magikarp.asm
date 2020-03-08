@@ -1,4 +1,4 @@
-Special_CheckMagikarpLength: ; fbb32
+Special_CheckMagikarpLength:
 	; Returns 3 if you select a Magikarp that beats the previous record.
 	; Returns 2 if you select a Magikarp, but the current record is longer.
 	; Returns 1 if you press B in the Pokemon selection menu.
@@ -69,15 +69,13 @@ Special_CheckMagikarpLength: ; fbb32
 	xor a
 	ld [hScriptVar], a
 	ret
-; fbba9
 
-.MeasureItText: ; 0xfbba9
+.MeasureItText:
 	; Let me measure that MAGIKARP. …Hm, it measures @ .
 	text_jump UnknownText_0x1c1203
 	db "@"
-; 0xfbbae
 
-PrintMagikarpLength: ; fbbdb
+PrintMagikarpLength:
 	ld a, [wOptions2]
 	bit POKEDEX_UNITS, a
 	jr z, .imperial
@@ -167,9 +165,8 @@ PrintMagikarpLength: ; fbbdb
 	inc hl
 	ld [hl], "@"
 	ret
-; fbbfc
 
-CalcMagikarpLength: ; fbbfc
+CalcMagikarpLength:
 ; Return Magikarp's length (in mm) at wMagikarpLengthMm (big endian).
 ;
 ; input:
@@ -205,7 +202,6 @@ CalcMagikarpLength: ; fbbfc
 ; if b = 244-251:  x = 64710,  y =  20,  z = 12
 ; if b = 252-253:  x = 65210,  y =   5,  z = 13
 ; if b = 254:      x = 65410,  y =   2,  z = 14
-
 
 	; bc = rrc(dv[0]) ++ rrc(dv[1]) ^ rrc(id)
 
@@ -343,9 +339,8 @@ CalcMagikarpLength: ; fbbfc
 	inc hl
 	ld [hl], e
 	ret
-; fbc9a
 
-.BCLessThanDE: ; fbc9a
+.BCLessThanDE:
 ; return bc < de
 	ld a, b
 	cp d
@@ -353,9 +348,8 @@ CalcMagikarpLength: ; fbbfc
 	ld a, c
 	cp e
 	ret
-; fbca1
 
-.BCMinusDE: ; fbca1
+.BCMinusDE:
 ; bc -= de
 	ld a, c
 	sub e
@@ -364,12 +358,10 @@ CalcMagikarpLength: ; fbbfc
 	sbc d
 	ld b, a
 	ret
-; fbca8
 
 INCLUDE "data/events/magikarp_lengths.asm"
 
-
-Special_MagikarpHouseSign: ; fbcd2
+Special_MagikarpHouseSign:
 	ld a, [wBestMagikarpLengthMmHi]
 	ld [wMagikarpLengthMmHi], a
 	ld a, [wBestMagikarpLengthMmLo]
@@ -377,10 +369,8 @@ Special_MagikarpHouseSign: ; fbcd2
 	call PrintMagikarpLength
 	ld hl, .CurrentRecordtext
 	jp PrintText
-; fbce8
 
-.CurrentRecordtext: ; 0xfbce8
+.CurrentRecordtext:
 	; "CURRENT RECORD"
 	text_jump UnknownText_0x1c123a
 	db "@"
-; 0xfbced

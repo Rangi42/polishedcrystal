@@ -1,4 +1,4 @@
-Special_MoveTutor: ; 4925b
+Special_MoveTutor:
 	call FadeToMenu
 	call ClearBGPalettes
 	call ClearScreen
@@ -34,7 +34,7 @@ Special_MoveTutor: ; 4925b
 	ld [hScriptVar], a
 	jp CloseSubmenu
 
-CheckCanLearnMoveTutorMove: ; 492b9
+CheckCanLearnMoveTutorMove:
 	ld hl, .MenuDataHeader
 	call LoadMenuDataHeader
 
@@ -109,7 +109,7 @@ CheckCanLearnMoveTutorMove: ; 492b9
 	scf
 	ret
 
-.MenuDataHeader: ; 0x4930a
+.MenuDataHeader:
 	db $40 ; flags
 	db 12, 00 ; start coords
 	db 17, 19 ; end coords

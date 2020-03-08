@@ -1,4 +1,4 @@
-; HitmontopPokedexEntry: ; 0x1d12c0
+; HitmontopPokedexEntry:
 	db "Handstand@" ; species name
 	dw 407, 1060 ; height, width
 

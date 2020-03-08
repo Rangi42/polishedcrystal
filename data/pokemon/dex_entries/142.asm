@@ -1,4 +1,4 @@
-; AerodactylPokedexEntry: ; 0x1cc576
+; AerodactylPokedexEntry:
 	db "Fossil@" ; species name
 	dw 511, 1300 ; height, width
 

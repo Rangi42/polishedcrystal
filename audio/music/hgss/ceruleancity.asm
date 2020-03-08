@@ -2,7 +2,7 @@
 ; Demixed by FroggestSpirit
 ; https://github.com/froggestspirit/CrystalComplete/blob/master/audio/music/custom/ceruleanGSC.asm
 
-Music_CeruleanCityHGSS: ; f5127
+Music_CeruleanCityHGSS:
 	dbw $c0, Music_CeruleanCityHGSS_Ch1
 	dbw $01, Music_CeruleanCityHGSS_Ch2
 	dbw $02, Music_CeruleanCityHGSS_Ch3

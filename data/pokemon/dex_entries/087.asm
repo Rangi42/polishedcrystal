@@ -1,4 +1,4 @@
-; DewgongPokedexEntry: ; 0x1b8934
+; DewgongPokedexEntry:
 	db "Sea Lion@" ; species name
 	dw 507, 2650 ; height, width
 

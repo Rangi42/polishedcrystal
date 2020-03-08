@@ -1,4 +1,4 @@
-; ChinchouPokedexEntry: ; 0x1cd165
+; ChinchouPokedexEntry:
 	db "Angler@" ; species name
 	dw 108, 260 ; height, width
 

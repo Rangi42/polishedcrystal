@@ -1,4 +1,4 @@
-GetPartyParamLocation:: ; 3917
+GetPartyParamLocation::
 ; Get the location of parameter a from wCurPartyMon in hl
 	push bc
 	ld hl, wPartyMons
@@ -10,7 +10,6 @@ GetPartyParamLocation:: ; 3917
 	pop bc
 	ld a, [hl]
 	ret
-; 3927
 
 GetPartyLocation::
 ; Add the length of a PartyMon struct to hl a times.
@@ -223,13 +222,12 @@ UpdateEnemyMonInParty::
 	rst CopyBytes
 	ret
 
-RefreshBattleHuds:: ; 39c9
+RefreshBattleHuds::
 	call UpdateBattleHuds
 	call Delay2
 	jp ApplyTilemapInVBlank
-; 39d4
 
-UpdateBattleHuds:: ; 39d4
+UpdateBattleHuds::
 	farcall UpdatePlayerHUD
 	farjp UpdateEnemyHUD
 
@@ -537,7 +535,7 @@ GetTrueUserAbility::
 ; A "true" user might be external, if Future Sight is active.
 	farjp _GetTrueUserAbility
 
-GetOpponentAbilityAfterMoldBreaker:: ; 39e1
+GetOpponentAbilityAfterMoldBreaker::
 ; Returns an opponent's ability unless Mold Breaker
 ; will suppress it. Preserves bc/de/hl.
 	farjp _GetOpponentAbilityAfterMoldBreaker
@@ -852,15 +850,14 @@ _CheckSpeed::
 	or 1
 	ret
 
-GetBattleVar:: ; 39e1
+GetBattleVar::
 ; Preserves bc, de, hl.
 	push hl
 	call GetBattleVarAddr
 	pop hl
 	ret
-; 39e7
 
-GetBattleVarAddr:: ; 39e7
+GetBattleVarAddr::
 ; Get variable from pair a, depending on whose turn it is.
 ; There are 22 variable pairs.
 ; Preserves bc, de.
@@ -951,10 +948,8 @@ GetBattleVarAddr:: ; 39e7
 	dw wCurPlayerMove,                wCurEnemyMove
 	dw wLastPlayerCounterMove,        wLastEnemyCounterMove
 	dw wLastPlayerMove,               wLastEnemyMove
-; 3a90
 
-
-BattleTextBox:: ; 3ac3
+BattleTextBox::
 ; Open a textbox and print text at hl.
 	push hl
 	call SpeechTextBox
@@ -962,10 +957,8 @@ BattleTextBox:: ; 3ac3
 	call ApplyTilemap
 	pop hl
 	jp PrintTextBoxText
-; 3ad5
 
-
-StdBattleTextBox:: ; 3ad5
+StdBattleTextBox::
 ; Open a textbox and print battle text at 20:hl.
 
 GLOBAL BattleText
@@ -981,7 +974,6 @@ GLOBAL BattleText
 	pop af
 	rst Bankswitch
 	ret
-; 3ae1
 
 GetBattleAnimPointer::
 	anonbankpush BattleAnimations
@@ -993,7 +985,7 @@ GetBattleAnimPointer::
 	ld [wBattleAnimAddress + 1], a
 	ret
 
-GetBattleAnimByte:: ; 3af0
+GetBattleAnimByte::
 	anonbankpush BattleAnimations
 
 .Function:
@@ -1018,7 +1010,6 @@ GetBattleAnimByte:: ; 3af0
 
 	ld a, [wBattleAnimByte]
 	ret
-; 3b0c
 
 HalveBC::
 	srl b
@@ -1030,7 +1021,7 @@ FloorBC::
 	inc c
 	ret
 
-PushLYOverrides:: ; 3b0c
+PushLYOverrides::
 	ld a, [hLCDCPointer]
 	and a
 	ret z
@@ -1048,4 +1039,3 @@ PushLYOverrides:: ; 3b0c
 	ld a, (wLYOverridesEnd - wLYOverrides) / 16
 	ld [hLYOverrideStackCopyAmount], a
 	ret
-; 3b2a

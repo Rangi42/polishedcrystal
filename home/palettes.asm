@@ -1,13 +1,12 @@
 ; Functions dealing with palettes.
 
-
-UpdateCGBPals:: ; c33
+UpdateCGBPals::
 ; any pals to update?
 	ld a, [hCGBPalUpdate]
 	and a
 	ret z
 
-ForceUpdateCGBPals:: ; c37
+ForceUpdateCGBPals::
 ; update bgp data from wBGPals
 ; update obp data from wOBPals
 ; return carry if successful
@@ -17,7 +16,7 @@ ForceUpdateCGBPals:: ; c37
 	ld a, BANK(wBGPals)
 	ld [rSVBK], a
 
-	ld hl, wBGPals ; 5:d080
+	ld hl, wBGPals
 
 ; copy 8 pals to bgpd
 	ld a, %10000000 ; auto increment, index 0
@@ -56,10 +55,8 @@ endr
 
 	scf
 	ret
-; c9f
 
-
-DmgToCgbBGPals:: ; c9f
+DmgToCgbBGPals::
 ; exists to forego reinserting cgb-converted image data
 
 ; input: a -> bgp
@@ -96,10 +93,8 @@ DmgToCgbBGPals:: ; c9f
 	pop hl
 	pop af
 	ret
-; ccb
 
-
-DmgToCgbObjPals:: ; ccb
+DmgToCgbObjPals::
 ; exists to forego reinserting cgb-converted image data
 
 ; input: d -> obp1
@@ -138,10 +133,8 @@ DmgToCgbObjPals:: ; ccb
 	pop de
 	pop hl
 	ret
-; cf8
 
-
-DmgToCgbObjPal0:: ; cf8
+DmgToCgbObjPal0::
 	ld [rOBP0], a
 	push af
 	push hl
@@ -170,9 +163,8 @@ DmgToCgbObjPal0:: ; cf8
 	pop hl
 	pop af
 	ret
-; d24
 
-DmgToCgbObjPal1:: ; d24
+DmgToCgbObjPal1::
 	ld [rOBP1], a
 	push af
 	push hl
@@ -201,11 +193,8 @@ DmgToCgbObjPal1:: ; d24
 	pop hl
 	pop af
 	ret
-; d50
 
-
-
-CopyPals:: ; d50
+CopyPals::
 ; copy c palettes in order b from de to hl
 
 	push bc
@@ -255,10 +244,8 @@ CopyPals:: ; d50
 	dec c
 	jr nz, CopyPals
 	ret
-; d79
 
-
-ClearVBank1:: ; d79
+ClearVBank1::
 	ld a, 1
 	ld [rVBK], a
 
@@ -270,10 +257,8 @@ ClearVBank1:: ; d79
 	xor a
 	ld [rVBK], a
 	ret
-; d90
 
-
-Special_ReloadSpritesNoPalettes:: ; d91
+Special_ReloadSpritesNoPalettes::
 	ld a, [rSVBK]
 	push af
 	ld a, BANK(wBGPals)
@@ -287,4 +272,3 @@ Special_ReloadSpritesNoPalettes:: ; d91
 	ld a, 1
 	ld [hCGBPalUpdate], a
 	jp DelayFrame
-; db1

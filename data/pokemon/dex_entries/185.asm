@@ -1,4 +1,4 @@
-; SudowoodoPokedexEntry: ; 0x1cd7d9
+; SudowoodoPokedexEntry:
 	db "Imitation@" ; species name
 	dw 311, 840 ; height, width
 

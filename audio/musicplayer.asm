@@ -3,7 +3,6 @@
 
 INCLUDE "constants.asm"
 
-
 MP_METER0 EQU $20
 MP_METER8 EQU $28
 MP_DUTY0 EQU $29
@@ -1864,7 +1863,6 @@ NoteOAM:
 	db 0, 0, $20, BEHIND_BG
 	db 0, 0, $40, BEHIND_BG
 	db 0, 0, $60, BEHIND_BG
-
 
 INCLUDE "data/music_player/notes.asm"
 INCLUDE "data/music_player/song_info.asm"

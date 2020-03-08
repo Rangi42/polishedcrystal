@@ -1,4 +1,4 @@
-Special_CelebiShrineEvent: ; 4989a
+Special_CelebiShrineEvent:
 	call DelayFrame
 	ld a, [wVramState]
 	push af
@@ -76,9 +76,7 @@ Special_CelebiShrineEvent: ; 4989a
 
 	ret
 
-; 498f9
-
-CelebiEvent_CountDown: ; 49935
+CelebiEvent_CountDown:
 	ld hl, wcf64
 	ld a, [hl]
 	and a
@@ -91,18 +89,16 @@ CelebiEvent_CountDown: ; 49935
 	set 7, [hl]
 	ret
 
-; 49944
-
-SpecialCelebiLeafGFX: ; 49962
+SpecialCelebiLeafGFX:
 INCBIN "gfx/overworld/celebi/leaf.2bpp"
 
-SpecialCelebiGFX: ; 499a2
+SpecialCelebiGFX:
 INCBIN "gfx/overworld/celebi/1.2bpp"
 INCBIN "gfx/overworld/celebi/2.2bpp"
 INCBIN "gfx/overworld/celebi/3.2bpp"
 INCBIN "gfx/overworld/celebi/4.2bpp"
 
-UpdateCelebiPosition: ; 49aa2 (12:5aa2)
+UpdateCelebiPosition:
 	ld hl, SPRITEANIMSTRUCT_XOFFSET
 	add hl, bc
 	ld a, [hl]
@@ -193,14 +189,14 @@ UpdateCelebiPosition: ; 49aa2 (12:5aa2)
 	ld a, SPRITE_ANIM_FRAMESET_CELEBI_LEFT
 	jp ReinitSpriteAnimFrame
 
-.FreezeCelebiPosition: ; 49b30 (12:5b30)
+.FreezeCelebiPosition:
 	pop af
 	ld hl, SPRITEANIMSTRUCT_FRAMESET_ID
 	add hl, bc
 	ld a, SPRITE_ANIM_FRAMESET_CELEBI_LEFT
 	jp ReinitSpriteAnimFrame
 
-GetCelebiSpriteTile: ; 49bae
+GetCelebiSpriteTile:
 	push hl
 	push bc
 	ld a, d
@@ -246,9 +242,7 @@ GetCelebiSpriteTile: ; 49bae
 	pop hl
 	ret
 
-; 49bed
-
-CheckCaughtCelebi: ; 49bf9
+CheckCaughtCelebi:
 	ld a, [wBattleResult]
 	bit 6, a
 	jr z, .false
@@ -261,4 +255,3 @@ CheckCaughtCelebi: ; 49bf9
 	ld [hScriptVar], a
 	ret
 
-; 49c0c

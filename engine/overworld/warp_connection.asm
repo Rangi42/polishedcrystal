@@ -1,9 +1,9 @@
-RunCallback_05_03: ; 1045b0
+RunCallback_05_03:
 	call ResetOWMapState
 	call GetCurrentMapTrigger
 	ld a, MAPCALLBACK_NEWMAP
 	call RunMapCallback
-RunCallback_03: ; 1045c4
+RunCallback_03:
 	farcall ClearCmdQueue
 	ld a, MAPCALLBACK_CMDQUEUE
 	call RunMapCallback
@@ -31,8 +31,7 @@ ResetOWMapState:
 	ld [hl], a
 	ret
 
-
-EnterMapConnection: ; 1045d6
+EnterMapConnection:
 ; Return carry if a connection has been entered.
 	ld a, [wPlayerStepDirection]
 	and a
@@ -44,10 +43,8 @@ EnterMapConnection: ; 1045d6
 	dec a
 	jp z, EnterEastConnection
 	ret
-; 1045ed
 
-
-EnterWestConnection: ; 1045ed
+EnterWestConnection:
 	ld a, [wWestConnectedMapGroup]
 	ld [wMapGroup], a
 	ld a, [wWestConnectedMapNumber]
@@ -81,10 +78,8 @@ EnterWestConnection: ; 1045ed
 	ld a, h
 	ld [wOverworldMapAnchor + 1], a
 	jp EnteredConnection
-; 104629
 
-
-EnterEastConnection: ; 104629
+EnterEastConnection:
 	ld a, [wEastConnectedMapGroup]
 	ld [wMapGroup], a
 	ld a, [wEastConnectedMapNumber]
@@ -118,10 +113,8 @@ EnterEastConnection: ; 104629
 	ld a, h
 	ld [wOverworldMapAnchor + 1], a
 	jp EnteredConnection
-; 104665
 
-
-EnterNorthConnection: ; 104665
+EnterNorthConnection:
 	ld a, [wNorthConnectedMapGroup]
 	ld [wMapGroup], a
 	ld a, [wNorthConnectedMapNumber]
@@ -145,10 +138,8 @@ EnterNorthConnection: ; 104665
 	ld a, h
 	ld [wOverworldMapAnchor + 1], a
 	jp EnteredConnection
-; 104696
 
-
-EnterSouthConnection: ; 104696
+EnterSouthConnection:
 	ld a, [wSouthConnectedMapGroup]
 	ld [wMapGroup], a
 	ld a, [wSouthConnectedMapNumber]
@@ -172,14 +163,12 @@ EnterSouthConnection: ; 104696
 	ld a, h
 	ld [wOverworldMapAnchor + 1], a
 	; fallthrough
-; 1046c4
 
-EnteredConnection: ; 1046c4
+EnteredConnection:
 	scf
 	ret
-; 1046c6
 
-LoadWarpData: ; 1046c6
+LoadWarpData:
 	call .SaveDigWarp
 	call .SetSpawn
 	ld a, [wNextWarp]
@@ -190,7 +179,7 @@ LoadWarpData: ; 1046c6
 	ld [wMapNumber], a
 	ret
 
-.SaveDigWarp: ; 1046df (41:46df)
+.SaveDigWarp:
 	call GetMapPermission
 	call CheckOutdoorMap
 	ret nz
@@ -216,7 +205,7 @@ LoadWarpData: ; 1046c6
 	ld [wDigMapNumber], a
 	ret
 
-.SetSpawn: ; 104718 (41:4718)
+.SetSpawn:
 	call GetMapPermission
 	call CheckOutdoorMap
 	ret nz
@@ -244,7 +233,7 @@ LoadWarpData: ; 1046c6
 	ld [wLastSpawnMapNumber], a
 	ret
 
-LoadMapTimeOfDay: ; 104750
+LoadMapTimeOfDay:
 	ld hl, wVramState
 	res 6, [hl]
 	ld a, $1
@@ -278,7 +267,7 @@ LoadMapTimeOfDay: ; 104750
 	ld [rVBK], a
 	ret
 
-.ClearBGMap: ; 104770 (41:4770)
+.ClearBGMap:
 	ld a, vBGMap0 / $100
 	ld [wBGMapAnchor + 1], a
 	xor a
@@ -321,12 +310,11 @@ LoadGraphics:
 	ld [hTileAnimFrame], a
 	farjp ReloadVisibleSprites
 
-LoadMapPalettes: ; 1047eb
+LoadMapPalettes:
 	ld a, CGB_MAPPALS
 	jp GetCGBLayout
-; 1047f0
 
-RefreshMapSprites: ; 1047f0
+RefreshMapSprites:
 	call ClearSprites
 	xor a
 	ld [hBGMapMode], a
@@ -347,7 +335,7 @@ RefreshMapSprites: ; 1047f0
 	ld [wPlayerSpriteSetupFlags], a
 	ret
 
-CheckMovingOffEdgeOfMap:: ; 104820 (41:4820)
+CheckMovingOffEdgeOfMap::
 	ld a, [wPlayerStepDirection]
 	cp STANDING
 	ret z
@@ -404,8 +392,7 @@ CheckMovingOffEdgeOfMap:: ; 104820 (41:4820)
 	scf
 	ret
 
-
-GetCoordOfUpperLeftCorner:: ; 10486d
+GetCoordOfUpperLeftCorner::
 	ld hl, wOverworldMap
 	ld a, [wXCoord]
 	bit 0, a
@@ -450,4 +437,3 @@ GetCoordOfUpperLeftCorner:: ; 10486d
 	and $1
 	ld [wMetatileStandingX], a
 	ret
-; 1048ba

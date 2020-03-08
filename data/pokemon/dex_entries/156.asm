@@ -1,4 +1,4 @@
-; QuilavaPokedexEntry: ; 0x1ccb33
+; QuilavaPokedexEntry:
 	db "Volcano@" ; species name
 	dw 211, 420 ; height, width
 

@@ -1,4 +1,4 @@
-; LedianPokedexEntry: ; 0x1ccfa0
+; LedianPokedexEntry:
 	db "Five Star@" ; species name
 	dw 407, 780 ; height, width
 

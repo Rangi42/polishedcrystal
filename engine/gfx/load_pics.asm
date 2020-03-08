@@ -1,4 +1,4 @@
-GetVariant: ; 51040
+GetVariant:
 	ld a, [wCurPartySpecies]
 	cp PIKACHU
 	jr z, .GetPikachuVariant
@@ -91,7 +91,7 @@ endr
 	ld [wCurForm], a
 	ret
 
-GetFrontpic: ; 51077
+GetFrontpic:
 	ld a, [wCurPartySpecies]
 	ld [wCurSpecies], a
 	and a
@@ -103,7 +103,7 @@ GetFrontpic: ; 51077
 	ld [rSVBK], a
 	jp CloseSRAM
 
-FrontpicPredef: ; 5108b
+FrontpicPredef:
 	ld a, [wCurPartySpecies]
 	ld [wCurSpecies], a
 	and a
@@ -122,7 +122,7 @@ FrontpicPredef: ; 5108b
 	ld [rSVBK], a
 	jp CloseSRAM
 
-_GetFrontpic: ; 510a5
+_GetFrontpic:
 	ld a, BANK(sScratch)
 	call GetSRAMBank
 	push de
@@ -158,7 +158,7 @@ _GetFrontpic: ; 510a5
 	pop hl
 	ret
 
-GetFrontpicPointer: ; 510d7
+GetFrontpicPointer:
 	ld a, [wCurPartySpecies]
 	call GetRelevantPicPointers
 	ld a, [wCurPartySpecies]
@@ -177,7 +177,7 @@ GetFrontpicPointer: ; 510d7
 	pop bc
 	ret
 
-GetAnimatedFrontpic: ; 51103
+GetAnimatedFrontpic:
 	ld a, $1
 	ld [rVBK], a
 	push hl
@@ -239,7 +239,7 @@ GetAnimatedFrontpic: ; 51103
 .no_overflow
 	jp Get2bpp
 
-LoadFrontpicTiles: ; 5114f
+LoadFrontpicTiles:
 	ld hl, wDecompressScratch
 ; bc = c * $10
 	swap c
@@ -270,7 +270,7 @@ LoadFrontpicTiles: ; 5114f
 	jr nz, .loop
 	ret
 
-GetBackpic: ; 5116c
+GetBackpic:
 	ld a, [wCurPartySpecies]
 	and a
 	ret z
@@ -318,7 +318,7 @@ GetBackpic: ; 5116c
 	ld [rSVBK], a
 	ret
 
-GetTrainerPic: ; 5120d
+GetTrainerPic:
 	ld a, [wTrainerClass]
 	and a
 	ret z
@@ -383,7 +383,7 @@ GetPaintingPic:
 	pop af
 	jr _Decompress7x7Pic
 
-DecompressPredef: ; 5125d
+DecompressPredef:
 ; Decompress lz data from b:hl to wDecompressScratch, then copy it to hROMBank:de.
 
 	ld a, [rSVBK]
@@ -407,7 +407,7 @@ DecompressPredef: ; 5125d
 	ld [rSVBK], a
 	ret
 
-FixBackpicAlignment: ; 5127c
+FixBackpicAlignment:
 	push de
 	push bc
 	ld a, [wBoxAlignment]
@@ -442,7 +442,7 @@ FixBackpicAlignment: ; 5127c
 	pop de
 	ret
 
-PadFrontpic: ; 512ab
+PadFrontpic:
 	ld a, b
 	sub 5
 	jr z, .five
@@ -492,7 +492,7 @@ PadFrontpic: ; 512ab
 	jr nz, .Fill
 	ret
 
-LoadFrontpic: ; 512f2
+LoadFrontpic:
 	ld a, [wBoxAlignment]
 	and a
 	jr nz, .x_flip

@@ -2,7 +2,7 @@
 ; Demixed by FroggestSpirit
 ; https://github.com/froggestspirit/CrystalComplete/blob/master/audio/music/custom/cinnabarGSC.asm
 
-Music_CinnabarIslandHGSS: ; f5127
+Music_CinnabarIslandHGSS:
 	dbw $40, Music_CinnabarIslandHGSS_Ch1
 	dbw $01, Music_CinnabarIslandHGSS_Ch2
 

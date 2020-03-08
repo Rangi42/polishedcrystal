@@ -1,4 +1,4 @@
-; CubonePokedexEntry: ; 0x1b9068
+; CubonePokedexEntry:
 	db "Lonely@" ; species name
 	dw 104, 140 ; height, width
 

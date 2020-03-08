@@ -1,4 +1,4 @@
-; MetapodPokedexEntry: ; 0x181ace
+; MetapodPokedexEntry:
 	db "Cocoon@" ; species name
 	dw 204, 220 ; height, width
 

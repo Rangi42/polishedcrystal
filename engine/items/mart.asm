@@ -6,7 +6,7 @@
 	const MARTTEXT_HERE_YOU_GO
 	const MARTTEXT_SOLD_OUT
 
-OpenMartDialog:: ; 15a45
+OpenMartDialog::
 	ld a, c
 	ld [wEngineBuffer1], a
 	call GetMart
@@ -15,7 +15,6 @@ OpenMartDialog:: ; 15a45
 	ld hl, .dialogs
 	rst JumpTable
 	ret
-; 15a57
 
 .dialogs
 	dw MartDialog
@@ -30,16 +29,14 @@ OpenMartDialog:: ; 15a45
 	dw TMMart
 	dw BlueCardMart
 	dw BTMart
-; 15a61
 
-MartDialog: ; 15a61
+MartDialog:
 	xor a
 	ld [wEngineBuffer1], a
 	ld [wEngineBuffer5], a
 	jp StandardMart
-; 15a6e
 
-HerbShop: ; 15a6e
+HerbShop:
 	call FarReadMart
 	call LoadStandardMenuDataHeader
 	ld hl, Text_HerbShop_Intro
@@ -47,9 +44,8 @@ HerbShop: ; 15a6e
 	call BuyMenu
 	ld hl, Text_HerbShop_ComeAgain
 	jp MartTextBox
-; 15a84
 
-BargainShop: ; 15a84
+BargainShop:
 	ld b, BANK(BargainShopData)
 	ld de, BargainShopData
 	call LoadMartPointer
@@ -68,11 +64,10 @@ BargainShop: ; 15a84
 .skip_set
 	ld hl, Text_BargainShop_ComeAgain
 	jp MartTextBox
-; 15aae
 
 INCLUDE "data/items/bargain_shop.asm"
 
-Pharmacist: ; 15aae
+Pharmacist:
 	call FarReadMart
 	call LoadStandardMenuDataHeader
 	ld hl, Text_Pharmacist_Intro
@@ -80,9 +75,8 @@ Pharmacist: ; 15aae
 	call BuyMenu
 	ld hl, Text_Pharmacist_ComeAgain
 	jp MartTextBox
-; 15ac4
 
-RooftopSale: ; 15ac4
+RooftopSale:
 	ld b, BANK(RooftopSaleData1) ; BANK(RooftopSaleData2)
 	ld de, RooftopSaleData1
 	ld hl, wStatusFlags
@@ -98,7 +92,6 @@ RooftopSale: ; 15ac4
 	call BuyMenu
 	ld hl, Text_Mart_ComeAgain
 	jp MartTextBox
-; 15aee
 
 INCLUDE "data/items/rooftop_sale.asm"
 
@@ -170,7 +163,7 @@ BTMart:
 	ld hl, Text_BTMart_ComeAgain
 	jp MartTextBox
 
-LoadMartPointer: ; 15b10
+LoadMartPointer:
 	ld a, b
 	ld [wMartPointerBank], a
 	ld a, e
@@ -186,9 +179,8 @@ LoadMartPointer: ; 15b10
 	ld [wBargainShopFlags], a
 	ld [wFacingDirection], a
 	ret
-; 15b31
 
-GetMart: ; 15b31
+GetMart:
 	ld hl, Marts
 	add hl, de
 	add hl, de
@@ -197,9 +189,8 @@ GetMart: ; 15b31
 	ld d, [hl]
 	ld b, BANK(Marts)
 	ret
-; 15b47
 
-StandardMart: ; 15b47
+StandardMart:
 .loop
 	ld a, [wEngineBuffer5]
 	ld hl, .MartFunctions
@@ -216,17 +207,15 @@ StandardMart: ; 15b47
 	dw .Sell
 	dw .Quit
 	dw .AnythingElse
-; 15b62
 
-.HowMayIHelpYou: ; 15b62
+.HowMayIHelpYou:
 	call LoadStandardMenuDataHeader
 	ld hl, Text_Mart_HowMayIHelpYou
 	call PrintText
 	ld a, $1 ; top menu
 	ret
-; 15b6e
 
-.TopMenu: ; 15b6e
+.TopMenu:
 	ld hl, MenuDataHeader_BuySell
 	call CopyMenuDataHeader
 	call VerticalMenu
@@ -245,41 +234,36 @@ StandardMart: ; 15b47
 .sell
 	ld a, $3 ; sell
 	ret
-; 15b8d
 
-.Buy: ; 15b8d
+.Buy:
 	call ExitMenu
 	call FarReadMart
 	call BuyMenu
 	and a
 	ld a, $5 ; Anything else?
 	ret
-; 15b9a
 
-.Sell: ; 15b9a
+.Sell:
 	call ExitMenu
 	call SellMenu
 	ld a, $5 ; Anything else?
 	ret
-; 15ba3
 
-.Quit: ; 15ba3
+.Quit:
 	call ExitMenu
 	ld hl, Text_Mart_ComeAgain
 	call MartTextBox
 	ld a, $ff ; exit
 	ret
-; 15baf
 
-.AnythingElse: ; 15baf
+.AnythingElse:
 	call LoadStandardMenuDataHeader
 	ld hl, Text_Mart_AnythingElse
 	call PrintText
 	ld a, $1 ; top menu
 	ret
-; 15bbb
 
-FarReadMart: ; 15bbb
+FarReadMart:
 	ld hl, wMartPointer
 	ld a, [hli]
 	ld h, [hl]
@@ -304,13 +288,12 @@ FarReadMart: ; 15bbb
 	call GetMartItemPrice
 	pop de
 	jr .ReadMartItem
-; 15be5
 
 ; FarReadTMMart needs to use GetFarByte from wMartPointerBank.
 ; ReadMart could just load from hl directly.
 ; But their structures are identical, so here they both use GetFarByte.
 FarReadTMMart:
-ReadMart: ; 15c25
+ReadMart:
 ; Load the mart pointer.  Mart data is local (no need for bank).
 	ld hl, wMartPointer
 	ld a, [hli]
@@ -403,14 +386,14 @@ ReadBlueCardMart:
 	ld [wCurMart], a
 	ret
 
-GetMartItemPrice: ; 15be5
+GetMartItemPrice:
 ; Return the price of item a in BCD at hl and in tiles at wStringBuffer1.
 	push hl
 	ld [wCurItem], a
 	farcall GetItemPrice
 	pop hl
 
-GetMartPrice: ; 15bf0
+GetMartPrice:
 ; Return price de in BCD at hl and in tiles at wStringBuffer1.
 	push hl
 	ld a, d
@@ -435,9 +418,8 @@ GetMartPrice: ; 15bf0
 	dec c
 	jr nz, .loop
 	ret
-; 15c1a
 
-.CharToNybble: ; 15c1a
+.CharToNybble:
 	ld a, [de]
 	inc de
 	cp " "
@@ -447,9 +429,8 @@ GetMartPrice: ; 15bf0
 .not_space
 	sub "0"
 	ret
-; 15c25
 
-BuyMenu: ; 15c62
+BuyMenu:
 	call BuyMenu_InitGFX
 .loop
 	call BuyMenuLoop ; menu loop
@@ -459,7 +440,6 @@ BuyMenu_Finish:
 	call ReturnToMapWithSpeechTextbox
 	and a
 	ret
-; 15c7d
 
 BuyTMMenu:
 	call BuyMenu_InitGFX
@@ -549,7 +529,7 @@ BuyMenu_InitGFX:
 	db $19, $24, $25, $26, $1a, 0
 	db $1b, $1c, $1c, $1c, $1d, -1
 
-LoadBuyMenuText: ; 15c7d
+LoadBuyMenuText:
 ; load text from a nested table
 ; which table is in wEngineBuffer1
 ; which entry is in register a
@@ -567,9 +547,8 @@ LoadBuyMenuText: ; 15c7d
 	ld h, [hl]
 	ld l, a
 	jp PrintText
-; 15c91
 
-MartAskPurchaseQuantity: ; 15c91
+MartAskPurchaseQuantity:
 	ld a, [wCurItem]
 	call GetMartDialogGroup ; gets a pointer from GetMartDialogGroup.MartTextFunctionPointers
 	inc hl
@@ -580,9 +559,8 @@ MartAskPurchaseQuantity: ; 15c91
 	cp 1
 	jp z, BargainShopAskPurchaseQuantity
 	jp RooftopSaleAskPurchaseQuantity
-; 15ca3
 
-GetMartDialogGroup: ; 15ca3
+GetMartDialogGroup:
 	ld a, [wEngineBuffer1]
 	ld e, a
 	ld d, 0
@@ -591,9 +569,8 @@ GetMartDialogGroup: ; 15ca3
 	add hl, de
 	add hl, de
 	ret
-; 15cb0
 
-.MartTextFunctionPointers: ; 15cb0
+.MartTextFunctionPointers:
 	dwb .StandardMartPointers, 0
 	dwb .HerbShopPointers, 0
 	dwb .BargainShopPointers, 1
@@ -606,9 +583,8 @@ GetMartDialogGroup: ; 15ca3
 	dwb .TMMartPointers, 0
 	dwb .BlueCardMartPointers, 0
 	dwb .BTMartPointers, 0
-; 15cbf
 
-.StandardMartPointers: ; 15cbf
+.StandardMartPointers:
 	dw Text_Mart_HowMany
 	dw Text_Mart_CostsThisMuch
 	dw Text_Mart_InsufficientFunds
@@ -616,7 +592,7 @@ GetMartDialogGroup: ; 15ca3
 	dw Text_Mart_HereYouGo
 	dw BuyMenuLoop
 
-.HerbShopPointers: ; 15ccb
+.HerbShopPointers:
 	dw Text_HerbShop_HowMany
 	dw Text_HerbShop_CostsThisMuch
 	dw Text_HerbShop_InsufficientFunds
@@ -624,7 +600,7 @@ GetMartDialogGroup: ; 15ca3
 	dw Text_HerbShop_HereYouGo
 	dw BuyMenuLoop
 
-.BargainShopPointers: ; 15cd7
+.BargainShopPointers:
 	dw BuyMenuLoop
 	dw Text_BargainShop_CostsThisMuch
 	dw Text_BargainShop_InsufficientFunds
@@ -632,14 +608,13 @@ GetMartDialogGroup: ; 15ca3
 	dw Text_BargainShop_HereYouGo
 	dw Text_BargainShop_SoldOut
 
-.PharmacyPointers: ; 15ce3
+.PharmacyPointers:
 	dw Text_Pharmacy_HowMany
 	dw Text_Pharmacy_CostsThisMuch
 	dw Text_Pharmacy_InsufficientFunds
 	dw Text_Pharmacy_BagFull
 	dw Text_Pharmacy_HereYouGo
 	dw BuyMenuLoop
-; 15cef
 
 .SilphMartPointers:
 	dw Text_SilphMart_HowMany
@@ -697,8 +672,7 @@ GetMartDialogGroup: ; 15ca3
 	dw Text_BTMart_HereYouGo
 	dw BlueCardBuyMenuLoop
 
-
-BuyMenuLoop: ; 15cef
+BuyMenuLoop:
 	farcall PlaceMoneyTopRight
 	call UpdateSprites
 	ld hl, MenuDataHeader_Buy
@@ -887,15 +861,13 @@ StandardMartAskPurchaseQuantity:
 	call LoadBuyMenuText
 	farcall SelectQuantityToBuy
 	jp ExitMenu
-; 15d97
 
-MartConfirmPurchase: ; 15d97
+MartConfirmPurchase:
 BTMartConfirmPurchase:
 	predef PartyMonItemName
 	ld a, MARTTEXT_COSTS_THIS_MUCH
 	call LoadBuyMenuText
 	jp YesNoBox
-; 15da5
 
 TMMartConfirmPurchase:
 	ld a, [wCurTMHM]
@@ -956,7 +928,6 @@ BargainShopAskPurchaseQuantity:
 	call JoyWaitAorB
 	scf
 	ret
-; 15de2
 
 RooftopSaleAskPurchaseQuantity:
 	ld a, MARTTEXT_HOW_MANY
@@ -964,9 +935,8 @@ RooftopSaleAskPurchaseQuantity:
 	call .GetSalePrice
 	farcall RooftopSale_SelectQuantityToBuy
 	jp ExitMenu
-; 15df9
 
-.GetSalePrice: ; 15df9
+.GetSalePrice:
 	ld a, [wMartItemID]
 	ld e, a
 	ld d, 0
@@ -983,7 +953,6 @@ RooftopSaleAskPurchaseQuantity:
 	inc hl
 	ld d, [hl]
 	ret
-; 15e0e
 
 TMMartAskPurchaseQuantity:
 	ld a, [wCurTMHM]
@@ -1088,29 +1057,26 @@ BTMartCompareBP:
 	cp d
 	ret
 
-Text_Mart_HowMany: ; 0x15e0e
+Text_Mart_HowMany:
 Text_BTMart_HowMany:
 	; How many?
 	text_jump UnknownText_0x1c4bfd
 	db "@"
-; 0x15e13
 
-Text_Mart_CostsThisMuch: ; 0x15e13
+Text_Mart_CostsThisMuch:
 Text_AdventurerMart_CostsThisMuch:
 	; @ (S) will be ¥@ .
 	text_jump UnknownText_0x1c4c08
 	db "@"
-; 0x15e18
 
-MenuDataHeader_Buy: ; 0x15e18
+MenuDataHeader_Buy:
 	db $40 ; flags
 	db 03, 06 ; start coords
 	db 11, 19 ; end coords
 	dw .menudata2
 	db 1 ; default option
-; 0x15e20
 
-.menudata2 ; 0x15e20
+.menudata2
 	db $30 ; pointers
 	db 4, 8 ; rows, columns
 	db 1 ; horizontal spacing
@@ -1118,7 +1084,6 @@ MenuDataHeader_Buy: ; 0x15e18
 	dba PlaceMartItemName
 	dba MartMenu_PrintBCDPrices
 	dba UpdateItemIconAndDescriptionAndBagQuantity
-; 15e30
 
 TMMenuDataHeader_Buy:
 	db $40 ; flags
@@ -1126,9 +1091,8 @@ TMMenuDataHeader_Buy:
 	db 11, 19 ; end coords
 	dw .menudata2
 	db 1 ; default option
-; 0x15e20
 
-.menudata2 ; 0x15e20
+.menudata2
 	db $30 ; pointers
 	db 4, 8 ; rows, columns
 	db 1 ; horizontal spacing
@@ -1136,9 +1100,8 @@ TMMenuDataHeader_Buy:
 	dba PlaceMenuTMHMName
 	dba MartMenu_PrintBCDPrices
 	dba UpdateTMHMIconAndDescriptionAndOwnership
-; 15e30
 
-MartMenu_PrintBCDPrices: ; 15e30
+MartMenu_PrintBCDPrices:
 	ld a, [wScrollingMenuCursorPosition]
 	ld c, a
 	ld b, 0
@@ -1154,7 +1117,6 @@ MartMenu_PrintBCDPrices: ; 15e30
 	add hl, bc
 	ld c, PRINTNUM_LEADINGZEROS | PRINTNUM_MONEY | 3
 	jp PrintBCDNumber
-; 15e4a (5:5e4a)
 
 BlueCardMenuDataHeader_Buy:
 	db $40 ; flags
@@ -1162,9 +1124,8 @@ BlueCardMenuDataHeader_Buy:
 	db 11, 19 ; end coords
 	dw .menudata2
 	db 1 ; default option
-; 0x15e20
 
-.menudata2 ; 0x15e20
+.menudata2
 	db $30 ; pointers
 	db 4, 8 ; rows, columns
 	db 1 ; horizontal spacing
@@ -1191,9 +1152,8 @@ BTMenuDataHeader_Buy:
 	db 11, 19 ; end coords
 	dw .menudata2
 	db 1 ; default option
-; 0x15e20
 
-.menudata2 ; 0x15e20
+.menudata2
 	db $30 ; pointers
 	db 4, 8 ; rows, columns
 	db 1 ; horizontal spacing
@@ -1226,97 +1186,83 @@ GetCursorItemPointCost:
 	pop hl
 	ret
 
-Text_HerbShop_Intro: ; 0x15e4a
+Text_HerbShop_Intro:
 	; Hello, dear. I sell inexpensive herbal medicine. They're good, but a trifle bitter. Your #MON may not like them. Hehehehe…
 	text_jump UnknownText_0x1c4c28
 	db "@"
-; 0x15e4f
 
-Text_HerbShop_CostsThisMuch: ; 0x15e54
+Text_HerbShop_CostsThisMuch:
 	; @ (S) will be ¥@ .
 	text_jump UnknownText_0x1c4cae
 	db "@"
-; 0x15e59
 
-Text_HerbShop_HereYouGo: ; 0x15e59
+Text_HerbShop_HereYouGo:
 	; Thank you, dear. Hehehehe…
 	text_jump UnknownText_0x1c4cce
 	db "@"
-; 0x15e5e
 
-Text_HerbShop_BagFull: ; 0x15e5e
+Text_HerbShop_BagFull:
 	; Oh? Your PACK is full, dear.
 	text_jump UnknownText_0x1c4cea
 	db "@"
-; 0x15e63
 
-Text_HerbShop_InsufficientFunds: ; 0x15e63
+Text_HerbShop_InsufficientFunds:
 	; Hehehe… You don't have the money.
 	text_jump UnknownText_0x1c4d08
 	db "@"
-; 0x15e68
 
-Text_HerbShop_ComeAgain: ; 0x15e68
+Text_HerbShop_ComeAgain:
 	; Come again, dear. Hehehehe…
 	text_jump UnknownText_0x1c4d2a
 	db "@"
-; 0x15e6d
 
-Text_BargainShop_Intro: ; 0x15e6d
+Text_BargainShop_Intro:
 	; Hiya! Care to see some bargains? I sell rare items that nobody else carries--but only one of each item.
 	text_jump UnknownText_0x1c4d47
 	db "@"
-; 0x15e72
 
-Text_BargainShop_CostsThisMuch: ; 0x15e72
+Text_BargainShop_CostsThisMuch:
 	; costs ¥@ . Want it?
 	text_jump UnknownText_0x1c4db0
 	db "@"
-; 0x15e77
 
-Text_BargainShop_HereYouGo: ; 0x15e77
+Text_BargainShop_HereYouGo:
 Text_SilphMart_HereYouGo:
 Text_AdventurerMart_HereYouGo:
 Text_BazaarMart_HereYouGo:
 	; Thanks.
 	text_jump UnknownText_0x1c4dcd
 	db "@"
-; 0x15e7c
 
-Text_BargainShop_BagFull: ; 0x15e7c
+Text_BargainShop_BagFull:
 Text_AdventurerMart_BagFull:
 	; Uh-oh, your PACK is chock-full.
 	text_jump UnknownText_0x1c4dd6
 	db "@"
-; 0x15e81
 
-Text_BargainShop_SoldOut: ; 0x15e81
+Text_BargainShop_SoldOut:
 	; You bought that already. I'm all sold out of it.
 	text_jump UnknownText_0x1c4df7
 	db "@"
-; 0x15e86
 
-Text_BargainShop_InsufficientFunds: ; 0x15e86
+Text_BargainShop_InsufficientFunds:
 Text_AdventurerMart_InsufficientFunds:
 	; Uh-oh, you're short on funds.
 	text_jump UnknownText_0x1c4e28
 	db "@"
-; 0x15e8b
 
-Text_BargainShop_ComeAgain: ; 0x15e8b
+Text_BargainShop_ComeAgain:
 	; Come by again sometime.
 	text_jump UnknownText_0x1c4e46
 	db "@"
-; 0x15e90
 
-Text_Pharmacist_Intro: ; 0x15e90
+Text_Pharmacist_Intro:
 	; What's up? Need some medicine?
 	text_jump UnknownText_0x1c4e5f
 	db "@"
-; 0x15e95
 
-Text_HerbShop_HowMany: ; 0x15e4f
-Text_Pharmacy_HowMany: ; 0x15e95
+Text_HerbShop_HowMany:
+Text_Pharmacy_HowMany:
 Text_SilphMart_HowMany:
 Text_AdventurerMart_HowMany:
 Text_InformalMart_HowMany:
@@ -1324,48 +1270,42 @@ Text_BazaarMart_HowMany:
 	; How many?
 	text_jump UnknownText_0x1c4e7e
 	db "@"
-; 0x15e9a
 
-Text_Pharmacy_CostsThisMuch: ; 0x15e9a
+Text_Pharmacy_CostsThisMuch:
 Text_SilphMart_CostsThisMuch:
 Text_InformalMart_CostsThisMuch:
 Text_BazaarMart_CostsThisMuch:
 	; @ (S) will cost ¥@ .
 	text_jump UnknownText_0x1c4e89
 	db "@"
-; 0x15e9f
 
-Text_Pharmacy_HereYouGo: ; 0x15e9f
+Text_Pharmacy_HereYouGo:
 Text_InformalMart_HereYouGo:
 	; Thanks much!
 	text_jump UnknownText_0x1c4eab
 	db "@"
-; 0x15ea4
 
-Text_Pharmacy_BagFull: ; 0x15ea4
+Text_Pharmacy_BagFull:
 Text_SilphMart_BagFull:
 Text_InformalMart_BagFull:
 Text_BazaarMart_BagFull:
 	; You don't have any more space.
 	text_jump UnknownText_0x1c4eb9
 	db "@"
-; 0x15ea9
 
-Text_Pharmacy_InsufficientFunds: ; 0x15ea9
+Text_Pharmacy_InsufficientFunds:
 Text_SilphMart_InsufficientFunds:
 Text_InformalMart_InsufficientFunds:
 Text_BazaarMart_InsufficientFunds:
 	; Huh? That's not enough money.
 	text_jump UnknownText_0x1c4ed8
 	db "@"
-; 0x15eae
 
-Text_Pharmacist_ComeAgain: ; 0x15eae
+Text_Pharmacist_ComeAgain:
 Text_InformalMart_ComeAgain:
 	; All right. See you around.
 	text_jump UnknownText_0x1c4ef6
 	db "@"
-; 0x15eb3
 
 Text_SilphMart_Intro:
 	; Employees like me have access to company swag! Want to buy some?
@@ -1403,41 +1343,35 @@ Text_TMMart_CostsThisMuch:
 	text_jump TMMartCostsThisMuchText
 	db "@"
 
-Text_BlueCardMart_HowMayIHelpYou: ; 0x8b072
+Text_BlueCardMart_HowMayIHelpYou:
 	; Which prize would you like?
 	text_jump UnknownText_0x1c589f
 	db "@"
-; 0x8b077
 
-Text_BlueCardMart_CostsThisMuch: ; 0x8b077
+Text_BlueCardMart_CostsThisMuch:
 	; ? Is that right?
 	text_jump UnknownText_0x1c58bc
 	db "@"
-; 0x8b07c
 
-Text_BlueCardMart_InsufficientFunds: ; 0x8b081
+Text_BlueCardMart_InsufficientFunds:
 	; You don't have enough points.
 	text_jump UnknownText_0x1c58e0
 	db "@"
-; 0x8b086
 
-Text_BlueCardMart_BagFull: ; 0x8b086
+Text_BlueCardMart_BagFull:
 	; You have no room for it.
 	text_jump UnknownText_0x1c58ff
 	db "@"
-; 0x8b08b
 
 Text_BlueCardMart_HereYouGo:
 	; Here you go!
 	text_jump UnknownText_0x1c58d1
 	db "@"
-; 0x8b081
 
-Text_BlueCardMart_ComeAgain: ; 0x8b08b
+Text_BlueCardMart_ComeAgain:
 	; Oh. Please come back again!
 	text_jump UnknownText_0x1c591a
 	db "@"
-; 0x8b090
 
 Text_BTMart_HowMayIHelpYou:
 	; Welcome to the Exchange Service Corner! You can trade in your BP for prizes.
@@ -1464,7 +1398,7 @@ Text_BTMart_ComeAgain:
 	text_jump BTMartComeAgainText
 	db "@"
 
-SellMenu: ; 15eb3
+SellMenu:
 	call DisableSpriteUpdates
 	farcall DepositSellInitPackBuffers
 .loop
@@ -1480,9 +1414,8 @@ SellMenu: ; 15eb3
 	call ReturnToMapWithSpeechTextbox
 	and a
 	ret
-; 15ed3
 
-.TryToSellItem: ; 15ee0
+.TryToSellItem:
 	call CheckUniqueItemPocket
 	jr z, .cant_sell
 	farcall CheckItemMenu
@@ -1490,9 +1423,8 @@ SellMenu: ; 15eb3
 	ld hl, .dw
 	rst JumpTable
 	ret
-; 15eee
 
-.dw ; 15eee
+.dw
 	dw .okay_to_sell
 	dw .cant_buy
 	dw .cant_buy
@@ -1500,7 +1432,6 @@ SellMenu: ; 15eb3
 	dw .okay_to_sell
 	dw .okay_to_sell
 	dw .okay_to_sell
-; 15efc
 
 .cant_sell
 	ld hl, TextMart_CantBuyFromYou
@@ -1543,91 +1474,76 @@ SellMenu: ; 15eb3
 	call ExitMenu
 	and a
 	ret
-; 15f73
 
-Text_Mart_SellHowMany: ; 0x15f73
+Text_Mart_SellHowMany:
 	; How many?
 	text_jump UnknownText_0x1c4f33
 	db "@"
-; 0x15f78
 
-Text_Mart_ICanPayThisMuch: ; 0x15f78
+Text_Mart_ICanPayThisMuch:
 	; I can pay you ¥@ . Is that OK?
 	text_jump UnknownText_0x1c4f3e
 	db "@"
-; 0x15f7d
 
-Text_Mart_HowMayIHelpYou: ; 0x15f83
+Text_Mart_HowMayIHelpYou:
 	; Welcome! How may I help you?
 	text_jump UnknownText_0x1c4f62
 	db "@"
-; 0x15f88
 
-MenuDataHeader_BuySell: ; 0x15f88
+MenuDataHeader_BuySell:
 	db $40 ; flags
 	db 00, 00 ; start coords
 	db 08, 07 ; end coords
 	dw .menudata2
 	db 1 ; default option
-; 0x15f90
 
-.menudata2 ; 0x15f90
+.menudata2
 	db $80 ; strings
 	db 3 ; items
 	db "Buy@"
 	db "Sell@"
 	db "Quit@"
-; 0x15f96
 
-Text_Mart_HereYouGo: ; 0x15fa0
+Text_Mart_HereYouGo:
 Text_BTMart_HereYouGo:
 	; Here you are. Thank you!
 	text_jump UnknownText_0x1c4f80
 	db "@"
-; 0x15fa5
 
-Text_Mart_InsufficientFunds: ; 0x15fa5
+Text_Mart_InsufficientFunds:
 	; You don't have enough money.
 	text_jump UnknownText_0x1c4f9a
 	db "@"
-; 0x15faa
 
-Text_Mart_BagFull: ; 0x15faa
+Text_Mart_BagFull:
 	; You can't carry any more items.
 	text_jump UnknownText_0x1c4fb7
 	db "@"
-; 0x15faf
 
-TextMart_CantBuyFromYou: ; 0x15faf
+TextMart_CantBuyFromYou:
 	; Sorry, I can't buy that from you.
 	text_jump UnknownText_0x1c4fd7
 	db "@"
-; 0x15fb4
 
-Text_Mart_ComeAgain: ; 0x15fb4
+Text_Mart_ComeAgain:
 	; Please come again!
 	text_jump UnknownText_0x1c4ff9
 	db "@"
-; 0x15fb9
 
-Text_Mart_AnythingElse: ; 0x15fb9
+Text_Mart_AnythingElse:
 	text_jump UnknownText_0x1c500d
 	db "@"
-; 0x15fbe
 
-Text_Mart_SoldForAmount: ; 0x15fbe
+Text_Mart_SoldForAmount:
 	text_jump UnknownText_0x1c502e
 	db "@"
-; 0x15fc3
 
-PlayTransactionSound: ; 15fc3
+PlayTransactionSound:
 	call WaitSFX
 	ld de, SFX_TRANSACTION
 	jp PlaySFX
-; 15fcd
 
-MartTextBox: ; 15fcd
+MartTextBox:
 	call MenuTextBox
 	call JoyWaitAorB
 	jp ExitMenu
-; 15fd7

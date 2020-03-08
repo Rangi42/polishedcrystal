@@ -1,4 +1,4 @@
-_Sine:: ; 84d9
+_Sine::
 ; A simple sine function.
 ; Return d * sin(e) in hl.
 
@@ -20,7 +20,7 @@ _Sine:: ; 84d9
 	inc a
 	ret
 
-.ApplySineWave: ; 84ef
+.ApplySineWave:
 	ld e, a
 	ld a, d
 	ld d, 0
@@ -44,7 +44,7 @@ _Sine:: ; 84d9
 	jr nz, .multiply
 	ret
 
-.sinewave ; 850b
+.sinewave
 ; A $20-word table representing a sine wave.
 ; 90 degrees is index $10 at a base amplitude of $100.
 	sine_wave $100

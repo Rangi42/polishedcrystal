@@ -89,12 +89,11 @@ endc
 	pop af
 	ld [hVBlank], a
 	jp DelayFrame
-; 8c26d
 
 .TrainerBattlePokeballTile:
 INCBIN "gfx/overworld/trainer_battle_pokeball_tile.2bpp"
 
-.BattleTransitionScenes ; 8c323 (23:4323)
+.BattleTransitionScenes
 	dw StartTrainerBattle_DetermineWhichAnimation ; 00
 
 	; Animation 1: cave
@@ -140,8 +139,7 @@ INCBIN "gfx/overworld/trainer_battle_pokeball_tile.2bpp"
 	; All animations jump to here.
 	dw StartTrainerBattle_Finish ; 20
 
-
-StartTrainerBattle_DetermineWhichAnimation: ; 8c365 (23:4365)
+StartTrainerBattle_DetermineWhichAnimation:
 ; The screen flashes a different number of
 ; times depending on the level of your lead
 ; Pokemon relative to the opponent's.
@@ -190,39 +188,37 @@ endr
 	ld a, [hl]
 	ld [wJumptableIndex], a
 	ret
-; 8c38f (23:438f)
 
-.StartingPoints: ; 8c38f
+.StartingPoints:
 	db 1,  9
 	db 16, 24
-; 8c393
 
-StartTrainerBattle_Finish: ; 8c393 (23:4393)
+StartTrainerBattle_Finish:
 	call ClearSprites
 	ld a, $80
 	ld [wJumptableIndex], a
 	ret
 
-StartTrainerBattle_NextScene: ; 8c39c (23:439c)
+StartTrainerBattle_NextScene:
 	ld hl, wJumptableIndex
 	inc [hl]
 	ret
 
-StartTrainerBattle_SetUpBGMap: ; 8c3a1 (23:43a1)
+StartTrainerBattle_SetUpBGMap:
 	call StartTrainerBattle_NextScene
 	xor a
 	ld [wcf64], a
 	ld [hBGMapMode], a
 	ret
 
-StartTrainerBattle_Flash: ; 8c3ab (23:43ab)
+StartTrainerBattle_Flash:
 	ld a, [hBattlePalFadeMode]
 	ld [wPalFadeMode], a
 	ld c, 10
 	call DoFadePalettes
 	jp StartTrainerBattle_NextScene
 
-StartTrainerBattle_SetUpForWavyOutro: ; 8c3e8 (23:43e8)
+StartTrainerBattle_SetUpForWavyOutro:
 	farcall BattleStart_HideAllSpritesExceptBattleParticipants
 	ld a, BANK(wLYOverrides)
 	ld [rSVBK], a
@@ -242,7 +238,7 @@ StartTrainerBattle_SetUpForWavyOutro: ; 8c3e8 (23:43e8)
 	set LCD_STAT, [hl]
 	ret
 
-StartTrainerBattle_SineWave: ; 8c408 (23:4408)
+StartTrainerBattle_SineWave:
 	ld a, [wcf64]
 	cp $60
 	jr nc, .end
@@ -253,7 +249,7 @@ StartTrainerBattle_SineWave: ; 8c408 (23:4408)
 	ld [wJumptableIndex], a
 	ret
 
-.DoSineWave: ; 8c419 (23:4419)
+.DoSineWave:
 	ld hl, wcf65
 	ld a, [hl]
 	inc [hl]
@@ -281,7 +277,7 @@ StartTrainerBattle_SineWave: ; 8c408 (23:4408)
 	jr nz, .loop
 	ret
 
-StartTrainerBattle_SetUpForSpinOutro: ; 8c43d (23:443d)
+StartTrainerBattle_SetUpForSpinOutro:
 	farcall BattleStart_HideAllSpritesExceptBattleParticipants
 	ld a, BANK(wLYOverrides)
 	ld [rSVBK], a
@@ -303,7 +299,7 @@ ENDM
 	const LOWER_LEFT
 	const LOWER_RIGHT
 
-StartTrainerBattle_SpinToBlack: ; 8c44f (23:444f)
+StartTrainerBattle_SpinToBlack:
 	xor a
 	ld [hBGMapMode], a
 	ld a, [wcf64]
@@ -337,9 +333,8 @@ endr
 	ld a, $20
 	ld [wJumptableIndex], a
 	ret
-; 8c490 (23:4490)
 
-.spintable ; 8c490
+.spintable
 	spintable_entry UPPER_LEFT,   1,  9,  8
 	spintable_entry UPPER_LEFT,   2,  1,  6
 	spintable_entry UPPER_LEFT,   3,  0,  4
@@ -381,9 +376,8 @@ endr
 	spintable_entry LOWER_LEFT,   2,  1, 11
 	spintable_entry LOWER_LEFT,   1,  9,  9
 	db -1
-; 8c4f5
 
-.load ; 8c4f5 (23:44f5)
+.load
 	ld a, [hli]
 	ld e, a
 	ld a, [hli]
@@ -438,7 +432,6 @@ endr
 	dec c
 	jr nz, .loop2
 	jr .loop
-; 8c538 (23:4538)
 
 ; wedgeN: db width towards edge, x increment or -1 if done
 .wedge1 db 10, -1
@@ -451,9 +444,8 @@ endr
 .wedge8 db 2, 1, 2, 0, 2, 1, 2, 0, 1, 1, 2, 0, 1, 1, 1, -1
 .wedge9 db 2, 0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, -1
 .wedge10 db 2, 0, 2, 0, 2, 0, 1, 0, 1, 0, 1, -1
-; 8c578
 
-StartTrainerBattle_SetUpForRandomScatterOutro: ; 8c578 (23:4578)
+StartTrainerBattle_SetUpForRandomScatterOutro:
 	farcall BattleStart_HideAllSpritesExceptBattleParticipants
 	ld a, BANK(wLYOverrides)
 	ld [rSVBK], a
@@ -464,7 +456,7 @@ StartTrainerBattle_SetUpForRandomScatterOutro: ; 8c578 (23:4578)
 	ld [hBGMapMode], a
 	ret
 
-StartTrainerBattle_SpeckleToBlack: ; 8c58f (23:458f)
+StartTrainerBattle_SpeckleToBlack:
 	ld hl, wcf64
 	ld a, [hl]
 	and a
@@ -491,7 +483,7 @@ StartTrainerBattle_SpeckleToBlack: ; 8c58f (23:458f)
 	ld [wJumptableIndex], a
 	ret
 
-.BlackOutRandomTile: ; 8c5b8 (23:45b8)
+.BlackOutRandomTile:
 .y_loop
 	call Random
 	cp SCREEN_HEIGHT
@@ -526,7 +518,7 @@ StartTrainerBattle_SpeckleToBlack: ; 8c58f (23:458f)
 	ld [hl], a
 	ret
 
-StartTrainerBattle_LoadPokeBallGraphics: ; 8c5dc (23:45dc)
+StartTrainerBattle_LoadPokeBallGraphics:
 	xor a
 	ld [hBGMapMode], a
 
@@ -659,7 +651,7 @@ StartTrainerBattle_LoadPokeBallGraphics: ; 8c5dc (23:45dc)
 	call CopyTilemapAtOnce
 	jp StartTrainerBattle_NextScene
 
-.copypals ; 8c677 (23:4677)
+.copypals
 	ld de, wUnknBGPals palette PAL_BG_GRAY ; red poke ball, doesn't flash
 	call .copy
 	ld de, wUnknBGPals palette PAL_BG_RED ; flashing overworld
@@ -682,7 +674,7 @@ StartTrainerBattle_LoadPokeBallGraphics: ; 8c5dc (23:45dc)
 	call .timeofdaypal
 	ld de, wUnknBGPals palette PAL_BG_TEXT ; black
 
-.copy ; 8c698 (23:4698)
+.copy
 	push hl
 	push de
 	ld bc, 1 palettes
@@ -707,7 +699,6 @@ StartTrainerBattle_LoadPokeBallGraphics: ; 8c5dc (23:45dc)
 	add hl, bc
 	pop bc
 	ret
-; 8c6a1 (23:46a1)
 
 .RocketTrainerClasses
 	db GRUNTM
@@ -824,7 +815,7 @@ RocketTransition:
 	db %11111000, %00011111
 	db %11111000, %00011111
 
-WipeLYOverrides: ; 8c6d8
+WipeLYOverrides:
 	ld a, [rSVBK]
 	push af
 	ld a, $5
@@ -838,9 +829,8 @@ WipeLYOverrides: ; 8c6d8
 	pop af
 	ld [rSVBK], a
 	ret
-; 8c6ef
 
-.wipe ; 8c6ef
+.wipe
 	xor a
 	ld c, SCREEN_HEIGHT_PX
 .loop
@@ -848,8 +838,6 @@ WipeLYOverrides: ; 8c6d8
 	dec c
 	jr nz, .loop
 	ret
-; 8c6f7
-
 
 zoombox: MACRO
 ; width, height, start y, start x
@@ -857,7 +845,7 @@ zoombox: MACRO
 	dw \4 * SCREEN_WIDTH + \3 + wAttrMap
 ENDM
 
-StartTrainerBattle_ZoomToBlack: ; 8c768 (23:4768)
+StartTrainerBattle_ZoomToBlack:
 	farcall BattleStart_HideAllSpritesExceptBattleParticipants
 	ld de, .boxes
 
@@ -886,9 +874,8 @@ StartTrainerBattle_ZoomToBlack: ; 8c768 (23:4768)
 	ld a, $20
 	ld [wJumptableIndex], a
 	ret
-; 8c792 (23:4792)
 
-.boxes ; 8c792
+.boxes
 	zoombox  4,  2,  8, 8
 	zoombox  6,  4,  7, 7
 	zoombox  8,  6,  6, 6
@@ -899,9 +886,8 @@ StartTrainerBattle_ZoomToBlack: ; 8c768 (23:4768)
 	zoombox 18, 16,  1, 1
 	zoombox 20, 18,  0, 0
 	db -1
-; 8c7b7
 
-.Copy: ; 8c7b7 (23:47b7)
+.Copy:
 .row
 	push bc
 	push hl
@@ -919,4 +905,3 @@ StartTrainerBattle_ZoomToBlack: ; 8c768 (23:4768)
 	dec b
 	jr nz, .row
 	ret
-; 8c7c9 (23:47c9)

@@ -123,8 +123,6 @@ Music_BicycleRSE_Ch1:
 	note F_, 2
 	note E_, 2
 
-
-
 	intensity $82
 	note D_, 8
 	note E_, 8

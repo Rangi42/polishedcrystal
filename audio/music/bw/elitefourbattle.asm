@@ -794,7 +794,6 @@ Music_EliteFourBattleBW_Ch2_loop_1:
 	note F_, 5
 	loopchannel 0, Music_EliteFourBattleBW_Ch2_loop_main
 
-
 Music_EliteFourBattleBW_Ch2_branch_1:
 	intensity $91
 	octave 3

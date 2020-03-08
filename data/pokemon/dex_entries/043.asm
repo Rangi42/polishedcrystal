@@ -1,4 +1,4 @@
-; OddishPokedexEntry: ; 0x182836
+; OddishPokedexEntry:
 	db "Weed@" ; species name
 	dw 108, 120 ; height, width
 

@@ -140,14 +140,12 @@ AdvanceRNGState::
 	ld [hl], e ; wRNGState[3]
 	ret
 
-
 BattleRandom::
 ; Handles all RNG calls in the battle engine, allowing
 ; link battles to remain in sync using a shared PRNG.
 	farjp _BattleRandom
 
-
-RandomRange:: ; 2fb1
+RandomRange::
 ; Return a random number between 0 and a (non-inclusive).
 
 	push bc
@@ -178,7 +176,6 @@ RandomRange:: ; 2fb1
 
 	pop bc
 	ret
-; 2fcb
 
 BattleRandomRange::
 ; battle friendly RandomRange

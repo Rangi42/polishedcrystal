@@ -467,7 +467,6 @@ Music_WhiteTreehollowWhite2_Ch1_branch_1:
 	intensity $42
 	endchannel
 
-
 Music_WhiteTreehollowWhite2_Ch2:
 	dutycycle $2
 	vibrato $12, $25

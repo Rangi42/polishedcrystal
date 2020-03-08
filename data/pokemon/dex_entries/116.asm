@@ -1,4 +1,4 @@
-; HorseaPokedexEntry: ; 0x1b9553
+; HorseaPokedexEntry:
 	db "Dragon@" ; species name
 	dw 104, 180 ; height, width
 

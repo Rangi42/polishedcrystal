@@ -48,19 +48,19 @@ _ResetInitialOptions:
 	ld [sOptions + wInitialOptions2 - wOptions1], a ; sInitialOptions2
 	jp CloseSRAM
 
-.Text_ResetInitialOptions: ; 0x4d580
+.Text_ResetInitialOptions:
 	; Reset the initial game options?
 	text_jump ResetInitialOptionsText
 	db "@"
 
-TitleScreenNoYesMenuDataHeader: ; 0x4d585
+TitleScreenNoYesMenuDataHeader:
 	db $00 ; flags
 	db 07, 14 ; start coords
 	db 11, 19 ; end coords
 	dw .MenuData2
 	db 1 ; default option
 
-.MenuData2: ; 0x4d58d
+.MenuData2:
 	db $c0 ; flags
 	db 2 ; items
 	db "No@"

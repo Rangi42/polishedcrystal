@@ -1,14 +1,12 @@
-UpdateTimeOfDayPal:: ; 8c001
+UpdateTimeOfDayPal::
 	call UpdateTime
 	ld a, [wTimeOfDay]
 	ld [wCurTimeOfDay], a
 	call GetTimePalette
 	ld [wTimeOfDayPal], a
 	ret
-; 8c011
 
-
-_TimeOfDayPals:: ; 8c011
+_TimeOfDayPals::
 ; return carry if pals are changed
 
 ; forced pals?
@@ -37,7 +35,6 @@ _TimeOfDayPals:: ; 8c011
 ; update palette id
 	ld [wTimeOfDayPal], a
 
-
 ; save bg palette 7
 	ld hl, wUnknBGPals palette 7
 
@@ -63,11 +60,9 @@ _TimeOfDayPals:: ; 8c011
 	ld a, b
 	ld [rSVBK], a
 
-
 ; update cgb pals
 	ld a, CGB_MAPPALS
 	call GetCGBLayout
-
 
 ; restore bg palette 7
 	ld hl, wUnknBGPals palette 7 + 1 palettes - 1 ; last byte in UnknBGPals
@@ -106,14 +101,11 @@ _TimeOfDayPals:: ; 8c011
 ; no change occurred
 	and a
 	ret
-; 8c070
 
-
-_UpdateTimePals:: ; 8c070
+_UpdateTimePals::
 	ld c, $9 ; normal
 	call GetTimePalFade
 	jp DmgToCgbTimePals
-; 8c079
 
 FadeInPalettes::
 	ld c, 10
@@ -123,7 +115,7 @@ FadeOutPalettes::
 	ld c, 10
 	jp FadeToWhite
 
-Special_BattleTower_Fade: ; 8c092
+Special_BattleTower_Fade:
 	call FillWhiteBGColor
 	ld c, $9
 	call GetTimePalFade
@@ -138,24 +130,20 @@ Special_BattleTower_Fade: ; 8c092
 	dec b
 	jr nz, .asm_8c09c
 	ret
-; 8c0ab
 
-Special_FadeInQuickly: ; 8c0ab
+Special_FadeInQuickly:
 	ld c, $0
 	call GetTimePalFade
 	ld b, $4
 	jp ConvertTimePalsIncHL
-; 8c0b6
 
-Special_FadeBlackQuickly: ; 8c0b6
+Special_FadeBlackQuickly:
 	ld c, $9
 	call GetTimePalFade
 	ld b, $4
 	jp ConvertTimePalsDecHL
-; 8c0c1
 
-
-FillWhiteBGColor: ; 8c0c1
+FillWhiteBGColor:
 	ld a, [rSVBK]
 	push af
 	ld a, $5
@@ -182,13 +170,12 @@ endr
 	pop af
 	ld [rSVBK], a
 	ret
-; 8c0e5
 
 brightlevel: MACRO
 	db (\1 << 6) | (\2 << 4) | (\3 << 2) | \4
 ENDM
 
-ReplaceTimeOfDayPals: ; 8c0e5
+ReplaceTimeOfDayPals:
 	ld hl, .BrightnessLevels
 	ld a, [wMapTimeOfDay]
 	cp PALETTE_DARK ; needs Flash
@@ -215,9 +202,8 @@ ReplaceTimeOfDayPals: ; 8c0e5
 	ld a, %10101010 ; 2, 2, 2, 2
 	ld [wTimeOfDayPalset], a
 	ret
-; 8c10f (23:410f)
 
-.BrightnessLevels: ; 8c10f
+.BrightnessLevels:
 	brightlevel 3, 2, 1, 0 ; PALETTE_AUTO
 	brightlevel 1, 1, 1, 1 ; PALETTE_DAY
 	brightlevel 2, 2, 2, 2 ; PALETTE_NITE
@@ -226,9 +212,8 @@ ReplaceTimeOfDayPals: ; 8c0e5
 	brightlevel 3, 2, 1, 0
 	brightlevel 3, 2, 1, 0
 	brightlevel 3, 2, 1, 0
-; 8c117
 
-GetTimePalette: ; 8c117
+GetTimePalette:
 	ld a, [wTimeOfDay]
 	ld e, a
 	ld d, 0
@@ -239,7 +224,6 @@ GetTimePalette: ; 8c117
 	ld h, [hl]
 	ld l, a
 	jp hl
-; 8c126
 
 .TimePalettes:
 	dw .MorningPalette
@@ -271,10 +255,8 @@ GetTimePalette: ; 8c117
 	rlca
 	rlca
 	ret
-; 8c14e
 
-
-DmgToCgbTimePals: ; 8c14e
+DmgToCgbTimePals:
 	push hl
 	push de
 	ld a, [hli]
@@ -287,9 +269,8 @@ DmgToCgbTimePals: ; 8c14e
 	pop de
 	pop hl
 	ret
-; 8c15e
 
-ConvertTimePalsIncHL: ; 8c15e
+ConvertTimePalsIncHL:
 .loop
 	call DmgToCgbTimePals
 	inc hl
@@ -300,9 +281,8 @@ ConvertTimePalsIncHL: ; 8c15e
 	dec b
 	jr nz, .loop
 	ret
-; 8c16d
 
-ConvertTimePalsDecHL: ; 8c16d
+ConvertTimePalsDecHL:
 .loop
 	call DmgToCgbTimePals
 	dec hl
@@ -313,10 +293,8 @@ ConvertTimePalsDecHL: ; 8c16d
 	dec b
 	jr nz, .loop
 	ret
-; 8c17c
 
-
-GetTimePalFade: ; 8c17c
+GetTimePalFade:
 	ld hl, .cgbfade
 	ld b, $0
 	add hl, bc
@@ -330,4 +308,3 @@ GetTimePalFade: ; 8c17c
 	db %10010000, %10010000, %10010000
 	db %01000000, %01000000, %01000000
 	db %00000000, %00000000, %00000000
-; 8c20f

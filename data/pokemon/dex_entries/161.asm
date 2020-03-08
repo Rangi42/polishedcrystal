@@ -1,4 +1,4 @@
-; SentretPokedexEntry: ; 0x1ccd6b
+; SentretPokedexEntry:
 	db "Scout@" ; species name
 	dw 207, 130 ; height, width
 

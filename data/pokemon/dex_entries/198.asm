@@ -1,4 +1,4 @@
-; MurkrowPokedexEntry: ; 0x1d021e
+; MurkrowPokedexEntry:
 	db "Darkness@" ; species name
 	dw 108, 50 ; height, width
 

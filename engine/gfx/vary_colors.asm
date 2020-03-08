@@ -79,7 +79,6 @@ GetColorChannelVariedByDV:
 	sub 4
 	jr .floor
 
-
 VaryRedByDV:
 ;;; e = DV
 ;;; [hl+0] = gggr:rrrr
@@ -157,7 +156,6 @@ VaryBlueByDV:
 	or d
 	ld [hld], a
 	ret
-
 
 VaryColorsByDVs::
 ; hl = colors

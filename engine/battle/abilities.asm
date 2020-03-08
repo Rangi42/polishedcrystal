@@ -798,7 +798,6 @@ CheckNullificationAbilities:
 ; Levitate is checked seperately due to Iron Ball shenanigans
 	db -1
 
-
 RunEnemyNullificationAbilities:
 ; At this point, we are already certain that the ability will activate, so no additional
 ; checks are required.
@@ -1630,7 +1629,6 @@ EnemyFurCoatAbility:
 	ld a, $12
 	jp ApplyPhysicalDefenseDamageMod
 
-
 HydrationAbility:
 	call GetWeatherAfterUserUmbrella
 	cp WEATHER_RAIN
@@ -1680,7 +1678,7 @@ RegeneratorAbility:
 	jp z, UpdateBattleMonInParty
 	jp UpdateEnemyMonInParty
 
-_GetOpponentAbilityAfterMoldBreaker:: ; 39e1
+_GetOpponentAbilityAfterMoldBreaker::
 ; Returns an opponent's ability unless Mold Breaker
 ; will suppress it. Preserves bc/de/hl.
 	push de

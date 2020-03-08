@@ -1,4 +1,4 @@
-LinkCommunications: ; 28000
+LinkCommunications:
 	call ClearBGPalettes
 	ld c, 80
 	call DelayFrames
@@ -30,7 +30,7 @@ LinkCommunications: ; 28000
 	ld [hl], $50
 	; fallthrough
 
-Gen2ToGen2LinkComms: ; 28177
+Gen2ToGen2LinkComms:
 	call ClearLinkData
 	call Link_PrepPartyData_Gen2
 	call FixDataForLinkTransfer
@@ -149,10 +149,10 @@ Gen2ToGen2LinkComms: ; 28177
 	jr z, .loop3
 	dec hl
 	ld de, wcb84
-	ld bc, $190 ; 400
+	ld bc, $190
 	rst CopyBytes
 	ld hl, wcb84
-	ld bc, $c6 ; 198
+	ld bc, $c6
 .loop4
 	ld a, [hl]
 	cp $21
@@ -287,9 +287,8 @@ Gen2ToGen2LinkComms: ; 28177
 	ld de, MUSIC_ROUTE_30
 	call PlayMusic
 	jp InitTradeMenuDisplay
-; 283b2
 
-LinkTimeout: ; 283b2
+LinkTimeout:
 	ld de, .TooMuchTimeHasElapsed
 	ld b, 10
 .loop
@@ -316,15 +315,13 @@ LinkTimeout: ; 283b2
 	ld a, CGB_DIPLOMA
 	call GetCGBLayout
 	jp ApplyAttrAndTilemapInVBlank
-; 283ed
 
-.TooMuchTimeHasElapsed: ; 0x283ed
+.TooMuchTimeHasElapsed:
 	; Too much time has elapsed. Please try again.
 	text_jump UnknownText_0x1c4183
 	db "@"
-; 0x283f2
 
-Function283f2: ; 283f2
+Function283f2:
 	ld a, $1
 	ld [hSerialIgnoringInitialData], a
 .loop
@@ -356,13 +353,11 @@ Function283f2: ; 283f2
 	or c
 	jr nz, .loop
 	ret
-; 28419
 
-String_PleaseWait: ; 28419
+String_PleaseWait:
 	db "Please wait!@"
-; 28426
 
-ClearLinkData: ; 28426
+ClearLinkData:
 	ld hl, wLinkData
 	ld bc, wLinkDataEnd - wLinkData
 .loop
@@ -373,9 +368,8 @@ ClearLinkData: ; 28426
 	or c
 	jr nz, .loop
 	ret
-; 28434
 
-FixDataForLinkTransfer: ; 28434
+FixDataForLinkTransfer:
 	ld hl, wLinkBuffer
 	ld a, SERIAL_PREAMBLE_BYTE
 	ld b, wLinkBattleRNs - wLinkBuffer
@@ -441,9 +435,8 @@ FixDataForLinkTransfer: ; 28434
 	ld a, SERIAL_PATCH_LIST_PART_TERMINATOR
 	ld [de], a
 	ret
-; 28499
 
-Link_PrepPartyData_Gen2: ; 28595
+Link_PrepPartyData_Gen2:
 	ld de, wLinkData
 	ld a, SERIAL_PREAMBLE_BYTE
 	ld b, 6
@@ -571,9 +564,8 @@ Link_PrepPartyData_Gen2: ; 28595
 	ld a, SERIAL_PATCH_LIST_PART_TERMINATOR
 	ld [de], a
 	ret
-; 28682
 
-Link_CopyOTData: ; 2879e
+Link_CopyOTData:
 .loop
 	ld a, [hli]
 	cp SERIAL_NO_DATA_BYTE
@@ -585,9 +577,8 @@ Link_CopyOTData: ; 2879e
 	or c
 	jr nz, .loop
 	ret
-; 287ab
 
-Link_CopyRandomNumbers: ; 287ab
+Link_CopyRandomNumbers:
 	ld a, [hSerialConnectionStatus]
 	cp USING_INTERNAL_CLOCK
 	ret z
@@ -606,9 +597,8 @@ Link_CopyRandomNumbers: ; 287ab
 	dec c
 	jr nz, .loop
 	ret
-; 287ca
 
-Link_FindFirstNonControlCharacter_SkipZero: ; 287ca
+Link_FindFirstNonControlCharacter_SkipZero:
 .loop
 	ld a, [hli]
 	and a
@@ -619,9 +609,8 @@ Link_FindFirstNonControlCharacter_SkipZero: ; 287ca
 	jr z, .loop
 	dec hl
 	ret
-; 287d8
 
-Link_FindFirstNonControlCharacter_AllowZero: ; 287d8
+Link_FindFirstNonControlCharacter_AllowZero:
 .loop
 	ld a, [hli]
 	cp SERIAL_PREAMBLE_BYTE
@@ -630,13 +619,12 @@ Link_FindFirstNonControlCharacter_AllowZero: ; 287d8
 	jr z, .loop
 	dec hl
 	ret
-; 287e3
 
-Link_WaitBGMap: ; 4d354
+Link_WaitBGMap:
 	call ApplyTilemapInVBlank
 	jp ApplyAttrAndTilemapInVBlank
 
-InitTradeMenuDisplay: ; 287e3
+InitTradeMenuDisplay:
 	call ClearScreen
 	call LoadTradeScreenGFX
 	call InitTradeSpeciesList
@@ -651,9 +639,8 @@ InitTradeMenuDisplay: ; 287e3
 	inc a
 	ld [wPlayerLinkAction], a
 	jp LinkTrade_PlayerPartyMenu
-; 28803
 
-InitTradeSpeciesList: ; 16d673
+InitTradeSpeciesList:
 	ld hl, .TradeScreenTilemap
 	decoord 0, 0
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
@@ -663,16 +650,14 @@ InitTradeSpeciesList: ; 16d673
 	hlcoord 10, 17
 	ld de, .Cancel
 	jp PlaceString
-; 16d68f
 
 .TradeScreenTilemap:
 INCBIN "gfx/link_trade/16d465.tilemap"
 
-.Cancel: ; 16d68f
+.Cancel:
 	db "Cancel@"
-; 16d696
 
-PlaceTradePartnerNamesAndParty: ; fb60d
+PlaceTradePartnerNamesAndParty:
 	hlcoord 4, 0
 	ld de, wPlayerName
 	call PlaceString
@@ -690,7 +675,7 @@ PlaceTradePartnerNamesAndParty: ; fb60d
 	hlcoord 7, 9
 	ld a, [wOTPartyCount]
 	ld de, wOTPartyMons
-.PlaceSpeciesNames: ; fb634
+.PlaceSpeciesNames:
 	push bc
 	ld b, a
 	ld c, 0
@@ -735,7 +720,7 @@ PlaceTradePartnerNamesAndParty: ; fb60d
 	pop bc
 	ret
 
-LinkTrade_OTPartyMenu: ; 28803
+LinkTrade_OTPartyMenu:
 	ld a, OTPARTYMON
 	ld [wMonType], a
 	ld a, A_BUTTON | D_UP | D_DOWN
@@ -757,7 +742,7 @@ LinkTrade_OTPartyMenu: ; 28803
 	xor a
 	ld [w2DMenuFlags2], a
 
-LinkTradeOTPartymonMenuLoop: ; 28835
+LinkTradeOTPartymonMenuLoop:
 	call LinkTradeMenu
 	ld a, d
 	and a
@@ -798,9 +783,8 @@ LinkTradeOTPartymonMenuLoop: ; 28835
 	bit D_DOWN_F, a
 	jp z, LinkTradePartiesMenuMasterLoop
 	jp Function28ac9
-; 2888b
 
-LinkMonStatsScreen: ; 4d319
+LinkMonStatsScreen:
 	ld a, [wMenuCursorY]
 	dec a
 	ld [wCurPartyMon], a
@@ -818,7 +802,7 @@ LinkMonStatsScreen: ; 4d319
 	call SetTradeRoomBGPals
 	jp ApplyAttrAndTilemapInVBlank
 
-LinkTrade_PlayerPartyMenu: ; 2888b
+LinkTrade_PlayerPartyMenu:
 	call InitLinkTradePalMap
 	xor a
 	ld [wMonType], a
@@ -842,7 +826,7 @@ LinkTrade_PlayerPartyMenu: ; 2888b
 	ld [w2DMenuFlags2], a
 	call ApplyAttrAndTilemapInVBlank
 
-LinkTradePartymonMenuLoop: ; 288c5
+LinkTradePartymonMenuLoop:
 	call LinkTradeMenu
 	ld a, d
 	and a
@@ -891,16 +875,14 @@ LinkTradePartymonMenuLoop: ; 288c5
 	pop bc
 	pop hl
 	jp Function28ade
-; 2891c
 
-LinkTradePartiesMenuMasterLoop: ; 2891c
+LinkTradePartiesMenuMasterLoop:
 	ld a, [wMonType]
 	and a
 	jp z, LinkTradePartymonMenuLoop ; PARTYMON
 	jp LinkTradeOTPartymonMenuLoop  ; OTPARTYMON
-; 28926
 
-LinkTradeMenu: ; 16d70c
+LinkTradeMenu:
 	ld hl, w2DMenuFlags2
 	res 7, [hl]
 	ld a, [hBGMapMode]
@@ -908,7 +890,7 @@ LinkTradeMenu: ; 16d70c
 	call .loop
 	pop af
 	ld [hBGMapMode], a
-.GetJoypad: ; 16d713
+.GetJoypad:
 	push bc
 	push af
 	ld a, [hJoyLast]
@@ -923,7 +905,6 @@ LinkTradeMenu: ; 16d70c
 	pop bc
 	ld d, a
 	ret
-; 16d725
 
 .loop
 	call .UpdateCursor
@@ -941,9 +922,8 @@ LinkTradeMenu: ; 16d70c
 	and b
 	jr z, .loop
 	ret
-; 16d759
 
-.UpdateBGMapAndOAM: ; 16d759
+.UpdateBGMapAndOAM:
 	ld a, [hOAMUpdate]
 	push af
 	ld a, $1
@@ -964,9 +944,8 @@ LinkTradeMenu: ; 16d70c
 	jr z, .loop2
 	and a
 	ret
-; 16d77a
 
-.UpdateCursor: ; 16d77a
+.UpdateCursor:
 	ld hl, wCursorCurrentTile
 	ld a, [hli]
 	ld h, [hl]
@@ -1041,9 +1020,8 @@ LinkTradeMenu: ; 16d70c
 	ld a, h
 	ld [wCursorCurrentTile + 1], a
 	ret
-; 16d7e7
 
-.TryAnims: ; 16d7e7
+.TryAnims:
 	ld a, [w2DMenuFlags1]
 	bit 6, a
 	jr z, .skip_anims
@@ -1055,9 +1033,8 @@ LinkTradeMenu: ; 16d70c
 	ret z
 	scf
 	ret
-; 16d7fe
 
-Function28926: ; 28926
+Function28926:
 	call LoadTileMapToTempTileMap
 	ld a, [wMenuCursorY]
 	push af
@@ -1223,24 +1200,21 @@ Function28926: ; 28926
 	ld c, 100
 	call DelayFrames
 	jp InitTradeMenuDisplay
-; 28aaf
 
-.Text_CantTradeLastMon: ; 0x28aaf
+.Text_CantTradeLastMon:
 	; If you trade that #MON, you won't be able to battle.
 	text_jump UnknownText_0x1c41b1
 	db "@"
-; 0x28ab4
 
-.String_Stats_Trade: ; 28ab4
+.String_Stats_Trade:
 	db "Stats     Trade@"
 
-.Text_Abnormal: ; 0x28ac4
+.Text_Abnormal:
 	; Your friend's @  appears to be abnormal!
 	text_jump UnknownText_0x1c41e6
 	db "@"
-; 0x28ac9
 
-ValidateOTTrademon: ; fb57e
+ValidateOTTrademon:
 	ld a, [wd003]
 	ld hl, wOTPartyMon1Species
 	call GetPartyLocation
@@ -1269,9 +1243,8 @@ ValidateOTTrademon: ; fb57e
 .abnormal
 	scf
 	ret
-; fb5dd
 
-Functionfb5dd: ; fb5dd
+Functionfb5dd:
 	ld a, [wd002]
 	ld d, a
 	ld a, [wPartyCount]
@@ -1304,9 +1277,8 @@ Functionfb5dd: ; fb5dd
 .done
 	and a
 	ret
-; fb60d
 
-Function28ac9: ; 28ac9
+Function28ac9:
 	ld a, [wMenuCursorY]
 	cp 1
 	jp nz, LinkTradePartiesMenuMasterLoop
@@ -1318,7 +1290,7 @@ Function28ac9: ; 28ac9
 	ld [hl], " "
 	pop bc
 	pop hl
-Function28ade: ; 28ade
+Function28ade:
 .loop1
 	ld a, "▶"
 	ldcoord_a 9, 17
@@ -1353,7 +1325,7 @@ Function28ade: ; 28ade
 	ld a, [wOtherPlayerLinkMode]
 	cp $f
 	jr nz, .loop1
-Function28b22: ; 28b22
+Function28b22:
 	ld c, 15
 	call FadeToWhite
 	call ClearScreen
@@ -1368,9 +1340,8 @@ Function28b22: ; 28b22
 	ld a, START_TRANSFER_INTERNAL_CLOCK
 	ld [rSC], a
 	ret
-; 28b42
 
-LinkEngine_FillBox: ; 28b77
+LinkEngine_FillBox:
 .row
 	push bc
 	push hl
@@ -1385,9 +1356,8 @@ LinkEngine_FillBox: ; 28b77
 	dec b
 	jr nz, .row
 	ret
-; 28b87
 
-LinkTrade: ; 28b87
+LinkTrade:
 	xor a
 	ld [wcf57], a
 	ld [wOtherPlayerLinkAction], a
@@ -1498,7 +1468,6 @@ LinkTrade: ; 28b87
 	ld c, 100
 	call DelayFrames
 	jp InitTradeMenuDisplay
-; 28eab
 
 .asm_28c7b
 	ld hl, sPartyMail
@@ -1743,25 +1712,23 @@ LinkTrade: ; 28b87
 	call DelayFrames
 	jp Gen2ToGen2LinkComms
 
-.TradeCancel: ; 28eab
+.TradeCancel:
 	db   "Trade"
 	next "Cancel@"
-; 28ea3
 
-.TradeThisForThat: ; 0x28eb8
+.TradeThisForThat:
 	; Trade @ for @ ?
 	text_jump UnknownText_0x1c4212
 	db "@"
-; 0x28ebd
 
-.TradeCompleted: ; 28ebd
+.TradeCompleted:
 	db   "Trade completed!@"
 
-String_TooBadTheTradeWasCanceled: ; 28ece
+String_TooBadTheTradeWasCanceled:
 	db   "Too bad! The trade"
 	next "was canceled!@"
 
-LinkTextbox:: ; 28eef
+LinkTextbox::
 	push bc
 	push hl
 
@@ -1819,9 +1786,8 @@ LinkTextbox:: ; 28eef
 	dec b
 	jr nz, .row
 	ret
-; 16d640
 
-.fill_row: ; 4d3ab
+.fill_row:
 	ld d, c
 .row_loop
 	ld [hli], a
@@ -1829,7 +1795,7 @@ LinkTextbox:: ; 28eef
 	jr nz, .row_loop
 	ret
 
-Function16d6ce: ; 16d6ce
+Function16d6ce:
 	call LoadStandardMenuDataHeader
 	hlcoord 5, 10
 	lb bc, 1, 9
@@ -1844,32 +1810,27 @@ Function16d6ce: ; 16d6ce
 	call Serial_SyncAndExchangeNybble
 	call ExitMenu
 	jp ApplyAttrAndTilemapInVBlank
-; 16d6e1
 
-.Waiting: ; 16d701
+.Waiting:
 	db "Waiting…!@"
-; 16d70c
 
-LoadTradeScreenGFX: ; 28ef8
+LoadTradeScreenGFX:
 	ld de, TradeScreenGFX
 	ld hl, vTiles2
 	lb bc, BANK(TradeScreenGFX), 70
 	jp Get2bpp
-; 28eff
 
 TradeScreenGFX:
 INCBIN "gfx/link_trade/border.2bpp"
-; 16d421
 
-SetTradeRoomBGPals: ; 28eff
+SetTradeRoomBGPals:
 	farcall LoadLinkTradePalette
 	farcall ApplyPals
 	jp SetPalettes
-; 28f09
 
 INCLUDE "engine/movie/trade_animation.asm"
 
-WaitForOtherPlayerToExit: ; 29c92
+WaitForOtherPlayerToExit:
 	ld c, 3
 	call DelayFrames
 	ld a, CONNECTION_NOT_ESTABLISHED
@@ -1915,23 +1876,20 @@ WaitForOtherPlayerToExit: ; 29c92
 	ld [hVBlank], a
 	ld [wLinkMode], a
 	ret
-; 29ce8
 
-Special_SetBitsForLinkTradeRequest: ; 29ce8
+Special_SetBitsForLinkTradeRequest:
 	ld a, LINK_TRADECENTER - 1
 	ld [wPlayerLinkAction], a
 	ld [wd265], a
 	ret
-; 29cf1
 
-Special_SetBitsForBattleRequest: ; 29cf1
+Special_SetBitsForBattleRequest:
 	ld a, LINK_COLOSSEUM - 1
 	ld [wPlayerLinkAction], a
 	ld [wd265], a
 	ret
-; 29cfa
 
-Special_WaitForLinkedFriend: ; 29d11
+Special_WaitForLinkedFriend:
 	ld a, [wPlayerLinkAction]
 	and a
 	jr z, .no_link_action
@@ -2001,9 +1959,8 @@ Special_WaitForLinkedFriend: ; 29d11
 	xor a
 	ld [hScriptVar], a
 	ret
-; 29d92
 
-Special_CheckLinkTimeout: ; 29d92
+Special_CheckLinkTimeout:
 	ld a, $1
 	ld [wPlayerLinkAction], a
 	ld hl, wLinkTimeoutFrames
@@ -2023,9 +1980,8 @@ Special_CheckLinkTimeout: ; 29d92
 	and a
 	ret nz
 	jp Link_ResetSerialRegistersAfterLinkClosure
-; 29dba
 
-Function29dba: ; 29dba
+Function29dba:
 	ld a, $5
 	ld [wPlayerLinkAction], a
 	ld hl, wLinkTimeoutFrames
@@ -2071,9 +2027,8 @@ Function29dba: ; 29dba
 	xor a
 	ld [hVBlank], a
 	ret
-; 29e0c
 
-Link_CheckCommunicationError: ; 29e0c
+Link_CheckCommunicationError:
 	xor a
 	ld [hSerialReceivedNewData], a
 	ld a, [wLinkTimeoutFrames]
@@ -2102,9 +2057,8 @@ Link_CheckCommunicationError: ; 29e0c
 	ld [hli], a
 	ld [hl], a
 	ret
-; 29e3b
 
-.CheckConnected: ; 29e3b
+.CheckConnected:
 	call Serial_SyncAndExchangeNybble
 	ld hl, wLinkTimeoutFrames
 	ld a, [hli]
@@ -2113,9 +2067,8 @@ Link_CheckCommunicationError: ; 29e0c
 	ld a, [hl]
 	inc a
 	ret
-; 29e47
 
-.AcknowledgeSerial: ; 29e47
+.AcknowledgeSerial:
 	ld b, $a
 .loop
 	call DelayFrame
@@ -2123,9 +2076,8 @@ Link_CheckCommunicationError: ; 29e0c
 	dec b
 	jr nz, .loop
 	ret
-; 29e53
 
-.ConvertDW: ; 29e53
+.ConvertDW:
 	dec h
 	srl h
 	rr l
@@ -2137,9 +2089,8 @@ Link_CheckCommunicationError: ; 29e0c
 	ld a, l
 	ld [wLinkTimeoutFrames + 1], a
 	ret
-; 29e66
 
-Special_TryQuickSave: ; 29e66
+Special_TryQuickSave:
 	ld a, [wd265]
 	push af
 	farcall Link_SaveGame
@@ -2151,9 +2102,8 @@ Special_TryQuickSave: ; 29e66
 	pop af
 	ld [wd265], a
 	ret
-; 29e82
 
-Special_CheckBothSelectedSameRoom: ; 29e82
+Special_CheckBothSelectedSameRoom:
 	ld a, [wd265]
 	call Link_EnsureSync
 	push af
@@ -2178,14 +2128,12 @@ Special_CheckBothSelectedSameRoom: ; 29e82
 	xor a
 	ld [hScriptVar], a
 	ret
-; 29eaf
 
-Special_TradeCenter: ; 29ec4
+Special_TradeCenter:
 	ld a, LINK_TRADECENTER
 	jr _Special_LinkCommunications
-; 29ed9
 
-Special_Colosseum: ; 29ed9
+Special_Colosseum:
 	ld a, LINK_COLOSSEUM
 _Special_LinkCommunications:
 	ld [wLinkMode], a
@@ -2195,24 +2143,21 @@ _Special_LinkCommunications:
 	xor a
 	ld [hVBlank], a
 	ret
-; 29eee
 
-Special_CloseLink: ; 29eee
+Special_CloseLink:
 	xor a
 	ld [wLinkMode], a
 	ld c, $3
 	call DelayFrames
 	jp Link_ResetSerialRegistersAfterLinkClosure
-; 29efa
 
-Special_FailedLinkToPast: ; 29efa
+Special_FailedLinkToPast:
 	ld c, 40
 	call DelayFrames
 	ld a, $e
 	jp Link_EnsureSync
-; 29f04
 
-Link_ResetSerialRegistersAfterLinkClosure: ; 29f04
+Link_ResetSerialRegistersAfterLinkClosure:
 	ld c, 3
 	call DelayFrames
 	ld a, CONNECTION_NOT_ESTABLISHED
@@ -2223,9 +2168,8 @@ Link_ResetSerialRegistersAfterLinkClosure: ; 29f04
 	ld [hSerialReceive], a
 	ld [rSC], a
 	ret
-; 29f17
 
-Link_EnsureSync: ; 29f17
+Link_EnsureSync:
 	add $d0
 	ld [wPlayerLinkAction], a
 	ld [wcf57], a
@@ -2252,9 +2196,8 @@ Link_EnsureSync: ; 29f17
 	ld a, b
 	and $f
 	ret
-; 29f47
 
-Special_CableClubCheckWhichChris: ; 29f47
+Special_CableClubCheckWhichChris:
 	ld a, [hSerialConnectionStatus]
 	cp USING_EXTERNAL_CLOCK
 	ld a, $1
@@ -2264,9 +2207,8 @@ Special_CableClubCheckWhichChris: ; 29f47
 .yes
 	ld [hScriptVar], a
 	ret
-; 29f54
 
-DetermineLinkBattleResult: ; 2b930
+DetermineLinkBattleResult:
 	farcall UpdateEnemyMonInParty
 	ld hl, wPartyMon1HP
 	call .CountMonsRemaining
@@ -2326,7 +2268,7 @@ DetermineLinkBattleResult: ; 2b930
 	ld [wBattleResult], a
 	ret
 
-.CountMonsRemaining: ; 2b995
+.CountMonsRemaining:
 	lb bc, 3, 0
 	ld de, PARTYMON_STRUCT_LENGTH - 1
 .loop
@@ -2341,7 +2283,7 @@ DetermineLinkBattleResult: ; 2b930
 	jr nz, .loop
 	ret
 
-.CalcPercentHPRemaining: ; 2b9a6
+.CalcPercentHPRemaining:
 	ld de, 0
 	ld c, $3
 .loop2
@@ -2384,7 +2326,7 @@ DetermineLinkBattleResult: ; 2b930
 	jr nz, .loop2
 	ret
 
-.BothSides_CheckNumberMonsAtFullHealth: ; 2b9e1
+.BothSides_CheckNumberMonsAtFullHealth:
 	ld hl, wPartyMon1HP
 	call .CheckFaintedOrFullHealth
 	jr nz, .finish ; we have a pokemon that's neither fainted nor at full health
@@ -2403,7 +2345,7 @@ DetermineLinkBattleResult: ; 2b930
 	and a
 	ret
 
-.CheckFaintedOrFullHealth: ; 2ba01
+.CheckFaintedOrFullHealth:
 	ld d, 3
 .loop3
 	ld a, [hli]

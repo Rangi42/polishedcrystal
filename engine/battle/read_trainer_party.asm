@@ -1,4 +1,4 @@
-ReadTrainerParty: ; 39771
+ReadTrainerParty:
 	ld a, [wInBattleTowerBattle]
 	bit 0, a
 	ret nz
@@ -296,7 +296,7 @@ endr
 .no_stat_recalc
 	jp .loop2
 
-Battle_GetTrainerName:: ; 39939
+Battle_GetTrainerName::
 	ld a, [wInBattleTowerBattle]
 	bit 0, a
 	ld hl, wOTPlayerName
@@ -309,7 +309,7 @@ Battle_GetTrainerName:: ; 39939
 	ld a, [wOtherTrainerClass]
 	ld c, a
 
-GetTrainerName:: ; 3994c
+GetTrainerName::
 	dec c
 	push bc
 	ld b, 0
@@ -334,7 +334,7 @@ GetTrainerName:: ; 3994c
 	jr nz, .skip
 	jr .loop
 
-CopyTrainerName: ; 39984
+CopyTrainerName:
 	ld de, wStringBuffer1
 	push de
 	ld bc, NAME_LENGTH
@@ -342,7 +342,6 @@ CopyTrainerName: ; 39984
 	call FarCopyBytes
 	pop de
 	ret
-; 39990
 
 SetTrainerBattleLevel:
 	ld a, 255
@@ -401,6 +400,5 @@ GetNextTrainerDataByte:
 	call GetFarByte
 	inc hl
 	ret
-
 
 INCLUDE "data/trainers/parties.asm"

@@ -1,4 +1,4 @@
-; GastlyPokedexEntry: ; 0x1b8b4a
+; GastlyPokedexEntry:
 	db "Gas@" ; species name
 	dw 403, 2 ; height, width
 

@@ -1,4 +1,4 @@
-_ReceiveItem:: ; d1d5
+_ReceiveItem::
 	call DoesHLEqualNumItems
 	jp nz, PutItemInPocket
 	push hl
@@ -10,7 +10,7 @@ _ReceiveItem:: ; d1d5
 	rst JumpTable
 	ret
 
-.Pockets: ; d1e9
+.Pockets:
 	dw .Item
 	dw .Medicine
 	dw .Ball
@@ -18,7 +18,7 @@ _ReceiveItem:: ; d1d5
 	dw .Berry
 	dw KeyItem_Dummy
 
-.Item: ; d1f1
+.Item:
 	ld hl, wNumItems
 	jp PutItemInPocket
 
@@ -26,7 +26,7 @@ _ReceiveItem:: ; d1d5
 	ld hl, wNumMedicine
 	jp PutItemInPocket
 
-.Ball: ; d1fb
+.Ball:
 	ld hl, wNumBalls
 	jp PutItemInPocket
 
@@ -34,7 +34,7 @@ _ReceiveItem:: ; d1d5
 	ld hl, wNumBerries
 	jp PutItemInPocket
 
-_TossItem:: ; d20d
+_TossItem::
 	call DoesHLEqualNumItems
 	jr nz, .remove
 	push hl
@@ -58,7 +58,7 @@ _TossItem:: ; d20d
 	ld hl, wNumMedicine
 	jp RemoveItemFromPocket
 
-.Ball: ; d228
+.Ball:
 	ld hl, wNumBalls
 	jp RemoveItemFromPocket
 
@@ -66,13 +66,13 @@ _TossItem:: ; d20d
 	ld hl, wNumBerries
 	jp RemoveItemFromPocket
 
-.Item: ; d23f
+.Item:
 	ld h, d
 	ld l, e
 .remove
 	jp RemoveItemFromPocket
 
-_CheckItem:: ; d244
+_CheckItem::
 	call DoesHLEqualNumItems
 	jr nz, .nope
 	push hl
@@ -96,7 +96,7 @@ _CheckItem:: ; d244
 	ld hl, wNumMedicine
 	jp CheckTheItem
 
-.Ball: ; d25f
+.Ball:
 	ld hl, wNumBalls
 	jp CheckTheItem
 
@@ -104,13 +104,13 @@ _CheckItem:: ; d244
 	ld hl, wNumBerries
 	jp CheckTheItem
 
-.Item: ; d276
+.Item:
 	ld h, d
 	ld l, e
 .nope
 	jp CheckTheItem
 
-DoesHLEqualNumItems: ; d27b
+DoesHLEqualNumItems:
 	ld a, l
 	cp wNumItems % $100
 	ret nz
@@ -118,7 +118,7 @@ DoesHLEqualNumItems: ; d27b
 	cp wNumItems / $100
 	ret
 
-GetPocketCapacity: ; d283
+GetPocketCapacity:
 	ld c, MAX_ITEMS
 	ld a, e
 	cp wNumItems % $100
@@ -160,7 +160,7 @@ TMHM_Dummy:
 KeyItem_Dummy:
 	ret
 
-PutItemInPocket: ; d29c
+PutItemInPocket:
 	ld d, h
 	ld e, l
 	inc hl
@@ -236,7 +236,7 @@ PutItemInPocket: ; d29c
 	scf
 	ret
 
-RemoveItemFromPocket: ; d2ff
+RemoveItemFromPocket:
 	ld d, h
 	ld e, l
 	ld a, [hli]
@@ -301,7 +301,7 @@ RemoveItemFromPocket: ; d2ff
 	and a
 	ret
 
-CheckTheItem: ; d349
+CheckTheItem:
 	ld a, [wCurItem]
 	ld c, a
 .loop
@@ -329,7 +329,7 @@ CheckSelectableKeyItem:
 	scf
 	ret
 
-CheckItemPocket:: ; d43d
+CheckItemPocket::
 ; Return the pocket for wCurItem in wItemAttributeParamBuffer.
 	ld a, ITEMATTR_POCKET
 	call GetItemAttr
@@ -337,7 +337,7 @@ CheckItemPocket:: ; d43d
 	ld [wItemAttributeParamBuffer], a
 	ret
 
-CheckItemContext: ; d448
+CheckItemContext:
 ; Return the context for wCurItem in wItemAttributeParamBuffer.
 	ld a, ITEMATTR_HELP
 	call GetItemAttr
@@ -352,7 +352,7 @@ CheckKeyItemContext:
 	ld [wItemAttributeParamBuffer], a
 	ret
 
-CheckItemMenu: ; d453
+CheckItemMenu:
 ; Return the menu for wCurItem in wItemAttributeParamBuffer.
 	ld a, ITEMATTR_HELP
 	call GetItemAttr
@@ -376,7 +376,7 @@ CheckItemParam:
 	ld [wItemAttributeParamBuffer], a
 	ret
 
-GetItemAttr: ; d460
+GetItemAttr:
 ; Get attribute a of wCurItem.
 
 	push hl
@@ -426,7 +426,7 @@ GetKeyItemAttr:
 	pop hl
 	ret
 
-GetItemPrice: ; d486
+GetItemPrice:
 ; Return the price of wCurItem in de.
 	push hl
 	push bc
@@ -466,7 +466,7 @@ _CountItem::
 	ld hl, wNumMedicine
 	jr CountItemInPocket
 
-.Ball: ; d1fb
+.Ball:
 	ld hl, wNumBalls
 	jr CountItemInPocket
 

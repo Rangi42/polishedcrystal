@@ -1,4 +1,4 @@
-; CharizardPokedexEntry: ; 0x1818b3
+; CharizardPokedexEntry:
 	db "Flame@" ; species name
 	dw 507, 2000 ; height, width
 

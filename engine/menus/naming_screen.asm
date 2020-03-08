@@ -4,14 +4,12 @@ NAMINGSCREEN_CURSOR EQU $7e
 NAMINGSCREEN_MIDDLELINE EQU "↑"
 NAMINGSCREEN_UNDERLINE  EQU "↓"
 
-_NamingScreen: ; 0x116b7
+_NamingScreen:
 	call DisableSpriteUpdates
 	call NamingScreen
 	jp ReturnToMapWithSpeechTextbox
 
-; 0x116c1
-
-NamingScreen: ; 116c1
+NamingScreen:
 	ld hl, wNamingScreenDestinationPointer
 	ld [hl], e
 	inc hl
@@ -43,9 +41,7 @@ NamingScreen: ; 116c1
 	ld [wOptions1], a
 	jp ClearJoypad
 
-; 116f8
-
-.SetUpNamingScreen: ; 116f8
+.SetUpNamingScreen:
 	call ClearBGPalettes
 	ld a, CGB_DIPLOMA
 	call GetCGBLayout
@@ -60,9 +56,7 @@ NamingScreen: ; 116c1
 	call SetPalettes
 	jp NamingScreen_InitNameEntry
 
-; 1171d
-
-.GetNamingScreenSetup: ; 1171d
+.GetNamingScreenSetup:
 	ld a, [wNamingScreenType]
 	and 7
 	ld e, a
@@ -75,16 +69,14 @@ NamingScreen: ; 116c1
 	ld l, a
 	jp hl
 
-; 1172e
-
-.Jumptable: ; 1172e (4:572e)
+.Jumptable:
 	dw .Pokemon
 	dw .Player
 	dw .Rival
 	dw .TrendyPhrase
 	dw .Box
 
-.Pokemon: ; 1173e (4:573e)
+.Pokemon:
 	ld a, [wCurPartySpecies]
 	ld [wd265], a
 	farcall LoadNamingScreenMonIcon
@@ -116,15 +108,11 @@ NamingScreen: ; 116c1
 .not_shiny
 	jp .StoreMonIconParams
 
-; 11780 (4:5780)
-
-.NicknameStrings: ; 11780
+.NicknameStrings:
 	db "'s@"
 	db "nickname?@"
 
-; 1178d
-
-.Player: ; 1178d (4:578d)
+.Player:
 	farcall _GetPlayerIcon
 	ld a, [wPlayerGender]
 	bit 0, a
@@ -138,14 +126,10 @@ NamingScreen: ; 116c1
 	call PlaceString
 	jp .StoreSpriteIconParams
 
-; 117a3 (4:57a3)
-
-.PlayerNameString: ; 117a3
+.PlayerNameString:
 	db "Your name?@"
 
-; 117ae
-
-.Rival: ; 117ae (4:57ae)
+.Rival:
 	ld hl, SilverSpriteGFX
 	lb bc, BANK(SilverSpriteGFX), SPRITE_ANIM_INDEX_RED_WALK
 	call .LoadSprite
@@ -154,12 +138,8 @@ NamingScreen: ; 116c1
 	call PlaceString
 	jp .StoreSpriteIconParams
 
-; 117c3 (4:57c3)
-
-.RivalNameString: ; 117c3
+.RivalNameString:
 	db "Rival's name?@"
-
-; 117d1
 
 .TrendyPhrase:
 	ld hl, ArtistSpriteGFX
@@ -173,7 +153,7 @@ NamingScreen: ; 116c1
 .TrendyPhraseString:
 	db "What's trendy?@"
 
-.Box: ; 117f5 (4:57f5)
+.Box:
 	ld de, vTiles0 tile $00
 	ld hl, BallCutFruitSpriteGFX
 	lb bc, BANK(BallCutFruitSpriteGFX), 4
@@ -193,14 +173,10 @@ NamingScreen: ; 116c1
 	call PlaceString
 	jp .StoreBoxIconParams
 
-; 11822 (4:5822)
-
-.BoxNameString: ; 11822
+.BoxNameString:
 	db "Box name?@"
 
-; 1182c
-
-.LoadSprite: ; 11847 (4:5847)
+.LoadSprite:
 	push bc
 	ld de, vTiles0 tile $00
 	ld c, 4
@@ -218,21 +194,21 @@ NamingScreen: ; 116c1
 	depixel 4, 4, 4, 0
 	jp _InitSpriteAnimStruct
 
-.StoreMonIconParams: ; 1187b (4:587b)
+.StoreMonIconParams:
 	ld a, PKMN_NAME_LENGTH - 1
 	hlcoord 5, 6
 	jr .StoreParams
 
-.StoreSpriteIconParams: ; 11882 (4:5882)
+.StoreSpriteIconParams:
 	ld a, PLAYER_NAME_LENGTH - 1
 	hlcoord 5, 6
 	jr .StoreParams
 
-.StoreBoxIconParams: ; 11889 (4:5889)
+.StoreBoxIconParams:
 	ld a, BOX_NAME_LENGTH - 1
 	hlcoord 5, 4
 
-.StoreParams: ; 11890 (4:5890)
+.StoreParams:
 	ld [wNamingScreenMaxNameLength], a
 	ld a, l
 	ld [wNamingScreenStringEntryCoord], a
@@ -240,7 +216,7 @@ NamingScreen: ; 116c1
 	ld [wNamingScreenStringEntryCoord + 1], a
 	ret
 
-NamingScreen_IsTargetBox: ; 1189c
+NamingScreen_IsTargetBox:
 	push bc
 	push af
 	ld a, [wNamingScreenType]
@@ -251,9 +227,7 @@ NamingScreen_IsTargetBox: ; 1189c
 	pop bc
 	ret
 
-; 118a8
-
-NamingScreen_InitText: ; 118a8
+NamingScreen_InitText:
 	call WaitTop
 	hlcoord 0, 0
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
@@ -268,7 +242,7 @@ NamingScreen_InitText: ; 118a8
 .not_box
 	call ClearBox
 	ld de, NameInputUpper
-NamingScreen_ApplyTextInputMode: ; 118ca
+NamingScreen_ApplyTextInputMode:
 	call NamingScreen_IsTargetBox
 	jr nz, .not_box
 	ld hl, BoxNameInputLower - NameInputLower
@@ -314,9 +288,7 @@ NamingScreen_ApplyTextInputMode: ; 118ca
 	jr nz, .row
 	ret
 
-; 11915
-
-NamingScreenJoypadLoop: ; 11915
+NamingScreenJoypadLoop:
 	call JoyTextDelay
 	ld a, [wJumptableIndex]
 	bit 7, a
@@ -337,9 +309,7 @@ NamingScreenJoypadLoop: ; 11915
 	scf
 	ret
 
-; 11940
-
-.UpdateStringEntry: ; 11940
+.UpdateStringEntry:
 	xor a
 	ld [hBGMapMode], a
 	hlcoord 1, 5
@@ -363,9 +333,7 @@ NamingScreenJoypadLoop: ; 11915
 	ld [hBGMapMode], a
 	ret
 
-; 11968
-
-.RunJumptable: ; 11968
+.RunJumptable:
 	ld a, [wJumptableIndex]
 	ld e, a
 	ld d, $0
@@ -377,13 +345,11 @@ NamingScreenJoypadLoop: ; 11915
 	ld l, a
 	jp hl
 
-; 11977
-
-.Jumptable: ; 11977 (4:5977)
+.Jumptable:
 	dw .InitCursor
 	dw .ReadButtons
 
-.InitCursor: ; 1197b (4:597b)
+.InitCursor:
 	depixel 10, 3
 	call NamingScreen_IsTargetBox
 	jr nz, .got_cursor_position
@@ -405,8 +371,8 @@ NamingScreenJoypadLoop: ; 11915
 	inc [hl]
 	ret
 
-.ReadButtons: ; 119a1 (4:59a1)
-	ld hl, hJoyPressed ; $ffa7
+.ReadButtons:
+	ld hl, hJoyPressed
 	ld a, [hl]
 	and A_BUTTON
 	jr nz, .a
@@ -478,13 +444,13 @@ NamingScreenJoypadLoop: ; 11915
 	ld de, NameInputUpper
 	jp NamingScreen_ApplyTextInputMode
 
-.GetCursorPosition: ; 11a0b (4:5a0b)
+.GetCursorPosition:
 	ld hl, wNamingScreenCursorObjectPointer
 	ld c, [hl]
 	inc hl
 	ld b, [hl]
 
-NamingScreen_GetCursorPosition: ; 11a11 (4:5a11)
+NamingScreen_GetCursorPosition:
 	ld hl, SPRITEANIMSTRUCT_0D
 	add hl, bc
 	ld a, [hl]
@@ -519,7 +485,7 @@ NamingScreen_GetCursorPosition: ; 11a11 (4:5a11)
 	xor a
 	ret
 
-NamingScreen_AnimateCursor: ; 11a3b (4:5a3b)
+NamingScreen_AnimateCursor:
 	call .GetDPad
 	ld hl, SPRITEANIMSTRUCT_0D
 	add hl, bc
@@ -558,17 +524,13 @@ NamingScreen_AnimateCursor: ; 11a3b (4:5a3b)
 	ld [hl], a
 	ret
 
-; 11a79 (4:5a79)
-
-.LetterEntries: ; 11a79
+.LetterEntries:
 	db $00, $10, $20, $30, $40, $50, $60, $70, $80
 
-.CaseDelEnd: ; 11a82
+.CaseDelEnd:
 	db $00, $00, $00, $30, $30, $30, $60, $60, $60
 
-; 11a8b
-
-.GetDPad: ; 11a8b (4:5a8b)
+.GetDPad:
 	ld hl, hJoyLast
 	ld a, [hl]
 	and D_UP
@@ -681,8 +643,8 @@ NamingScreen_AnimateCursor: ; 11a3b (4:5a3b)
 	inc [hl]
 	ret
 
-NamingScreen_TryAddCharacter: ; 11b14 (4:5b14)
-MailComposition_TryAddCharacter: ; 11b17 (4:5b17)
+NamingScreen_TryAddCharacter:
+MailComposition_TryAddCharacter:
 	ld a, [wNamingScreenMaxNameLength]
 	ld c, a
 	ld a, [wNamingScreenCurrNameLength]
@@ -706,9 +668,7 @@ MailComposition_TryAddCharacter: ; 11b17 (4:5b17)
 	scf
 	ret
 
-; 11b39 (4:5b39)
-
-NamingScreen_DeleteCharacter: ; 11bbc (4:5bbc)
+NamingScreen_DeleteCharacter:
 	ld hl, wNamingScreenCurrNameLength
 	ld a, [hl]
 	and a
@@ -723,7 +683,7 @@ NamingScreen_DeleteCharacter: ; 11bbc (4:5bbc)
 	ld [hl], NAMINGSCREEN_MIDDLELINE
 	ret
 
-NamingScreen_GetTextCursorPosition: ; 11bd0 (4:5bd0)
+NamingScreen_GetTextCursorPosition:
 	push af
 	ld hl, wNamingScreenDestinationPointer
 	ld a, [hli]
@@ -736,9 +696,7 @@ NamingScreen_GetTextCursorPosition: ; 11bd0 (4:5bd0)
 	pop af
 	ret
 
-; 11be0
-
-NamingScreen_InitNameEntry: ; 11be0
+NamingScreen_InitNameEntry:
 ; load NAMINGSCREEN_UNDERLINE, (NAMINGSCREEN_MIDDLELINE * [wNamingScreenMaxNameLength]), "@" into the dw address at wNamingScreenDestinationPointer
 	ld hl, wNamingScreenDestinationPointer
 	ld a, [hli]
@@ -757,9 +715,7 @@ NamingScreen_InitNameEntry: ; 11be0
 	ld [hl], "@"
 	ret
 
-; 11bf7
-
-NamingScreen_StoreEntry: ; 11bf7 (4:5bf7)
+NamingScreen_StoreEntry:
 	ld hl, wNamingScreenDestinationPointer
 	ld a, [hli]
 	ld h, [hl]
@@ -780,7 +736,7 @@ NamingScreen_StoreEntry: ; 11bf7 (4:5bf7)
 	jr nz, .loop
 	ret
 
-NamingScreen_GetLastCharacter: ; 11c11 (4:5c11)
+NamingScreen_GetLastCharacter:
 	ld hl, wNamingScreenCursorObjectPointer
 	ld c, [hl]
 	inc hl
@@ -823,7 +779,7 @@ NamingScreen_GetLastCharacter: ; 11c11 (4:5c11)
 	ld [wNamingScreenLastCharacter], a
 	ret
 
-LoadNamingScreenGFX: ; 11c51
+LoadNamingScreenGFX:
 	call ClearSprites
 	farcall ClearSpriteAnims
 	call LoadStandardFont
@@ -864,22 +820,16 @@ LoadNamingScreenGFX: ; 11c51
 	ld [hWX], a
 	ret
 
-; 11cb7
-
-NamingScreenGFX_Border: ; 11cb7
+NamingScreenGFX_Border:
 INCBIN "gfx/naming_screen/naming_border.2bpp"
-; 11cc7
 
-NamingScreenGFX_Cursor: ; 11cc7
+NamingScreenGFX_Cursor:
 INCBIN "gfx/naming_screen/naming_cursor.2bpp"
-; 11ce7
 
 NamingScreenGFX_Lines:
 INCBIN "gfx/naming_screen/lines.2bpp"
 
 INCLUDE "data/text/input_chars.asm"
-
-; 122c1
 
 _ComposeMailMessage: ; 11e75 (mail?)
 	ld hl, wNamingScreenDestinationPointer
@@ -907,7 +857,7 @@ _ComposeMailMessage: ; 11e75 (mail?)
 	ld [hMapAnims], a
 	ret
 
-.InitBlankMail: ; 11e9a (4:5e9a)
+.InitBlankMail:
 	call ClearBGPalettes
 	call DisableLCD
 	call LoadNamingScreenGFX
@@ -951,20 +901,15 @@ _ComposeMailMessage: ; 11e75 (mail?)
 	ld [hl], "<NL>"
 	ret
 
-; 11ef4 (4:5ef4)
-
-.MailIcon: ; 11ef4
+.MailIcon:
 INCBIN "gfx/icons/mail2.2bpp"
-; 11f74
 
-.initwNamingScreenMaxNameLength ; 11f74 (4:5f74)
+.initwNamingScreenMaxNameLength
 	ld a, MAIL_MSG_LENGTH + 1
 	ld [wNamingScreenMaxNameLength], a
 	ret
 
-; 11f7a (4:5f7a)
-
-.InitCharset: ; 11f84 (4:5f84)
+.InitCharset:
 	call WaitTop
 	hlcoord 0, 0
 	ld bc, 6 * SCREEN_WIDTH
@@ -979,7 +924,7 @@ INCBIN "gfx/icons/mail2.2bpp"
 	call ClearBox
 	ld de, MailEntry_Uppercase
 
-.PlaceMailCharset: ; 11fa9 (4:5fa9)
+.PlaceMailCharset:
 	hlcoord 1, 7
 	ld b, 6
 .next
@@ -998,7 +943,7 @@ INCBIN "gfx/icons/mail2.2bpp"
 	jr nz, .next
 	ret
 
-.DoMailEntry: ; 11fc0 (4:5fc0)
+.DoMailEntry:
 	call JoyTextDelay
 	ld a, [wJumptableIndex]
 	bit 7, a
@@ -1019,7 +964,7 @@ INCBIN "gfx/icons/mail2.2bpp"
 	scf
 	ret
 
-.Update: ; 11feb (4:5feb)
+.Update:
 	xor a
 	ld [hBGMapMode], a
 	hlcoord 1, 1
@@ -1035,7 +980,7 @@ INCBIN "gfx/icons/mail2.2bpp"
 	ld [hBGMapMode], a
 	ret
 
-.DoJumptable: ; 12008 (4:6008)
+.DoJumptable:
 	ld a, [wJumptableIndex]
 	ld e, a
 	ld d, 0
@@ -1047,11 +992,11 @@ INCBIN "gfx/icons/mail2.2bpp"
 	ld l, a
 	jp hl
 
-.Jumptable: ; 12017 (4:6017)
+.Jumptable:
 	dw .init_blinking_cursor
 	dw .process_joypad
 
-.init_blinking_cursor ; 1201b (4:601b)
+.init_blinking_cursor
 	depixel 9, 2
 	ld a, SPRITE_ANIM_INDEX_COMPOSE_MAIL_CURSOR
 	call _InitSpriteAnimStruct
@@ -1069,8 +1014,8 @@ INCBIN "gfx/icons/mail2.2bpp"
 	inc [hl]
 	ret
 
-.process_joypad ; 1203a (4:603a)
-	ld hl, hJoyPressed ; $ffa7
+.process_joypad
+	ld hl, hJoyPressed
 	ld a, [hl]
 	and A_BUTTON
 	jr nz, .a
@@ -1154,7 +1099,7 @@ INCBIN "gfx/icons/mail2.2bpp"
 
 ; called from engine/sprite_anims.asm
 
-ComposeMail_AnimateCursor: ; 120c1 (4:60c1)
+ComposeMail_AnimateCursor:
 	call .GetDPad
 	ld hl, SPRITEANIMSTRUCT_0D
 	add hl, bc
@@ -1188,17 +1133,13 @@ ComposeMail_AnimateCursor: ; 120c1 (4:60c1)
 	ld [hl], a
 	ret
 
-; 120f8 (4:60f8)
-
-.LetterEntries: ; 120f8
+.LetterEntries:
 	db $00, $10, $20, $30, $40, $50, $60, $70, $80, $90
 
-.CaseDelEnd: ; 12102
+.CaseDelEnd:
 	db $00, $00, $00, $30, $30, $30, $60, $60, $60, $60
 
-; 1210c
-
-.GetDPad: ; 1210c (4:610c)
+.GetDPad:
 	ld hl, hJoyLast
 	ld a, [hl]
 	and D_UP
@@ -1300,13 +1241,13 @@ ComposeMail_AnimateCursor: ; 120c1 (4:60c1)
 	ld [hl], $5
 	ret
 
-NamingScreen_PressedA_GetCursorCommand: ; 12185 (4:6185)
+NamingScreen_PressedA_GetCursorCommand:
 	ld hl, wNamingScreenCursorObjectPointer
 	ld c, [hl]
 	inc hl
 	ld b, [hl]
 
-ComposeMail_GetCursorPosition: ; 1218b (4:618b)
+ComposeMail_GetCursorPosition:
 	ld hl, SPRITEANIMSTRUCT_0D
 	add hl, bc
 	ld a, [hl]
@@ -1334,8 +1275,7 @@ ComposeMail_GetCursorPosition: ; 1218b (4:618b)
 	xor a
 	ret
 
-MailComposition_TryAddLastCharacter: ; 121ac (4:61ac)
+MailComposition_TryAddLastCharacter:
 	ld a, [wNamingScreenLastCharacter]
 	jp MailComposition_TryAddCharacter
 
-; 121b2 (4:61b2)

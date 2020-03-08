@@ -1,4 +1,4 @@
-BugContest_SetCaughtContestMon: ; e6ce
+BugContest_SetCaughtContestMon:
 	ld a, [wContestMon]
 	and a
 	jr z, .firstcatch
@@ -16,7 +16,7 @@ BugContest_SetCaughtContestMon: ; e6ce
 	ld hl, .caughttext
 	jp PrintText
 
-.generatestats ; e6fd
+.generatestats
 	ld a, [wTempEnemyMonSpecies]
 	ld [wCurSpecies], a
 	ld [wCurPartySpecies], a
@@ -33,17 +33,17 @@ BugContest_SetCaughtContestMon: ; e6ce
 	rst CopyBytes
 	ret
 
-.caughttext ; 0xe71d
+.caughttext
 	; Caught @ !
 	text_jump UnknownText_0x1c10c0
 	db "@"
 
-DisplayAlreadyCaughtText: ; cc0c7
+DisplayAlreadyCaughtText:
 	call GetPokemonName
 	ld hl, .AlreadyCaughtText
 	jp PrintText
 
-.AlreadyCaughtText: ; 0xcc0d0
+.AlreadyCaughtText:
 	; You already caught a @ .
 	text_jump UnknownText_0x1c10dd
 	db "@"

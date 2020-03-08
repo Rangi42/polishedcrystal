@@ -1,4 +1,4 @@
-; CharmeleonPokedexEntry: ; 0x18184a
+; CharmeleonPokedexEntry:
 	db "Flame@" ; species name
 	dw 307, 420 ; height, width
 

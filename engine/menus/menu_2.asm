@@ -36,7 +36,7 @@ PlaceMenuApricornQuantity:
 	ld h, d
 	jr _PlaceMenuQuantity
 
-PlaceMenuItemQuantity: ; 0x24ac3
+PlaceMenuItemQuantity:
 	ld a, [wMenuSelection]
 	ld [wCurItem], a
 	push de
@@ -50,22 +50,22 @@ _PlaceMenuQuantity:
 	lb bc, 1, 2
 	jp PrintNum
 
-PlaceMoneyTopRight: ; 24ae8
+PlaceMoneyTopRight:
 	ld hl, MenuDataHeader_0x24b15
 	call CopyMenuDataHeader
 	jr PlaceMoneyDataHeader
 
-PlaceMoneyBottomLeft: ; 24af0
+PlaceMoneyBottomLeft:
 	ld hl, MenuDataHeader_0x24b1d
 	call CopyMenuDataHeader
 	jr PlaceMoneyDataHeader
 
-PlaceMoneyAtTopLeftOfTextbox: ; 24af8
+PlaceMoneyAtTopLeftOfTextbox:
 	ld hl, MenuDataHeader_0x24b15
 	lb de, 0, 11
 	call OffsetMenuDataHeader
 
-PlaceMoneyDataHeader: ; 24b01
+PlaceMoneyDataHeader:
 	call MenuBox
 	call MenuBoxCoord2Tile
 	ld de, SCREEN_WIDTH + 1
@@ -74,14 +74,14 @@ PlaceMoneyDataHeader: ; 24b01
 	lb bc, PRINTNUM_MONEY | 3, 7
 	jp PrintNum
 
-MenuDataHeader_0x24b15: ; 0x24b15
+MenuDataHeader_0x24b15:
 	db $40 ; flags
 	db 00, 10 ; start coords
 	db 02, 19 ; end coords
 	dw NULL
 	db 1 ; default option
 
-MenuDataHeader_0x24b1d: ; 0x24b1d
+MenuDataHeader_0x24b1d:
 	db $40 ; flags
 	db 11, 00 ; start coords
 	db 13, 09 ; end coords
@@ -116,7 +116,7 @@ PlaceBattlePointsTopRight:
 .BPString:
 	db " BP@"
 
-Special_DisplayCoinCaseBalance: ; 24b25
+Special_DisplayCoinCaseBalance:
 	; Place a text box of size 1x7 at 11, 0.
 	hlcoord 11, 0
 	lb bc, 1, 7
@@ -129,7 +129,7 @@ Special_DisplayCoinCaseBalance: ; 24b25
 	hlcoord 13, 1
 	jp PrintNum
 
-Special_DisplayMoneyAndCoinBalance: ; 24b4e
+Special_DisplayMoneyAndCoinBalance:
 	hlcoord 5, 0
 	lb bc, 3, 13
 	call TextBox
@@ -148,17 +148,17 @@ Special_DisplayMoneyAndCoinBalance: ; 24b4e
 	lb bc, 2, 5
 	jp PrintNum
 
-MoneyString: ; 24b83
+MoneyString:
 	db "Money@"
-CoinString: ; 24b89
+CoinString:
 	db "Coin@"
 
-StartMenu_DrawBugContestStatusBox: ; 24bdc
+StartMenu_DrawBugContestStatusBox:
 	hlcoord 0, 0
 	lb bc, 5, 17
 	jp TextBox
 
-StartMenu_PrintBugContestStatus: ; 24be7
+StartMenu_PrintBugContestStatus:
 	ld hl, wOptions1
 	ld a, [hl]
 	push af
@@ -202,11 +202,11 @@ StartMenu_PrintBugContestStatus: ; 24be7
 	ld [wOptions1], a
 	ret
 
-.Caught: ; 24c4b
+.Caught:
 	db "Caught@"
-.Balls: ; 24c52
+.Balls:
 	db "Balls:@"
-.None: ; 24c59
+.None:
 	db "None@"
-.Level: ; 24c5e
+.Level:
 	db "Level@"

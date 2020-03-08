@@ -1,4 +1,4 @@
-SpecialHoOhChamber: ; 0x8addb
+SpecialHoOhChamber:
 	ld hl, wPartySpecies
 	ld a, [hl]
 	ld [wCurPartySpecies], a
@@ -15,9 +15,8 @@ SpecialHoOhChamber: ; 0x8addb
 	call GetSecondaryMapHeaderPointer
 	eventflagset EVENT_WALL_OPENED_IN_HO_OH_CHAMBER
 	ret
-; 0x8adef
 
-SpecialOmanyteChamber: ; 8adef
+SpecialOmanyteChamber:
 	eventflagcheck EVENT_WALL_OPENED_IN_OMANYTE_CHAMBER
 	ret nz
 
@@ -48,9 +47,8 @@ SpecialOmanyteChamber: ; 8adef
 	call GetSecondaryMapHeaderPointer
 	eventflagset EVENT_WALL_OPENED_IN_OMANYTE_CHAMBER
 	ret
-; 8ae30
 
-SpecialAerodactylChamber: ; 8ae30
+SpecialAerodactylChamber:
 	call GetSecondaryMapHeaderPointer
 	ld a, h
 	cp RuinsOfAlphAerodactylChamber_SecondMapHeader / $100
@@ -66,9 +64,8 @@ SpecialAerodactylChamber: ; 8ae30
 .nope
 	and a
 	ret
-; 8ae4e
 
-SpecialKabutoChamber: ; 8ae4e
+SpecialKabutoChamber:
 	call GetSecondaryMapHeaderPointer
 	ld a, h
 	cp RuinsOfAlphKabutoChamber_SecondMapHeader / $100
@@ -79,9 +76,8 @@ SpecialKabutoChamber: ; 8ae4e
 
 	eventflagset EVENT_WALL_OPENED_IN_KABUTO_CHAMBER
 	ret
-; 8ae68
 
-Special_DisplayUnownWords: ; 8ae68
+Special_DisplayUnownWords:
 	ld a, [hScriptVar]
 	ld hl, UnownWallMenuDataHeaders
 	and a
@@ -127,9 +123,8 @@ Special_DisplayUnownWords: ; 8ae68
 	call JoyWaitAorB
 	call PlayClickSFX
 	jp CloseWindow
-; 8aebc
 
-.FillAttr: ; 8aee9
+.FillAttr:
 	ld a, [de]
 	cp $ff
 	ret z
@@ -139,9 +134,8 @@ Special_DisplayUnownWords: ; 8ae68
 	inc hl
 	inc de
 	jr .FillAttr
-; 8aefd
 
-.PlaceSquare: ; 8aefd
+.PlaceSquare:
 	push hl
 	ld [hli], a
 	ld [hld], a
@@ -151,9 +145,8 @@ Special_DisplayUnownWords: ; 8ae68
 	ld [hl], a
 	pop hl
 	ret
-; 8af09
 
-.CopyWord: ; 8af09
+.CopyWord:
 	push hl
 	push de
 .word_loop
@@ -171,9 +164,8 @@ Special_DisplayUnownWords: ; 8ae68
 	pop de
 	pop hl
 	ret
-; 8af1c
 
-.ConvertChar: ; 8af1c
+.ConvertChar:
 	push hl
 	ld a, c
 	ld [hli], a
@@ -189,6 +181,5 @@ Special_DisplayUnownWords: ; 8ae68
 	ld [hl], a
 	pop hl
 	ret
-; 8af6b
 
 INCLUDE "data/events/unown_walls.asm"

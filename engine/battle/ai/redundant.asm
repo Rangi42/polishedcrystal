@@ -1,4 +1,4 @@
-AI_Redundant: ; 2c41a
+AI_Redundant:
 ; Check if move effect c will fail because it's already been used.
 ; Return z if the move is a good choice.
 ; Return nz if the move is a bad choice.
@@ -13,7 +13,7 @@ AI_Redundant: ; 2c41a
 	ld l, a
 	jp hl
 
-.Moves: ; 2c42c
+.Moves:
 	dbw EFFECT_DREAM_EATER,   .DreamEater
 	dbw EFFECT_HEAL,          .Heal
 	dbw EFFECT_LIGHT_SCREEN,  .LightScreen

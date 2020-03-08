@@ -1,4 +1,4 @@
-; wMonType: ; cf5f
+; wMonType:
 PARTYMON   EQU 0
 OTPARTYMON EQU 1
 BOXMON     EQU 2
@@ -69,36 +69,36 @@ LEARNING_TM_F     EQU 6
 FORGETTING_MOVE   EQU 1 << FORGETTING_MOVE_F
 LEARNING_TM       EQU 1 << LEARNING_TM_F
 
-; wWalkingDirection: ; d043
+; wWalkingDirection:
 STANDING EQU -1
 DOWN     EQU 0
 UP       EQU 1
 LEFT     EQU 2
 RIGHT    EQU 3
 
-; wFacingDirection: ; d044
+; wFacingDirection:
 FACE_CURRENT EQU 0
 FACE_DOWN  EQU 8
 FACE_UP    EQU 4
 FACE_LEFT  EQU 2
 FACE_RIGHT EQU 1
 
-; wTimeOfDay: ; d269
+; wTimeOfDay:
 MORN     EQU 0
 DAY      EQU 1
 NITE     EQU 2
 DARKNESS EQU 3
 
-; wScriptFlags: ; d434
+; wScriptFlags:
 SCRIPT_RUNNING EQU 2
 
-; wScriptMode: ; d437
+; wScriptMode:
 SCRIPT_OFF EQU 0
 SCRIPT_READ EQU 1
 SCRIPT_WAIT_MOVEMENT EQU 2
 SCRIPT_WAIT EQU 3
 
-; wCurDay: ; d4cb
+; wCurDay:
 SUNDAY    EQU 0
 MONDAY    EQU 1
 TUESDAY   EQU 2
@@ -107,11 +107,11 @@ THURSDAY  EQU 4
 FRIDAY    EQU 5
 SATURDAY  EQU 6
 
-; wMapObjects: ; d71e
+; wMapObjects:
 PLAYER_OBJECT EQU 0
 NUM_OBJECTS EQU $15
 
-; wInputType: ; c2c7
+; wInputType:
 AUTO_INPUT EQU $ff
 
 ; wOWState
@@ -125,7 +125,7 @@ OWSTATE_WHIRLPOOL       EQU 6
 OWSTATE_WATERFALL       EQU 7
 OWSTATE_CUT             EQU 8
 
-; wPlayerState: ; d95d
+; wPlayerState:
 PLAYER_NORMAL    EQU 0
 PLAYER_BIKE      EQU 1
 PLAYER_SLIP      EQU 2

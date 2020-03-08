@@ -1,4 +1,4 @@
-StartMenu:: ; 125cd
+StartMenu::
 
 	call ClearWindowData
 
@@ -100,30 +100,26 @@ StartMenu:: ; 125cd
 .b
 	scf
 	ret
-; 12691
 
-.ExitMenuRunScript: ; 12691
+.ExitMenuRunScript:
 	call ExitMenu
 	ld a, HMENURETURN_SCRIPT
 	ld [hMenuReturn], a
 	ret
-; 12699
 
-.ExitMenuRunScriptCloseText: ; 12699
+.ExitMenuRunScriptCloseText:
 	call ExitMenu
 	ld a, HMENURETURN_SCRIPT
 	ld [hMenuReturn], a
 	jr .ReturnEnd2
-; 126a2
 
-.ExitMenuCallFuncCloseText: ; 126a2
+.ExitMenuCallFuncCloseText:
 	call ExitMenu
 	ld hl, wQueuedScriptBank
 	call FarPointerCall
 	jr .ReturnEnd2
-; 126b1
 
-.ReturnRedraw: ; 126b1
+.ReturnRedraw:
 	call ClearBGPalettes
 	call ExitMenu
 	call ReloadTilesetAndPalettes
@@ -132,7 +128,6 @@ StartMenu:: ; 125cd
 	call UpdateSprites
 	call FinishExitMenu
 	jp .Reopen
-; 126b7
 
 .MenuDataHeader:
 	db $40 ; tile backup
@@ -179,16 +174,15 @@ StartMenu:: ; 125cd
 ; Menu accounts are removed; this is vestigial
 .NullDesc:      	db "@"
 
-.OpenMenu: ; 127e5
+.OpenMenu:
 	ld a, [wMenuSelection]
 	call .GetMenuAccountTextPointer
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
 	jp hl
-; 127ef
 
-.MenuString: ; 127ef
+.MenuString:
 	push de
 	ld a, [wMenuSelection]
 	call .GetMenuAccountTextPointer
@@ -199,9 +193,8 @@ StartMenu:: ; 125cd
 	ld e, a
 	pop hl
 	jp PlaceString
-; 12800
 
-.GetMenuAccountTextPointer: ; 12819
+.GetMenuAccountTextPointer:
 	ld e, a
 	ld d, 0
 	ld hl, wMenuData2PointerTableAddr
@@ -212,10 +205,8 @@ rept 6
 	add hl, de
 endr
 	ret
-; 12829
 
-
-.SetUpMenuItems: ; 12829
+.SetUpMenuItems:
 	xor a
 	ld [wWhichIndexSet], a
 	call .FillMenuList
@@ -273,10 +264,8 @@ endr
 	ld a, c
 	ld [wMenuItemsList], a
 	ret
-; 1288d
 
-
-.FillMenuList: ; 1288d
+.FillMenuList:
 	xor a
 	ld hl, wMenuItemsList
 	ld [hli], a
@@ -286,41 +275,34 @@ endr
 	ld de, wMenuItemsList + 1
 	ld c, 0
 	ret
-; 128a0
 
-.AppendMenuList: ; 128a0
+.AppendMenuList:
 	ld [de], a
 	inc de
 	inc c
 	ret
-; 128a4
 
-.DrawBugContestStatusBox: ; 128d1
+.DrawBugContestStatusBox:
 	ld hl, wStatusFlags2
 	bit 2, [hl] ; ENGINE_BUG_CONTEST_TIMER
 	ret z
 	farjp StartMenu_DrawBugContestStatusBox
-; 128de
 
-.DrawBugContestStatus: ; 128de
+.DrawBugContestStatus:
 	ld hl, wStatusFlags2
 	bit 2, [hl] ; ENGINE_BUG_CONTEST_TIMER
 	jr nz, .contest
 	ret
 .contest
 	farjp StartMenu_PrintBugContestStatus
-; 128ed
 
-
-StartMenu_Exit: ; 128ed
+StartMenu_Exit:
 ; Exit the menu.
 
 	ld a, 1
 	ret
-; 128f0
 
-
-StartMenu_Quit: ; 128f0
+StartMenu_Quit:
 ; Retire from the bug catching contest.
 
 	ld hl, .EndTheContestText
@@ -339,10 +321,8 @@ StartMenu_Quit: ; 128f0
 .EndTheContestText:
 	text_jump UnknownText_0x1c1a6c
 	db "@"
-; 1290b
 
-
-StartMenu_Save: ; 1290b
+StartMenu_Save:
 ; Save the game.
 
 	call BufferScreen
@@ -353,20 +333,16 @@ StartMenu_Save: ; 1290b
 .asm_12919
 	ld a, 1
 	ret
-; 1291c
 
-
-StartMenu_Option: ; 1291c
+StartMenu_Option:
 ; Game options.
 
 	call FadeToMenu
 	farcall OptionsMenu
 	ld a, 6
 	ret
-; 12928
 
-
-StartMenu_Status: ; 12928
+StartMenu_Status:
 ; Player status.
 
 	call FadeToMenu
@@ -374,10 +350,8 @@ StartMenu_Status: ; 12928
 	call CloseSubmenu
 	xor a
 	ret
-; 12937
 
-
-StartMenu_Pokedex: ; 12937
+StartMenu_Pokedex:
 
 	ld a, [wPartyCount]
 	and a
@@ -390,10 +364,8 @@ StartMenu_Pokedex: ; 12937
 .asm_12949
 	xor a
 	ret
-; 1294c
 
-
-StartMenu_Pokegear: ; 1294c
+StartMenu_Pokegear:
 
 	call FadeToMenu
 	farcall InitPokegearPalettes
@@ -404,10 +376,8 @@ StartMenu_Pokegear: ; 1294c
 	call DelayFrame
 	xor a
 	ret
-; 1295b
 
-
-StartMenu_Pack: ; 1295b
+StartMenu_Pack:
 
 	call FadeToMenu
 	farcall Pack
@@ -422,10 +392,8 @@ StartMenu_Pack: ; 1295b
 	call ExitAllMenus
 	ld a, 4
 	ret
-; 12976
 
-
-StartMenu_Pokemon: ; 12976
+StartMenu_Pokemon:
 
 	ld a, [wPartyCount]
 	and a
@@ -476,4 +444,3 @@ StartMenu_Pokemon: ; 12976
 	call ExitAllMenus
 	pop af
 	ret
-; 129d5

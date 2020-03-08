@@ -2,7 +2,7 @@
 ; (not to be confused with the real-time clock, which either continues to
 ; increment when the GameBoy is switched off, or in the no-RTC patch, runs
 ; at 6x speed while the game time remains real-time)
-ResetGameTime:: ; 208a
+ResetGameTime::
 	xor a
 	ld [wGameTimeCap], a
 	ld [wGameTimeHours], a
@@ -11,10 +11,8 @@ ResetGameTime:: ; 208a
 	ld [wGameTimeSeconds], a
 	ld [wGameTimeFrames], a
 	ret
-; 209e
 
-
-GameTimer:: ; 209e
+GameTimer::
 	nop
 
 	ld a, [rSVBK]
@@ -27,13 +25,10 @@ GameTimer:: ; 209e
 	pop af
 	ld [rSVBK], a
 	ret
-; 20ad
 
-
-UpdateGameTimer:: ; 20ad
+UpdateGameTimer::
 ; Increment the game timer by one frame.
 ; The game timer is capped at 999:59:59.00.
-
 
 ; Don't update if game logic is paused.
 	ld a, [wGameLogicPaused]
@@ -49,7 +44,6 @@ UpdateGameTimer:: ; 20ad
 	ld hl, wGameTimeCap
 	bit 0, [hl]
 	ret nz
-
 
 ; +1 frame
 	ld hl, wGameTimeFrames
@@ -136,7 +130,6 @@ endc
 	ld a, l
 	ld [wGameTimeHours + 1], a
 	ret
-; 210f
 
 ;; add a second to the no-RTC fake real-time clock
 if DEF(NO_RTC)

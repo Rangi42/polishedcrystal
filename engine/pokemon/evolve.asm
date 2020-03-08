@@ -1,4 +1,4 @@
-EvolvePokemon: ; 421d8
+EvolvePokemon:
 	ld hl, wEvolvableFlags
 	xor a
 	ld [hl], a
@@ -6,7 +6,7 @@ EvolvePokemon: ; 421d8
 	ld c, a
 	ld b, SET_FLAG
 	call EvoFlagAction
-EvolveAfterBattle: ; 421e6
+EvolveAfterBattle:
 	xor a
 	ld [wMonTriedToEvolve], a
 	dec a
@@ -118,7 +118,6 @@ EvolveAfterBattle_MasterLoop
 
 	inc hl
 	jp .proceed
-
 
 .happiness
 	ld a, [wTempMonHappiness]
@@ -371,7 +370,6 @@ endr
 	ld l, e
 	ld h, d
 	jp EvolveAfterBattle_MasterLoop
-; 423f8
 
 .dont_evolve_1
 	inc hl
@@ -395,9 +393,8 @@ endr
 	and a
 	call nz, RestartMapMusic
 	ret
-; 42414
 
-UpdateSpeciesNameIfNotNicknamed: ; 42414
+UpdateSpeciesNameIfNotNicknamed:
 	ld a, [wEvolutionOldSpecies]
 	ld [wd265], a
 	call GetPokemonName
@@ -425,17 +422,15 @@ UpdateSpeciesNameIfNotNicknamed: ; 42414
 	ld bc, PKMN_NAME_LENGTH
 	rst CopyBytes
 	ret
-; 42454
 
-CancelEvolution: ; 42454
+CancelEvolution:
 	ld hl, Text_StoppedEvolving
 	call PrintText
 	call ClearTileMap
 	pop hl
 	jp EvolveAfterBattle_MasterLoop
-; 42461
 
-IsMonHoldingEverstone: ; 42461
+IsMonHoldingEverstone:
 	push hl
 	ld a, [wCurPartyMon]
 	ld hl, wPartyMon1Item
@@ -445,32 +440,26 @@ IsMonHoldingEverstone: ; 42461
 	cp EVERSTONE
 	pop hl
 	ret
-; 42473
 
-Text_CongratulationsYourPokemon: ; 0x42473
+Text_CongratulationsYourPokemon:
 	; Congratulations! Your @ @
 	text_jump UnknownText_0x1c4b92
 	db "@"
-; 0x42478
 
-Text_EvolvedIntoPKMN: ; 0x42478
+Text_EvolvedIntoPKMN:
 	; evolved into @ !
 	text_jump UnknownText_0x1c4baf
 	db "@"
-; 0x4247d
 
-Text_StoppedEvolving: ; 0x4247d
+Text_StoppedEvolving:
 	; Huh? @ stopped evolving!
 	text_jump UnknownText_0x1c4bc5
 	db "@"
-; 0x42482
 
-Text_WhatEvolving: ; 0x42482
+Text_WhatEvolving:
 	; What? @ is evolving!
 	text_jump UnknownText_0x1c4be3
 	db "@"
-; 0x42487
-
 
 LearnEvolutionMove:
 	ld a, [wd265]
@@ -515,8 +504,7 @@ LearnEvolutionMove:
 	pop hl
 	ret
 
-
-LearnLevelMoves: ; 42487
+LearnLevelMoves:
 	ld a, [wd265]
 	ld [wCurPartySpecies], a
 	dec a
@@ -579,10 +567,8 @@ LearnLevelMoves: ; 42487
 	ld [wd265], a
 	pop hl
 	jr .find_move
-; 424e1
 
-
-FillMoves: ; 424e1
+FillMoves:
 ; Fill in moves at de for wCurPartySpecies at wCurPartyLevel
 
 	push hl
@@ -687,9 +673,8 @@ FillMoves: ; 424e1
 	pop de
 	pop hl
 	ret
-; 4256e
 
-ShiftMoves: ; 4256e
+ShiftMoves:
 	ld c, NUM_MOVES - 1
 .loop
 	inc de
@@ -698,18 +683,15 @@ ShiftMoves: ; 4256e
 	dec c
 	jr nz, .loop
 	ret
-; 42577
 
-
-EvoFlagAction: ; 42577
+EvoFlagAction:
 	push de
 	ld d, $0
 	predef FlagPredef
 	pop de
 	ret
-; 42581
 
-GetPreEvolution: ; 42581
+GetPreEvolution:
 ; Find the first mon to evolve into wCurPartySpecies.
 
 ; Return carry and the new species in wCurPartySpecies
@@ -756,4 +738,3 @@ GetPreEvolution: ; 42581
 	ld [wCurPartySpecies], a
 	scf
 	ret
-; 425b1

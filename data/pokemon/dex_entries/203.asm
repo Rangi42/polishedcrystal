@@ -1,4 +1,4 @@
-; GirafarigPokedexEntry: ; 0x1d0446
+; GirafarigPokedexEntry:
 	db "Long Neck@" ; species name
 	dw 411, 910 ; height, width
 

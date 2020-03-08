@@ -1,4 +1,4 @@
-; SnubbullPokedexEntry: ; 0x1d06e0
+; SnubbullPokedexEntry:
 	db "Fairy@" ; species name
 	dw 200, 170 ; height, width
 

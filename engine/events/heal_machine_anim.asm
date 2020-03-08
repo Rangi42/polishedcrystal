@@ -1,4 +1,4 @@
-HealMachineAnim: ; 12324
+HealMachineAnim:
 	; If you have no Pokemon, don't change the buffer.  This can lead to some glitchy effects if you have no Pokemon.
 	ld a, [wPartyCount]
 	and a
@@ -14,9 +14,8 @@ HealMachineAnim: ; 12324
 	call .DoJumptableFunctions
 	ld a, [wBuffer2]
 	jp DmgToCgbObjPal1
-; 1233e
 
-.DoJumptableFunctions: ; 1233e
+.DoJumptableFunctions:
 	xor a
 	ld [wBuffer3], a
 .jumptable_loop
@@ -40,50 +39,45 @@ HealMachineAnim: ; 12324
 	ld hl, .Jumptable
 	rst JumpTable
 	jr .jumptable_loop
-; 12365
 
-.Pointers: ; 12365
+.Pointers:
 	dw .Pokecenter
 	dw .ElmLab
 	dw .HallOfFame
-; 1236b
 
-.Pokecenter: ; 1236b
+.Pokecenter:
 	db 0, 1, 3, 5
-.ElmLab: ; 1236f
+.ElmLab:
 	db 0, 1, 3, 5
-.HallOfFame: ; 12373
+.HallOfFame:
 	db 0, 2, 4, 5
-; 12377
 
-.Jumptable: ; 12377
+.Jumptable:
 	dw .LoadGFX
 	dw .PC_LoadBallsOntoMachine
 	dw .HOF_LoadBallsOntoMachine
 	dw .PlayHealMusic
 	dw .HOF_PlaySFX
-; 12383
 
-.LoadGFX: ; 12383
+.LoadGFX:
 	call .LoadPalettes
 	ld de, .HealMachineGFX
 	ld hl, vTiles0 tile $7c
 	lb bc, BANK(.HealMachineGFX), $2
 	jp Request2bpp
-; 12393
 
-.PC_LoadBallsOntoMachine: ; 12393
+.PC_LoadBallsOntoMachine:
 	ld hl, wSprites + $80
 	ld de, .PC_ElmsLab_OAM
 	call .PlaceHealingMachineTile
 	call .PlaceHealingMachineTile
 	jr .LoadBallsOntoMachine
 
-.HOF_LoadBallsOntoMachine: ; 123a1
+.HOF_LoadBallsOntoMachine:
 	ld hl, wSprites + $80
 	ld de, .HOF_OAM
 
-.LoadBallsOntoMachine: ; 123a7
+.LoadBallsOntoMachine:
 	ld a, [wPartyCount]
 	ld b, a
 .party_loop
@@ -97,24 +91,21 @@ HealMachineAnim: ; 12324
 	dec b
 	jr nz, .party_loop
 	ret
-; 123bf
 
-.PlayHealMusic: ; 123bf
+.PlayHealMusic:
 	ld de, MUSIC_HEAL
 	call PlayMusic
 	jp .FlashPalettes8Times
-; 123c8
 
-.HOF_PlaySFX: ; 123c8
+.HOF_PlaySFX:
 	ld de, SFX_GAME_FREAK_LOGO_GS
 	call PlaySFX
 	call .FlashPalettes8Times
 	call WaitSFX
 	ld de, SFX_BOOT_PC
 	jp PlaySFX
-; 123db
 
-.PC_ElmsLab_OAM: ; 123dc
+.PC_ElmsLab_OAM:
 	dsprite   4, 0,   4, 2, $7c, PAL_OW_TREE
 	dsprite   4, 0,   4, 6, $7c, PAL_OW_TREE
 	dsprite   4, 6,   4, 0, $7d, PAL_OW_TREE
@@ -123,22 +114,19 @@ HealMachineAnim: ; 12324
 	dsprite   5, 3,   5, 0, $7d, PAL_OW_TREE | X_FLIP
 	dsprite   6, 0,   4, 0, $7d, PAL_OW_TREE
 	dsprite   6, 0,   5, 0, $7d, PAL_OW_TREE | X_FLIP
-; 123fc
 
-.HealMachineGFX: ; 123fc
+.HealMachineGFX:
 INCBIN "gfx/overworld/heal_machine.2bpp"
-; 1241c
 
-.HOF_OAM: ; 1241c
+.HOF_OAM:
 	dsprite   7, 4,  10, 1, $7d, PAL_OW_TREE
 	dsprite   7, 4,  10, 6, $7d, PAL_OW_TREE
 	dsprite   7, 3,   9, 5, $7d, PAL_OW_TREE
 	dsprite   7, 3,  11, 2, $7d, PAL_OW_TREE
 	dsprite   7, 1,   9, 1, $7d, PAL_OW_TREE
 	dsprite   7, 1,  11, 5, $7d, PAL_OW_TREE
-; 12434
 
-.LoadPalettes: ; 12434
+.LoadPalettes:
 	ld hl, .palettes
 	ld de, wOBPals palette PAL_OW_TREE
 	ld bc, 1 palettes
@@ -147,9 +135,8 @@ INCBIN "gfx/overworld/heal_machine.2bpp"
 	ld a, $1
 	ld [hCGBPalUpdate], a
 	ret
-; 12451
 
-.palettes ; 12451
+.palettes
 if !DEF(MONOCHROME)
 	RGB 31, 31, 31
 	RGB 31, 19, 10
@@ -158,9 +145,8 @@ if !DEF(MONOCHROME)
 else
 	MONOCHROME_RGB_FOUR
 endc
-; 12459
 
-.FlashPalettes8Times: ; 12459
+.FlashPalettes8Times:
 	ld c, $8
 .palette_loop
 	push bc
@@ -171,9 +157,8 @@ endc
 	dec c
 	jr nz, .palette_loop
 	ret
-; 12469
 
-.FlashPalettes: ; 12469
+.FlashPalettes:
 	ld a, [rSVBK]
 	push af
 	ld a, $5
@@ -213,9 +198,8 @@ endc
 	ld a, $1
 	ld [hCGBPalUpdate], a
 	ret
-; 124a3
 
-.PlaceHealingMachineTile: ; 124a3
+.PlaceHealingMachineTile:
 	push bc
 	ld a, [wBuffer1]
 	bcpixel 2, 4
@@ -240,4 +224,3 @@ endc
 	ld [hli], a
 	pop bc
 	ret
-; 124c1

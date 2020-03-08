@@ -36,7 +36,6 @@ rept 8
 endr
 endc
 
-
 PartyMenuBGPals:
 if !DEF(MONOCHROME)
 ; gray
@@ -70,7 +69,6 @@ else
 	MONOCHROME_RGB_FOUR
 endc
 
-
 HPBarInteriorPals:
 if !DEF(MONOCHROME)
 ; green
@@ -88,7 +86,6 @@ else
 	MONOCHROME_RGB_TWO
 endc
 
-
 GenderAndExpBarPals:
 if !DEF(MONOCHROME)
 	RGB 31, 12, 06
@@ -97,8 +94,7 @@ else
 	MONOCHROME_RGB_TWO
 endc
 
-
-StatsScreenPals: ; 8f52
+StatsScreenPals:
 if !DEF(MONOCHROME)
 ; pink
 	RGB 31, 31, 31
@@ -126,10 +122,8 @@ else
 	MONOCHROME_RGB_FOUR
 	MONOCHROME_RGB_FOUR
 endc
-; 8f6a
 
-
-StatsScreenPagePals: ; 8f6a
+StatsScreenPagePals:
 if !DEF(MONOCHROME)
 ; pink
 	RGB 31, 19, 31
@@ -145,9 +139,6 @@ else
 	RGB_MONOCHROME_WHITE
 	RGB_MONOCHROME_WHITE
 endc
-
-; 8f70
-
 
 StatusIconPals:
 if !DEF(MONOCHROME)
@@ -178,7 +169,6 @@ else
 	RGB_MONOCHROME_DARK
 endc
 
-
 CategoryIconPals:
 if !DEF(MONOCHROME)
 ; PHYSICAL
@@ -195,7 +185,6 @@ else
 	MONOCHROME_RGB_TWO
 	MONOCHROME_RGB_TWO
 endc
-
 
 TypeIconPals:
 if !DEF(MONOCHROME)
@@ -258,7 +247,6 @@ else
 	RGB_MONOCHROME_LIGHT
 	RGB_MONOCHROME_DARK
 endc
-
 
 ItemIconPalettes:
 CaughtBallPals:
@@ -1058,7 +1046,6 @@ else
 	RGB_MONOCHROME_BLACK
 endc
 
-
 KeyItemIconPalettes:
 if !DEF(MONOCHROME)
 ; BICYCLE
@@ -1154,7 +1141,6 @@ rept NUM_KEY_ITEMS
 endr
 endc
 
-
 TMHMTypeIconPals:
 if !DEF(MONOCHROME)
 ; NORMAL
@@ -1220,7 +1206,6 @@ rept 19
 endr
 endc
 
-
 TMHMTypes:
 ; This merges data from battle/moves/moves.asm:Moves and engine/tmhm.asm:TMHMMoves
 ; for efficiency.
@@ -1269,7 +1254,7 @@ endc
 	db NORMAL   ; SWIFT
 	db FLYING   ; AERIAL_ACE
 	db NORMAL   ; SUBSTITUTE
-	db NORMAL   ; FACADE
+	db NORMAL
 	db ELECTRIC ; WILD_CHARGE
 	db PSYCHIC  ; REST
 	db NORMAL   ; ATTRACT
@@ -1317,7 +1302,6 @@ else
 endc
 	db WATER    ; WHIRLPOOL
 	db WATER    ; WATERFALL
-
 
 PokegearPals:
 if !DEF(MONOCHROME)
@@ -1393,7 +1377,6 @@ else
 	MONOCHROME_RGB_FOUR
 endc
 
-
 FemalePokegearInterfacePalette:
 if !DEF(MONOCHROME)
 	RGB 31, 31, 31
@@ -1403,7 +1386,6 @@ if !DEF(MONOCHROME)
 else
 	MONOCHROME_RGB_FOUR
 endc
-
 
 JohtoBadgePalettes:
 if !DEF(MONOCHROME)
@@ -1453,7 +1435,6 @@ rept 8
 endr
 endc
 
-
 KantoBadgePalettes:
 if !DEF(MONOCHROME)
 ; Boulder Badge
@@ -1501,7 +1482,6 @@ rept 8
 	MONOCHROME_RGB_FOUR
 endr
 endc
-
 
 SlotMachinePals:
 if !DEF(MONOCHROME)
@@ -1590,7 +1570,6 @@ rept 16
 endr
 endc
 
-
 TrainerCardPals:
 DefaultTrainerCardPals:
 if !DEF(MONOCHROME)
@@ -1627,7 +1606,6 @@ if !DEF(MONOCHROME)
 else
 	MONOCHROME_RGB_TWO
 endc
-
 
 DiplomaPals:
 if !DEF(MONOCHROME)
@@ -1725,7 +1703,6 @@ rept 8
 endr
 endc
 
-
 MartMenuPals:
 if !DEF(MONOCHROME)
 	RGB 31, 31, 31
@@ -1792,8 +1769,7 @@ else
 	MONOCHROME_RGB_FOUR
 endc
 
-
-MalePackPals: ; 9439
+MalePackPals:
 if !DEF(MONOCHROME)
 ; blue bg
 	RGB 31, 31, 31
@@ -1849,10 +1825,8 @@ rept 5
 endr
 	MONOCHROME_RGB_FOUR
 endc
-; 9469
 
-
-FemalePackPals: ; 9469
+FemalePackPals:
 if !DEF(MONOCHROME)
 ; pink bg
 	RGB 31, 31, 31
@@ -1908,8 +1882,6 @@ rept 5
 endr
 	MONOCHROME_RGB_FOUR
 endc
-; 9499
-
 
 MailPals:
 if !DEF(MONOCHROME)
@@ -1968,7 +1940,6 @@ rept 10
 	MONOCHROME_RGB_FOUR
 endr
 endc
-
 
 DarkGrayPalette:
 if !DEF(MONOCHROME)

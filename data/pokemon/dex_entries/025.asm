@@ -1,4 +1,4 @@
-; PikachuPokedexEntry: ; 0x1820ad
+; PikachuPokedexEntry:
 	db "Mouse@" ; species name
 	dw 104, 130 ; height, width
 

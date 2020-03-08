@@ -1,4 +1,4 @@
-; DiglettPokedexEntry: ; 0x182b30
+; DiglettPokedexEntry:
 	db "Mole@" ; species name
 	dw 8, 20 ; height, width
 

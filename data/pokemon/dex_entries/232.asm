@@ -1,4 +1,4 @@
-; DonphanPokedexEntry: ; 0x1d10ac
+; DonphanPokedexEntry:
 	db "Armor@" ; species name
 	dw 307, 2650 ; height, width
 

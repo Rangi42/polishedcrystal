@@ -51,7 +51,7 @@ RockItemEncounter:
 	db 48, NO_ITEM
 	db -1
 
-TreeMonEncounter: ; b81ea
+TreeMonEncounter:
 	xor a
 	ld [wTempWildMonSpecies], a
 	ld [wCurPartyLevel], a
@@ -76,9 +76,8 @@ TreeMonEncounter: ; b81ea
 	xor a
 	ld [hScriptVar], a
 	ret
-; b8219
 
-RockMonEncounter: ; b8219
+RockMonEncounter:
 
 	xor a
 	ld [wTempWildMonSpecies], a
@@ -104,11 +103,10 @@ RockMonEncounter: ; b8219
 .no_battle
 	xor a
 	ret
-; b823e
 
 	db $05 ; ????
 
-GetTreeMonSet: ; b823f
+GetTreeMonSet:
 ; Return carry and treemon set in a
 ; if the current map is in table hl.
 	ld a, [wMapNumber]
@@ -143,11 +141,10 @@ GetTreeMonSet: ; b823f
 	ld a, [hl]
 	scf
 	ret
-; b825e
 
 INCLUDE "data/wild/treemon_maps.asm"
 
-GetTreeMons: ; b82d2
+GetTreeMons:
 ; Return the address of TreeMon table a in hl.
 ; Return nc if table a doesn't exist.
 
@@ -173,11 +170,10 @@ GetTreeMons: ; b82d2
 .quit
 	xor a
 	ret
-; b82e8
 
 INCLUDE "data/wild/treemons.asm"
 
-GetTreeMon: ; b83e5
+GetTreeMon:
 	push hl
 	call GetTreeScore
 	pop hl
@@ -214,7 +210,7 @@ GetTreeMon: ; b83e5
 	jr nz, .skip
 	; fallthrough
 
-SelectTreeMon: ; b841f
+SelectTreeMon:
 ; Read a TreeMons table and pick one monster at random.
 	ld a, 100
 	call RandomRange
@@ -238,14 +234,13 @@ SelectTreeMon: ; b841f
 	scf
 	ret
 
-NoTreeMon: ; b843b
+NoTreeMon:
 	xor a
 	ld [wTempWildMonSpecies], a
 	ld [wCurPartyLevel], a
 	ret
-; b8443
 
-GetTreeScore: ; b8443
+GetTreeScore:
 	call .CoordScore
 	ld [wBuffer1], a
 	call .OTIDScore
@@ -271,9 +266,8 @@ GetTreeScore: ; b8443
 .rare
 	ld a, 2
 	ret
-; b8466
 
-.CoordScore: ; b8466
+.CoordScore:
 	call GetFacingTileCoord
 	ld hl, 0
 	ld c, e
@@ -312,9 +306,8 @@ GetTreeScore: ; b8443
 
 	ld a, [hQuotient + 3]
 	ret
-; b849d
 
-.OTIDScore: ; b849d
+.OTIDScore:
 	ld a, [wPlayerID]
 	ld [hDividend], a
 	ld a, [wPlayerID + 1]
@@ -325,4 +318,3 @@ GetTreeScore: ; b8443
 	call Divide
 	ld a, [hQuotient + 3]
 	ret
-; b84b3

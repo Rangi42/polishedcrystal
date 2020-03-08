@@ -1,4 +1,4 @@
-Special_MagnetTrain: ; 8cc04
+Special_MagnetTrain:
 	ld a, [hScriptVar]
 	and a
 	jr nz, .ToGoldenrod
@@ -85,9 +85,8 @@ Special_MagnetTrain: ; 8cc04
 	pop af
 	ld [rSVBK], a
 	ret
-; 8cc99
 
-MagnetTrain_UpdateLYOverrides: ; 8cc99
+MagnetTrain_UpdateLYOverrides:
 	ld hl, wLYOverridesBackup
 	ld c, $2f
 	ld a, [wcf64]
@@ -115,9 +114,8 @@ MagnetTrain_UpdateLYOverrides: ; 8cc99
 	dec c
 	jr nz, .loadloop
 	ret
-; 8ccc9
 
-MagntTrain_LoadGFX_PlayMusic: ; 8ccc9
+MagntTrain_LoadGFX_PlayMusic:
 	call ClearBGPalettes
 	call ClearSprites
 	call DisableLCD
@@ -162,9 +160,8 @@ MagntTrain_LoadGFX_PlayMusic: ; 8ccc9
 	ld [hli], a
 	ld de, MUSIC_MAGNET_TRAIN
 	jp PlayMusic2
-; 8cd27
 
-DrawMagnetTrain: ; 8cd27
+DrawMagnetTrain:
 	hlbgcoord 0, 0
 	xor a
 .loop
@@ -190,18 +187,16 @@ DrawMagnetTrain: ; 8cd27
 	ld de, MagnetTrainTilemap4
 	ld c, 20
 	; fallthrough
-; 8cd65
 
-.FillLine: ; 8cd65
+.FillLine:
 	ld a, [de]
 	inc de
 	ld [hli], a
 	dec c
 	jr nz, .FillLine
 	ret
-; 8cd6c
 
-.FillAlt: ; 8cd6c
+.FillAlt:
 	ld [hl], e
 	inc hl
 	ld [hl], d
@@ -209,9 +204,8 @@ DrawMagnetTrain: ; 8cd27
 	dec b
 	jr nz, .FillAlt
 	ret
-; 8cd74
 
-GetMagnetTrainBGTiles: ; 8cd74
+GetMagnetTrainBGTiles:
 	push hl
 	ld e, a
 	ld d, 0
@@ -223,9 +217,8 @@ GetMagnetTrainBGTiles: ; 8cd74
 	ld d, [hl]
 	pop hl
 	ret
-; 8cd82
 
-MagnetTrainBGTiles: ; 8cd82
+MagnetTrainBGTiles:
 ; Alternating tiles for each line
 ; of the Magnet Train tilemap.
 	db $4a, $4b ; tree
@@ -246,9 +239,8 @@ MagnetTrainBGTiles: ; 8cd82
 	db $5a, $5b ; tree
 	db $4a, $4b ; tree
 	db $5a, $5b ; tree
-; 8cda6
 
-MagnetTrain_InitLYOverrides: ; 8cda6
+MagnetTrain_InitLYOverrides:
 	ld hl, wLYOverrides
 	ld bc, wLYOverridesEnd - wLYOverrides
 	ld a, [wMagnetTrainInitPosition]
@@ -260,9 +252,8 @@ MagnetTrain_InitLYOverrides: ; 8cda6
 	ld a, $43
 	ld [hLCDCPointer], a
 	ret
-; 8cdc3
 
-SetMagnetTrainPals: ; 8cdc3
+SetMagnetTrainPals:
 	ld a, $1
 	ld [rVBK], a
 
@@ -293,9 +284,8 @@ SetMagnetTrainPals: ; 8cdc3
 	xor a
 	ld [rVBK], a
 	ret
-; 8cdf7
 
-MagnetTrain_Jumptable: ; 8cdf7
+MagnetTrain_Jumptable:
 	ld a, [wJumptableIndex]
 	ld e, a
 	ld d, 0
@@ -306,9 +296,8 @@ MagnetTrain_Jumptable: ; 8cdf7
 	ld h, [hl]
 	ld l, a
 	jp hl
-; 8ce06
 
-.Jumptable: ; 8ce06
+.Jumptable:
 
 	dw .InitPlayerSpriteAnim
 	dw .WaitScene
@@ -317,15 +306,13 @@ MagnetTrain_Jumptable: ; 8cdf7
 	dw .MoveTrain2
 	dw .WaitScene
 	dw .TrainArrived
-; 8ce14
 
-.Next: ; 8ce14
+.Next:
 	ld hl, wJumptableIndex
 	inc [hl]
 	ret
-; 8ce19
 
-.InitPlayerSpriteAnim: ; 8ce19
+.InitPlayerSpriteAnim:
 	ld d, 10 * 8 + 5
 	ld a, [wMagnetTrainPlayerSpriteInitX]
 	ld e, a
@@ -351,9 +338,8 @@ MagnetTrain_Jumptable: ; 8cdf7
 	ld a, $80
 	ld [wcf66], a
 	ret
-; 8ce47
 
-.MoveTrain1: ; 8ce47
+.MoveTrain1:
 	ld hl, wMagnetTrainHoldPosition
 	ld a, [wcf65]
 	cp [hl]
@@ -375,18 +361,16 @@ MagnetTrain_Jumptable: ; 8cdf7
 	ld a, $80
 	ld [wcf66], a
 	ret
-; 8ce6d
 
-.WaitScene: ; 8ce6d
+.WaitScene:
 	ld hl, wcf66
 	ld a, [hl]
 	and a
 	jp z, .Next
 	dec [hl]
 	ret
-; 8ce7a
 
-.MoveTrain2: ; 8ce7a
+.MoveTrain2:
 	ld hl, wMagnetTrainFinalPosition
 	ld a, [wcf65]
 	cp [hl]
@@ -408,16 +392,14 @@ MagnetTrain_Jumptable: ; 8cdf7
 	add d
 	ld [hl], a
 	ret
-; 8cea2
 
-.TrainArrived: ; 8cea2
+.TrainArrived:
 	ld a, $80
 	ld [wJumptableIndex], a
 	ld de, SFX_TRAIN_ARRIVED
 	jp PlaySFX
-; 8ceae
 
-MagnetTrain_Jumptable_FirstRunThrough: ; 8ceae
+MagnetTrain_Jumptable_FirstRunThrough:
 	farcall PlaySpriteAnimations
 	call MagnetTrain_Jumptable
 	call MagnetTrain_UpdateLYOverrides
@@ -452,7 +434,6 @@ MagnetTrain_Jumptable_FirstRunThrough: ; 8ceae
 	pop af
 	ld [rSVBK], a
 	ret
-; 8ceff
 
 MagnetTrainTilemap1:
 	db $36, $06, $07, $0b, $0b, $0b, $0a, $0b, $0b, $0b
@@ -466,4 +447,3 @@ MagnetTrainTilemap3:
 MagnetTrainTilemap4:
 	db $35, $36, $37, $36, $18, $19, $37, $36, $36, $36
 	db $36, $36, $36, $37, $18, $19, $36, $37, $36, $3e
-; 8cf4f

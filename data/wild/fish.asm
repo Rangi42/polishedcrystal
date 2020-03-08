@@ -1,4 +1,4 @@
-FishGroups: ; 92488
+FishGroups:
 	dbbwww 65 percent + 1, 85 percent + 1, .Shore_Old,            .Shore_Good,            .Shore_Super
 	dbbwww 75 percent + 1, 85 percent + 1, .Ocean_Old,            .Ocean_Good,            .Ocean_Super
 	dbbwww 70 percent + 1, 85 percent + 1, .Lake_Old,             .Lake_Good,             .Lake_Super
@@ -13,192 +13,190 @@ FishGroups: ; 92488
 	dbbwww 60 percent + 1, 70 percent + 1, .Remoraid_Old,         .Remoraid_Good,         .Remoraid_Super
 	dbbwww 60 percent + 1, 70 percent + 1, .Qwilfish_NoSwarm_Old, .Qwilfish_NoSwarm_Good, .Qwilfish_NoSwarm_Super
 
-.Shore_Old: ; 924e3
+.Shore_Old:
 	db  70 percent + 1, MAGIKARP,   10
 	db  85 percent + 1, MAGIKARP,   10
 	db 100 percent,     KRABBY,     10
-.Shore_Good: ; 924ec
+.Shore_Good:
 	db  35 percent,     MAGIKARP,   20
 	db  70 percent,     KRABBY,     20
 	db  90 percent + 1, KRABBY,     20
 	db 100 percent,     0, 0
-.Shore_Super: ; 924f8
+.Shore_Super:
 	db  40 percent,     KRABBY,     40
 	db  70 percent,     0, 1
 	db  90 percent + 1, KRABBY,     40
 	db 100 percent,     KINGLER,    40
 
-.Ocean_Old: ; 92504
+.Ocean_Old:
 	db  70 percent + 1, MAGIKARP,   10
 	db  85 percent + 1, MAGIKARP,   10
 	db 100 percent,     TENTACOOL,  10
-.Ocean_Good: ; 9250d
+.Ocean_Good:
 	db  35 percent,     MAGIKARP,   20
 	db  70 percent,     TENTACOOL,  20
 	db  90 percent + 1, CHINCHOU,   20
 	db 100 percent,     0, 2
-.Ocean_Super: ; 92519
+.Ocean_Super:
 	db  40 percent,     CHINCHOU,   40
 	db  70 percent,     0, 3
 	db  90 percent + 1, TENTACRUEL, 40
 	db 100 percent,     LANTURN,    40
 
-.Lake_Old: ; 92525
+.Lake_Old:
 	db  70 percent + 1, MAGIKARP,   10
 	db  85 percent + 1, MAGIKARP,   10
 	db 100 percent,     POLIWAG,    10
-.Lake_Good: ; 9252e
+.Lake_Good:
 	db  35 percent,     MAGIKARP,   20
 	db  70 percent,     POLIWAG,    20
 	db  90 percent + 1, POLIWAG,    20
 	db 100 percent,     0, 4
-.Lake_Super: ; 9253a
+.Lake_Super:
 	db  40 percent,     POLIWAG,    40
 	db  70 percent,     0, 5
 	db  90 percent + 1, MAGIKARP,   40
 	db 100 percent,     POLIWAG,    40
 
-.Pond_Old: ; 92546
+.Pond_Old:
 	db  70 percent + 1, MAGIKARP,   10
 	db  85 percent + 1, MAGIKARP,   10
 	db 100 percent,     POLIWAG,    10
-.Pond_Good: ; 9254f
+.Pond_Good:
 	db  35 percent,     MAGIKARP,   20
 	db  70 percent,     POLIWAG,    20
 	db  90 percent + 1, POLIWAG,    20
 	db 100 percent,     0, 6
-.Pond_Super: ; 9255b
+.Pond_Super:
 	db  40 percent,     POLIWAG,    40
 	db  70 percent,     0, 7
 	db  90 percent + 1, MAGIKARP,   40
 	db 100 percent,     POLIWAG,    40
 
-.Dratini_Old: ; 92567
+.Dratini_Old:
 	db  70 percent + 1, MAGIKARP,   10
 	db  85 percent + 1, MAGIKARP,   10
 	db 100 percent,     MAGIKARP,   10
-.Dratini_Good: ; 92570
+.Dratini_Good:
 	db  35 percent,     MAGIKARP,   20
 	db  70 percent,     MAGIKARP,   20
 	db  90 percent + 1, MAGIKARP,   20
 	db 100 percent,     0, 8
-.Dratini_Super: ; 9257c
+.Dratini_Super:
 	db  40 percent,     MAGIKARP,   40
 	db  70 percent,     0, 9
 	db  90 percent + 1, MAGIKARP,   40
 	db 100 percent,     DRAGONAIR,  40
 
-.Qwilfish_Swarm_Old: ; 92588
+.Qwilfish_Swarm_Old:
 	db  70 percent + 1, MAGIKARP,   5
 	db  85 percent + 1, MAGIKARP,   5
 	db 100 percent,     QWILFISH,   5
-.Qwilfish_Swarm_Good: ; 92591
+.Qwilfish_Swarm_Good:
 	db  35 percent,     MAGIKARP,   20
 	db  70 percent,     QWILFISH,   20
 	db  90 percent + 1, QWILFISH,   20
 	db 100 percent,     0, 10
-.Qwilfish_Swarm_Super: ; 9259d
+.Qwilfish_Swarm_Super:
 	db  40 percent,     QWILFISH,   40
 	db  70 percent,     0, 11
 	db  90 percent + 1, QWILFISH,   40
 	db 100 percent,     QWILFISH,   40
 
-.Remoraid_Swarm_Old: ; 925a9
+.Remoraid_Swarm_Old:
 	db  70 percent + 1, MAGIKARP,   10
 	db  85 percent + 1, MAGIKARP,   10
 	db 100 percent,     REMORAID,   10
-.Remoraid_Swarm_Good: ; 925b2
+.Remoraid_Swarm_Good:
 	db  35 percent,     MAGIKARP,   20
 	db  70 percent,     REMORAID,   20
 	db  90 percent + 1, REMORAID,   20
 	db 100 percent,     0, 12
-.Remoraid_Swarm_Super: ; 925be
+.Remoraid_Swarm_Super:
 	db  40 percent,     REMORAID,   40
 	db  70 percent,     0, 13
 	db  90 percent + 1, REMORAID,   40
 	db 100 percent,     REMORAID,   40
 
-.Gyarados_Old: ; 925ca
+.Gyarados_Old:
 	db  70 percent + 1, MAGIKARP,   10
 	db  85 percent + 1, MAGIKARP,   10
 	db 100 percent,     MAGIKARP,   10
-.Gyarados_Good: ; 925d3
+.Gyarados_Good:
 	db  35 percent,     MAGIKARP,   20
 	db  70 percent,     MAGIKARP,   20
 	db  90 percent + 1, MAGIKARP,   20
 	db 100 percent,     0, 14
-.Gyarados_Super: ; 925df
+.Gyarados_Super:
 	db  40 percent,     MAGIKARP,   40
 	db  70 percent,     0, 15
 	db  90 percent + 1, MAGIKARP,   40
 	db 100 percent,     MAGIKARP,   40
 
-.Dratini_2_Old: ; 925eb
+.Dratini_2_Old:
 	db  70 percent + 1, MAGIKARP,   10
 	db  85 percent + 1, MAGIKARP,   10
 	db 100 percent,     MAGIKARP,   10
-.Dratini_2_Good: ; 925f4
+.Dratini_2_Good:
 	db  35 percent,     MAGIKARP,   10
 	db  70 percent,     MAGIKARP,   10
 	db  90 percent + 1, MAGIKARP,   10
 	db 100 percent,     0, 16
-.Dratini_2_Super: ; 92600
+.Dratini_2_Super:
 	db  40 percent,     MAGIKARP,   10
 	db  70 percent,     0, 17
 	db  90 percent + 1, MAGIKARP,   10
 	db 100 percent,     DRAGONAIR,  10
 
-.WhirlIslands_Old: ; 9260c
+.WhirlIslands_Old:
 	db  70 percent + 1, MAGIKARP,   10
 	db  85 percent + 1, MAGIKARP,   10
 	db 100 percent,     KRABBY,     10
-.WhirlIslands_Good: ; 92615
+.WhirlIslands_Good:
 	db  35 percent,     MAGIKARP,   20
 	db  70 percent,     KRABBY,     20
 	db  90 percent + 1, KRABBY,     20
 	db 100 percent,     0, 18
-.WhirlIslands_Super: ; 92621
+.WhirlIslands_Super:
 	db  40 percent,     KRABBY,     40
 	db  70 percent,     0, 19
 	db  90 percent + 1, KINGLER,    40
 	db 100 percent,     SEADRA,     40
 
 .Qwilfish_NoSwarm_Old:
-.Qwilfish_Old: ; 9262d
+.Qwilfish_Old:
 	db  70 percent + 1, MAGIKARP,   10
 	db  85 percent + 1, MAGIKARP,   10
 	db 100 percent,     TENTACOOL,  10
 .Qwilfish_NoSwarm_Good:
-.Qwilfish_Good: ; 92636
+.Qwilfish_Good:
 	db  35 percent,     MAGIKARP,   20
 	db  70 percent,     TENTACOOL,  20
 	db  90 percent + 1, TENTACOOL,  20
 	db 100 percent,     0, 20
 .Qwilfish_NoSwarm_Super:
-.Qwilfish_Super: ; 92642
+.Qwilfish_Super:
 	db  40 percent,     TENTACOOL,  40
 	db  70 percent,     0, 21
 	db  90 percent + 1, MAGIKARP,   40
 	db 100 percent,     QWILFISH,   40
 
-.Remoraid_Old: ; 9264e
+.Remoraid_Old:
 	db  70 percent + 1, MAGIKARP,   10
 	db  85 percent + 1, MAGIKARP,   10
 	db 100 percent,     POLIWAG,    10
-.Remoraid_Good: ; 92657
+.Remoraid_Good:
 	db  35 percent,     MAGIKARP,   20
 	db  70 percent,     POLIWAG,    20
 	db  90 percent + 1, POLIWAG,    20
 	db 100 percent,     0, 6
-.Remoraid_Super: ; 92663
+.Remoraid_Super:
 	db  40 percent,     POLIWAG,    40
 	db  70 percent,     0, 7
 	db  90 percent + 1, MAGIKARP,   40
 	db 100 percent,     REMORAID,   40
-; 9266f
 
-
-TimeFishGroups: ; 9266f
+TimeFishGroups:
 	;  day              nite
 	db CORSOLA,    20,  STARYU,     20
 	db CORSOLA,    40,  STARYU,     40
@@ -222,8 +220,6 @@ TimeFishGroups: ; 9266f
 	db HORSEA,     40,  HORSEA,     40
 	db TENTACOOL,  20,  TENTACOOL,  20
 	db TENTACOOL,  40,  TENTACOOL,  40
-; 926c7
-
 
 FishItems:
 	db PEARL

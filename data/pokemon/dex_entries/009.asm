@@ -1,4 +1,4 @@
-; BlastoisePokedexEntry: ; 0x1819f9
+; BlastoisePokedexEntry:
 	db "Shellfish@" ; species name
 	dw 503, 1890 ; height, width
 

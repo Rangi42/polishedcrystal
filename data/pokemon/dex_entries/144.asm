@@ -1,4 +1,4 @@
-; ArticunoPokedexEntry: ; 0x1cc632
+; ArticunoPokedexEntry:
 	db "Freeze@" ; species name
 	dw 507, 1220 ; height, width
 

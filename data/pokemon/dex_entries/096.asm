@@ -1,4 +1,4 @@
-; DrowzeePokedexEntry: ; 0x1b8d0a
+; DrowzeePokedexEntry:
 	db "Hypnosis@" ; species name
 	dw 303, 710 ; height, width
 

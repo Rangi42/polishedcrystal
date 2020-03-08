@@ -1,4 +1,4 @@
-; MeowthPokedexEntry: ; 0x182c08
+; MeowthPokedexEntry:
 	db "Scratch Cat@" ; species name
 	dw 104, 90 ; height, width
 

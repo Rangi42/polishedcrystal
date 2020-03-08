@@ -1,4 +1,4 @@
-; RaichuPokedexEntry: ; 0x182117
+; RaichuPokedexEntry:
 	db "Mouse@" ; species name
 	dw 207, 660 ; height, width
 

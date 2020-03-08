@@ -1,4 +1,4 @@
-Marts: ; 160a9
+Marts:
 	dw CherrygroveMart
 	dw CherrygroveMartAfterDex
 	dw VioletMart
@@ -40,19 +40,16 @@ Marts: ; 160a9
 	dw BattleTowerMart2
 	dw BattleTowerMart3
 MartsEnd
-; 160ed
 
-
-CherrygroveMart: ; 160ed
+CherrygroveMart:
 	db 4 ; # items
 	db POTION
 	db ANTIDOTE
 	db PARALYZEHEAL
 	db AWAKENING
 	db -1
-; 160f3
 
-CherrygroveMartAfterDex: ; 160f3
+CherrygroveMartAfterDex:
 	db 6 ; # items
 	db POKE_BALL
 	db HEAL_BALL
@@ -61,9 +58,8 @@ CherrygroveMartAfterDex: ; 160f3
 	db PARALYZEHEAL
 	db AWAKENING
 	db -1
-; 160fa
 
-VioletMart: ; 160fa
+VioletMart:
 	db 11 ; # items
 	db POKE_BALL
 	db REPEAT_BALL
@@ -77,9 +73,8 @@ VioletMart: ; 160fa
 	db X_SPEED
 	db FLOWER_MAIL
 	db -1
-; 16106
 
-AzaleaMart: ; 16106
+AzaleaMart:
 	db 10 ; # items
 	db CHARCOAL
 	db POKE_BALL
@@ -92,9 +87,8 @@ AzaleaMart: ; 16106
 	db PARALYZEHEAL
 	db FLOWER_MAIL
 	db -1
-; 16111
 
-Goldenrod2FMart1: ; 16118
+Goldenrod2FMart1:
 	db 9 ; # items
 	db POTION
 	db SUPER_POTION
@@ -106,9 +100,8 @@ Goldenrod2FMart1: ; 16118
 	db FULL_HEAL
 	db REVIVE
 	db -1
-; 16121
 
-Goldenrod2FMart2: ; 16121
+Goldenrod2FMart2:
 	db 10 ; # items
 	db POKE_BALL
 	db GREAT_BALL
@@ -121,9 +114,8 @@ Goldenrod2FMart2: ; 16121
 	db BLUESKY_MAIL
 	db MORPH_MAIL
 	db -1
-; 1612b
 
-Goldenrod2FMart2Eevee: ; 16140
+Goldenrod2FMart2Eevee:
 	db 11 ; # items
 	db POKE_BALL
 	db GREAT_BALL
@@ -137,10 +129,9 @@ Goldenrod2FMart2Eevee: ; 16140
 	db MORPH_MAIL
 	db EON_MAIL
 	db -1
-; 16146
 
-Goldenrod3FMart: ; 1612b
-Celadon5FMart2: ; 161e1
+Goldenrod3FMart:
+Celadon5FMart2:
 	db 8 ; # items
 	db X_ATTACK
 	db X_DEFEND
@@ -151,10 +142,9 @@ Celadon5FMart2: ; 161e1
 	db DIRE_HIT
 	db GUARD_SPEC
 	db -1
-; 16134
 
-Goldenrod4FMart: ; 16134
-Celadon5FMart1: ; 161da
+Goldenrod4FMart:
+Celadon5FMart1:
 	db 6 ; # items
 	db PROTEIN
 	db IRON
@@ -163,9 +153,8 @@ Celadon5FMart1: ; 161da
 	db ZINC
 	db HP_UP
 	db -1
-; 1613b
 
-Goldenrod5FTMMart: ; 1613b
+Goldenrod5FTMMart:
 	db 8 ; # items
 	dbw TM_PROTECT,       10000
 	dbw TM_REFLECT,       10000
@@ -176,7 +165,6 @@ Goldenrod5FTMMart: ; 1613b
 	dbw TM_BLIZZARD,      30000
 	dbw TM_HYPER_BEAM,    50000
 	db -1
-; 16140
 
 GoldenrodHarborMart:
 	db 8 ; # items
@@ -190,16 +178,15 @@ GoldenrodHarborMart:
 	db SURF_MAIL
 	db -1
 
-UndergroundMart: ; 1620e
+UndergroundMart:
 	db 4 ; # items
 	db ENERGYPOWDER
 	db ENERGY_ROOT
 	db HEAL_POWDER
 	db REVIVAL_HERB
 	db -1
-; 16214
 
-EcruteakMart: ; 1615e
+EcruteakMart:
 	db 11 ; # items
 	db POKE_BALL
 	db GREAT_BALL
@@ -213,9 +200,8 @@ EcruteakMart: ; 1615e
 	db ICE_HEAL
 	db REVIVE
 	db -1
-; 1616a
 
-OlivineMart: ; 16153
+OlivineMart:
 	db 10 ; # items
 	db GREAT_BALL
 	db DIVE_BALL
@@ -228,9 +214,8 @@ OlivineMart: ; 16153
 	db SUPER_REPEL
 	db SURF_MAIL
 	db -1
-; 1615e
 
-CianwoodMart: ; 16111
+CianwoodMart:
 	db 5 ; # items
 	db POTION
 	db SUPER_POTION
@@ -238,27 +223,24 @@ CianwoodMart: ; 16111
 	db FULL_HEAL
 	db REVIVE
 	db -1
-; 16118
 
-YellowForestMart: ; 1614c
+YellowForestMart:
 	db 4 ; # items
 	db POKE_BALL
 	db REPEL
 	db FRESH_WATER
 	db FULL_HEAL
 	db -1
-; 16153
 
-MahoganyMart1: ; 1616a
+MahoganyMart1:
 	db 4 ; # items
 	db TINYMUSHROOM
 	db SLOWPOKETAIL
 	db GREAT_BALL
 	db SUPER_POTION
 	db -1
-; 16170
 
-MahoganyMart2: ; 16170
+MahoganyMart2:
 	db 10 ; # items
 	db RAGECANDYBAR
 	db AIR_BALLOON
@@ -271,9 +253,8 @@ MahoganyMart2: ; 16170
 	db REVIVE
 	db FLOWER_MAIL
 	db -1
-; 1617b
 
-BlackthornMart: ; 1617b
+BlackthornMart:
 	db 11 ; # items
 	db GREAT_BALL
 	db ULTRA_BALL
@@ -287,9 +268,8 @@ BlackthornMart: ; 1617b
 	db X_ATTACK
 	db MUSIC_MAIL
 	db -1
-; 16186
 
-IndigoPlateauMart: ; 16205
+IndigoPlateauMart:
 	db 7 ; # items
 	db ULTRA_BALL
 	db MAX_REPEL
@@ -299,9 +279,8 @@ IndigoPlateauMart: ; 16205
 	db REVIVE
 	db FULL_HEAL
 	db -1
-; 1620e
 
-ViridianMart: ; 16186
+ViridianMart:
 	db 11 ; # items
 	db ULTRA_BALL
 	db NET_BALL
@@ -315,9 +294,8 @@ ViridianMart: ; 16186
 	db REVIVE
 	db FLOWER_MAIL
 	db -1
-; 16191
 
-PewterMart: ; 16191
+PewterMart:
 	db 8 ; # items
 	db GREAT_BALL
 	db DUSK_BALL
@@ -328,9 +306,8 @@ PewterMart: ; 16191
 	db AWAKENING
 	db BURN_HEAL
 	db -1
-; 1619a
 
-MtMoonMart: ; 161fd
+MtMoonMart:
 	db 8 ; # items
 	db POKE_DOLL
 	db FRESH_WATER
@@ -341,9 +318,8 @@ MtMoonMart: ; 161fd
 	db MIRAGE_MAIL
 	db PORTRAITMAIL
 	db -1
-; 16205
 
-CeruleanMart: ; 1619a
+CeruleanMart:
 	db 10 ; # items
 	db GREAT_BALL
 	db ULTRA_BALL
@@ -356,9 +332,8 @@ CeruleanMart: ; 1619a
 	db DIRE_HIT
 	db SURF_MAIL
 	db -1
-; 161a5
 
-LavenderMart: ; 161a5
+LavenderMart:
 	db 9 ; # items
 	db GREAT_BALL
 	db HEAL_BALL
@@ -370,9 +345,8 @@ LavenderMart: ; 161a5
 	db AWAKENING
 	db BURN_HEAL
 	db -1
-; 161af
 
-VermilionMart: ; 161af
+VermilionMart:
 	db 9 ; # items
 	db ULTRA_BALL
 	db REPEAT_BALL
@@ -384,9 +358,8 @@ VermilionMart: ; 161af
 	db BURN_HEAL
 	db LITEBLUEMAIL
 	db -1
-; 161b9
 
-Celadon2FMart1: ; 161b9
+Celadon2FMart1:
 	db 12 ; # items
 	db POTION
 	db SUPER_POTION
@@ -401,9 +374,8 @@ Celadon2FMart1: ; 161b9
 	db REVIVE
 	db MAX_REVIVE
 	db -1
-; 161c2
 
-Celadon2FMart2: ; 161c2
+Celadon2FMart2:
 	db 9 ; # items
 	db POKE_BALL
 	db GREAT_BALL
@@ -415,9 +387,8 @@ Celadon2FMart2: ; 161c2
 	db SUPER_REPEL
 	db MAX_REPEL
 	db -1
-; 161ce
 
-Celadon3FTMMart: ; 161ce
+Celadon3FTMMart:
 	db 8 ; # items
 	dbw TM_SAFEGUARD,     10000
 	dbw TM_BULK_UP,       20000
@@ -428,9 +399,8 @@ Celadon3FTMMart: ; 161ce
 	dbw TM_SANDSTORM,     40000
 	dbw TM_HAIL,          40000
 	db -1
-; 161d5
 
-Celadon4FMart: ; 161d5
+Celadon4FMart:
 	db 8 ; # items
 	db POKE_DOLL
 	db FIRE_STONE
@@ -441,9 +411,8 @@ Celadon4FMart: ; 161d5
 	db LOVELY_MAIL
 	db SURF_MAIL
 	db -1
-; 161da
 
-SaffronMart: ; 161f3
+SaffronMart:
 	db 9 ; # items
 	db GREAT_BALL
 	db ULTRA_BALL
@@ -455,7 +424,6 @@ SaffronMart: ; 161f3
 	db X_DEFEND
 	db FLOWER_MAIL
 	db -1
-; 161fd
 
 SilphCoMart:
 	db 5 ; # items
@@ -466,7 +434,7 @@ SilphCoMart:
 	db DUBIOUS_DISC
 	db -1
 
-FuchsiaMart: ; 161ea
+FuchsiaMart:
 	db 8 ; # items
 	db GREAT_BALL
 	db ULTRA_BALL
@@ -477,7 +445,6 @@ FuchsiaMart: ; 161ea
 	db MAX_REPEL
 	db FLOWER_MAIL
 	db -1
-; 161f3
 
 ShamoutiMart1:
 	db 4 ; # items

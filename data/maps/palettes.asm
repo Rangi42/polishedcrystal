@@ -13,7 +13,6 @@ elif "\1" == "overcast"
 endc
 ENDM
 
-
 SpecialBGPalettes:
 special_bg_pal: MACRO
 	special_pal_for \1, \2
@@ -90,7 +89,6 @@ ENDM
 	special_bg_pal overcast, (unused),                    PAL_TIMEOFDAY, OvercastBGPalette
 	db 0 ; end
 
-
 SpecialOBPalettes:
 special_ob_pal: MACRO
 	special_pal_for \1, \2
@@ -128,7 +126,6 @@ ENDM
 	special_ob_pal tileset,  TILESET_SAFARI_ZONE,             wUnknBGPals palette PAL_BG_GREEN,       PAL_OW_TREE,   1
 	special_ob_pal tileset,  TILESET_FARAWAY_ISLAND,          wUnknBGPals palette PAL_BG_RED,         PAL_OW_TREE,   1
 	db 0 ; end
-
 
 BlindingFlashPalette:
 if !DEF(MONOCHROME)
@@ -470,7 +467,6 @@ endr
 	RGB_MONOCHROME_DARK
 	RGB_MONOCHROME_BLACK
 endc
-
 
 HauntedRadioTowerPalette:
 if !DEF(MONOCHROME)

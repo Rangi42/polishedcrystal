@@ -1,6 +1,6 @@
 ; Functions handling map objects.
 
-GetSpritePalette:: ; 17ff
+GetSpritePalette::
 	push hl
 	push de
 	push bc
@@ -9,9 +9,8 @@ GetSpritePalette:: ; 17ff
 	pop de
 	pop hl
 	ret
-; 180e
 
-GetSpriteVTile:: ; 180e
+GetSpriteVTile::
 	push hl
 	push de
 	push bc
@@ -61,7 +60,7 @@ GetSpriteVTile:: ; 180e
 	pop hl
 	ret
 
-DoesSpriteHaveFacings:: ; 1836
+DoesSpriteHaveFacings::
 	push de
 	push hl
 
@@ -82,13 +81,12 @@ DoesSpriteHaveFacings:: ; 1836
 	pop hl
 	pop de
 	ret
-; 184a
 
-GetPlayerStandingTile:: ; 184a
+GetPlayerStandingTile::
 	ld a, [wPlayerStandingTile]
 	; fallthrough
 
-GetTileCollision:: ; 185d
+GetTileCollision::
 ; Get the collision type of tile a.
 
 	push de
@@ -113,9 +111,8 @@ GetTileCollision:: ; 185d
 	pop hl
 	pop de
 	ret
-; 1875
 
-GetMapObject:: ; 18d2
+GetMapObject::
 ; Return the location of map object a in bc.
 	ld hl, wMapObjects
 	ld bc, OBJECT_LENGTH
@@ -123,9 +120,8 @@ GetMapObject:: ; 18d2
 	ld b, h
 	ld c, l
 	ret
-; 18de
 
-CheckObjectVisibility:: ; 18de
+CheckObjectVisibility::
 ; Sets carry if the object is not visible on the screen.
 	ld [hMapObjectIndexBuffer], a
 	call GetMapObject
@@ -142,9 +138,8 @@ CheckObjectVisibility:: ; 18de
 .not_visible
 	scf
 	ret
-; 18f5
 
-CheckObjectTime:: ; 18f5
+CheckObjectTime::
 	ld hl, MAPOBJECT_HOUR
 	add hl, bc
 	ld a, [hl]
@@ -216,17 +211,15 @@ CheckObjectTime:: ; 18f5
 .no
 	scf
 	ret
-; 194d
 
-_CopyObjectStruct:: ; 1956
+_CopyObjectStruct::
 	ld [hMapObjectIndexBuffer], a
 	call UnmaskObject
 	ld a, [hMapObjectIndexBuffer]
 	call GetMapObject
 	farjp CopyObjectStruct
-; 1967
 
-ApplyDeletionToMapObject:: ; 1967
+ApplyDeletionToMapObject::
 	ld [hMapObjectIndexBuffer], a
 	call GetMapObject
 	ld hl, MAPOBJECT_OBJECT_STRUCT_ID
@@ -254,14 +247,12 @@ ApplyDeletionToMapObject:: ; 1967
 	ld [wObjectFollow_Leader], a
 	ld [wObjectFollow_Follower], a
 	ret
-; 199f
 
-DeleteObjectStruct:: ; 199f
+DeleteObjectStruct::
 	call ApplyDeletionToMapObject
 	jp MaskObject
-; 19a6
 
-CopyPlayerObjectTemplate:: ; 19a6
+CopyPlayerObjectTemplate::
 	push hl
 	call GetMapObject
 	ld d, b
@@ -273,9 +264,8 @@ CopyPlayerObjectTemplate:: ; 19a6
 	ld bc, OBJECT_LENGTH - 1
 	rst CopyBytes
 	ret
-; 19b8
 
-LoadMovementDataPointer:: ; 19e9
+LoadMovementDataPointer::
 ; Load the movement data pointer for person a.
 	ld [wMovementPerson], a
 	ld a, [hROMBank]
@@ -301,9 +291,8 @@ LoadMovementDataPointer:: ; 19e9
 	set 7, [hl]
 	and a
 	ret
-; 1a13
 
-FindFirstEmptyObjectStruct:: ; 1a13
+FindFirstEmptyObjectStruct::
 ; Returns the index of the first empty object struct in A and its address in HL, then sets carry.
 ; If all object structs are occupied, A = 0 and Z is set.
 ; Preserves BC and DE.
@@ -331,9 +320,8 @@ FindFirstEmptyObjectStruct:: ; 1a13
 	pop de
 	pop bc
 	ret
-; 1a2f
 
-GetSpriteMovementFunction:: ; 1a2f
+GetSpriteMovementFunction::
 	ld hl, OBJECT_MOVEMENTTYPE
 	add hl, bc
 	ld a, [hl]
@@ -350,9 +338,8 @@ rept SPRITEMOVEDATA_FIELDS
 endr
 	ld a, [hl]
 	ret
-; 1a47
 
-GetInitialFacing:: ; 1a47
+GetInitialFacing::
 	push bc
 	push de
 	ld e, a
@@ -369,9 +356,8 @@ endr
 	pop de
 	pop bc
 	ret
-; 1a61
 
-CopySpriteMovementData:: ; 1a61
+CopySpriteMovementData::
 	ld l, a
 	ld a, [hROMBank]
 	push af
@@ -387,9 +373,8 @@ CopySpriteMovementData:: ; 1a61
 	rst Bankswitch
 
 	ret
-; 1a71
 
-.CopyData: ; 1a71
+.CopyData:
 	ld hl, OBJECT_MOVEMENTTYPE
 	add hl, de
 	ld [hl], a
@@ -438,9 +423,8 @@ endr
 	add hl, de
 	ld [hl], a
 	ret
-; 1aae
 
-_GetMovementByte:: ; 1aae
+_GetMovementByte::
 ; Switch to the movement data bank
 	ld a, [hROMBank]
 	push af
@@ -464,35 +448,31 @@ _GetMovementByte:: ; 1aae
 
 	ld a, h
 	ret
-; 1ac6
 
-UpdateSprites:: ; 1ad2
+UpdateSprites::
 	ld a, [wVramState]
 	bit 0, a
 	ret z
 
 	farcall UpdateMapObjectDataAndSprites
 	farjp _UpdateSprites
-; 1ae5
 
-GetObjectStruct:: ; 1ae5
+GetObjectStruct::
 	ld bc, OBJECT_STRUCT_LENGTH
 	ld hl, wObjectStructs
 	rst AddNTimes
 	ld b, h
 	ld c, l
 	ret
-; 1af1
 
-DoesObjectHaveASprite:: ; 1af1
+DoesObjectHaveASprite::
 	ld hl, OBJECT_SPRITE
 	add hl, bc
 	ld a, [hl]
 	and a
 	ret
-; 1af8
 
-SetSpriteDirection:: ; 1af8
+SetSpriteDirection::
 	; preserves other flags
 	push af
 	ld hl, OBJECT_FACING
@@ -505,12 +485,10 @@ SetSpriteDirection:: ; 1af8
 	or e
 	ld [hl], a
 	ret
-; 1b07
 
-GetSpriteDirection:: ; 1b07
+GetSpriteDirection::
 	ld hl, OBJECT_FACING
 	add hl, bc
 	ld a, [hl]
 	and %00001100
 	ret
-; 1b0f

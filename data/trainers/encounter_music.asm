@@ -1,4 +1,4 @@
-TrainerEncounterMusic: ; e9027
+TrainerEncounterMusic:
 	db MUSIC_HIKER_ENCOUNTER
 	db MUSIC_BEAUTY_ENCOUNTER		; carrie
 	db MUSIC_HIKER_ENCOUNTER		; cal
@@ -145,4 +145,3 @@ TrainerEncounterMusic: ; e9027
 ;	db MUSIC_HIKER_ENCOUNTER		; imakuni
 ;	db MUSIC_HIKER_ENCOUNTER		; lawrence
 ;	db MUSIC_KIMONO_ENCOUNTER		; rei
-; e906e

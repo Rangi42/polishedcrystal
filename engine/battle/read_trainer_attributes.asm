@@ -1,4 +1,4 @@
-GetTrainerClassName: ; 3952d
+GetTrainerClassName:
 	ld a, c
 	ld [wCurSpecies], a
 	ld a, TRAINER_NAME
@@ -7,7 +7,7 @@ GetTrainerClassName: ; 3952d
 	ld de, wStringBuffer1
 	ret
 
-GetOTName: ; 39550
+GetOTName:
 	ld hl, wOTPlayerName
 	ld a, [wLinkMode]
 	and a
@@ -28,7 +28,7 @@ GetOTName: ; 39550
 	pop de
 	ret
 
-GetTrainerAttributes: ; 3957b
+GetTrainerAttributes:
 	ld a, [wTrainerClass]
 	ld c, a
 	call GetOTName
@@ -47,7 +47,7 @@ GetTrainerAttributes: ; 3957b
 	ld [wEnemyTrainerBaseReward], a
 	ret
 
-ComputeTrainerReward: ; 3991b (e:591b)
+ComputeTrainerReward:
 	ld hl, hProduct
 	xor a
 	ld [hli], a

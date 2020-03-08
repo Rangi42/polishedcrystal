@@ -11,13 +11,11 @@ SelectMenu::
 	call WaitButton
 	jp CloseText
 
-
 ItemMayBeRegisteredText:
 	text_jump UnknownText_0x1c1cf3
 	db "@"
 
-
-CheckRegisteredItem:: ; 13345
+CheckRegisteredItem::
 ; Returns amount of registered items and z if none is. Populates wCurItem
 ; with a valid registered item, useful if there's only a single one.
 	ld hl, wRegisteredItems

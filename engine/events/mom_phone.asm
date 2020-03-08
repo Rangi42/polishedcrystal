@@ -1,4 +1,4 @@
-MomTriesToBuySomething:: ; fcfec
+MomTriesToBuySomething::
 	ld a, [wMapReentryScriptQueueFlag]
 	and a
 	ret nz
@@ -16,14 +16,12 @@ MomTriesToBuySomething:: ; fcfec
 	farcall LoadScriptBDE
 	scf
 	ret
-; fd00f
 
-.Script: ; 0xfd00f
+.Script:
 	callasm .ASMFunction
 	farjump Script_ReceivePhoneCall
-; 0xfd017
 
-.ASMFunction: ; fd017
+.ASMFunction:
 	call MomBuysItem_DeductFunds
 	call Mom_GetScriptPointer
 	ld a, [wWhichMomItemSet]
@@ -49,9 +47,8 @@ MomTriesToBuySomething:: ; fcfec
 	ld a, d
 	ld [hl], a
 	ret
-; fd044
 
-CheckBalance_MomItem2: ; fd044
+CheckBalance_MomItem2:
 	ld a, [wWhichMomItem]
 	cp 10
 	jr nc, .nope
@@ -107,10 +104,8 @@ CheckBalance_MomItem2: ; fd044
 	ld de, wMomItemTriggerBalance
 	ld bc, hMoneyTemp
 	farjp AddMoney
-; fd0a6
 
-
-MomBuysItem_DeductFunds: ; fd0a6 (3f:50a6)
+MomBuysItem_DeductFunds:
 	call GetItemFromMom
 	ld de, 3 ; cost
 	add hl, de
@@ -124,8 +119,7 @@ MomBuysItem_DeductFunds: ; fd0a6 (3f:50a6)
 	ld bc, hMoneyTemp
 	farjp TakeMoney
 
-
-Mom_GiveItemOrDoll: ; fd0c3
+Mom_GiveItemOrDoll:
 	call GetItemFromMom
 	ld de, 6 ; item type
 	add hl, de
@@ -146,10 +140,8 @@ Mom_GiveItemOrDoll: ; fd0c3
 	ld [wItemQuantityChangeBuffer], a
 	ld hl, wNumPCItems
 	jp ReceiveItem
-; fd0eb
 
-
-Mom_GetScriptPointer: ; fd0eb (3f:50eb)
+Mom_GetScriptPointer:
 	call GetItemFromMom
 	ld de, 6 ; item type
 	add hl, de
@@ -159,26 +151,22 @@ Mom_GetScriptPointer: ; fd0eb (3f:50eb)
 	ret z
 	ld de, .DollScript
 	ret
-; fd0fd (3f:50fd)
 
-.ItemScript: ; 0xfd0fd
+.ItemScript:
 	writetext _MomText_HiHowAreYou
 	writetext _MomText_FoundAnItem
 	writetext _MomText_BoughtWithYourMoney
 	writetext _MomText_ItsInPC
 	end
-; 0xfd10a
 
-.DollScript: ; 0xfd10a
+.DollScript:
 	writetext _MomText_HiHowAreYou
 	writetext _MomText_FoundADoll
 	writetext _MomText_BoughtWithYourMoney
 	writetext _MomText_ItsInRoom
 	end
-; 0xfd117
 
-
-GetItemFromMom: ; fd117
+GetItemFromMom:
 	ld a, [wWhichMomItemSet]
 	and a
 	jr z, .zero
@@ -203,43 +191,35 @@ rept 3 ; multiply hl by 8
 endr
 	add hl, de
 	ret
-; fd136
 
 INCLUDE "data/items/mom_phone.asm"
 
-
-_MomText_HiHowAreYou: ; 0xfd1b1
+_MomText_HiHowAreYou:
 	; Hi,  ! How are you?
 	text_jump UnknownText_0x1bc615
 	db "@"
-; 0xfd1b6
 
-_MomText_FoundAnItem: ; 0xfd1b6
+_MomText_FoundAnItem:
 	; I found a useful item shopping, so
 	text_jump UnknownText_0x1bc62a
 	db "@"
-; 0xfd1bb
 
-_MomText_BoughtWithYourMoney: ; 0xfd1bb
+_MomText_BoughtWithYourMoney:
 	; I bought it with your money. Sorry!
 	text_jump UnknownText_0x1bc64e
 	db "@"
-; 0xfd1c0
 
-_MomText_ItsInPC: ; 0xfd1c0
+_MomText_ItsInPC:
 	; It's in your PC. You'll like it!
 	text_jump UnknownText_0x1bc673
 	db "@"
-; 0xfd1c5
 
-_MomText_FoundADoll: ; 0xfd1c5
+_MomText_FoundADoll:
 	; While shopping today, I saw this adorable doll, so
 	text_jump UnknownText_0x1bc693
 	db "@"
-; 0xfd1ca
 
-_MomText_ItsInRoom: ; 0xfd1ca
+_MomText_ItsInRoom:
 	; It's in your room. You'll love it!
 	text_jump UnknownText_0x1bc6c7
 	db "@"
-; 0xfd1cf

@@ -1,4 +1,4 @@
-Fish: ; 92402
+Fish:
 ; Using a fishing rod.
 ; Fish for monsters with rod e in encounter group d.
 ; Return monster e at level d.
@@ -20,10 +20,8 @@ endr
 	pop bc
 	pop af
 	ret
-; 9241a
 
-
-.Fish: ; 9241a
+.Fish:
 ; Fish for monsters with rod b from encounter data in FishGroup at hl.
 ; Return monster e at level d; or item e if d = 0; or nothing if de = 0.
 
@@ -107,10 +105,8 @@ endr
 	ld d, [hl]
 	inc hl
 	ret
-; 9245b
 
-
-GetFishGroupIndex: ; 9245b
+GetFishGroupIndex:
 ; Return the index of fishgroup d in de.
 
 	push hl
@@ -144,7 +140,5 @@ GetFishGroupIndex: ; 9245b
 	jr nz, .done
 	ld d, FISHGROUP_REMORAID_SWARM
 	jr .done
-; 92488
-
 
 INCLUDE "data/wild/fish.asm"

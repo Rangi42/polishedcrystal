@@ -8,7 +8,7 @@ Music_IndigoPlateauRBY:
 	dbw $02, Music_IndigoPlateauRBY_Ch3
 	dbw $03, Music_IndigoPlateauRBY_Ch4
 
-Music_IndigoPlateauRBY_Ch1: ; a5f0 (2:65f0)
+Music_IndigoPlateauRBY_Ch1:
 	tempo 132
 	volume 119
 	dutycycle 3
@@ -95,8 +95,7 @@ Music_IndigoPlateauRBY_branch_a659:
 	note A_, 4
 	endchannel
 
-
-Music_IndigoPlateauRBY_Ch2: ; a664 (2:6664)
+Music_IndigoPlateauRBY_Ch2:
 	dutycycle 3
 	vibrato 8, 37
 	notetype 12, 194
@@ -156,8 +155,7 @@ Music_IndigoPlateauRBY_branch_a6af:
 	note D_, 4
 	endchannel
 
-
-Music_IndigoPlateauRBY_Ch3: ; a6ba (2:66ba)
+Music_IndigoPlateauRBY_Ch3:
 	notetype 12, 16
 	octave 4
 	note D_, 2
@@ -234,8 +232,7 @@ Music_IndigoPlateauRBY_branch_a6fe:
 	note A_, 4
 	endchannel
 
-
-Music_IndigoPlateauRBY_Ch4: ; a70f (2:670f)
+Music_IndigoPlateauRBY_Ch4:
 	notetype 6
 	togglenoise 1
 	note A_, 16
@@ -330,4 +327,3 @@ Music_IndigoPlateauRBY_branch_a7a8:
 	note A#, 1
 	note A#, 1
 	endchannel
-; 0xa7c5

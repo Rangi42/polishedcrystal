@@ -1,4 +1,4 @@
-CheckWarpCollision:: ; 1499a
+CheckWarpCollision::
 ; Is this tile a warp?
 	ld a, [wPlayerStandingTile]
 	cp COLL_HOLE
@@ -12,9 +12,8 @@ CheckWarpCollision:: ; 1499a
 .warp
 	scf
 	ret
-; 149af
 
-CheckDirectionalWarp:: ; 149af
+CheckDirectionalWarp::
 ; If this is a directional warp, clear carry (press the designated button to warp).
 ; Else, set carry (immediate warp).
 	ld a, [wPlayerStandingTile]
@@ -32,45 +31,39 @@ CheckDirectionalWarp:: ; 149af
 .directional
 	xor a
 	ret
-; 149c6
 
-CheckWarpFacingDown: ; 149c6
+CheckWarpFacingDown:
 	ld de, 1
 	ld hl, .blocks
 	ld a, [wPlayerStandingTile]
 	jp IsInArray
-; 149d3
 
-.blocks ; 149d3
+.blocks
 	db COLL_DOOR
 	db COLL_STAIRCASE
 	db COLL_CAVE
 	db COLL_WARP_PANEL
 	db -1
-; 149dd
 
-CheckGrassCollision:: ; 149dd
+CheckGrassCollision::
 	ld a, [wPlayerStandingTile]
 	ld hl, .blocks
 	ld de, 1
 	jp IsInArray
 
-.blocks ; 149ea
+.blocks
 	db COLL_TALL_GRASS
 	db COLL_LONG_GRASS
 	db COLL_WATER
 	db -1
-; 149f5
 
-CheckCutCollision: ; 149f5
+CheckCutCollision:
 	ld a, c
 	ld hl, .blocks
 	ld de, 1
 	jp IsInArray
-; 149ea
 
-.blocks ; 14a00
+.blocks
 	db COLL_TALL_GRASS
 	db COLL_LONG_GRASS
 	db -1
-; 14a07

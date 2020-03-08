@@ -97,7 +97,6 @@ Music_MountPyreRSE_Ch1_loop_3:
 	note __, 15
 	loopchannel 0, Music_MountPyreRSE_Ch1_loop_main
 
-
 Music_MountPyreRSE_Ch2:
 	dutycycle 2
 	vibrato $1c, $12
@@ -310,8 +309,6 @@ Music_MountPyreRSE_Ch2_branch_2:
 	intensity $63
 	note B_, 2
 	endchannel
-
-
 
 Music_MountPyreRSE_Ch3:
 	notetype $6, $24

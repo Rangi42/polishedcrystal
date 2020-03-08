@@ -1,4 +1,4 @@
-; EeveePokedexEntry: ; 0x1cc1b2
+; EeveePokedexEntry:
 	db "Evolution@" ; species name
 	dw 100, 140 ; height, width
 

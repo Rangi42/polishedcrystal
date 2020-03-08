@@ -6,7 +6,6 @@
 
 ; This prevents the display and audio output from lagging.
 
-
 VBlank::
 	push af
 	push bc
@@ -71,7 +70,6 @@ VBlank::
 	dw VBlank5   ; 5
 	dw VBlank6   ; 6
 	dw VBlank7   ; 7
-
 
 VBlank0::
 ; normal operation

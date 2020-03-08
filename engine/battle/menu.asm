@@ -1,12 +1,10 @@
-LoadBattleMenu: ; 24ef2
+LoadBattleMenu:
 	ld hl, BattleMenuDataHeader
 	jr _BattleMenuCommon
-; 24f0b
 
-ContestBattleMenu: ; 24f13
+ContestBattleMenu:
 	ld hl, ContestBattleMenuDataHeader
 	jr _BattleMenuCommon
-; 24f19
 
 SafariBattleMenu:
 	ld hl, SafariBattleMenuDataHeader
@@ -37,58 +35,51 @@ _BattleMenuCommon:
 	ld [wBattleMenuCursorBuffer], a
 	jp ExitMenu
 
-BattleMenuDataHeader: ; 24f2c
+BattleMenuDataHeader:
 	db $40 ; flags
 	db 12, 08 ; start coords
 	db 17, 19 ; end coords
 	dw .MenuData2
 	db 1 ; default option
-; 24f34
 
-.MenuData2: ; 0x24f34
+.MenuData2:
 	db $87 ; flags
 	dn 2, 2 ; rows, columns
 	db 6 ; spacing
 	dba .Strings
 	dbw BANK(.MenuData2), 0
-; 0x24f3d
 
-.Strings: ; 0x24f3d
+.Strings:
 	db "Fight@"
 	db "<PK><MN>@"
 	db "Bag@"
 	db "Run@"
-; 24f4e
 
-ContestBattleMenuDataHeader: ; 24f89
+ContestBattleMenuDataHeader:
 	db $40 ; flags
 	db 12, 05 ; start coords
 	db 17, 19 ; end coords
 	dw .MenuData2
 	db 1 ; default option
-; 24f91
 
-.MenuData2: ; 24f91
+.MenuData2:
 	db $81 ; flags
 	dn 2, 2 ; rows, columns
 	db 8 ; spacing
 	dba .Strings
 	dba ShowParkBallsRemaining
-; 24f9a
 
-.Strings: ; 24f9a
+.Strings:
 	db "Fight@"
 	db "<PK><MN>@"
 	db "Ball×  @"
 	db "Run@"
-; 24fb2
 
-ShowParkBallsRemaining: ; 24fb2
+ShowParkBallsRemaining:
 	hlcoord 12, 16
 	ld de, wParkBallsRemaining
 	lb bc, PRINTNUM_LEADINGZEROS | 1, 2
 	jp PrintNum
-; 24fbf
 
 SafariBattleMenuDataHeader:
 	db $40 ; flags

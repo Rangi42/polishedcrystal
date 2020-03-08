@@ -393,7 +393,6 @@ Music_MountCoronetDPPt_Ch1_branch_2:
 ;	intensity $87
 ;	note A#, 6
 
-
 Music_MountCoronetDPPt_Ch2:
 	tone $0001
 	dutycycle 0
@@ -796,7 +795,6 @@ Music_MountCoronetDPPt_Ch2_branch_2:
 ;	note C#, 9
 ;	intensity $67
 ;	note C#, 6
-
 
 	;note __, 4
 	;octave 4

@@ -1,4 +1,4 @@
-; EspeonPokedexEntry: ; 0x1d0155
+; EspeonPokedexEntry:
 	db "Sun@" ; species name
 	dw 211, 580 ; height, width
 

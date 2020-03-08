@@ -1,4 +1,4 @@
-; FlaaffyPokedexEntry: ; 0x1cd5b8
+; FlaaffyPokedexEntry:
 	db "Wool@" ; species name
 	dw 207, 290 ; height, width
 

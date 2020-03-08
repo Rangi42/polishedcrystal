@@ -1,4 +1,4 @@
-; WobbuffetPokedexEntry: ; 0x1d03dd
+; WobbuffetPokedexEntry:
 	db "Patient@" ; species name
 	dw 403, 630 ; height, width
 

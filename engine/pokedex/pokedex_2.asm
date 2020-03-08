@@ -1,4 +1,4 @@
-AnimateDexSearchSlowpoke: ; 441cf
+AnimateDexSearchSlowpoke:
 	ld hl, .FrameIDs
 	ld b, 25
 .loop
@@ -28,7 +28,7 @@ AnimateDexSearchSlowpoke: ; 441cf
 	ld c, 32
 	jp DelayFrames
 
-.FrameIDs: ; 441fc
+.FrameIDs:
 	; frame ID, duration
 	db 0, 7
 	db 1, 7
@@ -37,7 +37,7 @@ AnimateDexSearchSlowpoke: ; 441cf
 	db 4, 7
 	db -2
 
-DoDexSearchSlowpokeFrame: ; 44207
+DoDexSearchSlowpokeFrame:
 	ld a, [wDexSearchSlowpokeFrame]
 	ld hl, .SpriteData
 	ld de, wSprites
@@ -63,7 +63,7 @@ DoDexSearchSlowpokeFrame: ; 44207
 	inc de
 	jr .loop
 
-.SpriteData: ; 44228
+.SpriteData:
 	dsprite 11, 0,  9, 0, $00, $0
 	dsprite 11, 0, 10, 0, $01, $0
 	dsprite 11, 0, 11, 0, $02, $0
@@ -75,7 +75,7 @@ DoDexSearchSlowpokeFrame: ; 44207
 	dsprite 13, 0, 11, 0, $22, $0
 	db -1
 
-DisplayDexEntry: ; 4424d
+DisplayDexEntry:
 	call GetPokemonName
 	hlcoord 9, 3
 	call PlaceString ; mon species
@@ -305,7 +305,7 @@ Mul16:
 	jr nz, .loop
 	ret
 
-GetDexEntryPointer: ; 44333
+GetDexEntryPointer:
 ; return dex entry pointer b:de
 	push hl
 	ld hl, PokedexDataPointerTable
@@ -331,7 +331,7 @@ GetDexEntryPointer: ; 44333
 	pop hl
 	ret
 
-.PokedexEntryBanks: ; 44351
+.PokedexEntryBanks:
 
 GLOBAL PokedexEntries1
 GLOBAL PokedexEntries2

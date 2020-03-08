@@ -4,7 +4,7 @@ spawn: MACRO
 	db \2, \3
 ENDM
 
-SpawnPoints: ; 0x152ab
+SpawnPoints:
 	spawn KRISS_HOUSE_2F,              3,  3
 
 	spawn PALLET_TOWN,                 5,  6

@@ -401,7 +401,7 @@ ApplyAttrMapVBank0::
 	ld [hBGMapMode], a
 	ret
 
-ApplyPartyMenuHPPals: ; 96f3
+ApplyPartyMenuHPPals:
 	ld hl, wHPPals
 	ld a, [wHPPalIndex]
 	ld e, a
@@ -693,7 +693,7 @@ endc
 	jr nz, .loop
 	ret
 
-CopyData: ; 0x9a52
+CopyData:
 ; copy bc bytes of data from hl to de
 	ld a, [hli]
 	ld [de], a
@@ -703,9 +703,8 @@ CopyData: ; 0x9a52
 	or b
 	jr nz, CopyData
 	ret
-; 0x9a5b
 
-ClearBytes: ; 0x9a5b
+ClearBytes:
 ; clear bc bytes of data starting from de
 	xor a
 	ld [de], a
@@ -715,7 +714,6 @@ ClearBytes: ; 0x9a5b
 	or b
 	jr nz, ClearBytes
 	ret
-; 0x9a64
 
 LoadMapPals:
 	farcall LoadSpecialMapPalette
@@ -876,7 +874,6 @@ INCLUDE "gfx/tilesets/palettes/monochrome/roof_overcast.pal"
 else
 INCLUDE "gfx/tilesets/roofs_overcast.pal"
 endc
-
 
 INCLUDE "data/pokemon/palettes.asm"
 

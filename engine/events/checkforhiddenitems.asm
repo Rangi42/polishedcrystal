@@ -1,4 +1,4 @@
-CheckForHiddenItems: ; b8172
+CheckForHiddenItems:
 ; Checks to see if there are unfound hidden items on the screen.
 ; Returns nc if no item was found. Otherwise, return c.
 ; a has the following information if an item is found:

@@ -14,7 +14,6 @@ IsInArray::
 	add hl, de
 	jr .loop
 
-
 SkipNames::
 ; Skip a names.
 	ld bc, NAME_LENGTH
@@ -25,7 +24,6 @@ SkipNames::
 	dec a
 	jr nz, .loop
 	ret
-
 
 _AddNTimes::
 ; Add bc * a to hl. Don't optimize this for space.

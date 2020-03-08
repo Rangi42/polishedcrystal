@@ -127,30 +127,27 @@ channel_struct: MACRO
 \1Octave::            db ; 7-0 (0 is highest)
 \1PitchOffset::       db ; raises existing octaves (to repeat phrases)
 \1NoteDuration::      db ; frames remaining for the current note
-\1Field0x16::         ds 1 ; c117
-                      ds 1 ; c118
+\1Field0x16::         ds 2
 \1LoopCount::         db
 \1Tempo::             dw
 \1Tracks::            db ; hi:left lo:right
-\1SFXDutyLoop::       ds 1 ; c11d
+\1SFXDutyLoop::       ds 1
 \1VibratoDelayCount:: db ; initialized by \1VibratoDelay
 \1VibratoDelay::      db ; number of frames a note plays until vibrato starts
 \1VibratoExtent::     db
 \1VibratoRate::       db ; hi:frames for each alt lo:frames to the next alt
 \1PitchWheelTarget::  dw ; frequency endpoint for pitch wheel
-\1PitchWheelAmount::  db ; c124
-\1PitchWheelAmountFraction:: db ; c125
-\1Field0x25::         ds 1 ; c126
-                      ds 1 ; c127
+\1PitchWheelAmount::  db
+\1PitchWheelAmountFraction:: db
+\1Field0x25::         ds 2
 \1CryPitch::          dw
 \1Field0x29::         ds 1
 \1Field0x2a::         ds 2
 \1Field0x2c::         ds 1
 \1NoteLength::        db ; frames per 16th note
-\1Field0x2e::         ds 1 ; c12f
-\1Field0x2f::         ds 1 ; c130
-\1Field0x30::         ds 1 ; c131
-                      ds 1 ; c132
+\1Field0x2e::         ds 1
+\1Field0x2f::         ds 1
+\1Field0x30::         ds 2
 ENDM
 
 battle_tower_struct: MACRO
@@ -219,12 +216,12 @@ hall_of_fame: MACRO
 ENDM
 
 trademon: MACRO
-\1Species:: ds 1 ; wc6d0 | wc702
-\1SpeciesName:: ds PKMN_NAME_LENGTH ; wc6d1 | wc703
-\1Nickname:: ds PKMN_NAME_LENGTH ; wc6dc | wc70e
-\1SenderName:: ds NAME_LENGTH ; wc6e7 | wc719
-\1OTName:: ds NAME_LENGTH ; wc6f2 | wc724
-\1DVs:: ; wc6fd | wc72f
+\1Species:: ds 1
+\1SpeciesName:: ds PKMN_NAME_LENGTH
+\1Nickname:: ds PKMN_NAME_LENGTH
+\1SenderName:: ds NAME_LENGTH
+\1OTName:: ds NAME_LENGTH
+\1DVs::
 \1HPAtkDV:: ds 1
 \1DefSpdDV:: ds 1
 \1SatSdfDV:: ds 1
@@ -236,8 +233,8 @@ trademon: MACRO
 \1IsEgg::
 \1IsDead::
 \1Form:: ds 1
-\1ID:: ds 2 ; wc6ff | wc731
-\1CaughtData:: ds 1 ; wc701 | wc733
+\1ID:: ds 2
+\1CaughtData:: ds 1
 \1End::
 ENDM
 

@@ -1,7 +1,7 @@
 FarCopyBytes::
 	call StackCallInBankA
 	; fallthrough
-_CopyBytes:: ; 0x3026
+_CopyBytes::
 ; copy bc bytes from hl to de
 	inc b  ; we bail the moment b hits 0, so include the last run
 	inc c  ; same thing; include last byte
@@ -17,7 +17,7 @@ _CopyBytes:: ; 0x3026
 	jr nz, .CopyByte
 	ret
 
-ByteFill:: ; 0x3041
+ByteFill::
 ; fill bc bytes with the value of a, starting at hl
 	inc b  ; we bail the moment b hits 0, so include the last run
 	inc c  ; same thing; include last byte

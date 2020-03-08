@@ -1,13 +1,12 @@
-Script_BattleWhiteout:: ; 0x124c1
+Script_BattleWhiteout::
 	callasm BattleBGMap
 	jump Script_Whiteout
-; 0x124c8
 
-Script_OverworldWhiteout:: ; 0x124c8
+Script_OverworldWhiteout::
 	refreshscreen
 	callasm OverworldWhiteoutFade
 
-Script_Whiteout: ; 0x124ce
+Script_Whiteout:
 	callasm LoseMoney
 	iffalse .whiteout_text
 	copybytetovar wBattlePlayerAction
@@ -39,13 +38,11 @@ Script_Whiteout: ; 0x124ce
 
 .bug_contest
 	jumpstd bugcontestresultswarp
-; 0x124f5
 
-.WhitedOutText: ; 0x124f5
+.WhitedOutText:
 	; is out of useable #MON!  whited out!
 	text_jump WhiteoutText
 	db "@"
-; 0x124fa
 
 .WhitedOutToWildText:
 	text_jump WhiteoutToWildText
@@ -67,16 +64,14 @@ OverworldWhiteoutFade
 	call GetCGBLayout
 	jp SetPalettes
 
-
-BattleBGMap: ; 1250a
+BattleBGMap:
 	ld a, CGB_BATTLE_GRAYSCALE
 	call GetCGBLayout
 	jp SetPalettes
-; 12513
 
 ; Gen VI money loss code by TPP Anniversary Crystal 251
 ; https://github.com/TwitchPlaysPokemon/tppcrystal251pub/blob/public/main.asm
-LoseMoney: ; 12513
+LoseMoney:
 	xor a
 	ld [wSpinning], a
 	ld hl, wMoney
@@ -86,7 +81,6 @@ LoseMoney: ; 12513
 	or [hl]
 	ld a, 0 ; not xor a; preserve carry flag
 	jr z, .load
-	; 806e1
 	ld hl, wBadges
 	ld b, 2
 	call CountSetBits
@@ -162,7 +156,6 @@ LoseMoney: ; 12513
 	db 100
 	db 120
 
-
 DetermineWildBattlePanic:
 	ld hl, wWildBattlePanic
 	ld a, [hl]
@@ -172,8 +165,7 @@ DetermineWildBattlePanic:
 	ld [hl], a
 	ret
 
-
-GetWhiteoutSpawn: ; 12527
+GetWhiteoutSpawn:
 	ld a, [wLastSpawnMapGroup]
 	ld d, a
 	ld a, [wLastSpawnMapNumber]
@@ -186,4 +178,3 @@ GetWhiteoutSpawn: ; 12527
 .yes
 	ld [wDefaultSpawnpoint], a
 	ret
-; 1253d

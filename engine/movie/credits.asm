@@ -117,14 +117,12 @@ SECTION "Credits", ROMX
 	const CREDITS_WAIT
 	const CREDITS_END
 
-
 SetCreditsSpawn::
 	ld a, b
 	ld [wCreditsSpawn], a
 	ret
 
-
-Credits:: ; 109847
+Credits::
 	xor a
 	bit 6, b ; Hall Of Fame
 	jr z, .okay
@@ -229,18 +227,16 @@ Credits:: ; 109847
 	pop af
 	ld [rSVBK], a
 	ret
-; 1098fd
 
-Credits_HandleAButton: ; 1098fd
+Credits_HandleAButton:
 	ld a, [hJoypadDown]
 	and A_BUTTON
 	ret z
 	ld a, [wJumptableIndex]
 	bit 7, a
 	ret
-; 109908
 
-Credits_HandleBButton: ; 109908
+Credits_HandleBButton:
 	ld a, [hJoypadDown]
 	and B_BUTTON
 	ret z
@@ -261,9 +257,8 @@ Credits_HandleBButton: ; 109908
 	ret z
 	dec [hl]
 	ret
-; 109926
 
-Credits_Jumptable: ; 109926
+Credits_Jumptable:
 	ld a, [wJumptableIndex]
 	and $f
 	ld e, a
@@ -275,10 +270,8 @@ Credits_Jumptable: ; 109926
 	ld h, [hl]
 	ld l, a
 	jp hl
-; 109937
 
-
-.Jumptable: ; 109937 (42:5937)
+.Jumptable:
 
 	dw ParseCredits
 	dw Credits_Next
@@ -294,25 +287,24 @@ Credits_Jumptable: ; 109926
 	dw Credits_RequestGFX
 	dw Credits_LoopBack
 
-
-Credits_Next: ; 109951 (42:5951)
+Credits_Next:
 	ld hl, wJumptableIndex
 	inc [hl]
 	ret
 
-Credits_LoopBack: ; 109956 (42:5956)
+Credits_LoopBack:
 	ld hl, wJumptableIndex
 	ld a, [hl]
 	and $f0
 	ld [hl], a
 	ret
 
-Credits_PrepBGMapUpdate: ; 10995e (42:595e)
+Credits_PrepBGMapUpdate:
 	xor a
 	ld [hBGMapMode], a
 	jp Credits_Next
 
-Credits_UpdateGFXRequestPath: ; 109964 (42:5964)
+Credits_UpdateGFXRequestPath:
 	call Credits_LoadBorderGFX
 	ld a, l
 	ld [hRequestedVTileSource], a
@@ -324,14 +316,14 @@ Credits_UpdateGFXRequestPath: ; 109964 (42:5964)
 	ld [hRequestedVTileDest + 1], a
 	; fallthrough
 
-Credits_RequestGFX: ; 10997b (42:597b)
+Credits_RequestGFX:
 	xor a
 	ld [hBGMapMode], a
 	ld a, $8
 	ld [hRequested2bpp], a
 	jp Credits_Next
 
-Credits_LYOverride: ; 109986 (42:5986)
+Credits_LYOverride:
 	ld a, [rLY]
 	cp $30
 	jr c, Credits_LYOverride
@@ -345,17 +337,15 @@ Credits_LYOverride: ; 109986 (42:5986)
 	call .Fill
 	jp Credits_Next
 
-.Fill: ; 1099a3 (42:59a3)
+.Fill:
 	ld c, $8
 .loop
 	ld [hli], a
 	dec c
 	jr nz, .loop
 	ret
-; 1099aa
 
-
-ParseCredits: ; 1099aa
+ParseCredits:
 	ld hl, wJumptableIndex
 	bit 7, [hl]
 	jp nz, .done
@@ -535,10 +525,8 @@ ParseCredits: ; 1099aa
 	pop de
 	pop hl
 	ret
-; 109a95
 
-
-ConstructCreditsTilemap: ; 109a95 (42:5a95)
+ConstructCreditsTilemap:
 	xor a
 	ld [hBGMapMode], a
 	ld a, $c
@@ -590,7 +578,7 @@ ConstructCreditsTilemap: ; 109a95 (42:5a95)
 	call .InitTopPortion
 	jp ApplyAttrAndTilemapInVBlank
 
-.InitTopPortion: ; 109aff (42:5aff)
+.InitTopPortion:
 	ld b, 5
 .outer_loop
 	push hl
@@ -615,7 +603,7 @@ endr
 	jr nz, .outer_loop
 	ret
 
-DrawCreditsBorder: ; 109b1d (42:5b1d)
+DrawCreditsBorder:
 	ld c, SCREEN_WIDTH / 4
 .loop
 	push af
@@ -629,7 +617,7 @@ endr
 	jr nz, .loop
 	ret
 
-GetCreditsPalette: ; 109b2c
+GetCreditsPalette:
 	call .GetPalAddress
 
 	push hl
@@ -676,7 +664,6 @@ GetCreditsPalette: ; 109b2c
 	ld bc, 24
 	rst CopyBytes
 	ret
-
 
 CreditsPalettes:
 
@@ -841,9 +828,8 @@ else
 	MONOCHROME_RGB_FOUR
 	MONOCHROME_RGB_FOUR
 endc
-; 109bca
 
-Credits_LoadBorderGFX: ; 109bca (42:5bca)
+Credits_LoadBorderGFX:
 	ld hl, wCreditsBorderFrame
 	ld a, [hl]
 	cp $ff
@@ -873,9 +859,8 @@ Credits_LoadBorderGFX: ; 109bca (42:5bca)
 .init
 	ld hl, wCreditsFaux2bpp
 	ret
-; 109bf1 (42:5bf1)
 
-.Frames: ; 109bf1
+.Frames:
 	dw CreditsPichuGFX
 	dw CreditsPichuGFX     + 16 tiles
 	dw CreditsPichuGFX     + 32 tiles
@@ -940,14 +925,13 @@ Credits_LoadBorderGFX: ; 109bca (42:5bca)
 	dw CreditsBellossomGFX + 32 tiles
 	dw CreditsBellossomGFX + 48 tiles
 	dw CreditsBellossomGFX + 48 tiles
-; 109c11
 
-Credits_TheEnd: ; 109c11 (42:5c11)
+Credits_TheEnd:
 	ld a, $40
 	hlcoord 6, 9
 	call .Load
 	hlcoord 6, 10
-.Load: ; 109c1c (42:5c1c)
+.Load:
 	ld c, 8
 .loop
 	ld [hli], a
@@ -955,8 +939,6 @@ Credits_TheEnd: ; 109c11 (42:5c11)
 	dec c
 	jr nz, .loop
 	ret
-; 109c24 (42:5c24)
-
 
 CreditsBorderGFX:    INCBIN "gfx/credits/border.2bpp"
 
@@ -972,8 +954,7 @@ CreditsBellossomGFX: INCBIN "gfx/credits/bellossom.2bpp"
 
 TheEndGFX::          INCBIN "gfx/credits/theend.2bpp"
 
-
-CreditsScript: ; 10acb4
+CreditsScript:
 
 ; Clear the banner.
 	db CREDITS_CLEAR
@@ -1259,8 +1240,6 @@ CreditsScript: ; 10acb4
 	db CREDITS_WAIT, 20
 
 	db CREDITS_END
-; 10ae13
-
 
 CreditsStrings:
 	dw .SatoshiTajiri

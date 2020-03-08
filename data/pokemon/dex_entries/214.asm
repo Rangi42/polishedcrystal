@@ -1,4 +1,4 @@
-; HeracrossPokedexEntry: ; 0x1d0907
+; HeracrossPokedexEntry:
 	db "Single Horn@" ; species name
 	dw 411, 1190 ; height, width
 

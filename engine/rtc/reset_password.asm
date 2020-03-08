@@ -1,4 +1,4 @@
-_ResetClock: ; 4d3b1
+_ResetClock:
 	farcall BlankScreen
 	ld a, CGB_DIPLOMA
 	call GetCGBLayout
@@ -23,24 +23,24 @@ _ResetClock: ; 4d3b1
 	ld hl, .text_okay
 	jp PrintText
 
-.text_okay ; 0x4d3fe
+.text_okay
 	; Select CONTINUE & reset settings.
 	text_jump UnknownText_0x1c55db
 	db "@"
 
-.text_askreset ; 0x4d408
+.text_askreset
 	; Reset the clock?
 	text_jump UnknownText_0x1c561c
 	db "@"
 
-.NoYes_MenuDataHeader: ; 0x4d40d
+.NoYes_MenuDataHeader:
 	db $00 ; flags
 	db 07, 14 ; start coords
 	db 11, 19 ; end coords
 	dw .NoYes_MenuData2
 	db 1 ; default option
 
-.NoYes_MenuData2: ; 0x4d415
+.NoYes_MenuData2:
 	db $c0 ; flags
 	db 2 ; items
 	db "No@"

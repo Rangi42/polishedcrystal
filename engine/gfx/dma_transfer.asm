@@ -1,4 +1,4 @@
-HDMATransferTileMapToWRAMBank3:: ; 10402d
+HDMATransferTileMapToWRAMBank3::
 	call CallInSafeGFXMode
 
 .Function:
@@ -9,9 +9,8 @@ HDMATransferTileMapToWRAMBank3:: ; 10402d
 	ld [rVBK], a
 	ld hl, wScratchTileMap
 	jp HDMATransferToWRAMBank3
-; 104047
 
-HDMATransferAttrMapToWRAMBank3: ; 104047
+HDMATransferAttrMapToWRAMBank3:
 	call CallInSafeGFXMode
 
 .Function:
@@ -22,9 +21,8 @@ HDMATransferAttrMapToWRAMBank3: ; 104047
 	ld [rVBK], a
 	ld hl, wScratchAttrMap
 	jp HDMATransferToWRAMBank3
-; 104061
 
-ReloadMapPart:: ; 104061
+ReloadMapPart::
 	call CallInSafeGFXMode
 
 .Function:
@@ -50,7 +48,7 @@ ReloadMapPart:: ; 104061
 	ld [rVBK], a
 	reti
 
-HDMATransferToWRAMBank3: ; 10419d (41:419d)
+HDMATransferToWRAMBank3:
 	ld a, h
 	ld [rHDMA1], a
 	ld a, l
@@ -181,14 +179,14 @@ DoHBlankHDMATransfer
 	jr nz, .waitForHDMA
 	ret
 
-CutAndPasteTilemap: ; 10425f (41:425f)
+CutAndPasteTilemap:
 	ld c, " "
 	jr CutAndPasteMap
 
-CutAndPasteAttrMap: ; 104263 (41:4263)
+CutAndPasteAttrMap:
 	ld c, $0
 
-CutAndPasteMap: ; 104265 (41:4265)
+CutAndPasteMap:
 ; back up the value of c to hMapObjectIndexBuffer
 	ld a, [hMapObjectIndexBuffer]
 	push af
@@ -224,7 +222,7 @@ CutAndPasteMap: ; 104265 (41:4265)
 	ld [hMapObjectIndexBuffer], a
 	ret
 
-HDMATransfer_OnlyTopFourRows: ; 104303
+HDMATransfer_OnlyTopFourRows:
 	call CallInSafeGFXMode
 
 .Function:
@@ -250,7 +248,7 @@ HDMATransfer_OnlyTopFourRows: ; 104303
 
 	reti
 
-.Copy: ; 10433a (41:433a)
+.Copy:
 	ld b, 4
 .outer_loop
 	ld c, SCREEN_WIDTH

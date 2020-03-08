@@ -1,4 +1,4 @@
-; PiloswinePokedexEntry: ; 0x1d0c01
+; PiloswinePokedexEntry:
 	db "Swine@" ; species name
 	dw 307, 1230 ; height, width
 

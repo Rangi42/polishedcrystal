@@ -1,4 +1,4 @@
-DrawBattleHPBar:: ; 3750
+DrawBattleHPBar::
 ; Draw an HP bar d tiles long at hl
 ; Fill it up to e pixels
 
@@ -56,13 +56,12 @@ DrawBattleHPBar:: ; 3750
 	pop de
 	pop hl
 	ret
-; 3786
 
-PrepMonFrontpic:: ; 3786
+PrepMonFrontpic::
 	ld a, $1
 	ld [wBoxAlignment], a
 
-_PrepMonFrontpic:: ; 378b
+_PrepMonFrontpic::
 	ld a, [wCurPartySpecies]
 	and a
 	jr z, .not_pokemon
@@ -85,9 +84,8 @@ _PrepMonFrontpic:: ; 378b
 	inc a
 	ld [wCurPartySpecies], a
 	ret
-; 37b6
 
-PrintLevel:: ; 382d
+PrintLevel::
 ; Print wTempMonLevel at hl
 
 	ld a, [wTempMonLevel]
@@ -104,14 +102,13 @@ PrintLevel:: ; 382d
 	inc c
 	; fallthrough
 
-Print8BitNumRightAlign:: ; 3842
+Print8BitNumRightAlign::
 	ld [wd265], a
 	ld de, wd265
 	ld b, PRINTNUM_LEFTALIGN | 1
 	jp PrintNum
-; 384d
 
-GetBaseData:: ; 3856
+GetBaseData::
 	push bc
 	push de
 	push hl
@@ -147,7 +144,6 @@ GetBaseData:: ; 3856
 	pop de
 	pop bc
 	ret
-; 389c
 
 GetNature::
 ; 'b' contains the target Nature to check
@@ -227,11 +223,11 @@ GetAbility::
 	ld b, a
 	ret
 
-GetCurNick:: ; 389c
+GetCurNick::
 	ld a, [wCurPartyMon]
 	ld hl, wPartyMonNicknames
 
-GetNick:: ; 38a2
+GetNick::
 ; Get nickname a from list hl.
 	push hl
 	push bc
@@ -244,4 +240,3 @@ GetNick:: ; 38a2
 	pop bc
 	pop hl
 	ret
-; 38bb

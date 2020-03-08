@@ -1,4 +1,4 @@
-; AriadosPokedexEntry: ; 0x1cd083
+; AriadosPokedexEntry:
 	db "Long Leg@" ; species name
 	dw 307, 740 ; height, width
 

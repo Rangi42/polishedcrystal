@@ -53,7 +53,6 @@ endc
 
 	jp PlaceString
 
-
 GetTypeName:
 ; Copy the name of type [wNamedObjectIndexBuffer] to StringBuffer1.
 

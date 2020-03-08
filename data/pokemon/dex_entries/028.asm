@@ -1,4 +1,4 @@
-; SandslashPokedexEntry: ; 0x1821e7
+; SandslashPokedexEntry:
 	db "Mouse@" ; species name
 	dw 303, 650 ; height, width
 

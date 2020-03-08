@@ -70,21 +70,17 @@ CantUseItemText:
 	text_jump UnknownText_0x1c1b03
 	db "@"
 
-
 PartyMonItemName:
 	ld a, [wCurItem]
 	ld [wd265], a
 	call GetItemName
 	jp CopyName1
-; 12a79
-
 
 CancelPokemonAction:
 	farcall InitPartyMenuWithCancel
 	farcall UnfreezeMonIcons
 	ld a, 1
 	ret
-
 
 PokemonActionSubmenu:
 	hlcoord 1, 15
@@ -127,7 +123,6 @@ PokemonActionSubmenu:
 	dbw MONMENU_CANCEL,     CancelPokemonAction
 	dbw MONMENU_MOVE,       ManagePokemonMoves ; move
 	dbw MONMENU_MAIL,       MonMailAction ; mail
-
 
 SwitchPartyMons:
 
@@ -178,7 +173,6 @@ SwitchPartyMons:
 	xor a
 	ld [wPartyMenuActionText], a
 	jp CancelPokemonAction
-
 
 GiveTakePartyMonItem:
 
@@ -256,7 +250,6 @@ GiveTakePartyMonItem:
 	call MenuTextBoxBackup
 	jr .loop
 
-
 TryGiveItemToPartymon:
 
 	call SpeechTextBox
@@ -312,7 +305,6 @@ TryGiveItemToPartymon:
 	ld hl, ItemStorageIsFullText
 	jp MenuTextBoxBackup
 
-
 GivePartyItem:
 
 	call GetPartyItemLocation
@@ -322,7 +314,6 @@ GivePartyItem:
 	call ItemIsMail
 	ret nc
 	jp ComposeMailMessage
-
 
 TakePartyItem:
 
@@ -353,7 +344,6 @@ TakePartyItem:
 	ld hl, ItemStorageIsFullText
 	jp MenuTextBoxBackup
 
-
 GiveTakeItemMenuData:
 	db %01010000
 	db 12, 13 ; start coords
@@ -366,7 +356,6 @@ GiveTakeItemMenuData:
 	db 2 ; # items
 	db "Give@"
 	db "Take@"
-
 
 TookAndMadeHoldText:
 	text_jump UnknownText_0x1c1b2c
@@ -400,7 +389,6 @@ CantBeHeldText:
 	text_jump UnknownText_0x1c1c09
 	db "@"
 
-
 GetPartyItemLocation:
 	push af
 	ld a, MON_ITEM
@@ -408,13 +396,11 @@ GetPartyItemLocation:
 	pop af
 	ret
 
-
 ReceiveItemFromPokemon:
 	ld a, $1
 	ld [wItemQuantityChangeBuffer], a
 	ld hl, wNumItems
 	jp ReceiveItem
-
 
 GiveItemToPokemon:
 	ld a, $1
@@ -426,7 +412,6 @@ StartMenuYesNo:
 	call MenuTextBox
 	call YesNoBox
 	jp ExitMenu
-
 
 ComposeMailMessage:
 	ld de, wTempMailMessage
@@ -524,7 +509,6 @@ MonMailAction:
 	ld a, $3
 	ret
 
-
 .MenuDataHeader:
 	db $40 ; flags
 	db 10, 12 ; start coords
@@ -538,7 +522,6 @@ MonMailAction:
 	db "Read@"
 	db "Take@"
 	db "Quit@"
-
 
 .mailwilllosemessagetext
 ; The MAIL will lose its message. OK?
@@ -570,7 +553,6 @@ MonMailAction:
 	text_jump UnknownText_0x1c1cc4
 	db "@"
 
-
 OpenPartyStats:
 	call LoadStandardMenuDataHeader
 	call ClearSprites
@@ -583,7 +565,6 @@ OpenPartyStats:
 	call ExitMenu
 	xor a
 	ret
-
 
 MonMenu_Cut:
 	farcall CutFunction
@@ -1225,9 +1206,8 @@ GetForgottenMoves::
 	ld a, b
 	ret
 
-String_MoveSwap: ; 1316b
+String_MoveSwap:
 	db "Switch with?@"
-; 13172
 
 SetUpMoveScreenBG:
 	call ClearBGPalettes
@@ -1502,9 +1482,8 @@ PlaceMoveData:
 	ld a, $1
 	ld [hBGMapMode], a
 	ret
-; 132ba
 
-String_na: ; 132cf
+String_na:
 	db "---@"
 
 String_PowAcc:

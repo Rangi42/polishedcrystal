@@ -1,4 +1,4 @@
-InitClock: ; 90672 (24:4672)
+InitClock:
 ; Ask the player to set the time.
 	ld a, [hInMenu]
 	push af
@@ -111,7 +111,7 @@ endc
 	ld [hInMenu], a
 	ret
 
-.ClearScreen: ; 90783 (24:4783)
+.ClearScreen:
 	xor a
 	ld [hBGMapMode], a
 	hlcoord 0, 0
@@ -122,7 +122,7 @@ endc
 	ld [hBGMapMode], a
 	ret
 
-SetHour: ; 90795 (24:4795)
+SetHour:
 	ld a, [hJoyPressed]
 	and A_BUTTON
 	jr nz, .Confirm
@@ -174,7 +174,7 @@ SetHour: ; 90795 (24:4795)
 	scf
 	ret
 
-DisplayHourOClock: ; 907de (24:47de)
+DisplayHourOClock:
 	push hl
 	ld a, [wInitHourBuffer]
 	ld c, a
@@ -186,9 +186,8 @@ DisplayHourOClock: ; 907de (24:47de)
 	call PlaceString
 	pop hl
 	ret
-; 907f1 (24:47f1)
 
-SetMinutes: ; 90810 (24:4810)
+SetMinutes:
 	ld a, [hJoyPressed]
 	and A_BUTTON
 	jr nz, .a_button
@@ -237,14 +236,14 @@ SetMinutes: ; 90810 (24:4810)
 	scf
 	ret
 
-DisplayMinutesWithMinString: ; 90859 (24:4859)
+DisplayMinutesWithMinString:
 	ld de, wInitMinuteBuffer
 	call PrintTwoDigitNumberRightAlign
 	inc hl
 	ld de, String_min
 	jp PlaceString
 
-PrintTwoDigitNumberRightAlign: ; 90867 (24:4867)
+PrintTwoDigitNumberRightAlign:
 	push hl
 	ld a, " "
 	ld [hli], a
@@ -252,25 +251,21 @@ PrintTwoDigitNumberRightAlign: ; 90867 (24:4867)
 	pop hl
 	lb bc, PRINTNUM_LEFTALIGN | 1, 2
 	jp PrintNum
-; 90874 (24:4874)
 
-Text_WokeUpOak: ; 0x90874
+Text_WokeUpOak:
 	; Zzz… Hm? Wha…? You woke me up! Will you check the clock for me?
 	text_jump UnknownText_0x1bc29c
 	db "@"
-; 0x90879
 
-Text_WhatTimeIsIt: ; 0x90879
+Text_WhatTimeIsIt:
 	; What time is it?
 	text_jump UnknownText_0x1bc2eb
 	db "@"
-; 0x9087e
 
 String_oclock:
 	db "o'clock@"
-; 90886
 
-Text_WhatHrs: ; 0x90886
+Text_WhatHrs:
 	; What?@ @
 	text_jump UnknownText_0x1bc2fd
 	start_asm
@@ -278,25 +273,21 @@ Text_WhatHrs: ; 0x90886
 	call DisplayHourOClock
 	ld hl, .QuestionMark
 	ret
-; 90895 (24:4895)
 
-.QuestionMark: ; 0x90895
+.QuestionMark:
 	; ?
 	text_jump UnknownText_0x1bc305
 	db "@"
-; 0x9089a
 
-Text_HowManyMinutes: ; 0x9089a
+Text_HowManyMinutes:
 	; How many minutes?
 	text_jump UnknownText_0x1bc308
 	db "@"
-; 0x9089f
 
 String_min:
 	db "min.@"
-; 908a4
 
-Text_WhoaMins: ; 0x908a4
+Text_WhoaMins:
 	; Whoa!@ @
 	text_jump UnknownText_0x1bc31b
 	start_asm
@@ -304,15 +295,13 @@ Text_WhoaMins: ; 0x908a4
 	call DisplayMinutesWithMinString
 	ld hl, .QuestionMark
 	ret
-; 908b3 (24:48b3)
 
-.QuestionMark: ; 0x908b3
+.QuestionMark:
 	; ?
 	text_jump UnknownText_0x1bc323
 	db "@"
-; 0x908b8
 
-OakText_ResponseToSetTime: ; 0x908b8
+OakText_ResponseToSetTime:
 	start_asm
 	decoord 1, 14
 	ld a, [wInitHourBuffer]
@@ -341,30 +330,26 @@ OakText_ResponseToSetTime: ; 0x908b8
 .DAY:
 	ld hl, .yikes
 	ret
-; 908ec (24:48ec)
 
-.overslept ; 0x908ec
+.overslept
 	; ! I overslept!
 	text_jump UnknownText_0x1bc326
 	db "@"
-; 0x908f1
 
-.yikes ; 0x908f1
+.yikes
 	; ! Yikes! I over- slept!
 	text_jump UnknownText_0x1bc336
 	db "@"
-; 0x908f6
 
-.sodark ; 0x908f6
+.sodark
 	; ! No wonder it's so dark!
 	text_jump UnknownText_0x1bc34f
 	db "@"
-; 0x908fb
 
-TimesetBackgroundGFX: ; 908fb
+TimesetBackgroundGFX:
 INCBIN "gfx/new_game/timeset_bg.1bpp"
 
-Special_SetDayOfWeek: ; 90913
+Special_SetDayOfWeek:
 	ld a, [hInMenu]
 	push af
 	xor a
@@ -407,9 +392,8 @@ Special_SetDayOfWeek: ; 90913
 	pop af
 	ld [hInMenu], a
 	ret
-; 90993
 
-.GetJoypadAction: ; 90993
+.GetJoypadAction:
 	ld a, [hJoyPressed]
 	and A_BUTTON
 	jr z, .not_A
@@ -462,9 +446,8 @@ Special_SetDayOfWeek: ; 90913
 	call ApplyTilemapInVBlank
 	and a
 	ret
-; 909de
 
-.PlaceWeekdayString: ; 909de
+.PlaceWeekdayString:
 	push hl
 	ld a, [wTempDayOfWeek]
 	ld e, a
@@ -477,9 +460,8 @@ Special_SetDayOfWeek: ; 90913
 	ld e, a
 	pop hl
 	jp PlaceString
-; 909f2
 
-.WeekdayStrings: ; 909f2
+.WeekdayStrings:
 	dw .Sunday
 	dw .Monday
 	dw .Tuesday
@@ -497,28 +479,24 @@ Special_SetDayOfWeek: ; 90913
 .Friday:    db " Friday@"
 .Saturday:  db "Saturday@"
 
-
-.WhatDayIsItText: ; 0x90a3f
+.WhatDayIsItText:
 	; What day is it?
 	text_jump UnknownText_0x1bc369
 	db "@"
-; 0x90a44
 
-.ConfirmWeekdayText: ; 0x90a44
+.ConfirmWeekdayText:
 	start_asm
 	hlcoord 1, 14
 	call .PlaceWeekdayString
 	ld hl, .IsIt
 	ret
-; 90a4f (24:4a4f)
 
-.IsIt: ; 0x90a4f
+.IsIt:
 	; , is it?
 	text_jump UnknownText_0x1bc37a
 	db "@"
-; 0x90a54
 
-Special_InitialSetDSTFlag: ; 90a54
+Special_InitialSetDSTFlag:
 	ld a, [wDST]
 	set 7, a
 	ld [wDST], a
@@ -527,9 +505,8 @@ Special_InitialSetDSTFlag: ; 90a54
 	call ClearBox
 	ld hl, .Text
 	jp PlaceWholeStringInBoxAtOnce
-; 90a6c
 
-.Text: ; 90a6c
+.Text:
 	start_asm
 	call UpdateTime
 	ld a, [hHours]
@@ -540,15 +517,13 @@ Special_InitialSetDSTFlag: ; 90a54
 	call PrintHoursMins
 	ld hl, .DSTIsThatOK
 	ret
-; 90a83 (24:4a83)
 
-.DSTIsThatOK: ; 0x90a83
+.DSTIsThatOK:
 	; DST, is that OK?
 	text_jump Text_DSTIsThatOK
 	db "@"
-; 0x90a88
 
-Special_InitialClearDSTFlag: ; 90a88
+Special_InitialClearDSTFlag:
 	ld a, [wDST]
 	res 7, a
 	ld [wDST], a
@@ -557,9 +532,8 @@ Special_InitialClearDSTFlag: ; 90a88
 	call ClearBox
 	ld hl, .Text
 	jp PlaceWholeStringInBoxAtOnce
-; 90aa0
 
-.Text: ; 90aa0
+.Text:
 	start_asm
 	call UpdateTime
 	ld a, [hHours]
@@ -570,15 +544,13 @@ Special_InitialClearDSTFlag: ; 90a88
 	call PrintHoursMins
 	ld hl, .IsThatOK
 	ret
-; 90ab7
 
-.IsThatOK: ; 0x90ab7
+.IsThatOK:
 	; , is that OK?
 	text_jump UnknownText_0x1c5ff1
 	db "@"
-; 0x90abc
 
-PrintHour: ; 90b3e (24:4b3e)
+PrintHour:
 	ld l, e
 	ld h, d
 	push bc
@@ -593,7 +565,7 @@ PrintHour: ; 90b3e (24:4b3e)
 	ld de, wd265
 	jp PrintTwoDigitNumberRightAlign
 
-GetTimeOfDayString: ; 90b58 (24:4b58)
+GetTimeOfDayString:
 	ld a, c
 	cp MORN_HOUR
 	jr c, .nite
@@ -610,12 +582,10 @@ GetTimeOfDayString: ; 90b58 (24:4b58)
 .day
 	ld de, .DAY
 	ret
-; 90b71 (24:4b71)
 
 .NITE: db "Nite@"
 .MORN: db "Morn@"
 .DAY: db "Day@"
-; 90b7f
 
 AdjustHourForAMorPM:
 ; Convert the hour stored in c (0-23) to a 1-12 value
@@ -635,7 +605,7 @@ AdjustHourForAMorPM:
 	ld a, 12
 	ret
 
-PrintHoursMins ; 1dd6bb (77:56bb)
+PrintHoursMins
 ; Hours in b, minutes in c
 	ld a, [wOptions2]
 	bit CLOCK_FORMAT, a
@@ -687,5 +657,5 @@ PrintHoursMins ; 1dd6bb (77:56bb)
 	inc hl
 	jp PlaceString
 
-.String_AM: db "AM@" ; 1dd6fc
-.String_PM: db "PM@" ; 1dd6ff
+.String_AM: db "AM@"
+.String_PM: db "PM@"

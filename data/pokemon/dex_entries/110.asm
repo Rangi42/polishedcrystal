@@ -1,4 +1,4 @@
-; WeezingPokedexEntry: ; 0x1b92ec
+; WeezingPokedexEntry:
 	db "Poison Gas@" ; species name
 	dw 311, 210 ; height, width
 

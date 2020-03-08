@@ -1,4 +1,4 @@
-SoftReset:: ; 150
+SoftReset::
 	di
 	call MapSetup_Sound_Off
 	xor a
@@ -17,10 +17,8 @@ SoftReset:: ; 150
 	call DelayFrames
 
 	jr Init
-; 16e
 
-
-_Start:: ; 16e
+_Start::
 	cp $11
 	jr z, .cgb
 	xor a
@@ -33,7 +31,7 @@ _Start:: ; 16e
 	ld [hCGB], a
 	; fallthrough
 
-Init:: ; 17d
+Init::
 
 	di
 
@@ -169,10 +167,8 @@ Init:: ; 17d
 	xor a
 	ld [wMapMusic], a
 	jp GameInit
-; 245
 
-
-ClearVRAM:: ; 245
+ClearVRAM::
 ; Wipe VRAM banks 0 and 1
 
 	ld a, 1
@@ -186,9 +182,8 @@ ClearVRAM:: ; 245
 	ld bc, $2000
 	xor a
 	jp ByteFill
-; 25a
 
-ClearWRAM:: ; 25a
+ClearWRAM::
 ; Wipe swappable WRAM banks (1-7)
 
 	ld a, 1
@@ -204,9 +199,8 @@ ClearWRAM:: ; 25a
 	cp 8
 	jr c, .bank_loop
 	ret
-; 270
 
-ClearsScratch:: ; 270
+ClearsScratch::
 	xor a
 	call GetSRAMBank
 	ld hl, sScratch
@@ -214,4 +208,3 @@ ClearsScratch:: ; 270
 	xor a
 	call ByteFill
 	jp CloseSRAM
-; 283

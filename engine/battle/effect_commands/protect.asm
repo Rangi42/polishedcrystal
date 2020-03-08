@@ -58,7 +58,6 @@ ProtectChance:
 	and a
 	ret
 
-
 .failed
 	xor a
 	ld [de], a

@@ -276,7 +276,6 @@ GetStatName:
 	db "Evasion@"
 	db "stats@"
 
-
 DoLowerStat:
 	or 1
 	jr DoChangeStat

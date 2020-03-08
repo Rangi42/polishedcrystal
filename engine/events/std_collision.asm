@@ -1,4 +1,4 @@
-CheckFacingTileForStd:: ; 1365b
+CheckFacingTileForStd::
 ; Checks to see if the tile you're facing has a std script associated with it.  If so, executes the script and returns carry.
 	ld a, c
 	ld de, 3
@@ -23,7 +23,7 @@ CheckFacingTileForStd:: ; 1365b
 	xor a
 	ret
 
-.JumpStdFromRAMScript: ; 0x1369a
+.JumpStdFromRAMScript:
 	jump wJumpStdScriptBuffer
 
 INCLUDE "data/events/collision_std_scripts.asm"

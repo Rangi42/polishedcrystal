@@ -78,7 +78,6 @@ Music_DiglettsCaveRBY_branch_7e892:
 	note __, 16
 	loopchannel 0, Music_DiglettsCaveRBY_branch_7e892
 
-
 Music_DiglettsCaveRBY_Ch2:
 	vibrato 11, 21
 
@@ -169,7 +168,6 @@ Music_DiglettsCaveRBY_branch_7e8db:
 	note C_, 16
 	note D_, 16
 	loopchannel 0, Music_DiglettsCaveRBY_branch_7e8db
-
 
 Music_DiglettsCaveRBY_Ch3:
 	notetype 12, 19
@@ -309,7 +307,6 @@ Music_DiglettsCaveRBY_branch_7e9d1:
 	octave 4
 	note F#, 4
 	endchannel
-
 
 Music_DiglettsCaveRBY_Ch4:
 	notetype 12

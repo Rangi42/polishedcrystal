@@ -1,4 +1,4 @@
-TMHMPocket: ; 2c76f (b:476f)
+TMHMPocket:
 	ld a, $1
 	ld [hInMenu], a
 	call TMHM_PocketLoop
@@ -10,7 +10,7 @@ TMHMPocket: ; 2c76f (b:476f)
 	scf
 	ret
 
-TMHM_PocketLoop: ; 2c8d3 (b:48d3)
+TMHM_PocketLoop:
 	xor a
 	ld [hBGMapMode], a
 	call TMHM_DisplayPocketItems
@@ -44,7 +44,7 @@ TMHM_PocketLoop: ; 2c8d3 (b:48d3)
 	ld [wMenuCursorX], a
 	jr TMHM_ShowTMMoveDescription
 
-TMHM_JoypadLoop: ; 2c915 (b:4915)
+TMHM_JoypadLoop:
 	call DoMenuJoypadLoop
 	ld b, a
 	push hl
@@ -72,7 +72,7 @@ TMHM_JoypadLoop: ; 2c915 (b:4915)
 	jp nz, TMHM_ExitPack
 	and D_RIGHT | D_LEFT
 	ret nz
-TMHM_ShowTMMoveDescription: ; 2c946 (b:4946)
+TMHM_ShowTMMoveDescription:
 	call TMHM_GetCurrentTMHM
 	hlcoord 0, 12
 	lb bc, 4, SCREEN_WIDTH - 2
@@ -99,7 +99,7 @@ TMHM_SortMenu:
 	or 1
 	ret
 
-TMHM_ChooseTMorHM: ; 2c974 (b:4974)
+TMHM_ChooseTMorHM:
 	call TMHM_PlaySFX_ReadText2
 	call CountTMsHMs ; This stores the count to wd265.
 	ld a, [wMenuCursorY]
@@ -130,19 +130,19 @@ TMHM_GetCurrentTMHM:
 	ld [wCurTMHM], a
 	ret
 
-TMHM_ExitPack: ; 2c9a5 (b:49a5)
+TMHM_ExitPack:
 	call TMHM_PlaySFX_ReadText2
-_TMHM_ExitPack: ; 2c9a8 (b:49a8)
+_TMHM_ExitPack:
 	ld a, $2
 	ld [wMenuJoypad], a
 	and a
 	ret
 
-TMHM_ExitPocket: ; 2c9af (b:49af)
+TMHM_ExitPocket:
 	and a
 	ret
 
-TMHM_ScrollPocket: ; 2c9b1 (b:49b1)
+TMHM_ScrollPocket:
 	ld a, b
 	bit 7, a
 	jr nz, .skip
@@ -171,7 +171,7 @@ TMHM_ScrollPocket: ; 2c9b1 (b:49b1)
 	call TMHM_DisplayPocketItems
 	jp TMHM_ShowTMMoveDescription
 
-TMHM_DisplayPocketItems: ; 2c9e2 (b:49e2)
+TMHM_DisplayPocketItems:
 	ld a, [wBattleType]
 	cp BATTLETYPE_TUTORIAL
 	jp z, Tutorial_TMHMPocket
@@ -246,7 +246,7 @@ TMHM_DisplayPocketItems: ; 2c9e2 (b:49e2)
 	pop de
 	ret
 
-TMHMPocket_GetCurrentLineCoord: ; 2ca86 (b:4a86)
+TMHMPocket_GetCurrentLineCoord:
 	hlcoord 5, 0
 	ld bc, 2 * SCREEN_WIDTH
 	ld a, 6
@@ -258,13 +258,11 @@ TMHMPocket_GetCurrentLineCoord: ; 2ca86 (b:4a86)
 	dec e
 	jr nz, .loop
 	ret
-; 2ca95 (b:4a95)
 
-TMHM_String_Cancel: ; 2caae
+TMHM_String_Cancel:
 	db "Cancel@"
-; 2cab5
 
-TMHM_GetCurrentPocketPosition: ; 2cab5 (b:4ab5)
+TMHM_GetCurrentPocketPosition:
 	ld a, [wTMHMPocketScrollPosition]
 	ld b, a
 	inc b
@@ -279,7 +277,7 @@ TMHM_GetCurrentPocketPosition: ; 2cab5 (b:4ab5)
 	dec c
 	ret
 
-Tutorial_TMHMPocket: ; 2caca (b:4aca)
+Tutorial_TMHMPocket:
 	hlcoord 9, 3
 	push de
 	ld de, TMHM_String_Cancel
@@ -287,15 +285,14 @@ Tutorial_TMHMPocket: ; 2caca (b:4aca)
 	pop de
 	ret
 
-TMHM_PlaySFX_ReadText2: ; 2cad6 (b:4ad6)
+TMHM_PlaySFX_ReadText2:
 	push de
 	ld de, SFX_READ_TEXT_2
 	call PlaySFX
 	pop de
 	ret
-; 2cadf (b:4adf)
 
-CountTMsHMs: ; 2cb2a (b:4b2a)
+CountTMsHMs:
 	ld hl, wTMsHMs
 	ld b, wTMsHMsEnd - wTMsHMs
 	jp CountSetBits
@@ -341,7 +338,7 @@ InnerCheckTMHM:
 	and a
 	ret
 
-PrintMoveDesc: ; 2cb3e
+PrintMoveDesc:
 	push hl
 	ld hl, MoveDescriptions
 	ld a, [wCurSpecies]
@@ -355,9 +352,8 @@ PrintMoveDesc: ; 2cb3e
 	ld d, [hl]
 	pop hl
 	jp PlaceString
-; 2cb52
 
-AskTeachTMHM: ; 2c7bf (b:47bf)
+AskTeachTMHM:
 	ld hl, wOptions1
 	ld a, [hl]
 	push af
@@ -395,13 +391,13 @@ AskTeachTMHM: ; 2c7bf (b:47bf)
 	res LEARNING_TM_F, [hl]
 	ret
 
-ChooseMonToLearnTMHM: ; 2c7fb
+ChooseMonToLearnTMHM:
 	ld hl, wStringBuffer2
 	ld de, wTMHMMoveNameBackup
 	ld bc, 12
 	rst CopyBytes
 	call ClearBGPalettes
-ChooseMonToLearnTMHM_NoRefresh: ; 2c80a
+ChooseMonToLearnTMHM_NoRefresh:
 	farcall LoadPartyMenuGFX
 	farcall InitPartyMenuWithCancel
 	farcall InitPartyMenuGFX
@@ -447,9 +443,8 @@ ChooseMonToLearnTMHM_NoRefresh: ; 2c80a
 	pop de
 	pop hl
 	jr .loopback
-; 2c867
 
-TeachTMHM: ; 2c867
+TeachTMHM:
 	predef CanLearnTMHMMove
 
 	push bc
@@ -493,7 +488,6 @@ TeachTMHM: ; 2c867
 .learned_move
 	scf
 	ret
-; 2c8bf (b:48bf)
 
 _GetTMHMName::
 ; Get TM/HM name by item id wNamedObjectIndexBuffer.
@@ -574,7 +568,6 @@ _GetTMHMName::
 	db "HM"
 .HMTextEnd:
 	db "@"
-; 34df
 
 IsHM::
 	cp HM01
@@ -585,7 +578,7 @@ IsHM::
 	and a
 	ret
 
-KnowsMove: ; f9ea
+KnowsMove:
 	ld a, MON_MOVES
 	call GetPartyParamLocation
 	ld a, [wPutativeTMHMMove]
@@ -606,33 +599,29 @@ KnowsMove: ; f9ea
 	scf
 	ret
 
-.Text_knows: ; 0xfa06
+.Text_knows:
 	; knows @ .
 	text_jump UnknownText_0x1c5ea8
 	db "@"
 
-Text_BootedTM: ; 0x2c8bf
+Text_BootedTM:
 	; Booted up a TM.
 	text_jump UnknownText_0x1c0373
 	db "@"
-; 0x2c8c4
 
-Text_BootedHM: ; 0x2c8c4
+Text_BootedHM:
 	; Booted up an HM.
 	text_jump UnknownText_0x1c0384
 	db "@"
-; 0x2c8c9
 
-Text_ItContained: ; 0x2c8c9
+Text_ItContained:
 	; It contained @ . Teach @ to a #MON?
 	text_jump UnknownText_0x1c0396
 	db "@"
-; 0x2c8ce
 
-Text_TMHMNotCompatible: ; 0x2c8ce
+Text_TMHMNotCompatible:
 	; is not compatible with @ . It can't learn @ .
 	text_jump UnknownText_0x1c03c2
 	db "@"
-; 0x2c8d3
 
 INCLUDE "data/moves/tmhm_order.asm"

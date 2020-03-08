@@ -1,4 +1,4 @@
-; DunsparcePokedexEntry: ; 0x1d0593
+; DunsparcePokedexEntry:
 	db "Land Snake@" ; species name
 	dw 411, 310 ; height, width
 

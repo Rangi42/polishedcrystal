@@ -47,7 +47,6 @@ Music_CinnabarMansionRBY_branch_7ed19:
 	note B_, 2
 	loopchannel 0, Music_CinnabarMansionRBY_branch_7ed19
 
-
 Music_CinnabarMansionRBY_Ch2:
 	dutycycle 2
 
@@ -104,7 +103,6 @@ Music_CinnabarMansionRBY_branch_7ed6c:
 	note A#, 4
 	endchannel
 
-
 Music_CinnabarMansionRBY_Ch3:
 	notetype 12, 17
 
@@ -151,7 +149,6 @@ Music_CinnabarMansionRBY_branch_7ed80:
 	note G#, 8
 	note D#, 8
 	loopchannel 0, Music_CinnabarMansionRBY_branch_7ed80
-
 
 Music_CinnabarMansionRBY_Ch4:
 	notetype 6

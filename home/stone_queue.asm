@@ -1,4 +1,4 @@
-HandleStoneQueue:: ; 3567
+HandleStoneQueue::
 	ld a, [hROMBank]
 	push af
 
@@ -9,9 +9,8 @@ HandleStoneQueue:: ; 3567
 	ld a, b
 	rst Bankswitch
 	ret
-; 3574
 
-.WarpAction: ; 3574
+.WarpAction:
 	ld hl, OBJECT_MAP_OBJECT_INDEX
 	add hl, de
 	ld a, [hl]
@@ -35,9 +34,8 @@ HandleStoneQueue:: ; 3567
 .nope
 	and a
 	ret
-; 3599
 
-.IsPersonOnWarp: ; 3599
+.IsPersonOnWarp:
 	push de
 
 	ld hl, OBJECT_NEXT_MAP_X
@@ -56,9 +54,8 @@ HandleStoneQueue:: ; 3567
 
 	pop de
 	ret
-; 35b0
 
-.check_on_warp ; 35b0
+.check_on_warp
 	ld hl, wCurrMapWarpHeaderPointer
 	ld a, [hli]
 	ld h, [hl]
@@ -99,9 +96,8 @@ HandleStoneQueue:: ; 3567
 .nope2
 	and a
 	ret
-; 35de
 
-.IsObjectInStoneTable: ; 35de
+.IsObjectInStoneTable:
 	ld hl, CMDQUEUE_ADDR
 	add hl, bc
 	ld a, [hli]
@@ -136,4 +132,3 @@ HandleStoneQueue:: ; 3567
 .yes
 	scf
 	ret
-; 3600

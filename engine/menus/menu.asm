@@ -1,4 +1,4 @@
-_2DMenu_:: ; 2400e
+_2DMenu_::
 	ld hl, CopyMenuData2
 	ld a, [wMenuData2_2DMenuItemStringsBank]
 	call FarCall_hl
@@ -7,7 +7,7 @@ _2DMenu_:: ; 2400e
 	call UpdateSprites
 	call ApplyTilemap
 
-Get2DMenuSelection: ; 2408f
+Get2DMenuSelection:
 	call Init2DMenuCursorPosition
 	call DoMenuJoypadLoop
 	call MenuClickSound
@@ -54,22 +54,19 @@ Get2DMenuSelection: ; 2408f
 .quit
 	scf
 	ret
-; 240cd
 
-GetMenuNumberOfColumns: ; 240cd
+GetMenuNumberOfColumns:
 	ld a, [wMenuData2Items]
 	and $f
 	ret
-; 240d3
 
-GetMenuNumberOfRows: ; 240d3
+GetMenuNumberOfRows:
 	ld a, [wMenuData2Items]
 	swap a
 	and $f
 	ret
-; 240db
 
-Draw2DMenu: ; 24085
+Draw2DMenu:
 	xor a
 	ld [hBGMapMode], a
 	call MenuBox
@@ -115,8 +112,7 @@ Place2DMenuItemStrings:
 	ld a, [wMenuData2_2DMenuFunctionBank]
 	jp FarCall_hl
 
-
-Init2DMenuCursorPosition: ; 2411a (9:411a)
+Init2DMenuCursorPosition:
 	call GetMenuTextStartCoord
 	ld a, b
 	ld [w2DMenuCursorInitY], a
@@ -171,9 +167,8 @@ Init2DMenuCursorPosition: ; 2411a (9:411a)
 	ld [wCursorCurrentTile], a
 	ld [wCursorCurrentTile + 1], a
 	ret
-; 24179
 
-.InitFlags_a: ; 24179
+.InitFlags_a:
 	xor a
 	ld hl, w2DMenuFlags1
 	ld [hli], a
@@ -184,16 +179,14 @@ Init2DMenuCursorPosition: ; 2411a (9:411a)
 	set 5, [hl]
 	set 4, [hl]
 	ret
-; 2418a
 
-.InitFlags_b: ; 2418a
+.InitFlags_b:
 	ld a, [wMenuData2Spacing]
 	or $20
 	ld [w2DMenuCursorOffsets], a
 	ret
-; 24193
 
-.InitFlags_c: ; 24193
+.InitFlags_c:
 	ld hl, wMenuData2Flags
 	ld a, A_BUTTON
 	bit 0, [hl]
@@ -210,8 +203,6 @@ Init2DMenuCursorPosition: ; 2411a (9:411a)
 .skip3
 	ld [wMenuJoypadFilter], a
 	ret
-; 241a8
-
 
 _DoMenuJoypadLoop::
 	ld hl, w2DMenuFlags2
@@ -242,7 +233,7 @@ MenuJoypadLoop:
 .done
 	jp Move2DMenuCursor
 
-.BGMap_OAM: ; 24238
+.BGMap_OAM:
 	ld a, [hOAMUpdate]
 	push af
 	ld a, $1
@@ -257,12 +248,10 @@ MenuJoypadLoop:
 	xor a
 	ld [hBGMapMode], a
 	ret
-; 24249
-
 
 Do2DMenuRTCJoypad_loop:
 	call DelayFrame
-Do2DMenuRTCJoypad: ; 24249
+Do2DMenuRTCJoypad:
 	call RTC
 	call Menu_WasButtonPressed
 	ret c
@@ -271,9 +260,8 @@ Do2DMenuRTCJoypad: ; 24249
 	jr z, Do2DMenuRTCJoypad_loop
 	and a
 	ret
-; 24259
 
-Menu_WasButtonPressed: ; 24259
+Menu_WasButtonPressed:
 	ld a, [w2DMenuFlags1]
 	bit 6, a
 	jr z, .skip_to_joypad
@@ -290,9 +278,8 @@ Menu_WasButtonPressed: ; 24259
 	ret z
 	scf
 	ret
-; 24270
 
-_2DMenuInterpretJoypad: ; 24270
+_2DMenuInterpretJoypad:
 	call GetMenuJoypad
 	bit A_BUTTON_F, a
 	jp nz, .a_button
@@ -313,7 +300,7 @@ _2DMenuInterpretJoypad: ; 24270
 	and a
 	ret
 
-.set_bit_7 ; 24299
+.set_bit_7
 	ld hl, w2DMenuFlags2
 	set 7, [hl]
 	scf
@@ -414,7 +401,6 @@ _2DMenuInterpretJoypad: ; 24270
 .finish
 	xor a
 	ret
-; 24318
 
 .b_button
 	ld a, [wBattleMenuFlags]
@@ -449,7 +435,7 @@ _2DMenuInterpretJoypad: ; 24270
 	ld [wBattleMenuFlags], a
 	jr .finish
 
-Move2DMenuCursor: ; 2431a
+Move2DMenuCursor:
 	ld hl, wCursorCurrentTile
 	ld a, [hli]
 	ld h, [hl]
@@ -459,7 +445,7 @@ Move2DMenuCursor: ; 2431a
 	jr nz, Place2DMenuCursor
 	ld a, [wCursorOffCharacter]
 	ld [hl], a
-Place2DMenuCursor: ; 24329
+Place2DMenuCursor:
 	ld a, [w2DMenuCursorInitY]
 	ld b, a
 	ld a, [w2DMenuCursorInitX]
@@ -512,9 +498,8 @@ Place2DMenuCursor: ; 24329
 	ld a, h
 	ld [wCursorCurrentTile + 1], a
 	ret
-; 24374
 
-_PushWindow:: ; 24374
+_PushWindow::
 	ld a, [rSVBK]
 	push af
 	ld a, $7
@@ -579,9 +564,8 @@ _PushWindow:: ; 24374
 	ld hl, wWindowStackSize
 	inc [hl]
 	ret
-; 243cd
 
-.copy ; 243cd
+.copy
 	call GetTileBackupMenuBoxDims
 
 .row
@@ -602,9 +586,8 @@ _PushWindow:: ; 24374
 	dec b
 	jr nz, .row
 	ret
-; 243e7
 
-_ExitMenu:: ; 243e8
+_ExitMenu::
 	xor a
 	ld [hBGMapMode], a
 
@@ -642,21 +625,18 @@ _ExitMenu:: ; 243e8
 	ld hl, wWindowStackSize
 	dec [hl]
 	ret
-; 24423
 
-Error_Cant_ExitMenu: ; 2445d
+Error_Cant_ExitMenu:
 	ld hl, .Text_NoWindowsAvailableForPopping
 	call PrintText
 	call ApplyTilemapInVBlank
 	rst InfiniteLoop
-; 24468
 
-.Text_NoWindowsAvailableForPopping: ; 24468
+.Text_NoWindowsAvailableForPopping:
 	text_jump UnknownText_0x1c46b7
 	db "@"
-; 2446d
 
-_InitVerticalMenuCursor:: ; 2446d
+_InitVerticalMenuCursor::
 	ld a, [wMenuData2Flags]
 	ld b, a
 	ld hl, w2DMenuCursorInitY
@@ -724,4 +704,3 @@ _InitVerticalMenuCursor:: ; 2446d
 	ld [hli], a
 	ld [hli], a
 	ret
-; 244c3

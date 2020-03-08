@@ -1,4 +1,4 @@
-; VenusaurPokedexEntry: ; 0x181773
+; VenusaurPokedexEntry:
 	db "Seed@" ; species name
 	dw 607, 2210 ; height, width
 

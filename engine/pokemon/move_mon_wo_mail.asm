@@ -1,4 +1,4 @@
-InsertPokemonIntoBox: ; 51322
+InsertPokemonIntoBox:
 	ld a, BANK(sBoxCount)
 	call GetSRAMBank
 	ld hl, sBoxCount
@@ -37,7 +37,7 @@ InsertPokemonIntoBox: ; 51322
 	farcall RestorePPofDepositedPokemon
 	jp CloseSRAM
 
-InsertPokemonIntoParty: ; 5138b
+InsertPokemonIntoParty:
 	ld hl, wPartyCount
 	call InsertSpeciesIntoBoxOrParty
 	ld a, [wPartyCount]
@@ -62,7 +62,7 @@ InsertPokemonIntoParty: ; 5138b
 	ld de, wBufferMon
 	jp InsertDataIntoBoxOrParty
 
-InsertSpeciesIntoBoxOrParty: ; 513cb
+InsertSpeciesIntoBoxOrParty:
 	inc [hl]
 	inc hl
 	ld a, [wCurPartyMon]
@@ -80,7 +80,7 @@ InsertSpeciesIntoBoxOrParty: ; 513cb
 	jr nz, .loop
 	ret
 
-InsertDataIntoBoxOrParty: ; 513e0
+InsertDataIntoBoxOrParty:
 	push de
 	push hl
 	push bc

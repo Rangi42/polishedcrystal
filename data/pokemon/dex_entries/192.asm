@@ -1,4 +1,4 @@
-; SunfloraPokedexEntry: ; 0x1cdaef
+; SunfloraPokedexEntry:
 	db "Sun@" ; species name
 	dw 207, 190 ; height, width
 

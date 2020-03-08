@@ -7,7 +7,7 @@ Music_SurfingRBY:
 	dbw $01, Music_SurfingRBY_Ch2
 	dbw $02, Music_SurfingRBY_Ch3
 
-Music_SurfingRBY_Ch1: ; 7fa19 (1f:7a19)
+Music_SurfingRBY_Ch1:
 	tempo 160
 	volume 119
 	dutycycle 3
@@ -124,8 +124,7 @@ Music_Surfing_branch_7fa30:
 	note E_, 4
 	loopchannel 0, Music_Surfing_branch_7fa30
 
-
-Music_SurfingRBY_Ch2: ; 7fa9c (1f:7a9c)
+Music_SurfingRBY_Ch2:
 	dutycycle 3
 	vibrato 16, 37
 	notetype 12, 198
@@ -211,8 +210,7 @@ Music_Surfing_branch_7faae:
 	note C#, 6
 	loopchannel 0, Music_Surfing_branch_7faae
 
-
-Music_SurfingRBY_Ch3: ; 7fafa (1f:7afa)
+Music_SurfingRBY_Ch3:
 	notetype 12, 16
 	note __, 12
 	octave 5
@@ -342,4 +340,3 @@ Music_Surfing_branch_7fb03:
 	note D_, 2
 	note E_, 2
 	loopchannel 0, Music_Surfing_branch_7fb03
-; 0x7fb7d

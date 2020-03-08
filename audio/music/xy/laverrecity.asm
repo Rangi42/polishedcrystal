@@ -3,19 +3,18 @@
 ; https://pastebin.com/pVtgJivC
 ; https://hax.iimarckus.org/topic/6777/
 
-Music_LaverreCityXY: ; ef2d0
+Music_LaverreCityXY:
 	musicheader 4, 1, Music_LaverreCityXY_Ch1
 	musicheader 1, 2, Music_LaverreCityXY_Ch2
 	musicheader 1, 3, Music_LaverreCityXY_Ch3
 	musicheader 1, 4, Music_LaverreCityXY_Ch4
-; ef2d9
 
-Music_LaverreCityXY_Ch1: ; ef2d9
+Music_LaverreCityXY_Ch1:
 	tempo 120
 	volume $77
 	stereopanning $f
 	vibrato $12, $25
-Music_LaverreCityXY_branch_ef2e5: ; ef2e5
+Music_LaverreCityXY_branch_ef2e5:
 	dutycycle $0
 	notetype $c, $A4
 	note __, 4
@@ -193,12 +192,12 @@ Music_LaverreCityXY_Ch1_branch_1:
 	note G#, 12
 	loopchannel 0, Music_LaverreCityXY_branch_ef2e5
 
-Music_LaverreCityXY_Ch2: ; ef3eb
+Music_LaverreCityXY_Ch2:
 	vibrato $12, $25
 	dutycycle $2
 	stereopanning $f0
 	tone $0002
-Music_LaverreCityXY_branch_ef3f2: ; ef3f2
+Music_LaverreCityXY_branch_ef3f2:
 	notetype $c, $A7
 	octave 2
 	note E_, 12
@@ -338,10 +337,10 @@ Music_LaverreCityXY_Ch2_branch_2:
 	note __, 2
 	loopchannel 0, Music_LaverreCityXY_branch_ef3f2
 
-Music_LaverreCityXY_Ch3: ; ef4e1
+Music_LaverreCityXY_Ch3:
 	stereopanning $ff
 	vibrato $12, $25
-Music_LaverreCityXY_branch_ef4e3: ; ef4e3
+Music_LaverreCityXY_branch_ef4e3:
 	notetype $c, $25
 	octave 3
 	note __, 4
@@ -561,7 +560,7 @@ Music_LaverreCityXY_Ch3_branch_1:
 	note G#, 12
 	loopchannel 0, Music_LaverreCityXY_branch_ef4e3
 
-Music_LaverreCityXY_Ch4: ; f517a
+Music_LaverreCityXY_Ch4:
 	togglenoise $3
 	stereopanning $f
 	notetype $c

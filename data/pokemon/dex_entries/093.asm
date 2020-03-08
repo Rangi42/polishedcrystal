@@ -1,4 +1,4 @@
-; HaunterPokedexEntry: ; 0x1b8bbd
+; HaunterPokedexEntry:
 	db "Gas@" ; species name
 	dw 503, 2 ; height, width
 

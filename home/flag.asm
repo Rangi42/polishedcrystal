@@ -1,6 +1,6 @@
-EventFlagAction:: ; 0x2e6f
+EventFlagAction::
 	ld hl, wEventFlags
-FlagAction:: ; 0x2e76
+FlagAction::
 ; Perform action b on bit de in flag array hl.
 
 ; inputs:
@@ -57,12 +57,10 @@ FlagAction:: ; 0x2e76
 	ld [hl], a
 	ret
 
-
-CheckReceivedDex:: ; 2ead
+CheckReceivedDex::
 	ld de, ENGINE_POKEDEX
 	ld b, CHECK_FLAG
 	farcall EngineFlagAction
 	ld a, c
 	and a
 	ret
-; 2ebb

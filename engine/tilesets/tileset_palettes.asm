@@ -9,7 +9,6 @@
 	const PAL_TIMEOFDAY
 	const PAL_SPECIAL
 
-
 LoadBlindingFlashPalette::
 	ld a, $5
 	ld de, wUnknBGPals palette PAL_BG_TEXT
@@ -24,8 +23,7 @@ LoadLinkTradePalette:
 	ld bc, 6 palettes
 	jp FarCopyWRAM
 
-
-LoadSpecialMapPalette: ; 494ac
+LoadSpecialMapPalette:
 ; Don't load a special palette if it's dark and we haven't used Flash.
 	call GetMapHeaderTimeOfDayNybble
 	cp PALETTE_DARK
@@ -84,7 +82,6 @@ LoadEightBGPalettes:
 	scf
 	ret
 
-
 PokeCenterSpecialCase:
 	ld hl, wMapGroup
 	call .check_shamouti_pokecenter
@@ -126,7 +123,6 @@ MartSpecialCase:
 .not_generic_mart
 	scf
 	ret
-
 
 LoadSpecialMapOBPalette:
 ; Load a special map, landmark, or tileset palette if one applies.
@@ -184,7 +180,6 @@ rept 6
 endr
 	jr .loop
 
-
 InitializeSpecialPaletteRegisters:
 	; b, c, d, e = [wMapGroup], [wMapNumber], landmark, [wTileset]
 	ld a, [wMapGroup]
@@ -227,6 +222,5 @@ CheckIfSpecialPaletteApplies:
 	sub 1 ; underflows if a == 0, setting carry
 	sbc a ; sets a to 0 if carry was not set, i.e. a != 0
 	ret
-
 
 INCLUDE "data/maps/palettes.asm"

@@ -1,4 +1,4 @@
-_HandlePlayerStep:: ; d497 (3:5497)
+_HandlePlayerStep::
 	ld a, [wPlayerStepFlags]
 	add a, a
 	jr c, .updateOverworldMap ; starting step
@@ -32,7 +32,7 @@ _HandlePlayerStep:: ; d497 (3:5497)
 	ld [wPlayerBGMapOffsetY], a
 	ret
 
-ScrollScreen:: ; d4d2 (3:54d2)
+ScrollScreen::
 	ld a, [wPlayerStepVectorX]
 	ld d, a
 	ld a, [wPlayerStepVectorY]
@@ -45,7 +45,7 @@ ScrollScreen:: ; d4d2 (3:54d2)
 	ld [hSCY], a
 	ret
 
-HandlePlayerStep: ; d4e5 (3:54e5)
+HandlePlayerStep:
 	ld hl, wHandlePlayerStep
 	ld a, [hl]
 	and a
@@ -57,14 +57,14 @@ HandlePlayerStep: ; d4e5 (3:54e5)
 .fail
 	ret
 
-.Jumptable: ; d4f2 (3:54f2)
+.Jumptable:
 
 	dw GetMovementPermissions
 	dw BufferScreen
 	dw .fail
 	dw .fail
 
-UpdatePlayerCoords: ; d511 (3:5511)
+UpdatePlayerCoords:
 	ld hl, wYCoord
 	ld a, [wPlayerStepDirection]
 	and a
@@ -83,7 +83,7 @@ UpdatePlayerCoords: ; d511 (3:5511)
 	dec [hl]
 	ret
 
-UpdateOverworldMap: ; d536 (3:5536)
+UpdateOverworldMap:
 	ld a, [wPlayerStepDirection]
 	and a
 	jr z, .stepDown
@@ -110,7 +110,7 @@ UpdateOverworldMap: ; d536 (3:5536)
 	call _LoadMapPart
 	jp ScrollMapRight
 
-.ScrollOverworldMapDown: ; d571 (3:5571)
+.ScrollOverworldMapDown:
 	ld a, [wBGMapAnchor]
 	add 2 * BG_MAP_WIDTH
 	ld [wBGMapAnchor], a
@@ -136,7 +136,7 @@ UpdateOverworldMap: ; d536 (3:5536)
 	inc [hl]
 	ret
 
-.ScrollOverworldMapUp: ; d5a2 (3:55a2)
+.ScrollOverworldMapUp:
 	ld a, [wBGMapAnchor]
 	sub 2 * BG_MAP_WIDTH
 	ld [wBGMapAnchor], a
@@ -164,7 +164,7 @@ UpdateOverworldMap: ; d536 (3:5536)
 	dec [hl]
 	ret
 
-.ScrollOverworldMapLeft: ; d5d5 (3:55d5)
+.ScrollOverworldMapLeft:
 	ld a, [wBGMapAnchor]
 	ld e, a
 	and $e0
@@ -188,7 +188,7 @@ UpdateOverworldMap: ; d536 (3:5536)
 	dec [hl]
 	ret
 
-.ScrollOverworldMapRight: ; d5fe (3:55fe)
+.ScrollOverworldMapRight:
 	ld a, [wBGMapAnchor]
 	ld e, a
 	and $e0

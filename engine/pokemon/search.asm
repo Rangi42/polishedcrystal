@@ -1,4 +1,4 @@
-SpecialBeastsCheck: ; 0x4a6e8
+SpecialBeastsCheck:
 ; Check if the player owns all three legendary beasts.
 ; They must exist in either party or PC, and have the player's OT and ID.
 ; Return the result in hScriptVar.
@@ -22,7 +22,6 @@ SpecialBeastsCheck: ; 0x4a6e8
 	ld a, 1
 	ld [hScriptVar], a
 	ret
-
 
 SpecialBirdsCheck:
 ; Check if the player owns all three legendary birds.
@@ -49,7 +48,6 @@ SpecialBirdsCheck:
 	ld [hScriptVar], a
 	ret
 
-
 SpecialDuoCheck:
 ; Check if the player owns Lugia and Ho-Oh.
 ; They must exist in either party or PC, and have the player's OT and ID.
@@ -70,8 +68,7 @@ SpecialDuoCheck:
 	ld [hScriptVar], a
 	ret
 
-
-SpecialMonCheck: ; 0x4a711
+SpecialMonCheck:
 ; Check if the player owns any monsters of the species in hScriptVar.
 ; Return the result in hScriptVar.
 
@@ -83,14 +80,12 @@ SpecialMonCheck: ; 0x4a711
 	ld [hScriptVar], a
 	ret
 
-
 SpecialMonCheckFailed:
 	xor a
 	ld [hScriptVar], a
 	ret
 
-
-CheckOwnMonAnywhere: ; 0x4a721
+CheckOwnMonAnywhere:
 ; Check if the player owns any monsters of the species in hScriptVar.
 ; It must exist in either party or PC, and have the player's OT and ID.
 
@@ -219,8 +214,7 @@ CheckOwnMonAnywhere: ; 0x4a721
 	and a
 	ret
 
-
-CheckOwnMon: ; 0x4a7ba
+CheckOwnMon:
 ; Check if a Pokémon belongs to the player and is of a specific species.
 
 ; inputs:
@@ -281,9 +275,8 @@ CheckOwnMon: ; 0x4a7ba
 	pop bc
 	and a
 	ret
-; 0x4a810
 
-BoxAddressTable1: ; 4a810
+BoxAddressTable1:
 	dba sBox1
 	dba sBox2
 	dba sBox3
@@ -298,9 +291,8 @@ BoxAddressTable1: ; 4a810
 	dba sBox12
 	dba sBox13
 	dba sBox14
-; 4a83a
 
-UpdateOTPointer: ; 0x4a83a
+UpdateOTPointer:
 	push hl
 	ld hl, NAME_LENGTH
 	add hl, bc
@@ -308,4 +300,3 @@ UpdateOTPointer: ; 0x4a83a
 	ld c, l
 	pop hl
 	ret
-; 0x4a843

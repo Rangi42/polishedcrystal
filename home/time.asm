@@ -2,24 +2,22 @@
 
 ; do not talk to the RTC hardware in the no-RTC patch
 if !DEF(NO_RTC)
-LatchClock:: ; 59c
+LatchClock::
 ; latch clock counter data
 	xor a
 	ld [MBC3LatchClock], a
 	inc a
 	ld [MBC3LatchClock], a
 	ret
-; 5a7
 endc
 
-UpdateTime:: ; 5a7
+UpdateTime::
 	call GetClock ; read the clock hardware
 	call FixDays  ; keep the number of days passed in-bounds
 	call FixTime  ; calculate the time based on the start time and RTC duration
 	farjp GetTimeOfDay
-; 5b7
 
-GetClock:: ; 5b7
+GetClock::
 ; store clock data in hRTCDayHi-hRTCSeconds
 
 if DEF(NO_RTC)
@@ -64,9 +62,8 @@ else
 ; unlatch clock / disable clock r/w
 	jp CloseSRAM
 endc
-; 5e8
 
-FixDays:: ; 5e8
+FixDays::
 ; fix day count
 ; mod by 140
 
@@ -125,9 +122,8 @@ FixDays:: ; 5e8
 .quit
 	xor a
 	ret
-; 61d
 
-FixTime:: ; 61d
+FixTime::
 ; add ingame time (set at newgame) to current time
 ;				  day     hr    min    sec
 ; store time in wCurDay, hHours, hMinutes, hSeconds
@@ -171,15 +167,14 @@ FixTime:: ; 61d
 	adc c
 	ld [wCurDay], a
 	ret
-; 658
 
-SetTimeOfDay:: ; 658
+SetTimeOfDay::
 	xor a
 	ld [wStringBuffer2], a
 	ld [wStringBuffer2 + 3], a
 	jr InitTime
 
-SetDayOfWeek:: ; 663
+SetDayOfWeek::
 	call UpdateTime
 	ld a, [hHours]
 	ld [wStringBuffer2 + 1], a
@@ -188,11 +183,10 @@ SetDayOfWeek:: ; 663
 	ld a, [hSeconds]
 	ld [wStringBuffer2 + 3], a
 
-InitTime:: ; 677
+InitTime::
 	farjp _InitTime
-; 67e
 
-PanicResetClock:: ; 67e
+PanicResetClock::
 	xor a
 	ld [hRTCSeconds], a
 	ld [hRTCMinutes], a
@@ -200,9 +194,8 @@ PanicResetClock:: ; 67e
 	ld [hRTCDayLo], a
 	ld [hRTCDayHi], a
 ; fallthrough
-; 685
 
-SetClock:: ; 691
+SetClock::
 ; set clock data from hram
 
 ; do not talk to the RTC hardware in the no-RTC patch
@@ -247,9 +240,8 @@ else
 ; cleanup
 	jp CloseSRAM ; unlatch clock, disable clock r/w
 endc
-; 6c4
 
-RecordRTCStatus:: ; 6d3
+RecordRTCStatus::
 ; append flags to sRTCStatusFlags
 	ld hl, sRTCStatusFlags
 	push af
@@ -259,12 +251,10 @@ RecordRTCStatus:: ; 6d3
 	or [hl]
 	ld [hl], a
 	jp CloseSRAM
-; 6e3
 
-CheckRTCStatus:: ; 6e3
+CheckRTCStatus::
 ; check sRTCStatusFlags
 	ld a, BANK(sRTCStatusFlags)
 	call GetSRAMBank
 	ld a, [sRTCStatusFlags]
 	jp CloseSRAM
-; 6ef

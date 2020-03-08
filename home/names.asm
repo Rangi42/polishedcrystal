@@ -1,4 +1,4 @@
-NamesPointers:: ; 33ab
+NamesPointers::
 	dba PokemonNames
 	dba MoveNames
 	dba ApricornNames
@@ -7,9 +7,8 @@ NamesPointers:: ; 33ab
 	dbw 0, wOTPartyMonOT
 	dba TrainerClassNames
 	dba KeyItemNames
-; 33c0
 
-GetName:: ; 33c3
+GetName::
 ; Return name wCurSpecies from name list wNamedObjectTypeBuffer in wStringBuffer1.
 	ld a, [hROMBank]
 	push af
@@ -57,9 +56,8 @@ GetName:: ; 33c3
 	pop af
 	rst Bankswitch
 	ret
-; 3411
 
-GetNthString:: ; 3411
+GetNthString::
 ; Return the address of the
 ; ath string starting from hl.
 	and a
@@ -75,9 +73,8 @@ GetNthString:: ; 3411
 	jr nz, .readChar
 	pop bc
 	ret
-; 3420
 
-GetBasePokemonName:: ; 3420
+GetBasePokemonName::
 ; Discards gender (Nidoran).
 	push hl
 	call GetPokemonName
@@ -98,9 +95,8 @@ GetBasePokemonName:: ; 3420
 .quit
 	pop hl
 	ret
-; 343b
 
-GetPokemonName:: ; 343b
+GetPokemonName::
 ; Get Pokemon name wNamedObjectIndexBuffer.
 	ld a, [hROMBank]
 	push af
@@ -135,13 +131,12 @@ GetPokemonName:: ; 343b
 	pop af
 	rst Bankswitch
 	ret
-; 3468
 
 GetCurItemName::
 ; Get item name from item in CurItem
 	ld a, [wCurItem]
 	ld [wNamedObjectIndexBuffer], a
-GetItemName:: ; 3468
+GetItemName::
 ; Get item name wNamedObjectIndexBuffer.
 	push hl
 	push bc
@@ -149,14 +144,13 @@ GetItemName:: ; 3468
 	ld [wCurSpecies], a
 	ld a, ITEM_NAME
 	jr PutNameInBufferAndGetName
-; 3487
 
 GetCurKeyItemName::
 ; Get item name from item in CurItem
 	ld a, [wCurKeyItem]
 	inc a
 	ld [wNamedObjectIndexBuffer], a
-GetKeyItemName:: ; 3468
+GetKeyItemName::
 ; Get key item item name wNamedObjectIndexBuffer.
 	push hl
 	push bc

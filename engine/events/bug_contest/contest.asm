@@ -1,5 +1,5 @@
 
-ContestDropOffMons: ; 13a12
+ContestDropOffMons:
 	ld hl, wPartyMon1HP
 	ld a, [hli]
 	or [hl]
@@ -22,9 +22,8 @@ ContestDropOffMons: ; 13a12
 	ld a, $1
 	ld [hScriptVar], a
 	ret
-; 13a31
 
-ContestReturnMons: ; 13a31
+ContestReturnMons:
 ; Restore the species of the second mon.
 	ld hl, wPartySpecies + 1
 	ld a, [wBugContestSecondPartySpecies]
@@ -42,17 +41,15 @@ ContestReturnMons: ; 13a31
 	ld a, b
 	ld [wPartyCount], a
 	ret
-; 13a47
 
-Special_GiveParkBalls: ; 135db
+Special_GiveParkBalls:
 	xor a
 	ld [wContestMon], a
 	ld a, 20
 	ld [wParkBallsRemaining], a
 	farjp StartBugContestTimer
 
-
-BugCatchingContestBattleScript:: ; 0x135eb
+BugCatchingContestBattleScript::
 	writecode VAR_BATTLETYPE, BATTLETYPE_CONTEST
 	randomwildmon
 	startbattle
@@ -61,35 +58,35 @@ BugCatchingContestBattleScript:: ; 0x135eb
 	iffalse .OutOfBalls
 	end
 
-.OutOfBalls: ; 0x13603
+.OutOfBalls:
 	playsound SFX_ELEVATOR_END
 	opentext
 	writetext .ContestIsOver
 	waitbutton
 	jump BugCatchingContestReturnToGateScript
 
-.ContestIsOver: ; 0x13614
+.ContestIsOver:
 	; ANNOUNCER: The Contest is over!
 	text_jump UnknownText_0x1bd2e7
 	db "@"
 
-BugCatchingContestOverScript:: ; 0x135f8
+BugCatchingContestOverScript::
 	playsound SFX_ELEVATOR_END
 	opentext
 	writetext .BeeepTimesUp
 	waitbutton
 	jump BugCatchingContestReturnToGateScript
 
-.BeeepTimesUp: ; 0x1360f
+.BeeepTimesUp:
 	; ANNOUNCER: BEEEP! Time's up!
 	text_jump UnknownText_0x1bd2ca
 	db "@"
 
-BugCatchingContestReturnToGateScript: ; 0x1360b
+BugCatchingContestReturnToGateScript:
 	closetext
 	jumpstd bugcontestresultswarp
 
-Script_AbortBugContest: ; 0x122c1
+Script_AbortBugContest:
 	checkflag ENGINE_BUG_CONTEST_TIMER
 	iffalse .finish
 	setflag ENGINE_DAILY_BUG_CONTEST
@@ -97,8 +94,7 @@ Script_AbortBugContest: ; 0x122c1
 .finish
 	end
 
-
-_BugContestJudging: ; 1369d
+_BugContestJudging:
 	call ContestScore
 	call BugContest_JudgeContestants
 	ld a, [wBugContestThirdPlacePersonID]
@@ -123,9 +119,8 @@ _BugContestJudging: ; 1369d
 	ld hl, BugContest_FirstPlaceText
 	call PrintText
 	jp BugContest_GetPlayersResult
-; 136eb
 
-BugContest_FirstPlaceText: ; 0x136eb
+BugContest_FirstPlaceText:
 	text_jump ContestJudging_FirstPlaceText
 	start_asm
 	ld de, SFX_1ST_PLACE
@@ -133,15 +128,13 @@ BugContest_FirstPlaceText: ; 0x136eb
 	call WaitSFX
 	ld hl, BugContest_FirstPlaceScoreText
 	ret
-; 136fd
 
-BugContest_FirstPlaceScoreText: ; 0x136fd
+BugContest_FirstPlaceScoreText:
 	; The winning score was @  points!
 	text_jump ContestJudging_FirstPlaceScoreText
 	db "@"
-; 0x13702
 
-BugContest_SecondPlaceText: ; 0x13702
+BugContest_SecondPlaceText:
 	; Placing second was @ , who caught a @ !@ @
 	text_jump ContestJudging_SecondPlaceText
 	start_asm
@@ -150,15 +143,13 @@ BugContest_SecondPlaceText: ; 0x13702
 	call WaitSFX
 	ld hl, BugContest_SecondPlaceScoreText
 	ret
-; 13714
 
-BugContest_SecondPlaceScoreText: ; 0x13714
+BugContest_SecondPlaceScoreText:
 	; The score was @  points!
 	text_jump ContestJudging_SecondPlaceScoreText
 	db "@"
-; 0x13719
 
-BugContest_ThirdPlaceText: ; 0x13719
+BugContest_ThirdPlaceText:
 	; Placing third was @ , who caught a @ !@ @
 	text_jump ContestJudging_ThirdPlaceText
 	start_asm
@@ -167,15 +158,13 @@ BugContest_ThirdPlaceText: ; 0x13719
 	call WaitSFX
 	ld hl, BugContest_ThirdPlaceScoreText
 	ret
-; 1372b
 
-BugContest_ThirdPlaceScoreText: ; 0x1372b
+BugContest_ThirdPlaceScoreText:
 	; The score was @  points!
 	text_jump ContestJudging_ThirdPlaceScoreText
 	db "@"
-; 0x13730
 
-LoadContestantName: ; 13730
+LoadContestantName:
 ; If a = 0, get your name.
 	dec a
 	jr z, .player
@@ -232,11 +221,10 @@ LoadContestantName: ; 13730
 	ld bc, NAME_LENGTH
 	rst CopyBytes
 	ret
-; 13783
 
 INCLUDE "data/events/bug_contest_winners.asm"
 
-BugContest_GetPlayersResult: ; 13807
+BugContest_GetPlayersResult:
 	ld hl, wBugContestThirdPlacePersonID
 	ld de, -4
 	ld b, 3
@@ -248,9 +236,8 @@ BugContest_GetPlayersResult: ; 13807
 	dec b
 	jr nz, .loop
 	ret
-; 13819
 
-BugContest_JudgeContestants: ; 13819
+BugContest_JudgeContestants:
 	call ClearContestResults
 	call ComputeAIContestantScores
 	ld hl, wBugContestTempPersonID
@@ -263,9 +250,8 @@ BugContest_JudgeContestants: ; 13819
 	ld a, [hProduct + 1]
 	ld [hl], a
 	jp DetermineContestWinners
-; 13833
 
-ClearContestResults: ; 13833
+ClearContestResults:
 	ld hl, wBugContestResults
 	ld b, wBugContestWinnersEnd - wBugContestResults
 	xor a
@@ -274,9 +260,8 @@ ClearContestResults: ; 13833
 	dec b
 	jr nz, .loop
 	ret
-; 1383e
 
-DetermineContestWinners: ; 1383e
+DetermineContestWinners:
 	ld de, wBugContestTempScore
 	ld hl, wBugContestFirstPlaceScore
 	ld c, 2
@@ -315,14 +300,13 @@ DetermineContestWinners: ; 1383e
 	ld de, wBugContestThirdPlacePersonID
 	; fallthrough
 
-CopyTempContestant: ; 138a0
+CopyTempContestant:
 	ld hl, wBugContestTempPersonID
 	ld bc, 4
 	rst CopyBytes
 	ret
-; 138b0
 
-ComputeAIContestantScores: ; 138b0
+ComputeAIContestantScores:
 	ld e, 0
 .loop
 	push de
@@ -378,9 +362,8 @@ ComputeAIContestantScores: ; 138b0
 	cp 10
 	jr nz, .loop
 	ret
-; 13900
 
-ContestScore: ; 13900
+ContestScore:
 ; Determine the player's score in the Bug Catching Contest.
 
 	xor a
@@ -493,7 +476,7 @@ ContestScore: ; 13900
 	ld a, 1
 	; fallthrough
 
-.AddContestStat: ; 1397f
+.AddContestStat:
 	ld hl, hMultiplicand
 	add [hl]
 	ld [hl], a
@@ -501,9 +484,8 @@ ContestScore: ; 13900
 	dec hl
 	inc [hl]
 	ret
-; 13988
 
-Special_SelectRandomBugContestContestants: ; 139a8
+Special_SelectRandomBugContestContestants:
 ; Select five random people to participate in the current contest.
 
 ; First we have to make sure that any old data is cleared away.
@@ -559,9 +541,8 @@ Special_SelectRandomBugContestContestants: ; 139a8
 	dec c
 	jr nz, .loop2
 	ret
-; 139ed
 
-Special_CheckBugContestContestantFlag: ; 139ed
+Special_CheckBugContestContestantFlag:
 ; Checks the flag of the Bug Catching Contestant whose index is loaded in a.
 ; Bug: If a >= 10 when this is called, it will read beyond the table.
 	ld hl, BugCatchingContestantEventFlagTable
@@ -574,6 +555,5 @@ Special_CheckBugContestContestantFlag: ; 139ed
 	ld d, [hl]
 	ld b, CHECK_FLAG
 	jp EventFlagAction
-; 139fe
 
 INCLUDE "data/events/bug_contest_flags.asm"

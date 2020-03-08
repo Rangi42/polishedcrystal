@@ -30,7 +30,6 @@ BattleCommand_metronome:
 	call CheckUserMove
 	jr z, .GetMove
 
-
 	ld a, BATTLE_VARS_MOVE
 	call GetBattleVarAddr
 	ld [hl], b

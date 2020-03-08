@@ -58,7 +58,6 @@ RunScriptCommand:
 	rst JumpTable
 	ret
 
-
 ScriptCommandTable:
 	dw Script_scall                      ; 00
 	dw Script_farscall                   ; 01
@@ -877,7 +876,7 @@ Script_winlosstext:
 ; parameters:
 ;     win_text_pointer (TextPointerLabelParam)
 ;     loss_text_pointer (TextPointerLabelParam)
-	ld hl, wWinTextPointer ; d047
+	ld hl, wWinTextPointer
 	call GetScriptByte
 	ld [hli], a
 	call GetScriptByte
@@ -2720,7 +2719,6 @@ ReturnFromCredits:
 	ld a, 3
 	ld [wMapStatus], a
 	jp StopScript
-; 97c051
 
 Script_wait:
 ; parameters:

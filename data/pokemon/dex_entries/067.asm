@@ -1,4 +1,4 @@
-; MachokePokedexEntry: ; 0x1b80cb
+; MachokePokedexEntry:
 	db "Superpower@" ; species name
 	dw 411, 1550 ; height, width
 

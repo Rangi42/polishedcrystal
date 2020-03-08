@@ -1,4 +1,4 @@
-_InitSpriteAnimStruct:: ; 3b2a
+_InitSpriteAnimStruct::
 	ld [wSpriteAnimIDBuffer], a
 	ld a, [hROMBank]
 	push af
@@ -12,9 +12,8 @@ _InitSpriteAnimStruct:: ; 3b2a
 	pop af
 	rst Bankswitch
 	ret
-; 3b3c
 
-ReinitSpriteAnimFrame:: ; 3b3c
+ReinitSpriteAnimFrame::
 	ld [wSpriteAnimIDBuffer], a
 	ld a, [hROMBank]
 	push af
@@ -28,4 +27,3 @@ ReinitSpriteAnimFrame:: ; 3b3c
 	pop af
 	rst Bankswitch
 	ret
-; 3b4e

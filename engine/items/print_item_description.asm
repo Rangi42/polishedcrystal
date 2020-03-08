@@ -3,7 +3,7 @@ PrintKeyItemDescription:
 	ld a, [wCurKeyItem]
 	jr PrintDescription
 
-PrintItemDescription: ; 0x1c8955
+PrintItemDescription:
 ; Print the description for item [wCurSpecies] at de.
 	ld hl, ItemDescriptions
 	ld a, [wCurSpecies]
@@ -19,7 +19,6 @@ PrintDescription:
 	ld d, [hl]
 	pop hl
 	jp PlaceString
-; 0x1c8987
 
 PrintTMHMDescription:
 ; Print the description for TM/HM [wCurSpecies] at de.

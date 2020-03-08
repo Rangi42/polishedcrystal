@@ -1,4 +1,4 @@
-; TyranitarPokedexEntry: ; 0x1d177b
+; TyranitarPokedexEntry:
 	db "Armor@" ; species name
 	dw 607, 4450 ; height, width
 

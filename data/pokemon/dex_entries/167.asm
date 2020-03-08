@@ -1,4 +1,4 @@
-; SpinarakPokedexEntry: ; 0x1cd012
+; SpinarakPokedexEntry:
 	db "String Spit@" ; species name
 	dw 108, 190 ; height, width
 

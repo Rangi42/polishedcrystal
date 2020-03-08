@@ -204,7 +204,6 @@ DeinitializeSprite:
 	ld [hl], $0
 	ret
 
-
 DeinitializeAllSprites:
 ; Clear the index field of every struct in the wSpriteAnimationStructs array.
 	ld hl, wSpriteAnimationStructs
@@ -217,7 +216,6 @@ DeinitializeAllSprites:
 	dec e
 	jr nz, .loop
 	ret
-
 
 UpdateAnimFrame:
 	call InitSpriteAnimBuffer ; init WRAM
@@ -406,7 +404,6 @@ _ReinitSpriteAnimFrame::
 	add hl, bc
 	ld [hl], -1
 	ret
-
 
 GetSpriteAnimFrame:
 .loop

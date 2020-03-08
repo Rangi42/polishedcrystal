@@ -1,4 +1,4 @@
-UnknownText_0x174000: ; 0x174000
+UnknownText_0x174000:
 	text "Hi, <PLAYER>!"
 	line "Our Bicycle sales"
 
@@ -17,9 +17,8 @@ UnknownText_0x174000: ; 0x174000
 	para "keep that Bicycle."
 	line "Thanks again!"
 	done
-; 0x1740c0
 
-UnknownText_0x1740c0: ; 0x1740c0
+UnknownText_0x1740c0:
 	text "My @"
 	text_from_ram wStringBuffer4
 	text "'s"
@@ -29,9 +28,8 @@ UnknownText_0x1740c0: ; 0x1740c0
 	line "be smarter than"
 	cont "yours!"
 	done
-; 0x174106
 
-UnknownText_0x174106: ; 0x174106
+UnknownText_0x174106:
 	text "The other day, I"
 	line "easily defeated a"
 	cont "@"
@@ -42,9 +40,8 @@ UnknownText_0x174106: ; 0x174106
 	line "tips with you is"
 	cont "starting to help."
 	done
-; 0x174165
 
-UnknownText_0x174165: ; 0x174165
+UnknownText_0x174165:
 	text "Oh, and listen."
 	line "I missed catching"
 
@@ -59,9 +56,8 @@ UnknownText_0x174165: ; 0x174165
 	para "sure I would've"
 	line "caught it…"
 	done
-; 0x1741e1
 
-UnknownText_0x1741e1: ; 0x1741e1
+UnknownText_0x1741e1:
 	text "Do you want to"
 	line "battle? I'll show"
 
@@ -76,23 +72,20 @@ UnknownText_0x1741e1: ; 0x1741e1
 	para "Give me a shout if"
 	line "you're nearby."
 	done
-; 0x174251
 
-UnknownText_0x174251: ; 0x174251
+UnknownText_0x174251:
 	text "See you later!"
 	done
-; 0x174261
 
-UnknownText_0x174261: ; 0x174261
+UnknownText_0x174261:
 	text "Did you know?"
 
 	para "When it's raining,"
 	line "Thunder is sure to"
 	cont "strike."
 	done
-; 0x17429d
 
-UnknownText_0x17429d: ; 0x17429d
+UnknownText_0x17429d:
 	text "Did you know…?"
 
 	para "If you use Defense"
@@ -101,9 +94,8 @@ UnknownText_0x17429d: ; 0x17429d
 	para "power goes way up"
 	line "past normal."
 	done
-; 0x1742ee
 
-UnknownText_0x1742ee: ; 0x1742ee
+UnknownText_0x1742ee:
 	text "Did you know…?"
 
 	para "If the sunlight is"
@@ -112,9 +104,8 @@ UnknownText_0x1742ee: ; 0x1742ee
 	para "doesn't need to be"
 	line "charged up."
 	done
-; 0x174340
 
-UnknownText_0x174340: ; 0x174340
+UnknownText_0x174340:
 	text "Did you know…?"
 
 	para "If the opponent"
@@ -123,9 +114,8 @@ UnknownText_0x174340: ; 0x174340
 	para "your Stomp becomes"
 	line "more powerful."
 	done
-; 0x174391
 
-UnknownText_0x174391: ; 0x174391
+UnknownText_0x174391:
 	text "Did you know…?"
 
 	para "If your opponent"
@@ -134,9 +124,8 @@ UnknownText_0x174391: ; 0x174391
 	para "Gust becomes much"
 	line "more powerful."
 	done
-; 0x1743e3
 
-UnknownText_0x1743e3: ; 0x1743e3
+UnknownText_0x1743e3:
 	text "Did you know…?"
 
 	para "If your opponent"
@@ -145,9 +134,8 @@ UnknownText_0x1743e3: ; 0x1743e3
 	para "Thunder becomes"
 	line "more powerful."
 	done
-; 0x174433
 
-UnknownText_0x174433: ; 0x174433
+UnknownText_0x174433:
 	text "Did you know…?"
 
 	para "If your opponent"
@@ -156,9 +144,8 @@ UnknownText_0x174433: ; 0x174433
 	para "Earthquake becomes"
 	line "more powerful."
 	done
-; 0x174485
 
-UnknownText_0x174485: ; 0x174485
+UnknownText_0x174485:
 	text "Did you know…?"
 
 	para "If your opponent"
@@ -167,9 +154,8 @@ UnknownText_0x174485: ; 0x174485
 	para "Magnitude becomes"
 	line "more powerful."
 	done
-; 0x1744d6
 
-UnknownText_0x1744d6: ; 0x1744d6
+UnknownText_0x1744d6:
 	text "Did you know…?"
 
 	para "The Rock, Ground"
@@ -178,9 +164,8 @@ UnknownText_0x1744d6: ; 0x1744d6
 	para "can't be hurt by"
 	line "Sandstorm."
 	done
-; 0x174522
 
-UnknownText_0x174522: ; 0x174522
+UnknownText_0x174522:
 	text "Did you know…?"
 
 	para "If the sunlight is"
@@ -189,9 +174,8 @@ UnknownText_0x174522: ; 0x174522
 	para "moves become much"
 	line "weaker."
 	done
-; 0x174571
 
-UnknownText_0x174571: ; 0x174571
+UnknownText_0x174571:
 	text "Did you know…?"
 
 	para "When it's raining,"
@@ -200,9 +184,8 @@ UnknownText_0x174571: ; 0x174571
 	para "become much weaker"
 	line "than usual."
 	done
-; 0x1745c2
 
-UnknownText_0x1745c2: ; 0x1745c2
+UnknownText_0x1745c2:
 	text "My friend heard"
 	line "some great tips."
 
@@ -213,9 +196,8 @@ UnknownText_0x1745c2: ; 0x1745c2
 	line "I'll call right"
 	cont "away and tell you."
 	done
-; 0x174638
 
-UnknownText_0x174638: ; 0x174638
+UnknownText_0x174638:
 	text "Hey, <PLAYER>!"
 
 	para "Do you remember"
@@ -229,9 +211,8 @@ UnknownText_0x174638: ; 0x174638
 	text_from_ram wStringBuffer5
 	text "."
 	done
-; 0x174688
 
-UnknownText_0x174688: ; 0x174688
+UnknownText_0x174688:
 	text "I fancied up my"
 	line "@"
 	text_from_ram wStringBuffer4
@@ -240,9 +221,8 @@ UnknownText_0x174688: ; 0x174688
 	para "made it even cuter"
 	line "than before!"
 	done
-; 0x1746c3
 
-UnknownText_0x1746c3: ; 0x1746c3
+UnknownText_0x1746c3:
 	text "I happened to come"
 	line "across a wild"
 	cont "Snubbull recently."
@@ -253,9 +233,8 @@ UnknownText_0x1746c3: ; 0x1746c3
 	para "far cuter than the"
 	line "wild one."
 	done
-; 0x174734
 
-UnknownText_0x174734: ; 0x174734
+UnknownText_0x174734:
 	text "I happened to see"
 	line "a wild Marill the"
 
@@ -270,15 +249,13 @@ UnknownText_0x174734: ; 0x174734
 	text ". I was"
 	line "quite miffed."
 	done
-; 0x1747ac
 
-UnknownText_0x1747ac: ; 0x1747ac
+UnknownText_0x1747ac:
 	text "You can expect a"
 	line "call from me."
 	done
-; 0x1747cc
 
-UnknownText_0x1747cc: ; 0x1747cc
+UnknownText_0x1747cc:
 	text "My husband got"
 	line "some Nuggets."
 
@@ -296,18 +273,16 @@ UnknownText_0x1747cc: ; 0x1747cc
 	para "Please come see me"
 	line "when you can."
 	done
-; 0x17485b
 
-UnknownText_0x17485b: ; 0x17485b
+UnknownText_0x17485b:
 	text "Are your #mon"
 	line "in prime form?"
 
 	para "Let's chat about"
 	line "#mon again."
 	done
-; 0x174895
 
-UnknownText_0x174895: ; 0x174895
+UnknownText_0x174895:
 	text "Pardon?"
 	line "Oh, the Nugget?"
 
@@ -319,9 +294,8 @@ UnknownText_0x174895: ; 0x174895
 	text ""
 	line "when you can."
 	done
-; 0x1748ea
 
-UnknownText_0x1748ea: ; 0x1748ea
+UnknownText_0x1748ea:
 	text "Hey, I challenge"
 	line "you to a battle!"
 
@@ -336,14 +310,12 @@ UnknownText_0x1748ea: ; 0x1748ea
 	para "for you. Hustle"
 	line "over here pronto!"
 	done
-; 0x174962
 
-UnknownText_0x174962: ; 0x174962
+UnknownText_0x174962:
 	text "See ya!"
 	done
-; 0x17496b
 
-UnknownText_0x17496b: ; 0x17496b
+UnknownText_0x17496b:
 	text "We have to battle"
 	line "again sometime."
 
@@ -353,9 +325,8 @@ UnknownText_0x17496b: ; 0x17496b
 	para "challenging you"
 	line "till I win."
 	done
-; 0x1749c7
 
-UnknownText_0x1749c7: ; 0x1749c7
+UnknownText_0x1749c7:
 	text "Hey, you'd better"
 	line "not have forgotten"
 	cont "about our battle!"
@@ -367,9 +338,8 @@ UnknownText_0x1749c7: ; 0x1749c7
 	para "Hustle over quick!"
 	line "I'm waiting!"
 	done
-; 0x174a24
 
-UnknownText_0x174a24: ; 0x174a24
+UnknownText_0x174a24:
 	text "My @"
 	text_from_ram wStringBuffer4
 	text ""
@@ -382,9 +352,8 @@ UnknownText_0x174a24: ; 0x174a24
 	text " that's"
 	cont "better than mine."
 	done
-; 0x174a80
 
-UnknownText_0x174a80: ; 0x174a80
+UnknownText_0x174a80:
 	text "Oh, and I managed"
 	line "to barely defeat"
 
@@ -406,9 +375,8 @@ UnknownText_0x174a80: ; 0x174a80
 	line "#mon you're"
 	cont "used to seeing."
 	done
-; 0x174b2d
 
-UnknownText_0x174b2d: ; 0x174b2d
+UnknownText_0x174b2d:
 	text "And a while back,"
 	line "I tried to catch a"
 	cont "wild @"
@@ -424,9 +392,8 @@ UnknownText_0x174b2d: ; 0x174b2d
 	para "failure… You ought"
 	line "to be careful too."
 	done
-; 0x174bc5
 
-UnknownText_0x174bc5: ; 0x174bc5
+UnknownText_0x174bc5:
 	text "Let's battle!"
 
 	para "I'll be waiting on"
@@ -437,21 +404,18 @@ UnknownText_0x174bc5: ; 0x174bc5
 	para "Give me a shout"
 	line "when you're close."
 	done
-; 0x174c0e
 
-UnknownText_0x174c0e: ; 0x174c0e
+UnknownText_0x174c0e:
 	text "OK, I'll talk to"
 	line "you soon!"
 	done
-; 0x174c29
 
-UnknownText_0x174c29: ; 0x174c29
+UnknownText_0x174c29:
 	text "I obsess over how"
 	line "to beat you."
 	done
-; 0x174c49
 
-UnknownText_0x174c49: ; 0x174c49
+UnknownText_0x174c49:
 	text "<PLAYER>, why"
 	line "aren't you here?"
 
@@ -460,9 +424,8 @@ UnknownText_0x174c49: ; 0x174c49
 	text_from_ram wStringBuffer5
 	text "!"
 	done
-; 0x174c7f
 
-UnknownText_0x174c7f: ; 0x174c7f
+UnknownText_0x174c7f:
 	text "Do you remember my"
 	line "sweet @"
 	text_from_ram wStringBuffer4
@@ -479,9 +442,8 @@ UnknownText_0x174c7f: ; 0x174c7f
 	para "back when it"
 	line "really gets going."
 	done
-; 0x174cf6
 
-UnknownText_0x174cf6: ; 0x174cf6
+UnknownText_0x174cf6:
 	text "Oh, have you ever"
 	line "seen a @"
 	text_from_ram wStringBuffer4
@@ -500,9 +462,8 @@ UnknownText_0x174cf6: ; 0x174cf6
 	para "I still won, of"
 	line "course."
 	done
-; 0x174d86
 
-UnknownText_0x174d86: ; 0x174d86
+UnknownText_0x174d86:
 	text "Oh, I just saw a"
 	line "wild @"
 	text_from_ram wStringBuffer4
@@ -524,9 +485,8 @@ UnknownText_0x174d86: ; 0x174d86
 	para "I hope you learn"
 	line "from my mistake."
 	done
-; 0x174e4e
 
-UnknownText_0x174e4e: ; 0x174e4e
+UnknownText_0x174e4e:
 	text "Do you want to"
 	line "battle? I'm going"
 	cont "to win this time!"
@@ -539,20 +499,17 @@ UnknownText_0x174e4e: ; 0x174e4e
 	text "."
 	line "Look for me, OK?"
 	done
-; 0x174eb7
 
-UnknownText_0x174eb7: ; 0x174eb7
+UnknownText_0x174eb7:
 	text "OK, bye-bye!"
 	done
-; 0x174ec5
 
-UnknownText_0x174ec5: ; 0x174ec5
+UnknownText_0x174ec5:
 	text "Let's battle again"
 	line "sometime!"
 	done
-; 0x174ee2
 
-UnknownText_0x174ee2: ; 0x174ee2
+UnknownText_0x174ee2:
 	text "Um… <PLAYER>?"
 	line "What's wrong?"
 
@@ -566,9 +523,8 @@ UnknownText_0x174ee2: ; 0x174ee2
 	para "That's where I'm"
 	line "waiting."
 	done
-; 0x174f2f
 
-UnknownText_0x174f2f: ; 0x174f2f
+UnknownText_0x174f2f:
 	text "Hey listen, my"
 	line "@"
 	text_from_ram wStringBuffer4
@@ -580,9 +536,8 @@ UnknownText_0x174f2f: ; 0x174f2f
 	para "That aroma gets my"
 	line "appetite going!"
 	done
-; 0x174f90
 
-UnknownText_0x174f90: ; 0x174f90
+UnknownText_0x174f90:
 	text "A while ago, my"
 	line "Farfetch'd KO'd"
 	cont "this @"
@@ -595,9 +550,8 @@ UnknownText_0x174f90: ; 0x174f90
 	para "wield that stick."
 	line "Amazing stuff!"
 	done
-; 0x174ffd
 
-UnknownText_0x174ffd: ; 0x174ffd
+UnknownText_0x174ffd:
 	text "I ran into a wild"
 	line "@"
 	text_from_ram wStringBuffer4
@@ -612,9 +566,8 @@ UnknownText_0x174ffd: ; 0x174ffd
 	para "would. It was a"
 	line "bit disappointing."
 	done
-; 0x17507d
 
-UnknownText_0x17507d: ; 0x17507d
+UnknownText_0x17507d:
 	text "Want to battle"
 	line "again?"
 
@@ -632,14 +585,12 @@ UnknownText_0x17507d: ; 0x17507d
 	para "Keep an eye out"
 	line "for me, OK?"
 	done
-; 0x175106
 
-UnknownText_0x175106: ; 0x175106
+UnknownText_0x175106:
 	text "Be seeing you!"
 	done
-; 0x175116
 
-UnknownText_0x175116: ; 0x175116
+UnknownText_0x175116:
 	text "My Farfetch'd had"
 	line "something pretty"
 	cont "in its beak."
@@ -655,9 +606,8 @@ UnknownText_0x175116: ; 0x175116
 	para "and I'll let you"
 	line "have it."
 	done
-; 0x17519b
 
-UnknownText_0x17519b: ; 0x17519b
+UnknownText_0x17519b:
 	text "I haven't gotten"
 	line "what I promised"
 	cont "you yet."
@@ -668,9 +618,8 @@ UnknownText_0x17519b: ; 0x17519b
 	para "so could you wait"
 	line "a little longer?"
 	done
-; 0x17520a
 
-UnknownText_0x17520a: ; 0x17520a
+UnknownText_0x17520a:
 	text "<PLAYER>, could you"
 	line "hurry over?"
 
@@ -690,9 +639,8 @@ UnknownText_0x17520a: ; 0x17520a
 	para "Please come as"
 	line "soon as you can!"
 	done
-; 0x17529c
 
-UnknownText_0x1752f5: ; 0x1752f5
+UnknownText_0x1752f5:
 	text "Listen, dear…"
 
 	para "Do you recall my"
@@ -709,9 +657,8 @@ UnknownText_0x1752f5: ; 0x1752f5
 	line "it's a perfect"
 	cont "match for me?"
 	done
-; 0x17536b
 
-UnknownText_0x17536b: ; 0x17536b
+UnknownText_0x17536b:
 	text "Have I ever faced"
 	line "a wild @"
 	text_from_ram wStringBuffer4
@@ -725,9 +672,8 @@ UnknownText_0x17536b: ; 0x17536b
 	line "beaten on numerous"
 	cont "occasions!"
 	done
-; 0x1753c5
 
-UnknownText_0x1753c5: ; 0x1753c5
+UnknownText_0x1753c5:
 	text "Have I ever failed"
 	line "to catch a wild"
 	cont "#mon?"
@@ -742,9 +688,8 @@ UnknownText_0x1753c5: ; 0x1753c5
 	text "…"
 	line "Oh! Never mind!"
 	done
-; 0x17543a
 
-UnknownText_0x17543a: ; 0x17543a
+UnknownText_0x17543a:
 	text "We are going to"
 	line "battle!"
 
@@ -756,14 +701,12 @@ UnknownText_0x17543a: ; 0x17543a
 	para "Don't make me"
 	line "wait! Got it?"
 	done
-; 0x175488
 
-UnknownText_0x175488: ; 0x175488
+UnknownText_0x175488:
 	text "Fine, you may go."
 	done
-; 0x17549b
 
-UnknownText_0x17549b: ; 0x17549b
+UnknownText_0x17549b:
 	text "Don't be too proud"
 	line "just because you"
 
@@ -772,9 +715,8 @@ UnknownText_0x17549b: ; 0x17549b
 
 	para "It was a fluke!"
 	done
-; 0x1754e5
 
-UnknownText_0x1754e5: ; 0x1754e5
+UnknownText_0x1754e5:
 	text "What are you"
 	line "doing?"
 
@@ -786,9 +728,8 @@ UnknownText_0x1754e5: ; 0x1754e5
 	text "!"
 	line "Don't try to run!"
 	done
-; 0x175530
 
-UnknownText_0x175530: ; 0x175530
+UnknownText_0x175530:
 	text "My @"
 	text_from_ram wStringBuffer4
 	text "'s"
@@ -801,9 +742,8 @@ UnknownText_0x175530: ; 0x175530
 	para "this guy in your"
 	line "party!"
 	done
-; 0x175591
 
-UnknownText_0x175591: ; 0x175591
+UnknownText_0x175591:
 	text "Oh yeah, I took"
 	line "down a @"
 	text_from_ram wStringBuffer4
@@ -817,9 +757,8 @@ UnknownText_0x175591: ; 0x175591
 	para "can't be helped,"
 	line "us being so tough."
 	done
-; 0x175611
 
-UnknownText_0x175611: ; 0x175611
+UnknownText_0x175611:
 	text "Oh yeah, I saw a"
 	line "wild @"
 	text_from_ram wStringBuffer4
@@ -834,9 +773,8 @@ UnknownText_0x175611: ; 0x175611
 	para "only right to the"
 	line "extreme end."
 	done
-; 0x175693
 
-UnknownText_0x175693: ; 0x175693
+UnknownText_0x175693:
 	text "Let's get together"
 	line "and battle!"
 
@@ -851,14 +789,12 @@ UnknownText_0x175693: ; 0x175693
 	para "Give me a shout"
 	line "when you come."
 	done
-; 0x17570a
 
-UnknownText_0x17570a: ; 0x17570a
+UnknownText_0x17570a:
 	text "All right. Later!"
 	done
-; 0x17571d
 
-UnknownText_0x17571d: ; 0x17571d
+UnknownText_0x17571d:
 	text "I'm checking out"
 	line "@"
 	text_from_ram wStringBuffer4
@@ -871,9 +807,8 @@ UnknownText_0x17571d: ; 0x17571d
 	line "with a good one,"
 	cont "let's battle!"
 	done
-; 0x175786
 
-UnknownText_0x175786: ; 0x175786
+UnknownText_0x175786:
 	text "What's keeping"
 	line "you, <PLAYER>!"
 
@@ -885,9 +820,8 @@ UnknownText_0x175786: ; 0x175786
 	text_from_ram wStringBuffer5
 	text "!"
 	done
-; 0x1757d4
 
-UnknownText_0x1757d4: ; 0x1757d4
+UnknownText_0x1757d4:
 	text "Are your #mon"
 	line "growing?"
 
@@ -905,9 +839,8 @@ UnknownText_0x1757d4: ; 0x1757d4
 	para "quickly. I think"
 	line "it'll get tough."
 	done
-; 0x175869
 
-UnknownText_0x175869: ; 0x175869
+UnknownText_0x175869:
 	text "Oh yeah, we KO'd a"
 	line "wild @"
 	text_from_ram wStringBuffer4
@@ -921,9 +854,8 @@ UnknownText_0x175869: ; 0x175869
 	para "little sorry for"
 	line "the poor thing."
 	done
-; 0x1758e4
 
-UnknownText_0x1758e4: ; 0x1758e4
+UnknownText_0x1758e4:
 	text "Oh yeah, a wild"
 	line "@"
 	text_from_ram wStringBuffer4
@@ -941,9 +873,8 @@ UnknownText_0x1758e4: ; 0x1758e4
 	para "away when I almost"
 	line "had it."
 	done
-; 0x175976
 
-UnknownText_0x175976: ; 0x175976
+UnknownText_0x175976:
 	text "Do you feel like a"
 	line "#mon battle?"
 
@@ -958,14 +889,12 @@ UnknownText_0x175976: ; 0x175976
 	para "Let me know when"
 	line "you get there."
 	done
-; 0x1759e7
 
-UnknownText_0x1759e7: ; 0x1759e7
+UnknownText_0x1759e7:
 	text "See you later!"
 	done
-; 0x1759f7
 
-UnknownText_0x1759f7: ; 0x1759f7
+UnknownText_0x1759f7:
 	text "The Bug-Catching"
 	line "Contest is at the"
 
@@ -978,9 +907,8 @@ UnknownText_0x1759f7: ; 0x1759f7
 	para "I'm trying to make"
 	line "up my mind."
 	done
-; 0x175a60
 
-UnknownText_0x175a60: ; 0x175a60
+UnknownText_0x175a60:
 	text "I found all kinds"
 	line "of Berries. If you"
 
@@ -992,9 +920,8 @@ UnknownText_0x175a60: ; 0x175a60
 	text_from_ram wStringBuffer5
 	text "."
 	done
-; 0x175abe
 
-UnknownText_0x175abe: ; 0x175abe
+UnknownText_0x175abe:
 	text "Huh? Berries?"
 
 	para "Sorry, I haven't"
@@ -1004,9 +931,8 @@ UnknownText_0x175abe: ; 0x175abe
 	line "find any. Will you"
 	cont "please wait?"
 	done
-; 0x175b1e
 
-UnknownText_0x175b1e: ; 0x175b1e
+UnknownText_0x175b1e:
 	text "Let's battle"
 	line "already!"
 
@@ -1018,9 +944,8 @@ UnknownText_0x175b1e: ; 0x175b1e
 	para "Please get here as"
 	line "soon as you can!"
 	done
-; 0x175b6d
 
-UnknownText_0x175b6d: ; 0x175b6d
+UnknownText_0x175b6d:
 	text "How come you're"
 	line "not here yet?"
 
@@ -1032,9 +957,8 @@ UnknownText_0x175b6d: ; 0x175b6d
 	para "Please get here as"
 	line "soon as you can!"
 	done
-; 0x175bc4
 
-UnknownText_0x175bc4: ; 0x175bc4
+UnknownText_0x175bc4:
 	text "I've been spending"
 	line "more time with my"
 
@@ -1046,9 +970,8 @@ UnknownText_0x175bc4: ; 0x175bc4
 	para "That's a bit sad,"
 	line "actually."
 	done
-; 0x175c24
 
-UnknownText_0x175c24: ; 0x175c24
+UnknownText_0x175c24:
 	text "I just beat a wild"
 	line "@"
 	text_from_ram wStringBuffer4
@@ -1063,9 +986,8 @@ UnknownText_0x175c24: ; 0x175c24
 	para "Boy, has he gotten"
 	line "cocky…"
 	done
-; 0x175c9f
 
-UnknownText_0x175c9f: ; 0x175c9f
+UnknownText_0x175c9f:
 	text "Yesterday a wild"
 	line "@"
 	text_from_ram wStringBuffer4
@@ -1083,9 +1005,8 @@ UnknownText_0x175c9f: ; 0x175c9f
 	para "Hahah, that sure"
 	line "made my day!"
 	done
-; 0x175d40
 
-UnknownText_0x175d40: ; 0x175d40
+UnknownText_0x175d40:
 	text "What do you say to"
 	line "a battle with me?"
 
@@ -1100,15 +1021,13 @@ UnknownText_0x175d40: ; 0x175d40
 	text " is"
 	line "the spot!"
 	done
-; 0x175db7
 
-UnknownText_0x175db7: ; 0x175db7
+UnknownText_0x175db7:
 	text "You call your mom"
 	line "sometimes too!"
 	done
-; 0x175dd9
 
-UnknownText_0x175dd9: ; 0x175dd9
+UnknownText_0x175dd9:
 	text "Listen, I… Yowch!"
 
 	para "Uh, sorry! See,"
@@ -1136,9 +1055,8 @@ UnknownText_0x175dd9: ; 0x175dd9
 	para "sight! Get ready"
 	line "to fish!"
 	done
-; 0x175eaf
 
-UnknownText_0x175eaf: ; 0x175eaf
+UnknownText_0x175eaf:
 	text "Yeah, I know."
 
 	para "You're looking for"
@@ -1148,9 +1066,8 @@ UnknownText_0x175eaf: ; 0x175eaf
 	line "been catching are"
 	cont "Magikarp, though…"
 	done
-; 0x175f11
 
-UnknownText_0x175f11: ; 0x175f11
+UnknownText_0x175f11:
 	text "So where are you?"
 	line "I'm waiting for"
 
@@ -1162,9 +1079,8 @@ UnknownText_0x175f11: ; 0x175f11
 	para "You shouldn't make"
 	line "your elders wait!"
 	done
-; 0x175f70
 
-UnknownText_0x175f70: ; 0x175f70
+UnknownText_0x175f70:
 	text "Hey, what's the"
 	line "matter with you?"
 
@@ -1175,9 +1091,8 @@ UnknownText_0x175f70: ; 0x175f70
 	para "I'm on ROUTE 32,"
 	line "so hurry up!"
 	done
-; 0x175fda
 
-UnknownText_0x175fda: ; 0x175fda
+UnknownText_0x175fda:
 	text "Oh, you have to"
 	line "hear this."
 
@@ -1189,9 +1104,8 @@ UnknownText_0x175fda: ; 0x175fda
 	para "It always wants to"
 	line "nuzzle me!"
 	done
-; 0x17602d
 
-UnknownText_0x17602d: ; 0x17602d
+UnknownText_0x17602d:
 	text "And, and! Um…"
 
 	para "We beat a wild"
@@ -1205,9 +1119,8 @@ UnknownText_0x17602d: ; 0x17602d
 	para "We felt sorry for"
 	line "it, though."
 	done
-; 0x176095
 
-UnknownText_0x176095: ; 0x176095
+UnknownText_0x176095:
 	text "And, and! Uh…"
 
 	para "We just saw a"
@@ -1222,9 +1135,8 @@ UnknownText_0x176095: ; 0x176095
 	para "away. It made us"
 	line "really angry!"
 	done
-; 0x17610a
 
-UnknownText_0x17610a: ; 0x17610a
+UnknownText_0x17610a:
 	text "Hi! Do you have"
 	line "some free time?"
 
@@ -1242,9 +1154,8 @@ UnknownText_0x17610a: ; 0x17610a
 	para "Let me know when"
 	line "you get here!"
 	done
-; 0x1761a7
 
-UnknownText_0x1761a7: ; 0x1761a7
+UnknownText_0x1761a7:
 	text "Hi, Tania. How are"
 	line "you? This is Liz."
 
@@ -1254,15 +1165,13 @@ UnknownText_0x1761a7: ; 0x1761a7
 	para "Huh… Wrong number?"
 	line "Oops! Sorry!"
 	done
-; 0x17620a
 
-UnknownText_0x17620a: ; 0x17620a
+UnknownText_0x17620a:
 	text "OK, I'll call you"
 	line "later!"
 	done
-; 0x176223
 
-UnknownText_0x176223: ; 0x176223
+UnknownText_0x176223:
 	text "Listen, listen!"
 
 	para "I was listening to"
@@ -1277,9 +1186,8 @@ UnknownText_0x176223: ; 0x176223
 	para "I wonder what it"
 	line "was. So strange!"
 	done
-; 0x1762c3
 
-UnknownText_0x1762c3: ; 0x1762c3
+UnknownText_0x1762c3:
 	text "Listen, listen!"
 
 	para "Don't you think"
@@ -1300,9 +1208,8 @@ UnknownText_0x1762c3: ; 0x1762c3
 	para "I wish I could"
 	line "meet him!"
 	done
-; 0x17638a
 
-UnknownText_0x17638a: ; 0x17638a
+UnknownText_0x17638a:
 	text "Listen, listen!"
 
 	para "Do you know Earl,"
@@ -1317,9 +1224,8 @@ UnknownText_0x17638a: ; 0x17638a
 	para "he was running. It"
 	line "was wildly funny!"
 	done
-; 0x176424
 
-UnknownText_0x176424: ; 0x176424
+UnknownText_0x176424:
 	text "Listen, listen!"
 
 	para "I collect #mon"
@@ -1338,9 +1244,8 @@ UnknownText_0x176424: ; 0x176424
 	line "brag about it if"
 	cont "you had one."
 	done
-; 0x1764eb
 
-UnknownText_0x1764eb: ; 0x1764eb
+UnknownText_0x1764eb:
 	text "Listen, listen!"
 
 	para "Do you know about"
@@ -1358,9 +1263,8 @@ UnknownText_0x1764eb: ; 0x1764eb
 	para "try some. I bet"
 	line "it's delicious!"
 	done
-; 0x176599
 
-UnknownText_0x176599: ; 0x176599
+UnknownText_0x176599:
 	text "Listen, listen!"
 
 	para "There's a #mon"
@@ -1387,9 +1291,8 @@ UnknownText_0x176599: ; 0x176599
 	para "trying to decide"
 	line "whom I should use…"
 	done
-; 0x1766ac
 
-UnknownText_0x1766ac: ; 0x1766ac
+UnknownText_0x1766ac:
 	text "Listen, listen!"
 
 	para "Goldenrod Gym's"
@@ -1405,9 +1308,8 @@ UnknownText_0x1766ac: ; 0x1766ac
 	para "I bet she must be"
 	line "totally talented."
 	done
-; 0x17674f
 
-UnknownText_0x17674f: ; 0x17674f
+UnknownText_0x17674f:
 	text "Listen, listen!"
 
 	para "Have you ever"
@@ -1427,9 +1329,8 @@ UnknownText_0x17674f: ; 0x17674f
 	line "Caterpie. Isn't"
 	cont "that great?"
 	done
-; 0x176816
 
-UnknownText_0x176816: ; 0x176816
+UnknownText_0x176816:
 	text "Listen, listen!"
 
 	para "I saw a beautiful"
@@ -1443,9 +1344,8 @@ UnknownText_0x176816: ; 0x176816
 	text_from_ram wStringBuffer4
 	text " too."
 	done
-; 0x17686d
 
-UnknownText_0x17686d: ; 0x17686d
+UnknownText_0x17686d:
 	text "Listen, listen!"
 
 	para "Uh… Um… Whoops!"
@@ -1453,9 +1353,8 @@ UnknownText_0x17686d: ; 0x17686d
 	para "I forgot what I"
 	line "was going to say!"
 	done
-; 0x1768b0
 
-UnknownText_0x1768b0: ; 0x1768b0
+UnknownText_0x1768b0:
 	text "Listen, listen!"
 
 	para "My @"
@@ -1488,9 +1387,8 @@ UnknownText_0x1768b0: ; 0x1768b0
 	para "time!"
 	line "I love chatting!"
 	done
-; 0x1769da
 
-UnknownText_0x1769da: ; 0x1769da
+UnknownText_0x1769da:
 	text "I've got too much"
 	line "time on my hands!"
 
@@ -1502,9 +1400,8 @@ UnknownText_0x1769da: ; 0x1769da
 	text_from_ram wStringBuffer5
 	text "!"
 	done
-; 0x176a2f
 
-UnknownText_0x176a2f: ; 0x176a2f
+UnknownText_0x176a2f:
 	text "The other day, I"
 	line "was watching my"
 
@@ -1525,9 +1422,8 @@ UnknownText_0x176a2f: ; 0x176a2f
 	para "that stuff, but it"
 	line "was delicious!"
 	done
-; 0x176aef
 
-UnknownText_0x176aef: ; 0x176aef
+UnknownText_0x176aef:
 	text "Lately, I've been"
 	line "running across"
 
@@ -1539,9 +1435,8 @@ UnknownText_0x176aef: ; 0x176aef
 	para "They're easily"
 	line "taken care of."
 	done
-; 0x176b45
 
-UnknownText_0x176b45: ; 0x176b45
+UnknownText_0x176b45:
 	text "Oh yeah, I was"
 	line "battling this"
 
@@ -1560,9 +1455,8 @@ UnknownText_0x176b45: ; 0x176b45
 	para "stay focused on"
 	line "the job at hand!"
 	done
-; 0x176bee
 
-UnknownText_0x176bee: ; 0x176bee
+UnknownText_0x176bee:
 	text "Come on--let's"
 	line "battle right now!"
 
@@ -1574,15 +1468,13 @@ UnknownText_0x176bee: ; 0x176bee
 	para "Come on down if"
 	line "you feel up to it!"
 	done
-; 0x176c47
 
-UnknownText_0x176c47: ; 0x176c47
+UnknownText_0x176c47:
 	text "All right then!"
 	line "Be good!"
 	done
-; 0x176c61
 
-UnknownText_0x176c61: ; 0x176c61
+UnknownText_0x176c61:
 	text "<PLAYER>! It's"
 	line "mind-blowing!"
 
@@ -1609,9 +1501,8 @@ UnknownText_0x176c61: ; 0x176c61
 	para "where there are"
 	line "strong #mon."
 	done
-; 0x176d32
 
-UnknownText_0x176d32: ; 0x176d32
+UnknownText_0x176d32:
 	text "Rare #mon?"
 
 	para "Hey, sorry! I was"
@@ -1620,9 +1511,8 @@ UnknownText_0x176d32: ; 0x176d32
 	para "hike, so I wasn't"
 	line "paying attention."
 	done
-; 0x176d85
 
-UnknownText_0x176d85: ; 0x176d85
+UnknownText_0x176d85:
 	text "Hello! You haven't"
 	line "forgotten about"
 
@@ -1634,9 +1524,8 @@ UnknownText_0x176d85: ; 0x176d85
 	text "!"
 	line "I'm waiting!"
 	done
-; 0x176dd1
 
-UnknownText_0x176dd1: ; 0x176dd1
+UnknownText_0x176dd1:
 	text "Hello? What? Where"
 	line "is Dunsparce?"
 
@@ -1651,9 +1540,8 @@ UnknownText_0x176dd1: ; 0x176dd1
 	para "are strong #mon"
 	line "around."
 	done
-; 0x176e5d
 
-UnknownText_0x176e5d: ; 0x176e5d
+UnknownText_0x176e5d:
 	text "My @"
 	text_from_ram wStringBuffer4
 	text " is"
@@ -1662,9 +1550,8 @@ UnknownText_0x176e5d: ; 0x176e5d
 	para "more like me. It's"
 	line "getting cuter!"
 	done
-; 0x176e9c
 
-UnknownText_0x176e9c: ; 0x176e9c
+UnknownText_0x176e9c:
 	text "And, you know?"
 
 	para "Now we can KO"
@@ -1675,9 +1562,8 @@ UnknownText_0x176e9c: ; 0x176e9c
 	para "I should challenge"
 	line "the Goldenrod Gym."
 	done
-; 0x176eee
 
-UnknownText_0x176eee: ; 0x176eee
+UnknownText_0x176eee:
 	text "And, you know?"
 	line "We just failed to"
 
@@ -1692,9 +1578,8 @@ UnknownText_0x176eee: ; 0x176eee
 	para "aren't high enough"
 	line "yet…"
 	done
-; 0x176f60
 
-UnknownText_0x176f60: ; 0x176f60
+UnknownText_0x176f60:
 	text "You must be a lot"
 	line "better now, huh?"
 
@@ -1709,14 +1594,12 @@ UnknownText_0x176f60: ; 0x176f60
 	text_from_ram wStringBuffer5
 	text "."
 	done
-; 0x176fdb
 
-UnknownText_0x176fdb: ; 0x176fdb
+UnknownText_0x176fdb:
 	text "See you later!"
 	done
-; 0x176feb
 
-UnknownText_0x176feb: ; 0x176feb
+UnknownText_0x176feb:
 	text "This is it--the"
 	line "one we've all been"
 	cont "waiting for!"
@@ -1741,18 +1624,16 @@ UnknownText_0x176feb: ; 0x176feb
 	line "to get there as"
 	cont "soon as you can!"
 	done
-; 0x1770fb
 
-UnknownText_0x1770fb: ; 0x1770fb
+UnknownText_0x1770fb:
 	text "I'm saving up for"
 	line "the next bargain"
 
 	para "sale. When's the"
 	line "next one?"
 	done
-; 0x177138
 
-UnknownText_0x177138: ; 0x177138
+UnknownText_0x177138:
 	text "Where are you?"
 
 	para "Let's have our"
@@ -1763,9 +1644,8 @@ UnknownText_0x177138: ; 0x177138
 	text_from_ram wStringBuffer5
 	text "."
 	done
-; 0x17717c
 
-UnknownText_0x17717c: ; 0x17717c
+UnknownText_0x17717c:
 	text "Haven't you gone"
 	line "to Goldenrod Dept."
 
@@ -1778,9 +1658,8 @@ UnknownText_0x17717c: ; 0x17717c
 	para "You should get"
 	line "there quickly."
 	done
-; 0x1771fd
 
-UnknownText_0x1771fd: ; 0x1771fd
+UnknownText_0x1771fd:
 	text "My @"
 	text_from_ram wStringBuffer4
 	text " and"
@@ -1789,9 +1668,8 @@ UnknownText_0x1771fd: ; 0x1771fd
 	para "in sync with each"
 	line "other."
 	done
-; 0x177237
 
-UnknownText_0x177237: ; 0x177237
+UnknownText_0x177237:
 	text "We battled a wild"
 	line "@"
 	text_from_ram wStringBuffer4
@@ -1803,9 +1681,8 @@ UnknownText_0x177237: ; 0x177237
 	para "We're getting into"
 	line "the groove!"
 	done
-; 0x177297
 
-UnknownText_0x177297: ; 0x177297
+UnknownText_0x177297:
 	text "But, you know?"
 
 	para "I still haven't"
@@ -1816,9 +1693,8 @@ UnknownText_0x177297: ; 0x177297
 	para "It's getting past"
 	line "frustrating…"
 	done
-; 0x1772e2
 
-UnknownText_0x1772e2: ; 0x1772e2
+UnknownText_0x1772e2:
 	text "Would you be my"
 	line "practice partner"
 	cont "again sometime?"
@@ -1832,15 +1708,13 @@ UnknownText_0x1772e2: ; 0x1772e2
 	line "a little easier on"
 	cont "me next time?"
 	done
-; 0x177361
 
-UnknownText_0x177361: ; 0x177361
+UnknownText_0x177361:
 	text "Bye! Let's chat"
 	line "again!"
 	done
-; 0x177378
 
-UnknownText_0x177378: ; 0x177378
+UnknownText_0x177378:
 	text "Have you heard"
 	line "about Team Rocket?"
 
@@ -1851,9 +1725,8 @@ UnknownText_0x177378: ; 0x177378
 	para "Are the people"
 	line "inside safe?"
 	done
-; 0x1773e7
 
-UnknownText_0x1773e7: ; 0x1773e7
+UnknownText_0x1773e7:
 	text "I picked up some-"
 	line "thing nice today."
 
@@ -1868,9 +1741,8 @@ UnknownText_0x1773e7: ; 0x1773e7
 	text " is"
 	line "where I am."
 	done
-; 0x177465
 
-UnknownText_0x177465: ; 0x177465
+UnknownText_0x177465:
 	text "Sorry, I haven't"
 	line "found anything"
 
@@ -1880,9 +1752,8 @@ UnknownText_0x177465: ; 0x177465
 	para "find anything, you"
 	line "can have it!"
 	done
-; 0x1774c1
 
-UnknownText_0x1774c1: ; 0x1774c1
+UnknownText_0x1774c1:
 	text "Oh, <PLAYER>!"
 	line "How soon can I"
 
@@ -1894,9 +1765,8 @@ UnknownText_0x1774c1: ; 0x1774c1
 	text_from_ram wStringBuffer5
 	text "!"
 	done
-; 0x17750e
 
-UnknownText_0x17750e: ; 0x17750e
+UnknownText_0x17750e:
 	text "I'm getting really"
 	line "impatient, waiting"
 
@@ -1908,4 +1778,3 @@ UnknownText_0x17750e: ; 0x17750e
 	text_from_ram wStringBuffer5
 	text "!"
 	done
-; 0x177561
