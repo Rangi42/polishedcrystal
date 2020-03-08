@@ -63,3 +63,10 @@ JoyTextDelay_ForcehJoyDown:: ; 354b joypad
 	ld c, a
 	ret
 ; 3567
+
+ConsumeGenericDelay::
+	ld a, [wGenericDelay]
+	and a
+	ret z
+	ld c, a
+	jp DelayFrames

@@ -1,10 +1,3 @@
-ConsumeGenericDelay::
-	ld a, [wGenericDelay]
-	and a
-	ret z
-	ld c, a
-	jp DelayFrames
-
 ExitMenu::
 	push af
 	farcall _ExitMenu

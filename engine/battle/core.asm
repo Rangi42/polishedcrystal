@@ -8206,12 +8206,12 @@ AddLastBattleToLinkRecord: ; 3fa42
 	and a
 	jr z, .copy
 	push de
-	ld bc, 12
+	ld c, 12
 	ld de, wStringBuffer1
-	call CompareLong
+	call StringCmp
 	pop de
 	pop hl
-	jr c, .done
+	jr z, .done
 	ld bc, 18
 	add hl, bc
 	dec d
