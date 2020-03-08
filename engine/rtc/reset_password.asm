@@ -1,6 +1,6 @@
 _ResetClock: ; 4d3b1
 	farcall BlankScreen
-	ld b, CGB_DIPLOMA
+	ld a, CGB_DIPLOMA
 	call GetCGBLayout
 	call LoadStandardFont
 	call LoadFontsExtra

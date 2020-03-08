@@ -57,7 +57,7 @@ TrainerCard: ; 25105
 
 	call EnableLCD
 	call ApplyTilemapInVBlank
-	ld b, CGB_TRAINER_CARD
+	ld a, CGB_TRAINER_CARD
 	call GetCGBLayout
 	call SetPalettes
 	call ApplyTilemapInVBlank
@@ -93,7 +93,7 @@ TrainerCard_Page1_LoadGFX: ; 251b6 (9:51b6)
 	call TrainerCardSetup_ClearBottomHalf
 	call ApplyTilemapInVBlank
 
-	ld b, CGB_TRAINER_CARD
+	ld a, CGB_TRAINER_CARD
 	call GetCGBLayout
 	call SetPalettes
 	call ApplyTilemapInVBlank
@@ -124,7 +124,7 @@ TrainerCard_Page2_LoadGFX: ; 251f4 (9:51f4)
 	call TrainerCardSetup_ClearBottomHalf
 	call ApplyTilemapInVBlank
 
-	ld b, CGB_TRAINER_CARD_2
+	ld a, CGB_TRAINER_CARD_2
 	call GetCGBLayout
 	call SetPalettes
 	call ApplyTilemapInVBlank
@@ -192,7 +192,7 @@ TrainerCard_Page3_LoadGFX: ; 2524c (9:524c)
 	call TrainerCardSetup_ClearBottomHalf
 	call ApplyTilemapInVBlank
 
-	ld b, CGB_TRAINER_CARD_3
+	ld a, CGB_TRAINER_CARD_3
 	call GetCGBLayout
 	call SetPalettes
 	call ApplyTilemapInVBlank

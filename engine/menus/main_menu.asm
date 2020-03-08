@@ -1,7 +1,7 @@
 MainMenu: ; 49cdc
 	call DeleteSavedMusic
 	farcall NewGame_ClearTileMapEtc
-	ld b, CGB_DIPLOMA
+	ld a, CGB_DIPLOMA
 	call GetCGBLayout
 	call SetPalettes
 	ld hl, wGameTimerPause

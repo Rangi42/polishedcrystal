@@ -1034,7 +1034,7 @@ GetPlayerSwitchTarget:
 	farcall _LoadBattleFontsHPBar
 	call CloseWindow
 	call ClearSprites
-	ld b, CGB_BATTLE_COLORS
+	ld a, CGB_BATTLE_COLORS
 	call GetCGBLayout
 	call SetPalettes
 	ld a, [wLinkMode]
@@ -1317,7 +1317,7 @@ endc
 	bit SWITCH_FORCED, a
 	call z, UserSentOutText
 
-	ld b, CGB_BATTLE_COLORS
+	ld a, CGB_BATTLE_COLORS
 	call GetCGBLayout
 	call SetPalettes
 
@@ -2534,7 +2534,7 @@ LostBattle: ; 3d38e
 	jr nz, .LostLinkBattle
 
 ; Greyscale
-	ld b, CGB_BATTLE_GRAYSCALE
+	ld a, CGB_BATTLE_GRAYSCALE
 	call GetCGBLayout
 	call SetPalettes
 	jr .end
@@ -6205,7 +6205,7 @@ FinishBattleAnim: ; 3ee27
 	push bc
 	push de
 	push hl
-	ld b, CGB_BATTLE_COLORS
+	ld a, CGB_BATTLE_COLORS
 	call GetCGBLayout
 	call SetPalettes
 	call DelayFrame
@@ -7595,7 +7595,7 @@ BattleIntro: ; 3f4dd
 	farcall ClearBattleRAM
 	call InitEnemy
 	call BackUpBGMap2
-	ld b, CGB_BATTLE_GRAYSCALE
+	ld a, CGB_BATTLE_GRAYSCALE
 	call GetCGBLayout
 	ld hl, rLCDC
 	res 6, [hl] ; win tilemap 0
@@ -7936,7 +7936,7 @@ DisplayLinkRecord: ; 3f836
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
 	call ByteFill
 	call ApplyAttrAndTilemapInVBlank
-	ld b, CGB_DIPLOMA
+	ld a, CGB_DIPLOMA
 	call GetCGBLayout
 	call SetPalettes
 	ld c, 8
@@ -8421,7 +8421,7 @@ InitBattleDisplay: ; 3fb6c
 	predef PlaceGraphic
 	call ApplyTilemapInVBlank
 	call HideSprites
-	ld b, CGB_BATTLE_COLORS
+	ld a, CGB_BATTLE_COLORS
 	call GetCGBLayout
 	call SetPalettes
 	xor a

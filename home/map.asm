@@ -1952,7 +1952,7 @@ ExitAllMenus:: ; 2b4d
 	call ReloadTilesetAndPalettes
 	call UpdateSprites
 FinishExitMenu:: ; 2b5c
-	ld b, CGB_MAPPALS
+	ld a, CGB_MAPPALS
 	call GetCGBLayout
 	farcall LoadBlindingFlashPalette
 	call ApplyAttrAndTilemapInVBlank
@@ -1974,7 +1974,7 @@ ReturnToMapWithSpeechTextbox:: ; 0x2b74
 	set 0, [hl]
 	call UpdateSprites
 	call ApplyAttrAndTilemapInVBlank
-	ld b, CGB_MAPPALS
+	ld a, CGB_MAPPALS
 	call GetCGBLayout
 	farcall LoadBlindingFlashPalette
 	call UpdateTimePals

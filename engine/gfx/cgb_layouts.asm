@@ -1,12 +1,12 @@
 LoadCGBLayout:: ; 8d59
-	ld a, b
-	cp CGB_RAM
+	and a ; CGB_RAM?
 	jr nz, .not_ram
 	ld a, [wMemCGBLayout]
 .not_ram
 	cp CGB_PARTY_MENU_HP_PALS
 	jp z, ApplyPartyMenuHPPals
 	call ResetBGPals
+	dec a
 	ld l, a
 	ld h, 0
 	add hl, hl

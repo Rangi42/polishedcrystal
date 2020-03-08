@@ -1233,7 +1233,7 @@ SetUpMoveScreenBG:
 	call ClearSprites
 	xor a
 	ld [hBGMapMode], a
-	ld b, CGB_PARTY_MENU
+	ld a, CGB_PARTY_MENU
 	call GetCGBLayout
 	farcall LoadStatsGFX
 	farcall ClearSpriteAnims2

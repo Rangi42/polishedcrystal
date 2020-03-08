@@ -266,7 +266,7 @@ AnimateHOFMonEntrance: ; 865b5
 	call ApplyTilemapInVBlank
 	xor a
 	ld [hBGMapMode], a
-	ld b, CGB_PLAYER_OR_MON_FRONTPIC_PALS
+	ld a, CGB_PLAYER_OR_MON_FRONTPIC_PALS
 	call GetCGBLayout
 	call SetPalettes
 	call HOF_SlideBackpic
@@ -400,7 +400,7 @@ _HallOfFamePC: ; 86650
 	ld de, .EmptyString
 	call PlaceString
 	call ApplyTilemapInVBlank
-	ld b, CGB_PLAYER_OR_MON_FRONTPIC_PALS
+	ld a, CGB_PLAYER_OR_MON_FRONTPIC_PALS
 	call GetCGBLayout
 	call SetPalettes
 	decoord 6, 5
@@ -552,7 +552,7 @@ HOF_AnimatePlayerPic: ; 86810
 	xor a
 	ld [hBGMapMode], a
 	ld [wCurPartySpecies], a
-	ld b, CGB_PLAYER_OR_MON_FRONTPIC_PALS
+	ld a, CGB_PLAYER_OR_MON_FRONTPIC_PALS
 	call GetCGBLayout
 	call SetPalettes
 	call HOF_SlideBackpic

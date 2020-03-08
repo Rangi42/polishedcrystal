@@ -12,7 +12,7 @@ Copyright_GFPresents: ; e4579
 	ld [hSCY], a
 	ld a, $90
 	ld [hWY], a
-	ld b, CGB_GAMEFREAK_LOGO
+	ld a, CGB_GAMEFREAK_LOGO
 	call GetCGBLayout
 	farcall Copyright
 	farcall BSOD
@@ -25,7 +25,7 @@ Copyright_GFPresents: ; e4579
 	ld c, 15
 	call FadePalettes
 	call ClearTileMap
-	ld b, CGB_GAMEFREAK_LOGO
+	ld a, CGB_GAMEFREAK_LOGO
 	call GetCGBLayout
 	call SetPalettes
 	call .GetGFLogoGFX

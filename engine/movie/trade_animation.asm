@@ -369,7 +369,7 @@ TradeAnim_InitTubeAnim: ; 2914e
 	ld [hl], b
 
 	call ApplyTilemapInVBlank
-	ld b, CGB_TRADE_TUBE
+	ld a, CGB_TRADE_TUBE
 	call GetCGBLayout
 	ld a, %11100100 ; 3,2,1,0
 	call DmgToCgbBGPals
@@ -628,7 +628,7 @@ TradeAnim_EnterLinkTube1: ; 29348
 	lb bc, 3, 12
 	call TradeAnim_CopyBoxFromDEtoHL
 	call ApplyTilemapInVBlank
-	ld b, CGB_TRADE_TUBE
+	ld a, CGB_TRADE_TUBE
 	call GetCGBLayout
 	ld a, %11100100 ; 3,2,1,0
 	call DmgToCgbBGPals
@@ -759,7 +759,7 @@ TradeAnim_ShowGivemonData: ; 2942e
 	ld [wTempMonPersonality], a
 	ld a, [wPlayerTrademonPersonality + 1]
 	ld [wTempMonPersonality + 1], a
-	ld b, CGB_PLAYER_OR_MON_FRONTPIC_PALS
+	ld a, CGB_PLAYER_OR_MON_FRONTPIC_PALS
 	call GetCGBLayout
 	ld a, %11100100 ; 3,2,1,0
 	call DmgToCgbBGPals
@@ -784,7 +784,7 @@ TradeAnim_ShowGetmonData: ; 29461
 	ld [wTempMonPersonality], a
 	ld a, [wOTTrademonPersonality + 1]
 	ld [wTempMonPersonality + 1], a
-	ld b, CGB_PLAYER_OR_MON_FRONTPIC_PALS
+	ld a, CGB_PLAYER_OR_MON_FRONTPIC_PALS
 	call GetCGBLayout
 	ld a, %11100100 ; 3,2,1,0
 	call DmgToCgbBGPals

@@ -388,7 +388,7 @@ endc
 	farcall FarPlayBattleAnimation
 	pop af
 	ld [wNumHits], a
-	ld b, CGB_BATTLE_COLORS
+	ld a, CGB_BATTLE_COLORS
 	call GetCGBLayout
 	call SetPalettes
 	pop bc

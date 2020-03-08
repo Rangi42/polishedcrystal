@@ -1,3 +1,6 @@
+DoItemEffect::
+	farjp _DoItemEffect
+
 TossItem:: ; 2f53
 	push hl
 	push de

@@ -71,7 +71,7 @@ SetInitialOptions:
 	ld de, .InitialOptionsString
 	call PlaceString
 
-;	ld b, CGB_DIPLOMA
+;	ld a, CGB_DIPLOMA
 ;	call GetCGBLayout
 ;	call SetPalettes
 

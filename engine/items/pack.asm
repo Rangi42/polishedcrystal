@@ -1583,7 +1583,7 @@ ClearPocketList: ; 10a36 (4:4a36)
 
 Pack_InitColors: ; 10a40
 	call ApplyTilemapInVBlank
-	ld b, CGB_PACKPALS
+	ld a, CGB_PACKPALS
 	call GetCGBLayout
 	jp SetPalettes
 ; 10a4f

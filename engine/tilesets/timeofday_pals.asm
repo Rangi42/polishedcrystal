@@ -65,7 +65,7 @@ _TimeOfDayPals:: ; 8c011
 
 
 ; update cgb pals
-	ld b, CGB_MAPPALS
+	ld a, CGB_MAPPALS
 	call GetCGBLayout
 
 

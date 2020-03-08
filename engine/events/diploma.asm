@@ -22,7 +22,7 @@ _Diploma:
 	call PlaceString
 	call EnableLCD
 	call ApplyTilemapInVBlank
-	ld b, CGB_DIPLOMA
+	ld a, CGB_DIPLOMA
 	call GetCGBLayout
 	call SetPalettes
 	call DelayFrame

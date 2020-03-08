@@ -362,7 +362,7 @@ StatsScreen_InitUpperHalf:
 	farcall ComputeHPBarPixels
 	ld hl, wCurHPPal
 	call SetHPPal
-	ld b, CGB_STATS_SCREEN_HP_PALS
+	ld a, CGB_STATS_SCREEN_HP_PALS
 	call GetCGBLayout
 	jp DelayFrame
 
@@ -1146,7 +1146,7 @@ EggStatsScreen:
 	ld [hBGMapMode], a
 	ld hl, wCurHPPal
 	call SetHPPal
-	ld b, CGB_STATS_SCREEN_HP_PALS
+	ld a, CGB_STATS_SCREEN_HP_PALS
 	call GetCGBLayout
 	call StatsScreen_PlaceEggDivider
 	ld de, EggString

@@ -47,7 +47,7 @@ UnownPuzzle: ; e1190
 	ld a, %10010011
 	ld [rLCDC], a
 	call ApplyTilemapInVBlank
-	ld b, CGB_UNOWN_PUZZLE
+	ld a, CGB_UNOWN_PUZZLE
 	call GetCGBLayout
 	ld a, $e4
 	call DmgToCgbBGPals

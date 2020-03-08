@@ -2273,7 +2273,6 @@ GetBoxPointer: ; e3396 (38:7396)
 ; e33d0
 
 BillsPC_ApplyPalettes: ; e33d0 (38:73d0)
-	ld b, a
 	call GetCGBLayout
 	ld a, %11100100
 	call DmgToCgbBGPals

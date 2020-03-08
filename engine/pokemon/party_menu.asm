@@ -19,7 +19,7 @@ SelectTradeOrDaycareMon: ; 5001d
 	call ClearBGPalettes
 	call InitPartyMenuLayout
 	call ApplyTilemapInVBlank
-	ld b, CGB_PARTY_MENU
+	ld a, CGB_PARTY_MENU
 	call GetCGBLayout
 	call SetPalettes
 	call DelayFrame
@@ -142,7 +142,7 @@ PlacePartyHPBar: ; 500cf
 	ld b, $0
 	add hl, bc
 	call SetHPPal
-	ld b, CGB_PARTY_MENU_HP_PALS
+	ld a, CGB_PARTY_MENU_HP_PALS
 	call GetCGBLayout
 .skip
 	ld hl, wHPPalIndex
@@ -493,7 +493,7 @@ PlacePartyMonGender: ; 502b1
 	dec c
 	jr nz, .loop
 
-	ld b, CGB_PARTY_MENU
+	ld a, CGB_PARTY_MENU
 	jp GetCGBLayout
 ; 502ee
 

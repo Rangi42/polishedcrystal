@@ -2338,7 +2338,6 @@ endc
 	jp DmgToCgbObjPal0
 
 Pokedex_GetCGBLayout: ; 41423
-	ld b, a
 	call GetCGBLayout
 	ld a, $e4
 	call DmgToCgbBGPals
@@ -2548,7 +2547,7 @@ NewPokedexEntry: ; fb877
 	ld de, wTempMonDVs
 	ld bc, 5
 	rst CopyBytes
-	ld b, CGB_TRAINER_OR_MON_FRONTPIC_PALS
+	ld a, CGB_TRAINER_OR_MON_FRONTPIC_PALS
 	call GetCGBLayout
 	jp SetPalettes
 ; fb8f1

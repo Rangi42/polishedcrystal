@@ -24,7 +24,7 @@ AnimateTrademonFrontpic:
 	ld [wTempMonPersonality], a
 	ld a, [wOTTrademonPersonality + 1]
 	ld [wTempMonPersonality + 1], a
-	ld b, CGB_PLAYER_OR_MON_FRONTPIC_PALS
+	ld a, CGB_PLAYER_OR_MON_FRONTPIC_PALS
 	call GetCGBLayout
 	ld a, %11100100 ; 3,2,1,0
 	call DmgToCgbBGPals

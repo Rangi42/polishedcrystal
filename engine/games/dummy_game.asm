@@ -8,7 +8,7 @@ _DummyGame: ; e1e5b (38:5e5b)
 
 .LoadGFXAndPals:
 	call DisableLCD
-	ld b, CGB_DIPLOMA
+	ld a, CGB_DIPLOMA
 	call GetCGBLayout
 	farcall ClearSpriteAnims
 	ld hl, DummyGameGFX

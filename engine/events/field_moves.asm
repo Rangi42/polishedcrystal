@@ -4,7 +4,7 @@ BlindingFlash:: ; 8c7e1
 	set 2, [hl] ; Flash
 	farcall ReplaceTimeOfDayPals
 	farcall UpdateTimeOfDayPal
-	ld b, CGB_MAPPALS
+	ld a, CGB_MAPPALS
 	call GetCGBLayout
 	farcall LoadBlindingFlashPalette
 	farjp FadeInPalettes

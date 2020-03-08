@@ -66,8 +66,8 @@ GetFarWRAMByte::
 SECTION "rst30 Predef", ROM0[$0030]
 	jp _Predef
 
-DoItemEffect::
-	farjp _DoItemEffect
+DisappearUser::
+	farjp _DisappearUser
 
 	ds 1 ; free space
 
@@ -100,20 +100,20 @@ ItemIsMail::
 SECTION "lcd", ROM0[$0048]
 	jp LCD
 
-DisappearUser::
-	farjp _DisappearUser
-
-	ds 1 ; free space
+GetMemCGBLayout::
+	xor a ; CGB_RAM
+GetCGBLayout::
+	farjp LoadCGBLayout
 
 
 SECTION "timer", ROM0[$0050]
-	scf
 	reti
 
-GetMemCGBLayout::
-	ld b, CGB_RAM
-GetCGBLayout::
-	farjp LoadCGBLayout
+ExitMenu::
+	push af
+	farcall _ExitMenu
+	pop af
+	ret
 
 
 SECTION "serial", ROM0[$0058]

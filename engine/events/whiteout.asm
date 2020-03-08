@@ -63,13 +63,13 @@ OverworldWhiteoutFade
 	farcall FadeOutPalettes
 	call ClearTileMap
 	call ClearSprites
-	ld b, CGB_DIPLOMA
+	ld a, CGB_DIPLOMA
 	call GetCGBLayout
 	jp SetPalettes
 
 
 BattleBGMap: ; 1250a
-	ld b, CGB_BATTLE_GRAYSCALE
+	ld a, CGB_BATTLE_GRAYSCALE
 	call GetCGBLayout
 	jp SetPalettes
 ; 12513

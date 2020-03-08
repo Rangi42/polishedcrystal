@@ -322,7 +322,7 @@ LoadGraphics:
 	farjp ReloadVisibleSprites
 
 LoadMapPalettes: ; 1047eb
-	ld b, CGB_MAPPALS
+	ld a, CGB_MAPPALS
 	jp GetCGBLayout
 ; 1047f0
 

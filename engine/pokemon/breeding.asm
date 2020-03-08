@@ -778,7 +778,8 @@ EggHatch_AnimationSequence: ; 1728f (5:728f)
 
 Hatch_LoadFrontpicPal: ; 17363 (5:7363)
 	ld [wPlayerHPPal], a
-	lb bc, CGB_EVOLUTION, $0
+	ld c, FALSE
+	ld a, CGB_EVOLUTION
 	jp GetCGBLayout
 
 EggHatch_CrackShell: ; 1736d (5:736d)

@@ -636,7 +636,7 @@ ProfElmSpeech: ; 0x5f99
 	ld [wTrainerClass], a
 	call Intro_PrepTrainerPic
 
-	ld b, CGB_INTRO_PALS
+	ld a, CGB_INTRO_PALS
 	call GetCGBLayout
 	call InitIntroGradient
 	call Intro_RotatePalettesLeftFrontpic
@@ -661,7 +661,7 @@ if !DEF(DEBUG)
 	ld [wTempMonDVs + 1], a
 	ld [wTempMonDVs + 2], a
 
-	ld b, CGB_INTRO_PALS
+	ld a, CGB_INTRO_PALS
 	call GetCGBLayout
 	call InitIntroGradient
 	call Intro_RotatePalettesLeftFrontpic
@@ -680,7 +680,7 @@ if !DEF(DEBUG)
 	ld [wTrainerClass], a
 	call Intro_PrepTrainerPic
 
-	ld b, CGB_INTRO_PALS
+	ld a, CGB_INTRO_PALS
 	call GetCGBLayout
 	call InitIntroGradient
 	call Intro_RotatePalettesLeftFrontpic
@@ -704,7 +704,7 @@ endc
 	call ApplyTilemapInVBlank
 	call DrawIntroPlayerPic
 
-	ld b, CGB_INTRO_PALS
+	ld a, CGB_INTRO_PALS
 	call GetCGBLayout
 	call InitIntroGradient
 	call Intro_RotatePalettesLeftFrontpic
@@ -758,7 +758,7 @@ InitGender: ; 48dcb (12:4dcb)
 	call ApplyAttrAndTilemapInVBlank
 	call SetPalettes
 
-	ld b, CGB_INTRO_PALS
+	ld a, CGB_INTRO_PALS
 	call GetCGBLayout
 	call InitIntroGradient
 	call SetPalettes
@@ -778,7 +778,7 @@ InitGender: ; 48dcb (12:4dcb)
 	call ClearTileMap
 	call DrawIntroPlayerPic
 
-	ld b, CGB_INTRO_PALS
+	ld a, CGB_INTRO_PALS
 	call GetCGBLayout
 	call InitIntroGradient
 	call Intro_RotatePalettesLeftFrontpic
@@ -1033,7 +1033,7 @@ StartTitleScreen: ; 6219
 	ld [hWX], a
 	ld a, $90
 	ld [hWY], a
-	ld b, CGB_DIPLOMA
+	ld a, CGB_DIPLOMA
 	call GetCGBLayout
 	call UpdateTimePals
 	ld a, [wIntroSceneFrameCounter]

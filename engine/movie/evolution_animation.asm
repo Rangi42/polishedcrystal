@@ -45,7 +45,7 @@ EvolutionAnimation: ; 4e5e1
 	ld a, [wEvolutionOldSpecies]
 	ld [wPlayerHPPal], a
 
-	ld c, $0
+	ld c, FALSE
 	call .GetCGBLayout
 	ld a, [wEvolutionOldSpecies]
 	ld [wCurPartySpecies], a
@@ -83,7 +83,7 @@ EvolutionAnimation: ; 4e5e1
 	ld c, 80
 	call DelayFrames
 
-	ld c, $1
+	ld c, TRUE
 	call .GetCGBLayout
 	call .AnimationSequence
 	jr c, .cancel_evo
@@ -97,7 +97,7 @@ EvolutionAnimation: ; 4e5e1
 	ld a, [wEvolutionNewSpecies]
 	ld [wPlayerHPPal], a
 
-	ld c, $0
+	ld c, FALSE
 	call .GetCGBLayout
 	call .PlayEvolvedSFX
 	farcall ClearSpriteAnims
@@ -130,7 +130,7 @@ EvolutionAnimation: ; 4e5e1
 	ld a, [wEvolutionOldSpecies]
 	ld [wPlayerHPPal], a
 
-	ld c, $0
+	ld c, FALSE
 	call .GetCGBLayout
 	call .PlayEvolvedSFX
 	farcall ClearSpriteAnims
@@ -142,7 +142,7 @@ EvolutionAnimation: ; 4e5e1
 ; 4e703
 
 .GetCGBLayout: ; 4e703
-	ld b, CGB_EVOLUTION
+	ld a, CGB_EVOLUTION
 	jp GetCGBLayout
 ; 4e708
 
