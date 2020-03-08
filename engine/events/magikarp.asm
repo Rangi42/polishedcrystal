@@ -89,8 +89,7 @@ PrintMagikarpLength: ; fbbdb
 	ld a, [hl]
 	ld [hl], "."
 	inc hl
-	ld [hl], a
-	inc hl
+	ld [hli], a
 	ld [hl], "c"
 	inc hl
 	ld [hl], "m"
@@ -111,8 +110,7 @@ PrintMagikarpLength: ; fbbdb
 	ld a, 16
 	ld [hProduct], a
 .loop
-	sla l
-	rl h
+	add hl, hl
 	ld a, [hTmpe]
 	rla
 	ld [hTmpe], a

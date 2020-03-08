@@ -648,8 +648,7 @@ Error_Cant_ExitMenu: ; 2445d
 	ld hl, .Text_NoWindowsAvailableForPopping
 	call PrintText
 	call ApplyTilemapInVBlank
-.InfiniteLoop:
-	jr .InfiniteLoop
+	rst InfiniteLoop
 ; 24468
 
 .Text_NoWindowsAvailableForPopping: ; 24468

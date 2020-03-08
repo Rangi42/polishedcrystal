@@ -49,8 +49,7 @@ GetPlayerBackpic: ; 88825
 .ok
 	ld de, vTiles2 tile $31
 	lb bc, BANK(ChrisBackpic), 6 * 6 ; dimensions
-	predef DecompressPredef
-	ret
+	predef_jump DecompressPredef
 
 ChrisBackpic: ; 2ba1a
 INCBIN "gfx/player/chris_back.6x6.2bpp.lz"

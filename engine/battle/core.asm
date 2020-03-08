@@ -3199,8 +3199,7 @@ SpikesDamage_GotAbility:
 	push hl
 	call .Spikes
 	pop hl
-	call .ToxicSpikes
-	ret
+	jr .ToxicSpikes
 
 .Spikes:
 	ld a, b
@@ -7747,8 +7746,7 @@ InitEnemyWildmon: ; 3f607
 	ld [hGraphicStartTile], a
 	hlcoord 12, 0
 	lb bc, 7, 7
-	predef PlaceGraphic
-	ret
+	predef_jump PlaceGraphic
 ; 3f662
 
 ExitBattle: ; 3f69e
@@ -7802,8 +7800,7 @@ HandleNuzlockeFlags:
 	ld c, a
 	ld hl, wNuzlockeLandmarkFlags
 	ld b, SET_FLAG
-	predef FlagPredef
-	ret
+	predef_jump FlagPredef
 
 CleanUpBattleRAM: ; 3f6d0
 	call BattleEnd_HandleRoamMons
@@ -8481,8 +8478,7 @@ GetTrainerBackpic: ; 3fbff
 .Decompress:
 	ld de, vTiles2 tile $31
 	ld c, 6 * 6
-	predef DecompressPredef
-	ret
+	predef_jump DecompressPredef
 ; 3fc30
 
 CopyBackpic: ; 3fc30
@@ -8503,8 +8499,7 @@ CopyBackpic: ; 3fc30
 	ld [hGraphicStartTile], a
 	hlcoord 2, 6
 	lb bc, 6, 6
-	predef PlaceGraphic
-	ret
+	predef_jump PlaceGraphic
 ; 3fc5b
 
 .LoadTrainerBackpicAsOAM: ; 3fc5b

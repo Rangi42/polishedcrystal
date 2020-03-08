@@ -135,10 +135,9 @@ endr
 	and a
 	jr z, .RestartKenjiBreakCountdown
 	dec [hl]
-	jr nz, .DontRestartKenjiBreakCountdown
+	jr nz, RestartDailyResetTimer
 .RestartKenjiBreakCountdown:
 	call Special_SampleKenjiBreakCountdown
-.DontRestartKenjiBreakCountdown:
 	jr RestartDailyResetTimer
 ; 11485
 

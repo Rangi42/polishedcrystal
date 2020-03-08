@@ -1,11 +1,9 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 """
 Search all .asm files for N code lines in a row that match some conditions.
 """
-
-from __future__ import print_function
 
 from collections import namedtuple
 from glob import iglob
@@ -28,7 +26,7 @@ conditions = [
 ]
 
 # Check all the .asm files
-for filename in iglob('**/*.asm'):
+for filename in iglob('**/*.asm', recursive=True):
 	with open(filename, 'r') as f:
 		printed = False
 		cur_label = None

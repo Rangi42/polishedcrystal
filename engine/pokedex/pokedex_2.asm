@@ -281,8 +281,7 @@ Mul16:
 	ld a, 16
 	ld [hProduct], a
 .loop
-	sla l
-	rl h
+	add hl, hl
 	ld a, [hTmpe]
 	rla
 	ld [hTmpe], a

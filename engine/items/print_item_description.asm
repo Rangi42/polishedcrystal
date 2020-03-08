@@ -32,7 +32,6 @@ PrintTMHMDescription:
 	pop hl
 	ld a, [wd265]
 	ld [wCurSpecies], a
-	predef PrintMoveDesc
-	ret
+	predef_jump PrintMoveDesc
 
 INCLUDE "data/items/descriptions.asm"

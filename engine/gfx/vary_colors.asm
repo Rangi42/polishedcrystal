@@ -155,8 +155,7 @@ VaryBlueByDV:
 	ld a, [hl]
 	and %10000011
 	or d
-	ld [hl], a
-	dec hl
+	ld [hld], a
 	ret
 
 

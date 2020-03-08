@@ -180,8 +180,7 @@ PlacePartymonHPBar: ; 50117
 	ld d, a
 	ld a, [hli]
 	ld e, a
-	predef ComputeHPBarPixels
-	ret
+	predef_jump ComputeHPBarPixels
 ; 50138
 
 PlacePartyMenuHPDigits: ; 50138

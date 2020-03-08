@@ -716,8 +716,7 @@ StatsScreen_LoadGFX:
 	hlcoord 12, 11
 	ld a, SCREEN_WIDTH * 2
 	ld [wBuffer1], a
-	predef ListMovePP
-	ret
+	predef_jump ListMovePP
 
 .GetItemName:
 	ld de, .ThreeDashes
