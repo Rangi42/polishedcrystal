@@ -36,11 +36,11 @@
 	; unused: $24
 	charmap "<NEXT>",   $25
 
-	; unused: $26 - $2b
+	; unused: $26 - $2a
 
-	; n-grams: $2c - $3e (defined below)
+	; n-grams: $2b - $3f (defined below)
 
-	; unused: $3f - $4a
+	; unused: $40 - $4a
 
 	charmap "<_CONT>",  $4b
 	charmap "<SCRL2>",  $4c
@@ -252,6 +252,7 @@ BATTLEEXTRA_GFX_START EQU $5f
 
 	newcharmap default, no_ngrams
 
+	charmap "he",       $2b
 	charmap "le",       $2c
 	charmap "ng",       $2d
 	charmap "te",       $2e
@@ -271,6 +272,7 @@ BATTLEEXTRA_GFX_START EQU $5f
 	charmap "an",       $3c
 	charmap "ing",      $3d
 	charmap "to",       $3e
+	charmap "ent",      $3f
 
 	charmap "the",      $5c
 	charmap "you",      $5d

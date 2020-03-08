@@ -202,6 +202,7 @@ ENDM
 	dict "<USER>",   PlaceMoveUsersName
 	dict "<ENEMY>",  PlaceEnemysName
 	dict "#",        PlacePoke
+	dict "he",       PlaceHe
 	dict "le",       PlaceLe
 	dict "ng",       PlaceNg
 	dict "te",       PlaceTe
@@ -218,6 +219,7 @@ ENDM
 	dict "you",      PlaceYou
 	dict "#mon",     PlacePokemon
 	dict "to",       PlaceTo
+	dict "ent",      PlaceEnt
 	dict "have",     PlaceHave
 	dict "that",     PlaceThat
 	dict "for",      PlaceFor
@@ -240,6 +242,9 @@ ENDM
 PrintPlayerName:   print_name wPlayerName
 PrintRivalName:    print_name wRivalName
 PrintTrendyPhrase: print_name wTrendyPhrase
+
+PlaceHe: print_name .HeText
+.HeText: rawchar "he@"
 
 PlaceLe: print_name .LeText
 .LeText: rawchar "le@"
@@ -292,6 +297,9 @@ PlacePokemon: print_name .PokemonText
 
 PlaceTo: print_name .ToText
 .ToText: rawchar "to@"
+
+PlaceEnt: print_name .EntText
+.EntText: rawchar "ent@"
 
 PlaceHave: print_name .HaveText
 .HaveText: rawchar "have@"
