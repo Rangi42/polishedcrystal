@@ -1867,7 +1867,7 @@ SetTradeRoomBGPals: ; 28eff
 	jp SetPalettes
 ; 28f09
 
-INCLUDE "engine/trade_animation.asm"
+INCLUDE "engine/movie/trade_animation.asm"
 
 WaitForOtherPlayerToExit: ; 29c92
 	ld c, 3

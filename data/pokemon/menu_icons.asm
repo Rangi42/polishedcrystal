@@ -1,3 +1,5 @@
+INCLUDE "data/pokemon/menu_icon_pointers.asm"
+
 ; Unique icons by Blue Emerald, Soloo993, Chamber, Lake, Neslug, Pikachu253, and Ryta
 ; http://www.pokecommunity.com/showthread.php?t=338470
 

@@ -1284,3 +1284,12 @@ ToggleDecorationsVisibility: ; 27043
 	ld b, SET_FLAG
 	jp EventFlagAction
 ; 27085
+
+PadCoords_de:
+	ld a, d
+	add 4
+	ld d, a
+	ld a, e
+	add 4
+	ld e, a
+	jp GetBlockLocation

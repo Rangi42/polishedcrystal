@@ -1,5 +1,4 @@
-; Pointers to all the Pokedex entries.
-
+PokedexDataPointerTable:
 	dw BulbasaurPokedexEntry
 	dw IvysaurPokedexEntry
 	dw VenusaurPokedexEntry

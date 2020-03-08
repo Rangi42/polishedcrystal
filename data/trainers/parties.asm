@@ -1,3 +1,5 @@
+INCLUDE "data/trainers/party_pointers.asm"
+
 ; All trainers follow a basic structure:
 	; Name
 		; String in format "TEXT@"

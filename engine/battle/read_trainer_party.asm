@@ -401,3 +401,6 @@ GetNextTrainerDataByte:
 	call GetFarByte
 	inc hl
 	ret
+
+
+INCLUDE "data/trainers/parties.asm"

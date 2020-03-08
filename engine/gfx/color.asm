@@ -1,5 +1,3 @@
-INCLUDE "engine/vary_colors.asm"
-
 INCLUDE "engine/gfx/cgb_layouts.asm"
 
 CheckShininess:
@@ -886,6 +884,8 @@ INCLUDE "data/trainers/palettes.asm"
 
 INCLUDE "data/events/paintings/palettes.asm"
 
-INCLUDE "engine/palettes.asm"
+INCLUDE "engine/gfx/palettes.asm"
 
-INCLUDE "engine/sgb_border.asm"
+INCLUDE "engine/gfx/sgb_border.asm"
+
+INCLUDE "engine/gfx/vary_colors.asm"
