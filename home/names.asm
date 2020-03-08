@@ -184,22 +184,12 @@ GetTMHMName::
 	homecall _GetTMHMName
 	ret
 
-IsHMMove:: ; 34e7
-	ld hl, .HMMoves
+IsHMMove::
+	ld hl, HMMoves
 	ld de, 1
 	jp IsInArray
 
-.HMMoves:
-	db CUT
-	db FLY
-	db SURF
-	db STRENGTH
-	db WATERFALL
-	db WHIRLPOOL
-	db -1
-; 34f8
-
-GetMoveName:: ; 34f8
+GetMoveName::
 	push hl
 
 	ld a, MOVE_NAME
@@ -213,4 +203,3 @@ GetMoveName:: ; 34f8
 
 	pop hl
 	ret
-; 350c

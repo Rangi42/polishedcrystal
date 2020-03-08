@@ -1,4 +1,4 @@
-InitName:: ; 2ef9
+InitName::
 ; Intended for names, so this function is limited to ten characters.
 	ld c, 10
 InitString:: ; 2ef6
@@ -29,4 +29,22 @@ _InitString:: ; 2efc
 	pop bc
 	pop hl
 	ret
-; 2f17
+
+FarCopyRadioText::
+	inc hl
+	ld a, [hROMBank]
+	push af
+	ld a, [hli]
+	ld e, a
+	ld a, [hli]
+	ld d, a
+	ld a, [hli]
+	rst Bankswitch
+	ld l, e
+	ld h, d
+	ld de, wRadioText
+	ld bc, 2 * SCREEN_WIDTH
+	rst CopyBytes
+	pop af
+	rst Bankswitch
+	ret

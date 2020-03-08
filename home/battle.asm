@@ -542,68 +542,6 @@ GetOpponentAbilityAfterMoldBreaker:: ; 39e1
 ; will suppress it. Preserves bc/de/hl.
 	farjp _GetOpponentAbilityAfterMoldBreaker
 
-LegendaryMons::
-	db ARTICUNO
-	db ZAPDOS
-	db MOLTRES
-	db RAIKOU
-	db ENTEI
-	db SUICUNE
-UberMons::
-; banned from Battle Tower
-	db MEWTWO
-	db MEW
-	db LUGIA
-	db HO_OH
-	db CELEBI
-	db -1
-
-PowderMoves::
-	db POISONPOWDER
-	db SLEEP_POWDER
-	db SPORE
-	db STUN_SPORE
-	db -1
-
-SoundMoves::
-	db BUG_BUZZ
-	db DISARM_VOICE
-	db GROWL
-	db HYPER_VOICE
-	db PERISH_SONG
-	db ROAR
-	db SCREECH
-	db SING
-	db SUPERSONIC
-	db -1
-
-SubstituteBypassMoves::
-; used by Magic Bounce so it can check Substitute unconditionally as long as it isn't here
-; (Sound moves aren't included)
-	db ATTRACT
-	db DISABLE
-	db ENCORE
-	db FORESIGHT
-	db SPIKES
-	db TOXIC_SPIKES
-	db -1
-
-DynamicPowerMoves::
-; used by Forewarn and for move power listing
-	db COUNTER
-	db DRAGON_RAGE
-	db GYRO_BALL
-	db LOW_KICK
-	db MAGNITUDE
-	db MIRROR_COAT
-	db NIGHT_SHADE
-	db RETURN
-	db REVERSAL
-	db SEISMIC_TOSS
-	db SONIC_BOOM
-	db SUPER_FANG
-	db -1
-
 ; These routines return z if the user is of the given type
 CheckIfTargetIsGrassType::
 	ld a, GRASS
@@ -1014,31 +952,6 @@ GetBattleVarAddr:: ; 39e7
 	dw wLastPlayerCounterMove,        wLastEnemyCounterMove
 	dw wLastPlayerMove,               wLastEnemyMove
 ; 3a90
-
-
-FarCopyRadioText:: ; 3a90
-	inc hl
-	ld a, [hROMBank]
-	push af
-	ld a, [hli]
-	ld e, a
-	ld a, [hli]
-	ld d, a
-	ld a, [hli]
-	ld [hROMBank], a
-	ld [MBC3RomBank], a
-	ld a, e
-	ld l, a
-	ld a, d
-	ld h, a
-	ld de, wRadioText
-	ld bc, 2 * SCREEN_WIDTH
-	rst CopyBytes
-	pop af
-	ld [hROMBank], a
-	ld [MBC3RomBank], a
-	ret
-; 3ab2
 
 
 BattleTextBox:: ; 3ac3
