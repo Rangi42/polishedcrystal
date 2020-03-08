@@ -1,4 +1,4 @@
-HMMoves:
+HMMoves::
 	db CUT
 	db FLY
 	db SURF

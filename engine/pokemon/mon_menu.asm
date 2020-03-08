@@ -917,7 +917,9 @@ MoveScreenLoop:
 	jr nz, .ok
 	ld a, [hl]
 	push bc
-	call IsHMMove
+	ld hl, HMMoves
+	ld de, 1
+	call IsInArray
 	pop bc
 	ld a, c
 	jr nc, .ok

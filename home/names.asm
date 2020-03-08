@@ -184,11 +184,6 @@ GetTMHMName::
 	homecall _GetTMHMName
 	ret
 
-IsHMMove::
-	ld hl, HMMoves
-	ld de, 1
-	jp IsInArray
-
 GetMoveName::
 	push hl
 
