@@ -63,14 +63,14 @@ VBlank::
 	jr .doGameTime
 
 .VBlanks:
-	dw VBlank0
-	dw VBlank1
-	dw VBlank2
-	dw VBlank3
-	dw VBlank4
-	dw VBlank5
-	dw VBlank6
-	dw VBlank7
+	dw VBlank0   ; 0
+	dw VBlank1   ; 1
+	dw VBlank2   ; 2
+	dw VBlank1   ; 3
+	dw DoNothing ; 4
+	dw VBlank5   ; 5
+	dw VBlank6   ; 6
+	dw VBlank7   ; 7
 
 
 VBlank0::
@@ -114,7 +114,6 @@ VBlank0::
 	call AnimateTileset
 
 .done
-
 	call PushOAM
 	; vblank-sensitive operations are done
 
@@ -160,20 +159,7 @@ VBlank6::
 	call Serve2bppRequest
 	call Serve1bppRequest
 	call DMATransfer
-	jr VBlankUpdateSound
 
-VBlank4::
-; bg map
-; tiles
-; oam
-; joypad
-; serial
-; sound
-	call UpdateBGMap
-	call Serve2bppRequest
-	call PushOAM
-	call Joypad
-	call AskSerial
 	jr VBlankUpdateSound
 
 VBlank1::
@@ -189,34 +175,13 @@ VBlank1::
 	ld [rSCY], a
 
 	call UpdateCGBPals
-	jr c, VBlank1EntryPoint
+	jr c, .done
 
 	call UpdateBGMap
 	call Serve2bppRequest
 	call LYOverrideStackCopy
 
-	jr VBlank1EntryPoint
-
-VBlank3::
-; scx, scy
-; palettes
-; bg map
-; tiles
-; oam
-; sound / lcd stat
-	ld a, [hSCX]
-	ld [rSCX], a
-	ld a, [hSCY]
-	ld [rSCY], a
-
-	call UpdateCGBPals
-	jr c, VBlank1EntryPoint
-
-	call UpdateBGMap
-	call Serve2bppRequest
-	call LYOverrideStackCopy
-
-VBlank1EntryPoint:
+.done
 	call PushOAM
 
 	; get requested ints
@@ -224,6 +189,7 @@ VBlank1EntryPoint:
 	push af
 	ld a, [rIF]
 	push af
+
 	xor a
 	ld [rIF], a
 	ld a, 1 << LCD_STAT
@@ -237,27 +203,22 @@ VBlank1EntryPoint:
 	; get requested ints
 	ld a, [rIF]
 	ld b, a
+
 	; discard requested ints
 	pop af
 	or b
 	ld b, a
 	xor a
 	ld [rIF], a
+
 	; enable ints besides joypad
 	pop af
 	ld [rIE], a
+
 	; rerequest ints
 	ld a, b
 	ld [rIF], a
 	ret
-
-VBlank7::
-; special vblank routine
-; copies tilemap in one frame without any tearing
-; also updates oam, and pals if specified
-	ld a, BANK(VBlankSafeCopyTilemapAtOnce)
-	rst Bankswitch
-	jp VBlankSafeCopyTilemapAtOnce
 
 VBlank5::
 ; scx
@@ -274,6 +235,7 @@ VBlank5::
 
 	call UpdateBGMap
 	call Serve2bppRequest
+
 .done
 	call Joypad
 
@@ -281,9 +243,8 @@ VBlank5::
 	ld [rIF], a
 	ld a, [rIE]
 	push af
-	ld a, 1 << LCD_STAT ; lcd stat
+	ld a, 1 << LCD_STAT
 	ld [rIE], a
-	; request lcd stat
 	ld [rIF], a
 
 	ei
@@ -292,7 +253,16 @@ VBlank5::
 
 	xor a
 	ld [rIF], a
+
 	; enable ints besides joypad
 	pop af
 	ld [rIE], a
 	ret
+
+VBlank7::
+; special vblank routine
+; copies tilemap in one frame without any tearing
+; also updates oam, and pals if specified
+	ld a, BANK(VBlankSafeCopyTilemapAtOnce)
+	rst Bankswitch
+	jp VBlankSafeCopyTilemapAtOnce

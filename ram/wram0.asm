@@ -139,9 +139,7 @@ wGameLogicPaused:: ds 1
 wSpriteUpdatesEnabled:: ds 1
 	ds 1
 wMapTimeOfDay:: ds 1
-	ds 3
-wPrinterConnectionOpen:: ds 1
-wPrinterOpcode:: ds 1
+	ds 5
 wLastDexEntry:: ds 1
 
 wPreviousLandmark:: ds 1
@@ -843,7 +841,7 @@ NEXTU
 wc90f:: ds 229
 wc9f4:: ds 5
 wc9f9:: ds 145
-wHandshakeFrameDelay:: ds 53
+	ds 53
 wcabf:: ds 79
 wcb0e:: ds 5
 wcb13:: ds 113
