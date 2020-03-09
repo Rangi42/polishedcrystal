@@ -235,16 +235,15 @@ HBlankCopy1bpp:
 	ld a, [hli]
 	ld e, a
 	ld a, [hli]
-	ld d, a
+	ld d, a ; destination
 
-	ld a, [hli]
+	ld a, [hli] ; source
 	ld h, [hl]
 	ld l, a
-	ld sp, hl
-	ld h, d
+	ld sp, hl ; set source to sp
+	ld h, d ; exchange hl and de
 	ld l, e
 	jr .innerLoop
-
 .outerLoop
 	ldh a, [rLY]
 	cp $88
@@ -254,15 +253,16 @@ HBlankCopy1bpp:
 	pop de
 	ldh a, [hRequestOpaque1bpp]
 	dec a
-	jr z, .waithblank2opaque
-.waithblank2
+	jr z, .waitNoHBlankOpaque
+.waitNoHBlank
 	ldh a, [rSTAT]
 	and 3
-	jr z, .waithblank2
-.waithblank
+	jr z, .waitNoHBlank
+.waitHBlank
 	ldh a, [rSTAT]
 	and 3
-	jr nz, .waithblank
+	jr nz, .waitHBlank
+; preloads r us
 	ld a, c
 	ld [hli], a
 	ld [hli], a
@@ -275,7 +275,7 @@ HBlankCopy1bpp:
 	ld a, d
 	ld [hli], a
 	ld [hli], a
-	rept 2
+rept 2
 	pop de
 	ld a, e
 	ld [hli], a
@@ -283,20 +283,22 @@ HBlankCopy1bpp:
 	ld a, d
 	ld [hli], a
 	ld [hli], a
-	endr
+endr
 	ldh a, [hTilesPerCycle]
 	dec a
 	ldh [hTilesPerCycle], a
 	jr nz, .outerLoop
 	jr DoneHBlankCopy
-.waithblank2opaque
+
+.waitNoHBlankOpaque
 	ldh a, [rSTAT]
 	and 3
-	jr z, .waithblank2opaque
-.waithblankopaque
+	jr z, .waitNoHBlankOpaque
+.waitHBlankOpaque
 	ldh a, [rSTAT]
 	and 3
-	jr nz, .waithblankopaque
+	jr nz, .waitHBlankOpaque
+; preloads r us
 	ld a, c
 	ld [hl], $ff
 	inc hl
@@ -313,7 +315,7 @@ HBlankCopy1bpp:
 	ld [hl], $ff
 	inc hl
 	ld [hli], a
-	rept 2
+rept 2
 	pop de
 	ld a, e
 	ld [hl], $ff
@@ -323,7 +325,7 @@ HBlankCopy1bpp:
 	ld [hl], $ff
 	inc hl
 	ld [hli], a
-	endr
+endr
 	ldh a, [hTilesPerCycle]
 	dec a
 	ldh [hTilesPerCycle], a

@@ -133,7 +133,28 @@ SECTION "joypad", ROM0[$0060]
 
 SECTION "High Home", ROM0[$0061]
 
-INCLUDE "home/high_home.asm"
+_Jumptable:
+	push de
+	ld e, a
+	ld d, 0
+	add hl, de
+	add hl, de
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	pop de
+_hl_::
+	jp hl
+
+IsAPokemon::
+; For functions using EGG as sentinel, use "and a" instead (EGG is $ff)
+; Returns carry if species a is not a Pokemon (including $ff)
+	inc a
+	cp $2 ; sets carry for $0 (inc'ed to $1) and $ff (inc'ed to $0)
+	dec a
+	ret
+
+INCLUDE "home/gfx2.asm"
 INCLUDE "home/delay.asm"
 
 

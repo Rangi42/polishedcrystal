@@ -1,24 +1,3 @@
-_Jumptable:
-	push de
-	ld e, a
-	ld d, 0
-	add hl, de
-	add hl, de
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	pop de
-_hl_::
-	jp hl
-
-IsAPokemon::
-; For functions using EGG as sentinel, use "and a" instead (EGG is $ff)
-; Returns carry if species a is not a Pokemon (including $ff)
-	inc a
-	cp $2 ; sets carry for $0 (inc'ed to $1) and $ff (inc'ed to $0)
-	dec a
-	ret
-
 HBlankCopy2bpp::
 	di
 	ld [hSPBuffer], sp
@@ -57,25 +36,25 @@ HBlankCopy2bpp::
 	and 3
 	jr nz, .waitHBlank
 ; preloads r us
-	ld a, c ; 1
-	ld [hli], a ; 3
-	ld a, b ; 4
-	ld [hli], a ; 6
-	ld a, e ; 7
-	ld [hli], a ; 9
-	ld a, d ; 10
-	ld [hli], a ; 12
+	ld a, c
+	ld [hli], a
+	ld a, b
+	ld [hli], a
+	ld a, e
+	ld [hli], a
+	ld a, d
+	ld [hli], a
 rept 5
 	pop de
 	ld a, e
 	ld [hli], a
 	ld a, d
 	ld [hli], a
-endr ; 47 (12 + 7 * 5)
-	pop de ; 50
-	ld a, e ; 51
-	ld [hli], a ; 53
-	ld [hl], d ; 55
+endr
+	pop de
+	ld a, e
+	ld [hli], a
+	ld [hl], d
 	inc hl
 	ldh a, [hTilesPerCycle]
 	dec a
