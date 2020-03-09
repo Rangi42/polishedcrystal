@@ -1,5 +1,0 @@
-VRAM $0
-	"VRAM0"
-
-VRAM $1
-	"VRAM1"
