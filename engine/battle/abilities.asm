@@ -1571,9 +1571,13 @@ GutsAbility:
 
 PixilateAbility:
 	ld a, BATTLE_VARS_MOVE_TYPE
-	call GetBattleVar
+	call GetBattleVarAddr
+	ld a, [hl]
 	and a ; cp NORMAL
 	ret nz
+
+	; change move to fairy type
+	ld [hl], FAIRY
 	ln a, 6, 5 ; x1.2
 	jp MultiplyAndDivide
 

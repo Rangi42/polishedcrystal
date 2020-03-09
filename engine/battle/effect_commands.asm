@@ -1419,14 +1419,6 @@ _CheckTypeMatchup:
 	ld a, BATTLE_VARS_MOVE_TYPE
 	call GetBattleVar
 	ld d, a
-	call GetTrueUserAbility
-	cp PIXILATE
-	jr nz, .no_pixilate
-	ld a, NORMAL
-	cp d
-	jr nz, .no_pixilate
-	ld d, FAIRY
-.no_pixilate
 	ld b, [hl]
 	inc hl
 	ld c, [hl]
@@ -3940,6 +3932,7 @@ BattleCommand_damagecalc:
 	pop de
 
 	; Ability boosts. Some are done elsewhere depending on needs.
+	; May have side effects (Pixilates changes move type here).
 	farcall ApplyDamageAbilities
 
 	; If we're burned (and don't have Guts), halve damage
