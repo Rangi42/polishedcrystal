@@ -26,8 +26,7 @@ SetInitialOptions:
 	ld hl, .BGPalette
 	ld de, wUnknBGPals
 	ld bc, 1 palettes
-	ld a, $5
-	call FarCopyWRAM
+	call FarCopyColorWRAM
 
 	ld de, .BGTiles
 	ld hl, vTiles2 tile $00

@@ -490,8 +490,7 @@ ParsePlayerAction:
 	ld hl, wUnknBGPals palette PAL_BATTLE_BG_PLAYER
 	ld de, wUnknBGPals palette PAL_BATTLE_BG_TYPE_CAT
 	ld bc, 1 palettes
-	ld a, $5
-	call FarCopyWRAM
+	call FarCopyColorWRAM
 	call SetPalettes
 	ld a, [wCurPlayerMove]
 	cp STRUGGLE

@@ -716,8 +716,7 @@ InitGender:
 	ld hl, WhitePal
 	ld de, wUnknBGPals palette 0
 	ld bc, 1 palettes
-	ld a, 5
-	call FarCopyWRAM
+	call FarCopyColorWRAM
 	ld c, 15
 	call FadePalettes
 

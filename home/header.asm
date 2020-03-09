@@ -25,16 +25,18 @@ SECTION "rst10 Bankswitch", ROM0[$0010]
 	ld [MBC3RomBank], a
 	ret
 
-	ds 2 ; free space
+_de_::
+	push de
+DoNothing::
+	ret
 
 
 SECTION "rst18 AddNTimes", ROM0[$0018]
 	jp _AddNTimes
 
-_de_::
-	push de
-DoNothing::
-	ret
+FarCopyColorWRAM::
+	ld a, BANK("GBC Video")
+	; fallthrough
 
 FarCopyWRAM::
 	call StackCallInWRAMBankA

@@ -10,18 +10,16 @@
 	const PAL_SPECIAL
 
 LoadBlindingFlashPalette::
-	ld a, $5
 	ld de, wUnknBGPals palette PAL_BG_TEXT
 	ld hl, BlindingFlashPalette
 	ld bc, 1 palettes
-	jp FarCopyWRAM
+	jp FarCopyColorWRAM
 
 LoadLinkTradePalette:
-	ld a, $5
 	ld de, wUnknBGPals palette 2
 	ld hl, LinkTradePalette
 	ld bc, 6 palettes
-	jp FarCopyWRAM
+	jp FarCopyColorWRAM
 
 LoadSpecialMapPalette:
 ; Don't load a special palette if it's dark and we haven't used Flash.
@@ -75,10 +73,9 @@ LoadEightTimeOfDayBGPalettes:
 	ld bc, 8 palettes
 	rst AddNTimes
 LoadEightBGPalettes:
-	ld a, $5
 	ld de, wUnknBGPals
 	ld bc, 8 palettes
-	call FarCopyWRAM
+	call FarCopyColorWRAM
 	scf
 	ret
 
@@ -116,10 +113,9 @@ MartSpecialCase:
 	cp HIGH(GenericMart_BlockData)
 	jr nz, .not_generic_mart
 	ld hl, MartBluePalette
-	ld a, $5
 	ld de, wUnknBGPals palette PAL_BG_GREEN
 	ld bc, 1 palettes
-	call FarCopyWRAM
+	call FarCopyColorWRAM
 .not_generic_mart
 	scf
 	ret
@@ -171,8 +167,7 @@ LoadSpecialMapOBPalette:
 	ld l, c
 	ld c, a
 	ld b, 0
-	ld a, $5
-	jp FarCopyWRAM
+	jp FarCopyColorWRAM
 
 .next
 rept 6
