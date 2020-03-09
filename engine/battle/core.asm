@@ -3021,6 +3021,8 @@ HandleFirstAirBalloon:
 	ret
 
 PostBattleTasks::
+; Tasks that run unconditionally after battle.
+; Some things (like Pickup) are seperate since black-out bypasses it.
 	push bc
 	push de
 	call RestoreBattleItems
@@ -5722,12 +5724,19 @@ endc
 	; Update from the struct if it has
 	ld a, [hl]
 	ld [wOTPartyMon1HP + 1], a
+	call GetRoamMonStatus
+	ld a, [hl]
+	ld hl, wOTPartyMon1Status
+	ld [hli], a
 	jr .Moves
 
 .InitRoamHP:
 	; HP only uses the lo byte in the RoamMon struct since
 	; Raikou/Entei/Suicune will have < 256 hp at level 40
 	ld a, [wOTPartyMon1HP + 1]
+	ld [hl], a
+	call GetRoamMonStatus
+	xor a
 	ld [hl], a
 
 .Moves:
@@ -7930,6 +7939,12 @@ BattleEnd_HandleRoamMons:
 	call GetRoamMonHP
 	ld a, [wEnemyMonHP + 1]
 	ld [hl], a
+
+	; copy status, but preserve bad poison as regular poison
+	call GetRoamMonStatus
+	ld a, [wEnemyMonStatus]
+	res TOX, a
+	ld [hl], a
 	jr .update_roam_mons
 
 .caught_or_defeated_roam_mon
@@ -7952,72 +7967,47 @@ BattleEnd_HandleRoamMons:
 	farjp UpdateRoamMons
 
 GetRoamMonMapGroup:
-	ld a, [wTempEnemyMonSpecies]
-	ld b, a
-	ld a, [wRoamMon1Species]
-	cp b
-	ld hl, wRoamMon1MapGroup
-	ret z
-	ld a, [wRoamMon2Species]
-	cp b
-	ld hl, wRoamMon2MapGroup
-	ret z
-	ld hl, wRoamMon3MapGroup
-	ret
+; output: hl = wRoamMon*MapGroup, similar for the ones below
+	ld a, wRoamMon1MapGroup - wRoamMon1
+	jr DoGetRoamMonData
 
 GetRoamMonMapNumber:
-	ld a, [wTempEnemyMonSpecies]
-	ld b, a
-	ld a, [wRoamMon1Species]
-	cp b
-	ld hl, wRoamMon1MapNumber
-	ret z
-	ld a, [wRoamMon2Species]
-	cp b
-	ld hl, wRoamMon2MapNumber
-	ret z
-	ld hl, wRoamMon3MapNumber
-	ret
+	ld a, wRoamMon1MapNumber - wRoamMon1
+	jr DoGetRoamMonData
 
 GetRoamMonHP:
 ; output: hl = wRoamMonHP
-	ld a, [wTempEnemyMonSpecies]
-	ld b, a
-	ld a, [wRoamMon1Species]
-	cp b
-	ld hl, wRoamMon1HP
-	ret z
-	ld a, [wRoamMon2Species]
-	cp b
-	ld hl, wRoamMon2HP
-	ret z
-	ld hl, wRoamMon3HP
-	ret
+	ld a, wRoamMon1HP - wRoamMon1
+	jr DoGetRoamMonData
 
 GetRoamMonDVsAndPersonality:
 ; output: hl = wRoamMonDVs
-	ld a, [wTempEnemyMonSpecies]
-	ld b, a
-	ld a, [wRoamMon1Species]
-	cp b
-	ld hl, wRoamMon1DVs
-	ret z
-	ld a, [wRoamMon2Species]
-	cp b
-	ld hl, wRoamMon2DVs
-	ret z
-	ld hl, wRoamMon3DVs
-	ret
+	ld a, wRoamMon1DVs - wRoamMon1
+	jr DoGetRoamMonData
+
+GetRoamMonStatus:
+	ld a, wRoamMon1Status - wRoamMon1
+	jr DoGetRoamMonData
 
 GetRoamMonSpecies:
+	xor a ; ld a, wRoamMon1Species - wRoamMon1
+	; fallthrough
+DoGetRoamMonData:
+	push de
+	ld d, 0
+	ld e, a
 	ld a, [wTempEnemyMonSpecies]
 	ld hl, wRoamMon1Species
 	cp [hl]
-	ret z
+	jr z, .get_data
 	ld hl, wRoamMon2Species
 	cp [hl]
+	jr z, .get_data
 	ret z
 	ld hl, wRoamMon3Species
+.get_data
+	add hl, de
+	pop de
 	ret
 
 AddLastBattleToLinkRecord:

@@ -1235,7 +1235,7 @@ wPartyMonOT:: ds NAME_LENGTH * PARTY_LENGTH
 wPartyMonNicknames:: ds PKMN_NAME_LENGTH * PARTY_LENGTH
 wPartyMonNicknamesEnd::
 
-	ds 12 ; unused
+	ds 9 ; unused
 
 wPokedexCaught:: flag_array NUM_POKEMON
 wEndPokedexCaught::
@@ -1299,8 +1299,8 @@ wBestMagikarpLengthMmHi:: ds 1
 wBestMagikarpLengthMmLo:: ds 1
 wMagikarpRecordHoldersName:: ds NAME_LENGTH
 
-wRegisteredItemFlags:: 
-	; 0 - wRegisteredItems key item flag 
+wRegisteredItemFlags::
+	; 0 - wRegisteredItems key item flag
 	; 1 - wRegisteredItems + 1 key item flag
 	; 2 - wRegisteredItems + 2 key item flag
 	; 3 - wRegisteredItems + 3 key item flag

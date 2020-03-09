@@ -194,6 +194,7 @@ roam_struct: MACRO
 \1HP::          ds 1
 \1DVs::         ds 3
 \1Personality:: ds 2
+\1Status::      ds 1
 \1End::
 ENDM
 
