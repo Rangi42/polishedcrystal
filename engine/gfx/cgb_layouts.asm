@@ -130,20 +130,17 @@ _CGB_BattleColors:
 	ld hl, wUnknBGPals palette PAL_BATTLE_BG_PLAYER
 	ld de, wUnknBGPals palette PAL_BATTLE_BG_TYPE_CAT
 	ld bc, 1 palettes
-	ld a, $5
-	call FarCopyWRAM
+	call FarCopyColorWRAM
 
 	ld hl, wUnknBGPals palette PAL_BATTLE_BG_ENEMY
 	ld de, wUnknOBPals palette PAL_BATTLE_OB_ENEMY
 	ld bc, 1 palettes
-	ld a, $5
-	call FarCopyWRAM
+	call FarCopyColorWRAM
 
 	ld hl, wUnknBGPals palette PAL_BATTLE_BG_PLAYER
 	ld de, wUnknOBPals palette PAL_BATTLE_OB_PLAYER
 	ld bc, 1 palettes
-	ld a, $5
-	call FarCopyWRAM
+	call FarCopyColorWRAM
 
 	ld a, CGB_BATTLE_COLORS
 	ld [wMemCGBLayout], a
@@ -211,8 +208,7 @@ _CGB_FinishBattleScreenLayout:
 	ld hl, BattleObjectPals
 	ld de, wUnknOBPals palette PAL_BATTLE_OB_GRAY
 	ld bc, 6 palettes
-	ld a, $5
-	call FarCopyWRAM
+	call FarCopyColorWRAM
 
 	jp ApplyAttrMap
 
@@ -220,8 +216,7 @@ _CGB_PokegearPals:
 	ld hl, PokegearPals
 	ld de, wUnknBGPals
 	ld bc, 8 palettes
-	ld a, $5
-	call FarCopyWRAM
+	call FarCopyColorWRAM
 
 	ld a, [wPlayerGender]
 	bit 0, a
@@ -229,8 +224,7 @@ _CGB_PokegearPals:
 	ld hl, FemalePokegearInterfacePalette
 	ld de, wUnknBGPals palette 0
 	ld bc, 1 palettes
-	ld a, $5
-	call FarCopyWRAM
+	call FarCopyColorWRAM
 .male
 
 	call ApplyPals
@@ -242,14 +236,12 @@ _CGB_PokedexAreaPals:
 	ld hl, PokegearPals
 	ld de, wUnknBGPals
 	ld bc, 8 palettes
-	ld a, $5
-	call FarCopyWRAM
+	call FarCopyColorWRAM
 
 	ld hl, .InvertedGrayPalette
 	ld de, wUnknBGPals palette 0
 	ld bc, 1 palettes
-	ld a, $5
-	call FarCopyWRAM
+	call FarCopyColorWRAM
 
 	call ApplyPals
 	ld a, $1
@@ -293,8 +285,7 @@ _CGB_StatsScreenHPPals:
 
 	ld hl, StatsScreenPals
 	ld bc, 4 palettes
-	ld a, $5
-	call FarCopyWRAM
+	call FarCopyColorWRAM
 
 	ld hl, CaughtBallPals
 	ld bc, $4
@@ -370,14 +361,12 @@ _CGB_Pokedex:
 	ld hl, PokegearOBPals
 	ld de, wUnknOBPals
 	ld bc, 2 palettes
-	ld a, $5
-	call FarCopyWRAM
+	call FarCopyColorWRAM
 
 	ld hl, .CursorPalette
 	ld de, wUnknOBPals palette 7
 	ld bc, 1 palettes
-	ld a, $5
-	call FarCopyWRAM
+	call FarCopyColorWRAM
 
 	jp _CGB_FinishLayout
 
@@ -405,8 +394,7 @@ _CGB_SlotMachine:
 	ld hl, SlotMachinePals
 	ld de, wUnknBGPals
 	ld bc, 16 palettes
-	ld a, $5
-	call FarCopyWRAM
+	call FarCopyColorWRAM
 
 	call WipeAttrMap
 
@@ -466,8 +454,7 @@ _CGB_Diploma:
 	ld hl, DiplomaPals
 	ld de, wUnknBGPals
 	ld bc, 16 palettes
-	ld a, $5
-	call FarCopyWRAM
+	call FarCopyColorWRAM
 
 	ld de, wUnknBGPals
 	ld hl, .DiplomaPalette
@@ -562,8 +549,7 @@ _CGB_Evolution:
 	ld hl, BattleObjectPals
 	ld de, wUnknOBPals palette 2
 	ld bc, 6 palettes
-	ld a, $5
-	call FarCopyWRAM
+	call FarCopyColorWRAM
 
 .got_palette
 	call WipeAttrMap
@@ -589,8 +575,7 @@ _CGB_MoveList:
 	add hl, bc
 	ld de, wUnknBGPals palette 0 + 2
 	ld bc, 4
-	ld a, $5
-	call FarCopyWRAM
+	call FarCopyColorWRAM
 
 	ld hl, Moves + MOVE_TYPE
 	call GetCurMoveProperty
@@ -601,8 +586,7 @@ _CGB_MoveList:
 	add hl, bc
 	ld de, wUnknBGPals palette 0 + 6
 	ld bc, 2
-	ld a, $5
-	call FarCopyWRAM
+	call FarCopyColorWRAM
 
 	jp _CGB_FinishLayout
 
@@ -626,8 +610,7 @@ _CGB_BuyMenu:
 .ok
 	ld de, wUnknBGPals
 	ld bc, 3 palettes
-	ld a, $5
-	call FarCopyWRAM
+	call FarCopyColorWRAM
 
 rept 2
 	ld hl, CancelPalette
@@ -664,8 +647,7 @@ _CGB_PackPals:
 .got_gender
 	ld de, wUnknBGPals
 	ld bc, 8 palettes
-	ld a, $5
-	call FarCopyWRAM
+	call FarCopyColorWRAM
 
 	call WipeAttrMap
 
@@ -771,8 +753,7 @@ _CGB_TrainerCard2:
 	ld hl, JohtoBadgePalettes
 	ld de, wUnknOBPals
 	ld bc, 8 palettes
-	ld a, $5
-	call FarCopyWRAM
+	call FarCopyColorWRAM
 
 	; Falkner
 	hlcoord 3, 10, wAttrMap
@@ -855,8 +836,7 @@ _CGB_TrainerCard3:
 	ld hl, KantoBadgePalettes
 	ld de, wUnknOBPals
 	ld bc, 8 palettes
-	ld a, $5
-	call FarCopyWRAM
+	call FarCopyColorWRAM
 
 	; Lt.Surge
 	hlcoord 3, 10, wAttrMap
@@ -1111,8 +1091,7 @@ _CGB_TradeTube:
 	ld hl, .TradeTubeRedPalette
 	ld de, wUnknOBPals
 	ld bc, 1 palettes
-	ld a, $5
-	call FarCopyWRAM
+	call FarCopyColorWRAM
 
 	ld de, wUnknOBPals palette 7
 	ld hl, .TradeTubeBluePalette
@@ -1152,8 +1131,7 @@ _CGB_IntroPals:
 
 	ld hl, .IntroGradientPalette
 	ld bc, 1 palettes
-	ld a, $5
-	call FarCopyWRAM
+	call FarCopyColorWRAM
 
 	call WipeAttrMap
 

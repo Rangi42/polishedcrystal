@@ -137,8 +137,7 @@ GetRegisteredItem:
 	ld hl, InvertedTextPalette
 	ld de, wUnknBGPals palette PAL_BG_TEXT
 	ld bc, 1 palettes
-	ld a, $5
-	call FarCopyWRAM
+	call FarCopyColorWRAM
 
 	hlcoord 0, 0, wAttrMap
 	ld a, BEHIND_BG | PAL_BG_TEXT

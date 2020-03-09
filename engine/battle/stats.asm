@@ -368,8 +368,7 @@ if !DEF(MONOCHROME)
 	ld b, 0
 	add hl, bc
 	ld bc, 4
-	ld a, BANK(wUnknOBPals)
-	call FarCopyWRAM
+	call FarCopyColorWRAM
 	ld b, 2
 	call SafeCopyTilemapAtOnce
 endc
