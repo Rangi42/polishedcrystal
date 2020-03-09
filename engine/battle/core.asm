@@ -344,7 +344,7 @@ GetSpeed::
 	; Apply stat changes
 	farcall FarDoStatChangeMod
 	ld a, b
-	call ApplyDamageMod
+	call MultiplyAndDivide
 
 	; Halve speed if paralyzed unless we have Quick Feet
 	ld a, BATTLE_VARS_STATUS
@@ -353,8 +353,8 @@ GetSpeed::
 	jr z, .paralyze_done
 	call GetTrueUserAbility
 	cp QUICK_FEET
-	ld a, $12
-	call nz, ApplyDamageMod
+	ln a, 1, 2 ; x0.5
+	call nz, MultiplyAndDivide
 
 .paralyze_done
 	farcall ApplySpeedAbilities
@@ -363,8 +363,8 @@ GetSpeed::
 	ld a, BATTLE_VARS_SUBSTATUS1
 	call GetBattleVar
 	bit SUBSTATUS_UNBURDEN, a
-	ld a, $21
-	call nz, ApplyDamageMod
+	ln a, 2, 1 ; x2
+	call nz, MultiplyAndDivide
 
 .unburden_done
 	; Apply item effects
@@ -373,14 +373,14 @@ GetSpeed::
 	cp HELD_QUICK_POWDER
 	jr z, .quick_powder
 	cp HELD_IRON_BALL
-	ld a, $12
+	ln a, 1, 2 ; x0.5
 	jr .apply_item_mod
 	cp HELD_CHOICE
 	jr nz, .done
 	ld a, c
 	cp SPEED
 	jr nz, .done
-	ld a, $32
+	ln a, 3, 2 ; x1.5
 	jr .apply_item_mod
 .quick_powder
 	; Double speed, but only for Ditto
@@ -392,9 +392,9 @@ GetSpeed::
 .got_species
 	cp DITTO
 	jr nz, .done
-	ld a, $21
+	ln a, 2, 1 ; x2
 .apply_item_mod
-	call ApplyDamageMod
+	call MultiplyAndDivide
 .done
 	ldh a, [hMultiplicand + 0]
 	and a
@@ -6737,8 +6737,8 @@ GiveBattleEVs:
 	ret
 
 BoostExp:
-	ld a, $32
-	jp ApplyDamageMod
+	ln a, 3, 2 ; x1.5
+	jp MultiplyAndDivide
 
 Text_PkmnGainedExpPoint:
 	text_jump Text_Gained

@@ -68,19 +68,19 @@ GetModifiedCaptureRate:
 	and SLP
 	jr z, .status_done
 .frozen
-	ld a, $52
+	ln a, 5, 2 ; x2.5
 	jr .apply_status_mod
 .psn_brn_par
-	ld a, $32
+	ln a, 3, 2 ; x1.5
 .apply_status_mod
-	call ApplyDamageMod
+	call MultiplyAndDivide
 	call CheckBallOverflow
 	jr z, .pop_hl_and_gurantee
 
 .status_done
 	; Divide by 3
-	ld a, $13
-	call ApplyDamageMod
+	ln a, 1, 3 ; x1/3
+	call MultiplyAndDivide
 
 	; Divide by M (first reduce it to a 1-byte number)
 	pop hl
@@ -91,8 +91,8 @@ GetModifiedCaptureRate:
 	jr z, .done
 	srl h
 	rr l
-	ld a, $12
-	call ApplyDamageMod
+	ln a, 1, 2 ; x0.5
+	call MultiplyAndDivide
 	jr .loop
 .done
 	ld a, l
@@ -162,7 +162,7 @@ CheckCriticalCapture:
 .catch_charm
 	swap b
 	or b
-	call ApplyDamageMod
+	call MultiplyAndDivide
 	pop af
 	ld [wCurItem], a
 	ldh a, [hQuotient + 2]
@@ -221,14 +221,14 @@ BallMultiplierFunctionTable:
 UltraBallMultiplier:
 SafariBallMultiplier:
 ; multiply catch rate by 2
-	ld a, $21
-	jp ApplyDamageMod
+	ln a, 2, 1 ; x2
+	jp MultiplyAndDivide
 
 GreatBallMultiplier:
 ParkBallMultiplier:
 ; multiply catch rate by 1.5
-	ld a, $32
-	jp ApplyDamageMod
+	ln a, 3, 2 ; x1.5
+	jp MultiplyAndDivide
 
 GetPokedexEntryBank:
 	push hl
@@ -371,8 +371,8 @@ LureBallMultiplier:
 	cp BATTLETYPE_FISH
 	ret nz
 
-	ld a, $31
-	jp ApplyDamageMod
+	ln a, 3, 1 ; x3
+	jp MultiplyAndDivide
 
 MoonBallMultiplier:
 ; multiply catch rate by 4 if mon evolves with moon stone
@@ -409,8 +409,8 @@ GLOBAL EvosAttacksPointers
 	pop bc
 	ret nz
 
-	ld a, $41
-	jp ApplyDamageMod
+	ln a, 4, 1 ; x4
+	jp MultiplyAndDivide
 
 LoveBallMultiplier:
 ; multiply catch rate by 8 if mons are of same species, different sex
@@ -426,8 +426,8 @@ LoveBallMultiplier:
 	ret c ; genderless
 	ret z ; same gender
 
-	ld a, $81
-	jp ApplyDamageMod
+	ln a, 8, 1 ; x8
+	jp MultiplyAndDivide
 
 FastBallMultiplier:
 ; multiply catch rate by 4 if enemy mon is in one of the three
@@ -447,8 +447,8 @@ FastBallMultiplier:
 	cp c
 	jr nz, .loop
 
-	ld a, $41
-	jp ApplyDamageMod
+	ln a, 4, 1 ; x4
+	jp MultiplyAndDivide
 .next
 	dec d
 	jr nz, .loop
@@ -468,8 +468,8 @@ DoLevelBallMultiplier:
 	ret nc ; if player is lower level, we're done here
 
 	push af
-	ld a, $21
-	call ApplyDamageMod
+	ln a, 2, 1 ; x2
+	call MultiplyAndDivide
 	pop af
 	srl c
 	ret
@@ -483,8 +483,8 @@ RepeatBallMultiplier:
 	pop bc
 	ret z
 
-	ld a, $72
-	jp ApplyDamageMod
+	ln a, 7, 2 ; x3.5
+	jp MultiplyAndDivide
 
 TimerBallMultiplier:
 ; multiply catch rate by 1 + (turns passed * 3) / 10, capped at 4
@@ -500,8 +500,8 @@ TimerBallMultiplier:
 	add 10
 	ldh [hMultiplier], a
 	call Multiply
-	ld a, $1a ; x0.1 after the above multiplier gives 1.3x, 1.6x, 1.9x, ..., 4x.
-	jp ApplyDamageMod
+	ln a, 1, 10 ; x0.1 after the above multiplier gives 1.3x, 1.6x, 1.9x, ..., 4x.
+	jp MultiplyAndDivide
 
 NestBallMultiplier:
 ; multiply catch rate by (41 - enemy mon level) / 5, floored at 1
@@ -513,8 +513,8 @@ NestBallMultiplier:
 	sub b
 	ldh [hMultiplier], a
 	call Multiply
-	ld a, $15
-	jp ApplyDamageMod
+	ln a, 1, 5 ; x0.2
+	jp MultiplyAndDivide
 
 NetBallMultiplier:
 ; multiply catch rate by 3 if mon is water or bug type
@@ -530,8 +530,8 @@ NetBallMultiplier:
 	ret nz
 
 .ok
-	ld a, $31
-	jp ApplyDamageMod
+	ln a, 3, 1 ; x3
+	jp MultiplyAndDivide
 
 DiveBallMultiplier:
 ; multiply catch rate by 3.5 if surfing or fishing
@@ -546,8 +546,8 @@ DiveBallMultiplier:
 	ret nz
 
 .water
-	ld a, $72
-	jp ApplyDamageMod
+	ln a, 7, 2 ; x3.5
+	jp MultiplyAndDivide
 
 QuickBallMultiplier:
 ; multiply catch rate by 5 on first turn
@@ -555,8 +555,8 @@ QuickBallMultiplier:
 	and a
 	ret nz
 
-	ld a, $51
-	jp ApplyDamageMod
+	ln a, 5, 1 ; x5
+	jp MultiplyAndDivide
 
 DuskBallMultiplier:
 ; multiply catch rate by 3.5 at night or in caves
@@ -569,8 +569,8 @@ DuskBallMultiplier:
 	ret nz
 
 .dusk
-	ld a, $72
-	jp ApplyDamageMod
+	ln a, 7, 2 ; x3.5
+	jp MultiplyAndDivide
 
 DreamBallMultiplier:
 ; multiply catch rate by 4 if mon is asleep (on top of regular sleep bonus)
@@ -578,5 +578,5 @@ DreamBallMultiplier:
 	and SLP
 	ret z
 
-	ld a, $41
-	jp ApplyDamageMod
+	ln a, 4, 1 ; x4
+	jp MultiplyAndDivide

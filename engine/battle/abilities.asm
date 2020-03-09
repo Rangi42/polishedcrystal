@@ -965,7 +965,7 @@ ApplySpeedAbilities:
 	ld a, BATTLE_VARS_STATUS
 	and a
 	ret z
-	ld a, $32
+	ln a, 3, 2 ; x1.5
 	jr .apply_mod
 .swift_swim
 	ld h, WEATHER_RAIN
@@ -979,9 +979,9 @@ ApplySpeedAbilities:
 	call GetWeatherAfterUserUmbrella
 	cp h
 	ret nz
-	ld a, $21
+	ln a, 2, 1 ; x2
 .apply_mod
-	jp ApplyDamageMod
+	jp MultiplyAndDivide
 
 ApplyAccuracyAbilities:
 	call GetTrueUserAbility
@@ -1005,8 +1005,8 @@ TargetAccuracyAbilities:
 
 CompoundEyesAbility:
 ; Increase accuracy by 30%
-	ld a, $da
-	jp ApplyDamageMod
+	ln a, 13, 10 ; x1.3
+	jp MultiplyAndDivide
 
 HustleAccuracyAbility:
 ; Decrease accuracy for physical attacks by 20%
@@ -1019,8 +1019,8 @@ TangledFeetAbility:
 	call GetBattleVar
 	bit SUBSTATUS_CONFUSED, a
 	ret z
-	ld a, $12
-	jp ApplyDamageMod
+	ln a, 1, 2 ; x0.5
+	jp MultiplyAndDivide
 
 WonderSkinAbility:
 ; Double evasion for status moves
@@ -1028,8 +1028,8 @@ WonderSkinAbility:
 	call GetBattleVar
 	cp STATUS
 	ret nz
-	ld a, $12
-	jp ApplyDamageMod
+	ln a, 1, 2 ; x0.5
+	jp MultiplyAndDivide
 
 SandVeilAbility:
 	ld b, WEATHER_SANDSTORM
@@ -1041,8 +1041,8 @@ WeatherAccAbility:
 	call GetWeatherAfterOpponentUmbrella
 	cp b
 	ret nz
-	ld a, $45
-	jp ApplyDamageMod
+	ln a, 4, 5 ; x0.8
+	jp MultiplyAndDivide
 
 RunWeatherAbilities:
 	ld hl, WeatherAbilities
@@ -1395,8 +1395,8 @@ TechnicianAbility:
 	ld a, d
 	cp 61
 	ret nc
-	ld a, $32
-	jp ApplyDamageMod
+	ln a, 3, 2 ; x1.5
+	jp MultiplyAndDivide
 
 HugePowerAbility:
 ; Doubles physical attack
@@ -1427,26 +1427,26 @@ PinchAbility:
 	ret nz
 	call CheckPinch
 	ret nz
-	ld a, $32
-	jp ApplyDamageMod
+	ln a, 3, 2 ; x1.5
+	jp MultiplyAndDivide
 
 RivalryAbility:
 ; 100% damage if either mon is genderless, 125% if same gender, 75% if opposite gender
 	farcall CheckOppositeGender
 	ret c
-	ld a, $54
+	ln a, 5, 4 ; x1.25
 	jr z, .apply_damage_mod
-	ld a, $34
+	ln a, 3, 4 ; x0.75
 .apply_damage_mod
-	jp ApplyDamageMod
+	jp MultiplyAndDivide
 
 SheerForceAbility:
 ; 130% damage if a secondary effect is suppressed
 	ld a, [wEffectFailed]
 	and a
 	ret z
-	ld a, $da
-	jp ApplyDamageMod
+	ln a, 13, 10 ; x1.3
+	jp MultiplyAndDivide
 
 AnalyticAbility:
 ; 130% damage if opponent went first
@@ -1458,16 +1458,16 @@ AnalyticAbility:
 	xor b ; nz if opponent went first
 	ret z
 .future_sight
-	ld a, $da
-	jp ApplyDamageMod
+	ln a, 13, 10 ; x1.3
+	jp MultiplyAndDivide
 
 TintedLensAbility:
 ; Doubles damage for not very effective moves (x0.5/x0.25)
 	ld a, [wTypeModifier]
 	cp $10
 	ret nc
-	ld a, $21
-	jp ApplyDamageMod
+	ln a, 2, 1 ; x2
+	jp MultiplyAndDivide
 
 SolarPowerAbility:
 ; 150% special attack in sun, take 1/8 damage at turn end in sun (done elsewhere)
@@ -1480,8 +1480,8 @@ SolarPowerAbility:
 ToughClawsAbility:
 	call CheckContactMove
 	ret c
-	ld a, $da
-	jp ApplyDamageMod
+	ln a, 13, 10 ; x1.3
+	jp MultiplyAndDivide
 
 MegaLauncherAbility:
 	ld hl, .LauncherMoves
@@ -1497,8 +1497,9 @@ MegaLauncherAbility:
 IronFistAbility:
 ; 120% damage for punching moves
 	ld hl, .PunchingMoves
-	ld b, $65
+	ln b, 6, 5 ; x1.2
 	jr MoveBoostAbility
+
 .PunchingMoves:
 	db BULLET_PUNCH
 	db DIZZY_PUNCH
@@ -1517,7 +1518,7 @@ MoveBoostAbility:
 	pop bc
 	ret c
 	ld a, b
-	jp ApplyDamageMod
+	jp MultiplyAndDivide
 
 SandForceAbility:
 ; 130% damage for Ground/Rock/Steel-type moves in a sandstorm, not hurt by Sandstorm
@@ -1533,8 +1534,8 @@ SandForceAbility:
 	cp STEEL
 	ret nz
 .ok
-	ld a, $da
-	jp ApplyDamageMod
+	ln a, 13, 10 ; x1.3
+	jp MultiplyAndDivide
 
 RecklessAbility:
 ; 120% damage for (Hi) Jump Kick and recoil moves except for Struggle
@@ -1549,8 +1550,8 @@ RecklessAbility:
 	cp EFFECT_JUMP_KICK
 	ret nz
 .ok
-	ld a, $65
-	jp ApplyDamageMod
+	ln a, 6, 5 ; x1.2
+	jp MultiplyAndDivide
 
 GutsAbility:
 ; 150% physical attack if user is statused
@@ -1573,15 +1574,15 @@ PixilateAbility:
 	call GetBattleVar
 	and a ; cp NORMAL
 	ret nz
-	ld a, $65
-	jp ApplyDamageMod
+	ln a, 6, 5 ; x1.2
+	jp MultiplyAndDivide
 
 EnemyMultiscaleAbility:
 ; 50% damage if user is at full HP
 	farcall CheckOpponentFullHP
 	ret nz
-	ld a, $12
-	jp ApplyDamageMod
+	ln a, 1, 2 ; x0.5
+	jp MultiplyAndDivide
 
 EnemyMarvelScaleAbility:
 ; 150% physical Defense if statused
@@ -1598,8 +1599,8 @@ EnemyFilterAbility:
 	ld a, [wTypeModifier]
 	cp $11
 	ret c
-	ld a, $34
-	jp ApplyDamageMod
+	ln a, 3, 4 ; x0.75
+	jp MultiplyAndDivide
 
 EnemyThickFatAbility:
 ; 50% damage for Fire and Ice-type moves
@@ -1610,8 +1611,8 @@ EnemyThickFatAbility:
 	cp ICE
 	ret nz
 .ok
-	ld a, $12
-	jp ApplyDamageMod
+	ln a, 1, 2 ; x0.5
+	jp MultiplyAndDivide
 
 EnemyDrySkinAbility:
 ; 125% damage for Fire-type moves, heals 1/4 from Water, regenerates 1/8 at end of turn in
@@ -1621,8 +1622,8 @@ EnemyDrySkinAbility:
 	call GetBattleVar
 	cp FIRE
 	ret nz
-	ld a, $54
-	jp ApplyDamageMod
+	ln a, 5, 4 ; x1.25
+	jp MultiplyAndDivide
 
 EnemyFurCoatAbility:
 ; Doubles physical Defense

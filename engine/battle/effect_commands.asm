@@ -1821,7 +1821,7 @@ BattleCommand_checkhit:
 	; Apply stat changes
 	call DoStatChangeMod
 	add $11
-	call ApplyDamageMod
+	call MultiplyAndDivide
 	farcall ApplyAccuracyAbilities
 
 	; Check user items
@@ -1835,7 +1835,7 @@ BattleCommand_checkhit:
 	jr z, .done_user_items
 .accuracy_boost_item
 	ld a, c
-	call ApplyDamageMod
+	call MultiplyAndDivide
 
 .done_user_items
 	; Check opponent items
@@ -1844,7 +1844,7 @@ BattleCommand_checkhit:
 	cp HELD_BRIGHTPOWDER
 	jr nz, .brightpowder_done
 	ld a, c
-	call ApplyDamageMod
+	call MultiplyAndDivide
 .brightpowder_done
 	; Accuracy modifiers done. Grab data
 	; from hMultiplicand
@@ -3855,7 +3855,7 @@ ApplyDefStatBoostDamage:
 GotStatLevel:
 	ld b, a
 	call DoStatChangeMod
-	jp ApplyDamageMod
+	jp MultiplyAndDivide
 
 FarDoStatChangeMod:
 	call DoStatChangeMod
@@ -3866,11 +3866,11 @@ DoStatChangeMod:
 	ld a, b
 	cp 7
 	jr nc, .higher
-	ld a, $29
+	ln a, 2, 9
 	sub b ; between $23 (6, e.g. -1 stat change) and $28 (1, e.g. -6 stat change)
 	ret
 .higher
-	ld a, $1b
+	ln a, 1, 11
 	add b ; between $23 (8, e.g. +1 stat change) and $28 (13, e.g. +6 stat change)
 	swap a ; we want to add, not reduce damage
 	ret
@@ -3970,8 +3970,8 @@ BattleCommand_damagecalc:
 	ld a, BATTLE_VARS_MOVE_TYPE
 	call GetBattleVar
 	cp FIRE
-	ld a, $32 ; 3/2 = 150%
-	call z, ApplyDamageMod
+	ln a, 3, 2 ; x1.5
+	call z, MultiplyAndDivide
 
 .no_flash_fire
 	; Critical hits
@@ -3981,11 +3981,11 @@ BattleCommand_damagecalc:
 
 	call GetTrueUserAbility
 	cp SNIPER
-	ld a, $94 ; 9/4 = 225%
+	ln a, 9, 4 ; x2.25
 	jr z, .got_crit_mod
-	ld a, $32 ; 3/2 = 150%
+	ln a, 3, 2 ; x1.5
 .got_crit_mod
-	call ApplyDamageMod
+	call MultiplyAndDivide
 
 .no_crit
 	; Item boosts. TODO: move species items here
@@ -4004,23 +4004,23 @@ BattleCommand_damagecalc:
 	jr z, .metronome_item
 
 	cp HELD_LIFE_ORB
-	ld a, $da ; 13/10 = 130%
+	ln a, 13, 10 ; x1.3
 	jr z, .life_orb
 	jr .done_attacker_item
 .type_boost
 	ld a, BATTLE_VARS_MOVE_TYPE
 	call GetBattleVar
 	cp c
-	ld a, $65 ; 6/5 = 120%
+	ln a, 6, 5 ; x12
 .life_orb
-	call z, ApplyDamageMod
+	call z, MultiplyAndDivide
 	jr .done_attacker_item
 .category_boost
 	ld a, BATTLE_VARS_MOVE_CATEGORY
 	call GetBattleVar
 	cp c
-	ld a, $ba ; 11/10 = 110%
-	call z, ApplyDamageMod
+	ln a, 11, 10 ; x1.1
+	call z, MultiplyAndDivide
 	jr .done_attacker_item
 .choice
 	ld a, c
@@ -4028,18 +4028,18 @@ BattleCommand_damagecalc:
 	jr z, .choice_sat
 	and a ; cp ATTACK
 	jr nz, .done_attacker_item
-	ld a, $32 ; 3/2 = 150%
+	ln a, 3, 2 ; x1.5
 	call ApplyPhysicalAttackDamageMod
 	jr .done_attacker_item
 .choice_sat
-	ld a, $32 ; 3/2 = 150%
+	ln a, 3, 2 ; x1.5
 	call ApplySpecialAttackDamageMod
 	jr .done_attacker_item
 .metronome_item
 	; Skip Metronome for Future Sight
 	call GetFutureSightUser
 	jr nc, .done_attacker_item
-	ld b, $55 ; (5+n)/5 = 100% + 20% * n
+	ln b, 5, 5 ; (5+n)/5 = 100% + 20% * n
 	ldh a, [hBattleTurn]
 	and a
 	ld a, [wPlayerMetronomeCount]
@@ -4048,13 +4048,13 @@ BattleCommand_damagecalc:
 .got_metronome_count
 	swap a
 	add b
-	call ApplyDamageMod
+	call MultiplyAndDivide
 	jr .done_attacker_item
 .expert_belt
 	ld a, [wTypeModifier]
 	cp $11
-	ld a, $65 ; 6/5 = 120%
-	call nc, ApplyDamageMod
+	ln a, 6, 5 ; x1.2
+	call nc, MultiplyAndDivide
 	; fallthrough
 .done_attacker_item
 	call GetOpponentItem

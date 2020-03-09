@@ -144,7 +144,6 @@ HalfHP::
 
 GetMaxHP::
 ; output: bc, wBuffer1-2
-
 	farcall GetFutureSightUser
 	jr z, .not_external
 	ld a, MON_MAXHP
@@ -452,6 +451,15 @@ GetFixedCategory::
 	inc a ; SPECIAL
 	ret
 
+ApplyPhysicalDefenseDamageMod::
+	push bc
+	ld c, a
+	ld a, BATTLE_VARS_MOVE_EFFECT
+	call GetBattleVar
+	cp EFFECT_PSYSTRIKE
+	ld a, c
+	pop bc
+	jr z, ApplySpecialAttackDamageMod
 ; Damage modifiers. a contains $xy where damage is multiplied by x, then divided by y
 ApplyPhysicalAttackDamageMod::
 	push bc
@@ -468,18 +476,7 @@ ApplyAttackDamageMod::
 	ld a, c
 	pop bc
 	ret nz
-	jr ApplyDamageMod
-
-ApplyPhysicalDefenseDamageMod::
-	push bc
-	ld c, a
-	ld a, BATTLE_VARS_MOVE_EFFECT
-	call GetBattleVar
-	cp EFFECT_PSYSTRIKE
-	ld a, c
-	pop bc
-	jr z, ApplySpecialAttackDamageMod
-	jr ApplyPhysicalAttackDamageMod
+	jp MultiplyAndDivide
 
 ApplySpecialDefenseDamageMod::
 	push bc
@@ -491,28 +488,6 @@ ApplySpecialDefenseDamageMod::
 	pop bc
 	ret z
 	jr ApplySpecialAttackDamageMod
-
-ApplyDamageMod::
-; a = $xy: multiply multiplicands by x, then divide by y
-; Used by things other than damage
-	push bc
-	push hl
-	ld b, a
-	swap a
-	and $f
-	ld hl, hMultiplier
-	ld [hl], a
-	push bc
-	call Multiply
-	pop bc
-	ld a, b
-	and $f
-	ld [hl], a
-	ld b, 4
-	call Divide
-	pop hl
-	pop bc
-	ret
 
 GetOpponentAbility::
 	ld a, BATTLE_VARS_ABILITY_OPP
@@ -620,9 +595,7 @@ CheckPinch::
 	call GetThirdMaxHP
 	call CompareHP
 	pop hl
-	jr c, .ok
-	ret
-.ok
+	ret nc
 	xor a
 	ret
 
@@ -680,7 +653,7 @@ GetWeatherAfterUserUmbrella::
 	ret z
 	cp WEATHER_SANDSTORM
 	ret z
-	and a
+	and a ; WEATHER_NONE?
 	ret z
 	push bc
 	push hl
@@ -960,17 +933,12 @@ BattleTextBox::
 
 StdBattleTextBox::
 ; Open a textbox and print battle text at 20:hl.
-
 GLOBAL BattleText
-
 	ldh a, [hROMBank]
 	push af
-
 	ld a, BANK(BattleText)
 	rst Bankswitch
-
 	call BattleTextBox
-
 	pop af
 	rst Bankswitch
 	ret
