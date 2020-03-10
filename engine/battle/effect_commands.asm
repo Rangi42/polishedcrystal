@@ -98,10 +98,10 @@ DoMove:
 	ret
 
 ReadMoveScriptByte:
-	ld a, [wBattleScriptBufferLoc]
+	ld hl, wBattleScriptBufferLoc
+	ld a, [hli]
+	ld h, [hl]
 	ld l, a
-	ld a, [wBattleScriptBufferLoc + 1]
-	ld h, a
 
 	inc hl
 	ld a, l
@@ -6430,10 +6430,10 @@ SkipToBattleCommandBackwards:
 	ld c, 0
 BattleCommandJump:
 ; Skip over commands until reaching command b.
-	ld a, [wBattleScriptBufferLoc]
+	ld hl, wBattleScriptBufferLoc
+	ld a, [hli]
+	ld h, [hl]
 	ld l, a
-	ld a, [wBattleScriptBufferLoc + 1]
-	ld h, a
 .loop
 	ld a, BANK(MoveEffects)
 	call GetFarByte

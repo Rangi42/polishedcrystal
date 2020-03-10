@@ -993,10 +993,10 @@ Script_applyonemovement:
 	farcall SetFlagsForMovement_2
 	pop bc
 
-	ld a, [wScriptPos]
+	ld hl, wScriptPos
+	ld a, [hli]
+	ld h, [hl]
 	ld l, a
-	ld a, [wScriptPos + 1]
-	ld h, a
 	call SkipTwoScriptBytes
 	ld a, [wScriptBank]
 	ld b, a

@@ -534,10 +534,10 @@ LoadBlockData::
 ChangeMap::
 	ld a, [wMapBlockDataBank]
 	ld b, a
-	ld a, [wMapBlockDataPointer]
+	ld hl, wMapBlockDataPointer
+	ld a, [hli]
+	ld h, [hl]
 	ld l, a
-	ld a, [wMapBlockDataPointer+1]
-	ld h, a
 	ld a, [wMapWidth]
 	ld d, a
 	ld a, [wMapHeight]
@@ -614,10 +614,10 @@ FillMapConnections::
 	call GetAnyMapBlockdataBankPointer
 	call DecompressConnectionMap
 
-	ld a, [wNorthConnectionStripPointer]
+	ld hl, wNorthConnectionStripPointer
+	ld a, [hli]
+	ld h, [hl]
 	ld l, a
-	ld a, [wNorthConnectionStripPointer + 1]
-	ld h, a
 
 	ld a, [wNorthConnectionStripLocation]
 	ld e, a
@@ -639,10 +639,10 @@ FillMapConnections::
 	call GetAnyMapBlockdataBankPointer
 	call DecompressConnectionMap
 
-	ld a, [wSouthConnectionStripPointer]
+	ld hl, wSouthConnectionStripPointer
+	ld a, [hli]
+	ld h, [hl]
 	ld l, a
-	ld a, [wSouthConnectionStripPointer + 1]
-	ld h, a
 	ld a, [wSouthConnectionStripLocation]
 	ld e, a
 	ld a, [wSouthConnectionStripLocation + 1]
@@ -663,10 +663,10 @@ FillMapConnections::
 	call GetAnyMapBlockdataBankPointer
 	call DecompressConnectionMap
 
-	ld a, [wWestConnectionStripPointer]
+	ld hl, wWestConnectionStripPointer
+	ld a, [hli]
+	ld h, [hl]
 	ld l, a
-	ld a, [wWestConnectionStripPointer + 1]
-	ld h, a
 	ld a, [wWestConnectionStripLocation]
 	ld e, a
 	ld a, [wWestConnectionStripLocation + 1]
@@ -687,10 +687,10 @@ FillMapConnections::
 	call GetAnyMapBlockdataBankPointer
 	call DecompressConnectionMap
 
-	ld a, [wEastConnectionStripPointer]
+	ld hl, wEastConnectionStripPointer
+	ld a, [hli]
+	ld h, [hl]
 	ld l, a
-	ld a, [wEastConnectionStripPointer + 1]
-	ld h, a
 	ld a, [wEastConnectionStripLocation]
 	ld e, a
 	ld a, [wEastConnectionStripLocation + 1]
@@ -1066,10 +1066,10 @@ ScrollMapUp::
 	hlcoord 0, SCREEN_HEIGHT - 2, wAttrMap
 	ld de, wBGMapPalBuffer + 8
 	call BackupBGMapRow
-	ld a, [wBGMapAnchor]
+	ld hl, wBGMapAnchor
+	ld a, [hli]
+	ld h, [hl]
 	ld l, a
-	ld a, [wBGMapAnchor + 1]
-	ld h, a
 	ld bc, $0200
 	add hl, bc
 ; cap d at vBGMap1 / $100

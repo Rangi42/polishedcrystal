@@ -677,10 +677,10 @@ BattleBGEffect_RunPicResizeScript:
 	ld e, [hl]
 	ld d, $0
 	inc [hl]
-	ld a, [wBattleAnimTemp1]
+	ld hl, wBattleAnimTemp1
+	ld a, [hli]
+	ld h, [hl]
 	ld l, a
-	ld a, [wBattleAnimTemp2]
-	ld h, a
 	add hl, de
 	add hl, de
 	add hl, de
