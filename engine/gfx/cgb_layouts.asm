@@ -1015,12 +1015,12 @@ _CGB_UnownPuzzle:
 if DEF(NOIR)
 	ld a, (palred 9 + palgreen 9 + palblue 9) % $100
 	ld [hli], a
-	ld [hl], (palred 9 + palgreen 9 + palblue 9) % $100
+	ld [hl], (palred 9 + palgreen 9 + palblue 9) / $100
 elif !DEF(MONOCHROME)
 ; RGB 31, 00, 00
 	ld a, (palred 31 + palgreen 0 + palblue 0) % $100
 	ld [hli], a
-	ld [hl], (palred 31 + palgreen 0 + palblue 0) % $100
+	ld [hl], (palred 31 + palgreen 0 + palblue 0) / $100
 else
 	ld a, PAL_MONOCHROME_WHITE % $100
 	ld [hli], a
