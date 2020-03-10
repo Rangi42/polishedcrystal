@@ -483,9 +483,8 @@ GetGender:
 ListMovePP:
 	ld a, [wNumMoves]
 	inc a
-	ld c, a
-	ld a, NUM_MOVES
-	sub c
+	cpl
+	add NUM_MOVES + 1 ; a = NUM_MOVES - a
 	ld b, a
 	push hl
 	ld a, [wBuffer1]

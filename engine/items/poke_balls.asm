@@ -508,9 +508,8 @@ NestBallMultiplier:
 	ld a, [wEnemyMonLevel]
 	cp 36
 	ret nc
-	ld b, a
-	ld a, 41
-	sub b
+	cpl
+	add 41 + 1 ; a = 41 - a
 	ldh [hMultiplier], a
 	call Multiply
 	ln a, 1, 5 ; x0.2

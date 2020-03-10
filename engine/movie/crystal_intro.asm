@@ -1523,14 +1523,11 @@ CrystalIntro_UnownFade:
 	inc hl
 	ld a, [wcf65]
 	and $3f
-	cp $1f
-	jr z, .okay
+	cp $1f + 1
 	jr c, .okay
-	ld c, a
-	ld a, $3f
-	sub c
+	cpl
+	add $3f + 1 ; a = $3f - a
 .okay
-
 	ld c, a
 	ld b, $0
 	ldh a, [rSVBK]

@@ -7290,9 +7290,8 @@ CalcExpBar:
 	ld b, 4
 	call Divide
 	ldh a, [hQuotient + 2]
-	ld b, a
-	ld a, 56
-	sub b
+	cpl
+	add 56 + 1 ; a = 56 - a
 	ld b, a
 	ret
 

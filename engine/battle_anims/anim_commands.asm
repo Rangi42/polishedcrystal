@@ -1349,9 +1349,7 @@ if !DEF(MONOCHROME)
 	ld hl, wUnknBGPals
 .loop_UnknBGPals
 	ld a, [hl]
-	ld b, a
-	ld a, $ff
-	sub b
+	cpl
 	ld [hli], a
 	dec c
 	jr nz, .loop_UnknBGPals
@@ -1359,9 +1357,7 @@ if !DEF(MONOCHROME)
 	ld hl, wUnknOBPals
 .loop_UnknOBPals
 	ld a, [hl]
-	ld b, a
-	ld a, $ff
-	sub b
+	cpl
 	ld [hli], a
 	dec c
 	jr nz, .loop_UnknOBPals

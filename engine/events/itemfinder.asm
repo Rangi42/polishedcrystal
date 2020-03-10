@@ -25,9 +25,8 @@ ItemFinder:
 	ld a, 9 ; cap, 1-9
 .dist_ok
 	srl a ; 0-4
-	ld c, a
-	ld a, 5
-	sub c ; 5-1
+	cpl
+	add 5 + 1 ; 5-1
 	ld c, a
 .sfx_loop
 	push bc

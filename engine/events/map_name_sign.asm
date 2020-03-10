@@ -58,11 +58,8 @@ ReturnFromMapSetupScript::
 	ld a, $70
 	jr .value_ok
 .sliding_in
-	push bc
-	ld b, a
-	ld a, $80
-	sub b
-	pop bc
+	cpl
+	add $80 + 1 ; a = $80 - a
 	jr .value_ok
 .visible
 	ld a, $80
