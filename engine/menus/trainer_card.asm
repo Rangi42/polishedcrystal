@@ -521,8 +521,8 @@ endr
 	ld a, [wcf64]
 	add l
 	ld l, a
-	ld a, 0 ; not xor a; preserve carry flag?
 	adc h
+	sub l
 	ld h, a
 	ld a, [hl]
 	ld [wcf65], a

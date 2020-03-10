@@ -488,8 +488,9 @@ CountItemInPocket:
 	ld a, [hl]
 	add c
 	ld c, a
-	jr nc, .next
-	inc b
+	adc b
+	sub c
+	ld b, a
 .next
 	inc hl
 	jr .loop

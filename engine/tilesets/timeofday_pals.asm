@@ -181,11 +181,9 @@ ReplaceTimeOfDayPals:
 	cp PALETTE_DARK ; needs Flash
 	jr z, .DarkCave
 	and $7
-	add l
-	ld l, a
-	ld a, 0 ; not xor a; preserve carry flag?
-	adc h
-	ld h, a
+	ld e, a
+	ld d, 0
+	add hl, de
 	ld a, [hl]
 	ld [wTimeOfDayPalset], a
 	ret

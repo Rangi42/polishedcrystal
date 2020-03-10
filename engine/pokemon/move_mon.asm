@@ -1664,10 +1664,9 @@ CalcPkmnStatC:
 	ld d, 0
 	add e
 	ld e, a
-	jr nc, .no_overflow_1
-	inc d
-
-.no_overflow_1
+	adc d
+	sub e
+	ld d, a
 	sla e
 	inc e
 	rl d
@@ -1675,10 +1674,10 @@ CalcPkmnStatC:
 	srl b
 	ld a, b
 	add e
-	jr nc, .no_overflow_2
+	jr nc, .no_overflow_1
 	inc d
 
-.no_overflow_2
+.no_overflow_1
 	ldh [hMultiplicand + 2], a
 	ld a, d
 	ldh [hMultiplicand + 1], a
@@ -1707,12 +1706,12 @@ CalcPkmnStatC:
 	ldh a, [hQuotient + 2]
 	add b
 	ldh [hMultiplicand + 2], a
-	jr nc, .no_overflow_3
+	jr nc, .no_overflow_2
 	ldh a, [hQuotient + 1]
 	inc a
 	ldh [hMultiplicand + 1], a
 
-.no_overflow_3
+.no_overflow_2
 	ld a, STAT_MIN_HP
 
 .not_hp
@@ -1720,12 +1719,12 @@ CalcPkmnStatC:
 	ldh a, [hQuotient + 2]
 	add b
 	ldh [hMultiplicand + 2], a
-	jr nc, .no_overflow_4
+	jr nc, .no_overflow_3
 	ldh a, [hQuotient + 1]
 	inc a
 	ldh [hMultiplicand + 1], a
 
-.no_overflow_4
+.no_overflow_3
 	ldh a, [hQuotient + 1]
 	cp (1000 / $100) + 1
 	jr nc, .max_stat

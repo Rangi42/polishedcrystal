@@ -145,10 +145,9 @@ GetDestinationWarpNumber::
 	ld a, 5
 	add l
 	ld l, a
-	jr nc, .okay
-	inc h
-
-.okay
+	adc h
+	sub l
+	ld h, a
 	dec c
 	jr nz, .loop
 	xor a
@@ -580,9 +579,9 @@ ChangeMap::
 	ldh a, [hConnectionStripLength]
 	add l
 	ld l, a
-	jr nc, .okay
-	inc h
-.okay
+	adc h
+	sub l
+	ld h, a
 	dec b
 	jr nz, .row
 	ret
@@ -735,9 +734,9 @@ FillEastConnectionStrip::
 	ldh a, [hConnectedMapWidth]
 	add e
 	ld e, a
-	jr nc, .okay
-	inc d
-.okay
+	adc d
+	sub e
+	ld d, a
 	dec b
 	jr nz, .loop
 	pop af
@@ -778,9 +777,9 @@ FillSouthConnectionStrip::
 	ldh a, [hMapWidthPlus6]
 	add e
 	ld e, a
-	jr nc, .okay
-	inc d
-.okay
+	adc d
+	sub e
+	ld d, a
 	dec c
 	jr nz, .y
 	pop af
@@ -1146,10 +1145,9 @@ BackupBGMapColumn::
 	ld a, SCREEN_WIDTH - 1
 	add l
 	ld l, a
-	jr nc, .skip
-	inc h
-
-.skip
+	adc h
+	sub l
+	ld h, a
 	dec c
 	jr nz, .loop
 	ret
@@ -1482,8 +1480,8 @@ GetMovementPermissions::
 	ld hl, .MovementPermissionsData
 	add l
 	ld l, a
-	ld a, 0 ; not xor a; preserve carry flag
 	adc h
+	sub l
 	ld h, a
 	ld a, [hl]
 	ld hl, wTilePermissions
@@ -1759,10 +1757,9 @@ CheckIfFacingTileCoordIsSign::
 	ld a, 5 ; signpost event length
 	add l
 	ld l, a
-	jr nc, .nocarry
-	inc h
-
-.nocarry
+	adc h
+	sub l
+	ld h, a
 	dec c
 	jr nz, .loop
 	xor a
@@ -1831,10 +1828,9 @@ CheckCurrentMapXYTriggers::
 	ld a, $5 ; xy-trigger size
 	add l
 	ld l, a
-	jr nc, .nocarry
-	inc h
-
-.nocarry
+	adc h
+	sub l
+	ld h, a
 	dec c
 	jr nz, .loop
 	xor a

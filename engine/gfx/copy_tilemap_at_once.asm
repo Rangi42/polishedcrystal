@@ -263,9 +263,9 @@ CopyTilemapInHBlank:
 	ld a, BG_MAP_WIDTH - (SCREEN_WIDTH - 1)
 	add l
 	ld l, a
-	jr nc, .noCarry
-	inc h
-.noCarry
+	adc h
+	sub l
+	ld h, a
 	ldh a, [hTilesPerCycle]
 	dec a
 	jr nz, .loop

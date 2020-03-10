@@ -176,9 +176,10 @@ HPBarAnim_RedrawHPBar:
 	ld a, SCREEN_WIDTH * 2
 	add l
 	ld l, a
-	jr nc, .skip
-	inc h
-.skip
+	adc h
+	sub l
+	ld h, a
+.skip:
 	jp DrawBattleHPBar
 
 HPBarAnim_UpdateHPRemaining:

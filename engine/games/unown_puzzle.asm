@@ -464,11 +464,9 @@ UnownPuzzle_CheckCurrentTileOccupancy:
 GetCurrentPuzzlePieceVTileCorner:
 	ld a, [wUnownPuzzleHeldPiece]
 	ld hl, .Corners
-	add l
-	ld l, a
-	ld a, 0 ; not xor a; preserve carry flag?
-	adc h
-	ld h, a
+	ld e, a
+	ld d, 0
+	add hl, de
 	ld a, [hl]
 	ret
 
@@ -719,8 +717,8 @@ ConvertLoadedPuzzlePieces:
 	ld hl, .EnlargedTiles
 	add l
 	ld l, a
-	ld a, 0 ; not xor a; preserve carry flag?
 	adc h
+	sub l
 	ld h, a
 	ld a, [hl]
 	pop hl

@@ -2663,8 +2663,8 @@ GetNextTownMapTilePalette:
 ; Even-numbered tile ids take the bottom nybble...
 	add l
 	ld l, a
-	ld a, h
-	adc 0
+	adc h
+	sub l
 	ld h, a
 	ld a, [hl]
 	and %111
@@ -2674,8 +2674,8 @@ GetNextTownMapTilePalette:
 ; ...and odd ids take the top.
 	add l
 	ld l, a
-	ld a, h
-	adc 0
+	adc h
+	sub l
 	ld h, a
 	ld a, [hl]
 	swap a

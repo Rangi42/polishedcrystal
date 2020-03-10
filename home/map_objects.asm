@@ -148,10 +148,9 @@ CheckObjectTime::
 	ld a, [wTimeOfDay]
 	add l
 	ld l, a
-	jr nc, .ok
-	inc h
-
-.ok
+	adc h
+	sub l
+	ld h, a
 	ld a, [hl]
 	ld hl, MAPOBJECT_TIMEOFDAY
 	add hl, bc
