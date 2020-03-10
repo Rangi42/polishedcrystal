@@ -525,9 +525,9 @@ Script_loadmenu:
 	ld l, a
 	call GetScriptByte
 	ld h, a
-	ld de, LoadMenuDataHeader
 	ld a, [wScriptBank]
-	call Call_a_de
+	ld de, LoadMenuDataHeader
+	call FarCall_de
 	jp UpdateSprites
 
 Script_closewindow:
