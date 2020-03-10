@@ -25,6 +25,9 @@ conditions = [
 (lambda line2, prev_lines: line2.code == 'ret'),
 ]
 
+# Count the total instances of the pattern
+count = 0
+
 # Check all the .asm files
 for filename in iglob('**/*.asm', recursive=True):
 	with open(filename, 'r') as f:
@@ -56,6 +59,7 @@ for filename in iglob('**/*.asm', recursive=True):
 				state += 1
 				if state == len(conditions):
 					# All the conditions were met; print the result and reset the state
+					count += 1
 					if cur_label:
 						prev_lines.insert(0, cur_label)
 					for line in prev_lines:
@@ -70,3 +74,6 @@ for filename in iglob('**/*.asm', recursive=True):
 		# Print a blank line between different files
 		if printed:
 			print()
+
+# Print the total count
+print('Found', count, 'instances.')
