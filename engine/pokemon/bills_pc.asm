@@ -42,7 +42,6 @@ _DepositPKMN:
 	jp hl
 
 .Jumptable:
-
 	dw .Init
 	dw .HandleJoypad
 	dw .WhatsUp
@@ -144,7 +143,6 @@ _DepositPKMN:
 	jp hl
 
 BillsPCDepositJumptable:
-
 	dw BillsPCDepositFuncDeposit ; Deposit Pokemon
 	dw BillsPCDepositFuncStats ; Pokemon Stats
 	dw BillsPCDepositFuncRelease ; Release Pokemon
@@ -275,7 +273,6 @@ _WithdrawPKMN:
 	jp hl
 
 .Jumptable:
-
 	dw .Init
 	dw .Joypad
 	dw .PrepSubmenu
@@ -503,7 +500,6 @@ _MovePKMNWithoutMail:
 	jp hl
 
 .Jumptable:
-
 	dw .Init
 	dw .Joypad
 	dw .PrepSubmenu
@@ -2008,11 +2004,7 @@ MovePKMNWitoutMail_InsertMon:
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	ld de, .dw_return
-	push de
-	jp hl
-
-.dw_return
+	call _hl_
 	pop af
 	ld e, a
 	farjp MovePkmnWOMail_InsertMon_SaveGame

@@ -15,12 +15,7 @@ LoadCGBLayout::
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	ld de, .ReturnFromJumpTable
-	push de
 	jp hl
-
-.ReturnFromJumpTable:
-	ret
 
 .dw
 	dw _CGB_BattleGrayscale
