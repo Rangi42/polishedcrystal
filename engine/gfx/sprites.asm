@@ -24,11 +24,7 @@ PlaySpriteAnimations:
 	ld [wCurrSpriteOAMAddr], a
 	call DoNextFrameForAllSprites
 
-	pop af
-	pop bc
-	pop de
-	pop hl
-	ret
+	jp PopAFBCDEHL
 
 DoNextFrameForAllSprites:
 	ld hl, wSpriteAnimationStructs
@@ -584,8 +580,4 @@ ClearSpriteAnims2:
 	ld a, c
 	or b
 	jr nz, .loop
-	pop af
-	pop bc
-	pop de
-	pop hl
-	ret
+	jp PopAFBCDEHL

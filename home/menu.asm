@@ -93,11 +93,7 @@ CopyMenuData2::
 	ld de, wMenuData2Flags
 	ld bc, wMenuData2End - wMenuData2Flags
 	rst CopyBytes
-	pop af
-	pop bc
-	pop de
-	pop hl
-	ret
+	jp PopAFBCDEHL
 
 GetWindowStackTop::
 	ld hl, wWindowStackPointer

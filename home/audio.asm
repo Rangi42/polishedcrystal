@@ -19,11 +19,7 @@ MapSetup_Sound_Off::
 	ldh [hROMBank], a
 	ld [MBC3RomBank], a
 
-	pop af
-	pop bc
-	pop de
-	pop hl
-	ret
+	jp PopAFBCDEHL
 
 UpdateSound::
 
@@ -44,11 +40,7 @@ UpdateSound::
 	ldh [hROMBank], a
 	ld [MBC3RomBank], a
 
-	pop af
-	pop bc
-	pop de
-	pop hl
-	ret
+	jp PopAFBCDEHL
 
 _LoadMusicByte::
 ; wCurMusicByte = [a:de]
@@ -101,11 +93,8 @@ PlayMusic::
 	pop af
 	ldh [hROMBank], a
 	ld [MBC3RomBank], a
-	pop af
-	pop bc
-	pop de
-	pop hl
-	ret
+
+	jp PopAFBCDEHL
 
 PlayMusic2::
 ; Stop playing music, then play music de.
@@ -132,11 +121,7 @@ PlayMusic2::
 	ldh [hROMBank], a
 	ld [MBC3RomBank], a
 
-	pop af
-	pop bc
-	pop de
-	pop hl
-	ret
+	jp PopAFBCDEHL
 
 PlayCryHeader::
 ; Play cry header de.
@@ -183,11 +168,7 @@ endr
 	ldh [hROMBank], a
 	ld [MBC3RomBank], a
 
-	pop af
-	pop bc
-	pop de
-	pop hl
-	ret
+	jp PopAFBCDEHL
 
 WaitPlaySFX::
 	call WaitSFX
@@ -226,11 +207,7 @@ PlaySFX::
 	ld [MBC3RomBank], a
 
 .done
-	pop af
-	pop bc
-	pop de
-	pop hl
-	ret
+	jp PopAFBCDEHL
 
 WaitSFX::
 ; infinite loop until sfx is done playing
@@ -340,11 +317,7 @@ FadeToMapMusic::
 	ld [wMapMusic], a
 
 .done
-	pop af
-	pop bc
-	pop de
-	pop hl
-	ret
+	jp PopAFBCDEHL
 
 PlayMapMusic::
 	push hl
@@ -357,11 +330,7 @@ PlayMapMusic::
 	cp e
 	call nz, PlayMusicAfterDelay
 
-	pop af
-	pop bc
-	pop de
-	pop hl
-	ret
+	jp PopAFBCDEHL
 
 EnterMapMusic::
 	push hl
@@ -374,11 +343,7 @@ EnterMapMusic::
 	call GetMapMusic
 	call PlayMusicAfterDelay
 
-	pop af
-	pop bc
-	pop de
-	pop hl
-	ret
+	jp PopAFBCDEHL
 
 TryRestartMapMusic::
 	ld a, [wDontPlayMapMusicOnReload]
@@ -405,11 +370,7 @@ RestartMapMusic::
 	ld e, a
 	ld d, 0
 	call PlayMusic
-	pop af
-	pop bc
-	pop de
-	pop hl
-	ret
+	jp PopAFBCDEHL
 
 GetMapMusic::
 	ld hl, SpecialMusicMaps

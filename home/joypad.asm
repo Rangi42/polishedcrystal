@@ -111,10 +111,10 @@ GetJoypad::
 ;     6 UP
 ;     7 DOWN
 
-	push af
 	push hl
 	push de
 	push bc
+	push af
 
 ; The player input can be automated using an input stream.
 ; See more below.
@@ -147,11 +147,7 @@ GetJoypad::
 	ldh [hJoyDown], a ; frame input
 
 .quit
-	pop bc
-	pop de
-	pop hl
-	pop af
-	ret
+	jp PopAFBCDEHL
 
 .auto
 ; Use a predetermined input stream (used in the catching tutorial).

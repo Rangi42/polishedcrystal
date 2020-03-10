@@ -11,10 +11,10 @@ NamesPointers::
 GetName::
 ; Return name wCurSpecies from name list wNamedObjectTypeBuffer in wStringBuffer1.
 	ldh a, [hROMBank]
-	push af
 	push hl
-	push bc
 	push de
+	push bc
+	push af
 
 	ld a, [wNamedObjectTypeBuffer]
 	cp PKMN_NAME
@@ -50,10 +50,10 @@ GetName::
 	rst CopyBytes
 
 .done
-	pop de
-	pop bc
-	pop hl
 	pop af
+	pop bc
+	pop de
+	pop hl
 	rst Bankswitch
 	ret
 

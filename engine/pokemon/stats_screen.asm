@@ -1130,11 +1130,7 @@ StatsScreen_LoadTextBoxSpaceGFX:
 	call Get1bpp
 	pop af
 	ldh [rVBK], a
-	pop af
-	pop bc
-	pop de
-	pop hl
-	ret
+	jp PopAFBCDEHL
 
 EggStatsScreen:
 	xor a

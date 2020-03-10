@@ -50,11 +50,7 @@ _MapSetup_Sound_Off::
 	ld a, $77 ; max
 	ld [wVolume], a
 	call MusicOn
-	pop af
-	pop bc
-	pop de
-	pop hl
-	ret
+	jp PopAFBCDEHL
 
 MusicFadeRestart:
 ; restart but keep the music id to fade in to

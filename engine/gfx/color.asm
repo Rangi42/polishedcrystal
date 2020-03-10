@@ -291,10 +291,10 @@ FillBoxCGB:
 	ret
 
 ResetBGPals:
-	push af
-	push bc
-	push de
 	push hl
+	push de
+	push bc
+	push af
 
 	ldh a, [rSVBK]
 	push af
@@ -333,11 +333,7 @@ endc
 	pop af
 	ldh [rSVBK], a
 
-	pop hl
-	pop de
-	pop bc
-	pop af
-	ret
+	jp PopAFBCDEHL
 
 WipeAttrMap:
 	hlcoord 0, 0, wAttrMap

@@ -7,10 +7,10 @@
 ; This prevents the display and audio output from lagging.
 
 VBlank::
-	push af
-	push bc
-	push de
 	push hl
+	push de
+	push bc
+	push af
 
 	ldh a, [hBuffer]
 	push af
@@ -51,10 +51,10 @@ VBlank::
 	ldh a, [hROMBankBackup]
 	rst Bankswitch
 
-	pop hl
-	pop de
-	pop bc
 	pop af
+	pop bc
+	pop de
+	pop hl
 	reti
 
 .skipToGameTime

@@ -36,22 +36,25 @@ DoEncoreDisable:
 	cp ENCORE
 	jr z, .failed
 .move_ok
+
 	push hl
 	push de
+	push bc
 	push af
+
 	ld [wNamedObjectIndexBuffer], a
 	call GetMoveName
-
 	; since abilities use strbuf1, copy to strbuf2 to not overwrite it
 	ld hl, wStringBuffer1
 	ld de, wStringBuffer2
-	push bc
 	ld bc, MOVE_NAME_LENGTH
 	rst CopyBytes
-	pop bc
+
 	pop af
+	pop bc
 	pop de
 	pop hl
+
 	call UserKnowsMove
 	ret nz
 

@@ -233,10 +233,10 @@ DoNPCTrade:
 	ld a, [hl]
 	ld [de], a
 
-	push af
-	push bc
-	push de
 	push hl
+	push de
+	push bc
+	push af
 	ld a, [wCurPartyMon]
 	push af
 	ld a, [wPartyCount]
@@ -245,11 +245,7 @@ DoNPCTrade:
 	farcall ComputeNPCTrademonStats
 	pop af
 	ld [wCurPartyMon], a
-	pop hl
-	pop de
-	pop bc
-	pop af
-	ret
+	jp PopAFBCDEHL
 
 GetTradeAttribute:
 	ld d, 0

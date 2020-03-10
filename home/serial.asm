@@ -1,10 +1,10 @@
 Serial::
 ; The serial interrupt.
 
-	push af
-	push bc
-	push de
 	push hl
+	push de
+	push bc
+	push af
 
 	ldh a, [hSerialConnectionStatus]
 	inc a ; is it equal to -1?
@@ -65,10 +65,10 @@ Serial::
 	ld a, SERIAL_NO_DATA_BYTE
 	ldh [hSerialSend], a
 
-	pop hl
-	pop de
-	pop bc
 	pop af
+	pop bc
+	pop de
+	pop hl
 	reti
 
 ; hl = send data

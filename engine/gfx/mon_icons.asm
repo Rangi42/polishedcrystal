@@ -133,11 +133,7 @@ ProcessMenuMonIconColor:
 	jr nz, .colorIcon
 
 .finish
-	pop af
-	pop bc
-	pop de
-	pop hl
-	ret
+	jp PopAFBCDEHL
 
 GetMonIconPalette::
 	push af

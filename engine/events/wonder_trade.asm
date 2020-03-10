@@ -321,10 +321,10 @@ endr
 	ld [de], a
 
 .compute_trademon_stats
-	push af
-	push bc
-	push de
 	push hl
+	push de
+	push bc
+	push af
 	ld a, [wCurPartyMon]
 	push af
 	ld a, [wPartyCount]
@@ -334,11 +334,7 @@ endr
 	farcall GivePokerusToWonderTradeMon
 	pop af
 	ld [wCurPartyMon], a
-	pop hl
-	pop de
-	pop bc
-	pop af
-	ret
+	jp PopAFBCDEHL
 
 GetGSBallPichu:
 	ld a, 2

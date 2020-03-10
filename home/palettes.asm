@@ -62,11 +62,12 @@ DmgToCgbBGPals::
 ; input: a -> bgp
 
 	ldh [rBGP], a
-	push af
 
 	push hl
 	push de
 	push bc
+	push af
+
 	ldh a, [rSVBK]
 	push af
 
@@ -88,11 +89,8 @@ DmgToCgbBGPals::
 
 	pop af
 	ldh [rSVBK], a
-	pop bc
-	pop de
-	pop hl
-	pop af
-	ret
+
+	jp PopAFBCDEHL
 
 DmgToCgbObjPals::
 ; exists to forego reinserting cgb-converted image data
@@ -136,10 +134,10 @@ DmgToCgbObjPals::
 
 DmgToCgbObjPal0::
 	ldh [rOBP0], a
-	push af
 	push hl
 	push de
 	push bc
+	push af
 
 	ldh a, [rSVBK]
 	push af
@@ -158,18 +156,14 @@ DmgToCgbObjPal0::
 	pop af
 	ldh [rSVBK], a
 
-	pop bc
-	pop de
-	pop hl
-	pop af
-	ret
+	jp PopAFBCDEHL
 
 DmgToCgbObjPal1::
 	ldh [rOBP1], a
-	push af
 	push hl
 	push de
 	push bc
+	push af
 
 	ldh a, [rSVBK]
 	push af
@@ -188,11 +182,7 @@ DmgToCgbObjPal1::
 	pop af
 	ldh [rSVBK], a
 
-	pop bc
-	pop de
-	pop hl
-	pop af
-	ret
+	jp PopAFBCDEHL
 
 CopyPals::
 ; copy c palettes in order b from de to hl

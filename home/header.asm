@@ -14,10 +14,12 @@ PushWindow::
 SECTION "rst08 FarCall", ROM0[$0008]
 	jp RstFarCall
 
-LoadMapPart::
-	farjp _LoadMapPart
-
-	ds 1 ; free space
+PopAFBCDEHL::
+	pop af
+	pop bc
+	pop de
+	pop hl
+	ret
 
 
 SECTION "rst10 Bankswitch", ROM0[$0010]

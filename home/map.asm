@@ -70,6 +70,9 @@ GetMapTrigger::
 	pop hl
 	ret
 
+LoadMapPart::
+	farjp _LoadMapPart
+
 ReturnToMapFromSubmenu::
 	ld a, MAPSETUP_SUBMENU
 	ldh [hMapEntryMethod], a

@@ -6098,19 +6098,15 @@ Call_PlayBattleAnim:
 	predef_jump PlayBattleAnim
 
 FinishBattleAnim:
-	push af
-	push bc
-	push de
 	push hl
+	push de
+	push bc
+	push af
 	ld a, CGB_BATTLE_COLORS
 	call GetCGBLayout
 	call SetPalettes
 	call DelayFrame
-	pop hl
-	pop de
-	pop bc
-	pop af
-	ret
+	jp PopAFBCDEHL
 
 GiveExperiencePoints:
 ; Give experience.

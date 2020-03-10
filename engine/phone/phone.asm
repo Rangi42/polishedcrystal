@@ -147,8 +147,8 @@ CheckPhoneCall::
 
 CheckPhoneContactTimeOfDay:
 	push hl
-	push bc
 	push de
+	push bc
 	push af
 
 	farcall CheckTime
@@ -156,8 +156,8 @@ CheckPhoneContactTimeOfDay:
 	and (1 << MORN) + (1 << DAY) + (1 << NITE)
 	and c
 
-	pop de
 	pop bc
+	pop de
 	pop hl
 	ret
 

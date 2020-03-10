@@ -4223,6 +4223,7 @@ UpdateMoveData:
 	pop bc
 	pop de
 	pop hl
+
 	call GetFixedMoveStruct
 	call GetMoveName
 	jp CopyName1

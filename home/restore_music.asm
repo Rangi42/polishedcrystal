@@ -29,11 +29,7 @@ SaveMusic::
 	pop af
 	ldh [rSVBK], a
 
-	pop af
-	pop bc
-	pop de
-	pop hl
-	ret
+	jp PopAFBCDEHL
 
 RestoreMusic::
 	push hl
@@ -74,11 +70,7 @@ RestoreMusic::
 	pop af
 	ldh [rSVBK], a
 
-	pop af
-	pop bc
-	pop de
-	pop hl
-	ret
+	jp PopAFBCDEHL
 
 DeleteSavedMusic::
 	push af

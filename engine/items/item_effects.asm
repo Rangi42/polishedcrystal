@@ -1388,19 +1388,19 @@ ItemActionText:
 	ld a, [wCurPartySpecies]
 	push af
 	ld a, [wCurPartyMon]
-	push af
 	push hl
 	push de
 	push bc
+	push af
 	farcall WritePartyMenuTilemap
 	farcall PrintPartyMenuActionText
 	call ApplyTilemapInVBlank
 	call SetPalettes
 	call DelayFrame
+	pop af
 	pop bc
 	pop de
 	pop hl
-	pop af
 	ld [wCurPartyMon], a
 	pop af
 	ld [wCurPartySpecies], a
