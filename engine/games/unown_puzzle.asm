@@ -163,8 +163,7 @@ PlaceStartCancelBoxBorder:
 	ld a, $f1
 	call ByteFill
 	hlcoord 15, 17
-	ld a, $f5
-	ld [hl], a
+	ld [hl], $f5
 	ret
 
 UnownPuzzleJumptable:

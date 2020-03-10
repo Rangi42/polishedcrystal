@@ -937,8 +937,7 @@ Functiondd64:
 .okay
 	ld [hli], a
 	ld [wCurSpecies], a
-	ld a, $ff
-	ld [hl], a
+	ld [hl], $ff
 	ld hl, wPartyMonNicknames
 	ld a, [wPartyCount]
 	dec a

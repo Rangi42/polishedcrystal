@@ -17,8 +17,7 @@ CheckPartyFullAfterContest:
 	ld a, [wContestMon]
 	ld [hli], a
 	ld [wCurSpecies], a
-	ld a, $ff
-	ld [hl], a
+	ld [hl], $ff
 	ld hl, wPartyMon1Species
 	ld a, [wPartyCount]
 	dec a
@@ -76,11 +75,9 @@ CheckPartyFullAfterContest:
 	dec a
 	ld hl, wPartyMon1CaughtLocation
 	call GetPartyLocation
-	ld a, NATIONAL_PARK
-	ld [hl], a
+	ld [hl], NATIONAL_PARK
 	xor a
 	ld [wContestMon], a
-	and a
 	ldh [hScriptVar], a
 	ret
 
@@ -135,8 +132,7 @@ CheckPartyFullAfterContest:
 	ld a, BANK(sBoxMon1CaughtLocation)
 	call GetSRAMBank
 	ld hl, sBoxMon1CaughtLocation
-	ld a, NATIONAL_PARK
-	ld [hl], a
+	ld [hl], NATIONAL_PARK
 	call CloseSRAM
 	xor a
 	ld [wContestMon], a
@@ -158,7 +154,7 @@ GiveANickname_YesNo:
 	jp YesNoBox
 
 .AlwaysNickname:
-	ld a, 1
+	ld a, TRUE
 	and a
 	ret
 

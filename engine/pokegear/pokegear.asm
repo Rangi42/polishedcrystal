@@ -2043,8 +2043,7 @@ TownMapBubble:
 	ld a, " "
 	call ByteFill
 ; Top-right corner
-	ld a, $38
-	ld [hl], a
+	ld [hl], $38
 	hlcoord 1, 1
 
 ; Middle row
@@ -2061,8 +2060,7 @@ TownMapBubble:
 	ld a, " "
 	call ByteFill
 ; Bottom-right corner
-	ld a, $3a
-	ld [hl], a
+	ld [hl], $3a
 
 ; Print "Where?"
 	hlcoord 2, 0

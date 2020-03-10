@@ -823,8 +823,7 @@ Text_ASM::
 	jp hl
 
 .not_rom
-	ld a, "@"
-	ld [hl], a
+	ld [hl], "@"
 	ret
 
 Text_PrintNum::

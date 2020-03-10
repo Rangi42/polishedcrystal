@@ -705,8 +705,7 @@ DrawMailBorder:
 	hlcoord 19, 1
 	ld a, $35
 	call Mail_DrawLeftRightBorder
-	ld a, $38
-	ld [hl], a
+	ld [hl], $38
 	ret
 
 DrawMailBorder2:

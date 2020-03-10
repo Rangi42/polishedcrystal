@@ -19,8 +19,7 @@ DrawBattleHPBar::
 	ld [hli], a
 	dec d
 	jr nz, .template
-	ld a, "<HPEND>" ; bar end cap
-	ld [hl], a
+	ld [hl], "<HPEND>" ; bar end cap
 	pop hl
 
 ; Safety check # pixels

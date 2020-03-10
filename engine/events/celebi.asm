@@ -28,8 +28,7 @@ Special_CelebiShrineEvent:
 	ld [hl], SPRITE_ANIM_SEQ_CELEBI
 	ld hl, SPRITEANIMSTRUCT_0F
 	add hl, bc
-	ld a, $80
-	ld [hl], a
+	ld [hl], $80
 	ld a, 160 ; frame count
 	ld [wcf64], a
 	ld d, $0

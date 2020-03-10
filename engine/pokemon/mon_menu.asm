@@ -1370,8 +1370,7 @@ MoveScreen_ListMovesFast:
 	and a
 	jr z, .skip_up
 	hlcoord 18, 2
-	ld a, "▲"
-	ld [hl], a
+	ld [hl], "▲"
 .skip_up
 	ld a, [wMoveScreenOffset]
 	ld b, a
@@ -1380,8 +1379,7 @@ MoveScreen_ListMovesFast:
 	sub 5
 	jr c, .skip_down
 	hlcoord 18, 10
-	ld a, "▼"
-	ld [hl], a
+	ld [hl], "▼"
 .skip_down
 	jp PlaceMoveData
 

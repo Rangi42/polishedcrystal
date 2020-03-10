@@ -102,8 +102,7 @@ RunBattleTowerTrainer:
 	ld a, [wNrOfBeatenBattleTowerTrainers]
 	add "1"
 	ld [hli], a
-	ld a, "@"
-	ld [hl], a
+	ld [hl], "@"
 
 .lost
 	pop af

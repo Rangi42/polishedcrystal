@@ -193,8 +193,7 @@ ConvertBerriesToBerryJuice:
 	ret
 
 .convertToJuice
-	ld a, BERRY_JUICE
-	ld [hl], a
+	ld [hl], BERRY_JUICE
 	pop hl
 	pop af
 	ret

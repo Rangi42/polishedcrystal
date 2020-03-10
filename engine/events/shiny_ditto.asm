@@ -42,8 +42,7 @@ endr
 ; Shiny with hidden ability.
 	ld a, SHINY_MASK | HIDDEN_ABILITY | QUIRKY
 	ld [hli], a
-	ld a, MALE
-	ld [hl], a
+	ld [hl], MALE
 
 ; Recalculate stats after changing DVs and Nature
 	ld hl, wPartyMon1MaxHP

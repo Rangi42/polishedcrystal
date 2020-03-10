@@ -492,8 +492,7 @@ StatsScreen_LoadGFX:
 	call Request2bpp
 	; draw center
 	hlcoord 8, 6
-	ld a, $40 ; center
-	ld [hl], a
+	ld [hl], $40 ; center
 	ret
 
 .LoadPals:

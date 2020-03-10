@@ -482,8 +482,7 @@ DayCare_GiveEgg:
 	ld [wEggMonForm], a
 .not_red_magikarp
 
-	ld a, -1
-	ld [hl], a
+	ld [hl], -1
 
 	ld hl, wPartyMonNicknames
 	ld bc, PKMN_NAME_LENGTH

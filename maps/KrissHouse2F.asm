@@ -292,8 +292,7 @@ FillPokedex:
 	ld a, %11111111
 	ld bc, 31 ; 001-248
 	call ByteFill
-	ld a, %00111111
-	ld [hl], a ; 249-254
+	ld [hl], %00111111 ; 249-254
 	ret
 
 else

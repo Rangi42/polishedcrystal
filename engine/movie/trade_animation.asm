@@ -528,8 +528,7 @@ TradeAnim_TubeAnimJumptable:
 	ld a, $60
 	call ByteFill
 	hlcoord 17, 3
-	ld a, $5d
-	ld [hl], a
+	ld [hl], $5d
 
 	ld a, $61
 	ld de, SCREEN_WIDTH
@@ -543,8 +542,7 @@ TradeAnim_TubeAnimJumptable:
 	add hl, de
 	ld a, $5f
 	ld [hld], a
-	ld a, $5b
-	ld [hl], a
+	ld [hl], $5b
 	hlcoord 10, 6
 	; fallthrough
 

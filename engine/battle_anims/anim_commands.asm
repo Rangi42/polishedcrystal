@@ -737,8 +737,7 @@ BattleAnimCmd_EnemyFeetObj:
 	ld [hli], a
 	ld a, $29
 	ld [hli], a
-	ld a, $49
-	ld [hl], a
+	ld [hl], $49
 
 	ld hl, vTiles0 tile $73
 	ld de, vTiles2 tile $06
@@ -790,8 +789,7 @@ BattleAnimCmd_PlayerHeadObj:
 	ld [hli], a
 	ld a, $29
 	ld [hli], a
-	ld a, $43
-	ld [hl], a
+	ld [hl], $43
 
 	ld hl, vTiles0 tile $66
 	ld de, vTiles2 tile $05

@@ -365,8 +365,7 @@ MusicPlayerLoop:
 	xor a
 	ld [wChannelSelector], a
 	hlcoord 3, MP_HUD_TOP
-	ld a, "◀"
-	ld [hl], a
+	ld [hl], "◀"
 ; fallthrough
 
 SongEditor:
@@ -1302,8 +1301,7 @@ CheckForVolumeBarReset:
 	ld e, a
 	ld d, 0
 	add hl, de
-	ld a, 1
-	ld [hl], a
+	ld [hl], 1
 	ld hl, wChLastNotes
 	add hl, de
 	xor a
