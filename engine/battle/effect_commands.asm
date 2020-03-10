@@ -1326,10 +1326,7 @@ CheckTypeMatchup:
 .done_ground_type
 	farcall CheckNullificationAbilities
 .end
-	pop bc
-	pop de
-	pop hl
-	ret
+	jp PopBCDEHL
 
 _CheckTypeMatchup:
 	push hl
@@ -4188,10 +4185,7 @@ UpdateMoveData:
 	ld bc, wPlayerMoveStructEnd - wPlayerMoveStruct
 	xor a
 	call ByteFill
-	pop bc
-	pop de
-	pop hl
-	ret
+	jp PopBCDEHL
 
 .not_null
 	ld [wCurMove], a
@@ -6315,10 +6309,7 @@ AnimateCurrentMove:
 	ld [wKickCounter], a
 	call LoadMoveAnim
 	call BattleCommand_raisesub
-	pop bc
-	pop de
-	pop hl
-	ret
+	jp PopBCDEHL
 
 PlayDamageAnim:
 	xor a
@@ -6371,10 +6362,7 @@ PlayUserBattleAnim:
 	push de
 	push bc
 	farcall PlayBattleAnim
-	pop bc
-	pop de
-	pop hl
-	ret
+	jp PopBCDEHL
 
 CallBattleCore:
 	ld a, BANK(BattleCore)
@@ -6495,7 +6483,4 @@ _CheckBattleEffects:
 	push de
 	push bc
 	farcall CheckBattleEffects
-	pop bc
-	pop de
-	pop hl
-	ret
+	jp PopBCDEHL

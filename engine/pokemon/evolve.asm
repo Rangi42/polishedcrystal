@@ -669,10 +669,7 @@ FillMoves:
 	jr .NextMove
 
 .done
-	pop bc
-	pop de
-	pop hl
-	ret
+	jp PopBCDEHL
 
 ShiftMoves:
 	ld c, NUM_MOVES - 1

@@ -5,10 +5,7 @@ GetSpritePalette::
 	push de
 	push bc
 	farcall _GetSpritePalette
-	pop bc
-	pop de
-	pop hl
-	ret
+	jp PopBCDEHL
 
 GetSpriteVTile::
 	push hl
@@ -55,10 +52,7 @@ GetSpriteVTile::
 	jr nz, .using_vbk1
 	or $80
 .using_vbk1
-	pop bc
-	pop de
-	pop hl
-	ret
+	jp PopBCDEHL
 
 DoesSpriteHaveFacings::
 	push de

@@ -70,10 +70,7 @@ ReloadVisibleSprites::
 	ldh [hUsedSpriteIndex], a
 	call ReloadSpriteIndex
 	call LoadEmoteGFX
-	pop bc
-	pop de
-	pop hl
-	ret
+	jp PopBCDEHL
 
 ReloadSpriteIndex::
 ; Reloads sprites using hUsedSpriteIndex.

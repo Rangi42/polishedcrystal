@@ -2,8 +2,8 @@ Random::
 	; just like the stock RNG, this exits with the value in [hRandomSub]
 	; it also stores a random value in [hRandomAdd]
 	push hl
-	push bc
 	push de
+	push bc
 	call UpdateDividerCounters
 	ld hl, wRNGState
 	ld a, [hli]
@@ -70,10 +70,7 @@ endr
 	inc hl
 	sub [hl]
 	ldh [hRandomSub], a
-	pop de
-	pop bc
-	pop hl
-	ret
+	jp PopBCDEHL
 
 UpdateDividerCounters::
 	ldh a, [rDIV]

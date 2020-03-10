@@ -49,10 +49,7 @@ PrintLetterDelay::
 	and A_BUTTON | B_BUTTON
 	jr z, .textDelayLoop
 .done
-	pop bc
-	pop de
-	pop hl
-	ret
+	jp PopBCDEHL
 
 CopyDataUntil::
 ; Copy [hl .. bc) to de.

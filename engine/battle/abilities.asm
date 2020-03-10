@@ -1703,19 +1703,16 @@ EnableAnimations:
 ShowEnemyAbilityActivation::
 	call CallOpponentTurn
 ShowAbilityActivation::
-	push bc
-	push de
 	push hl
+	push de
+	push bc
 	ld a, BATTLE_VARS_ABILITY
 	call GetBattleVar
 	ld b, a
 	farcall BufferAbility
 	ld hl, BattleText_UsersStringBuffer1Activated
 	call StdBattleTextBox
-	pop hl
-	pop de
-	pop bc
-	ret
+	jp PopBCDEHL
 
 RunPostBattleAbilities::
 ; Checks party for potentially finding items (Pickup) or curing status (Natural Cure)

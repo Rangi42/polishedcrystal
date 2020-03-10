@@ -3,9 +3,9 @@ Fish:
 ; Fish for monsters with rod e in encounter group d.
 ; Return monster e at level d.
 
-	push af
-	push bc
 	push hl
+	push bc
+	push af
 
 	ld b, e
 	call GetFishGroupIndex
@@ -16,9 +16,9 @@ rept 8 ; size of dbbwww
 endr
 	call .Fish
 
-	pop hl
-	pop bc
 	pop af
+	pop bc
+	pop hl
 	ret
 
 .Fish:

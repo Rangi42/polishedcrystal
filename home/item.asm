@@ -15,10 +15,7 @@ TossItem::
 	pop bc
 	ld a, b
 	rst Bankswitch
-	pop bc
-	pop de
-	pop hl
-	ret
+	jp PopBCDEHL
 
 ReceiveItem::
 	push bc
@@ -63,10 +60,7 @@ CheckItem::
 	pop bc
 	ld a, b
 	rst Bankswitch
-	pop bc
-	pop de
-	pop hl
-	ret
+	jp PopBCDEHL
 
 CheckTMHM::
 	ld a, [wCurTMHM]

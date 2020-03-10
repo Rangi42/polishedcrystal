@@ -52,10 +52,7 @@ DrawBattleHPBar::
 	ld [hl], a
 
 .done
-	pop bc
-	pop de
-	pop hl
-	ret
+	jp PopBCDEHL
 
 PrepMonFrontpic::
 	ld a, $1
@@ -109,9 +106,9 @@ Print8BitNumRightAlign::
 	jp PrintNum
 
 GetBaseData::
-	push bc
-	push de
 	push hl
+	push de
+	push bc
 	ldh a, [hROMBank]
 	push af
 	ld a, BANK(BaseData)
@@ -133,17 +130,14 @@ GetBaseData::
 	jr .end
 
 .egg
-;; Sprite dimensions
-	ld a, $55 ; 5x5
+; Sprite dimensions
+	ln a, 5, 5 ; 5x5
 	ld [wBasePicSize], a
 
 .end
 	pop af
 	rst Bankswitch
-	pop hl
-	pop de
-	pop bc
-	ret
+	jp PopBCDEHL
 
 GetNature::
 ; 'b' contains the target Nature to check
@@ -173,18 +167,15 @@ GetLeadAbility::
 	ret z
 	dec a
 	ret z
-	push bc
-	push de
 	push hl
+	push de
+	push bc
 	ld c, a
 	ld a, [wPartyMon1Ability]
 	ld b, a
 	call GetAbility
 	ld a, b
-	pop hl
-	pop de
-	pop bc
-	ret
+	jp PopBCDEHL
 
 GetAbility::
 ; 'b' contains the target ability to check
@@ -229,14 +220,11 @@ GetCurNick::
 
 GetNick::
 ; Get nickname a from list hl.
+	ld de, wStringBuffer1
 	push hl
+	push de
 	push bc
 	call SkipNames
-	ld de, wStringBuffer1
-	push de
 	ld bc, PKMN_NAME_LENGTH
 	rst CopyBytes
-	pop de
-	pop bc
-	pop hl
-	ret
+	jp PopBCDEHL

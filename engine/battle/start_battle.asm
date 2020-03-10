@@ -128,10 +128,7 @@ PlayBattleMusic:
 .done
 	call PlayMusic
 
-	pop bc
-	pop de
-	pop hl
-	ret
+	jp PopBCDEHL
 
 .loadfromarray
 	ld e, 3

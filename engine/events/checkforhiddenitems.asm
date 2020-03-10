@@ -135,9 +135,9 @@ ItemFinder_GetFarByte:
 CalculateItemDistance:
 ; Calculate how close a is to the player.
 ; a: $xy (literally) where 0 is topleft and height (or width)/2 bottom right
-	push bc
-	push de
 	push hl
+	push de
+	push bc
 	ld b, a
 	and $f
 	ld e, a
@@ -212,7 +212,4 @@ CalculateItemDistance:
 	and $f0
 	or b
 	add c
-	pop hl
-	pop de
-	pop bc
-	ret
+	jp PopBCDEHL

@@ -589,7 +589,7 @@ SentGetPkmnIntoFromBox:
 	ld a, [wCurPartySpecies]
 	cp EGG
 	jr nz, .species_valid
-	rst 0 ; crash
+	rst EntryPoint ; crash
 .species_valid
 	ld a, BANK(sBoxCount)
 	call GetSRAMBank
@@ -1773,10 +1773,7 @@ CalcPkmnStatC:
 	ldh [hMultiplicand + 1], a
 	ldh a, [hQuotient + 2]
 	ldh [hMultiplicand + 2], a
-	pop bc
-	pop de
-	pop hl
-	ret
+	jp PopBCDEHL
 
 GetNatureStatMultiplier::
 ; a points to Nature

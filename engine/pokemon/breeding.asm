@@ -670,10 +670,7 @@ EggHatch_DoAnimFrame:
 	push bc
 	farcall PlaySpriteAnimations
 	call DelayFrame
-	pop bc
-	pop de
-	pop hl
-	ret
+	jp PopBCDEHL
 
 EggHatch_AnimationSequence:
 	ld a, [wd265]

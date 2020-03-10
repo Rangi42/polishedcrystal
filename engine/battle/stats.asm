@@ -381,10 +381,7 @@ endc
 	ld a, CGB_BATTLE_COLORS
 	call GetCGBLayout
 	call SetPalettes
-	pop bc
-	pop de
-	pop hl
-	ret
+	jp PopBCDEHL
 
 StatPals: ; similar to X items
 ; attack - red

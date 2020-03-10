@@ -1261,10 +1261,7 @@ LoadGraphicsAndDelay::
 	call z, DelayFrame
 	pop af
 	ldh [rVBK], a
-	pop bc
-	pop de
-	pop hl
-	ret
+	jp PopBCDEHL
 
 _LoadTileset:
 ; Loads one of up to 3 tileset groups depending on a
@@ -2109,10 +2106,7 @@ GetMapPermission::
 	ld de, 2 ; permission
 	call GetMapHeaderMember
 	ld a, c
-	pop bc
-	pop de
-	pop hl
-	ret
+	jp PopBCDEHL
 
 GetAnyMapPermission::
 	push hl
@@ -2121,10 +2115,7 @@ GetAnyMapPermission::
 	ld de, 2 ; permission
 	call GetAnyMapHeaderMember
 	ld a, c
-	pop bc
-	pop de
-	pop hl
-	ret
+	jp PopBCDEHL
 
 GetAnyMapTileset::
 	ld de, 1 ; tileset
@@ -2142,10 +2133,7 @@ GetWorldMapLocation::
 	call GetAnyMapHeaderMember
 	ld a, c
 
-	pop bc
-	pop de
-	pop hl
-	ret
+	jp PopBCDEHL
 
 GetCurrentLandmark::
 	ld a, [wMapGroup]
@@ -2270,10 +2258,7 @@ GetFishingGroup::
 	call GetMapHeaderMember
 	ld a, c
 
-	pop bc
-	pop hl
-	pop de
-	ret
+	jp PopBCDEHL
 
 TilesetUnchanged::
 ; returns z if tileset is unchanged from last tileset

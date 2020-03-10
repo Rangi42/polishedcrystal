@@ -2294,10 +2294,7 @@ AICheckEnemyHalfHP:
 	cp c
 	ld a, [hl]
 	sbc b
-	pop bc
-	pop de
-	pop hl
-	ret
+	jp PopBCDEHL
 
 AICheckEnemyQuarterHP:
 	push hl
@@ -2317,10 +2314,7 @@ AICheckEnemyQuarterHP:
 	cp c
 	ld a, [hl]
 	sbc b
-	pop bc
-	pop de
-	pop hl
-	ret
+	jp PopBCDEHL
 
 AICheckPlayerQuarterHP:
 	push hl
@@ -2400,10 +2394,7 @@ AIHasMoveInArray:
 	scf
 
 .done
-	pop bc
-	pop de
-	pop hl
-	ret
+	jp PopBCDEHL
 
 UsefulMoves:
 ; Moves that are usable all-around.
@@ -2924,18 +2915,12 @@ AIDiscourageMove:
 
 AIGetEnemyMove:
 ; Load attributes of move a into ram
-
 	push hl
 	push de
 	push bc
-
 	ld de, wEnemyMoveStruct
 	call GetFixedMoveStruct
-
-	pop bc
-	pop de
-	pop hl
-	ret
+	jp PopBCDEHL
 
 AI_80_20:
 	call Random

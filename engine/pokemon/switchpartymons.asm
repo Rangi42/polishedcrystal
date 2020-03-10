@@ -128,10 +128,7 @@ _SwitchPartyMons:
 	ld bc, MAIL_STRUCT_LENGTH
 	rst CopyBytes
 	call CloseSRAM
-	pop bc
-	pop de
-	pop hl
-	ret
+	jp PopBCDEHL
 
 .CopyNameTowd002:
 	ld de, wd002

@@ -30,21 +30,18 @@ SimpleDivide::
 	dec b
 	ret
 .div0
-	rst 0 ; crash
+	rst EntryPoint ; crash
 
 Multiply::
 ; Multiply hMultiplicand (3 bytes) by hMultiplier. Result in hProduct.
 ; All values are big endian.
 	push hl
-	push bc
 	push de
+	push bc
 
 	farcall _Multiply
 
-	pop de
-	pop bc
-	pop hl
-	ret
+	jp PopBCDEHL
 
 Divide::
 ; Divide hDividend length b (max 4 bytes) by hDivisor. Result in hQuotient.
@@ -55,10 +52,7 @@ Divide::
 
 	homecall _Divide
 
-	pop bc
-	pop de
-	pop hl
-	ret
+	jp PopBCDEHL
 
 MultiplyAndDivide::
 ; a = $xy: multiply multiplicands by x, then divide by y

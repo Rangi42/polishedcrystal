@@ -16,6 +16,7 @@ SECTION "rst08 FarCall", ROM0[$0008]
 
 PopAFBCDEHL::
 	pop af
+PopBCDEHL::
 	pop bc
 	pop de
 	pop hl

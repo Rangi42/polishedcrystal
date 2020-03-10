@@ -156,10 +156,7 @@ CheckPhoneContactTimeOfDay:
 	and (1 << MORN) + (1 << DAY) + (1 << NITE)
 	and c
 
-	pop bc
-	pop de
-	pop hl
-	ret
+	jp PopBCDEHL
 
 ChooseRandomCaller:
 ; If no one is available to call, don't return anything.

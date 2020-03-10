@@ -1488,10 +1488,7 @@ GetParticipantsNotFainted::
 	dec d
 	jr nz, .loop
 	ld a, e
-	pop bc
-	pop de
-	pop hl
-	ret
+	jp PopBCDEHL
 
 GetParticipantVar::
 	ld a, [wCurOTMon]
@@ -3443,10 +3440,7 @@ ItemRecoveryAnim::
 	ld [wNumHits], a
 	ld [wFXAnimIDHi], a
 	predef PlayBattleAnim
-	pop bc
-	pop de
-	pop hl
-	ret
+	jp PopBCDEHL
 
 StealHeldStatusHealingItem:
 	farcall GetOpponentItem
@@ -3552,10 +3546,7 @@ UpdateBattleHUDs:
 	call DrawEnemyHUD
 	ld hl, wEnemyHPPal
 	call SetHPPal
-	pop bc
-	pop de
-	pop hl
-	ret
+	jp PopBCDEHL
 
 UpdatePlayerHUD::
 	push hl
@@ -3564,10 +3555,7 @@ UpdatePlayerHUD::
 	call DrawPlayerHUD
 	call UpdatePlayerHPPal
 	call CheckDanger
-	pop bc
-	pop de
-	pop hl
-	ret
+	jp PopBCDEHL
 
 DrawPlayerHUD:
 	ld a, [wPlayerSubStatus2]
@@ -3706,10 +3694,7 @@ UpdateEnemyHUD::
 	push bc
 	call DrawEnemyHUD
 	call UpdateEnemyHPPal
-	pop bc
-	pop de
-	pop hl
-	ret
+	jp PopBCDEHL
 
 DrawEnemyHUD:
 	ld a, [wEnemySubStatus2]
@@ -5185,9 +5170,9 @@ CheckUsableMove:
 ; 3 - choiced
 ; 4 - assault vest on status move
 ; 5 - encored
-	push bc
-	push de
 	push hl
+	push de
+	push bc
 
 	; Check if we're out of pp
 	ld c, a
@@ -5287,10 +5272,8 @@ CheckUsableMove:
 	xor a
 .end
 	and a
-	pop hl
-	pop de
-	pop bc
-	ret
+
+	jp PopBCDEHL
 
 ParseEnemyAction:
 ; Unconditionally perform at least one link exchange
@@ -5938,10 +5921,7 @@ FinalPkmnSlideInEnemyMonFrontpic:
 	dec e
 	jr nz, .loop
 
-	pop bc
-	pop de
-	pop hl
-	ret
+	jp PopBCDEHL
 
 BattleWinSlideInEnemyTrainerFrontpic:
 	xor a
@@ -5998,10 +5978,7 @@ BattleWinSlideInEnemyTrainerFrontpic:
 	dec e
 	jr nz, .loop
 
-	pop bc
-	pop de
-	pop hl
-	ret
+	jp PopBCDEHL
 
 _LoadBattleFontsHPBar:
 	farjp LoadBattleFontsHPBar

@@ -194,10 +194,7 @@ LoadPartyMenuMonIcon:
 	call .SpawnItemIcon
 	call SetPartyMonIconAnimSpeed
 
-	pop bc
-	pop de
-	pop hl
-	ret
+	jp PopBCDEHL
 
 .SpawnItemIcon:
 	ldh a, [hObjectStructIndexBuffer]
@@ -246,10 +243,7 @@ LoadNamingScreenMonIcon:
 	add hl, bc
 	ld [hl], SPRITE_ANIM_SEQ_NULL
 
-	pop bc
-	pop de
-	pop hl
-	ret
+	jp PopBCDEHL
 
 LoadMoveMenuMonIcon:
 	push hl
@@ -279,10 +273,7 @@ LoadMoveMenuMonIcon:
 	add hl, bc
 	ld [hl], SPRITE_ANIM_SEQ_NULL
 
-	pop bc
-	pop de
-	pop hl
-	ret
+	jp PopBCDEHL
 
 LoadTradeAnimationMonIcon:
 	push hl
@@ -297,10 +288,7 @@ LoadTradeAnimationMonIcon:
 	ld [wCurIconTile], a
 	call GetMemIconGFX
 
-	pop bc
-	pop de
-	pop hl
-	ret
+	jp PopBCDEHL
 
 InitPartyMenuIcon:
 	ld a, [wCurIconTile]

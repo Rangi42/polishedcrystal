@@ -378,9 +378,9 @@ JudgePokemon:
 	done
 
 JudgeGetStatName:
-	push bc
-	push de
 	push hl
+	push de
+	push bc
 	ld hl, .names
 .loop
 	dec d
@@ -395,10 +395,7 @@ JudgeGetStatName:
 	ld de, wStringBuffer1
 	ld bc, wStringBuffer2 - wStringBuffer1
 	rst CopyBytes
-	pop hl
-	pop de
-	pop bc
-	ret
+	jp PopBCDEHL
 
 .names
 	db "Spcl.Def@"

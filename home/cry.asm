@@ -41,10 +41,7 @@ _PlayCry::
 	call PlayCryHeader
 
 .done
-	pop bc
-	pop de
-	pop hl
-	ret
+	jp PopBCDEHL
 
 LoadCryHeader::
 ; Load cry header bc.

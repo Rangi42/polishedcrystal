@@ -128,5 +128,4 @@ _Divide::
 	ldh [hDividend], a
 	ret
 .div0
-	; deliberately crash the game (maybe make a real crash handler?)
-	rst 0
+	rst EntryPoint ; crash
