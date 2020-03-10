@@ -5,7 +5,7 @@ TITLE := PKPCRYSTAL
 MCODE := PKPC
 ROMVERSION := 0x30
 
-FILLER = 0x00
+FILLER = 0xff
 
 ifneq ($(wildcard rgbds/.*),)
 RGBDS_DIR = rgbds/
@@ -40,7 +40,7 @@ endif
 
 
 .SUFFIXES:
-.PHONY: all clean crystal faithful nortc debug monochrome bankfree freespace compare tools
+.PHONY: all clean crystal faithful nortc debug monochrome freespace compare tools
 .SECONDEXPANSION:
 .PRECIOUS: %.2bpp %.1bpp %.lz %.o
 
@@ -62,7 +62,8 @@ SCAN_INCLUDES     = tools/scan_includes
 SUB_2BPP          = tools/sub_2bpp.sh
 COLLISION_ASM2BIN = tools/collision_asm2bin.sh
 
-bank_ends := $(PYTHON) contents/bank_ends.py $(NAME)-$(VERSION)
+MAP2SYM   := $(PYTHON) utils/map2sym.py
+BANK_ENDS := utils/bankends
 
 
 crystal_obj := \
@@ -84,9 +85,8 @@ gfx/sprites.o \
 gfx/misc.o
 
 
-all: crystal
+all: crystal freespace
 
-crystal: FILLER = 0x00
 crystal: ROM_NAME = $(NAME)-$(VERSION)
 crystal: $(NAME)-$(VERSION).gbc
 
@@ -96,10 +96,6 @@ monochrome: crystal
 noir: crystal
 hgss: crystal
 debug: crystal
-
-bankfree: FILLER = 0xff
-bankfree: ROM_NAME = $(NAME)-$(VERSION)-0xff
-bankfree: $(NAME)-$(VERSION)-0xff.gbc
 
 freespace: $(bank_ends_txt) $(roms_md5) $(sorted_sym) $(copied_map) $(copied_gbc)
 
@@ -125,9 +121,18 @@ compare: crystal
 	$(MD5) -c $(roms_md5)
 
 
-$(bank_ends_txt): crystal bankfree ; $(bank_ends) > $@
+$(bank_ends_txt): ROM_NAME = $(NAME)-$(VERSION)
+$(bank_ends_txt): crystal $(BANK_ENDS)
+	$(BANK_ENDS) $(ROM_NAME).map > $@
+
+$(BANK_ENDS): utils/bankends.c utils/parsemap.o
+	$(CC) $(CFLAGS) $^ -o $@
+
+utils/parsemap.o: utils/parsemap.c utils/parsemap.h
+	cd utils && $(CC) $(CFLAGS) -c parsemap.c
+
 $(roms_md5): crystal ; $(MD5) $(NAME)-$(VERSION).gbc > $@
-$(sorted_sym): crystal ; tail -n +3 $(NAME)-$(VERSION).sym | sort -o $@
+$(sorted_sym): crystal ; $(MAP2SYM) $(NAME)-$(VERSION).map $@
 $(copied_map): crystal ; cp $(NAME)-$(VERSION).map $@
 $(copied_gbc): crystal ; cp $(NAME)-$(VERSION).gbc $@
 
