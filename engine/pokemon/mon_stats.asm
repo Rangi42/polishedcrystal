@@ -139,8 +139,7 @@ PrintStatDifferences:
 
 	; Figure out length of largest modifier (+x, +xx or +xxx)
 	ld hl, wStringBuffer3
-	ld c, 6
-	ld b, 1
+	lb bc, 1, 6
 .loop
 	call .ComputeStatDifference
 	inc hl
@@ -234,8 +233,7 @@ PrintStatDifferences:
 	jr nz, .coord_loop
 	pop af
 	push af
-	ld b, 6
-	ld c, 12
+	lb bc, 6, 12
 	add c
 	ld c, a
 	call TextBox

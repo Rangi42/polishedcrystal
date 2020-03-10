@@ -198,9 +198,8 @@ AICheckMatchupForEnemyMon:
 	ret
 
 .check_matchups
-	ld d, NUM_MOVES
 	; e is %0000ABCD, A = has 0.5x, B = no offensive moves, C = has 1x, D = has 2x
-	ld e, %00000100
+	lb de, NUM_MOVES, %00000100
 .loop
 	ld a, [hli]
 	and a

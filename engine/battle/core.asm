@@ -5736,8 +5736,7 @@ ApplyLegendaryDVs:
 
 	; Generate 3 random stats to give perfect DVs to
 .outer_loop
-	ld b, 0
-	ld c, 6
+	lb bc, 0, 6
 	call BattleRandom
 .loop
 	rlca
@@ -6567,8 +6566,7 @@ GiveExperiencePoints:
 .GetBits:
 ; get amounts of bits set among bit 0-5 in a
 	push bc
-	ld b, 6
-	ld c, 0
+	lb bc, 6, 0
 .bitloop
 	rrca
 	jr nc, .bitloopnext
