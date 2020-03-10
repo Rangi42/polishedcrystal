@@ -12,4 +12,4 @@ BattleCommand_toxic:
 	ld a, BATTLE_VARS_STATUS_OPP
 	call GetBattleVarAddr
 	set TOX, [hl]
-	jr ApplyPoison
+	jp ApplyPoison
