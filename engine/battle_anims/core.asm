@@ -228,9 +228,8 @@ InitBattleAnimBuffer:
 	ld hl, BATTLEANIMSTRUCT_XCOORD
 	add hl, bc
 	ld a, [hli]
-	ld d, a
-	ld a, (-10 * 8) + 4
-	sub d
+	cpl
+	add (-10 * 8) + 4 + 1 ; a = (-10 * 8) + 4 - a
 	ld [wBattleAnimTempXCoord], a
 	ld a, [hli]
 	ld d, a

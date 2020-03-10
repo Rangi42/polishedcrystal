@@ -153,12 +153,9 @@ PlaceMapNameSign::
 	add $70
 	jr .got_value
 .sliding_out
-	push bc
-	ld b, a
-	ld a, $90
-	sub b
-	sub b
-	pop bc
+	add a
+	cpl
+	add $90 + 1 ; a = $90 - a
 .got_value
 	ldh [rWY], a
 	ldh [hWY], a
