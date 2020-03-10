@@ -451,6 +451,9 @@ GetFixedCategory::
 	inc a ; SPECIAL
 	ret
 
+DisappearUser::
+	farjp _DisappearUser
+
 ApplyPhysicalDefenseDamageMod::
 	push bc
 	ld c, a

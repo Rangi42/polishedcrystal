@@ -43,6 +43,7 @@ FarCopyColorWRAM::
 
 FarCopyWRAM::
 	call StackCallInWRAMBankA
+	; fallthrough
 
 
 SECTION "rst20 CopyBytes", ROM0[$0020]
@@ -58,7 +59,15 @@ GetFarByte::
 
 
 SECTION "rst28 JumpTable", ROM0[$0028]
-	jp _Jumptable
+	jr _Jumptable
+
+PlayCry::
+	call PlayCry2
+	jp WaitSFX
+
+
+SECTION "rst30 Predef", ROM0[$0030]
+	jp _Predef
 
 GetFarWRAMByte::
 	call StackCallInWRAMBankA
@@ -66,15 +75,6 @@ GetFarWRAMByte::
 .Function:
 	ld a, [hl]
 	ret
-
-
-SECTION "rst30 Predef", ROM0[$0030]
-	jp _Predef
-
-DisappearUser::
-	farjp _DisappearUser
-
-	ds 1 ; free space
 
 
 SECTION "rst38 InfiniteLoop", ROM0[$0038]

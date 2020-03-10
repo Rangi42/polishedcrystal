@@ -5,16 +5,16 @@
 ; and double speed at any time, but LCD output
 ; collapses during the switch.
 
+;NormalSpeed::
+;	ld hl, rKEY1
+;	bit 7, [hl]
+;	ret z
+
 DoubleSpeed::
 	ld hl, rKEY1
 	bit 7, [hl]
-	jr z, SwitchSpeed
-	ret
-
-NormalSpeed::
-	ld hl, rKEY1
-	bit 7, [hl]
-	ret z
+	ret nz
+	; fallthrough
 
 SwitchSpeed::
 	set 0, [hl]
