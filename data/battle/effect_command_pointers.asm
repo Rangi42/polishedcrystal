@@ -129,7 +129,6 @@ BattleCommandPointers:
 	command teleport
 	command switchout
 	command resettypematchup
-	command allstatsup
 	command raisesubnoanim
 	command lowersubnoanim
 	command clearmissdamage

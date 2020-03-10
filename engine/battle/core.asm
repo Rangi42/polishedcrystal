@@ -8441,7 +8441,17 @@ BoostGiovannisArmoredMewtwo:
 	ldh [hBattleTurn], a
 	ld de, ANIM_SHARPEN
 	call Call_PlayBattleAnim
-	farjp BattleCommand_allstatsup
+	ld b, ATTACK
+	call .forceraisestat
+	ld b, DEFENSE
+	call .forceraisestat
+	ld b, SPEED
+	call .forceraisestat
+	ld b, SP_ATTACK
+	call .forceraisestat
+	ld b, SP_DEFENSE
+.forceraisestat
+	farjp ForceRaiseStat
 
 LoadWeatherIconSprite:
 	ld a, [wWeather]

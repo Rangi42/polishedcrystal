@@ -9,7 +9,6 @@ INCLUDE "data/types/inverse_type_matchups.asm"
 INCLUDE "data/types/type_matchups.asm"
 
 INCLUDE "engine/battle/ai/switch.asm"
-INCLUDE "engine/battle/move_effects/ancientpower.asm"
 INCLUDE "engine/battle/move_effects/attract.asm"
 INCLUDE "engine/battle/move_effects/baton_pass.asm"
 INCLUDE "engine/battle/move_effects/belly_drum.asm"
