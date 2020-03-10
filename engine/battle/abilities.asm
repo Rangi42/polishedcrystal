@@ -210,7 +210,7 @@ IntimidateAbility:
 	farcall BufferAbility
 	pop af
 	ld de, 1
-	ld hl, .no_intimidate_abilities
+	ld hl, NoIntimidateAbilities
 	call IsInArray
 	jr nc, .intimidate_ok
 	ld hl, BattleText_IntimidateResisted
@@ -236,12 +236,7 @@ IntimidateAbility:
 	farcall CheckWhiteHerb
 	jp SwitchTurn
 
-.no_intimidate_abilities
-	db INNER_FOCUS
-	db OWN_TEMPO
-	db OBLIVIOUS
-	db SCRAPPY
-	db -1
+INCLUDE "data/abilities/no_intimidate_abilities.asm"
 
 DownloadAbility:
 ; Increase Atk if enemy Def is lower than SpDef, otherwise SpAtk
@@ -744,7 +739,7 @@ CheckNullificationAbilities:
 	cp SOUNDPROOF
 	jr z, .soundproof
 	ld b, a
-	ld hl, .NullificationAbilityTypes
+	ld hl, TypeNullificationAbilities
 .loop
 	ld a, [hli]
 	cp b
@@ -787,16 +782,7 @@ CheckNullificationAbilities:
 	ld [wTypeMatchup], a
 	ret
 
-.NullificationAbilityTypes:
-	db VOLT_ABSORB,   ELECTRIC
-	db LIGHTNING_ROD, ELECTRIC
-	db MOTOR_DRIVE,   ELECTRIC
-	db DRY_SKIN,      WATER
-	db WATER_ABSORB,  WATER
-	db FLASH_FIRE,    FIRE
-	db SAP_SIPPER,    GRASS
-; Levitate is checked seperately due to Iron Ball shenanigans
-	db -1
+INCLUDE "data/abilities/type_nullification_abilities.asm"
 
 RunEnemyNullificationAbilities:
 ; At this point, we are already certain that the ability will activate, so no additional
@@ -1474,7 +1460,7 @@ SolarPowerAbility:
 	call GetWeatherAfterUserUmbrella
 	cp WEATHER_SUN
 	ret nz
-	ld a, $32
+	ln a, 3, 2 ; x1.5
 	jp ApplySpecialAttackDamageMod
 
 ToughClawsAbility:
@@ -1484,31 +1470,19 @@ ToughClawsAbility:
 	jp MultiplyAndDivide
 
 MegaLauncherAbility:
-	ld hl, .LauncherMoves
-	ld b, $32
+	ld hl, LauncherMoves
+	ln b, 3, 2 ; x1.5
 	jr MoveBoostAbility
-.LauncherMoves:
-	db AURA_SPHERE
-	db DARK_PULSE
-	db DRAGON_PULSE
-	db WATER_PULSE
-	db -1
+
+INCLUDE "data/moves/launcher_moves.asm"
 
 IronFistAbility:
 ; 120% damage for punching moves
-	ld hl, .PunchingMoves
+	ld hl, PunchingMoves
 	ln b, 6, 5 ; x1.2
 	jr MoveBoostAbility
 
-.PunchingMoves:
-	db BULLET_PUNCH
-	db DIZZY_PUNCH
-	db DRAIN_PUNCH
-	db DYNAMICPUNCH
-	db FIRE_PUNCH
-	db MACH_PUNCH
-	db THUNDERPUNCH
-	db -1
+INCLUDE "data/moves/punching_moves.asm"
 
 MoveBoostAbility:
 	ld a, BATTLE_VARS_MOVE
@@ -1700,7 +1674,7 @@ _GetOpponentAbilityAfterMoldBreaker::
 	ld de, 1
 	push hl
 	push bc
-	ld hl, .MoldBreakerSuppressedAbilities
+	ld hl, MoldBreakerSuppressedAbilities
 	call IsInArray
 	pop bc
 	pop hl
@@ -1713,53 +1687,8 @@ _GetOpponentAbilityAfterMoldBreaker::
 	pop bc
 	pop de
 	ret
-.MoldBreakerSuppressedAbilities:
-	db BATTLE_ARMOR
-	db BIG_PECKS
-	db CLEAR_BODY
-	db CONTRARY
-	db DAMP
-	db DRY_SKIN
-	db FILTER
-	db FLASH_FIRE
-	db FUR_COAT
-	db HYPER_CUTTER
-	db IMMUNITY
-	db INNER_FOCUS
-	db INSOMNIA
-	db KEEN_EYE
-	db LEAF_GUARD
-	db LEVITATE
-	db LIGHT_METAL
-	db LIGHTNING_ROD
-	db LIMBER
-	db MAGIC_BOUNCE
-	db MAGMA_ARMOR
-	db MARVEL_SCALE
-	db MOTOR_DRIVE
-	db MULTISCALE
-	db OBLIVIOUS
-	db OVERCOAT
-	db OWN_TEMPO
-	db SAND_VEIL
-	db SAP_SIPPER
-	db SHELL_ARMOR
-	db SHIELD_DUST
-	db SNOW_CLOAK
-	db SOLID_ROCK
-	db SOUNDPROOF
-	db STICKY_HOLD
-	db STURDY
-	db SUCTION_CUPS
-	db TANGLED_FEET
-	db THICK_FAT
-	db UNAWARE
-	db VITAL_SPIRIT
-	db VOLT_ABSORB
-	db WATER_ABSORB
-	db WATER_VEIL
-	db WONDER_SKIN
-	db -1
+
+INCLUDE "data/abilities/mold_breaker_suppressed_abilities.asm"
 
 DisableAnimations:
 	ld a, 1
@@ -1870,46 +1799,15 @@ RunPostBattleAbilities::
 
 GetRandomPickupItem::
 	push de
-	ld hl, .BasePickupTable
-	ld de, .RarePickupTable
+	ld hl, BasePickupTable
+	ld de, RarePickupTable
 	ld b, a
-	ld a, BANK(.BasePickupTable)
+	ld a, BANK(BasePickupTable) ; aka BANK(RarePickupTable)
 	call GetScaledItemReward
 	pop de
 	ret
 
-.BasePickupTable:
-	db POTION
-	db ANTIDOTE
-	db SUPER_POTION
-	db GREAT_BALL
-	db REPEL
-	db ESCAPE_ROPE
-	db FULL_HEAL
-	db HYPER_POTION
-	db ULTRA_BALL
-	db REVIVE
-	db RARE_CANDY
-	db DUSK_STONE
-	db SHINY_STONE
-	db MAX_ETHER
-	db FULL_RESTORE
-	db MAX_REVIVE
-	db PP_UP
-	db MAX_ELIXIR
-
-.RarePickupTable:
-	db HYPER_POTION
-	db NUGGET
-	db KINGS_ROCK
-	db FULL_RESTORE
-	db ETHER
-	db LUCKY_EGG
-	db DESTINY_KNOT
-	db ELIXIR
-	db BIG_NUGGET
-	db LEFTOVERS
-	db BOTTLE_CAP
+INCLUDE "data/items/pickup_items.asm"
 
 GetScaledItemReward:
 ; Returns a scaled item reward from item tables in de (rare) and hl (base).

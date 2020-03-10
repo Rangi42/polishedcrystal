@@ -249,7 +249,7 @@ UseStatItemText:
 	ret
 
 GetStatName:
-	ld hl, .names
+	ld hl, StatNames
 	ld c, "@"
 .CheckName:
 	dec b
@@ -266,15 +266,7 @@ GetStatName:
 	rst CopyBytes
 	ret
 
-.names
-	db "Attack@"
-	db "Defense@"
-	db "Speed@"
-	db "Spcl.Atk@"
-	db "Spcl.Def@"
-	db "Accuracy@"
-	db "Evasion@"
-	db "stats@"
+INCLUDE "data/battle/stat_names.asm"
 
 DoLowerStat:
 	or 1

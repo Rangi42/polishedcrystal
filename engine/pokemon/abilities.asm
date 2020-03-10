@@ -44,4 +44,6 @@ PrintAbilityDescription:
 	hlcoord 1, 15
 	jp PlaceString
 
-INCLUDE "data/abilities.asm"
+INCLUDE "data/abilities/names.asm"
+
+INCLUDE "data/abilities/descriptions.asm"

@@ -885,7 +885,7 @@ BattleCommand_doturn:
 	; Different message if continuous
 	ld a, BATTLE_VARS_MOVE_EFFECT
 	call GetBattleVar
-	ld hl, .continuousmoves
+	ld hl, ContinuousMoves
 	ld de, 1
 	call IsInArray
 
@@ -896,12 +896,7 @@ BattleCommand_doturn:
 	call StdBattleTextBox
 	jp EndMoveEffect
 
-.continuousmoves
-	db EFFECT_SOLAR_BEAM
-	db EFFECT_FLY
-	db EFFECT_ROLLOUT
-	db EFFECT_RAMPAGE
-	db $ff
+INCLUDE "data/moves/continuous_moves.asm"
 
 BattleCommand_hastarget:
 	; If the target is fainted, abort the move
@@ -1041,7 +1036,7 @@ BattleCommand_critical:
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
 	ld de, 1
-	ld hl, .Criticals
+	ld hl, CriticalHitMoves
 	push bc
 	call IsInArray
 	pop bc
@@ -1074,7 +1069,7 @@ BattleCommand_critical:
 	ld a, c
 	cp 3
 	jr nc, .guranteed_crit
-	ld hl, .Chances
+	ld hl, CriticalHitChances
 	ld b, 0
 	add hl, bc
 	call BattleRandom
@@ -1085,21 +1080,9 @@ BattleCommand_critical:
 	ld [wCriticalHit], a
 	ret
 
-.Criticals:
-	db KARATE_CHOP
-	db RAZOR_LEAF
-	db CRABHAMMER
-	db SLASH
-	db AEROBLAST
-	db CROSS_CHOP
-	db SHADOW_CLAW
-	db STONE_EDGE
-	db $ff
+INCLUDE "data/moves/critical_hit_moves.asm"
 
-.Chances:
-	; 4.17% 12.5%  50%   100%
-	db $a,  $20,  $80,  $ff
-	;   0     1     2     3+
+INCLUDE "data/battle/critical_hit_chances.asm"
 
 INCLUDE "engine/battle/move_effects/triple_kick.asm"
 
@@ -2124,7 +2107,7 @@ BattleCommand_hittargetnosub:
 	jr z, .got_user_species
 	ld a, [wEnemyMonSpecies]
 .got_user_species
-	ld hl, .fury_attack_users
+	ld hl, FuryAttackUsers
 	ld de, 1
 	call IsInArray
 	pop de
@@ -2133,25 +2116,7 @@ BattleCommand_hittargetnosub:
 	ld [wKickCounter], a
 	jr .fury_attack
 
-.fury_attack_users
-	db BEEDRILL
-	db NIDORAN_M
-	db NIDORINO
-	db NIDOKING
-	db FARFETCH_D
-	db DODUO
-	db DODRIO
-	db RHYHORN
-	db RHYDON
-	db RHYPERIOR
-	db PINSIR
-	db DUNSPARCE
-	db HERACROSS
-	db PILOSWINE
-	db MAMOSWINE
-	db SKARMORY
-	db DONPHAN
-	db -1
+INCLUDE "data/pokemon/fury_attack_users.asm"
 
 StatUpDownAnim:
 	ld a, [wAnimationsDisabled]
@@ -2180,7 +2145,7 @@ StatUpDownAnim:
 	jr z, .got_user_species
 	ld a, [wEnemyMonSpecies]
 .got_user_species
-	ld hl, .withdraw_users
+	ld hl, WithdrawUsers
 	ld de, 1
 	push af
 	call IsInArray
@@ -2190,7 +2155,7 @@ StatUpDownAnim:
 	jr .got_kick_counter
 .not_withdraw
 	pop af ; restore species to a
-	inc hl ; ld hl, .harden_users
+	inc hl ; ld hl, HardenUsers
 	; ld de, 1
 	call IsInArray
 	jr nc, .not_harden
@@ -2207,39 +2172,7 @@ StatUpDownAnim:
 	ld d, 0
 	jp PlayFXAnimID
 
-.withdraw_users
-	db SQUIRTLE
-	db WARTORTLE
-	db BLASTOISE
-	db SLOWBRO
-	db SHELLDER
-	db CLOYSTER
-	db OMANYTE
-	db OMASTAR
-	db -1
-
-.harden_users
-	db METAPOD
-	db KAKUNA
-	db GRIMER
-	db MUK
-	db ONIX
-	db STEELIX
-	db KRABBY
-	db KINGLER
-	db STARYU
-	db STARMIE
-	db KABUTO
-	db KABUTOPS
-	db HERACROSS
-	db GLIGAR
-	db GLISCOR
-	db SLUGMA
-	db MAGCARGO
-	db CORSOLA
-	db PUPITAR
-	db TYRANITAR
-	db -1
+INCLUDE "data/pokemon/withdraw_harden_users.asm"
 
 BattleCommand_raisesub:
 	ld a, BATTLE_VARS_SUBSTATUS4
@@ -4071,7 +4004,7 @@ BattleCommand_constantdamage:
 	call Divide
 	ldh a, [hQuotient + 2]
 	ld b, a
-	ld hl, .ReversalPower
+	ld hl, ReversalPower
 
 .reversal_loop
 	ld a, [hli]
@@ -4094,14 +4027,7 @@ BattleCommand_constantdamage:
 	ld [hl], 1
 	ret
 
-.ReversalPower:
-	;  px,  bp
-	db  1, 200
-	db  4, 150
-	db  9, 100
-	db 16,  80
-	db 32,  40
-	db 48,  20
+INCLUDE "data/moves/reversal_power.asm"
 
 INCLUDE "engine/battle/move_effects/counter.asm"
 
@@ -5972,12 +5898,12 @@ INCLUDE "engine/battle/move_effects/perish_song.asm"
 INCLUDE "engine/battle/move_effects/rollout.asm"
 
 BoostJumptable:
-	dbw AVALANCHE, DoAvalanche
+	dbw AVALANCHE,  DoAvalanche
 	dbw ACROBATICS, DoAcrobatics
-	dbw FACADE, DoFacade
-	dbw HEX, DoHex
-	dbw VENOSHOCK, DoVenoshock
-	dbw KNOCK_OFF, DoKnockOff
+	dbw FACADE,     DoFacade
+	dbw HEX,        DoHex
+	dbw VENOSHOCK,  DoVenoshock
+	dbw KNOCK_OFF,  DoKnockOff
 	dbw -1, -1
 
 BattleCommand_conditionalboost:
@@ -6345,32 +6271,8 @@ GetUserItemAfterUnnerve::
 	ld b, HELD_NONE
 	ret
 
-EdibleBerries:
-	db CHERI_BERRY
-	db CHESTO_BERRY
-	db PECHA_BERRY
-	db RAWST_BERRY
-	db ASPEAR_BERRY
-	db LEPPA_BERRY
-	db ORAN_BERRY
-	db PERSIM_BERRY
-	db LUM_BERRY
-	db SITRUS_BERRY
-	db FIGY_BERRY
-	db LIECHI_BERRY
-	db GANLON_BERRY
-	db SALAC_BERRY
-	db PETAYA_BERRY
-	db APICOT_BERRY
-	db LANSAT_BERRY
-	db STARF_BERRY
-	db ENIGMA_BERRY
-	db CUSTAP_BERRY
-	db KEE_BERRY
-	db MARANGABERRY
-	; not eaten, so unaffected:
-	; pomeg, kelpsy, qualot, hondew, grepa, tamato, jaboca, rowap
-	db -1
+INCLUDE "data/items/edible_berries.asm"
+
 NoItem:
 	db NO_ITEM
 

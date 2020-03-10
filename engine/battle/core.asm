@@ -3463,7 +3463,7 @@ UseHeldStatusHealingItem:
 	jp UseBattleItem
 
 _HeldStatusHealingItem:
-	ld hl, .Statuses
+	ld hl, HeldStatusHealingEffects
 .loop
 	ld a, [hli]
 	cp $ff
@@ -3494,14 +3494,7 @@ _HeldStatusHealingItem:
 	or 1
 	ret
 
-.Statuses:
-	db HELD_HEAL_POISON, 1 << PSN
-	db HELD_HEAL_FREEZE, 1 << FRZ
-	db HELD_HEAL_BURN, 1 << BRN
-	db HELD_HEAL_SLEEP, SLP
-	db HELD_HEAL_PARALYZE, 1 << PAR
-	db HELD_HEAL_STATUS, ALL_STATUS
-	db $ff
+INCLUDE "data/battle/held_heal_status.asm"
 
 UseOpponentConfusionHealingItem:
 	call CallOpponentTurn
@@ -7025,10 +7018,7 @@ GetNewBaseExp:
 	ld b, 4
 	jp Divide
 
-NewBaseExpExceptions:
-	dbw CHANSEY, 395
-	dbw BLISSEY, 608
-	db -1
+INCLUDE "data/pokemon/base_exp_exceptions.asm"
 
 Function_BattleTextEnemySentOut:
 	farcall Battle_GetTrainerName

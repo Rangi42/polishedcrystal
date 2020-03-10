@@ -40,7 +40,7 @@ BattleCommand_lowkick:
 	rr e
 
 .not_light_metal
-	ld hl, .WeightTable
+	ld hl, LowKickPowerByWeight
 .loop2
 	ld a, [hli]
 	ld c, a
@@ -57,11 +57,4 @@ BattleCommand_lowkick:
 	pop bc
 	ret
 
-.WeightTable
-	;    BP, weight
-	dbw 120, 4407
-	dbw 100, 2202
-	dbw  80, 1100
-	dbw  60, 550
-	dbw  40, 218
-	dbw  20, 0
+INCLUDE "data/moves/low_kick_power.asm"
