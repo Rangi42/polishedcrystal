@@ -126,11 +126,11 @@ INCLUDE "maps/VioletOutskirts.asm"
 SECTION "Ruins of Alph Scripts", ROMX
 
 INCLUDE "maps/RuinsOfAlphOutside.asm"
-INCLUDE "maps/RuinsOfAlphResearchCenter.asm"
 
 
 SECTION "Ruins of Alph Scripts 2", ROMX
 
+INCLUDE "maps/RuinsOfAlphResearchCenter.asm"
 INCLUDE "maps/RuinsOfAlphEntranceChamber.asm"
 INCLUDE "maps/RuinsOfAlphInnerChamber.asm"
 INCLUDE "maps/RuinsOfAlphSinjohChamber.asm"
