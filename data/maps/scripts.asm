@@ -130,7 +130,7 @@ INCLUDE "maps/RuinsOfAlphOutside.asm"
 
 SECTION "Ruins of Alph Scripts 2", ROMX
 
-INCLUDE "maps/RuinsOfAlphResearchCenter.asm"
+INCLUDE "maps/RuinsOfAlphResearchCenter.asm"; shares text with RuinsOfAlphKabutoChamber.asm
 INCLUDE "maps/RuinsOfAlphEntranceChamber.asm"
 INCLUDE "maps/RuinsOfAlphInnerChamber.asm"
 INCLUDE "maps/RuinsOfAlphSinjohChamber.asm"
