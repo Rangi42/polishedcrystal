@@ -1,26 +1,30 @@
 #!/usr/bin/env python3
-# coding: utf-8
+# -*- coding: utf-8 -*-
 
-import os
+"""
+Usage: python3 coverage.py [contents/polishedcrystal.map] [coverage.png]
+
+Generate a PNG visualizing the space used by each bank in the ROM.
+"""
+
 import sys
 import png
 from colorsys import hls_to_rgb
 
 from mapreader import MapReader
 
-if __name__ == '__main__':
-	if len(sys.argv) < 1:
-		print('Usage: %s [contents/polishedcrystal.map] [coverage.png]' % sys.argv[0])
-		sys.exit(1)
+def main():
 	mapfile = sys.argv[1] if len(sys.argv) >= 2 else 'contents/polishedcrystal.map'
 	filename = sys.argv[2] if len(sys.argv) >= 3 else 'coverage.png'
 
 	num_banks = 0x80
 	bank_mask = 0x3FFF
 	bank_size = 0x4000 # bytes
-	bpp = 8 # bytes per pixel
 
+	bpp = 8 # bytes per pixel
 	height = 256 # pixels
+	assert bank_size % bpp == 0 and (bank_size // bpp) % height == 0
+
 	pixels_per_bank = bank_size // bpp # 2048 pixels
 	bank_width = pixels_per_bank // height # 8 pixels
 	width = bank_width * num_banks # 1024 pixels
@@ -36,13 +40,9 @@ if __name__ == '__main__':
 		hits = [0] * pixels_per_bank
 		data = r.bank_data['ROM Bank'].get(bank, default_bank_data)
 		for s in data['sections']:
-			# skip zero-sized entries
-			if s['beg'] == s['end']:
-				continue
-			# range is exclusive: [beg, end)
 			beg = s['beg'] & bank_mask
-			end = (s['end'] - 1) & bank_mask
-			for i in range(beg, end):
+			end = s['end'] & bank_mask
+			for i in range(beg, end + 1):
 				hits[i // bpp] += 1
 		hit_data.append(hits)
 
@@ -60,3 +60,6 @@ if __name__ == '__main__':
 	with open(filename, 'wb') as f:
 		w = png.Writer(width, height)
 		w.write(f, png_data)
+
+if __name__ == '__main__':
+	main()
