@@ -524,7 +524,7 @@ RedrawUnownPuzzlePieces:
 	ld hl, .OAM_NotHoldingPiece
 
 .load
-	ld de, wSprites
+	ld de, wVirtualOAM
 .loop
 	ld a, [hli]
 	cp -1

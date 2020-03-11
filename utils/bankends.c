@@ -57,7 +57,7 @@ int main (int argc, char ** argv) {
   for (p = 0; p < BANKS; p ++) {
     total_free_space += free_space[p * 2];
   }
-  float percentage = total_free_space * 100.0f / (BANKS * BANKSIZE);
+  float percentage = total_free_space * 100.0f / ROMSIZE;
   puts(EPIGRAPH);
   printf("Free space: %u/%u (%.2f%%)\n\n", total_free_space, ROMSIZE, percentage);
   puts("bank\tend\tfree");

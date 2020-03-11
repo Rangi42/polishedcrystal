@@ -23,7 +23,7 @@ _SwitchPartyMons:
 	ld a, " "
 	call ByteFill
 	pop af
-	ld hl, wSprites
+	ld hl, wVirtualOAM
 	ld bc, $10
 	rst AddNTimes
 	ld de, $4

@@ -2375,8 +2375,8 @@ Pokedex_GetArea:
 
 .copy_sprites
 	hlcoord 0, 0
-	ld de, wSprites
-	ld bc, wSpritesEnd - wSprites
+	ld de, wVirtualOAM
+	ld bc, wVirtualOAMEnd - wVirtualOAM
 	rst CopyBytes
 	ret
 
@@ -2408,7 +2408,7 @@ Pokedex_GetArea:
 	ld e, a
 	farcall FindNest ; load nest landmarks into wTileMap[0,0]
 	decoord 0, 0
-	ld hl, wSprites
+	ld hl, wVirtualOAM
 .nestloop
 	ld a, [de]
 	and a
@@ -2435,9 +2435,9 @@ Pokedex_GetArea:
 	jr .nestloop
 
 .done_nest
-	ld hl, wSprites
+	ld hl, wVirtualOAM
 	decoord 0, 0
-	ld bc, wSpritesEnd - wSprites
+	ld bc, wVirtualOAMEnd - wVirtualOAM
 	rst CopyBytes
 	ret
 
@@ -2450,7 +2450,7 @@ Pokedex_GetArea:
 	ld c, e
 	ld b, d
 	ld de, .PlayerOAM
-	ld hl, wSprites
+	ld hl, wVirtualOAM
 .ShowPlayerLoop:
 	ld a, [de]
 	cp $80
@@ -2479,8 +2479,8 @@ Pokedex_GetArea:
 	jr .ShowPlayerLoop
 
 .clear_oam
-	ld hl, wSprites + 4 * 4
-	ld bc, wSpritesEnd - (wSprites + 4 * 4)
+	ld hl, wVirtualOAM + 4 * 4
+	ld bc, wVirtualOAMEnd - (wVirtualOAM + 4 * 4)
 	xor a
 	jp ByteFill
 
@@ -2520,8 +2520,8 @@ Pokedex_GetArea:
 	jr .ok
 
 .clear
-	ld hl, wSprites
-	ld bc, wSpritesEnd - wSprites
+	ld hl, wVirtualOAM
+	ld bc, wVirtualOAMEnd - wVirtualOAM
 	xor a
 	call ByteFill
 	scf

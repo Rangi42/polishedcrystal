@@ -95,8 +95,8 @@ START_MONEY EQU 3000
 	ret
 
 ResetWRAM:
-	ld hl, wSprites
-	ld bc, wOptions1 - wSprites
+	ld hl, wVirtualOAM
+	ld bc, wOptions1 - wVirtualOAM
 	xor a
 	call ByteFill
 
@@ -911,7 +911,7 @@ Intro_PlacePlayerSprite:
 	ld hl, vTiles0
 	call Request2bppInWRA6
 
-	ld hl, wSprites
+	ld hl, wVirtualOAM
 	ld de, .sprites
 	ld a, [de]
 	inc de

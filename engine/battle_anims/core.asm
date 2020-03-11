@@ -103,7 +103,7 @@ BattleAnimOAMUpdate:
 	ld l, a
 	ld a, [wBattleAnimOAMPointerLo]
 	ld e, a
-	ld d, wSprites / $100
+	ld d, wVirtualOAM / $100
 .loop
 	ld a, [wBattleAnimTempYCoord]
 	ld b, a

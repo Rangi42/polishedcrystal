@@ -499,7 +499,7 @@ InitReelTiles:
 	ld bc, wReel1
 	ld hl, wReel1OAMAddr - wReel1
 	add hl, bc
-	ld de, wSprites + 16 * 4
+	ld de, wVirtualOAM + 16 * 4
 	ld [hl], e
 	inc hl
 	ld [hl], d
@@ -517,7 +517,7 @@ InitReelTiles:
 	ld bc, wReel2
 	ld hl, wReel1OAMAddr - wReel1
 	add hl, bc
-	ld de, wSprites + 24 * 4
+	ld de, wVirtualOAM + 24 * 4
 	ld [hl], e
 	inc hl
 	ld [hl], d
@@ -535,7 +535,7 @@ InitReelTiles:
 	ld bc, wReel3
 	ld hl, wReel1OAMAddr - wReel1
 	add hl, bc
-	ld de, wSprites + 32 * 4
+	ld de, wVirtualOAM + 32 * 4
 	ld [hl], e
 	inc hl
 	ld [hl], d

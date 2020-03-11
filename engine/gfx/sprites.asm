@@ -20,7 +20,7 @@ PlaySpriteAnimations:
 	push bc
 	push af
 
-	ld a, wSprites % $100
+	ld a, wVirtualOAM % $100
 	ld [wCurrSpriteOAMAddr], a
 	call DoNextFrameForAllSprites
 
@@ -52,11 +52,11 @@ DoNextFrameForAllSprites:
 
 	ld a, [wCurrSpriteOAMAddr]
 	ld l, a
-	ld h, wSprites / $100
+	ld h, wVirtualOAM / $100
 
-.loop2 ; Clear (wSprites + [wCurrSpriteOAMAddr] --> wSpritesEnd)
+.loop2 ; Clear (wVirtualOAM + [wCurrSpriteOAMAddr] --> wVirtualOAMEnd)
 	ld a, l
-	cp wSpritesEnd % $100
+	cp wVirtualOAMEnd % $100
 	ret nc
 	xor a
 	ld [hli], a
@@ -88,11 +88,11 @@ DoNextFrameForFirst16Sprites:
 
 	ld a, [wCurrSpriteOAMAddr]
 	ld l, a
-	ld h, (wSprites + $40) / $100
+	ld h, (wVirtualOAM + $40) / $100
 
-.loop2 ; Clear (wSprites + [wCurrSpriteOAMAddr] --> wSprites + $40)
+.loop2 ; Clear (wVirtualOAM + [wCurrSpriteOAMAddr] --> wVirtualOAM + $40)
 	ld a, l
-	cp (wSprites + 16 * 4) % $100
+	cp (wVirtualOAM + 16 * 4) % $100
 	ret nc
 	xor a
 	ld [hli], a
@@ -233,7 +233,7 @@ UpdateAnimFrame:
 	push bc
 	ld a, [wCurrSpriteOAMAddr]
 	ld e, a
-	ld d, wSprites / $100
+	ld d, wVirtualOAM / $100
 	ld a, [hli]
 	ld c, a ; number of objects
 .loop
@@ -286,7 +286,7 @@ UpdateAnimFrame:
 	inc de
 	ld a, e
 	ld [wCurrSpriteOAMAddr], a
-	cp wSpritesEnd % $100
+	cp wVirtualOAMEnd % $100
 	jr nc, .reached_the_end
 	dec c
 	jr nz, .loop
@@ -526,7 +526,7 @@ AnimateEndOfExpBar:
 	jp ClearSprites
 
 .AnimateFrame:
-	ld hl, wSprites
+	ld hl, wVirtualOAM
 	ld c, $8
 .anim_loop
 	ld a, c

@@ -2088,7 +2088,7 @@ Pokedex_UpdateCursor:
 	ret
 
 Pokedex_LoadCursorOAM:
-	ld de, wSprites
+	ld de, wVirtualOAM
 .loop
 	bit 7, [hl]
 	jr nz, .special

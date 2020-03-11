@@ -8280,7 +8280,7 @@ CopyBackpic:
 	predef_jump PlaceGraphic
 
 .LoadTrainerBackpicAsOAM:
-	ld hl, wSprites
+	ld hl, wVirtualOAM
 	xor a
 	ldh [hMapObjectIndexBuffer], a
 	ld b, $6
@@ -8480,7 +8480,7 @@ LoadWeatherIconSprite:
 	ld hl, vTiles0 tile $00
 	call Request2bpp
 	pop bc
-	ld hl, wSprites
+	ld hl, wVirtualOAM
 	ld de, .WeatherIconOAMData
 .loop
 	ld a, [de]

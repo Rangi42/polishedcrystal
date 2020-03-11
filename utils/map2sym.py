@@ -57,7 +57,7 @@ def map_to_sym(input):
 		if x:
 			# start an unused bank
 			bank_type = x.group(1)
-			bank_number = None
+			bank_number = '00' # default for HRAM and OAM
 			bank_size = 0
 			del bank_lines[:]
 			del section_lines[:]

@@ -321,7 +321,7 @@ EvolutionAnimation:
 	inc a
 	and $7
 	ld b, a
-	ld hl, wSprites + 3 ; attributes
+	ld hl, wVirtualOAM + 3 ; attributes
 	ld c, 40
 .loop6
 	ld a, [hl]

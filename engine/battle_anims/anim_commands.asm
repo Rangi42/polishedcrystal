@@ -202,8 +202,8 @@ BattleAnim_ClearCGB_OAMFlags:
 	bit 3, a
 	ret nz
 
-	ld hl, wSprites
-	ld c, wSpritesEnd - wSprites
+	ld hl, wVirtualOAM
+	ld c, wVirtualOAMEnd - wVirtualOAM
 	xor a
 .loop2
 	ld [hli], a
@@ -1430,10 +1430,10 @@ BattleAnim_UpdateOAM_All:
 	jr nz, .loop
 	ld a, [wBattleAnimOAMPointerLo]
 	ld l, a
-	ld h, wSprites / $100
+	ld h, wVirtualOAM / $100
 .loop2
 	ld a, l
-	cp wSpritesEnd % $100
+	cp wVirtualOAMEnd % $100
 	ret nc
 	xor a
 	ld [hli], a

@@ -500,7 +500,7 @@ TrainerCard_Page2_3_OAMUpdate:
 	ld d, a
 	ld a, [de]
 	ld c, a
-	ld de, wSprites
+	ld de, wVirtualOAM
 	ld b, 8
 .loop
 	srl c

@@ -67,14 +67,14 @@ HealMachineAnim:
 	jp Request2bpp
 
 .PC_LoadBallsOntoMachine:
-	ld hl, wSprites + $80
+	ld hl, wVirtualOAM + $80
 	ld de, .PC_ElmsLab_OAM
 	call .PlaceHealingMachineTile
 	call .PlaceHealingMachineTile
 	jr .LoadBallsOntoMachine
 
 .HOF_LoadBallsOntoMachine:
-	ld hl, wSprites + $80
+	ld hl, wVirtualOAM + $80
 	ld de, .HOF_OAM
 
 .LoadBallsOntoMachine:

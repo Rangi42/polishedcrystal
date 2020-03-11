@@ -26,7 +26,7 @@ ShowPlayerMonsRemaining:
 	ld [hl], a
 	ld a, 8
 	ld [wPlaceBallsDirection], a
-	ld hl, wSprites
+	ld hl, wVirtualOAM
 	jp LoadTrainerHudOAM
 
 ShowOTTrainerMonsRemaining:
@@ -41,7 +41,7 @@ ShowOTTrainerMonsRemaining:
 	ld [hl], 4 * 8
 	ld a, -8
 	ld [wPlaceBallsDirection], a
-	ld hl, wSprites + PARTY_LENGTH * 4
+	ld hl, wVirtualOAM + PARTY_LENGTH * 4
 	jp LoadTrainerHudOAM
 
 StageBallTilesData:
@@ -186,7 +186,7 @@ LinkBattle_TrainerHuds:
 	ld [hl], 8 * 8
 	ld a, $8
 	ld [wPlaceBallsDirection], a
-	ld hl, wSprites
+	ld hl, wVirtualOAM
 	call LoadTrainerHudOAM
 
 	ld hl, wOTPartyMon1HP
@@ -196,7 +196,7 @@ LinkBattle_TrainerHuds:
 	ld a, 10 * 8
 	ld [hli], a
 	ld [hl], 13 * 8
-	ld hl, wSprites + PARTY_LENGTH * 4
+	ld hl, wVirtualOAM + PARTY_LENGTH * 4
 	; fallthrough
 
 LoadTrainerHudOAM:

@@ -92,7 +92,7 @@ LoadPartyMenuMonIconColors:
 	call GetMenuMonIconPalette
 	push af
 
-	ld hl, wSprites + 3
+	ld hl, wVirtualOAM + 3
 	ld a, [wCurPartyMon]
 	swap a
 
@@ -122,7 +122,7 @@ LoadPartyMenuMonIconColors:
 	jr ProcessMenuMonIconColor.finish
 
 ProcessMenuMonIconColor:
-	ld hl, wSprites + 3
+	ld hl, wVirtualOAM + 3
 	ld c, 4
 	ld de, 4
 

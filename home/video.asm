@@ -6,7 +6,7 @@ PushOAM::
 	ret nz
 ForcePushOAM:
 	lb bc, 40 + 1, rDMA & $ff
-	ld a, wSprites >> 8
+	ld a, wVirtualOAM >> 8
 	jp hPushOAM
 
 DMATransfer::

@@ -545,7 +545,7 @@ CardFlip_CopyToBox:
 	ret
 
 CardFlip_CopyOAM:
-	ld de, wSprites
+	ld de, wVirtualOAM
 	ld a, [hli]
 .loop
 	push af

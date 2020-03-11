@@ -59,7 +59,7 @@ BattleIntroSlidingPics:
 	ret
 
 .subfunction3
-	ld hl, wSprites + 1 ; x pixel
+	ld hl, wVirtualOAM + 1 ; x pixel
 	ld c, $12 ; 18
 	ld de, $4
 .loop3
