@@ -748,9 +748,10 @@ NamingScreen_GetLastCharacter:
 	add hl, bc
 	add [hl]
 	sub $8
-	srl a
-	srl a
-	srl a
+	rrca
+	rrca
+	rrca
+	and %00011111
 	ld e, a
 	ld hl, SPRITEANIMSTRUCT_YOFFSET
 	add hl, bc
@@ -759,9 +760,10 @@ NamingScreen_GetLastCharacter:
 	add hl, bc
 	add [hl]
 	sub $10
-	srl a
-	srl a
-	srl a
+	rrca
+	rrca
+	rrca
+	and %00011111
 	ld d, a
 	hlcoord 0, 0
 	ld bc, SCREEN_WIDTH

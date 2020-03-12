@@ -2387,9 +2387,10 @@ Pokedex_LoadAnyFootprint:
 	ld a, [wd265]
 	dec a
 	and ($ff ^ $07) ; $f8 ; $1f << 3
-	srl a
-	srl a
-	srl a
+	rrca
+	rrca
+	rrca
+	and %00011111
 	ld e, 0
 	ld d, a
 	ld a, [wd265]

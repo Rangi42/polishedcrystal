@@ -1045,7 +1045,7 @@ _DrawCh1_2_3:
 ;	; b = (d) = column
 ;	ld a, $1
 ;.rotate_a
-;	rrc a
+;	rrca
 ;	dec d
 ;	jr nz, .rotate_a
 ;	or [hl]
