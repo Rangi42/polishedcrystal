@@ -80,14 +80,7 @@ GetFarWRAMByte::
 SECTION "rst38 InfiniteLoop", ROM0[$0038]
 	rst InfiniteLoop
 
-Cosine::
-; Return d * cos(a) in hl
-	add $10 ; 90 degrees
-Sine::
-; Return d * sin(a) in hl
-; a is a signed 6-bit value.
-	ld e, a
-	farjp _Sine
+INCLUDE "home/sine.asm"
 
 
 ; Game Boy hardware interrupts
