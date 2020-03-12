@@ -511,10 +511,10 @@ Script_buttonsound:
 
 Script_yesorno:
 	call YesNoBox
-	ld a, FALSE
-	jr c, .no
-	ld a, TRUE
-.no
+	; a = carry ? FALSE : TRUE
+	ccf
+	sbc a
+	and TRUE
 	ldh [hScriptVar], a
 	ret
 

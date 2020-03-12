@@ -1115,13 +1115,7 @@ PeoplePlaces2:
 
 PeoplePlaces3:
 	ld hl, PnP_Text3
-	call Random
-	cp $7b ; 48 percent
-	ld a, PLACES_AND_PEOPLE_4 ; People
-	jr c, .ok
-	ld a, PLACES_AND_PEOPLE_6 ; Places
-.ok
-	jp NextRadioLine
+	jp PeoplePlaces7.PickPeopleOrPlaces
 
 PnP_Text1:
 	; PLACES AND PEOPLE!
@@ -1193,14 +1187,8 @@ PeoplePlaces5:
 	call Random
 	cp $a ; 6.25 percent
 	ld a, PLACES_AND_PEOPLE
-	jr c, .ok
-	call Random
-	cp $7b ; 48 percent
-	ld a, PLACES_AND_PEOPLE_4 ; People
-	jr c, .ok
-	ld a, PLACES_AND_PEOPLE_6 ; Places
-.ok
-	jp NextRadioLine
+	jp c, PrintRadioLine
+	jp PeoplePlaces7.PickPeopleOrPlaces
 
 .Descriptors:
 	dw PnP_cute
@@ -1337,11 +1325,13 @@ PeoplePlaces7:
 	cp 4 percent
 	ld a, PLACES_AND_PEOPLE
 	jr c, .ok
+.PickPeopleOrPlaces:
 	call Random
 	cp 1 + 48 percent
-	ld a, PLACES_AND_PEOPLE_4 ; People
-	jr c, .ok
-	ld a, PLACES_AND_PEOPLE_6 ; Places
+	; a = carry ? PLACES_AND_PEOPLE_4 (People) : PLACES_AND_PEOPLE_6 (Places)
+	assert PLACES_AND_PEOPLE_4 + 2 == PLACES_AND_PEOPLE_6
+	sbc a
+	sbc PLACES_AND_PEOPLE_6
 .ok
 	jp PrintRadioLine
 

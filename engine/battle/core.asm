@@ -5547,7 +5547,7 @@ endc
 	jr c, .UpdateItem
 
 	; 45% chance of not getting an item (100% - 50% - 5% = 45%)
-	ld a, NO_ITEM
+	xor a ; NO_ITEM
 .UpdateItem:
 	ld [wOTPartyMon1Item], a
 

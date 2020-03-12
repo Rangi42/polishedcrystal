@@ -1,14 +1,4 @@
 AskRememberPassword:
-	call .DoMenu
-	ld a, 0 ; not xor a; preserve carry flag
-	jr c, .okay
-	ld a, $1
-
-.okay
-	ldh [hScriptVar], a
-	ret
-
-.DoMenu:
 	lb bc, 14, 7
 	push bc
 	ld hl, YesNoMenuDataHeader
@@ -33,13 +23,15 @@ AskRememberPassword:
 	ld a, [wMenuCursorY]
 	cp $2
 	jr z, .refused
-	and a
+	ld a, TRUE
+	ldh [hScriptVar], a
 	ret
 
 .refused
 	ld a, $2
 	ld [wMenuCursorY], a
-	scf
+	xor a ; FALSE
+	ldh [hScriptVar], a
 	ret
 
 Buena_ExitMenu:

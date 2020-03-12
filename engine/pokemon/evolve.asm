@@ -100,15 +100,16 @@ EvolveAfterBattle_MasterLoop
 	jp z, .dont_evolve_1
 
 	push hl
-	ld de, wTempMonAttack
-	ld hl, wTempMonDefense
+	ld hl, wTempMonAttack
+	ld de, wTempMonDefense
 	ld c, 2
-	call StringCmp
+	call StringCmp ; set carry if atk > def
 	ld a, ATK_EQ_DEF
 	jr z, .got_tyrogue_evo
-	ld a, ATK_LT_DEF
-	jr c, .got_tyrogue_evo
-	ld a, ATK_GT_DEF
+	; a = carry ? ATK_GT_DEF : ATK_LT_DEF
+	assert ATK_GT_DEF + 1 == ATK_LT_DEF
+	sbc a
+	add ATK_LT_DEF
 .got_tyrogue_evo
 	pop hl
 

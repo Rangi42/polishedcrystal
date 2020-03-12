@@ -767,9 +767,10 @@ DayCare_InitBreeding:
 .NidoranFamilyMother:
 	call Random
 	cp 1 + 50 percent
-	ld a, NIDORAN_F
-	jr c, .GotEggSpecies
-	ld a, NIDORAN_M
+	; a = carry ? NIDORAN_F : NIDORAN_M
+	sbc a
+	and NIDORAN_F - NIDORAN_M
+	add NIDORAN_M
 .GotEggSpecies:
 	ld [wCurPartySpecies], a
 	ld [wCurSpecies], a
