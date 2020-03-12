@@ -1311,7 +1311,7 @@ DrawPackGFX:
 	and $7
 	push af
 	ld c, a
-	add a, a
+	add a
 	add c
 	cp 10
 	jr c, .got_pocket

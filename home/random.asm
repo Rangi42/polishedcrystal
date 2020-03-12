@@ -14,7 +14,7 @@ Random::
 	ld d, a
 	ld e, [hl]
 	ld a, e
-	add a, a
+	add a
 	xor b
 	ld b, a
 	ld a, d
@@ -63,7 +63,7 @@ endr
 	ld [hli], a
 	ld [hl], e
 	ldh a, [rDIV]
-	add a, [hl]
+	add [hl]
 	ldh [hRandomAdd], a
 	ld a, [hli]
 	inc hl

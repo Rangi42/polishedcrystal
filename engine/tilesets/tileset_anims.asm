@@ -376,7 +376,7 @@ WaitTileAnimation:
 StandingTileFrame8:
 	ld a, [wTileAnimationTimer]
 	inc a
-	and a, 7
+	and 7
 	ld [wTileAnimationTimer], a
 	ret
 

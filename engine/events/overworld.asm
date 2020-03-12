@@ -530,7 +530,7 @@ CheckDirection:
 
 ; Get player direction
 	ld a, [wPlayerDirection]
-	and a, %00001100 ; bits 2 and 3 contain direction
+	and %00001100 ; bits 2 and 3 contain direction
 	rrca
 	rrca
 	ld e, a

@@ -666,7 +666,7 @@ LoadNote:
 	sub [hl]
 	ld e, a
 	ld a, d
-	sbc a, 0
+	sbc 0
 	ld d, a
 	ld hl, wChannel1PitchWheelTarget + 1 - wChannel1
 	add hl, bc
@@ -688,7 +688,7 @@ LoadNote:
 	sub e
 	ld e, a
 	ld a, d
-	sbc a, 0
+	sbc 0
 	ld d, a
 	ld hl, wChannel1PitchWheelTarget + 1 - wChannel1
 	add hl, bc
@@ -714,7 +714,7 @@ LoadNote:
 	sub [hl]
 	ld e, a
 	ld a, d
-	sbc a, 0
+	sbc 0
 	ld d, a
 	; ????
 	ld hl, wChannel1PitchWheelTarget + 1 - wChannel1
@@ -938,7 +938,7 @@ ApplyPitchWheel:
 	sub e
 	ld e, a
 	ld a, d
-	sbc a, 0
+	sbc 0
 	ld d, a
 	; [Channel*Field0x25] *= 2
 	; if rollover: Frequency -= 1
@@ -948,10 +948,10 @@ ApplyPitchWheel:
 	add a
 	ld [hl], a
 	ld a, e
-	sbc a, 0
+	sbc 0
 	ld e, a
 	ld a, d
-	sbc a, 0
+	sbc 0
 	ld d, a
 	; Compare the dw at [Channel*PitchWheelTarget] to de.
 	; If frequency is lower, we're finished.
@@ -1303,7 +1303,7 @@ ParseMusicCommand:
 	; reload command
 	ld a, [wCurMusicByte]
 	; get command #
-	sub a, $d0 ; first command
+	sub $d0 ; first command
 	ld e, a
 	ld d, 0
 	; seek command pointer
@@ -1611,7 +1611,7 @@ Music_Vibrato:
 	swap a
 	srl a ; halve
 	ld e, a
-	adc a, 0; round up
+	adc 0 ; round up
 	swap a
 	or e
 	ld [hl], a
