@@ -383,10 +383,8 @@ PokeBallEffect:
 
 	; Figure out if we should do a critical capture
 	farcall CheckCriticalCapture
-	ld a, 0
-	jr nc, .not_critical
-	ld a, $10
-.not_critical
+	sbc a   ; if c (critical) then $ff else 0
+	and $10 ; if c (critical) then $10 else 0
 	ld [wBuffer2], a
 
 	ld c, 20

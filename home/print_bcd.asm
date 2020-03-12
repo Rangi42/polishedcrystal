@@ -49,10 +49,8 @@ PrintBCDNumber::
 	ret
 
 PrintBCDDigit::
-	and %00001111
-	and a
+	and $f
 	jr z, .zeroDigit
-.nonzeroDigit
 	bit 7, b ; have any non-space characters been printed?
 	jr z, .outputDigit
 ; if bit 7 is set, then no numbers have been printed yet
