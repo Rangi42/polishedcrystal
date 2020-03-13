@@ -483,8 +483,9 @@ GetGender:
 ListMovePP:
 	ld a, [wNumMoves]
 	inc a
-	cpl
-	add NUM_MOVES + 1 ; a = NUM_MOVES - a
+	ld c, a ; gets used in .load_loop
+	ld a, NUM_MOVES
+	sub c
 	ld b, a
 	push hl
 	ld a, [wBuffer1]
