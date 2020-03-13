@@ -101,23 +101,14 @@ StringOptions2:
 	db "Done@"
 
 GetOptionPointer:
-	ld a, [wJumptableIndex] ; load the cursor position to a
-	ld e, a ; copy it to de
 	ld a, [wCurrentOptionsPage]
 	and a
+	ld a, [wJumptableIndex]
 	jr z, .page1
-	ld a, $8
-	add e
-	ld e, a
+	add 8
 .page1
-	ld d, 0
 	ld hl, .Pointers
-	add hl, de
-	add hl, de
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	jp hl ; jump to the code of the current highlighted item
+	jp _Jumptable
 
 .Pointers:
 	dw Options_TextSpeed

@@ -369,10 +369,7 @@ GetMapMusic::
 	ld a, [hli]
 	cp c
 	jr nz, .wrong_map
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	jp hl
+	jp IndirectHL
 
 .wrong_group:
 	inc hl

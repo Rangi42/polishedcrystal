@@ -1,18 +1,11 @@
 DoAnimFrame:
 	ld hl, SPRITEANIMSTRUCT_ANIM_SEQ_ID
 	add hl, bc
-	ld e, [hl]
-	ld d, 0
+	ld a, [hl]
 	ld hl, .Jumptable
-	add hl, de
-	add hl, de
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	jp hl
+	jp _Jumptable
 
 .Jumptable:
-
 	dw .Null               ; SPRITE_ANIM_SEQ_NULL
 	dw .PartyMon           ; SPRITE_ANIM_SEQ_PARTY_MON
 	dw .PartyMonSwitch     ; SPRITE_ANIM_SEQ_PARTY_MON_SWITCH
@@ -180,10 +173,13 @@ DoAnimFrame:
 	farjp AnimatePokegearModeIndicatorArrow
 
 .TradePokeBall
-	call .anonymous_dw
-	jp hl
+	ld hl, SPRITEANIMSTRUCT_JUMPTABLE_INDEX
+	add hl, bc
+	ld a, [hl]
+	ld hl, .TradePokeBall_dw
+	jp _Jumptable
 
-; Anonymous dw (see .anonymous_dw)
+.TradePokeBall_dw
 	dw .sixteen_zero
 	dw .sixteen_one
 	dw .sixteen_two
@@ -583,24 +579,6 @@ DoAnimFrame:
 
 .Celebi
 	farjp UpdateCelebiPosition
-
-.anonymous_dw
-	ld hl, sp+$0
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	inc de
-
-	ld hl, SPRITEANIMSTRUCT_JUMPTABLE_INDEX
-	add hl, bc
-	ld l, [hl]
-	ld h, $0
-	add hl, hl
-	add hl, de
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	ret
 
 .IncrementSpriteAnimStruct0B:
 	ld hl, SPRITEANIMSTRUCT_JUMPTABLE_INDEX

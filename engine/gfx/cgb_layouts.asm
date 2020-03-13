@@ -7,15 +7,8 @@ LoadCGBLayout::
 	jp z, ApplyPartyMenuHPPals
 	call ResetBGPals
 	dec a
-	ld l, a
-	ld h, 0
-	add hl, hl
-	ld de, .dw
-	add hl, de
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	jp hl
+	ld hl, .dw
+	jp _Jumptable
 
 .dw
 	dw _CGB_BattleGrayscale

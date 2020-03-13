@@ -27,11 +27,7 @@ _AnimateTileset::
 	inc hl
 
 ; Function address
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-
-	jp hl
+	jp IndirectHL
 
 TilesetJohto1Anim::
 	dw vTiles2 tile $14, AnimateWaterTile

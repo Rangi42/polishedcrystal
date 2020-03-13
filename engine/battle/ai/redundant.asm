@@ -8,10 +8,7 @@ AI_Redundant:
 	call IsInArray
 	jp nc, .NotRedundant
 	inc hl
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	jp hl
+	jp IndirectHL
 
 .Moves:
 	dbw EFFECT_DREAM_EATER,   .DreamEater

@@ -512,18 +512,12 @@ RunMenuItemPrintingFunction::
 	ld d, h
 	ld e, l
 	ld hl, wMenuData2DisplayFunctionPointer
-	call .__wMenuData2DisplayFunction__
+	call IndirectHL
 	pop hl
 	ld de, 2 * SCREEN_WIDTH
 	add hl, de
 	pop de
 	jr .loop
-
-.__wMenuData2DisplayFunction__
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	jp hl
 
 InitMenuCursorAndButtonPermissions::
 	call InitVerticalMenuCursor
@@ -630,10 +624,7 @@ PlaceNthMenuStrings::
 MenuJumptable::
 	ld a, [wMenuSelection]
 	call GetMenuDataPointerTableEntry
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	jp hl
+	jp IndirectHL
 
 GetMenuDataPointerTableEntry::
 	ld e, a

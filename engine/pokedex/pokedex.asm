@@ -158,8 +158,7 @@ Pokedex_InitCursorPosition:
 Pokedex_RunJumptable:
 	ld a, [wJumptableIndex]
 	ld hl, .Jumptable
-	call Pokedex_LoadPointer
-	jp hl
+	jp _Jumptable
 
 .Jumptable:
 	dw Pokedex_InitMainScreen
@@ -338,8 +337,7 @@ Pokedex_UpdateDexEntryScreen:
 .do_menu_action
 	ld a, [wDexArrowCursorPosIndex]
 	ld hl, DexEntryScreen_MenuActionJumptable
-	call Pokedex_LoadPointer
-	jp hl
+	jp _Jumptable
 
 .return_to_prev_screen
 	ld a, [wLastVolume]
@@ -496,8 +494,7 @@ Pokedex_UpdateOptionScreen:
 .do_menu_action
 	ld a, [wDexArrowCursorPosIndex]
 	ld hl, .MenuActionJumptable
-	call Pokedex_LoadPointer
-	jp hl
+	jp _Jumptable
 
 .return_to_main_screen
 	call Pokedex_BlackOutBG
@@ -595,8 +592,7 @@ Pokedex_UpdateSearchScreen:
 
 	ld a, [wDexArrowCursorPosIndex]
 	ld hl, .MenuActionJumptable
-	call Pokedex_LoadPointer
-	jp hl
+	jp _Jumptable
 
 .cancel
 	call Pokedex_BlackOutBG
@@ -1668,8 +1664,7 @@ Pokedex_OrderMonsByMode:
 	call ByteFill
 	ld a, [wCurrentDexMode]
 	ld hl, .Jumptable
-	call Pokedex_LoadPointer
-	jp hl
+	jp _Jumptable
 
 .Jumptable:
 	dw .NewMode
@@ -1760,9 +1755,13 @@ Pokedex_DisplayModeDescription:
 	call Pokedex_PlaceBorder
 	ld a, [wDexArrowCursorPosIndex]
 	ld hl, .Modes
-	call Pokedex_LoadPointer
-	ld e, l
-	ld d, h
+	ld e, a
+	ld d, 0
+	add hl, de
+	add hl, de
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
 	hlcoord 1, 14
 	call PlaceString
 	ld a, $1
@@ -2329,16 +2328,6 @@ Pokedex_GetCGBLayout:
 	call DmgToCgbBGPals
 	ld a, $e0
 	jp DmgToCgbObjPal0
-
-Pokedex_LoadPointer:
-	ld e, a
-	ld d, 0
-	add hl, de
-	add hl, de
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	ret
 
 Pokedex_LoadSelectedMonTiles:
 ; Loads the tiles of the currently selected Pokémon.

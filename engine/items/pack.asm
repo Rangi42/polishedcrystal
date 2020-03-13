@@ -22,11 +22,9 @@ Pack:
 .RunJumptable:
 	ld a, [wJumptableIndex]
 	ld hl, .Jumptable
-	call Pack_GetJumptablePointer
-	jp hl
+	jp _Jumptable
 
 .Jumptable:
-
 	dw .InitGFX            ;  0
 	dw .InitItemsPocket    ;  1
 	dw .ItemsPocketMenu    ;  2
@@ -140,8 +138,7 @@ Pack:
 	ret c
 	ld a, [wMenuCursorY]
 	dec a
-	call Pack_GetJumptablePointer
-	jp hl
+	jp _Jumptable
 
 .MenuDataHeader1:
 	db $40 ; flags
@@ -242,8 +239,7 @@ PackBuildMenu:
 PackMenuJump:
 	ld a, [wMenuCursorY]
 	dec a
-	call Pack_GetJumptablePointer
-	jp hl
+	jp _Jumptable
 
 PackSortMenu:
 	ld hl, Text_SortItemsHow
@@ -693,11 +689,9 @@ BattlePack:
 .RunJumptable:
 	ld a, [wJumptableIndex]
 	ld hl, .Jumptable
-	call Pack_GetJumptablePointer
-	jp hl
+	jp _Jumptable
 
 .Jumptable:
-
 	dw .InitGFX            ;  0
 	dw .InitItemsPocket    ;  1
 	dw .ItemsPocketMenu    ;  2
@@ -999,11 +993,9 @@ DepositSellPack:
 .RunJumptable:
 	ld a, [wJumptableIndex]
 	ld hl, .Jumptable
-	call Pack_GetJumptablePointer
-	jp hl
+	jp _Jumptable
 
 .Jumptable:
-
 	dw .ItemsPocket
 	dw .MedicinePocket
 	dw .BallsPocket
@@ -1185,11 +1177,9 @@ TutorialPack:
 .RunJumptable:
 	ld a, [wJumptableIndex]
 	ld hl, .dw
-	call Pack_GetJumptablePointer
-	jp hl
+	jp _Jumptable
 
 .dw
-
 	dw .Items
 	dw .Medicine
 	dw .Balls
@@ -1267,16 +1257,6 @@ TutorialPack:
 Pack_JumptableNext:
 	ld hl, wJumptableIndex
 	inc [hl]
-	ret
-
-Pack_GetJumptablePointer:
-	ld e, a
-	ld d, 0
-	add hl, de
-	add hl, de
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
 	ret
 
 Pack_QuitNoScript:

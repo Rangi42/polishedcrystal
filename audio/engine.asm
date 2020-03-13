@@ -208,14 +208,7 @@ UpdateChannels:
 	ld hl, .ChannelFnPtrs
 	ld a, [wCurChannel]
 	and $7
-	add a
-	ld e, a
-	ld d, 0
-	add hl, de
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	jp hl
+	jp _Jumptable
 
 .ChannelFnPtrs:
 	dw .wChannel1
@@ -1304,17 +1297,9 @@ ParseMusicCommand:
 	ld a, [wCurMusicByte]
 	; get command #
 	sub $d0 ; first command
-	ld e, a
-	ld d, 0
-	; seek command pointer
+	; jump to the new command pointer
 	ld hl, MusicCommands
-	add hl, de
-	add hl, de
-	; jump to the new pointer
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	jp hl
+	jp _Jumptable
 
 MusicCommands:
 ; pointer to each command in order

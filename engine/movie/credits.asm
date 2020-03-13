@@ -261,18 +261,10 @@ Credits_HandleBButton:
 Credits_Jumptable:
 	ld a, [wJumptableIndex]
 	and $f
-	ld e, a
-	ld d, 0
 	ld hl, .Jumptable
-	add hl, de
-	add hl, de
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	jp hl
+	jp _Jumptable
 
 .Jumptable:
-
 	dw ParseCredits
 	dw Credits_Next
 	dw Credits_Next

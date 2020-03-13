@@ -77,18 +77,10 @@ _CardFlip:
 
 .CardFlip:
 	ld a, [wJumptableIndex]
-	ld e, a
-	ld d, 0
 	ld hl, .Jumptable
-	add hl, de
-	add hl, de
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	jp hl
+	jp _Jumptable
 
 .Jumptable:
-
 	dw .AskPlayWithThree
 	dw .DeductCoins
 	dw .ChooseACard
@@ -587,13 +579,9 @@ CardFlip_BlankDiscardedCardSlot:
 	ld a, 0 ; not xor a; preserve carry flag?
 	adc .Jumptable / $100
 	ld h, a
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	jp hl
+	jp IndirectHL
 
 .Jumptable:
-
 	dw .Level1
 	dw .Level2
 	dw .Level3
@@ -756,13 +744,9 @@ CardFlip_CheckWinCondition:
 	add hl, hl
 	ld de, .Jumptable
 	add hl, de
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	jp hl
+	jp IndirectHL
 
 .Jumptable:
-
 	dw .Impossible
 	dw .Impossible
 	dw .PikaJiggly

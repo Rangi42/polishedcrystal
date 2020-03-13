@@ -261,17 +261,8 @@ RunBattleAnimCommand:
 ; Execute battle animation command in [wBattleAnimByte].
 	ld a, [wBattleAnimByte]
 	sub $cf
-
-	ld e, a
-	ld d, 0
 	ld hl, BattleAnimCommands
-	add hl, de
-	add hl, de
-
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	jp hl
+	jp _Jumptable
 
 BattleAnimCommands::
 	dw BattleAnimCmd_StatLoop

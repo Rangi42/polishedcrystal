@@ -43,28 +43,12 @@ Special_BattleTower_Battle:
 	xor a
 	ld [wBattleTowerBattleEnded], a
 .loop
-	call .do_dw
+	call RunBattleTowerTrainer
 	call DelayFrame
 	ld a, [wBattleTowerBattleEnded]
-	cp $1
-	jr nz, .loop
-	ret
-
-.do_dw
-	ld a, [wBattleTowerBattleEnded]
-	ld e, a
-	ld d, 0
-	ld hl, .dw
-	add hl, de
-	add hl, de
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	jp hl
-
-.dw
-	dw RunBattleTowerTrainer
-	dw SkipBattleTowerTrainer
+	and a
+	ret nz
+	jr .loop
 
 RunBattleTowerTrainer:
 	ld a, [wOptions2]
@@ -111,7 +95,6 @@ RunBattleTowerTrainer:
 	ld [wOptions2], a
 	ld a, $1
 	ld [wBattleTowerBattleEnded], a
-SkipBattleTowerTrainer:
 	ret
 
 ReadBTTrainerParty:

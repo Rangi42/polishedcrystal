@@ -19,18 +19,10 @@ Special_BankOfMom:
 
 .RunJumptable:
 	ld a, [wJumptableIndex]
-	ld e, a
-	ld d, 0
 	ld hl, .dw
-	add hl, de
-	add hl, de
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	jp hl
+	jp _Jumptable
 
 .dw
-
 	dw .CheckIfBankInitialized
 	dw .InitializeBank
 	dw .IsThisAboutYourMoney

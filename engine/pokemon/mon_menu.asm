@@ -95,10 +95,7 @@ PokemonActionSubmenu:
 	jr nc, .nothing
 
 	inc hl
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	jp hl
+	jp IndirectHL
 
 .nothing
 	xor a

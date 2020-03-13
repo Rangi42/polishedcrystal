@@ -79,11 +79,8 @@ ReadAnyMail:
 .got_pointer
 	ld a, c
 	ld [wBuffer3], a
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
 	pop bc
-	jp hl
+	jp IndirectHL
 
 MailGFXPointers:
 	dbw FLOWER_MAIL,  LoadFlowerMailGFX

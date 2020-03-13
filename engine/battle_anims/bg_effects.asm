@@ -58,6 +58,7 @@ QueueBGEffect:
 	ld [hl], a
 	ret
 
+BattleBGEffect_End:
 EndBattleBGEffect:
 	ld hl, BG_EFFECT_STRUCT_FUNCTION
 	add hl, bc
@@ -67,15 +68,9 @@ EndBattleBGEffect:
 DoBattleBGEffectFunction:
 	ld hl, BG_EFFECT_STRUCT_FUNCTION
 	add hl, bc
-	ld e, [hl]
-	ld d, 0
+	ld a, [hl]
 	ld hl, BattleBGEffects
-	add hl, de
-	add hl, de
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	jp hl
+	jp _Jumptable
 
 BattleBGEffects:
 	dw BattleBGEffect_End
@@ -133,21 +128,6 @@ BattleBGEffects:
 	dw BattleBGEffect_WobbleMon
 	dw BattleBGEffect_35
 
-BattleBGEffect_End:
-	jp EndBattleBGEffect
-
-BatttleBGEffects_GetNamedJumptablePointer:
-	ld hl, BG_EFFECT_STRUCT_JT_INDEX
-	add hl, bc
-	ld l, [hl]
-	ld h, 0
-	add hl, hl
-	add hl, de
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	ret
-
 BattleBGEffects_AnonJumptable:
 	pop de
 	ld hl, BG_EFFECT_STRUCT_JT_INDEX
@@ -156,10 +136,7 @@ BattleBGEffects_AnonJumptable:
 	ld h, 0
 	add hl, hl
 	add hl, de
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	jp hl
+	jp IndirectHL
 
 BattleBGEffects_IncrementJumptable:
 	ld hl, BG_EFFECT_STRUCT_JT_INDEX
@@ -1857,8 +1834,13 @@ BattleBGEffect_2b:
 
 BattleBGEffect_1c:
 	ld de, .Jumptable
-	call BatttleBGEffects_GetNamedJumptablePointer
-	jp hl
+	ld hl, BG_EFFECT_STRUCT_JT_INDEX
+	add hl, bc
+	ld l, [hl]
+	ld h, 0
+	add hl, hl
+	add hl, de
+	jp IndirectHL
 
 .Jumptable:
 	dw .cgb_zero
@@ -2181,9 +2163,14 @@ BattleBGEffect_1e:
 BGEffect_RapidCyclePals:
 	push de
 	ld de, .Jumptable_CGB
-	call BatttleBGEffects_GetNamedJumptablePointer
+	ld hl, BG_EFFECT_STRUCT_JT_INDEX
+	add hl, bc
+	ld l, [hl]
+	ld h, 0
+	add hl, hl
+	add hl, de
 	pop de
-	jp hl
+	jp IndirectHL
 
 .Jumptable_CGB:
 	dw .zero_cgb

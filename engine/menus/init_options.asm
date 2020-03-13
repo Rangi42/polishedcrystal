@@ -160,15 +160,8 @@ INCBIN "gfx/new_game/init_bg.2bpp"
 
 GetInitialOptionPointer:
 	ld a, [wJumptableIndex] ; load the cursor position to a
-	ld e, a ; copy it to de
-	ld d, 0
 	ld hl, .Pointers
-	add hl, de
-	add hl, de
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	jp hl ; jump to the code of the current highlighted item
+	jp _Jumptable
 
 .Pointers:
 	dw InitialOptions_Natures

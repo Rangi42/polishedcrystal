@@ -1,22 +1,4 @@
 CatchTutorial::
-	ld a, [wBattleType]
-	dec a
-	ld c, a
-	ld hl, .dw
-	ld b, 0
-	add hl, bc
-	add hl, bc
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	jp hl
-
-.dw
-	dw .DudeTutorial
-	dw .DudeTutorial
-	dw .DudeTutorial
-
-.DudeTutorial:
 ; Back up your name
 	ld hl, wPlayerName
 	ld de, wBackupName

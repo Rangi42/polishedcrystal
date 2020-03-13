@@ -179,10 +179,7 @@ asm_444d:
 	add hl, hl
 	add hl, hl
 	add hl, de
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	jp hl
+	jp IndirectHL
 
 INCLUDE "engine/overworld/map_object_action.asm"
 
@@ -1910,10 +1907,7 @@ HandleMovementData:
 
 JumpMovementPointer:
 	ld hl, wMovementPointer
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	jp hl
+	jp IndirectHL
 
 ContinueReadingMovement:
 	ld a, 1

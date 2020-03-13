@@ -61,7 +61,7 @@ UnownPuzzle:
 	ld a, [wJumptableIndex]
 	bit 7, a
 	jr nz, .quit
-	call UnownPuzzleJumptable
+	call _UnownPuzzle
 	ld a, [wHoldingUnownPuzzlePiece]
 	and a
 	jr nz, .holding_piece
@@ -166,23 +166,7 @@ PlaceStartCancelBoxBorder:
 	ld [hl], $f5
 	ret
 
-UnownPuzzleJumptable:
-	ld a, [wJumptableIndex]
-	ld e, a
-	ld d, 0
-	ld hl, .Jumptable
-	add hl, de
-	add hl, de
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	jp hl
-
-.Jumptable:
-
-	dw .Function
-
-.Function:
+_UnownPuzzle:
 	ldh a, [hJoyPressed]
 	and START
 	jp nz, UnownPuzzle_Quit
