@@ -3921,7 +3921,7 @@ BattleAnim_AnonJumptable:
 	ld hl, BATTLEANIMSTRUCT_ANON_JT_INDEX
 	add hl, bc
 	ld l, [hl]
-	ld h, $0
+	ld h, 0
 	add hl, hl
 	add hl, de
 	jp IndirectHL

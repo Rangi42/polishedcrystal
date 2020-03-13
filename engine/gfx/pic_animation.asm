@@ -312,8 +312,7 @@ PokeAnim_DoAnimScript:
 	ld a, [wPokeAnimJumptableIndex]
 	and $7f
 	ld hl, .Jumptable
-	rst JumpTable
-	ret
+	jp _Jumptable
 
 .Jumptable:
 	dw .RunAnim
@@ -322,11 +321,11 @@ PokeAnim_DoAnimScript:
 .RunAnim:
 	call PokeAnim_GetPointer
 	ld a, [wPokeAnimCommand]
-	cp $ff ; endanim
+	inc a ; $ff endanim
 	jr z, PokeAnim_End
-	cp $fe ; setrepeat
+	inc a ; $fe setrepeat
 	jr z, .SetRepeat
-	cp $fd ; dorepeat
+	inc a ; $fd dorepeat
 	jr z, .DoRepeat
 	call PokeAnim_GetFrame
 	ld a, [wPokeAnimParameter]

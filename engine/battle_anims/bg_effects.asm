@@ -1833,14 +1833,11 @@ BattleBGEffect_2b:
 	jp BattleAnim_ResetLCDStatCustom
 
 BattleBGEffect_1c:
-	ld de, .Jumptable
 	ld hl, BG_EFFECT_STRUCT_JT_INDEX
 	add hl, bc
-	ld l, [hl]
-	ld h, 0
-	add hl, hl
-	add hl, de
-	jp IndirectHL
+	ld a, [hl]
+	ld hl, .Jumptable
+	jp _Jumptable
 
 .Jumptable:
 	dw .cgb_zero
@@ -2161,16 +2158,11 @@ BattleBGEffect_1e:
 	db $00, $40, $90, $e4, $ff
 
 BGEffect_RapidCyclePals:
-	push de
-	ld de, .Jumptable_CGB
 	ld hl, BG_EFFECT_STRUCT_JT_INDEX
 	add hl, bc
-	ld l, [hl]
-	ld h, 0
-	add hl, hl
-	add hl, de
-	pop de
-	jp IndirectHL
+	ld a, [hl]
+	ld hl, .Jumptable_CGB
+	jp _Jumptable
 
 .Jumptable_CGB:
 	dw .zero_cgb

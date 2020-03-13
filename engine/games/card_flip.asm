@@ -353,7 +353,7 @@ CollapseCursorPosition:
 	ld bc, 6
 	ld a, [wCardFlipCursorY]
 	rst AddNTimes
-	ld b, $0
+	ld b, 0
 	ld a, [wCardFlipCursorX]
 	ld c, a
 	add hl, bc
@@ -572,14 +572,11 @@ CardFlip_BlankDiscardedCardSlot:
 	ld b, 0
 
 	ld a, e
-	and $1c ; get level
+	and %0011100 ; get level
 	srl a
-	add .Jumptable % $100
-	ld l, a
-	ld a, 0 ; not xor a; preserve carry flag?
-	adc .Jumptable / $100
-	ld h, a
-	jp IndirectHL
+	srl a
+	ld hl, .Jumptable
+	jp _Jumptable
 
 .Jumptable:
 	dw .Level1
