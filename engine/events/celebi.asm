@@ -114,9 +114,8 @@ UpdateCelebiPosition:
 	add hl, bc
 	ld a, [hl]
 	ld d, a
-	cp $3a
+	cp $3a + 1
 	jr c, .skip
-	jr z, .skip
 	sub $3
 	ld [hl], a
 .skip
