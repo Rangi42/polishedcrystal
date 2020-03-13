@@ -5,7 +5,7 @@
 > -- Morimoto, Pokémon Ultra Sun/Ultra Moon
 > <https://www.serebii.net/ultrasunultramoon/virtualconsole.shtml>
 
-Free space: 224636/2097152 (10.71%)
+Free space: 224631/2097152 (10.71%)
 
 bank	end	free
 $00	$3e74	$018c
@@ -115,14 +115,14 @@ $67	$8000	$0000
 $68	$7fff	$0001
 $69	$8000	$0000
 $6a	$8000	$0000
-$6b	$7ffe	$0002
+$6b	$7fff	$0001
 $6c	$8000	$0000
 $6d	$8000	$0000
 $6e	$8000	$0000
 $6f	$8000	$0000
 $70	$8000	$0000
 $71	$8000	$0000
-$72	$5425	$2bdb
+$72	$5429	$2bd7
 $73	$4000	$4000
 $74	$4000	$4000
 $75	$4000	$4000
