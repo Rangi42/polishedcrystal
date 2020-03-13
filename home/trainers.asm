@@ -138,10 +138,7 @@ LoadTrainer_continue::
 	call FarCopyBytes
 	pop af
 	jr nz, .notGenericTrainer
-	push de
-	ld d, h
-	ld e, l
-	pop hl
+	call SwapHLDE
 	; store 0 loss pointer
 	xor a
 	ld [hli], a

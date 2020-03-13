@@ -1016,13 +1016,7 @@ BattleConsumePP:
 	ld c, a
 	ld b, 0
 	add hl, bc
-
-	; Swap de and hl
-	push de
-	ld d, h
-	ld e, l
-	pop hl
-
+	call SwapHLDE
 	add hl, bc
 	ld a, [hl]
 	and $3f
@@ -5684,14 +5678,7 @@ BattleSideCopy:
 ; Copy bc bytes from de to hl if it's the enemy's turn.
 	ldh a, [hBattleTurn]
 	and a
-	jr z, .copy
-
-; Swap hl and de
-	push hl
-	ld h, d
-	ld l, e
-	pop de
-.copy
+	call nz, SwapHLDE
 	rst CopyBytes
 	ret
 

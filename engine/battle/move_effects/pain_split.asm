@@ -5,17 +5,12 @@ BattleCommand_painsplit:
 	call AnimateCurrentMove
 
 	; Get HP
+	ld hl, wEnemyMonHP + 1
+	ld de, wBattleMonHP + 1
 	ldh a, [hBattleTurn]
 	and a
-	ld de, wBattleMonHP + 1
-	ld hl, wEnemyMonHP + 1
-	jr z, .got_hp
-	push de
-	ld d, h
-	ld e, l
-	pop hl
+	call nz, SwapHLDE
 
-.got_hp
 	; Set bc to [de] - [hl] (user HP - target HP)
 	ld a, [de]
 	sub [hl]

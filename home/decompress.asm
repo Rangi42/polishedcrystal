@@ -1,10 +1,3 @@
-SwapDEHL::
-	push de
-	ld d, h
-	ld e, l
-	pop hl
-	ret
-
 FarDecompressWRA6::
 	ld b, a
 FarDecompressWRA6InB::
@@ -77,7 +70,7 @@ LZ_LONG_HI       EQU %00000011
 ; For more information, refer to the code below and in extras/gfx.py.
 
 	; Swap de and hl for speed
-	call SwapDEHL
+	call SwapHLDE
 
 	; Save the output address
 	; for rewrite commands.
@@ -89,7 +82,7 @@ LZ_LONG_HI       EQU %00000011
 .Main
 	ld a, [de]
 	cp LZ_END
-	jr z, SwapDEHL
+	jp z, SwapHLDE
 
 	and LZ_CMD
 

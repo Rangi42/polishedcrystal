@@ -671,12 +671,7 @@ InheritDV:
 .found_dv
 	push de ; Egg DVs inherited to
 	; current HL is Parent, DE is Egg, if a is odd, swap
-	jr nc, .swap_done
-	push de
-	ld d, h
-	ld e, l
-	pop hl
-.swap_done
+	call c, SwapHLDE
 	; inherit x from HL, y from DE in %xxxxyyyy
 	; This means that half is "inherited" from Egg, half from Parent
 	ld a, [hl]

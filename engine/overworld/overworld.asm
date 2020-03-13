@@ -315,10 +315,7 @@ GetUsedSprite::
 	call .GetTileAddr
 	push bc
 	push hl
-	push hl
-	ld h, d
-	ld l, e
-	pop de
+	call SwapHLDE
 	call FarDecompressWRA6InB
 	pop hl
 	pop bc

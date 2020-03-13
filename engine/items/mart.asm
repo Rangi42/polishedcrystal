@@ -1109,10 +1109,7 @@ MartMenu_PrintBCDPrices:
 	add hl, bc
 	add hl, bc
 	add hl, bc
-	push de
-	ld d, h
-	ld e, l
-	pop hl
+	call SwapHLDE
 	ld bc, SCREEN_WIDTH - 4
 	add hl, bc
 	ld c, PRINTNUM_LEADINGZEROS | PRINTNUM_MONEY | 3
@@ -1180,11 +1177,7 @@ GetCursorItemPointCost:
 	ld b, 0
 	ld hl, wMartItem1BCD
 	add hl, bc
-	push de
-	ld d, h
-	ld e, l
-	pop hl
-	ret
+	jp SwapHLDE
 
 Text_HerbShop_Intro:
 	; Hello, dear. I sell inexpensive herbal medicine. They're good, but a trifle bitter. Your #MON may not like them. Hehehehe…

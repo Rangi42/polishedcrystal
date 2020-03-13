@@ -61,18 +61,6 @@ GetFarByte::
 SECTION "rst28 ByteFill", ROM0[$0028]
 	jp _ByteFill
 
-IsAPokemon::
-; For functions using EGG as sentinel, use "and a" instead (EGG is $ff)
-; Returns carry if species a is not a Pokemon (including $ff)
-	inc a
-	cp $2 ; sets carry for $0 (inc'ed to $1) and $ff (inc'ed to $0)
-	dec a
-	ret
-
-
-SECTION "rst30 PlaceString", ROM0[$0030]
-	jp _PlaceString
-
 GetFarWRAMByte::
 	call StackCallInWRAMBankA
 
@@ -81,10 +69,27 @@ GetFarWRAMByte::
 	ret
 
 
+SECTION "rst30 PlaceString", ROM0[$0030]
+	jp _PlaceString
+
+SwapHLDE::
+	push de
+	ld d, h
+	ld e, l
+	pop hl
+	ret
+
+
 SECTION "rst38 Predef", ROM0[$0038]
 	jp _Predef
 
-	ds 5 ; free space
+IsAPokemon::
+; For functions using EGG as sentinel, use "and a" instead (EGG is $ff)
+; Returns carry if species a is not a Pokemon (including $ff)
+	inc a
+	cp 2 ; sets carry for $0 (inc'ed to $1) and $ff (inc'ed to $0)
+	dec a
+	ret
 
 
 ; Game Boy hardware interrupts

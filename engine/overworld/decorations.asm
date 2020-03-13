@@ -873,11 +873,7 @@ QueryWhichSide:
 	ld a, [wBuffer2]
 	cp 1
 	ret z
-	push hl
-	ld h, d
-	ld l, e
-	pop de
-	ret
+	jp SwapHLDE
 
 MenuDataHeader_0x26eab:
 	db $40 ; flags
