@@ -436,6 +436,8 @@ _ChooseWildEncounter:
 .loadwildmon
 	ld a, b
 	ld [wTempWildMonSpecies], a
+	call IsAPokemon
+	jr c, .nowildbattle
 
 	ld a, [wMapGroup]
 	cp GROUP_SOUL_HOUSE_B1F ; Soul House or Lavender Radio Tower
