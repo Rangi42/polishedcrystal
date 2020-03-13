@@ -11,7 +11,7 @@ import sys
 import png
 from colorsys import hls_to_rgb
 
-from mapreader import MapReader
+from parsemap import MapReader
 
 def main():
 	mapfile = sys.argv[1] if len(sys.argv) >= 2 else 'contents/polishedcrystal.map'
@@ -40,6 +40,8 @@ def main():
 		hits = [0] * pixels_per_bank
 		data = r.bank_data['ROM Bank'].get(bank, default_bank_data)
 		for s in data['sections']:
+			if s['beg'] >= s['end']:
+				continue
 			beg = s['beg'] & bank_mask
 			end = s['end'] & bank_mask
 			for i in range(beg, end + 1):
