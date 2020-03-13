@@ -78,7 +78,7 @@ _CardFlip:
 .CardFlip:
 	ld a, [wJumptableIndex]
 	ld hl, .Jumptable
-	jp _Jumptable
+	jp JumpTable
 
 .Jumptable:
 	dw .AskPlayWithThree
@@ -325,7 +325,7 @@ CardFlip_ShuffleDeck:
 	ld hl, wDeck
 	ld bc, CARDFLIP_DECK_SIZE
 	xor a
-	call ByteFill
+	rst ByteFill
 	ld de, wDeck
 	ld c, CARDFLIP_DECK_SIZE - 1
 .loop
@@ -346,7 +346,7 @@ CardFlip_ShuffleDeck:
 	ld [wCardFlipNumCardsPlayed], a
 	ld hl, wDiscardPile
 	ld bc, CARDFLIP_DECK_SIZE
-	jp ByteFill
+	jp _ByteFill
 
 CollapseCursorPosition:
 	ld hl, 0
@@ -475,7 +475,7 @@ CardFlip_PrintCoinBalance:
 	call TextBox
 	hlcoord 9, 16
 	ld de, .CoinStr
-	call PlaceString
+	rst PlaceString
 	hlcoord 14, 16
 	ld de, wCoins
 	lb bc, PRINTNUM_LEADINGZEROS | 2, 5
@@ -490,7 +490,7 @@ CardFlip_InitTilemap:
 	hlcoord 0, 0
 	ld bc, SCREEN_HEIGHT * SCREEN_WIDTH
 	ld a, $29
-	call ByteFill
+	rst ByteFill
 	hlcoord 9, 0
 	ld de, CardFlipTilemap
 	lb bc, 12, 11
@@ -576,7 +576,7 @@ CardFlip_BlankDiscardedCardSlot:
 	srl a
 	srl a
 	ld hl, .Jumptable
-	jp _Jumptable
+	jp JumpTable
 
 .Jumptable:
 	dw .Level1
@@ -1496,7 +1496,7 @@ CardFlip_InitAttrPals:
 	hlcoord 0, 0, wAttrMap
 	ld bc, SCREEN_HEIGHT * SCREEN_WIDTH
 	xor a
-	call ByteFill
+	rst ByteFill
 
 	hlcoord 12, 1, wAttrMap
 	lb bc, 2, 2

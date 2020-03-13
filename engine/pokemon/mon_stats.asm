@@ -80,7 +80,7 @@ PrintTempMonStats:
 	push bc
 	push hl
 	ld de, MostStatNames
-	call PlaceString
+	rst PlaceString
 	pop hl
 	pop bc
 
@@ -247,7 +247,7 @@ PrintStatDifferences:
 	pop af
 	push hl
 	ld de, AllStatNames
-	call PlaceString
+	rst PlaceString
 	pop hl
 	ret
 
@@ -691,7 +691,7 @@ ListMoves:
 	ld de, wStringBuffer1
 	pop hl
 	push bc
-	call PlaceString
+	rst PlaceString
 	pop bc
 	ld a, b
 	ld [wNumMoves], a

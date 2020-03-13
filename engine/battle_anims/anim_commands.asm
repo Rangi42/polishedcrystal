@@ -262,7 +262,7 @@ RunBattleAnimCommand:
 	ld a, [wBattleAnimByte]
 	sub $cf
 	ld hl, BattleAnimCommands
-	jp _Jumptable
+	jp JumpTable
 
 BattleAnimCommands::
 	dw BattleAnimCmd_StatLoop
@@ -1290,7 +1290,7 @@ ClearBattleAnims:
 	ld hl, wLYOverrides
 	ld bc, wBattleAnimEnd - wLYOverrides
 	xor a
-	call ByteFill
+	rst ByteFill
 
 	ld hl, wFXAnimIDLo
 	ld e, [hl]

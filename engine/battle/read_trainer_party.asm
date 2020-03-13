@@ -16,7 +16,7 @@ ReadTrainerParty:
 	ld hl, wOTPartyMons
 	ld bc, wOTPartyMonsEnd - wOTPartyMons
 	xor a
-	call ByteFill
+	rst ByteFill
 
 	call FindTrainerData
 

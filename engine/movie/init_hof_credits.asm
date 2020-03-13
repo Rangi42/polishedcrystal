@@ -8,11 +8,11 @@ InitDisplayForHallOfFame:
 	hlbgcoord 0, 0
 	ld bc, vBGMap1 - vBGMap0
 	ld a, " "
-	call ByteFill
+	rst ByteFill
 	hlcoord 0, 0, wAttrMap
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
 	xor a
-	call ByteFill
+	rst ByteFill
 	xor a
 	ldh [hSCY], a
 	ldh [hSCX], a
@@ -37,11 +37,11 @@ InitDisplayForLeafCredits:
 	hlbgcoord 0, 0
 	ld bc, vBGMap1 - vBGMap0
 	ld a, " "
-	call ByteFill
+	rst ByteFill
 	hlcoord 0, 0, wAttrMap
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
 	xor a
-	call ByteFill
+	rst ByteFill
 	ld hl, wUnknBGPals
 	ld c, 4 tiles
 .load_white_palettes
@@ -73,7 +73,7 @@ ResetDisplayBetweenHallOfFameMons:
 	ld hl, wScratchTileMap
 	ld bc, BG_MAP_WIDTH * BG_MAP_HEIGHT
 	ld a, " "
-	call ByteFill
+	rst ByteFill
 	hlbgcoord 0, 0
 	ld de, wScratchTileMap
 	lb bc, $0, $40

@@ -8,7 +8,7 @@ Function_LoadOpponentTrainer:
 	xor a
 	ld hl, wBT_OTTrainer
 	ld bc, wBT_OTTrainerEnd - wBT_OTTrainer
-	call ByteFill
+	rst ByteFill
 
 	ld a, BANK(sBTTrainers)
 	call GetSRAMBank
@@ -86,7 +86,7 @@ PopulateBattleTowerTeam:
 	xor a
 	ld hl, wOTPartyMons
 	ld bc, wOTPartyMonsEnd - wOTPartyMons
-	call ByteFill
+	rst ByteFill
 
 	; Set party size
 	ld a, BATTLETOWER_NROFPKMNS
@@ -200,7 +200,7 @@ PopulateBattleTowerTeam:
 	push hl
 	ld bc, 6
 	ld a, 252
-	call ByteFill
+	rst ByteFill
 	pop hl
 
 	pop de

@@ -117,7 +117,7 @@ Copyright_GFPresents:
 PlaceGameFreakPresents:
 	ld a, [wJumptableIndex]
 	ld hl, .dw
-	jp _Jumptable
+	jp JumpTable
 
 .dw
 	dw PlaceGameFreakPresents_0
@@ -194,7 +194,7 @@ GameFreakLogoJumper:
 	add hl, bc
 	ld a, [hl]
 	ld hl, GameFreakLogoScenes
-	jp _Jumptable
+	jp JumpTable
 
 GameFreakLogoScenes:
 	dw GameFreakLogoScene1
@@ -405,7 +405,7 @@ CrystalIntro:
 IntroSceneJumper:
 	ld a, [wJumptableIndex]
 	ld hl, IntroScenes
-	jp _Jumptable
+	jp JumpTable
 
 IntroScenes:
 	dw IntroScene1
@@ -709,15 +709,15 @@ IntroScene9:
 	; first 12 rows have palette 1
 	ld bc, 12 * SCREEN_WIDTH
 	ld a, $1
-	call ByteFill
+	rst ByteFill
 	; middle 3 rows have palette 2
 	ld bc, 3 * SCREEN_WIDTH
 	ld a, $2
-	call ByteFill
+	rst ByteFill
 	; last three rows have palette 3
 	ld bc, 3 * SCREEN_WIDTH
 	ld a, $3
-	call ByteFill
+	rst ByteFill
 	ld a, $2
 	ldh [hBGMapMode], a
 	call DelayFrame
@@ -1519,7 +1519,7 @@ CrystalIntro_UnownFade:
 if !DEF(MONOCHROME)
 	ld bc, 8 palettes
 	xor a
-	call ByteFill
+	rst ByteFill
 else
 	ld b, (8 palettes) / 2
 .mono_loop
@@ -1933,7 +1933,7 @@ Intro_ClearBGPals:
 if !DEF(MONOCHROME)
 	ld bc, 16 palettes
 	xor a
-	call ByteFill
+	rst ByteFill
 else
 	ld b, (16 palettes) / 2
 .mono_loop
@@ -1991,7 +1991,7 @@ Intro_ResetLYOverrides:
 	ld hl, wLYOverrides
 	ld bc, wLYOverridesEnd - wLYOverrides
 	xor a
-	call ByteFill
+	rst ByteFill
 
 	pop af
 	ldh [rSVBK], a
@@ -2015,7 +2015,7 @@ Intro_PerspectiveScrollBG:
 	ld a, [hl]
 	inc a
 	ld bc, $5f
-	call ByteFill
+	rst ByteFill
 .skip
 	; grass in the front
 	ld hl, wLYOverrides + $5f
@@ -2023,7 +2023,7 @@ Intro_PerspectiveScrollBG:
 	inc a
 	inc a
 	ld bc, $31
-	call ByteFill
+	rst ByteFill
 	ld a, [wLYOverrides + 0]
 	ldh [hSCX], a
 	pop af

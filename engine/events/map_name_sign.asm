@@ -282,7 +282,7 @@ InitMapNameFrame:
 	; top row
 	ld a, BEHIND_BG | PAL_BG_TEXT
 	ld bc, SCREEN_WIDTH - 1
-	call ByteFill
+	rst ByteFill
 	or X_FLIP
 	ld [hli], a
 	; middle rows
@@ -290,14 +290,14 @@ rept 2
 	and $ff - X_FLIP
 	ld [hli], a
 	ld bc, SCREEN_WIDTH - 2
-	call ByteFill
+	rst ByteFill
 	or X_FLIP
 	ld [hli], a
 endr
 	; bottom row
 	and $ff - X_FLIP
 	ld bc, SCREEN_WIDTH - 1
-	call ByteFill
+	rst ByteFill
 	or X_FLIP
 	ld [hl], a
 ; PlaceMapNameFrame

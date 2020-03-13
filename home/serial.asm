@@ -281,7 +281,7 @@ PlaceWaitingText::
 .proceed
 	hlcoord 5, 11
 	ld de, .Waiting
-	call PlaceString
+	rst PlaceString
 	ld c, 50
 	jp DelayFrames
 

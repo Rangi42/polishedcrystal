@@ -96,7 +96,7 @@ FarPlaceString:
 	ld a, b
 	rst Bankswitch
 
-	call PlaceString
+	rst PlaceString
 
 	pop af
 	rst Bankswitch
@@ -192,7 +192,7 @@ GetAvailableCallers:
 	ld hl, wEngineBuffer3
 	ld bc, 11
 	xor a
-	call ByteFill
+	rst ByteFill
 	ld de, wPhoneList
 	ld a, CONTACT_LIST_SIZE
 
@@ -585,7 +585,7 @@ GetCallerName:
 	call Phone_GetTrainerName
 	push hl
 	push bc
-	call PlaceString
+	rst PlaceString
 	ld a, ":"
 	ld [bc], a
 	pop bc
@@ -593,7 +593,7 @@ GetCallerName:
 	ld de, SCREEN_WIDTH + 3
 	add hl, de
 	call Phone_GetTrainerClassName
-	jp PlaceString
+	jp _PlaceString
 
 .NotTrainer:
 	ld a, b
@@ -609,7 +609,7 @@ GetCallerName:
 	ld e, a
 	ld d, [hl]
 	pop hl
-	jp PlaceString
+	jp _PlaceString
 
 .Blank:
 	ld a, "<SHARP>"
@@ -624,7 +624,7 @@ GetCallerName:
 	lb bc, PRINTNUM_LEFTALIGN | 1, 2
 	call PrintNum
 	ld de, .filler
-	jp PlaceString
+	jp _PlaceString
 
 .filler
 	db " -------@"

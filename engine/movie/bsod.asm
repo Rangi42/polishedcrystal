@@ -33,7 +33,7 @@ BSOD:
 
 	ld de, .Message
 	hlcoord 1, 1
-	call PlaceString
+	rst PlaceString
 
 	call ApplyTilemapInVBlank
 

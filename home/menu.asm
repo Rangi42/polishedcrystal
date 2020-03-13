@@ -123,7 +123,7 @@ PlaceVerticalMenuItems::
 	ld b, a
 .loop
 	push bc
-	call PlaceString
+	rst PlaceString
 	inc de
 	ld bc, 2 * SCREEN_WIDTH
 	add hl, bc
@@ -141,7 +141,7 @@ PlaceVerticalMenuItems::
 	inc de
 	ld b, $0
 	add hl, bc
-	jp PlaceString
+	jp _PlaceString
 
 MenuBox::
 	call MenuBoxCoord2Tile
@@ -607,7 +607,7 @@ PlaceMenuStrings::
 	ld d, h
 	ld e, l
 	pop hl
-	jp PlaceString
+	jp _PlaceString
 
 PlaceNthMenuStrings::
 	push de
@@ -619,7 +619,7 @@ PlaceNthMenuStrings::
 	ld d, [hl]
 	ld e, a
 	pop hl
-	jp PlaceString
+	jp _PlaceString
 
 MenuJumptable::
 	ld a, [wMenuSelection]
@@ -670,7 +670,7 @@ ClearWindowData::
 .bytefill
 	ld bc, $0010
 	xor a
-	jp ByteFill
+	jp _ByteFill
 
 MenuClickSound::
 	push af
@@ -703,7 +703,7 @@ Place2DMenuItemName::
 	ldh a, [hBuffer]
 	rst Bankswitch
 
-	call PlaceString
+	rst PlaceString
 	pop af
 	rst Bankswitch
 

@@ -83,7 +83,7 @@ PopulateMonMenu:
 	push hl
 	call GetMonMenuString
 	pop hl
-	call PlaceString
+	rst PlaceString
 	ld bc, $28 ; 40
 	add hl, bc
 	pop de
@@ -209,7 +209,7 @@ ResetMonSubmenu:
 	ld [wBuffer1], a
 	ld hl, wBuffer2
 	ld bc, NUM_MON_SUBMENU_ITEMS + 1
-	jp ByteFill
+	jp _ByteFill
 
 TerminateMonSubmenu:
 	ld a, [wBuffer1]

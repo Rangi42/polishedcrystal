@@ -226,7 +226,7 @@ TMHM_DisplayPocketItems:
 	ld bc, 3
 	add hl, bc
 	push hl
-	call PlaceString
+	rst PlaceString
 	pop hl
 	pop bc
 	pop de
@@ -242,7 +242,7 @@ TMHM_DisplayPocketItems:
 	inc hl
 	push de
 	ld de, TMHM_String_Cancel
-	call PlaceString
+	rst PlaceString
 	pop de
 	ret
 
@@ -281,7 +281,7 @@ Tutorial_TMHMPocket:
 	hlcoord 9, 3
 	push de
 	ld de, TMHM_String_Cancel
-	call PlaceString
+	rst PlaceString
 	pop de
 	ret
 
@@ -351,7 +351,7 @@ PrintMoveDesc:
 	ld e, a
 	ld d, [hl]
 	pop hl
-	jp PlaceString
+	jp _PlaceString
 
 AskTeachTMHM:
 	ld hl, wOptions1

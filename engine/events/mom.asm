@@ -20,7 +20,7 @@ Special_BankOfMom:
 .RunJumptable:
 	ld a, [wJumptableIndex]
 	ld hl, .dw
-	jp _Jumptable
+	jp JumpTable
 
 .dw
 	dw .CheckIfBankInitialized
@@ -420,21 +420,21 @@ Mom_ContinueMenuSetup:
 	call TextBox
 	hlcoord 1, 2
 	ld de, Mom_SavedString
-	call PlaceString
+	rst PlaceString
 	hlcoord 11, 2
 	ld de, wMomsMoney
 	lb bc, PRINTNUM_MONEY | 3, 7
 	call PrintNum
 	hlcoord 1, 4
 	ld de, Mom_HeldString
-	call PlaceString
+	rst PlaceString
 	hlcoord 11, 4
 	ld de, wMoney
 	lb bc, PRINTNUM_MONEY | 3, 7
 	call PrintNum
 	hlcoord 1, 6
 	pop de
-	call PlaceString
+	rst PlaceString
 	hlcoord 11, 6
 	ld de, wStringBuffer2
 	lb bc, PRINTNUM_MONEY | PRINTNUM_LEADINGZEROS | 3, 7
@@ -462,7 +462,7 @@ Mom_WithdrawDepositMenuJoypad:
 	hlcoord 11, 6
 	ld bc, 8
 	ld a, " "
-	call ByteFill
+	rst ByteFill
 	hlcoord 11, 6
 	ld de, wStringBuffer2
 	lb bc, PRINTNUM_MONEY | PRINTNUM_LEADINGZEROS | 3, 7

@@ -18,7 +18,7 @@ PlayRadioShow:
 ; Jump to the currently loaded station.  The index to which we need to jump is in wCurrentRadioLine.
 	ld a, [wCurrentRadioLine]
 	ld hl, RadioJumptable
-	jp _Jumptable
+	jp JumpTable
 
 RadioJumptable:
 	dw OaksPkmnTalk1  ; $00
@@ -627,7 +627,7 @@ PlaceRadioString:
 	ld [wCurrentRadioLine], a
 	ld a, 100
 	ld [wRadioTextDelay], a
-	jp PlaceString
+	jp _PlaceString
 
 CopyBottomLineToTopLine:
 	hlcoord 0, 15
@@ -640,11 +640,11 @@ ClearBottomLine:
 	hlcoord 1, 15
 	ld bc, SCREEN_WIDTH - 2
 	ld a, " "
-	call ByteFill
+	rst ByteFill
 	hlcoord 1, 16
 	ld bc, SCREEN_WIDTH - 2
 	ld a, " "
-	jp ByteFill
+	jp _ByteFill
 
 PokedexShow_GetDexEntryBank:
 	push hl
@@ -1482,7 +1482,7 @@ BuenasPassword1:
 	ldh [hBGMapMode], a
 	ld de, BuenasPasswordChannelName
 	hlcoord 2, 9
-	call PlaceString
+	rst PlaceString
 	pop af
 	ldh [hBGMapMode], a
 	ld hl, BuenaRadioText1

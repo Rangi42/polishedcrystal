@@ -339,7 +339,7 @@ WipeAttrMap:
 	hlcoord 0, 0, wAttrMap
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
 	xor a
-	jp ByteFill
+	jp _ByteFill
 
 ApplyPals:
 	ld hl, wUnknBGPals
@@ -605,7 +605,7 @@ InitCGBPals::
 	ld hl, vTiles0
 	ld bc, $200 tiles
 	xor a
-	call ByteFill
+	rst ByteFill
 	xor a
 	ldh [rVBK], a
 	ld a, $80

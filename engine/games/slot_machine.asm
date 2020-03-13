@@ -37,14 +37,14 @@ _SlotMachine:
 	hlbgcoord 0, 0
 	ld bc, vBGMap1 - vBGMap0
 	ld a, " "
-	call ByteFill
+	rst ByteFill
 	ld a, CGB_SLOT_MACHINE
 	call GetCGBLayout
 	farcall ClearSpriteAnims
 	ld hl, wSlots
 	ld bc, wSlotsDataEnd - wSlots
 	xor a
-	call ByteFill
+	rst ByteFill
 
 	ld hl, Slots2LZ
 	ld de, vTiles0 tile $00
@@ -73,7 +73,7 @@ _SlotMachine:
 	ld hl, wSlots
 	ld bc, wSlotsEnd - wSlots
 	xor a
-	call ByteFill
+	rst ByteFill
 	call InitReelTiles
 	call Slots_GetPals
 	ld a, $7
@@ -116,7 +116,7 @@ SlotsLoop:
 	bit 7, a
 	jr nz, .stop
 	ld hl, .Jumptable
-	rst JumpTable
+	call JumpTable
 
 	call Slots_SpinReels
 	xor a
@@ -683,7 +683,7 @@ Function92bd4:
 	add hl, bc
 	ld a, [hl]
 	ld hl, .dw
-	jp _Jumptable
+	jp JumpTable
 
 .dw
 	dw ReelAction_DoNothing                   ; 00
@@ -1692,7 +1692,7 @@ SlotMachine_AnimateGolem:
 	add hl, bc
 	ld a, [hl]
 	ld hl, .Jumptable
-	jp _Jumptable
+	jp JumpTable
 
 .Jumptable:
 	dw .init
@@ -1782,7 +1782,7 @@ Slots_AnimateChansey:
 	add hl, bc
 	ld a, [hl]
 	ld hl, .Jumptable
-	jp _Jumptable
+	jp JumpTable
 
 .Jumptable:
 	dw .walk

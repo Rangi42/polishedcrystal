@@ -180,7 +180,7 @@ Special_BattleTower_ResetTrainersSRAM:
 	ld a, $ff
 	ld hl, sBTTrainers
 	ld bc, BATTLETOWER_NROFTRAINERS
-	call ByteFill
+	rst ByteFill
 	xor a
 	ld [sNrOfBeatenBattleTowerTrainers], a
 	jp CloseSRAM
@@ -446,7 +446,7 @@ BattleTower_ExecuteJumptable:
 	push bc
 	call .GetFunctionPointer
 	ld a, c
-	rst JumpTable
+	call JumpTable
 	pop bc
 	pop de
 	ret

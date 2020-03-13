@@ -9,7 +9,7 @@ OptionsMenu:
 	call TextBox
 	hlcoord 2, 2
 	ld de, StringOptions1
-	call PlaceString
+	rst PlaceString
 	xor a
 	ld [wCurrentOptionsPage], a
 	call OptionsMenu_LoadOptions
@@ -108,7 +108,7 @@ GetOptionPointer:
 	add 8
 .page1
 	ld hl, .Pointers
-	jp _Jumptable
+	jp JumpTable
 
 .Pointers:
 	dw Options_TextSpeed
@@ -159,7 +159,7 @@ Options_TextSpeed:
 	inc hl
 	ld d, [hl]
 	hlcoord 11, 3
-	call PlaceString
+	rst PlaceString
 	and a
 	ret
 
@@ -198,7 +198,7 @@ Options_BattleEffects:
 	ld de, .On
 .Display:
 	hlcoord 11, 5
-	call PlaceString
+	rst PlaceString
 	and a
 	ret
 
@@ -248,7 +248,7 @@ Options_BattleStyle:
 	ld de, .Predict
 .Display:
 	hlcoord 11, 7
-	call PlaceString
+	rst PlaceString
 	and a
 	ret
 
@@ -279,7 +279,7 @@ Options_RunningShoes:
 	ld de, .On
 .Display:
 	hlcoord 11, 9
-	call PlaceString
+	rst PlaceString
 	and a
 	ret
 
@@ -349,7 +349,7 @@ Options_Sound:
 	call RestartMapMusic
 .DontRestartMapMusic
 	hlcoord 11, 13
-	call PlaceString
+	rst PlaceString
 	and a
 	ret
 
@@ -378,7 +378,7 @@ Options_ClockFormat:
 	ld de, .TwentyFour
 .Display:
 	hlcoord 11, 3
-	call PlaceString
+	rst PlaceString
 	and a
 	ret
 
@@ -407,7 +407,7 @@ Options_PokedexUnits:
 	ld de, .Metric
 .Display:
 	hlcoord 11, 5
-	call PlaceString
+	rst PlaceString
 	and a
 	ret
 
@@ -447,7 +447,7 @@ Options_TextAutoscroll:
 	inc hl
 	ld d, [hl]
 	hlcoord 11, 7
-	call PlaceString
+	rst PlaceString
 	and a
 	ret
 
@@ -487,7 +487,7 @@ Options_TurningSpeed:
 	inc hl
 	ld d, [hl]
 	hlcoord 11, 9
-	call PlaceString
+	rst PlaceString
 	and a
 	ret
 
@@ -552,7 +552,7 @@ Options_Typeface:
 	inc hl
 	ld d, [hl]
 	hlcoord 11, 11
-	call PlaceString
+	rst PlaceString
 	and a
 	ret
 
@@ -605,7 +605,7 @@ Options_NextPrevious:
 	call TextBox
 	pop de
 	hlcoord 2, 2
-	call PlaceString
+	rst PlaceString
 	call OptionsMenu_LoadOptions
 	ld a, $6
 	ld [wJumptableIndex], a

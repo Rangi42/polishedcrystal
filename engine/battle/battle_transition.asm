@@ -39,7 +39,7 @@ DoBattleTransition:
 	jr .handleLoop
 .loop
 	ld hl, .BattleTransitionScenes
-	rst JumpTable
+	call JumpTable
 	call DelayFrame
 .handleLoop
 	ld a, [wJumptableIndex]
@@ -55,7 +55,7 @@ DoBattleTransition:
 if !DEF(MONOCHROME)
 	ld bc, 8 palettes
 	xor a
-	call ByteFill
+	rst ByteFill
 else
 	ld b, (8 palettes) / 2
 .mono_loop

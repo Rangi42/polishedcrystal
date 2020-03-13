@@ -22,7 +22,7 @@ Pack:
 .RunJumptable:
 	ld a, [wJumptableIndex]
 	ld hl, .Jumptable
-	jp _Jumptable
+	jp JumpTable
 
 .Jumptable:
 	dw .InitGFX            ;  0
@@ -138,7 +138,7 @@ Pack:
 	ret c
 	ld a, [wMenuCursorY]
 	dec a
-	jp _Jumptable
+	jp JumpTable
 
 .MenuDataHeader1:
 	db $40 ; flags
@@ -239,7 +239,7 @@ PackBuildMenu:
 PackMenuJump:
 	ld a, [wMenuCursorY]
 	dec a
-	jp _Jumptable
+	jp JumpTable
 
 PackSortMenu:
 	ld hl, Text_SortItemsHow
@@ -298,7 +298,7 @@ UseKeyItem:
 	farcall CheckKeyItemMenu
 	ld a, [wItemAttributeParamBuffer]
 	ld hl, .dw
-	rst JumpTable
+	call JumpTable
 	ret
 
 .dw
@@ -484,7 +484,7 @@ UseItem:
 	farcall CheckItemMenu
 	ld a, [wItemAttributeParamBuffer]
 	ld hl, .dw
-	rst JumpTable
+	call JumpTable
 	ret
 
 .dw
@@ -689,7 +689,7 @@ BattlePack:
 .RunJumptable:
 	ld a, [wJumptableIndex]
 	ld hl, .Jumptable
-	jp _Jumptable
+	jp JumpTable
 
 .Jumptable:
 	dw .InitGFX            ;  0
@@ -898,7 +898,7 @@ KeyItemSubmenu:
 	farcall CheckItemContext
 	ld a, [wItemAttributeParamBuffer]
 	ld hl, .ItemFunctionJumptable
-	rst JumpTable
+	call JumpTable
 	ret
 
 .ItemFunctionJumptable:
@@ -993,7 +993,7 @@ DepositSellPack:
 .RunJumptable:
 	ld a, [wJumptableIndex]
 	ld hl, .Jumptable
-	jp _Jumptable
+	jp JumpTable
 
 .Jumptable:
 	dw .ItemsPocket
@@ -1177,7 +1177,7 @@ TutorialPack:
 .RunJumptable:
 	ld a, [wJumptableIndex]
 	ld hl, .dw
-	jp _Jumptable
+	jp JumpTable
 
 .dw
 	dw .Items

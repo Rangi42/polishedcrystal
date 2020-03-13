@@ -70,7 +70,7 @@ DoBattleBGEffectFunction:
 	add hl, bc
 	ld a, [hl]
 	ld hl, BattleBGEffects
-	jp _Jumptable
+	jp JumpTable
 
 BattleBGEffects:
 	dw BattleBGEffect_End
@@ -1837,7 +1837,7 @@ BattleBGEffect_1c:
 	add hl, bc
 	ld a, [hl]
 	ld hl, .Jumptable
-	jp _Jumptable
+	jp JumpTable
 
 .Jumptable:
 	dw .cgb_zero
@@ -2162,7 +2162,7 @@ BGEffect_RapidCyclePals:
 	add hl, bc
 	ld a, [hl]
 	ld hl, .Jumptable_CGB
-	jp _Jumptable
+	jp JumpTable
 
 .Jumptable_CGB:
 	dw .zero_cgb

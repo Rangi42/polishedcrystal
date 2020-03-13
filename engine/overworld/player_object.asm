@@ -7,11 +7,11 @@ BlankScreen:
 	hlcoord 0, 0
 	ld bc, wTileMapEnd - wTileMap
 	ld a, " "
-	call ByteFill
+	rst ByteFill
 	hlcoord 0, 0, wAttrMap
 	ld bc, wAttrMapEnd - wAttrMap
 	ld a, $7
-	call ByteFill
+	rst ByteFill
 	call ApplyAttrAndTilemapInVBlank
 	jp SetPalettes
 
@@ -278,7 +278,7 @@ CheckObjectEnteringVisibleRange::
 	cp STANDING
 	ret z
 	ld hl, .dw
-	rst JumpTable
+	call JumpTable
 	ret
 
 .dw

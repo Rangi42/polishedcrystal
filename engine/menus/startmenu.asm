@@ -46,7 +46,7 @@ StartMenu::
 ; Menu items have different return functions.
 ; For example, saving exits the menu.
 	ld hl, .MenuReturns
-	jp _Jumptable
+	jp JumpTable
 
 .MenuReturns:
 	dw .Reopen
@@ -182,7 +182,7 @@ StartMenu::
 	ld d, [hl]
 	ld e, a
 	pop hl
-	jp PlaceString
+	jp _PlaceString
 
 .GetMenuAccountTextPointer:
 	ld e, a
@@ -261,7 +261,7 @@ endr
 	ld [hli], a
 	ld a, -1
 	ld bc, wMenuItemsListEnd - (wMenuItemsList + 1)
-	call ByteFill
+	rst ByteFill
 	ld de, wMenuItemsList + 1
 	ld c, 0
 	ret

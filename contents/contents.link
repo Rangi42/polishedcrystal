@@ -12,11 +12,11 @@ ROM0
 	org $0020
 	"rst20 CopyBytes"
 	org $0028
-	"rst28 JumpTable"
+	"rst28 ByteFill"
 	org $0030
-	"rst30 Predef"
+	"rst30 PlaceString"
 	org $0038
-	"rst38 InfiniteLoop"
+	"rst38 Predef"
 	org $0040
 	"vblank"
 	org $0048

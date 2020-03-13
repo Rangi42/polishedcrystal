@@ -372,7 +372,7 @@ LoadBlueSkyMailGFX:
 	call LoadMailGFX_Color2
 	ld a, $ff
 	ld bc, 1 tiles
-	call ByteFill
+	rst ByteFill
 	ld de, BlueSkyMailGrassGFX
 	ld c, 1 * 8
 	call LoadMailGFX_Color3
@@ -548,7 +548,7 @@ LoadMusicMailGFX:
 	call LoadMailGFX_Color3
 	xor a
 	ld bc, 1 tiles
-	call ByteFill
+	rst ByteFill
 	ld de, MusicMailLargeNoteGFX
 	ld c, 3 * 8
 	call LoadMailGFX_Color1
@@ -664,7 +664,7 @@ MailGFX_PlaceMessage:
 	ld [wMonOrItemNameBuffer + NAME_LENGTH - 1], a
 	ld de, wTempMailMessage
 	hlcoord 2, 7
-	call PlaceString
+	rst PlaceString
 	ld de, wMonOrItemNameBuffer
 	ld a, [de]
 	and a
@@ -679,7 +679,7 @@ MailGFX_PlaceMessage:
 	hlcoord 5, 14
 
 .place_author
-	jp PlaceString
+	jp _PlaceString
 
 DrawMailBorder:
 	hlcoord 0, 0

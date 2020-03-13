@@ -16,12 +16,12 @@ SetInitialOptions:
 	hlcoord 0, 0
 	ld bc, SCREEN_HEIGHT * SCREEN_WIDTH
 	xor a
-	call ByteFill
+	rst ByteFill
 
 	hlcoord 0, 0, wAttrMap
 	ld bc, SCREEN_HEIGHT * SCREEN_WIDTH
 	xor a
-	call ByteFill
+	rst ByteFill
 
 	ld hl, .BGPalette
 	ld de, wUnknBGPals
@@ -51,7 +51,7 @@ SetInitialOptions:
 	hlcoord 0, 0
 	ld a, " "
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
-	call ByteFill
+	rst ByteFill
 
 	hlcoord 0, 0
 	ld a, $01 ; left
@@ -68,7 +68,7 @@ SetInitialOptions:
 
 	hlcoord 2, 0
 	ld de, .InitialOptionsString
-	call PlaceString
+	rst PlaceString
 
 ;	ld a, CGB_DIPLOMA
 ;	call GetCGBLayout
@@ -161,7 +161,7 @@ INCBIN "gfx/new_game/init_bg.2bpp"
 GetInitialOptionPointer:
 	ld a, [wJumptableIndex] ; load the cursor position to a
 	ld hl, .Pointers
-	jp _Jumptable
+	jp JumpTable
 
 .Pointers:
 	dw InitialOptions_Natures
@@ -194,7 +194,7 @@ InitialOptions_Natures:
 	ld de, YesString
 .Display:
 	hlcoord 15, 1
-	call PlaceString
+	rst PlaceString
 	and a
 	ret
 
@@ -218,7 +218,7 @@ InitialOptions_Abilities:
 	ld de, YesString
 .Display:
 	hlcoord 15, 3
-	call PlaceString
+	rst PlaceString
 	and a
 	ret
 
@@ -242,7 +242,7 @@ InitialOptions_PSS:
 	ld de, YesString
 .Display:
 	hlcoord 15, 5
-	call PlaceString
+	rst PlaceString
 	and a
 	ret
 
@@ -266,7 +266,7 @@ InitialOptions_ExpScaling:
 	ld de, YesString
 .Display:
 	hlcoord 15, 7
-	call PlaceString
+	rst PlaceString
 	and a
 	ret
 
@@ -290,7 +290,7 @@ InitialOptions_ColorVariation:
 	ld de, YesString
 .Display:
 	hlcoord 15, 9
-	call PlaceString
+	rst PlaceString
 	and a
 	ret
 
@@ -314,7 +314,7 @@ InitialOptions_PerfectIVs:
 	ld de, YesString
 .Display:
 	hlcoord 15, 11
-	call PlaceString
+	rst PlaceString
 	and a
 	ret
 
@@ -338,7 +338,7 @@ InitialOptions_TradedMon:
 	ld de, YesString
 .Display:
 	hlcoord 15, 14
-	call PlaceString
+	rst PlaceString
 	and a
 	ret
 
@@ -362,7 +362,7 @@ InitialOptions_NuzlockeMode:
 	ld de, YesString
 .Display:
 	hlcoord 15, 16
-	call PlaceString
+	rst PlaceString
 	and a
 	ret
 

@@ -4215,7 +4215,7 @@ UpdateMoveData:
 	call GetBattleVarAddr
 	ld bc, wPlayerMoveStructEnd - wPlayerMoveStruct
 	xor a
-	call ByteFill
+	rst ByteFill
 	jp PopBCDEHL
 
 .not_null

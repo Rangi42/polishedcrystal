@@ -3,7 +3,7 @@ DoBattleAnimFrame:
 	add hl, bc
 	ld a, [hl]
 	ld hl, .Jumptable
-	jp _Jumptable
+	jp JumpTable
 
 .Jumptable:
 	dw BattleAnimFunction_Null ; 00

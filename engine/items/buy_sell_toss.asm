@@ -234,7 +234,7 @@ BTDisplayPurchaseCost:
 	lb bc, 3, 4
 	call PrintNum
 	ld de, .BPString
-	call PlaceString
+	rst PlaceString
 	jp ApplyTilemapInVBlank
 
 .BPString:

@@ -17,7 +17,7 @@ PlaceMartItemName:
 	ld [wNamedObjectIndexBuffer], a
 	call nz, GetItemName
 	pop hl
-	jp PlaceString
+	jp _PlaceString
 
 PlaceMenuTMHMName:
 	push de
@@ -25,7 +25,7 @@ PlaceMenuTMHMName:
 	ld [wNamedObjectIndexBuffer], a
 	call GetTMHMName
 	pop hl
-	jp PlaceString
+	jp _PlaceString
 
 PlaceMenuApricornQuantity:
 	ld a, [wMenuSelection]
@@ -97,7 +97,7 @@ PlaceBlueCardPointsTopRight:
 	lb bc, 1, 3
 	call PrintNum
 	ld de, .PointsString
-	jp PlaceString
+	jp _PlaceString
 
 .PointsString:
 	db " Pts@"
@@ -111,7 +111,7 @@ PlaceBattlePointsTopRight:
 	lb bc, 1, 3
 	call PrintNum
 	ld de, .BPString
-	jp PlaceString
+	jp _PlaceString
 
 .BPString:
 	db " BP@"
@@ -123,7 +123,7 @@ Special_DisplayCoinCaseBalance:
 	call TextBox
 	hlcoord 12, 0
 	ld de, CoinString
-	call PlaceString
+	rst PlaceString
 	ld de, wCoins
 	lb bc, 2, 5
 	hlcoord 13, 1
@@ -135,14 +135,14 @@ Special_DisplayMoneyAndCoinBalance:
 	call TextBox
 	hlcoord 6, 1
 	ld de, MoneyString
-	call PlaceString
+	rst PlaceString
 	hlcoord 11, 1
 	ld de, wMoney
 	lb bc, PRINTNUM_MONEY | 3, 7
 	call PrintNum
 	hlcoord 6, 3
 	ld de, CoinString
-	call PlaceString
+	rst PlaceString
 	hlcoord 14, 3
 	ld de, wCoins
 	lb bc, 2, 5
@@ -166,14 +166,14 @@ StartMenu_PrintBugContestStatus:
 	call StartMenu_DrawBugContestStatusBox
 	hlcoord 1, 5
 	ld de, .Balls
-	call PlaceString
+	rst PlaceString
 	hlcoord 8, 5
 	ld de, wParkBallsRemaining
 	lb bc, PRINTNUM_LEFTALIGN | 1, 2
 	call PrintNum
 	hlcoord 1, 1
 	ld de, .Caught
-	call PlaceString
+	rst PlaceString
 	ld a, [wContestMon]
 	and a
 	ld de, .None
@@ -183,13 +183,13 @@ StartMenu_PrintBugContestStatus:
 
 .no_contest_mon
 	hlcoord 8, 1
-	call PlaceString
+	rst PlaceString
 	ld a, [wContestMon]
 	and a
 	jr z, .skip_level
 	hlcoord 1, 3
 	ld de, .Level
-	call PlaceString
+	rst PlaceString
 	ld a, [wContestMonLevel]
 	ld h, b
 	ld l, c

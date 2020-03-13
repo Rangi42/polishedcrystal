@@ -57,4 +57,4 @@ SpecialBuenasPassword:
 	ld c, a
 	farcall GetBuenasPassword
 	pop hl
-	jp PlaceString
+	jp _PlaceString

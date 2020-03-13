@@ -12,5 +12,5 @@ EmptyAllSRAMBanks:
 	ld hl, SRAM_Begin
 	ld bc, SRAM_End - SRAM_Begin
 	xor a
-	call ByteFill
+	rst ByteFill
 	jp CloseSRAM

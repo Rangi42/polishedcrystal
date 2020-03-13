@@ -21,7 +21,7 @@ LinkCommunications:
 	call LinkTextbox
 	hlcoord 4, 10
 	ld de, String_PleaseWait
-	call PlaceString
+	rst PlaceString
 	call SetTradeRoomBGPals
 	call ApplyAttrAndTilemapInVBlank
 	ld hl, wcf5d
@@ -648,7 +648,7 @@ InitTradeSpeciesList:
 	call PlaceTradePartnerNamesAndParty
 	hlcoord 10, 17
 	ld de, .Cancel
-	jp PlaceString
+	jp _PlaceString
 
 .TradeScreenTilemap:
 INCBIN "gfx/link_trade/16d465.tilemap"
@@ -659,12 +659,12 @@ INCBIN "gfx/link_trade/16d465.tilemap"
 PlaceTradePartnerNamesAndParty:
 	hlcoord 4, 0
 	ld de, wPlayerName
-	call PlaceString
+	rst PlaceString
 	ld a, $14
 	ld [bc], a
 	hlcoord 4, 8
 	ld de, wOTPlayerName
-	call PlaceString
+	rst PlaceString
 	ld a, $14
 	ld [bc], a
 	hlcoord 7, 1
@@ -707,7 +707,7 @@ PlaceTradePartnerNamesAndParty:
 	ldh [hProduct], a
 	call GetPokemonName
 	pop hl
-	call PlaceString
+	rst PlaceString
 	pop de
 	pop hl
 	ld bc, SCREEN_WIDTH
@@ -1042,7 +1042,7 @@ Function28926:
 	call LinkTextbox
 	hlcoord 2, 16
 	ld de, .String_Stats_Trade
-	call PlaceString
+	rst PlaceString
 	call Link_WaitBGMap
 
 .joy_loop
@@ -1192,7 +1192,7 @@ Function28926:
 	call LinkTextbox
 	hlcoord 1, 14
 	ld de, String_TooBadTheTradeWasCanceled
-	call PlaceString
+	rst PlaceString
 	ld a, $1
 	ld [wPlayerLinkAction], a
 	call Function16d6ce
@@ -1407,7 +1407,7 @@ LinkTrade:
 	call LinkTextbox
 	ld de, .TradeCancel
 	hlcoord 12, 8
-	call PlaceString
+	rst PlaceString
 	ld a, 8
 	ld [w2DMenuCursorInitY], a
 	ld a, 11
@@ -1446,7 +1446,7 @@ LinkTrade:
 	call LinkTextbox
 	hlcoord 1, 14
 	ld de, String_TooBadTheTradeWasCanceled
-	call PlaceString
+	rst PlaceString
 	call Function16d6ce
 	jr .asm_28ea3
 
@@ -1462,7 +1462,7 @@ LinkTrade:
 	call LinkTextbox
 	hlcoord 1, 14
 	ld de, String_TooBadTheTradeWasCanceled
-	call PlaceString
+	rst PlaceString
 .asm_28ea3
 	ld c, 100
 	call DelayFrames
@@ -1705,7 +1705,7 @@ LinkTrade:
 	call LinkTextbox
 	hlcoord 1, 14
 	ld de, .TradeCompleted
-	call PlaceString
+	rst PlaceString
 	call Link_WaitBGMap
 	ld c, 50
 	call DelayFrames
@@ -1801,7 +1801,7 @@ Function16d6ce:
 	call LinkTextbox
 	hlcoord 6, 11
 	ld de, .Waiting
-	call PlaceString
+	rst PlaceString
 	call ApplyTilemapInVBlank
 	call ApplyAttrAndTilemapInVBlank
 	ld c, 50
@@ -2416,7 +2416,7 @@ InitLinkTradePalMap:
 	hlcoord 2, 17, wAttrMap
 	ld a, $3
 	ld bc, 6
-	jp ByteFill
+	jp _ByteFill
 
 .fill_box:
 .row

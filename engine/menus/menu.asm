@@ -630,7 +630,8 @@ Error_Cant_ExitMenu:
 	ld hl, .Text_NoWindowsAvailableForPopping
 	call PrintText
 	call ApplyTilemapInVBlank
-	rst InfiniteLoop
+.infinite_loop
+	jr .infinite_loop
 
 .Text_NoWindowsAvailableForPopping:
 	text_jump UnknownText_0x1c46b7

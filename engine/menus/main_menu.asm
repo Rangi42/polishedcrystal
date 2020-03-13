@@ -17,7 +17,7 @@ MainMenu:
 	call ClearTileMap
 	ld a, [wMenuSelection]
 	ld hl, .Jumptable
-	rst JumpTable
+	call JumpTable
 	jr MainMenu
 
 .MenuDataHeader:
@@ -187,7 +187,7 @@ endc
 .PrintTimeNotSet:
 	hlcoord 1, 14
 	ld de, .TimeNotSet
-	jp PlaceString
+	jp _PlaceString
 
 .TimeNotSet:
 	db "Time not set@"

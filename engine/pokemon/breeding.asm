@@ -650,7 +650,7 @@ Hatch_UpdateFrontpicBGMapCenter:
 	hlcoord 0, 0
 	ld bc, SCREEN_HEIGHT * SCREEN_WIDTH
 	ld a, " "
-	call ByteFill
+	rst ByteFill
 	pop bc
 	pop hl
 	ld a, b
@@ -684,7 +684,7 @@ EggHatch_AnimationSequence:
 	ld a, " "
 	ld bc, vBGMap1 - vBGMap0
 	hlbgcoord 0, 0
-	call ByteFill
+	rst ByteFill
 	ld hl, EggHatchGFX
 	ld de, vTiles0 tile $00
 	ld bc, $20

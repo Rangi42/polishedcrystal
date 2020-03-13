@@ -78,7 +78,7 @@ DoDexSearchSlowpokeFrame:
 DisplayDexEntry:
 	call GetPokemonName
 	hlcoord 9, 3
-	call PlaceString ; mon species
+	rst PlaceString ; mon species
 	ld a, [wd265]
 	ld b, a
 	call GetDexEntryPointer
@@ -224,7 +224,7 @@ DisplayDexEntry:
 	hlcoord 1, 10
 	ld bc, SCREEN_WIDTH - 1
 	ld a, $5f ; horizontal divider
-	call ByteFill
+	rst ByteFill
 	; page number
 	hlcoord 1, 9
 	ld [hl], $55
@@ -254,7 +254,7 @@ DisplayDexEntry:
 	hlcoord 1, 10
 	ld bc, SCREEN_WIDTH - 1
 	ld a, $5f ; horizontal divider
-	call ByteFill
+	rst ByteFill
 	; page number
 	hlcoord 1, 9
 	ld [hl], $55

@@ -15,6 +15,10 @@ PlayStereoCry2::
 	pop af
 	jr _PlayCry
 
+PlayCry::
+	call PlayCry2
+	jp WaitSFX
+
 PlayCry2::
 ; Don't wait for the cry to end.
 	push af

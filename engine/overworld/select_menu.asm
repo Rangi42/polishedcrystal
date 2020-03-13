@@ -65,7 +65,7 @@ UseRegisteredItem:
 	farcall CheckKeyItemMenu
 	ld a, [wItemAttributeParamBuffer]
 	ld hl, .SwitchTo
-	rst JumpTable
+	call JumpTable
 	ret
 
 .SwitchTo:
@@ -142,17 +142,17 @@ GetRegisteredItem:
 	hlcoord 0, 0, wAttrMap
 	ld a, BEHIND_BG | PAL_BG_TEXT
 	ld bc, SCREEN_WIDTH * 4
-	call ByteFill
+	rst ByteFill
 
 	hlcoord 0, 0
 	ld a, " "
 	ld bc, SCREEN_WIDTH * 4
-	call ByteFill
+	rst ByteFill
 
 	; Insert registered items
 	hlcoord 0, 0
 	ld de, .RegisteredItemText
-	call PlaceString
+	rst PlaceString
 	hlcoord 2, 0
 	ld de, wRegisteredItems
 	ld b, 4
@@ -170,7 +170,7 @@ GetRegisteredItem:
 	pop hl
 	push hl
 	ld de, wStringBuffer1
-	call PlaceString
+	rst PlaceString
 	pop hl
 	pop de
 .next

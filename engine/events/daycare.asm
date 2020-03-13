@@ -717,13 +717,13 @@ DayCare_InitBreeding:
 	xor a
 	ld hl, wEggMon
 	ld bc, wEggMonEnd - wEggMon
-	call ByteFill
+	rst ByteFill
 	ld hl, wEggNick
 	ld bc, PKMN_NAME_LENGTH
-	call ByteFill
+	rst ByteFill
 	ld hl, wEggOT
 	ld bc, NAME_LENGTH
-	call ByteFill
+	rst ByteFill
 	ld a, [wBreedMon1Species]
 	ld [wCurPartySpecies], a
 	ld a, [wBreedMon1Gender]

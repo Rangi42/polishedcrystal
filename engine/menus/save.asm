@@ -263,7 +263,7 @@ EraseLinkBattleStats:
 	ld hl, sLinkBattleStats
 	ld bc, sLinkBattleStatsEnd - sLinkBattleStats
 	xor a
-	call ByteFill
+	rst ByteFill
 	jp CloseSRAM
 
 EraseHallOfFame:
@@ -272,7 +272,7 @@ EraseHallOfFame:
 	ld hl, sHallOfFame
 	ld bc, sHallOfFameEnd - sHallOfFame
 	xor a
-	call ByteFill
+	rst ByteFill
 	jp CloseSRAM
 
 EraseBattleTowerStatus:

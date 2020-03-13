@@ -37,7 +37,7 @@ HealMachineAnim:
 	cp 5
 	ret z
 	ld hl, .Jumptable
-	rst JumpTable
+	call JumpTable
 	jr .jumptable_loop
 
 .Pointers:

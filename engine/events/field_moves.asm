@@ -55,7 +55,7 @@ ShakeHeadbuttTree:
 	ld hl, wVirtualOAM + 36 * 4
 	ld bc, wVirtualOAMEnd - (wVirtualOAM + 36 * 4)
 	xor a
-	call ByteFill
+	rst ByteFill
 	call DelayFrame
 	jp ReplaceKrisSprite
 
@@ -136,7 +136,7 @@ INCBIN "gfx/overworld/cut_grass.2bpp"
 OWCutJumptable:
 	ld a, [wJumptableIndex]
 	ld hl, .dw
-	jp _Jumptable
+	jp JumpTable
 
 .dw
 	dw Cut_SpawnAnimateTree
@@ -361,7 +361,7 @@ FlyToAnim:
 	ld hl, wVirtualOAM + 4 * 4
 	ld bc, wVirtualOAMEnd - (wVirtualOAM + 4 * 4)
 	xor a
-	jp ByteFill
+	jp _ByteFill
 
 FlyFunction_InitGFX:
 	farcall ClearSpriteAnims

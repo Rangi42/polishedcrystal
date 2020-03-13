@@ -21,7 +21,7 @@ TrainerCard:
 	jr nz, .quit
 	ld a, [wJumptableIndex]
 	ld hl, .Jumptable
-	rst JumpTable
+	call JumpTable
 	call DelayFrame
 	jr .loop
 
@@ -307,11 +307,11 @@ TrainerCard_PrintBorder:
 TrainerCard_PrintTopHalfOfCard:
 	hlcoord 1, 2
 	ld de, .Top_Headings
-	call PlaceString
+	rst PlaceString
 
 	hlcoord 7, 2
 	ld de, wPlayerName
-	call PlaceString
+	rst PlaceString
 
 	hlcoord 5, 3
 	ld de, wPlayerID
@@ -357,7 +357,7 @@ TrainerCardSetup_ClearBottomHalf:
 TrainerCard_Page1_PrintDexCaught_GameTime:
 	hlcoord 2, 10
 	ld de, .Dex_PlayTime_BP
-	call PlaceString
+	rst PlaceString
 
 	ld hl, wPokedexCaught
 	ld b, wEndPokedexCaught - wPokedexCaught

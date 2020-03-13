@@ -9,7 +9,7 @@ OverworldLoop::
 .loop
 	ld a, [wMapStatus]
 	ld hl, .jumps
-	rst JumpTable
+	call JumpTable
 	ld a, [wMapStatus]
 	cp 3 ; done
 	jr nz, .loop
@@ -64,7 +64,7 @@ StartMap:
 	ld [wScriptRunning], a
 	ld hl, wMapStatus
 	ld bc, wMapStatusEnd - wMapStatus
-	call ByteFill
+	rst ByteFill
 	farcall InitCallReceiveDelay
 	call ClearJoypad
 EnterMap:
@@ -476,7 +476,7 @@ TryObjectEvent:
 	ret nc
 
 	ld hl, .pointers
-	rst JumpTable
+	call JumpTable
 	ret
 
 .pointers:
@@ -563,7 +563,7 @@ TryReadSign:
 	cp SIGNPOST_ITEM
 	jp nc, .itemifset
 	ld hl, .signs
-	rst JumpTable
+	call JumpTable
 	ret
 
 .signs
@@ -727,7 +727,7 @@ PlayerMovement:
 	farcall DoPlayerMovement
 	ld a, c
 	ld hl, .pointers
-	rst JumpTable
+	call JumpTable
 	ld a, c
 	ret
 
@@ -1041,7 +1041,7 @@ RunMemScript:
 	xor a
 	ld hl, wMapReentryScriptQueueFlag
 	ld bc, 8
-	call ByteFill
+	rst ByteFill
 	pop af
 	ret
 

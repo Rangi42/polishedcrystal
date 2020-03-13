@@ -9,7 +9,7 @@ PrintAbility:
 	ld d, [hl]
 	ld e, a
 	hlcoord 3, 13
-	jp PlaceString
+	jp _PlaceString
 
 BufferAbility:
 ; Buffer name for b into wStringBuffer1
@@ -42,7 +42,7 @@ PrintAbilityDescription:
 	ld d, [hl]
 	ld e, a
 	hlcoord 1, 15
-	jp PlaceString
+	jp _PlaceString
 
 INCLUDE "data/abilities/names.asm"
 

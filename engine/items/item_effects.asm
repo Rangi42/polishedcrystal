@@ -8,7 +8,7 @@ _DoItemEffect::
 	ld a, [wCurItem]
 	dec a
 	ld hl, ItemEffects
-	rst JumpTable
+	call JumpTable
 	ret
 
 DoKeyItemEffect::
@@ -21,7 +21,7 @@ DoKeyItemEffect::
 	ld a, [wCurKeyItem]
 	dec a
 	ld hl, KeyItemEffects
-	rst JumpTable
+	call JumpTable
 	ret
 
 ItemEffects:
@@ -1409,7 +1409,7 @@ ItemActionTextWaitButton:
 	hlcoord 0, 0
 	ld bc, wTileMapEnd - wTileMap
 	ld a, " "
-	call ByteFill
+	rst ByteFill
 	ld a, [wPartyMenuActionText]
 	call ItemActionText
 	ld a, $1

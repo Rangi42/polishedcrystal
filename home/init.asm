@@ -79,7 +79,7 @@ Init::
 	xor a
 	ld hl, HRAM_START
 	ld bc, HRAM_END - HRAM_START
-	call ByteFill
+	rst ByteFill
 	pop af
 	ldh [hCGB], a
 
@@ -181,7 +181,7 @@ ClearVRAM::
 	ld hl, vTiles0
 	ld bc, $2000
 	xor a
-	jp ByteFill
+	jp _ByteFill
 
 ClearWRAM::
 ; Wipe swappable WRAM banks (1-7)
@@ -193,7 +193,7 @@ ClearWRAM::
 	xor a
 	ld hl, wRAM1Start
 	ld bc, $1000
-	call ByteFill
+	rst ByteFill
 	pop af
 	inc a
 	cp 8
@@ -206,5 +206,5 @@ ClearsScratch::
 	ld hl, sScratch
 	ld bc, $20
 	xor a
-	call ByteFill
+	rst ByteFill
 	jp CloseSRAM

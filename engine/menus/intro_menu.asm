@@ -3,17 +3,17 @@ InitIntroGradient::
 	hlcoord 0, 0
 	ld bc, SCREEN_WIDTH
 	ld a, $70
-	call ByteFill
+	rst ByteFill
 	; middle stripe
 	; hlcoord 0, 1
 	ld bc, SCREEN_WIDTH
 	ld a, $71
-	call ByteFill
+	rst ByteFill
 	; bottom stripe
 	; hlcoord 0, 2
 	ld bc, SCREEN_WIDTH
 	ld a, $72
-	call ByteFill
+	rst ByteFill
 
 	ld de, .IntroGradientGFX
 	ld hl, vTiles2 tile $70
@@ -98,30 +98,30 @@ ResetWRAM:
 	ld hl, wVirtualOAM
 	ld bc, wOptions1 - wVirtualOAM
 	xor a
-	call ByteFill
+	rst ByteFill
 
 	ld hl, wRAM1Start
 	ld bc, wGameData - wRAM1Start
 	xor a
-	call ByteFill
+	rst ByteFill
 
 	; erase wGameData, but keep Money, wCurBox, wBoxNames, and wBattlePoints
 	ld hl, wGameData
 	ld bc, wMoney - wGameData
 	xor a
-	call ByteFill
+	rst ByteFill
 	ld hl, MoneyEnd
 	ld bc, wCurBox - MoneyEnd
 	xor a
-	call ByteFill
+	rst ByteFill
 	ld hl, wBoxNamesEnd
 	ld bc, wBattlePoints - wBoxNamesEnd
 	xor a
-	call ByteFill
+	rst ByteFill
 	ld hl, wBattlePoints + 1
 	ld bc, wGameDataEnd - (wBattlePoints + 1)
 	xor a
-	call ByteFill
+	rst ByteFill
 
 	call Random
 	ldh a, [rLY]
@@ -527,7 +527,7 @@ Continue_DisplayBadgesDexPlayerName:
 	decoord 8, 2, 0
 	add hl, de
 	ld de, .Player
-	call PlaceString
+	rst PlaceString
 	pop hl
 	ret
 
@@ -543,7 +543,7 @@ Continue_UnknownGameTime:
 	decoord 9, 8, 0
 	add hl, de
 	ld de, .three_question_marks
-	jp PlaceString
+	jp _PlaceString
 
 .three_question_marks
 	db " ???@"
@@ -996,7 +996,7 @@ StartTitleScreen:
 	xor a
 .ok
 	ld hl, .dw
-	jp _Jumptable
+	jp JumpTable
 
 .dw
 	dw _MainMenu
@@ -1022,7 +1022,7 @@ RunTitleScreen:
 
 TitleScreenScene:
 	ld hl, .scenes
-	jp _Jumptable
+	jp JumpTable
 
 .scenes
 	dw TitleScreenEntrance
@@ -1044,7 +1044,7 @@ TitleScreenEntrance:
 	ld e, a
 	ld hl, wLYOverrides
 	ld bc, 8 * 10 ; logo height
-	call ByteFill
+	rst ByteFill
 
 ; Reversed signage for every other line's position.
 ; This is responsible for the interlaced effect.
@@ -1247,7 +1247,7 @@ Copyright:
 	call Request2bpp
 	hlcoord 2, 7
 	ld de, CopyrightString
-	jp PlaceString
+	jp _PlaceString
 
 CopyrightString:
 	; ©1995-2001 Nintendo

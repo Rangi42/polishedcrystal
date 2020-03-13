@@ -58,16 +58,20 @@ GetFarByte::
 	ret
 
 
-SECTION "rst28 JumpTable", ROM0[$0028]
-	jr _Jumptable
+SECTION "rst28 ByteFill", ROM0[$0028]
+	jp _ByteFill
 
-PlayCry::
-	call PlayCry2
-	jp WaitSFX
+IsAPokemon::
+; For functions using EGG as sentinel, use "and a" instead (EGG is $ff)
+; Returns carry if species a is not a Pokemon (including $ff)
+	inc a
+	cp $2 ; sets carry for $0 (inc'ed to $1) and $ff (inc'ed to $0)
+	dec a
+	ret
 
 
-SECTION "rst30 Predef", ROM0[$0030]
-	jp _Predef
+SECTION "rst30 PlaceString", ROM0[$0030]
+	jp _PlaceString
 
 GetFarWRAMByte::
 	call StackCallInWRAMBankA
@@ -77,10 +81,10 @@ GetFarWRAMByte::
 	ret
 
 
-SECTION "rst38 InfiniteLoop", ROM0[$0038]
-	rst InfiniteLoop
+SECTION "rst38 Predef", ROM0[$0038]
+	jp _Predef
 
-INCLUDE "home/sine.asm"
+	ds 5 ; free space
 
 
 ; Game Boy hardware interrupts
@@ -129,30 +133,10 @@ SECTION "joypad", ROM0[$0060]
 
 SECTION "High Home", ROM0[$0061]
 
-_Jumptable::
-	push de
-	ld e, a
-	ld d, 0
-	add hl, de
-	add hl, de
-	pop de
-IndirectHL::
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-_hl_::
-	jp hl
-
-IsAPokemon::
-; For functions using EGG as sentinel, use "and a" instead (EGG is $ff)
-; Returns carry if species a is not a Pokemon (including $ff)
-	inc a
-	cp $2 ; sets carry for $0 (inc'ed to $1) and $ff (inc'ed to $0)
-	dec a
-	ret
-
-INCLUDE "home/gfx2.asm"
+INCLUDE "home/jumptable.asm"
+INCLUDE "home/sine.asm"
 INCLUDE "home/delay.asm"
+INCLUDE "home/gfx2.asm"
 
 
 SECTION "Header", ROM0[$0100]

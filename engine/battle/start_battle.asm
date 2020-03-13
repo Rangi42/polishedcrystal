@@ -207,17 +207,17 @@ ClearBattleRAM:
 	ld hl, wBattle
 	ld bc, wBattleEnd - wBattle
 	xor a
-	call ByteFill
+	rst ByteFill
 
 	; Clear UsedItems
 	ld hl, wPartyUsedItems
 	ld bc, 6
 	xor a
-	call ByteFill
+	rst ByteFill
 	ld hl, wOTPartyUsedItems
 	ld bc, 6
 	xor a
-	call ByteFill
+	rst ByteFill
 
 	call ClearWindowData
 

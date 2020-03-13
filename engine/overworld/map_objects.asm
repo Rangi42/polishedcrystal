@@ -11,7 +11,7 @@ DeleteMapObject::
 	ld l, c
 	ld bc, OBJECT_STRUCT_LENGTH
 	xor a
-	call ByteFill
+	rst ByteFill
 	pop af
 	cp -1
 	jr z, .ok
@@ -143,7 +143,7 @@ HandleCurNPCStep:
 	ret z
 .do_step_type
 	ld hl, StepTypesJumptable
-	rst JumpTable
+	call JumpTable
 	ret
 
 .HandleObjectAction
@@ -455,7 +455,7 @@ MovementAnonymousJumptable:
 	add hl, bc
 	ld a, [hl]
 	pop hl
-	rst JumpTable
+	call JumpTable
 	ret
 
 ClearObjectStructField28:
@@ -475,7 +475,7 @@ Object28AnonymousJumptable:
 	add hl, bc
 	ld a, [hl]
 	pop hl
-	rst JumpTable
+	call JumpTable
 	ret
 
 ObjectMovementReset:
@@ -503,7 +503,7 @@ MapObjectMovementPattern:
 	call GetSpriteMovementFunction
 	ld a, [hl]
 	ld hl, .Pointers
-	rst JumpTable
+	call JumpTable
 	ret
 
 .Pointers:
@@ -1919,7 +1919,7 @@ DoMovementFunction:
 	call ApplyMovementToFollower
 	pop af
 	ld hl, MovementPointers
-	rst JumpTable
+	call JumpTable
 	ret
 
 INCLUDE "engine/overworld/movement.asm"
@@ -2099,7 +2099,7 @@ DespawnEmote:
 	push bc
 	xor a
 	ld bc, OBJECT_STRUCT_LENGTH
-	call ByteFill
+	rst ByteFill
 	pop bc
 .next
 	ld hl, OBJECT_STRUCT_LENGTH
@@ -2756,7 +2756,7 @@ PRIORITY_HIGH EQU $30
 	xor a
 	ld hl, wMovementPointer
 	ld bc, NUM_OBJECT_STRUCTS
-	call ByteFill
+	rst ByteFill
 	ld d, 0
 	ld bc, wObjectStructs
 	ld hl, wMovementPointer

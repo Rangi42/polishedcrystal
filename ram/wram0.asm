@@ -1044,7 +1044,9 @@ wBTTempOTSprite:: ds 1
 
 wPendingOverworldGraphics:: ds 1
 wTextDelayFrames:: ds 1
-wVBlankOccurred:: ds 1
+
+	ds 1
+
 wGenericDelay:: ds 1
 
 wGameTimerPause::

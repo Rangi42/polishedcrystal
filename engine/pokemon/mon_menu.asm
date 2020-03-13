@@ -189,7 +189,7 @@ GiveTakePartyMonItem:
 	ld de, wStringBuffer1
 .not_holding_anything
 	hlcoord 1, 16
-	call PlaceString
+	rst PlaceString
 	ld hl, GiveTakeItemMenuData
 	call LoadMenuDataHeader
 	call VerticalMenu
@@ -1239,7 +1239,7 @@ SetUpMoveScreenBG:
 	ld a, [wCurPartyMon]
 	call GetNick
 	hlcoord 5, 1
-	call PlaceString
+	rst PlaceString
 	push bc
 	farcall CopyPkmnToTempMon
 	pop hl
@@ -1325,7 +1325,7 @@ MoveScreen_ListMoves:
 	hlcoord 1, 12, wAttrMap
 	ld bc, 6
 	xor a
-	call ByteFill
+	rst ByteFill
 
 	farcall ApplyAttrMap
 
@@ -1386,7 +1386,7 @@ PlaceMoveData:
 	jr z, .not_swapping
 	hlcoord 1, 14
 	ld de, String_MoveSwap
-	call PlaceString
+	rst PlaceString
 	ld a, $1
 	ldh [hBGMapMode], a
 	ret
@@ -1397,7 +1397,7 @@ PlaceMoveData:
 
 	hlcoord 10, 12
 	ld de, String_PowAcc
-	call PlaceString
+	rst PlaceString
 
 	call GetCurMoveFixedCategory
 	ld b, a
@@ -1454,7 +1454,7 @@ PlaceMoveData:
 	jr .place_accuracy
 .no_power
 	ld de, String_na
-	call PlaceString
+	rst PlaceString
 
 .place_accuracy
 	ld hl, Moves + MOVE_ACC
@@ -1469,7 +1469,7 @@ PlaceMoveData:
 	jr .description
 .no_acc
 	ld de, String_na
-	call PlaceString
+	rst PlaceString
 
 .description
 	hlcoord 1, 14

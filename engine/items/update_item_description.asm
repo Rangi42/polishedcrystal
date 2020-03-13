@@ -7,7 +7,7 @@ UpdateItemDescriptionAndBagQuantity:
 	jr z, UpdateItemDescription
 	hlcoord 1, 1
 	ld de, BagXString
-	call PlaceString
+	rst PlaceString
 	ld a, [wMenuSelection]
 	call GetQuantityInBag
 	hlcoord 6, 1
@@ -43,7 +43,7 @@ UpdateTMHMDescriptionAndOwnership:
 	ld de, UnownedTMString
 .GotString
 	hlcoord 1, 1
-	call PlaceString
+	rst PlaceString
 UpdateTMHMDescription:
 	ld a, [wMenuSelection]
 	ld [wCurSpecies], a

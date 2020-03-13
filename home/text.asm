@@ -25,14 +25,14 @@ ClearScreen::
 	ld a, PAL_BG_TEXT
 	hlcoord 0, 0, wAttrMap
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
-	call ByteFill
+	rst ByteFill
 
 ClearTileMap::
 ; Fill wTileMap with blank tiles.
 	hlcoord 0, 0
 	ld a, " "
 	ld bc, wTileMapEnd - wTileMap
-	call ByteFill
+	rst ByteFill
 
 	; Update the BG Map.
 	ldh a, [rLCDC]
@@ -148,7 +148,7 @@ SetUpTextBox::
 	pop hl
 	ret
 
-PlaceString::
+_PlaceString::
 	push hl
 
 PlaceNextChar::
@@ -337,7 +337,7 @@ PlaceMoveTargetsName_5A:
 
 .enemy:
 	ld de, .EnemyText
-	call PlaceString
+	rst PlaceString
 	ld h, b
 	ld l, c
 	ld de, wEnemyMonNick
@@ -354,11 +354,11 @@ PlaceEnemysName::
 	jr nz, .linkbattle
 
 	ld de, wOTClassName
-	call PlaceString
+	rst PlaceString
 	ld h, b
 	ld l, c
 	ld de, .SpaceText
-	call PlaceString
+	rst PlaceString
 	push bc
 	farcall Battle_GetTrainerName
 	pop hl
@@ -373,7 +373,7 @@ PlaceEnemysName::
 	db " @"
 
 PlaceCommandCharacter::
-	call PlaceString
+	rst PlaceString
 	ld h, b
 	ld l, c
 	pop de
@@ -507,7 +507,7 @@ ContText::
 	ld de, .cont
 	ld b, h
 	ld c, l
-	call PlaceString
+	rst PlaceString
 	ld h, b
 	ld l, c
 	pop de
@@ -569,7 +569,7 @@ TextScroll::
 	hlcoord TEXTBOX_INNERX, TEXTBOX_INNERY + 2
 	ld a, " "
 	ld bc, TEXTBOX_INNERW
-	call ByteFill
+	rst ByteFill
 	ld c, 5
 	jp DelayFrames
 
@@ -604,7 +604,7 @@ FarString::
 
 	ld a, b
 	rst Bankswitch
-	call PlaceString
+	rst PlaceString
 
 	pop af
 	rst Bankswitch
@@ -680,7 +680,7 @@ Text_Start::
 	ld e, l
 	ld h, b
 	ld l, c
-	call PlaceString
+	rst PlaceString
 	ld h, d
 	ld l, e
 	inc hl
@@ -699,7 +699,7 @@ Text_FromRAM::
 	push hl
 	ld h, b
 	ld l, c
-	call PlaceString
+	rst PlaceString
 	pop hl
 	ret
 
@@ -970,7 +970,7 @@ Text_StringBuffer::
 	ld e, a
 	ld h, b
 	ld l, c
-	call PlaceString
+	rst PlaceString
 	pop hl
 	ret
 
@@ -999,11 +999,11 @@ PrintDayOfWeek::
 	ld d, h
 	ld e, l
 	pop hl
-	call PlaceString
+	rst PlaceString
 	ld h, b
 	ld l, c
 	ld de, .Day
-	call PlaceString
+	rst PlaceString
 	pop hl
 	ret
 

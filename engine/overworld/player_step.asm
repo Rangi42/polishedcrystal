@@ -53,7 +53,7 @@ HandlePlayerStep:
 	dec [hl]
 	ld a, [hl]
 	ld hl, .Jumptable
-	rst JumpTable
+	call JumpTable
 .fail
 	ret
 

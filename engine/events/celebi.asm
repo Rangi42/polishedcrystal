@@ -68,7 +68,7 @@ Special_CelebiShrineEvent:
 	ld hl, wVirtualOAM + 4 * 4
 	ld bc, 36 * 4
 	xor a
-	call ByteFill
+	rst ByteFill
 
 	ld a, BATTLETYPE_LEGENDARY
 	ld [wBattleType], a

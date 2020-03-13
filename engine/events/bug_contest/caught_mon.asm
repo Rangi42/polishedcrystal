@@ -24,7 +24,7 @@ BugContest_SetCaughtContestMon:
 	xor a
 	ld bc, PARTYMON_STRUCT_LENGTH
 	ld hl, wContestMon
-	call ByteFill
+	rst ByteFill
 	xor a
 	ld [wMonType], a
 	ld hl, wOTPartyMon1

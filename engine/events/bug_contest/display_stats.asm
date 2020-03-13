@@ -19,26 +19,26 @@ DisplayCaughtContestMonStats:
 
 	hlcoord 2, 0
 	ld de, .Stock
-	call PlaceString
+	rst PlaceString
 
 	hlcoord 2, 6
 	ld de, .This
-	call PlaceString
+	rst PlaceString
 
 	hlcoord 5, 4
 	ld de, .Health
-	call PlaceString
+	rst PlaceString
 
 	hlcoord 5, 10
 	ld de, .Health
-	call PlaceString
+	rst PlaceString
 
 	ld a, [wContestMon]
 	ld [wd265], a
 	call GetPokemonName
 	ld de, wStringBuffer1
 	hlcoord 1, 2
-	call PlaceString
+	rst PlaceString
 
 	ld h, b
 	ld l, c
@@ -48,7 +48,7 @@ DisplayCaughtContestMonStats:
 
 	ld de, wEnemyMonNick
 	hlcoord 1, 8
-	call PlaceString
+	rst PlaceString
 
 	ld h, b
 	ld l, c

@@ -21,7 +21,7 @@ _SwitchPartyMons:
 	rst AddNTimes
 	ld bc, 2 * SCREEN_WIDTH
 	ld a, " "
-	call ByteFill
+	rst ByteFill
 	pop af
 	ld hl, wVirtualOAM
 	ld bc, $10

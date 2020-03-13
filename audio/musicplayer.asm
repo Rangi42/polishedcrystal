@@ -136,7 +136,7 @@ MusicPlayer::
 	xor a
 	hlcoord 0, 0, wAttrMap
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
-	call ByteFill
+	rst ByteFill
 	hlcoord 3, 17, wAttrMap
 	ld [hl], $3
 	hlcoord 8, 17, wAttrMap
@@ -196,7 +196,7 @@ MusicPlayer::
 	ld hl, wMusicPlayerWRAM
 	ld bc, wMusicPlayerWRAMEnd - wMusicPlayerWRAM
 	xor a
-	call ByteFill
+	rst ByteFill
 
 ; Clear wMPNotes
 	ldh a, [rSVBK]
@@ -207,7 +207,7 @@ MusicPlayer::
 	xor a
 	ld hl, wMPNotes
 	ld bc, 4 * 256
-	call ByteFill
+	rst ByteFill
 
 	pop af
 	ldh [rSVBK], a
@@ -437,7 +437,7 @@ SongEditor:
 ; for pitch: increase pitch transposition
 	ld a, [wChannelSelector]
 	ld hl, .up_jumptable
-	rst JumpTable
+	call JumpTable
 	jp SongEditor
 
 .up_jumptable
@@ -455,7 +455,7 @@ SongEditor:
 ; for pitch: decrease pitch transposition
 	ld a, [wChannelSelector]
 	ld hl, .down_jumptable
-	rst JumpTable
+	call JumpTable
 	jp SongEditor
 
 .down_jumptable:
@@ -713,7 +713,7 @@ DrawPianoRollOverlay:
 	ld a, " "
 	hlcoord 0, 0
 	ld bc, SCREEN_WIDTH * PIANO_ROLL_HEIGHT
-	call ByteFill
+	rst ByteFill
 
 	call DrawSongInfo
 	call DrawChannelSelector
@@ -729,7 +729,7 @@ DrawPianoRollOverlay:
 DrawPitchTransposition:
 	hlcoord 15, 1
 	ld de, _EmptyPitchOrTempo
-	call PlaceString
+	rst PlaceString
 	ld a, [wChannelSelector]
 	cp MP_EDIT_PITCH
 	ld a, [wPitchTransposition]
@@ -746,7 +746,7 @@ DrawPitchTransposition:
 DrawTempoAdjustment:
 	hlcoord 15, 2
 	ld de, _EmptyPitchOrTempo
-	call PlaceString
+	rst PlaceString
 	ld a, [wChannelSelector]
 	cp MP_EDIT_TEMPO
 	ld a, [wTempoAdjustment]
@@ -918,7 +918,7 @@ _DrawCh1_2_3:
 	ld d, h
 	pop hl
 	push hl
-	call PlaceString
+	rst PlaceString
 	call GetOctaveAddr
 	ld d, [hl]
 	ld a, "8"
@@ -1019,7 +1019,7 @@ _DrawCh1_2_3:
 ;	ld hl, TempMPWaveform
 ;	ld bc, 2 tiles
 ;	xor a
-;	call ByteFill
+;	rst ByteFill
 ;
 ;	ld hl, TempMPWaveform
 ;	ld de, wWaveformTmp
@@ -1531,7 +1531,7 @@ DrawSongInfo:
 .info:
 	call GetSongTitle
 	hlcoord 0, 3
-	call PlaceString
+	rst PlaceString
 	inc de
 
 	push de
@@ -1541,21 +1541,21 @@ DrawSongInfo:
 	call DrawSongID
 	pop de
 	inc hl
-	call PlaceString
+	rst PlaceString
 	pop de
 	inc de
 
 	push de
 	call GetSongArtist
 	hlcoord 0, 7
-	call PlaceString
+	rst PlaceString
 	pop de
 	inc de
 
 	push de
 	call GetSongArtist2
 	hlcoord 0, 10
-	call PlaceString
+	rst PlaceString
 	pop de
 	ret
 
@@ -1594,7 +1594,7 @@ GetSongArtist:
 	push hl
 	ld de, .Composer
 	hlcoord 0, 6
-	call PlaceString
+	rst PlaceString
 	pop de
 	ret
 
@@ -1611,7 +1611,7 @@ GetSongArtist2:
 	jr z, .finish
 	ld de, .Arranger
 	hlcoord 0, 9
-	call PlaceString
+	rst PlaceString
 .finish
 	pop de
 	ret
@@ -1623,7 +1623,7 @@ SongSelector:
 	hlcoord 0, 0
 	ld a, " "
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
-	call ByteFill
+	rst ByteFill
 	ld hl, rLCDC
 	res 1, [hl] ; hide sprites
 	call ClearSprites
@@ -1780,7 +1780,7 @@ MPLPlaceString:
 	ld a, " "
 	ld hl, wStringBuffer2
 	ld bc, 3
-	call ByteFill
+	rst ByteFill
 	ld hl, wStringBuffer2
 	push de
 	ld de, wSelectorCur
@@ -1791,7 +1791,7 @@ MPLPlaceString:
 	inc hl
 	push hl
 	push de
-	call PlaceString
+	rst PlaceString
 	ld h, b
 	ld l, c
 	ld [hl], "@"
@@ -1834,7 +1834,7 @@ MPLPlaceString:
 	pop hl
 	push de
 	ld de, wStringBuffer2
-	call PlaceString
+	rst PlaceString
 	pop de
 	ret
 

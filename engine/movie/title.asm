@@ -31,7 +31,7 @@ _TitleScreen:
 	hlbgcoord 0, 0
 	ld bc, SCREEN_WIDTH * BG_MAP_WIDTH
 	xor a
-	call ByteFill
+	rst ByteFill
 
 ; Fill tile palettes:
 
@@ -41,7 +41,7 @@ _TitleScreen:
 	hlbgcoord 0, 0, vBGMap1
 	ld bc, BG_MAP_WIDTH
 	ld a, 7 ; palette
-	call ByteFill
+	rst ByteFill
 
 ; BG Map 0:
 
@@ -51,39 +51,39 @@ _TitleScreen:
 	hlbgcoord 0, 3
 	ld bc, 2 * BG_MAP_WIDTH
 	ld a, 2
-	call ByteFill
+	rst ByteFill
 ; line 5
 	hlbgcoord 0, 5
 	ld bc, BG_MAP_WIDTH
 	ld a, 3
-	call ByteFill
+	rst ByteFill
 ; line 6
 	hlbgcoord 0, 6
 	ld bc, BG_MAP_WIDTH
 	ld a, 4
-	call ByteFill
+	rst ByteFill
 ; line 7
 	hlbgcoord 0, 7
 	ld bc, BG_MAP_WIDTH
 	ld a, 5
-	call ByteFill
+	rst ByteFill
 ; lines 8-9
 	hlbgcoord 0, 8
 	ld bc, 2 * BG_MAP_WIDTH
 	ld a, 6
-	call ByteFill
+	rst ByteFill
 
 ; 'CRYSTAL VERSION'
 	hlbgcoord 5, 9
 	ld bc, NAME_LENGTH ; length of version text
 	ld a, 1
-	call ByteFill
+	rst ByteFill
 
 ; Suicune gfx
 	hlbgcoord 0, 12
 	ld bc, 6 * BG_MAP_WIDTH ; the rest of the screen
 	ld a, 8
-	call ByteFill
+	rst ByteFill
 
 ; Back to VRAM bank 0
 	xor a
@@ -103,7 +103,7 @@ _TitleScreen:
 	hlbgcoord 0, 0
 	ld bc, 64 * BG_MAP_WIDTH
 	ld a, " "
-	call ByteFill
+	rst ByteFill
 
 ; Draw Pokemon logo
 	hlcoord 0, 3
@@ -164,7 +164,7 @@ endc
 	ld hl, wLYOverrides
 	xor a
 	ld bc, wLYOverridesEnd - wLYOverrides
-	call ByteFill
+	rst ByteFill
 
 ; Let LCD Stat know we're messing around with SCX
 	ld a, rSCX - rJOYP

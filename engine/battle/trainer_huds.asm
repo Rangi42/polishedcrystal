@@ -238,10 +238,10 @@ _ShowLinkBattleParticipants:
 	call TextBox
 	hlcoord 4, 5
 	ld de, wPlayerName
-	call PlaceString
+	rst PlaceString
 	hlcoord 4, 10
 	ld de, wOTPlayerName
-	call PlaceString
+	rst PlaceString
 	hlcoord 9, 8
 	ld a, "V"
 	ld [hli], a

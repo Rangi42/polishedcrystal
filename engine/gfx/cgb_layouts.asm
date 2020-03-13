@@ -8,7 +8,7 @@ LoadCGBLayout::
 	call ResetBGPals
 	dec a
 	ld hl, .dw
-	jp _Jumptable
+	jp JumpTable
 
 .dw
 	dw _CGB_BattleGrayscale
@@ -138,7 +138,7 @@ _CGB_FinishBattleScreenLayout:
 	hlcoord 0, 0, wAttrMap
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
 	ld a, $2
-	call ByteFill
+	rst ByteFill
 	pop bc
 
 	hlcoord 0, 4, wAttrMap
@@ -191,7 +191,7 @@ _CGB_FinishBattleScreenLayout:
 	hlcoord 0, 12, wAttrMap
 	ld bc, 6 * SCREEN_WIDTH
 	ld a, $7
-	call ByteFill
+	rst ByteFill
 
 	ld hl, BattleObjectPals
 	ld de, wUnknOBPals palette PAL_BATTLE_OB_GRAY
@@ -293,7 +293,7 @@ _CGB_StatsScreenHPPals:
 	hlcoord 12, 16, wAttrMap
 	ld bc, 7
 	ld a, $2
-	call ByteFill
+	rst ByteFill
 
 	hlcoord 11, 5, wAttrMap
 	lb bc, 2, 2
@@ -434,7 +434,7 @@ _CGB_SlotMachine:
 	hlcoord 0, 12, wAttrMap
 	ld bc, $78
 	ld a, $7
-	call ByteFill
+	rst ByteFill
 
 	jp _CGB_FinishLayout
 
@@ -547,12 +547,12 @@ _CGB_MoveList:
 	hlcoord 0, 0, wAttrMap
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
 	ld a, $7
-	call ByteFill
+	rst ByteFill
 
 	hlcoord 1, 12, wAttrMap
 	ld bc, 6
 	xor a
-	call ByteFill
+	rst ByteFill
 
 	call GetCurMoveFixedCategory
 	add a
@@ -905,7 +905,7 @@ LoadFirstTwoTrainerCardPals:
 	hlcoord 0, 0, wAttrMap
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
 	xor a
-	call ByteFill
+	rst ByteFill
 
 	; player
 	hlcoord 14, 1, wAttrMap

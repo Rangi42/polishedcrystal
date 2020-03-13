@@ -239,7 +239,7 @@ ClearVBank1::
 	ld hl, vTiles0
 	ld bc, VRAM_End - vTiles0
 	xor a
-	call ByteFill
+	rst ByteFill
 
 	xor a
 	ldh [rVBK], a
@@ -253,7 +253,7 @@ Special_ReloadSpritesNoPalettes::
 	ld hl, wBGPals
 	ld bc, $40 + $10
 	xor a
-	call ByteFill
+	rst ByteFill
 	pop af
 	ldh [rSVBK], a
 	ld a, 1

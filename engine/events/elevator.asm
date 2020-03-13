@@ -147,7 +147,7 @@ Elevator_GetCurrentFloorText:
 	call TextBox
 	hlcoord 1, 2
 	ld de, Elevator_CurrentFloorText
-	call PlaceString
+	rst PlaceString
 	hlcoord 4, 4
 	call Elevator_GetCurrentFloorString
 	pop af
@@ -192,7 +192,7 @@ GetFloorString:
 	ld d, h
 	ld e, l
 	pop hl
-	jp PlaceString
+	jp _PlaceString
 
 FloorToString:
 	push de

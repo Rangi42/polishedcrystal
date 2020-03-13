@@ -18,6 +18,6 @@ _PrintNatureProperty:
 	ld e, a
 	ld d, [hl]
 	pop hl
-	jp PlaceString
+	jp _PlaceString
 
 INCLUDE "data/natures.asm"

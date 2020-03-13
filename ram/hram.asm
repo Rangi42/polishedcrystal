@@ -31,7 +31,7 @@ hSeconds:: db
 
 hVBlankCounter:: db
 
-	ds 1
+hVBlankOccurred:: db
 
 hROMBank:: db
 hVBlank:: db

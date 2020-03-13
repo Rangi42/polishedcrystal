@@ -22,7 +22,7 @@ ClearPalettes::
 if !DEF(MONOCHROME)
 	ld bc, 16 palettes
 	ld a, $ff
-	call ByteFill
+	rst ByteFill
 else
 	ld b, (16 palettes) / 2
 .mono_loop

@@ -58,7 +58,7 @@ _BillsPC:
 	push af
 	ld a, [wMenuSelection]
 	ld hl, .Jumptable
-	rst JumpTable
+	call JumpTable
 	pop bc
 	ld a, b
 	jr nc, .loop
@@ -192,7 +192,7 @@ ClearPCItemScreen:
 	hlcoord 0, 0
 	ld bc, SCREEN_HEIGHT * SCREEN_WIDTH
 	ld a, " "
-	call ByteFill
+	rst ByteFill
 	hlcoord 0, 0
 	lb bc, 10, 18
 	call TextBox

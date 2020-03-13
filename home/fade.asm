@@ -8,7 +8,7 @@ SetWhitePals::
 	ld hl, wUnknBGPals
 	ld a, $ff
 	ld bc, 16 palettes
-	jp ByteFill
+	jp _ByteFill
 
 SetBlackPals::
 	ld a, BANK(wUnknBGPals)
@@ -18,7 +18,7 @@ SetBlackPals::
 	ld hl, wUnknBGPals
 	xor a
 	ld bc, 16 palettes
-	jp ByteFill
+	jp _ByteFill
 
 FadeToWhite::
 	push bc

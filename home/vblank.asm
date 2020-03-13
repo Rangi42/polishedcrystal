@@ -36,10 +36,10 @@ VBlank::
 .doGameTime
 	call GameTimer
 
-	ld hl, wVBlankOccurred
+	ld hl, hVBlankOccurred
 	ld a, [hl]
 	and a
-	ld [hl], 0
+	ld [hl], FALSE
 	jr nz, .noVBlankLeak
 	ld a, $ff
 	ldh [hDelayFrameLY], a

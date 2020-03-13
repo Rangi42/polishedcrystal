@@ -3,7 +3,7 @@ DoAnimFrame:
 	add hl, bc
 	ld a, [hl]
 	ld hl, .Jumptable
-	jp _Jumptable
+	jp JumpTable
 
 .Jumptable:
 	dw .Null               ; SPRITE_ANIM_SEQ_NULL
@@ -177,7 +177,7 @@ DoAnimFrame:
 	add hl, bc
 	ld a, [hl]
 	ld hl, .TradePokeBall_dw
-	jp _Jumptable
+	jp JumpTable
 
 .TradePokeBall_dw
 	dw .sixteen_zero

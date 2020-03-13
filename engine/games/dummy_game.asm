@@ -26,7 +26,7 @@ _DummyGame:
 	hlcoord 0, 0
 	ld bc, SCREEN_HEIGHT * SCREEN_WIDTH
 	xor a
-	call ByteFill
+	rst ByteFill
 	xor a
 	ldh [hSCY], a
 	ldh [hSCX], a
@@ -46,7 +46,7 @@ _DummyGame:
 	bit 7, a
 	jr nz, .quit
 	ld hl, .Jumptable
-	rst JumpTable
+	call JumpTable
 	farcall PlaySpriteAnimations
 	call DelayFrame
 	and a
@@ -328,7 +328,7 @@ DummyGame_InitBoard:
 	ld hl, wDummyGameCards
 	ld bc, wDummyGameCardsEnd - wDummyGameCards
 	xor a
-	call ByteFill
+	rst ByteFill
 	call DummyGame_GetDistributionOfTiles
 
 	ld c, 2
@@ -443,13 +443,13 @@ DummyGame_InitStrings:
 	hlcoord 0, 0
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
 	ld a, $1
-	call ByteFill
+	rst ByteFill
 	hlcoord 0, 0
 	ld de, .japstr1
-	call PlaceString
+	rst PlaceString
 	hlcoord 15, 0
 	ld de, .japstr2
-	call PlaceString
+	rst PlaceString
 	ld hl, .dummy_text
 	jp PrintText
 

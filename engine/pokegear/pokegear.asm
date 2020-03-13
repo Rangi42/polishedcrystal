@@ -199,7 +199,7 @@ InitPokegearTilemap:
 	hlcoord 0, 0
 	ld bc, wTileMapEnd - wTileMap
 	ld a, $4f
-	call ByteFill
+	rst ByteFill
 	ld a, [wcf64]
 	and $3
 	add a
@@ -270,7 +270,7 @@ InitPokegearTilemap:
 	call Pokegear_LoadTilemapRLE
 	hlcoord 12, 1
 	ld de, .switch
-	call PlaceString
+	rst PlaceString
 	hlcoord 0, 12
 	lb bc, 4, 18
 	call TextBox
@@ -284,7 +284,7 @@ InitPokegearTilemap:
 	ld a, $7
 	ld bc, $12
 	hlcoord 1, 2
-	call ByteFill
+	rst ByteFill
 	hlcoord 0, 2
 	ld [hl], $6
 	hlcoord 19, 2
@@ -328,11 +328,11 @@ Pokegear_FinishTilemap:
 	hlcoord 0, 0
 	ld bc, $8
 	ld a, $4f
-	call ByteFill
+	rst ByteFill
 	hlcoord 0, 1
 	ld bc, $8
 	ld a, $4f
-	call ByteFill
+	rst ByteFill
 	ld de, wPokegearFlags
 	ld a, [de]
 	bit 0, a
@@ -375,7 +375,7 @@ Pokegear_FinishTilemap:
 PokegearJumptable:
 	ld a, [wJumptableIndex]
 	ld hl, .Jumptable
-	jp _Jumptable
+	jp JumpTable
 
 .Jumptable:
 	dw PokegearClock_Init
@@ -725,7 +725,7 @@ TownMap_ConvertLineBreakCharacters:
 .end
 	ld de, wStringBuffer1
 	hlcoord 9, 0
-	jp PlaceString
+	jp _PlaceString
 
 TownMap_GetJohtoLandmarkLimits:
 	lb de, SILVER_CAVE, NEW_BARK_TOWN
@@ -1130,7 +1130,7 @@ PokegearPhoneContactSubmenu:
 	pop de
 	pop hl
 	inc hl
-	call PlaceString
+	rst PlaceString
 	pop de
 	xor a
 	ld [wPokegearPhoneSubmenuCursor], a
@@ -1184,7 +1184,7 @@ PokegearPhoneContactSubmenu:
 	and B_BUTTON
 	jr nz, .Cancel
 	ld a, [wPokegearPhoneSubmenuCursor]
-	jp _Jumptable
+	jp JumpTable
 
 .Cancel:
 	ld hl, PokegearText_WhomToCall
@@ -1292,7 +1292,7 @@ DeleteSpriteAnimStruct2ToEnd:
 	ld hl, wSpriteAnim2
 	ld bc, wSpriteAnimationStructsEnd - wSpriteAnim2
 	xor a
-	call ByteFill
+	rst ByteFill
 	ld a, 2
 	ld [wSpriteAnimCount], a
 	ret
@@ -1409,7 +1409,7 @@ UpdateRadioStation:
 	xor a
 	ldh [hBGMapMode], a
 	hlcoord 2, 9
-	call PlaceString
+	rst PlaceString
 	ld a, $1
 	ldh [hBGMapMode], a
 	ret
@@ -1786,7 +1786,7 @@ _TownMap:
 	ld a, $7
 	ld bc, 6
 	hlcoord 1, 0
-	call ByteFill
+	rst ByteFill
 	hlcoord 0, 0
 	ld [hl], $6
 	hlcoord 7, 0
@@ -1798,7 +1798,7 @@ _TownMap:
 	ld a, $7
 	ld bc, NAME_LENGTH
 	hlcoord 8, 2
-	call ByteFill
+	rst ByteFill
 	hlcoord 19, 2
 	ld [hl], $17
 	ld a, [wTownMapCursorLandmark]
@@ -1861,7 +1861,7 @@ PlayRadio:
 	ld [hl], "“"
 	pop de
 	hlcoord 2, 14
-	call PlaceString
+	rst PlaceString
 	ld h, b
 	ld l, c
 	ld [hl], "”"
@@ -2015,7 +2015,7 @@ TownMapBubble:
 ; Top row
 	ld bc, 16
 	ld a, " "
-	call ByteFill
+	rst ByteFill
 ; Top-right corner
 	ld [hl], $38
 	hlcoord 1, 1
@@ -2023,7 +2023,7 @@ TownMapBubble:
 ; Middle row
 	ld bc, 18
 	ld a, " "
-	call ByteFill
+	rst ByteFill
 
 ; Bottom-left corner
 	hlcoord 1, 2
@@ -2032,14 +2032,14 @@ TownMapBubble:
 ; Bottom row
 	ld bc, 16
 	ld a, " "
-	call ByteFill
+	rst ByteFill
 ; Bottom-right corner
 	ld [hl], $3a
 
 ; Print "Where?"
 	hlcoord 2, 0
 	ld de, .Where
-	call PlaceString
+	rst PlaceString
 ; Print the name of the default flypoint
 	call .Name
 ; Up/down arrows
@@ -2062,7 +2062,7 @@ TownMapBubble:
 	farcall GetLandmarkName
 	hlcoord 2, 1
 	ld de, wStringBuffer1
-	jp PlaceString
+	jp _PlaceString
 
 GetMapCursorCoordinates:
 	ld a, [wTownMapPlayerIconLandmark]
@@ -2370,21 +2370,21 @@ Pokedex_GetArea:
 	hlcoord 0, 0
 	ld bc, SCREEN_WIDTH
 	ld a, " "
-	call ByteFill
+	rst ByteFill
 	hlcoord 0, 1
 	ld a, $6
 	ld [hli], a
 	ld bc, SCREEN_WIDTH - 2
 	ld a, $7
-	call ByteFill
+	rst ByteFill
 	ld [hl], $17
 	call GetPokemonName
 	hlcoord 2, 0
-	call PlaceString
+	rst PlaceString
 	ld h, b
 	ld l, c
 	ld de, .String_SNest
-	jp PlaceString
+	jp _PlaceString
 
 .String_SNest:
 	db "'s Nest@"
@@ -2468,7 +2468,7 @@ Pokedex_GetArea:
 	ld hl, wVirtualOAM + 4 * 4
 	ld bc, wVirtualOAMEnd - (wVirtualOAM + 4 * 4)
 	xor a
-	jp ByteFill
+	jp _ByteFill
 
 .PlayerOAM:
 	db -1 * 8, -1 * 8,  0 ; top left
@@ -2509,7 +2509,7 @@ Pokedex_GetArea:
 	ld hl, wVirtualOAM
 	ld bc, wVirtualOAMEnd - wVirtualOAM
 	xor a
-	call ByteFill
+	rst ByteFill
 	scf
 	ret
 

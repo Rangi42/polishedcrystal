@@ -13,7 +13,7 @@ OpenMartDialog::
 	call LoadMartPointer
 	ld a, [wEngineBuffer1]
 	ld hl, .dialogs
-	rst JumpTable
+	call JumpTable
 	ret
 
 .dialogs
@@ -173,7 +173,7 @@ LoadMartPointer:
 	ld hl, wCurMart
 	xor a
 	ld bc, wCurMartEnd - wCurMart
-	call ByteFill
+	rst ByteFill
 	xor a
 	ld [wEngineBuffer5], a
 	ld [wBargainShopFlags], a
@@ -194,7 +194,7 @@ StandardMart:
 .loop
 	ld a, [wEngineBuffer5]
 	ld hl, .MartFunctions
-	rst JumpTable
+	call JumpTable
 	ld [wEngineBuffer5], a
 	cp $ff
 	jr nz, .loop
@@ -1141,7 +1141,7 @@ BlueCardMenuDataHeader_Buy:
 	lb bc, 1, 3
 	call PrintNum
 	ld de, .PointsString
-	jp PlaceString
+	jp _PlaceString
 
 .PointsString:
 	db " Pts@"
@@ -1169,7 +1169,7 @@ BTMenuDataHeader_Buy:
 	lb bc, 1, 3
 	call PrintNum
 	ld de, .PointsString
-	jp PlaceString
+	jp _PlaceString
 
 .PointsString:
 	db " BP@"
@@ -1421,7 +1421,7 @@ SellMenu:
 	farcall CheckItemMenu
 	ld a, [wItemAttributeParamBuffer]
 	ld hl, .dw
-	rst JumpTable
+	call JumpTable
 	ret
 
 .dw

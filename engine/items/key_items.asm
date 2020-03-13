@@ -219,7 +219,7 @@ KeyItems_DisplayPocketItems:
 	ld bc, 3
 	add hl, bc
 	push hl
-	call PlaceString
+	rst PlaceString
 	pop hl
 	pop bc
 	pop de
@@ -235,7 +235,7 @@ KeyItems_DisplayPocketItems:
 	inc hl
 	push de
 	ld de, KeyItems_String_Cancel
-	call PlaceString
+	rst PlaceString
 	pop de
 	ret
 

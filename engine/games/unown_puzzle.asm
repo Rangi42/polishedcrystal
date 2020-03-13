@@ -16,7 +16,7 @@ UnownPuzzle:
 	ld hl, wMisc
 	ld bc, wMiscEnd - wMisc
 	xor a
-	call ByteFill
+	rst ByteFill
 	ld hl, UnownPuzzleCursorGFX
 	ld de, vTiles1 tile $60
 	ld bc, 4 tiles
@@ -28,7 +28,7 @@ UnownPuzzle:
 	hlcoord 0, 0
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
 	ld a, PUZZLE_BORDER
-	call ByteFill
+	rst ByteFill
 	hlcoord 4, 3
 	lb bc, 12, 12
 	ld a, PUZZLE_VOID
@@ -143,7 +143,7 @@ PlaceStartCancelBoxBorder:
 	ld [hli], a
 	ld bc, 10
 	ld a, $f1
-	call ByteFill
+	rst ByteFill
 	hlcoord 15, 15
 	ld a, $f2
 	ld [hli], a
@@ -152,7 +152,7 @@ PlaceStartCancelBoxBorder:
 	ld [hli], a
 	ld bc, 10
 	ld a, $ef
-	call ByteFill
+	rst ByteFill
 	hlcoord 15, 16
 	ld a, $f3
 	ld [hli], a
@@ -161,7 +161,7 @@ PlaceStartCancelBoxBorder:
 	ld [hli], a
 	ld bc, 10
 	ld a, $f1
-	call ByteFill
+	rst ByteFill
 	hlcoord 15, 17
 	ld [hl], $f5
 	ret

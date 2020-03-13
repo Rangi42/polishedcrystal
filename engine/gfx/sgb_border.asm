@@ -85,7 +85,7 @@ InitSGBBorder::
 	ld hl, vTiles0
 	ld bc, VRAM_End - vTiles0
 	xor a
-	call ByteFill
+	rst ByteFill
 
 	ld hl, MaskEnCancelPacket
 	jp SendSGBPacket

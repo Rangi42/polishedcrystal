@@ -7,7 +7,7 @@ _ReceiveItem::
 	ld a, [wItemAttributeParamBuffer]
 	dec a
 	ld hl, .Pockets
-	rst JumpTable
+	call JumpTable
 	ret
 
 .Pockets:
@@ -43,7 +43,7 @@ _TossItem::
 	ld a, [wItemAttributeParamBuffer]
 	dec a
 	ld hl, .Pockets
-	rst JumpTable
+	call JumpTable
 	ret
 
 .Pockets:
@@ -81,7 +81,7 @@ _CheckItem::
 	ld a, [wItemAttributeParamBuffer]
 	dec a
 	ld hl, .Pockets
-	rst JumpTable
+	call JumpTable
 	ret
 
 .Pockets:
@@ -447,7 +447,7 @@ _CountItem::
 	ld a, [wItemAttributeParamBuffer]
 	dec a
 	ld hl, .Pockets
-	rst JumpTable
+	call JumpTable
 	ret
 
 .Pockets:

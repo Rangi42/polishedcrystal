@@ -87,7 +87,7 @@ _KrisDecorationMenu:
 	ld [hli], a
 	ld bc, ITEM_NAME_LENGTH - 1
 	ld a, -1
-	jp ByteFill
+	jp _ByteFill
 
 .AppendToStringBuffer2:
 	ld hl, wStringBuffer2
@@ -136,7 +136,7 @@ Deco_FillTempWithMinusOne:
 	ld [hli], a
 	ld a, -1
 	ld bc, $10
-	jp ByteFill
+	jp _ByteFill
 
 CheckAllDecorationFlags:
 .loop
@@ -438,7 +438,7 @@ DecorationMenuFunction:
 	call GetDecorationData
 	call GetDecoName
 	pop hl
-	jp PlaceString
+	jp _PlaceString
 
 DoDecorationAction2:
 	ld a, [wMenuSelection]
@@ -447,7 +447,7 @@ DoDecorationAction2:
 	add hl, de
 	ld a, [hl]
 	ld hl, .DecoActions
-	rst JumpTable
+	call JumpTable
 	ret
 
 .DecoActions:
@@ -517,7 +517,7 @@ GetDecoName:
 	ld bc, wStringBuffer2
 	push bc
 	ld hl, .NameFunctions
-	rst JumpTable
+	call JumpTable
 	pop de
 	ret
 
@@ -954,7 +954,7 @@ INCLUDE "data/decorations/decorations.asm"
 DescribeDecoration::
 	ld a, b
 	ld hl, JumpTable_DecorationDesc
-	rst JumpTable
+	call JumpTable
 	ret
 
 JumpTable_DecorationDesc:

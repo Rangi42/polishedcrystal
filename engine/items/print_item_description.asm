@@ -18,7 +18,7 @@ PrintDescription:
 	inc hl
 	ld d, [hl]
 	pop hl
-	jp PlaceString
+	jp _PlaceString
 
 PrintTMHMDescription:
 ; Print the description for TM/HM [wCurSpecies] at de.

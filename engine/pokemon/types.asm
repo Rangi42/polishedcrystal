@@ -51,7 +51,7 @@ endc
 	ld d, [hl]
 	pop hl
 
-	jp PlaceString
+	jp _PlaceString
 
 GetTypeName:
 ; Copy the name of type [wNamedObjectIndexBuffer] to StringBuffer1.

@@ -70,7 +70,7 @@ LoadMonAnimation:
 	ld hl, wPokeAnimSceneIndex
 	ld bc, wPokeAnimStructEnd - wPokeAnimSceneIndex
 	xor a
-	call ByteFill
+	rst ByteFill
 	pop hl
 	pop de
 	pop bc
@@ -127,7 +127,7 @@ SetUpPokeAnim:
 	add hl, bc
 	ld a, [hl]
 	ld hl, PokeAnim_SetupCommands
-	rst JumpTable
+	call JumpTable
 	ld a, [wPokeAnimSceneIndex]
 	ld c, a
 	pop af
@@ -291,7 +291,7 @@ PokeAnim_InitAnim:
 	ld hl, wPokeAnimExtraFlag
 	ld bc, wPokeAnimStructEnd - wPokeAnimExtraFlag
 	xor a
-	call ByteFill
+	rst ByteFill
 	pop bc
 	ld a, b
 	ld [wPokeAnimSpeed], a
@@ -312,7 +312,7 @@ PokeAnim_DoAnimScript:
 	ld a, [wPokeAnimJumptableIndex]
 	and $7f
 	ld hl, .Jumptable
-	jp _Jumptable
+	jp JumpTable
 
 .Jumptable:
 	dw .RunAnim

@@ -185,7 +185,7 @@ Credits::
 	ld hl, wLYOverrides
 	ld bc, $100
 	xor a
-	call ByteFill
+	rst ByteFill
 
 	ld a, rSCX & $ff
 	ldh [hLCDCPointer], a
@@ -262,7 +262,7 @@ Credits_Jumptable:
 	ld a, [wJumptableIndex]
 	and $f
 	ld hl, .Jumptable
-	jp _Jumptable
+	jp JumpTable
 
 .Jumptable:
 	dw ParseCredits
@@ -360,7 +360,7 @@ ParseCredits:
 	hlcoord 0, 5
 	ld bc, 20 * 12
 	ld a, " "
-	call ByteFill
+	rst ByteFill
 
 ; Then read the script.
 
@@ -421,7 +421,7 @@ ParseCredits:
 	call .get
 	ld bc, 20 * 2
 	rst AddNTimes
-	call PlaceString
+	rst PlaceString
 	jr .loop
 
 .theend
@@ -527,12 +527,12 @@ ConstructCreditsTilemap:
 	ld a, $28
 	hlcoord 0, 0
 	ld bc, SCREEN_HEIGHT * SCREEN_WIDTH
-	call ByteFill
+	rst ByteFill
 
 	ld a, $7f
 	hlcoord 0, 4
 	ld bc, (SCREEN_HEIGHT - 4) * SCREEN_WIDTH
-	call ByteFill
+	rst ByteFill
 
 	hlcoord 0, 4
 	ld a, $24
@@ -545,22 +545,22 @@ ConstructCreditsTilemap:
 	hlcoord 0, 0, wAttrMap
 	ld bc, 4 * SCREEN_WIDTH
 	xor a
-	call ByteFill
+	rst ByteFill
 
 	hlcoord 0, 4, wAttrMap
 	ld bc, SCREEN_WIDTH
 	ld a, $1
-	call ByteFill
+	rst ByteFill
 
 	hlcoord 0, 5, wAttrMap
 	ld bc, 12 * SCREEN_WIDTH
 	ld a, $2
-	call ByteFill
+	rst ByteFill
 
 	hlcoord 0, 17, wAttrMap
 	ld bc, SCREEN_WIDTH
 	ld a, $1
-	call ByteFill
+	rst ByteFill
 
 	call ApplyAttrAndTilemapInVBlank
 	xor a

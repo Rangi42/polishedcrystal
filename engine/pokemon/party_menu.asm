@@ -46,7 +46,7 @@ WritePartyMenuTilemap:
 	hlcoord 0, 0
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
 	ld a, " "
-	call ByteFill ; blank the tilemap
+	rst ByteFill ; blank the tilemap
 	call GetPartyMenuTilemapPointers ; This reads from a pointer table???
 .loop
 	ld a, [hli]
@@ -54,7 +54,7 @@ WritePartyMenuTilemap:
 	jr z, .end ; 0x5007a $8
 	push hl
 	ld hl, .Jumptable
-	rst JumpTable
+	call JumpTable
 	pop hl
 	jr .loop ; 0x50082 $f3
 .end
@@ -88,7 +88,7 @@ PlacePartyNicknames:
 	ld a, b
 	call GetNick
 	pop hl
-	call PlaceString
+	rst PlaceString
 	pop hl
 	ld de, 2 * SCREEN_WIDTH
 	add hl, de
@@ -101,7 +101,7 @@ PlacePartyNicknames:
 	dec hl
 	dec hl
 	ld de, .CANCEL
-	jp PlaceString
+	jp _PlaceString
 
 .CANCEL:
 	db "Cancel@"
@@ -307,7 +307,7 @@ PlacePartyMonTMHMCompatibility:
 	predef CanLearnTMHMMove
 	pop hl
 	call .PlaceAbleNotAble
-	call PlaceString
+	rst PlaceString
 
 .next
 	pop hl
@@ -362,7 +362,7 @@ PlacePartyMonEvoStoneCompatibility:
 	add hl, de
 	call .DetermineCompatibility
 	pop hl
-	call PlaceString
+	rst PlaceString
 
 .next
 	pop hl
@@ -491,7 +491,7 @@ PlacePartyMonRemindable:
 	farcall GetForgottenMoves
 	pop hl
 	call .PlaceAbleNotAble
-	call PlaceString
+	rst PlaceString
 
 .next
 	pop hl
@@ -703,7 +703,7 @@ PrintPartyMenuText:
 	set NO_TEXT_SCROLL, a ; disable text delay
 	ld [wOptions1], a
 	hlcoord 1, 16 ; Coord
-	call PlaceString
+	rst PlaceString
 	pop af
 	ld [wOptions1], a
 	ret

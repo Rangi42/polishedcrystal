@@ -473,7 +473,7 @@ ClearObjectStructs::
 	ld hl, wObject1Struct
 	ld bc, OBJECT_STRUCT_LENGTH * (NUM_OBJECT_STRUCTS - 1)
 	xor a
-	jp ByteFill
+	jp _ByteFill
 
 RestoreFacingAfterWarp::
 	call SwitchToMapScriptHeaderBank
@@ -522,7 +522,7 @@ LoadBlockData::
 	ld hl, wOverworldMap
 	ld bc, wOverworldMapEnd - wOverworldMap
 	xor a
-	call ByteFill
+	rst ByteFill
 	call ChangeMap
 	call FillMapConnections
 	ld a, MAPCALLBACK_TILES

@@ -10,7 +10,7 @@ BattleCommand_tristatuschance:
 ; jump
 	dec a
 	ld hl, .ptrs
-	rst JumpTable
+	call JumpTable
 	ret
 
 .ptrs

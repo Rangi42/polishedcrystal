@@ -1182,7 +1182,7 @@ endr
 	ld hl, wEnemyStatLevels
 .got_stat_levels
 	ld a, BASE_STAT_LEVEL
-	call ByteFill
+	rst ByteFill
 	ldh a, [hBattleTurn]
 	and a
 	jr nz, .new_enemy_mon_status
@@ -1441,7 +1441,7 @@ ResetParticipants::
 	xor a
 	ld hl, wPartyParticipants
 	ld bc, 6
-	call ByteFill
+	rst ByteFill
 	pop af
 	pop bc
 	pop hl
@@ -2566,7 +2566,7 @@ MonFaintedAnimation:
 	ld bc, 20
 	add hl, bc
 	ld de, .Spaces
-	call PlaceString
+	rst PlaceString
 	call ApplyTilemapInVBlank
 	pop hl
 	pop de
@@ -3632,7 +3632,7 @@ PrintPlayerHUD:
 	jr z, .short_name
 	dec hl ; hlcoord 10, 7
 .short_name
-	call PlaceString
+	rst PlaceString
 
 	push bc
 
@@ -3716,7 +3716,7 @@ DrawEnemyHUD:
 	call GetBaseData
 	ld de, wEnemyMonNick
 	hlcoord 1, 0
-	call PlaceString
+	rst PlaceString
 	ld h, b
 	ld l, c
 	dec hl
@@ -5054,7 +5054,7 @@ MoveInfoBox:
 
 	hlcoord 1, 10
 	ld de, .PowAcc
-	call PlaceString
+	rst PlaceString
 
 	ld hl, Moves + MOVE_POWER
 	call GetCurMoveProperty
@@ -5068,7 +5068,7 @@ MoveInfoBox:
 	jr .place_accuracy
 .no_power
 	ld de, .NA
-	call PlaceString
+	rst PlaceString
 
 .place_accuracy
 	ld hl, Moves + MOVE_ACC
@@ -5083,7 +5083,7 @@ MoveInfoBox:
 	jr .icons
 .no_acc
 	ld de, .NA
-	call PlaceString
+	rst PlaceString
 
 .icons
 	farcall LoadBattleCategoryAndTypePals
@@ -7478,7 +7478,7 @@ BackUpBGMap2:
 	ld hl, wDecompressScratch
 	ld bc, $40 tiles ; vBGMap3 - vBGMap2
 	ld a, $2
-	call ByteFill
+	rst ByteFill
 	ldh a, [rVBK]
 	push af
 	ld a, $1
@@ -7719,7 +7719,7 @@ ShowLinkBattleResult:
 
 .store_result
 	hlcoord 6, 8
-	call PlaceString
+	rst PlaceString
 	ld c, 200
 	call DelayFrames
 
@@ -7751,7 +7751,7 @@ DisplayLinkRecord:
 	hlcoord 0, 0, wAttrMap
 	xor a
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
-	call ByteFill
+	rst ByteFill
 	call ApplyAttrAndTilemapInVBlank
 	ld a, CGB_DIPLOMA
 	call GetCGBLayout
@@ -7791,7 +7791,7 @@ ReadAndPrintLinkBattleRecord:
 	rst CopyBytes
 	ld de, wd002
 	pop hl
-	call PlaceString
+	rst PlaceString
 	pop hl
 	ld de, 26
 	add hl, de
@@ -7816,7 +7816,7 @@ ReadAndPrintLinkBattleRecord:
 
 .PrintFormatString:
 	ld de, .Format
-	call PlaceString
+	rst PlaceString
 .next
 	pop hl
 	ld bc, 18
@@ -7834,15 +7834,15 @@ ReadAndPrintLinkBattleRecord:
 .PrintBattleRecord:
 	hlcoord 1, 0
 	ld de, .Record
-	call PlaceString
+	rst PlaceString
 
 	hlcoord 0, 6
 	ld de, .Result
-	call PlaceString
+	rst PlaceString
 
 	hlcoord 0, 2
 	ld de, .Total
-	call PlaceString
+	rst PlaceString
 
 	hlcoord 6, 4
 	ld de, sLinkBattleWins
@@ -7871,7 +7871,7 @@ ReadAndPrintLinkBattleRecord:
 	and a
 	ret nz
 	ld de, .Scores
-	call PlaceString
+	rst PlaceString
 	scf
 	ret
 
@@ -8217,7 +8217,7 @@ InitBattleDisplay:
 	ld hl, wScratchTileMap
 	ld bc, BG_MAP_WIDTH * BG_MAP_HEIGHT
 	ld a, " "
-	call ByteFill
+	rst ByteFill
 
 	ld de, wScratchTileMap
 	hlbgcoord 0, 0

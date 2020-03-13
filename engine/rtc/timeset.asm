@@ -38,7 +38,7 @@ endc
 	ld hl, wTimesetBuffer
 	ld bc, 50
 	xor a
-	call ByteFill
+	rst ByteFill
 	ld a, $a
 	ld [wInitHourBuffer], a
 
@@ -117,7 +117,7 @@ endc
 	hlcoord 0, 0
 	ld bc, SCREEN_HEIGHT * SCREEN_WIDTH
 	xor a
-	call ByteFill
+	rst ByteFill
 	ld a, $1
 	ldh [hBGMapMode], a
 	ret
@@ -163,7 +163,7 @@ SetHour:
 	hlcoord 4, 9
 	ld a, " "
 	ld bc, 15
-	call ByteFill
+	rst ByteFill
 	hlcoord 4, 9
 	call DisplayHourOClock
 	call ApplyTilemapInVBlank
@@ -183,7 +183,7 @@ DisplayHourOClock:
 	call PrintHour
 	inc hl
 	ld de, String_oclock
-	call PlaceString
+	rst PlaceString
 	pop hl
 	ret
 
@@ -226,7 +226,7 @@ SetMinutes:
 	hlcoord 12, 9
 	ld a, " "
 	ld bc, 7
-	call ByteFill
+	rst ByteFill
 	hlcoord 12, 9
 	call DisplayMinutesWithMinString
 	call ApplyTilemapInVBlank
@@ -241,7 +241,7 @@ DisplayMinutesWithMinString:
 	call PrintTwoDigitNumberRightAlign
 	inc hl
 	ld de, String_min
-	jp PlaceString
+	jp _PlaceString
 
 PrintTwoDigitNumberRightAlign:
 	push hl
@@ -459,7 +459,7 @@ Special_SetDayOfWeek:
 	ld d, [hl]
 	ld e, a
 	pop hl
-	jp PlaceString
+	jp _PlaceString
 
 .WeekdayStrings:
 	dw .Sunday
@@ -555,7 +555,7 @@ PrintHour:
 	ld h, d
 	push bc
 	call GetTimeOfDayString
-	call PlaceString
+	rst PlaceString
 	ld l, c
 	ld h, b
 	inc hl
@@ -655,7 +655,7 @@ PrintHoursMins
 	ld de, .String_PM
 .place_am_pm
 	inc hl
-	jp PlaceString
+	jp _PlaceString
 
 .String_AM: db "AM@"
 .String_PM: db "PM@"

@@ -24,7 +24,7 @@ SendMailToPC:
 	pop hl
 	xor a
 	ld bc, MAIL_STRUCT_LENGTH
-	call ByteFill
+	rst ByteFill
 	ld a, MON_ITEM
 	call GetPartyParamLocation
 	ld [hl], 0
@@ -66,7 +66,7 @@ DeleteMailFromPC:
 	ld l, e
 	xor a
 	ld bc, MAIL_STRUCT_LENGTH
-	call ByteFill
+	rst ByteFill
 	ld hl, sMailboxCount
 	dec [hl]
 	jp CloseSRAM
@@ -264,11 +264,11 @@ DeletePartyMonMail:
 	xor a
 	ld hl, sPartyMail
 	ld bc, 6 * MAIL_STRUCT_LENGTH
-	call ByteFill
+	rst ByteFill
 	xor a
 	ld hl, sMailboxCount
 	ld bc, 1 + 10 * MAIL_STRUCT_LENGTH
-	call ByteFill
+	rst ByteFill
 	jp CloseSRAM
 
 IsAnyMonHoldingMail:
@@ -355,7 +355,7 @@ MailboxPC_PrintMailAuthor:
 	ld a, [wMenuSelection]
 	call MailboxPC_GetMailAuthor
 	pop hl
-	jp PlaceString
+	jp _PlaceString
 
 MailboxPC:
 	xor a
@@ -400,7 +400,7 @@ MailboxPC:
 	ld a, [wMenuCursorY]
 	dec a
 	ld hl, .JumpTable
-	rst JumpTable
+	call JumpTable
 	ret
 
 .JumpTable:

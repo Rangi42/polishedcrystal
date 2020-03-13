@@ -12,7 +12,7 @@ ScriptEvents::
 .loop
 	ld a, [wScriptMode]
 	ld hl, .modes
-	rst JumpTable
+	call JumpTable
 	call CheckScript
 	jr nz, .loop
 	ret
@@ -55,7 +55,7 @@ WaitScriptMovement:
 RunScriptCommand:
 	call GetScriptByte
 	ld hl, ScriptCommandTable
-	rst JumpTable
+	call JumpTable
 	ret
 
 ScriptCommandTable:
@@ -1979,7 +1979,7 @@ ResetStringBuffer1:
 	ld hl, wStringBuffer1
 	ld bc, NAME_LENGTH
 	ld a, "@"
-	jp ByteFill
+	jp _ByteFill
 
 Script_stringtotext:
 ; parameters:

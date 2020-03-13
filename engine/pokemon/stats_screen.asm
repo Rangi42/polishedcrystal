@@ -42,7 +42,7 @@ StatsScreenMain:
 	ld a, [wJumptableIndex]
 	and $7f
 	ld hl, StatsScreenPointerTable
-	rst JumpTable
+	call JumpTable
 	call StatsScreen_WaitAnim ; check for keys?
 	ld a, [wJumptableIndex]
 	bit 7, a
@@ -336,7 +336,7 @@ StatsScreen_InitUpperHalf:
 	call GetNicknamePointer
 	call CopyNickname
 	hlcoord 8, 2
-	call PlaceString
+	rst PlaceString
 	hlcoord 18, 0
 	call .PlaceGenderChar
 	hlcoord 9, 4
@@ -345,7 +345,7 @@ StatsScreen_InitUpperHalf:
 	ld a, [wCurSpecies]
 	ld [wd265], a
 	call GetPokemonName
-	call PlaceString
+	rst PlaceString
 	call StatsScreen_PlacePageSwitchArrows
 	jp StatsScreen_PlaceShinyIcon
 
@@ -509,7 +509,7 @@ StatsScreen_LoadGFX:
 	ld a, [wcf64]
 	and $3
 	ld hl, .Jumptable
-	rst JumpTable
+	call JumpTable
 	ret
 
 .Jumptable:
@@ -521,7 +521,7 @@ StatsScreen_LoadGFX:
 .PinkPage:
 	ld de, .Status_Type
 	hlcoord 0, 9
-	call PlaceString
+	rst PlaceString
 	ld a, [wTempMonPokerusStatus]
 	ld b, a
 	and $f
@@ -545,11 +545,11 @@ StatsScreen_LoadGFX:
 .HasPokerus:
 	ld de, .PkrsStr
 	hlcoord 1, 10
-	call PlaceString
+	rst PlaceString
 	jr .done_status
 .StatusOK:
 	ld de, .OK_str
-	call PlaceString
+	rst PlaceString
 .done_status
 	hlcoord 1, 12
 	farcall PrintMonTypes
@@ -565,7 +565,7 @@ StatsScreen_LoadGFX:
 	jr nz, .vertical_divider
 	ld de, .ExpPointStr
 	hlcoord 10, 9
-	call PlaceString
+	rst PlaceString
 	hlcoord 17, 14
 	call .PrintNextLevel
 	hlcoord 13, 10
@@ -579,10 +579,10 @@ StatsScreen_LoadGFX:
 	call PrintNum
 	ld de, .LevelUpStr
 	hlcoord 10, 12
-	call PlaceString
+	rst PlaceString
 	ld de, .ToStr
 	hlcoord 14, 14
-	call PlaceString
+	rst PlaceString
 	hlcoord 12, 16
 	ld a, [wTempMonLevel]
 	ld b, a
@@ -642,7 +642,7 @@ StatsScreen_LoadGFX:
 .PlaceOTInfo:
 	ld de, .OT_ID_str
 	hlcoord 0, 14
-	call PlaceString
+	rst PlaceString
 	hlcoord 3, 16
 	lb bc, PRINTNUM_LEADINGZEROS | 2, 5
 	ld de, wTempMonID
@@ -651,7 +651,7 @@ StatsScreen_LoadGFX:
 	call GetNicknamePointer
 	call CopyNickname
 	hlcoord 1, 15
-	call PlaceString
+	rst PlaceString
 	ld a, [wTempMonCaughtGender]
 	and FEMALE
 	jr z, .male
@@ -696,13 +696,13 @@ StatsScreen_LoadGFX:
 .GreenPage:
 	ld de, .Item
 	hlcoord 0, 8
-	call PlaceString
+	rst PlaceString
 	call .GetItemName
 	hlcoord 8, 8
-	call PlaceString
+	rst PlaceString
 	ld de, .Move
 	hlcoord 0, 10
-	call PlaceString
+	rst PlaceString
 	ld hl, wTempMonMoves
 	ld de, wListMoves_MoveIndicesBuffer
 	ld bc, NUM_MOVES
@@ -754,7 +754,7 @@ StatsScreen_LoadGFX:
 .PlaceNatureInfo:
 	ld de, .NatureString
 	hlcoord 0, 12
-	call PlaceString
+	rst PlaceString
 	ld a, [wTempMonNature]
 	ld b, a
 	farcall GetNature
@@ -776,10 +776,10 @@ OrangePage_:
 	hlcoord 0, 11
 	ld bc, SCREEN_WIDTH
 	ld a, $3e
-	call ByteFill
+	rst ByteFill
 	hlcoord 1, 12
 	ld de, .ability
-	call PlaceString
+	rst PlaceString
 	ld a, [wTempMonAbility]
 	and ABILITY_MASK
 	cp ABILITY_1
@@ -813,7 +813,7 @@ OrangePage_:
 TN_PrintToD:
 	ld de, .caughtat
 	hlcoord 1, 8
-	call PlaceString
+	rst PlaceString
 	ld a, [wTempMonCaughtTime]
 	and CAUGHTTIME_MASK
 	ld de, .unknown
@@ -829,7 +829,7 @@ TN_PrintToD:
 	ld de, .nite
 .print
 	hlcoord 3, 9
-	jp PlaceString
+	jp _PlaceString
 
 .caughtat
 	db "Met/@"
@@ -858,7 +858,7 @@ TN_PrintLocation:
 	ld de, wStringBuffer1
 .print
 	hlcoord 3, 10
-	jp PlaceString
+	jp _PlaceString
 
 .event
 	db "Event #mon@"
@@ -872,17 +872,17 @@ TN_PrintLV:
 	jr z, .hatched
 	ld [wBuffer2], a
 	ld de, .str_atlv
-	call PlaceString
+	rst PlaceString
 	ld de, wBuffer2
 	lb bc, PRINTNUM_LEFTALIGN | 1, 3
 	hlcoord 12, 9
 	jp PrintNum
 .hatched
 	ld de, .str_hatched
-	jp PlaceString
+	jp _PlaceString
 .unknown
 	ld de, .str_unknown
-	jp PlaceString
+	jp _PlaceString
 
 .str_atlv
 	db "at <LV>@"
@@ -981,7 +981,7 @@ TN_PrintCharacteristics:
 	ld d, [hl]
 	ld e, a
 	hlcoord 0, 15
-	jp PlaceString
+	jp _PlaceString
 
 INCLUDE "data/characteristics.asm"
 
@@ -1053,7 +1053,7 @@ StatsScreen_PlaceFrontpic:
 StatsScreen_GetAnimationParam:
 	ld a, [wMonType]
 	ld hl, .Jumptable
-	rst JumpTable
+	call JumpTable
 	ret
 
 .Jumptable:
@@ -1141,7 +1141,7 @@ EggStatsScreen:
 	call StatsScreen_PlaceEggDivider
 	ld de, EggString
 	hlcoord 8, 1
-	call PlaceString
+	rst PlaceString
 	ld a, [wTempMonHappiness] ; egg status
 	ld de, EggSoonString
 	cp $6
@@ -1155,7 +1155,7 @@ EggStatsScreen:
 	ld de, EggALotMoreTimeString
 .picked
 	hlcoord 1, 9
-	call PlaceString
+	rst PlaceString
 	ld hl, wcf64
 	set 5, [hl]
 	call SetPalettes ; pals
