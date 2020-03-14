@@ -9,6 +9,12 @@ Shrink1Pic:: INCBIN "gfx/new_game/shrink1.2bpp.lz"
 Shrink2Pic:: INCBIN "gfx/new_game/shrink2.2bpp.lz"
 
 
+SECTION "Pack Graphics", ROMX
+
+PackGFX::  INCBIN "gfx/pack/pack.w40.2bpp"
+PackFGFX:: INCBIN "gfx/pack/pack_f.w40.2bpp"
+
+
 SECTION "Battle Graphics", ROMX
 
 SubstituteFrontpic:: INCBIN "gfx/battle/substitute-front.2bpp.lz"

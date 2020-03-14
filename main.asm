@@ -207,7 +207,6 @@ INCLUDE "engine/pokedex/pokedex_2.asm"
 
 SECTION "Crystal Features 1", ROMX
 
-INCLUDE "engine/items/pack_gfx.asm"
 INCLUDE "engine/events/move_tutor.asm"
 INCLUDE "engine/tilesets/tileset_palettes.asm"
 INCLUDE "engine/events/celebi.asm"

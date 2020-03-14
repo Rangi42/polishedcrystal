@@ -1439,11 +1439,10 @@ Pack_InitGFX:
 	call ClearTileMap
 	call ClearSprites
 	call DisableLCD
-	ld hl, PackMenuGFX ; PackLeftColumnGFX is after it
+	ld hl, PackInterfaceGFX
 	ld de, vTiles2 tile $01
-	ld bc, (20 + 18) tiles
-	ld a, BANK(PackMenuGFX)
-	call FarCopyBytes
+	lb bc, BANK(PackInterfaceGFX), 38
+	call DecompressRequest2bpp
 ; This is where the items themselves will be listed.
 	hlcoord 5, 1
 	lb bc, 11, 15
@@ -1733,10 +1732,8 @@ Text_PackEmptyString:
 	text_jump UnknownText_0x1c0c83
 	db "@"
 
-PackMenuGFX:
-INCBIN "gfx/pack/pack_top_row.2bpp"
-PackLeftColumnGFX:
-INCBIN "gfx/pack/pack_left_column.2bpp"
+PackInterfaceGFX:
+INCBIN "gfx/pack/pack_top_left.2bpp.lz"
 
 Special_ChooseItem::
 	call DisableSpriteUpdates

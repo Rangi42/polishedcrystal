@@ -471,11 +471,10 @@ BuyMenu_InitGFX:
 	call ClearSprites
 	call DisableSpriteUpdates
 	call DisableLCD
-	ld hl, PackLeftColumnGFX
-	ld de, vTiles2 tile $15
-	ld bc, 18 tiles
-	ld a, BANK(PackLeftColumnGFX)
-	call FarCopyBytes
+	ld hl, PackInterfaceGFX
+	ld de, vTiles2 tile $01
+	lb bc, BANK(PackInterfaceGFX), 38
+	call DecompressRequest2bpp
 ; This is where the items themselves will be listed.
 ;	hlcoord 5, 3
 ;	lb bc, 9, 15
