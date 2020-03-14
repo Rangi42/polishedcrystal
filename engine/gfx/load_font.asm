@@ -86,14 +86,8 @@ LoadPlayerStatusIcon:
 	ld de, wBattleMonStatus
 	farcall GetStatusConditionIndex
 	ld hl, StatusIconGFX
-	ld de, 2 tiles
-.loop
-	and a
-	jr z, .done
-	add hl, de
-	dec a
-	jr .loop
-.done
+	ld bc, 2 tiles
+	rst AddNTimes
 	ld d, h
 	ld e, l
 	ld hl, vTiles2 tile $55
@@ -109,14 +103,8 @@ LoadEnemyStatusIcon:
 	ld de, wEnemyMonStatus
 	farcall GetStatusConditionIndex
 	ld hl, EnemyStatusIconGFX
-	ld de, 2 tiles
-.loop
-	and a
-	jr z, .done
-	add hl, de
-	dec a
-	jr .loop
-.done
+	ld bc, 2 tiles
+	rst AddNTimes
 	ld d, h
 	ld e, l
 	ld hl, vTiles2 tile $57

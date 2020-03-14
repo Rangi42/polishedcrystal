@@ -408,12 +408,10 @@ LoadEmote::
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-; if the emote has a length of 0, do not proceed (error handling)
-	ld a, c
-	and a
-	ret z
+; swap the source into hl and the destination into de
+	call SwapHLDE
 ; load into vram0
-	jp Get2bpp
+	jp DecompressRequest2bpp
 
 INCLUDE "data/sprites/emotes.asm"
 
