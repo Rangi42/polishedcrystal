@@ -126,6 +126,6 @@ WonderTradeOTGenders2:
 	;       Hlin,    Marckus, Pum,     Bryan,   Don,     Miguel,  Satoru,  Iwata
 	genders FEMALE,  MALE,    MALE,    MALE,    MALE,    MALE,    MALE,    MALE
 	;       Junichi, Masuda,  Koji,    Nishino, Sosuke,  Tamada,  Hisashi, Sogabe
-	genders MALE,    MALE,    MALE,    MALE,    MALE,    MALE,    MALE,    MALE, 
+	genders MALE,    MALE,    MALE,    MALE,    MALE,    MALE,    MALE,    MALE
 	;       Keita,   Kagaya,  Yoshi,   Matsuda, Shigeki, Tetsuya, Oota,    Turner
 	genders MALE,    MALE,    MALE,    MALE,    MALE,    MALE,    MALE,    MALE
