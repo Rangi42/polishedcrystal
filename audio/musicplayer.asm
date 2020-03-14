@@ -10,14 +10,11 @@ MP_DUTY0 EQU $29
 
 SECTION "Music Player Graphics", ROMX
 
-PianoGFX:
-INCBIN "gfx/music_player/piano.2bpp"
-MusicTestGFX: ; must come after PianoGFX
-INCBIN "gfx/music_player/music_test.2bpp"
+MusicPlayerGFX:
+INCBIN "gfx/music_player/music_player.2bpp.lz"
+
 NotesGFX:
-INCBIN "gfx/music_player/note_lines.2bpp"
-WaveformsGFX:
-INCBIN "gfx/music_player/waveforms.2bpp"
+INCBIN "gfx/music_player/note_lines.2bpp.lz"
 
 
 SECTION "Music Player", ROMX
@@ -156,33 +153,15 @@ MusicPlayer::
 	call DelayFrame
 
 ; Load graphics
-	ld de, PianoGFX ; 
-	lb bc, BANK(PianoGFX), 32 + 13 ; PianoGFX + MusicTestGFX
-	ld hl, vTiles2
-	call Request2bpp
+	ld hl, MusicPlayerGFX
+	ld de, vTiles2
+	lb bc, BANK(MusicPlayerGFX), $43
+	call DecompressRequest2bpp
 
-	ld de, NotesGFX
+	ld hl, NotesGFX
+	ld de, vTiles0
 	lb bc, BANK(NotesGFX), $80
-	ld hl, vTiles0
-	call Request2bpp
-
-; Prerender all waveforms
-;	xor a
-;.waveform_loop:
-;	push af
-;	call RenderWaveform
-;	pop af
-;	inc a
-;	cp NUM_WAVEFORMS
-;	jr nz, .waveform_loop
-
-; Rendered waveforms would have difficulty filling their integrals with
-; the dark hue. TPP Crystal dealt with this by doubling their width.
-; Here we just use a static image.
-	ld de, WaveformsGFX
-	lb bc, BANK(WaveformsGFX), NUM_WAVEFORMS * 2
-	ld hl, vTiles2 tile $40
-	call Request2bpp
+	call DecompressRequest2bpp
 
 	call DelayFrame
 
@@ -988,7 +967,7 @@ _DrawCh1_2_3:
 	ld a, [wChannel3Intensity]
 	and $f
 	sla a
-	add $40
+	add $2d
 	ld [hli], a
 	inc a
 	ld [hl], a
@@ -997,88 +976,6 @@ _DrawCh1_2_3:
 	pop hl
 	pop af
 	ret
-
-;RenderWaveform:
-;	ld [wRenderedWaveform], a
-;	ld l, a
-;	ld h, 0
-;	; hl << 4
-;	; each wavepattern is $f bytes long
-;	; so seeking is done in $10s
-;rept 4
-;	add hl, hl
-;endr
-;	ld de, WaveSamples
-;	add hl, de
-;	; load wavepattern into wWaveformTmp
-;	ld de, wWaveformTmp
-;	ld bc, 16
-;	ld a, BANK(WaveSamples)
-;	call FarCopyBytes ; copy bc bytes from a:hl to de
-;
-;	ld hl, TempMPWaveform
-;	ld bc, 2 tiles
-;	xor a
-;	rst ByteFill
-;
-;	ld hl, TempMPWaveform
-;	ld de, wWaveformTmp
-;	ld b, 1
-;
-;.loop:
-;	ld a, [de]
-;	push de
-;
-;	swap a
-;	and %1110
-;	xor %1110
-;	ld c, a
-;	add l
-;	ld l, a
-;	jr nc, .nc
-;	inc h
-;.nc
-;	ld a, b
-;	and $7
-;	ld d, a
-;	; c = row
-;	; b = (d) = column
-;	ld a, $1
-;.rotate_a
-;	rrca
-;	dec d
-;	jr nz, .rotate_a
-;	or [hl]
-;	ld [hli], a
-;	ld [hl], a
-;
-;	pop de
-;	inc de
-;	inc b
-;	ld a, b
-;	cp TILE_WIDTH * 2 + 1
-;	jr z, .done
-;	cp TILE_WIDTH + 1
-;	jr nc, .tile2
-;	ld hl, TempMPWaveform
-;	jr .loop
-;.tile2
-;	ld hl, TempMPWaveform + 1 tiles
-;	jr .loop
-;
-;.done
-;	ld hl, vTiles2 tile $40
-;	ld a, [wRenderedWaveform]
-;	swap a
-;	sla a
-;	ld l, a
-;	jr nc, .got_hl
-;	inc h
-;.got_hl
-;	lb bc, 0, 2
-;	ld de, TempMPWaveform
-;	call Request2bpp
-;	ret
 
 DrawNotes:
 	xor a ; ld a, CHAN1
