@@ -1,3 +1,11 @@
+SECTION "Roof Graphics", ROMX
+
+Roof0GFX:: INCBIN "gfx/tilesets/roofs/0.2bpp.lz"
+Roof1GFX:: INCBIN "gfx/tilesets/roofs/1.2bpp.lz"
+Roof2GFX:: INCBIN "gfx/tilesets/roofs/2.2bpp.lz"
+Roof3GFX:: INCBIN "gfx/tilesets/roofs/3.2bpp.lz"
+
+
 SECTION "Copyright Graphics", ROMX
 
 CopyrightGFX:: INCBIN "gfx/splash/copyright.2bpp"

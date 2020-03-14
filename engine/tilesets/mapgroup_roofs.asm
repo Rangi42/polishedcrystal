@@ -7,13 +7,22 @@ LoadMapGroupRoof::
 	ld a, [hl]
 	cp -1
 	ret z
-	ld hl, Roofs
-	ld bc, 9 tiles
-	rst AddNTimes
-	ld d, h
-	ld e, l
-	lb bc, BANK(Roofs), 9
-	ld hl, vTiles2 tile $0a
-	jp Get2bpp
+	ld l, a
+	ld h, 0
+	add hl, hl
+	ld bc, .Roofs
+	add hl, bc
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	ld de, vTiles2 tile $0a
+	lb bc, BANK("Roof Graphics"), 9
+	jp DecompressRequest2bpp
+
+.Roofs:
+	dw Roof0GFX
+	dw Roof1GFX
+	dw Roof2GFX
+	dw Roof3GFX
 
 INCLUDE "data/maps/roofs.asm"
