@@ -30,7 +30,6 @@ PredefPointers::
 	add_predef GetFrontpic
 	add_predef GetBackpic
 	add_predef FrontpicPredef
-	add_predef DecompressPredef
 	add_predef LoadMonAnimation
 	add_predef AnimateFrontpic
 	add_predef HOF_AnimateFrontpic

@@ -8255,7 +8255,7 @@ GetTrainerBackpic:
 .Decompress:
 	ld de, vTiles2 tile $31
 	lb bc, BANK("Trainer Backpics"), 6 * 6
-	predef_jump DecompressPredef
+	jp DecompressRequest2bpp
 
 CopyBackpic:
 	ldh a, [rSVBK]

@@ -383,30 +383,6 @@ GetPaintingPic:
 	pop af
 	jr _Decompress7x7Pic
 
-DecompressPredef:
-; Decompress lz data from b:hl to wDecompressScratch, then copy it to hROMBank:de.
-
-	ldh a, [rSVBK]
-	push af
-	ld a, 6
-	ldh [rSVBK], a
-
-	push de
-	push bc
-	ld a, b
-	ld de, wDecompressScratch
-	call FarDecompress
-	pop bc
-	ld de, wDecompressScratch
-	pop hl
-	ldh a, [hROMBank]
-	ld b, a
-	call Get2bpp
-
-	pop af
-	ldh [rSVBK], a
-	ret
-
 FixBackpicAlignment:
 	push de
 	push bc

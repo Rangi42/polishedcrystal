@@ -25,9 +25,9 @@ GetCardPic:
 	ld hl, ChrisCardPic
 	ld a, [wPlayerGender]
 	bit 0, a
-	jr z, .GotClass
+	jr z, .ok
 	ld hl, KrisCardPic
-.GotClass:
+.ok
 	ld de, vTiles2 tile $00
 	lb bc, BANK("Trainer Card Pics"), 5 * 7
 	jp DecompressRequest2bpp
@@ -41,7 +41,7 @@ GetPlayerBackpic:
 .ok
 	ld de, vTiles2 tile $31
 	lb bc, BANK("Trainer Backpics"), 6 * 6
-	predef_jump DecompressPredef
+	jp DecompressRequest2bpp
 
 HOF_LoadTrainerFrontpic:
 	call ApplyTilemapInVBlank
@@ -50,10 +50,9 @@ HOF_LoadTrainerFrontpic:
 	ld e, CHRIS
 	ld a, [wPlayerGender]
 	bit 0, a
-	jr z, .GotClass
+	jr z, .ok
 	ld e, KRIS
-
-.GotClass:
+.ok
 	ld a, e
 	ld [wTrainerClass], a
 	call GetCardPic

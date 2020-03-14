@@ -826,14 +826,12 @@ ShrinkPlayer:
 	call DelayFrames
 
 	ld hl, Shrink1Pic
-	ld b, BANK(Shrink1Pic)
 	call ShrinkFrame
 
 	ld c, 8
 	call DelayFrames
 
 	ld hl, Shrink2Pic
-	ld b, BANK(Shrink2Pic)
 	call ShrinkFrame
 
 	ld c, 8
@@ -896,8 +894,8 @@ Intro_PrepTrainerPic:
 
 ShrinkFrame:
 	ld de, vTiles2
-	ld c, $31
-	predef DecompressPredef
+	lb bc, BANK("Shrink Graphics"), $31
+	call DecompressRequest2bpp
 FinishPrepIntroPic:
 	xor a
 	ldh [hGraphicStartTile], a
