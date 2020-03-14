@@ -15,6 +15,19 @@ PackGFX::  INCBIN "gfx/pack/pack.w40.2bpp"
 PackFGFX:: INCBIN "gfx/pack/pack_f.w40.2bpp"
 
 
+SECTION "Trainer Card Pics", ROMX
+
+ChrisCardPic:: INCBIN "gfx/trainer_card/chris_card.5x7.2bpp.lz"
+KrisCardPic::  INCBIN "gfx/trainer_card/kris_card.5x7.2bpp.lz"
+
+
+SECTION "Trainer Backpics", ROMX
+
+ChrisBackpic:: INCBIN "gfx/player/chris_back.6x6.2bpp.lz"
+KrisBackpic::  INCBIN "gfx/player/kris_back.6x6.2bpp.lz"
+LyraBackpic::  INCBIN "gfx/battle/lyra_back.6x6.2bpp.lz"
+
+
 SECTION "Battle Graphics", ROMX
 
 SubstituteFrontpic:: INCBIN "gfx/battle/substitute-front.2bpp.lz"

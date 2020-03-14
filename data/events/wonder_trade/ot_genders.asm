@@ -24,13 +24,13 @@ WonderTradeOTGenders1:
 	;       Cassius, Molayne, Brock,   Misty,   Surge,   Erika,   Janine,  Sabrina
 	genders MALE,    MALE,    MALE,    FEMALE,  MALE,    FEMALE,  FEMALE,  FEMALE
 	;       Blaine,  Giovani, Lorelei, Bruno,   Agatha,  Lance,   Cissy,   Danny
-	genders MALE,    MALE,    FEMALE,  MALE,    FEMALE,  MALE,    FEMALE,  MALE,
+	genders MALE,    MALE,    FEMALE,  MALE,    FEMALE,  MALE,    FEMALE,  MALE
 	;       Rudy,    Luana,   Prima,   Falkner, Bugsy,   Whitney, Morty,   Chuck
-	genders MALE,    FEMALE,  FEMALE,  MALE,    MALE,    FEMALE,  MALE,    MALE,
+	genders MALE,    FEMALE,  FEMALE,  MALE,    MALE,    FEMALE,  MALE,    MALE
 	;       Jasmine, Pryce,   Clair,   Will,    Koga,    Karen,   Roxanne, Brawly
-	genders FEMALE,  MALE,    FEMALE,  MALE,    MALE,    FEMALE,  FEMALE,  MALE,
+	genders FEMALE,  MALE,    FEMALE,  MALE,    MALE,    FEMALE,  FEMALE,  MALE
 	;       Wattson, Flanery, Norman,  Winona,  Liza,    Tate,    Wallace, Juan
-	genders MALE,    FEMALE,  MALE,    FEMALE,  FEMALE,  MALE,    MALE,    MALE,
+	genders MALE,    FEMALE,  MALE,    FEMALE,  FEMALE,  MALE,    MALE,    MALE
 	;       Sidney,  Phoebe,  Glacia,  Drake,   Steven,  Roark,   Garden,  Maylene
 	genders MALE,    FEMALE,  FEMALE,  MALE,    MALE,    MALE,    FEMALE,  FEMALE
 	;       Wake,    Fantina, Byron,   Candice, Volkner, Aaron,   Bertha,  Flint
@@ -78,7 +78,7 @@ WonderTradeOTGenders2:
 	;       Eusine,  Cameron, Earl,    Kurt,    Ben,     Mary,    Reed,    Fern
 	genders MALE,    MALE,    MALE,    MALE,    MALE,    FEMALE,  MALE,    MALE
 	;       Lily,    Buena,   Randy,   Maximo,  Felicty, Monica,  Tuscany, Wesley
-	genders FEMALE,  FEMALE,  MALE,    MALE,    FEMALE,  FEMALE,  MALE,    MALE,
+	genders FEMALE,  FEMALE,  MALE,    MALE,    FEMALE,  FEMALE,  MALE,    MALE
 	;       Arthur,  Frieda,  Santos,  Sunny,   Naoko,   Sayo,    Zuki,    Kuni
 	genders MALE,    FEMALE,  MALE,    FEMALE,  FEMALE,  FEMALE,  FEMALE,  FEMALE
 	;       Miki,    Li,      Kiyo,    Scott,   Briney,  Stone,   Wanda,   Gabby

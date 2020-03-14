@@ -29,15 +29,8 @@ GetCardPic:
 	ld hl, KrisCardPic
 .GotClass:
 	ld de, vTiles2 tile $00
-	ld bc, $23 tiles
-	ld a, BANK(ChrisCardPic) ; BANK(KrisCardPic)
-	jp FarCopyBytes
-
-ChrisCardPic:
-INCBIN "gfx/trainer_card/chris_card.5x7.2bpp"
-
-KrisCardPic:
-INCBIN "gfx/trainer_card/kris_card.5x7.2bpp"
+	lb bc, BANK("Trainer Card Pics"), 5 * 7
+	jp DecompressRequest2bpp
 
 GetPlayerBackpic:
 	ld hl, ChrisBackpic
@@ -47,41 +40,23 @@ GetPlayerBackpic:
 	ld hl, KrisBackpic
 .ok
 	ld de, vTiles2 tile $31
-	lb bc, BANK(ChrisBackpic), 6 * 6 ; dimensions
+	lb bc, BANK("Trainer Backpics"), 6 * 6
 	predef_jump DecompressPredef
-
-ChrisBackpic:
-INCBIN "gfx/player/chris_back.6x6.2bpp.lz"
-
-KrisBackpic:
-INCBIN "gfx/player/kris_back.6x6.2bpp.lz"
-
-LyraBackpic:
-INCBIN "gfx/battle/lyra_back.6x6.2bpp.lz"
 
 HOF_LoadTrainerFrontpic:
 	call ApplyTilemapInVBlank
 	xor a
 	ldh [hBGMapMode], a
-	ld e, 0
+	ld e, CHRIS
 	ld a, [wPlayerGender]
 	bit 0, a
 	jr z, .GotClass
-	ld e, 1
+	ld e, KRIS
 
 .GotClass:
 	ld a, e
 	ld [wTrainerClass], a
-	ld de, ChrisCardPic
-	ld a, [wPlayerGender]
-	bit 0, a
-	jr z, .GotPic
-	ld de, KrisCardPic
-
-.GotPic:
-	ld hl, vTiles2
-	lb bc, BANK(ChrisCardPic), 5 * 7 ; BANK(KrisCardPic)
-	call Get2bpp
+	call GetCardPic
 	call ApplyTilemapInVBlank
 	ld a, $1
 	ldh [hBGMapMode], a

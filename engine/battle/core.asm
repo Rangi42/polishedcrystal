@@ -8235,8 +8235,6 @@ InitBattleDisplay:
 GetTrainerBackpic:
 ; Load the player character's backpic (6x6) into VRAM starting from vTiles2 tile $31.
 
-	ld b, BANK(LyraBackpic) ; BANK(ChrisBackpic), BANK(KrisBackpic)
-
 ; Special exception for Lyra.
 	ld hl, LyraBackpic
 	ld a, [wBattleType]
@@ -8256,7 +8254,7 @@ GetTrainerBackpic:
 
 .Decompress:
 	ld de, vTiles2 tile $31
-	ld c, 6 * 6
+	lb bc, BANK("Trainer Backpics"), 6 * 6
 	predef_jump DecompressPredef
 
 CopyBackpic:
