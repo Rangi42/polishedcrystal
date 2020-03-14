@@ -8,7 +8,7 @@ Roof3GFX:: INCBIN "gfx/tilesets/roofs/3.2bpp.lz"
 
 SECTION "Copyright Graphics", ROMX
 
-CopyrightGFX:: INCBIN "gfx/splash/copyright.2bpp"
+CopyrightGFX:: INCBIN "gfx/splash/copyright.2bpp.lz"
 
 
 SECTION "Shrink Graphics", ROMX
@@ -55,11 +55,10 @@ GhostFrontpic::      INCBIN "gfx/battle/ghost.2bpp.lz"
 
 SECTION "Weather Icons", ROMX
 
-WeatherIcons::
-WeatherRainIconGFX::      INCBIN "gfx/weather/rain.2bpp"
-WeatherSunIconGFX::       INCBIN "gfx/weather/sun.2bpp"
-WeatherSandstormIconGFX:: INCBIN "gfx/weather/sandstorm.2bpp"
-WeatherHailIconGFX::      INCBIN "gfx/weather/hail.2bpp"
+WeatherRainIconGFX::      INCBIN "gfx/weather/rain.2bpp.lz"
+WeatherSunIconGFX::       INCBIN "gfx/weather/sun.2bpp.lz"
+WeatherSandstormIconGFX:: INCBIN "gfx/weather/sandstorm.2bpp.lz"
+WeatherHailIconGFX::      INCBIN "gfx/weather/hail.2bpp.lz"
 
 
 SECTION "Battle Ball Icons", ROMX
