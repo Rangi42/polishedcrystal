@@ -130,15 +130,15 @@ TrainerCard_Page2_LoadGFX:
 	ld de, CardBadgesGFX
 	call TrainerCard_LoadHeaderGFX
 
-	ld de, LeaderGFX
-	ld hl, vTiles2 tile $2f
+	ld hl, LeaderGFX
+	ld de, vTiles2 tile $2f
 	lb bc, BANK(LeaderGFX), $50
-	call Request2bpp
+	call DecompressRequest2bpp
 
-	ld de, BadgeGFX
-	ld hl, vTiles0 tile $00
+	ld hl, BadgeGFX
+	ld de, vTiles0 tile $00
 	lb bc, BANK(BadgeGFX), $2c
-	call Request2bpp
+	call DecompressRequest2bpp
 
 	ld hl, TrainerCard_JohtoBadgesOAM
 	call TrainerCard_Page2_3_InitObjectsAndStrings
@@ -198,15 +198,15 @@ TrainerCard_Page3_LoadGFX:
 	ld de, CardBadgesGFX
 	call TrainerCard_LoadHeaderGFX
 
-	ld de, LeaderGFX2
-	ld hl, vTiles2 tile $2f
+	ld hl, LeaderGFX2
+	ld de, vTiles2 tile $2f
 	lb bc, BANK(LeaderGFX2), $50
-	call Request2bpp
+	call DecompressRequest2bpp
 
-	ld de, BadgeGFX2
-	ld hl, vTiles0 tile $00
+	ld hl, BadgeGFX2
+	ld de, vTiles0 tile $00
 	lb bc, BANK(BadgeGFX2), $2c
-	call Request2bpp
+	call DecompressRequest2bpp
 
 	ld hl, TrainerCard_KantoBadgesOAM
 	call TrainerCard_Page2_3_InitObjectsAndStrings
@@ -703,7 +703,7 @@ CardDividerGFX: INCBIN "gfx/trainer_card/divider.2bpp"
 CardStatusGFX:  INCBIN "gfx/trainer_card/status.2bpp" ; must come after CardDividerGFX
 CardBadgesGFX:  INCBIN "gfx/trainer_card/badges.2bpp"
 
-LeaderGFX:  INCBIN "gfx/trainer_card/johto_leaders.w40.2bpp"
-LeaderGFX2: INCBIN "gfx/trainer_card/kanto_leaders.w40.2bpp"
-BadgeGFX:   INCBIN "gfx/trainer_card/johto_badges.w16.2bpp"
-BadgeGFX2:  INCBIN "gfx/trainer_card/kanto_badges.w16.2bpp"
+LeaderGFX:  INCBIN "gfx/trainer_card/johto_leaders.w40.2bpp.lz"
+LeaderGFX2: INCBIN "gfx/trainer_card/kanto_leaders.w40.2bpp.lz"
+BadgeGFX:   INCBIN "gfx/trainer_card/johto_badges.w16.2bpp.lz"
+BadgeGFX2:  INCBIN "gfx/trainer_card/kanto_badges.w16.2bpp.lz"
