@@ -11,8 +11,18 @@ Shrink2Pic:: INCBIN "gfx/new_game/shrink2.2bpp.lz"
 
 SECTION "Pack Graphics", ROMX
 
-PackGFX::  INCBIN "gfx/pack/pack.w40.2bpp"
-PackFGFX:: INCBIN "gfx/pack/pack_f.w40.2bpp"
+PackM0GFX:: INCBIN "gfx/pack/pack_m0.2bpp.lz"
+PackM1GFX:: INCBIN "gfx/pack/pack_m1.2bpp.lz"
+PackM2GFX:: INCBIN "gfx/pack/pack_m2.2bpp.lz"
+PackM3GFX:: INCBIN "gfx/pack/pack_m3.2bpp.lz"
+PackM4GFX:: INCBIN "gfx/pack/pack_m4.2bpp.lz"
+PackM5GFX:: INCBIN "gfx/pack/pack_m5.2bpp.lz"
+PackF0GFX:: INCBIN "gfx/pack/pack_f0.2bpp.lz"
+PackF1GFX:: INCBIN "gfx/pack/pack_f1.2bpp.lz"
+PackF2GFX:: INCBIN "gfx/pack/pack_f2.2bpp.lz"
+PackF3GFX:: INCBIN "gfx/pack/pack_f3.2bpp.lz"
+PackF4GFX:: INCBIN "gfx/pack/pack_f4.2bpp.lz"
+PackF5GFX:: INCBIN "gfx/pack/pack_f5.2bpp.lz"
 
 
 SECTION "Trainer Card Pics", ROMX

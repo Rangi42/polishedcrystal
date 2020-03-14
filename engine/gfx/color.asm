@@ -459,24 +459,21 @@ GetEnemyFrontpicPalettePointer:
 GetPlayerOrMonPalettePointer:
 	and a
 	jr nz, GetMonNormalOrShinyPalettePointer
-	ld a, [wPlayerSpriteSetupFlags]
-	bit 2, a ; transformed to male
-	jr nz, .male
-	ld a, [wPlayerGender]
-	and a
-	jr z, .male
+
+	ld hl, Lyra1Palette
 	ld a, [wBattleType]
 	cp BATTLETYPE_TUTORIAL
-	jr z, .lyra
+	ret z
+
+	ld hl, ChrisPalette
+	ld a, [wPlayerSpriteSetupFlags]
+	bit 2, a ; transformed to male
+	ret nz
+	ld a, [wPlayerGender]
+	and a
+	ret z
+
 	ld hl, KrisPalette
-	ret
-
-.male
-	ld hl, wPlayerPalette
-	ret
-
-.lyra
-	ld hl, Lyra1Palette
 	ret
 
 GetFrontpicPalettePointer:

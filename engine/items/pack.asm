@@ -1319,29 +1319,42 @@ DrawPackGFX:
 	jr nz, .loop
 
 	; place pack gfx
-	pop af
-	ld d, a
-	ld bc, 25 tiles
-	ld hl, PackGFX
-	ld e, BANK(PackGFX)
+	ld bc, .FemaleGFX
 	ld a, [wBattleType]
 	cp BATTLETYPE_TUTORIAL
-	jr z, .female
+	jr z, .got_pointers
 	ld a, [wPlayerGender]
 	rrca
-	jr nc, .male
-.female
-	ld hl, PackFGFX
-	ld e, BANK(PackFGFX)
-.male
-	ld a, d
-	rst AddNTimes
-	ld b, e
-	ld c, 25
-	ld d, h
-	ld e, l
-	ld hl, vTiles2 tile $27
-	jp Request2bpp
+	jr c, .got_pointers
+	ld bc, .MaleGFX
+.got_pointers
+	pop af
+	ld l, a
+	ld h, 0
+	add hl, hl
+	add hl, bc
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	ld de, vTiles2 tile $27
+	lb bc, BANK("Pack Graphics"), 25
+	jp DecompressRequest2bpp
+
+.MaleGFX:
+	dw PackM0GFX
+	dw PackM1GFX
+	dw PackM2GFX
+	dw PackM3GFX
+	dw PackM4GFX
+	dw PackM5GFX
+
+.FemaleGFX:
+	dw PackF0GFX
+	dw PackF1GFX
+	dw PackF2GFX
+	dw PackF3GFX
+	dw PackF4GFX
+	dw PackF5GFX
 
 Pack_InterpretJoypad:
 	ld hl, wMenuJoypad
