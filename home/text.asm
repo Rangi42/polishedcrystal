@@ -201,31 +201,31 @@ ENDM
 	dict "<TARGET>", PlaceMoveTargetsName
 	dict "<USER>",   PlaceMoveUsersName
 	dict "<ENEMY>",  PlaceEnemysName
-	dict "#",        PlacePoke
-	dict "he",       PlaceHe
-	dict "le",       PlaceLe
-	dict "ng",       PlaceNg
-	dict "te",       PlaceTe
-	dict "as",       PlaceAs
-	dict "or",       PlaceOr
-	dict "ou",       PlaceOu
-	dict "re",       PlaceRe
-	dict "in",       PlaceIn
-	dict "er",       PlaceEr
-	dict "on",       PlaceOn
-	dict "th",       PlaceTh
-	dict "and",      PlaceAnd
-	dict "the",      PlaceThe
-	dict "you",      PlaceYou
-	dict "#mon",     PlacePokemon
-	dict "to",       PlaceTo
-	dict "ent",      PlaceEnt
-	dict "have",     PlaceHave
-	dict "that",     PlaceThat
-	dict "for",      PlaceFor
-	dict "with",     PlaceWith
-	dict "an",       PlaceAn
-	dict "ing",      PlaceIng
+	dict "#",    PlacePoke
+	dict "he",   PlaceHe
+	dict "le",   PlaceLe
+	dict "ng",   PlaceNg
+	dict "te",   PlaceTe
+	dict "as",   PlaceAs
+	dict "or",   PlaceOr
+	dict "ou",   PlaceOu
+	dict "re",   PlaceRe
+	dict "in",   PlaceIn
+	dict "er",   PlaceEr
+	dict "on",   PlaceOn
+	dict "th",   PlaceTh
+	dict "and",  PlaceAnd
+	dict "the",  PlaceThe
+	dict "you",  PlaceYou
+	dict "#mon", PlacePokemon
+	dict "to",   PlaceTo
+	dict "ent",  PlaceEnt
+	dict "have", PlaceHave
+	dict "that", PlaceThat
+	dict "for",  PlaceFor
+	dict "with", PlaceWith
+	dict "an",   PlaceAn
+	dict "ing",  PlaceIng
 	dict2 "¯", " "
 
 .notDict
@@ -292,8 +292,7 @@ PlaceYou: print_name .YouText
 .YouText: rawchar "you@"
 
 PlacePokemon: print_name .PokemonText
-	; no rawchar?
-.PokemonText: db "Pokémon@"
+.PokemonText: rawchar "Pokémon@"
 
 PlaceTo: print_name .ToText
 .ToText: rawchar "to@"
@@ -322,12 +321,12 @@ PlaceIng: print_name .IngText
 PlaceMoveTargetsName::
 	ldh a, [hBattleTurn]
 	xor 1
-	jr PlaceMoveTargetsName_5A
+	jr _PlaceBattleNickname
 
 PlaceMoveUsersName::
 	ldh a, [hBattleTurn]
 
-PlaceMoveTargetsName_5A:
+_PlaceBattleNickname:
 	push de
 	and a
 	jr nz, .enemy
@@ -344,7 +343,9 @@ PlaceMoveTargetsName_5A:
 	jr PlaceCommandCharacter
 
 .EnemyText:
-	db "Foe @"
+	db "Foe" ; no @
+SpaceText:
+	db " @"
 
 PlaceEnemysName::
 	push de
@@ -357,7 +358,7 @@ PlaceEnemysName::
 	rst PlaceString
 	ld h, b
 	ld l, c
-	ld de, .SpaceText
+	ld de, SpaceText
 	rst PlaceString
 	push bc
 	farcall Battle_GetTrainerName
@@ -367,10 +368,7 @@ PlaceEnemysName::
 
 .linkbattle:
 	ld de, wOTClassName
-	jr PlaceCommandCharacter
-
-.SpaceText:
-	db " @"
+	; fallthrough
 
 PlaceCommandCharacter::
 	rst PlaceString
@@ -882,14 +880,12 @@ Text_PlaySound::
 	cp b
 	jr z, .play
 	inc hl
-	inc hl
 	jr .loop
 
 .play
 	push de
 	ld e, [hl]
-	inc hl
-	ld d, [hl]
+	ld d, 0
 	call PlaySFX
 	call WaitSFX
 	pop de
@@ -900,13 +896,13 @@ Text_PlaySound::
 	ret
 
 TextSFX::
-	dbw "<DEX2>",   SFX_DEX_FANFARE_50_79
-	dbw "<BEEP>",   SFX_FANFARE
-	dbw "<DEX1>",   SFX_DEX_FANFARE_20_49
-	dbw "<ITEM>",   SFX_ITEM
-	dbw "<CAUGHT>", SFX_CAUGHT_MON
-	dbw "<DEX3>",   SFX_DEX_FANFARE_80_109
-	dbw "<SLOTS>",  SFX_SLOT_MACHINE_START
+	db "<DEX2>",   SFX_DEX_FANFARE_50_79
+	db "<BEEP>",   SFX_FANFARE
+	db "<DEX1>",   SFX_DEX_FANFARE_20_49
+	db "<ITEM>",   SFX_ITEM
+	db "<CAUGHT>", SFX_CAUGHT_MON
+	db "<DEX3>",   SFX_DEX_FANFARE_80_109
+	db "<SLOTS>",  SFX_SLOT_MACHINE_START
 	db -1
 
 Text_Dots::

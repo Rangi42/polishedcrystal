@@ -8456,27 +8456,27 @@ LoadWeatherIconSprite:
 	and a ; WEATHER_NONE?
 	ret z
 	dec a ; WEATHER_RAIN?
-	ld de, WeatherRainIconGFX
+	ld hl, WeatherRainIconGFX
 	lb bc, PAL_BATTLE_OB_BLUE, 4
 	jr z, .ok
 	dec a ; WEATHER_SUN?
-	ld de, WeatherSunIconGFX
+	ld hl, WeatherSunIconGFX
 	ld b, PAL_BATTLE_OB_YELLOW
 	jr z, .ok
 	dec a ; WEATHER_SANDSTORM?
-	ld de, WeatherSandstormIconGFX
+	ld hl, WeatherSandstormIconGFX
 	ld b, PAL_BATTLE_OB_BROWN
 	jr z, .ok
 	dec a ; WEATHER_HAIL?
-	ld de, WeatherHailIconGFX
+	ld hl, WeatherHailIconGFX
 	ld b, PAL_BATTLE_OB_GRAY
 	ret nz
 
 .ok
 	push bc
-	ld b, BANK(WeatherIcons) ; c == 4
-	ld hl, vTiles0 tile $00
-	call Request2bpp
+	ld b, BANK("Weather Icons") ; c == 4
+	ld de, vTiles0 tile $00
+	call DecompressRequest2bpp
 	pop bc
 	ld hl, wVirtualOAM
 	ld de, .WeatherIconOAMData

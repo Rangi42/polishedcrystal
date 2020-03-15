@@ -151,25 +151,25 @@ Credits::
 	dec c
 	jr nz, .load_loop
 
-	ld de, CreditsBorderGFX
-	ld hl, vTiles2 tile $20
+	ld hl, CreditsBorderGFX
+	ld de, vTiles2 tile $20
 	lb bc, BANK(CreditsBorderGFX), $09
-	call Request2bpp
+	call DecompressRequest2bpp
 
-	ld de, CopyrightGFX
-	ld hl, vTiles2 tile $60
+	ld hl, CopyrightGFX
+	ld de, vTiles2 tile $60
 	lb bc, BANK(CopyrightGFX), $1d
-	call Request2bpp
+	call DecompressRequest2bpp
 
-	ld de, TheEndGFX
-	ld hl, vTiles2 tile $40
+	ld hl, TheEndGFX
+	ld de, vTiles2 tile $40
 	lb bc, BANK(TheEndGFX), $10
-	call Request2bpp
+	call DecompressRequest2bpp
 
-	ld a, $ff
-	ld [wCreditsBorderFrame], a
 	xor a
 	ld [wCreditsBorderMon], a
+	dec a ; $ff
+	ld [wCreditsBorderFrame], a
 
 	call Credits_LoadBorderGFX
 	ld e, l
@@ -932,7 +932,7 @@ Credits_TheEnd:
 	jr nz, .loop
 	ret
 
-CreditsBorderGFX:    INCBIN "gfx/credits/border.2bpp"
+CreditsBorderGFX:    INCBIN "gfx/credits/border.2bpp.lz"
 
 CreditsMonsGFX:
 CreditsPichuGFX:     INCBIN "gfx/credits/pichu.2bpp"
@@ -944,7 +944,7 @@ CreditsMunchlaxGFX:  INCBIN "gfx/credits/munchlax.2bpp"
 CreditsElekidGFX:    INCBIN "gfx/credits/elekid.2bpp"
 CreditsBellossomGFX: INCBIN "gfx/credits/bellossom.2bpp"
 
-TheEndGFX::          INCBIN "gfx/credits/theend.2bpp"
+TheEndGFX::          INCBIN "gfx/credits/theend.2bpp.lz"
 
 CreditsScript:
 

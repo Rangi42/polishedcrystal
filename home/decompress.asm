@@ -81,22 +81,18 @@ LZ_LONG_HI       EQU %00000011
 
 .Main
 	ld a, [de]
+	cp LZ_LONG
+	jr c, .short
 	cp LZ_END
 	jp z, SwapHLDE
-
-	and LZ_CMD
-
-	cp LZ_LONG
-	jr nz, .short
 
 .long
 ; The count is now 10 bits.
 
 	; Read the next 3 bits.
 	; %00011100 -> %11100000
-	ld a, [de]
 	add a
-	add a ; << 3
+	add a
 	add a
 
 ; This is our new control code.
@@ -116,6 +112,7 @@ LZ_LONG_HI       EQU %00000011
 	jr .command
 
 .short
+	and LZ_CMD
 	ldh [hBuffer], a
 
 	ld a, [de]

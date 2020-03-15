@@ -558,24 +558,21 @@ ContinueGettingMenuJoypad:
 	bit D_LEFT_F, a
 	jr nz, .d_left
 	xor a
-	ld [wMenuJoypad], a
 	jr .done
 
 .d_right
 	ld a, D_RIGHT
-	ld [wMenuJoypad], a
 	jr .done
 
 .d_left
 	ld a, D_LEFT
-	ld [wMenuJoypad], a
 	jr .done
 
 .a_button
 	ld a, A_BUTTON
-	ld [wMenuJoypad], a
 
 .done
+	ld [wMenuJoypad], a
 	call GetMenuIndexSet
 	ld a, [wMenuCursorY]
 	ld l, a
