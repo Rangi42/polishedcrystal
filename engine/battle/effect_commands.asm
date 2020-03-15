@@ -454,13 +454,11 @@ OpponentCantMove:
 CantMove:
 	ld a, BATTLE_VARS_SUBSTATUS1
 	call GetBattleVarAddr
-	res SUBSTATUS_ROLLOUT, [hl]
-
-	ld a, BATTLE_VARS_SUBSTATUS3
-	call GetBattleVarAddr
-	ld a, [hl]
-	and $ff ^ (1<<SUBSTATUS_RAMPAGE + 1<<SUBSTATUS_CHARGED)
+	ld a, ~(SUBSTATUS_RAMPAGE | SUBSTATUS_CHARGED | SUBSTATUS_ROLLOUT)
+	and [hl]
 	ld [hl], a
+
+	call EndMultihit
 
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
@@ -2742,13 +2740,8 @@ BattleCommand_postfainteffects:
 	call GetBattleVar
 	bit SUBSTATUS_IN_LOOP, a
 	jr z, .no_multi
-	ldh a, [hBattleTurn]
-	and a
-	ld hl, wPlayerRolloutCount
-	jr z, .got_multi_count
-	ld hl, wEnemyRolloutCount
-.got_multi_count
-	ld [hl], 1
+
+	call EndMultihit
 	call BattleCommand_supereffectivetext
 	call BattleCommand_endloop
 	call BattleCommand_raisesub
@@ -5119,6 +5112,24 @@ CheckPlayerHasMonToSwitchTo:
 
 .not_fainted
 	and a
+	ret
+
+EndMultihit:
+	ld a, BATTLE_VARS_SUBSTATUS3
+	call GetBattleVar
+	bit SUBSTATUS_IN_LOOP, a
+	ret z
+
+	; force this to be the last loop iteration
+	push hl
+	ld a, [hBattleTurn]
+	and a
+	ld hl, wPlayerRolloutCount
+	jr z, .got_loop_counter
+	ld hl, wEnemyRolloutCount
+.got_loop_counter
+	ld [hl], 1
+	pop hl
 	ret
 
 BattleCommand_endloop:
