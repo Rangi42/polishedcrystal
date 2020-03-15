@@ -40,7 +40,7 @@ def main():
 		hits = [0] * pixels_per_bank
 		data = r.bank_data['ROM Bank'].get(bank, default_bank_data)
 		for s in data['sections']:
-			if s['beg'] >= s['end']:
+			if s['beg'] > s['end']:
 				continue
 			beg = s['beg'] & bank_mask
 			end = s['end'] & bank_mask
