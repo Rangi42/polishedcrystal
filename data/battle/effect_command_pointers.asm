@@ -32,10 +32,10 @@ BattleCommandPointers:
 	command damagevariation
 	command checkhit
 	command lowersub
-	command hittargetnosub
+	command moveanimnosub
 	command raisesub
 	command failuretext
-	command checkfaint
+	command applydamage
 	command criticaltext
 	command supereffectivetext
 	command postfainteffects
@@ -133,7 +133,7 @@ BattleCommandPointers:
 	command lowersubnoanim
 	command clearmissdamage
 	command movedelay
-	command hittarget
+	command moveanim
 	command tristatuschance
 	command startloop
 	command curl

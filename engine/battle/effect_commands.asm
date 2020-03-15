@@ -2045,12 +2045,12 @@ BattleCommand_lowersub:
 	ld [wSomeoneIsRampaging], a
 	ret
 
-BattleCommand_hittarget:
+BattleCommand_moveanim:
 	call BattleCommand_lowersub
-	call BattleCommand_hittargetnosub
+	call BattleCommand_moveanimnosub
 	jp BattleCommand_raisesub
 
-BattleCommand_hittargetnosub:
+BattleCommand_moveanimnosub:
 	ld a, [wAttackMissed]
 	and a
 	jp nz, BattleCommand_movedelay
@@ -2274,7 +2274,7 @@ BattleCommand_failuretext:
 	call AppearUserRaiseSub
 	jp EndMoveEffect
 
-BattleCommand_checkfaint:
+BattleCommand_applydamage:
 ; b is set to an endure flag as follows:
 ; 0 - Nothing
 ; 1 - Endure (the move)
