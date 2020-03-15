@@ -428,9 +428,9 @@ MetalClaw:
 	checkfaint
 	criticaltext
 	supereffectivetext
+	raisestathit ATTACK
 	postfainteffects
 	posthiteffects
-	raisestathit ATTACK
 	endmove
 
 DefenseUpHit:
@@ -451,9 +451,9 @@ SteelWing:
 	checkfaint
 	criticaltext
 	supereffectivetext
+	raisestathit DEFENSE
 	postfainteffects
 	posthiteffects
-	raisestathit DEFENSE
 	endmove
 
 AllUpHit:
@@ -474,13 +474,13 @@ Ancientpower:
 	checkfaint
 	criticaltext
 	supereffectivetext
-	postfainteffects
-	posthiteffects
 	raisestathit ATTACK
 	raisestathit DEFENSE
 	raisestathit SPEED
 	raisestathit SP_ATTACK
 	raisestathit SP_DEFENSE
+	postfainteffects
+	posthiteffects
 	endmove
 
 AttackDownHit:
@@ -1925,10 +1925,10 @@ RapidSpin:
 	checkfaint
 	criticaltext
 	supereffectivetext
+	raisestathit SPEED
 	clearhazards
 	postfainteffects
 	posthiteffects
-	raisestathit SPEED
 	endmove
 
 HealingLight:
