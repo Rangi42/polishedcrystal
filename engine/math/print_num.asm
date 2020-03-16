@@ -81,12 +81,14 @@ endr
 	ld b, a
 _DoPrintNum::
 	ld c, 8
+	push de
 	ld de, hPrintNum
 .loop3
 	ld a, [de]
 	call PrintHLNum
 	dec c
 	jr nz, .loop3
+	pop de
 	pop bc
 	ret
 
