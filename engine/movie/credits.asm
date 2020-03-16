@@ -853,70 +853,78 @@ Credits_LoadBorderGFX:
 	ret
 
 .Frames:
-	dw CreditsPichuGFX
-	dw CreditsPichuGFX     + 16 tiles
-	dw CreditsPichuGFX     + 32 tiles
-	dw CreditsPichuGFX     + 48 tiles
-	dw CreditsPichuGFX
-	dw CreditsPichuGFX     + 16 tiles
-	dw CreditsPichuGFX     + 32 tiles
-	dw CreditsPichuGFX     + 48 tiles
-	dw CreditsSentretGFX
-	dw CreditsSentretGFX
-	dw CreditsSentretGFX   + 16 tiles
-	dw CreditsSentretGFX   + 16 tiles
-	dw CreditsSentretGFX   + 32 tiles
-	dw CreditsSentretGFX   + 32 tiles
-	dw CreditsSentretGFX   + 48 tiles
-	dw CreditsSentretGFX   + 48 tiles
-	dw CreditsDittoGFX
-	dw CreditsDittoGFX     + 16 tiles
-	dw CreditsDittoGFX     + 32 tiles
-	dw CreditsDittoGFX     + 48 tiles
-	dw CreditsDittoGFX
-	dw CreditsDittoGFX     + 16 tiles
-	dw CreditsDittoGFX     + 32 tiles
-	dw CreditsDittoGFX     + 48 tiles
-	dw CreditsTogepiGFX
-	dw CreditsTogepiGFX
-	dw CreditsTogepiGFX    + 16 tiles
-	dw CreditsTogepiGFX    + 16 tiles
-	dw CreditsTogepiGFX    + 32 tiles
-	dw CreditsTogepiGFX    + 32 tiles
-	dw CreditsTogepiGFX    + 48 tiles
-	dw CreditsTogepiGFX    + 48 tiles
-	dw CreditsSmoochumGFX
-	dw CreditsSmoochumGFX  + 16 tiles
-	dw CreditsSmoochumGFX  + 32 tiles
-	dw CreditsSmoochumGFX  + 48 tiles
-	dw CreditsSmoochumGFX
-	dw CreditsSmoochumGFX  + 16 tiles
-	dw CreditsSmoochumGFX  + 32 tiles
-	dw CreditsSmoochumGFX  + 48 tiles
-	dw CreditsMunchlaxGFX
-	dw CreditsMunchlaxGFX
-	dw CreditsMunchlaxGFX  + 16 tiles
-	dw CreditsMunchlaxGFX  + 16 tiles
-	dw CreditsMunchlaxGFX  + 32 tiles
-	dw CreditsMunchlaxGFX  + 32 tiles
-	dw CreditsMunchlaxGFX  + 48 tiles
-	dw CreditsMunchlaxGFX  + 48 tiles
-	dw CreditsElekidGFX
-	dw CreditsElekidGFX
-	dw CreditsElekidGFX    + 16 tiles
-	dw CreditsElekidGFX    + 16 tiles
-	dw CreditsElekidGFX    + 32 tiles
-	dw CreditsElekidGFX    + 32 tiles
-	dw CreditsElekidGFX    + 48 tiles
-	dw CreditsElekidGFX    + 48 tiles
-	dw CreditsBellossomGFX
-	dw CreditsBellossomGFX
-	dw CreditsBellossomGFX + 16 tiles
-	dw CreditsBellossomGFX + 16 tiles
-	dw CreditsBellossomGFX + 32 tiles
-	dw CreditsBellossomGFX + 32 tiles
-	dw CreditsBellossomGFX + 48 tiles
-	dw CreditsBellossomGFX + 48 tiles
+; Pichu
+	dw CreditsPichu1GFX
+	dw CreditsPichu2GFX
+	dw CreditsPichu3GFX
+	dw CreditsPichu4GFX
+	dw CreditsPichu1GFX
+	dw CreditsPichu2GFX
+	dw CreditsPichu3GFX
+	dw CreditsPichu4GFX
+; Sentret
+	dw CreditsSentret1GFX
+	dw CreditsSentret1GFX
+	dw CreditsSentret2GFX
+	dw CreditsSentret2GFX
+	dw CreditsSentret3GFX
+	dw CreditsSentret3GFX
+	dw CreditsSentret4GFX
+	dw CreditsSentret4GFX
+; Ditto
+	dw CreditsDitto1GFX
+	dw CreditsDitto2GFX
+	dw CreditsDitto3GFX
+	dw CreditsDitto4GFX
+	dw CreditsDitto1GFX
+	dw CreditsDitto2GFX
+	dw CreditsDitto3GFX
+	dw CreditsDitto4GFX
+; Togepi
+	dw CreditsTogepi1GFX
+	dw CreditsTogepi1GFX
+	dw CreditsTogepi2GFX
+	dw CreditsTogepi2GFX
+	dw CreditsTogepi3GFX
+	dw CreditsTogepi3GFX
+	dw CreditsTogepi4GFX
+	dw CreditsTogepi4GFX
+; Smoochum
+	dw CreditsSmoochum1GFX
+	dw CreditsSmoochum2GFX
+	dw CreditsSmoochum3GFX
+	dw CreditsSmoochum4GFX
+	dw CreditsSmoochum1GFX
+	dw CreditsSmoochum2GFX
+	dw CreditsSmoochum3GFX
+	dw CreditsSmoochum4GFX
+; Munchlax
+	dw CreditsMunchlax1GFX
+	dw CreditsMunchlax1GFX
+	dw CreditsMunchlax2GFX
+	dw CreditsMunchlax2GFX
+	dw CreditsMunchlax3GFX
+	dw CreditsMunchlax3GFX
+	dw CreditsMunchlax4GFX
+	dw CreditsMunchlax4GFX
+; Elekid
+	dw CreditsElekid1GFX
+	dw CreditsElekid1GFX
+	dw CreditsElekid2GFX
+	dw CreditsElekid2GFX
+	dw CreditsElekid3GFX
+	dw CreditsElekid3GFX
+	dw CreditsElekid4GFX
+	dw CreditsElekid4GFX
+; Bellossom
+	dw CreditsBellossom1GFX
+	dw CreditsBellossom1GFX
+	dw CreditsBellossom2GFX
+	dw CreditsBellossom2GFX
+	dw CreditsBellossom3GFX
+	dw CreditsBellossom3GFX
+	dw CreditsBellossom4GFX
+	dw CreditsBellossom4GFX
 
 Credits_TheEnd:
 	ld a, $40
@@ -932,19 +940,39 @@ Credits_TheEnd:
 	jr nz, .loop
 	ret
 
-CreditsBorderGFX:    INCBIN "gfx/credits/border.2bpp.lz"
-
 CreditsMonsGFX:
-CreditsPichuGFX:     INCBIN "gfx/credits/pichu.2bpp"
-CreditsSentretGFX:   INCBIN "gfx/credits/sentret.2bpp"
-CreditsDittoGFX:     INCBIN "gfx/credits/ditto.2bpp"
-CreditsTogepiGFX:    INCBIN "gfx/credits/togepi.2bpp"
-CreditsSmoochumGFX:  INCBIN "gfx/credits/smoochum.2bpp"
-CreditsMunchlaxGFX:  INCBIN "gfx/credits/munchlax.2bpp"
-CreditsElekidGFX:    INCBIN "gfx/credits/elekid.2bpp"
-CreditsBellossomGFX: INCBIN "gfx/credits/bellossom.2bpp"
-
-TheEndGFX::          INCBIN "gfx/credits/theend.2bpp.lz"
+CreditsPichu1GFX:     INCBIN "gfx/credits/pichu1.2bpp"
+CreditsPichu2GFX:
+CreditsPichu4GFX:     INCBIN "gfx/credits/pichu2_4.2bpp"
+CreditsPichu3GFX:     INCBIN "gfx/credits/pichu1.2bpp"
+CreditsSentret1GFX:   INCBIN "gfx/credits/sentret1.2bpp"
+CreditsSentret2GFX:   INCBIN "gfx/credits/sentret2.2bpp"
+CreditsSentret3GFX:   INCBIN "gfx/credits/sentret3.2bpp"
+CreditsSentret4GFX:   INCBIN "gfx/credits/sentret4.2bpp"
+CreditsDitto1GFX:     INCBIN "gfx/credits/ditto1.2bpp"
+CreditsDitto2GFX:     INCBIN "gfx/credits/ditto2.2bpp"
+CreditsDitto3GFX:     INCBIN "gfx/credits/ditto3.2bpp"
+CreditsDitto4GFX:     INCBIN "gfx/credits/ditto4.2bpp"
+CreditsTogepi1GFX:
+CreditsTogepi3GFX:    INCBIN "gfx/credits/togepi1_3.2bpp"
+CreditsTogepi2GFX:    INCBIN "gfx/credits/togepi2.2bpp"
+CreditsTogepi4GFX:    INCBIN "gfx/credits/togepi4.2bpp"
+CreditsSmoochum1GFX:
+CreditsSmoochum3GFX:  INCBIN "gfx/credits/smoochum1_3.2bpp"
+CreditsSmoochum2GFX:  INCBIN "gfx/credits/smoochum2.2bpp"
+CreditsSmoochum4GFX:  INCBIN "gfx/credits/smoochum4.2bpp"
+CreditsMunchlax1GFX:
+CreditsMunchlax3GFX:  INCBIN "gfx/credits/munchlax1_3.2bpp"
+CreditsMunchlax2GFX:  INCBIN "gfx/credits/munchlax2.2bpp"
+CreditsMunchlax4GFX:  INCBIN "gfx/credits/munchlax4.2bpp"
+CreditsElekid1GFX:
+CreditsElekid3GFX:    INCBIN "gfx/credits/elekid1_3.2bpp"
+CreditsElekid2GFX:    INCBIN "gfx/credits/elekid2.2bpp"
+CreditsElekid4GFX:    INCBIN "gfx/credits/elekid4.2bpp"
+CreditsBellossom1GFX: INCBIN "gfx/credits/bellossom1.2bpp"
+CreditsBellossom2GFX:
+CreditsBellossom4GFX: INCBIN "gfx/credits/bellossom2_4.2bpp"
+CreditsBellossom3GFX: INCBIN "gfx/credits/bellossom3.2bpp"
 
 CreditsScript:
 
