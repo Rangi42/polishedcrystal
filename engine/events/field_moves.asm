@@ -15,10 +15,10 @@ ShakeHeadbuttTree:
 	ld hl, vTiles1
 	lb bc, BANK(CutGrassGFX), 4
 	call Request2bpp
-	ld de, HeadbuttTreeGFX
-	ld hl, vTiles1 tile $04
+	ld hl, HeadbuttTreeGFX
+	ld de, vTiles1 tile $04
 	lb bc, BANK(HeadbuttTreeGFX), 8
-	call Request2bpp
+	call DecompressRequest2bpp
 	call Cut_Headbutt_GetPixelFacing
 	ld a, SPRITE_ANIM_INDEX_HEADBUTT
 	call _InitSpriteAnimStruct
@@ -60,7 +60,7 @@ ShakeHeadbuttTree:
 	jp ReplaceKrisSprite
 
 HeadbuttTreeGFX:
-INCBIN "gfx/overworld/headbutt_tree.2bpp"
+INCBIN "gfx/overworld/headbutt_tree.2bpp.lz"
 
 HideHeadbuttTree:
 	xor a

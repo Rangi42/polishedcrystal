@@ -11,15 +11,8 @@ ReadAnyMail:
 	call ClearSprites
 	call ClearTileMap
 	call DisableLCD
+	call LoadStandardFont
 	call LoadFontsExtra
-	pop de
-	push de
-	farcall LoadStandardFontPointer
-	ld d, h
-	ld e, l
-	ld hl, vTiles1
-	lb bc, BANK(FontNormal), $80
-	call Get1bpp
 	pop de
 	call .LoadGFX
 	call EnableLCD

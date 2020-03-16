@@ -1,8 +1,8 @@
 NAMINGSCREEN_BORDER EQU $60
 NAMINGSCREEN_CURSOR EQU $7e
 
-NAMINGSCREEN_MIDDLELINE EQU "↑"
-NAMINGSCREEN_UNDERLINE  EQU "↓"
+NAMINGSCREEN_MIDDLELINE EQU "′"
+NAMINGSCREEN_UNDERLINE  EQU "″"
 
 _NamingScreen:
 	call DisableSpriteUpdates
@@ -849,11 +849,10 @@ _ComposeMailMessage: ; 11e75 (mail?)
 	call ClearBGPalettes
 	call DisableLCD
 	call LoadNamingScreenGFX
-	ld de, vTiles0 tile $00
 	ld hl, .MailIcon
-	ld bc, 8 tiles
-	ld a, BANK(.MailIcon)
-	call FarCopyBytes
+	ld de, vTiles0 tile $00
+	lb bc, BANK(.MailIcon), 8
+	call DecompressRequest2bpp
 	xor a
 	ld hl, wSpriteAnimDict
 	ld [hli], a
@@ -890,7 +889,7 @@ _ComposeMailMessage: ; 11e75 (mail?)
 	ret
 
 .MailIcon:
-INCBIN "gfx/icons/mail2.2bpp"
+INCBIN "gfx/icons/mail2.2bpp.lz"
 
 .initwNamingScreenMaxNameLength
 	ld a, MAIL_MSG_LENGTH + 1
