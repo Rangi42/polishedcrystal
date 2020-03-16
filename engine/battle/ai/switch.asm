@@ -115,15 +115,16 @@ AICheckMatchupForEnemyMon:
 ; Scoring is +1 for SE, -1 for NVE, -2 for ineffective for enemy vs player, and vice versa.
 ; Lack of offensive moves count as neutral.
 ; Input is hl (enemy mon moves), bc (enemy mon types). Assumes wEnemyAbility is set
-	; Save old move data/turn
+
+	; Save move data
 	ld a, [wCurPlayerMove]
 	ld d, a
 	ld a, [wCurEnemyMove]
 	ld e, a
 	push de
-	ld a, [hBattleTurn]
-	ld d, a
 	ld a, [wCurMoveNum]
+	ld d, a
+	ld a, [wCurEnemyMoveNum]
 	ld e, a
 	push de
 
@@ -183,14 +184,15 @@ AICheckMatchupForEnemyMon:
 	; Reset move data
 	pop de
 	ld a, d
-	ld [hBattleTurn], a
-	ld a, e
 	ld [wCurMoveNum], a
+	ld a, e
+	ld [wCurEnemyMoveNum], a
 	pop de
 	ld a, d
 	ld [wCurPlayerMove], a
 	ld a, e
 	ld [wCurEnemyMove], a
+
 	push bc
 	call SetPlayerTurn
 	call UpdateMoveData
