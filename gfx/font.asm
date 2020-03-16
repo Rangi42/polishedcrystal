@@ -31,7 +31,7 @@ BattleExtrasGFX:
 INCBIN "gfx/battle/hpexpbars.2bpp"
 
 GFX_Stats:
-INCBIN "gfx/stats/stats.2bpp"
+INCBIN "gfx/stats/stats.2bpp.lz"
 
 StatusIconGFX:
 INCBIN "gfx/battle/status.2bpp"

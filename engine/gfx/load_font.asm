@@ -118,7 +118,7 @@ LoadStatsScreenGFX:
 	call _LoadFontsBattleExtra
 
 LoadStatsGFX:
-	ld de, GFX_Stats
-	ld hl, vTiles2 tile $31
+	ld hl, GFX_Stats
+	ld de, vTiles2 tile $31
 	lb bc, BANK(GFX_Stats), 15
-	jp Get2bpp
+	jp DecompressRequest2bpp

@@ -42,9 +42,8 @@ TrainerCard:
 
 	ld hl, CardBorderGFX
 	ld de, vTiles1 tile (TRAINERCARD_BORDERGFX_START - $80)
-	ld bc, 12 tiles
-	ld a, BANK(CardBorderGFX)
-	call FarCopyBytes
+	lb bc, BANK(CardBorderGFX), 12
+	call DecompressRequest2bpp
 
 	ld hl, CardDividerGFX
 	ld de, vTiles2 tile $23
@@ -698,7 +697,7 @@ TrainerCard_KantoBadgesOAM:
 	db $1c, $20, $24, $20 | $80
 	db $1c | $80, $20, $24, $20 | $80
 
-CardBorderGFX:  INCBIN "gfx/trainer_card/border.2bpp"
+CardBorderGFX:  INCBIN "gfx/trainer_card/border.2bpp.lz"
 CardDividerGFX: INCBIN "gfx/trainer_card/divider.2bpp"
 CardStatusGFX:  INCBIN "gfx/trainer_card/status.2bpp" ; must come after CardDividerGFX
 CardBadgesGFX:  INCBIN "gfx/trainer_card/badges.2bpp"
