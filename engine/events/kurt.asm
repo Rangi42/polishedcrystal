@@ -122,14 +122,15 @@ Kurt_SelectQuantity:
 	ld [wItemQuantityChangeBuffer], a
 	ld hl, .MenuDataHeader
 	call LoadMenuDataHeader
+	call MenuBox
+	call ApplyTilemap
 .loop
-	xor a
+	ld a, 1
 	ldh [hBGMapMode], a
 	call MenuBox
-	call UpdateSprites
 	call .PlaceApricornName
-	call PlaceApricornQuantity
-	call ApplyTilemap
+	call .PlaceApricornQuantity
+	call UpdateSprites
 	farcall BuySellToss_InterpretJoypad
 	ld b, a
 	jr nc, .loop
@@ -159,7 +160,7 @@ Kurt_SelectQuantity:
 	call GetApricornName
 	jp _PlaceString
 
-PlaceApricornQuantity:
+.PlaceApricornQuantity:
 	call MenuBoxCoord2Tile
 	ld de, 2 * SCREEN_WIDTH + 10
 	add hl, de
