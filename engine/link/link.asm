@@ -754,6 +754,8 @@ LinkTradeOTPartymonMenuLoop:
 	ld [wNamedObjectTypeBuffer], a
 	ld hl, wOTPartyMon1Species
 	call LinkMonStatsScreen
+	call InitLinkTradePalMap
+	call ApplyAttrAndTilemapInVBlank
 	jp LinkTradePartiesMenuMasterLoop
 
 .not_a_button
@@ -1112,7 +1114,7 @@ Function28926:
 	ld de, wPartyMonOT
 	ld a, PARTY_OT_NAME
 	ld [wNamedObjectTypeBuffer], a
-	farcall LinkMonStatsScreen
+	call LinkMonStatsScreen
 	call Call_LoadTempTileMapToTileMap
 	hlcoord 6, 1
 	lb bc, 6, 1
@@ -1814,13 +1816,13 @@ Function16d6ce:
 	db "Waiting…!@"
 
 LoadTradeScreenGFX:
-	ld de, TradeScreenGFX
-	ld hl, vTiles2
+	ld hl, TradeScreenGFX
+	ld de, vTiles2
 	lb bc, BANK(TradeScreenGFX), 70
-	jp Get2bpp
+	jp DecompressRequest2bpp
 
 TradeScreenGFX:
-INCBIN "gfx/link_trade/border.2bpp"
+INCBIN "gfx/link_trade/border.2bpp.lz"
 
 SetTradeRoomBGPals:
 	farcall LoadLinkTradePalette

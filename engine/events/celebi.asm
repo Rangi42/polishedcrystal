@@ -6,14 +6,14 @@ Special_CelebiShrineEvent:
 	ld [wVramState], a
 
 	farcall ClearSpriteAnims
-	ld de, SpecialCelebiLeafGFX
+	ld de, CutGrassGFX
 	ld hl, vTiles1
-	lb bc, BANK(SpecialCelebiLeafGFX), 4
+	lb bc, BANK(CutGrassGFX), 4
 	call Request2bpp
-	ld de, SpecialCelebiGFX
-	ld hl, vTiles0 tile $84
-	lb bc, BANK(SpecialCelebiGFX), $10
-	call Request2bpp
+	ld hl, SpecialCelebiGFX
+	ld de, vTiles0 tile $84
+	lb bc, BANK(SpecialCelebiGFX), 4 * 4
+	call DecompressRequest2bpp
 	xor a
 	ld [wJumptableIndex], a
 
@@ -88,14 +88,8 @@ CelebiEvent_CountDown:
 	set 7, [hl]
 	ret
 
-SpecialCelebiLeafGFX:
-INCBIN "gfx/overworld/celebi/leaf.2bpp"
-
 SpecialCelebiGFX:
-INCBIN "gfx/overworld/celebi/1.2bpp"
-INCBIN "gfx/overworld/celebi/2.2bpp"
-INCBIN "gfx/overworld/celebi/3.2bpp"
-INCBIN "gfx/overworld/celebi/4.2bpp"
+INCBIN "gfx/overworld/celebi.2bpp.lz"
 
 UpdateCelebiPosition:
 	ld hl, SPRITEANIMSTRUCT_XOFFSET
@@ -208,7 +202,8 @@ GetCelebiSpriteTile:
 	jr z, .Frame4
 	cp 12
 	jr c, .done
-	jr .restart
+	ld d, $ff
+	jr .done
 
 .Frame1:
 	ld a, $84
@@ -229,13 +224,7 @@ GetCelebiSpriteTile:
 	ld hl, SPRITEANIMSTRUCT_TILE_ID
 	add hl, bc
 	ld [hl], a
-	jr .done
-
-.restart
-	ld d, $ff
-
 .done
-	pop de
 	pop bc
 	pop hl
 	ret

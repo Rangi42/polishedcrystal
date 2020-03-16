@@ -107,12 +107,14 @@ Pokegear_LoadGFX:
 	ld a, [wMapNumber]
 	ld c, a
 	call GetWorldMapLocation
+	ld hl, FastShipGFX
 	cp FAST_SHIP
-	jr z, .ssaqua
+	jr z, .load_alt_sprite
+	ld hl, SinjohRuinsArrowGFX
 	cp SINJOH_RUINS
-	jr z, .sinjoh
+	jr z, .load_alt_sprite
 	cp MYSTRI_STAGE
-	jr z, .sinjoh
+	jr z, .load_alt_sprite
 	farcall GetPlayerIcon
 	ldh a, [rSVBK]
 	push af
@@ -139,23 +141,16 @@ Pokegear_LoadGFX:
 	ldh [rSVBK], a
 	ret
 
-.ssaqua
-	ld hl, FastShipGFX
-.loadaltsprite
+.load_alt_sprite
 	ld de, vTiles0 tile $10
-	ld bc, 8 tiles
-	rst CopyBytes
-	ret
-
-.sinjoh
-	ld hl, SinjohRuinsArrowGFX
-	jr .loadaltsprite
+	ld a, BANK(FastShipGFX) ; aka BANK(SinjohRuinsArrowGFX)
+	jp Decompress
 
 FastShipGFX:
-INCBIN "gfx/town_map/fast_ship.2bpp"
+INCBIN "gfx/town_map/fast_ship.2bpp.lz"
 
 SinjohRuinsArrowGFX:
-INCBIN "gfx/pokegear/arrow.2bpp"
+INCBIN "gfx/town_map/arrow.2bpp.lz"
 
 InitPokegearModeIndicatorArrow:
 	depixel 4, 2, 4, 0
