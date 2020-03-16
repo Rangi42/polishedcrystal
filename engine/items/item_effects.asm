@@ -1813,7 +1813,7 @@ PrintAprValues:
 	lb bc, 1, 2
 	hlcoord 10, 4
 	ld de, wApricorns
-	call PrintNum
+	call .print
 	hlcoord 16, 4
 	call .print
 	hlcoord 10, 6
@@ -1826,8 +1826,11 @@ PrintAprValues:
 	call .print
 	hlcoord 10, 10
 .print
+	push de
+	call PrintNum
+	pop de
 	inc de
-	jp PrintNum
+	ret
 
 OldRod:
 	ld e, $0
