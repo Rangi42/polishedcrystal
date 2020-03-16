@@ -162,12 +162,7 @@ RunTradeAnimSequence:
 	call Decompress
 	ld hl, TradeArrowGFX
 	ld de, vTiles1 tile (TRADEANIM_RIGHT_ARROW - $80)
-	ld bc, 1 tiles
-	ld a, BANK(TradeArrowGFX)
-	call FarCopyBytes
-	ld hl, TradeArrowGFX + 1 tiles
-	ld de, vTiles1 tile (TRADEANIM_LEFT_ARROW - $80)
-	ld bc, 1 tiles
+	ld bc, 2 tiles
 	ld a, BANK(TradeArrowGFX)
 	call FarCopyBytes
 	xor a
@@ -1240,18 +1235,10 @@ TradeAnim_FlashBGPals:
 
 LoadTradeBallAndCableGFX:
 	call DelayFrame
-	ld de, TradeBallGFX
-	ld hl, vTiles0 tile $62
-	lb bc, BANK(TradeBallGFX), $6
-	call Request2bpp
-	ld de, TradePoofGFX
-	ld hl, vTiles0 tile $68
-	lb bc, BANK(TradePoofGFX), $c
-	call Request2bpp
-	ld de, TradeCableGFX
-	ld hl, vTiles0 tile $74
-	lb bc, BANK(TradeCableGFX), $4
-	call Request2bpp
+	ld hl, TradeBallPoofCableGFX
+	ld de, vTiles0 tile $62
+	lb bc, BANK(TradeBallPoofCableGFX), 20
+	call DecompressRequest2bpp
 	xor a
 	ld hl, wSpriteAnimDict
 	ld [hli], a
@@ -1304,9 +1291,7 @@ TradeLinkTubeTilemap:
 	db $43, $57, $58, $54, $54, $54, $54, $54, $54, $54, $54, $54
 	db $43, $59, $5a, $43, $43, $43, $43, $43, $43, $43, $43, $43
 
-TradeArrowGFX:  INCBIN "gfx/trade/arrow.2bpp"
-TradeCableGFX:  INCBIN "gfx/trade/cable.2bpp"
+TradeArrowGFX: INCBIN "gfx/trade/arrow.2bpp"
+TradeBallPoofCableGFX:  INCBIN "gfx/trade/ball_poof_cable.2bpp.lz"
 TradeBubbleGFX: INCBIN "gfx/trade/bubble.2bpp"
 TradeGameBoyLZ: INCBIN "gfx/trade/game_boy.2bpp.lz"
-TradeBallGFX:   INCBIN "gfx/trade/ball.2bpp"
-TradePoofGFX:   INCBIN "gfx/trade/poof.2bpp"
