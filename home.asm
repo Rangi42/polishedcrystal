@@ -62,6 +62,7 @@ INCLUDE "home/audio.asm"
 INCLUDE "home/restore_music.asm"
 
 INCLUDE "data/pokemon/legendary_mons.asm"
+INCLUDE "data/maps/music.asm"
 INCLUDE "data/moves/hm_moves.asm"
 INCLUDE "data/moves/powder_moves.asm"
 INCLUDE "data/moves/sound_moves.asm"
