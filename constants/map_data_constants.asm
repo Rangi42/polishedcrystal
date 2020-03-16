@@ -53,12 +53,10 @@
 	const STORMY_BEACH_OVERCAST
 
 
-; see engine/spawn_points.asm:SpawnPoints
+; see data/maps/spawn_points.asm
 const_value = -1
 	const SPAWN_N_A
-
 	const SPAWN_HOME ; $00
-
 	const SPAWN_PALLET
 	const SPAWN_VIRIDIAN
 	const SPAWN_PEWTER
@@ -73,7 +71,6 @@ const_value = -1
 	const SPAWN_FUCHSIA
 	const SPAWN_CINNABAR
 	const SPAWN_INDIGO
-
 	const SPAWN_NEW_BARK
 	const SPAWN_CHERRYGROVE ; $10
 	const SPAWN_VIOLET
@@ -88,6 +85,37 @@ const_value = -1
 	const SPAWN_LAKE_OF_RAGE
 	const SPAWN_BLACKTHORN
 	const SPAWN_MT_SILVER
-
 	const SPAWN_FAST_SHIP
 NUM_SPAWNS EQU const_value
+
+; see data/maps/flypoints.asm
+	const_def
+	const FLY_NEW_BARK
+	const FLY_CHERRYGROVE
+	const FLY_VIOLET
+	const FLY_UNION_CAVE
+	const FLY_AZALEA
+	const FLY_GOLDENROD
+	const FLY_ECRUTEAK
+	const FLY_OLIVINE
+	const FLY_CIANWOOD
+	const FLY_YELLOW_FOREST
+	const FLY_MAHOGANY
+	const FLY_LAKE_OF_RAGE
+	const FLY_BLACKTHORN
+	const FLY_MT_SILVER
+KANTO_FLYPOINT EQU const_value
+	const FLY_PALLET
+	const FLY_VIRIDIAN
+	const FLY_PEWTER
+	const FLY_MT_MOON
+	const FLY_CERULEAN
+	const FLY_CERULEAN_CAPE
+	const FLY_VERMILION
+	const FLY_ROCK_TUNNEL
+	const FLY_LAVENDER
+	const FLY_CELADON
+	const FLY_SAFFRON
+	const FLY_FUCHSIA
+	const FLY_CINNABAR
+	const FLY_INDIGO
