@@ -120,8 +120,11 @@ AICheckMatchupForEnemyMon:
 	ld d, a
 	ld a, [wCurEnemyMove]
 	ld e, a
-	ldh a, [hBattleTurn]
-	push af
+	push de
+	ld a, [hBattleTurn]
+	ld d, a
+	ld a, [wCurMoveNum]
+	ld e, a
 	push de
 
 	; Player moves vs enemy
@@ -180,6 +183,11 @@ AICheckMatchupForEnemyMon:
 	; Reset move data
 	pop de
 	ld a, d
+	ld [hBattleTurn], a
+	ld a, e
+	ld [wCurMoveNum], a
+	pop de
+	ld a, d
 	ld [wCurPlayerMove], a
 	ld a, e
 	ld [wCurEnemyMove], a
@@ -189,11 +197,6 @@ AICheckMatchupForEnemyMon:
 	call SetEnemyTurn
 	call UpdateMoveData
 	pop bc
-
-	; Reset whose turn it is
-	pop af
-	ldh [hBattleTurn], a
-
 	ld a, b
 	ret
 
