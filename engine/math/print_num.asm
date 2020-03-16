@@ -36,9 +36,12 @@ _PrintNum::
 	ld [hli], a
 	dec c
 	jr nz, .loop
-	pop hl
+
+	; Ensure that PrintNum behaves like the old version (de=last input byte)
+	dec de
 
 	; Zero hPrintNum, moving its content to bcde
+	pop hl
 	push de
 	xor a
 	ld b, [hl]
