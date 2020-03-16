@@ -116,6 +116,10 @@ AICheckMatchupForEnemyMon:
 ; Lack of offensive moves count as neutral.
 ; Input is hl (enemy mon moves), bc (enemy mon types). Assumes wEnemyAbility is set
 
+	; Save whose turn it is
+	ldh a, [hBattleTurn]
+	push af
+
 	; Save move data
 	ld a, [wCurPlayerMove]
 	ld d, a
@@ -200,6 +204,10 @@ AICheckMatchupForEnemyMon:
 	call UpdateMoveData
 	pop bc
 	ld a, b
+
+	; Reset whose turn it is
+	pop af
+	ldh [hBattleTurn], a
 	ret
 
 .check_matchups

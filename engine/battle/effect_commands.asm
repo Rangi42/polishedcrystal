@@ -5122,7 +5122,7 @@ EndMultihit:
 
 	; force this to be the last loop iteration
 	push hl
-	ld a, [hBattleTurn]
+	ldh a, [hBattleTurn]
 	and a
 	ld hl, wPlayerRolloutCount
 	jr z, .got_loop_counter
