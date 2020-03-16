@@ -79,7 +79,6 @@ endr
 	and $e0
 	add c
 	ld b, a
-_DoPrintNum::
 	ld c, 8
 	push de
 	ld de, hPrintNum
