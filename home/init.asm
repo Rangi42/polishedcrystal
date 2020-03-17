@@ -136,6 +136,12 @@ Init::
 	ld a, CONNECTION_NOT_ESTABLISHED
 	ldh [hSerialConnectionStatus], a
 
+	ld a, $cb ; prefix
+	ldh [hBitwisePrefix], a
+	ld a, $c9 ; ret
+	ldh [hBitwiseRet], a
+	ldh [hSingleRet], a
+
 	farcall InitSGBBorder
 
 	farcall InitCGBPals

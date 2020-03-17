@@ -347,7 +347,7 @@ INCLUDE "maps/CianwoodCityPhotoStudio.asm"
 INCLUDE "maps/CianwoodLugiaSpeechHouse.asm"
 INCLUDE "maps/CianwoodPharmacy.asm"
 INCLUDE "maps/ManiasHouse.asm"
-INCLUDE "maps/StatsJudgesHouse.asm"
+INCLUDE "maps/MoveManiacsHouse.asm"
 
 
 SECTION "Yellow Forest Scripts", ROMX

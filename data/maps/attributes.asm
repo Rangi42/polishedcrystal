@@ -817,7 +817,7 @@ ENDM
 	map_attributes CianwoodPharmacy, CIANWOOD_PHARMACY, $0, 0
 	map_attributes CianwoodCityPhotoStudio, CIANWOOD_CITY_PHOTO_STUDIO, $0, 0
 	map_attributes CianwoodLugiaSpeechHouse, CIANWOOD_LUGIA_SPEECH_HOUSE, $0, 0
-	map_attributes StatsJudgesHouse, STATS_JUDGES_HOUSE, $0, 0
+	map_attributes MoveManiacsHouse, MOVE_MANIACS_HOUSE, $0, 0
 	map_attributes BattleTower1F, BATTLE_TOWER_1F, $0, 0
 	map_attributes BattleTower2F, BATTLE_TOWER_2F, $0, 0
 	map_attributes BattleTowerBattleRoom, BATTLE_TOWER_BATTLE_ROOM, $0, 0

@@ -111,6 +111,14 @@ hCurSpriteXPixel::   db
 hCurSpriteYPixel::   db
 hCurSpriteTile::     db
 hCurSpriteOAMFlags:: db
+NEXTU
+hChartValues::
+hChartHP::  db
+hChartAtk:: db
+hChartDef:: db
+hChartSpd:: db
+hChartSat:: db
+hChartSdf:: db
 ENDU
 
 hMoneyTemp:: ds 3
@@ -152,8 +160,6 @@ hSPBuffer:: dw
 hBGMapUpdate::    db
 hBGMapTileCount:: db
 
-	ds 1
-
 hMapAnims::      db
 hTileAnimFrame:: db
 
@@ -165,14 +171,15 @@ hRandomSub:: db
 
 hSecondsBackup:: db
 
+hChartScreen::
 ; 0 - player
 ; 1 - opponent trainer
 hBattleTurn:: db
 
+hBattlePalFadeMode:: db
+
 hCGBPalUpdate:: db
 hCGB::          db
-
-	ds 1
 
 hDMATransfer:: db
 
@@ -182,26 +189,36 @@ hDelayFrameLY:: db
 
 hClockResetTrigger:: db
 
-	ds 1
-
 hMPState::  db
 hMPBuffer:: db
-
-	ds 2
 
 hRequested2bpp::        db
 hRequested1bpp::        db
 hRequestedVTileDest::   dw
 hRequestedVTileSource:: dw
-
-hTmpd:: db
-hBattlePalFadeMode::
-hTmpe:: db
-
-hRequestOpaque1bpp:: db
+hRequestOpaque1bpp::    db
 
 hTimeOfDayPalOffset:: db
 
-	ds 4
+UNION
+hTmpd:: db
+hTmpe:: db
+	ds 1
+NEXTU
+hDX::  db
+hDY::  db
+hErr:: db
+ENDU
+
+	ds 2
+
+hBitwiseOperation::
+hBitwisePrefix:: db ; $cb prefix
+hBitwiseOpcode:: db ; opcode
+hBitwiseRet::    db ; $c9 ret
+
+hSingleOperation::
+hSingleOpcode:: db ; opcode
+hSingleRet::    db ; $c9 ret
 
 HRAM_END::

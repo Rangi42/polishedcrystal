@@ -853,7 +853,11 @@ wVariableSprites:: ds $100 - SPRITE_VARS
 
 wEnteredMapFromContinue:: ds 1
 
-	ds 2
+wStatusFlags3::
+	; 0 - judge machine
+	ds 1
+
+	ds 1
 
 wTimeOfDayPal:: ds 1
 	ds 4

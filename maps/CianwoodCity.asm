@@ -11,7 +11,7 @@ CianwoodCity_MapScriptHeader:
 	warp_event 15, 47, CIANWOOD_PHARMACY, 1
 	warp_event  9, 31, CIANWOOD_CITY_PHOTO_STUDIO, 1
 	warp_event 15, 37, CIANWOOD_LUGIA_SPEECH_HOUSE, 1
-	warp_event  5, 17, STATS_JUDGES_HOUSE, 1
+	warp_event  5, 17, MOVE_MANIACS_HOUSE, 1
 	warp_event  4, 25, CLIFF_EDGE_GATE, 1
 
 	db 1 ; coord events
@@ -23,7 +23,7 @@ CianwoodCity_MapScriptHeader:
 	bg_event 19, 47, SIGNPOST_JUMPTEXT, CianwoodPharmacySignText
 	bg_event  8, 32, SIGNPOST_JUMPTEXT, CianwoodPhotoStudioSignText
 	bg_event  6, 26, SIGNPOST_JUMPTEXT, CianwoodCliffEdgeGateSignText
-	bg_event  8, 22, SIGNPOST_JUMPTEXT, CianwoodStatsJudgeSignText
+	bg_event  8, 22, SIGNPOST_JUMPTEXT, CianwoodMoveManiacSignText
 	bg_event  4, 19, SIGNPOST_ITEM + REVIVE, EVENT_CIANWOOD_CITY_HIDDEN_REVIVE
 	bg_event  5, 29, SIGNPOST_ITEM + MAX_ETHER, EVENT_CIANWOOD_CITY_HIDDEN_MAX_ETHER
 
@@ -342,7 +342,7 @@ CianwoodCliffEdgeGateSignText:
 	line "just ahead!"
 	done
 
-CianwoodStatsJudgeSignText:
-	text "The Stats Judge"
+CianwoodMoveManiacSignText:
+	text "The Move Maniac"
 	line "Ahead"
 	done

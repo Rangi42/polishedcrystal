@@ -130,7 +130,7 @@ DoNPCTrade:
 	call Trade_GetAttributeOfCurrentPartymon
 	ld b, h
 	ld c, l
-	farcall GetCaughtGender
+	call GetCaughtGender
 	ld a, c
 	ld [wPlayerTrademonCaughtData], a
 
@@ -339,6 +339,16 @@ GetTradeMonNames:
 	jr nz, .loop
 
 	ld [hl], "@"
+	ret
+
+GetCaughtGender:
+	ld hl, MON_CAUGHTGENDER
+	add hl, bc
+
+	ld a, [hl]
+	and CAUGHTGENDER_MASK
+	rl a
+	ld c, a
 	ret
 
 INCLUDE "data/events/npc_trades.asm"

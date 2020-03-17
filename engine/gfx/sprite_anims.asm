@@ -33,6 +33,7 @@ DoAnimFrame:
 	dw .IntroUnownF        ; SPRITE_ANIM_SEQ_UNOWN_F
 	dw .IntroSuicuneAway   ; SPRITE_ANIM_SEQ_SUICUNE_AWAY
 	dw .Celebi             ; SPRITE_ANIM_SEQ_CELEBI
+	dw .MaxStatSparkle     ; SPRITE_ANIM_SEQ_MAX_STAT_SPARKLE
 
 .PartyMon
 	ld a, [wMenuCursorY]
@@ -579,6 +580,22 @@ DoAnimFrame:
 
 .Celebi
 	farjp UpdateCelebiPosition
+
+.MaxStatSparkle
+	ldh a, [hVBlankCounter]
+	push af
+	ld d, 4
+	call Sine
+	ld hl, SPRITEANIMSTRUCT_YOFFSET
+	add hl, bc
+	ld [hl], a
+	pop af
+	ld d, 16
+	call Cosine
+	ld hl, SPRITEANIMSTRUCT_XOFFSET
+	add hl, bc
+	ld [hl], a
+	ret
 
 .IncrementSpriteAnimStruct0B:
 	ld hl, SPRITEANIMSTRUCT_JUMPTABLE_INDEX
