@@ -1,5 +1,6 @@
 GivePokerusAndConvertBerries:
 	call ConvertBerriesToBerryJuice
+	ld hl, wPartyMon1PokerusStatus
 	ld a, [wPartyCount]
 	ld b, a
 	ld de, PARTYMON_STRUCT_LENGTH
