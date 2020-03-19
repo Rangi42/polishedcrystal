@@ -1088,7 +1088,7 @@ EndturnAbilitiesA:
 
 HandleAbilities:
 ; Abilities handled at the end of the turn.
-	farcall SetFastestTurn
+	call SetFastestTurn
 	call .do_it
 	call SwitchTurn
 
@@ -1734,7 +1734,7 @@ RunPostBattleAbilities::
 	ld a, MON_SPECIES
 	call GetPartyParamLocation
 	ld c, [hl]
-	farcall GetAbility
+	call GetAbility
 	ld a, b
 	pop bc
 	cp NATURAL_CURE

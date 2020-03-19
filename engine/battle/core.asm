@@ -5416,7 +5416,7 @@ LinkBattleSendReceiveAction:
 ; of linking we are performing.
 	call .StageForSend
 	ld [wLinkBattleSentAction], a
-	farcall PlaceWaitingText
+	call PlaceWaitingText
 	ld a, [wLinkBattleSentAction]
 	ld [wPlayerLinkAction], a
 	ld a, $ff

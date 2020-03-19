@@ -757,7 +757,7 @@ StatsScreen_LoadGFX:
 	rst PlaceString
 	ld a, [wTempMonNature]
 	ld b, a
-	farcall GetNature
+	call GetNature
 	hlcoord 1, 13
 	farjp PrintNature
 
@@ -800,7 +800,7 @@ OrangePage_:
 	ld b, a
 	ld a, [wTempMonSpecies]
 	ld c, a
-	farcall GetAbility
+	call GetAbility
 	; PlaceString as used in PrintAbility doesn't preserve any register, so push it.
 	push bc
 	farcall PrintAbility

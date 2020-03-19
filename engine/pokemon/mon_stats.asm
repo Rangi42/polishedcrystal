@@ -89,7 +89,7 @@ PrintTempMonStats:
 	push hl
 	ld a, [wTempMonNature]
 	ld b, a
-	farcall GetNature
+	call GetNature
 	pop hl
 rept 8
 	inc hl

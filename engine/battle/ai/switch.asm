@@ -51,7 +51,7 @@ GetSwitchScores:
 	add hl, bc
 	ld c, a
 	ld b, [hl]
-	farcall GetAbility
+	call GetAbility
 	ld a, b
 	ld [wEnemyAbility], a
 

@@ -1753,7 +1753,7 @@ Special_ChooseItem::
 	call LoadStandardMenuDataHeader
 	call DepositSellInitPackBuffers
 	call .PickItem
-	farjp ReturnToMapWithSpeechTextbox
+	jp ReturnToMapWithSpeechTextbox
 
 .PickItem:
 	xor a ; ld a, FALSE
