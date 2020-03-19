@@ -323,6 +323,8 @@ TrainerCard_PrintTopHalfOfCard:
 	ldh [hGraphicStartTile], a
 	predef PlaceGraphic
 
+	hlcoord 7, 6
+	lb bc, PRINTNUM_MONEY | 3, 7
 	ld a, [wMoney]
 	cp $f
 	jr c, .not_seven_digits
@@ -331,14 +333,11 @@ TrainerCard_PrintTopHalfOfCard:
 	jr c, .not_seven_digits
 	ld a, [wMoney + 2]
 	cp $40
-	jr c, .not_seven_digits
-	hlcoord 7, 6
-	jr .print_money
+	jr nc, .print_money
 .not_seven_digits
-	hlcoord 6, 6
+	dec c
 .print_money
 	ld de, wMoney
-	lb bc, PRINTNUM_MONEY | 3, 7
 	jp PrintNum
 
 .Top_Headings:
