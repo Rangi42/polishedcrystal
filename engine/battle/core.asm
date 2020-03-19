@@ -5276,7 +5276,10 @@ CheckUsableMove:
 	jp PopBCDEHL
 
 ParseEnemyAction:
-; Unconditionally perform at least one link exchange
+	; Clear weather icon
+	call ClearSprites
+
+	; Unconditionally perform at least one link exchange
 	ld a, [wLinkMode]
 	and a
 	call nz, LinkBattleSendReceiveAction
