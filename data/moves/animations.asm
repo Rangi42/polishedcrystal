@@ -3466,19 +3466,7 @@ BattleAnim_HyperVoice:
 	anim_ret
 
 BattleAnim_Curse:
-	anim_jumpif $1, .NotGhost
-	anim_2gfx ANIM_GFX_HIT, ANIM_GFX_OBJECTS
-	anim_obj ANIM_OBJ_A5,   8, 4,   9, 0, $0
-	anim_sound 0, 0, SFX_CURSE
-	anim_wait 32
-	anim_incobj 1
-	anim_wait 12
-	anim_sound 0, 0, SFX_POISON_STING
-	anim_obj ANIM_OBJ_04,   5, 4,  12, 0, $0
-	anim_wait 16
-	anim_ret
-
-.NotGhost:
+	anim_jumpif $1, .Ghost
 	anim_1gfx ANIM_GFX_SPEED
 	anim_call BattleAnim_FollowEnemyFeet_0
 	anim_bgeffect ANIM_BG_19, $0, $1, $40
@@ -3507,6 +3495,18 @@ BattleAnim_Curse:
 	anim_wait 8
 	anim_incbgeffect ANIM_BG_16
 	anim_call BattleAnim_ShowMon_0
+	anim_ret
+
+.Ghost:
+	anim_2gfx ANIM_GFX_HIT, ANIM_GFX_OBJECTS
+	anim_obj ANIM_OBJ_A5,   8, 4,   9, 0, $0
+	anim_sound 0, 0, SFX_CURSE
+	anim_wait 32
+	anim_incobj 1
+	anim_wait 12
+	anim_sound 0, 0, SFX_POISON_STING
+	anim_obj ANIM_OBJ_04,   5, 4,  12, 0, $0
+	anim_wait 16
 	anim_ret
 
 BattleAnim_Conversion:

@@ -22,6 +22,8 @@ BattleCommand_curse:
 	jr nz, .failed
 
 	set SUBSTATUS_CURSE, [hl]
+	ld a, 1
+	ld [wKickCounter], a
 	call AnimateCurrentMove
 	ld hl, GetHalfMaxHP
 	call CallBattleCore
