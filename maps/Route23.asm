@@ -47,13 +47,24 @@ Route23_MapScriptHeader:
 	object_event 13, 55, SPRITE_OFFICER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route23GlacierBadgeOfficerScript, -1
 	object_event  8, 47, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route23RisingBadgeOfficerScript, -1
 
+	const_def 1 ; object constants
+	const ROUTE23_OFFICER1
+	const ROUTE23_OFFICER2
+	const ROUTE23_OFFICER3
+	const ROUTE23_OFFICER4
+	const ROUTE23_OFFICER5
+	const ROUTE23_OFFICER6
+	const ROUTE23_OFFICER7
+	const ROUTE23_OFFICER8
+
 VictoryRoadSignText:
 	text "Victory Road"
 	done
 
 Route23ZephyrBadgeOfficerScript:
-	faceplayer
 Route23ZephyrBadgeTriggerScript:
+	faceobject ROUTE23_OFFICER1, PLAYER
+	faceobject PLAYER, ROUTE23_OFFICER1
 	stringtotext .ZephyrBadgeText, 0
 	opentext
 	writetext Route23OfficerNeedBadgeText
@@ -69,8 +80,9 @@ Route23ZephyrBadgeTriggerScript:
 	db "Zephyr Badge@"
 
 Route23HiveBadgeOfficerScript:
-	faceplayer
 Route23HiveBadgeTriggerScript:
+	faceobject ROUTE23_OFFICER2, PLAYER
+	faceobject PLAYER, ROUTE23_OFFICER2
 	stringtotext .HiveBadgeText, 0
 	opentext
 	writetext Route23OfficerNeedBadgeText
@@ -86,8 +98,9 @@ Route23HiveBadgeTriggerScript:
 	db "Hive Badge@"
 
 Route23PlainBadgeOfficerScript:
-	faceplayer
 Route23PlainBadgeTriggerScript:
+	faceobject ROUTE23_OFFICER3, PLAYER
+	faceobject PLAYER, ROUTE23_OFFICER3
 	stringtotext .PlainBadgeText, 0
 	opentext
 	writetext Route23OfficerNeedBadgeText
@@ -103,8 +116,9 @@ Route23PlainBadgeTriggerScript:
 	db "Plain Badge@"
 
 Route23FogBadgeOfficerScript:
-	faceplayer
 Route23FogBadgeTriggerScript:
+	faceobject ROUTE23_OFFICER4, PLAYER
+	faceobject PLAYER, ROUTE23_OFFICER4
 	stringtotext .FogBadgeText, 0
 	opentext
 	writetext Route23OfficerNeedBadgeText
@@ -120,8 +134,9 @@ Route23FogBadgeTriggerScript:
 	db "Fog Badge@"
 
 Route23StormBadgeOfficerScript:
-	faceplayer
 Route23StormBadgeTriggerScript:
+	faceobject ROUTE23_OFFICER5, PLAYER
+	faceobject PLAYER, ROUTE23_OFFICER5
 	stringtotext .StormBadgeText, 0
 	opentext
 	writetext Route23OfficerNeedBadgeText
@@ -137,8 +152,9 @@ Route23StormBadgeTriggerScript:
 	db "Storm Badge@"
 
 Route23MineralBadgeOfficerScript:
-	faceplayer
 Route23MineralBadgeTriggerScript:
+	faceobject ROUTE23_OFFICER6, PLAYER
+	faceobject PLAYER, ROUTE23_OFFICER6
 	stringtotext .MineralBadgeText, 0
 	opentext
 	writetext Route23OfficerNeedBadgeText
@@ -154,8 +170,9 @@ Route23MineralBadgeTriggerScript:
 	db "Mineral Badge@"
 
 Route23GlacierBadgeOfficerScript:
-	faceplayer
 Route23GlacierBadgeTriggerScript:
+	faceobject ROUTE23_OFFICER7, PLAYER
+	faceobject PLAYER, ROUTE23_OFFICER7
 	stringtotext .GlacierBadgeText, 0
 	opentext
 	writetext Route23OfficerNeedBadgeText
@@ -171,8 +188,9 @@ Route23GlacierBadgeTriggerScript:
 	db "Glacier Badge@"
 
 Route23RisingBadgeOfficerScript:
-	faceplayer
 Route23RisingBadgeTriggerScript:
+	faceobject ROUTE23_OFFICER8, PLAYER
+	faceobject PLAYER, ROUTE23_OFFICER8
 	stringtotext .RisingBadgeText, 0
 	opentext
 	writetext Route23OfficerNeedBadgeText
