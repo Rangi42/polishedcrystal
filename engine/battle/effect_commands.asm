@@ -2313,9 +2313,9 @@ BattleCommand_applydamage:
 	ld b, $0
 .okay
 	push bc
-	call .damage_taken
 	ld c, $0
 	call TakeDamage
+	call .damage_taken
 	pop bc
 	ld a, b
 	and a
