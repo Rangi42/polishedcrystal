@@ -14,6 +14,10 @@ BattleCommand_starthail:
 	lb bc, WEATHER_HAIL, HELD_PROLONG_HAIL
 	ld hl, HailStartedText
 StartWeather:
+	ld a, [wWeather]
+	cp b
+	jp z, BattleEffect_ButItFailed
+
 	ld a, b
 	ld [wWeather], a
 	ld a, c
