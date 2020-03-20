@@ -2016,6 +2016,7 @@ FaintUserPokemon:
 	ld hl, BattleText_EnemyPkmnFainted
 .text
 	call StdBattleTextBox
+	call LoadTileMapToTempTileMap
 
 SuppressUserNeutralizingGas:
 ; Use -1 as sentinel, not 0. This is because Transform (via Imposter) should

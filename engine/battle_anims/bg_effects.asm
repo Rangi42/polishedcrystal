@@ -321,11 +321,9 @@ BattleBGEffect_HideMon:
 	jp EndBattleBGEffect
 
 BattleBGEffect_ShowMon:
-	call BGEffect_CheckFlyDigStatus
-	jr z, .not_flying
-	jp EndBattleBGEffect
+	call BGEffect_CheckMonVisible
+	jp nz, EndBattleBGEffect
 
-.not_flying
 	call BGEffect_CheckBattleTurn
 	jr nz, .player_side
 	ld de, .EnemyData
@@ -358,7 +356,7 @@ BattleBGEffect_FeetFollow:
 	dw .five
 
 .zero
-	call BGEffect_CheckFlyDigStatus
+	call BGEffect_CheckMonVisible
 	jr z, .not_flying_digging
 	ld hl, wNumActiveBattleAnims
 	inc [hl]
@@ -423,7 +421,7 @@ BattleBGEffect_HeadFollow:
 	dw .five
 
 .zero
-	call BGEffect_CheckFlyDigStatus
+	call BGEffect_CheckMonVisible
 	jr z, .not_flying_digging
 	ld hl, wNumActiveBattleAnims
 	inc [hl]
@@ -2599,19 +2597,25 @@ BGEffect_CheckBattleTurn:
 	xor [hl]
 	ret
 
-BGEffect_CheckFlyDigStatus:
+BGEffect_CheckMonVisible:
 	ld hl, BG_EFFECT_STRUCT_BATTLE_TURN
 	add hl, bc
 	ldh a, [hBattleTurn]
 	and $1
 	xor [hl]
 	jr nz, .player
+	call HasEnemyFainted
+	jr z, .ret_nz
 	ld a, [wEnemySubStatus3] ; EnemySubStatus3
 	and 1 << SUBSTATUS_FLYING | 1 << SUBSTATUS_UNDERGROUND
 	ret
 
 .player
+	call HasPlayerFainted
+	jr z, .ret_nz
 	ld a, [wPlayerSubStatus3] ; PlayerSubStatus3
 	and 1 << SUBSTATUS_FLYING | 1 << SUBSTATUS_UNDERGROUND
 	ret
-
+.ret_nz
+	or 1
+	ret
