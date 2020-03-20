@@ -1014,7 +1014,7 @@ BattleConsumePP:
 	dec [hl]
 	ld a, BATTLE_VARS_SUBSTATUS2
 	call GetBattleVar
-	and SUBSTATUS_TRANSFORMED
+	bit SUBSTATUS_TRANSFORMED, a
 	ret nz
 	ld a, [hl]
 	ld [de], a
