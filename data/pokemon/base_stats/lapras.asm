@@ -4,8 +4,8 @@
 	db WATER, ICE
 	db 45 ; catch rate
 	db 219 ; base exp
-	db NO_ITEM ; item 1
-	db NO_ITEM ; item 2
+	db GURANTEE_SECOND_ITEM ; item 1
+	db MYSTIC_WATER ; item 2
 	dn FEMALE_50, 7 ; gender, step cycles to hatch
 	dn 7, 7 ; frontpic dimensions
 	db WATER_ABSORB ; ability 1

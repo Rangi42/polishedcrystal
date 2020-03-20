@@ -5493,11 +5493,10 @@ LoadEnemyMon:
 	ld [wEnemyMonCatchRate], a
 
 	; Let's get the item:
-	; Force Item1
-	; Used for Snorlax, Ho-Oh, Lugia, and Kanto legendary encounters
-	ld a, [wBattleType]
-	cp BATTLETYPE_FORCEITEM
+	; Check for guranteed items
 	ld a, [wBaseItems]
+	inc a ; cp GURANTEE_SECOND_ITEM
+	ld a, [wBaseItems+1]
 	jr z, .UpdateItem
 
 	ld a, [wBattleType]

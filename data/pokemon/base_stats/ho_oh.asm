@@ -4,7 +4,7 @@
 	db FIRE, FLYING
 	db 3 ; catch rate
 	db 220 ; base exp
-	db SACRED_ASH ; item 1
+	db GURANTEE_SECOND_ITEM ; item 1
 	db SACRED_ASH ; item 2
 	dn GENDERLESS, 15 ; gender, step cycles to hatch
 	dn 7 , 7 ; frontpic dimensions

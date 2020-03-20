@@ -4,7 +4,7 @@
 	db ICE, FLYING
 	db 3 ; catch rate
 	db 215 ; base exp
-	db LUM_BERRY ; item 1
+	db GURANTEE_SECOND_ITEM ; item 1
 	db LUM_BERRY ; item 2
 	dn GENDERLESS, 15 ; gender, step cycles to hatch
 	dn 7, 7 ; frontpic dimensions

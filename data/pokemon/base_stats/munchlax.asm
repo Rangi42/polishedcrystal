@@ -4,7 +4,7 @@
 	db NORMAL, NORMAL
 	db 50 ; catch rate
 	db 94 ; base exp
-	db NO_ITEM ; item 1
+	db GURANTEE_SECOND_ITEM ; item 1
 	db LEFTOVERS ; item 2
 	dn FEMALE_12_5, 7 ; gender, step cycles to hatch
 	dn 6, 6 ; frontpic dimensions

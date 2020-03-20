@@ -4,7 +4,7 @@
 	db NORMAL, NORMAL
 	db 45 ; catch rate
 	db 200 ; base exp
-	db MOOMOO_MILK ; item 1
+	db GURANTEE_SECOND_ITEM ; item 1
 	db MOOMOO_MILK ; item 2
 	dn ALL_FEMALE, 3 ; gender, step cycles to hatch
 	dn 6, 6 ; frontpic dimensions
