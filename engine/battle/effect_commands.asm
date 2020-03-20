@@ -4135,17 +4135,26 @@ SelfInflictDamageToSubstitute:
 .got_hp
 
 	ld hl, wCurDamage
-	ld a, [hli]
+	ld a, [hl]
+	ld [hl], 0
+	inc hl
 	and a
 	jr nz, .broke
 
 	ld a, [de]
 	sub [hl]
-	ld [de], a
 	jr z, .broke
-	jr nc, .done
+	jr c, .broke
+	ld [de], a
+	ret
 
 .broke
+	; Set damage done to be equal to remaining substitute HP.
+	; This makes recoil and draining moves be handled correctly.
+	; We've already set the upper byte to zero.
+	ld a, [de]
+	ld [hl], a
+
 	ld a, BATTLE_VARS_SUBSTATUS4_OPP
 	call GetBattleVarAddr
 	res SUBSTATUS_SUBSTITUTE, [hl]
@@ -4172,9 +4181,7 @@ SelfInflictDamageToSubstitute:
 	xor a
 	ld [hl], a
 .ok
-	call RefreshBattleHuds
-.done
-	jp ResetDamage
+	jp RefreshBattleHuds
 
 UpdateMoveData:
 	ld a, BATTLE_VARS_MOVE_ANIM
