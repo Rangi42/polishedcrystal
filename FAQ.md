@@ -20,6 +20,20 @@ The game's data files do a fairly good job of listing things you'll want to know
 * [Hidden Grottoes](data/events/hidden_grottoes/grottoes.asm)
 
 
+### What are the options at the start of a new game?
+
+* **Natures:** Enables natures from Gen 3.
+* **Abilities:** Enables abilities from Gen 3.
+* **Phys/Spcl split:** Enables the Physical/Special split from Gen 4.
+* **Exp. scaling:** Enables the experience formula from Gen 5, which scales experience by the ratio of the opponent's level to your level.
+* **IVs vary colors:** Enables color variation inspired by Stadium. DVs will subtly vary Pokémon colors. This applies to normal and shiny Pokémon.
+* **Perfect stats:** All Pokémon stats, for you and the opponent, are calculated as if they had maximum IVs. The actual IVs are still random, so color variation and Hidden Power type are not affected.
+* **Traded Pokémon treat you as OT:** All differences in traded Pokémon go away: they always obey you, don't gain boosted experience, and can be nicknamed.
+* **Nuzlocke mode:** Enables a Nuzlocke run; see [FEATURES.md](FEATURES.md) for detailed clauses.
+
+If you need to change these options after starting a game, press Left+B at the title screen to reset them.
+
+
 ### How do I evolve my Pokémon?
 
 * Item trade evolutions (like Seadra into Kingdra while holding a Dragon Scale) now evolve while holding the item.
@@ -41,7 +55,8 @@ The game's data files do a fairly good job of listing things you'll want to know
 * Lugia is in the Whirl Islands after you catch all three legendary birds and then get the Silver Wing in Victory Road.
 * Ho-Oh is atop the Bell Tower after you catch all three legendary beasts and then get the Rainbow Wing in Bell Tower.
 * Mewtwo is in Cerulean Cave.
-* Mew and Celebi are a secret!
+* Mew is a secret; look around Cinnabar Island!
+* Celebi is a secret; try Wonder Trading after beating the Elite Four! (And after you catch it, take it to the Ilex Forest shrine!)
 
 
 ### Where do I get this item?
@@ -67,12 +82,13 @@ The game's data files do a fairly good job of listing things you'll want to know
 
 Silver Leaves are like Shards in future generations: they can be given to Move Tutors to learn moves. Wild Oddish have a 50% chance of holding Silver Leaves, and there are some hidden on the ground in Ilex Forest.
 
-Gold Leaves can be given to the Move Maniac to relearn moves. Wild Bellsprout have a 50% chance of holding Gold Leaves, and there are some hidden on the ground in Yellow Forest.
+Gold Leaves can be given to the Move Maniac in Cianwood City to relearn moves. Wild Bellsprout have a 50% chance of holding Gold Leaves, and there are some hidden on the ground in Yellow Forest.
 
 
 ### Where do I get this TM/HM?
 
 * HM02 Fly is given to you after a certain battle in Yellow Forest, at the end of Route 47+48, which become accessible after beating Chuck.
+* HM04 Strength is given to you by the Gym Guide hiding in Cianwood City's Pokémon Center.
 * HM06 Whirlpool is given to you after a battle with Lyra on Route 42, which becomes accessible after beating Jasmine.
 * TM46 Thief is given to you by Lance after completing Team Rocket's Base in Mahogany Town.
 
@@ -80,6 +96,16 @@ Gold Leaves can be given to the Move Maniac to relearn moves. Wild Bellsprout ha
 ### What do blessings and photographs do?
 
 Daily blessings in Ecruteak City and photographs in Cianwood City make your Pokémon happier, just like haircuts or grooming.
+
+
+### What is the Judge Machine?
+
+The Judge Machine in Goldenrod City's PokéCom Center shows your Pokémon's EVs (effort) and IVs (potential). To unlock it, breed at least one Egg and then talk to the engineer working on it.
+
+
+### What are the "door-shaped grooves" in the Ruins of Alph and Route 47?
+
+Those are opened up after you catch all 28 Unown and talk to the scientist who gave you the Unown Dex.
 
 
 ### I don't like non-canon Pokémon types!
