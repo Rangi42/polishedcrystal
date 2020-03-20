@@ -452,26 +452,18 @@ EndTurn:
 OpponentCantMove:
 	call CallOpponentTurn
 CantMove:
-	ld a, BATTLE_VARS_SUBSTATUS1
+	ld a, BATTLE_VARS_SUBSTATUS3
 	call GetBattleVarAddr
 	ld a, ~(SUBSTATUS_RAMPAGE | SUBSTATUS_CHARGED | SUBSTATUS_ROLLOUT)
 	and [hl]
 	ld [hl], a
-
-	call EndMultihit
-
-	ld a, BATTLE_VARS_MOVE_ANIM
-	call GetBattleVar
-	cp FLY
-	jr z, .fly_dig
-
-	cp DIG
-	ret nz
-
-.fly_dig
-	res SUBSTATUS_UNDERGROUND, [hl]
+	push hl
+	and SUBSTATUS_FLYING | SUBSTATUS_UNDERGROUND
+	call z, AppearUserRaiseSub
+	pop hl
 	res SUBSTATUS_FLYING, [hl]
-	jp AppearUserRaiseSub
+	res SUBSTATUS_UNDERGROUND, [hl]
+	ret
 
 IncreaseMetronomeCount:
 	; Don't arbitrarily boost usage counter twice on a turn
