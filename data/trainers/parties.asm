@@ -7245,8 +7245,8 @@ CowgirlGroup:
 	db "Daniela@"
 	db TRAINERTYPE_NORMAL
 	; party
-	db 25, TAUROS
-	db 25, MILTANK
+	db 45, TAUROS
+	db 45, MILTANK
 	db -1 ; end
 
 ; ================
