@@ -240,3 +240,6 @@
 	tilecoll WATER, WATER, WATER, WATER ; ef
 	tilecoll WALL, WALL, WALL, WALL ; f0
 	tilecoll TOP_WALL, WALL, FLOOR, FLOOR ; f1
+	tilecoll WALL, WALL, WALL, WALL ; f2
+	tilecoll WALL, WALL, WALL, WALL ; f3
+	tilecoll WALL, WALL, WALL, WALL ; f4
