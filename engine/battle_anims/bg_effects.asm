@@ -2603,19 +2603,12 @@ BGEffect_CheckMonVisible:
 	ldh a, [hBattleTurn]
 	and $1
 	xor [hl]
-	jr nz, .player
-	call HasEnemyFainted
-	jr z, .ret_nz
-	ld a, [wEnemySubStatus3] ; EnemySubStatus3
+	ld hl, wPlayerSubStatus3
+	jr nz, .got_substatus
+	ld hl, wEnemySubStatus3
+.got_substatus
+	ld a, [hld]
 	and 1 << SUBSTATUS_FLYING | 1 << SUBSTATUS_UNDERGROUND
-	ret
-
-.player
-	call HasPlayerFainted
-	jr z, .ret_nz
-	ld a, [wPlayerSubStatus3] ; PlayerSubStatus3
-	and 1 << SUBSTATUS_FLYING | 1 << SUBSTATUS_UNDERGROUND
-	ret
-.ret_nz
-	or 1
+	ret nz
+	bit SUBSTATUS_FAINTED, [hl]
 	ret
