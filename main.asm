@@ -240,7 +240,7 @@ INCLUDE "engine/movie/init_hof_credits.asm"
 INCLUDE "engine/battle/sliding_intro.asm"
 INCLUDE "engine/battle/check_battle_scene.asm"
 INCLUDE "engine/movie/bsod.asm"
-INCLUDE "engine/events/stats_judge.asm"
+INCLUDE "engine/events/judge_machine.asm"
 
 INCLUDE "engine/events/poisonstep.asm"
 INCLUDE "engine/events/squirtbottle.asm"

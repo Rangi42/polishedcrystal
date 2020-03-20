@@ -514,7 +514,7 @@ MAP_NONE   EQU 0
 	map_const CIANWOOD_PHARMACY,                           4,  4 ;  7
 	map_const CIANWOOD_CITY_PHOTO_STUDIO,                  4,  4 ;  8
 	map_const CIANWOOD_LUGIA_SPEECH_HOUSE,                 4,  4 ;  9
-	map_const STATS_JUDGES_HOUSE,                          4,  4 ; 10
+	map_const MOVE_MANIACS_HOUSE,                          4,  4 ; 10
 	map_const BATTLE_TOWER_1F,                            11,  7 ; 11
 	map_const BATTLE_TOWER_2F,                            11,  5 ; 12
 	map_const BATTLE_TOWER_BATTLE_ROOM,                    4,  4 ; 13

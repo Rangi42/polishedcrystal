@@ -141,7 +141,7 @@ GoldenrodNameRater_BlockData:
 GoldenrodBandHouse_BlockData:
 ManiasHouse_BlockData:
 CianwoodLugiaSpeechHouse_BlockData:
-StatsJudgesHouse_BlockData:
+MoveManiacsHouse_BlockData:
 	INCBIN "maps/JohtoHouse3.ablk.lz"
 
 Route39Farmhouse_BlockData:

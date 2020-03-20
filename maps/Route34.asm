@@ -175,6 +175,7 @@ DayCareManScript_Outside:
 	closetext
 	ifequal $1, .end_fail
 	clearflag ENGINE_DAYCARE_MAN_HAS_EGG
+	setevent EVENT_BRED_AN_EGG
 	checkcode VAR_FACING
 	ifequal LEFT, .walk_around_player
 	applyonemovement ROUTE34_GRAMPS, slow_step_right

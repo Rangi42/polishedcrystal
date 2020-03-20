@@ -37,6 +37,7 @@ LoadCGBLayout::
 	dw _CGB_IntroPals
 	dw _CGB_PlayerOrMonFrontpicPals
 	dw _CGB_TrainerOrMonFrontpicPals
+	dw _CGB_JudgeSystem
 
 _CGB_BattleGrayscale:
 	push bc
@@ -1159,6 +1160,118 @@ _CGB_TrainerOrMonFrontpicPals:
 	call WipeAttrMap
 	call ApplyAttrMap
 	jp ApplyPals
+
+_CGB_JudgeSystem:
+	; gender icon
+	ld de, wUnknBGPals palette 6
+	ld hl, GenderAndExpBarPals
+	call LoadPalette_White_Col1_Col2_Black
+	; frontpic
+	ld a, [wCurPartySpecies]
+	ld bc, wTempMonPersonality
+	call GetFrontpicPalettePointer
+	call LoadPalette_White_Col1_Col2_Black
+	ld hl, wUnknBGPals palette 7 + 2
+	call VaryBGPalByTempMonDVs
+	; max stat sparkle
+	ld de, wUnknOBPals palette 0
+	ld hl, .SparkleMaxStatPalette
+	call LoadHLPaletteIntoDE
+
+	call WipeAttrMap
+
+	; top row
+	hlcoord 0, 0, wAttrMap
+	ld bc, 18
+	ld a, 1
+	rst ByteFill
+	; gender icon
+	ld a, 6 | TILE_BANK
+	ld [hli], a
+	; shiny icon and second row
+	ld a, 1 | TILE_BANK
+	ld bc, 21
+	rst ByteFill
+	; frontpic
+	hlcoord 0, 6, wAttrMap
+	lb bc, 7, 7
+	ld a, 7
+	call FillBoxCGB
+	; chart
+	hlcoord 9, 4, wAttrMap
+	lb bc, 12, 8
+	ld a, 5 | TILE_BANK
+	call FillBoxCGB
+	hlcoord 8, 6, wAttrMap
+	lb bc, 8, 1
+	ld a, 5 | TILE_BANK
+	call FillBoxCGB
+	hlcoord 17, 6, wAttrMap
+	lb bc, 8, 1
+	ld a, 5 | TILE_BANK
+	call FillBoxCGB
+	; stat values
+	ld c, STAT_HP
+	hlcoord 12, 3, wAttrMap
+	call .FillStat
+	ld c, STAT_ATK
+	hlcoord 17, 5, wAttrMap
+	call .FillStat
+	ld c, STAT_DEF
+	hlcoord 17, 14, wAttrMap
+	call .FillStat
+	ld c, STAT_SPD
+	hlcoord 12, 16, wAttrMap
+	call .FillStat
+	ld c, STAT_SDEF
+	hlcoord 6, 14, wAttrMap
+	call .FillStat
+	ld c, STAT_SATK
+	hlcoord 6, 5, wAttrMap
+	call .FillStat
+	; heading
+	hlcoord 0, 3, wAttrMap
+	ld a, 0 | TILE_BANK
+	ld bc, 11
+	rst ByteFill
+	; controls
+	hlcoord 3, 17, wAttrMap
+	ld a, 2 | TILE_BANK
+	ld [hl], a
+
+	jr _CGB_FinishLayout
+
+.FillStat:
+; Use palette 2 for normal, 3 for lowered, 4 for raised
+	ld a, [wTempMonNature]
+	push hl
+	farcall GetNatureStatMultiplier
+	pop hl
+	cp 10 ; 10 is normal
+	ld a, 4
+	jr c, .lowered_stat ; 9 is lowered
+	jr nz, .raised_stat ; 11 is raised
+	dec a ; 2
+.lowered_stat
+	dec a ; 3
+.raised_stat
+	ld [hli], a
+	ld [hli], a
+	ld [hl], a
+	ret
+
+.SparkleMaxStatPalette:
+if !DEF(MONOCHROME)
+	RGB 31, 31, 31
+	RGB 31, 31, 31
+	RGB 31, 29, 00
+	RGB 31, 29, 00
+else
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_LIGHT
+	RGB_MONOCHROME_LIGHT
+endc
 
 _CGB_FinishLayout:
 	call ApplyAttrMap

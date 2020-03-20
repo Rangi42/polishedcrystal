@@ -2336,9 +2336,11 @@
 	const EVENT_MAGNET_TUNNEL_EAST_CUT_TREE
 	const EVENT_CHERRYGROVE_BAY_CUT_TREE
 
+; TODO: reorganize these when it's okay to break saves
+	const EVENT_JUDGE_MACHINE_ENGINEER
+	const EVENT_BRED_AN_EGG
+
 ; Unused placeholder events
-	const EVENT_882
-	const EVENT_883
 	const EVENT_884
 	const EVENT_885
 	const EVENT_886

@@ -113,7 +113,7 @@ SpecialsPointers::
 	add_special SpecialHoOhChamber
 	add_special Special_CelebiShrineEvent
 	add_special CheckCaughtCelebi
-	add_special SpecialStatsJudge
+	add_special JudgeMachine
 	add_special SpecialBuenasPassword
 	add_special TeachDratiniExtremeSpeed
 	add_special Special_SampleKenjiBreakCountdown

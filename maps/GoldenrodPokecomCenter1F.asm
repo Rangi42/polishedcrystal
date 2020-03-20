@@ -1,7 +1,8 @@
 GoldenrodPokecomCenter1F_MapScriptHeader:
 	db 0 ; scene scripts
 
-	db 0 ; callbacks
+	db 1 ; callbacks
+	callback MAPCALLBACK_TILES, JudgeMachineScreenCallback
 
 	db 4 ; warp events
 	warp_event  6, 15, GOLDENROD_CITY, 15
@@ -11,39 +12,55 @@ GoldenrodPokecomCenter1F_MapScriptHeader:
 
 	db 0 ; coord events
 
-	db 17 ; bg events
+	db 18 ; bg events
 	bg_event 11,  7, SIGNPOST_READ, PokemonJournalWhitneyScript
-	bg_event 24,  5, SIGNPOST_RIGHT, NewsMachineScript
-	bg_event 24,  6, SIGNPOST_RIGHT, NewsMachineScript
-	bg_event 24,  7, SIGNPOST_RIGHT, NewsMachineScript
-	bg_event 24,  9, SIGNPOST_RIGHT, NewsMachineScript
-	bg_event 24, 10, SIGNPOST_RIGHT, NewsMachineScript
-	bg_event 25, 11, SIGNPOST_UP, NewsMachineScript
-	bg_event 26, 11, SIGNPOST_UP, NewsMachineScript
-	bg_event 27, 11, SIGNPOST_UP, NewsMachineScript
-	bg_event 28, 11, SIGNPOST_UP, NewsMachineScript
-	bg_event 29,  5, SIGNPOST_LEFT, NewsMachineScript
-	bg_event 29,  6, SIGNPOST_LEFT, NewsMachineScript
-	bg_event 29,  7, SIGNPOST_LEFT, NewsMachineScript
-	bg_event 29,  8, SIGNPOST_LEFT, NewsMachineScript
-	bg_event 29,  9, SIGNPOST_LEFT, NewsMachineScript
-	bg_event 29, 10, SIGNPOST_LEFT, NewsMachineScript
+	bg_event 24,  5, SIGNPOST_RIGHT, JudgeMachineScript
+	bg_event 24,  6, SIGNPOST_RIGHT, JudgeMachineScript
+	bg_event 24,  7, SIGNPOST_RIGHT, JudgeMachineScript
+	bg_event 24,  8, SIGNPOST_RIGHT, JudgeMachineScript
+	bg_event 24,  9, SIGNPOST_RIGHT, JudgeMachineScript
+	bg_event 24, 10, SIGNPOST_RIGHT, JudgeMachineScript
+	bg_event 25, 11, SIGNPOST_UP, JudgeMachineScript
+	bg_event 26, 11, SIGNPOST_UP, JudgeMachineScript
+	bg_event 27, 11, SIGNPOST_UP, JudgeMachineScript
+	bg_event 28, 11, SIGNPOST_UP, JudgeMachineScript
+	bg_event 29,  5, SIGNPOST_LEFT, JudgeMachineScript
+	bg_event 29,  6, SIGNPOST_LEFT, JudgeMachineScript
+	bg_event 29,  7, SIGNPOST_LEFT, JudgeMachineScript
+	bg_event 29,  8, SIGNPOST_LEFT, JudgeMachineScript
+	bg_event 29,  9, SIGNPOST_LEFT, JudgeMachineScript
+	bg_event 29, 10, SIGNPOST_LEFT, JudgeMachineScript
 	bg_event 24,  3, SIGNPOST_ITEM + RARE_CANDY, EVENT_GOLDENROD_POKECOM_CENTER_1F_HIDDEN_RARE_CANDY
 
 	db 13 ; object events
+	object_event 23, 10, SPRITE_ENGINEER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_PURPLE, PERSONTYPE_SCRIPT, 0, JudgeMachineEngineerScript, EVENT_JUDGE_MACHINE_ENGINEER
 	object_event  7,  7, SPRITE_BOWING_NURSE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, NurseScript_0x60f91, -1
 	object_event  0, 12, SPRITE_GAMEBOY_KID, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x62105, -1
 	object_event  3, 11, SPRITE_CUTE_GIRL, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x62260, -1
 	object_event 12, 14, SPRITE_MATRON, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_SCRIPT, 0, PokefanFScript_0x61024, -1
 	object_event 16,  8, SPRITE_LINK_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, WonderTradeReceptionistScript, -1
 	object_event  8, 13, SPRITE_SUPER_NERD, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x61c89, -1
-	object_event 23,  8, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x61efa, -1
 	object_event 27, 13, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x61e5c, -1
 	object_event 21,  6, SPRITE_ROCKER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x61fc9, -1
 	object_event 18, 13, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x62222, -1
 	object_event 18,  9, SPRITE_CUTE_GIRL, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x61cef, -1
 	object_event  3,  9, SPRITE_MISC_OVERHEAD, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, InfoSignScript, -1
 	object_event 23,  3, SPRITE_MISC_OVERHEAD, SPRITEMOVEDATA_POKECOM_NEWS, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, end, NULL, -1
+
+	const_def 1 ; object constants
+	const GOLDENRODPOKECOMCENTER1F_ENGINEER
+
+JudgeMachineScreenCallback:
+	checkflag ENGINE_JUDGE_MACHINE
+	iffalse .Done
+	changeblock 24, 0, $49
+	changeblock 26, 0, $4a
+	changeblock 28, 0, $4b
+	changeblock 24, 2, $4c
+	changeblock 26, 2, $4d
+	changeblock 28, 2, $4e
+.Done
+	return
 
 NurseScript_0x60f91:
 	setevent EVENT_WELCOMING_TO_POKECOM_CENTER
@@ -273,7 +290,7 @@ InfoSignScript:
 	line "Wonder Trade Hub"
 
 	para "Right:"
-	line "#mon News"
+	line "<PK><MN> Judge Machine"
 	done
 
 PokemonJournalWhitneyScript:
@@ -290,15 +307,10 @@ PokemonJournalWhitneyScript:
 	cont "the Elite Four."
 	done
 
-NewsMachineScript:
-	thistext
-
-	text "It's a #mon"
-	line "News Machine!"
-
-	para "It's not in"
-	line "operation yet…"
-	done
+JudgeMachineScript:
+	opentext
+	special JudgeMachine
+	waitendtext
 
 UnknownText_0x61c89:
 	text "Whoa, this #mon"
@@ -310,18 +322,6 @@ UnknownText_0x61c89:
 	para "installed lots of"
 	line "new machines too."
 	done
-
-; unused
-;UnknownText_0x61dfd:
-;	text "They said you can"
-;	line "trade #mon with"
-;
-;	para "total strangers up"
-;	line "here."
-;
-;	para "But they're still"
-;	line "adjusting things."
-;	done
 
 UnknownText_0x61cef:
 	text "I thought up a fun"
@@ -351,45 +351,94 @@ UnknownText_0x61cef:
 	line "friends!"
 	done
 
-UnknownText_0x61efa:
-	text "What is the News"
-	line "Machine?"
+JudgeMachineEngineerScript:
+	checkevent EVENT_BRED_AN_EGG
+	iffalse .NotBredYet
+	showtextfaceplayer JudgeMachineEngineerFinishedText
+	checkcode VAR_FACING
+	ifnotequal RIGHT, .GoLeft
+	applyonemovement GOLDENRODPOKECOMCENTER1F_ENGINEER, step_down
+	applyonemovement GOLDENRODPOKECOMCENTER1F_ENGINEER, step_left
+.GoLeft
+	applymovement GOLDENRODPOKECOMCENTER1F_ENGINEER, JudgeMachineEngineerLeavesMovement
+	disappear GOLDENRODPOKECOMCENTER1F_ENGINEER
+	setflag ENGINE_JUDGE_MACHINE
+	changeblock 24, 0, $49
+	changeblock 26, 0, $4a
+	changeblock 28, 0, $4b
+	changeblock 24, 2, $4c
+	changeblock 26, 2, $4d
+	changeblock 28, 2, $4e
+	end
 
-	para "Does it get news"
-	line "from a wider area"
-	cont "than the radio?"
+.NotBredYet:
+	showtextfaceplayer JudgeMachineEngineerWorkingText
+	turnobject LAST_TALKED, RIGHT
+	end
+
+JudgeMachineEngineerWorkingText:
+	text "The #mon"
+	line "Judge Machine…"
+
+	para "It's been my dream"
+	line "for a long time."
+
+	para "And with the #-"
+	line "Com Center funding"
+	cont "my work, it can"
+	cont "become a reality,"
+
+	para "even if it takes"
+	line "a computer the"
+	cont "size of a room!"
+
+	para "I'm almost done…"
 	done
 
-; unused
-;UnknownText_0x6202c:
-;	text "My friend was in"
-;	line "the News a while"
-;
-;	para "back. I was really"
-;	line "surprised!"
-;	done
+JudgeMachineEngineerFinishedText:
+	text "The #mon"
+	line "Judge Machine…"
 
-; unused
-;UnknownText_0x6206d:
-;	text "I get anxious if I"
-;	line "don't check out"
-;	cont "the latest News!"
-;	done
+	para "It's finally done!"
+	line "My dream has be-"
+	cont "come reality!"
 
-; unused
-;UnknownText_0x61f48:
-;	text "The #Com Center"
-;	line "will link with all"
-;
-;	para "#mon Centers in"
-;	line "a wireless net."
-;
-;	para "That must mean"
-;	line "I'll be able to"
-;
-;	para "link with all"
-;	line "sorts of people."
-;	done
+	para "What is it?"
+	line "It's a machine for"
+
+	para "judging the stats"
+	line "of any #mon!"
+
+	para "It uses the latest"
+	line "AI technology to"
+
+	para "evaluate a #-"
+	line "mon's inherent"
+	cont "potential, as well"
+
+	para "as the effort it's"
+	line "put into becoming"
+	cont "stronger."
+
+	para "It's the perfect"
+	line "way to measure a"
+	cont "#mon's power!"
+
+	para "Go ahead and try"
+	line "using it. It's"
+	cont "perfectly safe."
+
+	para "As for me, I'm ta-"
+	line "king a vacation!"
+	done
+
+JudgeMachineEngineerLeavesMovement:
+	step_left
+	step_left
+	step_left
+	step_left
+	step_left
+	step_end
 
 UnknownText_0x61e5c:
 	text "Some girl I don't"
@@ -400,18 +449,6 @@ UnknownText_0x61e5c:
 	line "for a #mon that"
 	cont "you want."
 	done
-
-; unused
-;UnknownText_0x61eb2:
-;	text "I received a"
-;	line "female Sunflora,"
-;
-;	para "but it's named"
-;	line "Stanley!"
-;
-;	para "That's my dad's"
-;	line "name!"
-;	done
 
 UnknownText_0x61fc9:
 	text "The machines here"
@@ -424,38 +461,6 @@ UnknownText_0x61fc9:
 	para "place before other"
 	line "people."
 	done
-
-; unused
-;UnknownText_0x620a1:
-;	text "If I get in the"
-;	line "News and become"
-;
-;	para "famous, I bet I'll"
-;	line "be adored."
-;
-;	para "I wonder how I"
-;	line "could get in the"
-;	cont "News?"
-;	done
-
-; unused
-;UnknownText_0x62173:
-;	text "I came over here"
-;	line "when I got word"
-;
-;	para "that Goldenrod's"
-;	line "#mon Center has"
-;
-;	para "new machines that"
-;	line "no one's ever seen"
-;	cont "before."
-;
-;	para "But it looks like"
-;	line "they're still busy"
-;
-;	para "with all their"
-;	line "preparations…"
-;	done
 
 UnknownText_0x62222:
 	text "Just seeing all"

@@ -262,9 +262,12 @@ EngineFlags:
 	engine_flag wPokemonJournals, 23 ; prof.oak
 	engine_flag wPokemonJournals, 24 ; prof.elm
 	engine_flag wPokemonJournals, 25 ; prof.ivy
-	engine_flag wPokemonJournals, 26 ; giovanni
-	engine_flag wPokemonJournals, 27 ; lorelei
-	engine_flag wPokemonJournals, 28 ; agatha
-	engine_flag wPokemonJournals, 29 ; bill
-	engine_flag wPokemonJournals, 30 ; kurt
-	engine_flag wPokemonJournals, 31 ; mr.fuji
+	engine_flag wPokemonJournals, 26 ; prof.westwood
+	engine_flag wPokemonJournals, 27 ; giovanni
+	engine_flag wPokemonJournals, 28 ; lorelei
+	engine_flag wPokemonJournals, 29 ; agatha
+	engine_flag wPokemonJournals, 30 ; bill
+	engine_flag wPokemonJournals, 31 ; kurt
+	engine_flag wPokemonJournals, 32 ; mr.fuji
+
+	engine_flag wStatusFlags3, 0 ; judge machine

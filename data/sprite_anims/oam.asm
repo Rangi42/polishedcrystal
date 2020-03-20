@@ -74,6 +74,7 @@ SpriteAnimOAMData:
 	dbw $08, .OAMData_84 ; SPRITE_ANIM_FRAME_IDX_89
 	dbw $04, .OAMData_84 ; SPRITE_ANIM_FRAME_IDX_8A
 	dbw $00, .OAMData_84 ; SPRITE_ANIM_FRAME_IDX_8B
+	dbw $00, .OAMData_86 ; SPRITE_ANIM_FRAME_IDX_8C
 
 .OAMData_02:
 	db 1
@@ -627,3 +628,7 @@ SpriteAnimOAMData:
 	dsprite  0,  0, -1,  4, $51, $1
 	dsprite  0,  0,  0,  4, $52, $1
 	dsprite  0,  0,  1,  4, $53, $1
+
+.OAMData_86:
+	db 1
+	dsprite  2,  0,  2,  0, $00, $0
