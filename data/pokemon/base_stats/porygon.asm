@@ -5,7 +5,7 @@
 	db 45 ; catch rate
 	db 130 ; base exp
 	db NO_ITEM ; item 1
-	db NO_ITEM ; item 2
+	db UP_GRADE ; item 2
 	dn GENDERLESS, 3 ; gender, step cycles to hatch
 	dn 6, 6 ; frontpic dimensions
 	db TRACE ; ability 1

@@ -14,7 +14,7 @@ endc
 	db 30 ; catch rate
 	db 199 ; base exp
 	db ASPEAR_BERRY ; item 1
-	db ASPEAR_BERRY ; item 2
+	db MAGMARIZER ; item 2
 	dn FEMALE_25, 4 ; gender, step cycles to hatch
 	dn 7, 7 ; frontpic dimensions
 	db FLAME_BODY ; ability 1

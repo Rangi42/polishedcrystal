@@ -5,7 +5,7 @@
 	db 200 ; catch rate
 	db 73 ; base exp
 	db NO_ITEM ; item 1
-	db NO_ITEM ; item 2
+	db TWISTEDSPOON ; item 2
 	dn FEMALE_25, 3 ; gender, step cycles to hatch
 	dn 5, 5 ; frontpic dimensions
 	db SYNCHRONIZE ; ability 1

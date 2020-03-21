@@ -4,7 +4,7 @@
 	db ELECTRIC, ELECTRIC
 	db 190 ; catch rate
 	db 42 ; base exp
-	db NO_ITEM ; item 1
+	db ORAN_BERRY ; item 1
 	db LIGHT_BALL ; item 2
 	dn FEMALE_50, 1 ; gender, step cycles to hatch
 	dn 5, 5 ; frontpic dimensions

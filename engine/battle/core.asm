@@ -5495,7 +5495,7 @@ LoadEnemyMon:
 	; Let's get the item:
 	; Check for guranteed items
 	ld a, [wBaseItems]
-	inc a ; cp GURANTEE_SECOND_ITEM
+	inc a ; cp ALWAYS_ITEM_2
 	ld a, [wBaseItems+1]
 	jr z, .UpdateItem
 

@@ -9,7 +9,7 @@ endc
 	db 60 ; catch rate
 	db 192 ; base exp
 	db NO_ITEM ; item 1
-	db SITRUS_BERRY ; item 2
+	db MARANGABERRY ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
 	dn 7, 7 ; frontpic dimensions
 	db RUN_AWAY ; ability 1

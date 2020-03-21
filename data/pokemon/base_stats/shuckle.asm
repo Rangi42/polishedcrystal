@@ -4,7 +4,7 @@
 	db BUG, ROCK
 	db 190 ; catch rate
 	db 80 ; base exp
-	db GURANTEE_SECOND_ITEM ; item 1
+	db ALWAYS_ITEM_2 ; item 1
 	db BERRY_JUICE ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
 	dn 5, 5 ; frontpic dimensions

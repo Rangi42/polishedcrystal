@@ -5,7 +5,7 @@
 	db 90 ; catch rate
 	db 98 ; base exp
 	db NO_ITEM ; item 1
-	db NO_ITEM ; item 2
+	db MARANGABERRY ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
 	dn 7, 7 ; frontpic dimensions
 	db CHLOROPHYLL ; ability 1

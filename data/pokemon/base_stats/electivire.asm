@@ -13,8 +13,8 @@ else
 endc
 	db 30 ; catch rate
 	db 199 ; base exp
-	db SITRUS_BERRY ; item 1
-	db SITRUS_BERRY ; item 2
+	db PERSIM_BERRY ; item 1
+	db ELECTIRIZER ; item 2
 	dn FEMALE_25, 4 ; gender, step cycles to hatch
 	dn 7, 7 ; frontpic dimensions
 	db MOTOR_DRIVE ; ability 1

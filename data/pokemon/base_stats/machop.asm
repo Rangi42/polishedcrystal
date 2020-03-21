@@ -5,7 +5,7 @@
 	db 180 ; catch rate
 	db 88 ; base exp
 	db NO_ITEM ; item 1
-	db NO_ITEM ; item 2
+	db FOCUS_BAND ; item 2
 	dn FEMALE_25, 3 ; gender, step cycles to hatch
 	dn 5, 5 ; frontpic dimensions
 	db GUTS ; ability 1

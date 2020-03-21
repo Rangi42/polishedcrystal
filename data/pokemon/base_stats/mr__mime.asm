@@ -9,8 +9,8 @@ endc
 	db PSYCHIC, FAIRY
 	db 45 ; catch rate
 	db 136 ; base exp
-	db NO_ITEM ; item 1
-	db LEPPA_BERRY ; item 2
+	db PERSIM_BERRY ; item 1
+	db PERSIM_BERRY ; item 2
 	dn FEMALE_50, 4 ; gender, step cycles to hatch
 	dn 6, 6 ; frontpic dimensions
 	db SOUNDPROOF ; ability 1

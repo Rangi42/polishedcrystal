@@ -4,7 +4,7 @@
 	db FIRE, FIRE
 	db 75 ; catch rate
 	db 213 ; base exp
-	db ASPEAR_BERRY ; item 1
+	db NO_ITEM ; item 1
 	db ASPEAR_BERRY ; item 2
 	dn FEMALE_25, 3 ; gender, step cycles to hatch
 	dn 7, 7 ; frontpic dimensions
