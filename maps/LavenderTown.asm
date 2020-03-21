@@ -1,7 +1,8 @@
 LavenderTown_MapScriptHeader:
 	db 0 ; scene scripts
 
-	db 0 ; callbacks
+	db 1 ; callbacks
+	callback MAPCALLBACK_NEWMAP, LavenderTownFlyPoint
 
 	db 7 ; warp events
 	warp_event  5,  7, LAVENDER_POKECENTER_1F, 1
@@ -36,6 +37,13 @@ LavenderTown_MapScriptHeader:
 
 	const_def 1 ; object constants
 	const LAVENDERTOWN_YOUNGSTER1
+
+LavenderTownFlyPoint:
+; TODO: don't set these once the coord_events are done
+	setevent EVENT_ROUTE_8_PROTESTORS
+	clearevent EVENT_ROUTE_8_KANTO_POKEMON_FEDERATION
+	setflag ENGINE_FLYPOINT_LAVENDER
+	return
 
 LavenderTownExpositionTrigger1:
 	moveobject LAVENDERTOWN_YOUNGSTER1, 14, 8
