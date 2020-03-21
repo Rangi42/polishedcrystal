@@ -118,6 +118,15 @@ RadioJumptable:
 	dw PokedexShow7 ; $56
 	dw PokedexShow8 ; $57
 
+RadioTerminator:
+	db "@"
+
+NextRadioLine:
+	push af
+	call CopyRadioTextToRAM
+	pop af
+	; fallthrough
+
 PrintRadioLine:
 	ld [wNextRadioLine], a
 	ld hl, wRadioText
@@ -1108,7 +1117,8 @@ PeoplePlaces2:
 
 PeoplePlaces3:
 	ld hl, PnP_Text3
-	jp PeoplePlaces7.PickPeopleOrPlaces
+	call PickPeopleOrPlaces
+	jp NextRadioLine
 
 PnP_Text1:
 	; PLACES AND PEOPLE!
@@ -1181,7 +1191,8 @@ PeoplePlaces5:
 	cp $a ; 6.25 percent
 	ld a, PLACES_AND_PEOPLE
 	jp c, PrintRadioLine
-	jp PeoplePlaces7.PickPeopleOrPlaces
+	call PickPeopleOrPlaces
+	jp NextRadioLine
 
 .Descriptors:
 	dw PnP_cute
@@ -1318,13 +1329,7 @@ PeoplePlaces7:
 	cp 4 percent
 	ld a, PLACES_AND_PEOPLE
 	jr c, .ok
-.PickPeopleOrPlaces:
-	call Random
-	cp 1 + 48 percent
-	; a = carry ? PLACES_AND_PEOPLE_4 (People) : PLACES_AND_PEOPLE_6 (Places)
-	assert PLACES_AND_PEOPLE_4 + 2 == PLACES_AND_PEOPLE_6
-	sbc a
-	sbc PLACES_AND_PEOPLE_6
+	call PickPeopleOrPlaces
 .ok
 	jp PrintRadioLine
 
@@ -1345,6 +1350,15 @@ PeoplePlaces7:
 	dw PnP_weird
 	dw PnP_rightforme
 	dw PnP_odd
+
+PickPeopleOrPlaces:
+	call Random
+	cp 1 + 48 percent
+	; a = carry ? PLACES_AND_PEOPLE_4 (People) : PLACES_AND_PEOPLE_6 (Places)
+	assert PLACES_AND_PEOPLE_4 + 2 == PLACES_AND_PEOPLE_6
+	sbc a
+	sbc -PLACES_AND_PEOPLE_6
+	ret
 
 RocketRadio1:
 	call StartRadioStation
@@ -1867,12 +1881,3 @@ StartRadioStation:
 	farjp RadioMusicRestartDE
 
 INCLUDE "data/radio/channel_music.asm"
-
-NextRadioLine:
-	push af
-	call CopyRadioTextToRAM
-	pop af
-	jp PrintRadioLine
-
-RadioTerminator:
-	db "@"
