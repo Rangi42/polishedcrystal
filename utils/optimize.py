@@ -45,12 +45,12 @@ patterns = {
 	# Good: nop (or omit)
 	(lambda line1, prev: re.match(r'ld ([abcdehl]), \1', line1.code)),
 ],
-'Inefficient HRAM': [
+'Inefficient HRAM load': [
 	# Bad: ld a, [hFoo] (or [rFoo])
 	# Good: ldh a, [hFoo]
 	(lambda line1, prev: re.match(r'ld a, \[[hr][^l]', line1.code)),
 ],
-'Inefficient HRAM': [
+'Inefficient HRAM store': [
 	# Bad: ld [hFoo], a (or [rFoo])
 	# Good: ldh [hFoo], a
 	(lambda line1, prev: re.match(r'ld \[[hr][^l]', line1.code) and
@@ -102,7 +102,7 @@ patterns = {
 	(lambda line5, prev: re.match(r'ld [hbd], a', line5.code) and
 		line5.code[3] == PAIRS[prev[0].code[4]]),
 ],
-'hl|bc|de += a': [
+'hl|bc|de += a (with jump)': [
 	# Okay: add l / ld l, a / jr nc, .noCarry / inc h / .noCarry
 	# Good: add l / ld l, a / adc h / sub l / ld h, a
 	(lambda line1, prev: re.match(r'add [lce]', line1.code)),
