@@ -1,5 +1,10 @@
+if DEF(FAITHFUL)
 	db  78,  84,  78, 100, 109,  85
 	;   hp  atk  def  spd  sat  sdf
+else
+	db  78,  94,  78, 100,  99,  85
+	;   hp  atk  def  spd  sat  sdf
+endc
 
 if DEF(FAITHFUL)
 	db FIRE, FLYING
