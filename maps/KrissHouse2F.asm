@@ -64,6 +64,8 @@ if DEF(DEBUG)
 	; pokedex
 	setflag ENGINE_POKEDEX
 ;	setflag ENGINE_UNOWN_DEX
+	; judge machine
+	setflag ENGINE_JUDGE_MACHINE
 	; all key items
 x = 0
 rept NUM_KEY_ITEMS
@@ -80,8 +82,10 @@ x = x + 1
 endr
 	; useful items
 x = POKE_BALL
-rept CHERISH_BALL - POKE_BALL + 1 
+rept CHERISH_BALL - POKE_BALL + 1
+if x != PARK_BALL && x != SAFARI_BALL
 	giveitem x, 99
+endc
 x = x + 1
 endr
 	giveitem MAX_POTION, 99
