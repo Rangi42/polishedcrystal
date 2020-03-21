@@ -1556,7 +1556,6 @@ LinkTrade:
 	ld b, h
 	ld c, l
 	farcall GetCaughtGender
-	ld a, c
 	ld [wPlayerTrademonCaughtData], a
 	ld hl, wOTPlayerName
 	ld de, wOTTrademonSenderName
@@ -1604,7 +1603,6 @@ LinkTrade:
 	ld b, h
 	ld c, l
 	farcall GetCaughtGender
-	ld a, c
 	ld [wOTTrademonCaughtData], a
 	ld a, [wd002]
 	ld [wCurPartyMon], a
@@ -2032,9 +2030,9 @@ Function29dba:
 Link_CheckCommunicationError:
 	xor a
 	ldh [hSerialReceivedNewData], a
-	ld a, [wLinkTimeoutFrames]
-	ld h, a
-	ld a, [wLinkTimeoutFrames + 1]
+	ld hl, wLinkTimeoutFrames + 1
+	ld a, [hld]
+	ld h, [hl]
 	ld l, a
 	push hl
 	call .CheckConnected
@@ -2304,9 +2302,9 @@ DetermineLinkBattleResult:
 	ld b, a
 	ld a, [hld]
 	srl b
-	rr a
+	rra
 	srl b
-	rr a
+	rra
 	ldh [hDivisor], a
 	ld b, $4
 	call Divide

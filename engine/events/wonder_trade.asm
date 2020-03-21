@@ -143,7 +143,6 @@ DoWonderTrade:
 	ld b, h
 	ld c, l
 	farcall GetCaughtGender
-	ld a, c
 	ld [wPlayerTrademonCaughtData], a
 
 	xor a
@@ -387,7 +386,6 @@ GetGSBallPichu:
 	ld b, h
 	ld c, l
 	farcall GetCaughtGender
-	ld a, c
 	ld [wPlayerTrademonCaughtData], a
 	ld [wOTTrademonCaughtData], a
 

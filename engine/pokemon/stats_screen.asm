@@ -617,7 +617,6 @@ StatsScreen_LoadGFX:
 	ld d, a
 	farcall CalcExpAtLevel
 	ld hl, wTempMonExp + 2
-	ld hl, wTempMonExp + 2
 	ldh a, [hQuotient + 2]
 	sub [hl]
 	dec hl
@@ -958,9 +957,7 @@ TN_PrintCharacteristics:
 	add b
 	inc a
 	ld b, a
-
 	; a = 5 * c + b % 5
-	ld a, b
 .mod_5
 	cp 5
 	jr c, .modded_5

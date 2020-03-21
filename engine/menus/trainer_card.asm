@@ -564,9 +564,9 @@ endr
 	inc de
 	push hl
 	push bc
-	ld a, [wTrainerCardBadgePaletteAddr]
-	ld h, a
-	ld a, [wTrainerCardBadgePaletteAddr + 1]
+	ld hl, wTrainerCardBadgePaletteAddr + 1
+	ld a, [hld]
+	ld h, [hl]
 	ld l, a
 	ld a, [hli]
 	ld b, a

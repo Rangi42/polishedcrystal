@@ -115,9 +115,9 @@ ComputeHPBarPixels:
 	ld b, a
 	ldh a, [hProduct + 3]
 	srl b
-	rr a
+	rra
 	srl b
-	rr a
+	rra
 	ldh [hDividend + 3], a
 	ld a, b
 	ldh [hDividend + 2], a

@@ -553,7 +553,7 @@ Function90380:
 CheckCanDeletePhoneNumber:
 	ld a, c
 	call GetCallerTrainerClass
-	ld a, c
+;	ld a, c
 ;	and a
 ;	ret nz
 	ld a, b

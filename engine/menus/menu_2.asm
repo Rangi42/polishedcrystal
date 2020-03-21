@@ -12,7 +12,7 @@ PlaceMenuItemName:
 PlaceMartItemName:
 	push de
 	ld a, [wMenuSelection]
-	cp a, -1 ; special case for Cancel in Key Items pocket
+	cp CANCEL ; special case for Cancel in Key Items pocket
 	ld de, ScrollingMenu_CancelString ; found in scrolling_menu.asm
 	ld [wNamedObjectIndexBuffer], a
 	call nz, GetItemName

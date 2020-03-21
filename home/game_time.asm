@@ -101,9 +101,9 @@ endc
 	ld [hl], a
 
 ; +1 hour
-	ld a, [wGameTimeHours]
-	ld h, a
-	ld a, [wGameTimeHours + 1]
+	ld hl, wGameTimeHours + 1
+	ld a, [hld]
+	ld h, [hl]
 	ld l, a
 	inc hl
 

@@ -3788,17 +3788,17 @@ endr
 	jr z, .less_than_256_max
 	ldh a, [hMultiplier]
 	srl b
-	rr a
+	rra
 	srl b
-	rr a
+	rra
 	ldh [hDivisor], a
 	ldh a, [hProduct + 2]
 	ld b, a
 	srl b
 	ldh a, [hProduct + 3]
-	rr a
+	rra
 	srl b
-	rr a
+	rra
 	ldh [hProduct + 3], a
 	ld a, b
 	ldh [hProduct + 2], a
@@ -7988,8 +7988,7 @@ AddLastBattleToLinkRecord:
 	push hl
 	inc hl
 	inc hl
-	ld a, [hl]
-	dec hl
+	ld a, [hld]
 	dec hl
 	and a
 	jr z, .copy
@@ -8048,8 +8047,7 @@ AddLastBattleToLinkRecord:
 
 .CheckOverflow:
 	dec hl
-	ld a, [hl]
-	inc hl
+	ld a, [hli]
 	cp 9999 / $100
 	ret c
 	ld a, [hl]
