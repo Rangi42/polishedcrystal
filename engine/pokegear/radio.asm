@@ -1355,7 +1355,7 @@ PickPeopleOrPlaces:
 	call Random
 	cp 1 + 48 percent
 	; a = carry ? PLACES_AND_PEOPLE_4 (People) : PLACES_AND_PEOPLE_6 (Places)
-	assert PLACES_AND_PEOPLE_4 + 2 == PLACES_AND_PEOPLE_6
+	_assert PLACES_AND_PEOPLE_4 + 2 == PLACES_AND_PEOPLE_6
 	sbc a
 	sbc -PLACES_AND_PEOPLE_6
 	ret

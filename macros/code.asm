@@ -1,4 +1,4 @@
-assert: MACRO
+_assert: MACRO
 	if !(\1)
 		if _NARG > 1
 			fail \2
