@@ -10,7 +10,7 @@ endc
 	db 75 ; catch rate
 	db 156 ; base exp
 	db NO_ITEM ; item 1
-	db NO_ITEM ; item 2
+	db BRIGHTPOWDER ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
 	dn 6, 6 ; frontpic dimensions
 	db VOLT_ABSORB ; ability 1

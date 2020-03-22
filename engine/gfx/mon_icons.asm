@@ -147,8 +147,7 @@ GetMenuMonIconPalette::
 	jr nz, .not_red_gyarados
 
 	inc hl ; Form is in the byte after Shiny
-	ld a, [hl]
-	dec hl
+	ld a, [hld]
 	and FORM_MASK
 	cp GYARADOS_RED_FORM
 	jr nz, .not_red_gyarados

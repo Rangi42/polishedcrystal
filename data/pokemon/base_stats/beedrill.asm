@@ -13,8 +13,8 @@ if DEF(FAITHFUL)
 else
 	db 184 ; base exp
 endc
-	db POISON_BARB ; item 1
-	db SHED_SHELL ; item 2
+	db SHED_SHELL ; item 1
+	db POISON_BARB ; item 2
 	dn FEMALE_50, 2 ; gender, step cycles to hatch
 	dn 7, 7 ; frontpic dimensions
 	db SWARM ; ability 1

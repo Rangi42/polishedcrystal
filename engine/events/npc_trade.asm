@@ -131,7 +131,6 @@ DoNPCTrade:
 	ld b, h
 	ld c, l
 	call GetCaughtGender
-	ld a, c
 	ld [wPlayerTrademonCaughtData], a
 
 	xor a
@@ -338,17 +337,15 @@ GetTradeMonNames:
 	cp "@"
 	jr nz, .loop
 
-	ld [hl], "@"
+	ld [hl], a ; "@"
 	ret
 
 GetCaughtGender:
 	ld hl, MON_CAUGHTGENDER
 	add hl, bc
-
 	ld a, [hl]
 	and CAUGHTGENDER_MASK
-	rl a
-	ld c, a
+	rla
 	ret
 
 INCLUDE "data/events/npc_trades.asm"

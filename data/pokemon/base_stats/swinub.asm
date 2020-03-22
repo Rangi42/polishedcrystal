@@ -4,8 +4,8 @@
 	db ICE, GROUND
 	db 225 ; catch rate
 	db 78 ; base exp
-	db NO_ITEM ; item 1
-	db RAWST_BERRY ; item 2
+	db RAWST_BERRY ; item 1
+	db SNOWBALL ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
 	dn 5, 5 ; frontpic dimensions
 	db OBLIVIOUS ; ability 1

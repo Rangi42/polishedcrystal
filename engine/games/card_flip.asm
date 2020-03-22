@@ -114,9 +114,9 @@ _CardFlip:
 	db "@"
 
 .DeductCoins:
-	ld a, [wCoins]
-	ld h, a
-	ld a, [wCoins + 1]
+	ld hl, wCoins + 1
+	ld a, [hld]
+	ld h, [hl]
 	ld l, a
 	ld a, h
 	and a
@@ -1068,9 +1068,9 @@ CardFlip_CheckWinCondition:
 	db "@"
 
 .AddCoinPlaySFX:
-	ld a, [wCoins]
-	ld h, a
-	ld a, [wCoins + 1]
+	ld hl, wCoins + 1
+	ld a, [hld]
+	ld h, [hl]
 	ld l, a
 	inc hl
 	ld a, h

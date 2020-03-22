@@ -8,7 +8,7 @@ else
 endc
 	db 75 ; catch rate
 	db 157 ; base exp
-	db NO_ITEM ; item 1
+	db BLACK_SLUDGE ; item 1
 	db NUGGET ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
 	dn 7, 7 ; frontpic dimensions

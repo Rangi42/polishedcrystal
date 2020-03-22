@@ -1057,7 +1057,6 @@ DepositSellPack:
 	call WaitBGMap_DrawPackGFX
 	farcall TMHMPocket
 	ld a, [wCurItem]
-	ld [wCurItem], a
 	ret
 
 .BerriesPocket:

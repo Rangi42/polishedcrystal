@@ -13,8 +13,8 @@ if DEF(FAITHFUL)
 else
 	db 92 ; base exp
 endc
-	db NO_ITEM ; item 1
-	db ORAN_BERRY ; item 2
+	db ORAN_BERRY ; item 1
+	db LIGHT_BALL ; item 2
 	dn FEMALE_50, 1 ; gender, step cycles to hatch
 	dn 7, 7 ; frontpic dimensions
 	db STATIC ; ability 1

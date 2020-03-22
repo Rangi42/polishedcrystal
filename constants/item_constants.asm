@@ -292,7 +292,7 @@
 NUM_ITEMS EQU const_value +- 1
 
 	const ITEM_FROM_MEM ; ff
-GURANTEE_SECOND_ITEM EQU $ff
+ALWAYS_ITEM_2 EQU $ff
 
 ; See data/items/name_order.asm
 	const_def

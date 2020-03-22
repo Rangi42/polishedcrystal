@@ -5,7 +5,7 @@
 	db 60 ; catch rate
 	db 150 ; base exp
 	db NO_ITEM ; item 1
-	db NO_ITEM ; item 2
+	db CELL_BATTERY ; item 2
 	dn GENDERLESS, 3 ; gender, step cycles to hatch
 	dn 5, 5 ; frontpic dimensions
 	db SOUNDPROOF ; ability 1

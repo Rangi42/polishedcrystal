@@ -9,8 +9,8 @@ endc
 	db BUG, POISON
 	db 75 ; catch rate
 	db 138 ; base exp
-	db SILVERPOWDER ; item 1
-	db SHED_SHELL ; item 2
+	db SHED_SHELL ; item 1
+	db SILVERPOWDER ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
 	dn 7, 7 ; frontpic dimensions
 	db SHIELD_DUST ; ability 1

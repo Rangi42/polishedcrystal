@@ -5,7 +5,7 @@
 	db 255 ; catch rate
 	db 57 ; base exp
 	db NO_ITEM ; item 1
-	db ORAN_BERRY ; item 2
+	db LANSAT_BERRY ; item 2
 	dn FEMALE_50, 2 ; gender, step cycles to hatch
 	dn 5, 5 ; frontpic dimensions
 	db RUN_AWAY ; ability 1

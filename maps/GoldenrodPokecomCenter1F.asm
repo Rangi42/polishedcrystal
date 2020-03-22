@@ -392,6 +392,11 @@ JudgeMachineEngineerWorkingText:
 	line "a computer the"
 	cont "size of a room!"
 
+	para "Think of how use-"
+	line "ful it will be"
+	cont "for Breeders who"
+	cont "hatch many Eggs!"
+
 	para "I'm almost done…"
 	done
 

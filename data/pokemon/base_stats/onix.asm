@@ -13,7 +13,7 @@ if DEF(FAITHFUL)
 else
 	db 128 ; base exp
 endc
-	db NO_ITEM ; item 1
+	db LAGGING_TAIL ; item 1
 	db HARD_STONE ; item 2
 	dn FEMALE_50, 4 ; gender, step cycles to hatch
 	dn 7, 7 ; frontpic dimensions

@@ -9,7 +9,7 @@ endc
 	db ELECTRIC, ELECTRIC
 	db 45 ; catch rate
 	db 106 ; base exp
-	db SITRUS_BERRY ; item 1
+	db PERSIM_BERRY ; item 1
 	db ELECTIRIZER ; item 2
 	dn FEMALE_25, 4 ; gender, step cycles to hatch
 	dn 6, 6 ; frontpic dimensions

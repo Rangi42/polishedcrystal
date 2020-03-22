@@ -8,7 +8,7 @@ else
 endc
 	db 45 ; catch rate
 	db 64 ; base exp
-	db LUM_BERRY ; item 1
+	db ALWAYS_ITEM_2 ; item 1
 	db LUM_BERRY ; item 2
 	dn GENDERLESS, 15 ; gender, step cycles to hatch
 	dn 5 , 5 ; frontpic dimensions
