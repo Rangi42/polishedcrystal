@@ -573,7 +573,7 @@ OutlineRadarChart:
 	ldh [hFunctionTargetLo], a
 	ld a, HIGH(FillRadarDown)
 	ldh [hFunctionTargetHi], a
-	call DrawRadarLineBCToDE
+	call DrawAndFillRadarEdge
 
 ; de = Def point
 	ldh a, [hChartDef]
@@ -596,7 +596,7 @@ OutlineRadarChart:
 	ldh [hFunctionTargetLo], a
 	ld a, HIGH(FillRadarLeft)
 	ldh [hFunctionTargetHi], a
-	call DrawRadarLineBCToDE
+	call DrawAndFillRadarEdge
 
 ; de = Spd point
 	ldh a, [hChartSpd]
@@ -617,7 +617,7 @@ OutlineRadarChart:
 	ldh [hFunctionTargetLo], a
 	ld a, HIGH(FillRadarUp)
 	ldh [hFunctionTargetHi], a
-	call DrawRadarLineBCToDE
+	call DrawAndFillRadarEdge
 
 ; de = SDf point
 	ldh a, [hChartSdf]
@@ -638,7 +638,7 @@ OutlineRadarChart:
 	pop bc
 	push de
 	; hFunctionTarget is already FillRadarUp
-	call DrawRadarLineBCToDE
+	call DrawAndFillRadarEdge
 
 ; de = SAt point
 	ldh a, [hChartSat]
@@ -663,7 +663,7 @@ OutlineRadarChart:
 	ldh [hFunctionTargetLo], a
 	ld a, HIGH(FillRadarRight)
 	ldh [hFunctionTargetHi], a
-	call DrawRadarLineBCToDE
+	call DrawAndFillRadarEdge
 
 ; Draw a line from SAt to HP, closing the polygon
 	pop bc
@@ -674,8 +674,8 @@ OutlineRadarChart:
 	ldh [hFunctionTargetHi], a
 	; fallthrough
 
-DrawRadarLineBCToDE:
-; Draw a line from (b, c) to (d, e)
+DrawAndFillRadarEdge:
+; Draw a line from (b, c) to (d, e) and fill it in with hFunction
 
 ; Calculate |x1 - x0|
 	ld a, d
@@ -737,7 +737,9 @@ DrawLowRadarLine:
 
 ; For x from b to d, draw a point at (x, c)
 .loop
-	call DrawRadarPointAndFill
+	push de
+	call hFunction ; FillRadarUp/Down/Left/Right
+	pop de
 
 ; Update D and y
 	ldh a, [hErr]
@@ -790,7 +792,9 @@ DrawHighRadarLine:
 
 ; For y from c to e, draw a point at (b, y)
 .loop
-	call DrawRadarPointAndFill
+	push de
+	call hFunction ; FillRadarUp/Down/Left/Right
+	pop de
 
 ; Update D and x
 	ldh a, [hErr]
@@ -822,14 +826,15 @@ DrawHorizontalRadarLine:
 	ld a, b
 	cp d
 	jr c, .x_sorted
-	jr z, DrawRadarPointAndFill ; b == d and c == e, so draw one point
 	ld b, d
 	ld d, a
 .x_sorted
 
 ; For x from b to d, draw a point at (x, c)
 .loop
-	call DrawRadarPointAndFill
+	push de
+	call hFunction ; FillRadarUp/Down/Left/Right
+	pop de
 	inc b
 	ld a, d
 	cp b
@@ -843,27 +848,19 @@ DrawVerticalRadarLine:
 	ld a, c
 	cp e
 	jr c, .y_sorted
-	jr z, DrawRadarPointAndFill ; b == d and c == e, so draw one point
 	ld c, e
 	ld e, a
 .y_sorted
 
 ; For y from c to e, draw a point at (b, y)
 .loop
-	call DrawRadarPointAndFill
+	push de
+	call hFunction ; FillRadarUp/Down/Left/Right
+	pop de
 	inc c
 	ld a, e
 	cp c
 	jr nc, .loop
-	ret
-
-DrawRadarPointAndFill:
-; Draw a point at (b, c), where 0 <= b < 80 and 0 <= c < 96, and
-; fill toward the axis previously set in hFunction
-	push de
-	call DrawRadarPointBC
-	call hFunction ; FillRadarUp/Down/Left/Right
-	pop de
 	ret
 
 FillRadarUp:
