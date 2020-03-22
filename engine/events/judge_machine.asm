@@ -304,30 +304,34 @@ JudgeSystem::
 
 .prev_mon
 	ld a, [wCurPartyMon]
+.more_prev
 	and a
 	jr z, .input_loop
 	dec a
-	ld [wCurPartyMon], a
-	ld a, MON_IS_EGG
-	call GetPartyParamLocation
+	ld hl, wPartyMon1IsEgg
+	push af
+	call GetPartyLocation
+	pop af
 	bit MON_IS_EGG_F, [hl]
-	jr nz, .prev_mon
+	jr nz, .more_prev
 	jr .switch_mon
 
 .next_mon
 	ld a, [wPartyCount]
 	ld b, a
 	ld a, [wCurPartyMon]
+.more_next
 	inc a
 	cp b
 	jr z, .input_loop
-	ld [wCurPartyMon], a
-	ld a, MON_IS_EGG
-	call GetPartyParamLocation
+	ld hl, wPartyMon1IsEgg
+	push af
+	call GetPartyLocation
+	pop af
 	bit MON_IS_EGG_F, [hl]
-	jr nz, .next_mon
+	jr nz, .more_next
 .switch_mon
-	ld a, [wCurPartyMon]
+	ld [wCurPartyMon], a
 	ld c, a
 	ld b, 0
 	ld hl, wPartySpecies
