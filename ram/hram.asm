@@ -6,8 +6,6 @@ hPushOAM:: ds 5
 
 hScriptVar:: db
 
-	ds 4
-
 hROMBankBackup:: db
 hBuffer:: db
 hLYOverrideStackCopyAmount:: db
@@ -18,16 +16,9 @@ hRTCHours::   db
 hRTCMinutes:: db
 hRTCSeconds:: db
 
-	ds 2
-
 hHours:: db
-	ds 1
 hMinutes:: db
-	ds 1
 hSeconds:: db
-	ds 1
-
-	ds 1
 
 hVBlankCounter:: db
 
@@ -37,8 +28,6 @@ hROMBank:: db
 hVBlank:: db
 hMapEntryMethod:: db
 hMenuReturn:: db
-
-	ds 1
 
 hJoypadReleased:: db
 hJoypadPressed::  db
@@ -50,8 +39,6 @@ hJoyDown::        db
 hJoyLast::        db
 
 hInMenu:: db
-
-	ds 2
 
 UNION
 hGraphicStartTile:: db
@@ -126,8 +113,6 @@ hMoneyTemp:: ds 3
 hLCDCPointer::     db
 hLYOverrideStart:: db
 hLYOverrideEnd::   db
-
-	ds 1
 
 hSerialReceivedNewData::     db
 hSerialConnectionStatus::    db
@@ -210,7 +195,13 @@ hDY::  db
 hErr:: db
 ENDU
 
-	ds 2
+	ds 13
+
+hFunction::
+hFunctionJump::     db ; $c3 jp
+hFunctionTarget::
+hFunctionTargetLo:: db ; LOW(target)
+hFunctionTargetHi:: db ; HIGH(target)
 
 hBitwiseOperation::
 hBitwisePrefix:: db ; $cb prefix

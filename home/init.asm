@@ -141,6 +141,8 @@ Init::
 	ld a, $c9 ; ret
 	ldh [hBitwiseRet], a
 	ldh [hSingleRet], a
+	ld a, $c3 ; jp
+	ldh [hFunctionJump], a
 
 	farcall InitSGBBorder
 

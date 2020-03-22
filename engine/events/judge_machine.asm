@@ -564,6 +564,10 @@ OutlineRadarChart:
 ; Draw a line from HP to Atk
 	pop bc
 	push de
+	ld a, LOW(FillRadarDown)
+	ldh [hFunctionTargetLo], a
+	ld a, HIGH(FillRadarDown)
+	ldh [hFunctionTargetHi], a
 	call DrawRadarLineBCToDE
 
 ; de = Def point
@@ -583,6 +587,10 @@ OutlineRadarChart:
 ; Draw a line from Atk to Def
 	pop bc
 	push de
+	ld a, LOW(FillRadarLeft)
+	ldh [hFunctionTargetLo], a
+	ld a, HIGH(FillRadarLeft)
+	ldh [hFunctionTargetHi], a
 	call DrawRadarLineBCToDE
 
 ; de = Spd point
@@ -600,6 +608,10 @@ OutlineRadarChart:
 ; Draw a line from Def to Spd
 	pop bc
 	push de
+	ld a, LOW(FillRadarUp)
+	ldh [hFunctionTargetLo], a
+	ld a, HIGH(FillRadarUp)
+	ldh [hFunctionTargetHi], a
 	call DrawRadarLineBCToDE
 
 ; de = SDf point
@@ -620,6 +632,7 @@ OutlineRadarChart:
 ; Draw a line from Spd to SDf
 	pop bc
 	push de
+	; hFunctionTarget is already FillRadarUp
 	call DrawRadarLineBCToDE
 
 ; de = SAt point
@@ -641,11 +654,19 @@ OutlineRadarChart:
 ; Draw a line from SDf to SAt
 	pop bc
 	push de
+	ld a, LOW(FillRadarRight)
+	ldh [hFunctionTargetLo], a
+	ld a, HIGH(FillRadarRight)
+	ldh [hFunctionTargetHi], a
 	call DrawRadarLineBCToDE
 
 ; Draw a line from SAt to HP, closing the polygon
 	pop bc
 	pop de
+	ld a, LOW(FillRadarDown)
+	ldh [hFunctionTargetLo], a
+	ld a, HIGH(FillRadarDown)
+	ldh [hFunctionTargetHi], a
 	; fallthrough
 
 DrawRadarLineBCToDE:
@@ -879,12 +900,12 @@ DrawRadarPointBC:
 	call hBitwiseOperation
 	; $c6 | (a << 3) = the 'set {a}, [hl]' opcode
 	inc hl
-	or $c6
+	xor $86 ^ $c6
 	ldh [hBitwiseOpcode], a
 	call hBitwiseOperation
 
 	pop de
-	ret
+	jp hFunction
 
 .Times10:
 	dw %0000000000 ; == %00000xxx * 10 ($00-07)
@@ -899,6 +920,16 @@ DrawRadarPointBC:
 	dw %1011010000 ; == %01001xxx * 10 ($48-4f)
 	dw %1100100000 ; == %01010xxx * 10 ($50-57)
 	dw %1101110000 ; == %01011xxx * 10 ($58-5f)
+
+FillRadarUp:
+FillRadarRight:
+FillRadarDown:
+FillRadarLeft:
+; TODO: fill in the direction until reaching a black or dark pixel
+	; $46 | (a << 3) = the 'bit {a}, [hl]' opcode
+	xor $c6 ^ $46
+	ldh [hBitwiseOpcode], a
+	ret
 
 JudgeSystemGFX:
 INCBIN "gfx/stats/judge.2bpp.lz"
