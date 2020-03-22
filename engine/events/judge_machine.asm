@@ -1,12 +1,13 @@
-JUDGE_BORDER_TILE EQU $00
-JUDGE_LINE_TILE   EQU $01
-JUDGE_END_TILE    EQU $02
-JUDGE_MALE_TILE   EQU $07
-JUDGE_FEMALE_TILE EQU $08
-JUDGE_STAR_TILE   EQU $09
-JUDGE_BLANK_TILE  EQU $0a
-JUDGE_B_TILE      EQU $13
-JUDGE_WHITE_TILE  EQU $77
+JUDGE_UP_DOWN_TILE    EQU $00
+JUDGE_UNDERLINE_TILE  EQU $01
+JUDGE_LINE_END_TILE   EQU $02
+JUDGE_MALE_TILE       EQU $07
+JUDGE_FEMALE_TILE     EQU $08
+JUDGE_STAR_TILE       EQU $09
+JUDGE_LEFT_RIGHT_TILE EQU $0a
+JUDGE_BORDER_TILE     EQU $13
+JUDGE_BLANK_TILE      EQU $64
+JUDGE_WHITE_TILE      EQU $6d
 
 JudgeMachine:
 ; Check that the machine is activated
@@ -125,13 +126,15 @@ JudgeSystem::
 	ld bc, 1 tiles
 	call CopyBytes
 
-; Place the nickname
+; Place the up/down arrows and nickname
 	ld hl, wPartyMonNicknames
 	ld a, [wCurPartyMon]
 	call SkipNames
 	ld d, h
 	ld e, l
-	hlcoord 1, 0
+	hlcoord 0, 0
+	ld [hl], JUDGE_UP_DOWN_TILE
+	inc hl
 	rst PlaceString
 
 ; Place the level
@@ -238,11 +241,6 @@ JudgeSystem::
 	ld bc, wTempMonSpclAtk
 	call .PrintTopStat
 
-; Place the controls
-	hlcoord 1, 17
-	ld de, .Controls
-	rst PlaceString
-
 ; Show the screen
 	call EnableLCD
 	call ApplyTilemapInVBlank
@@ -287,36 +285,75 @@ JudgeSystem::
 	farcall PlaySpriteAnimations
 	call DelayFrame
 	call JoyTextDelay
+	ldh a, [hJoyLast]
 	; B button quits
-	ldh a, [hJoyLast]
-	and B_BUTTON
+	bit B_BUTTON_F, a
 	ret nz
+	; Up or down switches between party members
+	bit D_UP_F, a
+	jr nz, .prev_mon
+	bit D_DOWN_F, a
+	jr nz, .next_mon
 	; Left or right toggles between EVs and IVs
-	ldh a, [hJoyLast]
 	and D_LEFT | D_RIGHT
 	jr z, .input_loop
-
-; Toggle between EVs and IVs
 	ldh a, [hChartScreen]
 	cpl
 	ldh [hChartScreen], a
 	jr .render
 
-.Controls: db "◀ ", JUDGE_B_TILE, " ▶@"
+.prev_mon
+	ld a, [wCurPartyMon]
+	and a
+	jr z, .input_loop
+	dec a
+	ld [wCurPartyMon], a
+	ld a, MON_IS_EGG
+	call GetPartyParamLocation
+	bit MON_IS_EGG_F, [hl]
+	jr nz, .prev_mon
+	jr .switch_mon
+
+.next_mon
+	ld a, [wPartyCount]
+	ld b, a
+	ld a, [wCurPartyMon]
+	inc a
+	cp b
+	jr z, .input_loop
+	ld [wCurPartyMon], a
+	ld a, MON_IS_EGG
+	call GetPartyParamLocation
+	bit MON_IS_EGG_F, [hl]
+	jr nz, .next_mon
+.switch_mon
+	ld a, [wCurPartyMon]
+	ld c, a
+	ld b, 0
+	ld hl, wPartySpecies
+	add hl, bc
+	inc a
+	ld [wPartyMenuCursor], a
+	ld a, [hl]
+	ld [wCurPartySpecies], a
+	farcall ClearSpriteAnims
+	jp JudgeSystem
 
 .EVHeading:
+	db JUDGE_LEFT_RIGHT_TILE
 	db "Effort   <LNBRK>"
 rept 10
-	db JUDGE_LINE_TILE
+	db JUDGE_UNDERLINE_TILE
 endr
-	db JUDGE_END_TILE, "@"
+	db JUDGE_LINE_END_TILE, "@"
 
 .IVHeading:
+	db JUDGE_LEFT_RIGHT_TILE
 	db "Potential<LNBRK>"
 rept 10
-	db JUDGE_LINE_TILE
+	db JUDGE_UNDERLINE_TILE
 endr
-	db JUDGE_END_TILE, "@"
+	db JUDGE_LINE_END_TILE, "@"
 
 .PrintTopStat:
 ; hl = coords, de = string, bc = stat

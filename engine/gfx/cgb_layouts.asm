@@ -1180,9 +1180,12 @@ _CGB_JudgeSystem:
 
 	call WipeAttrMap
 
-	; top row
+	; up/down arrows
 	hlcoord 0, 0, wAttrMap
-	ld bc, 18
+	ld a, 1 | TILE_BANK
+	ld [hli], a
+	; top row
+	ld bc, 17
 	ld a, 1
 	rst ByteFill
 	; gender icon
@@ -1192,6 +1195,10 @@ _CGB_JudgeSystem:
 	ld a, 1 | TILE_BANK
 	ld bc, 21
 	rst ByteFill
+	; left/right arrows
+	hlcoord 0, 2, wAttrMap
+	ld a, 0 | TILE_BANK
+	ld [hl], a
 	; frontpic
 	hlcoord 0, 6, wAttrMap
 	lb bc, 7, 7
@@ -1234,10 +1241,6 @@ _CGB_JudgeSystem:
 	ld a, 0 | TILE_BANK
 	ld bc, 11
 	rst ByteFill
-	; controls
-	hlcoord 3, 17, wAttrMap
-	ld a, 2 | TILE_BANK
-	ld [hl], a
 
 	jr _CGB_FinishLayout
 
