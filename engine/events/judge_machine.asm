@@ -90,6 +90,11 @@ NewsMachineEggText:
 	done
 
 JudgeSystem::
+; Start with the EV chart
+	xor a
+	ldh [hChartScreen], a
+
+.restart
 ; Clear the screen
 	call ClearBGPalettes
 	call ClearTileMap
@@ -248,10 +253,6 @@ JudgeSystem::
 	call GetCGBLayout
 	call SetPalettes
 
-; Start with the EV chart
-	xor a
-	ldh [hChartScreen], a
-
 .render
 	farcall ClearSpriteAnims
 
@@ -341,7 +342,7 @@ JudgeSystem::
 	ld a, [hl]
 	ld [wCurPartySpecies], a
 	farcall ClearSpriteAnims
-	jp JudgeSystem
+	jp .restart
 
 .EVHeading:
 	db JUDGE_LEFT_RIGHT_TILE
