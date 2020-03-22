@@ -732,7 +732,7 @@ DrawLowRadarLine:
 
 ; For x from b to d, draw a point at (x, c)
 .loop
-	call DrawRadarPointBC
+	call DrawRadarPointAndFill
 
 ; Update D and y
 	ldh a, [hErr]
@@ -785,7 +785,7 @@ DrawHighRadarLine:
 
 ; For y from c to e, draw a point at (b, y)
 .loop
-	call DrawRadarPointBC
+	call DrawRadarPointAndFill
 
 ; Update D and x
 	ldh a, [hErr]
@@ -817,14 +817,14 @@ DrawHorizontalRadarLine:
 	ld a, b
 	cp d
 	jr c, .x_sorted
-	jr z, DrawRadarPointBC ; b == d and c == e, so draw one point
+	jr z, DrawRadarPointAndFill ; b == d and c == e, so draw one point
 	ld b, d
 	ld d, a
 .x_sorted
 
 ; For x from b to d, draw a point at (x, c)
 .loop
-	call DrawRadarPointBC
+	call DrawRadarPointAndFill
 	inc b
 	ld a, d
 	cp b
@@ -838,23 +838,124 @@ DrawVerticalRadarLine:
 	ld a, c
 	cp e
 	jr c, .y_sorted
-	jr z, DrawRadarPointBC ; b == d and c == e, so draw one point
+	jr z, DrawRadarPointAndFill ; b == d and c == e, so draw one point
 	ld c, e
 	ld e, a
 .y_sorted
 
 ; For y from c to e, draw a point at (b, y)
 .loop
-	call DrawRadarPointBC
+	call DrawRadarPointAndFill
 	inc c
 	ld a, e
 	cp c
 	jr nc, .loop
 	ret
 
+DrawRadarPointAndFill:
+; Draw a point at (b, c), where 0 <= b < 80 and 0 <= c < 96, and
+; fill toward the axis previously set in hFunction
+	push de
+	call DrawRadarPointBC
+	call hFunction ; FillRadarUp/Down/Left/Right
+	pop de
+	ret
+
+FillRadarUp:
+; Draw a vertical line from (b, c) to the lower diagonal half-axes
+	ld hl, .LowerYCoords
+	jp _FillRadarVertical
+
+.LowerYCoords:
+	db 71, 70, 70, 69, 68, 68, 67, 67, 66, 65, 65, 64, 64, 63, 62, 62, 61, 61, 60, 59
+	db 59, 58, 58, 57, 56, 56, 55, 55, 54, 53, 53, 52, 52, 51, 51, 50, 49, 49, 48, 48
+	db 48, 48, 49, 49, 50, 51, 51, 52, 52, 53, 53, 54, 55, 55, 56, 56, 57, 58, 58, 59
+	db 59, 60, 61, 61, 62, 62, 63, 64, 64, 65, 65, 66, 67, 67, 68, 68, 69, 70, 70, 71
+
+FillRadarDown:
+; Draw a vertical line from (b, c) to the upper diagonal half-axes
+	ld hl, .UpperYCoords
+	jr _FillRadarVertical
+
+.UpperYCoords:
+	db 24, 25, 25, 26, 26, 27, 27, 28, 29, 29, 30, 30, 31, 31, 32, 33, 33, 34, 34, 35
+	db 36, 36, 37, 37, 38, 39, 39, 40, 40, 41, 42, 42, 43, 43, 44, 45, 45, 46, 46, 47
+	db 47, 46, 46, 45, 45, 44, 43, 43, 42, 42, 41, 40, 40, 39, 39, 38, 37, 37, 36, 36
+	db 35, 34, 34, 33, 33, 32, 31, 31, 30, 30, 29, 29, 28, 27, 27, 26, 26, 25, 25, 24
+
+_FillRadarVertical:
+; Draw a vertical line from (b, c) to (b, y), where y = hl[b]
+
+; de = point on the diagonal axes
+	ld e, b
+	ld d, 0
+	add hl, de
+	ld a, [hl]
+	ld e, a
+	ld d, b
+
+	push bc
+
+; Ensure that y0 < y1 (c < e)
+	ld a, c
+	cp e
+	jr c, .y_sorted
+	ld c, e
+	ld e, a
+.y_sorted
+
+; For y from c to e, draw a point at (b, y)
+.loop
+	push de
+	call DrawRadarPointBC
+	pop de
+	inc c
+	ld a, e
+	cp c
+	jr nc, .loop
+
+	pop bc
+	ret
+
+FillRadarLeft:
+FillRadarRight:
+_FillRadarHorizontal:
+; Draw a horizontal line from (b, c) to the vertical axis
+
+; de = point on the vertical axis
+	ld a, c
+	cp 48
+	; a = carry ? 39 : 40
+	sbc a
+	add 40
+	ld d, a
+	ld e, c
+
+	push bc
+
+; Ensure that x0 < x1 (b < d)
+	ld a, b
+	cp d
+	jr c, .x_sorted
+	ld b, d
+	ld d, a
+.x_sorted
+
+; For x from b to d, draw a point at (x, c)
+.loop
+	push de
+	call DrawRadarPointBC
+	pop de
+	inc b
+	ld a, d
+	cp b
+	jr nc, .loop
+
+	pop bc
+	ret
+
 DrawRadarPointBC:
 ; Draw a point at (b, c), where 0 <= b < 80 and 0 <= c < 96
-	push de
 
 ; Byte: wDecompressScratch + ((y & $f8) * 10 + (x & $f8) + (y & $7)) * 2
 	; hl = (y & $f8) * 10
@@ -890,22 +991,15 @@ DrawRadarPointBC:
 	cpl
 	add 7 + 1 ; a = 7 - a
 
-; Dark color %01: res in the first byte, set in the second byte
-	; $86 | (a << 3) = the 'res {a}, [hl]' opcode
-	add a
-	add a
-	add a
-	or $86
-	ldh [hBitwiseOpcode], a
-	call hBitwiseOperation
-	; $c6 | (a << 3) = the 'set {a}, [hl]' opcode
+; Set the bit in the second byte: white -> dark, black -> black (no light hue)
 	inc hl
-	xor $86 ^ $c6
+	; $c6 | (a << 3) = the 'set {a}, [hl]' opcode
+	add a
+	add a
+	add a
+	or $c6
 	ldh [hBitwiseOpcode], a
-	call hBitwiseOperation
-
-	pop de
-	jp hFunction
+	jp hBitwiseOperation
 
 .Times10:
 	dw %0000000000 ; == %00000xxx * 10 ($00-07)
@@ -920,16 +1014,6 @@ DrawRadarPointBC:
 	dw %1011010000 ; == %01001xxx * 10 ($48-4f)
 	dw %1100100000 ; == %01010xxx * 10 ($50-57)
 	dw %1101110000 ; == %01011xxx * 10 ($58-5f)
-
-FillRadarUp:
-FillRadarRight:
-FillRadarDown:
-FillRadarLeft:
-; TODO: fill in the direction until reaching a black or dark pixel
-	; $46 | (a << 3) = the 'bit {a}, [hl]' opcode
-	xor $c6 ^ $46
-	ldh [hBitwiseOpcode], a
-	ret
 
 JudgeSystemGFX:
 INCBIN "gfx/stats/judge.2bpp.lz"
