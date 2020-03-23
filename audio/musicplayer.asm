@@ -488,7 +488,6 @@ SongEditor:
 	ld a, [hl]
 	lb bc, %11000000, %01000000
 	and b
-	and a
 	ld a, [hl]
 	jr nz, .no_ch1_2_underflow
 	add c

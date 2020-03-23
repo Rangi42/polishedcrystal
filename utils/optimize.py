@@ -205,19 +205,19 @@ patterns = {
 'Useless loads': [
 	# Bad: ld P, Q / ld P, R (unless the lds have side effects)
 	# Good: ld P, R
-	(lambda line1, prev: line1.code.startswith('ld ') and ',' in line1.code and
-		'[hli]' not in line1.code and '[hld]' not in line1.code),
-	(lambda line2, prev: line2.code.startswith('ld ') and ',' in line2.code and
-		'[hli]' not in line2.code and '[hld]' not in line2.code and
+	(lambda line1, prev: (line1.code.startswith('ld ') or line1.code.startswith('ldh ')) and
+		',' in line1.code and '[hli]' not in line1.code and '[hld]' not in line1.code),
+	(lambda line2, prev: (line2.code.startswith('ld ') or line2.code.startswith('ldh ')) and
+		',' in line2.code and '[hli]' not in line2.code and '[hld]' not in line2.code and
 		line2.code.split(',')[0] == prev[0].code.split(',')[0]),
 ],
 'Redundant loads': [
 	# Bad: ld P, Q / ld Q, P (unless the lds have side effects)
 	# Good: ld P, Q
-	(lambda line1, prev: line1.code.startswith('ld ') and ',' in line1.code and
-		'[hli]' not in line1.code and '[hld]' not in line1.code),
-	(lambda line2, prev: line2.code.startswith('ld ') and ',' in line2.code and
-		'[hli]' not in line2.code and '[hld]' not in line2.code and
+	(lambda line1, prev: (line1.code.startswith('ld ') or line1.code.startswith('ldh ')) and
+		',' in line1.code and '[hli]' not in line1.code and '[hld]' not in line1.code),
+	(lambda line2, prev: (line2.code.startswith('ld ') or line2.code.startswith('ldh ')) and
+		',' in line2.code and '[hli]' not in line2.code and '[hld]' not in line2.code and
 		line2.code[2:].split(',')[0].strip() == prev[0].code.split(',')[1].strip() and
 		line2.code.split(',')[1].strip() == prev[0].code[2:].split(',')[0].strip()),
 ],
@@ -226,6 +226,21 @@ patterns = {
 	# Good: rla|rlca|rra|rrca
 	(lambda line1, prev: line1.code in {'rl a', 'rlc a', 'rr a', 'rrc a'}),
 ],
+'Redundant and': [
+	# Bad: and N / and|or a
+	# Good: and N
+	(lambda line1, prev: line1.code.startswith('and ')),
+	(lambda line2, prev: line2.code in {'and a', 'or a'}),
+],
+'Redundant ret': [
+	# Bad: ret z|nz|c|nc / ret
+	# Bad: ret / ret z|nz|c|nc
+	# Bad: ret z / ret nz
+	# Good: ret
+	(lambda line1, prev: line1.code == 'ret' or line1.code.startswith('ret ')),
+	(lambda line2, prev: line2.code == 'ret' or line2.code.startswith('ret ') and
+		(prev[0].code == 'ret' or line2.code.split()[-1].lstrip('n') == prev[0].code.split()[-1].lstrip('n'))),
+]
 }
 
 # Count the total instances of the pattern
