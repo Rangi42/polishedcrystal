@@ -114,7 +114,7 @@ SpecialReturnShuckie:
 	jr nc, .HappyToStayWithYou
 	xor a ; take from pc
 	ld [wPokemonWithdrawDepositParameter], a
-	farcall RemoveMonFromPartyOrBox
+	predef RemoveMonFromPartyOrBox
 	ld a, $2
 .HappyToStayWithYou:
 	ldh [hScriptVar], a

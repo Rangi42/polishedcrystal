@@ -10,7 +10,7 @@ _DummyGame:
 	call DisableLCD
 	ld a, CGB_DIPLOMA
 	call GetCGBLayout
-	farcall ClearSpriteAnims
+	call ClearSpriteAnims
 	ld hl, DummyGameGFX
 	ld de, vTiles2 tile $00
 	call Decompress

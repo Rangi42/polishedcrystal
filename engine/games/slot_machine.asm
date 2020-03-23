@@ -40,7 +40,7 @@ _SlotMachine:
 	rst ByteFill
 	ld a, CGB_SLOT_MACHINE
 	call GetCGBLayout
-	farcall ClearSpriteAnims
+	call ClearSpriteAnims
 	ld hl, wSlots
 	ld bc, wSlotsDataEnd - wSlots
 	xor a

@@ -478,7 +478,7 @@ TeachTMHM:
 	ret c
 
 	ld c, HAPPINESS_LEARNMOVE
-	farcall ChangeHappiness
+	predef ChangeHappiness
 	jr .learned_move
 
 .nope

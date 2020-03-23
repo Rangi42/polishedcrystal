@@ -691,7 +691,7 @@ EggHatch_AnimationSequence:
 	ld bc, $20
 	ld a, BANK(EggHatchGFX)
 	call FarCopyBytes
-	farcall ClearSpriteAnims
+	call ClearSpriteAnims
 	ld de, vTiles2 tile $00
 	ld a, [wJumptableIndex]
 	call GetHatchlingFrontpic
@@ -794,7 +794,7 @@ EggHatchGFX:
 INCBIN "gfx/evo/egg_hatch.2bpp"
 
 Hatch_InitShellFragments:
-	farcall ClearSpriteAnims
+	call ClearSpriteAnims
 	ld hl, .SpriteData
 .loop
 	ld a, [hli]

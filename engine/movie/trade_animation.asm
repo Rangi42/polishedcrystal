@@ -144,7 +144,7 @@ RunTradeAnimSequence:
 	call ClearTileMap
 	call DisableLCD
 	call LoadFontsBattleExtra
-	farcall ClearSpriteAnims
+	call ClearSpriteAnims
 	ld a, $1
 	ldh [rVBK], a
 	ld hl, vTiles0
@@ -312,7 +312,7 @@ TradeAnim_InitTubeAnim:
 
 	push af
 	call DisableLCD
-	farcall ClearSpriteAnims
+	call ClearSpriteAnims
 	hlbgcoord 20, 3
 	ld bc, 12
 	ld a, $60
@@ -435,7 +435,7 @@ TradeAnim_TubeToPlayer8:
 	call ClearTileMap
 	call ClearSprites
 	call DisableLCD
-	farcall ClearSpriteAnims
+	call ClearSpriteAnims
 	hlbgcoord 0, 0
 	ld bc, sScratch - vBGMap0
 	ld a, " "

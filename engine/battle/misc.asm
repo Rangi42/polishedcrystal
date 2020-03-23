@@ -1,6 +1,6 @@
 _CheckContactMove::
 ; Check if user's move made contact. Returns nc if it is
-	farcall GetUserItemAfterUnnerve
+	predef GetUserItemAfterUnnerve
 	ld a, b
 	cp HELD_PROTECTIVE_PADS
 	jr z, .protective_pads

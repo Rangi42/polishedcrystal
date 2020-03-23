@@ -34,7 +34,7 @@ InitPartyMenuLayout:
 LoadPartyMenuGFX:
 	call LoadFontsBattleExtra
 	farcall InitPartyMenuPalettes ; engine/color.asm
-	farjp ClearSpriteAnims2
+	jp ClearSpriteAnims2
 
 WritePartyMenuTilemap:
 	ld hl, wOptions1

@@ -146,7 +146,7 @@ DoNPCTrade:
 	xor a
 	ld [wMonType], a
 	ld [wPokemonWithdrawDepositParameter], a
-	farcall RemoveMonFromPartyOrBox
+	predef RemoveMonFromPartyOrBox
 	predef TryAddMonToParty
 
 	ld e, TRADE_DIALOG

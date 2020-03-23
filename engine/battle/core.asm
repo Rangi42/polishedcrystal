@@ -245,7 +245,7 @@ HandleBerserkGene:
 	call SwitchTurn
 
 .do_it
-	farcall GetUserItemAfterUnnerve
+	predef GetUserItemAfterUnnerve
 	ld a, b
 	cp HELD_BERSERK_GENE
 	ret nz
@@ -368,7 +368,7 @@ GetSpeed::
 
 .unburden_done
 	; Apply item effects
-	farcall GetUserItemAfterUnnerve
+	predef GetUserItemAfterUnnerve
 	ld a, b
 	cp HELD_QUICK_POWDER
 	jr z, .quick_powder
@@ -2330,7 +2330,7 @@ PlayerMonFaintHappinessMod:
 .got_param
 	ld a, [wCurBattleMon]
 	ld [wCurPartyMon], a
-	farjp ChangeHappiness
+	predef_jump ChangeHappiness
 
 AskUseNextPokemon:
 	call EmptyBattleTextBox
@@ -3112,7 +3112,7 @@ SpikesDamage_GotAbility:
 	ret z
 
 	push bc
-	farcall GetUserItemAfterUnnerve
+	predef GetUserItemAfterUnnerve
 	ld a, b
 	cp HELD_HEAVY_BOOTS
 	pop bc
@@ -3160,7 +3160,7 @@ SpikesDamage_GotAbility:
 	ld hl, GetQuarterMaxHP
 .got_hp
 	call _hl_
-	call SubtractHPFromUser
+	predef SubtractHPFromUser
 	call UpdateUserInParty
 
 	ld hl, BattleText_UserHurtBySpikes
@@ -3306,7 +3306,7 @@ QuarterPinchOrGluttony::
 HandleStatBoostBerry:
 	call QuarterPinchOrGluttony
 	ret nz
-	farcall GetUserItemAfterUnnerve
+	predef GetUserItemAfterUnnerve
 	call _HeldStatBoostBerry
 	ret nz
 	farjp ConsumeUserItem
@@ -3387,7 +3387,7 @@ HandleHPHealingItem:
 	jr z, .ok
 	ret nc
 .ok
-	farcall GetUserItemAfterUnnerve
+	predef GetUserItemAfterUnnerve
 	ld a, [hl]
 	cp FIGY_BERRY
 	jr nz, .figy_ok
@@ -3395,7 +3395,7 @@ HandleHPHealingItem:
 	call QuarterPinchOrGluttony
 	ret nz
 .figy_ok
-	farcall GetUserItemAfterUnnerve
+	predef GetUserItemAfterUnnerve
 	call _HeldHPHealingItem
 	ret nz
 UseBattleItem:
@@ -3452,7 +3452,7 @@ StealHeldStatusHealingItem:
 UseOpponentHeldStatusHealingItem:
 	call CallOpponentTurn
 UseHeldStatusHealingItem:
-	farcall GetUserItemAfterUnnerve
+	predef GetUserItemAfterUnnerve
 	call _HeldStatusHealingItem
 	ret z
 	jp UseBattleItem
@@ -3498,7 +3498,7 @@ UseConfusionHealingItem:
 	call GetBattleVar
 	bit SUBSTATUS_CONFUSED, a
 	ret z
-	farcall GetUserItemAfterUnnerve
+	predef GetUserItemAfterUnnerve
 	ld a, b
 	cp HELD_HEAL_CONFUSE
 	jr z, .heal_status
@@ -4303,7 +4303,7 @@ TryPlayerSwitch:
 
 .check_trapped
 	call SetPlayerTurn
-	farcall GetUserItemAfterUnnerve
+	predef GetUserItemAfterUnnerve
 	ld a, b
 	cp HELD_SHED_SHELL
 	jr z, .try_switch
@@ -7531,7 +7531,7 @@ InitEnemyTrainer:
 	or [hl]
 	jr z, .skipfaintedmon
 	ld c, HAPPINESS_GYMBATTLE
-	farcall ChangeHappiness
+	predef ChangeHappiness
 .skipfaintedmon
 	pop bc
 	dec b

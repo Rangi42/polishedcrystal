@@ -29,7 +29,7 @@ EvolutionAnimation:
 	ld de, MUSIC_NONE
 	call PlayMusic
 
-	farcall ClearSpriteAnims
+	call ClearSpriteAnims
 
 	ld de, .GFX
 	ld hl, vTiles0
@@ -99,7 +99,7 @@ EvolutionAnimation:
 	ld c, FALSE
 	call .GetCGBLayout
 	call .PlayEvolvedSFX
-	farcall ClearSpriteAnims
+	call ClearSpriteAnims
 	call .check_statused
 	ret c
 
@@ -132,7 +132,7 @@ EvolutionAnimation:
 	ld c, FALSE
 	call .GetCGBLayout
 	call .PlayEvolvedSFX
-	farcall ClearSpriteAnims
+	call ClearSpriteAnims
 	call .check_statused
 	ret c
 

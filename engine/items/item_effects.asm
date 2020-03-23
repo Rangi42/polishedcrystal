@@ -891,7 +891,7 @@ LowerEVBerry:
 	ld [hl], a
 	farcall UpdatePkmnStats
 	ld c, HAPPINESS_USEDEVBERRY
-	farcall ChangeHappiness
+	predef ChangeHappiness
 	call GetStatStringAndPlayFullHealSFX
 	ld hl, ItemHappinessRoseButStatFellText
 	call PrintText
@@ -928,7 +928,7 @@ VitaminEffect:
 	call PrintText
 
 	ld c, HAPPINESS_USEDITEM
-	farcall ChangeHappiness
+	predef ChangeHappiness
 	jp UseDisposableItem
 
 ItemStatRoseText:
@@ -1046,7 +1046,7 @@ HealPowder:
 	jp nz, WontHaveAnyEffectMessage
 
 	ld c, HAPPINESS_BITTERPOWDER
-	farcall ChangeHappiness
+	predef ChangeHappiness
 	jp LooksBitterMessage
 
 HealStatusEffect:
@@ -1161,7 +1161,7 @@ RevivalHerb:
 	jp WontHaveAnyEffectMessage
 
 	ld c, HAPPINESS_REVIVALHERB
-	farcall ChangeHappiness
+	predef ChangeHappiness
 	jp LooksBitterMessage
 
 ReviveEffect:
@@ -1272,7 +1272,7 @@ EnergyPowderEnergyRootCommon:
 	and a
 	jp nz, WontHaveAnyEffectMessage
 
-	farcall ChangeHappiness
+	predef ChangeHappiness
 	jp LooksBitterMessage
 
 ItemRestoreHP:
@@ -1755,7 +1755,7 @@ XItemEffect:
 	ld a, [wCurBattleMon]
 	ld [wCurPartyMon], a
 	ld c, HAPPINESS_USEDXITEM
-	farjp ChangeHappiness
+	predef_jump ChangeHappiness
 
 BlueCard:
 	ld hl, .bluecardtext

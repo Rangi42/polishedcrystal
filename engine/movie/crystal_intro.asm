@@ -81,7 +81,7 @@ Copyright_GFPresents:
 	pop af
 	ldh [rSVBK], a
 
-	farcall ClearSpriteAnims
+	call ClearSpriteAnims
 	depixel 10, 11, 4, 0
 	ld a, SPRITE_ANIM_INDEX_GAMEFREAK_LOGO
 	call _InitSpriteAnimStruct
@@ -108,7 +108,7 @@ Copyright_GFPresents:
 	jp DmgToCgbObjPals
 
 .StopGamefreakAnim:
-	farcall ClearSpriteAnims
+	call ClearSpriteAnims
 	call ClearTileMap
 	call ClearSprites
 	ld c, 16
@@ -486,7 +486,7 @@ IntroScene1:
 	ldh [hWX], a
 	ld a, $90
 	ldh [hWY], a
-	farcall ClearSpriteAnims
+	call ClearSpriteAnims
 	call Intro_SetCGBPalUpdate
 	xor a
 	ld [wIntroSceneFrameCounter], a
@@ -589,7 +589,7 @@ IntroScene5:
 	ldh [hWX], a
 	ld a, $90
 	ldh [hWY], a
-	farcall ClearSpriteAnims
+	call ClearSpriteAnims
 	call Intro_SetCGBPalUpdate
 	xor a
 	ld [wIntroSceneFrameCounter], a
@@ -661,7 +661,7 @@ IntroScene7:
 	call Intro_SetupCommonScenery
 
 	call Intro_ResetLYOverrides
-	farcall ClearSpriteAnims
+	call ClearSpriteAnims
 	depixel 13, 27, 4, 0
 	ld a, SPRITE_ANIM_INDEX_INTRO_SUICUNE
 	call _InitSpriteAnimStruct
@@ -805,7 +805,7 @@ IntroScene11:
 	ldh [hWX], a
 	ld a, $90
 	ldh [hWY], a
-	farcall ClearSpriteAnims
+	call ClearSpriteAnims
 	call Intro_SetCGBPalUpdate
 	xor a
 	ld [wIntroSceneFrameCounter], a
@@ -897,7 +897,7 @@ IntroScene13:
 	ld de, vTiles0 tile $00
 	call Intro_DecompressRequest2bpp_255Tiles
 	call Intro_SetupCommonScenery
-	farcall ClearSpriteAnims
+	call ClearSpriteAnims
 	depixel 13, 11, 4, 0
 	ld a, SPRITE_ANIM_INDEX_INTRO_SUICUNE
 	call _InitSpriteAnimStruct
@@ -1001,7 +1001,7 @@ IntroScene15:
 	ldh [hWX], a
 	ld a, $90
 	ldh [hWY], a
-	farcall ClearSpriteAnims
+	call ClearSpriteAnims
 	call Intro_SetCGBPalUpdate
 	depixel 8, 5
 	ld a, SPRITE_ANIM_INDEX_INTRO_UNOWN_F
@@ -1070,7 +1070,7 @@ IntroScene17:
 	ldh [hWX], a
 	ld a, $90
 	ldh [hWY], a
-	farcall ClearSpriteAnims
+	call ClearSpriteAnims
 	call Intro_SetCGBPalUpdate
 	xor a
 	ld [wIntroSceneFrameCounter], a
@@ -1141,7 +1141,7 @@ IntroScene19:
 	ldh [hWX], a
 	ld a, $90
 	ldh [hWY], a
-	farcall ClearSpriteAnims
+	call ClearSpriteAnims
 	ld hl, wSpriteAnimDict
 	xor a
 	ld [hli], a
@@ -1285,7 +1285,7 @@ IntroScene26:
 	ldh [hWX], a
 	ld a, $90
 	ldh [hWY], a
-	farcall ClearSpriteAnims
+	call ClearSpriteAnims
 	call Intro_SetCGBPalUpdate
 	xor a
 	ld [wIntroSceneFrameCounter], a

@@ -1215,7 +1215,7 @@ SetUpMoveScreenBG:
 	ld a, CGB_PARTY_MENU
 	call GetCGBLayout
 	farcall LoadStatsGFX
-	farcall ClearSpriteAnims2
+	call ClearSpriteAnims2
 	ld a, [wCurPartyMon]
 	ld e, a
 	ld d, $0

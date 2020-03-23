@@ -249,7 +249,7 @@ HandleWeather:
 .do_it
 	call HasUserFainted
 	ret z
-	farcall GetUserItemAfterUnnerve
+	predef GetUserItemAfterUnnerve
 	ld a, b
 	cp HELD_SAFETY_GOGGLES
 	jr z, .run_weather_abilities
@@ -301,7 +301,7 @@ HandleWeather:
 	ld hl, SandstormHitsText
 	call StdBattleTextBox
 	call GetSixteenthMaxHP
-	farjp SubtractHPFromUser
+	predef_jump SubtractHPFromUser
 
 .HandleHail
 	ld a, BATTLE_VARS_SUBSTATUS3
@@ -336,7 +336,7 @@ HandleWeather:
 	ld hl, HailHitsText
 	call StdBattleTextBox
 	call GetSixteenthMaxHP
-	farjp SubtractHPFromUser
+	predef_jump SubtractHPFromUser
 
 HandleFutureSight:
 	call SetFastestTurn
@@ -415,7 +415,7 @@ HandleLeftovers:
 
 	; damage instead
 	call GetEighthMaxHP
-	farcall SubtractHPFromUser
+	predef SubtractHPFromUser
 	ld hl, BattleText_UserHurtByItem
 	jr .print
 .leftovers
@@ -461,7 +461,7 @@ HandleLeechSeed:
 
 	call GetEighthMaxHP
 	push bc
-	farcall SubtractHPFromUser
+	predef SubtractHPFromUser
 	pop bc
 	call SwitchTurn
 	farcall GetHPAbsorption
@@ -474,7 +474,7 @@ HandleLeechSeed:
 	jr .sap_text
 .hurt
 	farcall ShowEnemyAbilityActivation
-	farcall SubtractHPFromUser
+	predef SubtractHPFromUser
 .sap_text
 	call SwitchTurn
 	ld hl, LeechSeedSapsText
@@ -564,7 +564,7 @@ DoPoisonBurnDamage:
 	ld b, h
 	ld c, l
 .did_toxic
-	farjp SubtractHPFromUser
+	predef_jump SubtractHPFromUser
 
 HandleCurse:
 	call SetFastestTurn
@@ -583,7 +583,7 @@ HandleCurse:
 	ld de, ANIM_UNDER_CURSE
 	farcall Call_PlayBattleAnim_OnlyIfVisible
 	call GetQuarterMaxHP
-	farcall SubtractHPFromUser
+	predef SubtractHPFromUser
 	ld hl, HurtByCurseText
 	jp StdBattleTextBox
 
@@ -642,7 +642,7 @@ HandleWrap:
 .no_binding_band
 	call GetEighthMaxHP
 .subtract_hp
-	farcall SubtractHPFromUser
+	predef SubtractHPFromUser
 	ld hl, BattleText_UsersHurtByStringBuffer1
 
 .print_text
@@ -769,7 +769,7 @@ HandlePerishSong:
 	res SUBSTATUS_PERISH, [hl]
 
 	call GetMaxHP
-	farjp SubtractHPFromUser
+	predef_jump SubtractHPFromUser
 
 HandleTrickRoom:
 	ld hl, wTrickRoom
@@ -789,7 +789,7 @@ HandleLeppaBerry:
 .do_it
 	call HasUserFainted
 	ret z
-	farcall GetUserItemAfterUnnerve
+	predef GetUserItemAfterUnnerve
 	ld a, b
 	cp HELD_RESTORE_PP
 	ret nz

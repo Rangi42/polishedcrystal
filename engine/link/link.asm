@@ -1614,7 +1614,7 @@ LinkTrade:
 	ld [wd002], a
 	xor a
 	ld [wPokemonWithdrawDepositParameter], a
-	farcall RemoveMonFromPartyOrBox
+	predef RemoveMonFromPartyOrBox
 	ld a, [wPartyCount]
 	dec a
 	ld [wCurPartyMon], a

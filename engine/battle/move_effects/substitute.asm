@@ -21,7 +21,7 @@ BattleCommand_substitute:
 	ld a, b
 	ld [hli], a
 	ld [hl], c
-	farcall SubtractHPFromUser
+	predef SubtractHPFromUser
 	ld a, BATTLE_VARS_SUBSTATUS4
 	call GetBattleVarAddr
 	set SUBSTATUS_SUBSTITUTE, [hl]

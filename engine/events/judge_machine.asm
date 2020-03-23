@@ -254,7 +254,7 @@ JudgeSystem::
 	call SetPalettes
 
 .render
-	farcall ClearSpriteAnims
+	call ClearSpriteAnims
 
 ; Display the current chart, EVs or IVs
 	ldh a, [hChartScreen]
@@ -341,7 +341,7 @@ JudgeSystem::
 	ld [wPartyMenuCursor], a
 	ld a, [hl]
 	ld [wCurPartySpecies], a
-	farcall ClearSpriteAnims
+	call ClearSpriteAnims
 	jp .restart
 
 .EVHeading:

@@ -1014,19 +1014,12 @@ Functionde1a:
 
 DepositMonWithDaycareMan:
 	ld de, wBreedMon1Nick
-	call DepositBreedmon
-	xor a
-	ld [wPokemonWithdrawDepositParameter], a
-	jp RemoveMonFromPartyOrBox
+	jr _DepositBreedmon
 
 DepositMonWithDaycareLady:
 	ld de, wBreedMon2Nick
-	call DepositBreedmon
-	xor a
-	ld [wPokemonWithdrawDepositParameter], a
-	jp RemoveMonFromPartyOrBox
 
-DepositBreedmon:
+_DepositBreedmon:
 	ld a, [wCurPartyMon]
 	ld hl, wPartyMonNicknames
 	call SkipNames
@@ -1041,7 +1034,9 @@ DepositBreedmon:
 	rst AddNTimes
 	ld bc, BOXMON_STRUCT_LENGTH
 	rst CopyBytes
-	ret
+	xor a
+	ld [wPokemonWithdrawDepositParameter], a
+	predef_jump RemoveMonFromPartyOrBox
 
 SentPkmnIntoBox:
 ; Sents the Pkmn into one of Bills Boxes

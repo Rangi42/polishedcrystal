@@ -62,7 +62,7 @@ PokeGear:
 	ld a, $7
 	ldh [hWX], a
 	call Pokegear_LoadGFX
-	farcall ClearSpriteAnims
+	call ClearSpriteAnims
 	call InitPokegearModeIndicatorArrow
 	ld a, 8
 	call SkipMusic
@@ -1663,7 +1663,7 @@ _TownMap:
 	call DisableLCD
 	farcall InitPokegearPalettes
 	call Pokegear_LoadGFX
-	farcall ClearSpriteAnims
+	call ClearSpriteAnims
 	ld a, 8
 	call SkipMusic
 	ld a, %11100011
@@ -1905,7 +1905,7 @@ _FlyMap:
 	ld [hl], $1
 	xor a
 	ldh [hBGMapMode], a
-	farcall ClearSpriteAnims
+	call ClearSpriteAnims
 	call LoadTownMapGFX
 	call FlyMap
 	ld a, CGB_POKEGEAR_PALS
