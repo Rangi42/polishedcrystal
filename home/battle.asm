@@ -925,6 +925,9 @@ GetBattleVarAddr::
 	dw wLastPlayerCounterMove,        wLastEnemyCounterMove
 	dw wLastPlayerMove,               wLastEnemyMove
 
+BattleCommand_cleartext::
+EmptyBattleTextBox::
+	ld hl, EmptyString
 BattleTextBox::
 ; Open a textbox and print text at hl.
 	push hl

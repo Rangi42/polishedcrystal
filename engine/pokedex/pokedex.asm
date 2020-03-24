@@ -1185,8 +1185,7 @@ Pokedex_DrawOptionScreenBG:
 .Modes:
 	db   "Johto Mode"
 	next "National Mode"
-	next "A to Z Mode"
-	db "@"
+	next "A to Z Mode@"
 
 .UnownMode:
 	db "Unown Mode@"
@@ -1220,13 +1219,11 @@ Pokedex_DrawSearchScreenBG:
 
 .Types:
 	db   "Type1"
-	next "Type2"
-	db   "@"
+	next "Type2@"
 
 .Menu:
 	db   "Begin Search!"
-	next "Cancel"
-	db   "@"
+	next "Cancel@"
 
 Pokedex_DrawSearchResultsScreenBG:
 	call Pokedex_FillBackgroundColor2
@@ -1260,8 +1257,7 @@ Pokedex_DrawSearchResultsScreenBG:
 .BottomWindowText:
 	db   "Search Results"
 	next "  Type/"
-	next "    found!"
-	db   "@"
+	next "    found!@"
 
 Pokedex_PlaceSearchResultsTypeStrings:
 	ld a, [wDexSearchMonType1]

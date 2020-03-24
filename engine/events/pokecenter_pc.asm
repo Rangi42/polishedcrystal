@@ -96,7 +96,7 @@ PC_CheckPartyForPokemon:
 .MustHavePokemonToUse:
 	; Bzzzzt! You must have a #MON to use this!
 	text_jump UnknownText_0x1c1328
-	db "@"
+	text_end
 
 BillsPC:
 	call PC_PlayChoosePCSound
@@ -184,7 +184,7 @@ _KrissHousePC:
 UnknownText_0x156ff:
 	; turned on the PC.
 	text_jump UnknownText_0x1c1353
-	db "@"
+	text_end
 
 _PlayersPC:
 	ld a, b
@@ -284,7 +284,7 @@ PC_DisplayTextWaitMenu:
 UnknownText_0x157cc:
 	; What do you want to do?
 	text_jump UnknownText_0x1c1368
-	db "@"
+	text_end
 
 KrisWithdrawItemMenu:
 	call LoadStandardMenuDataHeader
@@ -334,15 +334,15 @@ KrisWithdrawItemMenu:
 
 .HowManyText:
 	text_jump _KrissPCHowManyWithdrawText
-	db "@"
+	text_end
 
 .WithdrewText:
 	text_jump _KrissPCWithdrewItemsText
-	db "@"
+	text_end
 
 .NoRoomText:
 	text_jump _KrissPCNoRoomWithdrawText
-	db "@"
+	text_end
 
 KrisTossItemMenu:
 	call LoadStandardMenuDataHeader
@@ -405,7 +405,7 @@ KrisDepositItemMenu:
 .NoItemsInBag:
 	; No items here!
 	text_jump UnknownText_0x1c13df
-	db "@"
+	text_end
 
 .TryDepositItem:
 	call CheckUniqueItemPocket
@@ -430,9 +430,9 @@ KrisDepositItemMenu:
 
 .dw
 	dw .tossable
-	dw .no_toss
-	dw .no_toss
-	dw .no_toss
+	dw DoNothing
+	dw DoNothing
+	dw DoNothing
 	dw .tossable
 	dw .tossable
 	dw .tossable
@@ -447,7 +447,6 @@ KrisDepositItemMenu:
 	ld [wBuffer2], a
 	pop af
 	ld [wBuffer1], a
-.no_toss
 	ret
 
 .DepositItem_:
@@ -487,19 +486,19 @@ KrisDepositItemMenu:
 
 .CantDepositItemText:
 	text_jump _KrissPCCantDepositItemText
-	db "@"
+	text_end
 
 .HowManyText:
 	text_jump _KrissPCHowManyDepositText
-	db "@"
+	text_end
 
 .DepositText:
 	text_jump _KrissPCDepositItemsText
-	db "@"
+	text_end
 
 .NoRoomText:
 	text_jump _KrissPCNoRoomDepositText
-	db "@"
+	text_end
 
 KrisMailBoxMenu:
 	farcall _KrisMailBoxMenu
@@ -597,29 +596,29 @@ PC_DisplayText:
 PokeCenterPCText_BootedUpPC:
 	; turned on the PC.
 	text_jump UnknownText_0x1c144d
-	db "@"
+	text_end
 
 PokeCenterPCText_AccessWhosePC:
 	; Access whose PC?
 	text_jump UnknownText_0x1c1462
-	db "@"
+	text_end
 
 PokeCenterPCText_AccessedBillsPC:
 	; BILL's PC accessed. #MON Storage System opened.
 	text_jump UnknownText_0x1c1474
-	db "@"
+	text_end
 
 PokeCenterPCText_AccessedOwnPC:
 	; Accessed own PC. Item Storage System opened.
 	text_jump UnknownText_0x1c14a4
-	db "@"
+	text_end
 
 PokeCenterPCText_AccessedOaksPC:
 	; PROF.OAK's PC accessed. #DEX Rating System opened.
 	text_jump UnknownText_0x1c14d2
-	db "@"
+	text_end
 
 PokeCenterPCText_LinkClosed:
 	; … Link closed…
 	text_jump UnknownText_0x1c1505
-	db "@"
+	text_end

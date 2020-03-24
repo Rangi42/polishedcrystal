@@ -5293,17 +5293,17 @@ BattleCommand_charge:
 .SolarBeam:
 ; 'took in sunlight!'
 	text_jump UnknownText_0x1c0d26
-	db "@"
+	text_end
 
 .Fly:
 ; 'flew up high!'
 	text_jump UnknownText_0x1c0d5c
-	db "@"
+	text_end
 
 .Dig:
 ; 'dug a hole!'
 	text_jump UnknownText_0x1c0d6c
-	db "@"
+	text_end
 
 BattleCommand_traptarget:
 	ld a, [wAttackMissed]
@@ -6337,14 +6337,6 @@ BattleCommand_movedelay:
 ; Wait 40 frames.
 	ld c, 40
 	jp DelayFrames
-
-BattleCommand_cleartext:
-; Used in multi-hit moves.
-	ld hl, .text
-	jp BattleTextBox
-
-.text
-	db "@"
 
 EndMoveEffect:
 	ld b, endmove_command

@@ -150,48 +150,48 @@ GetFruitTreeCount:
 
 FruitBearingTreeText:
 	text_jump _FruitBearingTreeText
-	db "@"
+	text_end
 
 HeyItsFruitText:
 	text_jump _HeyItsFruitText
-	db "@"
+	text_end
 
 ObtainedOneFruitText:
 	text_jump _ObtainedOneFruitText
-	db "@"
+	text_end
 
 ObtainedTwoFruitText:
 	text_jump _ObtainedTwoFruitText
-	db "@"
+	text_end
 
 ObtainedThreeFruitText:
 	text_jump _ObtainedThreeFruitText
-	db "@"
+	text_end
 
 FruitPackIsFullText:
 	text_jump _FruitPackIsFullText
-	db "@"
+	text_end
 
 NoApricornBoxText:
 	text_jump _NoApricornBoxText
-	db "@"
+	text_end
 
 ApricornBoxIsFullText:
 	text_jump _ApricornBoxIsFullText
-	db "@"
+	text_end
 
 PutAwayTheApricornText:
 	text_jump _PutAwayTheApricornText
-	db "@"
+	text_end
 
 NothingHereText:
 	text_jump _NothingHereText
-	db "@"
+	text_end
 
 WantToUseMulchText:
 	text_jump _WantToUseMulchText
-	db "@"
+	text_end
 
 UsedMulchText:
 	text_jump _UsedMulchText
-	db "@"
+	text_end

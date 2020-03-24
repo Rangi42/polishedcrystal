@@ -611,7 +611,7 @@ GiveItemScript:
 
 ReceivedItemText:
 	text_jump UnknownText_0x1c4719
-	db "@"
+	text_end
 
 Script_verbosegiveitem2:
 ; parameters:
@@ -709,11 +709,11 @@ CurTMHMName:
 
 PutItemInPocketText:
 	text_jump UnknownText_0x1c472c
-	db "@"
+	text_end
 
 PocketIsFullText:
 	text_jump UnknownText_0x1c474b
-	db "@"
+	text_end
 
 Script_pokemart:
 ; parameters:

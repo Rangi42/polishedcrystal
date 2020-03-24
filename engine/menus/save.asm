@@ -858,34 +858,34 @@ Checksum:
 UnknownText_0x15283:
 	; Would you like to save the game?
 	text_jump UnknownText_0x1c454b
-	db "@"
+	text_end
 
 UnknownText_0x15288:
 	; SAVING… DON'T TURN OFF THE POWER.
 	text_jump UnknownText_0x1c456d
-	db "@"
+	text_end
 
 UnknownText_0x1528d:
 	; saved the game.
 	text_jump UnknownText_0x1c4590
-	db "@"
+	text_end
 
 UnknownText_0x15297:
 	; There is another save file. Is it OK to overwrite?
 	text_jump UnknownText_0x1c45d9
-	db "@"
+	text_end
 
 UnknownText_0x1529c:
 	; The save file is corrupted!
 	text_jump UnknownText_0x1c460d
-	db "@"
+	text_end
 
 UnknownText_0x152a1:
 	; When you change a #MON BOX, data will be saved. OK?
 	text_jump UnknownText_0x1c462a
-	db "@"
+	text_end
 
 UnknownText_0x152a6:
 	; Each time you move a #MON, data will be saved. OK?
 	text_jump UnknownText_0x1c465f
-	db "@"
+	text_end

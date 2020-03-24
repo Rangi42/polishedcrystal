@@ -68,7 +68,7 @@ BugCatchingContestBattleScript::
 .ContestIsOver:
 	; ANNOUNCER: The Contest is over!
 	text_jump UnknownText_0x1bd2e7
-	db "@"
+	text_end
 
 BugCatchingContestOverScript::
 	playsound SFX_ELEVATOR_END
@@ -80,7 +80,7 @@ BugCatchingContestOverScript::
 .BeeepTimesUp:
 	; ANNOUNCER: BEEEP! Time's up!
 	text_jump UnknownText_0x1bd2ca
-	db "@"
+	text_end
 
 BugCatchingContestReturnToGateScript:
 	closetext
@@ -132,7 +132,7 @@ BugContest_FirstPlaceText:
 BugContest_FirstPlaceScoreText:
 	; The winning score was @  points!
 	text_jump ContestJudging_FirstPlaceScoreText
-	db "@"
+	text_end
 
 BugContest_SecondPlaceText:
 	; Placing second was @ , who caught a @ !@ @
@@ -147,7 +147,7 @@ BugContest_SecondPlaceText:
 BugContest_SecondPlaceScoreText:
 	; The score was @  points!
 	text_jump ContestJudging_SecondPlaceScoreText
-	db "@"
+	text_end
 
 BugContest_ThirdPlaceText:
 	; Placing third was @ , who caught a @ !@ @
@@ -162,7 +162,7 @@ BugContest_ThirdPlaceText:
 BugContest_ThirdPlaceScoreText:
 	; The score was @  points!
 	text_jump ContestJudging_ThirdPlaceScoreText
-	db "@"
+	text_end
 
 LoadContestantName:
 ; If a = 0, get your name.

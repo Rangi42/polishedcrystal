@@ -41,7 +41,7 @@ GetPokeBallWobble:
 	call Random
 	cp b
 	ld c, 2 ; escaped
-	jr nc, .done
+	ret nc
 
 .ok
 	; Check how many wobbles we've done so far. If this would've been our 4th,
@@ -52,10 +52,9 @@ GetPokeBallWobble:
 .critical_shake
 	ld [wBuffer2], a
 	cp 4
-	jr c, .done
-	inc c ; captured
+	ret c
 
-.done
+	inc c ; captured
 	ret
 
 .WobbleProbabilities:

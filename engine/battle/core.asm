@@ -5988,12 +5988,6 @@ _LoadBattleFontsHPBar:
 _LoadStatusIcons:
 	farjp LoadStatusIcons
 
-EmptyBattleTextBox:
-	ld hl, .empty
-	jp BattleTextBox
-.empty
-	db "@"
-
 _BattleRandom::
 ; If the normal RNG is used in a link battle it'll desync.
 ; To circumvent this a shared PRNG is used instead.
@@ -6720,11 +6714,11 @@ Text_PkmnGainedExpPoint:
 
 TextJump_ABoostedStringBuffer2ExpPoints:
 	text_jump Text_ABoostedStringBuffer2ExpPoints
-	db "@"
+	text_end
 
 TextJump_StringBuffer2ExpPoints:
 	text_jump Text_StringBuffer2ExpPoints
-	db "@"
+	text_end
 
 AnimateExpBar:
 	push bc
@@ -7088,7 +7082,7 @@ Function_TextJump_BattleMonNick01:
 
 TextJump_BattleMonNick01:
 	text_jump Text_BattleMonNick01
-	db "@"
+	text_end
 
 WithdrawPkmnText:
 	ld hl, .WithdrawPkmnText
@@ -7147,19 +7141,19 @@ WithdrawPkmnText:
 
 TextJump_ThatsEnoughComeBack:
 	text_jump Text_ThatsEnoughComeBack
-	db "@"
+	text_end
 
 TextJump_OKComeBack:
 	text_jump Text_OKComeBack
-	db "@"
+	text_end
 
 TextJump_GoodComeBack:
 	text_jump Text_GoodComeBack
-	db "@"
+	text_end
 
 TextJump_ComeBack:
 	text_jump Text_ComeBack
-	db "@"
+	text_end
 
 HandleSafariAngerEatingStatus:
 	ld hl, wSafariMonEating

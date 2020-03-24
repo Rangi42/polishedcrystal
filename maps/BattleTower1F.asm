@@ -257,7 +257,7 @@ Text_PlayerGotReward:
 	line "3 Battle Points!@"
 	sound_item
 	text_waitbutton
-	db "@"
+	text_end
 
 Text_WeHopeToServeYouAgain:
 	text "We hope to serve"

@@ -18,12 +18,11 @@ CeladonDeptStoreElevatorButton:
 	opentext
 	elevator .Floors
 	closetext
-	iffalse .Done
+	iffalse DoNothingScript
 	pause 5
 	playsound SFX_ELEVATOR
 	earthquake 60
 	waitsfx
-.Done:
 	end
 
 .Floors:

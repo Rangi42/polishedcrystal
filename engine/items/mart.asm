@@ -732,7 +732,7 @@ BuyMenuLoop:
 
 .PremierBallText
 	text_jump MartPremierBallText
-	db "@"
+	text_end
 
 BuyTMMenuLoop:
 	farcall PlaceMoneyTopRight
@@ -990,7 +990,7 @@ TMMartAskPurchaseQuantity:
 
 .AlreadyHaveTMText
 	text_jump AlreadyHaveTMText
-	db "@"
+	text_end
 
 BTMartAskPurchaseQuantity:
 	ld a, MARTTEXT_HOW_MANY
@@ -1060,13 +1060,13 @@ Text_Mart_HowMany:
 Text_BTMart_HowMany:
 	; How many?
 	text_jump UnknownText_0x1c4bfd
-	db "@"
+	text_end
 
 Text_Mart_CostsThisMuch:
 Text_AdventurerMart_CostsThisMuch:
 	; @ (S) will be ¥@ .
 	text_jump UnknownText_0x1c4c08
-	db "@"
+	text_end
 
 MenuDataHeader_Buy:
 	db $40 ; flags
@@ -1181,42 +1181,42 @@ GetCursorItemPointCost:
 Text_HerbShop_Intro:
 	; Hello, dear. I sell inexpensive herbal medicine. They're good, but a trifle bitter. Your #MON may not like them. Hehehehe…
 	text_jump UnknownText_0x1c4c28
-	db "@"
+	text_end
 
 Text_HerbShop_CostsThisMuch:
 	; @ (S) will be ¥@ .
 	text_jump UnknownText_0x1c4cae
-	db "@"
+	text_end
 
 Text_HerbShop_HereYouGo:
 	; Thank you, dear. Hehehehe…
 	text_jump UnknownText_0x1c4cce
-	db "@"
+	text_end
 
 Text_HerbShop_BagFull:
 	; Oh? Your PACK is full, dear.
 	text_jump UnknownText_0x1c4cea
-	db "@"
+	text_end
 
 Text_HerbShop_InsufficientFunds:
 	; Hehehe… You don't have the money.
 	text_jump UnknownText_0x1c4d08
-	db "@"
+	text_end
 
 Text_HerbShop_ComeAgain:
 	; Come again, dear. Hehehehe…
 	text_jump UnknownText_0x1c4d2a
-	db "@"
+	text_end
 
 Text_BargainShop_Intro:
 	; Hiya! Care to see some bargains? I sell rare items that nobody else carries--but only one of each item.
 	text_jump UnknownText_0x1c4d47
-	db "@"
+	text_end
 
 Text_BargainShop_CostsThisMuch:
 	; costs ¥@ . Want it?
 	text_jump UnknownText_0x1c4db0
-	db "@"
+	text_end
 
 Text_BargainShop_HereYouGo:
 Text_SilphMart_HereYouGo:
@@ -1224,34 +1224,34 @@ Text_AdventurerMart_HereYouGo:
 Text_BazaarMart_HereYouGo:
 	; Thanks.
 	text_jump UnknownText_0x1c4dcd
-	db "@"
+	text_end
 
 Text_BargainShop_BagFull:
 Text_AdventurerMart_BagFull:
 	; Uh-oh, your PACK is chock-full.
 	text_jump UnknownText_0x1c4dd6
-	db "@"
+	text_end
 
 Text_BargainShop_SoldOut:
 	; You bought that already. I'm all sold out of it.
 	text_jump UnknownText_0x1c4df7
-	db "@"
+	text_end
 
 Text_BargainShop_InsufficientFunds:
 Text_AdventurerMart_InsufficientFunds:
 	; Uh-oh, you're short on funds.
 	text_jump UnknownText_0x1c4e28
-	db "@"
+	text_end
 
 Text_BargainShop_ComeAgain:
 	; Come by again sometime.
 	text_jump UnknownText_0x1c4e46
-	db "@"
+	text_end
 
 Text_Pharmacist_Intro:
 	; What's up? Need some medicine?
 	text_jump UnknownText_0x1c4e5f
-	db "@"
+	text_end
 
 Text_HerbShop_HowMany:
 Text_Pharmacy_HowMany:
@@ -1261,7 +1261,7 @@ Text_InformalMart_HowMany:
 Text_BazaarMart_HowMany:
 	; How many?
 	text_jump UnknownText_0x1c4e7e
-	db "@"
+	text_end
 
 Text_Pharmacy_CostsThisMuch:
 Text_SilphMart_CostsThisMuch:
@@ -1269,13 +1269,13 @@ Text_InformalMart_CostsThisMuch:
 Text_BazaarMart_CostsThisMuch:
 	; @ (S) will cost ¥@ .
 	text_jump UnknownText_0x1c4e89
-	db "@"
+	text_end
 
 Text_Pharmacy_HereYouGo:
 Text_InformalMart_HereYouGo:
 	; Thanks much!
 	text_jump UnknownText_0x1c4eab
-	db "@"
+	text_end
 
 Text_Pharmacy_BagFull:
 Text_SilphMart_BagFull:
@@ -1283,7 +1283,7 @@ Text_InformalMart_BagFull:
 Text_BazaarMart_BagFull:
 	; You don't have any more space.
 	text_jump UnknownText_0x1c4eb9
-	db "@"
+	text_end
 
 Text_Pharmacy_InsufficientFunds:
 Text_SilphMart_InsufficientFunds:
@@ -1291,104 +1291,104 @@ Text_InformalMart_InsufficientFunds:
 Text_BazaarMart_InsufficientFunds:
 	; Huh? That's not enough money.
 	text_jump UnknownText_0x1c4ed8
-	db "@"
+	text_end
 
 Text_Pharmacist_ComeAgain:
 Text_InformalMart_ComeAgain:
 	; All right. See you around.
 	text_jump UnknownText_0x1c4ef6
-	db "@"
+	text_end
 
 Text_SilphMart_Intro:
 	; Employees like me have access to company swag! Want to buy some?
 	text_jump SilphMartIntroText
-	db "@"
+	text_end
 
 Text_SilphMart_ComeAgain:
 	; Come again! I could use the side income.
 	text_jump SilphMartComeAgainText
-	db "@"
+	text_end
 
 Text_AdventurerMart_Intro:
 	; I picked up some rare items abroad!
 	text_jump AdventurerMartIntroText
-	db "@"
+	text_end
 
 Text_AdventurerMart_ComeAgain:
 Text_BazaarMart_ComeAgain:
 	; Come by again!
 	text_jump AdventurerMartComeAgainText
-	db "@"
+	text_end
 
 Text_InformalMart_Intro:
 	; What's up? Need some supplies?
 	text_jump InformalMartIntroText
-	db "@"
+	text_end
 
 Text_BazaarMart_Intro:
 	; Come take a look at my wares!
 	text_jump BazaarMartIntroText
-	db "@"
+	text_end
 
 Text_TMMart_CostsThisMuch:
 	; @  @  will be ¥@ .
 	text_jump TMMartCostsThisMuchText
-	db "@"
+	text_end
 
 Text_BlueCardMart_HowMayIHelpYou:
 	; Which prize would you like?
 	text_jump UnknownText_0x1c589f
-	db "@"
+	text_end
 
 Text_BlueCardMart_CostsThisMuch:
 	; ? Is that right?
 	text_jump UnknownText_0x1c58bc
-	db "@"
+	text_end
 
 Text_BlueCardMart_InsufficientFunds:
 	; You don't have enough points.
 	text_jump UnknownText_0x1c58e0
-	db "@"
+	text_end
 
 Text_BlueCardMart_BagFull:
 	; You have no room for it.
 	text_jump UnknownText_0x1c58ff
-	db "@"
+	text_end
 
 Text_BlueCardMart_HereYouGo:
 	; Here you go!
 	text_jump UnknownText_0x1c58d1
-	db "@"
+	text_end
 
 Text_BlueCardMart_ComeAgain:
 	; Oh. Please come back again!
 	text_jump UnknownText_0x1c591a
-	db "@"
+	text_end
 
 Text_BTMart_HowMayIHelpYou:
 	; Welcome to the Exchange Service Corner! You can trade in your BP for prizes.
 	text_jump BTMartHowMayIHelpYouText
-	db "@"
+	text_end
 
 Text_BTMart_CostsThisMuch:
 	; @  @(s)  will cost @ BP.
 	text_jump BTMartCostsThisMuchText
-	db "@"
+	text_end
 
 Text_BTMart_InsufficientFunds:
 	; I'm sorry, but you don’t have enough BP.
 	text_jump BTMartInsufficientFundsText
-	db "@"
+	text_end
 
 Text_BTMart_BagFull:
 	; I'm sorry, but your Bag is full.
 	text_jump BTMartBagFullText
-	db "@"
+	text_end
 
 Text_BTMart_ComeAgain:
 	; Please come back any time you want!
 	text_jump BTMartComeAgainText
-	db "@"
+	text_end
 
 SellMenu:
 	call DisableSpriteUpdates
@@ -1418,9 +1418,9 @@ SellMenu:
 
 .dw
 	dw .okay_to_sell
-	dw .cant_buy
-	dw .cant_buy
-	dw .cant_buy
+	dw DoNothing
+	dw DoNothing
+	dw DoNothing
 	dw .okay_to_sell
 	dw .okay_to_sell
 	dw .okay_to_sell
@@ -1429,7 +1429,6 @@ SellMenu:
 	ld hl, TextMart_CantBuyFromYou
 	call PrintText
 	and a
-.cant_buy
 	ret
 
 .okay_to_sell
@@ -1470,17 +1469,17 @@ SellMenu:
 Text_Mart_SellHowMany:
 	; How many?
 	text_jump UnknownText_0x1c4f33
-	db "@"
+	text_end
 
 Text_Mart_ICanPayThisMuch:
 	; I can pay you ¥@ . Is that OK?
 	text_jump UnknownText_0x1c4f3e
-	db "@"
+	text_end
 
 Text_Mart_HowMayIHelpYou:
 	; Welcome! How may I help you?
 	text_jump UnknownText_0x1c4f62
-	db "@"
+	text_end
 
 MenuDataHeader_BuySell:
 	db $40 ; flags
@@ -1500,35 +1499,35 @@ Text_Mart_HereYouGo:
 Text_BTMart_HereYouGo:
 	; Here you are. Thank you!
 	text_jump UnknownText_0x1c4f80
-	db "@"
+	text_end
 
 Text_Mart_InsufficientFunds:
 	; You don't have enough money.
 	text_jump UnknownText_0x1c4f9a
-	db "@"
+	text_end
 
 Text_Mart_BagFull:
 	; You can't carry any more items.
 	text_jump UnknownText_0x1c4fb7
-	db "@"
+	text_end
 
 TextMart_CantBuyFromYou:
 	; Sorry, I can't buy that from you.
 	text_jump UnknownText_0x1c4fd7
-	db "@"
+	text_end
 
 Text_Mart_ComeAgain:
 	; Please come again!
 	text_jump UnknownText_0x1c4ff9
-	db "@"
+	text_end
 
 Text_Mart_AnythingElse:
 	text_jump UnknownText_0x1c500d
-	db "@"
+	text_end
 
 Text_Mart_SoldForAmount:
 	text_jump UnknownText_0x1c502e
-	db "@"
+	text_end
 
 PlayTransactionSound:
 	call WaitSFX

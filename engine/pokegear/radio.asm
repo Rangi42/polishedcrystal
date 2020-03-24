@@ -118,9 +118,6 @@ RadioJumptable:
 	dw PokedexShow7 ; $56
 	dw PokedexShow8 ; $57
 
-RadioTerminator:
-	db "@"
-
 NextRadioLine:
 	push af
 	call CopyRadioTextToRAM
@@ -288,32 +285,32 @@ OaksPkmnTalk6:
 OPT_IntroText1:
 	; MARY: PROF.OAK'S
 	text_jump _OPT_IntroText1
-	db "@"
+	text_end
 
 OPT_IntroText2:
 	; #MON TALK!
 	text_jump _OPT_IntroText2
-	db "@"
+	text_end
 
 OPT_IntroText3:
 	; With me, MARY!
 	text_jump _OPT_IntroText3
-	db "@"
+	text_end
 
 OPT_OakText1:
 	; OAK: @ @
 	text_jump _OPT_OakText1
-	db "@"
+	text_end
 
 OPT_OakText2:
 	; may be seen around
 	text_jump _OPT_OakText2
-	db "@"
+	text_end
 
 OPT_OakText3:
 	; @ .
 	text_jump _OPT_OakText3
-	db "@"
+	text_end
 
 OaksPkmnTalk7:
 	ld a, [wCurPartySpecies]
@@ -326,7 +323,7 @@ OaksPkmnTalk7:
 OPT_MaryText1:
 	; MARY: @ 's
 	text_jump _OPT_MaryText1
-	db "@"
+	text_end
 
 OaksPkmnTalk8:
 	call Random
@@ -363,82 +360,82 @@ OaksPkmnTalk8:
 .sweetadorably
 	; sweet and adorably
 	text_jump OPT_SweetAdorably
-	db "@"
+	text_end
 
 .wigglyslickly
 	; wiggly and slickly
 	text_jump OPT_WigglySlickly
-	db "@"
+	text_end
 
 .aptlynamed
 	; aptly named and
 	text_jump OPT_AptlyNamed
-	db "@"
+	text_end
 
 .undeniablykindof
 	; undeniably kind of
 	text_jump OPT_UndeniablyKindOf
-	db "@"
+	text_end
 
 .unbearably
 	; so, so unbearably
 	text_jump OPT_Unbearably
-	db "@"
+	text_end
 
 .wowimpressively
 	; wow, impressively
 	text_jump OPT_WowImpressively
-	db "@"
+	text_end
 
 .almostpoisonously
 	; almost poisonously
 	text_jump OPT_AlmostPoisonously
-	db "@"
+	text_end
 
 .sensually
 	; ooh, so sensually
 	text_jump OPT_Sensually
-	db "@"
+	text_end
 
 .mischievously
 	; so mischievously
 	text_jump OPT_Mischievously
-	db "@"
+	text_end
 
 .topically
 	; so very topically
 	text_jump OPT_Topically
-	db "@"
+	text_end
 
 .addictively
 	; sure addictively
 	text_jump OPT_Addictively
-	db "@"
+	text_end
 
 .looksinwater
 	; looks in water is
 	text_jump OPT_LooksInWater
-	db "@"
+	text_end
 
 .evolutionmustbe
 	; evolution must be
 	text_jump OPT_EvolutionMustBe
-	db "@"
+	text_end
 
 .provocatively
 	; provocatively
 	text_jump OPT_Provocatively
-	db "@"
+	text_end
 
 .flippedout
 	; so flipped out and
 	text_jump OPT_FlippedOut
-	db "@"
+	text_end
 
 .heartmeltingly
 	; heart-meltingly
 	text_jump OPT_HeartMeltingly
-	db "@"
+	text_end
 
 OaksPkmnTalk9:
 	call Random
@@ -483,86 +480,86 @@ OaksPkmnTalk9:
 .cute
 	; cute.
 	text_jump OPT_Cute
-	db "@"
+	text_end
 
 .weird
 	; weird.
 	text_jump OPT_Weird
-	db "@"
+	text_end
 
 .pleasant
 	; pleasant.
 	text_jump OPT_Pleasant
-	db "@"
+	text_end
 
 .boldsortof
 	; bold, sort of.
 	text_jump OPT_BoldSortOf
-	db "@"
+	text_end
 
 .frightening
 	; frightening.
 	text_jump OPT_Frightening
-	db "@"
+	text_end
 
 .suavedebonair
 	; suave & debonair!
 	text_jump OPT_SuaveDebonair
-	db "@"
+	text_end
 
 .powerful
 	; powerful.
 	text_jump OPT_Powerful
-	db "@"
+	text_end
 
 .exciting
 	; exciting.
 	text_jump OPT_Exciting
-	db "@"
+	text_end
 
 .groovy
 	; groovy!
 	text_jump OPT_Groovy
-	db "@"
+	text_end
 
 .inspiring
 	; inspiring.
 	text_jump OPT_Inspiring
-	db "@"
+	text_end
 
 .friendly
 	; friendly.
 	text_jump OPT_Friendly
-	db "@"
+	text_end
 
 .hothothot
 	; hot, hot, hot!
 	text_jump OPT_HotHotHot
-	db "@"
+	text_end
 
 .stimulating
 	; stimulating.
 	text_jump OPT_Stimulating
-	db "@"
+	text_end
 
 .guarded
 	; guarded.
 	text_jump OPT_Guarded
-	db "@"
+	text_end
 
 .lovely
 	; lovely.
 	text_jump OPT_Lovely
-	db "@"
+	text_end
 
 .speedy
 	; speedy.
 	text_jump OPT_Speedy
-	db "@"
+	text_end
 
 OaksPkmnTalk10:
 	farcall RadioMusicRestartPokemonChannel
-	ld hl, OPT_RestartText
+	ld hl, EmptyString
 	call PrintText
 	call ApplyTilemapInVBlank
 	ld hl, OPT_PokemonChannelText
@@ -576,10 +573,7 @@ OaksPkmnTalk10:
 OPT_PokemonChannelText:
 	; #MON
 	text_jump _OPT_PokemonChannelText
-	db "@"
-
-OPT_RestartText:
-	db "@"
+	text_end
 
 OaksPkmnTalk11:
 	ld hl, wRadioTextDelay
@@ -610,7 +604,7 @@ OaksPkmnTalk13:
 	dec [hl]
 	ret nz
 	hlcoord 12, 16
-	ld de, RadioTerminator
+	ld de, EmptyString
 	ld a, OAKS_POKEMON_TALK_14
 	jp PlaceRadioString
 
@@ -620,7 +614,7 @@ OaksPkmnTalk14:
 	ret nz
 	ld de, MUSIC_POKEMON_TALK
 	farcall RadioMusicRestartDE
-	ld hl, RadioTerminator
+	ld hl, EmptyString
 	call PrintText
 	ld a, OAKS_POKEMON_TALK_4
 	ld [wNextRadioLine], a
@@ -830,7 +824,7 @@ CopyDexEntryPart2:
 PokedexShowText:
 	; @ @
 	text_jump _PokedexShowText
-	db "@"
+	text_end
 
 BenMonMusic1:
 	call StartPokemonMusicChannel
@@ -888,7 +882,7 @@ BenFernMusic7:
 	ret
 
 StartPokemonMusicChannel:
-	ld hl, RadioTerminator
+	ld hl, EmptyString
 	call PrintText
 	ld de, MUSIC_POKEMON_MARCH
 	call GetWeekday
@@ -901,52 +895,52 @@ StartPokemonMusicChannel:
 BenIntroText1:
 	; BEN: #MON MUSIC
 	text_jump _BenIntroText1
-	db "@"
+	text_end
 
 BenIntroText2:
 	; CHANNEL!
 	text_jump _BenIntroText2
-	db "@"
+	text_end
 
 BenIntroText3:
 	; It's me, DJ BEN!
 	text_jump _BenIntroText3
-	db "@"
+	text_end
 
 FernIntroText1:
 	; FERN: #MUSIC!
 	text_jump _FernIntroText1
-	db "@"
+	text_end
 
 FernIntroMusic2:
 	; With DJ FERN!
 	text_jump _FernIntroText2
-	db "@"
+	text_end
 
 BenFernText1:
 	; Today's @ ,
 	text_jump _BenFernText1
-	db "@"
+	text_end
 
 BenFernText2A:
 	; so let us jam to
 	text_jump _BenFernText2A
-	db "@"
+	text_end
 
 BenFernText2B:
 	; so chill out to
 	text_jump _BenFernText2B
-	db "@"
+	text_end
 
 BenFernText3A:
 	; #MON March!
 	text_jump _BenFernText3A
-	db "@"
+	text_end
 
 BenFernText3B:
 	; #MON Lullaby!
 	text_jump _BenFernText3B
-	db "@"
+	text_end
 
 LuckyNumberShow1:
 	call StartRadioStation
@@ -1042,67 +1036,67 @@ LuckyNumberShow15:
 LC_Text1:
 	; REED: Yeehaw! How
 	text_jump _LC_Text1
-	db "@"
+	text_end
 
 LC_Text2:
 	; y'all doin' now?
 	text_jump _LC_Text2
-	db "@"
+	text_end
 
 LC_Text3:
 	; Whether you're up
 	text_jump _LC_Text3
-	db "@"
+	text_end
 
 LC_Text4:
 	; or way down low,
 	text_jump _LC_Text4
-	db "@"
+	text_end
 
 LC_Text5:
 	; don't you miss the
 	text_jump _LC_Text5
-	db "@"
+	text_end
 
 LC_Text6:
 	; LUCKY NUMBER SHOW!
 	text_jump _LC_Text6
-	db "@"
+	text_end
 
 LC_Text7:
 	; This week's Lucky
 	text_jump _LC_Text7
-	db "@"
+	text_end
 
 LC_Text8:
 	; Number is @ !
 	text_jump _LC_Text8
-	db "@"
+	text_end
 
 LC_Text9:
 	; I'll repeat that!
 	text_jump _LC_Text9
-	db "@"
+	text_end
 
 LC_Text10:
 	; Match it and go to
 	text_jump _LC_Text10
-	db "@"
+	text_end
 
 LC_Text11:
 	; the RADIO TOWER!
 	text_jump _LC_Text11
-	db "@"
+	text_end
 
 LC_DragText1:
 	; …Repeating myself
 	text_jump _LC_DragText1
-	db "@"
+	text_end
 
 LC_DragText2:
 	; gets to be a drag…
 	text_jump _LC_DragText2
-	db "@"
+	text_end
 
 PeoplePlaces1:
 	call StartRadioStation
@@ -1123,17 +1117,17 @@ PeoplePlaces3:
 PnP_Text1:
 	; PLACES AND PEOPLE!
 	text_jump _PnP_Text1
-	db "@"
+	text_end
 
 PnP_Text2:
 	; Brought to you by
 	text_jump _PnP_Text2
-	db "@"
+	text_end
 
 PnP_Text3:
 	; me, DJ LILY!
 	text_jump _PnP_Text3
-	db "@"
+	text_end
 
 PeoplePlaces4: ; People
 	call Random
@@ -1174,7 +1168,7 @@ INCLUDE "data/radio/pnp_hidden_people.asm"
 PnP_Text4:
 	; @  @ @
 	text_jump _PnP_Text4
-	db "@"
+	text_end
 
 PeoplePlaces5:
 	call Random
@@ -1215,82 +1209,82 @@ PeoplePlaces5:
 PnP_cute:
 	; is cute.
 	text_jump _PnP_cute
-	db "@"
+	text_end
 
 PnP_lazy:
 	; is sort of lazy.
 	text_jump _PnP_lazy
-	db "@"
+	text_end
 
 PnP_happy:
 	; is always happy.
 	text_jump _PnP_happy
-	db "@"
+	text_end
 
 PnP_noisy:
 	; is quite noisy.
 	text_jump _PnP_noisy
-	db "@"
+	text_end
 
 PnP_precocious:
 	; is precocious.
 	text_jump _PnP_precocious
-	db "@"
+	text_end
 
 PnP_bold:
 	; is somewhat bold.
 	text_jump _PnP_bold
-	db "@"
+	text_end
 
 PnP_picky:
 	; is too picky!
 	text_jump _PnP_picky
-	db "@"
+	text_end
 
 PnP_sortofok:
 	; is sort of OK.
 	text_jump _PnP_sortofok
-	db "@"
+	text_end
 
 PnP_soso:
 	; is just so-so.
 	text_jump _PnP_soso
-	db "@"
+	text_end
 
 PnP_great:
 	; is actually great.
 	text_jump _PnP_great
-	db "@"
+	text_end
 
 PnP_mytype:
 	; is just my type.
 	text_jump _PnP_mytype
-	db "@"
+	text_end
 
 PnP_cool:
 	; is so cool, no?
 	text_jump _PnP_cool
-	db "@"
+	text_end
 
 PnP_inspiring:
 	; is inspiring!
 	text_jump _PnP_inspiring
-	db "@"
+	text_end
 
 PnP_weird:
 	; is kind of weird.
 	text_jump _PnP_weird
-	db "@"
+	text_end
 
 PnP_rightforme:
 	; is right for me?
 	text_jump _PnP_rightforme
-	db "@"
+	text_end
 
 PnP_odd:
 	; is definitely odd!
 	text_jump _PnP_odd
-	db "@"
+	text_end
 
 PeoplePlaces6: ; Places
 	call Random
@@ -1311,7 +1305,7 @@ INCLUDE "data/radio/pnp_places.asm"
 PnP_Text5:
 	; @ @
 	text_jump _PnP_Text5
-	db "@"
+	text_end
 
 PeoplePlaces7:
 	call Random
@@ -1414,52 +1408,52 @@ RocketRadio10:
 RocketRadioText1:
 	; … …Ahem, we are
 	text_jump _RocketRadioText1
-	db "@"
+	text_end
 
 RocketRadioText2:
 	; TEAM ROCKET!
 	text_jump _RocketRadioText2
-	db "@"
+	text_end
 
 RocketRadioText3:
 	; After three years
 	text_jump _RocketRadioText3
-	db "@"
+	text_end
 
 RocketRadioText4:
 	; of preparation, we
 	text_jump _RocketRadioText4
-	db "@"
+	text_end
 
 RocketRadioText5:
 	; have risen again
 	text_jump _RocketRadioText5
-	db "@"
+	text_end
 
 RocketRadioText6:
 	; from the ashes!
 	text_jump _RocketRadioText6
-	db "@"
+	text_end
 
 RocketRadioText7:
 	; GIOVANNI! @ Can you
 	text_jump _RocketRadioText7
-	db "@"
+	text_end
 
 RocketRadioText8:
 	; hear?@  We did it!
 	text_jump _RocketRadioText8
-	db "@"
+	text_end
 
 RocketRadioText9:
 	; @ Where is our boss?
 	text_jump _RocketRadioText9
-	db "@"
+	text_end
 
 RocketRadioText10:
 	; @ Is he listening?
 	text_jump _RocketRadioText10
-	db "@"
+	text_end
 
 PokeFluteRadio:
 	call StartRadioStation
@@ -1767,92 +1761,92 @@ BuenasPasswordChannelName:
 BuenaRadioText1:
 	; BUENA: BUENA here!
 	text_jump _BuenaRadioText1
-	db "@"
+	text_end
 
 BuenaRadioText2:
 	; Today's password!
 	text_jump _BuenaRadioText2
-	db "@"
+	text_end
 
 BuenaRadioText3:
 	; Let me think… It's
 	text_jump _BuenaRadioText3
-	db "@"
+	text_end
 
 BuenaRadioText4:
 	; @ !
 	text_jump _BuenaRadioText4
-	db "@"
+	text_end
 
 BuenaRadioText5:
 	; Don't forget it!
 	text_jump _BuenaRadioText5
-	db "@"
+	text_end
 
 BuenaRadioText6:
 	; I'm in GOLDENROD's
 	text_jump _BuenaRadioText6
-	db "@"
+	text_end
 
 BuenaRadioText7:
 	; RADIO TOWER!
 	text_jump _BuenaRadioText7
-	db "@"
+	text_end
 
 BuenaRadioMidnightText1:
 	; BUENA: Oh my…
 	text_jump _BuenaRadioMidnightText1
-	db "@"
+	text_end
 
 BuenaRadioMidnightText2:
 	; It's midnight! I
 	text_jump _BuenaRadioMidnightText2
-	db "@"
+	text_end
 
 BuenaRadioMidnightText3:
 	; have to shut down!
 	text_jump _BuenaRadioMidnightText3
-	db "@"
+	text_end
 
 BuenaRadioMidnightText4:
 	; Thanks for tuning
 	text_jump _BuenaRadioMidnightText4
-	db "@"
+	text_end
 
 BuenaRadioMidnightText5:
 	; in to the end! But
 	text_jump _BuenaRadioMidnightText5
-	db "@"
+	text_end
 
 BuenaRadioMidnightText6:
 	; don't stay up too
 	text_jump _BuenaRadioMidnightText6
-	db "@"
+	text_end
 
 BuenaRadioMidnightText7:
 	; late! Presented to
 	text_jump _BuenaRadioMidnightText7
-	db "@"
+	text_end
 
 BuenaRadioMidnightText8:
 	; you by DJ BUENA!
 	text_jump _BuenaRadioMidnightText8
-	db "@"
+	text_end
 
 BuenaRadioMidnightText9:
 	; I'm outta here!
 	text_jump _BuenaRadioMidnightText9
-	db "@"
+	text_end
 
 BuenaRadioMidnightText10:
 	; …
 	text_jump _BuenaRadioMidnightText10
-	db "@"
+	text_end
 
 BuenaOffTheAirText:
 	;
 	text_jump _BuenaOffTheAirText
-	db "@"
+	text_end
 
 CopyRadioTextToRAM:
 	ld a, [hl]
@@ -1867,7 +1861,7 @@ StartRadioStation:
 	ld a, [wNumRadioLinesPrinted]
 	and a
 	ret nz
-	ld hl, RadioTerminator
+	ld hl, EmptyString
 	call PrintText
 	ld hl, RadioChannelSongs
 	ld a, [wCurrentRadioLine]

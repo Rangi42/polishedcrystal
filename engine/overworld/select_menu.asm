@@ -13,7 +13,7 @@ SelectMenu::
 
 ItemMayBeRegisteredText:
 	text_jump UnknownText_0x1c1cf3
-	db "@"
+	text_end
 
 CheckRegisteredItem::
 ; Returns amount of registered items and z if none is. Populates wCurItem

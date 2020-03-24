@@ -707,4 +707,4 @@ PrintText_UsedItemOn:
 
 TextJump_EnemyUsedOn:
 	text_jump Text_EnemyUsedOn
-	db "@"
+	text_end

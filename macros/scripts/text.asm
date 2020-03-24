@@ -107,3 +107,7 @@ text_jump: MACRO
 	dw \1
 	db BANK(\1)
 ENDM
+
+text_end: MACRO
+	db "@"
+ENDM

@@ -54,15 +54,13 @@ HandlePlayerStep:
 	ld a, [hl]
 	ld hl, .Jumptable
 	call JumpTable
-.fail
 	ret
 
 .Jumptable:
-
 	dw GetMovementPermissions
 	dw BufferScreen
-	dw .fail
-	dw .fail
+	dw DoNothing
+	dw DoNothing
 
 UpdatePlayerCoords:
 	ld hl, wYCoord

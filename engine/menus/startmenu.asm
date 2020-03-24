@@ -143,29 +143,27 @@ StartMenu::
 	dw .MenuString
 	dw .Items
 
+; TODO: remove vestigial menu account EmptyString descriptions
 .Items:
-	dw StartMenu_Pokedex,  .PokedexString,  .NullDesc
-	dw StartMenu_Pokemon,  .PartyString,    .NullDesc
-	dw StartMenu_Pack,     .PackString,     .NullDesc
-	dw StartMenu_Status,   .StatusString,   .NullDesc
-	dw StartMenu_Save,     .SaveString,     .NullDesc
-	dw StartMenu_Option,   .OptionString,   .NullDesc
-	dw StartMenu_Exit,     .ExitString,     .NullDesc
-	dw StartMenu_Pokegear, .PokegearString, .NullDesc
-	dw StartMenu_Quit,     .QuitString,     .NullDesc
+	dw StartMenu_Pokedex,  .PokedexString,  EmptyString
+	dw StartMenu_Pokemon,  .PartyString,    EmptyString
+	dw StartMenu_Pack,     .PackString,     EmptyString
+	dw StartMenu_Status,   .StatusString,   EmptyString
+	dw StartMenu_Save,     .SaveString,     EmptyString
+	dw StartMenu_Option,   .OptionString,   EmptyString
+	dw StartMenu_Exit,     .ExitString,     EmptyString
+	dw StartMenu_Pokegear, .PokegearString, EmptyString
+	dw StartMenu_Quit,     .QuitString,     EmptyString
 
-.PokedexString: 	db "#dex@"
-.PartyString:   	db "#mon@"
-.PackString:    	db "Bag@"
-.StatusString:  	db "<PLAYER>@"
-.SaveString:    	db "Save@"
-.OptionString:  	db "Options@"
-.ExitString:    	db "Exit@"
-.PokegearString:	db "<PO><KE>gear@"
-.QuitString:    	db "Quit@"
-
-; Menu accounts are removed; this is vestigial
-.NullDesc:      	db "@"
+.PokedexString:  db "#dex@"
+.PartyString:    db "#mon@"
+.PackString:     db "Bag@"
+.StatusString:   db "<PLAYER>@"
+.SaveString:     db "Save@"
+.OptionString:   db "Options@"
+.ExitString:     db "Exit@"
+.PokegearString: db "<PO><KE>gear@"
+.QuitString:     db "Quit@"
 
 .OpenMenu:
 	ld a, [wMenuSelection]
@@ -310,7 +308,7 @@ StartMenu_Quit:
 
 .EndTheContestText:
 	text_jump UnknownText_0x1c1a6c
-	db "@"
+	text_end
 
 StartMenu_Save:
 ; Save the game.

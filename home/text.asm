@@ -529,10 +529,12 @@ PromptText::
 
 DoneText::
 	pop hl
-	ld de, .stop
+	ld de, EmptyString
 	dec de
 	ret
-.stop	db "@"
+
+EmptyString::
+	db "@"
 
 NullChar::
 	ld a, "?"

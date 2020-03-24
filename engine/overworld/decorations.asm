@@ -387,7 +387,7 @@ PopulateDecoCategoryMenu:
 .Text_nothing_to_choose:
 	; There's nothing to choose.
 	text_jump UnknownText_0x1bc471
-	db "@"
+	text_end
 
 .NonscrollingMenuDataHeader:
 	db $40 ; flags
@@ -522,7 +522,7 @@ GetDecoName:
 	ret
 
 .NameFunctions:
-	dw .invalid
+	dw DoNothing
 	dw .plant
 	dw .bed
 	dw .carpet
@@ -582,7 +582,6 @@ GetDecoName:
 	ld d, h
 	ld e, l
 	pop bc
-.invalid
 	ret
 
 .copy
@@ -816,7 +815,7 @@ DecoAction_SetItUp_Ornament:
 UnknownText_0x26e41:
 	; Which side do you want to put it on?
 	text_jump UnknownText_0x1bc48c
-	db "@"
+	text_end
 
 DecoAction_PutItAway_Ornament:
 	ld a, [wBuffer3]
@@ -842,7 +841,7 @@ DecoAction_PutItAway_Ornament:
 DecoText_WhichSide:
 	; Which side do you want to put away?
 	text_jump UnknownText_0x1bc4b2
-	db "@"
+	text_end
 
 DecoAction_AskWhichSide:
 	call MenuTextBox
@@ -892,27 +891,27 @@ MenuData2_0x26eb3:
 DecoText_PutAwayTheDeco:
 	; Put away the @ .
 	text_jump UnknownText_0x1bc4d7
-	db "@"
+	text_end
 
 DecoText_NothingToPutAway:
 	; There's nothing to put away.
 	text_jump UnknownText_0x1bc4ec
-	db "@"
+	text_end
 
 DecoText_SetUpTheDeco:
 	; Set up the @ .
 	text_jump UnknownText_0x1bc509
-	db "@"
+	text_end
 
 DecoText_PutAwayAndSetUp:
 	; Put away the @ and set up the @ .
 	text_jump UnknownText_0x1bc51c
-	db "@"
+	text_end
 
 DecoText_AlreadySetUp:
 	; That's already set up.
 	text_jump UnknownText_0x1bc546
-	db "@"
+	text_end
 
 GetDecorationName_c_de:
 	ld a, c
@@ -996,31 +995,28 @@ DecorationDesc_TownMapPoster:
 .TownMapText:
 	; It's the TOWN MAP.
 	text_jump UnknownText_0x1bc55d
-	db "@"
+	text_end
 
 DecorationDesc_PikachuPoster:
-	jumptext .PikaPosterText
+	thistext
 
-.PikaPosterText:
 	; It's a poster of a cute PIKACHU.
 	text_jump UnknownText_0x1bc570
-	db "@"
+	text_end
 
 DecorationDesc_ClefairyPoster:
-	jumptext .ClefairyPosterText
+	thistext
 
-.ClefairyPosterText:
 	; It's a poster of a cute CLEFAIRY.
 	text_jump UnknownText_0x1bc591
-	db "@"
+	text_end
 
 DecorationDesc_MarillPoster:
-	jumptext .MarillPosterText
+	thistext
 
-.MarillPosterText:
 	; It's a poster of a cute MARILL.
 	text_jump UnknownText_0x1bc5b3
-	db "@"
+	text_end
 
 DecorationDesc_NullPoster:
 	end
@@ -1044,12 +1040,11 @@ DecorationDesc_Ornament:
 	ret
 
 .OrnamentScript:
-	jumptext .OrnamentText
+	thistext
 
-.OrnamentText:
 	; It's an adorable @ .
 	text_jump UnknownText_0x1bc5d7
-	db "@"
+	text_end
 
 DecorationDesc_Console:
 	ld a, [wConsole]
@@ -1062,12 +1057,11 @@ DecorationDesc_Console:
 	ret
 
 .ConsoleScript:
-	jumptext .ConsoleText
+	thistext
 
-.ConsoleText:
 	; It's a shiny @ .
 	text_jump DecoConsoleText
-	db "@"
+	text_end
 
 DecorationDesc_GiantOrnament:
 	ld b, BANK(.BigDollScript)
@@ -1075,12 +1069,11 @@ DecorationDesc_GiantOrnament:
 	ret
 
 .BigDollScript:
-	jumptext .BigDollText
+	thistext
 
-.BigDollText:
 	; A giant doll! It's fluffy and cuddly.
 	text_jump UnknownText_0x1bc5ef
-	db "@"
+	text_end
 
 ToggleMaptileDecorations:
 	lb de, 0, 4

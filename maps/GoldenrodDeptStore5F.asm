@@ -129,7 +129,7 @@ MysteryGiftGirl_GiveItemText:
 	text "!@"
 	sound_item
 	text_waitbutton
-	db "@"
+	text_end
 
 MysteryGiftGirl_NoRoomText:
 	text "But you can't"

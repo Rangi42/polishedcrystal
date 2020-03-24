@@ -945,13 +945,12 @@ GetScriptByte::
 	ret
 
 ObjectEvent::
-	jumptextfaceplayer ObjectEventText
+	thistextfaceplayer
 
-ObjectEventText::
 	text_jump _ObjectEventText
-	db "@"
+	text_end
 
-EndEvent::
+DoNothingScript::
 	end
 
 CheckObjectMask::

@@ -46,27 +46,27 @@ WonderTrade::
 
 .Text_WonderTradeQuestion:
 	text_jump WonderTradeQuestionText
-	db "@"
+	text_end
 
 .Text_WonderTradePrompt:
 	text_jump WonderTradePromptText
-	db "@"
+	text_end
 
 ;.Text_WonderTradeCantTradeEgg:
 ;	text_jump WonderTradeCantTradeEggText
-;	db "@"
+;	text_end
 
 .Text_WonderTradeConfirm:
 	text_jump WonderTradeConfirmText
-	db "@"
+	text_end
 
 .Text_WonderTradeSetup:
 	text_jump WonderTradeSetupText
-	db "@"
+	text_end
 
 .Text_WonderTradeReady:
 	text_jump WonderTradeReadyText
-	db "@"
+	text_end
 
 DoWonderTrade:
 	ld a, 1

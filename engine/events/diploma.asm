@@ -61,8 +61,7 @@ _Diploma:
 	next "that you have"
 	next "completed the"
 	next "new #dex."
-	next "Congratulations!"
-	db   "@"
+	next "Congratulations!@"
 
 .PlayTime:
 	db "Play Time@"

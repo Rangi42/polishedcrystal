@@ -6,7 +6,7 @@ DoAnimFrame:
 	jp JumpTable
 
 .Jumptable:
-	dw .Null               ; SPRITE_ANIM_SEQ_NULL
+	dw DoNothing           ; SPRITE_ANIM_SEQ_NULL
 	dw .PartyMon           ; SPRITE_ANIM_SEQ_PARTY_MON
 	dw .PartyMonSwitch     ; SPRITE_ANIM_SEQ_PARTY_MON_SWITCH
 	dw .PartyMonSelected   ; SPRITE_ANIM_SEQ_PARTY_MON_SELECTED
@@ -50,7 +50,6 @@ DoAnimFrame:
 	ld hl, SPRITEANIMSTRUCT_YOFFSET
 	add hl, bc
 	ld [hl], $0
-.Null:
 	ret
 
 .PartyMonSwitch

@@ -553,7 +553,7 @@ BattleText_StringBuffer1GrewToLevel:
 	deciram wCurPartyLevel, 1, 3
 	text "!@"
 	sound_dex_fanfare_50_79
-	db "@@"
+	text_end
 
 BattleText_WildPkmnIsEating:
 	text "Wild @"

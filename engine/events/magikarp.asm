@@ -73,7 +73,7 @@ Special_CheckMagikarpLength:
 .MeasureItText:
 	; Let me measure that MAGIKARP. …Hm, it measures @ .
 	text_jump UnknownText_0x1c1203
-	db "@"
+	text_end
 
 PrintMagikarpLength:
 	ld a, [wOptions2]
@@ -373,4 +373,4 @@ Special_MagikarpHouseSign:
 .CurrentRecordtext:
 	; "CURRENT RECORD"
 	text_jump UnknownText_0x1c123a
-	db "@"
+	text_end

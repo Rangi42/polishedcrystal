@@ -18,13 +18,13 @@ GoldenrodDeptStoreElevatorButton:
 	opentext
 	elevator .Floors
 	closetext
-	iffalse .Done
+	iffalse DoNothingScript
 	pause 5
 	playsound SFX_ELEVATOR
 	earthquake 60
 	waitsfx
 	checkevent EVENT_WAREHOUSE_BLOCKED_OFF
-	iftrue .Done
+	iftrue DoNothingScript
 	checkevent EVENT_WAREHOUSE_LAYOUT_1
 	iftrue .BoxLayout1
 	checkevent EVENT_WAREHOUSE_LAYOUT_2
@@ -44,7 +44,6 @@ GoldenrodDeptStoreElevatorButton:
 	clearevent EVENT_WAREHOUSE_LAYOUT_1
 	clearevent EVENT_WAREHOUSE_LAYOUT_2
 	setevent EVENT_WAREHOUSE_LAYOUT_3
-.Done:
 	end
 
 .Floors:

@@ -430,17 +430,17 @@ HatchEggs:
 .ClearTextbox:
 	;
 	text_jump UnknownText_0x1c0db8
-	db "@"
+	text_end
 
 .CameOutOfItsEgg:
 	; came out of its EGG!@ @
 	text_jump UnknownText_0x1c0dba
-	db "@"
+	text_end
 
 .Text_NicknameHatchling:
 	; Give a nickname to @ ?
 	text_jump UnknownText_0x1c0dd8
-	db "@"
+	text_end
 
 GetMotherAddr:
 	ld a, [wBreedMotherOrNonDitto]
@@ -889,12 +889,12 @@ DayCareMonCursor:
 DayCareMon2Text:
 	; It's @ that was left with the DAY-CARE LADY.
 	text_jump UnknownText_0x1c0df3
-	db "@"
+	text_end
 
 DayCareMon1Text:
 	; It's @ that was left with the DAY-CARE MAN.
 	text_jump UnknownText_0x1c0e24
-	db "@"
+	text_end
 
 DayCareMonCompatibilityText:
 	push bc
@@ -923,19 +923,19 @@ DayCareMonCompatibilityText:
 .Incompatible:
 	; It has no interest in @ .
 	text_jump UnknownText_0x1c0e6f
-	db "@"
+	text_end
 
 .HighCompatibility:
 	; It appears to care for @ .
 	text_jump UnknownText_0x1c0e8d
-	db "@"
+	text_end
 
 .ModerateCompatibility:
 	; It's friendly with @ .
 	text_jump UnknownText_0x1c0eac
-	db "@"
+	text_end
 
 .SlightCompatibility:
 	; It shows interest in @ .
 	text_jump UnknownText_0x1c0ec6
-	db "@"
+	text_end

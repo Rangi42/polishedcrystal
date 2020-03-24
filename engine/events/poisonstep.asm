@@ -170,7 +170,7 @@ DoPoisonStep::
 
 .PoisonRecoveryText:
 	text_jump UnknownText_0x1c0acc
-	db "@"
+	text_end
 
 LoadPoisonBGPals:
 	ldh a, [rSVBK]

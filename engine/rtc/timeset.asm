@@ -255,12 +255,12 @@ PrintTwoDigitNumberRightAlign:
 Text_WokeUpOak:
 	; Zzz… Hm? Wha…? You woke me up! Will you check the clock for me?
 	text_jump UnknownText_0x1bc29c
-	db "@"
+	text_end
 
 Text_WhatTimeIsIt:
 	; What time is it?
 	text_jump UnknownText_0x1bc2eb
-	db "@"
+	text_end
 
 String_oclock:
 	db "o'clock@"
@@ -277,12 +277,12 @@ Text_WhatHrs:
 .QuestionMark:
 	; ?
 	text_jump UnknownText_0x1bc305
-	db "@"
+	text_end
 
 Text_HowManyMinutes:
 	; How many minutes?
 	text_jump UnknownText_0x1bc308
-	db "@"
+	text_end
 
 String_min:
 	db "min.@"
@@ -299,7 +299,7 @@ Text_WhoaMins:
 .QuestionMark:
 	; ?
 	text_jump UnknownText_0x1bc323
-	db "@"
+	text_end
 
 OakText_ResponseToSetTime:
 	start_asm
@@ -334,17 +334,17 @@ OakText_ResponseToSetTime:
 .overslept
 	; ! I overslept!
 	text_jump UnknownText_0x1bc326
-	db "@"
+	text_end
 
 .yikes
 	; ! Yikes! I over- slept!
 	text_jump UnknownText_0x1bc336
-	db "@"
+	text_end
 
 .sodark
 	; ! No wonder it's so dark!
 	text_jump UnknownText_0x1bc34f
-	db "@"
+	text_end
 
 TimesetBackgroundGFX:
 INCBIN "gfx/new_game/timeset_bg.1bpp"
@@ -482,7 +482,7 @@ Special_SetDayOfWeek:
 .WhatDayIsItText:
 	; What day is it?
 	text_jump UnknownText_0x1bc369
-	db "@"
+	text_end
 
 .ConfirmWeekdayText:
 	start_asm
@@ -494,7 +494,7 @@ Special_SetDayOfWeek:
 .IsIt:
 	; , is it?
 	text_jump UnknownText_0x1bc37a
-	db "@"
+	text_end
 
 Special_InitialSetDSTFlag:
 	ld a, [wDST]
@@ -521,7 +521,7 @@ Special_InitialSetDSTFlag:
 .DSTIsThatOK:
 	; DST, is that OK?
 	text_jump Text_DSTIsThatOK
-	db "@"
+	text_end
 
 Special_InitialClearDSTFlag:
 	ld a, [wDST]
@@ -548,7 +548,7 @@ Special_InitialClearDSTFlag:
 .IsThatOK:
 	; , is that OK?
 	text_jump UnknownText_0x1c5ff1
-	db "@"
+	text_end
 
 PrintHour:
 	ld l, e

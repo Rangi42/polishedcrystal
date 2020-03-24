@@ -196,4 +196,4 @@ TrainerHouseB1FEarnedBattlePointText:
 	line "1 Battle Point!@"
 	sound_item
 	text_waitbutton
-	db "@"
+	text_end

@@ -70,13 +70,13 @@ PlateauRivalBattleTrigger2:
 	ifequal THURSDAY, .MaybeLyraFight
 	ifequal FRIDAY, .MaybeRivalFight
 	ifequal SATURDAY, .MaybeLyraFight
-	jump .Done
+	end
 
 .MaybeRivalFight:
 	checkevent EVENT_BEAT_RIVAL_IN_MT_MOON
-	iffalse .Done
+	iffalse DoNothingScript
 	checkflag ENGINE_INDIGO_PLATEAU_RIVAL_FIGHT
-	iftrue .Done
+	iftrue DoNothingScript
 	appear INDIGOPLATEAUPOKECENTER1F_SILVER
 	turnobject PLAYER, DOWN
 	showemote EMOTE_SHOCK, PLAYER, 15
@@ -131,9 +131,9 @@ PlateauRivalBattleTrigger2:
 
 .MaybeLyraFight:
 	checkevent EVENT_BEAT_ELITE_FOUR_AGAIN
-	iffalse .Done
+	iffalse DoNothingScript
 	checkflag ENGINE_INDIGO_PLATEAU_LYRA_FIGHT
-	iftrue .Done
+	iftrue DoNothingScript
 .LyraFight:
 	appear INDIGOPLATEAUPOKECENTER1F_LYRA
 	turnobject PLAYER, DOWN
@@ -191,7 +191,6 @@ PlateauRivalBattleTrigger2:
 	playmapmusic
 	setflag ENGINE_INDIGO_PLATEAU_LYRA_FIGHT
 	clearevent EVENT_FINAL_BATTLE_WITH_LYRA
-.Done:
 	end
 
 PlateauRivalText1:

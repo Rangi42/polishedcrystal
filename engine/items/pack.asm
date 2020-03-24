@@ -156,7 +156,7 @@ Pack:
 .Jumptable1:
 
 	dw .UseItem
-	dw QuitItemSubmenu
+	dw DoNothing
 
 .UseItem:
 	farcall AskTeachTMHM
@@ -378,12 +378,12 @@ MenuDataHeader_SortItems:
 Jumptable_SortItems:
 	dw SortItemsName
 	dw SortItemsType
-	dw QuitItemSubmenu
+	dw DoNothing
 
 Jumptable_SortTMs:
 	dw SortTMsNumber
 	dw SortTMsName
-	dw QuitItemSubmenu
+	dw DoNothing
 
 SortTMsNumber:
 	ld hl, wTMHMPocketCursor
@@ -418,7 +418,7 @@ Jumptable_UseGiveTossQuit:
 	dw UseItem
 	dw GiveItem
 	dw TossMenu
-	dw QuitItemSubmenu
+	dw DoNothing
 
 MenuDataHeader_Use:
 	db %01000000 ; flags
@@ -435,11 +435,11 @@ MenuDataHeader_Use:
 
 Jumptable_UseQuit:
 	dw UseItem
-	dw QuitItemSubmenu
+	dw DoNothing
 
 Jumptable_KeyItem_UseQuit:
 	dw UseKeyItem
-	dw QuitItemSubmenu
+	dw DoNothing
 
 MenuDataHeader_UseSel:
 	db %01000000 ; flags
@@ -458,7 +458,7 @@ MenuDataHeader_UseSel:
 Jumptable_KeyItem_UseRegisterQuit:
 	dw UseKeyItem
 	dw RegisterKeyItem
-	dw QuitItemSubmenu
+	dw DoNothing
 
 MenuDataHeader_GiveToss:
 	db $40 ; flags
@@ -478,7 +478,7 @@ Jumptable_GiveTossQuit:
 
 	dw GiveItem
 	dw TossMenu
-	dw QuitItemSubmenu
+	dw DoNothing
 
 UseItem:
 	farcall CheckItemMenu
@@ -661,10 +661,7 @@ GiveItem:
 .Egg:
 	; An EGG can't hold an item.
 	text_jump Text_AnEGGCantHoldAnItem
-	db "@"
-
-QuitItemSubmenu:
-	ret
+	text_end
 
 BattlePack:
 	ld hl, wOptions1
@@ -874,9 +871,8 @@ KeyItemSubmenu:
 	db "Quit@"
 
 .UsableJumptable:
-
 	dw .Use
-	dw .Quit
+	dw DoNothing
 
 .UnusableMenuDataHeader:
 	db $40 ; flags
@@ -891,8 +887,7 @@ KeyItemSubmenu:
 	db "Quit@"
 
 .UnusableJumptable:
-
-	dw .Quit
+	dw DoNothing
 
 .Use:
 	farcall CheckItemContext
@@ -952,7 +947,6 @@ KeyItemSubmenu:
 .didnt_use_item
 	xor a
 	ld [wItemEffectSucceeded], a
-.Quit:
 	ret
 
 InitPackBuffers:
@@ -1682,67 +1676,65 @@ PC_Mart_KeyItemsPocketMenuDataHeader:
 
 Text_SortItemsHow:
 	text "How do you want"
-	line "to sort items?@@"
+	line "to sort items?@"
+	text_end
 
 Text_NoEmptySlot:
 	text "There are no free"
 	line "register slots."
 
 	para "Unregister another"
-	line "item first.@@"
+	line "item first.@"
+	text_end
 
 Text_ThrowAwayHowMany:
 	; Throw away how many?
 	text_jump UnknownText_0x1c0ba5
-	db "@"
+	text_end
 
 Text_ConfirmThrowAway:
 	; Throw away @ @ (S)?
 	text_jump UnknownText_0x1c0bbb
-	db "@"
+	text_end
 
 Text_ThrewAway:
 	; Threw away @ (S).
 	text_jump UnknownText_0x1c0bd8
-	db "@"
+	text_end
 
 Text_ThisIsntTheTime:
 	; OAK:  ! This isn't the time to use that!
 	text_jump UnknownText_0x1c0bee
-	db "@"
+	text_end
 
 TextJump_YouDontHaveAPkmn:
 	; You don't have a #MON!
 	text_jump Text_YouDontHaveAPkmn
-	db "@"
+	text_end
 
 Text_RegisteredItem:
 	; Registered the @ .
 	text_jump UnknownText_0x1c0c2e
-	db "@"
+	text_end
 
 Text_UnregisteredItem:
-	text "Unregistered the"
-	line "@"
-	text_from_ram wStringBuffer2
-	text "."
-	prompt
-	db "@"
+	text_jump UnregisteredItemText
+	text_end
 
 Text_CantRegister:
 	; You can't register that item.
 	text_jump UnknownText_0x1c0c45
-	db "@"
+	text_end
 
 Text_MoveItemWhere:
 	; Where should this be moved to?
 	text_jump UnknownText_0x1c0c63
-	db "@"
+	text_end
 
 Text_PackEmptyString:
 	;
 	text_jump UnknownText_0x1c0c83
-	db "@"
+	text_end
 
 PackInterfaceGFX:
 INCBIN "gfx/pack/pack_top_left.2bpp.lz"
@@ -1778,4 +1770,4 @@ Special_ChooseItem::
 
 .ItemCantBeSelectedText:
 	text_jump ItemCantBeSelectedText
-	db "@"
+	text_end

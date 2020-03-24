@@ -42,19 +42,19 @@ Script_Whiteout:
 .WhitedOutText:
 	; is out of useable #MON!  whited out!
 	text_jump WhiteoutText
-	db "@"
+	text_end
 
 .WhitedOutToWildText:
 	text_jump WhiteoutToWildText
-	db "@"
+	text_end
 
 .WhitedOutToTrainerText:
 	text_jump WhiteoutToTrainerText
-	db "@"
+	text_end
 
 .ForfeitText:
 	text_jump ForfeitToTrainerText
-	db "@"
+	text_end
 
 OverworldWhiteoutFade
 	farcall FadeOutPalettes

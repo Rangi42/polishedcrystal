@@ -682,7 +682,7 @@ endc
 
 ElmText1:
 	text_jump _ElmText1
-	db "@"
+	text_end
 
 ElmText2:
 	text_jump _ElmText2
@@ -695,23 +695,23 @@ ElmText2:
 
 ElmText3:
 	text_jump _ElmText3
-	db "@"
+	text_end
 
 ElmText4:
 	text_jump _ElmText4
-	db "@"
+	text_end
 
 ElmText5:
 	text_jump _ElmText5
-	db "@"
+	text_end
 
 ElmText6:
 	text_jump _ElmText6
-	db "@"
+	text_end
 
 ElmText7:
 	text_jump _ElmText7
-	db "@"
+	text_end
 
 InitGender:
 	ld hl, WhitePal
@@ -778,17 +778,17 @@ InitGender:
 AreYouABoyOrAreYouAGirlText:
 	; Are you a boy? Or are you a girl?
 	text_jump Text_AreYouABoyOrAreYouAGirl
-	db "@"
+	text_end
 
 SoYoureABoyText:
 	; So you're a boy?
 	text_jump Text_SoYoureABoy
-	db "@"
+	text_end
 
 SoYoureAGirlText:
 	; So you're a girl?
 	text_jump Text_SoYoureAGirl
-	db "@"
+	text_end
 
 NamePlayer:
 	ld b, $1 ; player
@@ -1259,9 +1259,7 @@ CopyrightString:
 
 	; ©1995-2001 GAME FREAK inc.
 	next $60, $61, $62, $63, $64, $65, $66
-	db   $73, $74, $75, $76, $77, $78, $79, $7a, $7b, $7c
-
-	db "@"
+	db   $73, $74, $75, $76, $77, $78, $79, $7a, $7b, $7c, "@"
 
 GameInit::
 	farcall TryLoadSaveData

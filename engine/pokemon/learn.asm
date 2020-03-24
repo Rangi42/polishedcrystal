@@ -178,28 +178,28 @@ ForgetMove:
 Text_LearnedMove:
 ; <MON> learned <MOVE>!
 	text_jump UnknownText_0x1c5660
-	db "@"
+	text_end
 
 Text_ForgetWhich:
 ; Which move should be forgotten?
 	text_jump UnknownText_0x1c5678
-	db "@"
+	text_end
 
 Text_StopLearning:
 ; Stop learning <MOVE>?
 	text_jump UnknownText_0x1c5699
-	db "@"
+	text_end
 
 Text_DidNotLearn:
 ; <MON> did not learn <MOVE>.
 	text_jump UnknownText_0x1c56af
-	db "@"
+	text_end
 
 Text_TryingToLearn:
 ; <MON> is trying to learn <MOVE>. But <MON> can't learn more than
 ; four moves. Delete an older move to make room for <MOVE>?
 	text_jump UnknownText_0x1c56c9
-	db "@"
+	text_end
 
 Text_1_2_and_Poof:
 	text_jump UnknownText_0x1c5740 ; 1, 2 and…
@@ -214,4 +214,4 @@ Text_1_2_and_Poof:
 .PoofForgot:
 ; Poof! <MON> forgot <MOVE>. And…
 	text_jump UnknownText_0x1c574e
-	db "@"
+	text_end

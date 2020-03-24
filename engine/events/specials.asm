@@ -14,9 +14,6 @@ Special::
 
 INCLUDE "data/special_pointers.asm"
 
-SpecialNone:
-	ret
-
 Special_SetPlayerPalette:
 	ldh a, [hScriptVar]
 	ld d, a
@@ -219,12 +216,12 @@ Special_CheckCoins:
 .NoCoinsText:
 	; You have no coins.
 	text_jump UnknownText_0x1bd3d7
-	db "@"
+	text_end
 
 .NoCoinCaseText:
 	; You don't have a COIN CASE.
 	text_jump UnknownText_0x1bd3eb
-	db "@"
+	text_end
 
 ScriptReturnCarry:
 	jr c, .carry
