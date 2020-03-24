@@ -962,24 +962,7 @@ PCMonInfo:
 .pkmn
 	ld [wd265], a
 	hlcoord 1, 4
-	xor a
-	ld b, 7
-.row
-	ld c, 7
-	push af
-	push hl
-.col
-	ld [hli], a
-	add 7
-	dec c
-	jr nz, .col
-	pop hl
-	ld de, SCREEN_WIDTH
-	add hl, de
-	pop af
-	inc a
-	dec b
-	jr nz, .row
+	farcall PlaceFrontpicAtHL
 
 	call BillsPC_LoadMonStats
 	ld a, [wTempMonIsEgg]

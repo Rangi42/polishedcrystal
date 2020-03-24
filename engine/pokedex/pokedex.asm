@@ -89,7 +89,10 @@ InitPokedex:
 	ld [wcf65], a
 	ld [wcf66], a
 
-	call Pokedex_CheckUnlockedUnownMode
+	ld a, [wStatusFlags]
+	and 1 << 1 ; ENGINE_UNOWN_DEX
+	rra
+	ld [wUnlockedUnownMode], a
 
 	ld a, [wLastDexMode]
 	ld [wCurrentDexMode], a
@@ -99,20 +102,9 @@ InitPokedex:
 	call GetCurrentLandmark
 	ld [wDexCurrentLocation], a
 	call Pokedex_DrawDexEntryScreenRightEdge
-	jp Pokedex_ResetBGMapMode
-
-Pokedex_CheckUnlockedUnownMode:
-	ld a, [wStatusFlags]
-	bit 1, a
-	jr nz, .unlocked
-
+Pokedex_ResetBGMapMode:
 	xor a
-	ld [wUnlockedUnownMode], a
-	ret
-
-.unlocked
-	ld a, TRUE
-	ld [wUnlockedUnownMode], a
+	ldh [hBGMapMode], a
 	ret
 
 Pokedex_InitCursorPosition:
@@ -176,11 +168,6 @@ Pokedex_RunJumptable:
 	dw Pokedex_UpdateUnownMode
 	dw Pokedex_Exit
 
-Pokedex_IncrementDexPointer:
-	ld hl, wJumptableIndex
-	inc [hl]
-	ret
-
 Pokedex_Exit:
 	ld hl, wJumptableIndex
 	set 7, [hl]
@@ -228,7 +215,10 @@ Pokedex_InitMainScreen:
 	ld a, 7
 	ld [wDexListingHeight], a
 	call Pokedex_PrintListing
-	jp Pokedex_IncrementDexPointer
+Pokedex_IncrementDexPointer:
+	ld hl, wJumptableIndex
+	inc [hl]
+	ret
 
 Pokedex_UpdateMainScreen:
 	ld hl, hJoyPressed
@@ -1051,7 +1041,28 @@ Pokedex_DrawMainScreenBG:
 	ld [hl], $54
 	hlcoord 8, 16
 	ld [hl], $5b
-	jp Pokedex_PlaceFrontpicTopLeftCorner
+PlaceFrontpicTopLeftCorner:
+	hlcoord 1, 1
+PlaceFrontpicAtHL:
+	ld de, SCREEN_WIDTH
+	xor a
+	ld b, 7
+.row
+	ld c, 7
+	push af
+	push hl
+.col
+	ld [hli], a
+	add 7
+	dec c
+	jr nz, .col
+	pop hl
+	add hl, de
+	pop af
+	inc a
+	dec b
+	jr nz, .row
+	ret
 
 String_SEEN:
 	db "Seen", $ff
@@ -1111,7 +1122,7 @@ Pokedex_DrawDexEntryScreenBG:
 	ld de, .MenuItems
 .ok
 	call Pokedex_PlaceString
-	jp Pokedex_PlaceFrontpicTopLeftCorner
+	jp PlaceFrontpicTopLeftCorner
 
 .HeightImperial:
 	rawchar "Ht  ?′??″", $ff ; HT  ?'??"
@@ -1252,7 +1263,7 @@ Pokedex_DrawSearchResultsScreenBG:
 	ld [hl], $63
 	hlcoord 8, 10
 	ld [hl], $64
-	jp Pokedex_PlaceFrontpicTopLeftCorner
+	jp PlaceFrontpicTopLeftCorner
 
 .BottomWindowText:
 	db   "Search Results"
@@ -1289,7 +1300,7 @@ Pokedex_DrawUnownModeBG:
 	hlcoord 16, 15
 	ld [hl], $3e
 	hlcoord 6, 5
-	call Pokedex_PlaceFrontpicAtHL
+	call PlaceFrontpicAtHL
 	ld de, 0
 	lb bc, 0, NUM_UNOWN
 .loop
@@ -1443,29 +1454,6 @@ Pokedex_FillBackgroundColor2:
 	ld a, $32
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
 	jp _ByteFill
-
-Pokedex_PlaceFrontpicTopLeftCorner:
-	hlcoord 1, 1
-Pokedex_PlaceFrontpicAtHL:
-	ld de, SCREEN_WIDTH
-	xor a
-	ld b, $7
-.row
-	ld c, $7
-	push af
-	push hl
-.col
-	ld [hli], a
-	add $7
-	dec c
-	jr nz, .col
-	pop hl
-	add hl, de
-	pop af
-	inc a
-	dec b
-	jr nz, .row
-	ret
 
 Pokedex_PlaceString:
 .loop
@@ -2513,7 +2501,7 @@ NewPokedexEntry:
 	call ClearTileMap
 	call LoadFontsExtra
 	call LoadStandardFont
-	call Pokedex_PlaceFrontpicTopLeftCorner
+	call PlaceFrontpicTopLeftCorner
 	call ApplyAttrAndTilemapInVBlank
 	farcall GetEnemyMonDVs
 	ld de, wTempMonDVs
@@ -2532,11 +2520,6 @@ Pokedex_SetBGMapMode4:
 Pokedex_SetBGMapMode:
 	ldh [hBGMapMode], a
 	jp Delay2
-
-Pokedex_ResetBGMapMode:
-	xor a
-	ldh [hBGMapMode], a
-	ret
 
 PokedexLZ:
 INCBIN "gfx/pokedex/pokedex.2bpp.lz"

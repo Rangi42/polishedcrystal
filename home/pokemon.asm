@@ -53,11 +53,15 @@ DrawBattleHPBar::
 .done
 	jp PopBCDEHL
 
+PrepMonFrontpicFlipped::
+	xor a
+	jr _PrepMonFrontpic
+
 PrepMonFrontpic::
 	ld a, $1
-	ld [wBoxAlignment], a
 
-_PrepMonFrontpic::
+_PrepMonFrontpic:
+	ld [wBoxAlignment], a
 	ld a, [wCurPartySpecies]
 	and a
 	jr z, .not_pokemon
