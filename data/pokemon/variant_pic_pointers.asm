@@ -67,6 +67,8 @@ PikachuPicPointers::
 	dba PikachuPikaBackpic
 	dba PikachuChuchuFrontpic
 	dba PikachuChuchuBackpic
+	dba PikachuSparkFrontpic
+	dba PikachuSparkBackpic
 
 PichuPicPointers::
 	dba PichuPlainFrontpic

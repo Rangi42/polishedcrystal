@@ -34,6 +34,7 @@ PikachuBitmasksPointers:
 	dw PikachuSurfBitmasks
 	dw PikachuPikaBitmasks
 	dw PikachuChuchuBitmasks
+	dw PikachuSparkBitmasks
 
 PichuBitmasksPointers:
 	dw PichuPlainBitmasks

@@ -34,6 +34,7 @@ PikachuFlyFrames:    INCLUDE "gfx/pokemon/pikachu_fly/frames.asm"
 PikachuSurfFrames:   INCLUDE "gfx/pokemon/pikachu_surf/frames.asm"
 PikachuPikaFrames:   INCLUDE "gfx/pokemon/pikachu_pika/frames.asm"
 PikachuChuchuFrames: INCLUDE "gfx/pokemon/pikachu_chuchu/frames.asm"
+PikachuSparkFrames:  INCLUDE "gfx/pokemon/pikachu_spark/frames.asm"
 
 PichusFrames:
 PichuPlainFrames: INCLUDE "gfx/pokemon/pichu_plain/frames.asm"

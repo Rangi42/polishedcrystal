@@ -724,13 +724,15 @@ SECTION "Pikachu Pics", ROMX
 PikachuPlainFrontpic:     INCBIN "gfx/pokemon/pikachu_plain/front.2bpp.lz"
 PikachuPlainBackpic:
 PikachuSurfBackpic:
-PikachuPikaBackpic:       INCBIN "gfx/pokemon/pikachu_plain/back.2bpp.lz"
+PikachuPikaBackpic:
+PikachuSparkBackpic:      INCBIN "gfx/pokemon/pikachu_plain/back.2bpp.lz"
 PikachuFlyFrontpic:       INCBIN "gfx/pokemon/pikachu_fly/front.2bpp.lz"
 PikachuFlyBackpic:        INCBIN "gfx/pokemon/pikachu_fly/back.2bpp.lz"
 PikachuSurfFrontpic:      INCBIN "gfx/pokemon/pikachu_surf/front.2bpp.lz"
 PikachuPikaFrontpic:      INCBIN "gfx/pokemon/pikachu_pika/front.2bpp.lz"
 PikachuChuchuFrontpic:    INCBIN "gfx/pokemon/pikachu_chuchu/front.2bpp.lz"
 PikachuChuchuBackpic:     INCBIN "gfx/pokemon/pikachu_chuchu/back.2bpp.lz"
+PikachuSparkFrontpic:     INCBIN "gfx/pokemon/pikachu_spark/front.2bpp.lz"
 
 
 SECTION "Pichu Pics", ROMX

@@ -34,6 +34,7 @@ PikachuAnimationExtraPointers:
 	dw PikachuSurfAnimationExtra
 	dw PikachuPikaAnimationExtra
 	dw PikachuChuchuAnimationExtra
+	dw PikachuSparkAnimationExtra
 
 PichuAnimationExtraPointers:
 	dw PichuPlainAnimationExtra
