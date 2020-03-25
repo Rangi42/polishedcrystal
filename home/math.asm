@@ -30,7 +30,8 @@ SimpleDivide::
 	dec b
 	ret
 .div0
-	rst EntryPoint ; crash
+	ld a, ERR_DIV_ZERO
+	jp Crash
 
 Multiply::
 ; Multiply hMultiplicand (3 bytes) by hMultiplier. Result in hProduct.

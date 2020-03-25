@@ -21,6 +21,27 @@ VBlank::
 	ldh a, [hVBlank]
 	cp 7
 	jr z, .skipToGameTime
+
+	; don't chain vblank crashes
+	ld a, [hCrashCode]
+	cp FIRST_VBLANK_ERR
+	jr nc, .skip_crash
+
+	ld hl, sp + 0
+	ld a, h
+	cp HIGH(wStackBottom)
+	jr c, .SPTooLow
+	jr nz, .SPTooHigh
+
+	ld hl, sp + 11
+	ld a, [hl]
+	inc a
+	cp $81
+	ld a, ERR_EXECUTING_RAM
+	jr nc, .crash
+
+.skip_crash
+	ldh a, [hVBlank]
 	and 7
 	add a
 	ld e, a
@@ -56,6 +77,17 @@ VBlank::
 	pop de
 	pop hl
 	reti
+
+.SPTooLow
+	; keep in mind that lower sp = higher stack frame
+	ld a, ERR_STACK_OVERFLOW
+	jr .crash
+
+.SPTooHigh
+	ld a, ERR_STACK_UNDERFLOW
+.crash
+	di
+	jp Crash
 
 .skipToGameTime
 	call AnimateTileset

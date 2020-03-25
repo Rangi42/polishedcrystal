@@ -128,4 +128,5 @@ _Divide::
 	ldh [hDividend], a
 	ret
 .div0
-	rst EntryPoint ; crash
+	ld a, ERR_DIV_ZERO
+	jp Crash

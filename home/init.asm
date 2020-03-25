@@ -18,6 +18,18 @@ SoftReset::
 
 	jr Init
 
+
+Rst0Crash:
+	xor a ; ld a, ERR_RST_0
+Crash::
+	; BGB source code breakpoint
+	ld b, b
+
+	ld [hCrashCode], a
+	xor a
+	ld [hCGB], a
+	jr Init
+
 _Start::
 	cp $11
 	jr z, .cgb
@@ -29,6 +41,8 @@ _Start::
 
 .load
 	ldh [hCGB], a
+	xor a
+	ld [hCrashCode], a
 	; fallthrough
 
 Init::
@@ -74,6 +88,8 @@ Init::
 	ld sp, wStack
 
 ; Clear HRAM
+	ldh a, [hCrashCode]
+	push af
 	ldh a, [hCGB]
 	push af
 	xor a
@@ -82,6 +98,8 @@ Init::
 	rst ByteFill
 	pop af
 	ldh [hCGB], a
+	pop af
+	ldh [hCrashCode], a
 
 	call ClearWRAM
 	ld a, 1

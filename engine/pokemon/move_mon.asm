@@ -587,7 +587,9 @@ SentGetPkmnIntoFromBox:
 	ld a, [wCurPartySpecies]
 	cp EGG
 	jr nz, .species_valid
-	rst EntryPoint ; crash
+	ld a, ERR_EGG_SPECIES
+	jp Crash
+
 .species_valid
 	ld a, BANK(sBoxCount)
 	call GetSRAMBank

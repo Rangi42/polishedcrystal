@@ -5,7 +5,7 @@
 
 SECTION "rst00 EntryPoint", ROM0[$0000]
 	di
-	jp Start
+	jp Rst0Crash
 
 PushWindow::
 	farjp _PushWindow

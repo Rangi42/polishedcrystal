@@ -4283,6 +4283,8 @@ BattleCommand_sleeptarget:
 	ldh [hBGMapMode], a
 	ld a, BATTLE_VARS_STATUS_OPP
 	call GetBattleVarAddr
+
+	; 1-3 turns of sleep, rnd(0-2) + 2 since Pokémon wake up once it ticks to 0.
 	push hl
 	ld a, 3
 	call BattleRandomRange

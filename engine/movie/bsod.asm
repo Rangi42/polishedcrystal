@@ -35,11 +35,59 @@ BSOD:
 	hlcoord 1, 1
 	rst PlaceString
 
+	; reimplementation of PrintNum without touching hram
+	ld a, [hCrashCode]
+	call .printnum_simple
+
+	and a ; ld a, ERR_RST_0
+	ld de, .Rst0
+	jr z, .PrintErrorType
+	dec a ; ld a, ERR_DIV_ZERO
+	ld de, .DivZero
+	jr z, .PrintErrorType
+	dec a ; ld a, ERR_EGG_SPECIES
+	ld de, .EggSpecies
+	jr z, .PrintErrorType
+	dec a ; ld a, ERR_EXECUTING_RAM
+	ld de, .ExecutingRAM
+	jr z, .PrintErrorType
+	dec a ; ld a, ERR_STACK_OVERFLOW
+	ld de, .StackOverflow
+	jr z, .PrintErrorType
+	dec a ; ld a, ERR_STACK_UNDERFLOW
+	ld de, .StackUnderflow
+	jr z, .PrintErrorType
+	ld de, .UnknownError
+.PrintErrorType
+	hlcoord 1, 12
+	rst PlaceString
+
 	call ApplyTilemapInVBlank
 
 .infiniteloop
 	call DelayFrame
 	jr .infiniteloop
+
+.printnum_simple
+	ld b, 100
+	hlcoord 8, 11
+	push af
+	call .do_printnum
+	ld b, 10
+	call .do_printnum
+	add "0"
+	ld [hl], a
+	pop af
+	ret
+.do_printnum
+	ld [hl], "0" - 1
+.printnum_loop
+	inc [hl]
+	sub b
+	jr nc, .printnum_loop
+	add b
+	inc hl
+	ret
 
 .Palette:
 if !DEF(MONOCHROME)
@@ -56,10 +104,32 @@ endc
 
 .Message:
 	db   "      Pokémon"
-	next " Polished Crystal"
-	next "       ERROR"
-	next "------------------"
+	next1 " Polished Crystal"
+	next1 "       ERROR"
+	next1 "------------------"
 	next "Please report this"
-	next "crash to the deve-"
-	next "loper, Rangi42, at"
-	next "tinyurl.com/pkpc3.@"
+	next1 "crash to the deve-"
+	next1 "loper, Rangi42, at"
+	next1 "tinyurl.com/pkpc3."
+	next "Error:@"
+
+.Rst0:
+	db "Rst0@"
+
+.DivZero:
+	db "Divided by zero@"
+
+.EggSpecies:
+	db "<PK><MN> species is Egg@"
+
+.ExecutingRAM:
+	db "Executing RAM@"
+
+.StackOverflow:
+	db "Stack overflow@"
+
+.StackUnderflow:
+	db "Stack underflow@"
+
+.UnknownError:
+	db "Unknown error@"

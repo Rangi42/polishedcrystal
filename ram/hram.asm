@@ -195,7 +195,9 @@ hDY::  db
 hErr:: db
 ENDU
 
-	ds 13
+hCrashCode:: db
+
+	ds 12
 
 hFunction::
 hFunctionJump::     db ; $c3 jp
