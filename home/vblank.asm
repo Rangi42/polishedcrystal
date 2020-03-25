@@ -23,17 +23,17 @@ VBlank::
 	jr z, .skipToGameTime
 
 	; don't chain vblank crashes
-	ld a, [hCrashCode]
+	ldh a, [hCrashCode]
 	cp FIRST_VBLANK_ERR
 	jr nc, .skip_crash
 
-	ld hl, sp + 0
+	ld hl, sp+$0
 	ld a, h
 	cp HIGH(wStackBottom)
 	jr c, .SPTooLow
 	jr nz, .SPTooHigh
 
-	ld hl, sp + 11
+	ld hl, sp+$b
 	ld a, [hl]
 	inc a
 	cp $81

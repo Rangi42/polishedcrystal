@@ -22,8 +22,7 @@ SoftReset::
 Rst0Crash:
 	xor a ; ld a, ERR_RST_0
 Crash::
-	; BGB source code breakpoint
-	ld b, b
+	ld b, b ; BGB breakpoint
 
 	ld [hCrashCode], a
 	xor a
@@ -41,7 +40,7 @@ _Start::
 
 .load
 	ldh [hCGB], a
-	xor a
+	xor a ; ld a, ERR_RST_0
 	ld [hCrashCode], a
 	; fallthrough
 

@@ -39,6 +39,12 @@ ITEMMENU_PARTY   EQU 5
 ITEMMENU_CLOSE   EQU 6
 
 
+; mail
+MAIL_STRUCT_LENGTH EQU $2f
+MAILBOX_CAPACITY   EQU 10
+MAIL_MSG_LENGTH    EQU $20
+
+
 ; held item effects
 	const_def
 

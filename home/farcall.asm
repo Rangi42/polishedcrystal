@@ -106,7 +106,7 @@ ReturnFarCall::
 	; To accomplish this, mess with the stack a bit...
 	push af
 	push hl
-	ld hl, sp + 2 ; a flags
+	ld hl, sp+$2 ; a flags
 	ld a, [hli]
 	inc l ; faster than inc hl (stack is always c000-c100...)
 	ld [hl], a ; write to flags

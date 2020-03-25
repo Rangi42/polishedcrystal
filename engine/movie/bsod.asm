@@ -35,26 +35,25 @@ BSOD:
 	hlcoord 1, 1
 	rst PlaceString
 
-	; reimplementation of PrintNum without touching hram
-	ld a, [hCrashCode]
+	ldh a, [hCrashCode]
 	call .printnum_simple
 
-	and a ; ld a, ERR_RST_0
+	and a ; a == ERR_RST_0?
 	ld de, .Rst0
 	jr z, .PrintErrorType
-	dec a ; ld a, ERR_DIV_ZERO
+	dec a ; a == ERR_DIV_ZERO?
 	ld de, .DivZero
 	jr z, .PrintErrorType
-	dec a ; ld a, ERR_EGG_SPECIES
+	dec a ; a == ERR_EGG_SPECIES?
 	ld de, .EggSpecies
 	jr z, .PrintErrorType
-	dec a ; ld a, ERR_EXECUTING_RAM
+	dec a ; a == ERR_EXECUTING_RAM?
 	ld de, .ExecutingRAM
 	jr z, .PrintErrorType
-	dec a ; ld a, ERR_STACK_OVERFLOW
+	dec a ; a == ERR_STACK_OVERFLOW?
 	ld de, .StackOverflow
 	jr z, .PrintErrorType
-	dec a ; ld a, ERR_STACK_UNDERFLOW
+	dec a ; a == ERR_STACK_UNDERFLOW?
 	ld de, .StackUnderflow
 	jr z, .PrintErrorType
 	ld de, .UnknownError
@@ -69,6 +68,7 @@ BSOD:
 	jr .infiniteloop
 
 .printnum_simple
+; reimplementation of PrintNum without touching hram
 	ld b, 100
 	hlcoord 8, 11
 	push af

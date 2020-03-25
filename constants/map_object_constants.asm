@@ -265,3 +265,18 @@ SPRITEMOVEDATA_FIELDS EQU 6
 	const FACING_ARCH_TREE_RIGHT ; 2e
 	const FACING_SAILBOAT_TOP    ; 2f
 	const FACING_SAILBOAT_BOTTOM ; 30
+
+; movement
+	const_def
+	const STEP_SLOW
+	const STEP_WALK
+	const STEP_BIKE
+	const STEP_RUN
+	const STEP_LEDGE
+	const STEP_ICE
+	const STEP_TURN
+	const STEP_BACK_LEDGE
+	const STEP_WALK_IN_PLACE
+	const STEP_SPIN
+	const STEP_FAST ; same as STEP_RUN but without doubling animation speed
+	const STEP_STAIRS
