@@ -89,28 +89,28 @@ patterns = {
 	(lambda line2, prev: line2.code == 'srl a'),
 	(lambda line3, prev: line3.code == 'srl a'),
 ],
-'hl|bc|de += a': [
-	# Bad: add l / ld l, a / ld a, h|0 / adc 0|h / ld h, a (hl or bc or de)
-	# Good: add l / ld l, a / adc h / sub l / ld h, a
-	(lambda line1, prev: re.match(r'add [lce]', line1.code)),
+'hl|bc|de += a|N': [
+	# Bad: add l|N / ld l, a / ld a, h|0 / adc 0|h / ld h, a (hl or bc or de)
+	# Good: add l|N / ld l, a / adc h / sub l / ld h, a
+	(lambda line1, prev: re.match(r'add (?:[lce]|[^afbdh\[])', line1.code)),
 	(lambda line2, prev: re.match(r'ld [lce], a', line2.code) and
-		line2.code[3] == prev[0].code[4]),
+		(line2.code[3] == prev[0].code[4] or prev[0].code[4] not in 'lce')),
 	(lambda line3, prev: re.match(r'ld a, (?:[hbd]|[%\$]?0+$)', line3.code) and
-		(line3.code[6] not in 'hbd' or line3.code[6] == PAIRS[prev[0].code[4]])),
+		(line3.code[6] not in 'hbd' or line3.code[6] == PAIRS[prev[1].code[3]])),
 	(lambda line4, prev: re.match(r'adc (?:[hbd]|[%\$]?0+$)', line4.code) and
-		(line4.code[4] not in 'hbd' or line4.code[4] == PAIRS[prev[0].code[4]])),
+		(line4.code[4] not in 'hbd' or line4.code[4] == PAIRS[prev[1].code[3]])),
 	(lambda line5, prev: re.match(r'ld [hbd], a', line5.code) and
-		line5.code[3] == PAIRS[prev[0].code[4]]),
+		line5.code[3] == PAIRS[prev[1].code[3]]),
 ],
-'hl|bc|de += a (with jump)': [
-	# Okay: add l / ld l, a / jr nc, .noCarry / inc h / .noCarry
-	# Good: add l / ld l, a / adc h / sub l / ld h, a
-	(lambda line1, prev: re.match(r'add [lce]', line1.code)),
+'hl|bc|de += a|N (with jump)': [
+	# Okay: add l|N / ld l, a / jr nc, .noCarry / inc h / .noCarry
+	# Good: add l|N / ld l, a / adc h / sub l / ld h, a
+	(lambda line1, prev: re.match(r'add (?:[lce]|[^afbdh\[])', line1.code)),
 	(lambda line2, prev: re.match(r'ld [lce], a', line2.code) and
-		line2.code[3] == prev[0].code[4]),
+		(line2.code[3] == prev[0].code[4] or prev[0].code[4] not in 'lce')),
 	(lambda line3, prev: re.match(r'j[rp] nc,', line3.code)),
 	(lambda line4, prev: re.match(r'inc [hbd]', line4.code) and
-		line4.code[4] == PAIRS[prev[0].code[4]]),
+		line4.code[4] == PAIRS[prev[1].code[3]]),
 	(lambda line5, prev: line5.code.rstrip(':') == prev[2].code.split(',')[1].strip()),
 ],
 'hl *= 2': [
@@ -240,7 +240,7 @@ patterns = {
 	(lambda line1, prev: line1.code == 'ret' or line1.code.startswith('ret ')),
 	(lambda line2, prev: line2.code == 'ret' or line2.code.startswith('ret ') and
 		(prev[0].code == 'ret' or line2.code.split()[-1].lstrip('n') == prev[0].code.split()[-1].lstrip('n'))),
-]
+],
 }
 
 # Count the total instances of the pattern

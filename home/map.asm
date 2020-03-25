@@ -1443,10 +1443,9 @@ SaveScreen_LoadNeighbor::
 	ld a, e
 	add 6
 	ld e, a
-	jr nc, .okay
-	inc d
-
-.okay
+	adc d
+	sub e
+	ld d, a
 	pop hl
 	ldh a, [hConnectionStripLength]
 	ld c, a
