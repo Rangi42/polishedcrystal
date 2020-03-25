@@ -1509,8 +1509,7 @@ BattleBGEffect_2f:
 	dw .four
 
 .four
-	call BattleAnim_ResetLCDStatCustom
-	ret
+	jp BattleAnim_ResetLCDStatCustom
 
 BattleBGEffect_26:
 	call BattleBGEffects_AnonJumptable

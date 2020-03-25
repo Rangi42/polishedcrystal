@@ -24,9 +24,9 @@ Rst0Crash:
 Crash::
 	ld b, b ; BGB breakpoint
 
-	ld [hCrashCode], a
+	ldh [hCrashCode], a
 	xor a
-	ld [hCGB], a
+	ldh [hCGB], a
 	jr Init
 
 _Start::
@@ -41,7 +41,7 @@ _Start::
 .load
 	ldh [hCGB], a
 	xor a ; ld a, ERR_RST_0
-	ld [hCrashCode], a
+	ldh [hCrashCode], a
 	; fallthrough
 
 Init::

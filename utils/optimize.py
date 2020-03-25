@@ -165,10 +165,10 @@ patterns = {
 	(lambda line1, prev: re.match(r'cp [%\$]?0+$', line1.code)),
 ],
 'Tail call': [
-	# Bad: call Foo / ret (unless Foo messes with the stack)
+	# Bad: call Foo / ret (unless Foo messes with the stack, e.g. JumpTable)
 	# Good: jr|jp Foo
 	(lambda line1, prev: line1.code.startswith('call ') and
-		',' not in line1.code),
+		',' not in line1.code and line1.code != 'call JumpTable'),
 	(lambda line2, prev: line2.code == 'ret'),
 ],
 'Tail predef': [

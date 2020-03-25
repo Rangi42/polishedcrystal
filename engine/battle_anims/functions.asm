@@ -432,8 +432,7 @@ BattleAnimFunction_10:
 .three
 	call BattleAnim_IncAnonJumptableIndex
 	ld a, BATTLEANIMFRAMESET_0F
-	call ReinitBattleAnimFrameset
-	ret
+	jp ReinitBattleAnimFrameset
 
 BattleAnimFunction_07:
 	call BattleAnim_AnonJumptable
