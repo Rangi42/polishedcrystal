@@ -2339,9 +2339,9 @@
 ; TODO: reorganize these when it's okay to break saves
 	const EVENT_JUDGE_MACHINE_ENGINEER
 	const EVENT_BRED_AN_EGG
+	const EVENT_ROUTE_32_COAST_HIDDEN_ELIXIR
 
 ; Unused placeholder events
-	const EVENT_884
 	const EVENT_885
 	const EVENT_886
 	const EVENT_887
