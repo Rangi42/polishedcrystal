@@ -79,7 +79,7 @@ UnknownScript_0x1a001e:
 	setmapscene ROUTE_42, $2
 .Continue
 	checkevent EVENT_BEAT_EUSINE
-	iftrue .Done
+	iftrue DoNothingScript
 	setevent EVENT_BEAT_EUSINE
 	playmusic MUSIC_MYSTICALMAN_ENCOUNTER
 	appear CIANWOODCITY_EUSINE
@@ -100,7 +100,6 @@ UnknownScript_0x1a001e:
 	special Special_FadeOutMusic
 	playmapmusic
 	pause 10
-.Done:
 	end
 
 PokefanFScript_0x1a0084:

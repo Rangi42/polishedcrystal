@@ -231,7 +231,7 @@ Route23OfficerHaveBadgeScript:
 	text_from_ram wStringBuffer3
 	text "!@"
 	sound_dex_fanfare_50_79
-	db "@@"
+	text_end
 
 Route23OfficerNeedBadgeText:
 	text "You can pass here"

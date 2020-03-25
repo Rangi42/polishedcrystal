@@ -166,7 +166,7 @@ UnknownText_0x1bc14f::
 	text "!@"
 	sound_dex_fanfare_50_79
 	text_waitbutton
-	db "@@"
+	text_end
 
 SECTION "UnknownText_0x1bc16e", ROMX
 UnknownText_0x1bc16e::
@@ -194,7 +194,8 @@ UnknownText_0x1bc2eb::
 
 SECTION "UnknownText_0x1bc2fd", ROMX
 UnknownText_0x1bc2fd::
-	text "What?@@"
+	text "What?@"
+	text_end
 
 SECTION "UnknownText_0x1bc305", ROMX
 UnknownText_0x1bc305::
@@ -208,7 +209,8 @@ UnknownText_0x1bc308::
 
 SECTION "UnknownText_0x1bc31b", ROMX
 UnknownText_0x1bc31b::
-	text "Whoa!@@"
+	text "Whoa!@"
+	text_end
 
 SECTION "UnknownText_0x1bc323", ROMX
 UnknownText_0x1bc323::
@@ -446,7 +448,7 @@ UnknownText_0x1bc75e::
 	text " will"
 	line "trade @"
 	text_from_ram wOTTrademonSpeciesName
-	db "@@"
+	text_end
 
 SECTION "UnknownText_0x1bc774", ROMX
 UnknownText_0x1bc774::
@@ -483,7 +485,7 @@ _OPT_OakText1::
 	text ""
 	line "Oak: @"
 	text_from_ram wMonOrItemNameBuffer
-	db "@@"
+	text_end
 
 SECTION "_OPT_OakText2", ROMX
 _OPT_OakText2::
@@ -709,7 +711,7 @@ _PokedexShowText::
 	text ""
 	line "@"
 	text_from_ram wStringBuffer1
-	db "@@"
+	text_end
 
 ; Pokémon Music Channel / Pokémusic
 
@@ -885,7 +887,7 @@ _PnP_Text4::
 	text_from_ram wStringBuffer2
 	text " @"
 	text_from_ram wStringBuffer1
-	db "@@"
+	text_end
 
 SECTION "_PnP_cute", ROMX
 _PnP_cute::
@@ -988,7 +990,7 @@ _PnP_Text5::
 	text ""
 	line "@"
 	text_from_ram wStringBuffer1
-	db "@@"
+	text_end
 
 SECTION "_RocketRadioText1", ROMX
 _RocketRadioText1::
@@ -1255,13 +1257,14 @@ UnknownText_0x1bd429::
 	text " for"
 	cont "@"
 	text_from_ram wStringBuffer2
-	text ".@@"
+	text ".@"
+	text_end
 
 SECTION "UnknownText_0x1bd445", ROMX
 UnknownText_0x1bd445::
 	sound_dex_fanfare_80_109
 	interpret_data
-	db "@@"
+	text_end
 
 SECTION "UnknownText_0x1bd449", ROMX
 UnknownText_0x1bd449::
@@ -1896,7 +1899,8 @@ UnknownText_0x1c0272::
 SECTION "Text_Gained", ROMX
 Text_Gained::
 	text_from_ram wStringBuffer1
-	text " gained@@"
+	text " gained@"
+	text_end
 
 SECTION "Text_ABoostedStringBuffer2ExpPoints", ROMX
 Text_ABoostedStringBuffer2ExpPoints::
@@ -1917,21 +1921,25 @@ Text_StringBuffer2ExpPoints::
 
 SECTION "Text_GoPkmn", ROMX
 Text_GoPkmn::
-	text "Go! @@"
+	text "Go! @"
+	text_end
 
 SECTION "Text_DoItPkmn", ROMX
 Text_DoItPkmn::
-	text "Do it! @@"
+	text "Do it! @"
+	text_end
 
 SECTION "Text_GoForItPkmn", ROMX
 Text_GoForItPkmn::
 	text "Go for it,"
-	line "@@"
+	line "@"
+	text_end
 
 SECTION "Text_YourFoesWeakGetmPkmn", ROMX
 Text_YourFoesWeakGetmPkmn::
 	text "Your foe's weak!"
-	line "Get'm, @@"
+	line "Get'm, @"
+	text_end
 
 SECTION "Text_BattleMonNick01", ROMX
 Text_BattleMonNick01::
@@ -1942,22 +1950,26 @@ Text_BattleMonNick01::
 SECTION "Text_BattleMonNickComma", ROMX
 Text_BattleMonNickComma::
 	text_from_ram wBattleMonNick
-	text ",@@"
+	text ",@"
+	text_end
 
 SECTION "Text_ThatsEnoughComeBack", ROMX
 Text_ThatsEnoughComeBack::
 	text " that's"
-	line "enough! Come back!@@"
+	line "enough! Come back!@"
+	text_end
 
 SECTION "Text_OKComeBack", ROMX
 Text_OKComeBack::
 	text " OK!"
-	line "Come back!@@"
+	line "Come back!@"
+	text_end
 
 SECTION "Text_GoodComeBack", ROMX
 Text_GoodComeBack::
 	text " good!"
-	line "Come back!@@"
+	line "Come back!@"
+	text_end
 
 SECTION "Text_ComeBack", ROMX
 Text_ComeBack::
@@ -2033,7 +2045,7 @@ UnknownText_0x1c0609::
 	text "A blinding Flash"
 	line "lights the area!@"
 	text_waitbutton
-	db "@@"
+	text_end
 
 SECTION "_UsedSurfText", ROMX
 _UsedSurfText::
@@ -2410,6 +2422,14 @@ UnknownText_0x1c0c2e::
 	text "."
 	prompt
 
+SECTION "UnregisteredItemText", ROMX
+UnregisteredItemText::
+	text "Unregistered the"
+	line "@"
+	text_from_ram wStringBuffer2
+	text "."
+	prompt
+
 SECTION "UnknownText_0x1c0c45", ROMX
 UnknownText_0x1c0c45::
 	text "You can't register"
@@ -2445,7 +2465,8 @@ Text_SoYoureAGirl::
 
 SECTION "UnknownText_0x1c0d0e", ROMX
 UnknownText_0x1c0d0e::
-	text "<USER>@@"
+	text "<USER>@"
+	text_end
 
 SECTION "UnknownText_0x1c0d26", ROMX
 UnknownText_0x1c0d26::
@@ -2468,7 +2489,8 @@ UnknownText_0x1c0d6c::
 SECTION "UnknownText_0x1c0db0", ROMX
 UnknownText_0x1c0db0::
 	text "Huh?"
-	para "@@"
+	para "@"
+	text_end
 
 SECTION "UnknownText_0x1c0db8", ROMX
 UnknownText_0x1c0db8::
@@ -2482,7 +2504,7 @@ UnknownText_0x1c0dba::
 	line "out of its Egg!@"
 	sound_caught_mon
 	text_waitbutton
-	db "@@"
+	text_end
 
 SECTION "UnknownText_0x1c0dd8", ROMX
 UnknownText_0x1c0dd8::
@@ -2643,7 +2665,8 @@ ContestJudging_FirstPlaceText::
 	line "who caught a"
 	cont "@"
 	text_from_ram wStringBuffer1
-	text "!@@"
+	text "!@"
+	text_end
 
 SECTION "ContestJudging_FirstPlaceScoreText", ROMX
 ContestJudging_FirstPlaceScoreText::
@@ -2664,7 +2687,8 @@ ContestJudging_SecondPlaceText::
 	para "who caught a"
 	line "@"
 	text_from_ram wStringBuffer1
-	text "!@@"
+	text "!@"
+	text_end
 
 SECTION "ContestJudging_SecondPlaceScoreText", ROMX
 ContestJudging_SecondPlaceScoreText::
@@ -2684,7 +2708,8 @@ ContestJudging_ThirdPlaceText::
 	para "who caught a"
 	line "@"
 	text_from_ram wStringBuffer1
-	text "!@@"
+	text "!@"
+	text_end
 
 SECTION "ContestJudging_ThirdPlaceScoreText", ROMX
 ContestJudging_ThirdPlaceScoreText::
@@ -2715,7 +2740,7 @@ UnknownText_0x1c123a::
 	line "@"
 	text_from_ram wMagikarpRecordHoldersName
 	text_waitbutton
-	db "@@"
+	text_end
 
 SECTION "UnknownText_0x1c1261", ROMX
 UnknownText_0x1c1261::
@@ -3258,12 +3283,13 @@ _ElmText2::
 	text "This world is in-"
 	line "habited by crea-"
 	cont "tures that we call"
-	cont "#mon.@@"
+	cont "#mon.@"
+	text_end
 
 SECTION "_ElmText3", ROMX
 _ElmText3::
 	text_waitbutton
-	db "@@"
+	text_end
 
 SECTION "_ElmText4", ROMX
 _ElmText4::
@@ -3477,7 +3503,7 @@ UnknownText_0x1c4b92::
 	text "Congratulations!"
 	line "Your @"
 	text_from_ram wStringBuffer2
-	db "@@"
+	text_end
 
 SECTION "UnknownText_0x1c4baf", ROMX
 UnknownText_0x1c4baf::
@@ -3891,7 +3917,7 @@ UnknownText_0x1c5660::
 	text "!@"
 	sound_dex_fanfare_50_79
 	text_waitbutton
-	db "@@"
+	text_end
 
 SECTION "UnknownText_0x1c5678", ROMX
 UnknownText_0x1c5678::
@@ -3937,7 +3963,7 @@ SECTION "UnknownText_0x1c5740", ROMX
 UnknownText_0x1c5740::
 	text "1, 2 and…@"
 	interpret_data
-	db "@@"
+	text_end
 
 SECTION "UnknownText_0x1c574e", ROMX
 UnknownText_0x1c574e::
@@ -4006,7 +4032,7 @@ UnknownText_0x1c581a::
 SECTION "UnknownText_0x1c5821", ROMX
 UnknownText_0x1c5821::
 	current_day
-	db "@@"
+	text_end
 
 SECTION "UnknownText_0x1c5824", ROMX
 UnknownText_0x1c5824::
@@ -4161,12 +4187,12 @@ UnknownText_0x1c5b17::
 	text ""
 	line "was caught!@"
 	sound_caught_mon
-	db "@@"
+	text_end
 
 SECTION "Text_Waitbutton_2", ROMX
 Text_Waitbutton_2::
 	text_waitbutton
-	db "@@"
+	text_end
 
 SECTION "UnknownText_0x1c5b38", ROMX
 UnknownText_0x1c5b38::
@@ -4183,7 +4209,7 @@ UnknownText_0x1c5b53::
 	cont "the #dex.@"
 	sound_slot_machine_start
 	text_waitbutton
-	db "@@"
+	text_end
 
 SECTION "UnknownText_0x1c5b7f", ROMX
 UnknownText_0x1c5b7f::
@@ -4238,7 +4264,7 @@ UnknownText_0x1c5c7b::
 	text "Coins:"
 	line "@"
 	deciram wCoins, 2, 5
-	db "@@"
+	text_end
 
 SECTION "Text_RaiseThePPOfWhichMove", ROMX
 Text_RaiseThePPOfWhichMove::

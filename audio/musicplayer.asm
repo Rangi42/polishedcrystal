@@ -425,7 +425,7 @@ SongEditor:
 	dw .up_wave  ; MP_EDIT_WAVE
 	dw .up_noise ; MP_EDIT_NOISE
 	dw .up_pitch ; MP_EDIT_PITCH
-	dw .return   ; MP_EDIT_TEMPO
+	dw DoNothing ; MP_EDIT_TEMPO
 
 .down:
 ; for ch1/ch2: previous duty cycle
@@ -443,7 +443,7 @@ SongEditor:
 	dw .down_wave  ; MP_EDIT_WAVE
 	dw .down_noise ; MP_EDIT_NOISE
 	dw .down_pitch ; MP_EDIT_PITCH
-	dw .return     ; MP_EDIT_TEMPO
+	dw DoNothing   ; MP_EDIT_TEMPO
 
 .start:
 ; toggle piano roll info overlay
@@ -488,7 +488,6 @@ SongEditor:
 	ld a, [hl]
 	lb bc, %11000000, %01000000
 	and b
-	and a
 	ld a, [hl]
 	jr nz, .no_ch1_2_underflow
 	add c
@@ -546,7 +545,6 @@ SongEditor:
 	ld a, NUM_NOISE_SETS - 1
 .change_noise:
 	ld [wMusicNoiseSampleSet], a
-.return:
 	ret
 
 .up_pitch:

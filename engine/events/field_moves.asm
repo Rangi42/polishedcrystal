@@ -10,7 +10,7 @@ BlindingFlash::
 	farjp FadeInPalettes
 
 ShakeHeadbuttTree:
-	farcall ClearSpriteAnims
+	call ClearSpriteAnims
 	ld de, CutGrassGFX
 	ld hl, vTiles1
 	lb bc, BANK(CutGrassGFX), 4
@@ -51,7 +51,7 @@ ShakeHeadbuttTree:
 	call ApplyTilemapInVBlank
 	xor a
 	ldh [hBGMapMode], a
-	farcall ClearSpriteAnims
+	call ClearSpriteAnims
 	ld hl, wVirtualOAM + 36 * 4
 	ld bc, wVirtualOAMEnd - (wVirtualOAM + 36 * 4)
 	xor a
@@ -364,7 +364,7 @@ FlyToAnim:
 	jp _ByteFill
 
 FlyFunction_InitGFX:
-	farcall ClearSpriteAnims
+	call ClearSpriteAnims
 	ld de, CutGrassGFX
 	ld hl, vTiles1 tile $00
 	lb bc, BANK(CutGrassGFX), 4

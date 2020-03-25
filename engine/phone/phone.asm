@@ -409,7 +409,7 @@ WrongNumber:
 .text
 	; Huh? Sorry, wrong number!
 	text_jump UnknownText_0x1c5565
-	db "@"
+	text_end
 
 Script_ReceivePhoneCall:
 	refreshscreen
@@ -502,7 +502,7 @@ HangUp_Beep:
 
 UnknownText_0x9032a:
 	text_jump UnknownText_0x1c5580
-	db "@"
+	text_end
 
 HangUp_BoopOn:
 	ld hl, UnknownText_0x90336
@@ -510,7 +510,7 @@ HangUp_BoopOn:
 
 UnknownText_0x90336:
 	text_jump UnknownText_0x1c5588
-	db "@"
+	text_end
 
 Phone_StartRinging:
 	call WaitSFX
@@ -630,7 +630,7 @@ GetCallerName:
 	db " -------@"
 
 NonTrainerCallerNames:
-	dw .none
+	dw EmptyString
 	dw .mom
 	dw .bikeshop
 	dw .bill
@@ -638,7 +638,6 @@ NonTrainerCallerNames:
 	dw .lyra
 	dw .buena
 
-.none db "@"
 .mom db "Mom:@"
 .bill db "Bill:<LNBRK>   #maniac@"
 .elm db "Prof.Elm:<LNBRK>   #mon Prof.@"
@@ -694,7 +693,7 @@ UnknownScript_0x90657:
 UnknownText_0x9065b:
 	; That number is out of the area.
 	text_jump UnknownText_0x1c558b
-	db "@"
+	text_end
 
 PhoneScript_JustTalkToThem:
 	writetext UnknownText_0x90664
@@ -703,4 +702,4 @@ PhoneScript_JustTalkToThem:
 UnknownText_0x90664:
 	; Just go talk to that person!
 	text_jump UnknownText_0x1c55ac
-	db "@"
+	text_end

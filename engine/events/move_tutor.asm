@@ -72,7 +72,7 @@ CheckCanLearnMoveTutorMove:
 	jr z, .didnt_learn
 
 	ld c, HAPPINESS_LEARNMOVE
-	farcall ChangeHappiness
+	predef ChangeHappiness
 	jr .learned
 
 .reminder

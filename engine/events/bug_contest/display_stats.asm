@@ -86,4 +86,4 @@ DisplayCaughtContestMonStats:
 SwitchMonText:
 	; Switch #MON?
 	text_jump UnknownText_0x1c10cf
-	db "@"
+	text_end

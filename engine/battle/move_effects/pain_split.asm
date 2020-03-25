@@ -36,7 +36,7 @@ BattleCommand_painsplit:
 	jr nc, .even_share
 	inc bc ; HP difference is odd, so round down result (HP decrease is done first)
 .even_share
-	farcall SubtractHPFromUser
+	predef SubtractHPFromUser
 	call UpdateUserInParty
 	call SwitchTurn
 	call GetMaxHP

@@ -8,7 +8,7 @@ BattleCommand_trickroom:
 	ld hl, TrickRoomText
 	call StdBattleTextBox
 
-	call GetUserItemAfterUnnerve
+	predef GetUserItemAfterUnnerve
 	ld a, b
 	cp HELD_ROOM_SERVICE
 	ret nz

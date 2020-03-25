@@ -34,6 +34,7 @@ PikachuFlyAnimation:    INCLUDE "gfx/pokemon/pikachu_fly/anim0.asm"
 PikachuSurfAnimation:   INCLUDE "gfx/pokemon/pikachu_surf/anim0.asm"
 PikachuPikaAnimation:   INCLUDE "gfx/pokemon/pikachu_pika/anim0.asm"
 PikachuChuchuAnimation: INCLUDE "gfx/pokemon/pikachu_chuchu/anim0.asm"
+PikachuSparkAnimation:  INCLUDE "gfx/pokemon/pikachu_spark/anim0.asm"
 
 PichuAnimations:
 PichuPlainAnimation: INCLUDE "gfx/pokemon/pichu_plain/anim0.asm"

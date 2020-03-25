@@ -119,7 +119,7 @@ MagntTrain_LoadGFX_PlayMusic:
 	call ClearBGPalettes
 	call ClearSprites
 	call DisableLCD
-	farcall ClearSpriteAnims
+	call ClearSpriteAnims
 	call SetMagnetTrainPals
 	call DrawMagnetTrain
 	ld a, $90

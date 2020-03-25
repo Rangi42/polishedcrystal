@@ -123,7 +123,7 @@ SetInitialOptions:
 
 .InitialOptionsText:
 	text_jump _InitialOptionsText
-	db "@"
+	text_end
 
 .BGPalette:
 if !DEF(MONOCHROME)

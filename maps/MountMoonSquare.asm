@@ -36,11 +36,11 @@ UnknownScript_0x77097:
 
 ClefairyDance:
 	checkflag ENGINE_MT_MOON_SQUARE_CLEFAIRY
-	iftrue .NoDancing
+	iftrue DoNothingScript
 	checkcode VAR_WEEKDAY
-	ifnotequal MONDAY, .NoDancing
+	ifnotequal MONDAY, DoNothingScript
 	checktime 1 << NITE
-	iffalse .NoDancing
+	iffalse DoNothingScript
 	appear MOUNTMOONSQUARE_CLEFAIRY1
 	appear MOUNTMOONSQUARE_CLEFAIRY2
 	applyonemovement PLAYER, step_up
@@ -79,7 +79,6 @@ ClefairyDance:
 	stopfollow
 	clearevent EVENT_MOUNT_MOON_SQUARE_HIDDEN_MOON_STONE
 	setflag ENGINE_MT_MOON_SQUARE_CLEFAIRY
-.NoDancing:
 	end
 
 MovementData_0x77123:

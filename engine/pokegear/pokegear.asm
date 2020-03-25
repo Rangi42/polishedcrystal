@@ -62,7 +62,7 @@ PokeGear:
 	ld a, $7
 	ldh [hWX], a
 	call Pokegear_LoadGFX
-	farcall ClearSpriteAnims
+	call ClearSpriteAnims
 	call InitPokegearModeIndicatorArrow
 	ld a, 8
 	call SkipMusic
@@ -461,7 +461,7 @@ Pokegear_UpdateClock:
 
 .DayText:
 	text_jump UnknownText_0x1c5821
-	db "@"
+	text_end
 
 PokegearMap_CheckRegion:
 	ld a, [wPokegearMapPlayerIconLandmark]
@@ -924,12 +924,12 @@ PokegearPhone_MakePhoneCall:
 .dotdotdot
 	;
 	text_jump UnknownText_0x1c5824
-	db "@"
+	text_end
 
 .OutOfServiceArea:
 	; You're out of the service area.
 	text_jump UnknownText_0x1c5827
-	db "@"
+	text_end
 
 PokegearPhone_FinishPhoneCall:
 	ldh a, [hJoyPressed]
@@ -1239,8 +1239,7 @@ PokegearPhoneContactSubmenu:
 	db 3
 	db   "Call"
 	next "Delete"
-	next "Cancel"
-	db   "@"
+	next "Cancel@"
 
 .CallDeleteCancelJumptable:
 	dw .Call
@@ -1251,8 +1250,7 @@ PokegearPhoneContactSubmenu:
 	dwcoord 10, 8
 	db 2
 	db   "Call"
-	next "Cancel"
-	db   "@"
+	next "Cancel@"
 
 .CallCancelJumptable:
 	dw .Call
@@ -1315,17 +1313,17 @@ Pokegear_LoadTilemapRLE:
 PokegearText_WhomToCall:
 	; Whom do you want to call?
 	text_jump UnknownText_0x1c5847
-	db "@"
+	text_end
 
 PokegearText_PressAnyButtonToExit:
 	; Press any button to exit.
 	text_jump UnknownText_0x1c5862
-	db "@"
+	text_end
 
 PokegearText_DeleteStoredNumber:
 	; Delete this stored phone number?
 	text_jump UnknownText_0x1c587d
-	db "@"
+	text_end
 
 PokegearSpritesGFX:
 INCBIN "gfx/pokegear/pokegear_sprites.2bpp.lz"
@@ -1551,7 +1549,7 @@ LoadStation_LuckyChannel:
 	jr LoadRadioStation
 
 LoadStation_BuenasPassword:
-	ld de, NotBuenasPasswordName
+	ld de, EmptyString
 	ld a, [wStatusFlags2]
 	bit 0, a ; ENGINE_ROCKETS_IN_RADIO_TOWER
 	jr z, .ok
@@ -1560,8 +1558,7 @@ LoadStation_BuenasPassword:
 	ld a, BUENAS_PASSWORD
 	jr LoadRadioStation
 
-BuenasPasswordName:    db "Buena's Password@"
-NotBuenasPasswordName: db "@"
+BuenasPasswordName: db "Buena's Password@"
 
 LoadStation_UnownRadio:
 	ld a, UNOWN_RADIO
@@ -1663,7 +1660,7 @@ _TownMap:
 	call DisableLCD
 	farcall InitPokegearPalettes
 	call Pokegear_LoadGFX
-	farcall ClearSpriteAnims
+	call ClearSpriteAnims
 	ld a, 8
 	call SkipMusic
 	ld a, %11100011
@@ -1905,7 +1902,7 @@ _FlyMap:
 	ld [hl], $1
 	xor a
 	ldh [hBGMapMode], a
-	farcall ClearSpriteAnims
+	call ClearSpriteAnims
 	call LoadTownMapGFX
 	call FlyMap
 	ld a, CGB_POKEGEAR_PALS

@@ -36,7 +36,7 @@ BugContest_SetCaughtContestMon:
 .caughttext
 	; Caught @ !
 	text_jump UnknownText_0x1c10c0
-	db "@"
+	text_end
 
 DisplayAlreadyCaughtText:
 	call GetPokemonName
@@ -46,4 +46,4 @@ DisplayAlreadyCaughtText:
 .AlreadyCaughtText:
 	; You already caught a @ .
 	text_jump UnknownText_0x1c10dd
-	db "@"
+	text_end

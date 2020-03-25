@@ -146,7 +146,7 @@ DoNPCTrade:
 	xor a
 	ld [wMonType], a
 	ld [wPokemonWithdrawDepositParameter], a
-	farcall RemoveMonFromPartyOrBox
+	predef RemoveMonFromPartyOrBox
 	predef TryAddMonToParty
 
 	ld e, TRADE_DIALOG
@@ -400,7 +400,7 @@ TradeTexts:
 ConnectLinkCableText:
 	; OK, connect the Game Link Cable.
 	text_jump UnknownText_0x1bd407
-	db "@"
+	text_end
 
 TradedForText:
 	; traded givemon for getmon
@@ -416,92 +416,92 @@ TradedForText:
 	; sound_dex_fanfare_80_109
 	; interpret_data
 	text_jump UnknownText_0x1bd445
-	db "@"
+	text_end
 
 TradeIntroText1:
 	; I collect #MON. Do you have @ ? Want to trade it for my @ ?
 	text_jump UnknownText_0x1bd449
-	db "@"
+	text_end
 
 TradeCancelText1:
 	; You don't want to trade? Aww…
 	text_jump UnknownText_0x1bd48c
-	db "@"
+	text_end
 
 TradeWrongText1:
 	; Huh? That's not @ .  What a letdown…
 	text_jump UnknownText_0x1bd4aa
-	db "@"
+	text_end
 
 TradeCompleteText1:
 	; Yay! I got myself @ ! Thanks!
 	text_jump UnknownText_0x1bd4d2
-	db "@"
+	text_end
 
 TradeAfterText1:
 	; Hi, how's my old @  doing?
 	text_jump UnknownText_0x1bd4f4
-	db "@"
+	text_end
 
 TradeIntroText2:
 TradeIntroText3:
 	; Hi, I'm looking for this #MON. If you have @ , would you trade it for my @ ?
 	text_jump UnknownText_0x1bd512
-	db "@"
+	text_end
 
 TradeCancelText2:
 TradeCancelText3:
 	; You don't have one either? Gee, that's really disappointing…
 	text_jump UnknownText_0x1bd565
-	db "@"
+	text_end
 
 TradeWrongText2:
 TradeWrongText3:
 	; You don't have @ ? That's too bad, then.
 	text_jump UnknownText_0x1bd5a1
-	db "@"
+	text_end
 
 TradeCompleteText2:
 	; Great! Thank you! I finally got @ .
 	text_jump UnknownText_0x1bd5cc
-	db "@"
+	text_end
 
 TradeAfterText2:
 	; Hi! The @ you traded me is doing great!
 	text_jump UnknownText_0x1bd5f4
-	db "@"
+	text_end
 
 TradeIntroText4:
 	; 's cute, but I don't have it. Do you have @ ? Want to trade it for my @ ?
 	text_jump UnknownText_0x1bd621
-	db "@"
+	text_end
 
 TradeCancelText4:
 	; You don't want to trade? Oh, darn…
 	text_jump UnknownText_0x1bd673
-	db "@"
+	text_end
 
 TradeWrongText4:
 	; That's not @ . Please trade with me if you get one.
 	text_jump UnknownText_0x1bd696
-	db "@"
+	text_end
 
 TradeCompleteText4:
 	; Wow! Thank you! I always wanted @ !
 	text_jump UnknownText_0x1bd6cd
-	db "@"
+	text_end
 
 TradeAfterText4:
 	; How is that @  I traded you doing? Your @ 's so cute!
 	text_jump UnknownText_0x1bd6f5
-	db "@"
+	text_end
 
 TradeCompleteText3:
 	; Uh? What happened?
 	text_jump UnknownText_0x1bd731
-	db "@"
+	text_end
 
 TradeAfterText3:
 	; Trading is so odd… I still have a lot to learn about it.
 	text_jump UnknownText_0x1bd745
-	db "@"
+	text_end

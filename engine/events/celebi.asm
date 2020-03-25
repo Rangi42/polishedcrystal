@@ -5,7 +5,7 @@ Special_CelebiShrineEvent:
 	xor a
 	ld [wVramState], a
 
-	farcall ClearSpriteAnims
+	call ClearSpriteAnims
 	ld de, CutGrassGFX
 	ld hl, vTiles1
 	lb bc, BANK(CutGrassGFX), 4

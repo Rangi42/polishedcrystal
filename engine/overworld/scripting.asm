@@ -512,9 +512,8 @@ Script_buttonsound:
 Script_yesorno:
 	call YesNoBox
 	; a = carry ? FALSE : TRUE
-	ccf
 	sbc a
-	and TRUE
+	add TRUE
 	ldh [hScriptVar], a
 	ret
 
@@ -611,7 +610,7 @@ GiveItemScript:
 
 ReceivedItemText:
 	text_jump UnknownText_0x1c4719
-	db "@"
+	text_end
 
 Script_verbosegiveitem2:
 ; parameters:
@@ -709,11 +708,11 @@ CurTMHMName:
 
 PutItemInPocketText:
 	text_jump UnknownText_0x1c472c
-	db "@"
+	text_end
 
 PocketIsFullText:
 	text_jump UnknownText_0x1c474b
-	db "@"
+	text_end
 
 Script_pokemart:
 ; parameters:
@@ -2039,14 +2038,7 @@ Script_giveitem:
 	ld [wItemQuantityChangeBuffer], a
 	ld hl, wNumItems
 	call ReceiveItem
-	jr nc, .full
-	ld a, TRUE
-	ldh [hScriptVar], a
-	ret
-.full
-	xor a
-	ldh [hScriptVar], a
-	ret
+	jr _ItemResult
 
 Script_takeitem:
 ; parameters:
@@ -2064,10 +2056,7 @@ Script_takeitem:
 	ld [wCurItemQuantity], a
 	ld hl, wNumItems
 	call TossItem
-	ret nc
-	ld a, TRUE
-	ldh [hScriptVar], a
-	ret
+	jr _ItemResult
 
 Script_checkitem:
 ; parameters:
@@ -2078,8 +2067,10 @@ Script_checkitem:
 	ld [wCurItem], a
 	ld hl, wNumItems
 	call CheckItem
-	ret nc
-	ld a, TRUE
+_ItemResult:
+	; a = carry ? TRUE : FALSE
+	sbc a
+	and TRUE
 	ldh [hScriptVar], a
 	ret
 
@@ -2962,12 +2953,7 @@ Script_givekeyitem:
 	ld [wCurKeyItem], a
 	ld [wItemQuantityChangeBuffer], a
 	call ReceiveKeyItem
-	jr nc, .full
 	ld a, TRUE
-	ldh [hScriptVar], a
-	ret
-.full
-	xor a
 	ldh [hScriptVar], a
 	ret
 
@@ -2976,12 +2962,9 @@ Script_checkkeyitem:
 	ld [wCurKeyItem], a
 	ld [wItemQuantityChangeBuffer], a
 	call CheckKeyItem
-	jr nc, .full
-	ld a, TRUE
-	ldh [hScriptVar], a
-	ret
-.full
-	xor a
+	; a = carry ? TRUE : FALSE
+	sbc a
+	and TRUE
 	ldh [hScriptVar], a
 	ret
 
@@ -2990,12 +2973,7 @@ Script_takekeyitem:
 	ld [wCurKeyItem], a
 	ld [wItemQuantityChangeBuffer], a
 	call TossKeyItem
-	jr nc, .full
 	ld a, TRUE
-	ldh [hScriptVar], a
-	ret
-.full
-	xor a
 	ldh [hScriptVar], a
 	ret
 

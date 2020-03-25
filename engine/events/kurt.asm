@@ -5,7 +5,7 @@ Kurt_PrintTextWhichApricorn:
 .Text:
 	; Which APRICORN should I use?
 	text_jump UnknownText_0x1bc06b
-	db "@"
+	text_end
 
 Kurt_PrintTextHowMany:
 	ld hl, .Text
@@ -14,7 +14,7 @@ Kurt_PrintTextHowMany:
 .Text:
 	; How many should I make?
 	text_jump UnknownText_0x1bc089
-	db "@"
+	text_end
 
 Special_SelectApricornForKurt:
 	call LoadStandardMenuDataHeader

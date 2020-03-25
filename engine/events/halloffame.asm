@@ -261,14 +261,12 @@ AnimateHOFMonEntrance:
 	call GetCGBLayout
 	call SetPalettes
 	call HOF_SlideBackpic
-	xor a
-	ld [wBoxAlignment], a
 	hlcoord 0, 0
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
 	ld a, " "
 	rst ByteFill
 	hlcoord 6, 5
-	call _PrepMonFrontpic
+	call PrepMonFrontpicFlipped
 	call ApplyTilemapInVBlank
 	xor a
 	ldh [hBGMapMode], a
@@ -385,7 +383,7 @@ _HallOfFamePC:
 	hlcoord 11, 2
 
 .finish
-	ld de, .EmptyString
+	ld de, EmptyString
 	rst PlaceString
 	call ApplyTilemapInVBlank
 	ld a, CGB_PLAYER_OR_MON_FRONTPIC_PALS
@@ -396,9 +394,6 @@ _HallOfFamePC:
 	predef HOF_AnimateFrontpic
 	and a
 	ret
-
-.EmptyString:
-	db "@"
 
 .HOFMaster:
 	db "    HOF Master!@"
@@ -467,10 +462,8 @@ DisplayHOFMon:
 	ld [wd265], a
 	ld hl, wTempMonForm
 	predef GetVariant
-	xor a
-	ld [wBoxAlignment], a
 	hlcoord 6, 5
-	call _PrepMonFrontpic
+	call PrepMonFrontpicFlipped
 	ld a, [wTempMonIsEgg]
 	bit MON_IS_EGG_F, a
 	jr nz, .print_id_no

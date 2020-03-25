@@ -103,7 +103,7 @@
 	db 5, MAGIKARP
 
 	map_id GOLDENROD_HARBOR
-	db 4 percent ; encounter rate
+	db 3 percent ; encounter rate
 	db 20, PSYDUCK
 	db 15, PSYDUCK
 	db 20, GOLDUCK
@@ -133,13 +133,13 @@
 	db 20, POLIWHIRL
 
 	map_id ROUTE_32
-	db 6 percent ; encounter rate
+	db 4 percent ; encounter rate
 	db 15, TENTACOOL
 	db 20, QUAGSIRE
 	db 20, TENTACRUEL
 
 	map_id ROUTE_34
-	db 6 percent ; encounter rate
+	db 4 percent ; encounter rate
 	db 20, TENTACOOL
 	db 15, TENTACOOL
 	db 20, TENTACRUEL
@@ -151,13 +151,13 @@
 	db 20, GOLDUCK
 
 	map_id ROUTE_40
-	db 6 percent ; encounter rate
+	db 3 percent ; encounter rate
 	db 20, TENTACOOL
 	db 20, STARYU
 	db 20, TENTACRUEL
 
 	map_id ROUTE_41
-	db 6 percent ; encounter rate
+	db 3 percent ; encounter rate
 	db 20, TENTACOOL
 	db 20, MANTINE
 	db 20, REMORAID
@@ -187,7 +187,7 @@
 	db 5, MAGIKARP
 
 	map_id ROUTE_47
-	db 2 percent ; encounter rate
+	db 3 percent ; encounter rate
 	db 20, TENTACOOL
 	db 20, SEEL
 	db 25, STARYU
@@ -271,13 +271,13 @@
 	db 20, CORSOLA
 
 	map_id ROUTE_32_COAST
-	db 6 percent ; encounter rate
+	db 3 percent ; encounter rate
 	db 20, TENTACOOL
 	db 15, TENTACOOL
 	db 20, CORSOLA
 
 	map_id ROUTE_34_COAST
-	db 6 percent ; encounter rate
+	db 3 percent ; encounter rate
 	db 20, TENTACOOL
 	db 15, STARYU
 	db 20, TENTACRUEL
@@ -289,7 +289,7 @@
 	db 20, TENTACRUEL
 
 	map_id ROUTE_35_COAST
-	db 6 percent ; encounter rate
+	db 3 percent ; encounter rate
 	db 20, TENTACOOL
 	db 20, TENTACRUEL
 	db 20, CORSOLA

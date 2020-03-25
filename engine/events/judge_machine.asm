@@ -90,6 +90,11 @@ NewsMachineEggText:
 	done
 
 JudgeSystem::
+; Start with the EV chart
+	xor a
+	ldh [hChartScreen], a
+
+.restart
 ; Clear the screen
 	call ClearBGPalettes
 	call ClearTileMap
@@ -168,7 +173,7 @@ JudgeSystem::
 
 ; Place the frontpic graphics
 	hlcoord 0, 6
-	farcall Pokedex_PlaceFrontpicAtHL
+	farcall PlaceFrontpicAtHL
 
 ; Place the Pokédex number
 	ld a, [wCurPartySpecies]
@@ -248,12 +253,8 @@ JudgeSystem::
 	call GetCGBLayout
 	call SetPalettes
 
-; Start with the EV chart
-	xor a
-	ldh [hChartScreen], a
-
 .render
-	farcall ClearSpriteAnims
+	call ClearSpriteAnims
 
 ; Display the current chart, EVs or IVs
 	ldh a, [hChartScreen]
@@ -304,30 +305,34 @@ JudgeSystem::
 
 .prev_mon
 	ld a, [wCurPartyMon]
+.more_prev
 	and a
 	jr z, .input_loop
 	dec a
-	ld [wCurPartyMon], a
-	ld a, MON_IS_EGG
-	call GetPartyParamLocation
+	ld hl, wPartyMon1IsEgg
+	push af
+	call GetPartyLocation
+	pop af
 	bit MON_IS_EGG_F, [hl]
-	jr nz, .prev_mon
+	jr nz, .more_prev
 	jr .switch_mon
 
 .next_mon
 	ld a, [wPartyCount]
 	ld b, a
 	ld a, [wCurPartyMon]
+.more_next
 	inc a
 	cp b
 	jr z, .input_loop
-	ld [wCurPartyMon], a
-	ld a, MON_IS_EGG
-	call GetPartyParamLocation
+	ld hl, wPartyMon1IsEgg
+	push af
+	call GetPartyLocation
+	pop af
 	bit MON_IS_EGG_F, [hl]
-	jr nz, .next_mon
+	jr nz, .more_next
 .switch_mon
-	ld a, [wCurPartyMon]
+	ld [wCurPartyMon], a
 	ld c, a
 	ld b, 0
 	ld hl, wPartySpecies
@@ -336,8 +341,8 @@ JudgeSystem::
 	ld [wPartyMenuCursor], a
 	ld a, [hl]
 	ld [wCurPartySpecies], a
-	farcall ClearSpriteAnims
-	jp JudgeSystem
+	call ClearSpriteAnims
+	jp .restart
 
 .EVHeading:
 	db JUDGE_LEFT_RIGHT_TILE
@@ -568,7 +573,7 @@ OutlineRadarChart:
 	ldh [hFunctionTargetLo], a
 	ld a, HIGH(FillRadarDown)
 	ldh [hFunctionTargetHi], a
-	call DrawRadarLineBCToDE
+	call DrawAndFillRadarEdge
 
 ; de = Def point
 	ldh a, [hChartDef]
@@ -591,7 +596,7 @@ OutlineRadarChart:
 	ldh [hFunctionTargetLo], a
 	ld a, HIGH(FillRadarLeft)
 	ldh [hFunctionTargetHi], a
-	call DrawRadarLineBCToDE
+	call DrawAndFillRadarEdge
 
 ; de = Spd point
 	ldh a, [hChartSpd]
@@ -612,7 +617,7 @@ OutlineRadarChart:
 	ldh [hFunctionTargetLo], a
 	ld a, HIGH(FillRadarUp)
 	ldh [hFunctionTargetHi], a
-	call DrawRadarLineBCToDE
+	call DrawAndFillRadarEdge
 
 ; de = SDf point
 	ldh a, [hChartSdf]
@@ -633,7 +638,7 @@ OutlineRadarChart:
 	pop bc
 	push de
 	; hFunctionTarget is already FillRadarUp
-	call DrawRadarLineBCToDE
+	call DrawAndFillRadarEdge
 
 ; de = SAt point
 	ldh a, [hChartSat]
@@ -658,7 +663,7 @@ OutlineRadarChart:
 	ldh [hFunctionTargetLo], a
 	ld a, HIGH(FillRadarRight)
 	ldh [hFunctionTargetHi], a
-	call DrawRadarLineBCToDE
+	call DrawAndFillRadarEdge
 
 ; Draw a line from SAt to HP, closing the polygon
 	pop bc
@@ -669,8 +674,8 @@ OutlineRadarChart:
 	ldh [hFunctionTargetHi], a
 	; fallthrough
 
-DrawRadarLineBCToDE:
-; Draw a line from (b, c) to (d, e)
+DrawAndFillRadarEdge:
+; Draw a line from (b, c) to (d, e) and fill it in with hFunction
 
 ; Calculate |x1 - x0|
 	ld a, d
@@ -732,7 +737,9 @@ DrawLowRadarLine:
 
 ; For x from b to d, draw a point at (x, c)
 .loop
-	call DrawRadarPointAndFill
+	push de
+	call hFunction ; FillRadarUp/Down/Left/Right
+	pop de
 
 ; Update D and y
 	ldh a, [hErr]
@@ -785,7 +792,9 @@ DrawHighRadarLine:
 
 ; For y from c to e, draw a point at (b, y)
 .loop
-	call DrawRadarPointAndFill
+	push de
+	call hFunction ; FillRadarUp/Down/Left/Right
+	pop de
 
 ; Update D and x
 	ldh a, [hErr]
@@ -817,14 +826,15 @@ DrawHorizontalRadarLine:
 	ld a, b
 	cp d
 	jr c, .x_sorted
-	jr z, DrawRadarPointAndFill ; b == d and c == e, so draw one point
 	ld b, d
 	ld d, a
 .x_sorted
 
 ; For x from b to d, draw a point at (x, c)
 .loop
-	call DrawRadarPointAndFill
+	push de
+	call hFunction ; FillRadarUp/Down/Left/Right
+	pop de
 	inc b
 	ld a, d
 	cp b
@@ -838,27 +848,19 @@ DrawVerticalRadarLine:
 	ld a, c
 	cp e
 	jr c, .y_sorted
-	jr z, DrawRadarPointAndFill ; b == d and c == e, so draw one point
 	ld c, e
 	ld e, a
 .y_sorted
 
 ; For y from c to e, draw a point at (b, y)
 .loop
-	call DrawRadarPointAndFill
+	push de
+	call hFunction ; FillRadarUp/Down/Left/Right
+	pop de
 	inc c
 	ld a, e
 	cp c
 	jr nc, .loop
-	ret
-
-DrawRadarPointAndFill:
-; Draw a point at (b, c), where 0 <= b < 80 and 0 <= c < 96, and
-; fill toward the axis previously set in hFunction
-	push de
-	call DrawRadarPointBC
-	call hFunction ; FillRadarUp/Down/Left/Right
-	pop de
 	ret
 
 FillRadarUp:

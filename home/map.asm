@@ -945,13 +945,12 @@ GetScriptByte::
 	ret
 
 ObjectEvent::
-	jumptextfaceplayer ObjectEventText
+	thistextfaceplayer
 
-ObjectEventText::
 	text_jump _ObjectEventText
-	db "@"
+	text_end
 
-EndEvent::
+DoNothingScript::
 	end
 
 CheckObjectMask::
@@ -1444,10 +1443,9 @@ SaveScreen_LoadNeighbor::
 	ld a, e
 	add 6
 	ld e, a
-	jr nc, .okay
-	inc d
-
-.okay
+	adc d
+	sub e
+	ld d, a
 	pop hl
 	ldh a, [hConnectionStripLength]
 	ld c, a
@@ -1595,7 +1593,6 @@ GetMovementPermissions::
 	ret nz
 	ld a, [wTileLeft]
 	and 7
-	and a
 	jr z, .ok_left
 	cp $4
 	jr z, .ok_left

@@ -29,7 +29,7 @@ EvolutionAnimation:
 	ld de, MUSIC_NONE
 	call PlayMusic
 
-	farcall ClearSpriteAnims
+	call ClearSpriteAnims
 
 	ld de, .GFX
 	ld hl, vTiles0
@@ -44,12 +44,13 @@ EvolutionAnimation:
 	ld a, [wEvolutionOldSpecies]
 	ld [wPlayerHPPal], a
 
-	ld c, FALSE
-	call .GetCGBLayout
+	call .GetColoredCGBLayout
 	ld a, [wEvolutionOldSpecies]
 	ld [wCurPartySpecies], a
 	ld [wCurSpecies], a
-	call .PlaceFrontpic
+	call GetBaseData
+	hlcoord 7, 2
+	call PrepMonFrontpic
 
 	ld de, vTiles2
 	ld hl, vTiles2 tile $31
@@ -96,10 +97,9 @@ EvolutionAnimation:
 	ld a, [wEvolutionNewSpecies]
 	ld [wPlayerHPPal], a
 
-	ld c, FALSE
-	call .GetCGBLayout
+	call .GetColoredCGBLayout
 	call .PlayEvolvedSFX
-	farcall ClearSpriteAnims
+	call ClearSpriteAnims
 	call .check_statused
 	ret c
 
@@ -129,24 +129,20 @@ EvolutionAnimation:
 	ld a, [wEvolutionOldSpecies]
 	ld [wPlayerHPPal], a
 
-	ld c, FALSE
-	call .GetCGBLayout
+	call .GetColoredCGBLayout
 	call .PlayEvolvedSFX
-	farcall ClearSpriteAnims
+	call ClearSpriteAnims
 	call .check_statused
 	ret c
 
 	ld a, [wPlayerHPPal]
 	jp PlayCry
 
+.GetColoredCGBLayout:
+	ld c, FALSE
 .GetCGBLayout:
 	ld a, CGB_EVOLUTION
 	jp GetCGBLayout
-
-.PlaceFrontpic:
-	call GetBaseData
-	hlcoord 7, 2
-	jp PrepMonFrontpic
 
 .LoadFrontpic:
 	call GetBaseData

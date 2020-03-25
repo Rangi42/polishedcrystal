@@ -318,7 +318,7 @@ LinkTimeout:
 .TooMuchTimeHasElapsed:
 	; Too much time has elapsed. Please try again.
 	text_jump UnknownText_0x1c4183
-	db "@"
+	text_end
 
 Function283f2:
 	ld a, $1
@@ -1205,7 +1205,7 @@ Function28926:
 .Text_CantTradeLastMon:
 	; If you trade that #MON, you won't be able to battle.
 	text_jump UnknownText_0x1c41b1
-	db "@"
+	text_end
 
 .String_Stats_Trade:
 	db "Stats     Trade@"
@@ -1213,7 +1213,7 @@ Function28926:
 .Text_Abnormal:
 	; Your friend's @  appears to be abnormal!
 	text_jump UnknownText_0x1c41e6
-	db "@"
+	text_end
 
 ValidateOTTrademon:
 	ld a, [wd003]
@@ -1614,7 +1614,7 @@ LinkTrade:
 	ld [wd002], a
 	xor a
 	ld [wPokemonWithdrawDepositParameter], a
-	farcall RemoveMonFromPartyOrBox
+	predef RemoveMonFromPartyOrBox
 	ld a, [wPartyCount]
 	dec a
 	ld [wCurPartyMon], a
@@ -1718,10 +1718,10 @@ LinkTrade:
 .TradeThisForThat:
 	; Trade @ for @ ?
 	text_jump UnknownText_0x1c4212
-	db "@"
+	text_end
 
 .TradeCompleted:
-	db   "Trade completed!@"
+	db "Trade completed!@"
 
 String_TooBadTheTradeWasCanceled:
 	db   "Too bad! The trade"

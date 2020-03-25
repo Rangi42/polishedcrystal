@@ -65,4 +65,4 @@ endr
 UnknownText_0x50845:
 	; 's #MON were all healed!
 	text_jump UnknownText_0x1c0b65
-	db "@"
+	text_end

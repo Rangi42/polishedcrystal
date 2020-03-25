@@ -10,7 +10,7 @@ _DummyGame:
 	call DisableLCD
 	ld a, CGB_DIPLOMA
 	call GetCGBLayout
-	farcall ClearSpriteAnims
+	call ClearSpriteAnims
 	ld hl, DummyGameGFX
 	ld de, vTiles2 tile $00
 	call Decompress
@@ -317,12 +317,12 @@ DummyGame_CheckMatch:
 DummyGameText_Yeah:
 	; , yeah!
 	text_jump UnknownText_0x1c1a5b
-	db "@"
+	text_end
 
 DummyGameText_Darn:
 	; Darn…
 	text_jump UnknownText_0x1c1a65
-	db "@"
+	text_end
 
 DummyGame_InitBoard:
 	ld hl, wDummyGameCards
@@ -450,11 +450,9 @@ DummyGame_InitStrings:
 	hlcoord 15, 0
 	ld de, .japstr2
 	rst PlaceString
-	ld hl, .dummy_text
+	ld hl, EmptyString
 	jp PrintText
 
-.dummy_text
-	db "@"
 .japstr1
 	db "№.Cards@"
 .japstr2

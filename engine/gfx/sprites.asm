@@ -1,15 +1,3 @@
-ClearSpriteAnims:
-	ld hl, wSpriteAnimDict
-	ld bc, wSpriteAnimsEnd - wSpriteAnimDict
-.loop
-	ld [hl], $0
-	inc hl
-	dec bc
-	ld a, c
-	or b
-	jr nz, .loop
-	ret
-
 PlaySpriteAnimationsAndDelayFrame:
 	call PlaySpriteAnimations
 	jp DelayFrame
@@ -565,19 +553,3 @@ AnimateEndOfExpBar:
 
 EndOfExpBarGFX:
 INCBIN "gfx/battle/expbarend.2bpp"
-
-ClearSpriteAnims2:
-	push hl
-	push de
-	push bc
-	push af
-	ld hl, wSpriteAnimDict
-	ld bc, wSpriteAnimsEnd - wSpriteAnimDict
-.loop
-	ld [hl], $0
-	inc hl
-	dec bc
-	ld a, c
-	or b
-	jr nz, .loop
-	jp PopAFBCDEHL

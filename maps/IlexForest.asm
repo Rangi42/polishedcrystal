@@ -144,7 +144,7 @@ IlexForestFarfetchdScript:
 	ifequal  7, .Position7
 	ifequal  8, .Position8
 	ifequal  9, .Position9
-	ifequal 10, .Position10
+	ifequal 10, DoNothingScript
 
 .Position1:
 	faceplayer
@@ -163,7 +163,6 @@ IlexForestFarfetchdScript:
 	disappear ILEXFOREST_FARFETCHD
 	appear ILEXFOREST_FARFETCHD
 	copyvartobyte wFarfetchdPosition
-.Position10:
 	end
 
 .Position2:
@@ -455,13 +454,12 @@ MapIlexForestSignpost4Script:
 	reloadmapafterbattle
 	pause 20
 	special CheckCaughtCelebi
-	iffalse .DidntCatchCelebi
+	iffalse DoNothingScript
 	appear ILEXFOREST_KURT
 	applymovement ILEXFOREST_KURT, MovementData_0x6ef4e
 	showtext Text_KurtCaughtCelebi
 	applymovement ILEXFOREST_KURT, MovementData_0x6ef53
 	disappear ILEXFOREST_KURT
-.DidntCatchCelebi:
 	end
 
 .StartGiovanniEvent:

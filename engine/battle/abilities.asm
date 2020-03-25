@@ -537,7 +537,7 @@ AftermathAbility:
 	call ShowAbilityActivation
 	call SwitchTurn
 	call GetQuarterMaxHP
-	farcall SubtractHPFromUser
+	predef SubtractHPFromUser
 	jp SwitchTurn
 
 RunHitAbilities:
@@ -1050,7 +1050,7 @@ SolarPowerWeatherAbility:
 	ret nz
 	call ShowAbilityActivation
 	call GetEighthMaxHP
-	farjp SubtractHPFromUser
+	predef_jump SubtractHPFromUser
 
 IceBodyAbility:
 	ld b, WEATHER_HAIL

@@ -786,22 +786,22 @@ PokeBallEffect:
 Text_NoShake:
 	; Oh no! The #MON broke free!
 	text_jump UnknownText_0x1c5aa6
-	db "@"
+	text_end
 
 Text_OneShake:
 	; Aww! It appeared to be caught!
 	text_jump UnknownText_0x1c5ac3
-	db "@"
+	text_end
 
 Text_TwoShakes:
 	; Aargh! Almost had it!
 	text_jump UnknownText_0x1c5ae3
-	db "@"
+	text_end
 
 Text_ThreeShakes:
 	; Shoot! It was so close too!
 	text_jump UnknownText_0x1c5afa
-	db "@"
+	text_end
 
 Text_GotchaMonWasCaught:
 	; Gotcha! @ was caught!@ @
@@ -821,22 +821,22 @@ Text_GotchaMonWasCaught:
 TextJump_Waitbutton:
 	; @
 	text_jump Text_Waitbutton_2
-	db "@"
+	text_end
 
 Text_SentToBillsPC:
 	; was sent to BILL's PC.
 	text_jump UnknownText_0x1c5b38
-	db "@"
+	text_end
 
 Text_AddedToPokedex:
 	; 's data was newly added to the #DEX.@ @
 	text_jump UnknownText_0x1c5b53
-	db "@"
+	text_end
 
 Text_AskNicknameNewlyCaughtMon:
 	; Give a nickname to @ ?
 	text_jump UnknownText_0x1c5b7f
-	db "@"
+	text_end
 
 ReturnToBattle_UseBall:
 	farjp _ReturnToBattle_UseBall
@@ -891,7 +891,7 @@ LowerEVBerry:
 	ld [hl], a
 	farcall UpdatePkmnStats
 	ld c, HAPPINESS_USEDEVBERRY
-	farcall ChangeHappiness
+	predef ChangeHappiness
 	call GetStatStringAndPlayFullHealSFX
 	ld hl, ItemHappinessRoseButStatFellText
 	call PrintText
@@ -899,7 +899,7 @@ LowerEVBerry:
 
 ItemHappinessRoseButStatFellText:
 	text_jump _ItemHappinessRoseButStatFellText
-	db "@"
+	text_end
 
 VitaminEffect:
 	ld b, PARTYMENUACTION_HEALING_ITEM
@@ -928,13 +928,13 @@ VitaminEffect:
 	call PrintText
 
 	ld c, HAPPINESS_USEDITEM
-	farcall ChangeHappiness
+	predef ChangeHappiness
 	jp UseDisposableItem
 
 ItemStatRoseText:
 	; 's @ rose.
 	text_jump _ItemStatRoseText
-	db "@"
+	text_end
 
 SetUpEVModifier:
 	call UseItem_GetBaseDataAndNickParameters
@@ -1046,7 +1046,7 @@ HealPowder:
 	jp nz, WontHaveAnyEffectMessage
 
 	ld c, HAPPINESS_BITTERPOWDER
-	farcall ChangeHappiness
+	predef ChangeHappiness
 	jp LooksBitterMessage
 
 HealStatusEffect:
@@ -1161,7 +1161,7 @@ RevivalHerb:
 	jp WontHaveAnyEffectMessage
 
 	ld c, HAPPINESS_REVIVALHERB
-	farcall ChangeHappiness
+	predef ChangeHappiness
 	jp LooksBitterMessage
 
 ReviveEffect:
@@ -1272,7 +1272,7 @@ EnergyPowderEnergyRootCommon:
 	and a
 	jp nz, WontHaveAnyEffectMessage
 
-	farcall ChangeHappiness
+	predef ChangeHappiness
 	jp LooksBitterMessage
 
 ItemRestoreHP:
@@ -1676,7 +1676,7 @@ FreshSnackFunction:
 .Text_CantBeUsed:
 	; That can't be used on this #MON.
 	text_jump UnknownText_0x1c5bac
-	db "@"
+	text_end
 
 EscapeRope:
 	xor a
@@ -1705,7 +1705,7 @@ RepelEffect:
 TextJump_RepelUsedEarlierIsStillInEffect:
 	; The REPEL used earlier is still in effect.
 	text_jump Text_RepelUsedEarlierIsStillInEffect
-	db "@"
+	text_end
 
 PokeDoll:
 	ld a, [wBattleMode]
@@ -1755,7 +1755,7 @@ XItemEffect:
 	ld a, [wCurBattleMon]
 	ld [wCurPartyMon], a
 	ld c, HAPPINESS_USEDXITEM
-	farjp ChangeHappiness
+	predef_jump ChangeHappiness
 
 BlueCard:
 	ld hl, .bluecardtext
@@ -1763,7 +1763,7 @@ BlueCard:
 
 .bluecardtext
 	text_jump UnknownText_0x1c5c5e
-	db "@"
+	text_end
 
 CoinCase:
 	ld hl, .coincasetext
@@ -1771,7 +1771,7 @@ CoinCase:
 
 .coincasetext
 	text_jump UnknownText_0x1c5c7b
-	db "@"
+	text_end
 
 ApricornBox:
 	ld hl, .MenuDataHeader
@@ -1799,15 +1799,15 @@ ApricornBox:
 	db 0 ; default option
 
 .Text
-	db "<START>"
-	db " Red   Blu<LNBRK>"
-	db "   ×     ×<LNBRK>"
-	db " Ylw   Grn<LNBRK>"
-	db "   ×     ×<LNBRK>"
-	db " Wht   Blk<LNBRK>"
-	db "   ×     ×<LNBRK>"
-	db " Pnk<LNBRK>"
-	db "   ×@@"
+	text  " Red   Blu"
+	next1 "   ×     ×"
+	next1 " Ylw   Grn"
+	next1 "   ×     ×"
+	next1 " Wht   Blk"
+	next1 "   ×     ×"
+	next1 " Pnk"
+	next1 "   ×@"
+	text_end
 
 PrintAprValues:
 	lb bc, 1, 2
@@ -2087,32 +2087,32 @@ RestorePP:
 TextJump_RaiseThePPOfWhichMove:
 	; Raise the PP of which move?
 	text_jump Text_RaiseThePPOfWhichMove
-	db "@"
+	text_end
 
 TextJump_RestoreThePPOfWhichMove:
 	; Restore the PP of which move?
 	text_jump Text_RestoreThePPOfWhichMove
-	db "@"
+	text_end
 
 TextJump_PPIsMaxedOut:
 	; 's PP is maxed out.
 	text_jump Text_PPIsMaxedOut
-	db "@"
+	text_end
 
 TextJump_PPsIncreased:
 	; 's PP increased.
 	text_jump Text_PPsIncreased
-	db "@"
+	text_end
 
 TextJump_PPsMaximized:
 	; 's PP maximized.
 	text_jump Text_PPsMaximized
-	db "@"
+	text_end
 
 UnknownText_0xf739:
 	; PP was restored.
 	text_jump UnknownText_0x1c5cf1
-	db "@"
+	text_end
 
 SquirtBottle:
 	farjp _Squirtbottle
@@ -2273,66 +2273,66 @@ ItemNotUsed_ExitMenu:
 LooksBitterText:
 	; It looks bitter…
 	text_jump UnknownText_0x1c5d3e
-	db "@"
+	text_end
 
 CantUseOnEggText:
 	; That can't be used on an EGG.
 	text_jump UnknownText_0x1c5d50
-	db "@"
+	text_end
 
 AlreadyInThatBallText:
 	text_jump AlreadyInThatBallTextData
-	db "@"
+	text_end
 
 IsntTheTimeText:
 	; OAK:  ! This isn't the time to use that!
 	text_jump UnknownText_0x1c5d6e
-	db "@"
+	text_end
 
 WontHaveAnyEffectText:
 	; It won't have any effect.
 	text_jump UnknownText_0x1c5db6
-	db "@"
+	text_end
 
 BlockedTheBallText:
 	; The trainer blocked the BALL!
 	text_jump UnknownText_0x1c5dd0
-	db "@"
+	text_end
 
 DontBeAThiefText:
 	; Don't be a thief!
 	text_jump UnknownText_0x1c5def
-	db "@"
+	text_end
 
 Ball_BoxIsFullText:
 	; The #MON BOX is full. That can't be used now.
 	text_jump UnknownText_0x1c5e3a
-	db "@"
+	text_end
 
 Ball_MonIsHiddenText:
 	; The #MON can't be seen!
 	text_jump Text_MonIsHiddenFromBall
-	db "@"
+	text_end
 
 Ball_MonCantBeCaughtText:
 	; The #MON can't be caught!
 	text_jump Text_MonCantBeCaught
-	db "@"
+	text_end
 
 Ball_NuzlockeFailureText:
 	; You already encountered a #MON here.
 	text_jump Text_NuzlockeBallFailure
-	db "@"
+	text_end
 
 Revive_NuzlockeFailureText:
 	; You can't revive #MON in NUZLOCKE mode!
 	text_jump Text_NuzlockeReviveFailure
-	db "@"
+	text_end
 
 UsedItemText:
 	; used the@ .
 	text_jump UnknownText_0x1c5e68
-	db "@"
+	text_end
 
 ApplyPPUp:
 	ld a, MON_MOVES

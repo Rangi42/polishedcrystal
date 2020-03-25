@@ -13,14 +13,13 @@ OverworldLoop::
 	ld a, [wMapStatus]
 	cp 3 ; done
 	jr nz, .loop
-.done
 	ret
 
 .jumps
 	dw StartMap
 	dw EnterMap
 	dw HandleMap
-	dw .done
+	dw DoNothing
 
 DisableEvents:
 	xor a
@@ -713,7 +712,7 @@ HiddenItemScript:
 .found_text
 	; found @ !
 	text_jump UnknownText_0x1c0a1c
-	db "@"
+	text_end
 
 SetMemEvent:
 	ld hl, wEngineBuffer1
@@ -927,7 +926,7 @@ RepelWoreOffScript:
 
 	; REPEL's effect wore off.
 	text_jump UnknownText_0x1bd308
-	db "@"
+	text_end
 
 UseAnotherRepelScript:
 	opentext
@@ -939,7 +938,7 @@ UseAnotherRepelScript:
 
 .text:
 	text_jump UseAnotherRepelText
-	db "@"
+	text_end
 
 DoPlayerEvent:
 	ld a, [wScriptRunning]

@@ -26,12 +26,12 @@ _ResetClock:
 .text_okay
 	; Select CONTINUE & reset settings.
 	text_jump UnknownText_0x1c55db
-	db "@"
+	text_end
 
 .text_askreset
 	; Reset the clock?
 	text_jump UnknownText_0x1c561c
-	db "@"
+	text_end
 
 .NoYes_MenuDataHeader:
 	db $00 ; flags

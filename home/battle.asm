@@ -660,7 +660,7 @@ GetWeatherAfterUserUmbrella::
 	ret z
 	push bc
 	push hl
-	farcall GetUserItemAfterUnnerve
+	predef GetUserItemAfterUnnerve
 	ld a, b
 	xor HELD_UTILITY_UMBRELLA
 	pop hl
@@ -711,7 +711,7 @@ CheckSpeedWithQuickClaw::
 	ret
 .do_it
 	push de
-	farcall GetUserItemAfterUnnerve
+	predef GetUserItemAfterUnnerve
 	pop de
 	ld a, b
 	cp HELD_QUICK_CLAW
@@ -737,7 +737,7 @@ CheckSpeedWithQuickClaw::
 	push de
 .activate_item
 	farcall ItemRecoveryAnim
-	farcall GetUserItemAfterUnnerve
+	predef GetUserItemAfterUnnerve
 	call GetCurItemName
 	ld hl, BattleText_UserItemLetItMoveFirst
 	call StdBattleTextBox
@@ -925,6 +925,9 @@ GetBattleVarAddr::
 	dw wLastPlayerCounterMove,        wLastEnemyCounterMove
 	dw wLastPlayerMove,               wLastEnemyMove
 
+BattleCommand_cleartext::
+EmptyBattleTextBox::
+	ld hl, EmptyString
 BattleTextBox::
 ; Open a textbox and print text at hl.
 	push hl

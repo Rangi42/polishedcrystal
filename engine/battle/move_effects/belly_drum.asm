@@ -12,7 +12,7 @@ BattleCommand_bellydrum:
 	jr nz, .failed
 
 	call GetHalfMaxHP
-	farcall SubtractHPFromUser
+	predef SubtractHPFromUser
 	call UpdateUserInParty
 	call GetTrueUserAbility
 	cp CONTRARY

@@ -34,3 +34,7 @@ PredefPointers::
 	add_predef AnimateFrontpic
 	add_predef HOF_AnimateFrontpic
 	add_predef DoKeyItemEffect
+	add_predef SubtractHPFromUser
+	add_predef GetUserItemAfterUnnerve
+	add_predef ChangeHappiness
+	add_predef RemoveMonFromPartyOrBox

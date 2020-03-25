@@ -172,7 +172,7 @@ CheckPokeItem::
 	jr c, .close_sram_return
 	xor a
 	ld [wPokemonWithdrawDepositParameter], a
-	farcall RemoveMonFromPartyOrBox
+	predef RemoveMonFromPartyOrBox
 	ld a, $1
 
 .close_sram_return
@@ -303,7 +303,7 @@ _KrisMailBoxMenu:
 
 .EmptyMailboxText:
 	text_jump _EmptyMailboxText
-	db "@"
+	text_end
 
 InitMail:
 ; initialize wMailboxCount and beyond with incrementing values, one per mail
@@ -407,7 +407,7 @@ MailboxPC:
 	dw .ReadMail
 	dw .PutInPack
 	dw .AttachMail
-	dw .Cancel
+	dw DoNothing
 
 .ReadMail:
 	call FadeToMenu
@@ -444,15 +444,15 @@ MailboxPC:
 
 .PutAwayText:
 	text_jump ClearedMailPutAwayText
-	db "@"
+	text_end
 
 .PackFullText:
 	text_jump MailPackFullText
-	db "@"
+	text_end
 
 .MessageLostText:
 	text_jump MailMessageLostText
-	db "@"
+	text_end
 
 .GetMailType:
 	push af
@@ -515,18 +515,15 @@ MailboxPC:
 
 .HoldingMailText:
 	text_jump MailAlreadyHoldingItemText
-	db "@"
+	text_end
 
 .EggText:
 	text_jump MailEggText
-	db "@"
+	text_end
 
 .MailMovedText:
 	text_jump MailMovedFromBoxText
-	db "@"
-
-.Cancel:
-	ret
+	text_end
 
 .TopMenuDataHeader:
 	db %01000000 ; flags

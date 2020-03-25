@@ -20,7 +20,7 @@ _DeleteSaveData:
 .Text_ClearAllSaveData:
 	; Clear all save data?
 	text_jump UnknownText_0x1c564a
-	db "@"
+	text_end
 
 _ResetInitialOptions:
 	farcall BlankScreen
@@ -51,7 +51,7 @@ _ResetInitialOptions:
 .Text_ResetInitialOptions:
 	; Reset the initial game options?
 	text_jump ResetInitialOptionsText
-	db "@"
+	text_end
 
 TitleScreenNoYesMenuDataHeader:
 	db $00 ; flags

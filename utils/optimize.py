@@ -89,28 +89,28 @@ patterns = {
 	(lambda line2, prev: line2.code == 'srl a'),
 	(lambda line3, prev: line3.code == 'srl a'),
 ],
-'hl|bc|de += a': [
-	# Bad: add l / ld l, a / ld a, h|0 / adc 0|h / ld h, a (hl or bc or de)
-	# Good: add l / ld l, a / adc h / sub l / ld h, a
-	(lambda line1, prev: re.match(r'add [lce]', line1.code)),
+'hl|bc|de += a|N': [
+	# Bad: add l|N / ld l, a / ld a, h|0 / adc 0|h / ld h, a (hl or bc or de)
+	# Good: add l|N / ld l, a / adc h / sub l / ld h, a
+	(lambda line1, prev: re.match(r'add (?:[lce]|[^afbdh\[])', line1.code)),
 	(lambda line2, prev: re.match(r'ld [lce], a', line2.code) and
-		line2.code[3] == prev[0].code[4]),
+		(line2.code[3] == prev[0].code[4] or prev[0].code[4] not in 'lce')),
 	(lambda line3, prev: re.match(r'ld a, (?:[hbd]|[%\$]?0+$)', line3.code) and
-		(line3.code[6] not in 'hbd' or line3.code[6] == PAIRS[prev[0].code[4]])),
+		(line3.code[6] not in 'hbd' or line3.code[6] == PAIRS[prev[1].code[3]])),
 	(lambda line4, prev: re.match(r'adc (?:[hbd]|[%\$]?0+$)', line4.code) and
-		(line4.code[4] not in 'hbd' or line4.code[4] == PAIRS[prev[0].code[4]])),
+		(line4.code[4] not in 'hbd' or line4.code[4] == PAIRS[prev[1].code[3]])),
 	(lambda line5, prev: re.match(r'ld [hbd], a', line5.code) and
-		line5.code[3] == PAIRS[prev[0].code[4]]),
+		line5.code[3] == PAIRS[prev[1].code[3]]),
 ],
-'hl|bc|de += a (with jump)': [
-	# Okay: add l / ld l, a / jr nc, .noCarry / inc h / .noCarry
-	# Good: add l / ld l, a / adc h / sub l / ld h, a
-	(lambda line1, prev: re.match(r'add [lce]', line1.code)),
+'hl|bc|de += a|N (with jump)': [
+	# Okay: add l|N / ld l, a / jr nc, .noCarry / inc h / .noCarry
+	# Good: add l|N / ld l, a / adc h / sub l / ld h, a
+	(lambda line1, prev: re.match(r'add (?:[lce]|[^afbdh\[])', line1.code)),
 	(lambda line2, prev: re.match(r'ld [lce], a', line2.code) and
-		line2.code[3] == prev[0].code[4]),
+		(line2.code[3] == prev[0].code[4] or prev[0].code[4] not in 'lce')),
 	(lambda line3, prev: re.match(r'j[rp] nc,', line3.code)),
 	(lambda line4, prev: re.match(r'inc [hbd]', line4.code) and
-		line4.code[4] == PAIRS[prev[0].code[4]]),
+		line4.code[4] == PAIRS[prev[1].code[3]]),
 	(lambda line5, prev: line5.code.rstrip(':') == prev[2].code.split(',')[1].strip()),
 ],
 'hl *= 2': [
@@ -205,19 +205,19 @@ patterns = {
 'Useless loads': [
 	# Bad: ld P, Q / ld P, R (unless the lds have side effects)
 	# Good: ld P, R
-	(lambda line1, prev: line1.code.startswith('ld ') and ',' in line1.code and
-		'[hli]' not in line1.code and '[hld]' not in line1.code),
-	(lambda line2, prev: line2.code.startswith('ld ') and ',' in line2.code and
-		'[hli]' not in line2.code and '[hld]' not in line2.code and
+	(lambda line1, prev: (line1.code.startswith('ld ') or line1.code.startswith('ldh ')) and
+		',' in line1.code and '[hli]' not in line1.code and '[hld]' not in line1.code),
+	(lambda line2, prev: (line2.code.startswith('ld ') or line2.code.startswith('ldh ')) and
+		',' in line2.code and '[hli]' not in line2.code and '[hld]' not in line2.code and
 		line2.code.split(',')[0] == prev[0].code.split(',')[0]),
 ],
 'Redundant loads': [
 	# Bad: ld P, Q / ld Q, P (unless the lds have side effects)
 	# Good: ld P, Q
-	(lambda line1, prev: line1.code.startswith('ld ') and ',' in line1.code and
-		'[hli]' not in line1.code and '[hld]' not in line1.code),
-	(lambda line2, prev: line2.code.startswith('ld ') and ',' in line2.code and
-		'[hli]' not in line2.code and '[hld]' not in line2.code and
+	(lambda line1, prev: (line1.code.startswith('ld ') or line1.code.startswith('ldh ')) and
+		',' in line1.code and '[hli]' not in line1.code and '[hld]' not in line1.code),
+	(lambda line2, prev: (line2.code.startswith('ld ') or line2.code.startswith('ldh ')) and
+		',' in line2.code and '[hli]' not in line2.code and '[hld]' not in line2.code and
 		line2.code[2:].split(',')[0].strip() == prev[0].code.split(',')[1].strip() and
 		line2.code.split(',')[1].strip() == prev[0].code[2:].split(',')[0].strip()),
 ],
@@ -225,6 +225,21 @@ patterns = {
 	# Bad: rl|rlc|rr|rrc a (unless you need the z flag set for 0)
 	# Good: rla|rlca|rra|rrca
 	(lambda line1, prev: line1.code in {'rl a', 'rlc a', 'rr a', 'rrc a'}),
+],
+'Redundant and': [
+	# Bad: and N / and|or a
+	# Good: and N
+	(lambda line1, prev: line1.code.startswith('and ')),
+	(lambda line2, prev: line2.code in {'and a', 'or a'}),
+],
+'Redundant ret': [
+	# Bad: ret z|nz|c|nc / ret
+	# Bad: ret / ret z|nz|c|nc
+	# Bad: ret z / ret nz
+	# Good: ret
+	(lambda line1, prev: line1.code == 'ret' or line1.code.startswith('ret ')),
+	(lambda line2, prev: line2.code == 'ret' or line2.code.startswith('ret ') and
+		(prev[0].code == 'ret' or line2.code.split()[-1].lstrip('n') == prev[0].code.split()[-1].lstrip('n'))),
 ],
 }
 

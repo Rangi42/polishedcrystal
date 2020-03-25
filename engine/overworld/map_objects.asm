@@ -507,7 +507,7 @@ MapObjectMovementPattern:
 	ret
 
 .Pointers:
-	dw .Null_00                      ; SPRITEMOVEFN_00
+	dw DoNothing                     ; SPRITEMOVEFN_00
 	dw .RandomWalkY                  ; SPRITEMOVEFN_RANDOM_WALK_Y
 	dw .RandomWalkX                  ; SPRITEMOVEFN_RANDOM_WALK_X
 	dw .RandomWalkXY                 ; SPRITEMOVEFN_RANDOM_WALK_XY
@@ -591,7 +591,6 @@ MapObjectMovementPattern:
 	ld hl, OBJECT_STEP_TYPE
 	add hl, bc
 	ld [hl], STEP_TYPE_05
-.Null_00:
 	ret
 
 .ObeyDPad:
@@ -786,10 +785,9 @@ MapObjectMovementPattern:
 	ld hl, OBJECT_ACTION
 	add hl, bc
 	ld [hl], PERSON_ACTION_STAND
-	ld a, $20
 	ld hl, OBJECT_STEP_DURATION
 	add hl, bc
-	ld [hl], a
+	ld [hl], $20
 	ld hl, OBJECT_STEP_TYPE
 	add hl, bc
 	ld [hl], STEP_TYPE_03

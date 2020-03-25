@@ -50,17 +50,17 @@ TossItemFromPC:
 .TossHowMany:
 	; Toss out how many @ (S)?
 	text_jump UnknownText_0x1c1a90
-	db "@"
+	text_end
 
 .ConfirmToss:
 	; Throw away @ @ (S)?
 	text_jump UnknownText_0x1c1aad
-	db "@"
+	text_end
 
 .TossedThisMany:
 	; Discarded @ (S).
 	text_jump UnknownText_0x1c1aca
-	db "@"
+	text_end
 
 CantUseItem:
 	ld hl, CantUseItemText
@@ -68,7 +68,7 @@ CantUseItem:
 
 CantUseItemText:
 	text_jump UnknownText_0x1c1b03
-	db "@"
+	text_end
 
 PartyMonItemName:
 	ld a, [wCurItem]
@@ -356,35 +356,35 @@ GiveTakeItemMenuData:
 
 TookAndMadeHoldText:
 	text_jump UnknownText_0x1c1b2c
-	db "@"
+	text_end
 
 MadeHoldText:
 	text_jump UnknownText_0x1c1b57
-	db "@"
+	text_end
 
 PleaseRemoveMailText:
 	text_jump UnknownText_0x1c1b6f
-	db "@"
+	text_end
 
 IsntHoldingAnythingText:
 	text_jump UnknownText_0x1c1b8e
-	db "@"
+	text_end
 
 ItemStorageIsFullText:
 	text_jump UnknownText_0x1c1baa
-	db "@"
+	text_end
 
 TookFromText:
 	text_jump UnknownText_0x1c1bc4
-	db "@"
+	text_end
 
 SwitchAlreadyHoldingText:
 	text_jump UnknownText_0x1c1bdc
-	db "@"
+	text_end
 
 CantBeHeldText:
 	text_jump UnknownText_0x1c1c09
-	db "@"
+	text_end
 
 GetPartyItemLocation:
 	push af
@@ -523,32 +523,32 @@ MonMailAction:
 .mailwilllosemessagetext
 ; The MAIL will lose its message. OK?
 	text_jump UnknownText_0x1c1c22
-	db "@"
+	text_end
 
 .tookmailfrommontext
 ; MAIL detached from <POKEMON>.
 	text_jump UnknownText_0x1c1c47
-	db "@"
+	text_end
 
 .bagfulltext
 ; There's no space for removing MAIL.
 	text_jump UnknownText_0x1c1c62
-	db "@"
+	text_end
 
 .sendmailtopctext
 ; Send the removed MAIL to your PC?
 	text_jump UnknownText_0x1c1c86
-	db "@"
+	text_end
 
 .mailboxfulltext
 ; Your PC's MAILBOX is full.
 	text_jump UnknownText_0x1c1ca9
-	db "@"
+	text_end
 
 .sentmailtopctext
 ; The MAIL was sent to your PC.
 	text_jump UnknownText_0x1c1cc4
-	db "@"
+	text_end
 
 OpenPartyStats:
 	call LoadStandardMenuDataHeader
@@ -644,7 +644,7 @@ MonMenu_FreshSnack:
 .Text_NotEnoughHP:
 	; Not enough HP!
 	text_jump UnknownText_0x1c1ce3
-	db "@"
+	text_end
 
 .CheckMonHasEnoughHP:
 ; Need to have at least (MaxHP / 5) HP left.
@@ -1215,7 +1215,7 @@ SetUpMoveScreenBG:
 	ld a, CGB_PARTY_MENU
 	call GetCGBLayout
 	farcall LoadStatsGFX
-	farcall ClearSpriteAnims2
+	call ClearSpriteAnims2
 	ld a, [wCurPartyMon]
 	ld e, a
 	ld d, $0
@@ -1487,4 +1487,4 @@ String_PowAcc:
 Text_CantForgetHM:
 ; HM moves can't be forgotten now.
 	text_jump UnknownText_0x1c5772
-	db "@"
+	text_end

@@ -46,7 +46,7 @@ MassageOrHaircut:
 	ld a, [hli]
 	ldh [hScriptVar], a
 	ld c, [hl]
-	jp ChangeHappiness
+	predef_jump ChangeHappiness
 
 .nope
 	xor a

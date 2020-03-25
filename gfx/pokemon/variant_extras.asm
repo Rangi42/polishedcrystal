@@ -30,6 +30,7 @@ UnownQuestionAnimationExtra:    INCLUDE "gfx/pokemon/unown_question/anim1.asm"
 PichuPlainAnimationExtra: INCLUDE "gfx/pokemon/pichu_plain/anim1.asm"
 PichuSpikyAnimationExtra: INCLUDE "gfx/pokemon/pichu_spiky/anim1.asm"
 
+PikachuSparkAnimationExtra:
 PikachuPlainAnimationExtra:  INCLUDE "gfx/pokemon/pikachu_plain/anim1.asm"
 PikachuFlyAnimationExtra:    INCLUDE "gfx/pokemon/pikachu_fly/anim1.asm"
 PikachuSurfAnimationExtra:   INCLUDE "gfx/pokemon/pikachu_surf/anim1.asm"

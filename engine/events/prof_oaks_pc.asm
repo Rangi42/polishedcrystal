@@ -122,92 +122,92 @@ ENDM
 
 OakPCText1:
 	text_jump _OakPCText1
-	db "@"
+	text_end
 
 OakPCText2:
 	text_jump _OakPCText2
-	db "@"
+	text_end
 
 OakPCText3:
 	text_jump _OakPCText3
-	db "@"
+	text_end
 
 OakRating01:
 	text_jump _OakRating01
-	db "@"
+	text_end
 
 OakRating02:
 	text_jump _OakRating02
-	db "@"
+	text_end
 
 OakRating03:
 	text_jump _OakRating03
-	db "@"
+	text_end
 
 OakRating04:
 	text_jump _OakRating04
-	db "@"
+	text_end
 
 OakRating05:
 	text_jump _OakRating05
-	db "@"
+	text_end
 
 OakRating06:
 	text_jump _OakRating06
-	db "@"
+	text_end
 
 OakRating07:
 	text_jump _OakRating07
-	db "@"
+	text_end
 
 OakRating08:
 	text_jump _OakRating08
-	db "@"
+	text_end
 
 OakRating09:
 	text_jump _OakRating09
-	db "@"
+	text_end
 
 OakRating10:
 	text_jump _OakRating10
-	db "@"
+	text_end
 
 OakRating11:
 	text_jump _OakRating11
-	db "@"
+	text_end
 
 OakRating12:
 	text_jump _OakRating12
-	db "@"
+	text_end
 
 OakRating13:
 	text_jump _OakRating13
-	db "@"
+	text_end
 
 OakRating14:
 	text_jump _OakRating14
-	db "@"
+	text_end
 
 OakRating15:
 	text_jump _OakRating15
-	db "@"
+	text_end
 
 OakRating16:
 	text_jump _OakRating16
-	db "@"
+	text_end
 
 OakRating17:
 	text_jump _OakRating17
-	db "@"
+	text_end
 
 OakRating18:
 	text_jump _OakRating18
-	db "@"
+	text_end
 
 OakRating19:
 	text_jump _OakRating19
-	db "@"
+	text_end
 
 OakPCText4:
 	text_jump _OakPCText4
-	db "@"
+	text_end

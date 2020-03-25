@@ -504,7 +504,7 @@ IncreaseMetronomeCount:
 	ret
 
 CheckPowerHerb:
-	call GetUserItemAfterUnnerve
+	predef GetUserItemAfterUnnerve
 	ld a, b
 	cp HELD_POWER_HERB
 	ret nz
@@ -589,8 +589,7 @@ HitConfusion:
 	ldh a, [hBattleTurn]
 	and a
 	jr nz, .enemy
-	ld hl, UpdatePlayerHUD
-	call CallBattleCore
+	farcall UpdatePlayerHUD
 	ld a, $1
 	ldh [hBGMapMode], a
 .enemy
@@ -1293,7 +1292,7 @@ CheckAirborne_GotAbility:
 	push bc
 
 	; Check Iron Ball
-	call GetUserItemAfterUnnerve
+	predef GetUserItemAfterUnnerve
 	ld a, b
 	cp HELD_IRON_BALL
 	pop bc
@@ -1707,7 +1706,7 @@ BattleCommand_checkhit:
 	farcall ApplyAccuracyAbilities
 
 	; Check user items
-	call GetUserItemAfterUnnerve
+	predef GetUserItemAfterUnnerve
 	ld a, b
 	cp HELD_ACCURACY_BOOST
 	jr z, .accuracy_boost_item
@@ -2438,7 +2437,7 @@ FailText_CheckOpponentProtect:
 	jr z, .printmsg
 	ld hl, AttackMissedText
 	call StdBattleTextBox
-	call GetUserItemAfterUnnerve
+	predef GetUserItemAfterUnnerve
 	ld a, b
 	cp HELD_BLUNDER_POLICY
 	ret nz
@@ -2751,7 +2750,7 @@ BattleCommand_postfainteffects:
 	call StdBattleTextBox
 
 	call GetMaxHP
-	farcall SubtractHPFromUser
+	predef SubtractHPFromUser
 	call SwitchTurn
 	xor a
 	ld [wNumHits], a
@@ -2886,7 +2885,7 @@ BattleCommand_posthiteffects:
 	call GetTrueUserAbility
 	cp MAGIC_GUARD
 	jr z, .rocky_helmet_done
-	farcall SubtractHPFromUser
+	predef SubtractHPFromUser
 	call GetOpponentItem
 	call GetCurItemName
 	ld hl, BattleText_UserHurtByItem
@@ -2979,7 +2978,7 @@ CheckWhiteHerb:
 
 .do_it
 	push bc
-	call GetUserItemAfterUnnerve
+	predef GetUserItemAfterUnnerve
 	ld a, b
 	pop bc
 	cp HELD_WHITE_HERB
@@ -3008,7 +3007,7 @@ CheckWhiteHerb:
 	push bc
 	push de
 	push hl
-	call GetUserItemAfterUnnerve
+	predef GetUserItemAfterUnnerve
 	ld a, b
 	pop hl
 	pop de
@@ -3070,7 +3069,7 @@ EndMoveDamageChecks:
 	; life orb, shell bell
 	call HasUserFainted
 	ret z
-	call GetUserItemAfterUnnerve
+	predef GetUserItemAfterUnnerve
 	push bc
 	call GetCurItemName
 	pop bc
@@ -3137,7 +3136,7 @@ EndMoveDamageChecks:
 	ld b, a
 	ldh a, [hQuotient + 2]
 	ld c, a
-	farcall SubtractHPFromUser
+	predef SubtractHPFromUser
 	ld hl, BattleText_UserLostSomeOfItsHP
 	jp StdBattleTextBox
 
@@ -4540,7 +4539,7 @@ SapHealth:
 	farjp RestoreHP
 .damage
 	farcall ShowEnemyAbilityActivation
-	farjp SubtractHPFromUser
+	predef_jump SubtractHPFromUser
 
 GetHPAbsorption:
 ; From damage in bc, get resulting absorbed HP
@@ -4550,7 +4549,7 @@ GetHPAbsorption:
 HandleBigRoot:
 ; Bonus +30% HP drain (or reduction if Liquid Ooze)
 	push bc
-	call GetUserItemAfterUnnerve
+	predef GetUserItemAfterUnnerve
 	ld a, b
 	pop bc
 	cp HELD_BIG_ROOT
@@ -5296,17 +5295,17 @@ BattleCommand_charge:
 .SolarBeam:
 ; 'took in sunlight!'
 	text_jump UnknownText_0x1c0d26
-	db "@"
+	text_end
 
 .Fly:
 ; 'flew up high!'
 	text_jump UnknownText_0x1c0d5c
-	db "@"
+	text_end
 
 .Dig:
 ; 'dug a hole!'
 	text_jump UnknownText_0x1c0d6c
-	db "@"
+	text_end
 
 BattleCommand_traptarget:
 	ld a, [wAttackMissed]
@@ -5406,7 +5405,7 @@ BattleCommand_recoil:
 	call HalveBC
 .recoil_floor
 	call FloorBC
-	farcall SubtractHPFromUser
+	predef SubtractHPFromUser
 
 .recoil_text
 	ld hl, RecoilText
@@ -6340,14 +6339,6 @@ BattleCommand_movedelay:
 ; Wait 40 frames.
 	ld c, 40
 	jp DelayFrames
-
-BattleCommand_cleartext:
-; Used in multi-hit moves.
-	ld hl, .text
-	jp BattleTextBox
-
-.text
-	db "@"
 
 EndMoveEffect:
 	ld b, endmove_command

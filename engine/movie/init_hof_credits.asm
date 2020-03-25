@@ -25,7 +25,7 @@ InitDisplayForHallOfFame:
 .SavingRecordDontTurnOff:
 	; SAVING RECORD… DON'T TURN OFF!
 	text_jump UnknownText_0x1bd39e
-	db "@"
+	text_end
 
 InitDisplayForLeafCredits:
 	call ClearBGPalettes
