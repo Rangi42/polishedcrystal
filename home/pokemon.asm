@@ -217,6 +217,28 @@ GetAbility::
 	ld b, a
 	ret
 
+GetGenderRatio::
+; 'c' contains the target species
+; returns gender ratio in c
+; preserves curspecies and base data
+	anonbankpush BaseData
+
+.Function:
+	push hl
+	push bc
+	ld hl, BASEMON_GENDER
+	ld b, 0
+	ld a, BASEMON_STRUCT_LENGTH
+	dec c
+	rst AddNTimes
+	pop bc
+	ld a, [hl]
+	pop hl
+	swap a
+	and $f
+	ld c, a
+	ret
+
 GetCurNick::
 	ld a, [wCurPartyMon]
 	ld hl, wPartyMonNicknames

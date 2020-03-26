@@ -994,19 +994,10 @@ DayCare_InitBreeding:
 	call RandomRange
 	ld b, a
 	ld a, [wEggMonSpecies]
-	dec a
-	push bc
-	ld hl, BASEMON_GENDER
-	ld bc, BASEMON_STRUCT_LENGTH
-	rst AddNTimes
-	ld a, BANK(BaseData)
-	call GetFarByte
-	swap a
-	and $f
-	pop bc
 	ld c, a
-	ld a, b
+	call GetGenderRatio
 	; if rnd(0..7) < c: female, else male
+	ld a, b
 	cp c
 	ld a, FEMALE
 	jr c, .got_gender

@@ -441,20 +441,12 @@ GetGender:
 	call z, CloseSRAM
 
 ; We need the gender ratio to do anything with this.
-	push bc
 	ld a, [wCurPartySpecies]
-	dec a
-	ld hl, BASEMON_GENDER
-	ld bc, BASEMON_STRUCT_LENGTH
-	rst AddNTimes
-	pop bc
-
-	ld a, BANK(BaseData)
-	call GetFarByte
-	swap a
-	and $f
+	ld c, a
+	call GetGenderRatio
 
 ; Fixed values ignore the Personality gender value.
+	ld a, c
 	cp GENDERLESS
 	jr z, .Genderless
 	and a ; cp ALL_MALE

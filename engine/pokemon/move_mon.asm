@@ -327,22 +327,11 @@ endr
 .cute_charm_ok
 	ld b, a
 ; We need the gender ratio to do anything with this.
-	push hl
-	push bc
 	ld a, [wCurPartySpecies]
-	dec a
-	ld hl, BASEMON_GENDER
-	ld bc, BASEMON_STRUCT_LENGTH
-	rst AddNTimes
-	ld a, BANK(BaseData)
-	call GetFarByte
-	swap a
-	and $f
-	pop bc
-	pop hl
 	ld c, a
-	ld a, b
+	call GetGenderRatio
 ; Ratios below the value are female, and vice-versa.
+	ld a, b
 	cp c
 	ld a, FEMALE
 	jr c, .Female
