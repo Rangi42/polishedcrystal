@@ -1273,7 +1273,7 @@ DoBikeStep::
 	; If we've taken at least 1024 steps, have the bike
 	;  shop owner try to call us.
 	ld a, d
-	cp 1024 >> 8
+	cp HIGH(1024)
 	jr c, .NoCall
 
 	; If a call has already been queued, don't overwrite

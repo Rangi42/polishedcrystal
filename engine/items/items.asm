@@ -112,46 +112,46 @@ _CheckItem::
 
 DoesHLEqualNumItems:
 	ld a, l
-	cp wNumItems % $100
+	cp LOW(wNumItems)
 	ret nz
 	ld a, h
-	cp wNumItems / $100
+	cp HIGH(wNumItems)
 	ret
 
 GetPocketCapacity:
 	ld c, MAX_ITEMS
 	ld a, e
-	cp wNumItems % $100
+	cp LOW(wNumItems)
 	jr nz, .not_items
 	ld a, d
-	cp wNumItems / $100
+	cp HIGH(wNumItems)
 	ret z
 
 .not_items:
 	ld c, MAX_MEDICINE
 	ld a, e
-	cp wNumMedicine % $100
+	cp LOW(wNumMedicine)
 	jr nz, .not_medicine
 	ld a, d
-	cp wNumMedicine / $100
+	cp HIGH(wNumMedicine)
 	ret z
 
 .not_medicine:
 	ld c, MAX_BALLS
 	ld a, e
-	cp wNumBalls % $100
+	cp LOW(wNumBalls)
 	jr nz, .not_balls
 	ld a, d
-	cp wNumBalls / $100
+	cp HIGH(wNumBalls)
 	ret z
 
 .not_balls:
 	ld c, MAX_BERRIES
 	ld a, e
-	cp wNumBerries % $100
+	cp LOW(wNumBerries)
 	jr nz, .not_berries
 	ld a, d
-	cp wNumBerries / $100
+	cp HIGH(wNumBerries)
 	ret z
 
 .not_berries:

@@ -8,10 +8,10 @@ EngineFlagAction::
 ; Setting/resetting does not return a result.
 
 	ld a, d
-	cp (NUM_ENGINE_FLAGS / $100) + 1
+	cp HIGH(NUM_ENGINE_FLAGS) + 1
 	jr nc, .invalid
 	ld a, e
-	cp NUM_ENGINE_FLAGS % $100
+	cp LOW(NUM_ENGINE_FLAGS)
 	jr c, .read
 
 ; Invalid flags are treated as flag 00.

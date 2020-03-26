@@ -144,9 +144,9 @@ LoadTrainer_continue::
 	ld [hli], a
 	ld [hli], a
 	; store generic trainer script in script pointer
-	ld a, .generic_trainer_script % $100
+	ld a, LOW(.generic_trainer_script)
 	ld [hli], a
-	ld [hl], .generic_trainer_script / $100
+	ld [hl], HIGH(.generic_trainer_script)
 	; store after-battle text in wStashedTextPointer
 	ld hl, wStashedTextPointer
 	ld a, e

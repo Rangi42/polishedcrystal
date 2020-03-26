@@ -116,7 +116,7 @@ UpdateOverworldMap:
 	ld a, [wBGMapAnchor + 1]
 	inc a
 	and $3
-	or vBGMap0 / $100
+	or HIGH(vBGMap0)
 	ld [wBGMapAnchor + 1], a
 .not_overflowed
 	ld hl, wMetatileStandingY
@@ -142,7 +142,7 @@ UpdateOverworldMap:
 	ld a, [wBGMapAnchor + 1]
 	dec a
 	and $3
-	or vBGMap0 / $100
+	or HIGH(vBGMap0)
 	ld [wBGMapAnchor + 1], a
 .not_underflowed
 	ld hl, wMetatileStandingY

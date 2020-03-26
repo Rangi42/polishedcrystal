@@ -109,11 +109,11 @@ endc
 
 ; Cap the timer after 1000 hours.
 	ld a, h
-	cp 1000 / $100
+	cp HIGH(1000)
 	jr c, .ok
 
 	ld a, l
-	cp 1000 % $100
+	cp LOW(1000)
 	jr c, .ok
 
 	ld hl, wGameTimeCap

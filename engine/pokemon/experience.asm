@@ -6,7 +6,7 @@ CalcLevel:
 .next_level
 	inc d
 	ld a, d
-	cp (MAX_LEVEL + 1) % $100
+	cp MAX_LEVEL + 1
 	jr z, .got_level
 	call CalcExpAtLevel
 	push hl

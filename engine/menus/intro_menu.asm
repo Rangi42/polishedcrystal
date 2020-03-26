@@ -87,11 +87,11 @@ ResetWRAM_NotPlus:
 
 START_MONEY EQU 3000
 	ld hl, wMoney
-	ld [hl], START_MONEY / $10000
+	ld [hl], LOW(START_MONEY / $10000)
 	inc hl
-	ld [hl], START_MONEY / $100 % $100
+	ld [hl], LOW(START_MONEY / $100)
 	inc hl
-	ld [hl], START_MONEY % $100
+	ld [hl], LOW(START_MONEY)
 	ret
 
 ResetWRAM:
@@ -214,11 +214,11 @@ endr
 
 START_ITEM_TRIGGER_BALANCE EQU 2300
 	ld hl, wMomItemTriggerBalance
-	ld [hl], START_ITEM_TRIGGER_BALANCE / $10000
+	ld [hl], LOW(START_ITEM_TRIGGER_BALANCE / $10000)
 	inc hl
-	ld [hl], START_ITEM_TRIGGER_BALANCE / $100 % $100
+	ld [hl], LOW(START_ITEM_TRIGGER_BALANCE / $100)
 	inc hl
-	ld [hl], START_ITEM_TRIGGER_BALANCE % $100
+	ld [hl], LOW(START_ITEM_TRIGGER_BALANCE)
 
 	call InitializeNPCNames
 
@@ -351,9 +351,9 @@ Continue:
 ;	jp c, CloseWindow
 	ld a, $8
 	ld [wMusicFade], a
-	ld a, MUSIC_NONE % $100
+	ld a, LOW(MUSIC_NONE)
 	ld [wMusicFadeIDLo], a
-	ld a, MUSIC_NONE / $100
+	ld a, HIGH(MUSIC_NONE)
 	ld [wMusicFadeIDHi], a
 	call ClearBGPalettes
 	call CloseWindow
@@ -1266,7 +1266,7 @@ GameInit::
 	call ClearWindowData
 	call ClearBGPalettes
 	call ClearTileMap
-	ld a, vBGMap0 / $100
+	ld a, HIGH(vBGMap0)
 	ldh [hBGMapAddress + 1], a
 	xor a
 	ldh [hBGMapAddress], a

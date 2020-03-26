@@ -359,7 +359,7 @@ WriteVCopyRegistersToHRAM:
 	ret
 
 VRAMToVRAMCopy::
-	lb bc, %11, rSTAT & $ff ; predefine bitmask and rSTAT source for speed and size
+	lb bc, %11, LOW(rSTAT) ; predefine bitmask and rSTAT source for speed and size
 	jr .waitNoHBlank2
 .outerLoop2
 	ldh a, [rLY]

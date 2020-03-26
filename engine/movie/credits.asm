@@ -187,7 +187,7 @@ Credits::
 	xor a
 	rst ByteFill
 
-	ld a, rSCX & $ff
+	ld a, LOW(rSCX)
 	ldh [hLCDCPointer], a
 
 	ld hl, rIE
@@ -302,9 +302,9 @@ Credits_UpdateGFXRequestPath:
 	ldh [hRequestedVTileSource], a
 	ld a, h
 	ldh [hRequestedVTileSource + 1], a
-	ld a, vTiles2 % $100
+	ld a, LOW(vTiles2)
 	ldh [hRequestedVTileDest], a
-	ld a, vTiles2 / $100
+	ld a, HIGH(vTiles2)
 	ldh [hRequestedVTileDest + 1], a
 	; fallthrough
 
@@ -491,9 +491,9 @@ ParseCredits:
 	set 7, [hl]
 	ld a, 32
 	ld [wMusicFade], a
-	ld a, MUSIC_POST_CREDITS % $100
+	ld a, LOW(MUSIC_POST_CREDITS)
 	ld [wMusicFadeID], a
-	ld a, MUSIC_POST_CREDITS / $100
+	ld a, HIGH(MUSIC_POST_CREDITS)
 	ld [wMusicFadeIDHi], a
 	ret
 
@@ -638,20 +638,20 @@ GetCreditsPalette:
 
 	push af
 	push hl
-	add wUnknBGPals % $100
+	add LOW(wUnknBGPals)
 	ld e, a
 	ld a, 0 ; not xor a; preserve carry flag?
-	adc wUnknBGPals / $100
+	adc HIGH(wUnknBGPals)
 	ld d, a
 	ld bc, 24
 	rst CopyBytes
 
 	pop hl
 	pop af
-	add wBGPals % $100
+	add LOW(wBGPals)
 	ld e, a
 	ld a, 0 ; not xor a; preserve carry flag?
-	adc wBGPals / $100
+	adc HIGH(wBGPals)
 	ld d, a
 	ld bc, 24
 	rst CopyBytes

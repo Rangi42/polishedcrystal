@@ -36,9 +36,9 @@ HallOfFame::
 	farjp Credits
 
 LeafCredits::
-	ld a, MUSIC_NONE % $100
+	ld a, LOW(MUSIC_NONE)
 	ld [wMusicFadeIDLo], a
-	ld a, MUSIC_NONE / $100
+	ld a, HIGH(MUSIC_NONE)
 	ld [wMusicFadeIDHi], a
 	ld a, 10
 	ld [wMusicFade], a
@@ -59,9 +59,9 @@ LeafCredits::
 	farjp Credits
 
 HallOfFame_FadeOutMusic:
-	ld a, MUSIC_NONE % $100
+	ld a, LOW(MUSIC_NONE)
 	ld [wMusicFadeIDLo], a
-	ld a, MUSIC_NONE / $100
+	ld a, HIGH(MUSIC_NONE)
 	ld [wMusicFadeIDHi], a
 	ld a, 10
 	ld [wMusicFade], a

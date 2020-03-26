@@ -536,7 +536,7 @@ TradeAnim_PlaceTrademonStatsOnTubeAnim:
 	push af
 	call ClearBGPalettes
 	call WaitTop
-	ld a, vBGMap1 / $100
+	ld a, HIGH(vBGMap1)
 	ldh [hBGMapAddress + 1], a
 	call ClearTileMap
 	hlcoord 0, 0
@@ -566,7 +566,7 @@ TradeAnim_PlaceTrademonStatsOnTubeAnim:
 	rst ByteFill
 	call ApplyTilemapInVBlank
 	call WaitTop
-	ld a, vBGMap0 / $100
+	ld a, HIGH(vBGMap0)
 	ldh [hBGMapAddress + 1], a
 	jp ClearTileMap
 
@@ -661,7 +661,7 @@ TradeAnim_TextboxScrollStart:
 
 TradeAnim_ScrollOutRight:
 	call WaitTop
-	ld a, vBGMap1 / $100
+	ld a, HIGH(vBGMap1)
 	ldh [hBGMapAddress + 1], a
 	call ApplyTilemapInVBlank
 	ld a, $7
@@ -670,7 +670,7 @@ TradeAnim_ScrollOutRight:
 	ldh [hWY], a
 	call DelayFrame
 	call WaitTop
-	ld a, vBGMap0 / $100
+	ld a, HIGH(vBGMap0)
 	ldh [hBGMapAddress + 1], a
 	call ClearTileMap
 	jp TradeAnim_IncrementJumptableIndex
@@ -684,14 +684,14 @@ TradeAnim_ScrollOutRight2:
 	ret
 
 .done
-	ld a, vBGMap1 / $100
+	ld a, HIGH(vBGMap1)
 	ldh [hBGMapAddress + 1], a
 	call ApplyTilemapInVBlank
 	ld a, $7
 	ldh [hWX], a
 	ld a, $90
 	ldh [hWY], a
-	ld a, vBGMap0 / $100
+	ld a, HIGH(vBGMap0)
 	ldh [hBGMapAddress + 1], a
 	jp TradeAnim_AdvanceScriptPointer
 
@@ -850,7 +850,7 @@ ShowOTTrademonStats:
 TrademonStats_MonTemplate:
 	call WaitTop
 	call TradeAnim_BlankTileMap
-	ld a, vBGMap1 / $100
+	ld a, HIGH(vBGMap1)
 	ldh [hBGMapAddress + 1], a
 	hlcoord 3, 0
 	lb bc, $6, $d
@@ -868,7 +868,7 @@ TrademonStats_MonTemplate:
 TrademonStats_Egg:
 	call WaitTop
 	call TradeAnim_BlankTileMap
-	ld a, vBGMap1 / $100
+	ld a, HIGH(vBGMap1)
 	ldh [hBGMapAddress + 1], a
 	hlcoord 3, 0
 	lb bc, $6, $d
@@ -886,7 +886,7 @@ TrademonStats_Egg:
 TrademonStats_WaitBGMap:
 	call ApplyTilemapInVBlank
 	call WaitTop
-	ld a, vBGMap0 / $100
+	ld a, HIGH(vBGMap0)
 	ldh [hBGMapAddress + 1], a
 	ret
 

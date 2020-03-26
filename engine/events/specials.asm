@@ -294,9 +294,9 @@ PlayCurMonCry:
 	jp PlayCry
 
 Special_FadeOutMusic:
-	ld a, MUSIC_NONE % $100
+	ld a, LOW(MUSIC_NONE)
 	ld [wMusicFadeIDLo], a
-	ld a, MUSIC_NONE / $100
+	ld a, HIGH(MUSIC_NONE)
 	ld [wMusicFadeIDHi], a
 	ld a, $2
 	ld [wMusicFade], a

@@ -51,10 +51,10 @@ SpecialOmanyteChamber:
 SpecialAerodactylChamber:
 	call GetSecondaryMapHeaderPointer
 	ld a, h
-	cp RuinsOfAlphAerodactylChamber_SecondMapHeader / $100
+	cp HIGH(RuinsOfAlphAerodactylChamber_SecondMapHeader)
 	jr nz, .nope
 	ld a, l
-	cp RuinsOfAlphAerodactylChamber_SecondMapHeader % $100
+	cp LOW(RuinsOfAlphAerodactylChamber_SecondMapHeader)
 	jr nz, .nope
 
 	eventflagset EVENT_WALL_OPENED_IN_AERODACTYL_CHAMBER
@@ -68,10 +68,10 @@ SpecialAerodactylChamber:
 SpecialKabutoChamber:
 	call GetSecondaryMapHeaderPointer
 	ld a, h
-	cp RuinsOfAlphKabutoChamber_SecondMapHeader / $100
+	cp HIGH(RuinsOfAlphKabutoChamber_SecondMapHeader)
 	ret nz
 	ld a, l
-	cp RuinsOfAlphKabutoChamber_SecondMapHeader % $100
+	cp LOW(RuinsOfAlphKabutoChamber_SecondMapHeader)
 	ret nz
 
 	eventflagset EVENT_WALL_OPENED_IN_KABUTO_CHAMBER

@@ -243,7 +243,7 @@ DaycareStep::
 
 .daycare_exp
 	ld a, [de]
-	cp 100
+	cp MAX_LEVEL
 	ret nc
 
 	inc [hl]
@@ -253,7 +253,7 @@ DaycareStep::
 	ret nz
 	dec hl
 	ld a, [hl]
-	cp 5242800 / $10000
+	cp ($500000 / $10000) - 1 ; max daycare exp
 	ret nc
 	inc [hl]
 	ret

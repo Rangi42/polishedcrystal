@@ -59,9 +59,9 @@ if !DEF(MONOCHROME)
 else
 	ld b, (8 palettes) / 2
 .mono_loop
-	ld a, PAL_MONOCHROME_BLACK % $100
+	ld a, LOW(PAL_MONOCHROME_BLACK)
 	ld [hli], a
-	ld a, PAL_MONOCHROME_BLACK / $100
+	ld a, HIGH(PAL_MONOCHROME_BLACK)
 	ld [hli], a
 	dec b
 	jr nz, .mono_loop

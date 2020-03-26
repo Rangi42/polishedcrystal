@@ -31,23 +31,23 @@ endc
 endr
 
 rept 3
-	db tms1_24 & $ff
+	db LOW(tms1_24)
 tms1_24 = tms1_24 >> 8
 endr
 rept 3
-	db tms25_48 & $ff
+	db LOW(tms25_48)
 tms25_48 = tms25_48 >> 8
 endr
 rept 3
-	db tms49_72 & $ff
+	db LOW(tms49_72)
 tms49_72 = tms49_72 >> 8
 endr
 rept 3
-	db tms73_96 & $ff
+	db LOW(tms73_96)
 tms73_96 = tms73_96 >> 8
 endr
 rept 2
-	db tms97_112 & $ff
+	db LOW(tms97_112)
 tms97_112 = tms97_112 >> 8
 endr
 ENDM

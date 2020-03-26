@@ -46,14 +46,14 @@ InitDisplayForLeafCredits:
 	ld c, 4 tiles
 .load_white_palettes
 if !DEF(MONOCHROME)
-	ld a, (palred 31 + palgreen 31 + palblue 31) % $100
+	ld a, LOW(palred 31 + palgreen 31 + palblue 31)
 	ld [hli], a
-	ld a, (palred 31 + palgreen 31 + palblue 31) / $100
+	ld a, HIGH(palred 31 + palgreen 31 + palblue 31)
 	ld [hli], a
 else
-	ld a, PAL_MONOCHROME_WHITE % $100
+	ld a, LOW(PAL_MONOCHROME_WHITE)
 	ld [hli], a
-	ld a, PAL_MONOCHROME_WHITE / $100
+	ld a, HIGH(PAL_MONOCHROME_WHITE)
 	ld [hli], a
 endc
 	dec c

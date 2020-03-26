@@ -14,7 +14,7 @@ ReanchorBGMap_NoOAMUpdate::
 	ldh [hWY], a
 	call LoadMapPart
 
-	ld a, vBGMap1 / $100
+	ld a, HIGH(vBGMap1)
 	ldh [hBGMapAddress + 1], a
 	xor a
 	ldh [hBGMapAddress], a
@@ -30,7 +30,7 @@ ReanchorBGMap_NoOAMUpdate::
 	ldh [hSCY], a
 	inc a
 	ldh [hCGBPalUpdate], a
-	ld a, vBGMap0 / $100 ; overworld
+	ld a, HIGH(vBGMap0) ; overworld
 	ldh [hBGMapAddress + 1], a
 	ld [wBGMapAnchor + 1], a
 	call ApplyBGMapAnchorToObjects
@@ -75,7 +75,7 @@ ReanchorBGMap_NoOAMUpdate_NoDelay::
 	ldh [hWY], a
 	call LoadMapPart
 
-	ld a, vBGMap1 / $100
+	ld a, HIGH(vBGMap1)
 	ldh [hBGMapAddress + 1], a
 	xor a
 	ldh [hBGMapAddress], a
@@ -88,7 +88,7 @@ ReanchorBGMap_NoOAMUpdate_NoDelay::
 	ldh [hSCY], a
 	inc a
 	ldh [hCGBPalUpdate], a
-	ld a, vBGMap0 / $100 ; overworld
+	ld a, HIGH(vBGMap0) ; overworld
 	ldh [hBGMapAddress + 1], a
 	ld [wBGMapAnchor + 1], a
 	pop af

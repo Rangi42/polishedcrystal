@@ -388,10 +388,10 @@ Slots_LoadReelState:
 
 Slot_CheckCoinCaseFull:
 	ld a, d
-	cp 50000 / $100
+	cp HIGH(50000)
 	jr c, .not_full
 	ld a, e
-	cp 50000 % $100
+	cp LOW(50000)
 	jr c, .not_full
 	scf
 	ret

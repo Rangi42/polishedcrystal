@@ -1002,18 +1002,18 @@ _CGB_UnownPuzzle:
 	ldh [rSVBK], a
 	ld hl, wUnknOBPals
 if DEF(NOIR)
-	ld a, (palred 9 + palgreen 9 + palblue 9) % $100
+	ld a, LOW(palred 9 + palgreen 9 + palblue 9)
 	ld [hli], a
-	ld [hl], (palred 9 + palgreen 9 + palblue 9) / $100
+	ld [hl], HIGH(palred 9 + palgreen 9 + palblue 9)
 elif !DEF(MONOCHROME)
 ; RGB 31, 00, 00
-	ld a, (palred 31 + palgreen 0 + palblue 0) % $100
+	ld a, LOW(palred 31 + palgreen 0 + palblue 0)
 	ld [hli], a
-	ld [hl], (palred 31 + palgreen 0 + palblue 0) / $100
+	ld [hl], HIGH(palred 31 + palgreen 0 + palblue 0)
 else
-	ld a, PAL_MONOCHROME_WHITE % $100
+	ld a, LOW(PAL_MONOCHROME_WHITE)
 	ld [hli], a
-	ld [hl], PAL_MONOCHROME_WHITE / $100
+	ld [hl], HIGH(PAL_MONOCHROME_WHITE)
 endc
 	pop af
 	ldh [rSVBK], a

@@ -5,8 +5,8 @@ PushOAM::
 	and a
 	ret nz
 ForcePushOAM:
-	lb bc, 40 + 1, rDMA & $ff
-	ld a, wVirtualOAM >> 8
+	lb bc, 40 + 1, LOW(rDMA)
+	ld a, HIGH(wVirtualOAM)
 	jp hPushOAM
 
 DMATransfer::

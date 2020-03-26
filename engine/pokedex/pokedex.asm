@@ -2287,14 +2287,14 @@ _Pokedex_JustBlackOutBG:
 	ld hl, wUnknBGPals
 if !DEF(MONOCHROME)
 	ld bc, 8 palettes
-	xor a
+	xor a ; RGB 00,00,00
 	rst ByteFill
 else
 	ld b, (8 palettes) / 2
 .mono_loop
-	ld a, PAL_MONOCHROME_BLACK % $100
+	ld a, LOW(PAL_MONOCHROME_BLACK)
 	ld [hli], a
-	ld a, PAL_MONOCHROME_BLACK / $100
+	ld a, HIGH(PAL_MONOCHROME_BLACK)
 	ld [hli], a
 	dec b
 	jr nz, .mono_loop

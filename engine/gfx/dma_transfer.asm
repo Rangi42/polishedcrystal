@@ -162,7 +162,7 @@ DoHBlankHDMATransfer
 	cp b ; is the end LY greater than the max LY
 	call nc, DI_DelayFrame ; if so, delay a frame to reset the LY
 
-	lb bc, %11, rSTAT & $ff
+	lb bc, %11, LOW(rSTAT)
 .noHBlankWait
 	ld a, [c]
 	and b

@@ -185,10 +185,10 @@ Gen2ToGen2LinkComms:
 	push bc
 	ld bc, MAIL_MSG_LENGTH + 1
 	rst CopyBytes
-	ld a, (MAIL_STRUCT_LENGTH - (MAIL_MSG_LENGTH + 1)) % $100
+	ld a, LOW(MAIL_STRUCT_LENGTH - (MAIL_MSG_LENGTH + 1))
 	add e
 	ld e, a
-	ld a, (MAIL_STRUCT_LENGTH - (MAIL_MSG_LENGTH + 1)) / $100
+	ld a, HIGH(MAIL_STRUCT_LENGTH - (MAIL_MSG_LENGTH + 1))
 	adc d
 	ld d, a
 	pop bc
@@ -198,10 +198,10 @@ Gen2ToGen2LinkComms:
 	ld b, PARTY_LENGTH
 .copy_author_loop
 	push bc
-	ld a, (MAIL_MSG_LENGTH + 1) % $100
+	ld a, LOW(MAIL_MSG_LENGTH + 1)
 	add e
 	ld e, a
-	ld a, (MAIL_MSG_LENGTH + 1) / $100
+	ld a, HIGH(MAIL_MSG_LENGTH + 1)
 	adc d
 	ld d, a
 	ld bc, MAIL_STRUCT_LENGTH - (MAIL_MSG_LENGTH + 1)

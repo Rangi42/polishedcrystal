@@ -533,10 +533,10 @@ AnimateWaterTile:
 	add a
 	add a
 
-	add WaterTileFrames % $100
+	add LOW(WaterTileFrames)
 	ld l, a
 	ld a, 0 ; not xor a; preserve carry flag
-	adc WaterTileFrames / $100
+	adc HIGH(WaterTileFrames)
 	ld h, a
 
 ; wStack now points to the start of the tile for this frame.
@@ -564,10 +564,10 @@ AnimateRainPuddleTile:
 	and %111
 	swap a
 
-	add RainPuddleTileFrames % $100
+	add LOW(RainPuddleTileFrames)
 	ld l, a
 	ld a, 0 ; not xor a; preserve carry flag
-	adc RainPuddleTileFrames / $100
+	adc HIGH(RainPuddleTileFrames)
 	ld h, a
 
 ; Stack now points to the start of the tile for this frame.
@@ -595,10 +595,10 @@ AnimateRainWaterTile:
 	and %111
 	swap a
 
-	add RainWaterTileFrames % $100
+	add LOW(RainWaterTileFrames)
 	ld l, a
 	ld a, 0 ; not xor a; preserve carry flag
-	adc RainWaterTileFrames / $100
+	adc HIGH(RainWaterTileFrames)
 	ld h, a
 
 ; Stack now points to the start of the tile for this frame.
@@ -630,10 +630,10 @@ AnimateKantoWaterTile:
 	add a
 	add a
 
-	add KantoWaterTileFrames % $100
+	add LOW(KantoWaterTileFrames)
 	ld l, a
 	ld a, 0 ; not xor a; preserve carry flag
-	adc KantoWaterTileFrames / $100
+	adc HIGH(KantoWaterTileFrames)
 	ld h, a
 
 ; wStack now points to the start of the tile for this frame.
@@ -705,10 +705,10 @@ ForestTreeLeftAnimation:
 	add a
 	add a
 	add a
-	add ForestTreeLeftFrames % $100
+	add LOW(ForestTreeLeftFrames)
 	ld l, a
 	ld a, 0 ; not xor a; preserve carry flag
-	adc ForestTreeLeftFrames / $100
+	adc HIGH(ForestTreeLeftFrames)
 	ld h, a
 	ld sp, hl
 	ld hl, vTiles2 tile $50
@@ -728,10 +728,10 @@ ForestTreeRightAnimation:
 	add a
 	add a
 	add a
-	add ForestTreeLeftFrames % $100
+	add LOW(ForestTreeLeftFrames)
 	ld l, a
 	ld a, 0 ; not xor a; preserve carry flag
-	adc ForestTreeLeftFrames / $100
+	adc HIGH(ForestTreeLeftFrames)
 	ld h, a
 	push bc
 	ld bc, ForestTreeRightFrames - ForestTreeLeftFrames
@@ -756,10 +756,10 @@ ForestTreeLeftAnimation2:
 	add a
 	add a
 	add a
-	add ForestTreeLeftFrames % $100
+	add LOW(ForestTreeLeftFrames)
 	ld l, a
 	ld a, 0 ; not xor a; preserve carry flag
-	adc ForestTreeLeftFrames / $100
+	adc HIGH(ForestTreeLeftFrames)
 	ld h, a
 	ld sp, hl
 	ld hl, vTiles2 tile $50
@@ -780,10 +780,10 @@ ForestTreeRightAnimation2:
 	add a
 	add a
 	add a
-	add ForestTreeLeftFrames % $100
+	add LOW(ForestTreeLeftFrames)
 	ld l, a
 	ld a, 0 ; not xor a; preserve carry flag
-	adc ForestTreeLeftFrames / $100
+	adc HIGH(ForestTreeLeftFrames)
 	ld h, a
 	push bc
 	ld bc, ForestTreeRightFrames - ForestTreeLeftFrames
@@ -814,10 +814,10 @@ ForestTree2LeftAnimation:
 	add a
 	add a
 	add a
-	add ForestTree2LeftFrames % $100
+	add LOW(ForestTree2LeftFrames)
 	ld l, a
 	ld a, 0 ; not xor a; preserve carry flag
-	adc ForestTree2LeftFrames / $100
+	adc HIGH(ForestTree2LeftFrames)
 	ld h, a
 	ld sp, hl
 	ld hl, vTiles2 tile $5c
@@ -837,10 +837,10 @@ ForestTree2RightAnimation:
 	add a
 	add a
 	add a
-	add ForestTree2LeftFrames % $100
+	add LOW(ForestTree2LeftFrames)
 	ld l, a
 	ld a, 0 ; not xor a; preserve carry flag
-	adc ForestTree2LeftFrames / $100
+	adc HIGH(ForestTree2LeftFrames)
 	ld h, a
 	push bc
 	ld bc, ForestTree2RightFrames - ForestTree2LeftFrames
@@ -865,10 +865,10 @@ ForestTree2LeftAnimation2:
 	add a
 	add a
 	add a
-	add ForestTree2LeftFrames % $100
+	add LOW(ForestTree2LeftFrames)
 	ld l, a
 	ld a, 0 ; not xor a; preserve carry flag
-	adc ForestTree2LeftFrames / $100
+	adc HIGH(ForestTree2LeftFrames)
 	ld h, a
 	ld sp, hl
 	ld hl, vTiles2 tile $5c
@@ -889,10 +889,10 @@ ForestTree2RightAnimation2:
 	add a
 	add a
 	add a
-	add ForestTree2LeftFrames % $100
+	add LOW(ForestTree2LeftFrames)
 	ld l, a
 	ld a, 0 ; not xor a; preserve carry flag
-	adc ForestTree2LeftFrames / $100
+	adc HIGH(ForestTree2LeftFrames)
 	ld h, a
 	push bc
 	ld bc, ForestTree2RightFrames - ForestTree2LeftFrames

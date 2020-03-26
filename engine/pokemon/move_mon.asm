@@ -1701,18 +1701,18 @@ CalcPkmnStatC:
 
 .no_overflow_3
 	ldh a, [hQuotient + 1]
-	cp (1000 / $100) + 1
+	cp HIGH(1000) + 1
 	jr nc, .max_stat
-	cp 1000 / $100
+	cp HIGH(1000)
 	jr c, .stat_value_okay
 	ldh a, [hQuotient + 2]
-	cp 1000 % $100
+	cp LOW(1000)
 	jr c, .stat_value_okay
 
 .max_stat
-	ld a, 999 / $100
+	ld a, HIGH(999)
 	ldh [hMultiplicand + 1], a
-	ld a, 999 % $100
+	ld a, LOW(999)
 	ldh [hMultiplicand + 2], a
 
 .stat_value_okay
@@ -1905,9 +1905,9 @@ GivePoke::
 	ld hl, wPartyMon1ID
 	ld bc, PARTYMON_STRUCT_LENGTH
 	rst AddNTimes
-	ld a, 01001 / $100 ; ld a, $3
+	ld a, HIGH(01001)
 	ld [hli], a
-	ld [hl], 01001 % $100 ; ld a, $e9
+	ld [hl], LOW(01001)
 	pop bc
 	ld a, POKE_BALL
 	ld c, a

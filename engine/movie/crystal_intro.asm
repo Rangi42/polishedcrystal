@@ -3,9 +3,9 @@ Copyright_GFPresents:
 	call PlayMusic
 	call ClearBGPalettes
 	call ClearTileMap
-	ld a, vBGMap0 / $100
+	ld a, HIGH(vBGMap0)
 	ldh [hBGMapAddress + 1], a
-	xor a
+	xor a ; LOW(vBGMap0)
 	ldh [hBGMapAddress], a
 	ldh [hJoyDown], a
 	ldh [hSCX], a
@@ -1518,14 +1518,14 @@ CrystalIntro_UnownFade:
 	ld hl, wBGPals
 if !DEF(MONOCHROME)
 	ld bc, 8 palettes
-	xor a
+	xor a ; RGB 00,00,00
 	rst ByteFill
 else
 	ld b, (8 palettes) / 2
 .mono_loop
-	ld a, PAL_MONOCHROME_BLACK % $100
+	ld a, LOW(PAL_MONOCHROME_BLACK)
 	ld [hli], a
-	ld a, PAL_MONOCHROME_BLACK / $100
+	ld a, HIGH(PAL_MONOCHROME_BLACK)
 	ld [hli], a
 	dec b
 	jr nz, .mono_loop
@@ -1903,9 +1903,9 @@ Intro_RustleGrass:
 	ldh [hRequestedVTileSource], a
 	ld a, [hli]
 	ldh [hRequestedVTileSource + 1], a
-	ld a, (vTiles2 tile $09) % $100
+	ld a, LOW(vTiles2 tile $09)
 	ldh [hRequestedVTileDest], a
-	ld a, (vTiles2 tile $09) / $100
+	ld a, HIGH(vTiles2 tile $09)
 	ldh [hRequestedVTileDest + 1], a
 	ld a, 4
 	ldh [hRequested2bpp], a
@@ -1932,14 +1932,14 @@ Intro_ClearBGPals:
 	ld hl, wBGPals
 if !DEF(MONOCHROME)
 	ld bc, 16 palettes
-	xor a
+	xor a ; RGB 00,00,00
 	rst ByteFill
 else
 	ld b, (16 palettes) / 2
 .mono_loop
-	ld a, PAL_MONOCHROME_BLACK % $100
+	ld a, LOW(PAL_MONOCHROME_BLACK)
 	ld [hli], a
-	ld a, PAL_MONOCHROME_BLACK / $100
+	ld a, HIGH(PAL_MONOCHROME_BLACK)
 	ld [hli], a
 	dec b
 	jr nz, .mono_loop

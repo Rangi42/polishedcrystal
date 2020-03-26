@@ -225,16 +225,16 @@ endr
 	loadvar wPartyMon1DVs+1, $ff
 	loadvar wPartyMon1DVs+2, $ff
 	loadvar wPartyMon1Personality, ABILITY_2 | MODEST
-	loadvar wPartyMon1Stats+0, 999 / $100
-	loadvar wPartyMon1Stats+1, 999 % $100
-	loadvar wPartyMon1Stats+2, 999 / $100
-	loadvar wPartyMon1Stats+3, 999 % $100
-	loadvar wPartyMon1Stats+4, 999 / $100
-	loadvar wPartyMon1Stats+5, 999 % $100
-	loadvar wPartyMon1Stats+6, 999 / $100
-	loadvar wPartyMon1Stats+7, 999 % $100
-	loadvar wPartyMon1Stats+8, 999 / $100
-	loadvar wPartyMon1Stats+9, 999 % $100
+	loadvar wPartyMon1Stats+0, HIGH(999)
+	loadvar wPartyMon1Stats+1, LOW(999)
+	loadvar wPartyMon1Stats+2, HIGH(999)
+	loadvar wPartyMon1Stats+3, LOW(999)
+	loadvar wPartyMon1Stats+4, HIGH(999)
+	loadvar wPartyMon1Stats+5, LOW(999)
+	loadvar wPartyMon1Stats+6, HIGH(999)
+	loadvar wPartyMon1Stats+7, LOW(999)
+	loadvar wPartyMon1Stats+8, HIGH(999)
+	loadvar wPartyMon1Stats+9, LOW(999)
 	; hm slaves
 	givepoke MEW, 100, LEFTOVERS
 	givepoke MEW, 100, LEFTOVERS

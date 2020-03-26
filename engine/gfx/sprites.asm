@@ -8,7 +8,7 @@ PlaySpriteAnimations:
 	push bc
 	push af
 
-	ld a, wVirtualOAM % $100
+	ld a, LOW(wVirtualOAM)
 	ld [wCurrSpriteOAMAddr], a
 	call DoNextFrameForAllSprites
 
@@ -40,11 +40,11 @@ DoNextFrameForAllSprites:
 
 	ld a, [wCurrSpriteOAMAddr]
 	ld l, a
-	ld h, wVirtualOAM / $100
+	ld h, HIGH(wVirtualOAM)
 
 .loop2 ; Clear (wVirtualOAM + [wCurrSpriteOAMAddr] --> wVirtualOAMEnd)
 	ld a, l
-	cp wVirtualOAMEnd % $100
+	cp LOW(wVirtualOAMEnd)
 	ret nc
 	xor a
 	ld [hli], a
@@ -76,11 +76,11 @@ DoNextFrameForFirst16Sprites:
 
 	ld a, [wCurrSpriteOAMAddr]
 	ld l, a
-	ld h, (wVirtualOAM + $40) / $100
+	ld h, HIGH(wVirtualOAM + 16 * 4)
 
-.loop2 ; Clear (wVirtualOAM + [wCurrSpriteOAMAddr] --> wVirtualOAM + $40)
+.loop2 ; Clear (wVirtualOAM + [wCurrSpriteOAMAddr] --> wVirtualOAM + 16 * 4)
 	ld a, l
-	cp (wVirtualOAM + 16 * 4) % $100
+	cp LOW(wVirtualOAM + 16 * 4)
 	ret nc
 	xor a
 	ld [hli], a
@@ -221,7 +221,7 @@ UpdateAnimFrame:
 	push bc
 	ld a, [wCurrSpriteOAMAddr]
 	ld e, a
-	ld d, wVirtualOAM / $100
+	ld d, HIGH(wVirtualOAM)
 	ld a, [hli]
 	ld c, a ; number of objects
 .loop
@@ -274,7 +274,7 @@ UpdateAnimFrame:
 	inc de
 	ld a, e
 	ld [wCurrSpriteOAMAddr], a
-	cp wVirtualOAMEnd % $100
+	cp LOW(wVirtualOAMEnd)
 	jr nc, .reached_the_end
 	dec c
 	jr nz, .loop

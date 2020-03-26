@@ -123,7 +123,7 @@ function_macro: MACRO
 	ld e, a
 	ld a, d
 	and $f
-	add (wDecompressedMetatiles >> 8)
+	add HIGH(wDecompressedMetatiles)
 	ld d, a
 
 	rept 3
@@ -158,7 +158,7 @@ function_macro: MACRO
 	ld e, a
 	ld a, d
 	and $f
-	add (wDecompressedMetatiles >> 8)
+	add HIGH(wDecompressedMetatiles)
 	ld d, a
 	; copy the 4x4 metatile
 
@@ -193,7 +193,7 @@ function_macro: MACRO
 	ld e, a
 	ld a, d
 	and $f
-	add (wDecompressedMetatiles >> 8)
+	add HIGH(wDecompressedMetatiles)
 	ld d, a
 	; copy the 4x4 metatile
 
@@ -228,7 +228,7 @@ function_macro: MACRO
 	ld e, a
 	ld a, d
 	and $f
-	add (wDecompressedMetatiles >> 8)
+	add HIGH(wDecompressedMetatiles)
 	ld d, a
 	; copy the 4x4 metatile
 
@@ -263,7 +263,7 @@ function_macro: MACRO
 	ld e, a
 	ld a, d
 	and $f
-	add (wDecompressedMetatiles >> 8)
+	add HIGH(wDecompressedMetatiles)
 	ld d, a
 	; copy the 4x4 metatile
 
@@ -299,7 +299,7 @@ function_macro: MACRO
 	ld e, a
 	ld a, d
 	and $f
-	add (wDecompressedMetatiles >> 8)
+	add HIGH(wDecompressedMetatiles)
 	ld d, a
 
 	rept 3
@@ -348,7 +348,7 @@ function_macro: MACRO
 	ld e, a
 	ld a, d
 	and $f
-	add (wDecompressedMetatiles >> 8)
+	add HIGH(wDecompressedMetatiles)
 	ld d, a
 	; copy the 4x4 metatile
 
@@ -382,7 +382,7 @@ function_macro: MACRO
 	ld e, a
 	ld a, d
 	and $f
-	add (wDecompressedMetatiles >> 8)
+	add HIGH(wDecompressedMetatiles)
 	ld d, a
 	; copy the 4x4 metatile
 
@@ -415,7 +415,7 @@ function_macro: MACRO
 	ld e, a
 	ld a, d
 	and $f
-	add (wDecompressedMetatiles >> 8)
+	add HIGH(wDecompressedMetatiles)
 	ld d, a
 	; copy the 4x4 metatile
 
@@ -448,7 +448,7 @@ function_macro: MACRO
 	ld e, a
 	ld a, d
 	and $f
-	add (wDecompressedMetatiles >> 8)
+	add HIGH(wDecompressedMetatiles)
 	ld d, a
 	; copy the 4x4 metatile
 
@@ -481,7 +481,7 @@ function_macro: MACRO
 	ld e, a
 	ld a, d
 	and $f
-	add (wDecompressedMetatiles >> 8)
+	add HIGH(wDecompressedMetatiles)
 	ld d, a
 	; copy the 4x4 metatile
 
@@ -524,7 +524,7 @@ function_macro: MACRO
 	ld e, a
 	ld a, d
 	and $f
-	add (wDecompressedMetatiles >> 8)
+	add HIGH(wDecompressedMetatiles)
 	ld d, a
 	; copy the 4x4 metatile
 
@@ -560,7 +560,7 @@ function_macro: MACRO
 	ld e, a
 	ld a, d
 	and $f
-	add (wDecompressedMetatiles >> 8)
+	add HIGH(wDecompressedMetatiles)
 	ld d, a
 	; copy the 4x4 metatile
 
@@ -595,7 +595,7 @@ function_macro: MACRO
 	ld e, a
 	ld a, d
 	and $f
-	add (wDecompressedMetatiles >> 8)
+	add HIGH(wDecompressedMetatiles)
 	ld d, a
 	; copy the 4x4 metatile
 
@@ -630,7 +630,7 @@ function_macro: MACRO
 	ld e, a
 	ld a, d
 	and $f
-	add (wDecompressedMetatiles >> 8)
+	add HIGH(wDecompressedMetatiles)
 	ld d, a
 	; copy the 4x4 metatile
 
@@ -665,7 +665,7 @@ function_macro: MACRO
 	ld e, a
 	ld a, d
 	and $f
-	add (wDecompressedMetatiles >> 8)
+	add HIGH(wDecompressedMetatiles)
 	ld d, a
 	; copy the 4x4 metatile
 
@@ -705,7 +705,7 @@ function_macro: MACRO
 	ld e, a
 	ld a, d
 	and $f
-	add (wDecompressedMetatiles >> 8)
+	add HIGH(wDecompressedMetatiles)
 	ld d, a
 	; copy the 4x4 metatile
 
@@ -741,7 +741,7 @@ function_macro: MACRO
 	ld e, a
 	ld a, d
 	and $f
-	add (wDecompressedMetatiles >> 8)
+	add HIGH(wDecompressedMetatiles)
 	ld d, a
 	; copy the 4x4 metatile
 
@@ -776,7 +776,7 @@ function_macro: MACRO
 	ld e, a
 	ld a, d
 	and $f
-	add (wDecompressedMetatiles >> 8)
+	add HIGH(wDecompressedMetatiles)
 	ld d, a
 	; copy the 4x4 metatile
 
@@ -811,7 +811,7 @@ function_macro: MACRO
 	ld e, a
 	ld a, d
 	and $f
-	add (wDecompressedMetatiles >> 8)
+	add HIGH(wDecompressedMetatiles)
 	ld d, a
 	; copy the 4x4 metatile
 
@@ -846,7 +846,7 @@ function_macro: MACRO
 	ld e, a
 	ld a, d
 	and $f
-	add (wDecompressedMetatiles >> 8)
+	add HIGH(wDecompressedMetatiles)
 	ld d, a
 	; copy the 4x4 metatile
 
@@ -916,7 +916,7 @@ function_macro: MACRO
 	ld e, a
 	ld a, d
 	and $f
-	add (wDecompressedMetatiles >> 8)
+	add HIGH(wDecompressedMetatiles)
 	ld d, a
 
 	ld a, [de]

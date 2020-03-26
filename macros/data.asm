@@ -51,7 +51,7 @@ ENDM
 dx: MACRO
 x = 8 * ((\1) - 1)
 	rept \1
-	db ((\2) >> x) & $ff
+	db LOW((\2) >> x)
 x = x + -8
 	endr
 ENDM
@@ -101,7 +101,7 @@ endc
 ENDM
 
 dsprite: MACRO
-	db (\1 * 8) % $100 + \2, (\3 * 8) % $100 + \4, \5, \6
+	db LOW(\1 * 8) + \2, LOW(\3 * 8) + \4, \5, \6
 ENDM
 
 bcd: MACRO

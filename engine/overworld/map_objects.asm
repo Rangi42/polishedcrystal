@@ -2682,7 +2682,7 @@ _UpdateSprites::
 .fill
 	ld a, [wVramState]
 	bit 1, a
-	ld b, wVirtualOAMEnd % $100
+	ld b, LOW(wVirtualOAMEnd)
 	jr z, .ok
 	ld b, 28 * 4
 .ok
@@ -2690,7 +2690,7 @@ _UpdateSprites::
 	cp b
 	ret nc
 	ld l, a
-	ld h, wVirtualOAM / $100
+	ld h, HIGH(wVirtualOAM)
 	ld de, 4
 	ld a, b
 	ld c, SCREEN_HEIGHT_PX + 16
@@ -2896,11 +2896,11 @@ PRIORITY_HIGH EQU $30
 	ld l, a
 	ldh a, [hUsedSpriteIndex]
 	ld c, a
-	ld b, wVirtualOAM / $100
+	ld b, HIGH(wVirtualOAM)
 	ld a, [hli]
 	ldh [hUsedSpriteTile], a
 	add c
-	cp wVirtualOAMEnd % $100
+	cp LOW(wVirtualOAMEnd)
 	jr nc, .full
 .addsprite
 	ldh a, [hCurSpriteYPixel]

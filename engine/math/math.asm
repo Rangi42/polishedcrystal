@@ -58,7 +58,7 @@ _Divide::
 
 	ldh a, [hDivisor]
 	ld d, a
-	ld c, hDividend % $100
+	ld c, LOW(hDividend)
 	ld e, 0
 	ld l, e
 .loop
@@ -104,7 +104,7 @@ _Divide::
 	ld a, e
 	ldh [hRemainder], a
 	ld a, c
-	sub hDividend % $100
+	sub LOW(hDividend)
 	ld b, a
 	ld a, c
 	add hMathBuffer - hDividend - 1

@@ -11,10 +11,10 @@ GiveOddEgg:
 	ld a, [hli]
 	ld d, a
 	; Break on $ffff.
-	cp $ffff / $100
+	cp HIGH($ffff)
 	jr nz, .not_done
 	ld a, e
-	cp $ffff % $100
+	cp LOW($ffff)
 	jr z, .done
 .not_done
 

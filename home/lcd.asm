@@ -11,7 +11,7 @@ LCD::
 	push bc
 	ldh a, [rLY]
 	ld c, a
-	ld b, wLYOverrides >> 8
+	ld b, HIGH(wLYOverrides)
 	ld a, [bc]
 	ld b, a
 	ldh a, [hLCDCPointer]
@@ -49,16 +49,16 @@ LCD::
 	add hl, hl
 	add hl, hl
 
-if 0 ; if wMPNotes % $100
+if 0 ; if LOW(wMPNotes)
 	ld a, l
-	add wMPNotes % $100
+	add LOW(wMPNotes)
 	ld l, a
 	ld a, h
-	adc wMPNotes / $100
+	adc HIGH(wMPNotes)
 	ld h, a
 else
 	ld a, h
-	add wMPNotes / $100
+	add HIGH(wMPNotes)
 	ld h, a
 endc
 

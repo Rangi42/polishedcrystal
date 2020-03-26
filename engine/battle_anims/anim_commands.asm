@@ -1421,10 +1421,10 @@ BattleAnim_UpdateOAM_All:
 	jr nz, .loop
 	ld a, [wBattleAnimOAMPointerLo]
 	ld l, a
-	ld h, wVirtualOAM / $100
+	ld h, HIGH(wVirtualOAM)
 .loop2
 	ld a, l
-	cp wVirtualOAMEnd % $100
+	cp LOW(wVirtualOAMEnd)
 	ret nc
 	xor a
 	ld [hli], a

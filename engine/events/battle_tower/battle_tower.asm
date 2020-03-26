@@ -111,9 +111,9 @@ ReadBTTrainerParty:
 	ld hl, wBT_OTTempTrainerClass
 	ld a, [hli]
 	ld [wOtherTrainerClass], a
-	ld a, wOTPartyMonNicknames % $100
+	ld a, LOW(wOTPartyMonNicknames)
 	ld [wBGMapBuffer], a
-	ld a, wOTPartyMonNicknames / $100
+	ld a, HIGH(wOTPartyMonNicknames)
 	ld [wBGMapBuffer + 1], a
 
 	; Copy Pkmn into Memory from the address in hl

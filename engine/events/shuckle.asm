@@ -26,9 +26,9 @@ SpecialGiveShuckie:
 ; OT ID.
 	ld hl, wPartyMon1ID
 	call _GetLastPartyMonAttribute
-	ld a, KIRK_SHUCKIE_ID / $100
+	ld a, HIGH(KIRK_SHUCKIE_ID)
 	ld [hli], a
-	ld [hl], KIRK_SHUCKIE_ID % $100
+	ld [hl], LOW(KIRK_SHUCKIE_ID)
 
 ; Nickname.
 	ld a, [wPartyCount]
@@ -80,10 +80,10 @@ SpecialReturnShuckie:
 
 ; OT ID
 	ld a, [hli]
-	cp KIRK_SHUCKIE_ID / $100
+	cp HIGH(KIRK_SHUCKIE_ID)
 	jr nz, .DontReturn
 	ld a, [hl]
-	cp KIRK_SHUCKIE_ID % $100
+	cp LOW(KIRK_SHUCKIE_ID)
 	jr nz, .DontReturn
 
 ; OT

@@ -21,7 +21,7 @@ ForceUpdateCGBPals::
 ; copy 8 pals to bgpd
 	ld a, %10000000 ; auto increment, index 0
 	ldh [rBGPI], a
-	lb bc, 4, rBGPD % $100 ; 4 = NUM_PALS / 2
+	lb bc, 4, LOW(rBGPD) ; 4 = NUM_PALS / 2
 .bgp
 rept 2 palettes
 	ld a, [hli]
@@ -36,7 +36,7 @@ endr
 ; copy 8 pals to obpd
 	ld a, %10000000 ; auto increment, index 0
 	ldh [rOBPI], a
-	lb bc, 4, rOBPD % $100 ; 4 = NUM_PALS / 2
+	lb bc, 4, LOW(rOBPD) ; 4 = NUM_PALS / 2
 .obp
 rept 2 palettes
 	ld a, [hli]

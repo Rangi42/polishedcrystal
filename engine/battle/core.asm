@@ -2213,11 +2213,11 @@ WinTrainerBattle:
 .CheckMaxedOutMomMoney:
 	ld hl, wMomsMoney + 2
 	ld a, [hld]
-	cp 9999999 % $100
+	cp LOW(9999999)
 	ld a, [hld]
-	sbc 9999999 / $100 % $100
+	sbc LOW(9999999 / $100)
 	ld a, [hl]
-	sbc 9999999 / $10000 % $100
+	sbc LOW(9999999 / $10000)
 	ret
 
 AddBattleMoneyToAccount:
@@ -2234,17 +2234,17 @@ AddBattleMoneyToAccount:
 	jr nz, .loop
 	pop hl
 	ld a, [hld]
-	cp 9999999 % $100
+	cp LOW(9999999)
 	ld a, [hld]
-	sbc 9999999 / $100 % $100
+	sbc LOW(9999999 / $100)
 	ld a, [hl]
-	sbc 9999999 / $10000 % $100
+	sbc LOW(9999999 / $10000)
 	ret c
-	ld [hl], 9999999 / $10000 % $100
+	ld [hl], LOW(9999999 / $10000)
 	inc hl
-	ld [hl], 9999999 / $100 % $100
+	ld [hl], LOW(9999999 / $100)
 	inc hl
-	ld [hl], 9999999 % $100
+	ld [hl], LOW(9999999)
 	ret
 
 PlayVictoryMusic:
@@ -5651,11 +5651,11 @@ endc
 .LakeOfRageMagikarp
 	; 40% chance of not flooring
 	call Random
-	cp $64 ; / $100
+	cp 40 percent - 2
 	jr c, .Happiness
 	; Floor at length 1024
 	ld a, [wMagikarpLengthMmHi]
-	cp 1024 >> 8
+	cp HIGH(1024) ; should be "cp 3", since 1024 mm = 3'4", but HIGH(1024) = 4
 	jp c, LoadEnemyMon
 
 .Gyarados:
@@ -8038,10 +8038,10 @@ AddLastBattleToLinkRecord:
 .CheckOverflow:
 	dec hl
 	ld a, [hli]
-	cp 9999 / $100
+	cp HIGH(9999)
 	ret c
 	ld a, [hl]
-	cp 9999 % $100
+	cp LOW(9999)
 	ret
 
 .FindOpponentAndAppendRecord:

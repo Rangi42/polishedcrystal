@@ -2080,9 +2080,9 @@ SetNoteDuration:
 	add hl, bc
 	ld a, [hl]
 	; multiply NoteLength by delay units
-	ld l, 0; just multiply
+	ld l, 0 ; just multiply
 	call .Multiply
-	ld a, l ; % $100
+	ld a, l
 	; store Tempo in de
 	ld hl, wChannel1Tempo - wChannel1
 	add hl, bc

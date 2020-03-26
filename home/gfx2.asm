@@ -15,9 +15,9 @@ HBlankCopy2bpp::
 	ld h, d ; exchange hl and de
 	ld l, e
 ; vram to vram copy check:
-	cp vTiles0 / $100 ; is source in RAM?
+	cp HIGH(vTiles0) ; is source in RAM?
 	jr c, .innerLoop
-	cp SRAM_Begin / $100 ; is source past VRAM
+	cp HIGH(SRAM_Begin) ; is source past VRAM
 	jr nc, .innerLoop
 	jp VRAMToVRAMCopy
 .outerLoop

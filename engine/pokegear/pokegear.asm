@@ -42,10 +42,10 @@ PokeGear:
 	pop af
 	ld [wOptions1], a
 	call ClearBGPalettes
-	xor a
+	xor a ; LOW(vBGMap0)
 	ldh [hBGMapAddress], a
 	ld [wInPokegear], a
-	ld a, vBGMap0 / $100
+	ld a, HIGH(vBGMap0)
 	ldh [hBGMapAddress + 1], a
 	ld a, $90
 	ldh [hWY], a
@@ -224,18 +224,18 @@ InitPokegearTilemap:
 	ld a, [wcf65]
 	and a
 	jr nz, .transition
-	xor a
+	xor a ; LOW(vBGMap0)
 	ldh [hBGMapAddress], a
-	ld a, vBGMap0 / $100
+	ld a, HIGH(vBGMap0)
 	ldh [hBGMapAddress + 1], a
 	call .UpdateBGMap
 	ld a, $90
 	jr .finish
 
 .transition
-	xor a
+	xor a ; LOW(vBGMap1)
 	ldh [hBGMapAddress], a
-	ld a, vBGMap1 / $100
+	ld a, HIGH(vBGMap1)
 	ldh [hBGMapAddress + 1], a
 	call .UpdateBGMap
 	xor a
@@ -1527,9 +1527,9 @@ LoadRadioStation:
 	ld hl, wPokegearRadioChannelBank
 	ld a, BANK(PlayRadioShow)
 	ld [hli], a
-	ld a, PlayRadioShow % $100
+	ld a, LOW(PlayRadioShow)
 	ld [hli], a
-	ld a, PlayRadioShow / $100
+	ld a, HIGH(PlayRadioShow)
 	ld [hli], a
 	ret
 
@@ -1942,9 +1942,9 @@ _FlyMap:
 	call ClearBGPalettes
 	ld a, $90
 	ldh [hWY], a
-	xor a
+	xor a ; LOW(vBGMap0)
 	ldh [hBGMapAddress], a
-	ld a, vBGMap0 / $100
+	ld a, HIGH(vBGMap0)
 	ldh [hBGMapAddress + 1], a
 	ld a, [wTownMapPlayerIconLandmark]
 	ld e, a

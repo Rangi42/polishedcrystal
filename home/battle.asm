@@ -1000,14 +1000,14 @@ PushLYOverrides::
 	and a
 	ret z
 
-	ld a, wLYOverridesBackup % $100
+	ld a, LOW(wLYOverridesBackup)
 	ldh [hRequestedVTileSource], a
-	ld a, wLYOverridesBackup / $100
+	ld a, HIGH(wLYOverridesBackup)
 	ldh [hRequestedVTileSource + 1], a
 
-	ld a, wLYOverrides % $100
+	ld a, LOW(wLYOverrides)
 	ldh [hRequestedVTileDest], a
-	ld a, wLYOverrides / $100
+	ld a, HIGH(wLYOverrides)
 	ldh [hRequestedVTileDest + 1], a
 
 	ld a, (wLYOverridesEnd - wLYOverrides) / 16

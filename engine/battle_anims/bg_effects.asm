@@ -910,7 +910,7 @@ BattleBGEffect_Whirlpool:
 .zero
 	call BattleBGEffects_IncrementJumptable
 	call BattleBGEffects_ClearLYOverrides
-	ld a, rSCY & $ff
+	ld a, LOW(rSCY)
 	ldh [hLCDCPointer], a
 	xor a
 	ldh [hLYOverrideStart], a
@@ -1112,7 +1112,7 @@ BattleBGEffect_DoubleTeam:
 	cpl
 	inc a
 	ld d, a
-	ld h, wLYOverridesBackup / $100
+	ld h, HIGH(wLYOverridesBackup)
 	ldh a, [hLYOverrideStart]
 	ld l, a
 	ldh a, [hLYOverrideEnd]
@@ -1432,7 +1432,7 @@ Functionc88a5:
 	ldh a, [hLYOverrideEnd]
 	sub d
 	ld d, a
-	ld h, wLYOverridesBackup / $100
+	ld h, HIGH(wLYOverridesBackup)
 	ldh a, [hSCY]
 	or a
 	jr nz, .skip1
@@ -1760,7 +1760,7 @@ BattleBGEffect_2a:
 	ldh a, [hLYOverrideEnd]
 	sub l
 	srl a
-	ld h, wLYOverridesBackup / $100
+	ld h, HIGH(wLYOverridesBackup)
 .loop2
 	ld [hl], e
 	inc hl
@@ -2547,7 +2547,7 @@ BattleBGEffect_WavyScreenFX:
 
 BGEffect_FillLYOverridesBackup:
 	push af
-	ld h, wLYOverridesBackup / $100
+	ld h, HIGH(wLYOverridesBackup)
 	ldh a, [hLYOverrideStart]
 	ld l, a
 	ldh a, [hLYOverrideEnd]
@@ -2570,7 +2570,7 @@ BGEffect_DisplaceLYOverridesBackup:
 	sub l
 	sub e
 	ld d, a
-	ld h, wLYOverridesBackup / $100
+	ld h, HIGH(wLYOverridesBackup)
 	ldh a, [hLYOverrideStart]
 	ld l, a
 	ld a, $90

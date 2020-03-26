@@ -1081,14 +1081,14 @@ CardFlip_CheckWinCondition:
 
 .IsCoinCaseFull:
 	ld a, [wCoins]
-	cp 50000 / $100
+	cp HIGH(50000)
 	jr c, .less
 	jr z, .check_low
 	jr .more
 
 .check_low
 	ld a, [wCoins + 1]
-	cp 50000 % $100
+	cp LOW(50000)
 	jr c, .less
 
 .more

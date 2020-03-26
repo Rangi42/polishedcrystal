@@ -165,9 +165,9 @@ Init::
 
 	farcall InitCGBPals
 
-	ld a, vBGMap1 / $100
+	ld a, HIGH(vBGMap1)
 	ldh [hBGMapAddress + 1], a
-	xor a ; vBGMap1 % $100
+	xor a ; LOW(vBGMap1)
 	ldh [hBGMapAddress], a
 
 	farcall StartClock

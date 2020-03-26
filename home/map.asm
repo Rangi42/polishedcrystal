@@ -1071,10 +1071,10 @@ ScrollMapUp::
 	ld l, a
 	ld bc, $0200
 	add hl, bc
-; cap d at vBGMap1 / $100
+; cap d at HIGH(vBGMap1)
 	ld a, h
 	and %00000011
-	or vBGMap0 / $100
+	or HIGH(vBGMap0)
 	ld e, l
 	ld d, a
 	call UpdateBGMapRow
@@ -1196,10 +1196,10 @@ UpdateBGMapColumn::
 	ld e, a
 	jr nc, .skip
 	inc d
-; cap d at vBGMap1 / $100
+; cap d at HIGH(vBGMap1)
 	ld a, d
 	and $3
-	or vBGMap0 / $100
+	or HIGH(vBGMap0)
 	ld d, a
 
 .skip

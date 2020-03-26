@@ -701,7 +701,7 @@ EggHatch_AnimationSequence:
 	call PlayMusic
 	call EnableLCD
 	hlcoord 7, 4
-	lb bc, vBGMap0 / $100, $31 ; Egg tiles start at c
+	lb bc, HIGH(vBGMap0), $31 ; Egg tiles start at c
 	ld a, EGG
 	call Hatch_UpdateFrontpicBGMapCenter
 	ld c, 80
@@ -749,7 +749,7 @@ EggHatch_AnimationSequence:
 	call ClearSprites
 	call Hatch_InitShellFragments
 	hlcoord 6, 3
-	lb bc, vBGMap0 / $100, $00 ; Hatchling tiles start at c
+	lb bc, HIGH(vBGMap0), $00 ; Hatchling tiles start at c
 	ld a, [wJumptableIndex]
 	call Hatch_UpdateFrontpicBGMapCenter
 	call Hatch_ShellFragmentLoop

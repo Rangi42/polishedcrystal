@@ -232,17 +232,17 @@ LoadPalette_White_Col1_Col2_Black:
 	ldh [rSVBK], a
 
 if !DEF(MONOCHROME)
-	ld a, (palred 31 + palgreen 31 + palblue 31) % $100
+	ld a, LOW(palred 31 + palgreen 31 + palblue 31)
 	ld [de], a
 	inc de
-	ld a, (palred 31 + palgreen 31 + palblue 31) / $100
+	ld a, HIGH(palred 31 + palgreen 31 + palblue 31)
 	ld [de], a
 	inc de
 else
-	ld a, PAL_MONOCHROME_WHITE % $100
+	ld a, LOW(PAL_MONOCHROME_WHITE)
 	ld [de], a
 	inc de
-	ld a, PAL_MONOCHROME_WHITE / $100
+	ld a, HIGH(PAL_MONOCHROME_WHITE)
 	ld [de], a
 	inc de
 endc
@@ -262,10 +262,10 @@ rept 2
 	inc de
 endr
 else
-	ld a, PAL_MONOCHROME_BLACK % $100
+	ld a, LOW(PAL_MONOCHROME_BLACK)
 	ld [de], a
 	inc de
-	ld a, PAL_MONOCHROME_BLACK / $100
+	ld a, HIGH(PAL_MONOCHROME_BLACK)
 	ld [de], a
 	inc de
 endc
@@ -315,15 +315,15 @@ rept 4
 endr
 else
 rept 2
-	ld a, PAL_MONOCHROME_WHITE % $100
+	ld a, LOW(PAL_MONOCHROME_WHITE)
 	ld [hli], a
-	ld a, PAL_MONOCHROME_WHITE / $100
+	ld a, HIGH(PAL_MONOCHROME_WHITE)
 	ld [hli], a
 endr
 rept 2
-	ld a, PAL_MONOCHROME_BLACK % $100
+	ld a, LOW(PAL_MONOCHROME_BLACK)
 	ld [hli], a
-	ld a, PAL_MONOCHROME_BLACK / $100
+	ld a, HIGH(PAL_MONOCHROME_BLACK)
 	ld [hli], a
 endr
 endc
@@ -610,14 +610,14 @@ InitCGBPals::
 	ld c, 4 * 8
 .bgpals_loop
 if !DEF(MONOCHROME)
-	ld a, (palred 31 + palgreen 31 + palblue 31) % $100
+	ld a, LOW(palred 31 + palgreen 31 + palblue 31)
 	ldh [rBGPD], a
-	ld a, (palred 31 + palgreen 31 + palblue 31) / $100
+	ld a, HIGH(palred 31 + palgreen 31 + palblue 31)
 	ldh [rBGPD], a
 else
-	ld a, PAL_MONOCHROME_WHITE % $100
+	ld a, LOW(PAL_MONOCHROME_WHITE)
 	ldh [rBGPD], a
-	ld a, PAL_MONOCHROME_WHITE / $100
+	ld a, HIGH(PAL_MONOCHROME_WHITE)
 	ldh [rBGPD], a
 endc
 	dec c
@@ -627,14 +627,14 @@ endc
 	ld c, 4 * 8
 .obpals_loop
 if !DEF(MONOCHROME)
-	ld a, (palred 31 + palgreen 31 + palblue 31) % $100
+	ld a, LOW(palred 31 + palgreen 31 + palblue 31)
 	ldh [rOBPD], a
-	ld a, (palred 31 + palgreen 31 + palblue 31) / $100
+	ld a, HIGH(palred 31 + palgreen 31 + palblue 31)
 	ldh [rOBPD], a
 else
-	ld a, PAL_MONOCHROME_WHITE % $100
+	ld a, LOW(PAL_MONOCHROME_WHITE)
 	ldh [rOBPD], a
-	ld a, PAL_MONOCHROME_WHITE / $100
+	ld a, HIGH(PAL_MONOCHROME_WHITE)
 	ldh [rOBPD], a
 endc
 	dec c
@@ -655,14 +655,14 @@ endc
 	ld c, 4 * 16
 .loop
 if !DEF(MONOCHROME)
-	ld a, (palred 31 + palgreen 31 + palblue 31) % $100
+	ld a, LOW(palred 31 + palgreen 31 + palblue 31)
 	ld [hli], a
-	ld a, (palred 31 + palgreen 31 + palblue 31) / $100
+	ld a, HIGH(palred 31 + palgreen 31 + palblue 31)
 	ld [hli], a
 else
-	ld a, PAL_MONOCHROME_WHITE % $100
+	ld a, LOW(PAL_MONOCHROME_WHITE)
 	ld [hli], a
-	ld a, PAL_MONOCHROME_WHITE / $100
+	ld a, HIGH(PAL_MONOCHROME_WHITE)
 	ld [hli], a
 endc
 	dec c

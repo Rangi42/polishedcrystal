@@ -12,7 +12,7 @@ ENDM
 ; Syntactic sugar MACROs
 
 lb: MACRO ; r, hi, lo
-	ld \1, ((\2) & $ff) << 8 | ((\3) & $ff)
+	ld \1, LOW(\2) << 8 | LOW(\3)
 ENDM
 
 ln: MACRO ; r, hi, lo[, hi, lo]
