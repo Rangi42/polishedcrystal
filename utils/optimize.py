@@ -91,6 +91,14 @@ patterns = {
 	(lambda line2, prev: line2.code == 'srl a'),
 	(lambda line3, prev: line3.code == 'srl a'),
 ],
+'a = X + carry': [
+	# Bad: ld b, a / ld a, c|N / adc 0
+	# Good: ld b, a / adc c|N / sub b
+	(lambda line1, prev: re.match(r'ld [bcdehl], a', line1.code)),
+	(lambda line2, prev: line2.code.startswith('ld a,') and
+		(not line2.code.startswith('ld a, [') or line2.code == 'ld a, [hl]')),
+	(lambda line3, prev: re.match(r'adc (?:a, )?[%\$]?0+$', line3.code)),
+],
 'hl|bc|de += a|N': [
 	# Bad: add l|N / ld l, a / ld a, h|0 / adc 0|h / ld h, a (hl or bc or de)
 	# Good: add l|N / ld l, a / adc h / sub l / ld h, a
