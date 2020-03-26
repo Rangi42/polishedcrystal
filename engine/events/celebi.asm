@@ -150,17 +150,14 @@ UpdateCelebiPosition:
 .float_down
 	ld hl, SPRITEANIMSTRUCT_YCOORD
 	add hl, bc
-	ld a, [hl]
-	sub $2
-	ld [hl], a
+	dec [hl]
+	dec [hl]
 	jr .ReinitSpriteAnimFrame
 
 .float_up
 	ld hl, SPRITEANIMSTRUCT_YCOORD
 	add hl, bc
-	ld a, [hl]
-	add $1
-	ld [hl], a
+	inc [hl]
 .ReinitSpriteAnimFrame:
 	pop af
 	ld hl, SPRITEANIMSTRUCT_XCOORD

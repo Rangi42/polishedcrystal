@@ -341,7 +341,7 @@ DSTChecks:
 
 .SetClockForward:
 	ld a, [wStartHour]
-	add 1
+	inc a
 	sub 24
 	jr nc, .DontLoopHourForward
 	add 24

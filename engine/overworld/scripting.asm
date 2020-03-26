@@ -513,7 +513,7 @@ Script_yesorno:
 	call YesNoBox
 	; a = carry ? FALSE : TRUE
 	sbc a
-	add TRUE
+	inc a
 	ldh [hScriptVar], a
 	ret
 

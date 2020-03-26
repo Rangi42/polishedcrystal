@@ -182,7 +182,7 @@ BattleTurn:
 	call DetermineMoveOrder
 	; a = carry ? 0 (player first) : 1 (enemy first)
 	sbc a
-	add 1
+	inc a
 	ldh [hBattleTurn], a
 	ld [wEnemyGoesFirst], a
 	call .do_move
@@ -781,7 +781,7 @@ ResolveFaints:
 	ld hl, wBattleResult
 	ld a, [hl]
 	and $f0
-	add 1
+	inc a
 	ld [hl], a
 	call LostBattle
 	scf

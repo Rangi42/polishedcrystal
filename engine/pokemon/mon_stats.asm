@@ -184,10 +184,10 @@ PrintStatDifferences:
 	ld d, a
 	ld a, [hld]
 	cpl
-	add 1
-	jr nc, .dont_inc_b
+	inc a
+	jr nz, .dont_inc_d
 	inc d
-.dont_inc_b
+.dont_inc_d
 	ld e, a
 	ld bc, wTempMonMaxHP - wStringBuffer3
 	add hl, bc

@@ -2255,7 +2255,7 @@ DetermineLinkBattleResult:
 .defeat
 	ld a, [wBattleResult]
 	and $f0
-	add $1
+	inc a
 	ld [wBattleResult], a
 	ret
 
