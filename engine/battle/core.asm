@@ -1155,7 +1155,7 @@ SendInUserPkmn:
 	and a
 	jr nz, .reset_used_moves_done
 	ld hl, wPlayerUsedMoves
-rept NUM_MOVES + -1
+rept NUM_MOVES - 1
 	ld [hli], a
 endr
 	ld [hl], a
@@ -2980,7 +2980,7 @@ NewBattleMonStatus:
 	ld [hli], a
 	ld [hl], a
 	ld hl, wPlayerUsedMoves
-rept NUM_MOVES + -1
+rept NUM_MOVES - 1
 	ld [hli], a
 endr
 	ld [hl], a

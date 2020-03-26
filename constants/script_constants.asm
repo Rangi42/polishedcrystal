@@ -170,7 +170,7 @@ FIRST_BERRY_TREE EQU const_value
 	const FRUITTREE_LUCKY_ISLAND    ; 21
 	const FRUITTREE_SHAMOUTI_ISLAND ; 22
 	const FRUITTREE_ROUTE_49        ; 23
-NUM_FRUIT_TREES EQU const_value +- 1
+NUM_FRUIT_TREES EQU const_value - 1
 
 ; hidden grottoes
 ; see engine/hidden_grottoes.asm:HiddenGrottoData
@@ -198,7 +198,7 @@ NUM_FRUIT_TREES EQU const_value +- 1
 	const HIDDENGROTTO_15                 ; 15
 	const HIDDENGROTTO_16                 ; 16
 	const HIDDENGROTTO_17                 ; 17
-NUM_HIDDEN_GROTTOES EQU const_value +- 1
+NUM_HIDDEN_GROTTOES EQU const_value - 1
 
 ; swarm arguments
 ; StoreSwarmMapIndices arguments

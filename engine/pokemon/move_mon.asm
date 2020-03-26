@@ -95,7 +95,7 @@ GeneratePartyMonStats:
 	ld l, e
 
 	xor a
-rept NUM_MOVES + -1
+rept NUM_MOVES - 1
 	ld [hli], a
 endr
 	ld [hl], a

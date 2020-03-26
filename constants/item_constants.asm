@@ -289,7 +289,7 @@
 	const BLUESKY_MAIL ; fc
 	const MUSIC_MAIL   ; fd
 	const MIRAGE_MAIL  ; fe
-NUM_ITEMS EQU const_value +- 1
+NUM_ITEMS EQU const_value - 1
 
 	const ITEM_FROM_MEM ; ff
 ALWAYS_ITEM_2 EQU $ff
@@ -566,7 +566,7 @@ endc
 	const WHT_APRICORN ; 5
 	const BLK_APRICORN ; 6
 	const PNK_APRICORN ; 7
-NUM_APRICORNS EQU const_value +- 1
+NUM_APRICORNS EQU const_value - 1
 
 ; Key Item constants
 	const_def

@@ -128,7 +128,7 @@ KurtScript_0x18e178:
 	xor a
 	ld hl, wApricorns
 	or [hl]
-rept NUM_APRICORNS +- 1
+rept NUM_APRICORNS - 1
 	inc hl
 	or [hl]
 endr

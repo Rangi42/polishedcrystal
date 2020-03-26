@@ -52,7 +52,7 @@ dx: MACRO
 x = 8 * ((\1) - 1)
 	rept \1
 	db LOW((\2) >> x)
-x = x + -8
+x = x - 8
 	endr
 ENDM
 

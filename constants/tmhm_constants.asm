@@ -143,4 +143,4 @@ NUM_HMS = const_value - HM01
 	add_mt ZAP_CANNON   ; $6d
 	add_mt ZEN_HEADBUTT ; $6e
 
-NUM_TMHMS EQU __enum__ +- 1
+NUM_TMHMS EQU __enum__ - 1

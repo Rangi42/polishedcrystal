@@ -254,7 +254,7 @@
 	const LEAFEON    ; $fc
 	const GLACEON    ; $fd
 	const SYLVEON    ; $fe
-NUM_POKEMON EQU const_value +- 1
+NUM_POKEMON EQU const_value - 1
 	const CANCEL     ; $ff
 EGG EQU CANCEL ; EGG is used as sentinel for egg pic/icon/etc
 
@@ -291,7 +291,7 @@ EGG EQU CANCEL ; EGG is used as sentinel for egg pic/icon/etc
 	const UNOWN_Z_FORM
 	const UNOWN_EXCLAMATION_FORM
 	const UNOWN_QUESTION_FORM
-NUM_UNOWN EQU const_value +- 1
+NUM_UNOWN EQU const_value - 1
 
 ; pikachu
 	const_def 1
@@ -331,7 +331,7 @@ NUM_UNOWN EQU const_value +- 1
 	const MAGIKARP_BUBBLES_FORM
 	const MAGIKARP_FOREHEAD_FORM
 	const MAGIKARP_MASK_FORM
-NUM_MAGIKARP EQU const_value +- 1
+NUM_MAGIKARP EQU const_value - 1
 
 ; gyarados
 	const_def 1

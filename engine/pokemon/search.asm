@@ -250,7 +250,7 @@ CheckOwnMon:
 
 ; check OT
 	ld hl, wPlayerName
-	ld b, PLAYER_NAME_LENGTH +- 1
+	ld b, PLAYER_NAME_LENGTH - 1
 .loop
 	ld a, [de]
 	cp [hl]

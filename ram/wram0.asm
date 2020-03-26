@@ -782,7 +782,7 @@ wUnownPuzzleEnd::
 NEXTU
 ; Pokedex
 wPokedexDataStart::
-wPokedexOrder:: ds NUM_POKEMON +- 1
+wPokedexOrder:: ds NUM_POKEMON - 1
 wPokedexOrderEnd:: ds 6
 wPokedexMetadata::
 wDexListingScrollOffset:: ds 1 ; offset of the first displayed entry from the start

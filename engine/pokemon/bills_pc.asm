@@ -1095,7 +1095,7 @@ endr
 	ld a, e
 	rst AddNTimes
 	ld bc, wTempMonMoves
-rept NUM_MOVES +- 1
+rept NUM_MOVES - 1
 	ld a, [hli]
 	ld [bc], a
 	inc bc
@@ -1138,7 +1138,7 @@ endr
 	ld a, e
 	rst AddNTimes
 	ld bc, wTempMonMoves
-rept NUM_MOVES +- 1
+rept NUM_MOVES - 1
 	ld a, [hli]
 	ld [bc], a
 	inc bc
@@ -1183,7 +1183,7 @@ endr
 	ld a, e
 	rst AddNTimes
 	ld bc, wTempMonMoves
-rept NUM_MOVES +- 1
+rept NUM_MOVES - 1
 	ld a, [hli]
 	ld [bc], a
 	inc bc

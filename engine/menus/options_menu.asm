@@ -514,7 +514,7 @@ Options_Typeface:
 	ld a, c ; right pressed
 	cp UNOWN_FONT
 	jr c, .Increase
-	ld c, NORMAL_FONT +- 1
+	ld c, NORMAL_FONT - 1
 
 .Increase:
 	inc c
