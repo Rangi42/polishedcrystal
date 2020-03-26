@@ -76,10 +76,12 @@ patterns = {
 ],
 'a = carry ? P : Q': [
 	# Bad: ld a, P / jr c|nc, .ok / ld a, Q / .ok
+	# Bad: ld a, P / jr c|nc, .ok / xor a / .ok
 	# Good: solutions involving sbc a
 	(lambda line1, prev: re.match(r'ld a, [^afbcdehl\[]', line1.code)),
 	(lambda line2, prev: re.match(r'j[rp] n?c,', line2.code)),
-	(lambda line3, prev: re.match(r'ld a, [^afbcdehl\[]', line3.code)),
+	(lambda line3, prev: re.match(r'ld a, [^afbcdehl\[]', line3.code) or
+		line3.code == 'xor a'),
 	(lambda line4, prev: line4.code.rstrip(':') == prev[1].code.split(',')[1].strip()),
 ],
 'a = a >> 3': [

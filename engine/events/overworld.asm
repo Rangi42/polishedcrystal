@@ -1571,10 +1571,9 @@ UnknownText_0xcf77:
 HasRockSmash:
 	ld d, ROCK_SMASH
 	call CheckPartyMove
-	ld a, 1
-	jr c, .done
-	xor a
-.done
+	; a = carry ? 1 : 0
+	sbc a
+	and 1
 	ldh [hScriptVar], a
 	ret
 

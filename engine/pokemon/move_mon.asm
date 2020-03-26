@@ -333,10 +333,9 @@ endr
 ; Ratios below the value are female, and vice-versa.
 	ld a, b
 	cp c
-	ld a, FEMALE
-	jr c, .Female
-	xor a ; ld a, MALE
-.Female:
+	; a = carry (b < c) ? FEMALE : MALE (0)
+	sbc a
+	and FEMALE
 	ld b, a
 
 ; Form 1

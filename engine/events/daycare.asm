@@ -999,10 +999,9 @@ DayCare_InitBreeding:
 	; if rnd(0..7) < c: female, else male
 	ld a, b
 	cp c
-	ld a, FEMALE
-	jr c, .got_gender
-	xor a ; ld a, MALE
-.got_gender
+	; a = carry (b < c) ? FEMALE : MALE (0)
+	sbc a
+	and FEMALE
 	ld hl, wEggMonGender
 	or [hl]
 	ld [hl], a

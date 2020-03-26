@@ -628,10 +628,9 @@ Script_verbosegiveitem2:
 	ld [wItemQuantityChangeBuffer], a
 	ld hl, wNumItems
 	call ReceiveItem
-	ld a, TRUE
-	jr c, .ok2
-	xor a
-.ok2
+	; a = carry ? TRUE : FALSE
+	sbc a
+	and TRUE
 	ldh [hScriptVar], a
 	call CurItemName
 	ld de, wStringBuffer1

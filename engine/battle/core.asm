@@ -180,10 +180,9 @@ BattleTurn:
 	ret c
 
 	call DetermineMoveOrder
-	ld a, 1
-	jr nc, .enemy_first
-	xor a
-.enemy_first
+	; a = carry ? 0 (player first) : 1 (enemy first)
+	sbc a
+	add 1
 	ldh [hBattleTurn], a
 	ld [wEnemyGoesFirst], a
 	call .do_move
@@ -5675,12 +5674,9 @@ endc
 .Happiness:
 	; If we're headbutting trees, some monsters enter battle asleep
 	call CheckSleepingTreeMon
-	ld a, SLP & 3 ; Asleep for 3 turns
-	jr c, .UpdateStatus
-	; Otherwise, no status
-	xor a
-
-.UpdateStatus:
+	; a = carry ? SLP & 3 (asleep for 3 turns) : 0 (no status)
+	sbc a
+	and SLP & 3
 	ld hl, wOTPartyMon1Status
 	ld [hli], a
 

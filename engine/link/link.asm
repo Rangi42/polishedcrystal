@@ -2093,10 +2093,9 @@ Special_TryQuickSave:
 	ld a, [wd265]
 	push af
 	farcall Link_SaveGame
-	ld a, $1
-	jr nc, .return_result
-	xor a
-.return_result
+	; a = carry ? TRUE : FALSE (0)
+	sbc a
+	and TRUE
 	ldh [hScriptVar], a
 	pop af
 	ld [wd265], a
