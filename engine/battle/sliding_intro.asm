@@ -6,7 +6,7 @@ BattleIntroSlidingPics:
 	ld a, $5
 	ldh [rSVBK], a
 	call .subfunction1
-	ld a, rSCX - $ff00
+	ld a, LOW(rSCX)
 	ldh [hLCDCPointer], a
 	call .subfunction2
 	xor a

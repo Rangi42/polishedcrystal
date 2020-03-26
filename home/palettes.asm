@@ -25,7 +25,7 @@ ForceUpdateCGBPals::
 .bgp
 rept 2 palettes
 	ld a, [hli]
-	ld [$ff00+c], a
+	ldh [c], a
 endr
 
 	dec b
@@ -40,7 +40,7 @@ endr
 .obp
 rept 2 palettes
 	ld a, [hli]
-	ld [$ff00+c], a
+	ldh [c], a
 endr
 
 	dec b

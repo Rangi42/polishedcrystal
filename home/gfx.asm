@@ -366,11 +366,11 @@ VRAMToVRAMCopy::
 	cp $88
 	jp nc, ContinueHBlankCopy
 .waitNoHBlank2
-	ld a, [$ff00+c]
+	ldh a, [c]
 	and b
 	jr z, .waitNoHBlank2
 .waitHBlank2
-	ld a, [$ff00+c]
+	ldh a, [c]
 	and b
 	jr nz, .waitHBlank2
 	rept 7

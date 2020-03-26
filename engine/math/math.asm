@@ -64,7 +64,7 @@ _Divide::
 .loop
 	push bc
 	ld b, 8
-	ld a, [$ff00+c]
+	ldh a, [c]
 	ld h, a
 	ld l, 0
 .loop2
@@ -90,7 +90,7 @@ _Divide::
 	add hMathBuffer - hDividend
 	ld c, a
 	ld a, l
-	ld [$ff00+c], a
+	ldh [c], a
 	pop bc
 	inc c
 	dec b
@@ -109,22 +109,22 @@ _Divide::
 	ld a, c
 	add hMathBuffer - hDividend - 1
 	ld c, a
-	ld a, [$ff00+c]
+	ldh a, [c]
 	ldh [hDividend + 3], a
 	dec b
 	ret z
 	dec c
-	ld a, [$ff00+c]
+	ldh a, [c]
 	ldh [hDividend + 2], a
 	dec b
 	ret z
 	dec c
-	ld a, [$ff00+c]
+	ldh a, [c]
 	ldh [hDividend + 1], a
 	dec b
 	ret z
 	dec c
-	ld a, [$ff00+c]
+	ldh a, [c]
 	ldh [hDividend], a
 	ret
 .div0

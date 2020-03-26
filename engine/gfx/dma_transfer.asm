@@ -164,11 +164,11 @@ DoHBlankHDMATransfer
 
 	lb bc, %11, LOW(rSTAT)
 .noHBlankWait
-	ld a, [c]
+	ldh a, [c]
 	and b
 	jr z, .noHBlankWait
 .hBlankWaitLoop
-	ld a, [c]
+	ldh a, [c]
 	and b
 	jr nz, .hBlankWaitLoop
 	ld hl, rHDMA5
