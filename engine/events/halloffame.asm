@@ -2,6 +2,7 @@ HOF_MASTER_COUNT EQU 200
 
 HallOfFame::
 	call HallOfFame_FadeOutMusic
+	farcall InitDisplayForHallOfFame
 	ld a, [wStatusFlags]
 	push af
 	ld a, 1
@@ -36,16 +37,7 @@ HallOfFame::
 	farjp Credits
 
 LeafCredits::
-	ld a, LOW(MUSIC_NONE)
-	ld [wMusicFadeIDLo], a
-	ld a, HIGH(MUSIC_NONE)
-	ld [wMusicFadeIDHi], a
-	ld a, 10
-	ld [wMusicFade], a
-	farcall FadeOutPalettes
-	xor a
-	ld [wVramState], a
-	ldh [hMapAnims], a
+	call HallOfFame_FadeOutMusic
 	farcall InitDisplayForLeafCredits
 	ld c, 8
 	call DelayFrames
@@ -59,9 +51,8 @@ LeafCredits::
 	farjp Credits
 
 HallOfFame_FadeOutMusic:
-	ld a, LOW(MUSIC_NONE)
+	xor a ; MUSIC_NONE
 	ld [wMusicFadeIDLo], a
-	ld a, HIGH(MUSIC_NONE)
 	ld [wMusicFadeIDHi], a
 	ld a, 10
 	ld [wMusicFade], a
@@ -69,7 +60,7 @@ HallOfFame_FadeOutMusic:
 	xor a
 	ld [wVramState], a
 	ldh [hMapAnims], a
-	farjp InitDisplayForHallOfFame
+	ret
 
 HallOfFame_PlayMusicDE:
 	push de

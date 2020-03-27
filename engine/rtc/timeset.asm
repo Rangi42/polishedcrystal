@@ -9,9 +9,8 @@ InitClock:
 	ld [wSpriteUpdatesEnabled], a
 	ld a, $10
 	ld [wMusicFade], a
-	ld a, LOW(MUSIC_NONE)
+	xor a ; MUSIC_NONE
 	ld [wMusicFadeIDLo], a
-	ld a, HIGH(MUSIC_NONE)
 	ld [wMusicFadeIDHi], a
 	ld c, 31
 	call FadeToBlack

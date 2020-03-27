@@ -493,7 +493,7 @@ ParseCredits:
 	ld [wMusicFade], a
 	ld a, LOW(MUSIC_POST_CREDITS)
 	ld [wMusicFadeID], a
-	ld a, HIGH(MUSIC_POST_CREDITS)
+	xor a ; HIGH(MUSIC_POST_CREDITS)
 	ld [wMusicFadeIDHi], a
 	ret
 

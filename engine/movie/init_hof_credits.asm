@@ -1,26 +1,12 @@
 InitDisplayForHallOfFame:
-	call ClearBGPalettes
-	call ClearTileMap
-	call ClearSprites
-	call DisableLCD
-	call LoadStandardFont
-	call LoadFontsBattleExtra
-	hlbgcoord 0, 0
-	ld bc, vBGMap1 - vBGMap0
-	ld a, " "
-	rst ByteFill
-	hlcoord 0, 0, wAttrMap
-	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
-	xor a
-	rst ByteFill
+	call ClearDisplayForEndgame
 	xor a
 	ldh [hSCY], a
 	ldh [hSCX], a
 	call EnableLCD
 	ld hl, .SavingRecordDontTurnOff
 	call PrintText
-	call ApplyAttrAndTilemapInVBlank
-	jp SetPalettes
+	jr FinishDisplayForEndgame
 
 .SavingRecordDontTurnOff:
 	; SAVING RECORD… DON'T TURN OFF!
@@ -28,20 +14,7 @@ InitDisplayForHallOfFame:
 	text_end
 
 InitDisplayForLeafCredits:
-	call ClearBGPalettes
-	call ClearTileMap
-	call ClearSprites
-	call DisableLCD
-	call LoadStandardFont
-	call LoadFontsBattleExtra
-	hlbgcoord 0, 0
-	ld bc, vBGMap1 - vBGMap0
-	ld a, " "
-	rst ByteFill
-	hlcoord 0, 0, wAttrMap
-	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
-	xor a
-	rst ByteFill
+	call ClearDisplayForEndgame
 	ld hl, wUnknBGPals
 	ld c, 4 tiles
 if !DEF(MONOCHROME)
@@ -63,8 +36,26 @@ endc
 	ldh [hSCY], a
 	ldh [hSCX], a
 	call EnableLCD
+FinishDisplayForEndgame:
 	call ApplyAttrAndTilemapInVBlank
 	jp SetPalettes
+
+ClearDisplayForEndgame:
+	call ClearBGPalettes
+	call ClearTileMap
+	call ClearSprites
+	call DisableLCD
+	call LoadStandardFont
+	call LoadFontsBattleExtra
+	hlbgcoord 0, 0
+	ld bc, vBGMap1 - vBGMap0
+	ld a, " "
+	rst ByteFill
+	hlcoord 0, 0, wAttrMap
+	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
+	xor a
+	rst ByteFill
+	ret
 
 ResetDisplayBetweenHallOfFameMons:
 	ldh a, [rSVBK]

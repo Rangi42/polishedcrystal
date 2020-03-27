@@ -351,9 +351,8 @@ Continue:
 ;	jp c, CloseWindow
 	ld a, $8
 	ld [wMusicFade], a
-	ld a, LOW(MUSIC_NONE)
+	xor a ; MUSIC_NONE
 	ld [wMusicFadeIDLo], a
-	ld a, HIGH(MUSIC_NONE)
 	ld [wMusicFadeIDHi], a
 	call ClearBGPalettes
 	call CloseWindow
@@ -1180,7 +1179,7 @@ TitleScreenMain:
 	inc [hl]
 
 ; Fade out the title screen music
-	xor a
+	xor a ; MUSIC_NONE
 	ld [wMusicFadeIDLo], a
 	ld [wMusicFadeIDHi], a
 	ld hl, wMusicFade
