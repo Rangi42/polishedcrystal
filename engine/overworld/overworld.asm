@@ -358,6 +358,7 @@ endr
 .CopyToVram:
 	ldh a, [rVBK]
 	push af
+	ld a, [wSpriteFlags]
 	and 1 << 5
 	swap a
 	rra
