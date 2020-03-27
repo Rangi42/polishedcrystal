@@ -15,15 +15,15 @@ Special_HiddenPowerGuru:
 	farcall GetHiddenPowerType
 	ld [wNamedObjectIndexBuffer], a
 	farcall GetTypeName
-	ld a, $2
+	ld a, 2
 .done
 	ldh [hScriptVar], a
 	ret
 
 .cancel
-	ld a, $0
+	xor a
 	jr .done
 
 .egg
-	ld a, $1
+	ld a, 1
 	jr .done

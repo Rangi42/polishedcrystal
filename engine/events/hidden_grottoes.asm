@@ -97,7 +97,7 @@ GetHiddenGrottoTableEntry:
 .ok
 	ld a, [hli]
 	cp -1
-	ld a, $0 ; not xor a; preserve carry flag
+	ld a, 0
 	ret z
 	ld a, [hl]
 	ret

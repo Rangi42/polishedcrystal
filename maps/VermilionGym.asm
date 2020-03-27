@@ -444,9 +444,9 @@ CheckVermilionGymTrashCan:
 	jr z, .first
 	ld a, [wVermilionGymTrashCan2]
 	call .CheckTrashCan
-	ld a, 1
+	ld a, TRUE
 	jr z, .done
-	dec a
+	dec a ; FALSE
 .done
 	ldh [hScriptVar], a
 	pop af
@@ -459,12 +459,12 @@ CheckVermilionGymTrashCan:
 	jr z, .yes
 	ld a, [wVermilionGymTrashCan2]
 	call .CheckTrashCan
-	ld a, 0
+	ld a, FALSE
 	jr nz, .done
 	ld a, [wVermilionGymTrashCan1]
 	ld [wVermilionGymTrashCan2], a
 .yes
-	ld a, 1
+	ld a, TRUE
 	jr .done
 
 .CheckTrashCan:

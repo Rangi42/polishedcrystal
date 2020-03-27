@@ -79,7 +79,7 @@ LoseMoney:
 	or [hl]
 	inc hl
 	or [hl]
-	ld a, 0 ; not xor a; preserve carry flag
+	ld a, FALSE
 	jr z, .load
 	ld hl, wBadges
 	ld b, 2
@@ -129,7 +129,7 @@ LoseMoney:
 	pop de
 	pop bc
 	farcall TakeMoney
-	ld a, 1
+	ld a, TRUE
 .load
 	ldh [hScriptVar], a
 	ret

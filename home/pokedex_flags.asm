@@ -10,8 +10,8 @@ CountSetBits::
 
 .count
 	srl e
-	ld a, 0 ; not xor a; preserve carry flag?
-	adc c
+	ld a, c
+	adc 0
 	ld c, a
 	dec d
 	jr nz, .count

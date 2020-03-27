@@ -2032,7 +2032,7 @@ BattleCommand_lowersub:
 .rollout_rampage
 	ld a, [wSomeoneIsRampaging]
 	and a
-	ld a, 0 ; not xor a; preserve carry flag
+	ld a, 0
 	ld [wSomeoneIsRampaging], a
 	ret
 
@@ -3935,7 +3935,7 @@ BattleCommand_constantdamage:
 	call GetBattleVar
 	cp EFFECT_LEVEL_DAMAGE
 	ld b, [hl]
-	ld a, 0 ; not xor a; preserve carry flag
+	ld a, 0
 	jr z, .got_power
 
 	ld a, BATTLE_VARS_MOVE_EFFECT
@@ -3970,7 +3970,7 @@ BattleCommand_constantdamage:
 	and a
 	jr nz, .got_power
 	or b
-	ld a, 0 ; not xor a; preserve carry flag?
+	ld a, 0
 	jr nz, .got_power
 	ld b, $1
 	; fallthrough

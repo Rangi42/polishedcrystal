@@ -315,7 +315,7 @@ endr
 	cp FEMALE
 	ld a, %111
 	jr z, .cute_charm_ok
-	ld a, %000
+	xor a
 	jr .cute_charm_ok
 
 .not_cute_charm

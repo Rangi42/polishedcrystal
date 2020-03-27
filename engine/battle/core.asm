@@ -2124,7 +2124,7 @@ WinTrainerBattle:
 	call nz, .DoubleReward
 	call .CheckMaxedOutMomMoney
 	push af
-	ld a, 0 ; not xor a; preserve carry flag?
+	ld a, 0
 	jr nc, .okay
 	ld a, [wMomSavingMoney]
 	and $7
@@ -6151,7 +6151,7 @@ GiveExperiencePoints:
 	inc hl
 	ld a, [wPlayerID + 1]
 	cp [hl]
-	ld a, 0 ; not xor a; preserve carry flag
+	ld a, 0
 	jr z, .no_boost
 	ld a, [wInitialOptions]
 	bit TRADED_AS_OT_OPT, a

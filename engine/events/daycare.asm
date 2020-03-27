@@ -727,14 +727,14 @@ DayCare_InitBreeding:
 	ld [wMonType], a
 	ld a, [wBreedMon1Species]
 	cp DITTO
-	ld a, $1
+	ld a, 1
 	jr z, .LoadWhichBreedmonIsTheMother
 	ld a, [wBreedMon2Species]
 	cp DITTO
-	ld a, 0 ; not xor a; preserve carry flag
+	ld a, 0
 	jr z, .LoadWhichBreedmonIsTheMother
 	farcall GetGender
-	ld a, 0 ; not xor a; preserve carry flag
+	ld a, 0
 	jr z, .LoadWhichBreedmonIsTheMother
 	inc a
 

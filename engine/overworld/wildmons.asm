@@ -16,7 +16,7 @@ LoadWildMonData:
 	rst CopyBytes
 .done_copy
 	call _WaterWildmonLookup
-	ld a, 0 ; not xor a; preserve carry flag
+	ld a, 0
 	jr nc, .no_copy
 	inc hl
 	inc hl

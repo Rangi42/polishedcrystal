@@ -583,7 +583,6 @@ GetStatusConditionIndex:
 	and SLP
 	ld a, 0
 	jr nz, .slp
-	xor a
 	bit TOX, b
 	jr nz, .tox
 	bit PSN, b
@@ -594,21 +593,22 @@ GetStatusConditionIndex:
 	jr nz, .brn
 	bit FRZ, b
 	jr nz, .frz
-	jr .done
+	ret
+
 .tox
-	inc a
+	inc a ; 7
 .fnt
-	inc a
+	inc a ; 6
 .frz
-	inc a
+	inc a ; 5
 .brn
-	inc a
+	inc a ; 4
 .slp
-	inc a
+	inc a ; 3
 .par
-	inc a
+	inc a ; 2
 .psn
-	inc a
+	inc a ; 1
 .done
 	ret
 

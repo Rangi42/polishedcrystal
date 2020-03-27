@@ -5,7 +5,7 @@ HDMATransferTileMapToWRAMBank3::
 	decoord 0, 0
 	ld hl, wScratchTileMap
 	call CutAndPasteTilemap
-	ld a, $0
+	xor a
 	ldh [rVBK], a
 	ld hl, wScratchTileMap
 	jp HDMATransferToWRAMBank3
@@ -40,7 +40,7 @@ ReloadMapPart::
 	ldh [rVBK], a
 	ld hl, wScratchAttrMap
 	call DoHBlankHDMATransfer_toBGMap
-	ld a, $0
+	xor a
 	ldh [rVBK], a
 	ld hl, wScratchTileMap
 	call DoHBlankHDMATransfer_toBGMap

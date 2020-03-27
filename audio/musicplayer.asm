@@ -937,14 +937,14 @@ _DrawCh1_2_3:
 	push hl
 	call CheckChannelOn
 	pop hl
-	ld a, 0 ; not xor a; preserve carry flag
+	ld a, 0
 	jr c, .blank_volume
 	push hl
 	call GetPitchAddr
 	ld a, [hl]
 	and a
 	pop hl
-	ld a, 0 ; not xor a; preserve carry flag
+	ld a, 0
 	jr z, .blank_volume
 	push hl
 	call GetIntensityAddr

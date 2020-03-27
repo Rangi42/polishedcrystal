@@ -248,7 +248,7 @@ Serial_ExchangeLinkMenuSelection::
 	inc hl
 	ldh a, [hSerialIgnoringInitialData]
 	and a
-	ld a, 0 ; not xor a; preserve carry flag
+	ld a, 0
 	ldh [hSerialIgnoringInitialData], a
 	jr nz, .loop
 	ld a, b

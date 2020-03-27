@@ -358,12 +358,9 @@ endr
 .CopyToVram:
 	ldh a, [rVBK]
 	push af
-	ld a, [wSpriteFlags]
-	bit 5, a
-	ld a, $0
-	jr z, .bankswitch
-	inc a
-.bankswitch
+	and 1 << 5
+	swap a
+	rra
 	ldh [rVBK], a
 	call Request2bppInWRA6
 	pop af

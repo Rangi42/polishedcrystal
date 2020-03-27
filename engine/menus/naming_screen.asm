@@ -488,7 +488,7 @@ NamingScreen_AnimateCursor:
 .ok
 	cp d
 	ld de, .LetterEntries
-	ld a, 0 ; not xor a; preserve carry flag
+	ld a, 0
 	jr nz, .got_pointer
 	ld de, .CaseDelEnd
 	inc a
@@ -1091,7 +1091,7 @@ ComposeMail_AnimateCursor:
 	ld [hl], e
 	cp $5
 	ld de, .LetterEntries
-	ld a, 0 ; not xor a; preserve carry flag
+	ld a, 0
 	jr nz, .got_pointer
 	ld de, .CaseDelEnd
 	inc a

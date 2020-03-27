@@ -1,8 +1,8 @@
 KeyItemsPocket::
-	ld a, $1
+	ld a, TRUE
 	ldh [hInMenu], a
 	call KeyItems_PocketLoop
-	ld a, 0 ; not xor a; preserve carry flag
+	ld a, FALSE
 	ldh [hInMenu], a
 	ret nc
 	call PlaceHollowCursor

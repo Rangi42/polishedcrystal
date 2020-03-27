@@ -180,7 +180,7 @@ BattleAnimFunction_03:
 	ld hl, BATTLEANIMSTRUCT_0B
 	add hl, bc
 	bit 7, [hl]
-	ld a, 0 ; not xor a; preserve carry flag?
+	ld a, 0
 	jr z, .asm_cd0f9
 	ld a, $20
 .asm_cd0f9
