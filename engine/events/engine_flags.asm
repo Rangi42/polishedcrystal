@@ -7,21 +7,7 @@ EngineFlagAction::
 ;
 ; Setting/resetting does not return a result.
 
-	ld a, d
-	cp HIGH(NUM_ENGINE_FLAGS) + 1
-	jr nc, .invalid
-	ld a, e
-	cp LOW(NUM_ENGINE_FLAGS)
-	jr c, .read
-
-; Invalid flags are treated as flag 00.
-.invalid
-	xor a
-	ld e, a
-	ld d, a
-
 ; Get this flag's location.
-.read
 	ld hl, EngineFlags
 ; location
 	add hl, de
@@ -30,10 +16,10 @@ EngineFlagAction::
 	add hl, de
 
 ; location
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-	inc hl
+	ld a, [hli]
+	ld e, a
+	ld a, [hli]
+	ld d, a
 ; bit
 	ld c, [hl]
 
