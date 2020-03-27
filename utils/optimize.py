@@ -110,9 +110,9 @@ patterns = {
 'hl|bc|de += a|N': [
 	# Bad: add l|N / ld l, a / ld a, h|0 / adc 0|h / ld h, a (hl or bc or de)
 	# Good: add l|N / ld l, a / adc h / sub l / ld h, a
-	(lambda line1, prev: re.match(r'add (?:[lce]|[^afbdh\[])', line1.code)),
+	(lambda line1, prev: re.match(r'add (?:a, )?(?:[lce]|[^afbdh\[])', line1.code)),
 	(lambda line2, prev: re.match(r'ld [lce], a', line2.code) and
-		(line2.code[3] == prev[0].code[4] or prev[0].code[4] not in 'lce')),
+		(lambda x: line2.code[3] == x or x not in 'lce')(prev[0].code.replace('add a,', 'add')[4])),
 	(lambda line3, prev: re.match(r'ld a, (?:[hbd]|[%\$]?0+$)', line3.code) and
 		(line3.code[6] not in 'hbd' or line3.code[6] == PAIRS[prev[1].code[3]])),
 	(lambda line4, prev: re.match(r'adc (?:[hbd]|[%\$]?0+$)', line4.code) and
@@ -123,9 +123,9 @@ patterns = {
 'hl|bc|de += a|N (with jump)': [
 	# Okay: add l|N / ld l, a / jr nc, .noCarry / inc h / .noCarry
 	# Good: add l|N / ld l, a / adc h / sub l / ld h, a
-	(lambda line1, prev: re.match(r'add (?:[lce]|[^afbdh\[])', line1.code)),
+	(lambda line1, prev: re.match(r'add (?:a, )?(?:[lce]|[^afbdh\[])', line1.code)),
 	(lambda line2, prev: re.match(r'ld [lce], a', line2.code) and
-		(line2.code[3] == prev[0].code[4] or prev[0].code[4] not in 'lce')),
+		(lambda x: line2.code[3] == x or x not in 'lce')(prev[0].code.replace('add a,', 'add')[4])),
 	(lambda line3, prev: re.match(r'j[rp] nc,', line3.code)),
 	(lambda line4, prev: re.match(r'inc [hbd]', line4.code) and
 		line4.code[4] == PAIRS[prev[1].code[3]]),
