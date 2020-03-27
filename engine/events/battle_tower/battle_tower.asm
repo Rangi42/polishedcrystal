@@ -296,7 +296,6 @@ Special_BattleTower_LoadOpponentTrainerAndPokemonsWithOTSprite:
 
 ; Load sprite of the opponent trainer
 ; because s/he is chosen randomly and appears out of nowhere
-	ld a, [wBTTempOTSprite]
 	ld [wMap1ObjectSprite], a
 	ldh [hUsedSpriteIndex], a
 	ld a, 24

@@ -1007,8 +1007,8 @@ GetBothSwitchTarget:
 	call GetUserSwitchTarget
 	call SwitchTurn
 	call GetUserSwitchTarget
-	call SwitchTurn
-	ret
+	jp SwitchTurn
+
 .both_needs_switch
 	call GetPlayerSwitchTarget
 	jr GetEnemySwitchTarget
@@ -4345,8 +4345,7 @@ TryPlayerSwitch:
 	call _LoadStatusIcons
 	call CloseWindow
 	call GetMemCGBLayout
-	call SetPalettes
-	ret
+	jp SetPalettes
 
 BattleMenu_Run:
 	call ClearSprites
@@ -5620,7 +5619,7 @@ endc
 
 	; We're clear if the length is < 5'
 	ld a, [wMagikarpLengthMmHi]
-	cp 5
+	cp 5 ; feet
 	jr nz, .CheckMagikarpArea
 
 	; 5% chance of skipping size checks
@@ -5629,7 +5628,7 @@ endc
 	jr c, .CheckMagikarpArea
 	; Try again if > 3"
 	ld a, [wMagikarpLengthMmLo]
-	cp 3
+	cp 3 ; inches
 	jp nc, LoadEnemyMon
 
 	; 20% chance of skipping this check
@@ -5638,7 +5637,7 @@ endc
 	jr c, .CheckMagikarpArea
 	; Try again if > 2"
 	ld a, [wMagikarpLengthMmLo]
-	cp 2
+	cp 2 ; inches
 	jp nc, LoadEnemyMon
 
 .CheckMagikarpArea:
@@ -5653,9 +5652,9 @@ endc
 	call Random
 	cp 40 percent - 2
 	jr c, .Happiness
-	; Floor at length 1024
+	; Floor at length 3'
 	ld a, [wMagikarpLengthMmHi]
-	cp HIGH(1024) ; should be "cp 3", since 1024 mm = 3'4", but HIGH(1024) = 4
+	cp 3 ; feet
 	jp c, LoadEnemyMon
 
 .Gyarados:

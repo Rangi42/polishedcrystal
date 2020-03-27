@@ -266,16 +266,22 @@ for filename in iglob('**/*.asm', recursive=True):
 			prev_lines = []
 			state = 0
 			# Read each file line by line
-			for i, text in enumerate(f):
-				text = text.rstrip()
+			lines = [text.rstrip() for text in f]
+			n = len(lines)
+			# Iterate over the lines
+			i = 0
+			while i < n:
+				text = lines[i]
 				# Remove comments
 				code = text.split(';')[0].rstrip()
 				# Skip blank lines:
 				if not code:
+					i += 1
 					continue
 				# Save the most recent label for context
 				if code[0].isalpha() and ':' in code:
 					cur_label = Line(i+1, code, text)
+					i += 1
 					continue
 				# Remove indentation from code, if any
 				code = code.lstrip()
@@ -302,8 +308,10 @@ for filename in iglob('**/*.asm', recursive=True):
 						state = 0
 				else:
 					# The condition was not met; reset the state
+					i -= state
 					prev_lines = []
 					state = 0
+				i += 1
 	# Print a blank line between different files
 	if printed:
 		print()

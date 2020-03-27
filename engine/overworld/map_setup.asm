@@ -278,11 +278,9 @@ RetainOldPalettes:
 	farjp _UpdateTimePals
 
 RotatePalettesRightMapAndMusic:
-	ld e, 0
-	ld a, [wMusicFadeIDLo]
-	ld d, 0
-	ld a, [wMusicFadeIDHi]
-	ld a, $4
+	xor a
+	ld [wMusicFadeIDLo] ,a
+	ld [wMusicFadeIDHi] ,a
 	ld [wMusicFade], a
 	farjp FadeOutPalettes
 

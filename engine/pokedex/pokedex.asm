@@ -435,7 +435,6 @@ DexEntryScreen_MenuActionJumptable:
 	ld a, [hl]
 	xor SHINY_MASK ; alternate 0 and SHINY_MASK
 	ld [hl], a
-	ld a, [wCurPartySpecies]
 	ld a, CGB_POKEDEX
 	jp Pokedex_GetCGBLayout
 
@@ -2350,8 +2349,7 @@ Pokedex_LoadSelectedMonTiles:
 	ldh a, [hROMBank]
 	ld b, a
 	call Get2bpp
-	call CloseSRAM
-	ret
+	jp CloseSRAM
 
 Pokedex_LoadCurrentFootprint:
 	call Pokedex_GetSelectedMon

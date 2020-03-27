@@ -421,7 +421,6 @@ PokeBallEffect:
 	ld a, [wTempEnemyMonSpecies]
 	ld [wEnemyMonSpecies], a
 
-	ld a, [wEnemyMonSpecies]
 	push af
 	ld [wWildMon], a
 	ld [wCurPartySpecies], a
