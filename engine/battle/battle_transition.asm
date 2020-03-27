@@ -54,7 +54,7 @@ DoBattleTransition:
 	ld hl, wUnknBGPals
 if !DEF(MONOCHROME)
 	ld bc, 8 palettes
-	xor a
+	xor a ; RGB 00, 00, 00
 	rst ByteFill
 else
 	ld b, (8 palettes) / 2

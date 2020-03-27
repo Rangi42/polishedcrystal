@@ -232,12 +232,11 @@ LoadPalette_White_Col1_Col2_Black:
 	ldh [rSVBK], a
 
 if !DEF(MONOCHROME)
-	ld a, LOW(palred 31 + palgreen 31 + palblue 31)
+	ld a, $ff ; RGB 31,31,31
+rept 2
 	ld [de], a
 	inc de
-	ld a, HIGH(palred 31 + palgreen 31 + palblue 31)
-	ld [de], a
-	inc de
+endr
 else
 	ld a, LOW(PAL_MONOCHROME_WHITE)
 	ld [de], a
@@ -608,11 +607,12 @@ InitCGBPals::
 	ld a, $80
 	ldh [rBGPI], a
 	ld c, 4 * 8
+if !DEF(MONOCHROME)
+	ld a, $ff ; RGB 31, 31, 31
+endc
 .bgpals_loop
 if !DEF(MONOCHROME)
-	ld a, LOW(palred 31 + palgreen 31 + palblue 31)
 	ldh [rBGPD], a
-	ld a, HIGH(palred 31 + palgreen 31 + palblue 31)
 	ldh [rBGPD], a
 else
 	ld a, LOW(PAL_MONOCHROME_WHITE)
@@ -625,11 +625,12 @@ endc
 	ld a, $80
 	ldh [rOBPI], a
 	ld c, 4 * 8
+if !DEF(MONOCHROME)
+	ld a, $ff ; RGB 31, 31, 31
+endc
 .obpals_loop
 if !DEF(MONOCHROME)
-	ld a, LOW(palred 31 + palgreen 31 + palblue 31)
 	ldh [rOBPD], a
-	ld a, HIGH(palred 31 + palgreen 31 + palblue 31)
 	ldh [rOBPD], a
 else
 	ld a, LOW(PAL_MONOCHROME_WHITE)
@@ -652,21 +653,20 @@ endc
 	ret
 
 .LoadWhitePals:
-	ld c, 4 * 16
-.loop
 if !DEF(MONOCHROME)
-	ld a, LOW(palred 31 + palgreen 31 + palblue 31)
-	ld [hli], a
-	ld a, HIGH(palred 31 + palgreen 31 + palblue 31)
-	ld [hli], a
+	ld bc, 16 palettes
+	ld a, $ff ; RGB 31, 31, 31
+	rst ByteFill
 else
+	ld c, 4 * 16
+.mono_loop
 	ld a, LOW(PAL_MONOCHROME_WHITE)
 	ld [hli], a
 	ld a, HIGH(PAL_MONOCHROME_WHITE)
 	ld [hli], a
-endc
 	dec c
-	jr nz, .loop
+	jr nz, .mono_loop
+endc
 	ret
 
 CopyData:

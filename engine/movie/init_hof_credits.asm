@@ -44,11 +44,12 @@ InitDisplayForLeafCredits:
 	rst ByteFill
 	ld hl, wUnknBGPals
 	ld c, 4 tiles
+if !DEF(MONOCHROME)
+	ld a, $ff ; RGB 31, 31, 31
+endc
 .load_white_palettes
 if !DEF(MONOCHROME)
-	ld a, LOW(palred 31 + palgreen 31 + palblue 31)
 	ld [hli], a
-	ld a, HIGH(palred 31 + palgreen 31 + palblue 31)
 	ld [hli], a
 else
 	ld a, LOW(PAL_MONOCHROME_WHITE)

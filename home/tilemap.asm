@@ -21,7 +21,7 @@ ClearPalettes::
 	ld hl, wBGPals
 if !DEF(MONOCHROME)
 	ld bc, 16 palettes
-	ld a, $ff
+	ld a, $ff ; RGB 31, 31, 31
 	rst ByteFill
 else
 	ld b, (16 palettes) / 2
