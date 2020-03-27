@@ -500,29 +500,53 @@ GetPaintingPalettePointer:
 	ret
 
 GetMonPalettePointer:
-	push af
-	cp GYARADOS
-	jr nz, .continue
+	push de
 
+	; d = species
+	ld d, a
+	; e = form
 	inc bc ; Form is in the byte after Shiny
 	ld a, [bc]
 	dec bc
 	and FORM_MASK
-	cp GYARADOS_RED_FORM
-	jr nz, .continue
-	ld hl, RedGyaradosPalette
-	pop af
-	ret
+	ld e, a
 
-.continue
-	pop af
+	ld hl, VariantPalettesTable
+.loop
+	; check species
+	ld a, [hli]
+	cp -1
+	jr z, .normal
+	cp d
+	jr nz, .next3
+	; check form
+	ld a, [hli]
+	cp e
+	jr nz, .next2
+	; use palette
+	ld a, [hli]
+	ld h, [hl]
 	ld l, a
-	ld h, $0
+	jr .done
+
+.next3
+	inc hl
+.next2
+	inc hl
+	inc hl
+	jr .loop
+
+.normal
+	ld l, d
+	ld h, 0
 	add hl, hl
 	add hl, hl
 	add hl, hl
 	ld bc, PokemonPalettes
 	add hl, bc
+.done
+	ld a, d
+	pop de
 	ret
 
 GetMonNormalOrShinyPalettePointer:
@@ -850,6 +874,8 @@ INCLUDE "gfx/tilesets/roofs_overcast.pal"
 endc
 
 INCLUDE "data/pokemon/palettes.asm"
+
+INCLUDE "data/pokemon/variant_palettes.asm"
 
 INCLUDE "data/trainers/palettes.asm"
 
