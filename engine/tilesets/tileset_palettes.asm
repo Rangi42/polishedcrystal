@@ -214,7 +214,7 @@ CheckIfSpecialPaletteApplies:
 	call GetOvercastIndex
 	pop hl
 	; invert z
-	sub 1 ; underflows if a == 0, setting carry
+	sub 1 ; dec a can't set carry
 	sbc a ; sets a to 0 if carry was not set, i.e. a != 0
 	ret
 

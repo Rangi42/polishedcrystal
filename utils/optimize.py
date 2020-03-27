@@ -61,6 +61,11 @@ patterns = {
 # 	# Good: xor a (unless you need to preserve flags)
 # 	(lambda line1, prev: re.match(r'ld a, [%\$]?0+$', line1.code)),
 # ],
+'a++ or a--': [
+	# Bad: add|sub 1
+	# Good: inc|dec a (unless you need to set the carry flag)
+	(lambda line1, prev: re.match(r'(?:add|sub) (?:a, )?[%\$]?0*1$', line1.code)),
+],
 'a = ~a': [
 	# Bad: xor $ff
 	# Good: cpl
@@ -267,59 +272,60 @@ count = 0
 # Check all the .asm files
 for filename in iglob('**/*.asm', recursive=True):
 	printed = False
+	# Read each file line by line
+	with open(filename, 'r') as f:
+		lines = [text.rstrip() for text in f]
+		n = len(lines)
+	# Apply each pattern to the lines
 	for pattern_name, conditions in patterns.items():
-		with open(filename, 'r') as f:
-			printed_this = False
-			cur_label = None
-			prev_lines = []
-			state = 0
-			# Read each file line by line
-			lines = [text.rstrip() for text in f]
-			n = len(lines)
-			# Iterate over the lines
-			i = 0
-			while i < n:
-				text = lines[i]
-				# Remove comments
-				code = text.split(';')[0].rstrip()
-				# Skip blank lines:
-				if not code:
-					i += 1
-					continue
-				# Save the most recent label for context
-				if code[0].isalpha() and ':' in code:
-					cur_label = Line(i+1, code, text)
-					i += 1
-					continue
-				# Remove indentation from code, if any
-				code = code.lstrip()
-				# Record the line's properties
-				cur_line = Line(i+1, code, text)
-				# Check the condition for the current state
-				condition = conditions[state]
-				if condition(cur_line, prev_lines):
-					# The condition was met; advance to the next state
-					prev_lines.append(cur_line)
-					state += 1
-					if state == len(conditions):
-						# All the conditions were met; print the result and reset the state
-						count += 1
-						if not printed_this and len(patterns) > 1:
-							print('###', pattern_name, '###')
-						if cur_label:
-							prev_lines.insert(0, cur_label)
-						for line in prev_lines:
-							print(filename, line.num, line.text, sep=':')
-						printed = True
-						printed_this = True
-						prev_lines = []
-						state = 0
-				else:
-					# The condition was not met; reset the state
-					i -= state
+		printed_this = False
+		cur_label = None
+		prev_lines = []
+		state = 0
+		# Iterate over the lines
+		i = 0
+		while i < n:
+			text = lines[i]
+			# Remove comments
+			code = text.split(';')[0].rstrip()
+			# Skip blank lines:
+			if not code:
+				i += 1
+				continue
+			# Save the most recent label for context
+			if code[0].isalpha() and ':' in code:
+				cur_label = Line(i+1, code, text)
+				i += 1
+				continue
+			# Remove indentation from code, if any
+			code = code.lstrip()
+			# Record the line's properties
+			cur_line = Line(i+1, code, text)
+			# Check the condition for the current state
+			condition = conditions[state]
+			if condition(cur_line, prev_lines):
+				# The condition was met; advance to the next state
+				prev_lines.append(cur_line)
+				state += 1
+				if state == len(conditions):
+					# All the conditions were met; print the result and reset the state
+					count += 1
+					if not printed_this and len(patterns) > 1:
+						print('###', pattern_name, '###')
+					if cur_label:
+						prev_lines.insert(0, cur_label)
+					for line in prev_lines:
+						print(filename, line.num, line.text, sep=':')
+					printed = True
+					printed_this = True
 					prev_lines = []
 					state = 0
-				i += 1
+			else:
+				# The condition was not met; reset the state
+				i -= state
+				prev_lines = []
+				state = 0
+			i += 1
 	# Print a blank line between different files
 	if printed:
 		print()

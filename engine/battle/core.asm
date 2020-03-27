@@ -760,7 +760,7 @@ ResolveFaints:
 	ld [wWhichMonFaintedFirst], a
 	ld a, [wBattleEnded]
 	dec a
-	sub 1
+	sub 1 ; dec a can't set carry
 	ret
 
 .check_battle_over

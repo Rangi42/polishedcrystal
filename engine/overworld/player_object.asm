@@ -289,7 +289,7 @@ CheckObjectEnteringVisibleRange::
 
 .Up:
 	ld a, [wYCoord]
-	sub 1
+	dec a
 	jr .Vertical
 
 .Down:
@@ -345,7 +345,7 @@ CheckObjectEnteringVisibleRange::
 
 .Left:
 	ld a, [wXCoord]
-	sub 1
+	dec a
 	jr .Horizontal
 
 .Right:

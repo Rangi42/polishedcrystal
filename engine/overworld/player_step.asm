@@ -180,7 +180,7 @@ UpdateOverworldMap:
 	ld [hl], 1
 	ld hl, wOverworldMapAnchor
 	ld a, [hl]
-	sub 1
+	sub 1 ; dec a can't set carry
 	ld [hli], a
 	ret nc
 	dec [hl]

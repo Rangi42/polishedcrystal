@@ -839,7 +839,7 @@ MoveScreenLoop:
 .newmove_done
 	ld a, b
 	ld [wMoveScreenNumMoves], a
-	sub 1
+	sub 1 ; dec a can't set carry
 	ret c ; no moves
 
 	; Initialize the interface
