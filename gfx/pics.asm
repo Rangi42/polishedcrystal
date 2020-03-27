@@ -278,8 +278,6 @@ ElectrodeFrontpic:        INCBIN "gfx/pokemon/electrode/front.2bpp.lz"
 ElectrodeBackpic:         INCBIN "gfx/pokemon/electrode/back.2bpp.lz"
 ExeggcuteFrontpic:        INCBIN "gfx/pokemon/exeggcute/front.2bpp.lz"
 ExeggcuteBackpic:         INCBIN "gfx/pokemon/exeggcute/back.2bpp.lz"
-ExeggutorFrontpic:        INCBIN "gfx/pokemon/exeggutor/front.2bpp.lz"
-ExeggutorBackpic:         INCBIN "gfx/pokemon/exeggutor/back.2bpp.lz"
 CuboneFrontpic:           INCBIN "gfx/pokemon/cubone/front.2bpp.lz"
 CuboneBackpic:            INCBIN "gfx/pokemon/cubone/back.2bpp.lz"
 MarowakFrontpic:          INCBIN "gfx/pokemon/marowak/front.2bpp.lz"
@@ -795,6 +793,15 @@ GyaradosPlainFrontpic:    INCBIN "gfx/pokemon/gyarados_plain/front.2bpp.lz"
 GyaradosRedFrontpic:      INCBIN "gfx/pokemon/gyarados_red/front.2bpp.lz"
 GyaradosPlainBackpic:
 GyaradosRedBackpic:       INCBIN "gfx/pokemon/gyarados/back.2bpp.lz"
+
+
+SECTION "Exeggutor Pics", ROMX
+
+ExeggutorPlainFrontpic:   INCBIN "gfx/pokemon/exeggutor_plain/front.2bpp.lz"
+ExeggutorPlainBackpic:    INCBIN "gfx/pokemon/exeggutor_plain/back.2bpp.lz"
+ExeggutorAlolanFrontpic:  INCBIN "gfx/pokemon/exeggutor_alolan/front.2bpp.lz"
+ExeggutorAlolanBackpic:   INCBIN "gfx/pokemon/exeggutor_alolan/back.2bpp.lz"
+
 
 SECTION "Mewtwo Pics", ROMX
 

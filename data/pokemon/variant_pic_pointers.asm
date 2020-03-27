@@ -131,3 +131,9 @@ MewtwoPicPointers::
 	dba MewtwoPlainBackpic
 	dba MewtwoArmoredFrontpic
 	dba MewtwoArmoredBackpic
+
+ExeggutorPicPointers::
+	dba ExeggutorPlainFrontpic
+	dba ExeggutorPlainBackpic
+	dba ExeggutorAlolanFrontpic
+	dba ExeggutorAlolanBackpic

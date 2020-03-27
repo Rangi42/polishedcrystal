@@ -70,3 +70,7 @@ GyaradosRedAnimation:   INCLUDE "gfx/pokemon/gyarados_red/anim0.asm"
 MewtwoAnimations:
 MewtwoPlainAnimation:   INCLUDE "gfx/pokemon/mewtwo_plain/anim0.asm"
 MewtwoArmoredAnimation: INCLUDE "gfx/pokemon/mewtwo_armored/anim0.asm"
+
+ExeggutorAnimations:
+ExeggutorPlainAnimation:  INCLUDE "gfx/pokemon/exeggutor_plain/anim0.asm"
+ExeggutorAlolanAnimation: INCLUDE "gfx/pokemon/exeggutor_alolan/anim0.asm"

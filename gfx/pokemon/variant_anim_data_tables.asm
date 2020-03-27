@@ -6,6 +6,7 @@ VariantSpeciesTable:
 	db MAGIKARP
 	db GYARADOS
 	db MEWTWO
+	db EXEGGUTOR
 	db -1
 
 VariantAnimPointerTable:
@@ -16,6 +17,7 @@ VariantAnimPointerTable:
 	dbbww MAGIKARP, BANK(MagikarpAnimations), MagikarpAnimationPointers, MagikarpAnimationExtraPointers
 	dbbww GYARADOS, BANK(GyaradosAnimations), GyaradosAnimationPointers, GyaradosAnimationExtraPointers
 	dbbww MEWTWO, BANK(MewtwoAnimations), MewtwoAnimationPointers, MewtwoAnimationExtraPointers
+	dbbww EXEGGUTOR, BANK(ExeggutorAnimations), ExeggutorAnimationPointers, ExeggutorAnimationExtraPointers
 	dbbww -1, BANK(PicAnimations), AnimationPointers, AnimationExtraPointers
 
 VariantFramesPointerTable:
@@ -26,6 +28,7 @@ VariantFramesPointerTable:
 	dbbba MAGIKARP, BANK(MagikarpsFrames), MagikarpFramesPointers
 	dbbba GYARADOS, BANK(GyaradossFrames), GyaradosFramesPointers
 	dbbba MEWTWO, BANK(MewtwosFrames), MewtwoFramesPointers
+	dbbba EXEGGUTOR, BANK(ExeggutorsFrames), ExeggutorFramesPointers
 	dbbba -1, BANK(KantoFrames), FramesPointers
 
 VariantBitmasksPointerTable:
@@ -36,4 +39,5 @@ VariantBitmasksPointerTable:
 	dbba MAGIKARP, MagikarpBitmasksPointers
 	dbba GYARADOS, GyaradosBitmasksPointers
 	dbba MEWTWO, MewtwoBitmasksPointers
+	dbba EXEGGUTOR, ExeggutorBitmasksPointers
 	dbba -1, BitmasksPointers

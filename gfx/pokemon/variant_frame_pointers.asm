@@ -72,3 +72,7 @@ endr
 MewtwoFramesPointers:
 	dw MewtwoPlainFrames
 	dw MewtwoArmoredFrames
+
+ExeggutorFramesPointers:
+	dw ExeggutorPlainFrames
+	dw ExeggutorAlolanFrames

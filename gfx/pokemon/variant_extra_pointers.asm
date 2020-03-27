@@ -72,3 +72,7 @@ endr
 MewtwoAnimationExtraPointers:
 	dw MewtwoPlainAnimationExtra
 	dw MewtwoArmoredAnimationExtra
+
+ExeggutorAnimationExtraPointers:
+	dw ExeggutorPlainAnimationExtra
+	dw ExeggutorAlolanAnimationExtra

@@ -5,4 +5,5 @@ ENDM
 
 VariantMenuMonIconColorsTable:
 	variconpal GYARADOS, GYARADOS_RED_FORM, RED, RED
+	variconpal EXEGGUTOR, EXEGGUTOR_ALOLAN_FORM, GREEN, RED
 	db -1

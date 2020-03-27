@@ -70,3 +70,7 @@ GyaradosRedFrames:   INCLUDE "gfx/pokemon/gyarados_red/frames.asm"
 MewtwosFrames:
 MewtwoPlainFrames:   INCLUDE "gfx/pokemon/mewtwo_plain/frames.asm"
 MewtwoArmoredFrames: INCLUDE "gfx/pokemon/mewtwo_armored/frames.asm"
+
+ExeggutorsFrames:
+ExeggutorPlainFrames:  INCLUDE "gfx/pokemon/exeggutor_plain/frames.asm"
+ExeggutorAlolanFrames: INCLUDE "gfx/pokemon/exeggutor_alolan/frames.asm"

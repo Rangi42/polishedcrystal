@@ -72,3 +72,7 @@ endr
 MewtwoBitmasksPointers:
 	dw MewtwoPlainBitmasks
 	dw MewtwoArmoredBitmasks
+
+ExeggutorBitmasksPointers:
+	dw ExeggutorPlainBitmasks
+	dw ExeggutorAlolanBitmasks

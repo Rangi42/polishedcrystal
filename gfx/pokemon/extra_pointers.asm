@@ -101,7 +101,7 @@ AnimationExtraPointers:
 	dw VoltorbAnimationExtra
 	dw ElectrodeAnimationExtra
 	dw ExeggcuteAnimationExtra
-	dw ExeggutorAnimationExtra
+	dw -1 ; see ExeggutorAnimationExtraPointers
 	dw CuboneAnimationExtra
 	dw MarowakAnimationExtra
 	dw HitmonleeAnimationExtra
