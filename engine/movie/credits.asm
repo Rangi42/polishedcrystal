@@ -640,8 +640,8 @@ GetCreditsPalette:
 	push hl
 	add LOW(wUnknBGPals)
 	ld e, a
-	ld a, 0 ; not xor a; preserve carry flag?
 	adc HIGH(wUnknBGPals)
+	sub e
 	ld d, a
 	ld bc, 24
 	rst CopyBytes
@@ -650,8 +650,8 @@ GetCreditsPalette:
 	pop af
 	add LOW(wBGPals)
 	ld e, a
-	ld a, 0 ; not xor a; preserve carry flag?
 	adc HIGH(wBGPals)
+	sub e
 	ld d, a
 	ld bc, 24
 	rst CopyBytes

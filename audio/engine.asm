@@ -900,11 +900,11 @@ ApplyPitchWheel:
 	add hl, bc
 	add [hl]
 	ld [hl], a
-	ld a, 0 ; not xor a; preserve carry flag?
 	adc e
+	sub [hl]
 	ld e, a
-	ld a, 0 ; not xor a; preserve carry flag?
 	adc d
+	sub e
 	ld d, a
 	; Compare the dw at [Channel*PitchWheelTarget] to de.
 	; If frequency is greater, we're finished.
