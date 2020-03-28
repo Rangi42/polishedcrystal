@@ -52,10 +52,7 @@ MonMenuLoop:
 	bit 0, a ; A
 	jr nz, .select
 	bit 1, a ; B
-	jr nz, .cancel
-	jr .loop
-
-.cancel
+	jr z, .loop
 	ld a, MONMENU_CANCEL ; CANCEL
 	ret
 

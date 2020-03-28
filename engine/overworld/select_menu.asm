@@ -1,9 +1,7 @@
 SelectMenu::
 	call CheckRegisteredItem
-	jr z, .NotRegistered
-	jp UseRegisteredItem
+	jp nz, UseRegisteredItem
 
-.NotRegistered:
 	call OpenText
 	ld b, BANK(ItemMayBeRegisteredText)
 	ld hl, ItemMayBeRegisteredText

@@ -140,8 +140,7 @@ BuySellToss_InterpretJoypad:
 	ld a, [wItemQuantityChangeBuffer]
 	sub 10
 	jr c, .load_1
-	jr z, .load_1
-	jr .finish_left
+	jr nz, .finish_left
 
 .load_1
 	ld a, 1

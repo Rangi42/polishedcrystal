@@ -1083,10 +1083,8 @@ CardFlip_CheckWinCondition:
 	ld a, [wCoins]
 	cp HIGH(50000)
 	jr c, .less
-	jr z, .check_low
-	jr .more
+	jr nz, .more
 
-.check_low
 	ld a, [wCoins + 1]
 	cp LOW(50000)
 	jr c, .less

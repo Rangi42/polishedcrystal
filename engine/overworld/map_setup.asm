@@ -237,8 +237,7 @@ CheckReplaceKrisSprite:
 	cp INDOOR
 	jr z, .checkbiking
 	cp DUNGEON
-	jr z, .checkbiking
-	jr .nope
+	jr nz, .nope
 .checkbiking
 	ld a, [wPlayerState]
 	cp PLAYER_BIKE

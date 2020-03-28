@@ -856,8 +856,7 @@ ReelAction_SetUpReel2SkipTo7:
 	jr nc, .no_match
 	ld a, [wFirstTwoReelsMatchingSevens]
 	and a
-	jr z, .no_match
-	jp Slots_StopReel
+	jp nz, Slots_StopReel
 
 .no_match
 	ld a, SFX_STOP_SLOT

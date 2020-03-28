@@ -22,9 +22,8 @@ GiveOddEgg:
 	ldh a, [hRandom + 1]
 	cp d
 	jr c, .done
-	jr z, .ok
-	jr .next
-.ok
+	jr nz, .next
+
 	ldh a, [hRandom + 0]
 	cp e
 	jr c, .done

@@ -831,15 +831,9 @@ LinkTradePartymonMenuLoop:
 	call LinkTradeMenu
 	ld a, d
 	and a
-	jr nz, .check_joypad
-	jp LinkTradePartiesMenuMasterLoop
-
-.check_joypad
+	jp z, LinkTradePartiesMenuMasterLoop
 	bit A_BUTTON_F, a
-	jr z, .not_a_button
-	jp Function28926
-
-.not_a_button
+	jp nz, Function28926
 	bit D_DOWN_F, a
 	jr z, .not_d_down
 	ld a, [wMenuCursorY]
@@ -2237,10 +2231,7 @@ DetermineLinkBattleResult:
 	ld a, d
 	cp h
 	jr c, .victory
-	jr z, .compare_lo
-	jr .defeat
-
-.compare_lo
+	jr nz, .defeat
 	ld a, e
 	cp l
 	jr z, .drawn

@@ -1085,8 +1085,7 @@ StrengthFunction:
 ; Strength
 	ld de, ENGINE_PLAINBADGE
 	call CheckBadge
-	jr c, .Failed
-	jr .UseStrength
+	jr nc, .UseStrength
 
 .Failed:
 	ld a, $80

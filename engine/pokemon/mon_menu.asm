@@ -238,11 +238,8 @@ GiveTakePartyMonItem:
 	ret z
 
 	call CheckUniqueItemPocket
-	jr z, .next
+	jr nz, TryGiveItemToPartymon
 
-	jr TryGiveItemToPartymon
-
-.next
 	ld hl, CantBeHeldText
 	call MenuTextBoxBackup
 	jr .loop

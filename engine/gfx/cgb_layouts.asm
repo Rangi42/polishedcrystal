@@ -1197,8 +1197,7 @@ _CGB_JudgeSystem:
 	rst ByteFill
 	; left/right arrows
 	hlcoord 0, 2, wAttrMap
-	ld a, 0 | TILE_BANK
-	ld [hl], a
+	ld [hl], 0 | TILE_BANK
 	; frontpic
 	hlcoord 0, 6, wAttrMap
 	lb bc, 7, 7

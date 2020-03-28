@@ -125,10 +125,7 @@ CheckOwnMonAnywhere:
 	ld bc, sBoxMonOT
 .openboxmon
 	call CheckOwnMon
-	jr nc, .loop
-
-	; found!
-	jp CloseSRAM
+	jp c, CloseSRAM ; found!
 
 .loop
 	push bc

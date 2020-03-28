@@ -452,25 +452,24 @@ AI_Items:
 	jr nz, .notfirstturnout
 	ld a, [bc]
 	bit ALWAYS_USE_F, a
-	jp nz, .Use
+	jr nz, .Use
 	call Random
 	cp 1 + 50 percent
-	jp c, .DontUse
+	jr c, .DontUse
 	ld a, [bc]
 	bit CONTEXT_USE_F, a
-	jp nz, .Use
+	jr nz, .Use
 	call Random
 	cp 1 + 50 percent
-	jp c, .DontUse
-	jp .Use
+	jr c, .DontUse
+	jr .Use
 .notfirstturnout
 	ld a, [bc]
 	bit ALWAYS_USE_F, a
-	jp z, .DontUse
+	jr z, .DontUse
 	call Random
 	cp -1 + 20 percent
-	jp nc, .DontUse
-	jp .Use
+	jr c, .Use
 
 .DontUse:
 	scf

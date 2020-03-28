@@ -2250,8 +2250,7 @@ BattleCommand_failuretext:
 	cp EFFECT_DOUBLE_HIT
 	jr z, .multihit
 	cp EFFECT_FURY_STRIKES
-	jr z, .multihit
-	jp EndMoveEffect
+	jp nz, EndMoveEffect
 
 .multihit
 	call BattleCommand_raisesub
@@ -2306,8 +2305,7 @@ BattleCommand_applydamage:
 	push bc
 	call BattleCommand_falseswipe
 	pop bc
-	jr nc, .no_endure
-	jr .okay
+	jr c, .okay
 .no_endure
 	ld b, $0
 .okay
@@ -3828,9 +3826,7 @@ BattleCommand_damagecalc:
 
 	ld a, b
 	cp HELD_ASSAULT_VEST
-	jr z, .assault_vest
-	jr .done_defender_item
-.assault_vest
+	jr nz, .done_defender_item
 	ld a, $23 ; 2/3 = 67%
 	call ApplySpecialDefenseDamageMod
 	; fallthrough

@@ -300,24 +300,20 @@ CheckOpponentForfeit:
 DetermineMoveOrder:
 	ld a, [wBattlePlayerAction]
 	and a
+	jr nz, .player_first
 
-	jp nz, .player_first
 	call CompareMovePriority
 	jr z, .equal_priority
-	jp c, .player_first
-	jp .enemy_first
+	jr c, .player_first
+.enemy_first
+	and a
+	ret
 
 .equal_priority
 	call CheckSpeedWithQuickClaw
-	jr z, .player_first
-	jr .enemy_first
-
+	jr nz, .enemy_first
 .player_first
 	scf
-	ret
-
-.enemy_first
-	and a
 	ret
 
 GetSpeed::

@@ -183,10 +183,8 @@ BattleBGEffect_FlashContinue:
 	add hl, bc
 	ld a, [hl]
 	and a
-	jr nz, .apply_pal
-	jp EndBattleBGEffect
+	jp z, EndBattleBGEffect
 
-.apply_pal
 	dec a
 	ld [hl], a
 	and 1
@@ -1728,10 +1726,8 @@ BattleBGEffect_2a:
 
 .two
 	call .GetLYOverride
-	jr nc, .next
-	jp .SetLYOverridesBackup
+	jp c, .SetLYOverridesBackup
 
-.next
 	ld hl, BG_EFFECT_STRUCT_03
 	add hl, bc
 	ld [hl], $0
@@ -2197,10 +2193,8 @@ BGEffect_RapidCyclePals:
 	or [hl]
 	ld [hl], a
 	call BattleBGEffect_GetFirstDMGPal
-	jr c, .okay_2_cgb
-	jp BGEffects_LoadBGPal0_OBPal1
+	jp nc, BGEffects_LoadBGPal0_OBPal1
 
-.okay_2_cgb
 	ld hl, BG_EFFECT_STRUCT_03
 	add hl, bc
 	dec [hl]
@@ -2226,10 +2220,8 @@ BGEffect_RapidCyclePals:
 	or [hl]
 	ld [hl], a
 	call BattleBGEffect_GetFirstDMGPal
-	jr c, .okay_4_cgb
-	jp BGEffects_LoadBGPal1_OBPal0
+	jp nc, BGEffects_LoadBGPal1_OBPal0
 
-.okay_4_cgb
 	ld hl, BG_EFFECT_STRUCT_03
 	add hl, bc
 	dec [hl]

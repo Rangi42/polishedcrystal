@@ -137,8 +137,7 @@ GetDestinationWarpNumber::
 	jr nz, .next
 	ld a, [hli]
 	cp d
-	jr nz, .next
-	jr .found_warp
+	jr z, .found_warp
 
 .next
 	pop hl
@@ -1747,8 +1746,7 @@ CheckIfFacingTileCoordIsSign::
 	jr nz, .next
 	ld a, [hli]
 	cp d
-	jr nz, .next
-	jr .copysign
+	jr z, .copysign
 
 .next
 	pop hl
@@ -1818,8 +1816,7 @@ CheckCurrentMapXYTriggers::
 	jr nz, .next
 	ld a, [hli]
 	cp d
-	jr nz, .next
-	jr .copytrigger
+	jr z, .copytrigger
 
 .next
 	pop hl
