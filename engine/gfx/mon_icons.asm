@@ -2,23 +2,53 @@ INCLUDE "data/pokemon/menu_icon_pals.asm"
 INCLUDE "data/pokemon/variant_menu_icon_pals.asm"
 
 LoadOverworldMonIcon:
-	ld [wCurIcon], a
-	ld l, a
+	; d = species
+	ld a, [wCurIcon]
+	ld d, a
+	; e = form
+	ld a, [wCurIconForm]
+	ld e, a
+
+	ld hl, VariantIconPointersTable
+.loop
+	; check species
+	ld a, [hli]
+	cp -1
+	jr z, .normal
+	cp d
+	jr nz, .next3
+	; check form
+	ld a, [hli]
+	cp e
+	jr nz, .next2
+	; use icon
+	jr .got_icon
+
+.next3
+	inc hl
+.next2
+	inc hl
+	inc hl
+	jr .loop
+
+.normal
+	ld l, d
 	ld h, 0
 	add hl, hl
 	ld de, IconPointers
 	add hl, de
+.got_icon
 	ld a, [hli]
-	ld e, a
 	ld d, [hl]
+	ld e, a
+
 ; Extended icon bank routine by com3tiin
 ; http://www.pokecommunity.com/showthread.php?t=338470
-GetMonIconBank:
 	ld a, [wCurIcon]
-	cp TAUROS ; first mon in Icons2
-	lb bc, BANK(Icons1), 8
+	cp TAUROS ; first mon in "Mon Icons 2"
+	lb bc, BANK("Mon Icons 1"), 8
 	ret c
-	ld b, BANK(Icons2)
+	ld b, BANK("Mon Icons 2")
 	ret
 
 SetMenuMonIconColor:
@@ -32,22 +62,12 @@ SetMenuMonIconColor:
 	call GetMenuMonIconPalette
 	jp ProcessMenuMonIconColor
 
-SetMenuMonIconColor_NoShiny:
-	push hl
-	push de
-	push bc
-	push af
-
-	ld a, [wd265]
-	ld [wCurPartySpecies], a
-	call GetMenuMonIconPalette_NoShiny
-	jr ProcessMenuMonIconColor
-
 LoadFlyMonColor:
 	push hl
 	push de
 	push bc
 	push af
+
 	ld a, MON_SPECIES
 	call GetPartyParamLocation
 	ld a, [hl]
@@ -135,32 +155,26 @@ ProcessMenuMonIconColor:
 .finish
 	jp PopAFBCDEHL
 
-GetMonIconPalette::
+GetOverworldMonIconPalette::
 	ld a, [wCurIcon]
-	jr _GetNormalMonIconPalette
-
-GetMenuMonIconPalette_NoShiny:
-	ld a, [wCurPartySpecies]
-_GetNormalMonIconPalette:
-	ld c, a
-	xor a
-	push af
-	jr GetMenuMonIconPalette.normal
+	ld hl, wCurIconShiny
+	jr _GetMonIconPalette
 
 GetMenuMonIconPalette:
+	ld a, [wCurPartySpecies]
+_GetMonIconPalette:
+	; c = species
+	ld c, a
+	; b = form
+	inc hl ; Form is in the byte after Shiny
+	ld a, [hld]
+	and FORM_MASK
+	ld b, a
+
 	; check shininess at hl
 	ld a, [hl]
 	and SHINY_MASK
 	push af
-
-	; c = species
-	ld a, [wCurPartySpecies]
-	ld c, a
-	; b = form
-	inc hl ; Form is in the byte after Shiny
-	ld a, [hl]
-	and FORM_MASK
-	ld b, a
 
 	ld hl, VariantMenuMonIconColorsTable
 .loop
@@ -237,51 +251,38 @@ LoadNamingScreenMonIcon:
 	push de
 	push bc
 
-	ld hl, wTempMonIsEgg
-	bit MON_IS_EGG_F, [hl]
-	ld a, [wd265]
-	jr z, .got_species
-	ld a, EGG
-.got_species
-	ld [wd265], a
-	ld hl, wTempMonShiny
-	call SetMenuMonIconColor
-
-	ld a, [wd265]
-	ld [wCurIcon], a
-	xor a
-	call GetIconGFX
 	depixel 4, 4, 4, 0
-	ld a, SPRITE_ANIM_INDEX_PARTY_MON
-	call InitSpriteAnimStruct
-	ld hl, SPRITEANIMSTRUCT_ANIM_SEQ_ID
-	add hl, bc
-	ld [hl], SPRITE_ANIM_SEQ_NULL
-
-	jp PopBCDEHL
+	jr InitScreenMonIcon
 
 LoadMoveMenuMonIcon:
 	push hl
 	push de
 	push bc
 
-	ld a, MON_IS_EGG
+	depixel 3, 4, 2, 4
+InitScreenMonIcon:
+	push de
+
+	ld a, MON_FORM ; aka MON_IS_EGG
 	call GetPartyParamLocation
+	ld a, [hl]
+	and FORM_MASK
+	ld [wCurIconForm], a
 	bit MON_IS_EGG_F, [hl]
 	ld a, [wd265]
 	jr z, .got_species
 	ld a, EGG
 .got_species
 	ld [wd265], a
-	ld a, MON_SHINY
-	call GetPartyParamLocation
+	ld [wCurIcon], a
+
+	dec hl ; MON_SHINY = MON_FORM - 1
 	call SetMenuMonIconColor
 
-	ld a, [wd265]
-	ld [wCurIcon], a
 	xor a
 	call GetIconGFX
-	depixel 3, 4, 2, 4
+
+	pop de
 	ld a, SPRITE_ANIM_INDEX_PARTY_MON
 	call InitSpriteAnimStruct
 	ld hl, SPRITEANIMSTRUCT_ANIM_SEQ_ID
@@ -291,19 +292,12 @@ LoadMoveMenuMonIcon:
 	jp PopBCDEHL
 
 LoadTradeAnimationMonIcon:
-	push hl
-	push de
-	push bc
-
-	call SetMenuMonIconColor_NoShiny
-
+	call SetMenuMonIconColor
 	ld a, [wd265]
 	ld [wCurIcon], a
 	ld a, $62
 	ld [wCurIconTile], a
-	call GetMemIconGFX
-
-	jp PopBCDEHL
+	jp GetMemIconGFX
 
 InitPartyMenuIcon:
 	ld a, [wCurIconTile]
@@ -311,16 +305,23 @@ InitPartyMenuIcon:
 	ldh a, [hObjectStructIndexBuffer]
 	ld e, a
 	ld d, 0
-	ld hl, wPartyMon1IsEgg
+	ld hl, wPartyMon1IsEgg ; aka wPartyMon1Form
 	push de
 	call GetPartyLocation
 	pop de
-	bit MON_IS_EGG_F, [hl]
-	ld a, EGG
-	jr nz, .got_icon
+	ld a, [hl]
+	bit MON_IS_EGG_F, a
+	jr nz, .egg
+	and FORM_MASK
+	ld [wCurIconForm], a
 	ld hl, wPartySpecies
 	add hl, de
 	ld a, [hl]
+	jr .got_icon
+.egg
+	xor a
+	ld [wCurIconForm], a
+	dec a ; ld a, EGG
 .got_icon
 	ld [wCurIcon], a
 	call GetMemIconGFX
@@ -392,21 +393,31 @@ SetPartyMonIconAnimSpeed:
 .speeds
 	db $00, $40, $80
 
-PokegearFlyMap_GetMonIcon:
-; Load species icon into VRAM at tile a
+Fly_PrepMonIcon:
 	push de
-	ld a, [wd265]
+	ld a, MON_FORM
+	call GetPartyParamLocation
+	and FORM_MASK
+	ld [wCurIconForm], a
+	ld a, [wCurPartyMon]
+	ld hl, wPartySpecies
+	ld e, a
+	ld d, 0
+	add hl, de
+	ld a, [hl]
+	ld [wd265], a
 	ld [wCurIcon], a
 	pop de
 	ld a, e
+	ret
+
+PokegearFlyMap_GetMonIcon:
+; Load species icon into VRAM at tile a
+	call Fly_PrepMonIcon
 	jp GetIconGFX
 
 FlyFunction_GetMonIcon:
-	push de
-	ld a, [wd265]
-	ld [wCurIcon], a
-	pop de
-	ld a, e
+	call Fly_PrepMonIcon
 	jp GetIcon_a
 
 GetMemIconGFX:
@@ -444,20 +455,12 @@ endr
 	add hl, de
 	push hl
 
-; The icons are contiguous, in order and of the same
-; size, so the pointer table is somewhat redundant.
-	ld a, [wCurIcon]
 	push hl
-	ld l, a
-	ld h, 0
-	add hl, hl
-	ld de, IconPointers
-	add hl, de
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
+	call LoadOverworldMonIcon
+	ld h, d
+	ld l, e
 	pop de
-	call GetMonIconBank
+
 	call DecompressRequest2bpp
 	pop hl
 	ret

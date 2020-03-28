@@ -1,4 +1,5 @@
 INCLUDE "data/pokemon/menu_icon_pointers.asm"
+INCLUDE "data/pokemon/variant_menu_icon_pointers.asm"
 
 ; Unique icons by Blue Emerald, Soloo993, Chamber, Lake, Neslug, Pikachu253, and Ryta
 ; http://www.pokecommunity.com/showthread.php?t=338470
@@ -6,7 +7,6 @@ INCLUDE "data/pokemon/menu_icon_pointers.asm"
 
 SECTION "Mon Icons 1", ROMX
 
-Icons1:
 NullIcon:
 BulbasaurIcon:    INCBIN "gfx/icons/bulbasaur.2bpp.lz"
 IvysaurIcon:      INCBIN "gfx/icons/ivysaur.2bpp.lz"
@@ -110,7 +110,8 @@ KinglerIcon:      INCBIN "gfx/icons/kingler.2bpp.lz"
 VoltorbIcon:      INCBIN "gfx/icons/voltorb.2bpp.lz"
 ElectrodeIcon:    INCBIN "gfx/icons/electrode.2bpp.lz"
 ExeggcuteIcon:    INCBIN "gfx/icons/exeggcute.2bpp.lz"
-ExeggutorIcon:    INCBIN "gfx/icons/exeggutor.2bpp.lz"
+ExeggutorIcon:    INCBIN "gfx/icons/exeggutor_plain.2bpp.lz"
+ExeggutorAlolanIcon: INCBIN "gfx/icons/exeggutor_alolan.2bpp.lz"
 CuboneIcon:       INCBIN "gfx/icons/cubone.2bpp.lz"
 MarowakIcon:      INCBIN "gfx/icons/marowak.2bpp.lz"
 HitmonleeIcon:    INCBIN "gfx/icons/hitmonlee.2bpp.lz"
@@ -139,7 +140,6 @@ PinsirIcon:       INCBIN "gfx/icons/pinsir.2bpp.lz"
 
 SECTION "Mon Icons 2", ROMX
 
-Icons2:
 TaurosIcon:       INCBIN "gfx/icons/tauros.2bpp.lz"
 MagikarpIcon:     INCBIN "gfx/icons/magikarp.2bpp.lz"
 GyaradosIcon:     INCBIN "gfx/icons/gyarados.2bpp.lz"

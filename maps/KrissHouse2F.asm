@@ -255,10 +255,14 @@ endr
 	loadvar wPartyMon3PP+2, 15
 	loadvar wPartyMon3PP+3, 15
 	; exeggutor test
-	givepoke EXEGGCUTE, 79
-	givepoke EXEGGCUTE, 79
+	givepoke EXEGGUTOR, 80
+	givepoke EXEGGUTOR, 80
 	loadvar wPartyMon4Form, MALE | EXEGGUTOR_PLAIN_FORM
 	loadvar wPartyMon5Form, FEMALE | EXEGGUTOR_ALOLAN_FORM
+	loadvar wPartyMon4Moves+0, FLY
+	loadvar wPartyMon4PP+0, 15
+	loadvar wPartyMon5Moves+0, FLY
+	loadvar wPartyMon5PP+0, 15
 	; fill pokedex
 	callasm FillPokedex
 	; intro events

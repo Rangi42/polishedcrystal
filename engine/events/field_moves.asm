@@ -369,13 +369,6 @@ FlyFunction_InitGFX:
 	ld hl, vTiles1 tile $00
 	lb bc, BANK(CutGrassGFX), 4
 	call Request2bpp
-	ld a, [wCurPartyMon]
-	ld hl, wPartySpecies
-	ld e, a
-	ld d, 0
-	add hl, de
-	ld a, [hl]
-	ld [wd265], a
 	ld e, $84
 	farcall FlyFunction_GetMonIcon
 	xor a
