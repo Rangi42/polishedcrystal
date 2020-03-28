@@ -463,18 +463,45 @@ Text_WhatEvolving:
 	text_end
 
 LearnEvolutionMove:
+	; c = species
 	ld a, [wd265]
 	ld [wCurPartySpecies], a
-	dec a
-	ld b, 0
 	ld c, a
+	; b = form
+	ld a, [wCurForm]
+	ld b, a
+
+	ld hl, VariantEvolutionMovesTable
+.loop
+	; check species
+	ld a, [hli]
+	cp -1
+	jr z, .normal
+	cp c
+	jr nz, .next2
+	; check form
+	ld a, [hli]
+	cp b
+	jr nz, .next1
+	; use evolution move
+	jr .got_move
+
+.next2
+	inc hl
+.next1
+	inc hl
+	jr .loop
+
+.normal
+	dec c
+	ld b, 0
 	ld hl, EvolutionMoves
 	add hl, bc
+.got_move
 	ld a, [hl]
 	and a
 	ret z
 
-	push hl
 	ld d, a
 	ld hl, wPartyMon1Moves
 	ld a, [wCurPartyMon]
@@ -485,7 +512,7 @@ LearnEvolutionMove:
 .check_move
 	ld a, [hli]
 	cp d
-	jr z, .has_move
+	ret z
 	dec b
 	jr nz, .check_move
 
@@ -500,9 +527,6 @@ LearnEvolutionMove:
 	pop af
 	ld [wCurPartySpecies], a
 	ld [wd265], a
-
-.has_move
-	pop hl
 	ret
 
 LearnLevelMoves:
@@ -548,13 +572,7 @@ LearnLevelMoves:
 	jr z, .has_move
 	dec b
 	jr nz, .check_move
-	jr .learn
-.has_move
 
-	pop hl
-	jr .find_move
-
-.learn
 	ld a, d
 	ld [wPutativeTMHMMove], a
 	ld [wd265], a
@@ -566,6 +584,7 @@ LearnLevelMoves:
 	pop af
 	ld [wCurPartySpecies], a
 	ld [wd265], a
+.has_move
 	pop hl
 	jr .find_move
 

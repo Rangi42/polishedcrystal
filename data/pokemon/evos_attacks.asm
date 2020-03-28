@@ -4,6 +4,7 @@ INCLUDE "constants.asm"
 SECTION "Evolutions and Attacks", ROMX
 
 INCLUDE "data/pokemon/evolution_moves.asm"
+INCLUDE "data/pokemon/variant_evolution_moves.asm"
 
 INCLUDE "data/pokemon/evos_attacks_pointers.asm"
 

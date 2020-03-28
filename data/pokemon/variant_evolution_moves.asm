@@ -1,0 +1,3 @@
+VariantEvolutionMovesTable::
+	db EXEGGUTOR, EXEGGUTOR_ALOLAN_FORM, DRAGON_PULSE
+	db -1
