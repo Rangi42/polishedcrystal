@@ -8,7 +8,11 @@ NameRater:
 	ld hl, NameRaterWhichMonText
 	call PrintText
 	farcall SelectMonFromParty
-	jr c, .cancel
+	jp c, .cancel
+
+	ld a, MON_FORM
+	call GetPartyParamLocation
+	ld [wCurForm], a
 ; He can't rename an egg...
 	ld a, MON_IS_EGG
 	call GetPartyParamLocation

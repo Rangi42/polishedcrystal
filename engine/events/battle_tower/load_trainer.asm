@@ -314,11 +314,13 @@ BT_SetLevel:
 	ld a, [hl]
 	ld [wCurSpecies], a
 	ld [wCurPartySpecies], a
-	push hl
+	ld bc, wPartyMon1Form - wPartyMon1Species
+	add hl, bc
+	ld a, [hl]
+	ld [wCurForm], a
 	call GetBaseData
-	pop hl
 
-	ld bc, wPartyMon1Level - wPartyMon1Species
+	ld bc, wPartyMon1Level - wPartyMon1Form
 	add hl, bc
 	pop de
 	push de

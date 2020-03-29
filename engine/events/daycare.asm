@@ -457,7 +457,7 @@ DayCare_GiveEgg:
 	ld hl, wPartyCount
 	ld a, [hl]
 	cp PARTY_LENGTH
-	jr nc, .PartyFull
+	jp nc, .PartyFull
 	inc a
 	ld [hl], a
 
@@ -503,6 +503,8 @@ DayCare_GiveEgg:
 	ld bc, wEggMonEnd - wEggMon
 	rst CopyBytes
 
+	ld a, [wEggMonForm]
+	ld [wCurForm], a
 	call GetBaseData
 	ld a, [wPartyCount]
 	dec a
@@ -739,10 +741,15 @@ DayCare_InitBreeding:
 	inc a
 
 .LoadWhichBreedmonIsTheMother:
+	; load wCurForm for base data check later
 	ld [wBreedMotherOrNonDitto], a
 	and a
+	ld a, [wBreedMon1Form]
+	ld [wCurForm], a
 	ld a, [wBreedMon1Species]
 	jr z, .GotMother
+	ld a, [wBreedMon2Form]
+	ld [wCurForm], a
 	ld a, [wBreedMon2Species]
 
 .GotMother:
@@ -754,12 +761,9 @@ DayCare_InitBreeding:
 
 	ld a, [wCurPartySpecies]
 	cp NIDORAN_F
-	jr z, .NidoranFamilyMother
-	cp NIDORINA
-	jr z, .NidoranFamilyMother
-	cp NIDOQUEEN
 	jr nz, .GotEggSpecies
-.NidoranFamilyMother:
+
+	; random Nidoran offspring
 	call Random
 	cp 1 + 50 percent
 	; a = carry ? NIDORAN_F : NIDORAN_M

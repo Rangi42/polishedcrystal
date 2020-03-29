@@ -20,6 +20,8 @@ BugContest_SetCaughtContestMon:
 	ld a, [wTempEnemyMonSpecies]
 	ld [wCurSpecies], a
 	ld [wCurPartySpecies], a
+	ld a, [wOTPartyMon1Form]
+	ld [wCurForm], a
 	call GetBaseData
 	xor a
 	ld bc, PARTYMON_STRUCT_LENGTH
