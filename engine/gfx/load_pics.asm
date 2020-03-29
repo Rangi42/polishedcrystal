@@ -126,7 +126,7 @@ _GetFrontpic:
 	ld a, BANK(sScratch)
 	call GetSRAMBank
 	push de
-	call GetBaseData
+	call GetBaseData ; [wCurSpecies] and [wCurForm] are already set
 	ld a, [wBasePicSize]
 	and $f
 	ld b, a

@@ -298,6 +298,9 @@ endr
 
 	call ClearTileMap
 	call UpdateSpeciesNameIfNotNicknamed
+	ld a, [wTempMonForm]
+	and FORM_MASK
+	ld [wCurForm], a
 	call GetBaseData
 
 	ld hl, wTempMonEVs - 1

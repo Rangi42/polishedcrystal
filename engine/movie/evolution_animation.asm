@@ -48,7 +48,7 @@ EvolutionAnimation:
 	ld a, [wEvolutionOldSpecies]
 	ld [wCurPartySpecies], a
 	ld [wCurSpecies], a
-	call GetBaseData
+	call GetBaseData ; [wCurForm] is already set
 	hlcoord 7, 2
 	call PrepMonFrontpic
 
@@ -145,7 +145,7 @@ EvolutionAnimation:
 	jp GetCGBLayout
 
 .LoadFrontpic:
-	call GetBaseData
+	call GetBaseData ; [wCurForm] is already set
 	ld a, $1
 	ld [wBoxAlignment], a
 	ld de, vTiles2

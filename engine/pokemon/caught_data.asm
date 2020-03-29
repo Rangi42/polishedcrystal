@@ -4,6 +4,9 @@ CheckPartyFullAfterContest:
 	jp z, .DidntCatchAnything
 	ld [wCurPartySpecies], a
 	ld [wCurSpecies], a
+	ld a, [wContestMonForm]
+	and FORM_MASK
+	ld [wCurForm], a
 	call GetBaseData
 	ld hl, wPartyCount
 	ld a, [hl]

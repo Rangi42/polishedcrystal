@@ -618,7 +618,7 @@ if !DEF(DEBUG)
 	ld a, SYLVEON
 	ld [wCurSpecies], a
 	ld [wCurPartySpecies], a
-	call GetBaseData
+	call GetBaseData ; [wCurForm] doesn't matter for Sylveon
 
 	hlcoord 6, 4
 	call PrepMonFrontpic

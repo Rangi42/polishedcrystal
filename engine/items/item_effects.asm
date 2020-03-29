@@ -454,6 +454,9 @@ PokeBallEffect:
 	ld a, [wOTPartyMon1Species]
 	ld [wCurSpecies], a
 	ld [wCurPartySpecies], a
+	ld a, [wOTPartyMon1Form]
+	and FORM_MASK
+	ld [wCurForm], a
 	call GetBaseData
 
 	pop af
