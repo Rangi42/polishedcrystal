@@ -994,16 +994,17 @@ DayCare_InitBreeding:
 	ld [hl], a
 .not_shiny
 	; Gender
-	ld a, 8
-	call RandomRange
-	ld b, a
 	ld a, [wEggMonSpecies]
 	ld c, a
+	ld a, [wEggMonForm]
+	and FORM_MASK
+	ld b, a
 	call GetGenderRatio
 	; if rnd(0..7) < c: female, else male
-	ld a, b
+	ld a, 8
+	call RandomRange
 	cp c
-	; a = carry (b < c) ? FEMALE : MALE (0)
+	; a = carry (rnd(0..7) < c) ? FEMALE : MALE (0)
 	sbc a
 	and FEMALE
 	ld hl, wEggMonGender

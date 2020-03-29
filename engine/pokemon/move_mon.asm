@@ -329,6 +329,9 @@ endr
 ; We need the gender ratio to do anything with this.
 	ld a, [wCurPartySpecies]
 	ld c, a
+	ld a, [wPartyMon1Form]
+	and FORM_MASK
+	ld b, a
 	call GetGenderRatio
 ; Ratios below the value are female, and vice-versa.
 	ld a, b

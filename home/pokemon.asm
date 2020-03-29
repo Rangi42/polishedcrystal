@@ -208,6 +208,7 @@ GetAbility::
 	ret
 
 GetGenderRatio::
+; 'b' contains the target form
 ; 'c' contains the target species
 ; returns gender ratio in c
 ; preserves curspecies and base data
@@ -216,10 +217,10 @@ GetGenderRatio::
 .Function:
 	push hl
 	push bc
-	ld hl, BASEMON_GENDER
-	ld b, 0
+	call GetSpeciesAndFormIndex
+	dec bc
 	ld a, BASEMON_STRUCT_LENGTH
-	dec c
+	ld hl, BASEMON_GENDER
 	rst AddNTimes
 	pop bc
 	ld a, [hl]
