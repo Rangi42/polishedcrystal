@@ -574,10 +574,16 @@ InheritLevelMove:
 
 InheritEggMove:
 ; If move d is an egg move, inherit that move
+	; c = species
 	ld a, [wEggMonSpecies]
-	dec a
 	ld c, a
-	ld b, 0
+	; b = form
+	ld a, [wEggMonForm]
+	and FORM_MASK
+	ld b, a
+	; bc = index
+	call GetSpeciesAndFormIndex
+	dec bc
 	ld hl, EggMovePointers
 	add hl, bc
 	add hl, bc
