@@ -304,6 +304,13 @@ PlacePartyMonTMHMCompatibility:
 	add hl, de
 	ld a, [hl]
 	ld [wCurPartySpecies], a
+	ld a, b
+	ld hl, wPartyMon1Form
+	ld bc, PARTYMON_STRUCT_LENGTH
+	rst AddNTimes
+	ld a, [hl]
+	and FORM_MASK
+	ld [wCurForm], a
 	predef CanLearnTMHMMove
 	pop hl
 	call .PlaceAbleNotAble
