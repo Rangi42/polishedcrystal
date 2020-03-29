@@ -798,6 +798,8 @@ _CheckSpeed::
 	ldh [hBattleTurn], a
 	pop de
 	; bc is enemy speed, de player
+	; The CheckSpeed wrapper assumes this returns 1 if nz, 0 for z to a.
+	; Changing this will break Trick Room handling.
 	ld a, b
 	cp d
 	jr c, .player_first
