@@ -6942,10 +6942,18 @@ GetNewBaseExp:
 	jr c, .not_basic
 
 	; let's see if we have an evolution
-	ld hl, EvosAttacksPointers
+	; c = species
 	ld a, [wCurPartySpecies]
 	ld c, a
-	ld b, 0
+	; b = form
+	ld a, MON_FORM
+	call OTPartyAttr
+	and FORM_MASK
+	ld b, a
+	; bc = index
+	call GetSpeciesAndFormIndex
+	dec bc
+	ld hl, EvosAttacksPointers
 	add hl, bc
 	add hl, bc
 	ld a, BANK(EvosAttacksPointers)

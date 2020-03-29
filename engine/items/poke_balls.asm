@@ -380,10 +380,16 @@ GLOBAL EvosAttacks
 GLOBAL EvosAttacksPointers
 
 	push bc
+	; c = species
 	ld a, [wTempEnemyMonSpecies]
-	dec a
 	ld c, a
-	ld b, 0
+	; b = form
+	ld a, [wEnemyMonForm]
+	and FORM_MASK
+	ld b, a
+	; bc = index
+	call GetSpeciesAndFormIndex
+	dec bc
 	ld hl, EvosAttacksPointers
 	add hl, bc
 	add hl, bc

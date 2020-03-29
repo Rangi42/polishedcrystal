@@ -257,3 +257,7 @@ EvosAttacksPointers::
 	dw LeafeonEvosAttacks
 	dw GlaceonEvosAttacks
 	dw SylveonEvosAttacks
+	dw EggEvosAttacks
+
+	dw GyaradosEvosAttacks
+	dw ExeggutorAlolanEvosAttacks

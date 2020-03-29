@@ -3215,14 +3215,20 @@ endc
 	ret
 
 UnevolvedEviolite:
-	ld a, MON_SPECIES
-	call OpponentPartyAttr
-
-	dec a
 	push hl
 	push bc
+	; c = species
+	ld a, MON_SPECIES
+	call OpponentPartyAttr
 	ld c, a
-	ld b, 0
+	; b = form
+	ld a, MON_FORM
+	call OpponentPartyAttr
+	and FORM_MASK
+	ld b, a
+	; bc = index
+	call GetSpeciesAndFormIndex
+	dec bc
 	ld hl, EvosAttacksPointers
 	add hl, bc
 	add hl, bc

@@ -42,15 +42,7 @@ EvolveAfterBattle_MasterLoop
 	jp z, EvolveAfterBattle_MasterLoop
 
 	ld a, [wEvolutionOldSpecies]
-	dec a
-	ld b, 0
-	ld c, a
-	ld hl, EvosAttacksPointers
-	add hl, bc
-	add hl, bc
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
+	call GetEvosAttacksPointer
 
 	push hl
 	xor a
@@ -509,15 +501,7 @@ LearnEvolutionMove:
 LearnLevelMoves:
 	ld a, [wd265]
 	ld [wCurPartySpecies], a
-	dec a
-	ld b, 0
-	ld c, a
-	ld hl, EvosAttacksPointers
-	add hl, bc
-	add hl, bc
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
+	call GetEvosAttacksPointer
 
 .skip_evos
 	ld a, [hli]
@@ -571,17 +555,8 @@ FillMoves:
 	push hl
 	push de
 	push bc
-	ld hl, EvosAttacksPointers
-	ld b, 0
 	ld a, [wCurPartySpecies]
-	dec a
-	add a
-	rl b
-	ld c, a
-	add hl, bc
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
+	call GetEvosAttacksPointer
 .GoToAttacks:
 	ld a, [hli]
 	and a
@@ -694,6 +669,7 @@ GetPreEvolution:
 	ld c, 0
 .loop ; For each Pokemon...
 	ld hl, EvosAttacksPointers
+	; this does not need to use the extended GetSpeciesAndFormIndex
 	ld b, 0
 	add hl, bc
 	add hl, bc
@@ -731,4 +707,28 @@ GetPreEvolution:
 	ld a, c
 	ld [wCurPartySpecies], a
 	scf
+	ret
+
+GetEvosAttacksPointer:
+	push af
+	; b = form
+	ld a, [wCurPartyMon]
+	ld hl, wPartyMon1Form
+	ld bc, PARTYMON_STRUCT_LENGTH
+	rst AddNTimes
+	ld a, [hl]
+	and FORM_MASK
+	ld b, a
+	; c = species
+	pop af
+	ld c, a
+	; bc = index
+	call GetSpeciesAndFormIndex
+	dec bc
+	ld hl, EvosAttacksPointers
+	add hl, bc
+	add hl, bc
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
 	ret

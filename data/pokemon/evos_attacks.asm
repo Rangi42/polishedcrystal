@@ -5020,3 +5020,19 @@ SylveonEvosAttacks:
 	db 41, DOUBLE_EDGE ; Last Resort → tutor move
 	db 45, PLAY_ROUGH ; Psych Up → new move
 	db 0 ; no more level-up moves
+
+EggEvosAttacks::
+	db 0 ; no more evolutions
+	db 0 ; no more level-up moves
+
+ExeggutorAlolanEvosAttacks::
+	db 0 ; no more evolutions
+	db 1, TACKLE ; Barrage → new move
+	db 1, HYPNOSIS
+	db 1, CONFUSION
+	db 1, DRAGON_PULSE ; evolution move
+	db 17, DRAGON_RAGE ; Psyshock → new move
+	db 27, ZEN_HEADBUTT ; Egg Bomb → tutor move
+	db 37, POWER_WHIP ; Wood Hammer → new move
+	db 47, OUTRAGE ; Leaf Storm → S/M TM move
+	db 0 ; no more level-up moves
