@@ -171,6 +171,9 @@ StatsScreen_CopyToTempMon:
 	jr nz, .breedmon
 	ld a, [wBufferMon]
 	ld [wCurSpecies], a
+	ld a, [wBufferMonForm]
+	and FORM_MASK
+	ld [wCurForm], a
 	call GetBaseData
 	ld hl, wBufferMon
 	ld de, wTempMon

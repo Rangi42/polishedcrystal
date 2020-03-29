@@ -1227,16 +1227,23 @@ endr
 	ld bc, PARTYMON_STRUCT_LENGTH - MON_LEVEL
 	rst CopyBytes ; copy Level, Status, Unused, HP, MaxHP, Stats
 	pop de
+
 	ldh a, [hBattleTurn]
 	and a
 	ld hl, wTempBattleMonSpecies
-	jr z, .got_temp_species
+	ld bc, GetBattleMonVariant
+	jr z, .got_species_and_form
 	ld hl, wTempEnemyMonSpecies
-.got_temp_species
+	ld bc, GetEnemyMonVariant
+.got_species_and_form
 	ld a, [de]
 	ld [wCurSpecies], a
 	ld [wCurPartySpecies], a
 	ld [hl], a
+	ld h, b
+	ld l, c
+	call _hl_ ; sets [wCurForm]
+
 	push de
 	call GetBaseData
 	ld de, wBattleMonType1
@@ -1340,10 +1347,6 @@ endc
 	ld a, [wFirstUnownSeen]
 	and a
 	jr nz, .skip_unown
-	ld a, [wCurOTMon]
-	ld hl, wOTPartyMon1Form
-	call GetPartyLocation
-	predef GetVariant
 	ld a, [wCurForm]
 	ld [wFirstUnownSeen], a
 .skip_unown
@@ -1499,8 +1502,13 @@ GetEnemyMonVariant:
 	call GetPartyLocation
 	predef_jump GetVariant
 
+GetCurPartyMonVariant:
+	ld a, [wCurPartyMon]
+	jr _GetPlayerMonVariant
+
 GetBattleMonVariant:
 	ld a, [wCurBattleMon]
+_GetPlayerMonVariant:
 	ld hl, wPartyMon1Form
 	call GetPartyLocation
 	predef_jump GetVariant
@@ -2743,6 +2751,7 @@ Function_SetEnemyPkmnAndSendOutAnimation:
 	ld a, [wTempEnemyMonSpecies]
 	ld [wCurPartySpecies], a
 	ld [wCurSpecies], a
+	call GetEnemyMonVariant
 	call GetBaseData
 	ld a, OTPARTYMON
 	ld [wMonType], a
@@ -3645,7 +3654,7 @@ endr
 	ld [de], a
 	ld hl, wBattleMonLevel
 	ld de, wTempMonLevel
-	ld bc, $0011
+	ld bc, wTempMonStatsEnd - wTempMonLevel
 	rst CopyBytes
 	ld a, [wCurBattleMon]
 	ld hl, wPartyMon1Species
@@ -3653,6 +3662,7 @@ endr
 	ld a, [hl]
 	ld [wCurPartySpecies], a
 	ld [wCurSpecies], a
+	call GetBattleMonVariant
 	call GetBaseData
 
 	pop hl
@@ -3709,6 +3719,7 @@ DrawEnemyHUD:
 	ld a, [wTempEnemyMonSpecies]
 	ld [wCurSpecies], a
 	ld [wCurPartySpecies], a
+	call GetEnemyMonVariant
 	call GetBaseData
 	ld de, wEnemyMonNick
 	hlcoord 1, 0
@@ -6232,6 +6243,7 @@ GiveExperiencePoints:
 	add hl, de
 	ld a, [hl]
 	ld [wCurSpecies], a
+	call GetCurPartyMonVariant
 	call GetBaseData
 	push bc
 	ld d, MAX_LEVEL
@@ -6607,11 +6619,12 @@ GiveBattleEVs:
 	ld hl, MON_EVS
 	add hl, bc
 	push bc
-	ld a, MON_SPECIES
 	push hl
+	ld a, MON_SPECIES
 	call OTPartyAttr
-	pop hl
 	ld [wCurSpecies], a
+	call GetEnemyMonVariant
+	pop hl
 	call GetBaseData
 	; EV yield format:
 	; Byte 1: xxyyzzmm x: HP, y: Atk, z: Def, m: Spd
@@ -7175,6 +7188,7 @@ HandleSafariAngerEatingStatus:
 	; reset the catch rate to normal if bait/rock effects have worn off
 	ld a, [wEnemyMonSpecies]
 	ld [wCurSpecies], a
+	call GetEnemyMonVariant
 	call GetBaseData
 	ld a, [wBaseCatchRate]
 	ld [wEnemyMonCatchRate], a
@@ -7370,8 +7384,8 @@ DropEnemySub:
 	ld a, [wEnemyMonSpecies]
 	ld [wCurSpecies], a
 	ld [wCurPartySpecies], a
-	call GetBaseData
 	call GetEnemyMonVariant
+	call GetBaseData
 	ld de, vTiles2
 	predef FrontpicPredef
 	pop af

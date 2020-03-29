@@ -1188,6 +1188,10 @@ BattleCommand_stab:
 	ld a, MON_SPECIES
 	call TrueUserPartyAttr
 	ld [wCurSpecies], a
+	ld a, MON_FORM
+	call TrueUserPartyAttr
+	and FORM_MASK
+	ld [wCurForm], a
 	call GetBaseData
 	ld hl, wBaseType
 	jr .got_attacker_types
