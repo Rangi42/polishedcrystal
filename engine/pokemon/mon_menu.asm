@@ -1136,6 +1136,8 @@ GetForgottenMoves::
 	ld a, [hl]
 	and FORM_MASK
 	ld b, a
+	; bc = index
+	call GetSpeciesAndFormIndex
 	dec bc
 	ld hl, EvosAttacksPointers
 	add hl, bc
