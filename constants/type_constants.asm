@@ -1,25 +1,25 @@
 	const_def
 	; Type order matters for Hidden Power and non-PSS category
-	const NORMAL    ; 0
-	const FIGHTING  ; 1
-	const FLYING    ; 2
-	const POISON    ; 3
-	const GROUND    ; 4
-	const ROCK      ; 5
-	const BUG       ; 6
-	const GHOST     ; 7
-	const STEEL     ; 8
+	const NORMAL    ; 00
+	const FIGHTING  ; 01
+	const FLYING    ; 02
+	const POISON    ; 03
+	const GROUND    ; 04
+	const ROCK      ; 05
+	const BUG       ; 06
+	const GHOST     ; 07
+	const STEEL     ; 08
 SPECIAL_TYPES EQU const_value
-	const FIRE      ; 9
-	const WATER     ; 10
-	const GRASS     ; 11
-	const ELECTRIC  ; 12
-	const PSYCHIC   ; 13
-	const ICE       ; 14
-	const DRAGON    ; 15
-	const DARK      ; 16
-	const FAIRY     ; 17
-	const UNKNOWN_T ; 18
+	const FIRE      ; 09
+	const WATER     ; 0a
+	const GRASS     ; 0b
+	const ELECTRIC  ; 0c
+	const PSYCHIC   ; 0d
+	const ICE       ; 0e
+	const DRAGON    ; 0f
+	const DARK      ; 10
+	const FAIRY     ; 11
+	const UNKNOWN_T ; 12
 
 	const_def
 	const PHYSICAL

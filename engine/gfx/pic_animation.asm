@@ -856,9 +856,7 @@ PokeAnim_GetFrontpicDims:
 	ldh [rSVBK], a
 	ld a, [wCurPartySpecies]
 	ld [wCurSpecies], a
-	ld a, [wPokeAnimVariant]
-	ld [wCurForm], a
-	call GetBaseData
+	call GetBaseData ; [wCurForm] is already set
 	ld a, [wBasePicSize]
 	and $f
 	ld c, a

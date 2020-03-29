@@ -1,14 +1,11 @@
 PrintMonTypes:
 ; Print one or both types of [wCurSpecies]
 ; on the stats screen at hl.
-
-	push hl
-	call GetBaseData
-	pop hl
+; PrintMonTypes is only called for the stats screen,
+; so assume that the full data is in wTempMon and
+; wBaseData already.
 
 if !DEF(FAITHFUL)
-	; PrintMonTypes is only called for the stats screen,
-	; so assume that the full data is in wTempMon
 	; Armored Mewtwo is Psychic/Steel
 	ld a, [wTempMonSpecies]
 	cp MEWTWO

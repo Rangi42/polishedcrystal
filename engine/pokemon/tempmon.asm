@@ -19,17 +19,14 @@ CopyPkmnOrEggToTempMon:
 	ld a, EGG
 	ld [wCurPartySpecies], a
 	ld [wCurSpecies], a
-	jr _CopyPkmnToTempMon
+	jr _CopyPkmnToTempMon ; [wCurForm] doesn't matter form WGG
 
 CopyPkmnToTempMon:
 ; gets the BaseData of a Pkmn
 ; and copys the PkmnStructure to wTempMon
 
-	ld a, [wCurPartyMon]
-	ld e, a
 	call GetPkmnSpecies
-	ld a, [wCurPartySpecies]
-	ld [wCurSpecies], a
+	call GetPkmnForm
 _CopyPkmnToTempMon:
 	call GetBaseData
 
@@ -105,17 +102,14 @@ _TempMonStatsCalculation:
 	ret
 
 GetPkmnSpecies:
-; [wMonType] has the type of the Pkmn
-; e = Nr. of Pkmn (i.e. [wCurPartyMon])
-
 	ld a, [wMonType]
 	and a ; PARTYMON
 	jr z, .partymon
-	cp OTPARTYMON
+	dec a ; OTPARTYMON
 	jr z, .otpartymon
-	cp BOXMON
+	dec a ; BOXMON
 	jr z, .boxmon
-	cp TEMPMON
+	dec a ; TEMPMON
 	jr z, .breedmon
 	; WILDMON
 
@@ -125,7 +119,16 @@ GetPkmnSpecies:
 
 .otpartymon
 	ld hl, wOTPartySpecies
-	jr .done
+.done
+	ld a, [wCurPartyMon]
+	ld e, a
+	ld d, 0
+	add hl, de
+	ld a, [hl]
+.done2
+	ld [wCurPartySpecies], a
+	ld [wCurSpecies], a
+	ret
 
 .boxmon
 	ld a, BANK(sBoxSpecies)
@@ -138,11 +141,43 @@ GetPkmnSpecies:
 	ld a, [wBreedMon1Species]
 	jr .done2
 
-.done
-	ld d, 0
-	add hl, de
-	ld a, [hl]
+GetPkmnForm:
+	ld a, [wMonType]
+	and a ; PARTYMON
+	jr z, .partymon
+	dec a ; OTPARTYMON
+	jr z, .otpartymon
+	dec a ; BOXMON
+	jr z, .boxmon
+	dec a ; TEMPMON
+	jr z, .breedmon
+	; WILDMON
 
-.done2
-	ld [wCurPartySpecies], a
+.partymon
+	ld hl, wPartyMon1Form
+	jr .getnthpartymon
+
+.otpartymon
+	ld hl, wOTPartyMon1Form
+.getnthpartymon
+	ld bc, PARTYMON_STRUCT_LENGTH
+.getnthmon
+	ld a, [wCurPartyMon]
+	rst AddNTimes
+	ld a, [hl]
+.done
+	and FORM_MASK
+	ld [wCurForm], a
 	ret
+
+.boxmon
+	ld a, BANK(sBoxSpecies)
+	call GetSRAMBank
+	ld hl, sBoxMon1Form
+	ld bc, BOXMON_STRUCT_LENGTH
+	call .getnthmon
+	jp CloseSRAM
+
+.breedmon
+	ld a, [wBreedMon1Form]
+	jr .done
