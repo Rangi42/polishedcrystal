@@ -273,7 +273,7 @@ GetSpeciesAndFormIndex::
 	add hl, bc
 	srl h
 	rr l
-	dec l
+	dec hl
 	inc h
 	ld b, h
 	ld c, l
