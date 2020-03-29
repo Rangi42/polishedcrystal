@@ -500,53 +500,26 @@ GetPaintingPalettePointer:
 	ret
 
 GetMonPalettePointer:
-	push de
-
-	; d = species
-	ld d, a
-	; e = form
-	inc bc ; Form is in the byte after Shiny
-	ld a, [bc]
-	dec bc
+	push af
+	ld h, b
+	ld l, c
+	; c = species
+	ld c, a
+	; b = form
+	inc hl ; Form is in the byte after Shiny
+	ld a, [hl]
 	and FORM_MASK
-	ld e, a
-
-	ld hl, VariantPalettesTable
-.loop
-	; check species
-	ld a, [hli]
-	cp -1
-	jr z, .normal
-	cp d
-	jr nz, .next3
-	; check form
-	ld a, [hli]
-	cp e
-	jr nz, .next2
-	; use palette
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	jr .done
-
-.next3
-	inc hl
-.next2
-	inc hl
-	inc hl
-	jr .loop
-
-.normal
-	ld l, d
-	ld h, 0
+	ld b, a
+	; bc = index
+	call GetSpeciesAndFormIndex
+	ld h, b
+	ld l, c
 	add hl, hl
 	add hl, hl
 	add hl, hl
 	ld bc, PokemonPalettes
 	add hl, bc
-.done
-	ld a, d
-	pop de
+	pop af
 	ret
 
 GetMonNormalOrShinyPalettePointer:
@@ -874,8 +847,6 @@ INCLUDE "gfx/tilesets/roofs_overcast.pal"
 endc
 
 INCLUDE "data/pokemon/palettes.asm"
-
-INCLUDE "data/pokemon/variant_palettes.asm"
 
 INCLUDE "data/trainers/palettes.asm"
 

@@ -253,3 +253,32 @@ GetNick::
 	ld bc, PKMN_NAME_LENGTH
 	rst CopyBytes
 	jp PopBCDEHL
+
+GetSpeciesAndFormIndex::
+; input: c = species, b = form
+; output: bc = extended index
+	ld hl, VariantSpeciesAndFormTable - 1
+.next
+	inc hl
+.loop
+	ld a, [hli]
+	and a
+	jr z, .normal
+	cp c
+	jr nz, .next
+	ld a, [hli]
+	cp b
+	jr nz, .loop
+	ld bc, -VariantSpeciesAndFormTable
+	add hl, bc
+	srl h
+	rr l
+	dec l
+	inc h
+	ld b, h
+	ld c, l
+	ret
+
+.normal
+	ld b, 0
+	ret

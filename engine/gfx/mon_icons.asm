@@ -1,47 +1,21 @@
 INCLUDE "data/pokemon/menu_icon_pals.asm"
-INCLUDE "data/pokemon/variant_menu_icon_pals.asm"
 
 LoadOverworldMonIcon:
-	; d = species
+	; c = species
 	ld a, [wCurIcon]
-	ld d, a
-	; e = form
+	ld c, a
+	; b = form
 	ld a, [wCurIconForm]
-	ld e, a
-
-	ld hl, VariantIconPointersTable
-.loop
-	; check species
-	ld a, [hli]
-	cp -1
-	jr z, .normal
-	cp d
-	jr nz, .next3
-	; check form
-	ld a, [hli]
-	cp e
-	jr nz, .next2
-	; use icon
-	jr .got_icon
-
-.next3
-	inc hl
-.next2
-	inc hl
-	inc hl
-	jr .loop
-
-.normal
-	ld l, d
-	ld h, 0
-	add hl, hl
-	ld de, IconPointers
-	add hl, de
-.got_icon
+	ld b, a
+	; bc = index
+	call GetSpeciesAndFormIndex
+	; de = icon pointer
+	ld hl, IconPointers
+	add hl, bc
+	add hl, bc
 	ld a, [hli]
 	ld d, [hl]
 	ld e, a
-
 ; Extended icon bank routine by com3tiin
 ; http://www.pokecommunity.com/showthread.php?t=338470
 	ld a, [wCurIcon]
@@ -176,36 +150,14 @@ _GetMonIconPalette:
 	and SHINY_MASK
 	push af
 
-	ld hl, VariantMenuMonIconColorsTable
-.loop
-	; check species
-	ld a, [hli]
-	cp -1
-	jr z, .normal
-	cp c
-	jr nz, .next2
-	; check form
-	ld a, [hli]
-	cp b
-	jr nz, .next1
-	; use palette
-	jr .got_palette
-
-.next2
-	inc hl
-.next1
-	inc hl
-	jr .loop
-
-.normal
-	dec c
-	ld b, 0
+	; bc = index
+	call GetSpeciesAndFormIndex
+	dec bc
 	ld hl, MenuMonIconColors
 	add hl, bc
-.got_palette
 	ld c, [hl]
-	pop af
 
+	pop af
 	jr nz, .shiny
 	swap c
 .shiny

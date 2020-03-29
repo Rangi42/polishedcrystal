@@ -470,34 +470,11 @@ LearnEvolutionMove:
 	; b = form
 	ld a, [wCurForm]
 	ld b, a
-
-	ld hl, VariantEvolutionMovesTable
-.loop
-	; check species
-	ld a, [hli]
-	cp -1
-	jr z, .normal
-	cp c
-	jr nz, .next2
-	; check form
-	ld a, [hli]
-	cp b
-	jr nz, .next1
-	; use evolution move
-	jr .got_move
-
-.next2
-	inc hl
-.next1
-	inc hl
-	jr .loop
-
-.normal
-	dec c
-	ld b, 0
+	; bc = index
+	call GetSpeciesAndFormIndex
+	dec bc
 	ld hl, EvolutionMoves
 	add hl, bc
-.got_move
 	ld a, [hl]
 	and a
 	ret z

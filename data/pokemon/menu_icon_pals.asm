@@ -258,3 +258,6 @@ MenuMonIconColors::
 	iconpal BLUE, BLUE ; GLACEON
 	iconpal PINK, BLUE ; SYLVEON
 	iconpal RED, BLUE ; EGG
+
+	iconpal RED, RED ; GYARADOS, GYARADOS_RED_FORM
+	iconpal GREEN, RED ; EXEGGUTOR, EXEGGUTOR_ALOLAN_FORM

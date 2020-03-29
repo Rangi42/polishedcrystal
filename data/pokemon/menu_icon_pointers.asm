@@ -255,3 +255,6 @@ IconPointers:
 	dw GlaceonIcon
 	dw SylveonIcon
 	dw EggIcon
+
+	dw GyaradosIcon
+	dw ExeggutorAlolanIcon

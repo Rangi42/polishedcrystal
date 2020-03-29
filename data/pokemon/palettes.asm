@@ -6,6 +6,11 @@ rept 256
 	MONOCHROME_RGB_TWO
 endr
 
+rept 2
+	MONOCHROME_RGB_TWO
+	MONOCHROME_RGB_TWO
+endr
+
 elif DEF(HGSS)
 ; 000
 	RGB 30, 22, 17
@@ -531,6 +536,11 @@ SylveonShinyPalette:    INCLUDE "gfx/pokemon/sylveon/hgss/shiny.pal"
 EggPalette:             INCLUDE "gfx/pokemon/egg/hgss/normal.pal"
 EggShinyPalette:        INCLUDE "gfx/pokemon/egg/hgss/shiny.pal"
 
+INCLUDE "gfx/pokemon/gyarados_red/hgss/normal.pal"
+INCLUDE "gfx/pokemon/gyarados_red/hgss/shiny.pal"
+INCLUDE "gfx/pokemon/exeggutor_alolan/hgss/normal.pal"
+INCLUDE "gfx/pokemon/exeggutor_alolan/hgss/shiny.pal"
+
 else
 ; 000
 	RGB 30, 22, 17
@@ -1055,4 +1065,20 @@ SylveonPalette:         INCLUDE "gfx/pokemon/sylveon/normal.pal"
 SylveonShinyPalette:    INCLUDE "gfx/pokemon/sylveon/shiny.pal"
 EggPalette:             INCLUDE "gfx/pokemon/egg/normal.pal"
 EggShinyPalette:        INCLUDE "gfx/pokemon/egg/shiny.pal"
+
+INCLUDE "gfx/pokemon/gyarados_red/normal.pal"
+INCLUDE "gfx/pokemon/gyarados_red/shiny.pal"
+INCLUDE "gfx/pokemon/exeggutor_alolan/normal.pal"
+INCLUDE "gfx/pokemon/exeggutor_alolan/shiny.pal"
+
+endc
+
+
+MewtwoArmoredPalette:
+if DEF(MONOCHROME)
+	MONOCHROME_RGB_TWO
+elif DEF(HGSS)
+INCLUDE "gfx/pokemon/mewtwo_armored/hgss/normal.pal"
+else
+INCLUDE "gfx/pokemon/mewtwo_armored/normal.pal"
 endc
