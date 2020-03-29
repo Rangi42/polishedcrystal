@@ -813,12 +813,11 @@ _CheckSpeed::
 	cp USING_INTERNAL_CLOCK
 	ld b, 0
 	jr z, .secondary_player
-	ld b, 1
+	inc b
 .secondary_player
 	call BattleRandom
 	and $1
 	xor b
-	and a
 	scf
 	ret
 .player_first
