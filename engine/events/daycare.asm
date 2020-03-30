@@ -775,6 +775,7 @@ DayCare_InitBreeding:
 	ld [wCurSpecies], a
 	ld [wEggMonSpecies], a
 
+	; TODO: initialize [wCurForm] before GetBaseData
 	call GetBaseData
 
 	; Set name and item
