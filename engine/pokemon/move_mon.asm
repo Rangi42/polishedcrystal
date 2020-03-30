@@ -200,20 +200,12 @@ endr
 	pop hl
 
 ; Random nature from 0 to 24
-; This overwrites the base data struct, so reload it afterwards
-	ld a, [wCurSpecies]
-	push af
 	push hl
 	ld hl, wPartyMon1Personality
 	ld a, [wPartyMon1Species]
 	ld c, a
 	call GetAbility
 	pop hl
-	pop af
-	push bc
-	ld [wCurSpecies], a
-	call GetBaseData
-	pop bc
 	ld a, b
 	cp SYNCHRONIZE
 	jr nz, .no_synchronize
@@ -947,6 +939,10 @@ Functiondd64:
 	rst CopyBytes
 	push hl
 	call Functionde1a
+	ld hl, MON_FORM
+	add hl, de
+	ld a, [hl]
+	ld [wCurForm], a
 	pop hl
 	ld bc, BOXMON_STRUCT_LENGTH
 	rst CopyBytes
@@ -1057,6 +1053,8 @@ SentPkmnIntoBox:
 	inc a
 	jr nz, .loop
 
+	ld hl, wOTPartyMon1Form
+	predef GetVariant
 	call GetBaseData
 	call ShiftBoxMon
 
@@ -1082,14 +1080,13 @@ SentPkmnIntoBox:
 	ld a, [wCurPartySpecies]
 	dec a
 	call SetSeenAndCaughtMon
+
 	ld a, [wCurPartySpecies]
 	cp UNOWN
 	jr nz, .not_unown
-	ld hl, sBoxMon1Form
-	predef GetVariant
 	farcall UpdateUnownDex
-
 .not_unown
+
 	ld hl, sBoxMon1Moves
 	ld de, wTempMonMoves
 	ld bc, NUM_MOVES
@@ -1434,6 +1431,11 @@ ComputeNPCTrademonStats:
 	call GetPartyParamLocation
 	ld a, [hl]
 	ld [wCurSpecies], a
+	ld a, MON_FORM
+	call GetPartyParamLocation
+	ld a, [hl]
+	and FORM_MASK
+	ld [wCurForm], a
 	call GetBaseData
 	ld a, MON_MAXHP
 	call GetPartyParamLocation
@@ -1460,6 +1462,11 @@ UpdatePkmnStats:
 	call GetPartyParamLocation
 	ld a, [hl]
 	ld [wCurSpecies], a
+	ld a, MON_FORM
+	call GetPartyParamLocation
+	ld a, [hl]
+	and FORM_MASK
+	ld [wCurForm], a
 	call GetBaseData
 	ld a, MON_LEVEL
 	call GetPartyParamLocation
