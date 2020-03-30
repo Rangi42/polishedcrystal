@@ -152,7 +152,7 @@ MenuMonIconColors::
 	iconpal BLUE, PINK ; DRATINI
 	iconpal BLUE, RED ; DRAGONAIR
 	iconpal RED, BLUE ; DRAGONITE
-	iconpal PURPLE, GRAY ; MEWTWO
+	iconpal PURPLE, GREEN ; MEWTWO
 	iconpal PINK, BLUE ; MEW
 	iconpal GREEN, RED ; CHIKORITA
 	iconpal GREEN, RED ; BAYLEEF
@@ -260,4 +260,5 @@ MenuMonIconColors::
 	iconpal RED, BLUE ; EGG
 
 	iconpal RED, RED ; GYARADOS, GYARADOS_RED_FORM
+	iconpal GRAY, GRAY ; MEWTWO
 	iconpal GREEN, RED ; EXEGGUTOR, EXEGGUTOR_ALOLAN_FORM

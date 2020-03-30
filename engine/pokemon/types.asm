@@ -5,19 +5,6 @@ PrintMonTypes:
 ; so assume that the full data is in wTempMon and
 ; wBaseData already.
 
-if !DEF(FAITHFUL)
-	; Armored Mewtwo is Psychic/Steel
-	ld a, [wTempMonSpecies]
-	cp MEWTWO
-	jr nz, .not_armored_mewtwo
-	ld a, [wTempMonItem]
-	cp ARMOR_SUIT
-	jr nz, .not_armored_mewtwo
-	ld a, STEEL
-	ld [wBaseType2], a
-.not_armored_mewtwo
-endc
-
 	push hl
 	ld a, [wBaseType1]
 	call .Print

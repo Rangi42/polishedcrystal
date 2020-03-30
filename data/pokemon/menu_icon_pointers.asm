@@ -257,4 +257,5 @@ IconPointers:
 	dw EggIcon
 
 	dw GyaradosIcon
+	dw MewtwoArmoredIcon
 	dw ExeggutorAlolanIcon

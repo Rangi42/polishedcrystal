@@ -6,7 +6,7 @@ rept 256
 	MONOCHROME_RGB_TWO
 endr
 
-rept 2
+rept 3
 	MONOCHROME_RGB_TWO
 	MONOCHROME_RGB_TWO
 endr
@@ -319,8 +319,8 @@ INCLUDE "gfx/pokemon/dragonair/hgss/normal.pal"
 INCLUDE "gfx/pokemon/dragonair/hgss/shiny.pal"
 INCLUDE "gfx/pokemon/dragonite/hgss/normal.pal"
 INCLUDE "gfx/pokemon/dragonite/hgss/shiny.pal"
-INCLUDE "gfx/pokemon/mewtwo/hgss/normal.pal"
-INCLUDE "gfx/pokemon/mewtwo/hgss/shiny.pal"
+INCLUDE "gfx/pokemon/mewtwo_plain/hgss/normal.pal"
+INCLUDE "gfx/pokemon/mewtwo_plain/hgss/shiny.pal"
 INCLUDE "gfx/pokemon/mew/hgss/normal.pal"
 INCLUDE "gfx/pokemon/mew/hgss/shiny.pal"
 INCLUDE "gfx/pokemon/chikorita/hgss/normal.pal"
@@ -534,6 +534,8 @@ INCLUDE "gfx/pokemon/egg/hgss/shiny.pal"
 
 INCLUDE "gfx/pokemon/gyarados_red/hgss/normal.pal"
 INCLUDE "gfx/pokemon/gyarados_red/hgss/shiny.pal"
+INCLUDE "gfx/pokemon/mewtwo_armored/hgss/normal.pal"
+INCLUDE "gfx/pokemon/mewtwo_armored/hgss/shiny.pal"
 INCLUDE "gfx/pokemon/exeggutor_alolan/hgss/normal.pal"
 INCLUDE "gfx/pokemon/exeggutor_alolan/hgss/shiny.pal"
 
@@ -845,8 +847,8 @@ INCLUDE "gfx/pokemon/dragonair/normal.pal"
 INCLUDE "gfx/pokemon/dragonair/shiny.pal"
 INCLUDE "gfx/pokemon/dragonite/normal.pal"
 INCLUDE "gfx/pokemon/dragonite/shiny.pal"
-INCLUDE "gfx/pokemon/mewtwo/normal.pal"
-INCLUDE "gfx/pokemon/mewtwo/shiny.pal"
+INCLUDE "gfx/pokemon/mewtwo_plain/normal.pal"
+INCLUDE "gfx/pokemon/mewtwo_plain/shiny.pal"
 INCLUDE "gfx/pokemon/mew/normal.pal"
 INCLUDE "gfx/pokemon/mew/shiny.pal"
 INCLUDE "gfx/pokemon/chikorita/normal.pal"
@@ -1060,17 +1062,9 @@ INCLUDE "gfx/pokemon/egg/shiny.pal"
 
 INCLUDE "gfx/pokemon/gyarados_red/normal.pal"
 INCLUDE "gfx/pokemon/gyarados_red/shiny.pal"
+INCLUDE "gfx/pokemon/mewtwo_armored/normal.pal"
+INCLUDE "gfx/pokemon/mewtwo_armored/shiny.pal"
 INCLUDE "gfx/pokemon/exeggutor_alolan/normal.pal"
 INCLUDE "gfx/pokemon/exeggutor_alolan/shiny.pal"
 
-endc
-
-
-MewtwoArmoredPalette:
-if DEF(MONOCHROME)
-	MONOCHROME_RGB_TWO
-elif DEF(HGSS)
-INCLUDE "gfx/pokemon/mewtwo_armored/hgss/normal.pal"
-else
-INCLUDE "gfx/pokemon/mewtwo_armored/normal.pal"
 endc

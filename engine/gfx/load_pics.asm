@@ -2,8 +2,6 @@ GetVariant:
 	ld a, [wCurPartySpecies]
 	cp PIKACHU
 	jr z, .GetPikachuVariant
-	cp MEWTWO
-	jp z, .GetMewtwoVariant
 
 ; Return CurForm based on Form at hl
 	ld a, [hl]
@@ -69,25 +67,6 @@ endr
 .plain
 	ld a, PIKACHU_PLAIN_FORM
 .use_form
-	ld [wCurForm], a
-	ret
-
-.GetMewtwoVariant:
-; Return Mewtwo form (1-2) in wCurForm
-; hl-9 is ...MonItem
-; hl is ...MonForm
-
-	push bc
-	ld bc, MON_ITEM - MON_FORM
-	add hl, bc
-	pop bc
-
-	ld a, [hl]
-	cp ARMOR_SUIT
-	ld a, MEWTWO_ARMORED_FORM
-	jr z, .armored_mewtwo
-	dec a ; MEWTWO_PLAIN_FORM
-.armored_mewtwo
 	ld [wCurForm], a
 	ret
 

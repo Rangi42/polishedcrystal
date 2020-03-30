@@ -260,4 +260,5 @@ EvosAttacksPointers::
 	dw EggEvosAttacks
 
 	dw GyaradosEvosAttacks
+	dw MewtwoEvosAttacks
 	dw ExeggutorAlolanEvosAttacks

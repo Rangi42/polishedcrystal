@@ -284,33 +284,33 @@ TryGiveItemToPartymon:
 	pop af
 	ld [wCurItem], a
 	call ReceiveItemFromPokemon
-	jr nc, .bag_full
+	jr c, .bag_not_full
 
-	ld hl, TookAndMadeHoldText
-	call MenuTextBoxBackup
-	ld a, [wd265]
-	ld [wCurItem], a
-	jp GivePartyItem
-
-.bag_full
 	ld a, [wd265]
 	ld [wCurItem], a
 	call ReceiveItemFromPokemon
 	ld hl, ItemStorageIsFullText
 	jp MenuTextBoxBackup
 
-GivePartyItem:
+.bag_not_full
+	ld hl, TookAndMadeHoldText
+	call MenuTextBoxBackup
+	ld a, [wd265]
+	ld [wCurItem], a
+	; fallthrough
 
+GivePartyItem:
 	call GetPartyItemLocation
 	ld a, [wCurItem]
 	ld [hl], a
+	call UpdateMewtwoForm
+	ld a, [wCurItem]
 	ld d, a
 	call ItemIsMail
 	ret nc
 	jp ComposeMailMessage
 
 TakePartyItem:
-
 	call SpeechTextBox
 	call GetPartyItemLocation
 	ld a, [hl]
@@ -326,6 +326,7 @@ TakePartyItem:
 	ld a, [hl]
 	ld [wd265], a
 	ld [hl], NO_ITEM
+	call UpdateMewtwoForm
 	call GetItemName
 	ld hl, TookFromText
 	jp MenuTextBoxBackup
@@ -337,6 +338,25 @@ TakePartyItem:
 .asm_12c94
 	ld hl, ItemStorageIsFullText
 	jp MenuTextBoxBackup
+
+UpdateMewtwoForm:
+	ld a, [wCurPartySpecies]
+	cp MEWTWO
+	ret nz
+	ld a, [hl]
+	cp ARMOR_SUIT
+	ld a, MEWTWO_ARMORED_FORM
+	jr z, .got_form
+	dec a ; MEWTWO_PLAIN_FORM
+.got_form
+	ld d, a
+	ld a, MON_FORM
+	call GetPartyParamLocation
+	ld a, [hl]
+	and $ff - FORM_MASK
+	or d
+	ld [hl], a
+	ret
 
 GiveTakeItemMenuData:
 	db %01010000

@@ -123,6 +123,7 @@ endr
 	giveitem BOTTLE_CAP, 99
 	giveitem MULCH, 99
 	giveitem MINT, 99
+	giveitem ARMOR_SUIT, 1
 	; all decorations
 x = EVENT_DECO_BED_1
 rept EVENT_DECO_BIG_LAPRAS_DOLL - EVENT_DECO_BED_1 + 1

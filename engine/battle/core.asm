@@ -1253,23 +1253,6 @@ endr
 	rst CopyBytes
 	pop de
 
-if !DEF(FAITHFUL)
-	; Armored Mewtwo is Psychic/Steel
-	ld a, [de]
-	cp MEWTWO
-	jr nz, .not_armored_mewtwo
-	ld hl, wBattleMonItem
-	call GetUserMonAttr
-	ld a, [hl]
-	cp ARMOR_SUIT
-	jr nz, .not_armored_mewtwo
-	ld a, STEEL
-	ld bc, wBattleMonType2 - wBattleMonItem
-	add hl, bc
-	ld [hl], a
-.not_armored_mewtwo
-endc
-
 	ldh a, [hBattleTurn]
 	and a
 	ld hl, wPartyMonNicknames
