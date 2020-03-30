@@ -75,25 +75,29 @@ TryAddMonToParty:
 	dec a
 	ld bc, PARTYMON_STRUCT_LENGTH
 	rst AddNTimes
-GeneratePartyMonStats:
+
 	ld e, l
 	ld d, h
 	push hl
+
 	ld a, [wCurPartySpecies]
 	ld [wCurSpecies], a
 	call GetBaseData
+
+	; species
 	ld a, [wCurSpecies]
 	ld [de], a
 	inc de
-	xor a
 
-.skipitem
+	; item
+	xor a
 	ld [de], a
 	inc de
+
+	; moves
 	push de
 	ld h, d
 	ld l, e
-
 	xor a
 rept NUM_MOVES - 1
 	ld [hli], a
@@ -101,18 +105,20 @@ endr
 	ld [hl], a
 	ld [wBuffer1], a
 	predef FillMoves
-
-.next
 	pop de
 rept NUM_MOVES
 	inc de
 endr
+
+	; OT ID
 	ld a, [wPlayerID]
 	ld [de], a
 	inc de
 	ld a, [wPlayerID + 1]
 	ld [de], a
 	inc de
+
+	; experience
 	push de
 	ld a, [wCurPartyLevel]
 	ld d, a
@@ -128,9 +134,10 @@ endr
 	ld [de], a
 	inc de
 
-	; EVs, DVs, personality
 	pop hl
 	push hl
+
+	; EVs, DVs, personality
 	ld a, [wMonType]
 	and $f
 	jr z, .generateEVsDVsAndPersonality
