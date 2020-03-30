@@ -489,6 +489,13 @@ InitEggMoves:
 	ld de, wEggMonMoves
 	xor a
 	ld [wBuffer1], a
+	; c = species
+	ld a, [wEggMonSpecies]
+	ld c, a
+	; b = form
+	ld a, [wEggMonForm]
+	and FORM_MASK
+	ld b, a
 	predef FillMoves
 
 	; Inherited level up moves

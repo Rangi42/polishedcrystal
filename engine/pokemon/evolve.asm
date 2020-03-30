@@ -42,7 +42,7 @@ EvolveAfterBattle_MasterLoop
 	jp z, EvolveAfterBattle_MasterLoop
 
 	ld a, [wEvolutionOldSpecies]
-	call GetEvosAttacksPointer
+	call GetPartyEvosAttacksPointer
 
 	push hl
 	xor a
@@ -504,7 +504,7 @@ LearnEvolutionMove:
 LearnLevelMoves:
 	ld a, [wd265]
 	ld [wCurPartySpecies], a
-	call GetEvosAttacksPointer
+	call GetPartyEvosAttacksPointer
 
 .skip_evos
 	ld a, [hli]
@@ -553,12 +553,11 @@ LearnLevelMoves:
 	jr .find_move
 
 FillMoves:
-; Fill in moves at de for wCurPartySpecies at wCurPartyLevel
+; Fill in moves at de for species c form b at wCurPartyLevel
 
 	push hl
 	push de
 	push bc
-	ld a, [wCurPartySpecies]
 	call GetEvosAttacksPointer
 .GoToAttacks:
 	ld a, [hli]
@@ -712,7 +711,7 @@ GetPreEvolution:
 	scf
 	ret
 
-GetEvosAttacksPointer:
+GetPartyEvosAttacksPointer:
 	push af
 	; b = form
 	ld a, [wCurPartyMon]
@@ -725,6 +724,8 @@ GetEvosAttacksPointer:
 	; c = species
 	pop af
 	ld c, a
+GetEvosAttacksPointer:
+; input: b = form, c = species
 	; bc = index
 	call GetSpeciesAndFormIndex
 	dec bc
