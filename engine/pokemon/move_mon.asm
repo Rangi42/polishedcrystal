@@ -203,11 +203,12 @@ endr
 ; This overwrites the base data struct, so reload it afterwards
 	ld a, [wCurSpecies]
 	push af
-	ld a, [wPartyMon1Ability]
-	ld b, a
+	push hl
+	ld hl, wPartyMon1Personality
 	ld a, [wPartyMon1Species]
 	ld c, a
 	call GetAbility
+	pop hl
 	pop af
 	push bc
 	ld [wCurSpecies], a

@@ -179,7 +179,6 @@ DoEggStep::
 	pop hl
 	jr nz, .ability_next
 	ld c, a
-	ld b, [hl]
 	push de
 	push hl
 	call GetAbility

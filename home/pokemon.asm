@@ -164,14 +164,13 @@ GetLeadAbility::
 	push de
 	push bc
 	ld c, a
-	ld a, [wPartyMon1Ability]
-	ld b, a
+	ld hl, wPartyMon1Personality
 	call GetAbility
 	ld a, b
 	jp PopBCDEHL
 
 GetAbility::
-; 'b' contains the target ability to check
+; 'hl' contains the target personality to check (ability and form)
 ; 'c' contains the target species
 ; returns ability in b
 ; preserves curspecies and base data
@@ -182,16 +181,23 @@ GetAbility::
 	and ABILITIES_OPTMASK
 	jr z, .got_ability
 
+	inc hl
+	ld a, [hld]
+	and FORM_MASK
+	ld b, a
+
 	push hl
 	push bc
-	ld hl, BASEMON_ABILITIES
-	ld b, 0
+
+	push hl
+	call GetSpeciesAndFormIndex
+	dec bc
 	ld a, BASEMON_STRUCT_LENGTH
-	dec c
+	ld hl, BASEMON_ABILITIES
 	rst AddNTimes
 	pop bc
-	push bc
-	ld a, b
+
+	ld a, [bc]
 	and ABILITY_MASK
 	cp ABILITY_1
 	jr z, .got_ability_ptr
@@ -201,8 +207,10 @@ GetAbility::
 	inc hl
 .got_ability_ptr
 	ld a, [hl]
+
 	pop bc
 	pop hl
+
 .got_ability
 	ld b, a
 	ret

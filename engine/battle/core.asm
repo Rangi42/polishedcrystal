@@ -2819,22 +2819,24 @@ NewEnemyMonStatus:
 	jp ResetEnemyAbility
 
 ResetPlayerAbility:
-	ld a, [wBattleMonAbility]
-	ld b, a
+	push hl
+	ld hl, wBattleMonPersonality
 	ld a, [wBattleMonSpecies]
 	ld c, a
 	call GetAbility
+	pop hl
 	ld a, b
 	ld [wPlayerAbility], a
 	xor a
 	ret
 
 ResetEnemyAbility:
-	ld a, [wEnemyMonAbility]
-	ld b, a
+	push hl
+	ld hl, wEnemyMonPersonality
 	ld a, [wEnemyMonSpecies]
 	ld c, a
 	call GetAbility
+	pop hl
 	ld a, b
 	ld [wEnemyAbility], a
 	xor a
@@ -5788,8 +5790,7 @@ CheckSleepingTreeMon:
 	jr nz, .NotSleeping
 
 ; Nor if the Pokémon has Insomnia/Vital Spirit
-	ld a, [wEnemyMonAbility] ; is properly updated at this point, so OK to check
-	ld b, a
+	ld hl, wEnemyMonPersonality ; ability is properly updated at this point, so OK to check
 	ld a, [wTempEnemyMonSpecies]
 	ld c, a
 	call GetAbility

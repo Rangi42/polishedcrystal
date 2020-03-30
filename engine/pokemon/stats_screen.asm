@@ -798,8 +798,7 @@ OrangePage_:
 .got_ability
 	hlcoord 9, 12
 	ld [hl], a
-	ld a, [wTempMonAbility]
-	ld b, a
+	ld hl, wTempMonPersonality
 	ld a, [wTempMonSpecies]
 	ld c, a
 	call GetAbility

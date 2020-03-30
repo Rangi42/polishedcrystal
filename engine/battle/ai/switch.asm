@@ -47,10 +47,9 @@ GetSwitchScores:
 
 	; This makes GetAbility "restore" to the current species when done
 	ld [wCurSpecies], a
-	ld bc, wPartyMon1Ability - wPartyMon1
+	ld bc, wPartyMon1Personality - wPartyMon1
 	add hl, bc
 	ld c, a
-	ld b, [hl]
 	call GetAbility
 	ld a, b
 	ld [wEnemyAbility], a

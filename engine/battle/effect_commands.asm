@@ -6116,12 +6116,11 @@ _GetTrueUserAbility::
 .external
 	push bc
 	push hl
-	ld a, MON_ABILITY
-	call TrueUserPartyAttr
-	ld b, a
 	ld a, MON_SPECIES
 	call TrueUserPartyAttr
 	ld c, a
+	ld a, MON_PERSONALITY
+	call TrueUserPartyAttr
 	call GetAbility
 	ld a, b
 	pop hl
