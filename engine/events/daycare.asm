@@ -474,11 +474,11 @@ DayCare_GiveEgg:
 	jr nz, .not_red_magikarp
 	ld a, [wEggMonForm]
 	and FORM_MASK
-	cp NUM_MAGIKARP + 1
+	cp GYARADOS_RED_FORM
 	jr c, .not_red_magikarp
 	ld a, [wEggMonForm]
 	and $ff - FORM_MASK
-	or MAGIKARP_PLAIN_FORM
+	or PLAIN_FORM
 	ld [wEggMonForm], a
 .not_red_magikarp
 

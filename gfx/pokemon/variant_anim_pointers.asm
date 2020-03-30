@@ -73,6 +73,82 @@ MewtwoAnimationPointers:
 	dw MewtwoPlainAnimation
 	dw MewtwoArmoredAnimation
 
+RattataAnimationPointers:
+	dw RattataPlainAnimation
+	dw RattataAlolanAnimation
+
+RaticateAnimationPointers:
+	dw RaticatePlainAnimation
+	dw RaticateAlolanAnimation
+
+SandshrewAnimationPointers:
+	dw SandshrewPlainAnimation
+	dw SandshrewAlolanAnimation
+
+SandslashAnimationPointers:
+	dw SandslashPlainAnimation
+	dw SandslashAlolanAnimation
+
+VulpixAnimationPointers:
+	dw VulpixPlainAnimation
+	dw VulpixAlolanAnimation
+
+NinetalesAnimationPointers:
+	dw NinetalesPlainAnimation
+	dw NinetalesAlolanAnimation
+
+DiglettAnimationPointers:
+	dw DiglettPlainAnimation
+	dw DiglettAlolanAnimation
+
+DugtrioAnimationPointers:
+	dw DugtrioPlainAnimation
+	dw DugtrioAlolanAnimation
+
+MeowthAnimationPointers:
+	dw MeowthPlainAnimation
+	dw MeowthAlolanAnimation
+
+PersianAnimationPointers:
+	dw PersianPlainAnimation
+	dw PersianAlolanAnimation
+
+GeodudeAnimationPointers:
+	dw GeodudePlainAnimation
+	dw GeodudeAlolanAnimation
+
+GravelerAnimationPointers:
+	dw GravelerPlainAnimation
+	dw GravelerAlolanAnimation
+
+GolemAnimationPointers:
+	dw GolemPlainAnimation
+	dw GolemAlolanAnimation
+
+GrimerAnimationPointers:
+	dw GrimerPlainAnimation
+	dw GrimerAlolanAnimation
+
+MukAnimationPointers:
+	dw MukPlainAnimation
+	dw MukAlolanAnimation
+
+RaichuAnimationPointers:
+	dw RaichuPlainAnimation
+	dw RaichuAlolanAnimation
+
 ExeggutorAnimationPointers:
 	dw ExeggutorPlainAnimation
 	dw ExeggutorAlolanAnimation
+
+MarowakAnimationPointers:
+	dw MarowakPlainAnimation
+	dw MarowakAlolanAnimation
+
+PonytaAnimationPointers:
+	dw PonytaPlainAnimation
+	dw PonytaGalarianAnimation
+
+RapidashAnimationPointers:
+	dw RapidashPlainAnimation
+	dw RapidashGalarianAnimation

@@ -314,4 +314,23 @@ INCLUDE "data/pokemon/base_stats/egg.asm"
 
 INCLUDE "data/pokemon/base_stats/gyarados.asm" ; red
 INCLUDE "data/pokemon/base_stats/mewtwo_armored.asm"
+INCLUDE "data/pokemon/base_stats/rattata.asm" ; TODO
+INCLUDE "data/pokemon/base_stats/raticate.asm" ; TODO
+INCLUDE "data/pokemon/base_stats/sandshrew.asm" ; TODO
+INCLUDE "data/pokemon/base_stats/sandslash.asm" ; TODO
+INCLUDE "data/pokemon/base_stats/vulpix.asm" ; TODO
+INCLUDE "data/pokemon/base_stats/ninetales.asm" ; TODO
+INCLUDE "data/pokemon/base_stats/diglett.asm" ; TODO
+INCLUDE "data/pokemon/base_stats/dugtrio.asm" ; TODO
+INCLUDE "data/pokemon/base_stats/meowth.asm" ; TODO
+INCLUDE "data/pokemon/base_stats/persian.asm" ; TODO
+INCLUDE "data/pokemon/base_stats/geodude.asm" ; TODO
+INCLUDE "data/pokemon/base_stats/graveler.asm" ; TODO
+INCLUDE "data/pokemon/base_stats/golem.asm" ; TODO
+INCLUDE "data/pokemon/base_stats/grimer.asm" ; TODO
+INCLUDE "data/pokemon/base_stats/muk.asm" ; TODO
+INCLUDE "data/pokemon/base_stats/raichu.asm" ; TODO
 INCLUDE "data/pokemon/base_stats/exeggutor_alolan.asm"
+INCLUDE "data/pokemon/base_stats/marowak.asm" ; TODO
+INCLUDE "data/pokemon/base_stats/ponyta.asm" ; TODO
+INCLUDE "data/pokemon/base_stats/rapidash.asm" ; TODO

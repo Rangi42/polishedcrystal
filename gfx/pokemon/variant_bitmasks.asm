@@ -64,5 +64,62 @@ GyaradosRedBitmasks:   INCLUDE "gfx/pokemon/gyarados_red/bitmask.asm"
 MewtwoPlainBitmasks:   INCLUDE "gfx/pokemon/mewtwo_plain/bitmask.asm"
 MewtwoArmoredBitmasks: INCLUDE "gfx/pokemon/mewtwo_armored/bitmask.asm"
 
+RattataPlainBitmasks:  INCLUDE "gfx/pokemon/rattata/bitmask.asm"
+RattataAlolanBitmasks: INCLUDE "gfx/pokemon/rattata/bitmask.asm" ; TODO
+
+RaticatePlainBitmasks:  INCLUDE "gfx/pokemon/raticate/bitmask.asm"
+RaticateAlolanBitmasks: INCLUDE "gfx/pokemon/raticate/bitmask.asm" ; TODO
+
+SandshrewPlainBitmasks:  INCLUDE "gfx/pokemon/sandshrew/bitmask.asm"
+SandshrewAlolanBitmasks: INCLUDE "gfx/pokemon/sandshrew/bitmask.asm" ; TODO
+
+SandslashPlainBitmasks:  INCLUDE "gfx/pokemon/sandslash/bitmask.asm"
+SandslashAlolanBitmasks: INCLUDE "gfx/pokemon/sandslash/bitmask.asm" ; TODO
+
+VulpixPlainBitmasks:  INCLUDE "gfx/pokemon/vulpix/bitmask.asm"
+VulpixAlolanBitmasks: INCLUDE "gfx/pokemon/vulpix/bitmask.asm" ; TODO
+
+NinetalesPlainBitmasks:  INCLUDE "gfx/pokemon/ninetales/bitmask.asm"
+NinetalesAlolanBitmasks: INCLUDE "gfx/pokemon/ninetales/bitmask.asm" ; TODO
+
+DiglettPlainBitmasks:  INCLUDE "gfx/pokemon/diglett_plain/bitmask.asm"
+DiglettAlolanBitmasks: INCLUDE "gfx/pokemon/diglett_alolan/bitmask.asm"
+
+DugtrioPlainBitmasks:  INCLUDE "gfx/pokemon/dugtrio_plain/bitmask.asm"
+DugtrioAlolanBitmasks: INCLUDE "gfx/pokemon/dugtrio_alolan/bitmask.asm"
+
+MeowthPlainBitmasks:  INCLUDE "gfx/pokemon/meowth/bitmask.asm"
+MeowthAlolanBitmasks: INCLUDE "gfx/pokemon/meowth/bitmask.asm" ; TODO
+
+PersianPlainBitmasks:  INCLUDE "gfx/pokemon/persian/bitmask.asm"
+PersianAlolanBitmasks: INCLUDE "gfx/pokemon/persian/bitmask.asm" ; TODO
+
+GeodudePlainBitmasks:  INCLUDE "gfx/pokemon/geodude/bitmask.asm"
+GeodudeAlolanBitmasks: INCLUDE "gfx/pokemon/geodude/bitmask.asm" ; TODO
+
+GravelerPlainBitmasks:  INCLUDE "gfx/pokemon/graveler/bitmask.asm"
+GravelerAlolanBitmasks: INCLUDE "gfx/pokemon/graveler/bitmask.asm" ; TODO
+
+GolemPlainBitmasks:  INCLUDE "gfx/pokemon/golem/bitmask.asm"
+GolemAlolanBitmasks: INCLUDE "gfx/pokemon/golem/bitmask.asm" ; TODO
+
+GrimerPlainBitmasks:  INCLUDE "gfx/pokemon/grimer/bitmask.asm"
+GrimerAlolanBitmasks: INCLUDE "gfx/pokemon/grimer/bitmask.asm" ; TODO
+
+MukPlainBitmasks:  INCLUDE "gfx/pokemon/muk/bitmask.asm"
+MukAlolanBitmasks: INCLUDE "gfx/pokemon/muk/bitmask.asm" ; TODO
+
+RaichuPlainBitmasks:  INCLUDE "gfx/pokemon/raichu/bitmask.asm"
+RaichuAlolanBitmasks: INCLUDE "gfx/pokemon/raichu/bitmask.asm" ; TODO
+
 ExeggutorPlainBitmasks:  INCLUDE "gfx/pokemon/exeggutor_plain/bitmask.asm"
 ExeggutorAlolanBitmasks: INCLUDE "gfx/pokemon/exeggutor_alolan/bitmask.asm"
+
+MarowakPlainBitmasks:  INCLUDE "gfx/pokemon/marowak/bitmask.asm"
+MarowakAlolanBitmasks: INCLUDE "gfx/pokemon/marowak/bitmask.asm" ; TODO
+
+PonytaPlainBitmasks:    INCLUDE "gfx/pokemon/ponyta/bitmask.asm"
+PonytaGalarianBitmasks: INCLUDE "gfx/pokemon/ponyta/bitmask.asm" ; TODO
+
+RapidashPlainBitmasks:    INCLUDE "gfx/pokemon/rapidash/bitmask.asm"
+RapidashGalarianBitmasks: INCLUDE "gfx/pokemon/rapidash/bitmask.asm" ; TODO

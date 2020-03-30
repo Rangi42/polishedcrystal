@@ -73,6 +73,82 @@ MewtwoFramesPointers:
 	dw MewtwoPlainFrames
 	dw MewtwoArmoredFrames
 
+RattataFramesPointers:
+	dw RattataPlainFrames
+	dw RattataAlolanFrames
+
+RaticateFramesPointers:
+	dw RaticatePlainFrames
+	dw RaticateAlolanFrames
+
+SandshrewFramesPointers:
+	dw SandshrewPlainFrames
+	dw SandshrewAlolanFrames
+
+SandslashFramesPointers:
+	dw SandslashPlainFrames
+	dw SandslashAlolanFrames
+
+VulpixFramesPointers:
+	dw VulpixPlainFrames
+	dw VulpixAlolanFrames
+
+NinetalesFramesPointers:
+	dw NinetalesPlainFrames
+	dw NinetalesAlolanFrames
+
+DiglettFramesPointers:
+	dw DiglettPlainFrames
+	dw DiglettAlolanFrames
+
+DugtrioFramesPointers:
+	dw DugtrioPlainFrames
+	dw DugtrioAlolanFrames
+
+MeowthFramesPointers:
+	dw MeowthPlainFrames
+	dw MeowthAlolanFrames
+
+PersianFramesPointers:
+	dw PersianPlainFrames
+	dw PersianAlolanFrames
+
+GeodudeFramesPointers:
+	dw GeodudePlainFrames
+	dw GeodudeAlolanFrames
+
+GravelerFramesPointers:
+	dw GravelerPlainFrames
+	dw GravelerAlolanFrames
+
+GolemFramesPointers:
+	dw GolemPlainFrames
+	dw GolemAlolanFrames
+
+GrimerFramesPointers:
+	dw GrimerPlainFrames
+	dw GrimerAlolanFrames
+
+MukFramesPointers:
+	dw MukPlainFrames
+	dw MukAlolanFrames
+
+RaichuFramesPointers:
+	dw RaichuPlainFrames
+	dw RaichuAlolanFrames
+
 ExeggutorFramesPointers:
 	dw ExeggutorPlainFrames
 	dw ExeggutorAlolanFrames
+
+MarowakFramesPointers:
+	dw MarowakPlainFrames
+	dw MarowakAlolanFrames
+
+PonytaFramesPointers:
+	dw PonytaPlainFrames
+	dw PonytaGalarianFrames
+
+RapidashFramesPointers:
+	dw RapidashPlainFrames
+	dw RapidashGalarianFrames

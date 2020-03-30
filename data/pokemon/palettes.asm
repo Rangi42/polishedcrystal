@@ -112,17 +112,10 @@ INCLUDE "gfx/pokemon/venonat/hgss/normal.pal"
 INCLUDE "gfx/pokemon/venonat/hgss/shiny.pal"
 INCLUDE "gfx/pokemon/venomoth/hgss/normal.pal"
 INCLUDE "gfx/pokemon/venomoth/hgss/shiny.pal"
-if DEF(FAITHFUL)
-INCLUDE "gfx/pokemon/diglett/hgss/normal.pal"
-INCLUDE "gfx/pokemon/diglett/hgss/shiny.pal"
-INCLUDE "gfx/pokemon/dugtrio/hgss/normal.pal"
-INCLUDE "gfx/pokemon/dugtrio/hgss/shiny.pal"
-else
-INCLUDE "gfx/pokemon/diglett_alolan/hgss/normal.pal"
-INCLUDE "gfx/pokemon/diglett_alolan/hgss/shiny.pal"
-INCLUDE "gfx/pokemon/dugtrio_alolan/hgss/normal.pal"
-INCLUDE "gfx/pokemon/dugtrio_alolan/hgss/shiny.pal"
-endc
+INCLUDE "gfx/pokemon/diglett_plain/hgss/normal.pal"
+INCLUDE "gfx/pokemon/diglett_plain/hgss/shiny.pal"
+INCLUDE "gfx/pokemon/dugtrio_plain/hgss/normal.pal"
+INCLUDE "gfx/pokemon/dugtrio_plain/hgss/shiny.pal"
 INCLUDE "gfx/pokemon/meowth/hgss/normal.pal"
 INCLUDE "gfx/pokemon/meowth/hgss/shiny.pal"
 INCLUDE "gfx/pokemon/persian/hgss/normal.pal"
@@ -536,8 +529,46 @@ INCLUDE "gfx/pokemon/gyarados_red/hgss/normal.pal"
 INCLUDE "gfx/pokemon/gyarados_red/hgss/shiny.pal"
 INCLUDE "gfx/pokemon/mewtwo_armored/hgss/normal.pal"
 INCLUDE "gfx/pokemon/mewtwo_armored/hgss/shiny.pal"
+INCLUDE "gfx/pokemon/rattata/hgss/normal.pal" ; TODO
+INCLUDE "gfx/pokemon/rattata/hgss/shiny.pal" ; TODO
+INCLUDE "gfx/pokemon/raticate/hgss/normal.pal" ; TODO
+INCLUDE "gfx/pokemon/raticate/hgss/shiny.pal" ; TODO
+INCLUDE "gfx/pokemon/sandshrew/hgss/normal.pal" ; TODO
+INCLUDE "gfx/pokemon/sandshrew/hgss/shiny.pal" ; TODO
+INCLUDE "gfx/pokemon/sandslash/hgss/normal.pal" ; TODO
+INCLUDE "gfx/pokemon/sandslash/hgss/shiny.pal" ; TODO
+INCLUDE "gfx/pokemon/vulpix/hgss/normal.pal" ; TODO
+INCLUDE "gfx/pokemon/vulpix/hgss/shiny.pal" ; TODO
+INCLUDE "gfx/pokemon/ninetales/hgss/normal.pal" ; TODO
+INCLUDE "gfx/pokemon/ninetales/hgss/shiny.pal" ; TODO
+INCLUDE "gfx/pokemon/diglett_alolan/hgss/normal.pal"
+INCLUDE "gfx/pokemon/diglett_alolan/hgss/shiny.pal"
+INCLUDE "gfx/pokemon/dugtrio_alolan/hgss/normal.pal"
+INCLUDE "gfx/pokemon/dugtrio_alolan/hgss/shiny.pal"
+INCLUDE "gfx/pokemon/meowth/hgss/normal.pal" ; TODO
+INCLUDE "gfx/pokemon/meowth/hgss/shiny.pal" ; TODO
+INCLUDE "gfx/pokemon/persian/hgss/normal.pal" ; TODO
+INCLUDE "gfx/pokemon/persian/hgss/shiny.pal" ; TODO
+INCLUDE "gfx/pokemon/geodude/hgss/normal.pal" ; TODO
+INCLUDE "gfx/pokemon/geodude/hgss/shiny.pal" ; TODO
+INCLUDE "gfx/pokemon/graveler/hgss/normal.pal" ; TODO
+INCLUDE "gfx/pokemon/graveler/hgss/shiny.pal" ; TODO
+INCLUDE "gfx/pokemon/golem/hgss/normal.pal" ; TODO
+INCLUDE "gfx/pokemon/golem/hgss/shiny.pal" ; TODO
+INCLUDE "gfx/pokemon/grimer/hgss/normal.pal" ; TODO
+INCLUDE "gfx/pokemon/grimer/hgss/shiny.pal" ; TODO
+INCLUDE "gfx/pokemon/muk/hgss/normal.pal" ; TODO
+INCLUDE "gfx/pokemon/muk/hgss/shiny.pal" ; TODO
+INCLUDE "gfx/pokemon/raichu/hgss/normal.pal" ; TODO
+INCLUDE "gfx/pokemon/raichu/hgss/shiny.pal" ; TODO
 INCLUDE "gfx/pokemon/exeggutor_alolan/hgss/normal.pal"
 INCLUDE "gfx/pokemon/exeggutor_alolan/hgss/shiny.pal"
+INCLUDE "gfx/pokemon/marowak/hgss/normal.pal" ; TODO
+INCLUDE "gfx/pokemon/marowak/hgss/shiny.pal" ; TODO
+INCLUDE "gfx/pokemon/ponyta/hgss/normal.pal" ; TODO
+INCLUDE "gfx/pokemon/ponyta/hgss/shiny.pal" ; TODO
+INCLUDE "gfx/pokemon/rapidash/hgss/normal.pal" ; TODO
+INCLUDE "gfx/pokemon/rapidash/hgss/shiny.pal" ; TODO
 
 else
 	RGB 30,22,17, 16,14,19 ; 000
@@ -640,17 +671,10 @@ INCLUDE "gfx/pokemon/venonat/normal.pal"
 INCLUDE "gfx/pokemon/venonat/shiny.pal"
 INCLUDE "gfx/pokemon/venomoth/normal.pal"
 INCLUDE "gfx/pokemon/venomoth/shiny.pal"
-if DEF(FAITHFUL)
-INCLUDE "gfx/pokemon/diglett/normal.pal"
-INCLUDE "gfx/pokemon/diglett/shiny.pal"
-INCLUDE "gfx/pokemon/dugtrio/normal.pal"
-INCLUDE "gfx/pokemon/dugtrio/shiny.pal"
-else
-INCLUDE "gfx/pokemon/diglett_alolan/normal.pal"
-INCLUDE "gfx/pokemon/diglett_alolan/shiny.pal"
-INCLUDE "gfx/pokemon/dugtrio_alolan/normal.pal"
-INCLUDE "gfx/pokemon/dugtrio_alolan/shiny.pal"
-endc
+INCLUDE "gfx/pokemon/diglett_plain/normal.pal"
+INCLUDE "gfx/pokemon/diglett_plain/shiny.pal"
+INCLUDE "gfx/pokemon/dugtrio_plain/normal.pal"
+INCLUDE "gfx/pokemon/dugtrio_plain/shiny.pal"
 INCLUDE "gfx/pokemon/meowth/normal.pal"
 INCLUDE "gfx/pokemon/meowth/shiny.pal"
 INCLUDE "gfx/pokemon/persian/normal.pal"
@@ -1064,7 +1088,45 @@ INCLUDE "gfx/pokemon/gyarados_red/normal.pal"
 INCLUDE "gfx/pokemon/gyarados_red/shiny.pal"
 INCLUDE "gfx/pokemon/mewtwo_armored/normal.pal"
 INCLUDE "gfx/pokemon/mewtwo_armored/shiny.pal"
+INCLUDE "gfx/pokemon/rattata/normal.pal" ; TODO
+INCLUDE "gfx/pokemon/rattata/shiny.pal" ; TODO
+INCLUDE "gfx/pokemon/raticate/normal.pal" ; TODO
+INCLUDE "gfx/pokemon/raticate/shiny.pal" ; TODO
+INCLUDE "gfx/pokemon/sandshrew/normal.pal" ; TODO
+INCLUDE "gfx/pokemon/sandshrew/shiny.pal" ; TODO
+INCLUDE "gfx/pokemon/sandslash/normal.pal" ; TODO
+INCLUDE "gfx/pokemon/sandslash/shiny.pal" ; TODO
+INCLUDE "gfx/pokemon/vulpix/normal.pal" ; TODO
+INCLUDE "gfx/pokemon/vulpix/shiny.pal" ; TODO
+INCLUDE "gfx/pokemon/ninetales/normal.pal" ; TODO
+INCLUDE "gfx/pokemon/ninetales/shiny.pal" ; TODO
+INCLUDE "gfx/pokemon/diglett_alolan/normal.pal"
+INCLUDE "gfx/pokemon/diglett_alolan/shiny.pal"
+INCLUDE "gfx/pokemon/dugtrio_alolan/normal.pal"
+INCLUDE "gfx/pokemon/dugtrio_alolan/shiny.pal"
+INCLUDE "gfx/pokemon/meowth/normal.pal" ; TODO
+INCLUDE "gfx/pokemon/meowth/shiny.pal" ; TODO
+INCLUDE "gfx/pokemon/persian/normal.pal" ; TODO
+INCLUDE "gfx/pokemon/persian/shiny.pal" ; TODO
+INCLUDE "gfx/pokemon/geodude/normal.pal" ; TODO
+INCLUDE "gfx/pokemon/geodude/shiny.pal" ; TODO
+INCLUDE "gfx/pokemon/graveler/normal.pal" ; TODO
+INCLUDE "gfx/pokemon/graveler/shiny.pal" ; TODO
+INCLUDE "gfx/pokemon/golem/normal.pal" ; TODO
+INCLUDE "gfx/pokemon/golem/shiny.pal" ; TODO
+INCLUDE "gfx/pokemon/grimer/normal.pal" ; TODO
+INCLUDE "gfx/pokemon/grimer/shiny.pal" ; TODO
+INCLUDE "gfx/pokemon/muk/normal.pal" ; TODO
+INCLUDE "gfx/pokemon/muk/shiny.pal" ; TODO
+INCLUDE "gfx/pokemon/raichu/normal.pal" ; TODO
+INCLUDE "gfx/pokemon/raichu/shiny.pal" ; TODO
 INCLUDE "gfx/pokemon/exeggutor_alolan/normal.pal"
 INCLUDE "gfx/pokemon/exeggutor_alolan/shiny.pal"
+INCLUDE "gfx/pokemon/marowak/normal.pal" ; TODO
+INCLUDE "gfx/pokemon/marowak/shiny.pal" ; TODO
+INCLUDE "gfx/pokemon/ponyta/normal.pal" ; TODO
+INCLUDE "gfx/pokemon/ponyta/shiny.pal" ; TODO
+INCLUDE "gfx/pokemon/rapidash/normal.pal" ; TODO
+INCLUDE "gfx/pokemon/rapidash/shiny.pal" ; TODO
 
 endc

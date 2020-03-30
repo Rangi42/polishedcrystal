@@ -258,4 +258,23 @@ IconPointers:
 
 	dw GyaradosIcon
 	dw MewtwoArmoredIcon
+	dw RattataIcon ; TODO
+	dw RaticateIcon ; TODO
+	dw SandshrewIcon ; TODO
+	dw SandslashIcon ; TODO
+	dw VulpixIcon ; TODO
+	dw NinetalesIcon ; TODO
+	dw DiglettIcon ; TODO
+	dw DugtrioIcon ; TODO
+	dw MeowthIcon ; TODO
+	dw PersianIcon ; TODO
+	dw GeodudeIcon ; TODO
+	dw GravelerIcon ; TODO
+	dw GolemIcon ; TODO
+	dw GrimerIcon ; TODO
+	dw MukIcon ; TODO
+	dw RaichuIcon ; TODO
 	dw ExeggutorAlolanIcon
+	dw MarowakIcon ; TODO
+	dw PonytaIcon ; TODO
+	dw RapidashIcon ; TODO

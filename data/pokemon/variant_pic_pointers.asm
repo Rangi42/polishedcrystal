@@ -132,8 +132,122 @@ MewtwoPicPointers::
 	dba MewtwoArmoredFrontpic
 	dba MewtwoArmoredBackpic
 
+RattataPicPointers::
+	dba RattataFrontpic
+	dba RattataBackpic
+	dba RattataFrontpic ; TODO
+	dba RattataBackpic ; TODO
+
+RaticatePicPointers::
+	dba RaticateFrontpic
+	dba RaticateBackpic
+	dba RaticateFrontpic ; TODO
+	dba RaticateBackpic ; TODO
+
+SandshrewPicPointers::
+	dba SandshrewFrontpic
+	dba SandshrewBackpic
+	dba SandshrewFrontpic ; TODO
+	dba SandshrewBackpic ; TODO
+
+SandslashPicPointers::
+	dba SandslashFrontpic
+	dba SandslashBackpic
+	dba SandslashFrontpic ; TODO
+	dba SandslashBackpic ; TODO
+
+VulpixPicPointers::
+	dba VulpixFrontpic
+	dba VulpixBackpic
+	dba VulpixFrontpic ; TODO
+	dba VulpixBackpic ; TODO
+
+NinetalesPicPointers::
+	dba NinetalesFrontpic
+	dba NinetalesBackpic
+	dba NinetalesFrontpic ; TODO
+	dba NinetalesBackpic ; TODO
+
+DiglettPicPointers::
+	dba DiglettPlainFrontpic
+	dba DiglettPlainBackpic
+	dba DiglettAlolanFrontpic
+	dba DiglettAlolanBackpic
+
+DugtrioPicPointers::
+	dba DugtrioPlainFrontpic
+	dba DugtrioPlainBackpic
+	dba DugtrioAlolanFrontpic
+	dba DugtrioAlolanBackpic
+
+MeowthPicPointers::
+	dba MeowthFrontpic
+	dba MeowthBackpic
+	dba MeowthFrontpic ; TODO
+	dba MeowthBackpic ; TODO
+
+PersianPicPointers::
+	dba PersianFrontpic
+	dba PersianBackpic
+	dba PersianFrontpic ; TODO
+	dba PersianBackpic ; TODO
+
+GeodudePicPointers::
+	dba GeodudeFrontpic
+	dba GeodudeBackpic
+	dba GeodudeFrontpic ; TODO
+	dba GeodudeBackpic ; TODO
+
+GravelerPicPointers::
+	dba GravelerFrontpic
+	dba GravelerBackpic
+	dba GravelerFrontpic ; TODO
+	dba GravelerBackpic ; TODO
+
+GolemPicPointers::
+	dba GolemFrontpic
+	dba GolemBackpic
+	dba GolemFrontpic ; TODO
+	dba GolemBackpic ; TODO
+
+GrimerPicPointers::
+	dba GrimerFrontpic
+	dba GrimerBackpic
+	dba GrimerFrontpic ; TODO
+	dba GrimerBackpic ; TODO
+
+MukPicPointers::
+	dba MukFrontpic
+	dba MukBackpic
+	dba MukFrontpic ; TODO
+	dba MukBackpic ; TODO
+
+RaichuPicPointers::
+	dba RaichuFrontpic
+	dba RaichuBackpic
+	dba RaichuFrontpic ; TODO
+	dba RaichuBackpic ; TODO
+
 ExeggutorPicPointers::
 	dba ExeggutorPlainFrontpic
 	dba ExeggutorPlainBackpic
 	dba ExeggutorAlolanFrontpic
 	dba ExeggutorAlolanBackpic
+
+MarowakPicPointers::
+	dba MarowakFrontpic
+	dba MarowakBackpic
+	dba MarowakFrontpic ; TODO
+	dba MarowakBackpic ; TODO
+
+PonytaPicPointers::
+	dba PonytaFrontpic
+	dba PonytaBackpic
+	dba PonytaFrontpic ; TODO
+	dba PonytaBackpic ; TODO
+
+RapidashPicPointers::
+	dba RapidashFrontpic
+	dba RapidashBackpic
+	dba RapidashFrontpic ; TODO
+	dba RapidashBackpic ; TODO

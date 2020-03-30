@@ -258,8 +258,8 @@ endr
 	; exeggutor test
 	givepoke EXEGGUTOR, 46
 	givepoke EXEGGUTOR, 46
-	loadvar wPartyMon4Form, MALE | EXEGGUTOR_PLAIN_FORM
-	loadvar wPartyMon5Form, FEMALE | EXEGGUTOR_ALOLAN_FORM
+	loadvar wPartyMon4Form, MALE | PLAIN_FORM
+	loadvar wPartyMon5Form, FEMALE | ALOLAN_FORM
 	loadvar wPartyMon4Moves+0, FLY
 	loadvar wPartyMon4PP+0, 15
 	loadvar wPartyMon5Moves+0, FLY

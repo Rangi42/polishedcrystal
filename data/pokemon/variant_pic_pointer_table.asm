@@ -6,5 +6,24 @@ VariantPicPointerTable:
 	dbba MAGIKARP,  MagikarpPicPointers
 	dbba GYARADOS,  GyaradosPicPointers
 	dbba MEWTWO,    MewtwoPicPointers
+	dbba RATTATA,   RattataPicPointers
+	dbba RATICATE,  RaticatePicPointers
+	dbba SANDSHREW, SandshrewPicPointers
+	dbba SANDSLASH, SandslashPicPointers
+	dbba VULPIX,    VulpixPicPointers
+	dbba NINETALES, NinetalesPicPointers
+	dbba DIGLETT,   DiglettPicPointers
+	dbba DUGTRIO,   DugtrioPicPointers
+	dbba MEOWTH,    MeowthPicPointers
+	dbba PERSIAN,   PersianPicPointers
+	dbba GEODUDE,   GeodudePicPointers
+	dbba GRAVELER,  GravelerPicPointers
+	dbba GOLEM,     GolemPicPointers
+	dbba GRIMER,    GrimerPicPointers
+	dbba MUK,       MukPicPointers
+	dbba RAICHU,    RaichuPicPointers
 	dbba EXEGGUTOR, ExeggutorPicPointers
+	dbba MAROWAK,   MarowakPicPointers
+	dbba PONYTA,    PonytaPicPointers
+	dbba RAPIDASH,  RapidashPicPointers
 	dbba -1,        PicPointers

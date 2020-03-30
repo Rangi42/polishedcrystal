@@ -261,4 +261,23 @@ EvosAttacksPointers::
 
 	dw GyaradosEvosAttacks
 	dw MewtwoEvosAttacks
+	dw RattataEvosAttacks ; TODO
+	dw RaticateEvosAttacks ; TODO
+	dw SandshrewEvosAttacks ; TODO
+	dw SandslashEvosAttacks ; TODO
+	dw VulpixEvosAttacks ; TODO
+	dw NinetalesEvosAttacks ; TODO
+	dw DiglettEvosAttacks ; TODO
+	dw DugtrioEvosAttacks ; TODO
+	dw MeowthEvosAttacks ; TODO
+	dw PersianEvosAttacks ; TODO
+	dw GeodudeEvosAttacks ; TODO
+	dw GravelerEvosAttacks ; TODO
+	dw GolemEvosAttacks ; TODO
+	dw GrimerEvosAttacks ; TODO
+	dw MukEvosAttacks ; TODO
+	dw RaichuEvosAttacks ; TODO
 	dw ExeggutorAlolanEvosAttacks
+	dw MarowakEvosAttacks ; TODO
+	dw PonytaEvosAttacks ; TODO
+	dw RapidashEvosAttacks ; TODO

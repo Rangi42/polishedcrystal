@@ -135,17 +135,6 @@ ParasectFrontpic:         INCBIN "gfx/pokemon/parasect/front.2bpp.lz"
 ParasectBackpic:          INCBIN "gfx/pokemon/parasect/back.2bpp.lz"
 VenonatFrontpic:          INCBIN "gfx/pokemon/venonat/front.2bpp.lz"
 VenonatBackpic:           INCBIN "gfx/pokemon/venonat/back.2bpp.lz"
-if DEF(FAITHFUL)
-DiglettFrontpic:          INCBIN "gfx/pokemon/diglett/front.2bpp.lz"
-DiglettBackpic:           INCBIN "gfx/pokemon/diglett/back.2bpp.lz"
-DugtrioFrontpic:          INCBIN "gfx/pokemon/dugtrio/front.2bpp.lz"
-DugtrioBackpic:           INCBIN "gfx/pokemon/dugtrio/back.2bpp.lz"
-else
-DiglettFrontpic:          INCBIN "gfx/pokemon/diglett_alolan/front.2bpp.lz"
-DiglettBackpic:           INCBIN "gfx/pokemon/diglett_alolan/back.2bpp.lz"
-DugtrioFrontpic:          INCBIN "gfx/pokemon/dugtrio_alolan/front.2bpp.lz"
-DugtrioBackpic:           INCBIN "gfx/pokemon/dugtrio_alolan/back.2bpp.lz"
-endc
 
 
 SECTION "Pokemon Pics 7", ROMX
@@ -793,6 +782,18 @@ GyaradosPlainFrontpic:    INCBIN "gfx/pokemon/gyarados_plain/front.2bpp.lz"
 GyaradosRedFrontpic:      INCBIN "gfx/pokemon/gyarados_red/front.2bpp.lz"
 GyaradosPlainBackpic:
 GyaradosRedBackpic:       INCBIN "gfx/pokemon/gyarados/back.2bpp.lz"
+
+
+SECTION "Diglett/Dugtrio Pics", ROMX
+
+DiglettPlainFrontpic:     INCBIN "gfx/pokemon/diglett_plain/front.2bpp.lz"
+DiglettPlainBackpic:      INCBIN "gfx/pokemon/diglett_plain/back.2bpp.lz"
+DugtrioPlainFrontpic:     INCBIN "gfx/pokemon/dugtrio_plain/front.2bpp.lz"
+DugtrioPlainBackpic:      INCBIN "gfx/pokemon/dugtrio_plain/back.2bpp.lz"
+DiglettAlolanFrontpic:    INCBIN "gfx/pokemon/diglett_alolan/front.2bpp.lz"
+DiglettAlolanBackpic:     INCBIN "gfx/pokemon/diglett_alolan/back.2bpp.lz"
+DugtrioAlolanFrontpic:    INCBIN "gfx/pokemon/dugtrio_alolan/front.2bpp.lz"
+DugtrioAlolanBackpic:     INCBIN "gfx/pokemon/dugtrio_alolan/back.2bpp.lz"
 
 
 SECTION "Exeggutor Pics", ROMX

@@ -347,7 +347,7 @@ UpdateMewtwoForm:
 	cp ARMOR_SUIT
 	ld a, MEWTWO_ARMORED_FORM
 	jr z, .got_form
-	dec a ; MEWTWO_PLAIN_FORM
+	dec a ; PLAIN_FORM
 .got_form
 	ld d, a
 	ld a, MON_FORM

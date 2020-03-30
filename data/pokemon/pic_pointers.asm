@@ -35,10 +35,15 @@ PicPointers::
 	dba PidgeottoBackpic
 	dba PidgeotFrontpic
 	dba PidgeotBackpic
-	dba RattataFrontpic
-	dba RattataBackpic
-	dba RaticateFrontpic
-	dba RaticateBackpic
+
+	; see RattataPicPointers
+	dbw -1, -1
+	dbw -1, -1
+
+	; see RaticatePicPointers
+	dbw -1, -1
+	dbw -1, -1
+
 	dba MarillFrontpic
 	dba MarillBackpic
 	dba AzumarillFrontpic
@@ -54,12 +59,18 @@ PicPointers::
 	dbw -1, -1
 	dbw -1, -1
 
-	dba RaichuFrontpic
-	dba RaichuBackpic
-	dba SandshrewFrontpic
-	dba SandshrewBackpic
-	dba SandslashFrontpic
-	dba SandslashBackpic
+	; see RaichuPicPointers
+	dbw -1, -1
+	dbw -1, -1
+
+	; see SandshrewPicPointers
+	dbw -1, -1
+	dbw -1, -1
+
+	; see SandslashPicPointers
+	dbw -1, -1
+	dbw -1, -1
+
 	dba NidoranFFrontpic
 	dba NidoranFBackpic
 	dba NidorinaFrontpic
@@ -76,10 +87,15 @@ PicPointers::
 	dba ClefairyBackpic
 	dba ClefableFrontpic
 	dba ClefableBackpic
-	dba VulpixFrontpic
-	dba VulpixBackpic
-	dba NinetalesFrontpic
-	dba NinetalesBackpic
+
+	; see VulpixPicPointers
+	dbw -1, -1
+	dbw -1, -1
+
+	; see NinetalesPicPointers
+	dbw -1, -1
+	dbw -1, -1
+
 	dba JigglypuffFrontpic
 	dba JigglypuffBackpic
 	dba WigglytuffFrontpic
@@ -102,14 +118,23 @@ PicPointers::
 	dba VenonatBackpic
 	dba VenomothFrontpic
 	dba VenomothBackpic
-	dba DiglettFrontpic
-	dba DiglettBackpic
-	dba DugtrioFrontpic
-	dba DugtrioBackpic
-	dba MeowthFrontpic
-	dba MeowthBackpic
-	dba PersianFrontpic
-	dba PersianBackpic
+
+	; see DiglettPicPointers
+	dbw -1, -1
+	dbw -1, -1
+
+	; see DugtrioPicPointers
+	dbw -1, -1
+	dbw -1, -1
+
+	; see MeowthPicPointers
+	dbw -1, -1
+	dbw -1, -1
+
+	; see PersianPicPointers
+	dbw -1, -1
+	dbw -1, -1
+
 	dba PsyduckFrontpic
 	dba PsyduckBackpic
 	dba GolduckFrontpic
@@ -150,16 +175,27 @@ PicPointers::
 	dba TentacoolBackpic
 	dba TentacruelFrontpic
 	dba TentacruelBackpic
-	dba GeodudeFrontpic
-	dba GeodudeBackpic
-	dba GravelerFrontpic
-	dba GravelerBackpic
-	dba GolemFrontpic
-	dba GolemBackpic
-	dba PonytaFrontpic
-	dba PonytaBackpic
-	dba RapidashFrontpic
-	dba RapidashBackpic
+
+	; see GeodudePicPointers
+	dbw -1, -1
+	dbw -1, -1
+
+	; see GravelerPicPointers
+	dbw -1, -1
+	dbw -1, -1
+
+	; see GolemPicPointers
+	dbw -1, -1
+	dbw -1, -1
+
+	; see PonytaPicPointers
+	dbw -1, -1
+	dbw -1, -1
+
+	; see RapidashPicPointers
+	dbw -1, -1
+	dbw -1, -1
+
 	dba SlowpokeFrontpic
 	dba SlowpokeBackpic
 	dba SlowbroFrontpic
@@ -178,10 +214,15 @@ PicPointers::
 	dba SeelBackpic
 	dba DewgongFrontpic
 	dba DewgongBackpic
-	dba GrimerFrontpic
-	dba GrimerBackpic
-	dba MukFrontpic
-	dba MukBackpic
+
+	; see GrimerPicPointers
+	dbw -1, -1
+	dbw -1, -1
+
+	; see MukPicPointers
+	dbw -1, -1
+	dbw -1, -1
+
 	dba ShellderFrontpic
 	dba ShellderBackpic
 	dba CloysterFrontpic
@@ -215,8 +256,11 @@ PicPointers::
 
 	dba CuboneFrontpic
 	dba CuboneBackpic
-	dba MarowakFrontpic
-	dba MarowakBackpic
+
+	; see MarowakPicPointers
+	dbw -1, -1
+	dbw -1, -1
+
 	dba HitmonleeFrontpic
 	dba HitmonleeBackpic
 	dba HitmonchanFrontpic

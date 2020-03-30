@@ -22,7 +22,7 @@ GetVariant:
 	ld a, ARBOK_KANTO_FORM
 	jr .ok
 .not_kanto_arbok
-	ld a, 1 ; safeguard: form 0 becomes variant 1
+	ld a, PLAIN_FORM ; safeguard: form 0 becomes variant 1
 .ok
 	ld [wCurForm], a
 	ret
@@ -65,7 +65,7 @@ rept NUM_MOVES
 endr
 
 .plain
-	ld a, PIKACHU_PLAIN_FORM
+	ld a, PLAIN_FORM
 .use_form
 	ld [wCurForm], a
 	ret

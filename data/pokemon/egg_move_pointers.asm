@@ -257,4 +257,23 @@ EggMovePointers::
 
 	dw NoEggMoves
 	dw NoEggMoves
+	dw RattataEggMoves ; TODO
+	dw NoEggMoves
+	dw SandshrewEggMoves ; TODO
+	dw NoEggMoves
+	dw VulpixEggMoves ; TODO
+	dw NoEggMoves
+	dw DiglettEggMoves ; TODO
+	dw NoEggMoves
+	dw MeowthEggMoves ; TODO
+	dw NoEggMoves
+	dw GeodudeEggMoves ; TODO
+	dw NoEggMoves
+	dw NoEggMoves
+	dw GrimerEggMoves ; TODO
+	dw NoEggMoves
+	dw NoEggMoves
+	dw NoEggMoves
+	dw NoEggMoves
+	dw PonytaEggMoves ; TODO
 	dw NoEggMoves
