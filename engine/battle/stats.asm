@@ -70,7 +70,7 @@ FarChangeStat:
 
 .check_lowering
 	bit STAT_LOWER_F, b
-	jr nz, .ability_done
+	jr z, .ability_done
 	ld a, BATTLE_VARS_SUBSTATUS4_OPP
 	call GetBattleVar
 	bit SUBSTATUS_MIST, a
