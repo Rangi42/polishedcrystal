@@ -269,7 +269,7 @@ ChlorophyllDescription:
 
 IlluminateDescription:
 	db    "Raises the rate"
-	next1 "of wild Pokémon.@"
+	next1 "of wild #mon.@"
 
 TraceDescription:
 	db    "Copies the foe's"
@@ -329,7 +329,7 @@ FlameBodyDescription:
 
 RunAwayDescription:
 	db    "Sure getaway from"
-	next1 "wild Pokémon.@"
+	next1 "wild #mon.@"
 
 KeenEyeDescription:
 	db    "Prevents foes from"
@@ -340,7 +340,7 @@ HyperCutterDescription:
 	next1 "lowering Attack.@"
 
 PickupDescription:
-	db    "The Pokémon may"
+	db    "The #mon may"
 	next1 "pick up items.@"
 
 HustleDescription:

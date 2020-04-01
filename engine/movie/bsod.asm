@@ -103,7 +103,7 @@ else
 endc
 
 .Message:
-	db   "      Pokémon"
+	db   "      #mon"
 	next1 " Polished Crystal"
 	next1 "       ERROR"
 	next1 "------------------"

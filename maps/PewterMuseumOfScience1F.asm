@@ -256,7 +256,7 @@ KabutopsFossilSignpostScript:
 	line "(Dome)"
 
 	para "A primitive and"
-	line "rare Pokémon."
+	line "rare #mon."
 	done
 
 OmastarFossilSignpostScript:
@@ -270,7 +270,7 @@ OmastarFossilSignpostScript:
 	line "(Helix)"
 
 	para "A primitive and"
-	line "rare Pokémon."
+	line "rare #mon."
 	done
 
 AerodactylFossilSignpostScript:
@@ -283,7 +283,7 @@ AerodactylFossilSignpostScript:
 	text "Aerodactyl Fossil"
 
 	para "A primitive and"
-	line "rare Pokémon."
+	line "rare #mon."
 	done
 
 Museum1FScientistText:
