@@ -199,7 +199,6 @@ ENDM
 	dict "<START>",  NullChar
 	dict "<FAR>",    TextFar
 	dict "<NEXT>",   NextChar
-	dict "<_CONT>",  LinkButtonSound
 	dict "<SCRL2>",  ScrollText
 	dict "<LNBRK>",  LineBreak
 	dict "<NL>",     NextLineChar
@@ -262,9 +261,9 @@ NgramStrings:
 	dw .this
 	dw .ight
 	dw .with
+	dw .ould
+	dw .thing
 	dw .attle
-	dw NULL
-	dw NULL
 	dw .Poke
 	dw .Pokemon
 	dw wPlayerName
@@ -311,6 +310,8 @@ NgramStrings:
 .this:  rawchar "this@"
 .ight:  rawchar "ight@"
 .with:  rawchar "with@"
+.ould:  rawchar "ould@"
+.thing: rawchar "thing@"
 .attle: rawchar "attle@"
 .Poke:  rawchar "Poké@"
 .Pokemon: rawchar "Pokémon@"
@@ -472,7 +473,7 @@ Paragraph::
 	pop de
 	jp NextChar
 
-LinkButtonSound::
+ContText::
 	ld a, [wLinkMode]
 	or a
 	jr nz, .communication
@@ -496,19 +497,6 @@ ScrollText::
 	hlcoord TEXTBOX_INNERX, TEXTBOX_INNERY + 2
 	pop de
 	jp NextChar
-
-ContText::
-	push de
-	ld de, .cont
-	ld b, h
-	ld c, l
-	rst PlaceString
-	ld h, b
-	ld l, c
-	pop de
-	jp NextChar
-
-.cont	db "<_CONT>@"
 
 PromptText::
 	ld a, [wLinkMode]

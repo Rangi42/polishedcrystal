@@ -26,7 +26,14 @@
 	charmap "<DAY>",    $15
 	charmap "<FAR>",    $16
 
-	; unused: $17 - $1e
+	; unused: $17
+	; unused: $18
+	; unused: $19
+	; unused: $1a
+	; unused: $1b
+	; unused: $1c
+	; unused: $1d
+	; unused: $1e
 
 	charmap "¯",        $1f
 
@@ -34,20 +41,20 @@
 
 	charmap "@",        $50
 	charmap "<NEXT>",   $51
-	charmap "<_CONT>",  $52
-	charmap "<SCRL2>",  $53
-	charmap "<LNBRK>",  $54
-	charmap "<NL>",     $55
-	charmap "<LINE>",   $56
-	charmap "<CONT>",   $57
-	charmap "<PARA>",   $58
-	charmap "<DONE>",   $59
-	charmap "<PROMPT>", $5a
+	charmap "<SCRL2>",  $52
+	charmap "<LNBRK>",  $53
+	charmap "<NL>",     $54
+	charmap "<LINE>",   $55
+	charmap "<CONT>",   $56
+	charmap "<PARA>",   $57
+	charmap "<DONE>",   $58
+	charmap "<PROMPT>", $59
 
-	charmap "<TARGET>", $5b
-	charmap "<USER>",   $5c
-	charmap "<ENEMY>",  $5d
+	charmap "<TARGET>", $5a
+	charmap "<USER>",   $5b
+	charmap "<ENEMY>",  $5c
 
+	; unused: $5d
 	; unused: $5e
 
 ; Battle characters
@@ -281,10 +288,10 @@ NGRAMS_START EQU $20
 	charmap "this",     $45
 	charmap "ight",     $46
 	charmap "with",     $47
+	charmap "ould",     $48
 
-	charmap "attle",    $48
-
-	; unused: $49 - $4a
+	charmap "thing",    $49
+	charmap "attle",    $4a
 
 	charmap "#",        $4b
 	charmap "#mon",     $4c
