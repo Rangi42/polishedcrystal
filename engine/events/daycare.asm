@@ -775,7 +775,15 @@ DayCare_InitBreeding:
 	ld [wCurSpecies], a
 	ld [wEggMonSpecies], a
 
-	; TODO: initialize [wCurForm] before GetBaseData
+	; Form inheritance: from the mother or non-Ditto. If both
+	; parents share species, pick at random.
+	; Must assign [wCurForm] before GetBaseData.
+	ld hl, wBreedMon1Form
+	call .inherit_mother_unless_samespecies
+	ld a, [hl]
+	and FORM_MASK
+	ld [wCurForm], a
+
 	call GetBaseData
 
 	; Set name and item
@@ -994,11 +1002,11 @@ DayCare_InitBreeding:
 	or [hl]
 	ld [hl], a
 .not_shiny
+
 	; Gender
 	ld a, [wEggMonSpecies]
 	ld c, a
-	ld a, [wEggMonForm]
-	and FORM_MASK
+	ld a, [wCurForm]
 	ld b, a
 	call GetGenderRatio
 	; if rnd(0..7) < c: female, else male
@@ -1012,25 +1020,20 @@ DayCare_InitBreeding:
 	or [hl]
 	ld [hl], a
 
+	; Form (same byte as gender) was already determined
+	ld a, [wCurForm]
+	or [hl]
+	ld [hl], a
+
+	; Mark as an egg (same byte as form)
+	set MON_IS_EGG_F, [hl]
+
 	; Ball inheritance: from the mother or non-Ditto. If both
 	; parents share species, pick at random.
 	ld hl, wBreedMon1CaughtBall
 	call .inherit_mother_unless_samespecies
 	ld a, [hl]
 	ld [wEggMonCaughtBall], a
-
-	; Form works the same as Ball
-	ld hl, wBreedMon1Form
-	call .inherit_mother_unless_samespecies
-	ld a, [hl]
-	and FORM_MASK
-	ld hl, wEggMonForm
-	or [hl]
-	ld [hl], a
-
-	; Mark as an egg
-	ld hl, wEggMonIsEgg
-	set MON_IS_EGG_F, [hl]
 
 	; PP, egg cycles, level
 	ld hl, wStringBuffer1
