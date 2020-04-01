@@ -1779,9 +1779,8 @@ DepositPokemon:
 	xor a
 	ld [wPokemonWithdrawDepositParameter], a
 	predef RemoveMonFromPartyOrBox
-	hlcoord 1, 16
 	ld de, PCString_Stored
-	rst PlaceString
+	call BillsPC_PlaceString
 	ld l, c
 	ld h, b
 	ld de, wStringBuffer1
@@ -1835,9 +1834,8 @@ TryWithdrawPokemon:
 	ld a, PC_DEPOSIT
 	ld [wPokemonWithdrawDepositParameter], a
 	predef RemoveMonFromPartyOrBox
-	hlcoord 1, 16
 	ld de, PCString_Got
-	rst PlaceString
+	call BillsPC_PlaceString
 	ld l, c
 	ld h, b
 	ld de, wStringBuffer1
@@ -1874,18 +1872,18 @@ TryWithdrawPokemon:
 	ret
 
 ReleasePKMN_ByePKMN:
+	ld a, [wCurPartySpecies]
+	ld [wd265], a
+	call GetPokemonName
+
 	hlcoord 0, 0
 	lb bc, 15, 8
 	call ClearBox
 	hlcoord 8, 14
 	lb bc, 1, 3
 	call ClearBox
-	hlcoord 0, 15
-	lb bc, 1, 18
-	call TextBox
-	hlcoord 1, 16
 	ld de, PCString_Bye
-	rst PlaceString
+	call BillsPC_PlaceString
 	ld l, c
 	ld h, b
 	inc hl
@@ -1898,9 +1896,6 @@ ReleasePKMN_ByePKMN:
 	call ApplyTilemapInVBlank
 	ld a, [wCurPartySpecies]
 	call PlayCry
-
-	ld a, [wCurPartySpecies]
-	ld [wd265], a
 
 	cp RAIKOU
 	jr nz, .not_raikou
@@ -1917,25 +1912,16 @@ ReleasePKMN_ByePKMN:
 	farcall RespawnRoamingSuicune
 .not_suicune
 
-	call GetPokemonName
-	hlcoord 1, 16
 	ld de, PCString_ReleasedPKMN
-	rst PlaceString
-	hlcoord 0, 15
-	lb bc, 1, 18
-	jp TextBox
+	jp BillsPC_PlaceString
 
 MovePKMNWitoutMail_InsertMon:
 	push hl
 	push de
 	push bc
 	push af
-	hlcoord 0, 15
-	lb bc, 1, 18
-	call TextBox
-	hlcoord 1, 16
 	ld de, .Saving_LeaveOn
-	rst PlaceString
+	call BillsPC_PlaceString
 	pop af
 	pop bc
 	pop de
