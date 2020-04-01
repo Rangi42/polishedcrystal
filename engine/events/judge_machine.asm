@@ -559,11 +559,13 @@ OutlineRadarChart:
 	call CalcBTimesCOver256
 	add 41
 	ld d, a
-	; y = 46 - v * 23 / 256
-	ld c, 23
-	call CalcBTimesCOver256
-	cpl
-	add 46 + 1 ; a = 46 - a
+	; y = ForwardSlashAxisYCoords[x] (~= 46 - v * 23 / 256)
+	add LOW(ForwardSlashAxisYCoords)
+	ld c, a
+	adc HIGH(ForwardSlashAxisYCoords)
+	sub c
+	ld b, a
+	ld a, [bc]
 	ld e, a
 
 ; Draw a line from HP to Atk
@@ -583,10 +585,13 @@ OutlineRadarChart:
 	call CalcBTimesCOver256
 	add 41
 	ld d, a
-	; y = 49 + v * 23 / 256
-	ld c, 23
-	call CalcBTimesCOver256
-	add 49
+	; y = BackslashAxisYCoords[x] (~= 49 + v * 23 / 256)
+	add LOW(BackslashAxisYCoords)
+	ld c, a
+	adc HIGH(BackslashAxisYCoords)
+	sub c
+	ld b, a
+	ld a, [bc]
 	ld e, a
 
 ; Draw a line from Atk to Def
@@ -628,10 +633,13 @@ OutlineRadarChart:
 	cpl
 	add 38 + 1 ; a = 38 - a
 	ld d, a
-	; y = 49 + v * 23 / 256
-	ld c, 23
-	call CalcBTimesCOver256
-	add 49
+	; y = ForwardSlashAxisYCoords[x] (~= 49 + v * 23 / 256)
+	add LOW(ForwardSlashAxisYCoords)
+	ld c, a
+	adc HIGH(ForwardSlashAxisYCoords)
+	sub c
+	ld b, a
+	ld a, [bc]
 	ld e, a
 
 ; Draw a line from Spd to SDf
@@ -649,11 +657,13 @@ OutlineRadarChart:
 	cpl
 	add 38 + 1 ; a = 38 - a
 	ld d, a
-	; y = 46 - v * 23 / 256
-	ld c, 23
-	call CalcBTimesCOver256
-	cpl
-	add 46 + 1 ; a = 46 - a
+	; y = BackslashAxisYCoords[x] (~= 46 - v * 23 / 256)
+	add LOW(BackslashAxisYCoords)
+	ld c, a
+	adc HIGH(BackslashAxisYCoords)
+	sub c
+	ld b, a
+	ld a, [bc]
 	ld e, a
 
 ; Draw a line from SDf to SAt
@@ -864,26 +874,14 @@ DrawVerticalRadarLine:
 	ret
 
 FillRadarUp:
-; Draw a vertical line from (b, c) to the lower diagonal half-axes
-	ld hl, .LowerYCoords
-	jp _FillRadarVertical
-
-.LowerYCoords:
-	db 71, 70, 70, 69, 68, 68, 67, 67, 66, 65, 65, 64, 64, 63, 62, 62, 61, 61, 60, 59
-	db 59, 58, 58, 57, 56, 56, 55, 55, 54, 53, 53, 52, 52, 51, 51, 50, 49, 49, 48, 48
-	db 48, 48, 49, 49, 50, 51, 51, 52, 52, 53, 53, 54, 55, 55, 56, 56, 57, 58, 58, 59
-	db 59, 60, 61, 61, 62, 62, 63, 64, 64, 65, 65, 66, 67, 67, 68, 68, 69, 70, 70, 71
-
-FillRadarDown:
-; Draw a vertical line from (b, c) to the upper diagonal half-axes
-	ld hl, .UpperYCoords
+; Draw a vertical line up from (b, c) to the lower diagonal half-axes
+	ld hl, LowerSlashAxesYCoords
 	jr _FillRadarVertical
 
-.UpperYCoords:
-	db 24, 25, 25, 26, 26, 27, 27, 28, 29, 29, 30, 30, 31, 31, 32, 33, 33, 34, 34, 35
-	db 36, 36, 37, 37, 38, 39, 39, 40, 40, 41, 42, 42, 43, 43, 44, 45, 45, 46, 46, 47
-	db 47, 46, 46, 45, 45, 44, 43, 43, 42, 42, 41, 40, 40, 39, 39, 38, 37, 37, 36, 36
-	db 35, 34, 34, 33, 33, 32, 31, 31, 30, 30, 29, 29, 28, 27, 27, 26, 26, 25, 25, 24
+FillRadarDown:
+; Draw a vertical line down from (b, c) to the upper diagonal half-axes
+	ld hl, UpperSlashAxesYCoords
+	; fallthrough
 
 _FillRadarVertical:
 ; Draw a vertical line from (b, c) to (b, y), where y = hl[b]
@@ -920,16 +918,25 @@ _FillRadarVertical:
 	ret
 
 FillRadarLeft:
+; Draw a horizontal line left from (b, c) to the right diagonal half-axes
+	ld hl, RightSlashAxesXCoords
+	jr _FillRadarHorizontal
+
 FillRadarRight:
+; Draw a horizontal line right from (b, c) to the left diagonal half-axes
+	ld hl, LeftSlashAxesXCoords
+	; fallthrough
+
 _FillRadarHorizontal:
 ; Draw a horizontal line from (b, c) to the vertical axis
 
-; de = point on the vertical axis
+; de = point on the diagonal axes
 	ld a, c
-	cp 48
-	; a = carry ? 39 : 40
-	sbc a
-	add 40
+	sub 24
+	ld e, a
+	ld d, 0
+	add hl, de
+	ld a, [hl]
 	ld d, a
 	ld e, c
 
@@ -1016,6 +1023,50 @@ DrawRadarPointBC:
 	dw %1011010000 ; == %01001xxx * 10 ($48-4f)
 	dw %1100100000 ; == %01010xxx * 10 ($50-57)
 	dw %1101110000 ; == %01011xxx * 10 ($58-5f)
+
+atk_y_coords: MACRO
+	db 47, 46, 46, 45, 45, 44, 43, 43, 42, 42, 41, 40, 40, 39, 39, 38, 37, 37, 36, 36
+	db 35, 34, 34, 33, 33, 32, 31, 31, 30, 30, 29, 29, 28, 27, 27, 26, 26, 25, 25, 24
+ENDM
+
+def_y_coords: MACRO
+	db 48, 48, 49, 49, 50, 51, 51, 52, 52, 53, 53, 54, 55, 55, 56, 56, 57, 58, 58, 59
+	db 59, 60, 61, 61, 62, 62, 63, 64, 64, 65, 65, 66, 67, 67, 68, 68, 69, 70, 70, 71
+ENDM
+
+spcl_atk_y_coords: MACRO
+	db 24, 25, 25, 26, 26, 27, 27, 28, 29, 29, 30, 30, 31, 31, 32, 33, 33, 34, 34, 35
+	db 36, 36, 37, 37, 38, 39, 39, 40, 40, 41, 42, 42, 43, 43, 44, 45, 45, 46, 46, 47
+ENDM
+
+spcl_def_y_coords: MACRO
+	db 71, 70, 70, 69, 68, 68, 67, 67, 66, 65, 65, 64, 64, 63, 62, 62, 61, 61, 60, 59
+	db 59, 58, 58, 57, 56, 56, 55, 55, 54, 53, 53, 52, 52, 51, 51, 50, 49, 49, 48, 48
+ENDM
+
+ForwardSlashAxisYCoords:
+	spcl_def_y_coords
+	atk_y_coords
+
+BackslashAxisYCoords:
+	spcl_atk_y_coords
+	def_y_coords
+
+UpperSlashAxesYCoords:
+	spcl_atk_y_coords
+	atk_y_coords
+
+LowerSlashAxesYCoords:
+	spcl_def_y_coords
+	def_y_coords
+
+LeftSlashAxesXCoords:
+	db  0,  2,  4,  6,  7,  9, 11, 13, 14, 16, 18, 19, 21, 23, 24, 26, 28, 29, 31, 33, 34, 36, 38, 39
+	db 38, 37, 35, 34, 32, 30, 28, 27, 25, 23, 22, 20, 18, 17, 15, 13, 12, 10,  8,  7,  5,  3,  2,  0
+
+RightSlashAxesXCoords:
+	db 79, 77, 75, 73, 72, 70, 68, 66, 65, 63, 61, 60, 58, 56, 55, 53, 51, 50, 48, 46, 45, 43, 41, 40
+	db 41, 42, 44, 45, 47, 49, 51, 52, 54, 56, 57, 59, 61, 62, 64, 66, 67, 69, 71, 72, 74, 76, 77, 79
 
 JudgeSystemGFX:
 INCBIN "gfx/stats/judge.2bpp.lz"
