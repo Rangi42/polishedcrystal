@@ -105,7 +105,7 @@ GenericTrainerLassMeadow:
 	line "worried about"
 
 	para "having fun than"
-    line "being competitive."
+	line "being competitive."
 	done
 
 Route8BikerDwayneProtestText:

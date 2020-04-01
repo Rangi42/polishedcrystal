@@ -29,41 +29,26 @@
 	; unused: $17 - $1e
 
 	charmap "¯",        $1f
-	; unused: $20
-	; unused: $21
-	charmap "<LNBRK>",  $22
-	; unused: $23
-	; unused: $24
-	charmap "<NEXT>",   $25
 
-	; unused: $26 - $2a
-
-	; n-grams: $2b - $3f (defined below)
-
-	; unused: $40 - $4a
-
-	charmap "<_CONT>",  $4b
-	charmap "<SCRL2>",  $4c
-
-	; unused: $4d
-
-	charmap "<NL>",     $4e
-	charmap "<LINE>",   $4f
+	; n-grams: $20 - $4f (defined below)
 
 	charmap "@",        $50
-	charmap "<PARA>",   $51
-	charmap "<PLAYER>", $52
-	charmap "<RIVAL>",  $53
-	charmap "#",        $54
-	charmap "<CONT>",   $55
-	charmap "<TRENDY>", $56
-	charmap "<DONE>",   $57
-	charmap "<PROMPT>", $58
-	charmap "<TARGET>", $59
-	charmap "<USER>",   $5a
-	charmap "<ENEMY>",  $5b
+	charmap "<NEXT>",   $51
+	charmap "<_CONT>",  $52
+	charmap "<SCRL2>",  $53
+	charmap "<LNBRK>",  $54
+	charmap "<NL>",     $55
+	charmap "<LINE>",   $56
+	charmap "<CONT>",   $57
+	charmap "<PARA>",   $58
+	charmap "<DONE>",   $59
+	charmap "<PROMPT>", $5a
 
-	; n-grams: $5c - $5e (defined below)
+	charmap "<TARGET>", $5b
+	charmap "<USER>",   $5c
+	charmap "<ENEMY>",  $5d
+
+	; unused: $5e
 
 ; Battle characters
 
@@ -252,32 +237,63 @@ BATTLEEXTRA_GFX_START EQU $5f
 
 	newcharmap default, no_ngrams
 
-	charmap "he",       $2b
-	charmap "le",       $2c
-	charmap "ng",       $2d
-	charmap "te",       $2e
-	charmap "as",       $2f
-	charmap "or",       $30
-	charmap "ou",       $31
-	charmap "re",       $32
-	charmap "in",       $33
-	charmap "er",       $34
-	charmap "on",       $35
-	charmap "th",       $36
-	charmap "and",      $37
-	charmap "have",     $38
-	charmap "that",     $39
-	charmap "for",      $3a
-	charmap "with",     $3b
-	charmap "an",       $3c
-	charmap "ing",      $3d
-	charmap "to",       $3e
-	charmap "ent",      $3f
+NGRAMS_START EQU $20
 
-	charmap "the",      $5c
-	charmap "you",      $5d
-	charmap "#mon",     $5e
+	charmap "e ",       $20
+	charmap " t",       $21
+	charmap "ou",       $22
+	charmap "in",       $23
+	charmap "th",       $24
+	charmap "he",       $25
+	charmap "t ",       $26
+	charmap "er",       $27
+	charmap "on",       $28
+	charmap "re",       $29
+	charmap "s ",       $2a
+	charmap "at",       $2b
+	charmap "an",       $2c
+	charmap "to",       $2d
+	charmap "ha",       $2e
+	charmap "ng",       $2f
+	charmap "it",       $30
+	charmap "is",       $31
+	charmap "ea",       $32
+	charmap "ve",       $33
+	charmap "ar",       $34
+	charmap "st",       $35
+	charmap "le",       $36
+	charmap "or",       $37
+	charmap "te",       $38
+	charmap "as",       $39
 
+	charmap "the",      $3a
+	charmap "you",      $3b
+	charmap "ing",      $3c
+	charmap "hat",      $3d
+	charmap "and",      $3e
+	charmap "for",      $3f
+	charmap "all",      $40
+
+	charmap "here",     $41
+	charmap "that",     $42
+	charmap "have",     $43
+	charmap "rain",     $44
+	charmap "this",     $45
+	charmap "ight",     $46
+	charmap "with",     $47
+
+	charmap "attle",    $48
+
+	; unused: $49 - $4a
+
+	charmap "#",        $4b
+	charmap "#mon",     $4c
+
+	charmap "<PLAYER>", $4d
+	charmap "<RIVAL>",  $4e
+	charmap "<TRENDY>", $4f
+
+NGRAMS_END EQU $4f
 
 	setcharmap default
 

@@ -165,8 +165,28 @@ NextChar::
 	jr PlaceNextChar
 
 CheckDict::
-	cp $60
-	jp nc, .notDict
+	cp NGRAMS_START
+	jr c, .notNgram
+	cp NGRAMS_END + 1
+	jr nc, .notNgram
+	push de
+	push hl
+	sub NGRAMS_START
+	add a
+	ld e, a
+	ld d, 0
+	ld hl, NgramStrings
+	add hl, de
+	ld a, [hli]
+	ld d, [hl]
+	ld e, a
+	pop hl
+	jp PlaceCommandCharacter
+
+.notNgram
+	cp BATTLEEXTRA_GFX_START
+	jr nc, .notDict
+
 dict: MACRO
 if \1 == 0
 	and a
@@ -176,147 +196,124 @@ endc
 	jp z, \2
 ENDM
 
-dict2: MACRO
-	cp \1
-	jr nz, ._\@
-	ld a, \2
-._\@:
-ENDM
-
 	dict "<START>",  NullChar
 	dict "<FAR>",    TextFar
-	dict "<LNBRK>",  LineBreak
 	dict "<NEXT>",   NextChar
 	dict "<_CONT>",  LinkButtonSound
 	dict "<SCRL2>",  ScrollText
+	dict "<LNBRK>",  LineBreak
 	dict "<NL>",     NextLineChar
 	dict "<LINE>",   LineChar
 	dict "<PARA>",   Paragraph
-	dict "<PLAYER>", PrintPlayerName
-	dict "<RIVAL>",  PrintRivalName
 	dict "<CONT>",   ContText
-	dict "<TRENDY>", PrintTrendyPhrase
 	dict "<DONE>",   DoneText
 	dict "<PROMPT>", PromptText
 	dict "<TARGET>", PlaceMoveTargetsName
 	dict "<USER>",   PlaceMoveUsersName
 	dict "<ENEMY>",  PlaceEnemysName
-	dict "#",    PlacePoke
-	dict "he",   PlaceHe
-	dict "le",   PlaceLe
-	dict "ng",   PlaceNg
-	dict "te",   PlaceTe
-	dict "as",   PlaceAs
-	dict "or",   PlaceOr
-	dict "ou",   PlaceOu
-	dict "re",   PlaceRe
-	dict "in",   PlaceIn
-	dict "er",   PlaceEr
-	dict "on",   PlaceOn
-	dict "th",   PlaceTh
-	dict "and",  PlaceAnd
-	dict "the",  PlaceThe
-	dict "you",  PlaceYou
-	dict "#mon", PlacePokemon
-	dict "to",   PlaceTo
-	dict "ent",  PlaceEnt
-	dict "have", PlaceHave
-	dict "that", PlaceThat
-	dict "for",  PlaceFor
-	dict "with", PlaceWith
-	dict "an",   PlaceAn
-	dict "ing",  PlaceIng
-	dict2 "¯", " "
+
+	cp "¯"
+	jr nz, .notDict
+	ld a, " "
 
 .notDict
 	ld [hli], a
 	call PrintLetterDelay
 	jp NextChar
 
-print_name: MACRO
-	push de
-	ld de, \1
-	jp PlaceCommandCharacter
-ENDM
+NgramStrings:
+	dw .e_
+	dw ._t
+	dw .ou
+	dw .in
+	dw .th
+	dw .he
+	dw .t_
+	dw .er
+	dw .on
+	dw .re
+	dw .s_
+	dw .at
+	dw .an
+	dw .to
+	dw .ha
+	dw .ng
+	dw .it
+	dw .is
+	dw .ea
+	dw .ve
+	dw .ar
+	dw .st
+	dw .le
+	dw .or
+	dw .te
+	dw .as
+	dw .the
+	dw .you
+	dw .ing
+	dw .hat
+	dw .and
+	dw .for
+	dw .all
+	dw .here
+	dw .that
+	dw .have
+	dw .rain
+	dw .this
+	dw .ight
+	dw .with
+	dw .attle
+	dw NULL
+	dw NULL
+	dw .Poke
+	dw .Pokemon
+	dw wPlayerName
+	dw wRivalName
+	dw wTrendyPhrase
 
-PrintPlayerName:   print_name wPlayerName
-PrintRivalName:    print_name wRivalName
-PrintTrendyPhrase: print_name wTrendyPhrase
-
-PlaceHe: print_name .HeText
-.HeText: rawchar "he@"
-
-PlaceLe: print_name .LeText
-.LeText: rawchar "le@"
-
-PlaceNg: print_name .NgText
-.NgText: rawchar "ng@"
-
-PlaceTe: print_name .TeText
-.TeText: rawchar "te@"
-
-PlaceAs: print_name .AsText
-.AsText: rawchar "as@"
-
-PlaceOr: print_name .OrText
-.OrText: rawchar "or@"
-
-PlaceOu: print_name .OuText
-.OuText: rawchar "ou@"
-
-PlaceRe: print_name .ReText
-.ReText: rawchar "re@"
-
-PlaceIn: print_name .InText
-.InText: rawchar "in@"
-
-PlaceEr: print_name .ErText
-.ErText: rawchar "er@"
-
-PlaceOn: print_name .OnText
-.OnText: rawchar "on@"
-
-PlaceTh: print_name .ThText
-.ThText: rawchar "th@"
-
-PlaceAnd: print_name .AndText
-.AndText: rawchar "and@"
-
-PlacePoke: print_name .PokeText
-.PokeText: rawchar "Poké@"
-
-PlaceThe: print_name .TheText
-.TheText: rawchar "the@"
-
-PlaceYou: print_name .YouText
-.YouText: rawchar "you@"
-
-PlacePokemon: print_name .PokemonText
-.PokemonText: rawchar "Pokémon@"
-
-PlaceTo: print_name .ToText
-.ToText: rawchar "to@"
-
-PlaceEnt: print_name .EntText
-.EntText: rawchar "ent@"
-
-PlaceHave: print_name .HaveText
-.HaveText: rawchar "have@"
-
-PlaceThat: print_name .ThatText
-.ThatText: rawchar "that@"
-
-PlaceFor: print_name .ForText
-.ForText: rawchar "for@"
-
-PlaceWith: print_name .WithText
-.WithText: rawchar "with@"
-
-PlaceAn: print_name .AnText
-.AnText: rawchar "an@"
-
-PlaceIng: print_name .IngText
-.IngText: rawchar "ing@"
+.e_:    rawchar "e @"
+._t:    rawchar " t@"
+.ou:    rawchar "ou@"
+.in:    rawchar "in@"
+.th:    rawchar "th@"
+.he:    rawchar "he@"
+.t_:    rawchar "t @"
+.er:    rawchar "er@"
+.on:    rawchar "on@"
+.re:    rawchar "re@"
+.s_:    rawchar "s @"
+.at:    rawchar "at@"
+.an:    rawchar "an@"
+.to:    rawchar "to@"
+.ha:    rawchar "ha@"
+.ng:    rawchar "ng@"
+.it:    rawchar "it@"
+.is:    rawchar "is@"
+.ea:    rawchar "ea@"
+.ve:    rawchar "ve@"
+.ar:    rawchar "ar@"
+.st:    rawchar "st@"
+.le:    rawchar "le@"
+.or:    rawchar "or@"
+.te:    rawchar "te@"
+.as:    rawchar "as@"
+.the:   rawchar "the@"
+.you:   rawchar "you@"
+.ing:   rawchar "ing@"
+.hat:   rawchar "hat@"
+.and:   rawchar "and@"
+.for:   rawchar "for@"
+.all:   rawchar "all@"
+.here:  rawchar "here@"
+.that:  rawchar "that@"
+.have:  rawchar "have@"
+.rain:  rawchar "rain@"
+.this:  rawchar "this@"
+.ight:  rawchar "ight@"
+.with:  rawchar "with@"
+.attle: rawchar "attle@"
+.Poke:  rawchar "Poké@"
+.Pokemon: rawchar "Pokémon@"
 
 PlaceMoveTargetsName::
 	ldh a, [hBattleTurn]
