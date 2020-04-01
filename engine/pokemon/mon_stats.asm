@@ -655,14 +655,14 @@ StatusStringPointers:
 	dw FntString
 	dw ToxString
 
-OKString:  db "OK @"
-PsnString: db "Psn@"
-ParString: db "Par@"
-SlpString: db "Slp@"
-BrnString: db "Brn@"
-FrzString: db "Frz@"
-FntString: db "Fnt@"
-ToxString: db "Tox@"
+OKString:  rawchar "OK @"
+PsnString: rawchar "Psn@"
+ParString: rawchar "Par@"
+SlpString: rawchar "Slp@"
+BrnString: rawchar "Brn@"
+FrzString: rawchar "Frz@"
+FntString: rawchar "Fnt@"
+ToxString: rawchar "Tox@"
 
 ListMoves:
 ; List moves at hl, spaced every [wBuffer1] tiles.
