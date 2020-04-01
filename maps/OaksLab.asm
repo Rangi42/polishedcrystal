@@ -68,7 +68,7 @@ Oak:
 	playsound SFX_CAUGHT_MON
 	waitsfx
 	buttonsound
-	givepoke BULBASAUR, 10, SITRUS_BERRY
+	givepoke BULBASAUR, NO_FORM, 10, SITRUS_BERRY
 	setevent EVENT_GOT_A_POKEMON_FROM_OAK
 	jump .CheckBadges
 
@@ -78,7 +78,7 @@ Oak:
 	playsound SFX_CAUGHT_MON
 	waitsfx
 	buttonsound
-	givepoke CHARMANDER, 10, SITRUS_BERRY
+	givepoke CHARMANDER, NO_FORM, 10, SITRUS_BERRY
 	setevent EVENT_GOT_A_POKEMON_FROM_OAK
 	jump .CheckBadges
 
@@ -88,7 +88,7 @@ Oak:
 	playsound SFX_CAUGHT_MON
 	waitsfx
 	buttonsound
-	givepoke SQUIRTLE, 10, SITRUS_BERRY
+	givepoke SQUIRTLE, NO_FORM, 10, SITRUS_BERRY
 	setevent EVENT_GOT_A_POKEMON_FROM_OAK
 	jump .CheckBadges
 

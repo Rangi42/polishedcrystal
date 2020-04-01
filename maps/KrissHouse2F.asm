@@ -215,7 +215,7 @@ endr
 	setflag ENGINE_CREDITS_SKIP
 	setflag ENGINE_HAVE_SHINY_CHARM
 	; good party
-	givepoke MEWTWO, 100, BRIGHTPOWDER
+	givepoke MEWTWO, NO_FORM, 100, BRIGHTPOWDER
 	loadvar wPartyMon1EVs+0, 252
 	loadvar wPartyMon1EVs+1, 252
 	loadvar wPartyMon1EVs+2, 252
@@ -237,8 +237,8 @@ endr
 	loadvar wPartyMon1Stats+8, HIGH(999)
 	loadvar wPartyMon1Stats+9, LOW(999)
 	; hm slaves
-	givepoke MEW, 100, LEFTOVERS
-	givepoke MEW, 100, LEFTOVERS
+	givepoke MEW, NO_FORM, 100, LEFTOVERS
+	givepoke MEW, NO_FORM, 100, LEFTOVERS
 	loadvar wPartyMon2Moves+0, FLY
 	loadvar wPartyMon2Moves+1, SURF
 	loadvar wPartyMon2Moves+2, STRENGTH
@@ -256,10 +256,8 @@ endr
 	loadvar wPartyMon3PP+2, 15
 	loadvar wPartyMon3PP+3, 15
 	; exeggutor test
-	givepoke EXEGGUTOR, 46
-	givepoke EXEGGUTOR, 46
-	loadvar wPartyMon4Form, MALE | PLAIN_FORM
-	loadvar wPartyMon5Form, FEMALE | ALOLAN_FORM
+	givepoke EXEGGUTOR, PLAIN_FORM, 46
+	givepoke EXEGGUTOR, ALOLAN_FORM, 46
 	loadvar wPartyMon4Moves+0, FLY
 	loadvar wPartyMon4PP+0, 15
 	loadvar wPartyMon5Moves+0, FLY

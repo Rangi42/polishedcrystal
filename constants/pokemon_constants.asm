@@ -262,6 +262,7 @@ EGG EQU CANCEL ; EGG is used as sentinel for egg pic/icon/etc
 ; form values
 
 ; generic
+NO_FORM EQU 0
 PLAIN_FORM EQU 1
 ; rattata/raticate
 ; sandshrew/sandslash

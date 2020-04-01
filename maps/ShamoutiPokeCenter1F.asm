@@ -78,7 +78,7 @@ ShamoutiPokeCenter1FIvyScript:
 	playsound SFX_CAUGHT_MON
 	waitsfx
 	buttonsound
-	givepoke BULBASAUR, 10, SITRUS_BERRY
+	givepoke BULBASAUR, NO_FORM, 10, SITRUS_BERRY
 	jump .Finish
 
 .Charmander:
@@ -93,7 +93,7 @@ ShamoutiPokeCenter1FIvyScript:
 	playsound SFX_CAUGHT_MON
 	waitsfx
 	buttonsound
-	givepoke CHARMANDER, 10, SITRUS_BERRY
+	givepoke CHARMANDER, NO_FORM, 10, SITRUS_BERRY
 	jump .Finish
 
 .Squirtle:
@@ -108,7 +108,7 @@ ShamoutiPokeCenter1FIvyScript:
 	playsound SFX_CAUGHT_MON
 	waitsfx
 	buttonsound
-	givepoke SQUIRTLE, 10, SITRUS_BERRY
+	givepoke SQUIRTLE, NO_FORM, 10, SITRUS_BERRY
 .Finish:
 	writetext .GoodbyeText
 	waitbutton

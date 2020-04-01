@@ -138,7 +138,7 @@ CeladonUniversityHyperTestRoomWestwoodScript:
 	writetext .ReceivedMagikarpText
 	playsound SFX_CAUGHT_MON
 	waitsfx
-	givepoke MAGIKARP, 10, EVIOLITE
+	givepoke MAGIKARP, MAGIKARP_MASK_FORM, 10, EVIOLITE
 	special TeachMagikarpDragonRage
 	writebyte ULTRA_BALL
 	special SetLastPartyMonBall
