@@ -171,6 +171,15 @@ JudgeSystem::
 	ld a, JUDGE_BORDER_TILE
 	rst ByteFill
 
+; Place the heading underline
+	hlcoord 0, 2
+	ld [hl], JUDGE_LEFT_RIGHT_TILE
+	hlcoord 0, 3
+	ld bc, 10
+	ld a, JUDGE_UNDERLINE_TILE
+	rst ByteFill
+	ld [hl], JUDGE_LINE_END_TILE
+
 ; Place the frontpic graphics
 	hlcoord 0, 6
 	farcall PlaceFrontpicAtHL
@@ -345,20 +354,11 @@ JudgeSystem::
 	jp .restart
 
 .EVHeading:
-	db JUDGE_LEFT_RIGHT_TILE
-	db "Effort   <LNBRK>"
-rept 10
-	db JUDGE_UNDERLINE_TILE
-endr
-	db JUDGE_LINE_END_TILE, "@"
+	db "Effort   @"
 
 .IVHeading:
-	db JUDGE_LEFT_RIGHT_TILE
-	db "Potential<LNBRK>"
-rept 10
-	db JUDGE_UNDERLINE_TILE
-endr
-	db JUDGE_LINE_END_TILE, "@"
+	db "Potential@"
+
 
 .PrintTopStat:
 ; hl = coords, de = string, bc = stat
@@ -397,7 +397,7 @@ endr
 	ldh [hCGBPalUpdate], a
 ; Place the title
 	pop de
-	hlcoord 0, 2
+	hlcoord 1, 2
 	rst PlaceString
 ; Render the chart
 	ret
