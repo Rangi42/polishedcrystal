@@ -185,35 +185,41 @@ CheckDict::
 
 .notNgram
 	cp BATTLEEXTRA_GFX_START
-	jr nc, .notDict
+	jr nc, .print
 
-dict: MACRO
-if \1 == 0
-	and a
-else
-	cp \1
-endc
-	jp z, \2
-ENDM
-
-	dict "<START>",  NullChar
-	dict "<FAR>",    TextFar
-	dict "<LNBRK>",  LineBreak
-	dict "<NEXT>",   NextLineChar
-	dict "<LINE>",   LineChar
-	dict "<CONT>",   ContText
-	dict "<PARA>",   Paragraph
-	dict "<DONE>",   DoneText
-	dict "<PROMPT>", PromptText
-	dict "<TARGET>", PlaceMoveTargetsName
-	dict "<USER>",   PlaceMoveUsersName
-	dict "<ENEMY>",  PlaceEnemysName
-
-	cp "¯"
+	and a ; "<START>"
+	jp z, NullChar
+	cp "<FAR>" ; TODO: is this case necessary?
+	jp z, TextFar
+	sub "<ENEMY>"
+	jr z, PlaceEnemysName
+	inc a ; "<USER>"
+	jr z, PlaceMoveUsersName
+	inc a ; "<TARGET>"
+	jr z, PlaceMoveTargetsName
+	inc a ; "<PROMPT>"
+	jp z, PromptText
+	inc a ; "<DONE>"
+	jp z, DoneText
+	inc a ; "<PARA>"
+	jp z, Paragraph
+	inc a ; "<CONT>"
+	jp z, ContText
+	inc a ; "<LINE>"
+	jp z, LineChar
+	inc a ; "<NEXT>"
+	jp z, NextLineChar
+	inc a ; "<LNBRK>"
+	jp z, LineBreak
+	inc a ; "¯"
 	jr nz, .notDict
 	ld a, " "
+	jr .print
 
 .notDict
+	add "<ENEMY>" - 10
+
+.print
 	ld [hli], a
 	call PrintLetterDelay
 	jp NextChar
