@@ -127,7 +127,7 @@ MysteryGiftGirl_GiveItemText:
 	line "@"
 	text_from_ram wStringBuffer4
 	text "!@"
-	sound_item
+	play_sound SFX_ITEM
 	text_waitbutton
 	text_end
 

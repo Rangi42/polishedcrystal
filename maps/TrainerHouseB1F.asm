@@ -194,6 +194,6 @@ TrainerHouseB1FCalBeforeText:
 TrainerHouseB1FEarnedBattlePointText:
 	text "<PLAYER> earned"
 	line "1 Battle Point!@"
-	sound_item
+	play_sound SFX_ITEM
 	text_waitbutton
 	text_end

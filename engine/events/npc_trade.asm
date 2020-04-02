@@ -413,7 +413,7 @@ TradedForText:
 	ret
 
 .done
-	; sound_dex_fanfare_80_109
+	; play_sound SFX_DEX_FANFARE_80_109
 	; interpret_data
 	text_jump UnknownText_0x1bd445
 	text_end

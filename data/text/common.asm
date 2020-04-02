@@ -164,7 +164,7 @@ UnknownText_0x1bc14f::
 	line "level @"
 	deciram wCurPartyLevel, 1, 3
 	text "!@"
-	sound_dex_fanfare_50_79
+	play_sound SFX_DEX_FANFARE_50_79
 	text_waitbutton
 	text_end
 
@@ -1262,7 +1262,7 @@ UnknownText_0x1bd429::
 
 SECTION "UnknownText_0x1bd445", ROMX
 UnknownText_0x1bd445::
-	sound_dex_fanfare_80_109
+	play_sound SFX_DEX_FANFARE_80_109
 	interpret_data
 	text_end
 
@@ -2502,7 +2502,7 @@ UnknownText_0x1c0dba::
 	text_from_ram wStringBuffer1
 	text " came"
 	line "out of its Egg!@"
-	sound_caught_mon
+	play_sound SFX_CAUGHT_MON
 	text_waitbutton
 	text_end
 
@@ -3915,7 +3915,7 @@ UnknownText_0x1c5660::
 	line "@"
 	text_from_ram wStringBuffer2
 	text "!@"
-	sound_dex_fanfare_50_79
+	play_sound SFX_DEX_FANFARE_50_79
 	text_waitbutton
 	text_end
 
@@ -4186,7 +4186,7 @@ UnknownText_0x1c5b17::
 	text_from_ram wEnemyMonNick
 	text ""
 	line "was caught!@"
-	sound_caught_mon
+	play_sound SFX_CAUGHT_MON
 	text_end
 
 SECTION "Text_Waitbutton_2", ROMX
@@ -4207,7 +4207,7 @@ UnknownText_0x1c5b53::
 	text "'s data"
 	line "was newly added to"
 	cont "the #dex.@"
-	sound_slot_machine_start
+	play_sound SFX_SLOT_MACHINE_START
 	text_waitbutton
 	text_end
 

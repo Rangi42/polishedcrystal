@@ -230,7 +230,7 @@ Route23OfficerHaveBadgeScript:
 	line "@"
 	text_from_ram wStringBuffer3
 	text "!@"
-	sound_dex_fanfare_50_79
+	play_sound SFX_DEX_FANFARE_50_79
 	text_end
 
 Route23OfficerNeedBadgeText:

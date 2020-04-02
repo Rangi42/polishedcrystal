@@ -8,15 +8,11 @@
 	charmap "<ASM>",    $03
 	charmap "<NUM>",    $04
 	charmap "<EXIT>",   $05
-	charmap "<ITEM>",   $06
-	charmap "<CAUGHT>", $07
-	charmap "<SLOTS>",  $08
-	charmap "<DEX2>",   $09
-	charmap "<DEX3>",   $0a
-	charmap "<DAY>",    $0b
-	charmap "<FAR>",    $0c
+	charmap "<SOUND>",  $06
+	charmap "<DAY>",    $07
+	charmap "<FAR>",    $08
 
-	; n-grams: $0d - $4f (defined below)
+	; n-grams: $09 - $4f (defined below)
 
 	charmap "@",        $50
 	charmap "¯",        $51
@@ -223,34 +219,38 @@ BATTLEEXTRA_GFX_START EQU $5f
 
 	newcharmap default, no_ngrams
 
-NGRAMS_START EQU $0d
+NGRAMS_START EQU $09
 
-	charmap "e ",       $0d
-	charmap " t",       $0e
-	charmap "ou",       $0f
-	charmap "in",       $10
-	charmap "th",       $11
-	charmap "he",       $12
-	charmap "t ",       $13
-	charmap "er",       $14
-	charmap "on",       $15
-	charmap "re",       $16
-	charmap "s ",       $17
-	charmap "at",       $18
-	charmap "an",       $19
-	charmap "to",       $1a
-	charmap "ha",       $1b
-	charmap "ng",       $1c
-	charmap "it",       $1d
-	charmap "is",       $1e
-	charmap "ea",       $1f
-	charmap "ve",       $20
-	charmap "ar",       $21
-	charmap "st",       $22
-	charmap "le",       $23
-	charmap "or",       $24
-	charmap "te",       $25
-	charmap "as",       $26
+	charmap "e ",       $09
+	charmap " t",       $0a
+	charmap "ou",       $0b
+	charmap "in",       $0c
+	charmap "th",       $0d
+	charmap "he",       $0e
+	charmap "t ",       $0f
+	charmap "er",       $10
+	charmap "on",       $11
+	charmap "re",       $12
+	charmap "s ",       $13
+	charmap "at",       $14
+	charmap "an",       $15
+	charmap "to",       $16
+	charmap "ha",       $17
+	charmap "ng",       $18
+	charmap "it",       $19
+	charmap "is",       $1a
+	charmap "ea",       $1b
+	charmap "ve",       $1c
+	charmap "ar",       $1d
+	charmap "st",       $1e
+	charmap "le",       $1f
+	charmap "or",       $20
+	charmap "te",       $21
+	charmap "as",       $22
+;	charmap "",         $23
+;	charmap "",         $24
+;	charmap "",         $25
+;	charmap "",         $26
 ;	charmap "",         $27
 ;	charmap "",         $28
 ;	charmap "",         $29

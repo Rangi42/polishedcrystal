@@ -552,7 +552,7 @@ BattleText_StringBuffer1GrewToLevel:
 	line "level @"
 	deciram wCurPartyLevel, 1, 3
 	text "!@"
-	sound_dex_fanfare_50_79
+	play_sound SFX_DEX_FANFARE_50_79
 	text_end
 
 BattleText_WildPkmnIsEating:

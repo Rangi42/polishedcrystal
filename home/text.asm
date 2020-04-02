@@ -220,121 +220,6 @@ ENDM
 	call PrintLetterDelay
 	jp NextChar
 
-NgramStrings:
-	dw .e_
-	dw ._t
-	dw .ou
-	dw .in
-	dw .th
-	dw .he
-	dw .t_
-	dw .er
-	dw .on
-	dw .re
-	dw .s_
-	dw .at
-	dw .an
-	dw .to
-	dw .ha
-	dw .ng
-	dw .it
-	dw .is
-	dw .ea
-	dw .ve
-	dw .ar
-	dw .st
-	dw .le
-	dw .or
-	dw .te
-	dw .as
-	dw EmptyString
-	dw EmptyString
-	dw EmptyString
-	dw EmptyString
-	dw EmptyString
-	dw EmptyString
-	dw EmptyString
-	dw EmptyString
-	dw EmptyString
-	dw EmptyString
-	dw EmptyString
-	dw EmptyString
-	dw EmptyString
-	dw EmptyString
-	dw EmptyString
-	dw EmptyString
-	dw EmptyString
-	dw EmptyString
-	dw EmptyString
-	dw .the
-	dw .you
-	dw .ing
-	dw .hat
-	dw .and
-	dw .for
-	dw .all
-	dw .here
-	dw .that
-	dw .have
-	dw .rain
-	dw .this
-	dw .ight
-	dw .with
-	dw .ould
-	dw .thing
-	dw .attle
-	dw .Poke
-	dw .Pokemon
-	dw wPlayerName
-	dw wRivalName
-	dw wTrendyPhrase
-
-.e_:    rawchar "e @"
-._t:    rawchar " t@"
-.ou:    rawchar "ou@"
-.in:    rawchar "in@"
-.th:    rawchar "th@"
-.he:    rawchar "he@"
-.t_:    rawchar "t @"
-.er:    rawchar "er@"
-.on:    rawchar "on@"
-.re:    rawchar "re@"
-.s_:    rawchar "s @"
-.at:    rawchar "at@"
-.an:    rawchar "an@"
-.to:    rawchar "to@"
-.ha:    rawchar "ha@"
-.ng:    rawchar "ng@"
-.it:    rawchar "it@"
-.is:    rawchar "is@"
-.ea:    rawchar "ea@"
-.ve:    rawchar "ve@"
-.ar:    rawchar "ar@"
-.st:    rawchar "st@"
-.le:    rawchar "le@"
-.or:    rawchar "or@"
-.te:    rawchar "te@"
-.as:    rawchar "as@"
-.the:   rawchar "the@"
-.you:   rawchar "you@"
-.ing:   rawchar "ing@"
-.hat:   rawchar "hat@"
-.and:   rawchar "and@"
-.for:   rawchar "for@"
-.all:   rawchar "all@"
-.here:  rawchar "here@"
-.that:  rawchar "that@"
-.have:  rawchar "have@"
-.rain:  rawchar "rain@"
-.this:  rawchar "this@"
-.ight:  rawchar "ight@"
-.with:  rawchar "with@"
-.ould:  rawchar "ould@"
-.thing: rawchar "thing@"
-.attle: rawchar "attle@"
-.Poke:  rawchar "Poké@"
-.Pokemon: rawchar "Pokémon@"
-
 PlaceMoveTargetsName::
 	ldh a, [hBattleTurn]
 	xor 1
@@ -656,13 +541,9 @@ TextCommands::
 	dw Text_ASM        ; $03 <ASM>
 	dw Text_PrintNum   ; $04 <NUM>
 	dw Text_Exit       ; $05 <EXIT>
-	dw Text_PlaySound  ; $06 <ITEM>
-	dw Text_PlaySound  ; $07 <CAUGHT>
-	dw Text_PlaySound  ; $08 <SLOTS>
-	dw Text_PlaySound  ; $09 <DEX2>
-	dw Text_PlaySound  ; $0a <DEX3>
-	dw Text_WeekDay    ; $0b <DAY>
-	dw Text_Jump       ; $0c <FAR>
+	dw Text_PlaySound  ; $06 <SOUND>
+	dw Text_WeekDay    ; $07 <DAY>
+	dw Text_Jump       ; $08 <FAR>
 
 Text_Start::
 ; write text until "@"
@@ -783,41 +664,15 @@ Text_Exit::
 	ret
 
 Text_PlaySound::
-	push bc
-	dec hl
 	ld a, [hli]
-	ld b, a
 	push hl
-	ld hl, TextSFX
-.loop
-	ld a, [hli]
-	cp -1
-	jr z, .done
-	cp b
-	jr z, .play
-	inc hl
-	jr .loop
-
-.play
 	push de
-	ld e, [hl]
+	push bc
+	ld e, a
 	ld d, 0
 	call PlaySFX
 	call WaitSFX
-	pop de
-
-.done
-	pop hl
-	pop bc
-	ret
-
-TextSFX::
-	db "<ITEM>",   SFX_ITEM
-	db "<CAUGHT>", SFX_CAUGHT_MON
-	db "<SLOTS>",  SFX_SLOT_MACHINE_START
-	db "<DEX2>",   SFX_DEX_FANFARE_50_79
-	db "<DEX3>",   SFX_DEX_FANFARE_80_109
-	db -1
+	jp PopBCDEHL
 
 Text_WeekDay::
 	call GetWeekday

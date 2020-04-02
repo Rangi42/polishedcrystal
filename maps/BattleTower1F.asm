@@ -255,7 +255,7 @@ Text_CongratulationsYouveBeatenAllTheTrainers:
 Text_PlayerGotReward:
 	text "<PLAYER> earned"
 	line "3 Battle Points!@"
-	sound_item
+	play_sound SFX_ITEM
 	text_waitbutton
 	text_end
 

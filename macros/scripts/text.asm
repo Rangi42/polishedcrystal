@@ -31,24 +31,9 @@ interpret_data: MACRO
 	db "<EXIT>"
 ENDM
 
-sound_item: MACRO
-	db "<ITEM>"
-ENDM
-
-sound_caught_mon: MACRO
-	db "<CAUGHT>"
-ENDM
-
-sound_slot_machine_start: MACRO
-	db "<SLOTS>"
-ENDM
-
-sound_dex_fanfare_50_79: MACRO
-	db "<DEX2>"
-ENDM
-
-sound_dex_fanfare_80_109: MACRO
-	db "<DEX3>"
+play_sound: MACRO
+	db "<SOUND>"
+	db \1 ; sfx
 ENDM
 
 current_day: MACRO
