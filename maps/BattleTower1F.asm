@@ -123,6 +123,9 @@ Script_GivePlayerHisPrize:
 	writevarcode VAR_BATTLEPOINTS
 .Finish:
 	writetext Text_PlayerGotReward
+	waitsfx
+	specialsound
+	waitbutton
 	writebyte BATTLETOWER_RECEIVED_REWARD
 	special Special_BattleTower_SetChallengeState
 	endtext
@@ -254,10 +257,8 @@ Text_CongratulationsYouveBeatenAllTheTrainers:
 
 Text_PlayerGotReward:
 	text "<PLAYER> earned"
-	line "3 Battle Points!@"
-	play_sound SFX_ITEM
-	text_waitbutton
-	text_end
+	line "3 Battle Points!"
+	done
 
 Text_WeHopeToServeYouAgain:
 	text "We hope to serve"

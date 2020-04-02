@@ -42,7 +42,6 @@ FindKeyItemInBallScript::
 	opentext
 	writetext FoundItemText
 	specialsound
-	waitsfx
 	keyitemnotify
 	closetext
 	end

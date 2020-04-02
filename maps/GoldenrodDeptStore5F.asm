@@ -80,6 +80,8 @@ GoldenrodDeptStore5FTwinScript:
 	giveitem ITEM_FROM_MEM
 	iffalse_jumpopenedtext MysteryGiftGirl_NoRoomText
 	writetext MysteryGiftGirl_GiveItemText
+	specialsound
+	waitbutton
 	itemnotify
 	setflag ENGINE_DAILY_MYSTERY_GIFT
 	thisopenedtext
@@ -126,10 +128,8 @@ MysteryGiftGirl_GiveItemText:
 	text "<PLAYER> received"
 	line "@"
 	text_from_ram wStringBuffer4
-	text "!@"
-	play_sound SFX_ITEM
-	text_waitbutton
-	text_end
+	text "!"
+	done
 
 MysteryGiftGirl_NoRoomText:
 	text "But you can't"

@@ -1,3 +1,4 @@
+Script_refreshscreen::
 RefreshScreen::
 	call ClearWindowData
 	ldh a, [hROMBank]
@@ -50,6 +51,7 @@ CloseText::
 
 	farjp ReturnFromMapSetupScript
 
+Script_opentext::
 OpenText::
 	call ClearWindowData
 	ldh a, [hROMBank]

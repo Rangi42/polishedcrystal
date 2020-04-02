@@ -191,6 +191,7 @@ PlaySFX::
 .done
 	jp PopAFBCDEHL
 
+Script_waitsfx::
 WaitSFX::
 ; infinite loop until sfx is done playing
 
@@ -301,6 +302,7 @@ FadeToMapMusic::
 .done
 	jp PopAFBCDEHL
 
+Script_playmapmusic::
 PlayMapMusic::
 	push hl
 	push de

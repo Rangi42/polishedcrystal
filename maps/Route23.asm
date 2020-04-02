@@ -218,7 +218,8 @@ Route23OfficerNoBadgeText:
 
 Route23OfficerHaveBadgeScript:
 	writetext .SeeBadgeText
-	waitbutton
+	playsound SFX_DEX_FANFARE_50_79
+	buttonsound
 	thisopenedtext
 
 	text "OK then! Please,"
@@ -229,9 +230,8 @@ Route23OfficerHaveBadgeScript:
 	text "Oh! That is the"
 	line "@"
 	text_from_ram wStringBuffer3
-	text "!@"
-	play_sound SFX_DEX_FANFARE_50_79
-	text_end
+	text "!"
+	done
 
 Route23OfficerNeedBadgeText:
 	text "You can pass here"

@@ -18,13 +18,10 @@ ScriptEvents::
 	ret
 
 .modes
-	dw EndScript
+	dw StopScript
 	dw RunScriptCommand
 	dw WaitScriptMovement
 	dw WaitScript
-
-EndScript:
-	jp StopScript
 
 WaitScript:
 	call StopScript
@@ -495,9 +492,6 @@ Script_repeattext:
 	ld l, a
 	jp MapTextbox
 
-Script_waitbutton:
-	jp WaitButton
-
 Script_buttonsound:
 	ldh a, [hOAMUpdate]
 	push af
@@ -597,7 +591,6 @@ Script_verbosegiveitem:
 GiveItemScript:
 	writetext ReceivedItemText
 	iffalse .Full
-	waitsfx
 	specialsound
 	waitbutton
 	itemnotify
@@ -656,7 +649,7 @@ Script_pocketisfull:
 
 Script_specialsound:
 	ld de, SFX_ITEM
-	call PlaySFX
+	call WaitPlaySFX
 	jp WaitSFX
 
 GetPocketName:
@@ -906,9 +899,6 @@ Script_encountermusic:
 	ld e, a
 	farjp PlayTrainerEncounterMusic
 
-Script_playmapmusic:
-	jp PlayMapMusic
-
 Script_playmusic:
 ; parameters:
 ;     music_pointer (SingleByteParam)
@@ -942,9 +932,6 @@ Script_playsound:
 	ld e, a
 	ld d, 0
 	jp WaitPlaySFX
-
-Script_waitsfx:
-	jp WaitSFX
 
 Script_warpsound:
 	ld a, [wPlayerStandingTile]
@@ -1651,12 +1638,7 @@ Script_priorityjump:
 
 Script_checkscene:
 	call CheckTriggers
-	jr z, .no_triggers
-	ldh [hScriptVar], a
-	ret
-
-.no_triggers
-	ld a, $ff
+	jr z, _NoTriggers
 	ldh [hScriptVar], a
 	ret
 
@@ -1671,12 +1653,12 @@ Script_checkmapscene:
 	call GetMapTrigger
 	ld a, d
 	or e
-	jr z, .no_triggers
+	jr z, _NoTriggers
 	ld a, [de]
 	ldh [hScriptVar], a
 	ret
 
-.no_triggers
+_NoTriggers:
 	ld a, $ff
 	ldh [hScriptVar], a
 	ret
@@ -2568,12 +2550,6 @@ Script_reloadandreturn:
 	call Script_newloadmap
 	jp Script_end
 
-Script_opentext:
-	jp OpenText
-
-Script_refreshscreen:
-	jp RefreshScreen
-
 Script_showtextfaceplayer:
 ; parameters:
 ;     text_pointer (RawTextPointerLabelParam)
@@ -2988,7 +2964,6 @@ Script_verbosegivekeyitem:
 
 GiveKeyItemScript:
 	writetext ReceivedItemText
-	waitsfx
 	specialsound
 	keyitemnotify
 	end

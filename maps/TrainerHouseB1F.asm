@@ -78,6 +78,8 @@ TrainerHouseReceptionistScript:
 	writevarcode VAR_BATTLEPOINTS
 .MaxPoints:
 	writetext TrainerHouseB1FEarnedBattlePointText
+	specialsound
+	waitbutton
 	closetext
 	applymovement PLAYER, Movement_ExitTrainerHouseBattleRoom
 	end
@@ -193,7 +195,5 @@ TrainerHouseB1FCalBeforeText:
 
 TrainerHouseB1FEarnedBattlePointText:
 	text "<PLAYER> earned"
-	line "1 Battle Point!@"
-	play_sound SFX_ITEM
-	text_waitbutton
-	text_end
+	line "1 Battle Point!"
+	done

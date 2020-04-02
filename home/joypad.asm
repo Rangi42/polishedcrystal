@@ -293,6 +293,7 @@ CheckAutoscroll:
 	and START
 	ret
 
+Script_waitbutton::
 WaitButton::
 	ldh a, [hOAMUpdate]
 	push af

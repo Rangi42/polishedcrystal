@@ -3286,11 +3286,6 @@ _ElmText2::
 	cont "#mon.@"
 	text_end
 
-SECTION "_ElmText3", ROMX
-_ElmText3::
-	text_waitbutton
-	text_end
-
 SECTION "_ElmText4", ROMX
 _ElmText4::
 	text "People and #mon"

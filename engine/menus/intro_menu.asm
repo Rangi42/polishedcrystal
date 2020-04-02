@@ -693,7 +693,7 @@ ElmText2:
 	ret
 
 ElmText3:
-	text_jump _ElmText3
+	text_jump Text_Waitbutton_2
 	text_end
 
 ElmText4:
