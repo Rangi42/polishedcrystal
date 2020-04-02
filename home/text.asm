@@ -185,7 +185,7 @@ CheckDict::
 
 .notNgram
 	cp BATTLEEXTRA_GFX_START
-	jr nc, .print
+	jr nc, .notDict
 
 	and a ; "<START>"
 	jp z, NullChar
@@ -212,14 +212,13 @@ CheckDict::
 	inc a ; "<LNBRK>"
 	jp z, LineBreak
 	inc a ; "¯"
-	jr nz, .notDict
-	ld a, " "
-	jr .print
+	jr nz, .adjust
+	ld a, " " - "<ENEMY>" + 10
 
-.notDict
+.adjust
 	add "<ENEMY>" - 10
 
-.print
+.notDict
 	ld [hli], a
 	call PrintLetterDelay
 	jp NextChar
