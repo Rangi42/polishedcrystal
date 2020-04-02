@@ -1443,7 +1443,7 @@ Pokedex_DrawSearchResultsWindow:
 
 .esults_D
 ; (SEARCH R)
-	db   "esults<NL>"
+	db   "esults<NEXT>"
 ; (### FOUN)
 	next "d!@"
 

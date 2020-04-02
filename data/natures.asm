@@ -41,26 +41,26 @@ NatureIndicators:
 	dw .CalmInd,   .GentleInd, .SassyInd,   .CarefulInd, .QuirkyInd
 	dw .NoNatureInd
 
-.SassyInd:   db "<NL>" ; fallthrough
-.RashInd:    db "<NL>" ; fallthrough
-.ImpishInd:  db "<NL>" ; fallthrough
-.LonelyInd:  db "↑<NL>↓@"
-.NaiveInd:   db "<NL>" ; fallthrough
-.CarefulInd: db "<NL>" ; fallthrough
-.MildInd:    db "<NL>" ; fallthrough
-.BoldInd:    db "↓<NL>↑@"
-.QuietInd:   db "<NL>" ; fallthrough
-.LaxInd:     db "<NL>" ; fallthrough
-.AdamantInd: db "↑<NL><NL>↓@"
-.JollyInd:   db "<NL>" ; fallthrough
-.GentleInd:  db "<NL>" ; fallthrough
-.ModestInd:  db "↓<NL><NL>↑@"
-.RelaxedInd: db "<NL>" ; fallthrough
-.NaughtyInd: db "↑<NL><NL><NL>↓@"
-.HastyInd:   db "<NL>" ; fallthrough
-.CalmInd:    db "↓<NL><NL><NL>↑@"
-.BraveInd:   db "↑<NL><NL><NL><NL>↓@"
-.TimidInd:   db "↓<NL><NL><NL><NL>↑" ; fallthrough
+.SassyInd:   db "<NEXT>" ; fallthrough
+.RashInd:    db "<NEXT>" ; fallthrough
+.ImpishInd:  db "<NEXT>" ; fallthrough
+.LonelyInd:  db "↑<NEXT>↓@"
+.NaiveInd:   db "<NEXT>" ; fallthrough
+.CarefulInd: db "<NEXT>" ; fallthrough
+.MildInd:    db "<NEXT>" ; fallthrough
+.BoldInd:    db "↓<NEXT>↑@"
+.QuietInd:   db "<NEXT>" ; fallthrough
+.LaxInd:     db "<NEXT>" ; fallthrough
+.AdamantInd: db "↑<NEXT><NEXT>↓@"
+.JollyInd:   db "<NEXT>" ; fallthrough
+.GentleInd:  db "<NEXT>" ; fallthrough
+.ModestInd:  db "↓<NEXT><NEXT>↑@"
+.RelaxedInd: db "<NEXT>" ; fallthrough
+.NaughtyInd: db "↑<NEXT><NEXT><NEXT>↓@"
+.HastyInd:   db "<NEXT>" ; fallthrough
+.CalmInd:    db "↓<NEXT><NEXT><NEXT>↑@"
+.BraveInd:   db "↑<NEXT><NEXT><NEXT><NEXT>↓@"
+.TimidInd:   db "↓<NEXT><NEXT><NEXT><NEXT>↑" ; fallthrough
 .HardyInd:
 .DocileInd:
 .SeriousInd:

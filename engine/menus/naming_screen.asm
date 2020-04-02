@@ -885,7 +885,7 @@ _ComposeMailMessage: ; 11e75 (mail?)
 	ld d, [hl]
 	ld hl, $10
 	add hl, de
-	ld [hl], "<NL>"
+	ld [hl], "<NEXT>"
 	ret
 
 .MailIcon:
@@ -1029,7 +1029,7 @@ INCBIN "gfx/icons/mail2.2bpp.lz"
 	call NamingScreen_GetTextCursorPosition
 	ld [hl], NAMINGSCREEN_UNDERLINE
 	dec hl
-	ld [hl], "<NL>"
+	ld [hl], "<NEXT>"
 	ret
 
 .start
@@ -1055,7 +1055,7 @@ INCBIN "gfx/icons/mail2.2bpp.lz"
 	call NamingScreen_GetTextCursorPosition
 	ld [hl], NAMINGSCREEN_UNDERLINE
 	inc hl
-	ld [hl], "<NL>"
+	ld [hl], "<NEXT>"
 	ret
 
 .finished

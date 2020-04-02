@@ -12,25 +12,21 @@
 	charmap "<DAY>",    $07
 	charmap "<FAR>",    $08
 
-	; n-grams: $09 - $4f (defined below)
+	; n-grams: $09 - $52 (defined below)
 
-	charmap "@",        $50
-	charmap "¯",        $51
-	charmap "<NEXT>",   $52
-	charmap "<SCRL2>",  $53
-	charmap "<LNBRK>",  $54
-	charmap "<NL>",     $55
-	charmap "<LINE>",   $56
-	charmap "<CONT>",   $57
-	charmap "<PARA>",   $58
-	charmap "<DONE>",   $59
-	charmap "<PROMPT>", $5a
+	charmap "@",        $53
+	charmap "¯",        $54
+	charmap "<LNBRK>",  $55
+	charmap "<NEXT>",   $56
+	charmap "<LINE>",   $57
+	charmap "<CONT>",   $58
+	charmap "<PARA>",   $59
+	charmap "<DONE>",   $5a
+	charmap "<PROMPT>", $5b
 
-	charmap "<TARGET>", $5b
-	charmap "<USER>",   $5c
-	charmap "<ENEMY>",  $5d
-
-	; unused: $5e
+	charmap "<TARGET>", $5c
+	charmap "<USER>",   $5d
+	charmap "<ENEMY>",  $5e
 
 ; Battle characters
 
@@ -270,30 +266,33 @@ NGRAMS_START EQU $09
 ;	charmap "",         $37
 ;	charmap "",         $38
 ;	charmap "",         $39
-	charmap "the",      $3a
-	charmap "you",      $3b
-	charmap "ing",      $3c
-	charmap "hat",      $3d
-	charmap "and",      $3e
-	charmap "for",      $3f
-	charmap "all",      $40
-	charmap "here",     $41
-	charmap "that",     $42
-	charmap "have",     $43
-	charmap "rain",     $44
-	charmap "this",     $45
-	charmap "ight",     $46
-	charmap "with",     $47
-	charmap "ould",     $48
-	charmap "thing",    $49
-	charmap "attle",    $4a
-	charmap "#",        $4b
-	charmap "#mon",     $4c
-	charmap "<PLAYER>", $4d
-	charmap "<RIVAL>",  $4e
-	charmap "<TRENDY>", $4f
+;	charmap "",         $3a
+;	charmap "",         $3b
+;	charmap "",         $3c
+	charmap "the",      $3d
+	charmap "you",      $3e
+	charmap "ing",      $3f
+	charmap "hat",      $40
+	charmap "and",      $41
+	charmap "for",      $42
+	charmap "all",      $43
+	charmap "here",     $44
+	charmap "that",     $45
+	charmap "have",     $46
+	charmap "rain",     $47
+	charmap "this",     $48
+	charmap "ight",     $49
+	charmap "with",     $4a
+	charmap "ould",     $4b
+	charmap "thing",    $4c
+	charmap "attle",    $4d
+	charmap "#",        $4e
+	charmap "#mon",     $4f
+	charmap "<PLAYER>", $50
+	charmap "<RIVAL>",  $51
+	charmap "<TRENDY>", $52
 
-NGRAMS_END EQU $4f
+NGRAMS_END EQU $52
 
 	setcharmap default
 

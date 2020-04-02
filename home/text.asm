@@ -198,13 +198,11 @@ ENDM
 
 	dict "<START>",  NullChar
 	dict "<FAR>",    TextFar
-	dict "<NEXT>",   NextChar
-	dict "<SCRL2>",  ScrollText
 	dict "<LNBRK>",  LineBreak
-	dict "<NL>",     NextLineChar
+	dict "<NEXT>",   NextLineChar
 	dict "<LINE>",   LineChar
-	dict "<PARA>",   Paragraph
 	dict "<CONT>",   ContText
+	dict "<PARA>",   Paragraph
 	dict "<DONE>",   DoneText
 	dict "<PROMPT>", PromptText
 	dict "<TARGET>", PlaceMoveTargetsName
@@ -387,14 +385,11 @@ ContText::
 
 	push de
 	call ButtonSound
-	pop de
 
 	ld a, [wLinkMode]
 	or a
 	call z, UnloadBlinkingCursor
 
-ScrollText::
-	push de
 	call TextScroll
 	call TextScroll
 	hlcoord TEXTBOX_INNERX, TEXTBOX_INNERY + 2

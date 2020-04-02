@@ -707,8 +707,6 @@ TownMap_ConvertLineBreakCharacters:
 	ld a, [hl]
 	cp "@"
 	jr z, .end
-	cp "<NEXT>"
-	jr z, .line_break
 	cp "¯"
 	jr z, .line_break
 	inc hl

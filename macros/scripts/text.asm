@@ -1,12 +1,12 @@
 text   EQUS "db \"<START>\"," ; Start writing text.
-next   EQUS "db \"<NL>\","    ; Move a line down.
-next1  EQUS "db \"<LNBRK>\"," ; Move a line down (without line spacing)
+next1  EQUS "db \"<LNBRK>\"," ; Move one screen row down.
+next   EQUS "db \"<NEXT>\","  ; Move one line down (two rows).
 line   EQUS "db \"<LINE>\","  ; Start writing at the bottom line.
-page   EQUS "db \"@\","       ; Start a new Pokedex page.
-para   EQUS "db \"<PARA>\","  ; Start a new paragraph.
 cont   EQUS "db \"<CONT>\","  ; Scroll to the next line.
+para   EQUS "db \"<PARA>\","  ; Start a new paragraph.
 done   EQUS "db \"<DONE>\""   ; End a text box.
 prompt EQUS "db \"<PROMPT>\"" ; Prompt the player to end a text box (initiating some other event).
+page   EQUS "db \"@\","       ; Start a new Pokedex page.
 
 text_from_ram: MACRO
 	db "<RAM>"

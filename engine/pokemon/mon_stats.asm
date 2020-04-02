@@ -122,7 +122,7 @@ endr
 	ret
 
 AllStatNames:
-	db   "Health<NL>"
+	db   "Health<NEXT>"
 MostStatNames:
 	db   "Attack"
 	next "Defense"
