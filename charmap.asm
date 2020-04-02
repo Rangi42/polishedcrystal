@@ -243,32 +243,32 @@ NGRAMS_START EQU $09
 	charmap "or",       $20
 	charmap "te",       $21
 	charmap "as",       $22
-;	charmap "",         $23
-;	charmap "",         $24
-;	charmap "",         $25
-;	charmap "",         $26
-;	charmap "",         $27
-;	charmap "",         $28
-;	charmap "",         $29
-;	charmap "",         $2a
-;	charmap "",         $2b
-;	charmap "",         $2c
-;	charmap "",         $2d
-;	charmap "",         $2e
-;	charmap "",         $2f
-;	charmap "",         $30
-;	charmap "",         $31
-;	charmap "",         $32
-;	charmap "",         $33
-;	charmap "",         $34
-;	charmap "",         $35
-;	charmap "",         $36
-;	charmap "",         $37
-;	charmap "",         $38
-;	charmap "",         $39
-;	charmap "",         $3a
-;	charmap "",         $3b
-;	charmap "",         $3c
+	charmap "yo",       $23
+	charmap "y ",       $24
+	charmap "r ",       $25
+	charmap " b",       $26
+	charmap "en",       $27
+	charmap "me",       $28
+	charmap "e t",      $29
+	charmap ", ",       $2a
+	charmap "es",       $2b
+	charmap "e you",    $2c
+	charmap "se",       $2d
+	charmap "ne",       $2e
+	charmap " h",       $2f
+	charmap "I ",       $30
+	charmap "our",      $31
+	charmap "You",      $32
+	charmap "nd",       $33
+	charmap "ow",       $34
+	charmap " c",       $35
+	charmap " wa",      $36
+	charmap "ome",      $37
+	charmap "are",      $38
+	charmap "The",      $39
+	charmap "t's",      $3a
+	charmap "ut",       $3b
+	charmap "nt",       $3c
 	charmap "the",      $3d
 	charmap "you",      $3e
 	charmap "ing",      $3f
