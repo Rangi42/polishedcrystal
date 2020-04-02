@@ -80,7 +80,22 @@ TryAddMonToParty:
 	ld d, h
 	push hl
 
-	; TODO: initialize [wCurForm] before GetBaseData
+; Cases to set [wCurForm] before calling GetBaseData:
+; - Gift Pokémon or Egg: givepoke/giveegg already set it
+; - Wild Pokémon: LoadEnemyMon already set it
+; - Roaming Pokémon: get it from wRoamMon#Form
+; - Trainer Pokémon: TODO
+
+	ld a, [wBattleType]
+	cp BATTLETYPE_ROAMING
+	jr nz, .not_roaming_form
+	ld a, wRoamMon1Form - wRoamMon1
+	call DoGetRoamMonData
+	ld a, [hl]
+	and FORM_MASK
+	ld [wCurForm], a
+.not_roaming_form
+
 	ld a, [wCurPartySpecies]
 	ld [wCurSpecies], a
 	call GetBaseData
@@ -181,8 +196,12 @@ endr
 	jr .random_dvs
 
 .wildmon
+	ld a, [wBattleType]
+	cp BATTLETYPE_ROAMING
+	jr nz, .random_dvs
 	push bc
-	farcall GetRoamMonDVsAndPersonality
+	ld a, wRoamMon1DVs - wRoamMon1
+	farcall DoGetRoamMonData
 	push hl
 	farcall GetRoamMonHP
 	ld a, [hl]
@@ -348,8 +367,8 @@ endr
 	and FEMALE
 	ld b, a
 
-; Form 1
-	ld a, 1
+; Form from [wCurForm] (set by LoadEnemyMon)
+	ld a, [wCurForm]
 	add b
 	ld [wDVAndPersonalityBuffer + 4], a
 

@@ -38,7 +38,7 @@ OfficerScript_0x69d37:
 	writetext UnknownText_0x69eb8
 	playsound SFX_KEY_ITEM
 	waitsfx
-	givepoke FARFETCH_D, NO_FORM, 10, NO_ITEM, 1, GiftFarfetch_dName, GiftFarfetch_dOTName
+	givepoke FARFETCH_D, NO_FORM, 10, NO_ITEM, TRUE, GiftFarfetch_dName, GiftFarfetch_dOTName
 	givepokeitem GiftFarfetch_dMail
 	writebyte NEST_BALL
 	special SetLastPartyMonBall

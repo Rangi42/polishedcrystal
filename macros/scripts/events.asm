@@ -291,13 +291,13 @@ givepoke: MACRO
 	db \2 ; form
 	db \3 ; level
 	else
-	db 0 ; no form
+	db PLAIN_FORM
 	db \2 ; level
 	endc
 	if _NARG >= 4
 	db \4 ; item
 	else
-	db 0 ; no item
+	db NO_ITEM
 	endc
 	if _NARG >= 5
 	db \5 ; trainer
@@ -306,7 +306,7 @@ givepoke: MACRO
 	dw \7 ; pkmn_nickname
 	endc
 	else
-	db 0 ; no trainer
+	db FALSE ; no trainer
 	endc
 	ENDM
 
@@ -318,7 +318,7 @@ giveegg: MACRO
 	db \2 ; form
 	db \3 ; level
 	else
-	db 0 ; no form
+	db PLAIN_FORM
 	db \2 ; level
 	endc
 	ENDM

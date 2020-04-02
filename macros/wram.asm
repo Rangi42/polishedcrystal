@@ -193,7 +193,8 @@ roam_struct: MACRO
 \1MapNumber::   db
 \1HP::          ds 1
 \1DVs::         ds 3
-\1Personality:: ds 2
+\1Personality:: ds 1
+\1Form::        ds 1
 \1Status::      ds 1
 \1End::
 ENDM
