@@ -256,6 +256,16 @@ NgramStrings:
 	dw EmptyString
 	dw EmptyString
 	dw EmptyString
+	dw EmptyString
+	dw EmptyString
+	dw EmptyString
+	dw EmptyString
+	dw EmptyString
+	dw EmptyString
+	dw EmptyString
+	dw EmptyString
+	dw EmptyString
+	dw EmptyString
 	dw .the
 	dw .you
 	dw .ing
@@ -455,7 +465,6 @@ Paragraph::
 	cp LINK_COLOSSEUM
 	jr z, .linkbattle
 	call LoadBlinkingCursor
-
 .linkbattle
 	call Text_WaitBGMap
 	call ButtonSound
@@ -510,10 +519,9 @@ ScrollText::
 PromptText::
 	ld a, [wLinkMode]
 	cp LINK_COLOSSEUM
-	jr z, .ok
+	jr z, .linkbattle
 	call LoadBlinkingCursor
-
-.ok
+.linkbattle
 	call Text_WaitBGMap
 	call ButtonSound
 	ld a, [wLinkMode]
@@ -642,34 +650,22 @@ DoTextUntilTerminator::
 	ret
 
 TextCommands::
-	dw Text_Start          ; $00 <START>
-	dw Text_FromRAM        ; $01 <RAM>
-	dw Text_BCD            ; $02 <BCD>
-	dw Text_Move           ; $03 <MOVE>
-	dw Text_Box            ; $04 <BOX>
-	dw Text_Low            ; $05 <LOW>
-	dw Text_WaitButton     ; $06 <WAIT>
-	dw Text_Scroll         ; $07 <SCROLL>
-	dw Text_ASM            ; $08 <ASM>
-	dw Text_PrintNum       ; $09 <NUM>
-	dw Text_Exit           ; $0a <EXIT>
-	dw Text_PlaySound      ; $0b <DEX2>
-	dw Text_Dots           ; $0c <DOTS>
-	dw Text_ButtonSound    ; $0d <LINK>
-	dw Text_PlaySound      ; $0e <DEX1>
-	dw Text_PlaySound      ; $0f <ITEM>
-	dw Text_PlaySound      ; $10 <CAUGHT>
-	dw Text_PlaySound      ; $11 <DEX3>
-	dw Text_PlaySound      ; $12 <BEEP>
-	dw Text_PlaySound      ; $13 <SLOTS>
-	dw Text_StringBuffer   ; $14 <BUFFER>
-	dw Text_WeekDay        ; $15 <DAY>
-	dw Text_Jump           ; $16 <FAR>
+	dw Text_Start      ; $00 <START>
+	dw Text_FromRAM    ; $01 <RAM>
+	dw Text_WaitButton ; $02 <WAIT>
+	dw Text_ASM        ; $03 <ASM>
+	dw Text_PrintNum   ; $04 <NUM>
+	dw Text_Exit       ; $05 <EXIT>
+	dw Text_PlaySound  ; $06 <ITEM>
+	dw Text_PlaySound  ; $07 <CAUGHT>
+	dw Text_PlaySound  ; $08 <SLOTS>
+	dw Text_PlaySound  ; $09 <DEX2>
+	dw Text_PlaySound  ; $0a <DEX3>
+	dw Text_WeekDay    ; $0b <DAY>
+	dw Text_Jump       ; $0c <FAR>
 
 Text_Start::
 ; write text until "@"
-; [$00]["...@"]
-
 	ld d, h
 	ld e, l
 	ld h, b
@@ -683,9 +679,6 @@ Text_Start::
 Text_FromRAM::
 ; text_from_ram
 ; write text from a ram address
-; little endian
-; [$01][addr]
-
 	ld a, [hli]
 	ld e, a
 	ld a, [hli]
@@ -700,9 +693,6 @@ Text_FromRAM::
 Text_Jump::
 ; text_jump
 ; write text from a different bank
-; little endian
-; [$16][addr][bank]
-
 	ldh a, [hROMBank]
 	push af
 
@@ -723,75 +713,14 @@ Text_Jump::
 	rst Bankswitch
 	ret
 
-Text_BCD::
-; write bcd from address, typically ram
-; [$02][addr][flags]
-; flags: see PrintBCDNumber
-
-	ld a, [hli]
-	ld e, a
-	ld a, [hli]
-	ld d, a
-	ld a, [hli]
-	push hl
-	ld h, b
-	ld l, c
-	ld c, a
-	call PrintBCDNumber
-	ld b, h
-	ld c, l
-	pop hl
-	ret
-
-Text_Move::
-; move to a new tile
-; [$03][addr]
-
-	ld a, [hli]
-	ld [wMenuScrollPosition + 2], a
-	ld c, a
-	ld a, [hli]
-	ld [wMenuScrollPosition + 2 + 1], a
-	ld b, a
-	ret
-
-Text_Box::
-; draw a box
-; little endian
-; [$04][addr][height][width]
-
-	ld a, [hli]
-	ld e, a
-	ld a, [hli]
-	ld d, a
-	ld a, [hli]
-	ld b, a
-	ld a, [hli]
-	ld c, a
-	push hl
-	ld h, d
-	ld l, e
-	call TextBox
-	pop hl
-	ret
-
-Text_Low::
-; write text at (1,16)
-; [$05]
-
-	bccoord TEXTBOX_INNERX, TEXTBOX_INNERY + 2
-	ret
-
 Text_WaitButton::
 ; wait for button press
 ; show arrow
-; [$06]
+	push hl
 
 	ld a, [wLinkMode]
 	cp LINK_COLOSSEUM
-	jp z, Text_ButtonSound
-
-	push hl
+	jr z, .linkbattle
 	call LoadBlinkingCursor
 	push bc
 	call ButtonSound
@@ -800,15 +729,11 @@ Text_WaitButton::
 	pop hl
 	ret
 
-Text_Scroll::
-; pushes text up two lines and sets the BC cursor to the border tile
-; below the first character column of the text box.
-	push hl
-	call UnloadBlinkingCursor
-	call TextScroll
-	call TextScroll
+.linkbattle:
+	push bc
+	call ButtonSound
+	pop bc
 	pop hl
-	bccoord TEXTBOX_INNERX, TEXTBOX_INNERY + 2
 	ret
 
 Text_ASM::
@@ -821,7 +746,6 @@ Text_ASM::
 	ret
 
 Text_PrintNum::
-; [$09][addr][hi:bytes lo:digits]
 	ld a, [hli]
 	ld e, a
 	ld a, [hli]
@@ -859,10 +783,6 @@ Text_Exit::
 	ret
 
 Text_PlaySound::
-; chars:
-;   $0b, $0e, $0f, $10, $11, $12, $13
-; see TextSFX
-
 	push bc
 	dec hl
 	ld a, [hli]
@@ -892,88 +812,12 @@ Text_PlaySound::
 	ret
 
 TextSFX::
-	db "<DEX2>",   SFX_DEX_FANFARE_50_79
-	db "<BEEP>",   SFX_FANFARE
-	db "<DEX1>",   SFX_DEX_FANFARE_20_49
 	db "<ITEM>",   SFX_ITEM
 	db "<CAUGHT>", SFX_CAUGHT_MON
-	db "<DEX3>",   SFX_DEX_FANFARE_80_109
 	db "<SLOTS>",  SFX_SLOT_MACHINE_START
+	db "<DEX2>",   SFX_DEX_FANFARE_50_79
+	db "<DEX3>",   SFX_DEX_FANFARE_80_109
 	db -1
-
-Text_Dots::
-; [$0C][num]
-	ld a, [hli]
-	ld d, a
-	push hl
-	ld h, b
-	ld l, c
-
-.loop
-	push de
-	ld a, "…"
-	ld [hli], a
-	call GetJoypad
-	ldh a, [hJoyDown]
-	and A_BUTTON | B_BUTTON
-	jr nz, .next
-	ld c, 10
-	call DelayFrames
-.next
-	pop de
-	dec d
-	jr nz, .loop
-
-	ld b, h
-	ld c, l
-	pop hl
-	ret
-
-Text_ButtonSound::
-; wait for key down
-; display arrow
-	push hl
-	push bc
-	call ButtonSound
-	pop bc
-	pop hl
-	ret
-
-Text_StringBuffer::
-; Print a string from one of the following:
-; 0: wStringBuffer3
-; 1: wStringBuffer4
-; 2: wStringBuffer5
-; 3: wStringBuffer2
-; 4: wStringBuffer1
-; 5: wEnemyMonNick
-; 6: wBattleMonNick
-; [$14][id]
-
-	ld a, [hli]
-	push hl
-	ld e, a
-	ld d, 0
-	ld hl, .StringBufferPointers
-	add hl, de
-	add hl, de
-	ld a, [hli]
-	ld d, [hl]
-	ld e, a
-	ld h, b
-	ld l, c
-	rst PlaceString
-	pop hl
-	ret
-
-.StringBufferPointers::
-	dw wStringBuffer3
-	dw wStringBuffer4
-	dw wStringBuffer5
-	dw wStringBuffer2
-	dw wStringBuffer1
-	dw wEnemyMonNick
-	dw wBattleMonNick
 
 Text_WeekDay::
 	call GetWeekday

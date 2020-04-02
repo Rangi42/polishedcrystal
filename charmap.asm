@@ -4,29 +4,19 @@
 
 	charmap "<START>",  $00
 	charmap "<RAM>",    $01
-	charmap "<BCD>",    $02
-	charmap "<MOVE>",   $03
-	charmap "<BOX>",    $04
-	charmap "<LOW>",    $05
-	charmap "<WAIT>",   $06
-	charmap "<SCROLL>", $07
-	charmap "<ASM>",    $08
-	charmap "<NUM>",    $09
-	charmap "<EXIT>",   $0a
-	charmap "<DEX2>",   $0b
-	charmap "<DOTS>",   $0c
-	charmap "<LINK>",   $0d
-	charmap "<DEX1>",   $0e
-	charmap "<ITEM>",   $0f
-	charmap "<CAUGHT>", $10
-	charmap "<DEX3>",   $11
-	charmap "<BEEP>",   $12
-	charmap "<SLOTS>",  $13
-	charmap "<BUFFER>", $14
-	charmap "<DAY>",    $15
-	charmap "<FAR>",    $16
+	charmap "<WAIT>",   $02
+	charmap "<ASM>",    $03
+	charmap "<NUM>",    $04
+	charmap "<EXIT>",   $05
+	charmap "<ITEM>",   $06
+	charmap "<CAUGHT>", $07
+	charmap "<SLOTS>",  $08
+	charmap "<DEX2>",   $09
+	charmap "<DEX3>",   $0a
+	charmap "<DAY>",    $0b
+	charmap "<FAR>",    $0c
 
-	; n-grams: $17 - $4f (defined below)
+	; n-grams: $0d - $4f (defined below)
 
 	charmap "@",        $50
 	charmap "¯",        $51
@@ -233,34 +223,44 @@ BATTLEEXTRA_GFX_START EQU $5f
 
 	newcharmap default, no_ngrams
 
-NGRAMS_START EQU $17
+NGRAMS_START EQU $0d
 
-	charmap "e ",       $17
-	charmap " t",       $18
-	charmap "ou",       $19
-	charmap "in",       $1a
-	charmap "th",       $1b
-	charmap "he",       $1c
-	charmap "t ",       $1d
-	charmap "er",       $1e
-	charmap "on",       $1f
-	charmap "re",       $20
-	charmap "s ",       $21
-	charmap "at",       $22
-	charmap "an",       $23
-	charmap "to",       $24
-	charmap "ha",       $25
-	charmap "ng",       $26
-	charmap "it",       $27
-	charmap "is",       $28
-	charmap "ea",       $29
-	charmap "ve",       $2a
-	charmap "ar",       $2b
-	charmap "st",       $2c
-	charmap "le",       $2d
-	charmap "or",       $2e
-	charmap "te",       $2f
-	charmap "as",       $30
+	charmap "e ",       $0d
+	charmap " t",       $0e
+	charmap "ou",       $0f
+	charmap "in",       $10
+	charmap "th",       $11
+	charmap "he",       $12
+	charmap "t ",       $13
+	charmap "er",       $14
+	charmap "on",       $15
+	charmap "re",       $16
+	charmap "s ",       $17
+	charmap "at",       $18
+	charmap "an",       $19
+	charmap "to",       $1a
+	charmap "ha",       $1b
+	charmap "ng",       $1c
+	charmap "it",       $1d
+	charmap "is",       $1e
+	charmap "ea",       $1f
+	charmap "ve",       $20
+	charmap "ar",       $21
+	charmap "st",       $22
+	charmap "le",       $23
+	charmap "or",       $24
+	charmap "te",       $25
+	charmap "as",       $26
+;	charmap "",         $27
+;	charmap "",         $28
+;	charmap "",         $29
+;	charmap "",         $2a
+;	charmap "",         $2b
+;	charmap "",         $2c
+;	charmap "",         $2d
+;	charmap "",         $2e
+;	charmap "",         $2f
+;	charmap "",         $30
 ;	charmap "",         $31
 ;	charmap "",         $32
 ;	charmap "",         $33

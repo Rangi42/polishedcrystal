@@ -13,33 +13,8 @@ text_from_ram: MACRO
 	dw \1
 ENDM
 
-text_bcd: MACRO
-	db "<BCD>"
-	dw \1
-	db \2
-ENDM
-
-text_move: MACRO
-	db "<MOVE>"
-	dw \1
-ENDM
-
-text_box: MACRO
-	db "<BOX>"
-	dw \1
-	db \2, \3
-ENDM
-
-text_low: MACRO
-	db "<LOW>"
-ENDM
-
 text_waitbutton: MACRO
 	db "<WAIT>"
-ENDM
-
-text_scroll: MACRO
-	db "<SCROLL>"
 ENDM
 
 start_asm: MACRO
@@ -56,23 +31,6 @@ interpret_data: MACRO
 	db "<EXIT>"
 ENDM
 
-sound_dex_fanfare_50_79: MACRO
-	db "<DEX2>"
-ENDM
-
-limited_interpret_data: MACRO
-	db "<DOTS>"
-	db \1
-ENDM
-
-link_wait_button: MACRO
-	db "<LINK>"
-ENDM
-
-sound_dex_fanfare_20_49: MACRO
-	db "<DEX1>"
-ENDM
-
 sound_item: MACRO
 	db "<ITEM>"
 ENDM
@@ -81,21 +39,16 @@ sound_caught_mon: MACRO
 	db "<CAUGHT>"
 ENDM
 
-sound_dex_fanfare_80_109: MACRO
-	db "<DEX3>"
-ENDM
-
-sound_fanfare: MACRO
-	db "<BEEP>"
-ENDM
-
 sound_slot_machine_start: MACRO
 	db "<SLOTS>"
 ENDM
 
-text_buffer: MACRO
-	db "<BUFFER>"
-	db \1
+sound_dex_fanfare_50_79: MACRO
+	db "<DEX2>"
+ENDM
+
+sound_dex_fanfare_80_109: MACRO
+	db "<DEX3>"
 ENDM
 
 current_day: MACRO

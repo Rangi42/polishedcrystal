@@ -4374,8 +4374,8 @@ Text_NuzlockeReviveFailure::
 
 SECTION "UnknownText_0x1c5e68", ROMX
 UnknownText_0x1c5e68::
-	text "<PLAYER> used the@"
-	text_low
+	text "<PLAYER> used the"
+	line "@"
 	text_from_ram wStringBuffer2
 	text "."
 	done
