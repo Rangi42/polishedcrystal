@@ -123,6 +123,7 @@ endr
 	giveitem BOTTLE_CAP, 99
 	giveitem MULCH, 99
 	giveitem MINT, 99
+	giveitem ODD_SOUVENIR, 10
 	giveitem ARMOR_SUIT, 1
 	; all decorations
 x = EVENT_DECO_BED_1
@@ -256,12 +257,8 @@ endr
 	loadvar wPartyMon3PP+2, 15
 	loadvar wPartyMon3PP+3, 15
 	; exeggutor test
-	givepoke EXEGGUTOR, PLAIN_FORM, 46
-	givepoke EXEGGUTOR, ALOLAN_FORM, 46
-	loadvar wPartyMon4Moves+0, FLY
-	loadvar wPartyMon4PP+0, 15
-	loadvar wPartyMon5Moves+0, FLY
-	loadvar wPartyMon5PP+0, 15
+	givepoke EXEGGCUTE, 46
+	givepoke EXEGGCUTE, 46
 	; fill pokedex
 	callasm FillPokedex
 	; intro events

@@ -246,7 +246,7 @@ ItemEffects:
 	dw IsntTheTimeMessage ; MAGMARIZER
 	dw IsntTheTimeMessage ; RAZOR_FANG
 	dw IsntTheTimeMessage ; RAZOR_CLAW
-	dw IsntTheTimeMessage ; ODD_SOUVENIR
+	dw EvoStoneEffect     ; ODD_SOUVENIR
 	dw IsntTheTimeMessage ; NUGGET
 	dw IsntTheTimeMessage ; BIG_NUGGET
 	dw IsntTheTimeMessage ; TINYMUSHROOM

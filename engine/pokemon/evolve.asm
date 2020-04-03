@@ -161,6 +161,7 @@ EvolveAfterBattle_MasterLoop
 	ld a, [wLinkMode]
 	and a
 	jp nz, .dont_evolve_3
+	call ChangeFormOnItemEvolution
 	jp .proceed
 
 .holding
@@ -230,6 +231,7 @@ endr
 	jp c, .dont_evolve_3
 	call IsMonHoldingEverstone
 	jp z, .dont_evolve_3
+	call ChangeFormOnLevelEvolution
 
 .proceed
 	ld a, [wTempMonLevel]
@@ -388,6 +390,36 @@ endr
 	ld a, [wMonTriedToEvolve]
 	and a
 	call nz, RestartMapMusic
+	ret
+
+ChangeFormOnLevelEvolution:
+; Cubone evolves into plain Marowak by level.
+	ld a, [wTempMonSpecies]
+	cp CUBONE
+	ret nz
+
+	ld a, PLAIN_FORM
+	ld [wTempMonForm], a
+	ret
+
+ChangeFormOnItemEvolution:
+; These Pokémon evolve into different forms with different items.
+	ld a, [wTempMonSpecies]
+	cp PIKACHU
+	jr z, .ok
+	cp EXEGGCUTE
+	jr z, .ok
+	cp CUBONE
+	ret nz
+
+.ok
+	ld a, [wCurItem]
+	cp ODD_SOUVENIR
+	ld a, ALOLAN_FORM
+	jr z, .done
+	dec a ; PLAIN_FORM
+.done
+	ld [wTempMonForm], a
 	ret
 
 UpdateSpeciesNameIfNotNicknamed:

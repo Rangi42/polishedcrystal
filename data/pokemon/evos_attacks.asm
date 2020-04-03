@@ -1973,6 +1973,7 @@ ElectrodeEvosAttacks:
 
 ExeggcuteEvosAttacks:
 	db EVOLVE_ITEM, LEAF_STONE, EXEGGUTOR
+	db EVOLVE_ITEM, ODD_SOUVENIR, EXEGGUTOR
 	db 0 ; no more evolutions
 	db 1, TACKLE ; Barrage → new move
 	db 1, HYPNOSIS
