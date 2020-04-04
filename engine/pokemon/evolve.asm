@@ -398,7 +398,13 @@ ChangeFormOnLevelEvolution:
 	cp CUBONE
 	ret nz
 
+_PlainFormOnEvolution:
 	ld a, PLAIN_FORM
+_ChangeFormOnEvolution:
+	ld b, a
+	ld a, [wTempMonForm]
+	and $ff - FORM_MASK
+	or b
 	ld [wTempMonForm], a
 	ret
 
@@ -416,11 +422,8 @@ ChangeFormOnItemEvolution:
 	ld a, [wCurItem]
 	cp ODD_SOUVENIR
 	ld a, ALOLAN_FORM
-	jr z, .done
-	dec a ; PLAIN_FORM
-.done
-	ld [wTempMonForm], a
-	ret
+	jr z, _ChangeFormOnEvolution
+	jr _PlainFormOnEvolution
 
 UpdateSpeciesNameIfNotNicknamed:
 	ld a, [wEvolutionOldSpecies]
