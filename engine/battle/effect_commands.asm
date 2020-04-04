@@ -1497,6 +1497,9 @@ BattleCommand_checkpowder:
 	call GetBattleVar
 	cp THUNDER_WAVE
 	jr z, .twave
+	call GetBattleVar
+	cp SING
+	jr nz, .sing
 	ld hl, PowderMoves
 	call IsInArray
 	ret nc
@@ -1508,7 +1511,15 @@ BattleCommand_checkpowder:
 	ld a, b
 	cp HELD_RING_TARGET
 	ret z
-	; fallthrough
+
+.sing
+	call CheckIfTargetIsGhostType
+	jr nz, BattleCommand_resettypematchup
+	call GetOpponentItemAfterUnnerve
+	ld a, b
+	cp HELD_RING_TARGET
+	ret z
+
 BattleCommand_resettypematchup:
 ; Reset the type matchup multiplier to 1.0, if the type matchup is not 0.
 ; If there is immunity in play, the move automatically misses.
