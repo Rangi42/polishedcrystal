@@ -592,7 +592,7 @@ wWhichMonFaintedFirst:: ds 1
 wLastPlayerCounterMove:: ds 1
 wLastEnemyCounterMove:: ds 1
 
-wEnemyMinimized:: ds 1
+	ds 1 ; unused
 
 wAlreadyExecuted:: ds 1
 
@@ -600,7 +600,7 @@ wTrickRoom:: ds 1
 
 wBattleLowHealthAlarm:: ds 1
 
-wPlayerMinimized:: ds 1
+	ds 1 ; unused
 
 wPlayerScreens::
 ; bit

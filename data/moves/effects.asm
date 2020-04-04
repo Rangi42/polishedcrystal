@@ -921,7 +921,6 @@ AccuracyUp2:
 	endmove
 
 EvasionUp2:
-Minimize:
 	checkobedience
 	usedmovetext
 	doturn
@@ -2162,6 +2161,14 @@ DefenseCurl:
 	doturn
 	forceraisestat DEFENSE
 	curl
+	endmove
+
+Minimize:
+	checkobedience
+	usedmovetext
+	doturn
+	forceraisestat $10 | EVASION
+	minimize
 	endmove
 
 FlareBlitz:

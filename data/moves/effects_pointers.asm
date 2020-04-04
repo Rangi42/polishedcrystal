@@ -133,6 +133,7 @@ MoveEffectsPointers:
 	dw Teleport
 	dw Fly
 	dw DefenseCurl
+	dw Minimize
 	dw FlareBlitz
 	dw NormalHit
 	dw NormalHit
