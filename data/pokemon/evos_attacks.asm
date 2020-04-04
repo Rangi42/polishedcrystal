@@ -323,7 +323,8 @@ PidgeotEvosAttacks:
 	db 68, HURRICANE
 	db 0 ; no more level-up moves
 
-RattataEvosAttacks:
+RattataPlainEvosAttacks:
+RattataAlolanEvosAttacks:
 	db EVOLVE_LEVEL, 20, RATICATE
 	db 0 ; no more evolutions
 	db 1, TACKLE
@@ -341,7 +342,8 @@ RattataEvosAttacks:
 	db 34, COUNTER ; Endeavor → egg move
 	db 0 ; no more level-up moves
 
-RaticateEvosAttacks:
+RaticatePlainEvosAttacks:
+RaticateAlolanEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, SCARY_FACE ; evolution move
 	db 1, SWORDS_DANCE
@@ -471,7 +473,7 @@ RaichuEvosAttacks:
 	db 1, REVERSAL ; Sw/Sh move
 	db 0 ; no more level-up moves
 
-SandshrewEvosAttacks:
+SandshrewPlainEvosAttacks:
 	db EVOLVE_LEVEL, 22, SANDSLASH
 	db 0 ; no more evolutions
 	db 1, SCRATCH
@@ -493,7 +495,29 @@ SandshrewEvosAttacks:
 	db 46, EARTHQUAKE
 	db 0 ; no more level-up moves
 
-SandslashEvosAttacks:
+SandshrewAlolanEvosAttacks:
+	db EVOLVE_ITEM, ICE_STONE, SANDSLASH
+	db 0 ; no more evolutions
+	db 1, SCRATCH
+	db 1, DEFENSE_CURL
+	db 3, FOCUS_ENERGY ; Bide → new move
+	db 5, ICY_WIND ; Powder Snow → similar move
+	db 7, DEFENSE_CURL ; Ice Ball → TM move
+	db 9, RAPID_SPIN
+	db 11, PIN_MISSILE ; Fury Cutter → new move
+	db 14, METAL_CLAW
+	db 17, SWIFT
+	db 20, FURY_STRIKES ; Fury Swipes → similar move
+	db 23, ROLLOUT ; Iron Defense → TM move
+	db 26, SLASH
+	db 30, IRON_HEAD
+	db 34, GYRO_BALL
+	db 38, SWORDS_DANCE
+	db 42, HAIL
+	db 46, BLIZZARD
+	db 0 ; no more level-up moves
+
+SandslashPlainEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, SCRATCH
 	db 1, SLASH ; Crush Claw → Slash ; evolution move
@@ -513,6 +537,20 @@ SandslashEvosAttacks:
 	db 43, SWORDS_DANCE
 	db 48, SANDSTORM
 	db 53, EARTHQUAKE
+	db 0 ; no more level-up moves
+
+SandslashAlolanEvosAttacks:
+	db 0 ; no more evolutions
+	db 1, ICICLE_SPEAR ; evolution move
+	db 1, COUNTER ; Metal Burst → similar move
+	db 1, MIRROR_COAT ; Metal Burst → similar move
+	db 1, ICICLE_CRASH ; evolution move
+	db 1, SLASH
+	db 1, DEFENSE_CURL
+	db 1, ROLLOUT ; Ice Ball → TM move
+	db 1, METAL_CLAW
+	db 48, HAIL
+	db 53, BLIZZARD
 	db 0 ; no more level-up moves
 
 NidoranFEvosAttacks:
@@ -2002,6 +2040,18 @@ ExeggutorEvosAttacks:
 	db 27, ZEN_HEADBUTT ; Egg Bomb → tutor move
 	db 37, POWER_WHIP ; Wood Hammer → new move
 	db 47, PETAL_DANCE ; Leaf Storm → new move
+	db 0 ; no more level-up moves
+
+ExeggutorAlolanEvosAttacks::
+	db 0 ; no more evolutions
+	db 1, TACKLE ; Barrage → new move
+	db 1, HYPNOSIS
+	db 1, CONFUSION
+	db 1, DRAGON_PULSE ; evolution move
+	db 17, DRAGON_RAGE ; Psyshock → new move
+	db 27, ZEN_HEADBUTT ; Egg Bomb → tutor move
+	db 37, POWER_WHIP ; Wood Hammer → new move
+	db 47, OUTRAGE ; Leaf Storm → S/M TM move
 	db 0 ; no more level-up moves
 
 CuboneEvosAttacks:
@@ -5024,16 +5074,4 @@ SylveonEvosAttacks:
 
 EggEvosAttacks::
 	db 0 ; no more evolutions
-	db 0 ; no more level-up moves
-
-ExeggutorAlolanEvosAttacks::
-	db 0 ; no more evolutions
-	db 1, TACKLE ; Barrage → new move
-	db 1, HYPNOSIS
-	db 1, CONFUSION
-	db 1, DRAGON_PULSE ; evolution move
-	db 17, DRAGON_RAGE ; Psyshock → new move
-	db 27, ZEN_HEADBUTT ; Egg Bomb → tutor move
-	db 37, POWER_WHIP ; Wood Hammer → new move
-	db 47, OUTRAGE ; Leaf Storm → S/M TM move
 	db 0 ; no more level-up moves

@@ -17,7 +17,7 @@ EggMovePointers::
 	dw PidgeyEggMoves
 	dw NoEggMoves
 	dw NoEggMoves
-	dw RattataEggMoves
+	dw RattataPlainEggMoves
 	dw NoEggMoves
 	dw MarillEggMoves
 	dw NoEggMoves
@@ -25,7 +25,7 @@ EggMovePointers::
 	dw NoEggMoves
 	dw NoEggMoves
 	dw NoEggMoves
-	dw SandshrewEggMoves
+	dw SandshrewPlainEggMoves
 	dw NoEggMoves
 	dw NidoranFEggMoves
 	dw NoEggMoves
@@ -257,9 +257,9 @@ EggMovePointers::
 
 	dw NoEggMoves
 	dw NoEggMoves
-	dw RattataEggMoves ; TODO
+	dw RattataAlolanEggMoves
 	dw NoEggMoves
-	dw SandshrewEggMoves ; TODO
+	dw SandshrewAlolanEggMoves
 	dw NoEggMoves
 	dw VulpixEggMoves ; TODO
 	dw NoEggMoves

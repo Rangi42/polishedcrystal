@@ -134,6 +134,7 @@ AbilityDescriptions:
 	dw MegaLauncherDescription
 	dw ToughClawsDescription
 	dw PixilateDescription
+	dw SlushRushDescription
 	dw TanglingHairDescription
 	dw NeutralizingGasDescription
 
@@ -667,6 +668,10 @@ ToughClawsDescription:
 PixilateDescription:
 	db    "Normal-type moves"
 	next1 "become Fairy-type.@"
+
+SlushRushDescription:
+	db    "Boosts Speed in"
+	next1 "a hailstorm.@"
 
 TanglingHairDescription:
 	db    "Contact may lower"

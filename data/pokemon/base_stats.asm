@@ -74,16 +74,16 @@ INCLUDE "data/pokemon/base_stats/beedrill.asm"
 INCLUDE "data/pokemon/base_stats/pidgey.asm"
 INCLUDE "data/pokemon/base_stats/pidgeotto.asm"
 INCLUDE "data/pokemon/base_stats/pidgeot.asm"
-INCLUDE "data/pokemon/base_stats/rattata.asm"
-INCLUDE "data/pokemon/base_stats/raticate.asm"
+INCLUDE "data/pokemon/base_stats/rattata_plain.asm"
+INCLUDE "data/pokemon/base_stats/raticate_plain.asm"
 INCLUDE "data/pokemon/base_stats/marill.asm"
 INCLUDE "data/pokemon/base_stats/azumarill.asm"
 INCLUDE "data/pokemon/base_stats/ekans.asm"
 INCLUDE "data/pokemon/base_stats/arbok.asm"
 INCLUDE "data/pokemon/base_stats/pikachu.asm"
 INCLUDE "data/pokemon/base_stats/raichu.asm"
-INCLUDE "data/pokemon/base_stats/sandshrew.asm"
-INCLUDE "data/pokemon/base_stats/sandslash.asm"
+INCLUDE "data/pokemon/base_stats/sandshrew_plain.asm"
+INCLUDE "data/pokemon/base_stats/sandslash_plain.asm"
 INCLUDE "data/pokemon/base_stats/nidoran_f.asm"
 INCLUDE "data/pokemon/base_stats/nidorina.asm"
 INCLUDE "data/pokemon/base_stats/nidoqueen.asm"
@@ -314,10 +314,10 @@ INCLUDE "data/pokemon/base_stats/egg.asm"
 
 INCLUDE "data/pokemon/base_stats/gyarados.asm" ; red
 INCLUDE "data/pokemon/base_stats/mewtwo_armored.asm"
-INCLUDE "data/pokemon/base_stats/rattata.asm" ; TODO
-INCLUDE "data/pokemon/base_stats/raticate.asm" ; TODO
-INCLUDE "data/pokemon/base_stats/sandshrew.asm" ; TODO
-INCLUDE "data/pokemon/base_stats/sandslash.asm" ; TODO
+INCLUDE "data/pokemon/base_stats/rattata_alolan.asm"
+INCLUDE "data/pokemon/base_stats/raticate_alolan.asm"
+INCLUDE "data/pokemon/base_stats/sandshrew_alolan.asm"
+INCLUDE "data/pokemon/base_stats/sandslash_alolan.asm"
 INCLUDE "data/pokemon/base_stats/vulpix.asm" ; TODO
 INCLUDE "data/pokemon/base_stats/ninetales.asm" ; TODO
 INCLUDE "data/pokemon/base_stats/diglett.asm" ; TODO

@@ -134,6 +134,7 @@ AbilityNames:
 	dw MegaLauncher
 	dw ToughClaws
 	dw Pixilate
+	dw SlushRush
 	dw TanglingHair
 	dw NeutralizingGas
 
@@ -272,5 +273,6 @@ Competitive:     rawchar "Competitive@"
 MegaLauncher:    rawchar "Mega Launcher@"
 ToughClaws:      rawchar "Tough Claws@"
 Pixilate:        rawchar "Pixilate@"
+SlushRush:       rawchar "Slush Rush@"
 TanglingHair:    rawchar "Tangling Hair@"
 NeutralizingGas: rawchar "Neutralizing Gas@"

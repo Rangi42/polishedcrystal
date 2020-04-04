@@ -21,16 +21,16 @@ EvosAttacksPointers::
 	dw PidgeyEvosAttacks
 	dw PidgeottoEvosAttacks
 	dw PidgeotEvosAttacks
-	dw RattataEvosAttacks
-	dw RaticateEvosAttacks
+	dw RattataPlainEvosAttacks
+	dw RaticatePlainEvosAttacks
 	dw MarillEvosAttacks
 	dw AzumarillEvosAttacks
 	dw EkansEvosAttacks
 	dw ArbokEvosAttacks
 	dw PikachuEvosAttacks
 	dw RaichuEvosAttacks
-	dw SandshrewEvosAttacks
-	dw SandslashEvosAttacks
+	dw SandshrewPlainEvosAttacks
+	dw SandslashPlainEvosAttacks
 	dw NidoranFEvosAttacks
 	dw NidorinaEvosAttacks
 	dw NidoqueenEvosAttacks
@@ -261,10 +261,10 @@ EvosAttacksPointers::
 
 	dw GyaradosEvosAttacks
 	dw MewtwoEvosAttacks
-	dw RattataEvosAttacks ; TODO
-	dw RaticateEvosAttacks ; TODO
-	dw SandshrewEvosAttacks ; TODO
-	dw SandslashEvosAttacks ; TODO
+	dw RattataAlolanEvosAttacks
+	dw RaticateAlolanEvosAttacks
+	dw SandshrewAlolanEvosAttacks
+	dw SandslashAlolanEvosAttacks
 	dw VulpixEvosAttacks ; TODO
 	dw NinetalesEvosAttacks ; TODO
 	dw DiglettEvosAttacks ; TODO

@@ -46,7 +46,8 @@ PidgeyEggMoves:
 	db BRAVE_BIRD
 	db $ff
 
-RattataEggMoves:
+RattataPlainEggMoves:
+RattataAlolanEggMoves:
 	db FLAME_WHEEL
 	db FURY_STRIKES
 	db REVERSAL
@@ -74,11 +75,21 @@ EkansEggMoves:
 	db SCARY_FACE
 	db $ff
 
-SandshrewEggMoves:
+SandshrewPlainEggMoves:
 	db METAL_CLAW
 	db RAPID_SPIN
 	db SAFEGUARD
 	db COUNTER
+	db NIGHT_SLASH
+	db $ff
+
+SandshrewAlolanEggMoves:
+	db AMNESIA
+	db RAPID_SPIN
+	db SAFEGUARD
+	db REVERSAL ; Flail → similar move
+	db ICICLE_CRASH
+	db ICICLE_SPEAR
 	db NIGHT_SLASH
 	db $ff
 
