@@ -143,7 +143,7 @@ DoPlayerMovement::
 	add hl, bc
 	ld a, [hl]
 	ld [wWalkingDirection], a
-	ld a, STEP_BIKE
+	ld a, STEP_RUN
 	jr .finish
 
 .water_table
