@@ -24,7 +24,7 @@ EvolutionMoves::
 	db NO_MOVE      ; EKANS
 	db CRUNCH       ; ARBOK
 	db NO_MOVE      ; PIKACHU
-	db NO_MOVE      ; RAICHU
+	db THUNDERBOLT  ; RAICHU
 	db NO_MOVE      ; SANDSHREW
 	db SLASH        ; SANDSLASH
 	db NO_MOVE      ; NIDORAN_F
@@ -103,7 +103,7 @@ EvolutionMoves::
 	db NO_MOVE      ; EXEGGCUTE
 	db STOMP        ; EXEGGUTOR
 	db NO_MOVE      ; CUBONE
-	db PAIN_SPLIT   ; MAROWAK
+	db SWORDS_DANCE ; MAROWAK
 	db DOUBLE_KICK  ; HITMONLEE
 	db DIZZY_PUNCH  ; HITMONCHAN
 	db NO_MOVE      ; KOFFING

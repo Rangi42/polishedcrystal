@@ -121,7 +121,7 @@ ClefairyEggMoves:
 	db FRESH_SNACK
 	db $ff
 
-VulpixEggMoves:
+VulpixPlainEggMoves:
 	db DISABLE
 	db FLARE_BLITZ
 	db HYPNOSIS
@@ -129,6 +129,17 @@ VulpixEggMoves:
 	db EXTRASENSORY
 	db CHARM
 	db ENERGY_BALL
+	db ROAR
+	db $ff
+
+VulpixAlolanEggMoves:
+	db DISABLE
+	db BLIZZARD
+	db HYPNOSIS
+	db FEINT_ATTACK
+	db EXTRASENSORY
+	db CHARM
+	db ICE_BEAM
 	db ROAR
 	db $ff
 
@@ -174,7 +185,8 @@ VenonatEggMoves:
 	db TOXIC_SPIKES
 	db $ff
 
-DiglettEggMoves:
+DiglettPlainEggMoves:
+DiglettAlolanEggMoves:
 	db ANCIENTPOWER
 	db FEINT_ATTACK
 	db HEADBUTT
@@ -183,7 +195,8 @@ DiglettEggMoves:
 	db SCREECH
 	db $ff
 
-MeowthEggMoves:
+MeowthPlainEggMoves:
+MeowthAlolanEggMoves:
 	db CHARM
 	db HYPNOSIS
 	db AMNESIA
@@ -272,11 +285,12 @@ TentacoolEggMoves:
 	db KNOCK_OFF
 	db $ff
 
-GeodudeEggMoves:
+GeodudePlainEggMoves:
+GeodudeAlolanEggMoves:
 	db ROCK_SLIDE
 	db $ff
 
-PonytaEggMoves:
+PonytaPlainEggMoves:
 	db CHARM
 	db DOUBLE_KICK
 	db HYPNOSIS
@@ -284,6 +298,19 @@ PonytaEggMoves:
 	db THRASH
 	db QUICK_ATTACK
 	db FLAME_WHEEL
+	db EXTREMESPEED
+	db PLAY_ROUGH
+	db $ff
+
+PonytaGalarianEggMoves:
+	db CHARM
+	db DOUBLE_KICK
+	db HYPNOSIS
+	db HEALINGLIGHT
+	db THRASH
+	db QUICK_ATTACK
+	db PSYBEAM
+	db PSYCHIC_M
 	db EXTREMESPEED
 	db PLAY_ROUGH
 	db $ff
@@ -323,11 +350,20 @@ SeelEggMoves:
 	db ICICLE_SPEAR
 	db $ff
 
-GrimerEggMoves:
+GrimerPlainEggMoves:
 	db HAZE
 	db LICK
 	db MEAN_LOOK
 	db SCARY_FACE
+	db SHADOW_CLAW
+	db $ff
+
+GrimerAlolanEggMoves:
+	db HAZE
+	db LICK
+	db MEAN_LOOK
+	db SCARY_FACE
+	db PURSUIT
 	db $ff
 
 ShellderEggMoves:
