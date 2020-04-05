@@ -1136,6 +1136,7 @@ SendInUserPkmn:
 	res SUBSTATUS_TRANSFORMED, [hl]
 	res SUBSTATUS_MAGIC_BOUNCE, [hl]
 	res SUBSTATUS_FAINTED, [hl]
+	res SUBSTATUS_MINIMIZED, [hl]
 	inc hl
 	res SUBSTATUS_FLYING, [hl]
 	res SUBSTATUS_UNDERGROUND, [hl]
@@ -2801,7 +2802,6 @@ NewEnemyMonStatus:
 	ld [wEnemyEncoreCount], a
 	ld [wEnemyProtectCount], a
 	ld [wEnemyToxicCount], a
-	ld [wEnemyMinimized], a
 	ld [wPlayerWrapCount], a
 	ld [wEnemyWrapCount], a
 	ld [wEnemyTurnsTaken], a
@@ -2984,7 +2984,6 @@ endr
 	ld [wPlayerEncoreCount], a
 	ld [wPlayerProtectCount], a
 	ld [wPlayerToxicCount], a
-	ld [wPlayerMinimized], a
 	ld [wEnemyWrapCount], a
 	ld [wPlayerWrapCount], a
 	ld [wPlayerTurnsTaken], a
@@ -5394,6 +5393,7 @@ ParseEnemyAction:
 	ld a, STRUGGLE
 .finish
 	ld [wCurEnemyMove], a
+	ld [wCurEnemyMoveNum], a ; set move # to -1 to avoid disable issues
 	jr .skip_load
 
 ResetVarsForSubstatusRage:
@@ -7319,8 +7319,8 @@ GetMonBackpic:
 	jr nz, GetBackpic_DoAnim ; substitute
 
 DropPlayerSub:
-	ld a, [wPlayerMinimized]
-	and a
+	ld a, [wPlayerSubStatus2]
+	bit SUBSTATUS_MINIMIZED, a
 	ld hl, BattleAnimCmd_MinimizeOpp
 	jr nz, GetBackpic_DoAnim
 	ld a, [wCurPartySpecies]
@@ -7352,8 +7352,8 @@ GetMonFrontpic:
 	jr nz, GetFrontpic_DoAnim
 
 DropEnemySub:
-	ld a, [wEnemyMinimized]
-	and a
+	ld a, [wEnemySubStatus2]
+	bit SUBSTATUS_MINIMIZED, a
 	ld hl, BattleAnimCmd_MinimizeOpp
 	jr nz, GetFrontpic_DoAnim
 

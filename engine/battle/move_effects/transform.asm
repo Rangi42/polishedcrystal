@@ -129,13 +129,9 @@ BattleCommand_transform:
 	call BattleSideCopy
 	call _CheckBattleEffects
 	jr c, .mimic_anims
-	ldh a, [hBattleTurn]
-	and a
-	ld a, [wPlayerMinimized]
-	jr z, .got_byte
-	ld a, [wEnemyMinimized]
-.got_byte
-	and a
+	ld a, BATTLE_VARS_SUBSTATUS2
+	call GetBattleVar
+	bit SUBSTATUS_MINIMIZED, a
 	jr nz, .mimic_anims
 	; Animation is done "raw" to allow Imposter
 	; to use the correct animation

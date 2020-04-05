@@ -39,6 +39,7 @@ INCLUDE "engine/battle/move_effects/magic_bounce.asm"
 INCLUDE "engine/battle/move_effects/magnitude.asm"
 INCLUDE "engine/battle/move_effects/mean_look.asm"
 INCLUDE "engine/battle/move_effects/metronome.asm"
+INCLUDE "engine/battle/move_effects/minimize.asm"
 INCLUDE "engine/battle/move_effects/pain_split.asm"
 INCLUDE "engine/battle/move_effects/pay_day.asm"
 INCLUDE "engine/battle/move_effects/perish_song.asm"
@@ -336,12 +337,10 @@ BattleCommand_checkturn:
 	jr nc, .not_confused
 	ldh a, [hBattleTurn]
 	and a
-	jr nz, .enemy5
 	ld hl, wPlayerConfuseCount
-	jr .ok5
-.enemy5
+	jr z, .check_confusion
 	ld hl, wEnemyConfuseCount
-.ok5
+.check_confusion
 	dec [hl]
 	jr nz, .confused
 
@@ -403,16 +402,14 @@ BattleCommand_checkturn:
 	; Are we using a disabled move?
 	ldh a, [hBattleTurn]
 	and a
-	jr nz, .enemy6
 	ld a, [wPlayerDisableCount]
 	ld hl, wCurMoveNum
-	jr .ok6
-.enemy6
+	jr z, .check_disabled
 	ld a, [wEnemyDisableCount]
 	ld hl, wCurEnemyMoveNum
-.ok6
+.check_disabled
 	and a
-	jr z, .not_disabled ; can't disable a move that doesn't exist
+	jr z, .not_disabled
 	swap a
 	and $f
 	dec a
@@ -1913,14 +1910,9 @@ BattleCommand_checkhit:
 	ret
 
 .AntiMinimize:
-	ldh a, [hBattleTurn]
-	and a
-	ld hl, wPlayerMinimized
-	jr z, .got_minimize
-	ld hl, wEnemyMinimized
-.got_minimize
-	ld a, [hl]
-	and a
+	ld a, BATTLE_VARS_SUBSTATUS2_OPP
+	call GetBattleVar
+	bit SUBSTATUS_MINIMIZED, a
 	jr z, .no_minimize
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
@@ -6006,14 +5998,9 @@ BattleCommand_switchout:
 	jp SetDeferredSwitch
 
 BattleCommand_doubleminimizedamage:
-	ld hl, wEnemyMinimized
-	ldh a, [hBattleTurn]
-	and a
-	jr z, .ok
-	ld hl, wPlayerMinimized
-.ok
-	ld a, [hl]
-	and a
+	ld a, BATTLE_VARS_SUBSTATUS2_OPP
+	call GetBattleVarAddr
+	bit SUBSTATUS_MINIMIZED, a
 	ret z
 	ld hl, wCurDamage + 1
 	sla [hl]

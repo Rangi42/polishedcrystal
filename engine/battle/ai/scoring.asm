@@ -122,6 +122,9 @@ AI_Setup:
 	cp EFFECT_EVASION_DOWN_2 + 1
 	jr c, .statdown
 
+	cp EFFECT_MINIMIZE
+	jr z, .statup
+
 	jr .checkmove
 
 .statup
@@ -285,7 +288,7 @@ AI_Smart:
 	call AIGetEnemyMove
 
 	ld a, [wEnemyMoveStruct + MOVE_EFFECT]
-	ld hl, .table_386f2
+	ld hl, .smart_ai_table
 	ld de, 3
 	call IsInArray
 
@@ -312,7 +315,7 @@ AI_Smart:
 	inc hl
 	jr .checkmove
 
-.table_386f2
+.smart_ai_table
 	dbw EFFECT_SLEEP,             AI_Smart_Sleep
 	dbw EFFECT_LEECH_HIT,         AI_Smart_LeechHit
 	dbw EFFECT_EXPLOSION,         AI_Smart_Explosion
@@ -374,6 +377,7 @@ AI_Smart:
 	dbw EFFECT_FUTURE_SIGHT,      AI_Smart_FutureSight
 	dbw EFFECT_GUST,              AI_Smart_Gust
 	dbw EFFECT_STOMP,             AI_Smart_Stomp
+	dbw EFFECT_BODY_SLAM,         AI_Smart_Stomp
 	dbw EFFECT_SOLAR_BEAM,        AI_Smart_SolarBeam
 	dbw EFFECT_THUNDER,           AI_Smart_Thunder
 	dbw EFFECT_FLY,               AI_Smart_Fly
@@ -2156,8 +2160,8 @@ AI_Smart_FutureSight:
 AI_Smart_Stomp:
 ; 80% chance to encourage this move if the player has used Minimize.
 
-	ld a, [wPlayerMinimized]
-	and a
+	ld a, [wPlayerSubStatus2]
+	bit SUBSTATUS_MINIMIZED, a
 	ret z
 
 	call AI_80_20

@@ -137,6 +137,7 @@ BattleCommandPointers:
 	command tristatuschance
 	command startloop
 	command curl
+	command minimize
 	command burn
 	command bounceback
 	command suckerpunch

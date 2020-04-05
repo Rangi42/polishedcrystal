@@ -145,7 +145,7 @@ endc
 	move DOUBLE_TEAM,  EFFECT_EVASION_UP,          0, NORMAL,    100, 15,   0, STATUS
 	move RECOVER,      EFFECT_HEAL,                0, NORMAL,    100, 10,   0, STATUS
 	move ROCK_BLAST,   EFFECT_MULTI_HIT,          25, ROCK,       90, 25,   0, PHYSICAL
-	move MINIMIZE,     EFFECT_EVASION_UP_2,        0, NORMAL,    100, 10,   0, STATUS
+	move MINIMIZE,     EFFECT_MINIMIZE,            0, NORMAL,    100, 10,   0, STATUS
 	move SMOKESCREEN,  EFFECT_ACCURACY_DOWN,       0, NORMAL,    100, 20,   0, STATUS
 	move CONFUSE_RAY,  EFFECT_CONFUSE,             0, GHOST,     100, 10,   0, STATUS
 	move AQUA_TAIL,    EFFECT_NORMAL_HIT,         90, WATER,      90, 10,   0, PHYSICAL
