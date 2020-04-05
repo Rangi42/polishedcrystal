@@ -41,6 +41,7 @@ StatusHealAbilities:
 ; Status immunity abilities that autoproc if the user gets the status or the ability
 	dbw LIMBER, LimberAbility
 	dbw IMMUNITY, ImmunityAbility
+	dbw PASTEL_VEIL, PastelVeilAbility
 	dbw MAGMA_ARMOR, MagmaArmorAbility
 	dbw WATER_VEIL, WaterVeilAbility
 	dbw INSOMNIA, InsomniaAbility
@@ -67,6 +68,7 @@ NotificationAbilities:
 	jp StdBattleTextBox
 
 ImmunityAbility:
+PastelVeilAbility:
 	ld a, 1 << PSN
 	jr HealStatusAbility
 WaterVeilAbility:
@@ -291,7 +293,7 @@ AnticipationAbility:
 ; Anticipation considers special types (just Hidden Power is applicable here) as
 ; whatever type they are listed as (e.g. HP is Normal). It will also (as of 5gen)
 ; treat Counter/Mirror Coat (and Metal Burst) as attacking moves of their type.
-; It also ignores Pixilate.
+; It also ignores Pixilate and Galvanize.
 	ldh a, [hBattleTurn]
 	and a
 	ld hl, wEnemyMonMoves
@@ -1367,6 +1369,7 @@ OffensiveDamageAbilities:
 	dbw RECKLESS, RecklessAbility
 	dbw GUTS, GutsAbility
 	dbw PIXILATE, PixilateAbility
+	dbw GALVANIZE, GalvanizeAbility
 	dbw -1, -1
 
 DefensiveDamageAbilities:
@@ -1552,6 +1555,18 @@ PixilateAbility:
 
 	; change move to fairy type
 	ld [hl], FAIRY
+	ln a, 6, 5 ; x1.2
+	jp MultiplyAndDivide
+
+GalvanizeAbility:
+	ld a, BATTLE_VARS_MOVE_TYPE
+	call GetBattleVarAddr
+	ld a, [hl]
+	and a ; cp NORMAL
+	ret nz
+
+	; change move to electric type
+	ld [hl], ELECTRIC
 	ln a, 6, 5 ; x1.2
 	jp MultiplyAndDivide
 

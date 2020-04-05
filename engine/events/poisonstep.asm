@@ -73,7 +73,7 @@ DoPoisonStep::
 	or c
 	ret z
 
-; check for immunity or poison heal
+; check for immunity, pastel veil, or poison heal
 	push hl
 	push bc
 	ld a, MON_SPECIES
@@ -86,6 +86,8 @@ DoPoisonStep::
 	pop bc
 	pop hl
 	cp IMMUNITY
+	jr z, .heal_poison
+	cp PASTEL_VEIL
 	jr z, .heal_poison
 	cp POISON_HEAL
 	ret z ; keep poison, but don't deal damage for it

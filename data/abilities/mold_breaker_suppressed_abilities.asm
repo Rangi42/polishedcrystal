@@ -26,6 +26,7 @@ MoldBreakerSuppressedAbilities:
 	db OBLIVIOUS
 	db OVERCOAT
 	db OWN_TEMPO
+	db PASTEL_VEIL
 	db SAND_VEIL
 	db SAP_SIPPER
 	db SHELL_ARMOR

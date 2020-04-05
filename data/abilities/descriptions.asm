@@ -135,8 +135,11 @@ AbilityDescriptions:
 	dw ToughClawsDescription
 	dw PixilateDescription
 	dw SlushRushDescription
+	dw GalvanizeDescription
+	dw CorrosionDescription
 	dw TanglingHairDescription
 	dw NeutralizingGasDescription
+	dw PastelVeilDescription
 
 NoAbilityDescription:
 	db    "Abilities are"
@@ -205,6 +208,7 @@ VitalSpiritDescription:
 	next1 "falling asleep.@"
 
 ImmunityDescription:
+PastelVeilDescription:
 	db    "Prevents it from"
 	next1 "getting poisoned.@"
 
@@ -672,6 +676,14 @@ PixilateDescription:
 SlushRushDescription:
 	db    "Boosts Speed in"
 	next1 "a hailstorm.@"
+
+GalvanizeDescription:
+	db    "Normal-type moves"
+	next1 "become Electric.@"
+
+CorrosionDescription:
+	db    "Foes of any type"
+	next1 "can be poisoned.@"
 
 TanglingHairDescription:
 	db    "Contact may lower"
