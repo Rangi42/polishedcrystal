@@ -1902,7 +1902,7 @@ BattleCommand_checkhit:
 	ret
 
 .NoGuardCheck:
-;Returns z if either the user or opponent has the No Guard ability
+; Returns z if either the user or opponent has the No Guard ability
 	call GetTrueUserAbility
 	cp NO_GUARD
 	ret z
@@ -1911,7 +1911,7 @@ BattleCommand_checkhit:
 	ret
 
 .AntiMinimize:
-;Returns z if Stomp or Body Slam is used against a minimized target
+; Returns z if Stomp or Body Slam is used against a minimized target
 	ld a, BATTLE_VARS_SUBSTATUS2_OPP
 	call GetBattleVar
 	bit SUBSTATUS_MINIMIZED, a
