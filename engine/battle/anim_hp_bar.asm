@@ -42,6 +42,12 @@ _AnimateHPBar:
 	rl b
 	call ComputeHPBarPixels
 	ld a, e
+	; because HP bar calculations are doubled for 60 to 30fps conversion,
+	; the last pixel is set to 2px/2, not 1px/2
+	cp 1
+	jr nz, .ok
+	inc a
+.ok
 	ld [wCurHPBarPixels], a
 
 	ld a, [wCurHPAnimNewHP]
@@ -56,6 +62,10 @@ _AnimateHPBar:
 	rl b
 	call ComputeHPBarPixels
 	ld a, e
+	cp 1
+	jr nz, .ok2
+	inc a
+.ok2
 	ld [wNewHPBarPixels], a
 
 	push hl
