@@ -7,7 +7,7 @@
 	db NO_ITEM ; item 1
 	db EVERSTONE ; item 2
 	dn FEMALE_50, 2 ; gender, step cycles to hatch
-	dn 6, 6 ; frontpic dimensions
+	dn 7, 7 ; frontpic dimensions
 	db MAGNET_PULL ; ability 1
 	db STURDY ; ability 2
 	db GALVANIZE ; hidden ability
