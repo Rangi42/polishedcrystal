@@ -203,11 +203,12 @@ AICheckMatchupForEnemyMon:
 	call SetEnemyTurn
 	call UpdateMoveData
 	pop bc
-	ld a, b
 
 	; Reset whose turn it is
 	pop af
 	ldh [hBattleTurn], a
+
+	ld a, b
 	ret
 
 .check_matchups

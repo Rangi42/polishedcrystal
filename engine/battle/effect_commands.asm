@@ -1522,7 +1522,7 @@ BattleCommand_resettypematchup:
 	ret
 
 .reset
-	ld [wTypeMatchup], a
+	ld [wTypeModifier], a
 	ret
 
 BattleCommand_damagevariation:
