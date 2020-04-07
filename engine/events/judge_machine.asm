@@ -258,6 +258,8 @@ JudgeSystem::
 ; Show the screen
 	call EnableLCD
 	call ApplyTilemapInVBlank
+	xor a
+	ldh [hBGMapMode], a
 	ld a, CGB_JUDGE_SYSTEM
 	call GetCGBLayout
 	call SetPalettes
@@ -397,6 +399,7 @@ JudgeSystem::
 	ldh [hCGBPalUpdate], a
 ; Place the title
 	pop de
+	ldh [hBGMapMode], a
 	hlcoord 1, 2
 	rst PlaceString
 ; Render the chart
