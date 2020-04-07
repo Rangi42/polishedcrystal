@@ -256,9 +256,27 @@ endr
 	loadvar wPartyMon3PP+1, 15
 	loadvar wPartyMon3PP+2, 15
 	loadvar wPartyMon3PP+3, 15
-	; exeggutor test
-	givepoke EXEGGCUTE, 46
-	givepoke EXEGGCUTE, 46
+	; variant form test
+;	givepoke RATTATA,   ALOLAN_FORM, 50
+;	givepoke RATICATE,  ALOLAN_FORM, 50
+;	givepoke SANDSHREW, ALOLAN_FORM, 50
+;	givepoke SANDSLASH, ALOLAN_FORM, 50
+;	givepoke VULPIX,    ALOLAN_FORM, 50, 50
+;	givepoke NINETALES, ALOLAN_FORM, 50, 50
+;	givepoke DIGLETT,   ALOLAN_FORM, 50, 50
+;	givepoke DUGTRIO,   ALOLAN_FORM, 50, 50
+;	givepoke MEOWTH,    ALOLAN_FORM, 50, 50
+;	givepoke PERSIAN,   ALOLAN_FORM, 50, 50
+;	givepoke GEODUDE,   ALOLAN_FORM, 50, 50
+;	givepoke GRAVELER,  ALOLAN_FORM, 50, 50
+;	givepoke GOLEM,     ALOLAN_FORM, 50, 50
+;	givepoke GRIMER,    ALOLAN_FORM, 50, 50
+;	givepoke MUK,       ALOLAN_FORM, 50, 50
+	givepoke RAICHU,    ALOLAN_FORM, 50, 50
+	givepoke EXEGGUTOR, ALOLAN_FORM, 50, 50
+	givepoke MAROWAK,   ALOLAN_FORM, 50, 50
+;	givepoke PONYTA,    GALARIAN_FORM, 50, 50
+;	givepoke RAPIDASH,  GALARIAN_FORM, 50, 50
 	; fill pokedex
 	callasm FillPokedex
 	; intro events

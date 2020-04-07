@@ -1251,7 +1251,7 @@ GiveEgg::
 	call CheckSeenMon
 	push bc
 
-	call TryAddMonToParty
+	predef TryAddMonToParty
 
 	ld a, [wPartyCount]
 	dec a
@@ -1887,7 +1887,7 @@ GivePoke::
 	push bc
 	xor a ; PARTYMON
 	ld [wMonType], a
-	call TryAddMonToParty
+	predef TryAddMonToParty
 	jr nc, .failed
 	ld hl, wPartyMonNicknames
 	ld a, [wPartyCount]
@@ -1915,8 +1915,14 @@ GivePoke::
 
 .failed
 	ld a, [wCurPartySpecies]
-	ld [wTempEnemyMonSpecies], a
-	farcall LoadEnemyMon
+	ld [wEnemyMonSpecies], a
+	xor a
+	ld [wOTPartyCount], a
+	ld [wCurOTMon], a
+	inc a
+	ld [wMonType], a
+	ld [wBattleMode], a
+	predef TryAddMonToParty
 	call SentPkmnIntoBox
 	jp nc, .FailedToGiveMon
 	ld a, BOXMON
@@ -1932,9 +1938,12 @@ GivePoke::
 	push af
 	ld a, [wCurItem]
 	and a
-	jr z, .done
+	jr z, .no_item
 	ld a, [wCurItem]
 	ld [sBoxMon1Item], a
+.no_item
+	ld a, POKE_BALL
+	ld [wCurItem], a
 
 .done
 	ld a, [wCurPartySpecies]
