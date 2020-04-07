@@ -1170,6 +1170,8 @@ endr
 	ld [hli], a
 	ld [hl], a
 
+	ld a, $10
+	ld [wTypeModifier], a
 	ld bc, NUM_LEVEL_STATS
 	ldh a, [hBattleTurn]
 	and a
@@ -2923,7 +2925,6 @@ SendOutPlayerMon:
 	ldh [hGraphicStartTile], a
 	ld [wBattleMenuCursorBuffer], a
 	ld [wCurMoveNum], a
-	ld [wTypeModifier], a
 	ld [wPlayerMoveStruct + MOVE_ANIM], a
 	ld [wPlayerSelectedMove], a
 	ld [wLastPlayerCounterMove], a
