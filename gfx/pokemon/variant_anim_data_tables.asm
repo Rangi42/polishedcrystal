@@ -1,33 +1,3 @@
-VariantSpeciesTable:
-	db UNOWN
-	db PIKACHU
-	db PICHU
-	db ARBOK
-	db MAGIKARP
-	db GYARADOS
-	db MEWTWO
-	db RATTATA
-	db RATICATE
-	db SANDSHREW
-	db SANDSLASH
-	db VULPIX
-	db NINETALES
-	db DIGLETT
-	db DUGTRIO
-	db MEOWTH
-	db PERSIAN
-	db GEODUDE
-	db GRAVELER
-	db GOLEM
-	db GRIMER
-	db MUK
-	db RAICHU
-	db EXEGGUTOR
-	db MAROWAK
-	db PONYTA
-	db RAPIDASH
-	db -1
-
 VariantAnimPointerTable:
 	dbbww UNOWN, BANK(UnownAnimations), UnownAnimationPointers, UnownAnimationExtraPointers
 	dbbww PIKACHU, BANK(PikachuAnimations), PikachuAnimationPointers, PikachuAnimationExtraPointers
