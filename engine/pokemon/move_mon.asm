@@ -391,18 +391,18 @@ endr
 	call Random
 	and %111
 .cute_charm_ok
-	ld b, a
 ; We need the gender ratio to do anything with this.
+	push af
 	ld a, [wCurPartySpecies]
 	ld c, a
 	ld a, [wPartyMon1Form]
 	and FORM_MASK
 	ld b, a
 	call GetGenderRatio
+	pop af
 ; Ratios below the value are female, and vice-versa.
-	ld a, b
 	cp c
-	; a = carry (b < c) ? FEMALE : MALE (0)
+	; a = carry (a < c) ? FEMALE : MALE (0)
 	sbc a
 	and FEMALE
 	ld b, a
