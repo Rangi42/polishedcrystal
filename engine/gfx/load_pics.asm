@@ -146,7 +146,12 @@ GetFrontpicPointer:
 	call GetRelevantPicPointers
 	ld a, [wCurPartySpecies]
 	jr nc, .notvariant
+
+	; form 0 and 1 are one and the same
 	ld a, [wCurForm]
+	and a
+	jr nz, .notvariant
+	inc a
 .notvariant
 	dec a
 	ld bc, 6
