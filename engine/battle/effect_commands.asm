@@ -4346,6 +4346,16 @@ CanStatusTarget:
 	call GetBattleVar
 	and h
 	jr nz, .already_statused
+
+	; Corrosion bypasses everything except existing status problems
+	ld a, h
+	cp 1 << PSN
+	jr nz, .not_corrosive
+	call GetTrueUserAbility
+	cp CORROSION
+	jr z, .immunities_done
+
+.not_corrosive
 	push de
 	push bc
 	ld a, b
@@ -4373,13 +4383,19 @@ CanStatusTarget:
 .got_ability
 	; Vital Spirit does the same thing as Insomnia so treat it as Insomnia.
 	cp VITAL_SPIRIT
-	jr nz, .no_replace
-	ld a, INSOMNIA
-.no_replace
+	ld e, INSOMNIA
+	jr z, .ability_replace
+	cp PASTEL_VEIL
+	ld e, IMMUNITY
+	jr nz, .replace_done
+.ability_replace
+	ld a, e
+.replace_done
 	cp d
 	jr z, .cant_ability
 	call DoLeafGuardCheck
 	jr z, .cant_ability
+.immunities_done
 	ld a, BATTLE_VARS_STATUS_OPP
 	call GetBattleVar
 	and a

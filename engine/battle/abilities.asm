@@ -948,6 +948,8 @@ ApplySpeedAbilities:
 	jr z, .clorophyll
 	cp SAND_RUSH
 	jr z, .sand_rush
+	cp SLUSH_RUSH
+	jr z, .slush_rush
 	cp QUICK_FEET
 	ret nz
 	ld a, BATTLE_VARS_STATUS
@@ -963,6 +965,9 @@ ApplySpeedAbilities:
 	jr .weather_ability
 .sand_rush
 	ld h, WEATHER_SANDSTORM
+	jr .weather_ability
+.slush_rush
+	ld h, WEATHER_HAIL
 .weather_ability
 	call GetWeatherAfterUserUmbrella
 	cp h

@@ -276,6 +276,10 @@ HandleWeather:
 	ret z
 	cp SAND_RUSH
 	ret z
+if !DEF(FAITHFUL) ; Slush Rush is an exception in vanilla for some reason
+	cp SLUSH_RUSH
+	ret z
+endc
 	cp SAND_VEIL
 	ret z
 
