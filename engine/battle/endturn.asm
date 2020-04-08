@@ -276,10 +276,6 @@ HandleWeather:
 	ret z
 	cp SAND_RUSH
 	ret z
-if !DEF(FAITHFUL) ; Slush Rush is an exception in vanilla for some reason
-	cp SLUSH_RUSH
-	ret z
-endc
 	cp SAND_VEIL
 	ret z
 
@@ -321,6 +317,10 @@ endc
 	ret z
 	cp ICE_BODY
 	ret z
+if !DEF(FAITHFUL) ; Slush Rush is an exception in vanilla for some reason
+	cp SLUSH_RUSH
+	ret z
+endc
 
 	call CheckIfUserIsIceType
 	ret z
