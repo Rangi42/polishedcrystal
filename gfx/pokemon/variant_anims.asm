@@ -70,3 +70,83 @@ GyaradosRedAnimation:   INCLUDE "gfx/pokemon/gyarados_red/anim0.asm"
 MewtwoAnimations:
 MewtwoPlainAnimation:   INCLUDE "gfx/pokemon/mewtwo_plain/anim0.asm"
 MewtwoArmoredAnimation: INCLUDE "gfx/pokemon/mewtwo_armored/anim0.asm"
+
+RattataAnimations:
+RattataPlainAnimation:  INCLUDE "gfx/pokemon/rattata_plain/anim0.asm"
+RattataAlolanAnimation: INCLUDE "gfx/pokemon/rattata_alolan/anim0.asm"
+
+RaticateAnimations:
+RaticatePlainAnimation:  INCLUDE "gfx/pokemon/raticate_plain/anim0.asm"
+RaticateAlolanAnimation: INCLUDE "gfx/pokemon/raticate_alolan/anim0.asm"
+
+SandshrewAnimations:
+SandshrewPlainAnimation:  INCLUDE "gfx/pokemon/sandshrew_plain/anim0.asm"
+SandshrewAlolanAnimation: INCLUDE "gfx/pokemon/sandshrew_alolan/anim0.asm"
+
+SandslashAnimations:
+SandslashPlainAnimation:  INCLUDE "gfx/pokemon/sandslash_plain/anim0.asm"
+SandslashAlolanAnimation: INCLUDE "gfx/pokemon/sandslash_alolan/anim0.asm"
+
+VulpixAnimations:
+VulpixPlainAnimation:  INCLUDE "gfx/pokemon/vulpix_plain/anim0.asm"
+VulpixAlolanAnimation: INCLUDE "gfx/pokemon/vulpix_alolan/anim0.asm"
+
+NinetalesAnimations:
+NinetalesPlainAnimation:  INCLUDE "gfx/pokemon/ninetales_plain/anim0.asm"
+NinetalesAlolanAnimation: INCLUDE "gfx/pokemon/ninetales_alolan/anim0.asm"
+
+DiglettAnimations:
+DiglettPlainAnimation:  INCLUDE "gfx/pokemon/diglett_plain/anim0.asm"
+DiglettAlolanAnimation: INCLUDE "gfx/pokemon/diglett_alolan/anim0.asm"
+
+DugtrioAnimations:
+DugtrioPlainAnimation:  INCLUDE "gfx/pokemon/dugtrio_plain/anim0.asm"
+DugtrioAlolanAnimation: INCLUDE "gfx/pokemon/dugtrio_alolan/anim0.asm"
+
+MeowthAnimations:
+MeowthPlainAnimation:  INCLUDE "gfx/pokemon/meowth_plain/anim0.asm"
+MeowthAlolanAnimation: INCLUDE "gfx/pokemon/meowth_alolan/anim0.asm"
+
+PersianAnimations:
+PersianPlainAnimation:  INCLUDE "gfx/pokemon/persian_plain/anim0.asm"
+PersianAlolanAnimation: INCLUDE "gfx/pokemon/persian_alolan/anim0.asm"
+
+GeodudeAnimations:
+GeodudePlainAnimation:  INCLUDE "gfx/pokemon/geodude_plain/anim0.asm"
+GeodudeAlolanAnimation: INCLUDE "gfx/pokemon/geodude_alolan/anim0.asm"
+
+GravelerAnimations:
+GravelerPlainAnimation:  INCLUDE "gfx/pokemon/graveler_plain/anim0.asm"
+GravelerAlolanAnimation: INCLUDE "gfx/pokemon/graveler_alolan/anim0.asm"
+
+GolemAnimations:
+GolemPlainAnimation:  INCLUDE "gfx/pokemon/golem_plain/anim0.asm"
+GolemAlolanAnimation: INCLUDE "gfx/pokemon/golem_alolan/anim0.asm"
+
+GrimerAnimations:
+GrimerPlainAnimation:  INCLUDE "gfx/pokemon/grimer_plain/anim0.asm"
+GrimerAlolanAnimation: INCLUDE "gfx/pokemon/grimer_alolan/anim0.asm"
+
+MukAnimations:
+MukPlainAnimation:  INCLUDE "gfx/pokemon/muk_plain/anim0.asm"
+MukAlolanAnimation: INCLUDE "gfx/pokemon/muk_alolan/anim0.asm"
+
+RaichuAnimations:
+RaichuPlainAnimation:  INCLUDE "gfx/pokemon/raichu_plain/anim0.asm"
+RaichuAlolanAnimation: INCLUDE "gfx/pokemon/raichu_alolan/anim0.asm"
+
+ExeggutorAnimations:
+ExeggutorPlainAnimation:  INCLUDE "gfx/pokemon/exeggutor_plain/anim0.asm"
+ExeggutorAlolanAnimation: INCLUDE "gfx/pokemon/exeggutor_alolan/anim0.asm"
+
+MarowakAnimations:
+MarowakPlainAnimation:  INCLUDE "gfx/pokemon/marowak_plain/anim0.asm"
+MarowakAlolanAnimation: INCLUDE "gfx/pokemon/marowak_alolan/anim0.asm"
+
+PonytaAnimations:
+PonytaPlainAnimation:    INCLUDE "gfx/pokemon/ponyta_plain/anim0.asm"
+PonytaGalarianAnimation: INCLUDE "gfx/pokemon/ponyta_galarian/anim0.asm"
+
+RapidashAnimations:
+RapidashPlainAnimation:    INCLUDE "gfx/pokemon/rapidash_plain/anim0.asm"
+RapidashGalarianAnimation: INCLUDE "gfx/pokemon/rapidash_galarian/anim0.asm"

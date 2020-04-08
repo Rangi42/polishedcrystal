@@ -856,7 +856,7 @@ PokeAnim_GetFrontpicDims:
 	ldh [rSVBK], a
 	ld a, [wCurPartySpecies]
 	ld [wCurSpecies], a
-	call GetBaseData
+	call GetBaseData ; [wCurForm] is already set
 	ld a, [wBasePicSize]
 	and $f
 	ld c, a
@@ -928,8 +928,8 @@ GetMonBitmaskPointer:
 
 PokeAnim_GetSpeciesOrVariant:
 	ld a, [wPokeAnimSpecies]
-	ld hl, VariantSpeciesTable
-	ld de, 1
+	ld hl, VariantAnimPointerTable
+	ld de, 6
 	call IsInArray
 	ld a, [wPokeAnimSpecies]
 	ret nc

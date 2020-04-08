@@ -21,16 +21,16 @@ EvosAttacksPointers::
 	dw PidgeyEvosAttacks
 	dw PidgeottoEvosAttacks
 	dw PidgeotEvosAttacks
-	dw RattataEvosAttacks
-	dw RaticateEvosAttacks
+	dw RattataPlainEvosAttacks
+	dw RaticatePlainEvosAttacks
 	dw MarillEvosAttacks
 	dw AzumarillEvosAttacks
 	dw EkansEvosAttacks
 	dw ArbokEvosAttacks
 	dw PikachuEvosAttacks
-	dw RaichuEvosAttacks
-	dw SandshrewEvosAttacks
-	dw SandslashEvosAttacks
+	dw RaichuPlainEvosAttacks
+	dw SandshrewPlainEvosAttacks
+	dw SandslashPlainEvosAttacks
 	dw NidoranFEvosAttacks
 	dw NidorinaEvosAttacks
 	dw NidoqueenEvosAttacks
@@ -39,8 +39,8 @@ EvosAttacksPointers::
 	dw NidokingEvosAttacks
 	dw ClefairyEvosAttacks
 	dw ClefableEvosAttacks
-	dw VulpixEvosAttacks
-	dw NinetalesEvosAttacks
+	dw VulpixPlainEvosAttacks
+	dw NinetalesPlainEvosAttacks
 	dw JigglypuffEvosAttacks
 	dw WigglytuffEvosAttacks
 	dw ZubatEvosAttacks
@@ -52,10 +52,10 @@ EvosAttacksPointers::
 	dw ParasectEvosAttacks
 	dw VenonatEvosAttacks
 	dw VenomothEvosAttacks
-	dw DiglettEvosAttacks
-	dw DugtrioEvosAttacks
-	dw MeowthEvosAttacks
-	dw PersianEvosAttacks
+	dw DiglettPlainEvosAttacks
+	dw DugtrioPlainEvosAttacks
+	dw MeowthPlainEvosAttacks
+	dw PersianPlainEvosAttacks
 	dw PsyduckEvosAttacks
 	dw GolduckEvosAttacks
 	dw MankeyEvosAttacks
@@ -76,11 +76,11 @@ EvosAttacksPointers::
 	dw VictreebelEvosAttacks
 	dw TentacoolEvosAttacks
 	dw TentacruelEvosAttacks
-	dw GeodudeEvosAttacks
-	dw GravelerEvosAttacks
-	dw GolemEvosAttacks
-	dw PonytaEvosAttacks
-	dw RapidashEvosAttacks
+	dw GeodudePlainEvosAttacks
+	dw GravelerPlainEvosAttacks
+	dw GolemPlainEvosAttacks
+	dw PonytaPlainEvosAttacks
+	dw RapidashPlainEvosAttacks
 	dw SlowpokeEvosAttacks
 	dw SlowbroEvosAttacks
 	dw MagnemiteEvosAttacks
@@ -90,8 +90,8 @@ EvosAttacksPointers::
 	dw DodrioEvosAttacks
 	dw SeelEvosAttacks
 	dw DewgongEvosAttacks
-	dw GrimerEvosAttacks
-	dw MukEvosAttacks
+	dw GrimerPlainEvosAttacks
+	dw MukPlainEvosAttacks
 	dw ShellderEvosAttacks
 	dw CloysterEvosAttacks
 	dw GastlyEvosAttacks
@@ -105,9 +105,9 @@ EvosAttacksPointers::
 	dw VoltorbEvosAttacks
 	dw ElectrodeEvosAttacks
 	dw ExeggcuteEvosAttacks
-	dw ExeggutorEvosAttacks
+	dw ExeggutorPlainEvosAttacks
 	dw CuboneEvosAttacks
-	dw MarowakEvosAttacks
+	dw MarowakPlainEvosAttacks
 	dw HitmonleeEvosAttacks
 	dw HitmonchanEvosAttacks
 	dw KoffingEvosAttacks
@@ -257,3 +257,27 @@ EvosAttacksPointers::
 	dw LeafeonEvosAttacks
 	dw GlaceonEvosAttacks
 	dw SylveonEvosAttacks
+	dw EggEvosAttacks
+
+	dw GyaradosEvosAttacks
+	dw MewtwoEvosAttacks
+	dw RattataAlolanEvosAttacks
+	dw RaticateAlolanEvosAttacks
+	dw SandshrewAlolanEvosAttacks
+	dw SandslashAlolanEvosAttacks
+	dw VulpixAlolanEvosAttacks
+	dw NinetalesAlolanEvosAttacks
+	dw DiglettAlolanEvosAttacks
+	dw DugtrioAlolanEvosAttacks
+	dw MeowthAlolanEvosAttacks
+	dw PersianAlolanEvosAttacks
+	dw GeodudeAlolanEvosAttacks
+	dw GravelerAlolanEvosAttacks
+	dw GolemAlolanEvosAttacks
+	dw GrimerAlolanEvosAttacks
+	dw MukAlolanEvosAttacks
+	dw RaichuAlolanEvosAttacks
+	dw ExeggutorAlolanEvosAttacks
+	dw MarowakAlolanEvosAttacks
+	dw PonytaGalarianEvosAttacks
+	dw RapidashGalarianEvosAttacks

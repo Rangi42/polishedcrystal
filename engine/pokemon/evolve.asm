@@ -42,15 +42,7 @@ EvolveAfterBattle_MasterLoop
 	jp z, EvolveAfterBattle_MasterLoop
 
 	ld a, [wEvolutionOldSpecies]
-	dec a
-	ld b, 0
-	ld c, a
-	ld hl, EvosAttacksPointers
-	add hl, bc
-	add hl, bc
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
+	call GetPartyEvosAttacksPointer
 
 	push hl
 	xor a
@@ -169,6 +161,7 @@ EvolveAfterBattle_MasterLoop
 	ld a, [wLinkMode]
 	and a
 	jp nz, .dont_evolve_3
+	call ChangeFormOnItemEvolution
 	jp .proceed
 
 .holding
@@ -238,6 +231,7 @@ endr
 	jp c, .dont_evolve_3
 	call IsMonHoldingEverstone
 	jp z, .dont_evolve_3
+	call ChangeFormOnLevelEvolution
 
 .proceed
 	ld a, [wTempMonLevel]
@@ -306,6 +300,9 @@ endr
 
 	call ClearTileMap
 	call UpdateSpeciesNameIfNotNicknamed
+	ld a, [wTempMonForm]
+	and FORM_MASK
+	ld [wCurForm], a
 	call GetBaseData
 
 	ld hl, wTempMonEVs - 1
@@ -395,6 +392,39 @@ endr
 	call nz, RestartMapMusic
 	ret
 
+ChangeFormOnLevelEvolution:
+; Cubone evolves into plain Marowak by level.
+	ld a, [wTempMonSpecies]
+	cp CUBONE
+	ret nz
+
+_PlainFormOnEvolution:
+	ld a, PLAIN_FORM
+_ChangeFormOnEvolution:
+	ld b, a
+	ld a, [wTempMonForm]
+	and $ff - FORM_MASK
+	or b
+	ld [wTempMonForm], a
+	ret
+
+ChangeFormOnItemEvolution:
+; These Pokémon evolve into different forms with different items.
+	ld a, [wTempMonSpecies]
+	cp PIKACHU
+	jr z, .ok
+	cp EXEGGCUTE
+	jr z, .ok
+	cp CUBONE
+	ret nz
+
+.ok
+	ld a, [wCurItem]
+	cp ODD_SOUVENIR
+	ld a, ALOLAN_FORM
+	jr z, _ChangeFormOnEvolution
+	jr _PlainFormOnEvolution
+
 UpdateSpeciesNameIfNotNicknamed:
 	ld a, [wEvolutionOldSpecies]
 	ld [wd265], a
@@ -463,18 +493,22 @@ Text_WhatEvolving:
 	text_end
 
 LearnEvolutionMove:
+	; c = species
 	ld a, [wd265]
 	ld [wCurPartySpecies], a
-	dec a
-	ld b, 0
 	ld c, a
+	; b = form
+	ld a, [wCurForm]
+	ld b, a
+	; bc = index
+	call GetSpeciesAndFormIndex
+	dec bc
 	ld hl, EvolutionMoves
 	add hl, bc
 	ld a, [hl]
 	and a
 	ret z
 
-	push hl
 	ld d, a
 	ld hl, wPartyMon1Moves
 	ld a, [wCurPartyMon]
@@ -485,7 +519,7 @@ LearnEvolutionMove:
 .check_move
 	ld a, [hli]
 	cp d
-	jr z, .has_move
+	ret z
 	dec b
 	jr nz, .check_move
 
@@ -500,23 +534,12 @@ LearnEvolutionMove:
 	pop af
 	ld [wCurPartySpecies], a
 	ld [wd265], a
-
-.has_move
-	pop hl
 	ret
 
 LearnLevelMoves:
 	ld a, [wd265]
 	ld [wCurPartySpecies], a
-	dec a
-	ld b, 0
-	ld c, a
-	ld hl, EvosAttacksPointers
-	add hl, bc
-	add hl, bc
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
+	call GetPartyEvosAttacksPointer
 
 .skip_evos
 	ld a, [hli]
@@ -548,13 +571,7 @@ LearnLevelMoves:
 	jr z, .has_move
 	dec b
 	jr nz, .check_move
-	jr .learn
-.has_move
 
-	pop hl
-	jr .find_move
-
-.learn
 	ld a, d
 	ld [wPutativeTMHMMove], a
 	ld [wd265], a
@@ -566,26 +583,17 @@ LearnLevelMoves:
 	pop af
 	ld [wCurPartySpecies], a
 	ld [wd265], a
+.has_move
 	pop hl
 	jr .find_move
 
 FillMoves:
-; Fill in moves at de for wCurPartySpecies at wCurPartyLevel
+; Fill in moves at de for species c form b at wCurPartyLevel
 
 	push hl
 	push de
 	push bc
-	ld hl, EvosAttacksPointers
-	ld b, 0
-	ld a, [wCurPartySpecies]
-	dec a
-	add a
-	rl b
-	ld c, a
-	add hl, bc
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
+	call GetEvosAttacksPointer
 .GoToAttacks:
 	ld a, [hli]
 	and a
@@ -698,6 +706,7 @@ GetPreEvolution:
 	ld c, 0
 .loop ; For each Pokemon...
 	ld hl, EvosAttacksPointers
+	; this does not need to use the extended GetSpeciesAndFormIndex
 	ld b, 0
 	add hl, bc
 	add hl, bc
@@ -735,4 +744,30 @@ GetPreEvolution:
 	ld a, c
 	ld [wCurPartySpecies], a
 	scf
+	ret
+
+GetPartyEvosAttacksPointer:
+	push af
+	; b = form
+	ld a, [wCurPartyMon]
+	ld hl, wPartyMon1Form
+	ld bc, PARTYMON_STRUCT_LENGTH
+	rst AddNTimes
+	ld a, [hl]
+	and FORM_MASK
+	ld b, a
+	; c = species
+	pop af
+	ld c, a
+GetEvosAttacksPointer:
+; input: b = form, c = species
+	; bc = index
+	call GetSpeciesAndFormIndex
+	dec bc
+	ld hl, EvosAttacksPointers
+	add hl, bc
+	add hl, bc
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
 	ret

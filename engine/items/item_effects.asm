@@ -246,7 +246,7 @@ ItemEffects:
 	dw IsntTheTimeMessage ; MAGMARIZER
 	dw IsntTheTimeMessage ; RAZOR_FANG
 	dw IsntTheTimeMessage ; RAZOR_CLAW
-	dw IsntTheTimeMessage ; ODD_SOUVENIR
+	dw EvoStoneEffect     ; ODD_SOUVENIR
 	dw IsntTheTimeMessage ; NUGGET
 	dw IsntTheTimeMessage ; BIG_NUGGET
 	dw IsntTheTimeMessage ; TINYMUSHROOM
@@ -454,6 +454,9 @@ PokeBallEffect:
 	ld a, [wOTPartyMon1Species]
 	ld [wCurSpecies], a
 	ld [wCurPartySpecies], a
+	ld a, [wOTPartyMon1Form]
+	and FORM_MASK
+	ld [wCurForm], a
 	call GetBaseData
 
 	pop af
@@ -1359,6 +1362,11 @@ UseItem_GetBaseDataAndNickParameters:
 	ld a, [wCurPartySpecies]
 	ld [wCurSpecies], a
 	ld [wd265], a
+	ld a, MON_FORM
+	call GetPartyParamLocation
+	ld a, [hl]
+	and FORM_MASK
+	ld [wCurForm], a
 	call GetBaseData
 	ld a, [wCurPartyMon]
 	ld hl, wPartyMonNicknames

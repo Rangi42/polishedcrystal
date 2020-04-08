@@ -61,11 +61,14 @@ INCLUDE "home/sprite_anims.asm"
 INCLUDE "home/audio.asm"
 INCLUDE "home/restore_music.asm"
 
+; data used within home
 INCLUDE "data/text/ngrams.asm"
+INCLUDE "data/pokemon/variant_forms.asm"
+INCLUDE "data/moves/hm_moves.asm"
 INCLUDE "data/maps/music.asm"
 
+; data used in multiple banks, or one full bank, outside home
 INCLUDE "data/pokemon/legendary_mons.asm"
-INCLUDE "data/moves/hm_moves.asm"
 INCLUDE "data/moves/powder_moves.asm"
 INCLUDE "data/moves/sound_moves.asm"
 INCLUDE "data/moves/substitute_bypass_moves.asm"

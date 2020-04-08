@@ -328,6 +328,11 @@ _ChooseWildEncounter:
 	inc hl ; We don't care about level
 	ld a, [hli]
 	ld [wCurSpecies], a
+; The form isn't determined yet; this could be inaccurate if a variant form
+; were to not have its normal form's typical Steel or Electric typing,
+; since Magnet Pull or Static would be biased.
+	xor a
+	ld [wCurForm], a
 	push bc
 	push hl
 	call GetBaseData
@@ -411,6 +416,11 @@ _ChooseWildEncounter:
 .unown_check_done
 	; Check if we're forcing type
 	ld [wCurSpecies], a
+; The form isn't determined yet; this could be inaccurate if a variant form
+; were to not have its normal form's typical Steel or Electric typing,
+; since Magnet Pull or Static would be biased.
+	xor a
+	ld [wCurForm], a
 	push bc
 	push hl
 	call GetBaseData

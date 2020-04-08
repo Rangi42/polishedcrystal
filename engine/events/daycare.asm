@@ -457,7 +457,7 @@ DayCare_GiveEgg:
 	ld hl, wPartyCount
 	ld a, [hl]
 	cp PARTY_LENGTH
-	jr nc, .PartyFull
+	jp nc, .PartyFull
 	inc a
 	ld [hl], a
 
@@ -474,11 +474,11 @@ DayCare_GiveEgg:
 	jr nz, .not_red_magikarp
 	ld a, [wEggMonForm]
 	and FORM_MASK
-	cp NUM_MAGIKARP + 1
+	cp GYARADOS_RED_FORM
 	jr c, .not_red_magikarp
 	ld a, [wEggMonForm]
 	and $ff - FORM_MASK
-	or MAGIKARP_PLAIN_FORM
+	or PLAIN_FORM
 	ld [wEggMonForm], a
 .not_red_magikarp
 
@@ -503,6 +503,8 @@ DayCare_GiveEgg:
 	ld bc, wEggMonEnd - wEggMon
 	rst CopyBytes
 
+	ld a, [wEggMonForm]
+	ld [wCurForm], a
 	call GetBaseData
 	ld a, [wPartyCount]
 	dec a
@@ -739,10 +741,15 @@ DayCare_InitBreeding:
 	inc a
 
 .LoadWhichBreedmonIsTheMother:
+	; load wCurForm for base data check later
 	ld [wBreedMotherOrNonDitto], a
 	and a
+	ld a, [wBreedMon1Form]
+	ld [wCurForm], a
 	ld a, [wBreedMon1Species]
 	jr z, .GotMother
+	ld a, [wBreedMon2Form]
+	ld [wCurForm], a
 	ld a, [wBreedMon2Species]
 
 .GotMother:
@@ -754,12 +761,9 @@ DayCare_InitBreeding:
 
 	ld a, [wCurPartySpecies]
 	cp NIDORAN_F
-	jr z, .NidoranFamilyMother
-	cp NIDORINA
-	jr z, .NidoranFamilyMother
-	cp NIDOQUEEN
 	jr nz, .GotEggSpecies
-.NidoranFamilyMother:
+
+	; random Nidoran offspring
 	call Random
 	cp 1 + 50 percent
 	; a = carry ? NIDORAN_F : NIDORAN_M
@@ -770,6 +774,15 @@ DayCare_InitBreeding:
 	ld [wCurPartySpecies], a
 	ld [wCurSpecies], a
 	ld [wEggMonSpecies], a
+
+	; Form inheritance: from the mother or non-Ditto. If both
+	; parents share species, pick at random.
+	; Must assign [wCurForm] before GetBaseData.
+	ld hl, wBreedMon1Form
+	call .inherit_mother_unless_samespecies
+	ld a, [hl]
+	and FORM_MASK
+	ld [wCurForm], a
 
 	call GetBaseData
 
@@ -989,22 +1002,31 @@ DayCare_InitBreeding:
 	or [hl]
 	ld [hl], a
 .not_shiny
+
 	; Gender
-	ld a, 8
-	call RandomRange
-	ld b, a
 	ld a, [wEggMonSpecies]
 	ld c, a
+	ld a, [wCurForm]
+	ld b, a
 	call GetGenderRatio
 	; if rnd(0..7) < c: female, else male
-	ld a, b
+	ld a, 8
+	call RandomRange
 	cp c
-	; a = carry (b < c) ? FEMALE : MALE (0)
+	; a = carry (rnd(0..7) < c) ? FEMALE : MALE (0)
 	sbc a
 	and FEMALE
 	ld hl, wEggMonGender
 	or [hl]
 	ld [hl], a
+
+	; Form (same byte as gender) was already determined
+	ld a, [wCurForm]
+	or [hl]
+	ld [hl], a
+
+	; Mark as an egg (same byte as form)
+	set MON_IS_EGG_F, [hl]
 
 	; Ball inheritance: from the mother or non-Ditto. If both
 	; parents share species, pick at random.
@@ -1012,19 +1034,6 @@ DayCare_InitBreeding:
 	call .inherit_mother_unless_samespecies
 	ld a, [hl]
 	ld [wEggMonCaughtBall], a
-
-	; Form works the same as Ball
-	ld hl, wBreedMon1Form
-	call .inherit_mother_unless_samespecies
-	ld a, [hl]
-	and FORM_MASK
-	ld hl, wEggMonForm
-	or [hl]
-	ld [hl], a
-
-	; Mark as an egg
-	ld hl, wEggMonIsEgg
-	set MON_IS_EGG_F, [hl]
 
 	; PP, egg cycles, level
 	ld hl, wStringBuffer1

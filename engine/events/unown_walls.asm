@@ -3,6 +3,9 @@ SpecialHoOhChamber:
 	ld a, [hl]
 	ld [wCurPartySpecies], a
 	ld [wCurSpecies], a
+	ld a, [wPartyMon1Form]
+	and FORM_MASK
+	ld [wCurForm], a
 	call GetBaseData
 	ld a, [wBaseType1]
 	cp FAIRY

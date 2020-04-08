@@ -171,6 +171,9 @@ StatsScreen_CopyToTempMon:
 	jr nz, .breedmon
 	ld a, [wBufferMon]
 	ld [wCurSpecies], a
+	ld a, [wBufferMonForm]
+	and FORM_MASK
+	ld [wCurForm], a
 	call GetBaseData
 	ld hl, wBufferMon
 	ld de, wTempMon
@@ -795,8 +798,7 @@ OrangePage_:
 .got_ability
 	hlcoord 9, 12
 	ld [hl], a
-	ld a, [wTempMonAbility]
-	ld b, a
+	ld hl, wTempMonPersonality
 	ld a, [wTempMonSpecies]
 	ld c, a
 	call GetAbility

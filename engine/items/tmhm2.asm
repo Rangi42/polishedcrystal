@@ -445,6 +445,11 @@ ChooseMonToLearnTMHM_NoRefresh:
 	jr .loopback
 
 TeachTMHM:
+	ld a, MON_FORM
+	call GetPartyParamLocation
+	ld a, [hl]
+	and FORM_MASK
+	ld [wCurForm], a
 	predef CanLearnTMHMMove
 
 	push bc

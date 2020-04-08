@@ -304,6 +304,13 @@ PlacePartyMonTMHMCompatibility:
 	add hl, de
 	ld a, [hl]
 	ld [wCurPartySpecies], a
+	ld a, b
+	ld hl, wPartyMon1Form
+	ld bc, PARTYMON_STRUCT_LENGTH
+	rst AddNTimes
+	ld a, [hl]
+	and FORM_MASK
+	ld [wCurForm], a
 	predef CanLearnTMHMMove
 	pop hl
 	call .PlaceAbleNotAble
@@ -349,17 +356,30 @@ PlacePartyMonEvoStoneCompatibility:
 	call PartyMenuCheckEgg
 	jr nz, .next
 	push hl
-	ld a, b
-	ld bc, PARTYMON_STRUCT_LENGTH
+	; d = party index
+	ld d, b
+	; e = species
+	ld a, d
 	ld hl, wPartyMon1Species
+	ld bc, PARTYMON_STRUCT_LENGTH
+	rst AddNTimes
+	ld e, [hl]
+	; b = form
+	ld a, d
+	ld hl, wPartyMon1Form
+	ld bc, PARTYMON_STRUCT_LENGTH
 	rst AddNTimes
 	ld a, [hl]
-	dec a
-	ld e, a
-	ld d, 0
+	and FORM_MASK
+	ld b, a
+	; c = species
+	ld c, e
+	; bc = index
+	call GetSpeciesAndFormIndex
+	dec bc
 	ld hl, EvosAttacksPointers
-	add hl, de
-	add hl, de
+	add hl, bc
+	add hl, bc
 	call .DetermineCompatibility
 	pop hl
 	rst PlaceString
@@ -384,10 +404,9 @@ PlacePartyMonEvoStoneCompatibility:
 	ld h, [hl]
 	ld l, a
 	ld de, wStringBuffer1
-; Only reads first 4 evolution entries
-; https://hax.iimarck.us/topic/4567/
+; Reads up to six evolution entries
 	ld a, BANK(EvosAttacks)
-	ld bc, $10
+	ld bc, wStringBuffer2 - wStringBuffer1
 	call FarCopyBytes
 	ld hl, wStringBuffer1
 .loop2

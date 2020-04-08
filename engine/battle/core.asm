@@ -1230,16 +1230,23 @@ endr
 	ld bc, PARTYMON_STRUCT_LENGTH - MON_LEVEL
 	rst CopyBytes ; copy Level, Status, Unused, HP, MaxHP, Stats
 	pop de
+
 	ldh a, [hBattleTurn]
 	and a
 	ld hl, wTempBattleMonSpecies
-	jr z, .got_temp_species
+	ld bc, GetBattleMonVariant
+	jr z, .got_species_and_form
 	ld hl, wTempEnemyMonSpecies
-.got_temp_species
+	ld bc, GetEnemyMonVariant
+.got_species_and_form
 	ld a, [de]
 	ld [wCurSpecies], a
 	ld [wCurPartySpecies], a
 	ld [hl], a
+	ld h, b
+	ld l, c
+	call _hl_ ; sets [wCurForm]
+
 	push de
 	call GetBaseData
 	ld de, wBattleMonType1
@@ -1248,23 +1255,6 @@ endr
 	ld bc, 2
 	rst CopyBytes
 	pop de
-
-if !DEF(FAITHFUL)
-	; Armored Mewtwo is Psychic/Steel
-	ld a, [de]
-	cp MEWTWO
-	jr nz, .not_armored_mewtwo
-	ld hl, wBattleMonItem
-	call GetUserMonAttr
-	ld a, [hl]
-	cp ARMOR_SUIT
-	jr nz, .not_armored_mewtwo
-	ld a, STEEL
-	ld bc, wBattleMonType2 - wBattleMonItem
-	add hl, bc
-	ld [hl], a
-.not_armored_mewtwo
-endc
 
 	ldh a, [hBattleTurn]
 	and a
@@ -1343,10 +1333,6 @@ endc
 	ld a, [wFirstUnownSeen]
 	and a
 	jr nz, .skip_unown
-	ld a, [wCurOTMon]
-	ld hl, wOTPartyMon1Form
-	call GetPartyLocation
-	predef GetVariant
 	ld a, [wCurForm]
 	ld [wFirstUnownSeen], a
 .skip_unown
@@ -1502,8 +1488,13 @@ GetEnemyMonVariant:
 	call GetPartyLocation
 	predef_jump GetVariant
 
+GetCurPartyMonVariant:
+	ld a, [wCurPartyMon]
+	jr _GetPlayerMonVariant
+
 GetBattleMonVariant:
 	ld a, [wCurBattleMon]
+_GetPlayerMonVariant:
 	ld hl, wPartyMon1Form
 	call GetPartyLocation
 	predef_jump GetVariant
@@ -2746,6 +2737,7 @@ Function_SetEnemyPkmnAndSendOutAnimation:
 	ld a, [wTempEnemyMonSpecies]
 	ld [wCurPartySpecies], a
 	ld [wCurSpecies], a
+	call GetEnemyMonVariant
 	call GetBaseData
 	ld a, OTPARTYMON
 	ld [wMonType], a
@@ -2812,22 +2804,24 @@ NewEnemyMonStatus:
 	jp ResetEnemyAbility
 
 ResetPlayerAbility:
-	ld a, [wBattleMonAbility]
-	ld b, a
+	push hl
+	ld hl, wBattleMonPersonality
 	ld a, [wBattleMonSpecies]
 	ld c, a
 	call GetAbility
+	pop hl
 	ld a, b
 	ld [wPlayerAbility], a
 	xor a
 	ret
 
 ResetEnemyAbility:
-	ld a, [wEnemyMonAbility]
-	ld b, a
+	push hl
+	ld hl, wEnemyMonPersonality
 	ld a, [wEnemyMonSpecies]
 	ld c, a
 	call GetAbility
+	pop hl
 	ld a, b
 	ld [wEnemyAbility], a
 	xor a
@@ -3645,7 +3639,7 @@ endr
 	ld [de], a
 	ld hl, wBattleMonLevel
 	ld de, wTempMonLevel
-	ld bc, $0011
+	ld bc, wTempMonStatsEnd - wTempMonLevel
 	rst CopyBytes
 	ld a, [wCurBattleMon]
 	ld hl, wPartyMon1Species
@@ -3653,6 +3647,7 @@ endr
 	ld a, [hl]
 	ld [wCurPartySpecies], a
 	ld [wCurSpecies], a
+	call GetBattleMonVariant
 	call GetBaseData
 
 	pop hl
@@ -3709,6 +3704,7 @@ DrawEnemyHUD:
 	ld a, [wTempEnemyMonSpecies]
 	ld [wCurSpecies], a
 	ld [wCurPartySpecies], a
+	call GetEnemyMonVariant
 	call GetBaseData
 	ld de, wEnemyMonNick
 	hlcoord 1, 0
@@ -5482,7 +5478,13 @@ LoadEnemyMon:
 	ld [wCurSpecies], a
 	ld [wCurPartySpecies], a
 
+	; set [wCurForm] before TryAddMonToParty calls GetBaseData
+	call GenerateWildForm
+
 	predef TryAddMonToParty
+
+	call CheckValidMagikarpLength
+	jr c, LoadEnemyMon
 
 	ld a, [wBaseCatchRate]
 	ld [wEnemyMonCatchRate], a
@@ -5549,125 +5551,6 @@ endc
 .UpdateItem:
 	ld [wOTPartyMon1Item], a
 
-	; Unown
-	ld a, [wTempEnemyMonSpecies]
-	cp UNOWN
-	jr nz, .EkansArbok
-
-.unown_letter
-	ld a, NUM_UNOWN
-	call BattleRandomRange
-	inc a
-	ld b, a
-	ld hl, wOTPartyMon1Form
-	ld a, [hl]
-	and $ff - FORM_MASK
-	add b
-	ld [hl], a
-	; Get letter based on form
-	predef GetVariant
-	; Can't use any letters that haven't been unlocked
-	push de
-	call CheckUnownLetter
-	pop de
-	jr c, .unown_letter ; re-roll
-	jp .Happiness
-
-.EkansArbok:
-	ld a, [wTempEnemyMonSpecies]
-	cp EKANS
-	jr z, .yes_ekans
-	cp ARBOK
-	jr nz, .Magikarp
-
-.yes_ekans
-	call RegionCheck
-	ld a, e
-	ld d, ARBOK_JOHTO_FORM
-	and a
-	jr z, .johto_form
-	ld d, ARBOK_KANTO_FORM
-.johto_form
-	ld a, [wOTPartyMon1Form]
-	and $ff - FORM_MASK
-	add d
-	ld [wEnemyMonForm], a
-	jr .Happiness
-
-.Magikarp:
-	ld a, [wTempEnemyMonSpecies]
-	cp MAGIKARP
-	jr nz, .Gyarados
-
-	; Random Magikarp pattern
-	ld a, NUM_MAGIKARP
-	call BattleRandomRange
-	inc a
-	ld b, a
-	ld a, [wOTPartyMon1Form]
-	and $ff - FORM_MASK
-	add b
-	ld [wOTPartyMon1Form], a
-
-	; Get Magikarp's length
-	ld de, wOTPartyMon1DVs
-	ld bc, wPlayerID
-	farcall CalcMagikarpLength
-
-	; We're clear if the length is < 5'
-	ld a, [wMagikarpLengthMmHi]
-	cp 5 ; feet
-	jr nz, .CheckMagikarpArea
-
-	; 5% chance of skipping size checks
-	call Random
-	cp 5 percent
-	jr c, .CheckMagikarpArea
-	; Try again if > 3"
-	ld a, [wMagikarpLengthMmLo]
-	cp 3 ; inches
-	jp nc, LoadEnemyMon
-
-	; 20% chance of skipping this check
-	call Random
-	cp 20 percent - 1
-	jr c, .CheckMagikarpArea
-	; Try again if > 2"
-	ld a, [wMagikarpLengthMmLo]
-	cp 2 ; inches
-	jp nc, LoadEnemyMon
-
-.CheckMagikarpArea:
-	ld a, [wMapGroup]
-	cp GROUP_LAKE_OF_RAGE
-	jr nz, .Happiness
-	ld a, [wMapNumber]
-	cp MAP_LAKE_OF_RAGE
-	jr nz, .Happiness
-.LakeOfRageMagikarp
-	; 40% chance of not flooring
-	call Random
-	cp 40 percent - 2
-	jr c, .Happiness
-	; Floor at length 3'
-	ld a, [wMagikarpLengthMmHi]
-	cp 3 ; feet
-	jp c, LoadEnemyMon
-
-.Gyarados:
-	ld a, [wTempEnemyMonSpecies]
-	cp GYARADOS
-	jr nz, .Happiness
-	ld a, [wBattleType]
-	cp BATTLETYPE_RED_GYARADOS
-	ld b, GYARADOS_RED_FORM
-	jr nz, .Happiness
-	ld a, [wOTPartyMon1Form]
-	and $ff - FORM_MASK
-	add b
-	ld [wOTPartyMon1Form], a
-
-.Happiness:
 	; If we're headbutting trees, some monsters enter battle asleep
 	call CheckSleepingTreeMon
 	; a = carry ? SLP & 3 (asleep for 3 turns) : 0 (no status)
@@ -5778,8 +5661,7 @@ CheckSleepingTreeMon:
 	jr nz, .NotSleeping
 
 ; Nor if the Pokémon has Insomnia/Vital Spirit
-	ld a, [wEnemyMonAbility] ; is properly updated at this point, so OK to check
-	ld b, a
+	ld hl, wEnemyMonPersonality ; ability is properly updated at this point, so OK to check
 	ld a, [wTempEnemyMonSpecies]
 	ld c, a
 	call GetAbility
@@ -5810,6 +5692,60 @@ CheckSleepingTreeMon:
 	ret
 
 INCLUDE "data/wild/treemons_asleep.asm"
+
+GenerateWildForm:
+	ld a, [wTempEnemyMonSpecies]
+	cp UNOWN
+	jr z, .Unown
+	cp MAGIKARP
+	jr z, .Magikarp
+	cp EKANS
+	jr z, .EkansArbok
+	cp ARBOK
+	jr z, .EkansArbok
+	cp GYARADOS
+	jr z, .Gyarados
+.Default:
+	ld a, 1
+.GotForm:
+	ld [wCurForm], a
+	ret
+
+.Unown:
+	; Random Unown letter
+	ld a, NUM_UNOWN
+	call BattleRandomRange
+	inc a
+	ld [wCurForm], a
+	; Can't use any letters that haven't been unlocked
+	push de
+	call CheckUnownLetter
+	pop de
+	jr c, .Unown ; re-roll
+	ret
+
+.Magikarp:
+	; Random Magikarp pattern
+	ld a, NUM_MAGIKARP
+	call BattleRandomRange
+	inc a
+	jr .GotForm
+
+.EkansArbok:
+	call RegionCheck
+	ld a, e
+	and a
+	ld a, ARBOK_JOHTO_FORM
+	jr z, .GotForm
+	inc a ; ARBOK_KANTO_FORM
+	jr .GotForm
+
+.Gyarados:
+	ld a, [wBattleType]
+	cp BATTLETYPE_RED_GYARADOS
+	jr nz, .Default
+	ld a, GYARADOS_RED_FORM
+	jr .GotForm
 
 CheckUnownLetter:
 ; Return carry if the Unown letter hasn't been unlocked yet
@@ -5856,6 +5792,66 @@ CheckUnownLetter:
 .match
 ; Valid letter
 	and a
+	ret
+
+CheckValidMagikarpLength:
+; Return carry if the Magikarp length is invalid for the current area
+
+	ld a, [wTempEnemyMonSpecies]
+	cp MAGIKARP
+	jr nz, .okay
+
+	; Get Magikarp's length
+	ld de, wOTPartyMon1DVs
+	ld bc, wPlayerID
+	farcall CalcMagikarpLength
+
+	; We're clear if the length is < 5'
+	ld a, [wMagikarpLengthMmHi]
+	cp 5 ; feet
+	jr nz, .CheckMagikarpArea
+
+	; 5% chance of skipping size checks
+	call Random
+	cp 5 percent
+	jr c, .CheckMagikarpArea
+	; Try again if > 3"
+	ld a, [wMagikarpLengthMmLo]
+	cp 3 ; inches
+	jr nc, .redo
+
+	; 20% chance of skipping this check
+	call Random
+	cp 20 percent - 1
+	jr c, .CheckMagikarpArea
+	; Try again if > 2"
+	ld a, [wMagikarpLengthMmLo]
+	cp 2 ; inches
+	jr nc, .redo
+
+.CheckMagikarpArea:
+	ld a, [wMapGroup]
+	cp GROUP_LAKE_OF_RAGE
+	jr nz, .okay
+	ld a, [wMapNumber]
+	cp MAP_LAKE_OF_RAGE
+	jr nz, .okay
+.LakeOfRageMagikarp
+	; 40% chance of not flooring
+	call Random
+	cp 40 percent - 2
+	jr c, .okay
+	; Floor at length 3'
+	ld a, [wMagikarpLengthMmHi]
+	cp 3 ; feet
+	jr c, .redo
+
+.okay:
+	and a
+	ret
+
+.redo:
+	scf
 	ret
 
 INCLUDE "data/wild/unlocked_unowns.asm"
@@ -6233,6 +6229,7 @@ GiveExperiencePoints:
 	add hl, de
 	ld a, [hl]
 	ld [wCurSpecies], a
+	call GetCurPartyMonVariant
 	call GetBaseData
 	push bc
 	ld d, MAX_LEVEL
@@ -6608,11 +6605,12 @@ GiveBattleEVs:
 	ld hl, MON_EVS
 	add hl, bc
 	push bc
-	ld a, MON_SPECIES
 	push hl
+	ld a, MON_SPECIES
 	call OTPartyAttr
-	pop hl
 	ld [wCurSpecies], a
+	call GetEnemyMonVariant
+	pop hl
 	call GetBaseData
 	; EV yield format:
 	; Byte 1: xxyyzzmm x: HP, y: Atk, z: Def, m: Spd
@@ -6943,10 +6941,18 @@ GetNewBaseExp:
 	jr c, .not_basic
 
 	; let's see if we have an evolution
-	ld hl, EvosAttacksPointers
+	; c = species
 	ld a, [wCurPartySpecies]
 	ld c, a
-	ld b, 0
+	; b = form
+	ld a, MON_FORM
+	call OTPartyAttr
+	and FORM_MASK
+	ld b, a
+	; bc = index
+	call GetSpeciesAndFormIndex
+	dec bc
+	ld hl, EvosAttacksPointers
 	add hl, bc
 	add hl, bc
 	ld a, BANK(EvosAttacksPointers)
@@ -7168,6 +7174,7 @@ HandleSafariAngerEatingStatus:
 	; reset the catch rate to normal if bait/rock effects have worn off
 	ld a, [wEnemyMonSpecies]
 	ld [wCurSpecies], a
+	call GetEnemyMonVariant
 	call GetBaseData
 	ld a, [wBaseCatchRate]
 	ld [wEnemyMonCatchRate], a
@@ -7363,8 +7370,8 @@ DropEnemySub:
 	ld a, [wEnemyMonSpecies]
 	ld [wCurSpecies], a
 	ld [wCurPartySpecies], a
-	call GetBaseData
 	call GetEnemyMonVariant
+	call GetBaseData
 	ld de, vTiles2
 	predef FrontpicPredef
 	pop af
@@ -7453,12 +7460,6 @@ LoadTrainerOrWildMonPic:
 	ld [wTempEnemyMonSpecies], a
 	ret
 
-InitEnemy:
-	ld a, [wOtherTrainerClass]
-	and a
-	jp nz, InitEnemyTrainer ; trainer
-	jp InitEnemyWildmon ; wild
-
 BackUpBGMap2:
 	ldh a, [rSVBK]
 	push af
@@ -7481,6 +7482,12 @@ BackUpBGMap2:
 	pop af
 	ldh [rSVBK], a
 	ret
+
+InitEnemy:
+	ld a, [wOtherTrainerClass]
+	and a
+	jr z, InitEnemyWildmon ; wild
+	; fallthrough
 
 InitEnemyTrainer:
 	ld [wTrainerClass], a
@@ -7898,11 +7905,14 @@ BattleEnd_HandleRoamMons:
 .caught_or_defeated_roam_mon
 	call GetRoamMonHP
 	ld [hl], $0
-	call GetRoamMonMapGroup
+	ld a, wRoamMon1MapGroup - wRoamMon1
+	call DoGetRoamMonData
 	ld [hl], $ff
-	call GetRoamMonMapNumber
+	ld a, wRoamMon1MapNumber - wRoamMon1
+	call DoGetRoamMonData
 	ld [hl], $ff
-	call GetRoamMonSpecies
+	xor a ; ld a, wRoamMon1Species - wRoamMon1
+	call DoGetRoamMonData
 	ld [hl], $0
 	ret
 
@@ -7914,33 +7924,18 @@ BattleEnd_HandleRoamMons:
 .update_roam_mons
 	farjp UpdateRoamMons
 
-GetRoamMonMapGroup:
-; output: hl = wRoamMon*MapGroup, similar for the ones below
-	ld a, wRoamMon1MapGroup - wRoamMon1
-	jr DoGetRoamMonData
-
-GetRoamMonMapNumber:
-	ld a, wRoamMon1MapNumber - wRoamMon1
-	jr DoGetRoamMonData
-
 GetRoamMonHP:
-; output: hl = wRoamMonHP
+; output: hl = wRoamMon#HP
 	ld a, wRoamMon1HP - wRoamMon1
 	jr DoGetRoamMonData
 
-GetRoamMonDVsAndPersonality:
-; output: hl = wRoamMonDVs
-	ld a, wRoamMon1DVs - wRoamMon1
-	jr DoGetRoamMonData
-
 GetRoamMonStatus:
+; output: hl = wRoamMon#Status
 	ld a, wRoamMon1Status - wRoamMon1
-	jr DoGetRoamMonData
-
-GetRoamMonSpecies:
-	xor a ; ld a, wRoamMon1Species - wRoamMon1
 	; fallthrough
+
 DoGetRoamMonData:
+; output: hl = wRoamMon# + a
 	push de
 	ld d, 0
 	ld e, a

@@ -261,6 +261,23 @@ EGG EQU CANCEL ; EGG is used as sentinel for egg pic/icon/etc
 
 ; form values
 
+; generic
+NO_FORM EQU 0
+PLAIN_FORM EQU 1
+; rattata/raticate
+; sandshrew/sandslash
+; vulpix/ninetales
+; diglett/dugtrio
+; meowth/persian
+; geodude/graveler/golem
+; grimer/muk
+; raichu
+; exeggutor
+; marowak
+ALOLAN_FORM EQU 2
+; ponyta/rapidash
+GALARIAN_FORM EQU 2
+
 ; unown
 	const_def 1
 	const UNOWN_A_FORM
@@ -293,20 +310,6 @@ EGG EQU CANCEL ; EGG is used as sentinel for egg pic/icon/etc
 	const UNOWN_QUESTION_FORM
 NUM_UNOWN EQU const_value - 1
 
-; pikachu
-	const_def 1
-	const PIKACHU_PLAIN_FORM
-	const PIKACHU_FLY_FORM
-	const PIKACHU_SURF_FORM
-	const PIKACHU_RED_FORM
-	const PIKACHU_YELLOW_FORM
-	const PIKACHU_SPARK_FORM
-
-; pichu
-	const_def 1
-	const PICHU_PLAIN_FORM
-	const PICHU_SPIKY_EARED_FORM
-
 ; arbok
 	const_def 1
 	const ARBOK_JOHTO_FORM
@@ -315,9 +318,20 @@ NUM_UNOWN EQU const_value - 1
 	const ARBOK_AGATHA_FORM
 	const ARBOK_ARIANA_FORM
 
+; pikachu
+	const_def 2
+	const PIKACHU_FLY_FORM
+	const PIKACHU_SURF_FORM
+	const PIKACHU_RED_FORM
+	const PIKACHU_YELLOW_FORM
+	const PIKACHU_SPARK_FORM
+
+; pichu
+	const_def 2
+	const PICHU_SPIKY_EARED_FORM
+
 ; magikarp
-	const_def 1
-	const MAGIKARP_PLAIN_FORM
+	const_def 2
 	const MAGIKARP_SKELLY_FORM
 	const MAGIKARP_CALICO1_FORM
 	const MAGIKARP_CALICO2_FORM
@@ -332,13 +346,9 @@ NUM_UNOWN EQU const_value - 1
 	const MAGIKARP_FOREHEAD_FORM
 	const MAGIKARP_MASK_FORM
 NUM_MAGIKARP EQU const_value - 1
-
 ; gyarados
-	const_def 1
-	const GYARADOS_PLAIN_FORM
-GYARADOS_RED_FORM EQU NUM_MAGIKARP + 1
+	const GYARADOS_RED_FORM
 
 ; mewtwo
-	const_def 1
-	const MEWTWO_PLAIN_FORM
+	const_def 2
 	const MEWTWO_ARMORED_FORM

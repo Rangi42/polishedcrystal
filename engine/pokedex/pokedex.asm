@@ -1926,6 +1926,8 @@ Pokedex_SearchForMons:
 	jr z, .next_mon
 	ld [wd265], a
 	ld [wCurSpecies], a
+	xor a
+	ld [wCurForm], a
 	call Pokedex_CheckCaught
 	jr z, .next_mon
 	push hl
@@ -2475,6 +2477,8 @@ NewPokedexEntry:
 	call Pokedex_LoadAnyFootprint
 	ld a, [wd265]
 	ld [wCurPartySpecies], a
+	xor a
+	ld [wCurForm], a
 	call Pokedex_DrawDexEntryScreenBG
 	call Pokedex_DrawFootprint
 	hlcoord 0, 17

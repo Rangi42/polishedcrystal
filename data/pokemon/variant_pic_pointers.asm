@@ -131,3 +131,123 @@ MewtwoPicPointers::
 	dba MewtwoPlainBackpic
 	dba MewtwoArmoredFrontpic
 	dba MewtwoArmoredBackpic
+
+RattataPicPointers::
+	dba RattataPlainFrontpic
+	dba RattataPlainBackpic
+	dba RattataAlolanFrontpic
+	dba RattataAlolanBackpic
+
+RaticatePicPointers::
+	dba RaticatePlainFrontpic
+	dba RaticatePlainBackpic
+	dba RaticateAlolanFrontpic
+	dba RaticateAlolanBackpic
+
+SandshrewPicPointers::
+	dba SandshrewPlainFrontpic
+	dba SandshrewPlainBackpic
+	dba SandshrewAlolanFrontpic
+	dba SandshrewAlolanBackpic
+
+SandslashPicPointers::
+	dba SandslashPlainFrontpic
+	dba SandslashPlainBackpic
+	dba SandslashAlolanFrontpic
+	dba SandslashAlolanBackpic
+
+VulpixPicPointers::
+	dba VulpixPlainFrontpic
+	dba VulpixPlainBackpic
+	dba VulpixAlolanFrontpic
+	dba VulpixAlolanBackpic
+
+NinetalesPicPointers::
+	dba NinetalesPlainFrontpic
+	dba NinetalesPlainBackpic
+	dba NinetalesAlolanFrontpic
+	dba NinetalesAlolanBackpic
+
+DiglettPicPointers::
+	dba DiglettPlainFrontpic
+	dba DiglettPlainBackpic
+	dba DiglettAlolanFrontpic
+	dba DiglettAlolanBackpic
+
+DugtrioPicPointers::
+	dba DugtrioPlainFrontpic
+	dba DugtrioPlainBackpic
+	dba DugtrioAlolanFrontpic
+	dba DugtrioAlolanBackpic
+
+MeowthPicPointers::
+	dba MeowthPlainFrontpic
+	dba MeowthPlainBackpic
+	dba MeowthAlolanFrontpic
+	dba MeowthAlolanBackpic
+
+PersianPicPointers::
+	dba PersianPlainFrontpic
+	dba PersianPlainBackpic
+	dba PersianAlolanFrontpic
+	dba PersianAlolanBackpic
+
+GeodudePicPointers::
+	dba GeodudePlainFrontpic
+	dba GeodudePlainBackpic
+	dba GeodudeAlolanFrontpic
+	dba GeodudeAlolanBackpic
+
+GravelerPicPointers::
+	dba GravelerPlainFrontpic
+	dba GravelerPlainBackpic
+	dba GravelerAlolanFrontpic
+	dba GravelerAlolanBackpic
+
+GolemPicPointers::
+	dba GolemPlainFrontpic
+	dba GolemPlainBackpic
+	dba GolemAlolanFrontpic
+	dba GolemAlolanBackpic
+
+GrimerPicPointers::
+	dba GrimerPlainFrontpic
+	dba GrimerPlainBackpic
+	dba GrimerAlolanFrontpic
+	dba GrimerAlolanBackpic
+
+MukPicPointers::
+	dba MukPlainFrontpic
+	dba MukPlainBackpic
+	dba MukAlolanFrontpic
+	dba MukAlolanBackpic
+
+RaichuPicPointers::
+	dba RaichuPlainFrontpic
+	dba RaichuPlainBackpic
+	dba RaichuAlolanFrontpic
+	dba RaichuAlolanBackpic
+
+ExeggutorPicPointers::
+	dba ExeggutorPlainFrontpic
+	dba ExeggutorPlainBackpic
+	dba ExeggutorAlolanFrontpic
+	dba ExeggutorAlolanBackpic
+
+MarowakPicPointers::
+	dba MarowakPlainFrontpic
+	dba MarowakPlainBackpic
+	dba MarowakAlolanFrontpic
+	dba MarowakAlolanBackpic
+
+PonytaPicPointers::
+	dba PonytaPlainFrontpic
+	dba PonytaPlainBackpic
+	dba PonytaGalarianFrontpic
+	dba PonytaGalarianBackpic
+
+RapidashPicPointers::
+	dba RapidashPlainFrontpic
+	dba RapidashPlainBackpic
+	dba RapidashGalarianFrontpic
+	dba RapidashGalarianBackpic

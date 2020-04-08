@@ -191,7 +191,7 @@ ElderScript_0x18d1a5:
 	writetext UnknownText_0x18d697
 	playsound SFX_CAUGHT_MON
 	waitsfx
-	givepoke DRATINI, 15, SITRUS_BERRY
+	givepoke DRATINI, NO_FORM, 15, SITRUS_BERRY
 	writebyte ULTRA_BALL
 	special SetLastPartyMonBall
 	checkevent EVENT_ANSWERED_DRAGON_MASTER_QUIZ_WRONG

@@ -212,9 +212,11 @@ wSpriteAnimCount:: ds 1
 wCurrSpriteOAMAddr:: ds 1
 
 wCurIcon:: ds 1
-
-
+wCurIconPersonality::
+wCurIconShiny:: ds 1
+wCurIconForm:: ds 1
 wCurIconTile:: ds 1
+
 wSpriteAnimAddrBackup::
 wSpriteAnimIDBuffer::
 wCurrSpriteAddSubFlags::
@@ -694,8 +696,16 @@ wTrademonsEnd::
 wTradeAnimPointer:: ds 2
 wLinkPlayer1Name:: ds NAME_LENGTH
 wLinkPlayer2Name:: ds NAME_LENGTH
+wLinkTradeSendmonData::
 wLinkTradeSendmonSpecies:: ds 1
+wLinkTradeSendmonPersonality::
+wLinkTradeSendmonShiny:: ds 1
+wLinkTradeSendmonForm:: ds 1
+wLinkTradeGetmonData::
 wLinkTradeGetmonSpecies:: ds 1
+wLinkTradeGetmonPersonality::
+wLinkTradeGetmonShiny:: ds 1
+wLinkTradeGetmonForm:: ds 1
 
 NEXTU
 ; naming screen

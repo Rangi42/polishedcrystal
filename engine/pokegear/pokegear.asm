@@ -2685,14 +2685,6 @@ TownMapMon:
 ; Draw the FlyMon icon at town map location in
 
 	farcall LoadFlyMonColor
-; Get FlyMon species
-	ld a, [wCurPartyMon]
-	ld hl, wPartySpecies
-	ld e, a
-	ld d, $0
-	add hl, de
-	ld a, [hl]
-	ld [wd265], a
 ; Get FlyMon icon
 	ld e, 8 ; starting tile in VRAM
 	farcall PokegearFlyMap_GetMonIcon

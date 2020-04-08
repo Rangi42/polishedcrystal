@@ -430,9 +430,8 @@ GetGender:
 	ld a, 1
 	call z, GetSRAMBank
 
-; Gender
+; Gender and form are stored in the same byte
 	ld a, [hl]
-	and GENDER_MASK
 	ld b, a
 
 ; Close SRAM if we were dealing with a sBoxMon.
@@ -443,7 +442,14 @@ GetGender:
 ; We need the gender ratio to do anything with this.
 	ld a, [wCurPartySpecies]
 	ld c, a
-	call GetGenderRatio
+	push bc ; b == gender|form
+	ld a, b
+	and FORM_MASK
+	ld b, a
+	call GetGenderRatio ; c = gender ratio
+	pop af ; a = gender|form
+	and GENDER_MASK
+	ld b, a
 
 ; Fixed values ignore the Personality gender value.
 	ld a, c

@@ -1185,6 +1185,10 @@ BattleCommand_stab:
 	ld a, MON_SPECIES
 	call TrueUserPartyAttr
 	ld [wCurSpecies], a
+	ld a, MON_FORM
+	call TrueUserPartyAttr
+	and FORM_MASK
+	ld [wCurForm], a
 	call GetBaseData
 	ld hl, wBaseType
 	jr .got_attacker_types
@@ -3209,14 +3213,20 @@ endc
 	ret
 
 UnevolvedEviolite:
-	ld a, MON_SPECIES
-	call OpponentPartyAttr
-
-	dec a
 	push hl
 	push bc
+	; c = species
+	ld a, MON_SPECIES
+	call OpponentPartyAttr
 	ld c, a
-	ld b, 0
+	; b = form
+	ld a, MON_FORM
+	call OpponentPartyAttr
+	and FORM_MASK
+	ld b, a
+	; bc = index
+	call GetSpeciesAndFormIndex
+	dec bc
 	ld hl, EvosAttacksPointers
 	add hl, bc
 	add hl, bc
@@ -6095,12 +6105,11 @@ _GetTrueUserAbility::
 .external
 	push bc
 	push hl
-	ld a, MON_ABILITY
-	call TrueUserPartyAttr
-	ld b, a
 	ld a, MON_SPECIES
 	call TrueUserPartyAttr
 	ld c, a
+	ld a, MON_PERSONALITY
+	call TrueUserPartyAttr
 	call GetAbility
 	ld a, b
 	pop hl

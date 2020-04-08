@@ -2,16 +2,17 @@ GetVariant:
 	ld a, [wCurPartySpecies]
 	cp PIKACHU
 	jr z, .GetPikachuVariant
-	cp MEWTWO
-	jp z, .GetMewtwoVariant
 
 ; Return CurForm based on Form at hl
 	ld a, [hl]
 	and FORM_MASK
 	jr nz, .ok
+
 	ld a, [wCurPartySpecies]
 	cp ARBOK
 	jr nz, .not_kanto_arbok
+; NPC trainers should appear to have Kantonian Arbok without explicitly
+; giving them all a personality, so form 0 becomes 1 (Johto) or 2 (Kanto)
 	push bc
 	push de
 	call RegionCheck
@@ -24,7 +25,8 @@ GetVariant:
 	ld a, ARBOK_KANTO_FORM
 	jr .ok
 .not_kanto_arbok
-	ld a, 1 ; safeguard: form 0 becomes variant 1
+	ld a, PLAIN_FORM ; safeguard: form 0 becomes variant 1
+
 .ok
 	ld [wCurForm], a
 	ret
@@ -67,27 +69,8 @@ rept NUM_MOVES
 endr
 
 .plain
-	ld a, PIKACHU_PLAIN_FORM
+	ld a, PLAIN_FORM
 .use_form
-	ld [wCurForm], a
-	ret
-
-.GetMewtwoVariant:
-; Return Mewtwo form (1-2) in wCurForm
-; hl-9 is ...MonItem
-; hl is ...MonForm
-
-	push bc
-	ld bc, MON_ITEM - MON_FORM
-	add hl, bc
-	pop bc
-
-	ld a, [hl]
-	cp ARMOR_SUIT
-	ld a, MEWTWO_ARMORED_FORM
-	jr z, .armored_mewtwo
-	dec a ; MEWTWO_PLAIN_FORM
-.armored_mewtwo
 	ld [wCurForm], a
 	ret
 
@@ -126,7 +109,7 @@ _GetFrontpic:
 	ld a, BANK(sScratch)
 	call GetSRAMBank
 	push de
-	call GetBaseData
+	call GetBaseData ; [wCurSpecies] and [wCurForm] are already set
 	ld a, [wBasePicSize]
 	and $f
 	ld b, a

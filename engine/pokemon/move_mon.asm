@@ -63,56 +63,124 @@ TryAddMonToParty:
 	ld bc, PKMN_NAME_LENGTH
 	rst CopyBytes
 
-.skipnickname
+; Cases to set [wCurForm] before calling GetBaseData:
+; - Gift Pokémon or Egg: givepoke/giveegg already set it
+; - Wild Pokémon: LoadEnemyMon already set it
+; - Roaming Pokémon: get it from wRoamMon#Form
+; - Trainer Pokémon: get it from party data (pushed by ReadTrainerParty)
+
+	ld a, [wMonType]
+	and $f
+	jr z, .not_trainer_form
+	ld a, [wBattleMode]
+	dec a
+	jr z, .not_trainer_form
+	; hl = party data, deep off the stack
+	; Here the stack contains:
+	; - sp+$6: party data for [wCurPartyMon], just past the level and species
+	; - sp+$4: return address for 'predef TryAddMonToParty'
+	; - sp+$2: af from _Predef (ReturnFarCall will pop this)
+	; - sp+$0: return address for 'call RetrieveHLAndCallFunction'
+	ld hl, sp+$6
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	ld a, [wOtherTrainerType]
+	bit TRNTYPE_ITEM, a
+	jr z, .no_skip_trainer_item
+	inc hl
+.no_skip_trainer_item
+	bit TRNTYPE_EVS, a
+	jr z, .no_skip_trainer_evs
+	inc hl
+.no_skip_trainer_evs
+	bit TRNTYPE_DVS, a
+	jr z, .no_skip_trainer_dvs
+	inc hl
+	inc hl
+	inc hl
+.no_skip_trainer_dvs
+	bit TRNTYPE_PERSONALITY, a
+	ld a, NO_FORM
+	jr z, .got_trainer_form
+	inc hl
+	ld a, [wTrainerGroupBank]
+	call GetFarByte
+	and FORM_MASK
+.got_trainer_form
+	ld [wCurForm], a
+.not_trainer_form
+
+	ld a, [wBattleType]
+	cp BATTLETYPE_ROAMING
+	jr nz, .not_roaming_form
+	ld a, wRoamMon1Form - wRoamMon1
+	call DoGetRoamMonData
+	ld a, [hl]
+	and FORM_MASK
+	ld [wCurForm], a
+.not_roaming_form
+
+	ld a, [wCurPartySpecies]
+	ld [wCurSpecies], a
+	call GetBaseData
+
 	ld hl, wPartyMon1Species
 	ld a, [wMonType]
 	and $f
 	jr z, .initializeStats
 	ld hl, wOTPartyMon1Species
-
 .initializeStats
 	ldh a, [hMoveMon]
 	dec a
 	ld bc, PARTYMON_STRUCT_LENGTH
 	rst AddNTimes
-GeneratePartyMonStats:
+
 	ld e, l
 	ld d, h
 	push hl
-	ld a, [wCurPartySpecies]
-	ld [wCurSpecies], a
-	call GetBaseData
+
+	; species
 	ld a, [wCurSpecies]
 	ld [de], a
 	inc de
-	xor a
 
-.skipitem
+	; item
+	xor a
 	ld [de], a
 	inc de
+
+	; moves
 	push de
 	ld h, d
 	ld l, e
-
 	xor a
 rept NUM_MOVES - 1
 	ld [hli], a
 endr
 	ld [hl], a
 	ld [wBuffer1], a
+	; c = species
+	ld a, [wCurSpecies]
+	ld c, a
+	; b = form
+	ld a, [wCurForm]
+	ld b, a
 	predef FillMoves
-
-.next
 	pop de
 rept NUM_MOVES
 	inc de
 endr
+
+	; OT ID
 	ld a, [wPlayerID]
 	ld [de], a
 	inc de
 	ld a, [wPlayerID + 1]
 	ld [de], a
 	inc de
+
+	; experience
 	push de
 	ld a, [wCurPartyLevel]
 	ld d, a
@@ -128,9 +196,10 @@ endr
 	ld [de], a
 	inc de
 
-	; EVs, DVs, personality
 	pop hl
 	push hl
+
+	; EVs, DVs, personality
 	ld a, [wMonType]
 	and $f
 	jr z, .generateEVsDVsAndPersonality
@@ -167,8 +236,12 @@ endr
 	jr .random_dvs
 
 .wildmon
+	ld a, [wBattleType]
+	cp BATTLETYPE_ROAMING
+	jr nz, .random_dvs
 	push bc
-	farcall GetRoamMonDVsAndPersonality
+	ld a, wRoamMon1DVs - wRoamMon1
+	farcall DoGetRoamMonData
 	push hl
 	farcall GetRoamMonHP
 	ld a, [hl]
@@ -200,19 +273,12 @@ endr
 	pop hl
 
 ; Random nature from 0 to 24
-; This overwrites the base data struct, so reload it afterwards
-	ld a, [wCurSpecies]
-	push af
-	ld a, [wPartyMon1Ability]
-	ld b, a
+	push hl
+	ld hl, wPartyMon1Personality
 	ld a, [wPartyMon1Species]
 	ld c, a
 	call GetAbility
-	pop af
-	push bc
-	ld [wCurSpecies], a
-	call GetBaseData
-	pop bc
+	pop hl
 	ld a, b
 	cp SYNCHRONIZE
 	jr nz, .no_synchronize
@@ -325,21 +391,24 @@ endr
 	call Random
 	and %111
 .cute_charm_ok
-	ld b, a
 ; We need the gender ratio to do anything with this.
+	push af
 	ld a, [wCurPartySpecies]
 	ld c, a
+	ld a, [wPartyMon1Form]
+	and FORM_MASK
+	ld b, a
 	call GetGenderRatio
+	pop af
 ; Ratios below the value are female, and vice-versa.
-	ld a, b
 	cp c
-	; a = carry (b < c) ? FEMALE : MALE (0)
+	; a = carry (a < c) ? FEMALE : MALE (0)
 	sbc a
 	and FEMALE
 	ld b, a
 
-; Form 1
-	ld a, 1
+; Form from [wCurForm] (set by LoadEnemyMon)
+	ld a, [wCurForm]
 	add b
 	ld [wDVAndPersonalityBuffer + 4], a
 
@@ -943,6 +1012,10 @@ Functiondd64:
 	rst CopyBytes
 	push hl
 	call Functionde1a
+	ld hl, MON_FORM
+	add hl, de
+	ld a, [hl]
+	ld [wCurForm], a
 	pop hl
 	ld bc, BOXMON_STRUCT_LENGTH
 	rst CopyBytes
@@ -972,6 +1045,10 @@ Functiondd64:
 	ld e, l
 	ld a, $1
 	ld [wBuffer1], a
+	ld a, [wCurSpecies]
+	ld c, a
+	ld a, [wCurForm]
+	ld b, a
 	predef FillMoves
 	ld a, [wPartyCount]
 	dec a
@@ -1053,6 +1130,8 @@ SentPkmnIntoBox:
 	inc a
 	jr nz, .loop
 
+	ld hl, wOTPartyMon1Form
+	predef GetVariant
 	call GetBaseData
 	call ShiftBoxMon
 
@@ -1078,14 +1157,13 @@ SentPkmnIntoBox:
 	ld a, [wCurPartySpecies]
 	dec a
 	call SetSeenAndCaughtMon
+
 	ld a, [wCurPartySpecies]
 	cp UNOWN
 	jr nz, .not_unown
-	ld hl, sBoxMon1Form
-	predef GetVariant
 	farcall UpdateUnownDex
-
 .not_unown
+
 	ld hl, sBoxMon1Moves
 	ld de, wTempMonMoves
 	ld bc, NUM_MOVES
@@ -1173,7 +1251,7 @@ GiveEgg::
 	call CheckSeenMon
 	push bc
 
-	call TryAddMonToParty
+	predef TryAddMonToParty
 
 	ld a, [wPartyCount]
 	dec a
@@ -1430,6 +1508,11 @@ ComputeNPCTrademonStats:
 	call GetPartyParamLocation
 	ld a, [hl]
 	ld [wCurSpecies], a
+	ld a, MON_FORM
+	call GetPartyParamLocation
+	ld a, [hl]
+	and FORM_MASK
+	ld [wCurForm], a
 	call GetBaseData
 	ld a, MON_MAXHP
 	call GetPartyParamLocation
@@ -1456,6 +1539,11 @@ UpdatePkmnStats:
 	call GetPartyParamLocation
 	ld a, [hl]
 	ld [wCurSpecies], a
+	ld a, MON_FORM
+	call GetPartyParamLocation
+	ld a, [hl]
+	and FORM_MASK
+	ld [wCurForm], a
 	call GetBaseData
 	ld a, MON_LEVEL
 	call GetPartyParamLocation
@@ -1799,7 +1887,7 @@ GivePoke::
 	push bc
 	xor a ; PARTYMON
 	ld [wMonType], a
-	call TryAddMonToParty
+	predef TryAddMonToParty
 	jr nc, .failed
 	ld hl, wPartyMonNicknames
 	ld a, [wPartyCount]
@@ -1827,8 +1915,14 @@ GivePoke::
 
 .failed
 	ld a, [wCurPartySpecies]
-	ld [wTempEnemyMonSpecies], a
-	farcall LoadEnemyMon
+	ld [wEnemyMonSpecies], a
+	xor a
+	ld [wOTPartyCount], a
+	ld [wCurOTMon], a
+	inc a
+	ld [wMonType], a
+	ld [wBattleMode], a
+	predef TryAddMonToParty
 	call SentPkmnIntoBox
 	jp nc, .FailedToGiveMon
 	ld a, BOXMON
@@ -1844,9 +1938,12 @@ GivePoke::
 	push af
 	ld a, [wCurItem]
 	and a
-	jr z, .done
+	jr z, .no_item
 	ld a, [wCurItem]
 	ld [sBoxMon1Item], a
+.no_item
+	ld a, POKE_BALL
+	ld [wCurItem], a
 
 .done
 	ld a, [wCurPartySpecies]

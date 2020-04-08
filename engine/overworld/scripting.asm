@@ -2256,6 +2256,7 @@ Script_checkphonecall:
 Script_givepoke:
 ; parameters:
 ;     pokemon (PokemonParam)
+;     form (DecimalParam)
 ;     level (DecimalParam)
 ;     item (ItemLabelByte)
 ;     trainer (DecimalParam)
@@ -2263,6 +2264,8 @@ Script_givepoke:
 ;     pkmn_nickname (MultiByteParam)
 	call GetScriptByte
 	ld [wCurPartySpecies], a
+	call GetScriptByte
+	ld [wCurForm], a
 	call GetScriptByte
 	ld [wCurPartyLevel], a
 	call GetScriptByte
@@ -2288,6 +2291,7 @@ Script_givepoke:
 Script_giveegg:
 ; parameters:
 ;     pkmn (PokemonParam)
+;     form (DecimalParam)
 ;     level (DecimalParam)
 ; if no room in the party, return 0 in hScriptVar; else, return 2
 
@@ -2296,6 +2300,8 @@ Script_giveegg:
 	ld [wMonType], a
 	call GetScriptByte
 	ld [wCurPartySpecies], a
+	call GetScriptByte
+	ld [wCurForm], a
 	call GetScriptByte
 	ld [wCurPartyLevel], a
 	farcall GiveEgg

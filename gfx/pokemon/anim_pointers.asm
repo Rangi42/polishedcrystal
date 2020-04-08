@@ -17,16 +17,16 @@ AnimationPointers:
 	dw PidgeyAnimation
 	dw PidgeottoAnimation
 	dw PidgeotAnimation
-	dw RattataAnimation
-	dw RaticateAnimation
+	dw -1 ; see RattataAnimationPointers
+	dw -1 ; see RaticateAnimationPointers
 	dw MarillAnimation
 	dw AzumarillAnimation
 	dw EkansAnimation
 	dw -1 ; see ArbokAnimationPointers
 	dw -1 ; see PikachuAnimationPointers
-	dw RaichuAnimation
-	dw SandshrewAnimation
-	dw SandslashAnimation
+	dw -1 ; see RaichuAnimationPointers
+	dw -1 ; see SandshrewAnimationPointers
+	dw -1 ; see SandslashAnimationPointers
 	dw NidoranFAnimation
 	dw NidorinaAnimation
 	dw NidoqueenAnimation
@@ -35,8 +35,8 @@ AnimationPointers:
 	dw NidokingAnimation
 	dw ClefairyAnimation
 	dw ClefableAnimation
-	dw VulpixAnimation
-	dw NinetalesAnimation
+	dw -1 ; see VulpixAnimationPointers
+	dw -1 ; see NinetalesAnimationPointers
 	dw JigglypuffAnimation
 	dw WigglytuffAnimation
 	dw ZubatAnimation
@@ -48,10 +48,10 @@ AnimationPointers:
 	dw ParasectAnimation
 	dw VenonatAnimation
 	dw VenomothAnimation
-	dw DiglettAnimation
-	dw DugtrioAnimation
-	dw MeowthAnimation
-	dw PersianAnimation
+	dw -1 ; see DiglettAnimationPointers
+	dw -1 ; see DugtrioAnimationPointers
+	dw -1 ; see MeowthAnimationPointers
+	dw -1 ; see PersianAnimationPointers
 	dw PsyduckAnimation
 	dw GolduckAnimation
 	dw MankeyAnimation
@@ -72,11 +72,11 @@ AnimationPointers:
 	dw VictreebelAnimation
 	dw TentacoolAnimation
 	dw TentacruelAnimation
-	dw GeodudeAnimation
-	dw GravelerAnimation
-	dw GolemAnimation
-	dw PonytaAnimation
-	dw RapidashAnimation
+	dw -1 ; see GeodudeAnimationPointers
+	dw -1 ; see GravelerAnimationPointers
+	dw -1 ; see GolemAnimationPointers
+	dw -1 ; see PonytaAnimationPointers
+	dw -1 ; see RapidashAnimationPointers
 	dw SlowpokeAnimation
 	dw SlowbroAnimation
 	dw MagnemiteAnimation
@@ -86,8 +86,8 @@ AnimationPointers:
 	dw DodrioAnimation
 	dw SeelAnimation
 	dw DewgongAnimation
-	dw GrimerAnimation
-	dw MukAnimation
+	dw -1 ; see GrimerAnimationPointers
+	dw -1 ; see MukAnimationPointers
 	dw ShellderAnimation
 	dw CloysterAnimation
 	dw GastlyAnimation
@@ -101,9 +101,9 @@ AnimationPointers:
 	dw VoltorbAnimation
 	dw ElectrodeAnimation
 	dw ExeggcuteAnimation
-	dw ExeggutorAnimation
+	dw -1 ; see ExeggutorAnimationPointers
 	dw CuboneAnimation
-	dw MarowakAnimation
+	dw -1 ; see MarowakAnimationPointers
 	dw HitmonleeAnimation
 	dw HitmonchanAnimation
 	dw KoffingAnimation

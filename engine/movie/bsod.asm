@@ -58,7 +58,7 @@ BSOD:
 	jr z, .PrintErrorType
 	ld de, .UnknownError
 .PrintErrorType
-	hlcoord 1, 12
+	hlcoord 1, 14
 	rst PlaceString
 
 	call ApplyTilemapInVBlank
@@ -70,7 +70,7 @@ BSOD:
 .printnum_simple
 ; reimplementation of PrintNum without touching hram
 	ld b, 100
-	hlcoord 8, 11
+	hlcoord 8, 12
 	push af
 	call .do_printnum
 	ld b, 10
@@ -103,21 +103,21 @@ else
 endc
 
 .Message:
-	db   "      #mon"
+	db    "      #mon"
 	next1 " Polished Crystal"
-	next1 "       ERROR"
+	next  "       ERROR"
 	next1 "------------------"
-	next "Please report this"
+	next  "Please report this"
 	next1 "crash to the deve-"
 	next1 "loper, Rangi42, at"
 	next1 "tinyurl.com/pkpc3."
-	next "Error:@"
+	next  "Error:@"
 
 .Rst0:
-	db "Rst0@"
+	db "rst 0@"
 
 .DivZero:
-	db "Divided by zero@"
+	db "Division by zero@"
 
 .EggSpecies:
 	db "<PK><MN> species is Egg@"

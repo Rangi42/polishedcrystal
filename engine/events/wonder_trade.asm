@@ -159,7 +159,20 @@ DoWonderTrade:
 	ld [wMonType], a
 	ld [wPokemonWithdrawDepositParameter], a
 	predef RemoveMonFromPartyOrBox
+
+	call GetWonderTradeOTForm
+	ld [wCurForm], a
 	predef TryAddMonToParty
+
+	ld a, [wOTTrademonSpecies]
+	cp MAGIKARP
+	jr nz, .not_first_magikarp
+	ld a, [wFirstMagikarpSeen]
+	and a
+	jr nz, .not_first_magikarp
+	ld a, [wCurForm]
+	ld [wFirstMagikarpSeen], a
+.not_first_magikarp
 
 	ld a, [wOTTrademonSpecies]
 	ld de, wOTTrademonNickname
@@ -271,36 +284,7 @@ endr
 	and GENDER_MASK
 	ld b, a
 	; Form
-	ld a, [wOTTrademonSpecies]
-	cp EKANS
-	jr z, .ekans_arbok
-	cp ARBOK
-	jr z, .ekans_arbok
-	cp MAGIKARP
-	jr z, .magikarp
-	ld a, 1
-	jr .got_form_count
-.ekans_arbok
-	ld a, 2
-	jr .got_form_count
-.magikarp
-	ld a, NUM_MAGIKARP
-.got_form_count
-	push bc
-	call RandomRange
-	inc a
-	ld b, a
-	ld a, [wOTTrademonSpecies]
-	cp MAGIKARP
-	jr nz, .not_first_magikarp
-	ld a, [wFirstMagikarpSeen]
-	and a
-	jr nz, .not_first_magikarp
-	ld a, b
-	ld [wFirstMagikarpSeen], a
-.not_first_magikarp
-	ld a, b
-	pop bc
+	ld a, [wCurForm]
 	add b
 	ld [wBuffer1 + 1], a
 	ld hl, wBuffer1
@@ -517,6 +501,23 @@ GetWonderTradeOTGender:
 	ret
 
 INCLUDE "data/events/wonder_trade/ot_genders.asm"
+
+GetWonderTradeOTForm:
+; pick randomly from [1, N] for [wOTTrademonSpecies], or default to 1
+	ld a, [wOTTrademonSpecies]
+	ld hl, ValidVariantRanges
+	ld de, 2
+	call IsInArray
+	ld a, 1
+	jr nc, .ok
+	inc hl
+	ld a, [hl]
+.ok
+	call RandomRange
+	inc a
+	ret
+
+INCLUDE "data/pokemon/valid_variants.asm"
 
 GetWonderTradeHeldItem:
 ; Returns a level-scaled item reward

@@ -68,6 +68,9 @@ CheckBreedmonCompatibility:
 ; they are not compatible.
 	ld a, [wBreedMon2Species]
 	ld [wCurSpecies], a
+	ld a, [wBreedMon2Form]
+	and FORM_MASK
+	ld [wCurForm], a
 	call GetBaseData
 	ld a, [wBaseEggGroups]
 	cp NO_EGGS * $11
@@ -75,6 +78,9 @@ CheckBreedmonCompatibility:
 
 	ld a, [wBreedMon1Species]
 	ld [wCurSpecies], a
+	ld a, [wBreedMon1Form]
+	and FORM_MASK
+	ld [wCurForm], a
 	call GetBaseData
 	ld a, [wBaseEggGroups]
 	cp NO_EGGS * $11
@@ -86,6 +92,9 @@ CheckBreedmonCompatibility:
 	cp DITTO
 	jr z, .Compatible
 	ld [wCurSpecies], a
+	ld a, [wBreedMon2Form]
+	and FORM_MASK
+	ld [wCurForm], a
 	call GetBaseData
 	ld a, [wBaseEggGroups]
 	push af
@@ -100,6 +109,9 @@ CheckBreedmonCompatibility:
 	cp DITTO
 	jr z, .Compatible
 	ld [wCurSpecies], a
+	ld a, [wBreedMon1Form]
+	and FORM_MASK
+	ld [wCurForm], a
 	push bc
 	call GetBaseData
 	pop bc
@@ -167,7 +179,6 @@ DoEggStep::
 	pop hl
 	jr nz, .ability_next
 	ld c, a
-	ld b, [hl]
 	push de
 	push hl
 	call GetAbility
@@ -293,6 +304,12 @@ HatchEggs:
 	ld [wd265], a
 	ld [wCurSpecies], a
 	call GetPokemonName
+
+	ld a, MON_FORM
+	call GetPartyParamLocation
+	ld a, [hl]
+	and FORM_MASK
+	ld [wCurForm], a
 
 	ld a, [wCurPartyMon]
 	ld hl, wPartyMonNicknames
@@ -472,6 +489,13 @@ InitEggMoves:
 	ld de, wEggMonMoves
 	xor a
 	ld [wBuffer1], a
+	; c = species
+	ld a, [wEggMonSpecies]
+	ld c, a
+	; b = form
+	ld a, [wEggMonForm]
+	and FORM_MASK
+	ld b, a
 	predef FillMoves
 
 	; Inherited level up moves
@@ -544,10 +568,16 @@ InitEggMoves:
 
 InheritLevelMove:
 ; If move d is part of the level up moveset, inherit that move
+	; c = species
 	ld a, [wEggMonSpecies]
-	dec a
 	ld c, a
-	ld b, 0
+	; b = form
+	ld a, [wEggMonForm]
+	and FORM_MASK
+	ld b, a
+	; bc = index
+	call GetSpeciesAndFormIndex
+	dec bc
 	ld hl, EvosAttacksPointers
 	add hl, bc
 	add hl, bc
@@ -574,10 +604,16 @@ InheritLevelMove:
 
 InheritEggMove:
 ; If move d is an egg move, inherit that move
+	; c = species
 	ld a, [wEggMonSpecies]
-	dec a
 	ld c, a
-	ld b, 0
+	; b = form
+	ld a, [wEggMonForm]
+	and FORM_MASK
+	ld b, a
+	; bc = index
+	call GetSpeciesAndFormIndex
+	dec bc
 	ld hl, EggMovePointers
 	add hl, bc
 	add hl, bc
@@ -618,28 +654,28 @@ InheritMove:
 
 GetEggFrontpic:
 	push de
-	ld a, EGG
-	ld [wCurPartySpecies], a
-	ld [wCurSpecies], a
-	call GetBaseData
 	ld a, [wCurPartyMon]
 	ld hl, wPartyMon1Form
 	ld bc, PARTYMON_STRUCT_LENGTH
 	rst AddNTimes
 	predef GetVariant
+	ld a, EGG
+	ld [wCurPartySpecies], a
+	ld [wCurSpecies], a
+	call GetBaseData
 	pop de
 	predef_jump GetFrontpic
 
 GetHatchlingFrontpic:
 	push de
-	ld [wCurPartySpecies], a
-	ld [wCurSpecies], a
-	call GetBaseData
 	ld a, [wCurPartyMon]
 	ld hl, wPartyMon1Form
 	ld bc, PARTYMON_STRUCT_LENGTH
 	rst AddNTimes
 	predef GetVariant
+	ld [wCurPartySpecies], a
+	ld [wCurSpecies], a
+	call GetBaseData
 	pop de
 	predef_jump FrontpicPredef
 

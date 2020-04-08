@@ -123,6 +123,8 @@ endr
 	giveitem BOTTLE_CAP, 99
 	giveitem MULCH, 99
 	giveitem MINT, 99
+	giveitem ODD_SOUVENIR, 10
+	giveitem ARMOR_SUIT, 1
 	; all decorations
 x = EVENT_DECO_BED_1
 rept EVENT_DECO_BIG_LAPRAS_DOLL - EVENT_DECO_BED_1 + 1
@@ -214,7 +216,7 @@ endr
 	setflag ENGINE_CREDITS_SKIP
 	setflag ENGINE_HAVE_SHINY_CHARM
 	; good party
-	givepoke MEWTWO, 100, BRIGHTPOWDER
+	givepoke MEWTWO, NO_FORM, 100, BRIGHTPOWDER
 	loadvar wPartyMon1EVs+0, 252
 	loadvar wPartyMon1EVs+1, 252
 	loadvar wPartyMon1EVs+2, 252
@@ -236,8 +238,8 @@ endr
 	loadvar wPartyMon1Stats+8, HIGH(999)
 	loadvar wPartyMon1Stats+9, LOW(999)
 	; hm slaves
-	givepoke MEW, 100, LEFTOVERS
-	givepoke MEW, 100, LEFTOVERS
+	givepoke MEW, NO_FORM, 100, LEFTOVERS
+	givepoke MEW, NO_FORM, 100, LEFTOVERS
 	loadvar wPartyMon2Moves+0, FLY
 	loadvar wPartyMon2Moves+1, SURF
 	loadvar wPartyMon2Moves+2, STRENGTH
@@ -254,6 +256,27 @@ endr
 	loadvar wPartyMon3PP+1, 15
 	loadvar wPartyMon3PP+2, 15
 	loadvar wPartyMon3PP+3, 15
+	; variant form test
+;	givepoke RATTATA,   ALOLAN_FORM, 50
+;	givepoke RATICATE,  ALOLAN_FORM, 50
+;	givepoke SANDSHREW, ALOLAN_FORM, 50
+;	givepoke SANDSLASH, ALOLAN_FORM, 50
+;	givepoke VULPIX,    ALOLAN_FORM, 50
+;	givepoke NINETALES, ALOLAN_FORM, 50
+;	givepoke DIGLETT,   ALOLAN_FORM, 50
+;	givepoke DUGTRIO,   ALOLAN_FORM, 50
+;	givepoke MEOWTH,    ALOLAN_FORM, 50
+;	givepoke PERSIAN,   ALOLAN_FORM, 50
+;	givepoke GEODUDE,   ALOLAN_FORM, 50
+;	givepoke GRAVELER,  ALOLAN_FORM, 50
+;	givepoke GOLEM,     ALOLAN_FORM, 50
+;	givepoke GRIMER,    ALOLAN_FORM, 50
+;	givepoke MUK,       ALOLAN_FORM, 50
+	givepoke RAICHU,    ALOLAN_FORM, 50
+	givepoke EXEGGUTOR, ALOLAN_FORM, 50
+	givepoke MAROWAK,   ALOLAN_FORM, 50
+	givepoke PONYTA,    GALARIAN_FORM, 50
+	givepoke RAPIDASH,  GALARIAN_FORM, 50
 	; fill pokedex
 	callasm FillPokedex
 	; intro events

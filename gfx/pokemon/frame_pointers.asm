@@ -17,16 +17,16 @@ FramesPointers:
 	dw PidgeyFrames
 	dw PidgeottoFrames
 	dw PidgeotFrames
-	dw RattataFrames
-	dw RaticateFrames
+	dw -1 ; see RattataFramesPointers
+	dw -1 ; see RaticateFramesPointers
 	dw MarillFrames
 	dw AzumarillFrames
 	dw EkansFrames
 	dw -1 ; see ArbokFramesPointers
 	dw -1 ; see PikachuFramesPointers
-	dw RaichuFrames
-	dw SandshrewFrames
-	dw SandslashFrames
+	dw -1 ; see RaichuFramesPointers
+	dw -1 ; see SandshrewFramesPointers
+	dw -1 ; see SandslashFramesPointers
 	dw NidoranFFrames
 	dw NidorinaFrames
 	dw NidoqueenFrames
@@ -35,8 +35,8 @@ FramesPointers:
 	dw NidokingFrames
 	dw ClefairyFrames
 	dw ClefableFrames
-	dw VulpixFrames
-	dw NinetalesFrames
+	dw -1 ; see VulpixFramesPointers
+	dw -1 ; see NinetalesFramesPointers
 	dw JigglypuffFrames
 	dw WigglytuffFrames
 	dw ZubatFrames
@@ -48,10 +48,10 @@ FramesPointers:
 	dw ParasectFrames
 	dw VenonatFrames
 	dw VenomothFrames
-	dw DiglettFrames
-	dw DugtrioFrames
-	dw MeowthFrames
-	dw PersianFrames
+	dw -1 ; see DiglettFramesPointers
+	dw -1 ; see DugtrioFramesPointers
+	dw -1 ; see MeowthFramesPointers
+	dw -1 ; see PersianFramesPointers
 	dw PsyduckFrames
 	dw GolduckFrames
 	dw MankeyFrames
@@ -72,11 +72,11 @@ FramesPointers:
 	dw VictreebelFrames
 	dw TentacoolFrames
 	dw TentacruelFrames
-	dw GeodudeFrames
-	dw GravelerFrames
-	dw GolemFrames
-	dw PonytaFrames
-	dw RapidashFrames
+	dw -1 ; see GeodudeFramesPointers
+	dw -1 ; see GravelerFramesPointers
+	dw -1 ; see GolemFramesPointers
+	dw -1 ; see PonytaFramesPointers
+	dw -1 ; see RapidashFramesPointers
 	dw SlowpokeFrames
 	dw SlowbroFrames
 	dw MagnemiteFrames
@@ -86,8 +86,8 @@ FramesPointers:
 	dw DodrioFrames
 	dw SeelFrames
 	dw DewgongFrames
-	dw GrimerFrames
-	dw MukFrames
+	dw -1 ; see GrimerFramesPointers
+	dw -1 ; see MukFramesPointers
 	dw ShellderFrames
 	dw CloysterFrames
 	dw GastlyFrames
@@ -101,9 +101,9 @@ FramesPointers:
 	dw VoltorbFrames
 	dw ElectrodeFrames
 	dw ExeggcuteFrames
-	dw ExeggutorFrames
+	dw -1 ; see ExeggutorFramesPointers
 	dw CuboneFrames
-	dw MarowakFrames
+	dw -1 ; see MarowakFramesPointers
 	dw HitmonleeFrames
 	dw HitmonchanFrames
 	dw KoffingFrames
