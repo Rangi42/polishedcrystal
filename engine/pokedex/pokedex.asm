@@ -1063,9 +1063,9 @@ PlaceFrontpicAtHL:
 	ret
 
 String_SEEN:
-	rawchar "Seen", $ff
+	db "Seen", $ff
 String_OWN:
-	rawchar "Own", $ff
+	db "Own", $ff
 String_SELECT_OPTION:
 ;	db $3b, $48, $49, $4a, $44, $45, $46, $47 ; SELECT > OPTION
 	db $3b, $41, $42, $43, $44, $45, $46, $47
