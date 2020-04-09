@@ -1201,7 +1201,7 @@ wKurtApricornQuantity:: db
 
 wPlayerDataEnd::
 
-wCuMapData::
+wCurMapData::
 
 wVisitedSpawns:: flag_array NUM_SPAWNS
 
@@ -1225,7 +1225,7 @@ wYCoord:: db ; current y coordinate relative to top-left corner of current map
 wXCoord:: db ; current x coordinate relative to top-left corner of current map
 wScreenSave:: ds SCREEN_META_WIDTH * SCREEN_META_HEIGHT
 
-wCuMapDataEnd::
+wCurMapDataEnd::
 
 
 SECTION "Party", WRAMX
