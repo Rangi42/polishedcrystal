@@ -63,7 +63,7 @@ ReceptionistScript_0x9e3e2:
 	opentext
 	writetext Text_BattleTowerWelcomesYou
 	buttonsound
-	special Special_BattleTower_CheckNewSaveFile ; if new save file: bit 1, [sBattleTowerNewSaveFile]
+	special Special_BattleTower_CheckNewSaveFile ; if new save file: bit 1, [sBattleTowerSaveFileFlags]
 	ifnotequal $0, Script_Menu_ChallengeExplanationCancel
 	jump Script_BattleTowerIntroductionYesNo
 
@@ -89,7 +89,7 @@ Script_ChoseChallenge:
 	special Special_TryQuickSave
 	iffalse Script_Menu_ChallengeExplanationCancel
 	setscene $1
-	special Special_BattleTower_MarkNewSaveFile ; set 1, [sBattleTowerNewSaveFile]
+	special Special_BattleTower_MarkNewSaveFile ; set 1, [sBattleTowerSaveFileFlags]
 	special Special_BattleTower_BeginChallenge
 	writetext Text_RightThisWayToYourBattleRoom
 	waitbutton

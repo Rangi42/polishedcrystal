@@ -188,7 +188,7 @@ NamingScreen:
 	jp _InitSpriteAnimStruct
 
 .StoreMonIconParams:
-	ld a, PKMN_NAME_LENGTH - 1
+	ld a, MON_NAME_LENGTH - 1
 	hlcoord 5, 6
 	jr .StoreParams
 
@@ -387,7 +387,7 @@ NamingScreenJoypadLoop:
 	ld a, [wcf64]
 	and a ; 0?
 	ret nz
-	ld a, [wNamingScreenCurrNameLength]
+	ld a, [wNamingScreenCurNameLength]
 	dec a ; 1?
 	jr z, .select
 	ret
@@ -633,14 +633,14 @@ NamingScreen_TryAddCharacter:
 MailComposition_TryAddCharacter:
 	ld a, [wNamingScreenMaxNameLength]
 	ld c, a
-	ld a, [wNamingScreenCurrNameLength]
+	ld a, [wNamingScreenCurNameLength]
 	cp c
 	ret nc
 
 	ld a, [wNamingScreenLastCharacter]
 	call NamingScreen_GetTextCursorPosition
 	ld [hl], a
-	ld hl, wNamingScreenCurrNameLength
+	ld hl, wNamingScreenCurNameLength
 	inc [hl]
 	call NamingScreen_GetTextCursorPosition
 	ld a, [hl]
@@ -655,7 +655,7 @@ MailComposition_TryAddCharacter:
 	ret
 
 NamingScreen_DeleteCharacter:
-	ld hl, wNamingScreenCurrNameLength
+	ld hl, wNamingScreenCurNameLength
 	ld a, [hl]
 	and a
 	ret z
@@ -675,7 +675,7 @@ NamingScreen_GetTextCursorPosition:
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	ld a, [wNamingScreenCurrNameLength]
+	ld a, [wNamingScreenCurNameLength]
 	ld e, a
 	ld d, 0
 	add hl, de
@@ -803,7 +803,7 @@ LoadNamingScreenGFX:
 	ld [wJumptableIndex], a
 	ld [wcf64], a
 	ldh [hBGMapMode], a
-	ld [wNamingScreenCurrNameLength], a
+	ld [wNamingScreenCurNameLength], a
 	ld a, $7
 	ldh [hWX], a
 	ret
@@ -1021,7 +1021,7 @@ INCBIN "gfx/icons/mail2.2bpp.lz"
 	call NamingScreen_GetLastCharacter
 	call MailComposition_TryAddLastCharacter
 	jr c, .start
-	ld hl, wNamingScreenCurrNameLength
+	ld hl, wNamingScreenCurNameLength
 	ld a, [hl]
 	cp $10
 	ret nz
@@ -1047,7 +1047,7 @@ INCBIN "gfx/icons/mail2.2bpp.lz"
 
 .b
 	call NamingScreen_DeleteCharacter
-	ld hl, wNamingScreenCurrNameLength
+	ld hl, wNamingScreenCurNameLength
 	ld a, [hl]
 	cp $10
 	ret nz

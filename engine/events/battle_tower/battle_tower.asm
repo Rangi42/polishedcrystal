@@ -135,7 +135,7 @@ ReadBTTrainerParty:
 	ld e, a
 	ld a, [wBGMapBuffer + 1]
 	ld d, a
-	ld bc, PKMN_NAME_LENGTH
+	ld bc, MON_NAME_LENGTH
 	rst CopyBytes
 	ld a, e
 	ld [wBGMapBuffer], a
@@ -191,9 +191,9 @@ Special_BattleTower_CheckNewSaveFile:
 	and a
 	ret z
 
-	ld a, BANK(sBattleTowerNewSaveFile)
+	ld a, BANK(sBattleTowerSaveFileFlags)
 	call GetSRAMBank
-	ld a, [sBattleTowerNewSaveFile]
+	ld a, [sBattleTowerSaveFileFlags]
 	and $2
 	ldh [hScriptVar], a
 	jp CloseSRAM
@@ -216,11 +216,11 @@ Special_BattleTower_SetChallengeState:
 	jp CloseSRAM
 
 Special_BattleTower_MarkNewSaveFile:
-	ld a, BANK(sBattleTowerNewSaveFile)
+	ld a, BANK(sBattleTowerSaveFileFlags)
 	call GetSRAMBank
-	ld a, [sBattleTowerNewSaveFile]
+	ld a, [sBattleTowerSaveFileFlags]
 	or $2
-	ld [sBattleTowerNewSaveFile], a
+	ld [sBattleTowerSaveFileFlags], a
 	jp CloseSRAM
 
 Special_BattleTower_SaveLevelGroup:

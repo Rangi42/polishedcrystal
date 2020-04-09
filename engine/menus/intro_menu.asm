@@ -60,7 +60,7 @@ _NewGame_FinishSetup:
 	call ProfElmSpeech
 	call InitializeWorld
 	ld a, 1
-	ld [wPreviousLandmark], a
+	ld [wPrevLandmark], a
 
 	ld a, SPAWN_HOME
 	ld [wDefaultSpawnpoint], a
@@ -714,7 +714,7 @@ ElmText7:
 
 InitGender:
 	ld hl, WhitePal
-	ld de, wUnknBGPals palette 0
+	ld de, wBGPals1 palette 0
 	ld bc, 1 palettes
 	call FarCopyColorWRAM
 	ld c, 15

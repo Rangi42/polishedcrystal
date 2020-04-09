@@ -86,12 +86,12 @@ CopyMenuData2::
 	push de
 	push bc
 	push af
-	ld hl, wMenuData2Pointer
+	ld hl, wMenuDataPointer
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	ld de, wMenuData2Flags
-	ld bc, wMenuData2End - wMenuData2Flags
+	ld de, wMenuDataFlags
+	ld bc, wMenuDataEnd - wMenuDataFlags
 	rst CopyBytes
 	jp PopAFBCDEHL
 
@@ -108,10 +108,10 @@ GetWindowStackTop::
 
 PlaceVerticalMenuItems::
 	call CopyMenuData2
-	ld a, [wMenuData2Items]
+	ld a, [wMenuDataItems]
 	and a
 	jp z, SetUpVariableDataMenu
-	ld hl, wMenuData2Pointer
+	ld hl, wMenuDataPointer
 	ld a, [hli]
 	ld d, [hl]
 	ld e, a
@@ -131,7 +131,7 @@ PlaceVerticalMenuItems::
 	dec b
 	jr nz, .loop
 
-	ld a, [wMenuData2Flags]
+	ld a, [wMenuDataFlags]
 	bit 4, a
 	ret z
 
@@ -158,14 +158,14 @@ GetMenuTextStartCoord::
 	ld c, a
 	inc c
 ; bit 6: if not set, leave extra room on top
-	ld a, [wMenuData2Flags]
+	ld a, [wMenuDataFlags]
 	bit 6, a
 	jr nz, .bit_6_set
 	inc b
 
 .bit_6_set
 ; bit 7: if set, leave extra room on the left
-	ld a, [wMenuData2Flags]
+	ld a, [wMenuDataFlags]
 	bit 7, a
 	ret z
 	inc c
@@ -249,8 +249,8 @@ Coord2Absolute:
 	ret
 
 CopyMenuDataHeader::
-	ld de, wMenuDataHeader
-	ld bc, wMenuDataHeaderEnd - wMenuDataHeader
+	ld de, wMenuHeader
+	ld bc, wMenuHeaderEnd - wMenuHeader
 	rst CopyBytes
 	ldh a, [hROMBank]
 	ld [wMenuDataBank], a
@@ -299,7 +299,7 @@ VerticalMenu::
 	call UpdateSprites
 	call PlaceVerticalMenuItems
 	call ApplyTilemap
-	ld a, [wMenuData2Flags]
+	ld a, [wMenuDataFlags]
 	bit 7, a
 	jr z, .cancel
 	call InitVerticalMenuCursor
@@ -464,7 +464,7 @@ AutomaticGetMenuBottomCoord::
 	ld a, [wMenuBorderRightCoord]
 	sub c
 	ld c, a
-	ld a, [wMenuData2Items]
+	ld a, [wMenuDataItems]
 	add a
 	inc a
 	ld b, a
@@ -474,7 +474,7 @@ AutomaticGetMenuBottomCoord::
 	ret
 
 GetMenuIndexSet::
-	ld hl, wMenuData2IndicesPointer
+	ld hl, wMenuDataIndicesPointer
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
@@ -494,7 +494,7 @@ GetMenuIndexSet::
 	ld d, h
 	ld e, l
 	ld a, [hl]
-	ld [wMenuData2Items], a
+	ld [wMenuDataItems], a
 	ret
 
 RunMenuItemPrintingFunction::
@@ -511,7 +511,7 @@ RunMenuItemPrintingFunction::
 	push hl
 	ld d, h
 	ld e, l
-	ld hl, wMenuData2DisplayFunctionPointer
+	ld hl, wMenuDataDisplayFunctionPointer
 	call IndirectHL
 	pop hl
 	ld de, 2 * SCREEN_WIDTH
@@ -522,12 +522,12 @@ RunMenuItemPrintingFunction::
 InitMenuCursorAndButtonPermissions::
 	call InitVerticalMenuCursor
 	ld hl, wMenuJoypadFilter
-	ld a, [wMenuData2Flags]
+	ld a, [wMenuDataFlags]
 	bit 3, a
 	jr z, .disallow_select
 	set START_F, [hl]
 .disallow_select
-	ld a, [wMenuData2Flags]
+	ld a, [wMenuDataFlags]
 	bit 2, a
 	ret z
 	set D_LEFT_F, [hl]
@@ -595,7 +595,7 @@ ContinueGettingMenuJoypad:
 
 PlaceMenuStrings::
 	push de
-	ld hl, wMenuData2PointerTableAddr
+	ld hl, wMenuDataPointerTableAddr
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
@@ -626,7 +626,7 @@ MenuJumptable::
 GetMenuDataPointerTableEntry::
 	ld e, a
 	ld d, $0
-	ld hl, wMenuData2PointerTableAddr
+	ld hl, wMenuDataPointerTableAddr
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
@@ -639,9 +639,9 @@ GetMenuDataPointerTableEntry::
 ClearWindowData::
 	ld hl, wWindowStackPointer
 	call .bytefill
-	ld hl, wMenuDataHeader
+	ld hl, wMenuHeader
 	call .bytefill
-	ld hl, wMenuData2Flags
+	ld hl, wMenuDataFlags
 	call .bytefill
 	ld hl, w2DMenuCursorInitY
 	call .bytefill
@@ -694,10 +694,10 @@ MenuTextBoxWaitButton::
 	jp ExitMenu
 
 Place2DMenuItemName::
-	ldh [hBuffer], a
+	ldh [hTempBank], a
 	ldh a, [hROMBank]
 	push af
-	ldh a, [hBuffer]
+	ldh a, [hTempBank]
 	rst Bankswitch
 
 	rst PlaceString
@@ -708,7 +708,7 @@ Place2DMenuItemName::
 
 _2DMenu::
 	ldh a, [hROMBank]
-	ld [wMenuData2_2DMenuItemStringsBank], a
+	ld [wMenuData_2DMenuItemStringsBank], a
 	farcall _2DMenu_
 	ld a, [wMenuCursorBuffer]
 	ret

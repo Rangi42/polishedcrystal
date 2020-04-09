@@ -359,7 +359,7 @@ MailboxPC_PrintMailAuthor:
 
 MailboxPC:
 	xor a
-	ld [wOBPals palette 6], a
+	ld [wOBPals2 palette 6], a
 	ld a, 1
 	ld [wCurMessageIndex], a
 .loop
@@ -373,11 +373,11 @@ MailboxPC:
 
 	ld a, [wCurMessageIndex]
 	ld [wMenuCursorBuffer], a
-	ld a, [wOBPals palette 6]
+	ld a, [wOBPals2 palette 6]
 	ld [wMenuScrollPosition], a
 	call ScrollingMenu
 	ld a, [wMenuScrollPosition]
-	ld [wOBPals palette 6], a
+	ld [wOBPals2 palette 6], a
 	ld a, [wMenuCursorY]
 	ld [wCurMessageIndex], a
 

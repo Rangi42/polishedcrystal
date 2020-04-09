@@ -13,7 +13,7 @@ BSOD:
 	ld a, 5
 	ldh [rSVBK], a
 	ld hl, .Palette
-	ld de, wBGPals
+	ld de, wBGPals2
 	ld bc, 1 palettes
 	rst CopyBytes
 	pop af

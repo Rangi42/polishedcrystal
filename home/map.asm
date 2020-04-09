@@ -1,9 +1,9 @@
 ; Functions dealing with rendering and interacting with maps.
 
 CheckTriggers::
-; Checks wCurrentMapTriggerPointer.  If it's empty, returns -1 in a.  Otherwise, returns the active trigger ID in a.
+; Checks wCurMapSceneScriptPointer.  If it's empty, returns -1 in a.  Otherwise, returns the active trigger ID in a.
 	push hl
-	ld hl, wCurrentMapTriggerPointer
+	ld hl, wCurMapSceneScriptPointer
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
@@ -17,34 +17,34 @@ CheckTriggers::
 	ret
 
 GetCurrentMapTrigger::
-; Grabs the wram map trigger pointer for the current map and loads it into wCurrentMapTriggerPointer.
-; If there are no triggers, both bytes of wCurrentMapTriggerPointer are wiped clean.
+; Grabs the wram map trigger pointer for the current map and loads it into wCurMapSceneScriptPointer.
+; If there are no triggers, both bytes of wCurMapSceneScriptPointer are wiped clean.
 ; Copy the current map group and number into bc.  This is needed for GetMapTrigger.
 	ld a, [wMapGroup]
 	ld b, a
 	ld a, [wMapNumber]
 	ld c, a
-; Blank out wCurrentMapTriggerPointer; this is the default scenario.
+; Blank out wCurMapSceneScriptPointer; this is the default scenario.
 	xor a
-	ld [wCurrentMapTriggerPointer], a
-	ld [wCurrentMapTriggerPointer + 1], a
+	ld [wCurMapSceneScriptPointer], a
+	ld [wCurMapSceneScriptPointer + 1], a
 	call GetMapTrigger
 	ret c ; The map is not in the trigger table
-; Load the trigger table pointer from de into wCurrentMapTriggerPointer
+; Load the trigger table pointer from de into wCurMapSceneScriptPointer
 	ld a, e
-	ld [wCurrentMapTriggerPointer], a
+	ld [wCurMapSceneScriptPointer], a
 	ld a, d
-	ld [wCurrentMapTriggerPointer + 1], a
+	ld [wCurMapSceneScriptPointer + 1], a
 	xor a
 	ret
 
 GetMapTrigger::
 ; Searches the trigger table for the map group and number loaded in bc, and returns the wram pointer in de.
 ; If the map is not in the trigger table, returns carry.
-	anonbankpush MapTriggers
+	anonbankpush MapScenes
 
 .Function:
-	ld hl, MapTriggers
+	ld hl, MapScenes
 	ld de, 4
 	jr .handleLoop
 .loop
@@ -121,12 +121,12 @@ GetDestinationWarpNumber::
 	ld a, [wPlayerStandingMapX]
 	sub $4
 	ld d, a
-	ld a, [wCurrMapWarpCount]
+	ld a, [wCurMapWarpCount]
 	and a
 	ret z
 
 	ld c, a
-	ld hl, wCurrMapWarpHeaderPointer
+	ld hl, wCurMapWarpsPointer
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
@@ -157,7 +157,7 @@ GetDestinationWarpNumber::
 	inc hl
 	inc hl
 
-	ld a, [wCurrMapWarpCount]
+	ld a, [wCurMapWarpCount]
 	inc a
 	sub c
 	ld c, a
@@ -178,7 +178,7 @@ CopyWarpData::
 
 .CopyWarpData:
 	push bc
-	ld hl, wCurrMapWarpHeaderPointer
+	ld hl, wCurMapWarpsPointer
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
@@ -231,7 +231,7 @@ CheckIndoorMap::
 	ret
 
 LoadMapAttributes::
-	ld a, [wTileset]
+	ld a, [wMapTileset]
 	ld [wOldTileset], a
 	call CopyMapHeaders
 	call SwitchToMapScriptHeaderBank
@@ -247,11 +247,11 @@ LoadMapAttributes_Continue::
 	; fallthrough
 ReadMapScripts::
 	push af
-	ld hl, wMapScriptHeaderPointer
+	ld hl, wMapScriptsPointer
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	call ReadMapTriggers
+	call ReadMapSceneScripts
 	call ReadMapCallbacks
 	call ReadWarps
 	call ReadCoordEvents
@@ -267,17 +267,17 @@ ReadObjectEvents::
 	ld hl, wMap1Object
 	ld a, [de]
 	inc de
-	ld [wCurrentMapPersonEventCount], a
+	ld [wCurMapObjectEventCount], a
 	ld a, e
-	ld [wCurrentMapPersonEventHeaderPointer], a
+	ld [wCurMapObjectEventsPointer], a
 	ld a, d
-	ld [wCurrentMapPersonEventHeaderPointer + 1], a
+	ld [wCurMapObjectEventsPointer + 1], a
 
-	ld a, [wCurrentMapPersonEventCount]
+	ld a, [wCurMapObjectEventCount]
 	call CopyMapObjectHeaders
 
-; get NUM_OBJECTS - 1 - [wCurrentMapPersonEventCount]
-	ld a, [wCurrentMapPersonEventCount]
+; get NUM_OBJECTS - 1 - [wCurMapObjectEventCount]
+	ld a, [wCurMapObjectEventCount]
 	cp NUM_OBJECTS - 1
 	jr nc, .skip
 	; a = NUM_OBJECTS - 1 - a
@@ -301,7 +301,7 @@ ReadObjectEvents::
 	ret
 
 CopySecondMapHeader::
-	ld de, wMapHeader
+	ld de, wMapAttributes
 	ld c, 10 ; size of the second map header
 .loop
 	ld a, [hli]
@@ -361,14 +361,14 @@ GetMapConnection::
 	jr nz, .loop
 	ret
 
-ReadMapTriggers::
+ReadMapSceneScripts::
 	ld a, [hli] ; trigger count
 	ld c, a
-	ld [wCurrMapTriggerCount], a ; current map trigger count
+	ld [wCurMapSceneScriptCount], a ; current map trigger count
 	ld a, l
-	ld [wCurrMapTriggerHeaderPointer], a ; map trigger pointer
+	ld [wCurMapSceneScriptsPointer], a ; map trigger pointer
 	ld a, h
-	ld [wCurrMapTriggerHeaderPointer + 1], a
+	ld [wCurMapSceneScriptsPointer + 1], a
 	ld a, c
 	and a
 	ret z
@@ -380,11 +380,11 @@ ReadMapTriggers::
 ReadMapCallbacks::
 	ld a, [hli]
 	ld c, a
-	ld [wCurrMapCallbackCount], a
+	ld [wCurMapCallbackCount], a
 	ld a, l
-	ld [wCurrMapCallbackHeaderPointer], a
+	ld [wCurMapCallbacksPointer], a
 	ld a, h
-	ld [wCurrMapCallbackHeaderPointer + 1], a
+	ld [wCurMapCallbacksPointer + 1], a
 	ld a, c
 	and a
 	ret z
@@ -396,11 +396,11 @@ ReadMapCallbacks::
 ReadWarps::
 	ld a, [hli]
 	ld c, a
-	ld [wCurrMapWarpCount], a
+	ld [wCurMapWarpCount], a
 	ld a, l
-	ld [wCurrMapWarpHeaderPointer], a
+	ld [wCurMapWarpsPointer], a
 	ld a, h
-	ld [wCurrMapWarpHeaderPointer + 1], a
+	ld [wCurMapWarpsPointer + 1], a
 	ld a, c
 	and a
 	ret z
@@ -411,11 +411,11 @@ ReadWarps::
 ReadCoordEvents::
 	ld a, [hli]
 	ld c, a
-	ld [wCurrentMapXYTriggerCount], a
+	ld [wCurMapCoordEventCount], a
 	ld a, l
-	ld [wCurrentMapXYTriggerHeaderPointer], a
+	ld [wCurMapCoordEventsPointer], a
 	ld a, h
-	ld [wCurrentMapXYTriggerHeaderPointer + 1], a
+	ld [wCurMapCoordEventsPointer + 1], a
 
 	ld a, c
 	and a
@@ -428,11 +428,11 @@ ReadCoordEvents::
 ReadSignposts::
 	ld a, [hli]
 	ld c, a
-	ld [wCurrentMapSignpostCount], a
+	ld [wCurMapBGEventCount], a
 	ld a, l
-	ld [wCurrentMapSignpostHeaderPointer], a
+	ld [wCurMapBGEventsPointer], a
 	ld a, h
-	ld [wCurrentMapSignpostHeaderPointer + 1], a
+	ld [wCurMapBGEventsPointer + 1], a
 
 	ld a, c
 	and a
@@ -477,7 +477,7 @@ ClearObjectStructs::
 RestoreFacingAfterWarp::
 	call SwitchToMapScriptHeaderBank
 
-	ld hl, wMapScriptHeaderPointer
+	ld hl, wMapScriptsPointer
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
@@ -518,8 +518,8 @@ LoadBlockData::
 	push af
 	ld a, 2
 	ldh [hVBlank], a
-	ld hl, wOverworldMap
-	ld bc, wOverworldMapEnd - wOverworldMap
+	ld hl, wOverworldMapBlocks
+	ld bc, wOverworldMapBlocksEnd - wOverworldMapBlocks
 	xor a
 	rst ByteFill
 	call ChangeMap
@@ -531,9 +531,9 @@ LoadBlockData::
 	ret
 
 ChangeMap::
-	ld a, [wMapBlockDataBank]
+	ld a, [wMapBlocksBank]
 	ld b, a
-	ld hl, wMapBlockDataPointer
+	ld hl, wMapBlocksPointer
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
@@ -553,7 +553,7 @@ ChangeMap::
 	ldh [hConnectedMapWidth], a
 	add $6
 	ldh [hConnectionStripLength], a
-	ld hl, wOverworldMap
+	ld hl, wOverworldMapBlocks
 
 	ld c, a
 	ld b, 0
@@ -806,7 +806,7 @@ CallMapScript::
 	ld a, [wScriptRunning]
 	and a
 	ret nz
-	ld a, [wMapScriptHeaderBank]
+	ld a, [wMapScriptsBank]
 	jr CallScript
 
 RunMapCallback::
@@ -818,7 +818,7 @@ RunMapCallback::
 	call .FindCallback
 	jr nc, .done
 
-	ld a, [wMapScriptHeaderBank]
+	ld a, [wMapScriptsBank]
 	ld b, a
 	ld d, h
 	ld e, l
@@ -830,11 +830,11 @@ RunMapCallback::
 	ret
 
 .FindCallback:
-	ld a, [wCurrMapCallbackCount]
+	ld a, [wCurMapCallbackCount]
 	ld c, a
 	and a
 	ret z
-	ld hl, wCurrMapCallbackHeaderPointer
+	ld hl, wCurMapCallbacksPointer
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
@@ -1262,7 +1262,7 @@ _LoadTileset0:
 	ldh [rSVBK], a
 
 	; Check roof tiles
-	ld a, [wTileset]
+	ld a, [wMapTileset]
 	cp TILESET_JOHTO_TRADITIONAL
 	jr z, .load_roof
 	cp TILESET_JOHTO_MODERN
@@ -1683,7 +1683,7 @@ GetBlockLocation::
 	add 6
 	ld c, a
 	ld b, 0
-	ld hl, wOverworldMap + 1
+	ld hl, wOverworldMapBlocks + 1
 	add hl, bc
 	ld a, e
 	srl a
@@ -1719,7 +1719,7 @@ CheckFacingSign::
 	sub 4
 	ld e, a
 ; If there are no signposts, we don't need to be here.
-	ld a, [wCurrentMapSignpostCount]
+	ld a, [wCurMapBGEventCount]
 	and a
 	ret z
 
@@ -1735,7 +1735,7 @@ CheckFacingSign::
 
 CheckIfFacingTileCoordIsSign::
 ; Checks to see if you are facing a signpost.  If so, copies it into wEngineBuffer1 and sets carry.
-	ld hl, wCurrentMapSignpostHeaderPointer
+	ld hl, wCurMapBGEventsPointer
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
@@ -1763,7 +1763,7 @@ CheckIfFacingTileCoordIsSign::
 
 .copysign
 	pop hl
-	ld de, wCurSignpostYCoord
+	ld de, wCurBGEventYCoord
 	ld bc, 5 ; signpost event length
 	rst CopyBytes
 	scf
@@ -1771,7 +1771,7 @@ CheckIfFacingTileCoordIsSign::
 
 CheckCurrentMapXYTriggers::
 ; If there are no xy triggers, we don't need to be here.
-	ld a, [wCurrentMapXYTriggerCount]
+	ld a, [wCurMapCoordEventCount]
 	and a
 	ret z
 ; Copy the trigger count into c.
@@ -1787,7 +1787,7 @@ CheckCurrentMapXYTriggers::
 
 .TriggerCheck:
 ; Checks to see if you are standing on an xy-trigger.  If yes, copies the trigger to wEngineBuffer1 and sets carry.
-	ld hl, wCurrentMapXYTriggerHeaderPointer
+	ld hl, wCurMapCoordEventsPointer
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
@@ -1816,7 +1816,7 @@ CheckCurrentMapXYTriggers::
 	jr nz, .next
 	ld a, [hli]
 	cp d
-	jr z, .copytrigger
+	jr z, .copy_coord_event
 
 .next
 	pop hl
@@ -1831,9 +1831,9 @@ CheckCurrentMapXYTriggers::
 	xor a
 	ret
 
-.copytrigger
+.copy_coord_event
 	pop hl
-	ld de, wCurCoordEventTriggerID
+	ld de, wCurCoordEventSceneID
 	ld bc, 5 ; xy-trigger size
 	rst CopyBytes
 	scf
@@ -2011,8 +2011,8 @@ PartiallyCopyMapHeader::
 	rst Bankswitch
 
 	call GetMapHeaderPointer
-	ld de, wSecondMapHeaderBank
-	ld bc, wMapHeader - wSecondMapHeaderBank
+	ld de, wMapAttributesBank
+	ld bc, wMapAttributes - wMapAttributesBank
 	rst CopyBytes
 
 	pop af
@@ -2020,7 +2020,7 @@ PartiallyCopyMapHeader::
 	ret
 
 SwitchToMapScriptHeaderBank::
-	ld a, [wMapScriptHeaderBank]
+	ld a, [wMapScriptsBank]
 	rst Bankswitch
 	ret
 
@@ -2215,7 +2215,7 @@ TilesetUnchanged::
 	push bc
 	ld a, [wOldTileset]
 	ld b, a
-	ld a, [wTileset]
+	ld a, [wMapTileset]
 	cp b
 	pop bc
 	ret
@@ -2227,13 +2227,13 @@ LoadTilesetHeader::
 	push bc
 
 	ld hl, Tilesets
-	ld bc, wTilesetHeaderEnd - wTilesetHeader
-	ld a, [wTileset]
+	ld bc, wTilesetEnd - wTileset
+	ld a, [wMapTileset]
 	dec a
 	rst AddNTimes
 
-	ld de, wTilesetHeader
-	ld bc, wTilesetHeaderEnd - wTilesetHeader
+	ld de, wTileset
+	ld bc, wTilesetEnd - wTileset
 
 	ld a, BANK(Tilesets)
 	call FarCopyBytes

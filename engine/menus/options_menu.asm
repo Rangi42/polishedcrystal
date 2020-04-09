@@ -11,7 +11,7 @@ OptionsMenu:
 	ld de, StringOptions1
 	rst PlaceString
 	xor a
-	ld [wCurrentOptionsPage], a
+	ld [wCurOptionsPage], a
 	call OptionsMenu_LoadOptions
 
 	xor a
@@ -59,7 +59,7 @@ OptionsMenu_LoadOptions:
 	inc [hl]
 	dec c
 	jr nz, .print_text_loop
-	ld a, [wCurrentOptionsPage]
+	ld a, [wCurOptionsPage]
 	and a
 	call z, UpdateFrame
 	ld a, 1
@@ -101,7 +101,7 @@ StringOptions2:
 	db "Done@"
 
 GetOptionPointer:
-	ld a, [wCurrentOptionsPage]
+	ld a, [wCurOptionsPage]
 	and a
 	ld a, [wJumptableIndex]
 	jr z, .page1
@@ -289,7 +289,7 @@ Options_RunningShoes:
 	db "On @"
 
 Options_Frame:
-	ld hl, wTextBoxFrame
+	ld hl, wTextboxFrame
 	ldh a, [hJoyPressed]
 	bit D_LEFT_F, a
 	jr nz, .LeftPressed
@@ -316,7 +316,7 @@ Options_Frame:
 .Save:
 	ld [hl], a
 UpdateFrame:
-	ld a, [wTextBoxFrame]
+	ld a, [wTextboxFrame]
 	hlcoord 16, 11 ; where on the screen the number is drawn
 	add "1"
 	ld [hl], a
@@ -585,7 +585,7 @@ Options_Unused:
 	ret
 
 Options_NextPrevious:
-	ld hl, wCurrentOptionsPage
+	ld hl, wCurOptionsPage
 	ldh a, [hJoyPressed]
 	and A_BUTTON | D_LEFT | D_RIGHT
 	jr z, .NonePressed
@@ -639,7 +639,7 @@ OptionsControl:
 
 	cp $4
 	jr nz, .DownOK
-	ld a, [wCurrentOptionsPage]
+	ld a, [wCurOptionsPage]
 	and a
 	jr z, .DownOK
 	ld [hl], $6 ; skip missing options on page 2
@@ -660,7 +660,7 @@ OptionsControl:
 
 	cp $6
 	jr nz, .UpOK
-	ld a, [wCurrentOptionsPage]
+	ld a, [wCurOptionsPage]
 	and a
 	ld a, [hl]
 	jr z, .UpOK

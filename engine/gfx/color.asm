@@ -14,7 +14,7 @@ CheckShininess:
 	ret
 
 InitPartyMenuPalettes:
-	ld de, wUnknBGPals
+	ld de, wBGPals1
 	ld hl, PartyMenuBGPals
 rept 4
 	call LoadHLPaletteIntoDE
@@ -33,11 +33,11 @@ ApplyHPBarPals:
 	ret
 
 .Enemy:
-	ld de, wBGPals palette PAL_BATTLE_BG_PLAYER_HP + 2
+	ld de, wBGPals2 palette PAL_BATTLE_BG_PLAYER_HP + 2
 	jr .okay
 
 .Player:
-	ld de, wBGPals palette PAL_BATTLE_BG_ENEMY_HP + 2
+	ld de, wBGPals2 palette PAL_BATTLE_BG_ENEMY_HP + 2
 
 .okay
 	ld l, c
@@ -79,7 +79,7 @@ LoadPlayerStatusIconPalette:
 	ld b, 0
 	add hl, bc
 	add hl, bc
-	ld de, wUnknBGPals palette PAL_BATTLE_BG_STATUS + 2
+	ld de, wBGPals1 palette PAL_BATTLE_BG_STATUS + 2
 	ld bc, 2
 	jp FarCopyColorWRAM
 
@@ -92,7 +92,7 @@ LoadEnemyStatusIconPalette:
 	ld b, 0
 	add hl, bc
 	add hl, bc
-	ld de, wUnknBGPals palette PAL_BATTLE_BG_STATUS + 4
+	ld de, wBGPals1 palette PAL_BATTLE_BG_STATUS + 4
 	ld bc, 2
 	jp FarCopyColorWRAM
 
@@ -101,7 +101,7 @@ LoadBattleCategoryAndTypePals:
 	ld b, a
 	ld a, [wPlayerMoveStruct + MOVE_TYPE]
 	ld c, a
-	ld de, wUnknBGPals palette PAL_BATTLE_BG_TYPE_CAT + 2
+	ld de, wBGPals1 palette PAL_BATTLE_BG_TYPE_CAT + 2
 LoadCategoryAndTypePals:
 	ld hl, CategoryIconPals
 	ld a, b
@@ -145,7 +145,7 @@ LoadIconPalette:
 	add hl, hl
 	add hl, hl
 	add hl, bc
-	ld de, wUnknBGPals palette 7 + 2
+	ld de, wBGPals1 palette 7 + 2
 	ld bc, 4
 	call FarCopyColorWRAM
 	ld hl, BlackPalette
@@ -166,7 +166,7 @@ LoadTMHMIconPalette:
 rept 4
 	add hl, bc
 endr
-	ld de, wUnknBGPals palette 7 + 2
+	ld de, wBGPals1 palette 7 + 2
 	ld bc, 4
 	call FarCopyColorWRAM
 	ld hl, BlackPalette
@@ -183,11 +183,11 @@ LoadStatsScreenPals:
 	ld a, $5
 	ldh [rSVBK], a
 	ld a, [hli]
-	ld [wUnknBGPals palette 0], a
-	ld [wUnknBGPals palette 2], a
+	ld [wBGPals1 palette 0], a
+	ld [wBGPals1 palette 2], a
 	ld a, [hl]
-	ld [wUnknBGPals palette 0 + 1], a
-	ld [wUnknBGPals palette 2 + 1], a
+	ld [wBGPals1 palette 0 + 1], a
+	ld [wBGPals1 palette 2 + 1], a
 	pop af
 	ldh [rSVBK], a
 	call ApplyPals
@@ -202,7 +202,7 @@ LoadMailPalettes:
 	add hl, hl
 	ld de, MailPals
 	add hl, de
-	ld de, wUnknBGPals
+	ld de, wBGPals1
 	ld bc, 1 palettes
 	call FarCopyColorWRAM
 	call ApplyPals
@@ -300,7 +300,7 @@ ResetBGPals:
 	ld a, $5
 	ldh [rSVBK], a
 
-	ld hl, wUnknBGPals
+	ld hl, wBGPals1
 	ld c, 8
 .loop
 if !DEF(MONOCHROME)
@@ -341,8 +341,8 @@ WipeAttrMap:
 	jp _ByteFill
 
 ApplyPals:
-	ld hl, wUnknBGPals
-	ld de, wBGPals
+	ld hl, wBGPals1
+	ld de, wBGPals2
 	ld bc, 16 palettes
 	jp FarCopyColorWRAM
 
@@ -412,14 +412,14 @@ ApplyPartyMenuHPPals:
 
 InitPartyMenuOBPals:
 	ld hl, PartyMenuOBPals
-	ld de, wUnknOBPals
+	ld de, wOBPals1
 	ld bc, 8 palettes
 	jp FarCopyColorWRAM
 
 InitPokegearPalettes:
 ; This is needed because the regular palette is dark at night.
 	ld hl, PokegearOBPals
-	ld de, wUnknOBPals
+	ld de, wOBPals1
 	ld bc, 2 palettes
 	jp FarCopyColorWRAM
 
@@ -529,7 +529,7 @@ LoadPokemonPalette:
 	; hl = palette
 	call GetMonPalettePointer
 	; load palette in BG 7
-	ld de, wUnknBGPals palette 7 + 2
+	ld de, wBGPals1 palette 7 + 2
 	ld bc, 4
 	jp FarCopyColorWRAM
 
@@ -545,7 +545,7 @@ LoadPartyMonPalette:
 	; hl = palette
 	call GetMonNormalOrShinyPalettePointer
 	; load palette in BG 7
-	ld de, wUnknBGPals palette PAL_BG_TEXT + 2
+	ld de, wBGPals1 palette PAL_BG_TEXT + 2
 	ld bc, 4
 	call FarCopyColorWRAM
 	; hl = DVs
@@ -557,7 +557,7 @@ LoadPartyMonPalette:
 	ld b, a
 	; vary colors by DVs
 	call CopyDVsToColorVaryDVs
-	ld hl, wUnknBGPals palette PAL_BG_TEXT + 2
+	ld hl, wBGPals1 palette PAL_BG_TEXT + 2
 	jp VaryColorsByDVs
 
 LoadTrainerPalette:
@@ -566,7 +566,7 @@ LoadTrainerPalette:
 	; hl = palette
 	call GetTrainerPalettePointer
 	; load palette in BG 7
-	ld de, wUnknBGPals palette PAL_BG_TEXT + 2
+	ld de, wBGPals1 palette PAL_BG_TEXT + 2
 	ld bc, 4
 	jp FarCopyColorWRAM
 
@@ -576,7 +576,7 @@ LoadPaintingPalette:
 	; hl = palette
 	call GetPaintingPalettePointer
 	; load palette in BG 7
-	ld de, wUnknBGPals palette PAL_BG_TEXT
+	ld de, wBGPals1 palette PAL_BG_TEXT
 	ld bc, 8
 	jp FarCopyColorWRAM
 
@@ -629,9 +629,9 @@ endc
 	push af
 	ld a, $5
 	ldh [rSVBK], a
-	ld hl, wUnknBGPals
+	ld hl, wBGPals1
 	call .LoadWhitePals
-	ld hl, wBGPals
+	ld hl, wBGPals2
 	call .LoadWhitePals
 	pop af
 	ldh [rSVBK], a
@@ -681,7 +681,7 @@ LoadMapPals:
 	jr c, .got_pals
 
 	; Which palette group is based on whether we're outside or inside
-	ld a, [wPermission]
+	ld a, [wEnvironment]
 	and 7
 	ld e, a
 	ld d, 0
@@ -707,7 +707,7 @@ LoadMapPals:
 	push af
 	ld a, $5
 	ldh [rSVBK], a
-	ld hl, wUnknBGPals
+	ld hl, wBGPals1
 	ld b, 8
 .outer_loop
 	ld a, [de] ; lookup index for TilesetBGPalette
@@ -743,13 +743,13 @@ LoadMapPals:
 	ld bc, 8 palettes
 	ld hl, MapObjectPals
 	rst AddNTimes
-	ld de, wUnknOBPals
+	ld de, wOBPals1
 	ld bc, 8 palettes
 	call FarCopyColorWRAM
 
 	farcall LoadSpecialMapOBPalette
 
-	ld a, [wTileset]
+	ld a, [wMapTileset]
 	cp TILESET_FOREST ; for Yellow Forest
 	ret z
 
@@ -767,7 +767,7 @@ LoadMapPals:
 	jr .get_roof_color
 
 .not_overcast
-	ld a, [wPermission]
+	ld a, [wEnvironment]
 	cp TOWN
 	jr z, .outside
 	cp ROUTE
@@ -792,7 +792,7 @@ rept 4
 	inc hl
 endr
 .morn_day
-	ld de, wUnknBGPals palette 6 + 2
+	ld de, wBGPals1 palette 6 + 2
 	ld bc, 4
 	jp FarCopyColorWRAM
 

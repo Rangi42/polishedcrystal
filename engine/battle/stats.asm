@@ -351,7 +351,7 @@ PlayStatChangeAnim:
 	push bc
 if !DEF(MONOCHROME)
 	ld hl, StatPals
-	ld de, wUnknOBPals palette PAL_BATTLE_OB_GRAY + 2
+	ld de, wOBPals1 palette PAL_BATTLE_OB_GRAY + 2
 	ld a, [wLoweredStat]
 	and $f
 	add a

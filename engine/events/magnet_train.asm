@@ -403,13 +403,13 @@ MagnetTrain_Jumptable_FirstRunThrough:
 	ldh [rSVBK], a
 	ld a, [wTimeOfDayPal]
 	push af
-	ld a, [wPermission]
+	ld a, [wEnvironment]
 	push af
 	ld a, [wTimeOfDay]
 	and $3
 	ld [wTimeOfDayPal], a
 	ld a, $1
-	ld [wPermission], a
+	ld [wEnvironment], a
 	ld a, CGB_MAPPALS
 	call GetCGBLayout
 	call UpdateTimePals
@@ -420,7 +420,7 @@ MagnetTrain_Jumptable_FirstRunThrough:
 	ldh a, [rOBP1]
 	ld [wOBP1], a
 	pop af
-	ld [wPermission], a
+	ld [wEnvironment], a
 	pop af
 	ld [wTimeOfDayPal], a
 	pop af

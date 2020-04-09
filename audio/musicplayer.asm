@@ -113,16 +113,16 @@ MusicPlayer::
 	set LCD_STAT, [hl]
 	ldh a, [rSVBK]
 	push af
-	ld a, BANK(wBGPals)
+	ld a, BANK(wBGPals2)
 	ldh [rSVBK], a
 
 	ld hl, MusicPlayerPals
-	ld de, wBGPals
+	ld de, wBGPals2
 	ld bc, 4 palettes
 	rst CopyBytes
 
 	ld hl, MusicPlayerNotePals
-	ld de, wOBPals
+	ld de, wOBPals2
 	ld bc, 1 palettes
 	rst CopyBytes
 

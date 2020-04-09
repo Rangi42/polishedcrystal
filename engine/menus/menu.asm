@@ -1,6 +1,6 @@
 _2DMenu_::
 	ld hl, CopyMenuData2
-	ld a, [wMenuData2_2DMenuItemStringsBank]
+	ld a, [wMenuData_2DMenuItemStringsBank]
 	call FarCall_hl
 
 	call Draw2DMenu
@@ -11,7 +11,7 @@ Get2DMenuSelection:
 	call Init2DMenuCursorPosition
 	call DoMenuJoypadLoop
 	call MenuClickSound
-	ld a, [wMenuData2Flags]
+	ld a, [wMenuDataFlags]
 	bit 1, a
 	jr z, .skip
 	call GetMenuJoypad
@@ -21,7 +21,7 @@ Get2DMenuSelection:
 	jr nz, .start
 
 .skip
-	ld a, [wMenuData2Flags]
+	ld a, [wMenuDataFlags]
 	rra
 	jr c, .skip2
 	call GetMenuJoypad
@@ -56,12 +56,12 @@ Get2DMenuSelection:
 	ret
 
 GetMenuNumberOfColumns:
-	ld a, [wMenuData2Items]
+	ld a, [wMenuDataItems]
 	and $f
 	ret
 
 GetMenuNumberOfRows:
-	ld a, [wMenuData2Items]
+	ld a, [wMenuDataItems]
 	swap a
 	and $f
 	ret
@@ -72,7 +72,7 @@ Draw2DMenu:
 	call MenuBox
 
 Place2DMenuItemStrings:
-	ld hl, wMenuData2_2DMenuItemStringsAddr
+	ld hl, wMenuData_2DMenuItemStringsAddr
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
@@ -87,10 +87,10 @@ Place2DMenuItemStrings:
 	ld c, a
 .col
 	push bc
-	ld a, [wMenuData2_2DMenuItemStringsBank]
+	ld a, [wMenuData_2DMenuItemStringsBank]
 	call Place2DMenuItemName
 	inc de
-	ld a, [wMenuData2Spacing]
+	ld a, [wMenuDataSpacing]
 	ld c, a
 	ld b, 0
 	add hl, bc
@@ -103,13 +103,13 @@ Place2DMenuItemStrings:
 	pop bc
 	dec b
 	jr nz, .row
-	ld hl, wMenuData2_2DMenuFunctionAddr
+	ld hl, wMenuData_2DMenuFunctionAddr
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
 	or h
 	ret z
-	ld a, [wMenuData2_2DMenuFunctionBank]
+	ld a, [wMenuData_2DMenuFunctionBank]
 	jp FarCall_hl
 
 Init2DMenuCursorPosition:
@@ -173,7 +173,7 @@ Init2DMenuCursorPosition:
 	ld hl, w2DMenuFlags1
 	ld [hli], a
 	ld [hld], a
-	ld a, [wMenuData2Flags]
+	ld a, [wMenuDataFlags]
 	bit 5, a
 	ret z
 	set 5, [hl]
@@ -181,13 +181,13 @@ Init2DMenuCursorPosition:
 	ret
 
 .InitFlags_b:
-	ld a, [wMenuData2Spacing]
+	ld a, [wMenuDataSpacing]
 	or $20
 	ld [w2DMenuCursorOffsets], a
 	ret
 
 .InitFlags_c:
-	ld hl, wMenuData2Flags
+	ld hl, wMenuDataFlags
 	ld a, A_BUTTON
 	bit 0, [hl]
 	jr nz, .skip
@@ -638,7 +638,7 @@ Error_Cant_ExitMenu:
 	text_end
 
 _InitVerticalMenuCursor::
-	ld a, [wMenuData2Flags]
+	ld a, [wMenuDataFlags]
 	ld b, a
 	ld hl, w2DMenuCursorInitY
 	ld a, [wMenuBorderTopCoord]
@@ -653,7 +653,7 @@ _InitVerticalMenuCursor::
 	inc a
 	ld [hli], a
 ; w2DMenuNumRows
-	ld a, [wMenuData2Items]
+	ld a, [wMenuDataItems]
 	ld [hli], a
 ; w2DMenuNumCols
 	ld a, 1
@@ -688,7 +688,7 @@ _InitVerticalMenuCursor::
 	and a
 	jr z, .load_at_the_top
 	ld c, a
-	ld a, [wMenuData2Items]
+	ld a, [wMenuDataItems]
 	cp c
 	jr nc, .load_position
 .load_at_the_top

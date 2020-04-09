@@ -1519,7 +1519,7 @@ LoadStation_OaksPokemonTalk:
 	xor a ; OAKS_POKEMON_TALK
 	ld de, OaksPkmnTalkName
 LoadRadioStation:
-	ld [wCurrentRadioLine], a
+	ld [wCurRadioLine], a
 	xor a
 	ld [wNumRadioLinesPrinted], a
 	ld hl, wPokegearRadioChannelBank

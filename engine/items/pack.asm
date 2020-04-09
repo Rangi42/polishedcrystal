@@ -13,7 +13,7 @@ Pack:
 
 .done
 	call SFXDelay2
-	ld a, [wCurrPocket]
+	ld a, [wCurPocket]
 	ld [wLastPocket], a
 	ld hl, wOptions1
 	res NO_TEXT_SCROLL, [hl]
@@ -51,7 +51,7 @@ Pack:
 
 .InitItemsPocket:
 	ld a, ITEM - 1
-	ld [wCurrPocket], a
+	ld [wCurPocket], a
 	call ClearPocketList
 	call WaitBGMap_DrawPackGFX
 	jp Pack_JumptableNext
@@ -73,7 +73,7 @@ Pack:
 
 .InitMedicinePocket:
 	ld a, MEDICINE - 1
-	ld [wCurrPocket], a
+	ld [wCurPocket], a
 	call ClearPocketList
 	call WaitBGMap_DrawPackGFX
 	jp Pack_JumptableNext
@@ -95,7 +95,7 @@ Pack:
 
 .InitBallsPocket:
 	ld a, BALL - 1
-	ld [wCurrPocket], a
+	ld [wCurPocket], a
 	call ClearPocketList
 	call WaitBGMap_DrawPackGFX
 	jp Pack_JumptableNext
@@ -117,7 +117,7 @@ Pack:
 
 .InitTMHMPocket:
 	ld a, TM_HM - 1
-	ld [wCurrPocket], a
+	ld [wCurPocket], a
 	call ClearPocketList
 	call WaitBGMap_DrawPackGFX
 	jp Pack_JumptableNext
@@ -179,7 +179,7 @@ Pack:
 
 .InitBerriesPocket:
 	ld a, BERRIES - 1
-	ld [wCurrPocket], a
+	ld [wCurPocket], a
 	call ClearPocketList
 	call WaitBGMap_DrawPackGFX
 	jp Pack_JumptableNext
@@ -201,7 +201,7 @@ Pack:
 
 .InitKeyItemsPocket:
 	ld a, KEY_ITEM - 1
-	ld [wCurrPocket], a
+	ld [wCurPocket], a
 	call ClearPocketList
 	call WaitBGMap_DrawPackGFX
 	jp Pack_JumptableNext
@@ -244,14 +244,14 @@ PackMenuJump:
 PackSortMenu:
 	ld hl, Text_SortItemsHow
 	call Pack_PrintTextNoScroll
-	ld hl, wMenuData2_ItemsPointerAddr
+	ld hl, wMenuData_ItemsPointerAddr
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
 	push hl
-	ld a, [wMenuData2_ScrollingMenuSpacing]
+	ld a, [wMenuData_ScrollingMenuSpacing]
 	push af
-	ld a, [wCurrPocket]
+	ld a, [wCurPocket]
 	cp TM_HM - 1
 	ld hl, MenuDataHeader_SortTMs
 	ld de, Jumptable_SortTMs
@@ -269,9 +269,9 @@ PackSortMenu:
 .no_quit
 	pop de
 	pop af
-	ld [wMenuData2_ScrollingMenuSpacing], a
+	ld [wMenuData_ScrollingMenuSpacing], a
 	pop bc
-	ld hl, wMenuData2_ItemsPointerAddr
+	ld hl, wMenuData_ItemsPointerAddr
 	ld a, c
 	ld [hli], a
 	ld [hl], b
@@ -639,7 +639,7 @@ GiveItem:
 	call GetCurNick
 	ld hl, wStringBuffer1
 	ld de, wMonOrItemNameBuffer
-	ld bc, PKMN_NAME_LENGTH
+	ld bc, MON_NAME_LENGTH
 	rst CopyBytes
 	call TryGiveItemToPartymon
 	pop af
@@ -677,7 +677,7 @@ BattlePack:
 	jr .loop
 
 .end
-	ld a, [wCurrPocket]
+	ld a, [wCurPocket]
 	ld [wLastBattlePocket], a
 	ld hl, wOptions1
 	res NO_TEXT_SCROLL, [hl]
@@ -715,7 +715,7 @@ BattlePack:
 
 .InitItemsPocket:
 	ld a, ITEM - 1
-	ld [wCurrPocket], a
+	ld [wCurPocket], a
 	call ClearPocketList
 	call WaitBGMap_DrawPackGFX
 	jp Pack_JumptableNext
@@ -737,7 +737,7 @@ BattlePack:
 
 .InitMedicinePocket:
 	ld a, MEDICINE - 1
-	ld [wCurrPocket], a
+	ld [wCurPocket], a
 	call ClearPocketList
 	call WaitBGMap_DrawPackGFX
 	jp Pack_JumptableNext
@@ -759,7 +759,7 @@ BattlePack:
 
 .InitBallsPocket:
 	ld a, BALL - 1
-	ld [wCurrPocket], a
+	ld [wCurPocket], a
 	call ClearPocketList
 	call WaitBGMap_DrawPackGFX
 	jp Pack_JumptableNext
@@ -781,7 +781,7 @@ BattlePack:
 
 .InitTMHMPocket:
 	ld a, TM_HM - 1
-	ld [wCurrPocket], a
+	ld [wCurPocket], a
 	call ClearPocketList
 	xor a
 	ldh [hBGMapMode], a
@@ -799,7 +799,7 @@ BattlePack:
 
 .InitBerriesPocket:
 	ld a, BERRIES - 1
-	ld [wCurrPocket], a
+	ld [wCurPocket], a
 	call ClearPocketList
 	call WaitBGMap_DrawPackGFX
 	jp Pack_JumptableNext
@@ -821,7 +821,7 @@ BattlePack:
 
 .InitKeyItemsPocket:
 	ld a, KEY_ITEM - 1
-	ld [wCurrPocket], a
+	ld [wCurPocket], a
 	call ClearPocketList
 	xor a
 	ldh [hBGMapMode], a
@@ -955,7 +955,7 @@ InitPackBuffers:
 	ld [wJumptableIndex], a
 	pop af
 	and $7
-	ld [wCurrPocket], a
+	ld [wCurPocket], a
 	inc a
 	add a
 	dec a
@@ -971,7 +971,7 @@ DepositSellInitPackBuffers:
 	ldh [hBGMapMode], a
 	ld [wJumptableIndex], a
 	ld [wcf64], a
-	ld [wCurrPocket], a
+	ld [wCurPocket], a
 	ld [wcf66], a
 	ld [wSwitchItem], a
 	call Pack_InitGFX
@@ -1078,7 +1078,7 @@ DepositSellPack:
 	ret
 
 InitPocket:
-	ld [wCurrPocket], a
+	ld [wCurPocket], a
 	call ClearPocketList
 	jp WaitBGMap_DrawPackGFX
 
@@ -1280,7 +1280,7 @@ WaitBGMap_DrawPackGFX:
 	call ApplyTilemapInVBlank
 DrawPackGFX:
 	; place top row
-	ld a, [wCurrPocket]
+	ld a, [wCurPocket]
 	and $7
 	push af
 	ld c, a

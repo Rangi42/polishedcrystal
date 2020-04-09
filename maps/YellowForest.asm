@@ -87,7 +87,7 @@ YellowForestBridgeUnderfootTrigger:
 	ld a, $1
 YellowForest_FinishBridge:
 	ld [wWalkingOnBridge], a
-	ld [wYellowForestTrigger], a ; setscene a
+	ld [wYellowForestSceneID], a ; setscene a
 	jp GenericFinishBridge
 
 GenericTrainerSchoolgirlSarah:

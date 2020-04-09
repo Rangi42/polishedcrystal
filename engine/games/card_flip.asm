@@ -1525,7 +1525,7 @@ CardFlip_InitAttrPals:
 	ld a, $5
 	ldh [rSVBK], a
 	ld hl, .palettes
-	ld de, wUnknBGPals
+	ld de, wBGPals1
 	ld bc, 9 palettes
 	rst CopyBytes
 	pop af

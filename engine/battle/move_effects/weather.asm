@@ -14,12 +14,12 @@ BattleCommand_starthail:
 	lb bc, WEATHER_HAIL, HELD_PROLONG_HAIL
 	ld hl, HailStartedText
 StartWeather:
-	ld a, [wWeather]
+	ld a, [wBattleWeather]
 	cp b
 	jp z, BattleEffect_ButItFailed
 
 	ld a, b
-	ld [wWeather], a
+	ld [wBattleWeather], a
 	ld a, c
 	call GetItemBoostedDuration
 	ld [wWeatherCount], a

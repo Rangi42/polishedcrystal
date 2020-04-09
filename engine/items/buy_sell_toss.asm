@@ -176,9 +176,9 @@ BuySellToss_UpdateQuantityDisplay:
 	lb bc, PRINTNUM_LEADINGZEROS | 1, 2
 	call PrintNum
 	dec hl
-	ld a, [wMenuData2Pointer]
+	ld a, [wMenuDataPointer]
 	ld e, a
-	ld a, [wMenuData2Pointer + 1]
+	ld a, [wMenuDataPointer + 1]
 	ld d, a
 	ld a, [wMenuDataBank]
 	jp FarCall_de

@@ -3,9 +3,9 @@ DefaultOptions:
 	db (1 << BATTLE_EFFECTS) | (1 << STEREO) | FAST_TEXT
 ; wSaveFileExists
 	db FALSE
-; wTextBoxFrame
+; wTextboxFrame
 	db 0
-; wTextBoxFlags
+; wTextboxFlags
 	db $01 ; ???
 ; wOptions2
 	db 0

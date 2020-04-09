@@ -317,7 +317,7 @@ HatchEggs:
 	ld d, h
 	ld e, l
 	ld hl, wStringBuffer1
-	ld bc, PKMN_NAME_LENGTH
+	ld bc, MON_NAME_LENGTH
 	rst CopyBytes
 	call GetBaseData
 	ld a, [wCurPartyMon]
@@ -378,7 +378,7 @@ HatchEggs:
 	call PrintText
 	ld a, [wCurPartyMon]
 	ld hl, wPartyMonNicknames
-	ld bc, PKMN_NAME_LENGTH
+	ld bc, MON_NAME_LENGTH
 	rst AddNTimes
 	ld d, h
 	ld e, l
@@ -410,7 +410,7 @@ HatchEggs:
 
 .nonickname
 	ld hl, wStringBuffer1
-	ld bc, PKMN_NAME_LENGTH
+	ld bc, MON_NAME_LENGTH
 	rst CopyBytes
 
 .next

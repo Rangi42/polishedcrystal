@@ -31,7 +31,7 @@ MomTriesToBuySomething::
 	inc [hl]
 .ok
 	ld a, PHONE_MOM
-	ld [wCurrentCaller], a
+	ld [wCurCaller], a
 	ld bc, wEngineBuffer2
 	ld hl, 0
 	add hl, bc

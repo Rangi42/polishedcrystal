@@ -15,7 +15,7 @@ InitDisplayForHallOfFame:
 
 InitDisplayForLeafCredits:
 	call ClearDisplayForEndgame
-	ld hl, wUnknBGPals
+	ld hl, wBGPals1
 	ld c, 4 tiles
 if !DEF(MONOCHROME)
 	ld a, $ff ; RGB 31, 31, 31

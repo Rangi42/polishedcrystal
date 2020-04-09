@@ -647,7 +647,7 @@ GetWeatherAfterUserUmbrella::
 	ret z
 GetWeatherAfterCloudNine::
 ; Returns 0 if a cloud nine user is on the field,
-; [wWeather] otherwise.
+; [wBattleWeather] otherwise.
 	call CheckNeutralizingGas
 	jr z, .weather
 	ld a, [wPlayerAbility]
@@ -657,7 +657,7 @@ GetWeatherAfterCloudNine::
 	xor CLOUD_NINE
 	ret z
 .weather
-	ld a, [wWeather]
+	ld a, [wBattleWeather]
 	ret
 
 CheckNeutralizingGas::

@@ -36,7 +36,7 @@ _TimeOfDayPals::
 	ld [wTimeOfDayPal], a
 
 ; save bg palette 7
-	ld hl, wUnknBGPals palette 7
+	ld hl, wBGPals1 palette 7
 
 ; save wram bank
 	ldh a, [rSVBK]
@@ -65,7 +65,7 @@ _TimeOfDayPals::
 	call GetCGBLayout
 
 ; restore bg palette 7
-	ld hl, wUnknBGPals palette 7 + 1 palettes - 1 ; last byte in UnknBGPals
+	ld hl, wBGPals1 palette 7 + 1 palettes - 1 ; last byte in UnknBGPals
 
 ; save wram bank
 	ldh a, [rSVBK]
@@ -149,12 +149,12 @@ FillWhiteBGColor:
 	ld a, $5
 	ldh [rSVBK], a
 
-	ld hl, wUnknBGPals
+	ld hl, wBGPals1
 	ld a, [hli]
 	ld e, a
 	ld a, [hli]
 	ld d, a
-	ld hl, wUnknBGPals palette 1
+	ld hl, wBGPals1 palette 1
 	ld c, 6
 .loop
 	ld a, e

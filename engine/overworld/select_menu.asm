@@ -133,7 +133,7 @@ GetRegisteredItem:
 	call BGMapAnchorTopLeft
 	call LoadStandardOpaqueFont
 	ld hl, InvertedTextPalette
-	ld de, wUnknBGPals palette PAL_BG_TEXT
+	ld de, wBGPals1 palette PAL_BG_TEXT
 	ld bc, 1 palettes
 	call FarCopyColorWRAM
 

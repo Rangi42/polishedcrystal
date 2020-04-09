@@ -128,7 +128,7 @@ CheckKeyItem::
 	ret
 
 CheckUniqueItemPocket::
-	ld a, [wCurrPocket]
+	ld a, [wCurPocket]
 	cp TM_HM - 1
 	ret z
 	cp KEY_ITEM - 1
