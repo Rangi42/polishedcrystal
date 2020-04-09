@@ -111,7 +111,7 @@ TalkToTrainer::
 	ld [wEngineBuffer3], a
 
 LoadTrainer_continue::
-	ld a, [wMapScriptHeaderBank]
+	ld a, [wMapScriptsBank]
 	ld [wEngineBuffer1], a
 
 	ldh a, [hLastTalked]
@@ -127,12 +127,12 @@ LoadTrainer_continue::
 	add hl, bc
 	ld a, [wEngineBuffer1]
 	call GetFarHalfword
-	ld de, wTempTrainerHeader
+	ld de, wTempTrainer
 	pop af
 	push af
-	ld bc, wGenericTempTrainerHeaderEnd - wTempTrainerHeader
+	ld bc, wGenericTempTrainerHeaderEnd - wTempTrainer
 	jr z, .skipCopyingLossPtrAndScriptPtr
-	ld bc, wTempTrainerHeaderEnd - wTempTrainerHeader
+	ld bc, wTempTrainerEnd - wTempTrainer
 .skipCopyingLossPtrAndScriptPtr
 	ld a, [wEngineBuffer1]
 	call FarCopyBytes
@@ -251,7 +251,7 @@ PrintWinLossText::
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	ld a, [wMapScriptHeaderBank]
+	ld a, [wMapScriptsBank]
 	call FarPrintText
 	call ApplyTilemapInVBlank
 	jp WaitPressAorB_BlinkCursor

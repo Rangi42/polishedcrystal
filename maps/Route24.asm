@@ -79,7 +79,7 @@ Route24BridgeUnderfootTrigger:
 	ld a, $1
 Route24_FinishBridge:
 	ld [wWalkingOnBridge], a
-	ld [wRoute24Trigger], a ; setscene a
+	ld [wRoute24SceneID], a ; setscene a
 	jp GenericFinishBridge
 
 TrainerGruntM31:

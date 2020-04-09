@@ -283,7 +283,7 @@ PlaceCommandCharacter::
 	jp NextChar
 
 NextLineChar::
-	ld a, [wTextBoxFlags]
+	ld a, [wTextboxFlags]
 	bit NO_LINE_SPACING, a
 	jr nz, LineBreak
 	pop hl
@@ -498,15 +498,15 @@ FarString::
 	ret
 
 PlaceWholeStringInBoxAtOnce::
-	ld a, [wTextBoxFlags]
+	ld a, [wTextboxFlags]
 	push af
 	set 1, a
-	ld [wTextBoxFlags], a
+	ld [wTextboxFlags], a
 
 	call DoTextUntilTerminator
 
 	pop af
-	ld [wTextBoxFlags], a
+	ld [wTextboxFlags], a
 	ret
 
 DoTextUntilTerminator::

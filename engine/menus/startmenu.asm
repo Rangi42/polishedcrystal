@@ -184,7 +184,7 @@ StartMenu::
 .GetMenuAccountTextPointer:
 	ld e, a
 	ld d, 0
-	ld hl, wMenuData2PointerTableAddr
+	ld hl, wMenuDataPointerTableAddr
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a

@@ -1879,7 +1879,7 @@ _GetMovementPerson:
 	jp HandleMovementData
 
 GetMovementPerson:
-	ld a, [wMovementPerson]
+	ld a, [wMovementObject]
 	ret
 
 HandleMovementData:

@@ -41,7 +41,7 @@ Special_CelebiShrineEvent:
 	inc d
 	push de
 	ld a, $90
-	ld [wCurrSpriteOAMAddr], a
+	ld [wCurSpriteOAMAddr], a
 	farcall DoNextFrameForAllSprites
 	call CelebiEvent_CountDown
 	ld c, 2

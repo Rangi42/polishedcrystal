@@ -291,7 +291,7 @@ CheckSpecialPhoneCall::
 	ret
 
 SpecialCallOnlyWhenOutside:
-	ld a, [wPermission]
+	ld a, [wEnvironment]
 	cp TOWN
 	jr z, .outside
 	cp ROUTE
@@ -318,7 +318,7 @@ Function90199:
 	jr nz, .OutOfArea
 	; If the person can't take a call at that time, don't do the call
 	ld a, b
-	ld [wCurrentCaller], a
+	ld [wCurCaller], a
 	ld hl, PhoneContacts
 	ld bc, PHONE_TABLE_WIDTH
 	rst AddNTimes
@@ -382,7 +382,7 @@ UnknownScript_0x90209:
 
 LoadCallerScript:
 	ld a, e
-	ld [wCurrentCaller], a
+	ld [wCurCaller], a
 	and a
 	jr nz, .actualcaller
 	ld a, BANK(WrongNumber)
@@ -439,7 +439,7 @@ RingTwice_StartCall:
 	call Phone_CallerTextbox
 	call Phone_Wait20Frames
 Phone_CallerTextboxWithName:
-	ld a, [wCurrentCaller]
+	ld a, [wCurCaller]
 	ld b, a
 	jp Function90363
 
@@ -662,12 +662,12 @@ Phone_GetTrainerClassName:
 	ret
 
 GetCallerLocation:
-	ld a, [wCurrentCaller]
+	ld a, [wCurCaller]
 	call GetCallerTrainerClass
 	ld d, c
 	ld e, b
 	push de
-	ld a, [wCurrentCaller]
+	ld a, [wCurCaller]
 	ld hl, PhoneContacts + PHONE_CONTACT_MAP_GROUP
 	ld bc, PHONE_TABLE_WIDTH
 	rst AddNTimes

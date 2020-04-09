@@ -2506,11 +2506,11 @@ Script_changemap:
 ; parameters:
 ;     map_data_pointer (MapDataPointerParam)
 	call GetScriptByte
-	ld [wMapBlockDataBank], a
+	ld [wMapBlocksBank], a
 	call GetScriptByte
-	ld [wMapBlockDataPointer], a
+	ld [wMapBlocksPointer], a
 	call GetScriptByte
-	ld [wMapBlockDataPointer + 1], a
+	ld [wMapBlocksPointer + 1], a
 	call ChangeMap
 	jp BufferScreen
 

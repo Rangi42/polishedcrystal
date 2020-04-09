@@ -441,7 +441,7 @@ UpdateSpeciesNameIfNotNicknamed:
 	jr nz, .loop
 
 	ld a, [wCurPartyMon]
-	ld bc, PKMN_NAME_LENGTH
+	ld bc, MON_NAME_LENGTH
 	ld hl, wPartyMonNicknames
 	rst AddNTimes
 	push hl
@@ -450,7 +450,7 @@ UpdateSpeciesNameIfNotNicknamed:
 	call GetPokemonName
 	ld hl, wStringBuffer1
 	pop de
-	ld bc, PKMN_NAME_LENGTH
+	ld bc, MON_NAME_LENGTH
 	rst CopyBytes
 	ret
 

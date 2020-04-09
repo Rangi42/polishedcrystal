@@ -140,12 +140,12 @@ endc
 
 ; Update palette colors
 	ld hl, TitleScreenPalettes
-	ld de, wUnknBGPals
+	ld de, wBGPals1
 	ld bc, 16 palettes
 	rst CopyBytes
 
 	ld hl, TitleScreenPalettes
-	ld de, wBGPals
+	ld de, wBGPals2
 	ld bc, 16 palettes
 	rst CopyBytes
 
@@ -197,7 +197,7 @@ endc
 	ldh [hBGMapMode], a
 
 	xor a
-	ld [wUnknBGPals palette 0 + 2], a
+	ld [wBGPals1 palette 0 + 2], a
 
 ; Play starting sound effect
 	call SFXChannelsOff
@@ -205,7 +205,7 @@ endc
 	jp PlaySFX
 
 SuicuneFrameIterator:
-	ld hl, wUnknBGPals palette 0 + 2
+	ld hl, wBGPals1 palette 0 + 2
 	ld a, [hl]
 	ld c, a
 	inc [hl]

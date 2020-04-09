@@ -10,7 +10,7 @@ _DoFadePalettes::
 	push de
 .restart_dofade
 	push bc
-	ld a, BANK(wBGPals)
+	ld a, BANK(wBGPals2)
 	ldh [rSVBK], a
 
 	; No matter what, we always take up to 31 color fade steps.
@@ -39,13 +39,13 @@ _DoFadePalettes::
 .outer_loop
 	ld a, [wPalFadeMode]
 	and PALFADE_WHICH
-	ld hl, wBGPals
+	ld hl, wBGPals2
 	ld d, 4 * 16 ; colors, palettes
 	jr z, .got_count
 	dec a
 	ld d, 4 * 8
 	jr z, .got_count
-	ld hl, wOBPals
+	ld hl, wOBPals2
 .got_count
 	ld a, [wPalFadeMode]
 
@@ -70,13 +70,13 @@ _DoFadePalettes::
 	jr .got_destination
 
 .no_flash
-	ld bc, wUnknBGPals - wBGPals
+	ld bc, wBGPals1 - wBGPals2
 	add hl, bc
 	ld a, [hld]
 	ld b, a
 	ld c, [hl]
 	push bc
-	ld bc, wBGPals - wUnknBGPals
+	ld bc, wBGPals2 - wBGPals1
 	add hl, bc
 	pop bc
 

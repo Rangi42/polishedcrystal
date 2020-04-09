@@ -39,9 +39,9 @@ MonSubmenu:
 MonMenuLoop:
 .loop
 	ld a, $a0 ; flags
-	ld [wMenuData2Flags], a
+	ld [wMenuDataFlags], a
 	ld a, [wBuffer1] ; items
-	ld [wMenuData2Items], a
+	ld [wMenuDataItems], a
 	call InitVerticalMenuCursor
 	ld hl, w2DMenuFlags1
 	set 6, [hl]

@@ -54,13 +54,13 @@ NameRater:
 	jr c, .samename
 ; Copy the new name from wStringBuffer2
 	ld hl, wPartyMonNicknames
-	ld bc, PKMN_NAME_LENGTH
+	ld bc, MON_NAME_LENGTH
 	ld a, [wCurPartyMon]
 	rst AddNTimes
 	ld e, l
 	ld d, h
 	ld hl, wStringBuffer2
-	ld bc, PKMN_NAME_LENGTH
+	ld bc, MON_NAME_LENGTH
 	rst CopyBytes
 	ld hl, NameRaterEvenBetterText
 
@@ -121,7 +121,7 @@ CheckIfMonIsYourOT:
 IsNewNameEmpty:
 ; Checks to see if the nickname loaded in wStringBuffer2 is empty.  If so, return carry.
 	ld hl, wStringBuffer2
-	ld c, PKMN_NAME_LENGTH - 1
+	ld c, MON_NAME_LENGTH - 1
 .loop
 	ld a, [hli]
 	cp "@"
@@ -142,7 +142,7 @@ IsNewNameEmpty:
 CompareNewToOld:
 ; Compares the nickname in wStringBuffer2 to the previous nickname.  If they are the same, return carry.
 	ld hl, wPartyMonNicknames
-	ld bc, PKMN_NAME_LENGTH
+	ld bc, MON_NAME_LENGTH
 	ld a, [wCurPartyMon]
 	rst AddNTimes
 	push hl
@@ -182,7 +182,7 @@ GetNicknameLength:
 	ret z
 	inc c
 	ld a, c
-	cp PKMN_NAME_LENGTH - 1
+	cp MON_NAME_LENGTH - 1
 	jr nz, .loop
 	ret
 

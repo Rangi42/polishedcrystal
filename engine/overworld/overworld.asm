@@ -237,11 +237,11 @@ GetMonSprite:
 	jr .NoFormMon
 
 .MonDoll1:
-	ld a, [wLeftOrnament]
+	ld a, [wDecoLeftOrnament]
 	jr .MonDoll
 
 .MonDoll2:
-	ld a, [wRightOrnament]
+	ld a, [wDecoRightOrnament]
 .MonDoll:
 	farcall GetDecorationSpecies
 	; fallthrough

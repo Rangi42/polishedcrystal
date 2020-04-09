@@ -381,10 +381,10 @@ else
 endc
 
 VaryBGPal0ByTempMonDVs:
-	ld hl, wUnknBGPals palette 0 + 2
+	ld hl, wBGPals1 palette 0 + 2
 	jr VaryBGPalByTempMonDVs
 VaryBGPal1ByTempMonDVs:
-	ld hl, wUnknBGPals palette 1 + 2
+	ld hl, wBGPals1 palette 1 + 2
 VaryBGPalByTempMonDVs:
 	push hl
 	ld hl, wTempMonDVs

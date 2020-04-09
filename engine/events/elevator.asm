@@ -24,8 +24,8 @@ Elevator::
 	ld a, d
 	ld [wElevatorPointerHi], a
 	ld de, wCurElevator
-	ld bc, 4
-	ld hl, wElevatorPointerLo
+	ld bc, wElevatorDataEnd - wElevatorData
+	ld hl, wElevatorPointer
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
@@ -45,7 +45,7 @@ Elevator::
 	ret
 
 .FindCurrentFloor:
-	ld hl, wElevatorPointerLo
+	ld hl, wElevatorPointer
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
@@ -94,18 +94,18 @@ Elevator::
 
 Elevator_GoToFloor:
 	push af
-	ld hl, wElevatorPointerLo
+	ld hl, wElevatorPointer
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
 	inc hl
 	pop af
-	ld bc, 4
+	ld bc, wElevatorDataEnd - wElevatorData
 	rst AddNTimes
 	inc hl
 	ld de, wBackupWarpNumber
 	ld a, [wElevatorPointerBank]
-	ld bc, 3
+	ld bc, wElevatorDataEnd - wElevatorData - 1
 	jp FarCopyBytes
 
 Elevator_AskWhichFloor:

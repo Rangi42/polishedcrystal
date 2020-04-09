@@ -482,8 +482,8 @@ ParsePlayerAction:
 	push af
 	call Call_LoadTempTileMapToTileMap
 
-	ld hl, wUnknBGPals palette PAL_BATTLE_BG_PLAYER
-	ld de, wUnknBGPals palette PAL_BATTLE_BG_TYPE_CAT
+	ld hl, wBGPals1 palette PAL_BATTLE_BG_PLAYER
+	ld de, wBGPals1 palette PAL_BATTLE_BG_TYPE_CAT
 	ld bc, 1 palettes
 	call FarCopyColorWRAM
 	call SetPalettes
@@ -1270,7 +1270,7 @@ endr
 	jr z, .got_battle_nick
 	ld de, wEnemyMonNick
 .got_battle_nick
-	ld bc, PKMN_NAME_LENGTH
+	ld bc, MON_NAME_LENGTH
 	call CopyBytes
 	ldh a, [hBattleTurn]
 	and a
@@ -2680,7 +2680,7 @@ OfferSwitch:
 	dec a
 	call SkipNames
 	ld de, wEnemyMonNick
-	ld bc, PKMN_NAME_LENGTH
+	ld bc, MON_NAME_LENGTH
 	rst CopyBytes
 
 	; Actually print the message
@@ -3617,7 +3617,7 @@ CheckDanger:
 PrintPlayerHUD:
 	ld de, wBattleMonNick
 	hlcoord 11, 7
-	ld a, [wBattleMonNick + PKMN_NAME_LENGTH - 2]
+	ld a, [wBattleMonNick + MON_NAME_LENGTH - 2]
 	cp "@"
 	jr z, .short_name
 	dec hl ; hlcoord 10, 7
@@ -4203,7 +4203,7 @@ BattleMenuPKMN_Loop:
 	call PlaceVerticalMenuItems
 	call ApplyTilemapInVBlank
 	call CopyMenuData2
-	ld a, [wMenuData2Flags]
+	ld a, [wMenuDataFlags]
 	bit 7, a
 	jr z, .set_carry
 	call InitVerticalMenuCursor
@@ -6807,7 +6807,7 @@ AnimateExpBar:
 	call PrintPlayerHUD
 	ld hl, wBattleMonNick
 	ld de, wStringBuffer1
-	ld bc, PKMN_NAME_LENGTH
+	ld bc, MON_NAME_LENGTH
 	rst CopyBytes
 	call TerminateExpBarSound
 	ld de, SFX_HIT_END_OF_EXP_BAR
@@ -8401,7 +8401,7 @@ AutomaticRainWhenOvercast:
 	and a
 	ret z
 	ld a, WEATHER_RAIN
-	ld [wWeather], a
+	ld [wBattleWeather], a
 	ld a, 255
 	ld [wWeatherCount], a
 	ld de, RAIN_DANCE
@@ -8434,7 +8434,7 @@ BoostGiovannisArmoredMewtwo:
 	farjp ForceRaiseStat
 
 LoadWeatherIconSprite:
-	ld a, [wWeather]
+	ld a, [wBattleWeather]
 	and a ; WEATHER_NONE?
 	ret z
 	dec a ; WEATHER_RAIN?

@@ -356,7 +356,7 @@ BattleBGEffect_FeetFollow:
 .zero
 	call BGEffect_CheckMonVisible
 	jr z, .not_flying_digging
-	ld hl, wNumActiveBattleAnims
+	ld hl, wLastAnimObjectIndex
 	inc [hl]
 	jp EndBattleBGEffect
 
@@ -421,7 +421,7 @@ BattleBGEffect_HeadFollow:
 .zero
 	call BGEffect_CheckMonVisible
 	jr z, .not_flying_digging
-	ld hl, wNumActiveBattleAnims
+	ld hl, wLastAnimObjectIndex
 	inc [hl]
 	jp EndBattleBGEffect
 
@@ -2241,20 +2241,20 @@ BGEffects_LoadBGPal0_OBPal1:
 	ld a, h
 	push bc
 	push af
-	ld hl, wBGPals palette PAL_BATTLE_BG_PLAYER
-	ld de, wUnknBGPals palette PAL_BATTLE_BG_PLAYER
+	ld hl, wBGPals2 palette PAL_BATTLE_BG_PLAYER
+	ld de, wBGPals1 palette PAL_BATTLE_BG_PLAYER
 	ld b, a
 	ld c, $1
 	call CopyPals
-	ld hl, wBGPals palette PAL_BATTLE_BG_TYPE_CAT
-	ld de, wUnknBGPals palette PAL_BATTLE_BG_TYPE_CAT
+	ld hl, wBGPals2 palette PAL_BATTLE_BG_TYPE_CAT
+	ld de, wBGPals1 palette PAL_BATTLE_BG_TYPE_CAT
 	pop af
 	ld b, a
 	push af
 	ld c, $1
 	call CopyPals
-	ld hl, wOBPals palette PAL_BATTLE_OB_PLAYER
-	ld de, wUnknOBPals palette PAL_BATTLE_OB_PLAYER
+	ld hl, wOBPals2 palette PAL_BATTLE_OB_PLAYER
+	ld de, wOBPals1 palette PAL_BATTLE_OB_PLAYER
 	pop af
 	ld b, a
 	ld c, $1
@@ -2275,13 +2275,13 @@ BGEffects_LoadBGPal1_OBPal0:
 	ld a, h
 	push bc
 	push af
-	ld hl, wBGPals palette PAL_BATTLE_BG_ENEMY
-	ld de, wUnknBGPals palette PAL_BATTLE_BG_ENEMY
+	ld hl, wBGPals2 palette PAL_BATTLE_BG_ENEMY
+	ld de, wBGPals1 palette PAL_BATTLE_BG_ENEMY
 	ld b, a
 	ld c, $1
 	call CopyPals
-	ld hl, wOBPals palette PAL_BATTLE_OB_ENEMY
-	ld de, wUnknOBPals palette PAL_BATTLE_OB_ENEMY
+	ld hl, wOBPals2 palette PAL_BATTLE_OB_ENEMY
+	ld de, wOBPals1 palette PAL_BATTLE_OB_ENEMY
 	pop af
 	ld b, a
 	ld c, $1

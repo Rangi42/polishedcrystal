@@ -249,7 +249,7 @@ GetNick::
 	push de
 	push bc
 	call SkipNames
-	ld bc, PKMN_NAME_LENGTH
+	ld bc, MON_NAME_LENGTH
 	rst CopyBytes
 	jp PopBCDEHL
 

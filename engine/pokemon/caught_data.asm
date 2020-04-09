@@ -44,7 +44,7 @@ CheckPartyFullAfterContest:
 	call GetPokemonName
 	ld hl, wStringBuffer1
 	ld de, wMonOrItemNameBuffer
-	ld bc, PKMN_NAME_LENGTH
+	ld bc, MON_NAME_LENGTH
 	rst CopyBytes
 	call GiveANickname_YesNo
 	jr c, .Party_SkipNickname
@@ -119,7 +119,7 @@ CheckPartyFullAfterContest:
 	ld a, BANK(sBoxMonNicknames)
 	call GetSRAMBank
 	ld de, sBoxMonNicknames
-	ld bc, PKMN_NAME_LENGTH
+	ld bc, MON_NAME_LENGTH
 	rst CopyBytes
 	call CloseSRAM
 

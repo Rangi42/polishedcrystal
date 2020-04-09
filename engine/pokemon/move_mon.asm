@@ -60,7 +60,7 @@ TryAddMonToParty:
 	ld d, h
 	ld e, l
 	ld hl, wStringBuffer1
-	ld bc, PKMN_NAME_LENGTH
+	ld bc, MON_NAME_LENGTH
 	rst CopyBytes
 
 ; Cases to set [wCurForm] before calling GetBaseData:
@@ -574,7 +574,7 @@ AddTempmonToParty:
 	ld hl, wOTPartyMonNicknames
 	ld a, [wCurPartyMon]
 	call SkipNames
-	ld bc, PKMN_NAME_LENGTH
+	ld bc, MON_NAME_LENGTH
 	rst CopyBytes
 
 	ld a, [wCurPartySpecies]
@@ -790,7 +790,7 @@ SentGetPkmnIntoFromBox:
 	call SkipNames
 
 .okay12
-	ld bc, PKMN_NAME_LENGTH
+	ld bc, MON_NAME_LENGTH
 	rst CopyBytes
 	pop hl
 
@@ -1146,7 +1146,7 @@ SentPkmnIntoBox:
 
 	ld de, sBoxMonNicknames
 	ld hl, wStringBuffer1
-	ld bc, PKMN_NAME_LENGTH
+	ld bc, MON_NAME_LENGTH
 	rst CopyBytes
 
 	ld hl, wOTPartyMon1
@@ -1192,7 +1192,7 @@ ShiftBoxMon:
 	call .shift
 
 	ld hl, sBoxMonNicknames
-	ld bc, PKMN_NAME_LENGTH
+	ld bc, MON_NAME_LENGTH
 	call .shift
 
 	ld hl, sBoxMons
@@ -1399,7 +1399,7 @@ RemoveMonFromPartyOrBox:
 	; Shift the OT names
 	ld d, h
 	ld e, l
-	ld bc, PKMN_NAME_LENGTH
+	ld bc, MON_NAME_LENGTH
 	add hl, bc
 	ld bc, wPartyMonNicknames
 	ld a, [wPokemonWithdrawDepositParameter]
@@ -1442,12 +1442,12 @@ RemoveMonFromPartyOrBox:
 	jr z, .party6
 	ld hl, sBoxMonNicknames
 .party6
-	ld bc, PKMN_NAME_LENGTH
+	ld bc, MON_NAME_LENGTH
 	ld a, [wCurPartyMon]
 	rst AddNTimes
 	ld d, h
 	ld e, l
-	ld bc, PKMN_NAME_LENGTH
+	ld bc, MON_NAME_LENGTH
 	add hl, bc
 	ld bc, wPartyMonNicknamesEnd
 	ld a, [wPokemonWithdrawDepositParameter]
@@ -1952,7 +1952,7 @@ GivePoke::
 	call GetPokemonName
 	ld hl, wStringBuffer1
 	ld de, wMonOrItemNameBuffer
-	ld bc, PKMN_NAME_LENGTH
+	ld bc, MON_NAME_LENGTH
 	rst CopyBytes
 	pop af
 	and a
@@ -1964,7 +1964,7 @@ GivePoke::
 	push hl
 	ld a, [wScriptBank]
 	call GetFarHalfword
-	ld bc, PKMN_NAME_LENGTH
+	ld bc, MON_NAME_LENGTH
 	ld a, [wScriptBank]
 	call FarCopyBytes
 	pop hl
@@ -2070,7 +2070,7 @@ GivePoke::
 	call GetSRAMBank
 	ld hl, wMonOrItemNameBuffer
 	ld de, sBoxMonNicknames
-	ld bc, PKMN_NAME_LENGTH
+	ld bc, MON_NAME_LENGTH
 	rst CopyBytes
 	call CloseSRAM
 	ld b, $1

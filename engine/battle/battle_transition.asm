@@ -48,10 +48,10 @@ DoBattleTransition:
 
 	ldh a, [rSVBK]
 	push af
-	ld a, BANK(wUnknBGPals)
+	ld a, BANK(wBGPals1)
 	ldh [rSVBK], a
 
-	ld hl, wUnknBGPals
+	ld hl, wBGPals1
 if !DEF(MONOCHROME)
 	ld bc, 8 palettes
 	xor a ; RGB 00, 00, 00
@@ -174,7 +174,7 @@ endr
 	jr nc, .okay
 	set 0, e
 .okay
-	ld a, [wPermission]
+	ld a, [wEnvironment]
 	cp CAVE
 	jr z, .okay2
 	cp PERM_5
@@ -540,7 +540,7 @@ StartTrainerBattle_LoadPokeBallGraphics:
 	ldh [rSVBK], a
 	ld hl, .black_pals
 	call .timeofdaypal
-	ld de, wUnknBGPals palette PAL_BG_TEXT ; black
+	ld de, wBGPals1 palette PAL_BG_TEXT ; black
 	call .copy
 	pop af
 	ldh [rSVBK], a
@@ -649,27 +649,27 @@ StartTrainerBattle_LoadPokeBallGraphics:
 	jp StartTrainerBattle_NextScene
 
 .copypals
-	ld de, wUnknBGPals palette PAL_BG_GRAY ; red poke ball, doesn't flash
+	ld de, wBGPals1 palette PAL_BG_GRAY ; red poke ball, doesn't flash
 	call .copy
-	ld de, wUnknBGPals palette PAL_BG_RED ; flashing overworld
+	ld de, wBGPals1 palette PAL_BG_RED ; flashing overworld
 	call .copy
-	ld de, wUnknBGPals palette PAL_BG_GREEN
+	ld de, wBGPals1 palette PAL_BG_GREEN
 	call .copy
-	ld de, wUnknBGPals palette PAL_BG_WATER
+	ld de, wBGPals1 palette PAL_BG_WATER
 	call .copy
-	ld de, wUnknBGPals palette PAL_BG_YELLOW
+	ld de, wBGPals1 palette PAL_BG_YELLOW
 	call .copy
-	ld de, wUnknBGPals palette PAL_BG_BROWN
+	ld de, wBGPals1 palette PAL_BG_BROWN
 	call .copy
-	ld de, wUnknBGPals palette PAL_BG_ROOF
+	ld de, wBGPals1 palette PAL_BG_ROOF
 	call .copy
-	ld de, wUnknOBPals palette PAL_OW_ROCK
+	ld de, wOBPals1 palette PAL_OW_ROCK
 	call .copy
-	ld de, wUnknOBPals palette PAL_OW_TREE
+	ld de, wOBPals1 palette PAL_OW_TREE
 	call .copy
 	ld hl, .black_pals
 	call .timeofdaypal
-	ld de, wUnknBGPals palette PAL_BG_TEXT ; black
+	ld de, wBGPals1 palette PAL_BG_TEXT ; black
 
 .copy
 	push hl
@@ -677,7 +677,7 @@ StartTrainerBattle_LoadPokeBallGraphics:
 	ld bc, 1 palettes
 	rst CopyBytes
 	pop de
-	ld hl, wBGPals - wUnknBGPals
+	ld hl, wBGPals2 - wBGPals1
 	add hl, de
 	ld d, h
 	ld e, l

@@ -565,7 +565,7 @@ QuickBallMultiplier:
 
 DuskBallMultiplier:
 ; multiply catch rate by 3.5 at night or in caves
-	ld a, [wPermission]
+	ld a, [wEnvironment]
 	cp CAVE
 	jr z, .dusk
 

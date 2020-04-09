@@ -43,7 +43,7 @@ GiveMystriEgg::
 ; fallthrough
 GiveEggMon:
 	ld de, wOddEggSpecies
-	ld bc, PARTYMON_STRUCT_LENGTH + 2 * PKMN_NAME_LENGTH
+	ld bc, PARTYMON_STRUCT_LENGTH + 2 * MON_NAME_LENGTH
 	rst CopyBytes
 ; fallthrough
 AddEggMonToParty:
@@ -91,13 +91,13 @@ AddEggMonToParty:
 	ld e, l
 	ld d, h
 	ld hl, wOddEggName
-	ld bc, PKMN_NAME_LENGTH - 1
+	ld bc, MON_NAME_LENGTH - 1
 	rst CopyBytes
 	ld a, "@"
 	ld [de], a
 
 	ld hl, wPartyMonNicknames
-	ld bc, PKMN_NAME_LENGTH
+	ld bc, MON_NAME_LENGTH
 	ld a, [wd002]
 .loop4
 	add hl, bc
@@ -107,7 +107,7 @@ AddEggMonToParty:
 	ld e, l
 	ld d, h
 	ld hl, wOddEggName
-	ld bc, PKMN_NAME_LENGTH - 1
+	ld bc, MON_NAME_LENGTH - 1
 	rst CopyBytes
 	ld a, "@"
 	ld [de], a

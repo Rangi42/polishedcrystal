@@ -5,13 +5,13 @@ wStackBottom::
 	ds $100 - 1
 wStack::
 wStackTop::
-	ds 1
+	db
 
 
 SECTION "Audio RAM", WRAM0
 
 wMusic::
-wMusicPlaying:: ds 1 ; nonzero if playing
+wMusicPlaying:: db ; nonzero if playing
 
 wChannels::
 wChannel1:: channel_struct wChannel1
@@ -25,14 +25,14 @@ wChannel6:: channel_struct wChannel6
 wChannel7:: channel_struct wChannel7
 wChannel8:: channel_struct wChannel8
 
-wCurTrackDuty:: ds 1
-wCurTrackIntensity:: ds 1
-wCurTrackFrequency:: ds 2
+wCurTrackDuty:: db
+wCurTrackIntensity:: db
+wCurTrackFrequency:: dw
 	ds 1 ; BCD value, dummied out
-wCurNoteDuration:: ds 1 ; used in MusicE0 and LoadNote
+wCurNoteDuration:: db ; used in MusicE0 and LoadNote
 
-wCurMusicByte:: ds 1
-wCurChannel:: ds 1
+wCurMusicByte:: db
+wCurChannel:: db
 wVolume::
 ; corresponds to rNR50
 ; Channel control / ON-OFF / Volume (R/W)
@@ -40,12 +40,12 @@ wVolume::
 ;   bit 6-4 - SO2 output level (volume) (# 0-7)
 ;   bit 3 - Vin->SO1 ON/OFF
 ;   bit 2-0 - SO1 output level (volume) (# 0-7)
-	ds 1
+	db
 wSoundOutput::
 ; corresponds to rNR51
 ; bit 4-7: ch1-4 so2 on/off
 ; bit 0-3: ch1-4 so1 on/off
-	ds 1
+	db
 wSoundInput::
 ; corresponds to rNR52
 ; bit 7: global on/off
@@ -53,128 +53,128 @@ wSoundInput::
 ; bit 1: ch2 on/off
 ; bit 2: ch3 on/off
 ; bit 3: ch4 on/off
-	ds 1
+	db
 
 wMusicID::
-wMusicIDLo:: ds 1
-wMusicIDHi:: ds 1
-wMusicBank:: ds 1
+wMusicIDLo:: db
+wMusicIDHi:: db
+wMusicBank:: db
 wNoiseSampleAddress::
-wNoiseSampleAddressLo:: ds 1
-wNoiseSampleAddressHi:: ds 1
-wNoiseSampleDelay:: ds 1 ; noise delay?
+wNoiseSampleAddressLo:: db
+wNoiseSampleAddressHi:: db
+wNoiseSampleDelay:: db ; noise delay?
 	ds 1
-wMusicNoiseSampleSet:: ds 1
-wSFXNoiseSampleSet:: ds 1
+wMusicNoiseSampleSet:: db
+wSFXNoiseSampleSet:: db
 wLowHealthAlarm::
 ; bit 7: on/off
 ; bit 4: pitch
 ; bit 0-3: counter
-	ds 1
+	db
 wMusicFade::
 ; fades volume over x frames
 ; bit 7: fade in/out
 ; bit 0-5: number of frames for each volume level
 ; $00 = none (default)
-	ds 1
-wMusicFadeCount:: ds 1
+	db
+wMusicFadeCount:: db
 wMusicFadeID::
-wMusicFadeIDLo:: ds 1
-wMusicFadeIDHi:: ds 1
+wMusicFadeIDLo:: db
+wMusicFadeIDHi:: db
 	ds 5
-wCryPitch:: ds 2
-wCryLength:: ds 2
-wLastVolume:: ds 1
+wCryPitch:: dw
+wCryLength:: dw
+wLastVolume:: db
 	ds 1
-wSFXPriority:: ds 1 ; if nonzero, turn off music when playing sfx
+wSFXPriority:: db ; if nonzero, turn off music when playing sfx
 	ds 1
-wChannel1JumpCondition:: ds 1
-wChannel2JumpCondition:: ds 1
-wChannel3JumpCondition:: ds 1
-wChannel4JumpCondition:: ds 1
-wStereoPanningMask:: ds 1
+wChannel1JumpCondition:: db
+wChannel2JumpCondition:: db
+wChannel3JumpCondition:: db
+wChannel4JumpCondition:: db
+wStereoPanningMask:: db
 wCryTracks::
 ; plays only in left or right track depending on what side the monster is on
 ; both tracks active outside of battle
-	ds 1
-wSFXDuration:: ds 1
-wCurSFX:: ds 1 ; id of sfx currently playing
+	db
+wSFXDuration:: db
+wCurSFX:: db ; id of sfx currently playing
 wChannelsEnd::
 
-wMapMusic:: ds 1
-wDontPlayMapMusicOnReload:: ds 1
+wMapMusic:: db
+wDontPlayMapMusicOnReload:: db
 wMusicEnd::
 
 
 SECTION "WRAM 0", WRAM0
 
-wMonType:: ds 1
+wMonType:: db
 
 wCurSpecies::
 wCurMove::
 wCreditsSpawn::
-	ds 1
+	db
 
-wNamedObjectTypeBuffer:: ds 1
+wNamedObjectTypeBuffer:: db
 
-wCurrentOptionsPage:: ds 1
+wCurOptionsPage:: db
 
 wBattleTowerBattleEnded::
-	ds 1
+	db
 
-wCurForm:: ds 1
+wCurForm:: db
 
 wRNGState:: ds 4
-wRNGCumulativeDividerPlus:: ds 2
-wRNGCumulativeDividerMinus:: ds 1
+wRNGCumulativeDividerPlus:: dw
+wRNGCumulativeDividerMinus:: db
 
-wBoxAlignment:: ds 1
-wInputType:: ds 1
-wAutoInputAddress:: ds 2
-wAutoInputBank:: ds 1
-wAutoInputLength:: ds 1
+wBoxAlignment:: db
+wInputType:: db
+wAutoInputAddress:: dw
+wAutoInputBank:: db
+wAutoInputLength:: db
 
-wMonStatusFlags:: ds 1
-wGameLogicPaused:: ds 1
-wSpriteUpdatesEnabled:: ds 1
+wMonStatusFlags:: db
+wGameLogicPaused:: db
+wSpriteUpdatesEnabled:: db
 	ds 1
-wMapTimeOfDay:: ds 1
+wMapTimeOfDay:: db
 	ds 5
-wLastDexEntry:: ds 1
+wPrevDexEntry:: db
 
-wPreviousLandmark:: ds 1
-wCurrentLandmark:: ds 1
-wLandmarkSignTimer:: ds 2
+wPrevLandmark:: db
+wCurLandmark:: db
+wLandmarkSignTimer:: dw
 wLinkMode::
 ; 0 not in link battle
 ; 1 link battle
 ; 4 mobile battle
-	ds 1
+	db
 
-wPlayerNextMovement:: ds 1
-wPlayerMovement:: ds 1
+wPlayerNextMovement:: db
+wPlayerMovement:: db
 	ds 2
-wMovementPerson:: ds 1
+wMovementObject:: db
 wMovementDataPointer:: ds 3 ; dba
 	ds 4
-wMovementByteWasControlSwitch:: ds 1
-wMovementPointer:: ds 2
+wMovementByteWasControlSwitch:: db
+wMovementPointer:: dw
 	ds 3
 
-wTempObjectCopyMapObjectIndex:: ds 1
-wTempObjectCopySprite:: ds 1
-wTempObjectCopySpriteVTile:: ds 1
-wTempObjectCopyPalette:: ds 1
-wTempObjectCopyMovement:: ds 1
-wTempObjectCopyRange:: ds 1
-wTempObjectCopyX:: ds 1
-wTempObjectCopyY:: ds 1
-wTempObjectCopyRadius:: ds 1
+wTempObjectCopyMapObjectIndex:: db
+wTempObjectCopySprite:: db
+wTempObjectCopySpriteVTile:: db
+wTempObjectCopyPalette:: db
+wTempObjectCopyMovement:: db
+wTempObjectCopyRange:: db
+wTempObjectCopyX:: db
+wTempObjectCopyY:: db
+wTempObjectCopyRadius:: db
 
-wTileDown:: ds 1
-wTileUp:: ds 1
-wTileLeft:: ds 1
-wTileRight:: ds 1
+wTileDown:: db
+wTileUp:: db
+wTileLeft:: db
+wTileRight:: db
 
 wTilePermissions::
 ; set if tile behavior prevents
@@ -183,7 +183,7 @@ wTilePermissions::
 ; bit 2: up
 ; bit 1: left
 ; bit 0: right
-	ds 1
+	db
 
 
 SECTION "Sprite Animations", WRAM0
@@ -208,63 +208,63 @@ wSpriteAnim9::  sprite_anim_struct wSpriteAnim9
 wSpriteAnim10:: sprite_anim_struct wSpriteAnim10
 wSpriteAnimationStructsEnd::
 
-wSpriteAnimCount:: ds 1
-wCurrSpriteOAMAddr:: ds 1
+wSpriteAnimCount:: db
+wCurSpriteOAMAddr:: db
 
-wCurIcon:: ds 1
+wCurIcon:: db
 wCurIconPersonality::
-wCurIconShiny:: ds 1
-wCurIconForm:: ds 1
-wCurIconTile:: ds 1
+wCurIconShiny:: db
+wCurIconForm:: db
+wCurIconTile:: db
 
 wSpriteAnimAddrBackup::
 wSpriteAnimIDBuffer::
-wCurrSpriteAddSubFlags::
-	ds 2
-wCurrAnimVTile:: ds 1
-wCurrAnimXCoord:: ds 1
-wCurrAnimYCoord:: ds 1
-wCurrAnimXOffset:: ds 1
-wCurrAnimYOffset:: ds 1
-wGlobalAnimYOffset:: ds 1
-wGlobalAnimXOffset:: ds 1
+wCurSpriteAddSubFlags::
+	dw
+wCurAnimVTile:: db
+wCurAnimXCoord:: db
+wCurAnimYCoord:: db
+wCurAnimXOffset:: db
+wCurAnimYOffset:: db
+wGlobalAnimYOffset:: db
+wGlobalAnimXOffset:: db
 wSpriteAnimsEnd::
 
 
 SECTION "Music Player RAM", WRAM0
 
 wMusicPlayerWRAM::
-wSongSelection:: ds 2
-wNumNoteLines:: ds 1
-wTmpCh:: ds 1
+wSongSelection:: dw
+wNumNoteLines:: db
+wTmpCh:: db
 wChLastNotes:: ds 3
-wVolTimer:: ds 1
-wC1Vol:: ds 1
-wC1VolSub:: ds 1
-wC2Vol:: ds 1
-wC2VolSub:: ds 1
-wC3Vol:: ds 1
-wC3VolSub:: ds 1
-wC4Vol:: ds 1
-wC4VolSub:: ds 1
+wVolTimer:: db
+wC1Vol:: db
+wC1VolSub:: db
+wC2Vol:: db
+wC2VolSub:: db
+wC3Vol:: db
+wC3VolSub:: db
+wC4Vol:: db
+wC4VolSub:: db
 wNoteEnded:: ds 3
-wSongInfoSwitch:: ds 1
-;wRenderedWaveform:: ds 1
+wSongInfoSwitch:: db
+;wRenderedWaveform:: db
 wPitchesTmp:: ds 4
 ;wWaveformTmp:: ds 16
-wTmpValue:: ds 1
+wTmpValue:: db
 ; song list
-wSelectorTop:: ds 1
-wSelectorCur:: ds 1
+wSelectorTop:: db
+wSelectorCur:: db
 ; song editor
-wChannelSelector:: ds 1
-wAdjustingTempo:: ds 1
+wChannelSelector:: db
+wAdjustingTempo:: db
 ; audio engine input
 wChannelSelectorSwitches:: ds 4
-wPitchTransposition:: ds 1
-wTempoAdjustment:: ds 1
+wPitchTransposition:: db
+wTempoAdjustment:: db
 ; audio engine output
-wNoiseHit:: ds 1
+wNoiseHit:: db
 wMusicPlayerWRAMEnd::
 
 
@@ -343,8 +343,8 @@ wMiscEnd::
 NEXTU
 ; odd egg
 wOddEgg:: party_struct wOddEgg
-wOddEggName:: ds PKMN_NAME_LENGTH
-wOddEggOTName:: ds PKMN_NAME_LENGTH
+wOddEggName:: ds MON_NAME_LENGTH
+wOddEggOTName:: ds MON_NAME_LENGTH
 
 NEXTU
 ; battle tower temp struct
@@ -352,11 +352,11 @@ wBT_OTTemp:: battle_tower_struct wBT_OTTemp
 
 NEXTU
 ; hall of fame temp struct
-	hall_of_fame wHallOfFameTemp
+wHallOfFameTemp:: hall_of_fame wHallOfFameTemp
 
 NEXTU
 ; timeset temp storage
-wTimesetBuffer:: ds 20
+wTimeSetBuffer:: ds 20
 wInitHourBuffer:: ds 13
 wInitMinuteBuffer:: ds 17
 
@@ -375,39 +375,39 @@ wBattle::
 wEnemyMoveStruct::  move_struct wEnemyMoveStruct
 wPlayerMoveStruct:: move_struct wPlayerMoveStruct
 
-wEnemyMonNick:: ds PKMN_NAME_LENGTH
-wBattleMonNick:: ds PKMN_NAME_LENGTH
+wEnemyMonNick::  ds MON_NAME_LENGTH
+wBattleMonNick:: ds MON_NAME_LENGTH
 
 wBattleMon:: battle_struct wBattleMon
 
 	ds 2
 
-wWildMon:: ds 1
+wWildMon:: db
 	ds 1
-wEnemyTrainerItem1:: ds 1
-wEnemyTrainerItem2:: ds 1
-wEnemyTrainerBaseReward:: ds 1
+wEnemyTrainerItem1:: db
+wEnemyTrainerItem2:: db
+wEnemyTrainerBaseReward:: db
 wEnemyTrainerAIFlags:: ds 3
 wOTClassName:: ds TRAINER_CLASS_NAME_LENGTH
 
-wCurOTMon:: ds 1
+wCurOTMon:: db
 
 wTypeModifier::
 ; >10: super effective
 ;  10: normal
 ; <10: not very effective
 ; bit 7: stab
-	ds 1
+	db
 
 wCriticalHit::
 ; 0 if not critical
 ; 1 for a critical hit
 ; 2 for a OHKO
-	ds 1
+	db
 
 wAttackMissed::
 ; nonzero for a miss
-	ds 1
+	db
 
 wBattleSubStatusWRAM::
 wPlayerSubStatus1::
@@ -420,7 +420,7 @@ wPlayerSubStatus1::
 ; 2 protect
 ; 1 curse
 ; 0 unburden
-	ds 1
+	db
 wPlayerSubStatus2::
 ; bit
 ; 7 cant run
@@ -431,7 +431,7 @@ wPlayerSubStatus2::
 ; 2
 ; 1
 ; 0 toxic
-	ds 1
+	db
 wPlayerSubStatus3::
 ; bit
 ; 7 confused
@@ -442,7 +442,7 @@ wPlayerSubStatus3::
 ; 2
 ; 1 rollout
 ; 0 bide
-	ds 1
+	db
 wPlayerSubStatus4::
 ; bit
 ; 7 leech seed
@@ -453,52 +453,52 @@ wPlayerSubStatus4::
 ; 2 focus energy
 ; 1 mist
 ; 0 curled
-	ds 1
+	db
 
 wEnemySubStatus1::
 ; see wPlayerSubStatus1
-	ds 1
+	db
 wEnemySubStatus2::
 ; see wPlayerSubStatus2
-	ds 1
+	db
 wEnemySubStatus3::
 ; see wPlayerSubStatus3
-	ds 1
+	db
 wEnemySubStatus4::
 ; see wPlayerSubStatus4
-	ds 1
+	db
 
 ; Some code depend on the order of these
-wPlayerAbility:: ds 1
-wPlayerRolloutCount:: ds 1
-wPlayerConfuseCount:: ds 1
-wPlayerToxicCount:: ds 1
-wPlayerDisableCount:: ds 1
-wPlayerEncoreCount:: ds 1 ; also for choice-locking
-wPlayerPerishCount:: ds 1
-wPlayerProtectCount:: ds 1
+wPlayerAbility:: db
+wPlayerRolloutCount:: db
+wPlayerConfuseCount:: db
+wPlayerToxicCount:: db
+wPlayerDisableCount:: db
+wPlayerEncoreCount:: db ; also for choice-locking
+wPlayerPerishCount:: db
+wPlayerProtectCount:: db
 	ds 1
 
-wEnemyAbility:: ds 1
-wEnemyRolloutCount:: ds 1
-wEnemyConfuseCount:: ds 1
-wEnemyToxicCount:: ds 1
-wEnemyDisableCount:: ds 1
-wEnemyEncoreCount:: ds 1
-wEnemyPerishCount:: ds 1
-wEnemyProtectCount:: ds 1
+wEnemyAbility:: db
+wEnemyRolloutCount:: db
+wEnemyConfuseCount:: db
+wEnemyToxicCount:: db
+wEnemyDisableCount:: db
+wEnemyEncoreCount:: db
+wEnemyPerishCount:: db
+wEnemyProtectCount:: db
 	ds 1
 wBattleSubStatusWRAMEnd::
 
 wDamageTaken::
 ; Format: $xy yy, x = total multihit hits, y = total damage
-	ds 2
+	dw
 
 	ds 2 ; unused
 
 wBattleReward:: ds 3
 wBattleAnimParam::
-wKickCounter:: ds 1
+wKickCounter:: db
 
 wPartyBackupItems::
 ; Back up of party items before a battle. Modified in-battle for consumed/harvested.
@@ -515,92 +515,92 @@ wOTPartyUsedItems::
 
 ; What move was selected last.
 ; Used for Choice locking and the Metronome item
-wPlayerSelectedMove:: ds 1
-wEnemySelectedMove:: ds 1
+wPlayerSelectedMove:: db
+wEnemySelectedMove:: db
 
 ; How much the Metronome item is boosted. (Counts even if you don't have the item.)
-wPlayerMetronomeCount:: ds 1
-wEnemyMetronomeCount:: ds 1
+wPlayerMetronomeCount:: db
+wEnemyMetronomeCount:: db
 
 wPartyParticipants:: ds PARTY_LENGTH
 
-wDeferredSwitch:: ds 1
+wDeferredSwitch:: db
 
-wPlayerSwitchTarget:: ds 1
-wEnemySwitchTarget:: ds 1
+wPlayerSwitchTarget:: db
+wEnemySwitchTarget:: db
 
-wBattleScriptBufferLoc:: ds 2
-wMoveState:: ds 1
+wBattleScriptBufferLoc:: dw
+wMoveState:: db
 
 wPlayerStatLevels::
 ; 07 neutral
-wPlayerAtkLevel:: ds 1
-wPlayerDefLevel:: ds 1
-wPlayerSpdLevel:: ds 1
-wPlayerSAtkLevel:: ds 1
+wPlayerAtkLevel:: db
+wPlayerDefLevel:: db
+wPlayerSpdLevel:: db
+wPlayerSAtkLevel:: db
 
 UNION
 ; battle subsection
-wPlayerSDefLevel:: ds 1
-wPlayerAccLevel:: ds 1
-wPlayerEvaLevel:: ds 1
+wPlayerSDefLevel:: db
+wPlayerAccLevel:: db
+wPlayerEvaLevel:: db
 	ds 1
 
 wEnemyStatLevels::
 ; 07 neutral
-wEnemyAtkLevel:: ds 1
-wEnemyDefLevel:: ds 1
-wEnemySpdLevel:: ds 1
-wEnemySAtkLevel:: ds 1
-wEnemySDefLevel:: ds 1
-wEnemyAccLevel:: ds 1
-wEnemyEvaLevel:: ds 1
+wEnemyAtkLevel:: db
+wEnemyDefLevel:: db
+wEnemySpdLevel:: db
+wEnemySAtkLevel:: db
+wEnemySDefLevel:: db
+wEnemyAccLevel:: db
+wEnemyEvaLevel:: db
 	ds 1
 
-wEnemyTurnsTaken:: ds 1
-wPlayerTurnsTaken:: ds 1
+wEnemyTurnsTaken:: db
+wPlayerTurnsTaken:: db
 
-wPlayerSubstituteHP:: ds 2
-wEnemySubstituteHP:: ds 2
+wPlayerSubstituteHP:: dw
+wEnemySubstituteHP:: dw
 
-wBackupEnemyMonBaseExp:: ds 1
+wBackupEnemyMonBaseExp:: db
 
-wCurPlayerMove:: ds 1
-wCurEnemyMove:: ds 1
+wCurPlayerMove:: db
+wCurEnemyMove:: db
 
-wLinkBattleRNCount:: ds 1 ; how far through the prng stream
+wLinkBattleRNCount:: db ; how far through the prng stream
 
-wEnemyItemState:: ds 1
+wEnemyItemState:: db
 
 	ds 2
 
-wCurEnemyMoveNum:: ds 1
+wCurEnemyMoveNum:: db
 
-wEnemyHPAtTimeOfPlayerSwitch:: ds 2
+wEnemyHPAtTimeOfPlayerSwitch:: dw
 wPayDayMoney:: ds 3
 
-wSafariMonAngerCount:: ds 1
-wSafariMonEating:: ds 1
+wSafariMonAngerCount:: db
+wSafariMonEating:: db
 
-wAlreadyDisobeyed:: ds 1
+wAlreadyDisobeyed:: db
 
 	ds 1 ; unused
 
-wAlreadySawWeather:: ds 1
+wAlreadySawWeather:: db
 
-wWhichMonFaintedFirst:: ds 1
+wWhichMonFaintedFirst:: db
 
 ; exists so you can't counter on switch
-wLastPlayerCounterMove:: ds 1
-wLastEnemyCounterMove:: ds 1
+wLastPlayerCounterMove:: db
+wLastEnemyCounterMove:: db
 
 	ds 1 ; unused
 
-wAlreadyExecuted:: ds 1
+wAlreadyExecuted:: db
 
-wTrickRoom:: ds 1
+wTrickRoom:: db
 
-wBattleLowHealthAlarm:: ds 1
+wBattleLowHealthAlarm:: db
 
 	ds 1 ; unused
 
@@ -610,79 +610,80 @@ wPlayerScreens::
 ; 3 light screen
 ; 2 safeguard
 ; 0 spikes
-	ds 1
+	db
 
 wEnemyScreens::
 ; see wPlayerScreens
+	db
+
+wPlayerSafeguardCount:: db
+wPlayerLightScreenCount:: db
+wPlayerReflectCount:: db
 	ds 1
 
-wPlayerSafeguardCount:: ds 1
-wPlayerLightScreenCount:: ds 1
-wPlayerReflectCount:: ds 1
+wEnemySafeguardCount:: db
+wEnemyLightScreenCount:: db
+wEnemyReflectCount:: db
 	ds 1
-
-wEnemySafeguardCount:: ds 1
-wEnemyLightScreenCount:: ds 1
-wEnemyReflectCount:: ds 1
-	ds 1
-wWeather::
+wBattleWeather::
 ; 00 normal
 ; 01 rain
 ; 02 sun
 ; 03 sandstorm
 ; 04 rain stopped
-	ds 1
+; 05 sunlight faded
+; 06 sandstorm subsided
+	db
 
-wWeatherCount:: ds 1 ; # turns remaining
+wWeatherCount:: db ; # turns remaining
 
 wLoweredStat::
 ; bit 4-7: how many stages to raise/lower + 1 (between +1 and +12)
 ; bit 0-3: which stat to raise/lower
-	ds 1
+	db
 
-wEffectFailed:: ds 1
-wFailedMessage:: ds 1
-
-wEnemyGoesFirst:: ds 1
+wEffectFailed:: db
+wFailedMessage:: db
+wEnemyGoesFirst:: db
 
 wPlayerUsedMoves::
 ; add a move that has been used once by the player
 ; added in order of use
 	ds NUM_MOVES
 
-wEnemyAISwitchScore:: ds 1
-wEnemySwitchMonParam:: ds 1
-wEnemySwitchMonIndex:: ds 1
+wEnemyAISwitchScore:: db
+wEnemySwitchMonParam:: db
+wEnemySwitchMonIndex:: db
 
-wTempLevel:: ds 1
+wTempLevel:: db
 
-wLastPlayerMon:: ds 1
+wLastPlayerMon:: db
 
-wLastPlayerMove:: ds 1
-wLastEnemyMove:: ds 1
+wLastPlayerMove:: db
+wLastEnemyMove:: db
 
-wEnemyUsingItem:: ds 1
+wEnemyUsingItem:: db
 
-wPlayerFutureSightCount:: ds 1
-wEnemyFutureSightCount:: ds 1
-wPlayerFutureSightDamage:: ds 2
-wEnemyFutureSightDamage:: ds 2
-wPlayerTrappingMove:: ds 1
-wEnemyTrappingMove:: ds 1
-wPlayerWrapCount:: ds 1
-wEnemyWrapCount:: ds 1
-wPlayerCharging:: ds 1
-wEnemyCharging:: ds 1
+wPlayerFutureSightCount:: db
+wEnemyFutureSightCount:: db
+wPlayerFutureSightDamage:: dw
+wEnemyFutureSightDamage:: dw
+wPlayerTrappingMove:: db
+wEnemyTrappingMove:: db
+wPlayerWrapCount:: db
+wEnemyWrapCount:: db
+wPlayerCharging:: db
+wEnemyCharging:: db
 
-wGivingExperienceToExpShareHolders:: ds 1
+wGivingExperienceToExpShareHolders:: db
 
-wAnimationsDisabled:: ds 1 ; used to temporarily disable animations for abilities
+wAnimationsDisabled:: db ; used to temporarily disable animations for abilities
 
-wBattleEnded:: ds 1
+wBattleEnded:: db
 
-wAmuletCoin:: ds 1
+wAmuletCoin:: db
 
-wSomeoneIsRampaging:: ds 1
+wSomeoneIsRampaging:: db
 
 wDVAndPersonalityBuffer:: ds 5
 wBattleEnd::
@@ -693,44 +694,44 @@ wTrademons::
 wPlayerTrademon:: trademon wPlayerTrademon
 wOTTrademon:: trademon wOTTrademon
 wTrademonsEnd::
-wTradeAnimPointer:: ds 2
+wTradeAnimPointer:: dw
 wLinkPlayer1Name:: ds NAME_LENGTH
 wLinkPlayer2Name:: ds NAME_LENGTH
 wLinkTradeSendmonData::
-wLinkTradeSendmonSpecies:: ds 1
+wLinkTradeSendmonSpecies:: db
 wLinkTradeSendmonPersonality::
-wLinkTradeSendmonShiny:: ds 1
-wLinkTradeSendmonForm:: ds 1
+wLinkTradeSendmonShiny:: db
+wLinkTradeSendmonForm:: db
 wLinkTradeGetmonData::
-wLinkTradeGetmonSpecies:: ds 1
+wLinkTradeGetmonSpecies:: db
 wLinkTradeGetmonPersonality::
-wLinkTradeGetmonShiny:: ds 1
-wLinkTradeGetmonForm:: ds 1
+wLinkTradeGetmonShiny:: db
+wLinkTradeGetmonForm:: db
 
 NEXTU
 ; naming screen
-wNamingScreenDestinationPointer:: ds 2
-wNamingScreenCurrNameLength:: ds 1
-wNamingScreenMaxNameLength:: ds 1
-wNamingScreenType:: ds 1
-wNamingScreenCursorObjectPointer:: ds 2
-wNamingScreenLastCharacter:: ds 1
-wNamingScreenStringEntryCoord:: ds 2
+wNamingScreenDestinationPointer:: dw
+wNamingScreenCurNameLength:: db
+wNamingScreenMaxNameLength:: db
+wNamingScreenType:: db
+wNamingScreenCursorObjectPointer:: dw
+wNamingScreenLastCharacter:: db
+wNamingScreenStringEntryCoord:: dw
 
 NEXTU
 ; pokegear
-wPokegearPhoneLoadNameBuffer:: ds 1
-wPokegearPhoneCursorPosition:: ds 1
-wPokegearPhoneScrollPosition:: ds 1
-wPokegearPhoneSelectedPerson:: ds 1
-wPokegearPhoneSubmenuCursor:: ds 1
-wPokegearMapCursorObjectPointer:: ds 2
-wPokegearMapCursorLandmark:: ds 1
-wPokegearMapPlayerIconLandmark:: ds 1
-wPokegearRadioChannelBank:: ds 1
-wPokegearRadioChannelAddr:: ds 2
-wPokegearRadioMusicPlaying:: ds 1
-wPokegearNumberBuffer:: ds 1
+wPokegearPhoneLoadNameBuffer:: db
+wPokegearPhoneCursorPosition:: db
+wPokegearPhoneScrollPosition:: db
+wPokegearPhoneSelectedPerson:: db
+wPokegearPhoneSubmenuCursor:: db
+wPokegearMapCursorObjectPointer:: dw
+wPokegearMapCursorLandmark:: db
+wPokegearMapPlayerIconLandmark:: db
+wPokegearRadioChannelBank:: db
+wPokegearRadioChannelAddr:: dw
+wPokegearRadioMusicPlaying:: db
+wPokegearNumberBuffer:: db
 
 NEXTU
 ; slot machine
@@ -741,17 +742,17 @@ wReel3:: slot_reel wReel3
 wReel1Stopped:: ds 3
 wReel2Stopped:: ds 3
 wReel3Stopped:: ds 3
-wSlotBias:: ds 1
-wSlotBet:: ds 1
-wFirstTwoReelsMatching:: ds 1
-wFirstTwoReelsMatchingSevens:: ds 1
-wSlotMatched:: ds 1
-wCurrReelStopped:: ds 3
-wPayout:: ds 2
-wCurrReelXCoord:: ds 1
-wCurrReelYCoord:: ds 1
+wSlotBias:: db
+wSlotBet:: db
+wFirstTwoReelsMatching:: db
+wFirstTwoReelsMatchingSevens:: db
+wSlotMatched:: db
+wCurReelStopped:: ds 3
+wPayout:: dw
+wCurReelXCoord:: db
+wCurReelYCoord:: db
 	ds 2
-wSlotBuildingMatch:: ds 1
+wSlotBuildingMatch:: db
 wSlotsDataEnd::
 	ds 28
 wSlotsEnd::
@@ -761,8 +762,8 @@ NEXTU
 wCardFlip::
 wDeck:: ds 24
 wDeckEnd::
-wCardFlipNumCardsPlayed:: ds 1
-wCardFlipFaceUpCard:: ds 1
+wCardFlipNumCardsPlayed:: db
+wCardFlipFaceUpCard:: db
 wDiscardPile:: ds 24
 wDiscardPileEnd::
 wCardFlipEnd::
@@ -772,15 +773,15 @@ wCardFlipEnd::
 ;wDummyGame::
 ;wDummyGameCards:: ds 9 * 5
 ;wDummyGameCardsEnd::
-;wDummyGameLastCardPicked:: ds 1
-;wDummyGameCard1:: ds 1
-;wDummyGameCard2:: ds 1
-;wDummyGameCard1Location:: ds 1
-;wDummyGameCard2Location:: ds 1
-;wDummyGameNumberTriesRemaining:: ds 1
+;wDummyGameLastCardPicked:: db
+;wDummyGameCard1:: db
+;wDummyGameCard2:: db
+;wDummyGameCard1Location:: db
+;wDummyGameCard2Location:: db
+;wDummyGameNumberTriesRemaining:: db
 ;wDummyGameLastMatches:: ds 5
-;wDummyGameCounter:: ds 1
-;wDummyGameNumCardsMatched:: ds 1
+;wDummyGameCounter:: db
+;wDummyGameNumCardsMatched:: db
 ;wDummyGameEnd::
 
 NEXTU
@@ -795,29 +796,29 @@ wPokedexDataStart::
 wPokedexOrder:: ds NUM_POKEMON - 1
 wPokedexOrderEnd:: ds 6
 wPokedexMetadata::
-wDexListingScrollOffset:: ds 1 ; offset of the first displayed entry from the start
-wDexListingCursor:: ds 1 ; Dex cursor
-wDexListingEnd:: ds 1 ; Last mon to display
-wDexListingHeight:: ds 1 ; number of entries displayed at once in the dex listing
-wCurrentDexMode:: ds 1 ; Pokedex Mode
-wDexSearchMonType1:: ds 1 ; first type to search
-wDexSearchMonType2:: ds 1 ; second type to search
-wDexSearchResultCount:: ds 1
-wDexArrowCursorPosIndex:: ds 1
-wDexArrowCursorDelayCounter:: ds 1
-wDexArrowCursorBlinkCounter:: ds 1
-wDexSearchSlowpokeFrame:: ds 1
-wUnlockedUnownMode:: ds 1
-wDexCurrentUnownIndex:: ds 1
-wDexUnownCount:: ds 1
-wDexConvertedMonType:: ds 1 ; mon type converted from dex search mon type
-wDexListingScrollOffsetBackup:: ds 1
-wDexListingCursorBackup:: ds 1
-wBackupDexListingCursor:: ds 1
-wBackupDexListingPage:: ds 1
-wDexCurrentLocation:: ds 1
-wPokedexStatus:: ds 1
-wDexMonShiny:: ds 1
+wDexListingScrollOffset:: db ; offset of the first displayed entry from the start
+wDexListingCursor:: db ; Dex cursor
+wDexListingEnd:: db ; Last mon to display
+wDexListingHeight:: db ; number of entries displayed at once in the dex listing
+wCurDexMode:: db ; Pokedex Mode
+wDexSearchMonType1:: db ; first type to search
+wDexSearchMonType2:: db ; second type to search
+wDexSearchResultCount:: db
+wDexArrowCursorPosIndex:: db
+wDexArrowCursorDelayCounter:: db
+wDexArrowCursorBlinkCounter:: db
+wDexSearchSlowpokeFrame:: db
+wUnlockedUnownMode:: db
+wDexCurUnownIndex:: db
+wDexUnownCount:: db
+wDexConvertedMonType:: db ; mon type converted from dex search mon type
+wDexListingScrollOffsetBackup:: db
+wDexListingCursorBackup:: db
+wBackupDexListingCursor:: db
+wBackupDexListingPage:: db
+wDexCurLocation:: db
+wPokedexStatus:: db
+wDexMonShiny:: db
 wPokedexDataEnd::
 
 ENDU
@@ -828,34 +829,38 @@ SECTION "Overworld Map", WRAM0
 
 UNION
 ; overworld map
-wOverworldMap:: ds $580 ; large enough for 45x20 NavelRockInside.ablk; (45+6)x(20+6) = 1326 < 1408
-wOverworldMapEnd::
+wOverworldMapBlocks:: ds $580 ; large enough for 45x20 NavelRockInside.ablk; (45+6)x(20+6) = 1326 < 1408
+wOverworldMapBlocksEnd::
 
 NEXTU
 ; credits image
-wCreditsFaux2bpp:: ds 8 * 8 * 2
+wCreditsBlankFrame2bpp:: ds 8 * 8 * 2
 
 NEXTU
 ; Bill's PC
+wBillsPCData::
 wBillsPCPokemonList::
-; Pokemon, box number, list index
-	ds 811
-wBillsPC_ScrollPosition:: ds 1
-wBillsPC_CursorPosition:: ds 1
-wBillsPC_NumMonsInBox:: ds 1
-wBillsPC_NumMonsOnScreen:: ds 1
-wBillsPC_LoadedBox:: ds 1 ; 0 if party, 1 - 14 if box, 15 if active box
-wBillsPC_BackupScrollPosition:: ds 1
-wBillsPC_BackupCursorPosition:: ds 1
-wBillsPC_BackupLoadedBox:: ds 1
-wBillsPC_MonHasMail:: ds 1
+; (species, box number, list index) x30
+	ds 3 * 30
+	ds 721
+wBillsPC_ScrollPosition:: db
+wBillsPC_CursorPosition:: db
+wBillsPC_NumMonsInBox:: db
+wBillsPC_NumMonsOnScreen:: db
+wBillsPC_LoadedBox:: db ; 0 if party, 1 - 14 if box, 15 if active box
+wBillsPC_BackupScrollPosition:: db
+wBillsPC_BackupCursorPosition:: db
+wBillsPC_BackupLoadedBox:: db
+wBillsPC_MonHasMail:: db
+wBillsPCDataEnd::
 
 NEXTU
 ; link data
 wLinkData::
 wLinkPlayerName:: ds NAME_LENGTH
-wLinkPartyCount:: ds 1
-wLinkPartySpecies:: ds PARTY_LENGTH + 1 ; legacy scripts don't check PartyCount
+wLinkPartyCount:: db
+wLinkPartySpecies:: ds PARTY_LENGTH
+wLinkPartyEnd:: db ; older code doesn't check PartyCount
 
 wLinkPlayerData::
 wLinkPlayerPartyMon1:: party_struct wLinkPlayerPartyMon1
@@ -865,7 +870,7 @@ wLinkPlayerPartyMon4:: party_struct wLinkPlayerPartyMon4
 wLinkPlayerPartyMon5:: party_struct wLinkPlayerPartyMon5
 wLinkPlayerPartyMon6:: party_struct wLinkPlayerPartyMon6
 wLinkPlayerPartyMonOTNames:: ds PARTY_LENGTH * NAME_LENGTH
-wLinkPlayerPartyMonNicks:: ds PARTY_LENGTH * PKMN_NAME_LENGTH
+wLinkPlayerPartyMonNicks:: ds PARTY_LENGTH * MON_NAME_LENGTH
 wLinkPlayerDataEnd::
 	ds 861
 wLinkDataEnd::
@@ -895,72 +900,74 @@ wBGMapBuffer:: ds 48
 wBGMapPalBuffer:: ds 48
 wBGMapBufferPtrs:: ds 48 ; 24 bg map addresses (16x8 tiles)
 
-wMemCGBLayout:: ds 1
+wMemCGBLayout:: db
 
 UNION
-wCreditsPos:: ds 2
-wCreditsTimer:: ds 1
-wCopyingSGBTileData:: ds 1
-wTrainerCardBadgePaletteAddr:: ds 2
+wCreditsPos:: dw
+wCreditsTimer:: db
+wCopyingSGBTileData:: db
+wTrainerCardBadgePaletteAddr:: dw
 
 NEXTU
-wPlayerHPPal:: ds 1
-wEnemyHPPal:: ds 1
+wPlayerHPPal:: db
+wEnemyHPPal:: db
 wHPPals:: ds PARTY_LENGTH
-wCurHPPal:: ds 1
-wHPPalIndex:: ds 1
+wCurHPPal:: db
+wHPPalIndex:: db
 
 ENDU
 
-wTileAnimBuffer:: ds 16
+wTileAnimBuffer:: ds 1 tiles
 
 ; addresses dealing with serial comms
-wOtherPlayerLinkMode:: ds 1
-wOtherPlayerLinkAction:: ds 4
-wPlayerLinkAction:: ds 1
-wcf57:: ds 4 ; TODO: replace with meaningful label
-wLinkTimeoutFrames:: ds 2
-wcf5d:: ds 2 ; TODO: replace with meaningful label
+wOtherPlayerLinkMode:: db
+wOtherPlayerLinkAction:: db
+	ds 3
+wPlayerLinkAction:: db
+wcf57:: db ; TODO: replace with meaningful label
+	ds 3
+wLinkTimeoutFrames:: dw
+wcf5d:: dw ; TODO: replace with meaningful label
 
-wJumptableIndex:: ds 1 ; must come right before the union
+wJumptableIndex:: db ; must come right before the union
 
 UNION
 ; intro and title data
-wIntroSceneFrameCounter:: ds 1
-wTitleScreenTimerLo:: ds 1
-wTitleScreenTimerHi:: ds 1
+wIntroSceneFrameCounter:: db
+wTitleScreenTimerLo:: db
+wTitleScreenTimerHi:: db
 
 NEXTU
 ; credits data
-wCreditsBorderFrame:: ds 1
-wCreditsBorderMon:: ds 1
-wCreditsLYOverride:: ds 1
+wCreditsBorderFrame:: db
+wCreditsBorderMon:: db
+wCreditsLYOverride:: db
 
 NEXTU
 ; unown puzzle data
-wHoldingUnownPuzzlePiece:: ds 1
-wUnownPuzzleCursorPosition:: ds 1
-wUnownPuzzleHeldPiece:: ds 1
+wHoldingUnownPuzzlePiece:: db
+wUnownPuzzleCursorPosition:: db
+wUnownPuzzleHeldPiece:: db
 
 NEXTU
 ; card flip data
-wCardFlipCursorY:: ds 1
-wCardFlipCursorX:: ds 1
-wCardFlipWhichCard:: ds 1
+wCardFlipCursorY:: db
+wCardFlipCursorX:: db
+wCardFlipWhichCard:: db
 
 NEXTU
 ; miscellaneous
 wDexEntryPrevJumptableIndex::
 wMomBankDigitCursorPosition::
 wNrOfBeatenBattleTowerTrainers::
-	ds 1
-wCurrPocket:: ds 1
+	db
+wCurPocket:: db
 
 NEXTU
 ; unidentified
-wcf64:: ds 1 ; TODO: replace with meaningful labels
-wcf65:: ds 1 ; TODO: replace with meaningful labels
-wcf66:: ds 1 ; TODO: replace with meaningful labels
+wcf64:: db ; TODO: replace with meaningful labels
+wcf65:: db ; TODO: replace with meaningful labels
+wcf66:: db ; TODO: replace with meaningful labels
 
 ENDU
 
@@ -969,32 +976,35 @@ wPalFadeMode::
 ; bit 2: perform a smooth dark flash
 ; bit 3: partial fade (fade b of c frames)
 ; bit 4: skip the last palette
-	ds 1
+	db
 
-wWindowStackPointer:: ds 2
-wMenuJoypad:: ds 1
-wMenuSelection:: ds 1
-wMenuSelectionQuantity:: ds 1
-wWhichIndexSet:: ds 1
-wScrollingMenuCursorPosition:: ds 1
-wWindowStackSize:: ds 9
+wWindowStackPointer:: dw
+wMenuJoypad:: db
+wMenuSelection:: db
+wMenuSelectionQuantity:: db
+wWhichIndexSet:: db
+wScrollingMenuCursorPosition:: db
+wWindowStackSize:: db
 
-; menu data header
-wMenuDataHeader::
-wMenuFlags:: ds 1
-wMenuBorderTopCoord:: ds 1
-wMenuBorderLeftCoord:: ds 1
-wMenuBorderBottomCoord:: ds 1
-wMenuBorderRightCoord:: ds 1
-wMenuData2Pointer:: ds 2
-wMenuCursorBuffer:: ds 2
+	ds 8
+
+; menu header
+wMenuHeader::
+wMenuFlags:: db
+wMenuBorderTopCoord:: db
+wMenuBorderLeftCoord:: db
+wMenuBorderBottomCoord:: db
+wMenuBorderRightCoord:: db
+wMenuDataPointer:: dw
+wMenuCursorBuffer:: dw
 ; end menu data header
-wMenuDataBank:: ds 1 ; menu data bank?
+wMenuDataBank:: db ; menu data bank?
 	ds 6
-wMenuDataHeaderEnd::
+wMenuHeaderEnd::
 
-wMenuData2::
-wMenuData2Flags::
+; TODO: organize this section better (integrate unions from pret/pokecrystal)
+wMenuData::
+wMenuDataFlags::
 ; bit 7: When set, start printing text one tile to the right of the border
 ;        In scrolling menus, SELECT is functional
 ; bit 6: When set, start printing text one tile below the border
@@ -1005,94 +1015,110 @@ wMenuData2Flags::
 ; bit 2: Enable Start button
 ; bit 1: Enable Select button
 ; bit 0: Disable B button
-	ds 1
-wMenuData2_ScrollingMenuHeight::
-wMenuData2Items::
-	ds 1
-wMenuData2IndicesPointer::
-wMenuData2Spacing::
-wMenuData2_ScrollingMenuWidth::
-	ds 1
-wMenuData2_2DMenuItemStringsBank::
-wMenuData2_ScrollingMenuSpacing::
-	ds 1
-wMenuData2_2DMenuItemStringsAddr::
-wMenuData2DisplayFunctionPointer::
-wMenuData2_ItemsPointerBank::
-	ds 1
-wMenuData2_ItemsPointerAddr::
-	ds 1
-wMenuData2PointerTableAddr::
-wMenuData2_2DMenuFunctionBank::
-	ds 1
-wMenuData2_2DMenuFunctionAddr::
-wMenuData2_ScrollingMenuFunction1::
+	db
+wMenuData_ScrollingMenuHeight::
+wMenuDataItems::
+	db
+wMenuDataIndicesPointer::
+wMenuDataSpacing::
+wMenuData_ScrollingMenuWidth::
+	db
+wMenuData_2DMenuItemStringsBank::
+wMenuData_ScrollingMenuSpacing::
+	db
+wMenuData_2DMenuItemStringsAddr::
+wMenuDataDisplayFunctionPointer::
+wMenuData_ItemsPointerBank::
+	db
+wMenuData_ItemsPointerAddr::
+	db
+wMenuDataPointerTableAddr::
+wMenuData_2DMenuFunctionBank::
+	db
+wMenuData_2DMenuFunctionAddr::
+wMenuData_ScrollingMenuFunction1::
 	ds 3
-wMenuData2_ScrollingMenuFunction2::
+wMenuData_ScrollingMenuFunction2::
 	ds 3
-wMenuData2_ScrollingMenuFunction3::
+wMenuData_ScrollingMenuFunction3::
 	ds 3
-wMenuData2End::
+wMenuDataEnd::
 
-wMenuData3::
-w2DMenuCursorInitY:: ds 1
-w2DMenuCursorInitX:: ds 1
-w2DMenuNumRows:: ds 1
-w2DMenuNumCols:: ds 1
-w2DMenuFlags1:: ds 1
-w2DMenuFlags2:: ds 1
-w2DMenuCursorOffsets:: ds 1
-wMenuJoypadFilter:: ds 1
-wMenuData3End::
+w2DMenuData::
+w2DMenuCursorInitY:: db
+w2DMenuCursorInitX:: db
+w2DMenuNumRows:: db
+w2DMenuNumCols:: db
+w2DMenuFlags1::
+; bit 7: Disable checking of wMenuJoypadFilter
+; bit 6: Enable sprite animations
+; bit 5: Wrap around vertically
+; bit 4: Wrap around horizontally
+; bit 3: Set bit 7 in w2DMenuFlags2 and exit the loop if bit 5 is disabled and we tried to go too far down
+; bit 2: Set bit 7 in w2DMenuFlags2 and exit the loop if bit 5 is disabled and we tried to go too far up
+; bit 1: Set bit 7 in w2DMenuFlags2 and exit the loop if bit 4 is disabled and we tried to go too far left
+; bit 0: Set bit 7 in w2DMenuFlags2 and exit the loop if bit 4 is disabled and we tried to go too far right
+	db
+w2DMenuFlags2:: db
+w2DMenuCursorOffsets:: db
+wMenuJoypadFilter:: db
+w2DMenuDataEnd::
 
-wMenuCursorY:: ds 1
-wMenuCursorX:: ds 1
-wCursorOffCharacter:: ds 1
-wCursorCurrentTile:: ds 2
+wMenuCursorY:: db
+wMenuCursorX:: db
+wCursorOffCharacter:: db
+wCursorCurrentTile:: dw
 
-wBTTempOTSprite:: ds 1
+wBTTempOTSprite:: db
 
-wPendingOverworldGraphics:: ds 1
-wTextDelayFrames:: ds 1
+wPendingOverworldGraphics:: db
+wTextDelayFrames:: db
 
 	ds 1
 
-wGenericDelay:: ds 1
+wGenericDelay:: db
 
 wGameTimerPause::
 ; bit 0
-	ds 1
+	db
 
 wInputFlags::
 ; bits 7, 6, and 4 can be used to disable joypad input
-	ds 1
+; bit 4
+; bit 6: mon fainted?
+; bit 7: SGB flag?
+	db
 
 wOverworldDelaySkip::
 ; amount of overworld frames to skip DelayFrame for
-	ds 1
+	db
 
-wInBattleTowerBattle:: ds 1
+wInBattleTowerBattle::
+; 0 not in BattleTower-Battle
+; 1 BattleTower-Battle
+	db
 
 wBattleMenuFlags::
 ; bit 0-2: quick-access buttons (b/start/select)
 ; bit 3: quick-select last pack item
-	ds 1
+	db
 
 wFXAnimID::
-wFXAnimIDLo:: ds 1
-wFXAnimIDHi:: ds 1
+wFXAnimIDLo:: db
+wFXAnimIDHi:: db
 
-wPlaceBallsX:: ds 1
-wPlaceBallsY:: ds 1
+wPlaceBallsX:: db
+wPlaceBallsY:: db
 
-wTileAnimationTimer:: ds 1
+wTileAnimationTimer:: db
 
 ; palette backups?
-wBGP:: ds 1
-wOBP0:: ds 1
-wOBP1:: ds 1
+wBGP:: db
+wOBP0:: db
+wOBP1:: db
 
-wNumHits:: ds 2
+wNumHits:: db
+	ds 1 ; pretty sure wNumHits only needs one byte?
 
 wOptions1::
 ; bit 0-1: text delay
@@ -1103,15 +1129,17 @@ wOptions1::
 ; bit 5: no text delay
 ; bit 6: stereo off/on
 ; bit 7: battle scene off/on
-	ds 1
+	db
 
-wSaveFileExists:: ds 1
+wSaveFileExists:: db
 
-wTextBoxFrame::
+wTextboxFrame::
 ; bits 0-3: textbox frame 0-8
-	ds 1
-
-wTextBoxFlags:: ds 1
+	db
+wTextboxFlags::
+; bit 0: 1-frame text delay
+; bit 4: no text delay
+	db
 
 wOptions2::
 ; bit 0-2: typeface
@@ -1121,7 +1149,7 @@ wOptions2::
 ; bit 6: battle style set/switch
 ; bit 7: battle style set/predict
 ; (bits 6 and 7 are never both set)
-	ds 1
+	db
 
 wInitialOptions::
 ; bit 0: natures off/on
@@ -1132,19 +1160,19 @@ wInitialOptions::
 ; bit 5: nuzlocke mode off/on
 ; bit 6: scaled exp on/off
 ; bit 7: physical-special split on/off
-	ds 1
+	db
 
 wInitialOptions2::
 ; bits 0-6: unused
 ; bit 7: ask to reset at start
-	ds 1
+	db
 wOptionsEnd::
 
 ; Time buffer, for counting the amount of time since an event began
-wSecondsSince:: ds 1
-wMinutesSince:: ds 1
-wHoursSince:: ds 1
-wDaysSince:: ds 1
+wSecondsSince:: db
+wMinutesSince:: db
+wHoursSince:: db
+wDaysSince:: db
 
 ; Temporary backup for options
-wOptionsBuffer:: ds 1
+wOptionsBuffer:: db

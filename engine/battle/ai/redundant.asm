@@ -138,12 +138,12 @@ AI_Redundant:
 	jr .InvertZero
 
 .Sandstorm:
-	ld a, [wWeather]
+	ld a, [wBattleWeather]
 	cp WEATHER_SANDSTORM
 	jr .InvertZero
 
 .Hail:
-	ld a, [wWeather]
+	ld a, [wBattleWeather]
 	cp WEATHER_HAIL
 	jr .InvertZero
 
@@ -156,12 +156,12 @@ AI_Redundant:
 	ret
 
 .RainDance:
-	ld a, [wWeather]
+	ld a, [wBattleWeather]
 	cp WEATHER_RAIN
 	jr .InvertZero
 
 .SunnyDay:
-	ld a, [wWeather]
+	ld a, [wBattleWeather]
 	cp WEATHER_SUN
 	jr .InvertZero
 

@@ -14,11 +14,11 @@ ClearPalettes::
 	ldh a, [rSVBK]
 	push af
 
-	ld a, BANK(wBGPals)
+	ld a, BANK(wBGPals2)
 	ldh [rSVBK], a
 
-; Fill wBGPals and wOBPals with $ffff (white)
-	ld hl, wBGPals
+; Fill wBGPals2 and wOBPals2 with $ffff (white)
+	ld hl, wBGPals2
 if !DEF(MONOCHROME)
 	ld bc, 16 palettes
 	ld a, $ff ; RGB 31, 31, 31

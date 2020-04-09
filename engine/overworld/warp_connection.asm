@@ -13,7 +13,7 @@ RunCallback_03:
 
 ResetOWMapState:
 ; reset flash if out of cave
-	ld a, [wPermission]
+	ld a, [wEnvironment]
 	cp ROUTE
 	jr z, .reset_flash
 	cp TOWN
@@ -198,7 +198,7 @@ LoadWarpData:
 	ret z
 .not_tin_tower_roof
 	ld a, [wPrevWarp]
-	ld [wDigWarp], a
+	ld [wDigWarpNumber], a
 	ld a, [wPrevMapGroup]
 	ld [wDigMapGroup], a
 	ld a, [wPrevMapNumber]
@@ -393,7 +393,7 @@ CheckMovingOffEdgeOfMap::
 	ret
 
 GetCoordOfUpperLeftCorner::
-	ld hl, wOverworldMap
+	ld hl, wOverworldMapBlocks
 	ld a, [wXCoord]
 	bit 0, a
 	jr nz, .increment_then_halve1

@@ -199,7 +199,7 @@ GiveTakePartyMonItem:
 	call GetCurNick
 	ld hl, wStringBuffer1
 	ld de, wMonOrItemNameBuffer
-	ld bc, PKMN_NAME_LENGTH
+	ld bc, MON_NAME_LENGTH
 	rst CopyBytes
 	ld a, [wMenuCursorY]
 	cp 1
@@ -1444,7 +1444,7 @@ PlaceMoveData:
 	call GetCurMoveProperty
 	pop bc
 	ld c, a
-	ld de, wUnknBGPals palette 0 + 2
+	ld de, wBGPals1 palette 0 + 2
 	push af
 	farcall LoadCategoryAndTypePals
 	call SetPalettes

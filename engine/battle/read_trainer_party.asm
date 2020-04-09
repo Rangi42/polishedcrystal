@@ -162,12 +162,12 @@ endr
 	ld a, [wOTPartyCount]
 	dec a
 	ld hl, wOTPartyMonNicknames
-	ld bc, PKMN_NAME_LENGTH
+	ld bc, MON_NAME_LENGTH
 	rst AddNTimes
 	ld d, h
 	ld e, l
 	ld hl, wStringBuffer2
-	ld bc, PKMN_NAME_LENGTH
+	ld bc, MON_NAME_LENGTH
 	rst CopyBytes
 	pop hl
 	pop de
