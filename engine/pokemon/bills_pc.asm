@@ -699,7 +699,7 @@ BillsPC_InitRAM:
 	call ClearTileMap
 	call BillsPC_InitGFX
 	ld hl, wBillsPCData
-	ld bc, $338
+	ld bc, wBillsPCDataEnd - wBillsPCData
 	xor a
 	rst ByteFill
 	xor a

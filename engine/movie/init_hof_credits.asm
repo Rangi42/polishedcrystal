@@ -15,23 +15,6 @@ InitDisplayForHallOfFame:
 
 InitDisplayForLeafCredits:
 	call ClearDisplayForEndgame
-	ld hl, wBGPals1
-	ld c, 4 tiles
-if !DEF(MONOCHROME)
-	ld a, $ff ; RGB 31, 31, 31
-endc
-.load_white_palettes
-if !DEF(MONOCHROME)
-	ld [hli], a
-	ld [hli], a
-else
-	ld a, LOW(PAL_MONOCHROME_WHITE)
-	ld [hli], a
-	ld a, HIGH(PAL_MONOCHROME_WHITE)
-	ld [hli], a
-endc
-	dec c
-	jr nz, .load_white_palettes
 	xor a
 	ldh [hSCY], a
 	ldh [hSCX], a
