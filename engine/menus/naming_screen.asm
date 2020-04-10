@@ -409,13 +409,14 @@ NamingScreenJoypadLoop:
 	ret
 
 .b
-	jp NamingScreen_DeleteCharacter
-
-.end
-	call NamingScreen_StoreEntry
-	ld hl, wJumptableIndex
-	set 7, [hl]
-	ret
+	call NamingScreen_DeleteCharacter
+	ld a, [wcf64]
+	and a ; 0?
+	ret z
+	ld a, [wNamingScreenCurNameLength]
+	and a ; 0?
+	ret nz
+	; fallthrough
 
 .select
 	ld hl, wcf64
@@ -425,6 +426,12 @@ NamingScreenJoypadLoop:
 	jr z, .upper
 	ld de, NameInputLower
 	jp NamingScreen_ApplyTextInputMode
+
+.end
+	call NamingScreen_StoreEntry
+	ld hl, wJumptableIndex
+	set 7, [hl]
+	ret
 
 .upper
 	ld de, NameInputUpper
