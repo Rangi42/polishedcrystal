@@ -10,6 +10,7 @@ BattleCommand_attract:
 	ld a, BATTLE_VARS_SUBSTATUS1_OPP
 	call GetBattleVarAddr
 	bit SUBSTATUS_IN_LOVE, [hl]
+	jr nz, .failed
 	call GetOpponentAbilityAfterMoldBreaker
 	cp OBLIVIOUS
 	jr nz, .no_ability_protection

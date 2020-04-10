@@ -673,7 +673,7 @@ GetHatchlingFrontpic:
 	ld bc, PARTYMON_STRUCT_LENGTH
 	rst AddNTimes
 	predef GetVariant
-	ld [wCurPartySpecies], a
+	ld a, [wCurPartySpecies]
 	ld [wCurSpecies], a
 	call GetBaseData
 	pop de
