@@ -1257,7 +1257,7 @@ StatsScreen_LoadPageIndicators:
 
 CopyNickname:
 	ld de, wStringBuffer1
-	ld bc, PKMN_NAME_LENGTH
+	ld bc, MON_NAME_LENGTH
 	ld a, [wMonType]
 	cp BOXMON
 	jr nz, .partymon

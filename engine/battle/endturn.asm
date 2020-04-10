@@ -202,7 +202,7 @@ HandleEndturnBlockA:
 	; healer
 
 HandleWeather:
-	ld a, [wWeather]
+	ld a, [wBattleWeather]
 	and a ; cp WEATHER_NONE
 	ret z
 
@@ -211,7 +211,7 @@ HandleWeather:
 	jr nz, .ongoing
 
 	ld hl, .WeatherEndedMessages
-	ld a, [wWeather]
+	ld a, [wBattleWeather]
 	dec a
 	add a
 	ld c, a
@@ -222,7 +222,7 @@ HandleWeather:
 	ld l, a
 	call StdBattleTextBox
 	xor a
-	ld [wWeather], a
+	ld [wBattleWeather], a
 	ret
 
 .WeatherEndedMessages:
@@ -232,7 +232,7 @@ HandleWeather:
 	dw BattleText_TheHailStopped
 
 .ongoing
-	; the above needs actual [wWeather] to be
+	; the above needs actual [wBattleWeather] to be
 	; able to time it out, but otherwise check
 	; Cloud Nine
 	call GetWeatherAfterCloudNine

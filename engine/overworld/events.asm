@@ -299,7 +299,7 @@ CheckTileEvent:
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	ld a, [wMapScriptHeaderBank]
+	ld a, [wMapScriptsBank]
 	jp CallScript
 
 CheckWildEncounterCooldown:
@@ -318,7 +318,7 @@ SetUpFiveStepWildEncounterCooldown:
 	ret
 
 DoMapTrigger:
-	ld a, [wCurrMapTriggerCount]
+	ld a, [wCurMapSceneScriptCount]
 	and a
 	jr z, .nope
 
@@ -330,13 +330,13 @@ DoMapTrigger:
 	add a
 	ld e, a
 	ld d, 0
-	ld hl, wCurrMapTriggerHeaderPointer
+	ld hl, wCurMapSceneScriptsPointer
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
 	add hl, de
 
-	ld a, [wMapScriptHeaderBank]
+	ld a, [wMapScriptsBank]
 	ld b, a
 	call GetFarHalfword
 	ld a, b
@@ -492,7 +492,7 @@ TryObjectEvent:
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	ld a, [wMapScriptHeaderBank]
+	ld a, [wMapScriptsBank]
 	jp CallScript
 
 .pokeball:
@@ -519,7 +519,7 @@ TryObjectEvent:
 	add hl, bc
 	ld a, [hli]
 	ldh [hScriptVar], a
-	ld de, wTemporaryScriptBuffer
+	ld de, wTempScriptBuffer
 	ld a, showcrytext_command
 	ld [de], a
 	inc de
@@ -538,7 +538,7 @@ endr
 .command:
 	ld hl, MAPOBJECT_RANGE
 	add hl, bc
-	ld de, wTemporaryScriptBuffer
+	ld de, wTempScriptBuffer
 rept 3
 	ld a, [hli]
 	ld [de], a
@@ -547,8 +547,8 @@ endr
 	ld a, [hl]
 	ld [de], a
 .callTemporaryScriptBuffer:
-	ld hl, wTemporaryScriptBuffer
-	ld a, [wMapScriptHeaderBank]
+	ld hl, wTempScriptBuffer
+	ld a, [wMapScriptsBank]
 	jp CallScript
 
 TryReadSign:
@@ -603,16 +603,16 @@ TryReadSign:
 	ld h, [hl]
 	ld l, a
 .callMapScriptAndReturnCarry
-	ld a, [wMapScriptHeaderBank]
+	ld a, [wMapScriptsBank]
 .callScriptAndReturnCarry
 	call CallScript
 	scf
 	ret
 
 .itemifset
-	ld a, [wCurSignpostScriptAddr]
+	ld a, [wCurBGEventScriptAddr]
 	ld e, a
-	ld a, [wCurSignpostScriptAddr+1]
+	ld a, [wCurBGEventScriptAddr+1]
 	ld d, a
 	ld b, CHECK_FLAG
 	call EventFlagAction
@@ -621,11 +621,11 @@ TryReadSign:
 	jp nz, .dontread
 	call PlayTalkObject
 	ld hl, wEngineBuffer1
-	ld a, [wCurSignpostScriptAddr]
+	ld a, [wCurBGEventScriptAddr]
 	ld [hli], a
-	ld a, [wCurSignpostScriptAddr+1]
+	ld a, [wCurBGEventScriptAddr+1]
 	ld [hli], a
-	ld a, [wCurSignpostType]
+	ld a, [wCurBGEventType]
 	sub SIGNPOST_ITEM
 	ld [hl], a
 	ld a, BANK(HiddenItemScript)
@@ -655,22 +655,22 @@ TryReadSign:
 
 .jumptext
 	call PlayClickSFX
-	ld hl, wTemporaryScriptBuffer + 2
-	ld a, [wCurSignpostScriptAddr + 1]
+	ld hl, wTempScriptBuffer + 2
+	ld a, [wCurBGEventScriptAddr + 1]
 	ld [hld], a
-	ld a, [wCurSignpostScriptAddr]
+	ld a, [wCurBGEventScriptAddr]
 	ld [hld], a
 	ld [hl], jumptext_command
 	jr .callMapScriptAndReturnCarry
 
 .jumpstd
 	call PlayClickSFX
-	ld hl, wTemporaryScriptBuffer + 3
-	ld a, [wCurSignpostScriptAddr]
+	ld hl, wTempScriptBuffer + 3
+	ld a, [wCurBGEventScriptAddr]
 	ld [hld], a
 	ld a, jumpstd_command
 	ld [hld], a
-	ld a, [wCurSignpostScriptAddr + 1]
+	ld a, [wCurBGEventScriptAddr + 1]
 	ld [hld], a
 	ld [hl], writebyte_command ; just to be safe (as opposed to directly writing to hScriptVar)
 	jr .callMapScriptAndReturnCarry
@@ -681,7 +681,7 @@ CheckSignFlag:
 	ld h, [hl]
 	ld l, a
 	push hl
-	ld a, [wMapScriptHeaderBank]
+	ld a, [wMapScriptsBank]
 	call GetFarHalfword
 	ld e, l
 	ld d, h
@@ -1149,7 +1149,7 @@ CanUseSweetScent::
 	ld hl, wStatusFlags
 	bit 5, [hl]
 	jr nz, .no
-	ld a, [wPermission]
+	ld a, [wEnvironment]
 	cp CAVE
 	jr z, .ice_check
 	cp DUNGEON

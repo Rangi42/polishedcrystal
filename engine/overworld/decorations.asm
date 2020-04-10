@@ -1,8 +1,8 @@
 InitDecorations:
 	ld a, DECO_FEATHERY_BED
-	ld [wBed], a
+	ld [wDecoBed], a
 	ld a, DECO_TOWN_MAP
-	ld [wPoster], a
+	ld [wDecoPoster], a
 	ret
 
 _KrisDecorationMenu:
@@ -598,51 +598,51 @@ DecoAction_nothing:
 	ret
 
 DecoAction_setupbed:
-	ld hl, wBed
+	ld hl, wDecoBed
 	jp DecoAction_TrySetItUp
 
 DecoAction_putawaybed:
-	ld hl, wBed
+	ld hl, wDecoBed
 	jp DecoAction_TryPutItAway
 
 DecoAction_setupcarpet:
-	ld hl, wCarpet
+	ld hl, wDecoCarpet
 	jp DecoAction_TrySetItUp
 
 DecoAction_putawaycarpet:
-	ld hl, wCarpet
+	ld hl, wDecoCarpet
 	jp DecoAction_TryPutItAway
 
 DecoAction_setupplant:
-	ld hl, wPlant
+	ld hl, wDecoPlant
 	jp DecoAction_TrySetItUp
 
 DecoAction_putawayplant:
-	ld hl, wPlant
+	ld hl, wDecoPlant
 	jp DecoAction_TryPutItAway
 
 DecoAction_setupposter:
-	ld hl, wPoster
+	ld hl, wDecoPoster
 	jp DecoAction_TrySetItUp
 
 DecoAction_putawayposter:
-	ld hl, wPoster
+	ld hl, wDecoPoster
 	jp DecoAction_TryPutItAway
 
 DecoAction_setupconsole:
-	ld hl, wConsole
+	ld hl, wDecoConsole
 	jp DecoAction_TrySetItUp
 
 DecoAction_putawayconsole:
-	ld hl, wConsole
+	ld hl, wDecoConsole
 	jp DecoAction_TryPutItAway
 
 DecoAction_setupbigdoll:
-	ld hl, wBigDoll
+	ld hl, wDecoBigDoll
 	jp DecoAction_TrySetItUp
 
 DecoAction_putawaybigdoll:
-	ld hl, wBigDoll
+	ld hl, wDecoBigDoll
 	jp DecoAction_TryPutItAway
 
 DecoAction_TrySetItUp:
@@ -867,8 +867,8 @@ DecoAction_AskWhichSide:
 	ret
 
 QueryWhichSide:
-	ld hl, wRightOrnament
-	ld de, wLeftOrnament
+	ld hl, wDecoRightOrnament
+	ld de, wDecoLeftOrnament
 	ld a, [wBuffer2]
 	cp 1
 	ret z
@@ -960,7 +960,7 @@ JumpTable_DecorationDesc:
 	dw DecorationDesc_Console
 
 DecorationDesc_Poster:
-	ld a, [wPoster]
+	ld a, [wDecoPoster]
 	ld hl, DecorationDesc_PosterPointers
 	ld de, 3
 	call IsInArray
@@ -1022,11 +1022,11 @@ DecorationDesc_NullPoster:
 	end
 
 DecorationDesc_LeftOrnament:
-	ld a, [wLeftOrnament]
+	ld a, [wDecoLeftOrnament]
 	jr DecorationDesc_Ornament
 
 DecorationDesc_RightOrnament:
-	ld a, [wRightOrnament]
+	ld a, [wDecoRightOrnament]
 DecorationDesc_Ornament:
 	ld c, a
 	cp DECO_GOLD_TROPHY_DOLL
@@ -1047,7 +1047,7 @@ DecorationDesc_Ornament:
 	text_end
 
 DecorationDesc_Console:
-	ld a, [wConsole]
+	ld a, [wDecoConsole]
 	ld c, a
 .go:
 	ld de, wStringBuffer3
@@ -1077,18 +1077,18 @@ DecorationDesc_GiantOrnament:
 
 ToggleMaptileDecorations:
 	lb de, 0, 4
-	ld a, [wBed]
+	ld a, [wDecoBed]
 	call SetDecorationTile
 	lb de, 7, 4
-	ld a, [wPlant]
+	ld a, [wDecoPlant]
 	call SetDecorationTile
 	lb de, 6, 0
-	ld a, [wPoster]
+	ld a, [wDecoPoster]
 	call SetDecorationTile
 	call SetPosterVisibility
 	lb de, 0, 0
 	call PadCoords_de
-	ld a, [wCarpet]
+	ld a, [wDecoCarpet]
 	and a
 	ret z
 	call _GetDecorationSprite
@@ -1107,7 +1107,7 @@ ToggleMaptileDecorations:
 
 SetPosterVisibility:
 	ld b, SET_FLAG
-	ld a, [wPoster]
+	ld a, [wDecoPoster]
 	and a
 	jr nz, .ok
 	ld b, RESET_FLAG
@@ -1129,19 +1129,19 @@ SetDecorationTile:
 ToggleDecorationsVisibility:
 	ld de, EVENT_KRISS_HOUSE_2F_CONSOLE
 	ld hl, wVariableSprites + SPRITE_CONSOLE - SPRITE_VARS
-	ld a, [wConsole]
+	ld a, [wDecoConsole]
 	call .ToggleDecorationVisibility
 	ld de, EVENT_KRISS_HOUSE_2F_BIG_DOLL
 	ld hl, wVariableSprites + SPRITE_BIG_DOLL - SPRITE_VARS
-	ld a, [wBigDoll]
+	ld a, [wDecoBigDoll]
 	call .ToggleDecorationVisibility
 	ld de, EVENT_KRISS_HOUSE_2F_DOLL_1
 	ld hl, wVariableSprites + SPRITE_DOLL_1 - SPRITE_VARS
-	ld a, [wLeftOrnament]
+	ld a, [wDecoLeftOrnament]
 	call .ToggleDecorationVisibility
 	ld de, EVENT_KRISS_HOUSE_2F_DOLL_2
 	ld hl, wVariableSprites + SPRITE_DOLL_2 - SPRITE_VARS
-	ld a, [wRightOrnament]
+	ld a, [wDecoRightOrnament]
 	and a
 	jr z, .hide
 	call _GetDecorationSprite

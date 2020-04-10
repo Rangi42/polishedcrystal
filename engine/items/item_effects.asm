@@ -543,7 +543,7 @@ PokeBallEffect:
 	ld d, h
 	ld e, l
 	ld hl, wOTPartyMonNicknames
-	ld bc, PKMN_NAME_LENGTH
+	ld bc, MON_NAME_LENGTH
 	rst CopyBytes
 	pop af
 	ld b, 0
@@ -598,7 +598,7 @@ PokeBallEffect:
 	dec a
 	ld [wCurPartyMon], a
 	ld hl, wPartyMonNicknames
-	ld bc, PKMN_NAME_LENGTH
+	ld bc, MON_NAME_LENGTH
 	rst AddNTimes
 
 	ld d, h
@@ -673,7 +673,7 @@ PokeBallEffect:
 
 	ld hl, wMonOrItemNameBuffer
 	ld de, sBoxMonNicknames
-	ld bc, PKMN_NAME_LENGTH
+	ld bc, MON_NAME_LENGTH
 	rst CopyBytes
 
 	ld hl, sBoxMonNicknames
@@ -688,7 +688,7 @@ PokeBallEffect:
 
 	ld hl, sBoxMonNicknames
 	ld de, wMonOrItemNameBuffer
-	ld bc, PKMN_NAME_LENGTH
+	ld bc, MON_NAME_LENGTH
 	rst CopyBytes
 
 	call CloseSRAM

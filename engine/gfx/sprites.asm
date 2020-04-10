@@ -9,7 +9,7 @@ PlaySpriteAnimations:
 	push af
 
 	ld a, LOW(wVirtualOAM)
-	ld [wCurrSpriteOAMAddr], a
+	ld [wCurSpriteOAMAddr], a
 	call DoNextFrameForAllSprites
 
 	jp PopAFBCDEHL
@@ -38,11 +38,11 @@ DoNextFrameForAllSprites:
 	dec e
 	jr nz, .loop
 
-	ld a, [wCurrSpriteOAMAddr]
+	ld a, [wCurSpriteOAMAddr]
 	ld l, a
 	ld h, HIGH(wVirtualOAM)
 
-.loop2 ; Clear (wVirtualOAM + [wCurrSpriteOAMAddr] --> wVirtualOAMEnd)
+.loop2 ; Clear (wVirtualOAM + [wCurSpriteOAMAddr] --> wVirtualOAMEnd)
 	ld a, l
 	cp LOW(wVirtualOAMEnd)
 	ret nc
@@ -74,11 +74,11 @@ DoNextFrameForFirst16Sprites:
 	dec e
 	jr nz, .loop
 
-	ld a, [wCurrSpriteOAMAddr]
+	ld a, [wCurSpriteOAMAddr]
 	ld l, a
 	ld h, HIGH(wVirtualOAM + 16 * 4)
 
-.loop2 ; Clear (wVirtualOAM + [wCurrSpriteOAMAddr] --> wVirtualOAM + 16 * 4)
+.loop2 ; Clear (wVirtualOAM + [wCurSpriteOAMAddr] --> wVirtualOAM + 16 * 4)
 	ld a, l
 	cp LOW(wVirtualOAM + 16 * 4)
 	ret nc
@@ -209,27 +209,27 @@ UpdateAnimFrame:
 	cp -4
 	jr z, .delete
 	call GetFrameOAMPointer
-	; add byte to [wCurrAnimVTile]
-	ld a, [wCurrAnimVTile]
+	; add byte to [wCurAnimVTile]
+	ld a, [wCurAnimVTile]
 	add [hl]
-	ld [wCurrAnimVTile], a
+	ld [wCurAnimVTile], a
 	inc hl
 	; load pointer into hl
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
 	push bc
-	ld a, [wCurrSpriteOAMAddr]
+	ld a, [wCurSpriteOAMAddr]
 	ld e, a
 	ld d, HIGH(wVirtualOAM)
 	ld a, [hli]
 	ld c, a ; number of objects
 .loop
 	; first byte: y (px)
-	; [de] = [wCurrAnimYCoord] + [wCurrAnimYOffset] + [wGlobalAnimYOffset] + AddOrSubtractY([hl])
-	ld a, [wCurrAnimYCoord]
+	; [de] = [wCurAnimYCoord] + [wCurAnimYOffset] + [wGlobalAnimYOffset] + AddOrSubtractY([hl])
+	ld a, [wCurAnimYCoord]
 	ld b, a
-	ld a, [wCurrAnimYOffset]
+	ld a, [wCurAnimYOffset]
 	add b
 	ld b, a
 	ld a, [wGlobalAnimYOffset]
@@ -241,10 +241,10 @@ UpdateAnimFrame:
 	inc hl
 	inc de
 	; second byte: x (px)
-	; [de] = [wCurrAnimXCoord] + [wCurrAnimXOffset] + [wGlobalAnimXOffset] + AddOrSubtractX([hl])
-	ld a, [wCurrAnimXCoord]
+	; [de] = [wCurAnimXCoord] + [wCurAnimXOffset] + [wGlobalAnimXOffset] + AddOrSubtractX([hl])
+	ld a, [wCurAnimXCoord]
 	ld b, a
-	ld a, [wCurrAnimXOffset]
+	ld a, [wCurAnimXOffset]
 	add b
 	ld b, a
 	ld a, [wGlobalAnimXOffset]
@@ -256,8 +256,8 @@ UpdateAnimFrame:
 	inc hl
 	inc de
 	; third byte: vtile
-	; [de] = [wCurrAnimVTile] + [hl]
-	ld a, [wCurrAnimVTile]
+	; [de] = [wCurAnimVTile] + [hl]
+	ld a, [wCurAnimVTile]
 	add [hl]
 	ld [de], a
 	inc hl
@@ -273,7 +273,7 @@ UpdateAnimFrame:
 	inc hl
 	inc de
 	ld a, e
-	ld [wCurrSpriteOAMAddr], a
+	ld [wCurSpriteOAMAddr], a
 	cp LOW(wVirtualOAMEnd)
 	jr nc, .reached_the_end
 	dec c
@@ -295,7 +295,7 @@ UpdateAnimFrame:
 AddOrSubtractY:
 	push hl
 	ld a, [hl]
-	ld hl, wCurrSpriteAddSubFlags
+	ld hl, wCurSpriteAddSubFlags
 	bit 6, [hl]
 	jr z, .ok
 	; 8 - a
@@ -310,7 +310,7 @@ AddOrSubtractY:
 AddOrSubtractX:
 	push hl
 	ld a, [hl]
-	ld hl, wCurrSpriteAddSubFlags
+	ld hl, wCurSpriteAddSubFlags
 	bit 5, [hl]
 	jr z, .ok
 	; 8 - a
@@ -323,7 +323,7 @@ AddOrSubtractX:
 	ret
 
 GetSpriteOAMAttr:
-	ld a, [wCurrSpriteAddSubFlags]
+	ld a, [wCurSpriteAddSubFlags]
 	ld b, a
 	ld a, [hl]
 	xor b
@@ -336,19 +336,19 @@ GetSpriteOAMAttr:
 
 InitSpriteAnimBuffer:
 	xor a
-	ld [wCurrSpriteAddSubFlags], a
+	ld [wCurSpriteAddSubFlags], a
 	ld hl, SPRITEANIMSTRUCT_TILE_ID
 	add hl, bc
 	ld a, [hli]
-	ld [wCurrAnimVTile], a
+	ld [wCurAnimVTile], a
 	ld a, [hli]
-	ld [wCurrAnimXCoord], a
+	ld [wCurAnimXCoord], a
 	ld a, [hli]
-	ld [wCurrAnimYCoord], a
+	ld [wCurAnimYCoord], a
 	ld a, [hli]
-	ld [wCurrAnimXOffset], a
+	ld [wCurAnimXOffset], a
 	ld a, [hli]
-	ld [wCurrAnimYOffset], a
+	ld [wCurAnimYOffset], a
 	ret
 
 GetSpriteAnimVTile:
@@ -428,7 +428,7 @@ GetSpriteAnimFrame:
 	ld a, [hl]
 	and $c0
 	srl a
-	ld [wCurrSpriteAddSubFlags], a
+	ld [wCurSpriteAddSubFlags], a
 	pop af
 	ret
 

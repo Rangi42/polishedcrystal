@@ -178,7 +178,7 @@ LoadPoisonBGPals:
 	push af
 	ld a, $5
 	ldh [rSVBK], a
-	ld hl, wBGPals
+	ld hl, wBGPals2
 	ld c, 8 * 4
 .loop
 if DEF(NOIR)

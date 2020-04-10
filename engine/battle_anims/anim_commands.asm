@@ -217,12 +217,12 @@ RunBattleAnimCommand:
 	jp .RunScript
 
 .CheckTimer:
-	ld a, [wBattleAnimDuration]
+	ld a, [wBattleAnimDelay]
 	and a
 	jr z, .done
 
 	dec a
-	ld [wBattleAnimDuration], a
+	ld [wBattleAnimDelay], a
 	and a
 	ret
 
@@ -249,7 +249,7 @@ RunBattleAnimCommand:
 	cp $cf
 	jr nc, .do_anim
 
-	ld [wBattleAnimDuration], a
+	ld [wBattleAnimDelay], a
 	ret
 
 .do_anim
@@ -1335,7 +1335,7 @@ if !DEF(MONOCHROME)
 	jr nz, .not_1b
 .is_1b
 	ld c, 7 palettes
-	ld hl, wUnknBGPals
+	ld hl, wBGPals1
 .loop_UnknBGPals
 	ld a, [hl]
 	cpl
@@ -1343,7 +1343,7 @@ if !DEF(MONOCHROME)
 	dec c
 	jr nz, .loop_UnknBGPals
 	ld c, 2 palettes
-	ld hl, wUnknOBPals
+	ld hl, wOBPals1
 .loop_UnknOBPals
 	ld a, [hl]
 	cpl
@@ -1356,13 +1356,13 @@ if !DEF(MONOCHROME)
 else
 	ldh a, [rBGP]
 endc
-	ld hl, wBGPals
-	ld de, wUnknBGPals
+	ld hl, wBGPals2
+	ld de, wBGPals1
 	ld b, a
 	ld c, 7
 	call CopyPals
-	ld hl, wOBPals
-	ld de, wUnknOBPals
+	ld hl, wOBPals2
+	ld de, wOBPals1
 if !DEF(MONOCHROME)
 	pop af
 else
@@ -1383,8 +1383,8 @@ BattleAnim_SetOBPals:
 	push af
 	ld a, $5
 	ldh [rSVBK], a
-	ld hl, wOBPals palette PAL_BATTLE_OB_GRAY
-	ld de, wUnknOBPals palette PAL_BATTLE_OB_GRAY
+	ld hl, wOBPals2 palette PAL_BATTLE_OB_GRAY
+	ld de, wOBPals1 palette PAL_BATTLE_OB_GRAY
 	ldh a, [rOBP0]
 	ld b, a
 	ld c, $2

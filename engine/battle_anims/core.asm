@@ -15,7 +15,7 @@ QueueBattleAnimation:
 .done
 	ld c, l
 	ld b, h
-	ld hl, wNumActiveBattleAnims
+	ld hl, wLastAnimObjectIndex
 	inc [hl]
 	jp InitBattleAnimation
 
@@ -37,7 +37,7 @@ endr
 	ld d, h
 	ld hl, BATTLEANIMSTRUCT_INDEX
 	add hl, bc
-	ld a, [wNumActiveBattleAnims]
+	ld a, [wLastAnimObjectIndex]
 	ld [hli], a ; Index
 	ld a, [de]
 	inc de

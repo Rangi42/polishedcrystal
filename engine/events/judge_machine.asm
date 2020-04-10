@@ -392,7 +392,7 @@ JudgeSystem::
 	push bc
 	push de
 ; Load the palettes
-	ld de, wBGPals
+	ld de, wBGPals2
 	ld bc, 6 palettes
 	call FarCopyColorWRAM
 	ld a, $1

@@ -7,6 +7,10 @@ hPushOAM:: ds 5
 hScriptVar:: db
 
 hROMBankBackup:: db
+
+; TODO: come up with other names for hBuffer
+; related to home/audio.asm and home/decompress.asm
+hTempBank::
 hBuffer:: db
 hLYOverrideStackCopyAmount:: db
 
@@ -125,16 +129,18 @@ hSCY:: db
 hWX::  db
 hWY::  db
 
-hTilesPerCycle:: db
+hTilesPerCycle::
 ; 0 - no update
 ; 1 - vBGMap0 tiles
 ; 2 - vBGMap0 attributes
 ; 3 - vBGMap0 tiles
 ; 4 - vBGMap0 attributes
-hBGMapMode::     db
+	db
+hBGMapMode::
 ; 0 - top third
 ; 1 - middle third
 ; 2 - bottom third
+	db
 hBGMapHalf::     db
 hBGMapAddress::  dw
 

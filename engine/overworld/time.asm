@@ -123,7 +123,7 @@ InitNDaysCountdown:
 
 InitializeStartDay:
 	call UpdateTime
-	ld hl, wTimerStartDay
+	ld hl, wTimerEventStartDay
 CopyDayToHL:
 	ld a, [wCurDay]
 	ld [hl], a
@@ -244,7 +244,7 @@ CheckBugContestTimer::
 	ret
 
 CheckPokerusTick::
-	ld hl, wTimerStartDay
+	ld hl, wTimerEventStartDay
 	call CalcDaysSince
 	ld a, [wDaysSince]
 	and a

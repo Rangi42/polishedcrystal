@@ -98,11 +98,11 @@ if _NARG == 6
 else
 	db 0
 endc
-	dw wUnknOBPals palette \4 ; destination
+	dw wOBPals1 palette \4 ; destination
 	db \5 palettes ; length
 ENDM
 	special_ob_pal overcast, (unused),                        OvercastOBPalette,                      PAL_OW_RED,    8, 8
-	special_ob_pal map,      MURKY_SWAMP,                     wUnknBGPals palette PAL_BG_GREEN,       PAL_OW_TREE,   1
+	special_ob_pal map,      MURKY_SWAMP,                     wBGPals1 palette PAL_BG_GREEN,       PAL_OW_TREE,   1
 	special_ob_pal map,      ROUTE_34,                        OverworldPartyMonPalettes,              PAL_OW_ROCK,   1, 3
 	special_ob_pal map,      VERMILION_GYM,                   VermilionGymOBPalette_Tree,             PAL_OW_TREE,   1
 	special_ob_pal map,      LIGHTNING_ISLAND,                LightningIslandOBPalette_Tree,          PAL_OW_TREE,   1
@@ -115,16 +115,16 @@ ENDM
 	special_ob_pal map,      GOLDENROD_MUSEUM_1F,             GoldenrodMuseumOBPalettes_TreeRock,     PAL_OW_TREE,   2
 	special_ob_pal map,      GOLDENROD_MUSEUM_2F,             GoldenrodMuseumOBPalettes_TreeRock,     PAL_OW_TREE,   2
 	special_ob_pal map,      CELADON_DEPT_STORE_3F,           OverworldPartyMonPalettes + 3 palettes, PAL_OW_ROCK,   1
-	special_ob_pal map,      MOUNT_MOON_SQUARE,               wUnknBGPals palette PAL_BG_GRAY,        PAL_OW_ROCK,   1
-	special_ob_pal map,      MAGNET_TUNNEL_INSIDE,            wUnknBGPals palette PAL_BG_GRAY,        PAL_OW_ROCK,   1
-	special_ob_pal landmark, CINNABAR_VOLCANO,                wUnknBGPals palette PAL_BG_BROWN,       PAL_OW_ROCK,   1
-	special_ob_pal landmark, DIM_CAVE,                        wUnknBGPals palette PAL_BG_BROWN,       PAL_OW_ROCK,   1
-	special_ob_pal landmark, ICE_PATH,                        wUnknBGPals palette PAL_BG_BROWN,       PAL_OW_ROCK,   1
-	special_ob_pal landmark, SEAFOAM_ISLANDS,                 wUnknBGPals palette PAL_BG_BROWN,       PAL_OW_ROCK,   1
-	special_ob_pal landmark, WHIRL_ISLANDS,                   wUnknBGPals palette PAL_BG_BROWN,       PAL_OW_ROCK,   1
-	special_ob_pal tileset,  TILESET_SHAMOUTI_ISLAND,         wUnknBGPals palette PAL_BG_GREEN,       PAL_OW_TREE,   1
-	special_ob_pal tileset,  TILESET_SAFARI_ZONE,             wUnknBGPals palette PAL_BG_GREEN,       PAL_OW_TREE,   1
-	special_ob_pal tileset,  TILESET_FARAWAY_ISLAND,          wUnknBGPals palette PAL_BG_RED,         PAL_OW_TREE,   1
+	special_ob_pal map,      MOUNT_MOON_SQUARE,               wBGPals1 palette PAL_BG_GRAY,        PAL_OW_ROCK,   1
+	special_ob_pal map,      MAGNET_TUNNEL_INSIDE,            wBGPals1 palette PAL_BG_GRAY,        PAL_OW_ROCK,   1
+	special_ob_pal landmark, CINNABAR_VOLCANO,                wBGPals1 palette PAL_BG_BROWN,       PAL_OW_ROCK,   1
+	special_ob_pal landmark, DIM_CAVE,                        wBGPals1 palette PAL_BG_BROWN,       PAL_OW_ROCK,   1
+	special_ob_pal landmark, ICE_PATH,                        wBGPals1 palette PAL_BG_BROWN,       PAL_OW_ROCK,   1
+	special_ob_pal landmark, SEAFOAM_ISLANDS,                 wBGPals1 palette PAL_BG_BROWN,       PAL_OW_ROCK,   1
+	special_ob_pal landmark, WHIRL_ISLANDS,                   wBGPals1 palette PAL_BG_BROWN,       PAL_OW_ROCK,   1
+	special_ob_pal tileset,  TILESET_SHAMOUTI_ISLAND,         wBGPals1 palette PAL_BG_GREEN,       PAL_OW_TREE,   1
+	special_ob_pal tileset,  TILESET_SAFARI_ZONE,             wBGPals1 palette PAL_BG_GREEN,       PAL_OW_TREE,   1
+	special_ob_pal tileset,  TILESET_FARAWAY_ISLAND,          wBGPals1 palette PAL_BG_RED,         PAL_OW_TREE,   1
 	db 0 ; end
 
 BlindingFlashPalette:

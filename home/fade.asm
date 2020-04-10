@@ -1,21 +1,21 @@
 ; Functions to fade the screen in and out.
 
 SetWhitePals::
-	ld a, BANK(wUnknBGPals)
+	ld a, BANK(wBGPals1)
 	call StackCallInWRAMBankA
 
 .Function:
-	ld hl, wUnknBGPals
+	ld hl, wBGPals1
 	ld a, $ff
 	ld bc, 16 palettes
 	jp _ByteFill
 
 SetBlackPals::
-	ld a, BANK(wUnknBGPals)
+	ld a, BANK(wBGPals1)
 	call StackCallInWRAMBankA
 
 .Function:
-	ld hl, wUnknBGPals
+	ld hl, wBGPals1
 	xor a
 	ld bc, 16 palettes
 	jp _ByteFill
@@ -32,8 +32,8 @@ FadeToBlack::
 	pop bc
 
 FadePalettes::
-; Fades active palettes in wBGPals/wOBPals to new ones in
-; wUnknBGPals/wUnknOBPals in c frames
+; Fades active palettes in wBGPals2/wOBPals2 to new ones in
+; wBGPals1/wOBPals1 in c frames
 	xor a
 	ld [wPalFadeMode], a
 	jr DoFadePalettes

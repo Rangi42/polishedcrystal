@@ -276,12 +276,12 @@ HPBarAnim_BGMapUpdate:
 
 .enemy_hp_bar
 	lb bc, $94, 0
-	ld hl, wBGPals + 2 palettes + 4
+	ld hl, wBGPals2 + 2 palettes + 4
 	jr .finish
 
 .player_hp_bar
 	lb bc, $9c, 1
-	ld hl, wBGPals + 3 palettes + 4
+	ld hl, wBGPals2 + 3 palettes + 4
 .finish
 	xor a
 	ldh [hCGBPalUpdate], a
@@ -289,7 +289,7 @@ HPBarAnim_BGMapUpdate:
 	ldh [hBGMapHalf], a
 	ldh a, [rSVBK]
 	push af
-	ld a, BANK(wBGPals)
+	ld a, BANK(wBGPals2)
 	ldh [rSVBK], a
 	di
 .waitnohb3

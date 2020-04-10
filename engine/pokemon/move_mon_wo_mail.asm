@@ -7,7 +7,7 @@ InsertPokemonIntoBox:
 	dec a
 	ld [wd265], a
 	ld hl, sBoxMonNicknames
-	ld bc, PKMN_NAME_LENGTH
+	ld bc, MON_NAME_LENGTH
 	ld de, wBufferMonNick
 	call InsertDataIntoBoxOrParty
 	ld a, [sBoxCount]
@@ -44,7 +44,7 @@ InsertPokemonIntoParty:
 	dec a
 	ld [wd265], a
 	ld hl, wPartyMonNicknames
-	ld bc, PKMN_NAME_LENGTH
+	ld bc, MON_NAME_LENGTH
 	ld de, wBufferMonNick
 	call InsertDataIntoBoxOrParty
 	ld a, [wPartyCount]

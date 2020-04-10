@@ -5,7 +5,7 @@ LearnMove:
 	call GetNick
 	ld hl, wStringBuffer1
 	ld de, wMonOrItemNameBuffer
-	ld bc, PKMN_NAME_LENGTH
+	ld bc, MON_NAME_LENGTH
 	rst CopyBytes
 
 .loop

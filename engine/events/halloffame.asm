@@ -124,12 +124,12 @@ AnimateHallOfFame:
 	db "New Hall of Famer!@"
 
 GetHallOfFameParty:
-	ld hl, wOverworldMap
+	ld hl, wOverworldMapBlocks
 	ld bc, HOF_LENGTH
 	xor a
 	rst ByteFill
 	ld a, [wHallOfFameCount]
-	ld de, wOverworldMap
+	ld de, wOverworldMapBlocks
 	ld [de], a
 	inc de
 	ld hl, wPartySpecies
@@ -194,9 +194,9 @@ GetHallOfFameParty:
 	push bc
 	ld a, c
 	ld hl, wPartyMonNicknames
-	ld bc, PKMN_NAME_LENGTH
+	ld bc, MON_NAME_LENGTH
 	rst AddNTimes
-	ld bc, PKMN_NAME_LENGTH - 1
+	ld bc, MON_NAME_LENGTH - 1
 	rst CopyBytes
 
 	pop bc
@@ -434,7 +434,7 @@ DisplayHOFMon:
 	ld a, [hli]
 	ld [wTempMonLevel], a
 	ld de, wStringBuffer2
-	ld bc, PKMN_NAME_LENGTH - 1
+	ld bc, MON_NAME_LENGTH - 1
 	rst CopyBytes
 	ld a, "@"
 	ld [wStringBuffer2 + 10], a

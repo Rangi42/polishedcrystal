@@ -698,7 +698,7 @@ BillsPC_InitRAM:
 	call ClearSprites
 	call ClearTileMap
 	call BillsPC_InitGFX
-	ld hl, wBillsPCPokemonList
+	ld hl, wBillsPCData
 	ld bc, $338
 	xor a
 	rst ByteFill
@@ -1270,11 +1270,11 @@ BillsPC_RefreshTextboxes:
 	jr z, .boxfail
 	ld bc, sBoxMonNicknames - sBox
 	add hl, bc
-	ld bc, PKMN_NAME_LENGTH
+	ld bc, MON_NAME_LENGTH
 	ld a, e
 	rst AddNTimes
 	ld de, wStringBuffer1
-	ld bc, PKMN_NAME_LENGTH
+	ld bc, MON_NAME_LENGTH
 	rst CopyBytes
 	call CloseSRAM
 	pop hl
@@ -1295,11 +1295,11 @@ BillsPC_RefreshTextboxes:
 	and a
 	jr z, .partyfail
 	ld hl, wPartyMonNicknames
-	ld bc, PKMN_NAME_LENGTH
+	ld bc, MON_NAME_LENGTH
 	ld a, e
 	rst AddNTimes
 	ld de, wStringBuffer1
-	ld bc, PKMN_NAME_LENGTH
+	ld bc, MON_NAME_LENGTH
 	rst CopyBytes
 	pop hl
 	ld de, wStringBuffer1
@@ -1320,11 +1320,11 @@ BillsPC_RefreshTextboxes:
 	and a
 	jr z, .sBoxFail
 	ld hl, sBoxMonNicknames
-	ld bc, PKMN_NAME_LENGTH
+	ld bc, MON_NAME_LENGTH
 	ld a, e
 	rst AddNTimes
 	ld de, wStringBuffer1
-	ld bc, PKMN_NAME_LENGTH
+	ld bc, MON_NAME_LENGTH
 	rst CopyBytes
 	call CloseSRAM
 	pop hl
@@ -2090,11 +2090,11 @@ CopySpeciesToTemp:
 	ret
 
 CopyNicknameToTemp:
-	ld bc, PKMN_NAME_LENGTH
+	ld bc, MON_NAME_LENGTH
 	ld a, [wCurPartyMon]
 	rst AddNTimes
 	ld de, wBufferMonNick
-	ld bc, PKMN_NAME_LENGTH
+	ld bc, MON_NAME_LENGTH
 	rst CopyBytes
 	ret
 

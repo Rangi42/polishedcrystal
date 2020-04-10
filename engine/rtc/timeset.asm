@@ -34,7 +34,7 @@ if !DEF(DEBUG)
 	ld hl, Text_WokeUpOak
 	call PrintText
 endc
-	ld hl, wTimesetBuffer
+	ld hl, wTimeSetBuffer
 	ld bc, 50
 	xor a
 	rst ByteFill

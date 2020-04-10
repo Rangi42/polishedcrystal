@@ -168,7 +168,7 @@ SnowWarningAbility:
 	; fallthrough
 WeatherAbility:
 	ld b, a
-	ld a, [wWeather]
+	ld a, [wBattleWeather]
 	cp b
 	ret z ; don't re-activate it
 
@@ -1796,7 +1796,7 @@ RunPostBattleAbilities::
 	call GetItemName
 	ld hl, wStringBuffer1
 	ld de, wStringBuffer2
-	ld bc, PKMN_NAME_LENGTH
+	ld bc, MON_NAME_LENGTH
 	rst CopyBytes
 	pop de
 	pop bc

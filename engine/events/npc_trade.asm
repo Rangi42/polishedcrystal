@@ -169,7 +169,7 @@ DoNPCTrade:
 	call CopyTradeName
 
 	ld hl, wPartyMonNicknames
-	ld bc, PKMN_NAME_LENGTH
+	ld bc, MON_NAME_LENGTH
 	call Trade_GetAttributeOfLastPartymon
 	ld hl, wOTTrademonNickname
 	call CopyTradeName

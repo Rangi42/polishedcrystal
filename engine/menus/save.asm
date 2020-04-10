@@ -158,7 +158,7 @@ AddHallOfFameEntry:
 	ld a, c
 	or b
 	jr nz, .loop
-	ld hl, wOverworldMap
+	ld hl, wOverworldMapBlocks
 	ld de, sHallOfFame
 	ld bc, HOF_LENGTH
 	rst CopyBytes
@@ -316,9 +316,9 @@ SavePlayerData:
 	ld de, sPlayerData
 	ld bc, wPlayerDataEnd - wPlayerData
 	rst CopyBytes
-	ld hl, wMapData
+	ld hl, wCurMapData
 	ld de, sMapData
-	ld bc, wMapDataEnd - wMapData
+	ld bc, wCurMapDataEnd - wCurMapData
 	rst CopyBytes
 	jp CloseSRAM
 
@@ -372,9 +372,9 @@ SaveBackupPlayerData:
 	ld de, sBackupPlayerData
 	ld bc, wPlayerDataEnd - wPlayerData
 	rst CopyBytes
-	ld hl, wMapData
+	ld hl, wCurMapData
 	ld de, sBackupMapData
-	ld bc, wMapDataEnd - wMapData
+	ld bc, wCurMapDataEnd - wCurMapData
 	rst CopyBytes
 	jp CloseSRAM
 
@@ -535,8 +535,8 @@ LoadPlayerData:
 	ld bc, wPlayerDataEnd - wPlayerData
 	rst CopyBytes
 	ld hl, sMapData
-	ld de, wMapData
-	ld bc, wMapDataEnd - wMapData
+	ld de, wCurMapData
+	ld bc, wCurMapDataEnd - wCurMapData
 	rst CopyBytes
 	call CloseSRAM
 	ld a, BANK(sBattleTowerChallengeState)
@@ -587,8 +587,8 @@ LoadBackupPlayerData:
 	ld bc, wPlayerDataEnd - wPlayerData
 	rst CopyBytes
 	ld hl, sBackupMapData
-	ld de, wMapData
-	ld bc, wMapDataEnd - wMapData
+	ld de, wCurMapData
+	ld bc, wCurMapDataEnd - wCurMapData
 	rst CopyBytes
 	jp CloseSRAM
 

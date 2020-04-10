@@ -26,7 +26,7 @@ sPartyMon4MailBackup:: mailmsg sPartyMon4MailBackup
 sPartyMon5MailBackup:: mailmsg sPartyMon5MailBackup
 sPartyMon6MailBackup:: mailmsg sPartyMon6MailBackup
 
-sMailboxCount:: ds 1
+sMailboxCount:: db
 sMailbox::
 sMailbox1::  mailmsg sMailbox1
 sMailbox2::  mailmsg sMailbox2
@@ -39,7 +39,7 @@ sMailbox8::  mailmsg sMailbox8
 sMailbox9::  mailmsg sMailbox9
 sMailbox10:: mailmsg sMailbox10
 
-sMailboxCountBackup:: ds 1
+sMailboxCountBackup:: db
 sMailboxBackup::
 sMailbox1Backup::  mailmsg sMailbox1Backup
 sMailbox2Backup::  mailmsg sMailbox2Backup
@@ -55,51 +55,51 @@ sMailbox10Backup:: mailmsg sMailbox10Backup
 	ds 164
 
 sRTCStatusFlags:: ds 8
-sLuckyNumberDay:: ds 1
-sLuckyIDNumber:: ds 2
+sLuckyNumberDay:: db
+sLuckyIDNumber:: dw
 
 
 SECTION "Backup Save", SRAM
 
 sBackupOptions:: ds wOptionsEnd - wOptions1
 
-sBackupCheckValue1:: ds 1 ; loaded with 99, used to check save corruption
+sBackupCheckValue1:: db ; loaded with 99, used to check save corruption
 
 sBackupGameData::
 sBackupPlayerData::  ds wPlayerDataEnd - wPlayerData
-sBackupMapData::     ds wMapDataEnd - wMapData
+sBackupMapData::     ds wCurMapDataEnd - wCurMapData
 sBackupPokemonData:: ds wPokemonDataEnd - wPokemonData
 sBackupGameDataEnd::
 
 	ds 394
 
-sBackupChecksum:: ds 2
+sBackupChecksum:: dw
 
-sBackupCheckValue2:: ds 1 ; loaded with 127, used to check save corruption
+sBackupCheckValue2:: db ; loaded with 127, used to check save corruption
 
 
 SECTION "Save", SRAM
 
 sOptions:: ds wOptionsEnd - wOptions1
 
-sCheckValue1:: ds 1 ; loaded with 99, used to check save corruption
+sCheckValue1:: db ; loaded with 99, used to check save corruption
 
 sGameData::
 sPlayerData::  ds wPlayerDataEnd - wPlayerData
-sMapData::     ds wMapDataEnd - wMapData
+sMapData::     ds wCurMapDataEnd - wCurMapData
 sPokemonData:: ds wPokemonDataEnd - wPokemonData
 sGameDataEnd::
 
-	ds 394
+	ds $18a
 
-sChecksum:: ds 2
+sChecksum:: dw
 
-sCheckValue2:: ds 1 ; loaded with 127, used to check save corruption
+sCheckValue2:: db ; loaded with 127, used to check save corruption
 
 
 SECTION "Active Box", SRAM
 
-	box sBox
+sBox:: box sBox
 
 	ds $f4
 
@@ -109,17 +109,9 @@ SECTION "Link Battle Data", SRAM
 sLinkBattleResults:: ds $c
 
 sLinkBattleStats::
-sLinkBattleWins::   ds 2
-sLinkBattleLosses:: ds 2
-sLinkBattleDraws::  ds 2
-
-link_battle_record: MACRO
-\1Name:: ds NAME_LENGTH - 1
-\1ID:: ds 2
-\1Wins:: ds 2
-\1Losses:: ds 2
-\1Draws:: ds 2
-ENDM
+sLinkBattleWins::   dw
+sLinkBattleLosses:: dw
+sLinkBattleDraws::  dw
 
 sLinkBattleRecord::
 sLinkBattleRecord1:: link_battle_record sLinkBattleRecord1
@@ -133,37 +125,36 @@ sLinkBattleStatsEnd::
 SECTION "SRAM Hall of Fame", SRAM
 
 sHallOfFame::
-; temporary until I can find a way to macrofy it
-	hall_of_fame sHallOfFame01
-	hall_of_fame sHallOfFame02
-	hall_of_fame sHallOfFame03
-	hall_of_fame sHallOfFame04
-	hall_of_fame sHallOfFame05
-	hall_of_fame sHallOfFame06
-	hall_of_fame sHallOfFame07
-	hall_of_fame sHallOfFame08
-	hall_of_fame sHallOfFame09
-	hall_of_fame sHallOfFame10
-	hall_of_fame sHallOfFame11
-	hall_of_fame sHallOfFame12
-	hall_of_fame sHallOfFame13
-	hall_of_fame sHallOfFame14
-	hall_of_fame sHallOfFame15
-	hall_of_fame sHallOfFame16
-	hall_of_fame sHallOfFame17
-	hall_of_fame sHallOfFame18
-	hall_of_fame sHallOfFame19
-	hall_of_fame sHallOfFame20
-	hall_of_fame sHallOfFame21
-	hall_of_fame sHallOfFame22
-	hall_of_fame sHallOfFame23
-	hall_of_fame sHallOfFame24
-	hall_of_fame sHallOfFame25
-	hall_of_fame sHallOfFame26
-	hall_of_fame sHallOfFame27
-	hall_of_fame sHallOfFame28
-	hall_of_fame sHallOfFame29
-	hall_of_fame sHallOfFame30
+sHallOfFame01:: hall_of_fame sHallOfFame01
+sHallOfFame02:: hall_of_fame sHallOfFame02
+sHallOfFame03:: hall_of_fame sHallOfFame03
+sHallOfFame04:: hall_of_fame sHallOfFame04
+sHallOfFame05:: hall_of_fame sHallOfFame05
+sHallOfFame06:: hall_of_fame sHallOfFame06
+sHallOfFame07:: hall_of_fame sHallOfFame07
+sHallOfFame08:: hall_of_fame sHallOfFame08
+sHallOfFame09:: hall_of_fame sHallOfFame09
+sHallOfFame10:: hall_of_fame sHallOfFame10
+sHallOfFame11:: hall_of_fame sHallOfFame11
+sHallOfFame12:: hall_of_fame sHallOfFame12
+sHallOfFame13:: hall_of_fame sHallOfFame13
+sHallOfFame14:: hall_of_fame sHallOfFame14
+sHallOfFame15:: hall_of_fame sHallOfFame15
+sHallOfFame16:: hall_of_fame sHallOfFame16
+sHallOfFame17:: hall_of_fame sHallOfFame17
+sHallOfFame18:: hall_of_fame sHallOfFame18
+sHallOfFame19:: hall_of_fame sHallOfFame19
+sHallOfFame20:: hall_of_fame sHallOfFame20
+sHallOfFame21:: hall_of_fame sHallOfFame21
+sHallOfFame22:: hall_of_fame sHallOfFame22
+sHallOfFame23:: hall_of_fame sHallOfFame23
+sHallOfFame24:: hall_of_fame sHallOfFame24
+sHallOfFame25:: hall_of_fame sHallOfFame25
+sHallOfFame26:: hall_of_fame sHallOfFame26
+sHallOfFame27:: hall_of_fame sHallOfFame27
+sHallOfFame28:: hall_of_fame sHallOfFame28
+sHallOfFame29:: hall_of_fame sHallOfFame29
+sHallOfFame30:: hall_of_fame sHallOfFame30
 sHallOfFameEnd::
 
 ; x = 1
@@ -182,47 +173,45 @@ sHallOfFameEnd::
 
 SECTION "SRAM Battle Tower", SRAM
 
-; data of the BattleTower must be in SRAM because you can save and leave between battles
-
+; Battle Tower data must be in SRAM because you can save and leave between battles
+sBattleTowerChallengeState::
 ; 0: normal
 ; 2: battle tower
-sBattleTowerChallengeState:: ds 1
+	db
 
 sBattleTower::
-sNrOfBeatenBattleTowerTrainers:: ds 1
-sBTChoiceOfLevelGroup:: ds 1
-
-; The 7 trainers of the BattleTower are saved here, so nobody appears more than once
+sNrOfBeatenBattleTowerTrainers:: db
+sBTChoiceOfLevelGroup:: db
+; Battle Tower trainers are saved here, so nobody appears more than once
 sBTTrainers:: ds BATTLETOWER_NROFTRAINERS
+sBattleTowerSaveFileFlags:: db
 
-sBattleTowerNewSaveFile:: ds 1
-
-sBTPkmnOfTrainers::
-sBTPkmnPrevTrainer1:: ds 1
-sBTPkmnPrevTrainer2:: ds 1
-sBTPkmnPrevTrainer3:: ds 1
-sBTPkmnPrevPrevTrainer1:: ds 1
-sBTPkmnPrevPrevTrainer2:: ds 1
-sBTPkmnPrevPrevTrainer3:: ds 1
+sBTMonOfTrainers::
+sBTMonPrevTrainer1:: db
+sBTMonPrevTrainer2:: db
+sBTMonPrevTrainer3:: db
+sBTMonPrevPrevTrainer1:: db
+sBTMonPrevPrevTrainer2:: db
+sBTMonPrevPrevTrainer3:: db
 
 
 SECTION "Boxes 1-7",  SRAM
 
-	box sBox1
-	box sBox2
-	box sBox3
-	box sBox4
-	box sBox5
-	box sBox6
-	box sBox7
+sBox1::  box sBox1
+sBox2::  box sBox2
+sBox3::  box sBox3
+sBox4::  box sBox4
+sBox5::  box sBox5
+sBox6::  box sBox6
+sBox7::  box sBox7
 
 
 SECTION "Boxes 8-14", SRAM
 
-	box sBox8
-	box sBox9
-	box sBox10
-	box sBox11
-	box sBox12
-	box sBox13
-	box sBox14
+sBox8::  box sBox8
+sBox9::  box sBox9
+sBox10:: box sBox10
+sBox11:: box sBox11
+sBox12:: box sBox12
+sBox13:: box sBox13
+sBox14:: box sBox14

@@ -59,7 +59,7 @@ _LoadFontsBattleExtra::
 	call Get2bpp
 
 LoadFrame::
-	ld a, [wTextBoxFrame]
+	ld a, [wTextboxFrame]
 	ld bc, TILES_PER_FRAME * LEN_1BPP_TILE
 	ld hl, Frames
 	rst AddNTimes

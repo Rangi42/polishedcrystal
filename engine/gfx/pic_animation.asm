@@ -288,15 +288,15 @@ PokeAnim_InitAnim:
 	ld a, $2
 	ldh [rSVBK], a
 	push bc
-	ld hl, wPokeAnimExtraFlag
-	ld bc, wPokeAnimStructEnd - wPokeAnimExtraFlag
+	ld hl, wPokeAnimIdleFlag
+	ld bc, wPokeAnimStructEnd - wPokeAnimIdleFlag
 	xor a
 	rst ByteFill
 	pop bc
 	ld a, b
 	ld [wPokeAnimSpeed], a
 	ld a, c
-	ld [wPokeAnimExtraFlag], a
+	ld [wPokeAnimIdleFlag], a
 	call GetMonAnimPointer
 	call GetMonFramesPointer
 	call GetMonBitmaskPointer
@@ -823,7 +823,7 @@ GetMonAnimPointer:
 	ld a, [hli]
 	ld c, a
 
-	ld a, [wPokeAnimExtraFlag]
+	ld a, [wPokeAnimIdleFlag]
 	and a
 	jr z, .extras
 	inc hl

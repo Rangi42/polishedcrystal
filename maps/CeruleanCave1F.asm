@@ -71,5 +71,5 @@ CeruleanCave1FBridgeUnderfootTrigger:
 	ld a, $1
 CeruleanCave1F_FinishBridge:
 	ld [wWalkingOnBridge], a
-	ld [wCeruleanCave1FTrigger], a ; setscene a
+	ld [wCeruleanCave1FSceneID], a ; setscene a
 	jp GenericFinishBridge

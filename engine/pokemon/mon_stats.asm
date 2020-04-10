@@ -132,10 +132,10 @@ MostStatNames:
 	next "@"
 
 PrintStatDifferences:
-	ld a, [wTextBoxFlags]
+	ld a, [wTextboxFlags]
 	push af
 	set NO_LINE_SPACING, a
-	ld [wTextBoxFlags], a
+	ld [wTextboxFlags], a
 
 	; Figure out length of largest modifier (+x, +xx or +xxx)
 	ld hl, wStringBuffer3
@@ -173,7 +173,7 @@ PrintStatDifferences:
 	ld b, 0 ; just show stat
 	call .PrintStatDisplay
 	pop af
-	ld [wTextBoxFlags], a
+	ld [wTextboxFlags], a
 	ret
 
 .ComputeStatDifference:

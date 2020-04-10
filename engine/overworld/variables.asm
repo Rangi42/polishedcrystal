@@ -46,7 +46,7 @@ _GetVarAction::
 	dwb wMapGroup,                      RETVAR_STRBUF2
 	dwb wMapNumber,                     RETVAR_STRBUF2
 	dwb .UnownCaught,                   RETVAR_EXECUTE
-	dwb wPermission,                    RETVAR_STRBUF2
+	dwb wEnvironment,                   RETVAR_STRBUF2
 	dwb .BoxFreeSpace,                  RETVAR_EXECUTE
 	dwb wBugContestMinsRemaining,       RETVAR_STRBUF2
 	dwb wXCoord,                        RETVAR_STRBUF2
@@ -54,7 +54,7 @@ _GetVarAction::
 	dwb wSpecialPhoneCallID,            RETVAR_STRBUF2
 	dwb wNrOfBeatenBattleTowerTrainers, RETVAR_STRBUF2
 	dwb wKurtApricornQuantity,          RETVAR_STRBUF2
-	dwb wCurrentCaller,                 RETVAR_ADDR_DE
+	dwb wCurCaller,                     RETVAR_ADDR_DE
 	dwb wBlueCardBalance,               RETVAR_ADDR_DE
 	dwb wBuenasPassword,                RETVAR_ADDR_DE
 	dwb wKenjiBreakTimer,               RETVAR_STRBUF2

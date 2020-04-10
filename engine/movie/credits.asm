@@ -139,7 +139,7 @@ Credits::
 	call ClearTileMap
 	call ClearSprites
 
-	ld hl, wCreditsFaux2bpp
+	ld hl, wCreditsBlankFrame2bpp
 	ld c, $80
 	lb de, %11111111, %00000000 ; solid light gray hue
 
@@ -638,9 +638,9 @@ GetCreditsPalette:
 
 	push af
 	push hl
-	add LOW(wUnknBGPals)
+	add LOW(wBGPals1)
 	ld e, a
-	adc HIGH(wUnknBGPals)
+	adc HIGH(wBGPals1)
 	sub e
 	ld d, a
 	ld bc, 24
@@ -648,9 +648,9 @@ GetCreditsPalette:
 
 	pop hl
 	pop af
-	add LOW(wBGPals)
+	add LOW(wBGPals2)
 	ld e, a
-	adc HIGH(wBGPals)
+	adc HIGH(wBGPals2)
 	sub e
 	ld d, a
 	ld bc, 24
@@ -849,7 +849,7 @@ Credits_LoadBorderGFX:
 	ret
 
 .init
-	ld hl, wCreditsFaux2bpp
+	ld hl, wCreditsBlankFrame2bpp
 	ret
 
 .Frames:

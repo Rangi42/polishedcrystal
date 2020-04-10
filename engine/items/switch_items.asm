@@ -77,7 +77,7 @@ TryCombiningSwitchItems:
 	ld a, [de]
 	cp [hl]
 	jr nz, .doNotCombineSwitchItems
-	ld a, [wMenuData2_ScrollingMenuSpacing]
+	ld a, [wMenuData_ScrollingMenuSpacing]
 	cp 2
 	jr nz, .doNotCombineSwitchItems
 	ld a, [wScrollingMenuCursorPosition]
@@ -131,7 +131,7 @@ CombineSwitchItems:
 	inc hl
 	pop af
 	ld [hl], a
-	ld hl, wMenuData2_ItemsPointerAddr
+	ld hl, wMenuData_ItemsPointerAddr
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
@@ -185,12 +185,12 @@ CopyBufferedSwitchItemToScrollLocation:
 ItemSwitch_GetNthItem:
 	ld c, a
 	ld b, 0
-	ld hl, wMenuData2_ItemsPointerAddr
+	ld hl, wMenuData_ItemsPointerAddr
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
 	inc hl
-	ld a, [wMenuData2_ScrollingMenuSpacing]
+	ld a, [wMenuData_ScrollingMenuSpacing]
 	rst AddNTimes
 	ret
 
@@ -215,7 +215,7 @@ GetSwitchItemDestinationOffset:
 	ret
 
 ItemSwitch_ConvertSpacingToDW:
-	ld a, [wMenuData2_ScrollingMenuSpacing]
+	ld a, [wMenuData_ScrollingMenuSpacing]
 	ld c, a
 	ld b, 0
 	ret

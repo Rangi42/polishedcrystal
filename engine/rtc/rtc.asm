@@ -48,7 +48,7 @@ TimesOfDay:
 
 StageRTCTimeForSave:
 	call UpdateTime
-	ld hl, wGameSaveTime
+	ld hl, wRTC
 	ld a, [wCurDay]
 	ld [hli], a
 	ldh a, [hHours]
@@ -129,7 +129,7 @@ Function140ae:
 	jr z, .dont_update
 
 	call UpdateTime
-	ld a, [wGameSaveTime]
+	ld a, [wRTC]
 	ld b, a
 	ld a, [wCurDay]
 	cp b

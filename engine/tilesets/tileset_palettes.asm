@@ -10,13 +10,13 @@
 	const PAL_SPECIAL
 
 LoadBlindingFlashPalette::
-	ld de, wUnknBGPals palette PAL_BG_TEXT
+	ld de, wBGPals1 palette PAL_BG_TEXT
 	ld hl, BlindingFlashPalette
 	ld bc, 1 palettes
 	jp FarCopyColorWRAM
 
 LoadLinkTradePalette:
-	ld de, wUnknBGPals palette 2
+	ld de, wBGPals1 palette 2
 	ld hl, LinkTradePalette
 	ld bc, 6 palettes
 	jp FarCopyColorWRAM
@@ -73,7 +73,7 @@ LoadEightTimeOfDayBGPalettes:
 	ld bc, 8 palettes
 	rst AddNTimes
 LoadEightBGPalettes:
-	ld de, wUnknBGPals
+	ld de, wBGPals1
 	ld bc, 8 palettes
 	call FarCopyColorWRAM
 	scf
@@ -102,7 +102,7 @@ MartSpecialCase:
 	GLOBAL GenericMart_BlockData
 	ld hl, MartPalette
 	call LoadEightBGPalettes
-	ld hl, wMapBlockDataBank
+	ld hl, wMapBlocksBank
 	ld a, [hli]
 	cp BANK(GenericMart_BlockData)
 	jr nz, .not_generic_mart
@@ -113,7 +113,7 @@ MartSpecialCase:
 	cp HIGH(GenericMart_BlockData)
 	jr nz, .not_generic_mart
 	ld hl, MartBluePalette
-	ld de, wUnknBGPals palette PAL_BG_GREEN
+	ld de, wBGPals1 palette PAL_BG_GREEN
 	ld bc, 1 palettes
 	call FarCopyColorWRAM
 .not_generic_mart
@@ -176,14 +176,14 @@ endr
 	jr .loop
 
 InitializeSpecialPaletteRegisters:
-	; b, c, d, e = [wMapGroup], [wMapNumber], landmark, [wTileset]
+	; b, c, d, e = [wMapGroup], [wMapNumber], landmark, [wMapTileset]
 	ld a, [wMapGroup]
 	ld b, a
 	ld a, [wMapNumber]
 	ld c, a
 	call GetWorldMapLocation
 	ld d, a
-	ld a, [wTileset]
+	ld a, [wMapTileset]
 	ld e, a
 	ret
 

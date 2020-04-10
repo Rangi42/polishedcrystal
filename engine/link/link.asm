@@ -466,7 +466,7 @@ Link_PrepPartyData_Gen2:
 	rst CopyBytes
 	; de = $c97d
 	ld hl, wPartyMonNicknames
-	ld bc, PARTY_LENGTH * PKMN_NAME_LENGTH
+	ld bc, PARTY_LENGTH * MON_NAME_LENGTH
 	rst CopyBytes
 	; de = $c9bf
 
@@ -952,7 +952,7 @@ LinkTradeMenu:
 	ld [hl], a
 	push hl
 	push bc
-	ld bc, PKMN_NAME_LENGTH
+	ld bc, MON_NAME_LENGTH
 	add hl, bc
 	ld [hl], a
 	pop bc
@@ -1004,7 +1004,7 @@ LinkTradeMenu:
 	ld [hl], $1f
 	push hl
 	push bc
-	ld bc, PKMN_NAME_LENGTH
+	ld bc, MON_NAME_LENGTH
 	add hl, bc
 	ld [hl], $1f
 	pop bc
@@ -1377,7 +1377,7 @@ LinkTrade:
 	call GetPokemonName
 	ld hl, wStringBuffer1
 	ld de, wd004
-	ld bc, PKMN_NAME_LENGTH
+	ld bc, MON_NAME_LENGTH
 	rst CopyBytes
 	ld a, [wd003]
 	ld hl, wOTPartyMon1IsEgg

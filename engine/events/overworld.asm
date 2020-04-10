@@ -214,7 +214,7 @@ CheckMapForSomethingToCut:
 	farcall CheckCutCollision
 	pop de
 	jr nc, .fail
-	; Get the location of the current block in wOverworldMap.
+	; Get the location of the current block in wOverworldMapBlocks.
 	call GetBlockLocation
 	ld c, [hl]
 	; See if that block contains something that can be cut.
@@ -223,7 +223,7 @@ CheckMapForSomethingToCut:
 	call CheckOverworldTileArrays
 	pop hl
 	jr nc, .fail
-	; Back up the wOverworldMap address to wBuffer3
+	; Back up the wOverworldMapBlocks address to wBuffer3
 	ld a, l
 	ld [wBuffer3], a
 	ld a, h
@@ -292,7 +292,7 @@ CheckOverworldTileArrays:
 
 	; Dictionary lookup for pointer to tile replacement table
 	push bc
-	ld a, [wTileset]
+	ld a, [wMapTileset]
 	ld de, 3
 	call IsInArray
 	pop bc
@@ -903,7 +903,7 @@ dig_incave
 	ret
 
 .incave
-	ld hl, wDigWarp
+	ld hl, wDigWarpNumber
 	ld a, [hli]
 	and a
 	jr z, .fail
@@ -917,7 +917,7 @@ dig_incave
 	ret
 
 .DoDig:
-	ld hl, wDigWarp
+	ld hl, wDigWarpNumber
 	ld de, wNextWarp
 	ld bc, 3
 	rst CopyBytes

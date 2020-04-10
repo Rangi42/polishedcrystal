@@ -58,6 +58,24 @@ RETVAR_EXECUTE EQU (2 << 6)
 	const PLAYEREVENT_KEYITEMBALL
 NUM_PLAYER_EVENTS EQU const_value
 
+; PlayerMovement.pointers indexes (see engine/overworld/events.asm)
+	const_def
+	const PLAYERMOVEMENT_NORMAL
+	const PLAYERMOVEMENT_WARP
+	const PLAYERMOVEMENT_TURN
+	const PLAYERMOVEMENT_FORCE_TURN
+	const PLAYERMOVEMENT_FINISH
+	const PLAYERMOVEMENT_CONTINUE
+	const PLAYERMOVEMENT_EXIT_WATER
+	const PLAYERMOVEMENT_JUMP
+
+; script data sizes (see macros/scripts/maps.asm)
+SCENE_SCRIPT_SIZE EQU 2  ; scene_script
+CALLBACK_SIZE     EQU 3  ; callback
+WARP_EVENT_SIZE   EQU 5  ; warp_event
+COORD_EVENT_SIZE  EQU 5  ; coord_event
+BG_EVENT_SIZE     EQU 5  ; bg_event
+OBJECT_EVENT_SIZE EQU 13 ; object_event
 
 ; see engine/events.asm:TryReadSign.signs
 	const_def

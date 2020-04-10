@@ -6,22 +6,22 @@ CheckForHiddenItems:
 ; bit 6: Item is on the same row (straight left or right)
 ; bit 4-5: Direction (00=down 01=up 10=left 11=right)
 ; bit 0-3: Distance to item (taxicab)
-	ld a, [wMapScriptHeaderBank]
+	ld a, [wMapScriptsBank]
 	ld [wBuffer1], a
 	; Reset wBuffer4. This is used to figure out the closest item to the player.
 	ld a, -1
 	ld [wBuffer4], a
 ; Get the pointer for the first signpost header in the map...
-	ld hl, wCurrentMapSignpostHeaderPointer
+	ld hl, wCurMapBGEventsPointer
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
 ; ... before even checking to see if there are any signposts on this map.
-	ld a, [wCurrentMapSignpostCount]
+	ld a, [wCurMapBGEventCount]
 	and a
 	jp z, .nosignpostitems
 
-; For i = 1:wCurrentMapSignpostCount...
+; For i = 1:wCurMapBGEventCount...
 .loop
 ; Store the counter in wBuffer2, and store the signpost header pointer in the stack.
 	ld [wBuffer2], a

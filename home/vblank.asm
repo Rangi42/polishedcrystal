@@ -12,7 +12,7 @@ VBlank::
 	push bc
 	push af
 
-	ldh a, [hBuffer]
+	ldh a, [hTempBank]
 	push af
 
 	ldh a, [hROMBank]
@@ -67,7 +67,7 @@ VBlank::
 .noVBlankLeak
 
 	pop af
-	ldh [hBuffer], a
+	ldh [hTempBank], a
 
 	ldh a, [hROMBankBackup]
 	rst Bankswitch

@@ -137,7 +137,7 @@ Route47_FinishUnderfootBridge:
 	ld a, $1
 Route47_FinishBridge:
 	ld [wWalkingOnBridge], a
-	ld [wRoute47Trigger], a ; setscene a
+	ld [wRoute47SceneID], a ; setscene a
 	jp GenericFinishBridge
 
 Route47Bridge1OverheadTrigger:

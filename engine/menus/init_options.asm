@@ -24,7 +24,7 @@ SetInitialOptions:
 	rst ByteFill
 
 	ld hl, .BGPalette
-	ld de, wUnknBGPals
+	ld de, wBGPals1
 	ld bc, 1 palettes
 	call FarCopyColorWRAM
 
