@@ -668,7 +668,9 @@ CheckNeutralizingGas::
 	cp NEUTRALIZING_GAS
 	ret
 
-CheckSpeedWithQuickClaw::
+CheckMoveSpeed::
+; Does speed checks, but includes Quick Claw and Lagging Tail, which are only
+; taken into account for moves.
 	; Quick Claw has a chance to override speed
 	ldh a, [hBattleTurn]
 	ld e, a
@@ -683,12 +685,17 @@ CheckSpeedWithQuickClaw::
 	call .do_it
 	ld a, e
 	ldh [hBattleTurn], a
-	ld a, d ; +1: player, -1: enemy, 0: both/neither
+	ld a, d ; +1/+2: player, -1/-2: enemy, 0: both/neither
 	and a
 	jr z, CheckSpeed
 	dec a
+	ret z
+	dec a
 	ret
+
 .do_it
+	; Increases d if player is given priority, decreases if enemy is given it.
+	; d can be +2 or -2 if one is holding Quick Claw and the other Lagging Tail.
 	push de
 	predef GetUserItemAfterUnnerve
 	pop de
@@ -696,8 +703,19 @@ CheckSpeedWithQuickClaw::
 	cp HELD_QUICK_CLAW
 	jr z, .quick_claw
 	cp HELD_CUSTAP_BERRY
+	jr z, .custap_berry
+	cp HELD_LAGGING_TAIL
 	ret nz
 
+	; Lagging tail gives the foe priority
+	ldh a, [hBattleTurn]
+	and a
+	ret nz
+	dec d
+	dec d
+	ret
+
+.custap_berry
 	push de
 	farcall QuarterPinchOrGluttony
 	pop de
@@ -733,27 +751,6 @@ CheckSpeed::
 ; Compares speed stat, applying items (usually, see above) and
 ; stat changes. and see who ends up on top. Returns z if the player
 ; outspeeds, otherwise nz, randomly on tie (which also sets carry)
-	farcall GetPlayerItem
-	ld c, 0
-	ld a, b
-	cp HELD_LAGGING_TAIL
-	jr nz, .no_player_lagging_tail
-	dec c
-.no_player_lagging_tail
-	push bc
-	farcall GetEnemyItem
-	ld a, b
-	pop bc
-	cp HELD_LAGGING_TAIL
-	jr nz, .no_enemy_lagging_tail
-	inc c
-.no_enemy_lagging_tail
-	; c=0: both/none holds, 255: player holds, 1: enemy holds
-	dec c
-	ret z
-	inc c
-	ret nz
-
 	ld a, [wTrickRoom]
 	and a
 	jr z, _CheckSpeed

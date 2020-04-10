@@ -310,7 +310,7 @@ DetermineMoveOrder:
 	ret
 
 .equal_priority
-	call CheckSpeedWithQuickClaw
+	call CheckMoveSpeed
 	jr nz, .enemy_first
 .player_first
 	scf
