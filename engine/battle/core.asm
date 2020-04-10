@@ -318,6 +318,7 @@ DetermineMoveOrder:
 
 GetSpeed::
 ; Sets bc to speed after items and stat changes.
+; Fainted mons use raw speed (Tailwind and Pledge swamp isn't implemented).
 	push hl
 	push de
 	ldh a, [hBattleTurn]
@@ -335,6 +336,9 @@ GetSpeed::
 	ldh [hMultiplicand + 1], a
 	ld a, [hl]
 	ldh [hMultiplicand + 2], a
+
+	call HasUserFainted
+	jr z, .done
 
 	; Apply stat changes
 	farcall FarDoStatChangeMod

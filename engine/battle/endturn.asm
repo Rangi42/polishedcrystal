@@ -148,13 +148,7 @@ HandleBetweenTurnEffects:
 	and a
 	jr z, .player_only
 
-	call SetPlayerTurn
-	ld a, [wLinkMode]
-	and a
-	jr z, .got_first_switchin
-	ldh a, [hSerialConnectionStatus]
-	cp USING_INTERNAL_CLOCK
-	call z, SetEnemyTurn
+	call SetFastestTurn
 .got_first_switchin
 	farcall SendInUserPkmn
 	call SwitchTurn
