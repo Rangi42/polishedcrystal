@@ -116,8 +116,8 @@ EngineerScript_0x19ea4d:
 
 EngineerScript_0x19ea61:
 	checkevent EVENT_CINNABAR_ROCKS_CLEARED
-	iffalse_jumptextfaceplayer Route19EngineerText2
-	jumptextfaceplayer Route19EngineerText1
+	iffalse_jumptextfaceplayer Route19EngineerText1
+	jumptextfaceplayer Route19EngineerText2
 
 SwimmerfDawnSeenText:
 	text "I'm disgusted by"
