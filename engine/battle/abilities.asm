@@ -1751,8 +1751,13 @@ RunPostBattleAbilities::
 	ld a, MON_SPECIES
 	call GetPartyParamLocation
 	ld c, [hl]
-	ld a, MON_PERSONALITY
+	ld a, MON_IS_EGG
 	call GetPartyParamLocation
+	bit MON_IS_EGG_F, [hl]
+	jr nz, .loop
+	assert MON_PERSONALITY == MON_IS_EGG - 1
+	dec hl
+
 	call GetAbility
 	ld a, b
 	pop bc
