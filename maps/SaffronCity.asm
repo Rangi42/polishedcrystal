@@ -265,7 +265,7 @@ SaffronGymSignText:
 	line "#mon Gym"
 	cont "Leader: Sabrina"
 
-	para "The Master of"
+	para "The Mistress of"
 	line "Psychic #mon!"
 	done
 
