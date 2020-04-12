@@ -70,6 +70,10 @@ AIChooseMove:
 	push bc
 	push hl
 
+if DEF(DEBUG)
+	call AIDebug
+endc
+
 	ld a, d
 	and a
 	jr z, .CheckLayer
@@ -186,3 +190,91 @@ AIScoringPointers:
 	dw AI_None
 	dw AI_None
 	dw AI_None
+
+if DEF(DEBUG)
+AIDebug:
+; Prints out an AI score table and delays
+	push hl
+	push de
+	push bc
+
+	; Clear the text display
+	hlcoord 1, 13
+	push hl
+	ld c, 4
+	ld a, " "
+.clear_loop
+	ld b, 18
+.clear_row
+	ld [hli], a
+	dec b
+	jr nz, .clear_row
+	inc hl
+	inc hl
+	dec c
+	jr nz, .clear_loop
+
+	; Print move names
+	pop hl
+	ld de, wEnemyMonMoves
+	ld c, 4
+.move_loop
+	push de
+	push bc
+	ld [hl], "-"
+	ld a, [de]
+	inc de
+	and a
+	jr z, .get_score
+	ld [wNamedObjectIndexBuffer], a
+	push hl
+	call GetMoveName
+	pop hl
+	push hl
+	ld de, wStringBuffer1
+	rst PlaceString
+	pop hl
+.get_score
+	ld bc, MOVE_NAME_LENGTH
+	add hl, bc
+	pop bc
+	push bc
+	ld de, wStringBuffer5 - 1
+	ld a, 5
+.score_target
+	inc de
+	dec a
+	cp c
+	jr nz, .score_target
+
+	lb bc, 1, 3
+	push hl
+	call PrintNum
+	pop hl
+	ld bc, SCREEN_WIDTH - MOVE_NAME_LENGTH
+	add hl, bc
+	pop bc
+	pop de
+	inc de
+	dec c
+	jr nz, .move_loop
+
+	pop bc
+	push bc
+	hlcoord 18, 13
+	ld a, c
+	cp 10
+	jr c, .numeric
+	add "A" - "0" - 10
+.numeric
+	add "0"
+	ld [hl], a
+
+	call ApplyTilemap
+	ld c, 30
+	call DelayFrames
+	pop bc
+	pop de
+	pop hl
+	ret
+endc
