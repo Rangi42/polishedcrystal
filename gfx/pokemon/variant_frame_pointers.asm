@@ -62,6 +62,8 @@ MagikarpFramesPointers:
 	dw MagikarpBubblesFrames
 	dw MagikarpForeheadFrames
 	dw MagikarpMaskFrames
+	dw MagikarpSaucyFrames
+	dw MagikarpRaindropFrames
 
 GyaradosFramesPointers:
 rept NUM_MAGIKARP

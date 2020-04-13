@@ -57,6 +57,8 @@ MagikarpStripeBitmasks:   INCLUDE "gfx/pokemon/magikarp_stripe/bitmask.asm"
 MagikarpBubblesBitmasks:  INCLUDE "gfx/pokemon/magikarp_bubbles/bitmask.asm"
 MagikarpForeheadBitmasks: INCLUDE "gfx/pokemon/magikarp_forehead/bitmask.asm"
 MagikarpMaskBitmasks:     INCLUDE "gfx/pokemon/magikarp_mask/bitmask.asm"
+MagikarpSaucyBitmasks:    INCLUDE "gfx/pokemon/magikarp_saucy/bitmask.asm"
+MagikarpRaindropBitmasks: INCLUDE "gfx/pokemon/magikarp_raindrop/bitmask.asm"
 
 GyaradosPlainBitmasks: INCLUDE "gfx/pokemon/gyarados_plain/bitmask.asm"
 GyaradosRedBitmasks:   INCLUDE "gfx/pokemon/gyarados_red/bitmask.asm"

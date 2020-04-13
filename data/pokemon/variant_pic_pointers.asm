@@ -117,6 +117,10 @@ MagikarpPicPointers::
 	dba MagikarpForeheadBackpic
 	dba MagikarpMaskFrontpic
 	dba MagikarpMaskBackpic
+	dba MagikarpSaucyFrontpic
+	dba MagikarpSaucyBackpic
+	dba MagikarpRaindropFrontpic
+	dba MagikarpRaindropBackpic
 
 GyaradosPicPointers::
 rept NUM_MAGIKARP

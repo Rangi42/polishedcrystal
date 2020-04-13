@@ -702,7 +702,7 @@ ArbokAgathaBackpic:
 ArbokArianaBackpic:       INCBIN "gfx/pokemon/arbok/back.2bpp.lz"
 
 
-SECTION "Magikarp Pics", ROMX
+SECTION "Magikarp Pics 1", ROMX
 
 MagikarpPlainFrontpic:    INCBIN "gfx/pokemon/magikarp_plain/front.2bpp.lz"
 MagikarpPlainBackpic:     INCBIN "gfx/pokemon/magikarp_plain/back.2bpp.lz"
@@ -720,6 +720,10 @@ MagikarpOrcaFrontpic:     INCBIN "gfx/pokemon/magikarp_orca/front.2bpp.lz"
 MagikarpOrcaBackpic:      INCBIN "gfx/pokemon/magikarp_orca/back.2bpp.lz"
 MagikarpDapplesFrontpic:  INCBIN "gfx/pokemon/magikarp_dapples/front.2bpp.lz"
 MagikarpDapplesBackpic:   INCBIN "gfx/pokemon/magikarp_dapples/back.2bpp.lz"
+
+
+SECTION "Magikarp Pics 2", ROMX
+
 MagikarpTigerFrontpic:    INCBIN "gfx/pokemon/magikarp_tiger/front.2bpp.lz"
 MagikarpTigerBackpic:     INCBIN "gfx/pokemon/magikarp_tiger/back.2bpp.lz"
 MagikarpZebraFrontpic:    INCBIN "gfx/pokemon/magikarp_zebra/front.2bpp.lz"
@@ -732,6 +736,10 @@ MagikarpForeheadFrontpic: INCBIN "gfx/pokemon/magikarp_forehead/front.2bpp.lz"
 MagikarpForeheadBackpic:  INCBIN "gfx/pokemon/magikarp_forehead/back.2bpp.lz"
 MagikarpMaskFrontpic:     INCBIN "gfx/pokemon/magikarp_mask/front.2bpp.lz"
 MagikarpMaskBackpic:      INCBIN "gfx/pokemon/magikarp_mask/back.2bpp.lz"
+MagikarpSaucyFrontpic:    INCBIN "gfx/pokemon/magikarp_saucy/front.2bpp.lz"
+MagikarpSaucyBackpic:     INCBIN "gfx/pokemon/magikarp_saucy/back.2bpp.lz"
+MagikarpRaindropFrontpic: INCBIN "gfx/pokemon/magikarp_raindrop/front.2bpp.lz"
+MagikarpRaindropBackpic:  INCBIN "gfx/pokemon/magikarp_raindrop/back.2bpp.lz"
 
 
 SECTION "Mewtwo Pics", ROMX

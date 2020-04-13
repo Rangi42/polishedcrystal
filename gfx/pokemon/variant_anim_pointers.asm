@@ -62,6 +62,8 @@ MagikarpAnimationPointers:
 	dw MagikarpBubblesAnimation
 	dw MagikarpForeheadAnimation
 	dw MagikarpMaskAnimation
+	dw MagikarpSaucyAnimation
+	dw MagikarpRaindropAnimation
 
 GyaradosAnimationPointers:
 rept NUM_MAGIKARP

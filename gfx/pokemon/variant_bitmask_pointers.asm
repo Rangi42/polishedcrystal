@@ -62,6 +62,8 @@ MagikarpBitmasksPointers:
 	dw MagikarpBubblesBitmasks
 	dw MagikarpForeheadBitmasks
 	dw MagikarpMaskBitmasks
+	dw MagikarpSaucyBitmasks
+	dw MagikarpRaindropBitmasks
 
 GyaradosBitmasksPointers:
 rept NUM_MAGIKARP

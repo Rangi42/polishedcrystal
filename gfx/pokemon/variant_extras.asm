@@ -56,7 +56,9 @@ MagikarpZebraAnimationExtra:
 MagikarpStripeAnimationExtra:
 MagikarpBubblesAnimationExtra:
 MagikarpForeheadAnimationExtra:
-MagikarpMaskAnimationExtra:     INCLUDE "gfx/pokemon/magikarp/anim1.asm"
+MagikarpMaskAnimationExtra:
+MagikarpSaucyAnimationExtra:
+MagikarpRaindropAnimationExtra: INCLUDE "gfx/pokemon/magikarp/anim1.asm"
 
 GyaradosPlainAnimationExtra: INCLUDE "gfx/pokemon/gyarados_plain/anim1.asm"
 GyaradosRedAnimationExtra:   INCLUDE "gfx/pokemon/gyarados_red/anim1.asm"

@@ -62,6 +62,8 @@ MagikarpStripeFrames:   INCLUDE "gfx/pokemon/magikarp_stripe/frames.asm"
 MagikarpBubblesFrames:  INCLUDE "gfx/pokemon/magikarp_bubbles/frames.asm"
 MagikarpForeheadFrames: INCLUDE "gfx/pokemon/magikarp_forehead/frames.asm"
 MagikarpMaskFrames:     INCLUDE "gfx/pokemon/magikarp_mask/frames.asm"
+MagikarpSaucyFrames:    INCLUDE "gfx/pokemon/magikarp_saucy/frames.asm"
+MagikarpRaindropFrames: INCLUDE "gfx/pokemon/magikarp_raindrop/frames.asm"
 
 GyaradossFrames:
 GyaradosPlainFrames: INCLUDE "gfx/pokemon/gyarados_plain/frames.asm"
