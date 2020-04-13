@@ -110,8 +110,8 @@ ResetWRAM:
 	ld bc, wMoney - wGameData
 	xor a
 	rst ByteFill
-	ld hl, MoneyEnd
-	ld bc, wCurBox - MoneyEnd
+	ld hl, wMoneyEnd
+	ld bc, wCurBox - wMoneyEnd
 	xor a
 	rst ByteFill
 	ld hl, wBoxNamesEnd

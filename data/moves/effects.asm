@@ -1889,6 +1889,7 @@ BatonPass:
 
 Pursuit:
 	checkobedience
+	pursuit
 	usedmovetext
 	doturn
 	hastarget
@@ -1897,8 +1898,8 @@ Pursuit:
 	damagecalc
 	stab
 	damagevariation
-	pursuit
 	checkhit
+	conditionalboost
 	moveanim
 	failuretext
 	applydamage
