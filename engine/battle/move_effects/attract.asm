@@ -14,11 +14,22 @@ BattleCommand_attract:
 	call GetOpponentAbilityAfterMoldBreaker
 	cp OBLIVIOUS
 	jr nz, .no_ability_protection
+
+	; don't display anything in case we're in cute charm
+	ld a, [wAnimationsDisabled]
+	and a
+	ret nz
+
 	farcall ShowEnemyAbilityActivation
 	ld hl, DoesntAffectText
 	jp StdBattleTextBox
 
 .failed
+	; don't display anything in case we're in cute charm
+	ld a, [wAnimationsDisabled]
+	and a
+	ret nz
+
 	jp FailAttract
 
 .no_ability_protection
