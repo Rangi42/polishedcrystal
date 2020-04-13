@@ -1,17 +1,13 @@
 BattleCommand_pursuit:
-; Double damage if the opponent is switching.
+; Sets up the alternate animation branch and plays the withdrawal animation
 
 	ld a, [wDeferredSwitch]
 	and a
 	ret z
 
-	ld hl, wCurDamage + 1
-	sla [hl]
-	dec hl
-	rl [hl]
-	ret nc
-
-	ld a, $ff
-	ld [hli], a
-	ld [hl], a
-	ret
+	ld a, 1
+	ld [wBattleAnimParam], a
+	call CallOpponentTurn
+.Function:
+	ld de, ANIM_RETURN_MON
+	farjp Call_PlayBattleAnim

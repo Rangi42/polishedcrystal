@@ -896,7 +896,7 @@ wStatusFlags2::
 
 wMoney:: ds 3
 wMomsMoney:: ds 3
-MoneyEnd::
+wMoneyEnd::
 wMomSavingMoney:: db
 
 wCoins:: dw

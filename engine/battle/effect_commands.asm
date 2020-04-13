@@ -2094,6 +2094,8 @@ BattleCommand_moveanimnosub:
 	ld [wNumHits], a
 	ld a, BATTLE_VARS_MOVE_EFFECT
 	call GetBattleVar
+	cp EFFECT_PURSUIT
+	jr z, .pursuit
 	cp EFFECT_MULTI_HIT
 	jr z, .multihit
 	cp EFFECT_FURY_STRIKES
@@ -2106,6 +2108,7 @@ BattleCommand_moveanimnosub:
 .normal_move
 	xor a
 	ld [wKickCounter], a
+.pursuit
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
 	ld e, a
@@ -5904,6 +5907,7 @@ BoostJumptable:
 	dbw HEX,        DoHex
 	dbw VENOSHOCK,  DoVenoshock
 	dbw KNOCK_OFF,  DoKnockOff
+	dbw PURSUIT,    DoPursuit
 	dbw -1, -1
 
 BattleCommand_conditionalboost:
@@ -5944,6 +5948,11 @@ DoVenoshock:
 	ld a, BATTLE_VARS_STATUS_OPP
 	call GetBattleVar
 	bit PSN, a
+	jr DoubleDamageIfNZ
+
+DoPursuit:
+	ld a, [wDeferredSwitch]
+	and a
 	jr DoubleDamageIfNZ
 
 BattleCommand_doubleflyingdamage:
