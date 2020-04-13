@@ -736,11 +736,24 @@ CheckNullificationAbilities:
 	; Most abilities depends on types and can use a lookup table, but a few
 	; doesn't. Check these first.
 	call GetOpponentAbilityAfterMoldBreaker
+	ld b, a
 	cp DAMP
 	jr z, .damp
 	cp SOUNDPROOF
 	jr z, .soundproof
-	ld b, a
+
+	; Non-damaging moves only work on Flash Fire and Lightning Rod
+	cp FLASH_FIRE
+	jr z, .check_others
+	cp LIGHTNING_ROD
+	jr z, .check_others
+
+	ld a, BATTLE_VARS_MOVE_CATEGORY
+	call GetBattleVar
+	cp STATUS
+	ret z
+
+.check_others
 	ld hl, TypeNullificationAbilities
 .loop
 	ld a, [hli]

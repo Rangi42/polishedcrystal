@@ -752,6 +752,7 @@ WillOWisp:
 	usedmovetext
 	doturn
 	hastarget
+	resettypematchup
 	checkhit
 	bounceback
 	stab

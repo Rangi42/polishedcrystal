@@ -1496,12 +1496,21 @@ BattleCommand_checkpowder:
 	ld de, 1
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
+	cp SING
+	jr z, .sing
 	cp THUNDER_WAVE
 	jr z, .twave
 	ld hl, PowderMoves
 	call IsInArray
 	ret nc
 	jr BattleCommand_resettypematchup
+.sing
+	farcall CheckNullificationAbilities
+	ld a, [wTypeMatchup]
+	and a
+	ret nz
+	ld [wTypeModifier], a
+	ret
 .twave
 	call CheckIfTargetIsGroundType
 	jr nz, BattleCommand_resettypematchup
@@ -1521,7 +1530,10 @@ BattleCommand_resettypematchup:
 	call ResetDamage
 	xor a
 	ld [wTypeModifier], a
-	inc a
+	ld a, [wAttackMissed]
+	and a
+	ret nz
+	ld a, ATKFAIL_IMMUNE
 	ld [wAttackMissed], a
 	ret
 
@@ -4258,6 +4270,10 @@ PostStatus:
 	farjp RunEnemyStatusHealAbilities
 
 BattleCommand_sleeptarget:
+	ld a, [wTypeModifier]
+	and a
+	jp z, .failed_ineffective
+
 	ld b, 1
 	call CanSleepTarget
 	jr c, .ability_ok
@@ -4301,6 +4317,10 @@ BattleCommand_sleeptarget:
 	cp 1 << SLP
 	jp z, OpponentCantMove
 	ret
+
+.failed_ineffective
+	call AnimateFailedMove
+	jp FailText_CheckOpponentProtect
 
 .failed
 	push hl
@@ -4829,10 +4849,9 @@ ResetMiss:
 	ret
 
 BattleCommand_burn:
-	ld hl, DoesntAffectText
 	ld a, [wTypeModifier]
 	and a
-	jp z, .failed
+	jp z, .failed_ineffective
 
 	call CheckSubstituteOpp
 	ld hl, ButItFailedText
@@ -4864,6 +4883,10 @@ BattleCommand_burn:
 	ld hl, WasBurnedText
 	call StdBattleTextBox
 	jp PostStatusWithSynchronize
+
+.failed_ineffective
+	call AnimateFailedMove
+	jp FailText_CheckOpponentProtect
 
 .failed
 	push hl
@@ -5546,10 +5569,9 @@ Confuse_CheckSwagger_ConfuseHit:
 	jp PrintDidntAffect2
 
 BattleCommand_paralyze:
-	ld hl, DoesntAffectText
 	ld a, [wTypeModifier]
 	and a
-	jp z, .failed
+	jp z, .failed_ineffective
 
 	ld b, 1
 	call CanParalyzeTarget
@@ -5581,6 +5603,10 @@ BattleCommand_paralyze:
 	ld hl, ParalyzedText
 	call StdBattleTextBox
 	jp PostStatusWithSynchronize
+
+.failed_ineffective
+	call AnimateFailedMove
+	jp FailText_CheckOpponentProtect
 
 .failed
 	push hl
