@@ -115,7 +115,7 @@ TryAddMonToParty:
 	cp BATTLETYPE_ROAMING
 	jr nz, .not_roaming_form
 	ld a, wRoamMon1Form - wRoamMon1
-	call DoGetRoamMonData
+	farcall DoGetRoamMonData
 	ld a, [hl]
 	and FORM_MASK
 	ld [wCurForm], a
