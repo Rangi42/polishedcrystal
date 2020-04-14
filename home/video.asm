@@ -419,12 +419,12 @@ AnimateTileset::
 	and a
 	ret z
 
-; Back out if we're too far into VBlank
-	ldh a, [rLY]
-	cp 144
-	ret c
-	cp 151
-	ret nc
+;; Back out if we're too far into VBlank
+;	ldh a, [rLY]
+;	cp 144
+;	ret c
+;	cp 151
+;	ret nc
 
 	ldh a, [rSVBK]
 	push af
