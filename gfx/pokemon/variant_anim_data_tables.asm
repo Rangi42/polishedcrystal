@@ -26,6 +26,7 @@ VariantAnimPointerTable:
 	dbbww MAROWAK, BANK(MarowakAnimations), MarowakAnimationPointers, MarowakAnimationExtraPointers
 	dbbww PONYTA, BANK(PonytaAnimations), PonytaAnimationPointers, PonytaAnimationExtraPointers
 	dbbww RAPIDASH, BANK(RapidashAnimations), RapidashAnimationPointers, RapidashAnimationExtraPointers
+	dbbww WEEZING, BANK(WeezingAnimations), WeezingAnimationPointers, WeezingAnimationExtraPointers
 	dbbww -1, BANK(PicAnimations), AnimationPointers, AnimationExtraPointers
 
 VariantFramesPointerTable:
@@ -56,6 +57,7 @@ VariantFramesPointerTable:
 	dbbba MAROWAK, BANK(MarowaksFrames), MarowakFramesPointers
 	dbbba PONYTA, BANK(PonytasFrames), PonytaFramesPointers
 	dbbba RAPIDASH, BANK(RapidashsFrames), RapidashFramesPointers
+	dbbba WEEZING, BANK(WeezingsFrames), WeezingFramesPointers
 	dbbba -1, BANK(KantoFrames), FramesPointers
 
 VariantBitmasksPointerTable:
@@ -86,4 +88,5 @@ VariantBitmasksPointerTable:
 	dbba MAROWAK, MarowakBitmasksPointers
 	dbba PONYTA, PonytaBitmasksPointers
 	dbba RAPIDASH, RapidashBitmasksPointers
+	dbba WEEZING, WeezingBitmasksPointers
 	dbba -1, BitmasksPointers

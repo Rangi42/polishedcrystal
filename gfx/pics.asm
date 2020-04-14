@@ -235,8 +235,6 @@ HitmonchanFrontpic:       INCBIN "gfx/pokemon/hitmonchan/front.2bpp.lz"
 HitmonchanBackpic:        INCBIN "gfx/pokemon/hitmonchan/back.2bpp.lz"
 KoffingFrontpic:          INCBIN "gfx/pokemon/koffing/front.2bpp.lz"
 KoffingBackpic:           INCBIN "gfx/pokemon/koffing/back.2bpp.lz"
-WeezingFrontpic:          INCBIN "gfx/pokemon/weezing/front.2bpp.lz"
-WeezingBackpic:           INCBIN "gfx/pokemon/weezing/back.2bpp.lz"
 RhyhornFrontpic:          INCBIN "gfx/pokemon/rhyhorn/front.2bpp.lz"
 RhyhornBackpic:           INCBIN "gfx/pokemon/rhyhorn/back.2bpp.lz"
 
@@ -880,6 +878,14 @@ PonytaGalarianFrontpic:   INCBIN "gfx/pokemon/ponyta_galarian/front.2bpp.lz"
 PonytaGalarianBackpic:    INCBIN "gfx/pokemon/ponyta_galarian/back.2bpp.lz"
 RapidashGalarianFrontpic: INCBIN "gfx/pokemon/rapidash_galarian/front.2bpp.lz"
 RapidashGalarianBackpic:  INCBIN "gfx/pokemon/rapidash_galarian/back.2bpp.lz"
+
+
+SECTION "Weezing Pics", ROMX
+
+WeezingPlainFrontpic:     INCBIN "gfx/pokemon/weezing_plain/front.2bpp.lz"
+WeezingPlainBackpic:      INCBIN "gfx/pokemon/weezing_plain/back.2bpp.lz"
+WeezingGalarianFrontpic:  INCBIN "gfx/pokemon/weezing_galarian/front.2bpp.lz"
+WeezingGalarianBackpic:   INCBIN "gfx/pokemon/weezing_galarian/back.2bpp.lz"
 
 
 SECTION "Trainer Pics 1", ROMX

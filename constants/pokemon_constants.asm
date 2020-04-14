@@ -276,6 +276,7 @@ PLAIN_FORM EQU 1
 ; marowak
 ALOLAN_FORM EQU 2
 ; ponyta/rapidash
+; weezing
 GALARIAN_FORM EQU 2
 
 ; unown

@@ -267,8 +267,11 @@ PicPointers::
 	dba HitmonchanBackpic
 	dba KoffingFrontpic
 	dba KoffingBackpic
-	dba WeezingFrontpic
-	dba WeezingBackpic
+
+	; see WeezingPicPointers
+	dbw -1, -1
+	dbw -1, -1
+
 	dba RhyhornFrontpic
 	dba RhyhornBackpic
 	dba RhydonFrontpic

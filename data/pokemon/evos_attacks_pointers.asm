@@ -111,7 +111,7 @@ EvosAttacksPointers::
 	dw HitmonleeEvosAttacks
 	dw HitmonchanEvosAttacks
 	dw KoffingEvosAttacks
-	dw WeezingEvosAttacks
+	dw WeezingPlainEvosAttacks
 	dw RhyhornEvosAttacks
 	dw RhydonEvosAttacks
 	dw ChanseyEvosAttacks
@@ -281,3 +281,4 @@ EvosAttacksPointers::
 	dw MarowakAlolanEvosAttacks
 	dw PonytaGalarianEvosAttacks
 	dw RapidashGalarianEvosAttacks
+	dw WeezingGalarianEvosAttacks

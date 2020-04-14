@@ -2408,7 +2408,7 @@ KoffingEvosAttacks:
 	db 12, ENDURE ; Assurance → TM move
 	db 15, WILL_O_WISP ; Clear Smog → TM move
 	db 18, VENOSHOCK ; Sludge → tutor move
-	db 23, RAGE ; Self-Destruct → RMY TM move
+	db 23, RAGE ; Self-Destruct → RBY TM move
 	db 26, HAZE
 	db 29, GYRO_BALL
 	db 34, SLUDGE_BOMB
@@ -2418,7 +2418,7 @@ KoffingEvosAttacks:
 	db 45, FIRE_BLAST ; Memento → TM move
 	db 0 ; no more level-up moves
 
-WeezingEvosAttacks:
+WeezingPlainEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, TACKLE
 	db 4, ACID ; Smog → new move
@@ -2426,7 +2426,7 @@ WeezingEvosAttacks:
 	db 12, ENDURE ; Assurance → TM move
 	db 15, WILL_O_WISP ; Clear Smog → TM move
 	db 18, VENOSHOCK ; Sludge → tutor move
-	db 23, RAGE ; Self-Destruct → RMY TM move
+	db 23, RAGE ; Self-Destruct → RBY TM move
 	db 26, HAZE
 	db 29, GYRO_BALL
 	db 34, SLUDGE_BOMB
@@ -2434,6 +2434,25 @@ WeezingEvosAttacks:
 	db 46, DESTINY_BOND
 	db 51, PAIN_SPLIT ; Belch → HGSS tutor move
 	db 57, FIRE_BLAST ; Memento → TM move
+	db 0 ; no more level-up moves
+
+WeezingGalarianEvosAttacks:
+	db 0 ; no more evolutions
+	db 1, SAFEGUARD ; evolution move
+	db 1, TACKLE
+	db 4, GUST ; Smog → new move
+	db 7, SMOKESCREEN
+	db 12, ENDURE ; Assurance → TM move
+	db 15, WILL_O_WISP ; Clear Smog → TM move
+	db 18, SCREECH ; Sludge → Sw/Sh TM move
+	db 23, RAGE ; Self-Destruct → RBY TM move
+	db 26, HAZE ; Aromatherapy → Kantonian move
+	db 29, GYRO_BALL
+	db 34, PLAY_ROUGH ; Sludge Bomb → Sw/Sh TR move
+	db 40, EXPLOSION
+	db 46, DESTINY_BOND
+	db 51, PAIN_SPLIT ; Belch → HGSS tutor move
+	db 57, MOONBLAST ; Memento → new move
 	db 0 ; no more level-up moves
 
 RhyhornEvosAttacks:

@@ -22,4 +22,5 @@ ValidVariantRanges:
 	db MAROWAK,   2 ; ALOLAN
 	db PONYTA,    2 ; GALARIAN
 	db RAPIDASH,  2 ; GALARIAN
+	db WEEZING,   2 ; GALARIAN
 	db -1

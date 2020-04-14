@@ -152,3 +152,7 @@ PonytaGalarianFrames: INCLUDE "gfx/pokemon/ponyta_galarian/frames.asm"
 RapidashsFrames:
 RapidashPlainFrames:    INCLUDE "gfx/pokemon/rapidash_plain/frames.asm"
 RapidashGalarianFrames: INCLUDE "gfx/pokemon/rapidash_galarian/frames.asm"
+
+WeezingsFrames:
+WeezingPlainFrames:    INCLUDE "gfx/pokemon/weezing_plain/frames.asm"
+WeezingGalarianFrames: INCLUDE "gfx/pokemon/weezing_galarian/frames.asm"

@@ -277,3 +277,4 @@ EggMovePointers::
 	dw NoEggMoves
 	dw PonytaGalarianEggMoves
 	dw NoEggMoves
+	dw NoEggMoves

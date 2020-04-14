@@ -272,11 +272,12 @@ endr
 ;	givepoke GOLEM,     ALOLAN_FORM, 50
 ;	givepoke GRIMER,    ALOLAN_FORM, 50
 ;	givepoke MUK,       ALOLAN_FORM, 50
-	givepoke RAICHU,    ALOLAN_FORM, 50
-	givepoke EXEGGUTOR, ALOLAN_FORM, 50
-	givepoke MAROWAK,   ALOLAN_FORM, 50
-	givepoke PONYTA,    GALARIAN_FORM, 50
-	givepoke RAPIDASH,  GALARIAN_FORM, 50
+;	givepoke RAICHU,    ALOLAN_FORM, 50
+;	givepoke EXEGGUTOR, ALOLAN_FORM, 50
+;	givepoke MAROWAK,   ALOLAN_FORM, 50
+;	givepoke PONYTA,    GALARIAN_FORM, 50
+;	givepoke RAPIDASH,  GALARIAN_FORM, 50
+	givepoke WEEZING,   GALARIAN_FORM, 50
 	; fill pokedex
 	callasm FillPokedex
 	; intro events

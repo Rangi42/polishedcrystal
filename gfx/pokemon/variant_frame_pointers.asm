@@ -154,3 +154,7 @@ PonytaFramesPointers:
 RapidashFramesPointers:
 	dw RapidashPlainFrames
 	dw RapidashGalarianFrames
+
+WeezingFramesPointers:
+	dw WeezingPlainFrames
+	dw WeezingGalarianFrames

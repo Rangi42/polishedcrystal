@@ -393,9 +393,11 @@ endr
 	ret
 
 ChangeFormOnLevelEvolution:
-; Cubone evolves into plain Marowak by level.
+; These Pokémon evolve into plain forms by level.
 	ld a, [wTempMonSpecies]
 	cp CUBONE
+	jr z, _PlainFormOnEvolution
+	cp KOFFING
 	ret nz
 
 _PlainFormOnEvolution:

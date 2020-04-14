@@ -154,3 +154,7 @@ PonytaBitmasksPointers:
 RapidashBitmasksPointers:
 	dw RapidashPlainBitmasks
 	dw RapidashGalarianBitmasks
+
+WeezingBitmasksPointers:
+	dw WeezingPlainBitmasks
+	dw WeezingGalarianBitmasks

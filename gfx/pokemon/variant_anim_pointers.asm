@@ -154,3 +154,7 @@ PonytaAnimationPointers:
 RapidashAnimationPointers:
 	dw RapidashPlainAnimation
 	dw RapidashGalarianAnimation
+
+WeezingAnimationPointers:
+	dw WeezingPlainAnimation
+	dw WeezingGalarianAnimation

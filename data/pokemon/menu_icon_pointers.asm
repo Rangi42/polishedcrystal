@@ -278,3 +278,4 @@ IconPointers:
 	dw MarowakIcon ; TODO
 	dw PonytaIcon ; TODO
 	dw RapidashIcon ; TODO
+	dw WeezingIcon ; TODO

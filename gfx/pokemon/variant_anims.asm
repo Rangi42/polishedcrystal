@@ -152,3 +152,7 @@ PonytaGalarianAnimation: INCLUDE "gfx/pokemon/ponyta_galarian/anim0.asm"
 RapidashAnimations:
 RapidashPlainAnimation:    INCLUDE "gfx/pokemon/rapidash_plain/anim0.asm"
 RapidashGalarianAnimation: INCLUDE "gfx/pokemon/rapidash_galarian/anim0.asm"
+
+WeezingAnimations:
+WeezingPlainAnimation:    INCLUDE "gfx/pokemon/weezing_plain/anim0.asm"
+WeezingGalarianAnimation: INCLUDE "gfx/pokemon/weezing_galarian/anim0.asm"

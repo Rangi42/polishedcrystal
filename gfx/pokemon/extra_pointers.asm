@@ -107,7 +107,7 @@ AnimationExtraPointers:
 	dw HitmonleeAnimationExtra
 	dw HitmonchanAnimationExtra
 	dw KoffingAnimationExtra
-	dw WeezingAnimationExtra
+	dw -1 ; see WeezingAnimationExtraPointers
 	dw RhyhornAnimationExtra
 	dw RhydonAnimationExtra
 	dw ChanseyAnimationExtra

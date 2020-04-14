@@ -125,3 +125,6 @@ PonytaGalarianBitmasks: INCLUDE "gfx/pokemon/ponyta_galarian/bitmask.asm"
 
 RapidashPlainBitmasks:    INCLUDE "gfx/pokemon/rapidash_plain/bitmask.asm"
 RapidashGalarianBitmasks: INCLUDE "gfx/pokemon/rapidash_galarian/bitmask.asm"
+
+WeezingPlainBitmasks:    INCLUDE "gfx/pokemon/weezing_plain/bitmask.asm"
+WeezingGalarianBitmasks: INCLUDE "gfx/pokemon/weezing_galarian/bitmask.asm"

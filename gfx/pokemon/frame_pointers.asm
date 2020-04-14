@@ -107,7 +107,7 @@ FramesPointers:
 	dw HitmonleeFrames
 	dw HitmonchanFrames
 	dw KoffingFrames
-	dw WeezingFrames
+	dw -1 ; see WeezingFramesPointers
 	dw RhyhornFrames
 	dw RhydonFrames
 	dw ChanseyFrames

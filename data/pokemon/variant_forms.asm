@@ -24,4 +24,5 @@ VariantSpeciesAndFormTable:
 	db MAROWAK,   ALOLAN_FORM
 	db PONYTA,    GALARIAN_FORM
 	db RAPIDASH,  GALARIAN_FORM
+	db WEEZING,   GALARIAN_FORM
 	db 0 ; end

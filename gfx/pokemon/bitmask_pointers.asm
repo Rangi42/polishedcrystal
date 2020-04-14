@@ -107,7 +107,7 @@ BitmasksPointers:
 	dw HitmonleeBitmasks
 	dw HitmonchanBitmasks
 	dw KoffingBitmasks
-	dw WeezingBitmasks
+	dw -1 ; see WeezingBitmasksPointers
 	dw RhyhornBitmasks
 	dw RhydonBitmasks
 	dw ChanseyBitmasks

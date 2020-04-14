@@ -26,4 +26,5 @@ VariantPicPointerTable:
 	dbba MAROWAK,   MarowakPicPointers
 	dbba PONYTA,    PonytaPicPointers
 	dbba RAPIDASH,  RapidashPicPointers
+	dbba WEEZING,   WeezingPicPointers
 	dbba -1,        PicPointers

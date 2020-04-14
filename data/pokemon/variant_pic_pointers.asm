@@ -255,3 +255,9 @@ RapidashPicPointers::
 	dba RapidashPlainBackpic
 	dba RapidashGalarianFrontpic
 	dba RapidashGalarianBackpic
+
+WeezingPicPointers::
+	dba WeezingPlainFrontpic
+	dba WeezingPlainBackpic
+	dba WeezingGalarianFrontpic
+	dba WeezingGalarianBackpic
