@@ -1,5 +1,5 @@
 FIRST_VWF_CHAR EQU " " ; first printable character
-FAILSAFE_VWF_CHAR EQU "!"
+FAILSAFE_VWF_CHAR EQU "."
 
 _PlaceVWFString::
 ; Place string de at hl with flags in b and offset in c.
