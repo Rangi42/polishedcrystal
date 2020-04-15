@@ -104,7 +104,14 @@ CopyGfxToSuperNintendoVRAM:
 	jr .next
 .notCopyingTileData
 	ld bc, $1000
-	call CopyData
+.copyData
+	ld a, [hli]
+	ld [de], a
+	inc de
+	dec bc
+	ld a, c
+	or b
+	jr nz, .copyData
 .next
 	ld hl, vBGMap0
 	ld de, $c

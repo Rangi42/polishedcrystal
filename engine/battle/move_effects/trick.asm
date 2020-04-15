@@ -44,8 +44,10 @@ BattleCommand_trick:
 	ret
 
 .ability_failed
-	call ShowEnemyAbilityActivation
-	jp PrintDoesntAffect
+	farcall DisableAnimations
+	farcall ShowEnemyAbilityActivation
+	call PrintDoesntAffect
+	farjp EnableAnimations
 .failed
 	call AnimateFailedMove
 	jp PrintButItFailed

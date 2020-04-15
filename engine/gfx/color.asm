@@ -654,28 +654,6 @@ else
 endc
 	ret
 
-CopyData:
-; copy bc bytes of data from hl to de
-	ld a, [hli]
-	ld [de], a
-	inc de
-	dec bc
-	ld a, c
-	or b
-	jr nz, CopyData
-	ret
-
-ClearBytes:
-; clear bc bytes of data starting from de
-	xor a
-	ld [de], a
-	inc de
-	dec bc
-	ld a, c
-	or b
-	jr nz, ClearBytes
-	ret
-
 LoadMapPals:
 	farcall LoadSpecialMapPalette
 	jr c, .got_pals

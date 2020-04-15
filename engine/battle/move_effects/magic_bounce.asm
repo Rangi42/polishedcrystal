@@ -12,7 +12,7 @@ BattleCommand_bounceback:
 	ld hl, wAttackMissed
 	or [hl]
 	ret nz
-	inc [hl]
+	ld [hl], ATKFAIL_ABILITY
 	ret
 
 .prankster_done
@@ -56,7 +56,16 @@ BattleCommand_bounceback:
 	ld [hl], b
 	push af
 
+	push bc
+	farcall DisableAnimations
 	farcall ShowAbilityActivation
+	pop bc
+	ld a, b
+	ld [wNamedObjectIndexBuffer], a
+	call GetMoveName
+	ld hl, BouncedBackText
+	call StdBattleTextBox
+	farcall EnableAnimations
 
 	; Flag the bouncing
 	ld a, BATTLE_VARS_SUBSTATUS2

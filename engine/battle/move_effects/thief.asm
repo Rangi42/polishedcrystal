@@ -1,8 +1,14 @@
 BattleCommand_thief:
 	; Pickpocket uses this too
 	call CanStealItem
+	jr z, .ok
+	ret nc
+	; Can't due to an ability. Maybe do ability display.
+
+	call CheckStickyHold
 	ret nz
 
+.ok
 	; Steal item
 	ld [hl], d
 	xor a
@@ -33,8 +39,35 @@ BattleCommand_thief:
 	ld [hl], a
 	ret
 
+CheckStickyHold:
+; Returns nz if opponent Sticky Hold is in effect.
+	call HasOpponentFainted
+	ret z
+	call GetOpponentAbilityAfterMoldBreaker
+	cp STICKY_HOLD
+	jr nz, .no_sticky_hold
+
+	; Don't display anything if we're in Pickpocket
+	ld a, [wAnimationsDisabled]
+	and a
+	ret nz
+
+	farcall DisableAnimations
+	farcall ShowEnemyAbilityActivation
+	ld hl, ItemCantBeStolenText
+	call StdBattleTextBox
+	farcall EnableAnimations
+	or 1
+	ret
+
+.no_sticky_hold
+	xor a
+	ret
+
 CanStealItem:
-; Returns z if we can and put item into d, target item addr into bc, user item addr into hl
+; Returns z if we can and put item into d, target item addr into bc,
+; user item addr into hl. Returns nz if we can't, and c if we can't
+; because of an ability.
 	; Maybe Substitute/Sheer Force prevents the steal
 	ld a, [wEffectFailed]
 	and a
@@ -43,7 +76,7 @@ CanStealItem:
 	; Sticky Hold prevents item theft
 	call GetOpponentAbilityAfterMoldBreaker
 	cp STICKY_HOLD
-	jr z, .cant
+	jr z, .cant_ability
 
 	call OpponentCanLoseItem
 	jr z, .cant
@@ -67,6 +100,11 @@ CanStealItem:
 	ld d, a
 	ld a, [hl]
 	and a
+	ret
+
+.cant_ability
+	or 1
+	scf
 	ret
 
 .cant

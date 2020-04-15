@@ -108,10 +108,12 @@ FarChangeStat:
 	farcall CheckAlreadyExecuted
 	ret nz
 	farcall ShowPotentialAbilityActivation
-	farcall AnimateFailedMove
+	farcall DisableAnimations
 	farcall ShowEnemyAbilityActivation
+	farcall AnimateFailedMove
 	ld hl, DoesntAffectText
-	jp StdBattleTextBox
+	call StdBattleTextBox
+	farjp EnableAnimations
 
 .ability_done
 	bit STAT_TARGET_F, b

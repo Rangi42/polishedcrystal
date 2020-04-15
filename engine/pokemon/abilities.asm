@@ -12,6 +12,8 @@ PrintAbility:
 	jp _PlaceString
 
 BufferAbility:
+	ld de, wStringBuffer1
+_BufferAbility:
 ; Buffer name for b into wStringBuffer1
 	ld l, b
 	ld h, 0
@@ -21,7 +23,6 @@ BufferAbility:
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	ld de, wStringBuffer1
 .loop
 	ld a, [hli]
 	ld [de], a

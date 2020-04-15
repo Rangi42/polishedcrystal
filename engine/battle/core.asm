@@ -951,13 +951,12 @@ ForceDeferredSwitch:
 
 	ldh a, [hBattleTurn]
 	and a
-	hlcoord 9, 7
-	lb bc, 5, 11
-	jr z, .got_hp_display
-	hlcoord 1, 0
-	lb bc, 4, 10
-.got_hp_display
-	call ClearBox
+	jr nz, .clear_enemy_hud
+	farcall ClearPlayerHUD
+	jr .hp_clear_done
+.clear_enemy_hud
+	farcall ClearEnemyHUD
+.hp_clear_done
 
 	ld c, 20
 	call DelayFrames
@@ -1275,7 +1274,7 @@ endr
 	ld de, wEnemyMonNick
 .got_battle_nick
 	ld bc, MON_NAME_LENGTH
-	call CopyBytes
+	rst CopyBytes
 	ldh a, [hBattleTurn]
 	and a
 	jr nz, .enemy_ability
@@ -1986,15 +1985,12 @@ FaintUserPokemon:
 	call HasEnemyFainted
 	call nz, PlayerMonFaintHappinessMod
 
-	hlcoord 9, 7
-	lb bc, 5, 11
+	farcall ClearPlayerHUD
 	jr .done
 .enemy_faint
 	call EnemyMonFaintedAnimation
-	hlcoord 0, 0
-	lb bc, 4, 11
+	farcall ClearEnemyHUD
 .done
-	call ClearBox
 	ld de, SFX_FAINT
 	call PlaySFX
 	call LoadTileMapToTempTileMap
@@ -3561,9 +3557,7 @@ DrawPlayerHUD:
 	ldh [hBGMapMode], a
 
 	; Clear the area
-	hlcoord 9, 7
-	lb bc, 5, 11
-	call ClearBox
+	farcall ClearPlayerHUD
 
 	farcall DrawPlayerHUDBorder
 
@@ -3700,9 +3694,7 @@ DrawEnemyHUD:
 	xor a
 	ldh [hBGMapMode], a
 
-	hlcoord 0, 0
-	lb bc, 4, 12
-	call ClearBox
+	farcall ClearEnemyHUD
 
 	farcall DrawEnemyHUDBorder
 
@@ -4410,6 +4402,7 @@ CheckRunSpeed:
 	cp RUN_AWAY
 	jr nz, .no_flee_ability
 	call SetPlayerTurn
+	farcall DisableAnimations
 	farcall ShowAbilityActivation
 	jp .can_escape
 .no_flee_ability
@@ -4562,9 +4555,7 @@ CheckRunSpeed:
 	ld de, SFX_KINESIS
 	call PlaySFX
 	call PlayerMonFaintedAnimation
-	hlcoord 9, 7
-	lb bc, 5, 11
-	call ClearBox
+	farcall ClearPlayerHUD
 	call WaitSFX
 	ld a, BATTLEACTION_FORFEIT
 	ld [wBattlePlayerAction], a
@@ -4818,6 +4809,11 @@ MoveSelectionScreen:
 	; Lock in the used move as last move
 	call SetPlayerTurn
 	call SetChoiceLock
+	call LoadTempTileMapToTileMap
+	ld a, CGB_BATTLE_COLORS
+	call GetCGBLayout
+	ld b, 2
+	call SafeCopyTilemapAtOnce
 	xor a
 	ret
 
@@ -7444,7 +7440,7 @@ BattleIntro:
 	lb bc, 5, 11
 	call ClearBox
 	hlcoord 0, 0
-	lb bc, 4, 11
+	lb bc, 4, 12
 	call ClearBox
 	call ClearSprites
 	ld a, [wBattleMode]

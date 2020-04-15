@@ -213,3 +213,4 @@ SFX:
 ; Polished Crystal adds the following SFX:
 
 	dba Sfx_Puddle
+	dba Sfx_AbilitySlideout

@@ -136,69 +136,107 @@ _CGB_BattleColors:
 	call ApplyPals
 
 _CGB_FinishBattleScreenLayout:
+	; don't screw with ability overlay areas
+	pop bc
+	ld b, 0
+	ld a, [wAnimationsDisabled]
+	and a
+	jr z, .overlay_done
+
+	hlcoord 0, 8, wAttrMap
+	bit 3, [hl]
+	jr z, .no_player_overlay
+	set 0, b
+.no_player_overlay
+	hlcoord 9, 3, wAttrMap
+	bit 3, [hl]
+	jr z, .overlay_done
+	set 1, b
+
+.overlay_done
+	push bc
 	hlcoord 0, 0, wAttrMap
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
-	ld a, $2
+	ld a, PAL_BATTLE_BG_PLAYER_HP
 	rst ByteFill
-	pop bc
 
 	hlcoord 0, 4, wAttrMap
 	lb bc, 8, 10
-	xor a
+	xor a ; PAL_BATTLE_BG_PLAYER
 	call FillBoxCGB
 
 	hlcoord 10, 0, wAttrMap
 	lb bc, 7, 10
-	ld a, $1
+	ld a, PAL_BATTLE_BG_ENEMY
 	call FillBoxCGB
 
 	hlcoord 0, 0, wAttrMap
 	lb bc, 4, 10
-	ld a, $2
+	ld a, PAL_BATTLE_BG_PLAYER_HP
 	call FillBoxCGB
 
 	hlcoord 10, 7, wAttrMap
 	lb bc, 5, 10
-	ld a, $3
+	ld a, PAL_BATTLE_BG_ENEMY_HP
 	call FillBoxCGB
 
 	hlcoord 12, 11, wAttrMap
 	lb bc, 1, 7
-	ld a, $4
+	ld a, PAL_BATTLE_BG_EXP_GENDER
 	call FillBoxCGB
 
-	ld a, $4
+	ld a, PAL_BATTLE_BG_EXP_GENDER
 	hlcoord 1, 1, wAttrMap
 	ld [hl], a
 	hlcoord 8, 1, wAttrMap
 	ld [hl], a
 	hlcoord 18, 8, wAttrMap
 	ld [hl], a
+
 	hlcoord 12, 8, wAttrMap
 	lb bc, 1, 2
-	ld a, $5
+	ld a, PAL_BATTLE_BG_STATUS
 	call FillBoxCGB
 
 	hlcoord 2, 1, wAttrMap
 	lb bc, 1, 2
-	ld a, $5
+	ld a, PAL_BATTLE_BG_STATUS
 	call FillBoxCGB
 
 	hlcoord 1, 9, wAttrMap
 	lb bc, 1, 6
-	ld a, $6
+	ld a, PAL_BATTLE_BG_TYPE_CAT
 	call FillBoxCGB
 
 	hlcoord 0, 12, wAttrMap
 	ld bc, 6 * SCREEN_WIDTH
-	ld a, $7
+	ld a, PAL_BATTLE_BG_TEXT
 	rst ByteFill
 
 	ld hl, BattleObjectPals
 	ld de, wOBPals1 palette PAL_BATTLE_OB_GRAY
 	ld bc, 6 palettes
 	call FarCopyColorWRAM
+	pop bc
 
+	ld a, b
+	and a
+	jr z, .apply_attr_map
+	bit 0, b
+	jr z, .no_player_overlay2
+	hlcoord 0, 8, wAttrMap
+	push bc
+	ld b, PAL_BATTLE_BG_TEXT
+	farcall SetAbilityOverlayAttributes
+	pop bc
+.no_player_overlay2
+	bit 1, b
+	jr z, .apply_attr_map
+	hlcoord 9, 3, wAttrMap
+	ld b, PAL_BATTLE_BG_TEXT
+	farcall SetAbilityOverlayAttributes
+
+.apply_attr_map
 	jp ApplyAttrMap
 
 _CGB_PokegearPals:

@@ -20,9 +20,11 @@ BattleCommand_attract:
 	and a
 	ret nz
 
+	farcall DisableAnimations
 	farcall ShowEnemyAbilityActivation
 	ld hl, DoesntAffectText
-	jp StdBattleTextBox
+	call StdBattleTextBox
+	farjp EnableAnimations
 
 .failed
 	; don't display anything in case we're in cute charm

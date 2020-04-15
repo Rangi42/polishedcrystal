@@ -129,7 +129,7 @@ JudgeSystem::
 	ld hl, MaxStatSparkleGFX
 	ld de, vTiles0
 	ld bc, 1 tiles
-	call CopyBytes
+	rst CopyBytes
 
 ; Place the up/down arrows and nickname
 	ld hl, wPartyMonNicknames

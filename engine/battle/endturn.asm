@@ -460,6 +460,8 @@ HandleLeechSeed:
 	call GetEighthMaxHP
 	push bc
 	predef SubtractHPFromUser
+	ld hl, LeechSeedSapsText
+	call StdBattleTextBox
 	pop bc
 	call SwitchTurn
 	farcall GetHPAbsorption
@@ -469,14 +471,16 @@ HandleLeechSeed:
 	cp LIQUID_OOZE
 	jr z, .hurt
 	farcall RestoreHP
-	jr .sap_text
+	jr .done
 .hurt
+	farcall DisableAnimations
 	farcall ShowEnemyAbilityActivation
 	predef SubtractHPFromUser
-.sap_text
-	call SwitchTurn
-	ld hl, LeechSeedSapsText
-	jp StdBattleTextBox
+	ld hl, SuckedUpOozeText
+	call StdBattleTextBox
+	farcall EnableAnimations
+.done
+	jp SwitchTurn
 
 HandlePoison:
 	call SetFastestTurn
@@ -518,9 +522,12 @@ DoPoisonBurnDamage:
 	; check if we are at full HP
 	farcall CheckFullHP
 	ret z
-	ld hl, PoisonHealText
+	farcall DisableAnimations
+	farcall ShowAbilityActivation
+	ld hl, RegainedHealthText
 	call .do_anim
-	farjp RestoreHP
+	farcall RestoreHP
+	farjp EnableAnimations
 
 .do_anim
 	push de

@@ -199,6 +199,8 @@ NEXTU
 hDX::  db
 hDY::  db
 hErr:: db
+NEXTU
+hVWFFlags:: db
 ENDU
 
 hCrashCode:: db

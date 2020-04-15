@@ -277,3 +277,14 @@ Sfx_Puddle_Ch5:
 	sound __, 16, $98, $0700
 	soundinput $8
 	endchannel
+
+Sfx_AbilitySlideout:
+	musicheader 1, 5, Sfx_AbilitySlideout_Ch5
+
+Sfx_AbilitySlideout_Ch5:
+	dutycycle $1
+	soundinput $9f
+	sound __, 4, $e8, $07ff
+	sound __, 24, $e8, $07e0
+	soundinput $8
+	endchannel

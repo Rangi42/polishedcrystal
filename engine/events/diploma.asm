@@ -35,7 +35,7 @@ _Diploma:
 	ld hl, DiplomaPage2Tilemap
 	decoord 0, 0
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
-	call CopyBytes
+	rst CopyBytes
 	ld de, .PolishedCrystal
 	hlcoord 2, 1
 	rst PlaceString

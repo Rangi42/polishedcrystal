@@ -123,9 +123,7 @@ AI_Setup:
 	jr c, .statdown
 
 	cp EFFECT_MINIMIZE
-	jr z, .statup
-
-	jr .checkmove
+	jr nz, .checkmove
 
 .statup
 	ld a, [wEnemyTurnsTaken]

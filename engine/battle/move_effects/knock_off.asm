@@ -8,9 +8,8 @@ BattleCommand_knockoff:
 	ret nz
 
 	; Sticky Hold prevents item loss
-	call GetOpponentAbilityAfterMoldBreaker
-	cp STICKY_HOLD
-	ret z
+	call CheckStickyHold
+	ret nz
 
 	call OpponentCanLoseItem
 	ret z

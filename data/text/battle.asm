@@ -113,9 +113,8 @@ BattleText_UserLostSomeOfItsHP:
 	prompt
 
 BattleText_PickedUpItem:
-	text "@"
-	text_from_ram wStringBuffer1
-	text " picked"
+	; assumes player (enemy might overflow text-wise)
+	text "<USER> picked"
 	line "up @"
 	text_from_ram wStringBuffer2
 	text "."
@@ -809,6 +808,11 @@ RegainedHealthText:
 	line "regained health!"
 	prompt
 
+IsHurtText:
+	text "<USER>"
+	line "is hurt!"
+	prompt
+
 AttackMissedText:
 	text "<USER>'s"
 	line "attack missed!"
@@ -1439,7 +1443,7 @@ NotifyCloudNine:
 NotifyPressure:
 	text "<USER> is"
 	line "exerting its"
-	cont "Pressure!"
+	cont "pressure!"
 	prompt
 
 NotifyMoldBreaker:
@@ -1454,10 +1458,8 @@ NotifyUnnerve:
 	prompt
 
 NotifyNeutralizingGas:
-	text "<USER>"
-	line "suppresses"
-	cont "abilities using"
-	cont "Neutralizing Gas!"
+	text "Neutralizing gas"
+	line "filled the area!"
 	prompt
 
 FriskedItemText:
@@ -1472,7 +1474,7 @@ FriskedItemText:
 
 PickedItemText:
 	text "<USER>"
-	line "harvested"
+	line "picked up"
 	cont "@"
 	text_from_ram wStringBuffer1
 	text "!"
@@ -1486,12 +1488,6 @@ HarvestedItemText:
 	text "!"
 	prompt
 
-PoisonHealText:
-	text "<USER>'s"
-	line "Poison Heal"
-	cont "restored health!"
-	prompt
-
 FirePoweredUpText:
 	text "<USER>'s"
 	line "Fire-type moves"
@@ -1500,14 +1496,15 @@ FirePoweredUpText:
 
 AngerPointMaximizedAttackText:
 	text "<USER>"
-	line "maximized Attack"
-	cont "with Anger Point!"
+	line "maxed its Attack!"
 	prompt
 
-DampAbilityText:
-	text "<USER>'s"
-	line "Damp prevented"
-	cont "the explosion!"
+CannotUseText:
+	text "<TARGET>"
+	line "cannot use"
+	cont "@"
+	text_from_ram wStringBuffer1
+	text "!"
 	prompt
 
 ShudderedText:
@@ -1522,6 +1519,26 @@ ForewarnText:
 	line "has @"
 	text_from_ram wStringBuffer1
 	text "!"
+	prompt
+
+BouncedBackText:
+	text "<USER>"
+	line "bounced the"
+	cont "@"
+	text_from_ram wStringBuffer1
+	text " back!"
+	prompt
+
+ItemCantBeStolenText:
+	text "<TARGET>'s"
+	line "item cannot be"
+	cont "stolen!"
+	prompt
+
+SuckedUpOozeText:
+	text "<USER>"
+	line "sucked up the"
+	cont "liquid ooze!"
 	prompt
 
 BattleText_EnemyWithdrew::

@@ -771,6 +771,18 @@ BattleBGEffect_RunPicResizeScript:
 	dec b
 	jr nz, .row
 	pop bc
+
+	; reset ability overlay if applicable
+	ld a, [wAnimationsDisabled]
+	and a
+	ret z
+	push hl
+	push de
+	push bc
+	farcall ResetAbilityTilemap
+	pop bc
+	pop de
+	pop hl
 	ret
 
 .Coords:

@@ -1516,6 +1516,11 @@ wDecompressScratch:: ds $80 tiles
 NEXTU
 wScratchTileMap:: ds BG_MAP_WIDTH * BG_MAP_HEIGHT
 wScratchAttrMap:: ds BG_MAP_WIDTH * BG_MAP_HEIGHT
+NEXTU
+wAbilityTiles:: ds 22 tiles
+; + 1 to include the "'s"
+wAbilityPkmn:: ds MON_NAME_LENGTH + 1
+wAbilityName:: ds 20
 ENDU
 
 

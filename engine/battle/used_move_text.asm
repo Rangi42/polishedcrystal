@@ -1,5 +1,8 @@
 DisplayUsedMoveText:
-; battle command 03
+	ld a, BATTLE_VARS_SUBSTATUS2
+	call GetBattleVar
+	bit SUBSTATUS_MAGIC_BOUNCE, a
+	ret nz
 
 	ldh a, [hBattleTurn]
 	and a

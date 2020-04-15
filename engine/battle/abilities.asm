@@ -65,7 +65,12 @@ UnnerveAbility:
 NeutralizingGasAbility:
 	ld hl, NotifyNeutralizingGas
 NotificationAbilities:
-	jp StdBattleTextBox
+	push hl
+	call DisableAnimations
+	call ShowAbilityActivation
+	pop hl
+	call StdBattleTextBox
+	jp EnableAnimations
 
 ImmunityAbility:
 PastelVeilAbility:
@@ -90,6 +95,7 @@ HealStatusAbility:
 	call GetBattleVar
 	and b
 	ret z ; not afflicted/wrong status
+	call DisableAnimations
 	call ShowAbilityActivation
 	ld a, BATTLE_VARS_STATUS
 	call GetBattleVarAddr
@@ -97,6 +103,7 @@ HealStatusAbility:
 	ld [hl], a
 	ld hl, BecameHealthyText
 	call StdBattleTextBox
+	call EnableAnimations
 	ldh a, [hBattleTurn]
 	and a
 	jp z, UpdateBattleMonInParty
@@ -107,24 +114,28 @@ OwnTempoAbility:
 	call GetBattleVar
 	and SUBSTATUS_CONFUSED
 	ret z ; not confused
+	call DisableAnimations
 	call ShowAbilityActivation
 	ld a, BATTLE_VARS_SUBSTATUS3
 	call GetBattleVarAddr
 	res SUBSTATUS_CONFUSED, [hl]
 	ld hl, ConfusedNoMoreText
-	jp StdBattleTextBox
+	call StdBattleTextBox
+	jp EnableAnimations
 
 ObliviousAbility:
 	ld a, BATTLE_VARS_SUBSTATUS1
 	call GetBattleVar
 	and SUBSTATUS_IN_LOVE
 	ret z ; not infatuated
+	call DisableAnimations
 	call ShowAbilityActivation
 	ld a, BATTLE_VARS_SUBSTATUS1
 	call GetBattleVarAddr
 	res SUBSTATUS_IN_LOVE, [hl]
 	ld hl, ConfusedNoMoreText
-	jp StdBattleTextBox
+	call StdBattleTextBox
+	jp EnableAnimations
 
 TraceAbility:
 	call GetOpponentAbility
@@ -142,12 +153,19 @@ TraceAbility:
 	push af
 	ld b, a
 	farcall BufferAbility
+
+	; TODO: fancier graphics?
+	call DisableAnimations
+	call ShowAbilityActivation
+	call ShowEnemyAbilityActivation
+	ld hl, TraceActivationText
+	call StdBattleTextBox
+	call EnableAnimations
+
 	ld a, BATTLE_VARS_ABILITY
 	call GetBattleVarAddr
 	pop af
 	ld [hl], a
-	ld hl, TraceActivationText
-	call StdBattleTextBox
 	jp RunActivationAbilitiesInner
 .trace_failure
 	ld hl, TraceFailureText
@@ -172,10 +190,10 @@ WeatherAbility:
 	cp b
 	ret z ; don't re-activate it
 
+	call DisableAnimations
 	call ShowAbilityActivation
 	; Disable running animations as part of Start(wWeather) commands. This will not block
 	; Call_PlayBattleAnim that plays the animation manually.
-	call DisableAnimations
 	ld a, b
 	cp WEATHER_RAIN
 	jr z, .handlerain
@@ -284,8 +302,8 @@ ImposterAbility:
 	inc a
 	ret z
 
-	call ShowAbilityActivation
 	call DisableAnimations
+	call ShowAbilityActivation
 	farcall BattleCommand_transform
 	jp EnableAnimations
 
@@ -343,9 +361,11 @@ AnticipationAbility:
 .shudder
 	pop bc
 	pop hl
+	call DisableAnimations
 	call ShowEnemyAbilityActivation
 	ld hl, ShudderedText
 	call StdBattleTextBox
+	call EnableAnimations
 .done
 	; now restore the move struct
 	pop af
@@ -447,21 +467,26 @@ ForewarnAbility:
 	and a
 	ret z
 	push af
+	call DisableAnimations
 	call ShowAbilityActivation
 	pop af
 	ld [wNamedObjectIndexBuffer], a
 	call GetMoveName
 	ld hl, ForewarnText
-	jp StdBattleTextBox
+	call StdBattleTextBox
+	jp EnableAnimations
 
 FriskAbility:
 	farcall GetOpponentItem
 	ld a, [hl]
 	and a
 	ret z ; no item
+	call DisableAnimations
+	call ShowAbilityActivation
 	call GetCurItemName
 	ld hl, FriskedItemText
-	jp StdBattleTextBox
+	call StdBattleTextBox
+	jp EnableAnimations
 
 RunEnemyOwnTempoAbility:
 	call SwitchTurn
@@ -482,9 +507,9 @@ SynchronizeAbility:
 	call GetBattleVar
 	and 1 << PAR | 1 << BRN | 1 << PSN
 	ret z ; not statused
+	call DisableAnimations
 	call ShowAbilityActivation
 	farcall ResetMiss
-	call DisableAnimations
 	ld a, BATTLE_VARS_STATUS
 	call GetBattleVar
 	cp 1 << PAR
@@ -536,10 +561,14 @@ AftermathAbility:
 	call CheckOpponentContactMove
 	ret c
 .is_contact
+	call DisableAnimations
 	call ShowAbilityActivation
 	call SwitchTurn
 	call GetQuarterMaxHP
 	predef SubtractHPFromUser
+	ld hl, IsHurtText
+	call StdBattleTextBox
+	call EnableAnimations
 	jp SwitchTurn
 
 RunHitAbilities:
@@ -648,6 +677,10 @@ EffectSporeAbility:
 	call GetOpponentAbility
 	cp OVERCOAT
 	ret z
+	call GetOpponentItemAfterUnnerve
+	ld a, b
+	cp HELD_SAFETY_GOGGLES
+	ret z
 	call BattleRandom
 	cp 1 + 33 percent
 	jr c, PoisonPointAbility
@@ -709,8 +742,8 @@ AfflictStatusAbility
 	call GetBattleVar
 	and a
 	ret nz
-	call ShowAbilityActivation
 	call DisableAnimations
+	call ShowAbilityActivation
 	ld a, b
 	cp SLP
 	jr z, .slp
@@ -809,10 +842,12 @@ RunEnemyNullificationAbilities:
 	ret nz
 
 	; For other abilities, don't do anything except print a message (for example Levitate)
+	call DisableAnimations
 	call ShowAbilityActivation
 	call SwitchTurn
 	ld hl, DoesntAffectText
 	call StdBattleTextBox
+	call EnableAnimations
 	jp SwitchTurn
 
 NullificationAbilities:
@@ -829,8 +864,15 @@ NullificationAbilities:
 DampAbility:
 	; doesn't use the normal activation message or "doesn't affect", because it
 	; would be confusing
-	ld hl, DampAbilityText
-	jp StdBattleTextBox
+	ld a, BATTLE_VARS_MOVE_OPP
+	call GetBattleVar
+	ld [wNamedObjectIndexBuffer], a
+	call GetMoveName
+	call DisableAnimations
+	call ShowAbilityActivation
+	ld hl, CannotUseText
+	call StdBattleTextBox
+	jp EnableAnimations
 
 RunStatIncreaseAbilities:
 	call CallOpponentTurn
@@ -903,10 +945,12 @@ StatUpAbility:
 	cp SAP_SIPPER
 	jr nz, .done
 .print_immunity
+	call DisableAnimations
 	call ShowAbilityActivation
 	call SwitchTurn
 	ld hl, DoesntAffectText
 	call StdBattleTextBox
+	call EnableAnimations
 	call SwitchTurn
 .done
 	jp EnableAnimations
@@ -925,6 +969,7 @@ WeakArmorAbility:
 	jp EnableAnimations
 
 FlashFireAbility:
+	call DisableAnimations
 	call ShowAbilityActivation
 	ld a, BATTLE_VARS_SUBSTATUS3
 	call GetBattleVarAddr
@@ -933,24 +978,31 @@ FlashFireAbility:
 	jr nz, .already_fired_up
 	set SUBSTATUS_FLASH_FIRE, [hl]
 	ld hl, FirePoweredUpText
-	jp StdBattleTextBox
+	call StdBattleTextBox
+	jp EnableAnimations
 .already_fired_up
 	call SwitchTurn
 	ld hl, DoesntAffectText
 	call StdBattleTextBox
+	call EnableAnimations
 	jp SwitchTurn
 
 DrySkinAbility:
 VoltAbsorbAbility:
 WaterAbsorbAbility:
+	call DisableAnimations
 	call ShowAbilityActivation
 	farcall CheckFullHP
 	jr z, .full_hp
 	call GetQuarterMaxHP
-	farjp RestoreHP
+	farcall RestoreHP
+	ld hl, RegainedHealthText
+	call StdBattleTextBox
+	jp EnableAnimations
 .full_hp
 	ld hl, HPIsFullText
-	jp StdBattleTextBox
+	call StdBattleTextBox
+	jp EnableAnimations
 
 ApplySpeedAbilities:
 ; Passive speed boost abilities
@@ -1068,9 +1120,13 @@ SolarPowerWeatherAbility:
 	call GetWeatherAfterUserUmbrella
 	cp WEATHER_SUN
 	ret nz
+	call DisableAnimations
 	call ShowAbilityActivation
 	call GetEighthMaxHP
-	predef_jump SubtractHPFromUser
+	predef SubtractHPFromUser
+	ld hl, IsHurtText
+	call StdBattleTextBox
+	jp EnableAnimations
 
 IceBodyAbility:
 	ld b, WEATHER_HAIL
@@ -1084,6 +1140,7 @@ WeatherRecoveryAbility:
 	ret nz
 	farcall CheckFullHP
 	ret z
+	call DisableAnimations
 	call ShowAbilityActivation
 	call GetTrueUserAbility
 	cp DRY_SKIN
@@ -1093,7 +1150,10 @@ WeatherRecoveryAbility:
 .eighth_max_hp
 	call GetEighthMaxHP
 .restore
-	farjp RestoreHP
+	farcall RestoreHP
+	ld hl, RegainedHealthText
+	call StdBattleTextBox
+	jp EnableAnimations
 
 EndturnAbilitiesA:
 	ld hl, .ability_table
@@ -1209,6 +1269,13 @@ PickupAbility:
 	; fallthrough
 RegainItemByAbility:
 	; Update party struct if applicable
+	push af
+	push hl
+	call DisableAnimations
+	call ShowAbilityActivation
+	pop hl
+	pop af
+
 	ld [wNamedObjectIndexBuffer], a
 	push af
 	push hl
@@ -1226,7 +1293,7 @@ RegainItemByAbility:
 .got_item_addr
 	call GetPartyLocation
 	ld [hl], b
-	ret
+	jp EnableAnimations
 
 GetCappedStats:
 	; First, check how many stats aren't maxed out
@@ -1665,8 +1732,10 @@ AngerPointAbility:
 	ld a, [wFailedMessage]
 	and a
 	jr nz, .done
+	call ShowAbilityActivation
 	ld hl, AngerPointMaximizedAttackText
-	call StdBattleTextBox
+	xor a
+	farcall DoPrintStatChange
 .done
 	jp EnableAnimations
 
@@ -1676,15 +1745,16 @@ RunSwitchAbilities:
 	cp NATURAL_CURE
 	jr z, NaturalCureAbility
 	cp REGENERATOR
-	jr z, RegeneratorAbility
-	ret
-
+	ret nz
+	; fallthrough
 RegeneratorAbility:
 	farcall CheckFullHP
 	ret z
+	call DisableAnimations
 	call ShowAbilityActivation
 	call GetThirdMaxHP
 	farcall RestoreHP
+	call EnableAnimations
 	ldh a, [hBattleTurn]
 	and a
 	jp z, UpdateBattleMonInParty
@@ -1724,11 +1794,22 @@ _GetOpponentAbilityAfterMoldBreaker::
 INCLUDE "data/abilities/mold_breaker_suppressed_abilities.asm"
 
 DisableAnimations:
+	ld a, [wAnimationsDisabled]
+	and a
+	ret nz
+	push hl
+	push de
+	push bc
+	call LoadTileMapToTempTileMap
+	pop bc
+	pop de
+	pop hl
 	ld a, 1
 	ld [wAnimationsDisabled], a
 	ret
 
 EnableAnimations:
+	call DismissAbilityOverlays
 	xor a
 	ld [wAnimationsDisabled], a
 	ret
@@ -1742,9 +1823,8 @@ ShowAbilityActivation::
 	ld a, BATTLE_VARS_ABILITY
 	call GetBattleVar
 	ld b, a
-	farcall BufferAbility
-	ld hl, BattleText_UsersStringBuffer1Activated
-	call StdBattleTextBox
+	call PerformAbilityGFX
+
 	jp PopBCDEHL
 
 RunPostBattleAbilities::
@@ -1760,20 +1840,18 @@ RunPostBattleAbilities::
 
 	ld [wCurPartyMon], a
 
+	ld a, MON_SPECIES
+	call GetPartyParamLocation
+	ld c, [hl]
 	ld a, MON_IS_EGG
 	call GetPartyParamLocation
 	bit MON_IS_EGG_F, [hl]
 	jr nz, .loop
-	push bc
-	ld a, MON_SPECIES
-	call GetPartyParamLocation
-	ld c, [hl]
 	assert MON_PERSONALITY == MON_IS_EGG - 1
 	dec hl
 
 	call GetAbility
 	ld a, b
-	pop bc
 	cp NATURAL_CURE
 	jr z, .natural_cure
 	cp PICKUP
@@ -1799,6 +1877,8 @@ RunPostBattleAbilities::
 	cp 1 + (10 percent)
 	ret nc
 
+	call DisableAnimations
+
 	ld a, MON_LEVEL
 	call GetPartyParamLocation
 	ld a, [hl]
@@ -1814,7 +1894,7 @@ RunPostBattleAbilities::
 	call GetItemName
 	ld hl, wStringBuffer1
 	ld de, wStringBuffer2
-	ld bc, MON_NAME_LENGTH
+	ld bc, ITEM_NAME_LENGTH
 	rst CopyBytes
 	pop de
 	pop bc
@@ -1825,11 +1905,17 @@ RunPostBattleAbilities::
 	ld a, [hl]
 	ld [wNamedObjectIndexBuffer], a
 	call GetPokemonName
+	ld hl, wStringBuffer1
+	ld de, wBattleMonNick
+	ld bc, MON_NAME_LENGTH
+	rst CopyBytes
+	ld b, PICKUP
+	call PerformAbilityGFX
 	ld hl, BattleText_PickedUpItem
 	call StdBattleTextBox
 	pop de
 	pop bc
-	ret
+	jp EnableAnimations
 
 GetRandomPickupItem::
 	push de
@@ -1904,3 +1990,5 @@ GetScaledItemReward:
 .inc_bc:
 	inc bc
 	ret
+
+INCLUDE "engine/battle/ability_gfx.asm"

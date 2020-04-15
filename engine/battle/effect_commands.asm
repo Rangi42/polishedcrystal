@@ -2338,7 +2338,11 @@ BattleCommand_applydamage:
 .not_enduring2
 	dec a
 	jr nz, .enduring_with_item
-	farjp ShowEnemyAbilityActivation
+	farcall DisableAnimations
+	farcall ShowEnemyAbilityActivation
+	ld hl, EnduredText
+	call StdBattleTextBox
+	farjp EnableAnimations
 
 .enduring_with_item
 	push af
@@ -3071,8 +3075,10 @@ EndMoveDamageChecks:
 	call SwitchTurn
 	call CanStealItem
 	jr nz, .no_pickpocket
+	farcall DisableAnimations
 	farcall ShowAbilityActivation
 	call BattleCommand_thief
+	farcall EnableAnimations
 .no_pickpocket
 	jp SwitchTurn
 
@@ -4332,9 +4338,11 @@ BattleCommand_sleeptarget:
 	jp StdBattleTextBox
 
 .ability_ok
+	farcall DisableAnimations
 	farcall ShowEnemyAbilityActivation
 	call AnimateFailedMove
-	jp PrintDoesntAffect
+	call PrintDoesntAffect
+	farjp EnableAnimations
 
 CanPoisonTarget:
 	ld a, b
@@ -4504,6 +4512,7 @@ CanPoisonTargetVerbose:
 	xor a
 	ret
 .ability_ok
+	farcall DisableAnimations
 	farcall ShowEnemyAbilityActivation
 	ld hl, DoesntAffectText
 .failed
@@ -4511,7 +4520,8 @@ CanPoisonTargetVerbose:
 	call AnimateFailedMove
 	pop hl
 	call StdBattleTextBox
-	or a
+	farcall EnableAnimations
+	or 1
 	ret
 
 BattleCommand_poison:
@@ -4538,16 +4548,21 @@ PoisonOpponent:
 	jp UpdateOpponentInParty
 
 BattleCommand_draintarget:
-	call SapHealth
 	ld hl, SuckedHealthText
-	jp StdBattleTextBox
-
+	; fallthrough
 SapHealth:
-	; Don't do anything if HP is full
+	; Don't do anything if HP is full unless opponent has Liquid Ooze
+	call GetOpponentAbilityAfterMoldBreaker
+	cp LIQUID_OOZE
+	jr z, .continue
+	push hl
 	farcall CheckFullHP
+	pop hl
 	ret z
 
+.continue
 	; get damage
+	push hl
 	ld hl, wCurDamage
 	ld a, [hli]
 	ld b, a
@@ -4575,10 +4590,18 @@ SapHealth:
 	pop bc
 	cp LIQUID_OOZE
 	jr z, .damage
-	farjp RestoreHP
+	farcall RestoreHP
+	pop hl
+	jp StdBattleTextBox
+
 .damage
+	pop hl
+	farcall DisableAnimations
 	farcall ShowEnemyAbilityActivation
-	predef_jump SubtractHPFromUser
+	predef SubtractHPFromUser
+	ld hl, SuckedUpOozeText
+	call StdBattleTextBox
+	farjp EnableAnimations
 
 GetHPAbsorption:
 ; From damage in bc, get resulting absorbed HP
@@ -4898,9 +4921,11 @@ BattleCommand_burn:
 	jp StdBattleTextBox
 
 .ability_ok
+	farcall DisableAnimations
 	farcall ShowEnemyAbilityActivation
 	call AnimateFailedMove
-	jp PrintDoesntAffect
+	call PrintDoesntAffect
+	farjp EnableAnimations
 
 BattleCommand_raisesubnoanim:
 	ld hl, GetMonBackpic
@@ -5510,9 +5535,11 @@ BattleCommand_confuse:
 	call GetOpponentAbilityAfterMoldBreaker
 	cp OWN_TEMPO
 	jr nz, .no_ability_protection
+	farcall DisableAnimations
 	farcall ShowEnemyAbilityActivation
 	ld hl, DoesntAffectText
-	jp StdBattleTextBox
+	call StdBattleTextBox
+	farjp EnableAnimations
 
 .no_ability_protection
 	ld a, BATTLE_VARS_SUBSTATUS3_OPP
@@ -5618,9 +5645,11 @@ BattleCommand_paralyze:
 	jp StdBattleTextBox
 
 .ability_ok
+	farcall DisableAnimations
 	farcall ShowEnemyAbilityActivation
 	call AnimateFailedMove
-	jp PrintDoesntAffect
+	call PrintDoesntAffect
+	farjp EnableAnimations
 
 BattleCommand_rechargenextturn:
 	ld a, BATTLE_VARS_SUBSTATUS4
@@ -5659,7 +5688,7 @@ BattleCommand_resetstats:
 
 BattleCommand_heal:
 	farcall CheckFullHP
-	jr z, .hp_full
+	jp z, .hp_full
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
 	cp REST
@@ -5721,8 +5750,10 @@ BattleCommand_heal:
 	jp StdBattleTextBox
 
 .ability_prevents_rest
+	farcall DisableAnimations
+	farcall ShowAbilityActivation
 	call AnimateFailedMove
-	farjp ShowAbilityActivation
+	farjp EnableAnimations
 
 .hp_full
 	call AnimateFailedMove

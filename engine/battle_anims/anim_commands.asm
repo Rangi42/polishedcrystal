@@ -185,16 +185,23 @@ ClearActorHud:
 
 	ldh a, [hBattleTurn]
 	and a
-	jr z, .player
+	jr z, ClearPlayerHUD
 
+ClearEnemyHUD:
 	hlcoord 0, 0
-	lb bc, 4, 11
+	lb bc, 3, 11
 	jp ClearBox
 
-.player
-	hlcoord 9, 7
-	lb bc, 5, 11
-	jp ClearBox
+ClearPlayerHUD:
+	hlcoord 11, 7
+	lb bc, 5, 9
+	call ClearBox
+	ld a, " "
+	hlcoord 10, 7
+	ld [hl], a
+	hlcoord 10, 11
+	ld [hl], a
+	ret
 
 BattleAnim_ClearCGB_OAMFlags:
 
