@@ -1596,9 +1596,9 @@ Thief:
 	applydamage
 	criticaltext
 	supereffectivetext
+	thief
 	postfainteffects
 	posthiteffects
-	thief
 	endmove
 
 MeanLook:
