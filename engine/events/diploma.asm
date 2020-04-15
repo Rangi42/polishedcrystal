@@ -1,4 +1,3 @@
-
 _Diploma:
 	call ClearBGPalettes
 	call ClearTileMap

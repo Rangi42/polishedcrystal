@@ -10,16 +10,21 @@ PerformAbilityGFX:
 	ld de, wAbilityName
 	farcall _BufferAbility
 
-	; Get user nickname
+	; Blank existing nickname
+	ld hl, wAbilityPkmn
+	ld bc, MON_NAME_LENGTH
+	ld a, "@"
+	rst ByteFill
+
+	; Get user nickname (post-processed with n-grams)
 	ldh a, [hBattleTurn]
 	and a
-	ld hl, wBattleMonNick
+	ld de, wBattleMonNick
 	jr z, .got_pkmn_name
-	ld hl, wEnemyMonNick
+	ld de, wEnemyMonNick
 .got_pkmn_name
-	ld de, wAbilityPkmn
-	ld bc, MON_NAME_LENGTH
-	rst CopyBytes
+	ld hl, wAbilityPkmn
+	rst PlaceString
 
 	; Append 's
 	ld hl, wAbilityPkmn
