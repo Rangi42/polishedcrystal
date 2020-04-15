@@ -677,7 +677,7 @@ EffectSporeAbility:
 	call GetOpponentAbility
 	cp OVERCOAT
 	ret z
-	call GetOpponentItemAfterUnnerve
+	farcall GetOpponentItemAfterUnnerve
 	ld a, b
 	cp HELD_SAFETY_GOGGLES
 	ret z
