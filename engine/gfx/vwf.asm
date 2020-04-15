@@ -1,3 +1,6 @@
+FIRST_VWF_CHAR EQU " " ; first printable character
+FAILSAFE_VWF_CHAR EQU "!"
+
 _PlaceVWFString::
 ; Place string de at hl with flags in b and offset in c.
 ; Returns z usually, nz if we've doing single-character output and we haven't
@@ -13,7 +16,10 @@ _PlaceVWFString::
 	push de
 
 	push hl
-	sub " " ; first printable character
+	sub FIRST_VWF_CHAR
+	jr nc, .valid
+	ld a, FAILSAFE_VWF_CHAR - FIRST_VWF_CHAR
+.valid
 	; get VWFWidths + a
 	ld e, a
 	ld d, 0
@@ -140,7 +146,10 @@ _GetVWFLength::
 
 	push hl
 	push de
-	sub " " ; first printable character
+	sub FIRST_VWF_CHAR
+	jr nc, .valid
+	ld a, FAILSAFE_VWF_CHAR - FIRST_VWF_CHAR
+.valid
 	; get VWFWidths + a
 	ld e, a
 	ld d, 0
