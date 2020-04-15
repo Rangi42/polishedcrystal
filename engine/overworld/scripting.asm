@@ -505,7 +505,7 @@ Script_buttonsound:
 
 Script_yesorno:
 	call YesNoBox
-	; a = carry ? FALSE : TRUE
+	; a = carry (no) ? FALSE : TRUE
 	sbc a
 	inc a
 	ldh [hScriptVar], a

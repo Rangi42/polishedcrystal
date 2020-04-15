@@ -520,7 +520,11 @@ BillBoxSwitch:
 	; change boxes (overwrites wMisc)
 	ld a, [wEngineBuffer1]
 	ld e, a
-	farcall ChangeBoxSaveGameNoConfirm
+	farcall ChangeBoxSaveGame
+	; a = carry (didn't save) ? FALSE : TRUE
+	sbc a
+	inc a
+	ldh [hScriptVar], a
 	; restore wMisc from wDecompressScratch
 	ld hl, wDecompressScratch
 	ld de, wMisc

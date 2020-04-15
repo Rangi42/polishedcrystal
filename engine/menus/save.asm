@@ -56,8 +56,6 @@ ChangeBoxSaveGame:
 	pop de
 	ret
 
-ChangeBoxSaveGameNoConfirm:
-	push de
 SaveAndChangeBox:
 	call SetWRAMStateForSave
 	call SaveBox

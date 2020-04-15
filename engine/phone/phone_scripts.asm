@@ -194,13 +194,8 @@ BillPhoneScriptCheckForBoxes:
 	special BillBoxSwitchCheck
 	ifequal 0, BillPhoneWholePCFull
 	farwritetext BillWantNextBox
-	farwritetext UnknownText_0x1c462a
-	yesorno
-	iffalse .refused
 	special BillBoxSwitch
-	jump .hang_up
-
-.refused
+	iftrue .hang_up
 	farwritetext BillCallMeToSwitch
 .hang_up
 	farwritetext BillThankYouText
