@@ -1396,7 +1396,7 @@ endr
 	ld hl, wEnemySwitchTarget
 .got_switch_target
 	ld [hl], 0
-	; fallthrough
+	ret
 
 SetParticipant::
 ; Sets current active mon as participant vs target mon. Preserves registers.
@@ -3100,6 +3100,7 @@ SpikesDamage:
 SpikesDamage_GotAbility:
 ; Input: b: ability, c: 1 if forced out, 0 otherwise
 	push bc
+	call SetParticipant
 	call HandleAirBalloon
 	pop bc
 	ret z
@@ -6390,7 +6391,7 @@ GiveExperiencePoints:
 	ld a, [wCurPartyMon]
 	inc a
 	cp b
-	jp z, SetParticipant
+	ret z
 	ld [wCurPartyMon], a
 	ld a, MON_SPECIES
 	call GetPartyParamLocation
