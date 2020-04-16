@@ -1632,26 +1632,19 @@ GutsAbility:
 	jp ApplyPhysicalAttackDamageMod
 
 PixilateAbility:
-	ld a, BATTLE_VARS_MOVE_TYPE
-	call GetBattleVarAddr
-	ld a, [hl]
-	and a ; cp NORMAL
-	ret nz
-
-	; change move to fairy type
-	ld [hl], FAIRY
-	ln a, 6, 5 ; x1.2
-	jp MultiplyAndDivide
-
+	ld b, FAIRY
+	jr AteAbilities
 GalvanizeAbility:
+	ld b, ELECTRIC
+AteAbilities:
 	ld a, BATTLE_VARS_MOVE_TYPE
 	call GetBattleVarAddr
 	ld a, [hl]
 	and a ; cp NORMAL
 	ret nz
 
-	; change move to electric type
-	ld [hl], ELECTRIC
+	; change move type
+	ld [hl], b
 	ln a, 6, 5 ; x1.2
 	jp MultiplyAndDivide
 
