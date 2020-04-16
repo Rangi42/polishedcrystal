@@ -401,6 +401,8 @@ HatchEggs:
 	ld [wMonType], a
 	push de
 	predef CopyPkmnToTempMon
+	pop de
+	push de
 	ld b, $0 ; pokemon
 	farcall NamingScreen
 	pop hl
