@@ -2759,7 +2759,7 @@ BattleCommand_postfainteffects:
 	jr z, .no_dbond
 
 	call GetFutureSightUser
-	jr c, .no_dbond
+	jr nc, .no_dbond
 
 	ld hl, TookDownWithItText
 	call StdBattleTextBox
