@@ -761,19 +761,19 @@
 	; morn
 	db 30, SWINUB
 	db 32, ZUBAT
-	db 32, GOLBAT
+	db 32, SANDSHREW
 	db 32, SWINUB
 	db 34, GOLBAT
 	db 32, GOLBAT
-	db 32, GOLBAT
+	db 32, SANDSLASH
 	; day
 	db 30, SWINUB
 	db 32, ZUBAT
-	db 32, GOLBAT
+	db 32, SANDSHREW
 	db 32, SWINUB
 	db 34, GOLBAT
 	db 32, GOLBAT
-	db 32, GOLBAT
+	db 32, SANDSLASH
 	; nite
 	db 30, ZUBAT
 	db 31, ZUBAT
@@ -788,18 +788,18 @@
 	; morn
 	db 32, SWINUB
 	db 33, ZUBAT
-	db 33, GOLBAT
+	db 33, SANDSHREW
 	db 34, SWINUB
 	db 35, GOLBAT
-	db 33, GOLBAT
+	db 33, SANDSLASH
 	db 32, JYNX
 	; day
 	db 32, SWINUB
 	db 33, ZUBAT
-	db 33, GOLBAT
+	db 33, SANDSHREW
 	db 34, SWINUB
 	db 35, GOLBAT
-	db 33, GOLBAT
+	db 33, SANDSLASH
 	db 32, JYNX
 	; nite
 	db 32, ZUBAT
@@ -815,17 +815,17 @@
 	; morn
 	db 33, SWINUB
 	db 34, ZUBAT
-	db 34, GOLBAT
+	db 34, SANDSHREW
 	db 35, SWINUB
-	db 35, GOLBAT
+	db 35, SANDSLASH
 	db 32, JYNX
 	db 34, JYNX
 	; day
 	db 33, SWINUB
 	db 34, ZUBAT
-	db 34, GOLBAT
+	db 34, SANDSHREW
 	db 35, SWINUB
-	db 35, GOLBAT
+	db 35, SANDSLASH
 	db 32, JYNX
 	db 34, JYNX
 	; nite
@@ -842,17 +842,17 @@
 	; morn
 	db 33, SWINUB
 	db 34, ZUBAT
-	db 34, GOLBAT
+	db 34, SANDSHREW
 	db 35, SWINUB
-	db 35, GOLBAT
+	db 35, SANDSLASH
 	db 32, JYNX
 	db 34, JYNX
 	; day
 	db 33, SWINUB
 	db 34, ZUBAT
-	db 34, GOLBAT
+	db 34, SANDSHREW
 	db 35, SWINUB
-	db 35, GOLBAT
+	db 35, SANDSLASH
 	db 32, JYNX
 	db 34, JYNX
 	; nite
@@ -869,7 +869,7 @@
 	; morn
 	db 34, SWINUB
 	db 35, ZUBAT
-	db 35, GOLBAT
+	db 35, SANDSHREW
 	db 35, SWINUB
 	db 32, JYNX
 	db 34, JYNX
@@ -877,7 +877,7 @@
 	; day
 	db 34, SWINUB
 	db 35, ZUBAT
-	db 35, GOLBAT
+	db 35, SANDSHREW
 	db 35, SWINUB
 	db 32, JYNX
 	db 34, JYNX

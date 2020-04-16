@@ -5695,6 +5695,13 @@ CheckSleepingTreeMon:
 INCLUDE "data/wild/treemons_asleep.asm"
 
 GenerateWildForm:
+	push hl
+	push de
+	push bc
+	call .do_it
+	jp PopBCDEHL
+
+.do_it
 	ld a, [wTempEnemyMonSpecies]
 	cp UNOWN
 	jr z, .Unown
@@ -5706,6 +5713,24 @@ GenerateWildForm:
 	jr z, .EkansArbok
 	cp GYARADOS
 	jr z, .Gyarados
+	cp SANDSHREW
+	jr z, .IceForm
+	cp SANDSLASH
+	jr z, .IceForm
+	cp VULPIX
+	jr z, .IceForm
+	cp NINETALES
+	jr z, .IceForm
+	cp DIGLETT
+	jr z, .FireForm
+	cp DUGTRIO
+	jr z, .FireForm
+	cp GEODUDE
+	jr z, .ElecForm
+	cp GRAVELER
+	jr z, .ElecForm
+	cp GOLEM
+	jr z, .ElecForm
 .Default:
 	ld a, 1
 .GotForm:
@@ -5719,9 +5744,7 @@ GenerateWildForm:
 	inc a
 	ld [wCurForm], a
 	; Can't use any letters that haven't been unlocked
-	push de
 	call CheckUnownLetter
-	pop de
 	jr c, .Unown ; re-roll
 	ret
 
@@ -5747,6 +5770,40 @@ GenerateWildForm:
 	jr nz, .Default
 	ld a, GYARADOS_RED_FORM
 	jr .GotForm
+
+.IceForm:
+	ld hl, IceLandmarks
+	jr .LandmarkForm
+.FireForm:
+	ld hl, FireLandmarks
+	jr .LandmarkForm
+.ElecForm:
+	ld hl, ElecLandmarks
+	jr .LandmarkForm
+.LandmarkForm:
+	ld a, [wCurLandmark]
+	ld de, 1
+	call IsInArray
+	ret nc
+	ld a, ALOLAN_FORM
+	jr .GotForm
+
+IceLandmarks:
+	db ICE_PATH
+	db SEAFOAM_ISLANDS
+	db ICE_ISLAND
+	db -1
+
+FireLandmarks:
+	db CINNABAR_VOLCANO
+	db FIRE_ISLAND
+	db -1
+
+ElecLandmarks:
+	db MAGNET_TUNNEL
+	db ROCK_TUNNEL
+	db LIGHTNING_ISLAND
+	db -1
 
 CheckUnownLetter:
 ; Return carry if the Unown letter hasn't been unlocked yet
