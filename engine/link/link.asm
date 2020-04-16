@@ -2087,9 +2087,9 @@ Special_TryQuickSave:
 	ld a, [wd265]
 	push af
 	farcall Link_SaveGame
-	; a = carry ? TRUE : FALSE (0)
+	; a = carry ? FALSE (0) : TRUE
 	sbc a
-	and TRUE
+	add 1
 	ldh [hScriptVar], a
 	pop af
 	ld [wd265], a
