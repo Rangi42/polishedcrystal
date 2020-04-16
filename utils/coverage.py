@@ -38,9 +38,12 @@ def main():
 	default_bank_data = {'sections': [], 'used': 0, 'slack': bank_size}
 	for bank in range(num_banks):
 		hits = [0] * pixels_per_bank
-		data = r.bank_data['ROM Bank'].get(bank, default_bank_data)
+		data = r.bank_data['rom bank'].get(bank, default_bank_data)
 		for s in data['sections']:
 			if s['beg'] > s['end']:
+				continue
+			if s['beg'] == 0x0000 and s['end'] > 0xFFFF:
+				# https://github.com/rednex/rgbds/issues/515
 				continue
 			beg = s['beg'] & bank_mask
 			end = s['end'] & bank_mask
@@ -55,7 +58,7 @@ def main():
 			y = i // bank_width
 			x = i % bank_width + bank * bank_width
 			hls = (hue / 360.0, 1.0 - (h / bpp * (100 - 15)) / 100.0, 1.0)
-			rgb = tuple(c * 255 for c in hls_to_rgb(*hls))
+			rgb = tuple(int(c * 255) for c in hls_to_rgb(*hls))
 			pixels[y][x] = rgb
 
 	png_data = [tuple(c for pixel in row for c in pixel) for row in pixels]
