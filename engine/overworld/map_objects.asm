@@ -226,17 +226,10 @@ UpdateTallGrassFlags:
 	ld hl, OBJECT_FLAGS2
 	add hl, bc
 	bit OVERHEAD, [hl]
-	jr z, .ok
+	ret z
 	ld hl, OBJECT_NEXT_TILE
 	add hl, bc
 	ld a, [hl]
-	call SetTallGrassFlags
-.ok
-	ld hl, OBJECT_STANDING_TILE
-	add hl, bc
-	ld a, [hl]
-	ret
-
 SetTallGrassFlags:
 	ld hl, OBJECT_FLAGS2
 	add hl, bc
