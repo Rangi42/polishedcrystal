@@ -2706,7 +2706,6 @@ AI_Status:
 	call AIGetEnemyMove
 
 	ld a, [wEnemyMoveStruct + MOVE_CATEGORY]
-	call GetBattleVar
 	cp STATUS
 	jr nz, .checkmove
 
