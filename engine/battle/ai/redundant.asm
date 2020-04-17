@@ -40,6 +40,7 @@ AI_Redundant:
 	dbw EFFECT_FUTURE_SIGHT,  .FutureSight
 	dbw EFFECT_BATON_PASS,    .BatonPass
 	dbw EFFECT_ROOST,         .Roost
+	dbw EFFECT_TRICK_ROOM,    .TrickRoom
 	db -1
 
 .Confuse:
@@ -177,6 +178,14 @@ AI_Redundant:
 .NotRedundant:
 	xor a
 	ret
+
+.TrickRoom:
+	; normally this kind of logic is relegated to smart AI, but since this move
+	; never fails, we need to avoid the AI spamming it because it doesn't
+	; understand how it works...
+	farcall AICompareSpeed
+	jr c, .Redundant
+	jr .NotRedundant
 
 .Heal:
 .HealingLight:

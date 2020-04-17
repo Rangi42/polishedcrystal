@@ -928,9 +928,9 @@ AI_Smart_Fly:
 	ret
 
 AI_Smart_TrickRoom:
-; Greatly encourage this move if it would make us outspeed
+; Greatly encourage this move if it would make us outspeed, discourage otherwise
 	call AICompareSpeed
-	ret c
+	jp z, AIDiscourageMove
 
 	dec [hl]
 	dec [hl]
