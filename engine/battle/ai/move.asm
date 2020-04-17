@@ -61,6 +61,11 @@ AIChooseMove:
 	jr z, .DecrementScores
 
 	push bc
+	push hl
+	call .BadgeAICheck
+	jr c, .apply_layer
+	pop hl
+
 	ld d, BANK(TrainerClassAttributes)
 	predef FlagPredef
 	ld d, c
@@ -78,6 +83,7 @@ endc
 	and a
 	jr z, .CheckLayer
 
+.apply_layer
 	ld hl, AIScoringPointers
 	dec c
 	ld b, 0
@@ -90,6 +96,42 @@ endc
 	call FarCall_hl
 
 	jr .CheckLayer
+
+.BadgeAICheck:
+	push de
+	ld hl, .BadgeAILayers
+	push bc
+	ld de, 2
+	call IsInArray
+	jr nc, .done
+	push hl
+	ld hl, wBadges
+	ld b, wBadgesEnd - wBadges
+	call CountSetBits
+	pop hl
+	inc hl
+	ld c, [hl]
+
+	; If our total badges (in a) exceed badge threshold (in c), return c.
+	cp c
+	ccf
+.done
+	pop bc
+	pop de
+	ret
+
+.BadgeAILayers:
+	; Don't do redundant things (such as paralyzing a paralyzed foe, etc)
+	db AI_BASIC_F, 0
+	; Learn about type advantage
+	db AI_TYPES_F, 2
+	; Learn about ineffective status moves (Hypnosis vs Insomnia, etc)
+	db AI_STATUS_F, 4
+	; Maximize damage potential
+	db AI_AGGRESSIVE_F, 8
+	; "Smart" AI
+	db AI_SMART_F, 16
+	db -1
 
 ; Decrement the scores of all moves one by one until one reaches 0.
 .DecrementScores:

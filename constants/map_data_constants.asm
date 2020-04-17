@@ -33,12 +33,6 @@
 
 
 	const_def
-	const EAST_F
-	const WEST_F
-	const SOUTH_F
-	const NORTH_F
-
-	const_def
 	shift_const EAST
 	shift_const WEST
 	shift_const SOUTH

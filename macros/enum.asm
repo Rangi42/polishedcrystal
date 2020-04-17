@@ -40,7 +40,7 @@ ENDM
 
 shift_const: MACRO
 \1 EQU (1 << const_value)
-const_value = const_value + 1
+	const \1_F
 ENDM
 
 
