@@ -4384,7 +4384,9 @@ CanStatusTarget:
 	jr nz, .not_corrosive
 	call GetTrueUserAbility
 	cp CORROSION
-	jr z, .immunities_done
+	jr nz, .not_corrosive
+	pop af
+	jr .immunities_done
 
 .not_corrosive
 	push de
