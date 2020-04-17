@@ -1895,7 +1895,9 @@ ReleasePKMN_ByePKMN:
 
 	call ApplyTilemapInVBlank
 	ld a, [wCurPartySpecies]
+	push af
 	call PlayCry
+	pop af
 
 	cp RAIKOU
 	jr nz, .not_raikou

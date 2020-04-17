@@ -5592,6 +5592,12 @@ endc
 	call GetRoamMonStatus
 	xor a
 	ld [hl], a
+	call GetRoamMonDVs
+	ld d, h
+	ld e, l
+	ld hl, wOTPartyMon1DVs
+	ld bc, 5
+	rst CopyBytes
 
 .Moves:
 	farcall CheckUniqueWildMove
@@ -7990,6 +7996,10 @@ GetRoamMonHP:
 GetRoamMonStatus:
 ; output: hl = wRoamMon#Status
 	ld a, wRoamMon1Status - wRoamMon1
+	jr DoGetRoamMonData
+
+GetRoamMonDVs:
+	ld a, wRoamMon1DVs - wRoamMon1
 	; fallthrough
 
 DoGetRoamMonData:
