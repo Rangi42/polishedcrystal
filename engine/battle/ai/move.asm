@@ -60,12 +60,15 @@ AIChooseMove:
 	cp 16 ; up to 16 scoring layers
 	jr z, .DecrementScores
 
+	call .BadgeAICheck
+	jr nc, .check_flags
+	inc c
 	push bc
 	push hl
-	call .BadgeAICheck
-	jr c, .apply_layer
-	pop hl
+	jr .apply_layer
 
+.check_flags
+	push bc
 	ld d, BANK(TrainerClassAttributes)
 	predef FlagPredef
 	ld d, c
@@ -98,6 +101,7 @@ endc
 	jr .CheckLayer
 
 .BadgeAICheck:
+	push hl
 	push de
 	ld hl, .BadgeAILayers
 	push bc
@@ -118,6 +122,7 @@ endc
 .done
 	pop bc
 	pop de
+	pop hl
 	ret
 
 .BadgeAILayers:
