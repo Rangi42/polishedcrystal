@@ -930,7 +930,12 @@ AI_Smart_Fly:
 AI_Smart_TrickRoom:
 ; Greatly encourage this move if it would make us outspeed, discourage otherwise
 	call AICompareSpeed
-	jp z, AIDiscourageMove
+	jp c, AIDiscourageMove
+
+	; Avoid obvious PP stall by only encouraging the move if setting TR up
+	ld a, [wTrickRoom]
+	and a
+	ret nz
 
 	dec [hl]
 	dec [hl]
