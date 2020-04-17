@@ -295,6 +295,8 @@ _ChooseWildEncounter:
 	call CheckEncounterRoamMon
 	pop bc
 	jp c, .startwildbattle
+	xor a ; BATTLETYPE_NORMAL
+	ld [wBattleType], a
 
 	inc hl
 	inc hl
