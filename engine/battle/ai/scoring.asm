@@ -380,6 +380,7 @@ AI_Smart:
 	dbw EFFECT_THUNDER,           AI_Smart_Thunder
 	dbw EFFECT_FLY,               AI_Smart_Fly
 	dbw EFFECT_ROOST,             AI_Smart_Roost
+	dbw EFFECT_TRICK_ROOM,        AI_Smart_TrickRoom
 	db $ff
 
 AI_Smart_Sleep:
@@ -920,6 +921,16 @@ AI_Smart_Fly:
 
 	call AICompareSpeed
 	ret nc
+
+	dec [hl]
+	dec [hl]
+	dec [hl]
+	ret
+
+AI_Smart_TrickRoom:
+; Greatly encourage this move if it would make us outspeed
+	call AICompareSpeed
+	ret c
 
 	dec [hl]
 	dec [hl]
