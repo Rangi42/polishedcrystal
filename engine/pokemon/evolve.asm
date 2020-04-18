@@ -99,7 +99,7 @@ EvolveAfterBattle_MasterLoop
 	ld a, ATK_EQ_DEF
 	jr z, .got_tyrogue_evo
 	; a = carry ? ATK_GT_DEF : ATK_LT_DEF
-	_assert ATK_GT_DEF + 1 == ATK_LT_DEF
+	assert ATK_GT_DEF + 1 == ATK_LT_DEF
 	sbc a
 	add ATK_LT_DEF
 .got_tyrogue_evo

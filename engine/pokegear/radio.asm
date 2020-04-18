@@ -51,7 +51,7 @@ RadioJumptable:
 	dw BenFernMusic4 ; $19
 	dw BenFernMusic5 ; $1a
 	dw BenFernMusic6 ; $1b
-	dw BenFernMusic7 ; $1c
+	dw DoNothing     ; $1c
 	dw FernMonMusic2 ; $1d
 ; Lucky Number Show
 	dw LuckyNumberShow2 ; $1e
@@ -878,9 +878,6 @@ BenFernMusic6:
 	ld a, POKEMON_MUSIC_7
 	jp NextRadioLine
 
-BenFernMusic7:
-	ret
-
 StartPokemonMusicChannel:
 	ld hl, EmptyString
 	call PrintText
@@ -1345,7 +1342,7 @@ PickPeopleOrPlaces:
 	call Random
 	cp 1 + 48 percent
 	; a = carry ? PLACES_AND_PEOPLE_4 (People) : PLACES_AND_PEOPLE_6 (Places)
-	_assert PLACES_AND_PEOPLE_4 + 2 == PLACES_AND_PEOPLE_6
+	assert PLACES_AND_PEOPLE_4 + 2 == PLACES_AND_PEOPLE_6
 	sbc a
 	sbc -PLACES_AND_PEOPLE_6
 	ret

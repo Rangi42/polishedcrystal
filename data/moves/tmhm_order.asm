@@ -87,5 +87,5 @@ endc
 	db TM_X_SCISSOR
 	db NUM_TMS + NUM_HMS
 TMHMListAlphaEnd:
-	_assert (TMHMListAlphaEnd - TMHMListAlpha) <= NUM_TMS + NUM_HMS + 1, "Too many A-Z TMs"
-	_assert (TMHMListAlphaEnd - TMHMListAlpha) >= NUM_TMS + NUM_HMS + 1, "Too few A-Z TMs"
+	assert (TMHMListAlphaEnd - TMHMListAlpha) <= NUM_TMS + NUM_HMS + 1, "Too many A-Z TMs"
+	assert (TMHMListAlphaEnd - TMHMListAlpha) >= NUM_TMS + NUM_HMS + 1, "Too few A-Z TMs"

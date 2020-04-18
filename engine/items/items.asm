@@ -14,9 +14,9 @@ _ReceiveItem::
 	dw .Item
 	dw .Medicine
 	dw .Ball
-	dw TMHM_Dummy
+	dw DoNothing
 	dw .Berry
-	dw KeyItem_Dummy
+	dw DoNothing
 
 .Item:
 	ld hl, wNumItems
@@ -50,9 +50,9 @@ _TossItem::
 	dw .Item
 	dw .Medicine
 	dw .Ball
-	dw TMHM_Dummy
+	dw DoNothing
 	dw .Berry
-	dw KeyItem_Dummy
+	dw DoNothing
 
 .Medicine:
 	ld hl, wNumMedicine
@@ -88,9 +88,9 @@ _CheckItem::
 	dw .Item
 	dw .Medicine
 	dw .Ball
-	dw TMHM_Dummy
+	dw DoNothing
 	dw .Berry
-	dw KeyItem_Dummy
+	dw DoNothing
 
 .Medicine:
 	ld hl, wNumMedicine
@@ -156,8 +156,6 @@ GetPocketCapacity:
 
 .not_berries:
 	ld c, MAX_PC_ITEMS
-TMHM_Dummy:
-KeyItem_Dummy:
 	ret
 
 PutItemInPocket:
@@ -454,9 +452,9 @@ _CountItem::
 	dw .Item
 	dw .Medicine
 	dw .Ball
-	dw TMHM_Dummy
+	dw DoNothing
 	dw .Berry
-	dw KeyItem_Dummy
+	dw DoNothing
 
 .Item:
 	ld hl, wNumItems

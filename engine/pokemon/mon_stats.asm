@@ -615,7 +615,6 @@ GetStatusConditionIndex:
 	inc a ; 2
 .psn
 	inc a ; 1
-.done
 	ret
 
 PlaceStatusString:

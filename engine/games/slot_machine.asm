@@ -686,7 +686,7 @@ Function92bd4:
 	jp JumpTable
 
 .dw
-	dw ReelAction_DoNothing                   ; 00
+	dw DoNothing                              ; 00
 	dw Slots_StopReelIgnoreJoypad             ; 01
 	dw ReelAction_QuadrupleRate               ; 02
 	dw ReelAction_DoubleRate                  ; 03
@@ -711,9 +711,6 @@ Function92bd4:
 	dw ReelAction_WaitChansey                 ; 16
 	dw ReelAction_WaitEgg                     ; 17
 	dw ReelAction_DropReel                    ; 18
-
-ReelAction_DoNothing:
-	ret
 
 ReelAction_QuadrupleRate:
 	ld hl, wReel1SpinRate - wReel1

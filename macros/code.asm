@@ -1,14 +1,3 @@
-_assert: MACRO
-	if !(\1)
-		if _NARG > 1
-			fail \2
-		else
-			fail "Assertion failed: \1"
-		endc
-	endc
-ENDM
-
-
 ; Syntactic sugar MACROs
 
 lb: MACRO ; r, hi, lo

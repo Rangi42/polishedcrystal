@@ -2919,9 +2919,6 @@ endr
 	db EFFECT_EXPLOSION
 	db $ff
 
-AI_None:
-	ret
-
 AIDiscourageMove:
 	ld a, [hl]
 	add 10

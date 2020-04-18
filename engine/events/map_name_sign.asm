@@ -112,7 +112,7 @@ ReturnFromMapSetupScript::
 
 .CheckNationalParkGate:
 	ld a, [wMapGroup]
-	_assert GROUP_ROUTE_35_NATIONAL_PARK_GATE == GROUP_ROUTE_36_NATIONAL_PARK_GATE
+	assert GROUP_ROUTE_35_NATIONAL_PARK_GATE == GROUP_ROUTE_36_NATIONAL_PARK_GATE
 	cp GROUP_ROUTE_35_NATIONAL_PARK_GATE
 	ret nz
 	ld a, [wMapNumber]

@@ -291,7 +291,7 @@ ItemNameOrder:
 	db NAM_MIRAGE_MAIL
 
 	; +1 due to NO_ITEM
-	_assert (@ - ItemNameOrder) <= NUM_ITEMS+1, "ItemNameOrder: Too many items"
-	_assert (@ - ItemNameOrder) >= NUM_ITEMS+1, "ItemNameOrder: Too few items"
+	assert (@ - ItemNameOrder) <= NUM_ITEMS+1, "ItemNameOrder: Too many items"
+	assert (@ - ItemNameOrder) >= NUM_ITEMS+1, "ItemNameOrder: Too few items"
 
 	db -1 ; end
