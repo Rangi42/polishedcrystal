@@ -1,4 +1,3 @@
-; GloomPokedexEntry:
 	db "Weed@" ; species name
 	dw 207, 190 ; height, width
 

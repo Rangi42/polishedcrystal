@@ -1,4 +1,3 @@
-; MagmortarPokedexEntry:
 	db "Blast@" ; species name
 	dw 503, 1499 ; height, width
 

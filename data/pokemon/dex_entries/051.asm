@@ -1,4 +1,3 @@
-; DugtrioPokedexEntry:
 	db "Mole@" ; species name
 if DEF(FAITHFUL)
 	dw 204, 730 ; height, width

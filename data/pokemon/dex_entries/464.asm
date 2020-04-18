@@ -1,4 +1,3 @@
-; RhyperiorPokedexEntry:
 	db "Drill@" ; species name
 	dw 710, 6235 ; height, width
 

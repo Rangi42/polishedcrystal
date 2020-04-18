@@ -1,4 +1,3 @@
-; YanmegaPokedexEntry:
 	db "Ogre Darner@" ; species name
 	dw 603, 1135 ; height, width
 

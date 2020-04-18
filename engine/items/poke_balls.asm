@@ -230,20 +230,9 @@ ParkBallMultiplier:
 	ln a, 3, 2 ; x1.5
 	jp MultiplyAndDivide
 
-HeavyBallMultiplier:
-; subtract 20 from base catch rate if weight < 102.4 kg
-; else add 0 to base catch rate if weight < 204.8 kg
-; else add 20 to base catch rate if weight < 307.2 kg
-; else add 30 to base catch rate if weight < 409.6 kg
-; else add 40 to base catch rate (never happens)
-	ld a, [wEnemyMonCatchRate]
-	ld b, a
-	call .do_it
-	ld a, b
-	ld [wEnemyMonCatchRate], a
-
-.do_it
-	ld a, [wEnemyMonSpecies]
+GetSpeciesWeight::
+; input: a = species
+; output: hl = weight
 	ld hl, PokedexDataPointerTable
 	dec a
 	ld e, a
@@ -259,53 +248,53 @@ HeavyBallMultiplier:
 	call GetFarHalfword
 	pop de
 
-.SkipText:
+.skip_species
 	ld a, d
 	call GetFarByte
 	inc hl
 	cp "@"
-	jr nz, .SkipText
+	jr nz, .skip_species
 
+	; skip height
 	ld a, d
-	push bc
 	inc hl
 	inc hl
-	call GetFarHalfword
 
+	; get weight
+	jp GetFarHalfword
+
+HeavyBallMultiplier:
+; subtract 20 from base catch rate if weight < 102.4 kg
+; else add 0 to base catch rate if weight < 204.8 kg
+; else add 20 to base catch rate if weight < 307.2 kg
+; else add 30 to base catch rate if weight < 409.6 kg
+; else add 40 to base catch rate (never happens)
+	ld a, [wEnemyMonCatchRate]
+	ld b, a
+	call .do_it
+	ld a, b
+	ld [wEnemyMonCatchRate], a
+
+.do_it
+	ld a, [wEnemyMonSpecies]
+	call GetSpeciesWeight
+
+	push bc
 	srl h
 	rr l
 	ld b, h
 	ld c, l
-
-	rept 4
+rept 4
 	srl b
 	rr c
-	endr
+endr
 	call .subbc
-
 	srl b
 	rr c
 	call .subbc
-
 	ld a, h
 	pop bc
-	jr .compare
 
-.subbc
-	; subtract bc from hl
-	push bc
-	ld a, b
-	cpl
-	ld b, a
-	ld a, c
-	cpl
-	ld c, a
-	inc bc
-	add hl, bc
-	pop bc
-	ret
-
-.compare
 	ld c, a
 	cp HIGH(1024) ; 102.4 kg
 	jr c, .lightmon
@@ -334,6 +323,20 @@ HeavyBallMultiplier:
 	ld b, a
 	ret nc
 	ld b, 1
+	ret
+
+.subbc
+	; subtract bc from hl
+	push bc
+	ld a, b
+	cpl
+	ld b, a
+	ld a, c
+	cpl
+	ld c, a
+	inc bc
+	add hl, bc
+	pop bc
 	ret
 
 .WeightsTable:

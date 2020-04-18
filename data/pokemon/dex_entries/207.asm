@@ -1,4 +1,3 @@
-; GligarPokedexEntry:
 	db "FlyScorpion@" ; species name
 	dw 307, 1430 ; height, width
 

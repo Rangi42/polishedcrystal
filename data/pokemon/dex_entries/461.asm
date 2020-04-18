@@ -1,4 +1,3 @@
-; WeavilePokedexEntry:
 	db "Sharp Claw@" ; species name
 	dw 307, 750 ; height, width
 

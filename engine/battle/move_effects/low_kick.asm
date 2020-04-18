@@ -8,34 +8,7 @@ BattleCommand_lowkick:
 	ld hl, wEnemyMonSpecies
 .got_opp_species
 	ld a, [hl]
-	ld hl, PokedexDataPointerTable
-	dec a
-	ld e, a
-	ld d, 0
-	add hl, de
-	add hl, de
-	add hl, de
-	ld a, BANK(PokedexDataPointerTable)
-	call GetFarByte
-	push af
-	inc hl
-	ld a, BANK(PokedexDataPointerTable)
-	call GetFarHalfword
-	pop de
-
-	; skip the pokémon "type" (seed for bulbasaur, genetic for mewtwo, etc)
-.loop
-	ld a, d
-	call GetFarByte
-	inc hl
-	cp "@"
-	jr nz, .loop
-
-	; skip height by inc hl twice
-	ld a, d
-	inc hl
-	inc hl
-	call GetFarHalfword ; now we have weight in hl
+	farcall GetSpeciesWeight
 	ld d, h
 	ld e, l
 

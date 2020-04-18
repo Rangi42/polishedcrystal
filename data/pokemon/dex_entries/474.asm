@@ -1,4 +1,3 @@
-; PorygonZPokedexEntry:
 	db "Virtual@" ; species name
 	dw 211, 750 ; height, width
 

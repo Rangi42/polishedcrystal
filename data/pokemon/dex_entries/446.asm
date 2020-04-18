@@ -1,4 +1,3 @@
-; MunchlaxPokedexEntry:
 	db "Big Eater@" ; species name
 	dw 200, 2315 ; height, width
 
