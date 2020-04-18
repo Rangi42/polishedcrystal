@@ -1,4 +1,3 @@
-; MismagiusPokedexEntry:
 	db "Magical@" ; species name
 	dw 211, 97 ; height, width
 

@@ -1,4 +1,3 @@
-; YanmaPokedexEntry:
 	db "Clear Wing@" ; species name
 	dw 311, 840 ; height, width
 

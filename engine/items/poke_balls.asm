@@ -230,33 +230,38 @@ ParkBallMultiplier:
 	ln a, 3, 2 ; x1.5
 	jp MultiplyAndDivide
 
-GetPokedexEntryBank:
-	push hl
-	push de
-	ld a, [wEnemyMonSpecies]
-	rlca
-	rlca
-	and 3
-	ld hl, .PokedexEntryBanks
-	ld d, 0
+GetSpeciesWeight::
+; input: a = species
+; output: hl = weight
+	ld hl, PokedexDataPointerTable
+	dec a
 	ld e, a
+	ld d, 0
 	add hl, de
-	ld a, [hl]
+	add hl, de
+	add hl, de
+	ld a, BANK(PokedexDataPointerTable)
+	call GetFarByte
+	push af
+	inc hl
+	ld a, BANK(PokedexDataPointerTable)
+	call GetFarHalfword
 	pop de
-	pop hl
-	ret
 
-.PokedexEntryBanks:
+.skip_species
+	ld a, d
+	call GetFarByte
+	inc hl
+	cp "@"
+	jr nz, .skip_species
 
-GLOBAL PokedexEntries1
-GLOBAL PokedexEntries2
-GLOBAL PokedexEntries3
-GLOBAL PokedexEntries4
+	; skip height
+	ld a, d
+	inc hl
+	inc hl
 
-	db BANK(PokedexEntries1)
-	db BANK(PokedexEntries2)
-	db BANK(PokedexEntries3)
-	db BANK(PokedexEntries4)
+	; get weight
+	jp GetFarHalfword
 
 HeavyBallMultiplier:
 ; subtract 20 from base catch rate if weight < 102.4 kg
@@ -272,62 +277,24 @@ HeavyBallMultiplier:
 
 .do_it
 	ld a, [wEnemyMonSpecies]
-	ld hl, PokedexDataPointerTable
-	dec a
-	ld e, a
-	ld d, 0
-	add hl, de
-	add hl, de
-	ld a, BANK(PokedexDataPointerTable)
-	call GetFarHalfword
+	call GetSpeciesWeight
 
-.SkipText:
-	call GetPokedexEntryBank
-	call GetFarByte
-	inc hl
-	cp "@"
-	jr nz, .SkipText
-
-	call GetPokedexEntryBank
 	push bc
-	inc hl
-	inc hl
-	call GetFarHalfword
-
 	srl h
 	rr l
 	ld b, h
 	ld c, l
-
-	rept 4
+rept 4
 	srl b
 	rr c
-	endr
+endr
 	call .subbc
-
 	srl b
 	rr c
 	call .subbc
-
 	ld a, h
 	pop bc
-	jr .compare
 
-.subbc
-	; subtract bc from hl
-	push bc
-	ld a, b
-	cpl
-	ld b, a
-	ld a, c
-	cpl
-	ld c, a
-	inc bc
-	add hl, bc
-	pop bc
-	ret
-
-.compare
 	ld c, a
 	cp HIGH(1024) ; 102.4 kg
 	jr c, .lightmon
@@ -356,6 +323,20 @@ HeavyBallMultiplier:
 	ld b, a
 	ret nc
 	ld b, 1
+	ret
+
+.subbc
+	; subtract bc from hl
+	push bc
+	ld a, b
+	cpl
+	ld b, a
+	ld a, c
+	cpl
+	ld c, a
+	inc bc
+	add hl, bc
+	pop bc
 	ret
 
 .WeightsTable:

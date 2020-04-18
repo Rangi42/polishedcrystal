@@ -1,4 +1,3 @@
-; MachampPokedexEntry:
 	db "Superpower@" ; species name
 	dw 503, 2870 ; height, width
 

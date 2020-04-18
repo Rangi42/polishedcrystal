@@ -1,4 +1,3 @@
-; SlowbroPokedexEntry:
 if DEF(FAITHFUL)
 	db "Hermit Crab@" ; species name
 else

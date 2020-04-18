@@ -1,4 +1,3 @@
-; MisdreavusPokedexEntry:
 	db "Screech@" ; species name
 	dw 204, 20 ; height, width
 

@@ -1,4 +1,3 @@
-; SandslashPokedexEntry:
 	db "Mouse@" ; species name
 	dw 303, 650 ; height, width
 

@@ -1,4 +1,3 @@
-; TangrowthPokedexEntry:
 	db "Vine@" ; species name
 	dw 607, 2835 ; height, width
 

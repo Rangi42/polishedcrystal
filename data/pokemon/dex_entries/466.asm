@@ -1,4 +1,3 @@
-; ElectivirePokedexEntry:
 	db "Thunderbolt@" ; species name
 	dw 511, 3056 ; height, width
 

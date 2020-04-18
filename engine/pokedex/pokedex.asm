@@ -2323,7 +2323,7 @@ Pokedex_LoadSelectedMonTiles:
 	jr z, .use_first_unown
 	cp MAGIKARP
 	jr z, .use_first_magikarp
-	ld a, 1
+	ld a, PLAIN_FORM
 	jr .continue
 .use_first_unown
 	ld a, [wFirstUnownSeen]
@@ -2332,6 +2332,7 @@ Pokedex_LoadSelectedMonTiles:
 	ld a, [wFirstMagikarpSeen]
 .continue
 	ld [wCurForm], a
+	ld [wDexMonForm], a
 	ld a, [wd265]
 	ld [wCurPartySpecies], a
 	call GetBaseData
@@ -2477,13 +2478,8 @@ NewPokedexEntry:
 	call Pokedex_LoadAnyFootprint
 	ld a, [wd265]
 	ld [wCurPartySpecies], a
-	cp UNOWN
-	jr z, .dont_reset_form
-	cp MAGIKARP
-	jr z, .dont_reset_form
-	xor a
-	ld [wCurForm], a
-.dont_reset_form
+	ld a, [wCurForm]
+	ld [wDexMonForm], a
 	call Pokedex_DrawDexEntryScreenBG
 	call Pokedex_DrawFootprint
 	hlcoord 0, 17

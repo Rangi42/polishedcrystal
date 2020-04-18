@@ -1,4 +1,3 @@
-; StaryuPokedexEntry:
 	db "Star Shape@" ; species name
 	dw 207, 760 ; height, width
 

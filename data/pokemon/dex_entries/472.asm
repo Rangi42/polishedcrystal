@@ -1,4 +1,3 @@
-; GliscorPokedexEntry:
 	db "FangScorpio@" ; species name
 	dw 607, 937 ; height, width
 

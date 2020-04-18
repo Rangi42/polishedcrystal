@@ -1,4 +1,3 @@
-; LeafeonPokedexEntry:
 	db "Verdant@" ; species name
 	dw 303, 562 ; height, width
 

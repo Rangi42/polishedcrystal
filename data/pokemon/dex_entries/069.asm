@@ -1,4 +1,3 @@
-; BellsproutPokedexEntry:
 	db "Flower@" ; species name
 	dw 204, 90 ; height, width
 

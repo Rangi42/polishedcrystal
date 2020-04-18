@@ -1,4 +1,3 @@
-; MachopPokedexEntry:
 	db "Superpower@" ; species name
 	dw 207, 430 ; height, width
 

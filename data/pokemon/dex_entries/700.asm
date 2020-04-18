@@ -1,4 +1,3 @@
-; SylveonPokedexEntry:
 	db "Intertwined@" ; species name
 	dw 303, 518 ; height, width
 
