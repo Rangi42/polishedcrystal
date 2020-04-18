@@ -2144,18 +2144,30 @@ BattleAnim_Rest:
 	anim_ret
 
 BattleAnim_Facade:
-	anim_2gfx ANIM_GFX_HIT, ANIM_GFX_SAND
+	anim_2gfx ANIM_GFX_HIT, ANIM_GFX_WATER
 	anim_call BattleAnim_FollowEnemyFeet_0
 	anim_bgeffect ANIM_BG_2C, $0, $1, $0
 	anim_bgeffect ANIM_BG_1A, $0, $1, $20
 	anim_wait 8
 .loop
 	anim_sound 0, 0, SFX_RETURN
-	anim_obj ANIM_OBJ_SWEAT, 56, 80, $0
-	anim_wait 28
-	anim_loop 3, .loop
+	anim_obj ANIM_OBJ_24, 56, 80, $0
+	anim_wait 14
+	anim_incobj 2
+	anim_clearobjs
+	anim_call BattleAnim_FollowEnemyFeet_0
+	anim_obj ANIM_OBJ_24, 56, 80, $0
+	anim_wait 14
+	anim_incobj 2
+	anim_clearobjs
+	anim_call BattleAnim_FollowEnemyFeet_0
+	anim_obj ANIM_OBJ_24, 56, 80, $0
+	anim_wait 14
+	anim_incobj 2
+	anim_clearobjs
+	anim_call BattleAnim_FollowEnemyFeet_0
 	anim_sound 0, 1, SFX_COMET_PUNCH
-	anim_obj ANIM_OBJ_00, 136, 48, $0
+	anim_obj ANIM_OBJ_0A, 136, 48, $0
 	anim_wait 24
 	anim_incbgeffect ANIM_BG_2C
 	anim_call BattleAnim_ShowMon_0
@@ -4257,24 +4269,21 @@ BattleAnim_ShellSmash:
 	anim_sound 0, 0, SFX_SHINE
 	anim_obj ANIM_OBJ_70, 48, 88, $0
 	anim_wait 16
-	anim_bgeffect ANIM_BG_1F, $80, $2, $0
 	anim_bgeffect ANIM_BG_1A, $0, $1, $20
 	anim_sound 0, 0, SFX_OUTRAGE
 	anim_wait 72
 	anim_incobj 2
 	anim_wait 1
+	anim_incbgeffect ANIM_BG_1A
 	anim_incbgeffect ANIM_BG_21
 	anim_sound 0, 1, SFX_KARATE_CHOP
-	anim_obj ANIM_OBJ_00, 48, 88, $0
-	anim_obj ANIM_OBJ_SHELL_SMASH, 48, 88, $5c
-	anim_obj ANIM_OBJ_SHELL_SMASH, 48, 88, $e8
-	anim_obj ANIM_OBJ_SHELL_SMASH, 48, 88, $d0
-	anim_obj ANIM_OBJ_SHELL_SMASH, 48, 88, $50
+	anim_obj ANIM_OBJ_00, 5, 4,  0, 6, $0
+	anim_obj ANIM_OBJ_SHELL_SMASH, 5, 4,  0, 6, $5c
+	anim_obj ANIM_OBJ_SHELL_SMASH, 5, 4,  0, 6, $e8
+	anim_obj ANIM_OBJ_SHELL_SMASH, 5, 4,  0, 6, $d0
+	anim_obj ANIM_OBJ_SHELL_SMASH, 5, 4,  0, 6, $50
 	anim_wait 12
-	anim_incbgeffect ANIM_BG_1A
 	anim_bgeffect ANIM_BG_19, $0, $1, $40
-	anim_wait 12
-	anim_incbgeffect ANIM_BG_16
 	anim_call BattleAnim_ShowMon_0
 	anim_ret
 
