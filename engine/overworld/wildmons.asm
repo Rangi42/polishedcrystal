@@ -492,19 +492,22 @@ ApplyAbilityEffectsOnEncounterMon:
 	jp BattleJumptable
 
 .AbilityEffects:
-	dbw ARENA_TRAP,   .ArenaTrap
-	dbw HUSTLE,       .Hustle
-	dbw ILLUMINATE,   .Illuminate
-	dbw INTIMIDATE,   .Intimidate
-	dbw KEEN_EYE,     .KeenEye
-	dbw MAGNET_PULL,  .MagnetPull
-	dbw NO_GUARD,     .NoGuard
-	dbw PRESSURE,     .Pressure
-	dbw QUICK_FEET,   .QuickFeet
-	dbw STATIC,       .Static
-	dbw STENCH,       .Stench
-	dbw SWARM,        .Swarm
-	dbw VITAL_SPIRIT, .VitalSpirit
+	dbw ARENA_TRAP,    .ArenaTrap
+	dbw HARVEST,       .Harvest
+	dbw HUSTLE,        .Hustle
+	dbw ILLUMINATE,    .Illuminate
+	dbw INFILTRATOR,   .Infiltrator
+	dbw INTIMIDATE,    .Intimidate
+	dbw KEEN_EYE,      .KeenEye
+	dbw LIGHTNING_ROD, .LightningRod
+	dbw MAGNET_PULL,   .MagnetPull
+	dbw NO_GUARD,      .NoGuard
+	dbw PRESSURE,      .Pressure
+	dbw QUICK_FEET,    .QuickFeet
+	dbw STATIC,        .Static
+	dbw STENCH,        .Stench
+	dbw SWARM,         .Swarm
+	dbw VITAL_SPIRIT,  .VitalSpirit
 	dbw -1, -1
 
 .ArenaTrap:
@@ -525,6 +528,7 @@ ApplyAbilityEffectsOnEncounterMon:
 	ld b, $ff
 	ret
 
+.Infiltrator:
 .QuickFeet:
 .Stench:
 .halve_encounter_rate
@@ -559,10 +563,15 @@ ApplyAbilityEffectsOnEncounterMon:
 	ret nc
 	jr .halve_encounter_rate
 
+.Harvest:
+	push bc
+	ld c, GRASS
+	jr .force_wildtype
 .MagnetPull:
 	push bc
 	ld c, STEEL
 	jr .force_wildtype
+.LightningRod:
 .Static:
 	push bc
 	ld c, ELECTRIC

@@ -5505,6 +5505,8 @@ LoadEnemyMon:
 	; Failing that, it's all up to chance
 
 	call GetLeadAbility
+	cp SUPER_LUCK
+	jr z, .compound_eyes
 if DEF(FAITHFUL)
 	cp COMPOUND_EYES
 	jr nz, .no_compound_eyes_or_amulet_coin
