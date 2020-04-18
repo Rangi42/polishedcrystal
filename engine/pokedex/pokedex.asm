@@ -2477,8 +2477,13 @@ NewPokedexEntry:
 	call Pokedex_LoadAnyFootprint
 	ld a, [wd265]
 	ld [wCurPartySpecies], a
+	cp UNOWN
+	jr z, .dont_reset_form
+	cp MAGIKARP
+	jr z, .dont_reset_form
 	xor a
 	ld [wCurForm], a
+.dont_reset_form
 	call Pokedex_DrawDexEntryScreenBG
 	call Pokedex_DrawFootprint
 	hlcoord 0, 17
