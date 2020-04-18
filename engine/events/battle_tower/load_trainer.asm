@@ -297,6 +297,7 @@ BT_SetLevel:
 	ld a, [wPartyCount]
 	ld hl, wPartyMon1
 	call .set_level
+	set 7, d ; flag that we're dealing with opponent
 	ld a, [wOTPartyCount]
 	ld hl, wOTPartyMon1
 .set_level
@@ -325,6 +326,7 @@ BT_SetLevel:
 	pop de
 	push de
 	ld a, d
+	and $7f
 	ld [hl], a
 	ld [wCurPartyLevel], a ; for stat calculation
 
@@ -342,15 +344,31 @@ BT_SetLevel:
 	ldh a, [hProduct + 3]
 	ld [hl], a
 	pop hl
+	pop de
+	push de
+	bit 7, d
+	ld a, 0
+	jr nz, .hyper_training_done
+	ld a, b
+	push hl
+	ld a, e
+	ld [wCurPartyMon], a
+	farcall GetHyperTraining
+	pop hl
 
+.hyper_training_done
 	; Calculate stats
+	push af
 	ld bc, wPartyMon1MaxHP - wPartyMon1Exp
 	add hl, bc
 	push hl
 	ld bc, wPartyMon1EVs - wPartyMon1MaxHP
 	add hl, bc
 	pop de
-	ld b, TRUE
+	pop af
+
+	inc a
+	ld b, a
 	push de
 	predef CalcPkmnStats
 	pop hl

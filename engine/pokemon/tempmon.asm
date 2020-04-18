@@ -50,17 +50,24 @@ _CopyPkmnToTempMon:
 	rst CopyBytes
 	ret
 
-CalcwBufferMonStats:
+CalcBufferMonStats:
 	ld bc, wBufferMon
+	ld hl, wBufferMonOT
 	jr _TempMonStatsCalculation
 
 CalcTempmonStats:
 	ld bc, wTempMon
 _TempMonStatsCalculation:
+	push hl
 	ld hl, MON_LEVEL
 	add hl, bc
 	ld a, [hl]
 	ld [wCurPartyLevel], a
+	pop hl
+	ld de, PLAYER_NAME_LENGTH
+	add hl, de
+	ld a, [hl]
+	and HYPER_TRAINING_MASK
 	ld hl, MON_MAXHP
 	add hl, bc
 	ld d, h
@@ -68,7 +75,8 @@ _TempMonStatsCalculation:
 	ld hl, MON_EVS - 1
 	add hl, bc
 	push bc
-	ld b, TRUE
+	inc a
+	ld b, a
 	predef CalcPkmnStats
 	pop bc
 	ld hl, MON_HP

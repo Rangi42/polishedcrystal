@@ -307,7 +307,9 @@ endr
 
 	ld hl, wTempMonEVs - 1
 	ld de, wTempMonMaxHP
-	ld b, TRUE
+	call GetHyperTraining
+	inc a ; factor in EVs
+	ld b, a
 	predef CalcPkmnStats
 
 	ld a, [wCurPartyMon]

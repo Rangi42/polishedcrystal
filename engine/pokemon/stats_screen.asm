@@ -189,6 +189,8 @@ StatsScreen_CopyToTempMon:
 	ld a, [wMonType]
 	cp BOXMON
 	jr c, .done
+	ld hl, StatsScreen_OTNamePointers
+	call GetNicknamePointer
 	farcall CalcTempmonStats
 .done
 	and a
@@ -649,7 +651,7 @@ StatsScreen_LoadGFX:
 	lb bc, PRINTNUM_LEADINGZEROS | 2, 5
 	ld de, wTempMonID
 	call PrintNum
-	ld hl, .OTNamePointers
+	ld hl, StatsScreen_OTNamePointers
 	call GetNicknamePointer
 	call CopyNickname
 	hlcoord 1, 15
@@ -665,12 +667,6 @@ StatsScreen_LoadGFX:
 	hlcoord 8, 15
 	ld [hl], a
 	ret
-
-.OTNamePointers:
-	dw wPartyMonOT
-	dw wOTPartyMonOT
-	dw sBoxMonOT
-	dw wBufferMonOT
 
 .Status_Type:
 	db   "Status/"
@@ -751,7 +747,32 @@ StatsScreen_LoadGFX:
 	jr nz, .BluePageVerticalDivider
 	hlcoord 11, 8
 	ld bc, 6
-	farjp PrintTempMonStats
+	farcall PrintTempMonStats
+
+	; Print Hyper Training statistics
+	ld hl, StatsScreen_OTNamePointers
+	call GetNicknamePointer
+	ld bc, PLAYER_NAME_LENGTH
+	add hl, bc
+	ld a, [hl]
+	hlcoord 0, 10
+	ld de, -4
+	call .CheckHyper
+	ld de, SCREEN_WIDTH * 2
+	ld b, 5
+.hyper_loop
+	call .CheckHyper
+	dec b
+	jr nz, .hyper_loop
+	ret
+
+.CheckHyper:
+	rlca
+	jr nc, .no_hyper_star
+	ld [hl], "★"
+.no_hyper_star
+	add hl, de
+	ret
 
 .PlaceNatureInfo:
 	ld de, .NatureString
@@ -810,6 +831,12 @@ OrangePage_:
 
 .ability
 	db "Ability/@"
+
+StatsScreen_OTNamePointers:
+	dw wPartyMonOT
+	dw wOTPartyMonOT
+	dw sBoxMonOT
+	dw wBufferMonOT
 
 TN_PrintToD:
 	ld de, .caughtat

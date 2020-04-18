@@ -1720,7 +1720,7 @@ BillsPC_CopyMon:
 	ld bc, PARTYMON_STRUCT_LENGTH
 	rst CopyBytes
 	call CloseSRAM
-	farjp CalcwBufferMonStats
+	farjp CalcBufferMonStats
 
 .party
 	ld hl, wPartySpecies
@@ -1762,7 +1762,7 @@ BillsPC_CopyMon:
 	ld bc, BOXMON_STRUCT_LENGTH
 	call CopyMonToTemp
 	call CloseSRAM
-	farjp CalcwBufferMonStats
+	farjp CalcBufferMonStats
 
 DepositPokemon:
 	ld a, [wBillsPC_CursorPosition]
@@ -2041,7 +2041,7 @@ MovePKMNWitoutMail_InsertMon:
 	ld bc, BOXMON_STRUCT_LENGTH
 	call CopyMonToTemp
 	call CloseSRAM
-	farcall CalcwBufferMonStats
+	farcall CalcBufferMonStats
 	ld a, PC_DEPOSIT
 	ld [wPokemonWithdrawDepositParameter], a
 	predef_jump RemoveMonFromPartyOrBox

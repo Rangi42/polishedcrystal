@@ -823,7 +823,28 @@ SentGetPkmnIntoFromBox:
 	add hl, bc
 
 	push bc
-	ld b, TRUE
+	push hl
+	ld hl, sBoxMonOT
+	ld a, [wPokemonWithdrawDepositParameter]
+	and a
+	jr z, .prepare_hyper_addr
+	ld hl, wBreedMon1OT
+	cp DAYCARE_WITHDRAW
+	jr z, .got_hyper_addr
+	ld hl, wPartyMonOT
+
+.prepare_hyper_addr
+	ld a, [wCurPartyMon]
+	call SkipNames
+
+.got_hyper_addr
+	ld bc, PLAYER_NAME_LENGTH
+	add hl, bc
+	ld a, [hl]
+	and HYPER_TRAINING_MASK
+	pop hl
+	inc a
+	ld b, a
 	call CalcPkmnStats
 	pop bc
 
@@ -952,7 +973,7 @@ RetrievePokemonFromDaycareMan:
 	ld [wCurPartyLevel], a
 	xor a
 	ld [wPokemonWithdrawDepositParameter], a
-	jr Functiondd64
+	jr RetrieveBreedmon
 
 RetrievePokemonFromDaycareLady:
 	ld a, [wBreedMon2Species]
@@ -969,7 +990,7 @@ RetrievePokemonFromDaycareLady:
 	ld [wPokemonWithdrawDepositParameter], a
 	; fallthrough
 
-Functiondd64:
+RetrieveBreedmon:
 	ld hl, wPartyCount
 	ld a, [hl]
 	cp PARTY_LENGTH
@@ -1034,7 +1055,12 @@ Functiondd64:
 	ld hl, $a ; 10 bytes = 5 stats * 2?
 	add hl, bc
 	push bc
-	ld b, TRUE
+	ld a, [wPartyCount]
+	dec a
+	ld [wCurPartyMon], a
+	call GetHyperTraining
+	inc a
+	ld b, a
 	call CalcPkmnStats
 	ld hl, wPartyMon1Moves
 	ld a, [wPartyCount]
@@ -1559,7 +1585,9 @@ UpdatePkmnStats:
 	ld e, l
 	ld a, MON_EVS - 1
 	call GetPartyParamLocation
-	ld b, TRUE
+	call GetHyperTraining
+	inc a
+	ld b, a
 	call CalcPkmnStats
 	ld a, MON_HP
 	call GetPartyParamLocation
@@ -1599,6 +1627,24 @@ UpdatePkmnStats:
 	ld [hli], a
 	inc a
 	ld [hl], a
+	ret
+
+GetHyperTraining:
+	push hl
+	call GetHyperTrainingAddr
+	ld a, [hl]
+	and HYPER_TRAINING_MASK
+	pop hl
+	ret
+
+GetHyperTrainingAddr:
+	ld a, [wCurPartyMon]
+	ld hl, wPartyMonOT
+	push bc
+	call SkipNames
+	ld bc, PLAYER_NAME_LENGTH
+	add hl, bc
+	pop bc
 	ret
 
 CalcPkmnStats:
