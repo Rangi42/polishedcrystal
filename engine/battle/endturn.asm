@@ -45,13 +45,26 @@ HandleBetweenTurnEffects:
 	call HandlePerishSong
 	call CheckFaint
 	ret c
-	; Things below are yet to be updated to be handled in correct order
-	call HandleTrickRoom
-	call HandleLeppaBerry
+	call HandleRoost
 	call HandleScreens
 	call HandleSafeguard
+	; mist
+	; tailwind
+	; lucky chant
+	; rainbow dissipating (water+fire pledge)
+	; sea of fire dissipating (grass+fire pledge)
+	; swamp dissipating (water+grass pledge)
+	call HandleTrickRoom
+	; water sport
+	; mud sport
+	; wonder room
+	; magic room
+	; gravity
+	; terrain (dissipating, grass terrain recovery is elsewhere)
+	call HandleEndturnBlockB
+	; Things below do not exist in 7gen -- it's here to avoid some quirks
+	call HandleLeppaBerry
 	call HandleHealingItems
-	farcall HandleAbilities
 
 	; these run even if the user switched at endturn
 	ld hl, wPlayerSubStatus3
@@ -59,8 +72,6 @@ HandleBetweenTurnEffects:
 	ld hl, wEnemySubStatus3
 	res SUBSTATUS_FLINCHED, [hl]
 
-	call HandleStatusOrbs
-	call HandleRoost
 	call UpdateBattleMonInParty
 	call UpdateEnemyMonInParty
 
@@ -194,6 +205,16 @@ HandleEndturnBlockA:
 	farcall EndturnAbilitiesA
 	jp HandleLeftovers
 	; healer
+
+HandleEndturnBlockB:
+	call SetFastestTurn
+	call .do_it
+	call SwitchTurn
+
+.do_it
+	; uproar
+	farcall HandleAbilities ; and pickup/harvest (no need to move below orbs)
+	jp HandleStatusOrbs
 
 HandleWeather:
 	ld a, [wBattleWeather]
