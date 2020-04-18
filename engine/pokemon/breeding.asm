@@ -645,10 +645,12 @@ InheritMove:
 	jr nz, .loop
 
 	; shift moves
+	push de
 	ld bc, 3
 	ld hl, wEggMonMoves + 1
 	ld de, wEggMonMoves
 	rst CopyBytes
+	pop de
 .got_move_byte
 	dec hl
 	ld [hl], d
