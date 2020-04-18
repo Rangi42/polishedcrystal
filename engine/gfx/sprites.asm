@@ -297,26 +297,18 @@ AddOrSubtractY:
 	ld a, [hl]
 	ld hl, wCurSpriteAddSubFlags
 	bit 6, [hl]
-	jr z, .ok
-	; 8 - a
-	add $8
-	cpl
-	inc a
-
-.ok
-	pop hl
-	ret
+	jr _AddOrSubtract
 
 AddOrSubtractX:
 	push hl
 	ld a, [hl]
 	ld hl, wCurSpriteAddSubFlags
 	bit 5, [hl]
+_AddOrSubtract:
 	jr z, .ok
-	; 8 - a
-	add $8
+	; a = -8 - a
 	cpl
-	inc a
+	add -8 + 1
 
 .ok
 	pop hl
