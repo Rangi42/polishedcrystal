@@ -300,7 +300,6 @@ ApplyAbilityTiles:
 
 DismissAbilityOverlays:
 ; Dismisses ability overlay for both sides.
-; TODO: maybe make battle animations able to handle slideouts?
 	push hl
 	push de
 	push bc
