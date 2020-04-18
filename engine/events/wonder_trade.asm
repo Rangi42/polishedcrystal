@@ -113,11 +113,11 @@ DoWonderTrade:
 	ld bc, NAME_LENGTH
 	call Trade_GetAttributeOfCurrentPartymon
 	ld de, wPlayerTrademonOTName
-	call CopyTradeName
+	call CopyTradeOT
 
 	ld hl, wPlayerName
 	ld de, wPlayerTrademonSenderName
-	call CopyTradeName
+	call CopyTradeOT
 
 	ld hl, wPartyMon1ID
 	ld bc, PARTYMON_STRUCT_LENGTH
@@ -202,16 +202,16 @@ DoWonderTrade:
 	call GetWonderTradeOTName
 	push hl
 	ld de, wOTTrademonOTName
-	call CopyTradeName
+	call CopyTradeOT
 	pop hl
 	ld de, wOTTrademonSenderName
-	call CopyTradeName
+	call CopyTradeOT
 
 	ld hl, wPartyMonOT
 	ld bc, NAME_LENGTH
 	call Trade_GetAttributeOfLastPartymon
 	ld hl, wOTTrademonOTName
-	call CopyTradeName
+	call CopyTradeOT
 
 	call GetWonderTradeOTGender
 	ld b, a
@@ -340,11 +340,11 @@ GetGSBallPichu:
 	ld bc, NAME_LENGTH
 	call Trade_GetAttributeOfCurrentPartymon
 	ld de, wPlayerTrademonOTName
-	call CopyTradeName
+	call CopyTradeOT
 
 	ld hl, wPlayerName
 	ld de, wPlayerTrademonSenderName
-	call CopyTradeName
+	call CopyTradeOT
 
 	ld hl, wPartyMon1ID
 	ld bc, PARTYMON_STRUCT_LENGTH
@@ -419,16 +419,16 @@ GetGSBallPichu:
 	ld hl, wPlayerName
 	push hl
 	ld de, wOTTrademonOTName
-	call CopyTradeName
+	call CopyTradeOT
 	pop hl
 	ld de, wOTTrademonSenderName
-	call CopyTradeName
+	call CopyTradeOT
 
 	ld hl, wPartyMonOT
 	ld bc, NAME_LENGTH
 	call Trade_GetAttributeOfLastPartymon
 	ld hl, wOTTrademonOTName
-	call CopyTradeName
+	call CopyTradeOT
 
 	ld a, $ff
 	ld [wOTTrademonDVs], a

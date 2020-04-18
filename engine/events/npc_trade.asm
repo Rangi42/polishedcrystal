@@ -101,11 +101,11 @@ DoNPCTrade:
 	ld bc, NAME_LENGTH
 	call Trade_GetAttributeOfCurrentPartymon
 	ld de, wPlayerTrademonOTName
-	call CopyTradeName
+	call CopyTradeOT
 
 	ld hl, wPlayerName
 	ld de, wPlayerTrademonSenderName
-	call CopyTradeName
+	call CopyTradeOT
 
 	ld hl, wPartyMon1ID
 	ld bc, PARTYMON_STRUCT_LENGTH
@@ -178,16 +178,16 @@ DoNPCTrade:
 	call GetTradeAttribute
 	push hl
 	ld de, wOTTrademonOTName
-	call CopyTradeName
+	call CopyTradeOT
 	pop hl
 	ld de, wOTTrademonSenderName
-	call CopyTradeName
+	call CopyTradeOT
 
 	ld hl, wPartyMonOT
 	ld bc, NAME_LENGTH
 	call Trade_GetAttributeOfLastPartymon
 	ld hl, wOTTrademonOTName
-	call CopyTradeName
+	call CopyTradeOT
 
 	ld e, TRADE_DVS
 	call GetTradeAttribute
@@ -285,6 +285,22 @@ GetTradeMonName:
 CopyTradeName:
 	ld bc, NAME_LENGTH
 	rst CopyBytes
+	ret
+
+CopyTradeOT:
+; Copy trade name, blanking the 3 unused bytes past the OT name
+	ld bc, 8
+	rst CopyBytes
+	inc hl
+	inc hl
+	inc hl
+	xor a
+	ld [de], a
+	inc de
+	ld [de], a
+	inc de
+	ld [de], a
+	inc de
 	ret
 
 Trade_CopyTwoBytes:
