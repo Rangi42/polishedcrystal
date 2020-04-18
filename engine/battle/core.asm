@@ -710,6 +710,7 @@ PerformMove:
 	call GetBattleVarAddr
 	res SUBSTATUS_PROTECT, [hl]
 	res SUBSTATUS_ENDURE, [hl]
+	call LoadTileMapToTempTileMap
 	; fallthrough
 
 ResolveFaints:
