@@ -279,7 +279,7 @@ endr
 ;	givepoke RAPIDASH,  GALARIAN_FORM, 50
 	givepoke WEEZING,   GALARIAN_FORM, 50
 	; fill pokedex
-	callasm FillPokedex
+;	callasm FillPokedex
 	; intro events
 	addcellnum PHONE_MOM
 	setmapscene KRISS_HOUSE_1F, $1
