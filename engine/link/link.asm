@@ -2024,10 +2024,10 @@ Function29dba:
 Link_CheckCommunicationError:
 	xor a
 	ldh [hSerialReceivedNewData], a
-	ld hl, wLinkTimeoutFrames + 1
-	ld a, [hld]
-	ld h, [hl]
-	ld l, a
+	ld hl, wLinkTimeoutFrames
+	ld a, [hli]
+	ld l, [hl]
+	ld h, a
 	push hl
 	call .CheckConnected
 	pop hl
@@ -2089,7 +2089,7 @@ Special_TryQuickSave:
 	farcall Link_SaveGame
 	; a = carry ? FALSE (0) : TRUE
 	sbc a
-	add 1
+	inc a
 	ldh [hScriptVar], a
 	pop af
 	ld [wd265], a

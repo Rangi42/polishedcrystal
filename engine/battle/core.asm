@@ -5784,8 +5784,8 @@ GenerateWildForm:
 	ld hl, FireLandmarks
 	jr .LandmarkForm
 .ElecForm:
-	ld hl, ElecLandmarks
-	jr .LandmarkForm
+	ld hl, ElectricLandmarks
+	; fallthrough
 .LandmarkForm:
 	ld a, [wCurLandmark]
 	ld de, 1
@@ -5805,21 +5805,20 @@ FireLandmarks:
 	db FIRE_ISLAND
 	db -1
 
-ElecLandmarks:
+ElectricLandmarks:
 	db MAGNET_TUNNEL
 	db ROCK_TUNNEL
+	db DIM_CAVE
 	db LIGHTNING_ISLAND
 	db -1
 
 CheckUnownLetter:
 ; Return carry if the Unown letter hasn't been unlocked yet
-
 	ld a, [wUnlockedUnowns]
 	ld c, a
 	ld de, 0
 
 .loop
-
 ; Don't check this set unless it's been unlocked
 	srl c
 	jr nc, .next

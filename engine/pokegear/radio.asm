@@ -1181,11 +1181,7 @@ PeoplePlaces5:
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	call Random
-	cp $a ; 6.25 percent
-	ld a, PLACES_AND_PEOPLE
-	jp c, PrintRadioLine
-	call PickPeopleOrPlaces
+	call PickPeopleOrPlacesBiased
 	jp NextRadioLine
 
 .Descriptors:
@@ -1319,12 +1315,7 @@ PeoplePlaces7:
 	ld h, [hl]
 	ld l, a
 	call CopyRadioTextToRAM
-	call Random
-	cp 4 percent
-	ld a, PLACES_AND_PEOPLE
-	jr c, .ok
-	call PickPeopleOrPlaces
-.ok
+	call PickPeopleOrPlacesBiased
 	jp PrintRadioLine
 
 .Descriptors:
@@ -1345,6 +1336,11 @@ PeoplePlaces7:
 	dw PnP_rightforme
 	dw PnP_odd
 
+PickPeopleOrPlacesBiased:
+	call Random
+	cp 4 percent
+	ld a, PLACES_AND_PEOPLE
+	ret c
 PickPeopleOrPlaces:
 	call Random
 	cp 1 + 48 percent

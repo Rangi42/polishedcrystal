@@ -1067,10 +1067,10 @@ CardFlip_CheckWinCondition:
 	text_end
 
 .AddCoinPlaySFX:
-	ld hl, wCoins + 1
-	ld a, [hld]
-	ld h, [hl]
-	ld l, a
+	ld hl, wCoins
+	ld a, [hli]
+	ld l, [hl]
+	ld h, a
 	inc hl
 	ld a, h
 	ld [wCoins], a

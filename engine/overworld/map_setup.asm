@@ -278,8 +278,8 @@ RetainOldPalettes:
 
 RotatePalettesRightMapAndMusic:
 	xor a
-	ld [wMusicFadeIDLo] ,a
-	ld [wMusicFadeIDHi] ,a
+	ld [wMusicFadeIDLo], a
+	ld [wMusicFadeIDHi], a
 	ld [wMusicFade], a
 	farjp FadeOutPalettes
 

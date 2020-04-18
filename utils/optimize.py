@@ -99,7 +99,7 @@ patterns = {
 'a = X + carry': [
 	# Bad: ld b, a / ld a, c|N / adc 0
 	# Good: ld b, a / adc c|N / sub b
-	(lambda line1, prev: re.match(r'ld [bcdehl], a', line1.code)),
+	(lambda line1, prev: re.match(r'ld ([bcdehl]|\[hl\]), a', line1.code)),
 	(lambda line2, prev: line2.code.startswith('ld a,') and
 		(not line2.code.startswith('ld a, [') or line2.code == 'ld a, [hl]')),
 	(lambda line3, prev: re.match(r'adc [%\$]?0+$', line3.code)),
@@ -107,7 +107,7 @@ patterns = {
 'a = X + carry (with \'ld a, 0\')': [
 	# Bad: ld b, a / ld a, 0 / adc c|N
 	# Good: ld b, a / adc c|N / sub b
-	(lambda line1, prev: re.match(r'ld [bcdehl], a', line1.code)),
+	(lambda line1, prev: re.match(r'ld ([bcdehl]|\[hl\]), a', line1.code)),
 	(lambda line2, prev: re.match(r'ld a, [%\$]?0+$', line2.code)),
 	(lambda line3, prev: line3.code.startswith('adc ') and
 		(not line3.code.startswith('adc [') or line3.code == 'adc [hl]')),
@@ -147,7 +147,7 @@ patterns = {
 	# Good: ld hl, Foo / ld a, [hli] / ld h, [hl] / ld l, a
 	#
 	# Bad: ld a, [Foo] / ld h, a / ld a, [Foo+1] / ld l, a
-	# Good: ld hl, Foo+1 / ld a, [hld] / ld h, [hl] / ld l, a
+	# Good: ld hl, Foo / ld a, [hli] / ld l, [hl] / ld h, a
 	(lambda line1, prev: re.match(r'ld a, \[[^hbd]', line1.code)),
 	(lambda line2, prev: re.match(r'ld [lh], a', line2.code)),
 	(lambda line3, prev: re.match(r'ld a, \[[^hbd]', line3.code) and

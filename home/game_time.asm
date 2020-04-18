@@ -101,10 +101,10 @@ endc
 	ld [hl], a
 
 ; +1 hour
-	ld hl, wGameTimeHours + 1
-	ld a, [hld]
-	ld h, [hl]
-	ld l, a
+	ld hl, wGameTimeHours
+	ld a, [hli]
+	ld l, [hl]
+	ld h, a
 	inc hl
 
 ; Cap the timer after 1000 hours.
