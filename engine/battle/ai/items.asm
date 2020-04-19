@@ -401,6 +401,9 @@ AI_Items:
 .GuardSpec:
 	call .XItem
 	jp c, .DontUse
+	ld a, [wEnemyGuards]
+	and GUARD_MIST
+	jp nz, .DontUse
 	call EnemyUsedGuardSpec
 	jp .Use
 
@@ -647,10 +650,18 @@ AI_HealStatus:
 
 EnemyUsedGuardSpec:
 	call AIUsedItemSound
-	ld hl, wEnemySubStatus4
-	set SUBSTATUS_MIST, [hl]
+	ld a, 5 << 4
+	ld hl, wEnemyGuards
+	or [hl]
+	ld [hl], a
 	ld a, GUARD_SPEC
-	jp PrintText_UsedItemOn_AND_AIUpdateHUD
+	ld [wNamedObjectIndexBuffer], a
+	call PrintText_CopyItemName
+	ld hl, TextJump_EnemyUsed
+	call PrintText
+	ld hl, MistText
+	call StdBattleTextBox
+	jp AIUpdateHUD
 
 EnemyUsedDireHit:
 	call AIUsedItemSound
@@ -695,14 +706,21 @@ PrintText_UsedItemOn_AND_AIUpdateHUD:
 
 PrintText_UsedItemOn:
 	ld a, [wCurEnemyItem]
-	ld [wd265], a
+	ld [wNamedObjectIndexBuffer], a
+	call PrintText_CopyItemName
+	ld hl, TextJump_EnemyUsedOn
+	jp PrintText
+
+PrintText_CopyItemName:
 	call GetItemName
 	ld hl, wStringBuffer1
 	ld de, wMonOrItemNameBuffer
 	ld bc, ITEM_NAME_LENGTH
-	rst CopyBytes
-	ld hl, TextJump_EnemyUsedOn
-	jp PrintText
+	jp CopyBytes
+
+TextJump_EnemyUsed:
+	text_jump Text_EnemyUsed
+	text_end
 
 TextJump_EnemyUsedOn:
 	text_jump Text_EnemyUsedOn

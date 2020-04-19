@@ -9,15 +9,15 @@ BattleCommand_clearhazards:
 .not_leeched
 	ldh a, [hBattleTurn]
 	and a
-	ld hl, wPlayerScreens
+	ld hl, wPlayerHazards
 	ld de, wPlayerWrapCount
 	jr z, .got_screens_wrap
-	ld hl, wEnemyScreens
+	ld hl, wEnemyHazards
 	ld de, wEnemyWrapCount
 .got_screens_wrap
 	push de
 	ld a, [hl]
-	and SCREENS_SPIKES
+	and HAZARDS_SPIKES
 	jr z, .no_spikes
 	cpl
 	and [hl]
@@ -28,10 +28,9 @@ BattleCommand_clearhazards:
 	pop hl
 .no_spikes
 	ld a, [hl]
-	and SCREENS_TOXIC_SPIKES
+	and HAZARDS_TOXIC_SPIKES
 	jr z, .no_toxic_spikes
-	cpl
-	and [hl]
+	xor a
 	ld [hl], a
 	ld hl, BlewToxicSpikesText
 	call StdBattleTextBox

@@ -71,9 +71,13 @@ FarChangeStat:
 .check_lowering
 	bit STAT_LOWER_F, b
 	jr z, .ability_done
-	ld a, BATTLE_VARS_SUBSTATUS4_OPP
-	call GetBattleVar
-	bit SUBSTATUS_MIST, a
+	ldh a, [hBattleTurn]
+	and a
+	ld a, [wEnemyGuards]
+	jr z, .got_guard
+	ld a, [wPlayerGuards]
+.got_guard
+	and GUARD_MIST
 	jr z, .check_ability
 	bit STAT_SILENT_F, b
 	ret nz

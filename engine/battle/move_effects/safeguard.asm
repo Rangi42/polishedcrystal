@@ -1,17 +1,16 @@
 BattleCommand_safeguard:
-	ld hl, wPlayerScreens
-	ld de, wPlayerSafeguardCount
+	ld hl, wPlayerGuards
 	ldh a, [hBattleTurn]
 	and a
 	jr z, .ok
-	ld hl, wEnemyScreens
-	ld de, wEnemySafeguardCount
+	ld hl, wEnemyGuards
 .ok
-	bit SCREENS_SAFEGUARD, [hl]
+	ld a, [hl]
+	and GUARD_SAFEGUARD
 	jr nz, .failed
-	set SCREENS_SAFEGUARD, [hl]
 	ld a, 5
-	ld [de], a
+	or [hl]
+	ld [hl], a
 	call AnimateCurrentMove
 	ld hl, CoveredByVeilText
 	jp StdBattleTextBox
@@ -21,20 +20,16 @@ BattleCommand_safeguard:
 	jp PrintButItFailed
 
 SafeCheckSafeguard:
-	push hl
 	ldh a, [hBattleTurn]
 	and a
-	ld hl, wEnemyScreens
-	jr z, .got_screens
-	ld hl, wPlayerScreens
-.got_screens
+	ld a, [wEnemyGuards]
+	jr z, .got_guard
+	ld a, [wPlayerGuards]
+.got_guard
+	and GUARD_SAFEGUARD
+	ret z
 	call GetTrueUserAbility
-	bit SCREENS_SAFEGUARD, [hl]
-	jr z, .done
 	cp INFILTRATOR
-
-.done
-	pop hl
 	ret
 
 BattleCommand_checksafeguard:

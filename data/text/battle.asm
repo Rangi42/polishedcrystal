@@ -271,18 +271,25 @@ BattleText_TargetWasHitByFutureSight:
 	cont "Future Sight!"
 	prompt
 
+BattleText_MistFaded:
+	text_from_ram wStringBuffer1
+	text " #mon's"
+	line "mist faded!"
+	prompt
+
 BattleText_SafeguardFaded:
-	text "<USER>'s"
+	text_from_ram wStringBuffer1
+	text " #mon's"
 	line "Safeguard faded!"
 	prompt
 
-BattleText_PkmnLightScreenFell:
+BattleText_LightScreenFell:
 	text_from_ram wStringBuffer1
 	text " #mon's"
 	line "Light Screen fell!"
 	prompt
 
-BattleText_PkmnReflectFaded:
+BattleText_ReflectFaded:
 	text_from_ram wStringBuffer1
 	text " #mon's"
 	line "Reflect faded!"
@@ -1045,6 +1052,11 @@ HitNTimesText:
 	text "Hit @"
 	deciram wStringBuffer1, 1, 1
 	text " times!"
+	prompt
+
+MistText:
+	text "<USER>'s"
+	line "shrouded in mist!"
 	prompt
 
 ProtectedByMistText:

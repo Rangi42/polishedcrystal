@@ -413,7 +413,7 @@ wBattleSubStatusWRAM::
 wPlayerSubStatus1::
 ; bit
 ; 7 attract
-; 6 encore
+; 6 rollout
 ; 5 endure
 ; 4 perish song
 ; 3 identified
@@ -426,11 +426,11 @@ wPlayerSubStatus2::
 ; 7 cant run
 ; 6 destiny bond
 ; 5 lock-on
-; 4 encore
-; 3 transformed
-; 2
-; 1
-; 0 toxic
+; 4 transformed
+; 3 magic bounce
+; 2 fainted
+; 1 minimized
+; 0 unused
 	db
 wPlayerSubStatus3::
 ; bit
@@ -439,9 +439,9 @@ wPlayerSubStatus3::
 ; 5 underground
 ; 4 charged
 ; 3 flinch
-; 2
-; 1 rollout
-; 0 bide
+; 2 in loop
+; 1 rampage
+; 0 flash fire boost
 	db
 wPlayerSubStatus4::
 ; bit
@@ -449,9 +449,9 @@ wPlayerSubStatus4::
 ; 6 rage
 ; 5 recharge
 ; 4 substitute
-; 3
+; 3 roost
 ; 2 focus energy
-; 1 mist
+; 1 unused
 ; 0 curled
 	db
 
@@ -604,27 +604,39 @@ wBattleLowHealthAlarm:: db
 
 	ds 1 ; unused
 
+wPlayerHazards::
+; bit
+; 6-7 toxic spikes
+; 4-5 spikes
+; 0-3 unused
+	db
+
+wEnemyHazards::
+; see wPlayerHazards
+	db
+
 wPlayerScreens::
 ; bit
-; 4 reflect
-; 3 light screen
-; 2 safeguard
-; 0 spikes
+; 4-7 light screen
+; 0-3 reflect
 	db
+wPlayerGuards::
+; bit
+; 4-7 mist
+; 0-3 safeguard
+	db
+
+	ds 2
 
 wEnemyScreens::
 ; see wPlayerScreens
 	db
+wEnemyGuards::
+; see wPlayerGuards
+	db
 
-wPlayerSafeguardCount:: db
-wPlayerLightScreenCount:: db
-wPlayerReflectCount:: db
-	ds 1
+	ds 2
 
-wEnemySafeguardCount:: db
-wEnemyLightScreenCount:: db
-wEnemyReflectCount:: db
-	ds 1
 wBattleWeather::
 ; 00 normal
 ; 01 rain

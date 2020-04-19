@@ -1168,6 +1168,14 @@ _BuenaOffTheAirText::
 	line ""
 	done
 
+SECTION "Text_EnemyUsed", ROMX
+Text_EnemyUsed::
+	text "<ENEMY>"
+	line "used @"
+	text_from_ram wMonOrItemNameBuffer
+	text "!"
+	prompt
+
 SECTION "Text_EnemyUsedOn", ROMX
 Text_EnemyUsedOn::
 	text "<ENEMY>"

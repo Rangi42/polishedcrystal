@@ -1,15 +1,15 @@
 BattleCommand_spikes:
 	ldh a, [hBattleTurn]
 	and a
-	ld hl, wEnemyScreens
-	jr z, .got_screens
-	ld hl, wPlayerScreens
-.got_screens
+	ld hl, wEnemyHazards
+	jr z, .got_hazards
+	ld hl, wPlayerHazards
+.got_hazards
 	ld a, [hl]
-	and SCREENS_SPIKES
-	cp SCREENS_SPIKES
+	and HAZARDS_SPIKES
+	cp HAZARDS_SPIKES
 	jp z, FailSpikes
-	ld a, SCREENS_SPIKES / 3
+	ld a, HAZARDS_SPIKES / 3
 	add [hl]
 	ld [hl], a
 
@@ -21,15 +21,15 @@ BattleCommand_spikes:
 BattleCommand_toxicspikes:
 	ldh a, [hBattleTurn]
 	and a
-	ld hl, wEnemyScreens
+	ld hl, wEnemyHazards
 	jr z, .got_screens
-	ld hl, wPlayerScreens
+	ld hl, wPlayerHazards
 .got_screens
 	ld a, [hl]
-	and SCREENS_TOXIC_SPIKES
-	cp (SCREENS_TOXIC_SPIKES / 3) * 2
+	and HAZARDS_TOXIC_SPIKES
+	cp (HAZARDS_TOXIC_SPIKES / 3) * 2
 	jp z, FailSpikes
-	ld a, SCREENS_TOXIC_SPIKES / 3
+	ld a, HAZARDS_TOXIC_SPIKES / 3
 	add [hl]
 	ld [hl], a
 

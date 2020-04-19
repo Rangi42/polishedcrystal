@@ -1,33 +1,37 @@
 BattleCommand_screen:
 	ld hl, wPlayerScreens
-	ld bc, wPlayerLightScreenCount
 	ldh a, [hBattleTurn]
 	and a
 	jr z, .got_screens_pointer
 	ld hl, wEnemyScreens
-	ld bc, wEnemyLightScreenCount
 
 .got_screens_pointer
+	ld a, HELD_PROLONG_SCREENS
+	call GetItemBoostedDuration
+	ld b, a
 	ld a, BATTLE_VARS_MOVE_EFFECT
 	call GetBattleVar
 	cp EFFECT_LIGHT_SCREEN
+	ld a, [hl]
 	jr nz, .reflect
 
-	bit SCREENS_LIGHT_SCREEN, [hl]
+	and SCREENS_LIGHT_SCREEN
 	jr nz, .failed
-	set SCREENS_LIGHT_SCREEN, [hl]
+	ld a, b
+	swap a
+	or [hl]
+	ld [hl], a
 	ld hl, LightScreenEffectText
-	jr .set_timer
+	jr .succeeded
+
 .reflect
-	bit SCREENS_REFLECT, [hl]
+	and SCREENS_REFLECT
 	jr nz, .failed
-	set SCREENS_REFLECT, [hl]
-	inc bc ; LightScreenCount -> ReflectCount
+	ld a, b
+	or [hl]
+	ld [hl], a
 	ld hl, ReflectEffectText
-.set_timer
-	ld a, HELD_PROLONG_SCREENS
-	call GetItemBoostedDuration
-	ld [bc], a
+.succeeded
 	call AnimateCurrentMove
 	jp StdBattleTextBox
 

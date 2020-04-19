@@ -47,8 +47,8 @@ AI_Redundant:
 	ld a, [wPlayerSubStatus3]
 	bit SUBSTATUS_CONFUSED, a
 	ret nz
-	ld a, [wPlayerScreens]
-	bit SCREENS_SAFEGUARD, a
+	ld a, [wPlayerGuards]
+	and GUARD_SAFEGUARD
 	ret
 
 .Disable:
@@ -83,7 +83,7 @@ AI_Redundant:
 
 .LightScreen:
 	ld a, [wEnemyScreens]
-	bit SCREENS_LIGHT_SCREEN, a
+	and SCREENS_LIGHT_SCREEN
 	ret
 
 .MeanLook:
@@ -98,12 +98,12 @@ AI_Redundant:
 
 .Reflect:
 	ld a, [wEnemyScreens]
-	bit SCREENS_REFLECT, a
+	and SCREENS_REFLECT
 	ret
 
 .Safeguard:
-	ld a, [wEnemyScreens]
-	bit SCREENS_SAFEGUARD, a
+	ld a, [wEnemyGuards]
+	and GUARD_SAFEGUARD
 	ret
 
 .Substitute:
@@ -127,15 +127,15 @@ AI_Redundant:
 	jr .InvertZero
 
 .Spikes:
-	ld a, [wPlayerScreens]
-	and SCREENS_SPIKES
-	cp SCREENS_SPIKES
+	ld a, [wPlayerHazards]
+	and HAZARDS_SPIKES
+	cp HAZARDS_SPIKES
 	jr .InvertZero
 
 .ToxicSpikes:
-	ld a, [wPlayerScreens]
-	and SCREENS_TOXIC_SPIKES
-	cp (SCREENS_TOXIC_SPIKES / 3) * 2
+	ld a, [wPlayerHazards]
+	and HAZARDS_TOXIC_SPIKES
+	cp (HAZARDS_TOXIC_SPIKES / 3) * 2
 	jr .InvertZero
 
 .Sandstorm:
