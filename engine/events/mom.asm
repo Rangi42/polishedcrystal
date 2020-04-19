@@ -355,7 +355,7 @@ DSTChecks:
 
 .SetClockBack:
 	ld a, [wStartHour]
-	sub 1 ; dec a can't set carry
+	sub 1 ; no-optimize a++|a-- (dec a can't set carry)
 	jr nc, .DontLoopHourBack
 	add 24
 .DontLoopHourBack:
