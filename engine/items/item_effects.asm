@@ -1254,13 +1254,8 @@ PersimBerry:
 
 RestoreHPEffect:
 	ld b, PARTYMENUACTION_HEALING_ITEM
-	call UseItem_SelectMon
-	jp c, ItemNotUsed_ExitMenu
-
-	call ItemRestoreHP
-	and a
-	jp nz, WontHaveAnyEffectMessage
-	ret
+	ld hl, ItemRestoreHP
+	jp UseItem_SelectMon_Loop
 
 EnergyPowder:
 	ld c, HAPPINESS_BITTERPOWDER
@@ -1333,6 +1328,54 @@ UseItem_SelectMon2:
 	pop de
 	pop hl
 	jr UseItem_DoSelectMon
+
+UseItem_SelectMon_Loop:
+	ld a, b
+	ld [wPartyMenuActionText], a
+	push de
+	ld b, 0
+	push bc
+	push hl
+	call ClearBGPalettes
+	jr .handle_loop
+.loop
+	ld a, [wItemQuantityBuffer]
+	and a
+	jr z, .done
+	ld a, [wBattleMode]
+	and a
+	jr nz, .done
+.handle_loop
+	call ChoosePkmnToUseItemOn
+	jr c, .done
+	ld a, MON_IS_EGG
+	call GetPartyParamLocation
+	bit MON_IS_EGG_F, [hl]
+	jr z, .not_egg
+	call CantUseOnEggMessage
+	jr .handle_loop
+.not_egg
+	pop hl
+	push hl
+	call _hl_
+	and a
+	jr nz, .no_effect
+	pop hl
+	pop bc
+	ld b, 1
+	push bc
+	push hl
+	jr .loop
+.no_effect
+	call WontHaveAnyEffectMessage
+	jr .handle_loop
+.done
+	pop hl
+	pop bc
+	pop de
+	ld a, b
+	ld [wItemEffectSucceeded], a
+	ret
 
 UseItem_SelectMon:
 	ld a, b
