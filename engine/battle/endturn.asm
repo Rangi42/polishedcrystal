@@ -834,7 +834,6 @@ HandleReflect:
 	call SwitchTurn
 
 .do_it
-	ld a, [hBattleTurn]
 	call GetTurnAndPlacePrefix
 	ld hl, wPlayerScreens
 	jr z, .got_screens
@@ -849,7 +848,6 @@ HandleSafeguard:
 	call SwitchTurn
 
 .do_it
-	ld a, [hBattleTurn]
 	call GetTurnAndPlacePrefix
 	ld hl, wPlayerGuards
 	jr z, .got_guards
@@ -873,7 +871,6 @@ HandleLightScreen:
 	call SwitchTurn
 
 .do_it
-	ld a, [hBattleTurn]
 	call GetTurnAndPlacePrefix
 	ld hl, wPlayerScreens
 	jr z, .got_screens
@@ -888,7 +885,6 @@ HandleMist:
 	call SwitchTurn
 
 .do_it
-	ld a, [hBattleTurn]
 	call GetTurnAndPlacePrefix
 	ld hl, wPlayerGuards
 	jr z, .got_guards
@@ -910,8 +906,8 @@ PrintTextAfterNibbleTick:
 	jp StdBattleTextBox
 
 GetTurnAndPlacePrefix:
-; Parameters: a contains [hBattleTurn]
 ; Preserves a, returns zero flag for a
+	ldh a, [hBattleTurn]
 	and a
 	push af
 	ld de, .Your
