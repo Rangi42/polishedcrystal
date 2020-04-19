@@ -260,8 +260,8 @@ patterns = {
 		',' in line1.code and '[hli]' not in line1.code and '[hld]' not in line1.code),
 	(lambda line2, prev: (line2.code.startswith('ld ') or line2.code.startswith('ldh ')) and
 		',' in line2.code and '[hli]' not in line2.code and '[hld]' not in line2.code and
-		line2.code[2:].split(',')[0].strip() == prev[0].code.split(',')[1].strip() and
-		line2.code.split(',')[1].strip() == prev[0].code[2:].split(',')[0].strip() and
+		line2.code[3:].split(',')[0].strip() == prev[0].code.split(',')[1].strip() and
+		line2.code.split(',')[1].strip() == prev[0].code[3:].split(',')[0].strip() and
 		line2.context == prev[0].context),
 ],
 'Inefficient prefix opcodes': [
