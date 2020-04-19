@@ -3328,7 +3328,7 @@ endc
 	jr z, .got_opp_screens
 	ld a, [wPlayerScreens]
 .got_opp_screens
-	bit SCREENS_REFLECT, a
+	and SCREENS_REFLECT
 	jr z, .thickcluborlightball
 	ld a, [wCriticalHit]
 	and a
@@ -3377,7 +3377,7 @@ endc
 	jr z, .got_opp_screens2
 	ld a, [wPlayerScreens]
 .got_opp_screens2
-	bit SCREENS_LIGHT_SCREEN, a
+	and SCREENS_LIGHT_SCREEN
 	jr z, .lightball
 	ld a, [wCriticalHit]
 	and a
@@ -3564,7 +3564,7 @@ HitSelfInConfusion:
 	ld b, a
 	ld c, [hl]
 	ld a, [de]
-	bit SCREENS_REFLECT, a
+	and SCREENS_REFLECT
 	jr z, .mimic_screen
 
 	sla c

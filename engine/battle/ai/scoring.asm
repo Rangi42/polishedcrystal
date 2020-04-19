@@ -54,8 +54,8 @@ AI_Basic:
 	jr nz, .discourage
 
 ; Dismiss Safeguard if it's already active.
-	ld a, [wPlayerScreens]
-	bit SCREENS_SAFEGUARD, a
+	ld a, [wPlayerGuards]
+	and GUARD_SAFEGUARD
 	jr z, .checkmove
 
 .discourage
@@ -1874,9 +1874,9 @@ AI_Smart_RapidSpin:
 	bit SUBSTATUS_LEECH_SEED, a
 	jr nz, .asm_39097
 
-	ld a, [wEnemyScreens]
-	and SCREENS_SPIKES
-	cp SCREENS_SPIKES
+	ld a, [wEnemyHazards]
+	and HAZARDS_SPIKES
+	cp HAZARDS_SPIKES
 	ret nz
 
 .asm_39097

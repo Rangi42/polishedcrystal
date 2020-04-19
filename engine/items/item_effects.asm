@@ -1733,11 +1733,16 @@ PokeDoll:
 	jp UseItemText
 
 GuardSpec:
-	ld hl, wPlayerSubStatus4
-	bit SUBSTATUS_MIST, [hl]
+	ld a, [wPlayerGuards]
+	and GUARD_MIST
 	jp nz, WontHaveAnyEffect_NotUsedMessage
-	set SUBSTATUS_MIST, [hl]
-	jp UseItemText
+	ld a, 5 << 4
+	ld hl, wPlayerGuards
+	or [hl]
+	ld [hl], a
+	call UseItemText
+	ld hl, MistText
+	jp StdBattleTextBox
 
 DireHit:
 	ld hl, wPlayerSubStatus4

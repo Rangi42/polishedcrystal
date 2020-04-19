@@ -46,9 +46,10 @@ HandleBetweenTurnEffects:
 	call CheckFaint
 	ret c
 	call HandleRoost
-	call HandleScreens
+	call HandleReflect
+	call HandleLightScreen
 	call HandleSafeguard
-	; mist
+	call HandleMist
 	; tailwind
 	; lucky chant
 	; rainbow dissipating (water+fire pledge)
@@ -827,104 +828,104 @@ HandleLeppaBerry:
 	pop bc
 	farjp LeppaRestorePP
 
-HandleScreens:
-	call CheckSpeed
-	jr nz, .enemy_first
+HandleReflect:
+	call SetFastestTurn
+	call .do_it
+	call SwitchTurn
 
-	call .CheckPlayer
-	jr .CheckEnemy
-
-.enemy_first
-	call .CheckEnemy
-.CheckPlayer:
-	call SetPlayerTurn
-	ld de, .Your
-	call .Copy
+.do_it
+	ld a, [hBattleTurn]
+	call GetTurnAndPlacePrefix
 	ld hl, wPlayerScreens
-	ld de, wPlayerLightScreenCount
-	jr .TickScreens
-
-.CheckEnemy:
-	call SetEnemyTurn
-	ld de, .Enemy
-	call .Copy
+	jr z, .got_screens
 	ld hl, wEnemyScreens
-	ld de, wEnemyLightScreenCount
-
-.TickScreens:
-	bit SCREENS_LIGHT_SCREEN, [hl]
-	call nz, .LightScreenTick
-	bit SCREENS_REFLECT, [hl]
-	call nz, .ReflectTick
-	ret
-
-.Copy:
-	ld hl, wStringBuffer1
-	jp CopyName2
-
-.Your:
-	db "Your@"
-.Enemy:
-	db "Foe@"
-
-.LightScreenTick:
-	ld a, [de]
-	dec a
-	ld [de], a
-	ret nz
-	res SCREENS_LIGHT_SCREEN, [hl]
-	push hl
-	push de
-	ld hl, BattleText_PkmnLightScreenFell
-	call StdBattleTextBox
-	pop de
-	pop hl
-	ret
-
-.ReflectTick:
-	inc de
-	ld a, [de]
-	dec a
-	ld [de], a
-	ret nz
-	res SCREENS_REFLECT, [hl]
-	ld hl, BattleText_PkmnReflectFaded
-	jp StdBattleTextBox
+.got_screens
+	ld de, BattleText_ReflectFaded
+	jr DecrementLowNibble
 
 HandleSafeguard:
-	call CheckSpeed
-	jr z, .player_first
+	call SetFastestTurn
+	call .do_it
+	call SwitchTurn
 
-	call .CheckEnemy
-.CheckPlayer:
-	ld a, [wPlayerScreens]
-	bit SCREENS_SAFEGUARD, a
+.do_it
+	ld a, [hBattleTurn]
+	call GetTurnAndPlacePrefix
+	ld hl, wPlayerGuards
+	jr z, .got_guards
+	ld hl, wEnemyGuards
+.got_guards
+	ld de, BattleText_SafeguardFaded
+
+DecrementLowNibble:
+; Decrements lower nibble in hl. If it reaches 0, print message in de.
+	ld a, [hl]
+	and $f
 	ret z
-	ld hl, wPlayerSafeguardCount
 	dec [hl]
+	dec a
 	ret nz
-	res SCREENS_SAFEGUARD, a
-	ld [wPlayerScreens], a
-	xor a
-	jr .print
+	jr PrintTextAfterNibbleTick
 
-.player_first
-	call .CheckPlayer
-.CheckEnemy:
-	ld a, [wEnemyScreens]
-	bit SCREENS_SAFEGUARD, a
-	ret z
-	ld hl, wEnemySafeguardCount
-	dec [hl]
-	ret nz
-	res SCREENS_SAFEGUARD, a
-	ld [wEnemyScreens], a
-	ld a, $1
+HandleLightScreen:
+	call SetFastestTurn
+	call .do_it
+	call SwitchTurn
 
-.print
-	ldh [hBattleTurn], a
-	ld hl, BattleText_SafeguardFaded
+.do_it
+	ld a, [hBattleTurn]
+	call GetTurnAndPlacePrefix
+	ld hl, wPlayerScreens
+	jr z, .got_screens
+	ld hl, wEnemyScreens
+.got_screens
+	ld de, BattleText_LightScreenFell
+	jr DecrementHighNibble
+
+HandleMist:
+	call SetFastestTurn
+	call .do_it
+	call SwitchTurn
+
+.do_it
+	ld a, [hBattleTurn]
+	call GetTurnAndPlacePrefix
+	ld hl, wPlayerGuards
+	jr z, .got_guards
+	ld hl, wEnemyGuards
+.got_guards
+	ld de, BattleText_MistFaded
+
+DecrementHighNibble:
+; Decrements higher nibble in hl. If it reaches 0, print message in de.
+	ld a, [hl]
+	sub $10
+	ret c
+	ld [hl], a
+	sub $10
+	ret nc
+PrintTextAfterNibbleTick:
+	ld h, d
+	ld l, e
 	jp StdBattleTextBox
+
+GetTurnAndPlacePrefix:
+; Parameters: a contains [hBattleTurn]
+; Preserves a, returns zero flag for a
+	and a
+	push af
+	ld de, .Your
+	jr z, .got_prefix
+	ld de, .Foe
+.got_prefix
+	ld hl, wStringBuffer1
+	call CopyName2
+	pop af
+	ret
+.Your:
+	db "Your@"
+.Foe:
+	db "Foe@"
 
 HandleHealingItems:
 	call SetFastestTurn

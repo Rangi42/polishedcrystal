@@ -3124,9 +3124,9 @@ SpikesDamage_GotAbility:
 .iron_ball
 	ldh a, [hBattleTurn]
 	and a
-	ld hl, wPlayerScreens
+	ld hl, wPlayerHazards
 	jr z, .ok
-	ld hl, wEnemyScreens
+	ld hl, wEnemyHazards
 .ok
 	push hl
 	call .Spikes
@@ -3139,14 +3139,14 @@ SpikesDamage_GotAbility:
 	ret z
 
 	ld a, [hl]
-	and SCREENS_SPIKES
+	and HAZARDS_SPIKES
 	ret z
 
 	ld hl, GetEighthMaxHP
-	sub SCREENS_SPIKES / 3
+	sub HAZARDS_SPIKES / 3
 	jr z, .got_hp
 	ld hl, GetSixthMaxHP
-	sub SCREENS_SPIKES / 3
+	sub HAZARDS_SPIKES / 3
 	jr z, .got_hp
 	ld hl, GetQuarterMaxHP
 .got_hp
@@ -3159,7 +3159,7 @@ SpikesDamage_GotAbility:
 
 .ToxicSpikes:
 	ld a, [hl]
-	and SCREENS_TOXIC_SPIKES
+	and HAZARDS_TOXIC_SPIKES
 	ret z
 
 	push af
@@ -3191,8 +3191,8 @@ SpikesDamage_GotAbility:
 	ret nz
 
 	ld a, [hl]
-	and SCREENS_TOXIC_SPIKES
-	cp (SCREENS_TOXIC_SPIKES / 3) * 2
+	and HAZARDS_TOXIC_SPIKES
+	cp (HAZARDS_TOXIC_SPIKES / 3) * 2
 	ld a, 1 << PSN
 	ld hl, WasPoisonedText
 	jr nz, .no_toxic
