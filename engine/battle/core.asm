@@ -761,7 +761,7 @@ ResolveFaints:
 	ld [wWhichMonFaintedFirst], a
 	ld a, [wBattleEnded]
 	dec a
-	sub 1 ; dec a can't set carry
+	sub 1 ; no-optimize a++|a-- (dec a can't set carry)
 	ret
 
 .check_battle_over
@@ -2392,7 +2392,6 @@ SwitchMonAlreadyOut:
 
 ForcePickPartyMonInBattle:
 ; Can't back out.
-
 .pick
 	call PickPartyMonInBattle
 	ret nc
@@ -2413,7 +2412,6 @@ PickSwitchMonInBattle:
 
 ForcePickSwitchMonInBattle:
 ; Can't back out.
-
 .pick
 	call ForcePickPartyMonInBattle
 	call SwitchMonAlreadyOut

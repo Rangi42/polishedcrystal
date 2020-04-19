@@ -19,11 +19,19 @@ PAIRS = {
 	'h': 'l', 'l': 'h',
 }
 
-# Each line has three properties:
+# Each line has five properties:
 # - num (1, 2, 3, etc)
 # - code (no indent or comment)
+# - comment (if one exists)
 # - text (the whole line of text)
-Line = namedtuple('Line', ['num', 'code', 'text'])
+# - context (the current label)
+Line = namedtuple('Line', ['num', 'code', 'comment', 'text', 'context'])
+
+# Suppress false positives with comments, like:
+#     ld c, a ; no-optimize a = N - a (c gets used in .load_loop)
+#     ld a, NUM_MOVES
+#     sub c
+SUPPRESS = 'no-optimize'
 
 # A set of named patterns of suboptimal code
 #
@@ -40,10 +48,12 @@ patterns = {
 	# Good: add X
 	(lambda line1, prev: re.match(r'(?:add|adc|sub|sbc|and|xor|or|cp) a,', line1.code)),
 ],
-'Fancy nops': [
+'nops': [
 	# Bad: ld b, b (or other identical registers)
-	# Good: nop (or omit)
-	(lambda line1, prev: re.match(r'ld ([abcdehl]), \1', line1.code)),
+	# Meh: nop
+	# Good: omit (unless you need it for timing)
+	(lambda line1, prev: re.match(r'ld ([abcdehl]), \1$', line1.code) or
+		line1.code == 'nop'),
 ],
 'Inefficient HRAM load': [
 	# Bad: ld a, [hFoo] (or [rFoo])
@@ -61,7 +71,7 @@ patterns = {
 # 	# Good: xor a (unless you need to preserve flags)
 # 	(lambda line1, prev: re.match(r'ld a, [%\$]?0+$', line1.code)),
 # ],
-'a++ or a--': [
+'a++|a--': [
 	# Bad: add|sub 1
 	# Good: inc|dec a (unless you need to set the carry flag)
 	(lambda line1, prev: re.match(r'(?:add|sub) (?:a, )?[%\$]?0*1$', line1.code)),
@@ -104,7 +114,7 @@ patterns = {
 		(not line2.code.startswith('ld a, [') or line2.code == 'ld a, [hl]')),
 	(lambda line3, prev: re.match(r'adc [%\$]?0+$', line3.code)),
 ],
-'a = X + carry (with \'ld a, 0\')': [
+'a = carry + X': [
 	# Bad: ld b, a / ld a, 0 / adc c|N
 	# Good: ld b, a / adc c|N / sub b
 	(lambda line1, prev: re.match(r'ld ([bcdehl]|\[hl\]), a', line1.code)),
@@ -125,7 +135,7 @@ patterns = {
 	(lambda line5, prev: re.match(r'ld [hbd], a', line5.code) and
 		line5.code[3] == PAIRS[prev[1].code[3]]),
 ],
-'hl|bc|de += a|N (with jump)': [
+'hl|bc|de += a|N (jump)': [
 	# Okay: add l|N / ld l, a / jr nc, .noCarry / inc h / .noCarry
 	# Good: add l|N / ld l, a / adc h / sub l / ld h, a
 	(lambda line1, prev: re.match(r'add (?:a, )?(?:[lce]|[^afbdh\[])', line1.code)),
@@ -161,7 +171,7 @@ patterns = {
 	# Good: lb bc, P, Q
 	(lambda line1, prev: re.match(r'ld [hlbcde], [^afbcdehl\[]', line1.code)),
 	(lambda line2, prev: re.match(r'ld [hlbcde], [^afbcdehl\[]', line2.code) and
-		line2.code[3] == PAIRS[prev[0].code[3]]),
+		line2.code[3] == PAIRS[prev[0].code[3]] and line2.context == prev[0].context),
 ],
 # '*hl = N': [
 # 	# Bad: ld a, N / ld [hl], a (unless you need N in a too)
@@ -169,14 +179,14 @@ patterns = {
 # 	(lambda line1, prev: re.match(r'ld a, [^afbcdehl\[]', line1.code)),
 # 	(lambda line2, prev: line2.code == 'ld [hl], a'),
 # ],
-'*hl++ or *hl--': [
+'*hl++|*hl--': [
 	# Bad: ld a, [hl] / inc|dec a / ld [hl], a
 	# Good: inc|dec [hl] (before ld a, [hl] if you need [hl] in a too)
 	(lambda line1, prev: line1.code == 'ld a, [hl]'),
 	(lambda line2, prev: line2.code in {'inc a', 'dec a'}),
 	(lambda line3, prev: line3.code == 'ld [hl], a'),
 ],
-'*hl++ = a or *hl-- = a': [
+'*hl++|*hl-- = a': [
 	# Bad: ld [hl], a / inc|dec hl
 	# Good: ld [hli|hld], a
 	(lambda line1, prev: line1.code == 'ld a, [hl]'),
@@ -212,7 +222,8 @@ patterns = {
 	# Bad: jr z|nz|c|nc, .foo / jr .bar / .foo: ...
 	# Good: jr nz|z|nc|c .bar / .foo: ...
 	(lambda line1, prev: re.match(r'j[rp] n?[zc],', line1.code)),
-	(lambda line2, prev: re.match(r'j[rp] ', line2.code) and ',' not in line2.code),
+	(lambda line2, prev: re.match(r'j[rp] ', line2.code) and ',' not in line2.code
+		and line2.code != 'jp hl'),
 	(lambda line3, prev: line3.code.rstrip(':') == prev[0].code.split(',')[1].strip()),
 ],
 'call hl': [
@@ -230,7 +241,8 @@ patterns = {
 	(lambda line1, prev: (line1.code.startswith('jr ') or
 			line1.code.startswith('jp ')) and
 		',' not in line1.code),
-	(lambda line2, prev: line2.code.rstrip(':') == prev[0].code[3:].strip()),
+	(lambda line2, prev: line2.code.rstrip(':') == prev[0].code[3:].strip() and
+		(line2.context == prev[0].context or line2.context == line2.code)),
 ],
 'Useless loads': [
 	# Bad: ld P, Q / ld P, R (unless the lds have side effects)
@@ -238,8 +250,8 @@ patterns = {
 	(lambda line1, prev: (line1.code.startswith('ld ') or line1.code.startswith('ldh ')) and
 		',' in line1.code and '[hli]' not in line1.code and '[hld]' not in line1.code),
 	(lambda line2, prev: (line2.code.startswith('ld ') or line2.code.startswith('ldh ')) and
-		',' in line2.code and '[hli]' not in line2.code and '[hld]' not in line2.code and
-		line2.code.split(',')[0] == prev[0].code.split(',')[0]),
+		',' in line2.code and line2.code.split(',')[0] == prev[0].code.split(',')[0] and
+		not any(x in line2.code for x in {'[hli]', '[hld]', '[rJOYP]', '[rBGPD]', '[rOBPD]'})),
 ],
 'Redundant loads': [
 	# Bad: ld P, Q / ld Q, P (unless the lds have side effects)
@@ -249,7 +261,8 @@ patterns = {
 	(lambda line2, prev: (line2.code.startswith('ld ') or line2.code.startswith('ldh ')) and
 		',' in line2.code and '[hli]' not in line2.code and '[hld]' not in line2.code and
 		line2.code[2:].split(',')[0].strip() == prev[0].code.split(',')[1].strip() and
-		line2.code.split(',')[1].strip() == prev[0].code[2:].split(',')[0].strip()),
+		line2.code.split(',')[1].strip() == prev[0].code[2:].split(',')[0].strip() and
+		line2.context == prev[0].context),
 ],
 'Inefficient prefix opcodes': [
 	# Bad: rl|rlc|rr|rrc a (unless you need the z flag set for 0)
@@ -295,22 +308,23 @@ for filename in iglob('**/*.asm', recursive=True):
 			text = lines[i]
 			# Remove comments
 			code = text.split(';')[0].rstrip()
+			comment = text.split(';', 1)[1].strip() if ';' in text else ''
 			# Skip blank lines:
 			if not code:
 				i += 1
 				continue
 			# Save the most recent label for context
-			if code[0].isalpha() and ':' in code:
-				cur_label = Line(i+1, code, text)
-				i += 1
-				continue
+			if (code[0].isalpha() or code[0] == '_') and ':' in code:
+				cur_label = Line(i+1, code, comment, text, code)
 			# Remove indentation from code, if any
 			code = code.lstrip()
 			# Record the line's properties
-			cur_line = Line(i+1, code, text)
+			context = cur_label.code if cur_label else ''
+			cur_line = Line(i+1, code, comment, text, context)
 			# Check the condition for the current state
 			condition = conditions[state]
-			if condition(cur_line, prev_lines):
+			skip = comment.lower().startswith(SUPPRESS + ' ' + pattern_name.lower())
+			if condition(cur_line, prev_lines) and not skip:
 				# The condition was met; advance to the next state
 				prev_lines.append(cur_line)
 				state += 1

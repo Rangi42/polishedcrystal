@@ -147,7 +147,7 @@ INCLUDE "home/gfx2.asm"
 SECTION "Header", ROM0[$0100]
 
 Start::
-	nop
+	nop ; no-optimize nops
 	jp _Start
 
 ; rgbfix patches the cartridge header here

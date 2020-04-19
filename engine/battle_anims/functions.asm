@@ -1533,8 +1533,7 @@ Functioncd97b:
 	add hl, bc
 	ld a, [hl]
 	cp $b8
-	jr c, asm_cd988
-	jp DeinitBattleAnimation
+	jp nc, DeinitBattleAnimation
 
 asm_cd988:
 	call Functioncd99a
@@ -2731,8 +2730,7 @@ BattleAnimFunction_Horn:
 	add hl, bc
 	ld a, [hl]
 	cp $20
-	jr c, Functionce09e
-	jp DeinitBattleAnimation
+	jp nc, DeinitBattleAnimation
 
 Functionce09e:
 	ld hl, BATTLEANIMSTRUCT_10

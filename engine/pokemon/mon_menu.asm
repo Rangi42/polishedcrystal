@@ -856,7 +856,7 @@ MoveScreenLoop:
 .newmove_done
 	ld a, b
 	ld [wMoveScreenNumMoves], a
-	sub 1 ; dec a can't set carry
+	sub 1 ; no-optimize a++|a-- (dec a can't set carry)
 	ret c ; no moves
 
 	; Initialize the interface
@@ -1403,7 +1403,6 @@ MoveScreen_ListMovesFast:
 	hlcoord 18, 10
 	ld [hl], "▼"
 .skip_down
-	jp PlaceMoveData
 
 PlaceMoveData:
 	ld a, [wMoveSwapBuffer]

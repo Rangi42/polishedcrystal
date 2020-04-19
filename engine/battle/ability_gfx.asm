@@ -380,7 +380,7 @@ AbilityVWF:
 	srl c
 	ld a, SLIDEOUT_TEXT_WIDTH / 2
 	add c
-	ld c, a ; used later (can't just do cpl+add)
+	ld c, a ; no-optimize a = N - a
 	ld a, SLIDEOUT_TEXT_WIDTH
 	sub c
 	ld b, a
