@@ -289,18 +289,14 @@ CopyTradeName:
 
 CopyTradeOT:
 ; Copy trade name, blanking the 3 unused bytes past the OT name
-	ld bc, 8
+	ld bc, NAME_LENGTH - 3
 	rst CopyBytes
-	inc hl
-	inc hl
-	inc hl
 	xor a
+rept 3
 	ld [de], a
 	inc de
-	ld [de], a
-	inc de
-	ld [de], a
-	inc de
+	inc hl
+endr
 	ret
 
 Trade_CopyTwoBytes:
