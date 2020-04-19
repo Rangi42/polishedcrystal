@@ -18,5 +18,5 @@ BattleCommand_brickbreak:
 	pop af
 	and SCREENS_LIGHT_SCREEN
 	ret z
-	ld hl, BrokeReflectText
+	ld hl, BrokeLightScreenText
 	jp StdBattleTextBox

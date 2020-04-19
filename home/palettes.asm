@@ -251,7 +251,7 @@ Special_ReloadSpritesNoPalettes::
 	ld a, BANK(wBGPals2)
 	ldh [rSVBK], a
 	ld hl, wBGPals2
-	ld bc, $40 + $10
+	ld bc, 8 palettes
 	xor a
 	rst ByteFill
 	pop af
