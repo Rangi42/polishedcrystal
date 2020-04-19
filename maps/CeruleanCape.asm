@@ -352,7 +352,10 @@ GenericTrainerFisherLeroy:
 	generictrainer FISHER, LEROY, EVENT_BEAT_FISHER_LEROY, .SeenText, .BeatenText
 
 	text "All I ever catch"
-	line "catch is Magikarp…"
+	line "are Magikarp…"
+
+	para "At least they all"
+	line "look unique."
 	done
 
 .SeenText:
