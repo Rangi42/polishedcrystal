@@ -538,6 +538,7 @@ BrickBreak:
 	critical
 	effectchance
 	resettypematchup
+	brickbreak
 	damagestats
 	damagecalc
 	stab
@@ -548,7 +549,6 @@ BrickBreak:
 	applydamage
 	criticaltext
 	supereffectivetext
-	brickbreak
 	postfainteffects
 	posthiteffects
 	endmove
