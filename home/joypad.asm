@@ -31,7 +31,7 @@ Joypad::
 ; We can only get four inputs at a time.
 ; We take d-pad first for no particular reason.
 	ld a, R_DPAD
-	ldh [rJOYP], a ; no-optimize redundant loads
+	ldh [rJOYP], a
 ; Read twice to give the request time to take.
 	ldh a, [rJOYP]
 	ldh a, [rJOYP]

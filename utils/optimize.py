@@ -248,18 +248,19 @@ patterns = {
 	# Bad: ld P, Q / ld P, R (unless the lds have side effects)
 	# Good: ld P, R
 	(lambda line1, prev: (line1.code.startswith('ld ') or line1.code.startswith('ldh ')) and
-		',' in line1.code and '[hli]' not in line1.code and '[hld]' not in line1.code),
+		',' in line1.code and not any(x in line1.code for x in
+			{'[hli]', '[hld]', '[rJOYP]', '[rBGPD]', '[rOBPD]'})),
 	(lambda line2, prev: (line2.code.startswith('ld ') or line2.code.startswith('ldh ')) and
-		',' in line2.code and line2.code.split(',')[0] == prev[0].code.split(',')[0] and
-		not any(x in line2.code for x in {'[hli]', '[hld]', '[rJOYP]', '[rBGPD]', '[rOBPD]'})),
+		',' in line2.code and line2.code.split(',')[0] == prev[0].code.split(',')[0]),
 ],
 'Redundant loads': [
 	# Bad: ld P, Q / ld Q, P (unless the lds have side effects)
 	# Good: ld P, Q
 	(lambda line1, prev: (line1.code.startswith('ld ') or line1.code.startswith('ldh ')) and
-		',' in line1.code and '[hli]' not in line1.code and '[hld]' not in line1.code),
+		',' in line1.code and not any(x in line1.code for x in
+			{'[hli]', '[hld]', '[rJOYP]'})),
 	(lambda line2, prev: (line2.code.startswith('ld ') or line2.code.startswith('ldh ')) and
-		',' in line2.code and '[hli]' not in line2.code and '[hld]' not in line2.code and
+		',' in line2.code and
 		line2.code[3:].split(',')[0].strip() == prev[0].code.split(',')[1].strip() and
 		line2.code.split(',')[1].strip() == prev[0].code[3:].split(',')[0].strip() and
 		line2.context == prev[0].context),
