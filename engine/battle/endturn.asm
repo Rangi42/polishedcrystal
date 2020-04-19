@@ -516,7 +516,18 @@ HandlePoison:
 	ld hl, HurtByPoisonText
 	ld de, ANIM_PSN
 	ret z
-	jr DoPoisonBurnDamage
+	call GetTrueUserAbility
+	cp POISON_HEAL
+	jr nz, DoPoisonBurnDamage
+	; check if we are at full HP
+	farcall CheckFullHP
+	ret z
+	farcall DisableAnimations
+	farcall ShowAbilityActivation
+	ld hl, RegainedHealthText
+	call DoPoisonBurnDamageAnim
+	farcall RestoreHP
+	farjp EnableAnimations
 
 HandleBurn:
 	call SetFastestTurn
@@ -538,31 +549,7 @@ DoPoisonBurnDamage:
 	pop hl
 	ret z
 
-	call GetTrueUserAbility
-	cp POISON_HEAL
-	jr nz, .got_anim
-	; check if we are at full HP
-	farcall CheckFullHP
-	ret z
-	farcall DisableAnimations
-	farcall ShowAbilityActivation
-	ld hl, RegainedHealthText
-	call .do_anim
-	farcall RestoreHP
-	farjp EnableAnimations
-
-.do_anim
-	push de
-	call StdBattleTextBox
-	pop de
-	xor a
-	ld [wNumHits], a
-	farcall Call_PlayBattleAnim_OnlyIfVisible
-	jp GetEighthMaxHP
-
-.got_anim
-	call .do_anim
-
+	call DoPoisonBurnDamageAnim
 	ld a, BATTLE_VARS_STATUS
 	call GetBattleVar
 	and 1 << BRN | 1 << TOX
@@ -592,6 +579,15 @@ DoPoisonBurnDamage:
 	ld c, l
 .did_toxic
 	predef_jump SubtractHPFromUser
+
+DoPoisonBurnDamageAnim:
+	push de
+	call StdBattleTextBox
+	pop de
+	xor a
+	ld [wNumHits], a
+	farcall Call_PlayBattleAnim_OnlyIfVisible
+	jp GetEighthMaxHP
 
 HandleCurse:
 	call SetFastestTurn
