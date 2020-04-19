@@ -285,6 +285,7 @@ endr
 	setmapscene KRISS_HOUSE_1F, $1
 	setevent EVENT_KRISS_HOUSE_MOM_1
 	clearevent EVENT_KRISS_HOUSE_MOM_2
+	setmapscene VERMILION_CITY, $1
 ;	; prof.elm events
 ;	addcellnum PHONE_ELM
 ;	setevent EVENT_GOT_CYNDAQUIL_FROM_ELM

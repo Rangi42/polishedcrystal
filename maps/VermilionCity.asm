@@ -1,7 +1,9 @@
 VermilionCity_MapScriptHeader:
-	db 0 ; scene scripts
+	db 1 ; scene scripts
+	scene_script LawrenceIntroScript
 
-	db 0 ; callbacks
+	db 1 ; callbacks
+	callback MAPCALLBACK_OBJECTS, VermilionCitySetupLawrenceCallback
 
 	db 14 ; warp events
 	warp_event  5,  5, VERMILION_HOUSE_FISHING_SPEECH_HOUSE, 1
@@ -11,17 +13,15 @@ VermilionCity_MapScriptHeader:
 	warp_event 21, 17, VERMILION_MART, 2
 	warp_event 21, 21, VERMILION_HOUSE_DIGLETTS_CAVE_SPEECH_HOUSE, 1
 	warp_event 10, 23, VERMILION_GYM, 1
-	warp_event 17, 35, VERMILION_PORT_PASSAGE, 1
-	warp_event 18, 35, VERMILION_PORT_PASSAGE, 2
+	warp_event 18, 35, VERMILION_PORT_PASSAGE, 1
+	warp_event 19, 35, VERMILION_PORT_PASSAGE, 2
 	warp_event 36, 17, DIGLETTS_CAVE, 1
+	warp_event 28, 35, SEAGALLOP_FERRY_VERMILION_GATE, 1
 	warp_event 29, 35, SEAGALLOP_FERRY_VERMILION_GATE, 1
-	warp_event 30, 35, SEAGALLOP_FERRY_VERMILION_GATE, 1
 	warp_event 13,  5, VERMILION_POLLUTION_SPEECH_HOUSE, 1
 	warp_event 19,  5, VERMILION_S_S_ANNE_SPEECH_HOUSE, 1
 
-	db 2 ; coord events
-	coord_event 18, 32, 0, LawrenceLeftIntroScript
-	coord_event 19, 32, 0, LawrenceRightIntroScript
+	db 0 ; coord events
 
 	db 8 ; bg events
 	bg_event 25,  5, SIGNPOST_JUMPTEXT, VermilionCitySignText
@@ -35,7 +35,7 @@ VermilionCity_MapScriptHeader:
 
 	db 14 ; object events
 	object_event 35, 18, SPRITE_BIG_SNORLAX, SPRITEMOVEDATA_SNORLAX, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, VermilionSnorlax, EVENT_VERMILION_CITY_SNORLAX
-	object_event 19, 28, SPRITE_LAWRENCE, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LAWRENCE_VERMILION_CITY
+	object_event 18, 31, SPRITE_LAWRENCE, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LAWRENCE_VERMILION_CITY
 	object_event 18, 13, SPRITE_BATTLE_GIRL, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1aaa15, -1
 	object_event 23, 10, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, VermilionMachokeOwnerText, -1
 	object_event 26, 11, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, MACHOKE, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, VermilionMachoke, -1
@@ -53,47 +53,42 @@ VermilionCity_MapScriptHeader:
 	const VERMILIONCITY_BIG_SNORLAX
 	const VERMILIONCITY_LAWRENCE
 
-LawrenceLeftIntroScript:
-	turnobject PLAYER, UP
-	showemote EMOTE_SHOCK, PLAYER, 15
-	special Special_FadeOutMusic
-	pause 15
-	showtext LawrenceOverheardText
-	applymovement VERMILIONCITY_LAWRENCE, LawrenceApproachLeftMovementData
-	playsound SFX_TACKLE
-	applymovement VERMILIONCITY_LAWRENCE, LawrenceBumpLeftMovementData
-	showemote EMOTE_SHOCK, VERMILIONCITY_LAWRENCE, 15
-	pause 15
-	applymovement VERMILIONCITY_LAWRENCE, LawrenceWalkAroundLeftMovementData
-	turnobject PLAYER, RIGHT
-	playmusic MUSIC_ZINNIA_ENCOUNTER_ORAS
-	showtext LawrenceIntroText
-	turnobject PLAYER, DOWN
-	applymovement VERMILIONCITY_LAWRENCE, LawrenceDepartLeftMovementData
-	playsound SFX_EXIT_BUILDING
+VermilionCitySetupLawrenceCallback:
+	checkscene
+	iftrue .done
+	checkcode VAR_XCOORD
+	ifequal 18, .done
 	disappear VERMILIONCITY_LAWRENCE
-	setscene $1
-	setflag ENGINE_FLYPOINT_VERMILION
-	special RestartMapMusic
-	end
+	moveobject VERMILIONCITY_LAWRENCE, 19, 31
+	appear VERMILIONCITY_LAWRENCE
+.done
+	return
 
-LawrenceRightIntroScript:
+LawrenceIntroScript:
 	turnobject PLAYER, UP
 	showemote EMOTE_SHOCK, PLAYER, 15
 	special Special_FadeOutMusic
 	pause 15
 	showtext LawrenceOverheardText
-	applymovement VERMILIONCITY_LAWRENCE, LawrenceApproachRightMovementData
+	applymovement VERMILIONCITY_LAWRENCE, LawrenceApproachMovementData
 	playsound SFX_TACKLE
-	applymovement VERMILIONCITY_LAWRENCE, LawrenceBumpRightMovementData
+	applymovement VERMILIONCITY_LAWRENCE, LawrenceBumpMovementData
 	showemote EMOTE_SHOCK, VERMILIONCITY_LAWRENCE, 15
 	pause 15
+	checkcode VAR_XCOORD
+	ifequal 18, .left
 	applymovement VERMILIONCITY_LAWRENCE, LawrenceWalkAroundRightMovementData
 	turnobject PLAYER, LEFT
+	jump .continue
+
+.left
+	applymovement VERMILIONCITY_LAWRENCE, LawrenceWalkAroundLeftMovementData
+	turnobject PLAYER, RIGHT
+.continue
 	playmusic MUSIC_ZINNIA_ENCOUNTER_ORAS
 	showtext LawrenceIntroText
-	turnobject PLAYER, DOWN
-	applymovement VERMILIONCITY_LAWRENCE, LawrenceDepartRightMovementData
+	applyonemovement VERMILIONCITY_LAWRENCE, turn_head_down
+	pause 15
 	playsound SFX_EXIT_BUILDING
 	disappear VERMILIONCITY_LAWRENCE
 	setscene $1
@@ -101,16 +96,13 @@ LawrenceRightIntroScript:
 	special RestartMapMusic
 	end
 
-LawrenceApproachLeftMovementData:
-	step_left
-LawrenceApproachRightMovementData:
+LawrenceApproachMovementData:
 	step_down
 	step_down
 	step_down
 	step_end
 
-LawrenceBumpLeftMovementData:
-LawrenceBumpRightMovementData:
+LawrenceBumpMovementData:
 	fix_facing
 	run_step_up
 	remove_fixed_facing
@@ -130,19 +122,6 @@ LawrenceWalkAroundRightMovementData:
 	step_down
 	step_down
 	turn_head_right
-	step_end
-
-LawrenceDepartLeftMovementData:
-	step_down
-	step_down
-	step_left
-	step_down
-	step_end
-
-LawrenceDepartRightMovementData:
-	step_down
-	step_down
-	step_down
 	step_end
 
 VermilionMachoke:

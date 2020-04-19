@@ -776,7 +776,7 @@ endr
 
 INCLUDE "data/maps/environment_colors.asm"
 
-TilesetBGPalette:
+TilesetBGPalette::
 if DEF(HGSS)
 INCLUDE "gfx/tilesets/palettes/hgss/bg.pal"
 elif DEF(MONOCHROME)

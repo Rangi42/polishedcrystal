@@ -2369,7 +2369,7 @@ CheckCurSpriteCoveredByTextBox:
 	jr nc, .ok9
 	ld b, a
 .next
-	ldh a, [hUsedSpriteIndex]
+	ldh a, [hCurSpriteXCoord]
 	add d
 	dec a
 	cp SCREEN_WIDTH

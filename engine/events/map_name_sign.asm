@@ -5,14 +5,14 @@ ReturnFromMapSetupScript::
 	ld c, a
 	call GetWorldMapLocation
 	ld [wCurLandmark], a
-	call .CheckNationalParkGate
-	jr z, .nationalparkgate
+	call .CheckExcludedMap
+	jr z, .excluded_map
 
 	call GetMapPermission
 	cp GATE
 	jr nz, .not_gate
 
-.nationalparkgate
+.excluded_map
 	ld a, -1
 	ld [wCurLandmark], a
 
@@ -36,6 +36,15 @@ ReturnFromMapSetupScript::
 	eventflagcheck EVENT_LUCKY_ISLAND_CIVILIANS
 	jr nz, .dont_do_map_sign
 .not_lucky_island
+
+; Vermilion City runs a scene_script by default
+	ld a, [wCurLandmark]
+	cp VERMILION_CITY
+	jr nz, .not_vermilion_city
+	ld a, [wVermilionCitySceneID]
+	and a
+	jr z, .dont_do_map_sign
+.not_vermilion_city
 
 ; Landmark sign timer:
 ; $80-$70: Sliding out (old sign)
@@ -110,15 +119,24 @@ ReturnFromMapSetupScript::
 	and a
 	ret
 
-.CheckNationalParkGate:
+.CheckExcludedMap:
 	ld a, [wMapGroup]
 	assert GROUP_ROUTE_35_NATIONAL_PARK_GATE == GROUP_ROUTE_36_NATIONAL_PARK_GATE
 	cp GROUP_ROUTE_35_NATIONAL_PARK_GATE
-	ret nz
+	jr nz, .not_national_park_gate
 	ld a, [wMapNumber]
 	cp MAP_ROUTE_35_NATIONAL_PARK_GATE
 	ret z
 	cp MAP_ROUTE_36_NATIONAL_PARK_GATE
+	ret
+.not_national_park_gate
+	assert GROUP_OLIVINE_PORT == GROUP_VERMILION_PORT
+	cp GROUP_OLIVINE_PORT
+	ret nz
+	ld a, [wMapNumber]
+	cp MAP_OLIVINE_PORT
+	ret z
+	cp MAP_VERMILION_PORT
 	ret
 
 PlaceMapNameSign::
