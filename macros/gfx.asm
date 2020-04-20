@@ -6,9 +6,7 @@ x = (299 * \1 + 587 * \2 + 114 * \3) / 1000
 else
 	dw palred (\1) + palgreen (\2) + palblue (\3)
 endc
-	shift
-	shift
-	shift
+	shift 3
 endr
 ENDM
 

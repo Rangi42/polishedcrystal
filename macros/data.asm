@@ -41,11 +41,10 @@ dbbwww: MACRO
 ENDM
 
 dn: MACRO
-	rept _NARG / 2
+rept _NARG / 2
 	db (\1) << 4 + (\2)
-	shift
-	shift
-	endr
+	shift 2
+endr
 ENDM
 
 dx: MACRO
@@ -69,17 +68,17 @@ bigdw: MACRO ; big-endian word
 ENDM
 
 dba: MACRO ; dbw bank, address
-	rept _NARG
+rept _NARG
 	dbw BANK(\1), \1
 	shift
-	endr
+endr
 ENDM
 
 dab: MACRO ; dwb address, bank
-	rept _NARG
+rept _NARG
 	dwb \1, BANK(\1)
 	shift
-	endr
+endr
 ENDM
 
 dbba: MACRO
@@ -105,10 +104,10 @@ dsprite: MACRO
 ENDM
 
 bcd: MACRO
-	rept _NARG
+rept _NARG
 	dn ((\1) % 100) / 10, (\1) % 10
 	shift
-	endr
+endr
 ENDM
 
 

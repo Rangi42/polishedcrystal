@@ -1,12 +1,3 @@
-EntryPoint  EQU $00
-FarCall     EQU $08
-Bankswitch  EQU $10
-AddNTimes   EQU $18
-CopyBytes   EQU $20
-ByteFill    EQU $28
-PlaceString EQU $30
-Predef      EQU $38
-
 anonbankpush: MACRO
 	call AnonBankPush
 	db BANK(\1)

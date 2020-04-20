@@ -4,6 +4,7 @@
 ; rst vectors
 
 SECTION "rst00 EntryPoint", ROM0[$0000]
+EntryPoint::
 	di
 	jp Rst0Crash
 
@@ -12,6 +13,7 @@ PushWindow::
 
 
 SECTION "rst08 FarCall", ROM0[$0008]
+FarCall::
 	jp RstFarCall
 
 PopAFBCDEHL::
@@ -24,6 +26,7 @@ PopBCDEHL::
 
 
 SECTION "rst10 Bankswitch", ROM0[$0010]
+Bankswitch::
 	ldh [hROMBank], a
 	ld [MBC3RomBank], a
 	ret
@@ -35,6 +38,7 @@ DoNothing::
 
 
 SECTION "rst18 AddNTimes", ROM0[$0018]
+AddNTimes::
 	jp _AddNTimes
 
 FarCopyColorWRAM::
@@ -47,6 +51,7 @@ FarCopyWRAM::
 
 
 SECTION "rst20 CopyBytes", ROM0[$0020]
+CopyBytes::
 	jp _CopyBytes
 
 GetFarByte::
@@ -59,6 +64,7 @@ GetFarByte::
 
 
 SECTION "rst28 ByteFill", ROM0[$0028]
+ByteFill::
 	jp _ByteFill
 
 GetFarWRAMByte::
@@ -70,6 +76,7 @@ GetFarWRAMByte::
 
 
 SECTION "rst30 PlaceString", ROM0[$0030]
+PlaceString::
 	jp _PlaceString
 
 SwapHLDE::
@@ -81,6 +88,7 @@ SwapHLDE::
 
 
 SECTION "rst38 Predef", ROM0[$0038]
+Predef::
 	jp _Predef
 
 IsAPokemon::
@@ -151,6 +159,4 @@ Start::
 	jp _Start
 
 ; rgbfix patches the cartridge header here
-rept $0150 - $0104
-	db $00
-endr
+	ds $0150 - @, $00
