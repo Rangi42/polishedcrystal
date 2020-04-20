@@ -52,7 +52,9 @@ sMailbox8Backup::  mailmsg sMailbox8Backup
 sMailbox9Backup::  mailmsg sMailbox9Backup
 sMailbox10Backup:: mailmsg sMailbox10Backup
 
-	ds 164
+sSaveVersion:: dw
+
+	ds 162
 
 sRTCStatusFlags:: ds 8
 sLuckyNumberDay:: db

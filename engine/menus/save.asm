@@ -409,6 +409,7 @@ TryLoadSaveFile:
 	call SaveBackupPlayerData
 	call SaveBackupPokemonData
 	call SaveBackupChecksum
+	call UpgradeSaveVersion
 	and a
 	ret
 
@@ -887,3 +888,101 @@ UnknownText_0x152a6:
 	; Each time you move a #MON, data will be saved. OK?
 	text_jump UnknownText_0x1c465f
 	text_end
+
+UpgradeSaveVersion:
+; upgrade older saves to a newer version
+	ld a, BANK(sSaveVersion)
+	call GetSRAMBank
+	ld a, [sSaveVersion]
+	ld b, a
+	ld a, [sSaveVersion + 1]
+	ld c, a
+	call CloseSRAM
+
+.version_upgrade_loop
+	ld a, b
+	cp HIGH(SAVE_VERSION)
+	jr nz, .needs_upgrade
+	ld a, c
+	cp LOW(SAVE_VERSION)
+	jr z, .write_current_version
+.needs_upgrade
+	ld hl, SaveUpgrades
+	add hl, bc
+	add hl, bc
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	push bc
+	call _hl_
+	call SaveGameData
+	pop bc
+	inc bc
+	jr .version_upgrade_loop
+.write_current_version
+	ld a, BANK(sSaveVersion)
+	call GetSRAMBank
+	ld a, b
+	ld [sSaveVersion], a
+	ld a, c
+	ld [sSaveVersion + 1], a
+	jp CloseSRAM
+
+SaveUpgrades:
+	dw ResetHyperTrainingBits
+	assert (@ - SaveUpgrades) == SAVE_VERSION * 2, "Missing save upgrade"
+
+ResetHyperTrainingBits:
+	; reset player name
+	ld hl, wPlayerName + PLAYER_NAME_LENGTH
+	call .ZeroBits
+
+	; reset daycare names
+	ld hl, wBreedMon1OT + PLAYER_NAME_LENGTH
+	call .ZeroBits
+	ld hl, wBreedMon2OT + PLAYER_NAME_LENGTH
+	call .ZeroBits
+
+	; reset party names
+	ld hl, wPartyMonOT
+	ld d, PARTY_LENGTH
+	ld bc, PLAYER_NAME_LENGTH
+.loop
+	add hl, bc
+	call .ZeroBits
+	dec d
+	jr nz, .loop
+
+	; reset Storage System names
+	ld a, BANK(sBox1)
+	call GetSRAMBank
+	call .storage_loop
+	ld a, BANK(sBox8)
+	call GetSRAMBank
+	call .storage_loop
+	jp CloseSRAM
+
+.storage_loop
+	ld hl, sBox1MonOT
+	lb de, MONS_PER_BOX, 7
+	ld bc, PLAYER_NAME_LENGTH
+.loop2
+	add hl, bc
+	call .ZeroBits
+	dec d
+	jr nz, .loop2
+	push bc
+	ld bc, sBox2MonOT - sBox1MonNicknames
+	add hl, bc
+	pop bc
+	ld d, MONS_PER_BOX
+	dec e
+	jr nz, .loop2
+	ret
+
+.ZeroBits:
+	xor a
+	ld [hli], a
+	ld [hli], a
+	ld [hli], a
+	ret
