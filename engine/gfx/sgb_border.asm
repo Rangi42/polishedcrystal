@@ -43,7 +43,7 @@ SendSGBPacket:
 	jr .loop2
 
 SGBDelayCycles:
-	ld de, 7000
+	ld de, 28000
 .wait
 	nop ; no-optimize nops
 	nop ; no-optimize nops
@@ -59,6 +59,14 @@ InitSGBBorder::
 	and a
 	ret nz
 
+	ld a, BANK(wDecompressScratch)
+	push af
+	ldh [rSVBK], a
+
+	ld hl, SGBBorderGFX
+	ld b, BANK(SGBBorderGFX)
+	call FarDecompressAtB_D000
+
 	di
 	ld hl, MaskEnFreezePacket
 	call SendSGBPacket
@@ -67,7 +75,7 @@ InitSGBBorder::
 	ld a, TRUE
 	ld [wCopyingSGBTileData], a
 	ld de, ChrTrnPacket
-	ld hl, SGBBorderGraphics
+	ld hl, wDecompressScratch
 	call CopyGfxToSuperNintendoVRAM
 
 	xor a
@@ -79,7 +87,7 @@ InitSGBBorder::
 	xor a
 	ld [wCopyingSGBTileData], a
 	ld de, PalTrnPacket
-	ld hl, SGBBorderMap ; not SGBBorderPalettes
+	ld hl, SGBBorderMap ; not SGBBorderPals
 	call CopyGfxToSuperNintendoVRAM
 
 	ld hl, vTiles0
@@ -88,7 +96,11 @@ InitSGBBorder::
 	rst ByteFill
 
 	ld hl, MaskEnCancelPacket
-	jp SendSGBPacket
+	call SendSGBPacket
+
+	pop af
+	ldh [rSVBK], a
+	ret
 
 CopyGfxToSuperNintendoVRAM:
 	di
@@ -179,8 +191,8 @@ PctTrnPacket:
 SGBBorderMap:
 INCBIN "gfx/sgb/sgb_border.bin"
 
-SGBBorderPalettes:
+SGBBorderPals:
 INCLUDE "gfx/sgb/sgb_border.pal"
 
-SGBBorderGraphics:
-INCBIN "gfx/sgb/sgb_border.2bpp"
+SGBBorderGFX:
+INCBIN "gfx/sgb/sgb_border.2bpp.lz"
