@@ -113,12 +113,3 @@ LoadEnemyStatusIcon:
 	farcall LoadEnemyStatusIconPalette
 	pop de
 	ret
-
-LoadStatsScreenGFX:
-	call _LoadFontsBattleExtra
-
-LoadStatsGFX:
-	ld hl, GFX_Stats
-	ld de, vTiles2 tile $31
-	lb bc, BANK(GFX_Stats), 15
-	jp DecompressRequest2bpp

@@ -1239,7 +1239,7 @@ SetUpMoveScreenBG:
 	ldh [hBGMapMode], a
 	ld a, CGB_PARTY_MENU
 	call GetCGBLayout
-	farcall LoadStatsGFX
+	call LoadFontsBattleExtra
 	call ClearSpriteAnims2
 	ld a, [wCurPartyMon]
 	ld e, a

@@ -30,9 +30,6 @@ INCBIN "gfx/frames/9.1bpp"
 BattleExtrasGFX:
 INCBIN "gfx/battle/hpexpbars.2bpp"
 
-GFX_Stats:
-INCBIN "gfx/stats/stats.2bpp.lz"
-
 StatusIconGFX:
 INCBIN "gfx/battle/status.2bpp"
 
@@ -44,9 +41,6 @@ INCBIN "gfx/battle/types.1bpp"
 
 CategoryIconGFX:
 INCBIN "gfx/battle/categories.2bpp"
-
-TownMapGFX:
-INCBIN "gfx/town_map/town_map.2bpp.lz"
 
 TextBoxSpaceGFX::
 INCBIN "gfx/frames/space.1bpp"

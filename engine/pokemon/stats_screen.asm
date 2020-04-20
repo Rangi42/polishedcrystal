@@ -16,7 +16,11 @@ StatsScreenInit:
 	call ClearBGPalettes
 	call ClearTileMap
 	call UpdateSprites
-	farcall LoadStatsScreenGFX
+	call LoadFontsBattleExtra
+	ld hl, GFX_Stats
+	ld de, vTiles2 tile $31
+	lb bc, BANK(GFX_Stats), 41
+	call DecompressRequest2bpp
 	pop hl
 	call _hl_
 	call ClearBGPalettes
@@ -482,22 +486,13 @@ StatsScreen_LoadGFX:
 	ld [hl], $34 ; right
 	hlcoord 8, 7
 	ld [hl], $35 ; bottom
-	; get index for center graphics
-	; CaughtBallsGFX + [wTempMonCaughtBall] tiles
-	ld hl, CaughtBallsGFX
-	ld bc, 1 tiles
+	; draw center
+	; index = $40 + [wTempMonCaughtBall]
 	ld a, [wTempMonCaughtBall]
 	and CAUGHTBALL_MASK
-	rst AddNTimes
-	; load center graphics
-	ld d, h
-	ld e, l
-	ld hl, vTiles2 tile $40
-	lb bc, BANK(CaughtBallsGFX), 1
-	call Request2bpp
-	; draw center
+	add $40
 	hlcoord 8, 6
-	ld [hl], $40 ; center
+	ld [hl], a ; center
 	ret
 
 .LoadPals:
@@ -1333,6 +1328,3 @@ CheckFaintedFrzSlp:
 .fainted_frz_slp
 	scf
 	ret
-
-CaughtBallsGFX:
-INCBIN "gfx/stats/balls.2bpp"
