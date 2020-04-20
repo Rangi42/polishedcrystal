@@ -501,13 +501,6 @@ IncreaseMetronomeCount:
 	ret
 
 CheckPowerHerb:
-	predef GetUserItemAfterUnnerve
-	ld a, b
-	cp HELD_POWER_HERB
-	ret nz
-
-	call GetCurItemName
-
 	call HasUserFainted
 	ret z
 
@@ -515,6 +508,32 @@ CheckPowerHerb:
 	call GetBattleVar
 	bit SUBSTATUS_CHARGED, a
 	ret z
+
+	ld a, BATTLE_VARS_MOVE_EFFECT
+	call GetBattleVar
+	cp EFFECT_SOLAR_BEAM
+	jr nz, .no_solar_beam
+
+	; check for sun
+	call GetWeatherAfterUserUmbrella
+	cp WEATHER_SUN
+	jr z, .chargeup
+
+.no_solar_beam
+	predef GetUserItemAfterUnnerve
+	ld a, b
+	cp HELD_POWER_HERB
+	jr z, .has_power_herb
+
+	; Raise sub if we're using Solar Beam
+	ld a, BATTLE_VARS_MOVE_EFFECT
+	call GetBattleVar
+	cp EFFECT_SOLAR_BEAM
+	ret nz
+	jp BattleCommand_raisesub
+
+.has_power_herb
+	call GetCurItemName
 
 	farcall ItemRecoveryAnim
 	call GetUserItem
@@ -526,6 +545,7 @@ CheckPowerHerb:
 
 	; If already called from a seperate move, don't change charging.
 	; Otherwise, mark as repeated due to Power Herb
+.chargeup
 	call CheckUserIsCharging
 	ld a, 2
 	jr z, _ResetTurn
@@ -1992,26 +2012,9 @@ BattleCommand_lowersub:
 	bit SUBSTATUS_SUBSTITUTE, a
 	ret z
 
-	ld a, BATTLE_VARS_SUBSTATUS3
-	call GetBattleVar
-	bit SUBSTATUS_CHARGED, a
-	jr nz, .already_charged
-
-	ld a, BATTLE_VARS_MOVE_EFFECT
-	call GetBattleVar
-	cp EFFECT_SOLAR_BEAM
-	jr z, .charge_turn
-	cp EFFECT_FLY
-	jr z, .charge_turn
-
-.already_charged
-	call .Rampage
-	jr z, .charge_turn
-
 	call CheckUserIsCharging
 	ret nz
 
-.charge_turn
 	call _CheckBattleEffects
 	jr c, .mimic_anims
 
@@ -2026,25 +2029,6 @@ BattleCommand_lowersub:
 .mimic_anims
 	call BattleCommand_lowersubnoanim
 	jp BattleCommand_movedelay
-
-.Rampage:
-	ld a, BATTLE_VARS_MOVE_EFFECT
-	call GetBattleVar
-	cp EFFECT_ROLLOUT
-	jr z, .rollout_rampage
-	cp EFFECT_RAMPAGE
-	jr z, .rollout_rampage
-
-	ld a, 1
-	and a
-	ret
-
-.rollout_rampage
-	ld a, [wSomeoneIsRampaging]
-	and a
-	ld a, 0
-	ld [wSomeoneIsRampaging], a
-	ret
 
 BattleCommand_moveanim:
 	call BattleCommand_lowersub
@@ -5079,9 +5063,7 @@ BattleCommand_forceswitch:
 	ld a, ATKFAIL_GENERIC
 .fail
 	ld [wAttackMissed], a
-	call BattleCommand_lowersub
-	call BattleCommand_movedelay
-	call BattleCommand_raisesub
+	call AnimateFailedMove
 	jp FailText_CheckOpponentProtect
 
 .wild
@@ -5309,14 +5291,10 @@ BattleCommand_charge:
 	inc a
 	ld [wKickCounter], a
 	call LoadMoveAnim
-	ld a, BATTLE_VARS_MOVE_ANIM
+	ld a, BATTLE_VARS_MOVE_EFFECT
 	call GetBattleVar
-	cp FLY
-	jr z, .flying
-	cp DIG
-	jr z, .flying
-	call BattleCommand_raisesub
-	jr .not_flying
+	cp EFFECT_FLY
+	jr nz, .not_flying
 
 .flying
 	call DisappearUser
@@ -6107,13 +6085,6 @@ BattleCommand_doubleminimizedamage:
 	ld [hli], a
 	ld [hl], a
 	ret
-
-BattleCommand_skipsuncharge:
-	call GetWeatherAfterUserUmbrella
-	cp WEATHER_SUN
-	ret nz
-	ld b, charge_command
-	jp SkipToBattleCommandAfter
 
 GetFutureSightUser::
 ; Returns:

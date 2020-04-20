@@ -2085,7 +2085,6 @@ SolarBeam:
 	checkobedience
 	doturn
 	hastarget
-	skipsuncharge
 	charge
 	usedmovetext
 	critical

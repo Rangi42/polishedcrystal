@@ -124,7 +124,6 @@ BattleCommandPointers:
 	command checkfuturesight
 	command futuresight
 	command doubleminimizedamage
-	command skipsuncharge
 	command thunderaccuracy
 	command teleport
 	command switchout

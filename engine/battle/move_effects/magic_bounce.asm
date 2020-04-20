@@ -79,6 +79,7 @@ BattleCommand_bounceback:
 
 	; Do the move
 	call UpdateMoveData
+	call BattleCommand_lowersub
 	call ResetTurn
 
 	; Restore old data
