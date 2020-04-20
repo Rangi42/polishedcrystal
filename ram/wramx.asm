@@ -1411,39 +1411,20 @@ SECTION "Attributes", WRAMX
 wDecompressedAttributes:: ds 256 tiles
 
 
-SECTION "GBC Video", WRAMX
+SECTION "Collisions or Music Player", WRAMX
 
-; 8 4-color palettes
-wBGPals1:: ds 8 palettes
-wOBPals1:: ds 8 palettes
-wBGPals2:: ds 8 palettes
-wOBPals2:: ds 8 palettes
-
-wLYOverrides:: ds SCREEN_HEIGHT_PX
-wLYOverridesEnd::
-
-wMagnetTrain::
-wMagnetTrainDirection:: db
-wMagnetTrainInitPosition:: db
-wMagnetTrainHoldPosition:: db
-wMagnetTrainFinalPosition:: db
-wMagnetTrainPlayerSpriteInitX:: db
-
-wColorVaryDVs:: ds 3
-wColorVarySpecies:: db
-wColorVaryShiny:: db
-
-wPalFadeDelayFrames:: db
-wPalFadeDelay:: db
-
-	ds 100 ; unused
-
-wLYOverridesBackup:: ds SCREEN_HEIGHT_PX
-wLYOverridesBackupEnd::
+UNION
+wDecompressedCollisions:: ds 256 * 4
+NEXTU
+wMPNotes:: ds 4 * 256
+NEXTU
+wDecompressedCreditsGFX:: ; ds (4 * 4 tiles) * 13 ; ds $d00
+ENDU
 
 
 SECTION "Battle Animations RAM", WRAMX
 
+wBattleAnims::
 wBattleAnimTileDict:: ds 10
 
 wActiveAnimObjects::
@@ -1496,18 +1477,41 @@ wBattleAnimTempPalette::
 wBattleAnimTemp8:: db
 
 wSurfWaveBGEffect:: ds $32
-wBattleAnimEnd::
+wBattleAnimsEnd::
 	ds $e
 wSurfWaveBGEffectEnd::
 
 
-SECTION "Collisions or Music Player", WRAMX
+SECTION "GBC Video", WRAMX
 
-UNION
-wDecompressedCollisions:: ds 256 * 4
-NEXTU
-wMPNotes:: ds 4 * 256
-ENDU
+; 8 4-color palettes
+wBGPals1:: ds 8 palettes
+wOBPals1:: ds 8 palettes
+wBGPals2:: ds 8 palettes
+wOBPals2:: ds 8 palettes
+
+wLYOverrides:: ds SCREEN_HEIGHT_PX
+wLYOverridesEnd::
+
+wMagnetTrain::
+wMagnetTrainDirection:: db
+wMagnetTrainInitPosition:: db
+wMagnetTrainHoldPosition:: db
+wMagnetTrainFinalPosition:: db
+wMagnetTrainPlayerSpriteInitX:: db
+
+wColorVaryDVs:: ds 3
+wColorVarySpecies:: db
+wColorVaryShiny:: db
+
+wPalFadeDelayFrames:: db
+wPalFadeDelay:: db
+
+	ds 100 ; unused
+
+wLYOverridesBackup:: ds SCREEN_HEIGHT_PX
+wLYOverridesBackupEnd::
+
 
 SECTION "Scratch RAM", WRAMX
 

@@ -1294,8 +1294,12 @@ BattleAnimAssignPals:
 
 ClearBattleAnims:
 ; Clear animation block
+	ld hl, wBattleAnims
+	ld bc, wBattleAnimsEnd - wBattleAnims
+	xor a
+	rst ByteFill
 	ld hl, wLYOverrides
-	ld bc, wBattleAnimEnd - wLYOverrides
+	ld bc, wLYOverridesBackupEnd - wLYOverrides
 	xor a
 	rst ByteFill
 

@@ -261,9 +261,9 @@ WRAMX $5
 	org $d000
 	"Collisions or Music Player"
 	org $d400
-	"GBC Video"
-	org $d700
 	"Battle Animations RAM"
+	org $dd00
+	"GBC Video"
 
 WRAMX $6
 	org $d000

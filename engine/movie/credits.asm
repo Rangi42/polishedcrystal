@@ -166,6 +166,8 @@ Credits::
 	lb bc, BANK(TheEndGFX), $10
 	call DecompressRequest2bpp
 
+	call DecompressCreditsSequenceGFX
+
 	xor a
 	ld [wCreditsBorderMon], a
 	dec a ; $ff
@@ -175,7 +177,7 @@ Credits::
 	ld e, l
 	ld d, h
 	ld hl, vTiles2
-	lb bc, BANK(CreditsMonsGFX), 16
+	lb bc, BANK(CreditsSequencesGFX), 16
 	call Request2bpp
 
 	call ConstructCreditsTilemap
@@ -436,13 +438,12 @@ ParseCredits:
 	cp SPAWN_LEAF
 	jr z, .leaf_scene
 	call .get
-	ld [wCreditsBorderMon], a ; scene
 	jr .got_scene
 .leaf_scene
 	call .get
 	add 4
-	ld [wCreditsBorderMon], a ; scene
 .got_scene
+	ld [wCreditsBorderMon], a ; scene
 	xor a
 	ld [wCreditsBorderFrame], a ; frame
 	call GetCreditsPalette
@@ -453,7 +454,7 @@ ParseCredits:
 ; Clear the banner.
 	ld a, $ff
 	ld [wCreditsBorderFrame], a ; frame
-	jp .loop
+	jr .loop
 
 .music
 ; Play the credits music.
@@ -692,18 +693,18 @@ if !DEF(MONOCHROME)
 	RGB 31, 31, 31
 	RGB 00, 00, 00
 
-; Ditto
+; Munchlax
 	RGB 31, 31, 31
-	RGB 23, 12, 28
-	RGB 31, 22, 00
+	RGB 08, 17, 17
+	RGB 30, 28, 16
 	RGB 07, 07, 07
 
-	RGB 03, 20, 00
-	RGB 31, 22, 00
-	RGB 31, 22, 00
+	RGB 16, 15, 08
+	RGB 30, 28, 16
+	RGB 30, 28, 16
 	RGB 31, 31, 31
 
-	RGB 03, 20, 00
+	RGB 16, 15, 08
 	RGB 00, 00, 00
 	RGB 31, 31, 31
 	RGB 31, 31, 31
@@ -740,18 +741,18 @@ if !DEF(MONOCHROME)
 	RGB 31, 31, 31
 	RGB 31, 31, 31
 
-; Munchlax
+; Ditto
 	RGB 31, 31, 31
-	RGB 08, 17, 17
-	RGB 30, 28, 16
+	RGB 23, 12, 28
+	RGB 31, 22, 00
 	RGB 07, 07, 07
 
-	RGB 16, 15, 08
-	RGB 30, 28, 16
-	RGB 30, 28, 16
+	RGB 03, 20, 00
+	RGB 31, 22, 00
+	RGB 31, 22, 00
 	RGB 31, 31, 31
 
-	RGB 16, 15, 08
+	RGB 03, 20, 00
 	RGB 00, 00, 00
 	RGB 31, 31, 31
 	RGB 31, 31, 31
@@ -853,78 +854,20 @@ Credits_LoadBorderGFX:
 	ret
 
 .Frames:
-; Pichu
-	dw CreditsPichu1GFX
-	dw CreditsPichu2GFX
-	dw CreditsPichu3GFX
-	dw CreditsPichu4GFX
-	dw CreditsPichu1GFX
-	dw CreditsPichu2GFX
-	dw CreditsPichu3GFX
-	dw CreditsPichu4GFX
-; Sentret
-	dw CreditsSentret1GFX
-	dw CreditsSentret1GFX
-	dw CreditsSentret2GFX
-	dw CreditsSentret2GFX
-	dw CreditsSentret3GFX
-	dw CreditsSentret3GFX
-	dw CreditsSentret4GFX
-	dw CreditsSentret4GFX
-; Ditto
-	dw CreditsDitto1GFX
-	dw CreditsDitto2GFX
-	dw CreditsDitto3GFX
-	dw CreditsDitto4GFX
-	dw CreditsDitto1GFX
-	dw CreditsDitto2GFX
-	dw CreditsDitto3GFX
-	dw CreditsDitto4GFX
-; Togepi
-	dw CreditsTogepi1GFX
-	dw CreditsTogepi1GFX
-	dw CreditsTogepi2GFX
-	dw CreditsTogepi2GFX
-	dw CreditsTogepi3GFX
-	dw CreditsTogepi3GFX
-	dw CreditsTogepi4GFX
-	dw CreditsTogepi4GFX
-; Smoochum
-	dw CreditsSmoochum1GFX
-	dw CreditsSmoochum2GFX
-	dw CreditsSmoochum3GFX
-	dw CreditsSmoochum4GFX
-	dw CreditsSmoochum1GFX
-	dw CreditsSmoochum2GFX
-	dw CreditsSmoochum3GFX
-	dw CreditsSmoochum4GFX
-; Munchlax
-	dw CreditsMunchlax1GFX
-	dw CreditsMunchlax1GFX
-	dw CreditsMunchlax2GFX
-	dw CreditsMunchlax2GFX
-	dw CreditsMunchlax3GFX
-	dw CreditsMunchlax3GFX
-	dw CreditsMunchlax4GFX
-	dw CreditsMunchlax4GFX
-; Elekid
-	dw CreditsElekid1GFX
-	dw CreditsElekid1GFX
-	dw CreditsElekid2GFX
-	dw CreditsElekid2GFX
-	dw CreditsElekid3GFX
-	dw CreditsElekid3GFX
-	dw CreditsElekid4GFX
-	dw CreditsElekid4GFX
-; Bellossom
-	dw CreditsBellossom1GFX
-	dw CreditsBellossom1GFX
-	dw CreditsBellossom2GFX
-	dw CreditsBellossom2GFX
-	dw CreditsBellossom3GFX
-	dw CreditsBellossom3GFX
-	dw CreditsBellossom4GFX
-	dw CreditsBellossom4GFX
+credits_frame_seq: MACRO
+rept 8
+	dw wDecompressedCreditsGFX + (4 * 4 tiles) * \1
+	shift
+endr
+ENDM
+	credits_frame_seq  0,  1,  2,  1,  0,  1,  2,  1 ; Pichu
+	credits_frame_seq  3,  3,  4,  4,  5,  5,  6,  6 ; Sentret
+	credits_frame_seq  7,  7,  8,  8,  7,  7,  9,  9 ; Munchlax
+	credits_frame_seq 10, 10, 11, 11, 10, 10, 12, 12 ; Togepi
+	credits_frame_seq  0,  1,  0,  2,  0,  1,  0,  2 ; Smoochum
+	credits_frame_seq  3,  4,  5,  6,  3,  4,  5,  6 ; Ditto
+	credits_frame_seq  7,  7,  8,  8,  7,  7,  9,  9 ; Elekid
+	credits_frame_seq 10, 10, 11, 11, 12, 12, 11, 11 ; Bellossom
 
 Credits_TheEnd:
 	ld a, $40
@@ -940,39 +883,23 @@ Credits_TheEnd:
 	jr nz, .loop
 	ret
 
-CreditsMonsGFX:
-CreditsPichu1GFX:     INCBIN "gfx/credits/pichu1.2bpp"
-CreditsPichu2GFX:
-CreditsPichu4GFX:     INCBIN "gfx/credits/pichu2_4.2bpp"
-CreditsPichu3GFX:     INCBIN "gfx/credits/pichu3.2bpp"
-CreditsSentret1GFX:   INCBIN "gfx/credits/sentret1.2bpp"
-CreditsSentret2GFX:   INCBIN "gfx/credits/sentret2.2bpp"
-CreditsSentret3GFX:   INCBIN "gfx/credits/sentret3.2bpp"
-CreditsSentret4GFX:   INCBIN "gfx/credits/sentret4.2bpp"
-CreditsDitto1GFX:     INCBIN "gfx/credits/ditto1.2bpp"
-CreditsDitto2GFX:     INCBIN "gfx/credits/ditto2.2bpp"
-CreditsDitto3GFX:     INCBIN "gfx/credits/ditto3.2bpp"
-CreditsDitto4GFX:     INCBIN "gfx/credits/ditto4.2bpp"
-CreditsTogepi1GFX:
-CreditsTogepi3GFX:    INCBIN "gfx/credits/togepi1_3.2bpp"
-CreditsTogepi2GFX:    INCBIN "gfx/credits/togepi2.2bpp"
-CreditsTogepi4GFX:    INCBIN "gfx/credits/togepi4.2bpp"
-CreditsSmoochum1GFX:
-CreditsSmoochum3GFX:  INCBIN "gfx/credits/smoochum1_3.2bpp"
-CreditsSmoochum2GFX:  INCBIN "gfx/credits/smoochum2.2bpp"
-CreditsSmoochum4GFX:  INCBIN "gfx/credits/smoochum4.2bpp"
-CreditsMunchlax1GFX:
-CreditsMunchlax3GFX:  INCBIN "gfx/credits/munchlax1_3.2bpp"
-CreditsMunchlax2GFX:  INCBIN "gfx/credits/munchlax2.2bpp"
-CreditsMunchlax4GFX:  INCBIN "gfx/credits/munchlax4.2bpp"
-CreditsElekid1GFX:
-CreditsElekid3GFX:    INCBIN "gfx/credits/elekid1_3.2bpp"
-CreditsElekid2GFX:    INCBIN "gfx/credits/elekid2.2bpp"
-CreditsElekid4GFX:    INCBIN "gfx/credits/elekid4.2bpp"
-CreditsBellossom1GFX: INCBIN "gfx/credits/bellossom1.2bpp"
-CreditsBellossom2GFX:
-CreditsBellossom4GFX: INCBIN "gfx/credits/bellossom2_4.2bpp"
-CreditsBellossom3GFX: INCBIN "gfx/credits/bellossom3.2bpp"
+DecompressCreditsSequenceGFX:
+	ld a, [wCreditsSpawn]
+	cp SPAWN_LEAF
+	ld hl, CreditsSequence2GFX
+	jr z, .ok
+	ld hl, CreditsSequence1GFX
+.ok
+	ld de, wDecompressedCreditsGFX
+	ld b, BANK(CreditsSequencesGFX)
+	ld a, BANK(wDecompressedCreditsGFX)
+	call StackCallInWRAMBankA
+.Function
+	jp FarDecompressAtB_D000
+
+CreditsSequencesGFX:
+CreditsSequence1GFX: INCBIN "gfx/credits/sequence1.2bpp.lz"
+CreditsSequence2GFX: INCBIN "gfx/credits/sequence2.2bpp.lz"
 
 CreditsScript:
 
@@ -1052,7 +979,7 @@ CreditsScript:
 	db CREDITS_WAIT, 1
 
 ; Update the banner.
-	db CREDITS_SCENE, 1 ; Sentret or Munchlax
+	db CREDITS_SCENE, 1 ; Sentret or Ditto
 
 	db      GRAPHICS_DESIGN, 0
 	db     HIRONOBU_YOSHIDA, 1
@@ -1120,7 +1047,7 @@ CreditsScript:
 	db CREDITS_WAIT, 1
 
 ; Update the banner.
-	db CREDITS_SCENE, 2 ; Ditto or Elekid
+	db CREDITS_SCENE, 2 ; Munchlax or Elekid
 
 	db        SCRIPT_DESIGN, 1
 	db         TETSUJI_OOTA, 2
