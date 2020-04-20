@@ -47,7 +47,7 @@ endif
 
 roms_md5      = roms.md5
 bank_ends_txt = contents/bank_ends.txt
-sorted_sym    = contents/$(NAME).sym
+copied_sym    = contents/$(NAME).sym
 copied_map    = contents/$(NAME).map
 copied_gbc    = contents/$(NAME).gbc
 
@@ -62,7 +62,6 @@ SCAN_INCLUDES     = tools/scan_includes
 SUB_2BPP          = tools/sub_2bpp.sh
 COLLISION_ASM2BIN = tools/collision_asm2bin.sh
 
-MAP2SYM   := $(PYTHON) utils/map2sym.py
 BANK_ENDS := utils/bankends
 
 
@@ -97,7 +96,7 @@ noir: crystal
 hgss: crystal
 debug: crystal
 
-freespace: $(bank_ends_txt) $(roms_md5) $(sorted_sym) $(copied_map) $(copied_gbc)
+freespace: $(bank_ends_txt) $(roms_md5) $(copied_sym) $(copied_map) $(copied_gbc)
 
 
 # Build tools when building the rom
@@ -132,7 +131,7 @@ utils/parsemap.o: utils/parsemap.c utils/parsemap.h
 	cd utils && $(CC) $(CFLAGS) -c parsemap.c
 
 $(roms_md5): crystal ; $(MD5) $(NAME)-$(VERSION).gbc > $@
-$(sorted_sym): crystal ; $(MAP2SYM) $(NAME)-$(VERSION).map $@
+$(copied_sym): crystal ; cp $(NAME)-$(VERSION).sym $@
 $(copied_map): crystal ; cp $(NAME)-$(VERSION).map $@
 $(copied_gbc): crystal ; cp $(NAME)-$(VERSION).gbc $@
 

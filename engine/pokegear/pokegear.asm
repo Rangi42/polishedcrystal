@@ -2644,8 +2644,7 @@ GetNextTownMapTilePalette:
 townmappals: MACRO
 rept _NARG / 2
 	dn \2, \1
-	shift
-	shift
+	shift 2
 endr
 ENDM
 	townmappals 2, 2, 2, 3, 3, 6, 1, 1, 4, 4, 4, 5, 6, 7, 7, 6
