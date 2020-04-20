@@ -19,8 +19,10 @@ Shrink2Pic:: INCBIN "gfx/new_game/shrink2.2bpp.lz"
 
 SECTION "Credits Graphics", ROMX
 
-CreditsBorderGFX:: INCBIN "gfx/credits/border.2bpp.lz"
-TheEndGFX::        INCBIN "gfx/credits/theend.2bpp.lz"
+CreditsBorderGFX::    INCBIN "gfx/credits/border.2bpp.lz"
+TheEndGFX::           INCBIN "gfx/credits/theend.2bpp.lz"
+CreditsSequence1GFX:: INCBIN "gfx/credits/sequence1.2bpp.lz"
+CreditsSequence2GFX:: INCBIN "gfx/credits/sequence2.2bpp.lz"
 
 
 SECTION "Pack Graphics", ROMX

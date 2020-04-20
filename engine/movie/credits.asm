@@ -151,22 +151,7 @@ Credits::
 	dec c
 	jr nz, .load_loop
 
-	ld hl, CreditsBorderGFX
-	ld de, vTiles2 tile $20
-	lb bc, BANK(CreditsBorderGFX), $09
-	call DecompressRequest2bpp
-
-	ld hl, CopyrightGFX
-	ld de, vTiles2 tile $60
-	lb bc, BANK(CopyrightGFX), $1d
-	call DecompressRequest2bpp
-
-	ld hl, TheEndGFX
-	ld de, vTiles2 tile $40
-	lb bc, BANK(TheEndGFX), $10
-	call DecompressRequest2bpp
-
-	call DecompressCreditsSequenceGFX
+	call DecompressCreditsGFX
 
 	xor a
 	ld [wCreditsBorderMon], a
@@ -174,10 +159,8 @@ Credits::
 	ld [wCreditsBorderFrame], a
 
 	call Credits_LoadBorderGFX
-	ld e, l
-	ld d, h
 	ld hl, vTiles2
-	lb bc, BANK(CreditsSequencesGFX), 16
+	lb bc, BANK("Credits Graphics"), 4 * 4
 	call Request2bpp
 
 	call ConstructCreditsTilemap
@@ -300,9 +283,9 @@ Credits_PrepBGMapUpdate:
 
 Credits_UpdateGFXRequestPath:
 	call Credits_LoadBorderGFX
-	ld a, l
+	ld a, e
 	ldh [hRequestedVTileSource], a
-	ld a, h
+	ld a, d
 	ldh [hRequestedVTileSource + 1], a
 	xor a ; LOW(vTiles2)
 	ldh [hRequestedVTileDest], a
@@ -839,35 +822,30 @@ Credits_LoadBorderGFX:
 	add a
 	add a
 	add e
-	add a
-	ld e, a
-	ld d, 0
-	ld hl, .Frames
-	add hl, de
-	ld a, [hli]
-	ld h, [hl]
+	add LOW(.Frames)
 	ld l, a
+	adc HIGH(.Frames)
+	sub l
+	ld h, a
+	ld a, [hl]
+	add HIGH(wDecompressedCreditsGFX)
+	ld d, a
+	ld e, 0
 	ret
 
 .init
-	ld hl, wCreditsBlankFrame2bpp
+	ld de, wCreditsBlankFrame2bpp
 	ret
 
 .Frames:
-credits_frame_seq: MACRO
-rept 8
-	dw wDecompressedCreditsGFX + (4 * 4 tiles) * \1
-	shift
-endr
-ENDM
-	credits_frame_seq  0,  1,  2,  1,  0,  1,  2,  1 ; Pichu
-	credits_frame_seq  3,  3,  4,  4,  5,  5,  6,  6 ; Sentret
-	credits_frame_seq  7,  7,  8,  8,  7,  7,  9,  9 ; Munchlax
-	credits_frame_seq 10, 10, 11, 11, 10, 10, 12, 12 ; Togepi
-	credits_frame_seq  0,  1,  0,  2,  0,  1,  0,  2 ; Smoochum
-	credits_frame_seq  3,  4,  5,  6,  3,  4,  5,  6 ; Ditto
-	credits_frame_seq  7,  7,  8,  8,  7,  7,  9,  9 ; Elekid
-	credits_frame_seq 10, 10, 11, 11, 12, 12, 11, 11 ; Bellossom
+	db  0,  1,  2,  1,  0,  1,  2,  1 ; Pichu
+	db  3,  3,  4,  4,  5,  5,  6,  6 ; Sentret
+	db  7,  7,  8,  8,  7,  7,  9,  9 ; Munchlax
+	db 10, 10, 11, 11, 10, 10, 12, 12 ; Togepi
+	db  0,  1,  0,  2,  0,  1,  0,  2 ; Smoochum
+	db  3,  4,  5,  6,  3,  4,  5,  6 ; Ditto
+	db  7,  7,  8,  8,  7,  7,  9,  9 ; Elekid
+	db 10, 10, 11, 11, 12, 12, 11, 11 ; Bellossom
 
 Credits_TheEnd:
 	ld a, $40
@@ -883,7 +861,22 @@ Credits_TheEnd:
 	jr nz, .loop
 	ret
 
-DecompressCreditsSequenceGFX:
+DecompressCreditsGFX:
+	ld hl, CreditsBorderGFX
+	ld de, vTiles2 tile $20
+	lb bc, BANK(CreditsBorderGFX), $09
+	call DecompressRequest2bpp
+
+	ld hl, TheEndGFX
+	ld de, vTiles2 tile $40
+	lb bc, BANK(TheEndGFX), $10
+	call DecompressRequest2bpp
+
+	ld hl, CopyrightGFX
+	ld de, vTiles2 tile $60
+	lb bc, BANK(CopyrightGFX), $1d
+	call DecompressRequest2bpp
+
 	ld a, [wCreditsSpawn]
 	cp SPAWN_LEAF
 	ld hl, CreditsSequence2GFX
@@ -891,15 +884,12 @@ DecompressCreditsSequenceGFX:
 	ld hl, CreditsSequence1GFX
 .ok
 	ld de, wDecompressedCreditsGFX
-	ld b, BANK(CreditsSequencesGFX)
+	ld b, BANK("Credits Graphics")
 	ld a, BANK(wDecompressedCreditsGFX)
 	call StackCallInWRAMBankA
+
 .Function
 	jp FarDecompressAtB_D000
-
-CreditsSequencesGFX:
-CreditsSequence1GFX: INCBIN "gfx/credits/sequence1.2bpp.lz"
-CreditsSequence2GFX: INCBIN "gfx/credits/sequence2.2bpp.lz"
 
 CreditsScript:
 
