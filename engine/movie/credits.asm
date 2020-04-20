@@ -944,7 +944,7 @@ CreditsMonsGFX:
 CreditsPichu1GFX:     INCBIN "gfx/credits/pichu1.2bpp"
 CreditsPichu2GFX:
 CreditsPichu4GFX:     INCBIN "gfx/credits/pichu2_4.2bpp"
-CreditsPichu3GFX:     INCBIN "gfx/credits/pichu1.2bpp"
+CreditsPichu3GFX:     INCBIN "gfx/credits/pichu3.2bpp"
 CreditsSentret1GFX:   INCBIN "gfx/credits/sentret1.2bpp"
 CreditsSentret2GFX:   INCBIN "gfx/credits/sentret2.2bpp"
 CreditsSentret3GFX:   INCBIN "gfx/credits/sentret3.2bpp"
