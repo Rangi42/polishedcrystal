@@ -298,8 +298,7 @@ UseKeyItem:
 	farcall CheckKeyItemMenu
 	ld a, [wItemAttributeParamBuffer]
 	ld hl, .dw
-	call JumpTable
-	ret
+	jp JumpTable
 
 .dw
 	dw .Oak
@@ -484,8 +483,7 @@ UseItem:
 	farcall CheckItemMenu
 	ld a, [wItemAttributeParamBuffer]
 	ld hl, .dw
-	call JumpTable
-	ret
+	jp JumpTable
 
 .dw
 
@@ -893,8 +891,7 @@ KeyItemSubmenu:
 	farcall CheckItemContext
 	ld a, [wItemAttributeParamBuffer]
 	ld hl, .ItemFunctionJumptable
-	call JumpTable
-	ret
+	jp JumpTable
 
 .ItemFunctionJumptable:
 

@@ -142,8 +142,7 @@ HandleCurNPCStep:
 	ret z
 .do_step_type
 	ld hl, StepTypesJumptable
-	call JumpTable
-	ret
+	jp JumpTable
 
 .HandleObjectAction
 	ld hl, OBJECT_FLAGS1
@@ -447,8 +446,7 @@ MovementAnonymousJumptable:
 	add hl, bc
 	ld a, [hl]
 	pop hl
-	call JumpTable
-	ret
+	jp JumpTable
 
 ClearObjectStructField28:
 	ld hl, OBJECT_28
@@ -467,8 +465,7 @@ Object28AnonymousJumptable:
 	add hl, bc
 	ld a, [hl]
 	pop hl
-	call JumpTable
-	ret
+	jp JumpTable
 
 ObjectMovementReset:
 	ld hl, OBJECT_NEXT_MAP_X
@@ -495,8 +492,7 @@ MapObjectMovementPattern:
 	call GetSpriteMovementFunction
 	ld a, [hl]
 	ld hl, .Pointers
-	call JumpTable
-	ret
+	jp JumpTable
 
 .Pointers:
 	dw DoNothing                     ; SPRITEMOVEFN_00
@@ -1908,8 +1904,7 @@ DoMovementFunction:
 	call ApplyMovementToFollower
 	pop af
 	ld hl, MovementPointers
-	call JumpTable
-	ret
+	jp JumpTable
 
 INCLUDE "engine/overworld/movement.asm"
 

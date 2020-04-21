@@ -474,8 +474,7 @@ TryObjectEvent:
 	ret nc
 
 	ld hl, .pointers
-	call JumpTable
-	ret
+	jp JumpTable
 
 .pointers:
 	dw .script   ; PERSONTYPE_SCRIPT
@@ -561,8 +560,7 @@ TryReadSign:
 	cp SIGNPOST_ITEM
 	jp nc, .itemifset
 	ld hl, .signs
-	call JumpTable
-	ret
+	jp JumpTable
 
 .signs
 	dw .read     ; SIGNPOST_READ

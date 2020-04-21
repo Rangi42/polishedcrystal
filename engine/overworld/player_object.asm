@@ -278,8 +278,7 @@ CheckObjectEnteringVisibleRange::
 	cp STANDING
 	ret z
 	ld hl, .dw
-	call JumpTable
-	ret
+	jp JumpTable
 
 .dw
 	dw .Down

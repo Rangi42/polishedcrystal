@@ -400,8 +400,7 @@ MailboxPC:
 	ld a, [wMenuCursorY]
 	dec a
 	ld hl, .JumpTable
-	call JumpTable
-	ret
+	jp JumpTable
 
 .JumpTable:
 	dw .ReadMail

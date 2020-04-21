@@ -10,8 +10,7 @@ BattleCommand_tristatuschance:
 ; jump
 	dec a
 	ld hl, .ptrs
-	call JumpTable
-	ret
+	jp JumpTable
 
 .ptrs
 	dw BattleCommand_paralyzetarget ; paralyze

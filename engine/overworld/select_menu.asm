@@ -63,8 +63,7 @@ UseRegisteredItem:
 	farcall CheckKeyItemMenu
 	ld a, [wItemAttributeParamBuffer]
 	ld hl, .SwitchTo
-	call JumpTable
-	ret
+	jp JumpTable
 
 .SwitchTo:
 	dw .CantUse

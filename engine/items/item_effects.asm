@@ -8,8 +8,7 @@ _DoItemEffect::
 	ld a, [wCurItem]
 	dec a
 	ld hl, ItemEffects
-	call JumpTable
-	ret
+	jp JumpTable
 
 DoKeyItemEffect::
 	ld a, [wCurKeyItem]
@@ -21,8 +20,7 @@ DoKeyItemEffect::
 	ld a, [wCurKeyItem]
 	dec a
 	ld hl, KeyItemEffects
-	call JumpTable
-	ret
+	jp JumpTable
 
 ItemEffects:
 	dw PokeBallEffect     ; POKE_BALL
