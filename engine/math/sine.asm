@@ -45,6 +45,9 @@ _Sine::
 	ret
 
 .sinewave
-; A $20-word table representing a sine wave.
-; 90 degrees is index $10 at a base amplitude of $100.
-	sine_wave $100
+; $20 samples of sin(x) from x=0 to x<32768 (pi radians)
+x = 0
+rept $20
+	dw (sin(x) + (sin(x) & $ff)) >> 8 ; round up
+x = x + DIV(32768, $20) ; a circle has 65536 "degrees"
+endr

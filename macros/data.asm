@@ -111,17 +111,6 @@ endr
 ENDM
 
 
-sine_wave: MACRO
-; \1: amplitude
-x = 0
-	rept $20
-	; Round up.
-	dw (sin(x) + (sin(x) & $ff)) >> 8
-x = x + (\1) * $40000
-	endr
-ENDM
-
-
 genders: MACRO
 ; eight arguments, all MALE ($00) or FEMALE ($80)
 ; TODO: get bitfield genders to work
