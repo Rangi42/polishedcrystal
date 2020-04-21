@@ -4328,9 +4328,11 @@ TryPlayerSwitch:
 	ld a, 1
 	ld [wBattlePlayerAction], a
 
-	call ClearPalettes
 	call ClearSprites
+	call ClearPalettes
+	call DelayFrame
 	call _LoadStatusIcons
+	call GetMonBackpic
 	call CloseWindow
 	call GetMemCGBLayout
 	jp SetPalettes
