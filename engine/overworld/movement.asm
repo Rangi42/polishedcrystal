@@ -1,3 +1,9 @@
+DoMovementFunction:
+	push af
+	call ApplyMovementToFollower
+	pop af
+	call StackJumpTable
+
 MovementPointers:
 	dw Movement_turn_head_down        ; 00
 	dw Movement_turn_head_up          ; 01

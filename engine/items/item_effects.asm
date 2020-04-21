@@ -7,20 +7,7 @@ _DoItemEffect::
 	ld [wItemEffectSucceeded], a
 	ld a, [wCurItem]
 	dec a
-	ld hl, ItemEffects
-	jp JumpTable
-
-DoKeyItemEffect::
-	ld a, [wCurKeyItem]
-	ld [wd265], a
-	call GetKeyItemName
-	call CopyName1
-	ld a, 1
-	ld [wItemEffectSucceeded], a
-	ld a, [wCurKeyItem]
-	dec a
-	ld hl, KeyItemEffects
-	jp JumpTable
+	call StackJumpTable
 
 ItemEffects:
 	dw PokeBallEffect     ; POKE_BALL
@@ -277,6 +264,17 @@ ItemEffects:
 	dw IsntTheTimeMessage ; BLUESKY_MAIL
 	dw IsntTheTimeMessage ; MUSIC_MAIL
 	dw IsntTheTimeMessage ; MIRAGE_MAIL
+
+DoKeyItemEffect::
+	ld a, [wCurKeyItem]
+	ld [wd265], a
+	call GetKeyItemName
+	call CopyName1
+	ld a, 1
+	ld [wItemEffectSucceeded], a
+	ld a, [wCurKeyItem]
+	dec a
+	call StackJumpTable
 
 KeyItemEffects:
 	dw Bicycle            ; BICYCLE

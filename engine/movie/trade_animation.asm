@@ -220,10 +220,9 @@ DoTradeAnimation:
 
 .DoTradeAnimCommand:
 	ld a, [wJumptableIndex]
-	ld hl, .JumpTable
-	jp JumpTable
+	call StackJumpTable
 
-.JumpTable:
+.Jumptable:
 	dw TradeAnim_AdvanceScriptPointer ; 00
 	dw TradeAnim_ShowGivemonData      ; 01
 	dw TradeAnim_ShowGetmonData       ; 02
@@ -496,8 +495,7 @@ TradeAnim_GetTrademonSFX:
 
 TradeAnim_TubeAnimJumptable:
 	and 3
-	ld hl, .Jumptable
-	jp JumpTable
+	call StackJumpTable
 
 .Jumptable:
 	dw .Zero
@@ -998,8 +996,7 @@ TradeAnim_AnimateTrademonInTube:
 	ld hl, SPRITEANIMSTRUCT_JUMPTABLE_INDEX
 	add hl, bc
 	ld a, [hl]
-	ld hl, .Jumptable
-	jp JumpTable
+	call StackJumpTable
 
 .Jumptable:
 	dw .InitTimer

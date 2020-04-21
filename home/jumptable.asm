@@ -1,3 +1,5 @@
+StackJumpTable::
+	pop hl
 JumpTable::
 	push de
 	ld e, a

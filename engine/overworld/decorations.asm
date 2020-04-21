@@ -446,8 +446,7 @@ DoDecorationAction2:
 	ld de, 2 ; function 2
 	add hl, de
 	ld a, [hl]
-	ld hl, .DecoActions
-	jp JumpTable
+	call StackJumpTable
 
 .DecoActions:
 	dw DecoAction_nothing
@@ -947,8 +946,7 @@ INCLUDE "data/decorations/decorations.asm"
 
 DescribeDecoration::
 	ld a, b
-	ld hl, JumpTable_DecorationDesc
-	jp JumpTable
+	call StackJumpTable
 
 JumpTable_DecorationDesc:
 	dw DecorationDesc_Poster

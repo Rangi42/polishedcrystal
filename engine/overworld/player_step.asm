@@ -52,8 +52,7 @@ HandlePlayerStep:
 	ret z
 	dec [hl]
 	ld a, [hl]
-	ld hl, .Jumptable
-	jp JumpTable
+	call StackJumpTable
 
 .Jumptable:
 	dw GetMovementPermissions

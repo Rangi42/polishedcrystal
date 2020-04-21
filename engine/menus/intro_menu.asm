@@ -993,10 +993,9 @@ StartTitleScreen:
 	jr c, .ok
 	xor a
 .ok
-	ld hl, .dw
-	jp JumpTable
+	call StackJumpTable
 
-.dw
+.Jumptable
 	dw _MainMenu
 	dw DeleteSaveData
 	dw CrystalIntroSequence
@@ -1019,8 +1018,7 @@ RunTitleScreen:
 	ret
 
 TitleScreenScene:
-	ld hl, .scenes
-	jp JumpTable
+	call StackJumpTable
 
 .scenes
 	dw TitleScreenEntrance

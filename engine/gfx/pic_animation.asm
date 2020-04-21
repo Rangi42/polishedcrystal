@@ -311,8 +311,7 @@ PokeAnim_DoAnimScript:
 .loop:
 	ld a, [wPokeAnimJumptableIndex]
 	and $7f
-	ld hl, .Jumptable
-	jp JumpTable
+	call StackJumpTable
 
 .Jumptable:
 	dw .RunAnim

@@ -246,8 +246,7 @@ Credits_HandleBButton:
 Credits_Jumptable:
 	ld a, [wJumptableIndex]
 	and $f
-	ld hl, .Jumptable
-	jp JumpTable
+	call StackJumpTable
 
 .Jumptable:
 	dw ParseCredits

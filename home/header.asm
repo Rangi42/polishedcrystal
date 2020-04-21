@@ -148,7 +148,7 @@ SECTION "joypad", ROM0[$0060]
 
 SECTION "High Home", ROM0[$0060]
 
-	ds 3 ; unused
+	ds 2 ; unused
 
 INCLUDE "home/jumptable.asm"
 INCLUDE "home/sine.asm"

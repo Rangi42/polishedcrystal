@@ -2,8 +2,7 @@ DoAnimFrame:
 	ld hl, SPRITEANIMSTRUCT_ANIM_SEQ_ID
 	add hl, bc
 	ld a, [hl]
-	ld hl, .Jumptable
-	jp JumpTable
+	call StackJumpTable
 
 .Jumptable:
 	dw DoNothing           ; SPRITE_ANIM_SEQ_NULL
@@ -176,10 +175,9 @@ DoAnimFrame:
 	ld hl, SPRITEANIMSTRUCT_JUMPTABLE_INDEX
 	add hl, bc
 	ld a, [hl]
-	ld hl, .TradePokeBall_dw
-	jp JumpTable
+	call StackJumpTable
 
-.TradePokeBall_dw
+.TradePokeBall_Jumptable
 	dw .sixteen_zero
 	dw .sixteen_one
 	dw .sixteen_two

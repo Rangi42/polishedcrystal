@@ -51,8 +51,7 @@ WaitScriptMovement:
 
 RunScriptCommand:
 	call GetScriptByte
-	ld hl, ScriptCommandTable
-	jp JumpTable
+	call StackJumpTable
 
 ScriptCommandTable:
 	dw Script_scall                      ; 00

@@ -12,8 +12,7 @@ OpenMartDialog::
 	call GetMart
 	call LoadMartPointer
 	ld a, [wEngineBuffer1]
-	ld hl, .dialogs
-	jp JumpTable
+	call StackJumpTable
 
 .dialogs
 	dw MartDialog
@@ -1411,10 +1410,9 @@ SellMenu:
 	jr z, .cant_sell
 	farcall CheckItemMenu
 	ld a, [wItemAttributeParamBuffer]
-	ld hl, .dw
-	jp JumpTable
+	call StackJumpTable
 
-.dw
+.Jumptable
 	dw .okay_to_sell
 	dw DoNothing
 	dw DoNothing

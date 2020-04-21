@@ -45,8 +45,7 @@ StartMenu::
 
 ; Menu items have different return functions.
 ; For example, saving exits the menu.
-	ld hl, .MenuReturns
-	jp JumpTable
+	call StackJumpTable
 
 .MenuReturns:
 	dw .Reopen

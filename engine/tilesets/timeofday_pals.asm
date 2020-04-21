@@ -213,8 +213,7 @@ ReplaceTimeOfDayPals:
 
 GetTimePalette:
 	ld a, [wTimeOfDay]
-	ld hl, .TimePalettes
-	jp JumpTable
+	call StackJumpTable
 
 .TimePalettes:
 	dw .MorningPalette

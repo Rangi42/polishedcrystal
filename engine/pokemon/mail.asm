@@ -399,8 +399,7 @@ MailboxPC:
 	ret c
 	ld a, [wMenuCursorY]
 	dec a
-	ld hl, .JumpTable
-	jp JumpTable
+	call StackJumpTable
 
 .JumpTable:
 	dw .ReadMail

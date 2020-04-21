@@ -17,8 +17,7 @@ PlayRadioShow:
 .ok
 ; Jump to the currently loaded station.  The index to which we need to jump is in wCurRadioLine.
 	ld a, [wCurRadioLine]
-	ld hl, RadioJumptable
-	jp JumpTable
+	call StackJumpTable
 
 RadioJumptable:
 	dw OaksPkmnTalk1  ; $00

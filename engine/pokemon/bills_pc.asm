@@ -37,8 +37,7 @@ _DepositPKMN:
 
 .RunJumptable:
 	ld a, [wJumptableIndex]
-	ld hl, .Jumptable
-	jp JumpTable
+	call StackJumpTable
 
 .Jumptable:
 	dw .Init
@@ -131,8 +130,7 @@ _DepositPKMN:
 	ld a, [wMenuCursorY]
 	dec a
 	and $3
-	ld hl, BillsPCDepositJumptable
-	jp JumpTable
+	call StackJumpTable
 
 BillsPCDepositJumptable:
 	dw BillsPCDepositFuncDeposit ; Deposit Pokemon
@@ -260,8 +258,7 @@ _WithdrawPKMN:
 
 .RunJumptable:
 	ld a, [wJumptableIndex]
-	ld hl, .Jumptable
-	jp JumpTable
+	call StackJumpTable
 
 .Jumptable:
 	dw .Init
@@ -351,10 +348,9 @@ BillsPC_Withdraw:
 	ld a, [wMenuCursorY]
 	dec a
 	and 3
-	ld hl, .dw
-	jp JumpTable
+	call StackJumpTable
 
-.dw
+.Jumptable
 	dw .withdraw ; Withdraw
 	dw .stats ; Stats
 	dw .release ; Release
@@ -479,8 +475,7 @@ _MovePKMNWithoutMail:
 
 .RunJumptable:
 	ld a, [wJumptableIndex]
-	ld hl, .Jumptable
-	jp JumpTable
+	call StackJumpTable
 
 .Jumptable:
 	dw .Init
@@ -578,8 +573,7 @@ _MovePKMNWithoutMail:
 	ld a, [wMenuCursorY]
 	dec a
 	and 3
-	ld hl, .Jumptable2
-	jp JumpTable
+	call StackJumpTable
 
 .Jumptable2:
 	dw .Move

@@ -21,8 +21,7 @@ Pack:
 
 .RunJumptable:
 	ld a, [wJumptableIndex]
-	ld hl, .Jumptable
-	jp JumpTable
+	call StackJumpTable
 
 .Jumptable:
 	dw .InitGFX            ;  0
@@ -130,15 +129,7 @@ Pack:
 	jp nz, PackSortMenu
 	ld hl, .MenuDataHeader1
 	ld de, .Jumptable1
-	push de
-	call LoadMenuDataHeader
-	call VerticalMenu
-	call ExitMenu
-	pop hl
-	ret c
-	ld a, [wMenuCursorY]
-	dec a
-	jp JumpTable
+	jp PackBuildMenu
 
 .MenuDataHeader1:
 	db $40 ; flags
@@ -154,7 +145,6 @@ Pack:
 	db "Quit@"
 
 .Jumptable1:
-
 	dw .UseItem
 	dw DoNothing
 
@@ -297,10 +287,9 @@ KeyItems_LoadSubmenu:
 UseKeyItem:
 	farcall CheckKeyItemMenu
 	ld a, [wItemAttributeParamBuffer]
-	ld hl, .dw
-	jp JumpTable
+	call StackJumpTable
 
-.dw
+.Jumptable
 	dw .Oak
 	dw .Oak
 	dw .Oak
@@ -474,7 +463,6 @@ MenuDataHeader_GiveToss:
 	db "Quit@"
 
 Jumptable_GiveTossQuit:
-
 	dw GiveItem
 	dw TossMenu
 	dw DoNothing
@@ -482,11 +470,9 @@ Jumptable_GiveTossQuit:
 UseItem:
 	farcall CheckItemMenu
 	ld a, [wItemAttributeParamBuffer]
-	ld hl, .dw
-	jp JumpTable
+	call StackJumpTable
 
-.dw
-
+.Jumptable
 	dw .Oak
 	dw .Oak
 	dw .Oak
@@ -683,8 +669,7 @@ BattlePack:
 
 .RunJumptable:
 	ld a, [wJumptableIndex]
-	ld hl, .Jumptable
-	jp JumpTable
+	call StackJumpTable
 
 .Jumptable:
 	dw .InitGFX            ;  0
@@ -890,11 +875,9 @@ KeyItemSubmenu:
 .Use:
 	farcall CheckItemContext
 	ld a, [wItemAttributeParamBuffer]
-	ld hl, .ItemFunctionJumptable
-	jp JumpTable
+	call StackJumpTable
 
 .ItemFunctionJumptable:
-
 	dw .Oak
 	dw .Oak
 	dw .Oak
@@ -983,8 +966,7 @@ DepositSellPack:
 
 .RunJumptable:
 	ld a, [wJumptableIndex]
-	ld hl, .Jumptable
-	jp JumpTable
+	call StackJumpTable
 
 .Jumptable:
 	dw .ItemsPocket
@@ -1166,10 +1148,9 @@ TutorialPack:
 
 .RunJumptable:
 	ld a, [wJumptableIndex]
-	ld hl, .dw
-	jp JumpTable
+	call StackJumpTable
 
-.dw
+.Jumptable
 	dw .Items
 	dw .Medicine
 	dw .Balls

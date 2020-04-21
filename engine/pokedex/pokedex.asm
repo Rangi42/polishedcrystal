@@ -149,8 +149,7 @@ Pokedex_InitCursorPosition:
 
 Pokedex_RunJumptable:
 	ld a, [wJumptableIndex]
-	ld hl, .Jumptable
-	jp JumpTable
+	call StackJumpTable
 
 .Jumptable:
 	dw Pokedex_InitMainScreen
@@ -324,23 +323,27 @@ Pokedex_UpdateDexEntryScreen:
 	ret nc
 	jp Pokedex_IncrementDexPointer
 
-.do_menu_action
-	ld a, [wDexArrowCursorPosIndex]
-	ld hl, DexEntryScreen_MenuActionJumptable
-	jp JumpTable
-
 .return_to_prev_screen
 	ld a, [wLastVolume]
 	and a
 	jr z, .max_volume
 	ld a, $77
 	ld [wLastVolume], a
-
 .max_volume
 	call MaxVolume
 	ld a, [wDexEntryPrevJumptableIndex]
 	ld [wJumptableIndex], a
 	ret
+
+.do_menu_action
+	ld a, [wDexArrowCursorPosIndex]
+	call StackJumpTable
+
+.DexEntryScreen_MenuActionJumptable:
+	dw Pokedex_Page
+	dw DexEntryScreen_Area
+	dw DexEntryScreen_Cry
+	dw DexEntryScreen_Shiny
 
 Pokedex_Page:
 	ld a, [wPokedexStatus]
@@ -390,13 +393,7 @@ DexEntryScreen_ArrowCursorData_ShinyCharm:
 	dwcoord 11, 17
 	dwcoord 15, 17
 
-DexEntryScreen_MenuActionJumptable:
-	dw Pokedex_Page
-	dw .Area
-	dw .Cry
-	dw .Shiny
-
-.Area:
+DexEntryScreen_Area:
 	call Pokedex_BlackOutBG
 	xor a
 	ldh [hSCX], a
@@ -426,11 +423,11 @@ DexEntryScreen_MenuActionJumptable:
 	ld a, CGB_POKEDEX
 	jp Pokedex_GetCGBLayout
 
-.Cry:
+DexEntryScreen_Cry:
 	ld a, [wCurPartySpecies]
 	jp PlayCry
 
-.Shiny:
+DexEntryScreen_Shiny:
 	ld hl, wDexMonShiny
 	ld a, [hl]
 	xor SHINY_MASK ; alternate 0 and SHINY_MASK
@@ -477,13 +474,15 @@ Pokedex_UpdateOptionScreen:
 	jr nz, .return_to_main_screen
 	ld a, [hl]
 	and A_BUTTON
-	jr nz, .do_menu_action
-	ret
-
-.do_menu_action
+	ret z
 	ld a, [wDexArrowCursorPosIndex]
-	ld hl, .MenuActionJumptable
-	jp JumpTable
+	call StackJumpTable
+
+.MenuActionJumptable:
+	dw .MenuAction_NewMode
+	dw .MenuAction_OldMode
+	dw .MenuAction_ABCMode
+	dw .MenuAction_UnownMode
 
 .return_to_main_screen
 	call Pokedex_BlackOutBG
@@ -503,12 +502,6 @@ Pokedex_UpdateOptionScreen:
 	dwcoord 2,  6
 	dwcoord 2,  8
 	dwcoord 2, 10
-
-.MenuActionJumptable:
-	dw .MenuAction_NewMode
-	dw .MenuAction_OldMode
-	dw .MenuAction_ABCMode
-	dw .MenuAction_UnownMode
 
 .MenuAction_NewMode:
 	ld b, DEXMODE_NEW
@@ -578,10 +571,14 @@ Pokedex_UpdateSearchScreen:
 	ld a, [hl]
 	and A_BUTTON
 	ret z
-
 	ld a, [wDexArrowCursorPosIndex]
-	ld hl, .MenuActionJumptable
-	jp JumpTable
+	call StackJumpTable
+
+.MenuActionJumptable:
+	dw .MenuAction_MonSearchType
+	dw .MenuAction_MonSearchType
+	dw .MenuAction_BeginSearch
+	dw .MenuAction_Cancel
 
 .cancel
 	call Pokedex_BlackOutBG
@@ -595,12 +592,6 @@ Pokedex_UpdateSearchScreen:
 	dwcoord 2, 6
 	dwcoord 2, 13
 	dwcoord 2, 15
-
-.MenuActionJumptable:
-	dw .MenuAction_MonSearchType
-	dw .MenuAction_MonSearchType
-	dw .MenuAction_BeginSearch
-	dw .MenuAction_Cancel
 
 .MenuAction_MonSearchType:
 	call Pokedex_NextSearchMonType
@@ -1645,8 +1636,7 @@ Pokedex_OrderMonsByMode:
 	xor a
 	rst ByteFill
 	ld a, [wCurDexMode]
-	ld hl, .Jumptable
-	jp JumpTable
+	call StackJumpTable
 
 .Jumptable:
 	dw .NewMode

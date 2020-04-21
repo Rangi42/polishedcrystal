@@ -107,8 +107,7 @@ GetOptionPointer:
 	jr z, .page1
 	add 8
 .page1
-	ld hl, .Pointers
-	jp JumpTable
+	call StackJumpTable
 
 .Pointers:
 	dw Options_TextSpeed

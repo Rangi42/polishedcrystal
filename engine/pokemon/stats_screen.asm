@@ -508,8 +508,7 @@ StatsScreen_LoadGFX:
 .PageTilemap:
 	ld a, [wcf64]
 	and $3
-	ld hl, .Jumptable
-	jp JumpTable
+	call StackJumpTable
 
 .Jumptable:
 	dw .PinkPage
@@ -1066,8 +1065,7 @@ StatsScreen_PlaceFrontpic:
 
 StatsScreen_GetAnimationParam:
 	ld a, [wMonType]
-	ld hl, .Jumptable
-	jp JumpTable
+	call StackJumpTable
 
 .Jumptable:
 	dw .PartyMon

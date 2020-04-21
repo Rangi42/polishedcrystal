@@ -7,10 +7,9 @@ LoadCGBLayout::
 	jp z, ApplyPartyMenuHPPals
 	call ResetBGPals
 	dec a
-	ld hl, .dw
-	jp JumpTable
+	call StackJumpTable
 
-.dw
+.Jumptable
 	dw _CGB_BattleGrayscale
 	dw _CGB_BattleColors
 	dw _CGB_PokegearPals

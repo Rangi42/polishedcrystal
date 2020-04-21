@@ -369,8 +369,7 @@ Pokegear_FinishTilemap:
 
 PokegearJumptable:
 	ld a, [wJumptableIndex]
-	ld hl, .Jumptable
-	jp JumpTable
+	call StackJumpTable
 
 .Jumptable:
 	dw PokegearClock_Init

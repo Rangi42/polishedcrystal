@@ -69,8 +69,7 @@ DoBattleBGEffectFunction:
 	ld hl, BG_EFFECT_STRUCT_FUNCTION
 	add hl, bc
 	ld a, [hl]
-	ld hl, BattleBGEffects
-	jp JumpTable
+	call StackJumpTable
 
 BattleBGEffects:
 	dw BattleBGEffect_End
@@ -1839,13 +1838,13 @@ BattleBGEffect_1c:
 	ld hl, BG_EFFECT_STRUCT_JT_INDEX
 	add hl, bc
 	ld a, [hl]
-	ld hl, .Jumptable
-	jp JumpTable
+	call StackJumpTable
 
 .Jumptable:
 	dw .cgb_zero
 	dw .cgb_one
 	dw .cgb_two
+
 .cgb_zero
 	call BattleBGEffects_IncrementJumptable
 	ld hl, BG_EFFECT_STRUCT_03
@@ -2164,10 +2163,9 @@ BGEffect_RapidCyclePals:
 	ld hl, BG_EFFECT_STRUCT_JT_INDEX
 	add hl, bc
 	ld a, [hl]
-	ld hl, .Jumptable_CGB
-	jp JumpTable
+	call StackJumpTable
 
-.Jumptable_CGB:
+.Jumptable:
 	dw .zero_cgb
 	dw .one_cgb
 	dw .two_cgb

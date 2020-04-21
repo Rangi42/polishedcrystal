@@ -59,8 +59,7 @@ NamingScreen:
 .GetNamingScreenSetup:
 	ld a, [wNamingScreenType]
 	and 7
-	ld hl, .Jumptable
-	jp JumpTable
+	call StackJumpTable
 
 .Jumptable:
 	dw .Pokemon
@@ -328,8 +327,7 @@ NamingScreenJoypadLoop:
 
 .RunJumptable:
 	ld a, [wJumptableIndex]
-	ld hl, .Jumptable
-	jp JumpTable
+	call StackJumpTable
 
 .Jumptable:
 	dw .InitCursor
@@ -976,8 +974,7 @@ INCBIN "gfx/icons/mail2.2bpp.lz"
 
 .DoJumptable:
 	ld a, [wJumptableIndex]
-	ld hl, .Jumptable
-	jp JumpTable
+	call StackJumpTable
 
 .Jumptable:
 	dw .init_blinking_cursor

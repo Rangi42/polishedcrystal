@@ -205,12 +205,11 @@ _UpdateSound::
 	ret
 
 UpdateChannels:
-	ld hl, .ChannelFnPtrs
 	ld a, [wCurChannel]
 	and $7
-	jp JumpTable
+	call StackJumpTable
 
-.ChannelFnPtrs:
+.Jumptable:
 	dw .wChannel1
 	dw .wChannel2
 	dw .wChannel3
@@ -1298,8 +1297,7 @@ ParseMusicCommand:
 	; get command #
 	sub $d0 ; first command
 	; jump to the new command pointer
-	ld hl, MusicCommands
-	jp JumpTable
+	call StackJumpTable
 
 MusicCommands:
 ; pointer to each command in order

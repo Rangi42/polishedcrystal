@@ -2,8 +2,7 @@ DoBattleAnimFrame:
 	ld hl, BATTLEANIMSTRUCT_FUNCTION
 	add hl, bc
 	ld a, [hl]
-	ld hl, .Jumptable
-	jp JumpTable
+	call StackJumpTable
 
 .Jumptable:
 	dw BattleAnimFunction_Null ; 00

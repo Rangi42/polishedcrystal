@@ -77,8 +77,7 @@ _CardFlip:
 
 .CardFlip:
 	ld a, [wJumptableIndex]
-	ld hl, .Jumptable
-	jp JumpTable
+	call StackJumpTable
 
 .Jumptable:
 	dw .AskPlayWithThree
@@ -574,8 +573,7 @@ CardFlip_BlankDiscardedCardSlot:
 	and %0011100 ; get level
 	srl a
 	srl a
-	ld hl, .Jumptable
-	jp JumpTable
+	call StackJumpTable
 
 .Jumptable:
 	dw .Level1
