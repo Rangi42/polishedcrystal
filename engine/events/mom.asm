@@ -18,8 +18,7 @@ Special_BankOfMom:
 	ret
 
 .RunJumptable:
-	ld a, [wJumptableIndex]
-	call StackJumpTable
+	call StandardStackJumpTable
 
 .Jumptable
 	dw .CheckIfBankInitialized

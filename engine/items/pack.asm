@@ -20,8 +20,7 @@ Pack:
 	ret
 
 .RunJumptable:
-	ld a, [wJumptableIndex]
-	call StackJumpTable
+	call StandardStackJumpTable
 
 .Jumptable:
 	dw .InitGFX            ;  0
@@ -668,8 +667,7 @@ BattlePack:
 	ret
 
 .RunJumptable:
-	ld a, [wJumptableIndex]
-	call StackJumpTable
+	call StandardStackJumpTable
 
 .Jumptable:
 	dw .InitGFX            ;  0
@@ -965,8 +963,7 @@ DepositSellPack:
 	ret
 
 .RunJumptable:
-	ld a, [wJumptableIndex]
-	call StackJumpTable
+	call StandardStackJumpTable
 
 .Jumptable:
 	dw .ItemsPocket
@@ -1147,8 +1144,7 @@ TutorialPack:
 	db NO_INPUT, $ff ; end
 
 .RunJumptable:
-	ld a, [wJumptableIndex]
-	call StackJumpTable
+	call StandardStackJumpTable
 
 .Jumptable
 	dw .Items

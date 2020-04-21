@@ -134,8 +134,7 @@ CutGrassGFX:
 INCBIN "gfx/overworld/cut_grass.2bpp"
 
 OWCutJumptable:
-	ld a, [wJumptableIndex]
-	call StackJumpTable
+	call StandardStackJumpTable
 
 .Jumptable:
 	dw Cut_SpawnAnimateTree

@@ -36,8 +36,7 @@ _DepositPKMN:
 	ret
 
 .RunJumptable:
-	ld a, [wJumptableIndex]
-	call StackJumpTable
+	call StandardStackJumpTable
 
 .Jumptable:
 	dw .Init
@@ -257,8 +256,7 @@ _WithdrawPKMN:
 	ret
 
 .RunJumptable:
-	ld a, [wJumptableIndex]
-	call StackJumpTable
+	call StandardStackJumpTable
 
 .Jumptable:
 	dw .Init
@@ -474,8 +472,7 @@ _MovePKMNWithoutMail:
 	ret
 
 .RunJumptable:
-	ld a, [wJumptableIndex]
-	call StackJumpTable
+	call StandardStackJumpTable
 
 .Jumptable:
 	dw .Init

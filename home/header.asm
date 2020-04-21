@@ -124,31 +124,19 @@ GetCGBLayout::
 SECTION "timer", ROM0[$0050]
 ; TIMER is never enabled
 
-	ds 1 ; unused
-
-ExitMenu::
-	push af
-	farcall _ExitMenu
-	pop af
-	ret
+INCLUDE "home/vwf.asm"
 
 
 SECTION "serial", ROM0[$0058]
 	jp Serial
 
-CheckOnWater::
-	call GetPlayerStandingTile
-	dec a ; cp WATER_TILE
-	ret
+InitVerticalMenuCursor::
+	farjp _InitVerticalMenuCursor
 
 
-SECTION "joypad", ROM0[$0060]
+SECTION "High Home", ROM0[$005f]
+;SECTION "joypad", ROM0[$0060]
 ; JOYPAD is never enabled
-
-
-SECTION "High Home", ROM0[$0060]
-
-	ds 2 ; unused
 
 INCLUDE "home/jumptable.asm"
 INCLUDE "home/sine.asm"

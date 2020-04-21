@@ -1207,6 +1207,11 @@ RandomPhoneMon:
 	rst CopyBytes
 	ret
 
+CheckOnWater:
+	call GetPlayerStandingTile
+	dec a ; cp WATER_TILE
+	ret
+
 JohtoGrassWildMons:
 INCLUDE "data/wild/johto_grass.asm"
 

@@ -25,9 +25,9 @@ ROM0
 	"timer"
 	org $0058
 	"serial"
-	org $0060
-	"joypad"
-	org $0060
+;	org $0060
+;	"joypad"
+	org $005f
 	"High Home"
 	org $0100
 	"Header"

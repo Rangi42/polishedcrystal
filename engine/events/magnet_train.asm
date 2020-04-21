@@ -286,8 +286,7 @@ SetMagnetTrainPals:
 	ret
 
 MagnetTrain_Jumptable:
-	ld a, [wJumptableIndex]
-	call StackJumpTable
+	call StandardStackJumpTable
 
 .Jumptable:
 	dw .InitPlayerSpriteAnim

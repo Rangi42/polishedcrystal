@@ -76,8 +76,7 @@ _CardFlip:
 	ret
 
 .CardFlip:
-	ld a, [wJumptableIndex]
-	call StackJumpTable
+	call StandardStackJumpTable
 
 .Jumptable:
 	dw .AskPlayWithThree

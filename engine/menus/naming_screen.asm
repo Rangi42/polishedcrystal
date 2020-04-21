@@ -326,8 +326,7 @@ NamingScreenJoypadLoop:
 	ret
 
 .RunJumptable:
-	ld a, [wJumptableIndex]
-	call StackJumpTable
+	call StandardStackJumpTable
 
 .Jumptable:
 	dw .InitCursor
@@ -973,8 +972,7 @@ INCBIN "gfx/icons/mail2.2bpp.lz"
 	ret
 
 .DoJumptable:
-	ld a, [wJumptableIndex]
-	call StackJumpTable
+	call StandardStackJumpTable
 
 .Jumptable:
 	dw .init_blinking_cursor

@@ -115,8 +115,7 @@ Copyright_GFPresents:
 	jp DelayFrames
 
 PlaceGameFreakPresents:
-	ld a, [wJumptableIndex]
-	call StackJumpTable
+	call StandardStackJumpTable
 
 .Jumptable
 	dw PlaceGameFreakPresents_0
@@ -401,8 +400,7 @@ CrystalIntro:
 	ret
 
 IntroSceneJumper:
-	ld a, [wJumptableIndex]
-	call StackJumpTable
+	call StandardStackJumpTable
 
 IntroScenes:
 	dw IntroScene1

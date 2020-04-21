@@ -148,8 +148,7 @@ Pokedex_InitCursorPosition:
 	ret
 
 Pokedex_RunJumptable:
-	ld a, [wJumptableIndex]
-	call StackJumpTable
+	call StandardStackJumpTable
 
 .Jumptable:
 	dw Pokedex_InitMainScreen

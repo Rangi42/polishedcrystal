@@ -219,8 +219,7 @@ DoTradeAnimation:
 	ret
 
 .DoTradeAnimCommand:
-	ld a, [wJumptableIndex]
-	call StackJumpTable
+	call StandardStackJumpTable
 
 .Jumptable:
 	dw TradeAnim_AdvanceScriptPointer ; 00

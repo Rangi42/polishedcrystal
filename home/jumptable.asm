@@ -1,3 +1,5 @@
+StandardStackJumpTable::
+	ld a, [wJumptableIndex]
 StackJumpTable::
 	pop hl
 JumpTable::

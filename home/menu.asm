@@ -1,11 +1,14 @@
-InitVerticalMenuCursor::
-	farjp _InitVerticalMenuCursor
-
 CloseWindow::
 	push af
 	call ExitMenu
 	call ApplyTilemap
 	call UpdateSprites
+	pop af
+	ret
+
+ExitMenu::
+	push af
+	farcall _ExitMenu
 	pop af
 	ret
 

@@ -253,7 +253,8 @@ CheckReplaceKrisSprite:
 	ret
 
 .CheckSurfing:
-	call CheckOnWater
+	call GetPlayerStandingTile
+	dec a ; cp WATER_TILE
 	jr nz, .ret_nc
 	ld a, [wPlayerState]
 	cp PLAYER_SURF
