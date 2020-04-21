@@ -5613,6 +5613,10 @@ endc
 ApplyLegendaryDVs:
 	push de
 	push bc
+	ld a, [wBattleType]
+	cp BATTLETYPE_RED_GYARADOS
+	jr z, .okay
+
 	push hl
 	ld a, [wCurPartySpecies]
 	ld de, 1
@@ -5620,6 +5624,8 @@ ApplyLegendaryDVs:
 	call IsInArray
 	pop hl
 	jr nc, .done
+
+.okay
 	push hl
 
 	; Generate 3 random stats to give perfect DVs to
