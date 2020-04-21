@@ -53,10 +53,10 @@ LoadStandardFontPointer::
 	dw FontNormal
 
 _LoadFontsBattleExtra::
-	ld de, BattleExtrasGFX
-	ld hl, vTiles2 tile BATTLEEXTRA_GFX_START
+	ld hl, BattleExtrasGFX
+	ld de, vTiles2 tile BATTLEEXTRA_GFX_START
 	lb bc, BANK(BattleExtrasGFX), 32
-	call Get2bpp
+	call DecompressRequest2bpp
 
 LoadFrame::
 	ld a, [wTextboxFrame]

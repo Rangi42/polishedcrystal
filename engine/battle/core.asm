@@ -1019,7 +1019,7 @@ GetPlayerSwitchTarget:
 	call ForcePickSwitchMonInBattle
 
 	call ClearPalettes
-	farcall _LoadBattleFontsHPBar
+	call _LoadBattleFontsHPBar
 	call CloseWindow
 	call ClearSprites
 	ld a, CGB_BATTLE_COLORS

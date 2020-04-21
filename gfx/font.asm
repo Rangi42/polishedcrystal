@@ -28,7 +28,7 @@ INCBIN "gfx/frames/8.1bpp"
 INCBIN "gfx/frames/9.1bpp"
 
 BattleExtrasGFX:
-INCBIN "gfx/battle/hpexpbars.2bpp"
+INCBIN "gfx/battle/hpexpbars.2bpp.lz"
 
 StatusIconGFX:
 INCBIN "gfx/battle/status.2bpp"
