@@ -158,18 +158,26 @@ CheckDailyResetTimer::
 	ld [hli], a ; wWeeklyFlags
 	ld [hli], a ; wWeeklyFlags2
 	ld [hl], a ; wSwarmFlags
+	ld hl, wFruitTreeFlags
+rept (NUM_FRUIT_TREES + 7) / 8 - 1
+	ld [hli], a
+endr
+	ld [hl], a
 	ld hl, wDailyRematchFlags
-rept 4
+rept 4 - 1
 	ld [hli], a
 endr
+	ld [hl], a
 	ld hl, wDailyPhoneItemFlags
-rept 4
+rept 4 - 1
 	ld [hli], a
 endr
+	ld [hl], a
 	ld hl, wDailyPhoneTimeOfDayFlags
-rept 4
+rept 4 - 1
 	ld [hli], a
 endr
+	ld [hl], a
 	ld hl, wKenjiBreakTimer
 	ld a, [hl]
 	and a

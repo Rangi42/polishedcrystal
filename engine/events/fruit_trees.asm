@@ -2,7 +2,6 @@ FruitTreeScript::
 	opentext
 	writetext FruitBearingTreeText
 	buttonsound
-	callasm TryResetFruitTrees
 	copybytetovar wCurFruit
 	callasm CheckFruitTree
 	iffalse PickBerryScript
@@ -100,20 +99,6 @@ PickApricornScript:
 	ld de, wStringBuffer1
 	ld hl, wStringBuffer3
 	jp CopyName2
-
-TryResetFruitTrees:
-	ld hl, wDailyFlags
-	bit 4, [hl] ; ENGINE_ALL_FRUIT_TREES
-	ret nz
-	xor a
-	ld hl, wFruitTreeFlags
-rept (NUM_FRUIT_TREES + 7) / 8 - 1
-	ld [hli], a
-endr
-	ld [hl], a
-	ld hl, wDailyFlags
-	set 4, [hl] ; ENGINE_ALL_FRUIT_TREES
-	ret
 
 CheckFruitTree:
 	ld b, CHECK_FLAG

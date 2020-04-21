@@ -117,8 +117,8 @@ EngineFlags:
 	engine_flag wDailyFlags, 1 ; daily bug contest?
 	engine_flag wDailyFlags, 2 ; special wilddata?
 	engine_flag wDailyFlags, 3 ; valeries morning walk
-	engine_flag wDailyFlags, 4 ; all fruit trees
-	engine_flag wDailyFlags, 5 ; wobbuffet given
+	engine_flag wDailyFlags, 4 ; daily unused
+	engine_flag wDailyFlags, 5 ; shuckle given
 	engine_flag wDailyFlags, 6 ; goldenrod underground merchant closed
 	engine_flag wDailyFlags, 7 ; fought in trainer hall today
 

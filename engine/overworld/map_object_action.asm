@@ -210,25 +210,24 @@ SetFacingFreezeBounce:
 SetFacingFruit:
 	ld hl, OBJECT_RADIUS
 	add hl, bc
-	ld a, [hl]
+	ld e, [hl]
 	push bc
 	ld hl, wFruitTreeFlags
-	ld e, a
 	ld d, 0
 	ld b, CHECK_FLAG
 	push de
 	call FlagAction
 	pop de
-	ld a, c
 	pop bc
 	and a ; 0 = show fruit, 1 = hide fruit
 	ld a, FACING_PICKED_FRUIT
 	jr nz, .ok
 	ld a, e
 	cp FIRST_BERRY_TREE - 1
-	ld a, FACING_APRICORN
-	jr c, .ok
-	dec a ; ld a, FACING_BERRY
+	; a = carry ? FACING_APRICORN : FACING_BERRY
+	assert FACING_APRICORN + 1 == FACING_BERRY
+	sbc a
+	add FACING_BERRY
 .ok
 	jp SetFixedFacing
 

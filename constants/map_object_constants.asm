@@ -251,8 +251,8 @@ SPRITEMOVEDATA_FIELDS EQU 6
 	const FACING_SPLASH_1        ; 20
 	const FACING_SPLASH_2        ; 21
 	const FACING_CUT_TREE        ; 22
-	const FACING_BERRY           ; 23
-	const FACING_APRICORN        ; 24
+	const FACING_APRICORN        ; 23
+	const FACING_BERRY           ; 24
 	const FACING_PICKED_FRUIT    ; 25
 	const FACING_BIG_GYARADOS_1  ; 26
 	const FACING_BIG_GYARADOS_2  ; 27

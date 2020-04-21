@@ -34,8 +34,8 @@ Facings:
 	dw FacingSplash1        ; FACING_SPLASH_1
 	dw FacingSplash2        ; FACING_SPLASH_2
 	dw FacingCutTree        ; FACING_CUT_TREE
-	dw FacingBerry          ; FACING_BERRY
 	dw FacingApricorn       ; FACING_APRICORN
+	dw FacingBerry          ; FACING_BERRY
 	dw FacingPickedFruit    ; FACING_PICKED_FRUIT
 	dw FacingBigGyarados1   ; FACING_BIG_GYARADOS_1
 	dw FacingBigGyarados2   ; FACING_BIG_GYARADOS_2
@@ -270,13 +270,13 @@ FacingCutTree:
 	db 12,  0, 2, $06
 	db 12,  8, 2, $07
 
-FacingBerry:
-	db 1 ; #
-	db 10,  3, 0, $08
-
 FacingApricorn:
 	db 1 ; #
 	db  0,  4, 0, $09
+
+FacingBerry:
+	db 1 ; #
+	db 10,  3, 0, $08
 
 FacingPickedFruit:
 	db 1 ; #
