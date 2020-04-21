@@ -373,18 +373,13 @@ VRAMToVRAMCopy::
 	ldh a, [c]
 	and b
 	jr nz, .waitHBlank2
-	rept 7
+rept 8
 	pop de
 	ld a, e
 	ld [hli], a
 	ld a, d
 	ld [hli], a
-	endr
-	pop de
-	ld a, e
-	ld [hli], a
-	ld a, d
-	ld [hli], a
+endr
 	ld a, l
 	and $f
 	jr nz, .waitNoHBlank2

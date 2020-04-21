@@ -44,18 +44,13 @@ HBlankCopy2bpp::
 	ld [hli], a
 	ld a, d
 	ld [hli], a
-rept 5
+rept 6
 	pop de
 	ld a, e
 	ld [hli], a
 	ld a, d
 	ld [hli], a
 endr
-	pop de
-	ld a, e
-	ld [hli], a
-	ld a, d
-	ld [hli], a
 	ldh a, [hTilesPerCycle]
 	dec a
 	ldh [hTilesPerCycle], a

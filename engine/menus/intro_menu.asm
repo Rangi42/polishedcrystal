@@ -713,7 +713,7 @@ ElmText7:
 	text_end
 
 InitGender:
-	ld hl, WhitePal
+	ld hl, .WhitePal
 	ld de, wBGPals1 palette 0
 	ld bc, 1 palettes
 	call FarCopyColorWRAM
@@ -760,6 +760,19 @@ InitGender:
 	call YesNoBox
 	jr c, InitGender
 	ret
+
+.WhitePal:
+if !DEF(MONOCHROME)
+	RGB 31, 31, 31
+	RGB 31, 31, 31
+	RGB 31, 31, 31
+	RGB 31, 31, 31
+else
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_WHITE
+endc
 
 .MenuDataHeader:
 	db $40 ; flags
