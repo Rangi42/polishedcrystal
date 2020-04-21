@@ -122,7 +122,9 @@ GetCGBLayout::
 
 
 SECTION "timer", ROM0[$0050]
-	reti
+; TIMER is never enabled
+
+	ds 1 ; unused
 
 ExitMenu::
 	push af
@@ -141,10 +143,12 @@ CheckOnWater::
 
 
 SECTION "joypad", ROM0[$0060]
-	reti
+; JOYPAD is never enabled
 
 
-SECTION "High Home", ROM0[$0061]
+SECTION "High Home", ROM0[$0060]
+
+	ds 1 ; unused
 
 INCLUDE "home/jumptable.asm"
 INCLUDE "home/sine.asm"
