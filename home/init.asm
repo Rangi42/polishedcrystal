@@ -6,7 +6,7 @@ SoftReset::
 	call ClearPalettes
 	xor a
 	ldh [rIF], a
-	ld a, 1 ; VBlank int
+	ld a, 1 << VBLANK
 	ldh [rIE], a
 	ei
 

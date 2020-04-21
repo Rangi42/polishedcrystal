@@ -64,7 +64,7 @@ Gen2ToGen2LinkComms:
 	call DelayFrames
 	xor a
 	ldh [rIF], a
-	ld a, %01000
+	ld a, 1 << SERIAL
 	ldh [rIE], a
 	ld hl, wLinkBuffer
 	ld de, wLinkBufferEnd
@@ -93,7 +93,7 @@ Gen2ToGen2LinkComms:
 .not_trading
 	xor a
 	ldh [rIF], a
-	ld a, %11001
+	ld a, 1 << SERIAL | 1 << VBLANK
 	ldh [rIE], a
 	ld de, MUSIC_NONE
 	call PlayMusic
@@ -264,7 +264,7 @@ Gen2ToGen2LinkComms:
 	xor a
 	ldh [rIF], a
 	ldh a, [rIE]
-	set 1, a
+	set LCD_STAT, a
 	ldh [rIE], a
 	pop af
 	ldh [rIF], a
@@ -1858,7 +1858,7 @@ WaitForOtherPlayerToExit:
 	push af
 	xor a
 	ldh [rIF], a
-	ld a, %01011
+	ld a, 1 << SERIAL | 1 << LCD_STAT | 1 << VBLANK
 	ldh [rIE], a
 	pop af
 	ldh [rIF], a

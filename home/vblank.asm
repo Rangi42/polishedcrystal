@@ -284,7 +284,7 @@ VBlank5::
 	xor a
 	ldh [rIF], a
 
-	; enable ints besides joypad
+	; enable usual interrupts
 	pop af
 	ldh [rIE], a
 	ret

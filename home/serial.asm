@@ -145,8 +145,8 @@ Serial_ExchangeByte::
 
 .doNotIncrementTimeoutCounter
 	ldh a, [rIE]
-	and (1 << SERIAL) | (1 << TIMER) | (1 << LCD_STAT) | (1 << VBLANK)
-	cp (1 << SERIAL)
+	and 1 << SERIAL | 1 << TIMER | 1 << LCD_STAT | 1 << VBLANK
+	cp 1 << SERIAL
 	jr nz, .loop
 	ld a, [wcf5d]
 	dec a
@@ -169,8 +169,8 @@ Serial_ExchangeByte::
 	xor a
 	ldh [hSerialReceivedNewData], a
 	ldh a, [rIE]
-	and (1 << SERIAL) | (1 << TIMER) | (1 << LCD_STAT) | (1 << VBLANK)
-	sub (1 << SERIAL)
+	and 1 << SERIAL | 1 << TIMER | 1 << LCD_STAT | 1 << VBLANK
+	sub 1 << SERIAL
 	jr nz, .skipReloadingTimeoutCounter2
 
 	;xor a
@@ -200,8 +200,8 @@ Serial_ExchangeByte::
 
 .done
 	ldh a, [rIE]
-	and (1 << SERIAL) | (1 << TIMER) | (1 << LCD_STAT) | (1 << VBLANK)
-	cp (1 << SERIAL)
+	and 1 << SERIAL | 1 << TIMER | 1 << LCD_STAT | 1 << VBLANK
+	cp 1 << SERIAL
 	ld a, SERIAL_NO_DATA_BYTE
 	ret z
 	ld a, [hl]

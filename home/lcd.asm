@@ -88,7 +88,7 @@ DisableLCD::
 	ld b, a
 
 ; Disable VBlank
-	res 0, a ; vblank
+	res VBLANK, a
 	ldh [rIE], a
 
 .wait
