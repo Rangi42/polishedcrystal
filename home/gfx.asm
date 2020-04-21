@@ -299,31 +299,31 @@ endr
 	and 3
 	jr nz, .waitHBlankOpaque
 ; preloads r us
+	ld a, $ff
+	ld [hli], a
 	ld a, c
-	ld [hl], $ff
-	inc hl
+	ld [hli], a
+	ld a, $ff
 	ld [hli], a
 	ld a, b
-	ld [hl], $ff
-	inc hl
+	ld [hli], a
+	ld a, $ff
 	ld [hli], a
 	ld a, e
-	ld [hl], $ff
-	inc hl
+	ld [hli], a
+	ld a, $ff
 	ld [hli], a
 	ld a, d
-	ld [hl], $ff
-	inc hl
 	ld [hli], a
 rept 2
 	pop de
+	ld a, $ff
+	ld [hli], a
 	ld a, e
-	ld [hl], $ff
-	inc hl
+	ld [hli], a
+	ld a, $ff
 	ld [hli], a
 	ld a, d
-	ld [hl], $ff
-	inc hl
 	ld [hli], a
 endr
 	ldh a, [hTilesPerCycle]
@@ -383,8 +383,8 @@ VRAMToVRAMCopy::
 	pop de
 	ld a, e
 	ld [hli], a
-	ld [hl], d
-	inc hl
+	ld a, d
+	ld [hli], a
 	ld a, l
 	and $f
 	jr nz, .waitNoHBlank2
