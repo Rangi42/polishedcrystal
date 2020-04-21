@@ -5,8 +5,7 @@ ClearBGPalettes::
 ApplyAttrmapInVBlank::
 ; Tell VBlank to update Attr Map
 	ld a, 2
-	ldh [hBGMapMode], a
-	jr Delay2
+	jr _ApplyAttrOrTilemapInVBlank
 
 ApplyAttrAndTilemapInVBlank::
 	call ApplyAttrmapInVBlank
@@ -14,6 +13,7 @@ ApplyAttrAndTilemapInVBlank::
 ApplyTilemapInVBlank::
 ; Tell VBlank to update BG Map
 	ld a, 1
+_ApplyAttrOrTilemapInVBlank:
 	ldh [hBGMapMode], a
 
 SFXDelay2::
