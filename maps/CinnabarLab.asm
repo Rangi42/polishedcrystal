@@ -202,6 +202,7 @@ CinnabarLabCelebiEventScript:
 	special FadeOutPalettes
 	pause 30
 	waitsfx
+	clearevent EVENT_ILEX_FOREST_LYRA
 	setmapscene ILEX_FOREST, $1
 	warp ILEX_FOREST, 10, 26
 	end

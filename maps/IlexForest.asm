@@ -517,6 +517,7 @@ MapIlexForestSignpost4Script:
 	pause 30
 	waitsfx
 	disappear ILEXFOREST_CELEBI
+	disappear ILEXFOREST_LYRA
 	setevent EVENT_TIME_TRAVELING
 	warp ROUTE_22_PAST, 6, 7
 	end
