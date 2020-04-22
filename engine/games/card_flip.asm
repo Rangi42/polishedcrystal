@@ -734,10 +734,8 @@ CardFlip_BlankDiscardedCardSlot:
 
 CardFlip_CheckWinCondition:
 	call CollapseCursorPosition
-	add hl, hl
-	ld de, .Jumptable
-	add hl, de
-	jp IndirectHL
+	ld a, l
+	call StackJumpTable
 
 .Jumptable:
 	dw .Impossible
