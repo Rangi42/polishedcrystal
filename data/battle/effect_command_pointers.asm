@@ -74,7 +74,7 @@ BattleCommandPointers:
 	command traptarget
 	command growth
 	command rampage
-	command checkrampageorcharge
+	command checklocked
 	command constantdamage
 	command counter
 	command encore
@@ -98,7 +98,6 @@ BattleCommandPointers:
 	command startsandstorm
 	command starthail
 	command endure
-	command checkcurl
 	command rolloutpower
 	command conditionalboost
 	command attract

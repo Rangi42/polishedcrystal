@@ -1178,12 +1178,12 @@ Rampage:
 Thrash:
 PetalDance:
 Outrage:
-	checkrampageorcharge
+	checklocked
 	checkobedience
 	doturn
+	usedmovetext
 	hastarget
 	rampage
-	usedmovetext
 	checkhit
 	critical
 	damagestats
@@ -1704,11 +1704,11 @@ Endure:
 	endmove
 
 Rollout:
-	checkcurl
+	checklocked
 	checkobedience
 	doturn
-	hastarget
 	usedmovetext
+	hastarget
 	critical
 	damagestats
 	damagecalc
@@ -2081,12 +2081,12 @@ Stomp:
 	endmove
 
 SolarBeam:
-	checkrampageorcharge
+	checklocked
 	checkobedience
 	doturn
+	usedmovetext
 	hastarget
 	charge
-	usedmovetext
 	critical
 	damagestats
 	damagecalc
@@ -2134,12 +2134,12 @@ Teleport:
 
 Fly:
 Dig:
-	checkrampageorcharge
+	checklocked
 	checkobedience
 	doturn
+	usedmovetext
 	hastarget
 	charge
-	usedmovetext
 	critical
 	damagestats
 	damagecalc

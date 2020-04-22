@@ -205,7 +205,7 @@ BattleCommand_checkturn:
 	ld a, $10 ; 1.0
 	ld [wTypeModifier], a
 
-	ld a, BATTLE_VARS_SUBSTATUS4
+	ld a, BATTLE_VARS_SUBSTATUS3
 	call GetBattleVarAddr
 	bit SUBSTATUS_RECHARGE, [hl]
 	jr z, .no_recharge
@@ -217,7 +217,7 @@ BattleCommand_checkturn:
 	jp EndTurn
 
 .no_recharge
-	ld a, BATTLE_VARS_SUBSTATUS3
+	ld a, BATTLE_VARS_SUBSTATUS4
 	call GetBattleVarAddr
 	bit SUBSTATUS_FLINCHED, [hl]
 	jr z, .not_flinched
@@ -452,7 +452,6 @@ CantMove:
 	jr z, .rampage_done
 	ld a, [de]
 	dec a
-	; ld [de], a
 	push hl
 	call z, HandleRampage_ConfuseUser  ; confuses user on last turn of rampage
 	pop hl
@@ -462,13 +461,9 @@ CantMove:
 	and (1 << SUBSTATUS_FLYING | 1 << SUBSTATUS_UNDERGROUND)
 	call nz, AppearUserRaiseSub
 	pop hl
-	ld a, ~(1 << SUBSTATUS_RAMPAGE | 1 << SUBSTATUS_CHARGED | 1 << SUBSTATUS_FLYING | 1 << SUBSTATUS_UNDERGROUND)
+	ld a, ~(1 << SUBSTATUS_RAMPAGE | 1 << SUBSTATUS_CHARGED | 1 << SUBSTATUS_FLYING | 1 << SUBSTATUS_UNDERGROUND | 1 << SUBSTATUS_ROLLOUT)
 	and [hl]
 	ld [hl], a
-
-	ld a, BATTLE_VARS_SUBSTATUS1
-	call GetBattleVarAddr
-	res SUBSTATUS_ROLLOUT, [hl]
 	ret
 
 IncreaseMetronomeCount:
@@ -990,6 +985,7 @@ BattleCommand_hastarget:
 
 	ld hl, ButItFailedText
 	call StdBattleTextBox
+	call CantMove
 	jp EndMoveEffect
 
 .not_fainted
@@ -1010,7 +1006,7 @@ BattleConsumePP:
 
 	ld a, BATTLE_VARS_SUBSTATUS3
 	call GetBattleVar
-	and 1 << SUBSTATUS_IN_LOOP | 1 << SUBSTATUS_RAMPAGE | 1 << SUBSTATUS_CHARGED
+	and 1 << SUBSTATUS_IN_LOOP | 1 << SUBSTATUS_RAMPAGE | 1 << SUBSTATUS_CHARGED | 1 << SUBSTATUS_ROLLOUT
 	ret nz
 
 	ldh a, [hBattleTurn]
@@ -3749,7 +3745,7 @@ BattleCommand_damagecalc:
 	; Flash Fire
 	call GetFutureSightUser
 	jr nz, .no_flash_fire
-	ld a, BATTLE_VARS_SUBSTATUS3
+	ld a, BATTLE_VARS_SUBSTATUS1
 	call GetBattleVar
 	bit SUBSTATUS_FLASH_FIRE, a
 	jr z, .no_flash_fire
@@ -4949,12 +4945,18 @@ BattleCommand_lowersubnoanim:
 	call CallBattleCore
 	jp ApplyTilemapInVBlank
 
-BattleCommand_checkrampageorcharge:
-	call CheckRampageStatusAndGetUserCount
+BattleCommand_checklocked:
+; decrements rollout count for rampage
+; otherwise resets it if user isn't locked in by a move
+	call CheckRampageStatusAndGetUserCount ; hl = substatus3, de = rollout count
 	jr nz, .handle_rampage
 	bit SUBSTATUS_CHARGED, [hl]
-	ret z
-	jr .done
+	jr nz, .done
+	bit SUBSTATUS_ROLLOUT, [hl]
+	jr nz, .done
+	xor a
+	ld [de], a
+	ret
 
 .handle_rampage
 	ld a, [de]
@@ -5271,7 +5273,7 @@ BattleCommand_flinchtarget:
 	; fallthrough
 
 FlinchTarget:
-	ld a, BATTLE_VARS_SUBSTATUS3_OPP
+	ld a, BATTLE_VARS_SUBSTATUS4_OPP
 	call GetBattleVarAddr
 	set SUBSTATUS_FLINCHED, [hl]
 	jp EndRechargeOpp
@@ -5291,8 +5293,7 @@ BattleCommand_charge:
 	call GetBattleVarAddr
 	bit SUBSTATUS_CHARGED, [hl]
 	jr z, .not_charging
-	ld a, ~(1 << SUBSTATUS_CHARGED | 1 << SUBSTATUS_UNDERGROUND | 1 << SUBSTATUS_FLYING)
-	and [hl]
+	and ~(1 << SUBSTATUS_CHARGED | 1 << SUBSTATUS_UNDERGROUND | 1 << SUBSTATUS_FLYING)
 	ld [hl], a
 	ret
 
@@ -5667,14 +5668,14 @@ BattleCommand_paralyze:
 	farjp EnableAnimations
 
 BattleCommand_rechargenextturn:
-	ld a, BATTLE_VARS_SUBSTATUS4
+	ld a, BATTLE_VARS_SUBSTATUS3
 	call GetBattleVarAddr
 	set SUBSTATUS_RECHARGE, [hl]
 	ret
 
 EndRechargeOpp:
 	push hl
-	ld a, BATTLE_VARS_SUBSTATUS4_OPP
+	ld a, BATTLE_VARS_SUBSTATUS3_OPP
 	call GetBattleVarAddr
 	res SUBSTATUS_RECHARGE, [hl]
 	pop hl
