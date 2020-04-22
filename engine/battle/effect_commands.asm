@@ -448,7 +448,7 @@ EndTurn:
 OpponentCantMove:
 	call CallOpponentTurn
 CantMove:
-	call CheckRampageStatusAndGetUserCount ; ; hl becomes pointer to user substatus3
+	call CheckRampageStatusAndGetRolloutCount ; ; hl becomes pointer to user substatus3
 	jr z, .rampage_done
 	ld a, [de]
 	dec a
@@ -625,6 +625,11 @@ BattleCommand_checkobedience:
 	ret nz
 
 	call CheckUserIsCharging
+	ret nz
+
+	ld a, BATTLE_VARS_SUBSTATUS3
+	call GetBattleVar
+	and 1 << SUBSTATUS_RAMPAGE | 1 << SUBSTATUS_CHARGED | 1 << SUBSTATUS_ROLLOUT
 	ret nz
 
 	; If we've already checked this turn
@@ -957,6 +962,12 @@ BattleCommand_doturn:
 	jr nz, .no_overflow
 	dec [hl]
 .no_overflow
+	; check if we're locked in to a multi-turn move
+	ld a, BATTLE_VARS_SUBSTATUS3
+	call GetBattleVar
+	and 1 << SUBSTATUS_RAMPAGE | 1 << SUBSTATUS_CHARGED | 1 << SUBSTATUS_ROLLOUT
+	ret nz
+
 	; Consume PP
 	call BattleConsumePP
 	ret nz
@@ -4945,27 +4956,6 @@ BattleCommand_lowersubnoanim:
 	call CallBattleCore
 	jp ApplyTilemapInVBlank
 
-BattleCommand_checklocked:
-; decrements rollout count for rampage
-; otherwise resets it if user isn't locked in by a move
-	call CheckRampageStatusAndGetUserCount ; hl = substatus3, de = rollout count
-	jr nz, .handle_rampage
-	bit SUBSTATUS_CHARGED, [hl]
-	jr nz, .done
-	bit SUBSTATUS_ROLLOUT, [hl]
-	jr nz, .done
-	xor a
-	ld [de], a
-	ret
-
-.handle_rampage
-	ld a, [de]
-	dec a
-	ld [de], a
-.done
-	ld b, doturn_command
-	jp SkipToBattleCommandAfter
-
 BattleCommand_rampage:
 ; No rampage during Sleep Talk.
 	ld a, BATTLE_VARS_STATUS
@@ -4973,13 +4963,19 @@ BattleCommand_rampage:
 	and SLP
 	ret nz
 
-	call CheckRampageStatusAndGetUserCount
-	ret nz ; we're already rampaging
+	call CheckRampageStatusAndGetRolloutCount
+	jr nz, .already_rampaging
 	set SUBSTATUS_RAMPAGE, [hl]
 ; Rampage for 1 or 2 more turns
 	call BattleRandom
 	and %00000001
 	inc a
+	ld [de], a
+	ret
+
+.already_rampaging
+	ld a, [de]
+	dec a
 	ld [de], a
 	ret
 
@@ -4989,7 +4985,7 @@ HandleRampage:
 	call HasUserFainted
 	ret z
 
-	call CheckRampageStatusAndGetUserCount
+	call CheckRampageStatusAndGetRolloutCount
 	ret z
 	ld a, [de]
 	and a
@@ -5020,7 +5016,7 @@ HandleRampage_CheckMiss:
 	res SUBSTATUS_RAMPAGE, [hl]
 	ret
 
-CheckRampageStatusAndGetUserCount:
+CheckRampageStatusAndGetRolloutCount:
 ; returns z if not rampaging
 ; returns hl: address to user substatus 3
 ; returns de: user rampage count

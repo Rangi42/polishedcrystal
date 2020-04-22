@@ -74,7 +74,6 @@ BattleCommandPointers:
 	command traptarget
 	command growth
 	command rampage
-	command checklocked
 	command constantdamage
 	command counter
 	command encore
