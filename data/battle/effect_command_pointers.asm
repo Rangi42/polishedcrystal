@@ -71,11 +71,10 @@ BattleCommandPointers:
 	command disable
 	command cleartext
 	command charge
-	command checkcharge
 	command traptarget
 	command growth
 	command rampage
-	command checkrampage
+	command checkrampageorcharge
 	command constantdamage
 	command counter
 	command encore

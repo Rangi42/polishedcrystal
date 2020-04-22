@@ -201,7 +201,6 @@ BattleCommand_checkturn:
 	ld [wKickCounter], a
 	ld [wAlreadyDisobeyed], a
 	ld [wAlreadyExecuted], a
-	ld [wSomeoneIsRampaging], a
 
 	ld a, $10 ; 1.0
 	ld [wTypeModifier], a
@@ -449,17 +448,27 @@ EndTurn:
 OpponentCantMove:
 	call CallOpponentTurn
 CantMove:
-	ld a, BATTLE_VARS_SUBSTATUS3
-	call GetBattleVarAddr
-	ld a, ~(SUBSTATUS_RAMPAGE | SUBSTATUS_CHARGED | SUBSTATUS_ROLLOUT)
+	call CheckRampageStatusAndGetUserCount ; ; hl becomes pointer to user substatus3
+	jr z, .rampage_done
+	ld a, [de]
+	dec a
+	; ld [de], a
+	push hl
+	call z, HandleRampage_ConfuseUser  ; confuses user on last turn of rampage
+	pop hl
+.rampage_done
+	ld a, [hl]
+	push hl
+	and (1 << SUBSTATUS_FLYING | 1 << SUBSTATUS_UNDERGROUND)
+	call nz, AppearUserRaiseSub
+	pop hl
+	ld a, ~(1 << SUBSTATUS_RAMPAGE | 1 << SUBSTATUS_CHARGED | 1 << SUBSTATUS_FLYING | 1 << SUBSTATUS_UNDERGROUND)
 	and [hl]
 	ld [hl], a
-	push hl
-	and SUBSTATUS_FLYING | SUBSTATUS_UNDERGROUND
-	call z, AppearUserRaiseSub
-	pop hl
-	res SUBSTATUS_FLYING, [hl]
-	res SUBSTATUS_UNDERGROUND, [hl]
+
+	ld a, BATTLE_VARS_SUBSTATUS1
+	call GetBattleVarAddr
+	res SUBSTATUS_ROLLOUT, [hl]
 	ret
 
 IncreaseMetronomeCount:
@@ -1001,7 +1010,7 @@ BattleConsumePP:
 
 	ld a, BATTLE_VARS_SUBSTATUS3
 	call GetBattleVar
-	and 1 << SUBSTATUS_IN_LOOP | 1 << SUBSTATUS_RAMPAGE
+	and 1 << SUBSTATUS_IN_LOOP | 1 << SUBSTATUS_RAMPAGE | 1 << SUBSTATUS_CHARGED
 	ret nz
 
 	ldh a, [hBattleTurn]
@@ -2784,6 +2793,8 @@ BattleCommand_postfainteffects:
 
 BattleCommand_posthiteffects:
 ; This can run even if someone is fainted. Take this into account.
+	call HandleRampage
+
 	call HasOpponentFainted
 	jr z, .skip_sub_check
 	call CheckSubstituteOpp
@@ -2945,7 +2956,8 @@ BattleCommand_posthiteffects:
 	ret
 
 CheckEndMoveEffects:
-; Effects handled at move end Skipped by Sheer Force negation
+; Effects handled at move end skipped by Sheer Force negation except for rampage
+	call HandleRampage
 	call CheckSheerForceNegation
 	ret z
 	call GetFutureSightUser
@@ -4937,41 +4949,19 @@ BattleCommand_lowersubnoanim:
 	call CallBattleCore
 	jp ApplyTilemapInVBlank
 
-BattleCommand_checkrampage:
-	ld de, wPlayerRolloutCount
-	ldh a, [hBattleTurn]
-	and a
-	jr z, .player
-	ld de, wEnemyRolloutCount
-.player
-	ld a, BATTLE_VARS_SUBSTATUS3
-	call GetBattleVarAddr
-	bit SUBSTATUS_RAMPAGE, [hl]
+BattleCommand_checkrampageorcharge:
+	call CheckRampageStatusAndGetUserCount
+	jr nz, .handle_rampage
+	bit SUBSTATUS_CHARGED, [hl]
 	ret z
+	jr .done
+
+.handle_rampage
 	ld a, [de]
 	dec a
 	ld [de], a
-	jr nz, .continue_rampage
-
-	res SUBSTATUS_RAMPAGE, [hl]
-	call GetTrueUserAbility
-	cp OWN_TEMPO
-	jr z, .continue_rampage
-	call SwitchTurn
-	call SafeCheckSafeguard
-	jr nz, .switchturn_continue_rampage
-
-	set SUBSTATUS_CONFUSED, [hl]
-	call BattleRandom
-	and %00000001
-	inc a
-	inc a
-	inc de ; ConfuseCount
-	ld [de], a
-.switchturn_continue_rampage
-	call SwitchTurn
-.continue_rampage
-	ld b, rampage_command
+.done
+	ld b, doturn_command
 	jp SkipToBattleCommandAfter
 
 BattleCommand_rampage:
@@ -4981,6 +4971,57 @@ BattleCommand_rampage:
 	and SLP
 	ret nz
 
+	call CheckRampageStatusAndGetUserCount
+	ret nz ; we're already rampaging
+	set SUBSTATUS_RAMPAGE, [hl]
+; Rampage for 1 or 2 more turns
+	call BattleRandom
+	and %00000001
+	inc a
+	ld [de], a
+	ret
+
+HandleRampage:
+; Decrements rampage counter and confuses the user if rampage count is zero,
+; otherwise ends rampage if the attack missed for any reason
+	call HasUserFainted
+	ret z
+
+	call CheckRampageStatusAndGetUserCount
+	ret z
+	ld a, [de]
+	and a
+	jr nz, HandleRampage_CheckMiss
+	res SUBSTATUS_RAMPAGE, [hl]
+HandleRampage_ConfuseUser:
+	bit SUBSTATUS_CONFUSED, [hl]
+	ret nz
+	call GetTrueUserAbility
+	cp OWN_TEMPO
+	ret z
+
+	set SUBSTATUS_CONFUSED, [hl]
+	inc de ; ConfuseCount
+	call BattleRandom
+	and %11
+	inc a
+	inc a
+	ld [de], a
+	call CallOpponentTurn
+	ld hl, BecameConfusedDueToFatigueText
+	jp FinishConfusingTargetAnim
+
+HandleRampage_CheckMiss:
+	ld a, [wAttackMissed]
+	and a
+	ret z
+	res SUBSTATUS_RAMPAGE, [hl]
+	ret
+
+CheckRampageStatusAndGetUserCount:
+; returns z if not rampaging
+; returns hl: address to user substatus 3
+; returns de: user rampage count
 	ld de, wPlayerRolloutCount
 	ldh a, [hBattleTurn]
 	and a
@@ -4989,14 +5030,7 @@ BattleCommand_rampage:
 .ok
 	ld a, BATTLE_VARS_SUBSTATUS3
 	call GetBattleVarAddr
-	set SUBSTATUS_RAMPAGE, [hl]
-; Rampage for 1 or 2 more turns
-	call BattleRandom
-	and %00000001
-	inc a
-	ld [de], a
-	ld a, 1
-	ld [wSomeoneIsRampaging], a
+	bit SUBSTATUS_RAMPAGE, [hl]
 	ret
 
 CheckIfTrappedByAbility:
@@ -5252,19 +5286,20 @@ CheckOpponentWentFirst:
 	pop hl
 	ret
 
-BattleCommand_checkcharge:
+BattleCommand_charge:
 	ld a, BATTLE_VARS_SUBSTATUS3
 	call GetBattleVarAddr
 	bit SUBSTATUS_CHARGED, [hl]
-	ret z
-	res SUBSTATUS_CHARGED, [hl]
-	res SUBSTATUS_UNDERGROUND, [hl]
-	res SUBSTATUS_FLYING, [hl]
-	ld b, charge_command
-	jp SkipToBattleCommandAfter
+	jr z, .not_charging
+	ld a, ~(1 << SUBSTATUS_CHARGED | 1 << SUBSTATUS_UNDERGROUND | 1 << SUBSTATUS_FLYING)
+	and [hl]
+	ld [hl], a
+	ret
 
-BattleCommand_charge:
+.not_charging
+	push hl
 	call BattleCommand_cleartext
+	pop hl
 	ld a, BATTLE_VARS_STATUS
 	call GetBattleVar
 	and SLP
@@ -5276,8 +5311,6 @@ BattleCommand_charge:
 	jp EndMoveEffect
 
 .awake
-	ld a, BATTLE_VARS_SUBSTATUS3
-	call GetBattleVarAddr
 	set SUBSTATUS_CHARGED, [hl]
 
 	ld hl, IgnoredOrders2Text
@@ -5560,10 +5593,12 @@ FinishConfusingTarget:
 	call AnimateCurrentMove
 
 .got_effect
+	ld hl, BecameConfusedText
+FinishConfusingTargetAnim:
+; parameter hl: contains pointer to text box
 	ld de, ANIM_CONFUSED
 	call PlayOpponentBattleAnim
 
-	ld hl, BecameConfusedText
 	call StdBattleTextBox
 
 	farcall UseOpponentConfusionHealingItem

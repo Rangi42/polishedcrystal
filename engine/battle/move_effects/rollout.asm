@@ -33,20 +33,13 @@ BattleCommand_rolloutpower:
 	ld hl, wEnemyRolloutCount
 
 .got_rollout_count
-	ld a, [hl]
-	and a
-	jr nz, .skip_set_rampage
-	ld a, 1
-	ld [wSomeoneIsRampaging], a
-
-.skip_set_rampage
 	ld a, [wAttackMissed]
 	and a
 	jr z, .hit
 
 	ld a, BATTLE_VARS_SUBSTATUS1
 	call GetBattleVarAddr
-	res 6, [hl]
+	res SUBSTATUS_ROLLOUT, [hl]
 	ret
 
 .hit

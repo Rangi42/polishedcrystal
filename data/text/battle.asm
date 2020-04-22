@@ -634,7 +634,12 @@ BecameConfusedText:
 	text "<TARGET>"
 	line "became confused!"
 	prompt
-; ItemHealedConfusion
+
+BecameConfusedDueToFatigueText:
+	text "<TARGET>"
+	line "became confused"
+	cont "due to fatigue!"
+	prompt
 
 BattleText_ItemHealedConfusion: ; ItemHealedConfusion
 	text "A @"

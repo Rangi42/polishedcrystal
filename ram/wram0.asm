@@ -433,6 +433,8 @@ wPlayerSubStatus2::
 ; 0 unused
 	db
 wPlayerSubStatus3::
+; NOTE: confused, flying, underground, charged,
+; in loop, rampage should stay in same substatus!
 ; bit
 ; 7 confused
 ; 6 flying
@@ -468,7 +470,7 @@ wEnemySubStatus4::
 ; see wPlayerSubStatus4
 	db
 
-; Some code depend on the order of these
+; Some code (e.g. HandleRampage) depend on the order of these
 wPlayerAbility:: db
 wPlayerRolloutCount:: db
 wPlayerConfuseCount:: db
@@ -695,7 +697,7 @@ wBattleEnded:: db
 
 wAmuletCoin:: db
 
-wSomeoneIsRampaging:: db
+	ds 1
 
 wDVAndPersonalityBuffer:: ds 5
 wBattleEnd::

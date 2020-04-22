@@ -1178,7 +1178,7 @@ Rampage:
 Thrash:
 PetalDance:
 Outrage:
-	checkrampage
+	checkrampageorcharge
 	checkobedience
 	doturn
 	hastarget
@@ -2081,7 +2081,7 @@ Stomp:
 	endmove
 
 SolarBeam:
-	checkcharge
+	checkrampageorcharge
 	checkobedience
 	doturn
 	hastarget
@@ -2134,7 +2134,7 @@ Teleport:
 
 Fly:
 Dig:
-	checkcharge
+	checkrampageorcharge
 	checkobedience
 	doturn
 	hastarget
