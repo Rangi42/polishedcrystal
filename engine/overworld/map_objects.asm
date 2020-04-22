@@ -57,12 +57,10 @@ asm_444d:
 	ld hl, OBJECT_ACTION
 	add hl, bc
 	ld a, [hl]
-	ld l, a
-	ld h, 0
-	add hl, hl
-	add hl, hl
-	add hl, de
-	jp IndirectHL
+	add a
+	ld l, e
+	ld h, d
+	jp JumpTable
 
 INCLUDE "engine/overworld/map_object_action.asm"
 
@@ -469,8 +467,7 @@ MovementAnonymousJumptable:
 	ld hl, OBJECT_MOVEMENT_BYTE_INDEX
 	add hl, bc
 	ld a, [hl]
-	pop hl
-	jp JumpTable
+	jp StackJumpTable
 
 ClearObjectStructField28:
 	ld hl, OBJECT_28
@@ -488,8 +485,7 @@ Object28AnonymousJumptable:
 	ld hl, OBJECT_28
 	add hl, bc
 	ld a, [hl]
-	pop hl
-	jp JumpTable
+	jp StackJumpTable
 
 ObjectMovementReset:
 	ld hl, OBJECT_NEXT_MAP_X
