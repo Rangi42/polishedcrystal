@@ -130,11 +130,8 @@ INCLUDE "home/vwf.asm"
 SECTION "serial", ROM0[$0058]
 	jp Serial
 
-InitVerticalMenuCursor::
-	farjp _InitVerticalMenuCursor
 
-
-SECTION "High Home", ROM0[$005f]
+SECTION "High Home", ROM0[$005b]
 ;SECTION "joypad", ROM0[$0060]
 ; JOYPAD is never enabled
 

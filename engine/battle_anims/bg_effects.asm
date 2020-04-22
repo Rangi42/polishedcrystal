@@ -129,9 +129,7 @@ BattleBGEffects:
 
 BattleBGEffects_AnonJumptable:
 	ld hl, BG_EFFECT_STRUCT_JT_INDEX
-	add hl, bc
-	ld a, [hl]
-	jp StackJumpTable
+	jp OffsetStackJumpTable
 
 BattleBGEffects_IncrementJumptable:
 	ld hl, BG_EFFECT_STRUCT_JT_INDEX

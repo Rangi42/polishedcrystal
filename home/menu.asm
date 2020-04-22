@@ -1,3 +1,6 @@
+InitVerticalMenuCursor::
+	farjp _InitVerticalMenuCursor
+
 CloseWindow::
 	push af
 	call ExitMenu

@@ -1,3 +1,8 @@
+OffsetStackJumpTable::
+	add hl, bc
+	ld a, [hl]
+	jr StackJumpTable
+
 StandardStackJumpTable::
 	ld a, [wJumptableIndex]
 StackJumpTable::

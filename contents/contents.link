@@ -27,7 +27,7 @@ ROM0
 	"serial"
 ;	org $0060
 ;	"joypad"
-	org $005f
+	org $005b
 	"High Home"
 	org $0100
 	"Header"

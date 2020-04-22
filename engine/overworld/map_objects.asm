@@ -451,6 +451,10 @@ RestoreDefaultMovement:
 	ld a, SPRITEMOVEFN_STANDING
 	ret
 
+MovementAnonymousJumptable:
+	ld hl, OBJECT_MOVEMENT_BYTE_INDEX
+	jp OffsetStackJumpTable
+
 IncrementObjectMovementByteIndex:
 	ld hl, OBJECT_MOVEMENT_BYTE_INDEX
 	add hl, bc
@@ -463,17 +467,9 @@ DecrementObjectMovementByteIndex:
 	dec [hl]
 	ret
 
-MovementAnonymousJumptable:
-	ld hl, OBJECT_MOVEMENT_BYTE_INDEX
-	add hl, bc
-	ld a, [hl]
-	jp StackJumpTable
-
-ClearObjectStructField28:
+Object28AnonymousJumptable:
 	ld hl, OBJECT_28
-	add hl, bc
-	ld [hl], 0
-	ret
+	jp OffsetStackJumpTable
 
 IncrementObjectStructField28:
 	ld hl, OBJECT_28
@@ -481,11 +477,11 @@ IncrementObjectStructField28:
 	inc [hl]
 	ret
 
-Object28AnonymousJumptable:
+ClearObjectStructField28:
 	ld hl, OBJECT_28
 	add hl, bc
-	ld a, [hl]
-	jp StackJumpTable
+	ld [hl], 0
+	ret
 
 ObjectMovementReset:
 	ld hl, OBJECT_NEXT_MAP_X
