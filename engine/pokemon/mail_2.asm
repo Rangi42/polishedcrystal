@@ -672,7 +672,8 @@ MailGFX_PlaceMessage:
 	hlcoord 5, 14
 
 .place_author
-	jp _PlaceString
+	rst PlaceString
+	ret
 
 DrawMailBorder:
 	hlcoord 0, 0

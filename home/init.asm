@@ -206,7 +206,8 @@ ClearVRAM::
 	ld hl, vTiles0
 	ld bc, $2000
 	xor a
-	jp _ByteFill
+	rst ByteFill
+	ret
 
 ClearWRAM::
 ; Wipe swappable WRAM banks (1-7)

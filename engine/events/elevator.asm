@@ -192,7 +192,8 @@ GetFloorString:
 	ld d, h
 	ld e, l
 	pop hl
-	jp _PlaceString
+	rst PlaceString
+	ret
 
 FloorToString:
 	push de

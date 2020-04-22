@@ -1176,7 +1176,8 @@ Pokedex_DrawOptionScreenBG:
 	ret z
 	hlcoord 3, 10
 	ld de, .UnownMode
-	jp _PlaceString
+	rst PlaceString
+	ret
 
 .Title:
 	rawchar $3b, " Option ", $3c, $ff
@@ -1208,7 +1209,8 @@ Pokedex_DrawSearchScreenBG:
 	rst PlaceString
 	hlcoord 3, 13
 	ld de, .Menu
-	jp _PlaceString
+	rst PlaceString
+	ret
 
 .Title:
 	rawchar $3b, " Search ", $3c, $ff
@@ -1429,7 +1431,8 @@ Pokedex_DrawSearchResultsWindow:
 	call ClearBox
 	ld de, .esults_D
 	hlcoord 0, 12
-	jp _PlaceString
+	rst PlaceString
+	ret
 
 .esults_D
 ; (SEARCH R)
@@ -1441,7 +1444,8 @@ Pokedex_FillBackgroundColor2:
 	hlcoord 0, 0
 	ld a, $32
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
-	jp _ByteFill
+	rst ByteFill
+	ret
 
 Pokedex_PlaceString:
 .loop
@@ -1543,7 +1547,8 @@ Pokedex_PrintListing:
 	push hl
 	call GetPokemonName
 	pop hl
-	jp _PlaceString
+	rst PlaceString
+	ret
 
 Pokedex_PrintNumberIfOldMode:
 	ld a, [wCurDexMode]
@@ -1882,7 +1887,8 @@ endr
 	ld e, l
 	ld d, h
 	pop hl
-	jp _PlaceString
+	rst PlaceString
+	ret
 
 INCLUDE "data/types/search_strings.asm"
 

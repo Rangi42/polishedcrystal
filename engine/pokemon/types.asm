@@ -35,7 +35,8 @@ PrintMonTypes:
 	ld d, [hl]
 	pop hl
 
-	jp _PlaceString
+	rst PlaceString
+	ret
 
 GetTypeName:
 ; Copy the name of type [wNamedObjectIndexBuffer] to StringBuffer1.

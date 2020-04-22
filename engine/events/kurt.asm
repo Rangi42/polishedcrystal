@@ -100,7 +100,8 @@ Kurt_SelectApricorn:
 	ld [wNamedObjectIndexBuffer], a
 	call GetApricornName
 	pop hl
-	jp _PlaceString
+	rst PlaceString
+	ret
 
 .Quantity:
 	ld a, [wMenuSelection]
@@ -158,7 +159,8 @@ Kurt_SelectQuantity:
 	ld a, [wCurItem]
 	ld [wNamedObjectIndexBuffer], a
 	call GetApricornName
-	jp _PlaceString
+	rst PlaceString
+	ret
 
 .PlaceApricornQuantity:
 	call MenuBoxCoord2Tile

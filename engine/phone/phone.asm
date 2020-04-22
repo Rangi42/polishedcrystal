@@ -593,7 +593,8 @@ GetCallerName:
 	ld de, SCREEN_WIDTH + 3
 	add hl, de
 	call Phone_GetTrainerClassName
-	jp _PlaceString
+	rst PlaceString
+	ret
 
 .NotTrainer:
 	ld a, b
@@ -609,7 +610,8 @@ GetCallerName:
 	ld e, a
 	ld d, [hl]
 	pop hl
-	jp _PlaceString
+	rst PlaceString
+	ret
 
 .Blank:
 	ld a, "<SHARP>"
@@ -624,7 +626,8 @@ GetCallerName:
 	lb bc, PRINTNUM_LEFTALIGN | 1, 2
 	call PrintNum
 	ld de, .filler
-	jp _PlaceString
+	rst PlaceString
+	ret
 
 .filler
 	db " -------@"

@@ -543,7 +543,8 @@ Continue_UnknownGameTime:
 	decoord 9, 8, 0
 	add hl, de
 	ld de, .three_question_marks
-	jp _PlaceString
+	rst PlaceString
+	ret
 
 .three_question_marks
 	db " ???@"
@@ -1256,7 +1257,8 @@ Copyright:
 	call DecompressRequest2bpp
 	hlcoord 2, 7
 	ld de, CopyrightString
-	jp _PlaceString
+	rst PlaceString
+	ret
 
 CopyrightString:
 	; ©1995-2001 Nintendo

@@ -343,7 +343,8 @@ CardFlip_ShuffleDeck:
 	ld [wCardFlipNumCardsPlayed], a
 	ld hl, wDiscardPile
 	ld bc, CARDFLIP_DECK_SIZE
-	jp _ByteFill
+	rst ByteFill
+	ret
 
 CollapseCursorPosition:
 	ld hl, 0

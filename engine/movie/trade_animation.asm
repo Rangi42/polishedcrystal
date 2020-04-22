@@ -519,7 +519,8 @@ TradeAnim_TubeAnimJumptable:
 	hlcoord 0, 3
 	ld bc, SCREEN_WIDTH
 	ld a, $60
-	jp _ByteFill
+	rst ByteFill
+	ret
 
 .Two:
 	call TradeAnim_BlankTileMap
@@ -876,7 +877,8 @@ TrademonStats_MonTemplate:
 	call TextBox
 	hlcoord 4, 0
 	ld de, .OTMonData
-	jp _PlaceString
+	rst PlaceString
+	ret
 
 .OTMonData:
 	db   "─── №."
@@ -918,7 +920,8 @@ TrademonStats_PrintSpeciesNumber:
 
 TrademonStats_PrintSpeciesName:
 	hlcoord 4, 2
-	jp _PlaceString
+	rst PlaceString
+	ret
 
 TrademonStats_PrintOTName:
 	cp 3
@@ -1199,7 +1202,8 @@ TradeAnim_BlankTileMap:
 	hlcoord 0, 0
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
 	ld a, " "
-	jp _ByteFill
+	rst ByteFill
+	ret
 
 TradeAnim_CopyBoxFromDEtoHL:
 .row

@@ -359,7 +359,8 @@ FlyToAnim:
 	ld hl, wVirtualOAM + 4 * 4
 	ld bc, wVirtualOAMEnd - (wVirtualOAM + 4 * 4)
 	xor a
-	jp _ByteFill
+	rst ByteFill
+	ret
 
 FlyFunction_InitGFX:
 	call ClearSpriteAnims

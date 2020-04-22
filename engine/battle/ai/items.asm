@@ -716,7 +716,8 @@ PrintText_CopyItemName:
 	ld hl, wStringBuffer1
 	ld de, wMonOrItemNameBuffer
 	ld bc, ITEM_NAME_LENGTH
-	jp CopyBytes
+	rst CopyBytes
+	ret
 
 TextJump_EnemyUsed:
 	text_jump Text_EnemyUsed

@@ -2,7 +2,8 @@ FieldMoveJumptableReset:
 	xor a
 	ld hl, wBuffer1
 	ld bc, 7
-	jp _ByteFill
+	rst ByteFill
+	ret
 
 FieldMoveJumptable:
 	ld a, [wBuffer1]

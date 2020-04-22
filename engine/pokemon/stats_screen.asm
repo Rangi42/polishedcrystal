@@ -850,7 +850,8 @@ TN_PrintToD:
 	ld de, .nite
 .print
 	hlcoord 3, 9
-	jp _PlaceString
+	rst PlaceString
+	ret
 
 .caughtat
 	db "Met/@"
@@ -879,7 +880,8 @@ TN_PrintLocation:
 	ld de, wStringBuffer1
 .print
 	hlcoord 3, 10
-	jp _PlaceString
+	rst PlaceString
+	ret
 
 .event
 	db "Event #mon@"
@@ -900,10 +902,12 @@ TN_PrintLV:
 	jp PrintNum
 .hatched
 	ld de, .str_hatched
-	jp _PlaceString
+	rst PlaceString
+	ret
 .unknown
 	ld de, .str_unknown
-	jp _PlaceString
+	rst PlaceString
+	ret
 
 .str_atlv
 	db "at <LV>@"
@@ -1000,7 +1004,8 @@ TN_PrintCharacteristics:
 	ld d, [hl]
 	ld e, a
 	hlcoord 0, 15
-	jp _PlaceString
+	rst PlaceString
+	ret
 
 INCLUDE "data/characteristics.asm"
 

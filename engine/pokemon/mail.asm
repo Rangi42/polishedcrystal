@@ -355,7 +355,8 @@ MailboxPC_PrintMailAuthor:
 	ld a, [wMenuSelection]
 	call MailboxPC_GetMailAuthor
 	pop hl
-	jp _PlaceString
+	rst PlaceString
+	ret
 
 MailboxPC:
 	xor a

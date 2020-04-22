@@ -240,7 +240,8 @@ DisplayMinutesWithMinString:
 	call PrintTwoDigitNumberRightAlign
 	inc hl
 	ld de, String_min
-	jp _PlaceString
+	rst PlaceString
+	ret
 
 PrintTwoDigitNumberRightAlign:
 	push hl
@@ -458,7 +459,8 @@ Special_SetDayOfWeek:
 	ld d, [hl]
 	ld e, a
 	pop hl
-	jp _PlaceString
+	rst PlaceString
+	ret
 
 .WeekdayStrings:
 	dw .Sunday
@@ -654,7 +656,8 @@ PrintHoursMins
 	ld de, .String_PM
 .place_am_pm
 	inc hl
-	jp _PlaceString
+	rst PlaceString
+	ret
 
 .String_AM: db "AM@"
 .String_PM: db "PM@"

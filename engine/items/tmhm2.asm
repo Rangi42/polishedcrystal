@@ -351,7 +351,8 @@ PrintMoveDesc:
 	ld e, a
 	ld d, [hl]
 	pop hl
-	jp _PlaceString
+	rst PlaceString
+	ret
 
 AskTeachTMHM:
 	ld hl, wOptions1

@@ -445,7 +445,8 @@ ScrollingMenu_UpdateDisplay:
 	bit 0, a ; call function on cancel
 	jr nz, .call_function
 	ld de, ScrollingMenu_CancelString
-	jp _PlaceString
+	rst PlaceString
+	ret
 
 .call_function
 	ld d, h

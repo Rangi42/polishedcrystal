@@ -9,7 +9,8 @@ PrintAbility:
 	ld d, [hl]
 	ld e, a
 	hlcoord 3, 13
-	jp _PlaceString
+	rst PlaceString
+	ret
 
 BufferAbility:
 	ld de, wStringBuffer1
@@ -43,7 +44,8 @@ PrintAbilityDescription:
 	ld d, [hl]
 	ld e, a
 	hlcoord 1, 15
-	jp _PlaceString
+	rst PlaceString
+	ret
 
 INCLUDE "data/abilities/names.asm"
 

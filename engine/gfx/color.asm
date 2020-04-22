@@ -338,7 +338,8 @@ WipeAttrMap:
 	hlcoord 0, 0, wAttrMap
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
 	xor a
-	jp _ByteFill
+	rst ByteFill
+	ret
 
 ApplyPals:
 	ld hl, wBGPals1

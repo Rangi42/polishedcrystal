@@ -178,7 +178,8 @@ StartMenu::
 	ld d, [hl]
 	ld e, a
 	pop hl
-	jp _PlaceString
+	rst PlaceString
+	ret
 
 .GetMenuAccountTextPointer:
 	ld e, a

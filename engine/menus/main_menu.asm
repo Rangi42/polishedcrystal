@@ -187,7 +187,8 @@ endc
 .PrintTimeNotSet:
 	hlcoord 1, 14
 	ld de, .TimeNotSet
-	jp _PlaceString
+	rst PlaceString
+	ret
 
 .TimeNotSet:
 	db "Time not set@"

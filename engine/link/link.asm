@@ -648,7 +648,8 @@ InitTradeSpeciesList:
 	call PlaceTradePartnerNamesAndParty
 	hlcoord 10, 17
 	ld de, .Cancel
-	jp _PlaceString
+	rst PlaceString
+	ret
 
 .TradeScreenTilemap:
 INCBIN "gfx/link_trade/16d465.tilemap"
@@ -2406,7 +2407,8 @@ InitLinkTradePalMap:
 	hlcoord 2, 17, wAttrMap
 	ld a, $3
 	ld bc, 6
-	jp _ByteFill
+	rst ByteFill
+	ret
 
 .fill_box:
 .row

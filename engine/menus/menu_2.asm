@@ -17,7 +17,8 @@ PlaceMartItemName:
 	ld [wNamedObjectIndexBuffer], a
 	call nz, GetItemName
 	pop hl
-	jp _PlaceString
+	rst PlaceString
+	ret
 
 PlaceMenuTMHMName:
 	push de
@@ -25,7 +26,8 @@ PlaceMenuTMHMName:
 	ld [wNamedObjectIndexBuffer], a
 	call GetTMHMName
 	pop hl
-	jp _PlaceString
+	rst PlaceString
+	ret
 
 PlaceMenuApricornQuantity:
 	ld a, [wMenuSelection]
@@ -97,7 +99,8 @@ PlaceBlueCardPointsTopRight:
 	lb bc, 1, 3
 	call PrintNum
 	ld de, .PointsString
-	jp _PlaceString
+	rst PlaceString
+	ret
 
 .PointsString:
 	db " Pts@"
@@ -111,7 +114,8 @@ PlaceBattlePointsTopRight:
 	lb bc, 1, 3
 	call PrintNum
 	ld de, .BPString
-	jp _PlaceString
+	rst PlaceString
+	ret
 
 .BPString:
 	db " BP@"

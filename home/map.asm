@@ -472,7 +472,8 @@ ClearObjectStructs::
 	ld hl, wObject1Struct
 	ld bc, OBJECT_STRUCT_LENGTH * (NUM_OBJECT_STRUCTS - 1)
 	xor a
-	jp _ByteFill
+	rst ByteFill
+	ret
 
 RestoreFacingAfterWarp::
 	call SwitchToMapScriptHeaderBank

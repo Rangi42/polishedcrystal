@@ -1135,7 +1135,8 @@ BlueCardMenuDataHeader_Buy:
 	lb bc, 1, 3
 	call PrintNum
 	ld de, .PointsString
-	jp _PlaceString
+	rst PlaceString
+	ret
 
 .PointsString:
 	db " Pts@"
@@ -1163,7 +1164,8 @@ BTMenuDataHeader_Buy:
 	lb bc, 1, 3
 	call PrintNum
 	ld de, .PointsString
-	jp _PlaceString
+	rst PlaceString
+	ret
 
 .PointsString:
 	db " BP@"

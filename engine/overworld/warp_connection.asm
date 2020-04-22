@@ -288,7 +288,8 @@ LoadMapTimeOfDay:
 	ld a, "<BLACK>"
 	ld bc, vBGMap1 - vBGMap0
 	hlbgcoord 0, 0
-	jp _ByteFill
+	rst ByteFill
+	ret
 
 DeferredLoadGraphics:
 	call TilesetUnchanged

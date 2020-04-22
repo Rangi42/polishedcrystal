@@ -74,7 +74,8 @@ BattleIntroSlidingPics:
 	ld hl, wLYOverrides
 	ld a, $90
 	ld bc, SCREEN_HEIGHT_PX
-	jp _ByteFill
+	rst ByteFill
+	ret
 
 .subfunction5
 	ld hl, wLYOverrides

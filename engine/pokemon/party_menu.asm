@@ -101,7 +101,8 @@ PlacePartyNicknames:
 	dec hl
 	dec hl
 	ld de, .CANCEL
-	jp _PlaceString
+	rst PlaceString
+	ret
 
 .CANCEL:
 	db "Cancel@"

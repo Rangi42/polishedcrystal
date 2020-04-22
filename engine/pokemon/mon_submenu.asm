@@ -206,7 +206,8 @@ ResetMonSubmenu:
 	ld [wBuffer1], a
 	ld hl, wBuffer2
 	ld bc, NUM_MON_SUBMENU_ITEMS + 1
-	jp _ByteFill
+	rst ByteFill
+	ret
 
 TerminateMonSubmenu:
 	ld a, [wBuffer1]

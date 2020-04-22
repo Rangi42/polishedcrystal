@@ -629,7 +629,8 @@ PlaceRadioString:
 	ld [wCurRadioLine], a
 	ld a, 100
 	ld [wRadioTextDelay], a
-	jp _PlaceString
+	rst PlaceString
+	ret
 
 CopyBottomLineToTopLine:
 	hlcoord 0, 15
@@ -646,7 +647,8 @@ ClearBottomLine:
 	hlcoord 1, 16
 	ld bc, SCREEN_WIDTH - 2
 	ld a, " "
-	jp _ByteFill
+	rst ByteFill
+	ret
 
 PokedexShow1:
 	call StartRadioStation
