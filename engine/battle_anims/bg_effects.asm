@@ -128,14 +128,10 @@ BattleBGEffects:
 	dw BattleBGEffect_35
 
 BattleBGEffects_AnonJumptable:
-	pop de
 	ld hl, BG_EFFECT_STRUCT_JT_INDEX
 	add hl, bc
-	ld l, [hl]
-	ld h, 0
-	add hl, hl
-	add hl, de
-	jp IndirectHL
+	ld a, [hl]
+	jp StackJumpTable
 
 BattleBGEffects_IncrementJumptable:
 	ld hl, BG_EFFECT_STRUCT_JT_INDEX
