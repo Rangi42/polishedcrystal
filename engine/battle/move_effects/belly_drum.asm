@@ -11,6 +11,7 @@ BattleCommand_bellydrum:
 	and a
 	jr nz, .failed
 
+	call AnimateCurrentMove
 	call GetHalfMaxHP
 	predef SubtractHPFromUser
 	call UpdateUserInParty
