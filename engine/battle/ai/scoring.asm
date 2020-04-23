@@ -554,7 +554,7 @@ AI_Smart_EvasionUp:
 	jr c, .asm_38936
 
 ; Greatly encourage this move if the player is in the middle of Rollout.
-	ld a, [wPlayerSubStatus1]
+	ld a, [wPlayerSubStatus3]
 	bit SUBSTATUS_ROLLOUT, a
 	jr nz, .asm_388ef
 
@@ -676,7 +676,7 @@ AI_Smart_AccuracyDown:
 	jr c, .asm_389e4
 
 ; Greatly encourage this move if the player is in the middle of Rollout.
-	ld a, [wPlayerSubStatus1]
+	ld a, [wPlayerSubStatus3]
 	bit SUBSTATUS_ROLLOUT, a
 	jr nz, .asm_3899d
 
@@ -841,7 +841,10 @@ AI_Smart_Bind:
 	jr nz, .asm_38a91
 
 	ld a, [wPlayerSubStatus1]
-	and 1<<SUBSTATUS_IN_LOVE | 1<<SUBSTATUS_ROLLOUT | 1<<SUBSTATUS_IDENTIFIED
+	and 1<<SUBSTATUS_IN_LOVE | 1<<SUBSTATUS_IDENTIFIED
+	jr nz, .asm_38a91
+	ld a, [wPlayerSubStatus3]
+	and 1<<SUBSTATUS_ROLLOUT
 	jr nz, .asm_38a91
 
 ; Else, 50% chance to greatly encourage this move if it's the player's Pokemon first turn.
@@ -1384,7 +1387,10 @@ AI_Smart_MeanLook:
 ; 80% chance to greatly encourage this move if the player is either
 ; in love, identified, or stuck in Rollout.
 	ld a, [wPlayerSubStatus1]
-	and 1<<SUBSTATUS_IN_LOVE | 1<<SUBSTATUS_ROLLOUT | 1<<SUBSTATUS_IDENTIFIED
+	and 1<<SUBSTATUS_IN_LOVE | 1<<SUBSTATUS_IDENTIFIED
+	jr nz, .asm_38e26
+	ld a, [wPlayerSubStatus3]
+	and 1<<SUBSTATUS_ROLLOUT
 	jr nz, .asm_38e26
 
 ; Otherwise, discourage this move unless the player only has not very effective moves against the enemy.
@@ -1535,6 +1541,8 @@ AI_Smart_Protect:
 	ld a, [wPlayerSubStatus3]
 	bit SUBSTATUS_CHARGED, a
 	jr nz, .asm_38f0d
+	bit SUBSTATUS_ROLLOUT, a
+	jr z, .asm_38f14
 
 	ld a, [wBattleMonStatus]
 	bit TOX, a
@@ -1545,9 +1553,6 @@ AI_Smart_Protect:
 	ld a, [wPlayerSubStatus1]
 	bit SUBSTATUS_CURSE, a
 	jr nz, .asm_38f0d
-
-	bit SUBSTATUS_ROLLOUT, a
-	jr z, .asm_38f14
 
 	ld a, [wPlayerRolloutCount]
 	cp 3

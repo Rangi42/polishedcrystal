@@ -971,10 +971,10 @@ WeakArmorAbility:
 FlashFireAbility:
 	call DisableAnimations
 	call ShowAbilityActivation
-	ld a, BATTLE_VARS_SUBSTATUS3
+	ld a, BATTLE_VARS_SUBSTATUS1
 	call GetBattleVarAddr
 	ld a, [hl]
-	and 1<<SUBSTATUS_FLASH_FIRE
+	and 1 << SUBSTATUS_FLASH_FIRE
 	jr nz, .already_fired_up
 	set SUBSTATUS_FLASH_FIRE, [hl]
 	ld hl, FirePoweredUpText

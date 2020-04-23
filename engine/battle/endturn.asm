@@ -68,9 +68,9 @@ HandleBetweenTurnEffects:
 	call HandleHealingItems
 
 	; these run even if the user switched at endturn
-	ld hl, wPlayerSubStatus3
+	ld hl, wPlayerSubStatus4
 	res SUBSTATUS_FLINCHED, [hl]
-	ld hl, wEnemySubStatus3
+	ld hl, wEnemySubStatus4
 	res SUBSTATUS_FLINCHED, [hl]
 
 	call UpdateBattleMonInParty

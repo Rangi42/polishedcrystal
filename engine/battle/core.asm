@@ -440,16 +440,9 @@ CheckSafariBattleOver:
 	ret
 
 CheckLockedIn:
-	ld a, BATTLE_VARS_SUBSTATUS1
-	call GetBattleVarAddr
-	bit SUBSTATUS_ROLLOUT, [hl]
-	ret nz
-	inc hl
-	inc hl
-	ld a, [hli]
-	and 1 << SUBSTATUS_CHARGED | 1 << SUBSTATUS_RAMPAGE
-	ret nz
-	bit SUBSTATUS_RECHARGE, [hl]
+	ld a, BATTLE_VARS_SUBSTATUS3
+	call GetBattleVar
+	and 1 << SUBSTATUS_RECHARGE | 1 << SUBSTATUS_CHARGED | 1 << SUBSTATUS_RAMPAGE | 1 << SUBSTATUS_ROLLOUT
 	ret
 
 ParsePlayerAction:
@@ -1131,27 +1124,20 @@ SendInUserPkmn:
 	call BreakAttraction
 	ld a, BATTLE_VARS_SUBSTATUS1
 	call GetBattleVarAddr
-	res SUBSTATUS_ROLLOUT, [hl]
 	res SUBSTATUS_ENDURE, [hl]
 	res SUBSTATUS_PROTECT, [hl]
-	inc hl
-	res SUBSTATUS_CANT_RUN, [hl]
-	res SUBSTATUS_DESTINY_BOND, [hl]
-	res SUBSTATUS_TRANSFORMED, [hl]
-	res SUBSTATUS_MAGIC_BOUNCE, [hl]
-	res SUBSTATUS_FAINTED, [hl]
-	res SUBSTATUS_MINIMIZED, [hl]
-	inc hl
-	res SUBSTATUS_FLYING, [hl]
-	res SUBSTATUS_UNDERGROUND, [hl]
-	res SUBSTATUS_CHARGED, [hl]
-	res SUBSTATUS_FLINCHED, [hl]
-	res SUBSTATUS_IN_LOOP, [hl]
-	res SUBSTATUS_RAMPAGE, [hl]
-	inc hl
-	res SUBSTATUS_RAGE, [hl]
-	res SUBSTATUS_RECHARGE, [hl]
-	res SUBSTATUS_CURLED, [hl]
+	inc hl ; substatus2
+	ld a, 1 << SUBSTATUS_LOCK_ON ; only flag here that should be preserved
+	and [hl]
+	ld [hl], a
+	inc hl ; substatus3
+	ld a, 1 << SUBSTATUS_CONFUSED ; only flag here that should be preserved
+	and [hl]
+	ld [hl], a
+	inc hl ; substatus4
+	ld a, ~(1 << SUBSTATUS_RAGE | 1 << SUBSTATUS_FLINCHED | 1 << SUBSTATUS_CURLED)
+	and [hl]
+	ld [hl], a
 	ldh a, [hBattleTurn]
 	and a
 	jr nz, .reset_used_moves_done
@@ -5330,11 +5316,8 @@ ParseEnemyAction:
 	jp nc, ResetVarsForSubstatusRage
 	ld [wCurEnemyMoveNum], a
 	ld c, a
-	ld a, [wEnemySubStatus1]
-	bit SUBSTATUS_ROLLOUT, a
-	jp nz, .skip_load
 	ld a, [wEnemySubStatus3]
-	and 1 << SUBSTATUS_CHARGED | 1 << SUBSTATUS_RAMPAGE
+	and 1 << SUBSTATUS_CHARGED | 1 << SUBSTATUS_RAMPAGE | 1 << SUBSTATUS_ROLLOUT
 	jp nz, .skip_load
 
 	call SetEnemyTurn

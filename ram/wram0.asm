@@ -413,7 +413,7 @@ wBattleSubStatusWRAM::
 wPlayerSubStatus1::
 ; bit
 ; 7 attract
-; 6 rollout
+; 6 flash fire
 ; 5 endure
 ; 4 perish song
 ; 3 identified
@@ -433,21 +433,22 @@ wPlayerSubStatus2::
 ; 0 unused
 	db
 wPlayerSubStatus3::
+; NOTE: these should all stay together!
 ; bit
 ; 7 confused
 ; 6 flying
 ; 5 underground
 ; 4 charged
-; 3 flinch
+; 3 recharge
 ; 2 in loop
 ; 1 rampage
-; 0 flash fire boost
+; 0 rollout
 	db
 wPlayerSubStatus4::
 ; bit
 ; 7 leech seed
 ; 6 rage
-; 5 recharge
+; 5 flinched
 ; 4 substitute
 ; 3 roost
 ; 2 focus energy
@@ -468,7 +469,7 @@ wEnemySubStatus4::
 ; see wPlayerSubStatus4
 	db
 
-; Some code depend on the order of these
+; Some code (e.g. HandleRampage) depend on the order of these
 wPlayerAbility:: db
 wPlayerRolloutCount:: db
 wPlayerConfuseCount:: db
@@ -695,7 +696,7 @@ wBattleEnded:: db
 
 wAmuletCoin:: db
 
-wSomeoneIsRampaging:: db
+	ds 1
 
 wDVAndPersonalityBuffer:: ds 5
 wBattleEnd::
