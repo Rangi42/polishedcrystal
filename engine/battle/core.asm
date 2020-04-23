@@ -4130,10 +4130,10 @@ BattleMenuPKMN_Loop:
 	jr c, .Cancel
 	call PlaceHollowCursor
 	ld a, [wMenuCursorY]
-	dec a ; STATS
-	jr z, .Stats
 	dec a ; SWITCH
 	jp z, TryPlayerSwitch
+	dec a ; STATS
+	jr z, .Stats
 	dec a ; MOVES
 	jr z, .Moves
 	dec a ; CANCEL
@@ -4217,8 +4217,8 @@ BattleMenuPKMN_Loop:
 .MenuData:
 	db $c0 ; flags
 	db 4 ; items
-	db "Stats@"
 	db "Switch@"
+	db "Stats@"
 	db "Moves@"
 	db "Cancel@"
 
@@ -4232,8 +4232,8 @@ BattleMenuPKMN_Loop:
 .EggMenuData:
 	db $c0 ; flags
 	db 3 ; items
-	db "Stats@"
 	db "Switch@"
+	db "Stats@"
 	db "Cancel@"
 
 Battle_StatsScreen:
