@@ -5730,7 +5730,7 @@ GenerateWildForm:
 	cp GOLEM
 	jr z, .ElecForm
 .Default:
-	ld a, 1
+	ld a, PLAIN_FORM
 .GotForm:
 	ld [wCurForm], a
 	ret
@@ -5782,7 +5782,7 @@ GenerateWildForm:
 	ld a, [wCurLandmark]
 	ld de, 1
 	call IsInArray
-	ret nc
+	jr nc, .Default
 	ld a, ALOLAN_FORM
 	jr .GotForm
 

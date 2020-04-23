@@ -17,15 +17,14 @@ BattleCommand_rolloutpower:
 	ret
 
 .hit
-	inc a ; ld a, 1
 	bit SUBSTATUS_ROLLOUT, [hl]
 	jr z, .starting_rollout
 	ld a, [de]
-	inc a
 .starting_rollout
-	set SUBSTATUS_ROLLOUT, [hl]
+	inc a ; ld a, 1 if zero flag set
 	ld [de], a
 	ld b, a
+	set SUBSTATUS_ROLLOUT, [hl]
 	cp MAX_ROLLOUT_COUNT
 	jr c, .done_with_substatus_flag
 	res SUBSTATUS_ROLLOUT, [hl]
