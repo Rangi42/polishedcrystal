@@ -194,7 +194,6 @@ ROMX $3A
 	"Audio"
 
 ROMX $3C
-	"Sound Effects"
 	"Cries"
 
 ROMX $41
@@ -205,9 +204,6 @@ ROMX $42
 
 ROMX $48
 	"Pic Pointers"
-
-ROMX $5E
-	"Crystal Sound Effects"
 
 VRAM $0
 	"VRAM0"
