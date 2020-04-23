@@ -5696,43 +5696,42 @@ GenerateWildForm:
 	push hl
 	push de
 	push bc
-	call .do_it
+	ld a, [wTempEnemyMonSpecies]
+	ld b, a
+	ld hl, WildSpeciesForms
+.loop
+	ld a, [hli]
+	and a
+	jr z, .ok
+	cp b
+	jr z, .ok
+	inc hl
+	inc hl
+	jr .loop
+.ok
+	call IndirectHL
+	ld [wCurForm], a
 	jp PopBCDEHL
 
-.do_it
-	ld a, [wTempEnemyMonSpecies]
-	cp UNOWN
-	jr z, .Unown
-	cp MAGIKARP
-	jr z, .Magikarp
-	cp EKANS
-	jr z, .EkansArbok
-	cp ARBOK
-	jr z, .EkansArbok
-	cp GYARADOS
-	jr z, .Gyarados
-	cp SANDSHREW
-	jr z, .IceForm
-	cp SANDSLASH
-	jr z, .IceForm
-	cp VULPIX
-	jr z, .IceForm
-	cp NINETALES
-	jr z, .IceForm
-	cp DIGLETT
-	jr z, .FireForm
-	cp DUGTRIO
-	jr z, .FireForm
-	cp GEODUDE
-	jr z, .ElecForm
-	cp GRAVELER
-	jr z, .ElecForm
-	cp GOLEM
-	jr z, .ElecForm
+WildSpeciesForms:
+	dbw UNOWN,     .Unown
+	dbw MAGIKARP,  .Magikarp
+	dbw EKANS,     .EkansArbok
+	dbw ARBOK,     .EkansArbok
+	dbw GYARADOS,  .Gyarados
+	dbw SANDSHREW, .IceForm
+	dbw SANDSLASH, .IceForm
+	dbw VULPIX,    .IceForm
+	dbw NINETALES, .IceForm
+	dbw DIGLETT,   .FireForm
+	dbw DUGTRIO,   .FireForm
+	dbw GEODUDE,   .ElectricForm
+	dbw GRAVELER,  .ElectricForm
+	dbw GOLEM,     .ElectricForm
+	dbw 0,         .Default
+
 .Default:
 	ld a, PLAIN_FORM
-.GotForm:
-	ld [wCurForm], a
 	ret
 
 .Unown:
@@ -5740,7 +5739,7 @@ GenerateWildForm:
 	ld a, NUM_UNOWN
 	call BattleRandomRange
 	inc a
-	ld [wCurForm], a
+	ld b, a
 	; Can't use any letters that haven't been unlocked
 	call CheckUnownLetter
 	jr c, .Unown ; re-roll
@@ -5751,23 +5750,23 @@ GenerateWildForm:
 	ld a, NUM_MAGIKARP
 	call BattleRandomRange
 	inc a
-	jr .GotForm
+	ret
 
 .EkansArbok:
 	call RegionCheck
 	ld a, e
 	and a
 	ld a, ARBOK_JOHTO_FORM
-	jr z, .GotForm
+	ret z
 	inc a ; ARBOK_KANTO_FORM
-	jr .GotForm
+	ret
 
 .Gyarados:
 	ld a, [wBattleType]
 	cp BATTLETYPE_RED_GYARADOS
 	jr nz, .Default
 	ld a, GYARADOS_RED_FORM
-	jr .GotForm
+	ret
 
 .IceForm:
 	ld hl, IceLandmarks
@@ -5775,7 +5774,7 @@ GenerateWildForm:
 .FireForm:
 	ld hl, FireLandmarks
 	jr .LandmarkForm
-.ElecForm:
+.ElectricForm:
 	ld hl, ElectricLandmarks
 	; fallthrough
 .LandmarkForm:
@@ -5784,7 +5783,7 @@ GenerateWildForm:
 	call IsInArray
 	jr nc, .Default
 	ld a, ALOLAN_FORM
-	jr .GotForm
+	ret
 
 IceLandmarks:
 	db ICE_PATH
@@ -5805,7 +5804,7 @@ ElectricLandmarks:
 	db -1
 
 CheckUnownLetter:
-; Return carry if the Unown letter hasn't been unlocked yet
+; Return carry if the Unown letter in b hasn't been unlocked yet
 	ld a, [wUnlockedUnowns]
 	ld c, a
 	ld de, 0
@@ -5823,7 +5822,7 @@ CheckUnownLetter:
 	ld l, a
 
 	push de
-	ld a, [wCurForm]
+	ld a, b
 	ld de, 1
 	push bc
 	call IsInArray
