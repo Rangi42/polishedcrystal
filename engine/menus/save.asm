@@ -926,6 +926,7 @@ UpgradeSaveVersion:
 SaveUpgrades:
 	dw ResetHyperTrainingBits
 	assert (@ - SaveUpgrades) == SAVE_VERSION * 2, "Missing save upgrade"
+	dw UpgradeStorageSystem
 
 ResetHyperTrainingBits:
 	; reset player name
@@ -980,4 +981,158 @@ ResetHyperTrainingBits:
 	ld [hli], a
 	ld [hli], a
 	ld [hli], a
+	ret
+
+UpgradeStorageSystem:
+; Upgrades the Storage System to the modern Polished system
+	; Normally, we don't care about Pokémon allocation order. However,
+	; to preserve Box organization from older saves in this case, we allocate
+	; Pokémon entries in the same order as they are in the boxes. The reason is
+	; that in case the user decides it's a Good Idea(TM) to reset the game mid-
+	; upgrade, we can still preserve the upgrade process fully, which we can't
+	; otherwise do since we need to overwrite old data as we go (we don't have
+	; the space to store both old and new completely, so sBox is used as backup
+	; while we write the new data).
+
+	; Maybe continue where we left off.
+.outer_loop
+	call GetUpgradePhase
+	cp 28
+	jr nc, .finalize
+	and a
+	jr nz, .init_done
+
+	; Clear pokedb usage flags (Safe, the data was previously unused).
+	ld a, BANK(sBoxMons1)
+	call .clearusedentries
+	ld a, BANK(sBoxMons2)
+	call .clearusedentries
+
+.init_done
+	; Odd phases has already extracted
+	ccf
+	rra
+	jr c, .extraction_done
+
+	; Extract a box to sBox
+	ld [wCurBox], a
+	call LoadBox
+	jp .next_phase
+
+.clearusedentries
+	call GetSRAMBank
+	ld hl, sBoxMons1UsedEntries
+	ld bc, (MONDB_ENTRIES + 7) / 8
+	xor a
+	rst ByteFill
+	ret
+
+.extraction_done
+	; Allocate entries for the given box
+	; At this point, we know that sBox is complete, so we can safely overwrite
+	; its former box data.
+
+	; Check which bank to use.
+	ld d, 1
+	cp 7
+	jr c, .got_pokedb_bank
+	sub 7
+	inc d
+.got_pokedb_bank
+	ld b, a
+	ld a, -20
+	inc b
+.entry_loop
+	add 20
+	dec b
+	jr nz, .entry_loop
+	ld e, a
+	; de contains pokedb bank and entry-1.
+
+	; Figure out how many Pokémon there are in the box.
+	ld a, BANK(sBox)
+	call GetSRAMBank
+	ld a, [sBoxCount]
+	ld b, a
+	ld c, -1
+	inc b
+.loop
+	inc c
+	inc e
+	dec b
+	jr z, .next_phase
+
+	; Copy the Pokémon to a buffer for use for NewStorageMon
+	push bc
+	push de
+	ld a, BANK(sBox)
+	call GetSRAMBank
+	ld hl, sBoxMons
+	ld a, c
+	ld bc, BOXMON_STRUCT_LENGTH
+	push af
+	rst AddNTimes
+	ld de, wBufferMon
+	rst CopyBytes
+
+	ld hl, sBoxMonNicknames
+	pop af
+	push af
+	call SkipNames
+	ld de, wBufferMonNick
+	rst CopyBytes
+	ld hl, sBoxMonOT
+	pop af
+	call SkipNames
+	ld de, wBufferMonOT
+	rst CopyBytes
+	pop de
+	call _NewStorageMon
+	pop bc
+	jr .loop
+
+.finalize
+	; At this point, we have a complete storage. Write the new box structure.
+
+	; Initializes new boxes
+	call InitializeBoxes
+
+	; Populate boxes
+	ld d, 1 ; 1-7
+	call .do_storage_loop
+	inc d ; 8-14
+.do_storage_loop
+	ld e, 140
+.storage_loop
+	call GetStorageMon
+	call nz, .add_to_box
+	dec e
+	jr nz, .storage_loop
+	ret
+
+.add_to_box
+	ld a, d
+	dec a
+	ld b, 0
+	jr z, .got_box_half
+	ld b, 7
+.got_box_half
+	ld a, e
+	dec a
+.box_count_loop
+	inc b
+	sub 20
+	jr nc, .box_count_loop
+	add 21
+	ld c, a
+	jp SetBoxPointer
+
+.next_phase
+	call GetUpgradePhase
+	inc a
+	call SetUpgradePhase
+	jp .outer_loop
+
+GetUpgradePhase:
+SetUpgradePhase:
 	ret

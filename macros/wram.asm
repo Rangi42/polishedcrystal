@@ -40,6 +40,26 @@ box_struct: MACRO
 \1End::
 ENDM
 
+savemon_struct: MACRO
+; game logic relies on nick being after boxmon and ot being after nick
+	box_struct \1
+\1Nick::           ds NAME_LENGTH - 1
+\1OT::             ds NAME_LENGTH - 1
+ENDM
+
+pokedb: MACRO
+\1Mons::
+\1Mon1::           savemon_struct \1Mon1
+\1Mon2::           ds SAVEMON_STRUCT_LENGTH * (MONDB_ENTRIES - 1)
+\1UsedEntries::    flag_array MONDB_ENTRIES
+ENDM
+
+newbox: MACRO
+\1Entries::        ds MONS_PER_BOX
+\1Banks::          flag_array MONS_PER_BOX
+\1Name::           ds BOX_NAME_LENGTH
+ENDM
+
 party_struct: MACRO
 	box_struct \1
 \1Status::         db

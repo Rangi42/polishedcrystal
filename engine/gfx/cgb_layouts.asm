@@ -970,49 +970,36 @@ _CGB_PokedexUnownMode:
 
 _CGB_BillsPC:
 	ld de, wBGPals1
-	ld hl, .MenuPalette
+	ld hl, .Background
 	call LoadHLPaletteIntoDE
-
-	ld a, [wCurPartySpecies]
-	and a
-	jr nz, .GetMonPalette
-	ld hl, .OrangePalette
+	ld hl, .Outline
 	call LoadHLPaletteIntoDE
-	jr .Resume
-
-.GetMonPalette:
-	ld bc, wTempMonPersonality
-	call GetPlayerOrMonPalettePointer
-	call LoadPalette_White_Col1_Col2_Black
-	call VaryBGPal1ByTempMonDVs
-
-.Resume:
-	call WipeAttrMap
-
-	hlcoord 1, 4, wAttrMap
-	lb bc, 7, 7
-	ld a, $1
-	call FillBoxWithByte
-
-	call InitPartyMenuOBPals
+	ld hl, .BoxContent
+	call LoadHLPaletteIntoDE
 
 	jp _CGB_FinishLayout
 
-.MenuPalette:
-if !DEF(MONOCHROME)
-	RGB 31, 31, 31
-	RGB 31, 20, 10
-	RGB 26, 10, 06
+.Background:
+	RGB 26, 26, 30
+	RGB 26, 26, 30
+	RGB 31, 12, 06
 	RGB 00, 00, 00
+
+.Outline:
+if !DEF(MONOCHROME)
+	RGB 26, 26, 30
+	RGB 13, 05, 31
+	RGB 10, 19, 31
+	RGB 31, 31, 31
 else
 	MONOCHROME_RGB_FOUR
 endc
 
-.OrangePalette:
+.BoxContent:
 if !DEF(MONOCHROME)
-	RGB 31, 15, 00
-	RGB 23, 12, 00
-	RGB 15, 07, 00
+	RGB 31, 31, 31
+	RGB 26, 10, 06
+	RGB 26, 26, 30
 	RGB 00, 00, 00
 else
 	MONOCHROME_RGB_FOUR

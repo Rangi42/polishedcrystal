@@ -1,7 +1,9 @@
 LCD::
 	push af
 	ldh a, [hMPState]
-	and a
+	inc a
+	jr z, .bill_pc
+	dec a
 	jr nz, .musicplayer
 	ldh a, [hLCDCPointer]
 	and a
@@ -71,6 +73,76 @@ endc
 	pop hl
 
 .donemp
+	pop af
+	reti
+
+.bill_pc
+	ld a, [rSTAT]
+	bit 2, a
+	jr z, .donepc
+	jr .donepc
+	push hl
+	push bc
+	ld c, LOW(rBGPD)
+	ld hl, wBillsPC_CurMonPals
+
+	; start of VRAM writes
+	; first mon
+	ld a, $82
+	ldh [rBGPI], a
+rept 4
+	ld a, [hli]
+	ld [c], a
+endr
+
+	; second mon
+	ld a, $8a
+	ldh [rBGPI], a
+rept 4
+	ld a, [hli]
+	ld [c], a
+endr
+
+	; third mon
+	ld a, $92
+	ldh [rBGPI], a
+rept 4
+	ld a, [hli]
+	ld [c], a
+endr
+
+	; fourth mon
+	ld a, $9a
+	ldh [rBGPI], a
+rept 4
+	ld a, [hli]
+	ld [c], a
+endr
+	; end of VRAM writes
+
+	; prepare for next write
+	push de
+	ldh a, [rLYC]
+	cp 115
+	jr nz, .increase_lyc
+	sub 32
+.increase_lyc
+	add 8
+	ldh [rLYC], a
+	add a
+	ld b, 0
+	ld c, a
+	ld hl, wBillsPC_MonPals1 - 182
+	add hl, bc
+	ld de, wBillsPC_CurMonPals
+	ld c, 16
+	jr .finished
+	rst CopyBytes
+.finished
+	pop de
+	pop bc
+	pop hl
+.donepc
 	pop af
 	reti
 

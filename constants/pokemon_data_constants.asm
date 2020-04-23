@@ -110,6 +110,7 @@ MON_SAT                  EQUS "(wPartyMon1SpclAtk - wPartyMon1)"
 MON_SDF                  EQUS "(wPartyMon1SpclDef - wPartyMon1)"
 BOXMON_STRUCT_LENGTH     EQUS "(wPartyMon1End - wPartyMon1)"
 PARTYMON_STRUCT_LENGTH   EQUS "(wPartyMon1StatsEnd - wPartyMon1)"
+SAVEMON_STRUCT_LENGTH    EQUS "BOXMON_STRUCT_LENGTH + (NAME_LENGTH - 1) * 2"
 
 ; apply to MON_FORM
 SHINY_MASK      EQU %10000000
@@ -177,6 +178,9 @@ PARTY_LENGTH EQU 6
 ; boxes
 MONS_PER_BOX EQU 20
 NUM_BOXES    EQU 14
+
+MONDB_ENTRIES EQU 157
+NUM_NEWBOXES EQU 15
 
 ; hall of fame
 HOF_MON_LENGTH = 1 + 2 + 2 + 1 + (MON_NAME_LENGTH - 1) ; species, id, dvs, level, nick

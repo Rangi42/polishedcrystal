@@ -390,6 +390,10 @@ GetIcon_a:
 	ld h, 0
 
 GetIcon:
+	ld c, 8
+	jr DoGetIcon
+
+DoGetIcon:
 ; Load icon graphics into VRAM starting from tile hl.
 
 ; One tile is 16 bytes long.
@@ -402,14 +406,24 @@ endr
 	push hl
 
 	push hl
+	ld a, c
+	push af
 	call LoadOverworldMonIcon
+	pop af
+	ld c, a
 	ld h, d
 	ld l, e
 	pop de
-
 	call DecompressRequest2bpp
 	pop hl
 	ret
+
+GetStorageIcon_a:
+; Load frame 1 icon graphics into VRAM starting from tile a
+	ld l, a
+	ld h, 0
+	ld c, 4
+	jr DoGetIcon
 
 FreezeMonIcons:
 	ld hl, wSpriteAnimationStructs
