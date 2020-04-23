@@ -4829,7 +4829,7 @@ BattleCommand_forceraiseoppstat:
 ForceRaiseOppStat:
 	xor a
 _ForceRaiseOppStat:
-	or STAT_TARGET | STAT_MISS
+	or STAT_TARGET
 	jr ChangeStat
 
 BattleCommand_forceloweroppstat:
@@ -4845,7 +4845,7 @@ BattleCommand_raiseoppstat:
 RaiseOppStat:
 	xor a
 _RaiseOppStat:
-	or STAT_TARGET
+	or STAT_TARGET | STAT_MISS
 	jr ChangeStat
 
 BattleCommand_loweroppstat:
@@ -5528,6 +5528,9 @@ BattleCommand_confusetarget:
 	ld a, BATTLE_VARS_SUBSTATUS3_OPP
 	call GetBattleVarAddr
 	bit SUBSTATUS_CONFUSED, [hl]
+	ret nz
+	ld a, [wAttackMissed]
+	and a
 	ret nz
 	jr FinishConfusingTarget
 
