@@ -259,6 +259,9 @@ GetSpeciesAndFormIndex::
 	ld hl, VariantSpeciesAndFormTable - 1
 	ld a, b
 	and FORM_MASK
+	jr nz, .ok
+	inc a ; PLAIN_FORM
+.ok
 	ld b, a
 .next
 	inc hl
