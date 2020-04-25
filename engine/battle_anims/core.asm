@@ -1,6 +1,6 @@
 QueueBattleAnimation:
 	ld hl, wActiveAnimObjects
-	ld e, 10
+	ld e, NUM_ANIM_OBJECTS
 .loop
 	ld a, [hl]
 	and a
@@ -146,7 +146,7 @@ BattleAnimOAMUpdate:
 	inc hl
 	inc de
 	ld a, [wBattleAnimTempTileID]
-	add $31
+	add BATTLEANIM_BASE_TILE
 	add [hl]
 	ld [de], a
 	inc hl

@@ -594,7 +594,7 @@ BattleAnimCmd_ResetObp0:
 
 BattleAnimCmd_ClearObjs:
 	ld hl, wActiveAnimObjects
-	ld a, $a0
+	ld a, $a0 ; ; should be NUM_ANIM_OBJECTS * BATTLEANIMSTRUCT_LENGTH
 .loop
 	ld [hl], $0
 	inc hl
@@ -615,7 +615,7 @@ BattleAnimCmd_5GFX:
 	ld [wBattleAnimTemp0], a
 .loop
 	ld a, [wBattleAnimTemp0]
-	cp (vTiles1 - vTiles0) / $10 - $31
+	cp (vTiles1 - vTiles0) / LEN_2BPP_TILE - BATTLEANIM_BASE_TILE
 	ret nc
 	call GetBattleAnimByte
 	ld [hli], a
@@ -628,7 +628,7 @@ BattleAnimCmd_5GFX:
 rept 4
 	add hl, hl
 endr
-	ld de, vTiles0 tile $31
+	ld de, vTiles0 tile BATTLEANIM_BASE_TILE
 	add hl, de
 	ld a, [wBattleAnimByte]
 	call LoadBattleAnimObj
@@ -643,7 +643,7 @@ endr
 
 BattleAnimCmd_IncObj:
 	call GetBattleAnimByte
-	ld e, 10
+	ld e, NUM_ANIM_OBJECTS
 	ld bc, wActiveAnimObjects
 .loop
 	ld hl, BATTLEANIMSTRUCT_INDEX
@@ -693,7 +693,7 @@ BattleAnimCmd_IncBGEffect:
 
 BattleAnimCmd_SetObj:
 	call GetBattleAnimByte
-	ld e, 10
+	ld e, NUM_ANIM_OBJECTS
 	ld bc, wActiveAnimObjects
 .loop
 	ld hl, BATTLEANIMSTRUCT_INDEX
@@ -1409,7 +1409,7 @@ BattleAnim_UpdateOAM_All:
 	xor a
 	ld [wBattleAnimOAMPointerLo], a
 	ld hl, wActiveAnimObjects
-	ld e, 10
+	ld e, NUM_ANIM_OBJECTS
 .loop
 	ld a, [hl]
 	and a
