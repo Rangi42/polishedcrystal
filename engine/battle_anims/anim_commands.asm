@@ -594,7 +594,7 @@ BattleAnimCmd_ResetObp0:
 
 BattleAnimCmd_ClearObjs:
 	ld hl, wActiveAnimObjects
-	ld a, $a0 ; ; should be NUM_ANIM_OBJECTS * BATTLEANIMSTRUCT_LENGTH
+	ld a, NUM_ANIM_OBJECTS * BATTLEANIMSTRUCT_LENGTH
 .loop
 	ld [hl], $0
 	inc hl
