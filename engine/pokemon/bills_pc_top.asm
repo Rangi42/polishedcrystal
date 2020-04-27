@@ -8,6 +8,12 @@ _BillsPC:
 	ld a, 72
 	ldh [rLYC], a
 	call UseBillsPC
+
+	ld hl, rIE
+	res LCD_STAT, [hl]
+	xor a
+	ldh [hMPState], a
+
 	pop af
 	ld [wOptions1], a
 	jp .LogOut
@@ -506,44 +512,10 @@ SetPartyIcons:
 	call BillsPC_BlankTiles
 
 	; Write party members
-	ld a, [wPartyCount]
-	ld b, a
-	ld de, wPartyMons - (wPartyMon2 - wPartyMon1Form)
+	lb bc, 0, 1
 	ld hl, wBillsPC_PartyList
-	ld c, $80
-.loop
-	ld a, wPartyMon2 - wPartyMon1Form
-	call .insert
-	ld [wCurIcon], a
-	ld a, wPartyMon1Form - wPartyMon1
-	call .insert
-	ld [wCurIconForm], a
-	ld a, c
-	push hl
-	push de
-	push bc
-	farcall GetStorageIcon_a
-	pop bc
-	pop de
-	pop hl
-	ld a, c
-	add 4
-	ld c, a
-	dec b
-	jr nz, .loop
-	ret
-
-.insert
-	; de = de + a
-	add e
-	ld e, a
-	adc d
-	sub e
-	ld d, a
-
-	ld a, [de]
-	ld [hli], a
-	ret
+	lb de, PARTY_LENGTH, $80
+	jr PCIconLoop
 
 SetBoxIcons:
 	; Blank current list
@@ -562,11 +534,11 @@ SetBoxIcons:
 	ld b, a
 	ld c, 1
 	ld hl, wBillsPC_BoxList
-	ld d, 20
-	ld e, $98
-.loop
+	lb de, MONS_PER_BOX, $98
+	; fallthrough
+PCIconLoop:
 	call GetStorageBoxMon
-	jr z, .empty
+	jr z, .next
 	ld a, [wBufferMon]
 	ld [wCurIcon], a
 	ld [hli], a
@@ -580,16 +552,81 @@ SetBoxIcons:
 	pop bc
 	pop de
 	pop hl
-	jr .next
-.empty
+	call WriteIconPaletteData
 .next
 	ld a, e
 	add 4
 	ld e, a
 	inc c
 	dec d
-	jr nz, .loop
+	jr nz, PCIconLoop
 	ret
+
+WriteIconPaletteData:
+; Write box slot c's palette data. If b is zero, write party palette instead.
+	push hl
+	push de
+	push bc
+	ld a, [wBufferMonSpecies]
+	farcall _GetMonIconPalette
+	pop bc
+	push bc
+	push af
+	ld a, c
+	dec a
+	inc b
+	dec b
+	ld bc, wBillsPC_MonPals2 - wBillsPC_MonPals1
+	ld d, 2
+	ld hl, wBillsPC_PartyPals3
+	jr z, .loop
+	ld d, 4
+	ld hl, wBillsPC_MonPals1
+.loop
+	sub d
+	jr c, .found_row
+	add hl, bc
+	jr .loop
+.found_row
+	add d
+	add a
+	add a
+	ld c, a
+	add hl, bc
+
+	; TODO: per-mon palettes
+	ld [hl], $7f
+	inc hl
+	ld [hl], $2a
+	inc hl
+	pop af
+	and a ; PAL_OW_RED
+	ld de, $04ff
+	jr z, .got_pal
+	dec a ; PAL_OW_BLUE
+	ld de, $7d2a
+	jr z, .got_pal
+	dec a ; PAL_OW_GREEN
+	ld de, $0ee7
+	jr z, .got_pal
+	dec a ; PAL_OW_BROWN
+	ld de, $0d4f
+	jr z, .got_pal
+	dec a ; PAL_OW_PURPLE
+	ld de, $4892
+	jr z, .got_pal
+	dec a ; PAL_OW_GRAY
+	ld de, $35ad
+	jr z, .got_pal
+	dec a ; PAL_OW_PINK
+	ld de, $2d5f
+	jr z, .got_pal
+	ld de, $56e3 ; PAL_OW_TEAL
+.got_pal
+	ld [hl], e
+	inc hl
+	ld [hl], d
+	jp PopBCDEHL
 
 ManageBoxes:
 ; Main box management function
@@ -784,8 +821,11 @@ GetStorageBoxMon:
 ; Reads storage bank+entry from box b slot c and put it in wBufferMon.
 ; If there is a checksum error, put Bad Egg data in wBufferMon instead.
 ; Returns c in case of a Bad Egg, z if the requested mon doesn't exist,
-; nz|nc otherwise.
+; nz|nc otherwise. If b==0, read from party list.
 	; TODO: DON'T READ LEGACY SAVE DATA
+	ld a, b
+	and a
+	jr z, .read_party
 	push hl
 	push de
 	push bc
@@ -826,6 +866,26 @@ GetStorageBoxMon:
 	pop de
 	pop hl
 	jp CloseSRAM
+.read_party
+	ld a, [wPartyCount]
+	cp c
+	jr nc, .party_not_empty
+	xor a
+	ret
+.party_not_empty
+	push hl
+	push de
+	push bc
+	ld hl, wPartyMons
+	ld a, c
+	ld bc, PARTYMON_STRUCT_LENGTH
+	dec a
+	rst AddNTimes
+	ld de, wBufferMon
+	ld c, PARTYMON_STRUCT_LENGTH
+	rst CopyBytes
+	or 1
+	jp PopBCDEHL
 
 GetStorageMon:
 ; Reads storage bank d, entry e and put it in wBufferMon.

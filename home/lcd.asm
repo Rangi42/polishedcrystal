@@ -165,16 +165,25 @@ endr
 .increase_lyc
 	add 16
 	ldh [rLYC], a
-	sub 72
+
+	; Since we write the next palette at the bottom row, we actually want to
+	; copy not the upcoming palette, but the one after that.
+	sub 56
+	cp $50
+	jr c, .got_result
+	xor a
+.got_result
 	rrca
 	ld c, a
 	add a
 	add c
 	ld c, a
 	ld b, 0
-	ld hl, wBillsPC_MonPals1
+
+	; Copies party+mon palettes
+	ld hl, wBillsPC_PalList
 	add hl, bc
-	ld de, wBillsPC_CurPartyPals
+	ld de, wBillsPC_CurPals
 	ld c, 24
 	rst CopyBytes
 	ld c, LOW(hMPState)
