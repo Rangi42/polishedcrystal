@@ -5,7 +5,7 @@ _BillsPC:
 	ld a, [hl]
 	push af
 	set NO_TEXT_SCROLL, [hl]
-	ld a, 91
+	ld a, 72
 	ldh [rLYC], a
 	call UseBillsPC
 	pop af
@@ -159,6 +159,11 @@ UseBillsPC:
 	hlcoord 0, 0
 	farcall PlaceFrontpicAtHL
 
+	hlcoord 0, 0, wAttrMap
+	lb bc, 7, 7
+	ld a, 2
+	call FillBoxWithByte
+
 	; Storage box
 	hlcoord 7, 4
 	lb bc, 12, 11
@@ -217,16 +222,17 @@ UseBillsPC:
 	ld b, 2
 	call SafeCopyTilemapAtOnce
 
+	ld hl, rIE
+	set LCD_STAT, [hl]
+	ld a, -1
+	ldh [hMPState], a
+
 	call ManageBoxes
 
 	hlcoord 0, 8
 	ld de, .TestStr
 	call PlaceString
 
-	ld hl, rIE
-	res LCD_STAT, [hl]
-	ld a, -1
-	ldh [hMPState], a
 	ld c, 240
 	call DelayFrames
 	ret

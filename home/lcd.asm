@@ -2,8 +2,10 @@ LCD::
 	push af
 	ldh a, [hMPState]
 	inc a
-	jr z, .bill_pc
-	dec a
+	jr z, .bill_pc1
+	inc a
+	jp z, .bill_pc2
+	sub 2
 	jr nz, .musicplayer
 	ldh a, [hLCDCPointer]
 	and a
@@ -76,11 +78,11 @@ endc
 	pop af
 	reti
 
-.bill_pc
+.bill_pc1
+	; Write boxmon palettes
 	ld a, [rSTAT]
 	bit 2, a
 	jr z, .donepc
-	jr .donepc
 	push hl
 	push bc
 	ld c, LOW(rBGPD)
@@ -88,7 +90,7 @@ endc
 
 	; start of VRAM writes
 	; first mon
-	ld a, $82
+	ld a, $80 | $22
 	ldh [rBGPI], a
 rept 4
 	ld a, [hli]
@@ -96,7 +98,7 @@ rept 4
 endr
 
 	; second mon
-	ld a, $8a
+	ld a, $80 | $2a
 	ldh [rBGPI], a
 rept 4
 	ld a, [hli]
@@ -104,7 +106,7 @@ rept 4
 endr
 
 	; third mon
-	ld a, $92
+	ld a, $80 | $32
 	ldh [rBGPI], a
 rept 4
 	ld a, [hli]
@@ -112,7 +114,41 @@ rept 4
 endr
 
 	; fourth mon
-	ld a, $9a
+	ld a, $80 | $3a
+	ldh [rBGPI], a
+rept 4
+	ld a, [hli]
+	ld [c], a
+endr
+	; end of VRAM writes
+
+	; prepare for partymon write
+	ldh a, [hMPState]
+	dec a
+	ldh [hMPState], a
+	pop bc
+	pop hl
+.donepc
+	pop af
+	reti
+
+.bill_pc2
+	push hl
+	push bc
+	ld c, LOW(rBGPD)
+	ld hl, wBillsPC_CurPartyPals
+
+	; start of VRAM writes
+	; first mon
+	ld a, $80 | $12
+	ldh [rBGPI], a
+rept 4
+	ld a, [hli]
+	ld [c], a
+endr
+
+	; second mon
+	ld a, $80 | $1a
 	ldh [rBGPI], a
 rept 4
 	ld a, [hli]
@@ -123,26 +159,31 @@ endr
 	; prepare for next write
 	push de
 	ldh a, [rLYC]
-	cp 115
+	cp 136
 	jr nz, .increase_lyc
-	sub 32
+	sub 16 * 5
 .increase_lyc
-	add 8
+	add 16
 	ldh [rLYC], a
-	add a
-	ld b, 0
+	sub 72
+	rrca
 	ld c, a
-	ld hl, wBillsPC_MonPals1 - 182
+	add a
+	add c
+	ld c, a
+	ld b, 0
+	ld hl, wBillsPC_MonPals1
 	add hl, bc
-	ld de, wBillsPC_CurMonPals
-	ld c, 16
-	jr .finished
+	ld de, wBillsPC_CurPartyPals
+	ld c, 24
 	rst CopyBytes
-.finished
+	ld c, LOW(hMPState)
+	ld a, [c]
+	inc a
+	ld [c], a
 	pop de
 	pop bc
 	pop hl
-.donepc
 	pop af
 	reti
 

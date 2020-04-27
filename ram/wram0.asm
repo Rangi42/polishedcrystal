@@ -874,11 +874,15 @@ wBillsPC_BackupLoadedBox:: db
 wBillsPC_MonHasMail:: db
 wBillsPCDataEnd::
 NEXTU
+wBillsPC_CurPartyPals:: ds 2 * 2 * 2 ; 2 bytes per color, 2 colors, 2 mons
 wBillsPC_CurMonPals:: ds 2 * 2 * 4 ; 2 bytes per color, 2 colors, 4 mons
-wBillsPC_MonPals1:: ds 2 * 2 * 4
-wBillsPC_MonPals2:: ds 2 * 2 * 4
-wBillsPC_MonPals3:: ds 2 * 2 * 4
-wBillsPC_MonPals4:: ds 2 * 2 * 4
+
+; Stores palettes used for party+box.
+wBillsPC_MonPals1:: ds 2 * 2 * 6
+wBillsPC_MonPals2:: ds 2 * 2 * 6
+wBillsPC_MonPals3:: ds 2 * 2 * 6
+wBillsPC_MonPals4:: ds 2 * 2 * 6
+wBillsPC_MonPals5:: ds 2 * 2 * 6
 
 ; Species lists
 wBillsPC_PartyList:: ds 6 * 2
