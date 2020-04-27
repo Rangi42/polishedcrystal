@@ -864,7 +864,7 @@ wBillsPCPokemonList::
 	ds 3 * 30
 	ds 721
 wBillsPC_ScrollPosition:: db
-wBillsPC_CursorPosition:: db
+wBillsPC_CursorPosition:: db ; $yx, y is row 0-6, x is column 0-5
 wBillsPC_NumMonsInBox:: db
 wBillsPC_NumMonsOnScreen:: db
 wBillsPC_LoadedBox:: db ; 0 if party, 1 - 14 if box, 15 if active box
@@ -900,6 +900,14 @@ wBillsPC_MonPals5:: ds 2 * 2 * 4
 ; Species lists
 wBillsPC_PartyList:: ds 6 * 2
 wBillsPC_BoxList:: ds 20 * 2
+
+; Cursor data
+wBillsPC_CursorPos:: db ; 0-3 * 4*row, row 0 is title. Bit 7 means in party.
+wBillsPC_CursorHeldBox:: db ; 0 for party, 1-15 otherwise
+wBillsPC_CursorHeldSlot:: db ; 0 for nothing held, or 1-20 (1-6 if party)
+wBillsPC_CursorDestBox:: db ; 0 for party, 1-15 otherwise
+wBillsPC_CursorDestSlot:: db ; 0 for release, or 1-20 (1-6 if party)
+
 NEXTU
 ; raw link data
 wLinkData:: ds 1300

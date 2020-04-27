@@ -16,7 +16,7 @@ _BillsPC:
 
 	pop af
 	ld [wOptions1], a
-	jp .LogOut
+	jp CloseSubmenu
 
 .CheckCanUsePC:
 	ld a, [wPartyCount]
@@ -32,101 +32,39 @@ _BillsPC:
 	text_jump _PCGottaHavePokemonText
 	text_end
 
-.LogIn:
-	call LoadStandardMenuHeader
-	call ClearTileMap
-	xor a
-	ldh [hBGMapMode], a
-	call ClearPCItemScreen
-	ld hl, wOptions1
-	ld a, [hl]
-	push af
-	set NO_TEXT_SCROLL, [hl]
-	ld hl, .Text_What
-	call PrintText
-	pop af
-	ld [wOptions1], a
-	jp LoadFontsBattleExtra
-
-.Text_What:
-	; What?
-	text_jump _PCWhatText
-	text_end
-
-.LogOut:
-	jp CloseSubmenu
-
-.OldUseBillsPC:
-	ld hl, .MenuDataHeader
-	call LoadMenuHeader
-	ld a, $1
-.loop
-	ld [wMenuCursorBuffer], a
-	call SetPalettes
-	xor a
-	ld [wWhichIndexSet], a
-	ldh [hBGMapMode], a
-	call DoNthMenu
-	jr c, .cancel
-	ld a, [wMenuCursorBuffer]
-	push af
-	ld a, [wMenuSelection]
-	ld hl, .Jumptable
-	call JumpTable
-	pop bc
-	ld a, b
-	jr nc, .loop
-.cancel
-	jp CloseWindow
-
-.MenuDataHeader:
-	db $40 ; flags
-	db 00, 00 ; start coords
-	db 17, 19 ; end coords
-	dw .MenuData2
-	db 1 ; default option
-
-.MenuData2:
-	db $80 ; flags
-	db 0 ; items
-	dw .items
-	dw PlaceMenuStrings
-	dw .strings
-
-.strings
-	db "Withdraw <PK><MN>@"
-	db "Deposit <PK><MN>@"
-	db "Change Box@"
-	db "Move <PK><MN> w/o Mail@"
-	db "See ya!@"
-
-.Jumptable:
-	dw BillsPC_WithdrawMenu
-	dw BillsPC_DepositMenu
-	dw BillsPC_ChangeBoxMenu
-	dw BillsPC_MovePKMNMenu
-	dw BillsPC_SeeYa
-
-.items
-	db 5
-	db 0 ; WITHDRAW
-	db 1;  DEPOSIT
-	db 2 ; CHANGE BOX
-	db 3 ; MOVE PKMN
-	db 4 ; SEE YA!
-	db -1
-
 UseBillsPC:
 	call LoadStandardMenuHeader
 	call ClearTileMap
 	call ClearPalettes
 	farcall WipeAttrMap
 
+	; Box frame tiles
 	ld b, BANK(.Tiles)
 	ld de, .Tiles
 	ld hl, vTiles2 tile $31
 	ld c, 15
 	call Get2bpp
+
+	; Default cursor position
+	ld a, $12 ; top left of storage
+	ld [wBillsPC_CursorPos], a
+
+	; Cursor tile
+	ld b, BANK(.CursorTile)
+	ld de, .CursorTile
+	ld hl, vTiles0
+	ld c, 1
+	call Get2bpp
+
+	; Cursor sprite OAM
+	ld hl, wVirtualOAM + 2
+	xor a
+	ld [hli], a
+	ld [hli], a
+	inc hl
+	inc hl
+	ld [hli], a
+	ld [hl], X_FLIP
 
 	; Reserve 4 blank tiles for empty slots
 	ld a, 1
@@ -154,17 +92,6 @@ UseBillsPC:
 	xor a
 	ld [rVBK], a
 
-	ld a, 1
-	ldh [rVBK], a
-	call SetPartyIcons
-	call SetBoxIcons
-	xor a
-	ldh [rVBK], a
-
-	; Poképic
-	hlcoord 0, 0
-	farcall PlaceFrontpicAtHL
-
 	hlcoord 0, 0, wAttrMap
 	lb bc, 7, 7
 	ld a, 2
@@ -180,6 +107,18 @@ UseBillsPC:
 	hlcoord 7, 6
 	lb bc, $3e, 11
 	call .SpecialRow
+
+	hlcoord 8, 5, wAttrMap
+	ld bc, 11
+	ld a, 7
+	rst ByteFill
+
+	ld a, 1
+	ldh [rVBK], a
+	call SetPartyIcons
+	call SetBoxIconsAndName
+	xor a
+	ldh [rVBK], a
 
 	; Party box
 	hlcoord 0, 9
@@ -233,17 +172,14 @@ UseBillsPC:
 	ld a, -1
 	ldh [hMPState], a
 
+	xor a
+	ld [wBillsPC_CursorHeldSlot], a
+
+	call GetCursorMon
+
 	call ManageBoxes
 
-	hlcoord 0, 8
-	ld de, .TestStr
-	call PlaceString
-
-	ld c, 240
-	call DelayFrames
 	ret
-.TestStr
-	db "100@"
 
 .Box:
 ; draws a box with tiles and attributes
@@ -338,7 +274,6 @@ UseBillsPC:
 	ret
 
 .Tiles
-BillsPC_Tiles:
 	dw `01223333
 	dw `01223333
 	dw `01223333
@@ -474,11 +409,15 @@ BillsPC_Tiles:
 	dw `22222222
 	dw `33333333
 
-
-
-BillsPC_SeeYa:
-	scf
-	ret
+.CursorTile
+	dw `00000000
+	dw `00000000
+	dw `33333000
+	dw `22223000
+	dw `22230000
+	dw `22300000
+	dw `23000000
+	dw `30000000
 
 BillsPC_BlankTiles:
 	ld de, vTiles3 tile $00
@@ -517,7 +456,28 @@ SetPartyIcons:
 	lb de, PARTY_LENGTH, $80
 	jr PCIconLoop
 
-SetBoxIcons:
+SetBoxIconsAndName:
+	; Write box name
+	ld a, [wCurBox]
+	ld hl, wBoxNames
+	ld bc, BOX_NAME_LENGTH
+	rst AddNTimes
+	ld d, h
+	ld e, l
+
+	; Center the name (b is 0 from earlier)
+.loop
+	ld a, [hli]
+	inc b
+	cp "@"
+	jr nz, .loop
+	srl b
+	ld c, b
+	ld b, 0
+	hlcoord 9, 5
+	add hl, bc
+	call PlaceString
+
 	; Blank current list
 	xor a
 	ld hl, wBillsPC_BoxList
@@ -568,6 +528,7 @@ WriteIconPaletteData:
 	push de
 	push bc
 	ld a, [wBufferMonSpecies]
+	ld hl, wBufferMonPersonality
 	farcall _GetMonIconPalette
 	pop bc
 	push bc
@@ -628,109 +589,304 @@ WriteIconPaletteData:
 	ld [hl], d
 	jp PopBCDEHL
 
+BillsPC_UpdateCursorLocation:
+	ld a, [wBillsPC_CursorPos]
+	; Check if we're on top row
+	sub $10
+	lb bc, 48, 116
+	jr c, .got_cursor_pos
+	ld b, a
+	and $f
+	swap a
+	ld e, a
+	rrca
+	add e
+	cp 48
+	jr c, .got_x_offset
+	add 8
+.got_x_offset
+	add 24
+	ld c, a
+	ld a, b
+	and $f0
+	add 64
+	ld b, a
+
+.got_cursor_pos
+	ld hl, wVirtualOAM
+	ld a, b
+	ld [hli], a
+	ld a, c
+	ld [hli], a
+	inc hl
+	inc hl
+	ld a, b
+	ld [hli], a
+	ld a, c
+	sub 8
+	ld [hl], a
+	ret
+
+.SetXPos
+	push af
+	ld e, c
+	ld c, 24
+	call SimpleMultiply
+	add e
+	ld c, a
+	pop af
+	ret
+
+GetCursorMon:
+; Prints data about Pokémon at cursor if nothing is held (underline to force)
+	; Don't do anything if we're already holding a mon
+	ld a, [wBillsPC_CursorHeldSlot]
+	and a
+	jr nz, BillsPC_UpdateCursorLocation
+	; fallthrough
+_GetCursorMon:
+	call BillsPC_UpdateCursorLocation
+
+	; Check if cursor is currently hovering over a mon.
+	ld a, [wBillsPC_CursorPos]
+	sub $10
+	jr c, .clear
+
+	ld b, a
+	and $f
+	; column 0-1 is party
+	cp 2
+	jr c, .party
+
+	; Otherwise we're checking storage
+	; With existing $yx row 0-4 col 2-5, we want to get y*4+x-1.
+	ld c, a
+	ld a, b
+	swap a
+	and $f
+	add a
+	add a
+	add c
+	dec a
+	ld c, a
+	ld a, [wCurBox]
+	inc a
+	ld b, a
+	jr .got_storage_location
+.party
+	; With existing $yx row 2-4 col 0-1, we want to get y*2+x-3.
+	ld c, a
+	ld a, b
+	swap a
+	and $f
+	add a
+	add c
+	sub 3
+	ld c, a
+	ld b, 0
+.got_storage_location
+	call GetStorageBoxMon
+	jr nz, .not_clear
+
+.clear
+	; Clear existing data
+	hlcoord 7, 0
+	lb bc, 4, 13
+	call ClearBox
+	hlcoord 0, 0
+	lb bc, 9, 7
+	jp ClearBox
+
+.not_clear
+	; Prepare frontpic. Split into decompression + loading to make sure we
+	; refresh the pokepic and the palette in a single frame (decompression
+	; is unpredictable, but bpp copy can be relied upon).
+	ld a, [wBufferMonSpecies]
+	ld hl, wBufferMonForm
+	ld de, vTiles2
+	push de
+	push af
+	predef GetVariant
+	ld a, [wBufferMonIsEgg]
+	ld d, a
+	pop af
+	bit MON_IS_EGG_F, d
+	jr z, .not_egg
+	ld a, EGG
+.not_egg
+	ld [wCurPartySpecies], a
+	ld [wCurSpecies], a
+	call GetBaseData
+	pop de
+	farcall PrepareFrontpic
+	push hl
+
+	; Finish frontpic
+	pop hl
+.busyloop
+	; Wait until rLY is near top to avoid icon palette flickering
+	ldh a, [rLY]
+	cp $10
+	jr nz, .busyloop
+	farcall GetPreparedFrontpic
+
+	; Colors
+	ld bc, wBufferMonPersonality
+	ld a, [wBufferMonSpecies]
+	farcall GetMonNormalOrShinyPalettePointer
+	ld de, wBillsPC_PokepicPal
+	ld b, 4
+.loop
+	ld a, BANK(PokemonPalettes)
+	call GetFarByte
+	inc hl
+	ld [de], a
+	inc de
+	dec b
+	jr nz, .loop
+
+	; Clear text
+	call .clear
+
+	; Poképic tilemap
+	hlcoord 0, 0
+	farcall PlaceFrontpicAtHL
+
+	; Nickname
+	hlcoord 8, 0
+	ld de, wBufferMonNick
+	call PlaceString
+
+	; If we're dealing with an egg, we're done now.
+	ld a, [wBufferMonIsEgg]
+	bit MON_IS_EGG_F, a
+	ret nz
+
+	; Species name
+	ld a, [wBufferMonSpecies]
+	ld [wNamedObjectIndexBuffer], a
+	hlcoord 8, 1
+	ld a, "/"
+	ld [hli], a
+	call GetPokemonName
+	ld de, wStringBuffer1
+	call PlaceString
+
+	; Level
+	ld a, [wBufferMonLevel]
+	ld [wTempMonLevel], a
+	hlcoord 0, 8
+	jp PrintLevel
+
 ManageBoxes:
 ; Main box management function
-	; Load active box
-	call DisplayBox
-
-DisplayBox:
-	ret
-
-BillsPC_MovePKMNMenu:
-	call LoadStandardMenuHeader
-	farcall IsAnyMonHoldingMail
-	jr nc, .no_mail
-	ld hl, .Text_MonHoldingMail
-	call PrintText
-	jr .quit
-
-.no_mail
-	farcall StartMovePkmnWOMail_SaveGame
-	jr c, .quit
-	farcall _MovePKMNWithoutMail
-	call ReturnToMapFromSubmenu
-	call ClearPCItemScreen
-
-.quit
-	call CloseWindow
-	and a
-	ret
-
-.Text_MonHoldingMail:
-	; There is a #MON holding MAIL. Please remove the MAIL.
-	text_jump _PCMonHoldingMailText
-	text_end
-
-BillsPC_DepositMenu:
-	call LoadStandardMenuHeader
-	farcall _DepositPKMN
-	call ReturnToMapFromSubmenu
-	call ClearPCItemScreen
-	call CloseWindow
-	and a
-	ret
-
-CheckCurPartyMonFainted:
-	ld hl, wPartyMon1HP
-	ld de, PARTYMON_STRUCT_LENGTH
-	ld b, $0
 .loop
-	ld a, [wCurPartyMon]
-	cp b
-	jr z, .skip
-	ld a, [hli]
-	or [hl]
-	jr nz, .notfainted
-	dec hl
+	call JoyTextDelay
+.redo_input
+	ldh a, [hJoyPressed]
+	ld hl, wInputFlags
+	rrca
+	jr c, .pressed_a
+	rrca
+	jr c, .pressed_b
+	rrca
+	jr c, .pressed_select
+	rrca
+	jr c, .pressed_start
+	rrca
+	jr c, .pressed_right
+	rrca
+	jr c, .pressed_left
+	rrca
+	jr c, .pressed_up
+	rrca
+	jr c, .pressed_down
+	jr .loop
+.pressed_a
+.pressed_b
+.pressed_select
+.pressed_start
+	ret
+.pressed_right
+	; TODO: Box switching
+	ld a, [wBillsPC_CursorPos]
+	cp $10
+	jr c, .loop
 
-.skip
+	; Move right
+	ld b, a
+	and $f
+	cp 5
+	jr nz, .inc_x
+	ld a, b
+	sub 6
+	ld b, a
+.inc_x
 	inc b
-	ld a, [wPartyCount]
-	cp b
-	jr z, .done
-	add hl, de
+	ld a, b
+	jr .new_cursor_pos
+
+.pressed_left
+	; TODO: Box switching
+	ld a, [wBillsPC_CursorPos]
+	cp $10
+	jr c, .loop
+
+	; Move left
+	ld b, a
+	and $f
+	jr nz, .dec_x
+	ld a, b
+	add 6
+	ld b, a
+.dec_x
+	dec b
+	ld a, b
+	jr .new_cursor_pos
+
+.pressed_up
+	ld a, [wBillsPC_CursorPos]
+	sub $10
+	jr .new_cursor_pos
+.pressed_down
+	ld a, [wBillsPC_CursorPos]
+	add $10
+	; fallthrough
+.new_cursor_pos
+	ld [wBillsPC_CursorPos], a
+	call BillsPC_CursorPosValid
+	jr nz, .redo_input
+	call GetCursorMon
 	jr .loop
 
-.done
-	scf
-	ret
+BillsPC_CursorPosValid:
+; Returns z if the cursor position is valid
+	; Check for columns beyond 5
+	ld b, a
+	and $f
+	cp 6
+	jr nc, .invalid
 
-.notfainted
-	and a
-	ret
+	; Check for party rows less than 3
+	cp 2
+	jr nc, .not_party
+	ld a, b
+	cp $30
+	jr c, .invalid
 
-BillsPC_WithdrawMenu:
-	call LoadStandardMenuHeader
-	farcall _WithdrawPKMN
-	call ReturnToMapFromSubmenu
-	call ClearPCItemScreen
-	call CloseWindow
-	and a
+.not_party
+	; Check for rows beyond 5
+	ld a, b
+	cp $60
+	jr c, .valid
+.invalid
+	or 1
+	ld a, b
 	ret
-
-BillsPC_ChangeBoxMenu:
-	farcall _ChangeBox
-	and a
-	ret
-
-ClearPCItemScreen:
-	call DisableSpriteUpdates
+.valid
 	xor a
-	ldh [hBGMapMode], a
-	call ClearBGPalettes
-	call ClearSprites
-	hlcoord 0, 0
-	ld bc, SCREEN_HEIGHT * SCREEN_WIDTH
-	ld a, " "
-	rst ByteFill
-	hlcoord 0, 0
-	lb bc, 10, 18
-	call Textbox
-	hlcoord 0, 12
-	lb bc, 4, 18
-	call Textbox
-	call ApplyAttrAndTilemapInVBlank
-	jp SetPalettes ; load regular palettes?
+	ld a, b
+	ret
 
 CopyBoxmonToTempMon:
 	ld a, [wCurPartyMon]
@@ -854,11 +1010,33 @@ GetStorageBoxMon:
 .not_empty
 	ld bc, sBox1Mons - sBox1
 	add hl, bc
+	push hl
+	push de
 	ld bc, BOXMON_STRUCT_LENGTH
 	ld a, e
 	rst AddNTimes
 	ld de, wBufferMon
 	ld bc, BOXMON_STRUCT_LENGTH
+	rst CopyBytes
+	pop de
+	pop hl
+	push hl
+	push de
+	ld bc, sBox1MonNicknames - sBox1Mons
+	add hl, bc
+	ld a, e
+	call SkipNames
+	ld de, wBufferMonNick
+	ld bc, MON_NAME_LENGTH
+	rst CopyBytes
+	pop de
+	pop hl
+	ld bc, sBox1MonOT - sBox1Mons
+	add hl, bc
+	ld a, e
+	call SkipNames
+	ld de, wBufferMonOT
+	ld bc, NAME_LENGTH
 	rst CopyBytes
 	or 1
 .done
@@ -881,8 +1059,24 @@ GetStorageBoxMon:
 	ld bc, PARTYMON_STRUCT_LENGTH
 	dec a
 	rst AddNTimes
+	push de
 	ld de, wBufferMon
 	ld c, PARTYMON_STRUCT_LENGTH
+	rst CopyBytes
+	pop de
+	push de
+	ld hl, wPartyMonNicknames
+	ld a, e
+	call SkipNames
+	ld de, wBufferMonNick
+	ld bc, MON_NAME_LENGTH
+	rst CopyBytes
+	pop de
+	ld hl, wPartyMonOT
+	ld a, e
+	call SkipNames
+	ld de, wBufferMonOT
+	ld bc, NAME_LENGTH
 	rst CopyBytes
 	or 1
 	jp PopBCDEHL
