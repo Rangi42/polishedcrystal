@@ -37,6 +37,10 @@ UseBillsPC:
 	call ClearTileMap
 	call ClearPalettes
 	farcall WipeAttrMap
+	call ClearSprites
+	ld a, [wVramState]
+	res 0, a
+	ld [wVramState], a
 
 	; Box frame tiles
 	ld b, BANK(.Tiles)
@@ -622,6 +626,13 @@ WriteIconPaletteData:
 	ld [hl], d
 	jp PopBCDEHL
 
+BillsPC_HideCursor:
+	ld hl, wVirtualOAM
+	ld [hl], -1
+	ld hl, wVirtualOAM + 4
+	ld [hl], -1
+	ret
+
 BillsPC_UpdateCursorLocation:
 	ld a, [wBillsPC_CursorPos]
 	; Check if we're on top row
@@ -904,10 +915,22 @@ ManageBoxes:
 	rrca
 	jr c, .pressed_up
 	rrca
-	jr c, .pressed_down
+	jp c, .pressed_down
 	jr .loop
 .pressed_a
+	jr .loop
 .pressed_b
+	call BillsPC_HideCursor
+	ld hl, .ContinueBoxUse
+	call MenuTextbox
+	call YesNoBox
+	push af
+	call CloseWindow
+	pop af
+	ret c
+	call BillsPC_UpdateCursorLocation
+	jr .loop
+
 .pressed_select
 .pressed_start
 	ret
@@ -934,7 +957,6 @@ ManageBoxes:
 	jr .new_cursor_pos
 
 .pressed_left
-	; TODO: Box switching
 	ld a, [wBillsPC_CursorPos]
 	cp $10
 	jr nc, .regular_left
@@ -960,7 +982,7 @@ ManageBoxes:
 	ldh [rVBK], a
 	pop af
 	ldh [hBGMapMode], a
-	jr .loop
+	jp .loop
 
 .regular_left
 	; Move left
@@ -989,6 +1011,11 @@ ManageBoxes:
 	jp nz, .redo_input
 	call GetCursorMon
 	jp .loop
+
+.ContinueBoxUse:
+	text "Continue Box"
+	next "operations?"
+	done
 
 BillsPC_CursorPosValid:
 ; Returns z if the cursor position is valid
