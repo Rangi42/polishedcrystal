@@ -18,9 +18,9 @@ MenuMonIconColors::
 	iconpal BROWN, PINK ; WEEDLE
 	iconpal BROWN, GREEN ; KAKUNA
 	iconpal BROWN, TEAL ; BEEDRILL
-	iconpal RED, BROWN ; PIDGEY
-	iconpal RED, BROWN ; PIDGEOTTO
-	iconpal RED, BROWN ; PIDGEOT
+	iconpal BROWN, RED ; PIDGEY
+	iconpal BROWN, RED ; PIDGEOTTO
+	iconpal BROWN, RED ; PIDGEOT
 	iconpal PURPLE, GRAY ; RATTATA
 	iconpal BROWN, RED ; RATICATE
 	iconpal BLUE, GREEN ; MARILL
