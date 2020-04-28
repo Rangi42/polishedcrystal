@@ -981,8 +981,8 @@ _CGB_BillsPC:
 
 .Background:
 	RGB 26, 26, 30
-	RGB 04, 17, 31
 	RGB 31, 12, 06
+	RGB 04, 17, 31
 	RGB 00, 00, 00
 
 .Outline:

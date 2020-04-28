@@ -434,7 +434,7 @@ BillsPC_BlankTiles:
 	push bc
 	push af
 	ld c, 4
-	call Get2bpp
+	call BillsPC_SafeGet2bpp
 	pop af
 	pop bc
 	pop de
@@ -443,6 +443,20 @@ BillsPC_BlankTiles:
 	dec a
 	jr nz, .loop
 	ret
+
+BillsPC_SafeRequest2bppInWRA6::
+	ldh a, [hROMBank]
+	ld b, a
+	call RunFunctionInWRA6
+
+BillsPC_SafeGet2bpp:
+; Only copies graphics when doing so wont interfere with hblank palette usage.
+; Otherwise, wait until next frame.
+	ldh a, [rLY]
+	cp $40
+	jp c, Get2bpp
+	call DelayFrame
+	jr BillsPC_SafeGet2bpp
 
 SetPartyIcons:
 ; Writes party list
@@ -462,8 +476,13 @@ SetPartyIcons:
 	lb de, PARTY_LENGTH, $80
 	jr PCIconLoop
 
-SetBoxIconsAndName:
-	; Write box name
+SetBoxName:
+	hlcoord 9, 5
+	ld a, " "
+	ld bc, 9
+	rst ByteFill
+
+	; Write new box name
 	ld a, [wCurBox]
 	ld hl, wBoxNames
 	ld bc, BOX_NAME_LENGTH
@@ -477,13 +496,21 @@ SetBoxIconsAndName:
 	inc b
 	cp "@"
 	jr nz, .loop
+	inc b
 	srl b
-	ld c, b
+	ld a, 5
+	sub b
+	ld c, a
 	ld b, 0
 	hlcoord 9, 5
 	add hl, bc
-	call PlaceString
+	jp PlaceString
 
+SetBoxIconsAndName:
+	; Blank previous box name
+	call SetBoxName
+	; fallthrough
+SetBoxIcons:
 	; Blank current list
 	xor a
 	ld hl, wBillsPC_BoxList
@@ -701,7 +728,24 @@ _GetCursorMon:
 	call ClearBox
 	hlcoord 0, 0
 	lb bc, 9, 7
-	jp ClearBox
+	call ClearBox
+	ld a, [wBillsPC_CursorPos]
+	cp $10
+	jr c, .box_cursors
+
+	ld a, " "
+	hlcoord 8, 5
+	ld [hl], a
+	hlcoord 18, 5
+	ld [hl], a
+	ret
+
+.box_cursors
+	hlcoord 8, 5
+	ld [hl], "◀"
+	hlcoord 18, 5
+	ld [hl], "▶"
+	ret
 
 .not_clear
 	; Prepare frontpic. Split into decompression + loading to make sure we
@@ -726,10 +770,25 @@ _GetCursorMon:
 	pop de
 	farcall PrepareFrontpic
 
+	push hl
+	ld a, "@"
+	ld [wStringBuffer2], a
+	ld a, [wBufferMonItem]
+	and a
+	jr z, .no_item
+	ld [wNamedObjectIndexBuffer], a
+	call GetItemName
+	ld hl, wStringBuffer1
+	ld de, wStringBuffer2
+	ld bc, ITEM_NAME_LENGTH
+	rst CopyBytes
+.no_item
+
 	; Delay first before finishing frontpic
 	call DelayFrame
 	ld a, [wAttrMap]
 	and TILE_BANK
+	pop hl
 	push af
 	ld a, 0
 	jr nz, .dont_switch_vbk
@@ -816,6 +875,11 @@ _GetCursorMon:
 .male
 	ld [hl], a
 .genderless
+
+	; Item
+	hlcoord 8, 3
+	ld de, wStringBuffer2
+	call PlaceString
 	ret
 
 ManageBoxes:
@@ -848,11 +912,14 @@ ManageBoxes:
 .pressed_start
 	ret
 .pressed_right
-	; TODO: Box switching
 	ld a, [wBillsPC_CursorPos]
 	cp $10
-	jr c, .loop
+	jr nc, .regular_right
+	ld a, [wCurBox]
+	inc a
+	jr .new_box
 
+.regular_right
 	; Move right
 	ld b, a
 	and $f
@@ -870,8 +937,32 @@ ManageBoxes:
 	; TODO: Box switching
 	ld a, [wBillsPC_CursorPos]
 	cp $10
-	jr c, .loop
+	jr nc, .regular_left
+	ld a, [wCurBox]
+	add 13
+	; fallthrough
+.new_box
+	cp NUM_BOXES
+	jr c, .valid_box
+	sub NUM_BOXES
+.valid_box
+	ld [wCurBox], a
+	call SetBoxName
+	call Delay2
+	ldh a, [hBGMapMode]
+	push af
+	xor a
+	ldh [hBGMapMode], a
+	ld a, 1
+	ldh [rVBK], a
+	call SetBoxIcons
+	xor a
+	ldh [rVBK], a
+	pop af
+	ldh [hBGMapMode], a
+	jr .loop
 
+.regular_left
 	; Move left
 	ld b, a
 	and $f
@@ -895,9 +986,9 @@ ManageBoxes:
 .new_cursor_pos
 	ld [wBillsPC_CursorPos], a
 	call BillsPC_CursorPosValid
-	jr nz, .redo_input
+	jp nz, .redo_input
 	call GetCursorMon
-	jr .loop
+	jp .loop
 
 BillsPC_CursorPosValid:
 ; Returns z if the cursor position is valid
@@ -1094,10 +1185,12 @@ GetStorageBoxMon:
 	push hl
 	push de
 	push bc
+	dec c
+	ld d, b
+	ld e, c
 	ld hl, wPartyMons
 	ld a, c
 	ld bc, PARTYMON_STRUCT_LENGTH
-	dec a
 	rst AddNTimes
 	push de
 	ld de, wBufferMon

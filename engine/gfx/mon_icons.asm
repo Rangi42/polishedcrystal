@@ -422,8 +422,34 @@ GetStorageIcon_a:
 ; Load frame 1 icon graphics into VRAM starting from tile a
 	ld l, a
 	ld h, 0
+
 	ld c, 4
-	jr DoGetIcon
+rept 4
+	add hl, hl
+endr
+
+	ld de, vTiles0
+	add hl, de
+	push hl
+
+	push hl
+	ld a, c
+	push af
+	call LoadOverworldMonIcon
+	pop af
+	ld c, a
+	ld h, d
+	ld l, e
+	pop de
+	push de
+	push bc
+	call FarDecompressWRA6InB
+	pop bc
+	pop hl
+	ld de, wDecompressScratch
+	farcall BillsPC_SafeRequest2bppInWRA6
+	pop hl
+	ret
 
 FreezeMonIcons:
 	ld hl, wSpriteAnimationStructs
