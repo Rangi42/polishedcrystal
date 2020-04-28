@@ -45,6 +45,12 @@ UseBillsPC:
 	ld c, 15
 	call Get2bpp
 
+	; Colored gender symbols are housed in misc battle gfx stuff
+	ld de, BattleExtrasGFX
+	ld hl, vTiles2 tile $40
+	lb bc, BANK(BattleExtrasGFX), 32
+	call Get2bpp
+
 	; Default cursor position
 	ld a, $12 ; top left of storage
 	ld [wBillsPC_CursorPos], a
@@ -787,11 +793,30 @@ _GetCursorMon:
 	ld de, wStringBuffer1
 	call PlaceString
 
+	; Several functions rely on having the mon in wTempMon
+	ld hl, wBufferMon
+	ld de, wTempMon
+	ld bc, PARTYMON_STRUCT_LENGTH
+	rst CopyBytes
+
 	; Level
-	ld a, [wBufferMonLevel]
-	ld [wTempMonLevel], a
 	hlcoord 0, 8
-	jp PrintLevel
+	call PrintLevel
+
+	; Gender
+	ld a, TEMPMON
+	ld [wMonType], a
+	farcall GetGender
+	jr c, .genderless
+	hlcoord 4, 8
+	ld a, $41
+	jr nz, .male
+	; female
+	inc a
+.male
+	ld [hl], a
+.genderless
+	ret
 
 ManageBoxes:
 ; Main box management function
