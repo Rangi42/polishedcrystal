@@ -719,16 +719,28 @@ _GetCursorMon:
 	call GetBaseData
 	pop de
 	farcall PrepareFrontpic
-	push hl
 
-	; Finish frontpic
-	pop hl
-.busyloop
-	; Wait until rLY is near top to avoid icon palette flickering
-	ldh a, [rLY]
-	cp $10
-	jr nz, .busyloop
+	; Delay first before finishing frontpic
+	call DelayFrame
+	ld a, [wAttrMap]
+	and TILE_BANK
+	push af
+	ld a, 0
+	jr nz, .dont_switch_vbk
+	ld a, 1
+	ld [rVBK], a
+.dont_switch_vbk
 	farcall GetPreparedFrontpic
+	xor a
+	ld [rVBK], a
+	pop af
+	ld a, 2
+	jr nz, .got_new_tile_bank
+	ld a, 2 | TILE_BANK
+.got_new_tile_bank
+	hlcoord 0, 0, wAttrMap
+	lb bc, 7, 7
+	call FillBoxWithByte
 
 	; Colors
 	ld bc, wBufferMonPersonality
@@ -744,6 +756,9 @@ _GetCursorMon:
 	inc de
 	dec b
 	jr nz, .loop
+
+	ld b, 0
+	call SafeCopyTilemapAtOnce
 
 	; Clear text
 	call .clear

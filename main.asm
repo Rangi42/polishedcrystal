@@ -37,7 +37,6 @@ INCLUDE "engine/events/overworld.asm"
 INCLUDE "engine/items/items.asm"
 INCLUDE "engine/battle/anim_hp_bar.asm"
 INCLUDE "engine/pokemon/move_mon.asm"
-INCLUDE "engine/pokemon/bills_pc_top.asm"
 INCLUDE "engine/pokemon/breedmon_level_growth.asm"
 INCLUDE "engine/events/bug_contest/caught_mon.asm"
 INCLUDE "engine/events/bug_contest/display_stats.asm"
@@ -47,6 +46,11 @@ INCLUDE "engine/items/item_effects.asm"
 SECTION "Print Number", ROMX
 
 INCLUDE "engine/math/print_num.asm"
+
+
+SECTION "Bills PC", ROMX
+
+INCLUDE "engine/pokemon/bills_pc_top.asm"
 
 
 SECTION "Poke Ball Effects", ROMX
