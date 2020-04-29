@@ -34,6 +34,46 @@ _BillsPC:
 	text_jump _PCGottaHavePokemonText
 	text_end
 
+BillsPC_LoadUI:
+	; Cursor tile
+	ld de, BillsPC_CursorTiles
+	ld hl, vTiles0
+	lb bc, BANK(BillsPC_CursorTiles), 2
+	call Get2bpp
+
+	; Cursor sprite OAM
+	ld hl, wVirtualOAM + 2
+	xor a
+	ld [hli], a
+	inc a
+	ld [hli], a
+	inc hl
+	inc hl
+	ld [hli], a
+	ld [hl], a
+
+	; Colored gender symbols are housed in misc battle gfx stuff
+	ld hl, BattleExtrasGFX
+	ld de, vTiles2 tile $40
+	lb bc, BANK(BattleExtrasGFX), 4
+	call DecompressRequest2bpp
+
+	; Box frame tiles
+	ld de, BillsPC_Tiles
+	ld hl, vTiles2 tile $31
+	lb bc, BANK(BillsPC_Tiles), 15
+	call Get2bpp
+
+	; Held item icon
+	ld hl, vTiles0 tile 2
+	ld de, HeldItemIcons
+	lb bc, BANK(HeldItemIcons), 2
+	call Get2bpp
+
+	; Set up background + outline palettes
+	ld a, CGB_BILLS_PC
+	jp GetCGBLayout
+
 UseBillsPC:
 	call ClearTileMap
 	call ClearPalettes
@@ -42,48 +82,13 @@ UseBillsPC:
 	ld a, [wVramState]
 	res 0, a
 	ld [wVramState], a
-
-	; Box frame tiles
-	ld b, BANK(BillsPC_Tiles)
-	ld de, BillsPC_Tiles
-	ld hl, vTiles2 tile $31
-	ld c, 15
-	call Get2bpp
-
-	; Colored gender symbols are housed in misc battle gfx stuff
-	ld hl, BattleExtrasGFX
-	ld de, vTiles2 tile $40
-	lb bc, BANK(BattleExtrasGFX), 4
-	call DecompressRequest2bpp
+	call BillsPC_LoadUI
 
 	; Default cursor data (top left of storage, not holding anything)
 	ld a, $12
 	ld [wBillsPC_CursorPos], a
 	xor a
 	ld [wBillsPC_CursorHeldSlot], a
-
-	; Cursor tile
-	ld b, BANK(BillsPC_CursorTile)
-	ld de, BillsPC_CursorTile
-	ld hl, vTiles0
-	ld c, 1
-	call Get2bpp
-
-	; Held item icon
-	ld hl, vTiles0 tile 1
-	ld de, HeldItemIcons
-	lb bc, BANK(HeldItemIcons), 2
-	call Request2bpp
-
-	; Cursor sprite OAM
-	ld hl, wVirtualOAM + 2
-	xor a
-	ld [hli], a
-	ld [hli], a
-	inc hl
-	inc hl
-	ld [hli], a
-	ld [hl], X_FLIP
 
 	; Reserve 4 blank tiles for empty slots
 	ld a, 1
@@ -187,10 +192,6 @@ UseBillsPC:
 	lb bc, 5, 4
 	lb de, $98, 4 | TILE_BANK
 	call .WriteIconTilemap
-
-	; Set up background + outline palettes
-	ld a, CGB_BILLS_PC
-	call GetCGBLayout
 
 	; Update attribute map data
 	ld b, 2
@@ -304,15 +305,24 @@ UseBillsPC:
 	pop bc
 	ret
 
-BillsPC_CursorTile:
-	dw `00000000
-	dw `00000000
-	dw `33333000
-	dw `22223000
+BillsPC_CursorTiles:
+	dw `33330000
+	dw `22230000
 	dw `22230000
 	dw `22300000
+	dw `22300000
+	dw `23000000
 	dw `23000000
 	dw `30000000
+
+	dw `00003333
+	dw `00003111
+	dw `00003111
+	dw `00000311
+	dw `00000311
+	dw `00000031
+	dw `00000031
+	dw `00000003
 
 BillsPC_Tiles:
 	dw `01223333
@@ -892,7 +902,7 @@ _GetCursorMon:
 	inc hl
 	ld [hl], 0
 	dec hl
-	ld [hl], 1
+	ld [hl], 2
 	call ItemIsMail
 	jr c, .item_icon_done
 	inc [hl]
@@ -1326,34 +1336,7 @@ BillsPC_RestoreUI:
 	set LCD_STAT, [hl]
 	call ClearPalettes
 
-	ld a, X_FLIP
-	ld [wVirtualOAM + 7], a
-
-	; Box frame tiles
-	ld b, BANK(BillsPC_Tiles)
-	ld de, BillsPC_Tiles
-	ld hl, vTiles2 tile $31
-	ld c, 15
-	call Get2bpp
-
-	; Cursor tile
-	ld b, BANK(BillsPC_CursorTile)
-	ld de, BillsPC_CursorTile
-	ld hl, vTiles0
-	ld c, 1
-	call Get2bpp
-
-	; Held item icon
-	ld hl, vTiles0 tile 1
-	ld de, HeldItemIcons
-	lb bc, BANK(HeldItemIcons), 2
-	call Request2bpp
-
-	; Colored gender symbols are housed in misc battle gfx stuff
-	ld hl, BattleExtrasGFX
-	ld de, vTiles2 tile $40
-	lb bc, BANK(BattleExtrasGFX), 4
-	call DecompressRequest2bpp
+	call BillsPC_LoadUI
 
 	ld a, CGB_BILLS_PC
 	call GetCGBLayout
