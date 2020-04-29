@@ -56,9 +56,11 @@ UseBillsPC:
 	lb bc, BANK(BattleExtrasGFX), 4
 	call DecompressRequest2bpp
 
-	; Default cursor position
-	ld a, $12 ; top left of storage
+	; Default cursor data (top left of storage, not holding anything)
+	ld a, $12
 	ld [wBillsPC_CursorPos], a
+	xor a
+	ld [wBillsPC_CursorHeldSlot], a
 
 	; Cursor tile
 	ld b, BANK(BillsPC_CursorTile)
@@ -132,11 +134,13 @@ UseBillsPC:
 	lb bc, $3e, 11
 	call .SpecialRow
 
+	; set up box title to use vbk0 (previously set to vbk1 by .Box)
 	hlcoord 8, 5, wAttrMap
 	ld bc, 11
 	ld a, 7
 	rst ByteFill
 
+	; initialize icon graphics + palettes (tilemaps are set up later)
 	ld a, 1
 	ldh [rVBK], a
 	call SetPartyIcons
@@ -184,29 +188,32 @@ UseBillsPC:
 	lb de, $98, 4 | TILE_BANK
 	call .WriteIconTilemap
 
+	; Set up background + outline palettes
 	ld a, CGB_BILLS_PC
 	call GetCGBLayout
-	call SetPalettes
 
+	; Update attribute map data
 	ld b, 2
 	call SafeCopyTilemapAtOnce
 
+	; Set up for HBlank palette switching
 	ld hl, rIE
 	set LCD_STAT, [hl]
 	ld a, -1
 	ldh [hMPState], a
 
-	xor a
-	ld [wBillsPC_CursorHeldSlot], a
-
+	; Display data about current Pokémon pointed to by cursor
 	call GetCursorMon
 
+	; Begin storage system interaction
 	call ManageBoxes
 
-	ret
+	; Finished with storage system. Cleanup
+	call ClearTileMap
+	jp ClearPalettes
 
 .Box:
-; draws a box with tiles and attributes
+; Draws a box with tiles and attributes
 	push bc
 	push hl
 	call CreateBoxBorders
@@ -231,7 +238,7 @@ UseBillsPC:
 	db 1 | Y_FLIP, 1 | Y_FLIP, 1 | X_FLIP | Y_FLIP ; bottom
 
 .SpecialRow:
-; draws a nonstandard box outline
+; Draws a nonstandard box outline
 	ld a, b
 	ld [hli], a
 	inc a
@@ -250,7 +257,7 @@ UseBillsPC:
 	ret
 
 .WriteIconTilemap:
-; writes icon tile+attr data for b rows, c cols starting from hlcoord, tile a
+; Writes icon tile+attr data for b rows, c cols starting from hlcoord, tile a
 	ld a, d
 .tile_row
 	push bc
@@ -444,6 +451,7 @@ BillsPC_Tiles:
 	dw `33333333
 
 BillsPC_BlankTiles:
+; Used as input to blank empty slots
 	ld de, vTiles3 tile $00
 	ld bc, 4 tiles
 .loop
@@ -476,25 +484,8 @@ BillsPC_SafeGet2bpp:
 	call DelayFrame
 	jr BillsPC_SafeGet2bpp
 
-SetPartyIcons:
-; Writes party list
-	; Blank current list
-	xor a
-	ld hl, wBillsPC_PartyList
-	ld bc, PARTY_LENGTH * 2
-	rst ByteFill
-
-	ld hl, vTiles4 tile $00
-	ld a, PARTY_LENGTH
-	call BillsPC_BlankTiles
-
-	; Write party members
-	lb bc, 0, 1
-	ld hl, wBillsPC_PartyList
-	lb de, PARTY_LENGTH, $80
-	jr PCIconLoop
-
 SetBoxName:
+; Writes name of current Box to box name area in storage system
 	hlcoord 9, 5
 	ld a, " "
 	ld bc, 9
@@ -523,6 +514,24 @@ SetBoxName:
 	hlcoord 9, 5
 	add hl, bc
 	jp PlaceString
+
+SetPartyIcons:
+; Writes party list
+	; Blank current list
+	xor a
+	ld hl, wBillsPC_PartyList
+	ld bc, PARTY_LENGTH * 2
+	rst ByteFill
+
+	ld hl, vTiles4 tile $00
+	ld a, PARTY_LENGTH
+	call BillsPC_BlankTiles
+
+	; Write party members
+	lb bc, 0, 1
+	ld hl, wBillsPC_PartyList
+	lb de, PARTY_LENGTH, $80
+	jr PCIconLoop
 
 SetBoxIconsAndName:
 	; Blank previous box name
@@ -575,6 +584,7 @@ PCIconLoop:
 
 WriteIconPaletteData:
 ; Write box slot c's palette data. If b is zero, write party palette instead.
+; (This is the same input as various "box mon data" functions).
 	push hl
 	push de
 	push bc
@@ -648,11 +658,15 @@ BillsPC_HideCursor:
 	ret
 
 BillsPC_UpdateCursorLocation:
+; Moves box cursor to where it currently pointing
 	ld a, [wBillsPC_CursorPos]
+
 	; Check if we're on top row
 	sub $10
 	lb bc, 48, 116
 	jr c, .got_cursor_pos
+
+	; Set up cursor X, accounting for spacing between party and box
 	ld b, a
 	and $f
 	swap a
@@ -665,6 +679,8 @@ BillsPC_UpdateCursorLocation:
 .got_x_offset
 	add 24
 	ld c, a
+
+	; Cursor y is simply an offset since $y0 is already per-2-tiles.
 	ld a, b
 	and $f0
 	add 64
@@ -683,16 +699,6 @@ BillsPC_UpdateCursorLocation:
 	ld a, c
 	sub 8
 	ld [hl], a
-	ret
-
-.SetXPos
-	push af
-	ld e, c
-	ld c, 24
-	call SimpleMultiply
-	add e
-	ld c, a
-	pop af
 	ret
 
 GetCursorMon:
@@ -982,10 +988,13 @@ ManageBoxes:
 	jp c, .pressed_down
 	jr .loop
 .pressed_a
+	; check if we're on top row (hovering over box name)
 	ld a, [wBillsPC_CursorPos]
 	cp $10
 	ld hl, .BoxMenu
 	jr c, .got_menu
+
+	; check if we're in party or storage
 	and $f
 	cp $2
 	ld hl, .PartyMonMenu
@@ -994,6 +1003,7 @@ ManageBoxes:
 	; hide the cursor half covered by the menu
 	ld a, -1
 	ld [wVirtualOAM], a
+	; hide it entirely if we're selecting something other than column 2
 	call nz, BillsPC_HideCursor
 	ld hl, .StorageMonMenu
 .got_menu
@@ -1001,17 +1011,17 @@ ManageBoxes:
 	xor a
 	ld [wWhichIndexSet], a
 	call DoNthMenu
-	push af
-	call BillsPC_UpdateCursorLocation
-	call CloseWindow
-	pop af
-	jr c, .loop
+	jr c, .finish_menu
 	ld a, [wMenuSelection]
 	ld hl, .Jumptable
 	call JumpTable
+.finish_menu
+	call BillsPC_UpdateCursorLocation
+	call CloseWindow
 	jr .loop
 
 .pressed_b
+	; Prompt if we want to exit Box operations or not.
 	call BillsPC_HideCursor
 	ld hl, .ContinueBoxUse
 	call MenuTextbox
@@ -1024,8 +1034,11 @@ ManageBoxes:
 	jr .loop
 
 .pressed_select
+	; TODO: Cursor Mode Switch
 .pressed_start
+	; Immediately leave the storage system (TODO: Maybe allow searching?)
 	ret
+
 .pressed_right
 	ld a, [wBillsPC_CursorPos]
 	cp $10
@@ -1107,13 +1120,6 @@ ManageBoxes:
 .ContinueBoxUse:
 	text "Continue Box"
 	line "operations?"
-	done
-
-.MonIsSelected:
-	text "Do what"
-	line "with @"
-	text_from_ram wBufferMonNick
-	text "?"
 	done
 
 .StorageMonMenu:
@@ -1226,7 +1232,90 @@ BillsPC_Stats:
 
 BillsPC_Switch:
 BillsPC_Moves:
+	ret
+
 BillsPC_Item:
+	call BillsPC_HideCursor
+	ld a, [wBufferMonItem]
+	and a
+	ld hl, .ItemIsSelected
+	ld de, .ItemMenu
+	jr nz, .got_menu
+	ld hl, .ItCanHoldAnItem
+	ld de, .NoItemMenu
+.got_menu
+	push de
+	call MenuTextbox
+	pop hl
+	call LoadMenuHeader
+	xor a
+	ld [wWhichIndexSet], a
+	call DoNthMenu
+	call CloseWindow
+	call CloseWindow
+	jp BillsPC_UpdateCursorLocation
+
+.ItemIsSelected:
+	text_from_ram wStringBuffer2
+	text " is"
+	line "selected."
+	done
+
+.ItCanHoldAnItem:
+	text_from_ram wStringBuffer1
+	text " can"
+	line "hold an item."
+	done
+
+.ItemMenu:
+	db $40 ; flags
+	db 05, 11 ; start coords
+	db 12, 19 ; end coords
+	dw .ItemMenuData
+	db 1 ; default option
+
+.ItemMenuData:
+	db $20 ; flags
+	db 3 ; items
+	dw .items
+	dw PlaceMenuStrings
+	dw .strings
+
+.NoItemMenu:
+	db $40 ; flags
+	db 07, 11 ; start coords
+	db 12, 19 ; end coords
+	dw .NoItemMenuData
+	db 1 ; default option
+
+.NoItemMenuData:
+	db $20 ; flags
+	db 2 ; items
+	dw .noitems
+	dw PlaceMenuStrings
+	dw .strings
+
+.strings
+	; holds and item
+	db "Move@"
+	db "Bag@"
+	; doesn't hold an item
+	db "Give@"
+	db "Cancel@"
+
+.items
+	db 3
+	db 0 ; move
+	db 1 ; bag
+	db 3 ; cancel
+	db -1
+
+.noitems
+	db 2
+	db 2 ; give
+	db 3 ; cancel
+	db -1
+
 BillsPC_Release:
 BillsPC_SwitchBox:
 BillsPC_Rename:
