@@ -907,6 +907,7 @@ wBillsPC_CursorHeldBox:: db ; 0 for party, 1-15 otherwise
 wBillsPC_CursorHeldSlot:: db ; 0 for nothing held, or 1-20 (1-6 if party)
 wBillsPC_CursorDestBox:: db ; 0 for party, 1-15 otherwise
 wBillsPC_CursorDestSlot:: db ; 0 for release, or 1-20 (1-6 if party)
+wBillsPC_ItemVWF:: ds 10 tiles
 
 NEXTU
 ; raw link data

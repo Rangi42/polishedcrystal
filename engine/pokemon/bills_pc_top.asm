@@ -67,6 +67,12 @@ UseBillsPC:
 	ld c, 1
 	call Get2bpp
 
+	; Held item icon
+	ld hl, vTiles0 tile 1
+	ld de, HeldItemIcons
+	lb bc, BANK(HeldItemIcons), 2
+	call Request2bpp
+
 	; Cursor sprite OAM
 	ld hl, wVirtualOAM + 2
 	xor a
@@ -103,10 +109,17 @@ UseBillsPC:
 	xor a
 	ld [rVBK], a
 
+	; Pokepic attributes
 	hlcoord 0, 0, wAttrMap
 	lb bc, 7, 7
 	ld a, 2
 	call FillBoxWithByte
+
+	; Item name is in vbk1
+	hlcoord 10, 3, wAttrMap
+	ld bc, 10
+	ld a, TILE_BANK
+	rst ByteFill
 
 	; Storage box
 	hlcoord 7, 4
@@ -732,6 +745,8 @@ _GetCursorMon:
 .got_storage_location
 	call GetStorageBoxMon
 	jr nz, .not_clear
+	ld a, -1
+	ld [wVirtualOAM + 8], a
 
 .clear
 	; Clear existing data
@@ -757,6 +772,8 @@ _GetCursorMon:
 	ld [hl], "◀"
 	hlcoord 18, 5
 	ld [hl], "▶"
+	ld a, -1
+	ld [wVirtualOAM + 8], a
 	ret
 
 .not_clear
@@ -794,8 +811,8 @@ _GetCursorMon:
 	ld de, wStringBuffer2
 	ld bc, ITEM_NAME_LENGTH
 	rst CopyBytes
-.no_item
 
+.no_item
 	; Delay first before finishing frontpic
 	call DelayFrame
 	ld a, [wAttrMap]
@@ -810,6 +827,27 @@ _GetCursorMon:
 	farcall GetPreparedFrontpic
 	xor a
 	ld [rVBK], a
+	ld hl, wBillsPC_ItemVWF
+	ld bc, 10 tiles
+	xor a
+	push hl
+	rst ByteFill
+	pop hl
+	ld de, wStringBuffer1
+	ld a, [wBufferMonItem]
+	and a
+	call nz, PlaceVWFString
+	call DelayFrame
+
+	ld a, 1
+	ld [rVBK], a
+	ld hl, vTiles2 tile $31
+	ld de, wBillsPC_ItemVWF
+	ld c, 10
+	call Get2bpp
+	xor a
+	ld [rVBK], a
+
 	pop af
 	ld a, 2
 	jr nz, .got_new_tile_bank
@@ -833,6 +871,26 @@ _GetCursorMon:
 	inc de
 	dec b
 	jr nz, .loop
+
+	; Show or hide item icon
+	ld hl, wVirtualOAM + 8
+	ld a, [wBufferMonItem]
+	and a
+	ld [hl], -1
+	jr z, .item_icon_done
+
+	ld [hl], 40
+	inc hl
+	ld [hl], 72
+	inc hl
+	inc hl
+	ld [hl], 0
+	dec hl
+	ld [hl], 1
+	call ItemIsMail
+	jr c, .item_icon_done
+	inc [hl]
+.item_icon_done
 
 	ld b, 0
 	call SafeCopyTilemapAtOnce
@@ -889,9 +947,14 @@ _GetCursorMon:
 .genderless
 
 	; Item
-	hlcoord 8, 3
-	ld de, wStringBuffer2
-	call PlaceString
+	hlcoord 10, 3
+	ld a, $31
+	ld b, 10
+.item_loop
+	ld [hli], a
+	inc a
+	dec b
+	jr nz, .item_loop
 	ret
 
 ManageBoxes:
@@ -1190,6 +1253,12 @@ BillsPC_RestoreUI:
 	ld hl, vTiles0
 	ld c, 1
 	call Get2bpp
+
+	; Held item icon
+	ld hl, vTiles0 tile 1
+	ld de, HeldItemIcons
+	lb bc, BANK(HeldItemIcons), 2
+	call Request2bpp
 
 	; Colored gender symbols are housed in misc battle gfx stuff
 	ld hl, BattleExtrasGFX
