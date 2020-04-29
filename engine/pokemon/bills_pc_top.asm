@@ -38,7 +38,7 @@ BillsPC_LoadUI:
 	; Cursor tile
 	ld de, BillsPC_CursorTiles
 	ld hl, vTiles0
-	lb bc, BANK(BillsPC_CursorTiles), 2
+	lb bc, BANK(BillsPC_CursorTiles), 4
 	call Get2bpp
 
 	; Cursor sprite OAM
@@ -51,6 +51,24 @@ BillsPC_LoadUI:
 	inc hl
 	ld [hli], a
 	ld [hl], a
+
+	ld hl, wVirtualOAM + 10
+	ld b, 2
+	ld a, 4
+.loop
+	ld [hl], 2
+	inc hl
+	ld [hli], a
+	inc hl
+	inc hl
+	ld [hl], 3
+	inc hl
+	ld [hli], a
+	inc hl
+	inc hl
+	or X_FLIP
+	dec b
+	jr nz, .loop
 
 	; Colored gender symbols are housed in misc battle gfx stuff
 	ld hl, BattleExtrasGFX
@@ -65,7 +83,7 @@ BillsPC_LoadUI:
 	call Get2bpp
 
 	; Held item icon
-	ld hl, vTiles0 tile 2
+	ld hl, vTiles0 tile 4
 	ld de, HeldItemIcons
 	lb bc, BANK(HeldItemIcons), 2
 	call Get2bpp
@@ -322,6 +340,24 @@ BillsPC_CursorTiles:
 	dw `00000311
 	dw `00000031
 	dw `00000031
+	dw `00000003
+
+	dw `00000000
+	dw `00000000
+	dw `00000000
+	dw `00000000
+	dw `00000000
+	dw `00000000
+	dw `00033333
+	dw `00030000
+
+	dw `00030000
+	dw `00030000
+	dw `00003000
+	dw `00003000
+	dw `00000300
+	dw `00000300
+	dw `00000030
 	dw `00000003
 
 BillsPC_Tiles:
@@ -660,11 +696,26 @@ WriteIconPaletteData:
 	ld [hl], d
 	jp PopBCDEHL
 
+BillsPC_HideCursorHalf:
+	ld a, -1
+	ld [wVirtualOAM], a
+	ld [wVirtualOAM + 16], a
+	ld [wVirtualOAM + 20], a
+	ret
+
 BillsPC_HideCursor:
+	push hl
+	push bc
+	ld bc, 4
+	ld a, 6
 	ld hl, wVirtualOAM
+.loop
 	ld [hl], -1
-	ld hl, wVirtualOAM + 4
-	ld [hl], -1
+	add hl, bc
+	dec a
+	jr nz, .loop
+	pop bc
+	pop hl
 	ret
 
 BillsPC_UpdateCursorLocation:
@@ -697,10 +748,28 @@ BillsPC_UpdateCursorLocation:
 	ld b, a
 
 .got_cursor_pos
+	; TODO: less repetive code
 	ld hl, wVirtualOAM
 	ld a, b
+	dec a
 	ld [hli], a
 	ld a, c
+	ld [hli], a
+	inc hl
+	inc hl
+	ld a, b
+	dec a
+	ld [hli], a
+	ld a, c
+	sub 8
+	ld [hli], a
+	inc hl
+	inc hl
+	ld a, b
+	sub 8
+	ld [hli], a
+	ld a, c
+	sub 8
 	ld [hli], a
 	inc hl
 	inc hl
@@ -708,7 +777,20 @@ BillsPC_UpdateCursorLocation:
 	ld [hli], a
 	ld a, c
 	sub 8
-	ld [hl], a
+	ld [hli], a
+	inc hl
+	inc hl
+	ld a, b
+	sub 8
+	ld [hli], a
+	ld a, c
+	ld [hli], a
+	inc hl
+	inc hl
+	ld a, b
+	ld [hli], a
+	ld a, c
+	ld [hli], a
 	ret
 
 GetCursorMon:
@@ -762,7 +844,7 @@ _GetCursorMon:
 	call GetStorageBoxMon
 	jr nz, .not_clear
 	ld a, -1
-	ld [wVirtualOAM + 8], a
+	ld [wVirtualOAM + 24], a
 
 .clear
 	; Clear existing data
@@ -789,7 +871,7 @@ _GetCursorMon:
 	hlcoord 18, 5
 	ld [hl], "▶"
 	ld a, -1
-	ld [wVirtualOAM + 8], a
+	ld [wVirtualOAM + 24], a
 	ret
 
 .not_clear
@@ -889,7 +971,7 @@ _GetCursorMon:
 	jr nz, .loop
 
 	; Show or hide item icon
-	ld hl, wVirtualOAM + 8
+	ld hl, wVirtualOAM + 24
 	ld a, [wBufferMonItem]
 	and a
 	ld [hl], -1
@@ -902,7 +984,7 @@ _GetCursorMon:
 	inc hl
 	ld [hl], 0
 	dec hl
-	ld [hl], 2
+	ld [hl], 4
 	call ItemIsMail
 	jr c, .item_icon_done
 	inc [hl]
@@ -1011,8 +1093,7 @@ ManageBoxes:
 	jr c, .got_menu
 
 	; hide the cursor half covered by the menu
-	ld a, -1
-	ld [wVirtualOAM], a
+	call BillsPC_HideCursorHalf
 	; hide it entirely if we're selecting something other than column 2
 	call nz, BillsPC_HideCursor
 	ld hl, .StorageMonMenu
@@ -1021,13 +1102,14 @@ ManageBoxes:
 	xor a
 	ld [wWhichIndexSet], a
 	call DoNthMenu
-	jr c, .finish_menu
+	push af
+	call BillsPC_UpdateCursorLocation
+	call CloseWindow
+	pop af
+	jr c, .loop
 	ld a, [wMenuSelection]
 	ld hl, .Jumptable
 	call JumpTable
-.finish_menu
-	call BillsPC_UpdateCursorLocation
-	call CloseWindow
 	jr .loop
 
 .pressed_b
