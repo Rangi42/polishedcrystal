@@ -7,7 +7,9 @@ _BillsPC:
 	set NO_TEXT_SCROLL, [hl]
 	ld a, 72
 	ldh [rLYC], a
+	call LoadStandardMenuHeader
 	call UseBillsPC
+	call ReturnToMapFromSubmenu
 
 	ld hl, rIE
 	res LCD_STAT, [hl]
@@ -33,7 +35,6 @@ _BillsPC:
 	text_end
 
 UseBillsPC:
-	call LoadStandardMenuHeader
 	call ClearTileMap
 	call ClearPalettes
 	farcall WipeAttrMap
