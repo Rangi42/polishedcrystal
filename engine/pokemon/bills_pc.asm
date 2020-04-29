@@ -262,7 +262,7 @@ _WithdrawPKMN:
 	dw .Init
 	dw .Joypad
 	dw .PrepSubmenu
-	dw BillsPC_Withdraw
+	dw BillsPC_OldWithdraw
 	dw BillsPC_EndJumptableLoop
 
 .Init:
@@ -336,7 +336,7 @@ _WithdrawPKMN:
 	ld [wMenuCursorY], a
 	jp BillsPC_IncrementJumptableIndex
 
-BillsPC_Withdraw:
+BillsPC_OldWithdraw:
 	ld hl, .MenuDataHeader
 	call CopyMenuHeader
 	ld a, [wMenuCursorY]

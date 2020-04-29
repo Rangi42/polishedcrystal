@@ -159,7 +159,7 @@ endr
 	; prepare for next write
 	push de
 	ldh a, [rLYC]
-	cp 136
+	cp 135
 	jr nz, .increase_lyc
 	sub 16 * 5
 .increase_lyc
@@ -168,7 +168,7 @@ endr
 
 	; Since we write the next palette at the bottom row, we actually want to
 	; copy not the upcoming palette, but the one after that.
-	sub 56
+	sub 55
 	cp $50
 	jr c, .got_result
 	xor a

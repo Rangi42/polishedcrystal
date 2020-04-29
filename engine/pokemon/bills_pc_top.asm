@@ -5,7 +5,7 @@ _BillsPC:
 	ld a, [hl]
 	push af
 	set NO_TEXT_SCROLL, [hl]
-	ld a, 72
+	ld a, 71
 	ldh [rLYC], a
 	call LoadStandardMenuHeader
 	call UseBillsPC
@@ -44,25 +44,25 @@ UseBillsPC:
 	ld [wVramState], a
 
 	; Box frame tiles
-	ld b, BANK(.Tiles)
-	ld de, .Tiles
+	ld b, BANK(BillsPC_Tiles)
+	ld de, BillsPC_Tiles
 	ld hl, vTiles2 tile $31
 	ld c, 15
 	call Get2bpp
 
 	; Colored gender symbols are housed in misc battle gfx stuff
-	ld de, BattleExtrasGFX
-	ld hl, vTiles2 tile $40
-	lb bc, BANK(BattleExtrasGFX), 32
-	call Get2bpp
+	ld hl, BattleExtrasGFX
+	ld de, vTiles2 tile $40
+	lb bc, BANK(BattleExtrasGFX), 4
+	call DecompressRequest2bpp
 
 	; Default cursor position
 	ld a, $12 ; top left of storage
 	ld [wBillsPC_CursorPos], a
 
 	; Cursor tile
-	ld b, BANK(.CursorTile)
-	ld de, .CursorTile
+	ld b, BANK(BillsPC_CursorTile)
+	ld de, BillsPC_CursorTile
 	ld hl, vTiles0
 	ld c, 1
 	call Get2bpp
@@ -284,7 +284,17 @@ UseBillsPC:
 	pop bc
 	ret
 
-.Tiles
+BillsPC_CursorTile:
+	dw `00000000
+	dw `00000000
+	dw `33333000
+	dw `22223000
+	dw `22230000
+	dw `22300000
+	dw `23000000
+	dw `30000000
+
+BillsPC_Tiles:
 	dw `01223333
 	dw `01223333
 	dw `01223333
@@ -419,16 +429,6 @@ UseBillsPC:
 	dw `22222222
 	dw `22222222
 	dw `33333333
-
-.CursorTile
-	dw `00000000
-	dw `00000000
-	dw `33333000
-	dw `22223000
-	dw `22230000
-	dw `22300000
-	dw `23000000
-	dw `30000000
 
 BillsPC_BlankTiles:
 	ld de, vTiles3 tile $00
@@ -902,34 +902,62 @@ ManageBoxes:
 	ldh a, [hJoyPressed]
 	ld hl, wInputFlags
 	rrca
-	jr c, .pressed_a
+	jp c, .pressed_a
 	rrca
-	jr c, .pressed_b
+	jp c, .pressed_b
 	rrca
-	jr c, .pressed_select
+	jp c, .pressed_select
 	rrca
-	jr c, .pressed_start
+	jp c, .pressed_start
 	rrca
-	jr c, .pressed_right
+	jp c, .pressed_right
 	rrca
-	jr c, .pressed_left
+	jp c, .pressed_left
 	rrca
-	jr c, .pressed_up
+	jp c, .pressed_up
 	rrca
 	jp c, .pressed_down
 	jr .loop
 .pressed_a
+	ld a, [wBillsPC_CursorPos]
+	cp $10
+	ld hl, .BoxMenu
+	jr c, .got_menu
+	and $f
+	cp $2
+	ld hl, .PartyMonMenu
+	jr c, .got_menu
+
+	; hide the cursor half covered by the menu
+	ld a, -1
+	ld [wVirtualOAM], a
+	call nz, BillsPC_HideCursor
+	ld hl, .StorageMonMenu
+.got_menu
+	call LoadMenuHeader
+	xor a
+	ld [wWhichIndexSet], a
+	call DoNthMenu
+	push af
+	call BillsPC_UpdateCursorLocation
+	call CloseWindow
+	pop af
+	jr c, .loop
+	ld a, [wMenuSelection]
+	ld hl, .Jumptable
+	call JumpTable
 	jr .loop
+
 .pressed_b
 	call BillsPC_HideCursor
 	ld hl, .ContinueBoxUse
 	call MenuTextbox
 	call YesNoBox
 	push af
+	call BillsPC_UpdateCursorLocation
 	call CloseWindow
 	pop af
 	ret c
-	call BillsPC_UpdateCursorLocation
 	jr .loop
 
 .pressed_select
@@ -1015,8 +1043,164 @@ ManageBoxes:
 
 .ContinueBoxUse:
 	text "Continue Box"
-	next "operations?"
+	line "operations?"
 	done
+
+.MonIsSelected:
+	text "Do what"
+	line "with @"
+	text_from_ram wBufferMonNick
+	text "?"
+	done
+
+.StorageMonMenu:
+	db $40 ; flags
+	db 02, 09 ; start coords
+	db 17, 19 ; end coords
+	dw .StorageMenuData2
+	db 1 ; default option
+
+.StorageMenuData2:
+	db $20 ; flags
+	db 0 ; items
+	dw .storageitems
+	dw PlaceMenuStrings
+	dw .strings
+
+.PartyMonMenu:
+	db $40 ; flags
+	db 02, 10 ; start coords
+	db 17, 19 ; end coords
+	dw .PartyMenuData2
+	db 1 ; default option
+
+.PartyMenuData2:
+	db $20 ; flags
+	db 0 ; items
+	dw .partyitems
+	dw PlaceMenuStrings
+	dw .strings
+
+.BoxMenu:
+	db $40 ; flags
+	db 10, 07 ; start coords
+	db 17, 19 ; end coords
+	dw .BoxMenuData2
+	db 1 ; default option
+
+.BoxMenuData2:
+	db $20 ; flags
+	db 0 ; items
+	dw .boxitems
+	dw PlaceMenuStrings
+	dw .strings
+
+.strings
+	; pokémon management options
+	db "Withdraw@"
+	db "Deposit@"
+	db "Stats@"
+	db "Switch@"
+	db "Moves@"
+	db "Item@"
+	db "Release@"
+	; box options
+	db "Switch box@"
+	db "Rename@"
+	db "Cancel@"
+
+.Jumptable
+	dw BillsPC_Withdraw
+	dw BillsPC_Deposit
+	dw BillsPC_Stats
+	dw BillsPC_Switch
+	dw BillsPC_Moves
+	dw BillsPC_Item
+	dw BillsPC_Release
+	dw BillsPC_SwitchBox
+	dw BillsPC_Rename
+	dw DoNothing
+
+.storageitems
+	db 7
+	db 0 ; withdraw
+	db 2 ; stats
+	db 3 ; switch
+	db 4 ; moves
+	db 5 ; item
+	db 6 ; release
+	db 9 ; cancel
+	db -1
+
+.partyitems
+	db 7
+	db 1 ; deposit
+	db 2 ; stats
+	db 3 ; switch
+	db 4 ; moves
+	db 5 ; item
+	db 6 ; release
+	db 9 ; cancel
+	db -1
+
+.boxitems
+	db 3
+	db 7 ; switch box
+	db 8 ; rename
+	db 9 ; cancel
+	db -1
+
+BillsPC_Withdraw:
+BillsPC_Deposit:
+	ret
+
+BillsPC_Stats:
+	ld hl, rIE
+	res LCD_STAT, [hl]
+	farcall OpenPartyStats
+	call BillsPC_RestoreUI
+	ret
+
+BillsPC_Switch:
+BillsPC_Moves:
+BillsPC_Item:
+BillsPC_Release:
+BillsPC_SwitchBox:
+BillsPC_Rename:
+	ret
+
+BillsPC_RestoreUI:
+	ld hl, rIE
+	set LCD_STAT, [hl]
+	call ClearPalettes
+
+	ld a, X_FLIP
+	ld [wVirtualOAM + 7], a
+
+	; Box frame tiles
+	ld b, BANK(BillsPC_Tiles)
+	ld de, BillsPC_Tiles
+	ld hl, vTiles2 tile $31
+	ld c, 15
+	call Get2bpp
+
+	; Cursor tile
+	ld b, BANK(BillsPC_CursorTile)
+	ld de, BillsPC_CursorTile
+	ld hl, vTiles0
+	ld c, 1
+	call Get2bpp
+
+	; Colored gender symbols are housed in misc battle gfx stuff
+	ld hl, BattleExtrasGFX
+	ld de, vTiles2 tile $40
+	lb bc, BANK(BattleExtrasGFX), 4
+	call DecompressRequest2bpp
+
+	ld a, CGB_BILLS_PC
+	call GetCGBLayout
+	call SetPalettes
+	jp GetCursorMon
 
 BillsPC_CursorPosValid:
 ; Returns z if the cursor position is valid
