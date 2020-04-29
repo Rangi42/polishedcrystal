@@ -673,10 +673,26 @@ WriteIconPaletteData:
 	jp PopBCDEHL
 
 BillsPC_HideCursor:
-	jp HideSprites
+	ld hl, wVirtualOAM
+	ld bc, 24
+	xor a
+	rst ByteFill
+	ret
 
 BillsPC_UpdateCursorLocation:
-	farjp PlaySpriteAnimations
+	push hl
+	push de
+	push bc
+	ld hl, wVirtualOAM + 24
+	ld de, wStringBuffer1
+	ld bc, 4
+	rst CopyBytes
+	farcall PlaySpriteAnimations
+	ld hl, wStringBuffer1
+	ld de, wVirtualOAM + 24
+	ld bc, 4
+	rst CopyBytes
+	jp PopBCDEHL
 
 GetCursorMon:
 ; Prints data about Pokémon at cursor if nothing is held (underline to force)
@@ -943,7 +959,8 @@ _GetCursorMon:
 ManageBoxes:
 ; Main box management function
 .loop
-	farcall PlaySpriteAnimationsAndDelayFrame
+	call BillsPC_UpdateCursorLocation
+	call DelayFrame
 	call JoyTextDelay
 .redo_input
 	ldh a, [hJoyPressed]
