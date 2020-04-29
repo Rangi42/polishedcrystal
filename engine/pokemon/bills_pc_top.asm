@@ -73,6 +73,7 @@ UseBillsPC:
 	call ClearPalettes
 	farcall WipeAttrMap
 	call ClearSprites
+	call ClearSpriteAnims
 	ld a, [wVramState]
 	res 0, a
 	ld [wVramState], a
