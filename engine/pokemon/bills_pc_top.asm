@@ -42,33 +42,9 @@ BillsPC_LoadUI:
 	call Get2bpp
 
 	; Cursor sprite OAM
-	ld hl, wVirtualOAM + 2
-	xor a
-	ld [hli], a
-	inc a
-	ld [hli], a
-	inc hl
-	inc hl
-	ld [hli], a
-	ld [hl], a
-
-	ld hl, wVirtualOAM + 10
-	ld b, 2
-	ld a, 4
-.loop
-	ld [hl], 2
-	inc hl
-	ld [hli], a
-	inc hl
-	inc hl
-	ld [hl], 3
-	inc hl
-	ld [hli], a
-	inc hl
-	inc hl
-	or X_FLIP
-	dec b
-	jr nz, .loop
+	lb de, 48, 24
+	ld a, SPRITE_ANIM_INDEX_PC_CURSOR
+	call _InitSpriteAnimStruct
 
 	; Colored gender symbols are housed in misc battle gfx stuff
 	ld hl, BattleExtrasGFX
@@ -696,102 +672,11 @@ WriteIconPaletteData:
 	ld [hl], d
 	jp PopBCDEHL
 
-BillsPC_HideCursorHalf:
-	ld a, -1
-	ld [wVirtualOAM], a
-	ld [wVirtualOAM + 16], a
-	ld [wVirtualOAM + 20], a
-	ret
-
 BillsPC_HideCursor:
-	push hl
-	push bc
-	ld bc, 4
-	ld a, 6
-	ld hl, wVirtualOAM
-.loop
-	ld [hl], -1
-	add hl, bc
-	dec a
-	jr nz, .loop
-	pop bc
-	pop hl
-	ret
+	jp HideSprites
 
 BillsPC_UpdateCursorLocation:
-; Moves box cursor to where it currently pointing
-	ld a, [wBillsPC_CursorPos]
-
-	; Check if we're on top row
-	sub $10
-	lb bc, 48, 116
-	jr c, .got_cursor_pos
-
-	; Set up cursor X, accounting for spacing between party and box
-	ld b, a
-	and $f
-	swap a
-	ld e, a
-	rrca
-	add e
-	cp 48
-	jr c, .got_x_offset
-	add 8
-.got_x_offset
-	add 24
-	ld c, a
-
-	; Cursor y is simply an offset since $y0 is already per-2-tiles.
-	ld a, b
-	and $f0
-	add 64
-	ld b, a
-
-.got_cursor_pos
-	; TODO: less repetive code
-	ld hl, wVirtualOAM
-	ld a, b
-	dec a
-	ld [hli], a
-	ld a, c
-	ld [hli], a
-	inc hl
-	inc hl
-	ld a, b
-	dec a
-	ld [hli], a
-	ld a, c
-	sub 8
-	ld [hli], a
-	inc hl
-	inc hl
-	ld a, b
-	sub 8
-	ld [hli], a
-	ld a, c
-	sub 8
-	ld [hli], a
-	inc hl
-	inc hl
-	ld a, b
-	ld [hli], a
-	ld a, c
-	sub 8
-	ld [hli], a
-	inc hl
-	inc hl
-	ld a, b
-	sub 8
-	ld [hli], a
-	ld a, c
-	ld [hli], a
-	inc hl
-	inc hl
-	ld a, b
-	ld [hli], a
-	ld a, c
-	ld [hli], a
-	ret
+	farjp PlaySpriteAnimations
 
 GetCursorMon:
 ; Prints data about Pokémon at cursor if nothing is held (underline to force)
@@ -1058,6 +943,7 @@ _GetCursorMon:
 ManageBoxes:
 ; Main box management function
 .loop
+	farcall PlaySpriteAnimationsAndDelayFrame
 	call JoyTextDelay
 .redo_input
 	ldh a, [hJoyPressed]
@@ -1092,10 +978,8 @@ ManageBoxes:
 	ld hl, .PartyMonMenu
 	jr c, .got_menu
 
-	; hide the cursor half covered by the menu
-	call BillsPC_HideCursorHalf
-	; hide it entirely if we're selecting something other than column 2
-	call nz, BillsPC_HideCursor
+	; hide the cursor
+	call BillsPC_HideCursor
 	ld hl, .StorageMonMenu
 .got_menu
 	call LoadMenuHeader

@@ -75,6 +75,8 @@ SpriteAnimOAMData:
 	dbw $04, .OAMData_GameFreakLogo4_11  ; SPRITE_ANIM_OAMSET_GAMEFREAK_LOGO_10
 	dbw $00, .OAMData_GameFreakLogo4_11  ; SPRITE_ANIM_OAMSET_GAMEFREAK_LOGO_11
 	dbw $00, .OAMData_MaxStatSparkle     ; SPRITE_ANIM_OAMSET_MAX_STAT_SPARKLE
+	dbw $00, .OAMData_PcCursor1          ; SPRITE_ANIM_OAMSET_PC_CURSOR_1
+	dbw $00, .OAMData_PcCursor2          ; SPRITE_ANIM_OAMSET_PC_CURSOR_2
 
 .OAMData_1x1_Palette0:
 	db 1
@@ -626,3 +628,21 @@ SpriteAnimOAMData:
 .OAMData_MaxStatSparkle:
 	db 1
 	dsprite  2,  0,  2,  0, $00, $0
+
+.OAMData_PcCursor1:
+	db 6
+	dsprite  0, -1,  0,  0, $00, $1
+	dsprite  0, -1, -1,  0, $01, $1
+	dsprite -1,  0, -1,  0, $02, $4
+	dsprite  0,  0, -1,  0, $03, $4
+	dsprite -1,  0,  0,  0, $02, $4 | X_FLIP
+	dsprite  0,  0,  0,  0, $03, $4 | X_FLIP
+
+.OAMData_PcCursor2:
+	db 6
+	dsprite  0, -3,  0,  0, $00, $1
+	dsprite  0, -3, -1,  0, $01, $1
+	dsprite -1, -2, -1,  0, $02, $4
+	dsprite  0, -2, -1,  0, $03, $4
+	dsprite -1, -2,  0,  0, $02, $4 | X_FLIP
+	dsprite  0, -2,  0,  0, $03, $4 | X_FLIP

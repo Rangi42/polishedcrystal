@@ -48,6 +48,7 @@ SpriteAnimFrameData:
 	dw .Frameset_CelebiLeft
 	dw .Frameset_CelebiRight
 	dw .Frameset_MaxStatSparkle
+	dw .Frameset_PcCursor
 
 .Frameset_00:
 	frame SPRITE_ANIM_OAMSET_RED_WALK_1, 32
@@ -324,4 +325,9 @@ SpriteAnimFrameData:
 
 .Frameset_MaxStatSparkle:
 	frame SPRITE_ANIM_OAMSET_MAX_STAT_SPARKLE, 32
+	dorestart
+
+.Frameset_PcCursor:
+	frame SPRITE_ANIM_OAMSET_PC_CURSOR_1, 45
+	frame SPRITE_ANIM_OAMSET_PC_CURSOR_2, 45
 	dorestart

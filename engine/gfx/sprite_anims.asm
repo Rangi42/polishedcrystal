@@ -33,6 +33,7 @@ DoAnimFrame:
 	dw AnimSeq_IntroSuicuneAway   ; SPRITE_ANIM_SEQ_SUICUNE_AWAY
 	dw AnimSeq_Celebi             ; SPRITE_ANIM_SEQ_CELEBI
 	dw AnimSeq_MaxStatSparkle     ; SPRITE_ANIM_SEQ_MAX_STAT_SPARKLE
+	dw AnimSeq_PcCursor	          ; SPRITE_ANIM_SEQ_PC_CURSOR
 
 AnimSeq_PartyMon:
 	ld a, [wMenuCursorY]
@@ -590,6 +591,33 @@ AnimSeq_MaxStatSparkle:
 	ld hl, SPRITEANIMSTRUCT_XOFFSET
 	add hl, bc
 	ld [hl], a
+	ret
+
+AnimSeq_PcCursor:
+	ld hl, SPRITEANIMSTRUCT_YOFFSET
+	add hl, bc
+	ld a, [wBillsPC_CursorPos]
+	push af
+	and $f0
+	ld [hl], a
+	pop af
+	push af
+	and $f
+	swap a
+	ld h, a
+	rrca
+	add h
+	cp 48
+	jr c, .got_x_offset
+	add 8
+.got_x_offset
+	ld hl, SPRITEANIMSTRUCT_XOFFSET
+	add hl, bc
+	ld [hl], a
+	pop af
+	cp $10
+	ret nc
+	ld [hl], 92
 	ret
 
 AnimSeqs_IncAnonJumptableIndex:
