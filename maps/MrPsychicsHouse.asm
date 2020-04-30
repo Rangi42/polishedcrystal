@@ -82,7 +82,7 @@ Text_MrPsychicsHouseTutorRefused:
 	done
 
 Text_MrPsychicsHouseTutorClear:
-	text ""
+	text_start
 	done
 
 Text_MrPsychicsHouseTutorTaught:

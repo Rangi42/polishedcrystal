@@ -88,7 +88,7 @@ PhotoStudioPrestoText:
 
 	para "Your @"
 	text_from_ram wStringBuffer3
-	text ""
+	text_start
 	line "looks happier!"
 	done
 

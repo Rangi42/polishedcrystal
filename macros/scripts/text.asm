@@ -1,4 +1,5 @@
-text   EQUS "db \"<START>\"," ; Start writing text.
+text_start EQUS "db \"<START>\"" ; Enter text writing mode.
+text   EQUS "db "             ; Start writing text.
 next1  EQUS "db \"<LNBRK>\"," ; Move one screen row down.
 next   EQUS "db \"<NEXT>\","  ; Move one line down (two rows).
 line   EQUS "db \"<LINE>\","  ; Start writing at the bottom line.

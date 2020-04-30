@@ -326,7 +326,7 @@ Text_PowerPlantTutorRefused:
 	done
 
 Text_PowerPlantTutorClear:
-	text ""
+	text_start
 	done
 
 Text_PowerPlantTutorTaught:

@@ -185,7 +185,7 @@ Text_ViridianCityTutorRefused:
 	done
 
 Text_ViridianCityTutorClear:
-	text ""
+	text_start
 	done
 
 Text_ViridianCityTutorTaught:

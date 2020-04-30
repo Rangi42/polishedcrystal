@@ -473,7 +473,7 @@ Text_YellowForestTutorRefused:
 	done
 
 Text_YellowForestTutorClear:
-	text ""
+	text_start
 	done
 
 Text_YellowForestTutorTaught:

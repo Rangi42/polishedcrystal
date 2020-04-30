@@ -73,7 +73,7 @@ Text_WarmBeachShackTutorRefused:
 	done
 
 Text_WarmBeachShackTutorClear:
-	text ""
+	text_start
 	done
 
 Text_WarmBeachShackTutorTaught:

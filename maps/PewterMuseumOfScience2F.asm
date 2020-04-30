@@ -162,7 +162,7 @@ Text_Museum2FTutorRefused:
 	done
 
 Text_Museum2FTutorClear:
-	text ""
+	text_start
 	done
 
 Text_Museum2FTutorTaught:

@@ -559,5 +559,5 @@ UnknownText_0x1991ac:
 	done
 
 UnknownText_0x1991cf:
-	text ""
+	text_start
 	done

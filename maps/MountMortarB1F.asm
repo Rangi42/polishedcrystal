@@ -139,7 +139,7 @@ Text_MountMortarB1FTutorRefused:
 	done
 
 Text_MountMortarB1FTutorClear:
-	text ""
+	text_start
 	done
 
 Text_MountMortarB1FTutorTaught:

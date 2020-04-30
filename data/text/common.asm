@@ -102,7 +102,7 @@ UnknownText_0x1bc089::
 SECTION "UnknownText_0x1bc0a2", ROMX
 UnknownText_0x1bc0a2::
 	text_from_ram wStringBuffer1
-	text ""
+	text_start
 	line "recovered @"
 	deciram wCurHPAnimDeltaHP, 2, 3
 	text "HP!"
@@ -132,14 +132,14 @@ UnknownText_0x1bc0ea::
 SECTION "UnknownText_0x1bc101", ROMX
 UnknownText_0x1bc101::
 	text_from_ram wStringBuffer1
-	text ""
+	text_start
 	line "was defrosted."
 	done
 
 SECTION "UnknownText_0x1bc115", ROMX
 UnknownText_0x1bc115::
 	text_from_ram wStringBuffer1
-	text ""
+	text_start
 	line "woke up."
 	done
 
@@ -153,7 +153,7 @@ UnknownText_0x1bc123::
 SECTION "UnknownText_0x1bc13a", ROMX
 UnknownText_0x1bc13a::
 	text_from_ram wStringBuffer1
-	text ""
+	text_start
 	line "is revitalized."
 	done
 
@@ -292,7 +292,7 @@ UnknownText_0x1bc51c::
 	text "Put away the"
 	line "@"
 	text_from_ram wStringBuffer3
-	text ""
+	text_start
 
 	para "and set up the"
 	line "@"
@@ -399,7 +399,7 @@ UnknownText_0x1bc6e9::
 
 SECTION "UnknownText_0x1bc701", ROMX
 UnknownText_0x1bc701::
-	text ""
+	text_start
 	done
 
 SECTION "UnknownText_0x1bc703", ROMX
@@ -464,38 +464,38 @@ UnknownText_0x1bc774::
 
 SECTION "_OPT_IntroText1", ROMX
 _OPT_IntroText1::
-	text ""
+	text_start
 	line "Mary: Prof.Oak's"
 	done
 
 SECTION "_OPT_IntroText2", ROMX
 _OPT_IntroText2::
-	text ""
+	text_start
 	line "#mon Talk!"
 	done
 
 SECTION "_OPT_IntroText3", ROMX
 _OPT_IntroText3::
-	text ""
+	text_start
 	line "With me, Mary!"
 	done
 
 SECTION "_OPT_OakText1", ROMX
 _OPT_OakText1::
-	text ""
+	text_start
 	line "Oak: @"
 	text_from_ram wMonOrItemNameBuffer
 	text_end
 
 SECTION "_OPT_OakText2", ROMX
 _OPT_OakText2::
-	text ""
+	text_start
 	line "may be seen around"
 	done
 
 SECTION "_OPT_OakText3", ROMX
 _OPT_OakText3::
-	text ""
+	text_start
 	line "@"
 	text_from_ram wStringBuffer1
 	text "."
@@ -503,7 +503,7 @@ _OPT_OakText3::
 
 SECTION "_OPT_MaryText1", ROMX
 _OPT_MaryText1::
-	text ""
+	text_start
 	line "Mary: @"
 	text_from_ram wStringBuffer1
 	text "'s"
@@ -511,193 +511,193 @@ _OPT_MaryText1::
 
 SECTION "OPT_SweetAdorably", ROMX
 OPT_SweetAdorably::
-	text ""
+	text_start
 	line "sweet and adorably"
 	done
 
 SECTION "OPT_WigglySlickly", ROMX
 OPT_WigglySlickly::
-	text ""
+	text_start
 	line "wiggly and slickly"
 	done
 
 SECTION "OPT_AptlyNamed", ROMX
 OPT_AptlyNamed::
-	text ""
+	text_start
 	line "aptly named and"
 	done
 
 SECTION "OPT_UndeniablyKindOf", ROMX
 OPT_UndeniablyKindOf::
-	text ""
+	text_start
 	line "undeniably kind of"
 	done
 
 SECTION "OPT_Unbearably", ROMX
 OPT_Unbearably::
-	text ""
+	text_start
 	line "so, so unbearably"
 	done
 
 SECTION "OPT_WowImpressively", ROMX
 OPT_WowImpressively::
-	text ""
+	text_start
 	line "wow, impressively"
 	done
 
 SECTION "OPT_AlmostPoisonously", ROMX
 OPT_AlmostPoisonously::
-	text ""
+	text_start
 	line "almost poisonously"
 	done
 
 SECTION "OPT_Sensually", ROMX
 OPT_Sensually::
-	text ""
+	text_start
 	line "ooh, so sensually"
 	done
 
 SECTION "OPT_Mischievously", ROMX
 OPT_Mischievously::
-	text ""
+	text_start
 	line "so mischievously"
 	done
 
 SECTION "OPT_Topically", ROMX
 OPT_Topically::
-	text ""
+	text_start
 	line "so very topically"
 	done
 
 SECTION "OPT_Addictively", ROMX
 OPT_Addictively::
-	text ""
+	text_start
 	line "sure addictively"
 	done
 
 SECTION "OPT_LooksInWater", ROMX
 OPT_LooksInWater::
-	text ""
+	text_start
 	line "looks in water is"
 	done
 
 SECTION "OPT_EvolutionMustBe", ROMX
 OPT_EvolutionMustBe::
-	text ""
+	text_start
 	line "evolution must be"
 	done
 
 SECTION "OPT_Provocatively", ROMX
 OPT_Provocatively::
-	text ""
+	text_start
 	line "provocatively"
 	done
 
 SECTION "OPT_FlippedOut", ROMX
 OPT_FlippedOut::
-	text ""
+	text_start
 	line "so flipped out and"
 	done
 
 SECTION "OPT_HeartMeltingly", ROMX
 OPT_HeartMeltingly::
-	text ""
+	text_start
 	line "heart-meltingly"
 	done
 
 SECTION "OPT_Cute", ROMX
 OPT_Cute::
-	text ""
+	text_start
 	line "cute."
 	done
 
 SECTION "OPT_Weird", ROMX
 OPT_Weird::
-	text ""
+	text_start
 	line "weird."
 	done
 
 SECTION "OPT_Pleasant", ROMX
 OPT_Pleasant::
-	text ""
+	text_start
 	line "pleasant."
 	done
 
 SECTION "OPT_BoldSortOf", ROMX
 OPT_BoldSortOf::
-	text ""
+	text_start
 	line "bold, sort of."
 	done
 
 SECTION "OPT_Frightening", ROMX
 OPT_Frightening::
-	text ""
+	text_start
 	line "frightening."
 	done
 
 SECTION "OPT_SuaveDebonair", ROMX
 OPT_SuaveDebonair::
-	text ""
+	text_start
 	line "suave & debonair!"
 	done
 
 SECTION "OPT_Powerful", ROMX
 OPT_Powerful::
-	text ""
+	text_start
 	line "powerful."
 	done
 
 SECTION "OPT_Exciting", ROMX
 OPT_Exciting::
-	text ""
+	text_start
 	line "exciting."
 	done
 
 SECTION "OPT_Groovy", ROMX
 OPT_Groovy::
-	text ""
+	text_start
 	line "groovy!"
 	done
 
 SECTION "OPT_Inspiring", ROMX
 OPT_Inspiring::
-	text ""
+	text_start
 	line "inspiring."
 	done
 
 SECTION "OPT_Friendly", ROMX
 OPT_Friendly::
-	text ""
+	text_start
 	line "friendly."
 	done
 
 SECTION "OPT_HotHotHot", ROMX
 OPT_HotHotHot::
-	text ""
+	text_start
 	line "hot, hot, hot!"
 	done
 
 SECTION "OPT_Stimulating", ROMX
 OPT_Stimulating::
-	text ""
+	text_start
 	line "stimulating."
 	done
 
 SECTION "OPT_Guarded", ROMX
 OPT_Guarded::
-	text ""
+	text_start
 	line "guarded."
 	done
 
 SECTION "OPT_Lovely", ROMX
 OPT_Lovely::
-	text ""
+	text_start
 	line "lovely."
 	done
 
 SECTION "OPT_Speedy", ROMX
 OPT_Speedy::
-	text ""
+	text_start
 	line "speedy."
 	done
 
@@ -708,7 +708,7 @@ _OPT_PokemonChannelText::
 
 SECTION "_PokedexShowText", ROMX
 _PokedexShowText::
-	text ""
+	text_start
 	line "@"
 	text_from_ram wStringBuffer1
 	text_end
@@ -717,37 +717,37 @@ _PokedexShowText::
 
 SECTION "_BenIntroText1", ROMX
 _BenIntroText1::
-	text ""
+	text_start
 	line "Ben: #mon Music"
 	done
 
 SECTION "_BenIntroText2", ROMX
 _BenIntroText2::
-	text ""
+	text_start
 	line "Channel! ♪"
 	done
 
 SECTION "_BenIntroText3", ROMX
 _BenIntroText3::
-	text ""
+	text_start
 	line "It's me, DJ Ben! ♪"
 	done
 
 SECTION "_FernIntroText1", ROMX
 _FernIntroText1::
-	text ""
+	text_start
 	line "Fern: #music! ♪"
 	done
 
 SECTION "_FernIntroText2", ROMX
 _FernIntroText2::
-	text ""
+	text_start
 	line "With DJ Fern! ♪"
 	done
 
 SECTION "_BenFernText1", ROMX
 _BenFernText1::
-	text ""
+	text_start
 	line "Today's @"
 	current_day
 	text ","
@@ -755,25 +755,25 @@ _BenFernText1::
 
 SECTION "_BenFernText2A", ROMX
 _BenFernText2A::
-	text ""
+	text_start
 	line "so let's jam to"
 	done
 
 SECTION "_BenFernText2B", ROMX
 _BenFernText2B::
-	text ""
+	text_start
 	line "so chill out to"
 	done
 
 SECTION "_BenFernText3A", ROMX
 _BenFernText3A::
-	text ""
+	text_start
 	line "#mon March!"
 	done
 
 SECTION "_BenFernText3B", ROMX
 _BenFernText3B::
-	text ""
+	text_start
 	line "#mon Lullaby!"
 	done
 
@@ -781,49 +781,49 @@ _BenFernText3B::
 
 SECTION "_LC_Text1", ROMX
 _LC_Text1::
-	text ""
+	text_start
 	line "Reed: Yeehaw! How"
 	done
 
 SECTION "_LC_Text2", ROMX
 _LC_Text2::
-	text ""
+	text_start
 	line "y'all doin' now?"
 	done
 
 SECTION "_LC_Text3", ROMX
 _LC_Text3::
-	text ""
+	text_start
 	line "Whether you're up"
 	done
 
 SECTION "_LC_Text4", ROMX
 _LC_Text4::
-	text ""
+	text_start
 	line "or way down low,"
 	done
 
 SECTION "_LC_Text5", ROMX
 _LC_Text5::
-	text ""
+	text_start
 	line "don't you miss the"
 	done
 
 SECTION "_LC_Text6", ROMX
 _LC_Text6::
-	text ""
+	text_start
 	line "Lucky Number Show!"
 	done
 
 SECTION "_LC_Text7", ROMX
 _LC_Text7::
-	text ""
+	text_start
 	line "This week's Lucky"
 	done
 
 SECTION "_LC_Text8", ROMX
 _LC_Text8::
-	text ""
+	text_start
 	line "Number is @"
 	interpret_data
 	text_from_ram wStringBuffer1
@@ -832,31 +832,31 @@ _LC_Text8::
 
 SECTION "_LC_Text9", ROMX
 _LC_Text9::
-	text ""
+	text_start
 	line "I'll repeat that!"
 	done
 
 SECTION "_LC_Text10", ROMX
 _LC_Text10::
-	text ""
+	text_start
 	line "Match it and go to"
 	done
 
 SECTION "_LC_Text11", ROMX
 _LC_Text11::
-	text ""
+	text_start
 	line "the Radio Tower!"
 	done
 
 SECTION "_LC_DragText1", ROMX
 _LC_DragText1::
-	text ""
+	text_start
 	line "…Repeating myself"
 	done
 
 SECTION "_LC_DragText2", ROMX
 _LC_DragText2::
-	text ""
+	text_start
 	line "gets to be a drag…"
 	done
 
@@ -864,25 +864,25 @@ _LC_DragText2::
 
 SECTION "_PnP_Text1", ROMX
 _PnP_Text1::
-	text ""
+	text_start
 	line "Places and People!"
 	done
 
 SECTION "_PnP_Text2", ROMX
 _PnP_Text2::
-	text ""
+	text_start
 	line "Brought to you by"
 	done
 
 SECTION "_PnP_Text3", ROMX
 _PnP_Text3::
-	text ""
+	text_start
 	line "me, DJ Lily!"
 	done
 
 SECTION "_PnP_Text4", ROMX
 _PnP_Text4::
-	text ""
+	text_start
 	line "@"
 	text_from_ram wStringBuffer2
 	text " @"
@@ -891,146 +891,146 @@ _PnP_Text4::
 
 SECTION "_PnP_cute", ROMX
 _PnP_cute::
-	text ""
+	text_start
 	line "is cute."
 	done
 
 SECTION "_PnP_lazy", ROMX
 _PnP_lazy::
-	text ""
+	text_start
 	line "is sort of lazy."
 	done
 
 SECTION "_PnP_happy", ROMX
 _PnP_happy::
-	text ""
+	text_start
 	line "is always happy."
 	done
 
 SECTION "_PnP_noisy", ROMX
 _PnP_noisy::
-	text ""
+	text_start
 	line "is quite noisy."
 	done
 
 SECTION "_PnP_precocious", ROMX
 _PnP_precocious::
-	text ""
+	text_start
 	line "is precocious."
 	done
 
 SECTION "_PnP_bold", ROMX
 _PnP_bold::
-	text ""
+	text_start
 	line "is somewhat bold."
 	done
 
 SECTION "_PnP_picky", ROMX
 _PnP_picky::
-	text ""
+	text_start
 	line "is too picky!"
 	done
 
 SECTION "_PnP_sortofok", ROMX
 _PnP_sortofok::
-	text ""
+	text_start
 	line "is sort of OK."
 	done
 
 SECTION "_PnP_soso", ROMX
 _PnP_soso::
-	text ""
+	text_start
 	line "is just so-so."
 	done
 
 SECTION "_PnP_great", ROMX
 _PnP_great::
-	text ""
+	text_start
 	line "is actually great."
 	done
 
 SECTION "_PnP_mytype", ROMX
 _PnP_mytype::
-	text ""
+	text_start
 	line "is just my type."
 	done
 
 SECTION "_PnP_cool", ROMX
 _PnP_cool::
-	text ""
+	text_start
 	line "is so cool, no?"
 	done
 
 SECTION "_PnP_inspiring", ROMX
 _PnP_inspiring::
-	text ""
+	text_start
 	line "is inspiring!"
 	done
 
 SECTION "_PnP_weird", ROMX
 _PnP_weird::
-	text ""
+	text_start
 	line "is kind of weird."
 	done
 
 SECTION "_PnP_rightforme", ROMX
 _PnP_rightforme::
-	text ""
+	text_start
 	line "is right for me?"
 	done
 
 SECTION "_PnP_odd", ROMX
 _PnP_odd::
-	text ""
+	text_start
 	line "is definitely odd!"
 	done
 
 SECTION "_PnP_Text5", ROMX
 _PnP_Text5::
-	text ""
+	text_start
 	line "@"
 	text_from_ram wStringBuffer1
 	text_end
 
 SECTION "_RocketRadioText1", ROMX
 _RocketRadioText1::
-	text ""
+	text_start
 	line "… …Ahem, we are"
 	done
 
 SECTION "_RocketRadioText2", ROMX
 _RocketRadioText2::
-	text ""
+	text_start
 	line "Team Rocket!"
 	done
 
 SECTION "_RocketRadioText3", ROMX
 _RocketRadioText3::
-	text ""
+	text_start
 	line "After three years"
 	done
 
 SECTION "_RocketRadioText4", ROMX
 _RocketRadioText4::
-	text ""
+	text_start
 	line "of preparation, we"
 	done
 
 SECTION "_RocketRadioText5", ROMX
 _RocketRadioText5::
-	text ""
+	text_start
 	line "have risen again"
 	done
 
 SECTION "_RocketRadioText6", ROMX
 _RocketRadioText6::
-	text ""
+	text_start
 	line "from the ashes!"
 	done
 
 SECTION "_RocketRadioText7", ROMX
 _RocketRadioText7::
-	text ""
+	text_start
 	line "Giovanni! @"
 	interpret_data
 	text "Can you"
@@ -1038,7 +1038,7 @@ _RocketRadioText7::
 
 SECTION "_RocketRadioText8", ROMX
 _RocketRadioText8::
-	text ""
+	text_start
 	line "hear?@"
 	interpret_data
 	text " We did it!"
@@ -1046,7 +1046,7 @@ _RocketRadioText8::
 
 SECTION "_RocketRadioText9", ROMX
 _RocketRadioText9::
-	text ""
+	text_start
 	line "@"
 	interpret_data
 	text "Where is our boss?"
@@ -1054,7 +1054,7 @@ _RocketRadioText9::
 
 SECTION "_RocketRadioText10", ROMX
 _RocketRadioText10::
-	text ""
+	text_start
 	line "@"
 	interpret_data
 	text "Is he listening?"
@@ -1062,25 +1062,25 @@ _RocketRadioText10::
 
 SECTION "_BuenaRadioText1", ROMX
 _BuenaRadioText1::
-	text ""
+	text_start
 	line "Buena: Buena here!"
 	done
 
 SECTION "_BuenaRadioText2", ROMX
 _BuenaRadioText2::
-	text ""
+	text_start
 	line "Today's password!"
 	done
 
 SECTION "_BuenaRadioText3", ROMX
 _BuenaRadioText3::
-	text ""
+	text_start
 	line "Let me think… It's"
 	done
 
 SECTION "_BuenaRadioText4", ROMX
 _BuenaRadioText4::
-	text ""
+	text_start
 	line "@"
 	text_from_ram wStringBuffer1
 	text "!"
@@ -1088,67 +1088,67 @@ _BuenaRadioText4::
 
 SECTION "_BuenaRadioText5", ROMX
 _BuenaRadioText5::
-	text ""
+	text_start
 	line "Don't forget it!"
 	done
 
 SECTION "_BuenaRadioText6", ROMX
 _BuenaRadioText6::
-	text ""
+	text_start
 	line "I'm in Goldenrod's"
 	done
 
 SECTION "_BuenaRadioText7", ROMX
 _BuenaRadioText7::
-	text ""
+	text_start
 	line "Radio Tower!"
 	done
 
 SECTION "_BuenaRadioMidnightText1", ROMX
 _BuenaRadioMidnightText1::
-	text ""
+	text_start
 	line "Buena: Oh my…"
 	done
 
 SECTION "_BuenaRadioMidnightText2", ROMX
 _BuenaRadioMidnightText2::
-	text ""
+	text_start
 	line "It's midnight! I"
 	done
 
 SECTION "_BuenaRadioMidnightText3", ROMX
 _BuenaRadioMidnightText3::
-	text ""
+	text_start
 	line "have to shut down!"
 	done
 
 SECTION "_BuenaRadioMidnightText4", ROMX
 _BuenaRadioMidnightText4::
-	text ""
+	text_start
 	line "Thanks for tuning"
 	done
 
 SECTION "_BuenaRadioMidnightText5", ROMX
 _BuenaRadioMidnightText5::
-	text ""
+	text_start
 	line "in to the end! But"
 	done
 
 SECTION "_BuenaRadioMidnightText6", ROMX
 _BuenaRadioMidnightText6::
-	text ""
+	text_start
 	line "don't stay up too"
 	done
 
 SECTION "_BuenaRadioMidnightText7", ROMX
 _BuenaRadioMidnightText7::
-	text ""
+	text_start
 	line "late! Presented to"
 	done
 
 SECTION "_BuenaRadioMidnightText8", ROMX
 _BuenaRadioMidnightText8::
-	text ""
+	text_start
 	line "you by DJ Buena!"
 	done
 
@@ -1164,7 +1164,7 @@ _BuenaRadioMidnightText10::
 
 SECTION "_BuenaOffTheAirText", ROMX
 _BuenaOffTheAirText::
-	text ""
+	text_start
 	line ""
 	done
 
@@ -1181,7 +1181,7 @@ Text_EnemyUsedOn::
 	text "<ENEMY>"
 	line "used @"
 	text_from_ram wMonOrItemNameBuffer
-	text ""
+	text_start
 	cont "on @"
 	text_from_ram wEnemyMonNick
 	text "!"
@@ -1368,7 +1368,7 @@ SECTION "UnknownText_0x1bd5f4", ROMX
 UnknownText_0x1bd5f4::
 	text "Hi! The @"
 	text_from_ram wMonOrItemNameBuffer
-	text ""
+	text_start
 	line "you traded me is"
 	cont "doing great!"
 	done
@@ -1693,7 +1693,7 @@ SECTION "UnknownText_0x1bdd96", ROMX
 UnknownText_0x1bdd96::
 	text "Your @"
 	text_from_ram wStringBuffer1
-	text ""
+	text_start
 	line "has grown a lot."
 
 	para "Its level grew"
@@ -1727,7 +1727,7 @@ UnknownText_0x1bde32::
 	text "Huh? Back already?"
 	line "Your @"
 	text_from_ram wStringBuffer1
-	text ""
+	text_start
 	para "needs a little"
 	line "more time with us."
 
@@ -1874,7 +1874,7 @@ UnknownText_0x1c01be::
 
 	para "Treat @"
 	text_from_ram wStringBuffer1
-	text ""
+	text_start
 	line "with loving care."
 	done
 
@@ -1912,7 +1912,7 @@ Text_Gained::
 
 SECTION "Text_ABoostedStringBuffer2ExpPoints", ROMX
 Text_ABoostedStringBuffer2ExpPoints::
-	text ""
+	text_start
 	line "a boosted"
 	cont "@"
 	deciram wStringBuffer2, 3, 6
@@ -1921,7 +1921,7 @@ Text_ABoostedStringBuffer2ExpPoints::
 
 SECTION "Text_StringBuffer2ExpPoints", ROMX
 Text_StringBuffer2ExpPoints::
-	text ""
+	text_start
 	line "@"
 	deciram wStringBuffer2, 3, 6
 	text " Exp. Points!"
@@ -2004,7 +2004,7 @@ UnknownText_0x1c0396::
 
 	para "Teach @"
 	text_from_ram wStringBuffer2
-	text ""
+	text_start
 	line "to a #mon?"
 	done
 
@@ -2359,7 +2359,7 @@ ForfeitToTrainerText::
 SECTION "UnknownText_0x1c0acc", ROMX
 UnknownText_0x1c0acc::
 	text_from_ram wStringBuffer3
-	text ""
+	text_start
 	line "recovered from"
 	cont "its poisoning!"
 	prompt
@@ -2395,7 +2395,7 @@ SECTION "UnknownText_0x1c0bbb", ROMX
 UnknownText_0x1c0bbb::
 	text "Throw away @"
 	deciram wItemQuantityChangeBuffer, 1, 2
-	text ""
+	text_start
 	line "@"
 	text_from_ram wStringBuffer2
 	text "(s)?"
@@ -2452,7 +2452,7 @@ UnknownText_0x1c0c63::
 
 SECTION "UnknownText_0x1c0c83", ROMX
 UnknownText_0x1c0c83::
-	text ""
+	text_start
 	done
 
 SECTION "Text_AreYouABoyOrAreYouAGirl", ROMX
@@ -2478,19 +2478,19 @@ UnknownText_0x1c0d0e::
 
 SECTION "UnknownText_0x1c0d26", ROMX
 UnknownText_0x1c0d26::
-	text ""
+	text_start
 	line "took in sunlight!"
 	prompt
 
 SECTION "UnknownText_0x1c0d5c", ROMX
 UnknownText_0x1c0d5c::
-	text ""
+	text_start
 	line "flew up high!"
 	prompt
 
 SECTION "UnknownText_0x1c0d6c", ROMX
 UnknownText_0x1c0d6c::
-	text ""
+	text_start
 	line "dug a hole!"
 	prompt
 
@@ -2502,7 +2502,7 @@ UnknownText_0x1c0db0::
 
 SECTION "UnknownText_0x1c0db8", ROMX
 UnknownText_0x1c0db8::
-	text ""
+	text_start
 	done
 
 SECTION "UnknownText_0x1c0dba", ROMX
@@ -2526,7 +2526,7 @@ SECTION "UnknownText_0x1c0df3", ROMX
 UnknownText_0x1c0df3::
 	text "It's @"
 	text_from_ram wBreedMon2Nick
-	text ""
+	text_start
 	line "that was left with"
 	cont "the Day-Care Lady."
 	done
@@ -2535,7 +2535,7 @@ SECTION "UnknownText_0x1c0e24", ROMX
 UnknownText_0x1c0e24::
 	text "It's @"
 	text_from_ram wBreedMon1
-	text ""
+	text_start
 	line "that was left with"
 	cont "the Day-Care Man."
 	done
@@ -2678,7 +2678,7 @@ ContestJudging_FirstPlaceText::
 
 SECTION "ContestJudging_FirstPlaceScoreText", ROMX
 ContestJudging_FirstPlaceScoreText::
-	text ""
+	text_start
 
 	para "The winning score"
 	line "was @"
@@ -2700,7 +2700,7 @@ ContestJudging_SecondPlaceText::
 
 SECTION "ContestJudging_SecondPlaceScoreText", ROMX
 ContestJudging_SecondPlaceScoreText::
-	text ""
+	text_start
 	para "The score was"
 	line "@"
 	deciram wBugContestSecondPlaceScore, 2, 3
@@ -2721,7 +2721,7 @@ ContestJudging_ThirdPlaceText::
 
 SECTION "ContestJudging_ThirdPlaceScoreText", ROMX
 ContestJudging_ThirdPlaceScoreText::
-	text ""
+	text_start
 	para "The score was"
 	line "@"
 	deciram wBugContestThirdPlaceScore, 2, 3
@@ -2814,7 +2814,7 @@ SECTION "_KrissPCWithdrewItemsText", ROMX
 _KrissPCWithdrewItemsText::
 	text "Withdrew @"
 	deciram wItemQuantityChangeBuffer, 1, 2
-	text ""
+	text_start
 	line "@"
 	text_from_ram wStringBuffer2
 	text "(s)."
@@ -2847,7 +2847,7 @@ SECTION "_KrissPCDepositItemsText", ROMX
 _KrissPCDepositItemsText::
 	text "Deposited @"
 	deciram wItemQuantityChangeBuffer, 1, 2
-	text ""
+	text_start
 	line "@"
 	text_from_ram wStringBuffer2
 	text "(s)."
@@ -3118,7 +3118,7 @@ SECTION "UnknownText_0x1c1aad", ROMX
 UnknownText_0x1c1aad::
 	text "Throw away @"
 	deciram wItemQuantityChangeBuffer, 1, 2
-	text ""
+	text_start
 	line "@"
 	text_from_ram wStringBuffer2
 	text "(s)?"
@@ -3158,7 +3158,7 @@ SECTION "UnknownText_0x1c1b57", ROMX
 UnknownText_0x1c1b57::
 	text "Made @"
 	text_from_ram wMonOrItemNameBuffer
-	text ""
+	text_start
 	line "hold @"
 	text_from_ram wStringBuffer2
 	text "."
@@ -3187,7 +3187,7 @@ SECTION "UnknownText_0x1c1bc4", ROMX
 UnknownText_0x1c1bc4::
 	text "Took @"
 	text_from_ram wStringBuffer1
-	text ""
+	text_start
 	line "from @"
 	text_from_ram wMonOrItemNameBuffer
 	text "."
@@ -3408,7 +3408,7 @@ SECTION "UnknownText_0x1c4212", ROMX
 UnknownText_0x1c4212::
 	text "Trade @"
 	text_from_ram wd004
-	text ""
+	text_start
 	line "for @"
 	text_from_ram wStringBuffer1
 	text "?"
@@ -3497,7 +3497,7 @@ SECTION "UnknownText_0x1c474b", ROMX
 UnknownText_0x1c474b::
 	text "The @"
 	text_from_ram wStringBuffer3
-	text ""
+	text_start
 	line "is full…"
 	prompt
 
@@ -3510,7 +3510,7 @@ UnknownText_0x1c4b92::
 
 SECTION "UnknownText_0x1c4baf", ROMX
 UnknownText_0x1c4baf::
-	text ""
+	text_start
 	para "evolved into"
 	line "@"
 	text_from_ram wStringBuffer1
@@ -3521,7 +3521,7 @@ SECTION "UnknownText_0x1c4bc5", ROMX
 UnknownText_0x1c4bc5::
 	text "Huh? @"
 	text_from_ram wStringBuffer2
-	text ""
+	text_start
 	line "stopped evolving!"
 	prompt
 
@@ -3529,7 +3529,7 @@ SECTION "UnknownText_0x1c4be3", ROMX
 UnknownText_0x1c4be3::
 	text "What? @"
 	text_from_ram wStringBuffer2
-	text ""
+	text_start
 	line "is evolving!"
 	done
 
@@ -3779,7 +3779,7 @@ TMMartCostsThisMuchText::
 	text_from_ram wStringBuffer2
 	text " @"
 	text_from_ram wStringBuffer1
-	text ""
+	text_start
 	line "will be ¥@"
 	deciram hMoneyTemp, 3, 7
 	text "."
@@ -3939,7 +3939,7 @@ UnknownText_0x1c5699::
 SECTION "UnknownText_0x1c56af", ROMX
 UnknownText_0x1c56af::
 	text_from_ram wMonOrItemNameBuffer
-	text ""
+	text_start
 	line "did not learn"
 	cont "@"
 	text_from_ram wStringBuffer2
@@ -3949,7 +3949,7 @@ UnknownText_0x1c56af::
 SECTION "UnknownText_0x1c56c9", ROMX
 UnknownText_0x1c56c9::
 	text_from_ram wMonOrItemNameBuffer
-	text ""
+	text_start
 	line "wants to learn"
 	cont "@"
 	text_from_ram wStringBuffer2
@@ -3972,7 +3972,7 @@ SECTION "UnknownText_0x1c574e", ROMX
 UnknownText_0x1c574e::
 	text " Poof!@"
 	interpret_data
-	text ""
+	text_start
 	para "@"
 	text_from_ram wMonOrItemNameBuffer
 	text " forgot"
@@ -4187,7 +4187,7 @@ SECTION "UnknownText_0x1c5b17", ROMX
 UnknownText_0x1c5b17::
 	text "Gotcha! @"
 	text_from_ram wEnemyMonNick
-	text ""
+	text_start
 	line "was caught!@"
 	play_sound SFX_CAUGHT_MON
 	text_end

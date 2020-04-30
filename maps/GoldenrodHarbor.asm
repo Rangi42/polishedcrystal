@@ -289,7 +289,7 @@ Text_GoldenrodHarborTutorRefused:
 	done
 
 Text_GoldenrodHarborTutorClear:
-	text ""
+	text_start
 	done
 
 Text_GoldenrodHarborTutorTaught:

@@ -135,7 +135,7 @@ Route40FisherScript:
 	done
 
 .ClearText:
-	text ""
+	text_start
 	done
 
 .NoSilverLeaf

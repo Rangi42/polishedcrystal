@@ -166,7 +166,7 @@ Text_IcePathB1FTutorRefused:
 	done
 
 Text_IcePathB1FTutorClear:
-	text ""
+	text_start
 	done
 
 Text_IcePathB1FTutorTaught:

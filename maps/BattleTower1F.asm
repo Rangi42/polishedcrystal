@@ -374,7 +374,7 @@ Text_BattleTowerTutorRefused:
 	done
 
 Text_BattleTowerTutorClear:
-	text ""
+	text_start
 	done
 
 Text_BattleTowerTutorTaught:

@@ -224,7 +224,7 @@ Text_Route46TutorRefused:
 	done
 
 Text_Route46TutorClear:
-	text ""
+	text_start
 	done
 
 Text_Route46TutorTaught:

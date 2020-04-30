@@ -453,6 +453,8 @@ DoTextUntilTerminator::
 	jr DoTextUntilTerminator
 
 .TextCommand:
+	cp NGRAMS_START
+	jr nc, Text_Started
 	push hl
 	push bc
 	ld c, a
@@ -480,6 +482,8 @@ TextCommands::
 	dw Text_WeekDay    ; $07 <DAY>
 	dw Text_Jump       ; $08 <FAR>
 
+Text_Started:
+	dec hl
 Text_Start::
 ; write text until "@"
 	ld d, h

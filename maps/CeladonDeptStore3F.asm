@@ -162,7 +162,7 @@ Text_CeladonDeptStore3FTutorRefused:
 	done
 
 Text_CeladonDeptStore3FTutorClear:
-	text ""
+	text_start
 	done
 
 Text_CeladonDeptStore3FTutorTaught:

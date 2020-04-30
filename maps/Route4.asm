@@ -265,7 +265,7 @@ Text_Route4Tutor2Refused:
 	done
 
 Text_Route4TutorsClear:
-	text ""
+	text_start
 	done
 
 Text_Route4Tutor1Taught:

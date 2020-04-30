@@ -47,7 +47,7 @@ HiddenPowerGuy:
 
 	para "Your @"
 	text_from_ram wStringBuffer3
-	text ""
+	text_start
 	line "has a Hidden Power"
 	cont "of @"
 	text_from_ram wStringBuffer1
