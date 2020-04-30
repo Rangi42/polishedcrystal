@@ -350,7 +350,7 @@ DismissAbilityOverlays:
 	ld c, SLIDEOUT_WIDTH
 .attr_loop
 	ld a, [hl]
-	and ~(OAM_PALETTE | TILE_BANK | BEHIND_BG)
+	and $ff ^ (OAM_PALETTE | TILE_BANK | BEHIND_BG)
 	or b
 	ld [hli], a
 	dec c
