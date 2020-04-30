@@ -3065,7 +3065,7 @@ BattleAnim_HoneClaws:
 	anim_sound 0, 1, SFX_SCRATCH
 	anim_obj ANIM_OBJ_HONE_CLAWS_RIGHT,  3, 0,  11, 0, $0
 	anim_obj ANIM_OBJ_HONE_CLAWS_RIGHT,  3, 0,  10, 1, $0
-	anim_obj ANIM_OBJ_HONE_CLAWS_RIGHT,  3, 0,  9, 1, $0
+	anim_obj ANIM_OBJ_HONE_CLAWS_RIGHT,  3, 0,  9, 2, $0
 	anim_sound 0, 1, SFX_SCRATCH
 	anim_wait 32
 	anim_loop 2, .loop
