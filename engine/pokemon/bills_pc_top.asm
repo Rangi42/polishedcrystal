@@ -1000,18 +1000,8 @@ ManageBoxes:
 	call BillsPC_HideCursor
 	ld hl, .StorageMonMenu
 .got_menu
-	call LoadMenuHeader
-	xor a
-	ld [wWhichIndexSet], a
-	call DoNthMenu
-	push af
-	call BillsPC_UpdateCursorLocation
-	call CloseWindow
-	pop af
-	jr c, .loop
-	ld a, [wMenuSelection]
-	ld hl, .Jumptable
-	call JumpTable
+	ld b, 1
+	call BillsPC_Menu
 	jr .loop
 
 .pressed_b
@@ -1128,7 +1118,7 @@ ManageBoxes:
 	db 0 ; items
 	dw .storageitems
 	dw PlaceMenuStrings
-	dw .strings
+	dw BillsPC_MenuStrings
 
 .PartyMonMenu:
 	db $40 ; flags
@@ -1142,7 +1132,7 @@ ManageBoxes:
 	db 0 ; items
 	dw .partyitems
 	dw PlaceMenuStrings
-	dw .strings
+	dw BillsPC_MenuStrings
 
 .BoxMenu:
 	db $40 ; flags
@@ -1156,9 +1146,39 @@ ManageBoxes:
 	db 0 ; items
 	dw .boxitems
 	dw PlaceMenuStrings
-	dw .strings
+	dw BillsPC_MenuStrings
 
-.strings
+.storageitems
+	db 7
+	db BOXMENU_WITHDRAW
+	db BOXMENU_STATS
+	db BOXMENU_SWITCH
+	db BOXMENU_MOVES
+	db BOXMENU_ITEM
+	db BOXMENU_RELEASE
+	db BOXMENU_CANCEL
+	db -1
+
+.partyitems
+	db 7
+	db BOXMENU_DEPOSIT
+	db BOXMENU_STATS
+	db BOXMENU_SWITCH
+	db BOXMENU_MOVES
+	db BOXMENU_ITEM
+	db BOXMENU_RELEASE
+	db BOXMENU_CANCEL
+	db -1
+
+.boxitems
+	db 3
+	db BOXMENU_SWITCHBOX
+	db BOXMENU_RENAME
+	db BOXMENU_CANCEL
+	db -1
+
+BillsPC_MenuStrings:
+	db "Cancel@"
 	; pokémon management options
 	db "Withdraw@"
 	db "Deposit@"
@@ -1170,9 +1190,14 @@ ManageBoxes:
 	; box options
 	db "Switch box@"
 	db "Rename@"
-	db "Cancel@"
+	; holds and item
+	db "Move@"
+	db "Bag@"
+	; doesn't hold an item
+	db "Give@"
 
-.Jumptable
+BillsPC_MenuJumptable:
+	dw DoNothing
 	dw BillsPC_Withdraw
 	dw BillsPC_Deposit
 	dw BillsPC_Stats
@@ -1182,36 +1207,9 @@ ManageBoxes:
 	dw BillsPC_Release
 	dw BillsPC_SwitchBox
 	dw BillsPC_Rename
-	dw DoNothing
-
-.storageitems
-	db 7
-	db 0 ; withdraw
-	db 2 ; stats
-	db 3 ; switch
-	db 4 ; moves
-	db 5 ; item
-	db 6 ; release
-	db 9 ; cancel
-	db -1
-
-.partyitems
-	db 7
-	db 1 ; deposit
-	db 2 ; stats
-	db 3 ; switch
-	db 4 ; moves
-	db 5 ; item
-	db 6 ; release
-	db 9 ; cancel
-	db -1
-
-.boxitems
-	db 3
-	db 7 ; switch box
-	db 8 ; rename
-	db 9 ; cancel
-	db -1
+	dw BillsPC_MoveItem
+	dw BillsPC_BagItem
+	dw BillsPC_GiveItem
 
 BillsPC_Withdraw:
 BillsPC_Deposit:
@@ -1226,7 +1224,36 @@ BillsPC_Stats:
 
 BillsPC_Switch:
 BillsPC_Moves:
+BillsPC_GiveItem:
+BillsPC_MoveItem:
+BillsPC_BagItem:
 	ret
+
+BillsPC_Menu:
+; hl: menu data header, b: amount of menus to close
+	inc b
+	push bc
+	call LoadMenuHeader
+	xor a
+	ld [wWhichIndexSet], a
+	call DoNthMenu
+	pop bc
+	push af
+	push bc
+	call BillsPC_UpdateCursorLocation
+.closemenu_loop
+	pop bc
+	dec b
+	jr z, .menus_closed
+	push bc
+	call CloseWindow
+	jr .closemenu_loop
+.menus_closed
+	pop af
+	ret c
+	ld a, [wMenuSelection]
+	ld hl, BillsPC_MenuJumptable
+	jp JumpTable
 
 BillsPC_Item:
 	call BillsPC_HideCursor
@@ -1241,13 +1268,8 @@ BillsPC_Item:
 	push de
 	call MenuTextbox
 	pop hl
-	call LoadMenuHeader
-	xor a
-	ld [wWhichIndexSet], a
-	call DoNthMenu
-	call CloseWindow
-	call CloseWindow
-	jp BillsPC_UpdateCursorLocation
+	ld b, 2
+	jp BillsPC_Menu
 
 .ItemIsSelected:
 	text_from_ram wStringBuffer2
@@ -1256,7 +1278,7 @@ BillsPC_Item:
 	done
 
 .ItCanHoldAnItem:
-	text_from_ram wStringBuffer1
+	text_from_ram wBufferMonNick
 	text " can"
 	line "hold an item."
 	done
@@ -1273,7 +1295,7 @@ BillsPC_Item:
 	db 3 ; items
 	dw .items
 	dw PlaceMenuStrings
-	dw .strings
+	dw BillsPC_MenuStrings
 
 .NoItemMenu:
 	db $40 ; flags
@@ -1287,27 +1309,19 @@ BillsPC_Item:
 	db 2 ; items
 	dw .noitems
 	dw PlaceMenuStrings
-	dw .strings
-
-.strings
-	; holds and item
-	db "Move@"
-	db "Bag@"
-	; doesn't hold an item
-	db "Give@"
-	db "Cancel@"
+	dw BillsPC_MenuStrings
 
 .items
 	db 3
-	db 0 ; move
-	db 1 ; bag
-	db 3 ; cancel
+	db BOXMENU_MOVEITEM
+	db BOXMENU_BAGITEM
+	db BOXMENU_CANCEL
 	db -1
 
 .noitems
 	db 2
-	db 2 ; give
-	db 3 ; cancel
+	db BOXMENU_GIVEITEM
+	db BOXMENU_CANCEL
 	db -1
 
 BillsPC_Release:
