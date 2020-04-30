@@ -34,7 +34,9 @@ GetHiddenPowerType::
 	swap a
 	and %00010001
 	srl a
+	push af
 	call c, .add_bit
+	pop af
 	sla e
 	and a
 	call nz, .add_bit
