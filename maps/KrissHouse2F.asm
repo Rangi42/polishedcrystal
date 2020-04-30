@@ -122,7 +122,7 @@ endr
 	giveitem GOLD_LEAF, 99
 	giveitem BOTTLE_CAP, 99
 	giveitem MULCH, 99
-	giveitem MINT, 99
+	giveitem MINT_LEAF, 99
 	giveitem ODD_SOUVENIR, 10
 	giveitem ARMOR_SUIT, 1
 	; all decorations

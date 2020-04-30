@@ -277,7 +277,7 @@ ItemNameOrder:
 
 	db NAM_MULCH
 	db NAM_SWEET_HONEY
-	db NAM_MINT
+	db NAM_MINT_LEAF
 
 	db NAM_FLOWER_MAIL
 	db NAM_SURF_MAIL

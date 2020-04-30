@@ -242,7 +242,7 @@ ItemDescriptions:
 	dw OldAmberDesc
 	dw MulchDesc
 	dw SweetHoneyDesc
-	dw MintDesc
+	dw MintLeafDesc
 	dw FlowerMailDesc
 	dw SurfMailDesc
 	dw LiteBlueMailDesc
@@ -1255,7 +1255,7 @@ UtilUmbrellaDesc:
 	db   "Protects from"
 	next "weather effects.@"
 
-MintDesc:
+MintLeafDesc:
 	db   "A fragrant sprig"
 	next "of mint.@"
 
