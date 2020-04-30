@@ -15,7 +15,7 @@ _LoadStandardMaybeOpaqueFont:
 	ld d, h
 	ld e, l
 	ld hl, vTiles0 tile "A"
-	lb bc, BANK(FontNormal), 111
+	lb bc, BANK(FontTiles), 111
 	pop af
 	ldh [hRequestOpaque1bpp], a
 	push af
