@@ -283,8 +283,7 @@ PromptText::
 
 DoneText::
 	pop hl
-	ld de, EmptyString
-	dec de
+	ld de, EmptyString - 1
 	ret
 
 PlaceTargetsName::
@@ -298,12 +297,9 @@ PlaceUsersName::
 
 _PlaceBattleNickname:
 	push de
-	and a
-	jr nz, .enemy
 	ld de, wBattleMonNick
-	jr PlaceCommandCharacter
-
-.enemy:
+	and a
+	jr z, PlaceCommandCharacter
 	ld de, .EnemyText
 	rst PlaceString
 	ld h, b

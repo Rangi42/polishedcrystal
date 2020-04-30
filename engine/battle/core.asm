@@ -939,9 +939,7 @@ ForceDeferredSwitch:
 
 .anim_done
 	; Clear battle UI display
-	hlcoord TEXTBOX_INNERX, TEXTBOX_INNERY
-	lb bc, TEXTBOX_INNERH - 1, TEXTBOX_INNERW
-	call ClearBox
+	call ClearSpeechBox
 
 	ldh a, [hBattleTurn]
 	and a
