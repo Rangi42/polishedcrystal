@@ -93,6 +93,7 @@ JudgeSystem::
 ; Start with the EV chart
 	xor a
 	ldh [hChartScreen], a
+	ldh [hBGMapMode], a
 
 .restart
 ; Clear the screen
@@ -258,8 +259,6 @@ JudgeSystem::
 ; Show the screen
 	call EnableLCD
 	call ApplyTilemapInVBlank
-	xor a
-	ldh [hBGMapMode], a
 	ld a, CGB_JUDGE_SYSTEM
 	call GetCGBLayout
 	call SetPalettes
@@ -399,11 +398,10 @@ JudgeSystem::
 	ldh [hCGBPalUpdate], a
 ; Place the title
 	pop de
-	ldh [hBGMapMode], a
 	hlcoord 1, 2
 	rst PlaceString
-; Render the chart
-	ret
+; Render the chart when this returns (bc is on the stack)
+	jp SafeCopyTilemapAtOnce
 
 SparkleMaxStat:
 ; Show a sparkle sprite at (d, e) if a is 255
