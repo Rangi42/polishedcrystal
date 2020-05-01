@@ -447,7 +447,7 @@ Text_Route31TutorRefused:
 	done
 
 Text_Route31TutorClear:
-	text ""
+	text_start
 	done
 
 Text_Route31TutorTaught:

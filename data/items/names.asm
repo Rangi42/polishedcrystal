@@ -250,7 +250,7 @@ endc
 	db "Old Amber@"
 	db "Mulch@"
 	db "Sweet Honey@"
-	db "Mint@"
+	db "Mint Leaf@"
 	db "Flower Mail@"
 	db "Surf Mail@"
 	db "LiteBlueMail@"

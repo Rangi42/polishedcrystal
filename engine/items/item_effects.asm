@@ -253,7 +253,7 @@ ItemEffects:
 	dw IsntTheTimeMessage ; OLD_AMBER
 	dw IsntTheTimeMessage ; MULCH
 	dw IsntTheTimeMessage ; SWEET_HONEY
-	dw IsntTheTimeMessage ; MINT
+	dw IsntTheTimeMessage ; MINT_LEAF
 	dw IsntTheTimeMessage ; FLOWER_MAIL
 	dw IsntTheTimeMessage ; SURF_MAIL
 	dw IsntTheTimeMessage ; LITEBLUEMAIL

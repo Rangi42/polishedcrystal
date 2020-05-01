@@ -162,27 +162,27 @@ _CGB_FinishBattleScreenLayout:
 	hlcoord 0, 4, wAttrMap
 	lb bc, 8, 10
 	xor a ; PAL_BATTLE_BG_PLAYER
-	call FillBoxCGB
+	call FillBoxWithByte
 
 	hlcoord 10, 0, wAttrMap
 	lb bc, 7, 10
 	ld a, PAL_BATTLE_BG_ENEMY
-	call FillBoxCGB
+	call FillBoxWithByte
 
 	hlcoord 0, 0, wAttrMap
 	lb bc, 4, 10
 	ld a, PAL_BATTLE_BG_PLAYER_HP
-	call FillBoxCGB
+	call FillBoxWithByte
 
 	hlcoord 10, 7, wAttrMap
 	lb bc, 5, 10
 	ld a, PAL_BATTLE_BG_ENEMY_HP
-	call FillBoxCGB
+	call FillBoxWithByte
 
 	hlcoord 12, 11, wAttrMap
 	lb bc, 1, 7
 	ld a, PAL_BATTLE_BG_EXP_GENDER
-	call FillBoxCGB
+	call FillBoxWithByte
 
 	ld a, PAL_BATTLE_BG_EXP_GENDER
 	hlcoord 1, 1, wAttrMap
@@ -195,17 +195,17 @@ _CGB_FinishBattleScreenLayout:
 	hlcoord 12, 8, wAttrMap
 	lb bc, 1, 2
 	ld a, PAL_BATTLE_BG_STATUS
-	call FillBoxCGB
+	call FillBoxWithByte
 
 	hlcoord 2, 1, wAttrMap
 	lb bc, 1, 2
 	ld a, PAL_BATTLE_BG_STATUS
-	call FillBoxCGB
+	call FillBoxWithByte
 
 	hlcoord 1, 9, wAttrMap
 	lb bc, 1, 6
 	ld a, PAL_BATTLE_BG_TYPE_CAT
-	call FillBoxCGB
+	call FillBoxWithByte
 
 	hlcoord 0, 12, wAttrMap
 	ld bc, 6 * SCREEN_WIDTH
@@ -326,7 +326,7 @@ _CGB_StatsScreenHPPals:
 	hlcoord 0, 0, wAttrMap
 	lb bc, 8, SCREEN_WIDTH
 	ld a, $1
-	call FillBoxCGB
+	call FillBoxWithByte
 
 	hlcoord 12, 16, wAttrMap
 	ld bc, 7
@@ -336,27 +336,27 @@ _CGB_StatsScreenHPPals:
 	hlcoord 11, 5, wAttrMap
 	lb bc, 2, 2
 	ld a, $3
-	call FillBoxCGB
+	call FillBoxWithByte
 
 	hlcoord 13, 5, wAttrMap
 	lb bc, 2, 2
 	ld a, $4
-	call FillBoxCGB
+	call FillBoxWithByte
 
 	hlcoord 15, 5, wAttrMap
 	lb bc, 2, 2
 	ld a, $5
-	call FillBoxCGB
+	call FillBoxWithByte
 
 	hlcoord 17, 5, wAttrMap
 	lb bc, 2, 2
 	ld a, $6
-	call FillBoxCGB
+	call FillBoxWithByte
 
 	hlcoord 8, 6, wAttrMap
 	lb bc, 1, 1
 	ld a, $7
-	call FillBoxCGB
+	call FillBoxWithByte
 
 	jp _CGB_FinishLayout
 
@@ -382,7 +382,7 @@ _CGB_Pokedex:
 	hlcoord 1, 1, wAttrMap
 	lb bc, 7, 7
 	ld a, $1
-	call FillBoxCGB
+	call FillBoxWithByte
 
 	ld hl, PokegearOBPals
 	ld de, wOBPals1
@@ -427,47 +427,47 @@ _CGB_SlotMachine:
 	hlcoord 0, 2, wAttrMap
 	lb bc, 10, 3
 	ld a, $2
-	call FillBoxCGB
+	call FillBoxWithByte
 
 	hlcoord 17, 2, wAttrMap
 	lb bc, 10, 3
 	ld a, $2
-	call FillBoxCGB
+	call FillBoxWithByte
 
 	hlcoord 0, 4, wAttrMap
 	lb bc, 6, 3
 	ld a, $3
-	call FillBoxCGB
+	call FillBoxWithByte
 
 	hlcoord 17, 4, wAttrMap
 	lb bc, 6, 3
 	ld a, $3
-	call FillBoxCGB
+	call FillBoxWithByte
 
 	hlcoord 0, 6, wAttrMap
 	lb bc, 2, 3
 	ld a, $4
-	call FillBoxCGB
+	call FillBoxWithByte
 
 	hlcoord 17, 6, wAttrMap
 	lb bc, 2, 3
 	ld a, $4
-	call FillBoxCGB
+	call FillBoxWithByte
 
 	hlcoord 4, 2, wAttrMap
 	lb bc, 2, 12
 	ld a, $1
-	call FillBoxCGB
+	call FillBoxWithByte
 
 	hlcoord 3, 2, wAttrMap
 	lb bc, 10, 1
 	ld a, $1
-	call FillBoxCGB
+	call FillBoxWithByte
 
 	hlcoord 16, 2, wAttrMap
 	lb bc, 10, 1
 	ld a, $1
-	call FillBoxCGB
+	call FillBoxWithByte
 
 	hlcoord 0, 12, wAttrMap
 	ld bc, $78
@@ -527,7 +527,7 @@ _CGB_PartyMenu:
 	hlcoord 10, 2, wAttrMap
 	lb bc, 11, 1
 	ld a, $4
-	call FillBoxCGB
+	call FillBoxWithByte
 	jp ApplyAttrMap
 
 .PartyMenuBGPalette:
@@ -648,12 +648,12 @@ endr
 	hlcoord 6, 4, wAttrMap
 	lb bc, 7, 1
 	ld a, $2
-	call FillBoxCGB
+	call FillBoxWithByte
 
 	hlcoord 1, 8, wAttrMap
 	lb bc, 3, 3
 	ld a, $7
-	call FillBoxCGB
+	call FillBoxWithByte
 
 	jp _CGB_FinishLayout
 
@@ -711,12 +711,12 @@ endr
 	ld [hl], a
 	hlcoord 0, 2, wAttrMap
 	lb bc, 5, 5
-	call FillBoxCGB
+	call FillBoxWithByte
 
 	hlcoord 1, 8, wAttrMap
 	lb bc, 3, 3
 	ld a, $7
-	call FillBoxCGB
+	call FillBoxWithByte
 
 	jp _CGB_FinishLayout
 
@@ -785,49 +785,49 @@ _CGB_TrainerCard2:
 	hlcoord 3, 10, wAttrMap
 	lb bc, 3, 3
 	ld a, $2
-	call FillBoxCGB
+	call FillBoxWithByte
 
 	; Bugsy
 	hlcoord 7, 10, wAttrMap
 	lb bc, 3, 3
 	ld a, $3
-	call FillBoxCGB
+	call FillBoxWithByte
 
 	; Whitney
 	hlcoord 11, 10, wAttrMap
 	lb bc, 3, 3
 	ld a, $4
-	call FillBoxCGB
+	call FillBoxWithByte
 
 	; Morty
 	hlcoord 15, 10, wAttrMap
 	lb bc, 3, 3
 	ld a, $5
-	call FillBoxCGB
+	call FillBoxWithByte
 
 	; Chuck
 	hlcoord 3, 13, wAttrMap
 	lb bc, 3, 3
 	ld a, $6
-	call FillBoxCGB
+	call FillBoxWithByte
 
 	; Jasmine
 	hlcoord 7, 13, wAttrMap
 	lb bc, 3, 3
 	ld a, $6
-	call FillBoxCGB
+	call FillBoxWithByte
 
 	; Pryce
 	hlcoord 11, 13, wAttrMap
 	lb bc, 3, 3
 	ld a, $7
-	call FillBoxCGB
+	call FillBoxWithByte
 
 	; Clair
 	hlcoord 15, 13, wAttrMap
 	lb bc, 3, 3
 	ld a, $7
-	call FillBoxCGB
+	call FillBoxWithByte
 
 	jp _CGB_FinishLayout
 
@@ -868,49 +868,49 @@ _CGB_TrainerCard3:
 	hlcoord 3, 10, wAttrMap
 	lb bc, 3, 3
 	ld a, $4
-	call FillBoxCGB
+	call FillBoxWithByte
 
 	; Sabrina
 	hlcoord 7, 10, wAttrMap
 	lb bc, 3, 3
 	ld a, $3
-	call FillBoxCGB
+	call FillBoxWithByte
 
 	; Misty
 	hlcoord 11, 10, wAttrMap
 	lb bc, 3, 3
 	ld a, $5
-	call FillBoxCGB
+	call FillBoxWithByte
 
 	; Erika
 	hlcoord 15, 10, wAttrMap
 	lb bc, 3, 3
 	ld a, $4
-	call FillBoxCGB
+	call FillBoxWithByte
 
 	; Janine
 	hlcoord 3, 13, wAttrMap
 	lb bc, 3, 3
 	ld a, $6
-	call FillBoxCGB
+	call FillBoxWithByte
 
 	; Brock
 	hlcoord 7, 13, wAttrMap
 	lb bc, 3, 3
 	ld a, $2
-	call FillBoxCGB
+	call FillBoxWithByte
 
 	; Blaine
 	hlcoord 11, 13, wAttrMap
 	lb bc, 3, 3
 	ld a, $3
-	call FillBoxCGB
+	call FillBoxWithByte
 
 	; Blue
 	hlcoord 15, 13, wAttrMap
 	lb bc, 3, 3
 	ld a, $7
-	call FillBoxCGB
+	call FillBoxWithByte
 
 	jp _CGB_FinishLayout
 
@@ -949,7 +949,7 @@ LoadFirstTwoTrainerCardPals:
 	hlcoord 14, 1, wAttrMap
 	lb bc, 7, 5
 	ld a, $1
-	call FillBoxCGB
+	call FillBoxWithByte
 
 	pop de
 	ret
@@ -968,7 +968,7 @@ _CGB_PokedexUnownMode:
 	hlcoord 6, 5, wAttrMap
 	lb bc, 7, 7
 	ld a, $1
-	call FillBoxCGB
+	call FillBoxWithByte
 
 	call InitPartyMenuOBPals
 
@@ -998,7 +998,7 @@ _CGB_BillsPC:
 	hlcoord 1, 4, wAttrMap
 	lb bc, 7, 7
 	ld a, $1
-	call FillBoxCGB
+	call FillBoxWithByte
 
 	call InitPartyMenuOBPals
 
@@ -1161,7 +1161,7 @@ _CGB_IntroPals:
 	hlcoord 0, 0, wAttrMap
 	lb bc, 3, 20
 	ld a, $1
-	call FillBoxCGB
+	call FillBoxWithByte
 
 	call ApplyAttrMap
 	jp ApplyPals
@@ -1239,20 +1239,20 @@ _CGB_JudgeSystem:
 	hlcoord 0, 6, wAttrMap
 	lb bc, 7, 7
 	ld a, 7
-	call FillBoxCGB
+	call FillBoxWithByte
 	; chart
 	hlcoord 9, 4, wAttrMap
 	lb bc, 12, 8
 	ld a, 5 | TILE_BANK
-	call FillBoxCGB
+	call FillBoxWithByte
 	hlcoord 8, 6, wAttrMap
 	lb bc, 8, 1
 	ld a, 5 | TILE_BANK
-	call FillBoxCGB
+	call FillBoxWithByte
 	hlcoord 17, 6, wAttrMap
 	lb bc, 8, 1
 	ld a, 5 | TILE_BANK
-	call FillBoxCGB
+	call FillBoxWithByte
 	; stat values
 	ld c, STAT_HP
 	hlcoord 12, 3, wAttrMap

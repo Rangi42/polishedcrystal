@@ -44,6 +44,7 @@ GourmetManiacItemRewards:
 	dbw BIG_MUSHROOM, 5000
 	dbw BALMMUSHROOM, 15000
 	dbw SWEET_HONEY,  300
+	dbw MINT_LEAF,    600
 	db -1
 
 OreManiacItemRewards:

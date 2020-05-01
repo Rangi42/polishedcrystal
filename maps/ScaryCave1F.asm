@@ -180,7 +180,7 @@ ScaryCave1FPharmacistScript:
 	done
 
 .ClearText:
-	text ""
+	text_start
 	done
 
 .NoSilverLeaf

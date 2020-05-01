@@ -277,7 +277,7 @@
 
 	const MULCH        ; f2
 	const SWEET_HONEY  ; f3
-	const MINT         ; f4
+	const MINT_LEAF    ; f4
 
 	const FLOWER_MAIL  ; f5
 	const SURF_MAIL    ; f6
@@ -435,7 +435,7 @@ endc
 	const NAM_METAL_COAT
 	const NAM_METAL_POWDER
 	const NAM_METRONOME_I
-	const NAM_MINT
+	const NAM_MINT_LEAF
 	const NAM_MIRACLE_SEED
 	const NAM_MIRAGE_MAIL
 	const NAM_MOOMOO_MILK

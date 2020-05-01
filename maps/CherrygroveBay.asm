@@ -174,7 +174,7 @@ Text_CherrygroveBayTutorRefused:
 	done
 
 Text_CherrygroveBayTutorClear:
-	text ""
+	text_start
 	done
 
 Text_CherrygroveBayTutorTaught:

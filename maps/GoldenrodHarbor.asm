@@ -22,11 +22,11 @@ GoldenrodHarbor_MapScriptHeader:
 	object_event 22, 15, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GoldenrodHarborPokefanmScript, -1
 	object_event 21, 15, SPRITE_MON_ICON, SPRITEMOVEDATA_DOLL, 0, MAGIKARP, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptext, GoldenrodHarborMagikarpText, -1
 	object_event 16, 15, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_SCRIPT, 0, GoldenrodHarborYoungsterScript, -1
-	object_event 14, 20, SPRITE_FISHER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, trade, TRADE_WITH_JACQUES_FOR_GRIMER, -1
+	object_event 16, 20, SPRITE_FISHER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_COMMAND, trade, TRADE_WITH_JACQUES_FOR_GRIMER, -1
 	object_event 40, 16, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_GOLDENROD_CITY_ROCKET_SCOUT
 	object_event  6, 14, SPRITE_SWIMMER_GIRL, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 5, GenericTrainerSwimmerfKatie, -1
 	object_event 23, 28, SPRITE_SWIMMER_GUY, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerSwimmermJames, -1
-	object_event 18, 19, SPRITE_LASS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, GoldenrodHarborLass2Text, -1
+	object_event 22, 19, SPRITE_LASS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, GoldenrodHarborLass2Text, -1
 	object_event  6, 26, SPRITE_SAILBOAT, SPRITEMOVEDATA_SAILBOAT_TOP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, end, NULL, -1
 	object_event  6, 26, SPRITE_SAILBOAT, SPRITEMOVEDATA_SAILBOAT_BOTTOM, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, end, NULL, -1
 
@@ -289,7 +289,7 @@ Text_GoldenrodHarborTutorRefused:
 	done
 
 Text_GoldenrodHarborTutorClear:
-	text ""
+	text_start
 	done
 
 Text_GoldenrodHarborTutorTaught:

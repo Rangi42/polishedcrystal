@@ -167,7 +167,7 @@ Text_SafariZoneNorthTutorRefused:
 	done
 
 Text_SafariZoneNorthTutorClear:
-	text ""
+	text_start
 	done
 
 Text_SafariZoneNorthTutorTaught:

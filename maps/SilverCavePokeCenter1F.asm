@@ -48,7 +48,7 @@ SilverCavePokeCenterGrampsScript:
 
 	text "Oh, you've read @"
 	deciram hScriptVar, 1, 2
-	text ""
+	text_start
 	line "of them?"
 
 	para "Not bad, but I've"

@@ -1168,11 +1168,6 @@ EndturnAbilitiesA:
 
 HandleAbilities:
 ; Abilities handled at the end of the turn.
-	call SetFastestTurn
-	call .do_it
-	call SwitchTurn
-
-.do_it
 	call HasUserFainted
 	ret z
 	ld hl, EndTurnAbilities

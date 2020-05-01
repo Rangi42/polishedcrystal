@@ -393,7 +393,7 @@ Text_GoldenrodGameCornerTutorRefused:
 	done
 
 Text_GoldenrodGameCornerTutorClear:
-	text ""
+	text_start
 	done
 
 Text_GoldenrodGameCornerTutorTaught:

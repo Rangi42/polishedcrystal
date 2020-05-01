@@ -128,7 +128,7 @@ Text_CeladonCityTutorRefused:
 	done
 
 Text_CeladonCityTutorClear:
-	text ""
+	text_start
 	done
 
 Text_CeladonCityTutorTaught:

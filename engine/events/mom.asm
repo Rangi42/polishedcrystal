@@ -294,19 +294,16 @@ DSTChecks:
 
 .LostBooklet:
 	call .ClearBox
-	bccoord 1, 14
 	ld hl, .Text_AdjustClock
 	call PlaceWholeStringInBoxAtOnce
 	call YesNoBox
 	ret c
 	call .ClearBox
-	bccoord 1, 14
 	ld hl, .Text_LostInstructionBooklet
 	jp PlaceWholeStringInBoxAtOnce
 
 .loop
 	call .ClearBox
-	bccoord 1, 14
 	ld a, [wDST]
 	bit 7, a
 	jr z, .SetDST
@@ -319,7 +316,6 @@ DSTChecks:
 	ld [wDST], a
 	call .SetClockBack
 	call .ClearBox
-	bccoord 1, 14
 	ld hl, .Text_SetClockBack
 	jp PlaceWholeStringInBoxAtOnce
 
@@ -333,7 +329,6 @@ DSTChecks:
 	ld [wDST], a
 	call .SetClockForward
 	call .ClearBox
-	bccoord 1, 14
 	ld hl, .Text_SetClockForward
 	jp PlaceWholeStringInBoxAtOnce
 
@@ -367,9 +362,9 @@ DSTChecks:
 	ret
 
 .ClearBox:
-	hlcoord 1, 14
-	lb bc, 3, 18
-	jp ClearBox
+	call ClearSpeechBox
+	bccoord 1, 14
+	ret
 
 .Text_AdjustClock:
 	; Do you want to adjust your clock for Daylight Saving Time?

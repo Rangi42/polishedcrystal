@@ -121,5 +121,5 @@ Route27RestHouseGranny:
 	done
 
 .ClearText:
-	text ""
+	text_start
 	done

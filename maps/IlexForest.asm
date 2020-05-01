@@ -935,7 +935,7 @@ Text_IlexForestTutorRefused:
 	done
 
 Text_IlexForestTutorClear:
-	text ""
+	text_start
 	done
 
 Text_IlexForestTutorTaught:

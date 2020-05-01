@@ -154,7 +154,8 @@ _CardFlip:
 	ldh [hBGMapMode], a
 	hlcoord 0, 0
 	lb bc, 12, 9
-	call CardFlip_FillGreenBox
+	ld a, $29
+	call FillBoxWithByte
 	hlcoord 9, 0
 	ld bc, SCREEN_WIDTH
 	ld a, [wCardFlipNumCardsPlayed]
@@ -215,7 +216,8 @@ _CardFlip:
 	ld [hl], a
 	call GetCoordsOfChosenCard
 	lb bc, 6, 5
-	call CardFlip_FillGreenBox
+	ld a, $29
+	call FillBoxWithByte
 	pop af
 	ld [wCardFlipWhichCard], a
 	jp .Increment
@@ -439,7 +441,7 @@ CardFlip_DisplayCardFaceUp:
 	and 3
 	inc a
 	lb bc, 6, 5
-	jp CardFlip_FillBox
+	jp FillBoxWithByte
 
 .FaceUpCardTilemap:
 	db $18, $19, $19, $19, $1a
@@ -496,25 +498,6 @@ CardFlip_InitTilemap:
 	hlcoord 0, 12
 	lb bc, 4, 18
 	jp TextBox
-
-CardFlip_FillGreenBox:
-	ld a, $29
-
-CardFlip_FillBox:
-.row
-	push bc
-	push hl
-.col
-	ld [hli], a
-	dec c
-	jr nz, .col
-	pop hl
-	ld bc, SCREEN_WIDTH
-	add hl, bc
-	pop bc
-	dec b
-	jr nz, .row
-	ret
 
 CardFlip_CopyToBox:
 .row
@@ -1494,27 +1477,27 @@ CardFlip_InitAttrPals:
 	hlcoord 12, 1, wAttrMap
 	lb bc, 2, 2
 	ld a, $1
-	call CardFlip_FillBox
+	call FillBoxWithByte
 
 	hlcoord 14, 1, wAttrMap
 	lb bc, 2, 2
 	ld a, $2
-	call CardFlip_FillBox
+	call FillBoxWithByte
 
 	hlcoord 16, 1, wAttrMap
 	lb bc, 2, 2
 	ld a, $3
-	call CardFlip_FillBox
+	call FillBoxWithByte
 
 	hlcoord 18, 1, wAttrMap
 	lb bc, 2, 2
 	ld a, $4
-	call CardFlip_FillBox
+	call FillBoxWithByte
 
 	hlcoord 9, 0, wAttrMap
 	lb bc, 12, 1
 	ld a, $1
-	call CardFlip_FillBox
+	call FillBoxWithByte
 
 	ldh a, [rSVBK]
 	push af
