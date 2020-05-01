@@ -38,6 +38,10 @@ JudgeMachine:
 	call FadeToMenu
 	call JudgeSystem
 	call ExitAllMenus
+	ld a, LOW(LCDGeneric)
+	ldh [hFunctionTargetLo], a
+	ld a, HIGH(LCDGeneric)
+	ldh [hFunctionTargetHi], a
 	ld hl, NewsMachineContinueText
 	jr .continue
 

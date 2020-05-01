@@ -13,8 +13,10 @@ _BillsPC:
 
 	ld hl, rIE
 	res LCD_STAT, [hl]
-	xor a
-	ldh [hMPState], a
+	ld a, LOW(LCDGeneric)
+	ldh [hFunctionTargetLo], a
+	ld a, HIGH(LCDGeneric)
+	ldh [hFunctionTargetHi], a
 
 	pop af
 	ld [wOptions1], a
@@ -193,10 +195,12 @@ UseBillsPC:
 	call SafeCopyTilemapAtOnce
 
 	; Set up for HBlank palette switching
+	ld a, LOW(LCDBillsPC1)
+	ldh [hFunctionTargetLo], a
+	ld a, HIGH(LCDBillsPC2)
+	ldh [hFunctionTargetHi], a
 	ld hl, rIE
 	set LCD_STAT, [hl]
-	ld a, -1
-	ldh [hMPState], a
 
 	; Display data about current Pokémon pointed to by cursor
 	call GetCursorMon
@@ -1032,17 +1036,9 @@ ManageBoxes:
 	jr .new_box
 
 .regular_right
-	; Move right
-	ld b, a
-	and $f
-	cp 5
-	jr nz, .inc_x
-	ld a, b
-	sub 6
-	ld b, a
-.inc_x
-	inc b
-	ld a, b
+	; Move right, wrapping around
+	inc a ; 6 columns, CursorPosValid fixes up final column 6+
+	and LOW(~$8)
 	jr .new_cursor_pos
 
 .pressed_left
@@ -1074,16 +1070,10 @@ ManageBoxes:
 	jp .loop
 
 .regular_left
-	; Move left
-	ld b, a
-	and $f
-	jr nz, .dec_x
-	ld a, b
-	add 6
-	ld b, a
-.dec_x
-	dec b
-	ld a, b
+	; Move left, wrapping around
+	or $8 ; 6 columns, CursorPosValid fixes up final column 6+
+	dec a
+	and LOW(~$8)
 	jr .new_cursor_pos
 
 .pressed_up

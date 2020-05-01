@@ -113,7 +113,7 @@ ItemIsMail::
 
 
 SECTION "lcd", ROM0[$0048]
-	jp LCD
+	jr hFunctionJump
 
 GetMemCGBLayout::
 	xor a ; CGB_RAM

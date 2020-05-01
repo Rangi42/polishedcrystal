@@ -1,12 +1,5 @@
-LCD::
+LCDGeneric::
 	push af
-	ldh a, [hMPState]
-	inc a
-	jr z, .bill_pc1
-	inc a
-	jp z, .bill_pc2
-	sub 2
-	jr nz, .musicplayer
 	ldh a, [hLCDCPointer]
 	and a
 	jr z, .done
@@ -28,7 +21,8 @@ LCD::
 	pop af
 	reti
 
-.musicplayer
+LCDMusicPlayer::
+	push af
 	ldh a, [rLY]
 	cp PIANO_ROLL_HEIGHT_PX
 	jr nc, .donemp
@@ -78,7 +72,9 @@ endc
 	pop af
 	reti
 
-.bill_pc1
+LCDBillsPC1::
+	push af
+
 	; Write boxmon palettes
 	ld a, [rSTAT]
 	bit 2, a
@@ -123,16 +119,18 @@ endr
 	; end of VRAM writes
 
 	; prepare for partymon write
-	ldh a, [hMPState]
-	dec a
-	ldh [hMPState], a
+	ld a, LOW(LCDBillsPC2)
+	ldh [hFunctionTargetLo], a
+	ld a, HIGH(LCDBillsPC2)
+	ldh [hFunctionTargetHi], a
 	pop bc
 	pop hl
 .donepc
 	pop af
 	reti
 
-.bill_pc2
+LCDBillsPC2::
+	push af
 	push hl
 	push bc
 	ld c, LOW(rBGPD)
@@ -186,10 +184,10 @@ endr
 	ld de, wBillsPC_CurPals
 	ld c, 24
 	rst CopyBytes
-	ld c, LOW(hMPState)
-	ld a, [c]
-	inc a
-	ld [c], a
+	ld a, LOW(LCDBillsPC1)
+	ldh [hFunctionTargetLo], a
+	ld a, HIGH(LCDBillsPC1)
+	ldh [hFunctionTargetHi], a
 	pop de
 	pop bc
 	pop hl

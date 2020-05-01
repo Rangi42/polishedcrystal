@@ -160,6 +160,10 @@ Init::
 	ldh [hSingleRet], a
 	ld a, $c3 ; jp
 	ldh [hFunctionJump], a
+	ld a, LOW(LCDGeneric)
+	ldh [hFunctionTargetLo], a
+	ld a, HIGH(LCDGeneric)
+	ldh [hFunctionTargetHi], a
 
 	farcall InitSGBBorder
 
