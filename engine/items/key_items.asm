@@ -153,7 +153,6 @@ KeyItems_ScrollPocket:
 KeyItems_DisplayPocketItems:
 	hlcoord 5, 2
 	lb bc, 10, 15
-	ld a, " "
 	call ClearBox
 	call KeyItems_GetCurrentPocketPosition
 	ld d, $5

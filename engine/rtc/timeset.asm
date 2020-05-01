@@ -501,9 +501,7 @@ Special_InitialSetDSTFlag:
 	ld a, [wDST]
 	set 7, a
 	ld [wDST], a
-	hlcoord 1, 14
-	lb bc, 3, 18
-	call ClearBox
+	call ClearSpeechBox
 	ld hl, .Text
 	jp PlaceWholeStringInBoxAtOnce
 
@@ -528,9 +526,7 @@ Special_InitialClearDSTFlag:
 	ld a, [wDST]
 	res 7, a
 	ld [wDST], a
-	hlcoord 1, 14
-	lb bc, 3, 18
-	call ClearBox
+	call ClearSpeechBox
 	ld hl, .Text
 	jp PlaceWholeStringInBoxAtOnce
 

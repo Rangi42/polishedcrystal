@@ -4,7 +4,6 @@ ClearSpeechBox::
 ClearBox::
 ; Fill a c*b box at hl with blank tiles.
 	ld a, " "
-
 FillBoxWithByte::
 .row
 	push bc
@@ -26,14 +25,12 @@ ClearScreen::
 	hlcoord 0, 0, wAttrMap
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
 	rst ByteFill
-
 ClearTileMap::
 ; Fill wTileMap with blank tiles.
 	hlcoord 0, 0
 	ld a, " "
 	ld bc, wTileMapEnd - wTileMap
 	rst ByteFill
-
 	; Update the BG Map.
 	ldh a, [rLCDC]
 	bit 7, a
@@ -44,7 +41,6 @@ SpeechTextBox::
 ; Standard textbox.
 	hlcoord TEXTBOX_X, TEXTBOX_Y
 	lb bc, TEXTBOX_INNERH, TEXTBOX_INNERW
-
 TextBox::
 ; Draw a text box at hl with room for
 ; b lines of c characters each.
@@ -56,7 +52,16 @@ TextBox::
 	call TextBoxBorder
 	pop hl
 	pop bc
-	jr TextBoxPalette
+TextBoxPalette::
+; Fill text box width c height b at hl with pal 7
+	ld de, wAttrMap - wTileMap
+	add hl, de
+	inc b
+	inc b
+	inc c
+	inc c
+	ld a, PAL_BG_TEXT
+	jr FillBoxWithByte
 
 TextBoxBorder::
 	; Top
@@ -104,40 +109,23 @@ TextBoxBorder::
 	jr nz, .loop
 	ret
 
-TextBoxPalette::
-; Fill text box width c height b at hl with pal 7
-	ld de, wAttrMap - wTileMap
-	add hl, de
-	inc b
-	inc b
-	inc c
-	inc c
-	ld a, PAL_BG_TEXT
-.col
-	push bc
-	push hl
-.row
-	ld [hli], a
-	dec c
-	jr nz, .row
-	pop hl
-	ld de, SCREEN_WIDTH
-	add hl, de
-	pop bc
-	dec b
-	jr nz, .col
-	ret
-
 PrintText::
 	call SetUpTextBox
 PrintTextNoBox::
 	push hl
 	call ClearSpeechBox
 	pop hl
-
 PrintTextBoxText::
 	bccoord TEXTBOX_INNERX, TEXTBOX_INNERY
-	jp PlaceWholeStringInBoxAtOnce
+PlaceWholeStringInBoxAtOnce::
+	ld a, [wTextboxFlags]
+	push af
+	set 1, a
+	ld [wTextboxFlags], a
+	call DoTextUntilTerminator
+	pop af
+	ld [wTextboxFlags], a
+	ret
 
 SetUpTextBox::
 	push hl
@@ -159,13 +147,14 @@ PlaceNextChar::
 	cp NGRAMS_START
 	jr nc, _PlaceNgramChar
 	; this is actually a command character; we shouldn't be here
-	; fallthrough
-
 SpaceChar::
 	ld a, " "
+_PlaceLiteralChar:
 	ld [hli], a
 	call PrintLetterDelay
-	jr NextChar
+NextChar::
+	inc de
+	jr PlaceNextChar
 
 _PlaceNgramChar:
 	sub NGRAMS_START
@@ -198,13 +187,6 @@ _bc_::
 	push bc
 	ret
 
-_PlaceLiteralChar:
-	ld [hli], a
-	call PrintLetterDelay
-NextChar::
-	inc de
-	jr PlaceNextChar
-
 SpecialCharacters:
 	dw FinishString     ; "@"
 	dw SpaceChar        ; "¯"
@@ -218,12 +200,6 @@ SpecialCharacters:
 	dw PlaceTargetsName ; "<TARGET>"
 	dw PlaceUsersName   ; "<USER>"
 	dw PlaceEnemysName  ; "<ENEMY>"
-
-FinishString:
-	ld b, h
-	ld c, l
-	pop hl
-	ret
 
 LineBreak::
 	pop hl
@@ -307,12 +283,8 @@ PromptText::
 
 DoneText::
 	pop hl
-	ld de, EmptyString
-	dec de
+	ld de, EmptyString - 1
 	ret
-
-EmptyString::
-	db "@"
 
 PlaceTargetsName::
 	ldh a, [hBattleTurn]
@@ -325,12 +297,9 @@ PlaceUsersName::
 
 _PlaceBattleNickname:
 	push de
-	and a
-	jr nz, .enemy
 	ld de, wBattleMonNick
-	jr PlaceCommandCharacter
-
-.enemy:
+	and a
+	jr z, PlaceCommandCharacter
 	ld de, .EnemyText
 	rst PlaceString
 	ld h, b
@@ -339,16 +308,18 @@ _PlaceBattleNickname:
 	jr PlaceCommandCharacter
 
 .EnemyText:
-	db "Foe" ; fallthrough, no @
-SpaceText:
-	db " @"
+	db "Foe" ; fallthrough, no " @"
+SpaceText::
+	db " " ; fallthrough, no "@"
+EmptyString::
+	db "@"
 
 PlaceEnemysName::
 	push de
+	ld de, wOTClassName
 	ld a, [wLinkMode]
 	and a
-	jr nz, .linkbattle
-	ld de, wOTClassName
+	jr nz, PlaceCommandCharacter
 	rst PlaceString
 	ld h, b
 	ld l, c
@@ -358,10 +329,6 @@ PlaceEnemysName::
 	farcall Battle_GetTrainerName
 	pop hl
 	ld de, wStringBuffer1
-	jr PlaceCommandCharacter
-
-.linkbattle:
-	ld de, wOTClassName
 	; fallthrough
 
 PlaceCommandCharacter::
@@ -375,18 +342,15 @@ TextScroll::
 	hlcoord TEXTBOX_INNERX, TEXTBOX_INNERY
 	decoord TEXTBOX_INNERX, TEXTBOX_INNERY - 1
 	ld a, TEXTBOX_INNERH - 1
-
 .col
 	push af
 	ld c, TEXTBOX_INNERW
-
 .row
 	ld a, [hli]
 	ld [de], a
 	inc de
 	dec c
 	jr nz, .row
-
 	inc de
 	inc de
 	inc hl
@@ -394,7 +358,6 @@ TextScroll::
 	pop af
 	dec a
 	jr nz, .col
-
 	hlcoord TEXTBOX_INNERX, TEXTBOX_INNERY + 2
 	ld a, " "
 	ld bc, TEXTBOX_INNERW
@@ -433,16 +396,6 @@ FarString::
 	rst PlaceString
 	pop af
 	rst Bankswitch
-	ret
-
-PlaceWholeStringInBoxAtOnce::
-	ld a, [wTextboxFlags]
-	push af
-	set 1, a
-	ld [wTextboxFlags], a
-	call DoTextUntilTerminator
-	pop af
-	ld [wTextboxFlags], a
 	ret
 
 DoTextUntilTerminator::
@@ -576,6 +529,7 @@ Text_PrintNum::
 	set PRINTNUM_LEFTALIGN_F, a
 	ld b, a
 	call PrintNum
+FinishString:
 	ld b, h
 	ld c, l
 	pop hl
