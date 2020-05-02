@@ -646,7 +646,7 @@ SitrusBerryDesc:
 
 FigyBerryDesc:
 	db   "Self-restore item."
-	next "(1/2 max HP, Hold)@"
+	next "(1/3 max HP, Hold)@"
 
 PomegBerryDesc:
 	db   "Raises friendship"
