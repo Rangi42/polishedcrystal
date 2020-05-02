@@ -6183,28 +6183,13 @@ GetFutureSightUser::
 	ret
 
 _GetTrueUserAbility::
-; Returns current user's ability, or external future sight user ability.
-; Returns 0 (no ability) if opponent has Neutralizing Gas and user doesn't,
+; Returns current user's ability, or 0 (no ability) for external future sight user
+; Also returns 0 (no ability) if opponent has Neutralizing Gas and user doesn't
 	call GetFutureSightUser
 	jr nz, .external
 
 	ld a, BATTLE_VARS_ABILITY
 	call GetBattleVar
-	jr .got_ability
-
-.external
-	push bc
-	push hl
-	ld a, MON_SPECIES
-	call TrueUserPartyAttr
-	ld c, a
-	ld a, MON_PERSONALITY
-	call TrueUserPartyAttr
-	call GetAbility
-	ld a, b
-	pop hl
-	pop bc
-.got_ability
 	push bc
 	ld b, a
 	call GetOpponentAbility
@@ -6214,7 +6199,8 @@ _GetTrueUserAbility::
 	ld a, b
 	pop bc
 	ret nz
-	xor a
+.external
+	xor a ; ld a, NO_ABILITY
 	ret
 .same_ability
 	pop bc
