@@ -1507,9 +1507,9 @@ Lyra1Group:
 	db "Lyra@"
 	db TRAINERTYPE_ITEM | TRAINERTYPE_EVS | TRAINERTYPE_NICKNAME
 	; party
-	db 16, PIDGEY, NO_ITEM, 36, "Pidgey@"
-	db 17, MARILL, NO_ITEM, 36, "Marill@"
-	db 15, MAREEP, NO_ITEM, 36, "Mareep@"
+	db 16, PIDGEY, NO_ITEM, 36, "@"
+	db 17, MARILL, NO_ITEM, 36, "@"
+	db 15, MAREEP, NO_ITEM, 36, "@"
 	db 18, BAYLEEF, ORAN_BERRY, 36, "Chicory@"
 	db -1 ; end
 
@@ -1519,9 +1519,9 @@ Lyra1Group:
 	db "Lyra@"
 	db TRAINERTYPE_ITEM | TRAINERTYPE_EVS | TRAINERTYPE_NICKNAME
 	; party
-	db 16, PIDGEY, NO_ITEM, 36, "Pidgey@"
-	db 17, SUNKERN, NO_ITEM, 36, "Sunkern@"
-	db 15, MAREEP, NO_ITEM, 36, "Mareep@"
+	db 16, PIDGEY, NO_ITEM, 36, "@"
+	db 17, SUNKERN, NO_ITEM, 36, "@"
+	db 15, MAREEP, NO_ITEM, 36, "@"
 	db 18, QUILAVA, ORAN_BERRY, 36, "Cinder@"
 	db -1 ; end
 
@@ -1531,9 +1531,9 @@ Lyra1Group:
 	db "Lyra@"
 	db TRAINERTYPE_ITEM | TRAINERTYPE_EVS | TRAINERTYPE_NICKNAME
 	; party
-	db 16, PIDGEY, NO_ITEM, 36, "Pidgey@"
-	db 17, GROWLITHE, NO_ITEM, 36, "Growlithe@"
-	db 15, MAREEP, NO_ITEM, 36, "Mareep@"
+	db 16, PIDGEY, NO_ITEM, 36, "@"
+	db 17, GROWLITHE, NO_ITEM, 36, "@"
+	db 15, MAREEP, NO_ITEM, 36, "@"
 	db 18, CROCONAW, ORAN_BERRY, 36, "Toto@"
 	db -1 ; end
 
@@ -1543,10 +1543,10 @@ Lyra1Group:
 	db "Lyra@"
 	db TRAINERTYPE_ITEM | TRAINERTYPE_EVS | TRAINERTYPE_NICKNAME
 	; party
-	db 33, PIDGEOTTO, NO_ITEM, 100, "Pidgeotto@"
-	db 34, GROWLITHE, NO_ITEM, 100, "Growlithe@"
-	db 34, AZUMARILL, NO_ITEM, 100, "Azumarill@"
-	db 32, FLAAFFY, NO_ITEM, 100, "Flaaffy@"
+	db 33, PIDGEOTTO, NO_ITEM, 100, "@"
+	db 34, GROWLITHE, NO_ITEM, 100, "@"
+	db 34, AZUMARILL, NO_ITEM, 100, "@"
+	db 32, FLAAFFY, NO_ITEM, 100, "@"
 	db 37, BAYLEEF, ORAN_BERRY, 100, "Chicory@"
 	db -1 ; end
 
@@ -1556,10 +1556,10 @@ Lyra1Group:
 	db "Lyra@"
 	db TRAINERTYPE_ITEM | TRAINERTYPE_EVS | TRAINERTYPE_NICKNAME
 	; party
-	db 33, PIDGEOTTO, NO_ITEM, 100, "Pidgeotto@"
-	db 34, SUNFLORA, NO_ITEM, 100, "Sunflora@"
-	db 34, AZUMARILL, NO_ITEM, 100, "Azumarill@"
-	db 32, FLAAFFY, NO_ITEM, 100, "Flaaffy@"
+	db 33, PIDGEOTTO, NO_ITEM, 100, "@"
+	db 34, SUNFLORA, NO_ITEM, 100, "@"
+	db 34, AZUMARILL, NO_ITEM, 100, "@"
+	db 32, FLAAFFY, NO_ITEM, 100, "@"
 	db 37, QUILAVA, ORAN_BERRY, 100, "Cinder@"
 	db -1 ; end
 
@@ -1569,10 +1569,10 @@ Lyra1Group:
 	db "Lyra@"
 	db TRAINERTYPE_ITEM | TRAINERTYPE_EVS | TRAINERTYPE_NICKNAME
 	; party
-	db 33, PIDGEOTTO, NO_ITEM, 100, "Pidgeotto@"
-	db 34, SUNFLORA, NO_ITEM, 100, "Sunflora@"
-	db 34, GROWLITHE, NO_ITEM, 100, "Growlithe@"
-	db 32, FLAAFFY, NO_ITEM, 100, "Flaaffy@"
+	db 33, PIDGEOTTO, NO_ITEM, 100, "@"
+	db 34, SUNFLORA, NO_ITEM, 100, "@"
+	db 34, GROWLITHE, NO_ITEM, 100, "@"
+	db 32, FLAAFFY, NO_ITEM, 100, "@"
 	db 37, CROCONAW, ORAN_BERRY, 100, "Toto@"
 	db -1 ; end
 
@@ -1582,11 +1582,11 @@ Lyra1Group:
 	db "Lyra@"
 	db TRAINERTYPE_ITEM | TRAINERTYPE_EVS | TRAINERTYPE_NICKNAME
 	; party
-	db 44, PIDGEOT, NO_ITEM, 132, "Pidgeot@"
-	db 43, GIRAFARIG, NO_ITEM, 132, "Girafarig@"
-	db 45, ARCANINE, NO_ITEM, 132, "Arcanine@"
-	db 45, AZUMARILL, NO_ITEM, 132, "Azumarill@"
-	db 46, AMPHAROS, NO_ITEM, 132, "Ampharos@"
+	db 44, PIDGEOT, NO_ITEM, 132, "@"
+	db 43, GIRAFARIG, NO_ITEM, 132, "@"
+	db 45, ARCANINE, NO_ITEM, 132, "@"
+	db 45, AZUMARILL, NO_ITEM, 132, "@"
+	db 46, AMPHAROS, NO_ITEM, 132, "@"
 	db 47, MEGANIUM, SITRUS_BERRY, 132, "Chicory@"
 	db -1 ; end
 
@@ -1596,11 +1596,11 @@ Lyra1Group:
 	db "Lyra@"
 	db TRAINERTYPE_ITEM | TRAINERTYPE_EVS | TRAINERTYPE_NICKNAME
 	; party
-	db 44, PIDGEOT, NO_ITEM, 132, "Pidgeot@"
-	db 43, GIRAFARIG, NO_ITEM, 132, "Girafarig@"
-	db 45, SUNFLORA, NO_ITEM, 132, "Sunflora@"
-	db 45, AZUMARILL, NO_ITEM, 132, "Azumarill@"
-	db 46, AMPHAROS, NO_ITEM, 132, "Ampharos@"
+	db 44, PIDGEOT, NO_ITEM, 132, "@"
+	db 43, GIRAFARIG, NO_ITEM, 132, "@"
+	db 45, SUNFLORA, NO_ITEM, 132, "@"
+	db 45, AZUMARILL, NO_ITEM, 132, "@"
+	db 46, AMPHAROS, NO_ITEM, 132, "@"
 	db 47, TYPHLOSION, SITRUS_BERRY, 132, "Cinder@"
 	db -1 ; end
 
@@ -1610,11 +1610,11 @@ Lyra1Group:
 	db "Lyra@"
 	db TRAINERTYPE_ITEM | TRAINERTYPE_EVS | TRAINERTYPE_NICKNAME
 	; party
-	db 44, PIDGEOT, NO_ITEM, 132, "Pidgeot@"
-	db 43, GIRAFARIG, NO_ITEM, 132, "Girafarig@"
-	db 45, SUNFLORA, NO_ITEM, 132, "Sunflora@"
-	db 45, ARCANINE, NO_ITEM, 132, "Arcanine@"
-	db 46, AMPHAROS, NO_ITEM, 132, "Ampharos@"
+	db 44, PIDGEOT, NO_ITEM, 132, "@"
+	db 43, GIRAFARIG, NO_ITEM, 132, "@"
+	db 45, SUNFLORA, NO_ITEM, 132, "@"
+	db 45, ARCANINE, NO_ITEM, 132, "@"
+	db 46, AMPHAROS, NO_ITEM, 132, "@"
 	db 47, FERALIGATR, SITRUS_BERRY, 132, "Toto@"
 	db -1 ; end
 
@@ -1629,11 +1629,11 @@ Lyra2Group:
 	db "Lyra@"
 	db TRAINERTYPE_ITEM | TRAINERTYPE_NICKNAME
 	; party
-	db 69, PIDGEOT, NO_ITEM, "Pidgeot@"
-	db 70, ARCANINE, NO_ITEM, "Arcanine@"
-	db 70, AZUMARILL, NO_ITEM, "Azumarill@"
-	db 71, AMPHAROS, NO_ITEM, "Ampharos@"
-	db 68, GIRAFARIG, NO_ITEM, "Girafarig@"
+	db 69, PIDGEOT, NO_ITEM, "@"
+	db 70, ARCANINE, NO_ITEM, "@"
+	db 70, AZUMARILL, NO_ITEM, "@"
+	db 71, AMPHAROS, NO_ITEM, "@"
+	db 68, GIRAFARIG, NO_ITEM, "@"
 	db 72, MEGANIUM, SITRUS_BERRY, "Chicory@"
 	db -1 ; end
 
@@ -1643,11 +1643,11 @@ Lyra2Group:
 	db "Lyra@"
 	db TRAINERTYPE_ITEM | TRAINERTYPE_NICKNAME
 	; party
-	db 69, PIDGEOT, NO_ITEM, "Pidgeot@"
-	db 70, SUNFLORA, NO_ITEM, "Sunflora@"
-	db 70, AZUMARILL, NO_ITEM, "Azumarill@"
-	db 71, AMPHAROS, NO_ITEM, "Ampharos@"
-	db 68, GIRAFARIG, NO_ITEM, "Girafarig@"
+	db 69, PIDGEOT, NO_ITEM, "@"
+	db 70, SUNFLORA, NO_ITEM, "@"
+	db 70, AZUMARILL, NO_ITEM, "@"
+	db 71, AMPHAROS, NO_ITEM, "@"
+	db 68, GIRAFARIG, NO_ITEM, "@"
 	db 72, TYPHLOSION, SITRUS_BERRY, "Cinder@"
 	db -1 ; end
 
@@ -1657,11 +1657,11 @@ Lyra2Group:
 	db "Lyra@"
 	db TRAINERTYPE_ITEM | TRAINERTYPE_NICKNAME
 	; party
-	db 69, PIDGEOT, NO_ITEM, "Pidgeot@"
-	db 70, SUNFLORA, NO_ITEM, "Sunflora@"
-	db 70, ARCANINE, NO_ITEM, "Arcanine@"
-	db 71, AMPHAROS, NO_ITEM, "Ampharos@"
-	db 68, GIRAFARIG, NO_ITEM, "Girafarig@"
+	db 69, PIDGEOT, NO_ITEM, "@"
+	db 70, SUNFLORA, NO_ITEM, "@"
+	db 70, ARCANINE, NO_ITEM, "@"
+	db 71, AMPHAROS, NO_ITEM, "@"
+	db 68, GIRAFARIG, NO_ITEM, "@"
 	db 72, FERALIGATR, SITRUS_BERRY, "Toto@"
 	db -1 ; end
 
@@ -6161,7 +6161,7 @@ SchoolgirlGroup:
 	db TRAINERTYPE_NICKNAME
 	; party
 	db 6, TEDDIURSA, "Teddy@"
-	db 6, PHANPY, "Phanpy@"
+	db 6, PHANPY, "@"
 	db -1 ; end
 
 ; ================
@@ -6181,8 +6181,8 @@ SchoolgirlGroup:
 	db "Faith@"
 	db TRAINERTYPE_NICKNAME
 	; party
-	db 57, BELLSPROUT, "Bellsprout@"
-	db 58, WEEPINBELL, "Weepinbell@"
+	db 57, BELLSPROUT, "@"
+	db 58, WEEPINBELL, "@"
 	db 59, VICTREEBEL, "Audrey@"
 	db -1 ; end
 
@@ -6193,8 +6193,8 @@ SchoolgirlGroup:
 	db TRAINERTYPE_NICKNAME
 	; party
 	db 25, CHARMANDER, "Charmer@"
-	db 23, SENTRET, "Sentret@"
-	db 24, MARILL, "Marill@"
+	db 23, SENTRET, "@"
+	db 24, MARILL, "@"
 	db -1 ; end
 
 ; ================
@@ -6204,8 +6204,8 @@ SchoolgirlGroup:
 	db TRAINERTYPE_NICKNAME
 	; party
 	db 25, SQUIRTLE, "Turtle@"
-	db 23, PIDGEY, "Pidgey@"
-	db 24, PIKACHU, "Pikachu@"
+	db 23, PIDGEY, "@"
+	db 24, PIKACHU, "@"
 	db -1 ; end
 
 ; ================
@@ -6215,7 +6215,7 @@ SchoolgirlGroup:
 	db TRAINERTYPE_NICKNAME
 	; party
 	db 9, BULBASAUR, "Garlic@"
-	db 8, POLIWAG, "Poliwag@"
+	db 8, POLIWAG, "@"
 	db -1 ; end
 
 ; ================
@@ -9754,11 +9754,11 @@ CooltrainerMGroup:
 	db "Corey@"
 	db TRAINERTYPE_ITEM | TRAINERTYPE_EVS | TRAINERTYPE_NICKNAME
 	; party
-	db 63, PIDGEOT, QUICK_CLAW, 192, "Pidgeot@"
-	db 62, RHYDON, ROCKY_HELMET, 192, "Rhydon@"
-	db 62, SCYTHER, EVIOLITE, 192, "Scyther@"
-	db 62, HITMONLEE, FOCUS_BAND, 192, "Hitmonlee@"
-	db 63, SANDSLASH, KINGS_ROCK, 192, "Sandslash@"
+	db 63, PIDGEOT, QUICK_CLAW, 192, "@"
+	db 62, RHYDON, ROCKY_HELMET, 192, "@"
+	db 62, SCYTHER, EVIOLITE, 192, "@"
+	db 62, HITMONLEE, FOCUS_BAND, 192, "@"
+	db 63, SANDSLASH, KINGS_ROCK, 192, "@"
 	db 64, VENUSAUR, LEFTOVERS, 192, "Bruteroot@"
 	db -1 ; end
 
@@ -9768,11 +9768,11 @@ CooltrainerMGroup:
 	db "Ray@"
 	db TRAINERTYPE_ITEM | TRAINERTYPE_EVS | TRAINERTYPE_NICKNAME
 	; party
-	db 63, DONPHAN, SOFT_SAND, 192, "Donphan@"
-	db 62, VENOMOTH, BLACK_SLUDGE, 192, "Venomoth@"
-	db 62, GOLEM, ROCKY_HELMET, 192, "Golem@"
-	db 62, PINSIR, KINGS_ROCK, 192, "Pinsir@"
-	db 63, MACHAMP, FOCUS_BAND, 192, "Machamp@"
+	db 63, DONPHAN, SOFT_SAND, 192, "@"
+	db 62, VENOMOTH, BLACK_SLUDGE, 192, "@"
+	db 62, GOLEM, ROCKY_HELMET, 192, "@"
+	db 62, PINSIR, KINGS_ROCK, 192, "@"
+	db 63, MACHAMP, FOCUS_BAND, 192, "@"
 	db 64, CHARIZARD, LEFTOVERS, 192, "Firebrand@"
 	db -1 ; end
 
@@ -9782,11 +9782,11 @@ CooltrainerMGroup:
 	db "Fergus@"
 	db TRAINERTYPE_ITEM | TRAINERTYPE_EVS | TRAINERTYPE_NICKNAME
 	; party
-	db 63, GYARADOS, BRIGHTPOWDER, 192, "Gyarados@"
-	db 62, GOLDUCK, TWISTEDSPOON, 192, "Golduck@"
-	db 62, VAPOREON, FOCUS_BAND, 192, "Vaporeon@"
-	db 62, TENTACRUEL, BLACK_SLUDGE, 192, "Tentacruel@"
-	db 63, KINGDRA, QUICK_CLAW, 192, "Kingdra@"
+	db 63, GYARADOS, BRIGHTPOWDER, 192, "@"
+	db 62, GOLDUCK, TWISTEDSPOON, 192, "@"
+	db 62, VAPOREON, FOCUS_BAND, 192, "@"
+	db 62, TENTACRUEL, BLACK_SLUDGE, 192, "@"
+	db 63, KINGDRA, QUICK_CLAW, 192, "@"
 	db 64, NIDOQUEEN, LEFTOVERS, 192, "Empress@"
 	db -1 ; end
 
@@ -10069,11 +10069,11 @@ endc
 	db "Neesha@"
 	db TRAINERTYPE_ITEM | TRAINERTYPE_EVS | TRAINERTYPE_NICKNAME
 	; party
-	db 62, DEWGONG, FOCUS_BAND, 192, "Dewgong@"
-	db 62, WIGGLYTUFF, PINK_BOW, 192, "Wigglytuff@"
-	db 62, RAPIDASH, QUICK_CLAW, 192, "Rapidash@"
-	db 63, VILEPLUME, BLACK_SLUDGE, 192, "Vileplume@"
-	db 63, NINETALES, CHARCOAL, 192, "Ninetales@"
+	db 62, DEWGONG, FOCUS_BAND, 192, "@"
+	db 62, WIGGLYTUFF, PINK_BOW, 192, "@"
+	db 62, RAPIDASH, QUICK_CLAW, 192, "@"
+	db 63, VILEPLUME, BLACK_SLUDGE, 192, "@"
+	db 63, NINETALES, CHARCOAL, 192, "@"
 	db 63, BLASTOISE, LEFTOVERS, 192, "Shellshock@"
 	db -1 ; end
 
@@ -10502,7 +10502,7 @@ GiovanniGroup:
 	db "Giovanni@"
 	db TRAINERTYPE_ITEM | TRAINERTYPE_PERSONALITY | TRAINERTYPE_NICKNAME | TRAINERTYPE_MOVES
 	; party
-	db 70, MEWTWO, ARMOR_SUIT, ABILITY_2 | MODEST, MALE | MEWTWO_ARMORED_FORM, "???@"
+	db 70, MEWTWO, ARMOR_SUIT, ABILITY_2 | MODEST, MALE | MEWTWO_ARMORED_FORM, "?????@"
 		db SHADOW_BALL, PSYSTRIKE, NASTY_PLOT, AURA_SPHERE
 	db -1 ; end
 

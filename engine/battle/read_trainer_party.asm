@@ -150,8 +150,14 @@ endr
 	bit TRNTYPE_NICKNAME, a
 	jr z, .not_nickname
 
+	call GetNextTrainerDataByte
+	cp "@"
+	jr z, .not_nickname
+
 	push de
 	ld de, wStringBuffer2
+	ld [de], a
+	inc de
 .copy
 	call GetNextTrainerDataByte
 	ld [de], a
