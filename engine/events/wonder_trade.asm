@@ -489,15 +489,13 @@ GetWonderTradeOTGender:
 	ld hl, WonderTradeOTGenders2
 .ok
 	ld c, a
-;	ld b, CHECK_FLAG
-;	predef FlagPredef
-;	ld a, c
-;	and a
-;	ret z ; MALE
-;	ld a, FEMALE
-	ld b, 0
-	add hl, bc
-	ld a, [hl]
+	ld d, BANK(WonderTradeOTGenders1) ; aka BANK(WonderTradeOTGenders2)
+	ld b, CHECK_FLAG
+	predef FlagPredef
+	ld a, c
+	and a
+	ret z ; MALE
+	ld a, FEMALE
 	ret
 
 INCLUDE "data/events/wonder_trade/ot_genders.asm"

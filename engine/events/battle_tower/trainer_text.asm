@@ -13,12 +13,15 @@ BattleTowerText::
 	cp TOWERTYCOON
 	jr z, .tycoon
 
+	push bc
 	dec a
-	ld e, a
-	ld d, 0
+	ld c, a
+	ld b, CHECK_FLAG
 	ld hl, BTTrainerClassGenders
-	add hl, de
-	ld a, [hl]
+	ld d, BANK(BTTrainerClassGenders)
+	predef FlagPredef
+	ld a, c
+	pop bc
 	and a
 	jr nz, .female
 

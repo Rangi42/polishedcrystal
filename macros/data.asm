@@ -112,17 +112,15 @@ ENDM
 
 
 genders: MACRO
-; eight arguments, all MALE ($00) or FEMALE ($80)
-; TODO: get bitfield genders to work
-;x = 0
-;rept 8
-;x = x << 1
-;x = x + (\1 >> 7)
-;	shift
-;endr
-;	db x
-rept 8
-	db \1
+; eight arguments, all MALE or FEMALE
+x = 0
+y = 1
+rept _NARG
+	if !STRCMP("\1", "FEMALE")
+x = x | y
+	endc
+y = y * 2
 	shift
 endr
+	db x
 ENDM
