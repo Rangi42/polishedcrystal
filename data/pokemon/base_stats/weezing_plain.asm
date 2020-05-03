@@ -9,7 +9,7 @@
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
 	dn 7, 7 ; frontpic dimensions
 	db LEVITATE ; ability 1
-	db LEVITATE ; ability 2
+	db NEUTRALIZING_GAS ; ability 2
 	db STENCH ; hidden ability
 	db MEDIUM_FAST ; growth rate
 	dn AMORPHOUS, AMORPHOUS ; egg groups
