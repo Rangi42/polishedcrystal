@@ -1707,7 +1707,7 @@ Text_MoveItemWhere:
 
 Text_PackEmptyString:
 	;
-	text_jump UnknownText_0x1c0c83
+	text_jump ClearText
 	text_end
 
 PackInterfaceGFX:

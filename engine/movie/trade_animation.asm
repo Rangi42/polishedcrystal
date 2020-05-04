@@ -1113,7 +1113,7 @@ TradeAnim_SentToOTText:
 
 .Text_MonName:
 	;
-	text_jump UnknownText_0x1bc701
+	text_jump ClearText
 	text_end
 
 TradeAnim_OTBidsFarewell:
