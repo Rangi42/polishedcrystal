@@ -55,7 +55,12 @@ BattleCommand_trick:
 	ld a, [wBattleMode]
 	dec a
 	ret nz
-	jp SetBackupItem
+
+	; SetBackupItem doesn't work if existing backup isn't empty
+	call GetBackupItemAddr
+	ld a, [wBattleMonItem]
+	ld [hl], a
+	ret
 
 .ability_failed
 	farcall DisableAnimations
