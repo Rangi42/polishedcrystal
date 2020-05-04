@@ -348,7 +348,6 @@ UnknownText_0x6a71f:
 UnknownText_0x6a79a:
 	text "You still have "
 	text_from_ram wStringBuffer3
-	text_start
 	line "minute(s) left."
 
 	para "Do you want to"

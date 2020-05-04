@@ -2501,11 +2501,6 @@ UnknownText_0x1c0db0::
 	para "@"
 	text_end
 
-SECTION "UnknownText_0x1c0db8", ROMX
-UnknownText_0x1c0db8::
-	text_start
-	done
-
 SECTION "UnknownText_0x1c0dba", ROMX
 UnknownText_0x1c0dba::
 	text_from_ram wStringBuffer1

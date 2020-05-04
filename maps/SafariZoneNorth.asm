@@ -80,7 +80,7 @@ SafariZoneNorthTutorDoubleEdgeScript:
 	yesorno
 	iffalse .TutorRefused
 	writebyte DOUBLE_EDGE
-	writetext Text_SafariZoneNorthTutorClear
+	writetext ClearText
 	special Special_MoveTutor
 	ifequal $0, .TeachMove
 .TutorRefused
@@ -164,10 +164,6 @@ Text_SafariZoneNorthTutorQuestion:
 
 Text_SafariZoneNorthTutorRefused:
 	text "Oh well."
-	done
-
-Text_SafariZoneNorthTutorClear:
-	text_start
 	done
 
 Text_SafariZoneNorthTutorTaught:

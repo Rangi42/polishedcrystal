@@ -97,7 +97,7 @@ IcePathB1FTutorIcyWindScript:
 	yesorno
 	iffalse .TutorRefused
 	writebyte ICY_WIND
-	writetext Text_IcePathB1FTutorClear
+	writetext ClearText
 	special Special_MoveTutor
 	ifequal $0, .TeachMove
 .TutorRefused
@@ -163,10 +163,6 @@ Text_IcePathB1FTutorQuestion:
 
 Text_IcePathB1FTutorRefused:
 	text "Brr…"
-	done
-
-Text_IcePathB1FTutorClear:
-	text_start
 	done
 
 Text_IcePathB1FTutorTaught:

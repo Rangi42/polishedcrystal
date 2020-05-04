@@ -76,7 +76,7 @@ GoldenrodGameCornerTutorPayDayScript:
 	yesorno
 	iffalse .TutorRefused
 	writebyte PAY_DAY
-	writetext Text_GoldenrodGameCornerTutorClear
+	writetext ClearText
 	special Special_MoveTutor
 	ifequal $0, .TeachMove
 .TutorRefused
@@ -390,10 +390,6 @@ Text_GoldenrodGameCornerTutorNoSilverLeaf:
 
 Text_GoldenrodGameCornerTutorRefused:
 	text "Never mind then."
-	done
-
-Text_GoldenrodGameCornerTutorClear:
-	text_start
 	done
 
 Text_GoldenrodGameCornerTutorTaught:

@@ -45,7 +45,7 @@ CeladonDeptStore3FTutorCounterScript:
 	yesorno
 	iffalse .TutorRefused
 	writebyte COUNTER
-	writetext Text_CeladonDeptStore3FTutorClear
+	writetext ClearText
 	special Special_MoveTutor
 	ifequal $0, .TeachMove
 .TutorRefused
@@ -159,10 +159,6 @@ Text_CeladonDeptStore3FTutorQuestion:
 
 Text_CeladonDeptStore3FTutorRefused:
 	text "Never mind."
-	done
-
-Text_CeladonDeptStore3FTutorClear:
-	text_start
 	done
 
 Text_CeladonDeptStore3FTutorTaught:

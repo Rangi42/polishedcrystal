@@ -113,7 +113,7 @@ PowerPlantTutorZapCannonScript:
 	yesorno
 	iffalse .TutorRefused
 	writebyte ZAP_CANNON
-	writetext Text_PowerPlantTutorClear
+	writetext ClearText
 	special Special_MoveTutor
 	ifequal $0, .TeachMove
 .TutorRefused
@@ -323,10 +323,6 @@ Text_PowerPlantTutorQuestion:
 
 Text_PowerPlantTutorRefused:
 	text "Have it your way."
-	done
-
-Text_PowerPlantTutorClear:
-	text_start
 	done
 
 Text_PowerPlantTutorTaught:

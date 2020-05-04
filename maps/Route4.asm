@@ -96,7 +96,7 @@ Route4TutorIronHeadScript:
 	yesorno
 	iffalse .TutorRefused
 	writebyte IRON_HEAD
-	writetext Text_Route4TutorsClear
+	writetext ClearText
 	special Special_MoveTutor
 	ifequal $0, .TeachMove
 .TutorRefused
@@ -126,7 +126,7 @@ Route4TutorAquaTailScript:
 	yesorno
 	iffalse .TutorRefused
 	writebyte AQUA_TAIL
-	writetext Text_Route4TutorsClear
+	writetext ClearText
 	special Special_MoveTutor
 	ifequal $0, .TeachMove
 .TutorRefused
@@ -262,10 +262,6 @@ Text_Route4Tutor1Refused:
 Text_Route4Tutor2Refused:
 	text "But it's better"
 	line "than Iron Head!"
-	done
-
-Text_Route4TutorsClear:
-	text_start
 	done
 
 Text_Route4Tutor1Taught:

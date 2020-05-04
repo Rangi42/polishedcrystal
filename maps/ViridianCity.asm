@@ -67,7 +67,7 @@ ViridianCityTutorDreamEaterScript:
 	yesorno
 	iffalse .TutorRefused
 	writebyte DREAM_EATER
-	writetext Text_ViridianCityTutorClear
+	writetext ClearText
 	special Special_MoveTutor
 	ifequal $0, .TeachMove
 .TutorRefused
@@ -182,10 +182,6 @@ Text_ViridianCityTutorQuestion:
 
 Text_ViridianCityTutorRefused:
 	text "OK…"
-	done
-
-Text_ViridianCityTutorClear:
-	text_start
 	done
 
 Text_ViridianCityTutorTaught:

@@ -42,7 +42,7 @@ Museum2FTutorSeismicTossScript:
 	yesorno
 	iffalse .TutorRefused
 	writebyte SEISMIC_TOSS
-	writetext Text_Museum2FTutorClear
+	writetext ClearText
 	special Special_MoveTutor
 	ifequal $0, .TeachMove
 .TutorRefused
@@ -159,10 +159,6 @@ Text_Museum2FTutorQuestion:
 
 Text_Museum2FTutorRefused:
 	text "If you say so."
-	done
-
-Text_Museum2FTutorClear:
-	text_start
 	done
 
 Text_Museum2FTutorTaught:

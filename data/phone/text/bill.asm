@@ -45,7 +45,6 @@ BillPhoneNotFullText:
 	para "<PLAYER>, your Box"
 	line "has room for "
 	text_from_ram wStringBuffer3
-	text_start
 	cont "more #mon."
 
 	para "Get out there and"

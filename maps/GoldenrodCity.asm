@@ -141,21 +141,21 @@ MoveTutor:
 
 .FirePunch:
 	writebyte FIRE_PUNCH
-	writetext UnknownText_0x1991cf
+	writetext ClearText
 	special Special_MoveTutor
 	ifequal $0, .TeachMove
 	jumpopenedtext UnknownText_0x1991a4
 
 .ThunderPunch:
 	writebyte THUNDERPUNCH
-	writetext UnknownText_0x1991cf
+	writetext ClearText
 	special Special_MoveTutor
 	ifequal $0, .TeachMove
 	jumpopenedtext UnknownText_0x1991a4
 
 .IcePunch:
 	writebyte ICE_PUNCH
-	writetext UnknownText_0x1991cf
+	writetext ClearText
 	special Special_MoveTutor
 	ifequal $0, .TeachMove
 	jumpopenedtext UnknownText_0x1991a4
@@ -556,8 +556,4 @@ UnknownText_0x1991a4:
 UnknownText_0x1991ac:
 	text "…You don't have"
 	line "enough coins here…"
-	done
-
-UnknownText_0x1991cf:
-	text_start
 	done

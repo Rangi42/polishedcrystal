@@ -383,7 +383,7 @@ IlexForestTutorHeadbuttScript:
 	yesorno
 	iffalse .TutorRefused
 	writebyte HEADBUTT
-	writetext Text_IlexForestTutorClear
+	writetext ClearText
 	special Special_MoveTutor
 	ifequal $0, .TeachMove
 .TutorRefused
@@ -932,10 +932,6 @@ Text_IlexForestTutorQuestion:
 
 Text_IlexForestTutorRefused:
 	text "Alright then."
-	done
-
-Text_IlexForestTutorClear:
-	text_start
 	done
 
 Text_IlexForestTutorTaught:

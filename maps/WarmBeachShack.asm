@@ -30,7 +30,7 @@ WarmBeachShackTutorBodySlamScript:
 	yesorno
 	iffalse .TutorRefused
 	writebyte BODY_SLAM
-	writetext Text_WarmBeachShackTutorClear
+	writetext ClearText
 	special Special_MoveTutor
 	ifequal $0, .TeachMove
 .TutorRefused
@@ -70,10 +70,6 @@ Text_WarmBeachShackTutorNoSilverLeaf:
 
 Text_WarmBeachShackTutorRefused:
 	text "Alright then."
-	done
-
-Text_WarmBeachShackTutorClear:
-	text_start
 	done
 
 Text_WarmBeachShackTutorTaught:

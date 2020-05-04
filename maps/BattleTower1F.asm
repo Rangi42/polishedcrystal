@@ -170,7 +170,7 @@ BattleTowerTutorTrickScript:
 	yesorno
 	iffalse .TutorRefused
 	writebyte TRICK
-	writetext Text_BattleTowerTutorClear
+	writetext ClearText
 	special Special_MoveTutor
 	ifequal $0, .TeachMove
 .TutorRefused
@@ -371,10 +371,6 @@ Text_BattleTowerTutorQuestion:
 Text_BattleTowerTutorRefused:
 	text "Talk to me if you"
 	line "change your mind."
-	done
-
-Text_BattleTowerTutorClear:
-	text_start
 	done
 
 Text_BattleTowerTutorTaught:

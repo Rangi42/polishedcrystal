@@ -74,7 +74,7 @@ CeladonCityTutorSwaggerScript:
 	yesorno
 	iffalse .TutorRefused
 	writebyte SWAGGER
-	writetext Text_CeladonCityTutorClear
+	writetext ClearText
 	special Special_MoveTutor
 	ifequal $0, .TeachMove
 .TutorRefused
@@ -125,10 +125,6 @@ Text_CeladonCityTutorQuestion:
 
 Text_CeladonCityTutorRefused:
 	text "Then goodbye!"
-	done
-
-Text_CeladonCityTutorClear:
-	text_start
 	done
 
 Text_CeladonCityTutorTaught:

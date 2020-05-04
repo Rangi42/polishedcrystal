@@ -36,7 +36,7 @@ CherrygroveBayTutorEarthPowerScript:
 	yesorno
 	iffalse .TutorRefused
 	writebyte EARTH_POWER
-	writetext Text_CherrygroveBayTutorClear
+	writetext ClearText
 	special Special_MoveTutor
 	ifequal $0, .TeachMove
 .TutorRefused
@@ -171,10 +171,6 @@ Text_CherrygroveBayTutorQuestion:
 
 Text_CherrygroveBayTutorRefused:
 	text "Oh well."
-	done
-
-Text_CherrygroveBayTutorClear:
-	text_start
 	done
 
 Text_CherrygroveBayTutorTaught:

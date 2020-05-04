@@ -597,3 +597,7 @@ PrintDayOfWeek::
 .Fri:    db "Fri@"
 .Satur:  db "Satur@"
 .Day:    db "day@"
+
+ClearText::
+	text_start
+	done
