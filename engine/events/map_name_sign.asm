@@ -164,17 +164,17 @@ PlaceMapNameSign::
 	jr nc, .sliding_in
 	cp $10
 	jr c, .sliding_out
-	ld a, $70
+	ld a, $78
 	jr .got_value
 .sliding_in
 	sub $5d
 	add a
-	add $70
+	add $78
 	jr .got_value
 .sliding_out
 	add a
 	cpl
-	add $90 + 1 ; a = $90 - a
+	add $98 + 1 ; a = $98 - a
 .got_value
 	ldh [rWY], a
 	ldh [hWY], a
@@ -304,15 +304,13 @@ InitMapNameFrame:
 	rst ByteFill
 	or X_FLIP
 	ld [hli], a
-	; middle rows
-rept 2
+	; middle row
 	and $ff - X_FLIP
 	ld [hli], a
 	ld bc, SCREEN_WIDTH - 2
 	rst ByteFill
 	or X_FLIP
 	ld [hli], a
-endr
 	; bottom row
 	and $ff - X_FLIP
 	ld bc, SCREEN_WIDTH - 1
@@ -322,60 +320,37 @@ endr
 ; PlaceMapNameFrame
 	hlcoord 0, 0
 	; top left
-	ld a, POPUP_MAP_FRAME_START ; $f8
+	ld a, POPUP_MAP_FRAME_START ; $f3
 	ld [hli], a
 	; top row
-	inc a ; $f9
+	inc a ; $f4
 	call .FillTopBottom
 	; top right
-	dec a ; $f8
+	dec a ; $f3
 	ld [hli], a
-	; left, first line
-	ld a, POPUP_MAP_FRAME_START + 3 ; $fb
+	; middle left
+	ld a, POPUP_MAP_FRAME_START + 3 ; $f6
 	ld [hli], a
-	; first line
-	call .FillUpperMiddle
-	; right, first line
-	ld [hli], a
-	; left, second line
-	inc a ; $fc
-	ld [hli], a
-	; second line
-	call .FillLowerMiddle
-	; right, second line
-	ld [hli], a
-	; bottom left
-	inc a ; $fd
-	ld [hli], a
-	; bottom
-	inc a ; $fe
-	call .FillTopBottom
-	; bottom right
-	dec a ; $fd
-	ld [hl], a
-	ret
-
-.FillUpperMiddle:
-	push af
-	ld a, POPUP_MAP_FRAME_SPACE
-	ld c, SCREEN_WIDTH - 2
-.loop
-	ld [hli], a
-	dec c
-	jr nz, .loop
-	pop af
-	ret
-
-.FillLowerMiddle:
-	push af
+	; middle row
 	ld a, POPUP_MAP_NAME_START
 	ld c, SCREEN_WIDTH - 2
-.loop2
+.middleloop
 	ld [hli], a
 	inc a
 	dec c
-	jr nz, .loop2
-	pop af
+	jr nz, .middleloop
+	; middle right
+	ld a, POPUP_MAP_FRAME_START + 4 ; $f7
+	ld [hli], a
+	; bottom left
+	inc a ; $f8
+	ld [hli], a
+	; bottom
+	inc a ; $f9
+	call .FillTopBottom
+	; bottom right
+	dec a ; $f8
+	ld [hl], a
 	ret
 
 .FillTopBottom:
