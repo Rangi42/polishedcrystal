@@ -10,6 +10,15 @@ BattleCommand_trick:
 	cp STICKY_HOLD
 	jr z, .ability_failed
 
+	; Forbid wildmons from using Trick
+	ld a, [hBattleTurn]
+	and a
+	jr z, .player
+	ld a, [wBattleMode]
+	dec a
+	jr z, .failed
+
+.player
 	call UserCanLoseItem
 	jr z, .failed
 	call OpponentCanLoseItem
@@ -41,7 +50,12 @@ BattleCommand_trick:
 	ret z
 	ld a, [wEnemyMonItem]
 	ld [hl], a
-	ret
+
+	; Overwrite your previous item permanently in a wild battle
+	ld a, [wBattleMode]
+	dec a
+	ret nz
+	jp SetBackupItem
 
 .ability_failed
 	farcall DisableAnimations

@@ -90,7 +90,7 @@ CanStealItem:
 	; Wildmons can't steal items
 	ld a, [wBattleMode]
 	dec a
-	ret z
+	jr z, .cant
 
 	ld hl, wEnemyMonItem
 	ld bc, wBattleMonItem
