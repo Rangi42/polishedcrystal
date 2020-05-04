@@ -11,7 +11,7 @@ BattleCommand_trick:
 	jr z, .ability_failed
 
 	; Forbid wildmons from using Trick
-	ld a, [hBattleTurn]
+	ldh a, [hBattleTurn]
 	and a
 	jr z, .player
 	ld a, [wBattleMode]

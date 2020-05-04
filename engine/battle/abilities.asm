@@ -1243,6 +1243,15 @@ PickupAbility:
 	and a
 	ret nz
 
+	; Wild opponents may not use this ability (prevent item duplication)
+	ldh a, [hBattleTurn]
+	and a
+	jr z, .player
+	ld a, [wBattleMode]
+	dec a
+	ret z
+
+.player
 	; Does the opponent have a consumed item?
 	push hl
 	call GetOpponentUsedItemAddr
