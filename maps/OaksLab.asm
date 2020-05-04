@@ -236,7 +236,7 @@ OakLabPartyFullText:
 
 OakLabReceivedKantoStarterText:
 	text "<PLAYER> received"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer3
 	text "!"
 	done

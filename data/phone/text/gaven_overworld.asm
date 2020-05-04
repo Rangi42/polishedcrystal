@@ -11,7 +11,7 @@ GavenAskNumber1Text:
 	para "I'd like to battle"
 	line "again when I heal"
 
-	para "@"
+	para ""
 	text_from_ram wStringBuffer4
 	text " and the"
 	line "rest of my team."
@@ -24,7 +24,7 @@ GavenAskNumber2Text:
 	para "I'd like to battle"
 	line "again when I heal"
 
-	para "@"
+	para ""
 	text_from_ram wStringBuffer4
 	text " and the"
 	line "rest of my team."

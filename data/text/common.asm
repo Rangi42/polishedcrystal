@@ -10,7 +10,7 @@ _FruitBearingTreeText::
 SECTION "_HeyItsFruitText", ROMX
 _HeyItsFruitText::
 	text "Hey! It's"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer3
 	text "!"
 	done
@@ -18,7 +18,7 @@ _HeyItsFruitText::
 SECTION "_ObtainedOneFruitText", ROMX
 _ObtainedOneFruitText::
 	text "Obtained a"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer3
 	text "!"
 	done
@@ -26,7 +26,7 @@ _ObtainedOneFruitText::
 SECTION "_ObtainedTwoFruitText", ROMX
 _ObtainedTwoFruitText::
 	text "Obtained two"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer3
 	text "!"
 	done
@@ -34,7 +34,7 @@ _ObtainedTwoFruitText::
 SECTION "_ObtainedThreeFruitText", ROMX
 _ObtainedThreeFruitText::
 	text "Obtained three"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer3
 	text "!"
 	done
@@ -60,7 +60,7 @@ _ApricornBoxIsFullText::
 SECTION "_PutAwayTheApricornText", ROMX
 _PutAwayTheApricornText::
 	text "<PLAYER> put the"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer3
 	text " in"
 	cont "the Apricorn Box."
@@ -103,7 +103,7 @@ SECTION "UnknownText_0x1bc0a2", ROMX
 UnknownText_0x1bc0a2::
 	text_from_ram wStringBuffer1
 	text_start
-	line "recovered @"
+	line "recovered "
 	deciram wCurHPAnimDeltaHP, 2, 3
 	text "HP!"
 	done
@@ -161,9 +161,9 @@ SECTION "UnknownText_0x1bc14f", ROMX
 UnknownText_0x1bc14f::
 	text_from_ram wStringBuffer1
 	text " grew to"
-	line "level @"
+	line "level "
 	deciram wCurPartyLevel, 1, 3
-	text "!@"
+	text "!"
 	play_sound SFX_DEX_FANFARE_50_79
 	text_waitbutton
 	text_end
@@ -194,8 +194,8 @@ UnknownText_0x1bc2eb::
 
 SECTION "UnknownText_0x1bc2fd", ROMX
 UnknownText_0x1bc2fd::
-	text "What?@"
-	text_end
+	text "What?"
+	done
 
 SECTION "UnknownText_0x1bc305", ROMX
 UnknownText_0x1bc305::
@@ -209,8 +209,8 @@ UnknownText_0x1bc308::
 
 SECTION "UnknownText_0x1bc31b", ROMX
 UnknownText_0x1bc31b::
-	text "Whoa!@"
-	text_end
+	text "Whoa!"
+	done
 
 SECTION "UnknownText_0x1bc323", ROMX
 UnknownText_0x1bc323::
@@ -268,7 +268,7 @@ UnknownText_0x1bc4b2::
 SECTION "UnknownText_0x1bc4d7", ROMX
 UnknownText_0x1bc4d7::
 	text "Put away the"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer3
 	text "."
 	prompt
@@ -282,7 +282,7 @@ UnknownText_0x1bc4ec::
 SECTION "UnknownText_0x1bc509", ROMX
 UnknownText_0x1bc509::
 	text "Set up the"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer3
 	text "."
 	prompt
@@ -290,12 +290,12 @@ UnknownText_0x1bc509::
 SECTION "UnknownText_0x1bc51c", ROMX
 UnknownText_0x1bc51c::
 	text "Put away the"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer3
 	text_start
 
 	para "and set up the"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer4
 	text "."
 	prompt
@@ -332,7 +332,7 @@ UnknownText_0x1bc5b3::
 SECTION "UnknownText_0x1bc5d7", ROMX
 UnknownText_0x1bc5d7::
 	text "It's an adorable"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer3
 	text "."
 	done
@@ -340,7 +340,7 @@ UnknownText_0x1bc5d7::
 SECTION "DecoConsoleText", ROMX
 DecoConsoleText::
 	text "It's a shiny"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer3
 	text "."
 	done
@@ -392,7 +392,7 @@ SECTION "UnknownText_0x1bc6e9", ROMX
 UnknownText_0x1bc6e9::
 	text_from_ram wPlayerTrademonSpeciesName
 	text " was"
-	line "sent to @"
+	line "sent to "
 	text_from_ram wOTTrademonSenderName
 	text "."
 	done
@@ -418,17 +418,17 @@ UnknownText_0x1bc719::
 SECTION "UnknownText_0x1bc71f", ROMX
 UnknownText_0x1bc71f::
 	text "Take good care of"
-	line "@"
+	line ""
 	text_from_ram wOTTrademonSpeciesName
 	text "."
 	done
 
 SECTION "UnknownText_0x1bc739", ROMX
 UnknownText_0x1bc739::
-	text "For @"
+	text "For "
 	text_from_ram wPlayerTrademonSenderName
 	text "'s"
-	line "@"
+	line ""
 	text_from_ram wPlayerTrademonSpeciesName
 	text ","
 	done
@@ -437,7 +437,7 @@ SECTION "UnknownText_0x1bc74c", ROMX
 UnknownText_0x1bc74c::
 	text_from_ram wOTTrademonSenderName
 	text " sends"
-	line "@"
+	line ""
 	text_from_ram wOTTrademonSpeciesName
 	text "."
 	done
@@ -446,16 +446,16 @@ SECTION "UnknownText_0x1bc75e", ROMX
 UnknownText_0x1bc75e::
 	text_from_ram wOTTrademonSenderName
 	text " will"
-	line "trade @"
+	line "trade "
 	text_from_ram wOTTrademonSpeciesName
 	text_end
 
 SECTION "UnknownText_0x1bc774", ROMX
 UnknownText_0x1bc774::
-	text "for @"
+	text "for "
 	text_from_ram wPlayerTrademonSenderName
 	text "'s"
-	line "@"
+	line ""
 	text_from_ram wPlayerTrademonSpeciesName
 	text "."
 	done
@@ -483,7 +483,7 @@ _OPT_IntroText3::
 SECTION "_OPT_OakText1", ROMX
 _OPT_OakText1::
 	text_start
-	line "Oak: @"
+	line "Oak: "
 	text_from_ram wMonOrItemNameBuffer
 	text_end
 
@@ -496,7 +496,7 @@ _OPT_OakText2::
 SECTION "_OPT_OakText3", ROMX
 _OPT_OakText3::
 	text_start
-	line "@"
+	line ""
 	text_from_ram wStringBuffer1
 	text "."
 	done
@@ -504,7 +504,7 @@ _OPT_OakText3::
 SECTION "_OPT_MaryText1", ROMX
 _OPT_MaryText1::
 	text_start
-	line "Mary: @"
+	line "Mary: "
 	text_from_ram wStringBuffer1
 	text "'s"
 	done
@@ -709,7 +709,7 @@ _OPT_PokemonChannelText::
 SECTION "_PokedexShowText", ROMX
 _PokedexShowText::
 	text_start
-	line "@"
+	line ""
 	text_from_ram wStringBuffer1
 	text_end
 
@@ -748,7 +748,7 @@ _FernIntroText2::
 SECTION "_BenFernText1", ROMX
 _BenFernText1::
 	text_start
-	line "Today's @"
+	line "Today's "
 	current_day
 	text ","
 	done
@@ -824,7 +824,7 @@ _LC_Text7::
 SECTION "_LC_Text8", ROMX
 _LC_Text8::
 	text_start
-	line "Number is @"
+	line "Number is "
 	interpret_data
 	text_from_ram wStringBuffer1
 	text "!"
@@ -885,6 +885,7 @@ _PnP_Text4::
 	text_start
 	line "@"
 	text_from_ram wStringBuffer2
+	text_start
 	text " @"
 	text_from_ram wStringBuffer1
 	text_end
@@ -1031,7 +1032,7 @@ _RocketRadioText6::
 SECTION "_RocketRadioText7", ROMX
 _RocketRadioText7::
 	text_start
-	line "Giovanni! @"
+	line "Giovanni! "
 	interpret_data
 	text "Can you"
 	done
@@ -1039,7 +1040,7 @@ _RocketRadioText7::
 SECTION "_RocketRadioText8", ROMX
 _RocketRadioText8::
 	text_start
-	line "hear?@"
+	line "hear?"
 	interpret_data
 	text " We did it!"
 	done
@@ -1047,7 +1048,7 @@ _RocketRadioText8::
 SECTION "_RocketRadioText9", ROMX
 _RocketRadioText9::
 	text_start
-	line "@"
+	line ""
 	interpret_data
 	text "Where is our boss?"
 	done
@@ -1055,7 +1056,7 @@ _RocketRadioText9::
 SECTION "_RocketRadioText10", ROMX
 _RocketRadioText10::
 	text_start
-	line "@"
+	line ""
 	interpret_data
 	text "Is he listening?"
 	done
@@ -1081,7 +1082,7 @@ _BuenaRadioText3::
 SECTION "_BuenaRadioText4", ROMX
 _BuenaRadioText4::
 	text_start
-	line "@"
+	line ""
 	text_from_ram wStringBuffer1
 	text "!"
 	done
@@ -1171,7 +1172,7 @@ _BuenaOffTheAirText::
 SECTION "Text_EnemyUsed", ROMX
 Text_EnemyUsed::
 	text "<ENEMY>"
-	line "used @"
+	line "used "
 	text_from_ram wMonOrItemNameBuffer
 	text "!"
 	prompt
@@ -1179,10 +1180,10 @@ Text_EnemyUsed::
 SECTION "Text_EnemyUsedOn", ROMX
 Text_EnemyUsedOn::
 	text "<ENEMY>"
-	line "used @"
+	line "used "
 	text_from_ram wMonOrItemNameBuffer
 	text_start
-	cont "on @"
+	cont "on "
 	text_from_ram wEnemyMonNick
 	text "!"
 	prompt
@@ -1222,10 +1223,10 @@ UseAnotherRepelText::
 SECTION "UnknownText_0x1bd34b", ROMX
 UnknownText_0x1bd34b::
 	text "I just saw some"
-	line "rare @"
+	line "rare "
 	text_from_ram wStringBuffer1
 	text " in"
-	cont "@"
+	cont ""
 	text_from_ram wStringBuffer2
 	text "."
 
@@ -1260,13 +1261,13 @@ UnknownText_0x1bd407::
 SECTION "UnknownText_0x1bd429", ROMX
 UnknownText_0x1bd429::
 	text "<PLAYER> traded"
-	line "@"
+	line ""
 	text_from_ram wMonOrItemNameBuffer
 	text " for"
-	cont "@"
+	cont ""
 	text_from_ram wStringBuffer2
-	text ".@"
-	text_end
+	text "."
+	done
 
 SECTION "UnknownText_0x1bd445", ROMX
 UnknownText_0x1bd445::
@@ -1278,12 +1279,12 @@ SECTION "UnknownText_0x1bd449", ROMX
 UnknownText_0x1bd449::
 	text "I collect #mon."
 	line "Do you have"
-	cont "@"
+	cont ""
 	text_from_ram wStringBuffer1
 	text "?"
 
 	para "Want to trade it"
-	line "for my @"
+	line "for my "
 	text_from_ram wStringBuffer2
 	text "?"
 	done
@@ -1297,7 +1298,7 @@ UnknownText_0x1bd48c::
 SECTION "UnknownText_0x1bd4aa", ROMX
 UnknownText_0x1bd4aa::
 	text "Huh? That's not"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer1
 	text "."
 	cont "What a letdown…"
@@ -1306,7 +1307,7 @@ UnknownText_0x1bd4aa::
 SECTION "UnknownText_0x1bd4d2", ROMX
 UnknownText_0x1bd4d2::
 	text "Yay! I got myself"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer1
 	text "!"
 	cont "Thanks!"
@@ -1315,7 +1316,7 @@ UnknownText_0x1bd4d2::
 SECTION "UnknownText_0x1bd4f4", ROMX
 UnknownText_0x1bd4f4::
 	text "Hi, how's my old"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer2
 	text " doing?"
 	done
@@ -1326,12 +1327,12 @@ UnknownText_0x1bd512::
 	line "for this #mon."
 
 	para "If you have"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer1
 	text ", would"
 
 	para "you trade it for"
-	line "my @"
+	line "my "
 	text_from_ram wStringBuffer2
 	text "?"
 	done
@@ -1348,7 +1349,7 @@ UnknownText_0x1bd565::
 SECTION "UnknownText_0x1bd5a1", ROMX
 UnknownText_0x1bd5a1::
 	text "You don't have"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer1
 	text "? That's"
 	cont "too bad, then."
@@ -1359,14 +1360,14 @@ UnknownText_0x1bd5cc::
 	text "Great! Thank you!"
 
 	para "I finally got"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer1
 	text "."
 	done
 
 SECTION "UnknownText_0x1bd5f4", ROMX
 UnknownText_0x1bd5f4::
-	text "Hi! The @"
+	text "Hi! The "
 	text_from_ram wMonOrItemNameBuffer
 	text_start
 	line "you traded me is"
@@ -1380,12 +1381,12 @@ UnknownText_0x1bd621::
 	line "but I don't have"
 
 	para "it. Do you have"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer1
 	text "?"
 
 	para "Want to trade it"
-	line "for my @"
+	line "for my "
 	text_from_ram wStringBuffer2
 	text "?"
 	done
@@ -1399,7 +1400,7 @@ UnknownText_0x1bd673::
 SECTION "UnknownText_0x1bd696", ROMX
 UnknownText_0x1bd696::
 	text "That's not"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer1
 	text "."
 
@@ -1411,7 +1412,7 @@ SECTION "UnknownText_0x1bd6cd", ROMX
 UnknownText_0x1bd6cd::
 	text "Wow! Thank you!"
 	line "I always wanted"
-	cont "@"
+	cont ""
 	text_from_ram wMonOrItemNameBuffer
 	text "!"
 	done
@@ -1419,12 +1420,12 @@ UnknownText_0x1bd6cd::
 SECTION "UnknownText_0x1bd6f5", ROMX
 UnknownText_0x1bd6f5::
 	text "How is that"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer2
 	text " I"
 	cont "traded you doing?"
 
-	para "Your @"
+	para "Your "
 	text_from_ram wMonOrItemNameBuffer
 	text "'s"
 	line "so cute!"
@@ -1669,7 +1670,7 @@ UnknownText_0x1bdcff::
 SECTION "UnknownText_0x1bdd30", ROMX
 UnknownText_0x1bdd30::
 	text "OK. I'll raise"
-	line "your @"
+	line "your "
 	text_from_ram wStringBuffer1
 	text "."
 	prompt
@@ -1684,26 +1685,26 @@ SECTION "UnknownText_0x1bdd64", ROMX
 UnknownText_0x1bdd64::
 	text "Are we geniuses or"
 	line "what? Want to see"
-	cont "your @"
+	cont "your "
 	text_from_ram wStringBuffer1
 	text "?"
 	done
 
 SECTION "UnknownText_0x1bdd96", ROMX
 UnknownText_0x1bdd96::
-	text "Your @"
+	text "Your "
 	text_from_ram wStringBuffer1
 	text_start
 	line "has grown a lot."
 
 	para "Its level grew"
-	line "by @"
+	line "by "
 	deciram wStringBuffer2 + 1, 1, 3
 	text "."
 
 	para "If you want your"
 	line "#mon back, it"
-	cont "will cost ¥@"
+	cont "will cost ¥"
 	deciram wStringBuffer2 + 2, 3, 4
 	text "."
 	done
@@ -1717,7 +1718,7 @@ UnknownText_0x1bde04::
 SECTION "UnknownText_0x1bde1f", ROMX
 UnknownText_0x1bde1f::
 	text "<PLAYER> got back"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer1
 	text "."
 	prompt
@@ -1725,7 +1726,7 @@ UnknownText_0x1bde1f::
 SECTION "UnknownText_0x1bde32", ROMX
 UnknownText_0x1bde32::
 	text "Huh? Back already?"
-	line "Your @"
+	line "Your "
 	text_from_ram wStringBuffer1
 	text_start
 	para "needs a little"
@@ -1829,7 +1830,7 @@ UnknownText_0x1c00a0::
 
 SECTION "UnknownText_0x1c00cd", ROMX
 UnknownText_0x1c00cd::
-	text "Hm… @"
+	text "Hm… "
 	text_from_ram wStringBuffer1
 	text "…"
 	line "That's a fairly"
@@ -1866,13 +1867,13 @@ UnknownText_0x1c019e::
 
 SECTION "UnknownText_0x1c01be", ROMX
 UnknownText_0x1c01be::
-	text "Hm… @"
+	text "Hm… "
 	text_from_ram wStringBuffer1
 	text "?"
 	line "What a great name!"
 	cont "It's perfect."
 
-	para "Treat @"
+	para "Treat "
 	text_from_ram wStringBuffer1
 	text_start
 	line "with loving care."
@@ -1899,7 +1900,7 @@ SECTION "UnknownText_0x1c0272", ROMX
 UnknownText_0x1c0272::
 	text "All right. This"
 	line "#mon is now"
-	cont "named @"
+	cont "named "
 	text_from_ram wStringBuffer1
 	text "."
 	prompt
@@ -1914,7 +1915,7 @@ SECTION "Text_ABoostedStringBuffer2ExpPoints", ROMX
 Text_ABoostedStringBuffer2ExpPoints::
 	text_start
 	line "a boosted"
-	cont "@"
+	cont ""
 	deciram wStringBuffer2, 3, 6
 	text " Exp. Points!"
 	prompt
@@ -1922,7 +1923,7 @@ Text_ABoostedStringBuffer2ExpPoints::
 SECTION "Text_StringBuffer2ExpPoints", ROMX
 Text_StringBuffer2ExpPoints::
 	text_start
-	line "@"
+	line ""
 	deciram wStringBuffer2, 3, 6
 	text " Exp. Points!"
 	prompt
@@ -1998,11 +1999,11 @@ UnknownText_0x1c0384::
 SECTION "UnknownText_0x1c0396", ROMX
 UnknownText_0x1c0396::
 	text "It contained"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer2
 	text "."
 
-	para "Teach @"
+	para "Teach "
 	text_from_ram wStringBuffer2
 	text_start
 	line "to a #mon?"
@@ -2013,12 +2014,12 @@ UnknownText_0x1c03c2::
 	text_from_ram wStringBuffer2
 	text " is"
 	line "not compatible"
-	cont "with @"
+	cont "with "
 	text_from_ram wStringBuffer1
 	text "."
 
 	para "It can't learn"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer2
 	text "."
 	prompt
@@ -2051,7 +2052,7 @@ UnknownText_0x1c05ec::
 SECTION "UnknownText_0x1c0609", ROMX
 UnknownText_0x1c0609::
 	text "A blinding Flash"
-	line "lights the area!@"
+	line "lights the area!"
 	text_waitbutton
 	text_end
 
@@ -2258,7 +2259,7 @@ UnknownText_0x1c099a::
 SECTION "UnknownText_0x1c09b2", ROMX
 UnknownText_0x1c09b2::
 	text "<PLAYER> got on the"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer2
 	text "."
 	done
@@ -2266,7 +2267,7 @@ UnknownText_0x1c09b2::
 SECTION "UnknownText_0x1c09c7", ROMX
 UnknownText_0x1c09c7::
 	text "<PLAYER> got off"
-	line "the @"
+	line "the "
 	text_from_ram wStringBuffer2
 	text "."
 	done
@@ -2288,7 +2289,7 @@ UnknownText_0x1c0a05::
 SECTION "UnknownText_0x1c0a1c", ROMX
 UnknownText_0x1c0a1c::
 	text "<PLAYER> found"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer3
 	text "!"
 	done
@@ -2309,7 +2310,7 @@ WhiteoutToWildText::
 
 	para "<PLAYER> panicked"
 	line "and dropped"
-	cont "¥@"
+	cont "¥"
 	deciram hMoneyTemp, 3, 7
 	text "…"
 
@@ -2326,7 +2327,7 @@ WhiteoutToTrainerText::
 	line "useable #mon!"
 
 	para "<PLAYER> paid"
-	line "¥@"
+	line "¥"
 	deciram hMoneyTemp, 3, 7
 	text " to the"
 	cont "winner…"
@@ -2344,7 +2345,7 @@ ForfeitToTrainerText::
 	line "ed the battle…"
 
 	para "<PLAYER> paid"
-	line "¥@"
+	line "¥"
 	deciram hMoneyTemp, 3, 7
 	text " to the"
 	cont "winner…"
@@ -2393,10 +2394,10 @@ UnknownText_0x1c0ba5::
 
 SECTION "UnknownText_0x1c0bbb", ROMX
 UnknownText_0x1c0bbb::
-	text "Throw away @"
+	text "Throw away "
 	deciram wItemQuantityChangeBuffer, 1, 2
 	text_start
-	line "@"
+	line ""
 	text_from_ram wStringBuffer2
 	text "(s)?"
 	done
@@ -2404,7 +2405,7 @@ UnknownText_0x1c0bbb::
 SECTION "UnknownText_0x1c0bd8", ROMX
 UnknownText_0x1c0bd8::
 	text "Threw away"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer2
 	text "(s)."
 	prompt
@@ -2425,7 +2426,7 @@ Text_YouDontHaveAPkmn::
 SECTION "UnknownText_0x1c0c2e", ROMX
 UnknownText_0x1c0c2e::
 	text "Registered the"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer2
 	text "."
 	prompt
@@ -2433,7 +2434,7 @@ UnknownText_0x1c0c2e::
 SECTION "UnregisteredItemText", ROMX
 UnregisteredItemText::
 	text "Unregistered the"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer2
 	text "."
 	prompt
@@ -2509,7 +2510,7 @@ SECTION "UnknownText_0x1c0dba", ROMX
 UnknownText_0x1c0dba::
 	text_from_ram wStringBuffer1
 	text " came"
-	line "out of its Egg!@"
+	line "out of its Egg!"
 	play_sound SFX_CAUGHT_MON
 	text_waitbutton
 	text_end
@@ -2517,14 +2518,14 @@ UnknownText_0x1c0dba::
 SECTION "UnknownText_0x1c0dd8", ROMX
 UnknownText_0x1c0dd8::
 	text "Give a nickname to"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer1
 	text "?"
 	done
 
 SECTION "UnknownText_0x1c0df3", ROMX
 UnknownText_0x1c0df3::
-	text "It's @"
+	text "It's "
 	text_from_ram wBreedMon2Nick
 	text_start
 	line "that was left with"
@@ -2533,7 +2534,7 @@ UnknownText_0x1c0df3::
 
 SECTION "UnknownText_0x1c0e24", ROMX
 UnknownText_0x1c0e24::
-	text "It's @"
+	text "It's "
 	text_from_ram wBreedMon1
 	text_start
 	line "that was left with"
@@ -2543,7 +2544,7 @@ UnknownText_0x1c0e24::
 SECTION "UnknownText_0x1c0e6f", ROMX
 UnknownText_0x1c0e6f::
 	text "It has no interest"
-	line "in @"
+	line "in "
 	text_from_ram wStringBuffer1
 	text "."
 	prompt
@@ -2551,7 +2552,7 @@ UnknownText_0x1c0e6f::
 SECTION "UnknownText_0x1c0e8d", ROMX
 UnknownText_0x1c0e8d::
 	text "It appears to care"
-	line "for @"
+	line "for "
 	text_from_ram wStringBuffer1
 	text "."
 	prompt
@@ -2559,7 +2560,7 @@ UnknownText_0x1c0e8d::
 SECTION "UnknownText_0x1c0eac", ROMX
 UnknownText_0x1c0eac::
 	text "It's friendly with"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer1
 	text "."
 	prompt
@@ -2567,7 +2568,7 @@ UnknownText_0x1c0eac::
 SECTION "UnknownText_0x1c0ec6", ROMX
 UnknownText_0x1c0ec6::
 	text "It shows interest"
-	line "in @"
+	line "in "
 	text_from_ram wStringBuffer1
 	text "."
 	prompt
@@ -2642,7 +2643,7 @@ UnknownText_0x1c102b::
 
 SECTION "UnknownText_0x1c10c0", ROMX
 UnknownText_0x1c10c0::
-	text "Caught @"
+	text "Caught "
 	text_from_ram wStringBuffer1
 	text "!"
 	prompt
@@ -2655,7 +2656,7 @@ UnknownText_0x1c10cf::
 SECTION "UnknownText_0x1c10dd", ROMX
 UnknownText_0x1c10dd::
 	text "You already caught"
-	line "a @"
+	line "a "
 	text_from_ram wStringBuffer1
 	text "."
 	prompt
@@ -2663,15 +2664,15 @@ UnknownText_0x1c10dd::
 SECTION "ContestJudging_FirstPlaceText", ROMX
 ContestJudging_FirstPlaceText::
 	text "This Bug-Catching"
-	line "Contest winner is@"
+	line "Contest winner is"
 	interpret_data
 	text "…"
 
-	para "@"
+	para ""
 	text_from_ram wBugContestWinnerName
 	text ","
 	line "who caught a"
-	cont "@"
+	cont ""
 	text_from_ram wStringBuffer1
 	text "!@"
 	text_end
@@ -2681,7 +2682,7 @@ ContestJudging_FirstPlaceScoreText::
 	text_start
 
 	para "The winning score"
-	line "was @"
+	line "was "
 	deciram wBugContestFirstPlaceScore, 2, 3
 	text " points!"
 	prompt
@@ -2689,11 +2690,11 @@ ContestJudging_FirstPlaceScoreText::
 SECTION "ContestJudging_SecondPlaceText", ROMX
 ContestJudging_SecondPlaceText::
 	text "Placing second was"
-	line "@"
+	line ""
 	text_from_ram wBugContestWinnerName
 	text ","
 	para "who caught a"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer1
 	text "!@"
 	text_end
@@ -2702,7 +2703,7 @@ SECTION "ContestJudging_SecondPlaceScoreText", ROMX
 ContestJudging_SecondPlaceScoreText::
 	text_start
 	para "The score was"
-	line "@"
+	line ""
 	deciram wBugContestSecondPlaceScore, 2, 3
 	text " points!"
 	prompt
@@ -2710,11 +2711,11 @@ ContestJudging_SecondPlaceScoreText::
 SECTION "ContestJudging_ThirdPlaceText", ROMX
 ContestJudging_ThirdPlaceText::
 	text "Placing third was"
-	line "@"
+	line ""
 	text_from_ram wBugContestWinnerName
 	text ","
 	para "who caught a"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer1
 	text "!@"
 	text_end
@@ -2723,7 +2724,7 @@ SECTION "ContestJudging_ThirdPlaceScoreText", ROMX
 ContestJudging_ThirdPlaceScoreText::
 	text_start
 	para "The score was"
-	line "@"
+	line ""
 	deciram wBugContestThirdPlaceScore, 2, 3
 	text " points!"
 	prompt
@@ -2734,7 +2735,7 @@ UnknownText_0x1c1203::
 	line "that Magikarp."
 
 	para "…Hm, it measures"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer1
 	text "."
 	prompt
@@ -2742,10 +2743,10 @@ UnknownText_0x1c1203::
 SECTION "UnknownText_0x1c123a", ROMX
 UnknownText_0x1c123a::
 	text "Current Record"
-	para "@"
+	para ""
 	text_from_ram wStringBuffer1
 	text " caught by"
-	line "@"
+	line ""
 	text_from_ram wMagikarpRecordHoldersName
 	text_waitbutton
 	text_end
@@ -2757,7 +2758,7 @@ UnknownText_0x1c1261::
 	para "We have a match"
 	line "with the ID number"
 
-	para "of @"
+	para "of "
 	text_from_ram wStringBuffer1
 	text " in"
 	line "your party."
@@ -2770,7 +2771,7 @@ UnknownText_0x1c12ae::
 	para "We have a match"
 	line "with the ID number"
 
-	para "of @"
+	para "of "
 	text_from_ram wStringBuffer1
 	text " in"
 	line "your PC Box."
@@ -2779,7 +2780,7 @@ UnknownText_0x1c12ae::
 SECTION "UnknownText_0x1c12fc", ROMX
 UnknownText_0x1c12fc::
 	text "Give a nickname to"
-	line "the @"
+	line "the "
 	text_from_ram wStringBuffer1
 	text " you"
 	cont "received?"
@@ -2812,10 +2813,10 @@ _KrissPCHowManyWithdrawText::
 
 SECTION "_KrissPCWithdrewItemsText", ROMX
 _KrissPCWithdrewItemsText::
-	text "Withdrew @"
+	text "Withdrew "
 	deciram wItemQuantityChangeBuffer, 1, 2
 	text_start
-	line "@"
+	line ""
 	text_from_ram wStringBuffer2
 	text "(s)."
 	prompt
@@ -2845,10 +2846,10 @@ _KrissPCHowManyDepositText::
 
 SECTION "_KrissPCDepositItemsText", ROMX
 _KrissPCDepositItemsText::
-	text "Deposited @"
+	text "Deposited "
 	deciram wItemQuantityChangeBuffer, 1, 2
 	text_start
-	line "@"
+	line ""
 	text_from_ram wStringBuffer2
 	text "(s)."
 	prompt
@@ -2918,7 +2919,7 @@ SECTION "_OakPCText3", ROMX
 _OakPCText3::
 	text_from_ram wStringBuffer3
 	text " #mon seen"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer4
 	text " #mon owned"
 
@@ -3109,17 +3110,17 @@ UnknownText_0x1c1a6c::
 SECTION "UnknownText_0x1c1a90", ROMX
 UnknownText_0x1c1a90::
 	text "Toss out how many"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer2
 	text "(s)?"
 	done
 
 SECTION "UnknownText_0x1c1aad", ROMX
 UnknownText_0x1c1aad::
-	text "Throw away @"
+	text "Throw away "
 	deciram wItemQuantityChangeBuffer, 1, 2
 	text_start
-	line "@"
+	line ""
 	text_from_ram wStringBuffer2
 	text "(s)?"
 	done
@@ -3127,7 +3128,7 @@ UnknownText_0x1c1aad::
 SECTION "UnknownText_0x1c1aca", ROMX
 UnknownText_0x1c1aca::
 	text "Discarded"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer1
 	text "(s)."
 	prompt
@@ -3141,25 +3142,25 @@ UnknownText_0x1c1b03::
 
 SECTION "UnknownText_0x1c1b2c", ROMX
 UnknownText_0x1c1b2c::
-	text "Took @"
+	text "Took "
 	text_from_ram wMonOrItemNameBuffer
 	text "'s"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer1
 	text " and"
 
 	para "made it hold"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer2
 	text "."
 	prompt
 
 SECTION "UnknownText_0x1c1b57", ROMX
 UnknownText_0x1c1b57::
-	text "Made @"
+	text "Made "
 	text_from_ram wMonOrItemNameBuffer
 	text_start
-	line "hold @"
+	line "hold "
 	text_from_ram wStringBuffer2
 	text "."
 	prompt
@@ -3185,10 +3186,10 @@ UnknownText_0x1c1baa::
 
 SECTION "UnknownText_0x1c1bc4", ROMX
 UnknownText_0x1c1bc4::
-	text "Took @"
+	text "Took "
 	text_from_ram wStringBuffer1
 	text_start
-	line "from @"
+	line "from "
 	text_from_ram wMonOrItemNameBuffer
 	text "."
 	prompt
@@ -3199,7 +3200,7 @@ UnknownText_0x1c1bdc::
 	text " is"
 	line "already holding"
 
-	para "@"
+	para ""
 	text_from_ram wStringBuffer1
 	text "."
 	line "Switch items?"
@@ -3220,7 +3221,7 @@ UnknownText_0x1c1c22::
 SECTION "UnknownText_0x1c1c47", ROMX
 UnknownText_0x1c1c47::
 	text "Mail detached from"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer1
 	text "."
 	prompt
@@ -3291,8 +3292,8 @@ _ElmText2::
 	text "This world is in-"
 	line "habited by crea-"
 	cont "tures that we call"
-	cont "#mon.@"
-	text_end
+	cont "#mon."
+	done
 
 SECTION "_ElmText4", ROMX
 _ElmText4::
@@ -3398,7 +3399,7 @@ UnknownText_0x1c41b1::
 SECTION "UnknownText_0x1c41e6", ROMX
 UnknownText_0x1c41e6::
 	text "Your friend's"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer1
 	text " appears"
 	cont "to be abnormal!"
@@ -3406,10 +3407,10 @@ UnknownText_0x1c41e6::
 
 SECTION "UnknownText_0x1c4212", ROMX
 UnknownText_0x1c4212::
-	text "Trade @"
+	text "Trade "
 	text_from_ram wd004
 	text_start
-	line "for @"
+	line "for "
 	text_from_ram wStringBuffer1
 	text "?"
 	done
@@ -3477,7 +3478,7 @@ _ObjectEventText::
 SECTION "UnknownText_0x1c4719", ROMX
 UnknownText_0x1c4719::
 	text "<PLAYER> received"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer4
 	text "."
 	done
@@ -3485,17 +3486,17 @@ UnknownText_0x1c4719::
 SECTION "UnknownText_0x1c472c", ROMX
 UnknownText_0x1c472c::
 	text "<PLAYER> put the"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer1
 	text " in"
-	cont "the @"
+	cont "the "
 	text_from_ram wStringBuffer3
 	text "."
 	prompt
 
 SECTION "UnknownText_0x1c474b", ROMX
 UnknownText_0x1c474b::
-	text "The @"
+	text "The "
 	text_from_ram wStringBuffer3
 	text_start
 	line "is full…"
@@ -3504,7 +3505,7 @@ UnknownText_0x1c474b::
 SECTION "UnknownText_0x1c4b92", ROMX
 UnknownText_0x1c4b92::
 	text "Congratulations!"
-	line "Your @"
+	line "Your "
 	text_from_ram wStringBuffer2
 	text_end
 
@@ -3512,14 +3513,14 @@ SECTION "UnknownText_0x1c4baf", ROMX
 UnknownText_0x1c4baf::
 	text_start
 	para "evolved into"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer1
 	text "!"
 	done
 
 SECTION "UnknownText_0x1c4bc5", ROMX
 UnknownText_0x1c4bc5::
-	text "Huh? @"
+	text "Huh? "
 	text_from_ram wStringBuffer2
 	text_start
 	line "stopped evolving!"
@@ -3527,7 +3528,7 @@ UnknownText_0x1c4bc5::
 
 SECTION "UnknownText_0x1c4be3", ROMX
 UnknownText_0x1c4be3::
-	text "What? @"
+	text "What? "
 	text_from_ram wStringBuffer2
 	text_start
 	line "is evolving!"
@@ -3541,10 +3542,10 @@ UnknownText_0x1c4bfd::
 SECTION "UnknownText_0x1c4c08", ROMX
 UnknownText_0x1c4c08::
 	deciram wItemQuantityChangeBuffer, 1, 2
-	text " @"
+	text " "
 	text_from_ram wStringBuffer2
 	text "(s)"
-	line "will be ¥@"
+	line "will be ¥"
 	deciram hMoneyTemp, 3, 7
 	text "."
 	done
@@ -3573,10 +3574,10 @@ UnknownText_0x1c4ca3::
 SECTION "UnknownText_0x1c4cae", ROMX
 UnknownText_0x1c4cae::
 	deciram wItemQuantityChangeBuffer, 1, 2
-	text " @"
+	text " "
 	text_from_ram wStringBuffer2
 	text "(s)"
-	line "will be ¥@"
+	line "will be ¥"
 	deciram hMoneyTemp, 3, 7
 	text "."
 	done
@@ -3621,7 +3622,7 @@ SECTION "UnknownText_0x1c4db0", ROMX
 UnknownText_0x1c4db0::
 	text_from_ram wStringBuffer2
 	text " costs"
-	line "¥@"
+	line "¥"
 	deciram hMoneyTemp, 3, 7
 	text ". Want it?"
 	done
@@ -3670,10 +3671,10 @@ UnknownText_0x1c4e7e::
 SECTION "UnknownText_0x1c4e89", ROMX
 UnknownText_0x1c4e89::
 	deciram wItemQuantityChangeBuffer, 1, 2
-	text " @"
+	text " "
 	text_from_ram wStringBuffer2
 	text "(s)"
-	line "will cost ¥@"
+	line "will cost ¥"
 	deciram hMoneyTemp, 3, 7
 	text "."
 	done
@@ -3709,7 +3710,7 @@ UnknownText_0x1c4f33::
 SECTION "UnknownText_0x1c4f3e", ROMX
 UnknownText_0x1c4f3e::
 	text "I can pay you"
-	line "¥@"
+	line "¥"
 	deciram hMoneyTemp, 3, 7
 	text "."
 
@@ -3759,10 +3760,10 @@ UnknownText_0x1c500d::
 
 SECTION "UnknownText_0x1c502e", ROMX
 UnknownText_0x1c502e::
-	text "Got ¥@"
+	text "Got ¥"
 	deciram hMoneyTemp, 3, 7
 	text " for"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer2
 	text "(s)."
 	done
@@ -3775,12 +3776,12 @@ UnknownText_0x1c5049::
 
 SECTION "TMMartCostsThisMuchText", ROMX
 TMMartCostsThisMuchText::
-	text "@"
+	text ""
 	text_from_ram wStringBuffer2
-	text " @"
+	text " "
 	text_from_ram wStringBuffer1
 	text_start
-	line "will be ¥@"
+	line "will be ¥"
 	deciram hMoneyTemp, 3, 7
 	text "."
 	done
@@ -3798,10 +3799,10 @@ BTMartHowMayIHelpYouText::
 SECTION "BTMartCostsThisMuchText", ROMX
 BTMartCostsThisMuchText::
 	deciram wItemQuantityChangeBuffer, 1, 2
-	text " @"
+	text " "
 	text_from_ram wStringBuffer1
 	text "(s)"
-	line "will cost @"
+	line "will cost "
 	deciram hMoneyTemp, 3, 3
 	text " BP."
 	done
@@ -3850,7 +3851,7 @@ UnknownText_0x1c5092::
 SECTION "UnknownText_0x1c509f", ROMX
 UnknownText_0x1c509f::
 	text "lined up!"
-	line "Won @"
+	line "Won "
 	text_from_ram wStringBuffer2
 	text " coins!"
 	done
@@ -3915,9 +3916,9 @@ SECTION "UnknownText_0x1c5660", ROMX
 UnknownText_0x1c5660::
 	text_from_ram wMonOrItemNameBuffer
 	text " learned"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer2
-	text "!@"
+	text "!"
 	play_sound SFX_DEX_FANFARE_50_79
 	text_waitbutton
 	text_end
@@ -3931,7 +3932,7 @@ UnknownText_0x1c5678::
 SECTION "UnknownText_0x1c5699", ROMX
 UnknownText_0x1c5699::
 	text "Stop learning"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer2
 	text "?"
 	done
@@ -3941,7 +3942,7 @@ UnknownText_0x1c56af::
 	text_from_ram wMonOrItemNameBuffer
 	text_start
 	line "did not learn"
-	cont "@"
+	cont ""
 	text_from_ram wStringBuffer2
 	text "."
 	prompt
@@ -3951,32 +3952,32 @@ UnknownText_0x1c56c9::
 	text_from_ram wMonOrItemNameBuffer
 	text_start
 	line "wants to learn"
-	cont "@"
+	cont ""
 	text_from_ram wStringBuffer2
 	text "!"
 
 	para "Should it forget"
 	line "an old move for"
-	cont "@"
+	cont ""
 	text_from_ram wStringBuffer2
 	text "?"
 	done
 
 SECTION "UnknownText_0x1c5740", ROMX
 UnknownText_0x1c5740::
-	text "1, 2 and…@"
+	text "1, 2 and…"
 	interpret_data
 	text_end
 
 SECTION "UnknownText_0x1c574e", ROMX
 UnknownText_0x1c574e::
-	text " Poof!@"
+	text " Poof!"
 	interpret_data
 	text_start
-	para "@"
+	para ""
 	text_from_ram wMonOrItemNameBuffer
 	text " forgot"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer1
 	text "."
 
@@ -4185,10 +4186,10 @@ UnknownText_0x1c5afa::
 
 SECTION "UnknownText_0x1c5b17", ROMX
 UnknownText_0x1c5b17::
-	text "Gotcha! @"
+	text "Gotcha! "
 	text_from_ram wEnemyMonNick
 	text_start
-	line "was caught!@"
+	line "was caught!"
 	play_sound SFX_CAUGHT_MON
 	text_end
 
@@ -4209,7 +4210,7 @@ UnknownText_0x1c5b53::
 	text_from_ram wEnemyMonNick
 	text "'s data"
 	line "was newly added to"
-	cont "the #dex.@"
+	cont "the #dex."
 	play_sound SFX_SLOT_MACHINE_START
 	text_waitbutton
 	text_end
@@ -4217,7 +4218,7 @@ UnknownText_0x1c5b53::
 SECTION "UnknownText_0x1c5b7f", ROMX
 UnknownText_0x1c5b7f::
 	text "Give a nickname to"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer1
 	text "?"
 	done
@@ -4227,7 +4228,7 @@ _ItemHappinessRoseButStatFellText::
 	text_from_ram wStringBuffer1
 	text " became"
 	line "friendly. Base"
-	cont "@"
+	cont ""
 	text_from_ram wStringBuffer2
 	text " fell!"
 	prompt
@@ -4236,7 +4237,7 @@ SECTION "_ItemStatRoseText", ROMX
 _ItemStatRoseText::
 	text_from_ram wStringBuffer1
 	text "'s"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer2
 	text " rose."
 	prompt
@@ -4257,7 +4258,7 @@ Text_RepelUsedEarlierIsStillInEffect::
 SECTION "UnknownText_0x1c5c5e", ROMX
 UnknownText_0x1c5c5e::
 	text "You now have"
-	line "@"
+	line ""
 	deciram wBlueCardBalance, 1, 2
 	text " points."
 	done
@@ -4265,7 +4266,7 @@ UnknownText_0x1c5c5e::
 SECTION "UnknownText_0x1c5c7b", ROMX
 UnknownText_0x1c5c7b::
 	text "Coins:"
-	line "@"
+	line ""
 	deciram wCoins, 2, 5
 	text_end
 
@@ -4378,7 +4379,7 @@ Text_NuzlockeReviveFailure::
 SECTION "UnknownText_0x1c5e68", ROMX
 UnknownText_0x1c5e68::
 	text "<PLAYER> used the"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer2
 	text "."
 	done
@@ -4387,7 +4388,7 @@ SECTION "UnknownText_0x1c5ea8", ROMX
 UnknownText_0x1c5ea8::
 	text_from_ram wStringBuffer1
 	text " knows"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer2
 	text "."
 	prompt
@@ -4401,7 +4402,7 @@ UnknownText_0x1c5eba::
 SECTION "UnknownText_0x1c5eda", ROMX
 UnknownText_0x1c5eda::
 	text "Oh, make it forget"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer1
 	text "?"
 	done
@@ -4534,7 +4535,7 @@ WonderTradePromptText::
 SECTION "WonderTradeConfirmText", ROMX
 WonderTradeConfirmText::
 	text "Offer to trade"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer1
 	text "?"
 	done

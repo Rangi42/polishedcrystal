@@ -1863,8 +1863,8 @@ ApricornBox:
 	next1 " Wht   Blk"
 	next1 "   ×     ×"
 	next1 " Pnk"
-	next1 "   ×@"
-	text_end
+	next1 "   ×"
+	done
 
 PrintAprValues:
 	lb bc, 1, 2
@@ -2294,10 +2294,10 @@ Ball_ReplacePartyMonCaughtBall:
 	jp PrintText
 
 BallReplacedText:
-	text "Put @"
+	text "Put "
 	text_from_ram wStringBuffer1
 	text " in"
-	line "the @"
+	line "the "
 	text_from_ram wStringBuffer2
 	text "."
 	prompt
@@ -2662,7 +2662,7 @@ AbilityCap:
 
 ChangeAbilityToText:
 	text "Change ability to"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer1
 	text "?"
 	done

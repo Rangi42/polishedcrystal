@@ -195,7 +195,7 @@ MovementData_0x6a2e5:
 	step_end
 
 UnknownText_0x6a2eb:
-	text "Today's @"
+	text "Today's "
 	text_from_ram wStringBuffer3
 	text "."
 	line "That means the"
@@ -262,7 +262,7 @@ UnknownText_0x6a4c6:
 	line "one #mon."
 
 	para "You'll have to use"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer3
 	text ", the"
 
@@ -346,7 +346,7 @@ UnknownText_0x6a71f:
 	done
 
 UnknownText_0x6a79a:
-	text "You still have @"
+	text "You still have "
 	text_from_ram wStringBuffer3
 	text_start
 	line "minute(s) left."

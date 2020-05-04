@@ -146,7 +146,9 @@ PlaceNextChar::
 	jr nc, _PlaceSpecialChar
 	cp NGRAMS_START
 	jr nc, _PlaceNgramChar
-	; this is actually a command character; we shouldn't be here
+	dec de
+	jp FinishString
+
 SpaceChar::
 	ld a, " "
 _PlaceLiteralChar:
@@ -201,19 +203,15 @@ SpecialCharacters:
 	dw PlaceUsersName   ; "<USER>"
 	dw PlaceEnemysName  ; "<ENEMY>"
 
-LineBreak::
-	pop hl
-	ld bc, SCREEN_WIDTH
-	add hl, bc
-	push hl
-	jp NextChar
-
 NextLineChar::
 	ld a, [wTextboxFlags]
 	bit NO_LINE_SPACING, a
-	jr nz, LineBreak
-	pop hl
 	ld bc, SCREEN_WIDTH * 2
+	jr z, LineBreak.ok
+LineBreak::
+	ld bc, SCREEN_WIDTH
+.ok
+	pop hl
 	add hl, bc
 	push hl
 	jp NextChar
@@ -409,16 +407,14 @@ DoTextUntilTerminator::
 	cp NGRAMS_START
 	jr nc, Text_Started
 	push hl
-	push bc
-	ld c, a
-	ld b, 0
+	ld e, a
+	ld d, 0
 	ld hl, TextCommands
-	add hl, bc
-	add hl, bc
+	add hl, de
+	add hl, de
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	pop bc
 	pop hl
 	; jp de
 	push de

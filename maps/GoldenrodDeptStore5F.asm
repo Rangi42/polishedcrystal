@@ -126,7 +126,7 @@ UnknownText_0x56279:
 
 MysteryGiftGirl_GiveItemText:
 	text "<PLAYER> received"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer4
 	text "!"
 	done

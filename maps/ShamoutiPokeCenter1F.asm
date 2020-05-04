@@ -193,7 +193,7 @@ ShamoutiPokeCenter1FIvyScript:
 
 .ReceivedKantoStarterText:
 	text "<PLAYER> received"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer3
 	text "!"
 	done
@@ -208,7 +208,7 @@ ShamoutiPokeCenter1FIvyScript:
 
 	para "know you'll take"
 	line "good care of that"
-	cont "@"
+	cont ""
 	text_from_ram wStringBuffer3
 	text "."
 

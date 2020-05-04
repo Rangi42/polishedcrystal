@@ -84,7 +84,7 @@ ProfOaksAide1UhOhText:
 	text "Let's see…"
 	line "Uh-oh! You've only"
 
-	para "caught @"
+	para "caught "
 	deciram wd003, 1, 3
 	text " kinds"
 	line "of #mon."
@@ -98,7 +98,7 @@ ProfOaksAide1HereYouGoText:
 	text "Let's see…"
 	line "Great job! You've"
 
-	para "caught @"
+	para "caught "
 	deciram wd003, 1, 3
 	text " kinds"
 	line "of #mon."

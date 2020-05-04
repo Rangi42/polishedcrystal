@@ -1,5 +1,5 @@
 JoseAskNumber1Text:
-	text "If my @"
+	text "If my "
 	text_from_ram wStringBuffer4
 	text_start
 	line "sees anything"

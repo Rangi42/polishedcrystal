@@ -207,13 +207,13 @@ Route23RisingBadgeTriggerScript:
 
 Route23OfficerNoBadgeText:
 	text "You don't have the"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer3
 	text " yet!"
 
 	para "You have to have"
 	line "it to get to the"
-	cont "#mon League!@"
+	cont "#mon League!"
 	done
 
 Route23OfficerHaveBadgeScript:
@@ -228,7 +228,7 @@ Route23OfficerHaveBadgeScript:
 
 .SeeBadgeText:
 	text "Oh! That is the"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer3
 	text "!"
 	done
@@ -236,7 +236,7 @@ Route23OfficerHaveBadgeScript:
 Route23OfficerNeedBadgeText:
 	text "You can pass here"
 	line "only if you have"
-	cont "the @"
+	cont "the "
 	text_from_ram wStringBuffer3
 	text "."
 	done

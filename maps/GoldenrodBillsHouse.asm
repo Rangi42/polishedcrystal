@@ -351,7 +351,7 @@ BillsGrandpaYouDontHaveItTextText:
 
 BillsGrandpaShownPokemonText:
 	text "Ah, so that is"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer3
 	text "?"
 

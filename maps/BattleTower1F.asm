@@ -331,7 +331,7 @@ Text_ConfirmBattleRoomLevel:
 	line "qualify for a"
 
 	para "Battle Room at"
-	line "<LV>@"
+	line "<LV>"
 	deciram hScriptVar, 1, 2
 	text "0. Is that OK?"
 	done

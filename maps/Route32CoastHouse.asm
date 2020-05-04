@@ -61,7 +61,7 @@ GourmetManiacScript:
 	line "good!"
 
 	para "Would you accept"
-	line "¥@"
+	line "¥"
 	deciram hMoneyTemp, 3, 7
 	text " for it?"
 	done

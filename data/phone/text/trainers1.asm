@@ -1,6 +1,6 @@
 UnknownText_0x1b4dc5:
 	text "Hello. This is"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer3
 	text "…"
 
@@ -10,7 +10,7 @@ UnknownText_0x1b4dc5:
 
 UnknownText_0x1b4ded:
 	text "Hello. This is"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer3
 	text "…"
 
@@ -20,7 +20,7 @@ UnknownText_0x1b4ded:
 
 UnknownText_0x1b4e16:
 	text "Hello. This is"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer3
 	text "…"
 
@@ -32,7 +32,7 @@ UnknownText_0x1b4e3e:
 	text "<PLAYER>, good"
 	line "morning!"
 
-	para "It's me, @"
+	para "It's me, "
 	text_from_ram wStringBuffer3
 	text "."
 	line "How are you doing?"
@@ -41,7 +41,7 @@ UnknownText_0x1b4e3e:
 UnknownText_0x1b4e72:
 	text "<PLAYER>, howdy!"
 
-	para "It's me, @"
+	para "It's me, "
 	text_from_ram wStringBuffer3
 	text "."
 	line "Isn't it nice out?"
@@ -51,7 +51,7 @@ UnknownText_0x1b4e9e:
 	text "<PLAYER>, good"
 	line "evening!"
 
-	para "It's me, @"
+	para "It's me, "
 	text_from_ram wStringBuffer3
 	text "."
 	line "Got a minute?"
@@ -61,7 +61,7 @@ UnknownText_0x1b4ecd:
 	text "How are your"
 	line "#mon doing?"
 
-	para "My @"
+	para "My "
 	text_from_ram wStringBuffer4
 	text " is"
 	line "so curious, it's a"
@@ -72,7 +72,7 @@ UnknownText_0x1b4ecd:
 
 UnknownText_0x1b4f21:
 	text "Hello, this is"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer3
 	text "."
 
@@ -82,7 +82,7 @@ UnknownText_0x1b4f21:
 
 UnknownText_0x1b4f4d:
 	text "Hello, this is"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer3
 	text "."
 
@@ -92,7 +92,7 @@ UnknownText_0x1b4f4d:
 
 UnknownText_0x1b4f75:
 	text "Hello, this is"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer3
 	text "."
 
@@ -104,7 +104,7 @@ UnknownText_0x1b4fa1:
 	text "Hello, <PLAYER>."
 	line "Good morning."
 
-	para "This is @"
+	para "This is "
 	text_from_ram wStringBuffer3
 	text "."
 	line "Were you asleep?"
@@ -112,7 +112,7 @@ UnknownText_0x1b4fa1:
 
 UnknownText_0x1b4fda:
 	text "Hi, <PLAYER>."
-	line "This is @"
+	line "This is "
 	text_from_ram wStringBuffer3
 	text "."
 
@@ -121,7 +121,7 @@ UnknownText_0x1b4fda:
 
 UnknownText_0x1b5004:
 	text "Hi, <PLAYER>."
-	line "This is @"
+	line "This is "
 	text_from_ram wStringBuffer3
 	text "."
 
@@ -132,7 +132,7 @@ UnknownText_0x1b502b:
 	text "Keeping your"
 	line "#mon happy?"
 
-	para "My @"
+	para "My "
 	text_from_ram wStringBuffer4
 	text " is"
 	line "healthy. It eats a"
@@ -141,7 +141,7 @@ UnknownText_0x1b502b:
 
 UnknownText_0x1b5073:
 	text "Yeah, this is"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer3
 	text "."
 
@@ -151,7 +151,7 @@ UnknownText_0x1b5073:
 
 UnknownText_0x1b509b:
 	text "Yeah, this is"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer3
 	text "."
 
@@ -161,7 +161,7 @@ UnknownText_0x1b509b:
 
 UnknownText_0x1b50c2:
 	text "Yeah, this is"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer3
 	text "."
 
@@ -173,7 +173,7 @@ UnknownText_0x1b50e9:
 	text "Yo, <PLAYER>!"
 	line "You awake?"
 
-	para "It's me, @"
+	para "It's me, "
 	text_from_ram wStringBuffer3
 	text "!"
 	line "How's it going?"
@@ -183,7 +183,7 @@ UnknownText_0x1b511a:
 	text "Yo, <PLAYER>! You"
 	line "free right now?"
 
-	para "It's me, @"
+	para "It's me, "
 	text_from_ram wStringBuffer3
 	text "!"
 	line "How's it going?"
@@ -193,7 +193,7 @@ UnknownText_0x1b5154:
 	text "Yo, <PLAYER>!"
 	line "Were you asleep?"
 
-	para "It's me, @"
+	para "It's me, "
 	text_from_ram wStringBuffer3
 	text "!"
 	line "How's it going?"
@@ -206,7 +206,7 @@ UnknownText_0x1b518b:
 	para "My #mon are a"
 	line "bit too energetic."
 
-	para "@"
+	para ""
 	text_from_ram wStringBuffer4
 	text ","
 	line "especially."
@@ -220,7 +220,7 @@ UnknownText_0x1b518b:
 	done
 
 UnknownText_0x1b522b:
-	text "My @"
+	text "My "
 	text_from_ram wStringBuffer4
 	text "'s"
 	line "looking tougher"
@@ -232,7 +232,7 @@ UnknownText_0x1b522b:
 
 UnknownText_0x1b5270:
 	text "Hello, this is"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer3
 	text " speaking…"
 
@@ -242,7 +242,7 @@ UnknownText_0x1b5270:
 
 UnknownText_0x1b52a5:
 	text "Hello, this is"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer3
 	text " speaking…"
 
@@ -251,7 +251,7 @@ UnknownText_0x1b52a5:
 
 UnknownText_0x1b52cc:
 	text "Hello, this is"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer3
 	text " speaking…"
 
@@ -263,7 +263,7 @@ UnknownText_0x1b5301:
 	text "<PLAYER>, good"
 	line "morning!"
 
-	para "It's me, @"
+	para "It's me, "
 	text_from_ram wStringBuffer3
 	text "."
 	line "How are you doing?"
@@ -272,7 +272,7 @@ UnknownText_0x1b5301:
 UnknownText_0x1b5335:
 	text "Hi, <PLAYER>!"
 
-	para "It's me, @"
+	para "It's me, "
 	text_from_ram wStringBuffer3
 	text "."
 	line "How are you doing?"
@@ -282,7 +282,7 @@ UnknownText_0x1b535f:
 	text "<PLAYER>, good"
 	line "evening!"
 
-	para "It's me, @"
+	para "It's me, "
 	text_from_ram wStringBuffer3
 	text "."
 	line "How are you doing?"
@@ -292,7 +292,7 @@ UnknownText_0x1b5393:
 	text "How are your"
 	line "#mon doing?"
 
-	para "My @"
+	para "My "
 	text_from_ram wStringBuffer4
 	text "'s"
 	line "doing as great as"
@@ -305,7 +305,7 @@ UnknownText_0x1b5393:
 
 UnknownText_0x1b53f7:
 	text "Hello, this is"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer3
 	text "."
 	para "Oh, <PLAYER>."
@@ -315,7 +315,7 @@ UnknownText_0x1b53f7:
 
 UnknownText_0x1b5424:
 	text "Hello, this is"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer3
 	text "."
 
@@ -324,7 +324,7 @@ UnknownText_0x1b5424:
 
 UnknownText_0x1b5446:
 	text "Hello, this is"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer3
 	text "."
 
@@ -336,7 +336,7 @@ UnknownText_0x1b5472:
 	text "Good morning,"
 	line "<PLAYER>!"
 
-	para "This is @"
+	para "This is "
 	text_from_ram wStringBuffer3
 	text "."
 	line "Were you sleeping?"
@@ -344,7 +344,7 @@ UnknownText_0x1b5472:
 
 UnknownText_0x1b54a6:
 	text "<PLAYER>, hi!"
-	line "This is @"
+	line "This is "
 	text_from_ram wStringBuffer3
 	text "."
 
@@ -356,7 +356,7 @@ UnknownText_0x1b54d4:
 	text "Hi, <PLAYER>."
 	line "Good evening."
 
-	para "This is @"
+	para "This is "
 	text_from_ram wStringBuffer3
 	text "."
 
@@ -383,7 +383,7 @@ UnknownText_0x1b5510:
 
 UnknownText_0x1b55ae:
 	text "Hello, this is"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer3
 	text "…"
 
@@ -393,7 +393,7 @@ UnknownText_0x1b55ae:
 
 UnknownText_0x1b55da:
 	text "Hello, this is"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer3
 	text "…"
 
@@ -402,7 +402,7 @@ UnknownText_0x1b55da:
 
 UnknownText_0x1b55fc:
 	text "Hello, this is"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer3
 	text "…"
 
@@ -414,7 +414,7 @@ UnknownText_0x1b5628:
 	text "Oh, <PLAYER>?"
 
 	para "Tweet! Yeah, it's"
-	line "me, @"
+	line "me, "
 	text_from_ram wStringBuffer3
 	text "."
 	done
@@ -423,7 +423,7 @@ UnknownText_0x1b564c:
 	text "Oh, <PLAYER>?"
 
 	para "Tweet! Yeah, it's"
-	line "me, @"
+	line "me, "
 	text_from_ram wStringBuffer3
 	text "."
 	done
@@ -432,7 +432,7 @@ UnknownText_0x1b5670:
 	text "Oh, <PLAYER>?"
 
 	para "Tweet! Yeah, it's"
-	line "me, @"
+	line "me, "
 	text_from_ram wStringBuffer3
 	text "."
 	done
@@ -441,7 +441,7 @@ UnknownText_0x1b5694:
 	text "Are your #mon"
 	line "still cooking?"
 
-	para "My @"
+	para "My "
 	text_from_ram wStringBuffer4
 	text " has"
 	line "too much energy."
@@ -453,7 +453,7 @@ UnknownText_0x1b5694:
 
 UnknownText_0x1b5702:
 	text "Hello, this is"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer3
 	text "…"
 
@@ -463,7 +463,7 @@ UnknownText_0x1b5702:
 
 UnknownText_0x1b572e:
 	text "Hello, this is"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer3
 	text "…"
 
@@ -473,7 +473,7 @@ UnknownText_0x1b572e:
 
 UnknownText_0x1b575a:
 	text "Hello, this is"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer3
 	text "…"
 
@@ -485,7 +485,7 @@ UnknownText_0x1b5786:
 	text "You're slow! Hurry"
 	line "up and answer!"
 
-	para "It's me, @"
+	para "It's me, "
 	text_from_ram wStringBuffer3
 	text "!"
 	done
@@ -494,7 +494,7 @@ UnknownText_0x1b57b7:
 	text "You're slow! Hurry"
 	line "up and answer!"
 
-	para "It's me, @"
+	para "It's me, "
 	text_from_ram wStringBuffer3
 	text "!"
 	done
@@ -503,7 +503,7 @@ UnknownText_0x1b57e8:
 	text "You're slow! Hurry"
 	line "up and answer!"
 
-	para "It's me, @"
+	para "It's me, "
 	text_from_ram wStringBuffer3
 	text "!"
 	done
@@ -525,7 +525,7 @@ UnknownText_0x1b5819:
 	done
 
 UnknownText_0x1b589a:
-	text "Hi, @"
+	text "Hi, "
 	text_from_ram wStringBuffer3
 	text " here!"
 
@@ -534,7 +534,7 @@ UnknownText_0x1b589a:
 	done
 
 UnknownText_0x1b58c2:
-	text "Hi, @"
+	text "Hi, "
 	text_from_ram wStringBuffer3
 	text " here!"
 
@@ -543,7 +543,7 @@ UnknownText_0x1b58c2:
 	done
 
 UnknownText_0x1b58ea:
-	text "Hi, @"
+	text "Hi, "
 	text_from_ram wStringBuffer3
 	text " here!"
 
@@ -555,7 +555,7 @@ UnknownText_0x1b5912:
 	text "Yo, <PLAYER>!"
 	line "How're you doing?"
 
-	para "This is @"
+	para "This is "
 	text_from_ram wStringBuffer3
 	text ","
 	line "got a minute?"
@@ -565,7 +565,7 @@ UnknownText_0x1b5948:
 	text "Yo, <PLAYER>! How's"
 	line "it going?"
 
-	para "This is @"
+	para "This is "
 	text_from_ram wStringBuffer3
 	text "."
 	line "Got a minute?"
@@ -575,7 +575,7 @@ UnknownText_0x1b597c:
 	text "Yo, <PLAYER>!"
 	line "How're you doing?"
 
-	para "This is @"
+	para "This is "
 	text_from_ram wStringBuffer3
 	text ","
 	line "got a minute?"
@@ -585,7 +585,7 @@ UnknownText_0x1b59b2:
 	text "How are your"
 	line "#mon doing?"
 
-	para "My @"
+	para "My "
 	text_from_ram wStringBuffer4
 	text "'s"
 	line "raring to go, just"
@@ -600,7 +600,7 @@ UnknownText_0x1b59b2:
 
 UnknownText_0x1b5a3b:
 	text "Hello? This is"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer3
 	text " speaking."
 
@@ -610,7 +610,7 @@ UnknownText_0x1b5a3b:
 
 UnknownText_0x1b5a74:
 	text "Hello? This is"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer3
 	text " speaking."
 
@@ -619,7 +619,7 @@ UnknownText_0x1b5a74:
 
 UnknownText_0x1b5a9f:
 	text "Hello? This is"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer3
 	text " speaking."
 
@@ -631,7 +631,7 @@ UnknownText_0x1b5ad8:
 	text "<PLAYER>, good"
 	line "morning!"
 
-	para "It's me, @"
+	para "It's me, "
 	text_from_ram wStringBuffer3
 	text "."
 	line "Isn't it nice out?"
@@ -640,7 +640,7 @@ UnknownText_0x1b5ad8:
 UnknownText_0x1b5b0b:
 	text "<PLAYER>, howdy!"
 
-	para "It's me, @"
+	para "It's me, "
 	text_from_ram wStringBuffer3
 	text "."
 	line "Isn't it nice out?"
@@ -650,7 +650,7 @@ UnknownText_0x1b5b37:
 	text "Good evening,"
 	line "<PLAYER>!"
 
-	para "It's me, @"
+	para "It's me, "
 	text_from_ram wStringBuffer3
 	text "."
 	line "Were you awake?"
@@ -667,7 +667,7 @@ UnknownText_0x1b5b68:
 	line "be a problem."
 
 	para "Of all my #mon,"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer4
 	text " is the"
 	cont "hardest to handle."
@@ -708,21 +708,21 @@ UnknownText_0x1b5cb6:
 
 UnknownText_0x1b5d09:
 	text "Hiya, it's Uncle"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer3
 	text "."
 	done
 
 UnknownText_0x1b5d21:
 	text "Hiya, it's Uncle"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer3
 	text "."
 	done
 
 UnknownText_0x1b5d39:
 	text "Hiya, it's Uncle"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer3
 	text "."
 	done
@@ -737,7 +737,7 @@ UnknownText_0x1b5d51:
 	done
 
 UnknownText_0x1b5d9f:
-	text "Hello, @"
+	text "Hello, "
 	text_from_ram wStringBuffer3
 	text_start
 	line "speaking."
@@ -747,7 +747,7 @@ UnknownText_0x1b5d9f:
 	done
 
 UnknownText_0x1b5dcc:
-	text "Hello, @"
+	text "Hello, "
 	text_from_ram wStringBuffer3
 	text_start
 	line "speaking."
@@ -757,7 +757,7 @@ UnknownText_0x1b5dcc:
 	done
 
 UnknownText_0x1b5df8:
-	text "Hello, @"
+	text "Hello, "
 	text_from_ram wStringBuffer3
 	text_start
 	line "speaking."
@@ -770,7 +770,7 @@ UnknownText_0x1b5e25:
 	text "Good morning,"
 	line "<PLAYER>."
 
-	para "This is @"
+	para "This is "
 	text_from_ram wStringBuffer3
 	text "."
 	line "Were you sleeping?"
@@ -778,7 +778,7 @@ UnknownText_0x1b5e25:
 
 UnknownText_0x1b5e59:
 	text "Hi, <PLAYER>."
-	line "This is @"
+	line "This is "
 	text_from_ram wStringBuffer3
 	text "."
 
@@ -790,7 +790,7 @@ UnknownText_0x1b5e8e:
 	text "Good evening,"
 	line "<PLAYER>."
 
-	para "This is @"
+	para "This is "
 	text_from_ram wStringBuffer3
 	text "."
 	line "Are you awake?"
@@ -804,7 +804,7 @@ UnknownText_0x1b5ebe:
 	line "your #mon?"
 
 	para "Me, I take my"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer4
 	text " to the"
 
@@ -819,7 +819,7 @@ UnknownText_0x1b5ebe:
 	done
 
 UnknownText_0x1b5f7a:
-	text "Yeah, @"
+	text "Yeah, "
 	text_from_ram wStringBuffer3
 	text " the"
 	line "Hiker here."
@@ -828,7 +828,7 @@ UnknownText_0x1b5f7a:
 	done
 
 UnknownText_0x1b5f9e:
-	text "Yeah, @"
+	text "Yeah, "
 	text_from_ram wStringBuffer3
 	text " the"
 	line "Hiker here."
@@ -838,7 +838,7 @@ UnknownText_0x1b5f9e:
 	done
 
 UnknownText_0x1b5fc9:
-	text "Yeah, @"
+	text "Yeah, "
 	text_from_ram wStringBuffer3
 	text " the"
 	line "Hiker here."
@@ -850,7 +850,7 @@ UnknownText_0x1b5fc9:
 UnknownText_0x1b5ff6:
 	text "Yo, <PLAYER>?"
 
-	para "This is @"
+	para "This is "
 	text_from_ram wStringBuffer3
 	text_start
 	line "the Hiker!"
@@ -860,7 +860,7 @@ UnknownText_0x1b6017:
 	text "Hey, is this"
 	line "<PLAYER>?"
 
-	para "This is @"
+	para "This is "
 	text_from_ram wStringBuffer3
 	text_start
 	line "the Hiker!"
@@ -870,7 +870,7 @@ UnknownText_0x1b6041:
 	text "<PLAYER>, you still"
 	line "awake?"
 
-	para "This is @"
+	para "This is "
 	text_from_ram wStringBuffer3
 	text_start
 	line "the Hiker!"
@@ -880,7 +880,7 @@ UnknownText_0x1b606f:
 	text "Are your #mon"
 	line "as feisty as ever?"
 
-	para "My @"
+	para "My "
 	text_from_ram wStringBuffer4
 	text " and"
 	line "me--we have energy"
@@ -894,7 +894,7 @@ UnknownText_0x1b606f:
 
 UnknownText_0x1b60f5:
 	text "Yes? This is"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer3
 	text " speaking."
 
@@ -903,7 +903,7 @@ UnknownText_0x1b60f5:
 
 UnknownText_0x1b611b:
 	text "Yes? This is"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer3
 	text " speaking."
 
@@ -913,7 +913,7 @@ UnknownText_0x1b611b:
 
 UnknownText_0x1b6149:
 	text "Yes? This is"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer3
 	text " speaking."
 
@@ -922,7 +922,7 @@ UnknownText_0x1b6149:
 
 UnknownText_0x1b616e:
 	text "Hello, this is"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer3
 	text "."
 
@@ -931,7 +931,7 @@ UnknownText_0x1b616e:
 
 UnknownText_0x1b618f:
 	text "Hello, this is"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer3
 	text "."
 
@@ -941,7 +941,7 @@ UnknownText_0x1b618f:
 
 UnknownText_0x1b61bd:
 	text "Hello, this is"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer3
 	text "."
 
@@ -965,7 +965,7 @@ UnknownText_0x1b61f2:
 
 UnknownText_0x1b626a:
 	text "Hello? This is"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer3
 	text "…"
 
@@ -975,7 +975,7 @@ UnknownText_0x1b626a:
 
 UnknownText_0x1b6296:
 	text "Hello? This is"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer3
 	text "…"
 
@@ -985,7 +985,7 @@ UnknownText_0x1b6296:
 
 UnknownText_0x1b62c5:
 	text "Hello? This is"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer3
 	text "…"
 
@@ -996,7 +996,7 @@ UnknownText_0x1b62c5:
 UnknownText_0x1b62f1:
 	text "<PLAYER>?"
 
-	para "It's @"
+	para "It's "
 	text_from_ram wStringBuffer3
 	text "."
 	line "Good morning!"
@@ -1005,7 +1005,7 @@ UnknownText_0x1b62f1:
 UnknownText_0x1b630e:
 	text "<PLAYER>?"
 
-	para "It's @"
+	para "It's "
 	text_from_ram wStringBuffer3
 	text ". Is"
 	line "this a bad time?"
@@ -1014,7 +1014,7 @@ UnknownText_0x1b630e:
 UnknownText_0x1b6331:
 	text "<PLAYER>?"
 
-	para "It's @"
+	para "It's "
 	text_from_ram wStringBuffer3
 	text "."
 	line "Got time to chat?"
@@ -1025,13 +1025,13 @@ UnknownText_0x1b6352:
 	line "still tough?"
 
 	para "I train every day"
-	line "with @"
+	line "with "
 	text_from_ram wStringBuffer4
 	text "."
 	done
 
 UnknownText_0x1b638c:
-	text "Hello? @"
+	text "Hello? "
 	text_from_ram wStringBuffer3
 	text_start
 	line "here…"
@@ -1040,7 +1040,7 @@ UnknownText_0x1b638c:
 	done
 
 UnknownText_0x1b63a8:
-	text "Hello? @"
+	text "Hello? "
 	text_from_ram wStringBuffer3
 	text_start
 	line "here…"
@@ -1049,7 +1049,7 @@ UnknownText_0x1b63a8:
 	done
 
 UnknownText_0x1b63c4:
-	text "Hello? @"
+	text "Hello? "
 	text_from_ram wStringBuffer3
 	text_start
 	line "here…"
@@ -1062,7 +1062,7 @@ UnknownText_0x1b63e3:
 	line "<PLAYER>?"
 
 	para "It's your pal,"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer3
 	text "!"
 	done
@@ -1072,7 +1072,7 @@ UnknownText_0x1b6407:
 	line "<PLAYER>?"
 
 	para "It's your buddy"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer3
 	text "!"
 	done
@@ -1082,14 +1082,14 @@ UnknownText_0x1b642c:
 	line "<PLAYER>?"
 
 	para "It's your sidekick"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer3
 	text "!"
 	done
 
 UnknownText_0x1b6454:
 	text "Yeah, hello."
-	line "This is @"
+	line "This is "
 	text_from_ram wStringBuffer3
 	text "."
 
@@ -1098,7 +1098,7 @@ UnknownText_0x1b6454:
 
 UnknownText_0x1b647e:
 	text "Yeah, hello, you"
-	line "got @"
+	line "got "
 	text_from_ram wStringBuffer3
 	text "."
 
@@ -1107,7 +1107,7 @@ UnknownText_0x1b647e:
 
 UnknownText_0x1b64a8:
 	text "Yeah, hello, you"
-	line "got @"
+	line "got "
 	text_from_ram wStringBuffer3
 	text "."
 
@@ -1116,7 +1116,7 @@ UnknownText_0x1b64a8:
 
 UnknownText_0x1b64d2:
 	text "Yeah, hello?"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer3
 	text " calling."
 
@@ -1126,7 +1126,7 @@ UnknownText_0x1b64d2:
 
 UnknownText_0x1b6506:
 	text "Yeah, hello?"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer3
 	text " calling."
 
@@ -1136,7 +1136,7 @@ UnknownText_0x1b6506:
 
 UnknownText_0x1b6539:
 	text "Yeah, hello?"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer3
 	text " calling."
 
@@ -1151,7 +1151,7 @@ UnknownText_0x1b656c:
 	done
 
 UnknownText_0x1b659d:
-	text "Yup, it's @"
+	text "Yup, it's "
 	text_from_ram wStringBuffer3
 	text "!"
 
@@ -1160,7 +1160,7 @@ UnknownText_0x1b659d:
 	done
 
 UnknownText_0x1b65c7:
-	text "Yup, it's @"
+	text "Yup, it's "
 	text_from_ram wStringBuffer3
 	text "!"
 
@@ -1168,7 +1168,7 @@ UnknownText_0x1b65c7:
 	done
 
 UnknownText_0x1b65e3:
-	text "Yup, it's @"
+	text "Yup, it's "
 	text_from_ram wStringBuffer3
 	text "!"
 
@@ -1178,21 +1178,21 @@ UnknownText_0x1b65e3:
 
 UnknownText_0x1b660d:
 	text "Hello! It's me,"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer3
 	text "!"
 	done
 
 UnknownText_0x1b6624:
 	text "Hello! It's me,"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer3
 	text "!"
 	done
 
 UnknownText_0x1b663b:
 	text "Hello! It's me,"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer3
 	text "!"
 	done
@@ -1211,7 +1211,7 @@ UnknownText_0x1b6652:
 	done
 
 UnknownText_0x1b66c8:
-	text "Hi, @"
+	text "Hi, "
 	text_from_ram wStringBuffer3
 	text " on the"
 	line "line."
@@ -1220,7 +1220,7 @@ UnknownText_0x1b66c8:
 	done
 
 UnknownText_0x1b66ec:
-	text "Hi, @"
+	text "Hi, "
 	text_from_ram wStringBuffer3
 	text " on the"
 	line "line."
@@ -1230,7 +1230,7 @@ UnknownText_0x1b66ec:
 	done
 
 UnknownText_0x1b6713:
-	text "Hi, @"
+	text "Hi, "
 	text_from_ram wStringBuffer3
 	text " on the"
 	line "line."
@@ -1243,7 +1243,7 @@ UnknownText_0x1b6738:
 	text "Uh, <PLAYER>?"
 
 	para "It's me!"
-	line "It's me, @"
+	line "It's me, "
 	text_from_ram wStringBuffer3
 	text "!"
 	done
@@ -1252,7 +1252,7 @@ UnknownText_0x1b6757:
 	text "Uh, <PLAYER>?"
 
 	para "It's me!"
-	line "It's me, @"
+	line "It's me, "
 	text_from_ram wStringBuffer3
 	text "!"
 	done
@@ -1261,13 +1261,13 @@ UnknownText_0x1b6776:
 	text "Uh, <PLAYER>?"
 
 	para "It's me!"
-	line "It's me, @"
+	line "It's me, "
 	text_from_ram wStringBuffer3
 	text "!"
 	done
 
 UnknownText_0x1b6795:
-	text "My @"
+	text "My "
 	text_from_ram wStringBuffer4
 	text " is"
 	line "so full of energy,"
@@ -1281,7 +1281,7 @@ UnknownText_0x1b6795:
 
 UnknownText_0x1b67e2:
 	text "Hello, this is"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer3
 	text "…"
 
@@ -1291,7 +1291,7 @@ UnknownText_0x1b67e2:
 
 UnknownText_0x1b680e:
 	text "Hello, this is"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer3
 	text "…"
 
@@ -1301,7 +1301,7 @@ UnknownText_0x1b680e:
 
 UnknownText_0x1b6836:
 	text "Hello, this is"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer3
 	text "…"
 
@@ -1313,7 +1313,7 @@ UnknownText_0x1b6862:
 	text "Hi, <PLAYER>, good"
 	line "morning!"
 
-	para "It's @"
+	para "It's "
 	text_from_ram wStringBuffer3
 	text "."
 	line "How are you?"
@@ -1323,7 +1323,7 @@ UnknownText_0x1b6890:
 	text "Hi, <PLAYER>, good"
 	line "day!"
 
-	para "It's @"
+	para "It's "
 	text_from_ram wStringBuffer3
 	text "."
 	line "How are you?"
@@ -1333,7 +1333,7 @@ UnknownText_0x1b68ba:
 	text "Hi, <PLAYER>, good"
 	line "evening!"
 
-	para "It's @"
+	para "It's "
 	text_from_ram wStringBuffer3
 	text "."
 	line "How are you?"
@@ -1383,7 +1383,7 @@ UnknownText_0x1b6a22:
 	text "<PLAYER> pika, good"
 	line "morning!"
 
-	para "It's @"
+	para "It's "
 	text_from_ram wStringBuffer3
 	text ", how"
 	line "pika are you?"
@@ -1393,7 +1393,7 @@ UnknownText_0x1b6a56:
 	text "<PLAYER> pika, good"
 	line "pika day!"
 
-	para "It's @"
+	para "It's "
 	text_from_ram wStringBuffer3
 	text ", how"
 	line "pika are you?"
@@ -1403,7 +1403,7 @@ UnknownText_0x1b6a8b:
 	text "<PLAYER> pika, good"
 	line "evening!"
 
-	para "It's @"
+	para "It's "
 	text_from_ram wStringBuffer3
 	text ". Were"
 	line "you pika awake?"
@@ -1413,7 +1413,7 @@ UnknownText_0x1b6ac2:
 	text "You have to hear"
 	line "this! My lovable"
 
-	para "@"
+	para ""
 	text_from_ram wStringBuffer4
 	text " looked"
 	line "at me and grinned!"
@@ -1425,7 +1425,7 @@ UnknownText_0x1b6ac2:
 
 UnknownText_0x1b6b39:
 	text "Hello, this is"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer3
 	text "…"
 
@@ -1435,7 +1435,7 @@ UnknownText_0x1b6b39:
 
 UnknownText_0x1b6b65:
 	text "Hello, this is"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer3
 	text "…"
 
@@ -1445,7 +1445,7 @@ UnknownText_0x1b6b65:
 
 UnknownText_0x1b6b92:
 	text "Hello, this is"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer3
 	text "…"
 
@@ -1455,7 +1455,7 @@ UnknownText_0x1b6b92:
 
 UnknownText_0x1b6bb9:
 	text "Hello!"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer3
 	text " here…"
 
@@ -1465,7 +1465,7 @@ UnknownText_0x1b6bb9:
 
 UnknownText_0x1b6bef:
 	text "Hello!"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer3
 	text " here…"
 
@@ -1475,7 +1475,7 @@ UnknownText_0x1b6bef:
 
 UnknownText_0x1b6c23:
 	text "Hello!"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer3
 	text " here…"
 
@@ -1492,7 +1492,7 @@ UnknownText_0x1b6c56:
 	done
 
 UnknownText_0x1b6c96:
-	text "Yes? @"
+	text "Yes? "
 	text_from_ram wStringBuffer3
 	text " here…"
 
@@ -1501,7 +1501,7 @@ UnknownText_0x1b6c96:
 	done
 
 UnknownText_0x1b6cc6:
-	text "Yes? @"
+	text "Yes? "
 	text_from_ram wStringBuffer3
 	text " here…"
 
@@ -1510,7 +1510,7 @@ UnknownText_0x1b6cc6:
 	done
 
 UnknownText_0x1b6cf6:
-	text "Yes? @"
+	text "Yes? "
 	text_from_ram wStringBuffer3
 	text " here…"
 
@@ -1523,7 +1523,7 @@ UnknownText_0x1b6d26:
 	line "are you doing?"
 
 	para "Hey! It's me,"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer3
 	text "."
 	done
@@ -1533,7 +1533,7 @@ UnknownText_0x1b6d57:
 	line "are you doing?"
 
 	para "Hey, it's me,"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer3
 	text "."
 	done
@@ -1543,7 +1543,7 @@ UnknownText_0x1b6d88:
 	line "are you doing?"
 
 	para "Hey, it's me,"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer3
 	text "."
 	done
@@ -1561,7 +1561,7 @@ UnknownText_0x1b6db9:
 	para "don't you?"
 	line "I'm impressed."
 
-	para "Heh, my @"
+	para "Heh, my "
 	text_from_ram wStringBuffer4
 	text_start
 	line "is so tough, it"
@@ -1573,7 +1573,7 @@ UnknownText_0x1b6db9:
 
 UnknownText_0x1b6e7c:
 	text "Yes? This is"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer3
 	text "."
 
@@ -1583,7 +1583,7 @@ UnknownText_0x1b6e7c:
 
 UnknownText_0x1b6ea6:
 	text "Yes? This is"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer3
 	text "."
 
@@ -1593,7 +1593,7 @@ UnknownText_0x1b6ea6:
 
 UnknownText_0x1b6ec9:
 	text "Yes? This is"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer3
 	text "."
 
@@ -1605,7 +1605,7 @@ UnknownText_0x1b6ef3:
 	text "Is this <PLAYER>?"
 
 	para "Good morning. This"
-	line "is @"
+	line "is "
 	text_from_ram wStringBuffer3
 	text "."
 	done
@@ -1613,7 +1613,7 @@ UnknownText_0x1b6ef3:
 UnknownText_0x1b6f1c:
 	text "Is this <PLAYER>?"
 
-	para "Hi, it's @"
+	para "Hi, it's "
 	text_from_ram wStringBuffer3
 	text "."
 	done
@@ -1622,7 +1622,7 @@ UnknownText_0x1b6f37:
 	text "Is this <PLAYER>?"
 
 	para "Good evening. This"
-	line "is @"
+	line "is "
 	text_from_ram wStringBuffer3
 	text "."
 	done
@@ -1638,7 +1638,7 @@ UnknownText_0x1b6f60:
 	para "Don't push them"
 	line "too hard."
 
-	para "My @"
+	para "My "
 	text_from_ram wStringBuffer4
 	text " is"
 	line "cute and lively"
@@ -1652,7 +1652,7 @@ UnknownText_0x1b6f60:
 
 UnknownText_0x1b7019:
 	text "Yes, hello?"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer3
 	text " here!"
 
@@ -1664,7 +1664,7 @@ UnknownText_0x1b7019:
 
 UnknownText_0x1b7057:
 	text "Yes, hello?"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer3
 	text " here!"
 
@@ -1676,7 +1676,7 @@ UnknownText_0x1b7057:
 
 UnknownText_0x1b7092:
 	text "Yes, hello?"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer3
 	text " here!"
 
@@ -1691,7 +1691,7 @@ UnknownText_0x1b70e7:
 	text "Good morning,"
 	line "<PLAYER>!"
 
-	para "It's @"
+	para "It's "
 	text_from_ram wStringBuffer3
 	text "!"
 	line "Good morning!"
@@ -1700,7 +1700,7 @@ UnknownText_0x1b70e7:
 UnknownText_0x1b7112:
 	text "Hi, <PLAYER>!"
 
-	para "It's @"
+	para "It's "
 	text_from_ram wStringBuffer3
 	text "!"
 	line "Remember me?"
@@ -1710,7 +1710,7 @@ UnknownText_0x1b7132:
 	text "Good evening,"
 	line "<PLAYER>!"
 
-	para "It's @"
+	para "It's "
 	text_from_ram wStringBuffer3
 	text "!"
 	line "Are you free now?"
@@ -1720,7 +1720,7 @@ UnknownText_0x1b7161:
 	text "Are you and your"
 	line "#mon fine?"
 
-	para "My @"
+	para "My "
 	text_from_ram wStringBuffer4
 	text_start
 	line "looks like it will"
@@ -1734,7 +1734,7 @@ UnknownText_0x1b7161:
 
 UnknownText_0x1b71d5:
 	text "Hello, you have"
-	line "reached @"
+	line "reached "
 	text_from_ram wStringBuffer3
 	text "…"
 
@@ -1743,7 +1743,7 @@ UnknownText_0x1b71d5:
 
 UnknownText_0x1b71fc:
 	text "Hello, you have"
-	line "reached @"
+	line "reached "
 	text_from_ram wStringBuffer3
 	text "…"
 
@@ -1753,7 +1753,7 @@ UnknownText_0x1b71fc:
 
 UnknownText_0x1b722a:
 	text "Hello, you have"
-	line "reached @"
+	line "reached "
 	text_from_ram wStringBuffer3
 	text "…"
 
@@ -1762,7 +1762,7 @@ UnknownText_0x1b722a:
 	done
 
 UnknownText_0x1b725c:
-	text "Ah, it's @"
+	text "Ah, it's "
 	text_from_ram wStringBuffer3
 	text "…"
 
@@ -1771,7 +1771,7 @@ UnknownText_0x1b725c:
 	done
 
 UnknownText_0x1b7283:
-	text "Ah, it's @"
+	text "Ah, it's "
 	text_from_ram wStringBuffer3
 	text "…"
 
@@ -1779,7 +1779,7 @@ UnknownText_0x1b7283:
 	done
 
 UnknownText_0x1b72a5:
-	text "Ah, it's @"
+	text "Ah, it's "
 	text_from_ram wStringBuffer3
 	text "…"
 
@@ -1791,7 +1791,7 @@ UnknownText_0x1b72d0:
 	text "Have your #mon"
 	line "grown any?"
 
-	para "My @"
+	para "My "
 	text_from_ram wStringBuffer4
 	text " has"
 	line "grown quite a bit."
@@ -1823,28 +1823,28 @@ UnknownText_0x1b7357:
 
 UnknownText_0x1b737f:
 	text "Hey, <PLAYER>!"
-	line "This is @"
+	line "This is "
 	text_from_ram wStringBuffer3
 	text "!"
 	done
 
 UnknownText_0x1b7397:
 	text "Hey, <PLAYER>!"
-	line "This is @"
+	line "This is "
 	text_from_ram wStringBuffer3
 	text "!"
 	done
 
 UnknownText_0x1b73af:
 	text "Hey, <PLAYER>!"
-	line "This is @"
+	line "This is "
 	text_from_ram wStringBuffer3
 	text "!"
 	done
 
 UnknownText_0x1b73c7:
 	text "Yup, yup!"
-	line "It's @"
+	line "It's "
 	text_from_ram wStringBuffer3
 	text "!"
 
@@ -1854,7 +1854,7 @@ UnknownText_0x1b73c7:
 
 UnknownText_0x1b73ef:
 	text "Yup, yup!"
-	line "It's @"
+	line "It's "
 	text_from_ram wStringBuffer3
 	text "!"
 
@@ -1864,7 +1864,7 @@ UnknownText_0x1b73ef:
 
 UnknownText_0x1b7417:
 	text "Yup, yup!"
-	line "It's @"
+	line "It's "
 	text_from_ram wStringBuffer3
 	text "!"
 
@@ -1874,7 +1874,7 @@ UnknownText_0x1b7417:
 
 UnknownText_0x1b743f:
 	text "<PLAYER>, it's"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer3
 	text "!"
 
@@ -1884,7 +1884,7 @@ UnknownText_0x1b743f:
 
 UnknownText_0x1b746f:
 	text "<PLAYER>, it's"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer3
 	text "!"
 
@@ -1894,7 +1894,7 @@ UnknownText_0x1b746f:
 
 UnknownText_0x1b749b:
 	text "<PLAYER>, it's"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer3
 	text "!"
 
@@ -1906,7 +1906,7 @@ UnknownText_0x1b74c8:
 	text "Are your #mon"
 	line "looking good?"
 
-	para "My @"
+	para "My "
 	text_from_ram wStringBuffer4
 	text " and"
 	line "me--we're looking"
@@ -1917,7 +1917,7 @@ UnknownText_0x1b74c8:
 
 UnknownText_0x1b751a:
 	text "Yes, this is"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer3
 	text "…"
 
@@ -1927,7 +1927,7 @@ UnknownText_0x1b751a:
 
 UnknownText_0x1b7548:
 	text "Yes, this is"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer3
 	text "…"
 
@@ -1937,7 +1937,7 @@ UnknownText_0x1b7548:
 
 UnknownText_0x1b756f:
 	text "Yes, this is"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer3
 	text "…"
 
@@ -1947,7 +1947,7 @@ UnknownText_0x1b756f:
 UnknownText_0x1b758f:
 	text "<PLAYER>!"
 
-	para "It's @"
+	para "It's "
 	text_from_ram wStringBuffer3
 	text "!"
 	line "Good morning!"
@@ -1956,7 +1956,7 @@ UnknownText_0x1b758f:
 UnknownText_0x1b75ac:
 	text "<PLAYER>!"
 
-	para "It's @"
+	para "It's "
 	text_from_ram wStringBuffer3
 	text "!"
 	line "Working hard?"
@@ -1965,7 +1965,7 @@ UnknownText_0x1b75ac:
 UnknownText_0x1b75c9:
 	text "<PLAYER>!"
 
-	para "It's @"
+	para "It's "
 	text_from_ram wStringBuffer3
 	text "!"
 	line "Were you up?"
@@ -1975,10 +1975,10 @@ UnknownText_0x1b75e5:
 	text "Are you raising"
 	line "your #mon?"
 
-	para "Hey, @"
+	para "Hey, "
 	text_from_ram wStringBuffer3
 	text "'s"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer4
 	text " is"
 	cont "looking good!"

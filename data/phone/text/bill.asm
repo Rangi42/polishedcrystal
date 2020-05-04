@@ -43,7 +43,7 @@ BillPhoneNotFullText:
 	line "waiting!"
 
 	para "<PLAYER>, your Box"
-	line "has room for @"
+	line "has room for "
 	text_from_ram wStringBuffer3
 	text_start
 	cont "more #mon."
@@ -58,7 +58,7 @@ BillPhoneNearlyFullText:
 
 	para "<PLAYER>, your Box"
 	line "has room for only"
-	cont "@"
+	cont ""
 	text_from_ram wStringBuffer3
 	text " more #mon."
 

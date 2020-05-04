@@ -81,7 +81,7 @@ UnknownText_0x549a3:
 	line "in return."
 
 	para "Oh? Let me see"
-	line "your @"
+	line "your "
 	text_from_ram wStringBuffer3
 	text "…"
 	done
