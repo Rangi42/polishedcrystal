@@ -408,7 +408,7 @@ Music_PokemonTowerRBY_branch_7f1a2:
 	note __, 7
 	note G_, 1
 	note __, 15
-	notetype 12, $1a ; waveform 10
+	notetype 12, $1b ; waveform 11
 	octave 4
 	note F#, 1
 	note __, 3

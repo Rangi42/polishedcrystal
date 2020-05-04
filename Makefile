@@ -70,7 +70,7 @@ main.o \
 home.o \
 ram.o \
 audio.o \
-audio/musicplayer.o \
+audio/music_player.o \
 data/pokemon/dex_entries.o \
 data/pokemon/egg_moves.o \
 data/pokemon/evos_attacks.o \
