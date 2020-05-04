@@ -80,7 +80,7 @@ DiglettsCaveFossilManiacScript:
 	line "check that out."
 
 	para "I'll give you"
-	line "¥@"
+	line "¥"
 	deciram hMoneyTemp, 3, 7
 	text " for it."
 	cont "Whaddaya say?"

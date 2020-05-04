@@ -65,7 +65,7 @@ OreManiacScript:
 	line "shaking me!"
 
 	para "Will you sell it"
-	line "for ¥@"
+	line "for ¥"
 	deciram hMoneyTemp, 3, 7
 	text "?"
 	done

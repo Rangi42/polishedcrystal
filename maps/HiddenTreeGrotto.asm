@@ -79,7 +79,7 @@ HiddenGrottoItemScript:
 
 .ItemText:
 	text "<PLAYER> found"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer4
 	text "!"
 	done

@@ -42,7 +42,7 @@ RockyBeachSign2Text:
 GenericTrainerSightseermBlaise:
 	generictrainer SIGHTSEERM, BLAISE, EVENT_BEAT_SIGHTSEERM_BLAISE, .SeenText, .BeatenText
 
-	text "Je voyage autour"
+	text "Je fais le tour"
 	line "du monde avec mon"
 	cont "#mon."
 	done

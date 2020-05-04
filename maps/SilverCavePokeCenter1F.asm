@@ -46,9 +46,8 @@ SilverCavePokeCenterGrampsScript:
 	ifequal NUM_POKEMON_JOURNALS, .ReadThemAll
 	thisopenedtext
 
-	text "Oh, you've read @"
+	text "Oh, you've read "
 	deciram hScriptVar, 1, 2
-	text_start
 	line "of them?"
 
 	para "Not bad, but I've"

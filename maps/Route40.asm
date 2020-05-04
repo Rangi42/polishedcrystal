@@ -98,7 +98,7 @@ Route40FisherScript:
 	yesorno
 	iffalse .TutorRefused
 	writebyte KNOCK_OFF
-	writetext .ClearText
+	writetext ClearText
 	special Special_MoveTutor
 	ifequal $0, .TeachMove
 .TutorRefused
@@ -132,10 +132,6 @@ Route40FisherScript:
 	line "#mon Knock Off."
 
 	para "How about that?"
-	done
-
-.ClearText:
-	text_start
 	done
 
 .NoSilverLeaf

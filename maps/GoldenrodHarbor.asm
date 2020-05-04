@@ -47,7 +47,7 @@ GoldenrodHarborTutorHyperVoiceScript:
 	yesorno
 	iffalse .TutorRefused
 	writebyte HYPER_VOICE
-	writetext Text_GoldenrodHarborTutorClear
+	writetext ClearText
 	special Special_MoveTutor
 	ifequal $0, .TeachMove
 .TutorRefused
@@ -286,10 +286,6 @@ Text_GoldenrodHarborTutorQuestion:
 
 Text_GoldenrodHarborTutorRefused:
 	text "OK then."
-	done
-
-Text_GoldenrodHarborTutorClear:
-	text_start
 	done
 
 Text_GoldenrodHarborTutorTaught:

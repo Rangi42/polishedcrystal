@@ -262,7 +262,7 @@ ExplainLuckyNumberShowText:
 
 UnknownText_0x5cf3a:
 	text "This week's ID"
-	line "number is @"
+	line "number is "
 	text_from_ram wStringBuffer3
 	text "."
 	done

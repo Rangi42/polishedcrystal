@@ -40,7 +40,7 @@ Route46TutorRoute46Script:
 	yesorno
 	iffalse .TutorRefused
 	writebyte ROLLOUT
-	writetext Text_Route46TutorClear
+	writetext ClearText
 	special Special_MoveTutor
 	ifequal $0, .TeachMove
 .TutorRefused
@@ -221,10 +221,6 @@ Text_Route46TutorQuestion:
 
 Text_Route46TutorRefused:
 	text "Suit yourself."
-	done
-
-Text_Route46TutorClear:
-	text_start
 	done
 
 Text_Route46TutorTaught:

@@ -7,21 +7,21 @@ MomPhoneGreetingText:
 
 UnknownText_0x1b4021:
 	text "Oh, so you're in"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer3
 	text "…"
 
 	para "Isn't that where"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer4
-	text_start
+
 	para "is? Did you go"
 	line "take a look?"
 	done
 
 MomPhoneGenericAreaText:
 	text "Really, you're in"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer3
 	text "?"
 
@@ -32,7 +32,7 @@ MomPhoneGenericAreaText:
 
 MomPhoneNewBarkText:
 	text "What? You're in"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer3
 	text "?"
 
@@ -42,7 +42,7 @@ MomPhoneNewBarkText:
 
 MomPhoneCherrygroveText:
 	text "You're visiting"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer3
 	text "?"
 
@@ -52,7 +52,7 @@ MomPhoneCherrygroveText:
 
 UnknownText_0x1b411c:
 	text "Wow, you're in"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer3
 	text "?"
 
@@ -73,7 +73,7 @@ UnknownText_0x1b4150:
 
 UnknownText_0x1b41a7:
 	text "By the way, you've"
-	line "saved up ¥@"
+	line "saved up ¥"
 	text_from_ram wStringBuffer3
 	text "."
 
@@ -96,7 +96,7 @@ UnknownText_0x1b420d:
 
 UnknownText_0x1b4249:
 	text "By the way, you've"
-	line "saved up ¥@"
+	line "saved up ¥"
 	text_from_ram wStringBuffer3
 	text "."
 

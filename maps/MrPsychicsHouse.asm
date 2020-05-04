@@ -32,7 +32,7 @@ MrPsychicsHouseTutorZenHeadbuttScript:
 	yesorno
 	iffalse .TutorRefused
 	writebyte ZEN_HEADBUTT
-	writetext Text_MrPsychicsHouseTutorClear
+	writetext ClearText
 	special Special_MoveTutor
 	ifequal $0, .TeachMove
 .TutorRefused
@@ -79,10 +79,6 @@ Text_MrPsychicsHouseTutorQuestion:
 
 Text_MrPsychicsHouseTutorRefused:
 	text "…I was wrong?"
-	done
-
-Text_MrPsychicsHouseTutorClear:
-	text_start
 	done
 
 Text_MrPsychicsHouseTutorTaught:

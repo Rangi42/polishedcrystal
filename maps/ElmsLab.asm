@@ -1016,7 +1016,7 @@ ChoseStarterText:
 
 ReceivedStarterText:
 	text "<PLAYER> received"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer3
 	text "!"
 	done
@@ -1563,7 +1563,7 @@ LyraChoosesStarterText:
 
 LyraReceivedStarterText:
 	text "Lyra received"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer3
 	text "!"
 	done

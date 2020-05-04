@@ -89,7 +89,7 @@ BurglarLouisBeatenText:
 
 PokemonMansion1FFoundItemText:
 	text "<PLAYER> found"
-	line "@"
+	line ""
 	text_from_ram wStringBuffer3
 	text "!"
 	done

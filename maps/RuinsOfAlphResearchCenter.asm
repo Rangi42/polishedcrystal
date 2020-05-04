@@ -424,9 +424,8 @@ UnknownText_0x597d9:
 	text "Mystery #mon"
 	line "Name: Unown"
 
-	para "A total of @"
+	para "A total of "
 	deciram hScriptVar, 1, 2
-	text_start
 	line "kinds found."
 	done
 

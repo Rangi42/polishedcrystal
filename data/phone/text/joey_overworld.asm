@@ -42,21 +42,21 @@ JoeyPhoneFullText:
 JoeyTopPercentageText:
 	text "Hey, do you remem-"
 	line "ber my super cool"
-	cont "@"
+	cont ""
 	text_from_ram wStringBuffer4
 	text "?"
 
-	para "My @"
+	para "My "
 	text_from_ram wStringBuffer4
 	text " is"
 	line "different from"
-	cont "regular @"
+	cont "regular "
 	text_from_ram wStringBuffer4
 	text "."
 
 	para "It's in the top"
 	line "percentage of"
-	cont "@"
+	cont ""
 	text_from_ram wStringBuffer4
 	text "."
 

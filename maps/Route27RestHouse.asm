@@ -49,7 +49,7 @@ Route27RestHouseGranny:
 	yesorno
 	iffalse .TutorRefused
 	writebyte SKILL_SWAP
-	writetext .ClearText
+	writetext ClearText
 	special Special_MoveTutor
 	ifequal $0, .TeachMove
 .TutorRefused
@@ -118,8 +118,4 @@ Route27RestHouseGranny:
 .RefusedText:
 	text "Good luck on your"
 	line "journey."
-	done
-
-.ClearText:
-	text_start
 	done

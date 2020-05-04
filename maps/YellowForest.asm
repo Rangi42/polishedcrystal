@@ -225,7 +225,7 @@ YellowForestTutorSeedBombScript:
 	yesorno
 	iffalse .TutorRefused
 	writebyte SEED_BOMB
-	writetext Text_YellowForestTutorClear
+	writetext ClearText
 	special Special_MoveTutor
 	ifequal $0, .TeachMove
 .TutorRefused
@@ -470,10 +470,6 @@ Text_YellowForestTutorQuestion:
 Text_YellowForestTutorRefused:
 	text "Talk to me if you"
 	line "change your mind!"
-	done
-
-Text_YellowForestTutorClear:
-	text_start
 	done
 
 Text_YellowForestTutorTaught:

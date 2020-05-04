@@ -448,7 +448,7 @@ HatchEggs:
 
 .ClearTextbox:
 	;
-	text_jump UnknownText_0x1c0db8
+	text_jump ClearText
 	text_end
 
 .CameOutOfItsEgg:

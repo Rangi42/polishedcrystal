@@ -561,7 +561,7 @@ RegisterKeyItem:
 	dec d
 	jr nz, .loop
 	ld hl, Text_NoEmptySlot
-	jr .print
+	jp PrintText
 
 .found_empty_slot
 	ld a, [wCurKeyItem]
@@ -1650,16 +1650,16 @@ PC_Mart_KeyItemsPocketMenuDataHeader:
 
 Text_SortItemsHow:
 	text "How do you want"
-	line "to sort items?@"
-	text_end
+	line "to sort items?"
+	done
 
 Text_NoEmptySlot:
 	text "There are no free"
 	line "register slots."
 
 	para "Unregister another"
-	line "item first.@"
-	text_end
+	line "item first."
+	prompt
 
 Text_ThrowAwayHowMany:
 	; Throw away how many?

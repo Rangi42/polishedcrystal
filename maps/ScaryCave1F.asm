@@ -149,7 +149,7 @@ ScaryCave1FPharmacistScript:
 	yesorno
 	iffalse .TutorRefused
 	writebyte SUCKER_PUNCH
-	writetext .ClearText
+	writetext ClearText
 	special Special_MoveTutor
 	ifequal $0, .TeachMove
 .TutorRefused
@@ -177,10 +177,6 @@ ScaryCave1FPharmacistScript:
 
 	para "I want a Silver"
 	line "Leaf."
-	done
-
-.ClearText:
-	text_start
 	done
 
 .NoSilverLeaf
