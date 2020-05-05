@@ -995,7 +995,7 @@ BattleCommand_hastarget:
 	cp EFFECT_FLY
 	jr z, .chargeup_move
 	cp EFFECT_SOLAR_BEAM
-	jr z, .regular
+	jr nz, .regular
 .chargeup_move
 	; We should still allow chargeup even if user is fainted
 	ld a, BATTLE_VARS_SUBSTATUS3
