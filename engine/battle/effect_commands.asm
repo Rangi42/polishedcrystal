@@ -990,6 +990,20 @@ BattleCommand_doturn:
 	jp EndMoveEffect
 
 BattleCommand_hastarget:
+	ld a, BATTLE_VARS_MOVE_EFFECT
+	call GetBattleVar
+	cp EFFECT_FLY
+	jr z, .chargeup_move
+	cp EFFECT_SOLAR_BEAM
+	jr z, .regular
+.chargeup_move
+	; We should still allow chargeup even if user is fainted
+	ld a, BATTLE_VARS_SUBSTATUS3
+	call GetBattleVar
+	and 1 << SUBSTATUS_CHARGED
+	jr z, .not_fainted
+
+.regular
 	; If the target is fainted, abort the move
 	call HasOpponentFainted
 	jr nz, .not_fainted
