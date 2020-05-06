@@ -2729,7 +2729,7 @@ _LuckyNumberMatchPartyText::
 	line "with the ID number"
 
 	para "of "
-	text_from_ram wStringBuffer1
+	text_from_ram wBuffer1
 	text " in"
 	line "your party."
 	prompt
@@ -2742,9 +2742,11 @@ _LuckyNumberMatchPCText::
 	line "with the ID number"
 
 	para "of "
-	text_from_ram wStringBuffer1
-	text " in"
-	line "your PC Box."
+	text_from_ram wBuffer1
+	text " in Box"
+	line "“"
+	text_from_ram wStringBuffer2
+	text "”."
 	prompt
 
 SECTION "_CaughtAskNicknameText", ROMX

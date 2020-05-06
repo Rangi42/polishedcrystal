@@ -71,10 +71,6 @@ wRadioText:: ds 2 * SCREEN_WIDTH
 wRadioTextEnd::
 
 NEXTU
-; lucky number show
-wLuckyNumberDigitsBuffer:: ds 5
-
-NEXTU
 ; movement buffer data
 wMovementBufferCount:: db
 wMovementBufferObject:: db
