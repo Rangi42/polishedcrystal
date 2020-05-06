@@ -239,17 +239,8 @@ DoPlayerMovement::
 	cp COLL_ICE
 	jr z, .ice
 
-	ld a, [wOptions2]
-	and 1 << RUNNING_SHOES
-	jr nz, .RunByDefault
-
 	call .RunCheck
 	jr z, .run
-	jp .DoNotRun
-
-.RunByDefault
-	call .RunCheck
-	jr nz, .run
 
 .DoNotRun
 ; Downhill riding is slower when not moving down.
@@ -810,13 +801,26 @@ endc
 ; Routine by Victoria Lacroix
 ; https://github.com/VictoriaLacroix/pokecrystal/commit/ed7f525d642cb02e84e856f2e506d2a6425d95db
 .RunCheck:
-
+	; Check if we have regular movement active
 	ld a, [wPlayerState]
 	and a ; cp PLAYER_NORMAL
 	ret nz
+
+	; If RUNNING_SHOES is active, invert B button effect.
+	push hl
+	ld hl, wOptions2
 	ldh a, [hJoypadDown]
 	and B_BUTTON
-	cp B_BUTTON
+
+	; We want to return z on success, not nz.
+	cpl
+
+	; B_BUTTON is bit 1, RUNNING_SHOES is bit 3
+	add a
+	add a
+	xor [hl]
+	pop hl
+	and 1 << RUNNING_SHOES
 	ret
 
 .CheckWalkable:
