@@ -78,15 +78,6 @@ Special_CheckForLuckyNumberWinners:
 	ld a, [wFoundMatchingIDInParty]
 	ld c, a
 	farcall GetStorageBoxMon
-
-	push bc
-	ld de, wBufferMonID
-	ld hl, wBuffer1
-	lb bc, PRINTNUM_LEADINGZEROS | 2, 5
-	call PrintNum
-	ld hl, wBuffer1 + 5
-	ld [hl], "@"
-	pop bc
 	pop af
 	and $f
 	ldh [hScriptVar], a

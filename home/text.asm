@@ -535,7 +535,7 @@ Text_PrintNum::
 	ld a, b
 	and $f0
 	swap a
-	set PRINTNUM_LEFTALIGN_F, a
+	or PRINTNUM_DELAY | PRINTNUM_LEFTALIGN
 	ld b, a
 	call PrintNum
 FinishString:
