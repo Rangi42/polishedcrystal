@@ -373,7 +373,7 @@ GetSpeed::
 	jr z, .quick_powder
 	cp HELD_IRON_BALL
 	ln a, 1, 2 ; x0.5
-	jr .apply_item_mod
+	jr z, .apply_item_mod
 	cp HELD_CHOICE
 	jr nz, .done
 	ld a, c
