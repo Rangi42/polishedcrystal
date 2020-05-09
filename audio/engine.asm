@@ -2636,14 +2636,10 @@ ReloadWaveform::
     ; called from the music player
 	ld a, [wCurTrackIntensity]
 	and $f ; only NUM_WAVEFORMS are valid
+	; each wavepattern is $f bytes long, so seeking is done in $10s
+	swap a ; a << 4
 	ld l, a
 	ld h, 0
-	; hl << 4
-	; each wavepattern is $f bytes long
-	; so seeking is done in $10s
-rept 4
-	add hl, hl
-endr
 	ld de, WaveSamples
 	add hl, de
 	; load wavepattern into rWave_0-rWave_f

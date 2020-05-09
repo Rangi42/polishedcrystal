@@ -181,10 +181,9 @@ PerformAbilityGFX:
 	push hl
 	ld l, a
 	ld h, 0
+rept 4
 	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, hl
+endr
 	ld bc, vTiles1
 	add hl, bc
 	ld d, h

@@ -4454,13 +4454,9 @@ CheckRunSpeed:
 	ld a, h
 	sbc d
 	jp nc, .can_escape
-	; multiply player speed by 32
-	add hl, hl ; x2
-	add hl, hl ; x4
-	add hl, hl ; x8
-	add hl, hl ; x16
-	add hl, hl ; x32
-
+rept 5 ; multiply player speed by 32
+	add hl, hl
+endr
 	; store PSpeed*32 into dividend
 	ld a, h
 	ldh [hDividend], a

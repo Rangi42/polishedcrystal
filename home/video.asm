@@ -173,11 +173,9 @@ UpdateBGMap::
 	ldh a, [hBGMapHalf] ; multiply by 32 to get the bg map offset
 	ld l, a
 	ld h, 0
+rept 5
 	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	add hl, hl
+endr
 	ldh a, [hBGMapAddress]
 	add l
 	ld l, a
