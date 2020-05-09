@@ -282,9 +282,9 @@ _GetSpeciesAndFormIndexFinal:
 _GetSpeciesAndFormIndexHelper:
 	ld a, b
 	and FORM_MASK
-	jr nz, .ok
-	inc a ; PLAIN_FORM
-.ok
+	jr z, .normal ; NO_FORM?
+	cp PLAIN_FORM
+	jr z, .normal
 	ld b, a
 .next
 	inc hl
