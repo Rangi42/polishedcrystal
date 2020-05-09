@@ -17,16 +17,16 @@ BitmasksPointers:
 	dw PidgeyBitmasks
 	dw PidgeottoBitmasks
 	dw PidgeotBitmasks
-	dw -1 ; see RattataBitmasksPointers
-	dw -1 ; see RaticateBitmasksPointers
+	dw RattataPlainBitmasks
+	dw RaticatePlainBitmasks
 	dw MarillBitmasks
 	dw AzumarillBitmasks
 	dw EkansBitmasks
-	dw -1 ; see ArbokBitmasksPointers
-	dw -1 ; see PikachuBitmasksPointers
-	dw -1 ; see RaichuBitmasksPointers
-	dw -1 ; see SandshrewBitmasksPointers
-	dw -1 ; see SandslashBitmasksPointers
+	dw ArbokJohtoBitmasks
+	dw PikachuPlainBitmasks
+	dw RaichuPlainBitmasks
+	dw SandshrewPlainBitmasks
+	dw SandslashPlainBitmasks
 	dw NidoranFBitmasks
 	dw NidorinaBitmasks
 	dw NidoqueenBitmasks
@@ -35,8 +35,8 @@ BitmasksPointers:
 	dw NidokingBitmasks
 	dw ClefairyBitmasks
 	dw ClefableBitmasks
-	dw -1 ; see VulpixBitmasksPointers
-	dw -1 ; see NinetalesBitmasksPointers
+	dw VulpixPlainBitmasks
+	dw NinetalesPlainBitmasks
 	dw JigglypuffBitmasks
 	dw WigglytuffBitmasks
 	dw ZubatBitmasks
@@ -48,10 +48,10 @@ BitmasksPointers:
 	dw ParasectBitmasks
 	dw VenonatBitmasks
 	dw VenomothBitmasks
-	dw -1 ; see DiglettBitmasksPointers
-	dw -1 ; see DugtrioBitmasksPointers
-	dw -1 ; see MeowthBitmasksPointers
-	dw -1 ; see PersianBitmasksPointers
+	dw DiglettPlainBitmasks
+	dw DugtrioPlainBitmasks
+	dw MeowthPlainBitmasks
+	dw PersianPlainBitmasks
 	dw PsyduckBitmasks
 	dw GolduckBitmasks
 	dw MankeyBitmasks
@@ -72,11 +72,11 @@ BitmasksPointers:
 	dw VictreebelBitmasks
 	dw TentacoolBitmasks
 	dw TentacruelBitmasks
-	dw -1 ; see GeodudeBitmasksPointers
-	dw -1 ; see GravelerBitmasksPointers
-	dw -1 ; see GolemBitmasksPointers
-	dw -1 ; see PonytaBitmasksPointers
-	dw -1 ; see RapidashBitmasksPointers
+	dw GeodudePlainBitmasks
+	dw GravelerPlainBitmasks
+	dw GolemPlainBitmasks
+	dw PonytaPlainBitmasks
+	dw RapidashPlainBitmasks
 	dw SlowpokeBitmasks
 	dw SlowbroBitmasks
 	dw MagnemiteBitmasks
@@ -86,8 +86,8 @@ BitmasksPointers:
 	dw DodrioBitmasks
 	dw SeelBitmasks
 	dw DewgongBitmasks
-	dw -1 ; see GrimerBitmasksPointers
-	dw -1 ; see MukBitmasksPointers
+	dw GrimerPlainBitmasks
+	dw MukPlainBitmasks
 	dw ShellderBitmasks
 	dw CloysterBitmasks
 	dw GastlyBitmasks
@@ -101,13 +101,13 @@ BitmasksPointers:
 	dw VoltorbBitmasks
 	dw ElectrodeBitmasks
 	dw ExeggcuteBitmasks
-	dw -1 ; see ExeggutorBitmasksPointers
+	dw ExeggutorPlainBitmasks
 	dw CuboneBitmasks
-	dw -1 ; see MarowakBitmasksPointers
+	dw MarowakPlainBitmasks
 	dw HitmonleeBitmasks
 	dw HitmonchanBitmasks
 	dw KoffingBitmasks
-	dw -1 ; see WeezingBitmasksPointers
+	dw WeezingPlainBitmasks
 	dw RhyhornBitmasks
 	dw RhydonBitmasks
 	dw ChanseyBitmasks
@@ -127,8 +127,8 @@ BitmasksPointers:
 	dw MagmarBitmasks
 	dw PinsirBitmasks
 	dw TaurosBitmasks
-	dw -1 ; see MagikarpBitmasksPointers
-	dw -1 ; see GyaradosBitmasksPointers
+	dw MagikarpPlainBitmasks
+	dw GyaradosPlainBitmasks
 	dw LaprasBitmasks
 	dw DittoBitmasks
 	dw EeveeBitmasks
@@ -148,7 +148,7 @@ BitmasksPointers:
 	dw DratiniBitmasks
 	dw DragonairBitmasks
 	dw DragoniteBitmasks
-	dw -1 ; see MewtwoBitmasksPointers
+	dw MewtwoPlainBitmasks
 	dw MewBitmasks
 	dw ChikoritaBitmasks
 	dw BayleefBitmasks
@@ -170,7 +170,7 @@ BitmasksPointers:
 	dw CrobatBitmasks
 	dw ChinchouBitmasks
 	dw LanturnBitmasks
-	dw -1 ; see PichuBitmasksPointers
+	dw PichuPlainBitmasks
 	dw MunchlaxBitmasks
 	dw MagnezoneBitmasks
 	dw RhyperiorBitmasks
@@ -196,7 +196,7 @@ BitmasksPointers:
 	dw SlowkingBitmasks
 	dw MisdreavusBitmasks
 	dw MismagiusBitmasks
-	dw -1 ; see UnownBitmasksPointers
+	dw UnownABitmasks
 	dw WobbuffetBitmasks
 	dw GirafarigBitmasks
 	dw PinecoBitmasks
@@ -254,3 +254,84 @@ BitmasksPointers:
 	dw GlaceonBitmasks
 	dw SylveonBitmasks
 	dw EggBitmasks
+
+	dw UnownBBitmasks
+	dw UnownCBitmasks
+	dw UnownDBitmasks
+	dw UnownEBitmasks
+	dw UnownFBitmasks
+	dw UnownGBitmasks
+	dw UnownHBitmasks
+	dw UnownIBitmasks
+	dw UnownJBitmasks
+	dw UnownKBitmasks
+	dw UnownLBitmasks
+	dw UnownMBitmasks
+	dw UnownNBitmasks
+	dw UnownOBitmasks
+	dw UnownPBitmasks
+	dw UnownQBitmasks
+	dw UnownRBitmasks
+	dw UnownSBitmasks
+	dw UnownTBitmasks
+	dw UnownUBitmasks
+	dw UnownVBitmasks
+	dw UnownWBitmasks
+	dw UnownXBitmasks
+	dw UnownYBitmasks
+	dw UnownZBitmasks
+	dw UnownExclamationBitmasks
+	dw UnownQuestionBitmasks
+
+	dw ArbokKantoBitmasks
+	dw ArbokKogaBitmasks
+	dw ArbokAgathaBitmasks
+	dw ArbokArianaBitmasks
+
+	dw PikachuFlyBitmasks
+	dw PikachuSurfBitmasks
+	dw PikachuPikaBitmasks
+	dw PikachuChuchuBitmasks
+	dw PikachuSparkBitmasks
+
+	dw PichuSpikyBitmasks
+
+	dw MagikarpSkellyBitmasks
+	dw MagikarpCalico1Bitmasks
+	dw MagikarpCalico2Bitmasks
+	dw MagikarpCalico3Bitmasks
+	dw MagikarpTwoToneBitmasks
+	dw MagikarpOrcaBitmasks
+	dw MagikarpDapplesBitmasks
+	dw MagikarpTigerBitmasks
+	dw MagikarpZebraBitmasks
+	dw MagikarpStripeBitmasks
+	dw MagikarpBubblesBitmasks
+	dw MagikarpForeheadBitmasks
+	dw MagikarpMaskBitmasks
+	dw MagikarpSaucyBitmasks
+	dw MagikarpRaindropBitmasks
+
+	dw GyaradosRedBitmasks
+	dw MewtwoArmoredBitmasks
+	dw RattataAlolanBitmasks
+	dw RaticateAlolanBitmasks
+	dw SandshrewAlolanBitmasks
+	dw SandslashAlolanBitmasks
+	dw VulpixAlolanBitmasks
+	dw NinetalesAlolanBitmasks
+	dw DiglettAlolanBitmasks
+	dw DugtrioAlolanBitmasks
+	dw MeowthAlolanBitmasks
+	dw PersianAlolanBitmasks
+	dw GeodudeAlolanBitmasks
+	dw GravelerAlolanBitmasks
+	dw GolemAlolanBitmasks
+	dw GrimerAlolanBitmasks
+	dw MukAlolanBitmasks
+	dw RaichuAlolanBitmasks
+	dw ExeggutorAlolanBitmasks
+	dw MarowakAlolanBitmasks
+	dw PonytaGalarianBitmasks
+	dw RapidashGalarianBitmasks
+	dw WeezingGalarianBitmasks

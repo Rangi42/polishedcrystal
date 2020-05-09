@@ -17,16 +17,16 @@ AnimationPointers:
 	dw PidgeyAnimation
 	dw PidgeottoAnimation
 	dw PidgeotAnimation
-	dw -1 ; see RattataAnimationPointers
-	dw -1 ; see RaticateAnimationPointers
+	dw RattataPlainAnimation
+	dw RaticatePlainAnimation
 	dw MarillAnimation
 	dw AzumarillAnimation
 	dw EkansAnimation
-	dw -1 ; see ArbokAnimationPointers
-	dw -1 ; see PikachuAnimationPointers
-	dw -1 ; see RaichuAnimationPointers
-	dw -1 ; see SandshrewAnimationPointers
-	dw -1 ; see SandslashAnimationPointers
+	dw ArbokJohtoAnimation
+	dw PikachuPlainAnimation
+	dw RaichuPlainAnimation
+	dw SandshrewPlainAnimation
+	dw SandslashPlainAnimation
 	dw NidoranFAnimation
 	dw NidorinaAnimation
 	dw NidoqueenAnimation
@@ -35,8 +35,8 @@ AnimationPointers:
 	dw NidokingAnimation
 	dw ClefairyAnimation
 	dw ClefableAnimation
-	dw -1 ; see VulpixAnimationPointers
-	dw -1 ; see NinetalesAnimationPointers
+	dw VulpixPlainAnimation
+	dw NinetalesPlainAnimation
 	dw JigglypuffAnimation
 	dw WigglytuffAnimation
 	dw ZubatAnimation
@@ -48,10 +48,10 @@ AnimationPointers:
 	dw ParasectAnimation
 	dw VenonatAnimation
 	dw VenomothAnimation
-	dw -1 ; see DiglettAnimationPointers
-	dw -1 ; see DugtrioAnimationPointers
-	dw -1 ; see MeowthAnimationPointers
-	dw -1 ; see PersianAnimationPointers
+	dw DiglettPlainAnimation
+	dw DugtrioPlainAnimation
+	dw MeowthPlainAnimation
+	dw PersianPlainAnimation
 	dw PsyduckAnimation
 	dw GolduckAnimation
 	dw MankeyAnimation
@@ -72,11 +72,11 @@ AnimationPointers:
 	dw VictreebelAnimation
 	dw TentacoolAnimation
 	dw TentacruelAnimation
-	dw -1 ; see GeodudeAnimationPointers
-	dw -1 ; see GravelerAnimationPointers
-	dw -1 ; see GolemAnimationPointers
-	dw -1 ; see PonytaAnimationPointers
-	dw -1 ; see RapidashAnimationPointers
+	dw GeodudePlainAnimation
+	dw GravelerPlainAnimation
+	dw GolemPlainAnimation
+	dw PonytaPlainAnimation
+	dw RapidashPlainAnimation
 	dw SlowpokeAnimation
 	dw SlowbroAnimation
 	dw MagnemiteAnimation
@@ -86,8 +86,8 @@ AnimationPointers:
 	dw DodrioAnimation
 	dw SeelAnimation
 	dw DewgongAnimation
-	dw -1 ; see GrimerAnimationPointers
-	dw -1 ; see MukAnimationPointers
+	dw GrimerPlainAnimation
+	dw MukPlainAnimation
 	dw ShellderAnimation
 	dw CloysterAnimation
 	dw GastlyAnimation
@@ -101,13 +101,13 @@ AnimationPointers:
 	dw VoltorbAnimation
 	dw ElectrodeAnimation
 	dw ExeggcuteAnimation
-	dw -1 ; see ExeggutorAnimationPointers
+	dw ExeggutorPlainAnimation
 	dw CuboneAnimation
-	dw -1 ; see MarowakAnimationPointers
+	dw MarowakPlainAnimation
 	dw HitmonleeAnimation
 	dw HitmonchanAnimation
 	dw KoffingAnimation
-	dw -1 ; see WeezingAnimationPointers
+	dw WeezingPlainAnimation
 	dw RhyhornAnimation
 	dw RhydonAnimation
 	dw ChanseyAnimation
@@ -127,8 +127,8 @@ AnimationPointers:
 	dw MagmarAnimation
 	dw PinsirAnimation
 	dw TaurosAnimation
-	dw -1 ; see MagikarpAnimationPointers
-	dw -1 ; see GyaradosAnimationPointers
+	dw MagikarpPlainAnimation
+	dw GyaradosPlainAnimation
 	dw LaprasAnimation
 	dw DittoAnimation
 	dw EeveeAnimation
@@ -148,7 +148,7 @@ AnimationPointers:
 	dw DratiniAnimation
 	dw DragonairAnimation
 	dw DragoniteAnimation
-	dw -1 ; see MewtwoAnimationPointers
+	dw MewtwoPlainAnimation
 	dw MewAnimation
 	dw ChikoritaAnimation
 	dw BayleefAnimation
@@ -170,7 +170,7 @@ AnimationPointers:
 	dw CrobatAnimation
 	dw ChinchouAnimation
 	dw LanturnAnimation
-	dw -1 ; see PichuAnimationPointers
+	dw PichuPlainAnimation
 	dw MunchlaxAnimation
 	dw MagnezoneAnimation
 	dw RhyperiorAnimation
@@ -196,7 +196,7 @@ AnimationPointers:
 	dw SlowkingAnimation
 	dw MisdreavusAnimation
 	dw MismagiusAnimation
-	dw -1 ; see UnownAnimationPointers
+	dw UnownAAnimation
 	dw WobbuffetAnimation
 	dw GirafarigAnimation
 	dw PinecoAnimation
@@ -254,3 +254,84 @@ AnimationPointers:
 	dw GlaceonAnimation
 	dw SylveonAnimation
 	dw EggAnimation
+
+	dw UnownBAnimation
+	dw UnownCAnimation
+	dw UnownDAnimation
+	dw UnownEAnimation
+	dw UnownFAnimation
+	dw UnownGAnimation
+	dw UnownHAnimation
+	dw UnownIAnimation
+	dw UnownJAnimation
+	dw UnownKAnimation
+	dw UnownLAnimation
+	dw UnownMAnimation
+	dw UnownNAnimation
+	dw UnownOAnimation
+	dw UnownPAnimation
+	dw UnownQAnimation
+	dw UnownRAnimation
+	dw UnownSAnimation
+	dw UnownTAnimation
+	dw UnownUAnimation
+	dw UnownVAnimation
+	dw UnownWAnimation
+	dw UnownXAnimation
+	dw UnownYAnimation
+	dw UnownZAnimation
+	dw UnownExclamationAnimation
+	dw UnownQuestionAnimation
+
+	dw ArbokKantoAnimation
+	dw ArbokKogaAnimation
+	dw ArbokAgathaAnimation
+	dw ArbokArianaAnimation
+
+	dw PikachuFlyAnimation
+	dw PikachuSurfAnimation
+	dw PikachuPikaAnimation
+	dw PikachuChuchuAnimation
+	dw PikachuSparkAnimation
+
+	dw PichuSpikyAnimation
+
+	dw MagikarpSkellyAnimation
+	dw MagikarpCalico1Animation
+	dw MagikarpCalico2Animation
+	dw MagikarpCalico3Animation
+	dw MagikarpTwoToneAnimation
+	dw MagikarpOrcaAnimation
+	dw MagikarpDapplesAnimation
+	dw MagikarpTigerAnimation
+	dw MagikarpZebraAnimation
+	dw MagikarpStripeAnimation
+	dw MagikarpBubblesAnimation
+	dw MagikarpForeheadAnimation
+	dw MagikarpMaskAnimation
+	dw MagikarpSaucyAnimation
+	dw MagikarpRaindropAnimation
+
+	dw GyaradosRedAnimation
+	dw MewtwoArmoredAnimation
+	dw RattataAlolanAnimation
+	dw RaticateAlolanAnimation
+	dw SandshrewAlolanAnimation
+	dw SandslashAlolanAnimation
+	dw VulpixAlolanAnimation
+	dw NinetalesAlolanAnimation
+	dw DiglettAlolanAnimation
+	dw DugtrioAlolanAnimation
+	dw MeowthAlolanAnimation
+	dw PersianAlolanAnimation
+	dw GeodudeAlolanAnimation
+	dw GravelerAlolanAnimation
+	dw GolemAlolanAnimation
+	dw GrimerAlolanAnimation
+	dw MukAlolanAnimation
+	dw RaichuAlolanAnimation
+	dw ExeggutorAlolanAnimation
+	dw MarowakAlolanAnimation
+	dw PonytaGalarianAnimation
+	dw RapidashGalarianAnimation
+	dw WeezingGalarianAnimation

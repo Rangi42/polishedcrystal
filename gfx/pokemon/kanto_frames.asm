@@ -1,4 +1,5 @@
 KantoFrames:
+
 BulbasaurFrames:  INCLUDE "gfx/pokemon/bulbasaur/frames.asm"
 IvysaurFrames:    INCLUDE "gfx/pokemon/ivysaur/frames.asm"
 VenusaurFrames:   INCLUDE "gfx/pokemon/venusaur/frames.asm"
@@ -124,3 +125,102 @@ DratiniFrames:    INCLUDE "gfx/pokemon/dratini/frames.asm"
 DragonairFrames:  INCLUDE "gfx/pokemon/dragonair/frames.asm"
 DragoniteFrames:  INCLUDE "gfx/pokemon/dragonite/frames.asm"
 MewFrames:        INCLUDE "gfx/pokemon/mew/frames.asm"
+
+PikachuPlainFrames:  INCLUDE "gfx/pokemon/pikachu_plain/frames.asm"
+PikachuFlyFrames:    INCLUDE "gfx/pokemon/pikachu_fly/frames.asm"
+PikachuSurfFrames:   INCLUDE "gfx/pokemon/pikachu_surf/frames.asm"
+PikachuPikaFrames:   INCLUDE "gfx/pokemon/pikachu_pika/frames.asm"
+PikachuChuchuFrames: INCLUDE "gfx/pokemon/pikachu_chuchu/frames.asm"
+PikachuSparkFrames:  INCLUDE "gfx/pokemon/pikachu_spark/frames.asm"
+
+ArbokJohtoFrames:  INCLUDE "gfx/pokemon/arbok_johto/frames.asm"
+ArbokKantoFrames:  INCLUDE "gfx/pokemon/arbok_kanto/frames.asm"
+ArbokKogaFrames:   INCLUDE "gfx/pokemon/arbok_koga/frames.asm"
+ArbokAgathaFrames: INCLUDE "gfx/pokemon/arbok_agatha/frames.asm"
+ArbokArianaFrames: INCLUDE "gfx/pokemon/arbok_ariana/frames.asm"
+
+MagikarpPlainFrames:    INCLUDE "gfx/pokemon/magikarp_plain/frames.asm"
+MagikarpSkellyFrames:   INCLUDE "gfx/pokemon/magikarp_skelly/frames.asm"
+MagikarpCalico1Frames:  INCLUDE "gfx/pokemon/magikarp_calico1/frames.asm"
+MagikarpCalico2Frames:  INCLUDE "gfx/pokemon/magikarp_calico2/frames.asm"
+MagikarpCalico3Frames:  INCLUDE "gfx/pokemon/magikarp_calico3/frames.asm"
+MagikarpTwoToneFrames:  INCLUDE "gfx/pokemon/magikarp_twotone/frames.asm"
+MagikarpOrcaFrames:     INCLUDE "gfx/pokemon/magikarp_orca/frames.asm"
+MagikarpDapplesFrames:  INCLUDE "gfx/pokemon/magikarp_dapples/frames.asm"
+MagikarpTigerFrames:    INCLUDE "gfx/pokemon/magikarp_tiger/frames.asm"
+MagikarpZebraFrames:    INCLUDE "gfx/pokemon/magikarp_zebra/frames.asm"
+MagikarpStripeFrames:   INCLUDE "gfx/pokemon/magikarp_stripe/frames.asm"
+MagikarpBubblesFrames:  INCLUDE "gfx/pokemon/magikarp_bubbles/frames.asm"
+MagikarpForeheadFrames: INCLUDE "gfx/pokemon/magikarp_forehead/frames.asm"
+MagikarpMaskFrames:     INCLUDE "gfx/pokemon/magikarp_mask/frames.asm"
+MagikarpSaucyFrames:    INCLUDE "gfx/pokemon/magikarp_saucy/frames.asm"
+MagikarpRaindropFrames: INCLUDE "gfx/pokemon/magikarp_raindrop/frames.asm"
+
+GyaradosPlainFrames: INCLUDE "gfx/pokemon/gyarados_plain/frames.asm"
+GyaradosRedFrames:   INCLUDE "gfx/pokemon/gyarados_red/frames.asm"
+
+MewtwoPlainFrames:   INCLUDE "gfx/pokemon/mewtwo_plain/frames.asm"
+MewtwoArmoredFrames: INCLUDE "gfx/pokemon/mewtwo_armored/frames.asm"
+
+RattataPlainFrames:  INCLUDE "gfx/pokemon/rattata_plain/frames.asm"
+RattataAlolanFrames: INCLUDE "gfx/pokemon/rattata_alolan/frames.asm"
+
+RaticatePlainFrames:  INCLUDE "gfx/pokemon/raticate_plain/frames.asm"
+RaticateAlolanFrames: INCLUDE "gfx/pokemon/raticate_alolan/frames.asm"
+
+SandshrewPlainFrames:  INCLUDE "gfx/pokemon/sandshrew_plain/frames.asm"
+SandshrewAlolanFrames: INCLUDE "gfx/pokemon/sandshrew_alolan/frames.asm"
+
+SandslashPlainFrames:  INCLUDE "gfx/pokemon/sandslash_plain/frames.asm"
+SandslashAlolanFrames: INCLUDE "gfx/pokemon/sandslash_alolan/frames.asm"
+
+VulpixPlainFrames:  INCLUDE "gfx/pokemon/vulpix_plain/frames.asm"
+VulpixAlolanFrames: INCLUDE "gfx/pokemon/vulpix_alolan/frames.asm"
+
+NinetalesPlainFrames:  INCLUDE "gfx/pokemon/ninetales_plain/frames.asm"
+NinetalesAlolanFrames: INCLUDE "gfx/pokemon/ninetales_alolan/frames.asm"
+
+DiglettPlainFrames:  INCLUDE "gfx/pokemon/diglett_plain/frames.asm"
+DiglettAlolanFrames: INCLUDE "gfx/pokemon/diglett_alolan/frames.asm"
+
+DugtrioPlainFrames:  INCLUDE "gfx/pokemon/dugtrio_plain/frames.asm"
+DugtrioAlolanFrames: INCLUDE "gfx/pokemon/dugtrio_alolan/frames.asm"
+
+MeowthPlainFrames:  INCLUDE "gfx/pokemon/meowth_plain/frames.asm"
+MeowthAlolanFrames: INCLUDE "gfx/pokemon/meowth_alolan/frames.asm"
+
+PersianPlainFrames:  INCLUDE "gfx/pokemon/persian_plain/frames.asm"
+PersianAlolanFrames: INCLUDE "gfx/pokemon/persian_alolan/frames.asm"
+
+GeodudePlainFrames:  INCLUDE "gfx/pokemon/geodude_plain/frames.asm"
+GeodudeAlolanFrames: INCLUDE "gfx/pokemon/geodude_alolan/frames.asm"
+
+GravelerPlainFrames:  INCLUDE "gfx/pokemon/graveler_plain/frames.asm"
+GravelerAlolanFrames: INCLUDE "gfx/pokemon/graveler_alolan/frames.asm"
+
+GolemPlainFrames:  INCLUDE "gfx/pokemon/golem_plain/frames.asm"
+GolemAlolanFrames: INCLUDE "gfx/pokemon/golem_alolan/frames.asm"
+
+GrimerPlainFrames:  INCLUDE "gfx/pokemon/grimer_plain/frames.asm"
+GrimerAlolanFrames: INCLUDE "gfx/pokemon/grimer_alolan/frames.asm"
+
+MukPlainFrames:  INCLUDE "gfx/pokemon/muk_plain/frames.asm"
+MukAlolanFrames: INCLUDE "gfx/pokemon/muk_alolan/frames.asm"
+
+RaichuPlainFrames:  INCLUDE "gfx/pokemon/raichu_plain/frames.asm"
+RaichuAlolanFrames: INCLUDE "gfx/pokemon/raichu_alolan/frames.asm"
+
+ExeggutorPlainFrames:  INCLUDE "gfx/pokemon/exeggutor_plain/frames.asm"
+ExeggutorAlolanFrames: INCLUDE "gfx/pokemon/exeggutor_alolan/frames.asm"
+
+MarowakPlainFrames:  INCLUDE "gfx/pokemon/marowak_plain/frames.asm"
+MarowakAlolanFrames: INCLUDE "gfx/pokemon/marowak_alolan/frames.asm"
+
+PonytaPlainFrames:    INCLUDE "gfx/pokemon/ponyta_plain/frames.asm"
+PonytaGalarianFrames: INCLUDE "gfx/pokemon/ponyta_galarian/frames.asm"
+
+RapidashPlainFrames:    INCLUDE "gfx/pokemon/rapidash_plain/frames.asm"
+RapidashGalarianFrames: INCLUDE "gfx/pokemon/rapidash_galarian/frames.asm"
+
+WeezingPlainFrames:    INCLUDE "gfx/pokemon/weezing_plain/frames.asm"
+WeezingGalarianFrames: INCLUDE "gfx/pokemon/weezing_galarian/frames.asm"

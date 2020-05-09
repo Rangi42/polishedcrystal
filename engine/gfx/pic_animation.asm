@@ -99,11 +99,6 @@ LoadMonAnimation:
 	call GetFarWRAMByte
 	ld [wPokeAnimVariant], a
 
-	push de
-	call PokeAnim_GetSpeciesOrVariant
-	ld [wPokeAnimSpeciesOrVariant], a
-	pop de
-
 	call PokeAnim_GetFrontpicDims
 	ld a, c
 	ld [wPokeAnimFrontpicHeight], a
@@ -813,41 +808,6 @@ PokeAnim_GetAttrMapCoord:
 	add hl, de
 	ret
 
-GetMonAnimPointer:
-	ld a, [wPokeAnimSpecies]
-	ld hl, VariantAnimPointerTable
-	ld de, 6
-	call IsInArray
-	inc hl
-	ld a, [hli]
-	ld c, a
-
-	ld a, [wPokeAnimIdleFlag]
-	and a
-	jr z, .extras
-	inc hl
-	inc hl
-.extras
-
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-
-	ld a, [wPokeAnimSpeciesOrVariant]
-	dec a
-	ld e, a
-	ld d, 0
-	add hl, de
-	add hl, de
-	ld a, c
-	ld [wPokeAnimPointerBank], a
-	call GetFarHalfword
-	ld a, l
-	ld [wPokeAnimPointerAddr], a
-	ld a, h
-	ld [wPokeAnimPointerAddr + 1], a
-	ret
-
 PokeAnim_GetFrontpicDims:
 	ldh a, [rSVBK]
 	push af
@@ -863,76 +823,71 @@ PokeAnim_GetFrontpicDims:
 	ldh [rSVBK], a
 	ret
 
-GetMonFramesPointer:
+GetMonAnimDataIndex:
+	; c = species
 	ld a, [wPokeAnimSpecies]
-	ld hl, VariantFramesPointerTable
-	ld de, 5
-	call IsInArray
-	inc hl
-	ld a, [hli]
 	ld c, a
-	ld a, [hli]
+	; b = form
+	ld a, [wPokeAnimVariant]
 	ld b, a
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	jr c, .got_frames
-	ld a, [wPokeAnimSpecies]
-	cp CHIKORITA
-	jr c, .got_frames
-	ld c, BANK(JohtoFrames)
-.got_frames
-	ld a, c
-	ld [wPokeAnimFramesBank], a
+	; bc = index
+	jp GetCosmeticSpeciesAndFormIndex
 
-	ld a, [wPokeAnimSpeciesOrVariant]
-	dec a
-	ld e, a
-	ld d, 0
-	add hl, de
-	add hl, de
-	ld a, b
+GetMonAnimPointer:
+	call GetMonAnimDataIndex
+	ld a, [wPokeAnimIdleFlag]
+	and a
+	ld hl, AnimationPointers
+	ld a, BANK(AnimationPointers)
+	jr z, .extras
+	ld hl, AnimationExtraPointers
+	ld a, BANK(AnimationExtraPointers)
+.extras
+	dec bc
+	add hl, bc
+	add hl, bc
+	ld [wPokeAnimPointerBank], a
+	call GetFarHalfword
+	ld a, l
+	ld [wPokeAnimPointerAddr], a
+	ld a, h
+	ld [wPokeAnimPointerAddr + 1], a
+	ret
+
+GetMonFramesPointer:
+	call GetMonAnimDataIndex
+	dec bc
+	ld hl, FramesPointers
+	add hl, bc
+	add hl, bc
+	ld a, BANK(FramesPointers)
 	call GetFarHalfword
 	ld a, l
 	ld [wPokeAnimFramesAddr], a
 	ld a, h
 	ld [wPokeAnimFramesAddr + 1], a
+	ld a, [wPokeAnimSpecies]
+	cp CHIKORITA
+	ld a, BANK(KantoFrames)
+	jr c, .got_frames
+	ld a, BANK(JohtoFrames)
+.got_frames
+	ld [wPokeAnimFramesBank], a
 	ret
 
 GetMonBitmaskPointer:
-	ld a, [wPokeAnimSpecies]
-	ld hl, VariantBitmasksPointerTable
-	ld de, 4
-	call IsInArray
-	inc hl
-	ld a, [hli]
+	call GetMonAnimDataIndex
+	dec bc
+	ld hl, BitmasksPointers
+	add hl, bc
+	add hl, bc
+	ld a, BANK(BitmasksPointers)
 	ld [wPokeAnimBitmaskBank], a
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-
-	ld a, [wPokeAnimSpeciesOrVariant]
-	dec a
-	ld e, a
-	ld d, 0
-	add hl, de
-	add hl, de
-	ld a, [wPokeAnimBitmaskBank]
 	call GetFarHalfword
 	ld a, l
 	ld [wPokeAnimBitmaskAddr], a
 	ld a, h
 	ld [wPokeAnimBitmaskAddr + 1], a
-	ret
-
-PokeAnim_GetSpeciesOrVariant:
-	ld a, [wPokeAnimSpecies]
-	ld hl, VariantAnimPointerTable
-	ld de, 6
-	call IsInArray
-	ld a, [wPokeAnimSpecies]
-	ret nc
-	ld a, [wPokeAnimVariant]
 	ret
 
 HOF_AnimateFrontpic:
@@ -959,5 +914,3 @@ HOF_AnimateFrontpic:
 	inc a
 	ld [wCurPartySpecies], a
 	ret
-
-INCLUDE "gfx/pokemon/variant_anim_data_tables.asm"
