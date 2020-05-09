@@ -11,6 +11,15 @@ FarChangeStat:
 	ld [wLoweredStat], a
 	pop af
 	ld b, a
+	bit STAT_TARGET_F, b
+	jr z, .player
+	call HasOpponentFainted
+	ret z
+	jr z, .not_fainted
+.player
+	call HasUserFainted
+	ret z
+.not_fainted
 
 	; check attack missing
 	bit STAT_MISS_F, b

@@ -39,7 +39,7 @@ BattleCommand_bounceback:
 	; No infinite bouncing
 	ld a, BATTLE_VARS_SUBSTATUS2
 	call GetBattleVar
-	bit SUBSTATUS_MAGIC_BOUNCE, a
+	bit SUBSTATUS_IN_ABILITY, a
 	ret nz
 
 	ld a, BATTLE_VARS_MOVE
@@ -70,7 +70,7 @@ BattleCommand_bounceback:
 	; Flag the bouncing
 	ld a, BATTLE_VARS_SUBSTATUS2
 	call GetBattleVarAddr
-	set SUBSTATUS_MAGIC_BOUNCE, [hl]
+	set SUBSTATUS_IN_ABILITY, [hl]
 
 	; Invert who went first
 	ld a, [wEnemyGoesFirst]
@@ -89,7 +89,7 @@ BattleCommand_bounceback:
 
 	ld a, BATTLE_VARS_SUBSTATUS2
 	call GetBattleVarAddr
-	res SUBSTATUS_MAGIC_BOUNCE, [hl]
+	res SUBSTATUS_IN_ABILITY, [hl]
 
 	ld a, BATTLE_VARS_MOVE
 	call GetBattleVarAddr

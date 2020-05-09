@@ -586,6 +586,17 @@ MoveDisabled:
 	ld hl, DisabledMoveText
 	jp StdBattleTextBox
 
+GenericHitAnim:
+	; Flicker the monster pic unless flying or underground.
+	xor a
+	ld [wNumHits], a
+	ld de, ANIM_HIT_CONFUSION
+	ld a, BATTLE_VARS_SUBSTATUS3_OPP
+	call GetBattleVar
+	and 1 << SUBSTATUS_FLYING | 1 << SUBSTATUS_UNDERGROUND
+	call z, PlayFXAnimID
+	ret
+
 HitConfusion:
 	ld hl, HurtItselfText
 	call StdBattleTextBox
@@ -596,16 +607,6 @@ HitConfusion:
 	call HitSelfInConfusion
 	call ConfusedDamageCalc
 	call BattleCommand_lowersub
-
-	xor a
-	ld [wNumHits], a
-
-	; Flicker the monster pic unless flying or underground.
-	ld de, ANIM_HIT_CONFUSION
-	ld a, BATTLE_VARS_SUBSTATUS3_OPP
-	call GetBattleVar
-	and 1 << SUBSTATUS_FLYING | 1 << SUBSTATUS_UNDERGROUND
-	call z, PlayFXAnimID
 
 	ldh a, [hBattleTurn]
 	and a
@@ -1289,6 +1290,13 @@ BattleCommand_stab:
 	ldh [hMultiplicand + 2], a
 	call Multiply
 
+	; Parental Bond
+	ld a, BATTLE_VARS_SUBSTATUS2
+	call GetBattleVar
+	bit SUBSTATUS_IN_ABILITY, a
+	ld a, $14
+	call nz, MultiplyAndDivide
+
 	; Second ability pass
 	push hl
 	farcall ApplyDamageAbilities_AfterTypeMatchup
@@ -1639,6 +1647,12 @@ BattleCommand_damagevariation:
 	ret
 
 BattleCommand_checkhit:
+	; Skip accuracy checks for Magic Bounce/Parental Bond 2nd hit
+	ld a, BATTLE_VARS_SUBSTATUS2
+	call GetBattleVar
+	bit SUBSTATUS_IN_ABILITY, a
+	ret nz
+
 	call .DreamEater
 	ld a, ATKFAIL_IMMUNE
 	jp z, .Miss_skipset
@@ -2061,6 +2075,18 @@ BattleCommand_lowersub:
 	jp BattleCommand_movedelay
 
 BattleCommand_moveanim:
+	; Check for Parental Bond hit
+	ld a, BATTLE_VARS_SUBSTATUS2
+	call GetBattleVar
+	bit SUBSTATUS_IN_ABILITY, a
+	jr z, .not_parental_bond
+
+	; Flicker the monster pic unless flying or underground.
+	call SwitchTurn
+	call GenericHitAnim
+	jp SwitchTurn
+
+.not_parental_bond
 	call BattleCommand_lowersub
 	call BattleCommand_moveanimnosub
 	jp BattleCommand_raisesub
@@ -2569,6 +2595,12 @@ BattleCommand_startloop:
 	ret
 
 BattleCommand_supereffectivetext:
+	; Only print the message once for Parental Bond
+	ld a, BATTLE_VARS_SUBSTATUS2
+	call GetBattleVar
+	bit SUBSTATUS_IN_ABILITY, a
+	ret nz
+
 	ld a, BATTLE_VARS_SUBSTATUS3
 	call GetBattleVar
 	bit SUBSTATUS_IN_LOOP, a
@@ -2971,10 +3003,32 @@ BattleCommand_posthiteffects:
 .checkfaint
 	; if we fainted, abort the rest of the move sequence
 	call HasUserFainted
-	ret nz
+	jr nz, .check_parental_bond
 	call EndMoveEffect ; oops
 	xor a
 	ret
+.check_parental_bond
+	call HasOpponentFainted
+	ret z
+
+	call GetTrueUserAbility
+	cp PARENTAL_BOND
+	ret nz
+
+	; Multi-hit attacks have their own multihit code
+	ld a, BATTLE_VARS_MOVE_EFFECT
+	call GetBattleVar
+	cp EFFECT_MULTI_HIT
+	ret z
+
+	ld a, BATTLE_VARS_SUBSTATUS2
+	call GetBattleVarAddr
+	bit SUBSTATUS_IN_ABILITY, [hl]
+	res SUBSTATUS_IN_ABILITY, [hl]
+	ret nz
+	set SUBSTATUS_IN_ABILITY, [hl]
+	ld b, checkhit_command
+	jp SkipToBattleCommandBackwards
 
 CheckEndMoveEffects:
 ; Effects handled at move end skipped by Sheer Force negation except for rampage

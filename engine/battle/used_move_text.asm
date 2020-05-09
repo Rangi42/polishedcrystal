@@ -1,7 +1,7 @@
 DisplayUsedMoveText:
 	ld a, BATTLE_VARS_SUBSTATUS2
 	call GetBattleVar
-	bit SUBSTATUS_MAGIC_BOUNCE, a
+	bit SUBSTATUS_IN_ABILITY, a
 	ret nz
 
 	ldh a, [hBattleTurn]
