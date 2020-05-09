@@ -10,7 +10,11 @@
 	dn 7, 7 ; frontpic dimensions
 	db EARLY_BIRD ; ability 1
 	db SCRAPPY ; ability 2
+if DEF(FAITHFUL)
 	db INNER_FOCUS ; hidden ability
+else
+	db PARENTAL_BOND ; hidden ability
+endc
 	db MEDIUM_FAST ; growth rate
 	dn MONSTER, MONSTER ; egg groups
 

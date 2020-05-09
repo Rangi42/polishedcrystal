@@ -134,6 +134,7 @@ AbilityDescriptions:
 	dw MegaLauncherDescription
 	dw ToughClawsDescription
 	dw PixilateDescription
+	dw ParentalBondDescription
 	dw SlushRushDescription
 	dw GalvanizeDescription
 	dw CorrosionDescription
@@ -672,6 +673,10 @@ ToughClawsDescription:
 PixilateDescription:
 	db    "Normal-type moves"
 	next1 "become Fairy-type.@"
+
+ParentalBondDescription:
+	db    "Parent and child"
+	next1 "attack together.@"
 
 SlushRushDescription:
 	db    "Boosts Speed in"

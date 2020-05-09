@@ -134,6 +134,7 @@ AbilityNames:
 	dw MegaLauncher
 	dw ToughClaws
 	dw Pixilate
+	dw ParentalBond
 	dw SlushRush
 	dw Galvanize
 	dw Corrosion
@@ -276,6 +277,7 @@ Competitive:     rawchar "Competitive@"
 MegaLauncher:    rawchar "Mega Launcher@"
 ToughClaws:      rawchar "Tough Claws@"
 Pixilate:        rawchar "Pixilate@"
+ParentalBond:    rawchar "Parental Bond@"
 SlushRush:       rawchar "Slush Rush@"
 Galvanize:       rawchar "Galvanize@"
 Corrosion:       rawchar "Corrosion@"

@@ -135,6 +135,7 @@
 	const MEGA_LAUNCHER
 	const TOUGH_CLAWS
 	const PIXILATE
+	const PARENTAL_BOND
 	const SLUSH_RUSH
 	const GALVANIZE
 	const CORROSION
