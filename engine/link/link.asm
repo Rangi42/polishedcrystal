@@ -749,11 +749,6 @@ LinkTradeOTPartymonMenuLoop:
 	jp z, LinkTradePartiesMenuMasterLoop
 	bit A_BUTTON_F, a
 	jr z, .not_a_button
-	ld hl, wOTPartyCount
-	ld de, wOTPartyMonOT
-	ld a, ENEMY_OT_NAME
-	ld [wNamedObjectTypeBuffer], a
-	ld hl, wOTPartyMon1Species
 	call LinkMonStatsScreen
 	call InitLinkTradePalMap
 	call ApplyAttrAndTilemapInVBlank
@@ -1105,10 +1100,6 @@ Function28926:
 .show_stats
 	pop af
 	ld [wMenuCursorY], a
-	ld hl, wPartyCount
-	ld de, wPartyMonOT
-	ld a, PARTY_OT_NAME
-	ld [wNamedObjectTypeBuffer], a
 	call LinkMonStatsScreen
 	call Call_LoadTempTileMapToTileMap
 	hlcoord 6, 1
