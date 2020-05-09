@@ -47,7 +47,6 @@ ROMX $03
 
 ROMX $04
 	"bank4"
-	"Variant Pic Pointers"
 
 ROMX $05
 	"bank5"

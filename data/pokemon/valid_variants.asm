@@ -1,4 +1,4 @@
-ValidVariantRanges:
+ValidVariantRanges: ; for Wonder Trade
 	db UNOWN,     NUM_UNOWN
 	db ARBOK,     2 ; ARBOK_JOHTO_FORM or ARBOK_KANTO_FORM
 	db MAGIKARP,  NUM_MAGIKARP

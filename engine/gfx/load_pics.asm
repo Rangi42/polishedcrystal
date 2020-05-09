@@ -142,25 +142,24 @@ _GetFrontpic:
 	ret
 
 GetFrontpicPointer:
+	; c = species
 	ld a, [wCurPartySpecies]
-	call GetRelevantPicPointers
-	ld a, [wCurPartySpecies]
-	jr nc, .notvariant
-
-	; form 0 and 1 are one and the same
+	ld c, a
+	; b = form
 	ld a, [wCurForm]
-	and a
-	jr nz, .notvariant
-	inc a
-.notvariant
-	dec a
-	ld bc, 6
-	rst AddNTimes
-	ld a, d
+	ld b, a
+	; bc = index
+	call GetCosmeticSpeciesAndFormIndex
+	dec bc
+	ld hl, FrontPicPointers
+rept 3
+	add hl, bc
+endr
+	ld a, BANK(FrontPicPointers)
 	call GetFarByte
 	push af
 	inc hl
-	ld a, d
+	ld a, BANK(FrontPicPointers)
 	call GetFarHalfword
 	pop bc
 	ret
@@ -262,34 +261,29 @@ GetBackpic:
 	ld a, [wCurPartySpecies]
 	and a
 	ret z
-
+	; c = species
 	ld a, [wCurPartySpecies]
-	ld b, a
-	ld a, [wCurForm]
 	ld c, a
+	; b = form
+	ld a, [wCurForm]
+	ld b, a
 	ldh a, [rSVBK]
 	push af
 	ld a, $6
 	ldh [rSVBK], a
 	push de
-	ld a, b
-	push bc
-	call GetRelevantPicPointers
-	pop bc
-	ld a, b
-	jr nc, .notvariant
-	ld a, c
-.notvariant
-	dec a
-	ld bc, 6
-	rst AddNTimes
-	ld bc, 3
+	; bc = index
+	call GetCosmeticSpeciesAndFormIndex
+	dec bc
+	ld hl, BackPicPointers
+rept 3
 	add hl, bc
-	ld a, d
+endr
+	ld a, BANK(BackPicPointers)
 	call GetFarByte
 	push af
 	inc hl
-	ld a, d
+	ld a, BANK(BackPicPointers)
 	call GetFarHalfword
 	ld de, wDecompressScratch
 	pop af
@@ -484,19 +478,3 @@ LoadFrontpic:
 	jr nz, .right_loop
 	pop bc
 	ret
-
-GetRelevantPicPointers:
-; given species in a, return *PicPointers in hl and BANK(*PicPointers) in d
-; returns c for variants, nc for normal species
-	ld hl, VariantPicPointerTable
-	ld de, 4
-	call IsInArray
-	inc hl
-	ld a, [hli]
-	ld d, a
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	ret
-
-INCLUDE "data/pokemon/variant_pic_pointer_table.asm"

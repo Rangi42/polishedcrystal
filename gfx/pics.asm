@@ -3,12 +3,8 @@ INCLUDE "constants.asm"
 
 SECTION "Pic Pointers", ROMX
 
-INCLUDE "data/pokemon/pic_pointers.asm"
-
-
-SECTION "Variant Pic Pointers", ROMX
-
-INCLUDE "data/pokemon/variant_pic_pointers.asm"
+INCLUDE "data/pokemon/front_pic_pointers.asm"
+INCLUDE "data/pokemon/back_pic_pointers.asm"
 
 
 SECTION "Trainer Pic Pointers", ROMX

@@ -1,4 +1,4 @@
-ValidPokemonLevels:
+ValidPokemonLevels: ; for Wonder Trade
 	;  min, max
 	db 255, 255 ; ?????
 	db   1,  15 ; Bulbasaur
