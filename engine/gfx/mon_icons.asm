@@ -8,7 +8,7 @@ LoadOverworldMonIcon:
 	ld a, [wCurIconForm]
 	ld b, a
 	; bc = index
-	call GetSpeciesAndFormIndex
+	call GetCosmeticSpeciesAndFormIndex
 	; de = icon pointer
 	ld hl, IconPointers
 	add hl, bc
@@ -151,7 +151,7 @@ _GetMonIconPalette:
 	push af
 
 	; bc = index
-	call GetSpeciesAndFormIndex
+	call GetCosmeticSpeciesAndFormIndex
 	dec bc
 	ld hl, MenuMonIconColors
 	add hl, bc

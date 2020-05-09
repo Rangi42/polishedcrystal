@@ -197,7 +197,7 @@ IconPointers:
 	dw SlowkingIcon
 	dw MisdreavusIcon
 	dw MismagiusIcon
-	dw UnownIcon
+	dw UnownAIcon
 	dw WobbuffetIcon
 	dw GirafarigIcon
 	dw PinecoIcon
@@ -256,7 +256,52 @@ IconPointers:
 	dw SylveonIcon
 	dw EggIcon
 
-	dw GyaradosIcon
+	dw UnownBIcon
+	dw UnownCIcon
+	dw UnownDIcon
+	dw UnownEIcon
+	dw UnownFIcon
+	dw UnownGIcon
+	dw UnownHIcon
+	dw UnownIIcon
+	dw UnownJIcon
+	dw UnownKIcon
+	dw UnownLIcon
+	dw UnownMIcon
+	dw UnownNIcon
+	dw UnownOIcon
+	dw UnownPIcon
+	dw UnownQIcon
+	dw UnownRIcon
+	dw UnownSIcon
+	dw UnownTIcon
+	dw UnownUIcon
+	dw UnownVIcon
+	dw UnownWIcon
+	dw UnownXIcon
+	dw UnownYIcon
+	dw UnownZIcon
+	dw UnownExclamationIcon
+	dw UnownQuestionIcon
+
+	dw ArbokIcon ; Kanto
+	dw ArbokIcon ; Koga
+	dw ArbokIcon ; Agatha
+	dw ArbokIcon ; Ariana
+
+	dw PikachuIcon ; Fly
+	dw PikachuIcon ; Surf
+	dw PikachuIcon ; Pika
+	dw PikachuIcon ; Chuchu
+	dw PikachuIcon ; Spark
+
+	dw PichuIcon ; Spiky
+
+rept NUM_MAGIKARP - 1
+	dw MagikarpIcon
+endr
+
+	dw GyaradosIcon ; Red
 	dw MewtwoArmoredIcon
 	dw RattataIcon ; TODO
 	dw RaticateIcon ; TODO
