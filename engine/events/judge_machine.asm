@@ -93,13 +93,14 @@ JudgeSystem::
 ; Start with the EV chart
 	xor a
 	ldh [hChartScreen], a
-	ldh [hBGMapMode], a
 
 .restart
 ; Clear the screen
 	call ClearBGPalettes
 	call ClearTileMap
 	call DisableLCD
+	xor a
+	ldh [hBGMapMode], a
 
 ; Load the party struct into wTempMon
 	ld hl, wPartyMons
@@ -258,10 +259,8 @@ JudgeSystem::
 
 ; Show the screen
 	call EnableLCD
-	call ApplyTilemapInVBlank
 	ld a, CGB_JUDGE_SYSTEM
 	call GetCGBLayout
-	call SetPalettes
 
 .render
 	call ClearSpriteAnims
@@ -391,16 +390,15 @@ JudgeSystem::
 	push bc
 	push de
 ; Load the palettes
-	ld de, wBGPals2
+	ld de, wBGPals1
 	ld bc, 6 palettes
 	call FarCopyColorWRAM
-	ld a, $1
-	ldh [hCGBPalUpdate], a
 ; Place the title
 	pop de
 	hlcoord 1, 2
 	rst PlaceString
 ; Render the chart when this returns (bc is on the stack)
+	ld b, 2
 	jp SafeCopyTilemapAtOnce
 
 SparkleMaxStat:
