@@ -119,14 +119,27 @@ _GetVarAction::
 
 .BoxFreeSpace:
 ; Remaining slots in the current box.
-	ld a, BANK(sBoxCount)
-	call GetSRAMBank
-	ld hl, sBoxCount
-	ld a, MONS_PER_BOX
-	sub [hl]
+	push bc
+	push de
+	ld a, [wCurBox]
 	ld b, a
-	call CloseSRAM
-	ld a, b
+	inc b
+	ld c, 1
+	ld d, 0
+.boxloop
+	farcall GetStorageBoxMon
+	jr nz, .not_empty_boxslot
+	inc d
+.not_empty_boxslot
+	ld a, c
+	cp MONS_PER_BOX
+	jr z, .done_boxspace
+	inc c
+	jr .boxloop
+.done_boxspace
+	ld a, d
+	pop de
+	pop bc
 	jp .loadstringbuffer2
 
 .BattleResult:

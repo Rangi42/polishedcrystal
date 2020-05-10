@@ -1087,7 +1087,7 @@ UpgradeStorageSystem:
 	ld de, wBufferMonOT
 	rst CopyBytes
 	pop de
-	call _NewStorageMon
+	farcall _NewStorageMon
 	pop bc
 	jr .loop
 
@@ -1104,7 +1104,7 @@ UpgradeStorageSystem:
 .do_storage_loop
 	ld e, 140
 .storage_loop
-	call GetStorageMon
+	farcall GetStorageMon
 	call nz, .add_to_box
 	dec e
 	jr nz, .storage_loop
@@ -1125,7 +1125,7 @@ UpgradeStorageSystem:
 	jr nc, .box_count_loop
 	add 21
 	ld c, a
-	jp SetBoxPointer
+	farjp SetBoxPointer
 
 .next_phase
 	call GetUpgradePhase
