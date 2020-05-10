@@ -102,7 +102,7 @@ CheckPartyFullAfterContest:
 	ld de, wBufferMonOT
 	ld bc, NAME_LENGTH
 	rst CopyBytes
-	farcall InsertPokemonIntoBox
+	farcall AddStorageMon
 	ld a, [wCurPartySpecies]
 	ld [wd265], a
 	call GetPokemonName

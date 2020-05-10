@@ -268,7 +268,6 @@ INCLUDE "engine/pokemon/mon_stats.asm"
 INCLUDE "engine/pokemon/experience.asm"
 INCLUDE "engine/pokemon/switchpartymons.asm"
 INCLUDE "engine/gfx/load_pics.asm"
-INCLUDE "engine/pokemon/move_mon_wo_mail.asm"
 INCLUDE "data/pokemon/names.asm"
 INCLUDE "engine/pokemon/natures.asm"
 

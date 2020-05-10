@@ -1407,8 +1407,32 @@ InitializeBoxes:
 .Box:
 	rawchar "Box   @"
 
+AddStorageMon:
+; Adds wBufferMon to the storage system if possible.
+; Returns z if the active box is full. Otherwise, returns nz with bcde
+; pointing towards storage box, storage slot, mondb bank, mondb entry.
+	; First check if the active box is full.
+	ld a, [wCurBox]
+	ld b, a
+	inc b
+	ld c, 1
+.loop
+	call GetStorageBoxMon
+	jr z, .location_available
+	ld a, c
+	cp MONS_PER_BOX
+	ret z
+	inc c
+	jr .loop
+
+.location_available
+	; Check if we can add a new entry
+	call NewStorageMon
+	ret z
+	; Success! Fallthrough to set box pointer
 SetBoxPointer:
 ; Set box b slot c to point to pokémon storage bank d, entry e.
+; Returns nz (to denote success).
 	push hl
 	push de
 	push bc
@@ -1443,6 +1467,7 @@ SetBoxPointer:
 	ld b, SET_FLAG
 .got_flag_setup
 	predef FlagPredef
+	or 1
 	jp PopBCDEHL
 
 GetStorageBoxMon:
@@ -1606,7 +1631,7 @@ GetStorageMon:
 
 NewStorageMon:
 ; Writes Pokémon from wBufferMon to free space in storage, if there
-; is space. Returns z on success with storage bank d, entry e.
+; is space. Returns nz on success with storage bank d, entry e.
 ; Returns z if the storage is full, otherwise nz with de pointing to
 ; bank and entry.
 	push bc
