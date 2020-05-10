@@ -80,7 +80,9 @@ data/tilesets.o \
 engine/movie/credits.o \
 engine/overworld/events.o \
 gfx/pics.o \
+gfx/icons.o \
 gfx/sprites.o \
+gfx/items.o \
 gfx/misc.o
 
 

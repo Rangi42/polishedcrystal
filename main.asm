@@ -312,7 +312,7 @@ INCLUDE "engine/events/field_moves.asm"
 INCLUDE "engine/events/magnet_train.asm"
 INCLUDE "engine/gfx/sprites.asm"
 INCLUDE "engine/gfx/mon_icons.asm"
-INCLUDE "data/pokemon/menu_icons.asm"
+INCLUDE "data/pokemon/menu_icon_pointers.asm"
 
 
 SECTION "bank24", ROMX
@@ -462,7 +462,6 @@ INCLUDE "gfx/emotes.asm"
 INCLUDE "engine/overworld/warp_connection.asm"
 INCLUDE "engine/battle/used_move_text.asm"
 INCLUDE "engine/gfx/item_icons.asm"
-INCLUDE "gfx/items.asm"
 
 
 SECTION "Title", ROMX

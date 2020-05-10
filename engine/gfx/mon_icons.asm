@@ -9,20 +9,19 @@ LoadOverworldMonIcon:
 	ld b, a
 	; bc = index
 	call GetCosmeticSpeciesAndFormIndex
-	; de = icon pointer
 	ld hl, IconPointers
 	add hl, bc
 	add hl, bc
+	add hl, bc
+	; b = icon bank
+	ld a, [hli]
+	ld b, a
+	; de = icon pointer
 	ld a, [hli]
 	ld d, [hl]
 	ld e, a
-; Extended icon bank routine by com3tiin
-; http://www.pokecommunity.com/showthread.php?t=338470
-	ld a, [wCurIcon]
-	cp TAUROS ; first mon in "Mon Icons 2"
-	lb bc, BANK("Mon Icons 1"), 8
-	ret c
-	ld b, BANK("Mon Icons 2")
+	; c = tile count
+	ld c, 8
 	ret
 
 SetMenuMonIconColor:

@@ -1,326 +1,326 @@
 IconPointers:
-	dw NullIcon
-	dw BulbasaurIcon
-	dw IvysaurIcon
-	dw VenusaurIcon
-	dw CharmanderIcon
-	dw CharmeleonIcon
-	dw CharizardIcon
-	dw SquirtleIcon
-	dw WartortleIcon
-	dw BlastoiseIcon
-	dw CaterpieIcon
-	dw MetapodIcon
-	dw ButterfreeIcon
-	dw WeedleIcon
-	dw KakunaIcon
-	dw BeedrillIcon
-	dw PidgeyIcon
-	dw PidgeottoIcon
-	dw PidgeotIcon
-	dw RattataIcon
-	dw RaticateIcon
-	dw MarillIcon
-	dw AzumarillIcon
-	dw EkansIcon
-	dw ArbokIcon
-	dw PikachuIcon
-	dw RaichuIcon
-	dw SandshrewIcon
-	dw SandslashIcon
-	dw NidoranFIcon
-	dw NidorinaIcon
-	dw NidoqueenIcon
-	dw NidoranMIcon
-	dw NidorinoIcon
-	dw NidokingIcon
-	dw ClefairyIcon
-	dw ClefableIcon
-	dw VulpixIcon
-	dw NinetalesIcon
-	dw JigglypuffIcon
-	dw WigglytuffIcon
-	dw ZubatIcon
-	dw GolbatIcon
-	dw OddishIcon
-	dw GloomIcon
-	dw VileplumeIcon
-	dw ParasIcon
-	dw ParasectIcon
-	dw VenonatIcon
-	dw VenomothIcon
-	dw DiglettIcon
-	dw DugtrioIcon
-	dw MeowthIcon
-	dw PersianIcon
-	dw PsyduckIcon
-	dw GolduckIcon
-	dw MankeyIcon
-	dw PrimeapeIcon
-	dw GrowlitheIcon
-	dw ArcanineIcon
-	dw PoliwagIcon
-	dw PoliwhirlIcon
-	dw PoliwrathIcon
-	dw AbraIcon
-	dw KadabraIcon
-	dw AlakazamIcon
-	dw MachopIcon
-	dw MachokeIcon
-	dw MachampIcon
-	dw BellsproutIcon
-	dw WeepinbellIcon
-	dw VictreebelIcon
-	dw TentacoolIcon
-	dw TentacruelIcon
-	dw GeodudeIcon
-	dw GravelerIcon
-	dw GolemIcon
-	dw PonytaIcon
-	dw RapidashIcon
-	dw SlowpokeIcon
-	dw SlowbroIcon
-	dw MagnemiteIcon
-	dw MagnetonIcon
-	dw FarfetchdIcon
-	dw DoduoIcon
-	dw DodrioIcon
-	dw SeelIcon
-	dw DewgongIcon
-	dw GrimerIcon
-	dw MukIcon
-	dw ShellderIcon
-	dw CloysterIcon
-	dw GastlyIcon
-	dw HaunterIcon
-	dw GengarIcon
-	dw OnixIcon
-	dw DrowzeeIcon
-	dw HypnoIcon
-	dw KrabbyIcon
-	dw KinglerIcon
-	dw VoltorbIcon
-	dw ElectrodeIcon
-	dw ExeggcuteIcon
-	dw ExeggutorIcon
-	dw CuboneIcon
-	dw MarowakIcon
-	dw HitmonleeIcon
-	dw HitmonchanIcon
-	dw KoffingIcon
-	dw WeezingIcon
-	dw RhyhornIcon
-	dw RhydonIcon
-	dw ChanseyIcon
-	dw TangelaIcon
-	dw KangaskhanIcon
-	dw HorseaIcon
-	dw SeadraIcon
-	dw TogepiIcon
-	dw TogeticIcon
-	dw TogekissIcon
-	dw StaryuIcon
-	dw StarmieIcon
-	dw MrMimeIcon
-	dw ScytherIcon
-	dw JynxIcon
-	dw ElectabuzzIcon
-	dw MagmarIcon
-	dw PinsirIcon
-	dw TaurosIcon
-	dw MagikarpIcon
-	dw GyaradosIcon
-	dw LaprasIcon
-	dw DittoIcon
-	dw EeveeIcon
-	dw VaporeonIcon
-	dw JolteonIcon
-	dw FlareonIcon
-	dw PorygonIcon
-	dw OmanyteIcon
-	dw OmastarIcon
-	dw KabutoIcon
-	dw KabutopsIcon
-	dw AerodactylIcon
-	dw SnorlaxIcon
-	dw ArticunoIcon
-	dw ZapdosIcon
-	dw MoltresIcon
-	dw DratiniIcon
-	dw DragonairIcon
-	dw DragoniteIcon
-	dw MewtwoIcon
-	dw MewIcon
-	dw ChikoritaIcon
-	dw BayleefIcon
-	dw MeganiumIcon
-	dw CyndaquilIcon
-	dw QuilavaIcon
-	dw TyphlosionIcon
-	dw TotodileIcon
-	dw CroconawIcon
-	dw FeraligatrIcon
-	dw SentretIcon
-	dw FurretIcon
-	dw HoothootIcon
-	dw NoctowlIcon
-	dw LedybaIcon
-	dw LedianIcon
-	dw SpinarakIcon
-	dw AriadosIcon
-	dw CrobatIcon
-	dw ChinchouIcon
-	dw LanturnIcon
-	dw PichuIcon
-	dw MunchlaxIcon
-	dw MagnezoneIcon
-	dw RhyperiorIcon
-	dw TangrowthIcon
-	dw NatuIcon
-	dw XatuIcon
-	dw MareepIcon
-	dw FlaaffyIcon
-	dw AmpharosIcon
-	dw BellossomIcon
-	dw SudowoodoIcon
-	dw PolitoedIcon
-	dw SunkernIcon
-	dw SunfloraIcon
-	dw YanmaIcon
-	dw YanmegaIcon
-	dw WooperIcon
-	dw QuagsireIcon
-	dw EspeonIcon
-	dw UmbreonIcon
-	dw MurkrowIcon
-	dw HonchkrowIcon
-	dw SlowkingIcon
-	dw MisdreavusIcon
-	dw MismagiusIcon
-	dw UnownAIcon
-	dw WobbuffetIcon
-	dw GirafarigIcon
-	dw PinecoIcon
-	dw ForretressIcon
-	dw DunsparceIcon
-	dw GligarIcon
-	dw GliscorIcon
-	dw SteelixIcon
-	dw SnubbullIcon
-	dw GranbullIcon
-	dw QwilfishIcon
-	dw ScizorIcon
-	dw ShuckleIcon
-	dw HeracrossIcon
-	dw SneaselIcon
-	dw WeavileIcon
-	dw TeddiursaIcon
-	dw UrsaringIcon
-	dw SlugmaIcon
-	dw MagcargoIcon
-	dw SwinubIcon
-	dw PiloswineIcon
-	dw MamoswineIcon
-	dw CorsolaIcon
-	dw RemoraidIcon
-	dw OctilleryIcon
-	dw MantineIcon
-	dw SkarmoryIcon
-	dw HoundourIcon
-	dw HoundoomIcon
-	dw KingdraIcon
-	dw PhanpyIcon
-	dw DonphanIcon
-	dw Porygon2Icon
-	dw PorygonZIcon
-	dw SmeargleIcon
-	dw TyrogueIcon
-	dw HitmontopIcon
-	dw ElekidIcon
-	dw ElectivireIcon
-	dw MagbyIcon
-	dw MagmortarIcon
-	dw MiltankIcon
-	dw BlisseyIcon
-	dw RaikouIcon
-	dw EnteiIcon
-	dw SuicuneIcon
-	dw LarvitarIcon
-	dw PupitarIcon
-	dw TyranitarIcon
-	dw LugiaIcon
-	dw HoOhIcon
-	dw CelebiIcon
-	dw LeafeonIcon
-	dw GlaceonIcon
-	dw SylveonIcon
-	dw EggIcon
+	dba NullIcon
+	dba BulbasaurIcon
+	dba IvysaurIcon
+	dba VenusaurIcon
+	dba CharmanderIcon
+	dba CharmeleonIcon
+	dba CharizardIcon
+	dba SquirtleIcon
+	dba WartortleIcon
+	dba BlastoiseIcon
+	dba CaterpieIcon
+	dba MetapodIcon
+	dba ButterfreeIcon
+	dba WeedleIcon
+	dba KakunaIcon
+	dba BeedrillIcon
+	dba PidgeyIcon
+	dba PidgeottoIcon
+	dba PidgeotIcon
+	dba RattataIcon
+	dba RaticateIcon
+	dba MarillIcon
+	dba AzumarillIcon
+	dba EkansIcon
+	dba ArbokIcon
+	dba PikachuIcon
+	dba RaichuIcon
+	dba SandshrewIcon
+	dba SandslashIcon
+	dba NidoranFIcon
+	dba NidorinaIcon
+	dba NidoqueenIcon
+	dba NidoranMIcon
+	dba NidorinoIcon
+	dba NidokingIcon
+	dba ClefairyIcon
+	dba ClefableIcon
+	dba VulpixIcon
+	dba NinetalesIcon
+	dba JigglypuffIcon
+	dba WigglytuffIcon
+	dba ZubatIcon
+	dba GolbatIcon
+	dba OddishIcon
+	dba GloomIcon
+	dba VileplumeIcon
+	dba ParasIcon
+	dba ParasectIcon
+	dba VenonatIcon
+	dba VenomothIcon
+	dba DiglettIcon
+	dba DugtrioIcon
+	dba MeowthIcon
+	dba PersianIcon
+	dba PsyduckIcon
+	dba GolduckIcon
+	dba MankeyIcon
+	dba PrimeapeIcon
+	dba GrowlitheIcon
+	dba ArcanineIcon
+	dba PoliwagIcon
+	dba PoliwhirlIcon
+	dba PoliwrathIcon
+	dba AbraIcon
+	dba KadabraIcon
+	dba AlakazamIcon
+	dba MachopIcon
+	dba MachokeIcon
+	dba MachampIcon
+	dba BellsproutIcon
+	dba WeepinbellIcon
+	dba VictreebelIcon
+	dba TentacoolIcon
+	dba TentacruelIcon
+	dba GeodudeIcon
+	dba GravelerIcon
+	dba GolemIcon
+	dba PonytaIcon
+	dba RapidashIcon
+	dba SlowpokeIcon
+	dba SlowbroIcon
+	dba MagnemiteIcon
+	dba MagnetonIcon
+	dba FarfetchdIcon
+	dba DoduoIcon
+	dba DodrioIcon
+	dba SeelIcon
+	dba DewgongIcon
+	dba GrimerIcon
+	dba MukIcon
+	dba ShellderIcon
+	dba CloysterIcon
+	dba GastlyIcon
+	dba HaunterIcon
+	dba GengarIcon
+	dba OnixIcon
+	dba DrowzeeIcon
+	dba HypnoIcon
+	dba KrabbyIcon
+	dba KinglerIcon
+	dba VoltorbIcon
+	dba ElectrodeIcon
+	dba ExeggcuteIcon
+	dba ExeggutorPlainIcon
+	dba CuboneIcon
+	dba MarowakIcon
+	dba HitmonleeIcon
+	dba HitmonchanIcon
+	dba KoffingIcon
+	dba WeezingIcon
+	dba RhyhornIcon
+	dba RhydonIcon
+	dba ChanseyIcon
+	dba TangelaIcon
+	dba KangaskhanIcon
+	dba HorseaIcon
+	dba SeadraIcon
+	dba TogepiIcon
+	dba TogeticIcon
+	dba TogekissIcon
+	dba StaryuIcon
+	dba StarmieIcon
+	dba MrMimeIcon
+	dba ScytherIcon
+	dba JynxIcon
+	dba ElectabuzzIcon
+	dba MagmarIcon
+	dba PinsirIcon
+	dba TaurosIcon
+	dba MagikarpIcon
+	dba GyaradosIcon
+	dba LaprasIcon
+	dba DittoIcon
+	dba EeveeIcon
+	dba VaporeonIcon
+	dba JolteonIcon
+	dba FlareonIcon
+	dba PorygonIcon
+	dba OmanyteIcon
+	dba OmastarIcon
+	dba KabutoIcon
+	dba KabutopsIcon
+	dba AerodactylIcon
+	dba SnorlaxIcon
+	dba ArticunoIcon
+	dba ZapdosIcon
+	dba MoltresIcon
+	dba DratiniIcon
+	dba DragonairIcon
+	dba DragoniteIcon
+	dba MewtwoIcon
+	dba MewIcon
+	dba ChikoritaIcon
+	dba BayleefIcon
+	dba MeganiumIcon
+	dba CyndaquilIcon
+	dba QuilavaIcon
+	dba TyphlosionIcon
+	dba TotodileIcon
+	dba CroconawIcon
+	dba FeraligatrIcon
+	dba SentretIcon
+	dba FurretIcon
+	dba HoothootIcon
+	dba NoctowlIcon
+	dba LedybaIcon
+	dba LedianIcon
+	dba SpinarakIcon
+	dba AriadosIcon
+	dba CrobatIcon
+	dba ChinchouIcon
+	dba LanturnIcon
+	dba PichuIcon
+	dba MunchlaxIcon
+	dba MagnezoneIcon
+	dba RhyperiorIcon
+	dba TangrowthIcon
+	dba NatuIcon
+	dba XatuIcon
+	dba MareepIcon
+	dba FlaaffyIcon
+	dba AmpharosIcon
+	dba BellossomIcon
+	dba SudowoodoIcon
+	dba PolitoedIcon
+	dba SunkernIcon
+	dba SunfloraIcon
+	dba YanmaIcon
+	dba YanmegaIcon
+	dba WooperIcon
+	dba QuagsireIcon
+	dba EspeonIcon
+	dba UmbreonIcon
+	dba MurkrowIcon
+	dba HonchkrowIcon
+	dba SlowkingIcon
+	dba MisdreavusIcon
+	dba MismagiusIcon
+	dba UnownAIcon
+	dba WobbuffetIcon
+	dba GirafarigIcon
+	dba PinecoIcon
+	dba ForretressIcon
+	dba DunsparceIcon
+	dba GligarIcon
+	dba GliscorIcon
+	dba SteelixIcon
+	dba SnubbullIcon
+	dba GranbullIcon
+	dba QwilfishIcon
+	dba ScizorIcon
+	dba ShuckleIcon
+	dba HeracrossIcon
+	dba SneaselIcon
+	dba WeavileIcon
+	dba TeddiursaIcon
+	dba UrsaringIcon
+	dba SlugmaIcon
+	dba MagcargoIcon
+	dba SwinubIcon
+	dba PiloswineIcon
+	dba MamoswineIcon
+	dba CorsolaIcon
+	dba RemoraidIcon
+	dba OctilleryIcon
+	dba MantineIcon
+	dba SkarmoryIcon
+	dba HoundourIcon
+	dba HoundoomIcon
+	dba KingdraIcon
+	dba PhanpyIcon
+	dba DonphanIcon
+	dba Porygon2Icon
+	dba PorygonZIcon
+	dba SmeargleIcon
+	dba TyrogueIcon
+	dba HitmontopIcon
+	dba ElekidIcon
+	dba ElectivireIcon
+	dba MagbyIcon
+	dba MagmortarIcon
+	dba MiltankIcon
+	dba BlisseyIcon
+	dba RaikouIcon
+	dba EnteiIcon
+	dba SuicuneIcon
+	dba LarvitarIcon
+	dba PupitarIcon
+	dba TyranitarIcon
+	dba LugiaIcon
+	dba HoOhIcon
+	dba CelebiIcon
+	dba LeafeonIcon
+	dba GlaceonIcon
+	dba SylveonIcon
+	dba EggIcon
 
-	dw UnownBIcon
-	dw UnownCIcon
-	dw UnownDIcon
-	dw UnownEIcon
-	dw UnownFIcon
-	dw UnownGIcon
-	dw UnownHIcon
-	dw UnownIIcon
-	dw UnownJIcon
-	dw UnownKIcon
-	dw UnownLIcon
-	dw UnownMIcon
-	dw UnownNIcon
-	dw UnownOIcon
-	dw UnownPIcon
-	dw UnownQIcon
-	dw UnownRIcon
-	dw UnownSIcon
-	dw UnownTIcon
-	dw UnownUIcon
-	dw UnownVIcon
-	dw UnownWIcon
-	dw UnownXIcon
-	dw UnownYIcon
-	dw UnownZIcon
-	dw UnownExclamationIcon
-	dw UnownQuestionIcon
+	dba UnownBIcon
+	dba UnownCIcon
+	dba UnownDIcon
+	dba UnownEIcon
+	dba UnownFIcon
+	dba UnownGIcon
+	dba UnownHIcon
+	dba UnownIIcon
+	dba UnownJIcon
+	dba UnownKIcon
+	dba UnownLIcon
+	dba UnownMIcon
+	dba UnownNIcon
+	dba UnownOIcon
+	dba UnownPIcon
+	dba UnownQIcon
+	dba UnownRIcon
+	dba UnownSIcon
+	dba UnownTIcon
+	dba UnownUIcon
+	dba UnownVIcon
+	dba UnownWIcon
+	dba UnownXIcon
+	dba UnownYIcon
+	dba UnownZIcon
+	dba UnownExclamationIcon
+	dba UnownQuestionIcon
 
-	dw ArbokIcon ; Kanto
-	dw ArbokIcon ; Koga
-	dw ArbokIcon ; Agatha
-	dw ArbokIcon ; Ariana
+	dba ArbokIcon ; Kanto
+	dba ArbokIcon ; Koga
+	dba ArbokIcon ; Agatha
+	dba ArbokIcon ; Ariana
 
-	dw PikachuIcon ; Fly
-	dw PikachuIcon ; Surf
-	dw PikachuIcon ; Pika
-	dw PikachuIcon ; Chuchu
-	dw PikachuIcon ; Spark
+	dba PikachuIcon ; Fly
+	dba PikachuIcon ; Surf
+	dba PikachuIcon ; Pika
+	dba PikachuIcon ; Chuchu
+	dba PikachuIcon ; Spark
 
-	dw PichuIcon ; Spiky
+	dba PichuIcon ; Spiky
 
 rept NUM_MAGIKARP - 1
-	dw MagikarpIcon
+	dba MagikarpIcon
 endr
 
-	dw GyaradosIcon ; Red
-	dw MewtwoArmoredIcon
-	dw RattataIcon ; TODO
-	dw RaticateIcon ; TODO
-	dw SandshrewIcon ; TODO
-	dw SandslashIcon ; TODO
-	dw VulpixIcon ; TODO
-	dw NinetalesIcon ; TODO
-	dw DiglettIcon ; TODO
-	dw DugtrioIcon ; TODO
-	dw MeowthIcon ; TODO
-	dw PersianIcon ; TODO
-	dw GeodudeIcon ; TODO
-	dw GravelerIcon ; TODO
-	dw GolemIcon ; TODO
-	dw GrimerIcon ; TODO
-	dw MukIcon ; TODO
-	dw RaichuIcon ; TODO
-	dw ExeggutorAlolanIcon
-	dw MarowakIcon ; TODO
-	dw PonytaIcon ; TODO
-	dw RapidashIcon ; TODO
-	dw WeezingIcon ; TODO
+	dba GyaradosIcon ; Red
+	dba MewtwoArmoredIcon
+	dba RattataIcon ; TODO
+	dba RaticateIcon ; TODO
+	dba SandshrewIcon ; TODO
+	dba SandslashIcon ; TODO
+	dba VulpixIcon ; TODO
+	dba NinetalesIcon ; TODO
+	dba DiglettIcon ; TODO
+	dba DugtrioIcon ; TODO
+	dba MeowthIcon ; TODO
+	dba PersianIcon ; TODO
+	dba GeodudeIcon ; TODO
+	dba GravelerIcon ; TODO
+	dba GolemIcon ; TODO
+	dba GrimerIcon ; TODO
+	dba MukIcon ; TODO
+	dba RaichuIcon ; TODO
+	dba ExeggutorAlolanIcon
+	dba MarowakIcon ; TODO
+	dba PonytaIcon ; TODO
+	dba RapidashIcon ; TODO
+	dba WeezingIcon ; TODO
