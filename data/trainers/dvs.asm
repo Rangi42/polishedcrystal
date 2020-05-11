@@ -3,14 +3,14 @@ TrainerClassDVsAndPersonality:
 	;  *    Atk  Spd  SDf  Nature   Form
 	db 252, PERFECT_DVS,   ABILITY_1 | QUIRKY, FEMALE ; carrie
 	db 252, PERFECT_DVS,   ABILITY_1 | QUIRKY, MALE   ; cal
-	db 252, $CC, $CC, $CC, ABILITY_1 | QUIRKY, MALE   ; falkner
-	db 252, $CC, $CC, $CC, ABILITY_1 | QUIRKY, MALE   ; bugsy
-	db 252, $DD, $DD, $DD, ABILITY_1 | QUIRKY, FEMALE ; whitney
-	db 252, $DD, $DD, $DD, ABILITY_1 | QUIRKY, MALE   ; morty
-	db 252, $EE, $EE, $EE, ABILITY_1 | QUIRKY, MALE   ; chuck
-	db 252, $EE, $EE, $EE, ABILITY_1 | QUIRKY, FEMALE ; jasmine
-	db 252, PERFECT_DVS,   ABILITY_1 | QUIRKY, MALE   ; pryce
-	db 252, PERFECT_DVS,   ABILITY_1 | QUIRKY, FEMALE ; clair
+	db 252, $BB, $BB, $BB, ABILITY_1 | QUIRKY, MALE   ; falkner
+	db 252, $BB, $BB, $BB, ABILITY_1 | QUIRKY, MALE   ; bugsy
+	db 252, $CC, $CC, $CC, ABILITY_1 | QUIRKY, FEMALE ; whitney
+	db 252, $CC, $CC, $CC, ABILITY_1 | QUIRKY, MALE   ; morty
+	db 252, $DD, $DD, $DD, ABILITY_1 | QUIRKY, MALE   ; chuck
+	db 252, $DD, $DD, $DD, ABILITY_1 | QUIRKY, FEMALE ; jasmine
+	db 252, $EE, $EE, $EE, ABILITY_1 | QUIRKY, MALE   ; pryce
+	db 252, $EE, $EE, $EE, ABILITY_1 | QUIRKY, FEMALE ; clair
 	db 252, PERFECT_DVS,   ABILITY_1 | QUIRKY, MALE   ; will
 	db 252, PERFECT_DVS,   ABILITY_1 | QUIRKY, MALE   ; koga
 	db 252, PERFECT_DVS,   ABILITY_1 | QUIRKY, MALE   ; bruno
@@ -106,15 +106,15 @@ TrainerClassDVsAndPersonality:
 	db  72, $EE, $EE, $EE, ABILITY_1 | QUIRKY, MALE   ; ace duo
 	db 128, PERFECT_DVS,   ABILITY_1 | QUIRKY, MALE   ; veteranm
 	db 128, PERFECT_DVS,   ABILITY_1 | QUIRKY, FEMALE ; veteranf
-	db  80, $CC, $CC, $CC, ABILITY_1 | QUIRKY, MALE   ; proton
-	db  96, $DD, $DD, $DD, ABILITY_1 | QUIRKY, MALE   ; petrel
-	db 128, PERFECT_DVS,   ABILITY_1 | QUIRKY, MALE   ; archer
-	db 112, $EE, $EE, $EE, ABILITY_1 | QUIRKY, FEMALE ; ariana
+	db  80, $BB, $BB, $BB, ABILITY_1 | QUIRKY, MALE   ; proton
+	db  96, $CC, $CC, $CC, ABILITY_1 | QUIRKY, MALE   ; petrel
+	db 128, $EE, $EE, $EE, ABILITY_1 | QUIRKY, MALE   ; archer
+	db 112, $DD, $DD, $DD, ABILITY_1 | QUIRKY, FEMALE ; ariana
 	db 160, PERFECT_DVS,   ABILITY_1 | QUIRKY, MALE   ; giovanni
 	db 252, PERFECT_DVS,   ABILITY_1 | QUIRKY, MALE   ; prof oak
-	db 252, PERFECT_DVS,   ABILITY_1 | QUIRKY, MALE   ; prof elm
+	db 160, $CC, $CC, $CC, ABILITY_1 | QUIRKY, MALE   ; prof elm
 	db 252, PERFECT_DVS,   ABILITY_1 | QUIRKY, FEMALE ; prof ivy
-	db  88, PERFECT_DVS,   ABILITY_1 | QUIRKY, MALE   ; mysticalman
+	db  88, $DD, $DD, $DD, ABILITY_1 | QUIRKY, MALE   ; mysticalman
 	db  88, PERFECT_DVS,   ABILITY_1 | QUIRKY, MALE   ; karate king
 	db 252, PERFECT_DVS,   ABILITY_1 | QUIRKY, MALE   ; towertycoon
 	db  88, $BB, $B8, $BB, ABILITY_1 | QUIRKY, MALE   ; jessie&james
