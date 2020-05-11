@@ -49,11 +49,26 @@ BattleTower2FCherylScript:
 	iftrue_jumptextfaceplayer .AfterText
 	faceplayer
 	opentext
-	writetext .GreetingText
+	writethistext
+		text "Oh, hello,"
+		line "<PLAYER>."
+
+		para "It's been a long"
+		line "time… Hasn't it?"
+
+		para "Would you care"
+		line "to have a battle"
+		cont "with me?"
+		done
 	yesorno
 	iffalse_jumpopenedtext .RefuseText
 	setflag ENGINE_CHERYL_DONE_TODAY
-	writetext .SeenText
+	writethistext
+		text "I should warn you,"
+		line "my #mon can be"
+		cont "quite rambunc-"
+		cont "tious."
+		done
 	waitbutton
 	closetext
 	winlosstext .BeatenText, 0
@@ -87,25 +102,6 @@ BattleTower2FCherylScript:
 	cont "for that, too!"
 	done
 
-.GreetingText:
-	text "Oh, hello,"
-	line "<PLAYER>."
-
-	para "It's been a long"
-	line "time… Hasn't it?"
-
-	para "Would you care"
-	line "to have a battle"
-	cont "with me?"
-	done
-
-.SeenText:
-	text "I should warn you,"
-	line "my #mon can be"
-	cont "quite rambunc-"
-	cont "tious."
-	done
-
 .BeatenText:
 	text "Striking the right"
 	line "balance of offense"
@@ -131,11 +127,23 @@ BattleTower2FRileyScript:
 	iftrue_jumptextfaceplayer .AfterText
 	faceplayer
 	opentext
-	writetext .GreetingText
+	writethistext
+		text "Hi. Long time,"
+		line "no see."
+
+		para "That look you"
+		line "have… I take it"
+
+		para "you're ready for"
+		line "battle?"
+		done
 	yesorno
 	iffalse_jumpopenedtext .RefuseText
 	setflag ENGINE_RILEY_DONE_TODAY
-	writetext .SeenText
+	writethistext
+		text "Battling is our"
+		line "way of greeting!"
+		done
 	waitbutton
 	closetext
 	winlosstext .BeatenText, 0
@@ -165,22 +173,6 @@ BattleTower2FRileyScript:
 	line "met elsewhere?"
 	done
 
-.GreetingText:
-	text "Hi. Long time,"
-	line "no see."
-
-	para "That look you"
-	line "have… I take it"
-
-	para "you're ready for"
-	line "battle?"
-	done
-
-.SeenText:
-	text "Battling is our"
-	line "way of greeting!"
-	done
-
 .BeatenText:
 	text "At times we bat-"
 	line "tle, and sometimes"
@@ -202,11 +194,24 @@ BattleTower2FBuckScript:
 	iftrue_jumptextfaceplayer .AfterText
 	faceplayer
 	opentext
-	writetext .GreetingText
+	writethistext
+		text "Ehehehe! You're"
+		line "here at last!"
+
+		para "So we are going"
+		line "to battle?"
+		done
 	yesorno
 	iffalse_jumpopenedtext .RefuseText
 	setflag ENGINE_BUCK_DONE_TODAY
-	writetext .SeenText
+	writethistext
+		text "I can feel my"
+		line "#mon shivering"
+
+		para "inside their #"
+		line "Balls with antici-"
+		cont "pation!"
+		done
 	waitbutton
 	closetext
 	winlosstext .BeatenText, 0
@@ -229,23 +234,6 @@ BattleTower2FBuckScript:
 	line "improving my team."
 	done
 
-.GreetingText:
-	text "Ehehehe! You're"
-	line "here at last!"
-
-	para "So we are going"
-	line "to battle?"
-	done
-
-.SeenText:
-	text "I can feel my"
-	line "#mon shivering"
-
-	para "inside their #"
-	line "Balls with antici-"
-	cont "pation!"
-	done
-
 .BeatenText:
 	text "Heeheehee!"
 	line "So hot, you!"
@@ -262,11 +250,17 @@ BattleTower2FMarleyScript:
 	iftrue_jumptextfaceplayer .AfterText
 	faceplayer
 	opentext
-	writetext .GreetingText
+	writethistext
+		text "…Oh? A battle?"
+		line "With me?"
+		done
 	yesorno
 	iffalse_jumpopenedtext .RefuseText
 	setflag ENGINE_MARLEY_DONE_TODAY
-	writetext .SeenText
+	writethistext
+		text "…OK. I… won't"
+		line "lose…!"
+		done
 	waitbutton
 	closetext
 	winlosstext .BeatenText, 0
@@ -295,16 +289,6 @@ BattleTower2FMarleyScript:
 	line "Only a tiny bit."
 	done
 
-.GreetingText:
-	text "…Oh? A battle?"
-	line "With me?"
-	done
-
-.SeenText:
-	text "…OK. I… won't"
-	line "lose…!"
-	done
-
 .BeatenText:
 	text "…Awww."
 	done
@@ -320,11 +304,23 @@ BattleTower2FMiraScript:
 	iftrue_jumptextfaceplayer .AfterText
 	faceplayer
 	opentext
-	writetext .GreetingText
+	writethistext
+		text "<PLAYER>! Mira is"
+		line "stronger now!"
+
+		para "Please! Battle"
+		line "with Mira!"
+		done
 	yesorno
 	iffalse_jumpopenedtext .RefuseText
 	setflag ENGINE_MIRA_DONE_TODAY
-	writetext .SeenText
+	writethistext
+		text "Mira will show you"
+		line "that Mira doesn't"
+
+		para "get lost anymore,"
+		line "<PLAYER>!"
+		done
 	waitbutton
 	closetext
 	winlosstext .BeatenText, 0
@@ -352,22 +348,6 @@ BattleTower2FMiraScript:
 	line "to understand!"
 	done
 
-.GreetingText:
-	text "<PLAYER>! Mira is"
-	line "stronger now!"
-
-	para "Please! Battle"
-	line "with Mira!"
-	done
-
-.SeenText:
-	text "Mira will show you"
-	line "that Mira doesn't"
-
-	para "get lost anymore,"
-	line "<PLAYER>!"
-	done
-
 .BeatenText:
 	text "Mira wonders if"
 	line "she can get very"
@@ -386,11 +366,23 @@ BattleTower2FAnabelScript:
 	iftrue_jumptextfaceplayer .AfterText
 	faceplayer
 	opentext
-	writetext .GreetingText
+	writethistext
+		text "You really did"
+		line "come to see me…"
+
+		para "I won't have to"
+		line "hold back against"
+		cont "you…"
+
+		para "Are you ready?"
+		done
 	yesorno
 	iffalse_jumpopenedtext .RefuseText
 	setflag ENGINE_ANABEL_DONE_TODAY
-	writetext .SeenText
+	writethistext
+		text "Let's begin,"
+		line "shall we?"
+		done
 	waitbutton
 	closetext
 	winlosstext .BeatenText, 0
@@ -414,22 +406,6 @@ BattleTower2FAnabelScript:
 
 	para "so enjoyable"
 	line "before…"
-	done
-
-.GreetingText:
-	text "You really did"
-	line "come to see me…"
-
-	para "I won't have to"
-	line "hold back against"
-	cont "you…"
-
-	para "Are you ready?"
-	done
-
-.SeenText:
-	text "Let's begin,"
-	line "shall we?"
 	done
 
 .BeatenText:

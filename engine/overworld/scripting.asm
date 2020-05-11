@@ -645,15 +645,15 @@ Script_verbosegiveitem2:
 Script_itemnotify:
 	call GetPocketName
 	call CurItemName
-	ld b, BANK(PutItemInPocketText)
-	ld hl, PutItemInPocketText
+	ld b, BANK(UnknownText_0x1c472c)
+	ld hl, UnknownText_0x1c472c
 	jp MapTextbox
 
 Script_pocketisfull:
 	call GetPocketName
 	call CurItemName
-	ld b, BANK(PocketIsFullText)
-	ld hl, PocketIsFullText
+	ld b, BANK(UnknownText_0x1c474b)
+	ld hl, UnknownText_0x1c474b
 	jp MapTextbox
 
 Script_specialsound:
@@ -706,14 +706,6 @@ CurTMHMName:
 	ld a, [wCurTMHM]
 	ld [wd265], a
 	jp GetTMHMName
-
-PutItemInPocketText:
-	text_jump UnknownText_0x1c472c
-	text_end
-
-PocketIsFullText:
-	text_jump UnknownText_0x1c474b
-	text_end
 
 Script_pokemart:
 ; parameters:
@@ -2791,8 +2783,8 @@ GiveTMHMScript:
 Script_tmhmnotify:
 	call GetTMHMPocketName
 	call CurTMHMName
-	ld b, BANK(PutItemInPocketText)
-	ld hl, PutItemInPocketText
+	ld b, BANK(UnknownText_0x1c472c)
+	ld hl, UnknownText_0x1c472c
 	jp MapTextbox
 
 Script_tmhmtotext:
@@ -2987,6 +2979,6 @@ GiveKeyItemScript:
 Script_keyitemnotify:
 	call GetKeyItemPocketName
 	call GetCurKeyItemName
-	ld b, BANK(PutItemInPocketText)
-	ld hl, PutItemInPocketText
+	ld b, BANK(UnknownText_0x1c472c)
+	ld hl, UnknownText_0x1c472c
 	jp MapTextbox

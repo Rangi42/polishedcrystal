@@ -269,6 +269,7 @@ Paragraph::
 	jp NextChar
 
 PromptText::
+	push de
 	ld a, [wLinkMode]
 	cp LINK_COLOSSEUM
 	call nz, LoadBlinkingCursor
@@ -277,6 +278,7 @@ PromptText::
 	ld a, [wLinkMode]
 	cp LINK_COLOSSEUM
 	call nz, UnloadBlinkingCursor
+	pop de
 	; fallthrough
 
 DoneText::
