@@ -1990,9 +1990,7 @@ AI_Smart_WeatherMove:
 	call AICheckPlayerHalfHP
 	jr nc, AIBadWeatherType
 
-; 50% chance to encourage this move otherwise.
-	call AI_50_50
-	ret c
+; Encourage the move otherwise
 
 	dec [hl]
 	ret
