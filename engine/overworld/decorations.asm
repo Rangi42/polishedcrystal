@@ -985,16 +985,11 @@ DecorationDesc_PosterPointers:
 
 DecorationDesc_TownMapPoster:
 	opentext
-	writetext .TownMapText
+	farwritetext UnknownText_0x1bc55d
 	waitbutton
 	special Special_TownMap
 	closetext
 	end
-
-.TownMapText:
-	; It's the TOWN MAP.
-	text_jump UnknownText_0x1bc55d
-	text_end
 
 DecorationDesc_PikachuPoster:
 	thistext

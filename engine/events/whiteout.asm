@@ -13,16 +13,16 @@ Script_Whiteout:
 	ifequal BATTLEACTION_FORFEIT, .forfeit_text
 	callasm DetermineWildBattlePanic
 	iffalse .whiteout_wild_text
-	writetext .WhitedOutToTrainerText
+	farwritetext WhiteoutToTrainerText
 	jump .text_done
 .forfeit_text
-	writetext .ForfeitText
+	farwritetext ForfeitToTrainerText
 	jump .text_done
 .whiteout_wild_text
-	writetext .WhitedOutToWildText
+	farwritetext WhiteoutToWildText
 	jump .text_done
 .whiteout_text
-	writetext .WhitedOutText
+	farwritetext WhiteoutText
 .text_done
 	waitbutton
 	special FadeOutPalettes
@@ -38,23 +38,6 @@ Script_Whiteout:
 
 .bug_contest
 	jumpstd bugcontestresultswarp
-
-.WhitedOutText:
-	; is out of useable #MON!  whited out!
-	text_jump WhiteoutText
-	text_end
-
-.WhitedOutToWildText:
-	text_jump WhiteoutToWildText
-	text_end
-
-.WhitedOutToTrainerText:
-	text_jump WhiteoutToTrainerText
-	text_end
-
-.ForfeitText:
-	text_jump ForfeitToTrainerText
-	text_end
 
 OverworldWhiteoutFade
 	farcall FadeOutPalettes

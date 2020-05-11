@@ -13,12 +13,7 @@ _Squirtbottle:
 	farjump WateredWeirdTreeScript
 
 .NothingHappenedScript:
-	jumptext .NothingHappenedText
-
-.NothingHappenedText:
-	; sprinkled water. But nothing happened…
-	text_jump UnknownText_0x1c0b3b
-	text_end
+	farjumptext UnknownText_0x1c0b3b
 
 .CheckCanUseSquirtbottle:
 	ld a, [wMapGroup]

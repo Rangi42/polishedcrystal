@@ -1,27 +1,30 @@
 FruitTreeScript::
 	opentext
-	writetext FruitBearingTreeText
+	farwritetext _FruitBearingTreeText
 	buttonsound
 	copybytetovar wCurFruit
 	callasm CheckFruitTree
 	iffalse PickBerryScript
-	writetext NothingHereText
+	farwritetext _NothingHereText
 	buttonsound
 	checkitem MULCH
 	iffalse_endtext
-	writetext WantToUseMulchText
+	farwritetext _WantToUseMulchText
 	yesorno
 	iffalse_endtext
 	takeitem MULCH
 	copybytetovar wCurFruit
 	callasm FertilizedFruitTree
-	jumpopenedtext UsedMulchText
+	thisopenedtext
+
+	text_jump _UsedMulchText
+	text_end
 
 PickBerryScript:
 	copybytetovar wCurFruit
 	ifless NUM_APRICORNS+1, PickApricornScript
 	itemtotext $0, $0
-	writetext HeyItsFruitText
+	farwritetext _HeyItsFruitText
 	callasm GetFruitTreeCount
 	ifequal $1, .try_one
 	ifequal $2, .try_two
@@ -29,21 +32,21 @@ PickBerryScript:
 	giveitem ITEM_FROM_MEM, 3
 	iffalse .try_two
 	buttonsound
-	writetext ObtainedThreeFruitText
+	farwritetext _ObtainedThreeFruitText
 	jump .continue
 .try_two
 	copybytetovar wCurFruit
 	giveitem ITEM_FROM_MEM, 2
 	iffalse .try_one
 	buttonsound
-	writetext ObtainedTwoFruitText
+	farwritetext _ObtainedTwoFruitText
 	jump .continue
 .try_one
 	copybytetovar wCurFruit
 	giveitem ITEM_FROM_MEM
 	iffalse .packisfull
 	buttonsound
-	writetext ObtainedOneFruitText
+	farwritetext _ObtainedOneFruitText
 .continue
 	callasm PickedFruitTree
 	specialsound
@@ -53,14 +56,17 @@ PickBerryScript:
 
 .packisfull
 	buttonsound
-	jumpopenedtext FruitPackIsFullText
+	thisopenedtext
+
+	text_jump _FruitPackIsFullText
+	text_end
 
 PickApricornScript:
 	checkkeyitem APRICORN_BOX
 	iffalse_jumpopenedtext NoApricornBoxText
 	copybytetovar wCurFruit
 	callasm .get_name
-	writetext HeyItsFruitText
+	farwritetext _HeyItsFruitText
 	callasm GetFruitTreeCount
 	ifequal $1, .try_one
 	ifequal $2, .try_two
@@ -68,29 +74,35 @@ PickApricornScript:
 	giveapricorn ITEM_FROM_MEM, 3
 	iffalse .try_two
 	buttonsound
-	writetext ObtainedThreeFruitText
+	farwritetext _ObtainedThreeFruitText
 	jump .continue
 .try_two
 	copybytetovar wCurFruit
 	giveapricorn ITEM_FROM_MEM, 2
 	iffalse .try_one
 	buttonsound
-	writetext ObtainedTwoFruitText
+	farwritetext _ObtainedTwoFruitText
 	jump .continue
 .try_one
 	copybytetovar wCurFruit
 	giveapricorn ITEM_FROM_MEM
 	iffalse .packisfull
 	buttonsound
-	writetext ObtainedOneFruitText
+	farwritetext _ObtainedOneFruitText
 .continue
 	callasm PickedFruitTree
 	specialsound
-	jumpopenedtext PutAwayTheApricornText
+	thisopenedtext
+
+	text_jump _PutAwayTheApricornText
+	text_end
 
 .packisfull
 	buttonsound
-	jumpopenedtext FruitPackIsFullText
+	thisopenedtext
+
+	text_jump _ApricornBoxIsFullText
+	text_end
 
 .get_name:
 	ldh a, [hScriptVar]
@@ -133,50 +145,6 @@ GetFruitTreeCount:
 	ldh [hScriptVar], a
 	ret
 
-FruitBearingTreeText:
-	text_jump _FruitBearingTreeText
-	text_end
-
-HeyItsFruitText:
-	text_jump _HeyItsFruitText
-	text_end
-
-ObtainedOneFruitText:
-	text_jump _ObtainedOneFruitText
-	text_end
-
-ObtainedTwoFruitText:
-	text_jump _ObtainedTwoFruitText
-	text_end
-
-ObtainedThreeFruitText:
-	text_jump _ObtainedThreeFruitText
-	text_end
-
-FruitPackIsFullText:
-	text_jump _FruitPackIsFullText
-	text_end
-
 NoApricornBoxText:
 	text_jump _NoApricornBoxText
-	text_end
-
-ApricornBoxIsFullText:
-	text_jump _ApricornBoxIsFullText
-	text_end
-
-PutAwayTheApricornText:
-	text_jump _PutAwayTheApricornText
-	text_end
-
-NothingHereText:
-	text_jump _NothingHereText
-	text_end
-
-WantToUseMulchText:
-	text_jump _WantToUseMulchText
-	text_end
-
-UsedMulchText:
-	text_jump _UsedMulchText
 	text_end

@@ -153,17 +153,17 @@ Mom_GetScriptPointer:
 	ret
 
 .ItemScript:
-	writetext _MomText_HiHowAreYou
-	writetext _MomText_FoundAnItem
-	writetext _MomText_BoughtWithYourMoney
-	writetext _MomText_ItsInPC
+	farwritetext UnknownText_0x1bc615
+	farwritetext UnknownText_0x1bc62a
+	farwritetext UnknownText_0x1bc64e
+	farwritetext UnknownText_0x1bc673
 	end
 
 .DollScript:
-	writetext _MomText_HiHowAreYou
-	writetext _MomText_FoundADoll
-	writetext _MomText_BoughtWithYourMoney
-	writetext _MomText_ItsInRoom
+	farwritetext UnknownText_0x1bc615
+	farwritetext UnknownText_0x1bc693
+	farwritetext UnknownText_0x1bc64e
+	farwritetext UnknownText_0x1bc6c7
 	end
 
 GetItemFromMom:
@@ -193,33 +193,3 @@ endr
 	ret
 
 INCLUDE "data/items/mom_phone.asm"
-
-_MomText_HiHowAreYou:
-	; Hi,  ! How are you?
-	text_jump UnknownText_0x1bc615
-	text_end
-
-_MomText_FoundAnItem:
-	; I found a useful item shopping, so
-	text_jump UnknownText_0x1bc62a
-	text_end
-
-_MomText_BoughtWithYourMoney:
-	; I bought it with your money. Sorry!
-	text_jump UnknownText_0x1bc64e
-	text_end
-
-_MomText_ItsInPC:
-	; It's in your PC. You'll like it!
-	text_jump UnknownText_0x1bc673
-	text_end
-
-_MomText_FoundADoll:
-	; While shopping today, I saw this adorable doll, so
-	text_jump UnknownText_0x1bc693
-	text_end
-
-_MomText_ItsInRoom:
-	; It's in your room. You'll love it!
-	text_jump UnknownText_0x1bc6c7
-	text_end

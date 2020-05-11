@@ -587,7 +587,7 @@ Script_verbosegiveitem:
 	jp ScriptCall
 
 GiveItemScript:
-	writetext ReceivedItemText
+	farwritetext UnknownText_0x1c4719
 	iffalse .Full
 	specialsound
 	waitbutton
@@ -598,10 +598,6 @@ GiveItemScript:
 	buttonsound
 	pocketisfull
 	end
-
-ReceivedItemText:
-	text_jump UnknownText_0x1c4719
-	text_end
 
 Script_verbosegiveitem2:
 ; parameters:
@@ -2770,7 +2766,7 @@ Script_verbosegivetmhm:
 	jp ScriptCall
 
 GiveTMHMScript:
-	writetext ReceivedItemText
+	farwritetext UnknownText_0x1c4719
 	playsound SFX_GET_TM
 	waitsfx
 	waitbutton
@@ -2968,7 +2964,7 @@ Script_verbosegivekeyitem:
 	jp ScriptCall
 
 GiveKeyItemScript:
-	writetext ReceivedItemText
+	farwritetext UnknownText_0x1c4719
 	specialsound
 	keyitemnotify
 	end
