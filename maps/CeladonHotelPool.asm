@@ -26,7 +26,7 @@ CeladonHotelPoolSwimmerMScript:
 	verbosegiveitem SAFE_GOGGLES
 	iffalse_endtext
 	setevent EVENT_GOT_SAFE_GOGGLES_FROM_CELADON
-	thisopenedtext
+	jumpthisopenedtext
 
 .Text2:
 	text "This is quite a"

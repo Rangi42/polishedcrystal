@@ -22,7 +22,7 @@ AzaleaPokeCenter1F_MapScriptHeader:
 
 PokemonJournalBugsyScript:
 	setflag ENGINE_READ_BUGSY_JOURNAL
-	thistext
+	jumpthistext
 
 	text "#mon Journal"
 
@@ -42,7 +42,7 @@ PokemonJournalBugsyScript:
 AzaleaPokeCenter1FCooltrainermScript:
 	checktime 1 << NITE
 	iftrue_jumptextfaceplayer .NiteText
-	thistextfaceplayer
+	jumpthistextfaceplayer
 
 	text "For a guy who"
 	line "makes # Balls,"

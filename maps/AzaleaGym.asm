@@ -57,7 +57,7 @@ AzaleaGymBugsyScript:
 	buttonsound
 	verbosegivetmhm TM_U_TURN
 	setevent EVENT_GOT_TM69_U_TURN
-	thisopenedtext
+	jumpthisopenedtext
 
 	text "TM69 contains"
 	line "U-turn."
@@ -142,7 +142,7 @@ AzaleaGymBugsyScript:
 AzaleaGymGuyScript:
 	checkevent EVENT_BEAT_BUGSY
 	iftrue_jumptextfaceplayer .WinText
-	thistextfaceplayer
+	jumpthistextfaceplayer
 
 	text "Yo, challenger!"
 

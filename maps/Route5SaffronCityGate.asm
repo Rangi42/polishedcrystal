@@ -36,7 +36,7 @@ Route5SaffronCityGateBlackBeltScript:
 	verbosegiveitem PROTEIN
 	iffalse_endtext
 	setevent EVENT_GOT_PROTEIN_FROM_SAFFRON_GATE
-	thisopenedtext
+	jumpthisopenedtext
 
 .Text2:
 	text "Eat lots of Pro-"

@@ -27,7 +27,7 @@ FishingGuruScript_0x7f484:
 	verbosegivekeyitem SUPER_ROD
 	iffalse UnknownScript_0x7f4aa
 	setevent EVENT_GOT_SUPER_ROD
-	thisopenedtext
+	jumpthisopenedtext
 
 UnknownText_0x7f57c:
 	text "Try your hand at"

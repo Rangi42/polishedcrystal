@@ -110,7 +110,7 @@ SantosScript:
 	verbosegiveitem SPELL_TAG
 	iffalse_endtext
 	setevent EVENT_GOT_SPELL_TAG_FROM_SANTOS
-	thisopenedtext
+	jumpthisopenedtext
 
 	text "Santos: …"
 
@@ -124,7 +124,7 @@ SantosScript:
 	done
 
 .NotSaturday:
-	thistextfaceplayer
+	jumpthistextfaceplayer
 
 	text "Santos: Today's"
 	line "not Saturday…"
@@ -158,7 +158,7 @@ BlackthornDragonTamer1Script:
 	iftrue_jumptextfaceplayer .ClairIsBeatenText
 	checkevent EVENT_CLEARED_RADIO_TOWER
 	iftrue_jumptextfaceplayer .ClairIsInText
-	thistextfaceplayer
+	jumpthistextfaceplayer
 
 	text "I am sorry."
 
@@ -201,7 +201,7 @@ BlackthornDragonTamer1Script:
 BlackthornBlackbeltScript:
 	checkevent EVENT_CLEARED_RADIO_TOWER
 	iftrue_jumptextfaceplayer .Text2
-	thistextfaceplayer
+	jumpthistextfaceplayer
 
 	text "My radio's busted?"
 	line "Lately, I only get"

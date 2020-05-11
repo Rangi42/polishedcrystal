@@ -62,13 +62,13 @@ UnknownScript_0x19002f:
 	playsound SFX_TRANSACTION
 	takemoney $0, 300
 	special PlaceMoneyTopRight
-	thisopenedtext
+	jumpthisopenedtext
 
 	text "Good! Savor it!"
 	done
 
 UnknownScript_0x19006c:
-	thisopenedtext
+	jumpthisopenedtext
 
 	text "You don't have"
 	line "enough money."
@@ -82,7 +82,7 @@ GrampsScript_0x19007e:
 MahoganyTownSouvenirShopSign:
 	checkevent EVENT_MAHOGANY_MART_OWNERS
 	iftrue_jumptext MahoganyTownSouvenirShopSignText1
-	thistext
+	jumpthistext
 
 	text "Grandma's"
 	line "Souvenir Shop"

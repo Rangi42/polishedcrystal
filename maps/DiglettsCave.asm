@@ -46,7 +46,7 @@ DiglettsCaveFossilManiacScript:
 	playsound SFX_TRANSACTION
 	special Give_hMoneyTemp
 	special PlaceMoneyTopRight
-	thisopenedtext
+	jumpthisopenedtext
 
 	text "Hey, thanks!"
 

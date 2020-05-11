@@ -153,7 +153,7 @@ ScaryCave1FPharmacistScript:
 	special Special_MoveTutor
 	ifequal $0, .TeachMove
 .TutorRefused
-	thisopenedtext
+	jumpthisopenedtext
 
 	text "It's your funeral."
 	done
@@ -181,7 +181,7 @@ ScaryCave1FPharmacistScript:
 
 .NoSilverLeaf
 	waitbutton
-	thisopenedtext
+	jumpthisopenedtext
 
 	text "No Silver Leaf?"
 	line "Forget it then."
@@ -189,7 +189,7 @@ ScaryCave1FPharmacistScript:
 
 .TeachMove
 	takeitem SILVER_LEAF
-	thisopenedtext
+	jumpthisopenedtext
 
 	text "Now you can use"
 	line "Sucker Punch!"

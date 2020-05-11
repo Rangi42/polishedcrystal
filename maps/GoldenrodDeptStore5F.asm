@@ -58,7 +58,7 @@ ReceptionistScript_0x560ce:
 	endtext
 
 .EventIsOver:
-	thisopenedtext
+	jumpthisopenedtext
 
 	text "There are sure to"
 	line "be TMs that are"
@@ -84,7 +84,7 @@ GoldenrodDeptStore5FTwinScript:
 	waitbutton
 	itemnotify
 	setflag ENGINE_DAILY_MYSTERY_GIFT
-	thisopenedtext
+	jumpthisopenedtext
 
 .ComeBackText:
 	text "You can have"

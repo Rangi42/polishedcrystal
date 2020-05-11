@@ -72,7 +72,7 @@ OlivineLighthouse3FBattleGirlEmy:
 	verbosegiveitem PROTECT_PADS
 	iffalse_endtext
 	setevent EVENT_GOT_PROTECT_PADS_FROM_LIGHTHOUSE_LEADER
-	thisopenedtext
+	jumpthisopenedtext
 
 .AfterText2:
 	text "One of the Elite"

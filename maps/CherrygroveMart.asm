@@ -27,7 +27,7 @@ ClerkScript_0x19680a:
 CooltrainerMScript_0x19681d:
 	checkevent EVENT_GAVE_MYSTERY_EGG_TO_ELM
 	iftrue_jumptextfaceplayer UnknownText_0x196873
-	thistextfaceplayer
+	jumpthistextfaceplayer
 
 	text "They're fresh out"
 	line "of # Balls!"

@@ -28,7 +28,7 @@ SailorScript_0x5ae67:
 	verbosegiveitem FULL_RESTORE
 	iffalse_endtext
 	setevent EVENT_GOT_FULL_RESTORE_FROM_LIGHTHOUSE
-	thisopenedtext
+	jumpthisopenedtext
 
 .Text2:
 	text "The trainers here"

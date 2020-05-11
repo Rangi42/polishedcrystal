@@ -945,7 +945,7 @@ GetScriptByte::
 	ret
 
 ObjectEvent::
-	thistextfaceplayer
+	jumpthistextfaceplayer
 
 	text_jump _ObjectEventText
 	text_end

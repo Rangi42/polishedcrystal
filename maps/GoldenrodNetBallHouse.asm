@@ -25,7 +25,7 @@ GoldenrodNetBallHouseYoungsterScript:
 	verbosegiveitem NET_BALL
 	iffalse_endtext
 	setevent EVENT_GOT_NET_BALL_FROM_GOLDENROD
-	thisopenedtext
+	jumpthisopenedtext
 
 .Text2:
 	text "Sometimes you get"

@@ -29,7 +29,7 @@ Route27RestHouseGranny:
 	buttonsound
 	special GetFirstPokemonHappiness
 	ifgreater $95, .Loyal
-	thisopenedtext
+	jumpthisopenedtext
 
 	text "If it doesn't come"
 	line "to trust you some"
@@ -57,7 +57,7 @@ Route27RestHouseGranny:
 
 .NoSilverLeaf
 	waitbutton
-	thisopenedtext
+	jumpthisopenedtext
 
 	text "You've not found"
 	line "any Silver Leaves…"
@@ -65,7 +65,7 @@ Route27RestHouseGranny:
 
 .TeachMove
 	takeitem SILVER_LEAF
-	thisopenedtext
+	jumpthisopenedtext
 
 	text "Skill Swap is a"
 	line "move that swaps"

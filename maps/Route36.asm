@@ -298,7 +298,7 @@ Route36CooltrainerfChiaraScript:
 	verbosegiveitem BINDING_BAND
 	iffalse_endtext
 	setevent EVENT_GOT_BINDING_BAND_FROM_ROUTE_36_LEADER
-	thisopenedtext
+	jumpthisopenedtext
 
 .AfterText2:
 	text "With skill like"

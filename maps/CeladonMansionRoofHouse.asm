@@ -27,7 +27,7 @@ CeladonMansionRoofHousePharmacistScript:
 	buttonsound
 	verbosegivetmhm TM_CURSE
 	setevent EVENT_GOT_TM03_CURSE
-	thisopenedtext
+	jumpthisopenedtext
 
 .CurseText:
 	text "TM03 is Curse."

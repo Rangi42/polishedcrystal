@@ -174,7 +174,7 @@ OfficerScript_0x6a2ca:
 	checkflag ENGINE_DAILY_BUG_CONTEST
 	iftrue_jumptextfaceplayer UnknownText_0x6a84f
 Route35NationalParkGate_NoContestToday:
-	thistextfaceplayer
+	jumpthistextfaceplayer
 
 	text "We hold Contests"
 	line "regularly in the"

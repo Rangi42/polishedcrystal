@@ -35,7 +35,7 @@ ShamoutiIslandVileplumeScript:
 	special SpecialSnorlaxAwake
 	iftrue .Awake
 	showemote EMOTE_SLEEP, SHAMOUTIISLAND_VILEPLUME, 15
-	thistext
+	jumpthistext
 
 .VileplumeText:
 	text "Vileplume is fast"
@@ -79,7 +79,7 @@ ShamoutiIslandYoungsterScript:
 	verbosegiveitem ODD_SOUVENIR
 	iffalse_endtext
 	setevent EVENT_GOT_ODD_SOUVENIR_FROM_PIKABLU_GUY
-	thisopenedtext
+	jumpthisopenedtext
 
 .Text2:
 	text "A shiny Pikachu"

@@ -41,7 +41,7 @@ HiddenPowerGuy:
 	special Special_HiddenPowerGuru
 	iffalse_jumpopenedtext .Text4
 	ifequal $1, .Egg
-	thisopenedtext
+	jumpthisopenedtext
 
 	text "I can sense it…"
 
@@ -54,7 +54,7 @@ HiddenPowerGuy:
 	done
 
 .Egg:
-	thisopenedtext
+	jumpthisopenedtext
 
 	text "An Egg has not yet"
 	line "developed a Hidden"

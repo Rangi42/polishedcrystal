@@ -28,7 +28,7 @@ CooltrainerMScript_0x9a5fb:
 	buttonsound
 	verbosegivekeyitem ITEMFINDER
 	setevent EVENT_GOT_ITEMFINDER
-	thisopenedtext
+	jumpthisopenedtext
 
 UnknownText_0x9a70e:
 	text "There are many"
@@ -64,7 +64,7 @@ BookScript_0x9a620:
 	writetext UnknownText_0x9a84c
 	yesorno
 	iffalse_endtext
-	thisopenedtext
+	jumpthisopenedtext
 
 	text "Ecruteak was also"
 	line "home to three"

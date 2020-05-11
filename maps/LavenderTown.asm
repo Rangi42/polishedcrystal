@@ -124,7 +124,7 @@ LavenderTownExpositionTrigger3:
 LavenderTownSharedExpositionScript:
 	playsound SFX_TACKLE
 	applymovement LAVENDERTOWN_YOUNGSTER1, .BumpMovement
-	thistext
+	jumpthistext
 
 	text "Aah! G-g-ghost!"
 

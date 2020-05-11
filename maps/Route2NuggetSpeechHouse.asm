@@ -24,7 +24,7 @@ Route2NuggetSpeechHouseFisherScript:
 	verbosegiveitem NUGGET
 	iffalse_endtext
 	setevent EVENT_GOT_NUGGET_FROM_GUY
-	thisopenedtext
+	jumpthisopenedtext
 
 .Text2:
 	text "That's a Nugget."

@@ -21,7 +21,7 @@ SaffronPokeCenter1F_MapScriptHeader:
 
 PokemonJournalSabrinaScript:
 	setflag ENGINE_READ_SABRINA_JOURNAL
-	thistext
+	jumpthistext
 
 	text "#mon Journal"
 
@@ -40,7 +40,7 @@ PokemonJournalSabrinaScript:
 SaffronPokeCenter1FFisherScript:
 	checkevent EVENT_RETURNED_MACHINE_PART
 	iftrue_jumptextfaceplayer .Text2
-	thistextfaceplayer
+	jumpthistextfaceplayer
 
 	text "I just happened to"
 	line "come through Rock"

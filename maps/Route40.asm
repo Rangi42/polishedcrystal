@@ -102,7 +102,7 @@ Route40FisherScript:
 	special Special_MoveTutor
 	ifequal $0, .TeachMove
 .TutorRefused
-	thisopenedtext
+	jumpthisopenedtext
 
 	text "I'll find something"
 	line "else to do…"
@@ -136,7 +136,7 @@ Route40FisherScript:
 
 .NoSilverLeaf
 	waitbutton
-	thisopenedtext
+	jumpthisopenedtext
 
 	text "No Leaf, no move."
 	line "My time isn't free."
@@ -144,7 +144,7 @@ Route40FisherScript:
 
 .TeachMove
 	takeitem SILVER_LEAF
-	thisopenedtext
+	jumpthisopenedtext
 
 	text "Knock Off knocks"
 	line "a held item away"

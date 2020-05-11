@@ -71,7 +71,7 @@ CeladonUniversityClassroom1ImakuniScript:
 	verbosegiveitem PERSIM_BERRY
 	iffalse_endtext
 	setevent EVENT_GOT_PERSIM_BERRY_FROM_IMAKUNI
-	thisopenedtext
+	jumpthisopenedtext
 
 .Text6:
 	text "In both battle and"

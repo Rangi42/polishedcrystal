@@ -99,7 +99,7 @@ OlivineCityRivalLighthouseScript:
 OlivineCityYoungster1Script:
 	random 2
 	iffalse_jumptextfaceplayer UnknownText_0x1a8b41
-	thistextfaceplayer
+	jumpthistextfaceplayer
 
 	text "That thing you"
 	line "have--it's a #-"

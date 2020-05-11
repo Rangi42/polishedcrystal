@@ -70,7 +70,7 @@ Route44VeteranmScript:
 	verbosegiveitem ROCKY_HELMET
 	iffalse_endtext
 	setevent EVENT_GOT_ROCKY_HELMET_FROM_ROUTE_44_LEADER
-	thisopenedtext
+	jumpthisopenedtext
 
 .AfterText2:
 	text "You're a very"

@@ -332,7 +332,7 @@ CeladonUniversityLibrary2FBookshelf20Text:
 	done
 
 CeladonUniversityLibrary2FComputer1:
-	thistext
+	jumpthistext
 
 	text "There's a login"
 	line "screen with a"
@@ -342,14 +342,14 @@ CeladonUniversityLibrary2FComputer1:
 	done
 
 CeladonUniversityLibrary2FComputer2:
-	thistext
+	jumpthistext
 
 	text "Someone forgot to"
 	line "log out!"
 	done
 
 CeladonUniversityLibrary2FComputer3:
-	thistext
+	jumpthistext
 
 	text "There's a story"
 	line "full of grammar"
@@ -358,7 +358,7 @@ CeladonUniversityLibrary2FComputer3:
 	done
 
 CeladonUniversityLibrary2FComputer4:
-	thistext
+	jumpthistext
 
 	text "There's a web page"
 	line "about how to be a"

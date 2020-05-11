@@ -63,7 +63,7 @@ TeacherScript_0x62d63:
 	buttonsound
 	verbosegivetmhm TM_FALSE_SWIPE
 	setevent EVENT_GOT_TM54_FALSE_SWIPE
-	thisopenedtext
+	jumpthisopenedtext
 
 UnknownText_0x62df6:
 	text "It's False Swipe."

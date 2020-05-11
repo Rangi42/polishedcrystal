@@ -77,13 +77,13 @@ YellowForest_UnderfootBridgeAsm:
 
 YellowForestBridgeOverheadTrigger:
 	callasm YellowForest_OverheadBridgeAsm
-	thisasm
+	callthisasm
 	xor a
 	jr YellowForest_FinishBridge
 
 YellowForestBridgeUnderfootTrigger:
 	callasm YellowForest_UnderfootBridgeAsm
-	thisasm
+	callthisasm
 	ld a, $1
 YellowForest_FinishBridge:
 	ld [wWalkingOnBridge], a

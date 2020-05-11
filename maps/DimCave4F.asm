@@ -58,7 +58,7 @@ DimCave4FSetUpStoneTable:
 	pause 30
 	playsound SFX_STRENGTH
 	earthquake 80
-	thistext
+	jumpthistext
 
 	text "The boulder fell"
 	line "through."

@@ -95,7 +95,7 @@ GentlemanScript_0x994c6:
 	buttonsound
 	verbosegivetmhm HM_SURF
 	setevent EVENT_GOT_HM03_SURF
-	thisopenedtext
+	jumpthisopenedtext
 
 	text "That's Surf."
 
@@ -107,7 +107,7 @@ GentlemanScript_0x994c6:
 UnknownScript_0x994f3:
 	checkflag ENGINE_PLAYER_IS_FEMALE
 	iftrue_jumpopenedtext UnknownText_0x998d4
-	thisopenedtext
+	jumpthisopenedtext
 
 UnknownText_0x99891:
 	text "Lad! If you can"

@@ -78,7 +78,7 @@ UnknownScript_0x7e217:
 	writebyte PREMIER_BALL
 	special SetLastPartyMonBall
 	setevent EVENT_GOT_TYROGUE_FROM_KIYO
-	thisopenedtext
+	jumpthisopenedtext
 
 UnknownText_0x7e36a:
 	text "Tyrogue is a"

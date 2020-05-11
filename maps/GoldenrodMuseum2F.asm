@@ -32,7 +32,7 @@ LugiaPaintingScript:
 	paintingpic LUGIA_PAINTING
 	waitbutton
 	closepokepic
-	thistext
+	jumpthistext
 
 	text "  The Leviathan"
 	line "     Awakens"
@@ -43,7 +43,7 @@ HoOhPaintingScript:
 	paintingpic HO_OH_PAINTING
 	waitbutton
 	closepokepic
-	thistext
+	jumpthistext
 
 	text "   The Phoenix"
 	line "    Ascending"
@@ -54,7 +54,7 @@ BellTowerPaintingScript:
 	paintingpic BELL_TOWER_PAINTING
 	waitbutton
 	closepokepic
-	thistext
+	jumpthistext
 
 	text "    Friendship"
 	line "     and Hope"
@@ -67,7 +67,7 @@ KabutoPuzzleScript:
 	paintingpic KABUTO_PUZZLE
 	waitbutton
 	closepokepic
-	thistext
+	jumpthistext
 
 	text "It's the completed"
 	line "Kabuto panel!"
@@ -80,7 +80,7 @@ OmanytePuzzleScript:
 	paintingpic OMANYTE_PUZZLE
 	waitbutton
 	closepokepic
-	thistext
+	jumpthistext
 
 	text "It's the completed"
 	line "Omanyte panel!"
@@ -93,7 +93,7 @@ AerodactylPuzzleScript:
 	paintingpic AERODACTYL_PUZZLE
 	waitbutton
 	closepokepic
-	thistext
+	jumpthistext
 
 	text "It's the completed"
 	line "Aerodactyl panel!"
@@ -106,7 +106,7 @@ HoOhPuzzleScript:
 	paintingpic HO_OH_PUZZLE
 	waitbutton
 	closepokepic
-	thistext
+	jumpthistext
 
 	text "It's the completed"
 	line "Ho-Oh panel!"

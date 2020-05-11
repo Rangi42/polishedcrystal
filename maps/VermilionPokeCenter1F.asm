@@ -21,7 +21,7 @@ VermilionPokeCenter1F_MapScriptHeader:
 
 PokemonJournalLtSurgeScript:
 	setflag ENGINE_READ_LT_SURGE_JOURNAL
-	thistext
+	jumpthistext
 
 	text "#mon Journal"
 
@@ -44,7 +44,7 @@ PokemonJournalLtSurgeScript:
 VermilionPokeCenter1FSightseerMScript:
 	checkevent EVENT_VERMILION_CITY_SNORLAX
 	iftrue_jumptextfaceplayer .SnorlaxText
-	thistextfaceplayer
+	jumpthistextfaceplayer
 
 	text "A sleeping #mon"
 	line "is lying in front"

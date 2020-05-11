@@ -22,7 +22,7 @@ CianwoodPokeCenter1F_MapScriptHeader:
 
 PokemonJournalChuckScript:
 	setflag ENGINE_READ_CHUCK_JOURNAL
-	thistext
+	jumpthistext
 
 	text "#mon Journal"
 

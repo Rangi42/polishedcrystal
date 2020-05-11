@@ -21,7 +21,7 @@ MahoganyPokeCenter1F_MapScriptHeader:
 
 PokemonJournalPryceScript:
 	setflag ENGINE_READ_PRYCE_JOURNAL
-	thistext
+	jumpthistext
 
 	text "#mon Journal"
 

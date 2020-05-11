@@ -42,7 +42,7 @@ BakerScript_0x9c8c1:
 	reloadmapafterbattle
 	setevent EVENT_BEAT_BAKER_CHELSIE
 	opentext
-	thisopenedtext
+	jumpthisopenedtext
 
 BakerChelsieAfterText:
 	text "I always add vita-"

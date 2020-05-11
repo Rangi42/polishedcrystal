@@ -85,7 +85,7 @@ LunaComputerText:
 	done
 
 AizawaComputerScript:
-	thistext
+	jumpthistext
 
 	text "A program called"
 	line "Polished Map is"
@@ -98,7 +98,7 @@ AizawaComputerScript:
 RangiKeyboardScript:
 	turnobject GOLDENRODPOKECOMCENTEROFFICE_RANGI, UP
 	showemote EMOTE_SHOCK, GOLDENRODPOKECOMCENTEROFFICE_RANGI, 10
-	thistext
+	jumpthistext
 
 	text "Rangi: Hey! If you"
 	line "want to hack the"

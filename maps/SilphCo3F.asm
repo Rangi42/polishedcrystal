@@ -36,7 +36,7 @@ SilphCo3FSilphEmployeeScript:
 	verbosegiveitem CHERISH_BALL
 	iffalse_endtext
 	setevent EVENT_GOT_CHERISH_BALL_FROM_SAFFRON
-	thisopenedtext
+	jumpthisopenedtext
 
 .Text2:
 	text "That's a very"

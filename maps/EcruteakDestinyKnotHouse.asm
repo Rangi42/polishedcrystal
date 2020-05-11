@@ -32,7 +32,7 @@ EcruteakDestinyKnotHouseCooltrainerFScript:
 	writetext .Text3
 	verbosegiveitem DESTINY_KNOT
 	iffalse_endtext
-	thisopenedtext
+	jumpthisopenedtext
 
 .Text4:
 	text "The red string of"

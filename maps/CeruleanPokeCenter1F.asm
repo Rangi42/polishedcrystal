@@ -20,7 +20,7 @@ CeruleanPokeCenter1F_MapScriptHeader:
 
 PokemonJournalMistyScript:
 	setflag ENGINE_READ_MISTY_JOURNAL
-	thistext
+	jumpthistext
 
 	text "#mon Journal"
 
@@ -37,7 +37,7 @@ PokemonJournalMistyScript:
 CeruleanPokeCenter1FGymGuyScript:
 	checkunits
 	iftrue_jumptextfaceplayer .MetricText
-	thistextfaceplayer
+	jumpthistextfaceplayer
 
 	text "The Magnet Train"
 	line "travels at over"

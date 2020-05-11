@@ -912,7 +912,7 @@ DoRepelStep:
 	ret
 
 RepelWoreOffScript:
-	thistext
+	jumpthistext
 
 	; REPEL's effect wore off.
 	text_jump UnknownText_0x1bd308

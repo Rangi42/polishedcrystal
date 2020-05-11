@@ -199,7 +199,7 @@ CopycatRetortScript:
 	special Special_SetCopycatPalette
 	variablesprite SPRITE_COPYCAT, SPRITE_LASS
 	special MapCallbackSprites_LoadUsedSpritesGFX
-	thistext
+	jumpthistext
 
 	text "Copycat: Hmm?"
 	line "Quit mimicking?"
@@ -215,7 +215,7 @@ CopycatWorriedScript:
 	variablesprite SPRITE_COPYCAT, SPRITE_LASS
 	special MapCallbackSprites_LoadUsedSpritesGFX
 	setevent EVENT_MET_COPYCAT_FOUND_OUT_ABOUT_LOST_ITEM
-	thistext
+	jumpthistext
 
 	text "Copycat: Pardon?"
 
@@ -257,7 +257,7 @@ CopycatGivePassScript:
 	verbosegivekeyitem PASS
 	iffalse_endtext
 	setevent EVENT_GOT_PASS_FROM_COPYCAT
-	thisopenedtext
+	jumpthisopenedtext
 
 	text "Copycat: That's"
 	line "the pass for the"
@@ -283,7 +283,7 @@ CopycatFinalScript:
 	special Special_SetCopycatPalette
 	variablesprite SPRITE_COPYCAT, SPRITE_LASS
 	special MapCallbackSprites_LoadUsedSpritesGFX
-	thistext
+	jumpthistext
 
 	text "Copycat: You bet!"
 	line "It's a scream!"
@@ -304,7 +304,7 @@ CopycatsDodrioScript:
 	writetext .Text1
 	cry DODRIO
 	buttonsound
-	thisopenedtext
+	jumpthisopenedtext
 
 	text "Mirror, mirror on"
 	line "the wall, who's"

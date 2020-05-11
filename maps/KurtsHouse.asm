@@ -382,7 +382,7 @@ KurtsGranddaughter2Subscript:
 
 PokemonJournalProfWestwoodScript:
 	setflag ENGINE_READ_PROF_WESTWOOD_JOURNAL
-	thistext
+	jumpthistext
 
 	text "#mon Journal"
 

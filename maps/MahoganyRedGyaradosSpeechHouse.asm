@@ -18,7 +18,7 @@ MahoganyRedGyaradosSpeechHouse_MapScriptHeader:
 TeacherScript_0x199982:
 	checkflag ENGINE_ROCKETS_IN_RADIO_TOWER
 	iftrue_jumptextfaceplayer UnknownText_0x199a3d
-	thistextfaceplayer
+	jumpthistextfaceplayer
 
 	text "My favorite radio"
 	line "program? I'd say"

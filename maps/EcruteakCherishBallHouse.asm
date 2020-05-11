@@ -26,7 +26,7 @@ EcruteakCherishBallHouseGrampsScript:
 	verbosegiveitem CHERISH_BALL
 	iffalse_endtext
 	setevent EVENT_GOT_CHERISH_BALL_FROM_ECRUTEAK
-	thisopenedtext
+	jumpthisopenedtext
 
 .Text2:
 	text "I will always"

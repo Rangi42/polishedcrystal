@@ -22,7 +22,7 @@ PewterPokeCenter1F_MapScriptHeader:
 
 PokemonJournalBrockScript:
 	setflag ENGINE_READ_BROCK_JOURNAL
-	thistext
+	jumpthistext
 
 	text "#mon Journal"
 

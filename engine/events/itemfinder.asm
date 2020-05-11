@@ -52,7 +52,7 @@ ItemFinder:
 	special UpdateTimePals
 	callasm .ItemfinderEffect
 	iffalse_jumpopenedtext .UnderfootText
-	thisopenedtext
+	jumpthisopenedtext
 
 	text "Yes! Itemfinder"
 	line "is responding!"
@@ -66,7 +66,7 @@ ItemFinder:
 .Script_FoundNothingNearby:
 	reloadmappart
 	special UpdateTimePals
-	thisopenedtext
+	jumpthisopenedtext
 
 	text "…Nope! Itemfinder"
 	line "isn't responding."
@@ -75,7 +75,7 @@ ItemFinder:
 .Script_FoundNothingAtAll:
 	reloadmappart
 	special UpdateTimePals
-	thisopenedtext
+	jumpthisopenedtext
 
 	text "Nope! There's no-"
 	line "thing hidden here."

@@ -116,7 +116,7 @@ ReceptionistScript_0x5cd3d:
 	iffalse_jumpopenedtext UnknownText_0x5d0e6
 	itemnotify
 	setflag ENGINE_LUCKY_NUMBER_SHOW
-	thisopenedtext
+	jumpthisopenedtext
 
 UnknownText_0x5cf7e:
 	text "Please come back"

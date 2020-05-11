@@ -47,7 +47,7 @@ FishingGuruScript_0x9e0e0:
 	writetext PhotoStudioPrestoText
 	special PlayCurMonCry
 	waitbutton
-	thisopenedtext
+	jumpthisopenedtext
 
 	text "Come again, OK?"
 	done

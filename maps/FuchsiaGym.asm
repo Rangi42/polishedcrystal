@@ -78,7 +78,7 @@ UnknownScript_0x195e02:
 	buttonsound
 	verbosegivetmhm TM_POISON_JAB
 	setevent EVENT_GOT_TM66_POISON_JAB
-	thisopenedtext
+	jumpthisopenedtext
 
 	text "It's Poison Jab,"
 	line "a powerful Poison-"

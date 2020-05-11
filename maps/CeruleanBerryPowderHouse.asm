@@ -25,7 +25,7 @@ CeruleanBerryPowderHouseGrampsScript:
 	verbosegiveitem HP_UP
 	iffalse_endtext
 	setevent EVENT_GOT_HP_UP_FROM_CERULEAN
-	thisopenedtext
+	jumpthisopenedtext
 
 .Text2:
 	text "Concocting med-"

@@ -79,7 +79,7 @@ SaffronHitmontopKidHouseTeacherScript:
 	verbosegiveitem AIR_BALLOON
 	iffalse_endtext
 	setevent EVENT_GOT_AIR_BALLOON_FROM_SAFFRON
-	thisopenedtext
+	jumpthisopenedtext
 
 .Text3:
 	text "My son finally got"

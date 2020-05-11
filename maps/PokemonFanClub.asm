@@ -73,7 +73,7 @@ UnknownScript_0x191844:
 
 PokemonJournalGreenScript:
 	setflag ENGINE_READ_GREEN_JOURNAL
-	thistext
+	jumpthistext
 
 	text "#mon Journal"
 

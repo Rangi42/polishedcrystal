@@ -15,7 +15,7 @@ FruitTreeScript::
 	takeitem MULCH
 	copybytetovar wCurFruit
 	callasm FertilizedFruitTree
-	thisopenedtext
+	jumpthisopenedtext
 
 	text_jump _UsedMulchText
 	text_end
@@ -56,7 +56,7 @@ PickBerryScript:
 
 .packisfull
 	buttonsound
-	thisopenedtext
+	jumpthisopenedtext
 
 	text_jump _FruitPackIsFullText
 	text_end
@@ -92,14 +92,14 @@ PickApricornScript:
 .continue
 	callasm PickedFruitTree
 	specialsound
-	thisopenedtext
+	jumpthisopenedtext
 
 	text_jump _PutAwayTheApricornText
 	text_end
 
 .packisfull
 	buttonsound
-	thisopenedtext
+	jumpthisopenedtext
 
 	text_jump _ApricornBoxIsFullText
 	text_end

@@ -22,7 +22,7 @@ CeruleanGymBadgeSpeechHouseGentlemanScript:
 	writetext .Text1
 	waitbutton
 	setevent EVENT_INTRODUCED_TO_CERULEAN_MAN
-	thisopenedtext
+	jumpthisopenedtext
 
 .Text2:
 	text "You're collecting"

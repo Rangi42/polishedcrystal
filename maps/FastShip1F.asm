@@ -65,7 +65,7 @@ SailorScript_0x75160:
 	iftrue .Arrived
 	checkevent EVENT_FAST_SHIP_DESTINATION_OLIVINE
 	iftrue_jumpopenedtext UnknownText_0x7529b
-	thisopenedtext
+	jumpthisopenedtext
 
 	text "Fast Ship S.S.Aqua"
 	line "is en route to"

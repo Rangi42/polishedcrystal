@@ -82,7 +82,7 @@ BattleTowerOutsideSignText:
 BattleTowerOutsideYoungsterScript:
 	checkevent EVENT_BATTLE_TOWER_OPEN
 	iftrue_jumptextfaceplayer .OpenText
-	thistextfaceplayer
+	jumpthistextfaceplayer
 
 	text "Wow, the Battle"
 	line "Tower is huge! My"
@@ -103,7 +103,7 @@ BattleTowerOutsideYoungsterScript:
 BattleTowerOutsideBeautyScript:
 	checkevent EVENT_BATTLE_TOWER_OPEN
 	iftrue_jumptextfaceplayer .OpenText
-	thistextfaceplayer
+	jumpthistextfaceplayer
 
 	text "What on earth do"
 	line "they do here?"

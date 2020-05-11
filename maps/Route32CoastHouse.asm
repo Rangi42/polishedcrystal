@@ -33,7 +33,7 @@ GourmetManiacScript:
 	playsound SFX_TRANSACTION
 	special Give_hMoneyTemp
 	special PlaceMoneyTopRight
-	thisopenedtext
+	jumpthisopenedtext
 
 	text "Merci! Thank you!"
 

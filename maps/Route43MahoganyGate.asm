@@ -19,7 +19,7 @@ Route43MahoganyGate_MapScriptHeader:
 OfficerScript_0x19ab0b:
 	checkevent EVENT_CLEARED_ROCKET_HIDEOUT
 	iftrue_jumptextfaceplayer UnknownText_0x19ab65
-	thistextfaceplayer
+	jumpthistextfaceplayer
 
 	text "Only people headed"
 	line "up to Lake of Rage"

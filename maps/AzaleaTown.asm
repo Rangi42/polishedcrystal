@@ -287,7 +287,7 @@ AzaleaTownIlexForestSignText:
 AzaleaTownGrampsScript:
 	checkevent EVENT_CLEARED_SLOWPOKE_WELL
 	iftrue_jumptextfaceplayer .Text2
-	thistextfaceplayer
+	jumpthistextfaceplayer
 
 	text "The Slowpoke have"
 	line "disappeared from"

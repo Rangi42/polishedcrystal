@@ -19,7 +19,7 @@ SafariZoneHubRestHouse_MapScriptHeader:
 
 PokemonJournalKogaScript:
 	setflag ENGINE_READ_KOGA_JOURNAL
-	thistext
+	jumpthistext
 
 	text "#mon Journal"
 

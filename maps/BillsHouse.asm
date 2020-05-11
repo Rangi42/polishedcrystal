@@ -19,7 +19,7 @@ BillsHouse_MapScriptHeader:
 
 PokemonJournalBillScript:
 	setflag ENGINE_READ_BILL_JOURNAL
-	thistext
+	jumpthistext
 
 	text "#mon Journal"
 
@@ -63,7 +63,7 @@ BillsHouseBillScript:
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_POKEMANIAC_BILL
-	thistext
+	jumpthistext
 
 .AfterText:
 	text "That was one rad"

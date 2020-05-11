@@ -34,7 +34,7 @@ RadioTower2F_MapScriptHeader:
 TeacherScript_0x5d701:
 	checkflag ENGINE_ROCKETS_IN_RADIO_TOWER
 	iftrue_jumptextfaceplayer UnknownText_0x5d983
-	thistextfaceplayer
+	jumpthistextfaceplayer
 
 	text "Lullabies on the"
 	line "radio may make"

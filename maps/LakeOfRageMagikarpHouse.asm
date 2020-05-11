@@ -68,7 +68,7 @@ UnknownScript_0x19a711:
 	end
 
 UnknownScript_0x19a716:
-	thisopenedtext
+	jumpthisopenedtext
 
 	text "Wow! This one is"
 	line "outstanding!"
@@ -81,7 +81,7 @@ UnknownScript_0x19a716:
 	done
 
 UnknownScript_0x19a722:
-	thisopenedtext
+	jumpthisopenedtext
 
 	text "Oh… So you didn't"
 	line "get one good"

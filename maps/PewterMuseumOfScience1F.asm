@@ -224,7 +224,7 @@ Museum1FReceptionistScript:
 	checkcode VAR_FACING
 	ifequal DOWN, .Sneak
 	ifequal LEFT, .Sneak
-	thistextfaceplayer
+	jumpthistextfaceplayer
 
 	text "Welcome!"
 
@@ -239,7 +239,7 @@ Museum1FReceptionistScript:
 	done
 
 .Sneak:
-	thistextfaceplayer
+	jumpthistextfaceplayer
 
 	text "You can't sneak"
 	line "in the back way!"
@@ -250,7 +250,7 @@ KabutopsFossilSignpostScript:
 	trainerpic KABUTOPS_FOSSIL
 	waitbutton
 	closepokepic
-	thistext
+	jumpthistext
 
 	text "Kabutops Fossil"
 	line "(Dome)"
@@ -264,7 +264,7 @@ OmastarFossilSignpostScript:
 	trainerpic OMASTAR_FOSSIL
 	waitbutton
 	closepokepic
-	thistext
+	jumpthistext
 
 	text "Omastar Fossil"
 	line "(Helix)"
@@ -278,7 +278,7 @@ AerodactylFossilSignpostScript:
 	trainerpic AERODACTYL_FOSSIL
 	waitbutton
 	closepokepic
-	thistext
+	jumpthistext
 
 	text "Aerodactyl Fossil"
 

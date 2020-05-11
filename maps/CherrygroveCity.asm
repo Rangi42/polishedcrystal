@@ -148,7 +148,7 @@ CherrygroveSilverTriggerNorth:
 CherrygroveYoungsterScript:
 	checkflag ENGINE_POKEDEX
 	iftrue_jumptextfaceplayer CherrygroveYoungsterText_HavePokedex
-	thistextfaceplayer
+	jumpthistextfaceplayer
 
 	text "Mr.#mon's house"
 	line "is still farther"
@@ -165,7 +165,7 @@ MysticWaterGuy:
 	verbosegiveitem MYSTIC_WATER
 	iffalse_endtext
 	setevent EVENT_GOT_MYSTIC_WATER_IN_CHERRYGROVE
-	thisopenedtext
+	jumpthisopenedtext
 
 MysticWaterGuyTextAfter:
 	text "Back to fishing"

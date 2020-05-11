@@ -992,21 +992,21 @@ DecorationDesc_TownMapPoster:
 	end
 
 DecorationDesc_PikachuPoster:
-	thistext
+	jumpthistext
 
 	; It's a poster of a cute PIKACHU.
 	text_jump UnknownText_0x1bc570
 	text_end
 
 DecorationDesc_ClefairyPoster:
-	thistext
+	jumpthistext
 
 	; It's a poster of a cute CLEFAIRY.
 	text_jump UnknownText_0x1bc591
 	text_end
 
 DecorationDesc_MarillPoster:
-	thistext
+	jumpthistext
 
 	; It's a poster of a cute MARILL.
 	text_jump UnknownText_0x1bc5b3
@@ -1034,7 +1034,7 @@ DecorationDesc_Ornament:
 	ret
 
 .OrnamentScript:
-	thistext
+	jumpthistext
 
 	; It's an adorable @ .
 	text_jump UnknownText_0x1bc5d7
@@ -1051,7 +1051,7 @@ DecorationDesc_Console:
 	ret
 
 .ConsoleScript:
-	thistext
+	jumpthistext
 
 	; It's a shiny @ .
 	text_jump DecoConsoleText
@@ -1063,7 +1063,7 @@ DecorationDesc_GiantOrnament:
 	ret
 
 .BigDollScript:
-	thistext
+	jumpthistext
 
 	; A giant doll! It's fluffy and cuddly.
 	text_jump UnknownText_0x1bc5ef

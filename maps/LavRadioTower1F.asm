@@ -47,7 +47,7 @@ GentlemanScript_0x7ee6c:
 	stringtotext .expncardname, $1
 	callstd receiveitem
 	setflag ENGINE_EXPN_CARD
-	thisopenedtext
+	jumpthisopenedtext
 
 .UnknownText_0x7f141:
 	text "With that thing,"
@@ -65,7 +65,7 @@ GentlemanScript_0x7ee6c:
 SuperNerdScript_0x7eea2:
 	checkflag ENGINE_EXPN_CARD
 	iftrue_jumptextfaceplayer UnknownText_0x7f248
-	thistextfaceplayer
+	jumpthistextfaceplayer
 
 	text "Hey there!"
 

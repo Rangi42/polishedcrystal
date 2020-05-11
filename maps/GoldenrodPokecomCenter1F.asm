@@ -114,7 +114,7 @@ PokefanFScript_0x61024:
 	verbosegiveitem EVIOLITE
 	iffalse .NoRoomForEviolite
 	setevent EVENT_GOT_EVIOLITE_IN_GOLDENROD
-	thisopenedtext
+	jumpthisopenedtext
 
 	text "My daughter will"
 	line "be delighted!"
@@ -122,7 +122,7 @@ PokefanFScript_0x61024:
 
 .NoRoomForEviolite:
 	giveitem EON_MAIL
-	thisopenedtext
+	jumpthisopenedtext
 
 	text "Oh… Well, another"
 	line "time, then."
@@ -278,7 +278,7 @@ WonderTradeForGSBallPichuText2:
 	done
 
 InfoSignScript:
-	thistext
+	jumpthistext
 
 	text "#Com Center"
 	line "1F Information"
@@ -295,7 +295,7 @@ InfoSignScript:
 
 PokemonJournalWhitneyScript:
 	setflag ENGINE_READ_WHITNEY_JOURNAL
-	thistext
+	jumpthistext
 
 	text "#mon Journal"
 

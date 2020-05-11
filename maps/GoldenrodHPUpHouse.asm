@@ -26,7 +26,7 @@ GoldenrodHPUpHousePokefanMScript:
 	verbosegiveitem HP_UP
 	iffalse_endtext
 	setevent EVENT_GOT_HP_UP_FROM_GOLDENROD
-	thisopenedtext
+	jumpthisopenedtext
 
 .Text2:
 	text "The Haircut Bro-"

@@ -1159,17 +1159,17 @@ iffalse_jumpopenedtext: MACRO
 	ENDM
 
 	enum thistext_command
-thistext: MACRO
+jumpthistext: MACRO
 	db thistext_command
 	ENDM
 
 	enum thistextfaceplayer_command
-thistextfaceplayer: MACRO
+jumpthistextfaceplayer: MACRO
 	db thistextfaceplayer_command
 	ENDM
 
 	enum thisopenedtext_command
-thisopenedtext: MACRO
+jumpthisopenedtext: MACRO
 	db thisopenedtext_command
 	ENDM
 
@@ -1247,7 +1247,7 @@ checkegg: MACRO
 	db checkegg_command
 	ENDM
 
-thisasm: MACRO
+callthisasm: MACRO
 	callasm .asm\@
 	end
 .asm\@

@@ -38,7 +38,7 @@ BattleTower2F_MapScriptHeader:
 	const BATTLETOWER2F_ANABEL
 
 BattleTower2FTVScript:
-	thistext
+	jumpthistext
 
 	text "There's an intense"
 	line "battle on the TV."
@@ -72,7 +72,7 @@ BattleTower2FCherylScript:
 .StartBattle
 	startbattle
 	reloadmapafterbattle
-	thistext
+	jumpthistext
 
 .AfterText:
 	text "Being a trainer"
@@ -149,7 +149,7 @@ BattleTower2FRileyScript:
 .StartBattle
 	startbattle
 	reloadmapafterbattle
-	thistext
+	jumpthistext
 
 .AfterText:
 	text "If I weren't in"
@@ -220,7 +220,7 @@ BattleTower2FBuckScript:
 .StartBattle
 	startbattle
 	reloadmapafterbattle
-	thistext
+	jumpthistext
 
 .AfterText:
 	text "Fweh! Too much!"
@@ -285,7 +285,7 @@ BattleTower2FMarleyScript:
 .StartBattle
 	startbattle
 	reloadmapafterbattle
-	thistext
+	jumpthistext
 
 .AfterText:
 	text "…I might like"
@@ -338,7 +338,7 @@ BattleTower2FMiraScript:
 .StartBattle
 	startbattle
 	reloadmapafterbattle
-	thistext
+	jumpthistext
 
 .AfterText:
 	text "<PLAYER>, you are"
@@ -404,7 +404,7 @@ BattleTower2FAnabelScript:
 .StartBattle
 	startbattle
 	reloadmapafterbattle
-	thistext
+	jumpthistext
 
 .AfterText:
 	text "That was fun…"

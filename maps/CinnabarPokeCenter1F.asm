@@ -20,7 +20,7 @@ CinnabarPokeCenter1F_MapScriptHeader:
 
 PokemonJournalBlaineScript:
 	setflag ENGINE_READ_BLAINE_JOURNAL
-	thistext
+	jumpthistext
 
 	text "#mon Journal"
 

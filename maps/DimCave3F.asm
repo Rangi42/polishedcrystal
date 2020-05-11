@@ -59,7 +59,7 @@ DimCave3FSetUpStoneTable:
 	pause 30
 	playsound SFX_STRENGTH
 	earthquake 80
-	thistext
+	jumpthistext
 
 	text "The boulder fell"
 	line "through."
@@ -135,7 +135,7 @@ DimCave3FPokefanmScript:
 	writetext .QuestionText
 	yesorno
 	iftrue_jumpopenedtext .YesText
-	thisopenedtext
+	jumpthisopenedtext
 
 	text "What?! Do you"
 	line "have a map?"
