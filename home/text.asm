@@ -281,7 +281,7 @@ PromptText::
 
 DoneText::
 	pop hl
-	ld de, EmptyString - 1
+	dec de
 	ret
 
 PlaceTargetsName::
@@ -399,6 +399,10 @@ FarString::
 DoTextUntilTerminator::
 	ld a, [hli]
 	cp "@"
+	ret z
+	cp "<DONE>"
+	ret z
+	cp "<PROMPT>"
 	ret z
 	call .TextCommand
 	jr DoTextUntilTerminator
