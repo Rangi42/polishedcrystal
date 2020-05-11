@@ -23,7 +23,7 @@ VermilionCity_MapScriptHeader:
 
 	db 0 ; coord events
 
-	db 8 ; bg events
+	db 9 ; bg events
 	bg_event 25,  5, SIGNPOST_JUMPTEXT, VermilionCitySignText
 	bg_event  5, 23, SIGNPOST_JUMPTEXT, VermilionGymSignText
 	bg_event  5, 17, SIGNPOST_JUMPTEXT, PokemonFanClubSignText
@@ -31,6 +31,7 @@ VermilionCity_MapScriptHeader:
 	bg_event 27, 19, SIGNPOST_JUMPTEXT, VermilionCityPortSignText
 	bg_event 28, 13, SIGNPOST_JUMPTEXT, VermilionCityTruckText
 	bg_event 29, 13, SIGNPOST_JUMPTEXT, VermilionCityTruckText
+	bg_event 19,  9, SIGNPOST_JUMPTEXT, VermilionCityAdvancedTipsSignText
 	bg_event 12, 23, SIGNPOST_ITEM + FULL_HEAL, EVENT_VERMILION_CITY_HIDDEN_FULL_HEAL
 
 	db 14 ; object events
@@ -394,4 +395,12 @@ VermilionCityTruckText:
 	para "Underneath it"
 	line "there's…"
 	cont "nothing!"
+	done
+
+VermilionCityAdvancedTipsSignText:
+	text "Advanced Tips!"
+
+	para "Your Trainer Card"
+	line "has room to show"
+	cont "sixteen Badges!"
 	done

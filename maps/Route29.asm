@@ -11,9 +11,10 @@ Route29_MapScriptHeader:
 	coord_event 53,  8, 1, Route29Tutorial1
 	coord_event 53,  9, 1, Route29Tutorial2
 
-	db 2 ; bg events
+	db 3 ; bg events
 	bg_event 51,  7, SIGNPOST_JUMPTEXT, Route29Sign1Text
 	bg_event  3,  5, SIGNPOST_JUMPTEXT, Route29Sign2Text
+	bg_event 23,  4, SIGNPOST_JUMPTEXT, Route29AdvancedTipsSignText
 
 	db 10 ; object events
 	object_event 50, 12, SPRITE_LYRA, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LYRA_ROUTE_29
@@ -309,8 +310,8 @@ TuscanyNotTuesdayText:
 Route29Sign1Text:
 	text "Route 29"
 
-	para "Cherrygrove City -"
-	line "New Bark Town"
+	para "New Bark Town -"
+	line "Cherrygrove City"
 	done
 
 Route29Sign2Text:
@@ -318,4 +319,12 @@ Route29Sign2Text:
 
 	para "Cherrygrove City -"
 	line "New Bark Town"
+	done
+
+Route29AdvancedTipsSignText:
+	text "Advanced Tips!"
+
+	para "Press Start in"
+	line "the Bag to sort"
+	cont "an item pocket!"
 	done
