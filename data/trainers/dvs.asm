@@ -26,8 +26,8 @@ TrainerClassDVsAndPersonality:
 	db 252, PERFECT_DVS,   ABILITY_1 | QUIRKY, MALE   ; blue
 	db 252, PERFECT_DVS,   ABILITY_1 | QUIRKY, MALE   ; red
 	db 252, PERFECT_DVS,   ABILITY_1 | QUIRKY, FEMALE ; leaf
-	db 252, PERFECT_DVS,   ABILITY_1 | QUIRKY, MALE   ; rival0
-	db 252, PERFECT_DVS,   ABILITY_1 | QUIRKY, MALE   ; rival1
+	db   0, PERFECT_DVS,   ABILITY_1 | QUIRKY, MALE   ; rival0
+	db 144, PERFECT_DVS,   ABILITY_1 | QUIRKY, MALE   ; rival1
 	db 252, PERFECT_DVS,   ABILITY_1 | QUIRKY, MALE   ; rival2
 	db   0, $BB, $BB, $BB, ABILITY_1 | QUIRKY, FEMALE ; lyra1
 	db 252, $BB, $BB, $BB, ABILITY_1 | QUIRKY, FEMALE ; lyra2
