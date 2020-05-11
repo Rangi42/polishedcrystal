@@ -1,5 +1,4 @@
 StatsScreenInit:
-	ld hl, StatsScreenMain
 	ldh a, [hMapAnims]
 	push af
 	xor a
@@ -12,7 +11,6 @@ StatsScreenInit:
 	ld c, a
 
 	push bc
-	push hl
 	call ClearBGPalettes
 	call ClearTileMap
 	call UpdateSprites
@@ -21,8 +19,7 @@ StatsScreenInit:
 	ld de, vTiles2 tile $31
 	lb bc, BANK(GFX_Stats), 41
 	call DecompressRequest2bpp
-	pop hl
-	call _hl_
+	call StatsScreenMain
 	call ClearBGPalettes
 	call ClearTileMap
 	pop bc
