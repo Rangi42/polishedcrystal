@@ -33,7 +33,7 @@ OfficerText_0x19ab0b:
 RockerScript_0x9f669:
 	checkevent EVENT_BATTLE_TOWER_OPEN
 	iftrue_jumptextfaceplayer .OpenText
-	thistextfaceplayer
+	jumpthistextfaceplayer
 
 	text "Did you come to"
 	line "see the Battle"
@@ -57,7 +57,7 @@ RockerScript_0x9f669:
 TwinScript_0x9f66c:
 	checkevent EVENT_BATTLE_TOWER_OPEN
 	iftrue_jumptextfaceplayer .OpenText
-	thistextfaceplayer
+	jumpthistextfaceplayer
 
 	text "I'm going to train"
 	line "my #mon so I'll"

@@ -35,7 +35,7 @@ WarmBeachHouseBookScript:
 	writetext .Text2
 	yesorno
 	iffalse_endtext
-	thisopenedtext
+	jumpthisopenedtext
 
 	text "From the trio of"
 	line "islands, ancient"

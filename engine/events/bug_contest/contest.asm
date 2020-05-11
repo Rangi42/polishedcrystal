@@ -61,26 +61,15 @@ BugCatchingContestBattleScript::
 .OutOfBalls:
 	playsound SFX_ELEVATOR_END
 	opentext
-	writetext .ContestIsOver
+	farwritetext UnknownText_0x1bd2e7
 	waitbutton
 	jump BugCatchingContestReturnToGateScript
-
-.ContestIsOver:
-	; ANNOUNCER: The Contest is over!
-	text_jump UnknownText_0x1bd2e7
-	text_end
 
 BugCatchingContestOverScript::
 	playsound SFX_ELEVATOR_END
 	opentext
-	writetext .BeeepTimesUp
+	farwritetext UnknownText_0x1bd2ca
 	waitbutton
-	jump BugCatchingContestReturnToGateScript
-
-.BeeepTimesUp:
-	; ANNOUNCER: BEEEP! Time's up!
-	text_jump UnknownText_0x1bd2ca
-	text_end
 
 BugCatchingContestReturnToGateScript:
 	closetext

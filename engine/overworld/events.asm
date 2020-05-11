@@ -691,7 +691,7 @@ HiddenItemScript:
 	opentext
 	copybytetovar wEngineBuffer3
 	itemtotext $0, $0
-	writetext .found_text
+	farwritetext UnknownText_0x1c0a1c
 	giveitem ITEM_FROM_MEM
 	iffalse .bag_full
 	callasm SetMemEvent
@@ -703,11 +703,6 @@ HiddenItemScript:
 	buttonsound
 	pocketisfull
 	endtext
-
-.found_text
-	; found @ !
-	text_jump UnknownText_0x1c0a1c
-	text_end
 
 SetMemEvent:
 	ld hl, wEngineBuffer1
@@ -917,23 +912,15 @@ DoRepelStep:
 	ret
 
 RepelWoreOffScript:
-	thistext
-
-	; REPEL's effect wore off.
-	text_jump UnknownText_0x1bd308
-	text_end
+	farjumptext UnknownText_0x1bd308
 
 UseAnotherRepelScript:
 	opentext
-	writetext .text
+	farwritetext UseAnotherRepelText
 	yesorno
 	iffalse_endtext
 	callasm DoItemEffect
 	endtext
-
-.text:
-	text_jump UseAnotherRepelText
-	text_end
 
 DoPlayerEvent:
 	ld a, [wScriptRunning]

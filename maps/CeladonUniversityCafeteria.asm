@@ -63,7 +63,7 @@ CeladonUniversityCafeteriaCoreyScript:
 	verbosegiveitem CHOICE_BAND
 	iffalse_endtext
 	setevent EVENT_GOT_CHOICE_BAND_FROM_CELADON_FOUR
-	thisopenedtext
+	jumpthisopenedtext
 
 .FinalText:
 	text "You'd be a star"
@@ -227,7 +227,7 @@ CeladonUniversityCafeteriaBakerScript:
 	playsound SFX_TRANSACTION
 	takemoney $0, 4000
 	special PlaceMoneyTopRight
-	thisopenedtext
+	jumpthisopenedtext
 
 .Text2:
 	text "Here you go, hon!"
@@ -235,7 +235,7 @@ CeladonUniversityCafeteriaBakerScript:
 	done
 
 .NotEnoughMoney:
-	thisopenedtext
+	jumpthisopenedtext
 
 	text "You don't have"
 	line "enough money…"

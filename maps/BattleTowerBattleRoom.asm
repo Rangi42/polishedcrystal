@@ -61,10 +61,29 @@ Script_BattleRoomLoop:
 	opentext
 	copybytetovar wNrOfBeatenBattleTowerTrainers
 	ifequal BATTLETOWER_NROFTRAINERS - 1, .WarnAboutTycoon
-	writetext Text_NextUpOpponentNo
+	writethistext
+		text "Next up, opponent"
+		line "no."
+		text_from_ram wStringBuffer3
+		text ". Ready?"
+		done
 	jump .ShownText
 .WarnAboutTycoon
-	writetext Text_NextUpTycoon
+	writethistext
+		text "Congratulations"
+		line "on your winning"
+		cont "streak, trainer!"
+
+		para "The Tower Tycoon"
+		line "has sent word that"
+
+		para "he is impressed"
+		line "with your skill."
+
+		para "Are you ready to"
+		line "battle the Tower"
+		cont "Tycoon?"
+		done
 .ShownText
 	yesorno
 	iffalse Script_DontBattleNextOpponent
@@ -75,7 +94,10 @@ Script_ContinueAndBattleNextOpponent:
 	jump Script_BattleRoomLoop
 
 Script_DontBattleNextOpponent:
-	writetext Text_SaveAndEndTheSession
+	writethistext
+		text "Save and end the"
+		line "session?"
+		done
 	yesorno
 	iffalse Script_DontSaveAndEndTheSession
 	special Special_BattleTower_SaveLevelGroup
@@ -87,7 +109,10 @@ Script_DontBattleNextOpponent:
 	special FadeOutPalettes
 	special SoftReset
 Script_DontSaveAndEndTheSession:
-	writetext Text_CancelYourBattleRoomChallenge
+	writethistext
+		text "Cancel your Battle"
+		line "Room challenge?"
+		done
 	yesorno
 	iffalse Script_ContinueAndBattleNextOpponent
 	writebyte BATTLETOWER_NO_CHALLENGE
@@ -113,7 +138,15 @@ Script_BeatenAllTrainers:
 	warpfacing UP, BATTLE_TOWER_1F, 10, 8
 Script_BeatenAllTrainers2:
 	opentext
-	writetext Text_CongratulationsYouveBeatenAllTheTrainers
+	writethistext
+		text "Congratulations!"
+
+		para "You've beaten all"
+		line "the trainers!"
+
+		para "For that, you get"
+		line "this great prize!"
+		prompt
 	jump Script_GivePlayerHisPrize
 
 MovementData_BattleTowerBattleRoomPlayerWalksIn:
@@ -155,39 +188,6 @@ Text_YourPokemonWillBeHealedToFullHealth:
 	text "Your #mon will"
 	line "be healed to full"
 	cont "health."
-	done
-
-Text_NextUpOpponentNo:
-	text "Next up, opponent"
-	line "no."
-	text_from_ram wStringBuffer3
-	text ". Ready?"
-	done
-
-Text_NextUpTycoon:
-	text "Congratulations"
-	line "on your winning"
-	cont "streak, trainer!"
-
-	para "The Tower Tycoon"
-	line "has sent word that"
-
-	para "he is impressed"
-	line "with your skill."
-
-	para "Are you ready to"
-	line "battle the Tower"
-	cont "Tycoon?"
-	done
-
-Text_SaveAndEndTheSession:
-	text "Save and end the"
-	line "session?"
-	done
-
-Text_CancelYourBattleRoomChallenge:
-	text "Cancel your Battle"
-	line "Room challenge?"
 	done
 
 Text_ThanksForVisiting:

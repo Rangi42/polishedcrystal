@@ -118,7 +118,7 @@ BlaineScript_0x1ab4fb:
 	buttonsound
 	verbosegivetmhm TM_WILL_O_WISP
 	setevent EVENT_GOT_TM61_WILL_O_WISP
-	thisopenedtext
+	jumpthisopenedtext
 
 	text "It's called Will-"
 	line "O-Wisp!"
@@ -142,7 +142,7 @@ SeafoamGymGuyScript:
 	checkevent EVENT_TALKED_TO_SEAFOAM_GYM_GUY_ONCE
 	iftrue_jumptextfaceplayer SeafoamGymGuyWinText2
 	setevent EVENT_TALKED_TO_SEAFOAM_GYM_GUY_ONCE
-	thistextfaceplayer
+	jumpthistextfaceplayer
 
 	text "Yo!"
 

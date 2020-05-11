@@ -28,7 +28,7 @@ TeacherScript_0x54953:
 	ifgreater $95, UnknownScript_0x5497f
 	ifgreater $63, UnknownScript_0x54985
 	ifgreater $31, UnknownScript_0x5498b
-	thisopenedtext
+	jumpthisopenedtext
 
 	text "It doesn't seem to"
 	line "like you at all."
@@ -36,7 +36,7 @@ TeacherScript_0x54953:
 	done
 
 UnknownScript_0x54973:
-	thisopenedtext
+	jumpthisopenedtext
 
 	text "It looks really"
 	line "happy! It must"
@@ -44,7 +44,7 @@ UnknownScript_0x54973:
 	done
 
 UnknownScript_0x54979:
-	thisopenedtext
+	jumpthisopenedtext
 
 	text "I get the feeling"
 	line "that it really"
@@ -52,7 +52,7 @@ UnknownScript_0x54979:
 	done
 
 UnknownScript_0x5497f:
-	thisopenedtext
+	jumpthisopenedtext
 
 	text "It's friendly to-"
 	line "ward you. It looks"
@@ -60,13 +60,13 @@ UnknownScript_0x5497f:
 	done
 
 UnknownScript_0x54985:
-	thisopenedtext
+	jumpthisopenedtext
 
 	text "It's quite cute."
 	done
 
 UnknownScript_0x5498b:
-	thisopenedtext
+	jumpthisopenedtext
 
 	text "You should treat"
 	line "it better. It's"

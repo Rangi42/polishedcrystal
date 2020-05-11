@@ -54,7 +54,7 @@ SinjohRuinsHouseCynthiaScript:
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_CYNTHIA
-	thistext
+	jumpthistext
 
 SinjohRuinsHouseCynthiaAfterText:
 	text "Cynthia: What an"

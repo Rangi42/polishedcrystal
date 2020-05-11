@@ -141,7 +141,7 @@ Route47_FinishBridge:
 	jp GenericFinishBridge
 
 Route47Bridge1OverheadTrigger:
-	thisasm
+	callthisasm
 	changebridgeblock 42, 24, $e9, ROUTE_47
 	changebridgeblock 44, 24, $e7, ROUTE_47
 	changebridgeblock 46, 24, $e7, ROUTE_47
@@ -150,7 +150,7 @@ Route47Bridge1OverheadTrigger:
 	jp Route47_FinishOverheadBridge
 
 Route47Bridge1UnderfootTrigger:
-	thisasm
+	callthisasm
 	changebridgeblock 42, 24, $aa, ROUTE_47
 	changebridgeblock 44, 24, $e6, ROUTE_47
 	changebridgeblock 46, 24, $e6, ROUTE_47
@@ -159,35 +159,35 @@ Route47Bridge1UnderfootTrigger:
 	jp Route47_FinishUnderfootBridge
 
 Route47Bridge2OverheadTrigger:
-	thisasm
+	callthisasm
 	changebridgeblock 44, 18, $e8, ROUTE_47
 	changebridgeblock 46, 18, $e8, ROUTE_47
 	changebridgeblock 48, 18, $e8, ROUTE_47
 	jp Route47_FinishOverheadBridge
 
 Route47Bridge2UnderfootTrigger:
-	thisasm
+	callthisasm
 	changebridgeblock 44, 18, $e6, ROUTE_47
 	changebridgeblock 46, 18, $e6, ROUTE_47
 	changebridgeblock 48, 18, $e6, ROUTE_47
 	jp Route47_FinishUnderfootBridge
 
 Route47Bridge3OverheadTrigger:
-	thisasm
+	callthisasm
 	changebridgeblock 20, 24, $e8, ROUTE_47
 	changebridgeblock 22, 24, $e8, ROUTE_47
 	changebridgeblock 24, 24, $e8, ROUTE_47
 	jp Route47_FinishOverheadBridge
 
 Route47Bridge3UnderfootTrigger:
-	thisasm
+	callthisasm
 	changebridgeblock 20, 24, $e6, ROUTE_47
 	changebridgeblock 22, 24, $e6, ROUTE_47
 	changebridgeblock 24, 24, $e6, ROUTE_47
 	jp Route47_FinishUnderfootBridge
 
 Route47Bridge4OverheadTrigger:
-	thisasm
+	callthisasm
 	changebridgeblock 18, 16, $e9, ROUTE_47
 	changebridgeblock 20, 16, $e7, ROUTE_47
 	changebridgeblock 22, 16, $e7, ROUTE_47
@@ -196,7 +196,7 @@ Route47Bridge4OverheadTrigger:
 	jp Route47_FinishOverheadBridge
 
 Route47Bridge4UnderfootTrigger:
-	thisasm
+	callthisasm
 	changebridgeblock 18, 16, $aa, ROUTE_47
 	changebridgeblock 20, 16, $e6, ROUTE_47
 	changebridgeblock 22, 16, $e6, ROUTE_47
@@ -410,7 +410,7 @@ Route47RocketGirlText:
 
 Route47SealedCaveSign:
 	dw EVENT_DOOR_OPENED_IN_RUINS_OF_ALPH
-	thistext
+	jumpthistext
 
 	text "There's a door-"
 	line "shaped groove in"

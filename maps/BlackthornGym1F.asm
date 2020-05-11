@@ -183,7 +183,7 @@ ClairPokemonLeagueDirectionsText:
 BlackthornGymGuyScript:
 	checkevent EVENT_BEAT_CLAIR
 	iftrue_jumptextfaceplayer .WinText
-	thistextfaceplayer
+	jumpthistextfaceplayer
 
 	text "Yo! Champ in"
 	line "making!"

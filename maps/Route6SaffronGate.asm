@@ -19,7 +19,7 @@ Route6SaffronGate_MapScriptHeader:
 OfficerScript_0x1926ea:
 	checkevent EVENT_RETURNED_MACHINE_PART
 	iftrue_jumptextfaceplayer UnknownText_0x1927cb
-	thistextfaceplayer
+	jumpthistextfaceplayer
 
 	text "Welcome to Saffron"
 	line "City, home of the"

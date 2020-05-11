@@ -434,7 +434,7 @@ CeladonUniversityHyperTestRoomMagikarpSign:
 	cry MAGIKARP
 	waitbutton
 	closepokepic
-	thistext
+	jumpthistext
 
 	text "A Magikarp is"
 	line "swimming around."
@@ -458,7 +458,7 @@ CeladonUniversityHyperTestRoomBookshelf2Text:
 	done
 
 CeladonUniversityHyperTestRoomComputer:
-	thistext
+	jumpthistext
 
 	text "There's a file on"
 	line "the desktop named"

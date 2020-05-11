@@ -50,7 +50,7 @@ LoreleiAfterIntroScript:
 	buttonsound
 	verbosegiveitem ICY_ROCK
 	setevent EVENT_GOT_ICY_ROCK_FROM_LORELEI
-	thisopenedtext
+	jumpthisopenedtext
 
 LoreleiAfterText:
 	text "Go on ahead. You"
@@ -90,7 +90,7 @@ LoreleiAfterRematchIntroScript:
 	buttonsound
 	verbosegiveitem ICY_ROCK
 	setevent EVENT_GOT_ICY_ROCK_FROM_LORELEI
-	thisopenedtext
+	jumpthisopenedtext
 
 LoreleiRematchAfterText:
 	text "Your journey isn't"

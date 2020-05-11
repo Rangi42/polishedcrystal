@@ -42,7 +42,7 @@ ClerkScript_0x54750:
 	keyitemnotify
 	setflag ENGINE_BIKE_SHOP_CALL_ENABLED
 	setevent EVENT_GOT_BICYCLE
-	thisopenedtext
+	jumpthisopenedtext
 
 UnknownText_0x5485f:
 	text "My Bicycles are"

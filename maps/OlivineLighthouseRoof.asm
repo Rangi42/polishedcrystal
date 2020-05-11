@@ -73,7 +73,7 @@ OlivineLighthouseRoofSkylaScript:
 	writetext .IntroText
 	waitbutton
 	setevent EVENT_INTRODUCED_SKYLA
-	thisopenedtext
+	jumpthisopenedtext
 
 .WaitingText:
 	text "I saw a hurt #-"

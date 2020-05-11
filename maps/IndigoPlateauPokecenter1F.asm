@@ -324,7 +324,7 @@ PlateauRivalLeavesMovement:
 
 PokemonJournalGiovanniScript:
 	setflag ENGINE_READ_GIOVANNI_JOURNAL
-	thistext
+	jumpthistext
 
 	text "#mon Journal"
 
@@ -405,7 +405,7 @@ IndigoPlateauYellowScript:
 	end
 
 .PartyFull:
-	thisopenedtext
+	jumpthisopenedtext
 
 	text "Yellow: Oh…"
 	line "You can't carry"

@@ -77,7 +77,7 @@ ElderLiScript:
 	verbosegivetmhm TM_FLASH
 	setevent EVENT_GOT_TM70_FLASH
 	setevent EVENT_BEAT_ELDER_LI
-	thisopenedtext
+	jumpthisopenedtext
 
 	text "Flash illuminates"
 	line "even the darkest"

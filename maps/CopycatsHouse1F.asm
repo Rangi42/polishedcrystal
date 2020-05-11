@@ -31,7 +31,7 @@ CopycatsHouse1FPokefanMText:
 CopycatsHouse1FPokefanFScript:
 	checkevent EVENT_RETURNED_MACHINE_PART
 	iftrue_jumptextfaceplayer .Text2
-	thistextfaceplayer
+	jumpthistextfaceplayer
 
 	text "My daughter is so"
 	line "self-centered…"

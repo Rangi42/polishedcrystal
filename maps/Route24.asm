@@ -69,13 +69,13 @@ Route24_UnderfootBridgeAsm:
 
 Route24BridgeOverheadTrigger:
 	callasm Route24_OverheadBridgeAsm
-	thisasm
+	callthisasm
 	xor a
 	jr Route24_FinishBridge
 
 Route24BridgeUnderfootTrigger:
 	callasm Route24_UnderfootBridgeAsm
-	thisasm
+	callthisasm
 	ld a, $1
 Route24_FinishBridge:
 	ld [wWalkingOnBridge], a

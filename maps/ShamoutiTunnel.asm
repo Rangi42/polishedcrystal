@@ -41,7 +41,7 @@ OreManiacScript:
 	playsound SFX_TRANSACTION
 	special Give_hMoneyTemp
 	special PlaceMoneyTopRight
-	thisopenedtext
+	jumpthisopenedtext
 
 	text "The deal is done!"
 	line "I've scored an ore"

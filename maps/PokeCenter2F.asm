@@ -169,7 +169,7 @@ endc
 	endtext
 
 Script_TradeCenterClosed:
-	thistextfaceplayer
+	jumpthistextfaceplayer
 
 	text "I'm sorry--the"
 	line "Trade Machine is"
@@ -236,7 +236,7 @@ endc
 	endtext
 
 Script_BattleRoomClosed:
-	thistextfaceplayer
+	jumpthistextfaceplayer
 
 	text "I'm sorry--the"
 	line "Battle Machine is"

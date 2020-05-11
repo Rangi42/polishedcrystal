@@ -21,7 +21,7 @@ DaisyScript:
 	ifequal 15, .Massage
 	checkflag ENGINE_TEA_IN_BLUES_HOUSE
 	iftrue .After
-	thistextfaceplayer
+	jumpthistextfaceplayer
 
 	text "Daisy: Hi! My kid"
 	line "brother is the Gym"
@@ -62,7 +62,7 @@ DaisyScript:
 	writetext .LooksContentText
 	special PlayCurMonCry
 	buttonsound
-	thisopenedtext
+	jumpthisopenedtext
 
 	text "Daisy: There you"
 	line "go! All done."
@@ -90,7 +90,7 @@ DaisyScript:
 	done
 
 .After:
-	thistextfaceplayer
+	jumpthistextfaceplayer
 
 	text "Daisy: I always"
 	line "have tea around"
@@ -100,7 +100,7 @@ DaisyScript:
 	done
 
 .NoMassage:
-	thistext
+	jumpthistext
 
 	text "Daisy: You don't"
 	line "want to have one"
@@ -127,7 +127,7 @@ DaisyScript:
 	done
 
 .EggMassage:
-	thistext
+	jumpthistext
 
 	text "Daisy: Oh, sorry."
 	line "I honestly can't"

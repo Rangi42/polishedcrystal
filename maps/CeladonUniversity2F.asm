@@ -50,7 +50,7 @@ CeladonUniversity2FCooltrainerfScript:
 	verbosegiveitem ANTIDOTE
 	iffalse .NoRoomForAntidote
 	setevent EVENT_GOT_ANTIDOTE_IN_UNIVERSITY
-	thisopenedtext
+	jumpthisopenedtext
 
 .Text5:
 	text "Antidotes cure"
@@ -63,7 +63,7 @@ CeladonUniversity2FCooltrainerfScript:
 
 .NoRoomForAntidote:
 	giveitem FRESH_WATER
-	thisopenedtext
+	jumpthisopenedtext
 
 	text "Oh… Keep your"
 	line "Fresh Water then…"
@@ -185,7 +185,7 @@ CeladonUniversity2FMagikarpSign:
 	cry MAGIKARP
 	waitbutton
 	closepokepic
-	thistext
+	jumpthistext
 
 	text "A Magikarp is"
 	line "swimming around."
@@ -196,7 +196,7 @@ CeladonUniversity2FCuboneSign:
 	trainerpic CUBONE_ARMOR
 	waitbutton
 	closepokepic
-	thistext
+	jumpthistext
 
 	text "It's the Thick Club"
 	line "and skull helmet"

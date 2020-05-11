@@ -93,7 +93,7 @@ WarmBeachCooltrainerfText:
 	done
 
 WarmBeachSlowkingScript:
-	thistext
+	jumpthistext
 
 	text "I could use"
 	line "pants…"
@@ -117,14 +117,14 @@ WarmBeachLassScript:
 	playsound SFX_TRANSACTION
 	takemoney $0, 4000
 	special PlaceMoneyTopRight
-	thisopenedtext
+	jumpthisopenedtext
 
 	text "One Shell Bell,"
 	line "just for you!"
 	done
 
 .NotEnoughMoney:
-	thisopenedtext
+	jumpthisopenedtext
 
 	text "You don't have"
 	line "enough money…"

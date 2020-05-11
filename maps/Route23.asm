@@ -220,7 +220,7 @@ Route23OfficerHaveBadgeScript:
 	writetext .SeeBadgeText
 	playsound SFX_DEX_FANFARE_50_79
 	buttonsound
-	thisopenedtext
+	jumpthisopenedtext
 
 	text "OK then! Please,"
 	line "go right ahead!"

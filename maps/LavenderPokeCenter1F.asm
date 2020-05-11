@@ -21,7 +21,7 @@ LavenderPokeCenter1F_MapScriptHeader:
 
 PokemonJournalMrFujiScript:
 	setflag ENGINE_READ_MR_FUJI_JOURNAL
-	thistext
+	jumpthistext
 
 	text "#mon Journal"
 
@@ -43,7 +43,7 @@ LavenderPokeCenter1FYoungsterScript:
 	iffalse_jumptextfaceplayer .NoMachinePartText
 	checkevent EVENT_EXORCISED_LAV_RADIO_TOWER
 	iffalse_jumptextfaceplayer .NoExorcismText
-	thistextfaceplayer
+	jumpthistextfaceplayer
 
 	text "The Director of"
 	line "the Radio Station"

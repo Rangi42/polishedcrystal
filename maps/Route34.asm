@@ -478,7 +478,7 @@ Route34RichBoyIrvingScript:
 	verbosegiveitem BIG_NUGGET
 	iffalse_endtext
 	setevent EVENT_GOT_BIG_NUGGET_FROM_ROUTE_34_LEADER
-	thisopenedtext
+	jumpthisopenedtext
 
 .AfterText2:
 	text "There are some"
@@ -562,7 +562,7 @@ TrainerCooltrainerfIrene:
 	end_if_just_battled
 	checkevent EVENT_GOT_POWER_HERB_FROM_KATE
 	iftrue_jumptext CooltrainerfIreneAfterText2
-	thistext
+	jumpthistext
 
 	text "Irene: My sister"
 	line "Kate will get you"
@@ -576,7 +576,7 @@ TrainerCooltrainerfJenn:
 	end_if_just_battled
 	checkevent EVENT_GOT_POWER_HERB_FROM_KATE
 	iftrue_jumptext CooltrainerfJennAfterText2
-	thistext
+	jumpthistext
 
 	text "Jenn: Don't get"
 	line "cocky! My sister"
@@ -596,7 +596,7 @@ TrainerCooltrainerfKate:
 	verbosegiveitem POWER_HERB
 	iffalse_endtext
 	setevent EVENT_GOT_POWER_HERB_FROM_KATE
-	thisopenedtext
+	jumpthisopenedtext
 
 CooltrainerfKateAfterText:
 	text "Kate: I'm sorry we"

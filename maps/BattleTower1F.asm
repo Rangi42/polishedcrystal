@@ -52,23 +52,53 @@ BattleTower1FTrigger0:
 
 MapBattleTower1FSignpost0Script:
 	opentext
-	writetext Text_ReadBattleTowerRules
+	writethistext
+		text "Battle Tower rules"
+		line "are written here."
+
+		para "Read the rules?"
+		done
 	yesorno
 	iffalse_endtext
-	jumpopenedtext Text_BattleTowerRules
+	jumpthisopenedtext
+		text "Three #mon may"
+		line "enter battles."
+
+		para "All three must be"
+		line "different."
+
+		para "The items they"
+		line "hold must also be"
+		cont "different."
+
+		para "Certain #mon"
+		line "may also have"
+
+		para "level restrictions"
+		line "placed on them."
+		done
 
 ReceptionistScript_0x9e3e2:
 	special Special_BattleTower_GetChallengeState ; copybytetovar sBattleTowerChallengeState
 	ifequal $3, Script_BeatenAllTrainers2 ; maps/BattleTowerBattleRoom.asm
 	opentext
-	writetext Text_BattleTowerWelcomesYou
+	writethistext
+		text "Battle Tower"
+		line "welcomes you!"
+
+		para "I could show you"
+		line "to a Battle Room."
+		done
 	buttonsound
 	special Special_BattleTower_CheckNewSaveFile ; if new save file: bit 1, [sBattleTowerSaveFileFlags]
 	ifnotequal $0, Script_Menu_ChallengeExplanationCancel
 	jump Script_BattleTowerIntroductionYesNo
 
 Script_Menu_ChallengeExplanationCancel:
-	writetext Text_WantToGoIntoABattleRoom
+	writethistext
+		text "Want to go into a"
+		line "Battle Room?"
+		done
 	special Special_BattleTower_MainMenu
 	ifequal $1, Script_ChoseChallenge
 	ifequal $2, Script_BattleTowerExplanation
@@ -79,10 +109,24 @@ Script_ChoseChallenge:
 	special Special_BattleTower_CheckForRules
 	ifnotequal $0, Script_WaitButton
 	special Special_BattleTower_FindChallengeLevel
-	writetext Text_ConfirmBattleRoomLevel
+	writethistext
+		text "Your #mon"
+		line "qualify for a"
+
+		para "Battle Room at"
+		line "<LV>"
+		deciram hScriptVar, 1, 2
+		text "0. Is that OK?"
+		done
 	yesorno
 	iffalse Script_Menu_ChallengeExplanationCancel
-	writetext Text_SaveBeforeEnteringBattleRoom
+	writethistext
+		text "Before entering"
+		line "the Battle Room,"
+
+		para "your progress will"
+		line "be saved."
+		done
 	yesorno
 	iffalse Script_Menu_ChallengeExplanationCancel
 	setscene $0
@@ -91,7 +135,10 @@ Script_ChoseChallenge:
 	setscene $1
 	special Special_BattleTower_MarkNewSaveFile ; set 1, [sBattleTowerSaveFileFlags]
 	special Special_BattleTower_BeginChallenge
-	writetext Text_RightThisWayToYourBattleRoom
+	writethistext
+		text "Right this way to"
+		line "your Battle Room."
+		done
 	waitbutton
 	closetext
 	jump Script_WalkToBattleTowerElevator
@@ -122,7 +169,10 @@ Script_GivePlayerHisPrize:
 	addvar 3
 	writevarcode VAR_BATTLEPOINTS
 .Finish:
-	writetext Text_PlayerGotReward
+	writethistext
+		text "<PLAYER> earned"
+		line "3 Battle Points!"
+		done
 	waitsfx
 	specialsound
 	waitbutton
@@ -135,11 +185,47 @@ Script_GivePlayerHisPrize:
 	jump .Finish
 
 Script_BattleTowerIntroductionYesNo:
-	writetext Text_WouldYouLikeToHearAboutTheBattleTower
+	writethistext
+		text "Would you like to"
+		line "hear about the"
+		cont "Battle Tower?"
+		done
 	yesorno
 	iffalse Script_BattleTowerSkipExplanation
 Script_BattleTowerExplanation:
-	writetext Text_BattleTowerIntroduction
+	writethistext
+		text "Battle Tower is a"
+		line "facility made for"
+		cont "#mon battles."
+
+		para "Countless #mon"
+		line "trainers gather"
+
+		para "from all over to"
+		line "hold battles in"
+
+		para "specially designed"
+		line "Battle Rooms."
+
+		para "There are many"
+		line "Battle Rooms in"
+		cont "the Battle Tower."
+
+		para "Each Room holds"
+		line "seven trainers."
+
+		para "Beat them all to"
+		line "get Battle Points."
+
+		para "To interrupt a"
+		line "session, you must"
+
+		para "save. If not, you"
+		line "won't be able to"
+
+		para "resume your Room"
+		line "challenge."
+		prompt
 Script_BattleTowerSkipExplanation:
 	special Special_BattleTower_MarkNewSaveFile
 	jump Script_Menu_ChallengeExplanationCancel
@@ -149,7 +235,19 @@ Script_WaitButton:
 
 BattleTower_LeftWithoutSaving:
 	opentext
-	writetext Text_BattleTower_LeftWithoutSaving
+	writethistext
+		text "Excuse me!"
+		line "You didn't save"
+
+		para "before exiting"
+		line "the Battle Room."
+
+		para "I'm awfully sorry,"
+		line "but your challenge"
+
+		para "will be declared"
+		line "invalid."
+		done
 	waitbutton
 	jumpopenedtext Text_WeHopeToServeYouAgain
 
@@ -158,15 +256,36 @@ BattleTowerPharmacistScript:
 	opentext
 	checkevent EVENT_LISTENED_TO_TRICK_INTRO
 	iftrue BattleTowerTutorTrickScript
-	writetext BattleTowerPharmacistText
+	writethistext
+		text "The trainers here"
+		line "strategically use"
+		cont "held items."
+
+		para "But I've got a"
+		line "trick up my"
+		cont "sleeve--I'll swap"
+
+		para "their items for"
+		line "mine with Trick!"
+		done
 	waitbutton
 	setevent EVENT_LISTENED_TO_TRICK_INTRO
 BattleTowerTutorTrickScript:
-	writetext Text_BattleTowerTutorTrick
+	writethistext
+		text "I'll teach your"
+		line "#mon how to"
+
+		para "use Trick…"
+		line "for a Silver Leaf."
+		done
 	waitbutton
 	checkitem SILVER_LEAF
 	iffalse .NoSilverLeaf
-	writetext Text_BattleTowerTutorQuestion
+	writethistext
+		text "Should I teach"
+		line "your #mon"
+		cont "Trick?"
+		done
 	yesorno
 	iffalse .TutorRefused
 	writebyte TRICK
@@ -174,14 +293,24 @@ BattleTowerTutorTrickScript:
 	special Special_MoveTutor
 	ifequal $0, .TeachMove
 .TutorRefused
-	jumpopenedtext Text_BattleTowerTutorRefused
+	jumpthisopenedtext
+		text "Talk to me if you"
+		line "change your mind."
+		done
 
 .NoSilverLeaf
-	jumpopenedtext Text_BattleTowerTutorNoSilverLeaf
+	jumpthisopenedtext
+		text "Tch. You don't have"
+		line "a Silver Leaf…"
+		done
 
 .TeachMove
 	takeitem SILVER_LEAF
-	jumpopenedtext Text_BattleTowerTutorTaught
+	jumpthisopenedtext
+		text "Now your #mon"
+		line "can use Trick too!"
+		cont "Isn't it devious?"
+		done
 
 MovementData_BattleTower1FWalkToElevator:
 	step_up
@@ -193,129 +322,9 @@ MovementData_BattleTower1FWalkToElevator:
 	step_up
 	step_end
 
-Text_BattleTowerWelcomesYou:
-	text "Battle Tower"
-	line "welcomes you!"
-
-	para "I could show you"
-	line "to a Battle Room."
-	done
-
-Text_WantToGoIntoABattleRoom:
-	text "Want to go into a"
-	line "Battle Room?"
-	done
-
-Text_RightThisWayToYourBattleRoom:
-	text "Right this way to"
-	line "your Battle Room."
-	done
-
-Text_BattleTowerIntroduction:
-	text "Battle Tower is a"
-	line "facility made for"
-	cont "#mon battles."
-
-	para "Countless #mon"
-	line "trainers gather"
-
-	para "from all over to"
-	line "hold battles in"
-
-	para "specially designed"
-	line "Battle Rooms."
-
-	para "There are many"
-	line "Battle Rooms in"
-	cont "the Battle Tower."
-
-	para "Each Room holds"
-	line "seven trainers."
-
-	para "Beat them all to"
-	line "get Battle Points."
-
-	para "To interrupt a"
-	line "session, you must"
-
-	para "save. If not, you"
-	line "won't be able to"
-
-	para "resume your Room"
-	line "challenge."
-	prompt
-
-Text_CongratulationsYouveBeatenAllTheTrainers:
-	text "Congratulations!"
-
-	para "You've beaten all"
-	line "the trainers!"
-
-	para "For that, you get"
-	line "this great prize!"
-	prompt
-
-Text_PlayerGotReward:
-	text "<PLAYER> earned"
-	line "3 Battle Points!"
-	done
-
 Text_WeHopeToServeYouAgain:
 	text "We hope to serve"
 	line "you again."
-	done
-
-Text_WouldYouLikeToHearAboutTheBattleTower:
-	text "Would you like to"
-	line "hear about the"
-	cont "Battle Tower?"
-	done
-
-Text_ReadBattleTowerRules:
-	text "Battle Tower rules"
-	line "are written here."
-
-	para "Read the rules?"
-	done
-
-Text_BattleTowerRules:
-	text "Three #mon may"
-	line "enter battles."
-
-	para "All three must be"
-	line "different."
-
-	para "The items they"
-	line "hold must also be"
-	cont "different."
-
-	para "Certain #mon"
-	line "may also have"
-
-	para "level restrictions"
-	line "placed on them."
-	done
-
-Text_BattleTower_LeftWithoutSaving:
-	text "Excuse me!"
-	line "You didn't save"
-
-	para "before exiting"
-	line "the Battle Room."
-
-	para "I'm awfully sorry,"
-	line "but your challenge"
-
-	para "will be declared"
-	line "invalid."
-	done
-
-Text_SaveBeforeEnteringBattleRoom:
-	text "Before entering"
-	line "the Battle Room,"
-
-	para "your progress will"
-	line "be saved."
 	done
 
 Text_WeveBeenWaitingForYou:
@@ -324,59 +333,6 @@ Text_WeveBeenWaitingForYou:
 
 	para "to a Battle Room,"
 	line "please."
-	done
-
-Text_ConfirmBattleRoomLevel:
-	text "Your #mon"
-	line "qualify for a"
-
-	para "Battle Room at"
-	line "<LV>"
-	deciram hScriptVar, 1, 2
-	text "0. Is that OK?"
-	done
-
-BattleTowerPharmacistText:
-	text "The trainers here"
-	line "strategically use"
-	cont "held items."
-
-	para "But I've got a"
-	line "trick up my"
-	cont "sleeve--I'll swap"
-
-	para "their items for"
-	line "mine with Trick!"
-	done
-
-Text_BattleTowerTutorTrick:
-	text "I'll teach your"
-	line "#mon how to"
-
-	para "use Trick…"
-	line "for a Silver Leaf."
-	done
-
-Text_BattleTowerTutorNoSilverLeaf:
-	text "Tch. You don't have"
-	line "a Silver Leaf…"
-	done
-
-Text_BattleTowerTutorQuestion:
-	text "Should I teach"
-	line "your #mon"
-	cont "Trick?"
-	done
-
-Text_BattleTowerTutorRefused:
-	text "Talk to me if you"
-	line "change your mind."
-	done
-
-Text_BattleTowerTutorTaught:
-	text "Now your #mon"
-	line "can use Trick too!"
-	cont "Isn't it devious?"
 	done
 
 Text_BattleTowerCooltrainerF:

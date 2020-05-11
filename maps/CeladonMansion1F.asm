@@ -24,7 +24,7 @@ CeladonMansion1F_MapScriptHeader:
 	pokemon_event  4,  4, NIDORAN_F, -1, -1, PAL_NPC_BLUE, CeladonMansion1FNidoranFText, -1
 
 CeladonMansionManagersSuiteSign:
-	thistext
+	jumpthistext
 
 	text "Celadon Condo"
 	line "Manager's Suite"

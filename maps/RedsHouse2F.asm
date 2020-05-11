@@ -18,7 +18,7 @@ RedsHouse2F_MapScriptHeader:
 
 PokemonJournalProfOakScript:
 	setflag ENGINE_READ_PROF_OAK_JOURNAL
-	thistext
+	jumpthistext
 
 	text "#mon Journal"
 

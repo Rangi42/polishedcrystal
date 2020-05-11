@@ -61,7 +61,7 @@ BrockScript_0x1a2864:
 	buttonsound
 	verbosegivetmhm TM_ROCK_SLIDE
 	setevent EVENT_GOT_TM48_ROCK_SLIDE
-	thisopenedtext
+	jumpthisopenedtext
 
 	text "It can sometimes"
 	line "cause your foe to"

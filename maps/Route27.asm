@@ -108,7 +108,7 @@ Route27VeteranfScript:
 	verbosegiveitem CHOICE_SPECS
 	iffalse_endtext
 	setevent EVENT_GOT_CHOICE_SPECS_FROM_ROUTE_27_LEADER
-	thisopenedtext
+	jumpthisopenedtext
 
 .AfterText2:
 	text "Good luck! Say"

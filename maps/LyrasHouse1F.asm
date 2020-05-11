@@ -62,7 +62,7 @@ LyrasDadTrainingText:
 	done
 
 LyrasFridgeScript:
-	thistext
+	jumpthistext
 
 	text "Let's see what's"
 	line "in the fridge…"
@@ -82,7 +82,7 @@ LyrasStoveText:
 	done
 
 LyrasTVScript:
-	thistext
+	jumpthistext
 
 	text "There's a movie on"
 	line "TV: A girl with"

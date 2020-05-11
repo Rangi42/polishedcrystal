@@ -46,7 +46,7 @@ JasmineScript_0x9c12f:
 	buttonsound
 	verbosegivetmhm TM_IRON_TAIL
 	setevent EVENT_GOT_TM23_IRON_TAIL
-	thisopenedtext
+	jumpthisopenedtext
 
 	text "…You could use"
 	line "that TM to teach"
@@ -58,7 +58,7 @@ OlivineGymGuyScript:
 	iftrue_jumptextfaceplayer OlivineGymGuyWinText
 	checkevent EVENT_JASMINE_RETURNED_TO_GYM
 	iffalse_jumptextfaceplayer OlivineGymGuyPreText
-	thistextfaceplayer
+	jumpthistextfaceplayer
 
 	text "Jasmine uses the"
 	line "newly discovered"
@@ -75,7 +75,7 @@ OlivineGymLassConnie:
 	end_if_just_battled
 	checkevent EVENT_BEAT_JASMINE
 	iftrue_jumptextfaceplayer .AfterText
-	thistextfaceplayer
+	jumpthistextfaceplayer
 
 .SeenText:
 	text "Giggle… I know"
@@ -109,7 +109,7 @@ OlivineGymGentlemanPreston:
 	end_if_just_battled
 	checkevent EVENT_BEAT_JASMINE
 	iftrue_jumptextfaceplayer .AfterText
-	thistextfaceplayer
+	jumpthistextfaceplayer
 
 .SeenText:
 	text "I knew you'd"

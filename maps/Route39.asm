@@ -158,7 +158,7 @@ Route39CowgirlAnnieScript:
 	verbosegiveitem PP_MAX
 	iffalse_endtext
 	setevent EVENT_GOT_PP_MAX_FROM_ROUTE_39_LEADER
-	thisopenedtext
+	jumpthisopenedtext
 
 .AfterText2:
 	text "We make cheese"

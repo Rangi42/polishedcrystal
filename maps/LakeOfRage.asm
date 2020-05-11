@@ -265,7 +265,7 @@ WesleyScript:
 	verbosegiveitem BLACK_BELT
 	iffalse_endtext
 	setevent EVENT_GOT_BLACK_BELT_FROM_WESLEY
-	thisopenedtext
+	jumpthisopenedtext
 
 	text "Wesley: Black Belt"
 	line "beefs up the power"
@@ -273,7 +273,7 @@ WesleyScript:
 	done
 
 .NotWednesday:
-	thisopenedtext
+	jumpthisopenedtext
 
 	text "Wesley: Today's"
 	line "not Wednesday."
@@ -404,7 +404,7 @@ FisherRaymondBeatenText:
 LakeOfRageGrampsScript:
 	checkevent EVENT_CLEARED_ROCKET_HIDEOUT
 	iftrue_jumptextfaceplayer .Text2
-	thistextfaceplayer
+	jumpthistextfaceplayer
 
 	text "The Gyarados are"
 	line "angry!"

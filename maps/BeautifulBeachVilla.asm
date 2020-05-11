@@ -31,7 +31,7 @@ CaitlinMornDayText:
 	done
 
 CaitlinNiteScript:
-	thistext
+	jumpthistext
 
 	text "TODO"
 	done

@@ -99,7 +99,7 @@ ProfIvyScript:
 	giveitem LIECHI_BERRY
 .Return1:
 	giveitem LIECHI_BERRY
-	thisopenedtext
+	jumpthisopenedtext
 
 .NoBerryText:
 	text "Ivy: I under-"
@@ -180,7 +180,7 @@ ProfIvyScript:
 IvysLabHopeScript:
 	checkevent EVENT_HEALED_NIDORINO
 	iftrue_jumptextfaceplayer .Text2
-	thistextfaceplayer
+	jumpthistextfaceplayer
 
 	text "Hope: Prof.Ivy"
 	line "takes care of the"
@@ -207,7 +207,7 @@ IvysLabNidorinoScript:
 	writebyte NIDORINO
 	special PlaySlowCry
 	buttonsound
-	thisopenedtext
+	jumpthisopenedtext
 
 	text "Its cry is weak…"
 	done
@@ -255,7 +255,7 @@ IvysLabHealingMachine:
 
 PokemonJournalProfIvyScript:
 	setflag ENGINE_READ_PROF_IVY_JOURNAL
-	thistext
+	jumpthistext
 
 	text "#mon Journal"
 

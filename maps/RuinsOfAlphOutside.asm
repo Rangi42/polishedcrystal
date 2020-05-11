@@ -120,7 +120,7 @@ FisherScript_0x58061:
 	setevent EVENT_TALKED_TO_RUINS_COWARD
 	writetext UnknownText_0x583a4
 	buttonsound
-	thisopenedtext
+	jumpthisopenedtext
 
 UnknownText_0x58420:
 	text "The ruins hide a"
@@ -280,7 +280,7 @@ UnknownText_0x58362:
 
 MapRuinsofAlphOutsideSealedCaveSign:
 	dw EVENT_DOOR_OPENED_IN_RUINS_OF_ALPH
-	thistext
+	jumpthistext
 
 	text "There's a door-"
 	line "shaped groove in"

@@ -99,7 +99,7 @@ Route43SightseerfScript:
 	verbosegiveitem FLAME_ORB
 	iffalse_endtext
 	setevent EVENT_GOT_FLAME_ORB_FROM_ROUTE_43_LEADER
-	thisopenedtext
+	jumpthisopenedtext
 
 .AfterText2:
 	text "I love visiting"

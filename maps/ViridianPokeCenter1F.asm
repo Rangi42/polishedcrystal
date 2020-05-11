@@ -21,7 +21,7 @@ ViridianPokeCenter1F_MapScriptHeader:
 
 PokemonJournalBlueScript:
 	setflag ENGINE_READ_BLUE_JOURNAL
-	thistext
+	jumpthistext
 
 	text "#mon Journal"
 
@@ -39,7 +39,7 @@ PokemonJournalBlueScript:
 ViridianPokeCenter1FCooltrainermScript:
 	checkevent EVENT_BLUE_IN_CINNABAR
 	iftrue_jumptextfaceplayer .BlueText
-	thistextfaceplayer
+	jumpthistextfaceplayer
 
 	text "Where in the world"
 	line "is Viridian's Gym"

@@ -47,7 +47,7 @@ CooltrainerFScript_0x5e56a:
 	iftrue UnknownScript_0x5e58a
 	checkevent EVENT_USED_THE_CARD_KEY_IN_THE_RADIO_TOWER
 	iftrue_jumptextfaceplayer UnknownText_0x5e7cb
-	thistextfaceplayer
+	jumpthistextfaceplayer
 
 	text "The Team Rocket"
 	line "boss has locked"

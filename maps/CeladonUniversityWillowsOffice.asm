@@ -89,7 +89,7 @@ CeladonUniversityWillowsOfficeBookshelf2Text:
 	done
 
 CeladonUniversityWillowsOfficeComputer:
-	thistext
+	jumpthistext
 
 	text "“#mon Transfer"
 	line "System” is on the"

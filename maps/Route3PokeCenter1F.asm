@@ -21,7 +21,7 @@ Route3PokeCenter1F_MapScriptHeader:
 
 PokemonJournalKarenScript:
 	setflag ENGINE_READ_KAREN_JOURNAL
-	thistext
+	jumpthistext
 
 	text "#mon Journal"
 

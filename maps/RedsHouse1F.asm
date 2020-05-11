@@ -20,7 +20,7 @@ RedsMom:
 	checkevent EVENT_MET_REDS_MOM
 	iftrue_jumptextfaceplayer .Text2
 	setevent EVENT_MET_REDS_MOM
-	thistextfaceplayer
+	jumpthistextfaceplayer
 
 	text "Hi!"
 
@@ -56,7 +56,7 @@ RedsMom:
 	done
 
 RedsHouse1FTVScript:
-	thistext
+	jumpthistext
 
 	text "They have programs"
 	line "that aren't shown"

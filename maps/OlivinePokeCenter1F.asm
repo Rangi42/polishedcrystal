@@ -25,7 +25,7 @@ OlivinePokeCenter1F_MapScriptHeader:
 
 PokemonJournalJasmineScript:
 	setflag ENGINE_READ_JASMINE_JOURNAL
-	thistext
+	jumpthistext
 
 	text "#mon Journal"
 
@@ -57,7 +57,7 @@ BeautyCharlotteScript:
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_BEAUTY_CHARLOTTE
-	thistext
+	jumpthistext
 
 .AfterText:
 	text "How cool is it"

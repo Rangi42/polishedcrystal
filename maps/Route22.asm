@@ -48,7 +48,7 @@ KukuiScript:
 	reloadmapafterbattle
 	setevent EVENT_INTRODUCED_KUKUI
 	setevent EVENT_BEAT_KUKUI
-	thistext
+	jumpthistext
 
 .AfterText:
 	text "Amazing! I went"

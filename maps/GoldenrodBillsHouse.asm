@@ -275,7 +275,7 @@ GrampsScript_0x189538:
 	end
 
 .WrongPokemon:
-	thisopenedtext
+	jumpthisopenedtext
 
 	text "Hm?"
 
@@ -311,7 +311,7 @@ UnknownScript_0x54c64:
 	writetext UnknownText_0x55046
 	buttonsound
 UnknownScript_0x54c5e:
-	thisopenedtext
+	jumpthisopenedtext
 
 	text "My brother made"
 	line "the PC #mon"

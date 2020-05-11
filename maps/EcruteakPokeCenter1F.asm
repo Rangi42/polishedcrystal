@@ -62,7 +62,7 @@ EcruteakPokeCenter1FBillWalksUpTrigger:
 
 PokemonJournalMortyScript:
 	setflag ENGINE_READ_MORTY_JOURNAL
-	thistext
+	jumpthistext
 
 	text "#mon Journal"
 
@@ -129,7 +129,7 @@ EcruteakPokeCenter1FBillScript:
 	end
 
 .NoRoom:
-	thisopenedtext
+	jumpthisopenedtext
 
 	text "Whoa, wait. You"
 	line "can't carry any"
@@ -245,7 +245,7 @@ EcruteakPokeCenter1FBillScript:
 EcruteakPokeCenter1FPokefanMScript:
 	checkevent EVENT_GOT_HM03_SURF
 	iftrue_jumptextfaceplayer .SurfText
-	thistextfaceplayer
+	jumpthistextfaceplayer
 
 	text "The way the Kimono"
 	line "Girls dance is"
@@ -278,7 +278,7 @@ EcruteakPokeCenter1FLassScript:
 	iffalse .No
 	checkevent EVENT_ECRUTEAK_POKE_CENTER_BILL
 	iffalse_jumpopenedtext .HereText
-	thisopenedtext
+	jumpthisopenedtext
 
 	text "I once heard that"
 	line "Bill's mother used"
@@ -293,7 +293,7 @@ EcruteakPokeCenter1FLassScript:
 .No:
 	checkevent EVENT_ECRUTEAK_POKE_CENTER_BILL
 	iffalse_jumpopenedtext .HereText
-	thisopenedtext
+	jumpthisopenedtext
 
 	text "Oh… Never mind"
 	line "then."

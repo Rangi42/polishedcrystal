@@ -76,7 +76,7 @@ Route45Dragon_tamerScript:
 	verbosegiveitem FOCUS_SASH
 	iffalse_endtext
 	setevent EVENT_GOT_FOCUS_SASH_FROM_ROUTE_45_LEADER
-	thisopenedtext
+	jumpthisopenedtext
 
 .AfterText2:
 	text "The art of train-"

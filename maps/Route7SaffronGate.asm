@@ -20,7 +20,7 @@ Route7SaffronGate_MapScriptHeader:
 OfficerScript_0x73518:
 	checkevent EVENT_RETURNED_MACHINE_PART
 	iftrue_jumptextfaceplayer UnknownText_0x73592
-	thistextfaceplayer
+	jumpthistextfaceplayer
 
 	text "Did you hear about"
 	line "the accident at"

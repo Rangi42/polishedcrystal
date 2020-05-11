@@ -354,7 +354,7 @@ endc
 
 PokemonJournalProfElmScript:
 	setflag ENGINE_READ_PROF_ELM_JOURNAL
-	thistext
+	jumpthistext
 
 	text "#mon Journal"
 

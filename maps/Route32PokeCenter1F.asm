@@ -21,7 +21,7 @@ Route32PokeCenter1F_MapScriptHeader:
 
 PokemonJournalKurtScript:
 	setflag ENGINE_READ_KURT_JOURNAL
-	thistext
+	jumpthistext
 
 	text "#mon Journal"
 
@@ -112,7 +112,7 @@ Route32PokeCenter1FPokefanMScript:
 	verbosegiveitem LURE_BALL
 	iffalse .NoRoom
 	setevent EVENT_GOT_LURE_BALL_FROM_FRENCHMAN
-	thisopenedtext
+	jumpthisopenedtext
 
 	text "This Ball easily"
 	line "catches #mon"

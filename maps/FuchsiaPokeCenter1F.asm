@@ -24,7 +24,7 @@ FuchsiaPokeCenter1F_MapScriptHeader:
 
 PokemonJournalJanineScript:
 	setflag ENGINE_READ_JANINE_JOURNAL
-	thistext
+	jumpthistext
 
 	text "#mon Journal"
 

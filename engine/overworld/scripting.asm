@@ -239,26 +239,27 @@ ScriptCommandTable:
 	dw Script_iffalse_jumptextfaceplayer ; b6
 	dw Script_iftrue_jumpopenedtext      ; b7
 	dw Script_iffalse_jumpopenedtext     ; b8
-	dw Script_thistext                   ; b9
-	dw Script_thistextfaceplayer         ; ba
-	dw Script_thisopenedtext             ; bb
-	dw Script_showtext                   ; bc
-	dw Script_showtextfaceplayer         ; bd
-	dw Script_applyonemovement           ; be
-	dw Script_showcrytext                ; bf
-	dw Script_endtext                    ; c0
-	dw Script_waitendtext                ; c1
-	dw Script_iftrue_endtext             ; c2
-	dw Script_iffalse_endtext            ; c3
-	dw Script_loadgrottomon              ; c4
-	dw Script_giveapricorn               ; c5
-	dw Script_paintingpic                ; c6
-	dw Script_checkegg                   ; c7
-	dw Script_givekeyitem                ; c8
-	dw Script_checkkeyitem               ; c9
-	dw Script_takekeyitem                ; ca
-	dw Script_verbosegivekeyitem         ; cb
-	dw Script_keyitemnotify              ; cc
+	dw Script_writethistext              ; b9
+	dw Script_jumpthistext               ; ba
+	dw Script_jumpthistextfaceplayer     ; bb
+	dw Script_jumpthisopenedtext         ; bc
+	dw Script_showtext                   ; bd
+	dw Script_showtextfaceplayer         ; be
+	dw Script_applyonemovement           ; bf
+	dw Script_showcrytext                ; c0
+	dw Script_endtext                    ; c1
+	dw Script_waitendtext                ; c2
+	dw Script_iftrue_endtext             ; c3
+	dw Script_iffalse_endtext            ; c4
+	dw Script_loadgrottomon              ; c5
+	dw Script_giveapricorn               ; c6
+	dw Script_paintingpic                ; c7
+	dw Script_checkegg                   ; c8
+	dw Script_givekeyitem                ; c9
+	dw Script_checkkeyitem               ; ca
+	dw Script_takekeyitem                ; cb
+	dw Script_verbosegivekeyitem         ; cc
+	dw Script_keyitemnotify              ; cd
 
 StartScript:
 	ld hl, wScriptFlags
@@ -332,7 +333,7 @@ Script_jumptextfaceplayer:
 	call _GetTextPointer
 	jr _Do_textfaceplayer
 
-Script_thistextfaceplayer:
+Script_jumpthistextfaceplayer:
 	call _GetThisTextPointer
 _Do_textfaceplayer:
 	ld b, BANK(JumpTextFacePlayerScript)
@@ -361,7 +362,7 @@ Script_jumptext:
 	call _GetTextPointer
 	jr _Do_jumptext
 
-Script_thistext:
+Script_jumpthistext:
 	call _GetThisTextPointer
 _Do_jumptext:
 	ld b, BANK(JumpTextScript)
@@ -390,7 +391,7 @@ Script_jumpopenedtext:
 	call _GetTextPointer
 	jr _Do_jumpopenedtext
 
-Script_thisopenedtext:
+Script_jumpthisopenedtext:
 	call _GetThisTextPointer
 _Do_jumpopenedtext:
 	ld b, BANK(JumpOpenedTextScript)
@@ -468,6 +469,20 @@ Script_farwritetext:
 	call GetScriptByte
 	ld h, a
 	jp MapTextbox
+
+Script_writethistext:
+	ld a, [wScriptPos]
+	ld l, a
+	ld a, [wScriptPos + 1]
+	ld h, a
+	ld a, [wScriptBank]
+	ld b, a
+	call MapTextbox
+	ld a, l
+	ld [wScriptPos], a
+	ld a, h
+	ld [wScriptPos + 1], a
+	ret
 
 Script_repeattext:
 ; parameters:
@@ -587,7 +602,7 @@ Script_verbosegiveitem:
 	jp ScriptCall
 
 GiveItemScript:
-	writetext ReceivedItemText
+	farwritetext UnknownText_0x1c4719
 	iffalse .Full
 	specialsound
 	waitbutton
@@ -598,10 +613,6 @@ GiveItemScript:
 	buttonsound
 	pocketisfull
 	end
-
-ReceivedItemText:
-	text_jump UnknownText_0x1c4719
-	text_end
 
 Script_verbosegiveitem2:
 ; parameters:
@@ -634,15 +645,15 @@ Script_verbosegiveitem2:
 Script_itemnotify:
 	call GetPocketName
 	call CurItemName
-	ld b, BANK(PutItemInPocketText)
-	ld hl, PutItemInPocketText
+	ld b, BANK(UnknownText_0x1c472c)
+	ld hl, UnknownText_0x1c472c
 	jp MapTextbox
 
 Script_pocketisfull:
 	call GetPocketName
 	call CurItemName
-	ld b, BANK(PocketIsFullText)
-	ld hl, PocketIsFullText
+	ld b, BANK(UnknownText_0x1c474b)
+	ld hl, UnknownText_0x1c474b
 	jp MapTextbox
 
 Script_specialsound:
@@ -695,14 +706,6 @@ CurTMHMName:
 	ld a, [wCurTMHM]
 	ld [wd265], a
 	jp GetTMHMName
-
-PutItemInPocketText:
-	text_jump UnknownText_0x1c472c
-	text_end
-
-PocketIsFullText:
-	text_jump UnknownText_0x1c474b
-	text_end
 
 Script_pokemart:
 ; parameters:
@@ -2770,7 +2773,7 @@ Script_verbosegivetmhm:
 	jp ScriptCall
 
 GiveTMHMScript:
-	writetext ReceivedItemText
+	farwritetext UnknownText_0x1c4719
 	playsound SFX_GET_TM
 	waitsfx
 	waitbutton
@@ -2780,8 +2783,8 @@ GiveTMHMScript:
 Script_tmhmnotify:
 	call GetTMHMPocketName
 	call CurTMHMName
-	ld b, BANK(PutItemInPocketText)
-	ld hl, PutItemInPocketText
+	ld b, BANK(UnknownText_0x1c472c)
+	ld hl, UnknownText_0x1c472c
 	jp MapTextbox
 
 Script_tmhmtotext:
@@ -2968,7 +2971,7 @@ Script_verbosegivekeyitem:
 	jp ScriptCall
 
 GiveKeyItemScript:
-	writetext ReceivedItemText
+	farwritetext UnknownText_0x1c4719
 	specialsound
 	keyitemnotify
 	end
@@ -2976,6 +2979,6 @@ GiveKeyItemScript:
 Script_keyitemnotify:
 	call GetKeyItemPocketName
 	call GetCurKeyItemName
-	ld b, BANK(PutItemInPocketText)
-	ld hl, PutItemInPocketText
+	ld b, BANK(UnknownText_0x1c472c)
+	ld hl, UnknownText_0x1c472c
 	jp MapTextbox

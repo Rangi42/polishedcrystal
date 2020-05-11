@@ -200,10 +200,18 @@ AzaleaTownRivalBattleTrigger2:
 AzaleaTown_CelebiTrigger:
 	applymovement PLAYER, .WalkOutOfKurtsHouseMovement
 	opentext
-	writetext .Text1
+	writethistext
+		text "Ilex Forest is"
+		line "restless!"
+
+		para "What is going on?"
+		done
 	buttonsound
 	turnobject AZALEATOWN_KURT, RIGHT
-	writetext .Text2
+	writethistext
+		text "<PLAYER>, here's"
+		line "your GS Ball back!"
+		done
 	buttonsound
 	writetext AzaleaTownKurtText
 	waitbutton
@@ -214,18 +222,6 @@ AzaleaTown_CelebiTrigger:
 	setevent EVENT_ROUTE_34_ILEX_FOREST_GATE_LASS
 	setscene $0
 	endtext
-
-.Text1:
-	text "Ilex Forest is"
-	line "restless!"
-
-	para "What is going on?"
-	done
-
-.Text2:
-	text "<PLAYER>, here's"
-	line "your GS Ball back!"
-	done
 
 .WalkOutOfKurtsHouseMovement:
 	step_left
@@ -287,7 +283,7 @@ AzaleaTownIlexForestSignText:
 AzaleaTownGrampsScript:
 	checkevent EVENT_CLEARED_SLOWPOKE_WELL
 	iftrue_jumptextfaceplayer .Text2
-	thistextfaceplayer
+	jumpthistextfaceplayer
 
 	text "The Slowpoke have"
 	line "disappeared from"
@@ -354,21 +350,17 @@ AzaleaTownRocket2Text:
 
 AzaleaTownSlowpokeScript:
 	opentext
-	writetext .Text1
+	writethistext
+		text "Slowpoke: …"
+
+		para "…… …… ……"
+		done
 	pause 60
-	writetext .Text2
+	writethistext
+		text "…… ……Yawn?"
+		done
 	cry SLOWPOKE
 	waitendtext
-
-.Text1:
-	text "Slowpoke: …"
-
-	para "…… …… ……"
-	done
-
-.Text2:
-	text "…… ……Yawn?"
-	done
 
 AzaleaTownKurtScript:
 	showtextfaceplayer AzaleaTownKurtText

@@ -44,7 +44,10 @@ AzaleaGymBugsyScript:
 	reloadmapafterbattle
 	setevent EVENT_BEAT_BUGSY
 	opentext
-	writetext .ReceivedHiveBadgeText
+	writethistext
+		text "<PLAYER> received"
+		line "the Hive Badge."
+		done
 	playsound SFX_GET_BADGE
 	waitsfx
 	setflag ENGINE_HIVEBADGE
@@ -53,11 +56,30 @@ AzaleaGymBugsyScript:
 	setevent EVENT_BEAT_BUG_CATCHER_BENNY
 	setevent EVENT_BEAT_BUG_CATCHER_AL
 	setevent EVENT_BEAT_BUG_CATCHER_JOSH
-	writetext .HiveBadgeSpeech
+	writethistext
+		text "Do you know the"
+		line "benefits of the"
+		cont "Hive Badge?"
+
+		para "If you have it,"
+		line "#mon up to <LV>30"
+
+		para "will obey you,"
+		line "even traded ones."
+
+		para "#mon that know"
+		line "Cut will be able"
+
+		para "to use it outside"
+		line "of battle too."
+
+		para "Here, I also want"
+		line "you to have this."
+		done
 	buttonsound
 	verbosegivetmhm TM_U_TURN
 	setevent EVENT_GOT_TM69_U_TURN
-	thisopenedtext
+	jumpthisopenedtext
 
 	text "TM69 contains"
 	line "U-turn."
@@ -102,32 +124,6 @@ AzaleaGymBugsyScript:
 	line "this Badge."
 	done
 
-.ReceivedHiveBadgeText:
-	text "<PLAYER> received"
-	line "the Hive Badge."
-	done
-
-.HiveBadgeSpeech:
-	text "Do you know the"
-	line "benefits of the"
-	cont "Hive Badge?"
-
-	para "If you have it,"
-	line "#mon up to <LV>30"
-
-	para "will obey you,"
-	line "even traded ones."
-
-	para "#mon that know"
-	line "Cut will be able"
-
-	para "to use it outside"
-	line "of battle too."
-
-	para "Here, I also want"
-	line "you to have this."
-	done
-
 .AfterText:
 	text "Bug #mon are"
 	line "deep. There are"
@@ -142,7 +138,7 @@ AzaleaGymBugsyScript:
 AzaleaGymGuyScript:
 	checkevent EVENT_BEAT_BUGSY
 	iftrue_jumptextfaceplayer .WinText
-	thistextfaceplayer
+	jumpthistextfaceplayer
 
 	text "Yo, challenger!"
 

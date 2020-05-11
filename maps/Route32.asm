@@ -117,7 +117,7 @@ Route32CooltrainerMTrigger:
 	iffalse_endtext
 	setevent EVENT_GOT_MIRACLE_SEED_FROM_ROUTE_32_LEADER
 .GotMiracleSeed:
-	thisopenedtext
+	jumpthisopenedtext
 
 .AfterText2:
 	text "Your experiences"

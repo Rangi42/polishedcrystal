@@ -17,7 +17,7 @@ PokemonTrainerFanClub_MapScriptHeader:
 
 PokemonJournalBrunoScript:
 	setflag ENGINE_READ_BRUNO_JOURNAL
-	thistext
+	jumpthistext
 
 	text "#mon Journal"
 

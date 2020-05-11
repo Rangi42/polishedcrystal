@@ -28,7 +28,7 @@ CeladonUniversityPrincipalsOfficeMatsumotoScript:
 	verbosegiveitem RARE_CANDY
 	iffalse_endtext
 	setevent EVENT_GOT_RARE_CANDY_IN_UNIVERSITY
-	thisopenedtext
+	jumpthisopenedtext
 
 .Text2:
 	text "I work hard to"
@@ -74,7 +74,7 @@ CeladonUniversityPrincipalsOfficeSignpost2Text:
 	done
 
 CeladonUniversityPrincipalsOfficeComputer:
-	thistext
+	jumpthistext
 
 	text "There's a draft"
 	line "email asking"

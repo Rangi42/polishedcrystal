@@ -1158,19 +1158,24 @@ iffalse_jumpopenedtext: MACRO
 	dw \1 ; text_pointer
 	ENDM
 
-	enum thistext_command
-thistext: MACRO
-	db thistext_command
+	enum writethistext_command
+writethistext: MACRO
+	db writethistext_command
+ENDM
+
+	enum jumpthistext_command
+jumpthistext: MACRO
+	db jumpthistext_command
 	ENDM
 
-	enum thistextfaceplayer_command
-thistextfaceplayer: MACRO
-	db thistextfaceplayer_command
+	enum jumpthistextfaceplayer_command
+jumpthistextfaceplayer: MACRO
+	db jumpthistextfaceplayer_command
 	ENDM
 
-	enum thisopenedtext_command
-thisopenedtext: MACRO
-	db thisopenedtext_command
+	enum jumpthisopenedtext_command
+jumpthisopenedtext: MACRO
+	db jumpthisopenedtext_command
 	ENDM
 
 	enum showtext_command
@@ -1247,7 +1252,7 @@ checkegg: MACRO
 	db checkegg_command
 	ENDM
 
-thisasm: MACRO
+callthisasm: MACRO
 	callasm .asm\@
 	end
 .asm\@

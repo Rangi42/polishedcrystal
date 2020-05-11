@@ -21,7 +21,7 @@ Route10PokeCenter1F_MapScriptHeader:
 
 PokemonJournalAgathaScript:
 	setflag ENGINE_READ_AGATHA_JOURNAL
-	thistext
+	jumpthistext
 
 	text "#mon Journal"
 
@@ -39,7 +39,7 @@ PokemonJournalAgathaScript:
 Route10PokeCenter1FGymGuyScript:
 	checkevent EVENT_RETURNED_MACHINE_PART
 	iftrue_jumptextfaceplayer .Text2
-	thistextfaceplayer
+	jumpthistextfaceplayer
 
 	text "The Power Plant's"
 	line "Manager is looking"

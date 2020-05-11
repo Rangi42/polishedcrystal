@@ -62,7 +62,7 @@ PryceScript_0x199a9e:
 	buttonsound
 	verbosegivetmhm TM_AVALANCHE
 	setevent EVENT_GOT_TM67_AVALANCHE
-	thisopenedtext
+	jumpthisopenedtext
 
 	text "That TM contains"
 	line "Avalanche."

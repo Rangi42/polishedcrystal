@@ -25,7 +25,7 @@ VioletPokeCenter1F_MapScriptHeader:
 
 PokemonJournalFalknerScript:
 	setflag ENGINE_READ_FALKNER_JOURNAL
-	thistext
+	jumpthistext
 
 	text "#mon Journal"
 
@@ -81,7 +81,7 @@ VioletPokeCenter1FElmsAideScript:
 	end
 
 .PartyFull:
-	thisopenedtext
+	jumpthisopenedtext
 
 	text "Oh, no. You can't"
 	line "carry any more"
@@ -94,7 +94,7 @@ VioletPokeCenter1FElmsAideScript:
 
 .RefusedEgg:
 	setevent EVENT_REFUSED_TO_TAKE_EGG_FROM_ELMS_AIDE
-	thisopenedtext
+	jumpthisopenedtext
 
 	text "B-but… Prof.Elm"
 	line "asked for you…"

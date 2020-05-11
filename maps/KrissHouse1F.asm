@@ -127,7 +127,7 @@ StoveText:
 	done
 
 TVScript:
-	thistext
+	jumpthistext
 
 	text "There's a movie on"
 	line "TV: Stars dot the"
@@ -152,7 +152,7 @@ MomScript:
 	iftrue .FirstTimeBanking
 	checkevent EVENT_GOT_A_POKEMON_FROM_ELM
 	iftrue_jumpopenedtext MomErrandText
-	thisopenedtext
+	jumpthisopenedtext
 
 	text "Prof.Elm is wait-"
 	line "ing for you."

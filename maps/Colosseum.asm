@@ -55,7 +55,7 @@ MapColosseumSignpost1Script:
 	end
 
 ChrisScript_0x193499:
-	thistext
+	jumpthistext
 
 	text "Your friend is"
 	line "ready."

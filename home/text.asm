@@ -269,6 +269,7 @@ Paragraph::
 	jp NextChar
 
 PromptText::
+	push de
 	ld a, [wLinkMode]
 	cp LINK_COLOSSEUM
 	call nz, LoadBlinkingCursor
@@ -277,11 +278,12 @@ PromptText::
 	ld a, [wLinkMode]
 	cp LINK_COLOSSEUM
 	call nz, UnloadBlinkingCursor
+	pop de
 	; fallthrough
 
 DoneText::
 	pop hl
-	ld de, EmptyString - 1
+	dec de
 	ret
 
 PlaceTargetsName::
@@ -399,6 +401,10 @@ FarString::
 DoTextUntilTerminator::
 	ld a, [hli]
 	cp "@"
+	ret z
+	cp "<DONE>"
+	ret z
+	cp "<PROMPT>"
 	ret z
 	call .TextCommand
 	jr DoTextUntilTerminator

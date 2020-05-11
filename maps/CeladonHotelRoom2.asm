@@ -32,7 +32,7 @@ CeladonHotelRoom2SuperNerdScript:
 	verbosegiveitem CHERISH_BALL
 	iftrue_endtext
 	giveitem BOTTLE_CAP
-	thisopenedtext
+	jumpthisopenedtext
 
 	text "Drat. Maybe"
 	line "later?"

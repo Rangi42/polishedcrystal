@@ -24,7 +24,7 @@ FuchsiaSafariBallHouseOfficerScript:
 	closewindow
 	ifequal $1, .Buy1
 	ifequal $2, .Buy10
-	thisopenedtext ; cancel
+	jumpthisopenedtext ; cancel
 
 	text "What will I do"
 	line "with them all?"
@@ -55,7 +55,7 @@ FuchsiaSafariBallHouseOfficerScript:
 	endtext
 
 .NotEnoughMoney:
-	thisopenedtext
+	jumpthisopenedtext
 
 	text "You don't have"
 	line "enough money."

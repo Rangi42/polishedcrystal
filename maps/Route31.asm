@@ -76,7 +76,7 @@ TrainerCooltrainermFinch:
 	verbosegiveitem AIR_BALLOON
 	iffalse_endtext
 	setevent EVENT_GOT_AIR_BALLOON_FROM_ROUTE_31_LEADER
-	thisopenedtext
+	jumpthisopenedtext
 
 .AfterText2:
 	text "You saw the effect"

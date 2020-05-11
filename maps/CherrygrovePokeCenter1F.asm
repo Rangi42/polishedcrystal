@@ -22,7 +22,7 @@ CherrygrovePokeCenter1F_MapScriptHeader:
 
 PokemonJournalRedScript:
 	setflag ENGINE_READ_RED_JOURNAL
-	thistext
+	jumpthistext
 
 	text "#mon Journal"
 
@@ -42,7 +42,7 @@ PokemonJournalRedScript:
 CherrygrovePokeCenter1FTeacherScript:
 	checkevent EVENT_GAVE_MYSTERY_EGG_TO_ELM
 	iftrue_jumptextfaceplayer .Text2
-	thistextfaceplayer
+	jumpthistextfaceplayer
 
 	text "The Communication"
 	line "Center upstairs"

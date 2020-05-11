@@ -27,7 +27,7 @@ ShamoutiPokeCenter1FFixStairScript:
 
 PokemonJournalLoreleiScript:
 	setflag ENGINE_READ_LORELEI_JOURNAL
-	thistext
+	jumpthistext
 
 	text "#mon Journal"
 
@@ -57,7 +57,7 @@ ShamoutiPokeCenter1FIvyScript:
 	ifequal $1, .Bulbasaur
 	ifequal $2, .Charmander
 	ifequal $3, .Squirtle
-	thisopenedtext
+	jumpthisopenedtext
 
 	text "Ivy: Hm, I thought"
 	line "you'd be happy to"
@@ -130,7 +130,7 @@ ShamoutiPokeCenter1FIvyScript:
 	end
 
 .NoRoom:
-	thisopenedtext
+	jumpthisopenedtext
 
 	text "Ivy: Oh, there's no"
 	line "more room in your"

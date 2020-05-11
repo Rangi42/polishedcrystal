@@ -65,7 +65,7 @@ UnknownScript_0x54064:
 	buttonsound
 	verbosegivetmhm TM_ATTRACT
 	setevent EVENT_GOT_TM45_ATTRACT
-	thisopenedtext
+	jumpthisopenedtext
 
 	text "It's Attract!"
 	line "It makes full use"
@@ -139,7 +139,7 @@ GenericTrainerBeautySamantha:
 GoldenrodGymGuyScript:
 	checkevent EVENT_BEAT_WHITNEY
 	iftrue_jumptextfaceplayer GoldenrodGymGuyWinText
-	thistextfaceplayer
+	jumpthistextfaceplayer
 
 	text "Yo! Champ in"
 	line "making!"

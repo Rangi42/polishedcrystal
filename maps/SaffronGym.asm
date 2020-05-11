@@ -101,7 +101,7 @@ SabrinaScript_0x189c2e:
 	buttonsound
 	verbosegivetmhm TM_PSYCHIC
 	setevent EVENT_GOT_TM29_PSYCHIC
-	thisopenedtext
+	jumpthisopenedtext
 
 	text "TM29 is Psychic."
 

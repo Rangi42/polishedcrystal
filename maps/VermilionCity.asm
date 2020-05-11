@@ -171,7 +171,7 @@ VermilionGymBadgeGuy:
 	verbosegiveitem BOTTLE_CAP
 	iffalse_endtext
 	setevent EVENT_GOT_BOTTLE_CAP_FROM_VERMILION_GUY
-	thisopenedtext
+	jumpthisopenedtext
 
 UnknownText_0x1aad4a:
 	text "Having a variety"

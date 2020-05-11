@@ -61,13 +61,13 @@ CeruleanCave1F_UnderfootBridgeAsm:
 
 CeruleanCave1FBridgeOverheadTrigger:
 	callasm CeruleanCave1F_OverheadBridgeAsm
-	thisasm
+	callthisasm
 	xor a
 	jr CeruleanCave1F_FinishBridge
 
 CeruleanCave1FBridgeUnderfootTrigger:
 	callasm CeruleanCave1F_UnderfootBridgeAsm
-	thisasm
+	callthisasm
 	ld a, $1
 CeruleanCave1F_FinishBridge:
 	ld [wWalkingOnBridge], a

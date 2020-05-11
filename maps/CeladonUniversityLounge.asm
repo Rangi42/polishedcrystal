@@ -228,7 +228,7 @@ CeladonUniversityLoungeBookshelf2:
 	done
 
 CeladonUniversityLoungeComputer:
-	thistext
+	jumpthistext
 
 	text "There's a player"
 	line "character running"

@@ -20,7 +20,7 @@ SilverCavePokeCenter1F_MapScriptHeader:
 
 PokemonJournalLanceScript:
 	setflag ENGINE_READ_LANCE_JOURNAL
-	thistext
+	jumpthistext
 
 	text "#mon Journal"
 
@@ -44,7 +44,7 @@ SilverCavePokeCenterGrampsScript:
 	checkcode VAR_PKMN_JOURNALS
 	ifequal 0, .ReadNone
 	ifequal NUM_POKEMON_JOURNALS, .ReadThemAll
-	thisopenedtext
+	jumpthisopenedtext
 
 	text "Oh, you've read "
 	deciram hScriptVar, 1, 2
@@ -55,7 +55,7 @@ SilverCavePokeCenterGrampsScript:
 	done
 
 .ReadNone:
-	thisopenedtext
+	jumpthisopenedtext
 
 	text "You haven't read"
 	line "any? What a shame."
@@ -75,7 +75,7 @@ SilverCavePokeCenterGrampsScript:
 	verbosegiveitem EXPERT_BELT
 	iffalse_endtext
 	setevent EVENT_GOT_EXPERT_BELT
-	thisopenedtext
+	jumpthisopenedtext
 
 .AfterText:
 	text "That Belt's not"

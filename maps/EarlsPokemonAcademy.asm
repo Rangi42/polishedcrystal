@@ -131,7 +131,7 @@ AcademyNotebook:
 
 PokemonJournalWillScript:
 	setflag ENGINE_READ_WILL_JOURNAL
-	thistext
+	jumpthistext
 
 	text "#mon Journal"
 

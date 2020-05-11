@@ -985,37 +985,20 @@ DecorationDesc_PosterPointers:
 
 DecorationDesc_TownMapPoster:
 	opentext
-	writetext .TownMapText
+	farwritetext UnknownText_0x1bc55d
 	waitbutton
 	special Special_TownMap
 	closetext
 	end
 
-.TownMapText:
-	; It's the TOWN MAP.
-	text_jump UnknownText_0x1bc55d
-	text_end
-
 DecorationDesc_PikachuPoster:
-	thistext
-
-	; It's a poster of a cute PIKACHU.
-	text_jump UnknownText_0x1bc570
-	text_end
+	farjumptext UnknownText_0x1bc570
 
 DecorationDesc_ClefairyPoster:
-	thistext
-
-	; It's a poster of a cute CLEFAIRY.
-	text_jump UnknownText_0x1bc591
-	text_end
+	farjumptext UnknownText_0x1bc591
 
 DecorationDesc_MarillPoster:
-	thistext
-
-	; It's a poster of a cute MARILL.
-	text_jump UnknownText_0x1bc5b3
-	text_end
+	farjumptext UnknownText_0x1bc5b3
 
 DecorationDesc_NullPoster:
 	end
@@ -1039,11 +1022,7 @@ DecorationDesc_Ornament:
 	ret
 
 .OrnamentScript:
-	thistext
-
-	; It's an adorable @ .
-	text_jump UnknownText_0x1bc5d7
-	text_end
+	farjumptext UnknownText_0x1bc5d7
 
 DecorationDesc_Console:
 	ld a, [wDecoConsole]
@@ -1056,11 +1035,7 @@ DecorationDesc_Console:
 	ret
 
 .ConsoleScript:
-	thistext
-
-	; It's a shiny @ .
-	text_jump DecoConsoleText
-	text_end
+	farjumptext DecoConsoleText
 
 DecorationDesc_GiantOrnament:
 	ld b, BANK(.BigDollScript)
@@ -1068,11 +1043,7 @@ DecorationDesc_GiantOrnament:
 	ret
 
 .BigDollScript:
-	thistext
-
-	; A giant doll! It's fluffy and cuddly.
-	text_jump UnknownText_0x1bc5ef
-	text_end
+	farjumptext UnknownText_0x1bc5ef
 
 ToggleMaptileDecorations:
 	lb de, 0, 4

@@ -22,7 +22,7 @@ CeladonPokeCenter1F_MapScriptHeader:
 
 PokemonJournalErikaScript:
 	setflag ENGINE_READ_ERIKA_JOURNAL
-	thistext
+	jumpthistext
 
 	text "#mon Journal"
 

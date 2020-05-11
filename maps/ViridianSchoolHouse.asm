@@ -55,7 +55,7 @@ ViridianSchoolHouseYoungsterScript:
 	verbosegiveitem WEAK_POLICY
 	iffalse_endtext
 	setevent EVENT_GOT_WEAK_POLICY_FROM_VIRIDIAN
-	thisopenedtext
+	jumpthisopenedtext
 
 .Text2:
 	text "“What doesn't KO"
