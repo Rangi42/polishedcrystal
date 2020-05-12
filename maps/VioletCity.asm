@@ -68,7 +68,13 @@ VioletCityEarlScript:
 	applymovement VIOLETCITY_EARL, VioletCitySpinningEarl_MovementData
 	stopfollow
 	special RestartMapMusic
-	showtext Text_HereTeacherIAm
+	opentext
+	writetext Text_HereTeacherIAm
+	buttonsound
+	verbosegivekeyitem TYPE_CHART
+	writetext Text_EarlsTypeChart
+	waitbutton
+	closetext
 	applymovement VIOLETCITY_EARL, VioletCitySpinningEarl_MovementData
 	applyonemovement VIOLETCITY_EARL, step_up
 	playsound SFX_ENTER_DOOR
@@ -175,6 +181,19 @@ Text_HereTeacherIAm:
 	text "Here, teacher I"
 	line "am. Good it is"
 	cont "you study here!"
+
+	para "Take this and"
+	line "learn you will!"
+	done
+
+Text_EarlsTypeChart:
+	text "In battle, type"
+	line "advantages you"
+	cont "must know!"
+
+	para "At any time, con-"
+	line "sult this chart"
+	cont "you may!"
 	done
 
 VioletCityLassText:

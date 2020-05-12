@@ -27,6 +27,7 @@ EarlsPokemonAcademy_MapScriptHeader:
 	const EARLSPOKEMONACADEMY_EARL
 
 AcademyEarl:
+	givekeyitem TYPE_CHART ; failsafe in case Violet City Earl is gone already in a save
 	applymovement EARLSPOKEMONACADEMY_EARL, MovementData_0x68b2d
 	faceplayer
 	opentext
