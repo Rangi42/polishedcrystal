@@ -543,7 +543,7 @@ INCLUDE "engine/events/odd_egg.asm"
 
 SECTION "Type Chart", ROMX
 
-INCLUDE "engine/menus/type_chart.asm"
+INCLUDE "engine/items/type_chart.asm"
 
 
 SECTION "VWF", ROMX
