@@ -126,22 +126,9 @@ Pack:
 	call Pack_InterpretJoypad
 	ret c
 	jp nz, PackSortMenu
-	ld hl, .MenuDataHeader1
+	ld hl, MenuDataHeader_Use
 	ld de, .Jumptable1
 	jp PackBuildMenu
-
-.MenuDataHeader1:
-	db $40 ; flags
-	db 07, 13 ; start coords
-	db 11, 19 ; end coords
-	dw .MenuData2_1
-	db 1 ; default option
-
-.MenuData2_1:
-	db $c0 ; flags
-	db 2 ; items
-	db "Use@"
-	db "Quit@"
 
 .Jumptable1:
 	dw .UseItem
@@ -418,6 +405,18 @@ MenuDataHeader_Use:
 	db $c0 ; flags
 	db 2 ; items
 	db "Use@"
+	db "Quit@"
+
+MenuDataHeader_Quit:
+	db %01000000 ; flags
+	db 09, 13 ; start coords
+	db 11, 19 ; end coords
+	dw .MenuData2
+	db 1 ; default option
+
+.MenuData2:
+	db $c0 ; flags
+	db 1 ; items
 	db "Quit@"
 
 Jumptable_UseQuit:
@@ -828,45 +827,17 @@ ItemSubmenu:
 	jp nz, PackSortMenu
 	farcall CheckItemContext
 	ld a, [wItemAttributeParamBuffer]
-KeyItemSubmenu:
 	and a
-	ld hl, .UsableMenuDataHeader
+	ld hl, MenuDataHeader_Use
 	ld de, .UsableJumptable
 	jr nz, .proceed
-	ld hl, .UnusableMenuDataHeader
+	ld hl, MenuDataHeader_Quit
 	ld de, .UnusableJumptable
 .proceed
 	jp PackBuildMenu
 
-.UsableMenuDataHeader:
-	db $40 ; flags
-	db 07, 13 ; start coords
-	db 11, 19 ; end coords
-	dw .UsableMenuData2
-	db 1 ; default option
-
-.UsableMenuData2:
-	db $c0 ; flags
-	db 2 ; items
-	db "Use@"
-	db "Quit@"
-
 .UsableJumptable:
 	dw .Use
-	dw DoNothing
-
-.UnusableMenuDataHeader:
-	db $40 ; flags
-	db 09, 13 ; start coords
-	db 11, 19 ; end coords
-	dw .UnusableMenuData2
-	db 1 ; default option
-
-.UnusableMenuData2:
-	db $c0 ; flags
-	db 1 ; items
-	db "Quit@"
-
 .UnusableJumptable:
 	dw DoNothing
 
@@ -912,6 +883,73 @@ KeyItemSubmenu:
 
 .BattleOnly:
 	call DoItemEffect
+	ld a, [wItemEffectSucceeded]
+	and a
+	jr z, .Oak
+	cp $2
+	jr z, .didnt_use_item
+.quit_run_script
+	ld a, $e ; QuitRunScript
+	ld [wJumptableIndex], a
+	ret
+
+.didnt_use_item
+	xor a
+	ld [wItemEffectSucceeded], a
+	ret
+
+KeyItemSubmenu:
+	farcall CheckKeyItemContext
+	ld a, [wItemAttributeParamBuffer]
+	and a
+	ld hl, MenuDataHeader_Use
+	ld de, .UsableJumptable
+	jr nz, .proceed
+	ld hl, MenuDataHeader_Quit
+	ld de, .UnusableJumptable
+.proceed
+	jp PackBuildMenu
+
+.UsableJumptable:
+	dw .Use
+.UnusableJumptable:
+	dw DoNothing
+
+.Use:
+	farcall CheckKeyItemContext
+	ld a, [wItemAttributeParamBuffer]
+	call StackJumpTable
+
+.KeyItemFunctionJumptable:
+	dw .Oak
+	dw .Oak
+	dw .Oak
+	dw .Oak
+	dw .Current
+	dw .BattleField
+	dw .BattleOnly
+
+.Oak:
+	ld hl, Text_ThisIsntTheTime
+	jp Pack_PrintTextNoScroll
+
+.Current:
+	predef DoKeyItemEffect
+	jr .didnt_use_item
+
+.BattleField:
+	predef DoKeyItemEffect
+	ld a, [wItemEffectSucceeded]
+	and a
+	jr nz, .quit_run_script
+	xor a
+	ldh [hBGMapMode], a
+	call Pack_InitGFX
+	call WaitBGMap_DrawPackGFX
+	jp Pack_InitColors
+
+.BattleOnly:
+	predef DoKeyItemEffect
 	ld a, [wItemEffectSucceeded]
 	and a
 	jr z, .Oak
