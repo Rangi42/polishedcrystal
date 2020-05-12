@@ -580,3 +580,5 @@ KeyItemAttributes:
 	key_item_attribute 0, ITEMMENU_CURRENT, ITEMMENU_NOUSE
 ; APRICORN BOX
 	key_item_attribute 0, ITEMMENU_CURRENT, ITEMMENU_NOUSE
+; TYPE CHART
+	key_item_attribute 0, ITEMMENU_CURRENT, ITEMMENU_CURRENT

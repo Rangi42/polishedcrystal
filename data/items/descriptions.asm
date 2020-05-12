@@ -284,6 +284,7 @@ KeyItemDescriptions:
 	dw CatchCharmDesc
 	dw SilphScope2Desc
 	dw ApricornBoxDesc
+	dw TypeChartDesc
 
 PokeBallDesc:
 	db   "An item for catch-"
@@ -1370,3 +1371,7 @@ SilphScope2Desc:
 ApricornBoxDesc:
 	db   "Holds up to 99 of"
 	next "each Apricorn.@"
+
+TypeChartDesc:
+	db   "Summarizes all"
+	next "type advantages.@"

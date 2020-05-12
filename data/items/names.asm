@@ -292,3 +292,4 @@ KeyItemNames::
 	db "Catch Charm@"
 	db "SilphScope2@"
 	db "Apricorn Box@"
+	db "Type Chart@"

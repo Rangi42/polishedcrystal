@@ -306,6 +306,7 @@ KeyItemEffects:
 	dw IsntTheTimeMessage ; CATCH_CHARM
 	dw IsntTheTimeMessage ; SILPHSCOPE2
 	dw ApricornBox        ; APRICORN_BOX
+	dw TypeChart          ; TYPE_CHART
 
 PokeBallEffect:
 	ld a, [wBattleMode]
@@ -1885,6 +1886,16 @@ PrintAprValues:
 .print
 	inc de
 	jp PrintNum
+
+TypeChart:
+	call FadeToMenu
+	farcall _TypeChart
+	call ExitMenu
+	xor a
+	ldh [hBGMapMode], a
+	farcall Pack_InitGFX
+	farcall WaitBGMap_DrawPackGFX
+	farjp Pack_InitColors
 
 OldRod:
 	ld e, $0

@@ -285,3 +285,4 @@ KeyItemIconPointers:
 	dba CatchCharmIcon
 	dba SilphScope2Icon
 	dba ApricornBoxIcon
+	dba TypeChartIcon

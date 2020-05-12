@@ -541,6 +541,11 @@ INCLUDE "engine/events/battle_tower/load_trainer.asm"
 INCLUDE "engine/events/odd_egg.asm"
 
 
+SECTION "Type Chart", ROMX
+
+INCLUDE "engine/menus/type_chart.asm"
+
+
 SECTION "VWF", ROMX
 
 INCLUDE "engine/gfx/vwf.asm"
