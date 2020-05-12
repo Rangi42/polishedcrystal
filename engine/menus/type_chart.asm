@@ -30,7 +30,7 @@ _TypeChart:
 
 	ld hl, TypeChartBG1GFX
 	ld de, vTiles2
-	lb bc, BANK(TypeChartBG1GFX), 26
+	lb bc, BANK(TypeChartBG1GFX), 27
 	call DecompressRequest2bpp
 
 	ld hl, TypeChartOBGFX
