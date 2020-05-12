@@ -22,16 +22,9 @@ _TypeChart:
 	ld a, $1
 	ldh [rVBK], a
 	ld hl, TypeChartBG0GFX
-	ld b, BANK(TypeChartBG0GFX)
-	call FarDecompressWRA6InB
-	ld hl, vTiles5
-	ld de, wDecompressScratch
-	lb bc, BANK(wDecompressScratch), 128
-	call Request2bppInWRA6
-	ld hl, vTiles4
-	ld de, wDecompressScratch + 128 tiles
-	lb bc, BANK(wDecompressScratch), 128
-	call Request2bppInWRA6
+	ld de, vTiles4
+	lb bc, BANK(TypeChartBG0GFX), 0 ; 256
+	call DecompressRequest2bpp
 	xor a
 	ldh [rVBK], a
 
