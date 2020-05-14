@@ -13,6 +13,10 @@ I've had vague plans to make a Pokémon game for years. I'm very impressed by th
 
 ## Download and Play
 
+### THE VERSION CURRENTLY BEING UPDATED IS [3.0.0 beta](https://github.com/Rangi42/polishedcrystal/releases). It is updated whenever this repository is updated.
+
+#### 2.2.0 is the most recent stable release so you will run into far less bugs, but recent is relative as it's over three years old and is no longer being supported. 3.0.0 is in beta and occassionally you may find some pretty bad bugs but the game is still pretty far along and has a lot of significant improvements. Also this README is pretty old so be aware some stuff here is out of date. We'll properly update this later I guess.
+
 The most recent version is [2.2.0](https://github.com/Rangi42/polishedcrystal/releases/tag/v2.2.0) as of September 20, 2016. [The changelog](CHANGELOG.md) lists all changes since then.
 
 To play, download the .ips patch file, and use a tool like [Lunar IPS](http://fusoya.eludevisibility.org/lips/) (for Windows), [MultiPatch](http://projects.sappharad.com/tools/multipatch.html) (for OS X), or [UniPatcher](https://play.google.com/store/apps/details?id=org.emunix.unipatcher&hl=en) (for Android) to apply the patch to a default Crystal ROM.
