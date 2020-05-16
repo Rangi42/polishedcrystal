@@ -277,16 +277,11 @@ endr
 	pop de
 	add hl, bc
 .got_tile
-	; save position in vram
-	push de
 	; swap hl and de, so de = font tile graphic, and hl = vram
-	push hl
-	ld h, d
-	ld l, e
-	pop de
+	call SwapHLDE
 	; get font tile into vram
+	push hl
 	call GetOpaque1bppFontTile
-	; restore hl = position in vram
 	pop hl
 	; increment position in vram
 	ld bc, LEN_2BPP_TILE
