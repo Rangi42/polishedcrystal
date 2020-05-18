@@ -1040,6 +1040,7 @@ GetEnemySwitchTarget:
 	; we've already performed LinkBattleSendReceiveAction
 	ld a, [wBattleAction]
 	sub BATTLEACTION_SWITCH1 - 1
+	inc a
 	ld [wEnemySwitchTarget], a
 	ret
 .ai_switch
@@ -5304,9 +5305,6 @@ ParseEnemyAction:
 	jr z, .not_linked
 	call EmptyBattleTextBox
 	call LoadTileMapToTempTileMap
-	ld a, [wBattlePlayerAction]
-	and a
-	call z, LinkBattleSendReceiveAction
 	call Call_LoadTempTileMapToTileMap
 	ld a, [wBattleAction]
 	cp BATTLEACTION_STRUGGLE
