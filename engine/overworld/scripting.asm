@@ -471,10 +471,10 @@ Script_farwritetext:
 	jp MapTextbox
 
 Script_writethistext:
-	ld a, [wScriptPos]
+	ld hl, wScriptPos
+	ld a, [hli]
+	ld h, [hl]
 	ld l, a
-	ld a, [wScriptPos + 1]
-	ld h, a
 	ld a, [wScriptBank]
 	ld b, a
 	call MapTextbox
