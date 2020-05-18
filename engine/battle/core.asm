@@ -1039,8 +1039,9 @@ GetEnemySwitchTarget:
 	jr z, .ai_switch
 	; we've already performed LinkBattleSendReceiveAction
 	ld a, [wBattleAction]
-	sub BATTLEACTION_SWITCH1 - 1
-	inc a
+
+	; -1 to get the switch offset, but switchtarget is 1-indexed, so do -2
+	sub BATTLEACTION_SWITCH1 - 2
 	ld [wEnemySwitchTarget], a
 	ret
 .ai_switch
