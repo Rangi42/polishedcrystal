@@ -1010,6 +1010,7 @@ GetBothSwitchTarget:
 	jr GetEnemySwitchTarget
 
 GetPlayerSwitchTarget:
+; Returns switch target in a
 	call LoadStandardMenuDataHeader
 	call SetUpBattlePartyMenu_NoLoop
 	call ForcePickSwitchMonInBattle
@@ -1021,6 +1022,9 @@ GetPlayerSwitchTarget:
 	ld a, CGB_BATTLE_COLORS
 	call GetCGBLayout
 	call SetPalettes
+	ld a, [wCurPartyMon]
+	inc a
+	ld [wPlayerSwitchTarget], a
 	ld a, [wLinkMode]
 	and a
 	ld a, 1
@@ -1028,20 +1032,17 @@ GetPlayerSwitchTarget:
 	call nz, LinkBattleSendReceiveAction
 	xor a
 	ld [wBattlePlayerAction], a
-	ld a, [wCurPartyMon]
-	inc a
-	ld [wPlayerSwitchTarget], a
+	ld a, [wPlayerSwitchTarget]
 	ret
 
 GetEnemySwitchTarget:
+; Returns switch target in a
 	ld a, [wLinkMode]
 	and a
 	jr z, .ai_switch
 	; we've already performed LinkBattleSendReceiveAction
 	ld a, [wBattleAction]
-
-	; -1 to get the switch offset, but switchtarget is 1-indexed, so do -2
-	sub BATTLEACTION_SWITCH1 - 2
+	sub BATTLEACTION_SWITCH1 - 1
 	ld [wEnemySwitchTarget], a
 	ret
 .ai_switch
