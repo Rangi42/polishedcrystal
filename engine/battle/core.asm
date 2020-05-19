@@ -1042,13 +1042,13 @@ GetEnemySwitchTarget:
 	jr z, .ai_switch
 	; we've already performed LinkBattleSendReceiveAction
 	ld a, [wBattleAction]
-	sub BATTLEACTION_SWITCH1 - 1
-	ld [wEnemySwitchTarget], a
-	ret
+	sub BATTLEACTION_SWITCH1 - 1 ; -1 to get the switch offset
+	jr .done
 .ai_switch
 	farcall GetSwitchScores
 	ld a, [wEnemySwitchMonParam]
-	inc a
+	inc a ; switchtarget is 1-indexed
+.done
 	ld [wEnemySwitchTarget], a
 	ret
 
