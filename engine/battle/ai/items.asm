@@ -167,6 +167,10 @@ AI_TryItem:
 	and a
 	ret nz
 
+	ld a, [wLinkMode]
+	and a
+	ret nz
+
 	ld a, [wEnemyTrainerItem1]
 	ld b, a
 	ld a, [wEnemyTrainerItem2]
