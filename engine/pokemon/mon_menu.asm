@@ -1148,8 +1148,7 @@ GetForgottenMoves::
 	; c = species
 	ld a, MON_SPECIES
 	call GetPartyParamLocation
-	ld a, [hl]
-	ld c, a
+	ld c, [hl]
 	; b = form
 	ld a, MON_FORM
 	call GetPartyParamLocation
@@ -1173,7 +1172,11 @@ GetForgottenMoves::
 
 	ld de, wMoveScreenMoves
 	ld c, a
-	ld b, 100 ; Gen VII behaviour
+	push hl
+	ld a, MON_LEVEL
+	call GetPartyParamLocation
+	ld b, [hl]
+	pop hl
 	inc b ; so that we can use jr nc
 .loop
 	ld a, BANK(EvosAttacks)
