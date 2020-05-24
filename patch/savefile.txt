@@ -1,0 +1,202 @@
+PatchSavefile:
+	call CheckNotEmpty
+	call CheckSavefileIsValid
+	call PrintSavefileMessage
+	; set #address, VersionInfo
+	; getbyteinc #result, #address
+	; getbyte #temp, #address
+	; mulacum #temp, #result, 0x100
+	set #temp, CURRENT_BUILD
+	ifgt #build, 9999, .invalid_build
+	ifgt #build, #temp, .future_build
+	ifeq #build, #temp, .latest_build
+	push #temp
+	bufstring .savefile_build_string_1
+	set #1, #build
+	set #2, 4
+	call PrintWithLeadingZeros
+	bufstring .savefile_build_string_2
+	printbuf
+	menu #result, YesNoMenu
+	jumpnz #result, .refused
+	; call PokecenterCheck
+	set #address, SavePatches
+.loop
+	gethalfwordinc #curbuild, #address
+	bufchar 0x76
+	bufnumber #curbuild
+	printbuf
+	jumpz #curbuild, .done
+	getwordinc #patch, #address
+	ifle #curbuild, #build, .loop
+	push #address
+	call #patch
+	pop #address
+	jump .loop
+.done
+	pop #build
+	set #curbuild, #build
+	call FixSavefileChecksum
+	; seek sBuildNumber
+	; writehalfword #build
+	print .done_string
+	exit #zero
+
+.latest_build
+	print .latest_build_string
+	exit 1
+
+.future_build
+	bufstring .future_build_string_1
+	set #1, #build
+	set #2, 4
+	call PrintWithLeadingZeros
+	bufstring .future_build_string_2
+	printbuf
+.refused
+	exit 1
+
+.invalid_build
+	print .invalid_build_string
+	exit 1
+
+.latest_build_string
+	string "The savefile already corresponds to the current build of Polished Crystal. No patching is necessary."
+.future_build_string_1
+	string "The savefile indicates it corresponds to build "
+.future_build_string_2
+	string ", which is higher than the current build of Polished Crystal. The savefile cannot be patched." 
+.invalid_build_string
+	string "The savefile contains an invalid build number, and thus cannot be patched."
+.savefile_build_string_1
+	string "The savefile corresponds to build "
+.savefile_build_string_2
+	string ". Patch to the current build?"
+.done_string
+	string "The savefile was patched successfully."
+
+CheckSavefileIsValid:
+	; returns 0 if invalid, 1 if primary is valid, or 2 if backup is valid
+	set #savefile, 1
+	set #2, .backup
+	set #address, CheckPointers
+	jump .check_1
+
+.backup
+	set #savefile, 2
+	set #2, .invalid ; we're gonna be using #1 for checksum calcs
+	set #address, BackupCheckPointers
+	; fallthrough
+.check_1
+	gethalfwordinc #build, #address
+	gethalfwordinc #temp, #address
+	seek #temp
+	readbyte #temp
+	ifeq #temp, 97, .get_build
+	add #address, 2 ; skip sBuildNumber
+	ifeq #temp, 99, .check_2
+	ifeq #build, #zero, #2
+	add #address, 4
+	jump .check_1
+
+.get_build
+	gethalfwordinc #temp, #address
+	ifeq #temp, #zero, #2 ; if this is true, something went horribly wrong
+	seek #temp
+	readhalfword #build
+.check_2
+	gethalfwordinc #temp, #address
+	seek #temp
+	readbyte #temp
+	ifeq #temp, 0x7f, .checksum
+	ifeq #build, #zero, #2
+	add #address, 2
+	jump .check_1
+
+.checksum
+	set #curbuild, #build
+	set #1, #zero
+	push #address
+	call GetGameDataPointer
+	seek #result
+	call CalculateSavefileChecksum
+	pop #address
+	gethalfwordinc #temp, #address
+	seek #temp
+	readhalfword #temp
+	ifeq #temp, #result, .valid
+	ifeq #build, #zero, #2
+	jump .check_1
+
+.invalid
+	set #savefile, #zero
+.valid
+	return
+
+CalculateSavefileChecksum:
+	; returns the checksum; calculates starting at the current address
+	set #address, GameDataSizes
+.loop
+	gethalfwordinc #temp, #address
+	gethalfwordinc #length, #address
+	iflt #temp, #build, .loop
+DoSavefileChecksumCalculation:
+	set #result, #zero
+.loop
+	readbyte #temp
+	add #result, #temp
+	decrement #length
+	jumpnz #length, .loop
+	and #result, 0xffff
+	return
+
+FixSavefileChecksum:
+	set #1, #zero
+	call GetGameDataPointer
+	seek #result
+	call CalculateSavefileChecksum
+	seek sChecksum
+	ifeq #savefile, 1, .ok
+	seek sBackupChecksum
+.ok
+	writehalfword #result
+	return
+
+PrintSavefileMessage:
+	jumptable #savefile
+	dw .invalid
+	dw .ok
+	dw .backup
+
+.backup
+	print .backup_string
+.ok
+	return
+
+.invalid
+	print .invalid_string
+	menu #result, YesNoMenu
+	set #savefile, 1
+	retz #result
+	exit #result
+
+.backup_string
+	string "The main save data in the savefile seems to be invalid, but the game can restore it from the backup. Unexpected errors may occur."
+.invalid_string
+	string "The savefile seems to be invalid or corrupted. Are you sure you want to continue?"
+
+CheckNotEmpty:
+	seek #zero
+	getfilebyte #result
+	set #length, SAVE_SIZE
+.loop
+	readbyte #temp
+	subtract #temp, #result
+	retnz #temp
+	decrement #length
+	jumpnz #length, .loop
+	print .empty_savefile_string
+	exit 1
+
+.empty_savefile_string
+	string "The savefile seems to be empty. Make sure to save the game from within the game before patching, not using emulator savestates. Also, remember that you only need to patch the savefile after updating to a new version; patching before starting a new game is not necessary."

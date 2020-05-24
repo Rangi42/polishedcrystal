@@ -1,0 +1,14 @@
+FixSpriteConstants:
+	return
+
+FixLegendaryDogValuesSomethingIdk:
+	return
+
+FixSomethingAboutNgrams:
+	return
+
+UpdateBoxStorageSystem:
+	return
+
+SetHyperTraining:
+	return

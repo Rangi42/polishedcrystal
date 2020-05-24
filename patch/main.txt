@@ -1,0 +1,21 @@
+Main:
+	call PrintInitialMessage
+	print .savefile_string
+	menu #result, YesNoMenu
+	jumpz #result, PatchSavefile
+	exit 1
+
+.savefile_string
+	string "Do you want to patch a savefile to the latest version?"
+
+PrintInitialMessage:
+	bufstring .polished_crystal_string
+	bufnumber CURRENT_BUILD
+	bufstring .parenthesis_asterisks_string
+	printbuf
+	return
+	
+.polished_crystal_string
+	string "*** Pokémon Polished Crystal save patch ( build "
+.parenthesis_asterisks_string
+	string " ) ***"

@@ -1,0 +1,3 @@
+[submodule "utils/bsp"]
+	path = utils/bsp
+	url = https://github.com/aaaaaa1234567/bsp
