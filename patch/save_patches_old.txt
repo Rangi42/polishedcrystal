@@ -18,7 +18,7 @@ CreateKeyItemBitflags:
 	; (will be location of key item flags)
 	seek #result
 	push #result
-	fillbyte 4, #zero
+	writeword #zero
 	set #1, KEY_ITEMS_OFFSET_v0
 	call GetGameDataPointer
 	seek #result
@@ -291,7 +291,7 @@ AdjustShuckleAndEeveelutionIndexes:
 	set #r0, .mon_adjust_table
 	call AdjustPokemonIndexes
 
-	seek 0x2a16
+	seek 0x2a16 ; TODO: replace literal
 	set #1, 210
 	set #2, #zero
 	call FlagAction
@@ -370,9 +370,9 @@ AdjustVariableSprites:
 	set #1, MAP_FROM_CONT_OFFSET_v5
 	call GetGameDataPointer
 	set #3, #result
-	set #1, 7322
+	set #1, 7321
 	ifeq #savefile, 1, .done
-	set #1, 2714
+	set #1, 2713
 .done
 	set #2, 1
 	call ShiftSaveDataForward
@@ -476,13 +476,13 @@ ChangeTerminatingCharacter:
 	set #b, 440
 	set #c, 664
 
-	seek sBox1MonOT
+	seek sBox1MonOT_v6
 	set #1, #a
 	set #2, #b
 	set #3, #c
 	call .fix_sram_loop
 
-	seek sBox8MonOT
+	seek sBox8MonOT_v6
 	set #1, #a
 	set #2, #b
 	set #3, #c
@@ -537,10 +537,10 @@ ResetHyperTrainingBits:
 	set #1, BREED_MON_2_OT_OFFSET
 	call .zero_bytes
 
-	set #1, sBox1MonOT
+	set #1, sBox1MonOT_v6
 	call .box_adjust
 
-	set #1, sBox8MonOT
+	set #1, sBox8MonOT_v6
 .box_adjust
 	set #4, 7  ; boxes per bank
 .box_outer_loop

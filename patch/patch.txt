@@ -1,6 +1,6 @@
 ; version info
-	define CURRENT_BUILD, 10
-	define FIRST_NUMBERED_BUILD, 10 ; first build that includes sBuildNumber
+	define CURRENT_BUILD, 7
+	define FIRST_NUMBERED_BUILD, 7 ; first build that includes sBuildNumber
 
 ; variables
 	define zero,       0

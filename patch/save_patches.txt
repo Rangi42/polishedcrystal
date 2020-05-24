@@ -1,14 +1,115 @@
-FixSpriteConstants:
+ConvertToNewbox:
+	set #a, #zero ; number of boxes, increment from 0-13
+	set #b, #zero ; total count, determines position in pokedb
+
+;get old box
+.outer_box_loop
+	remainder #temp, #a, 7
+	multiply #temp, 1104, #temp
+	add #source, sBox1_v6, #temp ; get old box
+	iflt #a, 7, .got_box1
+	add #source, sBox8_v6, #temp
+.got_box1
+	seek #source
+	readbyte #c ; set file pointer to sBox1Mon1
+;copy data to new box
+.struct_copy_loop
+	pushpos
+	getfilebyte #temp
+	multiply #target, 32, #a
+	add #target, sBox1 ; get new box
+	seek #target
+	subtract #target, 20, #c
+	seekfwd #target ; get byte in box to write to (also bit to write to)
+	writebyte #temp
+	seekfwd #c ; move to UsedEntries
+	set #1, #target
+	divide #2, #a, 7 ; 0 if 1-7, 1 if 8-14
+	call FlagAction
+;copy pokemon structs from old box to pokedb (list 1 for boxes 1-7, list 2 for boxes 8-14)
+	set #temp, sBoxMons1UsedEntries
+	set #target, sBoxMons1
+	iflt #a, 7, .ok
+	set #temp, sBoxMons2UsedEntries
+	set #target, sBoxMons2
+.ok
+	seek #temp
+	set #1, #b
+	set #2, 1
+	call FlagAction
+
+	poppos
+	multiply #temp, 32, #b
+	add #target, #temp
+	readword #1 ; copy 32 bytes
+	readword #2
+	readword #3
+	readword #4
+	seek #target
+	writeword #1
+	writeword #2
+	writeword #3
+	writeword #4 ; #target = save mon nickname
+;remove nickname terminator
+;copy nickname from old box to pokedb
+	set #source, sBox1MonNicknames_v6
+	iflt #a, 7, .got_box2
+	set #source, sBox8MonNicknames_v6
+.got_box2
+	set #length, NAME_LENGTH
+	call .copy_name
+;remove OT terminator
+;copy OT from old box to pokedb
+	set #source, sBox1MonOT_v6
+	iflt #a, 7, .got_box3
+	set #source, sBox8MonOT_v6
+.got_box3
+	set #length, NAME_LENGTH
+	call .copy_name
+;finish loop
+	decrement #c
+	increment #b
+	jumpnz #c, .struct_copy_loop
+	increment #a
+	ifeq #a, 14, .done
+	ifne #a, 7, .outer_box_loop
+	set #b, #zero
+	jump .outer_box_loop
+.done
 	return
 
-FixLegendaryDogValuesSomethingIdk:
-	return
+.copy_name
+	subtract #temp, 20, #c
+	multiply #temp, #length
+	add #source, #temp
+	seek #source
+	readword #4
+	readword #5
+	readword #6
+	subtract #1, #source, #target
+	subtract #1, 10
+	set #2, 10
+	set #3, #target
+	call ShiftSaveDataForward
 
-FixSomethingAboutNgrams:
-	return
-
-UpdateBoxStorageSystem:
-	return
-
-SetHyperTraining:
-	return
+	set #1, #4
+	call .continue_copy_name
+	set #1, #5
+	call .continue_copy_name
+	set #1, #6
+.continue_copy_name
+	set #temp, -1 ; skip firt terminator we run into
+.copy_name_loop
+	retz #length
+	decrement #length
+	and #source, #1, 0xff
+	ifne #source, 0x53, .continue_loop
+	increment #temp
+	jumpz #temp, .copy_name_loop
+.continue_loop
+	pushpos
+	seek #target
+	writebyte #source
+	increment #target
+	poppos
+	jump .copy_name_loop

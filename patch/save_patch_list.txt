@@ -32,12 +32,12 @@ SavePatches:
 	dw LegendaryDogStatus ; implicit
 
 	dh 7 ; 6.1
-	dw ChangeTerminatingCharacter ; explicit
+	dw ChangeTerminatingCharacter ; implicit
 
 	dh 7 ; 6.2
-	dw ResetHyperTrainingBits ; explicit
+	dw ResetHyperTrainingBits ; implicit
 
-	dh 10
-	dw UpdateBoxStorageSystem ; implicit
+	dh 7
+	dw ConvertToNewbox ; first build with version number
 
 	dh 0

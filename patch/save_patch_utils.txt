@@ -57,22 +57,22 @@ GetGameDataOffsetConstant:
 
 ShiftFlags:
 	; thank you kindly to ax6 for creating the base of this function
-    ; in: #1: flag array size (in bits), #2: pointer to mapping table
-    ; file pointer must be at the beginning of the array
-    ; the mapping table is a halfword array of upper bound index (exclusive), offset; end with -1
-    pushpos
-    add #1, 31
-    shiftright #1, 5
-    shiftleft #3, #1, 2
-    add #3, 4
-    seekfwd #3
-    set #3, #1
+	; in: #1: flag array size (in bits), #2: pointer to mapping table
+	; file pointer must be at the beginning of the array
+	; the mapping table is a halfword array of upper bound index (exclusive), offset; end with -1
+	pushpos
+	add #1, 31
+	shiftright #1, 5
+	shiftleft #3, #1, 2
+	add #3, 4
+	seekfwd #3
+	set #3, #1
 .readloop
-    seekback 8
-    readword #4
-    push #4
-    decrement #3
-    jumpnz #3, .readloop
+	seekback 8
+	readword #4
+	push #4
+	decrement #3
+	jumpnz #3, .readloop
 	stackread #address, #1
 	seek #address
 
@@ -110,15 +110,15 @@ ShiftFlags:
 	jump .fixloop
 
 .done
-    stackread #2, #1
-    seek #2
+	stackread #2, #1
+	seek #2
 .writeloop
-    pop #2
-    writeword #2
-    decrement #1
-    jumpnz #1, .writeloop
-    poppos
-    return
+	pop #2
+	writeword #2
+	decrement #1
+	jumpnz #1, .writeloop
+	poppos
+	return
 
 FlagAction:
 	; current file pointer: flag array

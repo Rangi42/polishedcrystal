@@ -15,10 +15,10 @@ AdjustPokemonIndexes:
 	ifne #temp, 0xff, .party_species_loop ; ifne #temp, 0xff
 
 	; modify box species
-	set #1, sBox1
+	set #1, sBox1_v6
 	call .box_species
 
-	set #1, sBox8
+	set #1, sBox8_v6
 	call .box_species
 
 	; modify pokedex flags
@@ -27,7 +27,7 @@ AdjustPokemonIndexes:
 	;set #1, #result
 	;call GetGameDataPointer
 	;seek #result
-	seek 0x2a16
+	seek 0x2a16 ; TODO: replace literal
 	set #1, 256
 	set #2, #r0
 	call ShiftFlags

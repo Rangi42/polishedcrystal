@@ -138,7 +138,7 @@ ShiftPocketBytes:
 	subtract #1, #2
 	call ShiftSaveDataForward
 	seek #result
-	fillbyte #2, 0
+	writehalfword #zero
 	pop #3
 	jump .done_shift
 

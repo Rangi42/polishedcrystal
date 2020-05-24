@@ -64,6 +64,12 @@
 	define sCheckValue2_v5,         0x2d0e
 
 	define sSaveVersion_v6,         0x0be2
+	define sBox1_v6,                0x4000
+	define sBox1MonOT_v6,           0x4296
+	define sBox1MonNicknames_v6,    0x4372
+	define sBox8_v6,                0x6000
+	define sBox8MonOT_v6,           0x6296
+	define sBox8MonNicknames_v6,    0x6372
 
 ; SRAM sizes
 	define GAME_DATA_SIZE_v0,        0xb5f

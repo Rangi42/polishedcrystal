@@ -41,9 +41,9 @@ ApplyPartyPatches:
 	seek #result
 	call .daycare_mon
 .box_mons
-	set #b, sBox1
+	set #b, sBox1_v6
 	call .boxes
-	set #b, sBox8
+	set #b, sBox8_v6
 	call .boxes
 	pop #a
 	pop #b

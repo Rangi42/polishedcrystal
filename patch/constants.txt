@@ -6,25 +6,26 @@
 	define SAVE_SIZE,    0x8000
 
 ; SRAM pointers
-	define sPartyMail,         0x0600
-	define sMailbox,           0x0835
-	define sBackupMailbox,     0x0a0c
-	define sBackupOptions,     0x1200
-	define sBackupCheckValue1, 0x1207
-	define sBackupGameData,    0x1208
-	define sBackupChecksum,    0x1f0d
-	define sBackupCheckValue2, 0x1f0f
-	define sOptions,           0x2000
-	define sCheckValue1,       0x2007
-	define sGameData,          0x2008
-	define sChecksum,          0x2d0d
-	define sCheckValue2,       0x2d0f
-	define sLinkBattleRecord,  0x3266
-	define sHallOfFame,        0x32c0
-	define sBox1,              0x4000
-	define sBox1MonOT,         0x4296
-	define sBox8,              0x6000
-	define sBox8MonOT,         0x6296
+	define sPartyMail,           0x0600
+	define sMailbox,             0x0835
+	define sBackupMailbox,       0x0a0c
+	define sBackupOptions,       0x1200
+	define sBackupCheckValue1,   0x1207
+	define sBackupGameData,      0x1208
+	define sBackupChecksum,      0x1f0d
+	define sBackupCheckValue2,   0x1f0f
+	define sOptions,             0x2000
+	define sCheckValue1,         0x2007
+	define sGameData,            0x2008
+	define sChecksum,            0x2d0d
+	define sCheckValue2,         0x2d0f
+	define sBox1,                0x2d10
+	define sLinkBattleRecord,    0x3266
+	define sHallOfFame,          0x32c0
+	define sBoxMons1,            0x4000
+	define sBoxMons1UsedEntries, 0x5fe4
+	define sBoxMons2,            0x6000
+	define sBoxMons2UsedEntries, 0x7fe4
 
 ; game data offsets
 	define PLAYER_NAME_OFFSET,                 0x003
