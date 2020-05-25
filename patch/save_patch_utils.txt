@@ -153,6 +153,18 @@ FlagAction:
 	poppos
 	return
 
+CopyFrom1To2:
+	; #1: source, #2: #target, #3: count
+	retz #3
+	seek #1
+	readbyte #temp
+	increment #1
+	seek #2
+	writebyte #temp
+	increment #2
+	decrement #3
+	jump CopyFrom1To2
+
 ShiftSaveDataBack:
 	; #1: count, #2: amount
 	retz #1

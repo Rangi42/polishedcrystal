@@ -486,7 +486,6 @@ ChangeTerminatingCharacter:
 	set #1, #a
 	set #2, #b
 	set #3, #c
-	return
 .fix_sram_loop
 	; #1: count
 	; #2: # of bytes to search
@@ -515,8 +514,8 @@ ChangeTerminatingCharacter:
 	jump .replace_loop
 
 ResetHyperTrainingBits:
-	seek sSaveVersion_v6 ; handle some crap FIQ added >:)
-	writehalfword 0x0100 ; use little-endian next time >:0
+	seek sSaveVersion_v6
+	writehalfword 0x0100
 	set #2, PLAYER_NAME_LENGTH
 
 	set #1, PLAYER_NAME_OFFSET

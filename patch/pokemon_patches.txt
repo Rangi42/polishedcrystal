@@ -1,6 +1,6 @@
 AdjustPokemonIndexes:
 	set #1, .mon_callback
-	;call ApplyPartyPatches
+	call ApplyPartyPatches
 
 	; modify party species
 	set #1, 5
@@ -36,7 +36,6 @@ AdjustPokemonIndexes:
 	set #1, 256
 	set #2, #r0
 	jump ShiftFlags
-
 
 ; box species adjustments
 .box_species

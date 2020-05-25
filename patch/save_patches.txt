@@ -1,115 +1,140 @@
 ConvertToNewbox:
-	set #a, #zero ; number of boxes, increment from 0-13
-	set #b, #zero ; total count, determines position in pokedb
+	set #a, #zero ; [0, 14)
+	set #temp, 28
+	seek sBoxMons1UsedEntries
+	fillbyte #temp, #zero
+	seek sBoxMons2UsedEntries
+	fillbyte #temp, #zero
 
-;get old box
-.outer_box_loop
+.box_outer_loop
+	set #source, sBox1_v6
+	iflt #a, 7, .got_source
+	set #source, sBox8_v6
+.got_source
 	remainder #temp, #a, 7
-	multiply #temp, 1104, #temp
-	add #source, sBox1_v6, #temp ; get old box
-	iflt #a, 7, .got_box1
-	add #source, sBox8_v6, #temp
-.got_box1
-	seek #source
-	readbyte #c ; set file pointer to sBox1Mon1
-;copy data to new box
-.struct_copy_loop
-	pushpos
-	getfilebyte #temp
-	multiply #target, 32, #a
-	add #target, sBox1 ; get new box
-	seek #target
-	subtract #target, 20, #c
-	seekfwd #target ; get byte in box to write to (also bit to write to)
-	writebyte #temp
-	seekfwd #c ; move to UsedEntries
-	set #1, #target
-	divide #2, #a, 7 ; 0 if 1-7, 1 if 8-14
-	call FlagAction
-;copy pokemon structs from old box to pokedb (list 1 for boxes 1-7, list 2 for boxes 8-14)
-	set #temp, sBoxMons1UsedEntries
-	set #target, sBoxMons1
-	iflt #a, 7, .ok
-	set #temp, sBoxMons2UsedEntries
-	set #target, sBoxMons2
-.ok
-	seek #temp
-	set #1, #b
-	set #2, 1
-	call FlagAction
+	multiply #temp, BOX_SIZE_v6
+	add #source, #temp
+	seek #source ; we are now at sBox#Count
+	readbyte #b ; box count, we are now at sBox#Species
 
-	poppos
-	multiply #temp, 32, #b
-	add #target, #temp
-	readword #1 ; copy 32 bytes
-	readword #2
-	readword #3
-	readword #4
-	seek #target
-	writeword #1
-	writeword #2
-	writeword #3
-	writeword #4 ; #target = save mon nickname
-;remove nickname terminator
-;copy nickname from old box to pokedb
-	set #source, sBox1MonNicknames_v6
-	iflt #a, 7, .got_box2
-	set #source, sBox8MonNicknames_v6
-.got_box2
-	set #length, NAME_LENGTH
-	call .copy_name
-;remove OT terminator
-;copy OT from old box to pokedb
-	set #source, sBox1MonOT_v6
-	iflt #a, 7, .got_box3
-	set #source, sBox8MonOT_v6
-.got_box3
-	set #length, NAME_LENGTH
-	call .copy_name
-;finish loop
-	decrement #c
-	increment #b
-	jumpnz #c, .struct_copy_loop
+	set #length, #zero
+	set #2, sBox_v6
+.copy_temp_loop
+	ifge #length, #b, .done_temp_loop
+	add #1, #source, 22  ; we are now at sBox#Mon1
+	multiply #temp, #length, 32
+	add #1, #temp
+	set #3, 32 ; size of mon struct
+	call CopyFrom1To2
+;copy nick
+	multiply #temp, #length, 21
+	subtract #temp, 828, #temp
+	add #1, #temp ; offset from box mon n + 1 to nickname n
+	set #3, 7
+	call CopyFrom1To2
+	increment #1 ; skip terminator byte (will always be 0007+nickname)
+	set #3, 3
+	call CopyFrom1To2
+; copy OT
+	subtract #1, 231 ; offset from nickname n+1 to OT n
+	set #3, 7
+	call CopyFrom1To2
+	increment #1 ; skip terminator byte (will always be 0007+OT)
+	set #3, 3
+	call CopyFrom1To2
+	increment #length
+	jump .copy_temp_loop
+
+.done_temp_loop
+	seek sBoxMons1UsedEntries
+	iflt #a, 7, .got_entries
+	seek sBoxMons2UsedEntries
+.got_entries
+	remainder #1, #a, 7
+	multiply #1, 20
+	add #length, #1, #b
+	set #2, 1
+.set_flags_loop
+	ifge #1, #length, .done_flags_loop
+	push #1
+	call FlagAction
+	pop #1
+	increment #1
+	jump .set_flags_loop
+
+.done_flags_loop
+; copy all of temp back to pokedb
+	set #1, sBox_v6
+	remainder #temp, #a, 7
+	multiply #temp, 1040
+	add #2, sBoxMons1, #temp
+	iflt #a, 7, .got_target
+	add #2, sBoxMons2, #temp
+.got_target
+	multiply #3, #b, 52
+	call CopyFrom1To2
 	increment #a
-	ifeq #a, 14, .done
-	ifne #a, 7, .outer_box_loop
-	set #b, #zero
-	jump .outer_box_loop
-.done
+	iflt #a, 14, .box_outer_loop
+
+; we can now overwrite old sBox with newbox
+	set #a, #zero
+	set #target, sBox1
+	set #source, sBoxMons1UsedEntries
+	set #length, 140
+	call .newbox_outer_loop
+
+	; #a = 7, #target = sBox8
+	set #source, sBoxMons2UsedEntries
+	set #length, 140
+	call .newbox_outer_loop
+
+	seek #target
+	fillbyte 23, #zero ; clear out box 15
+	writedata .box15, 6
 	return
 
-.copy_name
-	subtract #temp, 20, #c
-	multiply #temp, #length
-	add #source, #temp
+.newbox_outer_loop
+	set #length, #zero
+.copy_flags_loop
 	seek #source
-	readword #4
-	readword #5
-	readword #6
-	subtract #1, #source, #target
-	subtract #1, 10
-	set #2, 10
-	set #3, #target
-	call ShiftSaveDataForward
-
-	set #1, #4
-	call .continue_copy_name
-	set #1, #5
-	call .continue_copy_name
-	set #1, #6
-.continue_copy_name
-	set #temp, -1 ; skip firt terminator we run into
-.copy_name_loop
-	retz #length
-	decrement #length
-	and #source, #1, 0xff
-	ifne #source, 0x53, .continue_loop
-	increment #temp
-	jumpz #temp, .copy_name_loop
-.continue_loop
-	pushpos
+	remainder #1, #a, 7
+	multiply #1, 20
+	add #1, #length
+	set #2, -1 ; we just want to check the flag
+	push #1
+	call FlagAction
+	pop #1
+	increment #1
 	seek #target
-	writebyte #source
+	jumpz #result, .got_value ; write 0 if flag is cleared
+	set #result, #1
+.got_value
+	writebyte #result
 	increment #target
-	poppos
-	jump .copy_name_loop
+	increment #length
+	iflt #length, 20, .copy_flags_loop
+
+; set sram bank (0 for box1-7, 1 for box8-14)
+	set #temp, #zero
+	iflt #a, 7, .sram_bank_2
+	decrement #temp
+.sram_bank_2
+	fillbyte 3, #temp
+	add #target, 3 ; target now points at box name
+
+	set #1, BOX_NAMES_OFFSET
+	call GetGameDataPointer
+	set #3, 9
+	multiply #1, #a, #3
+	add #1, #result
+	set #2, #target
+	add #target, #3
+	call CopyFrom1To2
+
+	increment #a
+	remainder #temp, #a, 7
+	jumpnz #temp, .newbox_outer_loop
+	return
+
+.box15
+	db 0x81, 0xae, 0xb7, 0xe1, 0xe5, 0x53 ; "Box15@"

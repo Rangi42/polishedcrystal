@@ -64,6 +64,7 @@
 	define sCheckValue2_v5,         0x2d0e
 
 	define sSaveVersion_v6,         0x0be2
+	define sBox_v6,                 0x2d10
 	define sBox1_v6,                0x4000
 	define sBox1MonOT_v6,           0x4296
 	define sBox1MonNicknames_v6,    0x4372
@@ -126,3 +127,6 @@
 
 ; removed event flags
 	define EVENT_NOISY_FOREST_PIKABLU_GUY, 2027
+
+; old data sizes
+	define BOX_SIZE_v6, 0x450
