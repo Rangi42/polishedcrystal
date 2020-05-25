@@ -47,6 +47,8 @@ BattleCommand_sketch:
 	jr z, .fail
 	dec c
 	jr nz, .does_user_already_know_move
+	farcall GetDisableEncoreMoves
+	push de
 ; Find Sketch in the user's moveset.
 ; Pointer in hl, and index in c.
 	dec hl
@@ -86,6 +88,8 @@ BattleCommand_sketch:
 .done_copy
 	call GetMoveName
 	call AnimateCurrentMove
+	pop de
+	farcall SetDisableEncoreMoves
 
 	ld hl, SketchedText
 	jp StdBattleTextBox

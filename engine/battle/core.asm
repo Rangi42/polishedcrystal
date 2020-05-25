@@ -1144,6 +1144,20 @@ SendInUserPkmn:
 	ld a, ~(1 << SUBSTATUS_RAGE | 1 << SUBSTATUS_FLINCHED | 1 << SUBSTATUS_CURLED)
 	and [hl]
 	ld [hl], a
+
+	; Reset Disable and Encore statuses
+	ldh a, [hBattleTurn]
+	and a
+	ld hl, wPlayerDisableCount
+	ld de, wPlayerEncoreCount
+	jr z, .got_encore_and_disable
+	ld hl, wEnemyDisableCount
+	ld de, wEnemyEncoreCount
+.got_encore_and_disable
+	xor a
+	ld [hl], a
+	ld [de], a
+
 	ldh a, [hBattleTurn]
 	and a
 	jr nz, .reset_used_moves_done
@@ -4924,15 +4938,117 @@ SetChoiceLock:
 	pop hl
 	ret
 
+GetDisableEncoreMoves:
+; Sets d to disabled move ID and e to encored/choiced move ID.
+; Preserves bc, hl
+	push hl
+	push bc
+	ldh a, [hBattleTurn]
+	and a
+	ld bc, wPlayerDisableCount
+	ld de, wPlayerEncoreCount
+	ld hl, wBattleMonMoves
+	jr z, .got_disable_encore
+	ld bc, wEnemyDisableCount
+	ld de, wEnemyEncoreCount
+	ld hl, wEnemyMonMoves
+.got_disable_encore
+	ld a, [bc]
+	call .GetMove
+	ld b, a
+	ld a, [de]
+	ld d, b
+	call .GetMove
+	ld e, a
+	pop bc
+	pop hl
+	ret
+
+.GetMove:
+	swap a
+	and $f
+	ret z
+	dec a
+	push hl
+	ld b, 0
+	ld c, a
+	add hl, bc
+	ld a, [hl]
+	pop hl
+	ret
+
+SetDisableEncoreMoves:
+; With disabled move ID in d, encored move ID in e, set disabled/encored move
+; state if the user still knows the move.
+	push hl
+	push bc
+	ldh a, [hBattleTurn]
+	and a
+	ld hl, wBattleMonMoves
+	jr z, .got_moves
+	ld hl, wEnemyMonMoves
+.got_moves
+	push hl
+	ld a, d
+	and a
+	jr z, .disable_done
+	ld d, 0
+	farcall UserKnowsMove
+	jr nz, .disable_done
+	inc c
+	swap c
+	ld d, c
+.disable_done
+	pop hl
+	ld a, e
+	and a
+	jr z, .encore_done
+	ld e, 0
+	farcall UserKnowsMove
+	jr nz, .encore_done
+	inc c
+	swap c
+	ld e, c
+.encore_done
+	ldh a, [hBattleTurn]
+	and a
+	ld bc, wPlayerDisableCount
+	ld hl, wPlayerEncoreCount
+	jr z, .got_disable_count
+	ld bc, wEnemyDisableCount
+	ld hl, wEnemyEncoreCount
+.got_disable_count
+	; If the move no longer exist in learnset, remove encore/disable status
+	ld a, d
+	and a
+	jr z, .reset_disable
+	ld a, [bc]
+	and $f
+	or d
+.reset_disable
+	ld [bc], a
+
+	ld a, e
+	and a
+	jr z, .reset_encore
+	ld a, [hl]
+	and $f
+	or e
+.reset_encore
+	ld [hl], a
+	pop bc
+	pop hl
+	ret
+
 SwapBattleMoves:
+	call GetDisableEncoreMoves
+	push de
 	ld hl, wBattleMonMoves
 	call .swap_bytes
 	ld hl, wBattleMonPP
 	call .swap_bytes
-	ld hl, wPlayerDisableCount
-	call .swap_high
-	ld hl, wPlayerEncoreCount
-	call .swap_high
+	pop de
+	call SetDisableEncoreMoves
 
 ; Fixes the COOLTRAINER glitch
 	ld a, [wPlayerSubStatus2]
@@ -4967,29 +5083,6 @@ SwapBattleMoves:
 	ld [hl], a
 	ld a, b
 	ld [de], a
-	ret
-
-.swap_high
-	ld a, [wMenuCursorY]
-	ld d, a
-	ld a, [wMoveSwapBuffer]
-	ld e, a
-	swap d
-	swap e
-	call .do_high_swap
-	ld a, d
-	ld d, e
-	ld e, a
-
-.do_high_swap
-	ld a, [hl]
-	and $f0
-	cp d
-	ret nz
-	ld a, $f
-	and [hl]
-	add e
-	ld [hl], a
 	ret
 
 MoveInfoBox:

@@ -33,6 +33,8 @@ BattleCommand_transform:
 	call CheckHiddenOpponent
 	jp nz, BattleEffect_ButItFailed
 
+	farcall GetDisableEncoreMoves
+	push de
 	xor a
 	ld [wNumHits], a
 	ld [wFXAnimIDHi], a
@@ -153,6 +155,8 @@ BattleCommand_transform:
 	call nz, LoadAnim
 	ld hl, TransformedText
 	call StdBattleTextBox
+	pop de
+	farcall SetDisableEncoreMoves
 
 	; Update revealed moves if player transformed: the AI knows what its own moves are...
 	ldh a, [hBattleTurn]
