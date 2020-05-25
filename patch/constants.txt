@@ -48,7 +48,7 @@
 	define BOXMON_STRUCT_LENGTH,   32
 	define NAME_LENGTH,            11
 	define BOX_NAME_LENGTH,         9
-	define PLAYER_NAME_LENGTH,      7
+	define PLAYER_NAME_LENGTH,      8
 
 ; pokemon struct offsets
 	define MOVES_OFFSET,            2

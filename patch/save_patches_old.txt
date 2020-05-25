@@ -550,11 +550,12 @@ ResetHyperTrainingBits:
 	jumpnz #3, .box_loop
 	decrement #4
 	retz #4
-	add #1, 884 ; sBox2MonOT - sBox1MonNicknamesEnd
+	add #1, 884 ; sBox2MonOT - sBox1MonNicknames
 	jump .box_outer_loop
 
 .zero_bytes
 	add #1, #2
 	seek #1
 	fillbyte 3, #zero
+	add #1, 3
 	return
