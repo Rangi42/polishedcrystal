@@ -21,7 +21,8 @@ BattleCommand_bellydrum:
 	jr z, .print
 	ld hl, BellyDrumText
 .print
-	jp StdBattleTextBox
+	xor a
+	farjp DoPrintStatChange
 
 .failed
 	call AnimateFailedMove
