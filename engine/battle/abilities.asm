@@ -233,8 +233,12 @@ IntimidateAbility:
 	ld hl, NoIntimidateAbilities
 	call IsInArray
 	jr nc, .intimidate_ok
+	call DisableAnimations
+	call ShowAbilityActivation
+	call ShowEnemyAbilityActivation
 	ld hl, BattleText_IntimidateResisted
-	jp StdBattleTextBox
+	call StdBattleTextBox
+	jp EnableAnimations
 
 .intimidate_ok
 	call DisableAnimations
