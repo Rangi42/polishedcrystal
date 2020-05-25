@@ -35,6 +35,9 @@ SavePatches:
 	dw ChangeTerminatingCharacter ; implicit
 
 	dh 7 ; 6.2
+	dw ChangeGyaradosForm ; implicit
+
+	dh 7 ; 6.3
 	dw ResetHyperTrainingBits ; implicit
 
 	dh 7

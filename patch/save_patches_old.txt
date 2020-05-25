@@ -513,6 +513,23 @@ ChangeTerminatingCharacter:
 	decrement #2
 	jump .replace_loop
 
+ChangeGyaradosForm:
+	set #curbuild, 6
+	set #1, .mon_callback
+	call ApplyPartyPatches
+
+.mon_callback
+	add #1, FORM_OFFSET
+	seek #1
+	getfilebyte #result
+	and #temp, #result, FORM_MASK
+	ifne #temp, 0x0f, .done
+	increment #result
+	increment #result ; form increases from 0x0f to 0x11
+	writebyte #result
+.done
+	return
+
 ResetHyperTrainingBits:
 	seek sSaveVersion_v6
 	writehalfword 0x0100
