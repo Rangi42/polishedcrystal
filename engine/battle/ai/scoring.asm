@@ -187,6 +187,11 @@ AI_Types:
 	ld a, [wd265]
 	and a
 	jr z, .immune
+
+	ld a, [wEnemyMoveStruct + MOVE_EFFECT]
+	call AI_IsFixedDamageMove
+	jr z, .checkmove
+
 	cp $10 ; 1.0
 	jr z, .checkmove
 	jr c, .noteffective
@@ -238,6 +243,24 @@ AI_Types:
 .immune
 	call AIDiscourageMove
 	jr .checkmove
+
+AI_IsFixedDamageMove:
+; Returns c if move effect a does fixed damage (or is Counter/Mirror Coat)
+	push hl
+	push de
+	push bc
+	ld de, 1
+	ld hl, .FixedDamageMoves
+	call IsInArray
+	jp PopBCDEHL
+
+.FixedDamageMoves:
+	db EFFECT_COUNTER
+	db EFFECT_MIRROR_COAT
+	db EFFECT_STATIC_DAMAGE
+	db EFFECT_LEVEL_DAMAGE
+	db EFFECT_SUPER_FANG
+	db -1
 
 AI_Offensive:
 ; Greatly discourage non-damaging moves.
