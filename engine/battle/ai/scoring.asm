@@ -190,7 +190,7 @@ AI_Types:
 
 	ld a, [wEnemyMoveStruct + MOVE_EFFECT]
 	call AI_IsFixedDamageMove
-	jr z, .checkmove
+	jr c, .checkmove
 
 	cp $10 ; 1.0
 	jr z, .checkmove
