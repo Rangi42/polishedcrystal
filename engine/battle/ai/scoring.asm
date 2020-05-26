@@ -192,6 +192,7 @@ AI_Types:
 	call AI_IsFixedDamageMove
 	jr c, .checkmove
 
+	ld a, [wd265]
 	cp $10 ; 1.0
 	jr z, .checkmove
 	jr c, .noteffective
