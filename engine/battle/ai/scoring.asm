@@ -158,7 +158,6 @@ AI_Types:
 ; Encourage super effective moves.
 ; Discourage not very effective moves unless
 ; all damaging moves are of the same type.
-
 	ld hl, wStringBuffer5 - 1
 	ld de, wEnemyMonMoves
 	ld b, NUM_MOVES + 1
