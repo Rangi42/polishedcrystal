@@ -136,6 +136,6 @@ SpecialReturnShuckie:
 	ret
 
 SpecialShuckieOT:
-	db "Kirk@"
+	rawchar "Kirk@"
 SpecialShuckieNick:
-	db "Shuckie@"
+	rawchar "Shuckie@"

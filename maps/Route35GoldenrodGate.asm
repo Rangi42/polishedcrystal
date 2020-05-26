@@ -70,10 +70,10 @@ GiftFarfetch_dMail:
 	next "to another road@"
 
 GiftFarfetch_dName:
-	db "Kenya@"
+	rawchar "Kenya@"
 
 GiftFarfetch_dOTName:
-	db "Randy@"
+	rawchar "Randy@"
 
 	db 0
 
