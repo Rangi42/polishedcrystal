@@ -401,12 +401,13 @@ Celadon3FTMMart:
 	db -1
 
 Celadon4FMart:
-	db 8 ; # items
+	db 9 ; # items
 	db POKE_DOLL
 	db FIRE_STONE
 	db WATER_STONE
 	db THUNDERSTONE
 	db LEAF_STONE
+	db ICE_STONE
 	db EXP_SHARE
 	db LOVELY_MAIL
 	db SURF_MAIL
