@@ -3285,14 +3285,10 @@ DoStealStatBoostBerry:
 
 QuarterPinchOrGluttony::
 ; Returns z if we're in a 1/4-HP pinch or if we have Gluttony
+	call GetQuarterMaxHP
 	call GetTrueUserAbility
 	cp GLUTTONY
-	jr z, .gluttony
-	call GetQuarterMaxHP
-	jr .compare_hp
-.gluttony
-	call GetHalfMaxHP
-.compare_hp
+	call z, GetHalfMaxHP
 	call CompareHP
 	ret nc
 	xor a
