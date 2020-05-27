@@ -159,7 +159,7 @@ endc
 if DEF(FAITHFUL)
 	move METRONOME,    EFFECT_METRONOME,           0, NORMAL,    100, 10,   0, STATUS
 else
-	move METRONOME,    EFFECT_METRONOME,           0, UNKNOWN_T, 100, 10,   0, STATUS
+	move METRONOME,    EFFECT_METRONOME,           0, UNKNOWN_T, 100, 20,   0, STATUS
 endc
 	move SCALD,        EFFECT_BURN_HIT,           80, WATER,     100, 15,  30, SPECIAL
 	move TRICK_ROOM,   EFFECT_TRICK_ROOM,          0, PSYCHIC,   100,  5,   0, STATUS
