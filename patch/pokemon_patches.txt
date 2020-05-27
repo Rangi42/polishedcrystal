@@ -12,7 +12,7 @@ AdjustPokemonIndexes:
 .party_species_loop
 	call .species_adjust
 	getfilebyte #temp
-	ifne #temp, 0xff, .party_species_loop ; ifne #temp, 0xff
+	ifne #temp, 0xff, .party_species_loop
 
 	; modify box species
 	set #1, sBox1_v6
@@ -22,11 +22,6 @@ AdjustPokemonIndexes:
 	call .box_species
 
 	; modify pokedex flags
-	;set #1, 8
-	;call GetGameDataOffsetConstant
-	;set #1, #result
-	;call GetGameDataPointer
-	;seek #result
 	seek 0x2a16 ; TODO: replace literal
 	set #1, 256
 	set #2, #r0
