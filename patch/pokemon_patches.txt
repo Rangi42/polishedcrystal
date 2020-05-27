@@ -47,7 +47,7 @@ AdjustPokemonIndexes:
 .box_inner_loop
 	call .species_adjust
 	getfilebyte #temp
-	ifne #temp, 0xff, .box_inner_loop ; ifne #temp, 0xff
+	ifne #temp, 0xff, .box_inner_loop
 	decrement #length
 	add #1, 0x450
 	jump .box_outer_loop

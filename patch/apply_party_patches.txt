@@ -23,24 +23,21 @@ ApplyPartyPatches:
 	call GetGameDataPointer
 	seek #result
 	readbyte #temp
-	and #temp, 1
-	jumpz #temp, .daycare_lady
-	call .daycare_mon
-.daycare_lady
+	shiftleft #temp, 31 ; nonzero if bit 0 is set
+	callnz #temp, .daycare_mon
 	set #1, 7
 	call GetGameDataOffsetConstant
 	set #1, #result
 	call GetGameDataPointer
 	seek #result
 	readbyte #temp
-	and #temp, 1
-	jumpz #temp, .box_mons
+	shiftleft #temp, 31
 	; there are two extra bytes for the daycare lady we need to skip
 	; (#1 should end up on sBreedmon2, not sBreedmon2Item)
-	add #result, 2
+	readhalfword #result
+	pos #result
 	seek #result
-	call .daycare_mon
-.box_mons
+	callnz #temp, .daycare_mon
 	set #b, sBox1_v6
 	call .boxes
 	set #b, sBox8_v6

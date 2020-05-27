@@ -25,7 +25,7 @@ CreateKeyItemBitflags:
 	pop #result
 	seekfwd 4
 
-	;we first need to check the first four key item bytes that were overwritten
+	; we first need to check the first four key item bytes that were overwritten
 	pop #temp
 .key_items_loop_1
 	and #1, #temp, 0xff
@@ -37,10 +37,9 @@ CreateKeyItemBitflags:
 	call .loop_common_set
 	pop #temp
 	shiftright #temp, 8
-	jumpz #temp, .key_items_loop_2
-	jump .key_items_loop_1
+	jumpnz #temp, .key_items_loop_1
 
-	;now we can check the remaining key items
+	; now we can check the remaining key items
 .key_items_loop_2
 	readbyte #1
 	call .loop_common_get
@@ -75,8 +74,7 @@ CreateKeyItemBitflags:
 	getfilebyte #1
 	call .loop_common_get
 	jumpz #1, .clear
-	increment #1
-	jumpz #1, .clear ; also clears 0xff
+	ifeq #1, 0xff, .clear
 	decrement #1
 .clear
 	writebyte #1
@@ -88,7 +86,7 @@ CreateKeyItemBitflags:
 	poppos
 	set #2, 25
 	set #1, 5275
-	ifeq #savefile, 1, .shift
+	ifeq #savefile, 1, ShiftSaveDataBack
 	set #1, 667
 	call ShiftSaveDataBack
 
@@ -96,7 +94,6 @@ CreateKeyItemBitflags:
 	; if we're loading from a backup anyway
 	seek sBox_v1
 	set #1, 4899
-.shift
 	jump ShiftSaveDataBack
 
 ; ==== common key item loop functions ====
@@ -141,7 +138,7 @@ ResizePocketsToBuild4:
 	set #address, .pocket_patch_table
 .patch_loop
 	gethalfwordinc #r0, #address
-	ifeq #r0, 0xff, .error
+	ifeq #r0, 0xffff, .error
 	ifge #r0, #build, .got_patch
 	add #address, 8
 	jump .patch_loop
@@ -358,7 +355,7 @@ ResetInitialOptions:
 	seek sBackupCheckValue1
 .done
 	seekback 1 ; initial options 2
-	writebyte 0x80 ; 0b11111111
+	writebyte 0x80 ; 0b10000000
 	print .reset_options_string
 	return
 
@@ -401,117 +398,193 @@ LegendaryDogStatus:
 	writebyte #zero
 	return
 
-ChangeTerminatingCharacter:
+UpdateCharset:
+	seek sSaveVersion_v6
+	writehalfword 0x0100
+	set #length, NAME_LENGTH
+	set #3, #zero
+
+	; player name
 	set #1, PLAYER_NAME_OFFSET
-	multiply #2, NAME_LENGTH, 4 ; handles player name, rival name, backup name, trendy phrase
+	set #2, #length
+	increment #3
 	call .fix_wram
 
+	; rival name, backup name, trendy phrase
+	multiply #2, #length, 3
+	decrement #3
+	call .fix_wram
+
+	; box names
 	set #1, BOX_NAMES_OFFSET
 	multiply #2, BOX_NAME_LENGTH, 14 ; handles box names
 	call .fix_wram
 
+	; party mon OT
 	set #1, PARTY_MON_OT_OFFSET
-	multiply #2, NAME_LENGTH, 12 ; handles party mon OT and nicknames
+	multiply #2, #length, 6 ; handles party mon OT and nicknames
+	push #2
+	increment #3
 	call .fix_wram
 
+	; party mon nicknames
+	pop #2
+	decrement #3
+	call .replace_loop ; we don't need to seek game data
+
+	; breed mon 1 nick
 	set #1, BREED_MON_1_NICK_OFFSET
-	multiply #2, NAME_LENGTH, 2
-	push #2
+	set #2, #length
 	call .fix_wram
 
+	; breed mon 1 OT
+	set #2, #length
+	increment #3
+	call .replace_loop
+
+	; breed mon 2 nick
 	set #1, BREED_MON_2_NICK_OFFSET
-	pop #2
-	push #2
+	set #2, #length
+	decrement #3
 	call .fix_wram
 
-	set #1, EGG_MON_NICK_OFFSET
-	pop #2
-	call .fix_wram
+	; breed mon 2 OT
+	set #2, #length
+	increment #3
+	call .replace_loop
 
+	; magikarp record holder OT
 	set #1, MAGIKARP_RECORD_HOLDER_NAME_OFFSET
-	set #2, NAME_LENGTH
+	set #2, #length
+	decrement #3
 	call .fix_wram
 
 	set #a, 41 ; message and author
-	set #b, 6  ; bytes in mailbox struc that contains no chars
+	set #b, 6  ; bytes in mailbox struct that contains no chars
 
 	seek sPartyMail
-	set #1, 12 ; mailboxes + backup mailboxes
+	set #1, 12 ; party mail + backup party mail
 	set #2, #a
-	set #3, #b
+	set #4, #b
 	call .fix_sram_loop
 
 	seek sMailbox
 	set #1, 10
 	set #2, #a
-	set #3, #b
+	set #4, #b
 	call .fix_sram_loop
 
 	seek sBackupMailbox
 	set #1, 10
 	set #2, #a
-	set #3, #b
+	set #4, #b
 	call .fix_sram_loop
 
 	seek sLinkBattleRecord
 	set #1, 5
-	set #2, 10 ; NAME_LENGTH - 1
-	set #3, 8
+	set #2, #length
+	decrement #2 ; NAME_LENGTH - 1
+	set #4, 8
 	call .fix_sram_loop
 
-	seek sHallOfFame
-	set #length, 30
+	; hall of fame nicknames
+	seek sByteBeforeHallOfFame ; literally, the byte right before sHallOfFame
+	set #a, 30
 .hof_loop
-	jumpz #length, .hof_done
-	seekfwd 7 ; go from count to mon 1 nickname
+	seekfwd 8 ; go from end to mon 1 nickname
 	set #1, 6
-	set #2, 10 ; MON_NAME_LENGTH - 1
-	set #3, 6
+	set #2, #length
+	decrement #2 ; MON_NAME_LENGTH - 1
+	set #4, #1
 	call .fix_sram_loop
-	decrement #length
-	jump .hof_loop
+	decrement #a
+	jumpnz #a, .hof_loop
 
-.hof_done
 	set #a, 7
-	set #b, 440
-	set #c, 664
+	set #b, 220
+	set #c, 884
 
+	increment #3
 	seek sBox1MonOT_v6
 	set #1, #a
 	set #2, #b
-	set #3, #c
+	set #4, #c
 	call .fix_sram_loop
 
 	seek sBox8MonOT_v6
 	set #1, #a
 	set #2, #b
-	set #3, #c
+	set #4, #c
+	call .fix_sram_loop
+
+	decrement #3
+	seek sBox1MonNicknames_v6
+	set #1, #a
+	set #2, #b
+	set #4, #c
+	call .fix_sram_loop
+
+	seek sBox8MonNicknames_v6
+	set #1, #a
+	set #2, #b
+	set #4, #c
 .fix_sram_loop
 	; #1: count
 	; #2: # of bytes to search
-	; #3: # of bytes to skip
-	retz #1
+	; #3: set hyper training bytes?
+	; #4: # of bytes to skip
 	push #2
 	call .replace_loop
 	pop #2
-	seekfwd #3
 	decrement #1
+	retz #1
+	seekfwd #4
 	jump .fix_sram_loop
 
 .fix_wram
 	; #1: offset
 	; #2: # of bytes to search
+	; #3: set hyper training bytes?
 	call GetGameDataPointer
 	seek #result
 .replace_loop
 	retz #2
-	getfilebyte #temp
-	ifne #temp, 0x50, .no_change
-	set #temp, 0x53
-.no_change
-	writebyte #temp
 	decrement #2
+	remainder #temp, #2, #length
+	set #result, #zero
+	ifgt #temp, 2, .no_hyper_training
+	jumpnz #3, .write
+.no_hyper_training
+	getfilebyte #result
+	set #address, .ngrams
+	getbyteinc #temp, #address
+.ngram_loop
+	ifeq #result, #temp, .replace_ngram
+	getbyteinc #temp, #address
+	jumpnz #temp, .ngram_loop
+	ifne #result, 0x50, .write
+	set #result, 0x53
+.write
+	writebyte #result
 	jump .replace_loop
+
+.replace_ngram
+	set #temp, .Masuda
+	iflt #result, 0x30, .got_name
+	jumpz #3, .write ; Kenya nickname is stored as "Kenya@R<and>y@<NULL>"
+	set #temp, .Randy
+.got_name
+	seekback 1
+	writedata #temp, 7
+	subtract #2, 5
+	jump .replace_loop
+
+.ngrams
+	db 0x22, 0x2f, 0x37, 0x3f, 0x41, 0
+.Masuda
+	db 0x8c, 0xa0, 0xb2, 0xb4, 0xa3, 0xa0, 0x53
+.Randy
+	db 0x91, 0xa0, 0xad, 0xa3, 0xb8, 0x53, 0x53
 
 ChangeGyaradosForm:
 	set #curbuild, 6
@@ -519,6 +592,9 @@ ChangeGyaradosForm:
 	call ApplyPartyPatches
 
 .mon_callback
+	seek #1
+	getfilebyte #temp
+	ifne #temp, GYARADOS, .done
 	add #1, FORM_OFFSET
 	seek #1
 	getfilebyte #result
@@ -530,49 +606,3 @@ ChangeGyaradosForm:
 .done
 	return
 
-ResetHyperTrainingBits:
-	seek sSaveVersion_v6
-	writehalfword 0x0100
-	set #2, PLAYER_NAME_LENGTH
-
-	set #1, PLAYER_NAME_OFFSET
-	call .zero_bytes
-
-	set #1, PARTY_MON_OT_OFFSET
-	set #length, 6
-.party_loop
-	jumpz #length, .party_done
-	call .zero_bytes
-	decrement #length
-	jump .party_loop
-
-.party_done
-	set #1, BREED_MON_1_OT_OFFSET
-	call .zero_bytes
-
-	set #1, BREED_MON_2_OT_OFFSET
-	call .zero_bytes
-
-	set #1, sBox1MonOT_v6
-	call .box_adjust
-
-	set #1, sBox8MonOT_v6
-.box_adjust
-	set #4, 7  ; boxes per bank
-.box_outer_loop
-	set #3, 20 ; mons per box
-.box_loop
-	call .zero_bytes
-	decrement #3
-	jumpnz #3, .box_loop
-	decrement #4
-	retz #4
-	add #1, 884 ; sBox2MonOT - sBox1MonNicknames
-	jump .box_outer_loop
-
-.zero_bytes
-	add #1, #2
-	seek #1
-	fillbyte 3, #zero
-	add #1, 3
-	return

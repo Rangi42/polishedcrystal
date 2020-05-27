@@ -129,7 +129,7 @@ ShiftPocketBytes:
 	seek #result
 	set #3, #result
 	set #2, #1
-	multiply #2, 2
+	shiftleft #2, 1
 	set #1, 0x3fff
 	ifeq #savefile, 1, .continue_shift_forward
 	set #1, 0x1fff
@@ -147,7 +147,7 @@ ShiftPocketBytes:
 	xor #1, 0xffff
 	increment #1
 	set #2, #1
-	multiply #2, 2
+	shiftleft #2, 1
 	subtract #result, #2
 	decrement #result
 	seek #result

@@ -84,7 +84,7 @@ ShiftFlags:
 	jumpz #4, .next
 .innerloop
 	shiftright #source, #3, 5
-	multiply #source, 4
+	shiftleft #source, 2
 	add #source, #address
 	seek #source
 	getfileword #source ; word to read from
@@ -94,13 +94,13 @@ ShiftFlags:
 	add #6, #3, #4
 	and #6, 0xffff
 	and #temp, #6, 31
-	subtract #temp, 32, #temp
+	subtract #temp, #zero, #temp
 	shiftright #6, 5 ; get target stack pos
 	stackread #target, #6 ; word to write to
 	rotateleft #target, #temp
 	or #target, 1
 	and #target, #source
-	subtract #temp, 32, #temp
+	subtract #temp, #zero, #temp
 	rotateleft #target, #temp
 	stackwrite #6, #target
 	increment #3

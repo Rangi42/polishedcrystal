@@ -2,10 +2,6 @@ PatchSavefile:
 	call CheckNotEmpty
 	call CheckSavefileIsValid
 	call PrintSavefileMessage
-	; set #address, VersionInfo
-	; getbyteinc #result, #address
-	; getbyte #temp, #address
-	; mulacum #temp, #result, 0x100
 	set #temp, CURRENT_BUILD
 	ifgt #build, 9999, .invalid_build
 	ifgt #build, #temp, .future_build

@@ -32,15 +32,13 @@ SavePatches:
 	dw LegendaryDogStatus ; implicit
 
 	dh 7 ; 6.1
-	dw ChangeTerminatingCharacter ; implicit
+	dw UpdateCharset ; implicit
 
 	dh 7 ; 6.2
 	dw ChangeGyaradosForm ; implicit
 
-	dh 7 ; 6.3
-	dw ResetHyperTrainingBits ; implicit
-
 	dh 7
-	dw ConvertToNewbox ; first build with version number
+	;dw ConvertToNewbox ; first build with version number
+	dw DoNothing
 
 	dh 0

@@ -25,7 +25,7 @@ ReplaceMove:
 	seek #1
 	getfilebyte #1
 	and #1, PP_UP_MASK
-	rotateleft #1, 26
+	rotateleft #1, -6
 	getbyte #result, #address
 	divide #temp, #result, 5
 	multiply #temp, #1

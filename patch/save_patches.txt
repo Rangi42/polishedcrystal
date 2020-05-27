@@ -12,8 +12,7 @@ ConvertToNewbox:
 	set #source, sBox8_v6
 .got_source
 	remainder #temp, #a, 7
-	multiply #temp, BOX_SIZE_v6
-	add #source, #temp
+	mulacum #source, #temp, BOX_SIZE_v6
 	seek #source ; we are now at sBox#Count
 	readbyte #b ; box count, we are now at sBox#Species
 
@@ -22,14 +21,12 @@ ConvertToNewbox:
 .copy_temp_loop
 	ifge #length, #b, .done_temp_loop
 	add #1, #source, 22  ; we are now at sBox#Mon1
-	multiply #temp, #length, 32
-	add #1, #temp
+	mulacum #1, #length, 32
 	set #3, 32 ; size of mon struct
 	call CopyFrom1To2
 ;copy nick
-	multiply #temp, #length, 21
-	subtract #temp, 828, #temp
-	add #1, #temp ; offset from box mon n + 1 to nickname n
+	add #1, 828
+	mulacum #1, #length, -21 ; offset from box mon n + 1 to nickname n
 	set #3, 7
 	call CopyFrom1To2
 	increment #1 ; skip terminator byte (will always be 0007+nickname)
@@ -80,12 +77,10 @@ ConvertToNewbox:
 	set #a, #zero
 	set #target, sBox1
 	set #source, sBoxMons1UsedEntries
-	set #length, 140
 	call .newbox_outer_loop
 
 	; #a = 7, #target = sBox8
 	set #source, sBoxMons2UsedEntries
-	set #length, 140
 	call .newbox_outer_loop
 
 	seek #target
@@ -100,7 +95,7 @@ ConvertToNewbox:
 	remainder #1, #a, 7
 	multiply #1, 20
 	add #1, #length
-	set #2, -1 ; we just want to check the flag
+	set #2, #source ; we know #source > 2
 	push #1
 	call FlagAction
 	pop #1
