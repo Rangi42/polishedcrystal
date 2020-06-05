@@ -32,6 +32,7 @@ EcruteakDestinyKnotHouseCooltrainerFScript:
 	writetext .Text3
 	verbosegiveitem DESTINY_KNOT
 	iffalse_endtext
+	setevent EVENT_GOT_DESTINY_KNOT_FROM_ECRUTEAK
 	jumpthisopenedtext
 
 .Text4:
