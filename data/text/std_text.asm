@@ -58,7 +58,7 @@ NurseAskHealText:
 	line "#mon?"
 	done
 
-NurseFourTrainerStarsText:
+NurseTrainerStarText:
 	text "We can heal your"
 	line "#mon to perfect"
 	cont "health."
@@ -69,18 +69,11 @@ NurseFourTrainerStarsText:
 	line "Card!"
 
 	para "That wonderful"
-	line "shade! And all"
-	cont "those stars!"
+	line "shade! And that"
+	cont "shiny star!"
 
-	para "I've seen several"
-	line "gold Trainer Cards"
-	cont "before…"
-
-	para "But you're the"
-	line "first to top them"
-
-	para "with that impress-"
-	line "ive Trainer Card."
+	para "You're an impres-"
+	line "sive Trainer."
 
 	para "Please, <PLAYER>,"
 	line "may I heal your"
