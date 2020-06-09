@@ -146,6 +146,19 @@ patterns = {
 		line4.code[4] == PAIRS[prev[1].code[3]]),
 	(lambda line5, prev: line5.code.rstrip(':') == prev[2].code.split(',')[1].strip()),
 ],
+'hl|bc|de -= N': [
+	# Bad: ld a, l / sub N / ld l, a / ld a, h / sbc 0 / ld h, a (hl or bc or de)
+	# Good: ld a, l / sub N / ld l, a / jr nc, .noCarry / dec h / .noCarry
+	(lambda line1, prev: re.match(r'ld a, [lce]', line1.code)),
+	(lambda line2, prev: re.match(r'sub (?:a, )?(?:[^afbcdehl\[])', line2.code)),
+	(lambda line3, prev: re.match(r'ld [lce], a', line3.code) and
+		(lambda x: line3.code[3] == prev[0].code[6])(prev[1].code.replace('sub a,', 'sub')[4])),
+	(lambda line4, prev: re.match(r'ld a, [hbd]', line4.code) and
+		line4.code[6] == PAIRS[prev[0].code[6]]),
+	(lambda line5, prev: re.match(r'sbc [%\$]?0+$', line5.code)),
+	(lambda line6, prev: re.match(r'ld [hbd], a', line6.code) and
+		line6.code[3] == PAIRS[prev[0].code[6]]),
+],
 'hl *= 2': [
 	# Bad: sla l / rl h
 	# Good: add hl, hl

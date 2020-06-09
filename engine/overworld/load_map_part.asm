@@ -17,6 +17,16 @@ addmapwidthoffset: MACRO
 	ld d, a
 ENDM
 
+subtractfromhl: MACRO
+	; hl -= \1
+	ld a, l
+	sub \1
+	ld l, a
+	jr nc, .noCarry\@
+	dec h
+.noCarry\@
+ENDM
+
 _LoadMapPart::
 	ldh a, [rSVBK]
 	push af
@@ -144,12 +154,7 @@ loadmappart_function_macro: MACRO
 	ld a, [de]
 	ld [hl], a
 	pop de
-	ld a, l
-	sub (SCREEN_WIDTH * 3) - 1
-	ld l, a
-	jr nc, .noCarry1
-	dec h
-.noCarry1
+	subtractfromhl (SCREEN_WIDTH * 3) - 1
 ; LoadOneRowOf4Blocks:
 	ld c, SCREEN_WIDTH - 4
 	loadmapblock
@@ -182,12 +187,7 @@ loadmappart_function_macro: MACRO
 	ld a, [de]
 	ld [hl], a
 	pop de
-	ld a, l
-	sub (SCREEN_WIDTH * 3) - 1
-	ld l, a
-	jr nc, .noCarry2
-	dec h
-.noCarry2
+	subtractfromhl (SCREEN_WIDTH * 3) - 1
 ; Next metatile
 	loadmapblock
 	push de
@@ -219,12 +219,7 @@ loadmappart_function_macro: MACRO
 	ld a, [de]
 	ld [hl], a
 	pop de
-	ld a, l
-	sub (SCREEN_WIDTH * 3) - 1
-	ld l, a
-	jr nc, .noCarry3
-	dec h
-.noCarry3
+	subtractfromhl (SCREEN_WIDTH * 3) - 1
 ; Next metatile
 	loadmapblock
 	push de
@@ -256,12 +251,7 @@ loadmappart_function_macro: MACRO
 	ld a, [de]
 	ld [hl], a
 	pop de
-	ld a, l
-	sub (SCREEN_WIDTH * 3) - 1
-	ld l, a
-	jr nc, .noCarry4
-	dec h
-.noCarry4
+	subtractfromhl (SCREEN_WIDTH * 3) - 1
 	loadmapblock
 ; Next metatile
 	push de
@@ -293,12 +283,7 @@ loadmappart_function_macro: MACRO
 	ld a, [de]
 	ld [hl], a
 	pop de
-	ld a, l
-	sub (SCREEN_WIDTH * 3) - 1
-	ld l, a
-	jr nc, .noCarry5
-	dec h
-.noCarry5
+	subtractfromhl (SCREEN_WIDTH * 3) - 1
 ; LoadOneHalfLeftMetatile
 	loadmapblock
 	ld c, SCREEN_WIDTH - 1
@@ -379,12 +364,7 @@ loadmappart_function_macro: MACRO
 	ld [hl], a
 	pop de
 	; Next metatile
-	ld a, l
-	sub (SCREEN_WIDTH * 1) - 1
-	ld l, a
-	jr nc, .noCarry6
-	dec h
-.noCarry6
+	subtractfromhl (SCREEN_WIDTH * 1) - 1
 .LoadOneRowOf4UpperHalfBlocks\@:
 	loadmapblock
 	push de
@@ -415,12 +395,7 @@ loadmappart_function_macro: MACRO
 	ld [hl], a
 	pop de
 	; Next metatile
-	ld a, l
-	sub (SCREEN_WIDTH * 1) - 1
-	ld l, a
-	jr nc, .noCarry7
-	dec h
-.noCarry7
+	subtractfromhl (SCREEN_WIDTH * 1) - 1
 	loadmapblock
 	push de
 	swap a
@@ -450,12 +425,7 @@ loadmappart_function_macro: MACRO
 	ld [hl], a
 	pop de
 	; Next metatile
-	ld a, l
-	sub (SCREEN_WIDTH * 1) - 1
-	ld l, a
-	jr nc, .noCarry8
-	dec h
-.noCarry8
+	subtractfromhl (SCREEN_WIDTH * 1) - 1
 	loadmapblock
 	push de
 	swap a
@@ -485,12 +455,7 @@ loadmappart_function_macro: MACRO
 	ld [hl], a
 	pop de
 	; Next metatile
-	ld a, l
-	sub (SCREEN_WIDTH * 1) - 1
-	ld l, a
-	jr nc, .noCarry9
-	dec h
-.noCarry9
+	subtractfromhl (SCREEN_WIDTH * 1) - 1
 	loadmapblock
 	push de
 	swap a
@@ -570,12 +535,7 @@ loadmappart_function_macro: MACRO
 	ld a, [de]
 	ld [hl], a
 	pop de
-	ld a, l
-	sub (SCREEN_WIDTH * 3) - 1
-	ld l, a
-	jr nc, .noCarry10
-	dec h
-.noCarry10
+	subtractfromhl (SCREEN_WIDTH * 3) - 1
 ; .LoadOneRowOf4Blocks_Entrypoint:
 ; Next metatile
 	loadmapblock
@@ -608,12 +568,7 @@ loadmappart_function_macro: MACRO
 	ld a, [de]
 	ld [hl], a
 	pop de
-	ld a, l
-	sub (SCREEN_WIDTH * 3) - 1
-	ld l, a
-	jr nc, .noCarry11
-	dec h
-.noCarry11
+	subtractfromhl (SCREEN_WIDTH * 3) - 1
 ; Next metatile
 	loadmapblock
 	push de
@@ -645,12 +600,7 @@ loadmappart_function_macro: MACRO
 	ld a, [de]
 	ld [hl], a
 	pop de
-	ld a, l
-	sub (SCREEN_WIDTH * 3) - 1
-	ld l, a
-	jr nc, .noCarry12
-	dec h
-.noCarry12
+	subtractfromhl (SCREEN_WIDTH * 3) - 1
 ; Next metatile
 	loadmapblock
 	push de
@@ -682,12 +632,7 @@ loadmappart_function_macro: MACRO
 	ld a, [de]
 	ld [hl], a
 	pop de
-	ld a, l
-	sub (SCREEN_WIDTH * 3) - 1
-	ld l, a
-	jr nc, .noCarry13
-	dec h
-.noCarry13
+	subtractfromhl (SCREEN_WIDTH * 3) - 1
 	loadmapblock
 ; Next metatile
 	push de
@@ -758,13 +703,7 @@ loadmappart_function_macro: MACRO
 	ld [hl], a
 	pop de
 	; Next metatile
-
-	ld a, l
-	sub (SCREEN_WIDTH * 1) - 1
-	ld l, a
-	jr nc, .noCarry14
-	dec h
-.noCarry14
+	subtractfromhl (SCREEN_WIDTH * 1) - 1
 .LoadOneRowOf4BottomHalfBlocks\@:
 	loadmapblock
 	push de
@@ -796,13 +735,7 @@ loadmappart_function_macro: MACRO
 	ld [hl], a
 	pop de
 	; Next metatile
-
-	ld a, l
-	sub (SCREEN_WIDTH * 1) - 1
-	ld l, a
-	jr nc, .noCarry15
-	dec h
-.noCarry15
+	subtractfromhl (SCREEN_WIDTH * 1) - 1
 	loadmapblock
 	push de
 	swap a
@@ -833,13 +766,7 @@ loadmappart_function_macro: MACRO
 	ld [hl], a
 	pop de
 	; Next metatile
-
-	ld a, l
-	sub (SCREEN_WIDTH * 1) - 1
-	ld l, a
-	jr nc, .noCarry16
-	dec h
-.noCarry16
+	subtractfromhl (SCREEN_WIDTH * 1) - 1
 	loadmapblock
 	push de
 	swap a
@@ -870,13 +797,7 @@ loadmappart_function_macro: MACRO
 	ld [hl], a
 	pop de
 	; Next metatile
-
-	ld a, l
-	sub (SCREEN_WIDTH * 1) - 1
-	ld l, a
-	jr nc, .noCarry17
-	dec h
-.noCarry17
+	subtractfromhl (SCREEN_WIDTH * 1) - 1
 	loadmapblock
 	push de
 	swap a
