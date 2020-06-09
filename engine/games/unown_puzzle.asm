@@ -681,6 +681,7 @@ ConvertLoadedPuzzlePieces:
 .GetEnlargedTile:
 	push hl
 	ld hl, .EnlargedTiles
+	; hl += a
 	add l
 	ld l, a
 	adc h

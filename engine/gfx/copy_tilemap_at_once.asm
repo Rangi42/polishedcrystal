@@ -260,12 +260,9 @@ CopyTilemapInHBlank:
 	ld [hli], a
 	ld [hl], d
 
-	ld a, BG_MAP_WIDTH - (SCREEN_WIDTH - 1)
-	add l
-	ld l, a
-	adc h
-	sub l
-	ld h, a
+	ld de, BG_MAP_WIDTH - (SCREEN_WIDTH - 1)
+	add hl, de
+
 	ldh a, [hTilesPerCycle]
 	dec a
 	jr nz, .loop

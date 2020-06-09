@@ -83,6 +83,7 @@ HandleStoneQueue::
 
 .not_on_warp
 	ld a, 5
+	; hl += a
 	add l
 	ld l, a
 	adc h

@@ -517,6 +517,7 @@ rept 4
 	inc hl
 endr
 	ld a, [wcf64]
+	; hl += a
 	add l
 	ld l, a
 	adc h

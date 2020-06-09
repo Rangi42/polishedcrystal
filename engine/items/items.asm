@@ -476,6 +476,7 @@ CountItemInPocket:
 	cp d
 	jr nz, .next
 	ld a, [hl]
+	; bc += a
 	add c
 	ld c, a
 	adc b

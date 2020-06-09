@@ -843,6 +843,7 @@ Checksum:
 	ld de, 0
 .loop
 	ld a, [hli]
+	; de += a
 	add e
 	ld e, a
 	adc d

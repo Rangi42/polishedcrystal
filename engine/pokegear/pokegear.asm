@@ -2621,6 +2621,7 @@ GetNextTownMapTilePalette:
 	srl a
 	jr c, .odd
 ; Even-numbered tile ids take the bottom nybble...
+	; hl += a
 	add l
 	ld l, a
 	adc h
@@ -2632,6 +2633,7 @@ GetNextTownMapTilePalette:
 
 .odd
 ; ...and odd ids take the top.
+	; hl += a
 	add l
 	ld l, a
 	adc h

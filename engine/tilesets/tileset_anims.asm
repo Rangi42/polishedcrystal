@@ -486,6 +486,7 @@ AnimateFountain:
 	ld a, [wTileAnimationTimer]
 	and 7
 	add a
+	; hl += a
 	add l
 	ld l, a
 	adc h
@@ -1069,6 +1070,7 @@ AnimateSproutPillarTile:
 
 ; Get frame index a
 	ld hl, .frames
+	; hl += a
 	add l
 	ld l, a
 	adc h

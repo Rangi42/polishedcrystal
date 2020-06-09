@@ -141,7 +141,8 @@ GetDestinationWarpNumber::
 
 .next
 	pop hl
-	ld a, 5
+	ld a, 5 ; warp size
+	; hl += a
 	add l
 	ld l, a
 	adc h
@@ -578,6 +579,7 @@ ChangeMap::
 	jr nz, .col
 	pop hl
 	ldh a, [hConnectionStripLength]
+	; hl += a
 	add l
 	ld l, a
 	adc h
@@ -733,6 +735,7 @@ FillEastConnectionStrip::
 	pop de
 
 	ldh a, [hConnectedMapWidth]
+	; de += a
 	add e
 	ld e, a
 	adc d
@@ -776,6 +779,7 @@ FillSouthConnectionStrip::
 	pop de
 
 	ldh a, [hMapWidthPlus6]
+	; de += a
 	add e
 	ld e, a
 	adc d
@@ -1030,6 +1034,7 @@ ReloadWalkedTile:
 	ret
 
 .AddHLDecC:
+	; hl += a
 	add l
 	ld l, a
 	adc h
@@ -1141,6 +1146,7 @@ BackupBGMapColumn::
 	ld [de], a
 	inc de
 	ld a, SCREEN_WIDTH - 1
+	; hl += a
 	add l
 	ld l, a
 	adc h
@@ -1438,6 +1444,7 @@ SaveScreen_LoadNeighbor::
 	dec b
 	jr nz, .col
 	pop de
+	; de += 6
 	ld a, e
 	add 6
 	ld e, a
@@ -1475,6 +1482,7 @@ GetMovementPermissions::
 	ld a, [wPlayerStandingTile]
 	and 7
 	ld hl, .MovementPermissionsData
+	; hl += a
 	add l
 	ld l, a
 	adc h
@@ -1750,6 +1758,7 @@ CheckIfFacingTileCoordIsSign::
 .next
 	pop hl
 	ld a, 5 ; signpost event length
+	; hl += a
 	add l
 	ld l, a
 	adc h
@@ -1820,6 +1829,7 @@ CheckCurrentMapXYTriggers::
 .next
 	pop hl
 	ld a, $5 ; xy-trigger size
+	; hl += a
 	add l
 	ld l, a
 	adc h
