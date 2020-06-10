@@ -1333,7 +1333,7 @@ Function92fc0:
 	ld a, [wSlotBias]
 	and a
 	jr nz, .not_biased_to_seven
-	ld e, $0
+	ld e, a
 .loop1
 	ld hl, wReel1Position - wReel1
 	add hl, bc

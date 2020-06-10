@@ -1770,11 +1770,8 @@ _GetOpponentAbilityAfterMoldBreaker::
 	ld b, a
 	call GetTrueUserAbility
 	cp MOLD_BREAKER
-	jr z, .cont_check
 	ld a, b
-	jr .end
-.cont_check
-	ld a, b
+	jr nz, .end
 	ld de, 1
 	push hl
 	push bc
@@ -1782,11 +1779,9 @@ _GetOpponentAbilityAfterMoldBreaker::
 	call IsInArray
 	pop bc
 	pop hl
-	jr c, .suppressed
 	ld a, b
-	jr .end
-.suppressed:
-	ld a, NO_ABILITY
+	jr nc, .end
+	xor a ; ld a, NO_ABILITY
 .end
 	pop bc
 	pop de

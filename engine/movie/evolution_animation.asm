@@ -276,7 +276,7 @@ EvolutionAnimation:
 	inc [hl]
 	and $1
 	jr nz, .done_balls
-	ld e, $0
+	ld e, a
 	call .GenerateBallOfLight
 	ld e, $10
 	call .GenerateBallOfLight

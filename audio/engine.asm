@@ -1880,14 +1880,10 @@ Music_TempoRelative:
 	ld e, a
 	; check sign
 	cp $80
-	jr nc, .negative
-;positive
-	ld d, 0
-	jr .ok
-
-.negative
-	ld d, -1
-.ok
+	; d = carry ? 0 (positive) : -1 (negative)
+	ccf
+	sbc a
+	ld d, a
 	ld hl, wChannel1Tempo - wChannel1
 	add hl, bc
 	ld a, [hli]
