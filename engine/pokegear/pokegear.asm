@@ -466,11 +466,9 @@ PokegearMap_CheckRegion:
 	cp SHAMOUTI_LANDMARK
 	jr nc, .orange
 	cp KANTO_LANDMARK
-	jr nc, .kanto
-	ld a, 3
-	jr .done
-.kanto
-	ld a, 5
+	; a = carry ? 3 (johto) : 5 (kanto)
+	sbc a
+	sbc -5
 	jr .done
 .orange
 	ld a, 7

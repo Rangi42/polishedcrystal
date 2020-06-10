@@ -128,7 +128,7 @@ patterns = {
 		and (not line3.code.startswith('adc [') or line3.code == 'adc [hl]')),
 ],
 'a|b|c|d|e|h|l = z|nz|c|nc ? P : Q': [
-	# Bad: jr z|nz|c|nc, .p / ld a|b|c|d|e|h|l, Q / jr .ok / .p / (ld a|b|c|d|e|h|l, P | xor a) / .ok
+	# Bad: jr z|nz|c|nc, .p / ld a|b|c|d|e|h|l, Q / jr .ok / .p / (ld a|b|c|d|e|h|l, P | xor a) / (.ok | jr .ok)
 	# Good: ld a|b|c|d|e|h|l, Q / jr nz|z|nc|c, .ok / .p / (ld a|b|c|d|e|h|l, P | xor a) / .ok
 	(lambda line1, prev: re.match(r'j[rp] n?c,', line1.code)),
 	(lambda line2, prev: re.match(r'ldh? [abcdehl],', line2.code)),
@@ -137,7 +137,8 @@ patterns = {
 	(lambda line4, prev: line4.code.rstrip(':') == prev[0].code.split(',')[1].strip()),
 	(lambda line5, prev: re.match(r'ldh? [abcdehl],', line5.code)
 		or (line5.code in {'xor a', 'xor a, a'} and re.match(r'ldh? a,', prev[1].code))),
-	(lambda line6, prev: line6.code.rstrip(':') == prev[2].code[3:].strip()),
+	(lambda line6, prev: line6.code == prev[2].code
+		or line6.code.rstrip(':') == prev[2].code[3:].strip()),
 ],
 'hl|bc|de += a|N': [
 	# Bad: add l|N / ld l, a / ld a, h|0 / adc 0|h / ld h, a (hl or bc or de)

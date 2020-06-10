@@ -917,11 +917,10 @@ DayCare_InitBreeding:
 	cp 2
 	jr c, .hidden_ability
 	cp 21
-	jr c, .ability2
-	ld a, ABILITY_1
-	jr .got_ability
-.ability2
-	ld a, ABILITY_2
+	; a = carry ? ABILITY_2 : ABILITY_1
+	sbc a
+	and ABILITY_2 - ABILITY_1
+	add ABILITY_1
 	jr .got_ability
 .hidden_ability
 	ld a, HIDDEN_ABILITY
