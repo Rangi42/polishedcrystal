@@ -729,7 +729,8 @@ _StatsScreenDPad:
 	and D_DOWN
 	jr nz, BillsPC_PressDown
 .empty
-	jp BillsPC_JoypadDidNothing
+	xor a
+	ret
 
 Withdraw_UpDown:
 	ld hl, hJoyLast
@@ -746,7 +747,8 @@ Withdraw_UpDown:
 	and D_DOWN
 	jr nz, BillsPC_PressDown
 .empty
-	jp BillsPC_JoypadDidNothing
+	xor a
+	ret
 
 MovePkmnWithoutMail_DPad:
 	ld hl, hJoyLast
@@ -770,7 +772,8 @@ MovePkmnWithoutMail_DPad:
 	ld a, [hl]
 	and D_RIGHT
 	jr nz, BillsPC_PressRight
-	jr BillsPC_JoypadDidNothing
+	xor a
+	ret
 
 MovePkmnWithoutMail_DPad_2:
 	ld hl, hJoyLast
@@ -795,7 +798,8 @@ MovePkmnWithoutMail_DPad_2:
 	ld a, [hl]
 	and D_RIGHT
 	jr nz, BillsPC_PressRight
-	jr BillsPC_JoypadDidNothing
+	xor a
+	ret
 
 BillsPC_PressUp:
 	ld hl, wBillsPC_CursorPosition
@@ -860,7 +864,6 @@ BillsPC_PressRight:
 
 BillsPC_JoypadDidNothing:
 	xor a
-	and a
 	ret
 
 BillsPC_UpDownDidSomething:

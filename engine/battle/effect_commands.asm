@@ -1866,7 +1866,6 @@ BattleCommand_checkhit:
 	jr z, .blocked
 .not_blocked
 	xor a
-	and a
 	ret
 .blocked
 	ld a, 1
