@@ -2348,7 +2348,7 @@ MarowakAlolanEvosAttacks:
 	db 43, ACROBATICS ; Stomping Tantrum → new move
 	db 49, ROCK_SMASH ; Endeavor → TM move
 	db 53, FLARE_BLITZ
-	db 59, REVERSAL ; Retaliate → new move
+	db 59, PAIN_SPLIT ; Retaliate → S/M tutor move
 	db 65, OUTRAGE ; Bone Rush → HGSS tutor move
 	db 0 ; no more level-up moves
 
