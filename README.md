@@ -13,7 +13,9 @@ I've had vague plans to make a Pokémon game for years. I'm very impressed by th
 
 ## Download and Play
 
-The most recent version is [2.2.0](https://github.com/Rangi42/polishedcrystal/releases/tag/v2.2.0) as of September 20, 2016. [The changelog](CHANGELOG.md) lists all changes since then.
+The current beta version is **3.0.0**. It has some incomplete original content and known bugs, but it's playable from start to finish. Download the [nightly release](https://github.com/Rangi42/polishedcrystal/releases/tag/v3.0.0-beta-nightly) to get the very latest ROM, up-to-date with the `master` code branch. (You only need a .gbc file, not a .sym file. Don't download a debug ROM unless you want to help debug the game; if so, talk to your room's radio to unlock many things, and hold A+B to wak through walls. Remember the commit hash at the end of the nightly filename to identify which code is running.)
+
+The most recent official version is [2.2.0](https://github.com/Rangi42/polishedcrystal/releases/tag/v2.2.0) as of September 20, 2016. [The changelog](CHANGELOG.md) lists all changes since then.
 
 To play, download the .ips patch file, and use a tool like [Lunar IPS](http://fusoya.eludevisibility.org/lips/) (for Windows), [MultiPatch](http://projects.sappharad.com/tools/multipatch.html) (for OS X), or [UniPatcher](https://play.google.com/store/apps/details?id=org.emunix.unipatcher&hl=en) (for Android) to apply the patch to a default Crystal ROM.
 
