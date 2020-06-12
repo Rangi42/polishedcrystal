@@ -1695,10 +1695,10 @@ BattleBGEffect_2a:
 	call BattleBGEffects_AnonJumptable
 .anon_dw
 	dw .zero
-	dw .one
+	dw DoNothing
 	dw .two
 	dw .three
-	dw .four
+	dw DoNothing
 	dw .five
 
 .zero
@@ -1725,8 +1725,6 @@ BattleBGEffect_2a:
 	ld hl, BG_EFFECT_STRUCT_03
 	add hl, bc
 	ld [hl], $0
-.one
-.four
 	ret
 
 .two

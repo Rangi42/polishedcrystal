@@ -118,7 +118,7 @@ PlaceGameFreakPresents:
 	call StandardStackJumpTable
 
 .Jumptable
-	dw PlaceGameFreakPresents_0
+	dw DoNothing
 	dw PlaceGameFreakPresents_1
 	dw PlaceGameFreakPresents_2
 	dw PlaceGameFreakPresents_3
@@ -126,7 +126,6 @@ PlaceGameFreakPresents:
 PlaceGameFreakPresents_AdvanceIndex:
 	ld hl, wJumptableIndex
 	inc [hl]
-PlaceGameFreakPresents_0:
 	ret
 
 PlaceGameFreakPresents_1:
@@ -198,13 +197,12 @@ GameFreakLogoScenes:
 	dw GameFreakLogoScene2
 	dw GameFreakLogoScene3
 	dw GameFreakLogoScene4
-	dw GameFreakLogoScene5
+	dw DoNothing
 
 GameFreakLogoScene1:
 	ld hl, SPRITEANIMSTRUCT_JUMPTABLE_INDEX
 	add hl, bc
 	inc [hl]
-GameFreakLogoScene5:
 	ret
 
 GameFreakLogoScene2:

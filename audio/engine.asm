@@ -1364,7 +1364,7 @@ MusicF6:
 MusicF7:
 MusicF8:
 MusicF9:
-	ret
+	ret ; no-optimize stub function
 
 Music_EndChannel:
 ; called when $ff is encountered w/ subroutine flag set

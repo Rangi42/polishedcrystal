@@ -1741,7 +1741,7 @@ UpdateJumpPosition:
 
 NPCSidewaysStairs:
 	; TODO
-	ret
+	ret ; no-optimize stub function
 
 PlayerSidewaysStairs:
 	call Object28AnonymousJumptable

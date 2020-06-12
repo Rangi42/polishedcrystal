@@ -346,6 +346,17 @@ patterns = {
 		and (prev[0].code == 'ret' or
 			line2.code.split()[-1].lstrip('n') == prev[0].code.split()[-1].lstrip('n'))),
 ],
+'Stub function': [
+	# Bad: call [z|nz|c|nc,] Foo / ... / Foo: / ret
+	# Good: (do nothing)
+	#
+	# Bad: jr|jp [z|nz|c|nc,] Foo / ... / Foo: / ret
+	# Good: ret [z|nz|c|nc]
+	(lambda line1, prev: re.match(r'[A-Za-z_\.]', line1.text[0])
+		and ' ' not in line1.code
+		and line1.code.lower() not in {'endc', 'endr', 'endm'}),
+	(lambda line2, prev: line2.code == 'ret'),
+],
 }
 
 # Count the total instances of the pattern

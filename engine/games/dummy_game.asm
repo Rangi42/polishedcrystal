@@ -586,4 +586,4 @@ MissingDummyGameGFX:
 
 ret_e00ed:
 ; How many coins?
-	ret
+	ret ; no-optimize stub function

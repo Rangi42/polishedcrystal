@@ -33,7 +33,7 @@ Bankswitch::
 
 _de_::
 	push de
-DoNothing::
+DoNothing:: ; no-optimize stub function
 	ret
 
 
