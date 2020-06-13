@@ -174,15 +174,15 @@ HPBarAnim_UpdateTiles:
 	ld a, [wWhichHPBar]
 	and 1
 	ld b, a
-	push de
 	ld a, [wWhichHPBar]
 	cp 2
 	jr nz, .skip
+	push de
 	ld de, SCREEN_WIDTH * 2
 	add hl, de
-.skip:
-	call DrawBattleHPBar
 	pop de
+.skip
+	call DrawBattleHPBar
 	ld hl, wCurHPAnimPal
 	call SetHPPal
 	ld c, d
@@ -195,7 +195,7 @@ HPBarAnim_UpdateHPRemaining:
 
 	ld de, SCREEN_WIDTH + 2
 	dec a
-	jr z, .update_hp_number
+	jr nz, .update_hp_number
 	dec de
 .update_hp_number
 	push hl
