@@ -218,7 +218,7 @@ UnknownText_0x9991a:
 UnknownText_0x999d5:
 	text "I wish my #mon"
 	line "were as elegant as"
-	cont "the Kimono Girls"
+	cont "the Kimono Girls."
 	done
 
 UnknownText_0x99a0a:
