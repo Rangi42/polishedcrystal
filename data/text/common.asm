@@ -1693,7 +1693,7 @@ UnknownText_0x1bdd96::
 	para "If you want your"
 	line "#mon back, it"
 	cont "will cost ¥"
-	deciram wStringBuffer2 + 2, 3, 4
+	deciram wStringBuffer2 + 2, 3, 5
 	text "."
 	done
 
