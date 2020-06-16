@@ -15,11 +15,15 @@ _CheckContactMove::
 	ccf
 	ret
 .ContactMoves::
+	db ACROBATICS
 	db AERIAL_ACE
+	db AQUA_JET
 	db AQUA_TAIL
 	db ASTONISH
+	db AVALANCHE
 	db BITE
 	db BODY_SLAM
+	db BRAVE_BIRD
 	db BUG_BITE
 	db BULLET_PUNCH
 	db CLOSE_COMBAT
@@ -30,14 +34,16 @@ _CheckContactMove::
 	db CUT
 	db DIG
 	db DIZZY_PUNCH
-	db DOUBLE_KICK
 	db DOUBLE_EDGE
+	db DOUBLE_KICK
+	db DOUBLE_SLAP
 	db DRAGON_CLAW
 	db DRAIN_KISS
 	db DRAIN_PUNCH
 	db DRILL_PECK
 	db DYNAMICPUNCH
 	db EXTREMESPEED
+	db FACADE
 	db FALSE_SWIPE
 	db FEINT_ATTACK
 	db FIRE_PUNCH
@@ -85,6 +91,7 @@ _CheckContactMove::
 	db STEEL_WING
 	db STOMP
 	db STRENGTH
+	db SUCKER_PUNCH
 	db SUPER_FANG
 	db TACKLE
 	db TAKE_DOWN
