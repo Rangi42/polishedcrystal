@@ -6864,14 +6864,15 @@ AnimateExpBar:
 	cp MAX_LEVEL
 	jp nc, .finish
 
-	ldh a, [hProduct + 3]
+	ldh a, [hQuotient + 2]
 	ld [wd004], a
 	push af
-	ldh a, [hProduct + 2]
+	ldh a, [hQuotient + 1]
 	ld [wd003], a
 	push af
-	xor a
+	ld a, [hQuotient]
 	ld [wd002], a
+	push af
 	xor a ; PARTYMON
 	ld [wMonType], a
 	predef CopyPkmnToTempMon
@@ -6975,9 +6976,11 @@ AnimateExpBar:
 	call .LoopBarAnimation
 	call TerminateExpBarSound
 	pop af
-	ldh [hProduct + 2], a
+	ldh [hQuotient], a
 	pop af
-	ldh [hProduct + 3], a
+	ldh [hQuotient + 1], a
+	pop af
+	ldh [hQuotient + 2], a
 
 .finish
 	pop bc
