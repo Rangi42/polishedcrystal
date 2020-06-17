@@ -430,20 +430,12 @@ _ChooseWildEncounter:
 	pop bc
 	ld a, [wBaseType1]
 	cp c
-	jr z, .type_ok
+	jr z, .loadwildmon
 	ld a, [wBaseType2]
 	cp c
-	jr z, .type_ok
+	jr z, .loadwildmon
 	inc c
 	jr nz, .get_random_mon
-
-.type_ok
-	jr .loadwildmon
-
-.nowildbattle
-	ld a, 1
-	and a
-	ret
 
 .loadwildmon
 	ld a, b
@@ -467,6 +459,11 @@ _ChooseWildEncounter:
 
 .startwildbattle
 	xor a
+	ret
+
+.nowildbattle
+	ld a, 1
+	and a
 	ret
 
 INCLUDE "data/wild/probabilities.asm"

@@ -64,7 +64,7 @@ HDMATransferToWRAMBank3:
 	; fallthrough
 
 WaitDMATransfer:
-	jr .handleLoop
+	jr .handleLoop ; no-optimize stub jump
 .loop
 	call DelayFrame
 .handleLoop

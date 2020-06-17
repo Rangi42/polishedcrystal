@@ -4165,7 +4165,7 @@ BattleMenuPKMN_Loop:
 	farcall ManagePokemonMoves
 	call GetMonBackpic
 
-.Cancel:
+.Cancel: ; no-optimize stub jump
 	jr BattleMenuPKMN_Loop
 
 .Stats:

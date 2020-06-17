@@ -741,7 +741,7 @@ PokegearRadio_Init:
 	ld hl, SPRITEANIMSTRUCT_TILE_ID
 	add hl, bc
 	ld [hl], $8
-	call _UpdateRadioStation
+	call UpdateRadioStation
 	ld hl, wJumptableIndex
 	inc [hl]
 	ret
@@ -1330,9 +1330,6 @@ INCBIN "gfx/pokegear/phone.tilemap.rle"
 ClockTilemapRLE:
 INCBIN "gfx/pokegear/clock.tilemap.rle"
 
-_UpdateRadioStation:
-	jr UpdateRadioStation
-
 ; called from engine/sprite_anims.asm
 
 AnimateTuningKnob:
@@ -1362,7 +1359,7 @@ AnimateTuningKnob:
 	ret z
 	dec [hl]
 	dec [hl]
-	jr .update
+	jr UpdateRadioStation
 
 .up
 	ld hl, wRadioTuningKnob
@@ -1371,7 +1368,8 @@ AnimateTuningKnob:
 	ret nc
 	inc [hl]
 	inc [hl]
-.update
+	; fallthrough
+
 UpdateRadioStation:
 	ld hl, wRadioTuningKnob
 	ld d, [hl]

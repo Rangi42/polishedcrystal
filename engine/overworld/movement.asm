@@ -661,7 +661,7 @@ Movement_fast_jump_step_left:
 Movement_fast_jump_step_right:
 	ld a, STEP_BIKE << 2 | RIGHT
 Movement_jump_step:
-	jr JumpStep
+	jr JumpStep ; no-optimize stub jump
 
 Movement_turn_step_down:
 	ld a, OW_DOWN

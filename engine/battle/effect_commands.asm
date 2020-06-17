@@ -4864,7 +4864,7 @@ BattleCommand_forceraisestat:
 	ld b, -1
 ForceRaiseStat:
 	xor a
-_ForceRaiseStat:
+_ForceRaiseStat: ; no-optimize stub jump
 	jr ChangeStat
 
 BattleCommand_forcelowerstat:

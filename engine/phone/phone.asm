@@ -66,7 +66,7 @@ GetRemainingSpaceInPhoneList:
 	cp -1
 	jr z, .done
 	cp c
-	jr z, .elm_or_mom
+	jr z, .loop
 	push bc
 	push hl
 	ld c, a
@@ -78,8 +78,6 @@ GetRemainingSpaceInPhoneList:
 .elm_or_mom_in_list
 	pop hl
 	pop bc
-
-.elm_or_mom
 	jr .loop
 
 .done

@@ -631,7 +631,7 @@ Error_Cant_ExitMenu:
 	call PrintText
 	call ApplyTilemapInVBlank
 .infinite_loop
-	jr .infinite_loop
+	jr .infinite_loop ; no-optimize stub jump
 
 .Text_NoWindowsAvailableForPopping:
 	text_jump UnknownText_0x1c46b7
