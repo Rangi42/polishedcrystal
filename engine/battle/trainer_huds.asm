@@ -260,6 +260,11 @@ DoesNuzlockeModePreventCapture:
 	bit NUZLOCKE_MODE, a
 	jr z, .no
 
+	; Is tutorial battle?
+	ld a, [wBattleType]
+	cp 2
+	jr z, .no
+
 	; Is enemy shiny?
 	farcall BattleCheckEnemyShininess
 	jr c, .no
