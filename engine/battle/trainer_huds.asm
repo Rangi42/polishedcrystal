@@ -262,7 +262,7 @@ DoesNuzlockeModePreventCapture:
 
 	; Is tutorial battle?
 	ld a, [wBattleType]
-	cp 2
+	cp BATTLETYPE_TUTORIAL
 	jr z, .no
 
 	; Is enemy shiny?
