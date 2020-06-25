@@ -81,8 +81,8 @@ EvosAttacksPointers::
 	dw GolemPlainEvosAttacks
 	dw PonytaPlainEvosAttacks
 	dw RapidashPlainEvosAttacks
-	dw SlowpokeEvosAttacks
-	dw SlowbroEvosAttacks
+	dw SlowpokePlainEvosAttacks
+	dw SlowbroPlainEvosAttacks
 	dw MagnemiteEvosAttacks
 	dw MagnetonEvosAttacks
 	dw FarfetchDEvosAttacks
@@ -281,4 +281,6 @@ EvosAttacksPointers::
 	dw MarowakAlolanEvosAttacks
 	dw PonytaGalarianEvosAttacks
 	dw RapidashGalarianEvosAttacks
+	dw SlowpokeGalarianEvosAttacks
+	dw SlowbroGalarianEvosAttacks
 	dw WeezingGalarianEvosAttacks

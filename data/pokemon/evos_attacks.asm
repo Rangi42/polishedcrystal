@@ -1717,7 +1717,7 @@ RapidashGalarianEvosAttacks:
 	db 49, MOONBLAST ; Healing Wish → new move
 	db 0 ; no more level-up moves
 
-SlowpokeEvosAttacks:
+SlowpokePlainEvosAttacks:
 	db EVOLVE_HOLDING, KINGS_ROCK, SLOWKING
 	db EVOLVE_LEVEL, 37, SLOWBRO
 	db 0 ; no more evolutions
@@ -1738,13 +1738,53 @@ SlowpokeEvosAttacks:
 	db 58, RECOVER ; Heal Pulse → similar move
 	db 0 ; no more level-up moves
 
-SlowbroEvosAttacks:
+SlowpokeGalarianEvosAttacks:
+	db EVOLVE_LEVEL, 37, SLOWBRO
+	db 0 ; no more evolutions
+	db 1, CURSE
+	db 1, TACKLE
+	db 5, GROWL
+	db 9, ACID
+	db 14, CONFUSION
+	db 19, DISABLE
+	db 23, HEADBUTT
+	db 28, WATER_PULSE
+	db 32, ZEN_HEADBUTT
+	db 36, SAFEGUARD ; Slack Off → egg move
+	db 41, AMNESIA
+	db 45, PSYCHIC_M
+	db 49, RAIN_DANCE
+	db 54, BELLY_DRUM ; Psych Up → egg move
+	db 58, RECOVER ; Heal Pulse → similar move
+	db 0 ; no more level-up moves
+
+SlowbroPlainEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, DEFENSE_CURL ; Withdraw → similar move ; evolution move
 	db 1, CURSE
 	db 1, TACKLE
 	db 5, GROWL
 	db 9, WATER_GUN
+	db 14, CONFUSION
+	db 19, DISABLE
+	db 23, HEADBUTT
+	db 28, WATER_PULSE
+	db 32, ZEN_HEADBUTT
+	db 36, SAFEGUARD ; Slack Off → egg move
+	db 43, AMNESIA
+	db 49, PSYCHIC_M
+	db 55, RAIN_DANCE
+	db 62, BELLY_DRUM ; Psych Up → egg move
+	db 68, RECOVER ; Heal Pulse → similar move
+	db 0 ; no more level-up moves
+
+SlowbroGalarianEvosAttacks:
+	db 0 ; no more evolutions
+	db 1, GUNK_SHOT ; Shell Side Arm → similar move ; evolution move
+	db 1, CURSE
+	db 1, TACKLE
+	db 5, GROWL
+	db 9, ACID
 	db 14, CONFUSION
 	db 19, DISABLE
 	db 23, HEADBUTT

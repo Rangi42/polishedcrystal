@@ -77,8 +77,8 @@ FrontPicPointers::
 	dba GolemPlainFrontpic
 	dba PonytaPlainFrontpic
 	dba RapidashPlainFrontpic
-	dba SlowpokeFrontpic
-	dba SlowbroFrontpic
+	dba SlowpokePlainFrontpic
+	dba SlowbroPlainFrontpic
 	dba MagnemiteFrontpic
 	dba MagnetonFrontpic
 	dba FarfetchDFrontpic
@@ -334,4 +334,6 @@ FrontPicPointers::
 	dba MarowakAlolanFrontpic
 	dba PonytaGalarianFrontpic
 	dba RapidashGalarianFrontpic
+	dba SlowpokeGalarianFrontpic
+	dba SlowbroGalarianFrontpic
 	dba WeezingGalarianFrontpic

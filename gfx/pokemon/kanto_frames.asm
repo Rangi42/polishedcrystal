@@ -60,8 +60,6 @@ WeepinbellFrames: INCLUDE "gfx/pokemon/weepinbell/frames.asm"
 VictreebelFrames: INCLUDE "gfx/pokemon/victreebel/frames.asm"
 TentacoolFrames:  INCLUDE "gfx/pokemon/tentacool/frames.asm"
 TentacruelFrames: INCLUDE "gfx/pokemon/tentacruel/frames.asm"
-SlowpokeFrames:   INCLUDE "gfx/pokemon/slowpoke/frames.asm"
-SlowbroFrames:    INCLUDE "gfx/pokemon/slowbro/frames.asm"
 MagnemiteFrames:  INCLUDE "gfx/pokemon/magnemite/frames.asm"
 MagnetonFrames:   INCLUDE "gfx/pokemon/magneton/frames.asm"
 FarfetchDFrames:  INCLUDE "gfx/pokemon/farfetch_d/frames.asm"
@@ -221,6 +219,12 @@ PonytaGalarianFrames: INCLUDE "gfx/pokemon/ponyta_galarian/frames.asm"
 
 RapidashPlainFrames:    INCLUDE "gfx/pokemon/rapidash_plain/frames.asm"
 RapidashGalarianFrames: INCLUDE "gfx/pokemon/rapidash_galarian/frames.asm"
+
+SlowpokePlainFrames:   INCLUDE "gfx/pokemon/slowpoke_plain/frames.asm"
+SlowpokeGalarianFrames: INCLUDE "gfx/pokemon/slowpoke_galarian/frames.asm"
+
+SlowbroPlainFrames:    INCLUDE "gfx/pokemon/slowbro_plain/frames.asm"
+SlowbroGalarianFrames: INCLUDE "gfx/pokemon/slowbro_galarian/frames.asm"
 
 WeezingPlainFrames:    INCLUDE "gfx/pokemon/weezing_plain/frames.asm"
 WeezingGalarianFrames: INCLUDE "gfx/pokemon/weezing_galarian/frames.asm"

@@ -314,7 +314,8 @@ PonytaGalarianEggMoves:
 	db PLAY_ROUGH
 	db $ff
 
-SlowpokeEggMoves:
+SlowpokePlainEggMoves:
+SlowpokeGalarianEggMoves:
 	db BELLY_DRUM
 	db FUTURE_SIGHT
 	db STOMP

@@ -77,8 +77,8 @@ AnimationPointers:
 	dw GolemPlainAnimation
 	dw PonytaPlainAnimation
 	dw RapidashPlainAnimation
-	dw SlowpokeAnimation
-	dw SlowbroAnimation
+	dw SlowpokePlainAnimation
+	dw SlowbroPlainAnimation
 	dw MagnemiteAnimation
 	dw MagnetonAnimation
 	dw FarfetchDAnimation
@@ -334,4 +334,6 @@ AnimationPointers:
 	dw MarowakAlolanAnimation
 	dw PonytaGalarianAnimation
 	dw RapidashGalarianAnimation
+	dw SlowpokeGalarianAnimation
+	dw SlowbroGalarianAnimation
 	dw WeezingGalarianAnimation

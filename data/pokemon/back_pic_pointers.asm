@@ -77,8 +77,8 @@ BackPicPointers::
 	dba GolemPlainBackpic
 	dba PonytaPlainBackpic
 	dba RapidashPlainBackpic
-	dba SlowpokeBackpic
-	dba SlowbroBackpic
+	dba SlowpokePlainBackpic
+	dba SlowbroPlainBackpic
 	dba MagnemiteBackpic
 	dba MagnetonBackpic
 	dba FarfetchDBackpic
@@ -334,4 +334,6 @@ BackPicPointers::
 	dba MarowakAlolanBackpic
 	dba PonytaGalarianBackpic
 	dba RapidashGalarianBackpic
+	dba SlowpokeGalarianBackpic
+	dba SlowbroGalarianBackpic
 	dba WeezingGalarianBackpic
