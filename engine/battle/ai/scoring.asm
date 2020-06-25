@@ -370,9 +370,8 @@ AI_Smart:
 	dbw EFFECT_HEAL_BELL,         AI_Smart_HealBell
 	dbw EFFECT_PRIORITY_HIT,      AI_Smart_PriorityHit
 	dbw EFFECT_MEAN_LOOK,         AI_Smart_MeanLook
-	dbw EFFECT_FLAME_WHEEL,       AI_Smart_FlameWheel
-	dbw EFFECT_FLARE_BLITZ,       AI_Smart_FlameWheel
-	dbw EFFECT_SACRED_FIRE,       AI_Smart_FlameWheel
+	dbw EFFECT_FLARE_BLITZ,       AI_Smart_Defrost
+	dbw EFFECT_SACRED_FIRE,       AI_Smart_Defrost
 	dbw EFFECT_CURSE,             AI_Smart_Curse
 	dbw EFFECT_PROTECT,           AI_Smart_Protect
 	dbw EFFECT_FORESIGHT,         AI_Smart_Foresight
@@ -1197,7 +1196,6 @@ AI_Smart_Encore:
 	db CONVERSION
 	db DISABLE
 	db DREAM_EATER
-	db FLAME_WHEEL
 	db FOCUS_ENERGY
 	db GROWTH
 	db HAZE
@@ -1452,7 +1450,7 @@ AICheckLastPlayerMon:
 
 	ret
 
-AI_Smart_FlameWheel:
+AI_Smart_Defrost:
 ; Use this move if the enemy is frozen.
 
 	ld a, [wEnemyMonStatus]

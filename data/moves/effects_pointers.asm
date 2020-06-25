@@ -15,6 +15,7 @@ MoveEffectsPointers:
 	dw ConfuseHit
 	dw AttackUpHit
 	dw DefenseUpHit
+	dw SpeedUpHit
 	dw AllUpHit
 	dw AttackDownHit
 	dw DefenseDownHit
@@ -99,7 +100,6 @@ MoveEffectsPointers:
 	dw HealBell
 	dw Thief
 	dw MeanLook
-	dw FlameWheel
 	dw Curse
 	dw Protect
 	dw Spikes
