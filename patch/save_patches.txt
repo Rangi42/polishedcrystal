@@ -99,8 +99,7 @@ ConvertToNewbox:
 	set #2, 16
 .write_checksum_loop
 	getfilebyte #3
-	and #temp, #result, 1
-	rotateleft #temp, 7
+	shiftleft #temp, #result, 7
 	or #3, #temp
 	writebyte #3
 	rotateleft #result, 1
