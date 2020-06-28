@@ -109,7 +109,7 @@ ConvertToNewbox:
 	jump .encode_outer_loop
 
 .done_encode_loop
-; copy all of temp back to pokedb (#1 is already set to sBox_v6
+; copy all of temp back to pokedb (#1 is already set to sBox_v6)
 	remainder #temp, #a, 7
 	multiply #temp, 1040
 	add #2, sBoxMons1, #temp
