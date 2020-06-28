@@ -27,13 +27,10 @@ ConvertToNewbox:
 ;copy nick
 	add #1, 828
 	mulacum #1, #length, -21 ; offset from box mon n + 1 to nickname n
-	set #3, 7
-	call CopyFrom1To2
-	increment #1 ; skip terminator byte (will always be 0007+nickname)
-	set #3, 3
+	set #3, 10
 	call CopyFrom1To2
 ; copy OT
-	subtract #1, 231 ; offset from nickname n+1 to OT n
+	subtract #1, 230 ; offset from nickname n+1 to OT n
 	set #3, 7
 	call CopyFrom1To2
 	increment #1 ; skip terminator byte (will always be 0007+OT)
@@ -60,8 +57,60 @@ ConvertToNewbox:
 	jump .set_flags_loop
 
 .done_flags_loop
-; copy all of temp back to pokedb
 	set #1, sBox_v6
+	seek #1
+	set #length, #b
+; begin calculating 16-bit checksum for each box pokemon
+.encode_outer_loop
+	jumpz #length, .done_encode_loop
+	set #2, #zero
+	set #result, 127
+.mon_struct_loop
+	increment #2
+	readbyte #3
+	mulacum #result, #3, #2
+	iflt #2, 32, .mon_struct_loop
+; convert nickname/OT chars to 7-bit, accounting for special chars
+	pushpos
+.nickname_ot_loop
+	increment #2
+	getfilebyte #3
+	set #temp, 0xfa
+	ifeq #3, 0x7f, .replace
+	increment #temp
+	ifeq #3, 0x53, .replace
+	increment #temp
+	jumpnz #3, .remove_bit
+.replace
+	set #3, #temp
+.remove_bit
+	and #3, 0x7f
+	writebyte #3
+	mulacum #result, #3, #2
+	iflt #2, 49, .nickname_ot_loop
+.hyper_training_loop
+	increment #2
+	readbyte #3
+	mulacum #result, #3, #2
+	iflt #2, 52, .hyper_training_loop
+; write checksum for each 16 lower bits (starting with MSB) into encoded nickname/OT chars
+	poppos
+	rotateleft #result, -15
+	set #2, 16
+.write_checksum_loop
+	getfilebyte #3
+	and #temp, #result, 1
+	rotateleft #temp, 7
+	or #3, #temp
+	writebyte #3
+	rotateleft #result, 1
+	decrement #2
+	jumpnz #2, .write_checksum_loop
+	decrement #length
+	jump .encode_outer_loop
+
+.done_encode_loop
+; copy all of temp back to pokedb (#1 is already set to sBox_v6
 	remainder #temp, #a, 7
 	multiply #temp, 1040
 	add #2, sBoxMons1, #temp

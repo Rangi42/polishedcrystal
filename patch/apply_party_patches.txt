@@ -34,9 +34,8 @@ ApplyPartyPatches:
 	shiftleft #temp, 31
 	; there are two extra bytes for the daycare lady we need to skip
 	; (#1 should end up on sBreedmon2, not sBreedmon2Item)
-	readhalfword #result
+	readhalfword #result ; move file pointer ahead
 	pos #result
-	seek #result
 	callnz #temp, .daycare_mon
 	set #b, sBox1_v6
 	call .boxes
@@ -69,6 +68,7 @@ ApplyPartyPatches:
 	add #2, #result, 1
 	add #3, #result, 12
 	set #4, 2
+	rotateleft #temp, 1
 .apply_to_list
 	set #d, #temp
 	set #e, #4

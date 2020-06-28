@@ -38,7 +38,6 @@ SavePatches:
 	dw ChangeGyaradosForm ; implicit
 
 	dh 7
-	;dw ConvertToNewbox ; first build with version number
-	dw DoNothing
+	dw ConvertToNewbox ; first build with version number
 
 	dh 0
