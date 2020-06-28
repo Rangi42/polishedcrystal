@@ -2851,17 +2851,16 @@ AI_Status:
 .no_leaf_guard
 	; Check Substitute
 	farcall CheckSubstituteOpp
-	call nz, AIDiscourageMove
+	jr nz, .pop_and_discourage
 	pop hl
-	pop de
-	pop bc
-	jp .checkmove
+	jr .nextmove
 
 .pop_and_discourage
 	pop hl
+	call AIDiscourageMove
+.nextmove
 	pop de
 	pop bc
-	call AIDiscourageMove
 	jp .checkmove
 
 AI_Risky:
