@@ -1,12 +1,49 @@
 AIChooseMove:
-; Score each move in wEnemyMonMoves starting from wBuffer1. Lower is better.
-; Pick the move with the lowest score.
-
+; Wrapper around AI move choosing. Let the AI switch out if its desired move
+; differs from one it is locked into with Choice or Encore.
 	; Linking is handled elsewhere
 	ld a, [wLinkMode]
 	and a
 	ret nz
 
+	ld a, [wEnemyEncoreCount]
+	push af
+	xor a
+	ld [wEnemyEncoreCount], a
+
+	; First, check if the AI has any usable moves. This prevents switches
+	; caused by the AI running out of usable moves alltogether.
+	call SetEnemyTurn
+	farcall CheckUsableMoves
+	jr z, .not_struggling
+
+	; Just bypass the checks alltogether
+	pop af
+	ret
+
+.not_struggling
+	call _AIChooseMove
+	pop af
+	ld [wEnemyEncoreCount], a
+
+	; Check if the chosen move is usable after restoring Choice/Encore
+	ld a, [wCurEnemyMoveNum]
+	farcall CheckUsableMove
+	ret z
+
+	; Move is unusable. Try to switch out as if we have perish 1.
+	ld a, [wEnemyPerishCount]
+	push af
+	ld a, 1
+	ld [wEnemyPerishCount], a
+	farcall AI_MaybeSwitch
+	pop af
+	ld [wEnemyPerishCount], a
+	ret
+
+_AIChooseMove:
+; Score each move in wEnemyMonMoves starting from wBuffer1. Lower is better.
+; Pick the move with the lowest score.
 	; Default score is 20, unusable moves are set to 80.
 	call SetEnemyTurn
 	ld hl, wStringBuffer5 + 3
