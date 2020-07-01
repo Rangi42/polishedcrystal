@@ -3352,7 +3352,6 @@ UnevolvedEviolite:
 	ret
 
 BattleCommand_damagestats:
-AttackDamage:
 ; Return move power d, player level e, enemy defense c and player attack b.
 
 	call ResetDamage
