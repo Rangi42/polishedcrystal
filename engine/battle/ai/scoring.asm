@@ -387,7 +387,6 @@ AI_Smart:
 	dbw EFFECT_PURSUIT,           AI_Smart_Pursuit
 	dbw EFFECT_RAPID_SPIN,        AI_Smart_RapidSpin
 	dbw EFFECT_HEALING_LIGHT,     AI_Smart_HealingLight
-	dbw EFFECT_HIDDEN_POWER,      AI_Smart_HiddenPower
 	dbw EFFECT_RAIN_DANCE,        AI_Smart_RainDance
 	dbw EFFECT_SUNNY_DAY,         AI_Smart_SunnyDay
 	dbw EFFECT_BELLY_DRUM,        AI_Smart_BellyDrum
@@ -1904,44 +1903,6 @@ AI_Smart_RapidSpin:
 	dec [hl]
 	ret
 
-AI_Smart_HiddenPower:
-	push hl
-	ld a, 1
-	ldh [hBattleTurn], a
-
-; Calculate Hidden Power's type and base power based on enemy's DVs.
-	farcall HiddenPowerDamageStats
-	farcall BattleCheckTypeMatchup
-	pop hl
-
-; Discourage Hidden Power if not very effective.
-	ld a, [wd265]
-	cp 10
-	jr c, .bad
-
-; Discourage Hidden Power if its base power	is lower than 50.
-	ld a, d
-	cp 50
-	jr c, .bad
-
-; Encourage Hidden Power if super effective.
-	ld a, [wd265]
-	cp 11
-	jr nc, .good
-
-; Encourage Hidden Power if its base power is 70.
-	ld a, d
-	cp 70
-	ret c
-
-.good
-	dec [hl]
-	ret
-
-.bad
-	inc [hl]
-	ret
-
 AI_Smart_RainDance:
 
 ; Greatly discourage this move if it would favour the player type-wise.
@@ -2642,14 +2603,20 @@ AIDamageCalc:
 	ld a, 1
 	ldh [hBattleTurn], a
 	ld a, [wEnemyMoveStruct + MOVE_EFFECT]
+	cp EFFECT_HIDDEN_POWER
+	jr z, .hidden_power
 	ld de, 1
 	ld hl, .ConstantDamageEffects
 	call IsInArray
 	jr nc, .no_special_damage
 	farjp BattleCommand_constantdamage
 
+.hidden_power
+	farcall HiddenPowerDamageStats
+	jr .damagecalc
 .no_special_damage
 	farcall BattleCommand_damagestats
+.damagecalc
 	farcall BattleCommand_damagecalc
 	farcall BattleCommand_stab
 
