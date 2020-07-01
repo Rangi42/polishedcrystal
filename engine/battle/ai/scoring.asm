@@ -366,7 +366,6 @@ AI_Smart:
 	dbw EFFECT_PAIN_SPLIT,        AI_Smart_PainSplit
 	dbw EFFECT_SLEEP_TALK,        AI_Smart_SleepTalk
 	dbw EFFECT_DESTINY_BOND,      AI_Smart_DestinyBond
-	dbw EFFECT_REVERSAL,          AI_Smart_Reversal
 	dbw EFFECT_HEAL_BELL,         AI_Smart_HealBell
 	dbw EFFECT_PRIORITY_HIT,      AI_Smart_PriorityHit
 	dbw EFFECT_MEAN_LOOK,         AI_Smart_MeanLook
@@ -1255,7 +1254,6 @@ AI_Smart_SleepTalk:
 	ret
 
 AI_Smart_DestinyBond:
-AI_Smart_Reversal:
 ; Discourage this move if enemy's HP is above 25%.
 
 	call AICheckEnemyQuarterHP
@@ -2603,10 +2601,10 @@ AIDamageCalc:
 	ld a, 1
 	ldh [hBattleTurn], a
 	ld a, [wEnemyMoveStruct + MOVE_EFFECT]
-	cp EFFECT_HIDDEN_POWER
-	jr z, .hidden_power
 	cp EFFECT_GYRO_BALL
 	jr z, .gyro_ball
+	cp EFFECT_HIDDEN_POWER
+	jr z, .hidden_power
 	cp EFFECT_LOW_KICK
 	jr z, .low_kick
 	cp EFFECT_RETURN
