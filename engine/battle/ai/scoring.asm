@@ -2605,19 +2605,43 @@ AIDamageCalc:
 	ld a, [wEnemyMoveStruct + MOVE_EFFECT]
 	cp EFFECT_HIDDEN_POWER
 	jr z, .hidden_power
+	cp EFFECT_GYRO_BALL
+	jr z, .gyro_ball
+	cp EFFECT_LOW_KICK
+	jr z, .low_kick
+	cp EFFECT_RETURN
+	jr z, .return
+	cp EFFECT_REVERSAL
+	jr z, .reversal
 	ld de, 1
 	ld hl, .ConstantDamageEffects
 	call IsInArray
 	jr nc, .no_special_damage
 	farjp BattleCommand_constantdamage
 
+.gyro_ball
+	farcall BattleCommand_damagestats
+	farcall BattleCommand_gyroball
+	jr .damagecalc
 .hidden_power
 	farcall HiddenPowerDamageStats
 	jr .damagecalc
+.low_kick
+	farcall BattleCommand_damagestats
+	farcall BattleCommand_lowkick
+	jr .damagecalc
+.return ; the move
+	farcall BattleCommand_damagestats
+	farcall BattleCommand_happinesspower
+	jr .damagecalc
+.reversal
+	farcall BattleCommand_constantdamage
+	jr .stab
 .no_special_damage
 	farcall BattleCommand_damagestats
 .damagecalc
 	farcall BattleCommand_damagecalc
+.stab
 	farcall BattleCommand_stab
 
 	; harmless even if move doesn't have a conditional boost

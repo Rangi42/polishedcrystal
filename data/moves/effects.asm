@@ -1733,8 +1733,8 @@ Swagger:
 	confusetarget
 	endmove
 
-Avalanche:
 Acrobatics:
+Avalanche:
 Facade:
 Hex:
 Venoshock:
