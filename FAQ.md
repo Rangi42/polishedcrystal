@@ -22,14 +22,14 @@ The game's data files do a fairly good job of listing things you'll want to know
 
 ### What are the options at the start of a new game?
 
-* **Natures:** Enables natures from Gen 3.
-* **Abilities:** Enables abilities from Gen 3.
-* **Phys/Spcl split:** Enables the Physical/Special split from Gen 4.
-* **Exp. scaling:** Enables the experience formula from Gen 5, which scales experience by the ratio of the opponent's level to your level.
-* **IVs vary colors:** Enables color variation inspired by Stadium. DVs will subtly vary Pokémon colors. This applies to normal and shiny Pokémon.
+* **Natures:** Enables [natures](https://bulbapedia.bulbagarden.net/wiki/Nature) from Gen 3 onward.
+* **Abilities:** Enables [abilities](https://bulbapedia.bulbagarden.net/wiki/Ability) from Gen 3 onward.
+* **Phys/Spcl split:** Enables the [Physical/Special split](https://bulbapedia.bulbagarden.net/wiki/Damage_category) from Gen 4 onward.
+* **Exp. scaling:** Enables the [experience formula](https://bulbapedia.bulbagarden.net/wiki/Experience#Gain_formula) from Gen 5, 7 and 8, which scales experience by the ratio of the opponent's level to your level.
+* **IVs vary colors:** Enables color variation [inspired by Stadium](https://bulbapedia.bulbagarden.net/wiki/List_of_alternately_colored_Pok%C3%A9mon_in_the_games#Pok.C3.A9mon_Stadium). DVs will subtly vary Pokémon colors. This applies to normal and shiny Pokémon.
 * **Perfect stats:** All Pokémon stats, for you and the opponent, are calculated as if they had maximum IVs. The actual IVs are still random, so color variation and Hidden Power type are not affected.
 * **Traded Pokémon treat you as OT:** All differences in traded Pokémon go away: they always obey you, don't gain boosted experience, and can be nicknamed.
-* **Nuzlocke mode:** Enables a Nuzlocke run; see [FEATURES.md](FEATURES.md) for detailed clauses.
+* **Nuzlocke mode:** Enables a [Nuzlocke challenge](https://bulbapedia.bulbagarden.net/wiki/Nuzlocke_Challenge); see [FEATURES.md](FEATURES.md) for detailed clauses.
 
 If you need to change these options after starting a game, press Left+B at the title screen to reset them.
 

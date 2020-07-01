@@ -484,7 +484,7 @@ BattleTowerMons4:
 
 	db ARCANINE
 	db CHARCOAL
-	db FLAME_WHEEL, LEER, BODY_SLAM, ROAR
+	db FLAME_CHARGE, LEER, BODY_SLAM, ROAR
 	db $bf, $eb, $ff ; DVs
 	db ABILITY_1 | QUIRKY, MALE ; Personality
 

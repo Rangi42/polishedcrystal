@@ -300,11 +300,9 @@ BattleCommand_checkturn:
 	bit FRZ, [hl]
 	jr z, .not_frozen
 
-	; Flame Wheel, Sacred Fire, Scald, and Flare Blitz thaw the user.
+	; Sacred Fire, Scald, and Flare Blitz thaw the user.
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
-	cp FLAME_WHEEL
-	jr z, .thaw
 	cp SACRED_FIRE
 	jr z, .thaw
 	cp SCALD

@@ -116,7 +116,7 @@ endc
 if DEF(FAITHFUL)
 	move FIRE_SPIN,    EFFECT_TRAP,               35, FIRE,       85, 15,   0, SPECIAL
 else
-	move FIRE_SPIN,    EFFECT_TRAP,               35, FIRE,       90, 15,   0, SPECIAL
+	move FIRE_SPIN,    EFFECT_TRAP,               40, FIRE,       90, 15,   0, SPECIAL
 endc
 	move THUNDERSHOCK, EFFECT_PARALYZE_HIT,       40, ELECTRIC,  100, 30,  10, SPECIAL
 	move THUNDERBOLT,  EFFECT_PARALYZE_HIT,       90, ELECTRIC,  100, 15,  10, SPECIAL
@@ -222,7 +222,7 @@ endc
 	move WILL_O_WISP,  EFFECT_BURN,                0, FIRE,       85, 15,   0, STATUS
 	move ZEN_HEADBUTT, EFFECT_FLINCH_HIT,         80, PSYCHIC,    90, 15,  20, PHYSICAL
 	move FACADE,       EFFECT_CONDITIONAL_BOOST,  70, NORMAL,    100, 20,   0, PHYSICAL
-	move FLAME_WHEEL,  EFFECT_FLAME_WHEEL,        60, FIRE,      100, 25,  10, PHYSICAL
+	move FLAME_CHARGE, EFFECT_SPEED_UP_HIT,       50, FIRE,      100, 20, 100, PHYSICAL
 	move HYPER_VOICE,  EFFECT_NORMAL_HIT,         90, NORMAL,    100, 10,   0, SPECIAL
 	move CURSE,        EFFECT_CURSE,               0, GHOST,     100, 10,   0, STATUS
 	move GYRO_BALL,    EFFECT_GYRO_BALL,           1, STEEL,     100,  5,   0, PHYSICAL
@@ -323,7 +323,7 @@ endc
 if DEF(FAITHFUL)
 	move WHIRLPOOL,    EFFECT_TRAP,               35, WATER,      85, 15,   0, SPECIAL
 else
-	move WHIRLPOOL,    EFFECT_TRAP,               35, WATER,      90, 15,   0, SPECIAL
+	move WHIRLPOOL,    EFFECT_TRAP,               40, WATER,      90, 15,   0, SPECIAL
 endc
 	move DARK_PULSE,   EFFECT_FLINCH_HIT,         80, DARK,      100, 15,  20, SPECIAL
 	move MOONBLAST,    EFFECT_SP_ATK_DOWN_HIT,    95, FAIRY,     100, 15,  30, SPECIAL

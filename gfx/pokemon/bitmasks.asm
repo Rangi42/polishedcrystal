@@ -58,8 +58,6 @@ WeepinbellBitmasks: INCLUDE "gfx/pokemon/weepinbell/bitmask.asm"
 VictreebelBitmasks: INCLUDE "gfx/pokemon/victreebel/bitmask.asm"
 TentacoolBitmasks:  INCLUDE "gfx/pokemon/tentacool/bitmask.asm"
 TentacruelBitmasks: INCLUDE "gfx/pokemon/tentacruel/bitmask.asm"
-SlowpokeBitmasks:   INCLUDE "gfx/pokemon/slowpoke/bitmask.asm"
-SlowbroBitmasks:    INCLUDE "gfx/pokemon/slowbro/bitmask.asm"
 MagnemiteBitmasks:  INCLUDE "gfx/pokemon/magnemite/bitmask.asm"
 MagnetonBitmasks:   INCLUDE "gfx/pokemon/magneton/bitmask.asm"
 FarfetchDBitmasks:  INCLUDE "gfx/pokemon/farfetch_d/bitmask.asm"
@@ -353,6 +351,12 @@ PonytaGalarianBitmasks: INCLUDE "gfx/pokemon/ponyta_galarian/bitmask.asm"
 
 RapidashPlainBitmasks:    INCLUDE "gfx/pokemon/rapidash_plain/bitmask.asm"
 RapidashGalarianBitmasks: INCLUDE "gfx/pokemon/rapidash_galarian/bitmask.asm"
+
+SlowpokePlainBitmasks:   INCLUDE "gfx/pokemon/slowpoke_plain/bitmask.asm"
+SlowpokeGalarianBitmasks: INCLUDE "gfx/pokemon/slowpoke_galarian/bitmask.asm"
+
+SlowbroPlainBitmasks:    INCLUDE "gfx/pokemon/slowbro_plain/bitmask.asm"
+SlowbroGalarianBitmasks: INCLUDE "gfx/pokemon/slowbro_galarian/bitmask.asm"
 
 WeezingPlainBitmasks:    INCLUDE "gfx/pokemon/weezing_plain/bitmask.asm"
 WeezingGalarianBitmasks: INCLUDE "gfx/pokemon/weezing_galarian/bitmask.asm"

@@ -77,8 +77,8 @@ BitmasksPointers:
 	dw GolemPlainBitmasks
 	dw PonytaPlainBitmasks
 	dw RapidashPlainBitmasks
-	dw SlowpokeBitmasks
-	dw SlowbroBitmasks
+	dw SlowpokePlainBitmasks
+	dw SlowbroPlainBitmasks
 	dw MagnemiteBitmasks
 	dw MagnetonBitmasks
 	dw FarfetchDBitmasks
@@ -334,4 +334,6 @@ BitmasksPointers:
 	dw MarowakAlolanBitmasks
 	dw PonytaGalarianBitmasks
 	dw RapidashGalarianBitmasks
+	dw SlowpokeGalarianBitmasks
+	dw SlowbroGalarianBitmasks
 	dw WeezingGalarianBitmasks

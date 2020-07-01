@@ -171,7 +171,7 @@ BattleAnimations::
 	dw BattleAnim_WillOWisp
 	dw BattleAnim_ZenHeadbutt
 	dw BattleAnim_Facade
-	dw BattleAnim_FlameWheel
+	dw BattleAnim_FlameCharge
 	dw BattleAnim_HyperVoice
 	dw BattleAnim_Curse
 	dw BattleAnim_GyroBall
@@ -3437,7 +3437,7 @@ BattleAnim_BugBuzz:
 	anim_wait 24
 	anim_ret
 
-BattleAnim_FlameWheel:
+BattleAnim_FlameCharge: ; formerly Flame Wheel
 	anim_1gfx ANIM_GFX_FIRE
 .loop
 	anim_sound 0, 0, SFX_EMBER
@@ -4482,7 +4482,7 @@ BattleAnim_Return:
 	anim_call BattleAnim_ShowMon_0
 	anim_ret
 
-BattleAnim_Psystrike:
+BattleAnim_Psystrike: ; formerly Kinesis
 	anim_2gfx ANIM_GFX_MISC, ANIM_GFX_NOISE
 	anim_bgeffect ANIM_BG_06, $0, $2, $0
 	anim_obj ANIM_OBJ_KINESIS,  10, 0,   9, 4, $0

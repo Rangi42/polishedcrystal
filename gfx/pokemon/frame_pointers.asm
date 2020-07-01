@@ -77,8 +77,8 @@ FramesPointers:
 	dw GolemPlainFrames
 	dw PonytaPlainFrames
 	dw RapidashPlainFrames
-	dw SlowpokeFrames
-	dw SlowbroFrames
+	dw SlowpokePlainFrames
+	dw SlowbroPlainFrames
 	dw MagnemiteFrames
 	dw MagnetonFrames
 	dw FarfetchDFrames
@@ -334,4 +334,6 @@ FramesPointers:
 	dw MarowakAlolanFrames
 	dw PonytaGalarianFrames
 	dw RapidashGalarianFrames
+	dw SlowpokeGalarianFrames
+	dw SlowbroGalarianFrames
 	dw WeezingGalarianFrames

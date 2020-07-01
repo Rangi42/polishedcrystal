@@ -456,6 +456,29 @@ SteelWing:
 	posthiteffects
 	endmove
 
+SpeedUpHit:
+FlameCharge:
+	checkobedience
+	usedmovetext
+	doturn
+	hastarget
+	checkhit
+	critical
+	effectchance
+	damagestats
+	damagecalc
+	stab
+	damagevariation
+	moveanim
+	failuretext
+	applydamage
+	criticaltext
+	supereffectivetext
+	raisestathit SPEED
+	postfainteffects
+	posthiteffects
+	endmove
+
 AllUpHit:
 Ancientpower:
 	checkobedience
@@ -1607,29 +1630,6 @@ MeanLook:
 	hastarget
 	bounceback
 	arenatrap
-	endmove
-
-FlameWheel:
-	checkobedience
-	usedmovetext
-	doturn
-	hastarget
-	checkhit
-	critical
-	effectchance
-	damagestats
-	damagecalc
-	stab
-	damagevariation
-	moveanim
-	failuretext
-	applydamage
-	criticaltext
-	supereffectivetext
-	defrost
-	postfainteffects
-	posthiteffects
-	burntarget
 	endmove
 
 Curse:

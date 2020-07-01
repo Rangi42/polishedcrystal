@@ -60,8 +60,6 @@ WeepinbellAnimation: INCLUDE "gfx/pokemon/weepinbell/anim0.asm"
 VictreebelAnimation: INCLUDE "gfx/pokemon/victreebel/anim0.asm"
 TentacoolAnimation:  INCLUDE "gfx/pokemon/tentacool/anim0.asm"
 TentacruelAnimation: INCLUDE "gfx/pokemon/tentacruel/anim0.asm"
-SlowpokeAnimation:   INCLUDE "gfx/pokemon/slowpoke/anim0.asm"
-SlowbroAnimation:    INCLUDE "gfx/pokemon/slowbro/anim0.asm"
 MagnemiteAnimation:  INCLUDE "gfx/pokemon/magnemite/anim0.asm"
 MagnetonAnimation:   INCLUDE "gfx/pokemon/magneton/anim0.asm"
 FarfetchDAnimation:  INCLUDE "gfx/pokemon/farfetch_d/anim0.asm"
@@ -355,6 +353,12 @@ PonytaGalarianAnimation: INCLUDE "gfx/pokemon/ponyta_galarian/anim0.asm"
 
 RapidashPlainAnimation:    INCLUDE "gfx/pokemon/rapidash_plain/anim0.asm"
 RapidashGalarianAnimation: INCLUDE "gfx/pokemon/rapidash_galarian/anim0.asm"
+
+SlowpokePlainAnimation:   INCLUDE "gfx/pokemon/slowpoke_plain/anim0.asm"
+SlowpokeGalarianAnimation: INCLUDE "gfx/pokemon/slowpoke_galarian/anim0.asm"
+
+SlowbroPlainAnimation:    INCLUDE "gfx/pokemon/slowbro_plain/anim0.asm"
+SlowbroGalarianAnimation: INCLUDE "gfx/pokemon/slowbro_galarian/anim0.asm"
 
 WeezingPlainAnimation:    INCLUDE "gfx/pokemon/weezing_plain/anim0.asm"
 WeezingGalarianAnimation: INCLUDE "gfx/pokemon/weezing_galarian/anim0.asm"

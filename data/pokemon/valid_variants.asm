@@ -22,5 +22,7 @@ ValidVariantRanges: ; for Wonder Trade
 	db MAROWAK,   2 ; ALOLAN
 	db PONYTA,    2 ; GALARIAN
 	db RAPIDASH,  2 ; GALARIAN
+	db SLOWPOKE,  2 ; GALARIAN
+	db SLOWBRO,   2 ; GALARIAN
 	db WEEZING,   2 ; GALARIAN
 	db -1
