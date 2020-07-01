@@ -349,7 +349,6 @@ AI_Smart:
 	dbw EFFECT_HEAL,              AI_Smart_Heal
 	dbw EFFECT_TOXIC,             AI_Smart_Toxic
 	dbw EFFECT_LIGHT_SCREEN,      AI_Smart_LightScreen
-	dbw EFFECT_SUPER_FANG,        AI_Smart_SuperFang
 	dbw EFFECT_TRAP,              AI_Smart_Bind
 	dbw EFFECT_CONFUSE,           AI_Smart_Confuse
 	dbw EFFECT_SP_DEF_UP_2,       AI_Smart_SpDefenseUp2
@@ -962,14 +961,6 @@ AI_Smart_TrickRoom:
 	dec [hl]
 	dec [hl]
 	dec [hl]
-	ret
-
-AI_Smart_SuperFang:
-; Discourage this move if player's HP is below 25%.
-
-	call AICheckPlayerQuarterHP
-	ret c
-	inc [hl]
 	ret
 
 AI_Smart_Paralyze:
