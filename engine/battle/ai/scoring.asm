@@ -2620,10 +2620,7 @@ AIDamageCalc:
 	farcall BattleCommand_damagecalc
 	farcall BattleCommand_stab
 
-	; Maybe run conditional boost if applicable
-	ld a, [wEnemyMoveStruct + MOVE_EFFECT]
-	cp EFFECT_CONDITIONAL_BOOST
-	ret nz
+	; harmless even if move doesn't have a conditional boost
 	farjp BattleCommand_conditionalboost
 
 .ConstantDamageEffects:
