@@ -1378,7 +1378,6 @@ BugBite:
 	damagecalc
 	stab
 	damagevariation
-	conditionalboost
 	moveanim
 	failuretext
 	bugbite ; before applydamage to steal HP berries before they take effect
