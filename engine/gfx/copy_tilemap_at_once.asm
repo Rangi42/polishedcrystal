@@ -41,8 +41,6 @@ _SafeCopyTilemapAtOnce::
 	jr nz, .waitLYAndUpdateMusic
 	xor a
 	ldh [hBGMapHalf], a
-	inc a
-	call SkipMusic
 	bit 2, b
 	jr z, .noForceOAMUpdate
 	xor a
@@ -61,6 +59,7 @@ _SafeCopyTilemapAtOnce::
 	ldh [hBGMapMode], a ; bit 7 = skip attr map
 	ld a, 1 << 7 | 7 ; execute actual vblank 7
 	ldh [hVBlank], a
+	call UpdateSound
 	call DelayFrame
 	ld a, d
 	ldh [hCGBPalUpdate], a
