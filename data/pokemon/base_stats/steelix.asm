@@ -13,9 +13,9 @@ endc
 	db METAL_COAT ; item 2
 	dn FEMALE_50, 4 ; gender, step cycles to hatch
 	dn 7, 7 ; frontpic dimensions
-	db ROCK_HEAD ; ability 1
-	db SAND_FORCE ; ability 2
-	db SHEER_FORCE ; hidden ability
+	db SHEER_FORCE ; ability 1
+	db STURDY ; ability 2
+	db SAND_FORCE ; hidden ability
 	db MEDIUM_FAST ; growth rate
 	dn INANIMATE, INANIMATE ; egg groups
 
