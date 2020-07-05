@@ -33,9 +33,9 @@ LCD::
 
 	ld l, a
 	add SCREEN_HEIGHT - 1
-	ld [$fe00+4*0], a ; OAM 0 y
-	ld [$fe00+4*1], a ; OAM 1 y
-	ld [$fe00+4*2], a ; OAM 2 y
+	ld [oamSprite00YCoord], a
+	ld [oamSprite01YCoord], a
+	ld [oamSprite02YCoord], a
 
 	ldh a, [hMPState]
 	inc a
@@ -63,11 +63,11 @@ else
 endc
 
 	ld a, [hli]
-	ld [$fe00+4*0+1], a ; OAM 0 x
+	ld [oamSprite00XCoord], a
 	ld a, [hli]
-	ld [$fe00+4*1+1], a ; OAM 1 x
+	ld [oamSprite01XCoord], a
 	ld a, [hli]
-	ld [$fe00+4*2+1], a ; OAM 2 x
+	ld [oamSprite02XCoord], a
 	pop hl
 
 .donemp
