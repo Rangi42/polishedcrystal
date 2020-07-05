@@ -560,7 +560,6 @@ BrickBreak:
 	hastarget
 	checkhit
 	critical
-	effectchance
 	resettypematchup
 	brickbreak
 	damagestats
@@ -707,7 +706,6 @@ CloseCombat:
 	hastarget
 	checkhit
 	critical
-	effectchance
 	damagestats
 	damagecalc
 	stab
@@ -1996,7 +1994,6 @@ Earthquake:
 	hastarget
 	checkhit
 	critical
-	effectchance
 	damagestats
 	damagecalc
 	stab
