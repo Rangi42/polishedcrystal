@@ -2257,7 +2257,7 @@ VoltorbEvosAttacks:
 	db 29, LIGHT_SCREEN
 	db 34, EXPLOSION ; Magnet Rise → Explosion
 	db 37, THUNDER ; Discharge → TM move
-	db 41, HYPER_BEAM ; Explosion → TM move
+	db 41, BUG_BUZZ ; Explosion → new move
 	db 46, GYRO_BALL
 	db 48, MIRROR_COAT
 	db 0 ; no more level-up moves
@@ -2278,7 +2278,7 @@ ElectrodeEvosAttacks:
 	db 29, LIGHT_SCREEN
 	db 36, EXPLOSION ; Magnet Rise → Explosion
 	db 41, THUNDER ; Discharge → TM move
-	db 47, HYPER_BEAM ; Explosion → TM move
+	db 47, BUG_BUZZ ; Explosion → new move
 	db 54, GYRO_BALL
 	db 58, MIRROR_COAT
 	db 0 ; no more level-up moves
