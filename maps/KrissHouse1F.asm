@@ -15,10 +15,10 @@ KrissHouse1F_MapScriptHeader:
 	coord_event  9,  2, 0, MomTrigger4
 
 	db 4 ; bg events
-	bg_event  1,  1, SIGNPOST_JUMPTEXT, FridgeText
-	bg_event  2,  1, SIGNPOST_JUMPTEXT, SinkText
-	bg_event  3,  1, SIGNPOST_JUMPTEXT, StoveText
-	bg_event  6,  1, SIGNPOST_UP, TVScript
+	bg_event  1,  1, SIGNPOST_JUMPTEXT, KrissHouse1FFridgeText
+	bg_event  2,  1, SIGNPOST_JUMPTEXT, KrissHouse1FSinkText
+	bg_event  3,  1, SIGNPOST_JUMPTEXT, KrissHouse1FStoveText
+	bg_event  6,  1, SIGNPOST_UP, KrissHouse1FTVScript
 
 	db 5 ; object events
 	object_event  9,  4, SPRITE_MOM, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, MomScript, EVENT_KRISS_HOUSE_MOM_1
@@ -105,7 +105,7 @@ MomEventScript:
 GearName:
 	db "#gear@"
 
-FridgeText:
+KrissHouse1FFridgeText:
 	text "Let's see what's"
 	line "in the fridge…"
 
@@ -113,20 +113,20 @@ FridgeText:
 	line "tasty Lemonade!"
 	done
 
-SinkText:
+KrissHouse1FSinkText:
 	text "The sink is spot-"
 	line "less. Mom likes it"
 	cont "clean."
 	done
 
-StoveText:
+KrissHouse1FStoveText:
 	text "Mom's specialty!"
 
 	para "Cinnabar Volcano"
 	line "Burger!"
 	done
 
-TVScript:
+KrissHouse1FTVScript:
 	jumpthistext
 
 	text "There's a movie on"
