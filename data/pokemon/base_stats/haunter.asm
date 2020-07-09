@@ -1,4 +1,4 @@
-	db  45,  50,  45,  95, 115,  55
+	db  45,  50,  45,  95, 115,  55 ; 405 BST
 	;   hp  atk  def  spd  sat  sdf
 
 	db GHOST, POISON

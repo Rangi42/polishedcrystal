@@ -1,4 +1,4 @@
-	db  50,  75,  90,  40,  10,  35
+	db  50,  75,  90,  40,  10,  35 ; 300 BST
 	;   hp  atk  def  spd  sat  sdf
 
 	db ICE, STEEL

@@ -1,4 +1,4 @@
-	db  45,  25,  50,  35,  25,  25
+	db  45,  25,  50,  35,  25,  25 ; 205 BST
 	;   hp  atk  def  spd  sat  sdf
 
 	db BUG, POISON

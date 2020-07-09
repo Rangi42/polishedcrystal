@@ -1,4 +1,4 @@
-	db 100, 100, 125,  50, 110,  50
+	db 100, 100, 125,  50, 110,  50 ; 535 BST
 	;   hp  atk  def  spd  sat  sdf
 
 	db GRASS, GRASS

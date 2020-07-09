@@ -1,4 +1,4 @@
-	db  35,  85,  45,  75,  35,  35
+	db  35,  85,  45,  75,  35,  35 ; 310 BST
 	;   hp  atk  def  spd  sat  sdf
 
 	db NORMAL, FLYING

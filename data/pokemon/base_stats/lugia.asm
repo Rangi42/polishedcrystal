@@ -1,4 +1,4 @@
-	db 106,  90, 130, 110,  90, 154
+	db 106,  90, 130, 110,  90, 154 ; 680 BST
 	;   hp  atk  def  spd  sat  sdf
 
 if DEF(FAITHFUL)

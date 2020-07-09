@@ -1,4 +1,4 @@
-	db  80,  85,  95,  25,  30,  30
+	db  80,  85,  95,  25,  30,  30 ; 345 BST
 	;   hp  atk  def  spd  sat  sdf
 
 	db GROUND, ROCK

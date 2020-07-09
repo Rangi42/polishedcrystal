@@ -1,4 +1,4 @@
-	db  10,  10,  10,  10,  10,  10
+	db  10,  10,  10,  10,  10,  10 ; 60 BST
 	;   hp  atk  def  spd  sat  sdf
 
 	db NORMAL, NORMAL

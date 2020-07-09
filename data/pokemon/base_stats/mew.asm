@@ -1,4 +1,4 @@
-	db 100, 100, 100, 100, 100, 100
+	db 100, 100, 100, 100, 100, 100 ; 600 BST
 	;   hp  atk  def  spd  sat  sdf
 
 	db PSYCHIC, PSYCHIC

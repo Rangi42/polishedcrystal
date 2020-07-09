@@ -1,4 +1,4 @@
-	db 100, 134, 110,  61,  95, 100
+	db 100, 134, 110,  61,  95, 100 ; 600 BST
 	;   hp  atk  def  spd  sat  sdf
 
 	db ROCK, DARK

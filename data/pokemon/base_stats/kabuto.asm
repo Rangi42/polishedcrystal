@@ -1,4 +1,4 @@
-	db  30,  80,  90,  55,  55,  45
+	db  30,  80,  90,  55,  55,  45 ; 355 BST
 	;   hp  atk  def  spd  sat  sdf
 
 	db ROCK, WATER

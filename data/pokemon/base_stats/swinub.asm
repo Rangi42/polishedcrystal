@@ -1,4 +1,4 @@
-	db  50,  50,  40,  50,  30,  30
+	db  50,  50,  40,  50,  30,  30 ; 250 BST
 	;   hp  atk  def  spd  sat  sdf
 
 	db ICE, GROUND

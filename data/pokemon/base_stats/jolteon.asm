@@ -1,4 +1,4 @@
-	db  65,  65,  60, 130, 110,  95
+	db  65,  65,  60, 130, 110,  95 ; 525 BST
 	;   hp  atk  def  spd  sat  sdf
 
 	db ELECTRIC, ELECTRIC

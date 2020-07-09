@@ -1,4 +1,4 @@
-	db  70, 110,  80, 105,  55,  80
+	db  70, 110,  80, 105,  55,  80 ; 500 BST
 	;   hp  atk  def  spd  sat  sdf
 
 	db BUG, FLYING

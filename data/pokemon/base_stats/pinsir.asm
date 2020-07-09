@@ -1,4 +1,4 @@
-	db  65, 125, 100,  85,  55,  70
+	db  65, 125, 100,  85,  55,  70 ; 500 BST
 	;   hp  atk  def  spd  sat  sdf
 
 	db BUG, BUG

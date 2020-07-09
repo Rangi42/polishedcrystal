@@ -1,4 +1,4 @@
-	db  60,  62,  63,  60,  80,  80
+	db  60,  62,  63,  60,  80,  80 ; 405 BST
 	;   hp  atk  def  spd  sat  sdf
 
 	db GRASS, POISON

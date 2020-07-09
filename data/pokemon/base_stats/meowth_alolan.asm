@@ -1,4 +1,4 @@
-	db  40,  35,  35,  90,  50,  40
+	db  40,  35,  35,  90,  50,  40 ; 290 BST
 	;   hp  atk  def  spd  sat  sdf
 
 	db DARK, DARK

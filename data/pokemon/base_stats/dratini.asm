@@ -1,4 +1,4 @@
-	db  41,  64,  45,  50,  50,  50
+	db  41,  64,  45,  50,  50,  50 ; 300 BST
 	;   hp  atk  def  spd  sat  sdf
 
 	db DRAGON, DRAGON

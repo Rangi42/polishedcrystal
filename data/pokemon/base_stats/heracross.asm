@@ -1,4 +1,4 @@
-	db  80, 125,  75,  85,  40,  95
+	db  80, 125,  75,  85,  40,  95 ; 500 BST
 	;   hp  atk  def  spd  sat  sdf
 
 	db BUG, FIGHTING

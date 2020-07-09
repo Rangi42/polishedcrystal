@@ -1,4 +1,4 @@
-	db  75,  38,  38,  67,  56,  56
+	db  75,  38,  38,  67,  56,  56 ; 330 BST
 	;   hp  atk  def  spd  sat  sdf
 
 	db WATER, ELECTRIC

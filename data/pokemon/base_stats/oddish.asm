@@ -1,4 +1,4 @@
-	db  45,  50,  55,  30,  75,  65
+	db  45,  50,  55,  30,  75,  65 ; 320 BST
 	;   hp  atk  def  spd  sat  sdf
 
 	db GRASS, POISON

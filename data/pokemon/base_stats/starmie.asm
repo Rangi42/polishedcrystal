@@ -1,4 +1,4 @@
-	db  60,  75,  85, 115, 100,  85
+	db  60,  75,  85, 115, 100,  85 ; 520 BST
 	;   hp  atk  def  spd  sat  sdf
 
 	db WATER, PSYCHIC

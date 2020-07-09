@@ -1,4 +1,4 @@
-	db  38,  41,  40,  65,  50,  65
+	db  38,  41,  40,  65,  50,  65 ; 299 BST
 	;   hp  atk  def  spd  sat  sdf
 
 	db ICE, ICE

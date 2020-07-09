@@ -1,4 +1,4 @@
-	db  60,  95,  69,  80,  65,  79
+	db  60,  95,  69,  80,  65,  79 ; 448 BST
 	;   hp  atk  def  spd  sat  sdf
 
 	db POISON, POISON

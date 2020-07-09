@@ -1,4 +1,4 @@
-	db  40,  40,  40,  20,  70,  40
+	db  40,  40,  40,  20,  70,  40 ; 250 BST
 	;   hp  atk  def  spd  sat  sdf
 
 	db FIRE, FIRE

@@ -1,4 +1,4 @@
-	db  95, 105,  85,  45, 125,  75
+	db  95, 105,  85,  45, 125,  75 ; 530 BST
 	;   hp  atk  def  spd  sat  sdf
 
 	db GRASS, DRAGON

@@ -1,4 +1,4 @@
-	db 105, 105,  75,  50,  65, 100
+	db 105, 105,  75,  50,  65, 100 ; 500 BST
 	;   hp  atk  def  spd  sat  sdf
 
 	db POISON, DARK

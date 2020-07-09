@@ -1,4 +1,4 @@
-	db  35, 100,  50, 120,  50,  70
+	db  35, 100,  50, 120,  50,  70 ; 425 BST
 	;   hp  atk  def  spd  sat  sdf
 
 	db GROUND, GROUND

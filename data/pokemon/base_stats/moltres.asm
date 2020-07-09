@@ -1,4 +1,4 @@
-	db  90, 100,  90,  90, 125,  85
+	db  90, 100,  90,  90, 125,  85 ; 580 BST
 	;   hp  atk  def  spd  sat  sdf
 
 	db FIRE, FLYING

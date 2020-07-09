@@ -1,8 +1,8 @@
 if DEF(FAITHFUL)
-	db  60,  60,  60, 105, 105, 105
+	db  60,  60,  60, 105, 105, 105 ; 495 BST
 	;   hp  atk  def  spd  sat  sdf
 else
-	db  60,  60,  60, 110, 110, 110
+	db  60,  60,  60, 110, 110, 110 ; 510 BST
 	;   hp  atk  def  spd  sat  sdf
 endc
 

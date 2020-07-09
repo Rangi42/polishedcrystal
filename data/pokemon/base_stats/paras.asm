@@ -1,4 +1,4 @@
-	db  35,  70,  55,  25,  45,  55
+	db  35,  70,  55,  25,  45,  55 ; 285 BST
 	;   hp  atk  def  spd  sat  sdf
 
 	db BUG, GRASS

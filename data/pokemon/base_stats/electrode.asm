@@ -1,4 +1,4 @@
-	db  60,  50,  70, 150,  80,  80
+	db  60,  50,  70, 150,  80,  80 ; 490 BST
 	;   hp  atk  def  spd  sat  sdf
 
 	db ELECTRIC, ELECTRIC

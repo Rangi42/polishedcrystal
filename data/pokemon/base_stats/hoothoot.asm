@@ -1,4 +1,4 @@
-	db  60,  30,  30,  50,  36,  56
+	db  60,  30,  30,  50,  36,  56 ; 262 BST
 	;   hp  atk  def  spd  sat  sdf
 
 	db NORMAL, FLYING

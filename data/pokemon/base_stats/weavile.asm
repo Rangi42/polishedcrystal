@@ -1,4 +1,4 @@
-	db  70, 120,  65, 125,  45,  85
+	db  70, 120,  65, 125,  45,  85 ; 510 BST
 	;   hp  atk  def  spd  sat  sdf
 
 	db DARK, ICE

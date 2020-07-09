@@ -1,4 +1,4 @@
-	db  85,  90,  80, 130,  70,  80
+	db  85,  90,  80, 130,  70,  80 ; 535 BST
 	;   hp  atk  def  spd  sat  sdf
 
 	db POISON, FLYING

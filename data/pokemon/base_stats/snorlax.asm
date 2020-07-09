@@ -1,4 +1,4 @@
-	db 160, 110,  65,  30,  65, 110
+	db 160, 110,  65,  30,  65, 110 ; 540 BST
 	;   hp  atk  def  spd  sat  sdf
 
 	db NORMAL, NORMAL

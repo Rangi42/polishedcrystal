@@ -1,4 +1,4 @@
-	db 130,  65,  60,  65, 110,  95
+	db 130,  65,  60,  65, 110,  95 ; 525 BST
 	;   hp  atk  def  spd  sat  sdf
 
 	db WATER, WATER

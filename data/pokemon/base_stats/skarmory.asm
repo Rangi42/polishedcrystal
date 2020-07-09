@@ -1,4 +1,4 @@
-	db  65,  80, 140,  70,  40,  70
+	db  65,  80, 140,  70,  40,  70 ; 465 BST
 	;   hp  atk  def  spd  sat  sdf
 
 	db STEEL, FLYING

@@ -1,4 +1,4 @@
-	db  30,  56,  35,  72,  25,  35
+	db  30,  56,  35,  72,  25,  35 ; 253 BST
 	;   hp  atk  def  spd  sat  sdf
 
 	db DARK, NORMAL

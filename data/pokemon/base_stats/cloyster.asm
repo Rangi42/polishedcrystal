@@ -1,4 +1,4 @@
-	db  50,  95, 180,  70,  85,  45
+	db  50,  95, 180,  70,  85,  45 ; 525 BST
 	;   hp  atk  def  spd  sat  sdf
 
 	db WATER, ICE

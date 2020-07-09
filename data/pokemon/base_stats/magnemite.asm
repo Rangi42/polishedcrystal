@@ -1,4 +1,4 @@
-	db  25,  35,  70,  45,  95,  55
+	db  25,  35,  70,  45,  95,  55 ; 325 BST
 	;   hp  atk  def  spd  sat  sdf
 
 	db ELECTRIC, STEEL

@@ -1,4 +1,4 @@
-	db  20,  10, 230,  05,  10, 230
+	db  20,  10, 230,  05,  10, 230 ; 505 BST
 	;   hp  atk  def  spd  sat  sdf
 
 	db BUG, ROCK

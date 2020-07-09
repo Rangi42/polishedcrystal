@@ -1,4 +1,4 @@
-	db  60,  60,  60,  85,  85,  85
+	db  60,  60,  60,  85,  85,  85 ; 435 BST
 	;   hp  atk  def  spd  sat  sdf
 
 	db GHOST, GHOST

@@ -1,4 +1,4 @@
-	db  30,  30,  30,  30,  30,  30
+	db  30,  30,  30,  30,  30,  30 ; 180 BST
 	;   hp  atk  def  spd  sat  sdf
 
 	db GRASS, GRASS

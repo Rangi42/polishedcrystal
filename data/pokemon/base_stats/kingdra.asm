@@ -1,4 +1,4 @@
-	db  75,  95,  95,  85,  95,  95
+	db  75,  95,  95,  85,  95,  95 ; 540 BST
 	;   hp  atk  def  spd  sat  sdf
 
 	db WATER, DRAGON

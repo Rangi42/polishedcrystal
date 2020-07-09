@@ -1,4 +1,4 @@
-	db  85,  80,  70,  90, 135,  75
+	db  85,  80,  70,  90, 135,  75 ; 535 BST
 	;   hp  atk  def  spd  sat  sdf
 
 	db NORMAL, NORMAL

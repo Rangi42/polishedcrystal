@@ -1,4 +1,4 @@
-	db  10,  55,  30,  90,  35,  45
+	db  10,  55,  30,  90,  35,  45 ; 265 BST
 	;   hp  atk  def  spd  sat  sdf
 
 	db GROUND, STEEL
