@@ -103,7 +103,7 @@ GenericTrainerFisherDallas:
 GenericTrainerSightseerfPilar:
 	generictrainer SIGHTSEERF, PILAR, EVENT_BEAT_SIGHTSEERF_PILAR, .SeenText, .BeatenText
 
-	text "¡Que fuertes son"
+	text "¡Qué fuertes son"
 	line "tus #mon!"
 
 	para "Debes de haber"
@@ -118,12 +118,12 @@ GenericTrainerSightseerfPilar:
 	line "hasta acá desde"
 	cont "muy lejos."
 
-	para "¿Que tal si"
+	para "¿Qué tal si"
 	line "combatimos?"
 	done
 
 .BeatenText:
-	text "Pense que duraría"
+	text "Pensé que duraría"
 	line "más…"
 	done
 
