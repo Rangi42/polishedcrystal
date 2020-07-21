@@ -1802,7 +1802,7 @@ _SubtractHP:
 
 RestoreOpponentHP:
 	call CallOpponentTurn
-RestoreHP
+RestoreHP:
 	ld hl, wBattleMonMaxHP
 	ldh a, [hBattleTurn]
 	and a

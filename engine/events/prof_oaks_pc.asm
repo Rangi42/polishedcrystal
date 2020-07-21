@@ -11,7 +11,7 @@ ProfOaksPC:
 	call JoyWaitAorB
 	jp ExitMenu
 
-ProfOaksPCBoot
+ProfOaksPCBoot:
 	ld hl, OakPCText2
 	call PrintText
 	call Rate

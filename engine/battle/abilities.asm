@@ -725,7 +725,7 @@ StaticAbility:
 	ret z
 	lb bc, LIMBER, HELD_PREVENT_PARALYZE
 	ld d, PAR
-AfflictStatusAbility
+AfflictStatusAbility:
 ; While BattleCommand_whatever already does all these checks,
 ; duplicating them here is minor logic, and it avoids spamming
 ; needless ability activations that ends up not actually doing

@@ -887,7 +887,7 @@ IntroFadePalettes:
 	db %11111000
 	db %11110100
 	db %11100100
-IntroFadePalettesEnd
+IntroFadePalettesEnd:
 
 DrawIntroPlayerPic:
 	xor a

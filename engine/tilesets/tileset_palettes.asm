@@ -99,7 +99,6 @@ PokeCenterSpecialCase:
 	ret
 
 MartSpecialCase:
-	GLOBAL GenericMart_BlockData
 	ld hl, MartPalette
 	call LoadEightBGPalettes
 	ld hl, wMapBlocksBank

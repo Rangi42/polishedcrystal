@@ -555,7 +555,7 @@ CheckIfUserIsSomeType::
 	ld b, a
 	ldh a, [hBattleTurn]
 	xor 1
-CheckIfSomeoneIsSomeType
+CheckIfSomeoneIsSomeType:
 	ld c, a
 	ld de, wEnemyMonType1
 	ld a, c
@@ -916,7 +916,6 @@ BattleTextBox::
 
 StdBattleTextBox::
 ; Open a textbox and print battle text at 20:hl.
-GLOBAL BattleText
 	ldh a, [hROMBank]
 	push af
 	ld a, BANK(BattleText)

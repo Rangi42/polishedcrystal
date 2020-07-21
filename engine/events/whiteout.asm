@@ -39,7 +39,7 @@ Script_Whiteout:
 .bug_contest
 	jumpstd bugcontestresultswarp
 
-OverworldWhiteoutFade
+OverworldWhiteoutFade:
 	farcall FadeOutPalettes
 	call ClearTileMap
 	call ClearSprites

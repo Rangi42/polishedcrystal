@@ -14,4 +14,3 @@ vTiles4:: ds $800
 vTiles5:: ds $800
 vBGMap2:: ds $400
 vBGMap3:: ds $400
-VRAM_End::

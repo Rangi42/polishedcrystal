@@ -144,7 +144,7 @@ AgathaSeenText:
 	cont "trainer can do!"
 	done
 
-AgathaBeatenText
+AgathaBeatenText:
 	text "Oh, my!"
 	done
 

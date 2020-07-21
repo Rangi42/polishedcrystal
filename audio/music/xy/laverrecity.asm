@@ -623,7 +623,7 @@ Music_LaverreCityXY_Ch4_branch_1:
 	note C#, 4
 	endchannel
 
-Music_LaverreCityXY_Ch4_branch_2
+Music_LaverreCityXY_Ch4_branch_2:
 	notetype $c
 	note __, 12
 	note __, 12

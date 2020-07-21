@@ -1402,7 +1402,7 @@ Music_MewtwoBattleStadium_Ch3_loop_3:
 	loopchannel 4, Music_MewtwoBattleStadium_Ch3_loop_3
 	note E_, 2
 	note A_, 2
-Music_MewtwoBattleStadium_Ch3_loop_5
+Music_MewtwoBattleStadium_Ch3_loop_5:
 	note A#, 2
 	note G#, 2
 	note F_, 2

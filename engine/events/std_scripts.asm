@@ -288,7 +288,7 @@ SmashRockScript:
 PokeCenterSignScript:
 	farjumptext PokeCenterSignText
 
-MartSignScript
+MartSignScript:
 	farjumptext MartSignText
 
 DayToTextScript:
@@ -429,7 +429,7 @@ BugContestResultsScript:
 	special PlayMapMusic
 	end
 
-BugContestResults_CopyContestantsToResults
+BugContestResults_CopyContestantsToResults:
 	checkevent EVENT_BUG_CATCHING_CONTESTANT_1A
 	iftrue .skip1
 	clearevent EVENT_BUG_CATCHING_CONTESTANT_1B

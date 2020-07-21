@@ -39,7 +39,7 @@ Marts:
 	dw BattleTowerMart1
 	dw BattleTowerMart2
 	dw BattleTowerMart3
-MartsEnd
+MartsEnd:
 
 CherrygroveMart:
 	db 4 ; # items

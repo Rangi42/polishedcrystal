@@ -118,7 +118,6 @@ ReturnFarCall::
 	ret
 
 RunFunctionInWRA6::
-	GLOBAL wDecompressScratch
 	ld a, BANK(wDecompressScratch)
 
 ; fallthrough

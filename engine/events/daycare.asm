@@ -99,7 +99,7 @@ DayCareLadyIntroText:
 	inc a
 DayCareManIntroText:
 	set 7, [hl]
-DayCarePersonIntroText
+DayCarePersonIntroText:
 	call PrintDayCareText
 	jp YesNoBox
 

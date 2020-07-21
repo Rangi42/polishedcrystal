@@ -40,7 +40,6 @@ UpdateSound::
 
 _LoadMusicByte::
 ; wCurMusicByte = [a:de]
-GLOBAL LoadMusicByte
 	rst Bankswitch
 	ld a, [de]
 	ld [wCurMusicByte], a

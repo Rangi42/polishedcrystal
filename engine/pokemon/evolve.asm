@@ -18,7 +18,7 @@ EvolveAfterBattle:
 
 	push hl
 
-EvolveAfterBattle_MasterLoop
+EvolveAfterBattle_MasterLoop:
 	ld hl, wCurPartyMon
 	inc [hl]
 

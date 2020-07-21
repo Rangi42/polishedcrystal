@@ -602,7 +602,7 @@ AdjustHourForAMorPM:
 	ld a, 12
 	ret
 
-PrintHoursMins
+PrintHoursMins:
 ; Hours in b, minutes in c
 	ld a, [wOptions2]
 	bit CLOCK_FORMAT, a
