@@ -1253,7 +1253,10 @@ checkegg: MACRO
 	ENDM
 
 callthisasm: MACRO
-	callasm .asm\@
+	; "callasm .asm\@" causes a "File stack dump too long, got truncated"
+	; error due to the long filename:linenumber trace of nested macros.
+	db callasm_command
+	dba .asm\@
 	end
 .asm\@
 ENDM
