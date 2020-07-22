@@ -71,12 +71,12 @@ home.o \
 ram.o \
 audio.o \
 audio/music_player.o \
+data/overworld/tilesets.o \
 data/pokemon/dex_entries.o \
 data/pokemon/egg_moves.o \
 data/pokemon/evos_attacks.o \
 data/maps/map_data.o \
 data/text/common.o \
-data/tilesets.o \
 engine/movie/credits.o \
 engine/overworld/events.o \
 gfx/pics.o \

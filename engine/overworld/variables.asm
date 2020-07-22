@@ -6,7 +6,7 @@ _GetVarAction::
 .valid
 	ld c, a
 	ld b, 0
-	ld hl, .VarActionTable
+	ld hl, VarActionTable
 	add hl, bc
 	add hl, bc
 	add hl, bc
@@ -22,91 +22,58 @@ _GetVarAction::
 	and RETVAR_ADDR_DE
 	ret nz
 	ld a, [de]
-.loadstringbuffer2
+	; fallthrough
+LoadStringBuffer2:
 	ld de, wStringBuffer2
 	ld [de], a
 	ret
 
-.VarActionTable:
-; $00: copy [de] to wStringBuffer2
-; $40: return address in de
-; $80: call function
-	dwb wStringBuffer2,                 RETVAR_STRBUF2
-	dwb wPartyCount,                    RETVAR_STRBUF2
-	dwb .BattleResult,                  RETVAR_EXECUTE
-	dwb wBattleType,                    RETVAR_ADDR_DE
-	dwb wTimeOfDay,                     RETVAR_STRBUF2
-	dwb .CountCaughtMons,               RETVAR_EXECUTE
-	dwb .CountSeenMons,                 RETVAR_EXECUTE
-	dwb .CountBadges,                   RETVAR_EXECUTE
-	dwb wPlayerState,                   RETVAR_ADDR_DE
-	dwb .wPlayerFacing,                 RETVAR_EXECUTE
-	dwb hHours,                         RETVAR_STRBUF2
-	dwb .DayOfWeek,                     RETVAR_EXECUTE
-	dwb wMapGroup,                      RETVAR_STRBUF2
-	dwb wMapNumber,                     RETVAR_STRBUF2
-	dwb .UnownCaught,                   RETVAR_EXECUTE
-	dwb wEnvironment,                   RETVAR_STRBUF2
-	dwb .BoxFreeSpace,                  RETVAR_EXECUTE
-	dwb wBugContestMinsRemaining,       RETVAR_STRBUF2
-	dwb wXCoord,                        RETVAR_STRBUF2
-	dwb wYCoord,                        RETVAR_STRBUF2
-	dwb wSpecialPhoneCallID,            RETVAR_STRBUF2
-	dwb wNrOfBeatenBattleTowerTrainers, RETVAR_STRBUF2
-	dwb wKurtApricornQuantity,          RETVAR_STRBUF2
-	dwb wCurCaller,                     RETVAR_ADDR_DE
-	dwb wBlueCardBalance,               RETVAR_ADDR_DE
-	dwb wBuenasPassword,                RETVAR_ADDR_DE
-	dwb wKenjiBreakTimer,               RETVAR_STRBUF2
-	dwb wBattlePoints,                  RETVAR_ADDR_DE
-	dwb .CountPokemonJournals,          RETVAR_EXECUTE
-	dwb .CountTrainerStars,             RETVAR_EXECUTE
-	dwb NULL,                           RETVAR_STRBUF2
+INCLUDE "data/overworld/variables.asm"
 
-.CountCaughtMons:
+Var_CountCaughtMons:
 ; Caught mons.
 	ld hl, wPokedexCaught
 	ld b, wEndPokedexCaught - wPokedexCaught
 	call CountSetBits
 	ld a, [wd265]
-	jp .loadstringbuffer2
+	jp LoadStringBuffer2
 
-.CountSeenMons:
+Var_CountSeenMons:
 ; Seen mons.
 	ld hl, wPokedexSeen
 	ld b, wEndPokedexSeen - wPokedexSeen
 	call CountSetBits
 	ld a, [wd265]
-	jp .loadstringbuffer2
+	jp LoadStringBuffer2
 
-.CountBadges:
+Var_CountBadges:
 ; Number of owned badges.
 	ld hl, wBadges
 	ld b, wBadgesEnd - wBadges
 	call CountSetBits
 	ld a, [wd265]
-	jp .loadstringbuffer2
+	jp LoadStringBuffer2
 
-.wPlayerFacing:
+Var_PlayerFacing:
 ; The direction the player is facing.
 	ld a, [wPlayerDirection]
 	and $c
 	rrca
 	rrca
-	jp .loadstringbuffer2
+	jp LoadStringBuffer2
 
-.DayOfWeek:
+Var_DayOfWeek:
 ; The day of the week.
 	call GetWeekday
-	jp .loadstringbuffer2
+	jp LoadStringBuffer2
 
-.UnownCaught:
+Var_UnownCaught:
 ; Number of unique Unown caught.
 	call .count
 	ld a, b
-	jp .loadstringbuffer2
+	jp LoadStringBuffer2
 
-.count
+.count:
 	ld hl, wUnownDex
 	ld b, 0
 .loop
@@ -119,7 +86,7 @@ _GetVarAction::
 	jr c, .loop
 	ret
 
-.BoxFreeSpace:
+Var_BoxFreeSpace:
 ; Remaining slots in the current box.
 	ld a, BANK(sBoxCount)
 	call GetSRAMBank
@@ -129,21 +96,21 @@ _GetVarAction::
 	ld b, a
 	call CloseSRAM
 	ld a, b
-	jp .loadstringbuffer2
+	jp LoadStringBuffer2
 
-.BattleResult:
+Var_BattleResult:
 	ld a, [wBattleResult]
 	and $3f
-	jp .loadstringbuffer2
+	jp LoadStringBuffer2
 
-.CountPokemonJournals:
+Var_CountPokemonJournals:
 	ld hl, wPokemonJournals
 	ld b, wPokemonJournalsEnd - wPokemonJournals
 	call CountSetBits
 	ld a, [wd265]
-	jp .loadstringbuffer2
+	jp LoadStringBuffer2
 
-.CountTrainerStars:
+Var_CountTrainerStars:
 	ld b, 0
 	; star for beating the Elite Four
 	eventflagcheck EVENT_BEAT_ELITE_FOUR
@@ -176,4 +143,4 @@ _GetVarAction::
 	inc b
 .nostar4
 	ld a, b
-	jp .loadstringbuffer2
+	jp LoadStringBuffer2
