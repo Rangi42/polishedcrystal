@@ -264,8 +264,17 @@ BattleCommand_checkturn:
 	jr .fast_asleep
 
 .woke_up
+	; if user has Early Bird, display ability activation
+	call GetTrueUserAbility
+	cp EARLY_BIRD
+	jr nz, .woke_up_no_early_bird
+	farcall DisableAnimations
+	farcall ShowAbilityActivation
+.woke_up_no_early_bird
 	ld hl, WokeUpText
 	call StdBattleTextBox
+	; does nothing in case we never showed an ability activation
+	farcall EnableAnimations
 	ldh a, [hBattleTurn]
 	and a
 	jr nz, .enemy1

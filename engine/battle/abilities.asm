@@ -1805,6 +1805,9 @@ DisableAnimations:
 	ret
 
 EnableAnimations:
+	ld a, [wAnimationsDisabled]
+	and a
+	ret z
 	call DismissAbilityOverlays
 	xor a
 	ld [wAnimationsDisabled], a
