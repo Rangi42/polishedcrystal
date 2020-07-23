@@ -1227,21 +1227,23 @@ AI_Smart_PainSplit:
 AI_Smart_SleepTalk:
 ; Greatly encourage this move if enemy is fast asleep.
 ; Greatly discourage this move otherwise.
-
+; TODO: sleep talk is typically used with rest, but we shouldn't
+; know how long we sleep for if it's randomly 1-3 turns...
+	call GetTrueUserAbility
+	cp EARLY_BIRD
+	ld b, 3
+	jr z, .got_wakeup_time
+	dec b
+.got_wakeup_time
 	ld a, [wEnemyMonStatus]
 	and $7
-	cp $1
-	jr z, .asm_38cc7
+	cp b
+	jp c, AIDiscourageMove
 
-	dec [hl]
-	dec [hl]
-	dec [hl]
-	ret
-
-.asm_38cc7
-	inc [hl]
-	inc [hl]
-	inc [hl]
+	; encourage it a ton to override everything else
+	ld a, [hl]
+	sub 10
+	ld [hl], a
 	ret
 
 AI_Smart_DestinyBond:
