@@ -1,26 +1,26 @@
 VioletPokeCenter1F_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 3 ; warp events
+	def_warp_events
 	warp_event  5,  7, VIOLET_CITY, 5
 	warp_event  6,  7, VIOLET_CITY, 5
 	warp_event  0,  7, POKECENTER_2F, 1
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 1 ; bg events
+	def_bg_events
 	bg_event 10,  1, SIGNPOST_READ, PokemonJournalFalknerScript
 
-	db 5 ; object events
+	def_object_events
 	object_event 10,  2, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_SCRIPT, 0, VioletPokeCenter1FElmsAideScript, EVENT_ELMS_AIDE_IN_VIOLET_POKEMON_CENTER
 	pc_nurse_event  5, 1
 	object_event  9,  4, SPRITE_GAMEBOY_KID, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, VioletPokeCenter1FGameboyKidText, -1
 	object_event  2,  4, SPRITE_GENTLEMAN, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, VioletPokeCenter1FGentlemanText, -1
 	object_event 11,  5, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, VioletPokeCenter1FYoungsterText, -1
 
-	const_def 1 ; object constants
+	object_const_def
 	const VIOLETPOKECENTER1F_SCIENTIST
 
 PokemonJournalFalknerScript:

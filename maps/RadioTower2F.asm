@@ -1,20 +1,20 @@
 RadioTower2F_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event  0,  0, RADIO_TOWER_3F, 1
 	warp_event 15,  0, RADIO_TOWER_1F, 3
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 3 ; bg events
+	def_bg_events
 	bg_event  3,  0, SIGNPOST_JUMPTEXT, UnknownText_0x5e426
 	bg_event  5,  0, SIGNPOST_JUMPTEXT, UnknownText_0x5e430
 	bg_event 13,  0, SIGNPOST_JUMPTEXT, UnknownText_0x5e463
 
-	db 12 ; object events
+	def_object_events
 	object_event 14,  5, SPRITE_BUENA, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Buena, -1
 	object_event  6,  6, SPRITE_POKEMANIAC, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x5d924, EVENT_GOLDENROD_CITY_CIVILIANS
 	object_event 17,  2, SPRITE_POKEFAN_F, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, TeacherScript_0x5d701, -1
@@ -28,7 +28,7 @@ RadioTower2F_MapScriptHeader:
 	object_event 12,  7, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_SCRIPT, 0, ReceptionistScript_0x5d8ff, EVENT_GOLDENROD_CITY_CIVILIANS
 	object_event  3,  6, SPRITE_ROCKER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, RadioTower2FRockerText, EVENT_GOLDENROD_CITY_CIVILIANS
 
-	const_def 1 ; object constants
+	object_const_def
 	const RADIOTOWER2F_BUENA
 
 TeacherScript_0x5d701:

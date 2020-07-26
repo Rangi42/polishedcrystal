@@ -1,20 +1,20 @@
 RadioTower1F_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 3 ; warp events
+	def_warp_events
 	warp_event  2,  7, GOLDENROD_CITY, 11
 	warp_event  3,  7, GOLDENROD_CITY, 11
 	warp_event 15,  0, RADIO_TOWER_2F, 2
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 2 ; bg events
+	def_bg_events
 	bg_event  3,  0, SIGNPOST_JUMPTEXT, UnknownText_0x5d5e7
 	bg_event 13,  0, SIGNPOST_JUMPTEXT, UnknownText_0x5d631
 
-	db 7 ; object events
+	def_object_events
 	object_event  8,  6, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, ReceptionistScript_0x5cd3d, EVENT_GOLDENROD_CITY_CIVILIANS
 	object_event 14,  6, SPRITE_WHITNEY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, RadioTower1FWhitneyScript, EVENT_GOLDENROD_GYM_WHITNEY
 	object_event  5,  6, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, ReceptionistScript_0x5cd29, -1
@@ -23,7 +23,7 @@ RadioTower1F_MapScriptHeader:
 	object_event 14,  1, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerGruntM3, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
 	object_event 12,  6, SPRITE_BATTLE_GIRL, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_SCRIPT, 0, CooltrainerFScript_0x5cdd5, EVENT_GOLDENROD_CITY_CIVILIANS
 
-	const_def 1 ; object constants
+	object_const_def
 	const RADIOTOWER1F_FELICITY
 	const RADIOTOWER1F_WHITNEY
 

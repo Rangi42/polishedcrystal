@@ -1,20 +1,20 @@
 GoldenrodHarbor_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event 31, 16, GOLDENROD_HARBOR_GATE, 1
 	warp_event 31, 17, GOLDENROD_HARBOR_GATE, 2
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 3 ; bg events
+	def_bg_events
 	bg_event 29, 19, SIGNPOST_JUMPTEXT, GoldenrodHarborSignText
 	bg_event 28, 15, SIGNPOST_JUMPTEXT, GoldenrodHarborCrateSignText
 	bg_event 22, 21, SIGNPOST_ITEM + REVIVE, EVENT_GOLDENROD_HARBOR_HIDDEN_REVIVE
 
-	db 14 ; object events
+	def_object_events
 	object_event 17,  3, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GoldenrodHarborFisherScript, -1
 	object_event 13,  5, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerFisherPaton, -1
 	itemball_event 13,  3, STAR_PIECE, 1, EVENT_GOLDENROD_HARBOR_STAR_PIECE

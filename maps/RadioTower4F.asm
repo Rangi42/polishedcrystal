@@ -1,21 +1,21 @@
 RadioTower4F_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 4 ; warp events
+	def_warp_events
 	warp_event  0,  0, RADIO_TOWER_5F, 1
 	warp_event  9,  0, RADIO_TOWER_3F, 2
 	warp_event 12,  0, RADIO_TOWER_5F, 2
 	warp_event 17,  0, RADIO_TOWER_3F, 3
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 2 ; bg events
+	def_bg_events
 	bg_event  7,  0, SIGNPOST_JUMPTEXT, UnknownText_0x5effe
 	bg_event 15,  0, SIGNPOST_JUMPTEXT, UnknownText_0x5f00d
 
-	db 7 ; object events
+	def_object_events
 	object_event  5,  6, SPRITE_ROCKET, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerGruntM10, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
 	object_event  6,  4, SPRITE_FAT_GUY, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x5ec12, EVENT_RADIO_TOWER_CIVILIANS_AFTER
 	object_event 14,  6, SPRITE_BUENA, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, MaryScript_0x5eb85, -1
@@ -24,7 +24,7 @@ RadioTower4F_MapScriptHeader:
 	object_event 12,  4, SPRITE_ROCKET_GIRL, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerGruntF4, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
 	object_event  4,  2, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerRocketScientistRich, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
 
-	const_def 1 ; object constants
+	object_const_def
 	const RADIOTOWER4F_ROCKET
 
 MaryScript_0x5eb85:

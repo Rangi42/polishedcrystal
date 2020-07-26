@@ -1,21 +1,21 @@
 LavRadioTower1F_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 1 ; callbacks
+	def_callbacks
 	callback MAPCALLBACK_OBJECTS, LavRadioTower1FUpstairsScript
 
-	db 3 ; warp events
+	def_warp_events
 	warp_event  2,  7, LAVENDER_TOWN, 7
 	warp_event  3,  7, LAVENDER_TOWN, 7
 	warp_event 15,  0, LAV_RADIO_TOWER_2F, 255
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 2 ; bg events
+	def_bg_events
 	bg_event 11,  0, SIGNPOST_JUMPTEXT, UnknownText_0x7f2e3
 	bg_event  5,  0, SIGNPOST_JUMPTEXT, UnknownText_0x7f32d
 
-	db 5 ; object events
+	def_object_events
 	object_event  6,  6, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x7eebf, -1
 	object_event 15,  1, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x7eefa, -1
 	object_event  1,  3, SPRITE_POKEMANIAC, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x7ef90, -1

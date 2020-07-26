@@ -1,21 +1,21 @@
 EarlsPokemonAcademy_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event  3, 15, VIOLET_CITY, 3
 	warp_event  4, 15, VIOLET_CITY, 3
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 4 ; bg events
+	def_bg_events
 	bg_event  0,  1, SIGNPOST_READ, PokemonJournalWillScript
 	bg_event  1,  1, SIGNPOST_READ, PokemonJournalWillScript
 	bg_event  3,  0, SIGNPOST_READ, AcademyBlackboard
 	bg_event  4,  0, SIGNPOST_READ, AcademyBlackboard
 
-	db 6 ; object events
+	def_object_events
 	object_event  4,  2, SPRITE_FAT_GUY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_SCRIPT, 0, AcademyEarl, EVENT_EARLS_ACADEMY_EARL
 	object_event  2,  4, SPRITE_BOOK_PAPER_POKEDEX, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, AcademyNotebook, -1
 	object_event  2,  5, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x68d80, -1
@@ -23,7 +23,7 @@ EarlsPokemonAcademy_MapScriptHeader:
 	object_event  3, 11, SPRITE_GAMER_GIRL, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, GameboyKidScript_0x68a86, -1
 	object_event  4, 11, SPRITE_GAMEBOY_KID, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, GameboyKidScript_0x68a91, -1
 
-	const_def 1 ; object constants
+	object_const_def
 	const EARLSPOKEMONACADEMY_EARL
 
 AcademyEarl:

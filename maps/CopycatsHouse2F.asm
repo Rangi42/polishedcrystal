@@ -1,17 +1,17 @@
 CopycatsHouse2F_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 1 ; callbacks
+	def_callbacks
 	callback MAPCALLBACK_OBJECTS, CopycatsHouse2FCallback
 
-	db 1 ; warp events
+	def_warp_events
 	warp_event  3,  0, COPYCATS_HOUSE_1F, 3
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 0 ; bg events
+	def_bg_events
 
-	db 7 ; object events
+	def_object_events
 	object_event  4,  3, SPRITE_COPYCAT, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_SCRIPT, 0, Copycat1Script, EVENT_COPYCAT_1
 	object_event  4,  3, SPRITE_COPYCAT, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_SCRIPT, 0, Copycat2Script, EVENT_COPYCAT_2
 	object_event  6,  4, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, DODRIO, -1, -1, PAL_NPC_BROWN, PERSONTYPE_SCRIPT, 0, CopycatsDodrioScript, -1
@@ -20,7 +20,7 @@ CopycatsHouse2F_MapScriptHeader:
 	object_event  7,  1, SPRITE_MON_ICON, SPRITEMOVEDATA_DOLL, 0, MURKROW, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptext, CopycatsHouse2FDollText, -1
 	pokemon_event  0,  4, DITTO, -1, -1, PAL_NPC_PURPLE, CopycatsHouse2FDittoText, -1
 
-	const_def 1 ; object constants
+	object_const_def
 	const COPYCATSHOUSE2F_COPYCAT1
 	const COPYCATSHOUSE2F_COPYCAT2
 

@@ -1,18 +1,18 @@
 PewterMuseumOfScience2F_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 1 ; warp events
+	def_warp_events
 	warp_event  7,  7, PEWTER_MUSEUM_OF_SCIENCE_1F, 5
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 2 ; bg events
+	def_bg_events
 	bg_event  3,  6, SIGNPOST_READ, Museum2FMoonStoneSignpostScript
 	bg_event 11,  2, SIGNPOST_JUMPTEXT, Museum2FSpaceShuttleSignpostText
 
-	db 5 ; object events
+	def_object_events
 	object_event  7,  5, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, Museum2FScientistText, -1
 	object_event  1,  7, SPRITE_CHILD, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, Museum2FChildText, -1
 	object_event  2,  7, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, Museum2FTeacherText, -1

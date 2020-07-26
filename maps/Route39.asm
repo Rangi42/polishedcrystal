@@ -1,21 +1,21 @@
 Route39_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event  1,  3, ROUTE_39_BARN, 1
 	warp_event  5,  3, ROUTE_39_FARMHOUSE, 1
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 4 ; bg events
+	def_bg_events
 	bg_event  5, 31, SIGNPOST_JUMPTEXT, Route39TrainerTipsText
 	bg_event  9,  5, SIGNPOST_JUMPTEXT, MoomooFarmSignText
 	bg_event 15,  7, SIGNPOST_JUMPTEXT, Route39SignText
 	bg_event  5, 13, SIGNPOST_ITEM + NUGGET, EVENT_ROUTE_39_HIDDEN_NUGGET
 
-	db 13 ; object events
+	def_object_events
 	object_event  7, 14, SPRITE_COWGIRL, SPRITEMOVEDATA_WANDER, 1, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route39CowgirlAnnieScript, -1
 	object_event 13, 29, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 5, GenericTrainerSailorEugene, -1
 	object_event 10, 22, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 4, TrainerPokefanmDerek1, -1
@@ -30,7 +30,7 @@ Route39_MapScriptHeader:
 	object_event  4, 30, SPRITE_BEAUTY, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, Route39BeautyText, -1
 	tmhmball_event  1,  7, TM_BULLDOZE, EVENT_ROUTE_39_TM_BULLDOZE
 
-	const_def 1 ; object constants
+	object_const_def
 	const ROUTE39_COWGIRL
 
 TrainerPokefanmDerek1:

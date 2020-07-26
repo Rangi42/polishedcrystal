@@ -1,22 +1,22 @@
 RadioTower3F_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 1 ; callbacks
+	def_callbacks
 	callback MAPCALLBACK_TILES, CardKeyShutterCallback
 
-	db 3 ; warp events
+	def_warp_events
 	warp_event  0,  0, RADIO_TOWER_2F, 1
 	warp_event  7,  0, RADIO_TOWER_4F, 2
 	warp_event 17,  0, RADIO_TOWER_4F, 4
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 3 ; bg events
+	def_bg_events
 	bg_event  3,  0, SIGNPOST_JUMPTEXT, UnknownText_0x5ead6
 	bg_event  9,  0, SIGNPOST_JUMPTEXT, UnknownText_0x5eae4
 	bg_event 14,  2, SIGNPOST_UP, MapRadioTower3FSignpost2Script
 
-	db 7 ; object events
+	def_object_events
 	object_event  7,  4, SPRITE_POKEMANIAC, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x5e621, EVENT_RADIO_TOWER_CIVILIANS_AFTER
 	object_event  3,  4, SPRITE_SUPER_NERD, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, GymGuyScript_0x5e556, -1
 	object_event 11,  3, SPRITE_BATTLE_GIRL, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_GREEN, PERSONTYPE_SCRIPT, 0, CooltrainerFScript_0x5e56a, -1

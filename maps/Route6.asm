@@ -1,18 +1,18 @@
 Route6_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event 21,  9, ROUTE_6_UNDERGROUND_ENTRANCE, 1
 	warp_event 10,  1, ROUTE_6_SAFFRON_GATE, 3
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 1 ; bg events
+	def_bg_events
 	bg_event 23, 11, SIGNPOST_JUMPTEXT, Route6UndergroundPathSignText
 
-	db 8 ; object events
+	def_object_events
 	object_event 21, 10, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1ad957, EVENT_ROUTE_5_6_POKEFAN_M_BLOCKS_UNDERGROUND_PATH
 	object_event 13, 24, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 0, GenericTrainerPokefanmRex, -1
 	object_event 14, 24, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 0, GenericTrainerPokefanmAllan, -1

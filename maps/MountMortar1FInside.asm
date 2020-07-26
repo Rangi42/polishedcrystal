@@ -1,9 +1,9 @@
 MountMortar1FInside_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 6 ; warp events
+	def_warp_events
 	warp_event 11, 47, MOUNT_MORTAR_1F_OUTSIDE, 5
 	warp_event 29, 47, MOUNT_MORTAR_1F_OUTSIDE, 6
 	warp_event  5, 39, MOUNT_MORTAR_1F_OUTSIDE, 8
@@ -11,12 +11,12 @@ MountMortar1FInside_MapScriptHeader:
 	warp_event  3, 19, MOUNT_MORTAR_B1F, 1
 	warp_event  9,  9, MOUNT_MORTAR_2F_INSIDE, 2
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 1 ; bg events
+	def_bg_events
 	bg_event 30, 11, SIGNPOST_ITEM + MAX_REPEL, EVENT_MOUNT_MORTAR_1F_INSIDE_HIDDEN_MAX_REPEL
 
-	db 10 ; object events
+	def_object_events
 	strengthboulder_event 21, 43
 	itemball_event 35, 38, SMOOTH_ROCK, 1, EVENT_MOUNT_MORTAR_1F_INSIDE_SMOOTH_ROCK
 	itemball_event 16, 10, MAX_REVIVE, 1, EVENT_MOUNT_MORTAR_1F_INSIDE_MAX_REVIVE

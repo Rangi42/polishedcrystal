@@ -1,14 +1,14 @@
 PokemonMansionB1F_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 1 ; warp events
+	def_warp_events
 	warp_event 25, 24, POKEMON_MANSION_1F, 3
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 9 ; bg events
+	def_bg_events
 	bg_event 26,  4, SIGNPOST_ITEM + MAX_ELIXIR, EVENT_POKEMON_MANSION_B1F_HIDDEN_MAX_ELIXIR
 	bg_event  8, 13, SIGNPOST_READ, PokemonMansionB1FHiddenRareCandy
 	bg_event 20, 27, SIGNPOST_READ, PokemonMansionB1FHiddenBerserkGene
@@ -19,7 +19,7 @@ PokemonMansionB1F_MapScriptHeader:
 	bg_event  8, 17, SIGNPOST_JUMPTEXT, PokemonMansion1FFlowerPotText
 	bg_event  9, 17, SIGNPOST_JUMPTEXT, PokemonMansion1FFlowerPotText
 
-	db 6 ; object events
+	def_object_events
 	object_event 18,  5, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerScientistBraydon, -1
 	object_event 18, 22, SPRITE_BOOK_PAPER_POKEDEX, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptext, PokemonMansionDiaryText, -1
 	itemball_event 13,  5, CARBOS, 1, EVENT_POKEMON_MANSION_B1F_CARBOS

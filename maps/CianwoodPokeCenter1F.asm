@@ -1,19 +1,19 @@
 CianwoodPokeCenter1F_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 3 ; warp events
+	def_warp_events
 	warp_event  5,  7, CIANWOOD_CITY, 3
 	warp_event  6,  7, CIANWOOD_CITY, 3
 	warp_event  0,  7, POKECENTER_2F, 1
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 1 ; bg events
+	def_bg_events
 	bg_event 10,  1, SIGNPOST_READ, PokemonJournalChuckScript
 
-	db 5 ; object events
+	def_object_events
 	pc_nurse_event  5, 1
 	object_event  6,  3, SPRITE_GYM_GUY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, CianwoodGymGuyScript, -1
 	object_event  1,  5, SPRITE_PICNICKER, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, CianwoodPokeCenter1FLassText, -1

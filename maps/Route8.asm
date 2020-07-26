@@ -1,19 +1,19 @@
 Route8_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event  4, 10, ROUTE_8_SAFFRON_GATE, 3
 	warp_event  4, 11, ROUTE_8_SAFFRON_GATE, 4
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 2 ; bg events
+	def_bg_events
 	bg_event 11,  9, SIGNPOST_JUMPTEXT, Route8UndergroundPathSignText
 	bg_event 10,  7, SIGNPOST_JUMPTEXT, Route8LockedDoorText
 
-	db 15 ; object events
+	def_object_events
 	object_event 10, 10, SPRITE_BIKER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_GENERICTRAINER, 5, GenericTrainerBikerDwayne, EVENT_ROUTE_8_KANTO_POKEMON_FEDERATION
 	object_event 10, 11, SPRITE_BIKER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_GENERICTRAINER, 5, GenericTrainerBikerHarris, EVENT_ROUTE_8_KANTO_POKEMON_FEDERATION
 	object_event 10, 12, SPRITE_BIKER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_GENERICTRAINER, 5, GenericTrainerBikerZeke, EVENT_ROUTE_8_KANTO_POKEMON_FEDERATION

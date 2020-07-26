@@ -1,18 +1,18 @@
 StormyBeach_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event 30,  4, MURKY_SWAMP, 1
 	warp_event 31,  4, MURKY_SWAMP, 2
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 1 ; bg events
+	def_bg_events
 	bg_event 17,  6, SIGNPOST_ITEM + STARDUST, EVENT_STORMY_BEACH_HIDDEN_STARDUST
 
-	db 11 ; object events
+	def_object_events
 	object_event  5, 13, SPRITE_SWIMMER_GIRL, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerSwimmerfBarbara, -1
 	object_event 14,  8, SPRITE_BIRD_KEEPER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerBird_keeperJulian, -1
 	object_event 28,  7, SPRITE_CAMPER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerCamperFelix, -1

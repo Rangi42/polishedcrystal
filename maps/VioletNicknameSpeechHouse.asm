@@ -1,17 +1,17 @@
 VioletNicknameSpeechHouse_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event  3,  7, VIOLET_CITY, 4
 	warp_event  4,  7, VIOLET_CITY, 4
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 0 ; bg events
+	def_bg_events
 
-	db 4 ; object events
+	def_object_events
 	object_event  2,  3, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x693fa, -1
 	object_event  6,  4, SPRITE_TWIN, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x6945e, -1
 	object_event  5,  2, SPRITE_EEVEE, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_BROWN, PERSONTYPE_SCRIPT, 0, EeveeScript_0x693ef, -1

@@ -1,26 +1,26 @@
 Route10North_MapScriptHeader:
-	db 2 ; scene scripts
+	def_scene_scripts
 	scene_script Route10NorthTrigger0
 	scene_script Route10NorthTrigger1
 
-	db 2 ; callbacks
+	def_callbacks
 	callback MAPCALLBACK_NEWMAP, Route10NorthFlyPoint
 	callback MAPCALLBACK_OBJECTS, Route10NorthZapdos
 
-	db 5 ; warp events
+	def_warp_events
 	warp_event 11, 35, ROUTE_10_POKECENTER_1F, 1
 	warp_event  3, 51, POWER_PLANT, 1
 	warp_event  4, 43, ROCK_TUNNEL_2F, 1
 	warp_event  8, 33, ROCK_TUNNEL_1F, 1
 	warp_event 10,  1, DIM_CAVE_5F, 1
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 2 ; bg events
+	def_bg_events
 	bg_event  5, 53, SIGNPOST_JUMPTEXT, PowerPlantSignText
 	bg_event  7, 35, SIGNPOST_JUMPTEXT, RockTunnelSignText
 
-	db 10 ; object events
+	def_object_events
 	object_event 13, 44, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, ZAPDOS, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, Route10Zapdos, EVENT_ROUTE_10_ZAPDOS
 	object_event  6, 52, SPRITE_LAWRENCE, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LAWRENCE_ROUTE_10
 	object_event 14, 52, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, ZAPDOS, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LAWRENCES_ZAPDOS_ROUTE_10
@@ -35,7 +35,7 @@ Route10North_MapScriptHeader:
 ; SPRITE_MOM is not in this map's overworld sprite set, so it default to the
 ; player sprite, whatever gender they are.
 
-	const_def 1 ; object constants
+	object_const_def
 	const ROUTE10_ZAPDOS
 	const ROUTE10_LAWRENCE
 	const ROUTE10_LAWRENCES_ZAPDOS

@@ -1,12 +1,12 @@
 GoldenrodCity_MapScriptHeader:
-	db 1 ; scene scripts
+	def_scene_scripts
 	scene_script GoldenrodCityTrigger0
 
-	db 2 ; callbacks
+	def_callbacks
 	callback MAPCALLBACK_NEWMAP, GoldenrodCityFlyPointAndFloria
 	callback MAPCALLBACK_OBJECTS, GoldenrodCityMoveTutor
 
-	db 21 ; warp events
+	def_warp_events
 	warp_event 28,  7, GOLDENROD_GYM, 1
 	warp_event 33, 29, GOLDENROD_BIKE_SHOP, 1
 	warp_event 37, 15, GOLDENROD_HAPPINESS_RATER, 1
@@ -29,10 +29,10 @@ GoldenrodCity_MapScriptHeader:
 	warp_event 33, 23, GOLDENROD_BAND_HOUSE, 1
 	warp_event 13, 21, GOLDENROD_HP_UP_HOUSE, 1
 
-	db 1 ; coord events
+	def_coord_events
 	coord_event  9, 15, 1, GoldenrodCityPanUpScript
 
-	db 13 ; bg events
+	def_bg_events
 	bg_event 14, 14, SIGNPOST_JUMPTEXT, GoldenrodCityStationSignText
 	bg_event  7, 15, SIGNPOST_JUMPTEXT, GoldenrodCityRadioTowerSignText
 	bg_event 30, 27, SIGNPOST_JUMPTEXT, GoldenrodDeptStoreSignText
@@ -47,7 +47,7 @@ GoldenrodCity_MapScriptHeader:
 	bg_event 34,  6, SIGNPOST_JUMPTEXT, GoldenrodCityFlowerShopSignText
 	bg_event 27, 15, SIGNPOST_JUMPTEXT, GoldenrodMuseumSignText
 
-	db 17 ; object events
+	def_object_events
 	object_event 16, 22, SPRITE_POKEFAN_M, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, MoveTutor, EVENT_GOLDENROD_CITY_MOVE_TUTOR
 	object_event 28,  8, SPRITE_CUTE_GIRL, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, GoldenrodCityGymLassText, EVENT_GOLDENROD_GYM_WHITNEY
 	object_event 38, 24, SPRITE_BEAUTY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, GoldenrodCityBeautyText, EVENT_GOLDENROD_CITY_CIVILIANS
@@ -66,7 +66,7 @@ GoldenrodCity_MapScriptHeader:
 	object_event 33,  7, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x198e1f, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
 	object_event 35, 10, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x198e4b, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
 
-	const_def 1 ; object constants
+	object_const_def
 	const GOLDENRODCITY_POKEFAN_M2
 
 GoldenrodCityFlyPointAndFloria:

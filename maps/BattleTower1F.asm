@@ -1,21 +1,21 @@
 BattleTower1F_MapScriptHeader:
-	db 1 ; scene scripts
+	def_scene_scripts
 	scene_script BattleTower1FTrigger0
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 4 ; warp events
+	def_warp_events
 	warp_event 10, 13, BATTLE_TOWER_OUTSIDE, 3
 	warp_event 11, 13, BATTLE_TOWER_OUTSIDE, 4
 	warp_event 10,  0, BATTLE_TOWER_ELEVATOR, 1
 	warp_event  0,  5, BATTLE_TOWER_2F, 1
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 1 ; bg events
+	def_bg_events
 	bg_event 11,  7, SIGNPOST_READ, MapBattleTower1FSignpost0Script
 
-	db 9 ; object events
+	def_object_events
 	object_event 10,  7, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, ReceptionistScript_0x9e3e2, -1
 	pc_nurse_event  6, 6
 	object_event 14,  6, SPRITE_CLERK, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, pokemart, MARTTYPE_BP, MART_BT_1, -1
@@ -26,7 +26,7 @@ BattleTower1F_MapScriptHeader:
 	object_event  2, 10, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, Text_BattleTowerBugCatcher, -1
 	object_event 20,  9, SPRITE_GRANNY, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, Text_BattleTowerGranny, -1
 
-	const_def 1 ; object constants
+	object_const_def
 	const BATTLETOWER1F_RECEPTIONIST
 
 BattleTower1FTrigger0:

@@ -1,21 +1,21 @@
 OlivinePort_MapScriptHeader:
-	db 2 ; scene scripts
+	def_scene_scripts
 	scene_script OlivinePortTrigger0
 	scene_script OlivinePortTrigger1
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event 11,  7, OLIVINE_PORT_PASSAGE, 5
 	warp_event  7, 23, FAST_SHIP_1F, 1
 
-	db 1 ; coord events
+	def_coord_events
 	coord_event  7, 15, 0, UnknownScript_0x7491f
 
-	db 1 ; bg events
+	def_bg_events
 	bg_event  1, 22, SIGNPOST_ITEM + PROTEIN, EVENT_OLIVINE_PORT_HIDDEN_PROTEIN
 
-	db 7 ; object events
+	def_object_events
 	object_event  7, 23, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SailorScript_0x748c0, EVENT_OLIVINE_PORT_SAILOR_AT_GANGWAY
 	object_event  7, 15, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x74cd7, EVENT_OLIVINE_PORT_SPRITES_BEFORE_HALL_OF_FAME
 	object_event  4, 14, SPRITE_FISHING_GURU, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, FishingGuruScript_0x74a01, EVENT_OLIVINE_PORT_SPRITES_BEFORE_HALL_OF_FAME
@@ -24,7 +24,7 @@ OlivinePort_MapScriptHeader:
 	object_event  4, 15, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x74a17, EVENT_OLIVINE_PORT_SPRITES_AFTER_HALL_OF_FAME
 	object_event 11, 15, SPRITE_ACE_TRAINER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CooltrainerFScript_0x74a22, EVENT_OLIVINE_PORT_SPRITES_AFTER_HALL_OF_FAME
 
-	const_def 1 ; object constants
+	object_const_def
 	const OLIVINEPORT_SAILOR1
 	const OLIVINEPORT_SAILOR3
 

@@ -1,17 +1,17 @@
 OlivinePunishmentSpeechHouse_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event  2,  7, OLIVINE_CITY, 4
 	warp_event  3,  7, OLIVINE_CITY, 4
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 0 ; bg events
+	def_bg_events
 
-	db 2 ; object events
+	def_object_events
 	object_event  1,  2, SPRITE_POKEFAN_M, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, OlivinePunishmentSpeechHouseDadText, -1
 	object_event  5,  5, SPRITE_CUTE_GIRL, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, OlivinePunishmentSpeechHouseDaughterText, -1
 

@@ -1,19 +1,19 @@
 Route16South_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 1 ; callbacks
+	def_callbacks
 	callback MAPCALLBACK_NEWMAP, UnknownScript_0x1ad318
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event  9, 10, ROUTE_16_17_GATE, 1
 	warp_event  9, 11, ROUTE_16_17_GATE, 2
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 1 ; bg events
+	def_bg_events
 	bg_event  5,  9, SIGNPOST_JUMPTEXT, CyclingRoadSignText
 
-	db 1 ; object events
+	def_object_events
 	object_event  6, 11, SPRITE_OFFICER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, OfficerfJamieScript, -1
 
 UnknownScript_0x1ad318:

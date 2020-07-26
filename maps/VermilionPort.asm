@@ -1,26 +1,26 @@
 VermilionPort_MapScriptHeader:
-	db 2 ; scene scripts
+	def_scene_scripts
 	scene_script VermilionPortTrigger0
 	scene_script VermilionPortTrigger1
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event  9,  5, VERMILION_PORT_PASSAGE, 5
 	warp_event  7, 17, FAST_SHIP_1F, 1
 
-	db 1 ; coord events
+	def_coord_events
 	coord_event  7, 11, 0, UnknownScript_0x74e20
 
-	db 1 ; bg events
+	def_bg_events
 	bg_event 16, 13, SIGNPOST_ITEM + IRON, EVENT_VERMILION_PORT_HIDDEN_IRON
 
-	db 3 ; object events
+	def_object_events
 	object_event  7, 17, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SailorScript_0x74dc4, EVENT_VERMILION_PORT_SAILOR_AT_GANGWAY
 	object_event  6, 11, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SailorScript_0x74e97, -1
 	object_event 11, 11, SPRITE_POKEMANIAC, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x750a6, -1
 
-	const_def 1 ; object constants
+	object_const_def
 	const VERMILIONPORT_SAILOR1
 	const VERMILIONPORT_SAILOR2
 

@@ -217,7 +217,7 @@ INCLUDE "engine/events/buena_menu.asm"
 
 SECTION "Collision Permissions", ROMX
 
-INCLUDE "data/overworld/collision_permissions.asm"
+INCLUDE "data/collision_permissions.asm"
 
 
 SECTION "bank13", ROMX

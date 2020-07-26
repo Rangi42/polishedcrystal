@@ -1,17 +1,17 @@
 GoldenrodHPUpHouse_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event  2,  7, GOLDENROD_CITY, 21
 	warp_event  3,  7, GOLDENROD_CITY, 21
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 0 ; bg events
+	def_bg_events
 
-	db 3 ; object events
+	def_object_events
 	object_event  2,  3, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GoldenrodHPUpHousePokefanMScript, -1
 	object_event  5,  4, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, GoldenrodHPUpHousePokefanFText, -1
 	pokemon_event  6,  3, PIKACHU, -1, -1, PAL_NPC_RED, GoldenrodHPUpHousePikachuText, -1

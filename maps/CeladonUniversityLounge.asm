@@ -1,20 +1,20 @@
 CeladonUniversityLounge_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event  4, 11, CELADON_UNIVERSITY_1F, 10
 	warp_event  5, 11, CELADON_UNIVERSITY_1F, 10
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 3 ; bg events
+	def_bg_events
 	bg_event  7,  5, SIGNPOST_JUMPTEXT, CeladonUniversityLoungeBookshelf1Text
 	bg_event  7,  8, SIGNPOST_READ, CeladonUniversityLoungeBookshelf2
 	bg_event  0,  7, SIGNPOST_RIGHT, CeladonUniversityLoungeComputer
 
-	db 6 ; object events
+	def_object_events
 	object_event  5,  8, SPRITE_ACE_TRAINER_F, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CeladonUniversityLoungeNeeshaScript, -1
 	object_event  3,  1, SPRITE_LASS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityLoungeLassText, -1
 	object_event  5,  3, SPRITE_RICH_BOY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityLoungeRichBoyText, -1
@@ -22,7 +22,7 @@ CeladonUniversityLounge_MapScriptHeader:
 	object_event  2,  5, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityLoungeSuper_nerd1Text, -1
 	object_event  1,  8, SPRITE_BUG_MANIAC, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_PURPLE, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityLoungeSuper_nerd2Text, -1
 
-	const_def 1 ; object constants
+	object_const_def
 	const CELADONUNIVERSITYLOUNGE_NEESHA
 
 CeladonUniversityLoungeNeeshaScript:

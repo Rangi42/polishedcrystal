@@ -1,18 +1,18 @@
 Route37_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 1 ; callbacks
+	def_callbacks
 	callback MAPCALLBACK_OBJECTS, SunnyCallback
 
-	db 0 ; warp events
+	def_warp_events
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 2 ; bg events
+	def_bg_events
 	bg_event  5,  3, SIGNPOST_JUMPTEXT, Route37SignText
 	bg_event  4,  2, SIGNPOST_ITEM + ETHER, EVENT_ROUTE_37_HIDDEN_ETHER
 
-	db 9 ; object events
+	def_object_events
 	object_event 16,  8, SPRITE_TWIN, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, SunnyScript, EVENT_ROUTE_37_SUNNY_OF_SUNDAY
 	object_event  6, 12, SPRITE_TWIN, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerTwinsToriandtil1, -1
 	object_event  7, 12, SPRITE_TWIN, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerTwinsToriandtil2, -1
@@ -23,7 +23,7 @@ Route37_MapScriptHeader:
 	fruittree_event 16,  5, FRUITTREE_ROUTE_37_2, BLU_APRICORN, PAL_NPC_BLUE
 	fruittree_event 15,  7, FRUITTREE_ROUTE_37_3, BLK_APRICORN, PAL_NPC_PURPLE
 
-	const_def 1 ; object constants
+	object_const_def
 	const ROUTE37_SUNNY
 
 SunnyCallback:

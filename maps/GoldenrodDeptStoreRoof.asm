@@ -1,22 +1,22 @@
 GoldenrodDeptStoreRoof_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 2 ; callbacks
+	def_callbacks
 	callback MAPCALLBACK_TILES, GoldenrodDeptStoreRoofCheckSaleChangeBlock
 	callback MAPCALLBACK_OBJECTS, GoldenrodDeptStoreRoofCheckSaleChangeClerk
 
-	db 1 ; warp events
+	def_warp_events
 	warp_event 13,  1, GOLDENROD_DEPT_STORE_6F, 3
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 4 ; bg events
+	def_bg_events
 	bg_event 15,  3, SIGNPOST_RIGHT, Binoculars1
 	bg_event 15,  5, SIGNPOST_RIGHT, Binoculars2
 	bg_event 15,  6, SIGNPOST_RIGHT, Binoculars3
 	bg_event  3,  0, SIGNPOST_UP, PokeDollVendingMachine
 
-	db 8 ; object events
+	def_object_events
 	object_event  2,  1, SPRITE_FAT_GUY, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, FisherScript_0x56749, -1
 	object_event 10,  3, SPRITE_POKEFAN_F, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x5677f, -1
 	object_event 14,  6, SPRITE_POKEMANIAC, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_SCRIPT, 0, SuperNerdScript_0x56757, EVENT_GOLDENROD_SALE_ON

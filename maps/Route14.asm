@@ -1,15 +1,15 @@
 Route14_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 0 ; warp events
+	def_warp_events
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 0 ; bg events
+	def_bg_events
 
-	db 12 ; object events
+	def_object_events
 	object_event 13,  8, SPRITE_POKEFAN_M, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerPokefanmTrevor, -1
 	object_event 11, 21, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerPokefanmCarter, -1
 	object_event 11, 29, SPRITE_BIRD_KEEPER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerBird_keeperRoy, -1

@@ -1,25 +1,25 @@
 GoldenrodMagnetTrainStation_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 4 ; warp events
+	def_warp_events
 	warp_event  8, 17, GOLDENROD_CITY, 5
 	warp_event  9, 17, GOLDENROD_CITY, 5
 	warp_event  6,  5, SAFFRON_TRAIN_STATION, 4
 	warp_event 11,  5, SAFFRON_TRAIN_STATION, 3
 
-	db 1 ; coord events
+	def_coord_events
 	coord_event 11,  6, 0, Script_ArriveFromSaffron
 
-	db 0 ; bg events
+	def_bg_events
 
-	db 3 ; object events
+	def_object_events
 	object_event  9,  9, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, OfficerScript_0x550ec, -1
 	object_event 11, 14, SPRITE_GENTLEMAN, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x552a3, EVENT_GOLDENROD_TRAIN_STATION_GENTLEMAN
 	object_event  6, 12, SPRITE_LASS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_SCRIPT, 0, GoldenrodMagnetTrainStationCooltrainerfScript, -1
 
-	const_def 1 ; object constants
+	object_const_def
 	const GOLDENRODMAGNETTRAINSTATION_OFFICER
 
 OfficerScript_0x550ec:

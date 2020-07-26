@@ -1,20 +1,20 @@
 SoulHouseB3F_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 1 ; warp events
+	def_warp_events
 	warp_event  3,  4, SOUL_HOUSE_B2F, 3
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 0 ; bg events
+	def_bg_events
 
-	db 1 ; object events
+	def_object_events
 	object_event  4, 13, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, SoulHouseB3FMrFujiScript, EVENT_GOT_SILPHSCOPE2_FROM_MR_FUJI
 	itemball_event  6,  9, ESCAPE_ROPE, 1, EVENT_SOUL_HOUSE_B3F_ESCAPE_ROPE
 
-	const_def 1 ; object constants
+	object_const_def
 	const SOULHOUSEB3F_MRFUJI
 
 SoulHouseB3FMrFujiScript:

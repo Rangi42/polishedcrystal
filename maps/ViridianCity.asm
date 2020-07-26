@@ -1,10 +1,10 @@
 ViridianCity_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 1 ; callbacks
+	def_callbacks
 	callback MAPCALLBACK_NEWMAP, ViridianCityFlyPoint
 
-	db 8 ; warp events
+	def_warp_events
 	warp_event 32,  7, VIRIDIAN_GYM, 1
 	warp_event 21,  5, VIRIDIAN_NICKNAME_SPEECH_HOUSE, 1
 	warp_event 23, 15, TRAINER_HOUSE_1F, 1
@@ -14,16 +14,16 @@ ViridianCity_MapScriptHeader:
 	warp_event 21, 33, ROUTE_1_VIRIDIAN_GATE, 2
 	warp_event 21,  9, VIRIDIAN_SCHOOL_HOUSE, 1
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 5 ; bg events
+	def_bg_events
 	bg_event 17, 17, SIGNPOST_JUMPTEXT, ViridianCitySignText
 	bg_event 27,  7, SIGNPOST_JUMPTEXT, ViridianGymSignText
 	bg_event 19,  1, SIGNPOST_JUMPTEXT, ViridianCityTrainerTips1Text
 	bg_event 21, 29, SIGNPOST_JUMPTEXT, ViridianCityTrainerTips2Text
 	bg_event 21, 15, SIGNPOST_JUMPTEXT, TrainerHouseSignText
 
-	db 8 ; object events
+	def_object_events
 	object_event 18,  5, SPRITE_GRAMPS, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GrampsScript_0x1a9a4c, -1
 	object_event 32,  8, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, GrampsScript_0x1a9a61, EVENT_BLUE_IN_CINNABAR
 	object_event 30,  8, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, GrampsScript_0x1a9a61, EVENT_VIRIDIAN_GYM_BLUE

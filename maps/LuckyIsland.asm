@@ -1,16 +1,16 @@
 LuckyIsland_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 1 ; callbacks
+	def_callbacks
 	callback MAPCALLBACK_TILES, Script_ChangeLuckyIslandMap
 
-	db 0 ; warp events
+	def_warp_events
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 0 ; bg events
+	def_bg_events
 
-	db 9 ; object events
+	def_object_events
 	object_event 27, 18, SPRITE_BALL_CUT_FRUIT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, LuckyIslandLuckyEgg, EVENT_LUCKY_ISLAND_LUCKY_EGG
 	object_event 29,  6, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerFisherHall, EVENT_LUCKY_ISLAND_CIVILIANS
 	object_event 21, 16, SPRITE_BAKER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerBakerMargaret, EVENT_LUCKY_ISLAND_CIVILIANS
@@ -21,7 +21,7 @@ LuckyIsland_MapScriptHeader:
 	object_event 23, 12, SPRITE_LADY, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_PURPLE, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerSightseersLiandsu2, EVENT_LUCKY_ISLAND_CIVILIANS
 	fruittree_event 25, 16, FRUITTREE_LUCKY_ISLAND, LIECHI_BERRY, PAL_NPC_RED, EVENT_LUCKY_ISLAND_CIVILIANS
 
-	const_def 1 ; object constants
+	object_const_def
 	const LUCKYISLAND_POKE_BALL
 
 Script_ChangeLuckyIslandMap:

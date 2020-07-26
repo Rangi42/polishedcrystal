@@ -1,19 +1,19 @@
 LakeOfRage_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 3 ; callbacks
+	def_callbacks
 	callback MAPCALLBACK_NEWMAP, LakeOfRageFlyPoint
 	callback MAPCALLBACK_OBJECTS, LakeOfRageWesleyAndEngineer
 	callback MAPCALLBACK_TILES, LakeOfRageFloodScript
 
-	db 3 ; warp events
+	def_warp_events
 	warp_event  7,  3, LAKE_OF_RAGE_HIDDEN_POWER_HOUSE, 1
 	warp_event 27, 31, LAKE_OF_RAGE_MAGIKARP_HOUSE, 1
 	warp_event 10, 28, HIDDEN_TREE_GROTTO, 1
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 7 ; bg events
+	def_bg_events
 	bg_event 21, 27, SIGNPOST_JUMPTEXT, LakeOfRageSignText
 	bg_event 25, 31, SIGNPOST_READ, LakeOfRageFishingGuruSign
 	bg_event  4,  4, SIGNPOST_ITEM + RARE_CANDY, EVENT_LAKE_OF_RAGE_HIDDEN_RARE_CANDY
@@ -22,7 +22,7 @@ LakeOfRage_MapScriptHeader:
 	bg_event 10, 27, SIGNPOST_JUMPSTD, treegrotto, HIDDENGROTTO_LAKE_OF_RAGE
 	bg_event 11, 27, SIGNPOST_JUMPSTD, treegrotto, HIDDENGROTTO_LAKE_OF_RAGE
 
-	db 19 ; object events
+	def_object_events
 	object_event 21, 28, SPRITE_LANCE, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, LakeOfRageLanceScript, EVENT_LAKE_OF_RAGE_LANCE
 	object_event 18, 22, SPRITE_BIG_GYARADOS, SPRITEMOVEDATA_BIG_GYARADOS, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, LakeOfRageRedGyaradosScript, EVENT_LAKE_OF_RAGE_RED_GYARADOS
 	object_event  4,  4, SPRITE_POKEMANIAC, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, WesleyScript, EVENT_LAKE_OF_RAGE_WESLEY_OF_WEDNESDAY
@@ -43,7 +43,7 @@ LakeOfRage_MapScriptHeader:
 	cuttree_event  6, 21, EVENT_LAKE_OF_RAGE_CUT_TREE_4
 	cuttree_event 23,  4, EVENT_LAKE_OF_RAGE_CUT_TREE_5
 
-	const_def 1 ; object constants
+	object_const_def
 	const LAKEOFRAGE_LANCE
 	const LAKEOFRAGE_RED_GYARADOS
 	const LAKEOFRAGE_WESLEY

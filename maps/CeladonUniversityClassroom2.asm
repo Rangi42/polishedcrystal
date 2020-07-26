@@ -1,22 +1,22 @@
 CeladonUniversityClassroom2_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event  2, 11, CELADON_UNIVERSITY_1F, 7
 	warp_event  3, 11, CELADON_UNIVERSITY_1F, 7
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 5 ; bg events
+	def_bg_events
 	bg_event  2,  0, SIGNPOST_JUMPTEXT, CeladonUniversityClassroom2BlackboardText
 	bg_event  3,  0, SIGNPOST_JUMPTEXT, CeladonUniversityClassroom2BlackboardText
 	bg_event  4,  0, SIGNPOST_JUMPTEXT, CeladonUniversityClassroom2BlackboardText
 	bg_event  6,  1, SIGNPOST_JUMPTEXT, CeladonUniversityClassroom2Bookshelf1Text
 	bg_event  7,  1, SIGNPOST_JUMPTEXT, CeladonUniversityClassroom2Bookshelf2Text
 
-	db 5 ; object events
+	def_object_events
 	object_event  2,  1, SPRITE_BLANCHE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityClassroom2BlancheText, EVENT_CELADON_UNIVERSITY_BLANCHE
 	object_event  2,  1, SPRITE_TEACHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityClassroom2TeacherText, EVENT_SHAMOUTI_COAST_BLANCHE
 	object_event  4,  5, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityClassroom2YoungsterText, -1

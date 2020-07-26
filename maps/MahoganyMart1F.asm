@@ -1,28 +1,28 @@
 MahoganyMart1F_MapScriptHeader:
-	db 2 ; scene scripts
+	def_scene_scripts
 	scene_script MahoganyMart1FTrigger0
 	scene_script MahoganyMart1FTrigger1
 
-	db 1 ; callbacks
+	def_callbacks
 	callback MAPCALLBACK_TILES, UnknownScript_0x6c35b
 
-	db 3 ; warp events
+	def_warp_events
 	warp_event  3,  7, MAHOGANY_TOWN, 1
 	warp_event  4,  7, MAHOGANY_TOWN, 1
 	warp_event  7,  3, TEAM_ROCKET_BASE_B1F, 1
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 0 ; bg events
+	def_bg_events
 
-	db 5 ; object events
+	def_object_events
 	object_event  4,  3, SPRITE_PHARMACIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_PURPLE, PERSONTYPE_SCRIPT, 0, PharmacistScript_0x6c367, EVENT_TEAM_ROCKET_BASE_POPULATION
 	object_event  1,  6, SPRITE_BLACK_BELT, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BlackBeltScript_0x6c37b, EVENT_TEAM_ROCKET_BASE_POPULATION
 	object_event  4,  6, SPRITE_LANCE, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_MAHOGANY_MART_LANCE_AND_DRAGONITE
 	object_event  3,  6, SPRITE_DRAGONITE, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_MAHOGANY_MART_LANCE_AND_DRAGONITE
 	object_event  1,  3, SPRITE_GRANNY, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, pokemart, MARTTYPE_STANDARD, MART_MAHOGANY_2, EVENT_MAHOGANY_MART_OWNERS
 
-	const_def 1 ; object constants
+	object_const_def
 	const MAHOGANYMART1F_PHARMACIST
 	const MAHOGANYMART1F_BLACK_BELT
 	const MAHOGANYMART1F_LANCE

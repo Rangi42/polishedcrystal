@@ -1,10 +1,10 @@
 CianwoodCity_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 1 ; callbacks
+	def_callbacks
 	callback MAPCALLBACK_NEWMAP, CianwoodCityFlyPointAndSuicune
 
-	db 8 ; warp events
+	def_warp_events
 	warp_event 17, 41, MANIAS_HOUSE, 1
 	warp_event  8, 43, CIANWOOD_GYM, 1
 	warp_event 23, 43, CIANWOOD_POKECENTER_1F, 1
@@ -14,10 +14,10 @@ CianwoodCity_MapScriptHeader:
 	warp_event  5, 17, MOVE_MANIACS_HOUSE, 1
 	warp_event  4, 25, CLIFF_EDGE_GATE, 1
 
-	db 1 ; coord events
+	def_coord_events
 	coord_event 11, 16, 1, UnknownScript_0x1a001e
 
-	db 8 ; bg events
+	def_bg_events
 	bg_event 20, 34, SIGNPOST_JUMPTEXT, CianwoodCitySignText
 	bg_event  6, 44, SIGNPOST_JUMPTEXT, CianwoodGymSignText
 	bg_event 19, 47, SIGNPOST_JUMPTEXT, CianwoodPharmacySignText
@@ -27,7 +27,7 @@ CianwoodCity_MapScriptHeader:
 	bg_event  4, 19, SIGNPOST_ITEM + REVIVE, EVENT_CIANWOOD_CITY_HIDDEN_REVIVE
 	bg_event  5, 29, SIGNPOST_ITEM + MAX_ETHER, EVENT_CIANWOOD_CITY_HIDDEN_MAX_ETHER
 
-	db 15 ; object events
+	def_object_events
 	object_event 11, 21, SPRITE_EUSINE, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CIANWOOD_CITY_EUSINE
 	object_event 10, 14, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, SUICUNE, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_SAW_SUICUNE_AT_CIANWOOD_CITY
 	object_event 21, 37, SPRITE_CAMPER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1a02df, -1
@@ -44,7 +44,7 @@ CianwoodCity_MapScriptHeader:
 	object_event  9, 25, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, CianwoodCitySailorText, -1
 	object_event 22, 32, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, CianwoodCityFisherText, -1
 
-	const_def 1 ; object constants
+	object_const_def
 	const CIANWOODCITY_EUSINE
 	const CIANWOODCITY_SUICUNE
 

@@ -1,22 +1,22 @@
 Route32Coast_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event  4, 57, UNION_CAVE_B1F_SOUTH, 4
 	warp_event 17, 51, ROUTE_32_COAST_HOUSE, 1
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 5 ; bg events
+	def_bg_events
 	bg_event 15, 29, SIGNPOST_JUMPTEXT, Route32CoastTrainerTipsText
 	bg_event  5, 59, SIGNPOST_JUMPTEXT, Route32CoastUnionCaveSignText
 	bg_event 17, 34, SIGNPOST_ITEM + LEVEL_BALL, EVENT_ROUTE_32_COAST_HIDDEN_LEVEL_BALL
 	bg_event  5, 45, SIGNPOST_ITEM + HYPER_POTION, EVENT_ROUTE_32_COAST_HIDDEN_HYPER_POTION
 	bg_event 14,  8, SIGNPOST_ITEM + HYPER_POTION, EVENT_ROUTE_32_COAST_HIDDEN_ELIXIR
 
-	db 15 ; object events
+	def_object_events
 	object_event  9,  5, SPRITE_SWIMMER_GUY, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerSwimmermMichel, -1
 	object_event 18, 67, SPRITE_SWIMMER_GUY, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerSwimmermLucas, -1
 	object_event 20,  8, SPRITE_SWIMMER_GIRL, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerSwimmerfAlison, -1

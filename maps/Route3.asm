@@ -1,16 +1,16 @@
 Route3_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 1 ; callbacks
+	def_callbacks
 	callback MAPCALLBACK_NEWMAP, Route3FlyPoint
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event 68,  1, MOUNT_MOON_1F, 1
 	warp_event 61,  3, ROUTE_3_POKECENTER_1F, 1
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 8 ; bg events
+	def_bg_events
 	bg_event 63, 15, SIGNPOST_JUMPTEXT, UnknownText_0x1ae163
 	bg_event 11, 17, SIGNPOST_ITEM + MOON_STONE, EVENT_ROUTE_3_HIDDEN_MOON_STONE
 	bg_event  8, 15, SIGNPOST_JUMPTEXT, Route3MeteoriteText
@@ -20,7 +20,7 @@ Route3_MapScriptHeader:
 	bg_event 15, 16, SIGNPOST_JUMPTEXT, Route3MeteoriteText
 	bg_event 15, 17, SIGNPOST_JUMPTEXT, Route3MeteoriteText
 
-	db 12 ; object events
+	def_object_events
 	object_event 12,  7, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerYoungsterRegis, -1
 	object_event 17,  3, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerYoungsterJimmy, -1
 	object_event 25,  3, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerYoungsterWarren, -1

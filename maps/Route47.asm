@@ -1,10 +1,10 @@
 Route47_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 1 ; callbacks
+	def_callbacks
 	callback MAPCALLBACK_TILES, Route47TileScript
 
-	db 6 ; warp events
+	def_warp_events
 	warp_event 67, 21, CLIFF_EDGE_GATE, 2
 	warp_event 53, 21, CLIFF_CAVE, 1
 	warp_event 52, 17, CLIFF_CAVE, 2
@@ -12,7 +12,7 @@ Route47_MapScriptHeader:
 	warp_event 11, 23, QUIET_CAVE_1F, 1
 	warp_event  8, 23, EMBEDDED_TOWER, 1
 
-	db 32 ; coord events
+	def_coord_events
 	coord_event 42, 24, 1, Route47Bridge1OverheadTrigger
 	coord_event 42, 25, 1, Route47Bridge1OverheadTrigger
 	coord_event 51, 24, 1, Route47Bridge1OverheadTrigger
@@ -46,13 +46,13 @@ Route47_MapScriptHeader:
 	coord_event 26, 16, 0, Route47Bridge4UnderfootTrigger
 	coord_event 26, 17, 0, Route47Bridge4UnderfootTrigger
 
-	db 4 ; bg events
+	def_bg_events
 	bg_event  8, 23, SIGNPOST_IFNOTSET, Route47SealedCaveSign
 	bg_event 36, 32, SIGNPOST_JUMPTEXT, Route47QuietCaveSignText
 	bg_event 34, 33, SIGNPOST_ITEM + PEARL, EVENT_ROUTE_47_HIDDEN_PEARL
 	bg_event  5, 32, SIGNPOST_ITEM + STARDUST, EVENT_ROUTE_47_HIDDEN_STARDUST
 
-	db 15 ; object events
+	def_object_events
 	object_event 59, 26, SPRITE_HIKER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerHikerDevin, EVENT_YELLOW_FOREST_ROCKET_TAKEOVER
 	object_event 40, 24, SPRITE_CAMPER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerCamperGrant, EVENT_YELLOW_FOREST_ROCKET_TAKEOVER
 	object_event 38, 18, SPRITE_ACE_TRAINER_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerAceDuoThomandkae1, EVENT_YELLOW_FOREST_ROCKET_TAKEOVER

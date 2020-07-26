@@ -1,10 +1,10 @@
 UndergroundPathSwitchRoomEntrances_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 1 ; callbacks
+	def_callbacks
 	callback MAPCALLBACK_TILES, UndergroundPathSwitchRoomEntrancesUpdateDoorPositions
 
-	db 9 ; warp events
+	def_warp_events
 	warp_event 23,  3, WAREHOUSE_ENTRANCE, 6
 	warp_event 22, 10, UNDERGROUND_WAREHOUSE, 1
 	warp_event 23, 10, UNDERGROUND_WAREHOUSE, 2
@@ -15,11 +15,11 @@ UndergroundPathSwitchRoomEntrances_MapScriptHeader:
 	warp_event 20, 27, GOLDENROD_CITY, 13
 	warp_event 21, 27, GOLDENROD_CITY, 13
 
-	db 2 ; coord events
+	def_coord_events
 	coord_event 19,  4, 0, UndergroundSilverTrigger1
 	coord_event 19,  5, 0, UndergroundSilverTrigger2
 
-	db 6 ; bg events
+	def_bg_events
 	bg_event 16,  1, SIGNPOST_READ, Switch1Script
 	bg_event 10,  1, SIGNPOST_READ, Switch2Script
 	bg_event  2,  1, SIGNPOST_READ, Switch3Script
@@ -27,7 +27,7 @@ UndergroundPathSwitchRoomEntrances_MapScriptHeader:
 	bg_event  8,  9, SIGNPOST_ITEM + MAX_POTION, EVENT_UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES_HIDDEN_MAX_POTION
 	bg_event  1,  8, SIGNPOST_ITEM + REVIVE, EVENT_UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES_HIDDEN_REVIVE
 
-	db 12 ; object events
+	def_object_events
 	object_event 23,  3, SPRITE_SILVER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_UNDERGROUND_PATH
 	object_event  9, 12, SPRITE_BURGLAR, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerBurglarDuncan, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
 	object_event  4,  8, SPRITE_BURGLAR, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerBurglarOrson, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
@@ -41,7 +41,7 @@ UndergroundPathSwitchRoomEntrances_MapScriptHeader:
 	itemball_event  1, 12, SMOKE_BALL, 1, EVENT_UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES_SMOKE_BALL
 	itemball_event 14,  9, FULL_HEAL, 1, EVENT_UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES_FULL_HEAL
 
-	const_def 1 ; object constants
+	object_const_def
 	const UNDERGROUNDPATHSWITCHROOMENTRANCES_SILVER
 
 UNDERGROUND_DOOR_CLOSED1 EQU $2a

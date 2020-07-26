@@ -1,20 +1,20 @@
 RockyBeach_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 3 ; warp events
+	def_warp_events
 	warp_event 25, 20, ROCKY_BEACH_HOUSE, 1
 	warp_event 29, 10, NOISY_FOREST, 1
 	warp_event 29, 11, NOISY_FOREST, 2
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 2 ; bg events
+	def_bg_events
 	bg_event 22, 24, SIGNPOST_JUMPTEXT, RockyBeachSign1Text
 	bg_event 24, 10, SIGNPOST_JUMPTEXT, RockyBeachSign2Text
 
-	db 11 ; object events
+	def_object_events
 	object_event 21, 21, SPRITE_SIGHTSEER_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerSightseermBlaise, -1
 	object_event 11, 22, SPRITE_BEAUTY, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerBeautyIoana, -1
 	object_event  2, 21, SPRITE_LADY, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerSightseerfKamila, -1

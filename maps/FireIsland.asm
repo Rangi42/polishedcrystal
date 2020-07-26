@@ -1,9 +1,9 @@
 FireIsland_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 14 ; warp events
+	def_warp_events
 	warp_event  5, 29, SHAMOUTI_COAST, 1
 	warp_event 19, 29, FIRE_ISLAND_ROOF, 1
 	warp_event  7,  5, FIRE_ISLAND, 4
@@ -19,10 +19,10 @@ FireIsland_MapScriptHeader:
 	warp_event 20, 27, FIRE_ISLAND, 14
 	warp_event  6, 27, FIRE_ISLAND, 13 ; hole
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 0 ; bg events
+	def_bg_events
 
-	db 1 ; object events
+	def_object_events
 	itemball_event  2, 19, HEAT_ROCK, 1, EVENT_FIRE_ISLAND_HEAT_ROCK
 

@@ -1,17 +1,17 @@
 CeruleanTradeSpeechHouse_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event  2,  7, CERULEAN_CITY, 3
 	warp_event  3,  7, CERULEAN_CITY, 3
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 0 ; bg events
+	def_bg_events
 
-	db 4 ; object events
+	def_object_events
 	object_event  2,  4, SPRITE_GRANNY, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x18814d, -1
 	object_event  3,  2, SPRITE_GRAMPS, SPRITEMOVEDATA_WANDER, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x18818a, -1
 	pokemon_event  6,  2, POLIWRATH, -1, -1, PAL_NPC_BLUE, UnknownText_0x18819c, -1

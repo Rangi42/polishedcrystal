@@ -1,9 +1,9 @@
 Route2North_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 6 ; warp events
+	def_warp_events
 	warp_event 15, 19, ROUTE_2_NUGGET_SPEECH_HOUSE, 1
 	warp_event 16, 35, ROUTE_2_GATE, 1
 	warp_event 17, 35, ROUTE_2_GATE, 2
@@ -11,12 +11,12 @@ Route2North_MapScriptHeader:
 	warp_event  1, 11, VIRIDIAN_FOREST_PEWTER_GATE, 3
 	warp_event  2, 11, VIRIDIAN_FOREST_PEWTER_GATE, 4
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 1 ; bg events
+	def_bg_events
 	bg_event 11, 11, SIGNPOST_JUMPTEXT, UnknownText_0x1ac49f
 
-	db 6 ; object events
+	def_object_events
 	object_event  6,  6, SPRITE_BUG_MANIAC, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerBug_maniacEd, -1
 	itemball_event 19,  4, CARBOS, 1, EVENT_ROUTE_2_CARBOS
 	fruittree_event  7, 13, FRUITTREE_ROUTE_2, LUM_BERRY, PAL_NPC_GREEN

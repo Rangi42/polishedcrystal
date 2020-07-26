@@ -1,20 +1,20 @@
 PowerPlant_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event  2, 17, ROUTE_10_NORTH, 2
 	warp_event  3, 17, ROUTE_10_NORTH, 2
 
-	db 1 ; coord events
+	def_coord_events
 	coord_event  5, 12, 1, PowerPlantGuardPhoneScript
 
-	db 2 ; bg events
+	def_bg_events
 	bg_event  0,  1, SIGNPOST_JUMPSTD, difficultbookshelf
 	bg_event  1,  1, SIGNPOST_JUMPSTD, difficultbookshelf
 
-	db 7 ; object events
+	def_object_events
 	object_event  4, 14, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_SCRIPT, 0, OfficerScript_0x188df5, -1
 	object_event  2,  9, SPRITE_GYM_GUY, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, GymGuyScript_0x188e15, -1
 	object_event  6, 11, SPRITE_GYM_GUY, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, GymGuyScript_0x188e29, -1
@@ -23,7 +23,7 @@ PowerPlant_MapScriptHeader:
 	object_event 14, 10, SPRITE_FAT_GUY, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, PowerPlantManager, -1
 	object_event  5,  5, SPRITE_GYM_GUY, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, PowerPlantForestText, -1
 
-	const_def 1 ; object constants
+	object_const_def
 	const POWERPLANT_OFFICER1
 	const POWERPLANT_GYM_GUY1
 	const POWERPLANT_GYM_GUY2

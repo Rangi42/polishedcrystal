@@ -1,20 +1,20 @@
 BattleTower2F_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 1 ; warp events
+	def_warp_events
 	warp_event  0,  1, BATTLE_TOWER_1F, 4
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 4 ; bg events
+	def_bg_events
 	bg_event  4,  3, SIGNPOST_UP, BattleTower2FTVScript
 	bg_event  5,  3, SIGNPOST_UP, BattleTower2FTVScript
 	bg_event 16,  3, SIGNPOST_UP, BattleTower2FTVScript
 	bg_event 17,  3, SIGNPOST_UP, BattleTower2FTVScript
 
-	db 13 ; object events
+	def_object_events
 	object_event  4,  6, SPRITE_CHERYL, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BattleTower2FCherylScript, EVENT_BATTLE_TOWER_CHERYL
 	object_event  7,  7, SPRITE_RILEY, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BattleTower2FRileyScript, EVENT_BATTLE_TOWER_RILEY
 	object_event  9,  4, SPRITE_BUCK, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BattleTower2FBuckScript, EVENT_BATTLE_TOWER_BUCK
@@ -29,7 +29,7 @@ BattleTower2F_MapScriptHeader:
 	object_event 12,  7, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, BattleTower2FYoungsterText, EVENT_SCARY_CAVE_MIRA
 	object_event 15,  6, SPRITE_BLACK_BELT, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, BattleTower2FBlackbeltText, EVENT_NOISY_FOREST_ANABEL
 
-	const_def 1 ; object constants
+	object_const_def
 	const BATTLETOWER2F_CHERYL
 	const BATTLETOWER2F_RILEY
 	const BATTLETOWER2F_BUCK

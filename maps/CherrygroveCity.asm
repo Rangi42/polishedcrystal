@@ -1,26 +1,26 @@
 CherrygroveCity_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 1 ; callbacks
+	def_callbacks
 	callback MAPCALLBACK_NEWMAP, CherrygroveCityFlyPoint
 
-	db 5 ; warp events
+	def_warp_events
 	warp_event 23,  3, CHERRYGROVE_MART, 2
 	warp_event 29,  3, CHERRYGROVE_POKECENTER_1F, 1
 	warp_event 17,  7, CHERRYGROVE_GYM_SPEECH_HOUSE, 1
 	warp_event 25,  9, GUIDE_GENTS_HOUSE, 1
 	warp_event 31, 11, CHERRYGROVE_EVOLUTION_SPEECH_HOUSE, 1
 
-	db 3 ; coord events
+	def_coord_events
 	coord_event 33,  7, 0, CherrygroveGuideGentTrigger
 	coord_event 33,  6, 1, CherrygroveSilverTriggerNorth
 	coord_event 33,  7, 1, CherrygroveSilverTriggerSouth
 
-	db 2 ; bg events
+	def_bg_events
 	bg_event 30,  8, SIGNPOST_JUMPTEXT, CherrygroveCitySignText
 	bg_event 23,  9, SIGNPOST_JUMPTEXT, GuideGentsHouseSignText
 
-	db 6 ; object events
+	def_object_events
 	object_event 32,  6, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CherrygroveCityGuideGent, EVENT_GUIDE_GENT_IN_HIS_HOUSE
 	object_event 39,  6, SPRITE_SILVER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_CHERRYGROVE_CITY
 	object_event 25, 13, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 1, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, CherrygroveTeacherText_HaveMapCard, -1
@@ -28,7 +28,7 @@ CherrygroveCity_MapScriptHeader:
 	object_event  7, 12, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, MysticWaterGuy, -1
 	pokemon_event 26, 13, PIDGEY, -1, -1, PAL_NPC_BROWN, CherrygrovePidgeyText, -1
 
-	const_def 1 ; object constants
+	object_const_def
 	const CHERRYGROVECITY_GRAMPS
 	const CHERRYGROVECITY_SILVER
 

@@ -1,22 +1,22 @@
 VictoryRoad2F_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 5 ; warp events
+	def_warp_events
 	warp_event 25,  9, ROUTE_23, 4
 	warp_event  3, 11, VICTORY_ROAD_1F, 2
 	warp_event  3,  4, VICTORY_ROAD_3F, 1
 	warp_event 15,  7, VICTORY_ROAD_3F, 2
 	warp_event 19,  9, VICTORY_ROAD_3F, 3
 
-	db 1 ; coord events
+	def_coord_events
 	coord_event 25,  9, 0, UnknownScript_0x74492
 
-	db 1 ; bg events
+	def_bg_events
 	bg_event  5,  5, SIGNPOST_ITEM + MAX_POTION, EVENT_VICTORY_ROAD_2F_HIDDEN_MAX_POTION
 
-	db 6 ; object events
+	def_object_events
 	object_event 20,  9, SPRITE_SILVER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_VICTORY_ROAD
 	object_event 11, 11, SPRITE_VETERAN_F, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerVeteranfJoanne, -1
 	object_event  5,  3, SPRITE_VETERAN_F, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerVeteranfSylvie, -1
@@ -24,7 +24,7 @@ VictoryRoad2F_MapScriptHeader:
 	itemball_event 20,  5, FULL_RESTORE, 1, EVENT_VICTORY_ROAD_2F_FULL_RESTORE
 	itemball_event  9, 14, HP_UP, 1, EVENT_VICTORY_ROAD_2F_HP_UP
 
-	const_def 1 ; object constants
+	object_const_def
 	const VICTORYROAD2F_SILVER
 
 UnknownScript_0x74492:

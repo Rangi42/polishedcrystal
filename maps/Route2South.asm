@@ -1,18 +1,18 @@
 Route2South_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event 15,  3, ROUTE_2_GATE, 3
 	warp_event  5,  7, VIRIDIAN_FOREST_VIRIDIAN_GATE, 3
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 1 ; bg events
+	def_bg_events
 	bg_event  5, 29, SIGNPOST_JUMPTEXT, Route2SignText
 
-	db 7 ; object events
+	def_object_events
 	object_event 10, 23, SPRITE_BUG_MANIAC, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 5, GenericTrainerBug_maniacRob, -1
 	object_event  0, 16, SPRITE_BUG_MANIAC, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerBug_maniacDoug, -1
 	itemball_event 14, 30, ELIXIR, 1, EVENT_ROUTE_2_ELIXIR

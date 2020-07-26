@@ -1,23 +1,23 @@
 CeladonDeptStore3F_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 3 ; warp events
+	def_warp_events
 	warp_event 12,  0, CELADON_DEPT_STORE_2F, 1
 	warp_event 15,  0, CELADON_DEPT_STORE_4F, 2
 	warp_event  2,  0, CELADON_DEPT_STORE_ELEVATOR, 1
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 5 ; bg events
+	def_bg_events
 	bg_event 14,  0, SIGNPOST_JUMPTEXT, CeladonDeptStore3FDirectoryText
 	bg_event  2,  3, SIGNPOST_JUMPTEXT, CeladonDeptStore3FRPGText
 	bg_event  5,  3, SIGNPOST_JUMPTEXT, CeladonDeptStore3FSportsGameText
 	bg_event  2,  5, SIGNPOST_JUMPTEXT, CeladonDeptStore3FPuzzleGameText
 	bg_event  5,  5, SIGNPOST_JUMPTEXT, CeladonDeptStore3FFightingGameText
 
-	db 9 ; object events
+	def_object_events
 	object_event  9,  1, SPRITE_CLERK, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, pokemart, MARTTYPE_TM, MART_CELADON_3F_TM, -1
 	object_event  8,  1, SPRITE_CLERK, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, CeladonDeptStore3FClerk2Script, -1
 	object_event  7,  5, SPRITE_CAMPER, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x70d53, -1

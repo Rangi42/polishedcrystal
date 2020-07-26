@@ -1,19 +1,19 @@
 Route5SaffronCityGate_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 4 ; warp events
+	def_warp_events
 	warp_event  4,  0, ROUTE_5, 2
 	warp_event  5,  0, ROUTE_5, 3
 	warp_event  4,  7, SAFFRON_CITY, 9
 	warp_event  5,  7, SAFFRON_CITY, 9
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 0 ; bg events
+	def_bg_events
 
-	db 2 ; object events
+	def_object_events
 	object_event  0,  4, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, Route5SaffronCityGateOfficerText, -1
 	object_event  6,  4, SPRITE_BLACK_BELT, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route5SaffronCityGateBlackBeltScript, -1
 

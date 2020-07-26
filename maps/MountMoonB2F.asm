@@ -1,22 +1,22 @@
 MountMoonB2F_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 4 ; warp events
+	def_warp_events
 	warp_event 10, 24, MOUNT_MOON_B1F, 4
 	warp_event 21,  7, MOUNT_MOON_B1F, 5
 	warp_event 17, 15, MOUNT_MOON_B1F, 6
 	warp_event  3,  9, MOUNT_MOON_B1F, 7
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 3 ; bg events
+	def_bg_events
 	bg_event 28,  7, SIGNPOST_ITEM + ETHER, EVENT_MOUNT_MOON_B2F_HIDDEN_ETHER
 	bg_event  7,  9, SIGNPOST_ITEM + STARDUST, EVENT_MOUNT_MOON_B2F_HIDDEN_STARDUST
 	bg_event 10, 30, SIGNPOST_ITEM + PP_UP, EVENT_MOUNT_MOON_B2F_HIDDEN_PP_UP
 
-	db 11 ; object events
+	def_object_events
 	object_event 24,  9, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerYoungsterJosh, -1
 	object_event 12, 21, SPRITE_BIRD_KEEPER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerBird_keeperMick, -1
 	object_event 29, 18, SPRITE_HEX_MANIAC, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerHexManiacEsther, -1

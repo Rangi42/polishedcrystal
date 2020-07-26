@@ -1,22 +1,22 @@
 Route29_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 1 ; callbacks
+	def_callbacks
 	callback MAPCALLBACK_OBJECTS, Route29Tuscany
 
-	db 1 ; warp events
+	def_warp_events
 	warp_event 27,  1, ROUTE_29_46_GATE, 3
 
-	db 2 ; coord events
+	def_coord_events
 	coord_event 53,  8, 1, Route29Tutorial1
 	coord_event 53,  9, 1, Route29Tutorial2
 
-	db 3 ; bg events
+	def_bg_events
 	bg_event 51,  7, SIGNPOST_JUMPTEXT, Route29Sign1Text
 	bg_event  3,  5, SIGNPOST_JUMPTEXT, Route29Sign2Text
 	bg_event 23,  4, SIGNPOST_JUMPTEXT, Route29AdvancedTipsSignText
 
-	db 10 ; object events
+	def_object_events
 	object_event 50, 12, SPRITE_LYRA, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LYRA_ROUTE_29
 	object_event 29, 12, SPRITE_POKEFAN_F, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_PURPLE, PERSONTYPE_SCRIPT, 0, TuscanyScript, EVENT_ROUTE_29_TUSCANY_OF_TUESDAY
 	object_event 27, 16, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, Route29YoungsterText, -1
@@ -28,7 +28,7 @@ Route29_MapScriptHeader:
 	object_event 13,  4, SPRITE_COOL_DUDE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, CooltrainerMScript_0x1a1031, -1
 	itemball_event 48,  2, POTION, 1, EVENT_ROUTE_29_POTION
 
-	const_def 1 ; object constants
+	object_const_def
 	const ROUTE29_LYRA
 	const ROUTE29_TUSCANY
 

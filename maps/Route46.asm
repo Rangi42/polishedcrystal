@@ -1,19 +1,19 @@
 Route46_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 3 ; warp events
+	def_warp_events
 	warp_event  7, 33, ROUTE_29_46_GATE, 1
 	warp_event  8, 33, ROUTE_29_46_GATE, 2
 	warp_event 14,  5, DARK_CAVE_VIOLET_ENTRANCE, 3
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 1 ; bg events
+	def_bg_events
 	bg_event  9, 27, SIGNPOST_JUMPTEXT, Route46SignText
 
-	db 8 ; object events
+	def_object_events
 	object_event 15, 13, SPRITE_HIKER, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route46HikerScript, -1
 	object_event 12, 19, SPRITE_HIKER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerHikerBailey, -1
 	object_event  4, 14, SPRITE_CAMPER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerCamperTed, -1

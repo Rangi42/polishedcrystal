@@ -1,26 +1,26 @@
 Colosseum_MapScriptHeader:
-	db 1 ; scene scripts
+	def_scene_scripts
 	scene_script ColosseumTrigger0
 
-	db 2 ; callbacks
+	def_callbacks
 	callback MAPCALLBACK_OBJECTS, ColosseumScript_SetWhichChris
 	callback MAPCALLBACK_NEWMAP, ColosseumScript_InitializeCB
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event  4,  7, POKECENTER_2F, 3
 	warp_event  5,  7, POKECENTER_2F, 3
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 2 ; bg events
+	def_bg_events
 	bg_event  4,  4, SIGNPOST_RIGHT, MapColosseumSignpost1Script
 	bg_event  5,  4, SIGNPOST_LEFT, MapColosseumSignpost1Script
 
-	db 2 ; object events
+	def_object_events
 	object_event  3,  4, SPRITE_CHRIS, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ChrisScript_0x193499, EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	object_event  6,  4, SPRITE_CHRIS, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ChrisScript_0x193499, EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
 
-	const_def 1 ; object constants
+	object_const_def
 	const COLOSSEUM_CHRIS1
 	const COLOSSEUM_CHRIS2
 

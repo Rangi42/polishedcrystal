@@ -1,29 +1,29 @@
 RuinsOfAlphResearchCenter_MapScriptHeader:
-	db 2 ; scene scripts
+	def_scene_scripts
 	scene_script RuinsofAlphResearchCenterTrigger0
 	scene_script RuinsofAlphResearchCenterTrigger1
 
-	db 1 ; callbacks
+	def_callbacks
 	callback MAPCALLBACK_OBJECTS, UnknownScript_0x59185
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event  2,  7, RUINS_OF_ALPH_OUTSIDE, 6
 	warp_event  3,  7, RUINS_OF_ALPH_OUTSIDE, 6
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 4 ; bg events
+	def_bg_events
 	bg_event  6,  5, SIGNPOST_JUMPTEXT, UnknownText_0x59886
 	bg_event  3,  4, SIGNPOST_READ, MapRuinsofAlphResearchCenterSignpost1Script
 	bg_event  7,  1, SIGNPOST_JUMPTEXT, UnknownText_0x5980e
 	bg_event  5,  0, SIGNPOST_JUMPTEXT, UnknownText_0x59848
 
-	db 3 ; object events
+	def_object_events
 	object_event  4,  5, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_SCRIPT, 0, ScientistScript_0x591e5, -1
 	object_event  5,  2, SPRITE_SCIENTIST, SPRITEMOVEDATA_WANDER, 1, 2, -1, -1, PAL_NPC_BROWN, PERSONTYPE_SCRIPT, 0, ScientistScript_0x59214, -1
 	object_event  2,  5, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_SCRIPT, 0, ScientistScript_0x591d1, EVENT_RUINS_OF_ALPH_RESEARCH_CENTER_SCIENTIST
 
-	const_def 1 ; object constants
+	object_const_def
 	const RUINSOFALPHRESEARCHCENTER_SCIENTIST1
 	const RUINSOFALPHRESEARCHCENTER_SCIENTIST2
 	const RUINSOFALPHRESEARCHCENTER_SCIENTIST3

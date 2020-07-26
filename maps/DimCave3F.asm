@@ -1,11 +1,11 @@
 DimCave3F_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 2 ; callbacks
+	def_callbacks
 	callback MAPCALLBACK_TILES, DimCave3FBouldersLand
 	callback MAPCALLBACK_CMDQUEUE, DimCave3FSetUpStoneTable
 
-	db 6 ; warp events
+	def_warp_events
 	warp_event  5,  5, DIM_CAVE_4F, 4
 	warp_event 28, 22, DIM_CAVE_4F, 5
 	warp_event 15, 10, DIM_CAVE_4F, 6 ; hole
@@ -13,13 +13,13 @@ DimCave3F_MapScriptHeader:
 	warp_event 27, 25, DIM_CAVE_2F, 3
 	warp_event 14, 21, DIM_CAVE_2F, 4
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 2 ; bg events
+	def_bg_events
 	bg_event  2,  5, SIGNPOST_ITEM + STAR_PIECE, EVENT_DIM_CAVE_3F_HIDDEN_STAR_PIECE
 	bg_event 26,  6, SIGNPOST_ITEM + ZINC, EVENT_DIM_CAVE_3F_HIDDEN_ZINC
 
-	db 9 ; object events
+	def_object_events
 	strengthboulder_event  3, 17, EVENT_BOULDER_IN_DIM_CAVE_3F
 	object_event 15,  8, SPRITE_BOULDER_ROCK_FOSSIL, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptext, DimCaveFallenBoulderText, EVENT_BOULDER_FELL_IN_DIM_CAVE_3F
 	object_event 14,  4, SPRITE_ENGINEER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerEngineerHugo, -1
@@ -30,7 +30,7 @@ DimCave3F_MapScriptHeader:
 	itemball_event 10, 29, ESCAPE_ROPE, 1, EVENT_DIM_CAVE_3F_ESCAPE_ROPE
 	tmhmball_event 20,  9, TM_REST, EVENT_DIM_CAVE_3F_TM_REST
 
-	const_def 1 ; object constants
+	object_const_def
 	const DIMCAVE3F_BOULDER
 
 DimCave3FBouldersLand:

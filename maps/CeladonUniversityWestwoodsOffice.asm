@@ -1,21 +1,21 @@
 CeladonUniversityWestwoodsOffice_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event  3,  5, CELADON_UNIVERSITY_2F, 5
 	warp_event  4,  5, CELADON_UNIVERSITY_2F, 5
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 4 ; bg events
+	def_bg_events
 	bg_event  2,  0, SIGNPOST_JUMPTEXT, CeladonUniversityWestwoodsOfficeSignpost1Text
 	bg_event  3,  0, SIGNPOST_JUMPTEXT, CeladonUniversityWestwoodsOfficeSignpost2Text
 	bg_event  4,  1, SIGNPOST_JUMPTEXT, CeladonUniversityWestwoodsOfficeBookshelfText
 	bg_event  5,  1, SIGNPOST_JUMPTEXT, CeladonUniversityWestwoodsOfficeBookshelfText
 
-	db 2 ; object events
+	def_object_events
 	object_event  4,  3, SPRITE_CHILD, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, CeladonUniversityWestwoodsOfficeChildScript, -1
 	object_event  1,  4, SPRITE_BOOK_PAPER_POKEDEX, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptext, CeladonUniversityWestwoodsOfficeBookText, -1
 

@@ -1,15 +1,15 @@
 SproutTower3F_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 1 ; warp events
+	def_warp_events
 	warp_event  8, 14, SPROUT_TOWER_2F, 4
 
-	db 1 ; coord events
+	def_coord_events
 	coord_event  9,  9, 0, UnknownScript_0x184947
 
-	db 6 ; bg events
+	def_bg_events
 	bg_event  6,  1, SIGNPOST_JUMPTEXT, UnknownText_0x184f61
 	bg_event  9,  1, SIGNPOST_JUMPTEXT, UnknownText_0x184f61
 	bg_event  7,  0, SIGNPOST_JUMPTEXT, UnknownText_0x184f37
@@ -17,7 +17,7 @@ SproutTower3F_MapScriptHeader:
 	bg_event  3, 15, SIGNPOST_JUMPTEXT, UnknownText_0x184f61
 	bg_event 12, 15, SIGNPOST_JUMPTEXT, UnknownText_0x184f61
 
-	db 7 ; object events
+	def_object_events
 	object_event  8,  4, SPRITE_SILVER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_SPROUT_TOWER
 	object_event  6, 13, SPRITE_SAGE, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerSageJin, -1
 	object_event  6,  8, SPRITE_SAGE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerSageTroy, -1
@@ -26,7 +26,7 @@ SproutTower3F_MapScriptHeader:
 	itemball_event  4, 14, POTION, 1, EVENT_SPROUT_TOWER_3F_POTION
 	itemball_event 12,  1, ESCAPE_ROPE, 1, EVENT_SPROUT_TOWER_3F_ESCAPE_ROPE
 
-	const_def 1 ; object constants
+	object_const_def
 	const SPROUTTOWER3F_SILVER
 
 UnknownScript_0x184947:

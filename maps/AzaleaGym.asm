@@ -1,19 +1,19 @@
 AzaleaGym_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event  4, 15, AZALEA_TOWN, 5
 	warp_event  5, 15, AZALEA_TOWN, 5
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 2 ; bg events
+	def_bg_events
 	bg_event  3, 13, SIGNPOST_READ, AzaleaGymStatue
 	bg_event  6, 13, SIGNPOST_READ, AzaleaGymStatue
 
-	db 7 ; object events
+	def_object_events
 	object_event  5,  7, SPRITE_BUGSY, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, AzaleaGymBugsyScript, -1
 	object_event  7, 13, SPRITE_GYM_GUY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, AzaleaGymGuyScript, -1
 	object_event  5,  3, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerBug_catcherBenny, -1

@@ -1,19 +1,19 @@
 Route10PokeCenter1F_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 3 ; warp events
+	def_warp_events
 	warp_event  5,  7, ROUTE_10_NORTH, 1
 	warp_event  6,  7, ROUTE_10_NORTH, 1
 	warp_event  0,  7, POKECENTER_2F, 1
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 1 ; bg events
+	def_bg_events
 	bg_event 10,  1, SIGNPOST_READ, PokemonJournalAgathaScript
 
-	db 4 ; object events
+	def_object_events
 	pc_nurse_event  5, 1
 	object_event  8,  2, SPRITE_GYM_GUY, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_SCRIPT, 0, Route10PokeCenter1FGymGuyScript, -1
 	object_event  9,  4, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, Route10PokeCenter1FGentlemanText, -1

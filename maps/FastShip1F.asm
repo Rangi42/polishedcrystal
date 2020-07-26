@@ -1,11 +1,11 @@
 FastShip1F_MapScriptHeader:
-	db 2 ; scene scripts
+	def_scene_scripts
 	scene_script FastShip1FTrigger0
 	scene_script FastShip1FTrigger1
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 12 ; warp events
+	def_warp_events
 	warp_event 25,  1, FAST_SHIP_1F, -1
 	warp_event 27,  8, FAST_SHIP_CABINS_NNW_NNE_NE, 1
 	warp_event 23,  8, FAST_SHIP_CABINS_NNW_NNE_NE, 2
@@ -19,19 +19,19 @@ FastShip1F_MapScriptHeader:
 	warp_event  6, 14, FAST_SHIP_B1F, 1
 	warp_event 30, 14, FAST_SHIP_B1F, 2
 
-	db 2 ; coord events
+	def_coord_events
 	coord_event 24,  6, 2, WorriedGrandpaTriggerLeft
 	coord_event 25,  6, 2, WorriedGrandpaTriggerRight
 
-	db 0 ; bg events
+	def_bg_events
 
-	db 4 ; object events
+	def_object_events
 	object_event 25,  2, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SailorScript_0x75160, -1
 	object_event 19,  6, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_FAST_SHIP_1F_GENTLEMAN
 	object_event 14,  7, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SailorScript_0x751d0, -1
 	object_event 22, 17, SPRITE_SAILOR, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x753c0, -1
 
-	const_def 1 ; object constants
+	object_const_def
 	const FASTSHIP1F_SAILOR1
 	const FASTSHIP1F_GENTLEMAN
 

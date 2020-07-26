@@ -1,22 +1,22 @@
 PsychicInversHouse_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event  2,  7, ROUTE_16_WEST, 1
 	warp_event  3,  7, ROUTE_16_WEST, 1
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 1 ; bg events
+	def_bg_events
 	bg_event  7,  1, SIGNPOST_JUMPSTD, difficultbookshelf
 
-	db 2 ; object events
+	def_object_events
 	object_event  2,  2, SPRITE_PSYCHIC, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, PsychicInverScript, -1
 	object_event  6,  3, SPRITE_HEX_MANIAC, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, PsychicInversHouseHexManiacText, -1
 
-	const_def 1 ; object constants
+	object_const_def
 	const PSYCHICINVERSHOUSE_INVER
 
 PsychicInverScript:

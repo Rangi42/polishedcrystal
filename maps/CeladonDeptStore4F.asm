@@ -1,19 +1,19 @@
 CeladonDeptStore4F_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 3 ; warp events
+	def_warp_events
 	warp_event 12,  0, CELADON_DEPT_STORE_5F, 1
 	warp_event 15,  0, CELADON_DEPT_STORE_3F, 2
 	warp_event  2,  0, CELADON_DEPT_STORE_ELEVATOR, 1
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 1 ; bg events
+	def_bg_events
 	bg_event 14,  0, SIGNPOST_JUMPTEXT, CeladonDeptStore4FDirectoryText
 
-	db 4 ; object events
+	def_object_events
 	object_event 13,  5, SPRITE_CLERK, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, pokemart, MARTTYPE_STANDARD, MART_CELADON_4F, -1
 	object_event  7,  6, SPRITE_POKEMANIAC, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x70f21, -1
 	object_event  8,  2, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x70f55, -1

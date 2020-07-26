@@ -1,19 +1,19 @@
 BluesHouse1F_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 3 ; warp events
+	def_warp_events
 	warp_event  2,  7, PALLET_TOWN, 2
 	warp_event  3,  7, PALLET_TOWN, 2
 	warp_event  7,  0, BLUES_HOUSE_2F, 1
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 1 ; bg events
+	def_bg_events
 	bg_event  5,  1, SIGNPOST_UP, RedsHouse1FTVScript
 
-	db 1 ; object events
+	def_object_events
 	object_event  2,  3, SPRITE_DAISY, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, DaisyScript, -1
 
 DaisyScript:

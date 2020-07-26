@@ -1,23 +1,23 @@
 DragonsDenB1F_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 1 ; callbacks
+	def_callbacks
 	callback MAPCALLBACK_NEWMAP, DragonsDenB1FSilverCallback
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event 20,  3, DRAGONS_DEN_1F, 3
 	warp_event 19, 29, DRAGON_SHRINE, 1
 
-	db 1 ; coord events
+	def_coord_events
 	coord_event 19, 30, 1, DragonsDenB1FClairTrigger
 
-	db 4 ; bg events
+	def_bg_events
 	bg_event 18, 24, SIGNPOST_JUMPTEXT, DragonsDenShrineSignText
 	bg_event 33, 29, SIGNPOST_ITEM + REVIVE, EVENT_DRAGONS_DEN_B1F_HIDDEN_REVIVE
 	bg_event 21, 17, SIGNPOST_ITEM + MAX_POTION, EVENT_DRAGONS_DEN_B1F_HIDDEN_MAX_POTION
 	bg_event 31, 15, SIGNPOST_ITEM + MAX_ELIXIR, EVENT_DRAGONS_DEN_B1F_HIDDEN_MAX_ELIXIR
 
-	db 11 ; object events
+	def_object_events
 	object_event 14, 30, SPRITE_CLAIR, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_DRAGONS_DEN_CLAIR
 	object_event 20, 23, SPRITE_SILVER, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, DragonsDenB1FSilverScript, EVENT_RIVAL_DRAGONS_DEN
 	object_event 20,  8, SPRITE_DRAGON_TAMER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerDragonTamerDarin, -1
@@ -30,7 +30,7 @@ DragonsDenB1F_MapScriptHeader:
 	itemball_event 30,  4, CALCIUM, 1, EVENT_DRAGONS_DEN_B1F_CALCIUM
 	itemball_event  5, 20, MAX_ELIXIR, 1, EVENT_DRAGONS_DEN_B1F_MAX_ELIXIR
 
-	const_def 1 ; object constants
+	object_const_def
 	const DRAGONSDENB1F_CLAIR
 	const DRAGONSDENB1F_SILVER
 

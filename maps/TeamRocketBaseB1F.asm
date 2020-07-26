@@ -1,16 +1,16 @@
 TeamRocketBaseB1F_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 1 ; callbacks
+	def_callbacks
 	callback MAPCALLBACK_OBJECTS, TeamRocketBaseB1FCallback1
 
-	db 4 ; warp events
+	def_warp_events
 	warp_event 27,  2, MAHOGANY_MART_1F, 3
 	warp_event  3, 14, TEAM_ROCKET_BASE_B2F, 1
 	warp_event  5, 15, TEAM_ROCKET_BASE_B1F, 4
 	warp_event 25,  2, TEAM_ROCKET_BASE_B1F, 3
 
-	db 30 ; coord events
+	def_coord_events
 	; There are five security cameras in the base.
 	; Walking in front of one triggers two Rocket Grunts.
 	coord_event 24,  2, 0, SecurityCamera1a
@@ -46,7 +46,7 @@ TeamRocketBaseB1F_MapScriptHeader:
 	coord_event  4, 13, 0, ExplodingTrap21
 	coord_event  5, 13, 0, ExplodingTrap22
 
-	db 9 ; bg events
+	def_bg_events
 	bg_event 19, 11, SIGNPOST_READ, MapTeamRocketBaseB1FSignpost0Script
 	bg_event 24,  1, SIGNPOST_UP, MapTeamRocketBaseB1FSignpost5Script
 	bg_event  6,  1, SIGNPOST_UP, MapTeamRocketBaseB1FSignpost5Script
@@ -57,7 +57,7 @@ TeamRocketBaseB1F_MapScriptHeader:
 	bg_event 21, 11, SIGNPOST_JUMPSTD, teamrocketoath
 	bg_event  3, 11, SIGNPOST_ITEM + REVIVE, EVENT_TEAM_ROCKET_BASE_B1F_HIDDEN_REVIVE
 
-	db 6 ; object events
+	def_object_events
 	object_event  0,  0, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_TEAM_ROCKET_BASE_SECURITY_GRUNTS
 	object_event  2,  4, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerGruntM16, EVENT_TEAM_ROCKET_BASE_POPULATION
 	object_event 18, 12, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerRocketScientistJed, EVENT_TEAM_ROCKET_BASE_POPULATION
@@ -65,7 +65,7 @@ TeamRocketBaseB1F_MapScriptHeader:
 	itemball_event 14, 15, NUGGET, 1, EVENT_TEAM_ROCKET_BASE_B1F_NUGGET
 	itemball_event 21, 12, GUARD_SPEC, 1, EVENT_TEAM_ROCKET_BASE_B1F_GUARD_SPEC
 
-	const_def 1 ; object constants
+	object_const_def
 	const TEAMROCKETBASEB1F_ROCKET1
 
 TeamRocketBaseB1FCallback1:

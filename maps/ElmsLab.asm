@@ -1,5 +1,5 @@
 ElmsLab_MapScriptHeader:
-	db 8 ; scene scripts
+	def_scene_scripts
 	scene_script ElmsLabTrigger0
 	scene_script ElmsLabTrigger1
 	scene_script ElmsLabTrigger2
@@ -9,14 +9,14 @@ ElmsLab_MapScriptHeader:
 	scene_script ElmsLabTrigger6
 	scene_script ElmsLabTrigger7
 
-	db 1 ; callbacks
+	def_callbacks
 	callback MAPCALLBACK_OBJECTS, ElmsLabCallback_MoveElm
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event  4, 11, NEW_BARK_TOWN, 1
 	warp_event  5, 11, NEW_BARK_TOWN, 1
 
-	db 7 ; coord events
+	def_coord_events
 	coord_event  4,  6, 1, LabTryToLeaveScript
 	coord_event  5,  6, 1, LabTryToLeaveScript
 	coord_event  4,  5, 3, MeetCopScript
@@ -25,7 +25,7 @@ ElmsLab_MapScriptHeader:
 	coord_event  5,  8, 5, AideScript_WalkPotions2
 	coord_event  4,  6, 6, LyraBattleScript
 
-	db 16 ; bg events
+	def_bg_events
 	bg_event  2,  1, SIGNPOST_READ, ElmsLabHealingMachine
 	bg_event  6,  1, SIGNPOST_JUMPSTD, difficultbookshelf
 	bg_event  7,  1, SIGNPOST_JUMPSTD, difficultbookshelf
@@ -43,7 +43,7 @@ ElmsLab_MapScriptHeader:
 	bg_event  5,  0, SIGNPOST_READ, ElmsLabWindow
 	bg_event  3,  5, SIGNPOST_DOWN, ElmsLabPC
 
-	db 7 ; object events
+	def_object_events
 	object_event  5,  2, SPRITE_ELM, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ProfElmScript, -1
 	object_event  2,  9, SPRITE_SCIENTIST, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_SCRIPT, 0, ElmsAideScript, EVENT_ELMS_AIDE_IN_LAB
 	object_event  6,  3, SPRITE_BALL_CUT_FRUIT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, CyndaquilPokeBallScript, EVENT_CYNDAQUIL_POKEBALL_IN_ELMS_LAB
@@ -52,7 +52,7 @@ ElmsLab_MapScriptHeader:
 	object_event  5,  3, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CopScript, EVENT_COP_IN_ELMS_LAB
 	object_event  5, 11, SPRITE_LYRA, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ElmsLabLyraScript, EVENT_LYRA_IN_ELMS_LAB
 
-	const_def 1 ; object constants
+	object_const_def
 	const ELMSLAB_ELM
 	const ELMSLAB_ELMS_AIDE
 	const ELMSLAB_POKE_BALL1

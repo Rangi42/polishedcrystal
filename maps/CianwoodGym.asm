@@ -1,19 +1,19 @@
 CianwoodGym_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event  4, 17, CIANWOOD_CITY, 2
 	warp_event  5, 17, CIANWOOD_CITY, 2
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 2 ; bg events
+	def_bg_events
 	bg_event  3, 15, SIGNPOST_READ, CianwoodGymStatue
 	bg_event  6, 15, SIGNPOST_READ, CianwoodGymStatue
 
-	db 10 ; object events
+	def_object_events
 	object_event  4,  1, SPRITE_CHUCK, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ChuckScript_0x9d60f, -1
 	strengthboulder_event  5, 1
 	object_event  2, 12, SPRITE_BLACK_BELT, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerBlackbeltYoshi, -1
@@ -25,7 +25,7 @@ CianwoodGym_MapScriptHeader:
 	strengthboulder_event  4, 7
 	strengthboulder_event  5, 7
 
-	const_def 1 ; object constants
+	object_const_def
 	const CIANWOODGYM_CHUCK
 	const CIANWOODGYM_BOULDER1
 

@@ -1,16 +1,16 @@
 TinTower3F_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event  8, 14, TIN_TOWER_2F, 1
 	warp_event 14,  2, TIN_TOWER_4F, 2
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 0 ; bg events
+	def_bg_events
 
-	db 1 ; object events
+	def_object_events
 	itemball_event  1, 14, FULL_HEAL, 1, EVENT_TIN_TOWER_3F_FULL_HEAL
 

@@ -1,21 +1,21 @@
 BlackthornGym2F_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 1 ; callbacks
+	def_callbacks
 	callback MAPCALLBACK_CMDQUEUE, BlackthornGym2FBoulders
 
-	db 5 ; warp events
+	def_warp_events
 	warp_event  1,  7, BLACKTHORN_GYM_1F, 3
 	warp_event  7,  9, BLACKTHORN_GYM_1F, 4
 	warp_event  2,  5, BLACKTHORN_GYM_1F, 5 ; hole
 	warp_event  8,  7, BLACKTHORN_GYM_1F, 6 ; hole
 	warp_event  8,  3, BLACKTHORN_GYM_1F, 7 ; hole
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 0 ; bg events
+	def_bg_events
 
-	db 8 ; object events
+	def_object_events
 	strengthboulder_event  8,  2, EVENT_BOULDER_IN_BLACKTHORN_GYM_1
 	strengthboulder_event  2,  3, EVENT_BOULDER_IN_BLACKTHORN_GYM_2
 	strengthboulder_event  6, 16, EVENT_BOULDER_IN_BLACKTHORN_GYM_3
@@ -25,7 +25,7 @@ BlackthornGym2F_MapScriptHeader:
 	object_event  4,  1, SPRITE_ACE_TRAINER_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerCooltrainermCody, -1
 	object_event  4, 11, SPRITE_ACE_TRAINER_F, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerCooltrainerfFran, -1
 
-	const_def 1 ; object constants
+	object_const_def
 	const BLACKTHORNGYM2F_BOULDER1
 	const BLACKTHORNGYM2F_BOULDER2
 	const BLACKTHORNGYM2F_BOULDER3

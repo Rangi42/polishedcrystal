@@ -1,18 +1,18 @@
 MountMortarB1F_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event  3,  3, MOUNT_MORTAR_1F_INSIDE, 5
 	warp_event 19, 29, MOUNT_MORTAR_1F_OUTSIDE, 7
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 1 ; bg events
+	def_bg_events
 	bg_event  4,  6, SIGNPOST_ITEM + MAX_REVIVE, EVENT_MOUNT_MORTAR_B1F_HIDDEN_MAX_REVIVE
 
-	db 8 ; object events
+	def_object_events
 	object_event 11, 31, SPRITE_HIKER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, MountMortarB1FHikerScript, -1
 	object_event 16,  4, SPRITE_BLACK_BELT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, KiyoScript_0x7e1f6, -1
 	strengthboulder_event  9, 10

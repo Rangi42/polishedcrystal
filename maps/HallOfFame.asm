@@ -1,21 +1,21 @@
 HallOfFame_MapScriptHeader:
-	db 1 ; scene scripts
+	def_scene_scripts
 	scene_script HallOfFameEntranceTrigger
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event  4, 13, LANCES_ROOM, 3
 	warp_event  5, 13, LANCES_ROOM, 4
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 0 ; bg events
+	def_bg_events
 
-	db 1 ; object events
+	def_object_events
 	object_event  4, 12, SPRITE_LANCE, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
 
-	const_def 1 ; object constants
+	object_const_def
 	const HALLOFFAME_LANCE
 
 HallOfFameEntranceTrigger:

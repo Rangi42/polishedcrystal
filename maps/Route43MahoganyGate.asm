@@ -1,19 +1,19 @@
 Route43MahoganyGate_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 4 ; warp events
+	def_warp_events
 	warp_event  4,  0, ROUTE_43, 1
 	warp_event  5,  0, ROUTE_43, 2
 	warp_event  4,  7, MAHOGANY_TOWN, 5
 	warp_event  5,  7, MAHOGANY_TOWN, 5
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 0 ; bg events
+	def_bg_events
 
-	db 1 ; object events
+	def_object_events
 	object_event  0,  4, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, OfficerScript_0x19ab0b, -1
 
 OfficerScript_0x19ab0b:

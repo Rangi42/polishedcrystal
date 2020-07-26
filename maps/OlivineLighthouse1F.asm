@@ -1,20 +1,20 @@
 OlivineLighthouse1F_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 5 ; warp events
+	def_warp_events
 	warp_event 10, 17, OLIVINE_CITY, 8
 	warp_event 11, 17, OLIVINE_CITY, 8
 	warp_event  3, 11, OLIVINE_LIGHTHOUSE_2F, 1
 	warp_event 16, 13, OLIVINE_LIGHTHOUSE_2F, 3
 	warp_event 17, 13, OLIVINE_LIGHTHOUSE_2F, 4
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 0 ; bg events
+	def_bg_events
 
-	db 2 ; object events
+	def_object_events
 	object_event  8,  2, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SailorScript_0x5ae67, -1
 	object_event 16,  9, SPRITE_MATRON, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x5aec2, -1
 

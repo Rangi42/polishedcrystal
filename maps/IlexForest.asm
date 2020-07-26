@@ -1,21 +1,21 @@
 IlexForest_MapScriptHeader:
-	db 2 ; scene scripts
+	def_scene_scripts
 	scene_script IlexForestTrigger0
 	scene_script IlexForestTrigger1
 
-	db 1 ; callbacks
+	def_callbacks
 	callback MAPCALLBACK_OBJECTS, IlexForestFarfetchdCallback
 
-	db 4 ; warp events
+	def_warp_events
 	warp_event  3,  7, ROUTE_34_ILEX_FOREST_GATE, 3
 	warp_event  5, 44, ILEX_FOREST_AZALEA_GATE, 1
 	warp_event  5, 45, ILEX_FOREST_AZALEA_GATE, 2
 	warp_event 25, 24, HIDDEN_TREE_GROTTO, 1
 
-	db 1 ; coord events
+	def_coord_events
 	coord_event  9, 31, 2, IlexForestApprenticeTrigger
 
-	db 10 ; bg events
+	def_bg_events
 	bg_event  5, 19, SIGNPOST_JUMPTEXT, Text_IlexForestSignpost0
 	bg_event 13,  9, SIGNPOST_ITEM + ETHER, EVENT_ILEX_FOREST_HIDDEN_ETHER
 	bg_event 24, 16, SIGNPOST_ITEM + SUPER_POTION, EVENT_ILEX_FOREST_HIDDEN_SUPER_POTION
@@ -27,7 +27,7 @@ IlexForest_MapScriptHeader:
 	bg_event 25, 23, SIGNPOST_JUMPSTD, treegrotto, HIDDENGROTTO_ILEX_FOREST
 	bg_event 26, 23, SIGNPOST_JUMPSTD, treegrotto, HIDDENGROTTO_ILEX_FOREST
 
-	db 14 ; object events
+	def_object_events
 	object_event 16, 33, SPRITE_FARFETCH_D, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, IlexForestFarfetchdScript, EVENT_ILEX_FOREST_FARFETCHD
 	object_event  7, 30, SPRITE_BLACK_BELT, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, IlexForestCharcoalMasterScript, EVENT_ILEX_FOREST_CHARCOAL_MASTER
 	object_event 10, 31, SPRITE_KURT, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ILEX_FOREST_KURT
@@ -43,7 +43,7 @@ IlexForest_MapScriptHeader:
 	itemball_event 25, 17, ANTIDOTE, 1, EVENT_ILEX_FOREST_ANTIDOTE
 	itemball_event 29,  3, MULCH, 1, EVENT_ILEX_FOREST_MULCH
 
-	const_def 1 ; object constants
+	object_const_def
 	const ILEXFOREST_FARFETCHD
 	const ILEXFOREST_BLACK_BELT
 	const ILEXFOREST_KURT

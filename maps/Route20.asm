@@ -1,20 +1,20 @@
 Route20_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event 70,  9, SEAFOAM_ISLANDS_1F, 1
 	warp_event 62,  5, SEAFOAM_ISLANDS_1F, 4
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 3 ; bg events
+	def_bg_events
 	bg_event 69, 11, SIGNPOST_JUMPTEXT, CinnabarGymSignText
 	bg_event 65,  7, SIGNPOST_JUMPTEXT, SeafoamIslandsSignText
 	bg_event 23, 10, SIGNPOST_ITEM + STARDUST, EVENT_ROUTE_20_HIDDEN_STARDUST
 
-	db 13 ; object events
+	def_object_events
 	object_event 99, 10, SPRITE_SWIMMER_GIRL, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerSwimmerfNicole, -1
 	object_event 78, 13, SPRITE_SWIMMER_GIRL, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerSwimmerfLori, -1
 	object_event 32,  4, SPRITE_SWIMMER_GIRL, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerSwimmerfMina, -1

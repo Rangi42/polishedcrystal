@@ -1,21 +1,21 @@
 CeladonUniversityPrincipalsOffice_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event  2,  7, CELADON_UNIVERSITY_1F, 5
 	warp_event  3,  7, CELADON_UNIVERSITY_1F, 5
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 4 ; bg events
+	def_bg_events
 	bg_event  2,  0, SIGNPOST_JUMPTEXT, CeladonUniversityPrincipalsOfficeSignpost1Text
 	bg_event  3,  0, SIGNPOST_JUMPTEXT, CeladonUniversityPrincipalsOfficeSignpost2Text
 	bg_event  5,  4, SIGNPOST_RIGHT, CeladonUniversityPrincipalsOfficeComputer
 	bg_event  1,  1, SIGNPOST_JUMPTEXT, CeladonUniversityPrincipalsOfficeBookshelfText
 
-	db 1 ; object events
+	def_object_events
 	object_event  2,  2, SPRITE_MATSUMOTO, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CeladonUniversityPrincipalsOfficeMatsumotoScript, -1
 
 CeladonUniversityPrincipalsOfficeMatsumotoScript:

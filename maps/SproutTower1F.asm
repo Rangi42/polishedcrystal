@@ -1,22 +1,22 @@
 SproutTower1F_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 5 ; warp events
+	def_warp_events
 	warp_event  7, 15, VIOLET_CITY, 7
 	warp_event  8, 15, VIOLET_CITY, 7
 	warp_event  4,  4, SPROUT_TOWER_2F, 1
 	warp_event  0,  6, SPROUT_TOWER_2F, 2
 	warp_event 15,  3, SPROUT_TOWER_2F, 3
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 2 ; bg events
+	def_bg_events
 	bg_event  5, 15, SIGNPOST_JUMPTEXT, UnknownText_0x1846d6
 	bg_event 10, 15, SIGNPOST_JUMPTEXT, UnknownText_0x1846d6
 
-	db 6 ; object events
+	def_object_events
 	object_event  5,  4, SPRITE_SAGE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1845d8, -1
 	object_event  4,  7, SPRITE_SAGE, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x18460a, -1
 	object_event  9, 12, SPRITE_GRANNY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GrannyScript_0x184504, -1

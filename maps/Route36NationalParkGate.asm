@@ -1,25 +1,25 @@
 Route36NationalParkGate_MapScriptHeader:
-	db 3 ; scene scripts
+	def_scene_scripts
 	scene_script Route36NationalParkGateTrigger0
 	scene_script Route36NationalParkGateTrigger1
 	scene_script Route36NationalParkGateTrigger2
 
-	db 2 ; callbacks
+	def_callbacks
 	callback MAPCALLBACK_NEWMAP, Route36NationalParkGateCheckIfContestRunning
 	callback MAPCALLBACK_OBJECTS, Route36NationalParkGateCheckIfContestAvailable
 
-	db 4 ; warp events
+	def_warp_events
 	warp_event  0,  4, NATIONAL_PARK, 1
 	warp_event  0,  5, NATIONAL_PARK, 2
 	warp_event  9,  4, ROUTE_36, 1
 	warp_event  9,  5, ROUTE_36, 2
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 1 ; bg events
+	def_bg_events
 	bg_event  6,  0, SIGNPOST_JUMPTEXT, UnknownText_0x6a90e
 
-	db 12 ; object events
+	def_object_events
 	object_event  0,  3, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_SCRIPT, 0, Route36OfficerScriptContest, EVENT_ROUTE_36_NATIONAL_PARK_GATE_OFFICER_CONTEST_DAY
 	object_event  2,  5, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BugCatcherScript_0x6ad06, EVENT_BUG_CATCHING_CONTESTANT_1B
 	object_event  4,  5, SPRITE_BUG_MANIAC, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BugManiacScript_0x6ad1a, EVENT_BUG_CATCHING_CONTESTANT_2B
@@ -33,7 +33,7 @@ Route36NationalParkGate_MapScriptHeader:
 	object_event  6,  6, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, YoungsterScript_0x6adba, EVENT_BUG_CATCHING_CONTESTANT_10B
 	object_event  3,  2, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_SCRIPT, 0, OfficerScript_0x6acf4, EVENT_ROUTE_36_NATIONAL_PARK_GATE_OFFICER_NOT_CONTEST_DAY
 
-	const_def 1 ; object constants
+	object_const_def
 	const ROUTE36NATIONALPARKGATE_OFFICER1
 	const ROUTE36NATIONALPARKGATE_BUG_CATCHER1
 	const ROUTE36NATIONALPARKGATE_BUG_MANIAC

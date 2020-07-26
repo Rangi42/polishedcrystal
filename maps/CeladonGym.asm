@@ -1,19 +1,19 @@
 CeladonGym_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event  4, 17, CELADON_CITY, 8
 	warp_event  5, 17, CELADON_CITY, 8
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 2 ; bg events
+	def_bg_events
 	bg_event  3, 15, SIGNPOST_READ, CeladonGymStatue
 	bg_event  6, 15, SIGNPOST_READ, CeladonGymStatue
 
-	db 7 ; object events
+	def_object_events
 	object_event  5,  3, SPRITE_ERIKA, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ErikaScript_0x72a6a, -1
 	object_event  7,  8, SPRITE_LASS, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerLassMichelle, -1
 	object_event  2,  8, SPRITE_PICNICKER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerPicnickerTanya, -1

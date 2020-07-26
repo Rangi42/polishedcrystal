@@ -1,15 +1,15 @@
 ScaryCaveShipwreck_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 1 ; warp events
+	def_warp_events
 	warp_event  5,  9, SCARY_CAVE_1F, 5
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 0 ; bg events
+	def_bg_events
 
-	db 1 ; object events
+	def_object_events
 	itemball_event  7,  8, RARE_BONE, 1, EVENT_SCARY_CAVE_SHIPWRECK_RARE_BONE
 

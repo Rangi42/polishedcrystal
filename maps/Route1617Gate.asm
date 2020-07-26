@@ -1,28 +1,28 @@
 Route1617Gate_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 5 ; warp events
+	def_warp_events
 	warp_event  0,  5, ROUTE_16_SOUTH, 1
 	warp_event  0,  6, ROUTE_16_SOUTH, 2
 	warp_event  9,  5, ROUTE_16_NORTHEAST, 1
 	warp_event  9,  6, ROUTE_16_NORTHEAST, 2
 	warp_event  8,  8, ROUTE_16_17_GATE_2F, 1
 
-	db 5 ; coord events
+	def_coord_events
 	coord_event  5,  3, 0, UnknownScript_0x733ed
 	coord_event  5,  4, 0, UnknownScript_0x733ed
 	coord_event  5,  5, 0, Route1617GateStepUpOneTrigger
 	coord_event  5,  6, 0, Route1617GateStepUpTwoTrigger
 	coord_event  5,  7, 0, Route1617GateStepUpThreeTrigger
 
-	db 0 ; bg events
+	def_bg_events
 
-	db 1 ; object events
+	def_object_events
 	object_event  5,  1, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x73408, -1
 
-	const_def 1 ; object constants
+	object_const_def
 	const ROUTE1617GATE_OFFICER
 
 Route1617GateStepUpOneTrigger:

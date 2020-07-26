@@ -1,23 +1,23 @@
 IcePathB3F_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event  3,  5, ICE_PATH_B2F_MAHOGANY_SIDE, 2
 	warp_event 15,  5, ICE_PATH_B2F_BLACKTHORN_SIDE, 2
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 1 ; bg events
+	def_bg_events
 	bg_event 16,  3, SIGNPOST_JUMPTEXT, Text_IcePathB3FIceRock
 
-	db 3 ; object events
+	def_object_events
 	object_event 10,  2, SPRITE_LORELEI, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, LoreleiScript, -1
 	itemball_event  5,  7, NEVERMELTICE, 1, EVENT_ICE_PATH_B3F_NEVERMELTICE
 	smashrock_event  6, 6
 
-	const_def 1 ; object constants
+	object_const_def
 	const ICEPATHB3F_LORELEI
 
 LoreleiScript:

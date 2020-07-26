@@ -1,20 +1,20 @@
 GoldenrodGym_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event  2, 17, GOLDENROD_CITY, 1
 	warp_event  3, 17, GOLDENROD_CITY, 1
 
-	db 1 ; coord events
+	def_coord_events
 	coord_event  8,  5, 1, WhitneyCriesScript
 
-	db 2 ; bg events
+	def_bg_events
 	bg_event  1, 15, SIGNPOST_READ, GoldenrodGymStatue
 	bg_event  4, 15, SIGNPOST_READ, GoldenrodGymStatue
 
-	db 7 ; object events
+	def_object_events
 	object_event  9,  6, SPRITE_CUTE_GIRL, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerSrandjrJoandcath1, -1
 	object_event  8,  3, SPRITE_WHITNEY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, WhitneyScript_0x5400c, -1
 	object_event  9, 13, SPRITE_LASS, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerLassCathy, -1
@@ -23,7 +23,7 @@ GoldenrodGym_MapScriptHeader:
 	object_event 19,  5, SPRITE_BEAUTY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerBeautySamantha, -1
 	object_event  5, 15, SPRITE_GYM_GUY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, GoldenrodGymGuyScript, -1
 
-	const_def 1 ; object constants
+	object_const_def
 	const GOLDENRODGYM_LASS2
 
 WhitneyScript_0x5400c:

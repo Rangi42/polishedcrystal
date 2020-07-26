@@ -1,16 +1,16 @@
 MagnetTunnelInside_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 1 ; callbacks
+	def_callbacks
 	callback MAPCALLBACK_TILES, MagnetTunnelInsideTileCallback
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event  5, 19, MAGNET_TUNNEL_WEST, 1
 	warp_event 43,  3, MAGNET_TUNNEL_EAST, 1
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 8 ; bg events
+	def_bg_events
 	bg_event  6, 10, SIGNPOST_UP, MagnetTunnelInsideMachine1
 	bg_event  7, 10, SIGNPOST_UP, MagnetTunnelInsideMachine1
 	bg_event 22, 21, SIGNPOST_UP, MagnetTunnelInsideMachine2
@@ -20,13 +20,13 @@ MagnetTunnelInside_MapScriptHeader:
 	bg_event 34,  9, SIGNPOST_UP, MagnetTunnelInsideMachine4
 	bg_event 35,  9, SIGNPOST_UP, MagnetTunnelInsideMachine4
 
-	db 4 ; object events
+	def_object_events
 	object_event  3, 10, SPRITE_N64, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_ROCK, PERSONTYPE_COMMAND, jumptext, MagnetTunnelInsideLodestoneText, EVENT_MAGNET_TUNNEL_LODESTONE_1
 	object_event 20, 23, SPRITE_N64, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_ROCK, PERSONTYPE_COMMAND, jumptext, MagnetTunnelInsideLodestoneText, EVENT_MAGNET_TUNNEL_LODESTONE_2
 	object_event 20,  5, SPRITE_N64, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_ROCK, PERSONTYPE_COMMAND, jumptext, MagnetTunnelInsideLodestoneText, EVENT_MAGNET_TUNNEL_LODESTONE_3
 	object_event 31,  8, SPRITE_N64, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_ROCK, PERSONTYPE_COMMAND, jumptext, MagnetTunnelInsideLodestoneText, EVENT_MAGNET_TUNNEL_LODESTONE_4
 
-	const_def 1 ; object constants
+	object_const_def
 	const MAGNETTUNNELINSIDE_STONE_1
 	const MAGNETTUNNELINSIDE_STONE_2
 	const MAGNETTUNNELINSIDE_STONE_3

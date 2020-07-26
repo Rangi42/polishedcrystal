@@ -1,23 +1,23 @@
 ScaryCave1F_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 5 ; warp events
+	def_warp_events
 	warp_event 33, 31, URAGA_CHANNEL_EAST, 1
 	warp_event 11, 31, URAGA_CHANNEL_WEST, 1
 	warp_event 20, 30, SCARY_CAVE_B1F, 1
 	warp_event 34, 10, SCARY_CAVE_B1F, 2
 	warp_event  9,  1, SCARY_CAVE_SHIPWRECK, 1
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 3 ; bg events
+	def_bg_events
 	bg_event 34,  3, SIGNPOST_ITEM + MAX_ELIXIR, EVENT_SCARY_CAVE_1F_HIDDEN_MAX_ELIXIR
 	bg_event 18, 28, SIGNPOST_ITEM + PEARL_STRING, EVENT_SCARY_CAVE_1F_HIDDEN_PEARL_STRING
 	bg_event 30, 29, SIGNPOST_ITEM + PEARL, EVENT_SCARY_CAVE_1F_HIDDEN_PEARL
 
-	db 13 ; object events
+	def_object_events
 	object_event 15,  5, SPRITE_MIRA, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ScaryCave1FMiraScript, EVENT_SCARY_CAVE_MIRA
 	object_event  8, 24, SPRITE_BURGLAR, SPRITEMOVEDATA_WANDER, 1, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ScaryCave1FPharmacistScript, -1
 	object_event 36,  2, SPRITE_HIKER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerRuin_maniacSmilte, -1
@@ -32,7 +32,7 @@ ScaryCave1F_MapScriptHeader:
 	itemball_event 28, 23, MAX_REPEL, 1, EVENT_SCARY_CAVE_1F_MAX_REPEL
 	itemball_event  3, 29, REVIVE, 1, EVENT_SCARY_CAVE_1F_REVIVE
 
-	const_def 1 ; object constants
+	object_const_def
 	const SCARYCAVE1F_MIRA
 
 ScaryCave1FMiraScript:

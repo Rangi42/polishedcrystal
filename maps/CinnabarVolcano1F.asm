@@ -1,10 +1,10 @@
 CinnabarVolcano1F_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 1 ; callbacks
+	def_callbacks
 	callback MAPCALLBACK_CMDQUEUE, CinnabarVolcano1FBouldersFall
 
-	db 10 ; warp events
+	def_warp_events
 	warp_event 13, 25, CINNABAR_ISLAND, 2
 	warp_event  5, 13, CINNABAR_VOLCANO_B1F, 1
 	warp_event 14, 20, CINNABAR_VOLCANO_B1F, 2
@@ -16,12 +16,12 @@ CinnabarVolcano1F_MapScriptHeader:
 	warp_event 10,  7, CINNABAR_VOLCANO_B1F, 11
 	warp_event 15,  3, CINNABAR_VOLCANO_B1F, 12
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 1 ; bg events
+	def_bg_events
 	bg_event 13,  1, SIGNPOST_ITEM + FULL_RESTORE, EVENT_CINNABAR_VOLCANO_1F_HIDDEN_FULL_RESTORE
 
-	db 15 ; object events
+	def_object_events
 	object_event  4,  9, SPRITE_BUCK, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CinnabarVolcano1FBuckScript, EVENT_CINNABAR_VOLCANO_BUCK
 	strengthboulder_event  6, 16, EVENT_BOULDER_IN_CINNABAR_VOLCANO_1F_1
 	strengthboulder_event 15, 22, EVENT_BOULDER_IN_CINNABAR_VOLCANO_1F_2
@@ -38,7 +38,7 @@ CinnabarVolcano1F_MapScriptHeader:
 	smashrock_event 13, 2
 	smashrock_event  8, 4
 
-	const_def 1 ; object constants
+	object_const_def
 	const CINNABARVOLCANO1F_BUCK
 	const CINNABARVOLCANO1F_BOULDER1
 	const CINNABARVOLCANO1F_BOULDER2

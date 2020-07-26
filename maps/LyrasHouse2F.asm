@@ -1,19 +1,19 @@
 LyrasHouse2F_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 1 ; warp events
+	def_warp_events
 	warp_event  0,  0, LYRAS_HOUSE_1F, 3
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 3 ; bg events
+	def_bg_events
 	bg_event  4,  1, SIGNPOST_JUMPTEXT, LyrasHousePCText
 	bg_event  5,  1, SIGNPOST_READ, LyrasHouseRadio
 	bg_event  7,  1, SIGNPOST_READ, PokemonJournalProfElmScript
 
-	db 3 ; object events
+	def_object_events
 	object_event  2,  3, SPRITE_LYRA, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, LyrasHouseLyraText, EVENT_LYRA_IN_HER_ROOM
 	pokemon_event  3,  3, PIDGEOT, -1, -1, PAL_NPC_BROWN, LyrasHousePidgeotText, EVENT_LYRA_IN_HER_ROOM
 	object_event  6,  2, SPRITE_N64, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, PAL_NPC_ROCK, PERSONTYPE_COMMAND, jumptext, LyrasHouseN64Text, -1
