@@ -61,7 +61,7 @@ SECTION "Trainer Backpics", ROMX
 
 ChrisBackpic:: INCBIN "gfx/player/chris_back.6x6.2bpp.lz"
 KrisBackpic::  INCBIN "gfx/player/kris_back.6x6.2bpp.lz"
-LyraBackpic::  INCBIN "gfx/battle/lyra_back.6x6.2bpp.lz"
+LyraBackpic::  INCBIN "gfx/battle/lyra_back.2bpp.lz"
 
 
 SECTION "Battle Graphics", ROMX
