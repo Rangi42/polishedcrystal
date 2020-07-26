@@ -2511,6 +2511,11 @@ AI_Aggressive:
 	ld a, [wEnemyMoveStruct + MOVE_POWER]
 	and a
 	jr z, .nodamage
+	ld a, [wEnemyMoveStruct + MOVE_EFFECT]
+	cp EFFECT_COUNTER
+	jr z, .nodamage
+	cp EFFECT_MIRROR_COAT
+	jr z, .nodamage
 	call AIDamageCalc
 
 	; Ignore unusable moves
@@ -2572,12 +2577,19 @@ AI_Aggressive:
 
 	call AIGetEnemyMove
 
-; Ignore moves with no base power
+	; Ignore moves with no base power
 	ld a, [wEnemyMoveStruct + MOVE_POWER]
 	and a
 	jr z, .checkmove2
 
-; If we made it this far, discourage this move.
+	; Ignore Counter and Mirror Coat
+	ld a, [wEnemyMoveStruct + MOVE_EFFECT]
+	cp EFFECT_COUNTER
+	jr z, .checkmove2
+	cp EFFECT_MIRROR_COAT
+	jr z, .checkmove2
+
+	; If we made it this far, discourage this move.
 	inc [hl]
 	jr .checkmove2
 
