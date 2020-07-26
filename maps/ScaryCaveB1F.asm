@@ -1,17 +1,17 @@
 ScaryCaveB1F_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event  5, 19, SCARY_CAVE_1F, 3
 	warp_event 19,  3, SCARY_CAVE_1F, 4
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 0 ; bg events
+	def_bg_events
 
-	db 2 ; object events
+	def_object_events
 	itemball_event  2, 15, BIG_NUGGET, 1, EVENT_SCARY_CAVE_B1F_BIG_NUGGET
 	itemball_event 21, 19, BLACK_SLUDGE, 1, EVENT_SCARY_CAVE_B1F_BLACK_SLUDGE
 

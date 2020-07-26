@@ -1,20 +1,20 @@
 BeautifulBeach_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 3 ; warp events
+	def_warp_events
 	warp_event 11, 23, SEAGALLOP_FERRY_SHAMOUTI_GATE, 1
 	warp_event 12, 23, SEAGALLOP_FERRY_SHAMOUTI_GATE, 1
 	warp_event 27, 18, BEAUTIFUL_BEACH_VILLA, 1
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 2 ; bg events
+	def_bg_events
 	bg_event 14, 21, SIGNPOST_JUMPTEXT, BeautifulBeachWelcomeSignText
 	bg_event 29, 19, SIGNPOST_JUMPTEXT, BeautifulBeachVillaSignText
 
-	db 9 ; object events
+	def_object_events
 	object_event 11, 18, SPRITE_AROMA_LADY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerAromaLadyBryony, -1
 	object_event 26, 26, SPRITE_SIGHTSEER_M, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerSightseermJaska, -1
 	object_event 33, 23, SPRITE_TAMER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerTamerVince, -1

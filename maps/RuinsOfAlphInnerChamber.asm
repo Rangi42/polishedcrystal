@@ -1,11 +1,11 @@
 RuinsOfAlphInnerChamber_MapScriptHeader:
-	db 2 ; scene scripts
+	def_scene_scripts
 	scene_script RuinsofAlphInnerChamberTrigger0
 	scene_script RuinsofAlphInnerChamberTrigger1
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 9 ; warp events
+	def_warp_events
 	warp_event 10, 13, RUINS_OF_ALPH_ENTRANCE_CHAMBER, 3
 	warp_event  3, 15, RUINS_OF_ALPH_HO_OH_CHAMBER, 3
 	warp_event  4, 15, RUINS_OF_ALPH_HO_OH_CHAMBER, 4
@@ -16,9 +16,9 @@ RuinsOfAlphInnerChamber_MapScriptHeader:
 	warp_event 15, 24, RUINS_OF_ALPH_AERODACTYL_CHAMBER, 3
 	warp_event 16, 24, RUINS_OF_ALPH_AERODACTYL_CHAMBER, 4
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 28 ; bg events
+	def_bg_events
 	bg_event  2,  3, SIGNPOST_JUMPTEXT, RuinsofAlphStatueText
 	bg_event  5,  3, SIGNPOST_JUMPTEXT, RuinsofAlphStatueText
 	bg_event  8,  3, SIGNPOST_JUMPTEXT, RuinsofAlphStatueText
@@ -48,7 +48,7 @@ RuinsOfAlphInnerChamber_MapScriptHeader:
 	bg_event 14, 24, SIGNPOST_JUMPTEXT, RuinsofAlphStatueText
 	bg_event 17, 24, SIGNPOST_JUMPTEXT, RuinsofAlphStatueText
 
-	db 4 ; object events
+	def_object_events
 	object_event  3,  7, SPRITE_FISHER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x58fac, EVENT_RUINS_OF_ALPH_INNER_CHAMBER_TOURISTS
 	object_event 14, 14, SPRITE_POKEFAN_F, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x58fda, EVENT_RUINS_OF_ALPH_INNER_CHAMBER_TOURISTS
 	object_event 11, 19, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x59024, EVENT_RUINS_OF_ALPH_INNER_CHAMBER_TOURISTS

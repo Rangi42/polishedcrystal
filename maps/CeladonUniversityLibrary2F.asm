@@ -1,14 +1,14 @@
 CeladonUniversityLibrary2F_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 1 ; warp events
+	def_warp_events
 	warp_event  7,  0, CELADON_UNIVERSITY_LIBRARY_1F, 3
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 28 ; bg events
+	def_bg_events
 	bg_event  4,  0, SIGNPOST_JUMPTEXT, CeladonUniversityLibrary1FSignpost1Text
 	bg_event 10,  0, SIGNPOST_JUMPTEXT, CeladonUniversityLibrary1FSignpost2Text
 	bg_event  0,  3, SIGNPOST_JUMPTEXT, CeladonUniversityLibrary2FBookshelf1Text
@@ -38,7 +38,7 @@ CeladonUniversityLibrary2F_MapScriptHeader:
 	bg_event  1, 10, SIGNPOST_RIGHT, CeladonUniversityLibrary2FComputer1
 	bg_event  3, 10, SIGNPOST_RIGHT, CeladonUniversityLibrary2FComputer4
 
-	db 7 ; object events
+	def_object_events
 	object_event  3,  4, SPRITE_COSPLAYER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityLibrary2FCosplayerText, -1
 	object_event 11,  5, SPRITE_CUTE_GIRL, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityLibrary2FLassText, -1
 	object_event  0,  9, SPRITE_ARTIST, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CeladonUniversityLibrary2FArtistScript, -1

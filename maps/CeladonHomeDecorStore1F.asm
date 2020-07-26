@@ -1,19 +1,19 @@
 CeladonHomeDecorStore1F_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 3 ; warp events
+	def_warp_events
 	warp_event  3,  7, CELADON_CITY, 12
 	warp_event  4,  7, CELADON_CITY, 12
 	warp_event  9,  0, CELADON_HOME_DECOR_STORE_2F, 1
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 1 ; bg events
+	def_bg_events
 	bg_event  8,  0, SIGNPOST_JUMPTEXT, CeladonHomeDecorStore1FDirectoryText
 
-	db 6 ; object events
+	def_object_events
 	object_event  4,  1, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonHomeDecorStore1FReceptionistText, -1
 	object_event  5,  1, SPRITE_CLERK, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, CeladonHomeDecorStore1FClerkScript, -1
 	object_event  7,  5, SPRITE_MON_ICON, SPRITEMOVEDATA_DOLL, 0, BULBASAUR, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptext, CeladonHomeDecorStore1FBulbasaurDollText, -1

@@ -1,23 +1,23 @@
 NationalParkBugContest_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 4 ; warp events
+	def_warp_events
 	warp_event 35, 18, ROUTE_36_NATIONAL_PARK_GATE, 1
 	warp_event 35, 19, ROUTE_36_NATIONAL_PARK_GATE, 1
 	warp_event 12, 47, ROUTE_35_NATIONAL_PARK_GATE, 1
 	warp_event 13, 47, ROUTE_35_NATIONAL_PARK_GATE, 1
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 4 ; bg events
+	def_bg_events
 	bg_event 16, 44, SIGNPOST_JUMPTEXT, UnknownText_0x5c750
 	bg_event 29, 31, SIGNPOST_JUMPTEXT, UnknownText_0x5c771
 	bg_event 14,  4, SIGNPOST_JUMPTEXT, UnknownText_0x5c7c6
 	bg_event  8, 47, SIGNPOST_ITEM + FULL_HEAL, EVENT_NATIONAL_PARK_HIDDEN_FULL_HEAL
 
-	db 12 ; object events
+	def_object_events
 	object_event 21, 29, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BugCatcherScript_0x5c8ec, EVENT_BUG_CATCHING_CONTESTANT_1A
 	object_event 30, 22, SPRITE_BUG_MANIAC, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BugManiacScript_0x5c8f4, EVENT_BUG_CATCHING_CONTESTANT_2A
 	object_event 11, 18, SPRITE_ACE_TRAINER_M, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CooltrainerMScript_0x5c8fc, EVENT_BUG_CATCHING_CONTESTANT_3A

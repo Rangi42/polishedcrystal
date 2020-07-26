@@ -1,21 +1,21 @@
 Route31_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 1 ; callbacks
+	def_callbacks
 	callback MAPCALLBACK_NEWMAP, Route31CheckMomCall
 
-	db 3 ; warp events
+	def_warp_events
 	warp_event  4,  6, ROUTE_31_VIOLET_GATE, 3
 	warp_event  4,  7, ROUTE_31_VIOLET_GATE, 4
 	warp_event 34,  5, DARK_CAVE_VIOLET_ENTRANCE, 1
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 2 ; bg events
+	def_bg_events
 	bg_event  7,  5, SIGNPOST_JUMPTEXT, Route31SignText
 	bg_event 31,  5, SIGNPOST_JUMPTEXT, DarkCaveSignText
 
-	db 9 ; object events
+	def_object_events
 	object_event 28,  7, SPRITE_ACE_TRAINER_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 2, TrainerCooltrainermFinch, -1
 	object_event 17,  7, SPRITE_FAT_GUY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route31MailRecipientScript, -1
 	object_event  9,  5, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, Route31YoungsterText, -1
@@ -26,7 +26,7 @@ Route31_MapScriptHeader:
 	itemball_event 29,  5, POTION, 1, EVENT_ROUTE_31_POTION
 	itemball_event 19, 15, POKE_BALL, 1, EVENT_ROUTE_31_POKE_BALL
 
-	const_def 1 ; object constants
+	object_const_def
 	const ROUTE31_COOLTRAINER_M
 
 Route31CheckMomCall:

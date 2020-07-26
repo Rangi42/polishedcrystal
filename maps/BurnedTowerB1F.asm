@@ -1,19 +1,19 @@
 BurnedTowerB1F_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 1 ; callbacks
+	def_callbacks
 	callback MAPCALLBACK_TILES, BurnedTowerB1FLadderCallback
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event 10,  9, BURNED_TOWER_1F, 3 ; hole
 	warp_event  7, 15, BURNED_TOWER_1F, 4
 
-	db 1 ; coord events
+	def_coord_events
 	coord_event 10,  6, 0, ReleaseTheBeasts
 
-	db 0 ; bg events
+	def_bg_events
 
-	db 9 ; object events
+	def_object_events
 	object_event  7,  3, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, RAIKOU, -1, -1, PAL_NPC_BROWN, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_BURNED_TOWER_B1F_BEASTS_1
 	object_event 12,  3, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, ENTEI, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_BURNED_TOWER_B1F_BEASTS_1
 	object_event 10,  4, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, SUICUNE, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_BURNED_TOWER_B1F_BEASTS_1
@@ -24,7 +24,7 @@ BurnedTowerB1F_MapScriptHeader:
 	strengthboulder_event 17, 8
 	tmhmball_event 16,  4, TM_FLAME_CHARGE, EVENT_BURNED_TOWER_B1F_TM_FLAME_CHARGE
 
-	const_def 1 ; object constants
+	object_const_def
 	const BURNEDTOWERB1F_RAIKOU1
 	const BURNEDTOWERB1F_ENTEI1
 	const BURNEDTOWERB1F_SUICUNE1

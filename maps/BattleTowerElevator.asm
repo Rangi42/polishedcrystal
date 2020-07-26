@@ -1,21 +1,21 @@
 BattleTowerElevator_MapScriptHeader:
-	db 1 ; scene scripts
+	def_scene_scripts
 	scene_script BattleTowerElevatorTrigger0
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event  1,  3, BATTLE_TOWER_HALLWAY, 1
 	warp_event  2,  3, BATTLE_TOWER_HALLWAY, 1
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 0 ; bg events
+	def_bg_events
 
-	db 1 ; object events
+	def_object_events
 	object_event  1,  2, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
 
-	const_def 1 ; object constants
+	object_const_def
 	const BATTLETOWERELEVATOR_RECEPTIONIST
 
 BattleTowerElevatorTrigger0:

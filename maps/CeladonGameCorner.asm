@@ -1,15 +1,15 @@
 CeladonGameCorner_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event 14, 13, CELADON_CITY, 6
 	warp_event 15, 13, CELADON_CITY, 6
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 38 ; bg events
+	def_bg_events
 	bg_event  1,  6, SIGNPOST_READ, MapCeladonGameCornerSignpost11Script
 	bg_event  1,  7, SIGNPOST_READ, MapCeladonGameCornerSignpost11Script
 	bg_event  1,  8, SIGNPOST_READ, MapCeladonGameCornerSignpost11Script
@@ -49,7 +49,7 @@ CeladonGameCorner_MapScriptHeader:
 	bg_event 15,  0, SIGNPOST_JUMPTEXT, UnknownText_0x724f3
 	bg_event  9,  0, SIGNPOST_JUMPTEXT, UnknownText_0x72521
 
-	db 8 ; object events
+	def_object_events
 	object_event  5,  2, SPRITE_CLERK, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumpstd, gamecornercoinvendor, -1
 	object_event  3,  2, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x721d0, -1
 	object_event 14, 10, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, PokefanMScript_0x72123, -1

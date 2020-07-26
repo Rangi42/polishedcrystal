@@ -1,11 +1,11 @@
 DimCave4F_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 2 ; callbacks
+	def_callbacks
 	callback MAPCALLBACK_TILES, DimCave4FBouldersLand
 	callback MAPCALLBACK_CMDQUEUE, DimCave4FSetUpStoneTable
 
-	db 6 ; warp events
+	def_warp_events
 	warp_event  2, 16, DIM_CAVE_5F, 2
 	warp_event 27, 29, DIM_CAVE_5F, 3
 	warp_event 27, 24, DIM_CAVE_5F, 4 ; hole
@@ -13,13 +13,13 @@ DimCave4F_MapScriptHeader:
 	warp_event 28, 22, DIM_CAVE_3F, 2
 	warp_event 14,  7, DIM_CAVE_3F, 3
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 2 ; bg events
+	def_bg_events
 	bg_event 25, 23, SIGNPOST_ITEM + CALCIUM, EVENT_DIM_CAVE_4F_HIDDEN_CALCIUM
 	bg_event 27, 27, SIGNPOST_ITEM + X_ATTACK, EVENT_DIM_CAVE_4F_HIDDEN_X_ATTACK
 
-	db 8 ; object events
+	def_object_events
 	strengthboulder_event 14, 15, EVENT_BOULDER_IN_DIM_CAVE_4F
 	object_event 27, 25, SPRITE_BOULDER_ROCK_FOSSIL, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptext, DimCaveFallenBoulderText, EVENT_BOULDER_FELL_IN_DIM_CAVE_4F
 	object_event  5, 14, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 0, GenericTrainerScientistJoseph, -1
@@ -29,7 +29,7 @@ DimCave4F_MapScriptHeader:
 	itemball_event 27,  8, NUGGET, 1, EVENT_DIM_CAVE_4F_NUGGET
 	itemball_event  6, 23, FULL_RESTORE, 1, EVENT_DIM_CAVE_4F_FULL_RESTORE
 
-	const_def 1 ; object constants
+	object_const_def
 	const DIMCAVE4F_BOULDER
 
 DimCave4FBouldersLand:

@@ -1,20 +1,20 @@
 GoldenrodDeptStoreB1F_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 2 ; callbacks
+	def_callbacks
 	callback MAPCALLBACK_TILES, UnknownScript_0x7d781
 	callback MAPCALLBACK_NEWMAP, UnknownScript_0x7d7ac
 
-	db 3 ; warp events
+	def_warp_events
 	warp_event 17,  2, UNDERGROUND_WAREHOUSE, 3
 	warp_event  9,  4, GOLDENROD_DEPT_STORE_ELEVATOR, 1
 	warp_event 10,  4, GOLDENROD_DEPT_STORE_ELEVATOR, 2
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 0 ; bg events
+	def_bg_events
 
-	db 8 ; object events
+	def_object_events
 	itemball_event 10, 15, ETHER, 1, EVENT_GOLDENROD_DEPT_STORE_B1F_ETHER
 	itemball_event 14,  2, METAL_COAT, 1, EVENT_GOLDENROD_DEPT_STORE_B1F_METAL_COAT
 	itemball_event  6,  3, BURN_HEAL, 1, EVENT_GOLDENROD_DEPT_STORE_B1F_BURN_HEAL

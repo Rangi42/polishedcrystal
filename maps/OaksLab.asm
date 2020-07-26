@@ -1,15 +1,15 @@
 OaksLab_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event  4, 11, PALLET_TOWN, 3
 	warp_event  5, 11, PALLET_TOWN, 3
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 16 ; bg events
+	def_bg_events
 	bg_event  6,  1, SIGNPOST_JUMPSTD, difficultbookshelf
 	bg_event  7,  1, SIGNPOST_JUMPSTD, difficultbookshelf
 	bg_event  8,  1, SIGNPOST_JUMPSTD, difficultbookshelf
@@ -27,7 +27,7 @@ OaksLab_MapScriptHeader:
 	bg_event  9,  3, SIGNPOST_JUMPTEXT, OaksLabTrashcanText
 	bg_event  0,  1, SIGNPOST_JUMPTEXT, OaksLabPCText
 
-	db 6 ; object events
+	def_object_events
 	object_event  4,  2, SPRITE_OAK, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Oak, -1
 	object_event  7,  3, SPRITE_MON_ICON, SPRITEMOVEDATA_DOLL, 0, EEVEE, -1, -1, PAL_NPC_BROWN, PERSONTYPE_SCRIPT, 0, EeveeDollScript, EVENT_DECO_EEVEE_DOLL
 	object_event  1,  8, SPRITE_AROMA_LADY, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, OaksAssistant1Text, -1
@@ -35,7 +35,7 @@ OaksLab_MapScriptHeader:
 	object_event  1,  4, SPRITE_SCIENTIST, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, OaksAssistant3Text, -1
 	object_event  2,  1, SPRITE_BOOK_PAPER_POKEDEX, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptext, OaksLabPokedexText, -1
 
-	const_def 1 ; object constants
+	object_const_def
 	const OAKSLAB_OAK
 	const OAKSLAB_EEVEE_DOLL
 

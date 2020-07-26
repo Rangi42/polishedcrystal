@@ -1,21 +1,21 @@
 TinTower1F_MapScriptHeader:
-	db 1 ; scene scripts
+	def_scene_scripts
 	scene_script TinTower1FTrigger0
 
-	db 2 ; callbacks
+	def_callbacks
 	callback MAPCALLBACK_OBJECTS, UnknownScript_0x18502f
 	callback MAPCALLBACK_TILES, TinTowerStairsCallback
 
-	db 3 ; warp events
+	def_warp_events
 	warp_event  7, 15, BELLCHIME_TRAIL, 3
 	warp_event  8, 15, BELLCHIME_TRAIL, 3
 	warp_event  8,  2, TIN_TOWER_2F, 2
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 0 ; bg events
+	def_bg_events
 
-	db 10 ; object events
+	def_object_events
 	object_event  7,  9, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, SUICUNE, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_TIN_TOWER_1F_SUICUNE
 	object_event  5,  9, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, RAIKOU, -1, -1, PAL_NPC_BROWN, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_TIN_TOWER_1F_RAIKOU
 	object_event 10,  9, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, ENTEI, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_TIN_TOWER_1F_ENTEI
@@ -27,7 +27,7 @@ TinTower1F_MapScriptHeader:
 	object_event  7,  1, SPRITE_ELDER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SageScript_0x185188, EVENT_TIN_TOWER_1F_WISE_TRIO_2
 	object_event 12,  2, SPRITE_ELDER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SageScript_0x1851bc, EVENT_TIN_TOWER_1F_WISE_TRIO_2
 
-	const_def 1 ; object constants
+	object_const_def
 	const TINTOWER1F_SUICUNE
 	const TINTOWER1F_RAIKOU
 	const TINTOWER1F_ENTEI

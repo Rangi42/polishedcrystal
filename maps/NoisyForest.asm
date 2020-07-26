@@ -1,24 +1,24 @@
 NoisyForest_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 4 ; warp events
+	def_warp_events
 	warp_event  6,  4, ROCKY_BEACH, 2
 	warp_event  6,  5, ROCKY_BEACH, 3
 	warp_event 35, 28, SHAMOUTI_SHRINE_RUINS, 1
 	warp_event 35, 29, SHAMOUTI_SHRINE_RUINS, 2
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 5 ; bg events
+	def_bg_events
 	bg_event 15,  9, SIGNPOST_JUMPTEXT, NoisyForestSignpostText
 	bg_event 25, 31, SIGNPOST_JUMPTEXT, NoisyForestSignpostText
 	bg_event 32,  2, SIGNPOST_ITEM + ULTRA_BALL, EVENT_NOISY_FOREST_HIDDEN_ULTRA_BALL
 	bg_event 34, 18, SIGNPOST_ITEM + TINYMUSHROOM, EVENT_NOISY_FOREST_HIDDEN_TINYMUSHROOM
 	bg_event  7, 29, SIGNPOST_ITEM + FULL_RESTORE, EVENT_NOISY_FOREST_HIDDEN_FULL_RESTORE
 
-	db 15 ; object events
+	def_object_events
 	object_event 20, 19, SPRITE_ANABEL, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, NoisyForestAnabelScript, EVENT_NOISY_FOREST_ANABEL
 	object_event 19, 36, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_TOLD_ABOUT_PIKABLU
 	object_event 24, 31, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, MARILL, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, NoisyForestPikabluScript, EVENT_NOISY_FOREST_PIKABLU
@@ -36,7 +36,7 @@ NoisyForest_MapScriptHeader:
 	cuttree_event 40, 12, EVENT_NOISY_FOREST_CUT_TREE_1
 	cuttree_event 12, 21, EVENT_NOISY_FOREST_CUT_TREE_2
 
-	const_def 1 ; object constants
+	object_const_def
 	const NOISYFOREST_ANABEL
 	const NOISYFOREST_YOUNGSTER
 	const NOISYFOREST_MARILL

@@ -1,21 +1,21 @@
 Route12South_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 4 ; warp events
+	def_warp_events
 	warp_event 11, 57, ROUTE_12_SUPER_ROD_HOUSE, 1
 	warp_event  0, 42, ROUTE_11_GATE, 3
 	warp_event  0, 43, ROUTE_11_GATE, 4
 	warp_event 10,  1, ROUTE_12_GATE, 3
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 2 ; bg events
+	def_bg_events
 	bg_event 11, 43, SIGNPOST_JUMPTEXT, Route12SignText
 	bg_event 14, 15, SIGNPOST_ITEM + ELIXIR, EVENT_ROUTE_12_HIDDEN_ELIXIR
 
-	db 13 ; object events
+	def_object_events
 	object_event  7,  7, SPRITE_FISHER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerFisherMartin, -1
 	object_event 14, 33, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerFisherStephen, -1
 	object_event 12, 63, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 5, GenericTrainerFisherBarney, -1

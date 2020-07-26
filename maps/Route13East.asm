@@ -1,19 +1,19 @@
 Route13East_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 0 ; warp events
+	def_warp_events
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 4 ; bg events
+	def_bg_events
 	bg_event 11, 13, SIGNPOST_JUMPTEXT, Route13TrainerTips1Text
 	bg_event 29,  5, SIGNPOST_JUMPTEXT, Route13TrainerTips2Text
 	bg_event 27, 11, SIGNPOST_JUMPTEXT, Route13SignText
 	bg_event 12, 13, SIGNPOST_ITEM + CALCIUM, EVENT_ROUTE_13_HIDDEN_CALCIUM
 
-	db 10 ; object events
+	def_object_events
 	object_event 36, 11, SPRITE_BIRD_KEEPER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 5, GenericTrainerBird_keeperPerry, -1
 	object_event 40,  1, SPRITE_BIRD_KEEPER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerBird_keeperBret, -1
 	object_event 10,  5, SPRITE_CAMPER, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerCamperTanner, -1

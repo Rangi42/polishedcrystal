@@ -1,23 +1,23 @@
 IndigoPlateauPokecenter1F_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 1 ; callbacks
+	def_callbacks
 	callback MAPCALLBACK_NEWMAP, PrepareEliteFourCallback
 
-	db 4 ; warp events
+	def_warp_events
 	warp_event  9, 13, INDIGO_PLATEAU, 1
 	warp_event 10, 13, INDIGO_PLATEAU, 2
 	warp_event  0, 13, POKECENTER_2F, 1
 	warp_event 12,  3, WILLS_ROOM, 1
 
-	db 2 ; coord events
+	def_coord_events
 	coord_event 14,  4, 0, PlateauRivalBattleTrigger1
 	coord_event 15,  4, 0, PlateauRivalBattleTrigger2
 
-	db 1 ; bg events
+	def_bg_events
 	bg_event 13,  7, SIGNPOST_READ, PokemonJournalGiovanniScript
 
-	db 8 ; object events
+	def_object_events
 	object_event 14,  9, SPRITE_SILVER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_INDIGO_PLATEAU_POKECENTER_RIVAL
 	object_event 14,  9, SPRITE_LYRA, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_INDIGO_PLATEAU_POKECENTER_LYRA
 	object_event 10,  9, SPRITE_YELLOW, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, IndigoPlateauYellowScript, EVENT_INDIGO_PLATEAU_POKECENTER_YELLOW
@@ -27,7 +27,7 @@ IndigoPlateauPokecenter1F_MapScriptHeader:
 	pokemon_event  5,  9, ABRA, -1, -1, PAL_NPC_BROWN, IndigoPlateauAbraText, EVENT_TELEPORT_GUY
 	object_event  5, 12, SPRITE_ACE_TRAINER_M, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, IndigoPlateauCooltrainermText, -1
 
-	const_def 1 ; object constants
+	object_const_def
 	const INDIGOPLATEAUPOKECENTER1F_SILVER
 	const INDIGOPLATEAUPOKECENTER1F_LYRA
 	const INDIGOPLATEAUPOKECENTER1F_YELLOW

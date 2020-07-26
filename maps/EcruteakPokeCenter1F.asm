@@ -1,20 +1,20 @@
 EcruteakPokeCenter1F_MapScriptHeader:
-	db 1 ; scene scripts
+	def_scene_scripts
 	scene_script EcruteakPokeCenter1FBillWalksUpTrigger
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 3 ; warp events
+	def_warp_events
 	warp_event  5,  7, ECRUTEAK_CITY, 6
 	warp_event  6,  7, ECRUTEAK_CITY, 6
 	warp_event  0,  7, POKECENTER_2F, 1
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 1 ; bg events
+	def_bg_events
 	bg_event 10,  1, SIGNPOST_READ, PokemonJournalMortyScript
 
-	db 6 ; object events
+	def_object_events
 	object_event  6,  3, SPRITE_BILL, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, EcruteakPokeCenter1FBillScript, EVENT_ECRUTEAK_POKE_CENTER_BILL
 	pc_nurse_event  5, 1
 	object_event 11,  6, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_SCRIPT, 0, EcruteakPokeCenter1FPokefanMScript, -1
@@ -22,7 +22,7 @@ EcruteakPokeCenter1F_MapScriptHeader:
 	object_event  1,  4, SPRITE_ACE_TRAINER_F, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, EcruteakPokeCenter1FCooltrainerFText, -1
 	object_event  8,  1, SPRITE_GYM_GUY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, EcruteakPokeCenter1FGymGuyText, -1
 
-	const_def 1 ; object constants
+	object_const_def
 	const ECRUTEAKPOKECENTER1F_BILL
 
 EcruteakPokeCenter1FBillWalksUpTrigger:

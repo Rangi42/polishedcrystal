@@ -1,11 +1,11 @@
 VermilionCity_MapScriptHeader:
-	db 1 ; scene scripts
+	def_scene_scripts
 	scene_script LawrenceIntroScript
 
-	db 1 ; callbacks
+	def_callbacks
 	callback MAPCALLBACK_OBJECTS, VermilionCitySetupLawrenceCallback
 
-	db 14 ; warp events
+	def_warp_events
 	warp_event  5,  5, VERMILION_HOUSE_FISHING_SPEECH_HOUSE, 1
 	warp_event  9,  5, VERMILION_POKECENTER_1F, 1
 	warp_event  7, 17, POKEMON_FAN_CLUB, 1
@@ -21,9 +21,9 @@ VermilionCity_MapScriptHeader:
 	warp_event 13,  5, VERMILION_POLLUTION_SPEECH_HOUSE, 1
 	warp_event 19,  5, VERMILION_S_S_ANNE_SPEECH_HOUSE, 1
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 9 ; bg events
+	def_bg_events
 	bg_event 25,  5, SIGNPOST_JUMPTEXT, VermilionCitySignText
 	bg_event  5, 23, SIGNPOST_JUMPTEXT, VermilionGymSignText
 	bg_event  5, 17, SIGNPOST_JUMPTEXT, PokemonFanClubSignText
@@ -34,7 +34,7 @@ VermilionCity_MapScriptHeader:
 	bg_event 19,  9, SIGNPOST_JUMPTEXT, VermilionCityAdvancedTipsSignText
 	bg_event 12, 23, SIGNPOST_ITEM + FULL_HEAL, EVENT_VERMILION_CITY_HIDDEN_FULL_HEAL
 
-	db 14 ; object events
+	def_object_events
 	object_event 35, 18, SPRITE_BIG_SNORLAX, SPRITEMOVEDATA_SNORLAX, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, VermilionSnorlax, EVENT_VERMILION_CITY_SNORLAX
 	object_event 18, 31, SPRITE_LAWRENCE, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LAWRENCE_VERMILION_CITY
 	object_event 18, 13, SPRITE_BATTLE_GIRL, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1aaa15, -1
@@ -50,7 +50,7 @@ VermilionCity_MapScriptHeader:
 	smashrock_event 28, 7
 	smashrock_event 29, 9
 
-	const_def 1 ; object constants
+	object_const_def
 	const VERMILIONCITY_BIG_SNORLAX
 	const VERMILIONCITY_LAWRENCE
 

@@ -1,23 +1,23 @@
 BattleTowerOutside_MapScriptHeader:
-	db 1 ; scene scripts
+	def_scene_scripts
 	scene_script BattleTowerOutsideStepDownTrigger
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 4 ; warp events
+	def_warp_events
 	warp_event  8, 21, ROUTE_40_BATTLE_TOWER_GATE, 3
 	warp_event  9, 21, ROUTE_40_BATTLE_TOWER_GATE, 4
 	warp_event  8,  9, BATTLE_TOWER_1F, 1 ; hole
 	warp_event  9,  9, BATTLE_TOWER_1F, 2 ; hole
 
-	db 2 ; coord events
+	def_coord_events
 	coord_event  8,  9, 1, BattleTowerOutsidePanUpTrigger1
 	coord_event  9,  9, 1, BattleTowerOutsidePanUpTrigger2
 
-	db 1 ; bg events
+	def_bg_events
 	bg_event 10, 10, SIGNPOST_JUMPTEXT, BattleTowerOutsideSignText
 
-	db 6 ; object events
+	def_object_events
 	object_event  6, 12, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, BattleTowerOutsideYoungsterScript, -1
 	object_event 13, 11, SPRITE_BEAUTY, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_PURPLE, PERSONTYPE_SCRIPT, 0, BattleTowerOutsideBeautyScript, -1
 	object_event 12, 18, SPRITE_SAILOR, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, BattleTowerOutsideSailorText, EVENT_BATTLE_TOWER_CLOSED

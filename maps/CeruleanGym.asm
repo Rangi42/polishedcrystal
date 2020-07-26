@@ -1,22 +1,22 @@
 CeruleanGym_MapScriptHeader:
-	db 2 ; scene scripts
+	def_scene_scripts
 	scene_script CeruleanGymTrigger0
 	scene_script CeruleanGymTrigger1
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event  4, 15, CERULEAN_CITY, 5
 	warp_event  5, 15, CERULEAN_CITY, 5
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 3 ; bg events
+	def_bg_events
 	bg_event  3,  8, SIGNPOST_IFNOTSET, CeruleanGymHiddenMachinePart
 	bg_event  2, 13, SIGNPOST_READ, CeruleanGymStatue1
 	bg_event  6, 13, SIGNPOST_READ, CeruleanGymStatue2
 
-	db 8 ; object events
+	def_object_events
 	object_event  4, 10, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CERULEAN_GYM_ROCKET
 	object_event  5,  3, SPRITE_MISTY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, MistyScript_0x188432, EVENT_TRAINERS_IN_CERULEAN_GYM
 	object_event  4,  6, SPRITE_SWIMMER_GIRL, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerSwimmerfDiana, EVENT_TRAINERS_IN_CERULEAN_GYM
@@ -26,7 +26,7 @@ CeruleanGym_MapScriptHeader:
 	object_event  9,  4, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerSailorEddie, EVENT_TRAINERS_IN_CERULEAN_GYM
 	object_event  3, 13, SPRITE_GYM_GUY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, CeruleanGymGuyScript, EVENT_TRAINERS_IN_CERULEAN_GYM
 
-	const_def 1 ; object constants
+	object_const_def
 	const CERULEANGYM_ROCKET
 
 CeruleanGymTrigger1:

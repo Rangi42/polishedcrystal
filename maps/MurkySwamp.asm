@@ -1,22 +1,22 @@
 MurkySwamp_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 3 ; warp events
+	def_warp_events
 	warp_event  7, 35, STORMY_BEACH, 1
 	warp_event  8, 35, STORMY_BEACH, 2
 	warp_event 36,  5, UNION_CAVE_B1F_SOUTH, 3
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 4 ; bg events
+	def_bg_events
 	bg_event 20, 10, SIGNPOST_ITEM + MULCH, EVENT_MURKY_SWAMP_HIDDEN_MULCH
 	bg_event 22, 13, SIGNPOST_ITEM + X_SPCL_DEF, EVENT_MURKY_SWAMP_HIDDEN_X_SPCL_DEF
 	bg_event  5, 23, SIGNPOST_ITEM + BIG_MUSHROOM, EVENT_MURKY_SWAMP_HIDDEN_BIG_MUSHROOM
 	bg_event 40, 33, SIGNPOST_ITEM + TINYMUSHROOM, EVENT_MURKY_SWAMP_HIDDEN_TINYMUSHROOM
 
-	db 15 ; object events
+	def_object_events
 	object_event 40, 26, SPRITE_CHERYL, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, MurkySwampCherylScript, EVENT_MURKY_SWAMP_CHERYL
 	object_event 22, 20, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 5, GenericTrainerBug_catcherOscar, -1
 	object_event 17, 31, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerBug_catcherCallum, -1
@@ -33,7 +33,7 @@ MurkySwamp_MapScriptHeader:
 	cuttree_event  2, 14, EVENT_MURKY_SWAMP_CUT_TREE_1
 	cuttree_event  6, 19, EVENT_MURKY_SWAMP_CUT_TREE_2
 
-	const_def 1 ; object constants
+	object_const_def
 	const MURKYSWAMP_CHERYL
 
 MurkySwampCherylScript:

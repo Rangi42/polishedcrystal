@@ -1,15 +1,15 @@
 IvysLab_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event  4, 11, VALENCIA_ISLAND, 1
 	warp_event  5, 11, VALENCIA_ISLAND, 1
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 14 ; bg events
+	def_bg_events
 	bg_event  5,  0, SIGNPOST_JUMPTEXT, IvysLabWindowText
 	bg_event  2,  1, SIGNPOST_READ, IvysLabHealingMachine
 	bg_event  6,  1, SIGNPOST_JUMPSTD, difficultbookshelf
@@ -25,12 +25,12 @@ IvysLab_MapScriptHeader:
 	bg_event  8,  7, SIGNPOST_JUMPSTD, difficultbookshelf
 	bg_event  9,  7, SIGNPOST_JUMPSTD, difficultbookshelf
 
-	db 3 ; object events
+	def_object_events
 	object_event  4,  3, SPRITE_IVY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ProfIvyScript, -1
 	object_event  5,  3, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, NIDORINO, -1, -1, PAL_NPC_PURPLE, PERSONTYPE_SCRIPT, 0, IvysLabNidorinoScript, -1
 	object_event  2,  9, SPRITE_BATTLE_GIRL, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_PURPLE, PERSONTYPE_SCRIPT, 0, IvysLabHopeScript, -1
 
-	const_def 1 ; object constants
+	object_const_def
 	const IVYSLAB_IVY
 	const IVYSLAB_NIDORINO
 

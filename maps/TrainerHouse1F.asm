@@ -1,21 +1,21 @@
 TrainerHouse1F_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 3 ; warp events
+	def_warp_events
 	warp_event  4, 11, VIRIDIAN_CITY, 3
 	warp_event  5, 11, VIRIDIAN_CITY, 3
 	warp_event  8,  2, TRAINER_HOUSE_B1F, 1
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 3 ; bg events
+	def_bg_events
 	bg_event  7,  0, SIGNPOST_JUMPTEXT, UnknownText_0x9b1f4
 	bg_event  9,  0, SIGNPOST_JUMPTEXT, UnknownText_0x9b25d
 	bg_event  4,  6, SIGNPOST_JUMPTEXT, UnknownText_0x9b2c1
 
-	db 5 ; object events
+	def_object_events
 	object_event  0, 10, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x9af7f, -1
 	object_event  8, 10, SPRITE_ACE_TRAINER_M, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x9b025, -1
 	object_event  6,  2, SPRITE_ACE_TRAINER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 2, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x9b0b5, -1

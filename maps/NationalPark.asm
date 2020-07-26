@@ -1,23 +1,23 @@
 NationalPark_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 4 ; warp events
+	def_warp_events
 	warp_event 35, 18, ROUTE_36_NATIONAL_PARK_GATE, 1
 	warp_event 35, 19, ROUTE_36_NATIONAL_PARK_GATE, 2
 	warp_event 12, 47, ROUTE_35_NATIONAL_PARK_GATE, 1
 	warp_event 13, 47, ROUTE_35_NATIONAL_PARK_GATE, 2
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 4 ; bg events
+	def_bg_events
 	bg_event 16, 44, SIGNPOST_JUMPTEXT, UnknownText_0x5c750
 	bg_event 29, 31, SIGNPOST_JUMPTEXT, UnknownText_0x5c771
 	bg_event 14,  4, SIGNPOST_JUMPTEXT, UnknownText_0x5c7c6
 	bg_event  8, 47, SIGNPOST_ITEM + FULL_HEAL, EVENT_NATIONAL_PARK_HIDDEN_FULL_HEAL
 
-	db 16 ; object events
+	def_object_events
 	object_event 17, 24, SPRITE_PICNICKER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x5c1d3, -1
 	object_event 16,  4, SPRITE_MATRON, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x5c22e, -1
 	object_event 29, 40, SPRITE_TEACHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, TeacherScript_0x5c008, -1

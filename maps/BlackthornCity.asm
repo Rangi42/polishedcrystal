@@ -1,11 +1,11 @@
 BlackthornCity_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 2 ; callbacks
+	def_callbacks
 	callback MAPCALLBACK_NEWMAP, BlackthornCityFlypointCallback
 	callback MAPCALLBACK_OBJECTS, BlackthornCitySantosCallback
 
-	db 8 ; warp events
+	def_warp_events
 	warp_event 18, 11, BLACKTHORN_GYM_1F, 1
 	warp_event 13, 21, BLACKTHORN_DRAGON_SPEECH_HOUSE, 1
 	warp_event 29, 23, BLACKTHORN_EMYS_HOUSE, 1
@@ -15,16 +15,16 @@ BlackthornCity_MapScriptHeader:
 	warp_event 36,  9, ICE_PATH_1F, 2
 	warp_event 20,  1, DRAGONS_DEN_1F, 1
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 5 ; bg events
+	def_bg_events
 	bg_event 34, 24, SIGNPOST_JUMPTEXT, BlackthornCitySignText
 	bg_event 17, 13, SIGNPOST_JUMPTEXT, BlackthornGymSignText
 	bg_event  7, 29, SIGNPOST_JUMPTEXT, MoveDeletersHouseSignText
 	bg_event 21,  3, SIGNPOST_JUMPTEXT, DragonDensSignText
 	bg_event  9, 19, SIGNPOST_JUMPTEXT, BlackthornCityTrainerTipsText
 
-	db 12 ; object events
+	def_object_events
 	object_event 22, 20, SPRITE_PSYCHIC, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SantosScript, EVENT_BLACKTHORN_CITY_SANTOS_OF_SATURDAY
 	object_event 18, 12, SPRITE_DRAGON_TAMER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BlackthornDragonTamer1Script, EVENT_BLACKTHORN_CITY_DRAGON_TAMER_BLOCKS_GYM
 	object_event 19, 12, SPRITE_DRAGON_TAMER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BlackthornDragonTamer1Script, EVENT_BLACKTHORN_CITY_DRAGON_TAMER_DOES_NOT_BLOCK_GYM
@@ -38,7 +38,7 @@ BlackthornCity_MapScriptHeader:
 	object_event 31, 26, SPRITE_DRAGON_TAMER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, (1 << MORN) | (1 << DAY), 0, PERSONTYPE_COMMAND, jumptextfaceplayer, BlackthornDragonTamer2Text, -1
 	object_event 27, 25, SPRITE_DRAGON_TAMER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, (1 << NITE), 0, PERSONTYPE_COMMAND, jumptextfaceplayer, BlackthornDragonTamer3Text, -1
 
-	const_def 1 ; object constants
+	object_const_def
 	const BLACKTHORNCITY_SANTOS
 
 BlackthornCityFlypointCallback:

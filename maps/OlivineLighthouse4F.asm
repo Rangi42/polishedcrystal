@@ -1,9 +1,9 @@
 OlivineLighthouse4F_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 10 ; warp events
+	def_warp_events
 	warp_event 13,  3, OLIVINE_LIGHTHOUSE_3F, 1
 	warp_event  3,  5, OLIVINE_LIGHTHOUSE_5F, 2
 	warp_event  9,  7, OLIVINE_LIGHTHOUSE_5F, 3
@@ -15,11 +15,11 @@ OlivineLighthouse4F_MapScriptHeader:
 	warp_event 16,  7, OLIVINE_LIGHTHOUSE_5F, 4
 	warp_event 17,  7, OLIVINE_LIGHTHOUSE_5F, 5
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 0 ; bg events
+	def_bg_events
 
-	db 2 ; object events
+	def_object_events
 	object_event  7, 14, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerSailorKent, -1
 	object_event 11,  2, SPRITE_LASS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerLassConnie, EVENT_OLIVINE_LIGHTHOUSE_JASMINE
 

@@ -1,19 +1,19 @@
 DanceTheatre_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event  5, 13, ECRUTEAK_CITY, 8
 	warp_event  6, 13, ECRUTEAK_CITY, 8
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 2 ; bg events
+	def_bg_events
 	bg_event  5,  6, SIGNPOST_UP, MapDanceTheatreSignpost1Script
 	bg_event  6,  6, SIGNPOST_UP, MapDanceTheatreSignpost1Script
 
-	db 10 ; object events
+	def_object_events
 	object_event  0,  2, SPRITE_KIMONO_GIRL, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_GENERICTRAINER, 0, GenericTrainerKimono_girlNaoko, -1
 	object_event  2,  1, SPRITE_KIMONO_GIRL, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_PURPLE, PERSONTYPE_GENERICTRAINER, 0, GenericTrainerKimono_girlSayo, -1
 	object_event  6,  2, SPRITE_KIMONO_GIRL, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_GENERICTRAINER, 0, GenericTrainerKimono_girlZuki, -1

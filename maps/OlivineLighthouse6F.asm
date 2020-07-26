@@ -1,24 +1,24 @@
 OlivineLighthouse6F_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 4 ; warp events
+	def_warp_events
 	warp_event  9, 15, OLIVINE_LIGHTHOUSE_5F, 1
 	warp_event 16,  5, OLIVINE_LIGHTHOUSE_5F, 6
 	warp_event 17,  5, OLIVINE_LIGHTHOUSE_5F, 7
 	warp_event  9,  3, OLIVINE_LIGHTHOUSE_ROOF, 1
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 0 ; bg events
+	def_bg_events
 
-	db 3 ; object events
+	def_object_events
 	object_event  8,  8, SPRITE_JASMINE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, JasmineScript_0x60b91, EVENT_OLIVINE_LIGHTHOUSE_JASMINE
 	object_event  9,  8, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, AMPHAROS, -1, -1, PAL_NPC_BROWN, PERSONTYPE_SCRIPT, 0, MonsterScript_0x60c3a, -1
 	itemball_event  3,  4, SUPER_POTION, 1, EVENT_OLIVINE_LIGHTHOUSE_6F_SUPER_POTION
 
-	const_def 1 ; object constants
+	object_const_def
 	const OLIVINELIGHTHOUSE6F_JASMINE
 	const OLIVINELIGHTHOUSE6F_AMPHAROS
 

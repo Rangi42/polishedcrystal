@@ -1,16 +1,16 @@
 PokemonMansion1F_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 3 ; warp events
+	def_warp_events
 	warp_event  5, 27, CINNABAR_ISLAND, 3
 	warp_event  6, 27, CINNABAR_ISLAND, 3
 	warp_event 21, 23, POKEMON_MANSION_B1F, 1
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 8 ; bg events
+	def_bg_events
 	bg_event 21, 12, SIGNPOST_ITEM + FULL_RESTORE, EVENT_POKEMON_MANSION_1F_HIDDEN_FULL_RESTORE
 	bg_event 14, 23, SIGNPOST_READ, PokemonMansion1FHiddenPPUp
 	bg_event  2,  5, SIGNPOST_JUMPTEXT, PokemonMansion1FMewtwoStatueText
@@ -20,7 +20,7 @@ PokemonMansion1F_MapScriptHeader:
 	bg_event 18, 19, SIGNPOST_JUMPTEXT, PokemonMansion1FFlowerPotText
 	bg_event 19, 19, SIGNPOST_JUMPTEXT, PokemonMansion1FFlowerPotText
 
-	db 6 ; object events
+	def_object_events
 	object_event  9, 10, SPRITE_BURGLAR, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerBurglarPete, -1
 	object_event 27, 14, SPRITE_BURGLAR, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerBurglarLouis, -1
 	itemball_event  6,  4, MOON_STONE, 1, EVENT_POKEMON_MANSION_1F_MOON_STONE

@@ -1,10 +1,10 @@
 IcePathB1F_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 1 ; callbacks
+	def_callbacks
 	callback MAPCALLBACK_CMDQUEUE, IcePathB1FSetUpStoneTable
 
-	db 8 ; warp events
+	def_warp_events
 	warp_event  3, 15, ICE_PATH_1F, 3
 	warp_event 17,  3, ICE_PATH_B2F_MAHOGANY_SIDE, 1
 	warp_event 11,  2, ICE_PATH_B2F_MAHOGANY_SIDE, 3 ; hole
@@ -14,12 +14,12 @@ IcePathB1F_MapScriptHeader:
 	warp_event  5, 25, ICE_PATH_1F, 4
 	warp_event 11, 27, ICE_PATH_B2F_BLACKTHORN_SIDE, 1
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 1 ; bg events
+	def_bg_events
 	bg_event 17, 30, SIGNPOST_ITEM + MAX_POTION, EVENT_ICE_PATH_B1F_HIDDEN_MAX_POTION
 
-	db 8 ; object events
+	def_object_events
 	strengthboulder_event 11,  7, EVENT_BOULDER_IN_ICE_PATH_1
 	strengthboulder_event  7,  8, EVENT_BOULDER_IN_ICE_PATH_2
 	strengthboulder_event  8,  9, EVENT_BOULDER_IN_ICE_PATH_3
@@ -29,7 +29,7 @@ IcePathB1F_MapScriptHeader:
 	object_event 14, 24, SPRITE_SKIER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerSkierBecky, -1
 	itemball_event  5, 35, IRON, 1, EVENT_ICE_PATH_B1F_IRON
 
-	const_def 1 ; object constants
+	object_const_def
 	const ICEPATHB1F_BOULDER1
 	const ICEPATHB1F_BOULDER2
 	const ICEPATHB1F_BOULDER3

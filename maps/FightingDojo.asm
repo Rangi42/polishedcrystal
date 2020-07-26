@@ -1,21 +1,21 @@
 FightingDojo_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 1 ; callbacks
+	def_callbacks
 	callback MAPCALLBACK_OBJECTS, FightingDojoSetupRematchesCallback
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event  4, 11, SAFFRON_CITY, 1
 	warp_event  5, 11, SAFFRON_CITY, 1
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 3 ; bg events
+	def_bg_events
 	bg_event  4,  0, SIGNPOST_JUMPTEXT, UnknownText_0x189bc0
 	bg_event  5,  0, SIGNPOST_JUMPTEXT, UnknownText_0x189be0
 	bg_event  9,  0, SIGNPOST_READ, MapFightingDojoSignpost2Script
 
-	db 7 ; object events
+	def_object_events
 	object_event  0,  1, SPRITE_BIG_DOLL, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, RematchRed0Script, EVENT_REMATCH_GYM_LEADER_1
 	object_event  0,  2, SPRITE_COPYCAT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_SCRIPT, 0, RematchGreen1Script, EVENT_REMATCH_GYM_LEADER_2
 	object_event  0,  3, SPRITE_COPYCAT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, RematchBlue1Script, EVENT_REMATCH_GYM_LEADER_3
@@ -24,7 +24,7 @@ FightingDojo_MapScriptHeader:
 	object_event  0,  6, SPRITE_CONSOLE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_SCRIPT, 0, RematchBrown2Script, EVENT_REMATCH_GYM_LEADER_6
 	object_event  4,  4, SPRITE_BLACK_BELT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BlackBeltScript_0x189b61, -1
 
-	const_def 1 ; object constants
+	object_const_def
 	const REMATCH_RED_1
 	const REMATCH_GREEN_2
 	const REMATCH_BLUE_2

@@ -1,17 +1,17 @@
 Route16Northeast_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 4 ; warp events
+	def_warp_events
 	warp_event 14, 10, ROUTE_16_17_GATE, 3
 	warp_event 14, 11, ROUTE_16_17_GATE, 4
 	warp_event 14,  4, ROUTE_16_GATE, 3
 	warp_event 14,  5, ROUTE_16_GATE, 4
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 0 ; bg events
+	def_bg_events
 
-	db 1 ; object events
+	def_object_events
 	cuttree_event 17,  4, EVENT_ROUTE_16_CUT_TREE

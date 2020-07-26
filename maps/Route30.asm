@@ -1,15 +1,15 @@
 Route30_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event  7, 39, ROUTE_30_BERRY_SPEECH_HOUSE, 1
 	warp_event 17,  5, MR_POKEMONS_HOUSE, 1
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 6 ; bg events
+	def_bg_events
 	bg_event  9, 43, SIGNPOST_JUMPTEXT, Route30SignText
 	bg_event 13, 29, SIGNPOST_JUMPTEXT, MrPokemonsHouseDirectionsSignText
 	bg_event 15,  5, SIGNPOST_JUMPTEXT, MrPokemonsHouseSignText
@@ -17,7 +17,7 @@ Route30_MapScriptHeader:
 	bg_event 14,  9, SIGNPOST_ITEM + POTION, EVENT_ROUTE_30_HIDDEN_POTION
 	bg_event  5, 39, SIGNPOST_JUMPTEXT, BerryMastersHouseSignText
 
-	db 12 ; object events
+	def_object_events
 	object_event  5, 26, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, YoungsterJoey_ImportantBattleScript, EVENT_ROUTE_30_BATTLE
 	object_event  5, 24, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, PIDGEY, -1, -1, PAL_NPC_BROWN, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_30_BATTLE
 	object_event  5, 25, SPRITE_RATTATA_BACK, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_PURPLE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_30_BATTLE
@@ -31,7 +31,7 @@ Route30_MapScriptHeader:
 	fruittree_event 11,  5, FRUITTREE_ROUTE_30_2, PECHA_BERRY, PAL_NPC_RED
 	itemball_event  8, 35, ANTIDOTE, 1, EVENT_ROUTE_30_ANTIDOTE
 
-	const_def 1 ; object constants
+	object_const_def
 	const ROUTE30_YOUNGSTER1
 	const ROUTE30_PIDGEY
 	const ROUTE30_RATTATA

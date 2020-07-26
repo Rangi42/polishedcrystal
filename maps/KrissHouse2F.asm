@@ -1,22 +1,22 @@
 KrissHouse2F_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 2 ; callbacks
+	def_callbacks
 	callback MAPCALLBACK_NEWMAP, KrissHouse2FInitializeRoom
 	callback MAPCALLBACK_TILES, KrissHouse2FSetSpawn
 
-	db 1 ; warp events
+	def_warp_events
 	warp_event  7,  0, KRISS_HOUSE_1F, 3
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 4 ; bg events
+	def_bg_events
 	bg_event  2,  1, SIGNPOST_UP, KrissHousePC
 	bg_event  3,  1, SIGNPOST_READ, KrissHouseRadio
 	bg_event  5,  1, SIGNPOST_READ, PokemonJournalProfElmScript
 	bg_event  6,  0, SIGNPOST_IFSET, KrissHousePoster
 
-	db 4 ; object events
+	def_object_events
 	object_event  4,  2, SPRITE_CONSOLE, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GameConsole, EVENT_KRISS_HOUSE_2F_CONSOLE
 	object_event  4,  4, SPRITE_DOLL_1, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Doll1, EVENT_KRISS_HOUSE_2F_DOLL_1
 	object_event  5,  4, SPRITE_DOLL_2, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Doll2, EVENT_KRISS_HOUSE_2F_DOLL_2

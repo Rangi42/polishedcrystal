@@ -1,10 +1,10 @@
 BlackthornGym1F_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 1 ; callbacks
+	def_callbacks
 	callback MAPCALLBACK_TILES, BlackthornGym1FBoulderCallback
 
-	db 7 ; warp events
+	def_warp_events
 	warp_event  4, 17, BLACKTHORN_CITY, 1
 	warp_event  5, 17, BLACKTHORN_CITY, 1
 	warp_event  1,  7, BLACKTHORN_GYM_2F, 1
@@ -13,13 +13,13 @@ BlackthornGym1F_MapScriptHeader:
 	warp_event  7,  7, BLACKTHORN_GYM_2F, 4
 	warp_event  7,  6, BLACKTHORN_GYM_2F, 5
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 2 ; bg events
+	def_bg_events
 	bg_event  3, 15, SIGNPOST_READ, BlackthornGymStatue
 	bg_event  6, 15, SIGNPOST_READ, BlackthornGymStatue
 
-	db 5 ; object events
+	def_object_events
 	object_event  5,  3, SPRITE_CLAIR, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BlackthornGymClairScript, -1
 	object_event  7, 15, SPRITE_GYM_GUY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, BlackthornGymGuyScript, -1
 	object_event  1, 14, SPRITE_DRAGON_TAMER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerDragonTamerPaul, -1

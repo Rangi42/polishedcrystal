@@ -1,12 +1,12 @@
 WarehouseEntrance_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 3 ; callbacks
+	def_callbacks
 	callback MAPCALLBACK_NEWMAP, WarehouseEntranceResetSwitches
 	callback MAPCALLBACK_TILES, WarehouseEntranceCheckBasementKey
 	callback MAPCALLBACK_OBJECTS, WarehouseEntranceCheckDayOfWeek
 
-	db 6 ; warp events
+	def_warp_events
 	warp_event  1,  2, UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES, 7
 	warp_event  1, 34, UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES, 4
 	warp_event 16,  6, WAREHOUSE_ENTRANCE, 4
@@ -14,16 +14,16 @@ WarehouseEntrance_MapScriptHeader:
 	warp_event 14, 35, WAREHOUSE_ENTRANCE, 3
 	warp_event 14, 31, UNDERGROUND_PATH_SWITCH_ROOM_ENTRANCES, 1
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 5 ; bg events
+	def_bg_events
 	bg_event 16,  6, SIGNPOST_READ, BasementDoorScript
 	bg_event 17,  6, SIGNPOST_JUMPTEXT, UnknownText_0x7c91a
 	bg_event  4, 13, SIGNPOST_ITEM + PARALYZEHEAL, EVENT_WAREHOUSE_ENTRANCE_HIDDEN_PARALYZEHEAL
 	bg_event  2, 18, SIGNPOST_ITEM + SUPER_POTION, EVENT_WAREHOUSE_ENTRANCE_HIDDEN_SUPER_POTION
 	bg_event 15,  8, SIGNPOST_ITEM + ANTIDOTE, EVENT_WAREHOUSE_ENTRANCE_HIDDEN_ANTIDOTE
 
-	db 10 ; object events
+	def_object_events
 	object_event  5, 11, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GrampsScript_0x7c146, EVENT_WAREHOUSE_ENTRANCE_GRAMPS
 	object_event  5, 14, SPRITE_POKEMANIAC, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, OlderHaircutBrotherScript, EVENT_WAREHOUSE_ENTRANCE_OLDER_HAIRCUT_BROTHER
 	object_event  5, 15, SPRITE_POKEMANIAC, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_SCRIPT, 0, YoungerHaircutBrotherScript, EVENT_WAREHOUSE_ENTRANCE_YOUNGER_HAIRCUT_BROTHER
@@ -35,7 +35,7 @@ WarehouseEntrance_MapScriptHeader:
 	keyitemball_event  4, 25, COIN_CASE, EVENT_WAREHOUSE_ENTRANCE_COIN_CASE
 	object_event  1, 18, SPRITE_COSPLAYER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerCosplayerClara, -1
 
-	const_def 1 ; object constants
+	object_const_def
 	const WAREHOUSEENTRANCE_GRAMPS
 	const WAREHOUSEENTRANCE_SUPER_NERD5
 	const WAREHOUSEENTRANCE_SUPER_NERD6

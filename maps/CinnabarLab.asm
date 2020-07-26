@@ -1,15 +1,15 @@
 CinnabarLab_MapScriptHeader:
-	db 1 ; scene scripts
+	def_scene_scripts
 	scene_script CinnabarLabTrigger0
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 0 ; warp events
+	def_warp_events
 
-	db 1 ; coord events
+	def_coord_events
 	coord_event  2,  6, 1, CinnabarLabCelebiEventScript
 
-	db 8 ; bg events
+	def_bg_events
 	bg_event  8, 14, SIGNPOST_JUMPTEXT, CinnabarLabRoom1SignText
 	bg_event  9, 14, SIGNPOST_JUMPTEXT, CinnabarLabLockedDoorText
 	bg_event 16, 14, SIGNPOST_JUMPTEXT, CinnabarLabRoom2SignText
@@ -19,7 +19,7 @@ CinnabarLab_MapScriptHeader:
 	bg_event  3,  6, SIGNPOST_JUMPTEXT, CinnabarLabRoom4SignText
 	bg_event  3,  6, SIGNPOST_ITEM + BERSERK_GENE, EVENT_CINNABAR_LAB_HIDDEN_BERSERK_GENE
 
-	db 9 ; object events
+	def_object_events
 	object_event 15,  6, SPRITE_GIOVANNI, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
 	object_event 15,  4, SPRITE_ARMORED_MEWTWO, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
 	object_event 11,  6, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
@@ -30,7 +30,7 @@ CinnabarLab_MapScriptHeader:
 	object_event 15,  8, SPRITE_CHRIS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CINNABAR_LAB_CHRIS
 	object_event 15,  8, SPRITE_KRIS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CINNABAR_LAB_KRIS
 
-	const_def 1 ; object constants
+	object_const_def
 	const CINNABARLAB_GIOVANNI
 	const CINNABARLAB_ARMORED_MEWTWO
 	const CINNABARLAB_SCIENTIST1

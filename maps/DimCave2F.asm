@@ -1,10 +1,10 @@
 DimCave2F_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 1 ; callbacks
+	def_callbacks
 	callback MAPCALLBACK_TILES, DimCave2FBouldersLand
 
-	db 8 ; warp events
+	def_warp_events
 	warp_event 15,  1, CERULEAN_CAPE, 2
 	warp_event 29,  5, DIM_CAVE_3F, 4
 	warp_event 27, 25, DIM_CAVE_3F, 5
@@ -14,13 +14,13 @@ DimCave2F_MapScriptHeader:
 	warp_event 28, 18, DIM_CAVE_1F, 3
 	warp_event 26, 32, DIM_CAVE_1F, 4
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 2 ; bg events
+	def_bg_events
 	bg_event  6,  4, SIGNPOST_ITEM + STARDUST, EVENT_DIM_CAVE_2F_HIDDEN_STARDUST
 	bg_event  2, 19, SIGNPOST_ITEM + MOON_STONE, EVENT_DIM_CAVE_2F_HIDDEN_MOON_STONE
 
-	db 7 ; object events
+	def_object_events
 	object_event 14, 21, SPRITE_BOULDER_ROCK_FOSSIL, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptext, DimCaveFallenBoulderText, EVENT_BOULDER_FELL_IN_DIM_CAVE_2F
 	object_event 15, 12, SPRITE_ENGINEER, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerEngineerLang, -1
 	object_event  7, 16, SPRITE_HIKER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerHikerDerrick, -1

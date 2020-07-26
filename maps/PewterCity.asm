@@ -1,10 +1,10 @@
 PewterCity_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 1 ; callbacks
+	def_callbacks
 	callback MAPCALLBACK_NEWMAP, PewterCityFlyPoint
 
-	db 7 ; warp events
+	def_warp_events
 	warp_event 29, 13, PEWTER_NIDORAN_SPEECH_HOUSE, 1
 	warp_event 16, 17, PEWTER_GYM, 1
 	warp_event 23, 17, PEWTER_MART, 2
@@ -13,16 +13,16 @@ PewterCity_MapScriptHeader:
 	warp_event 14,  7, PEWTER_MUSEUM_OF_SCIENCE_1F, 1
 	warp_event 19,  5, PEWTER_MUSEUM_OF_SCIENCE_1F, 3
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 5 ; bg events
+	def_bg_events
 	bg_event 25, 23, SIGNPOST_JUMPTEXT, PewterCitySignText
 	bg_event 11, 17, SIGNPOST_JUMPTEXT, PewterGymSignText
 	bg_event 15,  9, SIGNPOST_JUMPTEXT, PewterMuseumOfScienceSignText
 	bg_event 33, 19, SIGNPOST_JUMPTEXT, PewterCityMtMoonGiftShopSignText
 	bg_event 19, 29, SIGNPOST_JUMPTEXT, PewterCityTrainerTipsText
 
-	db 7 ; object events
+	def_object_events
 	object_event 22, 11, SPRITE_BATTLE_GIRL, SPRITEMOVEDATA_STANDING_DOWN, 2, 2, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x18c042, -1
 	object_event 19, 10, SPRITE_COOL_DUDE, SPRITEMOVEDATA_SPINRANDOM_SLOW, 2, 2, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, PewterCityCooltrainermText, -1
 	object_event 14, 29, SPRITE_CHILD, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, PAL_NPC_PURPLE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x18c080, -1

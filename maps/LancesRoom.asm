@@ -1,28 +1,28 @@
 LancesRoom_MapScriptHeader:
-	db 1 ; scene scripts
+	def_scene_scripts
 	scene_script LancesRoomEntranceTrigger
 
-	db 1 ; callbacks
+	def_callbacks
 	callback MAPCALLBACK_TILES, LancesRoomDoorCallback
 
-	db 4 ; warp events
+	def_warp_events
 	warp_event  6, 23, KARENS_ROOM, 3
 	warp_event  7, 23, KARENS_ROOM, 4
 	warp_event  6,  1, HALL_OF_FAME, 1
 	warp_event  7,  1, HALL_OF_FAME, 2
 
-	db 2 ; coord events
+	def_coord_events
 	coord_event  6,  5, 1, ApproachLanceFromLeftTrigger
 	coord_event  7,  5, 1, ApproachLanceFromRightTrigger
 
-	db 0 ; bg events
+	def_bg_events
 
-	db 3 ; object events
+	def_object_events
 	object_event  7,  3, SPRITE_LANCE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, LanceScript, -1
 	object_event  6,  7, SPRITE_BUENA, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LANCES_ROOM_OAK_AND_MARY
 	object_event  6,  7, SPRITE_OAK, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LANCES_ROOM_OAK_AND_MARY
 
-	const_def 1 ; object constants
+	object_const_def
 	const LANCESROOM_LANCE
 	const LANCESROOM_MARY
 	const LANCESROOM_OAK

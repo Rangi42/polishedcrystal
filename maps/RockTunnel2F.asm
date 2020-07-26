@@ -1,18 +1,18 @@
 RockTunnel2F_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event 25, 19, ROUTE_10_NORTH, 3
 	warp_event  7, 15, ROCK_TUNNEL_1F, 8
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 1 ; bg events
+	def_bg_events
 	bg_event 15, 19, SIGNPOST_ITEM + MAX_ETHER, EVENT_ROCK_TUNNEL_2F_HIDDEN_MAX_ETHER
 
-	db 15 ; object events
+	def_object_events
 	object_event  8, 12, SPRITE_BALL_CUT_FRUIT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, RockTunnel2FElectrode, EVENT_ROCK_TUNNEL_2F_ELECTRODE
 	itemball_event  2, 23, THUNDERSTONE, 1, EVENT_ROCK_TUNNEL_2F_THUNDERSTONE
 	tmhmball_event 25,  9, TM_THUNDER_WAVE, EVENT_ROCK_TUNNEL_2F_TM_THUNDER_WAVE

@@ -1,21 +1,21 @@
 Route27_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 3 ; warp events
+	def_warp_events
 	warp_event 33,  7, ROUTE_27_REST_HOUSE, 1
 	warp_event 26,  5, TOHJO_FALLS, 1
 	warp_event 36,  5, TOHJO_FALLS, 2
 
-	db 2 ; coord events
+	def_coord_events
 	coord_event 18, 10, 0, UnknownScript_0x1a0873
 	coord_event 19, 10, 0, UnknownScript_0x1a0881
 
-	db 1 ; bg events
+	def_bg_events
 	bg_event 25,  7, SIGNPOST_JUMPTEXT, TohjoFallsSignText
 
-	db 12 ; object events
+	def_object_events
 	object_event 48, 12, SPRITE_VETERAN_F, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route27VeteranfScript, -1
 	object_event 21, 10, SPRITE_FAT_GUY, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1a0a71, -1
 	object_event 48,  7, SPRITE_ACE_TRAINER_M, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerCooltrainermBlake, -1
@@ -29,7 +29,7 @@ Route27_MapScriptHeader:
 	itemball_event 71,  4, DESTINY_KNOT, 1, EVENT_ROUTE_27_DESTINY_KNOT
 	fruittree_event 60, 12, FRUITTREE_ROUTE_27, LUM_BERRY, PAL_NPC_GREEN
 
-	const_def 1 ; object constants
+	object_const_def
 	const ROUTE27_VETERAN_F
 	const ROUTE27_FISHER
 

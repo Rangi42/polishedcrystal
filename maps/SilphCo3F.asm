@@ -1,14 +1,14 @@
 SilphCo3F_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 1 ; warp events
+	def_warp_events
 	warp_event 11,  0, SILPH_CO_2F, 2
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 8 ; bg events
+	def_bg_events
 	bg_event  3,  2, SIGNPOST_JUMPTEXT, SilphCo3FDeptSignText
 	bg_event  9,  2, SIGNPOST_JUMPTEXT, SilphCo3FDeptSignText
 	bg_event  5,  0, SIGNPOST_JUMPTEXT, SilphCo3FElevatorText
@@ -18,7 +18,7 @@ SilphCo3F_MapScriptHeader:
 	bg_event 12,  3, SIGNPOST_JUMPSTD, difficultbookshelf
 	bg_event 13,  3, SIGNPOST_JUMPSTD, difficultbookshelf
 
-	db 6 ; object events
+	def_object_events
 	object_event 10,  5, SPRITE_SILPH_EMPLOYEE, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SilphCo3FSilphEmployeeScript, -1
 	object_event  2,  5, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, SilphCo3FScientist1Text, -1
 	object_event  8,  7, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, SilphCo3FScientist2Text, -1

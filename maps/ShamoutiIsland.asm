@@ -1,9 +1,9 @@
 ShamoutiIsland_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 6 ; warp events
+	def_warp_events
 	warp_event 21, 13, SHAMOUTI_POKECENTER_1F, 1
 	warp_event 33,  5, SHAMOUTI_HOTEL_1F, 1
 	warp_event 16,  7, SHAMOUTI_TUNNEL, 1
@@ -11,14 +11,14 @@ ShamoutiIsland_MapScriptHeader:
 	warp_event 31, 12, SHAMOUTI_HOUSE, 1
 	warp_event  9, 13, SHAMOUTI_MERCHANT, 1
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 3 ; bg events
+	def_bg_events
 	bg_event 16, 16, SIGNPOST_JUMPTEXT, ShamoutiIslandSignText
 	bg_event 26,  6, SIGNPOST_JUMPTEXT, ShamoutiTouristCenterSignText
 	bg_event 32,  6, SIGNPOST_JUMPTEXT, ShamoutiHotelSignText
 
-	db 8 ; object events
+	def_object_events
 	object_event 16,  8, SPRITE_MON_ICON, SPRITEMOVEDATA_DOLL, 0, VILEPLUME, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, ShamoutiIslandVileplumeScript, EVENT_SHAMOUTI_ISLAND_VILEPLUME
 	fruittree_event 34, 13, FRUITTREE_SHAMOUTI_ISLAND, FIGY_BERRY, PAL_NPC_BROWN
 	object_event 24, 14, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ShamoutiIslandYoungsterScript, EVENT_SHAMOUTI_ISLAND_PIKABLU_GUY
@@ -28,7 +28,7 @@ ShamoutiIsland_MapScriptHeader:
 	object_event 12, 15, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, pokemart, MARTTYPE_BAZAAR, MART_SHAMOUTI_1, -1
 	object_event  9, 16, SPRITE_COOL_DUDE, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, pokemart, MARTTYPE_BAZAAR, MART_SHAMOUTI_2, -1
 
-	const_def 1 ; object constants
+	object_const_def
 	const SHAMOUTIISLAND_VILEPLUME
 
 ShamoutiIslandVileplumeScript:

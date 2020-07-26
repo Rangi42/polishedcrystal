@@ -1,10 +1,10 @@
 EcruteakCity_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 1 ; callbacks
+	def_callbacks
 	callback MAPCALLBACK_NEWMAP, EcruteakCityFlyPoint
 
-	db 17 ; warp events
+	def_warp_events
 	warp_event 35, 26, ROUTE_42_ECRUTEAK_GATE, 1
 	warp_event 35, 27, ROUTE_42_ECRUTEAK_GATE, 2
 	warp_event 23, 11, ECRUTEAK_HOUSE, 1
@@ -23,9 +23,9 @@ EcruteakCity_MapScriptHeader:
 	warp_event 29, 27, ECRUTEAK_CHERISH_BALL_HOUSE, 1
 	warp_event 13, 17, ECRUTEAK_DESTINY_KNOT_HOUSE, 1
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 7 ; bg events
+	def_bg_events
 	bg_event 15, 21, SIGNPOST_JUMPTEXT, EcruteakCitySignText
 	bg_event  8, 28, SIGNPOST_JUMPTEXT, EcruteakGymSignText
 	bg_event 21, 21, SIGNPOST_JUMPTEXT, EcruteakDanceTheaterSignText
@@ -34,7 +34,7 @@ EcruteakCity_MapScriptHeader:
 	bg_event 15, 11, SIGNPOST_JUMPTEXT, EcruteakShrineSignText
 	bg_event 21, 11, SIGNPOST_JUMPTEXT, EcruteakBarrierStationSignText
 
-	db 14 ; object events
+	def_object_events
 	object_event 20, 15, SPRITE_GRAMPS, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1a4105, -1
 	object_event 20, 21, SPRITE_GRAMPS, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1a4147, -1
 	object_event 19, 26, SPRITE_CUTE_GIRL, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, PAL_NPC_PURPLE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1a41db, -1

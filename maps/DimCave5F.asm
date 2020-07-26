@@ -1,21 +1,21 @@
 DimCave5F_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 1 ; callbacks
+	def_callbacks
 	callback MAPCALLBACK_CMDQUEUE, DimCave5FSetUpStoneTable
 
-	db 4 ; warp events
+	def_warp_events
 	warp_event 13, 31, ROUTE_10_NORTH, 5
 	warp_event  2, 16, DIM_CAVE_4F, 1
 	warp_event 27, 29, DIM_CAVE_4F, 2
 	warp_event 28, 25, DIM_CAVE_4F, 3
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 1 ; bg events
+	def_bg_events
 	bg_event 12, 28, SIGNPOST_ITEM + X_SPCL_ATK, EVENT_DIM_CAVE_5F_HIDDEN_X_SPCL_ATK
 
-	db 8 ; object events
+	def_object_events
 	strengthboulder_event 25,  5, EVENT_BOULDER_IN_DIM_CAVE_5F
 	object_event 13,  4, SPRITE_RILEY, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, DimCave5FRileyScript, EVENT_DIM_CAVE_RILEY
 	object_event 24, 17, SPRITE_SUPER_NERD, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerSuper_nerdFoote, -1
@@ -25,7 +25,7 @@ DimCave5F_MapScriptHeader:
 	itemball_event  9, 27, DUSK_STONE, 1, EVENT_DIM_CAVE_5F_DUSK_STONE
 	itemball_event 31, 14, HYPER_POTION, 1, EVENT_DIM_CAVE_5F_HYPER_POTION
 
-	const_def 1 ; object constants
+	object_const_def
 	const DIMCAVE5F_BOULDER
 	const DIMCAVE5F_RILEY
 

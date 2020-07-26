@@ -1,16 +1,16 @@
 CeladonUniversityLibrary1F_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 3 ; warp events
+	def_warp_events
 	warp_event  6, 11, CELADON_UNIVERSITY_1F, 4
 	warp_event  7, 11, CELADON_UNIVERSITY_1F, 4
 	warp_event  7,  0, CELADON_UNIVERSITY_LIBRARY_2F, 1
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 14 ; bg events
+	def_bg_events
 	bg_event  4,  0, SIGNPOST_JUMPTEXT, CeladonUniversityLibrary1FSignpost1Text
 	bg_event 10,  0, SIGNPOST_JUMPTEXT, CeladonUniversityLibrary1FSignpost2Text
 	bg_event  0,  3, SIGNPOST_JUMPTEXT, CeladonUniversityLibrary1FBookshelf1Text
@@ -26,7 +26,7 @@ CeladonUniversityLibrary1F_MapScriptHeader:
 	bg_event  4,  7, SIGNPOST_JUMPTEXT, CeladonUniversityLibrary1FBookshelf11Text
 	bg_event  5,  7, SIGNPOST_JUMPTEXT, CeladonUniversityLibrary1FBookshelf12Text
 
-	db 8 ; object events
+	def_object_events
 	object_event  6,  3, SPRITE_AROMA_LADY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityLibrary1FLadyText, -1
 	object_event 11,  3, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityLibrary1FGentlemanText, -1
 	object_event  0,  5, SPRITE_BATTLE_GIRL, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityLibrary1FCooltrainerfText, -1

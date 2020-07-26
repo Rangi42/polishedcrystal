@@ -1,9 +1,9 @@
 CeladonUniversity1F_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 10 ; warp events
+	def_warp_events
 	warp_event 14, 19, CELADON_CITY, 13
 	warp_event 15, 19, CELADON_CITY, 13
 	warp_event 25, 12, CELADON_UNIVERSITY_2F, 1
@@ -15,9 +15,9 @@ CeladonUniversity1F_MapScriptHeader:
 	warp_event 27,  4, CELADON_UNIVERSITY_CLASSROOM_4, 1
 	warp_event  3, 12, CELADON_UNIVERSITY_LOUNGE, 1
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 13 ; bg events
+	def_bg_events
 	bg_event 14,  0, SIGNPOST_JUMPTEXT, CeladonUniversity1FPrincipalsOfficeSignText
 	bg_event  2,  4, SIGNPOST_JUMPTEXT, CeladonUniversity1FClassroom1SignText
 	bg_event  8,  4, SIGNPOST_JUMPTEXT, CeladonUniversity1FClassroom2SignText
@@ -32,7 +32,7 @@ CeladonUniversity1F_MapScriptHeader:
 	bg_event 26, 13, SIGNPOST_JUMPTEXT, CeladonUniversity1FBookshelfText
 	bg_event 27, 13, SIGNPOST_JUMPTEXT, CeladonUniversity1FBookshelfText
 
-	db 8 ; object events
+	def_object_events
 	object_event  6,  5, SPRITE_POKEMANIAC, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversity1FSuperNerdText, -1
 	object_event 16,  4, SPRITE_PICNICKER, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversity1FLassText, -1
 	object_event 25,  5, SPRITE_ACE_TRAINER_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversity1FCooltrainermText, -1

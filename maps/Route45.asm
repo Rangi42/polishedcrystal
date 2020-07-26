@@ -1,18 +1,18 @@
 Route45_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 1 ; warp events
+	def_warp_events
 	warp_event  4,  5, DARK_CAVE_BLACKTHORN_ENTRANCE, 1
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 2 ; bg events
+	def_bg_events
 	bg_event 17,  5, SIGNPOST_JUMPTEXT, Route45SignText
 	bg_event 17, 78, SIGNPOST_ITEM + PP_UP, EVENT_ROUTE_45_HIDDEN_PP_UP
 
-	db 15 ; object events
+	def_object_events
 	object_event 19, 75, SPRITE_DRAGON_TAMER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route45Dragon_tamerScript, -1
 	object_event  5, 59, SPRITE_BATTLE_GIRL, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerBattleGirlNozomi, -1
 	object_event 12, 18, SPRITE_HIKER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerHikerErik, -1
@@ -29,7 +29,7 @@ Route45_MapScriptHeader:
 	itemball_event 15, 32, MAX_POTION, 1, EVENT_ROUTE_45_MAX_POTION
 	object_event  4, 70, SPRITE_CAMPER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerCamperQuentin, -1
 
-	const_def 1 ; object constants
+	object_const_def
 	const ROUTE45_DRAGON_TAMER
 
 Route45Dragon_tamerScript:

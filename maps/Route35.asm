@@ -1,23 +1,23 @@
 Route35_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 4 ; warp events
+	def_warp_events
 	warp_event 13, 33, ROUTE_35_GOLDENROD_GATE, 1
 	warp_event 14, 33, ROUTE_35_GOLDENROD_GATE, 2
 	warp_event  7,  5, ROUTE_35_NATIONAL_PARK_GATE, 3
 	warp_event 14, 16, HIDDEN_TREE_GROTTO, 1
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 4 ; bg events
+	def_bg_events
 	bg_event  5,  7, SIGNPOST_JUMPTEXT, Route35SignText
 	bg_event 15, 31, SIGNPOST_JUMPTEXT, Route35SignText
 	bg_event 14, 15, SIGNPOST_JUMPSTD, treegrotto, HIDDENGROTTO_ROUTE_35
 	bg_event 15, 15, SIGNPOST_JUMPSTD, treegrotto, HIDDENGROTTO_ROUTE_35
 
-	db 12 ; object events
+	def_object_events
 	object_event  8, 19, SPRITE_CAMPER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerCamperIvan, -1
 	object_event 12, 20, SPRITE_COOL_DUDE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerCoupleGailandeli1, -1
 	object_event 11, 20, SPRITE_CUTE_GIRL, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerCoupleGailandeli2, -1

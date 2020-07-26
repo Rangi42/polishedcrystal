@@ -1,10 +1,10 @@
 CeladonCity_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 1 ; callbacks
+	def_callbacks
 	callback MAPCALLBACK_NEWMAP, CeladonCityFlyPoint
 
-	db 16 ; warp events
+	def_warp_events
 	warp_event  8,  9, CELADON_DEPT_STORE_1F, 1
 	warp_event 20,  9, CELADON_MANSION_1F, 1
 	warp_event 20,  3, CELADON_MANSION_1F, 3
@@ -22,9 +22,9 @@ CeladonCity_MapScriptHeader:
 	warp_event 33, 19, CELADON_OLD_MAN_SPEECH_HOUSE, 1
 	warp_event 37, 19, CELADON_DEVELOPMENT_SPEECH_HOUSE, 1
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 11 ; bg events
+	def_bg_events
 	bg_event  9, 18, SIGNPOST_JUMPTEXT, CeladonCitySignText
 	bg_event 15, 31, SIGNPOST_JUMPTEXT, CeladonGymSignText
 	bg_event  3, 31, SIGNPOST_JUMPTEXT, CeladonUniversitySignText
@@ -37,7 +37,7 @@ CeladonCity_MapScriptHeader:
 	bg_event 21, 15, SIGNPOST_JUMPTEXT, CeladonCityTrainerTips2Text
 	bg_event 41, 21, SIGNPOST_ITEM + PP_UP, EVENT_CELADON_CITY_HIDDEN_PP_UP
 
-	db 14 ; object events
+	def_object_events
 	object_event  4, 17, SPRITE_RICH_BOY, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_SCRIPT, 0, CeladonCityScript, -1
 	object_event 30, 11, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1a9f7d, -1
 	pokemon_event 31, 11, POLIWRATH, -1, -1, PAL_NPC_BLUE, CeladonCityPoliwrathText, -1

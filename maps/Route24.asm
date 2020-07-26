@@ -1,12 +1,12 @@
 Route24_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 1 ; callbacks
+	def_callbacks
 	callback MAPCALLBACK_TILES, Route24TileScript
 
-	db 0 ; warp events
+	def_warp_events
 
-	db 10 ; coord events
+	def_coord_events
 	coord_event 19, 15, 1, Route24BridgeOverheadTrigger
 	coord_event 20, 14, 1, Route24BridgeOverheadTrigger
 	coord_event 21, 14, 1, Route24BridgeOverheadTrigger
@@ -18,13 +18,13 @@ Route24_MapScriptHeader:
 	coord_event 20, 38, 0, Route24BridgeUnderfootTrigger
 	coord_event 21, 38, 0, Route24BridgeUnderfootTrigger
 
-	db 1 ; bg events
+	def_bg_events
 	bg_event 16,  5, SIGNPOST_ITEM + POTION, EVENT_ROUTE_24_HIDDEN_POTION
 
-	db 1 ; object events
+	def_object_events
 	object_event 21, 25, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 1, TrainerGruntM31, EVENT_ROUTE_24_ROCKET
 
-	const_def 1 ; object constants
+	object_const_def
 	const ROUTE24_ROCKET
 
 Route24TileScript:

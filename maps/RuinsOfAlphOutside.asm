@@ -1,12 +1,12 @@
 RuinsOfAlphOutside_MapScriptHeader:
-	db 1 ; scene scripts
+	def_scene_scripts
 	scene_script RuinsofAlphOutsideTrigger0
 
-	db 2 ; callbacks
+	def_callbacks
 	callback MAPCALLBACK_TILES, RuinsofAlphOutsideTileScript
 	callback MAPCALLBACK_OBJECTS, UnknownScript_0x5800f
 
-	db 12 ; warp events
+	def_warp_events
 	warp_event  4, 23, RUINS_OF_ALPH_HO_OH_CHAMBER, 1
 	warp_event 16, 13, RUINS_OF_ALPH_KABUTO_CHAMBER, 1
 	warp_event  4, 35, RUINS_OF_ALPH_OMANYTE_CHAMBER, 1
@@ -20,18 +20,18 @@ RuinsOfAlphOutside_MapScriptHeader:
 	warp_event 15, 27, ROUTE_32_RUINS_OF_ALPH_GATE, 2
 	warp_event 10,  9, RUINS_OF_ALPH_SINJOH_CHAMBER, 1
 
-	db 2 ; coord events
+	def_coord_events
 	coord_event 13, 20, 1, UnknownScript_0x58031
 	coord_event 12, 21, 1, UnknownScript_0x58031
 
-	db 5 ; bg events
+	def_bg_events
 	bg_event 18, 14, SIGNPOST_JUMPTEXT, UnknownText_0x58325
 	bg_event 14, 22, SIGNPOST_JUMPTEXT, UnknownText_0x58342
 	bg_event 20, 18, SIGNPOST_JUMPTEXT, UnknownText_0x58362
 	bg_event 10,  9, SIGNPOST_IFNOTSET, MapRuinsofAlphOutsideSealedCaveSign
 	bg_event  4, 13, SIGNPOST_ITEM + RARE_CANDY, EVENT_RUINS_OF_ALPH_OUTSIDE_HIDDEN_RARE_CANDY
 
-	db 13 ; object events
+	def_object_events
 	object_event 13, 21, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_SCRIPT, 0, ScientistScript_0x58043, EVENT_RUINS_OF_ALPH_OUTSIDE_SCIENTIST
 	object_event 18, 18, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_RUINS_OF_ALPH_OUTSIDE_SCIENTIST_CLIMAX
 	object_event  6, 26, SPRITE_PSYCHIC, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerPsychicNathan, -1
@@ -46,7 +46,7 @@ RuinsOfAlphOutside_MapScriptHeader:
 	smashrock_event  7, 13
 	smashrock_event  8, 15
 
-	const_def 1 ; object constants
+	object_const_def
 	const RUINSOFALPHOUTSIDE_SCIENTIST1
 	const RUINSOFALPHOUTSIDE_SCIENTIST2
 

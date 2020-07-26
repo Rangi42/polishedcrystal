@@ -1,16 +1,16 @@
 KurtsHouse_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 1 ; callbacks
+	def_callbacks
 	callback MAPCALLBACK_OBJECTS, UnknownScript_0x18e154
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event  3,  7, AZALEA_TOWN, 4
 	warp_event  4,  7, AZALEA_TOWN, 4
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 7 ; bg events
+	def_bg_events
 	bg_event  6,  1, SIGNPOST_JUMPSTD, radio2
 	bg_event  8,  0, SIGNPOST_JUMPTEXT, KurtsHouseOakPhotoText
 	bg_event  9,  0, SIGNPOST_JUMPTEXT, KurtsHouseOakPhotoText
@@ -19,14 +19,14 @@ KurtsHouse_MapScriptHeader:
 	bg_event  3,  1, SIGNPOST_READ, PokemonJournalProfWestwoodScript
 	bg_event  4,  1, SIGNPOST_JUMPTEXT, KurtsHouseCelebiStatueText
 
-	db 5 ; object events
+	def_object_events
 	object_event  3,  2, SPRITE_KURT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, KurtScript_0x18e178, EVENT_KURTS_HOUSE_KURT_1
 	object_event  5,  3, SPRITE_SCHOOLGIRL, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, KurtsGranddaughter1, EVENT_KURTS_HOUSE_GRANDDAUGHTER_1
 	object_event 14,  3, SPRITE_KURT, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, KurtScript_0x18e3bd, EVENT_KURTS_HOUSE_KURT_2
 	object_event 11,  4, SPRITE_SCHOOLGIRL, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, KurtsGranddaughter2, EVENT_KURTS_HOUSE_GRANDDAUGHTER_2
 	pokemon_event  6,  3, SLOWPOKE, -1, -1, PAL_NPC_RED, KurtsHouseSlowpokeText, EVENT_KURTS_HOUSE_SLOWPOKE
 
-	const_def 1 ; object constants
+	object_const_def
 	const KURTSHOUSE_KURT1
 	const KURTSHOUSE_TWIN1
 	const KURTSHOUSE_KURT2

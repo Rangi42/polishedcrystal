@@ -1,27 +1,27 @@
 MountMoonSquare_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 2 ; callbacks
+	def_callbacks
 	callback MAPCALLBACK_NEWMAP, UnknownScript_0x77093
 	callback MAPCALLBACK_OBJECTS, UnknownScript_0x77097
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event 21, 11, ROUTE_4, 2
 	warp_event 13,  7, MOUNT_MOON_GIFT_SHOP, 1
 
-	db 1 ; coord events
+	def_coord_events
 	coord_event  7, 11, 0, ClefairyDance
 
-	db 2 ; bg events
+	def_bg_events
 	bg_event  7,  7, SIGNPOST_ITEM + MOON_STONE, EVENT_MOUNT_MOON_SQUARE_HIDDEN_MOON_STONE
 	bg_event 17,  7, SIGNPOST_JUMPTEXT, DontLitterSignText
 
-	db 3 ; object events
+	def_object_events
 	object_event  6,  6, SPRITE_CLEFAIRY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_MT_MOON_SQUARE_CLEFAIRY
 	object_event  7,  6, SPRITE_CLEFAIRY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_MT_MOON_SQUARE_CLEFAIRY
 	object_event  7,  7, SPRITE_N64, SPRITEMOVEDATA_SMASHABLE_ROCK, 0, 0, -1, -1, PAL_NPC_ROCK, PERSONTYPE_COMMAND, jumpstd, smashrock, 0, EVENT_MT_MOON_SQUARE_ROCK
 
-	const_def 1 ; object constants
+	object_const_def
 	const MOUNTMOONSQUARE_CLEFAIRY1
 	const MOUNTMOONSQUARE_CLEFAIRY2
 	const MOUNTMOONSQUARE_ROCK

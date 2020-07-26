@@ -1,19 +1,19 @@
 Route44_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 1 ; warp events
+	def_warp_events
 	warp_event 56,  7, ICE_PATH_1F, 1
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 3 ; bg events
+	def_bg_events
 	bg_event 53,  7, SIGNPOST_JUMPTEXT, Route44Sign1Text
 	bg_event  6, 10, SIGNPOST_JUMPTEXT, Route44Sign2Text
 	bg_event 32,  9, SIGNPOST_ITEM + ELIXIR, EVENT_ROUTE_44_HIDDEN_ELIXIR
 
-	db 12 ; object events
+	def_object_events
 	object_event 32,  8, SPRITE_VETERAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route44VeteranmScript, -1
 	object_event 35,  3, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 1, TrainerFisherWilton1, -1
 	object_event 19, 13, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerFisherEdgar, -1
@@ -27,7 +27,7 @@ Route44_MapScriptHeader:
 	itemball_event 45,  4, ULTRA_BALL, 1, EVENT_ROUTE_44_ULTRA_BALL
 	itemball_event 14,  9, MAX_REPEL, 1, EVENT_ROUTE_44_MAX_REPEL
 
-	const_def 1 ; object constants
+	object_const_def
 	const ROUTE44_VETERAN_M
 
 Route44VeteranmScript:

@@ -1,22 +1,22 @@
 WarmBeach_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 3 ; warp events
+	def_warp_events
 	warp_event 15, 13, WARM_BEACH_SHACK, 1
 	warp_event  8,  5, SHAMOUTI_TUNNEL, 2
 	warp_event  3,  8, WARM_BEACH_HOUSE, 1
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 4 ; bg events
+	def_bg_events
 	bg_event 17, 14, SIGNPOST_JUMPTEXT, WarmBeachShackSignText
 	bg_event 18, 20, SIGNPOST_JUMPTEXT, WarmBeachShrineText
 	bg_event 19, 20, SIGNPOST_JUMPTEXT, WarmBeachShrineText
 	bg_event  6, 20, SIGNPOST_ITEM + PEARL, EVENT_WARM_BEACH_HIDDEN_PEARL
 
-	db 7 ; object events
+	def_object_events
 	object_event 11,  8, SPRITE_SIGHTSEER_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerSightseermGareth, -1
 	object_event  4, 12, SPRITE_AROMA_LADY, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerAromaLadyHolly, -1
 	object_event 11, 14, SPRITE_COOL_DUDE, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, WarmBeachCooltrainermText, -1

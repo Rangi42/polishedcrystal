@@ -1,14 +1,14 @@
 Route17_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 1 ; callbacks
+	def_callbacks
 	callback MAPCALLBACK_NEWMAP, UnknownScript_0x1ad0ab
 
-	db 0 ; warp events
+	def_warp_events
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 6 ; bg events
+	def_bg_events
 	bg_event 11, 71, SIGNPOST_ITEM + MAX_ETHER, EVENT_ROUTE_17_HIDDEN_MAX_ETHER
 	bg_event 10, 123, SIGNPOST_ITEM + MAX_ELIXIR, EVENT_ROUTE_17_HIDDEN_MAX_ELIXIR
 	bg_event  9, 64, SIGNPOST_JUMPTEXT, Route17Notice1Text
@@ -16,7 +16,7 @@ Route17_MapScriptHeader:
 	bg_event  9, 94, SIGNPOST_JUMPTEXT, Route17TrainerTips2Text
 	bg_event  9, 101, SIGNPOST_JUMPTEXT, Route17Notice2Text
 
-	db 12 ; object events
+	def_object_events
 	object_event 12,  9, SPRITE_BIKER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerBikerDale, -1
 	object_event  4, 17, SPRITE_BIKER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerBikerReilly, -1
 	object_event 18, 24, SPRITE_BIKER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerBikerJacob, -1

@@ -1,33 +1,33 @@
 KrissHouse1F_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 3 ; warp events
+	def_warp_events
 	warp_event  8,  7, NEW_BARK_TOWN, 2
 	warp_event  9,  7, NEW_BARK_TOWN, 2
 	warp_event 11,  0, KRISS_HOUSE_2F, 1
 
-	db 4 ; coord events
+	def_coord_events
 	coord_event 10,  4, 0, MomTrigger1
 	coord_event 11,  4, 0, MomTrigger2
 	coord_event  9,  1, 0, MomTrigger3
 	coord_event  9,  2, 0, MomTrigger4
 
-	db 4 ; bg events
+	def_bg_events
 	bg_event  1,  1, SIGNPOST_JUMPTEXT, KrissHouse1FFridgeText
 	bg_event  2,  1, SIGNPOST_JUMPTEXT, KrissHouse1FSinkText
 	bg_event  3,  1, SIGNPOST_JUMPTEXT, KrissHouse1FStoveText
 	bg_event  6,  1, SIGNPOST_UP, KrissHouse1FTVScript
 
-	db 5 ; object events
+	def_object_events
 	object_event  9,  4, SPRITE_MOM, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, MomScript, EVENT_KRISS_HOUSE_MOM_1
 	object_event  3,  2, SPRITE_MOM, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, (1 << MORN), 0, PERSONTYPE_SCRIPT, 0, MomScript, EVENT_KRISS_HOUSE_MOM_2
 	object_event  9,  4, SPRITE_MOM, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, (1 << DAY), 0, PERSONTYPE_SCRIPT, 0, MomScript, EVENT_KRISS_HOUSE_MOM_2
 	object_event  1,  2, SPRITE_MOM, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, (1 << NITE), 0, PERSONTYPE_SCRIPT, 0, MomScript, EVENT_KRISS_HOUSE_MOM_2
 	object_event  6,  4, SPRITE_MATRON, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, NeighborScript, EVENT_KRISS_HOUSE_1F_NEIGHBOR
 
-	const_def 1 ; object constants
+	object_const_def
 	const KRISSHOUSE1F_MOM1
 
 MomTrigger1:

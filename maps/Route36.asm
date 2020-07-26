@@ -1,10 +1,10 @@
 Route36_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 1 ; callbacks
+	def_callbacks
 	callback MAPCALLBACK_OBJECTS, Route36ArthurCallback
 
-	db 6 ; warp events
+	def_warp_events
 	warp_event 22,  8, ROUTE_36_NATIONAL_PARK_GATE, 3
 	warp_event 22,  9, ROUTE_36_NATIONAL_PARK_GATE, 4
 	warp_event 51, 13, ROUTE_36_RUINS_OF_ALPH_GATE, 1
@@ -12,17 +12,17 @@ Route36_MapScriptHeader:
 	warp_event 61,  8, ROUTE_36_VIOLET_GATE, 1
 	warp_event 61,  9, ROUTE_36_VIOLET_GATE, 2
 
-	db 2 ; coord events
+	def_coord_events
 	coord_event 24,  7, 1, Route36SuicuneScript
 	coord_event 26,  7, 1, Route36SuicuneScript
 
-	db 4 ; bg events
+	def_bg_events
 	bg_event 33,  1, SIGNPOST_JUMPTEXT, Route36TrainerTips2Text
 	bg_event 49, 11, SIGNPOST_JUMPTEXT, RuinsOfAlphNorthSignText
 	bg_event 59,  7, SIGNPOST_JUMPTEXT, Route36SignText
 	bg_event 25,  7, SIGNPOST_JUMPTEXT, Route36TrainerTips1Text
 
-	db 11 ; object events
+	def_object_events
 	object_event 39,  9, SPRITE_WEIRD_TREE, SPRITEMOVEDATA_SUDOWOODO, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SudowoodoScript, EVENT_ROUTE_36_SUDOWOODO
 	object_event 53,  6, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ArthurScript, EVENT_ROUTE_36_ARTHUR_OF_THURSDAY
 	object_event 37, 12, SPRITE_CUTE_GIRL, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, Route36FloriaScript, EVENT_FLORIA_AT_SUDOWOODO
@@ -35,7 +35,7 @@ Route36_MapScriptHeader:
 	fruittree_event 25,  4, FRUITTREE_ROUTE_36, RAWST_BERRY, PAL_NPC_BLUE
 	object_event 50,  5, SPRITE_SCHOOLGIRL, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerSchoolgirlMolly, -1
 
-	const_def 1 ; object constants
+	object_const_def
 	const ROUTE36_WEIRD_TREE
 	const ROUTE36_ARTHUR
 	const ROUTE36_FLORIA

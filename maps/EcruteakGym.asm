@@ -1,10 +1,10 @@
 EcruteakGym_MapScriptHeader:
-	db 1 ; scene scripts
+	def_scene_scripts
 	scene_script EcruteakGymTrigger0
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 33 ; warp events
+	def_warp_events
 	warp_event  4, 17, ECRUTEAK_CITY, 10
 	warp_event  5, 17, ECRUTEAK_CITY, 10
 	warp_event  4, 14, ECRUTEAK_GYM, 4
@@ -39,13 +39,13 @@ EcruteakGym_MapScriptHeader:
 	warp_event  7, 12, ECRUTEAK_GYM, 3
 	warp_event  7, 13, ECRUTEAK_GYM, 3
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 2 ; bg events
+	def_bg_events
 	bg_event  3, 15, SIGNPOST_READ, EcruteakGymStatue
 	bg_event  6, 15, SIGNPOST_READ, EcruteakGymStatue
 
-	db 7 ; object events
+	def_object_events
 	object_event  4, 14, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ECRUTEAK_GYM_GRAMPS
 	object_event  5,  1, SPRITE_MORTY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, MortyScript_0x99d58, -1
 	object_event  2,  7, SPRITE_SAGE, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerSageJeffrey, -1
@@ -54,7 +54,7 @@ EcruteakGym_MapScriptHeader:
 	object_event  7,  9, SPRITE_GRANNY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerMediumGrace, -1
 	object_event  7, 15, SPRITE_GYM_GUY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, EcruteakGymGuyScript, -1
 
-	const_def 1 ; object constants
+	object_const_def
 	const ECRUTEAKGYM_GRAMPS
 
 EcruteakGymTrigger0:

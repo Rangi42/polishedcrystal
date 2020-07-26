@@ -1,18 +1,18 @@
 Route32_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 2 ; callbacks
+	def_callbacks
 	callback MAPCALLBACK_NEWMAP, Route32FlyPoint
 	callback MAPCALLBACK_OBJECTS, Route32Frieda
 
-	db 5 ; warp events
+	def_warp_events
 	warp_event 11, 73, ROUTE_32_POKECENTER_1F, 1
 	warp_event  4,  2, ROUTE_32_RUINS_OF_ALPH_GATE, 3
 	warp_event  4,  3, ROUTE_32_RUINS_OF_ALPH_GATE, 4
 	warp_event  6, 79, UNION_CAVE_1F, 4
 	warp_event  4, 24, HIDDEN_TREE_GROTTO, 1
 
-	db 6 ; coord events
+	def_coord_events
 	coord_event 18,  8, 0, Route32CooltrainerMStopsYou
 	coord_event 10, 24, 1, Route32LyraIntroducesHiddenGrottoes1
 	coord_event 11, 24, 1, Route32LyraIntroducesHiddenGrottoes2
@@ -20,7 +20,7 @@ Route32_MapScriptHeader:
 	coord_event 13, 24, 1, Route32LyraIntroducesHiddenGrottoes4
 	coord_event  7, 71, 2, Route32WannaBuyASlowpokeTailScript
 
-	db 7 ; bg events
+	def_bg_events
 	bg_event 13,  5, SIGNPOST_JUMPTEXT, Route32SignText
 	bg_event  9,  1, SIGNPOST_JUMPTEXT, Route32RuinsSignText
 	bg_event 10, 84, SIGNPOST_JUMPTEXT, Route32UnionCaveSignText
@@ -29,7 +29,7 @@ Route32_MapScriptHeader:
 	bg_event  4, 23, SIGNPOST_JUMPSTD, treegrotto, HIDDENGROTTO_ROUTE_32
 	bg_event  5, 23, SIGNPOST_JUMPSTD, treegrotto, HIDDENGROTTO_ROUTE_32
 
-	db 17 ; object events
+	def_object_events
 	object_event 19,  8, SPRITE_ACE_TRAINER_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route32CooltrainermPetrieScript, -1
 	object_event  7, 70, SPRITE_FAT_GUY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_PURPLE, PERSONTYPE_SCRIPT, 0, SlowpokeTailSalesmanScript, EVENT_SLOWPOKE_WELL_ROCKETS
 	object_event 12, 67, SPRITE_LASS, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, FriedaScript, EVENT_ROUTE_32_FRIEDA_OF_FRIDAY
@@ -49,7 +49,7 @@ Route32_MapScriptHeader:
 	cuttree_event -1, 29, EVENT_MAGNET_TUNNEL_EAST_CUT_TREE
 	cuttree_event 23, 32, EVENT_CHERRYGROVE_BAY_CUT_TREE
 
-	const_def 1 ; object constants
+	object_const_def
 	const ROUTE32_COOLTRAINER_M
 	const ROUTE32_FISHER4
 	const ROUTE32_FRIEDA

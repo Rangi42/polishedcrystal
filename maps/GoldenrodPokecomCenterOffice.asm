@@ -1,26 +1,26 @@
 GoldenrodPokecomCenterOffice_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event  0,  7, GOLDENROD_POKECOM_CENTER_1F, 3
 	warp_event  1,  7, GOLDENROD_POKECOM_CENTER_1F, 3
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 4 ; bg events
+	def_bg_events
 	bg_event  3,  2, SIGNPOST_JUMPTEXT, RangiComputerText
 	bg_event  6,  2, SIGNPOST_JUMPTEXT, LunaComputerText
 	bg_event  6,  5, SIGNPOST_UP, AizawaComputerScript
 	bg_event  4,  2, SIGNPOST_READ, RangiKeyboardScript
 
-	db 3 ; object events
+	def_object_events
 	object_event  4,  4, SPRITE_SCIENTIST_F, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, PAL_NPC_PURPLE, PERSONTYPE_COMMAND, jumptextfaceplayer, AdminRangiText, -1
 	object_event  7,  3, SPRITE_BATTLE_GIRL, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, AdminLunaText, -1
 	object_event  7,  6, SPRITE_PHARMACIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, AdminAizawaText, -1
 
-	const_def 1 ; object constants
+	object_const_def
 	const GOLDENRODPOKECOMCENTEROFFICE_RANGI
 
 AdminRangiText:

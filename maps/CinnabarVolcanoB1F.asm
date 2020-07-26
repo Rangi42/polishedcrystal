@@ -1,11 +1,11 @@
 CinnabarVolcanoB1F_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 2 ; callbacks
+	def_callbacks
 	callback MAPCALLBACK_TILES, CinnabarVolcanoB1FBouldersLand
 	callback MAPCALLBACK_CMDQUEUE, CinnabarVolcanoB1FBouldersFall
 
-	db 12 ; warp events
+	def_warp_events
 	warp_event  9, 17, CINNABAR_VOLCANO_1F, 2
 	warp_event 19, 25, CINNABAR_VOLCANO_1F, 3
 	warp_event 29, 25, CINNABAR_VOLCANO_1F, 4
@@ -19,13 +19,13 @@ CinnabarVolcanoB1F_MapScriptHeader:
 	warp_event 15, 11, CINNABAR_VOLCANO_1F, 9 ; hole
 	warp_event 20,  8, CINNABAR_VOLCANO_1F, 10
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 2 ; bg events
+	def_bg_events
 	bg_event 28,  5, SIGNPOST_ITEM + MAX_REVIVE, EVENT_CINNABAR_VOLCANO_B1F_HIDDEN_MAX_REVIVE
 	bg_event 28, 18, SIGNPOST_ITEM + DIRE_HIT, EVENT_CINNABAR_VOLCANO_B1F_HIDDEN_DIRE_HIT
 
-	db 6 ; object events
+	def_object_events
 	strengthboulder_event  6,  5, EVENT_BOULDER_IN_CINNABAR_VOLCANO_B1F
 	smashrock_event  8, 28
 	smashrock_event 28, 17
@@ -33,7 +33,7 @@ CinnabarVolcanoB1F_MapScriptHeader:
 	itemball_event  2, 18, FIRE_STONE, 1, EVENT_CINNABAR_VOLCANO_B1F_NUGGET
 	itemball_event  4, 29, NUGGET, 1, EVENT_CINNABAR_VOLCANO_B1F_FIRE_STONE
 
-	const_def 1 ; object constants
+	object_const_def
 	const CINNABARVOLCANOB1F_BOULDER
 
 CinnabarVolcanoB1FBouldersLand:

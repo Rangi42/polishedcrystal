@@ -1,32 +1,32 @@
 MahoganyTown_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 1 ; callbacks
+	def_callbacks
 	callback MAPCALLBACK_NEWMAP, MahoganyTownFlyPoint
 
-	db 5 ; warp events
+	def_warp_events
 	warp_event 11,  7, MAHOGANY_MART_1F, 1
 	warp_event 17,  7, MAHOGANY_RED_GYARADOS_SPEECH_HOUSE, 1
 	warp_event  6, 13, MAHOGANY_GYM, 1
 	warp_event 15, 13, MAHOGANY_POKECENTER_1F, 1
 	warp_event  9,  1, ROUTE_43_MAHOGANY_GATE, 3
 
-	db 2 ; coord events
+	def_coord_events
 	coord_event 19,  8, 0, UnknownScript_0x190013
 	coord_event 19,  9, 0, UnknownScript_0x190013
 
-	db 3 ; bg events
+	def_bg_events
 	bg_event  1,  5, SIGNPOST_JUMPTEXT, MahoganyTownSignText
 	bg_event  9,  7, SIGNPOST_READ, MahoganyTownSouvenirShopSign
 	bg_event  3, 13, SIGNPOST_JUMPTEXT, MahoganyGymSignText
 
-	db 4 ; object events
+	def_object_events
 	object_event 19,  8, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_SCRIPT, 0, PokefanMScript_0x19002e, EVENT_MAHOGANY_TOWN_POKEFAN_M_BLOCKS_EAST
 	object_event  6,  9, SPRITE_GRAMPS, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GrampsScript_0x19007e, -1
 	object_event  6, 14, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x190276, EVENT_MAHOGANY_TOWN_POKEFAN_M_BLOCKS_GYM
 	object_event 12,  8, SPRITE_CUTE_GIRL, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1902f2, EVENT_MAHOGANY_MART_OWNERS
 
-	const_def 1 ; object constants
+	object_const_def
 	const MAHOGANYTOWN_POKEFAN_M
 
 MahoganyTownFlyPoint:
