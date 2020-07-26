@@ -158,6 +158,7 @@ AI_Types:
 ; Encourage super effective moves.
 ; Discourage not very effective moves unless
 ; all damaging moves are of the same type.
+; Overridden by the "Aggressive" AI layer
 	ld hl, wStringBuffer5 - 1
 	ld de, wEnemyMonMoves
 	ld b, NUM_MOVES + 1
@@ -2490,7 +2491,10 @@ AI_Aggressive:
 ; If no damaging move deals damage to the player (immune),
 ; no move will be discouraged
 
-; Figure out which attack does the most damage and put it in c.
+; Also greatly discourages ineffective moves since this overrides the
+; regular type matchup layer
+
+	; Figure out which attack does the most damage and put it in c.
 	ld hl, wEnemyMonMoves
 	ld bc, 0
 	ld de, 0
@@ -2588,6 +2592,20 @@ AI_Aggressive:
 	jr z, .checkmove2
 	cp EFFECT_MIRROR_COAT
 	jr z, .checkmove2
+
+	; This routine overrides the type matchup AI layer, since it's typically
+	; superior to it. As a result, deal with ineffective moves here too which
+	; is discouraged far more than other less damaging moves.
+	push hl
+	push de
+	push bc
+	farcall BattleCheckTypeMatchup
+	pop bc
+	pop de
+	pop hl
+	ld a, [wTypeMatchup]
+	and a
+	jp z, AIDiscourageMove
 
 	; If we made it this far, discourage this move.
 	inc [hl]
