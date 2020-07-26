@@ -2577,33 +2577,20 @@ AI_Aggressive:
 	and a
 	jr z, .checkmove2
 
-; Ignore multihit moves since they may be unfairly discouraged
-	push hl
-	push de
-	push bc
-	ld a, [wEnemyMoveStruct + MOVE_EFFECT]
-	ld hl, .MultiHitMoves
-	ld de, 1
-	call IsInArray
-	pop bc
-	pop de
-	pop hl
-	jr c, .checkmove2
-
 ; If we made it this far, discourage this move.
 	inc [hl]
 	jr .checkmove2
-
-.MultiHitMoves:
-	db EFFECT_MULTI_HIT
-	db EFFECT_DOUBLE_HIT
-	db EFFECT_FURY_STRIKES
-	db $ff
 
 AIDamageCalc:
 	ld a, 1
 	ldh [hBattleTurn], a
 	ld a, [wEnemyMoveStruct + MOVE_EFFECT]
+	cp EFFECT_FURY_STRIKES
+	jr z, .multihit
+	cp EFFECT_MULTI_HIT
+	jr z, .multihit
+	cp EFFECT_DOUBLE_HIT
+	jr z, .doublehit
 	cp EFFECT_GYRO_BALL
 	jr z, .gyro_ball
 	cp EFFECT_HIDDEN_POWER
@@ -2621,6 +2608,33 @@ AIDamageCalc:
 	farcall BattleCommand_constantdamage
 	farjp BattleCommand_resettypematchup
 
+.multihit
+	farcall BattleCommand_damagestats
+	push bc
+	push de
+
+	; Multiply base power by 5 if Skill Link, 3 otherwise
+	call GetTrueUserAbility
+	cp SKILL_LINK
+	ld b, 5
+	jr z, .multihit_boost
+	ld b, 3
+	jr .multihit_boost
+.doublehit
+	; Multiply base power by 2
+	farcall BattleCommand_damagestats
+	push bc
+	push de
+	ld b, 2
+.multihit_boost
+	ld a, [wEnemyMoveStruct + MOVE_POWER]
+	ld c, a
+.multihit_loop
+	dec b
+	jr z, .damagecalc
+	add c
+	ld [wEnemyMoveStruct + MOVE_POWER], a
+	jr .multihit_loop
 .gyro_ball
 	farcall BattleCommand_damagestats
 	farcall BattleCommand_gyroball
