@@ -12,7 +12,7 @@ Special::
 	ld a, b
 	jp FarCall_hl
 
-INCLUDE "data/special_pointers.asm"
+INCLUDE "data/events/special_pointers.asm"
 
 Special_SetPlayerPalette:
 	ldh a, [hScriptVar]
