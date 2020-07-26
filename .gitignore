@@ -12,6 +12,8 @@
 *.2bpp.vram2
 
 # intermediate build products
+gfx/battle/*.1bpp
+gfx/battle/*.2bpp
 gfx/tilesets/*.2bpp
 data/tilesets/*_collision.bin
 
