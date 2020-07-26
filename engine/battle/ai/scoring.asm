@@ -2621,10 +2621,6 @@ AIDamageCalc:
 	farjp BattleCommand_resettypematchup
 
 .multihit
-	farcall BattleCommand_damagestats
-	push bc
-	push de
-
 	; Multiply base power by 5 if Skill Link, 3 otherwise
 	call GetTrueUserAbility
 	cp SKILL_LINK
@@ -2634,9 +2630,6 @@ AIDamageCalc:
 	jr .multihit_boost
 .doublehit
 	; Multiply base power by 2
-	farcall BattleCommand_damagestats
-	push bc
-	push de
 	ld b, 2
 .multihit_boost
 	ld a, [wEnemyMoveStruct + MOVE_POWER]
@@ -2648,8 +2641,7 @@ AIDamageCalc:
 	ld [wEnemyMoveStruct + MOVE_POWER], a
 	jr .multihit_loop
 .multihit_done
-	pop de
-	pop bc
+	farcall BattleCommand_damagestats
 	jr .damagecalc
 .gyro_ball
 	farcall BattleCommand_damagestats
