@@ -2627,6 +2627,8 @@ AIDamageCalc:
 	jr z, .hidden_power
 	cp EFFECT_LOW_KICK
 	jr z, .low_kick
+	cp EFFECT_MAGNITUDE
+	jr z, .magnitude
 	cp EFFECT_RETURN
 	jr z, .return
 	cp EFFECT_REVERSAL
@@ -2634,7 +2636,7 @@ AIDamageCalc:
 	ld de, 1
 	ld hl, .ConstantDamageEffects
 	call IsInArray
-	jr nc, .no_special_damage
+	jr nc, .regular_damage
 	farcall BattleCommand_constantdamage
 	farjp BattleCommand_resettypematchup
 
@@ -2654,13 +2656,10 @@ AIDamageCalc:
 	ld c, a
 .multihit_loop
 	dec b
-	jr z, .multihit_done
+	jr z, .regular_damage ; With proper BP, we can use regular calc now
 	add c
 	ld [wEnemyMoveStruct + MOVE_POWER], a
 	jr .multihit_loop
-.multihit_done
-	farcall BattleCommand_damagestats
-	jr .damagecalc
 .gyro_ball
 	farcall BattleCommand_damagestats
 	farcall BattleCommand_gyroball
@@ -2679,7 +2678,12 @@ AIDamageCalc:
 .reversal
 	farcall BattleCommand_constantdamage
 	jr .stab
-.no_special_damage
+.magnitude
+	; Pretend that the base power is 70
+	ld a, 70
+	ld [wEnemyMoveStruct + MOVE_POWER], a
+	; fallthrough
+.regular_damage
 	farcall BattleCommand_damagestats
 .damagecalc
 	farcall BattleCommand_damagecalc
