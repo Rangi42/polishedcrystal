@@ -17,8 +17,6 @@ RGBASM_FLAGS = -E -Weverything
 RGBLINK_FLAGS = -n $(ROM_NAME).sym -m $(ROM_NAME).map -l contents/contents.link -p $(FILLER)
 RGBFIX_FLAGS = -csjv -t $(TITLE) -i $(MCODE) -n $(ROMVERSION) -p $(FILLER) -k 01 -l 0x33 -m 0x10 -r 3
 
-CFLAGS = -O3 -std=c11 -Wall -Wextra -pedantic
-
 ifeq ($(filter faithful,$(MAKECMDGOALS)),faithful)
 RGBASM_FLAGS += -DFAITHFUL
 endif
@@ -62,8 +60,7 @@ LZ                = tools/lzcomp
 SCAN_INCLUDES     = tools/scan_includes
 SUB_2BPP          = tools/sub_2bpp.sh
 COLLISION_ASM2BIN = tools/collision_asm2bin.sh
-
-BANK_ENDS := utils/bankends
+BANK_ENDS         = tools/bankends
 
 
 crystal_obj := \
@@ -101,15 +98,8 @@ debug: crystal
 
 freespace: $(bank_ends_txt) $(roms_md5) $(copied_sym) $(copied_map) $(copied_gbc)
 
-tools: $(LZ) $(SCAN_INCLUDES)
-
-$(LZ): CFLAGS = -O3 -flto -std=c11 -Wall -Wextra -pedantic -Wno-strict-overflow -Wno-sign-compare
-$(LZ): $(wildcard tools/lz/*.c) $(wildcard tools/lz/*.h)
-	$(CC) $(CFLAGS) -o $@ tools/lz/*.c
-
-$(SCAN_INCLUDES): $(SCAN_INCLUDES).c
-	$(CC) $(CFLAGS) -o $@ $<
-
+tools:
+	$(MAKE) -C tools/
 
 clean:
 	$(RM) $(crystal_obj) $(wildcard $(NAME)-*.gbc) $(wildcard $(NAME)-*.map) $(wildcard $(NAME)-*.sym)
@@ -121,12 +111,6 @@ compare: crystal
 $(bank_ends_txt): ROM_NAME = $(NAME)-$(VERSION)
 $(bank_ends_txt): crystal $(BANK_ENDS)
 	$(BANK_ENDS) $(ROM_NAME).map > $@
-
-$(BANK_ENDS): utils/bankends.c utils/parsemap.o
-	$(CC) $(CFLAGS) $^ -o $@
-
-utils/parsemap.o: utils/parsemap.c utils/parsemap.h
-	cd utils && $(CC) $(CFLAGS) -c parsemap.c
 
 $(roms_md5): crystal ; $(MD5) $(NAME)-$(VERSION).gbc > $@
 $(copied_sym): crystal ; cp $(NAME)-$(VERSION).sym $@
@@ -141,7 +125,7 @@ endef
 
 ifeq (,$(filter clean tools,$(MAKECMDGOALS)))
 
-Makefile: tools
+$(info $(shell $(MAKE) -C tools))
 
 $(foreach obj, $(crystal_obj), $(eval $(call DEP,$(obj),$(obj:.o=.asm))))
 
