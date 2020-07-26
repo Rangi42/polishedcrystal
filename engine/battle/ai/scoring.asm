@@ -847,37 +847,37 @@ AI_Smart_Reflect:
 AI_Smart_Bind:
 ; Wrap, Fire Spin, Whirlpool
 
-; 50% chance to discourage this move if the player is already trapped.
+	; 50% chance to discourage this move if already trapper or can't trap
 	ld a, [wPlayerWrapCount]
 	and a
-	jr nz, .asm_38a8b
+	jr nz, .coinflip_discourage
+	call CheckIfTargetIsGhostType
+	jr z, .coinflip_discourage
 
-; 50% chance to greatly encourage this move if player is either
-; badly poisoned, in love, identified, or stuck in Rollout.
+	; 50% chance to greatly encourage this move if player is either
+	; badly poisoned, in love, identified, or stuck in Rollout, or first turn.
+	; Don't encourage it if we're at low HP.
 	ld a, [wBattleMonStatus]
 	bit TOX, a
-	jr nz, .asm_38a91
+	jr nz, .coinflip_encourage
 
 	ld a, [wPlayerSubStatus1]
 	and 1<<SUBSTATUS_IN_LOVE | 1<<SUBSTATUS_IDENTIFIED
-	jr nz, .asm_38a91
+	jr nz, .coinflip_encourage
 	ld a, [wPlayerSubStatus3]
 	and 1<<SUBSTATUS_ROLLOUT
-	jr nz, .asm_38a91
-
-; Else, 50% chance to greatly encourage this move if it's the player's Pokemon first turn.
+	jr nz, .coinflip_encourage
 	ld a, [wPlayerTurnsTaken]
 	and a
-	jr z, .asm_38a91
+	jr z, .coinflip_encourage
 
-; 50% chance to discourage this move otherwise.
-.asm_38a8b
+.coinflip_discourage
 	call AI_50_50
 	ret c
 	inc [hl]
 	ret
 
-.asm_38a91
+.coinflip_encourage
 	call AICheckEnemyQuarterHP
 	ret nc
 	call AI_50_50
@@ -1379,6 +1379,9 @@ AI_Smart_MeanLook:
 	push hl
 	call AICheckLastPlayerMon
 	pop hl
+	jp z, AIDiscourageMove
+
+	call CheckIfTargetIsGhostType
 	jp z, AIDiscourageMove
 
 ; 80% chance to greatly encourage this move if the player is badly poisoned
