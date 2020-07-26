@@ -2509,9 +2509,20 @@ AI_Aggressive:
 	and a
 	jr z, .nodamage
 	call AIDamageCalc
+
+	; Ignore unusable moves
+	pop bc
+	push bc
+	ld hl, wStringBuffer5 - 1
+	ld c, b
+	ld b, 0
+	add hl, bc
+	ld a, [hl]
+	cp 60
 	pop bc
 	pop de
 	pop hl
+	jr nc, .nodamage
 
 ; Update current move if damage is highest so far
 	ld a, [wCurDamage + 1]
@@ -2608,7 +2619,8 @@ AIDamageCalc:
 	ld hl, .ConstantDamageEffects
 	call IsInArray
 	jr nc, .no_special_damage
-	farjp BattleCommand_constantdamage
+	farcall BattleCommand_constantdamage
+	farjp BattleCommand_resettypematchup
 
 .gyro_ball
 	farcall BattleCommand_damagestats
