@@ -9,8 +9,8 @@
 	dn FEMALE_25, 3 ; gender, step cycles to hatch
 	dn 5, 5 ; frontpic dimensions
 	db SYNCHRONIZE ; ability 1
-	db INNER_FOCUS ; ability 2
-	db MAGIC_GUARD ; hidden ability
+	db MAGIC_GUARD ; ability 2
+	db TRACE ; hidden ability
 	db MEDIUM_SLOW ; growth rate
 	dn HUMANSHAPE, HUMANSHAPE ; egg groups
 
