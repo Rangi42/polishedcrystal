@@ -4543,10 +4543,10 @@ HeracrossEvosAttacks:
 	db 1, HORN_ATTACK
 	db 1, ENDURE
 	db 7, BUG_BITE ; Feint → HGSS tutor move
-	db 10, FURY_STRIKES
+	db 10, FURY_STRIKES ; Aerial Ace → Fury Strikes
 	db 16, LOW_KICK ; Chip Away → HGSS tutor move
 	db 19, COUNTER
-	db 25, AERIAL_ACE ; Fury Attack → similar move
+	db 25, AERIAL_ACE ; Fury Attack → Aerial Ace
 	db 28, SEISMIC_TOSS ; Brick Break → tutor move
 	db 31, PIN_MISSILE
 	db 34, TAKE_DOWN
