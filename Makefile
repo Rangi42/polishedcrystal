@@ -42,7 +42,8 @@ endif
 .SUFFIXES:
 .PHONY: all clean crystal faithful nortc debug monochrome freespace compare tools
 .SECONDEXPANSION:
-.PRECIOUS: %.2bpp %.1bpp %.lz %.o
+.PRECIOUS: %.2bpp %.1bpp
+.SECONDARY:
 
 
 roms_md5      = roms.md5
@@ -100,12 +101,6 @@ debug: crystal
 
 freespace: $(bank_ends_txt) $(roms_md5) $(copied_sym) $(copied_map) $(copied_gbc)
 
-
-# Build tools when building the rom
-ifeq ($(filter clean tools,$(MAKECMDGOALS)),)
-Makefile: tools
-endif
-
 tools: $(LZ) $(SCAN_INCLUDES)
 
 $(LZ): CFLAGS = -O3 -flto -std=c11 -Wall -Wextra -pedantic -Wno-strict-overflow -Wno-sign-compare
@@ -139,9 +134,19 @@ $(copied_map): crystal ; cp $(NAME)-$(VERSION).map $@
 $(copied_gbc): crystal ; cp $(NAME)-$(VERSION).gbc $@
 
 
-%.o: dep = $(shell $(SCAN_INCLUDES) $(@D)/$*.asm)
-%.o: %.asm $$(dep)
-	$(RGBDS_DIR)rgbasm $(RGBASM_FLAGS) -L -o $@ $<
+define DEP
+$1: $2 $$(shell $(SCAN_INCLUDES) $2)
+	$$(RGBDS_DIR)rgbasm $$(RGBASM_FLAGS) -L -o $$@ $$<
+endef
+
+ifeq (,$(filter clean tools,$(MAKECMDGOALS)))
+
+Makefile: tools
+
+$(foreach obj, $(crystal_obj), $(eval $(call DEP,$(obj),$(obj:.o=.asm))))
+
+endif
+
 
 .gbc:
 %.gbc: $(crystal_obj)
@@ -160,16 +165,7 @@ $(copied_gbc): crystal ; cp $(NAME)-$(VERSION).gbc $@
 %.2bpp: %.png ; $(GFX) 2bpp $<
 %.1bpp: %.png ; $(GFX) 1bpp $<
 
-gfx/pokemon/%/bitmask.asm gfx/pokemon/%/frames.asm: gfx/pokemon/%/front.2bpp
-
 data/tilesets/%_collision.bin: data/tilesets/%_collision.asm
 	RGBDS_DIR=$(RGBDS_DIR) $(COLLISION_ASM2BIN) $< $@
 
 %.lz: % ; $(LZ) -- $< $@
-
-%.pal: ; $(error ERROR: Cannot find '$@')
-%.png: ; $(error ERROR: Cannot find '$@')
-%.asm: ; $(error ERROR: Cannot find '$@')
-%.bin: ; $(error ERROR: Cannot find '$@')
-%.ablk: ; $(error ERROR: Cannot find '$@')
-%.tilemap: ; $(error ERROR: Cannot find '$@')
