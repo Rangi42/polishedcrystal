@@ -2577,12 +2577,12 @@ AI_Aggressive:
 	and a
 	jr z, .checkmove2
 
-; Ignore this move if it is reckless.
+; Ignore multihit moves since they may be unfairly discouraged
 	push hl
 	push de
 	push bc
 	ld a, [wEnemyMoveStruct + MOVE_EFFECT]
-	ld hl, .RecklessMoves
+	ld hl, .MultiHitMoves
 	ld de, 1
 	call IsInArray
 	pop bc
@@ -2594,9 +2594,7 @@ AI_Aggressive:
 	inc [hl]
 	jr .checkmove2
 
-.RecklessMoves:
-	db EFFECT_EXPLOSION
-	db EFFECT_RAMPAGE
+.MultiHitMoves:
 	db EFFECT_MULTI_HIT
 	db EFFECT_DOUBLE_HIT
 	db EFFECT_FURY_STRIKES
