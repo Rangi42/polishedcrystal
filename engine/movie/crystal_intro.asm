@@ -335,7 +335,8 @@ endr
 endc
 
 GameFreakLogo:
-INCBIN "gfx/splash/logo.1bpp"
+INCBIN "gfx/splash/logo1.1bpp"
+INCBIN "gfx/splash/logo2.1bpp"
 
 CrystalIntro:
 	ld hl, rIE
