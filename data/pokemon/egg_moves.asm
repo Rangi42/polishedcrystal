@@ -797,6 +797,7 @@ ShuckleEggMoves:
 	db $ff
 
 HeracrossEggMoves:
+	db ROCK_BLAST
 	db DEFENSE_CURL
 	db PURSUIT
 	db $ff

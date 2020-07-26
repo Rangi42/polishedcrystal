@@ -8,9 +8,9 @@
 	db NO_ITEM ; item 2
 	dn FEMALE_50, 4 ; gender, step cycles to hatch
 	dn 6, 6 ; frontpic dimensions
-	db SWARM ; ability 1
+	db MOXIE ; ability 1
 	db GUTS ; ability 2
-	db MOXIE ; hidden ability
+	db SKILL_LINK ; hidden ability
 	db SLOW ; growth rate
 	dn INSECT, INSECT ; egg groups
 
