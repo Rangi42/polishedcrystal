@@ -578,7 +578,7 @@ DummyGame_InterpretJoypad_AnimateCursor:
 	ret
 
 DummyGameGFX:
-INCBIN "gfx/dummy_game/dummy_game.w16.2bpp.lz"
+INCBIN "gfx/dummy_game/dummy_game.2bpp.lz"
 
 MissingDummyGameGFX:
 ; Graphics for an unused Game Corner
