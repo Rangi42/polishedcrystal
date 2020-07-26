@@ -4548,11 +4548,7 @@ HeracrossEvosAttacks:
 	db 19, COUNTER
 	db 25, AERIAL_ACE ; Fury Attack → similar move
 	db 28, SEISMIC_TOSS ; Brick Break → tutor move
-if DEF(FAITHFUL)
 	db 31, PIN_MISSILE
-else
-	db 31, ROCK_SMASH ; Pin Missile → "Brick Break"
-endc
 	db 34, TAKE_DOWN
 	db 37, MEGAHORN
 	db 43, CLOSE_COMBAT
