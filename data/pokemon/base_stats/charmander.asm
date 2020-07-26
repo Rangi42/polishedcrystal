@@ -8,9 +8,7 @@
 	db NO_ITEM ; item 2
 	dn FEMALE_12_5, 3 ; gender, step cycles to hatch
 	dn 5, 5 ; frontpic dimensions
-	db BLAZE ; ability 1
-	db SOLAR_POWER ; ability 2
-	db FLAME_BODY ; hidden ability
+	abilities_for CHARMANDER, BLAZE, SOLAR_POWER, FLAME_BODY
 	db MEDIUM_SLOW ; growth rate
 	dn MONSTER, REPTILE ; egg groups
 

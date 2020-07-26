@@ -17,9 +17,7 @@ endc
 	db NO_ITEM ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
 	dn 6, 6 ; frontpic dimensions
-	db SERENE_GRACE ; ability 1
-	db RUN_AWAY ; ability 2
-	db RATTLED ; hidden ability
+	abilities_for DUNSPARCE, SERENE_GRACE, RUN_AWAY, RATTLED
 	db MEDIUM_FAST ; growth rate
 	dn FIELD, FIELD ; egg groups
 

@@ -8,13 +8,11 @@
 	db NO_ITEM ; item 2
 	dn FEMALE_50, 7 ; gender, step cycles to hatch
 	dn 7, 7 ; frontpic dimensions
-	db SAND_STREAM ; ability 1
 if DEF(FAITHFUL)
-	db SAND_STREAM ; ability 2
+	abilities_for TYRANITAR, SAND_STREAM, SAND_STREAM, UNNERVE
 else
-	db BATTLE_ARMOR ; ability 2
+	abilities_for TYRANITAR, SAND_STREAM, BATTLE_ARMOR, UNNERVE
 endc
-	db UNNERVE ; hidden ability
 	db SLOW ; growth rate
 	dn MONSTER, MONSTER ; egg groups
 

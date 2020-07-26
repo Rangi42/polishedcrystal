@@ -8,9 +8,7 @@
 	db NO_ITEM ; item 2
 	dn ALL_MALE, 3 ; gender, step cycles to hatch
 	dn 7, 7 ; frontpic dimensions
-	db INTIMIDATE ; ability 1
-	db ANGER_POINT ; ability 2
-	db SHEER_FORCE ; hidden ability
+	abilities_for TAUROS, INTIMIDATE, ANGER_POINT, SHEER_FORCE
 	db SLOW ; growth rate
 	dn FIELD, FIELD ; egg groups
 

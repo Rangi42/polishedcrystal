@@ -13,9 +13,7 @@ endc
 	db NEVERMELTICE ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
 	dn 7, 7 ; frontpic dimensions
-	db THICK_FAT ; ability 1
-	db HYDRATION ; ability 2
-	db ICE_BODY ; hidden ability
+	abilities_for DEWGONG, THICK_FAT, HYDRATION, ICE_BODY
 	db MEDIUM_FAST ; growth rate
 	dn AMPHIBIAN, FIELD ; egg groups
 

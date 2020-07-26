@@ -13,9 +13,7 @@ endc
 	db NO_ITEM ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
 	dn 6, 6 ; frontpic dimensions
-	db SYNCHRONIZE ; ability 1
-	db EARLY_BIRD ; ability 2
-	db MAGIC_BOUNCE ; hidden ability
+	abilities_for XATU, SYNCHRONIZE, EARLY_BIRD, MAGIC_BOUNCE
 	db MEDIUM_FAST ; growth rate
 	dn AVIAN, AVIAN ; egg groups
 

@@ -8,9 +8,7 @@
 	db QUICK_CLAW ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
 	dn 7, 7 ; frontpic dimensions
-	db LIMBER ; ability 1
-	db TECHNICIAN ; ability 2
-	db UNNERVE ; hidden ability
+	abilities_for PERSIAN, LIMBER, TECHNICIAN, UNNERVE
 	db MEDIUM_FAST ; growth rate
 	dn FIELD, FIELD ; egg groups
 

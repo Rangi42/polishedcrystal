@@ -8,9 +8,7 @@
 	db LIGHT_BALL ; item 2
 	dn FEMALE_50, 1 ; gender, step cycles to hatch
 	dn 5, 5 ; frontpic dimensions
-	db STATIC ; ability 1
-	db STATIC ; ability 2
-	db LIGHTNING_ROD ; hidden ability
+	abilities_for PICHU, STATIC, STATIC, LIGHTNING_ROD
 	db MEDIUM_FAST ; growth rate
 	dn NO_EGGS, NO_EGGS ; egg groups
 

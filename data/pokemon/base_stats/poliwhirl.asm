@@ -8,9 +8,7 @@
 	db KINGS_ROCK ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
 	dn 6, 6 ; frontpic dimensions
-	db WATER_ABSORB ; ability 1
-	db DAMP ; ability 2
-	db SWIFT_SWIM ; hidden ability
+	abilities_for POLIWHIRL, WATER_ABSORB, DAMP, SWIFT_SWIM
 	db MEDIUM_SLOW ; growth rate
 	dn AMPHIBIAN, AMPHIBIAN ; egg groups
 

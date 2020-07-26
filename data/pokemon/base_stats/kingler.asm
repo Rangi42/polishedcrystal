@@ -8,9 +8,7 @@
 	db NO_ITEM ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
 	dn 7, 7 ; frontpic dimensions
-	db HYPER_CUTTER ; ability 1
-	db SHELL_ARMOR ; ability 2
-	db SHEER_FORCE ; hidden ability
+	abilities_for KINGLER, HYPER_CUTTER, SHELL_ARMOR, SHEER_FORCE
 	db MEDIUM_FAST ; growth rate
 	dn INVERTEBRATE, INVERTEBRATE ; egg groups
 

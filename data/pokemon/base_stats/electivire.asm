@@ -17,9 +17,7 @@ endc
 	db ELECTIRIZER ; item 2
 	dn FEMALE_25, 4 ; gender, step cycles to hatch
 	dn 7, 7 ; frontpic dimensions
-	db MOTOR_DRIVE ; ability 1
-	db MOTOR_DRIVE ; ability 2
-	db VITAL_SPIRIT ; hidden ability
+	abilities_for ELECTIVIRE, MOTOR_DRIVE, MOTOR_DRIVE, VITAL_SPIRIT
 	db MEDIUM_FAST ; growth rate
 	dn HUMANSHAPE, HUMANSHAPE ; egg groups
 

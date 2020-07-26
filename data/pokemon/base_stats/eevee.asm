@@ -8,9 +8,7 @@
 	db NO_ITEM ; item 2
 	dn FEMALE_12_5, 6 ; gender, step cycles to hatch
 	dn 5, 5 ; frontpic dimensions
-	db RUN_AWAY ; ability 1
-	db ADAPTABILITY ; ability 2
-	db ANTICIPATION ; hidden ability
+	abilities_for EEVEE, RUN_AWAY, ADAPTABILITY, ANTICIPATION
 	db MEDIUM_FAST ; growth rate
 	dn FIELD, FIELD ; egg groups
 

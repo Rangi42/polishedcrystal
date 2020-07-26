@@ -8,9 +8,7 @@
 	db TWISTEDSPOON ; item 2
 	dn FEMALE_25, 3 ; gender, step cycles to hatch
 	dn 6, 6 ; frontpic dimensions
-	db SYNCHRONIZE ; ability 1
-	db MAGIC_GUARD ; ability 2
-	db TRACE ; hidden ability
+	abilities_for KADABRA, SYNCHRONIZE, MAGIC_GUARD, TRACE
 	db MEDIUM_SLOW ; growth rate
 	dn HUMANSHAPE, HUMANSHAPE ; egg groups
 

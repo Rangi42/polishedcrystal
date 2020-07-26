@@ -8,9 +8,7 @@
 	db NO_ITEM ; item 2
 	dn FEMALE_12_5, 3 ; gender, step cycles to hatch
 	dn 5, 5 ; frontpic dimensions
-	db TORRENT ; ability 1
-	db RAIN_DISH ; ability 2
-	db SHELL_ARMOR ; hidden ability
+	abilities_for SQUIRTLE, TORRENT, RAIN_DISH, SHELL_ARMOR
 	db MEDIUM_SLOW ; growth rate
 	dn MONSTER, AMPHIBIAN ; egg groups
 

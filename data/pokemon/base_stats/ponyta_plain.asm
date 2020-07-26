@@ -8,9 +8,7 @@
 	db MARANGABERRY ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
 	dn 6, 6 ; frontpic dimensions
-	db RUN_AWAY ; ability 1
-	db FLASH_FIRE ; ability 2
-	db FLAME_BODY ; hidden ability
+	abilities_for PONYTA, RUN_AWAY, FLASH_FIRE, FLAME_BODY
 	db MEDIUM_FAST ; growth rate
 	dn FIELD, FIELD ; egg groups
 

@@ -8,9 +8,7 @@
 	db NO_ITEM ; item 2
 	dn FEMALE_12_5, 5 ; gender, step cycles to hatch
 	dn 6, 6 ; frontpic dimensions
-	db SWIFT_SWIM ; ability 1
-	db SHELL_ARMOR ; ability 2
-	db WEAK_ARMOR ; hidden ability
+	abilities_for OMASTAR, SWIFT_SWIM, SHELL_ARMOR, WEAK_ARMOR
 	db MEDIUM_FAST ; growth rate
 	dn AMPHIBIAN, INVERTEBRATE ; egg groups
 

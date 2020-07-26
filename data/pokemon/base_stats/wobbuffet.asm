@@ -8,9 +8,7 @@
 	db NO_ITEM ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
 	dn 6, 6 ; frontpic dimensions
-	db SHADOW_TAG ; ability 1
-	db SHADOW_TAG ; ability 2
-	db SHADOW_TAG ; hidden ability
+	abilities_for WOBBUFFET, SHADOW_TAG, SHADOW_TAG, SHADOW_TAG
 	db MEDIUM_FAST ; growth rate
 	dn AMORPHOUS, AMORPHOUS ; egg groups
 

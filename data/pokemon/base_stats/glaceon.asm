@@ -8,13 +8,11 @@
 	db NO_ITEM ; item 2
 	dn FEMALE_12_5, 6 ; gender, step cycles to hatch
 	dn 7, 7 ; frontpic dimensions
-	db SNOW_CLOAK ; ability 1
 if DEF(FAITHFUL)
-	db SNOW_CLOAK ; ability 2
+	abilities_for GLACEON, SNOW_CLOAK, SNOW_CLOAK, ICE_BODY
 else
-	db SNOW_WARNING ; ability 2
+	abilities_for GLACEON, SNOW_CLOAK, SNOW_WARNING, ICE_BODY
 endc
-	db ICE_BODY ; hidden ability
 	db MEDIUM_FAST ; growth rate
 	dn FIELD, FIELD ; egg groups
 

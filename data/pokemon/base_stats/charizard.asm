@@ -17,12 +17,10 @@ endc
 	db NO_ITEM ; item 2
 	dn FEMALE_12_5, 3 ; gender, step cycles to hatch
 	dn 7, 7 ; frontpic dimensions
-	db BLAZE ; ability 1
-	db SOLAR_POWER ; ability 2
 if DEF(FAITHFUL)
-	db DROUGHT ; hidden ability
+	abilities_for CHARIZARD, BLAZE, SOLAR_POWER, DROUGHT
 else
-	db TOUGH_CLAWS ; hidden ability
+	abilities_for CHARIZARD, BLAZE, SOLAR_POWER, TOUGH_CLAWS
 endc
 	db MEDIUM_SLOW ; growth rate
 	dn MONSTER, REPTILE ; egg groups

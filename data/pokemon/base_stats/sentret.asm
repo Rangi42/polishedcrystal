@@ -8,9 +8,7 @@
 	db ORAN_BERRY ; item 2
 	dn FEMALE_50, 2 ; gender, step cycles to hatch
 	dn 6, 6 ; frontpic dimensions
-	db RUN_AWAY ; ability 1
-	db KEEN_EYE ; ability 2
-	db FRISK ; hidden ability
+	abilities_for SENTRET, RUN_AWAY, KEEN_EYE, FRISK
 	db MEDIUM_FAST ; growth rate
 	dn FIELD, FIELD ; egg groups
 

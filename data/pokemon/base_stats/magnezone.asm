@@ -8,13 +8,11 @@
 	db METAL_COAT ; item 2
 	dn GENDERLESS, 3 ; gender, step cycles to hatch
 	dn 7, 7 ; frontpic dimensions
-	db MAGNET_PULL ; ability 1
 if DEF(FAITHFUL)
-	db STURDY ; ability 2
+	abilities_for MAGNEZONE, MAGNET_PULL, STURDY, ANALYTIC
 else
-	db LEVITATE ; ability 2
+	abilities_for MAGNEZONE, MAGNET_PULL, LEVITATE, ANALYTIC
 endc
-	db ANALYTIC ; hidden ability
 	db MEDIUM_FAST ; growth rate
 	dn INANIMATE, INANIMATE ; egg groups
 

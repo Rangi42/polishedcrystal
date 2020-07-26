@@ -8,9 +8,7 @@
 	db EVERSTONE ; item 2
 	dn FEMALE_50, 2 ; gender, step cycles to hatch
 	dn 6, 6 ; frontpic dimensions
-	db ROCK_HEAD ; ability 1
-	db STURDY ; ability 2
-	db SAND_VEIL ; hidden ability
+	abilities_for GRAVELER, ROCK_HEAD, STURDY, SAND_VEIL
 	db MEDIUM_SLOW ; growth rate
 	dn INANIMATE, INANIMATE ; egg groups
 

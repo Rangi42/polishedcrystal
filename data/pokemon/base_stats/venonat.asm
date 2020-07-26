@@ -8,9 +8,7 @@
 	db NO_ITEM ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
 	dn 5, 5 ; frontpic dimensions
-	db COMPOUND_EYES ; ability 1
-	db TINTED_LENS ; ability 2
-	db RUN_AWAY ; hidden ability
+	abilities_for VENONAT, COMPOUND_EYES, TINTED_LENS, RUN_AWAY
 	db MEDIUM_FAST ; growth rate
 	dn INSECT, INSECT ; egg groups
 

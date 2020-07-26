@@ -8,9 +8,7 @@
 	db STAR_PIECE ; item 2
 	dn GENDERLESS, 3 ; gender, step cycles to hatch
 	dn 6, 6 ; frontpic dimensions
-	db ILLUMINATE ; ability 1
-	db NATURAL_CURE ; ability 2
-	db ANALYTIC ; hidden ability
+	abilities_for STARYU, ILLUMINATE, NATURAL_CURE, ANALYTIC
 	db SLOW ; growth rate
 	dn INVERTEBRATE, INVERTEBRATE ; egg groups
 

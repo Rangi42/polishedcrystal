@@ -13,9 +13,7 @@ endc
 	db SILVERPOWDER ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
 	dn 7, 7 ; frontpic dimensions
-	db SHIELD_DUST ; ability 1
-	db TINTED_LENS ; ability 2
-	db WONDER_SKIN ; hidden ability
+	abilities_for VENOMOTH, SHIELD_DUST, TINTED_LENS, WONDER_SKIN
 	db MEDIUM_FAST ; growth rate
 	dn INSECT, INSECT ; egg groups
 

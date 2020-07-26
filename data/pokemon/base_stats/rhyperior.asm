@@ -18,13 +18,10 @@ endc
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
 	dn 7, 7 ; frontpic dimensions
 if DEF(FAITHFUL)
-	db LIGHTNING_ROD ; ability 1
-	db SOLID_ROCK ; ability 2
+	abilities_for RHYPERIOR, LIGHTNING_ROD, SOLID_ROCK, RECKLESS
 else
-	db ROCK_HEAD ; ability 1
-	db SOLID_ROCK ; ability 2
+	abilities_for RHYPERIOR, ROCK_HEAD, SOLID_ROCK, RECKLESS
 endc
-	db RECKLESS ; hidden ability
 	db SLOW ; growth rate
 	dn MONSTER, FIELD ; egg groups
 

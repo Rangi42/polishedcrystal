@@ -8,9 +8,7 @@
 	db NO_ITEM ; item 2
 	dn FEMALE_50, 4 ; gender, step cycles to hatch
 	dn 7, 7 ; frontpic dimensions
-	db SWIFT_SWIM ; ability 1
-	db WATER_ABSORB ; ability 2
-	db WATER_VEIL ; hidden ability
+	abilities_for MANTINE, SWIFT_SWIM, WATER_ABSORB, WATER_VEIL
 	db SLOW ; growth rate
 	dn AMPHIBIAN, AMPHIBIAN ; egg groups
 

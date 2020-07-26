@@ -8,9 +8,7 @@
 	db GOLD_LEAF ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
 	dn 6, 6 ; frontpic dimensions
-	db CHLOROPHYLL ; ability 1
-	db CHLOROPHYLL ; ability 2
-	db GLUTTONY ; hidden ability
+	abilities_for WEEPINBELL, CHLOROPHYLL, CHLOROPHYLL, GLUTTONY
 	db MEDIUM_SLOW ; growth rate
 	dn PLANT, PLANT ; egg groups
 

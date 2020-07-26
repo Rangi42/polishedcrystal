@@ -13,9 +13,7 @@ endc
 	db PERSIM_BERRY ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
 	dn 7, 7 ; frontpic dimensions
-	db INNER_FOCUS ; ability 1
-	db EARLY_BIRD ; ability 2
-	db SAP_SIPPER ; hidden ability
+	abilities_for GIRAFARIG, INNER_FOCUS, EARLY_BIRD, SAP_SIPPER
 	db MEDIUM_FAST ; growth rate
 	dn FIELD, FIELD ; egg groups
 

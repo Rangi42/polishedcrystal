@@ -8,9 +8,7 @@
 	db NO_ITEM ; item 2
 	dn FEMALE_75, 3 ; gender, step cycles to hatch
 	dn 6, 6 ; frontpic dimensions
-	db INTIMIDATE ; ability 1
-	db RUN_AWAY ; ability 2
-	db RATTLED ; hidden ability
+	abilities_for SNUBBULL, INTIMIDATE, RUN_AWAY, RATTLED
 	db FAST ; growth rate
 	dn FIELD, FAERY ; egg groups
 

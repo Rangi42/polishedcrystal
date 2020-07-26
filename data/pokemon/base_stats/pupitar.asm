@@ -8,12 +8,10 @@
 	db NO_ITEM ; item 2
 	dn FEMALE_50, 7 ; gender, step cycles to hatch
 	dn 6, 6 ; frontpic dimensions
-	db SHED_SKIN ; ability 1
-	db SHED_SKIN ; ability 2
 if DEF(FAITHFUL)
-	db SHED_SKIN ; hidden ability
+	abilities_for PUPITAR, SHED_SKIN, SHED_SKIN, SHED_SKIN
 else
-	db BATTLE_ARMOR ; hidden ability
+	abilities_for PUPITAR, SHED_SKIN, SHED_SKIN, BATTLE_ARMOR
 endc
 	db SLOW ; growth rate
 	dn MONSTER, MONSTER ; egg groups

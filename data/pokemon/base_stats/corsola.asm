@@ -17,9 +17,7 @@ endc
 	db LUMINOUSMOSS ; item 2
 	dn FEMALE_75, 3 ; gender, step cycles to hatch
 	dn 6, 6 ; frontpic dimensions
-	db HUSTLE ; ability 1
-	db NATURAL_CURE ; ability 2
-	db REGENERATOR ; hidden ability
+	abilities_for CORSOLA, HUSTLE, NATURAL_CURE, REGENERATOR
 	db FAST ; growth rate
 	dn AMPHIBIAN, INVERTEBRATE ; egg groups
 

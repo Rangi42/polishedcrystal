@@ -8,9 +8,7 @@
 	db NUGGET ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
 	dn 5, 5 ; frontpic dimensions
-	db STENCH ; ability 1
-	db STICKY_HOLD ; ability 2
-	db POISON_TOUCH ; hidden ability
+	abilities_for GRIMER, STENCH, STICKY_HOLD, POISON_TOUCH
 	db MEDIUM_FAST ; growth rate
 	dn AMORPHOUS, AMORPHOUS ; egg groups
 

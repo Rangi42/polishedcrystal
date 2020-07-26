@@ -13,9 +13,7 @@ endc
 	db ELECTIRIZER ; item 2
 	dn FEMALE_25, 4 ; gender, step cycles to hatch
 	dn 6, 6 ; frontpic dimensions
-	db STATIC ; ability 1
-	db STATIC ; ability 2
-	db VITAL_SPIRIT ; hidden ability
+	abilities_for ELEKID, STATIC, STATIC, VITAL_SPIRIT
 	db MEDIUM_FAST ; growth rate
 	dn NO_EGGS, NO_EGGS ; egg groups
 

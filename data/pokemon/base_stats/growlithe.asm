@@ -8,9 +8,7 @@
 	db ASPEAR_BERRY ; item 2
 	dn FEMALE_25, 3 ; gender, step cycles to hatch
 	dn 5, 5 ; frontpic dimensions
-	db INTIMIDATE ; ability 1
-	db FLASH_FIRE ; ability 2
-	db JUSTIFIED ; hidden ability
+	abilities_for GROWLITHE, INTIMIDATE, FLASH_FIRE, JUSTIFIED
 	db SLOW ; growth rate
 	dn FIELD, FIELD ; egg groups
 

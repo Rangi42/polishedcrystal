@@ -8,9 +8,7 @@
 	db NO_ITEM ; item 2
 	dn FEMALE_50, 4 ; gender, step cycles to hatch
 	dn 7, 7 ; frontpic dimensions
-	db SWARM ; ability 1
-	db TECHNICIAN ; ability 2
-	db STEADFAST ; hidden ability
+	abilities_for SCYTHER, SWARM, TECHNICIAN, STEADFAST
 	db MEDIUM_FAST ; growth rate
 	dn INSECT, INSECT ; egg groups
 

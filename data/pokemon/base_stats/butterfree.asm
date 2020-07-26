@@ -22,13 +22,11 @@ endc
 	db SILVERPOWDER ; item 2
 	dn FEMALE_50, 2 ; gender, step cycles to hatch
 	dn 7, 7 ; frontpic dimensions
-	db COMPOUND_EYES ; ability 1
 if DEF(FAITHFUL)
-	db COMPOUND_EYES ; ability 2
+	abilities_for BUTTERFREE, COMPOUND_EYES, COMPOUND_EYES, TINTED_LENS
 else
-	db LEVITATE ; ability 2
+	abilities_for BUTTERFREE, COMPOUND_EYES, LEVITATE, TINTED_LENS
 endc
-	db TINTED_LENS ; hidden ability
 	db MEDIUM_FAST ; growth rate
 	dn INSECT, INSECT ; egg groups
 

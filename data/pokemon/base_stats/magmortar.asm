@@ -17,9 +17,7 @@ endc
 	db MAGMARIZER ; item 2
 	dn FEMALE_25, 4 ; gender, step cycles to hatch
 	dn 7, 7 ; frontpic dimensions
-	db FLAME_BODY ; ability 1
-	db FLAME_BODY ; ability 2
-	db VITAL_SPIRIT ; hidden ability
+	abilities_for MAGMORTAR, FLAME_BODY, FLAME_BODY, VITAL_SPIRIT
 	db MEDIUM_FAST ; growth rate
 	dn HUMANSHAPE, HUMANSHAPE ; egg groups
 

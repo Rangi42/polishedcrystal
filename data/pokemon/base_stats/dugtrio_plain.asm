@@ -8,9 +8,7 @@
 	db SOFT_SAND ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
 	dn 7, 7 ; frontpic dimensions
-	db SAND_VEIL ; ability 1
-	db ARENA_TRAP ; ability 2
-	db SAND_FORCE ; hidden ability
+	abilities_for DUGTRIO, SAND_VEIL, ARENA_TRAP, SAND_FORCE
 	db MEDIUM_FAST ; growth rate
 	dn FIELD, FIELD ; egg groups
 

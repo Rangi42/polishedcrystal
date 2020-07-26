@@ -8,9 +8,7 @@
 	db DRAGON_SCALE ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
 	dn 7, 7 ; frontpic dimensions
-	db SWIFT_SWIM ; ability 1
-	db SNIPER ; ability 2
-	db DAMP ; hidden ability
+	abilities_for KINGDRA, SWIFT_SWIM, SNIPER, DAMP
 	db MEDIUM_FAST ; growth rate
 	dn AMPHIBIAN, REPTILE ; egg groups
 

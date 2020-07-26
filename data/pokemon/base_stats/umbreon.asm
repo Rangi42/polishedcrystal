@@ -8,13 +8,11 @@
 	db NO_ITEM ; item 2
 	dn FEMALE_12_5, 6 ; gender, step cycles to hatch
 	dn 6, 6 ; frontpic dimensions
-	db SYNCHRONIZE ; ability 1
 if DEF(FAITHFUL)
-	db SYNCHRONIZE ; ability 2
+	abilities_for UMBREON, SYNCHRONIZE, SYNCHRONIZE, INNER_FOCUS
 else
-	db MAGIC_GUARD ; ability 2
+	abilities_for UMBREON, SYNCHRONIZE, MAGIC_GUARD, INNER_FOCUS
 endc
-	db INNER_FOCUS ; hidden ability
 	db MEDIUM_FAST ; growth rate
 	dn FIELD, FIELD ; egg groups
 

@@ -17,9 +17,7 @@ endc
 	db NO_ITEM ; item 2
 	dn FEMALE_50, 2 ; gender, step cycles to hatch
 	dn 7, 7 ; frontpic dimensions
-	db KEEN_EYE ; ability 1
-	db TANGLED_FEET ; ability 2
-	db NO_GUARD ; hidden ability
+	abilities_for PIDGEOT, KEEN_EYE, TANGLED_FEET, NO_GUARD
 	db MEDIUM_SLOW ; growth rate
 	dn AVIAN, AVIAN ; egg groups
 

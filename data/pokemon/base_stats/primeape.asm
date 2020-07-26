@@ -8,9 +8,7 @@
 	db KEE_BERRY ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
 	dn 7, 7 ; frontpic dimensions
-	db VITAL_SPIRIT ; ability 1
-	db ANGER_POINT ; ability 2
-	db DEFIANT ; hidden ability
+	abilities_for PRIMEAPE, VITAL_SPIRIT, ANGER_POINT, DEFIANT
 	db MEDIUM_FAST ; growth rate
 	dn FIELD, FIELD ; egg groups
 

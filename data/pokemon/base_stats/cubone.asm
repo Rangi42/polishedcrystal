@@ -9,13 +9,10 @@
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
 	dn 5, 5 ; frontpic dimensions
 if DEF(FAITHFUL)
-	db ROCK_HEAD ; ability 1
-	db LIGHTNING_ROD ; ability 2
+	abilities_for CUBONE, ROCK_HEAD, LIGHTNING_ROD, BATTLE_ARMOR
 else
-	db ROCK_HEAD ; ability 1
-	db CURSED_BODY ; ability 2
+	abilities_for CUBONE, ROCK_HEAD, CURSED_BODY, BATTLE_ARMOR
 endc
-	db BATTLE_ARMOR ; hidden ability
 	db MEDIUM_FAST ; growth rate
 	dn MONSTER, MONSTER ; egg groups
 
