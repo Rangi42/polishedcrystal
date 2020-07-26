@@ -2643,10 +2643,14 @@ AIDamageCalc:
 	ld c, a
 .multihit_loop
 	dec b
-	jr z, .damagecalc
+	jr z, .multihit_done
 	add c
 	ld [wEnemyMoveStruct + MOVE_POWER], a
 	jr .multihit_loop
+.multihit_done
+	pop de
+	pop bc
+	jr .damagecalc
 .gyro_ball
 	farcall BattleCommand_damagestats
 	farcall BattleCommand_gyroball
