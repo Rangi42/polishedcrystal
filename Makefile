@@ -149,6 +149,9 @@ gfx/mail/large_note.1bpp: tools/gfx += --remove-whitespace
 gfx/mail/litebluemail_border.1bpp: tools/gfx += --remove-whitespace
 gfx/mail/surf_mail_border.1bpp: tools/gfx += --remove-whitespace
 
+gfx/music_player/music_player.2bpp: tools/gfx += --trim-whitespace
+gfx/music_player/note_lines.2bpp: tools/gfx += --interleave --png=$<
+
 gfx/pack/pack_top_left.2bpp: gfx/pack/pack_top.2bpp gfx/pack/pack_left.2bpp ; cat $^ > $@
 
 gfx/pokegear/pokegear.2bpp: tools/gfx += --trim-whitespace
