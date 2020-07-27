@@ -14,8 +14,9 @@
 *.2bpp.vram1
 *.2bpp.vram2
 data/tilesets/*_collision.bin
+
+# to do: store PNGs for front pics
 !gfx/pokemon/*/front.2bpp
-!gfx/pokemon/*/back.2bpp
 
 # local tools
 deploy.sh
