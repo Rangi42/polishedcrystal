@@ -33,6 +33,8 @@ gfx/items/*.2bpp
 gfx/mail/*.1bpp
 gfx/music_player/*.2bpp
 gfx/naming_screen/*.2bpp
+gfx/new_game/*.1bpp
+gfx/new_game/*.2bpp
 gfx/overworld/*.2bpp
 gfx/pack/*.2bpp
 gfx/pc/*.2bpp

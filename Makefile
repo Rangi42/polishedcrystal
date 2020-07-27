@@ -152,6 +152,9 @@ gfx/mail/surf_mail_border.1bpp: tools/gfx += --remove-whitespace
 gfx/music_player/music_player.2bpp: tools/gfx += --trim-whitespace
 gfx/music_player/note_lines.2bpp: tools/gfx += --interleave --png=$<
 
+gfx/new_game/shrink1.2bpp: rgbgfx += -h
+gfx/new_game/shrink2.2bpp: rgbgfx += -h
+
 gfx/overworld/chris_fish.2bpp: tools/gfx += --trim-whitespace
 gfx/overworld/kris_fish.2bpp: tools/gfx += --trim-whitespace
 
