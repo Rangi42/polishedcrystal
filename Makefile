@@ -123,7 +123,12 @@ endif
 	$(RGBDS_DIR)rgbfix $(RGBFIX_FLAGS) $@
 
 
+gfx/card_flip/card_flip_1.2bpp: tools/gfx += --trim-whitespace
+gfx/card_flip/card_flip_2.2bpp: tools/gfx += --remove-whitespace
+
 gfx/pack/pack_top_left.2bpp: gfx/pack/pack_top.2bpp gfx/pack/pack_left.2bpp ; cat $^ > $@
+
+gfx/trainers/%.2bpp: rgbgfx += -h
 
 gfx/type_chart/bg.2bpp: tools/gfx += --remove-duplicates --remove-xflip --remove-yflip
 gfx/type_chart/bg0.2bpp: gfx/type_chart/bg.2bpp.vram1 gfx/type_chart/bg.2bpp.vram0 ; cat $^ > $@
