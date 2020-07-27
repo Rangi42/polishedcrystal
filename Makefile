@@ -157,6 +157,9 @@ gfx/pack/pack_top_left.2bpp: gfx/pack/pack_top.2bpp gfx/pack/pack_left.2bpp ; ca
 gfx/pokegear/pokegear.2bpp: tools/gfx += --trim-whitespace
 gfx/pokegear/pokegear_sprites.2bpp: tools/gfx += --trim-whitespace
 
+gfx/trainer_card/chris_card.2bpp: rgbgfx += -h
+gfx/trainer_card/kris_card.2bpp: rgbgfx += -h
+
 gfx/trainers/%.2bpp: rgbgfx += -h
 
 gfx/type_chart/bg.2bpp: tools/gfx += --remove-duplicates --remove-xflip --remove-yflip
