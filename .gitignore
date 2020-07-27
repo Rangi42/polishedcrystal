@@ -50,6 +50,7 @@ gfx/sprites/*.2bpp
 gfx/stats/*.2bpp
 gfx/tilesets/*.2bpp
 gfx/tilesets/*/*.2bpp
+gfx/title/*.2bpp
 gfx/town_map/*.2bpp
 gfx/trade/*.2bpp
 gfx/trainer_card/*.2bpp
