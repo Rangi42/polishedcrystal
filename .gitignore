@@ -43,6 +43,7 @@ gfx/player/*.2bpp
 gfx/pokedex/*.2bpp
 gfx/pokegear/*.2bpp
 gfx/sgb/*.2bpp
+gfx/slots/*.2bpp
 gfx/splash/*.1bpp
 gfx/splash/*.2bpp
 gfx/sprites/*.2bpp
