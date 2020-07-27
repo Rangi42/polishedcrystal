@@ -126,11 +126,11 @@ TilesetPortAnim::
 	dw NULL,  DoneTileAnimation
 
 TilesetGym1Anim::
-	dw NULL,  SafariFountainAnim2
+	dw NULL,  LavaBubbleAnim2
 	dw NULL,  DoNothing
 	dw NULL,  DoNothing
 	dw NULL,  DoNothing
-	dw NULL,  SafariFountainAnim1
+	dw NULL,  LavaBubbleAnim1
 	dw NULL,  DoNothing
 	dw NULL,  StandingTileFrame8
 	dw NULL,  DoneTileAnimation
@@ -155,16 +155,16 @@ TilesetKanto2Anim::
 	dw NULL,  DoneTileAnimation
 
 TilesetTowerAnim::
-	dw SproutPillarTilePointer9,  AnimateSproutPillarTile
-	dw SproutPillarTilePointer10, AnimateSproutPillarTile
-	dw SproutPillarTilePointer7,  AnimateSproutPillarTile
-	dw SproutPillarTilePointer8,  AnimateSproutPillarTile
-	dw SproutPillarTilePointer5,  AnimateSproutPillarTile
-	dw SproutPillarTilePointer6,  AnimateSproutPillarTile
-	dw SproutPillarTilePointer3,  AnimateSproutPillarTile
-	dw SproutPillarTilePointer4,  AnimateSproutPillarTile
-	dw SproutPillarTilePointer1,  AnimateSproutPillarTile
-	dw SproutPillarTilePointer2,  AnimateSproutPillarTile
+	dw TowerPillarTilePointer9,  AnimateTowerPillarTile
+	dw TowerPillarTilePointer10, AnimateTowerPillarTile
+	dw TowerPillarTilePointer7,  AnimateTowerPillarTile
+	dw TowerPillarTilePointer8,  AnimateTowerPillarTile
+	dw TowerPillarTilePointer5,  AnimateTowerPillarTile
+	dw TowerPillarTilePointer6,  AnimateTowerPillarTile
+	dw TowerPillarTilePointer3,  AnimateTowerPillarTile
+	dw TowerPillarTilePointer4,  AnimateTowerPillarTile
+	dw TowerPillarTilePointer1,  AnimateTowerPillarTile
+	dw TowerPillarTilePointer2,  AnimateTowerPillarTile
 	dw NULL,  StandingTileFrame
 	dw NULL,  DoNothing
 	dw NULL,  DoNothing
@@ -174,9 +174,9 @@ TilesetTowerAnim::
 
 TilesetCaveAnim::
 TilesetQuietCaveAnim::
-	dw NULL,  SafariFountainAnim4
+	dw NULL,  LavaBubbleAnim4
 	dw NULL,  DoNothing
-	dw NULL,  SafariFountainAnim3
+	dw NULL,  LavaBubbleAnim3
 	dw NULL,  DoNothing
 	dw NULL,  StandingTileFrame8
 	dw vTiles2 tile $25, WriteTileToBuffer
@@ -971,7 +971,7 @@ KantoFlowerTileFrames:
 	INCBIN "gfx/tilesets/kanto-flower/3.2bpp"
 	INCBIN "gfx/tilesets/kanto-flower/1.2bpp"
 
-SafariFountainAnim1:
+LavaBubbleAnim1:
 ; Splash in the bottom-right corner of the fountain.
 	ld hl, sp+$0
 	ld b, h
@@ -985,13 +985,13 @@ SafariFountainAnim1:
 	swap a
 	ld e, a
 	ld d, 0
-	ld hl, SafariFountainFrames
+	ld hl, LavaBubbleFrames
 	add hl, de
 	ld sp, hl
 	ld hl, vTiles2 tile $5b
 	jp WriteTile
 
-SafariFountainAnim2:
+LavaBubbleAnim2:
 ; Splash in the top-left corner of the fountain.
 	ld hl, sp+$0
 	ld b, h
@@ -1003,13 +1003,13 @@ SafariFountainAnim2:
 	add a
 	ld e, a
 	ld d, 0
-	ld hl, SafariFountainFrames
+	ld hl, LavaBubbleFrames
 	add hl, de
 	ld sp, hl
 	ld hl, vTiles2 tile $38
 	jp WriteTile
 
-SafariFountainAnim3:
+LavaBubbleAnim3:
 ; Splash in the bottom-right corner of the fountain.
 	ld hl, sp+$0
 	ld b, h
@@ -1023,13 +1023,13 @@ SafariFountainAnim3:
 	swap a
 	ld e, a
 	ld d, 0
-	ld hl, SafariFountainFrames
+	ld hl, LavaBubbleFrames
 	add hl, de
 	ld sp, hl
 	ld hl, vTiles2 tile $3d
 	jp WriteTile
 
-SafariFountainAnim4:
+LavaBubbleAnim4:
 ; Splash in the top-left corner of the fountain.
 	ld hl, sp+$0
 	ld b, h
@@ -1041,19 +1041,19 @@ SafariFountainAnim4:
 	add a
 	ld e, a
 	ld d, 0
-	ld hl, SafariFountainFrames
+	ld hl, LavaBubbleFrames
 	add hl, de
 	ld sp, hl
 	ld hl, vTiles2 tile $3c
 	jp WriteTile
 
-SafariFountainFrames:
-	INCBIN "gfx/tilesets/safari/1.2bpp"
-	INCBIN "gfx/tilesets/safari/2.2bpp"
-	INCBIN "gfx/tilesets/safari/3.2bpp"
-	INCBIN "gfx/tilesets/safari/4.2bpp"
+LavaBubbleFrames:
+	INCBIN "gfx/tilesets/lava/1.2bpp"
+	INCBIN "gfx/tilesets/lava/2.2bpp"
+	INCBIN "gfx/tilesets/lava/3.2bpp"
+	INCBIN "gfx/tilesets/lava/4.2bpp"
 
-AnimateSproutPillarTile:
+AnimateTowerPillarTile:
 ; Read from struct at de:
 ; 	Destination (VRAM)
 ;	Address of the first tile in the frame array
@@ -1274,27 +1274,27 @@ FlickeringCaveEntrancePalette:
 	ldh [rSVBK], a
 	ret
 
-SproutPillarTilePointer1:  dw vTiles2 tile $2d, SproutPillarTile1
-SproutPillarTilePointer2:  dw vTiles2 tile $2f, SproutPillarTile2
-SproutPillarTilePointer3:  dw vTiles2 tile $3d, SproutPillarTile3
-SproutPillarTilePointer4:  dw vTiles2 tile $3f, SproutPillarTile4
-SproutPillarTilePointer5:  dw vTiles2 tile $3c, SproutPillarTile5
-SproutPillarTilePointer6:  dw vTiles2 tile $2c, SproutPillarTile6
-SproutPillarTilePointer7:  dw vTiles2 tile $4d, SproutPillarTile7
-SproutPillarTilePointer8:  dw vTiles2 tile $4f, SproutPillarTile8
-SproutPillarTilePointer9:  dw vTiles2 tile $5d, SproutPillarTile9
-SproutPillarTilePointer10: dw vTiles2 tile $5f, SproutPillarTile10
+TowerPillarTilePointer1:  dw vTiles2 tile $2d, TowerPillarTile1
+TowerPillarTilePointer2:  dw vTiles2 tile $2f, TowerPillarTile2
+TowerPillarTilePointer3:  dw vTiles2 tile $3d, TowerPillarTile3
+TowerPillarTilePointer4:  dw vTiles2 tile $3f, TowerPillarTile4
+TowerPillarTilePointer5:  dw vTiles2 tile $3c, TowerPillarTile5
+TowerPillarTilePointer6:  dw vTiles2 tile $2c, TowerPillarTile6
+TowerPillarTilePointer7:  dw vTiles2 tile $4d, TowerPillarTile7
+TowerPillarTilePointer8:  dw vTiles2 tile $4f, TowerPillarTile8
+TowerPillarTilePointer9:  dw vTiles2 tile $5d, TowerPillarTile9
+TowerPillarTilePointer10: dw vTiles2 tile $5f, TowerPillarTile10
 
-SproutPillarTile1:  INCBIN "gfx/tilesets/sprout-pillar/1.2bpp"
-SproutPillarTile2:  INCBIN "gfx/tilesets/sprout-pillar/2.2bpp"
-SproutPillarTile3:  INCBIN "gfx/tilesets/sprout-pillar/3.2bpp"
-SproutPillarTile4:  INCBIN "gfx/tilesets/sprout-pillar/4.2bpp"
-SproutPillarTile5:  INCBIN "gfx/tilesets/sprout-pillar/5.2bpp"
-SproutPillarTile6:  INCBIN "gfx/tilesets/sprout-pillar/6.2bpp"
-SproutPillarTile7:  INCBIN "gfx/tilesets/sprout-pillar/7.2bpp"
-SproutPillarTile8:  INCBIN "gfx/tilesets/sprout-pillar/8.2bpp"
-SproutPillarTile9:  INCBIN "gfx/tilesets/sprout-pillar/9.2bpp"
-SproutPillarTile10: INCBIN "gfx/tilesets/sprout-pillar/10.2bpp"
+TowerPillarTile1:  INCBIN "gfx/tilesets/tower-pillar/1.2bpp"
+TowerPillarTile2:  INCBIN "gfx/tilesets/tower-pillar/2.2bpp"
+TowerPillarTile3:  INCBIN "gfx/tilesets/tower-pillar/3.2bpp"
+TowerPillarTile4:  INCBIN "gfx/tilesets/tower-pillar/4.2bpp"
+TowerPillarTile5:  INCBIN "gfx/tilesets/tower-pillar/5.2bpp"
+TowerPillarTile6:  INCBIN "gfx/tilesets/tower-pillar/6.2bpp"
+TowerPillarTile7:  INCBIN "gfx/tilesets/tower-pillar/7.2bpp"
+TowerPillarTile8:  INCBIN "gfx/tilesets/tower-pillar/8.2bpp"
+TowerPillarTile9:  INCBIN "gfx/tilesets/tower-pillar/9.2bpp"
+TowerPillarTile10: INCBIN "gfx/tilesets/tower-pillar/10.2bpp"
 
 WhirlpoolFrames1: dw vTiles2 tile $32, WhirlpoolTiles1
 WhirlpoolFrames2: dw vTiles2 tile $33, WhirlpoolTiles2

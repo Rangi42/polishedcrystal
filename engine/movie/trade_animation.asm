@@ -1299,24 +1299,13 @@ TradeAnim_WaitAnim2:
 	dec [hl]
 	ret
 
-TradeGameBoyTilemap:
-; 6x8
-	db $31, $32, $32, $32, $32, $33
-	db $34, $35, $36, $36, $37, $38
-	db $34, $39, $3a, $3a, $3b, $38
-	db $3c, $3d, $3e, $3e, $3f, $40
-	db $41, $42, $43, $43, $44, $45
-	db $46, $47, $43, $48, $49, $4a
-	db $41, $43, $4b, $4c, $4d, $4e
-	db $4f, $50, $50, $50, $51, $52
+TradeGameBoyTilemap: ; 6x8
+INCBIN "gfx/trade/game_boy.tilemap"
 
-TradeLinkTubeTilemap:
-; 12x3
-	db $43, $55, $56, $53, $53, $53, $53, $53, $53, $53, $53, $53
-	db $43, $57, $58, $54, $54, $54, $54, $54, $54, $54, $54, $54
-	db $43, $59, $5a, $43, $43, $43, $43, $43, $43, $43, $43, $43
+TradeLinkTubeTilemap: ; 12x3
+INCBIN "gfx/trade/link_cable.tilemap"
 
 TradeArrowGFX: INCBIN "gfx/trade/arrow.2bpp"
 TradeBallPoofCableGFX:  INCBIN "gfx/trade/ball_poof_cable.2bpp.lz"
 TradeBubbleGFX: INCBIN "gfx/trade/bubble.2bpp"
-TradeGameBoyLZ: INCBIN "gfx/trade/game_boy.2bpp.lz"
+TradeGameBoyLZ: INCBIN "gfx/trade/game_boy_cable.2bpp.lz"

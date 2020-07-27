@@ -30,6 +30,8 @@ gfx/frames/*.2bpp
 gfx/icons/*.2bpp
 gfx/intro/*.2bpp
 gfx/items/*.2bpp
+gfx/mail/*.1bpp
+gfx/music_player/*.2bpp
 gfx/naming_screen/*.2bpp
 gfx/pack/*.2bpp
 gfx/pc/*.2bpp
@@ -38,7 +40,10 @@ gfx/sgb/*.2bpp
 gfx/splash/*.1bpp
 gfx/splash/*.2bpp
 gfx/tilesets/*.2bpp
+gfx/tilesets/*/*.2bpp
 gfx/town_map/*.2bpp
+gfx/trade/*.2bpp
+gfx/trainer_card/*.2bpp
 gfx/trainers/*.2bpp
 gfx/type_chart/*.2bpp
 gfx/unown_puzzle/*.2bpp
