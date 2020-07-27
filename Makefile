@@ -143,6 +143,12 @@ gfx/battle_anims/status.2bpp: tools/gfx += --remove-whitespace
 gfx/card_flip/card_flip_1.2bpp: tools/gfx += --trim-whitespace
 gfx/card_flip/card_flip_2.2bpp: tools/gfx += --remove-whitespace
 
+gfx/mail/dragonite.1bpp: tools/gfx += --remove-whitespace
+gfx/mail/flower_mail_border.1bpp: tools/gfx += --remove-whitespace
+gfx/mail/large_note.1bpp: tools/gfx += --remove-whitespace
+gfx/mail/litebluemail_border.1bpp: tools/gfx += --remove-whitespace
+gfx/mail/surf_mail_border.1bpp: tools/gfx += --remove-whitespace
+
 gfx/pack/pack_top_left.2bpp: gfx/pack/pack_top.2bpp gfx/pack/pack_left.2bpp ; cat $^ > $@
 
 gfx/pokegear/pokegear.2bpp: tools/gfx += --trim-whitespace
