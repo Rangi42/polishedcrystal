@@ -17,9 +17,7 @@ endc
 	db LIGHT_BALL ; item 2
 	dn FEMALE_50, 1 ; gender, step cycles to hatch
 	dn 7, 7 ; frontpic dimensions
-	db STATIC ; ability 1
-	db STATIC ; ability 2
-	db LIGHTNING_ROD ; hidden ability
+	abilities_for PIKACHU, STATIC, STATIC, LIGHTNING_ROD
 	db MEDIUM_FAST ; growth rate
 	dn FIELD, FAERY ; egg groups
 

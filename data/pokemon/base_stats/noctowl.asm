@@ -18,9 +18,7 @@ endc
 	db NO_ITEM ; item 2
 	dn FEMALE_50, 2 ; gender, step cycles to hatch
 	dn 7, 7 ; frontpic dimensions
-	db INSOMNIA ; ability 1
-	db KEEN_EYE ; ability 2
-	db TINTED_LENS ; hidden ability
+	abilities_for NOCTOWL, INSOMNIA, KEEN_EYE, TINTED_LENS
 	db MEDIUM_FAST ; growth rate
 	dn AVIAN, AVIAN ; egg groups
 

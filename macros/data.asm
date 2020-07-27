@@ -110,6 +110,24 @@ rept _NARG
 endr
 ENDM
 
+abilities_for: MACRO
+; usage: PKMN, ABIL1, ABIL2, ABILHIDDEN
+; Defines abilities for base data of given mon and also adds PKMN_ABIL*
+; which can be used to refer to the personality bits for the given ability.
+; PKMN does not need to refer to a pkm constant -- see altforms.
+	; define the abilities in the base data
+	db \2
+	db \3
+	db \4
+\1_\2 EQU ABILITY_1
+if \2 != \3 ; can't define a constant twice
+\1_\3 EQU ABILITY_2
+endc
+if \2 != \4
+\1_\4 EQU HIDDEN_ABILITY
+endc
+_\1_ EQU \1
+ENDM
 
 genders: MACRO
 ; eight arguments, all MALE or FEMALE

@@ -8,9 +8,7 @@
 	db NO_ITEM ; item 2
 	dn GENDERLESS, 7 ; gender, step cycles to hatch
 	dn 5, 5 ; frontpic dimensions
-	db LEVITATE ; ability 1
-	db LEVITATE ; ability 2
-	db LEVITATE ; hidden ability
+	abilities_for UNOWN, LEVITATE, LEVITATE, LEVITATE
 	db MEDIUM_FAST ; growth rate
 	dn NO_EGGS, NO_EGGS ; egg groups
 

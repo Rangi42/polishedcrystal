@@ -8,9 +8,7 @@
 	db MOON_STONE ; item 2
 	dn FEMALE_75, 1 ; gender, step cycles to hatch
 	dn 6, 6 ; frontpic dimensions
-	db CUTE_CHARM ; ability 1
-	db MAGIC_GUARD ; ability 2
-	db UNAWARE ; hidden ability
+	abilities_for CLEFABLE, CUTE_CHARM, MAGIC_GUARD, UNAWARE
 	db FAST ; growth rate
 	dn FAERY, FAERY ; egg groups
 

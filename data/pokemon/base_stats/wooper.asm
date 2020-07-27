@@ -8,9 +8,7 @@
 	db CHESTO_BERRY ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
 	dn 5, 5 ; frontpic dimensions
-	db DAMP ; ability 1
-	db WATER_ABSORB ; ability 2
-	db UNAWARE ; hidden ability
+	abilities_for WOOPER, DAMP, WATER_ABSORB, UNAWARE
 	db MEDIUM_FAST ; growth rate
 	dn AMPHIBIAN, FIELD ; egg groups
 

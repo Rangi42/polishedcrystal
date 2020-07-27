@@ -8,9 +8,7 @@
 	db SHARP_BEAK ; item 2
 	dn FEMALE_50, 4 ; gender, step cycles to hatch
 	dn 7, 7 ; frontpic dimensions
-	db KEEN_EYE ; ability 1
-	db STURDY ; ability 2
-	db WEAK_ARMOR ; hidden ability
+	abilities_for SKARMORY, KEEN_EYE, STURDY, WEAK_ARMOR
 	db SLOW ; growth rate
 	dn AVIAN, AVIAN ; egg groups
 

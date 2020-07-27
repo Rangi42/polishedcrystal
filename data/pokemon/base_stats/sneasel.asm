@@ -8,9 +8,7 @@
 	db RAZOR_CLAW ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
 	dn 6, 6 ; frontpic dimensions
-	db INNER_FOCUS ; ability 1
-	db KEEN_EYE ; ability 2
-	db PICKPOCKET ; hidden ability
+	abilities_for SNEASEL, INNER_FOCUS, KEEN_EYE, PICKPOCKET
 	db MEDIUM_SLOW ; growth rate
 	dn FIELD, FIELD ; egg groups
 

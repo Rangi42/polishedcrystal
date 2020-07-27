@@ -8,9 +8,7 @@
 	db MOOMOO_MILK ; item 2
 	dn ALL_FEMALE, 3 ; gender, step cycles to hatch
 	dn 6, 6 ; frontpic dimensions
-	db THICK_FAT ; ability 1
-	db SCRAPPY ; ability 2
-	db SAP_SIPPER ; hidden ability
+	abilities_for MILTANK, THICK_FAT, SCRAPPY, SAP_SIPPER
 	db SLOW ; growth rate
 	dn FIELD, FIELD ; egg groups
 

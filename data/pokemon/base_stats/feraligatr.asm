@@ -12,13 +12,11 @@ endc
 	db NO_ITEM ; item 2
 	dn FEMALE_12_5, 3 ; gender, step cycles to hatch
 	dn 7, 7 ; frontpic dimensions
-	db TORRENT ; ability 1
 if DEF(FAITHFUL)
-	db TORRENT ; ability 2
+	abilities_for FERALIGATR, TORRENT, TORRENT, SHEER_FORCE
 else
-	db INTIMIDATE ; ability 2
+	abilities_for FERALIGATR, TORRENT, INTIMIDATE, SHEER_FORCE
 endc
-	db SHEER_FORCE ; hidden ability
 	db MEDIUM_SLOW ; growth rate
 	dn MONSTER, AMPHIBIAN ; egg groups
 

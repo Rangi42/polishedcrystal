@@ -12,12 +12,10 @@ endc
 	db LUM_BERRY ; item 2
 	dn GENDERLESS, 15 ; gender, step cycles to hatch
 	dn 5 , 5 ; frontpic dimensions
-	db NATURAL_CURE ; ability 1
-	db NATURAL_CURE ; ability 2
 if DEF(FAITHFUL)
-	db NATURAL_CURE ; hidden ability
+	abilities_for CELEBI, NATURAL_CURE, NATURAL_CURE, NATURAL_CURE
 else
-	db MAGIC_GUARD ; hidden ability
+	abilities_for CELEBI, NATURAL_CURE, NATURAL_CURE, MAGIC_GUARD
 endc
 	db MEDIUM_SLOW ; growth rate
 	dn NO_EGGS, NO_EGGS ; egg groups

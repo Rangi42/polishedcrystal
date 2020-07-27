@@ -8,14 +8,7 @@
 	db NO_ITEM ; item 2
 	dn FEMALE_12_5, 6 ; gender, step cycles to hatch
 	dn 7, 7 ; frontpic dimensions
-	db ROCK_HEAD ; ability 1
-if DEF(FAITHFUL)
-	db PRESSURE ; ability 2
-	db UNNERVE ; hidden ability
-else
-	db UNNERVE ; ability 2
-	db TOUGH_CLAWS ; hidden ability
-endc
+	abilities_for AERODACTYL, ROCK_HEAD, UNNERVE, TOUGH_CLAWS
 	db SLOW ; growth rate
 	dn AVIAN, AVIAN ; egg groups
 

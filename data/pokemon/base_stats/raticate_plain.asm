@@ -13,9 +13,7 @@ endc
 	db LANSAT_BERRY ; item 2
 	dn FEMALE_50, 2 ; gender, step cycles to hatch
 	dn 6, 6 ; frontpic dimensions
-	db RUN_AWAY ; ability 1
-	db GUTS ; ability 2
-	db HUSTLE ; hidden ability
+	abilities_for RATICATE, RUN_AWAY, GUTS, HUSTLE
 	db MEDIUM_FAST ; growth rate
 	dn FIELD, FIELD ; egg groups
 

@@ -8,9 +8,7 @@
 	db NO_ITEM ; item 2
 	dn ALL_MALE, 4 ; gender, step cycles to hatch
 	dn 7, 7 ; frontpic dimensions
-	db INTIMIDATE ; ability 1
-	db TECHNICIAN ; ability 2
-	db STEADFAST ; hidden ability
+	abilities_for HITMONTOP, INTIMIDATE, TECHNICIAN, STEADFAST
 	db MEDIUM_FAST ; growth rate
 	dn HUMANSHAPE, HUMANSHAPE ; egg groups
 

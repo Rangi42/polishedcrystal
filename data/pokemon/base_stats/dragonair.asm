@@ -8,9 +8,7 @@
 	db DRAGON_SCALE ; item 2
 	dn FEMALE_50, 7 ; gender, step cycles to hatch
 	dn 6, 6 ; frontpic dimensions
-	db SHED_SKIN ; ability 1
-	db SHED_SKIN ; ability 2
-	db MARVEL_SCALE ; hidden ability
+	abilities_for DRAGONAIR, SHED_SKIN, SHED_SKIN, MARVEL_SCALE
 	db SLOW ; growth rate
 	dn AMPHIBIAN, REPTILE ; egg groups
 

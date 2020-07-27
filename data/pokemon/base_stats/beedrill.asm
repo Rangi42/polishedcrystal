@@ -17,9 +17,7 @@ endc
 	db POISON_BARB ; item 2
 	dn FEMALE_50, 2 ; gender, step cycles to hatch
 	dn 7, 7 ; frontpic dimensions
-	db SWARM ; ability 1
-	db SNIPER ; ability 2
-	db ADAPTABILITY ; hidden ability
+	abilities_for BEEDRILL, SWARM, SNIPER, ADAPTABILITY
 	db MEDIUM_FAST ; growth rate
 	dn INSECT, INSECT ; egg groups
 

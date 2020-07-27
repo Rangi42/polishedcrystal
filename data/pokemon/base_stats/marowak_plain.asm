@@ -17,9 +17,7 @@ endc
 	db THICK_CLUB ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
 	dn 6, 6 ; frontpic dimensions
-	db ROCK_HEAD ; ability 1
-	db LIGHTNING_ROD ; ability 2
-	db BATTLE_ARMOR ; hidden ability
+	abilities_for MAROWAK, ROCK_HEAD, LIGHTNING_ROD, BATTLE_ARMOR
 	db MEDIUM_FAST ; growth rate
 	dn MONSTER, MONSTER ; egg groups
 

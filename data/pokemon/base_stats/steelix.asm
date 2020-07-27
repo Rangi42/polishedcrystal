@@ -13,9 +13,7 @@ endc
 	db METAL_COAT ; item 2
 	dn FEMALE_50, 4 ; gender, step cycles to hatch
 	dn 7, 7 ; frontpic dimensions
-	db SHEER_FORCE ; ability 1
-	db STURDY ; ability 2
-	db SAND_FORCE ; hidden ability
+	abilities_for STEELIX, SHEER_FORCE, STURDY, SAND_FORCE
 	db MEDIUM_FAST ; growth rate
 	dn INANIMATE, INANIMATE ; egg groups
 

@@ -12,9 +12,7 @@ endc
 	db NO_ITEM ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
 	dn 7, 7 ; frontpic dimensions
-	db DAMP ; ability 1
-	db CLOUD_NINE ; ability 2
-	db SWIFT_SWIM ; hidden ability
+	abilities_for GOLDUCK, DAMP, CLOUD_NINE, SWIFT_SWIM
 	db MEDIUM_FAST ; growth rate
 	dn AMPHIBIAN, FIELD ; egg groups
 

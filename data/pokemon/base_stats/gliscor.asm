@@ -8,9 +8,7 @@
 	db NO_ITEM ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
 	dn 7, 7 ; frontpic dimensions
-	db HYPER_CUTTER ; ability 1
-	db SAND_VEIL ; ability 2
-	db POISON_HEAL ; hidden ability
+	abilities_for GLISCOR, HYPER_CUTTER, SAND_VEIL, POISON_HEAL
 	db MEDIUM_SLOW ; growth rate
 	dn INSECT, INSECT ; egg groups
 

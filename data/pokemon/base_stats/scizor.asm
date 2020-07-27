@@ -8,9 +8,7 @@
 	db METAL_COAT ; item 2
 	dn FEMALE_50, 4 ; gender, step cycles to hatch
 	dn 7, 7 ; frontpic dimensions
-	db SWARM ; ability 1
-	db TECHNICIAN ; ability 2
-	db LIGHT_METAL ; hidden ability
+	abilities_for SCIZOR, SWARM, TECHNICIAN, LIGHT_METAL
 	db MEDIUM_FAST ; growth rate
 	dn INSECT, INSECT ; egg groups
 

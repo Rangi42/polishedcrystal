@@ -8,9 +8,7 @@
 	db BIG_PEARL ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
 	dn 5, 5 ; frontpic dimensions
-	db SHELL_ARMOR ; ability 1
-	db SKILL_LINK ; ability 2
-	db OVERCOAT ; hidden ability
+	abilities_for SHELLDER, SHELL_ARMOR, SKILL_LINK, OVERCOAT
 	db SLOW ; growth rate
 	dn INVERTEBRATE, INVERTEBRATE ; egg groups
 

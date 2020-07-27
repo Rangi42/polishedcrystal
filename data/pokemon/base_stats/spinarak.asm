@@ -8,9 +8,7 @@
 	db NO_ITEM ; item 2
 	dn FEMALE_50, 2 ; gender, step cycles to hatch
 	dn 5, 5 ; frontpic dimensions
-	db SWARM ; ability 1
-	db INSOMNIA ; ability 2
-	db SNIPER ; hidden ability
+	abilities_for SPINARAK, SWARM, INSOMNIA, SNIPER
 	db FAST ; growth rate
 	dn INSECT, INSECT ; egg groups
 

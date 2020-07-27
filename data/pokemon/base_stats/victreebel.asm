@@ -17,9 +17,7 @@ endc
 	db BIG_ROOT ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
 	dn 7, 7 ; frontpic dimensions
-	db CHLOROPHYLL ; ability 1
-	db CHLOROPHYLL ; ability 2
-	db GLUTTONY ; hidden ability
+	abilities_for VICTREEBEL, CHLOROPHYLL, CHLOROPHYLL, GLUTTONY
 	db MEDIUM_SLOW ; growth rate
 	dn PLANT, PLANT ; egg groups
 

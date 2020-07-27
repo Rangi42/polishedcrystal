@@ -8,9 +8,7 @@
 	db LEFTOVERS ; item 2
 	dn FEMALE_12_5, 7 ; gender, step cycles to hatch
 	dn 6, 6 ; frontpic dimensions
-	db PICKUP ; ability 1
-	db THICK_FAT ; ability 2
-	db GLUTTONY ; hidden ability
+	abilities_for MUNCHLAX, PICKUP, THICK_FAT, GLUTTONY
 	db SLOW ; growth rate
 	dn NO_EGGS, NO_EGGS ; egg groups
 

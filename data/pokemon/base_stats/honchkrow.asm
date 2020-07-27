@@ -13,9 +13,7 @@ endc
 	db NO_ITEM ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
 	dn 7, 7 ; frontpic dimensions
-	db INSOMNIA ; ability 1
-	db SUPER_LUCK ; ability 2
-	db MOXIE ; hidden ability
+	abilities_for HONCHKROW, INSOMNIA, SUPER_LUCK, MOXIE
 	db MEDIUM_SLOW ; growth rate
 	dn AVIAN, AVIAN ; egg groups
 

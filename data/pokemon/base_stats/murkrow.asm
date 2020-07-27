@@ -8,9 +8,7 @@
 	db NO_ITEM ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
 	dn 6, 6 ; frontpic dimensions
-	db INSOMNIA ; ability 1
-	db SUPER_LUCK ; ability 2
-	db PRANKSTER ; hidden ability
+	abilities_for MURKROW, INSOMNIA, SUPER_LUCK, PRANKSTER
 	db MEDIUM_SLOW ; growth rate
 	dn AVIAN, AVIAN ; egg groups
 

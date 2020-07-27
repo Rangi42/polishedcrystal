@@ -8,13 +8,11 @@
 	db LUM_BERRY ; item 2
 	dn GENDERLESS, 15 ; gender, step cycles to hatch
 	dn 7, 7 ; frontpic dimensions
-	db PRESSURE ; ability 1
 if DEF(FAITHFUL)
-	db PRESSURE ; ability 2
+	abilities_for ZAPDOS, PRESSURE, PRESSURE, STATIC
 else
-	db DRIZZLE ; ability 2
+	abilities_for ZAPDOS, PRESSURE, DRIZZLE, STATIC
 endc
-	db STATIC ; hidden ability
 	db SLOW ; growth rate
 	dn NO_EGGS, NO_EGGS ; egg groups
 

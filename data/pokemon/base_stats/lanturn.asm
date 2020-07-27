@@ -13,9 +13,7 @@ endc
 	db BRIGHTPOWDER ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
 	dn 6, 6 ; frontpic dimensions
-	db VOLT_ABSORB ; ability 1
-	db ILLUMINATE ; ability 2
-	db WATER_ABSORB ; hidden ability
+	abilities_for LANTURN, VOLT_ABSORB, ILLUMINATE, WATER_ABSORB
 	db SLOW ; growth rate
 	dn FISH, FISH ; egg groups
 

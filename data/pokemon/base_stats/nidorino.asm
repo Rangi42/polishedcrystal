@@ -8,9 +8,7 @@
 	db NO_ITEM ; item 2
 	dn ALL_MALE, 3 ; gender, step cycles to hatch
 	dn 6, 6 ; frontpic dimensions
-	db POISON_POINT ; ability 1
-	db RIVALRY ; ability 2
-	db HUSTLE ; hidden ability
+	abilities_for NIDORINO, POISON_POINT, RIVALRY, HUSTLE
 	db MEDIUM_SLOW ; growth rate
 	dn MONSTER, FIELD ; egg groups
 

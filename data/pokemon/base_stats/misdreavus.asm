@@ -8,9 +8,7 @@
 	db SPELL_TAG ; item 2
 	dn FEMALE_50, 4 ; gender, step cycles to hatch
 	dn 6, 6 ; frontpic dimensions
-	db LEVITATE ; ability 1
-	db LEVITATE ; ability 2
-	db LEVITATE ; hidden ability
+	abilities_for MISDREAVUS, LEVITATE, LEVITATE, LEVITATE
 	db FAST ; growth rate
 	dn AMORPHOUS, AMORPHOUS ; egg groups
 

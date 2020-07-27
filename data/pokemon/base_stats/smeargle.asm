@@ -13,9 +13,7 @@ endc
 	db NO_ITEM ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
 	dn 7, 7 ; frontpic dimensions
-	db OWN_TEMPO ; ability 1
-	db TECHNICIAN ; ability 2
-	db MOODY ; hidden ability
+	abilities_for SMEARGLE, OWN_TEMPO, TECHNICIAN, MOODY
 	db FAST ; growth rate
 	dn FIELD, FIELD ; egg groups
 

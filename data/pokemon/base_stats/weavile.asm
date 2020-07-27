@@ -8,13 +8,11 @@
 	db QUICK_CLAW ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
 	dn 7, 7 ; frontpic dimensions
-	db PRESSURE ; ability 1
 if DEF(FAITHFUL)
-	db PRESSURE ; ability 2
+	abilities_for WEAVILE, PRESSURE, PRESSURE, PICKPOCKET
 else
-	db TECHNICIAN ; ability 2
+	abilities_for WEAVILE, PRESSURE, TECHNICIAN, PICKPOCKET
 endc
-	db PICKPOCKET ; hidden ability
 	db MEDIUM_SLOW ; growth rate
 	dn FIELD, FIELD ; egg groups
 

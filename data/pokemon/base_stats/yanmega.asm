@@ -12,12 +12,10 @@ endc
 	db WIDE_LENS ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
 	dn 7, 7 ; frontpic dimensions
-	db SPEED_BOOST ; ability 1
-	db TINTED_LENS ; ability 2
 if DEF(FAITHFUL)
-	db FRISK ; hidden ability
+	abilities_for YANMEGA, SPEED_BOOST, TINTED_LENS, FRISK
 else
-	db LEVITATE ; hidden ability
+	abilities_for YANMEGA, SPEED_BOOST, TINTED_LENS, LEVITATE
 endc
 	db MEDIUM_FAST ; growth rate
 	dn INSECT, INSECT ; egg groups

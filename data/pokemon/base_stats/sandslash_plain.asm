@@ -8,9 +8,7 @@
 	db QUICK_CLAW ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
 	dn 6, 6 ; frontpic dimensions
-	db SAND_VEIL ; ability 1
-	db SAND_VEIL ; ability 2
-	db SAND_RUSH ; hidden ability
+	abilities_for SANDSLASH, SAND_VEIL, SAND_VEIL, SAND_RUSH
 	db MEDIUM_FAST ; growth rate
 	dn FIELD, FIELD ; egg groups
 

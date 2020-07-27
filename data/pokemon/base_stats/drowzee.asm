@@ -8,9 +8,7 @@
 	db NO_ITEM ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
 	dn 6, 6 ; frontpic dimensions
-	db INSOMNIA ; ability 1
-	db FOREWARN ; ability 2
-	db INNER_FOCUS ; hidden ability
+	abilities_for DROWZEE, INSOMNIA, FOREWARN, INNER_FOCUS
 	db MEDIUM_FAST ; growth rate
 	dn HUMANSHAPE, HUMANSHAPE ; egg groups
 

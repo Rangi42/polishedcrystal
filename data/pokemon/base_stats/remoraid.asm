@@ -8,9 +8,7 @@
 	db NO_ITEM ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
 	dn 5, 5 ; frontpic dimensions
-	db HUSTLE ; ability 1
-	db SNIPER ; ability 2
-	db MOODY ; hidden ability
+	abilities_for REMORAID, HUSTLE, SNIPER, MOODY
 	db MEDIUM_FAST ; growth rate
 	dn AMPHIBIAN, FISH ; egg groups
 

@@ -8,9 +8,7 @@
 	db DRAGON_SCALE ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
 	dn 6, 6 ; frontpic dimensions
-	db POISON_POINT ; ability 1
-	db SNIPER ; ability 2
-	db DAMP ; hidden ability
+	abilities_for SEADRA, POISON_POINT, SNIPER, DAMP
 	db MEDIUM_FAST ; growth rate
 	dn AMPHIBIAN, REPTILE ; egg groups
 

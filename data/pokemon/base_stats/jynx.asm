@@ -13,13 +13,11 @@ endc
 	db RAWST_BERRY ; item 2
 	dn ALL_FEMALE, 4 ; gender, step cycles to hatch
 	dn 6, 6 ; frontpic dimensions
-	db OBLIVIOUS ; ability 1
 if DEF(FAITHFUL)
-	db FOREWARN ; ability 2
+	abilities_for JYNX, OBLIVIOUS, FOREWARN, DRY_SKIN
 else
-	db FILTER ; ability 2
+	abilities_for JYNX, OBLIVIOUS, FILTER, DRY_SKIN
 endc
-	db DRY_SKIN ; hidden ability
 	db MEDIUM_FAST ; growth rate
 	dn HUMANSHAPE, HUMANSHAPE ; egg groups
 

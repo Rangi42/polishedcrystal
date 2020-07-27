@@ -8,9 +8,7 @@
 	db MYSTIC_WATER ; item 2
 	dn FEMALE_50, 7 ; gender, step cycles to hatch
 	dn 7, 7 ; frontpic dimensions
-	db WATER_ABSORB ; ability 1
-	db SHELL_ARMOR ; ability 2
-	db HYDRATION ; hidden ability
+	abilities_for LAPRAS, WATER_ABSORB, SHELL_ARMOR, HYDRATION
 	db SLOW ; growth rate
 	dn MONSTER, AMPHIBIAN ; egg groups
 

@@ -8,9 +8,7 @@
 	db NO_ITEM ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
 	dn 6, 6 ; frontpic dimensions
-	db CHLOROPHYLL ; ability 1
-	db LEAF_GUARD ; ability 2
-	db REGENERATOR ; hidden ability
+	abilities_for TANGELA, CHLOROPHYLL, LEAF_GUARD, REGENERATOR
 	db MEDIUM_FAST ; growth rate
 	dn PLANT, PLANT ; egg groups
 

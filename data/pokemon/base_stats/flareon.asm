@@ -8,13 +8,11 @@
 	db NO_ITEM ; item 2
 	dn FEMALE_12_5, 6 ; gender, step cycles to hatch
 	dn 6, 6 ; frontpic dimensions
-	db FLASH_FIRE ; ability 1
 if DEF(FAITHFUL)
-	db FLASH_FIRE ; ability 2
+	abilities_for FLAREON, FLASH_FIRE, FLASH_FIRE, GUTS
 else
-	db DROUGHT ; ability 2
+	abilities_for FLAREON, FLASH_FIRE, DROUGHT, GUTS
 endc
-	db GUTS ; hidden ability
 	db MEDIUM_FAST ; growth rate
 	dn FIELD, FIELD ; egg groups
 

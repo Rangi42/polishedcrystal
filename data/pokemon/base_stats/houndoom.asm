@@ -8,9 +8,7 @@
 	db NO_ITEM ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
 	dn 7, 7 ; frontpic dimensions
-	db EARLY_BIRD ; ability 1
-	db FLASH_FIRE ; ability 2
-	db SOLAR_POWER ; hidden ability
+	abilities_for HOUNDOOM, EARLY_BIRD, FLASH_FIRE, SOLAR_POWER
 	db SLOW ; growth rate
 	dn FIELD, FIELD ; egg groups
 

@@ -8,9 +8,7 @@
 	db KEE_BERRY ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
 	dn 5, 5 ; frontpic dimensions
-	db PICKUP ; ability 1
-	db PICKUP ; ability 2
-	db SAND_VEIL ; hidden ability
+	abilities_for PHANPY, PICKUP, PICKUP, SAND_VEIL
 	db MEDIUM_FAST ; growth rate
 	dn FIELD, FIELD ; egg groups
 

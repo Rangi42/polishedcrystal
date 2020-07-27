@@ -8,9 +8,7 @@
 	db NO_ITEM ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
 	dn 5, 5 ; frontpic dimensions
-	db STURDY ; ability 1
-	db STURDY ; ability 2
-	db OVERCOAT ; hidden ability
+	abilities_for PINECO, STURDY, STURDY, OVERCOAT
 	db MEDIUM_FAST ; growth rate
 	dn INSECT, INSECT ; egg groups
 

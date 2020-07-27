@@ -17,9 +17,7 @@ endc
 	db POISON_BARB ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
 	dn 5, 5 ; frontpic dimensions
-	db POISON_POINT ; ability 1
-	db SWIFT_SWIM ; ability 2
-	db INTIMIDATE ; hidden ability
+	abilities_for QWILFISH, POISON_POINT, SWIFT_SWIM, INTIMIDATE
 	db MEDIUM_FAST ; growth rate
 	dn FISH, FISH ; egg groups
 

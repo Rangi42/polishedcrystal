@@ -8,9 +8,7 @@
 	db POISON_BARB ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
 	dn 6, 6 ; frontpic dimensions
-	db CLEAR_BODY ; ability 1
-	db LIQUID_OOZE ; ability 2
-	db RAIN_DISH ; hidden ability
+	abilities_for TENTACRUEL, CLEAR_BODY, LIQUID_OOZE, RAIN_DISH
 	db SLOW ; growth rate
 	dn INVERTEBRATE, INVERTEBRATE ; egg groups
 

@@ -8,9 +8,7 @@
 	db SITRUS_BERRY ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
 	dn 7, 7 ; frontpic dimensions
-	db GUTS ; ability 1
-	db QUICK_FEET ; ability 2
-	db UNNERVE ; hidden ability
+	abilities_for URSARING, GUTS, QUICK_FEET, UNNERVE
 	db MEDIUM_FAST ; growth rate
 	dn FIELD, FIELD ; egg groups
 

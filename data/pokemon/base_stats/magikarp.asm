@@ -8,9 +8,7 @@
 	db NO_ITEM ; item 2
 	dn FEMALE_50, 0 ; gender, step cycles to hatch
 	dn 6, 6 ; frontpic dimensions
-	db SWIFT_SWIM ; ability 1
-	db SWIFT_SWIM ; ability 2
-	db RATTLED ; hidden ability
+	abilities_for MAGIKARP, SWIFT_SWIM, SWIFT_SWIM, RATTLED
 	db SLOW ; growth rate
 	dn FISH, REPTILE ; egg groups
 

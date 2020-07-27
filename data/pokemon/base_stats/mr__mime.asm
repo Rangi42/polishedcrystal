@@ -13,9 +13,7 @@ endc
 	db PERSIM_BERRY ; item 2
 	dn FEMALE_50, 4 ; gender, step cycles to hatch
 	dn 6, 6 ; frontpic dimensions
-	db SOUNDPROOF ; ability 1
-	db FILTER ; ability 2
-	db TECHNICIAN ; hidden ability
+	abilities_for MR__MIME, SOUNDPROOF, FILTER, TECHNICIAN
 	db MEDIUM_FAST ; growth rate
 	dn HUMANSHAPE, HUMANSHAPE ; egg groups
 

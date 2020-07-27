@@ -8,9 +8,7 @@
 	db FOCUS_BAND ; item 2
 	dn FEMALE_25, 3 ; gender, step cycles to hatch
 	dn 7, 7 ; frontpic dimensions
-	db GUTS ; ability 1
-	db NO_GUARD ; ability 2
-	db STEADFAST ; hidden ability
+	abilities_for MACHOKE, GUTS, NO_GUARD, STEADFAST
 	db MEDIUM_SLOW ; growth rate
 	dn HUMANSHAPE, HUMANSHAPE ; egg groups
 

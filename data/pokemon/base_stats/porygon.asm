@@ -8,9 +8,7 @@
 	db UP_GRADE ; item 2
 	dn GENDERLESS, 3 ; gender, step cycles to hatch
 	dn 6, 6 ; frontpic dimensions
-	db TRACE ; ability 1
-	db DOWNLOAD ; ability 2
-	db ANALYTIC ; hidden ability
+	abilities_for PORYGON, TRACE, DOWNLOAD, ANALYTIC
 	db MEDIUM_FAST ; growth rate
 	dn INANIMATE, INANIMATE ; egg groups
 

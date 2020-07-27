@@ -13,9 +13,7 @@ endc
 	db METAL_POWDER ; item 2
 	dn GENDERLESS, 3 ; gender, step cycles to hatch
 	dn 5, 5 ; frontpic dimensions
-	db LIMBER ; ability 1
-	db LIMBER ; ability 2
-	db IMPOSTER ; hidden ability
+	abilities_for DITTO, LIMBER, LIMBER, IMPOSTER
 	db MEDIUM_FAST ; growth rate
 	dn LADIES_MAN, LADIES_MAN ; egg groups
 

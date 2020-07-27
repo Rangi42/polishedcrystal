@@ -8,9 +8,7 @@
 	db NO_ITEM ; item 2
 	dn FEMALE_50, 2 ; gender, step cycles to hatch
 	dn 5, 5 ; frontpic dimensions
-	db SHED_SKIN ; ability 1
-	db SHED_SKIN ; ability 2
-	db SHED_SKIN ; hidden ability
+	abilities_for KAKUNA, SHED_SKIN, SHED_SKIN, SHED_SKIN
 	db MEDIUM_FAST ; growth rate
 	dn INSECT, INSECT ; egg groups
 
