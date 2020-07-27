@@ -1889,7 +1889,7 @@ AI_Smart_Weather:
 	dec [hl]
 .check_own_hp
 	call AICheckEnemyHalfHP
-	ret nc
+	ret c
 	inc [hl]
 	inc [hl]
 	ret
