@@ -119,14 +119,15 @@ abilities_for: MACRO
 	db \2
 	db \3
 	db \4
+if DEF(\1_\2)
 \1_\2 EQU ABILITY_1
-if \2 != \3 ; can't define a constant twice
+endc
+if DEF(\1_\3)
 \1_\3 EQU ABILITY_2
 endc
-if \2 != \4
+if DEF(\1_\4)
 \1_\4 EQU HIDDEN_ABILITY
 endc
-_\1_ EQU \1
 ENDM
 
 genders: MACRO
