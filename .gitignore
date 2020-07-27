@@ -15,6 +15,7 @@
 # intermediate build products
 gfx/battle/*.1bpp
 gfx/battle/*.2bpp
+gfx/battle_anims/*.2bpp
 gfx/battle_balls/*.2bpp
 gfx/card_flip/*.2bpp
 gfx/credits/*.2bpp
