@@ -27,7 +27,7 @@ CreditsSequence2GFX:: INCBIN "gfx/credits/sequence2.2bpp.lz"
 
 SECTION "Stats Graphics", ROMX
 
-GFX_Stats:: INCBIN "gfx/stats/stats.2bpp.lz"
+GFX_Stats:: INCBIN "gfx/stats/stats_balls.2bpp.lz"
 
 
 SECTION "Town Map Graphics", ROMX
