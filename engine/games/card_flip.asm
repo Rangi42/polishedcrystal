@@ -1570,7 +1570,7 @@ else
 endc
 
 CardFlipLZ03:
-INCBIN "gfx/card_flip/0e0cdb.2bpp.lz"
+INCBIN "gfx/card_flip/card_flip_3.2bpp.lz"
 
 CardFlipOffButtonGFX:
 INCBIN "gfx/card_flip/off_button.2bpp"
@@ -1579,21 +1579,10 @@ CardFlipOnButtonGFX:
 INCBIN "gfx/card_flip/on_button.2bpp"
 
 CardFlipLZ01:
-INCBIN "gfx/card_flip/0e0d16.2bpp.lz"
+INCBIN "gfx/card_flip/card_flip_1.2bpp.lz"
 
 CardFlipLZ02:
-INCBIN "gfx/card_flip/0e0ea8.2bpp.lz"
+INCBIN "gfx/card_flip/card_flip_2.2bpp.lz"
 
 CardFlipTilemap:
-	db CARDFLIP_LIGHT_OFF, $15, $27, $2a, $2a, $06, $27, $2a, $2a, $06, $27
-	db CARDFLIP_LIGHT_OFF, $07, $27, $3e, $3f, $42, $43, $46, $47, $4a, $4b
-	db CARDFLIP_LIGHT_OFF, $17, $26, $40, $41, $44, $45, $48, $49, $4c, $4d
-	db CARDFLIP_LIGHT_OFF, $25, $04, $00, $01, $00, $01, $00, $01, $00, $01
-	db CARDFLIP_LIGHT_OFF, $05, $14, $10, $11, $10, $11, $10, $11, $10, $11
-	db CARDFLIP_LIGHT_OFF, $16, $24, $20, $21, $20, $21, $20, $21, $20, $21
-	db CARDFLIP_LIGHT_OFF, $25, $04, $00, $02, $00, $02, $00, $02, $00, $02
-	db CARDFLIP_LIGHT_OFF, $05, $14, $10, $12, $10, $12, $10, $12, $10, $12
-	db CARDFLIP_LIGHT_OFF, $16, $24, $20, $22, $20, $22, $20, $22, $20, $22
-	db CARDFLIP_LIGHT_OFF, $25, $04, $00, $03, $00, $03, $00, $03, $00, $03
-	db CARDFLIP_LIGHT_OFF, $05, $14, $10, $13, $10, $13, $10, $13, $10, $13
-	db CARDFLIP_LIGHT_OFF, $16, $24, $20, $23, $20, $23, $20, $23, $20, $23
+INCBIN "gfx/card_flip/card_flip.tilemap"

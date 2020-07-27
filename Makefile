@@ -17,8 +17,6 @@ RGBASM_FLAGS = -E -Weverything
 RGBLINK_FLAGS = -n $(ROM_NAME).sym -m $(ROM_NAME).map -l contents/contents.link -p $(FILLER)
 RGBFIX_FLAGS = -csjv -t $(TITLE) -i $(MCODE) -n $(ROMVERSION) -p $(FILLER) -k 01 -l 0x33 -m 0x10 -r 3
 
-CFLAGS = -O3 -std=c11 -Wall -Wextra -pedantic
-
 ifeq ($(filter faithful,$(MAKECMDGOALS)),faithful)
 RGBASM_FLAGS += -DFAITHFUL
 endif
@@ -39,31 +37,11 @@ RGBASM_FLAGS += -DDEBUG
 endif
 
 
-.SUFFIXES:
-.PHONY: all clean crystal faithful nortc debug monochrome freespace compare tools
-.SECONDEXPANSION:
-.PRECIOUS: %.2bpp %.1bpp
-.SECONDARY:
-
-
 roms_md5      = roms.md5
 bank_ends_txt = contents/bank_ends.txt
 copied_sym    = contents/$(NAME).sym
 copied_map    = contents/$(NAME).map
 copied_gbc    = contents/$(NAME).gbc
-
-PYTHON = python2
-CC     = gcc
-RM     = rm -f
-GFX    = $(PYTHON) gfx.py
-MD5    = md5sum -b
-
-LZ                = tools/lzcomp
-SCAN_INCLUDES     = tools/scan_includes
-SUB_2BPP          = tools/sub_2bpp.sh
-COLLISION_ASM2BIN = tools/collision_asm2bin.sh
-
-BANK_ENDS := utils/bankends
 
 
 crystal_obj := \
@@ -87,6 +65,13 @@ gfx/items.o \
 gfx/misc.o
 
 
+.SUFFIXES:
+.PHONY: all clean crystal faithful nortc debug monochrome freespace compare tools
+.SECONDEXPANSION:
+.PRECIOUS: %.2bpp %.1bpp
+.SECONDARY:
+
+
 all: crystal freespace
 
 crystal: ROM_NAME = $(NAME)-$(VERSION)
@@ -101,50 +86,34 @@ debug: crystal
 
 freespace: $(bank_ends_txt) $(roms_md5) $(copied_sym) $(copied_map) $(copied_gbc)
 
-tools: $(LZ) $(SCAN_INCLUDES)
-
-$(LZ): CFLAGS = -O3 -flto -std=c11 -Wall -Wextra -pedantic -Wno-strict-overflow -Wno-sign-compare
-$(LZ): $(wildcard tools/lz/*.c) $(wildcard tools/lz/*.h)
-	$(CC) $(CFLAGS) -o $@ tools/lz/*.c
-
-$(SCAN_INCLUDES): $(SCAN_INCLUDES).c
-	$(CC) $(CFLAGS) -o $@ $<
-
+tools:
+	$(MAKE) -C tools/
 
 clean:
-	$(RM) $(crystal_obj) $(wildcard $(NAME)-*.gbc) $(wildcard $(NAME)-*.map) $(wildcard $(NAME)-*.sym)
+	rm -f $(crystal_obj) $(wildcard $(NAME)-*.gbc) $(wildcard $(NAME)-*.map) $(wildcard $(NAME)-*.sym)
 
 compare: crystal
-	$(MD5) -c $(roms_md5)
+	md5sum -b -c $(roms_md5)
 
 
 $(bank_ends_txt): ROM_NAME = $(NAME)-$(VERSION)
-$(bank_ends_txt): crystal $(BANK_ENDS)
-	$(BANK_ENDS) $(ROM_NAME).map > $@
+$(bank_ends_txt): crystal tools/bankends
+	tools/bankends $(ROM_NAME).map > $@
 
-$(BANK_ENDS): utils/bankends.c utils/parsemap.o
-	$(CC) $(CFLAGS) $^ -o $@
-
-utils/parsemap.o: utils/parsemap.c utils/parsemap.h
-	cd utils && $(CC) $(CFLAGS) -c parsemap.c
-
-$(roms_md5): crystal ; $(MD5) $(NAME)-$(VERSION).gbc > $@
+$(roms_md5): crystal ; md5sum -b $(NAME)-$(VERSION).gbc > $@
 $(copied_sym): crystal ; cp $(NAME)-$(VERSION).sym $@
 $(copied_map): crystal ; cp $(NAME)-$(VERSION).map $@
 $(copied_gbc): crystal ; cp $(NAME)-$(VERSION).gbc $@
 
 
 define DEP
-$1: $2 $$(shell $(SCAN_INCLUDES) $2)
+$1: $2 $$(shell tools/scan_includes $2)
 	$$(RGBDS_DIR)rgbasm $$(RGBASM_FLAGS) -L -o $$@ $$<
 endef
 
 ifeq (,$(filter clean tools,$(MAKECMDGOALS)))
-
-Makefile: tools
-
+$(info $(shell $(MAKE) -C tools))
 $(foreach obj, $(crystal_obj), $(eval $(call DEP,$(obj),$(obj:.o=.asm))))
-
 endif
 
 
@@ -153,19 +122,60 @@ endif
 	$(RGBDS_DIR)rgblink $(RGBLINK_FLAGS) -o $@ $^
 	$(RGBDS_DIR)rgbfix $(RGBFIX_FLAGS) $@
 
+
+gfx/battle_anims/angels.2bpp: tools/gfx += --trim-whitespace
+gfx/battle_anims/beam.2bpp: tools/gfx += --remove-xflip --remove-yflip --remove-whitespace
+gfx/battle_anims/bubble.2bpp: tools/gfx += --trim-whitespace
+gfx/battle_anims/charge.2bpp: tools/gfx += --trim-whitespace
+gfx/battle_anims/egg.2bpp: tools/gfx += --remove-whitespace
+gfx/battle_anims/explosion.2bpp: tools/gfx += --remove-whitespace
+gfx/battle_anims/hit.2bpp: tools/gfx += --remove-whitespace
+gfx/battle_anims/horn.2bpp: tools/gfx += --remove-whitespace
+gfx/battle_anims/lightning.2bpp: tools/gfx += --remove-whitespace
+gfx/battle_anims/misc.2bpp: tools/gfx += --remove-duplicates --remove-xflip
+gfx/battle_anims/noise.2bpp: tools/gfx += --remove-whitespace
+gfx/battle_anims/objects.2bpp: tools/gfx += --remove-whitespace --remove-xflip
+gfx/battle_anims/reflect.2bpp: tools/gfx += --remove-whitespace
+gfx/battle_anims/rocks.2bpp: tools/gfx += --remove-whitespace
+gfx/battle_anims/skyattack.2bpp: tools/gfx += --remove-whitespace
+gfx/battle_anims/status.2bpp: tools/gfx += --remove-whitespace
+
+gfx/card_flip/card_flip_1.2bpp: tools/gfx += --trim-whitespace
+gfx/card_flip/card_flip_2.2bpp: tools/gfx += --remove-whitespace
+
+gfx/pack/pack_top_left.2bpp: gfx/pack/pack_top.2bpp gfx/pack/pack_left.2bpp ; cat $^ > $@
+
+gfx/pokegear/pokegear.2bpp: tools/gfx += --trim-whitespace
+gfx/pokegear/pokegear_sprites.2bpp: tools/gfx += --trim-whitespace
+
+gfx/trainers/%.2bpp: rgbgfx += -h
+
+gfx/type_chart/bg.2bpp: tools/gfx += --remove-duplicates --remove-xflip --remove-yflip
+gfx/type_chart/bg0.2bpp: gfx/type_chart/bg.2bpp.vram1 gfx/type_chart/bg.2bpp.vram0 ; cat $^ > $@
+gfx/type_chart/ob.2bpp: tools/gfx += --interleave --png=$<
+
+
+%.lz: %
+	tools/lzcomp -- $< $@
+
+%.2bpp: %.png
+	$(RGBDS_DIR)rgbgfx $(rgbgfx) -o $@ $<
+	$(if $(tools/gfx),\
+		tools/gfx $(tools/gfx) -o $@ $@)
+
+%.1bpp: %.png
+	$(RGBDS_DIR)rgbgfx $(rgbgfx) -d1 -o $@ $<
+	$(if $(tools/gfx),\
+		tools/gfx $(tools/gfx) -d1 -o $@ $@)
+
 %.2bpp.vram0: %.2bpp
-	$(SUB_2BPP) $< 128 > $@
+	tools/sub_2bpp.sh $< 128 > $@
 
 %.2bpp.vram1: %.2bpp
-	$(SUB_2BPP) $< 128 128 > $@
+	tools/sub_2bpp.sh $< 128 128 > $@
 
 %.2bpp.vram2: %.2bpp
-	$(SUB_2BPP) $< 256 128 > $@
-
-%.2bpp: %.png ; $(GFX) 2bpp $<
-%.1bpp: %.png ; $(GFX) 1bpp $<
+	tools/sub_2bpp.sh $< 256 128 > $@
 
 data/tilesets/%_collision.bin: data/tilesets/%_collision.asm
-	RGBDS_DIR=$(RGBDS_DIR) $(COLLISION_ASM2BIN) $< $@
-
-%.lz: % ; $(LZ) -- $< $@
+	RGBDS_DIR=$(RGBDS_DIR) tools/collision_asm2bin.sh $< $@

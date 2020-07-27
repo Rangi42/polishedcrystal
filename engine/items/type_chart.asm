@@ -163,7 +163,7 @@ TypeChartBG0GFX:
 INCBIN "gfx/type_chart/bg0.2bpp.lz"
 
 TypeChartBG1GFX:
-INCBIN "gfx/type_chart/bg1.2bpp.lz"
+INCBIN "gfx/type_chart/bg.2bpp.vram2.lz"
 
 TypeChartOBGFX:
 INCBIN "gfx/type_chart/ob.2bpp.lz"

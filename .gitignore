@@ -3,6 +3,7 @@
 *.map
 *.sym
 *.exe
+*.h.gch
 *.pyc
 *$py.class
 *.o
@@ -14,7 +15,34 @@
 # intermediate build products
 gfx/battle/*.1bpp
 gfx/battle/*.2bpp
+gfx/battle_anims/*.2bpp
+gfx/battle_balls/*.2bpp
+gfx/card_flip/*.2bpp
+gfx/credits/*.2bpp
+gfx/diploma/*.2bpp
+gfx/dummy_game/*.2bpp
+gfx/emotes/*.2bpp
+gfx/evo/*.2bpp
+gfx/font/*.1bpp
+gfx/footprints/*.1bpp
+gfx/frames/*.1bpp
+gfx/frames/*.2bpp
+gfx/icons/*.2bpp
+gfx/intro/*.2bpp
+gfx/items/*.2bpp
+gfx/naming_screen/*.2bpp
+gfx/pack/*.2bpp
+gfx/pc/*.2bpp
+gfx/pokegear/*.2bpp
+gfx/sgb/*.2bpp
+gfx/splash/*.1bpp
+gfx/splash/*.2bpp
 gfx/tilesets/*.2bpp
+gfx/town_map/*.2bpp
+gfx/trainers/*.2bpp
+gfx/type_chart/*.2bpp
+gfx/unown_puzzle/*.2bpp
+gfx/weather/*.2bpp
 data/tilesets/*_collision.bin
 
 # local tools
