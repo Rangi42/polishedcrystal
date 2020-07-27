@@ -40,6 +40,7 @@ gfx/sgb/*.2bpp
 gfx/splash/*.1bpp
 gfx/splash/*.2bpp
 gfx/tilesets/*.2bpp
+gfx/tilesets/*/*.2bpp
 gfx/town_map/*.2bpp
 gfx/trainers/*.2bpp
 gfx/type_chart/*.2bpp
