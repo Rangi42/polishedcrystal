@@ -3,6 +3,7 @@
 *.map
 *.sym
 *.exe
+*.h.gch
 *.pyc
 *$py.class
 *.o
@@ -31,6 +32,7 @@ gfx/items/*.2bpp
 gfx/naming_screen/*.2bpp
 gfx/pack/*.2bpp
 gfx/pc/*.2bpp
+gfx/pokegear/*.2bpp
 gfx/sgb/*.2bpp
 gfx/splash/*.1bpp
 gfx/splash/*.2bpp

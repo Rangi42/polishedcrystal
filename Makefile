@@ -128,6 +128,9 @@ gfx/card_flip/card_flip_2.2bpp: tools/gfx += --remove-whitespace
 
 gfx/pack/pack_top_left.2bpp: gfx/pack/pack_top.2bpp gfx/pack/pack_left.2bpp ; cat $^ > $@
 
+gfx/pokegear/pokegear.2bpp: tools/gfx += --trim-whitespace
+gfx/pokegear/pokegear_sprites.2bpp: tools/gfx += --trim-whitespace
+
 gfx/trainers/%.2bpp: rgbgfx += -h
 
 gfx/type_chart/bg.2bpp: tools/gfx += --remove-duplicates --remove-xflip --remove-yflip
