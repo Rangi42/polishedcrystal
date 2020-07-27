@@ -160,6 +160,8 @@ gfx/overworld/kris_fish.2bpp: tools/gfx += --trim-whitespace
 
 gfx/pack/pack_top_left.2bpp: gfx/pack/pack_top.2bpp gfx/pack/pack_left.2bpp ; cat $^ > $@
 
+gfx/paintings/%.2bpp: rgbgfx += -h
+
 gfx/player/chris_back.2bpp: rgbgfx += -h
 gfx/player/kris_back.2bpp: rgbgfx += -h
 

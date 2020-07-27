@@ -37,6 +37,7 @@ gfx/new_game/*.1bpp
 gfx/new_game/*.2bpp
 gfx/overworld/*.2bpp
 gfx/pack/*.2bpp
+gfx/paintings/*.2bpp
 gfx/pc/*.2bpp
 gfx/player/*.2bpp
 gfx/pokedex/*.2bpp
