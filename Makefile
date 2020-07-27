@@ -157,6 +157,10 @@ gfx/pack/pack_top_left.2bpp: gfx/pack/pack_top.2bpp gfx/pack/pack_left.2bpp ; ca
 gfx/player/chris_back.2bpp: rgbgfx += -h
 gfx/player/kris_back.2bpp: rgbgfx += -h
 
+gfx/pokedex/pokedex.2bpp: tools/gfx += --trim-whitespace
+gfx/pokedex/question_mark.2bpp: rgbgfx += -h
+gfx/pokedex/slowpoke.2bpp: tools/gfx += --trim-whitespace
+
 gfx/pokegear/pokegear.2bpp: tools/gfx += --trim-whitespace
 gfx/pokegear/pokegear_sprites.2bpp: tools/gfx += --trim-whitespace
 
