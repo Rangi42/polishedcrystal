@@ -59,8 +59,8 @@ KrisCardPic::  INCBIN "gfx/trainer_card/kris_card.2bpp.lz"
 
 SECTION "Trainer Backpics", ROMX
 
-ChrisBackpic:: INCBIN "gfx/player/chris_back.6x6.2bpp.lz"
-KrisBackpic::  INCBIN "gfx/player/kris_back.6x6.2bpp.lz"
+ChrisBackpic:: INCBIN "gfx/player/chris_back.2bpp.lz"
+KrisBackpic::  INCBIN "gfx/player/kris_back.2bpp.lz"
 LyraBackpic::  INCBIN "gfx/battle/lyra_back.2bpp.lz"
 
 

@@ -154,6 +154,9 @@ gfx/music_player/note_lines.2bpp: tools/gfx += --interleave --png=$<
 
 gfx/pack/pack_top_left.2bpp: gfx/pack/pack_top.2bpp gfx/pack/pack_left.2bpp ; cat $^ > $@
 
+gfx/player/chris_back.2bpp: rgbgfx += -h
+gfx/player/kris_back.2bpp: rgbgfx += -h
+
 gfx/pokegear/pokegear.2bpp: tools/gfx += --trim-whitespace
 gfx/pokegear/pokegear_sprites.2bpp: tools/gfx += --trim-whitespace
 

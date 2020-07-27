@@ -35,6 +35,7 @@ gfx/music_player/*.2bpp
 gfx/naming_screen/*.2bpp
 gfx/pack/*.2bpp
 gfx/pc/*.2bpp
+gfx/player/*.2bpp
 gfx/pokegear/*.2bpp
 gfx/sgb/*.2bpp
 gfx/splash/*.1bpp
