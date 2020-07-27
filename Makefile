@@ -37,30 +37,11 @@ RGBASM_FLAGS += -DDEBUG
 endif
 
 
-.SUFFIXES:
-.PHONY: all clean crystal faithful nortc debug monochrome freespace compare tools
-.SECONDEXPANSION:
-.PRECIOUS: %.2bpp %.1bpp
-.SECONDARY:
-
-
 roms_md5      = roms.md5
 bank_ends_txt = contents/bank_ends.txt
 copied_sym    = contents/$(NAME).sym
 copied_map    = contents/$(NAME).map
 copied_gbc    = contents/$(NAME).gbc
-
-PYTHON = python2
-CC     = gcc
-RM     = rm -f
-GFX    = $(PYTHON) gfx.py
-MD5    = md5sum -b
-
-LZ                = tools/lzcomp
-SCAN_INCLUDES     = tools/scan_includes
-SUB_2BPP          = tools/sub_2bpp.sh
-COLLISION_ASM2BIN = tools/collision_asm2bin.sh
-BANK_ENDS         = tools/bankends
 
 
 crystal_obj := \
@@ -84,6 +65,13 @@ gfx/items.o \
 gfx/misc.o
 
 
+.SUFFIXES:
+.PHONY: all clean crystal faithful nortc debug monochrome freespace compare tools
+.SECONDEXPANSION:
+.PRECIOUS: %.2bpp %.1bpp
+.SECONDARY:
+
+
 all: crystal freespace
 
 crystal: ROM_NAME = $(NAME)-$(VERSION)
@@ -102,56 +90,63 @@ tools:
 	$(MAKE) -C tools/
 
 clean:
-	$(RM) $(crystal_obj) $(wildcard $(NAME)-*.gbc) $(wildcard $(NAME)-*.map) $(wildcard $(NAME)-*.sym)
+	rm -f $(crystal_obj) $(wildcard $(NAME)-*.gbc) $(wildcard $(NAME)-*.map) $(wildcard $(NAME)-*.sym)
 
 compare: crystal
-	$(MD5) -c $(roms_md5)
+	md5sum -b -c $(roms_md5)
 
 
 $(bank_ends_txt): ROM_NAME = $(NAME)-$(VERSION)
-$(bank_ends_txt): crystal $(BANK_ENDS)
-	$(BANK_ENDS) $(ROM_NAME).map > $@
+$(bank_ends_txt): crystal tools/bankends
+	tools/bankends $(ROM_NAME).map > $@
 
-$(roms_md5): crystal ; $(MD5) $(NAME)-$(VERSION).gbc > $@
+$(roms_md5): crystal ; md5sum -b $(NAME)-$(VERSION).gbc > $@
 $(copied_sym): crystal ; cp $(NAME)-$(VERSION).sym $@
 $(copied_map): crystal ; cp $(NAME)-$(VERSION).map $@
 $(copied_gbc): crystal ; cp $(NAME)-$(VERSION).gbc $@
 
 
 define DEP
-$1: $2 $$(shell $(SCAN_INCLUDES) $2)
+$1: $2 $$(shell tools/scan_includes $2)
 	$$(RGBDS_DIR)rgbasm $$(RGBASM_FLAGS) -L -o $$@ $$<
 endef
 
 ifeq (,$(filter clean tools,$(MAKECMDGOALS)))
-
 $(info $(shell $(MAKE) -C tools))
-
 $(foreach obj, $(crystal_obj), $(eval $(call DEP,$(obj),$(obj:.o=.asm))))
-
 endif
 
-
-gfx/pack/pack_top_left.2bpp: gfx/pack/pack_top.2bpp gfx/pack/pack_left.2bpp ; cat $^ > $@
 
 .gbc:
 %.gbc: $(crystal_obj)
 	$(RGBDS_DIR)rgblink $(RGBLINK_FLAGS) -o $@ $^
 	$(RGBDS_DIR)rgbfix $(RGBFIX_FLAGS) $@
 
+
+gfx/pack/pack_top_left.2bpp: gfx/pack/pack_top.2bpp gfx/pack/pack_left.2bpp ; cat $^ > $@
+
+
+%.lz: %
+	tools/lzcomp -- $< $@
+
+%.2bpp: %.png
+	$(RGBDS_DIR)rgbgfx $(rgbgfx) -o $@ $<
+	$(if $(tools/gfx),\
+		tools/gfx $(tools/gfx) -o $@ $@)
+
+%.1bpp: %.png
+	$(RGBDS_DIR)rgbgfx $(rgbgfx) -d1 -o $@ $<
+	$(if $(tools/gfx),\
+		tools/gfx $(tools/gfx) -d1 -o $@ $@)
+
 %.2bpp.vram0: %.2bpp
-	$(SUB_2BPP) $< 128 > $@
+	tools/sub_2bpp.sh $< 128 > $@
 
 %.2bpp.vram1: %.2bpp
-	$(SUB_2BPP) $< 128 128 > $@
+	tools/sub_2bpp.sh $< 128 128 > $@
 
 %.2bpp.vram2: %.2bpp
-	$(SUB_2BPP) $< 256 128 > $@
-
-%.2bpp: %.png ; $(GFX) 2bpp $<
-%.1bpp: %.png ; $(GFX) 1bpp $<
+	tools/sub_2bpp.sh $< 256 128 > $@
 
 data/tilesets/%_collision.bin: data/tilesets/%_collision.asm
-	RGBDS_DIR=$(RGBDS_DIR) $(COLLISION_ASM2BIN) $< $@
-
-%.lz: % ; $(LZ) -- $< $@
+	RGBDS_DIR=$(RGBDS_DIR) tools/collision_asm2bin.sh $< $@
