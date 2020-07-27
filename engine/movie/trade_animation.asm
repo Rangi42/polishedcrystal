@@ -1,6 +1,3 @@
-TRADEANIM_RIGHT_ARROW EQU $f3
-TRADEANIM_LEFT_ARROW EQU $f4
-
 TradeAnimation:
 	xor a
 	ld [wcf66], a
@@ -170,11 +167,6 @@ RunTradeAnimSequence:
 	ld hl, TradeGameBoyLZ
 	ld de, vTiles2 tile $31
 	call Decompress
-	ld hl, TradeArrowGFX
-	ld de, vTiles1 tile (TRADEANIM_RIGHT_ARROW - $80)
-	ld bc, 2 tiles
-	ld a, BANK(TradeArrowGFX)
-	call FarCopyBytes
 	xor a
 	ldh [hSCX], a
 	ldh [hSCY], a
@@ -295,7 +287,7 @@ TradeAnim_End:
 	ret
 
 TradeAnim_TubeToOT1:
-	ld a, TRADEANIM_RIGHT_ARROW
+	ld a, $59 ; right arrow
 	call TradeAnim_PlaceTrademonStatsOnTubeAnim
 	ld a, [wLinkTradeSendmonSpecies]
 	ld [wd265], a
@@ -306,7 +298,7 @@ TradeAnim_TubeToOT1:
 	jr TradeAnim_InitTubeAnim
 
 TradeAnim_TubeToPlayer1:
-	ld a, TRADEANIM_LEFT_ARROW
+	ld a, $5a ; left arrow
 	call TradeAnim_PlaceTrademonStatsOnTubeAnim
 	ld a, [wLinkTradeGetmonSpecies]
 	ld [wd265], a
@@ -327,7 +319,7 @@ TradeAnim_InitTubeAnim:
 	call ClearSpriteAnims
 	hlbgcoord 20, 3
 	ld bc, 12
-	ld a, $60
+	ld a, $5d
 	rst ByteFill
 	pop af
 
@@ -506,10 +498,10 @@ TradeAnim_TubeAnimJumptable:
 .Three:
 	call TradeAnim_BlankTileMap
 	hlcoord 9, 3
-	ld [hl], $5b
+	ld [hl], $5c
 	inc hl
 	ld bc, 10
-	ld a, $60
+	ld a, $5d
 	rst ByteFill
 	hlcoord 3, 2
 	jr TradeAnim_CopyTradeGameBoyTilemap
@@ -518,7 +510,7 @@ TradeAnim_TubeAnimJumptable:
 	call TradeAnim_BlankTileMap
 	hlcoord 0, 3
 	ld bc, SCREEN_WIDTH
-	ld a, $60
+	ld a, $5d
 	rst ByteFill
 	ret
 
@@ -526,12 +518,12 @@ TradeAnim_TubeAnimJumptable:
 	call TradeAnim_BlankTileMap
 	hlcoord 0, 3
 	ld bc, $11
-	ld a, $60
+	ld a, $5d
 	rst ByteFill
 	hlcoord 17, 3
-	ld [hl], $5d
+	ld [hl], $58
 
-	ld a, $61
+	ld a, $5b
 	ld de, SCREEN_WIDTH
 	ld c, $3
 .loop
@@ -541,9 +533,9 @@ TradeAnim_TubeAnimJumptable:
 	jr nz, .loop
 
 	add hl, de
-	ld a, $5f
+	ld a, $5e
 	ld [hld], a
-	ld [hl], $5b
+	ld [hl], $5c
 	hlcoord 10, 6
 	; fallthrough
 
@@ -1305,7 +1297,6 @@ INCBIN "gfx/trade/game_boy.tilemap"
 TradeLinkTubeTilemap: ; 12x3
 INCBIN "gfx/trade/link_cable.tilemap"
 
-TradeArrowGFX: INCBIN "gfx/trade/arrow.2bpp"
 TradeBallPoofCableGFX:  INCBIN "gfx/trade/ball_poof_cable.2bpp.lz"
 TradeBubbleGFX: INCBIN "gfx/trade/bubble.2bpp"
 TradeGameBoyLZ: INCBIN "gfx/trade/game_boy_cable.2bpp.lz"

@@ -184,7 +184,8 @@ gfx/title/crystal.2bpp: tools/gfx += --interleave --png=$<
 gfx/title/logo.2bpp: rgbgfx += -x 4
 
 gfx/trade/ball.2bpp: tools/gfx += --remove-whitespace
-gfx/trade/game_boy.2bpp: tools/gfx += --remove-duplicates --preserve=0x23,0x27
+gfx/trade/game_boy.2bpp: tools/gfx += --remove-duplicates
+gfx/trade/link_cable.2bpp: tools/gfx += --remove-duplicates
 gfx/trade/ball_poof_cable.2bpp: gfx/trade/ball.2bpp gfx/trade/poof.2bpp gfx/trade/cable.2bpp ; cat $^ > $@
 gfx/trade/game_boy_cable.2bpp: gfx/trade/game_boy.2bpp gfx/trade/link_cable.2bpp ; cat $^ > $@
 
