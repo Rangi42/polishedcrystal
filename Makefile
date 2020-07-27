@@ -125,6 +125,10 @@ endif
 
 gfx/pack/pack_top_left.2bpp: gfx/pack/pack_top.2bpp gfx/pack/pack_left.2bpp ; cat $^ > $@
 
+gfx/type_chart/bg.2bpp: tools/gfx += --remove-duplicates --remove-xflip --remove-yflip
+gfx/type_chart/bg0.2bpp: gfx/type_chart/bg.2bpp.vram1 gfx/type_chart/bg.2bpp.vram0 ; cat $^ > $@
+gfx/type_chart/ob.2bpp: tools/gfx += --interleave --png=$<
+
 
 %.lz: %
 	tools/lzcomp -- $< $@

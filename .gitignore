@@ -35,6 +35,7 @@ gfx/splash/*.1bpp
 gfx/splash/*.2bpp
 gfx/tilesets/*.2bpp
 gfx/town_map/*.2bpp
+gfx/type_chart/*.2bpp
 gfx/unown_puzzle/*.2bpp
 gfx/weather/*.2bpp
 data/tilesets/*_collision.bin
