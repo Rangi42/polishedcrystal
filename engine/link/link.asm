@@ -652,7 +652,7 @@ InitTradeSpeciesList:
 	ret
 
 .TradeScreenTilemap:
-INCBIN "gfx/link_trade/16d465.tilemap"
+INCBIN "gfx/trade/border.tilemap"
 
 .Cancel:
 	db "Cancel@"
@@ -1788,7 +1788,7 @@ LoadTradeScreenGFX:
 	jp DecompressRequest2bpp
 
 TradeScreenGFX:
-INCBIN "gfx/link_trade/border.2bpp.lz"
+INCBIN "gfx/trade/border.2bpp.lz"
 
 SetTradeRoomBGPals:
 	farcall LoadLinkTradePalette
