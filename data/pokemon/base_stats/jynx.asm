@@ -12,7 +12,7 @@ endc
 	db RAWST_BERRY ; item 1
 	db RAWST_BERRY ; item 2
 	dn ALL_FEMALE, 4 ; gender, step cycles to hatch
-	dn 6, 6 ; frontpic dimensions
+	INCBIN "gfx/pokemon/jynx/front.dimensions"
 if DEF(FAITHFUL)
 	abilities_for JYNX, OBLIVIOUS, FOREWARN, DRY_SKIN
 else

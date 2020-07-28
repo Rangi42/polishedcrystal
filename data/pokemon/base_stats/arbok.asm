@@ -7,7 +7,7 @@
 	db NO_ITEM ; item 1
 	db POISON_BARB ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
-	dn 7, 7 ; frontpic dimensions
+	INCBIN "gfx/pokemon/arbok_johto/front.dimensions"
 	abilities_for ARBOK, INTIMIDATE, SHED_SKIN, UNNERVE
 	db MEDIUM_FAST ; growth rate
 	dn FIELD, REPTILE ; egg groups

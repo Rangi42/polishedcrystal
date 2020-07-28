@@ -17,7 +17,7 @@ endc
 	db NO_ITEM ; item 1
 	db NO_ITEM ; item 2
 	dn FEMALE_50, 2 ; gender, step cycles to hatch
-	dn 7, 7 ; frontpic dimensions
+	INCBIN "gfx/pokemon/noctowl/front.dimensions"
 	abilities_for NOCTOWL, INSOMNIA, KEEN_EYE, TINTED_LENS
 	db MEDIUM_FAST ; growth rate
 	dn AVIAN, AVIAN ; egg groups

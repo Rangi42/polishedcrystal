@@ -12,7 +12,7 @@ endc
 	db NO_ITEM ; item 1
 	db NO_ITEM ; item 2
 	dn FEMALE_50, 2 ; gender, step cycles to hatch
-	dn 7, 7 ; frontpic dimensions
+	INCBIN "gfx/pokemon/ariados/front.dimensions"
 	abilities_for ARIADOS, SWARM, INSOMNIA, SNIPER
 	db FAST ; growth rate
 	dn INSECT, INSECT ; egg groups

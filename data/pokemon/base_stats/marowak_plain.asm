@@ -16,7 +16,7 @@ endc
 	db NO_ITEM ; item 1
 	db THICK_CLUB ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
-	dn 6, 6 ; frontpic dimensions
+	INCBIN "gfx/pokemon/marowak_plain/front.dimensions"
 	abilities_for MAROWAK, ROCK_HEAD, LIGHTNING_ROD, BATTLE_ARMOR
 	db MEDIUM_FAST ; growth rate
 	dn MONSTER, MONSTER ; egg groups

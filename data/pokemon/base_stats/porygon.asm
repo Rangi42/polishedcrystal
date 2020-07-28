@@ -7,7 +7,7 @@
 	db NO_ITEM ; item 1
 	db UP_GRADE ; item 2
 	dn GENDERLESS, 3 ; gender, step cycles to hatch
-	dn 6, 6 ; frontpic dimensions
+	INCBIN "gfx/pokemon/porygon/front.dimensions"
 	abilities_for PORYGON, TRACE, DOWNLOAD, ANALYTIC
 	db MEDIUM_FAST ; growth rate
 	dn INANIMATE, INANIMATE ; egg groups

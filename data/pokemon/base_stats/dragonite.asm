@@ -7,7 +7,7 @@
 	db NO_ITEM ; item 1
 	db DRAGON_SCALE ; item 2
 	dn FEMALE_50, 7 ; gender, step cycles to hatch
-	dn 7, 7 ; frontpic dimensions
+	INCBIN "gfx/pokemon/dragonite/front.dimensions"
 if DEF(FAITHFUL)
 	abilities_for DRAGONITE, INNER_FOCUS, INNER_FOCUS, MULTISCALE
 else

@@ -16,7 +16,7 @@ endc
 	db HARD_STONE ; item 1
 	db LUMINOUSMOSS ; item 2
 	dn FEMALE_75, 3 ; gender, step cycles to hatch
-	dn 6, 6 ; frontpic dimensions
+	INCBIN "gfx/pokemon/corsola/front.dimensions"
 	abilities_for CORSOLA, HUSTLE, NATURAL_CURE, REGENERATOR
 	db FAST ; growth rate
 	dn AMPHIBIAN, INVERTEBRATE ; egg groups

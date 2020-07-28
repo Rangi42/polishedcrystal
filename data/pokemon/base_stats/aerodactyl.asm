@@ -7,7 +7,7 @@
 	db NO_ITEM ; item 1
 	db NO_ITEM ; item 2
 	dn FEMALE_12_5, 6 ; gender, step cycles to hatch
-	dn 7, 7 ; frontpic dimensions
+	INCBIN "gfx/pokemon/aerodactyl/front.dimensions"
 	abilities_for AERODACTYL, ROCK_HEAD, UNNERVE, TOUGH_CLAWS
 	db SLOW ; growth rate
 	dn AVIAN, AVIAN ; egg groups

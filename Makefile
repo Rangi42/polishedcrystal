@@ -221,5 +221,8 @@ gfx/type_chart/ob.2bpp: tools/gfx += --interleave --png=$<
 %.2bpp.vram2: %.2bpp
 	tools/sub_2bpp.sh $< 256 128 > $@
 
+%.dimensions: %.png
+	tools/png_dimensions $< $@
+
 data/tilesets/%_collision.bin: data/tilesets/%_collision.asm
 	RGBDS_DIR=$(RGBDS_DIR) tools/collision_asm2bin.sh $< $@

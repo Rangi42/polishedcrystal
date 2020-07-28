@@ -12,7 +12,7 @@ endc
 	db NO_ITEM ; item 1
 	db NO_ITEM ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
-	dn 6, 6 ; frontpic dimensions
+	INCBIN "gfx/pokemon/xatu/front.dimensions"
 	abilities_for XATU, SYNCHRONIZE, EARLY_BIRD, MAGIC_BOUNCE
 	db MEDIUM_FAST ; growth rate
 	dn AVIAN, AVIAN ; egg groups

@@ -12,7 +12,7 @@ endc
 	db NO_ITEM ; item 1
 	db METAL_COAT ; item 2
 	dn FEMALE_50, 4 ; gender, step cycles to hatch
-	dn 7, 7 ; frontpic dimensions
+	INCBIN "gfx/pokemon/steelix/front.dimensions"
 	abilities_for STEELIX, SHEER_FORCE, STURDY, SAND_FORCE
 	db MEDIUM_FAST ; growth rate
 	dn INANIMATE, INANIMATE ; egg groups

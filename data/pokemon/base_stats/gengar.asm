@@ -7,7 +7,7 @@
 	db NO_ITEM ; item 1
 	db SPELL_TAG ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
-	dn 6, 6 ; frontpic dimensions
+	INCBIN "gfx/pokemon/gengar/front.dimensions"
 if DEF(FAITHFUL)
 	abilities_for GENGAR, CURSED_BODY, CURSED_BODY, SHADOW_TAG
 else

@@ -7,7 +7,7 @@
 	db NO_ITEM ; item 1
 	db NO_ITEM ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
-	dn 5, 5 ; frontpic dimensions
+	INCBIN "gfx/pokemon/marill/front.dimensions"
 	abilities_for MARILL, THICK_FAT, HUGE_POWER, SAP_SIPPER
 	db FAST ; growth rate
 	dn AMPHIBIAN, FAERY ; egg groups

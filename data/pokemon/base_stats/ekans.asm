@@ -7,7 +7,7 @@
 	db NO_ITEM ; item 1
 	db NO_ITEM ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
-	dn 5, 5 ; frontpic dimensions
+	INCBIN "gfx/pokemon/ekans/front.dimensions"
 	abilities_for EKANS, INTIMIDATE, SHED_SKIN, UNNERVE
 	db MEDIUM_FAST ; growth rate
 	dn FIELD, REPTILE ; egg groups

@@ -7,7 +7,7 @@
 	db NO_ITEM ; item 1
 	db EVERSTONE ; item 2
 	dn FEMALE_50, 2 ; gender, step cycles to hatch
-	dn 5, 5 ; frontpic dimensions
+	INCBIN "gfx/pokemon/geodude_plain/front.dimensions"
 	abilities_for GEODUDE, ROCK_HEAD, STURDY, SAND_VEIL
 	db MEDIUM_SLOW ; growth rate
 	dn INANIMATE, INANIMATE ; egg groups

@@ -7,7 +7,7 @@
 	db NO_ITEM ; item 1
 	db NO_ITEM ; item 2
 	dn ALL_MALE, 3 ; gender, step cycles to hatch
-	dn 5, 5 ; frontpic dimensions
+	INCBIN "gfx/pokemon/nidoran_m/front.dimensions"
 	abilities_for NIDORAN_M, POISON_POINT, RIVALRY, HUSTLE
 	db MEDIUM_SLOW ; growth rate
 	dn MONSTER, FIELD ; egg groups

@@ -7,7 +7,7 @@
 	db NO_ITEM ; item 1
 	db CELL_BATTERY ; item 2
 	dn GENDERLESS, 3 ; gender, step cycles to hatch
-	dn 5, 5 ; frontpic dimensions
+	INCBIN "gfx/pokemon/voltorb/front.dimensions"
 	abilities_for VOLTORB, SOUNDPROOF, STATIC, AFTERMATH
 	db MEDIUM_FAST ; growth rate
 	dn INANIMATE, INANIMATE ; egg groups

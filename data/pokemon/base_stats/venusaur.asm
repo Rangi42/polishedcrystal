@@ -7,7 +7,7 @@
 	db NO_ITEM ; item 1
 	db NO_ITEM ; item 2
 	dn FEMALE_12_5, 3 ; gender, step cycles to hatch
-	dn 7, 7 ; frontpic dimensions
+	INCBIN "gfx/pokemon/venusaur/front.dimensions"
 	abilities_for VENUSAUR, OVERGROW, CHLOROPHYLL, THICK_FAT
 	db MEDIUM_SLOW ; growth rate
 	dn MONSTER, PLANT ; egg groups

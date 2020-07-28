@@ -11,7 +11,7 @@ endc
 	db NO_ITEM ; item 1
 	db NO_ITEM ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
-	dn 7, 7 ; frontpic dimensions
+	INCBIN "gfx/pokemon/golduck/front.dimensions"
 	abilities_for GOLDUCK, DAMP, CLOUD_NINE, SWIFT_SWIM
 	db MEDIUM_FAST ; growth rate
 	dn AMPHIBIAN, FIELD ; egg groups

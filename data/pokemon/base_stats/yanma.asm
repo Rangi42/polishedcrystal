@@ -7,7 +7,7 @@
 	db NO_ITEM ; item 1
 	db WIDE_LENS ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
-	dn 6, 6 ; frontpic dimensions
+	INCBIN "gfx/pokemon/yanma/front.dimensions"
 	abilities_for YANMA, SPEED_BOOST, COMPOUND_EYES, FRISK
 	db MEDIUM_FAST ; growth rate
 	dn INSECT, INSECT ; egg groups

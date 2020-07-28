@@ -16,7 +16,7 @@ endc
 	db ORAN_BERRY ; item 1
 	db ORAN_BERRY ; item 2
 	dn FEMALE_75, 1 ; gender, step cycles to hatch
-	dn 6, 6 ; frontpic dimensions
+	INCBIN "gfx/pokemon/wigglytuff/front.dimensions"
 if DEF(FAITHFUL)
 	abilities_for WIGGLYTUFF, CUTE_CHARM, COMPETITIVE, FRISK
 else

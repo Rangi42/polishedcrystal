@@ -7,7 +7,7 @@
 	db NO_ITEM ; item 1
 	db NO_ITEM ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
-	dn 5, 5 ; frontpic dimensions
+	INCBIN "gfx/pokemon/pineco/front.dimensions"
 	abilities_for PINECO, STURDY, STURDY, OVERCOAT
 	db MEDIUM_FAST ; growth rate
 	dn INSECT, INSECT ; egg groups

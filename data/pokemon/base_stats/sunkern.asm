@@ -7,7 +7,7 @@
 	db NO_ITEM ; item 1
 	db STARF_BERRY ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
-	dn 5, 5 ; frontpic dimensions
+	INCBIN "gfx/pokemon/sunkern/front.dimensions"
 	abilities_for SUNKERN, CHLOROPHYLL, SOLAR_POWER, EARLY_BIRD
 	db MEDIUM_SLOW ; growth rate
 	dn PLANT, PLANT ; egg groups

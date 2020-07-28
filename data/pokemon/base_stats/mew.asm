@@ -7,7 +7,7 @@
 	db ALWAYS_ITEM_2 ; item 1
 	db LUM_BERRY ; item 2
 	dn GENDERLESS, 15 ; gender, step cycles to hatch
-	dn 5, 5 ; frontpic dimensions
+	INCBIN "gfx/pokemon/mew/front.dimensions"
 if DEF(FAITHFUL)
 	abilities_for MEW, SYNCHRONIZE, SYNCHRONIZE, SYNCHRONIZE
 else

@@ -7,7 +7,7 @@
 	db NO_ITEM ; item 1
 	db NO_ITEM ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
-	dn 6, 6 ; frontpic dimensions
+	INCBIN "gfx/pokemon/houndour/front.dimensions"
 	abilities_for HOUNDOUR, EARLY_BIRD, FLASH_FIRE, UNNERVE
 	db SLOW ; growth rate
 	dn FIELD, FIELD ; egg groups

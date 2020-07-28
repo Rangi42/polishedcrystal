@@ -7,7 +7,7 @@
 	db NO_ITEM ; item 1
 	db AMULET_COIN ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
-	dn 5, 5 ; frontpic dimensions
+	INCBIN "gfx/pokemon/meowth_plain/front.dimensions"
 	abilities_for MEOWTH, PICKUP, TECHNICIAN, UNNERVE
 	db MEDIUM_FAST ; growth rate
 	dn FIELD, FIELD ; egg groups

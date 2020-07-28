@@ -16,7 +16,7 @@ endc
 	db NO_ITEM ; item 1
 	db NO_ITEM ; item 2
 	dn FEMALE_12_5, 3 ; gender, step cycles to hatch
-	dn 7, 7 ; frontpic dimensions
+	INCBIN "gfx/pokemon/charizard/front.dimensions"
 if DEF(FAITHFUL)
 	abilities_for CHARIZARD, BLAZE, SOLAR_POWER, DROUGHT
 else

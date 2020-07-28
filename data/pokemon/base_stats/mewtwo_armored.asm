@@ -11,7 +11,7 @@ endc
 	db ALWAYS_ITEM_2 ; item 1
 	db PETAYA_BERRY ; item 2
 	dn GENDERLESS, 15 ; gender, step cycles to hatch
-	dn 7, 7 ; frontpic dimensions
+	INCBIN "gfx/pokemon/mewtwo_armored/front.dimensions"
 	db PRESSURE ; ability 1
 	db INSOMNIA ; ability 2
 	db UNNERVE ; hidden ability

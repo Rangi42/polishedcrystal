@@ -7,7 +7,7 @@
 	db NO_ITEM ; item 1
 	db LUCKY_EGG ; item 2
 	dn ALL_FEMALE, 7 ; gender, step cycles to hatch
-	dn 6, 6 ; frontpic dimensions
+	INCBIN "gfx/pokemon/chansey/front.dimensions"
 	abilities_for CHANSEY, NATURAL_CURE, SERENE_GRACE, NATURAL_CURE
 	db FAST ; growth rate
 	dn FAERY, FAERY ; egg groups

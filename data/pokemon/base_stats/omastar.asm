@@ -7,7 +7,7 @@
 	db NO_ITEM ; item 1
 	db NO_ITEM ; item 2
 	dn FEMALE_12_5, 5 ; gender, step cycles to hatch
-	dn 6, 6 ; frontpic dimensions
+	INCBIN "gfx/pokemon/omastar/front.dimensions"
 	abilities_for OMASTAR, SWIFT_SWIM, SHELL_ARMOR, WEAK_ARMOR
 	db MEDIUM_FAST ; growth rate
 	dn AMPHIBIAN, INVERTEBRATE ; egg groups

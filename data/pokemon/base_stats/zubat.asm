@@ -7,7 +7,7 @@
 	db NO_ITEM ; item 1
 	db NO_ITEM ; item 2
 	dn FEMALE_50, 2 ; gender, step cycles to hatch
-	dn 5, 5 ; frontpic dimensions
+	INCBIN "gfx/pokemon/zubat/front.dimensions"
 if DEF(FAITHFUL)
 	abilities_for ZUBAT, INNER_FOCUS, INNER_FOCUS, INFILTRATOR
 else

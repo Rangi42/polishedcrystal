@@ -12,7 +12,7 @@ endc
 	db ASPEAR_BERRY ; item 1
 	db MAGMARIZER ; item 2
 	dn FEMALE_25, 4 ; gender, step cycles to hatch
-	dn 6, 6 ; frontpic dimensions
+	INCBIN "gfx/pokemon/magby/front.dimensions"
 	abilities_for MAGBY, FLAME_BODY, FLAME_BODY, VITAL_SPIRIT
 	db MEDIUM_FAST ; growth rate
 	dn NO_EGGS, NO_EGGS ; egg groups

@@ -7,7 +7,7 @@
 	db NO_ITEM ; item 1
 	db METAL_COAT ; item 2
 	dn FEMALE_50, 4 ; gender, step cycles to hatch
-	dn 7, 7 ; frontpic dimensions
+	INCBIN "gfx/pokemon/scizor/front.dimensions"
 	abilities_for SCIZOR, SWARM, TECHNICIAN, LIGHT_METAL
 	db MEDIUM_FAST ; growth rate
 	dn INSECT, INSECT ; egg groups

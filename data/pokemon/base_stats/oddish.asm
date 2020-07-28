@@ -7,7 +7,7 @@
 	db SILVER_LEAF ; item 1
 	db SILVER_LEAF ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
-	dn 5, 5 ; frontpic dimensions
+	INCBIN "gfx/pokemon/oddish/front.dimensions"
 	abilities_for ODDISH, CHLOROPHYLL, CHLOROPHYLL, RUN_AWAY
 	db MEDIUM_SLOW ; growth rate
 	dn PLANT, PLANT ; egg groups

@@ -7,7 +7,7 @@
 	db NO_ITEM ; item 1
 	db GRIP_CLAW ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
-	dn 6, 6 ; frontpic dimensions
+	INCBIN "gfx/pokemon/sandslash_alolan/front.dimensions"
 	db SNOW_CLOAK ; ability 1
 	db SNOW_CLOAK ; ability 2
 	db SLUSH_RUSH ; hidden ability

@@ -7,7 +7,7 @@
 	db NO_ITEM ; item 1
 	db POISON_BARB ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
-	dn 5, 5 ; frontpic dimensions
+	INCBIN "gfx/pokemon/tentacool/front.dimensions"
 	abilities_for TENTACOOL, CLEAR_BODY, LIQUID_OOZE, RAIN_DISH
 	db SLOW ; growth rate
 	dn INVERTEBRATE, INVERTEBRATE ; egg groups

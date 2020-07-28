@@ -7,7 +7,7 @@
 	db NO_ITEM ; item 1
 	db NO_ITEM ; item 2
 	dn FEMALE_50, 7 ; gender, step cycles to hatch
-	dn 5, 5 ; frontpic dimensions
+	INCBIN "gfx/pokemon/larvitar/front.dimensions"
 if DEF(FAITHFUL)
 	abilities_for LARVITAR, GUTS, GUTS, SAND_VEIL
 else

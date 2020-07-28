@@ -3,7 +3,14 @@
 CC := gcc
 CFLAGS = -O3 -std=c11 -Wall -Wextra -pedantic
 
-tools := lzcomp scan_includes gfx bankends
+tools := \
+	lzcomp \
+	png_dimensions \
+	scan_includes \
+	pokemon_animation \
+	pokemon_animation_graphics \
+	gfx \
+	bankends
 
 all: $(tools)
 	@:

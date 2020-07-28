@@ -7,7 +7,7 @@
 	db NO_ITEM ; item 1
 	db METAL_COAT ; item 2
 	dn GENDERLESS, 3 ; gender, step cycles to hatch
-	dn 7, 7 ; frontpic dimensions
+	INCBIN "gfx/pokemon/magnezone/front.dimensions"
 if DEF(FAITHFUL)
 	abilities_for MAGNEZONE, MAGNET_PULL, STURDY, ANALYTIC
 else

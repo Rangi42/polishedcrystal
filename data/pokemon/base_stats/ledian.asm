@@ -16,7 +16,7 @@ endc
 	db NO_ITEM ; item 1
 	db NO_ITEM ; item 2
 	dn FEMALE_50, 2 ; gender, step cycles to hatch
-	dn 6, 6 ; frontpic dimensions
+	INCBIN "gfx/pokemon/ledian/front.dimensions"
 	abilities_for LEDIAN, SWARM, EARLY_BIRD, IRON_FIST
 	db FAST ; growth rate
 	dn INSECT, INSECT ; egg groups

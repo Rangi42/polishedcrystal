@@ -20,7 +20,7 @@ endc
 	db NO_ITEM ; item 1
 	db STICK ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
-	dn 6, 6 ; frontpic dimensions
+	INCBIN "gfx/pokemon/farfetch_d/front.dimensions"
 	abilities_for FARFETCH_D, KEEN_EYE, INNER_FOCUS, DEFIANT
 	db MEDIUM_FAST ; growth rate
 	dn AVIAN, FIELD ; egg groups

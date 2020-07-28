@@ -7,7 +7,7 @@
 	db NO_ITEM ; item 1
 	db NO_ITEM ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
-	dn 7, 7 ; frontpic dimensions
+	INCBIN "gfx/pokemon/gliscor/front.dimensions"
 	abilities_for GLISCOR, HYPER_CUTTER, SAND_VEIL, POISON_HEAL
 	db MEDIUM_SLOW ; growth rate
 	dn INSECT, INSECT ; egg groups

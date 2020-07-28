@@ -7,7 +7,7 @@
 	db NO_ITEM ; item 1
 	db NO_ITEM ; item 2
 	dn FEMALE_75, 3 ; gender, step cycles to hatch
-	dn 6, 6 ; frontpic dimensions
+	INCBIN "gfx/pokemon/snubbull/front.dimensions"
 	abilities_for SNUBBULL, INTIMIDATE, RUN_AWAY, RATTLED
 	db FAST ; growth rate
 	dn FIELD, FAERY ; egg groups

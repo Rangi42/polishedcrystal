@@ -7,7 +7,7 @@
 	db NO_ITEM ; item 1
 	db NO_ITEM ; item 2
 	dn FEMALE_12_5, 3 ; gender, step cycles to hatch
-	dn 5, 5 ; frontpic dimensions
+	INCBIN "gfx/pokemon/charmander/front.dimensions"
 	abilities_for CHARMANDER, BLAZE, SOLAR_POWER, FLAME_BODY
 	db MEDIUM_SLOW ; growth rate
 	dn MONSTER, REPTILE ; egg groups

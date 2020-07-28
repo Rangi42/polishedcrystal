@@ -11,7 +11,7 @@ endc
 	db NO_ITEM ; item 1
 	db WIDE_LENS ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
-	dn 7, 7 ; frontpic dimensions
+	INCBIN "gfx/pokemon/yanmega/front.dimensions"
 if DEF(FAITHFUL)
 	abilities_for YANMEGA, SPEED_BOOST, TINTED_LENS, FRISK
 else

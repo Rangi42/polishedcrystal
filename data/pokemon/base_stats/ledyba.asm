@@ -12,7 +12,7 @@ endc
 	db NO_ITEM ; item 1
 	db NO_ITEM ; item 2
 	dn FEMALE_50, 2 ; gender, step cycles to hatch
-	dn 6, 6 ; frontpic dimensions
+	INCBIN "gfx/pokemon/ledyba/front.dimensions"
 	abilities_for LEDYBA, SWARM, EARLY_BIRD, RATTLED
 	db FAST ; growth rate
 	dn INSECT, INSECT ; egg groups

@@ -7,7 +7,7 @@
 	db NO_ITEM ; item 1
 	db NO_ITEM ; item 2
 	dn FEMALE_12_5, 3 ; gender, step cycles to hatch
-	dn 5, 5 ; frontpic dimensions
+	INCBIN "gfx/pokemon/cyndaquil/front.dimensions"
 if DEF(FAITHFUL)
 	abilities_for CYNDAQUIL, BLAZE, BLAZE, FLASH_FIRE
 else

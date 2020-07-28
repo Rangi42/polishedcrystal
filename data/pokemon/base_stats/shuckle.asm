@@ -7,7 +7,7 @@
 	db ALWAYS_ITEM_2 ; item 1
 	db BERRY_JUICE ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
-	dn 5, 5 ; frontpic dimensions
+	INCBIN "gfx/pokemon/shuckle/front.dimensions"
 	abilities_for SHUCKLE, STURDY, GLUTTONY, CONTRARY
 	db MEDIUM_SLOW ; growth rate
 	dn INSECT, INSECT ; egg groups

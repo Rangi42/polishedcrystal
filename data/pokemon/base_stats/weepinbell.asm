@@ -7,7 +7,7 @@
 	db GOLD_LEAF ; item 1
 	db GOLD_LEAF ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
-	dn 6, 6 ; frontpic dimensions
+	INCBIN "gfx/pokemon/weepinbell/front.dimensions"
 	abilities_for WEEPINBELL, CHLOROPHYLL, CHLOROPHYLL, GLUTTONY
 	db MEDIUM_SLOW ; growth rate
 	dn PLANT, PLANT ; egg groups

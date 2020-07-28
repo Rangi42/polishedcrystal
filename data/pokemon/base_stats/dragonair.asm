@@ -7,7 +7,7 @@
 	db NO_ITEM ; item 1
 	db DRAGON_SCALE ; item 2
 	dn FEMALE_50, 7 ; gender, step cycles to hatch
-	dn 6, 6 ; frontpic dimensions
+	INCBIN "gfx/pokemon/dragonair/front.dimensions"
 	abilities_for DRAGONAIR, SHED_SKIN, SHED_SKIN, MARVEL_SCALE
 	db SLOW ; growth rate
 	dn AMPHIBIAN, REPTILE ; egg groups

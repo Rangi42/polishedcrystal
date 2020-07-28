@@ -11,7 +11,7 @@ endc
 	db NO_ITEM ; item 1
 	db MARANGABERRY ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
-	dn 7, 7 ; frontpic dimensions
+	INCBIN "gfx/pokemon/rapidash_plain/front.dimensions"
 	abilities_for RAPIDASH, RUN_AWAY, FLASH_FIRE, FLAME_BODY
 	db MEDIUM_FAST ; growth rate
 	dn FIELD, FIELD ; egg groups

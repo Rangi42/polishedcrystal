@@ -7,7 +7,7 @@
 	db NO_ITEM ; item 1
 	db NO_ITEM ; item 2
 	dn FEMALE_50, 4 ; gender, step cycles to hatch
-	dn 7, 7 ; frontpic dimensions
+	INCBIN "gfx/pokemon/mantine/front.dimensions"
 	abilities_for MANTINE, SWIFT_SWIM, WATER_ABSORB, WATER_VEIL
 	db SLOW ; growth rate
 	dn AMPHIBIAN, AMPHIBIAN ; egg groups

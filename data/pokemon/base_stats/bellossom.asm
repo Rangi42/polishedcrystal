@@ -20,7 +20,7 @@ endc
 	db NO_ITEM ; item 1
 	db ABSORB_BULB ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
-	dn 7, 7 ; frontpic dimensions
+	INCBIN "gfx/pokemon/bellossom/front.dimensions"
 if DEF(FAITHFUL)
 	abilities_for BELLOSSOM, CHLOROPHYLL, CHLOROPHYLL, CHLOROPHYLL
 else

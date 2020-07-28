@@ -7,7 +7,7 @@
 	db NO_ITEM ; item 1
 	db NO_ITEM ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
-	dn 5, 5 ; frontpic dimensions
+	INCBIN "gfx/pokemon/natu/front.dimensions"
 	abilities_for NATU, SYNCHRONIZE, EARLY_BIRD, MAGIC_BOUNCE
 	db MEDIUM_FAST ; growth rate
 	dn AVIAN, AVIAN ; egg groups

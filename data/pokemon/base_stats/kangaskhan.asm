@@ -7,7 +7,7 @@
 	db NO_ITEM ; item 1
 	db NO_ITEM ; item 2
 	dn ALL_FEMALE, 3 ; gender, step cycles to hatch
-	dn 7, 7 ; frontpic dimensions
+	INCBIN "gfx/pokemon/kangaskhan/front.dimensions"
 if DEF(FAITHFUL)
 	abilities_for KANGASKHAN, EARLY_BIRD, SCRAPPY, INNER_FOCUS
 else

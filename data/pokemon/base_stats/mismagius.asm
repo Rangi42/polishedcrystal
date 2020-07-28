@@ -16,7 +16,7 @@ endc
 	db NO_ITEM ; item 1
 	db SPELL_TAG ; item 2
 	dn FEMALE_50, 4 ; gender, step cycles to hatch
-	dn 7, 7 ; frontpic dimensions
+	INCBIN "gfx/pokemon/mismagius/front.dimensions"
 	abilities_for MISMAGIUS, LEVITATE, LEVITATE, LEVITATE
 	db FAST ; growth rate
 	dn AMORPHOUS, AMORPHOUS ; egg groups

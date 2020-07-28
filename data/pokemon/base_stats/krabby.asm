@@ -7,7 +7,7 @@
 	db NO_ITEM ; item 1
 	db NO_ITEM ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
-	dn 5, 5 ; frontpic dimensions
+	INCBIN "gfx/pokemon/krabby/front.dimensions"
 	abilities_for KRABBY, HYPER_CUTTER, SHELL_ARMOR, SHEER_FORCE
 	db MEDIUM_FAST ; growth rate
 	dn INVERTEBRATE, INVERTEBRATE ; egg groups

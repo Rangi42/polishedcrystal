@@ -16,7 +16,7 @@ endc
 	db PERSIM_BERRY ; item 1
 	db ELECTIRIZER ; item 2
 	dn FEMALE_25, 4 ; gender, step cycles to hatch
-	dn 7, 7 ; frontpic dimensions
+	INCBIN "gfx/pokemon/electivire/front.dimensions"
 	abilities_for ELECTIVIRE, MOTOR_DRIVE, MOTOR_DRIVE, VITAL_SPIRIT
 	db MEDIUM_FAST ; growth rate
 	dn HUMANSHAPE, HUMANSHAPE ; egg groups

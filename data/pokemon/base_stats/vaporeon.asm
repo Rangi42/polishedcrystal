@@ -7,7 +7,7 @@
 	db NO_ITEM ; item 1
 	db NO_ITEM ; item 2
 	dn FEMALE_12_5, 6 ; gender, step cycles to hatch
-	dn 6, 6 ; frontpic dimensions
+	INCBIN "gfx/pokemon/vaporeon/front.dimensions"
 if DEF(FAITHFUL)
 	abilities_for VAPOREON, WATER_ABSORB, WATER_ABSORB, HYDRATION
 else

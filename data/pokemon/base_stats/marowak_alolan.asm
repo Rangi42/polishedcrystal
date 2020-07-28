@@ -16,7 +16,7 @@ endc
 	db NO_ITEM ; item 1
 	db THICK_CLUB ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
-	dn 6, 6 ; frontpic dimensions
+	INCBIN "gfx/pokemon/marowak_alolan/front.dimensions"
 	db CURSED_BODY ; ability 1
 	db LIGHTNING_ROD ; ability 2
 	db ROCK_HEAD ; hidden ability

@@ -7,7 +7,7 @@
 	db NO_ITEM ; item 1
 	db MARANGABERRY ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
-	dn 7, 7 ; frontpic dimensions
+	INCBIN "gfx/pokemon/exeggcute/front.dimensions"
 	abilities_for EXEGGCUTE, CHLOROPHYLL, CHLOROPHYLL, HARVEST
 	db SLOW ; growth rate
 	dn PLANT, PLANT ; egg groups

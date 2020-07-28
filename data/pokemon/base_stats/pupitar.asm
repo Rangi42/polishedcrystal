@@ -7,7 +7,7 @@
 	db NO_ITEM ; item 1
 	db NO_ITEM ; item 2
 	dn FEMALE_50, 7 ; gender, step cycles to hatch
-	dn 6, 6 ; frontpic dimensions
+	INCBIN "gfx/pokemon/pupitar/front.dimensions"
 if DEF(FAITHFUL)
 	abilities_for PUPITAR, SHED_SKIN, SHED_SKIN, SHED_SKIN
 else

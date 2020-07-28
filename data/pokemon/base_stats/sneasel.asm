@@ -7,7 +7,7 @@
 	db GRIP_CLAW ; item 1
 	db RAZOR_CLAW ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
-	dn 6, 6 ; frontpic dimensions
+	INCBIN "gfx/pokemon/sneasel/front.dimensions"
 	abilities_for SNEASEL, INNER_FOCUS, KEEN_EYE, PICKPOCKET
 	db MEDIUM_SLOW ; growth rate
 	dn FIELD, FIELD ; egg groups

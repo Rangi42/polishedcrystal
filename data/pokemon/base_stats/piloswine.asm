@@ -7,7 +7,7 @@
 	db RAWST_BERRY ; item 1
 	db NEVERMELTICE ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
-	dn 6, 6 ; frontpic dimensions
+	INCBIN "gfx/pokemon/piloswine/front.dimensions"
 	abilities_for PILOSWINE, OBLIVIOUS, SNOW_CLOAK, THICK_FAT
 	db SLOW ; growth rate
 	dn FIELD, FIELD ; egg groups

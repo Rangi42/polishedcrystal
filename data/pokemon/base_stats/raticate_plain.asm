@@ -12,7 +12,7 @@ endc
 	db NO_ITEM ; item 1
 	db LANSAT_BERRY ; item 2
 	dn FEMALE_50, 2 ; gender, step cycles to hatch
-	dn 6, 6 ; frontpic dimensions
+	INCBIN "gfx/pokemon/raticate_plain/front.dimensions"
 	abilities_for RATICATE, RUN_AWAY, GUTS, HUSTLE
 	db MEDIUM_FAST ; growth rate
 	dn FIELD, FIELD ; egg groups

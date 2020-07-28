@@ -7,7 +7,7 @@
 	db LEPPA_BERRY ; item 1
 	db MOON_STONE ; item 2
 	dn FEMALE_75, 1 ; gender, step cycles to hatch
-	dn 5, 5 ; frontpic dimensions
+	INCBIN "gfx/pokemon/clefairy/front.dimensions"
 	abilities_for CLEFAIRY, CUTE_CHARM, MAGIC_GUARD, CUTE_CHARM
 	db FAST ; growth rate
 	dn FAERY, FAERY ; egg groups

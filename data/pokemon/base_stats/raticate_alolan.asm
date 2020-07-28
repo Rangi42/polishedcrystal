@@ -12,7 +12,7 @@ endc
 	db NO_ITEM ; item 1
 	db PECHA_BERRY ; item 2
 	dn FEMALE_50, 2 ; gender, step cycles to hatch
-	dn 6, 6 ; frontpic dimensions
+	INCBIN "gfx/pokemon/raticate_alolan/front.dimensions"
 	db GLUTTONY ; ability 1
 	db HUSTLE ; ability 2
 	db THICK_FAT ; hidden ability

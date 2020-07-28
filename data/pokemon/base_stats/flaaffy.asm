@@ -17,7 +17,7 @@ endc
 	db NO_ITEM ; item 1
 	db NO_ITEM ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
-	dn 6, 6 ; frontpic dimensions
+	INCBIN "gfx/pokemon/flaaffy/front.dimensions"
 if DEF(FAITHFUL)
 	abilities_for FLAAFFY, STATIC, STATIC, STATIC
 else

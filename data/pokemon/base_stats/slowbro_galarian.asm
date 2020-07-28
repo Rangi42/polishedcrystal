@@ -12,7 +12,7 @@ endc
 	db NO_ITEM ; item 1
 	db KINGS_ROCK ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
-	dn 7, 7 ; frontpic dimensions
+	INCBIN "gfx/pokemon/slowbro_galarian/front.dimensions"
 	db GLUTTONY ; ability 1
 	db OWN_TEMPO ; ability 2
 	db REGENERATOR ; hidden ability
