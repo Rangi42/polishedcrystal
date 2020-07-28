@@ -3020,10 +3020,10 @@ PorygonEvosAttacks:
 	db 12, AGILITY
 	db 18, RECOVER
 	db 23, GROWTH ; Magnet Rise → new move
-	db 29, ICE_BEAM ; Signal Beam → TM move
-	db 34, BARRIER ; Recycle → event move
-	db 40, THUNDERBOLT ; Discharge → TM move
-	db 45, MIRROR_COAT ; Lock-On → new move
+	db 29, AURORA_BEAM ; Signal Beam → new move
+	db 34, THUNDER_WAVE ; Recycle → TM move
+	db 40, BARRIER ; Discharge → event move
+	db 45, THUNDERBOLT ; Lock-On → TM move
 	db 50, TRI_ATTACK
 	db 56, MIRROR_COAT ; Magic Coat → new move
 	db 62, ZAP_CANNON
@@ -4744,16 +4744,16 @@ CorsolaEvosAttacks:
 	db 1, TACKLE
 	db 1, DEFENSE_CURL ; Harden → similar move
 	db 4, WATER_GUN ; Bubble → similar move
-	db 8, RECOVER
+	db 8, ROLLOUT ; Recover → TM move
 	db 10, BUBBLE_BEAM
 	db 13, SAFEGUARD ; Refresh → egg move
 	db 17, ANCIENTPOWER
-	db 20, ICICLE_SPEAR ; Spike Cannon → new move
+	db 20, ICICLE_SPEAR ; Spike Cannon → egg move
 	db 23, CONFUSE_RAY ; Lucky Chant → egg move
 	db 27, ENDURE ; Brine → Endure
 	db 29, BARRIER ; Iron Defense → similar move
 	db 31, ROCK_BLAST
-	db 35, RECOVER ; Endure → new move
+	db 35, RECOVER ; Endure → Recover
 	db 38, HYDRO_PUMP ; Aqua Ring → Sw/Sh move
 	db 41, POWER_GEM
 	db 45, MIRROR_COAT
@@ -4951,10 +4951,10 @@ Porygon2EvosAttacks:
 	db 12, AGILITY
 	db 18, RECOVER
 	db 23, GROWTH ; Magnet Rise → new move
-	db 29, ICE_BEAM ; Signal Beam → TM move
-	db 34, BARRIER ; Recycle → event move
-	db 40, THUNDERBOLT ; Discharge → TM move
-	db 45, MIRROR_COAT ; Lock-On → new move
+	db 29, AURORA_BEAM ; Signal Beam → new move
+	db 34, THUNDER_WAVE ; Recycle → TM move
+	db 40, BARRIER ; Discharge → event move
+	db 45, THUNDERBOLT ; Lock-On → TM move
 	db 50, TRI_ATTACK
 	db 56, MIRROR_COAT ; Magic Coat → new move
 	db 62, ZAP_CANNON
@@ -4971,10 +4971,10 @@ PorygonZEvosAttacks:
 	db 12, AGILITY
 	db 18, RECOVER
 	db 23, GROWTH ; Magnet Rise → new move
-	db 29, ICE_BEAM ; Signal Beam → TM move
+	db 29, AURORA_BEAM ; Signal Beam → new move
 	db 34, PAIN_SPLIT ; Embargo → HGSS tutor move
-	db 40, THUNDERBOLT ; Discharge → TM move
-	db 45, MIRROR_COAT ; Lock-On → new move
+	db 40, BARRIER ; Discharge → event move
+	db 45, THUNDERBOLT ; Lock-On → TM move
 	db 50, TRI_ATTACK
 	db 56, MIRROR_COAT ; Magic Coat → new move
 	db 62, ZAP_CANNON

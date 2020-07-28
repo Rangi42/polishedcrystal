@@ -412,7 +412,6 @@ KrabbyEggMoves:
 ExeggcuteEggMoves:
 	db MEGA_DRAIN
 	db HEALINGLIGHT
-	db HEALINGLIGHT
 	db ANCIENTPOWER
 	db REFLECT
 	db $ff
