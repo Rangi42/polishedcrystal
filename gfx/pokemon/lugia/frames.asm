@@ -6,7 +6,6 @@
 	dw .frame6
 	dw .frame7
 	dw .frame8
-	dw .frame9
 .frame1
 	db $00 ; bitmask
 	db $03, $31, $32, $03, $33, $34, $03, $35, $36, $03, $37, $38
@@ -37,7 +36,4 @@
 .frame8
 	db $07 ; bitmask
 	db $5e, $59, $4f, $50, $54, $55
-.frame9
-	db $08 ; bitmask
-	db $5e, $59
 ; 0xd98c4
