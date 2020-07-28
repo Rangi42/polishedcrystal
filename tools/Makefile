@@ -16,7 +16,7 @@ all: $(tools)
 	@:
 
 clean:
-	rm -f $(tools) *.o
+	rm -f $(tools) *.o *.h.gch *.pyc
 
 lzcomp: CFLAGS += -flto -Wno-strict-overflow -Wno-sign-compare
 lzcomp: $(wildcard lz/*.c) $(wildcard lz/*.h)

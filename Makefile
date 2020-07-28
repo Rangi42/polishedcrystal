@@ -66,7 +66,7 @@ gfx/misc.o
 
 
 .SUFFIXES:
-.PHONY: all clean crystal faithful nortc debug monochrome freespace compare tools
+.PHONY: all clean tidy crystal faithful nortc debug monochrome freespace compare tools
 .SECONDEXPANSION:
 .PRECIOUS: %.2bpp %.1bpp
 .SECONDARY:
@@ -91,6 +91,15 @@ tools:
 
 clean:
 	rm -f $(crystal_obj) $(wildcard $(NAME)-*.gbc) $(wildcard $(NAME)-*.map) $(wildcard $(NAME)-*.sym)
+	find gfx maps data/tilesets -name '*.lz' -delete
+	find gfx \( -name '*.[12]bpp' -o -name '*.2bpp.vram[012]' \) -delete
+	find gfx/pokemon -mindepth 1 -name 'front.dimensions' -delete
+	find data/tilesets -name '*_collision.bin' -delete
+	$(MAKE) clean -C tools/
+
+tidy:
+	rm -f $(crystal_obj) $(wildcard $(NAME)-*.gbc) $(wildcard $(NAME)-*.map) $(wildcard $(NAME)-*.sym)
+	$(MAKE) clean -C tools/
 
 compare: crystal
 	md5sum -b -c $(roms_md5)
