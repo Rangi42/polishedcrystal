@@ -93,7 +93,7 @@ clean:
 	rm -f $(crystal_obj) $(wildcard $(NAME)-*.gbc) $(wildcard $(NAME)-*.map) $(wildcard $(NAME)-*.sym)
 	find gfx maps data/tilesets -name '*.lz' -delete
 	find gfx \( -name '*.[12]bpp' -o -name '*.2bpp.vram[012]' \) -delete
-	find gfx/pokemon -mindepth 1 -name 'front.dimensions' -delete
+	find gfx/pokemon -mindepth 1 \( -name 'bitmask.asm' -o -name 'frames.asm' -o -name 'front.animated.tilemap' -o -name 'front.dimensions' \) -delete
 	find data/tilesets -name '*_collision.bin' -delete
 	$(MAKE) clean -C tools/
 
@@ -120,7 +120,7 @@ $1: $2 $$(shell tools/scan_includes $2)
 	$$(RGBDS_DIR)rgbasm $$(RGBASM_FLAGS) -L -o $$@ $$<
 endef
 
-ifeq (,$(filter clean tools,$(MAKECMDGOALS)))
+ifeq (,$(filter clean tidy tools,$(MAKECMDGOALS)))
 $(info $(shell $(MAKE) -C tools))
 $(foreach obj, $(crystal_obj), $(eval $(call DEP,$(obj),$(obj:.o=.asm))))
 endif
@@ -206,6 +206,16 @@ gfx/trainers/%.2bpp: rgbgfx += -h
 gfx/type_chart/bg.2bpp: tools/gfx += --remove-duplicates --remove-xflip --remove-yflip
 gfx/type_chart/bg0.2bpp: gfx/type_chart/bg.2bpp.vram1 gfx/type_chart/bg.2bpp.vram0 ; cat $^ > $@
 gfx/type_chart/ob.2bpp: tools/gfx += --interleave --png=$<
+
+
+gfx/pokemon/%/front.animated.2bpp: gfx/pokemon/%/front.2bpp gfx/pokemon/%/front.dimensions
+	tools/pokemon_animation_graphics -o $@ $^
+gfx/pokemon/%/front.animated.tilemap: gfx/pokemon/%/front.2bpp gfx/pokemon/%/front.dimensions
+	tools/pokemon_animation_graphics -t $@ $^
+gfx/pokemon/%/bitmask.asm: gfx/pokemon/%/front.animated.tilemap gfx/pokemon/%/front.dimensions
+	tools/pokemon_animation -b $^ > $@
+gfx/pokemon/%/frames.asm: gfx/pokemon/%/front.animated.tilemap gfx/pokemon/%/front.dimensions
+	tools/pokemon_animation -f $^ > $@
 
 
 %.lz: %

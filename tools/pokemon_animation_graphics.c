@@ -11,12 +11,6 @@ static void usage(void) {
 	exit(1);
 }
 
-struct Options {
-	int girafarig;
-};
-
-struct Options Options = {0};
-
 
 struct Tilemap {
 	uint8_t* data;
@@ -128,9 +122,7 @@ void create_tilemap(struct Tilemap* tilemap, struct Graphic* graphic, char* grap
 	for (i = num_tiles; i < tilemap_size; i++) {
 		int preferred = i % num_tiles_per_frame;
 		int index = get_tile_index(graphics + i * tile_size, graphics, i, preferred);
-		if (Options.girafarig && index == 0) {
-			tile = num_tiles;
-		} else if (index == -1) {
+		if (index == -1) {
 			tile = num_tiles++;
 		} else {
 			tile = tilemap->data[index];
@@ -140,11 +132,6 @@ void create_tilemap(struct Tilemap* tilemap, struct Graphic* graphic, char* grap
 	}
 
 	int graphic_size = tilemap->size * 16;
-	if (Options.girafarig) {
-		// This is probably not needed, but just in case...
-		graphic_size += 16;
-	}
-
 	graphic->data = malloc(graphic_size);
 	graphic->size = 16 * width * height;
 	memcpy(graphic->data, graphics, graphic->size);
@@ -155,12 +142,6 @@ void create_tilemap(struct Tilemap* tilemap, struct Graphic* graphic, char* grap
 			graphic->size += 16;
 		}
 	}
-	if (Options.girafarig) {
-		// Add a duplicate of tile 0 to the end.
-		memcpy(graphic->data + graphic->size, graphics, 16);
-		graphic->size += 16;
-	}
-
 	free(graphics);
 }
 
@@ -178,7 +159,6 @@ int main(int argc, char* argv[]) {
 
 	while (1) {
 		struct option long_options[] = {
-			{"girafarig", no_argument, &Options.girafarig, 1},
 			{"tilemap", required_argument, 0, 't'},
 			{"output", required_argument, 0, 'o'},
 			{0}

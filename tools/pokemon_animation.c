@@ -29,12 +29,12 @@ struct Bitmasks {
 };
 
 
-void make_frames(struct Frames* frames, struct Bitmasks* bitmasks, char* tilemap_filename, char* dimensions_filename);
+int make_frames(struct Frames* frames, struct Bitmasks* bitmasks, char* tilemap_filename, char* dimensions_filename);
 int bitmask_exists(struct Bitmask *bitmask, struct Bitmasks *bitmasks);
-void print_frames(struct Frames* frames);
+void print_frames(struct Frames* frames, int frame_size);
 
 
-void make_frames(struct Frames* frames, struct Bitmasks* bitmasks, char* tilemap_filename, char* dimensions_filename) {
+int make_frames(struct Frames* frames, struct Bitmasks* bitmasks, char* tilemap_filename, char* dimensions_filename) {
 	uint8_t* tilemap;
 	uint8_t* this_frame;
 	FILE* f;
@@ -88,7 +88,6 @@ void make_frames(struct Frames* frames, struct Bitmasks* bitmasks, char* tilemap
 	frame_size = width * height;
 
 	num_frames = size / frame_size - 1;
-	//fprintf(stderr, "num_frames: %d\n", num_frames);
 
 	bitmasks->bitmasks = malloc((sizeof (struct Bitmask)) * num_frames);
 	bitmasks->num_bitmasks = 0;
@@ -118,8 +117,8 @@ void make_frames(struct Frames* frames, struct Bitmasks* bitmasks, char* tilemap
 			}
 			bitmask->bitlength++;
 		}
-		// I don't remember exactly why this works.
-		// I think it was that the bits are read backwards, but not indexed backwards.
+		// Bits and bytes are both little-endian:
+		// tile order ABCDEFGHIJKLMNOP becomes db order %HGFEDCBA %PONMLKJI.
 		int last = bitmask->bitlength - 1;
 		bitmask->data[last / 8] >>= (7 - (last % 8));
 
@@ -137,22 +136,9 @@ void make_frames(struct Frames* frames, struct Bitmasks* bitmasks, char* tilemap
 		this_frame += frame_size;
 	}
 
-	//for (i = 0; i < frames->num_frames; i++) {
-		//free(frames->frames[i].data);
-		//free(frames->frames[i]);
-	//}
-	//free(frames->frames);
-
-	//fprintf(stderr, "num bitmasks: %d\n", bitmasks->num_bitmasks);
-	//for (i = 0; i < bitmasks->num_bitmasks; i++) {
-	//	free(bitmasks->bitmasks[i].data);
-	//	fprintf(stderr, "freed bitmask %d\n", i);
-		//free(bitmasks->bitmasks[i]);
-	//}
-	//free(bitmasks->bitmasks);
-	//fprintf(stderr, "freed bitmasks\n");
-
 	free(tilemap);
+
+	return frame_size;
 }
 
 int bitmask_exists(struct Bitmask *bitmask, struct Bitmasks *bitmasks) {
@@ -177,9 +163,10 @@ int bitmask_exists(struct Bitmask *bitmask, struct Bitmasks *bitmasks) {
 	return -1;
 }
 
-void print_frames(struct Frames* frames) {
+void print_frames(struct Frames* frames, int frame_size) {
 	int i;
 	int j;
+	uint8_t limit = 0x7f - (7 * 7 - frame_size);
 	for (i = 0; i < frames->num_frames; i++) {
 		printf("\tdw .frame%d\n", i + 1);
 	}
@@ -189,13 +176,17 @@ void print_frames(struct Frames* frames) {
 		printf("\tdb $%02x ; bitmask\n", frame->bitmask);
 		if (frame->size > 0) {
 			for (j = 0; j < frame->size; j++) {
+				uint8_t offset = frame->data[j];
+				if (offset >= limit) {
+					offset++;
+				}
 				if (j % 12 == 0) {
 					if (j) {
 						printf("\n");
 					}
-					printf("\tdb $%02x", frame->data[j]);
+					printf("\tdb $%02x", offset);
 				} else {
-					printf(", $%02x", frame->data[j]);
+					printf(", $%02x", offset);
 				}
 			}
 			printf("\n");
@@ -267,14 +258,9 @@ int main(int argc, char* argv[]) {
 	tilemap_filename = argv[0];
 	dimensions_filename = argv[1];
 
-	//ext = strrchr(argv[3], '.');
-	//if (!ext || ext == argv[3]) {
-	//	fprintf(stderr, "need a file extension to determine what to write to %s\n", argv[3]);
-	//}
-
-	make_frames(&frames, &bitmasks, tilemap_filename, dimensions_filename);
+	int frame_size = make_frames(&frames, &bitmasks, tilemap_filename, dimensions_filename);
 	if (use_frames) {
-		print_frames(&frames);
+		print_frames(&frames, frame_size);
 	}
 	if (use_bitmasks) {
 		print_bitmasks(&bitmasks);

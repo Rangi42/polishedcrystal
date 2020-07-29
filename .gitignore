@@ -13,7 +13,10 @@
 *.2bpp.vram0
 *.2bpp.vram1
 *.2bpp.vram2
-*.dimensions
+gfx/pokemon/*/*.dimensions
+gfx/pokemon/*/*.animated.tilemap
+gfx/pokemon/*/bitmask.asm
+gfx/pokemon/*/frames.asm
 data/tilesets/*_collision.bin
 
 # local tools
