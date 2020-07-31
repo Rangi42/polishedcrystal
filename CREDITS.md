@@ -35,6 +35,7 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * Pigu and GACT for some battle music (used in TPP Anniversary Crystal 251).
 * ShockSlayer for some Pokémon Go and Pokémon Stadium battle music.
 * Monstarules for the RSE Surf music.
+* TriteHexagon for the Kanto wild night battle music.
 * LevusBevus, GRonnoc, Cat333Pokemon, and KoolBoyMan for some music from Pokémon Prism (available in the music player).
 
 

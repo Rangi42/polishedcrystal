@@ -2,6 +2,7 @@
 	const JOHTO_REGION
 	const KANTO_REGION
 	const ORANGE_REGION
+NUM_REGIONS EQU const_value
 
 
 	const_def

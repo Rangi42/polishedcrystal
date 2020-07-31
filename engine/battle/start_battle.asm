@@ -141,17 +141,16 @@ PlayBattleMusic:
 	push hl
 	call RegionCheck
 	pop hl
-	ld a, e
-	and a ; Johto
-	jr nz, .ok
 	ld a, [wTimeOfDay]
 	cp NITE
-	jr nz, .ok
-	ld e, 3 ; Johto at night
-
+	ld a, NUM_REGIONS
+	jr z, .ok
+	xor a
 .ok
+	add e
+	add a
+	ld e, a
 	ld d, 0
-	add hl, de
 	add hl, de
 .found
 	ld a, [hli]

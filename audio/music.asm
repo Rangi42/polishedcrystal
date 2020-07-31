@@ -218,8 +218,9 @@ INCLUDE "audio/music/kantogymbattle.asm"
 SECTION "Song - lavendertown", ROMX
 INCLUDE "audio/music/lavendertown.asm"
 
-SECTION "Song - kantowildbattle", ROMX
+SECTION "Song - kantowildbattle + kantowildbattlenight", ROMX
 INCLUDE "audio/music/kantowildbattle.asm"
+INCLUDE "audio/music/kantowildbattlenight.asm"
 
 SECTION "Song - magnettrain", ROMX
 INCLUDE "audio/music/magnettrain.asm"

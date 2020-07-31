@@ -60,12 +60,13 @@ NUM_MP_EDIT_FIELDS EQU const_value
 	const COMPOSER_PIGU                          ; 0f
 	const COMPOSER_SHOCKSLAYER                   ; 10
 	const COMPOSER_MONSTARULES                   ; 11
-	const COMPOSER_PIGU_PIKALAXALT               ; 12
-	const COMPOSER_GACT_PIGU                     ; 13
-	const COMPOSER_LEVUSBEVUS                    ; 14
-	const COMPOSER_GACT                          ; 15
-	const COMPOSER_GRONNOC                       ; 16
-	const COMPOSER_CAT333POKEMON                 ; 17
-	const COMPOSER_NOTFROGGESTSPIRIT             ; 18
-	const COMPOSER_TOBY_FOX                      ; 19
-	const COMPOSER_SHINKONETCAVY_SHOCKSLAYER     ; 1a
+	const COMPOSER_TRITEHEXAGON                  ; 12
+	const COMPOSER_PIGU_PIKALAXALT               ; 13
+	const COMPOSER_GACT_PIGU                     ; 14
+	const COMPOSER_LEVUSBEVUS                    ; 15
+	const COMPOSER_GACT                          ; 16
+	const COMPOSER_GRONNOC                       ; 17
+	const COMPOSER_CAT333POKEMON                 ; 18
+	const COMPOSER_NOTFROGGESTSPIRIT             ; 19
+	const COMPOSER_TOBY_FOX                      ; 1a
+	const COMPOSER_SHINKONETCAVY_SHOCKSLAYER     ; 1b
