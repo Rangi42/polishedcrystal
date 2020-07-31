@@ -2400,10 +2400,10 @@ AI_Aggressive:
 	add hl, bc
 	ld a, [hl]
 	cp 60
+	jr nc, .nodamage
 	pop bc
 	pop de
 	pop hl
-	jr nc, .nodamage
 
 ; Update current move if damage is highest so far
 	ld a, [wCurDamage + 1]
