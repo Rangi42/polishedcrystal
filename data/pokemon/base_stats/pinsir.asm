@@ -7,7 +7,7 @@
 	db NO_ITEM ; item 1
 	db NO_ITEM ; item 2
 	dn FEMALE_50, 4 ; gender, step cycles to hatch
-	dn 7, 7 ; frontpic dimensions
+	INCBIN "gfx/pokemon/pinsir/front.dimensions"
 	abilities_for PINSIR, HYPER_CUTTER, MOLD_BREAKER, MOXIE
 	db SLOW ; growth rate
 	dn INSECT, INSECT ; egg groups

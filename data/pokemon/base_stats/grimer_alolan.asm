@@ -7,7 +7,7 @@
 	db BLACK_SLUDGE ; item 1
 	db NUGGET ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
-	dn 5, 5 ; frontpic dimensions
+	INCBIN "gfx/pokemon/grimer_alolan/front.dimensions"
 	db POISON_TOUCH ; ability 1
 	db GLUTTONY ; ability 2
 	db CORROSION ; hidden ability

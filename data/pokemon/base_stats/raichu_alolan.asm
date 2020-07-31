@@ -16,7 +16,7 @@ endc
 	db ORAN_BERRY ; item 1
 	db LIGHT_BALL ; item 2
 	dn FEMALE_50, 1 ; gender, step cycles to hatch
-	dn 7, 7 ; frontpic dimensions
+	INCBIN "gfx/pokemon/raichu_alolan/front.dimensions"
 	db STATIC ; ability 1
 	db STATIC ; ability 2
 	db MOTOR_DRIVE ; hidden ability

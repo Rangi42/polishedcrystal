@@ -7,7 +7,7 @@
 	db GRIP_CLAW ; item 1
 	db QUICK_CLAW ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
-	dn 7, 7 ; frontpic dimensions
+	INCBIN "gfx/pokemon/weavile/front.dimensions"
 if DEF(FAITHFUL)
 	abilities_for WEAVILE, PRESSURE, PRESSURE, PICKPOCKET
 else

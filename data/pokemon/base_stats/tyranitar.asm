@@ -7,7 +7,7 @@
 	db NO_ITEM ; item 1
 	db NO_ITEM ; item 2
 	dn FEMALE_50, 7 ; gender, step cycles to hatch
-	dn 7, 7 ; frontpic dimensions
+	INCBIN "gfx/pokemon/tyranitar/front.dimensions"
 if DEF(FAITHFUL)
 	abilities_for TYRANITAR, SAND_STREAM, SAND_STREAM, UNNERVE
 else

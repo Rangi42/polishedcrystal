@@ -7,7 +7,7 @@
 	db NO_ITEM ; item 1
 	db NO_ITEM ; item 2
 	dn FEMALE_50, 2 ; gender, step cycles to hatch
-	dn 6, 6 ; frontpic dimensions
+	INCBIN "gfx/pokemon/pidgeotto/front.dimensions"
 	abilities_for PIDGEOTTO, KEEN_EYE, TANGLED_FEET, BIG_PECKS
 	db MEDIUM_SLOW ; growth rate
 	dn AVIAN, AVIAN ; egg groups

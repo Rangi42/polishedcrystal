@@ -7,7 +7,7 @@
 	db NO_ITEM ; item 1
 	db NO_ITEM ; item 2
 	dn FEMALE_50, 2 ; gender, step cycles to hatch
-	dn 5, 5 ; frontpic dimensions
+	INCBIN "gfx/pokemon/caterpie/front.dimensions"
 	abilities_for CATERPIE, SHIELD_DUST, SHIELD_DUST, RUN_AWAY
 	db MEDIUM_FAST ; growth rate
 	dn INSECT, INSECT ; egg groups

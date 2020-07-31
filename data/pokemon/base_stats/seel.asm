@@ -7,7 +7,7 @@
 	db NO_ITEM ; item 1
 	db RAWST_BERRY ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
-	dn 6, 6 ; frontpic dimensions
+	INCBIN "gfx/pokemon/seel/front.dimensions"
 	abilities_for SEEL, THICK_FAT, HYDRATION, ICE_BODY
 	db MEDIUM_FAST ; growth rate
 	dn AMPHIBIAN, FIELD ; egg groups

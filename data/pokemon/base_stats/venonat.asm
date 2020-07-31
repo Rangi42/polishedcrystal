@@ -7,7 +7,7 @@
 	db NO_ITEM ; item 1
 	db NO_ITEM ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
-	dn 5, 5 ; frontpic dimensions
+	INCBIN "gfx/pokemon/venonat/front.dimensions"
 	abilities_for VENONAT, COMPOUND_EYES, TINTED_LENS, RUN_AWAY
 	db MEDIUM_FAST ; growth rate
 	dn INSECT, INSECT ; egg groups

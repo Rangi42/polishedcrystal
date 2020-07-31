@@ -7,7 +7,7 @@
 	db NO_ITEM ; item 1
 	db TWISTEDSPOON ; item 2
 	dn FEMALE_25, 3 ; gender, step cycles to hatch
-	dn 6, 6 ; frontpic dimensions
+	INCBIN "gfx/pokemon/kadabra/front.dimensions"
 	abilities_for KADABRA, SYNCHRONIZE, MAGIC_GUARD, TRACE
 	db MEDIUM_SLOW ; growth rate
 	dn HUMANSHAPE, HUMANSHAPE ; egg groups

@@ -12,7 +12,7 @@ endc
 	db NO_ITEM ; item 1
 	db CHESTO_BERRY ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
-	dn 6, 6 ; frontpic dimensions
+	INCBIN "gfx/pokemon/quagsire/front.dimensions"
 	abilities_for QUAGSIRE, DAMP, WATER_ABSORB, UNAWARE
 	db MEDIUM_FAST ; growth rate
 	dn AMPHIBIAN, FIELD ; egg groups

@@ -7,7 +7,7 @@
 	db NO_ITEM ; item 1
 	db TWISTEDSPOON ; item 2
 	dn FEMALE_25, 3 ; gender, step cycles to hatch
-	dn 7, 7 ; frontpic dimensions
+	INCBIN "gfx/pokemon/alakazam/front.dimensions"
 	abilities_for ALAKAZAM, SYNCHRONIZE, MAGIC_GUARD, TRACE
 	db MEDIUM_SLOW ; growth rate
 	dn HUMANSHAPE, HUMANSHAPE ; egg groups

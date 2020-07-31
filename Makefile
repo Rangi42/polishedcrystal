@@ -66,7 +66,7 @@ gfx/misc.o
 
 
 .SUFFIXES:
-.PHONY: all clean crystal faithful nortc debug monochrome freespace compare tools
+.PHONY: all clean tidy crystal faithful nortc debug monochrome freespace compare tools
 .SECONDEXPANSION:
 .PRECIOUS: %.2bpp %.1bpp
 .SECONDARY:
@@ -91,6 +91,15 @@ tools:
 
 clean:
 	rm -f $(crystal_obj) $(wildcard $(NAME)-*.gbc) $(wildcard $(NAME)-*.map) $(wildcard $(NAME)-*.sym)
+	find gfx maps data/tilesets -name '*.lz' -delete
+	find gfx \( -name '*.[12]bpp' -o -name '*.2bpp.vram[012]' \) -delete
+	find gfx/pokemon -mindepth 1 \( -name 'bitmask.asm' -o -name 'frames.asm' -o -name 'front.animated.tilemap' -o -name 'front.dimensions' \) -delete
+	find data/tilesets -name '*_collision.bin' -delete
+	$(MAKE) clean -C tools/
+
+tidy:
+	rm -f $(crystal_obj) $(wildcard $(NAME)-*.gbc) $(wildcard $(NAME)-*.map) $(wildcard $(NAME)-*.sym)
+	$(MAKE) clean -C tools/
 
 compare: crystal
 	md5sum -b -c $(roms_md5)
@@ -111,7 +120,7 @@ $1: $2 $$(shell tools/scan_includes $2)
 	$$(RGBDS_DIR)rgbasm $$(RGBASM_FLAGS) -L -o $$@ $$<
 endef
 
-ifeq (,$(filter clean tools,$(MAKECMDGOALS)))
+ifeq (,$(filter clean tidy tools,$(MAKECMDGOALS)))
 $(info $(shell $(MAKE) -C tools))
 $(foreach obj, $(crystal_obj), $(eval $(call DEP,$(obj),$(obj:.o=.asm))))
 endif
@@ -184,7 +193,8 @@ gfx/title/crystal.2bpp: tools/gfx += --interleave --png=$<
 gfx/title/logo.2bpp: rgbgfx += -x 4
 
 gfx/trade/ball.2bpp: tools/gfx += --remove-whitespace
-gfx/trade/game_boy.2bpp: tools/gfx += --remove-duplicates --preserve=0x23,0x27
+gfx/trade/game_boy.2bpp: tools/gfx += --remove-duplicates
+gfx/trade/link_cable.2bpp: tools/gfx += --remove-duplicates
 gfx/trade/ball_poof_cable.2bpp: gfx/trade/ball.2bpp gfx/trade/poof.2bpp gfx/trade/cable.2bpp ; cat $^ > $@
 gfx/trade/game_boy_cable.2bpp: gfx/trade/game_boy.2bpp gfx/trade/link_cable.2bpp ; cat $^ > $@
 
@@ -196,6 +206,16 @@ gfx/trainers/%.2bpp: rgbgfx += -h
 gfx/type_chart/bg.2bpp: tools/gfx += --remove-duplicates --remove-xflip --remove-yflip
 gfx/type_chart/bg0.2bpp: gfx/type_chart/bg.2bpp.vram1 gfx/type_chart/bg.2bpp.vram0 ; cat $^ > $@
 gfx/type_chart/ob.2bpp: tools/gfx += --interleave --png=$<
+
+
+gfx/pokemon/%/front.animated.2bpp: gfx/pokemon/%/front.2bpp gfx/pokemon/%/front.dimensions
+	tools/pokemon_animation_graphics -o $@ $^
+gfx/pokemon/%/front.animated.tilemap: gfx/pokemon/%/front.2bpp gfx/pokemon/%/front.dimensions
+	tools/pokemon_animation_graphics -t $@ $^
+gfx/pokemon/%/bitmask.asm: gfx/pokemon/%/front.animated.tilemap gfx/pokemon/%/front.dimensions
+	tools/pokemon_animation -b $^ > $@
+gfx/pokemon/%/frames.asm: gfx/pokemon/%/front.animated.tilemap gfx/pokemon/%/front.dimensions
+	tools/pokemon_animation -f $^ > $@
 
 
 %.lz: %
@@ -219,6 +239,9 @@ gfx/type_chart/ob.2bpp: tools/gfx += --interleave --png=$<
 
 %.2bpp.vram2: %.2bpp
 	tools/sub_2bpp.sh $< 256 128 > $@
+
+%.dimensions: %.png
+	tools/png_dimensions $< $@
 
 data/tilesets/%_collision.bin: data/tilesets/%_collision.asm
 	RGBDS_DIR=$(RGBDS_DIR) tools/collision_asm2bin.sh $< $@

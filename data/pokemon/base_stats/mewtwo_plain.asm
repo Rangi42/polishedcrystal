@@ -7,7 +7,7 @@
 	db ALWAYS_ITEM_2 ; item 1
 	db PETAYA_BERRY ; item 2
 	dn GENDERLESS, 15 ; gender, step cycles to hatch
-	dn 7, 7 ; frontpic dimensions
+	INCBIN "gfx/pokemon/mewtwo_plain/front.dimensions"
 	abilities_for MEWTWO, PRESSURE, INSOMNIA, UNNERVE
 	db SLOW ; growth rate
 	dn NO_EGGS, NO_EGGS ; egg groups

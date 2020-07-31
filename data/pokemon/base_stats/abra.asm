@@ -7,7 +7,7 @@
 	db NO_ITEM ; item 1
 	db TWISTEDSPOON ; item 2
 	dn FEMALE_25, 3 ; gender, step cycles to hatch
-	dn 5, 5 ; frontpic dimensions
+	INCBIN "gfx/pokemon/abra/front.dimensions"
 	abilities_for ABRA, SYNCHRONIZE, MAGIC_GUARD, TRACE
 	db MEDIUM_SLOW ; growth rate
 	dn HUMANSHAPE, HUMANSHAPE ; egg groups

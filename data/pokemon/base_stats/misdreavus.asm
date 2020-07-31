@@ -7,7 +7,7 @@
 	db NO_ITEM ; item 1
 	db SPELL_TAG ; item 2
 	dn FEMALE_50, 4 ; gender, step cycles to hatch
-	dn 6, 6 ; frontpic dimensions
+	INCBIN "gfx/pokemon/misdreavus/front.dimensions"
 	abilities_for MISDREAVUS, LEVITATE, LEVITATE, LEVITATE
 	db FAST ; growth rate
 	dn AMORPHOUS, AMORPHOUS ; egg groups

@@ -3,13 +3,20 @@
 CC := gcc
 CFLAGS = -O3 -std=c11 -Wall -Wextra -pedantic
 
-tools := lzcomp scan_includes gfx bankends
+tools := \
+	lzcomp \
+	png_dimensions \
+	scan_includes \
+	pokemon_animation \
+	pokemon_animation_graphics \
+	gfx \
+	bankends
 
 all: $(tools)
 	@:
 
 clean:
-	rm -f $(tools) *.o
+	rm -f $(tools) *.o *.h.gch *.pyc
 
 lzcomp: CFLAGS += -flto -Wno-strict-overflow -Wno-sign-compare
 lzcomp: $(wildcard lz/*.c) $(wildcard lz/*.h)

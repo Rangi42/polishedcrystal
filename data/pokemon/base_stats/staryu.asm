@@ -7,7 +7,7 @@
 	db STARDUST ; item 1
 	db STAR_PIECE ; item 2
 	dn GENDERLESS, 3 ; gender, step cycles to hatch
-	dn 6, 6 ; frontpic dimensions
+	INCBIN "gfx/pokemon/staryu/front.dimensions"
 	abilities_for STARYU, ILLUMINATE, NATURAL_CURE, ANALYTIC
 	db SLOW ; growth rate
 	dn INVERTEBRATE, INVERTEBRATE ; egg groups

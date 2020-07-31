@@ -7,7 +7,7 @@
 	db SILVER_LEAF ; item 1
 	db SILVER_LEAF ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
-	dn 6, 6 ; frontpic dimensions
+	INCBIN "gfx/pokemon/gloom/front.dimensions"
 	abilities_for GLOOM, CHLOROPHYLL, CHLOROPHYLL, STENCH
 	db MEDIUM_SLOW ; growth rate
 	dn PLANT, PLANT ; egg groups

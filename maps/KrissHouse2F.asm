@@ -275,10 +275,10 @@ endr
 ;	givepoke RAICHU,    ALOLAN_FORM, 50
 ;	givepoke EXEGGUTOR, ALOLAN_FORM, 50
 ;	givepoke MAROWAK,   ALOLAN_FORM, 50
-;	givepoke PONYTA,    GALARIAN_FORM, 50
+	givepoke PONYTA,    GALARIAN_FORM, 50
 ;	givepoke RAPIDASH,  GALARIAN_FORM, 50
-	givepoke SLOWPOKE,  GALARIAN_FORM, 50
-	givepoke SLOWBRO,   GALARIAN_FORM, 50
+;	givepoke SLOWPOKE,  GALARIAN_FORM, 50
+;	givepoke SLOWBRO,   GALARIAN_FORM, 50
 ;	givepoke WEEZING,   GALARIAN_FORM, 50
 	; fill pokedex
 ;	callasm FillPokedex

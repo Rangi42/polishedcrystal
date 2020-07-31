@@ -7,7 +7,7 @@
 	db NO_ITEM ; item 1
 	db LANSAT_BERRY ; item 2
 	dn FEMALE_50, 2 ; gender, step cycles to hatch
-	dn 5, 5 ; frontpic dimensions
+	INCBIN "gfx/pokemon/rattata_plain/front.dimensions"
 	abilities_for RATTATA, RUN_AWAY, GUTS, HUSTLE
 	db MEDIUM_FAST ; growth rate
 	dn FIELD, FIELD ; egg groups

@@ -12,7 +12,7 @@ endc
 	db TINYMUSHROOM ; item 1
 	db BIG_MUSHROOM ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
-	dn 7, 7 ; frontpic dimensions
+	INCBIN "gfx/pokemon/parasect/front.dimensions"
 	abilities_for PARASECT, EFFECT_SPORE, DRY_SKIN, DAMP
 	db MEDIUM_FAST ; growth rate
 	dn INSECT, PLANT ; egg groups

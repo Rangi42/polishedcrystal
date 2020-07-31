@@ -7,7 +7,7 @@
 	db NO_ITEM ; item 1
 	db LEFTOVERS ; item 2
 	dn FEMALE_12_5, 7 ; gender, step cycles to hatch
-	dn 6, 6 ; frontpic dimensions
+	INCBIN "gfx/pokemon/munchlax/front.dimensions"
 	abilities_for MUNCHLAX, PICKUP, THICK_FAT, GLUTTONY
 	db SLOW ; growth rate
 	dn NO_EGGS, NO_EGGS ; egg groups

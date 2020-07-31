@@ -7,7 +7,7 @@
 	db ALWAYS_ITEM_2 ; item 1
 	db ASPEAR_BERRY ; item 2
 	dn FEMALE_75, 3 ; gender, step cycles to hatch
-	dn 6, 6 ; frontpic dimensions
+	INCBIN "gfx/pokemon/vulpix_plain/front.dimensions"
 if DEF(FAITHFUL)
 	abilities_for VULPIX, FLASH_FIRE, FLASH_FIRE, DROUGHT
 else

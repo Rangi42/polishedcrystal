@@ -7,7 +7,7 @@
 	db NO_ITEM ; item 1
 	db NO_ITEM ; item 2
 	dn FEMALE_50, 1 ; gender, step cycles to hatch
-	dn 5, 5 ; frontpic dimensions
+	INCBIN "gfx/pokemon/egg/front.dimensions"
 	abilities_for EGG, NO_ABILITY, NO_ABILITY, NO_ABILITY
 	db SLOW ; growth rate
 	dn NO_EGGS, NO_EGGS ; egg groups

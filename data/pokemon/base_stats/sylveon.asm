@@ -7,7 +7,7 @@
 	db NO_ITEM ; item 1
 	db PINK_BOW ; item 2
 	dn FEMALE_12_5, 6 ; gender, step cycles to hatch
-	dn 7, 7 ; frontpic dimensions
+	INCBIN "gfx/pokemon/sylveon/front.dimensions"
 if DEF(FAITHFUL)
 	abilities_for SYLVEON, CUTE_CHARM, CUTE_CHARM, PIXILATE
 else

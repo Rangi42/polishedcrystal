@@ -11,7 +11,7 @@ endc
 	db ALWAYS_ITEM_2 ; item 1
 	db LUM_BERRY ; item 2
 	dn GENDERLESS, 15 ; gender, step cycles to hatch
-	dn 7, 7 ; frontpic dimensions
+	INCBIN "gfx/pokemon/lugia/front.dimensions"
 if DEF(FAITHFUL)
 	abilities_for LUGIA, PRESSURE, PRESSURE, MULTISCALE
 else

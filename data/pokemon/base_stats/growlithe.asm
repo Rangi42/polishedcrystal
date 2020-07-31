@@ -7,7 +7,7 @@
 	db ALWAYS_ITEM_2 ; item 1
 	db ASPEAR_BERRY ; item 2
 	dn FEMALE_25, 3 ; gender, step cycles to hatch
-	dn 5, 5 ; frontpic dimensions
+	INCBIN "gfx/pokemon/growlithe/front.dimensions"
 	abilities_for GROWLITHE, INTIMIDATE, FLASH_FIRE, JUSTIFIED
 	db SLOW ; growth rate
 	dn FIELD, FIELD ; egg groups

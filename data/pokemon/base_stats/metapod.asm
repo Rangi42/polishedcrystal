@@ -7,7 +7,7 @@
 	db NO_ITEM ; item 1
 	db NO_ITEM ; item 2
 	dn FEMALE_50, 2 ; gender, step cycles to hatch
-	dn 5, 5 ; frontpic dimensions
+	INCBIN "gfx/pokemon/metapod/front.dimensions"
 	abilities_for METAPOD, SHED_SKIN, SHED_SKIN, SHED_SKIN
 	db MEDIUM_FAST ; growth rate
 	dn INSECT, INSECT ; egg groups

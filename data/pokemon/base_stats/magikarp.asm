@@ -7,7 +7,7 @@
 	db NO_ITEM ; item 1
 	db NO_ITEM ; item 2
 	dn FEMALE_50, 0 ; gender, step cycles to hatch
-	dn 6, 6 ; frontpic dimensions
+	INCBIN "gfx/pokemon/magikarp_plain/front.dimensions"
 	abilities_for MAGIKARP, SWIFT_SWIM, SWIFT_SWIM, RATTLED
 	db SLOW ; growth rate
 	dn FISH, REPTILE ; egg groups

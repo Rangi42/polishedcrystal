@@ -12,7 +12,7 @@ endc
 	db PERSIM_BERRY ; item 1
 	db ELECTIRIZER ; item 2
 	dn FEMALE_25, 4 ; gender, step cycles to hatch
-	dn 6, 6 ; frontpic dimensions
+	INCBIN "gfx/pokemon/elekid/front.dimensions"
 	abilities_for ELEKID, STATIC, STATIC, VITAL_SPIRIT
 	db MEDIUM_FAST ; growth rate
 	dn NO_EGGS, NO_EGGS ; egg groups

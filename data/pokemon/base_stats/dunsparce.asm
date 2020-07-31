@@ -16,7 +16,7 @@ endc
 	db NO_ITEM ; item 1
 	db NO_ITEM ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
-	dn 6, 6 ; frontpic dimensions
+	INCBIN "gfx/pokemon/dunsparce/front.dimensions"
 	abilities_for DUNSPARCE, SERENE_GRACE, RUN_AWAY, RATTLED
 	db MEDIUM_FAST ; growth rate
 	dn FIELD, FIELD ; egg groups

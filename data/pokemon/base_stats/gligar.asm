@@ -7,7 +7,7 @@
 	db NO_ITEM ; item 1
 	db RAZOR_FANG ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
-	dn 6, 6 ; frontpic dimensions
+	INCBIN "gfx/pokemon/gligar/front.dimensions"
 	abilities_for GLIGAR, HYPER_CUTTER, SAND_VEIL, IMMUNITY
 	db MEDIUM_SLOW ; growth rate
 	dn INSECT, INSECT ; egg groups

@@ -7,7 +7,7 @@
 	db NO_ITEM ; item 1
 	db MOOMOO_MILK ; item 2
 	dn ALL_FEMALE, 3 ; gender, step cycles to hatch
-	dn 6, 6 ; frontpic dimensions
+	INCBIN "gfx/pokemon/miltank/front.dimensions"
 	abilities_for MILTANK, THICK_FAT, SCRAPPY, SAP_SIPPER
 	db SLOW ; growth rate
 	dn FIELD, FIELD ; egg groups

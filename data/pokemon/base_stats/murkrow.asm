@@ -7,7 +7,7 @@
 	db NO_ITEM ; item 1
 	db NO_ITEM ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
-	dn 6, 6 ; frontpic dimensions
+	INCBIN "gfx/pokemon/murkrow/front.dimensions"
 	abilities_for MURKROW, INSOMNIA, SUPER_LUCK, PRANKSTER
 	db MEDIUM_SLOW ; growth rate
 	dn AVIAN, AVIAN ; egg groups

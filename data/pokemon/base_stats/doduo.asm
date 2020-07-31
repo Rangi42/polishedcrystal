@@ -7,7 +7,7 @@
 	db NO_ITEM ; item 1
 	db SHARP_BEAK ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
-	dn 5, 5 ; frontpic dimensions
+	INCBIN "gfx/pokemon/doduo/front.dimensions"
 	abilities_for DODUO, RUN_AWAY, EARLY_BIRD, TANGLED_FEET
 	db MEDIUM_FAST ; growth rate
 	dn AVIAN, AVIAN ; egg groups

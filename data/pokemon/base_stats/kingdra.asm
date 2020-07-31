@@ -7,7 +7,7 @@
 	db NO_ITEM ; item 1
 	db DRAGON_SCALE ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
-	dn 7, 7 ; frontpic dimensions
+	INCBIN "gfx/pokemon/kingdra/front.dimensions"
 	abilities_for KINGDRA, SWIFT_SWIM, SNIPER, DAMP
 	db MEDIUM_FAST ; growth rate
 	dn AMPHIBIAN, REPTILE ; egg groups

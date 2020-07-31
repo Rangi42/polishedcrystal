@@ -7,7 +7,7 @@
 	db NO_ITEM ; item 1
 	db SOFT_SAND ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
-	dn 7, 7 ; frontpic dimensions
+	INCBIN "gfx/pokemon/dugtrio_plain/front.dimensions"
 	abilities_for DUGTRIO, SAND_VEIL, ARENA_TRAP, SAND_FORCE
 	db MEDIUM_FAST ; growth rate
 	dn FIELD, FIELD ; egg groups

@@ -7,7 +7,7 @@
 	db NO_ITEM ; item 1
 	db SHARP_BEAK ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
-	dn 7, 7 ; frontpic dimensions
+	INCBIN "gfx/pokemon/dodrio/front.dimensions"
 	abilities_for DODRIO, RUN_AWAY, EARLY_BIRD, TANGLED_FEET
 	db MEDIUM_FAST ; growth rate
 	dn AVIAN, AVIAN ; egg groups

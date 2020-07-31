@@ -26,19 +26,19 @@ jobs:
         make -j4
         mv polishedcrystal-3.0.0-beta.gbc build/polishedcrystal-3.0.0-beta.gbc
         mv polishedcrystal-3.0.0-beta.sym build/polishedcrystal-3.0.0-beta.sym
-        make clean
+        make tidy
         make -j4 faithful
         mv polishedcrystal-3.0.0-beta.gbc build/polishedcrystal-3.0.0-faithful-beta.gbc
         mv polishedcrystal-3.0.0-beta.sym build/polishedcrystal-3.0.0-faithful-beta.sym
-        make clean
+        make tidy
         make -j4 debug
         mv polishedcrystal-3.0.0-beta.gbc build/polishedcrystal-3.0.0-debug-beta.gbc
         mv polishedcrystal-3.0.0-beta.sym build/polishedcrystal-3.0.0-debug-beta.sym
-        make clean
+        make tidy
         make -j4 faithful debug
         mv polishedcrystal-3.0.0-beta.gbc build/polishedcrystal-3.0.0-faithful-debug-beta.gbc
         mv polishedcrystal-3.0.0-beta.sym build/polishedcrystal-3.0.0-faithful-debug-beta.sym
-        make clean
+        make tidy
         popd
     - name: Delete old release
       id: delete_release

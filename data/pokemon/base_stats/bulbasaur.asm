@@ -7,7 +7,7 @@
 	db NO_ITEM ; item 1
 	db NO_ITEM ; item 2
 	dn FEMALE_12_5, 3 ; gender, step cycles to hatch
-	dn 5, 5 ; frontpic dimensions
+	INCBIN "gfx/pokemon/bulbasaur/front.dimensions"
 	abilities_for BULBASAUR, OVERGROW, CHLOROPHYLL, EFFECT_SPORE
 	db MEDIUM_SLOW ; growth rate
 	dn MONSTER, PLANT ; egg groups

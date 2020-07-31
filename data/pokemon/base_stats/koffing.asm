@@ -7,7 +7,7 @@
 	db NO_ITEM ; item 1
 	db SMOKE_BALL ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
-	dn 6, 6 ; frontpic dimensions
+	INCBIN "gfx/pokemon/koffing/front.dimensions"
 	abilities_for KOFFING, LEVITATE, NEUTRALIZING_GAS, STENCH
 	db MEDIUM_FAST ; growth rate
 	dn AMORPHOUS, AMORPHOUS ; egg groups

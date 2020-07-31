@@ -7,7 +7,7 @@
 	db PEARL ; item 1
 	db BIG_PEARL ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
-	dn 7, 7 ; frontpic dimensions
+	INCBIN "gfx/pokemon/cloyster/front.dimensions"
 	abilities_for CLOYSTER, SHELL_ARMOR, SKILL_LINK, OVERCOAT
 	db SLOW ; growth rate
 	dn INVERTEBRATE, INVERTEBRATE ; egg groups

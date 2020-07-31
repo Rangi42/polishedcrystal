@@ -7,7 +7,7 @@
 	db NO_ITEM ; item 1
 	db SHARP_BEAK ; item 2
 	dn FEMALE_50, 4 ; gender, step cycles to hatch
-	dn 7, 7 ; frontpic dimensions
+	INCBIN "gfx/pokemon/skarmory/front.dimensions"
 	abilities_for SKARMORY, KEEN_EYE, STURDY, WEAK_ARMOR
 	db SLOW ; growth rate
 	dn AVIAN, AVIAN ; egg groups

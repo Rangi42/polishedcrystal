@@ -16,7 +16,7 @@ endc
 	db ORAN_BERRY ; item 1
 	db LIGHT_BALL ; item 2
 	dn FEMALE_50, 1 ; gender, step cycles to hatch
-	dn 7, 7 ; frontpic dimensions
+	INCBIN "gfx/pokemon/pikachu_plain/front.dimensions"
 	abilities_for PIKACHU, STATIC, STATIC, LIGHTNING_ROD
 	db MEDIUM_FAST ; growth rate
 	dn FIELD, FAERY ; egg groups
