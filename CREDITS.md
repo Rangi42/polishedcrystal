@@ -54,11 +54,11 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * flempa for some Pokémon sprites and move animations.
 * spritershawn for sprites of Red, Blue, and Green.
 * isamuakai01 for sprites of Steven and Cynthia.
+* Maddalena for sprites of Imakuni and the Ghost.
 * Luna for some sprites and tiles.
 * Twilir for Lyra's back sprite.
 * Danny-E for Lorelei's sprite.
 * Nic7C5 for Yellow's sprite.
-* Maddalena for Imakuni's sprite.
 * Kage for Walker's sprite.
 * Pyro for Tamer's sprite.
 * Constantine for Nurse's sprite.
