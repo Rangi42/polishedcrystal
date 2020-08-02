@@ -132,6 +132,8 @@ endif
 	$(RGBDS_DIR)rgbfix $(RGBFIX_FLAGS) $@
 
 
+gfx/battle/lyra_back.2bpp: rgbgfx += -h
+
 gfx/battle_anims/angels.2bpp: tools/gfx += --trim-whitespace
 gfx/battle_anims/beam.2bpp: tools/gfx += --remove-xflip --remove-yflip --remove-whitespace
 gfx/battle_anims/bubble.2bpp: tools/gfx += --trim-whitespace
