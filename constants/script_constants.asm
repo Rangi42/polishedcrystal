@@ -141,11 +141,6 @@ CMDQUEUE_STONETABLE EQU 2 ; types 0, 1, 3, and 4 are unused
 	const EMOTE_BOLT ; 5
 	const EMOTE_SLEEP ; 6
 	const EMOTE_FISH ; 7
-	const EMOTE_SHADOW ; 8
-	const EMOTE_ROD ; 9
-	const EMOTE_BOULDER_DUST ; 10
-	const EMOTE_SHAKING_GRASS ; 11
-	const EMOTE_PUDDLE_SPLASH ; 12
 EMOTE_MEM EQU -1
 
 ; fruit trees

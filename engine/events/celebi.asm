@@ -6,10 +6,6 @@ Special_CelebiShrineEvent:
 	ld [wVramState], a
 
 	call ClearSpriteAnims
-	ld de, CutGrassGFX
-	ld hl, vTiles1
-	lb bc, BANK(CutGrassGFX), 4
-	call Request2bpp
 	ld hl, SpecialCelebiGFX
 	ld de, vTiles0 tile $84
 	lb bc, BANK(SpecialCelebiGFX), 4 * 4

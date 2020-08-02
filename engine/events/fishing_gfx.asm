@@ -17,8 +17,6 @@ LoadFishingGFX:
 	call .LoadGFX
 	ld hl, vTiles0 tile $0a
 	call .LoadGFX
-	ld hl, vTiles0 tile $7c
-	call .LoadGFX
 
 	pop af
 	ldh [rVBK], a

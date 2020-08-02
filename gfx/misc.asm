@@ -6,6 +6,11 @@ Roof2GFX:: INCBIN "gfx/tilesets/roofs/2.2bpp.lz"
 Roof3GFX:: INCBIN "gfx/tilesets/roofs/3.2bpp.lz"
 
 
+SECTION "Overworld Effect Graphics", ROMX
+
+OverworldEffectGFX:: INCBIN "gfx/overworld/overworld.2bpp.lz"
+
+
 SECTION "Copyright Graphics", ROMX
 
 CopyrightGFX:: INCBIN "gfx/splash/copyright.2bpp.lz"

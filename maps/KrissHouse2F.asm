@@ -250,7 +250,7 @@ endr
 	loadvar wPartyMon2PP+3, 30
 	loadvar wPartyMon3Moves+0, FLASH
 	loadvar wPartyMon3Moves+1, ROCK_SMASH
-	loadvar wPartyMon3Moves+2, WHIRLPOOL
+	loadvar wPartyMon3Moves+2, HEADBUTT
 	loadvar wPartyMon3Moves+3, WATERFALL
 	loadvar wPartyMon3PP+0, 20
 	loadvar wPartyMon3PP+1, 15

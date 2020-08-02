@@ -11,12 +11,8 @@ BlindingFlash::
 
 ShakeHeadbuttTree:
 	call ClearSpriteAnims
-	ld de, CutGrassGFX
-	ld hl, vTiles1
-	lb bc, BANK(CutGrassGFX), 4
-	call Request2bpp
 	ld hl, HeadbuttTreeGFX
-	ld de, vTiles1 tile $04
+	ld de, vTiles0 tile $64
 	lb bc, BANK(HeadbuttTreeGFX), 8
 	call DecompressRequest2bpp
 	call Cut_Headbutt_GetPixelFacing
@@ -24,7 +20,7 @@ ShakeHeadbuttTree:
 	call _InitSpriteAnimStruct
 	ld hl, SPRITEANIMSTRUCT_TILE_ID
 	add hl, bc
-	ld [hl], $84
+	ld [hl], $64
 	ld a, 36 * 4
 	ld [wCurSpriteOAMAddr], a
 	farcall DoNextFrameForAllSprites
@@ -101,7 +97,7 @@ OWCutAnimation:
 	ld a, e
 	and $1
 	ld [wJumptableIndex], a
-	call .LoadCutGFX
+	call ClearSpriteAnims
 	call WaitSFX
 	ld de, SFX_PLACE_PUZZLE_PIECE_DOWN
 	call PlaySFX
@@ -115,23 +111,6 @@ OWCutAnimation:
 	call OWCutJumptable
 	call DelayFrame
 	jr .loop
-
-.LoadCutGFX:
-	call ClearSpriteAnims
-	ld de, CutGrassGFX
-	ld hl, vTiles1
-	lb bc, BANK(CutGrassGFX), 4
-	call Request2bpp
-	ld de, CutTreeGFX
-	ld hl, vTiles1 tile $4
-	lb bc, BANK(CutTreeGFX), 4
-	jp Request2bpp
-
-CutTreeGFX:
-INCBIN "gfx/overworld/cut_tree.2bpp"
-
-CutGrassGFX:
-INCBIN "gfx/overworld/cut_grass.2bpp"
 
 OWCutJumptable:
 	call StandardStackJumpTable
@@ -148,7 +127,7 @@ Cut_SpawnAnimateTree:
 	call _InitSpriteAnimStruct
 	ld hl, SPRITEANIMSTRUCT_TILE_ID
 	add hl, bc
-	ld [hl], $84
+	ld [hl], $74
 	ld a, 32
 	ld [wcf64], a
 ; Cut_StartWaiting
@@ -201,7 +180,7 @@ Cut_SpawnLeaf:
 	call _InitSpriteAnimStruct
 	ld hl, SPRITEANIMSTRUCT_TILE_ID
 	add hl, bc
-	ld [hl], $80
+	ld [hl], $70
 	ld hl, SPRITEANIMSTRUCT_0E
 	add hl, bc
 	ld [hl], $4
@@ -288,7 +267,7 @@ FlyFromAnim:
 	call _InitSpriteAnimStruct
 	ld hl, SPRITEANIMSTRUCT_TILE_ID
 	add hl, bc
-	ld [hl], $84
+	ld [hl], $64
 	ld hl, SPRITEANIMSTRUCT_ANIM_SEQ_ID
 	add hl, bc
 	ld [hl], SPRITE_ANIM_SEQ_FLY_FROM
@@ -322,7 +301,7 @@ FlyToAnim:
 	call _InitSpriteAnimStruct
 	ld hl, SPRITEANIMSTRUCT_TILE_ID
 	add hl, bc
-	ld [hl], $84
+	ld [hl], $64
 	ld hl, SPRITEANIMSTRUCT_ANIM_SEQ_ID
 	add hl, bc
 	ld [hl], SPRITE_ANIM_SEQ_FLY_TO
@@ -364,11 +343,7 @@ FlyToAnim:
 
 FlyFunction_InitGFX:
 	call ClearSpriteAnims
-	ld de, CutGrassGFX
-	ld hl, vTiles1 tile $00
-	lb bc, BANK(CutGrassGFX), 4
-	call Request2bpp
-	ld e, $84
+	ld e, $64
 	farcall FlyFunction_GetMonIcon
 	xor a
 	ld [wJumptableIndex], a
@@ -409,5 +384,5 @@ FlyFunction_FrameTimer:
 	call _InitSpriteAnimStruct
 	ld hl, SPRITEANIMSTRUCT_TILE_ID
 	add hl, bc
-	ld [hl], $80
+	ld [hl], $70
 	ret

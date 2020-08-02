@@ -1608,7 +1608,6 @@ FishFunction:
 Script_NotEvenANibble:
 	scall Script_FishCastRod
 	farwritetext UnknownText_0x1c0965
-	loademote EMOTE_SHADOW
 	closetext
 	callasm PutTheRodAway
 	end
@@ -1688,7 +1687,6 @@ Script_FishCastRod:
 	reloadmappart
 	loadvar hBGMapMode, $0
 	special UpdateTimePals
-	loademote EMOTE_ROD
 	callasm LoadFishingGFX
 	loademote EMOTE_SHOCK
 	applymovement PLAYER, MovementData_0xd093

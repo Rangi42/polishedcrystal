@@ -53,18 +53,11 @@ HealMachineAnim:
 	db 0, 2, 4, 5
 
 .Jumptable:
-	dw .LoadGFX
+	dw .LoadPalettes
 	dw .PC_LoadBallsOntoMachine
 	dw .HOF_LoadBallsOntoMachine
 	dw .PlayHealMusic
 	dw .HOF_PlaySFX
-
-.LoadGFX:
-	call .LoadPalettes
-	ld de, .HealMachineGFX
-	ld hl, vTiles0 tile $7c
-	lb bc, BANK(.HealMachineGFX), $2
-	jp Request2bpp
 
 .PC_LoadBallsOntoMachine:
 	ld hl, wVirtualOAM + $80
@@ -106,25 +99,22 @@ HealMachineAnim:
 	jp PlaySFX
 
 .PC_ElmsLab_OAM:
-	dsprite   4, 0,   4, 2, $7c, PAL_OW_TREE
-	dsprite   4, 0,   4, 6, $7c, PAL_OW_TREE
-	dsprite   4, 6,   4, 0, $7d, PAL_OW_TREE
-	dsprite   4, 6,   5, 0, $7d, PAL_OW_TREE | X_FLIP
-	dsprite   5, 3,   4, 0, $7d, PAL_OW_TREE
-	dsprite   5, 3,   5, 0, $7d, PAL_OW_TREE | X_FLIP
-	dsprite   6, 0,   4, 0, $7d, PAL_OW_TREE
-	dsprite   6, 0,   5, 0, $7d, PAL_OW_TREE | X_FLIP
-
-.HealMachineGFX:
-INCBIN "gfx/overworld/heal_machine.2bpp"
+	dsprite   4, 0,   4, 2, $78, PAL_OW_TREE
+	dsprite   4, 0,   4, 6, $78, PAL_OW_TREE
+	dsprite   4, 6,   4, 0, $79, PAL_OW_TREE
+	dsprite   4, 6,   5, 0, $79, PAL_OW_TREE | X_FLIP
+	dsprite   5, 3,   4, 0, $79, PAL_OW_TREE
+	dsprite   5, 3,   5, 0, $79, PAL_OW_TREE | X_FLIP
+	dsprite   6, 0,   4, 0, $79, PAL_OW_TREE
+	dsprite   6, 0,   5, 0, $79, PAL_OW_TREE | X_FLIP
 
 .HOF_OAM:
-	dsprite   7, 4,  10, 1, $7d, PAL_OW_TREE
-	dsprite   7, 4,  10, 6, $7d, PAL_OW_TREE
-	dsprite   7, 3,   9, 5, $7d, PAL_OW_TREE
-	dsprite   7, 3,  11, 2, $7d, PAL_OW_TREE
-	dsprite   7, 1,   9, 1, $7d, PAL_OW_TREE
-	dsprite   7, 1,  11, 5, $7d, PAL_OW_TREE
+	dsprite   7, 4,  10, 1, $79, PAL_OW_TREE
+	dsprite   7, 4,  10, 6, $79, PAL_OW_TREE
+	dsprite   7, 3,   9, 5, $79, PAL_OW_TREE
+	dsprite   7, 3,  11, 2, $79, PAL_OW_TREE
+	dsprite   7, 1,   9, 1, $79, PAL_OW_TREE
+	dsprite   7, 1,  11, 5, $79, PAL_OW_TREE
 
 .LoadPalettes:
 	ld hl, .palettes

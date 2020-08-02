@@ -166,8 +166,7 @@ gfx/music_player/note_lines.2bpp: tools/gfx += --interleave --png=$<
 gfx/new_game/shrink1.2bpp: rgbgfx += -h
 gfx/new_game/shrink2.2bpp: rgbgfx += -h
 
-gfx/overworld/chris_fish.2bpp: tools/gfx += --trim-whitespace
-gfx/overworld/kris_fish.2bpp: tools/gfx += --trim-whitespace
+gfx/overworld/overworld.2bpp: gfx/overworld/puddle_splash.2bpp gfx/overworld/cut_grass.2bpp gfx/overworld/cut_tree.2bpp gfx/overworld/heal_machine.2bpp gfx/overworld/fishing_rod.2bpp gfx/overworld/shadow.2bpp gfx/overworld/shaking_grass.2bpp gfx/overworld/boulder_dust.2bpp ; cat $^ > $@
 
 gfx/pack/pack_top_left.2bpp: gfx/pack/pack_top.2bpp gfx/pack/pack_left.2bpp ; cat $^ > $@
 

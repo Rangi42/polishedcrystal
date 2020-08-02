@@ -69,7 +69,7 @@ ReloadVisibleSprites::
 	xor a
 	ldh [hUsedSpriteIndex], a
 	call ReloadSpriteIndex
-	call LoadEmoteGFX
+	call LoadOverworldGFX
 	jp PopBCDEHL
 
 ReloadSpriteIndex::
@@ -114,24 +114,11 @@ ReloadSpriteIndex::
 	jr nz, .loop
 	ret
 
-LoadEmoteGFX::
-	ld a, [wSpriteFlags]
-	bit 6, a
-	ret nz
-
-	ld c, EMOTE_SHADOW
-	call LoadEmote
-	call GetMapPermission
-	call CheckOutdoorMapOrPerm5
-	jr z, .outdoor
-	ld c, EMOTE_BOULDER_DUST
-	jp LoadEmote
-
-.outdoor
-	ld c, EMOTE_SHAKING_GRASS
-	call LoadEmote
-	ld c, EMOTE_PUDDLE_SPLASH
-	jp LoadEmote
+LoadOverworldGFX::
+	ld hl, OverworldEffectGFX
+	lb bc, BANK(OverworldEffectGFX), 17
+	ld de, vTiles0 tile $6f
+	jp DecompressRequest2bpp
 
 SafeGetSprite:
 	push hl
@@ -404,27 +391,20 @@ endr
 LoadEmote::
 ; Get the address of the pointer to emote c.
 	ld a, c
-	ld bc, 6
+	ld bc, 3
 	ld hl, EmotesPointers
 	rst AddNTimes
-; Load the emote address into de
-	ld e, [hl]
-	inc hl
-	ld d, [hl]
-; load the length of the emote (in tiles) into c
-	inc hl
-	ld c, [hl]
-	swap c
 ; load the emote pointer bank into b
-	inc hl
 	ld b, [hl]
-; load the VRAM destination into hl
 	inc hl
+; load the emote address into hl
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-; swap the source into hl and the destination into de
-	call SwapHLDE
+; load the length of the emote (in tiles) into c
+	ld c, 4
+; load the VRAM destination into de
+	ld de, vTiles0 tile $60
 ; load into vram0
 	jp DecompressRequest2bpp
 
