@@ -192,7 +192,7 @@ gfx/slots/slots_3.2bpp: tools/gfx += --interleave --png=$< --remove-duplicates -
 gfx/stats/stats_balls.2bpp: gfx/stats/stats.2bpp gfx/stats/balls.2bpp ; cat $^ > $@
 
 gfx/title/crystal.2bpp: tools/gfx += --interleave --png=$<
-gfx/title/logo.2bpp: rgbgfx += -x 4
+gfx/title/logo_version.2bpp: gfx/title/logo.2bpp gfx/title/version.2bpp ; cat $^ > $@
 
 gfx/trade/ball.2bpp: tools/gfx += --remove-whitespace
 gfx/trade/game_boy.2bpp: tools/gfx += --remove-duplicates

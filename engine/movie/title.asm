@@ -358,7 +358,7 @@ TitleSuicuneGFX:
 INCBIN "gfx/title/suicune.2bpp.lz"
 
 TitleLogoGFX:
-INCBIN "gfx/title/logo.2bpp.lz"
+INCBIN "gfx/title/logo_version.2bpp.lz"
 
 TitleCrystalGFX:
 INCBIN "gfx/title/crystal.2bpp.lz"
