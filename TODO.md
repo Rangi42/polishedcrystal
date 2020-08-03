@@ -100,6 +100,7 @@ Shamouti Island:
 ### Optimizations
 
 * Optimize map scripts with the various new commands and PERSONTYPE_GENERICTRAINER
+* Phone uses a bitfield to allow storing all numbers
 
 
 ## Postponed until 4.0
@@ -192,11 +193,9 @@ Some of these may never be added; they're just suggestions.
 * Restore [unused memory game](http://iimarck.us/i/memory/) ([more info](https://tcrf.net/Pok%C3%A9mon_Gold_and_Silver#Unused_Memory_Game))
 * Restore the Pikachu's Beach minigame
 * Level ranges for wild Pokémon, instead of single values
-* Use the News Machine for something (Mystery Gift?)
 * Championship title defense like in Gen VII (challengers: rival, Lyra, Lance, Prof.Oak, Prof.Elm, Clair, Blue, Eusine, Kimono Girl Naoko, Palmer, Lorelei, Agatha, Steven, Cynthia, Caitlin, and Lawrence)
-* Phone uses a bitfield to allow storing all numbers
 * Make more trainers rematchable
-* Allow evolution during battle
+* Allow evolution during battle (optional)
 * Battle [En and Madoka](http://bulbapedia.bulbagarden.net/wiki/The_Legendary_Rotation_Battle!) somewhere (Trainer House after catching the legendary trios, different trainer each day?)
    * Madoka:
    * She entered this tournament with new Pokémon! Which Pokémon wil she use?
