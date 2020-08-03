@@ -212,7 +212,7 @@ NamingScreen_IsTargetBox:
 	push bc
 	push af
 	ld a, [wNamingScreenType]
-	sub $4
+	sub $3
 	ld b, a
 	pop af
 	dec b
