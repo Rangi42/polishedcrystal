@@ -1174,14 +1174,14 @@ wYanmaMapNumber:: db
 wVermilionGymTrashCan1:: db
 wVermilionGymTrashCan2:: db
 
-	ds 2 ; unused
+	ds 1 ; unused
 
 wBattlePoints:: db
 
 wStepCount:: db
 wPoisonStepCount:: db
 
-wPhoneList:: ds CONTACT_LIST_SIZE
+wPhoneList:: ds CONTACT_LIST_SIZE + 1
 
 wHappinessStepCount:: db
 
