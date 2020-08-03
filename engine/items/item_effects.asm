@@ -717,10 +717,12 @@ PokeBallEffect:
 	ld [wCurPartySpecies], a
 	farcall BattleCheckEnemyShininess
 	jr nc, .not_shiny
+	call SetEnemyTurn
 	ld a, 1 ; shiny anim
 	ld [wBattleAnimParam], a
 	ld de, ANIM_SEND_OUT_MON
 	farcall Call_PlayBattleAnim
+	call SetPlayerTurn
 .not_shiny
 
 	ld bc, wTempMonSpecies
