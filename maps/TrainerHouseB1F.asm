@@ -71,12 +71,8 @@ TrainerHouseReceptionistScript:
 	startbattle
 	reloadmapafterbattle
 .End:
+	givebp 1
 	opentext
-	checkcode VAR_BATTLEPOINTS
-	ifequal 255, .MaxPoints
-	addvar 1
-	writevarcode VAR_BATTLEPOINTS
-.MaxPoints:
 	writetext TrainerHouseB1FEarnedBattlePointText
 	specialsound
 	waitbutton

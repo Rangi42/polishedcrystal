@@ -1174,9 +1174,8 @@ wYanmaMapNumber:: db
 wVermilionGymTrashCan1:: db
 wVermilionGymTrashCan2:: db
 
-	ds 1 ; unused
-
-wBattlePoints:: db
+wBattlePoints:: dw
+wBattlePointsEnd::
 
 wStepCount:: db
 wPoisonStepCount:: db

@@ -58,7 +58,6 @@ _GetVarAction::
 	dwb wBlueCardBalance,               RETVAR_ADDR_DE
 	dwb wBuenasPassword,                RETVAR_ADDR_DE
 	dwb wKenjiBreakTimer,               RETVAR_STRBUF2
-	dwb wBattlePoints,                  RETVAR_ADDR_DE
 	dwb .CountPokemonJournals,          RETVAR_EXECUTE
 	dwb .CountTrainerStars,             RETVAR_EXECUTE
 	dwb NULL,                           RETVAR_STRBUF2

@@ -164,11 +164,7 @@ Script_WalkToBattleTowerElevator:
 Script_GivePlayerHisPrize:
 	writebyte BATTLETOWER_WON_CHALLENGE
 	special Special_BattleTower_SetChallengeState
-	checkcode VAR_BATTLEPOINTS
-	ifgreater 252, .MaxPoints
-	addvar 3
-	writevarcode VAR_BATTLEPOINTS
-.Finish:
+	givebp 3
 	writethistext
 		text "<PLAYER> earned"
 		line "3 Battle Points!"
@@ -179,10 +175,6 @@ Script_GivePlayerHisPrize:
 	writebyte BATTLETOWER_RECEIVED_REWARD
 	special Special_BattleTower_SetChallengeState
 	endtext
-
-.MaxPoints:
-	loadvar wBattlePoints, 255
-	jump .Finish
 
 Script_BattleTowerIntroductionYesNo:
 	writethistext

@@ -74,6 +74,7 @@ ResetWRAM_NotPlus:
 	ld [wSavedAtLeastOnce], a
 
 	ld [wBattlePoints], a
+	ld [wBattlePoints + 1], a
 
 	ld [wCurBox], a
 
@@ -118,8 +119,8 @@ ResetWRAM:
 	ld bc, wBattlePoints - wBoxNamesEnd
 	xor a
 	rst ByteFill
-	ld hl, wBattlePoints + 1
-	ld bc, wGameDataEnd - (wBattlePoints + 1)
+	ld hl, wBattlePointsEnd
+	ld bc, wGameDataEnd - wBattlePointsEnd
 	xor a
 	rst ByteFill
 

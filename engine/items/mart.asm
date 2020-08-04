@@ -813,10 +813,10 @@ BTBuyMenuLoop:
 	call ReceiveItem
 	jp nc, MartMenuLoop_InsufficientBagSpace
 	call PlayTransactionSound
-	ld a, [wBattlePoints]
-	ld hl, hMoneyTemp + 2
-	sub [hl]
-	ld [wBattlePoints], a
+	ld de, wBattlePoints
+	ld bc, hMoneyTemp + 1
+	ld a, 2
+	farcall SubtractFunds
 	ld a, MARTTEXT_HERE_YOU_GO
 	call LoadBuyMenuText
 	call JoyWaitAorB
@@ -929,11 +929,7 @@ BargainShopAskPurchaseQuantity:
 RooftopSaleAskPurchaseQuantity:
 	ld a, MARTTEXT_HOW_MANY
 	call LoadBuyMenuText
-	call .GetSalePrice
-	farcall RooftopSale_SelectQuantityToBuy
-	jp ExitMenu
 
-.GetSalePrice:
 	ld a, [wMartItemID]
 	ld e, a
 	ld d, 0
@@ -949,7 +945,9 @@ RooftopSaleAskPurchaseQuantity:
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
-	ret
+
+	farcall RooftopSale_SelectQuantityToBuy
+	jp ExitMenu
 
 TMMartAskPurchaseQuantity:
 	ld a, [wCurTMHM]
@@ -993,10 +991,10 @@ TMMartAskPurchaseQuantity:
 BTMartAskPurchaseQuantity:
 	ld a, MARTTEXT_HOW_MANY
 	call LoadBuyMenuText
-; store point cost in c
+
 	ld a, [wMartItemID]
 	ld e, a
-	ld d, $0
+	ld d, 0
 	ld hl, wMartPointer
 	ld a, [hli]
 	ld h, [hl]
@@ -1007,18 +1005,7 @@ BTMartAskPurchaseQuantity:
 	inc hl
 	ld a, [hl]
 	ld c, a
-	ld [wBuffer2], a
-	xor a
-	ld [wBuffer1], a
-; divide BP balance by cost to get maximum quantity
-	ld a, [wBattlePoints]
-	call SimpleDivide
-	ld a, b
-	and a
-	jr nz, .ok
-	ld a, 1
-.ok
-	ld [wItemQuantityBuffer], a
+
 	farcall BT_SelectQuantityToBuy
 	jp ExitMenu
 
@@ -1048,9 +1035,14 @@ BlueCardMartComparePoints:
 
 BTMartCompareBP:
 ; compare BP balance with cost
-	ldh a, [hMoneyTemp + 2]
+	ldh a, [hMoneyTemp + 1]
 	ld d, a
 	ld a, [wBattlePoints]
+	cp d
+	ret nz
+	ldh a, [hMoneyTemp + 2]
+	ld d, a
+	ld a, [wBattlePoints + 1]
 	cp d
 	ret
 

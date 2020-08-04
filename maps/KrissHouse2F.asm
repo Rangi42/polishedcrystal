@@ -143,7 +143,8 @@ endr
 	givemoney $0, 1000000
 	givemoney $0, 999999
 	givecoins 50000
-	loadvar wBattlePoints, 250
+	loadvar wBattlePoints+0, 0
+	loadvar wBattlePoints+1, 250
 	; all badges
 	setflag ENGINE_ZEPHYRBADGE
 	setflag ENGINE_HIVEBADGE

@@ -1289,3 +1289,21 @@ ENDM
 keyitemnotify: MACRO
 	db keyitemnotify_command
 ENDM
+
+	enum givebp_command
+givebp: MACRO
+	db givebp_command
+	dw \1 ; bp
+	ENDM
+
+	enum takebp_command
+takebp: MACRO
+	db takebp_command
+	dw \1 ; bp
+	ENDM
+
+	enum checkbp_command
+checkbp: MACRO
+	db checkbp_command
+	dw \1 ; bp
+	ENDM

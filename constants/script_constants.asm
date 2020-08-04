@@ -31,10 +31,9 @@ LAST_TALKED EQU -2
 	const VAR_BLUECARDBALANCE  ; 18
 	const VAR_BUENASPASSWORD   ; 19
 	const VAR_KENJI_BREAK      ; 1a
-	const VAR_BATTLEPOINTS     ; 1b
-	const VAR_PKMN_JOURNALS    ; 1c
-	const VAR_TRAINER_STARS    ; 1d
-NUM_VARS EQU const_value       ; 1e
+	const VAR_PKMN_JOURNALS    ; 1b
+	const VAR_TRAINER_STARS    ; 1c
+NUM_VARS EQU const_value       ; 1d
 
 RETVAR_STRBUF2 EQU (0 << 6)
 RETVAR_ADDR_DE EQU (1 << 6)

@@ -260,6 +260,9 @@ ScriptCommandTable:
 	dw Script_takekeyitem                ; cb
 	dw Script_verbosegivekeyitem         ; cc
 	dw Script_keyitemnotify              ; cd
+	dw Script_givebp                     ; ce
+	dw Script_takebp                     ; cf
+	dw Script_checkbp                    ; d0
 
 StartScript:
 	ld hl, wScriptFlags
@@ -2134,6 +2137,19 @@ Script_checkcoins:
 ;     coins (CoinByteParam)
 	call LoadCoinAmountToMem
 	farcall CheckCoins
+	jr CompareMoneyAction
+
+Script_givebp:
+	call LoadCoinAmountToMem
+	farjp GiveBP
+
+Script_takebp:
+	call LoadCoinAmountToMem
+	farjp TakeBP
+
+Script_checkbp:
+	call LoadCoinAmountToMem
+	farcall CheckBP
 	jr CompareMoneyAction
 
 LoadCoinAmountToMem:

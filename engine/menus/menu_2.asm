@@ -106,12 +106,12 @@ PlaceBlueCardPointsTopRight:
 	db " Pts@"
 
 PlaceBattlePointsTopRight:
-	hlcoord 12, 0
-	lb bc, 1, 6
+	hlcoord 10, 0
+	lb bc, 1, 8
 	call TextBox
-	hlcoord 13, 1
+	hlcoord 11, 1
 	ld de, wBattlePoints
-	lb bc, 1, 3
+	lb bc, 2, 5
 	call PrintNum
 	ld de, .BPString
 	rst PlaceString

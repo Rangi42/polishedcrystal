@@ -3754,7 +3754,7 @@ BTMartCostsThisMuchText::
 	text_from_ram wStringBuffer1
 	text "(s)"
 	line "will cost "
-	deciram hMoneyTemp, 3, 3
+	deciram hMoneyTemp+1, 2, 4
 	text " BP."
 	done
 

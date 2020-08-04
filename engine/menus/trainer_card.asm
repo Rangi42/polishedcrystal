@@ -366,8 +366,8 @@ TrainerCard_Page1_PrintDexCaught_GameTime:
 	call PrintNum
 
 	ld de, wBattlePoints
-	hlcoord 15, 14
-	lb bc, 1, 3
+	hlcoord 13, 14
+	lb bc, 2, 5
 	call PrintNum
 
 	call TrainerCard_Page1_PrintGameTime
@@ -380,7 +380,9 @@ TrainerCard_Page1_PrintDexCaught_GameTime:
 	call ClearBox
 .have_pokedex
 	ld a, [wBattlePoints]
-	and a
+	ld c, a
+	ld a, [wBattlePoints + 1]
+	or c
 	jr nz, .have_bp
 	hlcoord 2, 14
 	lb bc, 1, 16
