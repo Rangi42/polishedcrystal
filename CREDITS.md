@@ -66,6 +66,7 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * ShockSlayer for Yellow's overworld sprite.
 * coraldev for rowboat and sakura petal tiles.
 * lilbluedemon for some bridge tiles.
+* WhoaMan for some MICR font characters.
 * BettyNewbie for elements of Green's sprite (combined with spritershawn's by me).
 * Fo0xerz for Lawrence III's sprite (devamped by me).
 * Bronzeswagger for the Grunt♂ and Grunt♀ sprite palettes.

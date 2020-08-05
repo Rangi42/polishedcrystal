@@ -48,9 +48,9 @@ LoadStandardFontPointer::
 	dw FontBold
 	dw FontItalic
 	dw FontSerif
+	dw FontMICR
 	dw FontBraille
 	dw FontUnown
-	dw FontNormal
 
 _LoadFontsBattleExtra::
 	ld hl, BattleExtrasGFX

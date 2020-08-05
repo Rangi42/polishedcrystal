@@ -561,6 +561,7 @@ Options_Typeface:
 	dw .Bold
 	dw .Italic
 	dw .Serif
+	dw .MICR
 	dw .Braille
 	dw .Unown
 
@@ -574,6 +575,8 @@ Options_Typeface:
 	db "Italic @"
 .Serif:
 	db "Serif  @"
+.MICR:
+	db "MICR   @"
 .Braille:
 	db "Braille@"
 .Unown:

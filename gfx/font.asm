@@ -9,6 +9,8 @@ FontItalic:
 INCBIN "gfx/font/italic.1bpp"
 FontSerif:
 INCBIN "gfx/font/serif.1bpp"
+FontMICR:
+INCBIN "gfx/font/micr.1bpp"
 FontBraille:
 INCBIN "gfx/font/braille.1bpp"
 FontUnown:
