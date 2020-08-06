@@ -48,8 +48,8 @@ LoadStandardFontPointer::
 	dw FontBold
 	dw FontItalic
 	dw FontSerif
+	dw FontChicago
 	dw FontMICR
-	dw FontBraille
 	dw FontUnown
 
 _LoadFontsBattleExtra::

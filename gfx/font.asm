@@ -11,8 +11,8 @@ FontSerif:
 INCBIN "gfx/font/serif.1bpp"
 FontMICR:
 INCBIN "gfx/font/micr.1bpp"
-FontBraille:
-INCBIN "gfx/font/braille.1bpp"
+FontChicago:
+INCBIN "gfx/font/chicago.1bpp"
 FontUnown:
 INCBIN "gfx/font/unown.1bpp"
 FontCommon:

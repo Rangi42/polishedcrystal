@@ -561,8 +561,8 @@ Options_Typeface:
 	dw .Bold
 	dw .Italic
 	dw .Serif
+	dw .Chicago
 	dw .MICR
-	dw .Braille
 	dw .Unown
 
 .Normal:
@@ -575,10 +575,10 @@ Options_Typeface:
 	db "Italic @"
 .Serif:
 	db "Serif  @"
+.Chicago:
+	db "Chicago@"
 .MICR:
 	db "MICR   @"
-.Braille:
-	db "Braille@"
 .Unown:
 	db "Unown  @"
 
