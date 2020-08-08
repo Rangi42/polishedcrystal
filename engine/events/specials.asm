@@ -129,7 +129,9 @@ BugContestJudging:
 	ld hl, wStatusFlags
 	bit 6, [hl] ; hall of fame
 	jr z, .finish
-	ld a, SHINY_STONE - MOON_STONE + 1 ; TODO: include ICE_STONE once it's useful
+	; after beating the elite 4, randomly get a
+	; Moon, Sun, Dusk, Dawn, or Shiny Stone
+	ld a, SHINY_STONE - MOON_STONE + 1
 	call RandomRange
 	add MOON_STONE
 	jr .finish
