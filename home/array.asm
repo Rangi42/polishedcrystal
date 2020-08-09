@@ -42,3 +42,18 @@ _AddNTimes::
 	jr nz, .loop
 	pop bc
 	ret
+
+GetHourIntervalValue::
+	ldh a, [hHours]
+GetIntervalValue::
+; Input: hl = sorted array of db start, value; a = key
+; Output: a = first value where key < start
+.loop
+	cp [hl]
+	inc hl
+	jr c, .done
+	inc hl
+	jr .loop
+.done
+	ld a, [hl]
+	ret
