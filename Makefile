@@ -89,13 +89,11 @@ freespace: $(bank_ends_txt) $(roms_md5) $(copied_sym) $(copied_map) $(copied_gbc
 tools:
 	$(MAKE) -C tools/
 
-clean:
-	rm -f $(crystal_obj) $(wildcard $(NAME)-*.gbc) $(wildcard $(NAME)-*.map) $(wildcard $(NAME)-*.sym)
+clean: tidy
 	find gfx maps data/tilesets -name '*.lz' -delete
 	find gfx \( -name '*.[12]bpp' -o -name '*.2bpp.vram[012]' \) -delete
 	find gfx/pokemon -mindepth 1 \( -name 'bitmask.asm' -o -name 'frames.asm' -o -name 'front.animated.tilemap' -o -name 'front.dimensions' \) -delete
 	find data/tilesets -name '*_collision.bin' -delete
-	$(MAKE) clean -C tools/
 
 tidy:
 	rm -f $(crystal_obj) $(wildcard $(NAME)-*.gbc) $(wildcard $(NAME)-*.map) $(wildcard $(NAME)-*.sym)
