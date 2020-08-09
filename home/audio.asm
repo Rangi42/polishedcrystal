@@ -401,7 +401,7 @@ GetPlayerStateMusic:
 	jr z, .surf
 	cp PLAYER_SURF_PIKA
 	jr z, .surf_pikachu
-	jp GetMapMusic_MaybeSpecial
+	jp GetMapMusic
 
 .bike:
 	call RegionCheck
@@ -436,15 +436,15 @@ music_map: MACRO
 	map_id \1
 	dw \2
 ENDM
-	music_map ROUTE_23, GetMapMusic_MaybeSpecial
-	music_map INDIGO_PLATEAU, GetMapMusic_MaybeSpecial
-	music_map QUIET_CAVE_1F, GetMapMusic_MaybeSpecial
-	music_map QUIET_CAVE_B1F, GetMapMusic_MaybeSpecial
-	music_map QUIET_CAVE_B2F, GetMapMusic_MaybeSpecial
-	music_map QUIET_CAVE_B3F, GetMapMusic_MaybeSpecial
-	music_map SCARY_CAVE_SHIPWRECK, GetMapMusic_MaybeSpecial
-	music_map WHIRL_ISLAND_LUGIA_CHAMBER, GetMapMusic_MaybeSpecial
-	music_map TIN_TOWER_ROOF, GetMapMusic_MaybeSpecial
+	music_map ROUTE_23, GetMapMusic
+	music_map INDIGO_PLATEAU, GetMapMusic
+	music_map QUIET_CAVE_1F, GetMapMusic
+	music_map QUIET_CAVE_B1F, GetMapMusic
+	music_map QUIET_CAVE_B2F, GetMapMusic
+	music_map QUIET_CAVE_B3F, GetMapMusic
+	music_map SCARY_CAVE_SHIPWRECK, GetMapMusic
+	music_map WHIRL_ISLAND_LUGIA_CHAMBER, GetMapMusic
+	music_map TIN_TOWER_ROOF, GetMapMusic
 	music_map ROUTE_16_SOUTH, GetCyclingRoadMusic
 	music_map ROUTE_17, GetCyclingRoadMusic
 	music_map ROUTE_18_WEST, GetCyclingRoadMusic

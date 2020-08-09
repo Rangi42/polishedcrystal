@@ -1108,7 +1108,7 @@ ApplyPersonFacing::
 	jr c, .not_visible ; STANDING_SPRITE
 	ld hl, OBJECT_FLAGS1
 	add hl, bc
-	bit FIXED_FACING, [hl]
+	bit FIXED_FACING_F, [hl]
 	jr nz, .not_visible
 	pop de
 	ld a, e
