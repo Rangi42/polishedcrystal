@@ -9,7 +9,7 @@ DeleteMapObject::
 	push af
 	ld h, b
 	ld l, c
-	ld bc, OBJECT_STRUCT_LENGTH
+	ld bc, OBJECT_LENGTH
 	xor a
 	rst ByteFill
 	pop af
@@ -32,13 +32,13 @@ HandleCurNPCStep:
 
 	ld hl, OBJECT_FLAGS1
 	add hl, bc
-	bit INVISIBLE, [hl]
+	bit INVISIBLE_F, [hl]
 	jp nz, SetFacingStanding
 	ld hl, OBJECT_FLAGS2
 	add hl, bc
-	bit 6, [hl]
+	bit OBJ_FLAGS2_6, [hl]
 	jp nz, SetFacingStanding
-	bit OBJECT_DISABLE_STEP_TYPE, [hl]
+	bit MOVE_ANYWHERE_F, [hl]
 	jr nz, asm_4448
 	ld de, Pointers445f ; use first column
 	jr asm_444d
@@ -46,7 +46,7 @@ HandleCurNPCStep:
 HandleMapObjectAction_Stationary:
 	ld hl, OBJECT_FLAGS1
 	add hl, bc
-	bit INVISIBLE, [hl]
+	bit INVISIBLE_F, [hl]
 	jp nz, SetFacingStanding
 asm_4448: ; use second column
 	ld de, Pointers445f + 2
@@ -67,7 +67,7 @@ INCLUDE "engine/overworld/map_object_action.asm"
 _CheckObjectStillVisible:
 	ld hl, OBJECT_FLAGS2
 	add hl, bc
-	res 6, [hl]
+	res OBJ_FLAGS2_6, [hl]
 	ldh a, [hMapObjectIndexBuffer]
 	and a
 	jr nz, .notPlayer
@@ -131,7 +131,7 @@ _CheckObjectStillVisible:
 .ok2
 	ld hl, OBJECT_FLAGS1
 	add hl, bc
-	bit 1, [hl]
+	bit WONT_DELETE_F, [hl]
 	jr nz, .yes2
 	call DeleteMapObject
 	scf
@@ -152,7 +152,7 @@ _HandleStepType:
 	jr z, .null_step_type
 	ld hl, OBJECT_FLAGS2
 	add hl, bc
-	bit OBJECT_DISABLE_STEP_TYPE, [hl]
+	bit MOVE_ANYWHERE_F, [hl]
 	ret nz
 	cp STEP_TYPE_SLEEP
 	jr z, .map_object_movement_pattern
@@ -162,7 +162,7 @@ _HandleStepType:
 	call ObjectMovementReset
 	ld hl, OBJECT_FLAGS2
 	add hl, bc
-	bit OBJECT_DISABLE_STEP_TYPE, [hl]
+	bit MOVE_ANYWHERE_F, [hl]
 	ret nz
 .map_object_movement_pattern
 	call MapObjectMovementPattern
@@ -246,7 +246,7 @@ CopyCurCoordsToNextCoords:
 UpdateTallGrassFlags:
 	ld hl, OBJECT_FLAGS2
 	add hl, bc
-	bit OVERHEAD, [hl]
+	bit OVERHEAD_F, [hl]
 	ret z
 	ld hl, OBJECT_NEXT_TILE
 	add hl, bc
@@ -260,11 +260,11 @@ SetTallGrassFlags:
 	jr z, .set
 	cp COLL_TALL_GRASS
 	jr z, .set
-	res OVERHEAD, [hl]
+	res OVERHEAD_F, [hl]
 	ret
 
 .set
-	set OVERHEAD, [hl]
+	set OVERHEAD_F, [hl]
 	ret
 
 EndSpriteMovement:
@@ -275,9 +275,9 @@ EndSpriteMovement:
 	ld hl, OBJECT_MOVEMENT_BYTE_INDEX
 	add hl, bc
 	ld [hli], a ; OBJECT_MOVEMENT_BYTE_INDEX
-	ld [hli], a ; OBJECT_28
-	ld [hli], a ; OBJECT_29
-	ld [hl], a ; OBJECT_30
+	ld [hli], a ; OBJECT_1C
+	ld [hli], a ; OBJECT_1D
+	ld [hl], a ; OBJECT_1E
 	ld hl, OBJECT_DIRECTION_WALKING
 	add hl, bc
 	ld [hl], STANDING
@@ -289,7 +289,7 @@ InitStep:
 	ld [hl], a
 	ld hl, OBJECT_FLAGS1
 	add hl, bc
-	bit FIXED_FACING, [hl]
+	bit FIXED_FACING_F, [hl]
 	jr nz, GetNextTile
 	add a
 	add a
@@ -468,17 +468,17 @@ DecrementObjectMovementByteIndex:
 	ret
 
 Object28AnonymousJumptable:
-	ld hl, OBJECT_28
+	ld hl, OBJECT_1C
 	jp OffsetStackJumpTable
 
 IncrementObjectStructField28:
-	ld hl, OBJECT_28
+	ld hl, OBJECT_1C
 	add hl, bc
 	inc [hl]
 	ret
 
 ClearObjectStructField28:
-	ld hl, OBJECT_28
+	ld hl, OBJECT_1C
 	add hl, bc
 	ld [hl], 0
 	ret
@@ -622,8 +622,8 @@ MapObjectMovementPattern:
 	jr z, .on_pit
 	ld hl, OBJECT_FLAGS2
 	add hl, bc
-	bit 2, [hl]
-	res 2, [hl]
+	bit OBJ_FLAGS2_2, [hl]
+	res OBJ_FLAGS2_2, [hl]
 	jr z, .ok
 	ld hl, OBJECT_RANGE
 	add hl, bc
@@ -957,7 +957,7 @@ MapObjectMovementPattern:
 	ld d, b
 	ld e, c
 	pop bc
-	ld hl, OBJECT_29
+	ld hl, OBJECT_1D
 	add hl, bc
 	ld [hl], e
 	inc hl
@@ -976,7 +976,7 @@ MapObjectMovementPattern:
 	ld hl, OBJECT_STEP_DURATION
 	add hl, bc
 	ld [hl], e
-	ld hl, OBJECT_30
+	ld hl, OBJECT_1E
 	add hl, bc
 	ld [hl], a
 	ld hl, OBJECT_STEP_TYPE
@@ -1080,7 +1080,7 @@ NPCJump:
 	call GetNextTile
 	ld hl, OBJECT_FLAGS2
 	add hl, bc
-	res OVERHEAD, [hl]
+	res OVERHEAD_F, [hl]
 	jp IncrementObjectStructField28
 
 .Land:
@@ -1118,7 +1118,7 @@ PlayerJump:
 	call CopyNextCoordsTileToStandingCoordsTile
 	ld hl, OBJECT_FLAGS2
 	add hl, bc
-	res OVERHEAD, [hl]
+	res OVERHEAD_F, [hl]
 	ld hl, wPlayerStepFlags
 	set 6, [hl]
 	set 4, [hl]
@@ -1174,7 +1174,7 @@ TeleportFrom:
 	ld hl, OBJECT_STEP_FRAME
 	add hl, bc
 	ld [hl], 0
-	ld hl, OBJECT_31
+	ld hl, OBJECT_1F
 	add hl, bc
 	ld [hl], $10
 	ld hl, OBJECT_STEP_DURATION
@@ -1182,13 +1182,13 @@ TeleportFrom:
 	ld [hl], 16
 	ld hl, OBJECT_FLAGS2
 	add hl, bc
-	res OVERHEAD, [hl]
+	res OVERHEAD_F, [hl]
 	call IncrementObjectStructField28
 .DoSpinRise:
 	ld hl, OBJECT_ACTION
 	add hl, bc
 	ld [hl], PERSON_ACTION_SPIN
-	ld hl, OBJECT_31
+	ld hl, OBJECT_1F
 	add hl, bc
 	inc [hl]
 	ld a, [hl]
@@ -1241,7 +1241,7 @@ TeleportTo:
 	ld hl, OBJECT_STEP_FRAME
 	add hl, bc
 	ld [hl], 0
-	ld hl, OBJECT_31
+	ld hl, OBJECT_1F
 	add hl, bc
 	ld [hl], 0
 	ld hl, OBJECT_STEP_DURATION
@@ -1253,7 +1253,7 @@ TeleportTo:
 	ld hl, OBJECT_ACTION
 	add hl, bc
 	ld [hl], PERSON_ACTION_SPIN
-	ld hl, OBJECT_31
+	ld hl, OBJECT_1F
 	add hl, bc
 	inc [hl]
 	ld a, [hl]
@@ -1322,7 +1322,7 @@ Skyfall:
 	ld hl, OBJECT_STEP_FRAME
 	add hl, bc
 	ld [hl], 0
-	ld hl, OBJECT_31
+	ld hl, OBJECT_1F
 	add hl, bc
 	ld [hl], 0
 	ld hl, OBJECT_STEP_DURATION
@@ -1330,7 +1330,7 @@ Skyfall:
 	ld [hl], 16
 	call IncrementObjectStructField28
 .Fall:
-	ld hl, OBJECT_31
+	ld hl, OBJECT_1F
 	add hl, bc
 	inc [hl]
 	ld a, [hl]
@@ -1540,7 +1540,7 @@ PlayerOrNPCTurnStep:
 	ret nz
 	call IncrementObjectStructField28
 .init2
-	ld hl, OBJECT_29 ; new facing
+	ld hl, OBJECT_1D ; new facing
 	add hl, bc
 	ld a, [hl]
 	ld hl, OBJECT_FACING
@@ -1601,7 +1601,7 @@ StepType0f:
 	ret
 
 StepTypeTrackingObject:
-	ld hl, OBJECT_29
+	ld hl, OBJECT_1D
 	add hl, bc
 	ld e, [hl]
 	inc hl
@@ -1641,12 +1641,12 @@ StepType14:
 
 .Init:
 	xor a
-	ld hl, OBJECT_29
+	ld hl, OBJECT_1D
 	add hl, bc
 	ld [hl], a
 	call IncrementObjectStructField28
 .Run:
-	ld hl, OBJECT_29
+	ld hl, OBJECT_1D
 	add hl, bc
 	ld d, [hl]
 	ld a, [wPlayerStepVectorY]
@@ -1658,7 +1658,7 @@ StepType14:
 	jr z, .ok
 	ld a, [hl]
 	call .GetSign
-	ld hl, OBJECT_29
+	ld hl, OBJECT_1D
 	add hl, bc
 	ld [hl], a
 	ld d, a
@@ -1671,7 +1671,7 @@ StepType14:
 	jp DeleteMapObject
 
 .GetSign:
-	ld hl, OBJECT_30
+	ld hl, OBJECT_1E
 	add hl, bc
 	and 1
 	ld a, [hl]
@@ -1715,7 +1715,7 @@ UpdateJumpPosition:
 	call GetStepVector
 	push af
 	ld a, h
-	ld hl, OBJECT_31
+	ld hl, OBJECT_1F
 	add hl, bc
 	ld e, [hl]
 	add e
@@ -2048,7 +2048,7 @@ DespawnEmote:
 	push af
 	ld hl, OBJECT_FLAGS1
 	add hl, de
-	bit EMOTE_OBJECT, [hl]
+	bit EMOTE_OBJECT_F, [hl]
 	jr z, .next
 	ld hl, OBJECT_SPRITE
 	add hl, de
@@ -2057,11 +2057,11 @@ DespawnEmote:
 	jr z, .next
 	push bc
 	xor a
-	ld bc, OBJECT_STRUCT_LENGTH
+	ld bc, OBJECT_LENGTH
 	rst ByteFill
 	pop bc
 .next
-	ld hl, OBJECT_STRUCT_LENGTH
+	ld hl, OBJECT_LENGTH
 	add hl, de
 	ld d, h
 	ld e, l
@@ -2123,7 +2123,7 @@ UpdateMapObjectDataAndSprites::
 	jr z, .ok
 	call UpdateCurObjectData
 .ok
-	ld hl, OBJECT_STRUCT_LENGTH
+	ld hl, OBJECT_LENGTH
 	add hl, bc
 	ld b, h
 	ld c, l
@@ -2179,7 +2179,7 @@ MaskAllObjectStructs:
 .loop
 	ldh [hMapObjectIndexBuffer], a
 	call SetFacing_Standing
-	ld hl, OBJECT_STRUCT_LENGTH
+	ld hl, OBJECT_LENGTH
 	add hl, bc
 	ld b, h
 	ld c, l
@@ -2377,7 +2377,7 @@ HandleNPCStep::
 	ldh [hMapObjectIndexBuffer], a
 	call DoesObjectHaveASprite
 	call nz, HandleCurNPCStep
-	ld hl, OBJECT_STRUCT_LENGTH
+	ld hl, OBJECT_LENGTH
 	add hl, bc
 	ld b, h
 	ld c, l
@@ -2528,7 +2528,7 @@ Function587a:
 	add hl, bc
 	set 5, [hl]
 .next
-	ld hl, OBJECT_STRUCT_LENGTH
+	ld hl, OBJECT_LENGTH
 	add hl, bc
 	ld b, h
 	ld c, l
@@ -2571,7 +2571,7 @@ ReleaseAllMapObjects::
 	add hl, bc
 	res 5, [hl]
 .next
-	ld hl, OBJECT_STRUCT_LENGTH
+	ld hl, OBJECT_LENGTH
 	add hl, bc
 	ld b, h
 	ld c, l
@@ -2687,7 +2687,7 @@ ApplyBGMapAnchorToObjects:
 	add e
 	ld [hl], a
 .skip
-	ld hl, OBJECT_STRUCT_LENGTH
+	ld hl, OBJECT_LENGTH
 	add hl, bc
 	ld b, h
 	ld c, l
@@ -2732,16 +2732,16 @@ PRIORITY_HIGH EQU $30
 	ld e, PRIORITY_LOW
 	ld hl, OBJECT_FLAGS2
 	add hl, bc
-	bit 0, [hl]
+	bit LOW_PRIORITY_F, [hl]
 	jr nz, .add
 	ld e, PRIORITY_NORM
-	bit 1, [hl]
+	bit HIGH_PRIORITY_F, [hl]
 	jr z, .add
 	ld e, PRIORITY_HIGH
 	jr .add
 
 .skip
-	ld hl, OBJECT_STRUCT_LENGTH
+	ld hl, OBJECT_LENGTH
 	add hl, bc
 	ld b, h
 	ld c, l
@@ -2749,7 +2749,7 @@ PRIORITY_HIGH EQU $30
 	jr .next
 
 .add
-	ld hl, OBJECT_STRUCT_LENGTH
+	ld hl, OBJECT_LENGTH
 	add hl, bc
 	ld b, h
 	ld c, l
@@ -2797,11 +2797,11 @@ PRIORITY_HIGH EQU $30
 	ld hl, OBJECT_FLAGS2
 	add hl, bc
 	ld e, [hl]
-	bit 7, e
+	bit OBJ_FLAGS2_7, e
 	jr z, .skip2
 	or %10000000
 .skip2
-	bit 4, e
+	bit USE_OBP1_F, e
 	jr z, .skip3
 	or %00010000
 .skip3
@@ -2813,7 +2813,7 @@ PRIORITY_HIGH EQU $30
 	or d
 	ld d, a
 	xor a
-	bit OVERHEAD, e
+	bit OVERHEAD_F, e
 	jr z, .skip4
 	or %10000000
 .skip4

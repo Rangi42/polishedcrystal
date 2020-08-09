@@ -14,7 +14,7 @@ QuietCaveB2F_MapScriptHeader:
 	def_coord_events
 
 	def_bg_events
-	bg_event 16, 11, SIGNPOST_ITEM + CALCIUM, EVENT_QUIET_CAVE_B2F_HIDDEN_CALCIUM
+	bg_event 16, 11, BGEVENT_ITEM + CALCIUM, EVENT_QUIET_CAVE_B2F_HIDDEN_CALCIUM
 
 	def_object_events
 	itemball_event 10,  3, DUSK_BALL, 1, EVENT_QUIET_CAVE_B2F_DUSK_BALL

@@ -10,13 +10,13 @@ CeladonUniversityPrincipalsOffice_MapScriptHeader:
 	def_coord_events
 
 	def_bg_events
-	bg_event  2,  0, SIGNPOST_JUMPTEXT, CeladonUniversityPrincipalsOfficeSignpost1Text
-	bg_event  3,  0, SIGNPOST_JUMPTEXT, CeladonUniversityPrincipalsOfficeSignpost2Text
-	bg_event  5,  4, SIGNPOST_RIGHT, CeladonUniversityPrincipalsOfficeComputer
-	bg_event  1,  1, SIGNPOST_JUMPTEXT, CeladonUniversityPrincipalsOfficeBookshelfText
+	bg_event  2,  0, BGEVENT_JUMPTEXT, CeladonUniversityPrincipalsOfficeSignpost1Text
+	bg_event  3,  0, BGEVENT_JUMPTEXT, CeladonUniversityPrincipalsOfficeSignpost2Text
+	bg_event  5,  4, BGEVENT_RIGHT, CeladonUniversityPrincipalsOfficeComputer
+	bg_event  1,  1, BGEVENT_JUMPTEXT, CeladonUniversityPrincipalsOfficeBookshelfText
 
 	def_object_events
-	object_event  2,  2, SPRITE_MATSUMOTO, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CeladonUniversityPrincipalsOfficeMatsumotoScript, -1
+	object_event  2,  2, SPRITE_MATSUMOTO, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, CeladonUniversityPrincipalsOfficeMatsumotoScript, -1
 
 CeladonUniversityPrincipalsOfficeMatsumotoScript:
 	checkevent EVENT_GOT_RARE_CANDY_IN_UNIVERSITY

@@ -23,7 +23,7 @@ LoadLinkTradePalette:
 
 LoadSpecialMapPalette:
 ; Don't load a special palette if it's dark and we haven't used Flash.
-	call GetMapHeaderTimeOfDayNybble
+	call GetMapTimeOfDay
 	cp PALETTE_DARK
 	jr nz, .not_dark
 	ld a, [wStatusFlags]

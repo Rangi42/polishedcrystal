@@ -277,7 +277,7 @@ LoadMenuTextBox::
 	ld hl, MenuTextBoxDataHeader
 	jr LoadMenuDataHeader
 
-LoadStandardMenuDataHeader::
+LoadStandardMenuHeader::
 	ld hl, StandardMenuDataHeader
 	; fallthrough
 

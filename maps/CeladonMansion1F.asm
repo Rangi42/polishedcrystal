@@ -13,12 +13,12 @@ CeladonMansion1F_MapScriptHeader:
 	def_coord_events
 
 	def_bg_events
-	bg_event  5,  8, SIGNPOST_UP, CeladonMansionManagersSuiteSign
-	bg_event  0,  3, SIGNPOST_JUMPSTD, picturebookshelf
-	bg_event  2,  3, SIGNPOST_JUMPSTD, picturebookshelf
+	bg_event  5,  8, BGEVENT_UP, CeladonMansionManagersSuiteSign
+	bg_event  0,  3, BGEVENT_JUMPSTD, picturebookshelf
+	bg_event  2,  3, BGEVENT_JUMPSTD, picturebookshelf
 
 	def_object_events
-	object_event  1,  5, SPRITE_GRANNY, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonMansionManagerText, -1
+	object_event  1,  5, SPRITE_GRANNY, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeladonMansionManagerText, -1
 	pokemon_event  2,  6, MEOWTH, -1, -1, PAL_NPC_BROWN, CeladonMansion1FMeowthText, -1
 	pokemon_event  3,  4, CLEFAIRY, -1, -1, PAL_NPC_RED, CeladonMansion1FClefairyText, -1
 	pokemon_event  4,  4, NIDORAN_F, -1, -1, PAL_NPC_BLUE, CeladonMansion1FNidoranFText, -1

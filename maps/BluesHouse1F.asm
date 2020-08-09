@@ -11,10 +11,10 @@ BluesHouse1F_MapScriptHeader:
 	def_coord_events
 
 	def_bg_events
-	bg_event  5,  1, SIGNPOST_UP, RedsHouse1FTVScript
+	bg_event  5,  1, BGEVENT_UP, RedsHouse1FTVScript
 
 	def_object_events
-	object_event  2,  3, SPRITE_DAISY, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, DaisyScript, -1
+	object_event  2,  3, SPRITE_DAISY, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, DaisyScript, -1
 
 DaisyScript:
 	checkcode VAR_HOUR

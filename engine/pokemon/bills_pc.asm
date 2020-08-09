@@ -153,7 +153,7 @@ BillsPCDepositFuncDeposit:
 	jp BillsPC_PlaceString
 
 BillsPCDepositFuncStats:
-	call LoadStandardMenuDataHeader
+	call LoadStandardMenuHeader
 	call BillsPC_StatsScreen
 	call ExitMenu
 	call PCMonInfo
@@ -168,7 +168,7 @@ BillsPCDepositFuncRelease:
 	push af
 	ld de, PCString_ReleasePKMN
 	call BillsPC_PlaceString
-	call LoadStandardMenuDataHeader
+	call LoadStandardMenuHeader
 	lb bc, 14, 11
 	call PlaceYesNoBox
 	ld a, [wMenuCursorY]
@@ -369,7 +369,7 @@ BillsPC_Withdraw:
 	jp BillsPC_PlaceString
 
 .stats
-	call LoadStandardMenuDataHeader
+	call LoadStandardMenuHeader
 	call BillsPC_StatsScreen
 	call ExitMenu
 	call PCMonInfo
@@ -382,7 +382,7 @@ BillsPC_Withdraw:
 	jr c, .FailedRelease
 	ld de, PCString_ReleasePKMN
 	call BillsPC_PlaceString
-	call LoadStandardMenuDataHeader
+	call LoadStandardMenuHeader
 	lb bc, 14, 11
 	call PlaceYesNoBox
 	ld a, [wMenuCursorY]
@@ -591,7 +591,7 @@ _MovePKMNWithoutMail:
 	ret
 
 .Stats:
-	call LoadStandardMenuDataHeader
+	call LoadStandardMenuHeader
 	call BillsPC_StatsScreen
 	call ExitMenu
 	call PCMonInfo
@@ -2196,7 +2196,7 @@ PCString_NoReleasingEGGS: db "No releasing Eggs!@"
 PCString_NoHeldItem: db "No held item@"
 
 _ChangeBox:
-	call LoadStandardMenuDataHeader
+	call LoadStandardMenuHeader
 	call BillsPC_ClearTilemap
 .loop
 	xor a

@@ -1273,7 +1273,7 @@ Script_showemote:
 	jp ScriptCall
 
 ShowEmoteScript:
-	loademote EMOTE_MEM
+	loademote EMOTE_FROM_MEM
 	applymovement2 .Show
 	pause 0
 	applymovement2 .Hide
@@ -1641,7 +1641,7 @@ Script_priorityjump:
 	ret
 
 Script_checkscene:
-	call CheckTriggers
+	call CheckScenes
 	jr z, _NoTriggers
 	ldh [hScriptVar], a
 	ret
@@ -1654,7 +1654,7 @@ Script_checkmapscene:
 	ld b, a
 	call GetScriptByte
 	ld c, a
-	call GetMapTrigger
+	call GetMapSceneID
 	ld a, d
 	or e
 	jr z, _NoTriggers
@@ -1686,7 +1686,7 @@ Script_setmapscene:
 	call GetScriptByte
 	ld c, a
 DoTrigger:
-	call GetMapTrigger
+	call GetMapSceneID
 	ld a, d
 	or e
 	ret z

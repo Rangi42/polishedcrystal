@@ -603,7 +603,7 @@ AskSurfScript:
 
 CheckFlyAllowedOnMap:
 ; returns z is fly is allowed
-	call GetMapPermission
+	call GetMapEnvironment
 	call CheckOutdoorMap
 	ret z
 ; assumes all special roof maps are in different groups
@@ -669,7 +669,7 @@ FlyFunction:
 .outdoors
 	xor a
 	ldh [hMapAnims], a
-	call LoadStandardMenuDataHeader
+	call LoadStandardMenuHeader
 	call ClearSprites
 	farcall _FlyMap
 	ld a, e
@@ -864,7 +864,7 @@ EscapeRopeOrDig:
 	dw .FailDig
 
 .CheckCanDig:
-	call GetMapPermission
+	call GetMapEnvironment
 	cp CAVE
 	jr z, .incave
 	cp DUNGEON
@@ -1763,14 +1763,14 @@ BikeFunction:
 	ret
 
 .CheckEnvironment:
-	call GetMapPermission
+	call GetMapEnvironment
 	call CheckOutdoorMap
 	jr z, .ok
 	cp CAVE
 	jr z, .ok
 	cp GATE
 	jr z, .ok
-	cp PERM_5
+	cp ENVIRONMENT_5
 	jr nz, .nope
 
 .ok

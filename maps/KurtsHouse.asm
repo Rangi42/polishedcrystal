@@ -11,19 +11,19 @@ KurtsHouse_MapScriptHeader:
 	def_coord_events
 
 	def_bg_events
-	bg_event  6,  1, SIGNPOST_JUMPSTD, radio2
-	bg_event  8,  0, SIGNPOST_JUMPTEXT, KurtsHouseOakPhotoText
-	bg_event  9,  0, SIGNPOST_JUMPTEXT, KurtsHouseOakPhotoText
-	bg_event  5,  1, SIGNPOST_READ, PokemonJournalProfWestwoodScript
-	bg_event  2,  1, SIGNPOST_READ, PokemonJournalProfWestwoodScript
-	bg_event  3,  1, SIGNPOST_READ, PokemonJournalProfWestwoodScript
-	bg_event  4,  1, SIGNPOST_JUMPTEXT, KurtsHouseCelebiStatueText
+	bg_event  6,  1, BGEVENT_JUMPSTD, radio2
+	bg_event  8,  0, BGEVENT_JUMPTEXT, KurtsHouseOakPhotoText
+	bg_event  9,  0, BGEVENT_JUMPTEXT, KurtsHouseOakPhotoText
+	bg_event  5,  1, BGEVENT_READ, PokemonJournalProfWestwoodScript
+	bg_event  2,  1, BGEVENT_READ, PokemonJournalProfWestwoodScript
+	bg_event  3,  1, BGEVENT_READ, PokemonJournalProfWestwoodScript
+	bg_event  4,  1, BGEVENT_JUMPTEXT, KurtsHouseCelebiStatueText
 
 	def_object_events
-	object_event  3,  2, SPRITE_KURT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, KurtScript_0x18e178, EVENT_KURTS_HOUSE_KURT_1
-	object_event  5,  3, SPRITE_SCHOOLGIRL, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, KurtsGranddaughter1, EVENT_KURTS_HOUSE_GRANDDAUGHTER_1
-	object_event 14,  3, SPRITE_KURT, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, KurtScript_0x18e3bd, EVENT_KURTS_HOUSE_KURT_2
-	object_event 11,  4, SPRITE_SCHOOLGIRL, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, KurtsGranddaughter2, EVENT_KURTS_HOUSE_GRANDDAUGHTER_2
+	object_event  3,  2, SPRITE_KURT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, KurtScript_0x18e178, EVENT_KURTS_HOUSE_KURT_1
+	object_event  5,  3, SPRITE_SCHOOLGIRL, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, KurtsGranddaughter1, EVENT_KURTS_HOUSE_GRANDDAUGHTER_1
+	object_event 14,  3, SPRITE_KURT, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, KurtScript_0x18e3bd, EVENT_KURTS_HOUSE_KURT_2
+	object_event 11,  4, SPRITE_SCHOOLGIRL, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, KurtsGranddaughter2, EVENT_KURTS_HOUSE_GRANDDAUGHTER_2
 	pokemon_event  6,  3, SLOWPOKE, -1, -1, PAL_NPC_RED, KurtsHouseSlowpokeText, EVENT_KURTS_HOUSE_SLOWPOKE
 
 	object_const_def

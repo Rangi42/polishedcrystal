@@ -11,13 +11,13 @@ LyrasHouse1F_MapScriptHeader:
 	def_coord_events
 
 	def_bg_events
-	bg_event 10,  1, SIGNPOST_UP, LyrasFridgeScript
-	bg_event  8,  1, SIGNPOST_JUMPTEXT, LyrasSinkText
-	bg_event  9,  1, SIGNPOST_JUMPTEXT, LyrasStoveText
-	bg_event  5,  1, SIGNPOST_UP, LyrasTVScript
+	bg_event 10,  1, BGEVENT_UP, LyrasFridgeScript
+	bg_event  8,  1, BGEVENT_JUMPTEXT, LyrasSinkText
+	bg_event  9,  1, BGEVENT_JUMPTEXT, LyrasStoveText
+	bg_event  5,  1, BGEVENT_UP, LyrasTVScript
 
 	def_object_events
-	object_event  2,  3, SPRITE_DAD, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, LyrasDadScript, -1
+	object_event  2,  3, SPRITE_DAD, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, LyrasDadScript, -1
 
 LyrasDadScript:
 	faceplayer

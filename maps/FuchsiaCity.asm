@@ -20,26 +20,26 @@ FuchsiaCity_MapScriptHeader:
 	def_coord_events
 
 	def_bg_events
-	bg_event 21, 15, SIGNPOST_JUMPTEXT, FuchsiaCitySignText
-	bg_event  5, 29, SIGNPOST_JUMPTEXT, FuchsiaGymSignText
-	bg_event 25, 15, SIGNPOST_JUMPTEXT, SafariZoneOfficeSignText
-	bg_event 22, 13, SIGNPOST_JUMPTEXT, SafariZoneOfficeClosedSignText
-	bg_event 27, 29, SIGNPOST_JUMPTEXT, WardensHomeSignText
-	bg_event 17,  5, SIGNPOST_JUMPTEXT, SafariZoneClosedSignText
-	bg_event 14, 19, SIGNPOST_JUMPTEXT, NoLitteringSignText
-	bg_event  7,  7, SIGNPOST_JUMPTEXT, SafariZoneExhibitSignText
-	bg_event 13,  7, SIGNPOST_JUMPTEXT, SafariZoneExhibitSignText
-	bg_event 27,  7, SIGNPOST_JUMPTEXT, SafariZoneExhibitSignText
-	bg_event 33,  7, SIGNPOST_JUMPTEXT, SafariZoneExhibitSignText
-	bg_event 31, 13, SIGNPOST_JUMPTEXT, SafariZoneExhibitSignText
-	bg_event 31, 27, SIGNPOST_JUMPTEXT, HouseForSaleSignText
-	bg_event 11, 35, SIGNPOST_JUMPTEXT, FuchsiaCityCarefulSwimmingSignText
+	bg_event 21, 15, BGEVENT_JUMPTEXT, FuchsiaCitySignText
+	bg_event  5, 29, BGEVENT_JUMPTEXT, FuchsiaGymSignText
+	bg_event 25, 15, BGEVENT_JUMPTEXT, SafariZoneOfficeSignText
+	bg_event 22, 13, BGEVENT_JUMPTEXT, SafariZoneOfficeClosedSignText
+	bg_event 27, 29, BGEVENT_JUMPTEXT, WardensHomeSignText
+	bg_event 17,  5, BGEVENT_JUMPTEXT, SafariZoneClosedSignText
+	bg_event 14, 19, BGEVENT_JUMPTEXT, NoLitteringSignText
+	bg_event  7,  7, BGEVENT_JUMPTEXT, SafariZoneExhibitSignText
+	bg_event 13,  7, BGEVENT_JUMPTEXT, SafariZoneExhibitSignText
+	bg_event 27,  7, BGEVENT_JUMPTEXT, SafariZoneExhibitSignText
+	bg_event 33,  7, BGEVENT_JUMPTEXT, SafariZoneExhibitSignText
+	bg_event 31, 13, BGEVENT_JUMPTEXT, SafariZoneExhibitSignText
+	bg_event 31, 27, BGEVENT_JUMPTEXT, HouseForSaleSignText
+	bg_event 11, 35, BGEVENT_JUMPTEXT, FuchsiaCityCarefulSwimmingSignText
 
 	def_object_events
-	object_event 23, 18, SPRITE_CAMPER, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x194b45, -1
-	object_event 10,  8, SPRITE_POKEFAN_M, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 1, 1, -1, -1, PAL_NPC_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x194b83, -1
-	object_event 16, 13, SPRITE_TEACHER, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x194bd3, -1
-	object_event 28,  8, SPRITE_POKEFAN_F, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, FuchsiaCityPokefanFText, -1
+	object_event 23, 18, SPRITE_CAMPER, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x194b45, -1
+	object_event 10,  8, SPRITE_POKEFAN_M, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 1, 1, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x194b83, -1
+	object_event 16, 13, SPRITE_TEACHER, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x194bd3, -1
+	object_event 28,  8, SPRITE_POKEFAN_F, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_COMMAND, jumptextfaceplayer, FuchsiaCityPokefanFText, -1
 	cuttree_event 16, 19, EVENT_FUCHSIA_CITY_CUT_TREE
 	fruittree_event 14, 17, FRUITTREE_FUCHSIA_CITY, LIECHI_BERRY, PAL_NPC_RED
 

@@ -255,7 +255,7 @@ CheckTileEvent:
 	call CheckCoordEventScriptFlag
 	jr z, .coord_events_disabled
 
-	call CheckCurrentMapXYTriggers
+	call CheckCurrentMapCoordEvents
 	jr c, .coord_event
 
 .coord_events_disabled
@@ -323,7 +323,7 @@ DoMapTrigger:
 	jr z, .nope
 
 	ld c, a
-	call CheckTriggers
+	call CheckScenes
 	cp c
 	jr nc, .nope
 
@@ -470,18 +470,18 @@ TryObjectEvent:
 	ld a, [hl]
 	and %00001111
 
-	cp NUM_PERSONTYPES
+	cp NUM_OBJECTTYPES
 	ret nc
 
 	call StackJumpTable
 
 .pointers:
-	dw .script   ; PERSONTYPE_SCRIPT
-	dw .pokeball ; PERSONTYPE_POKEBALL
-	dw .trainer  ; PERSONTYPE_TRAINER
-	dw .trainer  ; PERSONTYPE_GENERICTRAINER
-	dw .pokemon  ; PERSONTYPE_POKEMON
-	dw .command  ; PERSONTYPE_COMMAND
+	dw .script   ; OBJECTTYPE_SCRIPT
+	dw .pokeball ; OBJECTTYPE_POKEBALL
+	dw .trainer  ; OBJECTTYPE_TRAINER
+	dw .trainer  ; OBJECTTYPE_GENERICTRAINER
+	dw .pokemon  ; OBJECTTYPE_POKEMON
+	dw .command  ; OBJECTTYPE_COMMAND
 
 .script:
 	ld hl, MAPOBJECT_SCRIPT_POINTER
@@ -549,28 +549,28 @@ endr
 	jp CallScript
 
 TryReadSign:
-	call CheckFacingSign
+	call CheckFacingBGEvent
 	jr c, .IsSign
 	xor a
 	ret
 
 .IsSign:
 	ld a, [wEngineBuffer3]
-	cp SIGNPOST_ITEM
+	cp BGEVENT_ITEM
 	jp nc, .itemifset
 	call StackJumpTable
 
 .signs
-	dw .read     ; SIGNPOST_READ
-	dw .up       ; SIGNPOST_UP
-	dw .down     ; SIGNPOST_DOWN
-	dw .right    ; SIGNPOST_RIGHT
-	dw .left     ; SIGNPOST_LEFT
-	dw .ifset    ; SIGNPOST_IFSET
-	dw .ifnotset ; SIGNPOST_IFNOTSET
-	dw .jumptext ; SIGNPOST_JUMPTEXT
-	dw .jumpstd  ; SIGNPOST_JUMPSTD
-	dw .ifnotset ; SIGNPOST_GROTTOITEM
+	dw .read     ; BGEVENT_READ
+	dw .up       ; BGEVENT_UP
+	dw .down     ; BGEVENT_DOWN
+	dw .right    ; BGEVENT_RIGHT
+	dw .left     ; BGEVENT_LEFT
+	dw .ifset    ; BGEVENT_IFSET
+	dw .ifnotset ; BGEVENT_IFNOTSET
+	dw .jumptext ; BGEVENT_JUMPTEXT
+	dw .jumpstd  ; BGEVENT_JUMPSTD
+	dw .ifnotset ; BGEVENT_GROTTOITEM
 
 .up
 	ld b, OW_UP
@@ -621,7 +621,7 @@ TryReadSign:
 	ld a, [wCurBGEventScriptAddr+1]
 	ld [hli], a
 	ld a, [wCurBGEventType]
-	sub SIGNPOST_ITEM
+	sub BGEVENT_ITEM
 	ld [hl], a
 	ld a, BANK(HiddenItemScript)
 	ld hl, HiddenItemScript
@@ -1229,7 +1229,7 @@ DoBikeStep::
 
 	; If we're not in an area of phone service, we don't
 	; have to be here.
-	call GetMapHeaderPhoneServiceNybble
+	call GetMapPhoneService
 	and a
 	jr nz, .NoCall
 
@@ -1404,7 +1404,7 @@ HandleQueuedCommand:
 	jr c, .fall_down_hole
 
 .next
-	ld hl, OBJECT_STRUCT_LENGTH
+	ld hl, OBJECT_LENGTH
 	add hl, de
 	ld d, h
 	ld e, l

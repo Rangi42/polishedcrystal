@@ -12,10 +12,10 @@ ShamoutiPokeCenter1F_MapScriptHeader:
 	def_coord_events
 
 	def_bg_events
-	bg_event 10,  1, SIGNPOST_READ, PokemonJournalLoreleiScript
+	bg_event 10,  1, BGEVENT_READ, PokemonJournalLoreleiScript
 
 	def_object_events
-	object_event  6,  3, SPRITE_IVY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ShamoutiPokeCenter1FIvyScript, EVENT_SHAMOUTI_POKE_CENTER_IVY
+	object_event  6,  3, SPRITE_IVY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ShamoutiPokeCenter1FIvyScript, EVENT_SHAMOUTI_POKE_CENTER_IVY
 	pc_nurse_event  5, 1
 
 	object_const_def

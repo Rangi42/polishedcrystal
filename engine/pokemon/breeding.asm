@@ -237,7 +237,7 @@ DoEggStep::
 
 OverworldHatchEgg::
 	call RefreshScreen
-	call LoadStandardMenuDataHeader
+	call LoadStandardMenuHeader
 	call HatchEggs
 	call ExitAllMenus
 	call RestartMapMusic

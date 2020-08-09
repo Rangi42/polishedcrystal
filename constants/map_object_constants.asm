@@ -1,38 +1,40 @@
 ; object struct
 	const_def
-	const OBJECT_SPRITE
-	const OBJECT_MAP_OBJECT_INDEX
-	const OBJECT_SPRITE_TILE
-	const OBJECT_MOVEMENTTYPE
-	const OBJECT_FLAGS1
-	const OBJECT_FLAGS2
-	const OBJECT_PALETTE
-	const OBJECT_DIRECTION_WALKING
-	const OBJECT_FACING
-	const OBJECT_STEP_TYPE
-	const OBJECT_STEP_DURATION
-	const OBJECT_ACTION
-	const OBJECT_STEP_FRAME
-	const OBJECT_FACING_STEP
-	const OBJECT_NEXT_TILE
-	const OBJECT_STANDING_TILE
-	const OBJECT_NEXT_MAP_X
-	const OBJECT_NEXT_MAP_Y
-	const OBJECT_MAP_X
-	const OBJECT_MAP_Y
-	const OBJECT_INIT_X
-	const OBJECT_INIT_Y
-	const OBJECT_RADIUS
-	const OBJECT_SPRITE_X
-	const OBJECT_SPRITE_Y
-	const OBJECT_SPRITE_X_OFFSET
-	const OBJECT_SPRITE_Y_OFFSET
-	const OBJECT_MOVEMENT_BYTE_INDEX
-	const OBJECT_28
-	const OBJECT_29
-	const OBJECT_30
-	const OBJECT_31
-	const OBJECT_RANGE
+	const OBJECT_SPRITE              ; 00
+	const OBJECT_MAP_OBJECT_INDEX    ; 01
+	const OBJECT_SPRITE_TILE         ; 02
+	const OBJECT_MOVEMENTTYPE        ; 03
+	const OBJECT_FLAGS1              ; 04
+	const OBJECT_FLAGS2              ; 05
+	const OBJECT_PALETTE             ; 06
+	const OBJECT_DIRECTION_WALKING   ; 07
+	const OBJECT_FACING              ; 08
+	const OBJECT_STEP_TYPE           ; 09
+	const OBJECT_STEP_DURATION       ; 0a
+	const OBJECT_ACTION              ; 0b
+	const OBJECT_STEP_FRAME          ; 0c
+	const OBJECT_FACING_STEP         ; 0d
+	const OBJECT_NEXT_TILE           ; 0e
+	const OBJECT_STANDING_TILE       ; 0f
+	const OBJECT_NEXT_MAP_X          ; 10
+	const OBJECT_NEXT_MAP_Y          ; 11
+	const OBJECT_MAP_X               ; 12
+	const OBJECT_MAP_Y               ; 13
+	const OBJECT_INIT_X              ; 14
+	const OBJECT_INIT_Y              ; 15
+	const OBJECT_RADIUS              ; 16
+	const OBJECT_SPRITE_X            ; 17
+	const OBJECT_SPRITE_Y            ; 18
+	const OBJECT_SPRITE_X_OFFSET     ; 19
+	const OBJECT_SPRITE_Y_OFFSET     ; 1a
+	const OBJECT_MOVEMENT_BYTE_INDEX ; 1b
+	const OBJECT_1C                  ; 1c
+	const OBJECT_1D                  ; 1d
+	const OBJECT_1E                  ; 1e
+	const OBJECT_1F                  ; 1f
+	const OBJECT_RANGE               ; 20
+OBJECT_LENGTH EQU const_value
+NUM_OBJECT_STRUCTS EQU 13
 
 ; object_struct OBJECT_FACING values
 OW_DOWN  EQU DOWN  << 2
@@ -41,43 +43,93 @@ OW_LEFT  EQU LEFT  << 2
 OW_RIGHT EQU RIGHT << 2
 
 ; object_struct OBJECT_FLAGS1 bit flags
-FIXED_FACING EQU 2
-SLIDING      EQU 3
-EMOTE_OBJECT EQU 7
+	const_def
+	const INVISIBLE_F     ; 0
+	const WONT_DELETE_F   ; 1
+	const FIXED_FACING_F  ; 2
+	const SLIDING_F       ; 3
+	const NOCLIP_TILES_F  ; 4
+	const MOVE_ANYWHERE_F ; 5
+	const NOCLIP_OBJS_F   ; 6
+	const EMOTE_OBJECT_F  ; 7
+
+INVISIBLE     EQU 1 << INVISIBLE_F
+WONT_DELETE   EQU 1 << WONT_DELETE_F
+FIXED_FACING  EQU 1 << FIXED_FACING_F
+SLIDING       EQU 1 << SLIDING_F
+NOCLIP_TILES  EQU 1 << NOCLIP_TILES_F
+MOVE_ANYWHERE EQU 1 << MOVE_ANYWHERE_F
+NOCLIP_OBJS   EQU 1 << NOCLIP_OBJS_F
+EMOTE_OBJECT  EQU 1 << EMOTE_OBJECT_F
 
 ; object_struct OBJECT_FLAGS2 bit flags
-INVISIBLE    EQU 0
-OVERHEAD     EQU 3
-OBJECT_DISABLE_STEP_TYPE EQU 5
+	const_def
+	const LOW_PRIORITY_F  ; 0
+	const HIGH_PRIORITY_F ; 1
+	const OBJ_FLAGS2_2    ; 2
+	const OVERHEAD_F      ; 3
+	const USE_OBP1_F      ; 4
+	const OBJ_FLAGS2_5    ; 5
+	const OBJ_FLAGS2_6    ; 6
+	const OBJ_FLAGS2_7    ; 7
 
+LOW_PRIORITY  EQU 1 << LOW_PRIORITY_F
+HIGH_PRIORITY EQU 1 << HIGH_PRIORITY_F
+OVERHEAD      EQU 1 << OVERHEAD_F
+USE_OBP1      EQU 1 << USE_OBP1_F
+
+; object_struct OBJECT_PALETTE bit flags
+	const_def 5
+	const SWIMMING_F         ; 5
+	const STRENGTH_BOULDER_F ; 6
+	const BIG_OBJECT_F       ; 7
+
+SWIMMING         EQU 1 << SWIMMING_F
+STRENGTH_BOULDER EQU 1 << STRENGTH_BOULDER_F
+BIG_OBJECT       EQU 1 << BIG_OBJECT_F
+
+; facing attribute bit flags
+RELATIVE_ATTRIBUTES_F EQU 1
+ABSOLUTE_TILE_ID_F    EQU 2
+
+RELATIVE_ATTRIBUTES EQU 1 << RELATIVE_ATTRIBUTES_F
+ABSOLUTE_TILE_ID    EQU 1 << ABSOLUTE_TILE_ID_F
 
 ; map object struct
 	const_def
 	const MAPOBJECT_OBJECT_STRUCT_ID ; 0
-	const MAPOBJECT_SPRITE ; 1
-	const MAPOBJECT_Y_COORD ; 2
-	const MAPOBJECT_X_COORD ; 3
-	const MAPOBJECT_MOVEMENT ; 4
-	const MAPOBJECT_RADIUS ; 5
-	const MAPOBJECT_HOUR ; 6
-	const MAPOBJECT_TIMEOFDAY ; 7
-	const MAPOBJECT_COLOR ; 8
-	const MAPOBJECT_RANGE ; 9
-	const MAPOBJECT_SCRIPT_POINTER ; a
-	const MAPOBJECT_POINTER_HI ; b
-	const MAPOBJECT_EVENT_FLAG ; c
-	const MAPOBJECT_FLAG_HI ; d
-OBJECT_LENGTH EQU const_value
+	const MAPOBJECT_SPRITE           ; 1
+	const MAPOBJECT_Y_COORD          ; 2
+	const MAPOBJECT_X_COORD          ; 3
+	const MAPOBJECT_MOVEMENT         ; 4
+	const MAPOBJECT_RADIUS           ; 5
+	const MAPOBJECT_HOUR             ; 6
+	const MAPOBJECT_TIMEOFDAY        ; 7
+	const MAPOBJECT_COLOR            ; 8
+	const MAPOBJECT_RANGE            ; 9
+	const MAPOBJECT_SCRIPT_POINTER   ; a
+	const MAPOBJECT_POINTER_HI       ; b
+	const MAPOBJECT_EVENT_FLAG       ; c
+	const MAPOBJECT_FLAG_HI          ; d
+MAPOBJECT_LENGTH EQU const_value
 
-MAPOBJECT_SCREEN_HEIGHT EQU 11
-MAPOBJECT_SCREEN_WIDTH EQU 12
+; SpriteMovementData struct members (see data/sprites/map_objects.asm)
+	const_def
+	const SPRITEMOVEATTR_MOVEMENT ; 0
+	const SPRITEMOVEATTR_FACING   ; 1
+	const SPRITEMOVEATTR_ACTION   ; 2
+	const SPRITEMOVEATTR_FLAGS1   ; 3
+	const SPRITEMOVEATTR_FLAGS2   ; 4
+	const SPRITEMOVEATTR_PALFLAGS ; 5
+NUM_SPRITEMOVEDATA_FIELDS EQU const_value
 
+MAPOBJECT_SCREEN_WIDTH EQU (SCREEN_WIDTH / 2) + 2
+MAPOBJECT_SCREEN_HEIGHT EQU (SCREEN_HEIGHT / 2) + 2
 
-; sprite movement data table indices
-; see data/sprites/map_objects.asm
+; SpriteMovementData indexes (see data/sprites/map_objects.asm)
 	const_def
 	const SPRITEMOVEDATA_00                   ; 00
-	const SPRITEMOVEDATA_DOLL                 ; 01
+	const SPRITEMOVEDATA_STILL                ; 01
 	const SPRITEMOVEDATA_WANDER               ; 02
 	const SPRITEMOVEDATA_SPINRANDOM_SLOW      ; 03
 	const SPRITEMOVEDATA_WALK_UP_DOWN         ; 04
@@ -121,7 +173,6 @@ MAPOBJECT_SCREEN_WIDTH EQU 12
 	const SPRITEMOVEDATA_SAILBOAT_TOP         ; 2a
 	const SPRITEMOVEDATA_SAILBOAT_BOTTOM      ; 2b
 NUM_SPRITEMOVEDATA EQU const_value
-SPRITEMOVEDATA_FIELDS EQU 6
 
 ; sprite movement functions
 ; see engine/map_objects.asm:MapObjectMovementPattern.Pointers
@@ -157,8 +208,7 @@ SPRITEMOVEDATA_FIELDS EQU 6
 	const SPRITEMOVEFN_SAILBOAT_TOP          ; 1c
 	const SPRITEMOVEFN_SAILBOAT_BOTTOM       ; 1d
 
-; sprite step types
-; see engine/map_objects.asm:StepTypesJumptable
+; StepTypesJumptable indexes (see engine/overworld/map_objects.asm)
 	const_def
 	const STEP_TYPE_00              ; 00
 	const STEP_TYPE_SLEEP           ; 01
@@ -185,7 +235,7 @@ SPRITEMOVEDATA_FIELDS EQU 6
 	const STEP_TYPE_NPC_STAIRS      ; 16
 	const STEP_TYPE_PLAYER_STAIRS   ; 17
 
-; see engine/map_object_action.asm:Pointers445f
+; ObjectActionPairPointers indexes (see engine/overworld/map_object_action.asm)
 	const_def
 	const PERSON_ACTION_00              ; 00
 	const PERSON_ACTION_STAND           ; 01
@@ -266,17 +316,17 @@ SPRITEMOVEDATA_FIELDS EQU 6
 	const FACING_SAILBOAT_TOP    ; 2f
 	const FACING_SAILBOAT_BOTTOM ; 30
 
-; movement
+; DoPlayerMovement.DoStep arguments (see engine/overworld/player_movement.asm)
 	const_def
-	const STEP_SLOW
-	const STEP_WALK
-	const STEP_BIKE
-	const STEP_RUN
-	const STEP_LEDGE
-	const STEP_ICE
-	const STEP_TURN
-	const STEP_BACK_LEDGE
-	const STEP_WALK_IN_PLACE
-	const STEP_SPIN
-	const STEP_FAST ; same as STEP_RUN but without doubling animation speed
-	const STEP_STAIRS
+	const STEP_SLOW          ; 0
+	const STEP_WALK          ; 1
+	const STEP_BIKE          ; 2
+	const STEP_RUN           ; 3
+	const STEP_LEDGE         ; 4
+	const STEP_ICE           ; 5
+	const STEP_TURN          ; 6
+	const STEP_BACK_LEDGE    ; 7
+	const STEP_WALK_IN_PLACE ; 8
+	const STEP_SPIN          ; 9
+	const STEP_FAST          ; a (same as STEP_RUN but without doubling animation speed)
+	const STEP_STAIRS        ; b

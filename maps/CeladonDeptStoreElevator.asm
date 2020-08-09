@@ -10,7 +10,7 @@ CeladonDeptStoreElevator_MapScriptHeader:
 	def_coord_events
 
 	def_bg_events
-	bg_event  3,  0, SIGNPOST_READ, CeladonDeptStoreElevatorButton
+	bg_event  3,  0, BGEVENT_READ, CeladonDeptStoreElevatorButton
 
 	def_object_events
 

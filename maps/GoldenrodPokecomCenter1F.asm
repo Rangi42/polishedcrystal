@@ -13,39 +13,39 @@ GoldenrodPokecomCenter1F_MapScriptHeader:
 	def_coord_events
 
 	def_bg_events
-	bg_event 11,  7, SIGNPOST_READ, PokemonJournalWhitneyScript
-	bg_event 24,  5, SIGNPOST_RIGHT, JudgeMachineScript
-	bg_event 24,  6, SIGNPOST_RIGHT, JudgeMachineScript
-	bg_event 24,  7, SIGNPOST_RIGHT, JudgeMachineScript
-	bg_event 24,  8, SIGNPOST_RIGHT, JudgeMachineScript
-	bg_event 24,  9, SIGNPOST_RIGHT, JudgeMachineScript
-	bg_event 24, 10, SIGNPOST_RIGHT, JudgeMachineScript
-	bg_event 25, 11, SIGNPOST_UP, JudgeMachineScript
-	bg_event 26, 11, SIGNPOST_UP, JudgeMachineScript
-	bg_event 27, 11, SIGNPOST_UP, JudgeMachineScript
-	bg_event 28, 11, SIGNPOST_UP, JudgeMachineScript
-	bg_event 29,  5, SIGNPOST_LEFT, JudgeMachineScript
-	bg_event 29,  6, SIGNPOST_LEFT, JudgeMachineScript
-	bg_event 29,  7, SIGNPOST_LEFT, JudgeMachineScript
-	bg_event 29,  8, SIGNPOST_LEFT, JudgeMachineScript
-	bg_event 29,  9, SIGNPOST_LEFT, JudgeMachineScript
-	bg_event 29, 10, SIGNPOST_LEFT, JudgeMachineScript
-	bg_event 24,  3, SIGNPOST_ITEM + RARE_CANDY, EVENT_GOLDENROD_POKECOM_CENTER_1F_HIDDEN_RARE_CANDY
+	bg_event 11,  7, BGEVENT_READ, PokemonJournalWhitneyScript
+	bg_event 24,  5, BGEVENT_RIGHT, JudgeMachineScript
+	bg_event 24,  6, BGEVENT_RIGHT, JudgeMachineScript
+	bg_event 24,  7, BGEVENT_RIGHT, JudgeMachineScript
+	bg_event 24,  8, BGEVENT_RIGHT, JudgeMachineScript
+	bg_event 24,  9, BGEVENT_RIGHT, JudgeMachineScript
+	bg_event 24, 10, BGEVENT_RIGHT, JudgeMachineScript
+	bg_event 25, 11, BGEVENT_UP, JudgeMachineScript
+	bg_event 26, 11, BGEVENT_UP, JudgeMachineScript
+	bg_event 27, 11, BGEVENT_UP, JudgeMachineScript
+	bg_event 28, 11, BGEVENT_UP, JudgeMachineScript
+	bg_event 29,  5, BGEVENT_LEFT, JudgeMachineScript
+	bg_event 29,  6, BGEVENT_LEFT, JudgeMachineScript
+	bg_event 29,  7, BGEVENT_LEFT, JudgeMachineScript
+	bg_event 29,  8, BGEVENT_LEFT, JudgeMachineScript
+	bg_event 29,  9, BGEVENT_LEFT, JudgeMachineScript
+	bg_event 29, 10, BGEVENT_LEFT, JudgeMachineScript
+	bg_event 24,  3, BGEVENT_ITEM + RARE_CANDY, EVENT_GOLDENROD_POKECOM_CENTER_1F_HIDDEN_RARE_CANDY
 
 	def_object_events
-	object_event 23, 10, SPRITE_ENGINEER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_PURPLE, PERSONTYPE_SCRIPT, 0, JudgeMachineEngineerScript, EVENT_JUDGE_MACHINE_ENGINEER
-	object_event  7,  7, SPRITE_BOWING_NURSE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, NurseScript_0x60f91, -1
-	object_event  0, 12, SPRITE_GAMEBOY_KID, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x62105, -1
-	object_event  3, 11, SPRITE_CUTE_GIRL, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x62260, -1
-	object_event 12, 14, SPRITE_MATRON, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_SCRIPT, 0, PokefanFScript_0x61024, -1
-	object_event 16,  8, SPRITE_LINK_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, WonderTradeReceptionistScript, -1
-	object_event  8, 13, SPRITE_SUPER_NERD, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x61c89, -1
-	object_event 27, 13, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x61e5c, -1
-	object_event 21,  6, SPRITE_ROCKER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x61fc9, -1
-	object_event 18, 13, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x62222, -1
-	object_event 18,  9, SPRITE_CUTE_GIRL, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x61cef, -1
-	object_event  3,  9, SPRITE_MISC_OVERHEAD, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, InfoSignScript, -1
-	object_event 23,  3, SPRITE_MISC_OVERHEAD, SPRITEMOVEDATA_POKECOM_NEWS, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, end, NULL, -1
+	object_event 23, 10, SPRITE_ENGINEER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_PURPLE, OBJECTTYPE_SCRIPT, 0, JudgeMachineEngineerScript, EVENT_JUDGE_MACHINE_ENGINEER
+	object_event  7,  7, SPRITE_BOWING_NURSE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, NurseScript_0x60f91, -1
+	object_event  0, 12, SPRITE_GAMEBOY_KID, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x62105, -1
+	object_event  3, 11, SPRITE_CUTE_GIRL, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x62260, -1
+	object_event 12, 14, SPRITE_MATRON, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, PokefanFScript_0x61024, -1
+	object_event 16,  8, SPRITE_LINK_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, WonderTradeReceptionistScript, -1
+	object_event  8, 13, SPRITE_SUPER_NERD, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x61c89, -1
+	object_event 27, 13, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x61e5c, -1
+	object_event 21,  6, SPRITE_ROCKER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x61fc9, -1
+	object_event 18, 13, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x62222, -1
+	object_event 18,  9, SPRITE_CUTE_GIRL, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x61cef, -1
+	object_event  3,  9, SPRITE_MISC_OVERHEAD, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, InfoSignScript, -1
+	object_event 23,  3, SPRITE_MISC_OVERHEAD, SPRITEMOVEDATA_POKECOM_NEWS, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, end, NULL, -1
 
 	object_const_def
 	const GOLDENRODPOKECOMCENTER1F_ENGINEER

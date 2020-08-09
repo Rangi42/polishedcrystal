@@ -10,7 +10,7 @@ GoldenrodDeptStoreElevator_MapScriptHeader:
 	def_coord_events
 
 	def_bg_events
-	bg_event  3,  0, SIGNPOST_READ, GoldenrodDeptStoreElevatorButton
+	bg_event  3,  0, BGEVENT_READ, GoldenrodDeptStoreElevatorButton
 
 	def_object_events
 

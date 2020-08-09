@@ -28,14 +28,14 @@ SpawnPlayer:
 	call GetMapObject
 	ld hl, MAPOBJECT_COLOR
 	add hl, bc
-	ln e, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT
+	ln e, (1 << 3) | PAL_OW_RED, OBJECTTYPE_SCRIPT
 	ld a, [wPlayerSpriteSetupFlags]
 	bit 2, a
 	jr nz, .ok
 	ld a, [wPlayerGender]
 	bit 0, a
 	jr z, .ok
-	ln e, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT
+	ln e, (1 << 3) | PAL_OW_BLUE, OBJECTTYPE_SCRIPT
 
 .ok
 	ld [hl], e
@@ -55,7 +55,7 @@ PlayerObjectTemplate:
 ; Said bytes seem to be unused, but the game freezes when you first spawn
 ; in your room if this is not loaded.
 _NUM_OBJECT_EVENTS = 0
-	object_event -4, -4, SPRITE_CHRIS, SPRITEMOVEDATA_PLAYER, 15, 15, -1, -1, 0, PERSONTYPE_SCRIPT, 0, 0, -1
+	object_event -4, -4, SPRITE_CHRIS, SPRITEMOVEDATA_PLAYER, 15, 15, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, 0, -1
 
 CopyDECoordsToMapObject::
 	push de
@@ -129,9 +129,9 @@ CopyObjectStruct::
 	call CheckObjectMask
 	and a
 	ret nz ; masked
-	ld hl, wObjectStructs + OBJECT_STRUCT_LENGTH * 1
+	ld hl, wObjectStructs + OBJECT_LENGTH * 1
 	ld a, 1
-	ld de, OBJECT_STRUCT_LENGTH
+	ld de, OBJECT_LENGTH
 .loop
 	ldh [hObjectStructIndexBuffer], a
 	ld a, [hl]
@@ -217,7 +217,7 @@ CopyMapObjectToObjectStruct:
 	jp CopyTempObjectToObjectStruct
 
 InitializeVisibleSprites:
-	ld bc, wMapObjects + OBJECT_LENGTH
+	ld bc, wMapObjects + MAPOBJECT_LENGTH
 	ld a, 1
 .loop
 	ldh [hMapObjectIndexBuffer], a
@@ -264,7 +264,7 @@ InitializeVisibleSprites:
 	ret c
 
 .next
-	ld hl, OBJECT_LENGTH
+	ld hl, MAPOBJECT_LENGTH
 	add hl, bc
 	ld b, h
 	ld c, l
@@ -298,7 +298,7 @@ CheckObjectEnteringVisibleRange::
 	ld d, a
 	ld a, [wXCoord]
 	ld e, a
-	ld bc, wMapObjects + OBJECT_LENGTH
+	ld bc, wMapObjects + MAPOBJECT_LENGTH
 	ld a, 1
 .loop_v
 	ldh [hMapObjectIndexBuffer], a
@@ -332,7 +332,7 @@ CheckObjectEnteringVisibleRange::
 	pop de
 
 .next_v
-	ld hl, OBJECT_LENGTH
+	ld hl, MAPOBJECT_LENGTH
 	add hl, bc
 	ld b, h
 	ld c, l
@@ -354,7 +354,7 @@ CheckObjectEnteringVisibleRange::
 	ld e, a
 	ld a, [wYCoord]
 	ld d, a
-	ld bc, wMapObjects + OBJECT_LENGTH
+	ld bc, wMapObjects + MAPOBJECT_LENGTH
 	ld a, 1
 .loop_h
 	ldh [hMapObjectIndexBuffer], a
@@ -388,7 +388,7 @@ CheckObjectEnteringVisibleRange::
 	pop de
 
 .next_h
-	ld hl, OBJECT_LENGTH
+	ld hl, MAPOBJECT_LENGTH
 	add hl, bc
 	ld b, h
 	ld c, l

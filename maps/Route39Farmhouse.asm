@@ -10,12 +10,12 @@ Route39Farmhouse_MapScriptHeader:
 	def_coord_events
 
 	def_bg_events
-	bg_event  6,  1, SIGNPOST_JUMPSTD, picturebookshelf
-	bg_event  7,  1, SIGNPOST_JUMPSTD, picturebookshelf
+	bg_event  6,  1, BGEVENT_JUMPSTD, picturebookshelf
+	bg_event  7,  1, BGEVENT_JUMPSTD, picturebookshelf
 
 	def_object_events
-	object_event  3,  2, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, PokefanMScript_0x9ceb4, -1
-	object_event  5,  4, SPRITE_MATRON, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_SCRIPT, 0, PokefanFScript_0x9cf0e, -1
+	object_event  3,  2, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, PokefanMScript_0x9ceb4, -1
+	object_event  5,  4, SPRITE_MATRON, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, PokefanFScript_0x9cf0e, -1
 
 PokefanMScript_0x9ceb4:
 	faceplayer

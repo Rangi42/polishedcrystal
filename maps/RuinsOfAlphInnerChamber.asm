@@ -19,40 +19,40 @@ RuinsOfAlphInnerChamber_MapScriptHeader:
 	def_coord_events
 
 	def_bg_events
-	bg_event  2,  3, SIGNPOST_JUMPTEXT, RuinsofAlphStatueText
-	bg_event  5,  3, SIGNPOST_JUMPTEXT, RuinsofAlphStatueText
-	bg_event  8,  3, SIGNPOST_JUMPTEXT, RuinsofAlphStatueText
-	bg_event 11,  3, SIGNPOST_JUMPTEXT, RuinsofAlphStatueText
-	bg_event 14,  3, SIGNPOST_JUMPTEXT, RuinsofAlphStatueText
-	bg_event 17,  3, SIGNPOST_JUMPTEXT, RuinsofAlphStatueText
-	bg_event  2,  8, SIGNPOST_JUMPTEXT, RuinsofAlphStatueText
-	bg_event  5,  8, SIGNPOST_JUMPTEXT, RuinsofAlphStatueText
-	bg_event  8,  8, SIGNPOST_JUMPTEXT, RuinsofAlphStatueText
-	bg_event 11,  8, SIGNPOST_JUMPTEXT, RuinsofAlphStatueText
-	bg_event 14,  8, SIGNPOST_JUMPTEXT, RuinsofAlphStatueText
-	bg_event 17,  8, SIGNPOST_JUMPTEXT, RuinsofAlphStatueText
-	bg_event  2, 13, SIGNPOST_JUMPTEXT, RuinsofAlphStatueText
-	bg_event  5, 13, SIGNPOST_JUMPTEXT, RuinsofAlphStatueText
-	bg_event 14, 13, SIGNPOST_JUMPTEXT, RuinsofAlphStatueText
-	bg_event 17, 13, SIGNPOST_JUMPTEXT, RuinsofAlphStatueText
-	bg_event  2, 18, SIGNPOST_JUMPTEXT, RuinsofAlphStatueText
-	bg_event  5, 18, SIGNPOST_JUMPTEXT, RuinsofAlphStatueText
-	bg_event  8, 18, SIGNPOST_JUMPTEXT, RuinsofAlphStatueText
-	bg_event 11, 18, SIGNPOST_JUMPTEXT, RuinsofAlphStatueText
-	bg_event 14, 18, SIGNPOST_JUMPTEXT, RuinsofAlphStatueText
-	bg_event 17, 18, SIGNPOST_JUMPTEXT, RuinsofAlphStatueText
-	bg_event  2, 24, SIGNPOST_JUMPTEXT, RuinsofAlphStatueText
-	bg_event  5, 24, SIGNPOST_JUMPTEXT, RuinsofAlphStatueText
-	bg_event  8, 24, SIGNPOST_JUMPTEXT, RuinsofAlphStatueText
-	bg_event 11, 24, SIGNPOST_JUMPTEXT, RuinsofAlphStatueText
-	bg_event 14, 24, SIGNPOST_JUMPTEXT, RuinsofAlphStatueText
-	bg_event 17, 24, SIGNPOST_JUMPTEXT, RuinsofAlphStatueText
+	bg_event  2,  3, BGEVENT_JUMPTEXT, RuinsofAlphStatueText
+	bg_event  5,  3, BGEVENT_JUMPTEXT, RuinsofAlphStatueText
+	bg_event  8,  3, BGEVENT_JUMPTEXT, RuinsofAlphStatueText
+	bg_event 11,  3, BGEVENT_JUMPTEXT, RuinsofAlphStatueText
+	bg_event 14,  3, BGEVENT_JUMPTEXT, RuinsofAlphStatueText
+	bg_event 17,  3, BGEVENT_JUMPTEXT, RuinsofAlphStatueText
+	bg_event  2,  8, BGEVENT_JUMPTEXT, RuinsofAlphStatueText
+	bg_event  5,  8, BGEVENT_JUMPTEXT, RuinsofAlphStatueText
+	bg_event  8,  8, BGEVENT_JUMPTEXT, RuinsofAlphStatueText
+	bg_event 11,  8, BGEVENT_JUMPTEXT, RuinsofAlphStatueText
+	bg_event 14,  8, BGEVENT_JUMPTEXT, RuinsofAlphStatueText
+	bg_event 17,  8, BGEVENT_JUMPTEXT, RuinsofAlphStatueText
+	bg_event  2, 13, BGEVENT_JUMPTEXT, RuinsofAlphStatueText
+	bg_event  5, 13, BGEVENT_JUMPTEXT, RuinsofAlphStatueText
+	bg_event 14, 13, BGEVENT_JUMPTEXT, RuinsofAlphStatueText
+	bg_event 17, 13, BGEVENT_JUMPTEXT, RuinsofAlphStatueText
+	bg_event  2, 18, BGEVENT_JUMPTEXT, RuinsofAlphStatueText
+	bg_event  5, 18, BGEVENT_JUMPTEXT, RuinsofAlphStatueText
+	bg_event  8, 18, BGEVENT_JUMPTEXT, RuinsofAlphStatueText
+	bg_event 11, 18, BGEVENT_JUMPTEXT, RuinsofAlphStatueText
+	bg_event 14, 18, BGEVENT_JUMPTEXT, RuinsofAlphStatueText
+	bg_event 17, 18, BGEVENT_JUMPTEXT, RuinsofAlphStatueText
+	bg_event  2, 24, BGEVENT_JUMPTEXT, RuinsofAlphStatueText
+	bg_event  5, 24, BGEVENT_JUMPTEXT, RuinsofAlphStatueText
+	bg_event  8, 24, BGEVENT_JUMPTEXT, RuinsofAlphStatueText
+	bg_event 11, 24, BGEVENT_JUMPTEXT, RuinsofAlphStatueText
+	bg_event 14, 24, BGEVENT_JUMPTEXT, RuinsofAlphStatueText
+	bg_event 17, 24, BGEVENT_JUMPTEXT, RuinsofAlphStatueText
 
 	def_object_events
-	object_event  3,  7, SPRITE_FISHER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x58fac, EVENT_RUINS_OF_ALPH_INNER_CHAMBER_TOURISTS
-	object_event 14, 14, SPRITE_POKEFAN_F, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x58fda, EVENT_RUINS_OF_ALPH_INNER_CHAMBER_TOURISTS
-	object_event 11, 19, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x59024, EVENT_RUINS_OF_ALPH_INNER_CHAMBER_TOURISTS
-	object_event  7, 11, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x58a03, EVENT_RUINS_OF_ALPH_INNER_CHAMBER_TOURISTS
+	object_event  3,  7, SPRITE_FISHER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x58fac, EVENT_RUINS_OF_ALPH_INNER_CHAMBER_TOURISTS
+	object_event 14, 14, SPRITE_POKEFAN_F, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x58fda, EVENT_RUINS_OF_ALPH_INNER_CHAMBER_TOURISTS
+	object_event 11, 19, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x59024, EVENT_RUINS_OF_ALPH_INNER_CHAMBER_TOURISTS
+	object_event  7, 11, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x58a03, EVENT_RUINS_OF_ALPH_INNER_CHAMBER_TOURISTS
 
 RuinsofAlphInnerChamberTrigger1:
 	priorityjump UnknownScript_0x58f6e

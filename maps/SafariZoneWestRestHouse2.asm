@@ -10,13 +10,13 @@ SafariZoneWestRestHouse2_MapScriptHeader:
 	def_coord_events
 
 	def_bg_events
-	bg_event  4,  1, SIGNPOST_READ, PokemonJournalKogaScript
-	bg_event  5,  1, SIGNPOST_READ, PokemonJournalKogaScript
-	bg_event  6,  1, SIGNPOST_READ, PokemonJournalKogaScript
-	bg_event  7,  1, SIGNPOST_READ, PokemonJournalKogaScript
+	bg_event  4,  1, BGEVENT_READ, PokemonJournalKogaScript
+	bg_event  5,  1, BGEVENT_READ, PokemonJournalKogaScript
+	bg_event  6,  1, BGEVENT_READ, PokemonJournalKogaScript
+	bg_event  7,  1, BGEVENT_READ, PokemonJournalKogaScript
 
 	def_object_events
-	object_event  3,  4, SPRITE_FLANNERY, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SafariZoneWestRestHouse2FlanneryScript, -1
+	object_event  3,  4, SPRITE_FLANNERY, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, SafariZoneWestRestHouse2FlanneryScript, -1
 
 	object_const_def
 	const SAFARIZONEWESTRESTHOUSE2_FLANNERY

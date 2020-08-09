@@ -10,19 +10,19 @@ SproutTower3F_MapScriptHeader:
 	coord_event  9,  9, 0, UnknownScript_0x184947
 
 	def_bg_events
-	bg_event  6,  1, SIGNPOST_JUMPTEXT, UnknownText_0x184f61
-	bg_event  9,  1, SIGNPOST_JUMPTEXT, UnknownText_0x184f61
-	bg_event  7,  0, SIGNPOST_JUMPTEXT, UnknownText_0x184f37
-	bg_event  8,  0, SIGNPOST_JUMPTEXT, UnknownText_0x184f37
-	bg_event  3, 15, SIGNPOST_JUMPTEXT, UnknownText_0x184f61
-	bg_event 12, 15, SIGNPOST_JUMPTEXT, UnknownText_0x184f61
+	bg_event  6,  1, BGEVENT_JUMPTEXT, UnknownText_0x184f61
+	bg_event  9,  1, BGEVENT_JUMPTEXT, UnknownText_0x184f61
+	bg_event  7,  0, BGEVENT_JUMPTEXT, UnknownText_0x184f37
+	bg_event  8,  0, BGEVENT_JUMPTEXT, UnknownText_0x184f37
+	bg_event  3, 15, BGEVENT_JUMPTEXT, UnknownText_0x184f61
+	bg_event 12, 15, BGEVENT_JUMPTEXT, UnknownText_0x184f61
 
 	def_object_events
-	object_event  8,  4, SPRITE_SILVER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_SPROUT_TOWER
-	object_event  6, 13, SPRITE_SAGE, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerSageJin, -1
-	object_event  6,  8, SPRITE_SAGE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerSageTroy, -1
-	object_event  9, 11, SPRITE_SAGE, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerSageNeal, -1
-	object_event  8,  2, SPRITE_ELDER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ElderLiScript, -1
+	object_event  8,  4, SPRITE_SILVER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_SPROUT_TOWER
+	object_event  6, 13, SPRITE_SAGE, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerSageJin, -1
+	object_event  6,  8, SPRITE_SAGE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, GenericTrainerSageTroy, -1
+	object_event  9, 11, SPRITE_SAGE, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerSageNeal, -1
+	object_event  8,  2, SPRITE_ELDER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ElderLiScript, -1
 	itemball_event  4, 14, POTION, 1, EVENT_SPROUT_TOWER_3F_POTION
 	itemball_event 12,  1, ESCAPE_ROPE, 1, EVENT_SPROUT_TOWER_3F_ESCAPE_ROPE
 

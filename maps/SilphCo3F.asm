@@ -9,22 +9,22 @@ SilphCo3F_MapScriptHeader:
 	def_coord_events
 
 	def_bg_events
-	bg_event  3,  2, SIGNPOST_JUMPTEXT, SilphCo3FDeptSignText
-	bg_event  9,  2, SIGNPOST_JUMPTEXT, SilphCo3FDeptSignText
-	bg_event  5,  0, SIGNPOST_JUMPTEXT, SilphCo3FElevatorText
-	bg_event  0,  3, SIGNPOST_JUMPSTD, difficultbookshelf
-	bg_event  6,  3, SIGNPOST_JUMPSTD, difficultbookshelf
-	bg_event  7,  3, SIGNPOST_JUMPSTD, difficultbookshelf
-	bg_event 12,  3, SIGNPOST_JUMPSTD, difficultbookshelf
-	bg_event 13,  3, SIGNPOST_JUMPSTD, difficultbookshelf
+	bg_event  3,  2, BGEVENT_JUMPTEXT, SilphCo3FDeptSignText
+	bg_event  9,  2, BGEVENT_JUMPTEXT, SilphCo3FDeptSignText
+	bg_event  5,  0, BGEVENT_JUMPTEXT, SilphCo3FElevatorText
+	bg_event  0,  3, BGEVENT_JUMPSTD, difficultbookshelf
+	bg_event  6,  3, BGEVENT_JUMPSTD, difficultbookshelf
+	bg_event  7,  3, BGEVENT_JUMPSTD, difficultbookshelf
+	bg_event 12,  3, BGEVENT_JUMPSTD, difficultbookshelf
+	bg_event 13,  3, BGEVENT_JUMPSTD, difficultbookshelf
 
 	def_object_events
-	object_event 10,  5, SPRITE_SILPH_EMPLOYEE, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SilphCo3FSilphEmployeeScript, -1
-	object_event  2,  5, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, SilphCo3FScientist1Text, -1
-	object_event  8,  7, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, SilphCo3FScientist2Text, -1
-	object_event 14,  4, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, pokemart, MARTTYPE_SILPH, MART_SILPH_CO, -1
-	object_event 13,  1, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, SilphCo3FOfficerText, -1
-	object_event  6,  6, SPRITE_GENTLEMAN, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, SilphCo3FGentlemanText, -1
+	object_event 10,  5, SPRITE_SILPH_EMPLOYEE, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, SilphCo3FSilphEmployeeScript, -1
+	object_event  2,  5, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, SilphCo3FScientist1Text, -1
+	object_event  8,  7, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, SilphCo3FScientist2Text, -1
+	object_event 14,  4, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, pokemart, MARTTYPE_SILPH, MART_SILPH_CO, -1
+	object_event 13,  1, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_COMMAND, jumptextfaceplayer, SilphCo3FOfficerText, -1
+	object_event  6,  6, SPRITE_GENTLEMAN, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, SilphCo3FGentlemanText, -1
 
 SilphCo3FSilphEmployeeScript:
 	checkevent EVENT_GOT_CHERISH_BALL_FROM_SAFFRON

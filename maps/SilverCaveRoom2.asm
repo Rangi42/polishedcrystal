@@ -12,7 +12,7 @@ SilverCaveRoom2_MapScriptHeader:
 	def_coord_events
 
 	def_bg_events
-	bg_event 14, 31, SIGNPOST_ITEM + MAX_POTION, EVENT_SILVER_CAVE_ROOM_2_HIDDEN_MAX_POTION
+	bg_event 14, 31, BGEVENT_ITEM + MAX_POTION, EVENT_SILVER_CAVE_ROOM_2_HIDDEN_MAX_POTION
 
 	def_object_events
 	itemball_event 24, 10, CALCIUM, 1, EVENT_SILVER_CAVE_ROOM_2_CALCIUM

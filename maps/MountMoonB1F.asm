@@ -16,11 +16,11 @@ MountMoonB1F_MapScriptHeader:
 	def_coord_events
 
 	def_bg_events
-	bg_event  5, 18, SIGNPOST_ITEM + STAR_PIECE, EVENT_MOUNT_MOON_B1F_HIDDEN_STAR_PIECE
-	bg_event 24, 10, SIGNPOST_ITEM + MOON_STONE, EVENT_MOUNT_MOON_B1F_HIDDEN_MOON_STONE
+	bg_event  5, 18, BGEVENT_ITEM + STAR_PIECE, EVENT_MOUNT_MOON_B1F_HIDDEN_STAR_PIECE
+	bg_event 24, 10, BGEVENT_ITEM + MOON_STONE, EVENT_MOUNT_MOON_B1F_HIDDEN_MOON_STONE
 
 	def_object_events
-	object_event  5, 20, SPRITE_HIKER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, MountMoonB1FPokefanmText, -1
+	object_event  5, 20, SPRITE_HIKER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, MountMoonB1FPokefanmText, -1
 
 MountMoonB1FPokefanmText:
 	text "I'm excavating for"

@@ -12,8 +12,8 @@ RuinsOfAlphOmanyteItemRoom_MapScriptHeader:
 	def_coord_events
 
 	def_bg_events
-	bg_event  2,  1, SIGNPOST_JUMPTEXT, RuinsofAlphStatueText
-	bg_event  5,  1, SIGNPOST_JUMPTEXT, RuinsofAlphStatueText
+	bg_event  2,  1, BGEVENT_JUMPTEXT, RuinsofAlphStatueText
+	bg_event  5,  1, BGEVENT_JUMPTEXT, RuinsofAlphStatueText
 
 	def_object_events
 	itemball_event  2,  6, PEARL_STRING, 1, EVENT_PICKED_UP_PEARL_STRING_FROM_OMANYTE_ITEM_ROOM

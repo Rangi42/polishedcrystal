@@ -10,13 +10,13 @@ ElmsHouse_MapScriptHeader:
 	def_coord_events
 
 	def_bg_events
-	bg_event  0,  1, SIGNPOST_JUMPTEXT, ElmsHouseFridgeText
-	bg_event  6,  1, SIGNPOST_JUMPTEXT, ElmsHousePCText
-	bg_event  7,  1, SIGNPOST_JUMPSTD, difficultbookshelf
+	bg_event  0,  1, BGEVENT_JUMPTEXT, ElmsHouseFridgeText
+	bg_event  6,  1, BGEVENT_JUMPTEXT, ElmsHousePCText
+	bg_event  7,  1, BGEVENT_JUMPSTD, difficultbookshelf
 
 	def_object_events
-	object_event  1,  5, SPRITE_POKEFAN_F, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, ElmsWifeText, -1
-	object_event  4,  5, SPRITE_CHILD, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, ElmsSonText, -1
+	object_event  1,  5, SPRITE_POKEFAN_F, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, ElmsWifeText, -1
+	object_event  4,  5, SPRITE_CHILD, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_COMMAND, jumptextfaceplayer, ElmsSonText, -1
 
 ElmsWifeText:
 	text "Hi, <PLAYER>! My"

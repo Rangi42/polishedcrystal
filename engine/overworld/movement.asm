@@ -352,37 +352,37 @@ Movement_tree_shake:
 Movement_remove_sliding:
 	ld hl, OBJECT_FLAGS1
 	add hl, bc
-	res SLIDING, [hl]
+	res SLIDING_F, [hl]
 	jp ContinueReadingMovement
 
 Movement_set_sliding:
 	ld hl, OBJECT_FLAGS1
 	add hl, bc
-	set SLIDING, [hl]
+	set SLIDING_F, [hl]
 	jp ContinueReadingMovement
 
 Movement_remove_fixed_facing:
 	ld hl, OBJECT_FLAGS1
 	add hl, bc
-	res FIXED_FACING, [hl]
+	res FIXED_FACING_F, [hl]
 	jp ContinueReadingMovement
 
 Movement_fix_facing:
 	ld hl, OBJECT_FLAGS1
 	add hl, bc
-	set FIXED_FACING, [hl]
+	set FIXED_FACING_F, [hl]
 	jp ContinueReadingMovement
 
 Movement_show_person:
 	ld hl, OBJECT_FLAGS1
 	add hl, bc
-	res INVISIBLE, [hl]
+	res INVISIBLE_F, [hl]
 	jp ContinueReadingMovement
 
 Movement_hide_person:
 	ld hl, OBJECT_FLAGS1
 	add hl, bc
-	set INVISIBLE, [hl]
+	set INVISIBLE_F, [hl]
 	jp ContinueReadingMovement
 
 Movement_hide_emote:
@@ -680,7 +680,7 @@ Movement_turn_step_right:
 	; fallthrough
 
 TurnStep:
-	ld hl, OBJECT_29 ; new facing
+	ld hl, OBJECT_1D ; new facing
 	add hl, bc
 	ld [hl], a
 
@@ -705,7 +705,7 @@ NormalStep:
 
 	ld hl, OBJECT_FLAGS1
 	add hl, bc
-	bit INVISIBLE, [hl]
+	bit INVISIBLE_F, [hl]
 	jr nz, SetWalkStepType
 
 	ld hl, OBJECT_NEXT_TILE
@@ -754,13 +754,13 @@ SlideStep:
 
 JumpStep:
 	call InitStep
-	ld hl, OBJECT_31
+	ld hl, OBJECT_1F
 	add hl, bc
 	ld [hl], $0
 
 	ld hl, OBJECT_FLAGS2
 	add hl, bc
-	res OVERHEAD, [hl]
+	res OVERHEAD_F, [hl]
 
 	ld hl, OBJECT_ACTION
 	add hl, bc
@@ -795,7 +795,7 @@ Movement_stairs_step_right:
 
 DiagonalStairsStep:
 	call InitStep
-	ld hl, OBJECT_31
+	ld hl, OBJECT_1F
 	add hl, bc
 	ld [hl], $0
 

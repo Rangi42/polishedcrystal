@@ -91,7 +91,7 @@ ClosePokepic::
 	call UpdateSprites
 	ld b, 1
 	call SafeCopyTilemapAtOnce
-	farjp ReloadVisibleSprites
+	farjp RefreshSprites
 
 PokepicMenuDataHeader:
 	db $40 ; flags

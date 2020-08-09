@@ -11,7 +11,7 @@ RuinsOfAlphEntranceChamber_MapScriptHeader:
 	def_coord_events
 
 	def_bg_events
-	bg_event  2,  3, SIGNPOST_JUMPTEXT, RuinsofAlphStatueText
+	bg_event  2,  3, BGEVENT_JUMPTEXT, RuinsofAlphStatueText
 
 	def_object_events
 

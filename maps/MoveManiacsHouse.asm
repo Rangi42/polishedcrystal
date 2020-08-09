@@ -10,10 +10,10 @@ MoveManiacsHouse_MapScriptHeader:
 	def_coord_events
 
 	def_bg_events
-	bg_event  7,  1, SIGNPOST_JUMPSTD, magazinebookshelf
+	bg_event  7,  1, BGEVENT_JUMPSTD, magazinebookshelf
 
 	def_object_events
-	object_event  2,  3, SPRITE_COSPLAYER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, MoveReminderScript, -1
+	object_event  2,  3, SPRITE_COSPLAYER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, MoveReminderScript, -1
 
 MoveReminderScript:
 	faceplayer

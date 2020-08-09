@@ -284,7 +284,7 @@ FadeToMapMusic::
 	push bc
 	push af
 
-	call GetMapMusic
+	call GetMapMusic_MaybeSpecial
 	ld a, [wMapMusic]
 	cp e
 	jr z, .done
@@ -308,7 +308,7 @@ PlayMapMusic::
 	push bc
 	push af
 
-	call GetMapMusic
+	call GetMapMusic_MaybeSpecial
 	ld a, [wMapMusic]
 	cp e
 	call nz, PlayMusicAfterDelay
@@ -323,7 +323,7 @@ EnterMapMusic::
 
 	xor a
 	ld [wDontPlayMapMusicOnReload], a
-	call GetMapMusic
+	call GetMapMusic_MaybeSpecial
 	call PlayMusicAfterDelay
 
 	jp PopAFBCDEHL
@@ -355,7 +355,7 @@ RestartMapMusic::
 	call PlayMusic
 	jp PopAFBCDEHL
 
-GetMapMusic::
+GetMapMusic_MaybeSpecial::
 	ld hl, SpecialMusicMaps
 	ld a, [wMapGroup]
 	ld b, a
@@ -401,7 +401,7 @@ GetPlayerStateMusic:
 	jr z, .surf
 	cp PLAYER_SURF_PIKA
 	jr z, .surf_pikachu
-	jp GetMapHeaderMusic
+	jp GetMapMusic_MaybeSpecial
 
 .bike:
 	call RegionCheck
@@ -436,15 +436,15 @@ music_map: MACRO
 	map_id \1
 	dw \2
 ENDM
-	music_map ROUTE_23, GetMapHeaderMusic
-	music_map INDIGO_PLATEAU, GetMapHeaderMusic
-	music_map QUIET_CAVE_1F, GetMapHeaderMusic
-	music_map QUIET_CAVE_B1F, GetMapHeaderMusic
-	music_map QUIET_CAVE_B2F, GetMapHeaderMusic
-	music_map QUIET_CAVE_B3F, GetMapHeaderMusic
-	music_map SCARY_CAVE_SHIPWRECK, GetMapHeaderMusic
-	music_map WHIRL_ISLAND_LUGIA_CHAMBER, GetMapHeaderMusic
-	music_map TIN_TOWER_ROOF, GetMapHeaderMusic
+	music_map ROUTE_23, GetMapMusic_MaybeSpecial
+	music_map INDIGO_PLATEAU, GetMapMusic_MaybeSpecial
+	music_map QUIET_CAVE_1F, GetMapMusic_MaybeSpecial
+	music_map QUIET_CAVE_B1F, GetMapMusic_MaybeSpecial
+	music_map QUIET_CAVE_B2F, GetMapMusic_MaybeSpecial
+	music_map QUIET_CAVE_B3F, GetMapMusic_MaybeSpecial
+	music_map SCARY_CAVE_SHIPWRECK, GetMapMusic_MaybeSpecial
+	music_map WHIRL_ISLAND_LUGIA_CHAMBER, GetMapMusic_MaybeSpecial
+	music_map TIN_TOWER_ROOF, GetMapMusic_MaybeSpecial
 	music_map ROUTE_16_SOUTH, GetCyclingRoadMusic
 	music_map ROUTE_17, GetCyclingRoadMusic
 	music_map ROUTE_18_WEST, GetCyclingRoadMusic

@@ -8,7 +8,7 @@ ReturnFromMapSetupScript::
 	call .CheckExcludedMap
 	jr z, .excluded_map
 
-	call GetMapPermission
+	call GetMapEnvironment
 	cp GATE
 	jr nz, .not_gate
 

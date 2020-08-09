@@ -12,9 +12,9 @@ CeladonMansion2F_MapScriptHeader:
 	def_coord_events
 
 	def_bg_events
-	bg_event  0,  3, SIGNPOST_JUMPTEXT, CeladonMansion2FComputerText
-	bg_event  5,  8, SIGNPOST_UP, CeladonMansion2FSign
-	bg_event  2,  3, SIGNPOST_JUMPSTD, difficultbookshelf
+	bg_event  0,  3, BGEVENT_JUMPTEXT, CeladonMansion2FComputerText
+	bg_event  5,  8, BGEVENT_UP, CeladonMansion2FSign
+	bg_event  2,  3, BGEVENT_JUMPSTD, difficultbookshelf
 
 	def_object_events
 

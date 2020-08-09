@@ -287,7 +287,7 @@ UnknownText_0x157cc:
 	text_end
 
 KrisWithdrawItemMenu:
-	call LoadStandardMenuDataHeader
+	call LoadStandardMenuHeader
 	farcall ClearPCItemScreen
 .loop
 	call PCItemsJoypad
@@ -345,7 +345,7 @@ KrisWithdrawItemMenu:
 	text_end
 
 KrisTossItemMenu:
-	call LoadStandardMenuDataHeader
+	call LoadStandardMenuHeader
 	farcall ClearPCItemScreen
 .loop
 	call PCItemsJoypad
@@ -376,7 +376,7 @@ KrisDepositItemMenu:
 	call .CheckItemsInBag
 	jr c, .nope
 	call DisableSpriteUpdates
-	call LoadStandardMenuDataHeader
+	call LoadStandardMenuHeader
 	farcall DepositSellInitPackBuffers
 .loop
 	farcall DepositSellPack

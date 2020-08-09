@@ -1,13 +1,13 @@
 RunCallback_05_03:
 	call ResetOWMapState
-	call GetCurrentMapTrigger
+	call GetCurrentMapSceneID
 	ld a, MAPCALLBACK_NEWMAP
 	call RunMapCallback
 RunCallback_03:
 	farcall ClearCmdQueue
 	ld a, MAPCALLBACK_CMDQUEUE
 	call RunMapCallback
-	call GetMapHeaderTimeOfDayNybble
+	call GetMapTimeOfDay
 	ld [wMapTimeOfDay], a
 	ret
 
@@ -180,14 +180,14 @@ LoadWarpData:
 	ret
 
 .SaveDigWarp:
-	call GetMapPermission
+	call GetMapEnvironment
 	call CheckOutdoorMap
 	ret nz
 	ld a, [wNextMapGroup]
 	ld b, a
 	ld a, [wNextMapNumber]
 	ld c, a
-	call GetAnyMapPermission
+	call GetAnyMapEnvironment
 	call CheckIndoorMap
 	ret nz
 	ld a, [wPrevMapGroup]
@@ -206,14 +206,14 @@ LoadWarpData:
 	ret
 
 .SetSpawn:
-	call GetMapPermission
+	call GetMapEnvironment
 	call CheckOutdoorMap
 	ret nz
 	ld a, [wNextMapGroup]
 	ld b, a
 	ld a, [wNextMapNumber]
 	ld c, a
-	call GetAnyMapPermission
+	call GetAnyMapEnvironment
 	call CheckIndoorMap
 	ret nz
 	ld a, [wNextMapGroup]
@@ -294,7 +294,7 @@ LoadMapTimeOfDay:
 DeferredLoadGraphics:
 	call TilesetUnchanged
 	jr z, .done
-	call LoadTilesetHeader
+	call LoadMapTileset
 	ld a, 3
 	ld [wPendingOverworldGraphics], a
 .done
@@ -304,12 +304,12 @@ DeferredLoadGraphics:
 	ret
 
 LoadGraphics:
-	call LoadTilesetHeader
+	call LoadMapTileset
 	call LoadTileset
 	xor a
 	ldh [hMapAnims], a
 	ldh [hTileAnimFrame], a
-	farjp ReloadVisibleSprites
+	farjp RefreshSprites
 
 LoadMapPalettes:
 	ld a, CGB_MAPPALS

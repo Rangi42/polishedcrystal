@@ -12,13 +12,13 @@ CinnabarIsland_MapScriptHeader:
 	def_coord_events
 
 	def_bg_events
-	bg_event  9, 15, SIGNPOST_JUMPTEXT, CinnabarIslandGymSignText
-	bg_event  9, 11, SIGNPOST_JUMPTEXT, CinnabarIslandSignText
-	bg_event 21, 11, SIGNPOST_JUMPTEXT, CinnabarIslandVolcanoWarningSignText
-	bg_event 11, 12, SIGNPOST_ITEM + RARE_CANDY, EVENT_CINNABAR_ISLAND_HIDDEN_RARE_CANDY
+	bg_event  9, 15, BGEVENT_JUMPTEXT, CinnabarIslandGymSignText
+	bg_event  9, 11, BGEVENT_JUMPTEXT, CinnabarIslandSignText
+	bg_event 21, 11, BGEVENT_JUMPTEXT, CinnabarIslandVolcanoWarningSignText
+	bg_event 11, 12, BGEVENT_ITEM + RARE_CANDY, EVENT_CINNABAR_ISLAND_HIDDEN_RARE_CANDY
 
 	def_object_events
-	object_event 20, 14, SPRITE_BLUE, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CinnabarIslandBlue, EVENT_BLUE_IN_CINNABAR
+	object_event 20, 14, SPRITE_BLUE, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, CinnabarIslandBlue, EVENT_BLUE_IN_CINNABAR
 	itemball_event 22,  2, MAGMARIZER, 1, EVENT_CINNABAR_ISLAND_MAGMARIZER
 
 	object_const_def

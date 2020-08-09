@@ -10,8 +10,8 @@ PokemonTrainerFanClub_MapScriptHeader:
 	def_coord_events
 
 	def_bg_events
-	bg_event  0,  1, SIGNPOST_READ, PokemonJournalBrunoScript
-	bg_event  1,  1, SIGNPOST_READ, PokemonJournalBrunoScript
+	bg_event  0,  1, BGEVENT_READ, PokemonJournalBrunoScript
+	bg_event  1,  1, BGEVENT_READ, PokemonJournalBrunoScript
 
 	def_object_events
 

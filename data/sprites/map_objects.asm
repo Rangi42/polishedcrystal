@@ -6,7 +6,7 @@ ENDM
 SpriteMovementData::
 	; function,                                              facing, action,                        flags1, flags2, palette flags
 	sprite_movement_data SPRITEMOVEFN_00,                    DOWN,   PERSON_ACTION_STAND,           $02,    $00,    %0000 ; SPRITEMOVEDATA_00
-	sprite_movement_data SPRITEMOVEFN_STANDING,              DOWN,   PERSON_ACTION_STAND,           $0c,    $00,    %0000 ; SPRITEMOVEDATA_DOLL
+	sprite_movement_data SPRITEMOVEFN_STANDING,              DOWN,   PERSON_ACTION_STAND,           $0c,    $00,    %0000 ; SPRITEMOVEDATA_STILL
 	sprite_movement_data SPRITEMOVEFN_RANDOM_WALK_XY,        DOWN,   PERSON_ACTION_STAND,           $00,    $00,    %0000 ; SPRITEMOVEDATA_WANDER
 	sprite_movement_data SPRITEMOVEFN_SLOW_RANDOM_SPIN,      DOWN,   PERSON_ACTION_STAND,           $00,    $00,    %0000 ; SPRITEMOVEDATA_SPINRANDOM_SLOW
 	sprite_movement_data SPRITEMOVEFN_RANDOM_WALK_Y,         DOWN,   PERSON_ACTION_STAND,           $00,    $00,    %0000 ; SPRITEMOVEDATA_WALK_UP_DOWN

@@ -293,7 +293,7 @@ IsAnyMonHoldingMail:
 _KrisMailBoxMenu:
 	call InitMail
 	jr z, .nomail
-	call LoadStandardMenuDataHeader
+	call LoadStandardMenuHeader
 	call MailboxPC
 	jp CloseWindow
 

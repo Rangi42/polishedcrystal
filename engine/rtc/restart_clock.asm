@@ -36,7 +36,7 @@ RestartClock:
 	ld a, [hl]
 	push af
 	set NO_TEXT_SCROLL, [hl]
-	call LoadStandardMenuDataHeader
+	call LoadStandardMenuHeader
 	call ClearTileMap
 	ld hl, .Text_SetWithControlPad
 	call PrintText

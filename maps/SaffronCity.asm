@@ -29,30 +29,30 @@ SaffronCity_MapScriptHeader:
 	def_coord_events
 
 	def_bg_events
-	bg_event 21,  5, SIGNPOST_JUMPTEXT, SaffronCitySignText
-	bg_event 33,  5, SIGNPOST_JUMPTEXT, SaffronGymSignText
-	bg_event 25,  5, SIGNPOST_JUMPTEXT, FightingDojoSignText
-	bg_event 15, 21, SIGNPOST_JUMPTEXT, SilphCoSignText
-	bg_event 25, 29, SIGNPOST_JUMPTEXT, MrPsychicsHouseSignText
-	bg_event 11,  5, SIGNPOST_JUMPTEXT, SaffronCityMagnetTrainStationSignText
-	bg_event 32, 12, SIGNPOST_JUMPTEXT, PokemonTrainerFanClubSignText
-	bg_event  5, 21, SIGNPOST_JUMPTEXT, SaffronTrainerTips1Text
-	bg_event 35, 21, SIGNPOST_JUMPTEXT, SaffronTrainerTips2Text
+	bg_event 21,  5, BGEVENT_JUMPTEXT, SaffronCitySignText
+	bg_event 33,  5, BGEVENT_JUMPTEXT, SaffronGymSignText
+	bg_event 25,  5, BGEVENT_JUMPTEXT, FightingDojoSignText
+	bg_event 15, 21, BGEVENT_JUMPTEXT, SilphCoSignText
+	bg_event 25, 29, BGEVENT_JUMPTEXT, MrPsychicsHouseSignText
+	bg_event 11,  5, BGEVENT_JUMPTEXT, SaffronCityMagnetTrainStationSignText
+	bg_event 32, 12, BGEVENT_JUMPTEXT, PokemonTrainerFanClubSignText
+	bg_event  5, 21, BGEVENT_JUMPTEXT, SaffronTrainerTips1Text
+	bg_event 35, 21, BGEVENT_JUMPTEXT, SaffronTrainerTips2Text
 
 	def_object_events
-	object_event  7, 14, SPRITE_CUTE_GIRL, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, LassScript_0x19932a, -1
-	object_event 18, 30, SPRITE_POKEFAN_M, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, PAL_NPC_BROWN, PERSONTYPE_SCRIPT, 0, PokefanMScript_0x19933e, -1
-	object_event 32,  7, SPRITE_COOL_DUDE, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1994fe, -1
-	object_event 20, 24, SPRITE_ACE_TRAINER_F, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x19958e, -1
-	object_event 27, 12, SPRITE_FAT_GUY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_SCRIPT, 0, FisherScript_0x199358, -1
-	object_event 15, 19, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1996a5, -1
-	object_event 35, 22, SPRITE_BIRD_KEEPER, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1996e5, -1
-	object_event 14,  6, SPRITE_CUTE_GIRL, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x199745, -1
-	object_event  3, 24, SPRITE_BLACK_BELT, SPRITEMOVEDATA_WALK_UP_DOWN, 4, 0, -1, (1 << MORN), 0, PERSONTYPE_COMMAND, jumptextfaceplayer, SaffronCityBlackBelt1Text, -1
-	object_event  4, 25, SPRITE_BLACK_BELT, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, (1 << DAY) | (1 << NITE), 0, PERSONTYPE_COMMAND, jumptextfaceplayer, SaffronCityBlackBelt2Text, -1
-	object_event 22,  8, SPRITE_PSYCHIC, SPRITEMOVEDATA_SPINRANDOM_SLOW, 4, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, SaffronCitySuperNerdText, -1
-	object_event 23, 22, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_DOWN, 4, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, SaffronCityScientistText, -1
-	object_event 11, 22, SPRITE_SILPH_EMPLOYEE, SPRITEMOVEDATA_SPINRANDOM_SLOW, 4, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, SaffronCitySilphEmployeeText, -1
+	object_event  7, 14, SPRITE_CUTE_GIRL, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, LassScript_0x19932a, -1
+	object_event 18, 30, SPRITE_POKEFAN_M, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, PokefanMScript_0x19933e, -1
+	object_event 32,  7, SPRITE_COOL_DUDE, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1994fe, -1
+	object_event 20, 24, SPRITE_ACE_TRAINER_F, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x19958e, -1
+	object_event 27, 12, SPRITE_FAT_GUY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, FisherScript_0x199358, -1
+	object_event 15, 19, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1996a5, -1
+	object_event 35, 22, SPRITE_BIRD_KEEPER, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1996e5, -1
+	object_event 14,  6, SPRITE_CUTE_GIRL, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x199745, -1
+	object_event  3, 24, SPRITE_BLACK_BELT, SPRITEMOVEDATA_WALK_UP_DOWN, 4, 0, -1, (1 << MORN), 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, SaffronCityBlackBelt1Text, -1
+	object_event  4, 25, SPRITE_BLACK_BELT, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, (1 << DAY) | (1 << NITE), 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, SaffronCityBlackBelt2Text, -1
+	object_event 22,  8, SPRITE_PSYCHIC, SPRITEMOVEDATA_SPINRANDOM_SLOW, 4, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, SaffronCitySuperNerdText, -1
+	object_event 23, 22, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_DOWN, 4, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, SaffronCityScientistText, -1
+	object_event 11, 22, SPRITE_SILPH_EMPLOYEE, SPRITEMOVEDATA_SPINRANDOM_SLOW, 4, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, SaffronCitySilphEmployeeText, -1
 
 SaffronCityFlyPoint:
 	setflag ENGINE_FLYPOINT_SAFFRON

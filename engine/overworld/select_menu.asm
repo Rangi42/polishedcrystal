@@ -225,7 +225,7 @@ GetRegisteredItem:
 	ld a, $90
 	ldh [rWY], a
 	ldh [hWY], a
-	farcall ReloadVisibleSprites
+	farcall RefreshSprites
 	pop af
 	ret
 

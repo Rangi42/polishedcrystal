@@ -12,16 +12,16 @@ CeladonMansion3F_MapScriptHeader:
 	def_coord_events
 
 	def_bg_events
-	bg_event  5,  8, SIGNPOST_UP, MapCeladonMansion3FSignpost0Script
-	bg_event  4,  3, SIGNPOST_UP, MapCeladonMansion3FSignpost1Script
-	bg_event  1,  6, SIGNPOST_UP, MapCeladonMansion3FSignpost2Script
-	bg_event  1,  3, SIGNPOST_UP, MapCeladonMansion3FSignpost3Script
+	bg_event  5,  8, BGEVENT_UP, MapCeladonMansion3FSignpost0Script
+	bg_event  4,  3, BGEVENT_UP, MapCeladonMansion3FSignpost1Script
+	bg_event  1,  6, BGEVENT_UP, MapCeladonMansion3FSignpost2Script
+	bg_event  1,  3, BGEVENT_UP, MapCeladonMansion3FSignpost3Script
 
 	def_object_events
-	object_event  3,  6, SPRITE_COOL_DUDE, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, CooltrainerMScript_0x71670, -1
-	object_event  3,  4, SPRITE_GYM_GUY, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x717b4, -1
-	object_event  0,  7, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x71895, -1
-	object_event  0,  4, SPRITE_FAT_GUY, SPRITEMOVEDATA_STANDING_UP, 0, 2, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x718ca, -1
+	object_event  3,  6, SPRITE_COOL_DUDE, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, CooltrainerMScript_0x71670, -1
+	object_event  3,  4, SPRITE_GYM_GUY, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x717b4, -1
+	object_event  0,  7, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x71895, -1
+	object_event  0,  4, SPRITE_FAT_GUY, SPRITEMOVEDATA_STANDING_UP, 0, 2, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x718ca, -1
 
 CooltrainerMScript_0x71670:
 	faceplayer

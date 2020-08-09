@@ -1753,7 +1753,7 @@ INCBIN "gfx/pack/pack_top_left.2bpp.lz"
 
 Special_ChooseItem::
 	call DisableSpriteUpdates
-	call LoadStandardMenuDataHeader
+	call LoadStandardMenuHeader
 	call DepositSellInitPackBuffers
 	call .PickItem
 	jp ReturnToMapWithSpeechTextbox

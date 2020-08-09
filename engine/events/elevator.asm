@@ -109,7 +109,7 @@ Elevator_GoToFloor:
 	jp FarCopyBytes
 
 Elevator_AskWhichFloor:
-	call LoadStandardMenuDataHeader
+	call LoadStandardMenuHeader
 	ld hl, Elevator_WhichFloorText
 	call PrintText
 	call Elevator_GetCurrentFloorText

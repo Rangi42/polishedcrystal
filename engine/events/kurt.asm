@@ -17,7 +17,7 @@ Kurt_PrintTextHowMany:
 	text_end
 
 Special_SelectApricornForKurt:
-	call LoadStandardMenuDataHeader
+	call LoadStandardMenuHeader
 	ld c, $1
 	xor a
 	ld [wMenuScrollPosition], a

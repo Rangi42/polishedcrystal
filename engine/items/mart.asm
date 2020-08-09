@@ -36,7 +36,7 @@ MartDialog:
 
 HerbShop:
 	call FarReadMart
-	call LoadStandardMenuDataHeader
+	call LoadStandardMenuHeader
 	ld hl, Text_HerbShop_Intro
 	call MartTextBox
 	call BuyMenu
@@ -48,7 +48,7 @@ BargainShop:
 	ld de, BargainShopData
 	call LoadMartPointer
 	call ReadMart
-	call LoadStandardMenuDataHeader
+	call LoadStandardMenuHeader
 	ld hl, Text_BargainShop_Intro
 	call MartTextBox
 	call BuyMenu
@@ -67,7 +67,7 @@ INCLUDE "data/items/bargain_shop.asm"
 
 Pharmacist:
 	call FarReadMart
-	call LoadStandardMenuDataHeader
+	call LoadStandardMenuHeader
 	ld hl, Text_Pharmacist_Intro
 	call MartTextBox
 	call BuyMenu
@@ -84,7 +84,7 @@ RooftopSale:
 .ok
 	call LoadMartPointer
 	call ReadMart
-	call LoadStandardMenuDataHeader
+	call LoadStandardMenuHeader
 	ld hl, Text_Mart_HowMayIHelpYou
 	call MartTextBox
 	call BuyMenu
@@ -95,7 +95,7 @@ INCLUDE "data/items/rooftop_sale.asm"
 
 SilphMart:
 	call FarReadMart
-	call LoadStandardMenuDataHeader
+	call LoadStandardMenuHeader
 	ld hl, Text_SilphMart_Intro
 	call MartTextBox
 	call BuyMenu
@@ -104,7 +104,7 @@ SilphMart:
 
 AdventurerMart:
 	call FarReadMart
-	call LoadStandardMenuDataHeader
+	call LoadStandardMenuHeader
 	ld hl, Text_AdventurerMart_Intro
 	call MartTextBox
 	call BuyMenu
@@ -113,7 +113,7 @@ AdventurerMart:
 
 InformalMart:
 	call FarReadMart
-	call LoadStandardMenuDataHeader
+	call LoadStandardMenuHeader
 	ld hl, Text_InformalMart_Intro
 	call MartTextBox
 	call BuyMenu
@@ -122,7 +122,7 @@ InformalMart:
 
 BazaarMart:
 	call FarReadMart
-	call LoadStandardMenuDataHeader
+	call LoadStandardMenuHeader
 	ld hl, Text_BazaarMart_Intro
 	call MartTextBox
 	call BuyMenu
@@ -131,7 +131,7 @@ BazaarMart:
 
 TMMart:
 	call FarReadTMMart
-	call LoadStandardMenuDataHeader
+	call LoadStandardMenuHeader
 	ld hl, Text_Mart_HowMayIHelpYou
 	call MartTextBox
 	call BuyTMMenu
@@ -143,7 +143,7 @@ BlueCardMart:
 	ld de, BlueCardMartData
 	call LoadMartPointer
 	call ReadBlueCardMart
-	call LoadStandardMenuDataHeader
+	call LoadStandardMenuHeader
 	ld hl, Text_BlueCardMart_HowMayIHelpYou
 	call MartTextBox
 	call BlueCardBuyMenu
@@ -154,7 +154,7 @@ INCLUDE "data/items/buena_prizes.asm"
 
 BTMart:
 	call FarReadBTMart
-	call LoadStandardMenuDataHeader
+	call LoadStandardMenuHeader
 	ld hl, Text_BTMart_HowMayIHelpYou
 	call MartTextBox
 	call BTBuyMenu
@@ -207,7 +207,7 @@ StandardMart:
 	dw .AnythingElse
 
 .HowMayIHelpYou:
-	call LoadStandardMenuDataHeader
+	call LoadStandardMenuHeader
 	ld hl, Text_Mart_HowMayIHelpYou
 	call PrintText
 	ld a, $1 ; top menu
@@ -255,7 +255,7 @@ StandardMart:
 	ret
 
 .AnythingElse:
-	call LoadStandardMenuDataHeader
+	call LoadStandardMenuHeader
 	ld hl, Text_Mart_AnythingElse
 	call PrintText
 	ld a, $1 ; top menu

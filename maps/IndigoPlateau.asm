@@ -11,7 +11,7 @@ IndigoPlateau_MapScriptHeader:
 	def_coord_events
 
 	def_bg_events
-	bg_event 11,  7, SIGNPOST_JUMPTEXT, IndigoPlateauSignText
+	bg_event 11,  7, BGEVENT_JUMPTEXT, IndigoPlateauSignText
 
 	def_object_events
 

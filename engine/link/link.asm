@@ -1371,7 +1371,7 @@ LinkTrade:
 	ld hl, .TradeThisForThat
 	bccoord 1, 14
 	call PlaceWholeStringInBoxAtOnce
-	call LoadStandardMenuDataHeader
+	call LoadStandardMenuHeader
 	hlcoord 10, 7
 	lb bc, 3, 7
 	call LinkTextbox
@@ -1763,7 +1763,7 @@ LinkTextbox::
 	ret
 
 Function16d6ce:
-	call LoadStandardMenuDataHeader
+	call LoadStandardMenuHeader
 	hlcoord 5, 10
 	lb bc, 1, 9
 	call LinkTextbox

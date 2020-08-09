@@ -10,15 +10,15 @@ CeladonUniversityWillowsOffice_MapScriptHeader:
 	def_coord_events
 
 	def_bg_events
-	bg_event  0,  0, SIGNPOST_JUMPTEXT, CeladonUniversityWillowsOfficeBlackboardText
-	bg_event  1,  0, SIGNPOST_JUMPTEXT, CeladonUniversityWillowsOfficeBlackboardText
-	bg_event  2,  1, SIGNPOST_JUMPTEXT, CeladonUniversityWillowsOfficeBookshelf1Text
-	bg_event  3,  1, SIGNPOST_JUMPTEXT, CeladonUniversityWillowsOfficeBookshelf2Text
-	bg_event  5,  2, SIGNPOST_RIGHT, CeladonUniversityWillowsOfficeComputer
+	bg_event  0,  0, BGEVENT_JUMPTEXT, CeladonUniversityWillowsOfficeBlackboardText
+	bg_event  1,  0, BGEVENT_JUMPTEXT, CeladonUniversityWillowsOfficeBlackboardText
+	bg_event  2,  1, BGEVENT_JUMPTEXT, CeladonUniversityWillowsOfficeBookshelf1Text
+	bg_event  3,  1, BGEVENT_JUMPTEXT, CeladonUniversityWillowsOfficeBookshelf2Text
+	bg_event  5,  2, BGEVENT_RIGHT, CeladonUniversityWillowsOfficeComputer
 
 	def_object_events
-	object_event  0,  2, SPRITE_WILLOW, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityWillowsOfficeWillowText, -1
-	object_event  4,  3, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityWillowsOfficeScientistText, -1
+	object_event  0,  2, SPRITE_WILLOW, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityWillowsOfficeWillowText, -1
+	object_event  4,  3, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeladonUniversityWillowsOfficeScientistText, -1
 
 CeladonUniversityWillowsOfficeWillowText:
 	text "Hello there!"

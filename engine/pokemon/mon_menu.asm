@@ -205,7 +205,7 @@ GiveTakePartyMonItem:
 	cp 1
 	jr nz, .take
 
-	call LoadStandardMenuDataHeader
+	call LoadStandardMenuHeader
 	call ClearPalettes
 	call .GiveItem
 	call ClearPalettes
@@ -568,7 +568,7 @@ MonMailAction:
 	text_end
 
 OpenPartyStats:
-	call LoadStandardMenuDataHeader
+	call LoadStandardMenuHeader
 	call ClearSprites
 ; PartyMon
 	xor a

@@ -69,11 +69,11 @@ MapSetupCommands:
 	dba ForceMapMusic ; 08
 	dba FadeInMusic ; 09
 	dba LoadBlockData ; 0a (callback 1)
-	dba LoadNeighboringBlockData ; 0b
+	dba LoadConnectionBlockData ; 0b
 	dba SaveScreen ; 0c
 	dba BufferScreen ; 0d
 	dba LoadGraphics ; 0e
-	dba LoadTilesetHeader ; 0f
+	dba LoadMapTileset ; 0f
 	dba LoadMapTimeOfDay ; 10
 	dba LoadMapPalettes ; 11
 	dba LoadWildMonData ; 12
@@ -85,7 +85,7 @@ MapSetupCommands:
 	dba EnterMapConnection ; 18
 	dba LoadWarpData ; 19
 	dba LoadMapAttributes ; 1a
-	dba LoadMapAttributes_Continue ; 1b
+	dba LoadMapAttributes_SkipObjects ; 1b
 	dba ClearBGPalettes ; 1c
 	dba FadeOutPalettes ; 1d
 	dba FadeInPalettes ; 1e
@@ -142,7 +142,7 @@ LoadObjectMasks:
 	ld [de], a
 	inc de
 	pop bc
-	ld hl, OBJECT_LENGTH
+	ld hl, MAPOBJECT_LENGTH
 	add hl, bc
 	ld b, h
 	ld c, l
@@ -233,7 +233,7 @@ CheckReplaceKrisSprite:
 	jr z, .surfing
 	cp PLAYER_SURF_PIKA
 	jr z, .surfing
-	call GetMapPermission
+	call GetMapEnvironment
 	cp INDOOR
 	jr z, .checkbiking
 	cp DUNGEON

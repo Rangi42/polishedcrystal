@@ -22,7 +22,7 @@ _BillsPC:
 .LogIn:
 	xor a
 	ldh [hBGMapMode], a
-	call LoadStandardMenuDataHeader
+	call LoadStandardMenuHeader
 	call ClearPCItemScreen
 	ld hl, wOptions1
 	ld a, [hl]
@@ -107,7 +107,7 @@ BillsPC_SeeYa:
 	ret
 
 BillsPC_MovePKMNMenu:
-	call LoadStandardMenuDataHeader
+	call LoadStandardMenuHeader
 	farcall IsAnyMonHoldingMail
 	jr nc, .no_mail
 	ld hl, .Text_MonHoldingMail
@@ -132,7 +132,7 @@ BillsPC_MovePKMNMenu:
 	text_end
 
 BillsPC_DepositMenu:
-	call LoadStandardMenuDataHeader
+	call LoadStandardMenuHeader
 	farcall _DepositPKMN
 	call ReturnToMapFromSubmenu
 	call ClearPCItemScreen
@@ -170,7 +170,7 @@ CheckCurPartyMonFainted:
 	ret
 
 BillsPC_WithdrawMenu:
-	call LoadStandardMenuDataHeader
+	call LoadStandardMenuHeader
 	farcall _WithdrawPKMN
 	call ReturnToMapFromSubmenu
 	call ClearPCItemScreen

@@ -15,7 +15,7 @@ SpecialHoOhChamber:
 	ret nz
 
 .open
-	call GetSecondaryMapHeaderPointer
+	call GetMapAttributesPointer
 	eventflagset EVENT_WALL_OPENED_IN_HO_OH_CHAMBER
 	ret
 
@@ -47,12 +47,12 @@ SpecialOmanyteChamber:
 	jr nz, .loop
 
 .open
-	call GetSecondaryMapHeaderPointer
+	call GetMapAttributesPointer
 	eventflagset EVENT_WALL_OPENED_IN_OMANYTE_CHAMBER
 	ret
 
 SpecialAerodactylChamber:
-	call GetSecondaryMapHeaderPointer
+	call GetMapAttributesPointer
 	ld a, h
 	cp HIGH(RuinsOfAlphAerodactylChamber_SecondMapHeader)
 	jr nz, .nope
@@ -69,7 +69,7 @@ SpecialAerodactylChamber:
 	ret
 
 SpecialKabutoChamber:
-	call GetSecondaryMapHeaderPointer
+	call GetMapAttributesPointer
 	ld a, h
 	cp HIGH(RuinsOfAlphKabutoChamber_SecondMapHeader)
 	ret nz

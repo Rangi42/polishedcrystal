@@ -2,7 +2,7 @@ HandleStoneQueue::
 	ldh a, [hROMBank]
 	push af
 
-	call SwitchToMapScriptHeaderBank
+	call SwitchToMapScriptsBank
 	call .WarpAction
 
 	pop bc

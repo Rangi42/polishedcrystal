@@ -104,7 +104,7 @@ SetFacingStepAction:
 SetFacingBumpAction:
 	ld hl, OBJECT_FLAGS1
 	add hl, bc
-	bit SLIDING, [hl]
+	bit SLIDING_F, [hl]
 	jr nz, SetFacingCurrent
 
 	ld hl, OBJECT_STEP_FRAME
@@ -126,7 +126,7 @@ SetFacingBumpAction:
 SetFacingSkyfall:
 	ld hl, OBJECT_FLAGS1
 	add hl, bc
-	bit SLIDING, [hl]
+	bit SLIDING_F, [hl]
 	jr nz, SetFacingCurrent
 
 	ld hl, OBJECT_STEP_FRAME
@@ -295,7 +295,7 @@ SetFacingPuddleSplash:
 SetFacingRun:
 	ld hl, OBJECT_FLAGS1
 	add hl, bc
-	bit SLIDING, [hl]
+	bit SLIDING_F, [hl]
 	jp nz, SetFacingCurrent
 
 	ld hl, OBJECT_STEP_FRAME
