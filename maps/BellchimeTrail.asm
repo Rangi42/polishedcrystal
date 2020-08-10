@@ -55,7 +55,7 @@ SetupValerieMorningWalkCallback:
 
 BellchimeTrailPanUpTrigger:
 	playsound SFX_EXIT_BUILDING
-	applyonemovement PLAYER, hide_person
+	applyonemovement PLAYER, hide_object
 	waitsfx
 	applymovement PLAYER, .PanUpMovement
 	disappear PLAYER

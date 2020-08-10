@@ -106,7 +106,7 @@ GoldenrodCityStepDownScript:
 
 GoldenrodCityPanUpScript:
 	playsound SFX_EXIT_BUILDING
-	applyonemovement PLAYER, hide_person
+	applyonemovement PLAYER, hide_object
 	waitsfx
 	applymovement PLAYER, GoldenrodCityPanUpMovementData
 	disappear PLAYER

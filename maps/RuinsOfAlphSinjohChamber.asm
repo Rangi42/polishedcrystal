@@ -102,7 +102,7 @@ RuinsofAlphSinjohChamberSignpost:
 
 MovementData_WarpToSinjohRuins:
 	step_dig 32
-	hide_person
+	hide_object
 	step_end
 
 RuinsofAlphSinjohChamberMystriText:

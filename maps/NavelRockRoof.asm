@@ -84,7 +84,7 @@ Leaf:
 	applyonemovement PLAYER, slow_step_up
 	appear NAVELROCKROOF_KRIS
 .EndingSequence:
-	applyonemovement PLAYER, hide_person
+	applyonemovement PLAYER, hide_object
 	pause 30
 	applymovement PLAYER, NavelRockRoofPanUpMovementData
 	pause 40

@@ -80,26 +80,26 @@ Route10NorthLawrenceEncounter1Script:
 	checkflag ENGINE_PLAYER_IS_FEMALE
 	iftrue .FemalePan
 	appear ROUTE10_CHRIS
-	applyonemovement PLAYER, hide_person
+	applyonemovement PLAYER, hide_object
 	applymovement PLAYER, Route10NorthMovementData_PanUp
 	pause 40
 	disappear ROUTE10_LAWRENCE
 	moveobject ROUTE10_LAWRENCE, 13, 52
 	appear ROUTE10_LAWRENCE
 	applymovement PLAYER, Route10NorthMovementData_PanDown
-	applyonemovement PLAYER, show_person
+	applyonemovement PLAYER, show_object
 	disappear ROUTE10_CHRIS
 	jump .Finish
 .FemalePan
 	appear ROUTE10_KRIS
-	applyonemovement PLAYER, hide_person
+	applyonemovement PLAYER, hide_object
 	applymovement PLAYER, Route10NorthMovementData_PanUp
 	pause 40
 	disappear ROUTE10_LAWRENCE
 	moveobject ROUTE10_LAWRENCE, 13, 52
 	appear ROUTE10_LAWRENCE
 	applymovement PLAYER, Route10NorthMovementData_PanDown
-	applyonemovement PLAYER, show_person
+	applyonemovement PLAYER, show_object
 	disappear ROUTE10_KRIS
 .Finish
 	turnobject ROUTE10_LAWRENCE, LEFT

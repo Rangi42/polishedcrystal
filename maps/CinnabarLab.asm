@@ -126,7 +126,7 @@ CinnabarLabCelebiEventScript:
 .Female
 	appear CINNABARLAB_KRIS
 .Continue
-	applyonemovement PLAYER, hide_person
+	applyonemovement PLAYER, hide_object
 	waitsfx
 	showemote EMOTE_SHOCK, CINNABARLAB_GIOVANNI, 10
 	cry MEWTWO
@@ -303,7 +303,7 @@ CinnabarLabPan4MovementData:
 	step_down
 	step_down
 	turn_head_up
-	show_person
+	show_object
 	step_end
 
 CinnabarLabCelebiFloatsMovementData:

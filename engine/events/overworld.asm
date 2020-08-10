@@ -956,11 +956,11 @@ EscapeRopeOrDig:
 
 .DigOut:
 	step_dig 32
-	hide_person
+	hide_object
 	step_end
 
 .DigReturn:
-	show_person
+	show_object
 	return_dig 32
 	step_end
 

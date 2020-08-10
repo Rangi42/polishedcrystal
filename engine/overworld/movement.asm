@@ -59,8 +59,8 @@ MovementPointers:
 	dw Movement_set_sliding           ; 39
 	dw Movement_remove_fixed_facing   ; 3a
 	dw Movement_fix_facing            ; 3b
-	dw Movement_show_person           ; 3c
-	dw Movement_hide_person           ; 3d
+	dw Movement_show_object           ; 3c
+	dw Movement_hide_object           ; 3d
 	dw Movement_step_sleep_1          ; 3e
 	dw Movement_step_sleep_2          ; 3f
 	dw Movement_step_sleep_3          ; 40
@@ -72,7 +72,7 @@ MovementPointers:
 	dw Movement_step_sleep            ; 46
 	dw Movement_step_end              ; 47
 	dw Movement_step_resume           ; 48
-	dw Movement_remove_person         ; 49
+	dw Movement_remove_object         ; 49
 	dw Movement_step_loop             ; 4a
 	dw Movement_4b                    ; 4b
 	dw Movement_teleport_from         ; 4c
@@ -223,7 +223,7 @@ Movement_step_end:
 	ld [hl], STEP_TYPE_SLEEP
 	ret
 
-Movement_remove_person:
+Movement_remove_object:
 	call DeleteMapObject
 	ld hl, wObjectFollow_Leader
 	ldh a, [hMapObjectIndexBuffer]
@@ -286,7 +286,6 @@ Movement_step_sleep:
 ;	duration (DecimalParam)
 	call JumpMovementPointer
 	; fallthrough
-
 Movement_step_sleep_common:
 	ld hl, OBJECT_STEP_DURATION
 	add hl, bc
@@ -367,13 +366,13 @@ Movement_fix_facing:
 	set FIXED_FACING_F, [hl]
 	jp ContinueReadingMovement
 
-Movement_show_person:
+Movement_show_object:
 	ld hl, OBJECT_FLAGS1
 	add hl, bc
 	res INVISIBLE_F, [hl]
 	jp ContinueReadingMovement
 
-Movement_hide_person:
+Movement_hide_object:
 	ld hl, OBJECT_FLAGS1
 	add hl, bc
 	set INVISIBLE_F, [hl]
@@ -410,7 +409,6 @@ Movement_turn_head_left:
 Movement_turn_head_right:
 	ld a, OW_RIGHT
 	; fallthrough
-
 TurnHead:
 	ld hl, OBJECT_FACING
 	add hl, bc
@@ -672,7 +670,6 @@ Movement_turn_step_left:
 Movement_turn_step_right:
 	ld a, OW_RIGHT
 	; fallthrough
-
 TurnStep:
 	ld hl, OBJECT_1D ; new facing
 	add hl, bc
@@ -709,7 +706,6 @@ NormalStep:
 	jr z, .shake_grass
 	cp COLL_TALL_GRASS
 	jr z, .shake_grass
-
 	cp COLL_PUDDLE
 	jr nz, SetWalkStepType
 	call SplashPuddle
