@@ -1753,9 +1753,9 @@ ChannelsOffTilemaps:
 
 NoteOAM:
 	; y, x, tile id, OAM attributes
-	db 0, 0, $20, BEHIND_BG
-	db 0, 0, $40, BEHIND_BG
-	db 0, 0, $60, BEHIND_BG
+	db 0, 0, $20, PRIORITY
+	db 0, 0, $40, PRIORITY
+	db 0, 0, $60, PRIORITY
 
 INCLUDE "data/music_player/notes.asm"
 INCLUDE "data/music_player/song_info.asm"

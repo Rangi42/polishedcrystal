@@ -50,13 +50,6 @@ MAP_NONE   EQU 0
 	const FISHGROUP_REMORAID
 	const FISHGROUP_QWILFISH_NO_SWARM
 
-; connection directions
-	; const_def
-	; const EAST_F
-	; const WEST_F
-	; const SOUTH_F
-	; const NORTH_F
-
 ; wMapConnections
 	const_def
 	shift_const EAST

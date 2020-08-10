@@ -1,9 +1,9 @@
-RunCallback_05_03:
+HandleNewMap:
 	call ResetOWMapState
 	call GetCurrentMapSceneID
 	ld a, MAPCALLBACK_NEWMAP
 	call RunMapCallback
-RunCallback_03:
+HandleContinueMap:
 	farcall ClearCmdQueue
 	ld a, MAPCALLBACK_CMDQUEUE
 	call RunMapCallback
@@ -168,7 +168,7 @@ EnteredConnection:
 	scf
 	ret
 
-LoadWarpData:
+EnterMapWarp:
 	call .SaveDigWarp
 	call .SetSpawn
 	ld a, [wNextWarp]
@@ -291,7 +291,7 @@ LoadMapTimeOfDay:
 	rst ByteFill
 	ret
 
-DeferredLoadGraphics:
+DeferredLoadMapGraphics:
 	call TilesetUnchanged
 	jr z, .done
 	call LoadMapTileset
@@ -303,9 +303,9 @@ DeferredLoadGraphics:
 	ldh [hTileAnimFrame], a
 	ret
 
-LoadGraphics:
+LoadMapGraphics:
 	call LoadMapTileset
-	call LoadTileset
+	call LoadTilesetGFX
 	xor a
 	ldh [hMapAnims], a
 	ldh [hTileAnimFrame], a
@@ -320,10 +320,10 @@ RefreshMapSprites:
 	xor a
 	ldh [hBGMapMode], a
 
-	farcall ReturnFromMapSetupScript
+	farcall InitMapNameSign
 	call GetMovementPermissions
 	farcall RefreshPlayerSprite
-	farcall CheckReplaceKrisSprite
+	farcall CheckUpdatePlayerSprite
 	ld hl, wPlayerSpriteSetupFlags
 	bit 6, [hl]
 	jr nz, .skip
@@ -393,7 +393,7 @@ CheckMovingOffEdgeOfMap::
 	scf
 	ret
 
-GetCoordOfUpperLeftCorner::
+GetMapScreenCoords::
 	ld hl, wOverworldMapBlocks
 	ld a, [wXCoord]
 	bit 0, a

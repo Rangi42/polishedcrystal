@@ -1265,7 +1265,7 @@ ExitPokegearRadio_HandleMusic:
 	cp $fe
 	jr z, .restart_map_music
 	cp $ff
-	call z, EnterMapMusic
+	call z, PlayMapMusicBike
 	xor a
 	ld [wPokegearRadioMusicPlaying], a
 	ret

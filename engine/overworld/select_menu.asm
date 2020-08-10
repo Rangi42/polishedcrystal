@@ -136,7 +136,7 @@ GetRegisteredItem:
 	call FarCopyColorWRAM
 
 	hlcoord 0, 0, wAttrMap
-	ld a, BEHIND_BG | PAL_BG_TEXT
+	ld a, PRIORITY | PAL_BG_TEXT
 	ld bc, SCREEN_WIDTH * 4
 	rst ByteFill
 

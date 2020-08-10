@@ -6,7 +6,7 @@
 ; 	FadeMusic
 ; 	PlayStereoSFX
 
-_MapSetup_Sound_Off::
+_InitSound::
 ; restart sound operation
 ; clear all relevant hardware registers & wram
 	push hl
@@ -58,7 +58,7 @@ MusicFadeRestart:
 	push af
 	ld a, [wMusicFadeIDLo]
 	push af
-	call _MapSetup_Sound_Off
+	call _InitSound
 	pop af
 	ld [wMusicFadeIDLo], a
 	pop af

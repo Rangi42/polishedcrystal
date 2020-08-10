@@ -237,32 +237,32 @@ NUM_SPRITEMOVEDATA EQU const_value
 
 ; ObjectActionPairPointers indexes (see engine/overworld/map_object_action.asm)
 	const_def
-	const PERSON_ACTION_00              ; 00
-	const PERSON_ACTION_STAND           ; 01
-	const PERSON_ACTION_STEP            ; 02
-	const PERSON_ACTION_BUMP            ; 03
-	const PERSON_ACTION_SPIN            ; 04
-	const PERSON_ACTION_SPIN_FLICKER    ; 05
-	const PERSON_ACTION_FISHING         ; 06
-	const PERSON_ACTION_SHADOW          ; 07
-	const PERSON_ACTION_EMOTE           ; 08
-	const PERSON_ACTION_BIG_SNORLAX     ; 09
-	const PERSON_ACTION_BOUNCE          ; 0a
-	const PERSON_ACTION_WEIRD_TREE      ; 0b
-	const PERSON_ACTION_BIG_DOLL        ; 0c
-	const PERSON_ACTION_BOULDER_DUST    ; 0d
-	const PERSON_ACTION_GRASS_SHAKE     ; 0e
-	const PERSON_ACTION_PUDDLE_SPLASH   ; 0f
-	const PERSON_ACTION_CUT_TREE        ; 10
-	const PERSON_ACTION_SKYFALL         ; 11
-	const PERSON_ACTION_FRUIT           ; 12
-	const PERSON_ACTION_BIG_GYARADOS    ; 13
-	const PERSON_ACTION_STAND_FLIP      ; 14
-	const PERSON_ACTION_POKECOM_NEWS    ; 15
-	const PERSON_ACTION_ARCH_TREE       ; 16
-	const PERSON_ACTION_RUN             ; 17
-	const PERSON_ACTION_SAILBOAT_TOP    ; 18
-	const PERSON_ACTION_SAILBOAT_BOTTOM ; 19
+	const OBJECT_ACTION_00              ; 00
+	const OBJECT_ACTION_STAND           ; 01
+	const OBJECT_ACTION_STEP            ; 02
+	const OBJECT_ACTION_BUMP            ; 03
+	const OBJECT_ACTION_SPIN            ; 04
+	const OBJECT_ACTION_SPIN_FLICKER    ; 05
+	const OBJECT_ACTION_FISHING         ; 06
+	const OBJECT_ACTION_SHADOW          ; 07
+	const OBJECT_ACTION_EMOTE           ; 08
+	const OBJECT_ACTION_BIG_SNORLAX     ; 09
+	const OBJECT_ACTION_BOUNCE          ; 0a
+	const OBJECT_ACTION_WEIRD_TREE      ; 0b
+	const OBJECT_ACTION_BIG_DOLL        ; 0c
+	const OBJECT_ACTION_BOULDER_DUST    ; 0d
+	const OBJECT_ACTION_GRASS_SHAKE     ; 0e
+	const OBJECT_ACTION_PUDDLE_SPLASH   ; 0f
+	const OBJECT_ACTION_CUT_TREE        ; 10
+	const OBJECT_ACTION_SKYFALL         ; 11
+	const OBJECT_ACTION_FRUIT           ; 12
+	const OBJECT_ACTION_BIG_GYARADOS    ; 13
+	const OBJECT_ACTION_STAND_FLIP      ; 14
+	const OBJECT_ACTION_POKECOM_NEWS    ; 15
+	const OBJECT_ACTION_ARCH_TREE       ; 16
+	const OBJECT_ACTION_RUN             ; 17
+	const OBJECT_ACTION_SAILBOAT_TOP    ; 18
+	const OBJECT_ACTION_SAILBOAT_BOTTOM ; 19
 
 ; see data/sprites/facings.asm:Facings
 	const_def

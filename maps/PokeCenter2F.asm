@@ -99,7 +99,7 @@ Script_WalkOutOfLinkRoom:
 	writebyte (PAL_NPC_BLUE) << 4
 	special Special_SetPlayerPalette
 	applymovement PLAYER, PokeCenter2FMovementData_PlayerSpinsClockwiseEndsFacingLeft
-	special ReplaceKrisSprite
+	special UpdatePlayerSprite
 	applymovement PLAYER, PokeCenter2FMovementData_PlayerTakesTwoStepsDown
 	applymovement POKECENTER2F_TRADE_RECEPTIONIST, PokeCenter2FMovementData_ReceptionistStepsRightAndDown
 	end
@@ -263,7 +263,7 @@ PokeCenter2F_CheckGender:
 	special Special_SetPlayerPalette
 	applymovement PLAYER, PokeCenter2FMovementData_PlayerSpinsClockwiseEndsFacingLeft
 	setflag ENGINE_KRIS_IN_CABLE_CLUB
-	special ReplaceKrisSprite
+	special UpdatePlayerSprite
 	showtext Text_LikeTheLook
 	showemote EMOTE_SHOCK, PLAYER, 15
 	applyonemovement PLAYER, step_up

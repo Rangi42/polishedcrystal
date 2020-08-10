@@ -1,4 +1,4 @@
-_ReplaceKrisSprite::
+_UpdatePlayerSprite::
 	call GetPlayerSprite
 	ld a, [wPlayerSprite]
 	ldh [hUsedSpriteIndex], a

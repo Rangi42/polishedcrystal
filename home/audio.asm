@@ -1,6 +1,6 @@
 ; Audio interfaces.
 
-MapSetup_Sound_Off::
+InitSound::
 
 	push hl
 	push de
@@ -9,10 +9,10 @@ MapSetup_Sound_Off::
 
 	ldh a, [hROMBank]
 	push af
-	ld a, BANK(_MapSetup_Sound_Off)
+	ld a, BANK(_InitSound)
 	rst Bankswitch
 
-	call _MapSetup_Sound_Off
+	call _InitSound
 
 	pop af
 	rst Bankswitch
@@ -65,7 +65,7 @@ PlayMusic::
 
 	ldh a, [hROMBank]
 	push af
-	ld a, BANK(_PlayMusic) ; and BANK(_MapSetup_Sound_Off)
+	ld a, BANK(_PlayMusic) ; and BANK(_InitSound)
 	rst Bankswitch
 
 	ld a, e
@@ -76,7 +76,7 @@ PlayMusic::
 	jr .end
 
 .nomusic
-	call _MapSetup_Sound_Off
+	call _InitSound
 
 .end
 	pop af
@@ -252,12 +252,12 @@ LowVolume::
 	ld [wVolume], a
 	ret
 
-VolumeOff::
+MinVolume::
 	xor a
 	ld [wVolume], a
 	ret
 
-FadeInMusic::
+FadeInToMusic::
 	ld a, 4 | 1 << 7
 	ld [wMusicFade], a
 	ret
@@ -315,7 +315,7 @@ PlayMapMusic::
 
 	jp PopAFBCDEHL
 
-EnterMapMusic::
+PlayMapMusicBike::
 	push hl
 	push de
 	push bc

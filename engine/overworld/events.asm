@@ -124,7 +124,7 @@ NextOverworldFrame:
 	jr nz, .done
 	ldh a, [hDelayFrameLY]
 	inc a
-	jp nz, LoadGraphicsAndDelay
+	jp nz, LoadMapGraphicsAndDelay
 	xor a
 	ldh [hDelayFrameLY], a
 .done

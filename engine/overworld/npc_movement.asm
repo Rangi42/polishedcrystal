@@ -1,4 +1,4 @@
-Function6ec1:
+CanObjectMoveInDirection:
 
 	ld hl, OBJECT_FLAGS1
 	add hl, bc

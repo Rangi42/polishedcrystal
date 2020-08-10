@@ -265,7 +265,7 @@ SetAbilityOverlayAttributes:
 	inc a
 	jr z, .no_pal_change
 	ld a, [hl]
-	and ~OAM_PALETTE
+	and ~PALETTE_MASK
 	or b
 	ld [hl], b
 .no_pal_change
@@ -349,7 +349,7 @@ DismissAbilityOverlays:
 	ld c, SLIDEOUT_WIDTH
 .attr_loop
 	ld a, [hl]
-	and $ff ^ (OAM_PALETTE | TILE_BANK | BEHIND_BG)
+	and $ff ^ (PALETTE_MASK | TILE_BANK | PRIORITY)
 	or b
 	ld [hli], a
 	dec c

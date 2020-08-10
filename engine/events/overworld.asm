@@ -481,7 +481,7 @@ AutoSurfScript:
 	copybytetovar wBuffer2
 	writevarcode VAR_MOVEMENT
 
-	special ReplaceKrisSprite
+	special UpdatePlayerSprite
 	special PlayMapMusic
 ; step into the water
 	special Special_SurfStartStep ; (slow_step_x, step_end)
@@ -717,7 +717,7 @@ FlyFunction:
 	callasm FlyFromAnim
 	farscall Script_AbortBugContest
 	special WarpToSpawnPoint
-	callasm DelayLoadingNewSprites
+	callasm SkipUpdateMapSprites
 	writecode VAR_MOVEMENT, PLAYER_NORMAL
 	newloadmap MAPSETUP_FLY
 	callasm FlyToAnim
@@ -728,7 +728,7 @@ FlyFunction:
 .ReturnFromFly:
 	farcall ReturnFromFly_SpawnOnlyPlayer
 	call DelayFrame
-	jp ReplaceKrisSprite
+	jp UpdatePlayerSprite
 
 WaterfallFunction:
 	call .TryWaterfall
@@ -1703,7 +1703,7 @@ PutTheRodAway:
 	ld a, $1
 	ld [wPlayerAction], a
 	call UpdateSprites
-	jp ReplaceKrisSprite
+	jp UpdatePlayerSprite
 
 CurItemToScriptVar:
 	ld a, [wCurItem]
@@ -1792,7 +1792,7 @@ Script_GetOnBike:
 	waitbutton
 FinishGettingOnBike:
 	closetext
-	special ReplaceKrisSprite
+	special UpdatePlayerSprite
 	special PlayMapMusic
 	end
 
@@ -1808,7 +1808,7 @@ Script_GetOffBike:
 	waitbutton
 FinishGettingOffBike:
 	closetext
-	special ReplaceKrisSprite
+	special UpdatePlayerSprite
 	special PlayMapMusic
 	end
 

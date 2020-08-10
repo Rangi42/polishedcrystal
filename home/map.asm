@@ -477,7 +477,7 @@ ClearObjectStructs::
 	rst ByteFill
 	ret
 
-RestoreFacingAfterWarp::
+GetWarpDestCoords::
 	call SwitchToMapScriptsBank
 
 	ld hl, wMapScriptsPointer
@@ -514,7 +514,7 @@ RestoreFacingAfterWarp::
 	ld [wBackupMapNumber], a
 
 .skip
-	farjp GetCoordOfUpperLeftCorner
+	farjp GetMapScreenCoords
 
 LoadBlockData::
 	ldh a, [hVBlank]
@@ -1213,7 +1213,7 @@ UpdateBGMapColumn::
 	ldh [hBGMapTileCount], a
 	ret
 
-LoadGraphicsAndDelay::
+LoadMapGraphicsAndDelay::
 	push hl
 	push de
 	push bc
@@ -1233,7 +1233,7 @@ LoadGraphicsAndDelay::
 
 	dec a
 	ld [wPendingOverworldGraphics], a
-	call _LoadTileset
+	call _LoadTilesetGFX
 	xor a
 	ldh [hTileAnimFrame], a
 
@@ -1245,20 +1245,20 @@ LoadGraphicsAndDelay::
 	ldh [rVBK], a
 	jp PopBCDEHL
 
-_LoadTileset:
+_LoadTilesetGFX:
 ; Loads one of up to 3 tileset groups depending on a
-	jr z, _LoadTileset0
+	jr z, _LoadTilesetGFX0
 	dec a
-	jr z, _LoadTileset1
-_LoadTileset2:
+	jr z, _LoadTilesetGFX1
+_LoadTilesetGFX2:
 	ld a, 1
 	ldh [rVBK], a
 	ld hl, wTilesetGFX2Address
 	ld a, [wTilesetGFX2Bank]
 	ld de, vTiles4
-	jr _DoLoadTileset
+	jr _DoLoadTilesetGFX
 
-_LoadTileset0:
+_LoadTilesetGFX0:
 	ldh a, [rSVBK]
 	push af
 	xor a
@@ -1281,7 +1281,7 @@ _LoadTileset0:
 	ld a, [wTilesetGFX0Bank]
 	ld de, vTiles2
 	ld c, $ff
-	call _DoLoadTileset0
+	call _DoLoadTilesetGFX0
 	jr .done
 
 .skip_roof
@@ -1289,13 +1289,13 @@ _LoadTileset0:
 	ld a, [wTilesetGFX0Bank]
 	ld de, vTiles2
 	ld c, $7f
-	call _DoLoadTileset0
+	call _DoLoadTilesetGFX0
 .done
 	pop af
 	ldh [rSVBK], a
 	ret
 
-_LoadTileset1:
+_LoadTilesetGFX1:
 	ld a, 1
 	ldh [rVBK], a
 	ld hl, wTilesetGFX1Address
@@ -1303,9 +1303,9 @@ _LoadTileset1:
 	ld de, vTiles5
 	; fallthrough
 
-_DoLoadTileset:
+_DoLoadTilesetGFX:
 	ld c, $80
-_DoLoadTileset0:
+_DoLoadTilesetGFX0:
 	ld b, a
 	ld a, [hli]
 	ld h, [hl]
@@ -1339,12 +1339,12 @@ _DoLoadTileset0:
 	ld c, $6c ; write tiles $13-$7e
 	jp Request2bppInWRA6
 
-LoadTileset::
+LoadTilesetGFX::
 	xor a
 	ld [wPendingOverworldGraphics], a
-	call _LoadTileset1
-	call _LoadTileset2
-	call _LoadTileset0
+	call _LoadTilesetGFX1
+	call _LoadTilesetGFX2
+	call _LoadTilesetGFX0
 	xor a
 	ldh [hTileAnimFrame], a
 	ret
@@ -1915,7 +1915,7 @@ ReloadTilesetAndPalettes::
 	call SwitchToAnyMapAttributesBank
 	farcall UpdateTimeOfDayPal
 	call LoadMapPart
-	call LoadTileset
+	call LoadTilesetGFX
 	ld a, 9
 	call SkipMusic
 	pop af
