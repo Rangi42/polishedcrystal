@@ -5,6 +5,7 @@ LoadWildMonData:
 	xor a
 	ld [hli], a
 	ld [hli], a
+	ld [hli], a
 	ld [hl], a
 	jr .done_copy
 
@@ -12,8 +13,24 @@ LoadWildMonData:
 	inc hl
 	inc hl
 	ld de, wMornEncounterRate
-	ld bc, 3
-	rst CopyBytes
+	; morn rate
+	ld a, [hli]
+	ld [de], a
+	inc de
+	; day rate
+	ld a, [hli]
+	ld [de], a
+	inc de
+	; eve+nite rate
+	ld a, [hli]
+	ld [de], a
+	inc de
+	ld [de], a
+	inc de
+	; water rate
+	ld a, [hli]
+	ld [de], a
+	inc de
 .done_copy
 	call _WaterWildmonLookup
 	ld a, 0
@@ -217,7 +234,7 @@ TryWildEncounter::
 GetMapEncounterRate:
 	ld hl, wMornEncounterRate
 	call CheckOnWater
-	ld a, 3
+	ld a, 4 ; water rate
 	jr z, .ok
 	ld a, [wTimeOfDay]
 .ok
@@ -309,7 +326,7 @@ _ChooseWildEncounter:
 	jr z, .got_table
 	inc hl
 	inc hl
-	ld a, [wTimeOfDay]
+	call GetTimeOfDayNotEve
 	push bc
 	ld bc, $e
 	rst AddNTimes
@@ -989,7 +1006,7 @@ RandomPhoneRareWildMon:
 	push hl
 	ld bc, 5 + 4 * 2 ; Location of the level of the 5th wild Pokemon in that map
 	add hl, bc
-	ld a, [wTimeOfDay]
+	call GetTimeOfDayNotEve
 	ld bc, 7 * 2
 	rst AddNTimes
 .randloop1
@@ -1059,7 +1076,7 @@ RandomPhoneWildMon:
 .ok
 	ld bc, 5 + 0 * 2
 	add hl, bc
-	ld a, [wTimeOfDay]
+	call GetTimeOfDayNotEve
 	inc a
 	ld bc, 7 * 2
 .loop
@@ -1207,6 +1224,13 @@ RandomPhoneMon:
 CheckOnWater:
 	call GetPlayerStandingTile
 	dec a ; cp WATER_TILE
+	ret
+
+GetTimeOfDayNotEve:
+	ld a, [wTimeOfDay]
+	cp EVE
+	ret nz
+	dec a ; NITE
 	ret
 
 JohtoGrassWildMons:

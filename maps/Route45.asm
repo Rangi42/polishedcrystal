@@ -184,7 +184,7 @@ UnknownScript_0x19e0e4:
 	ifnotequal $1, UnknownScript_0x19e127
 	checktime 1 << MORN
 	iftrue UnknownScript_0x19e10c
-	checktime 1 << NITE
+	checktime (1 << EVE) | (1 << NITE)
 	iftrue UnknownScript_0x19e112
 	checkevent EVENT_KENJI_ON_BREAK
 	iffalse UnknownScript_0x19e127

@@ -551,8 +551,6 @@ wOtherTrainerID::
 
 wTrainerClass:: db
 
-	ds 1 ; unused
-
 wMoveSelectionMenuType::
 ; 0: battle move selection
 ; 1: pp restore selection
@@ -591,6 +589,7 @@ wCurDamage:: dw
 wMornEncounterRate:: db
 wDayEncounterRate:: db
 wNiteEncounterRate:: db
+wEveEncounterRate:: db
 wWaterEncounterRate:: db
 
 wListMoves_MoveIndicesBuffer:: ds NUM_MOVES

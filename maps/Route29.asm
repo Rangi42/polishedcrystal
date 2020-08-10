@@ -109,7 +109,7 @@ Route29RefusedTutorial:
 	jump Route29FinishTutorial
 
 CooltrainerMScript_0x1a1031:
-	checktime 1 << NITE
+	checktime (1 << EVE) | (1 << NITE)
 	iftrue_jumptextfaceplayer Text_WaitingForMorning
 	jumptextfaceplayer Text_WaitingForNight
 
@@ -243,8 +243,9 @@ Text_WaitingForNight:
 	text "I'm waiting for"
 	line "#mon that"
 
-	para "appear only at"
-	line "night."
+	para "appear only in"
+	line "the evening or"
+	cont "at night."
 	done
 
 Text_WaitingForMorning:

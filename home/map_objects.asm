@@ -165,6 +165,7 @@ CheckObjectTime::
 	db 1 << MORN ; 1
 	db 1 << DAY  ; 2
 	db 1 << NITE ; 4
+	db 1 << EVE  ; 8
 
 .check_hour
 	ld hl, MAPOBJECT_HOUR

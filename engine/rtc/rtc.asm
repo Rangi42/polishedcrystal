@@ -33,7 +33,8 @@ GetTimeOfDay::
 TimesOfDay:
 	db MORN_HOUR, NITE
 	db DAY_HOUR,  MORN
-	db NITE_HOUR, DAY
+	db EVE_HOUR,  DAY
+	db NITE_HOUR, EVE
 	db -1,        NITE
 
 StageRTCTimeForSave:

@@ -151,7 +151,7 @@ CheckPhoneContactTimeOfDay:
 
 	farcall CheckTime
 	pop af
-	and (1 << MORN) + (1 << DAY) + (1 << NITE)
+	and (1 << MORN) + (1 << DAY) + (1 << NITE) + (1 << EVE)
 	and c
 
 	jp PopBCDEHL
