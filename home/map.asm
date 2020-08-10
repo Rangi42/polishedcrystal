@@ -1622,12 +1622,8 @@ GetFacingTileCoord::
 
 	ld a, [wPlayerDirection]
 	and %1100
-	srl a
-	srl a
 	ld l, a
 	ld h, 0
-	add hl, hl
-	add hl, hl
 	ld de, .Directions
 	add hl, de
 
