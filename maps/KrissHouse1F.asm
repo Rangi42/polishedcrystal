@@ -280,7 +280,7 @@ NeighborScript:
 	iftrue .MornScript
 	checktime 1 << DAY
 	iftrue .DayScript
-	checktime 1 << NITE
+	checktime (1 << EVE) | (1 << NITE)
 	iftrue .NiteScript
 
 .MornScript:
