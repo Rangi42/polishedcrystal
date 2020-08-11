@@ -10,15 +10,15 @@ GoldenrodPokecomCenterOffice_MapScriptHeader:
 	def_coord_events
 
 	def_bg_events
-	bg_event  3,  2, SIGNPOST_JUMPTEXT, RangiComputerText
-	bg_event  6,  2, SIGNPOST_JUMPTEXT, LunaComputerText
-	bg_event  6,  5, SIGNPOST_UP, AizawaComputerScript
-	bg_event  4,  2, SIGNPOST_READ, RangiKeyboardScript
+	bg_event  3,  2, BGEVENT_JUMPTEXT, RangiComputerText
+	bg_event  6,  2, BGEVENT_JUMPTEXT, LunaComputerText
+	bg_event  6,  5, BGEVENT_UP, AizawaComputerScript
+	bg_event  4,  2, BGEVENT_READ, RangiKeyboardScript
 
 	def_object_events
-	object_event  4,  4, SPRITE_SCIENTIST_F, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, PAL_NPC_PURPLE, PERSONTYPE_COMMAND, jumptextfaceplayer, AdminRangiText, -1
-	object_event  7,  3, SPRITE_BATTLE_GIRL, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, AdminLunaText, -1
-	object_event  7,  6, SPRITE_PHARMACIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, AdminAizawaText, -1
+	object_event  4,  4, SPRITE_SCIENTIST_F, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, PAL_NPC_PURPLE, OBJECTTYPE_COMMAND, jumptextfaceplayer, AdminRangiText, -1
+	object_event  7,  3, SPRITE_BATTLE_GIRL, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_COMMAND, jumptextfaceplayer, AdminLunaText, -1
+	object_event  7,  6, SPRITE_PHARMACIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_COMMAND, jumptextfaceplayer, AdminAizawaText, -1
 
 	object_const_def
 	const GOLDENRODPOKECOMCENTEROFFICE_RANGI

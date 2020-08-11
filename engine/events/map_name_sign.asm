@@ -1,4 +1,4 @@
-ReturnFromMapSetupScript::
+InitMapNameSign::
 	ld a, [wMapGroup]
 	ld b, a
 	ld a, [wMapNumber]
@@ -8,7 +8,7 @@ ReturnFromMapSetupScript::
 	call .CheckExcludedMap
 	jr z, .excluded_map
 
-	call GetMapPermission
+	call GetMapEnvironment
 	cp GATE
 	jr nz, .not_gate
 
@@ -299,7 +299,7 @@ InitMapNameFrame:
 	ld de, wAttrMap - wTileMap
 	add hl, de
 	; top row
-	ld a, BEHIND_BG | PAL_BG_TEXT
+	ld a, PRIORITY | PAL_BG_TEXT
 	ld bc, SCREEN_WIDTH - 1
 	rst ByteFill
 	or X_FLIP

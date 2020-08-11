@@ -42,14 +42,14 @@ CloseText::
 	xor a
 	ldh [hBGMapMode], a
 	call SafeUpdateSprites
-	farcall ReloadVisibleSprites
+	farcall RefreshSprites
 	ld a, $90
 	ldh [hWY], a
-	call ReplaceKrisSprite
+	call UpdatePlayerSprite
 	xor a
 	ldh [hBGMapMode], a
 
-	farjp ReturnFromMapSetupScript
+	farjp InitMapNameSign
 
 Script_opentext::
 OpenText::

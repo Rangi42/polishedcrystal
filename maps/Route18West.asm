@@ -12,10 +12,10 @@ Route18West_MapScriptHeader:
 	coord_event 12,  0, 0, Route18WestBikeCheckScript
 
 	def_bg_events
-	bg_event -1,  5, SIGNPOST_JUMPTEXT, UragaChannelSignText
+	bg_event -1,  5, BGEVENT_JUMPTEXT, UragaChannelSignText
 
 	def_object_events
-	object_event  6,  2, SPRITE_BIKER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerBikerCharles, -1
+	object_event  6,  2, SPRITE_BIKER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 4, GenericTrainerBikerCharles, -1
 
 Route18WestAlwaysOnBike:
 	setflag ENGINE_ALWAYS_ON_BIKE

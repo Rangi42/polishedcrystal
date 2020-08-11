@@ -12,15 +12,15 @@ PalletTown_MapScriptHeader:
 	def_coord_events
 
 	def_bg_events
-	bg_event  7,  9, SIGNPOST_JUMPTEXT, PalletTownSignText
-	bg_event  3,  5, SIGNPOST_JUMPTEXT, RedsHouseSignText
-	bg_event 13, 13, SIGNPOST_JUMPTEXT, OaksLabSignText
-	bg_event 11,  5, SIGNPOST_JUMPTEXT, BluesHouseSignText
+	bg_event  7,  9, BGEVENT_JUMPTEXT, PalletTownSignText
+	bg_event  3,  5, BGEVENT_JUMPTEXT, RedsHouseSignText
+	bg_event 13, 13, BGEVENT_JUMPTEXT, OaksLabSignText
+	bg_event 11,  5, BGEVENT_JUMPTEXT, BluesHouseSignText
 
 	def_object_events
-	object_event  3,  8, SPRITE_AROMA_LADY, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1ac6e7, -1
-	object_event 12, 14, SPRITE_FAT_GUY, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1ac720, -1
-	object_event 17,  7, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, PalletTownYoungsterText, -1
+	object_event  3,  8, SPRITE_AROMA_LADY, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1ac6e7, -1
+	object_event 12, 14, SPRITE_FAT_GUY, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1ac720, -1
+	object_event 17,  7, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, PalletTownYoungsterText, -1
 
 PalletTownFlyPoint:
 	setflag ENGINE_FLYPOINT_PALLET

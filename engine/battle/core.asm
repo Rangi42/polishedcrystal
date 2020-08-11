@@ -1011,7 +1011,7 @@ GetBothSwitchTarget:
 
 GetPlayerSwitchTarget:
 ; Returns switch target in a
-	call LoadStandardMenuDataHeader
+	call LoadStandardMenuHeader
 	call SetUpBattlePartyMenu_NoLoop
 	call ForcePickSwitchMonInBattle
 
@@ -4018,7 +4018,7 @@ BattleMenu_SafariBall:
 	and a
 	jp nz, .ItemsCantBeUsed
 
-	call LoadStandardMenuDataHeader
+	call LoadStandardMenuHeader
 
 	ld a, [wBattleType]
 	cp BATTLETYPE_TUTORIAL
@@ -4128,10 +4128,10 @@ BattleMenu_PKMN:
 	cp BATTLETYPE_SAFARI
 	jp z, BattleMenu_Bait ; "PKMN" is replaced with "Bait" in that mode
 
-	call LoadStandardMenuDataHeader
+	call LoadStandardMenuHeader
 BattleMenuPKMN_ReturnFromStats:
 	call ExitMenu
-	call LoadStandardMenuDataHeader
+	call LoadStandardMenuHeader
 	call ClearBGPalettes
 BattleMenuPKMN_Loop:
 	call SetUpBattlePartyMenu

@@ -10,10 +10,10 @@ Route26HealSpeechHouse_MapScriptHeader:
 	def_coord_events
 
 	def_bg_events
-	bg_event  7,  1, SIGNPOST_JUMPSTD, picturebookshelf
+	bg_event  7,  1, BGEVENT_JUMPSTD, picturebookshelf
 
 	def_object_events
-	object_event  2,  3, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, TeacherScript_0x7b125, -1
+	object_event  2,  3, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, TeacherScript_0x7b125, -1
 
 TeacherScript_0x7b125:
 	showtextfaceplayer UnknownText_0x7b14d

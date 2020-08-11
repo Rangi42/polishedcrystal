@@ -14,7 +14,7 @@ SeafoamIslands1F_MapScriptHeader:
 	def_coord_events
 
 	def_bg_events
-	bg_event 17, 29, SIGNPOST_ITEM + ESCAPE_ROPE, EVENT_SEAFOAM_ISLANDS_1F_HIDDEN_ESCAPE_ROPE
+	bg_event 17, 29, BGEVENT_ITEM + ESCAPE_ROPE, EVENT_SEAFOAM_ISLANDS_1F_HIDDEN_ESCAPE_ROPE
 
 	def_object_events
 

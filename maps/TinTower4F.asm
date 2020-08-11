@@ -12,7 +12,7 @@ TinTower4F_MapScriptHeader:
 	def_coord_events
 
 	def_bg_events
-	bg_event  9,  6, SIGNPOST_ITEM + MAX_POTION, EVENT_TIN_TOWER_4F_HIDDEN_MAX_POTION
+	bg_event  9,  6, BGEVENT_ITEM + MAX_POTION, EVENT_TIN_TOWER_4F_HIDDEN_MAX_POTION
 
 	def_object_events
 	itemball_event 12, 10, ULTRA_BALL, 1, EVENT_TIN_TOWER_4F_ULTRA_BALL

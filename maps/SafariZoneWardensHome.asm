@@ -10,12 +10,12 @@ SafariZoneWardensHome_MapScriptHeader:
 	def_coord_events
 
 	def_bg_events
-	bg_event  0,  1, SIGNPOST_JUMPSTD, picturebookshelf
-	bg_event  7,  0, SIGNPOST_JUMPTEXT, WardenPhotoText
-	bg_event  9,  0, SIGNPOST_JUMPTEXT, SafariZonePhotoText
+	bg_event  0,  1, BGEVENT_JUMPSTD, picturebookshelf
+	bg_event  7,  0, BGEVENT_JUMPTEXT, WardenPhotoText
+	bg_event  9,  0, BGEVENT_JUMPTEXT, SafariZonePhotoText
 
 	def_object_events
-	object_event  2,  4, SPRITE_CUTE_GIRL, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_SCRIPT, 0, WardensGranddaughter, -1
+	object_event  2,  4, SPRITE_CUTE_GIRL, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, WardensGranddaughter, -1
 
 WardensGranddaughter:
 	faceplayer

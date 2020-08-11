@@ -47,20 +47,20 @@ TeamRocketBaseB1F_MapScriptHeader:
 	coord_event  5, 13, 0, ExplodingTrap22
 
 	def_bg_events
-	bg_event 19, 11, SIGNPOST_READ, MapTeamRocketBaseB1FSignpost0Script
-	bg_event 24,  1, SIGNPOST_UP, MapTeamRocketBaseB1FSignpost5Script
-	bg_event  6,  1, SIGNPOST_UP, MapTeamRocketBaseB1FSignpost5Script
-	bg_event  8, 15, SIGNPOST_UP, MapTeamRocketBaseB1FSignpost5Script
-	bg_event 22, 15, SIGNPOST_UP, MapTeamRocketBaseB1FSignpost5Script
-	bg_event 24,  5, SIGNPOST_UP, MapTeamRocketBaseB1FSignpost5Script
-	bg_event 20, 11, SIGNPOST_JUMPSTD, teamrocketoath
-	bg_event 21, 11, SIGNPOST_JUMPSTD, teamrocketoath
-	bg_event  3, 11, SIGNPOST_ITEM + REVIVE, EVENT_TEAM_ROCKET_BASE_B1F_HIDDEN_REVIVE
+	bg_event 19, 11, BGEVENT_READ, MapTeamRocketBaseB1FSignpost0Script
+	bg_event 24,  1, BGEVENT_UP, MapTeamRocketBaseB1FSignpost5Script
+	bg_event  6,  1, BGEVENT_UP, MapTeamRocketBaseB1FSignpost5Script
+	bg_event  8, 15, BGEVENT_UP, MapTeamRocketBaseB1FSignpost5Script
+	bg_event 22, 15, BGEVENT_UP, MapTeamRocketBaseB1FSignpost5Script
+	bg_event 24,  5, BGEVENT_UP, MapTeamRocketBaseB1FSignpost5Script
+	bg_event 20, 11, BGEVENT_JUMPSTD, teamrocketoath
+	bg_event 21, 11, BGEVENT_JUMPSTD, teamrocketoath
+	bg_event  3, 11, BGEVENT_ITEM + REVIVE, EVENT_TEAM_ROCKET_BASE_B1F_HIDDEN_REVIVE
 
 	def_object_events
-	object_event  0,  0, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_TEAM_ROCKET_BASE_SECURITY_GRUNTS
-	object_event  2,  4, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerGruntM16, EVENT_TEAM_ROCKET_BASE_POPULATION
-	object_event 18, 12, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerRocketScientistJed, EVENT_TEAM_ROCKET_BASE_POPULATION
+	object_event  0,  0, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_TEAM_ROCKET_BASE_SECURITY_GRUNTS
+	object_event  2,  4, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerGruntM16, EVENT_TEAM_ROCKET_BASE_POPULATION
+	object_event 18, 12, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerRocketScientistJed, EVENT_TEAM_ROCKET_BASE_POPULATION
 	itemball_event 27,  6, HYPER_POTION, 1, EVENT_TEAM_ROCKET_BASE_B1F_HYPER_POTION
 	itemball_event 14, 15, NUGGET, 1, EVENT_TEAM_ROCKET_BASE_B1F_NUGGET
 	itemball_event 21, 12, GUARD_SPEC, 1, EVENT_TEAM_ROCKET_BASE_B1F_GUARD_SPEC

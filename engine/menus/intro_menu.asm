@@ -338,7 +338,7 @@ Continue:
 	farcall TryLoadSaveFile
 	ret c
 
-	call LoadStandardMenuDataHeader
+	call LoadStandardMenuHeader
 	call DisplaySaveInfoOnContinue
 	ld a, $1
 	ldh [hBGMapMode], a

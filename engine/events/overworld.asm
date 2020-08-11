@@ -481,7 +481,7 @@ AutoSurfScript:
 	copybytetovar wBuffer2
 	writevarcode VAR_MOVEMENT
 
-	special ReplaceKrisSprite
+	special UpdatePlayerSprite
 	special PlayMapMusic
 ; step into the water
 	special Special_SurfStartStep ; (slow_step_x, step_end)
@@ -603,7 +603,7 @@ AskSurfScript:
 
 CheckFlyAllowedOnMap:
 ; returns z is fly is allowed
-	call GetMapPermission
+	call GetMapEnvironment
 	call CheckOutdoorMap
 	ret z
 ; assumes all special roof maps are in different groups
@@ -669,7 +669,7 @@ FlyFunction:
 .outdoors
 	xor a
 	ldh [hMapAnims], a
-	call LoadStandardMenuDataHeader
+	call LoadStandardMenuHeader
 	call ClearSprites
 	farcall _FlyMap
 	ld a, e
@@ -717,7 +717,7 @@ FlyFunction:
 	callasm FlyFromAnim
 	farscall Script_AbortBugContest
 	special WarpToSpawnPoint
-	callasm DelayLoadingNewSprites
+	callasm SkipUpdateMapSprites
 	writecode VAR_MOVEMENT, PLAYER_NORMAL
 	newloadmap MAPSETUP_FLY
 	callasm FlyToAnim
@@ -728,7 +728,7 @@ FlyFunction:
 .ReturnFromFly:
 	farcall ReturnFromFly_SpawnOnlyPlayer
 	call DelayFrame
-	jp ReplaceKrisSprite
+	jp UpdatePlayerSprite
 
 WaterfallFunction:
 	call .TryWaterfall
@@ -864,7 +864,7 @@ EscapeRopeOrDig:
 	dw .FailDig
 
 .CheckCanDig:
-	call GetMapPermission
+	call GetMapEnvironment
 	cp CAVE
 	jr z, .incave
 	cp DUNGEON
@@ -956,11 +956,11 @@ EscapeRopeOrDig:
 
 .DigOut:
 	step_dig 32
-	hide_person
+	hide_object
 	step_end
 
 .DigReturn:
-	show_person
+	show_object
 	return_dig 32
 	step_end
 
@@ -1703,7 +1703,7 @@ PutTheRodAway:
 	ld a, $1
 	ld [wPlayerAction], a
 	call UpdateSprites
-	jp ReplaceKrisSprite
+	jp UpdatePlayerSprite
 
 CurItemToScriptVar:
 	ld a, [wCurItem]
@@ -1763,14 +1763,14 @@ BikeFunction:
 	ret
 
 .CheckEnvironment:
-	call GetMapPermission
+	call GetMapEnvironment
 	call CheckOutdoorMap
 	jr z, .ok
 	cp CAVE
 	jr z, .ok
 	cp GATE
 	jr z, .ok
-	cp PERM_5
+	cp ENVIRONMENT_5
 	jr nz, .nope
 
 .ok
@@ -1792,7 +1792,7 @@ Script_GetOnBike:
 	waitbutton
 FinishGettingOnBike:
 	closetext
-	special ReplaceKrisSprite
+	special UpdatePlayerSprite
 	special PlayMapMusic
 	end
 
@@ -1808,7 +1808,7 @@ Script_GetOffBike:
 	waitbutton
 FinishGettingOffBike:
 	closetext
-	special ReplaceKrisSprite
+	special UpdatePlayerSprite
 	special PlayMapMusic
 	end
 

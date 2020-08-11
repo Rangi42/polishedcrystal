@@ -14,7 +14,7 @@ SeafoamIslandsB1F_MapScriptHeader:
 	def_coord_events
 
 	def_bg_events
-	bg_event 20, 11, SIGNPOST_ITEM + ICE_HEAL, EVENT_SEAFOAM_ISLANDS_B1F_HIDDEN_ICE_HEAL
+	bg_event 20, 11, BGEVENT_ITEM + ICE_HEAL, EVENT_SEAFOAM_ISLANDS_B1F_HIDDEN_ICE_HEAL
 
 	def_object_events
 	itemball_event 20,  3, GRIP_CLAW, 1, EVENT_SEAFOAM_ISLANDS_B1F_GRIP_CLAW

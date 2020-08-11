@@ -16,18 +16,18 @@ PewterCity_MapScriptHeader:
 	def_coord_events
 
 	def_bg_events
-	bg_event 25, 23, SIGNPOST_JUMPTEXT, PewterCitySignText
-	bg_event 11, 17, SIGNPOST_JUMPTEXT, PewterGymSignText
-	bg_event 15,  9, SIGNPOST_JUMPTEXT, PewterMuseumOfScienceSignText
-	bg_event 33, 19, SIGNPOST_JUMPTEXT, PewterCityMtMoonGiftShopSignText
-	bg_event 19, 29, SIGNPOST_JUMPTEXT, PewterCityTrainerTipsText
+	bg_event 25, 23, BGEVENT_JUMPTEXT, PewterCitySignText
+	bg_event 11, 17, BGEVENT_JUMPTEXT, PewterGymSignText
+	bg_event 15,  9, BGEVENT_JUMPTEXT, PewterMuseumOfScienceSignText
+	bg_event 33, 19, BGEVENT_JUMPTEXT, PewterCityMtMoonGiftShopSignText
+	bg_event 19, 29, BGEVENT_JUMPTEXT, PewterCityTrainerTipsText
 
 	def_object_events
-	object_event 22, 11, SPRITE_BATTLE_GIRL, SPRITEMOVEDATA_STANDING_DOWN, 2, 2, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x18c042, -1
-	object_event 19, 10, SPRITE_COOL_DUDE, SPRITEMOVEDATA_SPINRANDOM_SLOW, 2, 2, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, PewterCityCooltrainermText, -1
-	object_event 14, 29, SPRITE_CHILD, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, PAL_NPC_PURPLE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x18c080, -1
-	object_event 29, 17, SPRITE_GRAMPS, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, GrampsScript_0x18c00f, -1
-	object_event  7, 17, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, PewterCityYoungsterScript, -1
+	object_event 22, 11, SPRITE_BATTLE_GIRL, SPRITEMOVEDATA_STANDING_DOWN, 2, 2, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x18c042, -1
+	object_event 19, 10, SPRITE_COOL_DUDE, SPRITEMOVEDATA_SPINRANDOM_SLOW, 2, 2, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, PewterCityCooltrainermText, -1
+	object_event 14, 29, SPRITE_CHILD, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, PAL_NPC_PURPLE, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x18c080, -1
+	object_event 29, 17, SPRITE_GRAMPS, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, GrampsScript_0x18c00f, -1
+	object_event  7, 17, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, PewterCityYoungsterScript, -1
 	fruittree_event 32,  3, FRUITTREE_PEWTER_CITY_1, PETAYA_BERRY, PAL_NPC_RED
 	fruittree_event 30,  3, FRUITTREE_PEWTER_CITY_2, APICOT_BERRY, PAL_NPC_BLUE
 

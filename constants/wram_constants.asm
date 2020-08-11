@@ -1,19 +1,21 @@
 ; wMonType:
-PARTYMON   EQU 0
-OTPARTYMON EQU 1
-BOXMON     EQU 2
-TEMPMON    EQU 3
-WILDMON    EQU 4
+	const_def
+	const PARTYMON   ; 0
+	const OTPARTYMON ; 1
+	const BOXMON     ; 2
+	const TEMPMON    ; 3
+	const WILDMON    ; 4
 
 ; Text box flags
 ; TODO: add the other bits used
 NO_LINE_SPACING EQU 2
 
 ; wOptions1: text speed
-INST_TEXT      EQU $0
-FAST_TEXT      EQU $1
-MED_TEXT       EQU $2
-SLOW_TEXT      EQU $3
+	const_def
+	const INST_TEXT ; 0
+	const FAST_TEXT ; 1
+	const MED_TEXT  ; 2
+	const SLOW_TEXT ; 3
 
 ; wOptions1: text autoscroll.
 ; CheckAutoscroll relies on exact bit usage and order
@@ -71,11 +73,18 @@ FORGETTING_MOVE   EQU 1 << FORGETTING_MOVE_F
 LEARNING_TM       EQU 1 << LEARNING_TM_F
 
 ; wWalkingDirection:
-STANDING EQU -1
-DOWN     EQU 0
-UP       EQU 1
-LEFT     EQU 2
-RIGHT    EQU 3
+	const_def -1
+	const STANDING ; -1
+	const DOWN     ; 0
+	const UP       ; 1
+	const LEFT     ; 2
+	const RIGHT    ; 3
+NUM_DIRECTIONS EQU const_value
+
+DOWN_MASK  EQU 1 << DOWN
+UP_MASK    EQU 1 << UP
+LEFT_MASK  EQU 1 << LEFT
+RIGHT_MASK EQU 1 << RIGHT
 
 ; wFacingDirection:
 FACE_CURRENT EQU 0
@@ -89,6 +98,13 @@ MORN     EQU 0
 DAY      EQU 1
 NITE     EQU 2
 DARKNESS EQU 3
+
+; wPlayerSpriteSetupFlags::
+PLAYERSPRITESETUP_FACING_MASK       EQU %11
+PLAYERSPRITESETUP_FEMALE_TO_MALE_F  EQU 2
+PLAYERSPRITESETUP_CUSTOM_FACING_F   EQU 5
+PLAYERSPRITESETUP_SKIP_RELOAD_GFX_F EQU 6
+PLAYERSPRITESETUP_RESET_ACTION_F    EQU 7
 
 ; wScriptFlags:
 SCRIPT_RUNNING EQU 2
@@ -129,12 +145,10 @@ OWSTATE_CUT             EQU 8
 ; wPlayerState:
 PLAYER_NORMAL    EQU 0
 PLAYER_BIKE      EQU 1
-PLAYER_SLIP      EQU 2
+PLAYER_SKATE      EQU 2
 PLAYER_SURF      EQU 4
 PLAYER_SURF_PIKA EQU 8
 
-OBJECT_STRUCT_LENGTH EQU 33
-NUM_OBJECT_STRUCTS EQU 13
 FIRST_VRAM1_OBJECT_STRUCT EQU 8
 
 ; After-Champion Spawn
@@ -146,6 +160,13 @@ PC_WITHDRAW EQU 0
 PC_DEPOSIT EQU 1
 DAYCARE_WITHDRAW EQU 2
 DAYCARE_DEPOSIT EQU 3
+
+; wPlayerStepFlags::
+	const_def 4
+	const PLAYERSTEP_MIDAIR_F   ; 4
+	const PLAYERSTEP_CONTINUE_F ; 5
+	const PLAYERSTEP_STOP_F     ; 6
+	const PLAYERSTEP_START_F    ; 7
 
 ; wPalFadeMode
 PALFADE_WHICH        EQU %11

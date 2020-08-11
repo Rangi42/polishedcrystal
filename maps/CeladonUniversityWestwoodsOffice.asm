@@ -10,14 +10,14 @@ CeladonUniversityWestwoodsOffice_MapScriptHeader:
 	def_coord_events
 
 	def_bg_events
-	bg_event  2,  0, SIGNPOST_JUMPTEXT, CeladonUniversityWestwoodsOfficeSignpost1Text
-	bg_event  3,  0, SIGNPOST_JUMPTEXT, CeladonUniversityWestwoodsOfficeSignpost2Text
-	bg_event  4,  1, SIGNPOST_JUMPTEXT, CeladonUniversityWestwoodsOfficeBookshelfText
-	bg_event  5,  1, SIGNPOST_JUMPTEXT, CeladonUniversityWestwoodsOfficeBookshelfText
+	bg_event  2,  0, BGEVENT_JUMPTEXT, CeladonUniversityWestwoodsOfficeSignpost1Text
+	bg_event  3,  0, BGEVENT_JUMPTEXT, CeladonUniversityWestwoodsOfficeSignpost2Text
+	bg_event  4,  1, BGEVENT_JUMPTEXT, CeladonUniversityWestwoodsOfficeBookshelfText
+	bg_event  5,  1, BGEVENT_JUMPTEXT, CeladonUniversityWestwoodsOfficeBookshelfText
 
 	def_object_events
-	object_event  4,  3, SPRITE_CHILD, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, CeladonUniversityWestwoodsOfficeChildScript, -1
-	object_event  1,  4, SPRITE_BOOK_PAPER_POKEDEX, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptext, CeladonUniversityWestwoodsOfficeBookText, -1
+	object_event  4,  3, SPRITE_CHILD, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, CeladonUniversityWestwoodsOfficeChildScript, -1
+	object_event  1,  4, SPRITE_BOOK_PAPER_POKEDEX, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptext, CeladonUniversityWestwoodsOfficeBookText, -1
 
 CeladonUniversityWestwoodsOfficeChildScript:
 	checkevent EVENT_GOT_RAGECANDYBAR_IN_UNIVERSITY

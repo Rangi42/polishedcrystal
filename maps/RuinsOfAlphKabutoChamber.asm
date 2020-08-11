@@ -15,16 +15,16 @@ RuinsOfAlphKabutoChamber_MapScriptHeader:
 	def_coord_events
 
 	def_bg_events
-	bg_event  2,  3, SIGNPOST_JUMPTEXT, RuinsofAlphStatueText
-	bg_event  5,  3, SIGNPOST_JUMPTEXT, RuinsofAlphStatueText
-	bg_event  3,  2, SIGNPOST_UP, MapRuinsofAlphKabutoChamberSignpost2Script
-	bg_event  4,  2, SIGNPOST_UP, MapRuinsofAlphKabutoChamberSignpost3Script
-	bg_event  3,  0, SIGNPOST_UP, MapRuinsofAlphKabutoChamberSignpost4Script
-	bg_event  4,  0, SIGNPOST_UP, MapRuinsofAlphKabutoChamberSignpost5Script
+	bg_event  2,  3, BGEVENT_JUMPTEXT, RuinsofAlphStatueText
+	bg_event  5,  3, BGEVENT_JUMPTEXT, RuinsofAlphStatueText
+	bg_event  3,  2, BGEVENT_UP, MapRuinsofAlphKabutoChamberSignpost2Script
+	bg_event  4,  2, BGEVENT_UP, MapRuinsofAlphKabutoChamberSignpost3Script
+	bg_event  3,  0, BGEVENT_UP, MapRuinsofAlphKabutoChamberSignpost4Script
+	bg_event  4,  0, BGEVENT_UP, MapRuinsofAlphKabutoChamberSignpost5Script
 
 	def_object_events
-	object_event  5,  5, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x58800, EVENT_RUINS_OF_ALPH_KABUTO_CHAMBER_RECEPTIONIST
-	object_event  3,  1, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_SCRIPT, 0, ScientistScript_0x587a8, -1
+	object_event  5,  5, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x58800, EVENT_RUINS_OF_ALPH_KABUTO_CHAMBER_RECEPTIONIST
+	object_event  3,  1, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, ScientistScript_0x587a8, -1
 
 RuinsofAlphKabutoChamberTrigger0:
 	checkevent EVENT_WALL_OPENED_IN_KABUTO_CHAMBER

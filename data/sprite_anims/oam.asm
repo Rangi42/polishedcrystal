@@ -82,10 +82,10 @@ SpriteAnimOAMData:
 
 .OAMData_30:
 	db 4
-	dsprite -1,  0, -1,  0, $00, $0 | BEHIND_BG
-	dsprite -1,  0,  0,  0, $00, $0 | X_FLIP | BEHIND_BG
-	dsprite  0,  0, -1,  0, $01, $0 | BEHIND_BG
-	dsprite  0,  0,  0,  0, $01, $0 | X_FLIP | BEHIND_BG
+	dsprite -1,  0, -1,  0, $00, $0 | PRIORITY
+	dsprite -1,  0,  0,  0, $00, $0 | X_FLIP | PRIORITY
+	dsprite  0,  0, -1,  0, $01, $0 | PRIORITY
+	dsprite  0,  0,  0,  0, $01, $0 | X_FLIP | PRIORITY
 
 .OAMData_18:
 	db 4
@@ -102,10 +102,10 @@ SpriteAnimOAMData:
 	dsprite  0,  0,  0,  0, $00, $7 | X_FLIP | Y_FLIP
 
 	db 4
-	dsprite -1,  0, -1,  0, $00, $0 | BEHIND_BG
-	dsprite -1,  0,  0,  0, $00, $0 | X_FLIP | BEHIND_BG
-	dsprite  0,  0, -1,  0, $00, $0 | Y_FLIP | BEHIND_BG
-	dsprite  0,  0,  0,  0, $00, $0 | X_FLIP | Y_FLIP | BEHIND_BG
+	dsprite -1,  0, -1,  0, $00, $0 | PRIORITY
+	dsprite -1,  0,  0,  0, $00, $0 | X_FLIP | PRIORITY
+	dsprite  0,  0, -1,  0, $00, $0 | Y_FLIP | PRIORITY
+	dsprite  0,  0,  0,  0, $00, $0 | X_FLIP | Y_FLIP | PRIORITY
 
 .OAMData_19:
 	db 16
@@ -144,10 +144,10 @@ SpriteAnimOAMData:
 
 .OAMData_31:
 	db 4
-	dsprite -1,  0, -1,  0, $00, $0 | BEHIND_BG
-	dsprite -1,  0,  0,  0, $01, $0 | BEHIND_BG
-	dsprite  0,  0, -1,  0, $02, $0 | BEHIND_BG
-	dsprite  0,  0,  0,  0, $03, $0 | BEHIND_BG
+	dsprite -1,  0, -1,  0, $00, $0 | PRIORITY
+	dsprite -1,  0,  0,  0, $01, $0 | PRIORITY
+	dsprite  0,  0, -1,  0, $02, $0 | PRIORITY
+	dsprite  0,  0,  0,  0, $03, $0 | PRIORITY
 
 .OAMData_3d:
 ; party menu icon with mail, frame 1
@@ -302,10 +302,10 @@ SpriteAnimOAMData:
 
 .OAMData_65:
 	db 4
-	dsprite -1,  0, -1,  0, $00, $1 | BEHIND_BG
-	dsprite -1,  0,  0,  0, $01, $1 | BEHIND_BG
-	dsprite  0,  0, -1,  0, $02, $1 | BEHIND_BG
-	dsprite  0,  0,  0,  0, $03, $1 | BEHIND_BG
+	dsprite -1,  0, -1,  0, $00, $1 | PRIORITY
+	dsprite -1,  0,  0,  0, $01, $1 | PRIORITY
+	dsprite  0,  0, -1,  0, $02, $1 | PRIORITY
+	dsprite  0,  0,  0,  0, $03, $1 | PRIORITY
 
 .OAMData_6e:
 	db 36
@@ -562,26 +562,26 @@ SpriteAnimOAMData:
 
 .OAMData_7e:
 	db 20
-	dsprite  0,  0,   1,  0, $00, $1 | BEHIND_BG
-	dsprite  1,  0,   2,  0, $00, $1 | BEHIND_BG
-	dsprite  2,  0,   3,  0, $00, $1 | BEHIND_BG
-	dsprite  3,  0,   4,  0, $00, $1 | BEHIND_BG
-	dsprite  4,  0,   5,  0, $00, $1 | BEHIND_BG
-	dsprite  3,  0,   6,  0, $00, $1 | BEHIND_BG
-	dsprite  2,  0,   7,  0, $00, $1 | BEHIND_BG
-	dsprite  1,  0,   8,  0, $00, $1 | BEHIND_BG
-	dsprite  0,  0,   9,  0, $00, $1 | BEHIND_BG
-	dsprite  1,  0,  10,  0, $00, $1 | BEHIND_BG
-	dsprite  2,  0,  11,  0, $00, $1 | BEHIND_BG
-	dsprite  3,  0,  12,  0, $00, $1 | BEHIND_BG
-	dsprite  4,  0,  13,  0, $00, $1 | BEHIND_BG
-	dsprite  3,  0,  14,  0, $00, $1 | BEHIND_BG
-	dsprite  2,  0,  15,  0, $00, $1 | BEHIND_BG
-	dsprite  1,  0,  16,  0, $00, $1 | BEHIND_BG
-	dsprite  0,  0, -15,  0, $00, $1 | BEHIND_BG
-	dsprite  1,  0, -14,  0, $00, $1 | BEHIND_BG
-	dsprite  2,  0, -13,  0, $00, $1 | BEHIND_BG
-	dsprite  3,  0, -12,  0, $00, $1 | BEHIND_BG
+	dsprite  0,  0,   1,  0, $00, $1 | PRIORITY
+	dsprite  1,  0,   2,  0, $00, $1 | PRIORITY
+	dsprite  2,  0,   3,  0, $00, $1 | PRIORITY
+	dsprite  3,  0,   4,  0, $00, $1 | PRIORITY
+	dsprite  4,  0,   5,  0, $00, $1 | PRIORITY
+	dsprite  3,  0,   6,  0, $00, $1 | PRIORITY
+	dsprite  2,  0,   7,  0, $00, $1 | PRIORITY
+	dsprite  1,  0,   8,  0, $00, $1 | PRIORITY
+	dsprite  0,  0,   9,  0, $00, $1 | PRIORITY
+	dsprite  1,  0,  10,  0, $00, $1 | PRIORITY
+	dsprite  2,  0,  11,  0, $00, $1 | PRIORITY
+	dsprite  3,  0,  12,  0, $00, $1 | PRIORITY
+	dsprite  4,  0,  13,  0, $00, $1 | PRIORITY
+	dsprite  3,  0,  14,  0, $00, $1 | PRIORITY
+	dsprite  2,  0,  15,  0, $00, $1 | PRIORITY
+	dsprite  1,  0,  16,  0, $00, $1 | PRIORITY
+	dsprite  0,  0, -15,  0, $00, $1 | PRIORITY
+	dsprite  1,  0, -14,  0, $00, $1 | PRIORITY
+	dsprite  2,  0, -13,  0, $00, $1 | PRIORITY
+	dsprite  3,  0, -12,  0, $00, $1 | PRIORITY
 
 .OAMData_7f:
 	db 4

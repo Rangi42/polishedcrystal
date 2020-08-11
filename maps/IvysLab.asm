@@ -10,25 +10,25 @@ IvysLab_MapScriptHeader:
 	def_coord_events
 
 	def_bg_events
-	bg_event  5,  0, SIGNPOST_JUMPTEXT, IvysLabWindowText
-	bg_event  2,  1, SIGNPOST_READ, IvysLabHealingMachine
-	bg_event  6,  1, SIGNPOST_JUMPSTD, difficultbookshelf
-	bg_event  7,  1, SIGNPOST_JUMPSTD, difficultbookshelf
-	bg_event  8,  1, SIGNPOST_JUMPSTD, difficultbookshelf
-	bg_event  9,  1, SIGNPOST_JUMPSTD, difficultbookshelf
-	bg_event  0,  7, SIGNPOST_READ, PokemonJournalProfIvyScript
-	bg_event  1,  7, SIGNPOST_READ, PokemonJournalProfIvyScript
-	bg_event  2,  7, SIGNPOST_READ, PokemonJournalProfIvyScript
-	bg_event  3,  7, SIGNPOST_READ, PokemonJournalProfIvyScript
-	bg_event  6,  7, SIGNPOST_JUMPSTD, difficultbookshelf
-	bg_event  7,  7, SIGNPOST_JUMPSTD, difficultbookshelf
-	bg_event  8,  7, SIGNPOST_JUMPSTD, difficultbookshelf
-	bg_event  9,  7, SIGNPOST_JUMPSTD, difficultbookshelf
+	bg_event  5,  0, BGEVENT_JUMPTEXT, IvysLabWindowText
+	bg_event  2,  1, BGEVENT_READ, IvysLabHealingMachine
+	bg_event  6,  1, BGEVENT_JUMPSTD, difficultbookshelf
+	bg_event  7,  1, BGEVENT_JUMPSTD, difficultbookshelf
+	bg_event  8,  1, BGEVENT_JUMPSTD, difficultbookshelf
+	bg_event  9,  1, BGEVENT_JUMPSTD, difficultbookshelf
+	bg_event  0,  7, BGEVENT_READ, PokemonJournalProfIvyScript
+	bg_event  1,  7, BGEVENT_READ, PokemonJournalProfIvyScript
+	bg_event  2,  7, BGEVENT_READ, PokemonJournalProfIvyScript
+	bg_event  3,  7, BGEVENT_READ, PokemonJournalProfIvyScript
+	bg_event  6,  7, BGEVENT_JUMPSTD, difficultbookshelf
+	bg_event  7,  7, BGEVENT_JUMPSTD, difficultbookshelf
+	bg_event  8,  7, BGEVENT_JUMPSTD, difficultbookshelf
+	bg_event  9,  7, BGEVENT_JUMPSTD, difficultbookshelf
 
 	def_object_events
-	object_event  4,  3, SPRITE_IVY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ProfIvyScript, -1
-	object_event  5,  3, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, NIDORINO, -1, -1, PAL_NPC_PURPLE, PERSONTYPE_SCRIPT, 0, IvysLabNidorinoScript, -1
-	object_event  2,  9, SPRITE_BATTLE_GIRL, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_PURPLE, PERSONTYPE_SCRIPT, 0, IvysLabHopeScript, -1
+	object_event  4,  3, SPRITE_IVY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ProfIvyScript, -1
+	object_event  5,  3, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, NIDORINO, -1, -1, PAL_NPC_PURPLE, OBJECTTYPE_SCRIPT, 0, IvysLabNidorinoScript, -1
+	object_event  2,  9, SPRITE_BATTLE_GIRL, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_PURPLE, OBJECTTYPE_SCRIPT, 0, IvysLabHopeScript, -1
 
 	object_const_def
 	const IVYSLAB_IVY

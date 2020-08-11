@@ -11,7 +11,7 @@ FireIslandRoof_MapScriptHeader:
 	def_bg_events
 
 	def_object_events
-	object_event  5,  5, SPRITE_CANDELA, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FireIslandRoofCandelaScript, EVENT_SHAMOUTI_COAST_CANDELA
+	object_event  5,  5, SPRITE_CANDELA, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, FireIslandRoofCandelaScript, EVENT_SHAMOUTI_COAST_CANDELA
 
 	object_const_def
 	const FIREISLANDROOF_CANDELA

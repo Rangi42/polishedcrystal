@@ -106,9 +106,9 @@ CheckForHiddenItems:
 IsHiddenItem:
 ; Returns nz if current object is not a hidden item we haven't found yet
 	call ItemFinder_GetFarByte
-	cp SIGNPOST_GROTTOITEM
+	cp BGEVENT_GROTTOITEM
 	jr z, .grotto
-	cp SIGNPOST_ITEM
+	cp BGEVENT_ITEM
 	ret c
 	call ItemFinder_GetFarByte
 	ld e, a

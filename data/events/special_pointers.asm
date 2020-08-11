@@ -55,7 +55,7 @@ SpecialsPointers::
 	add_special UpdateTimePals
 	add_special ClearTileMap
 	add_special UpdateSprites
-	add_special ReplaceKrisSprite
+	add_special UpdatePlayerSprite
 	add_special Special_GameCornerPrizeMonCheckDex
 	add_special SpecialSeenMon
 	add_special WaitSFX

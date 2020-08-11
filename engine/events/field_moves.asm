@@ -53,7 +53,7 @@ ShakeHeadbuttTree:
 	xor a
 	rst ByteFill
 	call DelayFrame
-	jp ReplaceKrisSprite
+	jp UpdatePlayerSprite
 
 HeadbuttTreeGFX:
 INCBIN "gfx/overworld/headbutt_tree.2bpp.lz"

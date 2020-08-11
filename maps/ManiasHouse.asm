@@ -10,11 +10,11 @@ ManiasHouse_MapScriptHeader:
 	def_coord_events
 
 	def_bg_events
-	bg_event  5,  1, SIGNPOST_JUMPSTD, radio2
-	bg_event  7,  1, SIGNPOST_JUMPSTD, picturebookshelf
+	bg_event  5,  1, BGEVENT_JUMPSTD, radio2
+	bg_event  7,  1, BGEVENT_JUMPSTD, picturebookshelf
 
 	def_object_events
-	object_event  2,  4, SPRITE_ROCKER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_SCRIPT, 0, ManiaScript, -1
+	object_event  2,  4, SPRITE_ROCKER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, ManiaScript, -1
 
 ManiaScript:
 	faceplayer

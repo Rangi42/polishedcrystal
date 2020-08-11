@@ -312,7 +312,7 @@ InitPokegearTilemap:
 	hlcoord 17, 2
 	inc a
 	ld [hli], a
-	call GetMapHeaderPhoneServiceNybble
+	call GetMapPhoneService
 	and a
 	ret nz
 	hlcoord 18, 2
@@ -876,7 +876,7 @@ PokegearPhone_Joypad:
 	ret
 
 PokegearPhone_MakePhoneCall:
-	call GetMapHeaderPhoneServiceNybble
+	call GetMapPhoneService
 	and a
 	jr nz, .no_service
 	ld hl, wOptions1
@@ -1265,7 +1265,7 @@ ExitPokegearRadio_HandleMusic:
 	cp $fe
 	jr z, .restart_map_music
 	cp $ff
-	call z, EnterMapMusic
+	call z, PlayMapMusicBike
 	xor a
 	ld [wPokegearRadioMusicPlaying], a
 	ret

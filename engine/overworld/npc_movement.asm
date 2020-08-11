@@ -1,4 +1,4 @@
-Function6ec1:
+CanObjectMoveInDirection:
 
 	ld hl, OBJECT_FLAGS1
 	add hl, bc
@@ -309,7 +309,7 @@ IsNPCAtCoord:
 	jr nz, .setcarry
 
 .next
-	ld hl, OBJECT_STRUCT_LENGTH
+	ld hl, OBJECT_LENGTH
 	add hl, bc
 	ld b, h
 	ld c, l

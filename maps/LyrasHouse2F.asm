@@ -9,14 +9,14 @@ LyrasHouse2F_MapScriptHeader:
 	def_coord_events
 
 	def_bg_events
-	bg_event  4,  1, SIGNPOST_JUMPTEXT, LyrasHousePCText
-	bg_event  5,  1, SIGNPOST_READ, LyrasHouseRadio
-	bg_event  7,  1, SIGNPOST_READ, PokemonJournalProfElmScript
+	bg_event  4,  1, BGEVENT_JUMPTEXT, LyrasHousePCText
+	bg_event  5,  1, BGEVENT_READ, LyrasHouseRadio
+	bg_event  7,  1, BGEVENT_READ, PokemonJournalProfElmScript
 
 	def_object_events
-	object_event  2,  3, SPRITE_LYRA, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, LyrasHouseLyraText, EVENT_LYRA_IN_HER_ROOM
+	object_event  2,  3, SPRITE_LYRA, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, LyrasHouseLyraText, EVENT_LYRA_IN_HER_ROOM
 	pokemon_event  3,  3, PIDGEOT, -1, -1, PAL_NPC_BROWN, LyrasHousePidgeotText, EVENT_LYRA_IN_HER_ROOM
-	object_event  6,  2, SPRITE_N64, SPRITEMOVEDATA_DOLL, 0, 0, -1, -1, PAL_NPC_ROCK, PERSONTYPE_COMMAND, jumptext, LyrasHouseN64Text, -1
+	object_event  6,  2, SPRITE_N64, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, PAL_NPC_ROCK, OBJECTTYPE_COMMAND, jumptext, LyrasHouseN64Text, -1
 
 LyrasHouseRadio:
 	checkevent EVENT_GOT_A_POKEMON_FROM_ELM

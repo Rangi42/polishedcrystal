@@ -12,8 +12,8 @@ RuinsOfAlphKabutoItemRoom_MapScriptHeader:
 	def_coord_events
 
 	def_bg_events
-	bg_event  2,  1, SIGNPOST_JUMPTEXT, RuinsofAlphStatueText
-	bg_event  5,  1, SIGNPOST_JUMPTEXT, RuinsofAlphStatueText
+	bg_event  2,  1, BGEVENT_JUMPTEXT, RuinsofAlphStatueText
+	bg_event  5,  1, BGEVENT_JUMPTEXT, RuinsofAlphStatueText
 
 	def_object_events
 	itemball_event  2,  6, SITRUS_BERRY, 1, EVENT_PICKED_UP_SITRUS_BERRY_FROM_KABUTO_ITEM_ROOM

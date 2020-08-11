@@ -9,8 +9,8 @@ Route15FuchsiaGate2F_MapScriptHeader:
 	def_coord_events
 
 	def_bg_events
-	bg_event  1,  2, SIGNPOST_UP, Route15FuchsiaGate2FBinoculars1
-	bg_event  6,  2, SIGNPOST_UP, Route15FuchsiaGate2FBinoculars2
+	bg_event  1,  2, BGEVENT_UP, Route15FuchsiaGate2FBinoculars1
+	bg_event  6,  2, BGEVENT_UP, Route15FuchsiaGate2FBinoculars2
 
 	def_object_events
 

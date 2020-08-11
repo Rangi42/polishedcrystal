@@ -1,9 +1,3 @@
-DoMovementFunction:
-	push af
-	call ApplyMovementToFollower
-	pop af
-	call StackJumpTable
-
 MovementPointers:
 	dw Movement_turn_head_down        ; 00
 	dw Movement_turn_head_up          ; 01
@@ -65,8 +59,8 @@ MovementPointers:
 	dw Movement_set_sliding           ; 39
 	dw Movement_remove_fixed_facing   ; 3a
 	dw Movement_fix_facing            ; 3b
-	dw Movement_show_person           ; 3c
-	dw Movement_hide_person           ; 3d
+	dw Movement_show_object           ; 3c
+	dw Movement_hide_object           ; 3d
 	dw Movement_step_sleep_1          ; 3e
 	dw Movement_step_sleep_2          ; 3f
 	dw Movement_step_sleep_3          ; 40
@@ -78,7 +72,7 @@ MovementPointers:
 	dw Movement_step_sleep            ; 46
 	dw Movement_step_end              ; 47
 	dw Movement_step_resume           ; 48
-	dw Movement_remove_person         ; 49
+	dw Movement_remove_object         ; 49
 	dw Movement_step_loop             ; 4a
 	dw Movement_4b                    ; 4b
 	dw Movement_teleport_from         ; 4c
@@ -141,7 +135,7 @@ Movement_step_dig:
 	ld [hl], a
 	ld hl, OBJECT_ACTION
 	add hl, bc
-	ld [hl], PERSON_ACTION_SPIN
+	ld [hl], OBJECT_ACTION_SPIN
 	call JumpMovementPointer
 	ld hl, OBJECT_STEP_DURATION
 	add hl, bc
@@ -176,7 +170,7 @@ Movement_return_dig:
 Movement_fish_got_bite:
 	ld hl, OBJECT_ACTION
 	add hl, bc
-	ld [hl], PERSON_ACTION_FISHING
+	ld [hl], OBJECT_ACTION_FISHING
 	ld hl, OBJECT_STEP_TYPE
 	add hl, bc
 	ld [hl], STEP_TYPE_GOT_BITE
@@ -189,7 +183,7 @@ Movement_rock_smash:
 	ld [hl], a
 	ld hl, OBJECT_ACTION
 	add hl, bc
-	ld [hl], PERSON_ACTION_STAND
+	ld [hl], OBJECT_ACTION_STAND
 	ld hl, OBJECT_STEP_TYPE
 	add hl, bc
 	ld [hl], STEP_TYPE_ROCK_SMASH
@@ -198,7 +192,7 @@ Movement_rock_smash:
 Movement_fish_cast_rod:
 	ld hl, OBJECT_ACTION
 	add hl, bc
-	ld [hl], PERSON_ACTION_FISHING
+	ld [hl], OBJECT_ACTION_FISHING
 	ld hl, OBJECT_STEP_TYPE
 	add hl, bc
 	ld [hl], STEP_TYPE_SLEEP
@@ -229,7 +223,7 @@ Movement_step_end:
 	ld [hl], STEP_TYPE_SLEEP
 	ret
 
-Movement_remove_person:
+Movement_remove_object:
 	call DeleteMapObject
 	ld hl, wObjectFollow_Leader
 	ldh a, [hMapObjectIndexBuffer]
@@ -245,7 +239,7 @@ Movement_remove_person:
 Movement_4b:
 	ld hl, OBJECT_ACTION
 	add hl, bc
-	ld [hl], PERSON_ACTION_STAND
+	ld [hl], OBJECT_ACTION_STAND
 
 	ld hl, OBJECT_STEP_TYPE
 	add hl, bc
@@ -292,7 +286,6 @@ Movement_step_sleep:
 ;	duration (DecimalParam)
 	call JumpMovementPointer
 	; fallthrough
-
 Movement_step_sleep_common:
 	ld hl, OBJECT_STEP_DURATION
 	add hl, bc
@@ -304,7 +297,7 @@ Movement_step_sleep_common:
 
 	ld hl, OBJECT_ACTION
 	add hl, bc
-	ld [hl], PERSON_ACTION_STAND
+	ld [hl], OBJECT_ACTION_STAND
 
 	ld hl, OBJECT_DIRECTION_WALKING
 	add hl, bc
@@ -323,7 +316,7 @@ Movement_step_bump:
 
 	ld hl, OBJECT_ACTION
 	add hl, bc
-	ld [hl], PERSON_ACTION_BUMP
+	ld [hl], OBJECT_ACTION_BUMP
 
 	ld hl, OBJECT_DIRECTION_WALKING
 	add hl, bc
@@ -342,7 +335,7 @@ Movement_tree_shake:
 
 	ld hl, OBJECT_ACTION
 	add hl, bc
-	ld [hl], PERSON_ACTION_WEIRD_TREE
+	ld [hl], OBJECT_ACTION_WEIRD_TREE
 
 	ld hl, OBJECT_DIRECTION_WALKING
 	add hl, bc
@@ -352,37 +345,37 @@ Movement_tree_shake:
 Movement_remove_sliding:
 	ld hl, OBJECT_FLAGS1
 	add hl, bc
-	res SLIDING, [hl]
+	res SLIDING_F, [hl]
 	jp ContinueReadingMovement
 
 Movement_set_sliding:
 	ld hl, OBJECT_FLAGS1
 	add hl, bc
-	set SLIDING, [hl]
+	set SLIDING_F, [hl]
 	jp ContinueReadingMovement
 
 Movement_remove_fixed_facing:
 	ld hl, OBJECT_FLAGS1
 	add hl, bc
-	res FIXED_FACING, [hl]
+	res FIXED_FACING_F, [hl]
 	jp ContinueReadingMovement
 
 Movement_fix_facing:
 	ld hl, OBJECT_FLAGS1
 	add hl, bc
-	set FIXED_FACING, [hl]
+	set FIXED_FACING_F, [hl]
 	jp ContinueReadingMovement
 
-Movement_show_person:
+Movement_show_object:
 	ld hl, OBJECT_FLAGS1
 	add hl, bc
-	res INVISIBLE, [hl]
+	res INVISIBLE_F, [hl]
 	jp ContinueReadingMovement
 
-Movement_hide_person:
+Movement_hide_object:
 	ld hl, OBJECT_FLAGS1
 	add hl, bc
-	set INVISIBLE, [hl]
+	set INVISIBLE_F, [hl]
 	jp ContinueReadingMovement
 
 Movement_hide_emote:
@@ -416,7 +409,6 @@ Movement_turn_head_left:
 Movement_turn_head_right:
 	ld a, OW_RIGHT
 	; fallthrough
-
 TurnHead:
 	ld hl, OBJECT_FACING
 	add hl, bc
@@ -424,7 +416,7 @@ TurnHead:
 
 	ld hl, OBJECT_ACTION
 	add hl, bc
-	ld [hl], PERSON_ACTION_STAND
+	ld [hl], OBJECT_ACTION_STAND
 
 	ld hl, OBJECT_DIRECTION_WALKING
 	add hl, bc
@@ -494,7 +486,7 @@ Movement_big_step_left:
 Movement_big_step_right:
 	ld a, STEP_BIKE << 2 | RIGHT
 Movement_do_step:
-	ld d, PERSON_ACTION_STEP
+	ld d, OBJECT_ACTION_STEP
 Movement_normal_step:
 	jp NormalStep
 
@@ -513,7 +505,7 @@ Movement_run_step_left:
 Movement_run_step_right:
 	ld a, STEP_RUN << 2 | RIGHT ; STEP_RUN
 Movement_do_run:
-	ld d, PERSON_ACTION_RUN
+	ld d, OBJECT_ACTION_RUN
 	jr Movement_normal_step
 
 Movement_turn_away_down:
@@ -678,15 +670,14 @@ Movement_turn_step_left:
 Movement_turn_step_right:
 	ld a, OW_RIGHT
 	; fallthrough
-
 TurnStep:
-	ld hl, OBJECT_29 ; new facing
+	ld hl, OBJECT_1D ; new facing
 	add hl, bc
 	ld [hl], a
 
 	ld hl, OBJECT_ACTION
 	add hl, bc
-	ld [hl], PERSON_ACTION_STEP
+	ld [hl], OBJECT_ACTION_STEP
 
 	ld hl, OBJECT_STEP_TYPE
 	add hl, bc
@@ -699,13 +690,13 @@ NormalStep:
 	call UpdateTallGrassFlags
 	ld hl, OBJECT_ACTION
 	add hl, bc
-	ld [hl], PERSON_ACTION_STEP
+	ld [hl], OBJECT_ACTION_STEP
 	pop de
 	ld [hl], d
 
 	ld hl, OBJECT_FLAGS1
 	add hl, bc
-	bit INVISIBLE, [hl]
+	bit INVISIBLE_F, [hl]
 	jr nz, SetWalkStepType
 
 	ld hl, OBJECT_NEXT_TILE
@@ -715,7 +706,6 @@ NormalStep:
 	jr z, .shake_grass
 	cp COLL_TALL_GRASS
 	jr z, .shake_grass
-
 	cp COLL_PUDDLE
 	jr nz, SetWalkStepType
 	call SplashPuddle
@@ -740,7 +730,7 @@ TurningStep:
 
 	ld hl, OBJECT_ACTION
 	add hl, bc
-	ld [hl], PERSON_ACTION_SPIN
+	ld [hl], OBJECT_ACTION_SPIN
 	jr SetWalkStepType
 
 SlideStep:
@@ -749,22 +739,22 @@ SlideStep:
 
 	ld hl, OBJECT_ACTION
 	add hl, bc
-	ld [hl], PERSON_ACTION_STAND
+	ld [hl], OBJECT_ACTION_STAND
 	jr SetWalkStepType
 
 JumpStep:
 	call InitStep
-	ld hl, OBJECT_31
+	ld hl, OBJECT_1F
 	add hl, bc
 	ld [hl], $0
 
 	ld hl, OBJECT_FLAGS2
 	add hl, bc
-	res OVERHEAD, [hl]
+	res OVERHEAD_F, [hl]
 
 	ld hl, OBJECT_ACTION
 	add hl, bc
-	ld [hl], PERSON_ACTION_STEP
+	ld [hl], OBJECT_ACTION_STEP
 
 	call SpawnShadow
 
@@ -795,13 +785,13 @@ Movement_stairs_step_right:
 
 DiagonalStairsStep:
 	call InitStep
-	ld hl, OBJECT_31
+	ld hl, OBJECT_1F
 	add hl, bc
 	ld [hl], $0
 
 	ld hl, OBJECT_ACTION
 	add hl, bc
-	ld [hl], PERSON_ACTION_STEP
+	ld [hl], OBJECT_ACTION_STEP
 
 	ld hl, wCenteredObject
 	ldh a, [hMapObjectIndexBuffer]

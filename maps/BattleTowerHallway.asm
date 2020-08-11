@@ -20,7 +20,7 @@ BattleTowerHallway_MapScriptHeader:
 	def_bg_events
 
 	def_object_events
-	object_event 11,  2, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
+	object_event 11,  2, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, ObjectEvent, -1
 
 BattleTowerHallwayTrigger0:
 	priorityjump .ChooseBattleRoom

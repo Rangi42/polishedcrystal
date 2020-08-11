@@ -1,5 +1,5 @@
-ReplaceKrisSprite::
-	farjp _ReplaceKrisSprite
+UpdatePlayerSprite::
+	farjp _UpdatePlayerSprite
 
 LoadStandardOpaqueFont::
 	farjp _LoadStandardOpaqueFont

@@ -2,7 +2,7 @@ CheckTrainerBattle2::
 	ldh a, [hROMBank]
 	push af
 
-	call SwitchToMapScriptHeaderBank
+	call SwitchToMapScriptsBank
 	call CheckTrainerBattle
 
 	pop bc
@@ -15,7 +15,7 @@ CheckTrainerBattle::
 
 ; Skip the player object.
 	ld a, 1
-	ld de, wMapObjects + OBJECT_LENGTH
+	ld de, wMapObjects + MAPOBJECT_LENGTH
 
 .loop
 
@@ -36,9 +36,9 @@ CheckTrainerBattle::
 	add hl, de
 	ld a, [hl]
 	and $f
-	cp PERSONTYPE_TRAINER
+	cp OBJECTTYPE_TRAINER
 	jr z, .is_trainer
-	cp PERSONTYPE_GENERICTRAINER
+	cp OBJECTTYPE_GENERICTRAINER
 	jr nz, .next
 .is_trainer
 
@@ -82,7 +82,7 @@ CheckTrainerBattle::
 
 .next
 	pop de
-	ld hl, OBJECT_LENGTH
+	ld hl, MAPOBJECT_LENGTH
 	add hl, de
 	ld d, h
 	ld e, l
@@ -121,7 +121,7 @@ LoadTrainer_continue::
 	add hl, bc
 	ld a, [hl]
 	and $f
-	cp PERSONTYPE_GENERICTRAINER
+	cp OBJECTTYPE_GENERICTRAINER
 	push af
 	ld hl, MAPOBJECT_SCRIPT_POINTER
 	add hl, bc

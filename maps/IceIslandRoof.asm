@@ -11,7 +11,7 @@ IceIslandRoof_MapScriptHeader:
 	def_bg_events
 
 	def_object_events
-	object_event  5,  5, SPRITE_BLANCHE, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, IceIslandRoofBlancheScript, EVENT_SHAMOUTI_COAST_BLANCHE
+	object_event  5,  5, SPRITE_BLANCHE, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, IceIslandRoofBlancheScript, EVENT_SHAMOUTI_COAST_BLANCHE
 
 	object_const_def
 	const ICEISLANDROOF_BLANCHE

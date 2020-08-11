@@ -1,7 +1,7 @@
 SaveMenu:
 	ld c, 4
 	call SFXDelayFrames
-	call LoadStandardMenuDataHeader
+	call LoadStandardMenuHeader
 	farcall DisplaySaveInfoOnSave
 	call SpeechTextBox
 	call UpdateSprites

@@ -12,7 +12,7 @@ CeladonHotelRoom3_MapScriptHeader:
 	def_bg_events
 
 	def_object_events
-	object_event  2,  2, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonHotelRoom3GrampsText, -1
+	object_event  2,  2, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeladonHotelRoom3GrampsText, -1
 
 CeladonHotelRoom3GrampsText:
 	text "I've been staying"

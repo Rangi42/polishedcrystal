@@ -2136,7 +2136,7 @@ TextJump_WasSentToBillsPC:
 
 InitNickname:
 	push de
-	call LoadStandardMenuDataHeader
+	call LoadStandardMenuHeader
 	call DisableSpriteUpdates
 	pop de
 	push de

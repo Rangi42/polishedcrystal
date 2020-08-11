@@ -11,8 +11,8 @@ SilverCaveOutside_MapScriptHeader:
 	def_coord_events
 
 	def_bg_events
-	bg_event 17,  7, SIGNPOST_JUMPTEXT, MtSilverSignText
-	bg_event  9, 19, SIGNPOST_ITEM + FULL_RESTORE, EVENT_SILVER_CAVE_OUTSIDE_HIDDEN_FULL_RESTORE
+	bg_event 17,  7, BGEVENT_JUMPTEXT, MtSilverSignText
+	bg_event  9, 19, BGEVENT_ITEM + FULL_RESTORE, EVENT_SILVER_CAVE_OUTSIDE_HIDDEN_FULL_RESTORE
 
 	def_object_events
 	cuttree_event 31, 18, EVENT_SILVER_CAVE_OUTSIDE_CUT_TREE_1

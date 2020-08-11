@@ -39,7 +39,7 @@ DoPlayerMovement::
 	jr z, .Surf
 	cp PLAYER_SURF_PIKA
 	jr z, .Surf
-	cp PLAYER_SLIP
+	cp PLAYER_SKATE
 	jr z, .Ice
 
 .Normal:
@@ -795,7 +795,7 @@ endc
 	ld a, [wPlayerState]
 	cp PLAYER_BIKE
 	ret z
-	cp PLAYER_SLIP
+	cp PLAYER_SKATE
 	ret
 
 ; Routine by Victoria Lacroix
@@ -867,7 +867,7 @@ endc
 	push bc
 	ld a, PLAYER_NORMAL
 	ld [wPlayerState], a
-	call ReplaceKrisSprite ; UpdateSprites
+	call UpdatePlayerSprite ; UpdateSprites
 	pop bc
 	ret
 
@@ -881,7 +881,7 @@ CheckStandingOnIce::
 	cp COLL_ICE
 	jr z, .ice
 	ld a, [wPlayerState]
-	cp PLAYER_SLIP
+	cp PLAYER_SKATE
 	jr nz, .not_ice
 
 .ice

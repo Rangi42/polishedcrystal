@@ -1,30 +1,30 @@
-Pointers445f:
-	dw SetFacingStanding,              SetFacingStanding          ; PERSON_ACTION_00
-	dw SetFacingStandAction,           SetFacingCurrent           ; PERSON_ACTION_STAND
-	dw SetFacingStepAction,            SetFacingCurrent           ; PERSON_ACTION_STEP
-	dw SetFacingBumpAction,            SetFacingCurrent           ; PERSON_ACTION_BUMP
-	dw SetFacingCounterclockwiseSpin,  SetFacingCurrent           ; PERSON_ACTION_SPIN
-	dw SetFacingCounterclockwiseSpin2, SetFacingStanding          ; PERSON_ACTION_SPIN_FLICKER
-	dw SetFacingFish,                  SetFacingFish              ; PERSON_ACTION_FISHING
-	dw SetFacingShadow,                SetFacingStanding          ; PERSON_ACTION_SHADOW
-	dw SetFacingEmote,                 SetFacingEmote             ; PERSON_ACTION_EMOTE
-	dw SetFacingBigDollSym,            SetFacingBigDollSym        ; PERSON_ACTION_BIG_SNORLAX
-	dw SetFacingBounce,                SetFacingFreezeBounce      ; PERSON_ACTION_BOUNCE
-	dw SetFacingWeirdTree,             SetFacingCurrent           ; PERSON_ACTION_WEIRD_TREE
-	dw SetFacingBigDoll,               SetFacingBigDoll           ; PERSON_ACTION_BIG_DOLL
-	dw SetFacingBoulderDust,           SetFacingStanding          ; PERSON_ACTION_BOULDER_DUST
-	dw SetFacingGrassShake,            SetFacingStanding          ; PERSON_ACTION_GRASS_SHAKE
-	dw SetFacingPuddleSplash,          SetFacingStanding          ; PERSON_ACTION_PUDDLE_SPLASH
-	dw SetFacingCutTree,               SetFacingCutTree           ; PERSON_ACTION_CUT_TREE
-	dw SetFacingSkyfall,               SetFacingCurrent           ; PERSON_ACTION_SKYFALL
-	dw SetFacingFruit,                 SetFacingFruit             ; PERSON_ACTION_FRUIT
-	dw SetFacingBigGyarados,           SetFacingFreezeBigGyarados ; PERSON_ACTION_BIG_GYARADOS
-	dw SetFacingStandFlip,             SetFacingStandFlip         ; PERSON_ACTION_STAND_FLIP
-	dw SetFacingPokecomNews,           SetFacingPokecomNews       ; PERSON_ACTION_POKECOM_NEWS
-	dw SetFacingArchTree,              SetFacingArchTree          ; PERSON_ACTION_ARCH_TREE
-	dw SetFacingRun,                   SetFacingCurrent           ; PERSON_ACTION_RUN
-	dw SetFacingSailboatTop,           SetFacingSailboatTop       ; PERSON_ACTION_SAILBOAT_TOP
-	dw SetFacingSailboatBottom,        SetFacingSailboatBottom    ; PERSON_ACTION_SAILBOAT_BOTTOM
+ObjectActionPairPointers:
+	dw SetFacingStanding,              SetFacingStanding          ; OBJECT_ACTION_00
+	dw SetFacingStandAction,           SetFacingCurrent           ; OBJECT_ACTION_STAND
+	dw SetFacingStepAction,            SetFacingCurrent           ; OBJECT_ACTION_STEP
+	dw SetFacingBumpAction,            SetFacingCurrent           ; OBJECT_ACTION_BUMP
+	dw SetFacingCounterclockwiseSpin,  SetFacingCurrent           ; OBJECT_ACTION_SPIN
+	dw SetFacingCounterclockwiseSpin2, SetFacingStanding          ; OBJECT_ACTION_SPIN_FLICKER
+	dw SetFacingFish,                  SetFacingFish              ; OBJECT_ACTION_FISHING
+	dw SetFacingShadow,                SetFacingStanding          ; OBJECT_ACTION_SHADOW
+	dw SetFacingEmote,                 SetFacingEmote             ; OBJECT_ACTION_EMOTE
+	dw SetFacingBigDollSym,            SetFacingBigDollSym        ; OBJECT_ACTION_BIG_SNORLAX
+	dw SetFacingBounce,                SetFacingFreezeBounce      ; OBJECT_ACTION_BOUNCE
+	dw SetFacingWeirdTree,             SetFacingCurrent           ; OBJECT_ACTION_WEIRD_TREE
+	dw SetFacingBigDoll,               SetFacingBigDoll           ; OBJECT_ACTION_BIG_DOLL
+	dw SetFacingBoulderDust,           SetFacingStanding          ; OBJECT_ACTION_BOULDER_DUST
+	dw SetFacingGrassShake,            SetFacingStanding          ; OBJECT_ACTION_GRASS_SHAKE
+	dw SetFacingPuddleSplash,          SetFacingStanding          ; OBJECT_ACTION_PUDDLE_SPLASH
+	dw SetFacingCutTree,               SetFacingCutTree           ; OBJECT_ACTION_CUT_TREE
+	dw SetFacingSkyfall,               SetFacingCurrent           ; OBJECT_ACTION_SKYFALL
+	dw SetFacingFruit,                 SetFacingFruit             ; OBJECT_ACTION_FRUIT
+	dw SetFacingBigGyarados,           SetFacingFreezeBigGyarados ; OBJECT_ACTION_BIG_GYARADOS
+	dw SetFacingStandFlip,             SetFacingStandFlip         ; OBJECT_ACTION_STAND_FLIP
+	dw SetFacingPokecomNews,           SetFacingPokecomNews       ; OBJECT_ACTION_POKECOM_NEWS
+	dw SetFacingArchTree,              SetFacingArchTree          ; OBJECT_ACTION_ARCH_TREE
+	dw SetFacingRun,                   SetFacingCurrent           ; OBJECT_ACTION_RUN
+	dw SetFacingSailboatTop,           SetFacingSailboatTop       ; OBJECT_ACTION_SAILBOAT_TOP
+	dw SetFacingSailboatBottom,        SetFacingSailboatBottom    ; OBJECT_ACTION_SAILBOAT_BOTTOM
 
 SetFacingStanding:
 	ld a, STANDING
@@ -104,7 +104,7 @@ SetFacingStepAction:
 SetFacingBumpAction:
 	ld hl, OBJECT_FLAGS1
 	add hl, bc
-	bit SLIDING, [hl]
+	bit SLIDING_F, [hl]
 	jr nz, SetFacingCurrent
 
 	ld hl, OBJECT_STEP_FRAME
@@ -126,7 +126,7 @@ SetFacingBumpAction:
 SetFacingSkyfall:
 	ld hl, OBJECT_FLAGS1
 	add hl, bc
-	bit SLIDING, [hl]
+	bit SLIDING_F, [hl]
 	jr nz, SetFacingCurrent
 
 	ld hl, OBJECT_STEP_FRAME
@@ -295,7 +295,7 @@ SetFacingPuddleSplash:
 SetFacingRun:
 	ld hl, OBJECT_FLAGS1
 	add hl, bc
-	bit SLIDING, [hl]
+	bit SLIDING_F, [hl]
 	jp nz, SetFacingCurrent
 
 	ld hl, OBJECT_STEP_FRAME

@@ -26,31 +26,31 @@ ElmsLab_MapScriptHeader:
 	coord_event  4,  6, 6, LyraBattleScript
 
 	def_bg_events
-	bg_event  2,  1, SIGNPOST_READ, ElmsLabHealingMachine
-	bg_event  6,  1, SIGNPOST_JUMPSTD, difficultbookshelf
-	bg_event  7,  1, SIGNPOST_JUMPSTD, difficultbookshelf
-	bg_event  8,  1, SIGNPOST_JUMPSTD, difficultbookshelf
-	bg_event  9,  1, SIGNPOST_JUMPSTD, difficultbookshelf
-	bg_event  0,  7, SIGNPOST_JUMPTEXT, ElmsLabTravelTip1Text
-	bg_event  1,  7, SIGNPOST_JUMPTEXT, ElmsLabTravelTip2Text
-	bg_event  2,  7, SIGNPOST_JUMPTEXT, ElmsLabTravelTip3Text
-	bg_event  3,  7, SIGNPOST_JUMPTEXT, ElmsLabTravelTip4Text
-	bg_event  6,  7, SIGNPOST_JUMPSTD, difficultbookshelf
-	bg_event  7,  7, SIGNPOST_JUMPSTD, difficultbookshelf
-	bg_event  8,  7, SIGNPOST_JUMPSTD, difficultbookshelf
-	bg_event  9,  7, SIGNPOST_JUMPSTD, difficultbookshelf
-	bg_event  9,  3, SIGNPOST_JUMPTEXT, ElmsLabTrashcanText
-	bg_event  5,  0, SIGNPOST_READ, ElmsLabWindow
-	bg_event  3,  5, SIGNPOST_DOWN, ElmsLabPC
+	bg_event  2,  1, BGEVENT_READ, ElmsLabHealingMachine
+	bg_event  6,  1, BGEVENT_JUMPSTD, difficultbookshelf
+	bg_event  7,  1, BGEVENT_JUMPSTD, difficultbookshelf
+	bg_event  8,  1, BGEVENT_JUMPSTD, difficultbookshelf
+	bg_event  9,  1, BGEVENT_JUMPSTD, difficultbookshelf
+	bg_event  0,  7, BGEVENT_JUMPTEXT, ElmsLabTravelTip1Text
+	bg_event  1,  7, BGEVENT_JUMPTEXT, ElmsLabTravelTip2Text
+	bg_event  2,  7, BGEVENT_JUMPTEXT, ElmsLabTravelTip3Text
+	bg_event  3,  7, BGEVENT_JUMPTEXT, ElmsLabTravelTip4Text
+	bg_event  6,  7, BGEVENT_JUMPSTD, difficultbookshelf
+	bg_event  7,  7, BGEVENT_JUMPSTD, difficultbookshelf
+	bg_event  8,  7, BGEVENT_JUMPSTD, difficultbookshelf
+	bg_event  9,  7, BGEVENT_JUMPSTD, difficultbookshelf
+	bg_event  9,  3, BGEVENT_JUMPTEXT, ElmsLabTrashcanText
+	bg_event  5,  0, BGEVENT_READ, ElmsLabWindow
+	bg_event  3,  5, BGEVENT_DOWN, ElmsLabPC
 
 	def_object_events
-	object_event  5,  2, SPRITE_ELM, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ProfElmScript, -1
-	object_event  2,  9, SPRITE_SCIENTIST, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_SCRIPT, 0, ElmsAideScript, EVENT_ELMS_AIDE_IN_LAB
-	object_event  6,  3, SPRITE_BALL_CUT_FRUIT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, CyndaquilPokeBallScript, EVENT_CYNDAQUIL_POKEBALL_IN_ELMS_LAB
-	object_event  7,  3, SPRITE_BALL_CUT_FRUIT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, TotodilePokeBallScript, EVENT_TOTODILE_POKEBALL_IN_ELMS_LAB
-	object_event  8,  3, SPRITE_BALL_CUT_FRUIT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_SCRIPT, 0, ChikoritaPokeBallScript, EVENT_CHIKORITA_POKEBALL_IN_ELMS_LAB
-	object_event  5,  3, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CopScript, EVENT_COP_IN_ELMS_LAB
-	object_event  5, 11, SPRITE_LYRA, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ElmsLabLyraScript, EVENT_LYRA_IN_ELMS_LAB
+	object_event  5,  2, SPRITE_ELM, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ProfElmScript, -1
+	object_event  2,  9, SPRITE_SCIENTIST, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, ElmsAideScript, EVENT_ELMS_AIDE_IN_LAB
+	object_event  6,  3, SPRITE_BALL_CUT_FRUIT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, CyndaquilPokeBallScript, EVENT_CYNDAQUIL_POKEBALL_IN_ELMS_LAB
+	object_event  7,  3, SPRITE_BALL_CUT_FRUIT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, TotodilePokeBallScript, EVENT_TOTODILE_POKEBALL_IN_ELMS_LAB
+	object_event  8,  3, SPRITE_BALL_CUT_FRUIT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, ChikoritaPokeBallScript, EVENT_CHIKORITA_POKEBALL_IN_ELMS_LAB
+	object_event  5,  3, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, CopScript, EVENT_COP_IN_ELMS_LAB
+	object_event  5, 11, SPRITE_LYRA, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ElmsLabLyraScript, EVENT_LYRA_IN_ELMS_LAB
 
 	object_const_def
 	const ELMSLAB_ELM

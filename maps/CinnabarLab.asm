@@ -10,25 +10,25 @@ CinnabarLab_MapScriptHeader:
 	coord_event  2,  6, 1, CinnabarLabCelebiEventScript
 
 	def_bg_events
-	bg_event  8, 14, SIGNPOST_JUMPTEXT, CinnabarLabRoom1SignText
-	bg_event  9, 14, SIGNPOST_JUMPTEXT, CinnabarLabLockedDoorText
-	bg_event 16, 14, SIGNPOST_JUMPTEXT, CinnabarLabRoom2SignText
-	bg_event 17, 14, SIGNPOST_JUMPTEXT, CinnabarLabLockedDoorText
-	bg_event 24, 14, SIGNPOST_JUMPTEXT, CinnabarLabRoom3SignText
-	bg_event 25, 14, SIGNPOST_JUMPTEXT, CinnabarLabLockedDoorText
-	bg_event  3,  6, SIGNPOST_JUMPTEXT, CinnabarLabRoom4SignText
-	bg_event  3,  6, SIGNPOST_ITEM + BERSERK_GENE, EVENT_CINNABAR_LAB_HIDDEN_BERSERK_GENE
+	bg_event  8, 14, BGEVENT_JUMPTEXT, CinnabarLabRoom1SignText
+	bg_event  9, 14, BGEVENT_JUMPTEXT, CinnabarLabLockedDoorText
+	bg_event 16, 14, BGEVENT_JUMPTEXT, CinnabarLabRoom2SignText
+	bg_event 17, 14, BGEVENT_JUMPTEXT, CinnabarLabLockedDoorText
+	bg_event 24, 14, BGEVENT_JUMPTEXT, CinnabarLabRoom3SignText
+	bg_event 25, 14, BGEVENT_JUMPTEXT, CinnabarLabLockedDoorText
+	bg_event  3,  6, BGEVENT_JUMPTEXT, CinnabarLabRoom4SignText
+	bg_event  3,  6, BGEVENT_ITEM + BERSERK_GENE, EVENT_CINNABAR_LAB_HIDDEN_BERSERK_GENE
 
 	def_object_events
-	object_event 15,  6, SPRITE_GIOVANNI, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
-	object_event 15,  4, SPRITE_ARMORED_MEWTWO, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
-	object_event 11,  6, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
-	object_event 20,  5, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CINNABAR_LAB_SCIENTIST1
-	object_event 11,  4, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CINNABAR_LAB_SCIENTIST2
-	object_event 15,  7, SPRITE_MON_ICON, SPRITEMOVEDATA_DOLL, 0, MEWTWO, -1, -1, PAL_NPC_PURPLE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CINNABAR_LAB_MEWTWO
-	object_event 14,  8, SPRITE_CELEBI, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CINNABAR_LAB_CELEBI
-	object_event 15,  8, SPRITE_CHRIS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CINNABAR_LAB_CHRIS
-	object_event 15,  8, SPRITE_KRIS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CINNABAR_LAB_KRIS
+	object_event 15,  6, SPRITE_GIOVANNI, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, -1
+	object_event 15,  4, SPRITE_ARMORED_MEWTWO, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, -1
+	object_event 11,  6, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, -1
+	object_event 20,  5, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_CINNABAR_LAB_SCIENTIST1
+	object_event 11,  4, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_CINNABAR_LAB_SCIENTIST2
+	object_event 15,  7, SPRITE_MON_ICON, SPRITEMOVEDATA_STILL, 0, MEWTWO, -1, -1, PAL_NPC_PURPLE, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_CINNABAR_LAB_MEWTWO
+	object_event 14,  8, SPRITE_CELEBI, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_CINNABAR_LAB_CELEBI
+	object_event 15,  8, SPRITE_CHRIS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_CINNABAR_LAB_CHRIS
+	object_event 15,  8, SPRITE_KRIS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_CINNABAR_LAB_KRIS
 
 	object_const_def
 	const CINNABARLAB_GIOVANNI
@@ -126,7 +126,7 @@ CinnabarLabCelebiEventScript:
 .Female
 	appear CINNABARLAB_KRIS
 .Continue
-	applyonemovement PLAYER, hide_person
+	applyonemovement PLAYER, hide_object
 	waitsfx
 	showemote EMOTE_SHOCK, CINNABARLAB_GIOVANNI, 10
 	cry MEWTWO
@@ -303,7 +303,7 @@ CinnabarLabPan4MovementData:
 	step_down
 	step_down
 	turn_head_up
-	show_person
+	show_object
 	step_end
 
 CinnabarLabCelebiFloatsMovementData:

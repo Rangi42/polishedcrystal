@@ -365,7 +365,7 @@ PopulateDecoCategoryMenu:
 	ld d, 0
 	add hl, de
 	ld [hl], -1
-	call LoadStandardMenuDataHeader
+	call LoadStandardMenuHeader
 	ld hl, .ScrollingMenuDataHeader
 	call CopyMenuDataHeader
 	xor a

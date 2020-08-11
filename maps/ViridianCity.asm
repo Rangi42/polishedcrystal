@@ -17,19 +17,19 @@ ViridianCity_MapScriptHeader:
 	def_coord_events
 
 	def_bg_events
-	bg_event 17, 17, SIGNPOST_JUMPTEXT, ViridianCitySignText
-	bg_event 27,  7, SIGNPOST_JUMPTEXT, ViridianGymSignText
-	bg_event 19,  1, SIGNPOST_JUMPTEXT, ViridianCityTrainerTips1Text
-	bg_event 21, 29, SIGNPOST_JUMPTEXT, ViridianCityTrainerTips2Text
-	bg_event 21, 15, SIGNPOST_JUMPTEXT, TrainerHouseSignText
+	bg_event 17, 17, BGEVENT_JUMPTEXT, ViridianCitySignText
+	bg_event 27,  7, BGEVENT_JUMPTEXT, ViridianGymSignText
+	bg_event 19,  1, BGEVENT_JUMPTEXT, ViridianCityTrainerTips1Text
+	bg_event 21, 29, BGEVENT_JUMPTEXT, ViridianCityTrainerTips2Text
+	bg_event 21, 15, BGEVENT_JUMPTEXT, TrainerHouseSignText
 
 	def_object_events
-	object_event 18,  5, SPRITE_GRAMPS, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GrampsScript_0x1a9a4c, -1
-	object_event 32,  8, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, GrampsScript_0x1a9a61, EVENT_BLUE_IN_CINNABAR
-	object_event 30,  8, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, GrampsScript_0x1a9a61, EVENT_VIRIDIAN_GYM_BLUE
-	object_event  6, 23, SPRITE_FAT_GUY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, FisherScript_0x1a9a75, -1
-	object_event 17, 21, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_WANDER, 3, 3, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1a9daa, -1
-	object_event 31, 23, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_WANDER, 1, 2, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, ViridianCityYoungsterText, -1
+	object_event 18,  5, SPRITE_GRAMPS, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, GrampsScript_0x1a9a4c, -1
+	object_event 32,  8, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, GrampsScript_0x1a9a61, EVENT_BLUE_IN_CINNABAR
+	object_event 30,  8, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, GrampsScript_0x1a9a61, EVENT_VIRIDIAN_GYM_BLUE
+	object_event  6, 23, SPRITE_FAT_GUY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, FisherScript_0x1a9a75, -1
+	object_event 17, 21, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_WANDER, 3, 3, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1a9daa, -1
+	object_event 31, 23, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_WANDER, 1, 2, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, ViridianCityYoungsterText, -1
 	cuttree_event 14,  4, EVENT_VIRIDIAN_CITY_CUT_TREE_1
 	cuttree_event  8, 22, EVENT_VIRIDIAN_CITY_CUT_TREE_2
 

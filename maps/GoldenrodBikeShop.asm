@@ -10,19 +10,19 @@ GoldenrodBikeShop_MapScriptHeader:
 	def_coord_events
 
 	def_bg_events
-	bg_event  1,  2, SIGNPOST_JUMPTEXT, UnknownText_0x548ed
-	bg_event  0,  3, SIGNPOST_JUMPTEXT, UnknownText_0x548ed
-	bg_event  1,  3, SIGNPOST_JUMPTEXT, UnknownText_0x548ed
-	bg_event  0,  5, SIGNPOST_JUMPTEXT, UnknownText_0x548ed
-	bg_event  1,  5, SIGNPOST_JUMPTEXT, UnknownText_0x548ed
-	bg_event  0,  6, SIGNPOST_JUMPTEXT, UnknownText_0x548ed
-	bg_event  1,  6, SIGNPOST_JUMPTEXT, UnknownText_0x548ed
-	bg_event  6,  6, SIGNPOST_JUMPTEXT, UnknownText_0x548ed
-	bg_event  7,  6, SIGNPOST_JUMPTEXT, UnknownText_0x548ed
-	bg_event  3,  0, SIGNPOST_JUMPTEXT, UnknownText_0x548c0
+	bg_event  1,  2, BGEVENT_JUMPTEXT, UnknownText_0x548ed
+	bg_event  0,  3, BGEVENT_JUMPTEXT, UnknownText_0x548ed
+	bg_event  1,  3, BGEVENT_JUMPTEXT, UnknownText_0x548ed
+	bg_event  0,  5, BGEVENT_JUMPTEXT, UnknownText_0x548ed
+	bg_event  1,  5, BGEVENT_JUMPTEXT, UnknownText_0x548ed
+	bg_event  0,  6, BGEVENT_JUMPTEXT, UnknownText_0x548ed
+	bg_event  1,  6, BGEVENT_JUMPTEXT, UnknownText_0x548ed
+	bg_event  6,  6, BGEVENT_JUMPTEXT, UnknownText_0x548ed
+	bg_event  7,  6, BGEVENT_JUMPTEXT, UnknownText_0x548ed
+	bg_event  3,  0, BGEVENT_JUMPTEXT, UnknownText_0x548c0
 
 	def_object_events
-	object_event  7,  2, SPRITE_CLERK, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, ClerkScript_0x54750, -1
+	object_event  7,  2, SPRITE_CLERK, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, ClerkScript_0x54750, -1
 
 ClerkScript_0x54750:
 	checkevent EVENT_GOT_BICYCLE

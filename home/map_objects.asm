@@ -109,7 +109,7 @@ GetTileCollision::
 GetMapObject::
 ; Return the location of map object a in bc.
 	ld hl, wMapObjects
-	ld bc, OBJECT_LENGTH
+	ld bc, MAPOBJECT_LENGTH
 	rst AddNTimes
 	ld b, h
 	ld c, l
@@ -251,7 +251,7 @@ CopyPlayerObjectTemplate::
 	ld [de], a
 	inc de
 	pop hl
-	ld bc, OBJECT_LENGTH - 1
+	ld bc, MAPOBJECT_LENGTH - 1
 	rst CopyBytes
 	ret
 
@@ -289,7 +289,7 @@ FindFirstEmptyObjectStruct::
 	push bc
 	push de
 	ld hl, wObjectStructs
-	ld de, OBJECT_STRUCT_LENGTH
+	ld de, OBJECT_LENGTH
 	ld c, NUM_OBJECT_STRUCTS
 .loop
 	ld a, [hl]
@@ -323,7 +323,7 @@ GetSpriteMovementFunction::
 	ld hl, SpriteMovementData
 	ld e, a
 	ld d, 0
-rept SPRITEMOVEDATA_FIELDS
+rept NUM_SPRITEMOVEDATA_FIELDS
 	add hl, de
 endr
 	ld a, [hl]
@@ -335,7 +335,7 @@ GetInitialFacing::
 	ld e, a
 	ld d, 0
 	ld hl, SpriteMovementData + 1 ; init facing
-rept SPRITEMOVEDATA_FIELDS
+rept NUM_SPRITEMOVEDATA_FIELDS
 	add hl, de
 endr
 	ld a, BANK(SpriteMovementData)
@@ -373,7 +373,7 @@ CopySpriteMovementData::
 	ld e, a
 	ld d, 0
 	ld hl, SpriteMovementData + 1 ; init facing
-rept SPRITEMOVEDATA_FIELDS
+rept NUM_SPRITEMOVEDATA_FIELDS
 	add hl, de
 endr
 	ld b, h
@@ -448,7 +448,7 @@ UpdateSprites::
 	farjp _UpdateSprites
 
 GetObjectStruct::
-	ld bc, OBJECT_STRUCT_LENGTH
+	ld bc, OBJECT_LENGTH
 	ld hl, wObjectStructs
 	rst AddNTimes
 	ld b, h

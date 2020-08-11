@@ -436,6 +436,7 @@ wWestMapConnection:: map_connection_struct wWest
 wEastMapConnection:: map_connection_struct wEast
 
 wTileset::
+wTilesetBank::
 wTilesetGFX0Bank:: db
 wTilesetGFX0Address:: dw
 wTilesetGFX1Bank:: db

@@ -1,4 +1,4 @@
-_ReplaceKrisSprite::
+_UpdatePlayerSprite::
 	call GetPlayerSprite
 	ld a, [wPlayerSprite]
 	ldh [hUsedSpriteIndex], a
@@ -61,7 +61,7 @@ GetPlayerSprite:
 MapCallbackSprites_LoadUsedSpritesGFX:
 	ld a, MAPCALLBACK_SPRITES
 	call RunMapCallback
-ReloadVisibleSprites::
+RefreshSprites::
 	push hl
 	push de
 	push bc
@@ -76,7 +76,7 @@ ReloadSpriteIndex::
 ; Reloads sprites using hUsedSpriteIndex.
 ; Used to reload variable sprites
 	ld hl, wObjectStructs
-	ld de, OBJECT_STRUCT_LENGTH
+	ld de, OBJECT_LENGTH
 	ldh a, [hUsedSpriteIndex]
 	ld b, a
 	xor a

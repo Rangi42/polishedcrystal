@@ -1,13 +1,31 @@
-; permissions
+GROUP_N_A  EQU -1
+MAP_N_A    EQU -1
+GROUP_NONE EQU 0
+MAP_NONE   EQU 0
+
+; map struct members (see data/maps/maps.asm)
+	const_def
+	const MAP_MAPATTRIBUTES_BANK ; 0
+	const MAP_TILESET            ; 1
+	const MAP_ENVIRONMENT        ; 2
+	const MAP_MAPATTRIBUTES      ; 3
+	const MAP_MAPATTRIBUTES_HI   ; 4
+	const MAP_LOCATION           ; 5
+	const MAP_MUSIC              ; 6
+	const MAP_PALETTE            ; 7
+	const MAP_FISHGROUP          ; 8
+
+; map environments (wEnvironment)
 	const_def 1
 	const TOWN
 	const ROUTE
 	const INDOOR
 	const CAVE
-	const PERM_5
+	const ENVIRONMENT_5
 	const GATE
 	const DUNGEON
 
+; map palettes (wEnvironment)
 	const_def
 	const PALETTE_AUTO
 	const PALETTE_DAY
@@ -15,6 +33,7 @@
 	const PALETTE_MORN
 	const PALETTE_DARK
 
+; FishGroup indexes (see data/wild/fish.asm)
 	const_def
 	const FISHGROUP_NONE
 	const FISHGROUP_SHORE
@@ -31,13 +50,12 @@
 	const FISHGROUP_REMORAID
 	const FISHGROUP_QWILFISH_NO_SWARM
 
-
+; wMapConnections
 	const_def
 	shift_const EAST
 	shift_const WEST
 	shift_const SOUTH
 	shift_const NORTH
-
 
 ; Overcast indexes
 	const_def
@@ -46,11 +64,11 @@
 	const LAKE_OF_RAGE_OVERCAST
 	const STORMY_BEACH_OVERCAST
 
-
 ; see data/maps/spawn_points.asm
 const_value = -1
 	const SPAWN_N_A
 	const SPAWN_HOME ; $00
+; kanto
 	const SPAWN_PALLET
 	const SPAWN_VIRIDIAN
 	const SPAWN_PEWTER
@@ -65,6 +83,7 @@ const_value = -1
 	const SPAWN_FUCHSIA
 	const SPAWN_CINNABAR
 	const SPAWN_INDIGO
+; johto
 	const SPAWN_NEW_BARK
 	const SPAWN_CHERRYGROVE ; $10
 	const SPAWN_VIOLET
@@ -84,6 +103,7 @@ NUM_SPAWNS EQU const_value
 
 ; see data/maps/flypoints.asm
 	const_def
+; johto
 	const FLY_NEW_BARK
 	const FLY_CHERRYGROVE
 	const FLY_VIOLET
@@ -98,6 +118,7 @@ NUM_SPAWNS EQU const_value
 	const FLY_LAKE_OF_RAGE
 	const FLY_BLACKTHORN
 	const FLY_MT_SILVER
+; kanto
 KANTO_FLYPOINT EQU const_value
 	const FLY_PALLET
 	const FLY_VIRIDIAN

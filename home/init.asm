@@ -1,6 +1,6 @@
 SoftReset::
 	di
-	call MapSetup_Sound_Off
+	call InitSound
 	xor a
 	ldh [hMapAnims], a
 	call ClearPalettes
@@ -188,7 +188,7 @@ Init::
 
 	call DelayFrame
 
-	call MapSetup_Sound_Off
+	call InitSound
 	xor a
 	ld [wMapMusic], a
 	jp GameInit

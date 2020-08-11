@@ -9,10 +9,10 @@ RedsHouse2F_MapScriptHeader:
 	def_coord_events
 
 	def_bg_events
-	bg_event  0,  1, SIGNPOST_JUMPTEXT, RedsHouse2FPCText
-	bg_event  3,  5, SIGNPOST_JUMPTEXT, RedsHouse2FSNESText
-	bg_event  4,  1, SIGNPOST_READ, PokemonJournalProfOakScript
-	bg_event  5,  1, SIGNPOST_READ, PokemonJournalProfOakScript
+	bg_event  0,  1, BGEVENT_JUMPTEXT, RedsHouse2FPCText
+	bg_event  3,  5, BGEVENT_JUMPTEXT, RedsHouse2FSNESText
+	bg_event  4,  1, BGEVENT_READ, PokemonJournalProfOakScript
+	bg_event  5,  1, BGEVENT_READ, PokemonJournalProfOakScript
 
 	def_object_events
 

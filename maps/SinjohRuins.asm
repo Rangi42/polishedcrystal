@@ -10,7 +10,7 @@ SinjohRuins_MapScriptHeader:
 	def_coord_events
 
 	def_bg_events
-	bg_event  7,  8, SIGNPOST_JUMPTEXT, SinjohRuinsSignpostText
+	bg_event  7,  8, BGEVENT_JUMPTEXT, SinjohRuinsSignpostText
 
 	def_object_events
 

@@ -177,7 +177,7 @@ endr
 	ld a, [wEnvironment]
 	cp CAVE
 	jr z, .okay2
-	cp PERM_5
+	cp ENVIRONMENT_5
 	jr z, .okay2
 	cp DUNGEON
 	jr z, .okay2
@@ -389,7 +389,7 @@ endr
 	inc de
 .loop1
 	ld a, [hl]
-	and $ff ^ OAM_PALETTE
+	and $ff ^ PALETTE_MASK
 	or PAL_BG_TEXT ; black
 	ld [hl], a
 	ld a, [wcf65]
@@ -506,11 +506,11 @@ StartTrainerBattle_SpeckleToBlack:
 ; If the tile has already been blacked out,
 ; sample a new tile
 	ld a, [hl]
-	and OAM_PALETTE
+	and PALETTE_MASK
 	cp PAL_BG_TEXT ; black
 	jr z, .y_loop
 	ld a, [hl]
-	and $ff ^ OAM_PALETTE
+	and $ff ^ PALETTE_MASK
 	or PAL_BG_TEXT ; black
 	ld [hl], a
 	ret
@@ -560,7 +560,7 @@ StartTrainerBattle_LoadPokeBallGraphics:
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
 .loop1
 	ld a, [hl]
-	and $ff ^ OAM_PALETTE
+	and $ff ^ PALETTE_MASK
 	or PAL_BG_RED ; flashing overworld
 	ld [hli], a
 	dec bc
@@ -890,7 +890,7 @@ StartTrainerBattle_ZoomToBlack:
 	push hl
 .col
 	ld a, [hl]
-	and $ff ^ OAM_PALETTE
+	and $ff ^ PALETTE_MASK
 	or PAL_BG_TEXT ; black
 	ld [hli], a
 	dec c

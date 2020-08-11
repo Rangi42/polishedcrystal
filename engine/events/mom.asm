@@ -87,7 +87,7 @@ Special_BankOfMom:
 .AccessBankOfMom:
 	ld hl, UnknownText_0x1665d
 	call PrintText
-	call LoadStandardMenuDataHeader
+	call LoadStandardMenuHeader
 	ld hl, MenuDataHeader_0x166b5
 	call CopyMenuDataHeader
 	call VerticalMenu
@@ -130,7 +130,7 @@ Special_BankOfMom:
 	ld [hl], a
 	ld a, $6
 	ld [wcf64], a
-	call LoadStandardMenuDataHeader
+	call LoadStandardMenuHeader
 	call Mom_SetUpDepositMenu
 	call Mom_Wait10Frames
 	call Mom_WithdrawDepositMenuJoypad
@@ -194,7 +194,7 @@ Special_BankOfMom:
 	ld [hl], a
 	ld a, $6
 	ld [wcf64], a
-	call LoadStandardMenuDataHeader
+	call LoadStandardMenuHeader
 	call Mom_SetUpWithdrawMenu
 	call Mom_Wait10Frames
 	call Mom_WithdrawDepositMenuJoypad

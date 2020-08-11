@@ -15,12 +15,12 @@ RuinsOfAlphHoOhChamber_MapScriptHeader:
 	def_coord_events
 
 	def_bg_events
-	bg_event  2,  3, SIGNPOST_JUMPTEXT, RuinsofAlphStatueText
-	bg_event  5,  3, SIGNPOST_JUMPTEXT, RuinsofAlphStatueText
-	bg_event  3,  2, SIGNPOST_UP, MapRuinsofAlphHoOhChamberSignpost2Script
-	bg_event  4,  2, SIGNPOST_UP, MapRuinsofAlphHoOhChamberSignpost3Script
-	bg_event  3,  0, SIGNPOST_UP, MapRuinsofAlphHoOhChamberSignpost4Script
-	bg_event  4,  0, SIGNPOST_UP, MapRuinsofAlphHoOhChamberSignpost5Script
+	bg_event  2,  3, BGEVENT_JUMPTEXT, RuinsofAlphStatueText
+	bg_event  5,  3, BGEVENT_JUMPTEXT, RuinsofAlphStatueText
+	bg_event  3,  2, BGEVENT_UP, MapRuinsofAlphHoOhChamberSignpost2Script
+	bg_event  4,  2, BGEVENT_UP, MapRuinsofAlphHoOhChamberSignpost3Script
+	bg_event  3,  0, BGEVENT_UP, MapRuinsofAlphHoOhChamberSignpost4Script
+	bg_event  4,  0, BGEVENT_UP, MapRuinsofAlphHoOhChamberSignpost5Script
 
 	def_object_events
 
