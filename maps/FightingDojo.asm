@@ -71,7 +71,7 @@ ENDM
 	ifequal SATURDAY, .Saturday
 
 .Sunday
-	checktime 1 << NITE
+	checktime (1 << EVE) | (1 << NITE)
 	iftrue .SundayNight
 .SundayMorningAndDay
 	rematch_left REMATCH_RED_1, SPRITE_BIG_DOLL, SPRITE_JASMINE
@@ -82,7 +82,7 @@ ENDM
 	return
 
 .Monday
-	checktime 1 << NITE
+	checktime (1 << EVE) | (1 << NITE)
 	iftrue .MondayNight
 .MondayMorningAndDay
 	rematch_left REMATCH_BLUE_2, SPRITE_COPYCAT, SPRITE_FALKNER
@@ -96,7 +96,7 @@ ENDM
 	return
 
 .Tuesday
-	checktime 1 << NITE
+	checktime (1 << EVE) | (1 << NITE)
 	iftrue .TuesdayNight
 .TuesdayMorningAndDay
 	rematch_left REMATCH_BROWN_2, SPRITE_COPYCAT, SPRITE_PRYCE
@@ -112,7 +112,7 @@ ENDM
 .Wednesday
 	checktime 1 << MORN
 	iftrue .WednesdayMorning
-	checktime 1 << NITE
+	checktime (1 << EVE) | (1 << NITE)
 	iftrue .WednesdayNight
 .WednesdayDay
 	rematch_left REMATCH_BROWN_2, SPRITE_COPYCAT, SPRITE_BROCK
@@ -130,7 +130,7 @@ ENDM
 .Thursday
 	checktime 1 << MORN
 	iftrue .ThursdayMorning
-	checktime 1 << NITE
+	checktime (1 << EVE) | (1 << NITE)
 	iftrue .ThursdayNight
 .ThursdayDay
 	checkevent EVENT_BEAT_PALMER
@@ -148,7 +148,7 @@ ENDM
 .Friday
 	checktime 1 << MORN
 	iftrue .FridayMorning
-	checktime 1 << NITE
+	checktime (1 << EVE) | (1 << NITE)
 	iftrue .FridayNight
 .FridayDay
 	checkevent EVENT_BEAT_YELLOW
@@ -166,7 +166,7 @@ ENDM
 .Saturday
 	checktime 1 << MORN
 	iftrue .SaturdayMorning
-	checktime 1 << NITE
+	checktime (1 << EVE) | (1 << NITE)
 	iftrue .SaturdayNight
 .SaturdayDay
 	rematch_left REMATCH_RED_1, SPRITE_BIG_DOLL, SPRITE_WHITNEY
@@ -249,7 +249,7 @@ RematchRed0Script:
 	ifequal WEDNESDAY, .Red0Wednesday
 	ifequal FRIDAY, .Red0Friday
 	ifequal SATURDAY, .Red0Saturday
-	checktime 1 << NITE
+	checktime (1 << EVE) | (1 << NITE)
 	iftrue .Red0SundayNight
 	jump RematchJasmineScript
 .Red0SundayNight
@@ -290,7 +290,7 @@ RematchBlue2Script:
 .Blue2Wednesday
 	jump RematchBlueScript
 .Blue2Monday
-	checktime 1 << NITE
+	checktime (1 << EVE) | (1 << NITE)
 	iftrue .Blue2MondayNight
 .Blue2MondayMorningDay
 	jump RematchJanineScript

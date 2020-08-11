@@ -144,7 +144,7 @@ PlayBattleMusic:
 	ld a, [wTimeOfDay]
 	cp NITE
 	ld a, NUM_REGIONS
-	jr z, .ok
+	jr nc, .ok
 	xor a
 .ok
 	add e

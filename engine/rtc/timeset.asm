@@ -44,14 +44,14 @@ endc
 .loop
 	ld hl, Text_WhatTimeIsIt
 	call PrintText
-	hlcoord 3, 7
-	lb bc, 2, 15
+	hlcoord 1, 7
+	lb bc, 2, 17
 	call TextBox
-	hlcoord 11, 7
+	hlcoord 10, 7
 	ld [hl], "▲"
-	hlcoord 11, 10
+	hlcoord 10, 10
 	ld [hl], "▼"
-	hlcoord 4, 9
+	hlcoord 2, 9
 	call DisplayHourOClock
 	ld c, 10
 	call DelayFrames
@@ -159,11 +159,11 @@ SetHour:
 	ld [hl], a
 
 .okay
-	hlcoord 4, 9
+	hlcoord 2, 9
 	ld a, " "
-	ld bc, 15
+	ld bc, 17
 	rst ByteFill
-	hlcoord 4, 9
+	hlcoord 2, 9
 	call DisplayHourOClock
 	call ApplyTilemapInVBlank
 	and a
@@ -319,8 +319,10 @@ OakText_ResponseToSetTime:
 	jr c, .NITE
 	cp DAY_HOUR
 	jr c, .MORN
-	cp NITE_HOUR
+	cp EVE_HOUR
 	jr c, .DAY
+	cp NITE_HOUR
+	jr c, .EVE
 .NITE:
 	ld hl, .sodark
 	ret
@@ -329,6 +331,9 @@ OakText_ResponseToSetTime:
 	ret
 .DAY:
 	ld hl, .yikes
+	ret
+.EVE:
+	ld hl, .napped
 	ret
 
 .overslept
@@ -339,6 +344,10 @@ OakText_ResponseToSetTime:
 .yikes
 	; ! Yikes! I over- slept!
 	text_jump UnknownText_0x1bc336
+	text_end
+
+.napped
+	text_jump ProfElmNappedText
 	text_end
 
 .sodark
@@ -568,8 +577,10 @@ GetTimeOfDayString:
 	jr c, .nite
 	cp DAY_HOUR
 	jr c, .morn
-	cp NITE_HOUR
+	cp EVE_HOUR
 	jr c, .day
+	cp NITE_HOUR
+	jr c, .eve
 .nite
 	ld de, .NITE
 	ret
@@ -579,10 +590,14 @@ GetTimeOfDayString:
 .day
 	ld de, .DAY
 	ret
+.eve
+	ld de, .EVE
+	ret
 
-.NITE: db "Nite@"
-.MORN: db "Morn@"
-.DAY: db "Day@"
+.NITE: db "Night@"
+.MORN: db "Morning@"
+.DAY:  db "Day@"
+.EVE:  db "Evening@"
 
 AdjustHourForAMorPM:
 ; Convert the hour stored in c (0-23) to a 1-12 value

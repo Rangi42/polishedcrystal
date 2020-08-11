@@ -64,6 +64,8 @@ PokeCenterNurseScript:
 	iftrue .morn
 	checktime 1 << DAY
 	iftrue .day
+	checktime 1 << EVE
+	iftrue .eve
 	checktime 1 << NITE
 	iftrue .nite
 	jump .ok
@@ -93,6 +95,20 @@ PokeCenterNurseScript:
 	jump .ok
 .day_center
 	farwritetext NurseDayText
+	buttonsound
+	jump .ok
+
+.eve
+	checkevent EVENT_WELCOMED_TO_POKECOM_CENTER
+	iftrue .eve_center
+	checkevent EVENT_WELCOMING_TO_POKECOM_CENTER
+	iffalse .eve_center
+	farwritetext PokeComNurseEveText
+	buttonsound
+	setevent EVENT_WELCOMED_TO_POKECOM_CENTER
+	jump .ok
+.eve_center
+	farwritetext NurseEveText
 	buttonsound
 	jump .ok
 

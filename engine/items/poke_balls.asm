@@ -542,12 +542,14 @@ QuickBallMultiplier:
 	jp MultiplyAndDivide
 
 DuskBallMultiplier:
-; multiply catch rate by 3.5 at night or in caves
+; multiply catch rate by 3.5 at evening, night, or in caves
 	ld a, [wEnvironment]
 	cp CAVE
 	jr z, .dusk
 
 	ld a, [wTimeOfDay]
+	cp 1 << EVE
+	jr z, .dusk
 	cp 1 << NITE
 	ret nz
 

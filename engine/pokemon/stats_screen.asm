@@ -784,8 +784,8 @@ StatsScreen_LoadGFX:
 ; Ported by FredrIQ
 OrangePage_:
 	call TN_PrintToD
-	call TN_PrintLocation
 	call TN_PrintLV
+	call TN_PrintLocation
 	hlcoord 0, 11
 	ld bc, SCREEN_WIDTH
 	ld a, $3e
@@ -834,7 +834,7 @@ TN_PrintToD:
 	rst PlaceString
 	ld a, [wTempMonCaughtTime]
 	and CAUGHTTIME_MASK
-	ld de, .unknown
+	ld de, .eve
 	jr z, .print
 	rlca
 	rlca
@@ -854,16 +854,16 @@ TN_PrintToD:
 	db "Met/@"
 
 .morn
-	db "Morn@"
+	db "Morning@"
 
 .day
 	db "Day@"
 
 .nite
-	db "Nite@"
+	db "Night@"
 
-.unknown
-	db "???@"
+.eve
+	db "Evening@"
 
 TN_PrintLocation:
 	ld a, [wTempMonCaughtLocation]
@@ -885,34 +885,40 @@ TN_PrintLocation:
 
 TN_PrintLV:
 	ld a, [wTempMonCaughtLevel]
-	hlcoord 8, 9
+; inherit coordinate from TN_PrintToD
+	ld h, b
+	ld l, c
+	inc hl
+;	hlcoord 11, 9
 	and a
-	jr z, .unknown
+	jr z, .traded
 	cp 1
 	jr z, .hatched
 	ld [wBuffer2], a
-	ld de, .str_atlv
+	ld de, .str_level
 	rst PlaceString
+	ld h, b
+	ld l, c
+;	hlcoord 15, 9
 	ld de, wBuffer2
 	lb bc, PRINTNUM_LEFTALIGN | 1, 3
-	hlcoord 12, 9
 	jp PrintNum
 .hatched
 	ld de, .str_hatched
 	rst PlaceString
 	ret
-.unknown
-	ld de, .str_unknown
+.traded
+	ld de, .str_traded
 	rst PlaceString
 	ret
 
-.str_atlv
+.str_level
 	db "at <LV>@"
 
 .str_hatched
 	db "from Egg@"
 
-.str_unknown
+.str_traded
 	db "by trade@"
 
 TN_PrintCharacteristics:

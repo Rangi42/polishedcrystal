@@ -654,7 +654,7 @@ LoadMapPals:
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	; Futher refine by time of day
+	; Further refine by time of day
 	ld a, [wTimeOfDayPal]
 	and 3
 	add a
@@ -721,12 +721,7 @@ LoadMapPals:
 	and a
 	jr z, .not_overcast
 	dec a
-	ld l, a
-	ld h, 0
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	ld de, OvercastRoofPals
+	ld hl, OvercastRoofPals
 	jr .get_roof_color
 
 .not_overcast
@@ -739,21 +734,25 @@ LoadMapPals:
 	ret nz
 .outside
 	ld a, [wMapGroup]
-	ld l, a
-	ld h, 0
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	ld de, RoofPals
+	ld hl, RoofPals
 .get_roof_color
+	add a
+	add a
+	ld e, a
+	ld d, 0
 	add hl, de
+	add hl, de
+	add hl, de
+	ld de, 4
 	ld a, [wTimeOfDayPal]
 	and 3
 	cp NITE
 	jr c, .morn_day
-rept 4
-	inc hl
-endr
+	jr z, .nite
+; eve
+	add hl, de
+.nite
+	add hl, de
 .morn_day
 	ld de, wBGPals1 palette 6 + 2
 	ld bc, 4

@@ -226,6 +226,13 @@ UnknownText_0x1bc336::
 	cont "slept!"
 	done
 
+SECTION "ProfElmNappedText", ROMX
+ProfElmNappedText::
+	text "!"
+	line "I napped for"
+	cont "too long!"
+	done
+
 SECTION "UnknownText_0x1bc34f", ROMX
 UnknownText_0x1bc34f::
 	text "!"
