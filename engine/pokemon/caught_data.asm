@@ -185,6 +185,7 @@ SetBoxmonOrEggmonCaughtData:
 	; CaughtTime
 	ld a, [wTimeOfDay]
 	inc a
+	and CAUGHTTIME_MASK
 	rrca
 	rrca
 	rrca
@@ -230,6 +231,7 @@ SetGiftMonCaughtData:
 	; CaughtTime
 	ld a, [wTimeOfDay]
 	inc a
+	and CAUGHTTIME_MASK
 	rrca
 	rrca
 	rrca
