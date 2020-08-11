@@ -3,34 +3,19 @@ LoadWildMonData:
 	jr c, .copy
 	ld hl, wMornEncounterRate
 	xor a
-	ld [hli], a
-	ld [hli], a
-	ld [hli], a
-	ld [hl], a
+	ld [hli], a ; morn rate
+	ld [hli], a ; day rate
+	ld [hli], a ; nite rate
+	ld [hl], a  ; eve rate
 	jr .done_copy
 
 .copy
 	inc hl
 	inc hl
 	ld de, wMornEncounterRate
-	; morn rate
-	ld a, [hli]
-	ld [de], a
-	inc de
-	; day rate
-	ld a, [hli]
-	ld [de], a
-	inc de
-	; eve+nite rate
-	ld a, [hli]
-	ld [de], a
-	inc de
-	ld [de], a
-	inc de
-	; water rate
-	ld a, [hli]
-	ld [de], a
-	inc de
+	ld bc, 3
+	rst CopyBytes
+	ld [de], a ; eve rate = nite rate
 .done_copy
 	call _WaterWildmonLookup
 	ld a, 0
@@ -234,7 +219,7 @@ TryWildEncounter::
 GetMapEncounterRate:
 	ld hl, wMornEncounterRate
 	call CheckOnWater
-	ld a, 4 ; water rate
+	ld a, wWaterEncounterRate - wMornEncounterRate
 	jr z, .ok
 	ld a, [wTimeOfDay]
 .ok
