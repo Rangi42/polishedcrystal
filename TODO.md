@@ -66,7 +66,7 @@ The final, non-beta 3.0 release should include all of these.
 * Replace Skyla with Marlon (team: Politoed, Tentacruel, Blastoise, Starmie, Mantine, Cloyster, Vaporeon)
 * Nurse trainer class (heals you afterwards)
 * Gambler trainer class (uses Game Corner mons)
-* Soldier trainer class (in Lt. Surge's Gym)
+* Soldier trainer class (in Lt. Surge's Gym; also ones elsewhere with Remoraid, Octillery, Forretress, Skarmory, Electrode, Donphan)
 
 Shamouti Island:
 
