@@ -306,8 +306,8 @@ else
 endc
 	move CROSS_CHOP,   EFFECT_NORMAL_HIT,        100, FIGHTING,   80,  5,   0, PHYSICAL
 	move AQUA_JET,     EFFECT_PRIORITY_HIT,       40, WATER,     100, 20,   0, PHYSICAL
-	move RAIN_DANCE,   EFFECT_RAIN_DANCE,          0, WATER,      90,  5,   0, STATUS
-	move SUNNY_DAY,    EFFECT_SUNNY_DAY,           0, FIRE,       90,  5,   0, STATUS
+	move RAIN_DANCE,   EFFECT_RAIN_DANCE,          0, WATER,     100,  5,   0, STATUS
+	move SUNNY_DAY,    EFFECT_SUNNY_DAY,           0, FIRE,      100,  5,   0, STATUS
 	move CRUNCH,       EFFECT_DEFENSE_DOWN_HIT,   80, DARK,      100, 15,  20, PHYSICAL
 	move MIRROR_COAT,  EFFECT_MIRROR_COAT,         1, PSYCHIC,   100, 20,   0, SPECIAL
 	move NASTY_PLOT,   EFFECT_SP_ATK_UP_2,         0, DARK,      100, 20,   0, STATUS
