@@ -137,12 +137,8 @@ wAutoInputLength:: db
 wMonStatusFlags:: db
 wGameLogicPaused:: db
 wSpriteUpdatesEnabled:: db
-	ds 1
 wMapTimeOfDay:: db
-	ds 1
 wPrevDexEntry:: db
-
-wAppendVWFText:: ds 4
 
 wPrevLandmark:: db
 wCurLandmark:: db
@@ -155,13 +151,10 @@ wLinkMode::
 
 wPlayerNextMovement:: db
 wPlayerMovement:: db
-	ds 2
 wMovementObject:: db
 wMovementDataPointer:: ds 3 ; dba
-	ds 4
 wMovementByteWasControlSwitch:: db
 wMovementPointer:: dw
-	ds 3
 
 wTempObjectCopyMapObjectIndex:: db
 wTempObjectCopySprite:: db
@@ -186,6 +179,8 @@ wTilePermissions::
 ; bit 1: left
 ; bit 0: right
 	db
+
+	ds 15
 
 
 SECTION "Sprite Animations", WRAM0

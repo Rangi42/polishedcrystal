@@ -7,13 +7,13 @@ _PlaceVWFString::
 ; reached the string terminator (de is then advanced a character).
 ; Preserves the value of b.
 
-; Build a function to write pixels in wAppendVWFText.
+; Build a function to write pixels in hAppendVWFText.
 ; - nothing: or [hl] / ld [hld], a / ld [hl], a / ret
 ; - invert: xor [hl] / ld [hld], a / ld [hl], a / ret
 ; - opaque: or [hl] / ld [hld], a / ret
 ; - invert+opaque: xor [hl] / ld [hld], a / ret
 	push hl
-	ld hl, wAppendVWFText
+	ld hl, hAppendVWFText
 	bit VWF_INVERT_F, b
 	ld a, $ae ; xor [hl]
 	jr nz, .invert
@@ -100,11 +100,11 @@ _PlaceVWFString::
 	inc hl
 	push hl
 	ld a, d
-	call wAppendVWFText
+	call hAppendVWFText
 	ld a, e
 	ld de, 1 tiles + 1
 	add hl, de
-	call wAppendVWFText
+	call hAppendVWFText
 	pop hl
 	pop de
 	pop af
