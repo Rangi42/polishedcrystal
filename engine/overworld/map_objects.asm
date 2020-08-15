@@ -2721,12 +2721,12 @@ InitSprites:
 
 .DeterminePriorities:
 	xor a
-	ld hl, wMovementPointer
+	ld hl, wObjectPriorities
 	ld bc, NUM_OBJECT_STRUCTS
 	rst ByteFill
 	ld d, 0
 	ld bc, wObjectStructs
-	ld hl, wMovementPointer
+	ld hl, wObjectPriorities
 .loop
 	push hl
 	call DoesObjectHaveASprite
@@ -2773,7 +2773,7 @@ InitSprites:
 	ret
 
 .InitSpritesByPriority:
-	ld hl, wMovementPointer
+	ld hl, wObjectPriorities
 .next_sprite
 	ld a, [hli]
 	ld d, a
