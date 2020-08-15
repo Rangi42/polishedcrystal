@@ -139,8 +139,10 @@ wGameLogicPaused:: db
 wSpriteUpdatesEnabled:: db
 	ds 1
 wMapTimeOfDay:: db
-	ds 5
+	ds 1
 wPrevDexEntry:: db
+
+wAppendVWFText:: ds 4
 
 wPrevLandmark:: db
 wCurLandmark:: db
