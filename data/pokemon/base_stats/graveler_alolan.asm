@@ -8,9 +8,7 @@
 	db EVERSTONE ; item 2
 	dn FEMALE_50, 2 ; gender, step cycles to hatch
 	INCBIN "gfx/pokemon/graveler_alolan/front.dimensions"
-	db MAGNET_PULL ; ability 1
-	db STURDY ; ability 2
-	db GALVANIZE ; hidden ability
+	abilities_for GRAVELER_ALOLAN, MAGNET_PULL, STURDY, GALVANIZE
 	db MEDIUM_SLOW ; growth rate
 	dn INANIMATE, INANIMATE ; egg groups
 

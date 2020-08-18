@@ -8,11 +8,7 @@
 	db NO_ITEM ; item 2
 	dn FEMALE_50, 0 ; gender, step cycles to hatch
 	INCBIN "gfx/pokemon/gyarados_plain/front.dimensions"
-	; TODO: this file is included twice, so the macro fails
-	; abilities_for GYARADOS, INTIMIDATE, MOXIE, MOLD_BREAKER
-	db INTIMIDATE ; ability 1
-	db MOXIE ; ability 2
-	db MOLD_BREAKER ; hidden ability
+	abilities_for GYARADOS, INTIMIDATE, MOXIE, MOLD_BREAKER
 	db SLOW ; growth rate
 	dn FISH, REPTILE ; egg groups
 

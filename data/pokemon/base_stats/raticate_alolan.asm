@@ -13,9 +13,7 @@ endc
 	db PECHA_BERRY ; item 2
 	dn FEMALE_50, 2 ; gender, step cycles to hatch
 	INCBIN "gfx/pokemon/raticate_alolan/front.dimensions"
-	db GLUTTONY ; ability 1
-	db HUSTLE ; ability 2
-	db THICK_FAT ; hidden ability
+	abilities_for RATICATE_ALOLAN, GLUTTONY, HUSTLE, THICK_FAT
 	db MEDIUM_FAST ; growth rate
 	dn FIELD, FIELD ; egg groups
 

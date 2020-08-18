@@ -8,9 +8,7 @@
 	db KINGS_ROCK ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
 	INCBIN "gfx/pokemon/slowpoke_galarian/front.dimensions"
-	db GLUTTONY ; ability 1
-	db OWN_TEMPO ; ability 2
-	db REGENERATOR ; hidden ability
+	abilities_for SLOWPOKE_GALARIAN, GLUTTONY, OWN_TEMPO, REGENERATOR
 	db MEDIUM_FAST ; growth rate
 	dn MONSTER, AMPHIBIAN ; egg groups
 

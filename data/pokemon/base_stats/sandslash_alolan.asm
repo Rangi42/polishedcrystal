@@ -8,9 +8,7 @@
 	db GRIP_CLAW ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
 	INCBIN "gfx/pokemon/sandslash_alolan/front.dimensions"
-	db SNOW_CLOAK ; ability 1
-	db SNOW_CLOAK ; ability 2
-	db SLUSH_RUSH ; hidden ability
+	abilities_for SANDSLASH_ALOLAN, SNOW_CLOAK, SNOW_CLOAK, SLUSH_RUSH
 	db MEDIUM_FAST ; growth rate
 	dn FIELD, FIELD ; egg groups
 

@@ -17,9 +17,7 @@ endc
 	db LIGHT_BALL ; item 2
 	dn FEMALE_50, 1 ; gender, step cycles to hatch
 	INCBIN "gfx/pokemon/raichu_alolan/front.dimensions"
-	db STATIC ; ability 1
-	db STATIC ; ability 2
-	db MOTOR_DRIVE ; hidden ability
+	abilities_for RAICHU_ALOLAN, STATIC, STATIC, MOTOR_DRIVE
 	db MEDIUM_FAST ; growth rate
 	dn FIELD, FAERY ; egg groups
 

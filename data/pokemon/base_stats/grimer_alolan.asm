@@ -8,9 +8,7 @@
 	db NUGGET ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
 	INCBIN "gfx/pokemon/grimer_alolan/front.dimensions"
-	db POISON_TOUCH ; ability 1
-	db GLUTTONY ; ability 2
-	db CORROSION ; hidden ability
+	abilities_for GRIMER_ALOLAN, POISON_TOUCH, GLUTTONY, CORROSION
 	db MEDIUM_FAST ; growth rate
 	dn AMORPHOUS, AMORPHOUS ; egg groups
 

@@ -8,9 +8,7 @@
 	db ASPEAR_BERRY ; item 2
 	dn FEMALE_75, 3 ; gender, step cycles to hatch
 	INCBIN "gfx/pokemon/vulpix_alolan/front.dimensions"
-	db SNOW_CLOAK ; ability 1
-	db SNOW_CLOAK ; ability 2
-	db SNOW_WARNING ; hidden ability
+	abilities_for VULPIX_ALOLAN, SNOW_CLOAK, SNOW_CLOAK, SNOW_WARNING
 	db MEDIUM_FAST ; growth rate
 	dn FIELD, FIELD ; egg groups
 
