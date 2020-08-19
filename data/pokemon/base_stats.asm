@@ -7,9 +7,9 @@ ENDM
 abilities_for: MACRO
 ; mon, ability1, ability2, hiddenability
 	db \2, \3, \4
-\1_\4 = HIDDEN_ABILITY
-\1_\3 = ABILITY_2
-\1_\2 = ABILITY_1
+ABIL_\1_\4 = HIDDEN_ABILITY
+ABIL_\1_\3 = ABILITY_2
+ABIL_\1_\2 = ABILITY_1
 ENDM
 
 tmhm: MACRO
