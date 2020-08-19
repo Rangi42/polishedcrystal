@@ -795,18 +795,13 @@ OrangePage_:
 	rst PlaceString
 	ld a, [wTempMonAbility]
 	and ABILITY_MASK
-	cp ABILITY_1
-	jr z, .ability_1
-	cp ABILITY_2
-	jr z, .ability_2
-	ld a, $3f ; bold H
-	jr .got_ability
-.ability_1
-	ld a, "1"
-	jr .got_ability
-.ability_2
-	ld a, "2"
-.got_ability
+	swap a
+	rrca
+	ld e, a
+	ld d, 0
+	ld hl, .ability_tiles - 1 ; ability constants start at 1
+	add hl, de
+	ld a, [hl]
 	hlcoord 9, 12
 	ld [hl], a
 	ld hl, wTempMonPersonality
@@ -822,6 +817,9 @@ OrangePage_:
 .ability
 	db "Ability/@"
 
+.ability_tiles
+	db "1", "2", $3f ; bold H
+
 StatsScreen_OTNamePointers:
 	dw wPartyMonOT
 	dw wOTPartyMonOT
@@ -832,38 +830,12 @@ TN_PrintToD:
 	ld de, .caughtat
 	hlcoord 1, 8
 	rst PlaceString
-	ld a, [wTempMonCaughtTime]
-	and CAUGHTTIME_MASK
-	ld de, .eve
-	jr z, .print
-	rlca
-	rlca
-	rlca
-	cp 2
-	ld de, .morn
-	jr c, .print
-	ld de, .day
-	jr z, .print
-	ld de, .nite
-.print
 	hlcoord 3, 9
-	rst PlaceString
-	ret
+	ld a, [wTempMonCaughtTime]
+	farjp PlaceCaughtTimeOfDayString
 
 .caughtat
 	db "Met/@"
-
-.morn
-	db "Morning@"
-
-.day
-	db "Day@"
-
-.nite
-	db "Night@"
-
-.eve
-	db "Evening@"
 
 TN_PrintLocation:
 	ld a, [wTempMonCaughtLocation]
