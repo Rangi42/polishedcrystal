@@ -185,10 +185,10 @@ SetBoxmonOrEggmonCaughtData:
 	; CaughtTime
 	ld a, [wTimeOfDay]
 	inc a
+	rrca
+	rrca
+	rrca
 	and CAUGHTTIME_MASK
-	rrca
-	rrca
-	rrca
 	or b
 	ld b, a
 	; CaughtBall
@@ -231,10 +231,10 @@ SetGiftMonCaughtData:
 	; CaughtTime
 	ld a, [wTimeOfDay]
 	inc a
+	rrca
+	rrca
+	rrca
 	and CAUGHTTIME_MASK
-	rrca
-	rrca
-	rrca
 	or b
 	ld b, a
 	; CaughtBall
