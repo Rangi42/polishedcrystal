@@ -181,7 +181,7 @@ CeladonUniversity2FWestwoodsOfficeSignText:
 
 CeladonUniversity2FMagikarpSign:
 	refreshscreen
-	pokepic MAGIKARP
+	pokepic MAGIKARP, MAGIKARP_ORCA_FORM
 	cry MAGIKARP
 	waitbutton
 	closepokepic

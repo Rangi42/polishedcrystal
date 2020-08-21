@@ -353,7 +353,6 @@ wPokemonWithdrawDepositParameter::
 ; 3: Put into Day-Care
 	db
 
-wIsCurMonInParty::
 wItemQuantityChangeBuffer:: db
 wItemQuantityBuffer:: db
 

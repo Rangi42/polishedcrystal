@@ -554,7 +554,7 @@ Script_pokepic:
 .ok
 	ld [wCurPartySpecies], a
 	call GetScriptByte
-	ld [wIsCurMonInParty], a
+	ld [wCurForm], a
 	farjp Pokepic
 
 Script_closepokepic:

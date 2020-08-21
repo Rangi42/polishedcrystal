@@ -3,12 +3,10 @@ Pokepic::
 	call CopyMenuDataHeader
 	call MenuBox
 	call UpdateSprites
-	ld a, [wIsCurMonInParty]
-	and a
-	jr nz, .partymon
+	ld a, [wCurForm]
+	cp -1
+	jr z, .partymon
 	farcall LoadPokemonPalette
-	ld a, 1
-	ld [wCurForm], a
 	jr .got_palette
 .partymon
 	farcall LoadPartyMonPalette
