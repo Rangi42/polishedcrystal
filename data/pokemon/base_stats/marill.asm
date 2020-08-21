@@ -12,7 +12,6 @@
 	db FAST ; growth rate
 	dn AMPHIBIAN, FAERY ; egg groups
 
-	; ev_yield
 	ev_yield   2,   0,   0,   0,   0,   0
 	;         hp, atk, def, spd, sat, sdf
 

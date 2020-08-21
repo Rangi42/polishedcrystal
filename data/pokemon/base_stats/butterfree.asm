@@ -30,7 +30,6 @@ endc
 	db MEDIUM_FAST ; growth rate
 	dn INSECT, INSECT ; egg groups
 
-	; ev_yield
 	ev_yield   0,   0,   0,   0,   2,   1
 	;         hp, atk, def, spd, sat, sdf
 

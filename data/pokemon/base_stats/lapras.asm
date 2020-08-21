@@ -12,7 +12,6 @@
 	db SLOW ; growth rate
 	dn MONSTER, AMPHIBIAN ; egg groups
 
-	; ev_yield
 	ev_yield   2,   0,   0,   0,   0,   0
 	;         hp, atk, def, spd, sat, sdf
 

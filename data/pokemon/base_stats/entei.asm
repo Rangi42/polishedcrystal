@@ -16,7 +16,6 @@ endc
 	db SLOW ; growth rate
 	dn NO_EGGS, NO_EGGS ; egg groups
 
-	; ev_yield
 	ev_yield   1,   2,   0,   0,   0,   0
 	;         hp, atk, def, spd, sat, sdf
 

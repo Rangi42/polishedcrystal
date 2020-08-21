@@ -17,7 +17,6 @@ endc
 	db MEDIUM_FAST ; growth rate
 	dn LADIES_MAN, LADIES_MAN ; egg groups
 
-	; ev_yield
 	ev_yield   1,   0,   0,   0,   0,   0
 	;         hp, atk, def, spd, sat, sdf
 

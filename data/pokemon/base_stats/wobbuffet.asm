@@ -12,7 +12,6 @@
 	db MEDIUM_FAST ; growth rate
 	dn AMORPHOUS, AMORPHOUS ; egg groups
 
-	; ev_yield
 	ev_yield   2,   0,   0,   0,   0,   0
 	;         hp, atk, def, spd, sat, sdf
 

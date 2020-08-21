@@ -20,7 +20,6 @@ endc
 	db MEDIUM_SLOW ; growth rate
 	dn MONSTER, AMPHIBIAN ; egg groups
 
-	; ev_yield
 	ev_yield   0,   2,   1,   0,   0,   0
 	;         hp, atk, def, spd, sat, sdf
 

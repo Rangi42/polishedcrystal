@@ -21,7 +21,6 @@ endc
 	db FAST ; growth rate
 	dn AMPHIBIAN, INVERTEBRATE ; egg groups
 
-	; ev_yield
 	ev_yield   0,   0,   1,   0,   0,   1
 	;         hp, atk, def, spd, sat, sdf
 

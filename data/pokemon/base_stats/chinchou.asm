@@ -12,7 +12,6 @@
 	db SLOW ; growth rate
 	dn FISH, FISH ; egg groups
 
-	; ev_yield
 	ev_yield   1,   0,   0,   0,   0,   0
 	;         hp, atk, def, spd, sat, sdf
 
