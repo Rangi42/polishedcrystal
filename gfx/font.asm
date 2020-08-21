@@ -17,6 +17,8 @@ FontUnown:
 INCBIN "gfx/font/unown.1bpp"
 FontCommon:
 INCBIN "gfx/font/common.1bpp"
+TextBoxSpaceGFX::
+INCBIN "gfx/font/space.1bpp"
 
 Frames:
 INCBIN "gfx/frames/1.1bpp"
@@ -43,9 +45,6 @@ INCBIN "gfx/battle/types.1bpp"
 
 CategoryIconGFX:
 INCBIN "gfx/battle/categories.2bpp"
-
-TextBoxSpaceGFX::
-INCBIN "gfx/frames/space.1bpp"
 
 MapEntryFrameGFX:
 INCBIN "gfx/frames/map_entry_sign.2bpp"
