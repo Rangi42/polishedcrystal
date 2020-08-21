@@ -5784,6 +5784,9 @@ GenerateWildForm:
 	push hl
 	push de
 	push bc
+	ld a, [wWildMonForm]
+	and a
+	jr nz, .done
 	ld a, [wTempEnemyMonSpecies]
 	ld b, a
 	ld hl, WildSpeciesForms
@@ -5798,6 +5801,7 @@ GenerateWildForm:
 	jr .loop
 .ok
 	call IndirectHL
+.done
 	ld [wCurForm], a
 	jp PopBCDEHL
 
@@ -5806,7 +5810,6 @@ WildSpeciesForms:
 	dbw MAGIKARP,  .Magikarp
 	dbw EKANS,     .EkansArbok
 	dbw ARBOK,     .EkansArbok
-	dbw GYARADOS,  .Gyarados
 	dbw SANDSHREW, .IceForm
 	dbw SANDSLASH, .IceForm
 	dbw VULPIX,    .IceForm
@@ -5847,13 +5850,6 @@ WildSpeciesForms:
 	ld a, ARBOK_JOHTO_FORM
 	ret z
 	inc a ; ARBOK_KANTO_FORM
-	ret
-
-.Gyarados:
-	ld a, [wBattleType]
-	cp BATTLETYPE_RED_GYARADOS
-	jr nz, .Default
-	ld a, GYARADOS_RED_FORM
 	ret
 
 .IceForm:
