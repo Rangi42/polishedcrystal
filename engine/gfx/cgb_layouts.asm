@@ -92,21 +92,23 @@ _CGB_BattleColors:
 .trainer_sprite
 
 	ld a, [wEnemyHPPal]
+	add a
+	add a
+	add LOW(HPBarInteriorPals)
 	ld l, a
-	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld bc, HPBarInteriorPals
-	add hl, bc
+	adc HIGH(HPBarInteriorPals)
+	sub l
+	ld h, a
 	call LoadPalette_White_Col1_Col2_Black
 
 	ld a, [wPlayerHPPal]
+	add a
+	add a
+	add LOW(HPBarInteriorPals)
 	ld l, a
-	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld bc, HPBarInteriorPals
-	add hl, bc
+	adc HIGH(HPBarInteriorPals)
+	sub l
+	ld h, a
 	call LoadPalette_White_Col1_Col2_Black
 
 	ld hl, GenderAndExpBarPals
@@ -289,13 +291,7 @@ endc
 
 _CGB_StatsScreenHPPals:
 	ld de, wBGPals1
-	ld a, [wCurHPPal]
-	ld l, a
-	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld bc, HPBarInteriorPals
-	add hl, bc
+	ld hl, HPBarInteriorPals
 	call LoadPalette_White_Col1_Col2_Black
 
 	ld a, [wCurPartySpecies]
@@ -328,10 +324,8 @@ _CGB_StatsScreenHPPals:
 	ld a, $1
 	call FillBoxWithByte
 
-	hlcoord 12, 16, wAttrMap
-	ld bc, 7
-	ld a, $2
-	rst ByteFill
+	hlcoord 18, 0, wAttrMap
+	ld [hl], $2
 
 	hlcoord 11, 5, wAttrMap
 	lb bc, 2, 2

@@ -3668,7 +3668,7 @@ endr
 	jr c, .got_gender_char
 	ld a, "<MALE>"
 	jr nz, .got_gender_char
-	ld a, "<FEMALE>"
+	inc a ; "<FEMALE>"
 
 .got_gender_char
 	hlcoord 18, 8
@@ -3737,7 +3737,7 @@ endr
 	jr c, .got_gender
 	ld a, "<MALE>"
 	jr nz, .got_gender
-	ld a, "<FEMALE>"
+	inc a ; "<FEMALE>"
 
 .got_gender
 	hlcoord 8, 1

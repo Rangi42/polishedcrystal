@@ -26,9 +26,9 @@ ApplyHPBarPals:
 	ld a, [wWhichHPBar]
 	and a
 	jr z, .Enemy
-	cp $1
+	dec a
 	jr z, .Player
-	cp $2
+	dec a
 	jr z, .PartyMenu
 	ret
 
@@ -40,12 +40,14 @@ ApplyHPBarPals:
 	ld de, wBGPals2 palette PAL_BATTLE_BG_ENEMY_HP + 2
 
 .okay
-	ld l, c
-	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld bc, HPBarInteriorPals
-	add hl, bc
+	ld a, c
+	add a
+	add a
+	add LOW(HPBarInteriorPals)
+	ld l, a
+	adc HIGH(HPBarInteriorPals)
+	sub l
+	ld h, a
 	ld bc, 4
 	call FarCopyColorWRAM
 	ld a, $1
@@ -174,20 +176,35 @@ endr
 	jp FarCopyColorWRAM
 
 LoadStatsScreenPals:
-	ld hl, StatsScreenPagePals
-	ld b, 0
-	add hl, bc
-	add hl, bc
 	ldh a, [rSVBK]
 	push af
 	ld a, $5
 	ldh [rSVBK], a
+	ld hl, StatsScreenPagePals
+	ld b, 0
+	add hl, bc
+	add hl, bc
 	ld a, [hli]
 	ld [wBGPals1 palette 0], a
-	ld [wBGPals1 palette 2], a
 	ld a, [hl]
 	ld [wBGPals1 palette 0 + 1], a
-	ld [wBGPals1 palette 2 + 1], a
+	ld a, c
+	and a ; pink page 0 has exp bar
+	ld hl, GenderAndExpBarPals + 2
+	jr z, .ok
+	ld a, [wCurHPPal]
+	add a
+	add a
+	add LOW(HPBarInteriorPals + 2)
+	ld l, a
+	adc HIGH(HPBarInteriorPals + 2)
+	sub l
+	ld h, a
+.ok
+	ld a, [hli]
+	ld [wBGPals1 palette 0 + 4], a
+	ld a, [hl]
+	ld [wBGPals1 palette 0 + 5], a
 	pop af
 	ldh [rSVBK], a
 	call ApplyPals
