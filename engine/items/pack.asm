@@ -1302,8 +1302,8 @@ DrawPackGFX:
 	jr c, .got_pocket
 	inc a
 	cp 14
-	ccf   ; jr c, .got_pocket
-	adc 0 ; inc a
+	jr c, .got_pocket
+	inc a
 .got_pocket
 	ld b, a
 	inc b

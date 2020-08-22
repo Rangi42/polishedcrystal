@@ -104,10 +104,10 @@ patterns = {
 		or line3.code in {'xor a', 'inc a', 'dec a'}),
 	(lambda line4, prev: line4.code.rstrip(':') == prev[1].code.split(',')[1].strip()),
 ],
-'if c|nc then a++|a--': [
-	# Bad: jr c|nc, .ok / inc|dec a / .ok
-	# Good: solutions involving adc|sbc a
-	(lambda line1, prev: re.match(r'j[rp] n?c,', line1.code)),
+'a++|a-- if carry': [
+	# Bad: jr nc, .ok / inc|dec a / .ok
+	# Good: adc|sbc 0
+	(lambda line1, prev: re.match(r'j[rp] nc,', line1.code)),
 	(lambda line2, prev: line2.code in {'inc a', 'dec a'}),
 	(lambda line3, prev: line3.code.rstrip(':') == prev[0].code.split(',')[1].strip()),
 ],
