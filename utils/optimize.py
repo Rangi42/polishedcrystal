@@ -96,13 +96,20 @@ patterns = {
 ],
 'a = carry ? P : Q': [
 	# Bad: ld a, P / jr c|nc, .ok / ld a, Q / .ok
-	# Bad: ld a, P / jr c|nc, .ok / xor a / .ok
+	# Bad: ld a, P / jr c|nc, .ok / xor|inc|dec a / .ok
 	# Good: solutions involving sbc a
 	(lambda line1, prev: re.match(r'ld a, [^afbcdehl\[]', line1.code)),
 	(lambda line2, prev: re.match(r'j[rp] n?c,', line2.code)),
 	(lambda line3, prev: re.match(r'ld a, [^afbcdehl\[]', line3.code)
-		or line3.code == 'xor a'),
+		or line3.code in {'xor a', 'inc a', 'dec a'}),
 	(lambda line4, prev: line4.code.rstrip(':') == prev[1].code.split(',')[1].strip()),
+],
+'if c|nc then a++|a--': [
+	# Bad: jr c|nc, .ok / inc|dec a / .ok
+	# Good: solutions involving adc|sbc a
+	(lambda line1, prev: re.match(r'j[rp] n?c,', line1.code)),
+	(lambda line2, prev: line2.code in {'inc a', 'dec a'}),
+	(lambda line3, prev: line3.code.rstrip(':') == prev[0].code.split(',')[1].strip()),
 ],
 'a = a >> 3': [
 	# Bad: srl a / srl a / srl a
@@ -440,3 +447,5 @@ for filename in iglob('**/*.asm', recursive=True):
 
 # Print the total count
 print('Found', count, 'instances.')
+
+exit(count)

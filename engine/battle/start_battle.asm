@@ -143,10 +143,10 @@ PlayBattleMusic:
 	pop hl
 	ld a, [wTimeOfDay]
 	cp NITE
-	ld a, NUM_REGIONS
-	jr nc, .ok
-	xor a
-.ok
+	; a = carry ? 0 : NUM_REGIONS
+	ccf
+	sbc a
+	and NUM_REGIONS
 	add e
 	add a
 	ld e, a

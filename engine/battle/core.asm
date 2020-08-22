@@ -6866,7 +6866,7 @@ AnimateExpBar:
 	ldh a, [hQuotient + 1]
 	ld [wd003], a
 	push af
-	ld a, [hQuotient]
+	ldh a, [hQuotient]
 	ld [wd002], a
 	push af
 	xor a ; PARTYMON
