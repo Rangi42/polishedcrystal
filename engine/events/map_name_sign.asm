@@ -230,10 +230,8 @@ LoadMapNameSignGFX:
 	ld a, SCREEN_WIDTH - 2
 	sub c
 	srl a
-	; bc = byte offset to center landmark name (a * 16)
-rept 4
-	add a
-endr
+	; bc = byte offset to center landmark name (a * 16, assumes a < 16)
+	swap a
 	ld c, a
 	ld b, 0
 	; de = start of vram buffer
