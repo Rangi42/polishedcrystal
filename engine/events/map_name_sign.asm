@@ -226,20 +226,19 @@ LoadMapNameSignGFX:
 	jr .length_loop
 .got_length
 	pop hl
-	; bc = byte offset to center landmark name
+	; a = tile offset to center landmark name
 	ld a, SCREEN_WIDTH - 2
 	sub c
 	srl a
-	ld h, 0
-	ld l, a
+	; bc = byte offset to center landmark name (a * 16)
 rept 4
-	add hl, hl
+	add a
 endr
-	ld b, h
-	ld c, l
+	ld c, a
+	ld b, 0
+	; de = start of vram buffer
 	ld hl, vTiles3 tile POPUP_MAP_NAME_START
 	add hl, bc
-	; de = start of vram buffer
 	ld d, h
 	ld e, l
 	; hl = start of landmark name

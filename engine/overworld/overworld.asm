@@ -375,12 +375,11 @@ endr
 .GetTileAddr:
 ; Return the address of tile (a) in (hl).
 	and $7f
+	swap a
 	ld l, a
-	ld h, 0
-rept 4
-	add hl, hl
-endr
-	ld a, l
+	and $f
+	ld h, a
+	xor l
 	add LOW(vTiles0)
 	ld l, a
 	ld a, h

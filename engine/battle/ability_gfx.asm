@@ -179,11 +179,13 @@ PerformAbilityGFX:
 	inc de
 	push de
 	push hl
+	; hl = vTiles1 tile a
+	swap a
+	ld h, a
+	and $f0
 	ld l, a
-	ld h, 0
-rept 4
-	add hl, hl
-endr
+	xor h
+	ld h, a
 	ld bc, vTiles1
 	add hl, bc
 	ld d, h

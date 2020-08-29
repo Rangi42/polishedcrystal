@@ -184,6 +184,36 @@ patterns = {
 	(lambda line6, prev: re.match(r'ld [hbd], a', line6.code)
 		and line6.code[3] == PAIRS[prev[0].code[6]]),
 ],
+'hl|bc|de = a * 16': [
+	# Bad: ld l, a / ld h, 0 / add hl, hl / add hl, hl / add hl, hl / add hl, hl
+	# Good: solutions involving 'add a' or 'xor a' (if possible)
+	(lambda line1, prev: re.match(r'ld [lce], a', line1.code) or
+		re.match(r'ld [hbd], [%\$]?0+$', line1.code)),
+	(lambda line2, prev: (re.match(r'ld [lce], a', line2.code) or
+		re.match(r'ld [hbd], [%\$]?0+$', line2.code)) and
+		line2.code != prev[0].code and line2.code[3] == PAIRS[prev[0].code[3]]),
+	(lambda line3, prev: re.match(r'add (hl|bc|de), \1$', line3.code) and
+		line3.code[4] in {prev[0].code[3], PAIRS[prev[0].code[3]]}),
+	(lambda line4, prev: re.match(r'add (hl|bc|de), \1$', line4.code) and
+		line4.code[4] in {prev[0].code[3], PAIRS[prev[0].code[3]]}),
+	(lambda line5, prev: re.match(r'add (hl|bc|de), \1$', line5.code) and
+		line5.code[4] in {prev[0].code[3], PAIRS[prev[0].code[3]]}),
+	(lambda line6, prev: re.match(r'add (hl|bc|de), \1$', line6.code) and
+		line6.code[4] in {prev[0].code[3], PAIRS[prev[0].code[3]]}),
+],
+'hl|bc|de = a * 16 (rept)': [
+	# Bad: ld l, a / ld h, 0 / rept 4 / add hl, hl / endr
+	# Good: solutions involving 'add a' or 'xor a' (if possible)
+	(lambda line1, prev: re.match(r'ld [lce], a', line1.code) or
+		re.match(r'ld [hbd], [%\$]?0+$', line1.code)),
+	(lambda line2, prev: (re.match(r'ld [lce], a', line2.code) or
+		re.match(r'ld [hbd], [%\$]?0+$', line2.code)) and
+		line2.code != prev[0].code and line2.code[3] == PAIRS[prev[0].code[3]]),
+	(lambda line3, prev: line3.code.lower() == 'rept 4'),
+	(lambda line4, prev: re.match(r'add (hl|bc|de), \1$', line4.code) and
+		line4.code[4] in {prev[0].code[3], PAIRS[prev[0].code[3]]}),
+	(lambda line5, prev: line5.code.lower() == 'endr'),
+],
 'hl *= 2': [
 	# Bad: sla l / rl h
 	# Good: add hl, hl
