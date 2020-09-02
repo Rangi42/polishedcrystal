@@ -105,11 +105,11 @@ patterns = {
 	(lambda line4, prev: line4.code.rstrip(':') == prev[1].code.split(',')[1].strip()),
 ],
 'a++|a-- if carry': [
-	# Bad: jr nc, .ok / inc|dec a / .ok
+	# Bad: jr nc, .ok / { inc|dec a }+ / .ok
 	# Good: adc|sbc 0
 	(lambda line1, prev: re.match(r'j[rp] nc,', line1.code)),
 	(lambda line2, prev: line2.code in {'inc a', 'dec a'}),
-	(lambda line3, prev: line3.code.rstrip(':') == prev[0].code.split(',')[1].strip()),
+	(1, lambda line3, prev: line3.code.rstrip(':') == prev[0].code.split(',')[1].strip()),
 ],
 'a = a >> 3': [
 	# Bad: srl a / srl a / srl a
@@ -249,11 +249,11 @@ patterns = {
 # 	(lambda line2, prev: line2.code == 'ld [hl], a'),
 # ],
 '*hl++|*hl--': [
-	# Bad: ld a, [hl] / inc|dec a / ld [hl], a
+	# Bad: ld a, [hl] / { inc|dec a }+ / ld [hl], a
 	# Good: inc|dec [hl] (before ld a, [hl] if you need [hl] in a too)
 	(lambda line1, prev: line1.code == 'ld a, [hl]'),
 	(lambda line2, prev: line2.code in {'inc a', 'dec a'}),
-	(lambda line3, prev: line3.code == 'ld [hl], a'),
+	(1, lambda line3, prev: line3.code == 'ld [hl], a'),
 ],
 '*hl++|*hl-- = a': [
 	# Bad: ld [hl], a / inc|dec hl
@@ -447,6 +447,9 @@ for filename in iglob('**/*.asm', recursive=True):
 			cur_line = Line(i+1, code, comment, text, context)
 			# Check the condition for the current state
 			condition = conditions[state]
+			allow_rewind = type(condition) == tuple
+			if allow_rewind:
+				rewind_count, condition = condition
 			skip = comment.lower().startswith(SUPPRESS + ' ' + pattern_name.lower())
 			if condition(cur_line, prev_lines) and not skip:
 				# The condition was met; advance to the next state
@@ -465,6 +468,10 @@ for filename in iglob('**/*.asm', recursive=True):
 					printed_this = True
 					prev_lines = []
 					state = 0
+			elif allow_rewind and not skip:
+				# The condition was not met; go back to a previous condition
+				i -= 1
+				state -= rewind_count
 			else:
 				# The condition was not met; reset the state
 				i -= state
