@@ -189,7 +189,7 @@ RestartClock:
 .PrintTime:
 	hlcoord 0, 5
 	lb bc, 5, 18
-	call TextBox
+	call Textbox
 	bccoord 1, 8
 	ld a, [wBuffer4]
 	call PrintDayOfWeek

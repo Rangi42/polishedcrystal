@@ -60,7 +60,7 @@ OpenText::
 	rst Bankswitch
 
 	call ReanchorBGMap_NoOAMUpdate
-	call SpeechTextBox
+	call SpeechTextbox
 	call BGMapAnchorTopLeft
 	call LoadFonts_NoOAMUpdate
 	pop af

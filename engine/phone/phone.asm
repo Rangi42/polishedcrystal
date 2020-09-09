@@ -484,15 +484,15 @@ HangUp::
 Phone_CallEnd:
 	call HangUp_BoopOn
 	call HangUp_Wait20Frames
-	call SpeechTextBox
+	call SpeechTextbox
 	call HangUp_Wait20Frames
 	call HangUp_BoopOn
 	call HangUp_Wait20Frames
-	call SpeechTextBox
+	call SpeechTextbox
 	call HangUp_Wait20Frames
 	call HangUp_BoopOn
 	call HangUp_Wait20Frames
-	call SpeechTextBox
+	call SpeechTextbox
 	jp HangUp_Wait20Frames
 
 HangUp_Beep:
@@ -542,7 +542,7 @@ Function90363:
 Phone_CallerTextbox:
 	hlcoord 0, 0
 	lb bc, 2, SCREEN_WIDTH - 2
-	jp TextBox
+	jp Textbox
 
 Function90380:
 	ld h, d

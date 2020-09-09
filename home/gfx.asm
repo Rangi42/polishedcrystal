@@ -133,7 +133,7 @@ GetMaybeOpaque1bpp::
 	jr _Copy1bpp
 
 GetOpaque1bppSpaceTile::
-	ld de, TextBoxSpaceGFX
+	ld de, TextboxSpaceGFX
 GetOpaque1bppFontTile::
 ; Two bytes in VRAM define eight pixels (2 bits/pixel)
 ; Bits are paired from the bytes, e.g. %ABCDEFGH %abcdefgh defines pixels

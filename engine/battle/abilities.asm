@@ -69,7 +69,7 @@ NotificationAbilities:
 	call DisableAnimations
 	call ShowAbilityActivation
 	pop hl
-	call StdBattleTextBox
+	call StdBattleTextbox
 	jp EnableAnimations
 
 ImmunityAbility:
@@ -102,7 +102,7 @@ HealStatusAbility:
 	xor a
 	ld [hl], a
 	ld hl, BecameHealthyText
-	call StdBattleTextBox
+	call StdBattleTextbox
 	call EnableAnimations
 	ldh a, [hBattleTurn]
 	and a
@@ -120,7 +120,7 @@ OwnTempoAbility:
 	call GetBattleVarAddr
 	res SUBSTATUS_CONFUSED, [hl]
 	ld hl, ConfusedNoMoreText
-	call StdBattleTextBox
+	call StdBattleTextbox
 	jp EnableAnimations
 
 ObliviousAbility:
@@ -134,7 +134,7 @@ ObliviousAbility:
 	call GetBattleVarAddr
 	res SUBSTATUS_IN_LOVE, [hl]
 	ld hl, ConfusedNoMoreText
-	call StdBattleTextBox
+	call StdBattleTextbox
 	jp EnableAnimations
 
 TraceAbility:
@@ -159,7 +159,7 @@ TraceAbility:
 	call ShowAbilityActivation
 	call ShowEnemyAbilityActivation
 	ld hl, TraceActivationText
-	call StdBattleTextBox
+	call StdBattleTextbox
 	call EnableAnimations
 
 	ld a, BATTLE_VARS_ABILITY
@@ -169,7 +169,7 @@ TraceAbility:
 	jp RunActivationAbilitiesInner
 .trace_failure
 	ld hl, TraceFailureText
-	jp StdBattleTextBox
+	jp StdBattleTextbox
 
 ; Lasts 5 turns consistent with Generation VI.
 DrizzleAbility:
@@ -237,7 +237,7 @@ IntimidateAbility:
 	call ShowAbilityActivation
 	call ShowEnemyAbilityActivation
 	ld hl, BattleText_IntimidateResisted
-	call StdBattleTextBox
+	call StdBattleTextbox
 	jp EnableAnimations
 
 .intimidate_ok
@@ -368,7 +368,7 @@ AnticipationAbility:
 	call DisableAnimations
 	call ShowEnemyAbilityActivation
 	ld hl, ShudderedText
-	call StdBattleTextBox
+	call StdBattleTextbox
 	call EnableAnimations
 .done
 	; now restore the move struct
@@ -477,7 +477,7 @@ ForewarnAbility:
 	ld [wNamedObjectIndexBuffer], a
 	call GetMoveName
 	ld hl, ForewarnText
-	call StdBattleTextBox
+	call StdBattleTextbox
 	jp EnableAnimations
 
 FriskAbility:
@@ -489,7 +489,7 @@ FriskAbility:
 	call ShowAbilityActivation
 	call GetCurItemName
 	ld hl, FriskedItemText
-	call StdBattleTextBox
+	call StdBattleTextbox
 	jp EnableAnimations
 
 RunEnemyOwnTempoAbility:
@@ -571,7 +571,7 @@ AftermathAbility:
 	call GetQuarterMaxHP
 	predef SubtractHPFromUser
 	ld hl, IsHurtText
-	call StdBattleTextBox
+	call StdBattleTextbox
 	call EnableAnimations
 	jp SwitchTurn
 
@@ -850,7 +850,7 @@ RunEnemyNullificationAbilities:
 	call ShowAbilityActivation
 	call SwitchTurn
 	ld hl, DoesntAffectText
-	call StdBattleTextBox
+	call StdBattleTextbox
 	call EnableAnimations
 	jp SwitchTurn
 
@@ -875,7 +875,7 @@ DampAbility:
 	call DisableAnimations
 	call ShowAbilityActivation
 	ld hl, CannotUseText
-	call StdBattleTextBox
+	call StdBattleTextbox
 	jp EnableAnimations
 
 RunStatIncreaseAbilities:
@@ -953,7 +953,7 @@ StatUpAbility:
 	call ShowAbilityActivation
 	call SwitchTurn
 	ld hl, DoesntAffectText
-	call StdBattleTextBox
+	call StdBattleTextbox
 	call EnableAnimations
 	call SwitchTurn
 .done
@@ -982,12 +982,12 @@ FlashFireAbility:
 	jr nz, .already_fired_up
 	set SUBSTATUS_FLASH_FIRE, [hl]
 	ld hl, FirePoweredUpText
-	call StdBattleTextBox
+	call StdBattleTextbox
 	jp EnableAnimations
 .already_fired_up
 	call SwitchTurn
 	ld hl, DoesntAffectText
-	call StdBattleTextBox
+	call StdBattleTextbox
 	call EnableAnimations
 	jp SwitchTurn
 
@@ -1001,11 +1001,11 @@ WaterAbsorbAbility:
 	call GetQuarterMaxHP
 	farcall RestoreHP
 	ld hl, RegainedHealthText
-	call StdBattleTextBox
+	call StdBattleTextbox
 	jp EnableAnimations
 .full_hp
 	ld hl, HPIsFullText
-	call StdBattleTextBox
+	call StdBattleTextbox
 	jp EnableAnimations
 
 ApplySpeedAbilities:
@@ -1129,7 +1129,7 @@ SolarPowerWeatherAbility:
 	call GetEighthMaxHP
 	predef SubtractHPFromUser
 	ld hl, IsHurtText
-	call StdBattleTextBox
+	call StdBattleTextbox
 	jp EnableAnimations
 
 IceBodyAbility:
@@ -1156,7 +1156,7 @@ WeatherRecoveryAbility:
 .restore
 	farcall RestoreHP
 	ld hl, RegainedHealthText
-	call StdBattleTextBox
+	call StdBattleTextbox
 	jp EnableAnimations
 
 EndturnAbilitiesA:
@@ -1289,7 +1289,7 @@ RegainItemByAbility:
 	push hl
 	call GetItemName
 	pop hl
-	call StdBattleTextBox
+	call StdBattleTextbox
 	pop bc
 	ldh a, [hBattleTurn]
 	and a
@@ -1911,7 +1911,7 @@ RunPostBattleAbilities::
 	ld b, PICKUP
 	call PerformAbilityGFX
 	ld hl, BattleText_PickedUpItem
-	call StdBattleTextBox
+	call StdBattleTextbox
 	pop de
 	pop bc
 	jp EnableAnimations

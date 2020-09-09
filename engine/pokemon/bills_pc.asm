@@ -121,7 +121,7 @@ _DepositPKMN:
 
 .Submenu:
 	ld hl, BillsPCDepositMenuDataHeader
-	call CopyMenuDataHeader
+	call CopyMenuHeader
 	ld a, [wMenuCursorY]
 	ld [wMenuCursorBuffer], a
 	call VerticalMenu
@@ -338,7 +338,7 @@ _WithdrawPKMN:
 
 BillsPC_Withdraw:
 	ld hl, .MenuDataHeader
-	call CopyMenuDataHeader
+	call CopyMenuHeader
 	ld a, [wMenuCursorY]
 	ld [wMenuCursorBuffer], a
 	call VerticalMenu
@@ -562,7 +562,7 @@ _MovePKMNWithoutMail:
 
 .MoveMonWOMailSubmenu:
 	ld hl, .MenuDataHeader
-	call CopyMenuDataHeader
+	call CopyMenuHeader
 	ld a, [wMenuCursorY]
 	ld [wMenuCursorBuffer], a
 	call VerticalMenu
@@ -879,7 +879,7 @@ BillsPC_PlaceString:
 	push de
 	hlcoord 0, 15
 	lb bc, 1, 18
-	call TextBox
+	call Textbox
 	pop de
 	hlcoord 1, 16
 	rst PlaceString
@@ -896,7 +896,7 @@ BillsPC_MoveMonWOMail_BoxNameAndArrows:
 BillsPC_BoxName:
 	hlcoord 8, 0
 	lb bc, 1, 10
-	call TextBox
+	call Textbox
 
 	ld a, [wBillsPC_LoadedBox]
 	and a
@@ -1191,7 +1191,7 @@ endr
 BillsPC_RefreshTextboxes:
 	hlcoord 8, 2
 	lb bc, 10, 10
-	call TextBox
+	call Textbox
 
 	hlcoord 8, 2
 	ld [hl], "└"
@@ -1803,7 +1803,7 @@ DepositPokemon:
 	call ClearBox
 	hlcoord 0, 15
 	lb bc, 1, 18
-	call TextBox
+	call Textbox
 	call ApplyTilemapInVBlank
 	and a
 	ret
@@ -1858,7 +1858,7 @@ TryWithdrawPokemon:
 	call ClearBox
 	hlcoord 0, 15
 	lb bc, 1, 18
-	call TextBox
+	call Textbox
 	call ApplyTilemapInVBlank
 	and a
 	ret
@@ -2204,12 +2204,12 @@ _ChangeBox:
 	call BillsPC_PrintBoxName
 	call BillsPC_PlaceChooseABoxString
 	ld hl, _ChangeBox_menudataheader
-	call CopyMenuDataHeader
+	call CopyMenuHeader
 	xor a
 	ld [wMenuScrollPosition], a
 	hlcoord 0, 4
 	lb bc, 8, 9
-	call TextBox
+	call Textbox
 	call ScrollingMenu
 	ld a, [wMenuJoypad]
 	cp B_BUTTON
@@ -2274,7 +2274,7 @@ GetBoxName:
 BillsPC_PrintBoxCountAndCapacity:
 	hlcoord 11, 7
 	lb bc, 5, 7
-	call TextBox
+	call Textbox
 	ld a, [wMenuSelection]
 	cp -1
 	ret z
@@ -2304,7 +2304,7 @@ BillsPC_PrintBoxCountAndCapacity:
 BillsPC_PrintBoxCountAndCapacityInsideBox:
 	hlcoord 0, 0
 	lb bc, 1, 5
-	call TextBox
+	call Textbox
 	ld a, [wBillsPC_LoadedBox]
 	and a
 	jr z, .party
@@ -2419,7 +2419,7 @@ BoxSelectionJumpIn:
 BillsPC_PrintBoxName:
 	hlcoord 0, 0
 	lb bc, 2, 18
-	call TextBox
+	call Textbox
 	hlcoord 1, 2
 	ld de, .Current
 	rst PlaceString
@@ -2435,7 +2435,7 @@ BillsPC_PrintBoxName:
 
 BillsPC_ChangeBoxSubmenu:
 	ld hl, .MenuDataHeader
-	call LoadMenuDataHeader
+	call LoadMenuHeader
 	call VerticalMenu
 	call ExitMenu
 	ret c
@@ -2509,7 +2509,7 @@ BillsPC_PlaceChangeBoxString:
 	push de
 	hlcoord 0, 14
 	lb bc, 2, 18
-	call TextBox
+	call Textbox
 	pop de
 	hlcoord 1, 16
 	rst PlaceString

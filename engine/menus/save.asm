@@ -3,13 +3,13 @@ SaveMenu:
 	call SFXDelayFrames
 	call LoadStandardMenuHeader
 	farcall DisplaySaveInfoOnSave
-	call SpeechTextBox
+	call SpeechTextbox
 	call UpdateSprites
 	call ApplyTilemap
 	ld hl, UnknownText_0x15283
 	ld b, BANK(UnknownText_0x15283)
 	call MapTextbox
-	call LoadMenuTextBox
+	call LoadMenuTextbox
 	call YesNoBox
 	ld a, [wMenuCursorY]
 	dec a
@@ -45,7 +45,7 @@ SaveAfterLinkTrade:
 ChangeBoxSaveGame:
 	push de
 	ld hl, UnknownText_0x152a1
-	call MenuTextBox
+	call MenuTextbox
 	call YesNoBox
 	call ExitMenu
 	jr c, .refused
@@ -116,7 +116,7 @@ MovePkmnWOMail_InsertMon_SaveGame:
 
 StartMovePkmnWOMail_SaveGame:
 	ld hl, UnknownText_0x152a6
-	call MenuTextBox
+	call MenuTextbox
 	call YesNoBox
 	call ExitMenu
 	jr c, .refused
@@ -171,7 +171,7 @@ AskOverwriteSaveFile:
 	ld hl, UnknownText_0x15297
 	ld b, BANK(UnknownText_0x15297)
 	call MapTextbox
-	call LoadMenuTextBox
+	call LoadMenuTextbox
 	call YesNoBox
 	ld a, [wMenuCursorY]
 	dec a

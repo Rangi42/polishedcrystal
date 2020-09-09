@@ -42,7 +42,7 @@ BattleCommand_bugbite:
 	farcall ItemRecoveryAnim
 	call GetCurItemName
 	ld hl, BattleText_UserAteItem
-	call StdBattleTextBox
+	call StdBattleTextbox
 	call ConsumeOpponentItem
 	ld hl, NothingHappenedText
-	jp StdBattleTextBox
+	jp StdBattleTextbox

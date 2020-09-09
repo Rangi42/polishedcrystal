@@ -32,7 +32,7 @@ BattleCommand_teleport:
 	call SetBattleDraw
 
 	ld hl, FledFromBattleText
-	jp StdBattleTextBox
+	jp StdBattleTextbox
 
 .trainer_battle
 	call CheckAnyOtherAliveMons

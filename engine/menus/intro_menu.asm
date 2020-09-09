@@ -735,7 +735,7 @@ InitGender:
 	call PrintText
 
 	ld hl, .MenuDataHeader
-	call LoadMenuDataHeader
+	call LoadMenuHeader
 	call ApplyAttrAndTilemapInVBlank
 	call VerticalMenu
 	call CloseWindow

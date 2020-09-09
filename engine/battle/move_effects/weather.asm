@@ -24,4 +24,4 @@ StartWeather:
 	call GetItemBoostedDuration
 	ld [wWeatherCount], a
 	call AnimateCurrentMove
-	jp StdBattleTextBox ; hl has text pointer already
+	jp StdBattleTextbox ; hl has text pointer already

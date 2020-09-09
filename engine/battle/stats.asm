@@ -95,7 +95,7 @@ FarChangeStat:
 	farcall ShowPotentialAbilityActivation
 	farcall AnimateFailedMove
 	ld hl, ProtectedByMistText
-	jp StdBattleTextBox
+	jp StdBattleTextbox
 
 .check_ability
 	call GetOpponentAbilityAfterMoldBreaker
@@ -125,7 +125,7 @@ FarChangeStat:
 	farcall ShowEnemyAbilityActivation
 	farcall AnimateFailedMove
 	ld hl, DoesntAffectText
-	call StdBattleTextBox
+	call StdBattleTextbox
 	farjp EnableAnimations
 
 .ability_done
@@ -195,7 +195,7 @@ DoPrintStatChange:
 	ld l, e
 	push af
 	push bc
-	call StdBattleTextBox
+	call StdBattleTextbox
 	pop bc
 	pop af
 	bit STAT_TARGET_F, b
@@ -212,7 +212,7 @@ DoPrintStatChange:
 	ret
 
 .printmsg
-	jp StdBattleTextBox
+	jp StdBattleTextbox
 
 GetStatRaiseMessage:
 	ld a, [wLoweredStat]

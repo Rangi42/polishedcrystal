@@ -46,7 +46,7 @@ endc
 	call PrintText
 	hlcoord 3, 7
 	lb bc, 2, 15
-	call TextBox
+	call Textbox
 	hlcoord 11, 7
 	ld [hl], "▲"
 	hlcoord 11, 10
@@ -76,7 +76,7 @@ endc
 	call PrintText
 	hlcoord 11, 7
 	lb bc, 2, 7
-	call TextBox
+	call Textbox
 	hlcoord 15, 7
 	ld [hl], "▲"
 	hlcoord 15, 10
@@ -359,13 +359,13 @@ Special_SetDayOfWeek:
 .loop
 	hlcoord 0, 12
 	lb bc, 4, 18
-	call TextBox
+	call Textbox
 	call LoadStandardMenuHeader
 	ld hl, .WhatDayIsItText
 	call PrintText
 	hlcoord 9, 3
 	lb bc, 2, 9
-	call TextBox
+	call Textbox
 	hlcoord 14, 3
 	ld [hl], "▲"
 	hlcoord 14, 6

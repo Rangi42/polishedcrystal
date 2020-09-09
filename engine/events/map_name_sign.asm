@@ -97,13 +97,13 @@ InitMapNameSign::
 	ld a, [wPrevLandmark]
 	cp c
 	ret z
-	and a ; cp SPECIAL_MAP
+	and a ; cp LANDMARK_SPECIAL
 	ret
 
 .CheckSpecialMap:
 	cp -1
 	ret z
-	and a ; cp SPECIAL_MAP
+	and a ; cp LANDMARK_SPECIAL
 	ret z
 	cp RADIO_TOWER
 	ret z
@@ -257,7 +257,7 @@ endr
 	cp " "
 	jr nz, .not_space
 .space
-	ld hl, TextBoxSpaceGFX
+	ld hl, TextboxSpaceGFX
 	jr .got_tile
 .not_space
 	sub $80

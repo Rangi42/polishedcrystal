@@ -7,7 +7,7 @@ PokemonCenterPC:
 	ld hl, PokeCenterPCText_AccessWhosePC
 	call PC_DisplayTextWaitMenu
 	ld hl, .TopMenu
-	call LoadMenuDataHeader
+	call LoadMenuHeader
 .loop
 	xor a
 	ldh [hBGMapMode], a
@@ -199,7 +199,7 @@ Function15715:
 	ld [wPCItemsCursor], a
 	ld [wPCItemsScrollPosition], a
 	ld hl, KrissPCMenuData
-	call LoadMenuDataHeader
+	call LoadMenuHeader
 .asm_15722
 	call UpdateTimePals
 	call DoNthMenu
@@ -233,7 +233,7 @@ KrissPCMenuData:
 	dw KrisDepositItemMenu,  .DepositItem
 	dw KrisTossItemMenu,     .TossItem
 	dw KrisMailBoxMenu,      .MailBox
-	dw KrisDecorationMenu,   .Decoration
+	dw PlayerDecorationMenu,   .Decoration
 	dw KrisLogOffMenu,       .LogOff
 	dw KrisLogOffMenu,       .TurnOff
 
@@ -276,7 +276,7 @@ PC_DisplayTextWaitMenu:
 	push af
 	set NO_TEXT_SCROLL, a
 	ld [wOptions1], a
-	call MenuTextBox
+	call MenuTextbox
 	pop af
 	ld [wOptions1], a
 	ret
@@ -302,7 +302,7 @@ KrisWithdrawItemMenu:
 
 .Submenu:
 	ld hl, .HowManyText
-	call MenuTextBox
+	call MenuTextbox
 	farcall SelectQuantityToToss
 	call ExitMenu
 	call ExitMenu
@@ -323,14 +323,14 @@ KrisWithdrawItemMenu:
 	call TossItem
 	predef PartyMonItemName
 	ld hl, .WithdrewText
-	call MenuTextBox
+	call MenuTextbox
 	xor a
 	ldh [hBGMapMode], a
 	jp ExitMenu
 
 .PackFull:
 	ld hl, .NoRoomText
-	jp MenuTextBoxBackup
+	jp MenuTextboxBackup
 
 .HowManyText:
 	text_jump _KrissPCHowManyWithdrawText
@@ -359,8 +359,8 @@ KrisTossItemMenu:
 	xor a
 	ret
 
-KrisDecorationMenu:
-	farcall _KrisDecorationMenu
+PlayerDecorationMenu:
+	farcall _PlayerDecorationMenu
 	ld a, c
 	and a
 	ret z
@@ -398,7 +398,7 @@ KrisDepositItemMenu:
 	farcall HasNoItems
 	ret nc
 	ld hl, .NoItemsInBag
-	call MenuTextBoxBackup
+	call MenuTextboxBackup
 	scf
 	ret
 
@@ -451,7 +451,7 @@ KrisDepositItemMenu:
 
 .DepositItem_:
 	ld hl, .HowManyText
-	call MenuTextBox
+	call MenuTextbox
 	farcall SelectQuantityToToss
 	push af
 	call ExitMenu
@@ -514,10 +514,10 @@ PCItemsJoypad:
 	xor a
 	ld [wSpriteUpdatesEnabled], a
 	ld hl, .PCItemsMenuData
-	call CopyMenuDataHeader
+	call CopyMenuHeader
 	hlcoord 0, 0
 	lb bc, 10, 18
-	call TextBox
+	call Textbox
 	ld a, [wPCItemsCursor]
 	ld [wMenuCursorBuffer], a
 	ld a, [wPCItemsScrollPosition]
@@ -590,7 +590,7 @@ PCItemsJoypad:
 	dba UpdateItemDescription
 
 PC_DisplayText:
-	call MenuTextBox
+	call MenuTextbox
 	jp ExitMenu
 
 PokeCenterPCText_BootedUpPC:

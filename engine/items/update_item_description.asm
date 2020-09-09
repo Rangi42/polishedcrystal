@@ -19,7 +19,7 @@ UpdateItemDescription:
 	ld [wCurSpecies], a
 	hlcoord 0, 12
 	lb bc, 4, SCREEN_WIDTH - 2
-	call TextBox
+	call Textbox
 	ld a, [wMenuSelection]
 	cp -1
 	ret z
@@ -49,7 +49,7 @@ UpdateTMHMDescription:
 	ld [wCurSpecies], a
 	hlcoord 0, 12
 	lb bc, 4, SCREEN_WIDTH - 2
-	call TextBox
+	call Textbox
 	ld a, [wMenuSelection]
 	cp -1
 	ret z
@@ -64,7 +64,7 @@ UnownedTMString:
 UpdateKeyItemDescription:
 	hlcoord 0, 12
 	lb bc, 4, SCREEN_WIDTH - 2
-	call TextBox
+	call Textbox
 	; ld a, [wMenuSelection]
 	; cp -1
 	; ret z

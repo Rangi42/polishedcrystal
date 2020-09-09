@@ -4,7 +4,7 @@ landmark: MACRO
 ENDM
 
 Landmarks:
-	landmark   0,   0, SpecialMapName
+	dbbw       0,   0, SpecialMapName
 	landmark 148, 116, NewBarkTownName
 	landmark 128, 116, Route29Name
 	landmark 108, 116, CherrygroveCityName

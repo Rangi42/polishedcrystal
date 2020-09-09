@@ -287,7 +287,7 @@ endr
 
 	push hl
 	ld hl, Text_EvolvedIntoPKMN
-	call PrintTextBoxText
+	call PrintTextboxText
 
 	ld de, MUSIC_NONE
 	call PlayMusic

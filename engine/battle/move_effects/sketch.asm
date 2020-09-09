@@ -92,7 +92,7 @@ BattleCommand_sketch:
 	farcall SetDisableEncoreMoves
 
 	ld hl, SketchedText
-	jp StdBattleTextBox
+	jp StdBattleTextbox
 
 .fail
 	call AnimateFailedMove

@@ -7,7 +7,7 @@ NUM_REGIONS EQU const_value
 
 	const_def
 
-	const SPECIAL_MAP        ; 00
+	const LANDMARK_SPECIAL	          ; 00
 
 	const NEW_BARK_TOWN      ; 01
 	const ROUTE_29           ; 02

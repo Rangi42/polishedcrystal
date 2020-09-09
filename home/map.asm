@@ -889,13 +889,13 @@ MapTextbox::
 	rst Bankswitch
 
 	push hl
-	call SpeechTextBox
+	call SpeechTextbox
 	call SafeUpdateSprites
 	ld a, 1
 	ldh [hOAMUpdate], a
 	call ApplyTilemap
 	pop hl
-	call PrintTextBoxText
+	call PrintTextboxText
 	xor a
 	ldh [hOAMUpdate], a
 
@@ -1881,7 +1881,7 @@ ReturnToMapWithSpeechTextbox::
 	call ReloadTilesetAndPalettes
 	hlcoord 0, 12
 	lb bc, 4, 18
-	call TextBox
+	call Textbox
 	ld hl, wVramState
 	set 0, [hl]
 	call UpdateSprites
@@ -2116,7 +2116,7 @@ GetCurrentLandmark::
 	ld a, [wMapNumber]
 	ld c, a
 	call GetWorldMapLocation
-	and a ; cp SPECIAL_MAP
+	and a ; cp LANDMARK_SPECIAL
 	ret nz
 
 ; In a special map, get the backup map group / map id

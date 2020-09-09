@@ -21,7 +21,7 @@ BattleCommand_skillswap:
 	call AnimateCurrentMove
 
 	ld hl, SwappedAbilitiesText
-	call StdBattleTextBox
+	call StdBattleTextbox
 
 	; Don't use RunBothActivationAbilities, because
 	; Skill Swap always runs the user first

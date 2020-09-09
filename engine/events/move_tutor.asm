@@ -36,7 +36,7 @@ Special_MoveTutor:
 
 CheckCanLearnMoveTutorMove:
 	ld hl, .MenuDataHeader
-	call LoadMenuDataHeader
+	call LoadMenuHeader
 
 	ld a, MON_FORM
 	call GetPartyParamLocation

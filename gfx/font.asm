@@ -44,7 +44,7 @@ INCBIN "gfx/battle/types.1bpp"
 CategoryIconGFX:
 INCBIN "gfx/battle/categories.2bpp"
 
-TextBoxSpaceGFX::
+TextboxSpaceGFX::
 INCBIN "gfx/frames/space.1bpp"
 
 MapEntryFrameGFX:

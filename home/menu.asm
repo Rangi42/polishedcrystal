@@ -155,7 +155,7 @@ MenuBox::
 	call GetMenuBoxDims
 	dec b
 	dec c
-	jp TextBox
+	jp Textbox
 
 GetMenuTextStartCoord::
 	ld a, [wMenuBorderTopCoord]
@@ -255,7 +255,7 @@ Coord2Absolute:
 	rst AddNTimes
 	ret
 
-CopyMenuDataHeader::
+CopyMenuHeader::
 	ld de, wMenuHeader
 	ld bc, wMenuHeaderEnd - wMenuHeader
 	rst CopyBytes
@@ -263,26 +263,26 @@ CopyMenuDataHeader::
 	ld [wMenuDataBank], a
 	ret
 
-MenuTextBox::
+MenuTextbox::
 	push hl
-	call LoadMenuTextBox
+	call LoadMenuTextbox
 	pop hl
 	jp PrintText
 
-MenuTextBoxBackup::
-	call MenuTextBox
+MenuTextboxBackup::
+	call MenuTextbox
 	jp CloseWindow
 
-LoadMenuTextBox::
-	ld hl, MenuTextBoxDataHeader
-	jr LoadMenuDataHeader
+LoadMenuTextbox::
+	ld hl, MenuTextboxDataHeader
+	jr LoadMenuHeader
 
 LoadStandardMenuHeader::
 	ld hl, StandardMenuDataHeader
 	; fallthrough
 
-LoadMenuDataHeader::
-	call CopyMenuDataHeader
+LoadMenuHeader::
+	call CopyMenuHeader
 	jp PushWindow
 
 StandardMenuDataHeader:
@@ -292,7 +292,7 @@ StandardMenuDataHeader:
 	dw 0
 	db 1 ; default option
 
-MenuTextBoxDataHeader:
+MenuTextboxDataHeader:
 	db $40 ; tile backup
 	db 12, 0 ; start coords
 	db 17, 19 ; end coords
@@ -327,7 +327,7 @@ VerticalMenu::
 	ret
 
 GetMenu2::
-	call LoadMenuDataHeader
+	call LoadMenuHeader
 	call VerticalMenu
 	call CloseWindow
 	ld a, [wMenuCursorY]
@@ -346,7 +346,7 @@ PlaceYesNoBox::
 ; Return nc (yes) or c (no).
 	push bc
 	ld hl, YesNoMenuDataHeader
-	call CopyMenuDataHeader
+	call CopyMenuHeader
 	pop bc
 
 .okay
@@ -401,7 +401,7 @@ OffsetMenuDataHeader::
 
 _OffsetMenuDataHeader::
 	push de
-	call CopyMenuDataHeader
+	call CopyMenuHeader
 	pop de
 	ld a, [wMenuBorderLeftCoord]
 	ld h, a
@@ -698,8 +698,8 @@ PlayClickSFX::
 	pop de
 	ret
 
-MenuTextBoxWaitButton::
-	call MenuTextBox
+MenuTextboxWaitButton::
+	call MenuTextbox
 	call WaitButton
 	jp ExitMenu
 

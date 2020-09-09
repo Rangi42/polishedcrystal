@@ -9,7 +9,7 @@ _ResetClock:
 	ld hl, .text_askreset
 	call PrintText
 	ld hl, .NoYes_MenuDataHeader
-	call CopyMenuDataHeader
+	call CopyMenuHeader
 	call VerticalMenu
 	ret c
 	ld a, [wMenuCursorY]

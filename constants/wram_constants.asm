@@ -106,6 +106,18 @@ PLAYERSPRITESETUP_CUSTOM_FACING_F   EQU 5
 PLAYERSPRITESETUP_SKIP_RELOAD_GFX_F EQU 6
 PLAYERSPRITESETUP_RESET_ACTION_F    EQU 7
 
+; wMapStatus::
+	const_def
+	const MAPSTATUS_START  ; 0
+	const MAPSTATUS_ENTER  ; 1
+	const MAPSTATUS_HANDLE ; 2
+	const MAPSTATUS_DONE   ; 3
+
+; wMapEventStatus::
+	const_def
+	const MAPEVENTS_ON  ; 0
+	const MAPEVENTS_OFF ; 1
+
 ; wScriptFlags:
 SCRIPT_RUNNING EQU 2
 
@@ -116,13 +128,36 @@ SCRIPT_WAIT_MOVEMENT EQU 2
 SCRIPT_WAIT EQU 3
 
 ; wCurDay:
-SUNDAY    EQU 0
-MONDAY    EQU 1
-TUESDAY   EQU 2
-WEDNESDAY EQU 3
-THURSDAY  EQU 4
-FRIDAY    EQU 5
-SATURDAY  EQU 6
+	const_def
+	const SUNDAY    ; 0
+	const MONDAY    ; 1
+	const TUESDAY   ; 2
+	const WEDNESDAY ; 3
+	const THURSDAY  ; 4
+	const FRIDAY    ; 5
+	const SATURDAY  ; 6
+
+; wStatusFlags::
+	const_def
+	const STATUSFLAGS_POKEDEX_F                  ; 0
+	const STATUSFLAGS_UNOWN_DEX_F                ; 1
+	const STATUSFLAGS_FLASH_F                    ; 2
+	const STATUSFLAGS_CAUGHT_POKERUS_F           ; 3
+	const STATUSFLAGS_ROCKET_SIGNAL_F            ; 4
+	const STATUSFLAGS_NO_WILD_ENCOUNTERS_F       ; 5
+	const STATUSFLAGS_HALL_OF_FAME_F             ; 6
+	const STATUSFLAGS_BUG_CONTEST_ON_F           ; 7 (unused?)
+
+; wStatusFlags2::
+	const_def
+	const STATUSFLAGS2_ROCKETS_IN_RADIO_TOWER_F  ; 0
+	const STATUSFLAGS2_SAFARI_GAME_F             ; 1
+	const STATUSFLAGS2_BUG_CONTEST_TIMER_F       ; 2
+	const STATUSFLAGS2_SEEN_SHAMOUTI_F           ; 3
+	const STATUSFLAGS2_BIKE_SHOP_CALL_F          ; 4
+	const STATUSFLAGS2_CAN_USE_SWEET_SCENT_F     ; 5
+	const STATUSFLAGS2_EXORCISED_LAV_RADIO_F     ; 6
+	const STATUSFLAGS2_ROCKETS_IN_MAHOGANY_F     ; 7
 
 ; wMapObjects:
 PLAYER_OBJECT EQU 0

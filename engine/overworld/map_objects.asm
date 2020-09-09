@@ -2197,7 +2197,7 @@ MaskAllObjectStructs:
 
 UpdateCurObjectData:
 	push bc
-	call CheckCurSpriteCoveredByTextBox
+	call CheckCurSpriteCoveredByTextbox
 	pop bc
 	jr c, SetFacing_Standing
 	call IsObjectOnScreen
@@ -2258,7 +2258,7 @@ IsObjectOnScreen:
 	scf
 	ret
 
-CheckCurSpriteCoveredByTextBox:
+CheckCurSpriteCoveredByTextbox:
 ; x coord
 	ld a, [wPlayerBGMapOffsetX]
 	ld d, a
