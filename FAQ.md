@@ -7,9 +7,27 @@ If you have a question about playing Polished Crystal, or think you've found a b
 > — Tsunekazu Ishihara, "[Iwata Asks – Pokémon HeartGold Version & SoulSilver Version](https://www.nintendo.co.uk/Iwata-Asks/Iwata-Asks-Pokemon-HeartGold-Version-SoulSilver-Version/Iwata-Asks-Pokemon-HeartGold-Version-SoulSilver-Version/4-The-Power-of-Science-is-Staggering-/4-The-Power-of-Science-is-Staggering--226003.html)"
 
 
-### Is there a Pokédex document I can refer to?
+### Which file do I need to play?
 
-The game's data files do a fairly good job of listing things you'll want to know.
+The [nightly 3.0.0 beta release](https://github.com/Rangi42/polishedcrystal/releases/tag/v3.0.0-beta-nightly) provides .gbc files and .sym files. You only need a .gbc file to play; they're ROMs, not patches. I recommend playing `polishedcrystal-3.0.0-beta-xxxxxxxx.gbc`, or `polishedcrystal-3.0.0-beta-faithful-xxxxxxxx.gbc` if you want a more faithful canon experience, without changes to Pokémon base stats or types.
+
+Don't download the debug ROMs; they're for beta testing, not start-to-finish playthroughs. Although if you want to help test for bugs, get a debug ROM, talk to your room's radio to unlock many things, and hold A+B to wak through walls.
+
+Remember the commit hash at the end of the nightly filename to identify which code is running.
+
+The [2.2.0 release](https://github.com/Rangi42/polishedcrystal/releases/tag/v2.2.0) provides .ips patch files. Apply these to a default Crystal ROM with a tool like [Lunar IPS](http://fusoya.eludevisibility.org/lips/) (for Windows), [MultiPatch](http://projects.sappharad.com/tools/multipatch.html) (for OS X), or [UniPatcher](https://play.google.com/store/apps/details?id=org.emunix.unipatcher&hl=en) (for Android).
+
+This is the ROM you should use for patching 2.2.0:
+
+* Pokémon - Crystal Version (UE) (V1.0) [C][!].gbc  
+  (`md5: 9f2922b235a5eeb78d65594e82ef5dde`)
+
+It's identical to the one built by the [pokecrystal](https://github.com/pret/pokecrystal) project.
+
+
+### Is there documentation for all the {Pokémon, items, moves, etc}?
+
+The game's [data files](https://github.com/Rangi42/polishedcrystal/tree/master/data/) do a fairly good job of listing things you'll want to know. Some highlights:
 
 * [Base stats and TM learnsets](data/pokemon/base_stats/)
 * [Level-up learnsets and evolution methods](data/pokemon/evos_attacks.asm)
@@ -18,6 +36,11 @@ The game's data files do a fairly good job of listing things you'll want to know
 * [TM+HM+tutor list](data/moves/tmhm_moves.asm)
 * [Wild Pokémon](data/wild/)
 * [Hidden Grottoes](data/events/hidden_grottoes/grottoes.asm)
+
+
+### My Pokémon is a different color, is it shiny?
+
+There's only a 1 in 4,096 chance to encounter a shiny Pokémon, and they'll be marked with a star next to their name. You're probably noticing the effect of the **IVs vary colors** option (see below).
 
 
 ### What are the options at the start of a new game?
@@ -110,4 +133,8 @@ Those are opened up after you catch all 28 Unown and talk to the scientist who g
 
 ### I don't like non-canon Pokémon types!
 
-I was hesitant to make original changes like this, because the goal is to be an improved Crystal version, not a new game. In the end I made two versions, one regular (with changes) and one "faithful" (with original typings).
+I was hesitant to make original changes like this, because the goal is to be an improved Crystal version, not a new game. In the end I made two versions, one regular and one "faithful".
+
+The regular version makes creative changes to Pokémon base stats and types, and to some move properties, mostly inspired by [Drayano's Sacred Gold and Storm Silver](https://gbatemp.net/threads/pokemon-sacred-gold-storm-silver.327567/). It also improves some translated terms that [Nob Ogasawara](https://twitter.com/dougdinsdale) [complained about](https://lparchive.org/Pokemon-Blue/code.html).
+
+The faithful version does not change those things, besides updating stats to the latest canon generation.

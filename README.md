@@ -13,34 +13,18 @@ I've had vague plans to make a Pokémon game for years. I'm very impressed by th
 
 ## Download and Play
 
-The current beta version is **3.0.0**. It has some incomplete original content and known bugs, but it's playable from start to finish. Download the [nightly release](https://github.com/Rangi42/polishedcrystal/releases/tag/v3.0.0-beta-nightly) to get the very latest ROM, up-to-date with the `master` code branch. (You only need a .gbc file, not a .sym file. Don't download a debug ROM unless you want to help debug the game; if so, talk to your room's radio to unlock many things, and hold A+B to wak through walls. Remember the commit hash at the end of the nightly filename to identify which code is running.)
+The current beta version is **3.0.0**. It has some incomplete original content and known bugs, but it's playable from start to finish. Download the [nightly release](https://github.com/Rangi42/polishedcrystal/releases/tag/v3.0.0-beta-nightly) to get the very latest ROM, up-to-date with the `master` code branch.
 
-The most recent official version is [2.2.0](https://github.com/Rangi42/polishedcrystal/releases/tag/v2.2.0) as of September 20, 2016. [The changelog](CHANGELOG.md) lists all changes since then.
+The most recent official version is [2.2.0](https://github.com/Rangi42/polishedcrystal/releases/tag/v2.2.0) as of September 20, 2016. [The changelog](CHANGELOG.md) lists all changes since then. I recommend playing the 3.0.0 beta instead.
 
-To play, download the .ips patch file, and use a tool like [Lunar IPS](http://fusoya.eludevisibility.org/lips/) (for Windows), [MultiPatch](http://projects.sappharad.com/tools/multipatch.html) (for OS X), or [UniPatcher](https://play.google.com/store/apps/details?id=org.emunix.unipatcher&hl=en) (for Android) to apply the patch to a default Crystal ROM.
+If you want to do a [Nuzlocke Challenge](http://bulbapedia.bulbagarden.net/wiki/Nuzlocke_Challenge), check out Nuzlocke mode in the Option menu!
 
-This is the ROM you should use:
-
-* Pokémon - Crystal Version (UE) (V1.0) [C][!].gbc  
-  (`md5: 9f2922b235a5eeb78d65594e82ef5dde`)
-
-It's identical to the one built by the [pokecrystal](https://github.com/pret/pokecrystal) project.
-
-*If you want to do a [Nuzlocke Challenge](http://bulbapedia.bulbagarden.net/wiki/Nuzlocke_Challenge), check out Nuzlocke mode in the Option menu!*
-
-There are two patches for Polished Crystal. The "faithful" patch does not change any Pokémon base stats or move attributes beyond the updates in Gen VI. The regular patch has some custom changes for more diverse and viable Pokémon.
-
-* [Pokémon Polished Crystal 2.2.0](patches/polishedcrystal-2.2.0.ips)  
-  (IPS patch file `md5: 043769cc7e1a0ccfad635ff72b0ab8d0`)  
-  (Patched GBC ROM `md5: 9d3a3026bc3730cdf5d813b0bfe49697`)
-* [Pokémon Polished Crystal (Faithful) 2.2.0](patches/polishedcrystal-faithful-2.2.0.ips)  
-  (IPS patch file `md5: 5cbd4bef0e03936291f40b14c75b47d3`)  
-  (Patched GBC ROM `md5: cb5921d6646d2adfd302d8957e5e39af`)
+*If you have any questions about these steps, [read the FAQ](FAQ.md)!*
 
 
 ## Features
 
-A full list of features is in [FEATURES.md](FEATURES.md). Some highlights:
+A full list of features is in [FEATURES.md](FEATURES.md). Features new to the beta are in [CHANGELOG.md](CHANGELOG.md). Some highlights:
 
 * 253 Pokémon, including some new evolutions.
 * 48 new moves.
