@@ -22,7 +22,10 @@ PAIRS = {
 # Other useful utility functions for implementing conditions
 
 def isVolatile(code):
-	return any(r in code for r in {'[hli]', '[hld]', '[rJOYP]', '[rBGPD]', '[rOBPD]'})
+	return any(r in code for r in {
+		'[hli]', '[hld]', '[hl+]', '[hl-]',
+		'[rJOYP]', '[rBGPD]', '[rOBPD]'
+	})
 
 # Each line has five properties:
 # - num (1, 2, 3, etc)
