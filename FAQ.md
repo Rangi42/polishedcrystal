@@ -27,7 +27,7 @@ It's identical to the one built by the [pokecrystal](https://github.com/pret/pok
 
 ### Is there documentation for all the {Pokémon, items, moves, etc}?
 
-The game's [data files](https://github.com/Rangi42/polishedcrystal/tree/master/data/) do a fairly good job of listing things you'll want to know. Some highlights:
+The game's [data files](data/) do a fairly good job of listing things you'll want to know. Some highlights:
 
 * [Base stats and TM learnsets](data/pokemon/base_stats/)
 * [Level-up learnsets and evolution methods](data/pokemon/evos_attacks.asm)
@@ -36,6 +36,8 @@ The game's [data files](https://github.com/Rangi42/polishedcrystal/tree/master/d
 * [TM+HM+tutor list](data/moves/tmhm_moves.asm)
 * [Wild Pokémon](data/wild/)
 * [Hidden Grottoes](data/events/hidden_grottoes/grottoes.asm)
+
+For information that's not all in one file, like [faithful version differences](https://github.com/Rangi42/polishedcrystal/search?q=DEF+FAITHFUL), you can use GitHub's search in this repository.
 
 
 ### My Pokémon is a different color, is it shiny?
