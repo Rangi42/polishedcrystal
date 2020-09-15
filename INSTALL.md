@@ -50,7 +50,7 @@ Python 2.7 is required.
 ```bash
 sudo apt-get install make python gcc git bison
 
-git clone https://github.com/rednex/rgbds.git
+git clone https://github.com/gbdev/rgbds.git
 cd rgbds
 sudo make install
 cd ..
@@ -79,7 +79,7 @@ In **Terminal**, run:
 ```bash
 xcode-select --install
 
-git clone https://github.com/rednex/rgbds.git
+git clone https://github.com/gbdev/rgbds.git
 cd rgbds
 sudo make install
 cd ..
