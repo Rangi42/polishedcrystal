@@ -625,7 +625,7 @@ BattleAnimCmd_5GFX:
 	push hl
 	ld l, a
 	ld h, $0
-rept 4
+rept 4 ; no-optimize hl|bc|de = a * 16 (rept) [size > speed]
 	add hl, hl
 endr
 	ld de, vTiles0 tile BATTLEANIM_BASE_TILE

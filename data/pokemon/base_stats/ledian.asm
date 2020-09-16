@@ -21,7 +21,6 @@ endc
 	db FAST ; growth rate
 	dn INSECT, INSECT ; egg groups
 
-	; ev_yield
 	ev_yield   0,   0,   0,   0,   0,   2
 	;         hp, atk, def, spd, sat, sdf
 

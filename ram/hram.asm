@@ -199,13 +199,13 @@ NEXTU
 hDX::  db
 hDY::  db
 hErr:: db
-NEXTU
-hVWFFlags:: db
 ENDU
 
 hCrashCode:: db
 
-	ds 12
+	ds 8
+
+hAppendVWFText:: ds 4
 
 hFunction::
 hFunctionJump::     db ; $c3 jp

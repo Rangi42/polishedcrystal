@@ -8,13 +8,10 @@
 	db MARANGABERRY ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
 	INCBIN "gfx/pokemon/rapidash_galarian/front.dimensions"
-	db RUN_AWAY ; ability 1
-	db PASTEL_VEIL ; ability 2
-	db ANTICIPATION ; hidden ability
+	abilities_for RAPIDASH_GALARIAN, RUN_AWAY, PASTEL_VEIL, ANTICIPATION
 	db MEDIUM_FAST ; growth rate
 	dn FIELD, FIELD ; egg groups
 
-	; ev_yield
 	ev_yield   0,   0,   0,   2,   0,   0
 	;         hp, atk, def, spd, sat, sdf
 

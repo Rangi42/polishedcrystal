@@ -22,7 +22,10 @@ PAIRS = {
 # Other useful utility functions for implementing conditions
 
 def isVolatile(code):
-	return any(r in code for r in {'[hli]', '[hld]', '[rJOYP]', '[rBGPD]', '[rOBPD]'})
+	return any(r in code for r in {
+		'[hli]', '[hld]', '[hl+]', '[hl-]',
+		'[rJOYP]', '[rBGPD]', '[rOBPD]'
+	})
 
 # Each line has five properties:
 # - num (1, 2, 3, etc)
@@ -74,17 +77,17 @@ patterns = {
 # 'a = 0': [
 # 	# Bad: ld a, 0
 # 	# Good: xor a (unless you need to preserve flags)
-# 	(lambda line1, prev: re.match(r'ld a, [%\$]?0+$', line1.code)),
+# 	(lambda line1, prev: re.match(r'ld a, [%\$&]?0+$', line1.code)),
 # ],
 'a++|a--': [
 	# Bad: add|sub 1
 	# Good: inc|dec a (unless you need to set the carry flag)
-	(lambda line1, prev: re.match(r'(?:add|sub) (?:a, )?[%\$]?0*1$', line1.code)),
+	(lambda line1, prev: re.match(r'(?:add|sub) (?:a, )?[%\$&]?0*1$', line1.code)),
 ],
 'a = ~a': [
 	# Bad: xor $ff
 	# Good: cpl
-	(lambda line1, prev: re.match(r'xor (?:255|-1|\$[Ff][Ff]|%11111111)$', line1.code)),
+	(lambda line1, prev: re.match(r'xor (?:255|-1|\$[Ff][Ff]|%11111111|&377)$', line1.code)),
 ],
 'a = N - a': [
 	# Bad: ld b, a / ld a, N / sub b (or other intermediate registers)
@@ -96,13 +99,20 @@ patterns = {
 ],
 'a = carry ? P : Q': [
 	# Bad: ld a, P / jr c|nc, .ok / ld a, Q / .ok
-	# Bad: ld a, P / jr c|nc, .ok / xor a / .ok
+	# Bad: ld a, P / jr c|nc, .ok / xor|inc|dec a / .ok
 	# Good: solutions involving sbc a
 	(lambda line1, prev: re.match(r'ld a, [^afbcdehl\[]', line1.code)),
 	(lambda line2, prev: re.match(r'j[rp] n?c,', line2.code)),
 	(lambda line3, prev: re.match(r'ld a, [^afbcdehl\[]', line3.code)
-		or line3.code == 'xor a'),
+		or line3.code in {'xor a', 'inc a', 'dec a'}),
 	(lambda line4, prev: line4.code.rstrip(':') == prev[1].code.split(',')[1].strip()),
+],
+'a++|a-- if carry': [
+	# Bad: jr nc, .ok / { inc|dec a }+ / .ok
+	# Good: adc|sbc 0
+	(lambda line1, prev: re.match(r'j[rp] nc,', line1.code)),
+	(lambda line2, prev: line2.code in {'inc a', 'dec a'}),
+	(1, lambda line3, prev: line3.code.rstrip(':') == prev[0].code.split(',')[1].strip()),
 ],
 'a = a >> 3': [
 	# Bad: srl a / srl a / srl a
@@ -117,13 +127,13 @@ patterns = {
 	(lambda line1, prev: re.match(r'ld ([bcdehl]|\[hl\]), a', line1.code)),
 	(lambda line2, prev: line2.code.startswith('ld a,')
 		and (not line2.code.startswith('ld a, [') or line2.code == 'ld a, [hl]')),
-	(lambda line3, prev: re.match(r'adc [%\$]?0+$', line3.code)),
+	(lambda line3, prev: re.match(r'adc [%\$&]?0+$', line3.code)),
 ],
 'a = carry + X': [
 	# Bad: ld b, a / ld a, 0 / adc c|N
 	# Good: ld b, a / adc c|N / sub b
 	(lambda line1, prev: re.match(r'ld ([bcdehl]|\[hl\]), a', line1.code)),
-	(lambda line2, prev: re.match(r'ld a, [%\$]?0+$', line2.code)),
+	(lambda line2, prev: re.match(r'ld a, [%\$&]?0+$', line2.code)),
 	(lambda line3, prev: line3.code.startswith('adc ')
 		and (not line3.code.startswith('adc [') or line3.code == 'adc [hl]')),
 ],
@@ -146,9 +156,9 @@ patterns = {
 	(lambda line1, prev: re.match(r'add (?:a, )?(?:[lce]|[^afbdh\[])', line1.code)),
 	(lambda line2, prev: re.match(r'ld [lce], a', line2.code)
 		and (lambda x: line2.code[3] == x or x not in 'lce')(prev[0].code.replace('add a,', 'add')[4])),
-	(lambda line3, prev: re.match(r'ld a, (?:[hbd]|[%\$]?0+$)', line3.code)
+	(lambda line3, prev: re.match(r'ld a, (?:[hbd]|[%\$&]?0+$)', line3.code)
 		and (line3.code[6] not in 'hbd' or line3.code[6] == PAIRS[prev[1].code[3]])),
-	(lambda line4, prev: re.match(r'adc (?:[hbd]|[%\$]?0+$)', line4.code)
+	(lambda line4, prev: re.match(r'adc (?:[hbd]|[%\$&]?0+$)', line4.code)
 		and (line4.code[4] not in 'hbd' or line4.code[4] == PAIRS[prev[1].code[3]])),
 	(lambda line5, prev: re.match(r'ld [hbd], a', line5.code)
 		and line5.code[3] == PAIRS[prev[1].code[3]]),
@@ -173,9 +183,39 @@ patterns = {
 		and (lambda x: line3.code[3] == prev[0].code[6])(prev[1].code.replace('sub a,', 'sub')[4])),
 	(lambda line4, prev: re.match(r'ld a, [hbd]', line4.code)
 		and line4.code[6] == PAIRS[prev[0].code[6]]),
-	(lambda line5, prev: re.match(r'sbc [%\$]?0+$', line5.code)),
+	(lambda line5, prev: re.match(r'sbc [%\$&]?0+$', line5.code)),
 	(lambda line6, prev: re.match(r'ld [hbd], a', line6.code)
 		and line6.code[3] == PAIRS[prev[0].code[6]]),
+],
+'hl|bc|de = a * 16': [
+	# Bad: ld l, a / ld h, 0 / add hl, hl / add hl, hl / add hl, hl / add hl, hl
+	# Good: solutions involving 'add a' or 'xor a' (if possible)
+	(lambda line1, prev: re.match(r'ld [lce], a', line1.code) or
+		re.match(r'ld [hbd], [%\$&]?0+$', line1.code)),
+	(lambda line2, prev: (re.match(r'ld [lce], a', line2.code) or
+		re.match(r'ld [hbd], [%\$&]?0+$', line2.code)) and
+		line2.code != prev[0].code and line2.code[3] == PAIRS[prev[0].code[3]]),
+	(lambda line3, prev: re.match(r'add (hl|bc|de), \1$', line3.code) and
+		line3.code[4] in {prev[0].code[3], PAIRS[prev[0].code[3]]}),
+	(lambda line4, prev: re.match(r'add (hl|bc|de), \1$', line4.code) and
+		line4.code[4] in {prev[0].code[3], PAIRS[prev[0].code[3]]}),
+	(lambda line5, prev: re.match(r'add (hl|bc|de), \1$', line5.code) and
+		line5.code[4] in {prev[0].code[3], PAIRS[prev[0].code[3]]}),
+	(lambda line6, prev: re.match(r'add (hl|bc|de), \1$', line6.code) and
+		line6.code[4] in {prev[0].code[3], PAIRS[prev[0].code[3]]}),
+],
+'hl|bc|de = a * 16 (rept)': [
+	# Bad: ld l, a / ld h, 0 / rept 4 / add hl, hl / endr
+	# Good: solutions involving 'add a' or 'xor a' (if possible)
+	(lambda line1, prev: re.match(r'ld [lce], a', line1.code) or
+		re.match(r'ld [hbd], [%\$&]?0+$', line1.code)),
+	(lambda line2, prev: (re.match(r'ld [lce], a', line2.code) or
+		re.match(r'ld [hbd], [%\$&]?0+$', line2.code)) and
+		line2.code != prev[0].code and line2.code[3] == PAIRS[prev[0].code[3]]),
+	(lambda line3, prev: line3.code.lower() == 'rept 4'),
+	(lambda line4, prev: re.match(r'add (hl|bc|de), \1$', line4.code) and
+		line4.code[4] in {prev[0].code[3], PAIRS[prev[0].code[3]]}),
+	(lambda line5, prev: line5.code.lower() == 'endr'),
 ],
 'hl *= 2': [
 	# Bad: sla l / rl h
@@ -192,8 +232,8 @@ patterns = {
 	(lambda line1, prev: re.match(r'ld a, \[[^hbd]', line1.code)),
 	(lambda line2, prev: re.match(r'ld [lh], a', line2.code)),
 	(lambda line3, prev: re.match(r'ld a, \[[^hbd]', line3.code)
-		and re.split(r'[^A-Za-z0-9_\.\$%]', line3.code[7:])[0] ==
-			re.split(r'[^A-Za-z0-9_\.\$%]', prev[0].code[7:])[0]),
+		and re.split(r'[^A-Za-z0-9_\.%\$&]', line3.code[7:])[0] ==
+			re.split(r'[^A-Za-z0-9_\.%\$&]', prev[0].code[7:])[0]),
 	(lambda line4, prev: re.match(r'ld [lh], a', line4.code)
 		and line4.code[3] == PAIRS[prev[1].code[3]]),
 ],
@@ -212,11 +252,11 @@ patterns = {
 # 	(lambda line2, prev: line2.code == 'ld [hl], a'),
 # ],
 '*hl++|*hl--': [
-	# Bad: ld a, [hl] / inc|dec a / ld [hl], a
+	# Bad: ld a, [hl] / { inc|dec a }+ / ld [hl], a
 	# Good: inc|dec [hl] (before ld a, [hl] if you need [hl] in a too)
 	(lambda line1, prev: line1.code == 'ld a, [hl]'),
 	(lambda line2, prev: line2.code in {'inc a', 'dec a'}),
-	(lambda line3, prev: line3.code == 'ld [hl], a'),
+	(1, lambda line3, prev: line3.code == 'ld [hl], a'),
 ],
 '*hl++|*hl-- = a': [
 	# Bad: ld [hl], a / inc|dec hl
@@ -234,8 +274,8 @@ patterns = {
 	# Bad: cp|or 0
 	# Bad: and $ff
 	# Good: and|or a
-	(lambda line1, prev: re.match(r'(?:cp|or) [%\$]?0+$', line1.code)
-		or re.match(r'and (?:255|-1|\$[Ff][Ff]|%11111111)$', line1.code)),
+	(lambda line1, prev: re.match(r'(?:cp|or) [%\$&]?0+$', line1.code)
+		or re.match(r'and (?:255|-1|\$[Ff][Ff]|%11111111|&377)$', line1.code)),
 ],
 'Tail call': [
 	# Bad: call Foo / ret (unless Foo messes with the stack)
@@ -316,7 +356,7 @@ patterns = {
 	# Good: and|or X / jr|jp nz, .foo / ld P, a (if possible)
 	(lambda line1, prev: line1.code.startswith('and ') or line1.code.startswith('or ')),
 	(lambda line2, prev: re.match(r'j[rp] nz,', line2.code)),
-	(lambda line3, prev: re.match(r'ld .+, [%\$]?0+$', line3.code)),
+	(lambda line3, prev: re.match(r'ld .+, [%\$&]?0+$', line3.code)),
 ],
 'Inefficient prefix opcodes': [
 	# Bad: rl|rlc|rr|rrc a (unless you need the z flag set for 0)
@@ -410,6 +450,9 @@ for filename in iglob('**/*.asm', recursive=True):
 			cur_line = Line(i+1, code, comment, text, context)
 			# Check the condition for the current state
 			condition = conditions[state]
+			allow_rewind = type(condition) == tuple
+			if allow_rewind:
+				rewind_count, condition = condition
 			skip = comment.lower().startswith(SUPPRESS + ' ' + pattern_name.lower())
 			if condition(cur_line, prev_lines) and not skip:
 				# The condition was met; advance to the next state
@@ -428,6 +471,10 @@ for filename in iglob('**/*.asm', recursive=True):
 					printed_this = True
 					prev_lines = []
 					state = 0
+			elif allow_rewind and not skip:
+				# The condition was not met; go back to a previous condition
+				i -= 1
+				state -= rewind_count
 			else:
 				# The condition was not met; reset the state
 				i -= state
@@ -440,3 +487,5 @@ for filename in iglob('**/*.asm', recursive=True):
 
 # Print the total count
 print('Found', count, 'instances.')
+
+exit(count)

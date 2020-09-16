@@ -171,11 +171,11 @@ UpdateBGMap::
 	add hl, bc
 	ld sp, hl
 	ldh a, [hBGMapHalf] ; multiply by 32 to get the bg map offset
+	; assumes [hBGMapHalf] < 16
+	swap a
+	add a
 	ld l, a
 	ld h, 0
-rept 5
-	add hl, hl
-endr
 	ldh a, [hBGMapAddress]
 	add l
 	ld l, a

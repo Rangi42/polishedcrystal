@@ -7,9 +7,54 @@ If you have a question about playing Polished Crystal, or think you've found a b
 > — Tsunekazu Ishihara, "[Iwata Asks – Pokémon HeartGold Version & SoulSilver Version](https://www.nintendo.co.uk/Iwata-Asks/Iwata-Asks-Pokemon-HeartGold-Version-SoulSilver-Version/Iwata-Asks-Pokemon-HeartGold-Version-SoulSilver-Version/4-The-Power-of-Science-is-Staggering-/4-The-Power-of-Science-is-Staggering--226003.html)"
 
 
-### Is there a Pokédex document I can refer to?
+### Contents
 
-The game's data files do a fairly good job of listing things you'll want to know.
+* [Which file do I need to play?](#which-file-do-i-need-to-play)
+* [What are the .sym files for?](#what-are-the-sym-files-for)
+* [Is there documentation for all the {Pokémon, items, moves, etc}?](#is-there-documentation-for-all-the-pokémon-items-moves-etc)
+* [Why is shiny Gyarados gold? Is the red Gyarados shiny?](#why-is-shiny-gyarados-gold-is-the-red-gyarados-shiny)
+* [My Pokémon is a different color, is it shiny?](#my-pokémon-is-a-different-color-is-it-shiny)
+* [What are the options at the start of a new game?](#what-are-the-options-at-the-start-of-a-new-game)
+* [I don't recognize this move, what is it?](#i-dont-recognize-this-move-what-is-it)
+* [How do I evolve my Pokémon?](#how-do-i-evolve-my-pokémon)
+* [Where do I get the legendary Pokémon?](#where-do-i-get-the-legendary-pokémon)
+* [Where do I get this item?](#where-do-i-get-this-item)
+* [Where do I get Silver/Gold Leaves?](#where-do-i-get-silvergold-leaves)
+* [Where do I get this TM/HM?](#where-do-i-get-this-tmhm)
+* [What do blessings and photographs do?](#what-do-blessings-and-photographs-do)
+* [What is the Judge Machine?](#what-is-the-judge-machine)
+* [What are the "door-shaped grooves" in the Ruins of Alph and Route 47?](#what-are-the-door-shaped-grooves-in-the-ruins-of-alph-and-route-47)
+* [I don't like non-canon Pokémon types!](#i-dont-like-non-canon-pokémon-types)
+
+
+### Which file do I need to play?
+
+The [nightly 3.0.0 beta release](https://github.com/Rangi42/polishedcrystal/releases/tag/v3.0.0-beta-nightly) provides .gbc files and .sym files. You only need a .gbc file to play; they're ROMs, not patches. I recommend playing `polishedcrystal-3.0.0-beta-xxxxxxxx.gbc`, or `polishedcrystal-3.0.0-beta-faithful-xxxxxxxx.gbc` if you want a more faithful canon experience, without changes to Pokémon base stats or types.
+
+Don't download the debug ROMs; they're for beta testing, not start-to-finish playthroughs. Although if you want to help test for bugs, get a debug ROM, talk to your room's radio to unlock many things, and hold A+B to wak through walls.
+
+Remember the commit hash at the end of the nightly filename to identify which code is running.
+
+The [2.2.0 release](https://github.com/Rangi42/polishedcrystal/releases/tag/v2.2.0) provides .ips patch files. Apply these to a default Crystal ROM with a tool like [Lunar IPS](http://fusoya.eludevisibility.org/lips/) (for Windows), [MultiPatch](http://projects.sappharad.com/tools/multipatch.html) (for OS X), or [UniPatcher](https://play.google.com/store/apps/details?id=org.emunix.unipatcher&hl=en) (for Android).
+
+This is the ROM you should use for patching 2.2.0:
+
+* Pokémon - Crystal Version (UE) (V1.0) [C][!].gbc  
+  (`md5: 9f2922b235a5eeb78d65594e82ef5dde`)
+
+It's identical to the one built by the [pokecrystal](https://github.com/pret/pokecrystal) project.
+
+
+### What are the .sym files for?
+
+The .sym files are created when you build Polished Crystal. They list the memory address of every label in the source code. These can be useful for [discovering GameShark cheat codes](https://github.com/pret/pokecrystal/wiki/Discovering-GameShark-cheat-codes). You can compare the addresses for Polished Crystal with the same labels for [pokecrystal](https://github.com/pret/pokecrystal/tree/symbols) to find the equivalents of old Crystal cheats.
+
+Cheat codes are *not* officially supported: new updates may change or break old codes, disable cheats before complaining that there's a bug in the game, and don't ask for pre-made cheat codes.
+
+
+### Is there documentation for all the {Pokémon, items, moves, etc}?
+
+The game's [data files](data/) do a fairly good job of listing things you'll want to know. Some highlights:
 
 * [Base stats and TM learnsets](data/pokemon/base_stats/)
 * [Level-up learnsets and evolution methods](data/pokemon/evos_attacks.asm)
@@ -18,6 +63,18 @@ The game's data files do a fairly good job of listing things you'll want to know
 * [TM+HM+tutor list](data/moves/tmhm_moves.asm)
 * [Wild Pokémon](data/wild/)
 * [Hidden Grottoes](data/events/hidden_grottoes/grottoes.asm)
+
+For information that's not all in one file, like [faithful version differences](https://github.com/Rangi42/polishedcrystal/search?q=DEF+FAITHFUL), you can use GitHub's search in this repository.
+
+
+### Why is shiny Gyarados gold? Is the red Gyarados shiny?
+
+I like the anime explanation that red Gyarados was forced to rapidly evolve from a Magikarp and kept its previous red coloration. So here, red Gyarados is a variant form, with its own color and different sprite. It can't be shiny. Shiny Gyarados are gold, like shiny Magikarp.
+
+
+### My Pokémon is a different color, is it shiny?
+
+There's only a 1 in 4,096 chance to encounter a shiny Pokémon, and they'll be marked with a star next to their name. You're probably noticing the effect of the **IVs vary colors** option (see below).
 
 
 ### What are the options at the start of a new game?
@@ -32,6 +89,19 @@ The game's data files do a fairly good job of listing things you'll want to know
 * **Nuzlocke mode:** Enables a [Nuzlocke challenge](https://bulbapedia.bulbagarden.net/wiki/Nuzlocke_Challenge); see [FEATURES.md](FEATURES.md) for detailed clauses.
 
 If you need to change these options after starting a game, press Left+B at the title screen to reset them.
+
+
+### I don't recognize this move, what is it?
+
+There's only room for 255 moves, including Struggle. I wanted to fit in as many useful new moves as possible, so some similar moves were combined to free up space.
+
+* "**Fury Strikes**" = Fury Swipes + Fury Attack
+* "**Healing Light**" = Morning Sun + Moonlight + Synthesis
+* "**Fresh Snack**" = Softboiled + Milk Drink
+
+Their animations in battle still depend on the Pokémon using them, e.g. Chansey's Fresh Snack looks like Softboiled, while Miltank's looks like Milk Drink. That's also the case for some moves that were consolidated: for example, Withdraw and Harden were removed, but Defense Curl has the animation of Withdraw for Squirtle, and of Harden for Geodude.
+
+[Here's a table](https://cdn.discordapp.com/attachments/332698009060114434/754778965410971729/moves.png) of all the moves available in the 3.0.0 beta.
 
 
 ### How do I evolve my Pokémon?
@@ -110,4 +180,8 @@ Those are opened up after you catch all 28 Unown and talk to the scientist who g
 
 ### I don't like non-canon Pokémon types!
 
-I was hesitant to make original changes like this, because the goal is to be an improved Crystal version, not a new game. In the end I made two versions, one regular (with changes) and one "faithful" (with original typings).
+I was hesitant to make original changes like this, because the goal is to be an improved Crystal version, not a new game. In the end I made two versions, one regular and one "faithful".
+
+The regular version makes creative changes to Pokémon base stats and types, and to some move properties, mostly inspired by [Drayano's Sacred Gold and Storm Silver](https://gbatemp.net/threads/pokemon-sacred-gold-storm-silver.327567/). It also improves some translated terms that [Nob Ogasawara](https://twitter.com/dougdinsdale) [complained about](https://lparchive.org/Pokemon-Blue/code.html).
+
+The faithful version does not change those things, besides updating stats to the latest canon generation.

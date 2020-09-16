@@ -137,9 +137,8 @@ wAutoInputLength:: db
 wMonStatusFlags:: db
 wGameLogicPaused:: db
 wSpriteUpdatesEnabled:: db
-	ds 1
 wMapTimeOfDay:: db
-	ds 5
+
 wPrevDexEntry:: db
 
 wPrevLandmark:: db
@@ -153,14 +152,17 @@ wLinkMode::
 
 wPlayerNextMovement:: db
 wPlayerMovement:: db
-	ds 2
+
 wMovementObject:: db
 wMovementDataPointer:: ds 3 ; dba
-	ds 4
-wMovementByteWasControlSwitch:: db
-wMovementPointer:: dw
-	ds 3
 
+wMovementByteWasControlSwitch:: db
+
+UNION
+wObjectPriorities:: ds NUM_OBJECT_STRUCTS
+NEXTU
+wMovementPointer:: dw
+	ds 2
 wTempObjectCopyMapObjectIndex:: db
 wTempObjectCopySprite:: db
 wTempObjectCopySpriteVTile:: db
@@ -170,6 +172,7 @@ wTempObjectCopyRange:: db
 wTempObjectCopyX:: db
 wTempObjectCopyY:: db
 wTempObjectCopyRadius:: db
+ENDU
 
 wTileDown:: db
 wTileUp:: db
@@ -184,6 +187,8 @@ wTilePermissions::
 ; bit 1: left
 ; bit 0: right
 	db
+
+	ds 13
 
 
 SECTION "Sprite Animations", WRAM0

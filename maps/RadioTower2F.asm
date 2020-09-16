@@ -521,8 +521,8 @@ UnknownText_0x5e131:
 	text "Buena: Tune in to"
 	line "Password every"
 
-	assert NITE_HOUR == 12 + 8
-	para "night from eight"
+	assert EVE_HOUR == 12 + 5
+	para "night from five"
 	line "to midnight!"
 
 	para "Tune in, then drop"

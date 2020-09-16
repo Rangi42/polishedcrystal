@@ -520,11 +520,16 @@ StartTrainerBattle_LoadPokeBallGraphics:
 	ldh [hBGMapMode], a
 
 	; store this in HRAM to avoid bank-switching later
+	ld a, [wTimeOfDayPalset]
+	cp DARKNESS_PALSET
+	ld a, 4 << 3 ; darkness offset
+	jr z, .got_offset
 	ld a, [wTimeOfDayPal]
 	and %00000011
 	sla a
 	sla a
 	sla a
+.got_offset
 	ldh [hTimeOfDayPalOffset], a
 
 	ld a, [wOtherTrainerClass]
@@ -726,6 +731,11 @@ if !DEF(MONOCHROME)
 	RGB 15, 05, 11
 	RGB 15, 02, 04
 	RGB 00, 00, 00
+; eve
+	RGB 25, 17, 13
+	RGB 25, 08, 11
+	RGB 25, 03, 03
+	RGB 06, 05, 05
 ; dark
 	RGB 11, 07, 07
 	RGB 07, 03, 03
@@ -734,7 +744,7 @@ if !DEF(MONOCHROME)
 else
 	MONOCHROME_RGB_FOUR
 	MONOCHROME_RGB_FOUR
-	MONOCHROME_RGB_FOUR
+	MONOCHROME_RGB_FOUR_EVE
 	MONOCHROME_RGB_FOUR_NIGHT
 endc
 
@@ -765,6 +775,11 @@ if !DEF(MONOCHROME)
 	RGB 00, 00, 00
 	RGB 00, 00, 00
 	RGB 00, 00, 00
+; eve
+	RGB 06, 05, 05
+	RGB 06, 05, 05
+	RGB 06, 05, 05
+	RGB 06, 05, 05
 ; dark
 	RGB 00, 00, 00
 	RGB 00, 00, 00

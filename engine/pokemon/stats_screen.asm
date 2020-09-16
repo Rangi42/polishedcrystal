@@ -376,9 +376,9 @@ StatsScreen_InitUpperHalf:
 	farcall GetGender
 	pop hl
 	ret c
-	ld a, "♂"
+	ld a, "<MALE>"
 	jr nz, .got_gender
-	ld a, "♀"
+	inc a ; "<FEMALE>"
 .got_gender
 	ld [hl], a
 	ret
@@ -784,8 +784,8 @@ StatsScreen_LoadGFX:
 ; Ported by FredrIQ
 OrangePage_:
 	call TN_PrintToD
-	call TN_PrintLocation
 	call TN_PrintLV
+	call TN_PrintLocation
 	hlcoord 0, 11
 	ld bc, SCREEN_WIDTH
 	ld a, $3e
@@ -795,18 +795,13 @@ OrangePage_:
 	rst PlaceString
 	ld a, [wTempMonAbility]
 	and ABILITY_MASK
-	cp ABILITY_1
-	jr z, .ability_1
-	cp ABILITY_2
-	jr z, .ability_2
-	ld a, $3f ; bold H
-	jr .got_ability
-.ability_1
-	ld a, "1"
-	jr .got_ability
-.ability_2
-	ld a, "2"
-.got_ability
+	swap a
+	rrca
+	ld e, a
+	ld d, 0
+	ld hl, .ability_tiles - 1 ; ability constants start at 1
+	add hl, de
+	ld a, [hl]
 	hlcoord 9, 12
 	ld [hl], a
 	ld hl, wTempMonPersonality
@@ -822,6 +817,9 @@ OrangePage_:
 .ability
 	db "Ability/@"
 
+.ability_tiles
+	db "1", "2", $3f ; bold H
+
 StatsScreen_OTNamePointers:
 	dw wPartyMonOT
 	dw wOTPartyMonOT
@@ -832,38 +830,12 @@ TN_PrintToD:
 	ld de, .caughtat
 	hlcoord 1, 8
 	rst PlaceString
-	ld a, [wTempMonCaughtTime]
-	and CAUGHTTIME_MASK
-	ld de, .unknown
-	jr z, .print
-	rlca
-	rlca
-	rlca
-	cp 2
-	ld de, .morn
-	jr c, .print
-	ld de, .day
-	jr z, .print
-	ld de, .nite
-.print
 	hlcoord 3, 9
-	rst PlaceString
-	ret
+	ld a, [wTempMonCaughtTime]
+	farjp PlaceCaughtTimeOfDayString
 
 .caughtat
 	db "Met/@"
-
-.morn
-	db "Morn@"
-
-.day
-	db "Day@"
-
-.nite
-	db "Nite@"
-
-.unknown
-	db "???@"
 
 TN_PrintLocation:
 	ld a, [wTempMonCaughtLocation]
@@ -885,34 +857,40 @@ TN_PrintLocation:
 
 TN_PrintLV:
 	ld a, [wTempMonCaughtLevel]
-	hlcoord 8, 9
+; inherit coordinate from TN_PrintToD
+	ld h, b
+	ld l, c
+	inc hl
+;	hlcoord 11, 9
 	and a
-	jr z, .unknown
+	jr z, .traded
 	cp 1
 	jr z, .hatched
 	ld [wBuffer2], a
-	ld de, .str_atlv
+	ld de, .str_level
 	rst PlaceString
+	ld h, b
+	ld l, c
+;	hlcoord 15, 9
 	ld de, wBuffer2
 	lb bc, PRINTNUM_LEFTALIGN | 1, 3
-	hlcoord 12, 9
 	jp PrintNum
 .hatched
 	ld de, .str_hatched
 	rst PlaceString
 	ret
-.unknown
-	ld de, .str_unknown
+.traded
+	ld de, .str_traded
 	rst PlaceString
 	ret
 
-.str_atlv
+.str_level
 	db "at <LV>@"
 
 .str_hatched
 	db "from Egg@"
 
-.str_unknown
+.str_traded
 	db "by trade@"
 
 TN_PrintCharacteristics:

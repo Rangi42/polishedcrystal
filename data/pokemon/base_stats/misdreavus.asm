@@ -12,7 +12,6 @@
 	db FAST ; growth rate
 	dn AMORPHOUS, AMORPHOUS ; egg groups
 
-	; ev_yield
 	ev_yield   0,   0,   0,   0,   0,   1
 	;         hp, atk, def, spd, sat, sdf
 

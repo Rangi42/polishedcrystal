@@ -220,7 +220,7 @@ LakeOfRageRedGyaradosScript:
 	cry GYARADOS
 	pause 15
 	closetext
-	loadwildmon GYARADOS, 35
+	loadwildmon GYARADOS, GYARADOS_RED_FORM, 35
 	writecode VAR_BATTLETYPE, BATTLETYPE_RED_GYARADOS
 	startbattle
 	ifequal $1, .Continue

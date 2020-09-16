@@ -21,7 +21,6 @@ endc
 	db MEDIUM_FAST ; growth rate
 	dn INANIMATE, INANIMATE ; egg groups
 
-	; ev_yield
 	ev_yield   0,   0,   1,   0,   0,   0
 	;         hp, atk, def, spd, sat, sdf
 

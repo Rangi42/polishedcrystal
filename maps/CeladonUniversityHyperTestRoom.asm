@@ -430,7 +430,7 @@ CeladonUniversityHyperTestRoomTwin2Text:
 
 CeladonUniversityHyperTestRoomMagikarpSign:
 	refreshscreen
-	pokepic MAGIKARP
+	pokepic MAGIKARP, MAGIKARP_MASK_FORM
 	cry MAGIKARP
 	waitbutton
 	closepokepic

@@ -8,13 +8,10 @@
 	db SITRUS_BERRY ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
 	INCBIN "gfx/pokemon/exeggutor_alolan/front.dimensions"
-	db FRISK ; ability 1
-	db FRISK ; ability 2
-	db HARVEST ; hidden ability
+	abilities_for EXEGGUTOR_ALOLAN, FRISK, FRISK, HARVEST
 	db SLOW ; growth rate
 	dn PLANT, PLANT ; egg groups
 
-	; ev_yield
 	ev_yield   0,   0,   0,   0,   2,   0
 	;         hp, atk, def, spd, sat, sdf
 

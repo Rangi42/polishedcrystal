@@ -17,7 +17,6 @@ endc
 	db MEDIUM_FAST ; growth rate
 	dn AMPHIBIAN, FIELD ; egg groups
 
-	; ev_yield
 	ev_yield   2,   0,   0,   0,   0,   0
 	;         hp, atk, def, spd, sat, sdf
 

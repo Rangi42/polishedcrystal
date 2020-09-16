@@ -36,7 +36,7 @@ VBlank::
 	ld hl, sp+$b
 	ld a, [hl]
 	inc a
-	cp $81
+	cp HIGH(VRAM_Begin) + 1
 	ld a, ERR_EXECUTING_RAM
 	jr nc, .crash
 

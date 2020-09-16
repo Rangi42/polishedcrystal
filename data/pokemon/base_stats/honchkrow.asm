@@ -17,7 +17,6 @@ endc
 	db MEDIUM_SLOW ; growth rate
 	dn AVIAN, AVIAN ; egg groups
 
-	; ev_yield
 	ev_yield   0,   2,   0,   0,   0,   0
 	;         hp, atk, def, spd, sat, sdf
 

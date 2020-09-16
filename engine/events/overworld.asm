@@ -130,7 +130,7 @@ CheckForSurfingPikachu:
 FieldMovePokepicScript:
 	copybytetovar wBuffer6
 	refreshscreen
-	pokepic 0, 1
+	pokepic 0
 	cry 0
 	waitsfx
 	closepokepic
@@ -360,7 +360,7 @@ OWFlash:
 	pop hl
 	jr c, .useflash
 	ld a, [wTimeOfDayPalset]
-	cp %11111111 ; 3, 3, 3, 3
+	cp DARKNESS_PALSET
 	jr nz, .notadarkcave
 .useflash
 	call UseFlash

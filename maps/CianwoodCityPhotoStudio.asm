@@ -39,7 +39,7 @@ FishingGuruScript_0x9e0e0:
 	pause 10
 	special FadeInPalettes
 	copybytetovar wCurPartySpecies
-	pokepic 0, 1
+	pokepic 0
 	cry 0
 	waitsfx
 	closepokepic

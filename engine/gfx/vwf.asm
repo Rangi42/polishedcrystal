@@ -5,14 +5,38 @@ _PlaceVWFString::
 ; Place string de at hl with flags in b and offset in c.
 ; Returns z usually, nz if we've doing single-character output and we haven't
 ; reached the string terminator (de is then advanced a character).
-	ld a, b
-	ldh [hVWFFlags], a
+; Preserves the value of b.
 
+; Build a function to write pixels in hAppendVWFText.
+; - nothing: or [hl] / ld [hld], a / ld [hl], a / ret
+; - invert: xor [hl] / ld [hld], a / ld [hl], a / ret
+; - opaque: or [hl] / ld [hld], a / ret
+; - invert+opaque: xor [hl] / ld [hld], a / ret
+	push hl
+	ld hl, hAppendVWFText
+	bit VWF_INVERT_F, b
+	ld a, $ae ; xor [hl]
+	jr nz, .invert
+	ld a, $b6 ; or [hl]
+.invert
+	ld [hli], a
+	ld a, $32 ; ld [hld], a
+	ld [hli], a
+	bit VWF_OPAQUE_F, b
+	jr nz, .opaque
+	ld a, $77 ; ld [hl], a
+	ld [hli], a
+.opaque
+	ld [hl], $c9 ; ret
+	pop hl
+
+.main_loop
 	ld a, [de]
 	inc de
 	cp "@"
 	ret z
 
+	push bc
 	push de
 
 	push hl
@@ -73,17 +97,17 @@ _PlaceVWFString::
 	jr .shift_loop
 .shift_done
 	pop bc
-	ld a, d
+	inc hl
 	push hl
-	call .AppendText
+	ld a, d
+	call hAppendVWFText
 	ld a, e
-	ld de, 1 tiles
+	ld de, 1 tiles + 1
 	add hl, de
-	call .AppendText
+	call hAppendVWFText
 	pop hl
 	pop de
 	pop af
-	inc hl
 	inc hl
 	dec a
 	jr nz, .insert_loop
@@ -95,42 +119,13 @@ _PlaceVWFString::
 
 	pop hl
 	pop de
+	pop af ; from push bc
 
-	ldh a, [hVWFFlags]
 	ld b, a
-	bit VWF_SINGLE_F, b
+	bit VWF_SINGLE_F, a
 	ret nz
 
-	jr _PlaceVWFString
-
-.AppendText:
-	push bc
-	push hl
-	ld hl, hVWFFlags
-	ld b, [hl]
-	pop hl
-	bit VWF_INVERT_F, b
-	jr nz, .xor
-	; inc/dec in case text is opaque
-	inc hl
-	or [hl]
-	dec hl
-	jr .combine_done
-.xor
-	inc hl
-	xor [hl]
-	dec hl
-.combine_done
-	bit VWF_OPAQUE_F, b
-	pop bc
-	jr nz, .opaque
-	ld [hli], a
-	ld [hld], a
-	ret
-.opaque
-	inc hl
-	ld [hld], a
-	ret
+	jr .main_loop
 
 _GetVWFLength::
 ; Returns length of string de in a.

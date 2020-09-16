@@ -554,7 +554,7 @@ Script_pokepic:
 .ok
 	ld [wCurPartySpecies], a
 	call GetScriptByte
-	ld [wIsCurMonInParty], a
+	ld [wCurForm], a
 	farjp Pokepic
 
 Script_closepokepic:
@@ -1318,6 +1318,7 @@ EarthquakeMovementEnd:
 Script_randomwildmon:
 	xor a
 	ld [wBattleScriptFlags], a
+	ld [wWildMonForm], a
 	ret
 
 Script_loadmemtrainer:
@@ -1337,6 +1338,8 @@ Script_loadwildmon:
 	ld [wBattleScriptFlags], a
 	call GetScriptByte
 	ld [wTempWildMonSpecies], a
+	call GetScriptByte
+	ld [wWildMonForm], a
 	call GetScriptByte
 	ld [wCurPartyLevel], a
 	ret
@@ -1376,7 +1379,9 @@ Script_reloadmapafterbattle:
 	farcall PostBattleTasks
 	ld hl, wBattleScriptFlags
 	ld d, [hl]
-	ld [hl], $0
+	xor a
+	ld [hli], a ; wBattleScriptFlags
+	ld [hl], a ; wWildMonForm
 	ld hl, wWildBattlePanic
 	ld [hl], d
 	ld a, [wBattleResult]
@@ -1411,7 +1416,9 @@ Script_reloadmapafterbattle:
 
 Script_reloadmap:
 	xor a
-	ld [wBattleScriptFlags], a
+	ld hl, wBattleScriptFlags
+	ld [hli], a ; wBattleScriptFlags
+	ld [hl], a ; wWildMonForm
 	ld a, MAPSETUP_RELOADMAP
 	ldh [hMapEntryMethod], a
 	ld a, 1

@@ -365,7 +365,6 @@ wPokemonWithdrawDepositParameter::
 ; 3: Put into Day-Care
 	db
 
-wIsCurMonInParty::
 wItemQuantityChangeBuffer:: db
 wItemQuantityBuffer:: db
 
@@ -377,6 +376,7 @@ wSpriteFlags::
 	db
 
 wHandlePlayerStep:: db
+
 	ds 1
 
 wPartyMenuActionText:: db
@@ -564,8 +564,6 @@ wOtherTrainerID::
 
 wTrainerClass:: db
 
-	ds 1 ; unused
-
 wMoveSelectionMenuType::
 ; 0: battle move selection
 ; 1: pp restore selection
@@ -604,6 +602,7 @@ wCurDamage:: dw
 wMornEncounterRate:: db
 wDayEncounterRate:: db
 wNiteEncounterRate:: db
+wEveEncounterRate:: db
 wWaterEncounterRate:: db
 
 wListMoves_MoveIndicesBuffer:: ds NUM_MOVES
@@ -733,7 +732,9 @@ wWildEncounterCooldown:: db
 
 wWildBattlePanic:: db
 
-wBattleScriptFlags:: dw
+wBattleScriptFlags:: db
+wWildMonForm:: db
+
 wPlayerSpriteSetupFlags::
 ; bit 7: if set, cancel wPlayerAction
 ; bit 6: RefreshMapSprites doesn't reload player sprite

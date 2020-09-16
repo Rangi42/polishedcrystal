@@ -398,10 +398,9 @@ DoPlayerMovement::
 
 	ld a, [wPlayerStandingTile]
 	cp COLL_STAIRS_RIGHT_UP
-	ld a, FALSE
-	jr c, .goingdown
+	; a = carry ? FALSE : TRUE
+	sbc a
 	inc a
-.goingdown
 	ld [wPlayerGoingUpStairs], a
 
 	ld a, STEP_STAIRS

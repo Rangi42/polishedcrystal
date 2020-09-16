@@ -2634,10 +2634,11 @@ ReloadWaveform::
 	and $f ; only NUM_WAVEFORMS are valid
 	; each wavepattern is $f bytes long, so seeking is done in $10s
 	swap a ; a << 4
+	add LOW(WaveSamples)
 	ld l, a
-	ld h, 0
-	ld de, WaveSamples
-	add hl, de
+	adc HIGH(WaveSamples)
+	sub l
+	ld h, a
 	; load wavepattern into rWave_0-rWave_f
 	ld a, [hli]
 	ldh [rWave_0], a

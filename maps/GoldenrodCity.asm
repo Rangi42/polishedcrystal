@@ -202,7 +202,7 @@ CooltrainerFScript_0x1989fd:
 YoungsterScript_0x198a11:
 	faceplayer
 	opentext
-	checktime 1 << NITE
+	checktime (1 << EVE) | (1 << NITE)
 	iftrue_jumpopenedtext UnknownText_0x198c36
 	jumpopenedtext GoldenrodCityYoungsterDayText
 

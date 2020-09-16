@@ -8,13 +8,10 @@
 	db QUICK_CLAW ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
 	INCBIN "gfx/pokemon/persian_alolan/front.dimensions"
-	db FUR_COAT ; ability 1
-	db TECHNICIAN ; ability 2
-	db RATTLED ; hidden ability
+	abilities_for PERSIAN_ALOLAN, FUR_COAT, TECHNICIAN, RATTLED
 	db MEDIUM_FAST ; growth rate
 	dn FIELD, FIELD ; egg groups
 
-	; ev_yield
 	ev_yield   0,   0,   0,   2,   0,   0
 	;         hp, atk, def, spd, sat, sdf
 

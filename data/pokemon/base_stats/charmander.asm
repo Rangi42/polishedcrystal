@@ -12,7 +12,6 @@
 	db MEDIUM_SLOW ; growth rate
 	dn MONSTER, REPTILE ; egg groups
 
-	; ev_yield
 	ev_yield   0,   0,   0,   1,   0,   0
 	;         hp, atk, def, spd, sat, sdf
 

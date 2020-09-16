@@ -1474,8 +1474,8 @@ UnknownScript_0xa0a00:
 UnknownScript_0xa0a08:
 	checktime 1 << MORN
 	iftrue UnknownScript_0xa0a1d
-	checktime 1 << NITE
-	iftrue UnknownScript_0xa0a25
+	checktime 1 << DAY
+	iffalse UnknownScript_0xa0a25
 	setevent EVENT_KENJI_ON_BREAK
 	farwritetext UnknownText_0x66f11
 	buttonsound

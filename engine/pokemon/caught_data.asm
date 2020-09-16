@@ -188,6 +188,7 @@ SetBoxmonOrEggmonCaughtData:
 	rrca
 	rrca
 	rrca
+	and CAUGHTTIME_MASK
 	or b
 	ld b, a
 	; CaughtBall
@@ -233,6 +234,7 @@ SetGiftMonCaughtData:
 	rrca
 	rrca
 	rrca
+	and CAUGHTTIME_MASK
 	or b
 	ld b, a
 	; CaughtBall

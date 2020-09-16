@@ -152,8 +152,8 @@ MomPhoneLectureScript:
 BillPhoneScript1:
 	checktime 1 << DAY
 	iftrue .daygreet
-	checktime 1 << NITE
-	iftrue .nitegreet
+	checktime 1 << MORN
+	iffalse .nitegreet
 	farwritetext BillPhoneMornGreetingText
 	buttonsound
 	jump .main
@@ -315,6 +315,8 @@ ElmPhoneScript2:
 LyraPhoneScript:
 	checktime 1 << DAY
 	iftrue .daygreet
+	checktime 1 << EVE
+	iftrue .nitegreet
 	checktime 1 << NITE
 	iftrue .nitegreet
 	farwritetext LyraPhoneMornGreetingText
@@ -323,6 +325,11 @@ LyraPhoneScript:
 
 .daygreet
 	farwritetext LyraPhoneDayGreetingText
+	buttonsound
+	jump .main
+
+.evegreet
+	farwritetext LyraPhoneEveGreetingText
 	buttonsound
 	jump .main
 
@@ -468,7 +475,7 @@ HueyPhoneScript1:
 	iftrue UnknownScript_0xbd19b
 	checkcode VAR_WEEKDAY
 	ifnotequal WEDNESDAY, UnknownScript_0xbd19b
-	checktime 1 << NITE
+	checktime (1 << EVE) | (1 << NITE)
 	iftrue UnknownScript_0xbd1cd
 
 UnknownScript_0xbd19b:
@@ -603,7 +610,7 @@ JosePhoneScript1:
 	iftrue UnknownScript_0xbd2c4
 	checkcode VAR_WEEKDAY
 	ifnotequal SATURDAY, UnknownScript_0xbd2b9
-	checktime 1 << NITE
+	checktime (1 << EVE) | (1 << NITE)
 	iftrue UnknownScript_0xbd301
 
 UnknownScript_0xbd2b9:
@@ -753,7 +760,7 @@ WadePhoneScript1:
 	iftrue UnknownScript_0xbd421
 	checkcode VAR_WEEKDAY
 	ifnotequal TUESDAY, UnknownScript_0xbd3f6
-	checktime 1 << NITE
+	checktime (1 << EVE) | (1 << NITE)
 	iftrue UnknownScript_0xbd484
 
 UnknownScript_0xbd3f6:
@@ -1034,7 +1041,7 @@ AnthonyPhoneScript1:
 	iftrue UnknownScript_0xbd653
 	checkcode VAR_WEEKDAY
 	ifnotequal FRIDAY, UnknownScript_0xbd653
-	checktime 1 << NITE
+	checktime (1 << EVE) | (1 << NITE)
 	iftrue UnknownScript_0xbd699
 
 UnknownScript_0xbd653:
@@ -1389,7 +1396,7 @@ DanaPhoneScript1:
 	iftrue UnknownScript_0xbd960
 	checkcode VAR_WEEKDAY
 	ifnotequal THURSDAY, UnknownScript_0xbd955
-	checktime 1 << NITE
+	checktime (1 << EVE) | (1 << NITE)
 	iftrue UnknownScript_0xbd9ab
 
 UnknownScript_0xbd955:
@@ -1556,7 +1563,7 @@ TullyPhoneScript1:
 	iftrue UnknownScript_0xbdadc
 	checkcode VAR_WEEKDAY
 	ifnotequal SUNDAY, UnknownScript_0xbdad1
-	checktime 1 << NITE
+	checktime (1 << EVE) | (1 << NITE)
 	iftrue UnknownScript_0xbdb1f
 
 UnknownScript_0xbdad1:
@@ -1761,7 +1768,7 @@ VancePhoneScript1:
 	iftrue UnknownScript_0xbdc92
 	checkcode VAR_WEEKDAY
 	ifnotequal WEDNESDAY, UnknownScript_0xbdc92
-	checktime 1 << NITE
+	checktime (1 << EVE) | (1 << NITE)
 	iftrue UnknownScript_0xbdcc1
 
 UnknownScript_0xbdc92:
@@ -1935,7 +1942,7 @@ ErinPhoneScript1:
 	iftrue UnknownScript_0xbde03
 	checkcode VAR_WEEKDAY
 	ifnotequal SATURDAY, UnknownScript_0xbde03
-	checktime 1 << NITE
+	checktime (1 << EVE) | (1 << NITE)
 	iftrue UnknownScript_0xbde32
 
 UnknownScript_0xbde03:
@@ -1990,7 +1997,7 @@ PhoneScript_Random11:
 PhoneScript_AnswerPhone_Male:
 	checktime 1 << DAY
 	iftrue PhoneScript_AnswerPhone_Male_Day
-	checktime 1 << NITE
+	checktime (1 << EVE) | (1 << NITE)
 	iftrue PhoneScript_AnswerPhone_Male_Nite
 	checkcode VAR_CALLERID
 	ifequal PHONE_SCHOOLBOY_JACK, .Jack
@@ -2363,7 +2370,7 @@ PhoneScript_AnswerPhone_Male_Nite:
 PhoneScript_AnswerPhone_Female:
 	checktime 1 << DAY
 	iftrue PhoneScript_AnswerPhone_Female_Day
-	checktime 1 << NITE
+	checktime (1 << EVE) | (1 << NITE)
 	iftrue PhoneScript_AnswerPhone_Female_Nite
 	checkcode VAR_CALLERID
 	ifequal PHONE_POKEFAN_BEVERLY, .Beverly
@@ -2520,7 +2527,7 @@ PhoneScript_AnswerPhone_Female_Nite:
 PhoneScript_GreetPhone_Male:
 	checktime 1 << DAY
 	iftrue PhoneScript_GreetPhone_Male_Day
-	checktime 1 << NITE
+	checktime (1 << EVE) | (1 << NITE)
 	iftrue PhoneScript_GreetPhone_Male_Nite
 	checkcode VAR_CALLERID
 	ifequal PHONE_SCHOOLBOY_JACK, .Jack
@@ -2893,7 +2900,7 @@ PhoneScript_GreetPhone_Male_Nite:
 PhoneScript_GreetPhone_Female:
 	checktime 1 << DAY
 	iftrue PhoneScript_GreetPhone_Female_Day
-	checktime 1 << NITE
+	checktime (1 << EVE) | (1 << NITE)
 	iftrue PhoneScript_GreetPhone_Female_Nite
 	checkcode VAR_CALLERID
 	ifequal PHONE_POKEFAN_BEVERLY, .Beverly

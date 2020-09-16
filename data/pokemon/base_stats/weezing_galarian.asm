@@ -8,13 +8,10 @@
 	db SMOKE_BALL ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
 	INCBIN "gfx/pokemon/weezing_galarian/front.dimensions"
-	db LEVITATE ; ability 1
-	db NEUTRALIZING_GAS ; ability 2
-	db NATURAL_CURE ; hidden ability
+	abilities_for WEEZING_GALARIAN, LEVITATE, NEUTRALIZING_GAS, NATURAL_CURE
 	db MEDIUM_FAST ; growth rate
 	dn AMORPHOUS, AMORPHOUS ; egg groups
 
-	; ev_yield
 	ev_yield   0,   0,   2,   0,   0,   0
 	;         hp, atk, def, spd, sat, sdf
 
