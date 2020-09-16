@@ -553,7 +553,7 @@ TryBGEvent:
 	ret
 
 .IsBGEvent:
-	ld a, [wEngineBuffer3]
+	ld a, [wCurBGEventType]
 	cp BGEVENT_ITEM
 	jp nc, .itemifset
 	call StackJumpTable
@@ -613,7 +613,7 @@ TryBGEvent:
 	and a
 	jp nz, .dontread
 	call PlayTalkObject
-	ld hl, wHiddenItemData
+	ld hl, wHiddenItemEvent
 	ld a, [wCurBGEventScriptAddr]
 	ld [hli], a ; wHiddenItemEvent
 	ld a, [wCurBGEventScriptAddr+1]
@@ -1024,7 +1024,7 @@ TryTileCollisionEvent:
 	call GetFacingTileCoord
 	ld [wFacingTileID], a
 	ld c, a
-	farcall CheckFacingTileForStd
+	farcall CheckFacingTileForStdScript
 	jr c, .done
 
 	ld a, [wFacingTileID]

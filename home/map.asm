@@ -213,7 +213,7 @@ CopyWarpData::
 	ret
 
 CheckOutdoorMapOrEnvironment5::
-	cp ENVIRONMENT_5
+	cp ISOLATED
 	ret z
 CheckOutdoorMap::
 	cp ROUTE

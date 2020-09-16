@@ -21,7 +21,7 @@ MAP_NONE   EQU 0
 	const ROUTE
 	const INDOOR
 	const CAVE
-	const ENVIRONMENT_5
+	const ISOLATED
 	const GATE
 	const DUNGEON
 

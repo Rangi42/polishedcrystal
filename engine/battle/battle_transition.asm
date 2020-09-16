@@ -177,7 +177,7 @@ endr
 	ld a, [wEnvironment]
 	cp CAVE
 	jr z, .okay2
-	cp ENVIRONMENT_5
+	cp ISOLATED
 	jr z, .okay2
 	cp DUNGEON
 	jr z, .okay2

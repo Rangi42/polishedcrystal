@@ -1,3 +1,10 @@
+NUM_MOM_ITEMS_1 EQUS "((MomItems_1.End - MomItems_1) / 8)"
+NUM_MOM_ITEMS_2 EQUS "((MomItems_2.End - MomItems_2) / 8)"
+
+	const_def 1
+	const MOM_ITEM
+	const MOM_DOLL
+
 MomTriesToBuySomething::
 	ld a, [wMapReentryScriptQueueFlag]
 	and a
@@ -32,13 +39,13 @@ MomTriesToBuySomething::
 .ok
 	ld a, PHONE_MOM
 	ld [wCurCaller], a
-	ld bc, wEngineBuffer2
-	ld hl, 0
+	ld bc, wCallerContact
+	ld hl, PHONE_CONTACT_TRAINER_CLASS
 	add hl, bc
-	ld [hl], 0
+	ld [hl], TRAINER_NONE
 	inc hl
-	ld [hl], 1
-	ld hl, wPhoneScriptPointer - wEngineBuffer2
+	ld [hl], PHONE_MOM
+	ld hl, PHONE_CONTACT_SCRIPT2_BANK
 	add hl, bc
 	ld a, BANK(Mom_GetScriptPointer)
 	ld [hli], a
@@ -50,7 +57,7 @@ MomTriesToBuySomething::
 
 CheckBalance_MomItem2:
 	ld a, [wWhichMomItem]
-	cp 10
+	cp NUM_MOM_ITEMS_2
 	jr nc, .check_have_2300
 	call GetItemFromMom
 	ld a, [hli]
@@ -68,9 +75,9 @@ CheckBalance_MomItem2:
 
 .check_have_2300
 	ld hl, hMoneyTemp
-	ld [hl], LOW(2300 / $10000)
+	ld [hl], HIGH(2300 >> 8)
 	inc hl
-	ld [hl], LOW(2300 / $100)
+	ld [hl], HIGH(2300) ; mid
 	inc hl
 	ld [hl], LOW(2300)
 .loop
@@ -88,7 +95,7 @@ CheckBalance_MomItem2:
 
 .exact
 	call .AddMoney
-	ld a, 5
+	ld a, NUM_MOM_ITEMS_1
 	call RandomRange
 	inc a
 	ld [wWhichMomItemSet], a
@@ -171,7 +178,7 @@ GetItemFromMom:
 
 .zero
 	ld a, [wWhichMomItem]
-	cp 10 ; length of MomItems_2
+	cp NUM_MOM_ITEMS_2
 	jr c, .ok
 	xor a
 

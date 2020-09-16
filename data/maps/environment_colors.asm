@@ -4,13 +4,13 @@ EnvironmentColorsPointers:
 	dw .OutdoorColors ; ROUTE
 	dw .IndoorColors ; INDOOR
 	dw .DungeonColors ; CAVE
-	dw .Perm5Colors ; ENVIRONMENT_5
+	dw .IsolatedColors ; ISOLATED
 	dw .IndoorColors ; GATE
 	dw .DungeonColors ; DUNGEON
 
 ; Valid indices: $00 - $2b
 .OutdoorColors:
-.Perm5Colors:
+.IsolatedColors:
 	db $00, $01, $02, $28, $04, $05, $06, $07 ; morn
 	db $08, $09, $0a, $29, $0c, $0d, $0e, $0f ; day
 	db $10, $11, $12, $2a, $14, $15, $16, $17 ; nite

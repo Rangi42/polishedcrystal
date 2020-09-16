@@ -509,7 +509,7 @@ BillBoxSwitchCheck:
 	pop af
 	dec a
 	ldh [hScriptVar], a
-	ld [wEngineBuffer1], a
+	ld [wTempScriptBuffer], a
 	ret
 
 BillBoxSwitch:
@@ -520,7 +520,7 @@ BillBoxSwitch:
 	ld a, BANK(wDecompressScratch)
 	call FarCopyWRAM
 	; change boxes (overwrites wMisc)
-	ld a, [wEngineBuffer1]
+	ld a, [wTempScriptBuffer]
 	ld e, a
 	farcall ChangeBoxSaveGame
 	; a = carry (didn't save) ? FALSE : TRUE

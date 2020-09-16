@@ -8,10 +8,10 @@
 
 OpenMartDialog::
 	ld a, c
-	ld [wEngineBuffer1], a
+	ld [wMartType], a
 	call GetMart
 	call LoadMartPointer
-	ld a, [wEngineBuffer1]
+	ld a, [wMartType]
 	call StackJumpTable
 
 .dialogs
@@ -29,9 +29,9 @@ OpenMartDialog::
 	dw BTMart
 
 MartDialog:
-	xor a
-	ld [wEngineBuffer1], a
-	ld [wEngineBuffer5], a
+	xor a ; MARTTYPE_STANDARD, STANDARDMART_HOWMAYIHELPYOU
+	ld [wMartType], a
+	ld [wMartJumptableIndex], a
 	jp StandardMart
 
 HerbShop:
@@ -173,7 +173,7 @@ LoadMartPointer:
 	ld bc, wCurMartEnd - wCurMart
 	rst ByteFill
 	xor a
-	ld [wEngineBuffer5], a
+	ld [wMartJumptableIndex], a
 	ld [wBargainShopFlags], a
 	ld [wFacingDirection], a
 	ret
@@ -190,10 +190,10 @@ GetMart:
 
 StandardMart:
 .loop
-	ld a, [wEngineBuffer5]
+	ld a, [wMartJumptableIndex]
 	ld hl, .MartFunctions
 	call JumpTable
-	ld [wEngineBuffer5], a
+	ld [wMartJumptableIndex], a
 	cp $ff
 	jr nz, .loop
 	ret
@@ -528,7 +528,7 @@ BuyMenu_InitGFX:
 
 LoadBuyMenuText:
 ; load text from a nested table
-; which table is in wEngineBuffer1
+; which table is in wMartType
 ; which entry is in register a
 	push af
 	call GetMartDialogGroup ; gets a pointer from GetMartDialogGroup.MartTextFunctionPointers
@@ -558,7 +558,7 @@ MartAskPurchaseQuantity:
 	jp RooftopSaleAskPurchaseQuantity
 
 GetMartDialogGroup:
-	ld a, [wEngineBuffer1]
+	ld a, [wMartType]
 	ld e, a
 	ld d, 0
 	ld hl, .MartTextFunctionPointers

@@ -4,7 +4,7 @@ DoPlayerMovement::
 	ld a, movement_step_sleep_1
 	ld [wMovementAnimation], a
 	xor a
-	ld [wEngineBuffer4], a
+	ld [wWalkingIntoEdgeWarp], a
 	call .TranslateIntoMovement
 	ld c, a
 	ld a, [wMovementAnimation]
@@ -100,7 +100,7 @@ DoPlayerMovement::
 	jr z, .Standing
 
 ; Walking into an edge warp won't bump.
-	ld a, [wEngineBuffer4]
+	ld a, [wWalkingIntoEdgeWarp]
 	and a
 	jr nz, .CantMove
 	call .BumpSound
@@ -433,7 +433,7 @@ DoPlayerMovement::
 	jr nz, .not_warp
 
 	ld a, TRUE
-	ld [wEngineBuffer4], a
+	ld [wWalkingIntoEdgeWarp], a
 	ld a, [wPlayerDirection]
 	rrca
 	rrca
