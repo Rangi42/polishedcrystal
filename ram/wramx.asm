@@ -116,14 +116,36 @@ wEndFlypoint:: db
 	ds 55
 
 UNION
+; trainer data
+wSeenTrainerBank:: db
+wSeenTrainerDistance:: db
+wSeenTrainerDirection:: db
+wTempTrainer::
+wTempTrainerEventFlag::
+wTempTrainerEventFlagLo:: db
+wTempTrainerEventFlagHi:: db
+wTempTrainerClass:: db
+wTempTrainerID:: db
+wSeenTextPointer:: dw
+wWinTextPointer:: dw
+wGenericTempTrainerHeaderEnd::
+wLossTextPointer:: dw
+wScriptAfterPointer:: dw
+wRunningTrainerBattleScript:: db
+wTempTrainerEnd::
+	ds 1
+wStashedTextPointer:: dw
+
+NEXTU
 ; menu items list
 wMenuItemsList:: ds 16
 wMenuItemsListEnd::
 
 NEXTU
-; temporary script buffers
-wTempScriptBuffer:: db
-wJumpStdScriptBuffer:: ds 15
+; fruit tree data
+wCurFruitTree:: db
+	ds 1
+wCurFruit:: db
 
 NEXTU
 ; item ball data
@@ -162,27 +184,6 @@ wCurBGEventType:: db
 wCurBGEventScriptAddr:: dw
 
 NEXTU
-; trainer data
-wSeenTrainerBank:: db
-wSeenTrainerDistance:: db
-wSeenTrainerDirection:: db
-wTempTrainer::
-wTempTrainerEventFlag::
-wTempTrainerEventFlagLo:: db
-wTempTrainerEventFlagHi:: db
-wTempTrainerClass:: db
-wTempTrainerID:: db
-wSeenTextPointer:: dw
-wWinTextPointer:: dw
-wGenericTempTrainerHeaderEnd::
-wLossTextPointer:: dw
-wScriptAfterPointer:: dw
-wRunningTrainerBattleScript:: db
-wTempTrainerEnd::
-	ds 1
-wStashedTextPointer:: dw
-
-NEXTU
 ; mart data
 wMartType:: db
 wMartPointerBank:: db
@@ -206,10 +207,9 @@ wWalkingTile:: db
 wPlayerTurningDirection:: db
 
 NEXTU
-; backup menu data
-	ds 7
-wMenuCursorBufferBackup:: db
-wMenuScrollPositionBackup:: db
+; temporary script buffers
+wTempScriptBuffer:: db
+wJumpStdScriptBuffer:: ds 15
 
 NEXTU
 ; phone script data
@@ -225,12 +225,17 @@ NEXTU
 wCallerContact:: ds PHONE_CONTACT_SIZE 
 
 NEXTU
+; backup menu data
+	ds 7
+wMenuCursorBufferBackup:: db
+wMenuScrollPositionBackup:: db
+
+NEXTU
 ; poison step data
 wPoisonStepData::
 wPoisonStepFlagSum:: db
 wPoisonStepPartyFlags:: ds PARTY_LENGTH
 wPoisonStepDataEnd::
-
 ENDU
 
 ENDU
