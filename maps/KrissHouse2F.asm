@@ -17,10 +17,10 @@ KrissHouse2F_MapScriptHeader:
 	bg_event  6,  0, BGEVENT_IFSET, KrissHousePoster
 
 	def_object_events
-	object_event  4,  2, SPRITE_CONSOLE, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, GameConsole, EVENT_KRISS_HOUSE_2F_CONSOLE
-	object_event  4,  4, SPRITE_DOLL_1, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Doll1, EVENT_KRISS_HOUSE_2F_DOLL_1
-	object_event  5,  4, SPRITE_DOLL_2, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Doll2, EVENT_KRISS_HOUSE_2F_DOLL_2
-	object_event  0,  1, SPRITE_BIG_DOLL, SPRITEMOVEDATA_BIGDOLL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, BigDoll, EVENT_KRISS_HOUSE_2F_BIG_DOLL
+	object_event  4,  2, SPRITE_CONSOLE, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, GameConsole, EVENT_PLAYERS_HOUSE_2F_CONSOLE
+	object_event  4,  4, SPRITE_DOLL_1, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Doll1, EVENT_PLAYERS_HOUSE_2F_DOLL_1
+	object_event  5,  4, SPRITE_DOLL_2, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Doll2, EVENT_PLAYERS_HOUSE_2F_DOLL_2
+	object_event  0,  1, SPRITE_BIG_DOLL, SPRITEMOVEDATA_BIGDOLL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, BigDoll, EVENT_PLAYERS_HOUSE_2F_BIG_DOLL
 
 KrissHouse2FInitializeRoom:
 	special ToggleDecorationsVisibility
@@ -44,7 +44,7 @@ GameConsole:
 	describedecoration 4
 
 KrissHousePoster:
-	dw EVENT_KRISS_ROOM_POSTER
+	dw EVENT_PLAYERS_ROOM_POSTER
 	describedecoration 0
 
 KrissHouseRadio:
@@ -286,8 +286,8 @@ endr
 	; intro events
 	addcellnum PHONE_MOM
 	setmapscene KRISS_HOUSE_1F, $1
-	setevent EVENT_KRISS_HOUSE_MOM_1
-	clearevent EVENT_KRISS_HOUSE_MOM_2
+	setevent EVENT_PLAYERS_HOUSE_MOM_1
+	clearevent EVENT_PLAYERS_HOUSE_MOM_2
 	setmapscene VERMILION_CITY, $1
 ;	; prof.elm events
 ;	addcellnum PHONE_ELM

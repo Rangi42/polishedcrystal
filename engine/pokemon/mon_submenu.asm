@@ -6,7 +6,7 @@ MonSubmenu:
 	call GetMonSubmenuItems
 	farcall FreezeMonIcons
 	ld hl, .MenuDataHeader
-	call LoadMenuDataHeader
+	call LoadMenuHeader
 	call .GetTopCoord
 	call PopulateMonMenu
 

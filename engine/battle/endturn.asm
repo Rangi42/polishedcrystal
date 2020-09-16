@@ -236,7 +236,7 @@ HandleWeather:
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	call StdBattleTextBox
+	call StdBattleTextbox
 	xor a
 	ld [wBattleWeather], a
 	ret
@@ -315,7 +315,7 @@ HandleWeather:
 .saw_sandstorm
 
 	ld hl, SandstormHitsText
-	call StdBattleTextBox
+	call StdBattleTextbox
 	call GetSixteenthMaxHP
 	predef_jump SubtractHPFromUser
 
@@ -354,7 +354,7 @@ endc
 .saw_hail
 
 	ld hl, HailHitsText
-	call StdBattleTextBox
+	call StdBattleTextbox
 	call GetSixteenthMaxHP
 	predef_jump SubtractHPFromUser
 
@@ -387,12 +387,12 @@ HandleFutureSight:
 	xor a
 	ld [hl], a
 	ld hl, BattleText_UsersFutureSightMissed
-	jp StdBattleTextBox
+	jp StdBattleTextbox
 
 .do_future_sight
 	push hl
 	ld hl, BattleText_TargetWasHitByFutureSight
-	call StdBattleTextBox
+	call StdBattleTextbox
 
 	ld a, BATTLE_VARS_MOVE
 	call GetBattleVarAddr
@@ -445,7 +445,7 @@ HandleLeftovers:
 	farcall RestoreHP
 	ld hl, BattleText_UserRecoveredWithItem
 .print
-	jp StdBattleTextBox
+	jp StdBattleTextbox
 
 PreventEndturnDamage:
 ; returns z if residual damage at endturn is prevented
@@ -483,7 +483,7 @@ HandleLeechSeed:
 	push bc
 	predef SubtractHPFromUser
 	ld hl, LeechSeedSapsText
-	call StdBattleTextBox
+	call StdBattleTextbox
 	pop bc
 	call SwitchTurn
 	farcall GetHPAbsorption
@@ -499,7 +499,7 @@ HandleLeechSeed:
 	farcall ShowEnemyAbilityActivation
 	predef SubtractHPFromUser
 	ld hl, SuckedUpOozeText
-	call StdBattleTextBox
+	call StdBattleTextbox
 	farcall EnableAnimations
 .done
 	jp SwitchTurn
@@ -582,7 +582,7 @@ DoPoisonBurnDamage:
 
 DoPoisonBurnDamageAnim:
 	push de
-	call StdBattleTextBox
+	call StdBattleTextbox
 	pop de
 	xor a
 	ld [wNumHits], a
@@ -608,7 +608,7 @@ HandleCurse:
 	call GetQuarterMaxHP
 	predef SubtractHPFromUser
 	ld hl, HurtByCurseText
-	jp StdBattleTextBox
+	jp StdBattleTextbox
 
 HandleWrap:
 	call SetFastestTurn
@@ -673,7 +673,7 @@ HandleWrap:
 	ld a, [de]
 	ld [wNamedObjectIndexBuffer], a
 	call GetMoveName
-	jp StdBattleTextBox
+	jp StdBattleTextbox
 
 HandleEncore:
 	call SetFastestTurn
@@ -740,7 +740,7 @@ EndturnEncoreDisable_End:
 	ld [hl], 0
 	ld h, d
 	ld l, e
-	jp StdBattleTextBox
+	jp StdBattleTextbox
 
 HandleDisable:
 	call SetFastestTurn
@@ -784,7 +784,7 @@ HandlePerishSong:
 	ld [wd265], a
 	push af
 	ld hl, PerishCountText
-	call StdBattleTextBox
+	call StdBattleTextbox
 	pop af
 	ret nz
 	ld a, BATTLE_VARS_SUBSTATUS1
@@ -802,7 +802,7 @@ HandleTrickRoom:
 	dec [hl]
 	ret nz
 	ld hl, TrickRoomEndedText
-	jp StdBattleTextBox
+	jp StdBattleTextbox
 
 HandleLeppaBerry:
 	call SetFastestTurn
@@ -899,7 +899,7 @@ DecrementHighNibble:
 PrintTextAfterNibbleTick:
 	ld h, d
 	ld l, e
-	jp StdBattleTextBox
+	jp StdBattleTextbox
 
 GetTurnAndPlacePrefix:
 ; Preserves a, returns zero flag for a
@@ -985,7 +985,7 @@ HandleStatusOrbs:
 	farcall PlayOpponentBattleAnim
 	call RefreshBattleHuds
 	pop hl
-	jp StdBattleTextBox
+	jp StdBattleTextbox
 
 HandleRoost:
 	call SetFastestTurn

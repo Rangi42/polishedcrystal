@@ -1,7 +1,7 @@
 
 ProfOaksPC:
 	ld hl, OakPCText1
-	call MenuTextBox
+	call MenuTextbox
 	call YesNoBox
 	jr c, .shutdown
 	call ProfOaksPCBoot ; player chose "yes"?

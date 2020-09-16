@@ -19,7 +19,7 @@ BattleCommand_getmagnitude:
 	ld [wTypeMatchup], a
 	call BattleCommand_movedelay
 	ld hl, MagnitudeText
-	call StdBattleTextBox
+	call StdBattleTextbox
 	pop de
 	pop bc
 	ret

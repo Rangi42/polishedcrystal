@@ -52,7 +52,7 @@ CheckBadge:
 	call CheckEngineFlag
 	ret nc
 	ld hl, .BadgeRequiredText
-	call MenuTextBoxBackup ; push text to queue
+	call MenuTextboxBackup ; push text to queue
 	scf
 	ret
 
@@ -139,7 +139,7 @@ FieldMovePokepicScript:
 
 FieldMoveFailed:
 	ld hl, .CantUseHere
-	jp MenuTextBoxBackup
+	jp MenuTextboxBackup
 
 .CantUseHere:
 	; Can't use that here.
@@ -187,7 +187,7 @@ CutFunction:
 
 .FailCut:
 	ld hl, Text_NothingToCut
-	call MenuTextBoxBackup
+	call MenuTextboxBackup
 	ld a, $80
 	ret
 
@@ -455,13 +455,13 @@ SurfFunction:
 
 .FailSurf:
 	ld hl, CantSurfText
-	call MenuTextBoxBackup
+	call MenuTextboxBackup
 	ld a, $80
 	ret
 
 .AlreadySurfing:
 	ld hl, AlreadySurfingText
-	call MenuTextBoxBackup
+	call MenuTextboxBackup
 	ld a, $80
 	ret
 
@@ -913,7 +913,7 @@ EscapeRopeOrDig:
 	cp $2
 	jr nz, .failescaperope
 	ld hl, .Text_CantUseHere
-	call MenuTextBox
+	call MenuTextbox
 	call WaitPressAorB_BlinkCursor
 	call CloseWindow
 
@@ -1006,7 +1006,7 @@ TeleportFunction:
 
 .FailTeleport:
 	ld hl, .Text_CantUseHere
-	call MenuTextBoxBackup
+	call MenuTextboxBackup
 	ld a, $80
 	ret
 

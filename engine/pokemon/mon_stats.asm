@@ -236,7 +236,7 @@ PrintStatDifferences:
 	lb bc, 6, 12
 	add c
 	ld c, a
-	call TextBox
+	call Textbox
 	pop af
 	push af
 	hlcoord 7, 5

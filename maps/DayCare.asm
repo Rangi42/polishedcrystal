@@ -1,4 +1,4 @@
-Daycare_MapScriptHeader:
+DayCare_MapScriptHeader:
 	def_scene_scripts
 	scene_script DayCareTrigger0
 
@@ -31,12 +31,12 @@ DayCareTrigger0:
 
 DayCareEggCheckCallback:
 	checkflag ENGINE_DAYCARE_MAN_HAS_EGG
-	iftrue .PutDaycareManOutside
+	iftrue .PutDayCareManOutside
 	clearevent EVENT_DAYCARE_MAN_IN_DAYCARE
 	setevent EVENT_DAYCARE_MAN_ON_ROUTE_34
 	return
 
-.PutDaycareManOutside:
+.PutDayCareManOutside:
 	setevent EVENT_DAYCARE_MAN_IN_DAYCARE
 	clearevent EVENT_DAYCARE_MAN_ON_ROUTE_34
 	return

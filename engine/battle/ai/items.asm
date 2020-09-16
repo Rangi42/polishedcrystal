@@ -668,7 +668,7 @@ EnemyUsedGuardSpec:
 	ld hl, TextJump_EnemyUsed
 	call PrintText
 	ld hl, MistText
-	call StdBattleTextBox
+	call StdBattleTextbox
 	jp AIUpdateHUD
 
 EnemyUsedDireHit:

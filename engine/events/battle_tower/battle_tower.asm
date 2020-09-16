@@ -319,7 +319,7 @@ Special_BattleTower_MainMenu:
 	ld a, $4
 	ldh [hScriptVar], a
 	ld hl, MenuDataHeader_ChallengeExplanationCancel
-	call LoadMenuDataHeader
+	call LoadMenuHeader
 	call ChallengeExplanationCancelMenu
 	jp CloseWindow
 

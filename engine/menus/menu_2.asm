@@ -54,12 +54,12 @@ _PlaceMenuQuantity:
 
 PlaceMoneyTopRight:
 	ld hl, MenuDataHeader_0x24b15
-	call CopyMenuDataHeader
+	call CopyMenuHeader
 	jr PlaceMoneyDataHeader
 
 PlaceMoneyBottomLeft:
 	ld hl, MenuDataHeader_0x24b1d
-	call CopyMenuDataHeader
+	call CopyMenuHeader
 	jr PlaceMoneyDataHeader
 
 PlaceMoneyAtTopLeftOfTextbox:
@@ -93,7 +93,7 @@ MenuDataHeader_0x24b1d:
 PlaceBlueCardPointsTopRight:
 	hlcoord 11, 0
 	lb bc, 1, 7
-	call TextBox
+	call Textbox
 	hlcoord 12, 1
 	ld de, wBlueCardBalance
 	lb bc, 1, 3
@@ -108,7 +108,7 @@ PlaceBlueCardPointsTopRight:
 PlaceBattlePointsTopRight:
 	hlcoord 10, 0
 	lb bc, 1, 8
-	call TextBox
+	call Textbox
 	hlcoord 11, 1
 	ld de, wBattlePoints
 	lb bc, 2, 5
@@ -124,7 +124,7 @@ Special_DisplayCoinCaseBalance:
 	; Place a text box of size 1x7 at 11, 0.
 	hlcoord 11, 0
 	lb bc, 1, 7
-	call TextBox
+	call Textbox
 	hlcoord 12, 0
 	ld de, CoinString
 	rst PlaceString
@@ -136,7 +136,7 @@ Special_DisplayCoinCaseBalance:
 Special_DisplayMoneyAndCoinBalance:
 	hlcoord 5, 0
 	lb bc, 3, 13
-	call TextBox
+	call Textbox
 	hlcoord 6, 1
 	ld de, MoneyString
 	rst PlaceString
@@ -160,7 +160,7 @@ CoinString:
 StartMenu_DrawBugContestStatusBox:
 	hlcoord 0, 0
 	lb bc, 5, 17
-	jp TextBox
+	jp Textbox
 
 StartMenu_PrintBugContestStatus:
 	ld hl, wOptions1

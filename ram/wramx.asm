@@ -126,22 +126,14 @@ wTempScriptBuffer:: db
 wJumpStdScriptBuffer:: ds 15
 
 NEXTU
-; fruit tree data
-wCurFruitTree:: db
-	ds 1
-wCurFruit:: db
-
-NEXTU
 ; item ball data
 wItemBallItemID:: db
 wItemBallQuantity:: db
 
 NEXTU
 ; hidden item data
-wHiddenItemData::
 wHiddenItemEvent:: dw
 wHiddenItemID:: db
-wHiddenItemDataEnd::
 
 NEXTU
 ; elevator data
@@ -167,7 +159,7 @@ wCurBGEvent::
 wCurBGEventYCoord:: db
 wCurBGEventXCoord:: db
 wCurBGEventType:: db
-wCurBGEventScriptAddr:: db
+wCurBGEventScriptAddr:: dw
 
 NEXTU
 ; trainer data
@@ -893,25 +885,25 @@ wCurTimeOfDay:: db
 wSecretID:: dw
 
 wStatusFlags::
-	; 0 - pokedex
-	; 1 - unown dex
-	; 2 - flash
-	; 3 - pokerus
-	; 4 - rocket signal
-	; 5 - wild encounters on/off
-	; 6 - hall of fame
-	; 7 - bug contest on
+	; bit 0: pokedex
+	; bit 1: unown dex
+	; bit 2: flash
+	; bit 3: caught pokerus
+	; bit 4: rocket signal
+	; bit 5: wild encounters on/off
+	; bit 6: hall of fame
+	; bit 7: bug contest on (unused?)
 	db
 
 wStatusFlags2::
-	; 0 - rockets
-	; 1 - safari game
-	; 2 - bug contest timer
-	; 3 - seen shamouti island
-	; 4 - bike shop call
-	; 5 - pokerus
-	; 6 - exorcised lav radio tower
-	; 7 - rockets in mahogany
+	; bit 0: rockets
+	; bit 1: safari game
+	; bit 2: bug contest timer
+	; bit 3: seen shamouti island
+	; bit 4: bike shop call
+	; bit 5: can use sweet scent
+	; bit 6: exorcised lav radio tower
+	; bit 7: rockets in mahogany
 	db
 
 wMoney:: ds 3
@@ -1282,7 +1274,7 @@ wUnlockedUnowns:: db
 wFirstUnownSeen:: db
 wFirstMagikarpSeen:: db
 
-wDaycareMan::
+wDayCareMan::
 ; bit 7: active
 ; bit 6: monsters are compatible
 ; bit 5: egg ready
@@ -1294,7 +1286,7 @@ wBreedMon1Nick::  ds MON_NAME_LENGTH
 wBreedMon1OT:: ds NAME_LENGTH
 wBreedMon1Stats:: box_struct wBreedMon1
 
-wDaycareLady::
+wDayCareLady::
 ; bit 7: active
 ; bit 0: monster 2 in daycare
 	db

@@ -2,7 +2,7 @@ SpecialBuenasPassword:
 	xor a
 	ld [wWhichIndexSet], a
 	ld hl, .MenuDataHeader
-	call CopyMenuDataHeader
+	call CopyMenuHeader
 	ld a, [wBuenasPassword]
 	ld c, a
 	farcall GetBuenasPassword

@@ -64,7 +64,7 @@ BattleCommand_bounceback:
 	ld [wNamedObjectIndexBuffer], a
 	call GetMoveName
 	ld hl, BouncedBackText
-	call StdBattleTextBox
+	call StdBattleTextbox
 	farcall EnableAnimations
 
 	; Flag the bouncing

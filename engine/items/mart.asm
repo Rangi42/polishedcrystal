@@ -38,10 +38,10 @@ HerbShop:
 	call FarReadMart
 	call LoadStandardMenuHeader
 	ld hl, Text_HerbShop_Intro
-	call MartTextBox
+	call MartTextbox
 	call BuyMenu
 	ld hl, Text_HerbShop_ComeAgain
-	jp MartTextBox
+	jp MartTextbox
 
 BargainShop:
 	ld b, BANK(BargainShopData)
@@ -50,7 +50,7 @@ BargainShop:
 	call ReadMart
 	call LoadStandardMenuHeader
 	ld hl, Text_BargainShop_Intro
-	call MartTextBox
+	call MartTextbox
 	call BuyMenu
 	ld hl, wBargainShopFlags
 	ld a, [hli]
@@ -61,7 +61,7 @@ BargainShop:
 
 .skip_set
 	ld hl, Text_BargainShop_ComeAgain
-	jp MartTextBox
+	jp MartTextbox
 
 INCLUDE "data/items/bargain_shop.asm"
 
@@ -69,10 +69,10 @@ Pharmacist:
 	call FarReadMart
 	call LoadStandardMenuHeader
 	ld hl, Text_Pharmacist_Intro
-	call MartTextBox
+	call MartTextbox
 	call BuyMenu
 	ld hl, Text_Pharmacist_ComeAgain
-	jp MartTextBox
+	jp MartTextbox
 
 RooftopSale:
 	ld b, BANK(RooftopSaleData1) ; BANK(RooftopSaleData2)
@@ -86,10 +86,10 @@ RooftopSale:
 	call ReadMart
 	call LoadStandardMenuHeader
 	ld hl, Text_Mart_HowMayIHelpYou
-	call MartTextBox
+	call MartTextbox
 	call BuyMenu
 	ld hl, Text_Mart_ComeAgain
-	jp MartTextBox
+	jp MartTextbox
 
 INCLUDE "data/items/rooftop_sale.asm"
 
@@ -97,46 +97,46 @@ SilphMart:
 	call FarReadMart
 	call LoadStandardMenuHeader
 	ld hl, Text_SilphMart_Intro
-	call MartTextBox
+	call MartTextbox
 	call BuyMenu
 	ld hl, Text_SilphMart_ComeAgain
-	jp MartTextBox
+	jp MartTextbox
 
 AdventurerMart:
 	call FarReadMart
 	call LoadStandardMenuHeader
 	ld hl, Text_AdventurerMart_Intro
-	call MartTextBox
+	call MartTextbox
 	call BuyMenu
 	ld hl, Text_AdventurerMart_ComeAgain
-	jp MartTextBox
+	jp MartTextbox
 
 InformalMart:
 	call FarReadMart
 	call LoadStandardMenuHeader
 	ld hl, Text_InformalMart_Intro
-	call MartTextBox
+	call MartTextbox
 	call BuyMenu
 	ld hl, Text_InformalMart_ComeAgain
-	jp MartTextBox
+	jp MartTextbox
 
 BazaarMart:
 	call FarReadMart
 	call LoadStandardMenuHeader
 	ld hl, Text_BazaarMart_Intro
-	call MartTextBox
+	call MartTextbox
 	call BuyMenu
 	ld hl, Text_BazaarMart_ComeAgain
-	jp MartTextBox
+	jp MartTextbox
 
 TMMart:
 	call FarReadTMMart
 	call LoadStandardMenuHeader
 	ld hl, Text_Mart_HowMayIHelpYou
-	call MartTextBox
+	call MartTextbox
 	call BuyTMMenu
 	ld hl, Text_Mart_ComeAgain
-	jp MartTextBox
+	jp MartTextbox
 
 BlueCardMart:
 	ld b, BANK(BlueCardMartData)
@@ -145,10 +145,10 @@ BlueCardMart:
 	call ReadBlueCardMart
 	call LoadStandardMenuHeader
 	ld hl, Text_BlueCardMart_HowMayIHelpYou
-	call MartTextBox
+	call MartTextbox
 	call BlueCardBuyMenu
 	ld hl, Text_BlueCardMart_ComeAgain
-	jp MartTextBox
+	jp MartTextbox
 
 INCLUDE "data/items/buena_prizes.asm"
 
@@ -156,10 +156,10 @@ BTMart:
 	call FarReadBTMart
 	call LoadStandardMenuHeader
 	ld hl, Text_BTMart_HowMayIHelpYou
-	call MartTextBox
+	call MartTextbox
 	call BTBuyMenu
 	ld hl, Text_BTMart_ComeAgain
-	jp MartTextBox
+	jp MartTextbox
 
 LoadMartPointer:
 	ld a, b
@@ -215,7 +215,7 @@ StandardMart:
 
 .TopMenu:
 	ld hl, MenuDataHeader_BuySell
-	call CopyMenuDataHeader
+	call CopyMenuHeader
 	call VerticalMenu
 	jr c, .quit
 	ld a, [wMenuCursorY]
@@ -250,7 +250,7 @@ StandardMart:
 .Quit:
 	call ExitMenu
 	ld hl, Text_Mart_ComeAgain
-	call MartTextBox
+	call MartTextbox
 	ld a, $ff ; exit
 	ret
 
@@ -480,7 +480,7 @@ BuyMenu_InitGFX:
 ; Place the text box for bag quantity
 	hlcoord 0, 0
 	lb bc, 1, 8
-	call TextBox
+	call Textbox
 ; Place the left column
 	hlcoord 0, 3
 	ld de, .BuyLeftColumnTilemapString
@@ -502,7 +502,7 @@ BuyMenu_InitGFX:
 ; Place the textbox for displaying the item description
 ;	hlcoord 0, SCREEN_HEIGHT - 4 - 2
 ;	lb bc, 4, SCREEN_WIDTH - 2
-;	call TextBox
+;	call Textbox
 	call EnableLCD
 	call ApplyTilemapInVBlank
 	ld a, CGB_BUYMENU_PALS
@@ -673,9 +673,9 @@ BuyMenuLoop:
 	farcall PlaceMoneyTopRight
 	call UpdateSprites
 	ld hl, MenuDataHeader_Buy
-	call CopyMenuDataHeader
+	call CopyMenuHeader
 	call DoMartScrollingMenu
-	call SpeechTextBox
+	call SpeechTextbox
 	ld a, [wMenuJoypad]
 	cp B_BUTTON
 	jp z, MartMenuLoop_SetCarry
@@ -724,7 +724,7 @@ BuyMenuLoop:
 	call PrintText
 	call JoyWaitAorB
 .cancel
-	call SpeechTextBox
+	call SpeechTextbox
 	and a
 	ret
 
@@ -736,9 +736,9 @@ BuyTMMenuLoop:
 	farcall PlaceMoneyTopRight
 	call UpdateSprites
 	ld hl, TMMenuDataHeader_Buy
-	call CopyMenuDataHeader
+	call CopyMenuHeader
 	call DoMartScrollingMenu
-	call SpeechTextBox
+	call SpeechTextbox
 	ld a, [wMenuJoypad]
 	cp B_BUTTON
 	jp z, MartMenuLoop_SetCarry
@@ -759,7 +759,7 @@ BuyTMMenuLoop:
 	call LoadBuyMenuText
 	call JoyWaitAorB
 .cancel
-	call SpeechTextBox
+	call SpeechTextbox
 	and a
 	ret
 
@@ -767,9 +767,9 @@ BlueCardBuyMenuLoop:
 	farcall PlaceBlueCardPointsTopRight
 	call UpdateSprites
 	ld hl, BlueCardMenuDataHeader_Buy
-	call CopyMenuDataHeader
+	call CopyMenuHeader
 	call DoMartScrollingMenu
-	call SpeechTextBox
+	call SpeechTextbox
 	ld a, [wMenuJoypad]
 	cp B_BUTTON
 	jp z, MartMenuLoop_SetCarry
@@ -789,7 +789,7 @@ BlueCardBuyMenuLoop:
 	call LoadBuyMenuText
 	call JoyWaitAorB
 .cancel
-	call SpeechTextBox
+	call SpeechTextbox
 	and a
 	ret
 
@@ -797,9 +797,9 @@ BTBuyMenuLoop:
 	farcall PlaceBattlePointsTopRight
 	call UpdateSprites
 	ld hl, BTMenuDataHeader_Buy
-	call CopyMenuDataHeader
+	call CopyMenuHeader
 	call DoMartScrollingMenu
-	call SpeechTextBox
+	call SpeechTextbox
 	ld a, [wMenuJoypad]
 	cp B_BUTTON
 	jp z, MartMenuLoop_SetCarry
@@ -821,7 +821,7 @@ BTBuyMenuLoop:
 	call LoadBuyMenuText
 	call JoyWaitAorB
 .cancel
-	call SpeechTextBox
+	call SpeechTextbox
 	and a
 	ret
 
@@ -1430,7 +1430,7 @@ SellMenu:
 	jr c, .declined
 	call ClearSpeechBox
 	ld hl, Text_Mart_ICanPayThisMuch
-	call PrintTextBoxText
+	call PrintTextboxText
 	call YesNoBox
 	jr c, .declined
 	ld de, wMoney
@@ -1442,7 +1442,7 @@ SellMenu:
 	predef PartyMonItemName
 	call ClearSpeechBox
 	ld hl, Text_Mart_SoldForAmount
-	call PrintTextBoxText
+	call PrintTextboxText
 	call PlayTransactionSound
 	farcall PlaceMoneyBottomLeft
 	call JoyWaitAorB
@@ -1520,7 +1520,7 @@ PlayTransactionSound:
 	ld de, SFX_TRANSACTION
 	jp PlaySFX
 
-MartTextBox:
-	call MenuTextBox
+MartTextbox:
+	call MenuTextbox
 	call JoyWaitAorB
 	jp ExitMenu

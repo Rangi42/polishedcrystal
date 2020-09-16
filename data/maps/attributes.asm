@@ -2,7 +2,7 @@ map_attributes: MACRO
 ; label, map, border block, connections
 CURRENT_MAP_WIDTH = \2_WIDTH
 CURRENT_MAP_HEIGHT = \2_HEIGHT
-\1_SecondMapHeader::
+\1_MapAttributes::
 	db \3
 	db \2_HEIGHT, \2_WIDTH
 	db BANK(\1_BlockData)
@@ -698,7 +698,7 @@ ENDM
 	map_attributes GoldenrodHarborGate, GOLDENROD_HARBOR_GATE, $0, 0
 	map_attributes IlexForestAzaleaGate, ILEX_FOREST_AZALEA_GATE, $0, 0
 	map_attributes Route34IlexForestGate, ROUTE_34_ILEX_FOREST_GATE, $0, 0
-	map_attributes Daycare, DAYCARE, $0, 0
+	map_attributes DayCare, DAYCARE, $0, 0
 	map_attributes GoldenrodHPUpHouse, GOLDENROD_HP_UP_HOUSE, $0, 0
 	map_attributes GoldenrodNetBallHouse, GOLDENROD_NET_BALL_HOUSE, $0, 0
 	map_attributes GoldenrodBandHouse, GOLDENROD_BAND_HOUSE, $0, 0

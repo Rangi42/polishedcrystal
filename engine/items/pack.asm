@@ -56,7 +56,7 @@ Pack:
 
 .ItemsPocketMenu:
 	ld hl, ItemsPocketMenuDataHeader
-	call CopyMenuDataHeader
+	call CopyMenuHeader
 	ld a, [wItemsPocketCursor]
 	ld [wMenuCursorBuffer], a
 	ld a, [wItemsPocketScrollPosition]
@@ -78,7 +78,7 @@ Pack:
 
 .MedicinePocketMenu:
 	ld hl, MedicinePocketMenuDataHeader
-	call CopyMenuDataHeader
+	call CopyMenuHeader
 	ld a, [wMedicinePocketCursor]
 	ld [wMenuCursorBuffer], a
 	ld a, [wMedicinePocketScrollPosition]
@@ -100,7 +100,7 @@ Pack:
 
 .BallsPocketMenu:
 	ld hl, BallsPocketMenuDataHeader
-	call CopyMenuDataHeader
+	call CopyMenuHeader
 	ld a, [wBallsPocketCursor]
 	ld [wMenuCursorBuffer], a
 	ld a, [wBallsPocketScrollPosition]
@@ -162,7 +162,7 @@ Pack:
 
 .BerriesPocketMenu:
 	ld hl, BerriesPocketMenuDataHeader
-	call CopyMenuDataHeader
+	call CopyMenuHeader
 	ld a, [wBerriesPocketCursor]
 	ld [wMenuCursorBuffer], a
 	ld a, [wBerriesPocketScrollPosition]
@@ -207,7 +207,7 @@ Pack:
 
 PackBuildMenu:
 	push de
-	call LoadMenuDataHeader
+	call LoadMenuHeader
 	call VerticalMenu
 	call ExitMenu
 	pop hl
@@ -236,7 +236,7 @@ PackSortMenu:
 	ld de, Jumptable_SortItems
 .got_sort_menu
 	push de
-	call LoadMenuDataHeader
+	call LoadMenuHeader
 	call VerticalMenu
 	call ExitMenu
 	jr nc, .no_quit
@@ -517,7 +517,7 @@ TossMenu:
 	ret c
 	call Pack_GetItemName
 	ld hl, Text_ConfirmThrowAway
-	call MenuTextBox
+	call MenuTextbox
 	call YesNoBox
 	push af
 	call ExitMenu
@@ -702,7 +702,7 @@ BattlePack:
 
 .ItemsPocketMenu:
 	ld hl, ItemsPocketMenuDataHeader
-	call CopyMenuDataHeader
+	call CopyMenuHeader
 	ld a, [wBattleItemsPocketCursor]
 	ld [wMenuCursorBuffer], a
 	ld a, [wBattleItemsPocketScrollPosition]
@@ -724,7 +724,7 @@ BattlePack:
 
 .MedicinePocketMenu:
 	ld hl, MedicinePocketMenuDataHeader
-	call CopyMenuDataHeader
+	call CopyMenuHeader
 	ld a, [wBattleMedicinePocketCursor]
 	ld [wMenuCursorBuffer], a
 	ld a, [wBattleMedicinePocketScrollPosition]
@@ -746,7 +746,7 @@ BattlePack:
 
 .BallsPocketMenu:
 	ld hl, BallsPocketMenuDataHeader
-	call CopyMenuDataHeader
+	call CopyMenuHeader
 	ld a, [wBattleBallsPocketCursor]
 	ld [wMenuCursorBuffer], a
 	ld a, [wBattleBallsPocketScrollPosition]
@@ -786,7 +786,7 @@ BattlePack:
 
 .BerriesPocketMenu:
 	ld hl, BerriesPocketMenuDataHeader
-	call CopyMenuDataHeader
+	call CopyMenuHeader
 	ld a, [wBattleBerriesPocketCursor]
 	ld [wMenuCursorBuffer], a
 	ld a, [wBattleBerriesPocketScrollPosition]
@@ -1015,7 +1015,7 @@ DepositSellPack:
 	ld a, ITEM - 1
 	call InitPocket
 	ld hl, PC_Mart_ItemsPocketMenuDataHeader
-	call CopyMenuDataHeader
+	call CopyMenuHeader
 	ld a, [wItemsPocketCursor]
 	ld [wMenuCursorBuffer], a
 	ld a, [wItemsPocketScrollPosition]
@@ -1031,7 +1031,7 @@ DepositSellPack:
 	ld a, MEDICINE - 1
 	call InitPocket
 	ld hl, PC_Mart_MedicinePocketMenuDataHeader
-	call CopyMenuDataHeader
+	call CopyMenuHeader
 	ld a, [wMedicinePocketCursor]
 	ld [wMenuCursorBuffer], a
 	ld a, [wMedicinePocketScrollPosition]
@@ -1047,7 +1047,7 @@ DepositSellPack:
 	ld a, BALL - 1
 	call InitPocket
 	ld hl, PC_Mart_BallsPocketMenuDataHeader
-	call CopyMenuDataHeader
+	call CopyMenuHeader
 	ld a, [wBallsPocketCursor]
 	ld [wMenuCursorBuffer], a
 	ld a, [wBallsPocketScrollPosition]
@@ -1071,7 +1071,7 @@ DepositSellPack:
 	ld a, BERRIES - 1
 	call InitPocket
 	ld hl, PC_Mart_BerriesPocketMenuDataHeader
-	call CopyMenuDataHeader
+	call CopyMenuHeader
 	ld a, [wBerriesPocketCursor]
 	ld [wMenuCursorBuffer], a
 	ld a, [wBerriesPocketScrollPosition]
@@ -1256,7 +1256,7 @@ TutorialPack:
 	push hl
 	call InitPocket
 	pop hl
-	call CopyMenuDataHeader
+	call CopyMenuHeader
 	jp ScrollingMenu
 
 Pack_JumptableNext:
@@ -1486,7 +1486,7 @@ Pack_InitGFX:
 ; Place the textbox for displaying the item description
 	hlcoord 0, SCREEN_HEIGHT - 4 - 2
 	lb bc, 4, SCREEN_WIDTH - 2
-	call TextBox
+	call Textbox
 	call EnableLCD
 	jp DrawPackGFX
 

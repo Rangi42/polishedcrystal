@@ -37,11 +37,11 @@ ClearTileMap::
 	ret z
 	jp ApplyTilemapInVBlank
 
-SpeechTextBox::
+SpeechTextbox::
 ; Standard textbox.
 	hlcoord TEXTBOX_X, TEXTBOX_Y
 	lb bc, TEXTBOX_INNERH, TEXTBOX_INNERW
-TextBox::
+Textbox::
 ; Draw a text box at hl with room for
 ; b lines of c characters each.
 ; Places a border around the textbox,
@@ -49,10 +49,10 @@ TextBox::
 ; text black-and-white scheme.
 	push bc
 	push hl
-	call TextBoxBorder
+	call TextboxBorder
 	pop hl
 	pop bc
-TextBoxPalette::
+TextboxPalette::
 ; Fill text box width c height b at hl with pal 7
 	ld de, wAttrMap - wTileMap
 	add hl, de
@@ -63,7 +63,7 @@ TextBoxPalette::
 	ld a, PAL_BG_TEXT
 	jr FillBoxWithByte
 
-TextBoxBorder::
+TextboxBorder::
 	; Top
 	push hl
 	ld a, "┌"
@@ -110,12 +110,12 @@ TextBoxBorder::
 	ret
 
 PrintText::
-	call SetUpTextBox
+	call SetUpTextbox
 PrintTextNoBox::
 	push hl
 	call ClearSpeechBox
 	pop hl
-PrintTextBoxText::
+PrintTextboxText::
 	bccoord TEXTBOX_INNERX, TEXTBOX_INNERY
 PlaceWholeStringInBoxAtOnce::
 	ld a, [wTextboxFlags]
@@ -127,9 +127,9 @@ PlaceWholeStringInBoxAtOnce::
 	ld [wTextboxFlags], a
 	ret
 
-SetUpTextBox::
+SetUpTextbox::
 	push hl
-	call SpeechTextBox
+	call SpeechTextbox
 	call UpdateSprites
 	call ApplyTilemap
 	pop hl

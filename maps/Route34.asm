@@ -32,8 +32,8 @@ Route34_MapScriptHeader:
 	object_event 10, 26, SPRITE_PICNICKER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_TRAINER, 3, TrainerPicnickerGina1, -1
 	object_event  6, 10, SPRITE_OFFICER_F, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, OfficerfMaraScript, -1
 	object_event 18, 28, SPRITE_POKEFAN_M, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerPokefanmBrandon, -1
-	object_event 14, 18, SPRITE_DAYCARE_MON_1, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, DaycareMon1Script, EVENT_DAYCARE_MON_1
-	object_event 17, 19, SPRITE_DAYCARE_MON_2, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, DaycareMon2Script, EVENT_DAYCARE_MON_2
+	object_event 14, 18, SPRITE_DAYCARE_MON_1, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, DayCareMon1Script, EVENT_DAYCARE_MON_1
+	object_event 17, 19, SPRITE_DAYCARE_MON_2, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, DayCareMon2Script, EVENT_DAYCARE_MON_2
 	object_event 11, 48, SPRITE_ACE_TRAINER_F, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_TRAINER, 5, TrainerCooltrainerfIrene, -1
 	object_event  3, 48, SPRITE_ACE_TRAINER_F, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_TRAINER, 3, TrainerCooltrainerfJenn, -1
 	object_event  6, 51, SPRITE_ACE_TRAINER_F, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_TRAINER, 2, TrainerCooltrainerfKate, -1
@@ -46,14 +46,14 @@ Route34_MapScriptHeader:
 
 Route34EggCheckCallback:
 	checkflag ENGINE_DAYCARE_MAN_HAS_EGG
-	iftrue .PutDaycareManOutside
+	iftrue .PutDayCareManOutside
 	checkscene
-	iftrue .PutDaycareManOutside
+	iftrue .PutDayCareManOutside
 	clearevent EVENT_DAYCARE_MAN_IN_DAYCARE
 	setevent EVENT_DAYCARE_MAN_ON_ROUTE_34
 	jump .CheckMon1
 
-.PutDaycareManOutside:
+.PutDayCareManOutside:
 	setevent EVENT_DAYCARE_MAN_IN_DAYCARE
 	clearevent EVENT_DAYCARE_MAN_ON_ROUTE_34
 	jump .CheckMon1
@@ -190,12 +190,12 @@ DayCareManScript_Outside:
 	disappear ROUTE34_GRAMPS
 	end
 
-DaycareMon1Script:
+DayCareMon1Script:
 	opentext
 	special Special_DayCareMon1
 	endtext
 
-DaycareMon2Script:
+DayCareMon2Script:
 	opentext
 	special Special_DayCareMon2
 	endtext

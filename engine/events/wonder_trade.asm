@@ -11,7 +11,7 @@ WonderTrade::
 	call PrintText
 
 	ld b, 6
-	farcall SelectTradeOrDaycareMon
+	farcall SelectTradeOrDayCareMon
 	ret c
 
 	ld a, MON_IS_EGG

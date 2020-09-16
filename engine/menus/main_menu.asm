@@ -10,7 +10,7 @@ MainMenu:
 	ld [wWhichIndexSet], a
 	call MainMenu_PrintCurrentTimeAndDay
 	ld hl, .MenuDataHeader
-	call LoadMenuDataHeader
+	call LoadMenuHeader
 	call MainMenuJoypadLoop
 	call CloseWindow
 	ret c
@@ -145,10 +145,10 @@ MainMenu_PrintCurrentTimeAndDay:
 .PlaceBox:
 	call CheckRTCStatus
 	and $80
-	jp nz, SpeechTextBox
+	jp nz, SpeechTextbox
 	hlcoord 0, 14
 	lb bc, 2, 18
-	jp TextBox
+	jp Textbox
 
 .PlaceTime:
 	ld a, [wSaveFileExists]

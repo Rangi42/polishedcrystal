@@ -889,13 +889,13 @@ MapTextbox::
 	rst Bankswitch
 
 	push hl
-	call SpeechTextBox
+	call SpeechTextbox
 	call SafeUpdateSprites
 	ld a, 1
 	ldh [hOAMUpdate], a
 	call ApplyTilemap
 	pop hl
-	call PrintTextBoxText
+	call PrintTextboxText
 	xor a
 	ldh [hOAMUpdate], a
 
@@ -1881,7 +1881,7 @@ ReturnToMapWithSpeechTextbox::
 	call ReloadTilesetAndPalettes
 	hlcoord 0, 12
 	lb bc, 4, 18
-	call TextBox
+	call Textbox
 	ld hl, wVramState
 	set 0, [hl]
 	call UpdateSprites

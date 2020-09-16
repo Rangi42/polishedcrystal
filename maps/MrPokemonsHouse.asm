@@ -127,7 +127,7 @@ MrPokemonsHouse_OakScript:
 	special RestartMapMusic
 	showtext MrPokemonText_ImDependingOnYou
 	setevent EVENT_RIVAL_NEW_BARK_TOWN
-	setevent EVENT_KRISS_HOUSE_1F_NEIGHBOR
+	setevent EVENT_PLAYERS_HOUSE_1F_NEIGHBOR
 	clearevent EVENT_KRISS_NEIGHBORS_HOUSE_NEIGHBOR
 	setscene $1
 	setmapscene CHERRYGROVE_CITY, $1

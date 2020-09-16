@@ -197,7 +197,7 @@ SECTION "Goldenrod Scripts", ROMX
 INCLUDE "maps/GoldenrodCity.asm"
 INCLUDE "maps/GoldenrodGym.asm"
 INCLUDE "maps/GoldenrodGameCorner.asm"
-INCLUDE "maps/Daycare.asm"
+INCLUDE "maps/DayCare.asm"
 
 
 SECTION "Goldenrod Scripts 2", ROMX

@@ -464,15 +464,15 @@ CardFlip_UpdateCoinBalanceDisplay:
 	push hl
 	hlcoord 0, 12
 	lb bc, 4, SCREEN_WIDTH - 2
-	call TextBox
+	call Textbox
 	pop hl
-	call PrintTextBoxText
+	call PrintTextboxText
 	; fallthrough
 
 CardFlip_PrintCoinBalance:
 	hlcoord 8, 15
 	lb bc, 1, 10
-	call TextBox
+	call Textbox
 	hlcoord 9, 16
 	ld de, .CoinStr
 	rst PlaceString
@@ -497,7 +497,7 @@ CardFlip_InitTilemap:
 	call CardFlip_CopyToBox
 	hlcoord 0, 12
 	lb bc, 4, 18
-	jp TextBox
+	jp Textbox
 
 CardFlip_CopyToBox:
 .row

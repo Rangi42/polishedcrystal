@@ -866,7 +866,7 @@ TrademonStats_MonTemplate:
 	ldh [hBGMapAddress + 1], a
 	hlcoord 3, 0
 	lb bc, $6, $d
-	call TextBox
+	call Textbox
 	hlcoord 4, 0
 	ld de, .OTMonData
 	rst PlaceString
@@ -885,7 +885,7 @@ TrademonStats_Egg:
 	ldh [hBGMapAddress + 1], a
 	hlcoord 3, 0
 	lb bc, $6, $d
-	call TextBox
+	call Textbox
 	hlcoord 4, 2
 	ld de, .EggData
 	rst PlaceString

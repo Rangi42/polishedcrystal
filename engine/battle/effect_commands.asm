@@ -82,7 +82,7 @@ DoTurn:
 	jr z, .got_ghost_text
 	ld hl, GetOutText
 .got_ghost_text
-	jp StdBattleTextBox
+	jp StdBattleTextbox
 
 .not_ghost
 ; Read in and execute the user's move effects for this turn.
@@ -212,7 +212,7 @@ BattleCommand_checkturn:
 
 	res SUBSTATUS_RECHARGE, [hl]
 	ld hl, MustRechargeText
-	call StdBattleTextBox
+	call StdBattleTextbox
 	call CantMove
 	jp EndTurn
 
@@ -228,7 +228,7 @@ BattleCommand_checkturn:
 	jr z, .not_flinched
 	push af
 	ld hl, FlinchedText
-	call StdBattleTextBox
+	call StdBattleTextbox
 	pop af
 	cp STEADFAST
 	jr nz, .skip_steadfast
@@ -272,7 +272,7 @@ BattleCommand_checkturn:
 	farcall ShowAbilityActivation
 .woke_up_no_early_bird
 	ld hl, WokeUpText
-	call StdBattleTextBox
+	call StdBattleTextbox
 	; does nothing in case we never showed an ability activation
 	farcall EnableAnimations
 	ldh a, [hBattleTurn]
@@ -292,7 +292,7 @@ BattleCommand_checkturn:
 
 .fast_asleep
 	ld hl, FastAsleepText
-	call StdBattleTextBox
+	call StdBattleTextbox
 
 	; Sleep Talk bypasses sleep.
 	ld a, BATTLE_VARS_MOVE_ANIM
@@ -324,7 +324,7 @@ BattleCommand_checkturn:
 	cp 1 + (20 percent)
 	jr c, .thaw
 	ld hl, FrozenSolidText
-	call StdBattleTextBox
+	call StdBattleTextbox
 	xor a
 	ld [wNumHits], a
 	ld de, ANIM_FRZ
@@ -354,12 +354,12 @@ BattleCommand_checkturn:
 	call GetBattleVarAddr
 	res SUBSTATUS_CONFUSED, [hl]
 	ld hl, ConfusedNoMoreText
-	call StdBattleTextBox
+	call StdBattleTextbox
 	jr .not_confused
 
 .confused
 	ld hl, IsConfusedText
-	call StdBattleTextBox
+	call StdBattleTextbox
 	xor a
 	ld [wNumHits], a
 	ld de, ANIM_CONFUSED
@@ -388,7 +388,7 @@ BattleCommand_checkturn:
 	jr nc, .not_infatuated
 
 	ld hl, InLoveWithText
-	call StdBattleTextBox
+	call StdBattleTextbox
 	xor a
 	ld [wNumHits], a
 	ld de, ANIM_IN_LOVE
@@ -400,7 +400,7 @@ BattleCommand_checkturn:
 	jr c, .not_infatuated
 
 	ld hl, InfatuationText
-	call StdBattleTextBox
+	call StdBattleTextbox
 	call CantMove
 	jp EndTurn
 
@@ -438,7 +438,7 @@ BattleCommand_checkturn:
 	ret nc
 
 	ld hl, FullyParalyzedText
-	call StdBattleTextBox
+	call StdBattleTextbox
 	xor a
 	ld [wNumHits], a
 	ld de, ANIM_PAR
@@ -551,7 +551,7 @@ CheckPowerHerb:
 	call GetCurItemName
 
 	ld hl, BattleText_UserChargedWithItem
-	call StdBattleTextBox
+	call StdBattleTextbox
 	call ConsumeUserItem
 
 	; If already called from a seperate move, don't change charging.
@@ -591,7 +591,7 @@ MoveDisabled:
 	call GetMoveName
 
 	ld hl, DisabledMoveText
-	jp StdBattleTextBox
+	jp StdBattleTextbox
 
 GenericHitAnim:
 	; Flicker the monster pic unless flying or underground.
@@ -606,7 +606,7 @@ GenericHitAnim:
 
 HitConfusion:
 	ld hl, HurtItselfText
-	call StdBattleTextBox
+	call StdBattleTextbox
 
 	xor a
 	ld [wCriticalHit], a
@@ -775,7 +775,7 @@ BattleCommand_checkobedience:
 	jr nc, .DoNothing
 
 	ld hl, WontObeyText
-	call StdBattleTextBox
+	call StdBattleTextbox
 	call HitConfusion
 	jp .EndDisobedience
 
@@ -810,7 +810,7 @@ BattleCommand_checkobedience:
 	ld hl, IgnoredOrdersText
 
 .Print:
-	call StdBattleTextBox
+	call StdBattleTextbox
 	jp .EndDisobedience
 
 .UseInstead:
@@ -933,7 +933,7 @@ IgnoreSleepOnly:
 
 ; 'ignored orders…sleeping!'
 	ld hl, IgnoredSleepingText
-	call StdBattleTextBox
+	call StdBattleTextbox
 
 	call EndMoveEffect
 
@@ -994,7 +994,7 @@ BattleCommand_doturn:
 	jr c, .print
 	ld hl, NoPPLeftText
 .print
-	call StdBattleTextBox
+	call StdBattleTextbox
 	jp EndMoveEffect
 
 BattleCommand_hastarget:
@@ -1017,7 +1017,7 @@ BattleCommand_hastarget:
 	jr nz, .not_fainted
 
 	ld hl, ButItFailedText
-	call StdBattleTextBox
+	call StdBattleTextbox
 	call CantMove
 	jp EndMoveEffect
 
@@ -2379,7 +2379,7 @@ BattleCommand_applydamage:
 	dec a
 	jr nz, .not_enduring2
 	ld hl, EnduredText
-	jp StdBattleTextBox
+	jp StdBattleTextbox
 
 .not_enduring2
 	dec a
@@ -2387,7 +2387,7 @@ BattleCommand_applydamage:
 	farcall DisableAnimations
 	farcall ShowEnemyAbilityActivation
 	ld hl, EnduredText
-	call StdBattleTextBox
+	call StdBattleTextbox
 	farjp EnableAnimations
 
 .enduring_with_item
@@ -2396,7 +2396,7 @@ BattleCommand_applydamage:
 	call GetCurItemName
 
 	ld hl, HungOnText
-	call StdBattleTextBox
+	call StdBattleTextbox
 	pop af
 	dec a
 	jp nz, ConsumeOpponentItem
@@ -2461,7 +2461,7 @@ GetFailureResultText:
 	ld [hl], c
 
 	ld hl, CrashedText
-	call StdBattleTextBox
+	call StdBattleTextbox
 	ld a, $1
 	ld [wKickCounter], a
 	call LoadMoveAnim
@@ -2497,7 +2497,7 @@ FailText_CheckOpponentProtect:
 	ld hl, DoesntAffectText
 	jr z, .printmsg
 	ld hl, AttackMissedText
-	call StdBattleTextBox
+	call StdBattleTextbox
 	predef GetUserItemAfterUnnerve
 	ld a, b
 	cp HELD_BLUNDER_POLICY
@@ -2524,7 +2524,7 @@ FailText_CheckOpponentProtect:
 	ld [wAlreadyExecuted], a
 	ret
 .printmsg
-	jp StdBattleTextBox
+	jp StdBattleTextbox
 .ability_immune
 	farjp RunEnemyNullificationAbilities
 
@@ -2537,7 +2537,7 @@ BattleCommand_criticaltext:
 	jr z, .wait
 
 	ld hl, CriticalHitText
-	call StdBattleTextBox
+	call StdBattleTextbox
 
 	xor a
 	ld [wCriticalHit], a
@@ -2638,7 +2638,7 @@ BattleCommand_supereffectivetext:
 	jr z, .score_ok
 	ld [wInverseBattleScore], a
 .score_ok
-	call StdBattleTextBox
+	call StdBattleTextbox
 	pop af
 	ret c
 
@@ -2814,7 +2814,7 @@ BattleCommand_postfainteffects:
 	jr nc, .no_dbond
 
 	ld hl, TookDownWithItText
-	call StdBattleTextBox
+	call StdBattleTextbox
 
 	call GetMaxHP
 	predef SubtractHPFromUser
@@ -2873,7 +2873,7 @@ BattleCommand_posthiteffects:
 	jr nz, .air_balloon_done
 
 	ld hl, AirBalloonPoppedText
-	call StdBattleTextBox
+	call StdBattleTextbox
 	call ConsumeOpponentItem
 
 .air_balloon_done
@@ -2896,7 +2896,7 @@ BattleCommand_posthiteffects:
 
 	push bc
 	ld hl, RageBuildingText
-	call StdBattleTextBox
+	call StdBattleTextbox
 	pop bc
 	farcall PrintStatChange
 
@@ -2959,7 +2959,7 @@ BattleCommand_posthiteffects:
 	call GetCurItemName
 	ld hl, BattleText_UserHurtByItem
 	push bc
-	call StdBattleTextBox
+	call StdBattleTextbox
 	pop bc
 
 	; unless the item is Rocky Helmet, consume it
@@ -3128,7 +3128,7 @@ CheckWhiteHerb:
 	call GetUserItem
 	call GetCurItemName
 	ld hl, RegainedStatsWithItem
-	call StdBattleTextBox
+	call StdBattleTextbox
 	jp ConsumeUserItem
 
 EndMoveDamageChecks:
@@ -3209,7 +3209,7 @@ EndMoveDamageChecks:
 	farcall ItemRecoveryAnim
 	farcall RestoreHP
 	ld hl, BattleText_UserRecoveredWithItem
-	jp StdBattleTextBox
+	jp StdBattleTextbox
 
 .life_orb
 	call GetTrueUserAbility
@@ -3232,7 +3232,7 @@ EndMoveDamageChecks:
 	ld c, a
 	predef SubtractHPFromUser
 	ld hl, BattleText_UserLostSomeOfItsHP
-	jp StdBattleTextBox
+	jp StdBattleTextbox
 
 .throat_spray
 	push bc
@@ -4221,7 +4221,7 @@ TakeDamage:
 
 SelfInflictDamageToSubstitute:
 	ld hl, SubTookDamageText
-	call StdBattleTextBox
+	call StdBattleTextbox
 
 	ld de, wEnemySubstituteHP+1 ; hp is big-endian
 	ldh a, [hBattleTurn]
@@ -4256,7 +4256,7 @@ SelfInflictDamageToSubstitute:
 	res SUBSTATUS_SUBSTITUTE, [hl]
 
 	ld hl, SubFadedText
-	call StdBattleTextBox
+	call StdBattleTextbox
 
 	call SwitchTurn
 	call BattleCommand_lowersubnoanim
@@ -4394,7 +4394,7 @@ BattleCommand_sleeptarget:
 	call UpdateOpponentInParty
 	call UpdateBattleHuds
 	ld hl, FellAsleepText
-	call StdBattleTextBox
+	call StdBattleTextbox
 	call PostStatus
 
 	; Check if we were cured
@@ -4411,7 +4411,7 @@ BattleCommand_sleeptarget:
 	push hl
 	call AnimateFailedMove
 	pop hl
-	jp StdBattleTextBox
+	jp StdBattleTextbox
 
 .ability_ok
 	farcall DisableAnimations
@@ -4562,7 +4562,7 @@ BattleCommand_poisontarget:
 	call RefreshBattleHuds
 
 	ld hl, WasPoisonedText
-	call StdBattleTextBox
+	call StdBattleTextbox
 
 	jp PostStatusWithSynchronize
 
@@ -4597,7 +4597,7 @@ CanPoisonTargetVerbose:
 	push hl
 	call AnimateFailedMove
 	pop hl
-	call StdBattleTextBox
+	call StdBattleTextbox
 	farcall EnableAnimations
 	or 1
 	ret
@@ -4616,7 +4616,7 @@ ApplyPoison:
 	jr z, .text_ok
 	ld hl, BadlyPoisonedText
 .text_ok
-	call StdBattleTextBox
+	call StdBattleTextbox
 	jp PostStatusWithSynchronize
 
 PoisonOpponent:
@@ -4670,7 +4670,7 @@ SapHealth:
 	jr z, .damage
 	farcall RestoreHP
 	pop hl
-	jp StdBattleTextBox
+	jp StdBattleTextbox
 
 .damage
 	pop hl
@@ -4678,7 +4678,7 @@ SapHealth:
 	farcall ShowEnemyAbilityActivation
 	predef SubtractHPFromUser
 	ld hl, SuckedUpOozeText
-	call StdBattleTextBox
+	call StdBattleTextbox
 	farjp EnableAnimations
 
 GetHPAbsorption:
@@ -4741,7 +4741,7 @@ BattleCommand_burntarget:
 	call RefreshBattleHuds
 
 	ld hl, WasBurnedText
-	call StdBattleTextBox
+	call StdBattleTextbox
 	jp PostStatusWithSynchronize
 
 Defrost:
@@ -4767,7 +4767,7 @@ Defrost:
 	call UpdateOpponentInParty
 
 	ld hl, DefrostedOpponentText
-	jp StdBattleTextBox
+	jp StdBattleTextbox
 
 BattleCommand_freezetarget:
 	xor a
@@ -4809,7 +4809,7 @@ BattleCommand_freezetarget:
 	call RefreshBattleHuds
 
 	ld hl, WasFrozenText
-	call StdBattleTextBox
+	call StdBattleTextbox
 
 	jp PostStatus
 .no_magma_armor
@@ -4985,7 +4985,7 @@ BattleCommand_burn:
 	call UpdateOpponentInParty
 	call UpdateBattleHuds
 	ld hl, WasBurnedText
-	call StdBattleTextBox
+	call StdBattleTextbox
 	jp PostStatusWithSynchronize
 
 .failed_ineffective
@@ -4996,7 +4996,7 @@ BattleCommand_burn:
 	push hl
 	call AnimateFailedMove
 	pop hl
-	jp StdBattleTextBox
+	jp StdBattleTextbox
 
 .ability_ok
 	farcall DisableAnimations
@@ -5218,7 +5218,7 @@ BattleCommand_forceswitch:
 	ld c, 20
 	call DelayFrames
 	ld hl, FledInFearText
-	jp StdBattleTextBox
+	jp StdBattleTextbox
 
 .trainer
 	call CheckAnyOtherAliveOpponentMons
@@ -5313,7 +5313,7 @@ BattleCommand_endloop:
 	jr z, .got_hit_n_times_text
 	ld hl, HitNTimesText
 .got_hit_n_times_text
-	jp StdBattleTextBox
+	jp StdBattleTextbox
 
 ; Loop back to the command before 'critical'.
 .loop_back_to_critical
@@ -5386,7 +5386,7 @@ BattleCommand_charge:
 	ld hl, IgnoredOrders2Text
 	ld a, [wAlreadyDisobeyed]
 	and a
-	call nz, StdBattleTextBox
+	call nz, StdBattleTextbox
 
 	call BattleCommand_lowersub
 	xor a
@@ -5421,7 +5421,7 @@ BattleCommand_charge:
 	call ResetDamage
 
 	ld hl, .UsedText
-	call BattleTextBox
+	call BattleTextbox
 	jp EndMoveEffect
 
 .UsedText:
@@ -5517,7 +5517,7 @@ BattleCommand_traptarget:
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	jp StdBattleTextBox
+	jp StdBattleTextbox
 
 .Traps:
 	dbw WRAP,      WrappedByText     ; 'was WRAPPED by'
@@ -5559,7 +5559,7 @@ BattleCommand_recoil:
 
 .recoil_text
 	ld hl, RecoilText
-	jp StdBattleTextBox
+	jp StdBattleTextbox
 
 .StruggleRecoil
 	call GetQuarterMaxHP
@@ -5615,7 +5615,7 @@ BattleCommand_confuse:
 	call GetCurItemName
 	call AnimateFailedMove
 	ld hl, ProtectedByText
-	jp StdBattleTextBox
+	jp StdBattleTextbox
 
 .no_item_protection
 	call GetOpponentAbilityAfterMoldBreaker
@@ -5624,7 +5624,7 @@ BattleCommand_confuse:
 	farcall DisableAnimations
 	farcall ShowEnemyAbilityActivation
 	ld hl, DoesntAffectText
-	call StdBattleTextBox
+	call StdBattleTextbox
 	farjp EnableAnimations
 
 .no_ability_protection
@@ -5634,7 +5634,7 @@ BattleCommand_confuse:
 	jr z, .not_already_confused
 	call AnimateFailedMove
 	ld hl, AlreadyConfusedText
-	jp StdBattleTextBox
+	jp StdBattleTextbox
 
 .not_already_confused
 	call CheckSubstituteOpp
@@ -5672,7 +5672,7 @@ FinishConfusingTargetAnim:
 	ld de, ANIM_CONFUSED
 	call PlayOpponentBattleAnim
 
-	call StdBattleTextBox
+	call StdBattleTextbox
 
 	farcall UseOpponentConfusionHealingItem
 	farjp RunEnemyStatusHealAbilities
@@ -5719,7 +5719,7 @@ BattleCommand_paralyze:
 	call UpdateOpponentInParty
 	call UpdateBattleHuds
 	ld hl, ParalyzedText
-	call StdBattleTextBox
+	call StdBattleTextbox
 	jp PostStatusWithSynchronize
 
 .failed_ineffective
@@ -5730,7 +5730,7 @@ BattleCommand_paralyze:
 	push hl
 	call AnimateFailedMove
 	pop hl
-	jp StdBattleTextBox
+	jp StdBattleTextbox
 
 .ability_ok
 	farcall DisableAnimations
@@ -5763,7 +5763,7 @@ BattleCommand_resetstats:
 	call AnimateCurrentMove
 
 	ld hl, EliminatedStatsText
-	jp StdBattleTextBox
+	jp StdBattleTextbox
 
 ; same structure as ResetPlayerStatLevels and ResetEnemyStatLevels
 .Fill:
@@ -5802,7 +5802,7 @@ BattleCommand_heal:
 	jr z, .no_status_to_heal
 	ld hl, RestedText
 .no_status_to_heal
-	call StdBattleTextBox
+	call StdBattleTextbox
 	call GetMaxHP
 	jr .finish
 .not_rest
@@ -5835,7 +5835,7 @@ BattleCommand_heal:
 	call UpdateUserInParty
 	call RefreshBattleHuds
 	ld hl, RegainedHealthText
-	jp StdBattleTextBox
+	jp StdBattleTextbox
 
 .ability_prevents_rest
 	farcall DisableAnimations
@@ -5846,7 +5846,7 @@ BattleCommand_heal:
 .hp_full
 	call AnimateFailedMove
 	ld hl, HPIsFullText
-	jp StdBattleTextBox
+	jp StdBattleTextbox
 
 BattleSideCopy:
 ; Copy bc bytes from hl to de if it's the player's turn.
@@ -5907,12 +5907,12 @@ GetItemBoostedDuration:
 PrintDoesntAffect:
 ; 'it doesn't affect'
 	ld hl, DoesntAffectText
-	jp StdBattleTextBox
+	jp StdBattleTextbox
 
 PrintNothingHappened:
 ; 'but nothing happened!'
 	ld hl, NothingHappenedText
-	jp StdBattleTextBox
+	jp StdBattleTextbox
 
 TryPrintButItFailed:
 	call CheckAlreadyExecuted
@@ -5920,7 +5920,7 @@ TryPrintButItFailed:
 PrintButItFailed:
 ; 'but it failed!'
 	ld hl, ButItFailedText
-	jp StdBattleTextBox
+	jp StdBattleTextbox
 
 FailDisable:
 FailAttract:
@@ -5933,12 +5933,12 @@ PrintDidntAffect2:
 PrintDidntAffect:
 ; 'it didn't affect'
 	ld hl, DidntAffectText
-	jp StdBattleTextBox
+	jp StdBattleTextbox
 
 PrintParalyze:
 ; 'paralyzed! maybe it can't attack!'
 	ld hl, ParalyzedText
-	jp StdBattleTextBox
+	jp StdBattleTextbox
 
 CheckSubstituteOpp:
 ; returns z when not behind a sub (or if overridden by Infiltrator or sound)
@@ -6017,7 +6017,7 @@ BattleCommand_defrost:
 .done
 	call RefreshBattleHuds
 	ld hl, WasDefrostedText
-	jp StdBattleTextBox
+	jp StdBattleTextbox
 
 BoostJumptable:
 	dbw AVALANCHE,  DoAvalanche

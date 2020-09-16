@@ -5,7 +5,7 @@ BattleCommand_clearhazards:
 	jr z, .not_leeched
 	res SUBSTATUS_LEECH_SEED, [hl]
 	ld hl, ShedLeechSeedText
-	call StdBattleTextBox
+	call StdBattleTextbox
 .not_leeched
 	ldh a, [hBattleTurn]
 	and a
@@ -24,7 +24,7 @@ BattleCommand_clearhazards:
 	ld [hl], a
 	push hl
 	ld hl, BlewSpikesText
-	call StdBattleTextBox
+	call StdBattleTextbox
 	pop hl
 .no_spikes
 	ld a, [hl]
@@ -33,7 +33,7 @@ BattleCommand_clearhazards:
 	xor a
 	ld [hl], a
 	ld hl, BlewToxicSpikesText
-	call StdBattleTextBox
+	call StdBattleTextbox
 .no_toxic_spikes
 	pop de
 	ld a, [de]
@@ -42,4 +42,4 @@ BattleCommand_clearhazards:
 	xor a
 	ld [de], a
 	ld hl, ReleasedByText
-	jp StdBattleTextBox
+	jp StdBattleTextbox

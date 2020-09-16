@@ -46,7 +46,7 @@ BattleCommand_painsplit:
 	call SwitchTurn
 .done
 	ld hl, SharedPainText ; text is turn agnostic, so turn swap if target>user is OK
-	jp StdBattleTextBox
+	jp StdBattleTextbox
 
 .target_has_more
 	cpl

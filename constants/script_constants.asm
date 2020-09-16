@@ -106,7 +106,7 @@ BGEVENT_ITEM EQU const_value
 ; see engine/events.asm:TryObjectEvent.pointers
 	const_def
 	const OBJECTTYPE_SCRIPT         ; 0
-	const OBJECTTYPE_POKEBALL       ; 1
+	const OBJECTTYPE_ITEMBALL       ; 1
 	const OBJECTTYPE_TRAINER        ; 2
 	const OBJECTTYPE_GENERICTRAINER ; 3
 	const OBJECTTYPE_POKEMON        ; 4

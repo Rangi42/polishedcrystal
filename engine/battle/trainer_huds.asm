@@ -235,7 +235,7 @@ _ShowLinkBattleParticipants:
 	call LoadFontsExtra
 	hlcoord 2, 3
 	lb bc, 9, 14
-	call TextBox
+	call Textbox
 	hlcoord 4, 5
 	ld de, wPlayerName
 	rst PlaceString

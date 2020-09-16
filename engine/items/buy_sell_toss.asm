@@ -75,7 +75,7 @@ CalculateMaximumBTQuantity:
 
 SelectQuantityToToss:
 	ld hl, TossItem_MenuDataHeader
-	call LoadMenuDataHeader
+	call LoadMenuHeader
 	jr Toss_Sell_Loop
 
 SelectQuantityToBuy:
@@ -87,7 +87,7 @@ RooftopSale_SelectQuantityToBuy:
 	ld [wBuffer2], a
 	call CalculateMaximumQuantity
 	ld hl, BuyItem_MenuDataHeader
-	call LoadMenuDataHeader
+	call LoadMenuHeader
 	jr Toss_Sell_Loop
 
 BT_SelectQuantityToBuy:
@@ -97,7 +97,7 @@ BT_SelectQuantityToBuy:
 	ld [wBuffer2], a
 	call CalculateMaximumBTQuantity
 	ld hl, BTBuyItem_MenuDataHeader
-	call LoadMenuDataHeader
+	call LoadMenuHeader
 	jr Toss_Sell_Loop
 
 SelectQuantityToSell:
@@ -107,7 +107,7 @@ SelectQuantityToSell:
 	ld a, e
 	ld [wBuffer2], a
 	ld hl, SellItem_MenuDataHeader
-	call LoadMenuDataHeader
+	call LoadMenuHeader
 	; fallthrough
 
 Toss_Sell_Loop:

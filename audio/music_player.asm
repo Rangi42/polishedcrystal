@@ -1525,7 +1525,7 @@ SongSelector:
 
 	hlcoord 0, 0
 	lb bc, SCREEN_HEIGHT - 2, SCREEN_WIDTH - 2
-	call TextBox
+	call Textbox
 
 	hlcoord 0, MP_LIST_CURSOR_Y
 	ld [hl], "▶"

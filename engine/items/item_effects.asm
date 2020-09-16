@@ -1249,7 +1249,7 @@ PersimBerry:
 	call UseItemText
 
 	ld hl, ConfusedNoMoreText
-	jp StdBattleTextBox
+	jp StdBattleTextbox
 
 RestoreHPEffect:
 	ld b, PARTYMENUACTION_HEALING_ITEM
@@ -1724,7 +1724,7 @@ FreshSnackFunction:
 .cant_use
 	push bc
 	ld hl, .Text_CantBeUsed
-	call MenuTextBoxBackup
+	call MenuTextboxBackup
 	pop bc
 	jr .loop
 
@@ -1784,7 +1784,7 @@ GuardSpec:
 	ld [hl], a
 	call UseItemText
 	ld hl, MistText
-	jp StdBattleTextBox
+	jp StdBattleTextbox
 
 DireHit:
 	ld hl, wPlayerSubStatus4
@@ -1819,7 +1819,7 @@ XItemEffect:
 
 BlueCard:
 	ld hl, .bluecardtext
-	jp MenuTextBoxWaitButton
+	jp MenuTextboxWaitButton
 
 .bluecardtext
 	text_jump UnknownText_0x1c5c5e
@@ -1827,7 +1827,7 @@ BlueCard:
 
 CoinCase:
 	ld hl, .coincasetext
-	jp MenuTextBoxWaitButton
+	jp MenuTextboxWaitButton
 
 .coincasetext
 	text_jump UnknownText_0x1c5c7b
@@ -1835,10 +1835,10 @@ CoinCase:
 
 ApricornBox:
 	ld hl, .MenuDataHeader
-	call LoadMenuDataHeader
+	call LoadMenuHeader
 	hlcoord 5, 1
 	lb bc, 9, 13
-	call TextBox
+	call Textbox
 	call UpdateSprites
 	call ApplyTilemap
 	hlcoord 6, 3
@@ -2281,7 +2281,7 @@ ItemWasntUsedMessage:
 	jp PrintText
 
 Ball_ReplacePartyMonCaughtBall:
-	ld b, PARTYMENUACTION_00
+	ld b, PARTYMENUACTION_CHOOSE_POKEMON
 	call UseItem_SelectMon
 	jp c, ItemNotUsed_ExitMenu
 

@@ -1,8 +1,14 @@
 map: MACRO
-	; label, tileset, permission, location, music, phone service flag, time of day, fishing group
-\1_MapHeader:
-	db BANK(\1_SecondMapHeader), \2, \3
-	dw \1_SecondMapHeader
+;\1: map name: for the MapAttributes pointer (see data/maps/attributes.asm)
+;\2: tileset: a TILESET_* constant
+;\3: environment: TOWN, ROUTE, INDOOR, CAVE, ENVIRONMENT_5, GATE, or DUNGEON
+;\4: location: from constants/landmark_constants.asm
+;\5: music: a MUSIC_* constant
+;\6: phone service flag: TRUE to prevent phone calls
+;\7: time of day: a PALETTE_* constant
+;\8: fishing group: a FISHGROUP_* constant
+	db BANK(\1_MapAttributes), \2, \3
+	dw \1_MapAttributes
 	db \4, \5
 	dn \6, \7
 	db \8
@@ -297,7 +303,7 @@ MapGroup11:
 	map IlexForestAzaleaGate, TILESET_GATE, GATE, ROUTE_34, MUSIC_ROUTE_36, 0, PALETTE_DAY, FISHGROUP_SHORE
 	map Route34IlexForestGate, TILESET_GATE, GATE, ROUTE_34, MUSIC_ROUTE_36, 0, PALETTE_DAY, FISHGROUP_SHORE
 	map Route35GoldenrodGate, TILESET_GATE, GATE, ROUTE_35, MUSIC_ROUTE_36, 0, PALETTE_DAY, FISHGROUP_SHORE
-	map Daycare, TILESET_JOHTO_HOUSE, INDOOR, ROUTE_34, MUSIC_AZALEA_TOWN, 1, PALETTE_DAY, FISHGROUP_SHORE
+	map DayCare, TILESET_JOHTO_HOUSE, INDOOR, ROUTE_34, MUSIC_AZALEA_TOWN, 1, PALETTE_DAY, FISHGROUP_SHORE
 	map GoldenrodHPUpHouse, TILESET_JOHTO_HOUSE, INDOOR, GOLDENROD_CITY, MUSIC_GOLDENROD_CITY, 0, PALETTE_DAY, FISHGROUP_SHORE
 	map GoldenrodNetBallHouse, TILESET_JOHTO_HOUSE, INDOOR, GOLDENROD_CITY, MUSIC_GOLDENROD_CITY, 0, PALETTE_DAY, FISHGROUP_SHORE
 	map GoldenrodBandHouse, TILESET_JOHTO_HOUSE, INDOOR, GOLDENROD_CITY, MUSIC_GOLDENROD_CITY, 0, PALETTE_DAY, FISHGROUP_SHORE

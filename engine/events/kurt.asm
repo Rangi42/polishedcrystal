@@ -52,7 +52,7 @@ Kurt_SelectApricorn:
 	call Kurt_FindApricornsInBag
 	jr c, .nope
 	ld hl, .MenuDataHeader
-	call CopyMenuDataHeader
+	call CopyMenuHeader
 	ld a, [wMenuSelection]
 	ld [wMenuCursorBuffer], a
 	xor a
@@ -122,7 +122,7 @@ Kurt_SelectQuantity:
 	ld a, $1
 	ld [wItemQuantityChangeBuffer], a
 	ld hl, .MenuDataHeader
-	call LoadMenuDataHeader
+	call LoadMenuHeader
 	call MenuBox
 	call ApplyTilemap
 .loop
