@@ -556,7 +556,7 @@ TrySurfOW::
 	jr z, .quit
 
 ; Must be facing water.
-	ld a, [wEngineBuffer1]
+	ld a, [wFacingTileID]
 	call GetTileCollision
 	dec a ; cp WATER_TILE
 	jr nz, .quit
@@ -1770,7 +1770,7 @@ BikeFunction:
 	jr z, .ok
 	cp GATE
 	jr z, .ok
-	cp ENVIRONMENT_5
+	cp ISOLATED
 	jr nz, .nope
 
 .ok

@@ -2,6 +2,13 @@
 PLAYER      EQU  0
 LAST_TALKED EQU -2
 
+; string buffer constants
+	const_def
+	const STRING_BUFFER_3 ; use wStringBuffer3
+	const STRING_BUFFER_4 ; use wStringBuffer4
+	const STRING_BUFFER_5 ; use wStringBuffer5
+NUM_STRING_BUFFERS EQU const_value
+
 ; readvar/writevar/loadvar arguments
 ; _GetVarAction.VarActionTable indexes (see engine/overworld/variables.asm)
 	const_def

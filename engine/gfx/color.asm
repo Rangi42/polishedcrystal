@@ -747,7 +747,7 @@ LoadMapPals:
 	jr z, .outside
 	cp ROUTE
 	jr z, .outside
-	cp ENVIRONMENT_5
+	cp ISOLATED
 	ret nz
 .outside
 	ld a, [wMapGroup]

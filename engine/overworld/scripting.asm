@@ -835,7 +835,7 @@ Script_trainertext:
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	ld a, [wEngineBuffer1]
+	ld a, [wSeenTrainerBank]
 	ld b, a
 	jp MapTextbox
 
@@ -844,7 +844,7 @@ Script_scripttalkafter:
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	ld a, [wEngineBuffer1]
+	ld a, [wSeenTrainerBank]
 	ld b, a
 	jp ScriptJump
 

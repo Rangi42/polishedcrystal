@@ -619,7 +619,7 @@ _CGB_PokedexSearchOption:
 	jp _CGB_FinishLayout
 
 _CGB_BuyMenu:
-	ld a, [wEngineBuffer1]
+	ld a, [wMartType]
 	cp MARTTYPE_BLUECARD
 	ld hl, BlueCardMartMenuPals
 	jr z, .ok

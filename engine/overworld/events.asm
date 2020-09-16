@@ -498,9 +498,9 @@ TryObjectEvent:
 	ld a, [hli]
 	push af
 	ld a, [hli]
-	ld [wCurItemBallContents], a
+	ld [wItemBallItemID], a
 	ld a, [hl]
-	ld [wCurItemBallQuantity], a
+	ld [wItemBallQuantity], a
 	pop af
 	scf
 	ret
@@ -555,7 +555,7 @@ TryReadSign:
 	ret
 
 .IsSign:
-	ld a, [wEngineBuffer3]
+	ld a, [wCurBGEventType]
 	cp BGEVENT_ITEM
 	jp nc, .itemifset
 	call StackJumpTable
@@ -593,7 +593,7 @@ TryReadSign:
 
 .read
 	call PlayTalkObject
-	ld hl, wEngineBuffer4
+	ld hl, wCurBGEventScriptAddr
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
@@ -615,7 +615,7 @@ TryReadSign:
 	and a
 	jp nz, .dontread
 	call PlayTalkObject
-	ld hl, wEngineBuffer1
+	ld hl, wHiddenItemEvent
 	ld a, [wCurBGEventScriptAddr]
 	ld [hli], a
 	ld a, [wCurBGEventScriptAddr+1]
@@ -671,7 +671,7 @@ TryReadSign:
 	jr .callMapScriptAndReturnCarry
 
 CheckSignFlag:
-	ld hl, wEngineBuffer4
+	ld hl, wCurBGEventScriptAddr
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
@@ -687,30 +687,7 @@ CheckSignFlag:
 	pop hl
 	ret
 
-HiddenItemScript:
-	opentext
-	copybytetovar wEngineBuffer3
-	itemtotext $0, $0
-	farwritetext UnknownText_0x1c0a1c
-	giveitem ITEM_FROM_MEM
-	iffalse .bag_full
-	callasm SetMemEvent
-	specialsound
-	itemnotify
-	endtext
-
-.bag_full
-	buttonsound
-	pocketisfull
-	endtext
-
-SetMemEvent:
-	ld hl, wEngineBuffer1
-	ld a, [hli]
-	ld d, [hl]
-	ld e, a
-	ld b, SET_FLAG
-	jp EventFlagAction
+INCLUDE "engine/events/hidden_item.asm"
 
 PlayerMovement:
 	farcall DoPlayerMovement
@@ -1046,12 +1023,12 @@ LoadScriptBDE::
 
 CheckFacingTileEvent:
 	call GetFacingTileCoord
-	ld [wEngineBuffer1], a
+	ld [wFacingTileID], a
 	ld c, a
-	farcall CheckFacingTileForStd
+	farcall CheckFacingTileForStdScript
 	jr c, .done
 
-	ld a, [wEngineBuffer1]
+	ld a, [wFacingTileID]
 	cp COLL_WHIRLPOOL
 	jr z, .whirlpool
 	cp COLL_WATERFALL

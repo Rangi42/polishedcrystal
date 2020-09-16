@@ -116,14 +116,6 @@ wEndFlypoint:: db
 	ds 55
 
 UNION
-; TODO: replace with meaningful values (see pokecrystal commit 2184b60)
-wEngineBuffer1:: db
-wEngineBuffer2:: db
-wEngineBuffer3:: db
-wEngineBuffer4:: db
-wEngineBuffer5:: db
-
-NEXTU
 ; menu items list
 wMenuItemsList:: ds 16
 wMenuItemsListEnd::
@@ -134,15 +126,22 @@ wTempScriptBuffer:: db
 wJumpStdScriptBuffer:: ds 15
 
 NEXTU
-; item ball data
-wCurItemBallContents:: db
-wCurItemBallQuantity:: db
-
-NEXTU
 ; fruit tree data
 wCurFruitTree:: db
 	ds 1
 wCurFruit:: db
+
+NEXTU
+; item ball data
+wItemBallItemID:: db
+wItemBallQuantity:: db
+
+NEXTU
+; hidden item data
+wHiddenItemData::
+wHiddenItemEvent:: dw
+wHiddenItemID:: db
+wHiddenItemDataEnd::
 
 NEXTU
 ; elevator data
@@ -172,7 +171,9 @@ wCurBGEventScriptAddr:: db
 
 NEXTU
 ; trainer data
-	ds 3
+wSeenTrainerBank:: db
+wSeenTrainerDistance:: db
+wSeenTrainerDirection:: db
 wTempTrainer::
 wTempTrainerEventFlag::
 wTempTrainerEventFlagLo:: db
@@ -191,16 +192,18 @@ wStashedTextPointer:: dw
 
 NEXTU
 ; mart data
-	ds 1
+wMartType:: db
 wMartPointerBank:: db
 wMartPointer:: dw
-	ds 1
+wMartJumptableIndex:: db
 wBargainShopFlags:: db
 
 NEXTU
 ; player movement data
-wCurInput:: db
-	ds 3
+wCurInput::
+wFacingTileID:: db
+	ds 2
+wWalkingIntoEdgeWarp:: db
 wMovementAnimation:: db
 wWalkingDirection:: db
 wFacingDirection:: db
@@ -217,9 +220,24 @@ wMenuCursorBufferBackup:: db
 wMenuScrollPositionBackup:: db
 
 NEXTU
-; phone script pointer
-	ds 10
-wPhoneScriptPointer:: dw
+; phone script data
+wCheckedTime:: db
+wPhoneListIndex:: db
+wNumAvailableCallers:: db
+wAvailableCallers:: ds CONTACT_LIST_SIZE - 4 ; bug: available callers list affects mem addresses outside union (up to 4 bytes)
+wAvailableCallersEnd::
+
+NEXTU
+; phone caller contact
+	ds 1
+wCallerContact:: ds PHONE_CONTACT_SIZE 
+
+NEXTU
+; poison step data
+wPoisonStepData::
+wPoisonStepFlagSum:: db
+wPoisonStepPartyFlags:: ds PARTY_LENGTH
+wPoisonStepDataEnd::
 
 ENDU
 

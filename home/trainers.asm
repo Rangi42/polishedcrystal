@@ -99,20 +99,20 @@ CheckTrainerBattle::
 	pop af
 	ldh [hLastTalked], a
 	ld a, b
-	ld [wEngineBuffer2], a
+	ld [wSeenTrainerDistance], a
 	ld a, c
-	ld [wEngineBuffer3], a
+	ld [wSeenTrainerDirection], a
 	jr LoadTrainer_continue
 
 TalkToTrainer::
 	ld a, 1
-	ld [wEngineBuffer2], a
+	ld [wSeenTrainerDistance], a
 	ld a, -1
-	ld [wEngineBuffer3], a
+	ld [wSeenTrainerDirection], a
 
 LoadTrainer_continue::
 	ld a, [wMapScriptsBank]
-	ld [wEngineBuffer1], a
+	ld [wSeenTrainerBank], a
 
 	ldh a, [hLastTalked]
 	call GetMapObject
@@ -125,7 +125,7 @@ LoadTrainer_continue::
 	push af
 	ld hl, MAPOBJECT_SCRIPT_POINTER
 	add hl, bc
-	ld a, [wEngineBuffer1]
+	ld a, [wSeenTrainerBank]
 	call GetFarHalfword
 	ld de, wTempTrainer
 	pop af
@@ -134,7 +134,7 @@ LoadTrainer_continue::
 	jr z, .skipCopyingLossPtrAndScriptPtr
 	ld bc, wTempTrainerEnd - wTempTrainer
 .skipCopyingLossPtrAndScriptPtr
-	ld a, [wEngineBuffer1]
+	ld a, [wSeenTrainerBank]
 	call FarCopyBytes
 	pop af
 	jr nz, .notGenericTrainer
