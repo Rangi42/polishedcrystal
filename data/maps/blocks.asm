@@ -147,7 +147,7 @@ MoveManiacsHouse_BlockData:
 Route39Farmhouse_BlockData:
 LakeOfRageHiddenPowerHouse_BlockData:
 Route28FamousSpeechHouse_BlockData:
-KrissNeighborsHouse_BlockData:
+PlayersNeighborsHouse_BlockData:
 Route30BerrySpeechHouse_BlockData:
 ValenciaHouse_BlockData:
 	INCBIN "maps/JohtoHouse4.ablk.lz"
@@ -208,13 +208,13 @@ SECTION "HiddenTreeGrotto_BlockData", ROMX
 HiddenTreeGrotto_BlockData:
 	INCBIN "maps/HiddenTreeGrotto.ablk.lz"
 
-SECTION "KrissHouse1F_BlockData", ROMX
-KrissHouse1F_BlockData:
-	INCBIN "maps/KrissHouse1F.ablk.lz"
+SECTION "PlayersHouse1F_BlockData", ROMX
+PlayersHouse1F_BlockData:
+	INCBIN "maps/PlayersHouse1F.ablk.lz"
 
-SECTION "KrissHouse2F_BlockData", ROMX
-KrissHouse2F_BlockData:
-	INCBIN "maps/KrissHouse2F.ablk.lz"
+SECTION "PlayersHouse2F_BlockData", ROMX
+PlayersHouse2F_BlockData:
+	INCBIN "maps/PlayersHouse2F.ablk.lz"
 
 SECTION "ElmsLab_BlockData", ROMX
 ElmsLab_BlockData:

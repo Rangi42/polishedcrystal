@@ -112,7 +112,7 @@ ENDM
 	special_ob_pal map,      LIGHTNING_ISLAND,                LightningIslandOBPalette_Tree,          PAL_OW_TREE,   1
 	special_ob_pal map,      ROCK_TUNNEL_2F,                  RockTunnelOBPalette_Tree,               PAL_OW_TREE,   1
 	special_ob_pal map,      LYRAS_HOUSE_2F,                  LyrasHouse2FOBPalette_Rock,             PAL_OW_ROCK,   1
-	special_ob_pal map,      KRISS_HOUSE_2F,                  OverworldPartyMonPalettes + 3 palettes, PAL_OW_SILVER, 3
+	special_ob_pal map,      PLAYERS_HOUSE_2F,                OverworldPartyMonPalettes + 3 palettes, PAL_OW_SILVER, 3
 	special_ob_pal map,      GOLDENROD_HARBOR,                GoldenrodHarborOBPalette_Purple,        PAL_OW_PURPLE, 1, 1
 	special_ob_pal map,      GOLDENROD_POKECOM_CENTER_1F,     PokecomCenter1FOBPalette_Rock,          PAL_OW_ROCK,   1
 	special_ob_pal map,      GOLDENROD_POKECOM_CENTER_OFFICE, PokecomCenterOfficeOBPalette_Purple,    PAL_OW_PURPLE, 1

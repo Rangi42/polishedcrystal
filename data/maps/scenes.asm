@@ -43,7 +43,7 @@ MapScenes::
 	scene_var INDIGO_PLATEAU_POKECENTER_1F,           wAlways0SceneID
 	scene_var KARENS_ROOM,                            wKarensRoomSceneID
 	scene_var KOGAS_ROOM,                             wKogasRoomSceneID
-	scene_var KRISS_HOUSE_1F,                         wKrissHouse1FSceneID
+	scene_var PLAYERS_HOUSE_1F,                       wPlayersHouse1FSceneID
 	scene_var LANCES_ROOM,                            wLancesRoomSceneID
 	scene_var LAVENDER_TOWN,                          wLavenderTownSceneID
 	scene_var MAHOGANY_MART_1F,                       wMahoganyMart1FSceneID

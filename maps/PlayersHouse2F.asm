@@ -1,20 +1,20 @@
-KrissHouse2F_MapScriptHeader:
+PlayersHouse2F_MapScriptHeader:
 	def_scene_scripts
 
 	def_callbacks
-	callback MAPCALLBACK_NEWMAP, KrissHouse2FInitializeRoom
-	callback MAPCALLBACK_TILES, KrissHouse2FSetSpawn
+	callback MAPCALLBACK_NEWMAP, PlayersHouse2FInitializeRoom
+	callback MAPCALLBACK_TILES, PlayersHouse2FSetSpawn
 
 	def_warp_events
-	warp_event  7,  0, KRISS_HOUSE_1F, 3
+	warp_event  7,  0, PLAYERS_HOUSE_1F, 3
 
 	def_coord_events
 
 	def_bg_events
-	bg_event  2,  1, BGEVENT_UP, KrissHousePC
-	bg_event  3,  1, BGEVENT_READ, KrissHouseRadio
+	bg_event  2,  1, BGEVENT_UP, PlayersHousePC
+	bg_event  3,  1, BGEVENT_READ, PlayersHouseRadio
 	bg_event  5,  1, BGEVENT_READ, PokemonJournalProfElmScript
-	bg_event  6,  0, BGEVENT_IFSET, KrissHousePoster
+	bg_event  6,  0, BGEVENT_IFSET, PlayersHousePoster
 
 	def_object_events
 	object_event  4,  2, SPRITE_CONSOLE, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, GameConsole, EVENT_PLAYERS_HOUSE_2F_CONSOLE
@@ -22,12 +22,12 @@ KrissHouse2F_MapScriptHeader:
 	object_event  5,  4, SPRITE_DOLL_2, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Doll2, EVENT_PLAYERS_HOUSE_2F_DOLL_2
 	object_event  0,  1, SPRITE_BIG_DOLL, SPRITEMOVEDATA_BIGDOLL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, BigDoll, EVENT_PLAYERS_HOUSE_2F_BIG_DOLL
 
-KrissHouse2FInitializeRoom:
+PlayersHouse2FInitializeRoom:
 	special ToggleDecorationsVisibility
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_8
 	return
 
-KrissHouse2FSetSpawn:
+PlayersHouse2FSetSpawn:
 	special ToggleMaptileDecorations
 	return
 
@@ -43,11 +43,11 @@ BigDoll:
 GameConsole:
 	describedecoration 4
 
-KrissHousePoster:
+PlayersHousePoster:
 	dw EVENT_PLAYERS_ROOM_POSTER
 	describedecoration 0
 
-KrissHouseRadio:
+PlayersHouseRadio:
 
 if DEF(DEBUG)
 
@@ -285,7 +285,7 @@ endr
 ;	callasm FillPokedex
 	; intro events
 	addcellnum PHONE_MOM
-	setmapscene KRISS_HOUSE_1F, $1
+	setmapscene PLAYERS_HOUSE_1F, $1
 	setevent EVENT_PLAYERS_HOUSE_MOM_1
 	clearevent EVENT_PLAYERS_HOUSE_MOM_2
 	setmapscene VERMILION_CITY, $1
@@ -331,14 +331,14 @@ else
 	iftrue .AbbreviatedRadio
 	playmusic MUSIC_POKEMON_TALK
 	opentext
-	writetext KrisRadioText1
+	writetext PlayerRadioText1
 	pause 45
-	writetext KrisRadioText2
+	writetext PlayerRadioText2
 	pause 45
-	writetext KrisRadioText3
+	writetext PlayerRadioText3
 	pause 45
 	musicfadeout MUSIC_NEW_BARK_TOWN, 16
-	writetext KrisRadioText4
+	writetext PlayerRadioText4
 	pause 45
 	closetext
 	setevent EVENT_LISTENED_TO_INITIAL_RADIO
@@ -349,7 +349,7 @@ else
 
 .AbbreviatedRadio:
 	opentext
-	writetext KrisRadioText4
+	writetext PlayerRadioText4
 	pause 45
 	endtext
 
@@ -373,31 +373,31 @@ PokemonJournalProfElmScript:
 	cont "research."
 	done
 
-KrissHousePC:
+PlayersHousePC:
 	opentext
-	special Special_KrissHousePC
+	special Special_PlayersHousePC
 	iftrue .Warp
 	endtext
 .Warp:
 	warp NONE, 0, 0
 	end
 
-KrisRadioText1:
+PlayerRadioText1:
 	text "Prof.Oak's #mon"
 	line "Talk! Please tune"
 	cont "in next time!"
 	done
 
-KrisRadioText2:
+PlayerRadioText2:
 	text "#mon Channel!"
 	done
 
-KrisRadioText3:
+PlayerRadioText3:
 	text "This is DJ Mary,"
 	line "your co-host!"
 	done
 
-KrisRadioText4:
+PlayerRadioText4:
 	text "#mon!"
 	line "#mon Channel…"
 	done

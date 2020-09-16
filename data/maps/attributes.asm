@@ -865,9 +865,9 @@ ENDM
 	map_attributes Route2Gate, ROUTE_2_GATE, $0, 0
 	map_attributes PokemonLeagueGate, POKEMON_LEAGUE_GATE, $0, 0
 	map_attributes ElmsLab, ELMS_LAB, $0, 0
-	map_attributes KrissHouse1F, KRISS_HOUSE_1F, $0, 0
-	map_attributes KrissHouse2F, KRISS_HOUSE_2F, $0, 0
-	map_attributes KrissNeighborsHouse, KRISS_NEIGHBORS_HOUSE, $0, 0
+	map_attributes PlayersHouse1F, PLAYERS_HOUSE_1F, $0, 0
+	map_attributes PlayersHouse2F, PLAYERS_HOUSE_2F, $0, 0
+	map_attributes PlayersNeighborsHouse, PLAYERS_NEIGHBORS_HOUSE, $0, 0
 	map_attributes LyrasHouse1F, LYRAS_HOUSE_1F, $0, 0
 	map_attributes LyrasHouse2F, LYRAS_HOUSE_2F, $0, 0
 	map_attributes ElmsHouse, ELMS_HOUSE, $0, 0

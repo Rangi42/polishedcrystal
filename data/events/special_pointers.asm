@@ -30,7 +30,7 @@ SpecialsPointers::
 	add_special Special_MagikarpHouseSign
 	add_special HealParty
 	add_special PokemonCenterPC
-	add_special Special_KrissHousePC
+	add_special Special_PlayersHousePC
 	add_special Special_DayCareMan
 	add_special Special_DayCareLady
 	add_special Special_DayCareManOutside

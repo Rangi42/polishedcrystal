@@ -277,10 +277,10 @@ _GetSpritePalette::
 
 .is_pokemon
 	ld a, [wMapGroup]
-	cp GROUP_KRISS_HOUSE_2F
+	cp GROUP_PLAYERS_HOUSE_2F
 	jr nz, .not_doll
 	ld a, [wMapNumber]
-	cp MAP_KRISS_HOUSE_2F
+	cp MAP_PLAYERS_HOUSE_2F
 	jr nz, .not_doll
 	farjp GetOverworldMonIconPalette
 

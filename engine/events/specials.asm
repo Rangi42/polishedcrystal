@@ -104,10 +104,10 @@ Special_DisplayLinkRecord:
 	farcall DisplayLinkRecord
 	jp ExitAllMenus
 
-Special_KrissHousePC:
+Special_PlayersHousePC:
 	xor a
 	ldh [hScriptVar], a
-	farcall _KrissHousePC
+	farcall _PlayersHousePC
 	ld a, c
 	ldh [hScriptVar], a
 	ret

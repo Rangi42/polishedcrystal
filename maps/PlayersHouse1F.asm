@@ -1,4 +1,4 @@
-KrissHouse1F_MapScriptHeader:
+PlayersHouse1F_MapScriptHeader:
 	def_scene_scripts
 
 	def_callbacks
@@ -6,7 +6,7 @@ KrissHouse1F_MapScriptHeader:
 	def_warp_events
 	warp_event  8,  7, NEW_BARK_TOWN, 2
 	warp_event  9,  7, NEW_BARK_TOWN, 2
-	warp_event 11,  0, KRISS_HOUSE_2F, 1
+	warp_event 11,  0, PLAYERS_HOUSE_2F, 1
 
 	def_coord_events
 	coord_event 10,  4, 0, MomTrigger1
@@ -15,10 +15,10 @@ KrissHouse1F_MapScriptHeader:
 	coord_event  9,  2, 0, MomTrigger4
 
 	def_bg_events
-	bg_event  1,  1, BGEVENT_JUMPTEXT, KrissHouse1FFridgeText
-	bg_event  2,  1, BGEVENT_JUMPTEXT, KrissHouse1FSinkText
-	bg_event  3,  1, BGEVENT_JUMPTEXT, KrissHouse1FStoveText
-	bg_event  6,  1, BGEVENT_UP, KrissHouse1FTVScript
+	bg_event  1,  1, BGEVENT_JUMPTEXT, PlayersHouse1FFridgeText
+	bg_event  2,  1, BGEVENT_JUMPTEXT, PlayersHouse1FSinkText
+	bg_event  3,  1, BGEVENT_JUMPTEXT, PlayersHouse1FStoveText
+	bg_event  6,  1, BGEVENT_UP, PlayersHouse1FTVScript
 
 	def_object_events
 	object_event  9,  4, SPRITE_MOM, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, MomScript, EVENT_PLAYERS_HOUSE_MOM_1
@@ -29,26 +29,26 @@ KrissHouse1F_MapScriptHeader:
 	object_event  6,  4, SPRITE_MATRON, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, NeighborScript, EVENT_PLAYERS_HOUSE_1F_NEIGHBOR
 
 	object_const_def
-	const KRISSHOUSE1F_MOM1
+	const PLAYERSHOUSE1F_MOM1
 
 MomTrigger1:
 	playmusic MUSIC_MOM
-	showemote EMOTE_SHOCK, KRISSHOUSE1F_MOM1, 15
-	turnobject KRISSHOUSE1F_MOM1, RIGHT
+	showemote EMOTE_SHOCK, PLAYERSHOUSE1F_MOM1, 15
+	turnobject PLAYERSHOUSE1F_MOM1, RIGHT
 	turnobject PLAYER, LEFT
 	jump MomEventScript
 
 MomTrigger2:
 	playmusic MUSIC_MOM
-	showemote EMOTE_SHOCK, KRISSHOUSE1F_MOM1, 15
-	turnobject KRISSHOUSE1F_MOM1, RIGHT
+	showemote EMOTE_SHOCK, PLAYERSHOUSE1F_MOM1, 15
+	turnobject PLAYERSHOUSE1F_MOM1, RIGHT
 	applyonemovement PLAYER, slow_step_left
 	jump MomEventScript
 
 MomTrigger3:
 	playmusic MUSIC_MOM
-	showemote EMOTE_SHOCK, KRISSHOUSE1F_MOM1, 15
-	turnobject KRISSHOUSE1F_MOM1, UP
+	showemote EMOTE_SHOCK, PLAYERSHOUSE1F_MOM1, 15
+	turnobject PLAYERSHOUSE1F_MOM1, UP
 	applymovement PLAYER, .two_steps_down
 	jump MomEventScript
 
@@ -59,8 +59,8 @@ MomTrigger3:
 
 MomTrigger4:
 	playmusic MUSIC_MOM
-	showemote EMOTE_SHOCK, KRISSHOUSE1F_MOM1, 15
-	turnobject KRISSHOUSE1F_MOM1, UP
+	showemote EMOTE_SHOCK, PLAYERSHOUSE1F_MOM1, 15
+	turnobject PLAYERSHOUSE1F_MOM1, UP
 	applyonemovement PLAYER, slow_step_down
 MomEventScript:
 	opentext
@@ -99,14 +99,14 @@ MomEventScript:
 	writetext MomOutroText
 	waitbutton
 	closetext
-	turnobject KRISSHOUSE1F_MOM1, LEFT
+	turnobject PLAYERSHOUSE1F_MOM1, LEFT
 	special RestartMapMusic
 	end
 
 GearName:
 	db "#gear@"
 
-KrissHouse1FFridgeText:
+PlayersHouse1FFridgeText:
 	text "Let's see what's"
 	line "in the fridge…"
 
@@ -114,20 +114,20 @@ KrissHouse1FFridgeText:
 	line "tasty Lemonade!"
 	done
 
-KrissHouse1FSinkText:
+PlayersHouse1FSinkText:
 	text "The sink is spot-"
 	line "less. Mom likes it"
 	cont "clean."
 	done
 
-KrissHouse1FStoveText:
+PlayersHouse1FStoveText:
 	text "Mom's specialty!"
 
 	para "Cinnabar Volcano"
 	line "Burger!"
 	done
 
-KrissHouse1FTVScript:
+PlayersHouse1FTVScript:
 	jumpthistext
 
 	text "There's a movie on"

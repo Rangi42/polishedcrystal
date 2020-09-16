@@ -290,7 +290,7 @@ IsAnyMonHoldingMail:
 	and a
 	ret
 
-_KrisMailBoxMenu:
+_PlayerMailBoxMenu:
 	call InitMail
 	jr z, .nomail
 	call LoadStandardMenuHeader

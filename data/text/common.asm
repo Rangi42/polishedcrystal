@@ -2775,14 +2775,14 @@ UnknownText_0x1c1368::
 	line "to do?"
 	done
 
-SECTION "_KrissPCHowManyWithdrawText", ROMX
-_KrissPCHowManyWithdrawText::
+SECTION "_PlayersPCHowManyWithdrawText", ROMX
+_PlayersPCHowManyWithdrawText::
 	text "How many do you"
 	line "want to withdraw?"
 	done
 
-SECTION "_KrissPCWithdrewItemsText", ROMX
-_KrissPCWithdrewItemsText::
+SECTION "_PlayersPCWithdrewItemsText", ROMX
+_PlayersPCWithdrewItemsText::
 	text "Withdrew "
 	deciram wItemQuantityChangeBuffer, 1, 2
 	line ""
@@ -2790,8 +2790,8 @@ _KrissPCWithdrewItemsText::
 	text "(s)."
 	prompt
 
-SECTION "_KrissPCNoRoomWithdrawText", ROMX
-_KrissPCNoRoomWithdrawText::
+SECTION "_PlayersPCNoRoomWithdrawText", ROMX
+_PlayersPCNoRoomWithdrawText::
 	text "There's no room"
 	line "for more items."
 	prompt
@@ -2801,20 +2801,20 @@ UnknownText_0x1c13df::
 	text "No items here!"
 	prompt
 
-SECTION "_KrissPCCantDepositItemText", ROMX
-_KrissPCCantDepositItemText::
+SECTION "_PlayersPCCantDepositItemText", ROMX
+_PlayersPCCantDepositItemText::
 	text "That item can't"
 	line "be deposited."
 	prompt
 
-SECTION "_KrissPCHowManyDepositText", ROMX
-_KrissPCHowManyDepositText::
+SECTION "_PlayersPCHowManyDepositText", ROMX
+_PlayersPCHowManyDepositText::
 	text "How many do you"
 	line "want to deposit?"
 	done
 
-SECTION "_KrissPCDepositItemsText", ROMX
-_KrissPCDepositItemsText::
+SECTION "_PlayersPCDepositItemsText", ROMX
+_PlayersPCDepositItemsText::
 	text "Deposited "
 	deciram wItemQuantityChangeBuffer, 1, 2
 	line ""
@@ -2822,8 +2822,8 @@ _KrissPCDepositItemsText::
 	text "(s)."
 	prompt
 
-SECTION "_KrissPCNoRoomDepositText", ROMX
-_KrissPCNoRoomDepositText::
+SECTION "_PlayersPCNoRoomDepositText", ROMX
+_PlayersPCNoRoomDepositText::
 	text "There's no room to"
 	line "store items."
 	prompt

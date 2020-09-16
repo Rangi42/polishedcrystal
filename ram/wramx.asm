@@ -1015,7 +1015,7 @@ wHallOfFameSceneID:: db
 wIlexForestSceneID:: db
 wKarensRoomSceneID:: db
 wKogasRoomSceneID:: db
-wKrissHouse1FSceneID:: db
+wPlayersHouse1FSceneID:: db
 wLancesRoomSceneID:: db
 wLavenderTownSceneID:: db
 wMahoganyMart1FSceneID:: db

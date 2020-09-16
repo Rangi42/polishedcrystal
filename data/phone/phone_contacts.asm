@@ -9,7 +9,7 @@ ENDM
 
 PhoneContacts:
 	phone TRAINER_NONE, PHONE_00,              N_A,                       %0000, UnusedPhoneScript,   %0000, UnusedPhoneScript
-	phone TRAINER_NONE, PHONECONTACT_MOM,      KRISS_HOUSE_1F,            %1111, MomPhoneScript,      %0000, UnusedPhoneScript
+	phone TRAINER_NONE, PHONECONTACT_MOM,      PLAYERS_HOUSE_1F,          %1111, MomPhoneScript,      %0000, UnusedPhoneScript
 	phone TRAINER_NONE, PHONECONTACT_BIKESHOP, OAKS_LAB,                  %0000, UnusedPhoneScript,   %0000, UnusedPhoneScript
 	phone TRAINER_NONE, PHONECONTACT_BILL,     N_A,                       %1111, BillPhoneScript1,    %0000, BillPhoneScript2
 	phone TRAINER_NONE, PHONECONTACT_ELM,      ELMS_LAB,                  %1111, ElmPhoneScript1,     %0000, ElmPhoneScript2

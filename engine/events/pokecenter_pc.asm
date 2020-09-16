@@ -161,7 +161,7 @@ PC_WaitPlaySFX:
 	pop de
 	jp PlaySFX
 
-_KrissHousePC:
+_PlayersHousePC:
 	call PC_PlayBootSound
 	ld hl, UnknownText_0x156ff
 	call PC_DisplayText
@@ -198,7 +198,7 @@ Function15715:
 	xor a
 	ld [wPCItemsCursor], a
 	ld [wPCItemsScrollPosition], a
-	ld hl, KrissPCMenuData
+	ld hl, PlayersPCMenuData
 	call LoadMenuHeader
 .asm_15722
 	call UpdateTimePals
@@ -214,28 +214,28 @@ Function15715:
 .asm_15732
 	jp ExitMenu
 
-KrissPCMenuData:
+PlayersPCMenuData:
 	db %01000000
 	db  0,  0 ; top left corner coords (y, x)
 	db 12, 15 ; bottom right corner coords (y, x)
-	dw .KrissPCMenuData2
+	dw .PlayersPCMenuData2
 	db 1 ; default selected option
 
-.KrissPCMenuData2:
+.PlayersPCMenuData2:
 	db %10100000 ; bit7
 	db 0 ; # items?
-	dw .KrissPCMenuList1
+	dw .PlayersPCMenuList1
 	dw PlaceNthMenuStrings
-	dw .KrissPCMenuPointers
+	dw .PlayersPCMenuPointers
 
-.KrissPCMenuPointers:
-	dw KrisWithdrawItemMenu, .WithdrawItem
-	dw KrisDepositItemMenu,  .DepositItem
-	dw KrisTossItemMenu,     .TossItem
-	dw KrisMailBoxMenu,      .MailBox
-	dw PlayerDecorationMenu, .Decoration
-	dw KrisLogOffMenu,       .LogOff
-	dw KrisLogOffMenu,       .TurnOff
+.PlayersPCMenuPointers:
+	dw PlayerWithdrawItemMenu, .WithdrawItem
+	dw PlayerDepositItemMenu,  .DepositItem
+	dw PlayerTossItemMenu,     .TossItem
+	dw PlayerMailBoxMenu,      .MailBox
+	dw PlayerDecorationMenu,   .Decoration
+	dw PlayerLogOffMenu,       .LogOff
+	dw PlayerLogOffMenu,       .TurnOff
 
 .WithdrawItem: db "Withdraw Item@"
 .DepositItem:  db "Deposit Item@"
@@ -253,7 +253,7 @@ DECORATION    EQU 4
 TURN_OFF      EQU 5
 LOG_OFF       EQU 6
 
-.KrissPCMenuList1:
+.PlayersPCMenuList1:
 	db 5
 	db WITHDRAW_ITEM
 	db DEPOSIT_ITEM
@@ -261,7 +261,7 @@ LOG_OFF       EQU 6
 	db MAIL_BOX
 	db TURN_OFF
 	db -1
-;.KrissPCMenuList2:
+;.PlayersPCMenuList2:
 	db 6
 	db WITHDRAW_ITEM
 	db DEPOSIT_ITEM
@@ -286,7 +286,7 @@ UnknownText_0x157cc:
 	text_jump UnknownText_0x1c1368
 	text_end
 
-KrisWithdrawItemMenu:
+PlayerWithdrawItemMenu:
 	call LoadStandardMenuHeader
 	farcall ClearPCItemScreen
 .loop
@@ -333,18 +333,18 @@ KrisWithdrawItemMenu:
 	jp MenuTextboxBackup
 
 .HowManyText:
-	text_jump _KrissPCHowManyWithdrawText
+	text_jump _PlayersPCHowManyWithdrawText
 	text_end
 
 .WithdrewText:
-	text_jump _KrissPCWithdrewItemsText
+	text_jump _PlayersPCWithdrewItemsText
 	text_end
 
 .NoRoomText:
-	text_jump _KrissPCNoRoomWithdrawText
+	text_jump _PlayersPCNoRoomWithdrawText
 	text_end
 
-KrisTossItemMenu:
+PlayerTossItemMenu:
 	call LoadStandardMenuHeader
 	farcall ClearPCItemScreen
 .loop
@@ -367,12 +367,12 @@ PlayerDecorationMenu:
 	scf
 	ret
 
-KrisLogOffMenu:
+PlayerLogOffMenu:
 	xor a
 	scf
 	ret
 
-KrisDepositItemMenu:
+PlayerDepositItemMenu:
 	call .CheckItemsInBag
 	jr c, .nope
 	call DisableSpriteUpdates
@@ -485,23 +485,23 @@ KrisDepositItemMenu:
 	ret
 
 .CantDepositItemText:
-	text_jump _KrissPCCantDepositItemText
+	text_jump _PlayersPCCantDepositItemText
 	text_end
 
 .HowManyText:
-	text_jump _KrissPCHowManyDepositText
+	text_jump _PlayersPCHowManyDepositText
 	text_end
 
 .DepositText:
-	text_jump _KrissPCDepositItemsText
+	text_jump _PlayersPCDepositItemsText
 	text_end
 
 .NoRoomText:
-	text_jump _KrissPCNoRoomDepositText
+	text_jump _PlayersPCNoRoomDepositText
 	text_end
 
-KrisMailBoxMenu:
-	farcall _KrisMailBoxMenu
+PlayerMailBoxMenu:
+	farcall _PlayerMailBoxMenu
 	xor a
 	ret
 

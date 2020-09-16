@@ -1,4 +1,4 @@
-KrissNeighborsHouse_MapScriptHeader:
+PlayersNeighborsHouse_MapScriptHeader:
 	def_scene_scripts
 
 	def_callbacks
@@ -10,28 +10,28 @@ KrissNeighborsHouse_MapScriptHeader:
 	def_coord_events
 
 	def_bg_events
-	bg_event  5,  1, BGEVENT_READ, KrissNeighborsHouseRadio
+	bg_event  5,  1, BGEVENT_READ, PlayersNeighborsHouseRadio
 
 	def_object_events
-	object_event  5,  3, SPRITE_MATRON, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, KrissNeighborText, EVENT_KRISS_NEIGHBORS_HOUSE_NEIGHBOR
-	object_event  2,  3, SPRITE_BATTLE_GIRL, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, KrissNeighborsDaughterText, -1
-	object_event  5,  4, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, (1 << EVE) | (1 << NITE), 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, KrissNeighborsHusbandText, -1
+	object_event  5,  3, SPRITE_MATRON, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, PlayersNeighborText, EVENT_PLAYERS_NEIGHBORS_HOUSE_NEIGHBOR
+	object_event  2,  3, SPRITE_BATTLE_GIRL, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, PlayersNeighborsDaughterText, -1
+	object_event  5,  4, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, (1 << EVE) | (1 << NITE), 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, PlayersNeighborsHusbandText, -1
 
-KrissNeighborsHouseRadio:
+PlayersNeighborsHouseRadio:
 	checkevent EVENT_GOT_A_POKEMON_FROM_ELM
 	iftrue .NormalRadio
 	checkevent EVENT_LISTENED_TO_INITIAL_RADIO
 	iftrue .AbbreviatedRadio
 	playmusic MUSIC_POKEMON_TALK
 	opentext
-	writetext KrisNeighborRadioText1
+	writetext PlayerNeighborRadioText1
 	pause 45
-	writetext KrisNeighborRadioText2
+	writetext PlayerNeighborRadioText2
 	pause 45
-	writetext KrisNeighborRadioText3
+	writetext PlayerNeighborRadioText3
 	pause 45
 	musicfadeout MUSIC_NEW_BARK_TOWN, $10
-	writetext KrisNeighborRadioText4
+	writetext PlayerNeighborRadioText4
 	pause 45
 	closetext
 	setevent EVENT_LISTENED_TO_INITIAL_RADIO
@@ -40,11 +40,11 @@ KrissNeighborsHouseRadio:
 	jumpstd radio1
 .AbbreviatedRadio:
 	opentext
-	writetext KrisNeighborRadioText4
+	writetext PlayerNeighborRadioText4
 	pause 45
 	endtext
 
-KrissNeighborsDaughterText:
+PlayersNeighborsDaughterText:
 	text "Pikachu is an"
 	line "evolved #mon."
 
@@ -63,7 +63,7 @@ KrissNeighborsDaughterText:
 	cont "him…"
 	done
 
-KrissNeighborsHusbandText:
+PlayersNeighborsHusbandText:
 	text "This town is the"
 	line "farthest south-"
 
@@ -71,7 +71,7 @@ KrissNeighborsHusbandText:
 	line "of Johto."
 	done
 
-KrissNeighborText:
+PlayersNeighborText:
 	text "My daughter is"
 	line "adamant about"
 
@@ -84,22 +84,22 @@ KrissNeighborText:
 	para "But then, so do I!"
 	done
 
-KrisNeighborRadioText1:
+PlayerNeighborRadioText1:
 	text "Prof.Oak's #mon"
 	line "Talk! Please tune"
 	cont "in next time!"
 	done
 
-KrisNeighborRadioText2:
+PlayerNeighborRadioText2:
 	text "#mon Channel!"
 	done
 
-KrisNeighborRadioText3:
+PlayerNeighborRadioText3:
 	text "This is DJ Mary,"
 	line "your co-host!"
 	done
 
-KrisNeighborRadioText4:
+PlayerNeighborRadioText4:
 	text "#mon!"
 	line "#mon Channel…"
 	done
