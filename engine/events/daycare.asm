@@ -21,17 +21,17 @@
 	const DAYCARETEXT_13
 
 Special_DayCareMan:
-	ld hl, wDaycareMan
+	ld hl, wDayCareMan
 	bit 0, [hl]
 	jr nz, .AskWithdrawMon
-	ld hl, wDaycareMan
+	ld hl, wDayCareMan
 	ld a, DAYCARETEXT_MAN_INTRO
 	call DayCareManIntroText
 	jr c, .cancel
 	call DayCareAskDepositPokemon
 	jr c, .print_text
-	farcall DepositMonWithDaycareMan
-	ld hl, wDaycareMan
+	farcall DepositMonWithDayCareMan
+	ld hl, wDayCareMan
 	set 0, [hl]
 	call DayCare_DepositPokemonText
 	jp DayCare_InitBreeding
@@ -42,9 +42,9 @@ Special_DayCareMan:
 	call GetPriceToRetrieveBreedmon
 	call DayCare_AskWithdrawBreedMon
 	jr c, .print_text
-	farcall RetrievePokemonFromDaycareMan
+	farcall RetrievePokemonFromDayCareMan
 	call DayCare_TakeMoney_PlayCry
-	ld hl, wDaycareMan
+	ld hl, wDayCareMan
 	res 0, [hl]
 	res 5, [hl]
 	jr .cancel
@@ -57,17 +57,17 @@ Special_DayCareMan:
 	jp PrintDayCareText
 
 Special_DayCareLady:
-	ld hl, wDaycareLady
+	ld hl, wDayCareLady
 	bit 0, [hl]
 	jr nz, .AskWithdrawMon
-	ld hl, wDaycareLady
+	ld hl, wDayCareLady
 	ld a, DAYCARETEXT_LADY_INTRO
 	call DayCareLadyIntroText
 	jr c, .cancel
 	call DayCareAskDepositPokemon
 	jr c, .print_text
-	farcall DepositMonWithDaycareLady
-	ld hl, wDaycareLady
+	farcall DepositMonWithDayCareLady
+	ld hl, wDayCareLady
 	set 0, [hl]
 	call DayCare_DepositPokemonText
 	jp DayCare_InitBreeding
@@ -78,11 +78,11 @@ Special_DayCareLady:
 	call GetPriceToRetrieveBreedmon
 	call DayCare_AskWithdrawBreedMon
 	jr c, .print_text
-	farcall RetrievePokemonFromDaycareLady
+	farcall RetrievePokemonFromDayCareLady
 	call DayCare_TakeMoney_PlayCry
-	ld hl, wDaycareLady
+	ld hl, wDayCareLady
 	res 0, [hl]
-	ld hl, wDaycareMan
+	ld hl, wDayCareMan
 	res 5, [hl]
 	jr .cancel
 
@@ -110,7 +110,7 @@ DayCareAskDepositPokemon:
 	ld a, DAYCARETEXT_WHICH_ONE
 	call PrintDayCareText
 	ld b, 6
-	farcall SelectTradeOrDaycareMon
+	farcall SelectTradeOrDayCareMon
 	jr c, .Declined
 	ld hl, wPartyMon1IsEgg
 	ld a, [wCurPartyMon]
@@ -378,7 +378,7 @@ PrintDayCareText:
 	text_end
 
 Special_DayCareManOutside:
-	ld hl, wDaycareMan
+	ld hl, wDayCareMan
 	bit 6, [hl]
 	jr nz, .AskGiveEgg
 	ld hl, .NotYet
@@ -398,7 +398,7 @@ Special_DayCareManOutside:
 	cp PARTY_LENGTH
 	jr nc, .PartyFull
 	call DayCare_GiveEgg
-	ld hl, wDaycareMan
+	ld hl, wDayCareMan
 	res 6, [hl]
 	call DayCare_InitBreeding
 	ld hl, .GotEggText
@@ -694,17 +694,17 @@ InheritDV:
 	ret
 
 DayCare_InitBreeding:
-	ld a, [wDaycareLady]
+	ld a, [wDayCareLady]
 	bit 0, a
 	ret z
-	ld a, [wDaycareMan]
+	ld a, [wDayCareMan]
 	bit 0, a
 	ret z
 	farcall CheckBreedmonCompatibility
 	ld a, [wd265]
 	and a
 	ret z
-	ld hl, wDaycareMan
+	ld hl, wDayCareMan
 	set 5, [hl]
 .loop
 	call Random

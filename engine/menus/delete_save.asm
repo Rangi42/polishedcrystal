@@ -9,7 +9,7 @@ _DeleteSaveData:
 	ld hl, .Text_ClearAllSaveData
 	call PrintText
 	ld hl, TitleScreenNoYesMenuDataHeader
-	call CopyMenuDataHeader
+	call CopyMenuHeader
 	call VerticalMenu
 	ret c
 	ld a, [wMenuCursorY]
@@ -33,7 +33,7 @@ _ResetInitialOptions:
 	ld hl, .Text_ResetInitialOptions
 	call PrintText
 	ld hl, TitleScreenNoYesMenuDataHeader
-	call CopyMenuDataHeader
+	call CopyMenuHeader
 	call VerticalMenu
 	ret c
 	ld a, [wMenuCursorY]

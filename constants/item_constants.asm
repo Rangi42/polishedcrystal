@@ -293,6 +293,7 @@ NUM_ITEMS EQU const_value - 1
 
 	const ITEM_FROM_MEM ; ff
 ALWAYS_ITEM_2 EQU $ff
+USE_SCRIPT_VAR EQU $00
 
 ; See data/items/name_order.asm
 	const_def

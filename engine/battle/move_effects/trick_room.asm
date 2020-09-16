@@ -6,7 +6,7 @@ BattleCommand_trickroom:
 	ld [hl], 5
 	call AnimateCurrentMove
 	ld hl, TrickRoomText
-	call StdBattleTextBox
+	call StdBattleTextbox
 
 	predef GetUserItemAfterUnnerve
 	ld a, b

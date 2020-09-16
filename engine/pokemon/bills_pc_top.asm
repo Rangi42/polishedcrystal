@@ -10,7 +10,7 @@ _BillsPC:
 	and a
 	ret nz
 	ld hl, .Text_GottaHavePokemon
-	call MenuTextBoxBackup
+	call MenuTextboxBackup
 	scf
 	ret
 
@@ -44,7 +44,7 @@ _BillsPC:
 
 .UseBillsPC:
 	ld hl, .MenuDataHeader
-	call LoadMenuDataHeader
+	call LoadMenuHeader
 	ld a, $1
 .loop
 	ld [wMenuCursorBuffer], a
@@ -195,10 +195,10 @@ ClearPCItemScreen:
 	rst ByteFill
 	hlcoord 0, 0
 	lb bc, 10, 18
-	call TextBox
+	call Textbox
 	hlcoord 0, 12
 	lb bc, 4, 18
-	call TextBox
+	call Textbox
 	call ApplyAttrAndTilemapInVBlank
 	jp SetPalettes ; load regular palettes?
 

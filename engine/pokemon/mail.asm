@@ -299,7 +299,7 @@ _KrisMailBoxMenu:
 
 .nomail
 	ld hl, .EmptyMailboxText
-	jp MenuTextBoxBackup
+	jp MenuTextboxBackup
 
 .EmptyMailboxText:
 	text_jump _EmptyMailboxText
@@ -366,7 +366,7 @@ MailboxPC:
 .loop
 	call InitMail
 	ld hl, .TopMenuDataHeader
-	call CopyMenuDataHeader
+	call CopyMenuHeader
 	xor a
 	ldh [hBGMapMode], a
 	call InitScrollingMenu
@@ -394,7 +394,7 @@ MailboxPC:
 
 .Submenu:
 	ld hl, .SubMenuDataHeader
-	call LoadMenuDataHeader
+	call LoadMenuHeader
 	call VerticalMenu
 	call ExitMenu
 	ret c
@@ -418,7 +418,7 @@ MailboxPC:
 
 .PutInPack:
 	ld hl, .MessageLostText
-	call MenuTextBox
+	call MenuTextbox
 	call YesNoBox
 	call ExitMenu
 	ret c
@@ -431,7 +431,7 @@ MailboxPC:
 	call ReceiveItem
 	jr c, .put_in_bag
 	ld hl, .PackFullText
-	jp MenuTextBoxBackup
+	jp MenuTextboxBackup
 
 .put_in_bag
 	ld a, [wMenuSelection]
@@ -439,7 +439,7 @@ MailboxPC:
 	ld b, a
 	call DeleteMailFromPC
 	ld hl, .PutAwayText
-	jp MenuTextBoxBackup
+	jp MenuTextboxBackup
 
 .PutAwayText:
 	text_jump ClearedMailPutAwayText

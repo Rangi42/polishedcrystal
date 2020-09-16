@@ -95,7 +95,7 @@ DoEncoreDisable:
 	or c
 	ld [de], a
 	call AnimateCurrentMove
-	call StdBattleTextBox
+	call StdBattleTextbox
 	jp CheckOpponentMentalHerb
 
 .failed

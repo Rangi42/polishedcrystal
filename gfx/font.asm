@@ -17,7 +17,7 @@ FontUnown:
 INCBIN "gfx/font/unown.1bpp"
 FontCommon:
 INCBIN "gfx/font/common.1bpp"
-TextBoxSpaceGFX::
+TextboxSpaceGFX::
 INCBIN "gfx/font/space.1bpp"
 
 Frames:

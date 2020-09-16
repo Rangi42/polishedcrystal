@@ -4,7 +4,7 @@ _LoadStandardOpaqueFont::
 	ld a, TRUE
 	call _LoadStandardMaybeOpaqueFont
 	ld hl, vTiles2 tile " "
-	ld de, TextBoxSpaceGFX
+	ld de, TextboxSpaceGFX
 	jp GetOpaque1bppFontTile
 
 _LoadStandardFont::
@@ -69,8 +69,8 @@ LoadFrame::
 	lb bc, BANK(Frames), TILES_PER_FRAME
 	call Get1bpp
 	ld hl, vTiles2 tile " "
-	ld de, TextBoxSpaceGFX
-	lb bc, BANK(TextBoxSpaceGFX), 1
+	ld de, TextboxSpaceGFX
+	lb bc, BANK(TextboxSpaceGFX), 1
 	jp Get1bpp
 
 LoadBattleFontsHPBar:

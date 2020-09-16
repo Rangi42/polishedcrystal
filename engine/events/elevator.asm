@@ -114,7 +114,7 @@ Elevator_AskWhichFloor:
 	call PrintText
 	call Elevator_GetCurrentFloorText
 	ld hl, Elevator_MenuDataHeader
-	call CopyMenuDataHeader
+	call CopyMenuHeader
 	call InitScrollingMenu
 	call UpdateSprites
 	xor a
@@ -144,7 +144,7 @@ Elevator_GetCurrentFloorText:
 	set NO_TEXT_SCROLL, [hl]
 	hlcoord 0, 0
 	lb bc, 4, 8
-	call TextBox
+	call Textbox
 	hlcoord 1, 2
 	ld de, Elevator_CurrentFloorText
 	rst PlaceString

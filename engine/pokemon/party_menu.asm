@@ -10,7 +10,7 @@ SelectMonFromParty:
 	call PartyMenuSelect
 	jp ReturnToMapWithSpeechTextbox
 
-SelectTradeOrDaycareMon:
+SelectTradeOrDayCareMon:
 	ld a, b
 	ld [wPartyMenuActionText], a
 	call DisableSpriteUpdates
@@ -700,7 +700,7 @@ PartyMenuSelect:
 PrintPartyMenuText:
 	hlcoord 0, 14
 	lb bc, 2, 18
-	call TextBox
+	call Textbox
 	ld a, [wPartyCount]
 	and a
 	jr nz, .haspokemon

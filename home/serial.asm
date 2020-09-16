@@ -272,7 +272,7 @@ PlaceWaitingText::
 	and a
 	jr z, .notinbattle
 
-	call TextBox
+	call Textbox
 	jr .proceed
 
 .notinbattle

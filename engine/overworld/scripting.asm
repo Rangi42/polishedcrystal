@@ -535,7 +535,7 @@ Script_loadmenu:
 	call GetScriptByte
 	ld h, a
 	ld a, [wScriptBank]
-	ld de, LoadMenuDataHeader
+	ld de, LoadMenuHeader
 	call FarCall_de
 	jp UpdateSprites
 
@@ -586,7 +586,7 @@ Script_battletowertext:
 ; parameters:
 ;     pointer (PointerLabelBeforeBank)
 ;     memory (SingleByteParam)
-	call SetUpTextBox
+	call SetUpTextbox
 	call GetScriptByte
 	ld c, a
 	farjp BattleTowerText

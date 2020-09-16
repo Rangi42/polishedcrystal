@@ -25,7 +25,7 @@ BattleCommand_futuresight:
 	ld [hl], a
 
 	ld hl, ForesawAttackText
-	call StdBattleTextBox
+	call StdBattleTextbox
 	jp EndMoveEffect
 
 .failed

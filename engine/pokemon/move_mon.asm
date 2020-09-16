@@ -961,7 +961,7 @@ RestorePPofDepositedPokemon:
 	ld [wMenuCursorY], a
 	ret
 
-RetrievePokemonFromDaycareMan:
+RetrievePokemonFromDayCareMan:
 	ld a, [wBreedMon1Species]
 	ld [wCurPartySpecies], a
 	ld de, SFX_TRANSACTION
@@ -976,7 +976,7 @@ RetrievePokemonFromDaycareMan:
 	ld [wPokemonWithdrawDepositParameter], a
 	jr RetrieveBreedmon
 
-RetrievePokemonFromDaycareLady:
+RetrievePokemonFromDayCareLady:
 	ld a, [wBreedMon2Species]
 	ld [wCurPartySpecies], a
 	ld de, SFX_TRANSACTION
@@ -1106,11 +1106,11 @@ Functionde1a:
 	ld e, l
 	ret
 
-DepositMonWithDaycareMan:
+DepositMonWithDayCareMan:
 	ld de, wBreedMon1Nick
 	jr _DepositBreedmon
 
-DepositMonWithDaycareLady:
+DepositMonWithDayCareLady:
 	ld de, wBreedMon2Nick
 
 _DepositBreedmon:

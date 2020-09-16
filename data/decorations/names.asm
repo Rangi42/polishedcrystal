@@ -1,4 +1,5 @@
 DecorationNames:
+; entries correspond to constants/deco_constants.asm
 	db "Cancel@"
 	db "Put it away@"
 	db "Magna Plant@"

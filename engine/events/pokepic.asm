@@ -1,6 +1,6 @@
 Pokepic::
 	ld hl, PokepicMenuDataHeader
-	call CopyMenuDataHeader
+	call CopyMenuHeader
 	call MenuBox
 	call UpdateSprites
 	ld a, [wCurForm]
@@ -40,7 +40,7 @@ _Displaypic:
 
 Trainerpic::
 	ld hl, PokepicMenuDataHeader
-	call CopyMenuDataHeader
+	call CopyMenuHeader
 	call MenuBox
 	call UpdateSprites
 	call SafeCopyTilemapAtOnce
@@ -61,7 +61,7 @@ Paintingpic::
 	lb bc, BANK(PaintingFrameGFX), 9
 	call Get2bpp
 	ld hl, PokepicMenuDataHeader
-	call CopyMenuDataHeader
+	call CopyMenuHeader
 	call MenuBox
 	hlcoord 9, 12
 	ld a, "┌" - 3
@@ -80,7 +80,7 @@ Paintingpic::
 
 ClosePokepic::
 	ld hl, PokepicMenuDataHeader
-	call CopyMenuDataHeader
+	call CopyMenuHeader
 	call ClearMenuBoxInterior
 	call GetMemCGBLayout
 	xor a

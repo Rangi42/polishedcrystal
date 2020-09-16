@@ -18,7 +18,7 @@ TossItemFromPC:
 	push de
 	call PartyMonItemName
 	ld hl, .TossHowMany
-	call MenuTextBox
+	call MenuTextbox
 	farcall SelectQuantityToToss
 	push af
 	call CloseWindow
@@ -26,7 +26,7 @@ TossItemFromPC:
 	pop af
 	jr c, .quit
 	ld hl, .ConfirmToss
-	call MenuTextBox
+	call MenuTextbox
 	call YesNoBox
 	push af
 	call ExitMenu
@@ -37,7 +37,7 @@ TossItemFromPC:
 	call TossItem
 	call PartyMonItemName
 	ld hl, .TossedThisMany
-	call MenuTextBox
+	call MenuTextbox
 	call ExitMenu
 	and a
 	ret
@@ -64,7 +64,7 @@ TossItemFromPC:
 
 CantUseItem:
 	ld hl, CantUseItemText
-	jp MenuTextBoxWaitButton
+	jp MenuTextboxWaitButton
 
 CantUseItemText:
 	text_jump UnknownText_0x1c1b03
@@ -191,7 +191,7 @@ GiveTakePartyMonItem:
 	hlcoord 1, 16
 	rst PlaceString
 	ld hl, GiveTakeItemMenuData
-	call LoadMenuDataHeader
+	call LoadMenuHeader
 	call VerticalMenu
 	call ExitMenu
 	jr c, .cancel
@@ -241,12 +241,12 @@ GiveTakePartyMonItem:
 	jr nz, TryGiveItemToPartymon
 
 	ld hl, CantBeHeldText
-	call MenuTextBoxBackup
+	call MenuTextboxBackup
 	jr .loop
 
 TryGiveItemToPartymon:
 
-	call SpeechTextBox
+	call SpeechTextbox
 	call PartyMonItemName
 	call GetPartyItemLocation
 	ld a, [hl]
@@ -262,12 +262,12 @@ TryGiveItemToPartymon:
 .give_item_to_mon
 	call GiveItemToPokemon
 	ld hl, MadeHoldText
-	call MenuTextBoxBackup
+	call MenuTextboxBackup
 	jp GivePartyItem
 
 .please_remove_mail
 	ld hl, PleaseRemoveMailText
-	jp MenuTextBoxBackup
+	jp MenuTextboxBackup
 
 .already_holding_item
 	ld [wd265], a
@@ -290,11 +290,11 @@ TryGiveItemToPartymon:
 	ld [wCurItem], a
 	call ReceiveItemFromPokemon
 	ld hl, ItemStorageIsFullText
-	jp MenuTextBoxBackup
+	jp MenuTextboxBackup
 
 .bag_not_full
 	ld hl, TookAndMadeHoldText
-	call MenuTextBoxBackup
+	call MenuTextboxBackup
 	ld a, [wd265]
 	ld [wCurItem], a
 	; fallthrough
@@ -311,7 +311,7 @@ GivePartyItem:
 	jp ComposeMailMessage
 
 TakePartyItem:
-	call SpeechTextBox
+	call SpeechTextbox
 	call GetPartyItemLocation
 	ld a, [hl]
 	and a
@@ -329,15 +329,15 @@ TakePartyItem:
 	call UpdateMewtwoForm
 	call GetItemName
 	ld hl, TookFromText
-	jp MenuTextBoxBackup
+	jp MenuTextboxBackup
 
 .asm_12c8c
 	ld hl, IsntHoldingAnythingText
-	jp MenuTextBoxBackup
+	jp MenuTextboxBackup
 
 .asm_12c94
 	ld hl, ItemStorageIsFullText
-	jp MenuTextBoxBackup
+	jp MenuTextboxBackup
 
 UpdateMewtwoForm:
 	ld a, [wCurPartySpecies]
@@ -423,7 +423,7 @@ GiveItemToPokemon:
 	jp TossItem
 
 StartMenuYesNo:
-	call MenuTextBox
+	call MenuTextbox
 	call YesNoBox
 	jp ExitMenu
 
@@ -463,7 +463,7 @@ MonMailAction:
 
 ; Show the READ/TAKE/QUIT menu.
 	ld hl, .MenuDataHeader
-	call LoadMenuDataHeader
+	call LoadMenuHeader
 	call VerticalMenu
 	call ExitMenu
 
@@ -490,12 +490,12 @@ MonMailAction:
 	farcall SendMailToPC
 	jr c, .MailboxFull
 	ld hl, .sentmailtopctext
-	call MenuTextBoxBackup
+	call MenuTextboxBackup
 	jr .done
 
 .MailboxFull:
 	ld hl, .mailboxfulltext
-	call MenuTextBoxBackup
+	call MenuTextboxBackup
 	jr .done
 
 .RemoveMailToBag:
@@ -511,12 +511,12 @@ MonMailAction:
 	ld [hl], $0
 	call GetCurNick
 	ld hl, .tookmailfrommontext
-	call MenuTextBoxBackup
+	call MenuTextboxBackup
 	jr .done
 
 .BagIsFull:
 	ld hl, .bagfulltext
-	call MenuTextBoxBackup
+	call MenuTextboxBackup
 	; fallthrough
 
 .done
@@ -744,7 +744,7 @@ ChooseMoveToForget:
 	farcall InitPartyMenuLayout
 	pop af
 	ld [wCurPartyMon], a
-	call SpeechTextBox
+	call SpeechTextbox
 .done
 	call ApplyTilemapInVBlank
 	call SetPalettes
@@ -774,7 +774,7 @@ ChooseMoveToRelearn:
 	ld [wCurPartyMon], a
 	pop af
 	push af
-	call nz, SpeechTextBox
+	call nz, SpeechTextbox
 	call ApplyTilemapInVBlank
 	call SetPalettes
 	call DelayFrame
@@ -1254,10 +1254,10 @@ SetUpMoveScreenBG:
 	farcall LoadMoveMenuMonIcon
 	hlcoord 0, 1
 	lb bc, 9, 18
-	call TextBox
+	call Textbox
 	hlcoord 0, 11
 	lb bc, 5, 18
-	call TextBox
+	call Textbox
 	hlcoord 2, 0
 	lb bc, 2, 3
 	call ClearBox
@@ -1358,7 +1358,7 @@ MoveScreen_ListMoves:
 MoveScreen_ListMovesFast:
 	hlcoord 0, 11
 	lb bc, 5, 18
-	call TextBox
+	call Textbox
 	ld hl, wTempMonMoves
 	ld a, [wMoveScreenCursor]
 	ld c, a

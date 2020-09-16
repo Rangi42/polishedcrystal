@@ -444,9 +444,9 @@ SECTION "GoldenrodMagnetTrainStation_BlockData", ROMX
 GoldenrodMagnetTrainStation_BlockData:
 	INCBIN "maps/GoldenrodMagnetTrainStation.ablk.lz"
 
-SECTION "Daycare_BlockData", ROMX
-Daycare_BlockData:
-	INCBIN "maps/Daycare.ablk.lz"
+SECTION "DayCare_BlockData", ROMX
+DayCare_BlockData:
+	INCBIN "maps/DayCare.ablk.lz"
 
 SECTION "GoldenrodHarbor_BlockData", ROMX
 GoldenrodHarbor_BlockData:

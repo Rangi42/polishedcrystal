@@ -254,7 +254,7 @@ LoadMapNameSignGFX:
 	cp " "
 	jr nz, .not_space
 .space
-	ld hl, TextBoxSpaceGFX
+	ld hl, TextboxSpaceGFX
 	jr .got_tile
 .not_space
 	sub $80

@@ -13,10 +13,10 @@ BattleCommand_brickbreak:
 	and SCREENS_REFLECT
 	jr z, .reflect_done
 	ld hl, BrokeReflectText
-	call StdBattleTextBox
+	call StdBattleTextbox
 .reflect_done
 	pop af
 	and SCREENS_LIGHT_SCREEN
 	ret z
 	ld hl, BrokeLightScreenText
-	jp StdBattleTextBox
+	jp StdBattleTextbox

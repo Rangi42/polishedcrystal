@@ -1452,7 +1452,7 @@ Slots_AskBet:
 	ld hl, .Text_BetHowManyCoins
 	call PrintText
 	ld hl, .MenuDataHeader
-	call LoadMenuDataHeader
+	call LoadMenuHeader
 	call VerticalMenu
 	call CloseWindow
 	ret c
@@ -1531,7 +1531,7 @@ Slots_AskPlayAgain:
 .you_have_coins
 	ld hl, .Text_PlayAgain
 	call PrintText
-	call LoadMenuTextBox
+	call LoadMenuTextbox
 	lb bc, 14, 12
 	call PlaceYesNoBox
 	ld a, [wMenuCursorY]
