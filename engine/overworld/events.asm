@@ -113,8 +113,7 @@ MapEvents:
 	ret nz
 	call PlayerEvents
 	call DisableEvents
-	farcall ScriptEvents
-	ret ; optimize?
+	farjp ScriptEvents
 
 NextOverworldFrame:
 	; If we haven't already performed a delay outside DelayFrame as a result

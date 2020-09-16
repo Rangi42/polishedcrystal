@@ -444,7 +444,7 @@ SECTION "GoldenrodMagnetTrainStation_BlockData", ROMX
 GoldenrodMagnetTrainStation_BlockData:
 	INCBIN "maps/GoldenrodMagnetTrainStation.ablk.lz"
 
-SECTION "Daycare_BlockData", ROMX ; TODO: rename to DayCare_BlockData
+SECTION "DayCare_BlockData", ROMX ; TODO: rename to DayCare_BlockData
 DayCare_BlockData:
 	INCBIN "maps/DayCare.ablk.lz"
 

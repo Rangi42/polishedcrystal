@@ -2116,7 +2116,7 @@ GetCurrentLandmark::
 	ld a, [wMapNumber]
 	ld c, a
 	call GetWorldMapLocation
-	and a ; cp LANDMARK_SPECIAL
+	and a ; cp SPECIAL_MAP
 	ret nz
 
 ; In a special map, get the backup map group / map id

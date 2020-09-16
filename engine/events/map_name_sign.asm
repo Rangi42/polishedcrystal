@@ -97,13 +97,13 @@ InitMapNameSign::
 	ld a, [wPrevLandmark]
 	cp c
 	ret z
-	and a ; cp LANDMARK_SPECIAL
+	and a ; cp SPECIAL_MAP
 	ret
 
 .CheckSpecialMap:
 	cp -1
 	ret z
-	and a ; cp LANDMARK_SPECIAL
+	and a ; cp SPECIAL_MAP
 	ret z
 	cp RADIO_TOWER
 	ret z

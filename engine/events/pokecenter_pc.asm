@@ -233,7 +233,7 @@ KrissPCMenuData:
 	dw KrisDepositItemMenu,  .DepositItem
 	dw KrisTossItemMenu,     .TossItem
 	dw KrisMailBoxMenu,      .MailBox
-	dw PlayerDecorationMenu,   .Decoration
+	dw PlayerDecorationMenu, .Decoration
 	dw KrisLogOffMenu,       .LogOff
 	dw KrisLogOffMenu,       .TurnOff
 
