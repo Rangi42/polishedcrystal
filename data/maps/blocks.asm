@@ -388,6 +388,10 @@ SECTION "KurtsHouse_BlockData", ROMX
 KurtsHouse_BlockData:
 	INCBIN "maps/KurtsHouse.ablk.lz"
 
+SECTION "SlowpokeWellEntrance_BlockData", ROMX
+SlowpokeWellEntrance_BlockData:
+	INCBIN "maps/SlowpokeWellEntrance.ablk.lz"
+
 SECTION "SlowpokeWellB1F_BlockData", ROMX
 SlowpokeWellB1F_BlockData:
 	INCBIN "maps/SlowpokeWellB1F.ablk.lz"

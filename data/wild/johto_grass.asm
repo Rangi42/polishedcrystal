@@ -567,6 +567,33 @@
 	db 23, ONIX
 	db 23, ONIX
 
+	map_id SLOWPOKE_WELL_ENTRANCE
+	db 2 percent, 2 percent, 2 percent ; encounter rates: morn/day/nite
+	; morn
+	db 5, ZUBAT
+	db 6, ZUBAT
+	db 7, ZUBAT
+	db 6, POLIWAG
+	db 8, ZUBAT
+	db 8, SLOWPOKE
+	db 8, SLOWPOKE
+	; day
+	db 5, ZUBAT
+	db 6, ZUBAT
+	db 7, ZUBAT
+	db 6, POLIWAG
+	db 8, ZUBAT
+	db 8, SLOWPOKE
+	db 8, SLOWPOKE
+	; nite
+	db 5, ZUBAT
+	db 6, ZUBAT
+	db 7, ZUBAT
+	db 6, GASTLY
+	db 8, ZUBAT
+	db 8, SLOWPOKE
+	db 8, SLOWPOKE
+
 	map_id SLOWPOKE_WELL_B1F
 	db 2 percent, 2 percent, 2 percent ; encounter rates: morn/day/nite
 	; morn

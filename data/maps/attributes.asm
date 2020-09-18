@@ -534,6 +534,7 @@ ENDM
 	map_attributes UnionCaveB1FNorth, UNION_CAVE_B1F_NORTH, $9, 0
 	map_attributes UnionCaveB1FSouth, UNION_CAVE_B1F_SOUTH, $9, 0
 	map_attributes UnionCaveB2F, UNION_CAVE_B2F, $9, 0
+	map_attributes SlowpokeWellEntrance, SLOWPOKE_WELL_ENTRANCE, $9, 0
 	map_attributes SlowpokeWellB1F, SLOWPOKE_WELL_B1F, $9, 0
 	map_attributes SlowpokeWellB2F, SLOWPOKE_WELL_B2F, $9, 0
 	map_attributes OlivineLighthouse1F, OLIVINE_LIGHTHOUSE_1F, $0, 0
