@@ -112,7 +112,7 @@ HealStatusAbility:
 OwnTempoAbility:
 	ld a, BATTLE_VARS_SUBSTATUS3
 	call GetBattleVar
-	and SUBSTATUS_CONFUSED
+	bit SUBSTATUS_CONFUSED, a
 	ret z ; not confused
 	call DisableAnimations
 	call ShowAbilityActivation
@@ -126,14 +126,14 @@ OwnTempoAbility:
 ObliviousAbility:
 	ld a, BATTLE_VARS_SUBSTATUS1
 	call GetBattleVar
-	and SUBSTATUS_IN_LOVE
+	bit SUBSTATUS_IN_LOVE, a
 	ret z ; not infatuated
 	call DisableAnimations
 	call ShowAbilityActivation
 	ld a, BATTLE_VARS_SUBSTATUS1
 	call GetBattleVarAddr
 	res SUBSTATUS_IN_LOVE, [hl]
-	ld hl, ConfusedNoMoreText
+	ld hl, NoLongerInfatuatedText
 	call StdBattleTextbox
 	jp EnableAnimations
 
