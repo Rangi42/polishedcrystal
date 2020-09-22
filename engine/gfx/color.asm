@@ -155,13 +155,9 @@ LoadIconPalette:
 	jp FarCopyColorWRAM
 
 LoadTMHMIconPalette:
-	ld a, [wCurTMHM]
-	dec a
-	ld hl, TMHMTypes
-	ld b, 0
-	ld c, a
-	add hl, bc
-	ld a, [hl]
+	ld a, [wNamedObjectIndexBuffer]
+	ld hl, Moves + MOVE_TYPE
+	call GetMoveProperty
 	ld hl, TMHMTypeIconPals
 	ld c, a
 	ld b, 0

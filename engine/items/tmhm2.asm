@@ -81,9 +81,9 @@ TMHM_ShowTMMoveDescription:
 	cp NUM_TMS + NUM_HMS + 1
 	jr nc, .Cancel
 	ld [wd265], a
+	predef GetTMHMMove
 	farcall LoadTMHMIconPalette
 	call SetPalettes
-	predef GetTMHMMove
 	ld a, [wd265]
 	ld [wCurSpecies], a
 	hlcoord 1, 14
