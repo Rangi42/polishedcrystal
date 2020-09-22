@@ -261,8 +261,9 @@ DoWonderTrade:
 	; Random ability
 	ld a, 3
 	call RandomRange
+	inc a
 rept 5
-	sla a
+	add a
 endr
 	add b
 	ld b, a
