@@ -1191,8 +1191,8 @@ Roost:
 	checkobedience
 	usedmovetext
 	doturn
-	heal
 	roost
+	heal
 	endmove
 
 Rampage:

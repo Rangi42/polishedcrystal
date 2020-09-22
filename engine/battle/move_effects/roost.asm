@@ -1,5 +1,9 @@
 BattleCommand_roost:
 ; Remove the flying type until endturn
+	; Do nothing if HP is full (error message is handled later)
+	farcall CheckFullHP
+	ret z
+
 	call CheckIfUserIsFlyingType
 	ret nz
 
