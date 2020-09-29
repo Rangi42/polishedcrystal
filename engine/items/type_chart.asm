@@ -195,36 +195,36 @@ ENDM
 	; top Ghost+Steel
 	oamdata  82,   0, $06, 1
 	oamdata  90,   0, $08, 1
-	oamdata  82,  16, $0a, 1
-	oamdata  90,  16, $0c, 2
+	oamdata  82,  16, $0a, 1 ; Normal x0 Ghost, Fighting x0 Ghost
+	oamdata  90,  16, $0c, 2 ; Normal x0.5 Steel
 	; left Ghost+Steel
 	oamdata   8,  66, $0e, 1
 	oamdata  16,  66, $10, 1
 	oamdata  24,  66, $12, 1
 	oamdata  32,  66, $14, 1
 	; ineffective
-	oamdata  90,  31, $16, 1
-	oamdata  48,  38, $16, 1
-	oamdata  34,  59, $16, 1
-	oamdata  62,  94, $16, 1
-	oamdata 146, 101, $16, 1
-	oamdata 153, 115, $16, 1
+	oamdata  90,  31, $16, 1 ; Poison x0 Steel
+	oamdata  48,  38, $16, 1 ; Ground x0 Flying
+	oamdata  34,  59, $16, 1 ; Ghost x0 Normal
+	oamdata  62,  94, $16, 1 ; Electric x0 Ground
+	oamdata 146, 101, $16, 1 ; Psychic x0 Dark
+	oamdata 153, 115, $16, 1 ; Dragon x0 Fairy
 	; not very effective
-	oamdata  69,  18, $18, 2
+	oamdata  69,  18, $18, 2 ; Normal x0.5 Rock
 	; super effective
-	oamdata 32,   25, $1a, 2
+	oamdata 32,   25, $1a, 2 ; Fighting x2 Normal
 	; top off-white
-	oamdata  54,   8, $1c, 3
-	oamdata  96,   8, $1c, 3
-	oamdata 110,   8, $1c, 3
-	oamdata 124,   8, $1c, 3
-	oamdata 138,   8, $1c, 3
-	oamdata 152,   8, $1c, 3
+	oamdata  54,   8, $1c, 3 ; Normal x1 Poison
+	oamdata  96,   8, $1c, 3 ; Normal x1 Fire
+	oamdata 110,   8, $1c, 3 ; Normal x1 Grass
+	oamdata 124,   8, $1c, 3 ; Normal x1 Psychic
+	oamdata 138,   8, $1c, 3 ; Normal x1 Dragon
+	oamdata 152,   8, $1c, 3 ; Normal x1 Fairy
 	; left off-white
-	oamdata  32,  30, $1e, 3
-	oamdata  32,  44, $1e, 3
-	oamdata  32,  72, $1e, 3
-	oamdata  32,  86, $1e, 3
-	oamdata  32, 100, $1e, 3
-	oamdata  32, 114, $1e, 3
-	oamdata  32, 128, $1e, 3
+	oamdata  32,  30, $1e, 3 ; Poison x1 Normal
+	oamdata  32,  44, $1e, 3 ; Rock x1 Normal
+	oamdata  32,  72, $1e, 3 ; Fire x1 Normal
+	oamdata  32,  86, $1e, 3 ; Grass x1 Normal
+	oamdata  32, 100, $1e, 3 ; Psychic x1 Normal
+	oamdata  32, 114, $1e, 3 ; Dragon x1 Normal
+	oamdata  32, 128, $1e, 3 ; Fairy x1 Normal
