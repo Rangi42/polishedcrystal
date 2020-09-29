@@ -25,6 +25,7 @@ If you have a question about playing Polished Crystal, or think you've found a b
 * [What is the Judge Machine?](#what-is-the-judge-machine)
 * [What are the "door-shaped grooves" in the Ruins of Alph and Route 47?](#what-are-the-door-shaped-grooves-in-the-ruins-of-alph-and-route-47)
 * [I don't like non-canon Pokémon types!](#i-dont-like-non-canon-pokémon-types)
+* [I want the missing Pokémon back!](#i-want-the-missing-pokémon-back)
 
 
 ### Which file do I need to play?
@@ -185,3 +186,10 @@ I was hesitant to make original changes like this, because the goal is to be an 
 The regular version makes creative changes to Pokémon base stats and types, and to some move properties, mostly inspired by [Drayano's Sacred Gold and Storm Silver](https://gbatemp.net/threads/pokemon-sacred-gold-storm-silver.327567/). It also improves some translated terms that [Nob Ogasawara](https://twitter.com/dougdinsdale) [complained about](https://lparchive.org/Pokemon-Blue/code.html).
 
 The faithful version does not change those things, besides updating stats to the latest canon generation.
+
+
+### I want the missing Pokémon back!
+
+As [FEATURES.md](FEATURES.md) notes, 14 Pokémon had to be removed to make room for 17 Pokémon from Gen 4 (as well as Sylveon from Gen 6 to complete the Eeveelutions). I won't be able to restore them until the engine supports species IDs larger than 8 bits. There are some plans for 9-bit IDs, allowing over 500 Pokémon, but it will take time.
+
+I do think that the added Pokémon are one part of "polishing" Crystal version. Some of the new or improved things from Gen 4, like Leafeon, Tangrowth, or the extra map of Slowpoke Well, were originally planned for Gen 2, as we now know from the [Space World '97](https://tcrf.net/Proto:Pok%C3%A9mon_Gold_and_Silver/Spaceworld_1997_Demo) ROMs. The Sinjoh Ruins in HG/SS emphasize this connection between Johto/Gen 2 and Sinnoh/Gen 4. Although cutting any Pokémon is regrettable, I'd consider skipping Pokémon like Porygon-Z or Honchkrow to be worse than replacing Delibird or Lickitung.
