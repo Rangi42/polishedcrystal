@@ -371,6 +371,16 @@ patterns = {
 		or line1.code.startswith('xor ')),
 	(lambda line2, prev: line2.code in {'and a', 'or a', 'and a, a', 'or a, a'}),
 ],
+'Pointless and|or a': [
+	# Bad: and|or a / (any instruction that affects z and c)
+	# Good: (the instruction that affects z and c)
+	(lambda line1, prev: line1.code in {'and a', 'or a', 'and a, a', 'or a, a'}),
+	(lambda line2, prev: line2.code in {'rlca', 'rrca', 'rla', 'rra', 'daa', 'pop af'}
+		or any(line2.code.startswith(x) for x in
+			{'add ', 'adc ', 'sub ', 'sbc ', 'and ', 'or ', 'xor ', 'cp ',
+			'rlc ', 'rrc ', 'rl ', 'rr ', 'sla ', 'sra ', 'swap ', 'srl ',
+			'ld hl, sp', 'ldhl sp'})),
+],
 'Redundant inc|dec': [
 	# Bad: ld P, N / inc|dec P (unless the inc|dec flags are needed)
 	# Good: ld P, X+/-1
