@@ -309,21 +309,25 @@ KeyItemEffects:
 	dw TypeChart          ; TYPE_CHART
 
 PokeBallEffect:
+	; Replacing caught balls
 	ld a, [wBattleMode]
 	and a ; overworld
 	jp z, Ball_ReplacePartyMonCaughtBall
-	farcall DoesNuzlockeModePreventCapture
-	jp c, Ball_NuzlockeFailureMessage
 
-.NoNuzlockeCheck
-	ld a, [wBattleMode]
+	; Using balls in trainer battles
 	dec a
 	jp nz, UseBallInTrainerBattle
 
+	; Battling ghosts
 	ld a, [wBattleType]
 	cp BATTLETYPE_GHOST
 	jp z, Ball_MonCantBeCaughtMessage
 
+	; Everything below this are regular wild battles
+	farcall DoesNuzlockeModePreventCapture
+	jp c, Ball_NuzlockeFailureMessage
+
+.NoNuzlockeCheck
 	ld a, [wEnemySubStatus3] ; BATTLE_VARS_SUBSTATUS3_OPP
 	and 1 << SUBSTATUS_FLYING | 1 << SUBSTATUS_UNDERGROUND
 	jp nz, Ball_MonIsHiddenMessage
