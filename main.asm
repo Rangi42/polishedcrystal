@@ -60,10 +60,12 @@ INCLUDE "engine/overworld/load_map_part.asm"
 SECTION "bank4", ROMX
 
 INCLUDE "engine/items/pack.asm"
+INCLUDE "engine/events/itemball.asm"
+INCLUDE "engine/events/fruit_trees.asm"
+INCLUDE "engine/gfx/item_icons.asm"
 INCLUDE "engine/overworld/time.asm"
 INCLUDE "engine/items/tmhm.asm"
 INCLUDE "engine/menus/naming_screen.asm"
-INCLUDE "engine/events/itemball.asm"
 INCLUDE "engine/events/heal_machine_anim.asm"
 INCLUDE "engine/events/whiteout.asm"
 INCLUDE "engine/events/forced_movement.asm"
@@ -198,7 +200,6 @@ INCLUDE "engine/pokemon/evolve.asm"
 
 SECTION "bank11", ROMX
 
-INCLUDE "engine/events/fruit_trees.asm"
 INCLUDE "engine/battle/ai/move.asm"
 INCLUDE "engine/pokemon/mail.asm"
 INCLUDE "engine/events/hidden_grottoes.asm"
@@ -461,7 +462,6 @@ INCLUDE "engine/gfx/dma_transfer.asm"
 INCLUDE "gfx/emotes.asm"
 INCLUDE "engine/overworld/warp_connection.asm"
 INCLUDE "engine/battle/used_move_text.asm"
-INCLUDE "engine/gfx/item_icons.asm"
 
 
 SECTION "Title", ROMX

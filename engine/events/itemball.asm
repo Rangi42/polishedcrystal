@@ -4,6 +4,7 @@ FindItemInBallScript::
 	disappear LAST_TALKED
 	opentext
 	farwritetext UnknownText_0x1c0a1c
+	callasm .ShowItemIcon
 	specialsound
 	itemnotify
 	closetext
@@ -36,11 +37,18 @@ FindItemInBallScript::
 	ldh [hScriptVar], a
 	ret
 
+.ShowItemIcon:
+	ld a, [wItemBallItemID]
+	call LoadItemIconForOverworld
+	farcall LoadItemIconPalette
+	jp PrintOverworldItemIcon
+
 FindKeyItemInBallScript::
 	callasm .ReceiveKeyItem
 	disappear LAST_TALKED
 	opentext
 	farwritetext UnknownText_0x1c0a1c
+	callasm .ShowKeyItemIcon
 	specialsound
 	keyitemnotify
 	closetext
@@ -62,11 +70,18 @@ FindKeyItemInBallScript::
 	ldh [hScriptVar], a
 	ret
 
+.ShowKeyItemIcon:
+	ld a, [wItemBallItemID]
+	call LoadKeyItemIconForOverworld
+	farcall LoadKeyItemIconPalette
+	jp PrintOverworldItemIcon
+
 FindTMHMInBallScript::
 	callasm .ReceiveTMHM
 	disappear LAST_TALKED
 	opentext
 	farwritetext UnknownText_0x1c0a1c
+	callasm .ShowTMHMIcon
 	playsound SFX_GET_TM
 	waitsfx
 	tmhmnotify
@@ -103,3 +118,9 @@ FindTMHMInBallScript::
 	ld a, $1
 	ldh [hScriptVar], a
 	ret
+
+.ShowTMHMIcon:
+	ld a, [wItemBallItemID]
+	call LoadTMHMIconForOverworld
+	farcall LoadTMHMIconPalette
+	jp PrintOverworldItemIcon

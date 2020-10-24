@@ -309,6 +309,7 @@ MusicMailIcon::    INCBIN "gfx/items/music_mail.2bpp.lz"
 MirageMailIcon::   INCBIN "gfx/items/mirage_mail.2bpp.lz"
 
 TMHMIcon::         INCBIN "gfx/items/tm_hm.2bpp.lz"
+ApricornIcon::     INCBIN "gfx/items/apricorn.2bpp.lz"
 
 
 SECTION "Key Item Icons 1", ROMX

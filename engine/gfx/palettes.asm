@@ -1209,6 +1209,35 @@ rept 19
 endr
 endc
 
+ApricornIconPalettes:
+if !DEF(MONOCHROME)
+; RED APRICORN
+	RGB 31, 08, 06
+	RGB 21, 12, 05
+; BLU APRICORN
+	RGB 06, 15, 30
+	RGB 21, 12, 05
+; YLW APRICORN
+	RGB 30, 26, 06
+	RGB 21, 12, 05
+; GRN APRICORN
+	RGB 07, 24, 12
+	RGB 21, 12, 05
+; WHT APRICORN
+	RGB 23, 25, 27
+	RGB 21, 12, 05
+; BLK APRICORN
+	RGB 09, 09, 09
+	RGB 21, 12, 05
+; PNK APRICORN
+	RGB 31, 18, 23
+	RGB 21, 12, 05
+else
+rept 7
+	MONOCHROME_RGB_TWO
+endr
+endc
+
 PokegearPals:
 if !DEF(MONOCHROME)
 ; male interface and text

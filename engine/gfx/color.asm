@@ -138,6 +138,12 @@ LoadKeyItemIconPalette:
 	ld bc, KeyItemIconPalettes
 	jr LoadIconPalette
 
+LoadApricornIconPalette:
+	ld a, [wCurFruit]
+	dec a
+	ld bc, ApricornIconPalettes
+	jr LoadIconPalette
+
 LoadItemIconPalette:
 	ld a, [wCurSpecies]
 	ld bc, ItemIconPalettes
