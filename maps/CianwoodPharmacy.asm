@@ -26,11 +26,7 @@ CianwoodPharmacist:
 	opentext
 	writetext PharmacistGiveSecretpotionText
 	buttonsound
-	givekeyitem SECRETPOTION
-	writetext ReceivedSecretpotionText
-	playsound SFX_KEY_ITEM
-	waitsfx
-	keyitemnotify
+	verbosegivekeyitem SECRETPOTION
 	setevent EVENT_GOT_SECRETPOTION_FROM_PHARMACY
 	writetext PharmacistDescribeSecretpotionText
 	waitbutton
@@ -63,11 +59,6 @@ PharmacistGiveSecretpotionText:
 
 	para "This ought to do"
 	line "the trick."
-	done
-
-ReceivedSecretpotionText:
-	text "<PLAYER> received"
-	line "SecretPotion."
 	done
 
 PharmacistDescribeSecretpotionText:

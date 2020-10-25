@@ -2995,7 +2995,8 @@ Script_verbosegivekeyitem:
 
 GiveKeyItemScript:
 	farwritetext UnknownText_0x1c4719
-	specialsound
+	playsound SFX_KEY_ITEM
+	waitbutton
 	keyitemnotify
 	end
 

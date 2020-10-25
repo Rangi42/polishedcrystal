@@ -61,17 +61,14 @@ UnknownScript_0x191844:
 	writetext UnknownText_0x191c5a
 	buttonsound
 	waitsfx
-	givekeyitem LOST_ITEM
-	iffalse_jumpopenedtext UnknownText_0x191d58
 	disappear POKEMONFANCLUB_CLEFAIRY_DOLL
-	writetext UnknownText_0x191d0a
-	playsound SFX_KEY_ITEM
-	waitsfx
-	keyitemnotify
+	verbosegivekeyitem LOST_ITEM
 	setevent EVENT_GOT_LOST_ITEM_FROM_FAN_CLUB
 	endtext
 
 PokemonJournalGreenScript:
+	setevent EVENT_RETURNED_MACHINE_PART
+	setevent EVENT_MET_COPYCAT_FOUND_OUT_ABOUT_LOST_ITEM
 	setflag ENGINE_READ_GREEN_JOURNAL
 	jumpthistext
 
@@ -215,22 +212,12 @@ UnknownText_0x191c5a:
 	line "No worries!"
 	done
 
-UnknownText_0x191d0a:
-	text "<PLAYER> received"
-	line "# Doll."
-	done
-
 UnknownText_0x191d1e:
 	text "You watch. I'm"
 	line "going to get a"
 
 	para "real Clefairy as"
 	line "my friend."
-	done
-
-UnknownText_0x191d58:
-	text "Your Bag is"
-	line "jammed full."
 	done
 
 UnknownText_0x191d73:

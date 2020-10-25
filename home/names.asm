@@ -150,6 +150,7 @@ GetItemName::
 GetCurKeyItemName::
 ; Get item name from item in CurItem
 	ld a, [wCurKeyItem]
+	inc a
 	ld [wNamedObjectIndexBuffer], a
 GetKeyItemName::
 ; Get key item item name wNamedObjectIndexBuffer.

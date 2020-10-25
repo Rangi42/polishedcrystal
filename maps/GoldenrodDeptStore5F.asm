@@ -77,12 +77,8 @@ GoldenrodDeptStore5FTwinScript:
 	random MARANGABERRY - ORAN_BERRY + 1
 	addvar ORAN_BERRY
 	itemtotext $0, $1
-	giveitem ITEM_FROM_MEM
+	verbosegiveitem ITEM_FROM_MEM
 	iffalse_jumpopenedtext MysteryGiftGirl_NoRoomText
-	writetext MysteryGiftGirl_GiveItemText
-	specialsound
-	waitbutton
-	itemnotify
 	setflag ENGINE_DAILY_MYSTERY_GIFT
 	jumpthisopenedtext
 
@@ -122,13 +118,6 @@ UnknownText_0x56279:
 
 	para "But, I did find"
 	line "this Berry!"
-	done
-
-MysteryGiftGirl_GiveItemText:
-	text "<PLAYER> received"
-	line ""
-	text_from_ram wStringBuffer4
-	text "!"
 	done
 
 MysteryGiftGirl_NoRoomText:

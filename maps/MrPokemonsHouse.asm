@@ -41,11 +41,7 @@ MrPokemonsHouseTrigger0:
 	writetext MrPokemonIntroText2
 	buttonsound
 	waitsfx
-	givekeyitem MYSTERY_EGG
-	writetext MrPokemonsHouse_GotEggText
-	playsound SFX_KEY_ITEM
-	waitsfx
-	keyitemnotify
+	verbosegivekeyitem MYSTERY_EGG
 	setevent EVENT_GOT_MYSTERY_EGG_FROM_MR_POKEMON
 	blackoutmod CHERRYGROVE_CITY
 if !DEF(DEBUG)
@@ -197,11 +193,6 @@ MrPokemonIntroText2:
 	text "This is what I"
 	line "want Prof.Elm to"
 	cont "examine."
-	done
-
-MrPokemonsHouse_GotEggText:
-	text "<PLAYER> received"
-	line "Mystery Egg."
 	done
 
 MrPokemonIntroText3:
