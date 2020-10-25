@@ -43,7 +43,6 @@ GetName::
 	ld h, [hl]
 	ld l, a
 	ld a, [wCurSpecies]
-	dec a
 	call GetNthString
 	ld de, wStringBuffer1
 	ld bc, ITEM_NAME_LENGTH
@@ -97,9 +96,8 @@ GetBasePokemonName::
 	ret
 
 GetPokemonName::
-	ld de, wStringBuffer1
-_GetPokemonName::
 ; Get Pokemon name wNamedObjectIndexBuffer.
+	ld de, wStringBuffer1
 	ldh a, [hROMBank]
 	push af
 	push hl
@@ -108,11 +106,11 @@ _GetPokemonName::
 	rst Bankswitch
 
 ; Each name is ten characters
+	xor a
+	ld d, a
+	ld h, a
 	ld a, [wNamedObjectIndexBuffer]
-	dec a
-	ld d, 0
 	ld e, a
-	ld h, 0
 	ld l, a
 	add hl, hl ; hl = hl * 4
 	add hl, hl ; hl = hl * 4
@@ -152,7 +150,6 @@ GetItemName::
 GetCurKeyItemName::
 ; Get item name from item in CurItem
 	ld a, [wCurKeyItem]
-	inc a
 	ld [wNamedObjectIndexBuffer], a
 GetKeyItemName::
 ; Get key item item name wNamedObjectIndexBuffer.

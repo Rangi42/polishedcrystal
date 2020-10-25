@@ -1,4 +1,5 @@
 MoveNames::
+	db "?@"
 	db "Acrobatics@"
 	db "Karate Chop@"
 	db "DoubleSlap@"

@@ -1,4 +1,5 @@
 PokemonNames::
+	rawchar "?????@@@@@"
 	rawchar "Bulbasaur@"
 	rawchar "Ivysaur@@@"
 	rawchar "Venusaur@@"
@@ -254,4 +255,3 @@ PokemonNames::
 	rawchar "Glaceon@@@"
 	rawchar "Sylveon@@@"
 	rawchar "Egg@@@@@@@"
-	rawchar "?????@@@@@"

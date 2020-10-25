@@ -1,4 +1,5 @@
 TrainerClassNames::
+	db "?@"                ; TRAINER_NONE
 	db "<PK><MN> Trainer@" ; CARRIE
 	db "<PK><MN> Trainer@" ; CAL
 	db "Leader@"           ; FALKNER

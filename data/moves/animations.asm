@@ -377,7 +377,7 @@ BattleAnim_Scald:
 	anim_ret
 
 BattleAnim_ThrowPokeBall:
-	anim_jumpif NO_ITEM, .TheTrainerBlockedTheBall
+	anim_jumpif -1, .TheTrainerBlockedTheBall
 	anim_jumpif MASTER_BALL, .MasterBall
 	; any other ball
 	anim_2gfx ANIM_GFX_POKE_BALL, ANIM_GFX_SMOKE

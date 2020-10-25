@@ -6,10 +6,10 @@ _DoItemEffect::
 	ld a, 1
 	ld [wItemEffectSucceeded], a
 	ld a, [wCurItem]
-	dec a
 	call StackJumpTable
 
 ItemEffects:
+	dw PokeBallEffect     ; PARK_BALL
 	dw PokeBallEffect     ; POKE_BALL
 	dw PokeBallEffect     ; GREAT_BALL
 	dw PokeBallEffect     ; ULTRA_BALL
@@ -22,7 +22,7 @@ ItemEffects:
 	dw PokeBallEffect     ; FAST_BALL
 	dw PokeBallEffect     ; HEAVY_BALL
 	dw PokeBallEffect     ; LOVE_BALL
-	dw PokeBallEffect     ; PARK_BALL
+	dw IsntTheTimeMessage ; ABILITYPATCH
 	dw PokeBallEffect     ; REPEAT_BALL
 	dw PokeBallEffect     ; TIMER_BALL
 	dw PokeBallEffect     ; NEST_BALL
@@ -2233,7 +2233,7 @@ UseBallInTrainerBattle:
 	ld [wFXAnimIDLo], a
 	ld a, d
 	ld [wFXAnimIDHi], a
-	xor a
+	ld a, -1 ; trainer blocked the ball
 	ld [wBattleAnimParam], a
 	ldh [hBattleTurn], a
 	ld [wNumHits], a
@@ -2273,7 +2273,7 @@ Ball_NuzlockeFailureMessage:
 	call PrintText
 
 	ld a, [wCurItem]
-	cp PARK_BALL
+	and a ; PARK_BALL?
 	ret z
 	cp SAFARI_BALL
 	ret z

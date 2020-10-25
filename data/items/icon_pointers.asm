@@ -12,7 +12,7 @@ ItemIconPointers:
 	dba FastBallIcon
 	dba HeavyBallIcon
 	dba LoveBallIcon
-	dba ParkBallIcon
+	dba AbilityPatchIcon
 	dba RepeatBallIcon
 	dba TimerBallIcon
 	dba NestBallIcon

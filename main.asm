@@ -525,8 +525,9 @@ INCLUDE "engine/battle/stats.asm"
 SECTION "Item Text", ROMX
 
 INCLUDE "data/items/names.asm"
-INCLUDE "engine/items/print_item_description.asm"
+INCLUDE "data/items/key_names.asm"
 INCLUDE "data/items/apricorn_names.asm"
+INCLUDE "engine/items/print_item_description.asm"
 
 
 SECTION "Move and Landmark Text", ROMX

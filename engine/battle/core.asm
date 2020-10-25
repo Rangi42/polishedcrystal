@@ -4048,7 +4048,7 @@ BattleMenu_SafariBall:
 	jr .got_item
 
 .contest
-	ld a, PARK_BALL
+	xor a ; PARK_BALL
 	ld [wCurItem], a
 	call DoItemEffect
 
