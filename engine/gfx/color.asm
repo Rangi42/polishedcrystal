@@ -138,6 +138,11 @@ LoadKeyItemIconPalette:
 	ld bc, KeyItemIconPalettes
 	jr LoadIconPalette
 
+LoadKeyItemIconPaletteForOverworld:
+	ld a, [wCurKeyItem]
+	ld bc, KeyItemIconPalettes
+	jr LoadIconPalette
+
 LoadApricornIconPalette:
 	ld a, [wCurFruit]
 	dec a

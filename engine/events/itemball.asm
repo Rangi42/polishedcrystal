@@ -73,7 +73,7 @@ FindKeyItemInBallScript::
 .ShowKeyItemIcon:
 	ld a, [wItemBallItemID]
 	call LoadKeyItemIconForOverworld
-	farcall LoadKeyItemIconPalette
+	farcall LoadKeyItemIconPaletteForOverworld
 	jp PrintOverworldItemIcon
 
 FindTMHMInBallScript::
