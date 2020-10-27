@@ -781,7 +781,7 @@ StatsScreen_LoadGFX:
 	farjp OrangePage_
 
 ; Fourth stats page code by TPP Anniversary Crystal 251
-; Ported by FredrIQ
+; Ported by FIQ
 OrangePage_:
 	call TN_PrintToD
 	call TN_PrintLV
@@ -795,6 +795,9 @@ OrangePage_:
 	rst PlaceString
 	ld a, [wTempMonAbility]
 	and ABILITY_MASK
+	jr nz, .no_ha_fixup
+	ld a, HIDDEN_ABILITY
+.no_ha_fixup
 	swap a
 	rrca
 	ld e, a

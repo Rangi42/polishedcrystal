@@ -22,7 +22,7 @@ ItemEffects:
 	dw PokeBallEffect     ; FAST_BALL
 	dw PokeBallEffect     ; HEAVY_BALL
 	dw PokeBallEffect     ; LOVE_BALL
-	dw IsntTheTimeMessage ; ABILITYPATCH
+	dw AbilityPatch       ; ABILITYPATCH
 	dw PokeBallEffect     ; REPEAT_BALL
 	dw PokeBallEffect     ; TIMER_BALL
 	dw PokeBallEffect     ; NEST_BALL
@@ -2607,47 +2607,63 @@ GetMthMoveOfCurrentMon:
 	add hl, bc
 	ret
 
+AbilityPatch:
+; Switch between regular and hidden ability
+	; fallthrough (most code is shared with Ability Capsule)
 AbilityCap:
 ; If a pokémon doesn't have its hidden ability, switch between its
 ; 1st and 2nd ability
+	ld a, [wCurItem]
+	ld [wd002], a
+
 	ld b, PARTYMENUACTION_HEALING_ITEM
 	call UseItem_SelectMon
 .loop
 	ret c
 
 	push hl
+	call UseItem_GetBaseDataAndNickParameters
 	ld a, MON_ABILITY
 	call GetPartyParamLocation
-	ld a, [hl]
-	and ABILITY_MASK
-	cp HIDDEN_ABILITY
-	jr z, .no_effect
-
-	; Check if the ability would change
 	ld d, h
 	ld e, l
 	pop hl
 	push hl
-	push de
-	call UseItem_GetBaseDataAndNickParameters
-	pop de
+	ld a, [wd002]
+	cp ABILITYPATCH
+	ld a, [de]
+	ld b, ABILITY_2 ; xor to change later
+	jr z, .allow_change
+	ld b, ABILITY_1 | ABILITY_2
+	and ABILITY_MASK
+	jr z, .no_effect
+	cp HIDDEN_ABILITY
+	jr z, .no_effect
+
+	; Check if the ability would change
+	push bc
 	ld a, [wBaseAbility1]
 	ld b, a
 	ld a, [wBaseAbility2]
 	cp b
+	pop bc
 	jr z, .no_effect
 
+.allow_change
 	; Ability would change: ask for a confirmation
 	ld a, [de]
 	and ABILITY_MASK
+	xor b
+	ld c, a
+	ld hl, wBaseAbility1
 	cp ABILITY_1
-	ld a, [wBaseAbility2]
-	ld c, ABILITY_2
 	jr z, .got_new_ability
-	ld a, [wBaseAbility1]
-	ld c, ABILITY_1
+	inc hl
+	cp ABILITY_2
+	jr z, .got_new_ability
+	inc hl
 .got_new_ability
-	ld b, a
+	ld b, [hl]
 	push bc
 	push de
 	farcall BufferAbility
