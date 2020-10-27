@@ -7002,12 +7002,7 @@ AnimateExpBar:
 	hlcoord 12, 11
 	call PlaceExpBar
 	pop de
-	ld a, $1
-	ldh [hBGMapMode], a
-	ld c, d
-	call DelayFrames
-	xor a
-	ldh [hBGMapMode], a
+	call .delay
 	pop bc
 	ld a, c
 	cp b
@@ -7018,12 +7013,7 @@ AnimateExpBar:
 	hlcoord 12, 11
 	call PlaceExpBar
 	pop de
-	ld a, $1
-	ldh [hBGMapMode], a
-	ld c, d
-	call DelayFrames
-	xor a
-	ldh [hBGMapMode], a
+	call .delay
 	dec d
 	jr nz, .min_number_of_frames
 	ld d, 1
@@ -7035,6 +7025,20 @@ AnimateExpBar:
 .end_animation
 	ld a, $1
 	ldh [hBGMapMode], a
+	ret
+
+.delay
+	xor a
+	ld [hCGBPalUpdate], a
+	inc a
+	ld [hBGMapMode], a
+	ld [hBGMapHalf], a
+	ld c, d
+	call DelayFrames
+	xor a
+	ld [hBGMapMode], a
+	inc a
+	ld [hCGBPalUpdate], a
 	ret
 
 GetNewBaseExp:
@@ -7448,7 +7452,7 @@ PlaceExpBar:
 .next
 	add $8
 	jr z, .loop2
-	add "<NOXP>" - 1
+	add "<NOXP>"
 	jr .skip
 
 .loop2
