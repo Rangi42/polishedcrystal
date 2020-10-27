@@ -795,14 +795,11 @@ OrangePage_:
 	rst PlaceString
 	ld a, [wTempMonAbility]
 	and ABILITY_MASK
-	jr nz, .no_ha_fixup
-	ld a, HIDDEN_ABILITY
-.no_ha_fixup
 	swap a
 	rrca
 	ld e, a
 	ld d, 0
-	ld hl, .ability_tiles - 1 ; ability constants start at 1
+	ld hl, .ability_tiles
 	add hl, de
 	ld a, [hl]
 	hlcoord 9, 12
@@ -821,7 +818,8 @@ OrangePage_:
 	db "Ability/@"
 
 .ability_tiles
-	db "1", "2", $3f ; bold H
+	; $3f = bold H
+	db $3f, "1", "2", $3f
 
 StatsScreen_OTNamePointers:
 	dw wPartyMonOT
