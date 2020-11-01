@@ -116,9 +116,6 @@ KabutoFrames:     INCLUDE "gfx/pokemon/kabuto/frames.asm"
 KabutopsFrames:   INCLUDE "gfx/pokemon/kabutops/frames.asm"
 AerodactylFrames: INCLUDE "gfx/pokemon/aerodactyl/frames.asm"
 SnorlaxFrames:    INCLUDE "gfx/pokemon/snorlax/frames.asm"
-ArticunoFrames:   INCLUDE "gfx/pokemon/articuno/frames.asm"
-ZapdosFrames:     INCLUDE "gfx/pokemon/zapdos/frames.asm"
-MoltresFrames:    INCLUDE "gfx/pokemon/moltres/frames.asm"
 DratiniFrames:    INCLUDE "gfx/pokemon/dratini/frames.asm"
 DragonairFrames:  INCLUDE "gfx/pokemon/dragonair/frames.asm"
 DragoniteFrames:  INCLUDE "gfx/pokemon/dragonite/frames.asm"
@@ -228,3 +225,12 @@ SlowbroGalarianFrames: INCLUDE "gfx/pokemon/slowbro_galarian/frames.asm"
 
 WeezingPlainFrames:    INCLUDE "gfx/pokemon/weezing_plain/frames.asm"
 WeezingGalarianFrames: INCLUDE "gfx/pokemon/weezing_galarian/frames.asm"
+
+ArticunoPlainFrames:    INCLUDE "gfx/pokemon/articuno_plain/frames.asm"
+ArticunoGalarianFrames: INCLUDE "gfx/pokemon/articuno_galarian/frames.asm"
+
+ZapdosPlainFrames:    INCLUDE "gfx/pokemon/zapdos_plain/frames.asm"
+ZapdosGalarianFrames: INCLUDE "gfx/pokemon/zapdos_galarian/frames.asm"
+
+MoltresPlainFrames:    INCLUDE "gfx/pokemon/moltres_plain/frames.asm"
+MoltresGalarianFrames: INCLUDE "gfx/pokemon/moltres_galarian/frames.asm"

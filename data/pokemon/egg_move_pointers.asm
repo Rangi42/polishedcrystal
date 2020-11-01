@@ -280,3 +280,7 @@ EggMovePointers::
 	dw SlowpokeGalarianEggMoves
 	dw NoEggMoves
 	dw NoEggMoves
+	dw NoEggMoves
+	dw NoEggMoves
+	dw NoEggMoves
+	dw NoEggMoves

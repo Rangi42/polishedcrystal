@@ -142,9 +142,9 @@ AnimationExtraPointers:
 	dw KabutopsAnimationExtra
 	dw AerodactylAnimationExtra
 	dw SnorlaxAnimationExtra
-	dw ArticunoAnimationExtra
-	dw ZapdosAnimationExtra
-	dw MoltresAnimationExtra
+	dw ArticunoPlainAnimationExtra
+	dw ZapdosPlainAnimationExtra
+	dw MoltresPlainAnimationExtra
 	dw DratiniAnimationExtra
 	dw DragonairAnimationExtra
 	dw DragoniteAnimationExtra
@@ -193,7 +193,7 @@ AnimationExtraPointers:
 	dw UmbreonAnimationExtra
 	dw MurkrowAnimationExtra
 	dw HonchkrowAnimationExtra
-	dw SlowkingAnimationExtra
+	dw SlowkingPlainAnimationExtra
 	dw MisdreavusAnimationExtra
 	dw MismagiusAnimationExtra
 	dw UnownAAnimationExtra
@@ -336,4 +336,8 @@ AnimationExtraPointers:
 	dw RapidashGalarianAnimationExtra
 	dw SlowpokeGalarianAnimationExtra
 	dw SlowbroGalarianAnimationExtra
+	dw SlowkingGalarianAnimationExtra
 	dw WeezingGalarianAnimationExtra
+	dw ArticunoGalarianAnimationExtra
+	dw ZapdosGalarianAnimationExtra
+	dw MoltresGalarianAnimationExtra

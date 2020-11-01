@@ -12,7 +12,7 @@ endc
 	db NO_ITEM ; item 1
 	db KINGS_ROCK ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
-	INCBIN "gfx/pokemon/slowking/front.dimensions"
+	INCBIN "gfx/pokemon/slowking_plain/front.dimensions"
 	abilities_for SLOWKING, OBLIVIOUS, OWN_TEMPO, REGENERATOR
 	db MEDIUM_FAST ; growth rate
 	dn MONSTER, AMPHIBIAN ; egg groups

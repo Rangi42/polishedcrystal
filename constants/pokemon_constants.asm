@@ -276,8 +276,9 @@ PLAIN_FORM EQU 1
 ; marowak
 ALOLAN_FORM EQU 2
 ; ponyta/rapidash
-; slowpoke/slowbro
+; slowpoke/slowbro/slowking
 ; weezing
+; articuno/zapdos/moltres
 GALARIAN_FORM EQU 2
 
 ; unown

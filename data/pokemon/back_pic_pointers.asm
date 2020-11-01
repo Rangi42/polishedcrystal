@@ -142,9 +142,9 @@ BackPicPointers::
 	dba KabutopsBackpic
 	dba AerodactylBackpic
 	dba SnorlaxBackpic
-	dba ArticunoBackpic
-	dba ZapdosBackpic
-	dba MoltresBackpic
+	dba ArticunoPlainBackpic
+	dba ZapdosPlainBackpic
+	dba MoltresPlainBackpic
 	dba DratiniBackpic
 	dba DragonairBackpic
 	dba DragoniteBackpic
@@ -193,7 +193,7 @@ BackPicPointers::
 	dba UmbreonBackpic
 	dba MurkrowBackpic
 	dba HonchkrowBackpic
-	dba SlowkingBackpic
+	dba SlowkingPlainBackpic
 	dba MisdreavusBackpic
 	dba MismagiusBackpic
 	dba UnownABackpic
@@ -336,4 +336,8 @@ BackPicPointers::
 	dba RapidashGalarianBackpic
 	dba SlowpokeGalarianBackpic
 	dba SlowbroGalarianBackpic
+	dba SlowkingGalarianBackpic
 	dba WeezingGalarianBackpic
+	dba ArticunoGalarianBackpic
+	dba ZapdosGalarianBackpic
+	dba MoltresGalarianBackpic

@@ -24,5 +24,9 @@ ValidVariantRanges: ; for Wonder Trade
 	db RAPIDASH,  2 ; GALARIAN
 	db SLOWPOKE,  2 ; GALARIAN
 	db SLOWBRO,   2 ; GALARIAN
+	db SLOWKING,  2 ; GALARIAN
 	db WEEZING,   2 ; GALARIAN
+	db ARTICUNO,  2 ; GALARIAN
+	db ZAPDOS,    2 ; GALARIAN
+	db MOLTRES,   2 ; GALARIAN
 	db -1
