@@ -146,9 +146,9 @@ EvosAttacksPointers::
 	dw KabutopsEvosAttacks
 	dw AerodactylEvosAttacks
 	dw SnorlaxEvosAttacks
-	dw ArticunoEvosAttacks
-	dw ZapdosEvosAttacks
-	dw MoltresEvosAttacks
+	dw ArticunoPlainEvosAttacks
+	dw ZapdosPlainEvosAttacks
+	dw MoltresPlainEvosAttacks
 	dw DratiniEvosAttacks
 	dw DragonairEvosAttacks
 	dw DragoniteEvosAttacks
@@ -197,7 +197,7 @@ EvosAttacksPointers::
 	dw UmbreonEvosAttacks
 	dw MurkrowEvosAttacks
 	dw HonchkrowEvosAttacks
-	dw SlowkingEvosAttacks
+	dw SlowkingPlainEvosAttacks
 	dw MisdreavusEvosAttacks
 	dw MismagiusEvosAttacks
 	dw UnownEvosAttacks
@@ -283,4 +283,8 @@ EvosAttacksPointers::
 	dw RapidashGalarianEvosAttacks
 	dw SlowpokeGalarianEvosAttacks
 	dw SlowbroGalarianEvosAttacks
+	dw SlowkingGalarianEvosAttacks
 	dw WeezingGalarianEvosAttacks
+	dw ArticunoGalarianEvosAttacks
+	dw ZapdosGalarianEvosAttacks
+	dw MoltresGalarianEvosAttacks

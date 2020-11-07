@@ -142,9 +142,9 @@ FrontPicPointers::
 	dba KabutopsFrontpic
 	dba AerodactylFrontpic
 	dba SnorlaxFrontpic
-	dba ArticunoFrontpic
-	dba ZapdosFrontpic
-	dba MoltresFrontpic
+	dba ArticunoPlainFrontpic
+	dba ZapdosPlainFrontpic
+	dba MoltresPlainFrontpic
 	dba DratiniFrontpic
 	dba DragonairFrontpic
 	dba DragoniteFrontpic
@@ -193,7 +193,7 @@ FrontPicPointers::
 	dba UmbreonFrontpic
 	dba MurkrowFrontpic
 	dba HonchkrowFrontpic
-	dba SlowkingFrontpic
+	dba SlowkingPlainFrontpic
 	dba MisdreavusFrontpic
 	dba MismagiusFrontpic
 	dba UnownAFrontpic
@@ -336,4 +336,8 @@ FrontPicPointers::
 	dba RapidashGalarianFrontpic
 	dba SlowpokeGalarianFrontpic
 	dba SlowbroGalarianFrontpic
+	dba SlowkingGalarianFrontpic
 	dba WeezingGalarianFrontpic
+	dba ArticunoGalarianFrontpic
+	dba ZapdosGalarianFrontpic
+	dba MoltresGalarianFrontpic

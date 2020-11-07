@@ -142,9 +142,9 @@ FramesPointers:
 	dw KabutopsFrames
 	dw AerodactylFrames
 	dw SnorlaxFrames
-	dw ArticunoFrames
-	dw ZapdosFrames
-	dw MoltresFrames
+	dw ArticunoPlainFrames
+	dw ZapdosPlainFrames
+	dw MoltresPlainFrames
 	dw DratiniFrames
 	dw DragonairFrames
 	dw DragoniteFrames
@@ -193,7 +193,7 @@ FramesPointers:
 	dw UmbreonFrames
 	dw MurkrowFrames
 	dw HonchkrowFrames
-	dw SlowkingFrames
+	dw SlowkingPlainFrames
 	dw MisdreavusFrames
 	dw MismagiusFrames
 	dw UnownAFrames
@@ -336,4 +336,8 @@ FramesPointers:
 	dw RapidashGalarianFrames
 	dw SlowpokeGalarianFrames
 	dw SlowbroGalarianFrames
+	dw SlowkingGalarianFrames
 	dw WeezingGalarianFrames
+	dw ArticunoGalarianFrames
+	dw ZapdosGalarianFrames
+	dw MoltresGalarianFrames

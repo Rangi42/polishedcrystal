@@ -142,9 +142,9 @@ BitmasksPointers:
 	dw KabutopsBitmasks
 	dw AerodactylBitmasks
 	dw SnorlaxBitmasks
-	dw ArticunoBitmasks
-	dw ZapdosBitmasks
-	dw MoltresBitmasks
+	dw ArticunoPlainBitmasks
+	dw ZapdosPlainBitmasks
+	dw MoltresPlainBitmasks
 	dw DratiniBitmasks
 	dw DragonairBitmasks
 	dw DragoniteBitmasks
@@ -193,7 +193,7 @@ BitmasksPointers:
 	dw UmbreonBitmasks
 	dw MurkrowBitmasks
 	dw HonchkrowBitmasks
-	dw SlowkingBitmasks
+	dw SlowkingPlainBitmasks
 	dw MisdreavusBitmasks
 	dw MismagiusBitmasks
 	dw UnownABitmasks
@@ -336,4 +336,8 @@ BitmasksPointers:
 	dw RapidashGalarianBitmasks
 	dw SlowpokeGalarianBitmasks
 	dw SlowbroGalarianBitmasks
+	dw SlowkingGalarianBitmasks
 	dw WeezingGalarianBitmasks
+	dw ArticunoGalarianBitmasks
+	dw ZapdosGalarianBitmasks
+	dw MoltresGalarianBitmasks
