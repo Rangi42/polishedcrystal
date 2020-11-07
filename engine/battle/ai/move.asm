@@ -157,6 +157,7 @@ endc
 	ld hl, wBadges
 	ld b, wBadgesEnd - wBadges
 	call CountSetBits
+	ld hl, .BadgeAILayers
 .badge_loop
 	ld c, [hl]
 	cp c
