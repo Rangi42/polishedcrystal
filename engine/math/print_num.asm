@@ -54,6 +54,9 @@ _PrintNum::
 	ld [hl], a
 	ld h, 32
 
+	; Calculate a BCD number using double dabble (iterative shift + addition).
+	; Slower than division by 10, but far simpler (and thus smaller), and
+	; we can afford the performance loss.
 .loop2
 	push hl
 	ld hl, hPrintNum + 3
@@ -61,10 +64,11 @@ _PrintNum::
 	rl d
 	rl c
 	rl b
+	; add last bit of b into [hl], then cascade into higher bytes
 rept 4
 	ld a, [hl]
 	adc a
-	daa
+	daa ; dubious compatibility in bad emulators, should be OK for valid input
 	ld [hld], a
 endr
 	pop hl
