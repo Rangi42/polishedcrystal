@@ -88,18 +88,6 @@ GetRemainingSpaceInPhoneList:
 
 INCLUDE "data/phone/permanent_numbers.asm"
 
-FarPlaceString:
-	ldh a, [hROMBank]
-	push af
-	ld a, b
-	rst Bankswitch
-
-	rst PlaceString
-
-	pop af
-	rst Bankswitch
-	ret
-
 CheckPhoneCall::
 ; Check if the phone is ringing in the overworld.
 
@@ -443,35 +431,6 @@ Phone_CallerTextboxWithName:
 	ld a, [wCurCaller]
 	ld b, a
 	jp Function90363
-
-PhoneCall::
-	ld a, b
-	ld [wPhoneScriptBank], a
-	ld a, e
-	ld [wPhoneCallerLo], a
-	ld a, d
-	ld [wPhoneCallerHi], a
-	call Phone_FirstOfTwoRings
-Phone_FirstOfTwoRings:
-	call Phone_StartRinging
-	call Phone_Wait20Frames
-	call Phone_CallerTextboxWithName2
-	call Phone_Wait20Frames
-	call Phone_CallerTextbox
-	call Phone_Wait20Frames
-Phone_CallerTextboxWithName2:
-	call Phone_CallerTextbox
-	hlcoord 1, 2
-	ld [hl], "<PHONE>"
-	inc hl
-	inc hl
-	ld a, [wPhoneScriptBank]
-	ld b, a
-	ld a, [wPhoneCallerLo]
-	ld e, a
-	ld a, [wPhoneCallerHi]
-	ld d, a
-	jp FarPlaceString
 
 Phone_NoSignal:
 	ld de, SFX_NO_SIGNAL

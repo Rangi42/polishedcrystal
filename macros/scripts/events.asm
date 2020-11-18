@@ -940,12 +940,6 @@ askforphonenumber: MACRO
 	db \1 ; number
 	ENDM
 
-	enum phonecall_command
-phonecall: MACRO
-	db phonecall_command
-	dw \1 ; caller_name
-	ENDM
-
 	enum hangup_command
 hangup: MACRO
 	db hangup_command

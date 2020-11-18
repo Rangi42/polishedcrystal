@@ -223,7 +223,6 @@ wCurIconForm:: db
 wCurIconTile:: db
 
 wSpriteAnimAddrBackup::
-wSpriteAnimIDBuffer::
 wCurSpriteAddSubFlags::
 	dw
 wCurAnimVTile:: db

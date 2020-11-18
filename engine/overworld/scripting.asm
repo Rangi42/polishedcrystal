@@ -202,67 +202,66 @@ ScriptCommandTable:
 	dw Script_elevator                   ; 91
 	dw Script_trade                      ; 92
 	dw Script_askforphonenumber          ; 93
-	dw Script_phonecall                  ; 94
-	dw Script_hangup                     ; 95
-	dw Script_describedecoration         ; 96
-	dw Script_fruittree                  ; 97
-	dw Script_specialphonecall           ; 98
-	dw Script_checkphonecall             ; 99
-	dw Script_verbosegiveitem            ; 9a
-	dw Script_verbosegiveitem2           ; 9b
-	dw Script_swarm                      ; 9c
-	dw Script_halloffame                 ; 9d
-	dw Script_credits                    ; 9e
-	dw Script_warpfacing                 ; 9f
-	dw Script_battletowertext            ; a0
-	dw Script_landmarktotext             ; a1
-	dw Script_trainerclassname           ; a2
-	dw Script_name                       ; a3
-	dw Script_wait                       ; a4
-	dw Script_check_save                 ; a5
-	dw Script_count_seen_caught          ; a6
-	dw Script_trainerpic                 ; a7
-	dw Script_givetmhm                   ; a8
-	dw Script_checktmhm                  ; a9
-	dw Script_verbosegivetmhm            ; aa
-	dw Script_tmhmnotify                 ; ab
-	dw Script_tmhmtotext                 ; ac
-	dw Script_checkdarkness              ; ad
-	dw Script_checkunits                 ; ae
-	dw Script_unowntypeface              ; af
-	dw Script_restoretypeface            ; b0
-	dw Script_jumpstashedtext            ; b1
-	dw Script_jumpopenedtext             ; b2
-	dw Script_iftrue_jumptext            ; b3
-	dw Script_iffalse_jumptext           ; b4
-	dw Script_iftrue_jumptextfaceplayer  ; b5
-	dw Script_iffalse_jumptextfaceplayer ; b6
-	dw Script_iftrue_jumpopenedtext      ; b7
-	dw Script_iffalse_jumpopenedtext     ; b8
-	dw Script_writethistext              ; b9
-	dw Script_jumpthistext               ; ba
-	dw Script_jumpthistextfaceplayer     ; bb
-	dw Script_jumpthisopenedtext         ; bc
-	dw Script_showtext                   ; bd
-	dw Script_showtextfaceplayer         ; be
-	dw Script_applyonemovement           ; bf
-	dw Script_showcrytext                ; c0
-	dw Script_endtext                    ; c1
-	dw Script_waitendtext                ; c2
-	dw Script_iftrue_endtext             ; c3
-	dw Script_iffalse_endtext            ; c4
-	dw Script_loadgrottomon              ; c5
-	dw Script_giveapricorn               ; c6
-	dw Script_paintingpic                ; c7
-	dw Script_checkegg                   ; c8
-	dw Script_givekeyitem                ; c9
-	dw Script_checkkeyitem               ; ca
-	dw Script_takekeyitem                ; cb
-	dw Script_verbosegivekeyitem         ; cc
-	dw Script_keyitemnotify              ; cd
-	dw Script_givebp                     ; ce
-	dw Script_takebp                     ; cf
-	dw Script_checkbp                    ; d0
+	dw Script_hangup                     ; 94
+	dw Script_describedecoration         ; 95
+	dw Script_fruittree                  ; 96
+	dw Script_specialphonecall           ; 97
+	dw Script_checkphonecall             ; 98
+	dw Script_verbosegiveitem            ; 99
+	dw Script_verbosegiveitem2           ; 9a
+	dw Script_swarm                      ; 9b
+	dw Script_halloffame                 ; 9c
+	dw Script_credits                    ; 9d
+	dw Script_warpfacing                 ; 9e
+	dw Script_battletowertext            ; 9f
+	dw Script_landmarktotext             ; a0
+	dw Script_trainerclassname           ; a1
+	dw Script_name                       ; a2
+	dw Script_wait                       ; a3
+	dw Script_check_save                 ; a4
+	dw Script_count_seen_caught          ; a5
+	dw Script_trainerpic                 ; a6
+	dw Script_givetmhm                   ; a7
+	dw Script_checktmhm                  ; a8
+	dw Script_verbosegivetmhm            ; a9
+	dw Script_tmhmnotify                 ; aa
+	dw Script_tmhmtotext                 ; ab
+	dw Script_checkdarkness              ; ac
+	dw Script_checkunits                 ; ad
+	dw Script_unowntypeface              ; ae
+	dw Script_restoretypeface            ; af
+	dw Script_jumpstashedtext            ; b0
+	dw Script_jumpopenedtext             ; b1
+	dw Script_iftrue_jumptext            ; b2
+	dw Script_iffalse_jumptext           ; b3
+	dw Script_iftrue_jumptextfaceplayer  ; b4
+	dw Script_iffalse_jumptextfaceplayer ; b5
+	dw Script_iftrue_jumpopenedtext      ; b6
+	dw Script_iffalse_jumpopenedtext     ; b7
+	dw Script_writethistext              ; b8
+	dw Script_jumpthistext               ; b9
+	dw Script_jumpthistextfaceplayer     ; ba
+	dw Script_jumpthisopenedtext         ; bb
+	dw Script_showtext                   ; bc
+	dw Script_showtextfaceplayer         ; bd
+	dw Script_applyonemovement           ; be
+	dw Script_showcrytext                ; bf
+	dw Script_endtext                    ; c0
+	dw Script_waitendtext                ; c1
+	dw Script_iftrue_endtext             ; c2
+	dw Script_iffalse_endtext            ; c3
+	dw Script_loadgrottomon              ; c4
+	dw Script_giveapricorn               ; c5
+	dw Script_paintingpic                ; c6
+	dw Script_checkegg                   ; c7
+	dw Script_givekeyitem                ; c8
+	dw Script_checkkeyitem               ; c9
+	dw Script_takekeyitem                ; ca
+	dw Script_verbosegivekeyitem         ; cb
+	dw Script_keyitemnotify              ; cc
+	dw Script_givebp                     ; cd
+	dw Script_takebp                     ; ce
+	dw Script_checkbp                    ; cf
 
 StartScript:
 	ld hl, wScriptFlags
@@ -752,17 +751,6 @@ Script_trade:
 	ld e, a
 	farcall NPCTrade
 	jp Script_waitendtext
-
-Script_phonecall:
-; parameters:
-;     caller_name (RawTextPointerLabelParam)
-	call GetScriptByte
-	ld e, a
-	call GetScriptByte
-	ld d, a
-	ld a, [wScriptBank]
-	ld b, a
-	farjp PhoneCall
 
 Script_hangup:
 	farjp HangUp

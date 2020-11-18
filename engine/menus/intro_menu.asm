@@ -820,43 +820,35 @@ NamePlayer:
 INCLUDE "data/default_player_names.asm"
 
 ShrinkPlayer:
-
-	ldh a, [hROMBank]
-	push af
-
 	ld a, 0 << 7 | 32 ; fade out
 	ld [wMusicFade], a
-	ld de, MUSIC_NONE
-	ld a, e
+	xor a ; MUSIC_NONE
 	ld [wMusicFadeIDLo], a
-	ld a, d
 	ld [wMusicFadeIDHi], a
 
 	ld de, SFX_ESCAPE_ROPE
 	call PlaySFX
-	pop af
-	rst Bankswitch
 
-	ld c, 8
+	ld c, 16
 	call DelayFrames
 
 	ld hl, Shrink1Pic
 	call ShrinkFrame
 
-	ld c, 8
+	ld c, 16
 	call DelayFrames
 
 	ld hl, Shrink2Pic
 	call ShrinkFrame
 
-	ld c, 8
+	ld c, 16
 	call DelayFrames
 
 	hlcoord 6, 4
 	lb bc, 7, 7
 	call ClearBox
 
-	ld c, 3
+	ld c, 6
 	call DelayFrames
 
 	call Intro_PlacePlayerSprite

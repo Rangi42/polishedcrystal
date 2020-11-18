@@ -55,13 +55,6 @@ wTownMapCursorCoordinates:: dw
 ENDU
 
 NEXTU
-; phone call data
-wPhoneScriptBank:: db
-wPhoneCaller::
-wPhoneCallerLo:: db
-wPhoneCallerHi:: db
-
-NEXTU
 ; radio data
 wCurRadioLine:: db
 wNextRadioLine:: db
