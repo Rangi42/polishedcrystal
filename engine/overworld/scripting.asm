@@ -1091,7 +1091,7 @@ ApplyPersonFacing::
 	add hl, bc
 	ld a, [hl]
 	push bc
-	call DoesSpriteHaveFacings
+	farcall DoesSpriteHaveFacings
 	pop bc
 	jr c, .not_visible ; STANDING_SPRITE
 	ld hl, OBJECT_FLAGS1

@@ -905,6 +905,12 @@ GetBattleVarAddr::
 BattleCommand_cleartext::
 EmptyBattleTextbox::
 	ld hl, EmptyString
+	jr BattleTextbox
+
+StdBattleTextbox::
+; Open a textbox and print battle text at 20:hl.
+	anonbankpush BattleText
+
 BattleTextbox::
 ; Open a textbox and print text at hl.
 	push hl
@@ -913,17 +919,6 @@ BattleTextbox::
 	call ApplyTilemap
 	pop hl
 	jp PrintTextboxText
-
-StdBattleTextbox::
-; Open a textbox and print battle text at 20:hl.
-	ldh a, [hROMBank]
-	push af
-	ld a, BANK(BattleText)
-	rst Bankswitch
-	call BattleTextbox
-	pop af
-	rst Bankswitch
-	ret
 
 GetBattleAnimPointer::
 	anonbankpush BattleAnimations

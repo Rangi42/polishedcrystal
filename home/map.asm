@@ -1768,21 +1768,14 @@ GetMapField::
 	ld a, [wMapNumber]
 	ld c, a
 GetAnyMapField::
-	; bankswitch
-	ldh a, [hROMBank]
-	push af
-	ld a, BANK(MapGroupPointers)
-	rst Bankswitch
+	anonbankpush MapGroupPointers
 
+.Function:
 	call GetAnyMapPointer
 	add hl, de
 	ld c, [hl]
 	inc hl
 	ld b, [hl]
-
-	; bankswitch back
-	pop af
-	rst Bankswitch
 	ret
 
 SwitchToMapAttributesBank::
@@ -1808,18 +1801,13 @@ GetAnyMapAttributesBank::
 CopyMapPartial::
 ; Copy map data bank, tileset, permission, and map data address
 ; from the current map's entry within its group.
-	ldh a, [hROMBank]
-	push af
-	ld a, BANK(MapGroupPointers)
-	rst Bankswitch
+	anonbankpush MapGroupPointers
 
+.Function:
 	call GetMapPointer
 	ld de, wMapAttributesBank
 	ld bc, wMapPartialEnd - wMapPartial
 	rst CopyBytes
-
-	pop af
-	rst Bankswitch
 	ret
 
 SwitchToMapScriptsBank::

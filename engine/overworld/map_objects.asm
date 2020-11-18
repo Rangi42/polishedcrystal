@@ -1,5 +1,4 @@
 INCLUDE "data/sprites/facings.asm"
-INCLUDE "data/sprites/map_objects.asm"
 
 DeleteMapObject::
 	push bc
@@ -504,8 +503,23 @@ ObjectMovementReset:
 
 MapObjectMovementPattern:
 	call ClearObjectStructField1c
-	call GetSpriteMovementFunction
+
+	ld hl, OBJECT_MOVEMENTTYPE
+	add hl, bc
 	ld a, [hl]
+	cp NUM_SPRITEMOVEDATA
+	jr c, .spritemovedata_ok
+	xor a
+.spritemovedata_ok
+	ld hl, SpriteMovementData
+	ld e, a
+	ld d, 0
+rept NUM_SPRITEMOVEDATA_FIELDS
+	add hl, de
+endr
+	ld a, BANK(SpriteMovementData)
+	call GetFarByte
+
 	call StackJumpTable
 
 .Pointers:

@@ -88,7 +88,7 @@ Place2DMenuItemStrings:
 .col
 	push bc
 	ld a, [wMenuData_2DMenuItemStringsBank]
-	call Place2DMenuItemName
+	call FarString
 	inc de
 	ld a, [wMenuDataSpacing]
 	ld c, a

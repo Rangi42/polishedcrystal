@@ -112,10 +112,6 @@ GetBaseData::
 	push hl
 	push de
 	push bc
-	ldh a, [hROMBank]
-	push af
-	ld a, BANK(BaseData)
-	rst Bankswitch
 	ld a, [wCurSpecies]
 	ld c, a
 	ld a, [wCurForm]
@@ -127,9 +123,8 @@ GetBaseData::
 	rst AddNTimes
 	ld de, wCurBaseData
 	ld bc, BASEMON_STRUCT_LENGTH
-	rst CopyBytes
-	pop af
-	rst Bankswitch
+	ld a, BANK(BaseData)
+	call FarCopyBytes
 	jp PopBCDEHL
 
 GetNature::

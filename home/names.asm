@@ -97,13 +97,7 @@ GetBasePokemonName::
 
 GetPokemonName::
 ; Get Pokemon name wNamedObjectIndexBuffer.
-	ld de, wStringBuffer1
-	ldh a, [hROMBank]
-	push af
 	push hl
-	ld a, BANK(PokemonNames)
-	push de
-	rst Bankswitch
 
 ; Each name is ten characters
 	xor a
@@ -120,18 +114,17 @@ GetPokemonName::
 	add hl, de
 
 ; Terminator
-	pop de
+	ld de, wStringBuffer1
 	push de
 	ld bc, MON_NAME_LENGTH - 1
-	rst CopyBytes
+	ld a, BANK(PokemonNames)
+	call FarCopyBytes
 	ld h, d
 	ld l, e
 	ld [hl], "@"
 	pop de
 
 	pop hl
-	pop af
-	rst Bankswitch
 	ret
 
 GetCurItemName::

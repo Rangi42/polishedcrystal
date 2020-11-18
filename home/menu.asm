@@ -703,19 +703,6 @@ MenuTextboxWaitButton::
 	call WaitButton
 	jp ExitMenu
 
-Place2DMenuItemName::
-	ldh [hTempBank], a
-	ldh a, [hROMBank]
-	push af
-	ldh a, [hTempBank]
-	rst Bankswitch
-
-	rst PlaceString
-	pop af
-	rst Bankswitch
-
-	ret
-
 _2DMenu::
 	ldh a, [hROMBank]
 	ld [wMenuData_2DMenuItemStringsBank], a

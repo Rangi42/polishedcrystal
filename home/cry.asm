@@ -49,11 +49,9 @@ LoadCryHeader::
 	call GetCryIndex
 	ret c
 
-	ldh a, [hROMBank]
-	push af
-	ld a, BANK(CryHeaders)
-	rst Bankswitch
+	anonbankpush CryHeaders
 
+.Function:
 	ld hl, CryHeaders
 rept 6
 	add hl, bc
@@ -73,8 +71,6 @@ endr
 	ld a, [hl]
 	ld [wCryLength + 1], a
 
-	pop af
-	rst Bankswitch
 	and a
 	ret
 

@@ -5,36 +5,15 @@ TossItem::
 	push hl
 	push de
 	push bc
-	ldh a, [hROMBank]
-	push af
-	ld a, BANK(_TossItem)
-	rst Bankswitch
-
-	call _TossItem
-
-	pop bc
-	ld a, b
-	rst Bankswitch
+	farcall _TossItem
 	jp PopBCDEHL
 
 ReceiveItem::
-	push bc
-	ldh a, [hROMBank]
-	push af
-	ld a, BANK(_ReceiveItem)
-	rst Bankswitch
 	push hl
 	push de
-
-	call _ReceiveItem
-
-	pop de
-	pop hl
-	pop bc
-	ld a, b
-	rst Bankswitch
-	pop bc
-	ret
+	push bc
+	farcall _ReceiveItem
+	jp PopBCDEHL
 
 ReceiveTMHM::
 	ld a, [wCurTMHM]
@@ -50,16 +29,7 @@ CheckItem::
 	push hl
 	push de
 	push bc
-	ldh a, [hROMBank]
-	push af
-	ld a, BANK(_CheckItem)
-	rst Bankswitch
-
-	call _CheckItem
-
-	pop bc
-	ld a, b
-	rst Bankswitch
+	farcall _CheckItem
 	jp PopBCDEHL
 
 CheckTMHM::
@@ -75,26 +45,14 @@ CheckTMHM::
 
 CountItem::
 	push bc
-	ldh a, [hROMBank]
-	push af
-	ld a, BANK(_CountItem)
-	rst Bankswitch
 	push hl
 	push de
-
-	call _CountItem
+	farcall _CountItem
 	ld a, b
 	ld [wBuffer1], a
 	ld a, c
 	ld [wBuffer2], a
-
-	pop de
-	pop hl
-	pop bc
-	ld a, b
-	rst Bankswitch
-	pop bc
-	ret
+	jp PopBCDEHL
 
 ReceiveKeyItem::
 	ld a, [wCurKeyItem]

@@ -248,7 +248,7 @@ GetMonSprite:
 	scf
 	ret
 
-_DoesSpriteHaveFacings::
+DoesSpriteHaveFacings::
 ; Checks to see whether we can apply a facing to a sprite.
 ; Returns zero for Pokémon sprites, carry for the rest.
 	cp SPRITE_POKEMON
@@ -347,7 +347,7 @@ endr
 	ret nz
 
 	ldh a, [hUsedSpriteIndex]
-	call _DoesSpriteHaveFacings
+	call DoesSpriteHaveFacings
 	ret c
 
 	ld a, [wSpriteFlags]

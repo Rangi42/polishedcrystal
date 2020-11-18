@@ -117,7 +117,7 @@ Init::
 	ld [hli], a
 	ld [hl], "!"
 
-	ld a, BANK(WriteOAMDMACodeToHRAM)
+	ld a, BANK(GameInit) ; aka BANK(WriteOAMDMACodeToHRAM)
 	rst Bankswitch
 
 	call WriteOAMDMACodeToHRAM
