@@ -123,7 +123,7 @@ NextOverworldFrame:
 	jr nz, .done
 	ldh a, [hDelayFrameLY]
 	inc a
-	jp nz, LoadMapGraphicsAndDelay
+	jr nz, .LoadMapGraphicsAndDelay
 	xor a
 	ldh [hDelayFrameLY], a
 .done
@@ -133,6 +133,38 @@ NextOverworldFrame:
 	dec a
 	ld [wOverworldDelaySkip], a
 	ret
+
+.LoadMapGraphicsAndDelay:
+	push hl
+	push de
+	push bc
+	ldh a, [rVBK]
+	push af
+	xor a
+	ldh [hDelayFrameLY], a
+
+	; only allow this if we have time to spare
+	ldh a, [rLY]
+	cp $20
+	jr nc, .gfx_done
+
+	ld a, [wPendingOverworldGraphics]
+	and a
+	jr z, .gfx_done
+
+	dec a
+	ld [wPendingOverworldGraphics], a
+	call _LoadTilesetGFX
+	xor a
+	ldh [hTileAnimFrame], a
+
+.gfx_done
+	ldh a, [hDelayFrameLY]
+	and a
+	call z, DelayFrame
+	pop af
+	ldh [rVBK], a
+	jp PopBCDEHL
 
 HandleMapTimeAndJoypad:
 	ld a, [wMapEventStatus]
