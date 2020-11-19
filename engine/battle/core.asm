@@ -7029,16 +7029,16 @@ AnimateExpBar:
 
 .delay
 	xor a
-	ld [hCGBPalUpdate], a
+	ldh [hCGBPalUpdate], a
 	inc a
-	ld [hBGMapMode], a
-	ld [hBGMapHalf], a
+	ldh [hBGMapMode], a
+	ldh [hBGMapHalf], a
 	ld c, d
 	call DelayFrames
 	xor a
-	ld [hBGMapMode], a
+	ldh [hBGMapMode], a
 	inc a
-	ld [hCGBPalUpdate], a
+	ldh [hCGBPalUpdate], a
 	ret
 
 GetNewBaseExp:
