@@ -3,7 +3,7 @@ DimCave3F_MapScriptHeader:
 
 	def_callbacks
 	callback MAPCALLBACK_TILES, DimCave3FBouldersLand
-	callback MAPCALLBACK_CMDQUEUE, DimCave3FSetUpStoneTable
+	callback MAPCALLBACK_STONETABLE, DimCave3FSetUpStoneTable
 
 	def_warp_events
 	warp_event  5,  5, DIM_CAVE_4F, 4
@@ -42,12 +42,8 @@ DimCave3FBouldersLand:
 	return
 
 DimCave3FSetUpStoneTable:
-	writecmdqueue .CommandQueue
+	usestonetable .StoneTable
 	return
-
-.CommandQueue:
-	dbw CMDQUEUE_STONETABLE, .StoneTable ; check if any stones are sitting on a warp
-	dw 0 ; filler
 
 .StoneTable:
 	stonetable 6, DIMCAVE3F_BOULDER, .Boulder

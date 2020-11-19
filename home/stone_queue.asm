@@ -1,4 +1,4 @@
-HandleStoneQueue::
+HandleStoneTableAction::
 	ldh a, [hROMBank]
 	push af
 
@@ -99,14 +99,11 @@ HandleStoneQueue::
 	ret
 
 .IsObjectInStoneTable:
-	ld hl, CMDQUEUE_ADDR
-	add hl, bc
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
+	ld h, b
+	ld l, c
 .loop2
 	ld a, [hli]
-	cp $ff
+	cp -1 ; end?
 	jr z, .nope3
 	cp d
 	jr nz, .next_inc3

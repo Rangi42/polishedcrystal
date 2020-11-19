@@ -92,7 +92,7 @@ EnterMap:
 
 HandleMap:
 	call HandleMapTimeAndJoypad
-	call HandleCmdQueue
+	call HandleStoneTable
 	call MapEvents
 
 ; Not immediately entering a connected map will cause problems.
@@ -1287,5 +1287,5 @@ DoBikeStep::
 	xor a
 	ret
 
-INCLUDE "engine/overworld/cmd_queue.asm"
+INCLUDE "engine/overworld/stone_table.asm"
 INCLUDE "engine/overworld/scripting.asm"

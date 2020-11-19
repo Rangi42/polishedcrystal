@@ -786,16 +786,10 @@ reloadmappart: MACRO
 	db reloadmappart_command
 	ENDM
 
-	enum writecmdqueue_command
-writecmdqueue: MACRO
-	db writecmdqueue_command
-	dw \1 ; queue_pointer
-	ENDM
-
-	enum delcmdqueue_command
-delcmdqueue: MACRO
-	db delcmdqueue_command
-	db \1 ; byte
+	enum usestonetable_command
+usestonetable: MACRO
+	db usestonetable_command
+	dw \1 ; stonetable_pointer
 	ENDM
 
 	enum playmusic_command

@@ -175,93 +175,92 @@ ScriptCommandTable:
 	dw Script_changeblock                ; 76
 	dw Script_reloadmap                  ; 77
 	dw Script_reloadmappart              ; 78
-	dw Script_writecmdqueue              ; 79
-	dw Script_delcmdqueue                ; 7a
-	dw Script_playmusic                  ; 7b
-	dw Script_encountermusic             ; 7c
-	dw Script_musicfadeout               ; 7d
-	dw Script_playmapmusic               ; 7e
-	dw Script_dontrestartmapmusic        ; 7f
-	dw Script_cry                        ; 80
-	dw Script_playsound                  ; 81
-	dw Script_waitsfx                    ; 82
-	dw Script_warpsound                  ; 83
-	dw Script_specialsound               ; 84
-	dw Script_passtoengine               ; 85
-	dw Script_newloadmap                 ; 86
-	dw Script_pause                      ; 87
-	dw Script_deactivatefacing           ; 88
-	dw Script_priorityjump               ; 89
-	dw Script_warpcheck                  ; 8a
-	dw Script_ptpriorityjump             ; 8b
-	dw Script_return                     ; 8c
-	dw Script_end                        ; 8d
-	dw Script_reloadandreturn            ; 8e
-	dw Script_endall                     ; 8f
-	dw Script_pokemart                   ; 90
-	dw Script_elevator                   ; 91
-	dw Script_trade                      ; 92
-	dw Script_askforphonenumber          ; 93
-	dw Script_hangup                     ; 94
-	dw Script_describedecoration         ; 95
-	dw Script_fruittree                  ; 96
-	dw Script_specialphonecall           ; 97
-	dw Script_checkphonecall             ; 98
-	dw Script_verbosegiveitem            ; 99
-	dw Script_verbosegiveitem2           ; 9a
-	dw Script_swarm                      ; 9b
-	dw Script_halloffame                 ; 9c
-	dw Script_credits                    ; 9d
-	dw Script_warpfacing                 ; 9e
-	dw Script_battletowertext            ; 9f
-	dw Script_landmarktotext             ; a0
-	dw Script_trainerclassname           ; a1
-	dw Script_name                       ; a2
-	dw Script_wait                       ; a3
-	dw Script_check_save                 ; a4
-	dw Script_count_seen_caught          ; a5
-	dw Script_trainerpic                 ; a6
-	dw Script_givetmhm                   ; a7
-	dw Script_checktmhm                  ; a8
-	dw Script_verbosegivetmhm            ; a9
-	dw Script_tmhmnotify                 ; aa
-	dw Script_tmhmtotext                 ; ab
-	dw Script_checkdarkness              ; ac
-	dw Script_checkunits                 ; ad
-	dw Script_unowntypeface              ; ae
-	dw Script_restoretypeface            ; af
-	dw Script_jumpstashedtext            ; b0
-	dw Script_jumpopenedtext             ; b1
-	dw Script_iftrue_jumptext            ; b2
-	dw Script_iffalse_jumptext           ; b3
-	dw Script_iftrue_jumptextfaceplayer  ; b4
-	dw Script_iffalse_jumptextfaceplayer ; b5
-	dw Script_iftrue_jumpopenedtext      ; b6
-	dw Script_iffalse_jumpopenedtext     ; b7
-	dw Script_writethistext              ; b8
-	dw Script_jumpthistext               ; b9
-	dw Script_jumpthistextfaceplayer     ; ba
-	dw Script_jumpthisopenedtext         ; bb
-	dw Script_showtext                   ; bc
-	dw Script_showtextfaceplayer         ; bd
-	dw Script_applyonemovement           ; be
-	dw Script_showcrytext                ; bf
-	dw Script_endtext                    ; c0
-	dw Script_waitendtext                ; c1
-	dw Script_iftrue_endtext             ; c2
-	dw Script_iffalse_endtext            ; c3
-	dw Script_loadgrottomon              ; c4
-	dw Script_giveapricorn               ; c5
-	dw Script_paintingpic                ; c6
-	dw Script_checkegg                   ; c7
-	dw Script_givekeyitem                ; c8
-	dw Script_checkkeyitem               ; c9
-	dw Script_takekeyitem                ; ca
-	dw Script_verbosegivekeyitem         ; cb
-	dw Script_keyitemnotify              ; cc
-	dw Script_givebp                     ; cd
-	dw Script_takebp                     ; ce
-	dw Script_checkbp                    ; cf
+	dw Script_usestonetable              ; 79
+	dw Script_playmusic                  ; 7a
+	dw Script_encountermusic             ; 7b
+	dw Script_musicfadeout               ; 7c
+	dw Script_playmapmusic               ; 7d
+	dw Script_dontrestartmapmusic        ; 7e
+	dw Script_cry                        ; 7f
+	dw Script_playsound                  ; 80
+	dw Script_waitsfx                    ; 81
+	dw Script_warpsound                  ; 82
+	dw Script_specialsound               ; 83
+	dw Script_passtoengine               ; 84
+	dw Script_newloadmap                 ; 85
+	dw Script_pause                      ; 86
+	dw Script_deactivatefacing           ; 87
+	dw Script_priorityjump               ; 88
+	dw Script_warpcheck                  ; 89
+	dw Script_ptpriorityjump             ; 8a
+	dw Script_return                     ; 8b
+	dw Script_end                        ; 8c
+	dw Script_reloadandreturn            ; 8d
+	dw Script_endall                     ; 8e
+	dw Script_pokemart                   ; 8f
+	dw Script_elevator                   ; 90
+	dw Script_trade                      ; 91
+	dw Script_askforphonenumber          ; 92
+	dw Script_hangup                     ; 93
+	dw Script_describedecoration         ; 94
+	dw Script_fruittree                  ; 95
+	dw Script_specialphonecall           ; 96
+	dw Script_checkphonecall             ; 97
+	dw Script_verbosegiveitem            ; 98
+	dw Script_verbosegiveitem2           ; 99
+	dw Script_swarm                      ; 9a
+	dw Script_halloffame                 ; 9b
+	dw Script_credits                    ; 9c
+	dw Script_warpfacing                 ; 9d
+	dw Script_battletowertext            ; 9e
+	dw Script_landmarktotext             ; 9f
+	dw Script_trainerclassname           ; a0
+	dw Script_name                       ; a1
+	dw Script_wait                       ; a2
+	dw Script_check_save                 ; a3
+	dw Script_count_seen_caught          ; a4
+	dw Script_trainerpic                 ; a5
+	dw Script_givetmhm                   ; a6
+	dw Script_checktmhm                  ; a7
+	dw Script_verbosegivetmhm            ; a8
+	dw Script_tmhmnotify                 ; a9
+	dw Script_tmhmtotext                 ; aa
+	dw Script_checkdarkness              ; ab
+	dw Script_checkunits                 ; ac
+	dw Script_unowntypeface              ; ad
+	dw Script_restoretypeface            ; ae
+	dw Script_jumpstashedtext            ; af
+	dw Script_jumpopenedtext             ; b0
+	dw Script_iftrue_jumptext            ; b1
+	dw Script_iffalse_jumptext           ; b2
+	dw Script_iftrue_jumptextfaceplayer  ; b3
+	dw Script_iffalse_jumptextfaceplayer ; b4
+	dw Script_iftrue_jumpopenedtext      ; b5
+	dw Script_iffalse_jumpopenedtext     ; b6
+	dw Script_writethistext              ; b7
+	dw Script_jumpthistext               ; b8
+	dw Script_jumpthistextfaceplayer     ; b9
+	dw Script_jumpthisopenedtext         ; ba
+	dw Script_showtext                   ; bb
+	dw Script_showtextfaceplayer         ; bc
+	dw Script_applyonemovement           ; bd
+	dw Script_showcrytext                ; be
+	dw Script_endtext                    ; bf
+	dw Script_waitendtext                ; c0
+	dw Script_iftrue_endtext             ; c1
+	dw Script_iffalse_endtext            ; c2
+	dw Script_loadgrottomon              ; c3
+	dw Script_giveapricorn               ; c4
+	dw Script_paintingpic                ; c5
+	dw Script_checkegg                   ; c6
+	dw Script_givekeyitem                ; c7
+	dw Script_checkkeyitem               ; c8
+	dw Script_takekeyitem                ; c9
+	dw Script_verbosegivekeyitem         ; ca
+	dw Script_keyitemnotify              ; cb
+	dw Script_givebp                     ; cc
+	dw Script_takebp                     ; cd
+	dw Script_checkbp                    ; ce
 
 StartScript:
 	ld hl, wScriptFlags
@@ -2491,28 +2490,13 @@ Script_dontrestartmapmusic:
 	ld [wDontPlayMapMusicOnReload], a
 	ret
 
-Script_writecmdqueue:
+Script_usestonetable:
 ; parameters:
-;     queue_pointer (MultiByteParam)
+;     stonetable_pointer (MultiByteParam)
 	call GetScriptByte
-	ld e, a
+	ld [wStoneTableAddress], a
 	call GetScriptByte
-	ld d, a
-	ld a, [wScriptBank]
-	ld b, a
-	jp WriteCmdQueue
-
-Script_delcmdqueue:
-; parameters:
-;     byte (SingleByteParam)
-	xor a
-	ldh [hScriptVar], a
-	call GetScriptByte
-	ld b, a
-	call DelCmdQueue
-	ret c
-	ld a, 1
-	ldh [hScriptVar], a
+	ld [wStoneTableAddress+1], a
 	ret
 
 Script_changemap:

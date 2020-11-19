@@ -2,7 +2,7 @@ CinnabarVolcano1F_MapScriptHeader:
 	def_scene_scripts
 
 	def_callbacks
-	callback MAPCALLBACK_CMDQUEUE, CinnabarVolcano1FBouldersFall
+	callback MAPCALLBACK_STONETABLE, CinnabarVolcano1FBouldersFall
 
 	def_warp_events
 	warp_event 13, 25, CINNABAR_ISLAND, 2
@@ -46,12 +46,8 @@ CinnabarVolcano1F_MapScriptHeader:
 	const CINNABARVOLCANO1F_BOULDER4
 
 CinnabarVolcano1FBouldersFall:
-	writecmdqueue .BoulderCmdQueue
+	usestonetable .BoulderTable
 	return
-
-.BoulderCmdQueue:
-	dbw CMDQUEUE_STONETABLE, .BoulderTable ; check if any stones are sitting on a warp
-	dw 0 ; filler
 
 .BoulderTable:
 	stonetable 6, CINNABARVOLCANO1F_BOULDER1, .Disappear1

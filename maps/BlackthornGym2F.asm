@@ -2,7 +2,7 @@ BlackthornGym2F_MapScriptHeader:
 	def_scene_scripts
 
 	def_callbacks
-	callback MAPCALLBACK_CMDQUEUE, BlackthornGym2FBoulders
+	callback MAPCALLBACK_STONETABLE, BlackthornGym2FBoulders
 
 	def_warp_events
 	warp_event  1,  7, BLACKTHORN_GYM_1F, 3
@@ -31,12 +31,8 @@ BlackthornGym2F_MapScriptHeader:
 	const BLACKTHORNGYM2F_BOULDER3
 
 BlackthornGym2FBoulders:
-	writecmdqueue .BoulderCmdQueue
+	usestonetable .BoulderTable
 	return
-
-.BoulderCmdQueue:
-	dbw CMDQUEUE_STONETABLE, .BoulderTable ; check if any stones are sitting on a warp
-	dw 0 ; filler
 
 .BoulderTable:
 	stonetable 5, BLACKTHORNGYM2F_BOULDER1, .Disappear4

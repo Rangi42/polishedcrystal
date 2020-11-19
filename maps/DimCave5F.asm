@@ -2,7 +2,7 @@ DimCave5F_MapScriptHeader:
 	def_scene_scripts
 
 	def_callbacks
-	callback MAPCALLBACK_CMDQUEUE, DimCave5FSetUpStoneTable
+	callback MAPCALLBACK_STONETABLE, DimCave5FSetUpStoneTable
 
 	def_warp_events
 	warp_event 13, 31, ROUTE_10_NORTH, 5
@@ -30,12 +30,8 @@ DimCave5F_MapScriptHeader:
 	const DIMCAVE5F_RILEY
 
 DimCave5FSetUpStoneTable:
-	writecmdqueue .CommandQueue
+	usestonetable .StoneTable
 	return
-
-.CommandQueue:
-	dbw CMDQUEUE_STONETABLE, .StoneTable ; check if any stones are sitting on a warp
-	dw 0 ; filler
 
 .StoneTable:
 	stonetable 4, DIMCAVE5F_BOULDER, .Boulder

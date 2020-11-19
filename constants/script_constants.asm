@@ -113,15 +113,6 @@ BGEVENT_ITEM EQU const_value
 	const OBJECTTYPE_COMMAND        ; 5
 NUM_OBJECTTYPES EQU const_value
 
-; command queue members
-CMDQUEUE_TYPE EQU 0
-CMDQUEUE_ADDR EQU 1 ; offsets 0, 3, 4, and 5 are unused
-CMDQUEUE_ENTRY_SIZE EQU 6
-CMDQUEUE_CAPACITY EQU 4
-
-CMDQUEUE_STONETABLE EQU 2 ; types 0, 1, 3, and 4 are unused
-NUM_CMDQUEUE_TYPES EQU 5
-
 ; elevfloor macro values
 ; ElevatorFloorNames indexes (see data/events/elevator_floors.asm)
 	const_def

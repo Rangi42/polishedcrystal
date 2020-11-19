@@ -2,7 +2,7 @@ IcePathB1F_MapScriptHeader:
 	def_scene_scripts
 
 	def_callbacks
-	callback MAPCALLBACK_CMDQUEUE, IcePathB1FSetUpStoneTable
+	callback MAPCALLBACK_STONETABLE, IcePathB1FSetUpStoneTable
 
 	def_warp_events
 	warp_event  3, 15, ICE_PATH_1F, 3
@@ -36,12 +36,8 @@ IcePathB1F_MapScriptHeader:
 	const ICEPATHB1F_BOULDER4
 
 IcePathB1FSetUpStoneTable:
-	writecmdqueue .CommandQueue
+	usestonetable .StoneTable
 	return
-
-.CommandQueue:
-	dbw CMDQUEUE_STONETABLE, .StoneTable ; check if any stones are sitting on a warp
-	dw 0 ; filler
 
 .StoneTable:
 	stonetable 3, ICEPATHB1F_BOULDER1, .Boulder1
