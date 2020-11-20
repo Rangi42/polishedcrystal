@@ -909,7 +909,7 @@ endr
 	and %00000011
 	ld e, a
 	ld d, 0
-	ld hl, .data_4a81 ; boulder dust coord table?
+	ld hl, .dust_coords
 	add hl, de
 	add hl, de
 	ld d, [hl]
@@ -926,7 +926,7 @@ endr
 	ld [hl], STEP_TYPE_TRACKING_OBJECT
 	ret
 
-.data_4a81
+.dust_coords:
 	;   x,  y
 	db  0, -4
 	db  0,  8

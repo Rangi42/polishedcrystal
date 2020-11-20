@@ -1558,7 +1558,7 @@ asm_cd988:
 	ret
 
 Functioncd99a:
-	call Functioncd9f4
+	call .GetGustRadius
 	ld hl, BATTLEANIMSTRUCT_0F
 	add hl, bc
 	ld a, [hl]
@@ -1617,18 +1617,19 @@ Functioncd99a:
 	ld [hl], a
 	ret
 
-Functioncd9f4:
+.GetGustRadius:
 	ld hl, BATTLEANIMSTRUCT_10
 	add hl, bc
 	ld e, [hl]
 	ld d, 0
-	ld hl, Unknown_cda01
+	ld hl, .GustOffsets
 	add hl, de
 	ld d, [hl]
 	ret
 
-Unknown_cda01:
+.GustOffsets:
 	db 8, 6, 5, 4, 5, 6, 8, 12, 16
+
 BattleAnimFunction_1C:
 	ld hl, BATTLEANIMSTRUCT_XCOORD
 	add hl, bc
@@ -2318,7 +2319,7 @@ Functioncde02:
 	add hl, bc
 	ld e, [hl]
 	ld d, 0
-	ld hl, Unknown_cde25
+	ld hl, .AmnesiaOffsets
 	add hl, de
 	ld a, [hl]
 	ld hl, BATTLEANIMSTRUCT_YOFFSET
@@ -2326,8 +2327,9 @@ Functioncde02:
 	ld [hl], a
 	ret
 
-Unknown_cde25:
+.AmnesiaOffsets:
 	db $ec, $f8, $00
+
 BattleAnimFunction_25:
 	ld hl, BATTLEANIMSTRUCT_0F
 	add hl, bc
