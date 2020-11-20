@@ -279,14 +279,10 @@ CheckSpecialPhoneCall::
 SpecialCallOnlyWhenOutside:
 	ld a, [wEnvironment]
 	cp TOWN
-	jr z, .outside
+	jr z, SpecialCallWhereverYouAre
 	cp ROUTE
-	jr z, .outside
+	jr z, SpecialCallWhereverYouAre
 	xor a
-	ret
-
-.outside
-	scf
 	ret
 
 SpecialCallWhereverYouAre:
@@ -430,62 +426,6 @@ RingTwice_StartCall:
 Phone_CallerTextboxWithName:
 	ld a, [wCurCaller]
 	ld b, a
-	jp Phone_TextboxWithName
-
-Phone_NoSignal:
-	ld de, SFX_NO_SIGNAL
-	call PlaySFX
-	jr Phone_CallEnd
-
-HangUp::
-	call HangUp_Beep
-	call HangUp_Wait20Frames
-Phone_CallEnd:
-	call HangUp_BoopOn
-	call HangUp_Wait20Frames
-	call SpeechTextbox
-	call HangUp_Wait20Frames
-	call HangUp_BoopOn
-	call HangUp_Wait20Frames
-	call SpeechTextbox
-	call HangUp_Wait20Frames
-	call HangUp_BoopOn
-	call HangUp_Wait20Frames
-	call SpeechTextbox
-	jp HangUp_Wait20Frames
-
-HangUp_Beep:
-	ld hl, UnknownText_0x9032a
-	call PrintText
-	ld de, SFX_HANG_UP
-	jp PlaySFX
-
-UnknownText_0x9032a:
-	text_jump UnknownText_0x1c5580
-	text_end
-
-HangUp_BoopOn:
-	ld hl, UnknownText_0x90336
-	jp PrintText
-
-UnknownText_0x90336:
-	text_jump UnknownText_0x1c5588
-	text_end
-
-Phone_StartRinging:
-	call WaitSFX
-	ld de, SFX_CALL
-	call PlaySFX
-	call Phone_CallerTextbox
-	call UpdateSprites
-	jp ApplyTilemap
-
-HangUp_Wait20Frames:
-Phone_Wait20Frames:
-	ld c, 20
-	call DelayFrames
-	jp ApplyTilemap
-
 Phone_TextboxWithName:
 	push bc
 	call Phone_CallerTextbox
@@ -496,47 +436,11 @@ Phone_TextboxWithName:
 	ld d, h
 	ld e, l
 	pop bc
-	jp GetCallerClassAndName
-
-Phone_CallerTextbox:
-	hlcoord 0, 0
-	lb bc, 2, SCREEN_WIDTH - 2
-	jp Textbox
-
 GetCallerClassAndName:
 	ld h, d
 	ld l, e
 	ld a, b
 	call GetCallerTrainerClass
-	jp GetCallerName
-
-CheckCanDeletePhoneNumber:
-	ld a, c
-	call GetCallerTrainerClass
-;	ld a, c
-;	and a
-;	ret nz
-	ld a, b
-	cp PHONECONTACT_MOM
-	ret z
-	cp PHONECONTACT_ELM
-	ret z
-	cp PHONECONTACT_LYRA
-	ret z
-	ld c, $1
-	ret
-
-GetCallerTrainerClass:
-	push hl
-	ld hl, PhoneContacts + PHONE_CONTACT_TRAINER_CLASS
-	ld bc, PHONE_CONTACT_SIZE
-	rst AddNTimes
-	ld a, [hli]
-	ld b, [hl]
-	ld c, a
-	pop hl
-	ret
-
 GetCallerName:
 	ld a, c
 	and a
@@ -592,21 +496,91 @@ GetCallerName:
 .filler
 	db " -------@"
 
-NonTrainerCallerNames:
-	dw EmptyString
-	dw .mom
-	dw .bikeshop
-	dw .bill
-	dw .elm
-	dw .lyra
-	dw .buena
+Phone_NoSignal:
+	ld de, SFX_NO_SIGNAL
+	call PlaySFX
+	jr Phone_CallEnd
 
-.mom db "Mom:@"
-.bill db "Bill:<LNBRK>   #maniac@"
-.elm db "Prof.Elm:<LNBRK>   #mon Prof.@"
-.bikeshop db "Miracle Cycle:@"
-.lyra db "Lyra:<LNBRK>   <PK><MN> Trainer@"
-.buena db "Buena:<LNBRK>   Disc Jockey@"
+HangUp::
+	call HangUp_Beep
+	call HangUp_Wait20Frames
+Phone_CallEnd:
+	call HangUp_BoopOn
+	call HangUp_Wait20Frames
+	call SpeechTextbox
+	call HangUp_Wait20Frames
+	call HangUp_BoopOn
+	call HangUp_Wait20Frames
+	call SpeechTextbox
+	call HangUp_Wait20Frames
+	call HangUp_BoopOn
+	call HangUp_Wait20Frames
+	call SpeechTextbox
+	jp HangUp_Wait20Frames
+
+HangUp_Beep:
+	ld hl, UnknownText_0x9032a
+	call PrintText
+	ld de, SFX_HANG_UP
+	jp PlaySFX
+
+UnknownText_0x9032a:
+	text_jump UnknownText_0x1c5580
+	text_end
+
+HangUp_BoopOn:
+	ld hl, UnknownText_0x90336
+	jp PrintText
+
+UnknownText_0x90336:
+	text_jump UnknownText_0x1c5588
+	text_end
+
+Phone_StartRinging:
+	call WaitSFX
+	ld de, SFX_CALL
+	call PlaySFX
+	call Phone_CallerTextbox
+	call UpdateSprites
+	jp ApplyTilemap
+
+HangUp_Wait20Frames:
+Phone_Wait20Frames:
+	ld c, 20
+	call DelayFrames
+	jp ApplyTilemap
+
+Phone_CallerTextbox:
+	hlcoord 0, 0
+	lb bc, 2, SCREEN_WIDTH - 2
+	jp Textbox
+
+CheckCanDeletePhoneNumber:
+	ld a, c
+	call GetCallerTrainerClass
+;	ld a, c
+;	and a
+;	ret nz
+	ld a, b
+	cp PHONECONTACT_MOM
+	ret z
+	cp PHONECONTACT_ELM
+	ret z
+	cp PHONECONTACT_LYRA
+	ret z
+	ld c, $1
+	ret
+
+GetCallerTrainerClass:
+	push hl
+	ld hl, PhoneContacts + PHONE_CONTACT_TRAINER_CLASS
+	ld bc, PHONE_CONTACT_SIZE
+	rst AddNTimes
+	ld a, [hli]
+	ld b, [hl]
+	ld c, a
+	pop hl
+	ret
 
 Phone_GetTrainerName:
 	push hl
@@ -644,6 +618,22 @@ GetCallerLocation:
 	pop bc
 	pop de
 	ret
+
+NonTrainerCallerNames:
+	dw EmptyString
+	dw .mom
+	dw .bikeshop
+	dw .bill
+	dw .elm
+	dw .lyra
+	dw .buena
+
+.mom:      db "Mom:@"
+.bill:     db "Bill:<LNBRK>   #maniac@"
+.elm:      db "Prof.Elm:<LNBRK>   #mon Prof.@"
+.bikeshop: db "Miracle Cycle:@"
+.lyra:     db "Lyra:<LNBRK>   <PK><MN> Trainer@"
+.buena:    db "Buena:<LNBRK>   Disc Jockey@"
 
 INCLUDE "data/phone/phone_contacts.asm"
 
