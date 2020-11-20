@@ -80,7 +80,7 @@ endc
 StartClock::
 	; read the current clock time into the cache in HRAM
 	call GetClock
-	call Function1409b
+	call _FixDays
 	call FixDays
 if DEF(NO_RTC)
 	ret nc
@@ -95,7 +95,7 @@ else
 	jp StartRTC
 endc
 
-Function1409b:
+_FixDays:
 	ld hl, hRTCDayHi
 	bit 7, [hl]
 	jr nz, .set_bit_7
@@ -109,7 +109,7 @@ Function1409b:
 	ld a, %10000000
 	jp RecordRTCStatus ; set bit 7 on sRTCStatusFlags
 
-Function140ae:
+ClockContinue:
 	call CheckRTCStatus
 	ld c, a
 	and %11000000 ; Day count exceeded 255 or 16383

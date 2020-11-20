@@ -148,13 +148,13 @@ Serial_ExchangeByte::
 	and 1 << SERIAL | 1 << TIMER | 1 << LCD_STAT | 1 << VBLANK
 	cp 1 << SERIAL
 	jr nz, .loop
-	ld a, [wcf5d]
+	ld a, [wLinkByteTimeout]
 	dec a
-	ld [wcf5d], a
+	ld [wLinkByteTimeout], a
 	jr nz, .loop
-	ld a, [wcf5d + 1]
+	ld a, [wLinkByteTimeout + 1]
 	dec a
-	ld [wcf5d + 1], a
+	ld [wLinkByteTimeout + 1], a
 	jr nz, .loop
 	ldh a, [hSerialConnectionStatus]
 	cp USING_EXTERNAL_CLOCK
@@ -174,9 +174,9 @@ Serial_ExchangeByte::
 	jr nz, .skipReloadingTimeoutCounter2
 
 	;xor a
-	ld [wcf5d], a
+	ld [wLinkByteTimeout], a
 	ld a, $50
-	ld [wcf5d + 1], a
+	ld [wLinkByteTimeout + 1], a
 
 .skipReloadingTimeoutCounter2
 	ldh a, [hSerialReceive]

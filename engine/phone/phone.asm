@@ -293,7 +293,7 @@ SpecialCallWhereverYouAre:
 	scf
 	ret
 
-Function90199:
+MakePhoneCallFromPokegear:
 	; Don't do the call if you're in a link communication
 	ld a, [wLinkMode]
 	and a
@@ -430,7 +430,7 @@ RingTwice_StartCall:
 Phone_CallerTextboxWithName:
 	ld a, [wCurCaller]
 	ld b, a
-	jp Function90363
+	jp Phone_TextboxWithName
 
 Phone_NoSignal:
 	ld de, SFX_NO_SIGNAL
@@ -486,7 +486,7 @@ Phone_Wait20Frames:
 	call DelayFrames
 	jp ApplyTilemap
 
-Function90363:
+Phone_TextboxWithName:
 	push bc
 	call Phone_CallerTextbox
 	hlcoord 1, 1
@@ -496,14 +496,14 @@ Function90363:
 	ld d, h
 	ld e, l
 	pop bc
-	jp Function90380
+	jp GetCallerClassAndName
 
 Phone_CallerTextbox:
 	hlcoord 0, 0
 	lb bc, 2, SCREEN_WIDTH - 2
 	jp Textbox
 
-Function90380:
+GetCallerClassAndName:
 	ld h, d
 	ld l, e
 	ld a, b

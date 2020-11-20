@@ -576,7 +576,7 @@ Slots_SpinReels:
 	ld a, [hl]
 	and $f
 	jr nz, .skip
-	call Function92bd4
+	call ReelActionJumptable
 .skip
 	ld hl, wReel1SpinRate - wReel1
 	add hl, bc
@@ -678,7 +678,7 @@ UpdateReelPositionAndOAM:
 	jr nz, .loop
 	ret
 
-Function92bd4:
+ReelActionJumptable:
 	ld hl, wReel1ReelAction - wReel1
 	add hl, bc
 	ld a, [hl]
@@ -908,7 +908,7 @@ ReelAction_InitGolem:
 	ld hl, wReel1SpinRate - wReel1
 	add hl, bc
 	ld [hl], $0
-	call Function92fc0
+	call Slots_GetNumberOfGolems
 	push bc
 	push af
 	depixel 12, 13
@@ -1035,7 +1035,7 @@ ReelAction_BoringReelDrops:
 	ld hl, wReel1ReelAction - wReel1
 	add hl, bc
 	inc [hl]
-	call Function92fc0
+	call Slots_GetNumberOfGolems
 	ld hl, wReel1Slot0a - wReel1
 	add hl, bc
 	ld [hl], a
@@ -1316,7 +1316,7 @@ Slots_CopyReelState:
 	ld [de], a
 	ret
 
-Function92fc0:
+Slots_GetNumberOfGolems:
 	ld hl, wReel1Position - wReel1
 	add hl, bc
 	ld a, [hl]

@@ -946,7 +946,7 @@ wPlayerLinkAction:: db
 wcf57:: db ; TODO: replace with meaningful label
 	ds 3
 wLinkTimeoutFrames:: dw
-wcf5d:: dw ; TODO: replace with meaningful label
+wLinkByteTimeout:: dw
 
 wJumptableIndex:: db ; must come right before the union
 

@@ -78,9 +78,9 @@ BattleBGEffects:
 	dw BattleBGEffect_WhiteHues
 	dw BattleBGEffect_BlackHues
 	dw BattleBGEffect_AlternateHues
-	dw BattleBGEffect_06
-	dw BattleBGEffect_07
-	dw BattleBGEffect_08
+	dw BattleBGEffect_CycleOBPalsGrayAndYellow
+	dw BattleBGEffect_CycleMidOBPalsGrayAndYellow
+	dw BattleBGEffect_CycleBGPals_Inverted
 	dw BattleBGEffect_HideMon
 	dw BattleBGEffect_ShowMon
 	dw BattleBGEffect_EnterMon
@@ -89,43 +89,43 @@ BattleBGEffects:
 	dw BattleBGEffect_Whirlpool
 	dw BattleBGEffect_Teleport
 	dw BattleBGEffect_NightShade
-	dw BattleBGEffect_FeetFollow
-	dw BattleBGEffect_HeadFollow
+	dw BattleBGEffect_BattlerObj_1Row
+	dw BattleBGEffect_BattlerObj_2Row
 	dw BattleBGEffect_DoubleTeam
 	dw BattleBGEffect_AcidArmor
 	dw BattleBGEffect_RapidFlash
-	dw BattleBGEffect_16
-	dw BattleBGEffect_17
-	dw BattleBGEffect_18
-	dw BattleBGEffect_19
-	dw BattleBGEffect_1a
-	dw BattleBGEffect_1b
-	dw BattleBGEffect_1c
-	dw BattleBGEffect_1d
-	dw BattleBGEffect_1e
-	dw BattleBGEffect_1f
-	dw BattleBGEffect_20
-	dw BattleBGEffect_21
+	dw BattleBGEffect_FadeMonToLight
+	dw BattleBGEffect_FadeMonToBlack
+	dw BattleBGEffect_FadeMonToLightRepeating
+	dw BattleBGEffect_FadeMonToBlackRepeating
+	dw BattleBGEffect_CycleMonLightDarkRepeating
+	dw BattleBGEffect_FlashMonRepeating
+	dw BattleBGEffect_FadeMonsToBlackRepeating
+	dw BattleBGEffect_FadeMonToWhiteWaitFadeBack
+	dw BattleBGEffect_FadeMonFromWhite
+	dw BattleBGEffect_ShakeScreenX
+	dw BattleBGEffect_ShakeScreenY
+	dw BattleBGEffect_Withdraw
 	dw BattleBGEffect_BounceDown
 	dw BattleBGEffect_Dig
 	dw BattleBGEffect_Tackle
-	dw BattleBGEffect_25
-	dw BattleBGEffect_26
-	dw BattleBGEffect_27
-	dw BattleBGEffect_28
-	dw BattleBGEffect_Psychic
-	dw BattleBGEffect_2a
-	dw BattleBGEffect_2b
-	dw BattleBGEffect_2c
-	dw BattleBGEffect_2d
-	dw BattleBGEffect_2e
-	dw BattleBGEffect_2f
-	dw BattleBGEffect_30
-	dw BattleBGEffect_31
-	dw BattleBGEffect_32
-	dw BattleBGEffect_VibrateMon
+	dw BattleBGEffect_BodySlam
 	dw BattleBGEffect_WobbleMon
-	dw BattleBGEffect_35
+	dw BattleBGEffect_RemoveMon
+	dw BattleBGEffect_WaveDeformMon
+	dw BattleBGEffect_Psychic
+	dw BattleBGEffect_BetaSendOutMon1
+	dw BattleBGEffect_BetaSendOutMon2
+	dw BattleBGEffect_Flail
+	dw BattleBGEffect_BetaPursuit
+	dw BattleBGEffect_Rollout
+	dw BattleBGEffect_VitalThrow
+	dw BattleBGEffect_StartWater
+	dw BattleBGEffect_Water
+	dw BattleBGEffect_EndWater
+	dw BattleBGEffect_VibrateMon
+	dw BattleBGEffect_WobblePlayer
+	dw BattleBGEffect_WobbleScreen
 
 BattleBGEffects_AnonJumptable:
 	ld hl, BG_EFFECT_STRUCT_JT_INDEX
@@ -242,7 +242,7 @@ BattleBGEffect_AlternateHues:
 	db %10010000
 	db -2
 
-BattleBGEffect_06:
+BattleBGEffect_CycleOBPalsGrayAndYellow:
 	ld de, .PalsCGB
 	call BattleBGEffect_GetNthDMGPal
 	ld [wOBP0], a
@@ -253,7 +253,7 @@ BattleBGEffect_06:
 	db %10010000
 	db -2
 
-BattleBGEffect_07:
+BattleBGEffect_CycleMidOBPalsGrayAndYellow:
 	ld de, .PalsCGB
 	call BattleBGEffect_GetNthDMGPal
 	ld [wOBP0], a
@@ -264,7 +264,7 @@ BattleBGEffect_07:
 	db %11011000
 	db -2
 
-BattleBGEffect_08:
+BattleBGEffect_CycleBGPals_Inverted:
 	ld de, .Pals
 	call BattleBGEffect_GetNthDMGPal
 	ld [wBGP], a
@@ -336,7 +336,7 @@ BattleBGEffect_ShowMon:
 	db  3, $00, 3
 	db -1
 
-BattleBGEffect_FeetFollow:
+BattleBGEffect_BattlerObj_1Row:
 	call BattleBGEffects_AnonJumptable
 .anon_dw
 	dw .zero
@@ -401,7 +401,7 @@ BattleBGEffect_FeetFollow:
 	ldh [hBGMapMode], a
 	jp EndBattleBGEffect
 
-BattleBGEffect_HeadFollow:
+BattleBGEffect_BattlerObj_2Row:
 	call BattleBGEffects_AnonJumptable
 .anon_dw
 	dw .zero
@@ -469,7 +469,7 @@ BattleBGEffect_HeadFollow:
 _QueueBattleAnimation:
 	farjp QueueBattleAnimation
 
-BattleBGEffect_27:
+BattleBGEffect_RemoveMon:
 	call BattleBGEffects_AnonJumptable
 .anon_dw
 	dw .zero
@@ -928,13 +928,13 @@ BattleBGEffect_Whirlpool:
 .two
 	jp BattleAnim_ResetLCDStatCustom
 
-BattleBGEffect_30:
+BattleBGEffect_StartWater:
 	call BattleBGEffects_ClearLYOverrides
 	ld a, $42
 	call BattleBGEffect_SetLCDStatCustoms1
 	jp EndBattleBGEffect
 
-BattleBGEffect_31:
+BattleBGEffect_Water:
 	ld hl, BG_EFFECT_STRUCT_03
 	add hl, bc
 	ld a, [hl]
@@ -966,7 +966,7 @@ BattleBGEffect_31:
 	call BattleBGEffects_ClearLYOverrides
 	jp EndBattleBGEffect
 
-BattleBGEffect_32:
+BattleBGEffect_EndWater:
 	jp BattleAnim_ResetLCDStatCustom
 
 BattleBGEffect_Psychic:
@@ -1198,7 +1198,7 @@ BattleBGEffect_AcidArmor:
 .two
 	jp BattleAnim_ResetLCDStatCustom
 
-BattleBGEffect_21:
+BattleBGEffect_Withdraw:
 	call BattleBGEffects_AnonJumptable
 .anon_dw
 	dw .zero
@@ -1343,7 +1343,7 @@ BattleBGEffect_Tackle:
 .three
 	jp BattleAnim_ResetLCDStatCustom
 
-BattleBGEffect_25:
+BattleBGEffect_BodySlam:
 	call BattleBGEffects_AnonJumptable
 .anon_dw
 	dw .zero
@@ -1387,7 +1387,7 @@ Tackle_BGEffect25_2d_one:
 .reached_limit
 	call BattleBGEffects_IncrementJumptable
 .finish
-	call Functionc88a5
+	call Rollout_FillLYOverridesBackup
 	ld hl, BG_EFFECT_STRUCT_BATTLE_TURN
 	add hl, bc
 	ld a, [hl]
@@ -1405,7 +1405,7 @@ Tackle_BGEffect25_2d_two:
 	jr nz, .asm_c8893
 	call BattleBGEffects_IncrementJumptable
 .asm_c8893
-	call Functionc88a5
+	call Rollout_FillLYOverridesBackup
 	ld hl, BG_EFFECT_STRUCT_BATTLE_TURN
 	add hl, bc
 	ld a, [hl]
@@ -1417,7 +1417,7 @@ Tackle_BGEffect25_2d_two:
 	ld [hl], a
 	ret
 
-Functionc88a5:
+Rollout_FillLYOverridesBackup:
 	push af
 	ld a, [wFXAnimIDHi] ; FXAnimIDHi
 	or a
@@ -1469,7 +1469,7 @@ Functionc88a5:
 	jr nz, .loop
 	ret
 
-BattleBGEffect_2d:
+BattleBGEffect_BetaPursuit:
 	call BattleBGEffects_AnonJumptable
 .anon_dw
 	dw BGEffect2d_2f_zero
@@ -1502,7 +1502,7 @@ BGEffect2d_2f_zero:
 	ld [hl], a
 	ret
 
-BattleBGEffect_2f:
+BattleBGEffect_VitalThrow:
 	call BattleBGEffects_AnonJumptable
 .anon_dw
 	dw BGEffect2d_2f_zero
@@ -1514,7 +1514,7 @@ BattleBGEffect_2f:
 .four
 	jp BattleAnim_ResetLCDStatCustom
 
-BattleBGEffect_26:
+BattleBGEffect_WobbleMon:
 	call BattleBGEffects_AnonJumptable
 .anon_dw
 	dw .zero
@@ -1551,7 +1551,7 @@ BattleBGEffect_26:
 .two
 	jp BattleAnim_ResetLCDStatCustom
 
-BattleBGEffect_2c:
+BattleBGEffect_Flail:
 	call BattleBGEffects_AnonJumptable
 .anon_dw
 	dw .zero
@@ -1604,7 +1604,7 @@ BattleBGEffect_2c:
 .two
 	jp BattleAnim_ResetLCDStatCustom
 
-BattleBGEffect_28:
+BattleBGEffect_WaveDeformMon:
 	call BattleBGEffects_AnonJumptable
 .anon_dw
 	dw .zero
@@ -1691,7 +1691,7 @@ BattleBGEffect_BounceDown:
 .two
 	jp BattleAnim_ResetLCDStatCustom
 
-BattleBGEffect_2a:
+BattleBGEffect_BetaSendOutMon1:
 	call BattleBGEffects_AnonJumptable
 .anon_dw
 	dw .zero
@@ -1792,7 +1792,7 @@ BattleBGEffect_2a:
 	db $00, $40, $90, $e4
 	db -1
 
-BattleBGEffect_2b:
+BattleBGEffect_BetaSendOutMon2:
 	call BattleBGEffects_AnonJumptable
 .anon_dw
 	dw .zero
@@ -1826,7 +1826,7 @@ BattleBGEffect_2b:
 .done
 	jp BattleAnim_ResetLCDStatCustom
 
-BattleBGEffect_1c:
+BattleBGEffect_FadeMonsToBlackRepeating:
 	ld hl, BG_EFFECT_STRUCT_JT_INDEX
 	add hl, bc
 	ld a, [hl]
@@ -1935,7 +1935,7 @@ BattleBGEffect_VibrateMon:
 .finish
 	jp BattleAnim_ResetLCDStatCustom
 
-BattleBGEffect_WobbleMon:
+BattleBGEffect_WobblePlayer:
 	call BattleBGEffects_AnonJumptable
 .anon_dw
 	dw .zero
@@ -1975,8 +1975,8 @@ BattleBGEffect_WobbleMon:
 .two
 	jp BattleAnim_ResetLCDStatCustom
 
-BattleBGEffect_2e:
-	call Functionc8d0b
+BattleBGEffect_Rollout:
+	call BattleBGEffects_GetShakeAmount
 	jr c, .xor_a
 	bit 7, a
 	jr z, .okay
@@ -1992,23 +1992,23 @@ BattleBGEffect_2e:
 	ld [wAnimObject01_YOffset], a
 	ret
 
-BattleBGEffect_1f:
-	call Functionc8d0b
+BattleBGEffect_ShakeScreenX:
+	call BattleBGEffects_GetShakeAmount
 	jr nc, .skip
 	xor a
 .skip
 	ldh [hSCX], a
 	ret
 
-BattleBGEffect_20:
-	call Functionc8d0b
+BattleBGEffect_ShakeScreenY:
+	call BattleBGEffects_GetShakeAmount
 	jr nc, .skip
 	xor a
 .skip
 	ldh [hSCY], a
 	ret
 
-Functionc8d0b:
+BattleBGEffects_GetShakeAmount:
 	ld hl, BG_EFFECT_STRUCT_JT_INDEX
 	add hl, bc
 	ld a, [hl]
@@ -2046,7 +2046,7 @@ Functionc8d0b:
 	and a
 	ret
 
-BattleBGEffect_35:
+BattleBGEffect_WobbleScreen:
 	ld hl, BG_EFFECT_STRUCT_03
 	add hl, bc
 	ld a, [hl]
@@ -2095,56 +2095,56 @@ BattleBGEffect_RapidFlash:
 .FlashPals
 	db $e4, $6c, $fe
 
-BattleBGEffect_16:
+BattleBGEffect_FadeMonToLight:
 	ld de, .Pals
 	jr BGEffect_RapidCyclePals
 
 .Pals
 	db $e4, $90, $40, $ff
 
-BattleBGEffect_17:
+BattleBGEffect_FadeMonToBlack:
 	ld de, .Pals
 	jr BGEffect_RapidCyclePals
 
 .Pals
 	db $e4, $f8, $fc, $ff
 
-BattleBGEffect_18:
+BattleBGEffect_FadeMonToLightRepeating:
 	ld de, .Pals
 	jr BGEffect_RapidCyclePals
 
 .Pals
 	db $e4, $90, $40, $90, $fe
 
-BattleBGEffect_19:
+BattleBGEffect_FadeMonToBlackRepeating:
 	ld de, .Pals
 	jr BGEffect_RapidCyclePals
 
 .Pals
 	db $e4, $f8, $fc, $f8, $fe
 
-BattleBGEffect_1a:
+BattleBGEffect_CycleMonLightDarkRepeating:
 	ld de, .Pals
 	jr BGEffect_RapidCyclePals
 
 .Pals
 	db $e4, $f8, $fc, $f8, $e4, $90, $40, $90, $fe
 
-BattleBGEffect_1b:
+BattleBGEffect_FlashMonRepeating:
 	ld de, .Pals
 	jr BGEffect_RapidCyclePals
 
 .Pals
 	db $e4, $fc, $e4, $00, $fe
 
-BattleBGEffect_1d:
+BattleBGEffect_FadeMonToWhiteWaitFadeBack:
 	ld de, .Pals
 	jr BGEffect_RapidCyclePals
 
 .Pals
 	db $e4, $90, $40, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $40, $90, $e4, $ff
 
-BattleBGEffect_1e:
+BattleBGEffect_FadeMonFromWhite:
 	ld de, .Pals
 	jr BGEffect_RapidCyclePals
 

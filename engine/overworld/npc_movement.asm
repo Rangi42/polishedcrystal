@@ -12,10 +12,10 @@ CanObjectMoveInDirection:
 	add hl, bc
 	bit 5, [hl]
 	jr z, .not_bit_5
-	call Function6f2c
+	call WillObjectBumpIntoLand
 	jr .resume
 .not_bit_5
-	call Function6f07
+	call WillObjectBumpIntoWater
 .resume
 	pop bc
 	pop hl
@@ -49,8 +49,8 @@ CanObjectMoveInDirection:
 	and a
 	ret
 
-Function6f07:
-	call Function6f5f
+WillObjectBumpIntoWater:
+	call CanObjectLeaveTile
 	ret c
 	ld hl, OBJECT_NEXT_MAP_X
 	add hl, bc
@@ -61,34 +61,34 @@ Function6f07:
 	ld hl, OBJECT_PALETTE
 	add hl, bc
 	bit 7, [hl]
-	jp nz, Function6fa1
+	jp nz, WillObjectRemainOnWater
 	ld hl, OBJECT_NEXT_TILE
 	add hl, bc
 	ld a, [hl]
 	ld d, a
 	call GetTileCollision
 	and a ; cp LAND_TILE
-	jr z, Function6f3e
+	jr z, WillObjectBumpIntoTile
 	scf
 	ret
 
-Function6f2c:
-	call Function6f5f
+WillObjectBumpIntoLand:
+	call CanObjectLeaveTile
 	ret c
 	ld hl, OBJECT_NEXT_TILE
 	add hl, bc
 	ld a, [hl]
 	call GetTileCollision
 	dec a ; cp WATER_TILE
-	jr z, Function6f3e
+	jr z, WillObjectBumpIntoTile
 	scf
 	ret
 
-Function6f3e:
+WillObjectBumpIntoTile:
 	ld hl, OBJECT_NEXT_TILE
 	add hl, bc
 	ld a, [hl]
-	call Function6f7f
+	call GetSideWallDirectionMask
 	ret nc
 	push af
 	ld hl, OBJECT_DIRECTION_WALKING
@@ -97,7 +97,7 @@ Function6f3e:
 	and 3
 	ld e, a
 	ld d, 0
-	ld hl, .data_6f5b
+	ld hl, .dir_masks
 	add hl, de
 	pop af
 	and [hl]
@@ -105,14 +105,14 @@ Function6f3e:
 	scf
 	ret
 
-.data_6f5b
+.dir_masks
 	db 1 << DOWN, 1 << UP, 1 << RIGHT, 1 << LEFT
 
-Function6f5f:
+CanObjectLeaveTile:
 	ld hl, OBJECT_STANDING_TILE
 	add hl, bc
 	ld a, [hl]
-	call Function6f7f
+	call GetSideWallDirectionMask
 	ret nc
 	push af
 	ld hl, OBJECT_DIRECTION_WALKING
@@ -120,7 +120,7 @@ Function6f5f:
 	and 3
 	ld e, a
 	ld d, 0
-	ld hl, .data_6f7b
+	ld hl, .dir_masks
 	add hl, de
 	pop af
 	and [hl]
@@ -128,10 +128,10 @@ Function6f5f:
 	scf
 	ret
 
-.data_6f7b
+.dir_masks
 	db 1 << UP, 1 << DOWN, 1 << LEFT, 1 << RIGHT
 
-Function6f7f:
+GetSideWallDirectionMask:
 	ld d, a
 	and $f0
 	cp $b0
@@ -144,17 +144,17 @@ Function6f7f:
 	and 7
 	ld e, a
 	ld d, 0
-	ld hl, .data_6f99
+	ld hl, .side_wall_masks
 	add hl, de
 	ld a, [hl]
 	scf
 	ret
 
-.data_6f99
+.side_wall_masks
 	db  8, 4, 1, 2
 	db 10, 6, 9, 5
 
-Function6fa1:
+WillObjectRemainOnWater:
 	ld hl, OBJECT_DIRECTION_WALKING
 	add hl, bc
 	ld a, [hl]
@@ -268,7 +268,7 @@ IsNPCAtCoord:
 	bit 7, [hl]
 	jr z, .got
 
-	call Function7171
+	call WillObjectIntersectBigObject
 	jr nc, .ok
 	jr .ok2
 
@@ -413,7 +413,7 @@ IsPersonMovingOffEdgeOfScreen:
 	scf
 	ret
 
-Function7171:
+WillObjectIntersectBigObject:
 	ld hl, OBJECT_NEXT_MAP_X
 	add hl, bc
 	ld a, d

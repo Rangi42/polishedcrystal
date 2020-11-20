@@ -30,7 +30,7 @@ WaitScript:
 	dec [hl]
 	ret nz
 
-	farcall ReleaseAllMapObjects
+	farcall UnfreezeAllObjects
 
 	ld a, SCRIPT_READ
 	ld [wScriptMode], a
@@ -43,7 +43,7 @@ WaitScriptMovement:
 	bit 7, [hl]
 	ret nz
 
-	farcall ReleaseAllMapObjects
+	farcall UnfreezeAllObjects
 
 	ld a, SCRIPT_READ
 	ld [wScriptMode], a
@@ -962,11 +962,11 @@ Script_applyonemovement:
 
 	push bc
 	ld a, c
-	farcall SetFlagsForMovement_1
+	farcall FreezeAllOtherObjects
 	pop bc
 
 	push bc
-	farcall SetFlagsForMovement_2
+	farcall _UnfreezeFollowerObject
 	pop bc
 
 	ld hl, wScriptPos
@@ -1002,11 +1002,11 @@ Script_applymovement2:
 ApplyMovement:
 	push bc
 	ld a, c
-	farcall SetFlagsForMovement_1
+	farcall FreezeAllOtherObjects
 	pop bc
 
 	push bc
-	farcall SetFlagsForMovement_2
+	farcall _UnfreezeFollowerObject
 	pop bc
 
 	call GetScriptByte

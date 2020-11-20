@@ -1033,7 +1033,7 @@ RetrieveBreedmon:
 	pop hl
 	rst CopyBytes
 	push hl
-	call Functionde1a
+	call GetLastPartyMon
 	ld hl, MON_FORM
 	add hl, de
 	ld a, [hl]
@@ -1042,7 +1042,7 @@ RetrieveBreedmon:
 	ld bc, BOXMON_STRUCT_LENGTH
 	rst CopyBytes
 	call GetBaseData
-	call Functionde1a
+	call GetLastPartyMon
 	ld b, d
 	ld c, e
 	ld hl, MON_LEVEL
@@ -1096,7 +1096,7 @@ RetrieveBreedmon:
 	and a
 	ret
 
-Functionde1a:
+GetLastPartyMon:
 	ld a, [wPartyCount]
 	dec a
 	ld hl, wPartyMon1Species

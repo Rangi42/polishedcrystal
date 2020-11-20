@@ -191,10 +191,10 @@ _PlayersPC:
 	ld [wWhichIndexSet], a
 	ld hl, UnknownText_0x157cc
 	call PC_DisplayTextWaitMenu
-	call Function15715
+	call .PlayersPC
 	jp ExitMenu
 
-Function15715:
+.PlayersPC:
 	xor a
 	ld [wPCItemsCursor], a
 	ld [wPCItemsScrollPosition], a

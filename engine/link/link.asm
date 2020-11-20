@@ -24,7 +24,7 @@ LinkCommunications:
 	rst PlaceString
 	call SetTradeRoomBGPals
 	call ApplyAttrAndTilemapInVBlank
-	ld hl, wcf5d
+	ld hl, wLinkByteTimeout
 	xor a
 	ld [hli], a
 	ld [hl], $50
@@ -34,7 +34,7 @@ Gen2ToGen2LinkComms:
 	call ClearLinkData
 	call Link_PrepPartyData_Gen2
 	call FixDataForLinkTransfer
-	call Function29dba
+	call CheckLinkTimeout_Gen2
 	ldh a, [hScriptVar]
 	and a
 	jp z, LinkTimeout
@@ -88,7 +88,7 @@ Gen2ToGen2LinkComms:
 	ld hl, wc9f4
 	ld de, wcb84
 	ld bc, $186
-	call Function283f2
+	call ExchangeBytes
 
 .not_trading
 	xor a
@@ -280,7 +280,7 @@ Gen2ToGen2LinkComms:
 	pop af
 	ld [wOptions2], a
 	farcall LoadPokemonData
-	jp Function28b22
+	jp ExitLinkCommunications
 
 .ready_to_trade
 	ld de, MUSIC_ROUTE_30
@@ -320,7 +320,7 @@ LinkTimeout:
 	text_jump UnknownText_0x1c4183
 	text_end
 
-Function283f2:
+ExchangeBytes:
 	ld a, $1
 	ldh [hSerialIgnoringInitialData], a
 .loop
@@ -779,7 +779,7 @@ LinkTradeOTPartymonMenuLoop:
 .not_d_up
 	bit D_DOWN_F, a
 	jp z, LinkTradePartiesMenuMasterLoop
-	jp Function28ac9
+	jp LinkTradeOTPartymonMenuCheckCancel
 
 LinkMonStatsScreen:
 	ld a, [wMenuCursorY]
@@ -829,7 +829,7 @@ LinkTradePartymonMenuLoop:
 	and a
 	jp z, LinkTradePartiesMenuMasterLoop
 	bit A_BUTTON_F, a
-	jp nz, Function28926
+	jp nz, LinkTrade_TradeStatsMenu
 	bit D_DOWN_F, a
 	jr z, .not_d_down
 	ld a, [wMenuCursorY]
@@ -865,7 +865,7 @@ LinkTradePartymonMenuLoop:
 	ld [hl], " "
 	pop bc
 	pop hl
-	jp Function28ade
+	jp LinkTradePartymonMenuCheckCancel
 
 LinkTradePartiesMenuMasterLoop:
 	ld a, [wMonType]
@@ -1025,7 +1025,7 @@ LinkTradeMenu:
 	scf
 	ret
 
-Function28926:
+LinkTrade_TradeStatsMenu:
 	call LoadTileMapToTempTileMap
 	ld a, [wMenuCursorY]
 	push af
@@ -1117,7 +1117,7 @@ Function28926:
 	dec a
 	ld [wd002], a
 	ld [wPlayerLinkAction], a
-	call Function16d6ce
+	call PrintWaitingTextAndSyncAndExchangeNybble
 	ld a, [wOtherPlayerLinkMode]
 	cp $f
 	jp z, InitTradeMenuDisplay
@@ -1131,7 +1131,7 @@ Function28926:
 	call DelayFrames
 	call ValidateOTTrademon
 	jr c, .abnormal
-	call Functionfb5dd
+	call CheckAnyOtherAliveMonsForTrade
 	jp nc, LinkTrade
 	xor a
 	ld [wcf57], a
@@ -1181,7 +1181,7 @@ Function28926:
 	rst PlaceString
 	ld a, $1
 	ld [wPlayerLinkAction], a
-	call Function16d6ce
+	call PrintWaitingTextAndSyncAndExchangeNybble
 	ld c, 100
 	call DelayFrames
 	jp InitTradeMenuDisplay
@@ -1229,7 +1229,7 @@ ValidateOTTrademon:
 	scf
 	ret
 
-Functionfb5dd:
+CheckAnyOtherAliveMonsForTrade:
 	ld a, [wd002]
 	ld d, a
 	ld a, [wPartyCount]
@@ -1263,7 +1263,7 @@ Functionfb5dd:
 	and a
 	ret
 
-Function28ac9:
+LinkTradeOTPartymonMenuCheckCancel:
 	ld a, [wMenuCursorY]
 	cp 1
 	jp nz, LinkTradePartiesMenuMasterLoop
@@ -1275,7 +1275,7 @@ Function28ac9:
 	ld [hl], " "
 	pop bc
 	pop hl
-Function28ade:
+LinkTradePartymonMenuCheckCancel:
 .loop1
 	ld a, "▶"
 	ldcoord_a 9, 17
@@ -1306,11 +1306,11 @@ Function28ade:
 	ldcoord_a 9, 17
 	ld a, $f
 	ld [wPlayerLinkAction], a
-	call Function16d6ce
+	call PrintWaitingTextAndSyncAndExchangeNybble
 	ld a, [wOtherPlayerLinkMode]
 	cp $f
 	jr nz, .loop1
-Function28b22:
+ExitLinkCommunications:
 	ld c, 15
 	call FadeToWhite
 	call ClearScreen
@@ -1417,13 +1417,13 @@ LinkTrade:
 	hlcoord 1, 14
 	ld de, String_TooBadTheTradeWasCanceled
 	rst PlaceString
-	call Function16d6ce
+	call PrintWaitingTextAndSyncAndExchangeNybble
 	jr .asm_28ea3
 
 .asm_28c54
 	ld a, $2
 	ld [wPlayerLinkAction], a
-	call Function16d6ce
+	call PrintWaitingTextAndSyncAndExchangeNybble
 	ld a, [wOtherPlayerLinkMode]
 	dec a
 	jr nz, .asm_28c7b
@@ -1762,7 +1762,7 @@ LinkTextbox::
 	jr nz, .row_loop
 	ret
 
-Function16d6ce:
+PrintWaitingTextAndSyncAndExchangeNybble:
 	call LoadStandardMenuHeader
 	hlcoord 5, 10
 	lb bc, 1, 9
@@ -1948,7 +1948,7 @@ Special_CheckLinkTimeout:
 	ret nz
 	jp Link_ResetSerialRegistersAfterLinkClosure
 
-Function29dba:
+CheckLinkTimeout_Gen2:
 	ld a, $5
 	ld [wPlayerLinkAction], a
 	ld hl, wLinkTimeoutFrames
