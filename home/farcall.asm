@@ -13,23 +13,22 @@ FarCall_de::
 AnonBankPush::
 	ldh [hFarCallSavedA], a
 	ld a, h
-	ldh [hPredefTemp + 1], a
+	ldh [hFarCallSavedH], a
 	ld a, l
-	ldh [hPredefTemp], a
+	ldh [hFarCallSavedL], a
 	pop hl
 	ldh a, [hROMBank]
 	push af
 	ld a, [hli]
-	jr DoFarCall_BankInA
+	jr _DoFarCall_BankInA
 
 FarCall_hl::
 ; Call a:hl.
 ; Preserves other registers.
-
 	ldh [hTempBank], a
 	ldh a, [hROMBank]
 	push af
-	jr DoFarCall
+	jr _DoFarCall
 
 FarPointerCall::
 	ldh a, [hROMBank]
@@ -39,18 +38,17 @@ FarPointerCall::
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	jr DoFarCall
+	jr _DoFarCall
 
 CallOpponentTurn::
 	ldh [hFarCallSavedA], a
 	ld a, h
-	ldh [hPredefTemp + 1], a
+	ldh [hFarCallSavedH], a
 	ld a, l
-	ldh [hPredefTemp], a
-
+	ldh [hFarCallSavedL], a
 	pop hl
 	call SwitchTurn
-	call RetrieveHLAndCallFunction
+	call RetrieveAHLAndCallFunction
 	push af
 	call SwitchTurn
 	pop af
@@ -61,22 +59,22 @@ StackCallInBankB:
 StackCallInBankA:
 	ldh [hTempBank], a
 	ld a, h
-	ldh [hPredefTemp + 1], a
+	ldh [hFarCallSavedH], a
 	ld a, l
-	ldh [hPredefTemp], a
+	ldh [hFarCallSavedL], a
 	pop hl
 	ldh a, [hROMBank]
 	push af
-	jr DoFarCall
+	jr _DoFarCall
 
 RstFarCall::
 ; Call the following dba pointer on the stack.
 ; Preserves a, bc, de, hl
 	ldh [hFarCallSavedA], a
 	ld a, h
-	ldh [hPredefTemp + 1], a
+	ldh [hFarCallSavedH], a
 	ld a, l
-	ldh [hPredefTemp], a
+	ldh [hFarCallSavedL], a
 	pop hl
 	ld a, [hli]
 	ldh [hTempBank], a
@@ -93,13 +91,12 @@ RstFarCall::
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-DoFarCall:
+_DoFarCall:
 	ldh a, [hTempBank]
-DoFarCall_BankInA:
 	and $7f
+_DoFarCall_BankInA:
 	rst Bankswitch
-	call RetrieveHLAndCallFunction
-
+	call RetrieveAHLAndCallFunction
 ReturnFarCall::
 	ldh [hFarCallSavedA], a
 	; We want to retain the contents of f.
@@ -119,32 +116,27 @@ ReturnFarCall::
 
 RunFunctionInWRA6::
 	ld a, BANK(wDecompressScratch)
-
-; fallthrough
 StackCallInWRAMBankA::
 	ldh [hTempBank], a
 	ld a, h
-	ldh [hPredefTemp + 1], a
+	ldh [hFarCallSavedH], a
 	ld a, l
-	ldh [hPredefTemp], a
-
-; fallthrough
-StackCallInWRAMBankA_continue:
+	ldh [hFarCallSavedL], a
 	pop hl
 	ldh a, [rSVBK]
 	push af
 	ldh a, [hTempBank]
 	ldh [rSVBK], a
-	call RetrieveHLAndCallFunction
+	call RetrieveAHLAndCallFunction
 	ldh [hTempBank], a
 	pop af
 	ldh [rSVBK], a
 	ldh a, [hTempBank]
 	ret
 
-RetrieveHLAndCallFunction:
+RetrieveAHLAndCallFunction:
 	push hl
-	ld hl, hPredefTemp
+	ld hl, hFarCallSavedHL
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a

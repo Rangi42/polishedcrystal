@@ -81,7 +81,7 @@ TryAddMonToParty:
 	; - sp+$6: party data for [wCurPartyMon], just past the level and species
 	; - sp+$4: return address for 'predef TryAddMonToParty'
 	; - sp+$2: af from _Predef (ReturnFarCall will pop this)
-	; - sp+$0: return address for 'call RetrieveHLAndCallFunction'
+	; - sp+$0: return address for 'call RetrieveAHLAndCallFunction'
 	ld hl, sp+$6
 	ld a, [hli]
 	ld h, [hl]

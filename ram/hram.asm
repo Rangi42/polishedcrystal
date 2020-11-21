@@ -56,11 +56,13 @@ hConnectionStripLength:: db
 hConnectedMapWidth:: db
 ENDU
 
-; can only use the bytes reserved for hPredefTemp in contained functions,
-; unless you know what you're doing
-hPredefTemp::
-hLZAddress::
-	dw
+UNION
+hFarCallSavedHL::
+hFarCallSavedL:: db
+hFarCallSavedH:: db
+NEXTU
+hLZAddress:: dw
+ENDU
 
 UNION
 ; math-related values

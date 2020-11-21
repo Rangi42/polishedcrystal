@@ -3,9 +3,9 @@ _Predef::
 ; Preserves a, bc, de, hl.
 	ldh [hFarCallSavedA], a
 	ld a, h
-	ldh [hPredefTemp + 1], a
+	ldh [hFarCallSavedH], a
 	ld a, l
-	ldh [hPredefTemp], a
+	ldh [hFarCallSavedL], a
 	pop hl
 	ld a, [hli]
 	ldh [hBuffer], a
@@ -39,5 +39,5 @@ _Predef::
 	push af
 .bankswitch
 	rst Bankswitch
-	call RetrieveHLAndCallFunction
+	call RetrieveAHLAndCallFunction
 	jr ReturnFarCall
