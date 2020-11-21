@@ -1,4 +1,4 @@
-	db  90,  90,  85, 100, 125,  90 ; 580 BST
+	db  90, 125,  90, 100,  85,  90 ; 580 BST
 	;   hp  atk  def  spd  sat  sdf
 
 	db FIGHTING, FLYING
