@@ -267,13 +267,22 @@ LZ_LONG_HI       EQU %00000011
 ; Copy bitflipped data for bc bytes.
 	ld a, [de]
 	inc de
-	ld [hl], b ;use the current output as buffer
-	ld b, 0
-rept 8
-	rra
-	rl b
-endr
-	ld a, b
+	ld [hl], b ; use the current output as buffer
+	; http://www.retroprogramming.com/2014/01/fast-z80-bit-reversal.html
+	ld b, a
+	rlca
+	rlca
+	xor b
+	and $aa
+	xor b
+	ld b, a
+	rlca
+	rlca
+	rlca
+	rrc b
+	xor b
+	and $66
+	xor b
 	ld b, [hl]
 
 	ld [hli], a
