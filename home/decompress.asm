@@ -268,7 +268,8 @@ LZ_LONG_HI       EQU %00000011
 	ld a, [de]
 	inc de
 	ld [hl], b ; use the current output as buffer
-	; http://www.retroprogramming.com/2014/01/fast-z80-bit-reversal.html
+
+; http://www.retroprogramming.com/2014/01/fast-z80-bit-reversal.html
 	ld b, a
 	rlca
 	rlca
@@ -283,10 +284,9 @@ LZ_LONG_HI       EQU %00000011
 	xor b
 	and $66
 	xor b
+
 	ld b, [hl]
-
 	ld [hli], a
-
 	dec c
 	jr nz, .flipped
 	dec b

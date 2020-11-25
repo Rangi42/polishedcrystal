@@ -382,13 +382,23 @@ FixBackpicAlignment:
 
 .got_dims
 	ld a, [hl]
-	lb bc, $0, $8
-.loop
-	rra
-	rl b
-	dec c
-	jr nz, .loop
-	ld a, b
+
+; https://github.com/pret/pokecrystal/wiki/Optimizing-assembly-code#reverse-the-bits-of-a
+	ld b, a
+	rlca
+	rlca
+	xor b
+	and $aa
+	xor b
+	ld b, a
+	rlca
+	rlca
+	rlca
+	rrc b
+	xor b
+	and $66
+	xor b
+
 	ld [hli], a
 	dec de
 	ld a, e
@@ -467,12 +477,23 @@ LoadFrontpic:
 .right_loop
 	ld a, [de]
 	inc de
+
+; https://github.com/pret/pokecrystal/wiki/Optimizing-assembly-code#reverse-the-bits-of-a
 	ld b, a
-	xor a
-	rept 8
-	rr b
-	rla
-	endr
+	rlca
+	rlca
+	xor b
+	and $aa
+	xor b
+	ld b, a
+	rlca
+	rlca
+	rlca
+	rrc b
+	xor b
+	and $66
+	xor b
+
 	ld [hli], a
 	dec c
 	jr nz, .right_loop
