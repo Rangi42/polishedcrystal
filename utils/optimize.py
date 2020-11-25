@@ -174,6 +174,21 @@ patterns = {
 		and line4.code[4] == PAIRS[prev[1].code[3]]),
 	(lambda line5, prev: line5.code.rstrip(':') == prev[2].code.split(',')[1].strip()),
 ],
+'hl|bc|de = Foo + a': [
+	# Bad: ld hl, Foo / add l / ld l, a / adc h / sub l / ld h, a
+	# Good: add LOW(Foo) / ld l, a / adc HIGH(Foo) / sub l / ld h, a
+	(lambda line1, prev: re.match(r'ld (?:hl|bc|de), [^\[]', line1.code)),
+	(lambda line2, prev: re.match(r'add (?:a, )?(?:[lce])', line2.code)
+		and line2.code[-1] == prev[0].code[4]),
+	(lambda line3, prev: re.match(r'ld [lce], a', line3.code)
+		and line3.code[3] == prev[0].code[4]),
+	(lambda line4, prev: re.match(r'adc (?:a, )?(?:[hbd])', line4.code)
+		and line4.code[-1] == prev[0].code[3]),
+	(lambda line5, prev: re.match(r'sub (?:a, )?(?:[lce])', line5.code)
+		and line5.code[-1] == prev[0].code[4]),
+	(lambda line6, prev: re.match(r'ld [hbd], a', line6.code)
+		and line6.code[3] == prev[0].code[3]),
+],
 'hl|bc|de -= N': [
 	# Bad: ld a, l / sub N / ld l, a / ld a, h / sbc 0 / ld h, a (hl or bc or de)
 	# Good: ld a, l / sub N / ld l, a / jr nc, .noCarry / dec h / .noCarry

@@ -1066,11 +1066,10 @@ AnimateTowerPillarTile:
 	and 7
 
 ; Get frame index a
-	ld hl, .frames
-	; hl += a
-	add l
+	; a = [.frames + a]
+	add LOW(.frames)
 	ld l, a
-	adc h
+	adc HIGH(.frames)
 	sub l
 	ld h, a
 	ld a, [hl]

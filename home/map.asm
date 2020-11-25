@@ -1279,11 +1279,10 @@ GetMovementPermissions::
 
 	ld a, [wPlayerStandingTile]
 	and 7
-	ld hl, .MovementPermissionsData
-	; hl += a
-	add l
+	; a = [.MovementPermissionsData + a]
+	add LOW(.MovementPermissionsData)
 	ld l, a
-	adc h
+	adc HIGH(.MovementPermissionsData)
 	sub l
 	ld h, a
 	ld a, [hl]
