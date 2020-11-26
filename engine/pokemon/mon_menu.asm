@@ -320,24 +320,18 @@ GivePartyItem:
 
 ; swap items between two party pokemon
 SwapPartyItem:
-	;;;;;;;;;;;;;;;;;; WORKING START
-
 	ld a, [wPartyCount]
 	cp 2
 	jr c, .DontSwap
-
 	ld a, [wCurPartyMon]
 	inc a
 	ld [wSwitchMon], a
-
 	farcall HoldSwitchmonIcon
 	farcall InitPartyMenuNoCancel
-
 	ld a, 4
 	ld [wPartyMenuActionText], a
 	farcall WritePartyMenuTilemap
 	farcall PrintPartyMenuText
-
 	hlcoord 0, 1
 	ld bc, 20 * 2
 	ld a, [wSwitchMon]
@@ -347,20 +341,16 @@ SwapPartyItem:
 	call ApplyTilemapInVBlank
 	call SetPalettes
 	call DelayFrame
-
 	farcall PartyMenuSelect
 	bit 1, b
 	jr c, .DontSwap
-
 	; wSwitchMon contains first selected pkmn
 	; wCurPartyMon contains second selected pkmn
-	
 	; getting pkmn2 item and putting into stack item addr + item id
 	call GetPartyItemLocation
 	ld a, [hl] ; a pkmn2 contains item 
 	push hl
 	push af
-
 	; getting pkmn 1 item and putting item id into b
 	ld a, [wSwitchMon]
 	dec a
@@ -368,26 +358,20 @@ SwapPartyItem:
 	call GetPartyItemLocation
 	ld a, [hl] ; a pkmn1 contains item 
 	ld b, a
-
 	; actual swap
 	pop af 
 	ld [hl], a ; pkmn1 get pkm2 item
 	pop hl 
 	ld a, b
 	ld [hl], a ; pkmn1 get pkm2 item
-
 	xor a
 	ld [wPartyMenuActionText], a
-
 	jp CancelPokemonAction
-
 
 .DontSwap
 	xor a
 	ld [wPartyMenuActionText], a
 	jp CancelPokemonAction
-
-	;;;;;;;;;;;;;;;;; WORKING END
 
 TakePartyItem:
 	call SpeechTextbox
