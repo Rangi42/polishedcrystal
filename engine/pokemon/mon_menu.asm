@@ -363,6 +363,7 @@ SwapPartyItem:
 
 	; getting pkmn 1 item and putting item id into b
 	ld a, [wSwitchMon]
+	dec a
 	ld [wCurPartyMon], a
 	call GetPartyItemLocation
 	ld a, [hl] ; a pkmn1 contains item 
