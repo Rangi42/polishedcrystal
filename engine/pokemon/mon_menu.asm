@@ -202,8 +202,11 @@ GiveTakePartyMonItem:
 	ld bc, MON_NAME_LENGTH
 	rst CopyBytes
 	ld a, [wMenuCursorY]
-	cp 1
-	jr nz, .take
+	cp 2 ; 2 = take
+	jr z, .take
+	cp 3 ; 3 = swap
+	jr z, .swap
+	; 1 = give
 
 	call LoadStandardMenuHeader
 	call ClearPalettes
@@ -216,6 +219,11 @@ GiveTakePartyMonItem:
 
 .take
 	call TakePartyItem
+	ld a, 3
+	ret
+
+.swap
+	call SwapPartyItem
 	ld a, 3
 	ret
 
@@ -310,6 +318,61 @@ GivePartyItem:
 	ret nc
 	jp ComposeMailMessage
 
+; swap items between two party pokemon
+SwapPartyItem:
+	ld a, [wPartyCount]
+	cp 2
+	jr c, .DontSwap
+	ld a, [wCurPartyMon]
+	inc a
+	ld [wSwitchMon], a
+	farcall HoldSwitchmonIcon
+	farcall InitPartyMenuNoCancel
+	ld a, 4
+	ld [wPartyMenuActionText], a
+	farcall WritePartyMenuTilemap
+	farcall PrintPartyMenuText
+	hlcoord 0, 1
+	ld bc, 20 * 2
+	ld a, [wSwitchMon]
+	dec a
+	rst AddNTimes
+	ld [hl], "▷"
+	call ApplyTilemapInVBlank
+	call SetPalettes
+	call DelayFrame
+	farcall PartyMenuSelect
+	bit 1, b
+	jr c, .DontSwap
+	; wSwitchMon contains first selected pkmn
+	; wCurPartyMon contains second selected pkmn
+	; getting pkmn2 item and putting into stack item addr + item id
+	call GetPartyItemLocation
+	ld a, [hl] ; a pkmn2 contains item 
+	push hl
+	push af
+	; getting pkmn 1 item and putting item id into b
+	ld a, [wSwitchMon]
+	dec a
+	ld [wCurPartyMon], a
+	call GetPartyItemLocation
+	ld a, [hl] ; a pkmn1 contains item 
+	ld b, a
+	; actual swap
+	pop af 
+	ld [hl], a ; pkmn1 get pkm2 item
+	pop hl 
+	ld a, b
+	ld [hl], a ; pkmn1 get pkm2 item
+	xor a
+	ld [wPartyMenuActionText], a
+	jp CancelPokemonAction
+
+.DontSwap
+	xor a
+	ld [wPartyMenuActionText], a
+	jp CancelPokemonAction
+
 TakePartyItem:
 	call SpeechTextbox
 	call GetPartyItemLocation
@@ -360,16 +423,17 @@ UpdateMewtwoForm:
 
 GiveTakeItemMenuData:
 	db %01010000
-	db 12, 13 ; start coords
+	db 10, 13 ; start coords
 	db 17, 19 ; end coords
 	dw .Items
 	db 1 ; default option
 
 .Items:
 	db %10000000 ; x padding
-	db 2 ; # items
+	db 3 ; # items
 	db "Give@"
 	db "Take@"
+	db "Swap@"
 
 TookAndMadeHoldText:
 	text_jump UnknownText_0x1c1b2c
