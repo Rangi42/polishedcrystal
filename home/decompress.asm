@@ -269,7 +269,7 @@ LZ_LONG_HI       EQU %00000011
 	inc de
 	ld [hl], b ; use the current output as buffer
 
-; http://www.retroprogramming.com/2014/01/fast-z80-bit-reversal.html
+; https://github.com/pret/pokecrystal/wiki/Optimizing-assembly-code#reverse-the-bits-of-a
 	ld b, a
 	rlca
 	rlca
@@ -277,13 +277,11 @@ LZ_LONG_HI       EQU %00000011
 	and $aa
 	xor b
 	ld b, a
-	rlca
-	rlca
-	rlca
-	rrc b
+	swap b
 	xor b
-	and $66
+	and $33
 	xor b
+	rrca
 
 	ld b, [hl]
 	ld [hli], a

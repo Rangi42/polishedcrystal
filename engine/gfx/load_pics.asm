@@ -391,13 +391,11 @@ FixBackpicAlignment:
 	and $aa
 	xor b
 	ld b, a
-	rlca
-	rlca
-	rlca
-	rrc b
+	swap b
 	xor b
-	and $66
+	and $33
 	xor b
+	rrca
 
 	ld [hli], a
 	dec de
@@ -486,13 +484,11 @@ LoadFrontpic:
 	and $aa
 	xor b
 	ld b, a
-	rlca
-	rlca
-	rlca
-	rrc b
+	swap b
 	xor b
-	and $66
+	and $33
 	xor b
+	rrca
 
 	ld [hli], a
 	dec c
