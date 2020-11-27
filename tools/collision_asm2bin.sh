@@ -7,10 +7,10 @@ TEMP_O=$(mktemp collision.o.XXX)
 HEAD=head
 TAIL=tail
 
-if ! type ghead > /dev/null; then
+if type ghead > /dev/null; then
   HEAD=ghead
 fi
-if ! type gtail > /dev/null; then
+if type gtail > /dev/null; then
   TAIL=gtail
 fi
 
