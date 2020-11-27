@@ -3,15 +3,15 @@
 
 TEMP_ASM=$(mktemp collision.asm.XXX)
 TEMP_O=$(mktemp collision.o.XXX)
-OS=$(uname -s)
 
 HEAD=head
-tail=tail
+TAIL=tail
 
-if [ $OS = "Darwin" ]
-then
-    HEAD=ghead
-    TAIL=gtail
+if ! type ghead > /dev/null; then
+  HEAD=ghead
+fi
+if ! type gtail > /dev/null; then
+  TAIL=gtail
 fi
 
 echo 'INCLUDE "constants/collision_constants.asm"' > "$TEMP_ASM"
