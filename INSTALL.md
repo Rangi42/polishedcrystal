@@ -74,10 +74,10 @@ make [faithful] [nortc] [hgss|monochrome|noir] [debug]
 
 ## Mac OS X
 
-In **Terminal**, run:
-
 `md5sum` is required.  
 To install it: ```brew install md5sha1sum```
+
+In **Terminal**, run:
 
 ```bash
 xcode-select --install
