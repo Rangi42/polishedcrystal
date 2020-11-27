@@ -74,6 +74,9 @@ make [faithful] [nortc] [hgss|monochrome|noir] [debug]
 
 ## Mac OS X
 
+`md5sum`, `ghead` and `gtail` are required.  
+To install it: ```brew install coreutils```
+
 In **Terminal**, run:
 
 ```bash
