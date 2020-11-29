@@ -775,7 +775,8 @@ BattlePack:
 	lb bc, $5, $9 ; Balls, Berries
 	call Pack_InterpretJoypad
 	ret c
-	jp TMHMSubmenu
+	jp nz, PackSortMenu
+	jp KeyItemSubmenu.unusable
 
 .InitBerriesPocket:
 	ld a, BERRIES - 1
@@ -818,10 +819,6 @@ BattlePack:
 	farcall CheckKeyItemContext
 	ld a, [wItemAttributeParamBuffer]
 	jp KeyItemSubmenu
-
-TMHMSubmenu:
-	jp nz, PackSortMenu
-	jr KeyItemSubmenu
 
 ItemSubmenu:
 	jp nz, PackSortMenu
@@ -905,6 +902,7 @@ KeyItemSubmenu:
 	ld hl, MenuDataHeader_Use
 	ld de, .UsableJumptable
 	jr nz, .proceed
+.unusable:
 	ld hl, MenuDataHeader_Quit
 	ld de, .UnusableJumptable
 .proceed
