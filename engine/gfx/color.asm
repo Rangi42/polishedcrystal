@@ -374,10 +374,10 @@ ApplyAttrMap:
 	jr nz, .col
 	ld a, BG_MAP_WIDTH - SCREEN_WIDTH
 	add e
-	jr nc, .okay
-	inc d
-.okay
 	ld e, a
+	adc d
+	sub e
+	ld d, a
 	dec b
 	jr nz, .row
 	xor a
