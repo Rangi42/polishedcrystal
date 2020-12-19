@@ -96,7 +96,7 @@ DoBattle:
 	call SendInUserPkmn
 .not_linked_2
 	call AutomaticRainWhenOvercast
-	call HandleFirstAirBalloon
+	call SpikesDamageBoth ; for Air Balloon
 	call BoostGiovannisArmoredMewtwo
 	call RunBothActivationAbilities
 	jp BattleTurn
@@ -2998,7 +2998,7 @@ BreakAttraction:
 	res SUBSTATUS_IN_LOVE, [hl]
 	ret
 
-HandleFirstAirBalloon:
+SpikesDamageBoth:
 ; for the first mon, Spikes logic doesn't run by itself, and we also want to perform
 ; speed checks to see whose air balloon to announce first.
 	ldh a, [hBattleTurn]
@@ -8566,8 +8566,7 @@ BoostGiovannisArmoredMewtwo:
 	ld a, [wOtherTrainerID]
 	cp GIOVANNI1
 	ret nz
-	ld a, 1
-	ldh [hBattleTurn], a
+	call SetEnemyTurn
 	ld de, ANIM_SHARPEN
 	call Call_PlayBattleAnim
 	ld b, ATTACK

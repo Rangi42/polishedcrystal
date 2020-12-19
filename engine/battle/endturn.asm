@@ -182,7 +182,7 @@ HandleBetweenTurnEffects:
 	cp 3
 	jr nz, .not_both2
 
-	farcall HandleFirstAirBalloon
+	farcall SpikesDamageBoth
 	farcall RunBothActivationAbilities
 	jp .endturn_loop
 .not_both2
