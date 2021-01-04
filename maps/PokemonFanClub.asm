@@ -67,8 +67,6 @@ UnknownScript_0x191844:
 	endtext
 
 PokemonJournalGreenScript:
-	setevent EVENT_RETURNED_MACHINE_PART
-	setevent EVENT_MET_COPYCAT_FOUND_OUT_ABOUT_LOST_ITEM
 	setflag ENGINE_READ_GREEN_JOURNAL
 	jumpthistext
 
