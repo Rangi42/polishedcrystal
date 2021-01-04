@@ -48,7 +48,7 @@ UnknownScript_0x191802:
 FisherScript_0x191824:
 	checkevent EVENT_GOT_LOST_ITEM_FROM_FAN_CLUB
 	iftrue_jumptextfaceplayer UnknownText_0x191d1e
-	checkevent EVENT_RETURNED_MACHINE_PART
+	checkevent EVENT_RESTORED_POWER_TO_KANTO
 	iffalse_jumptextfaceplayer UnknownText_0x191ba0
 	faceplayer
 	opentext
@@ -67,8 +67,6 @@ UnknownScript_0x191844:
 	endtext
 
 PokemonJournalGreenScript:
-	setevent EVENT_RETURNED_MACHINE_PART
-	setevent EVENT_MET_COPYCAT_FOUND_OUT_ABOUT_LOST_ITEM
 	setflag ENGINE_READ_GREEN_JOURNAL
 	jumpthistext
 

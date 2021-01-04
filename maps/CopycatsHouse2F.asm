@@ -51,7 +51,7 @@ Copycat1Script:
 	special Special_SetCopycatPalette
 	variablesprite SPRITE_COPYCAT, SPRITE_CHRIS
 	special MapCallbackSprites_LoadUsedSpritesGFX
-	checkevent EVENT_RETURNED_MACHINE_PART
+	checkevent EVENT_RESTORED_POWER_TO_KANTO
 	iftrue .ReturnedMachinePart
 	showtext .Greeting1Text
 	applymovement COPYCATSHOUSE2F_COPYCAT1, CopycatSpinMovement
@@ -129,7 +129,7 @@ Copycat2Script:
 	special Special_SetCopycatPalette
 	variablesprite SPRITE_COPYCAT, SPRITE_KRIS
 	special MapCallbackSprites_LoadUsedSpritesGFX
-	checkevent EVENT_RETURNED_MACHINE_PART
+	checkevent EVENT_RESTORED_POWER_TO_KANTO
 	iftrue .ReturnedMachinePart
 	showtext .Greeting2Text
 	applymovement COPYCATSHOUSE2F_COPYCAT2, CopycatSpinMovement

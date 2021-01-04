@@ -59,17 +59,17 @@ SaffronCityFlyPoint:
 	return
 
 LassScript_0x19932a:
-	checkevent EVENT_RETURNED_MACHINE_PART
+	checkevent EVENT_RESTORED_POWER_TO_KANTO
 	iftrue_jumptextfaceplayer UnknownText_0x19940d
 	jumptextfaceplayer UnknownText_0x19938d
 
 PokefanMScript_0x19933e:
-	checkevent EVENT_RETURNED_MACHINE_PART
+	checkevent EVENT_RESTORED_POWER_TO_KANTO
 	iftrue_jumptextfaceplayer UnknownText_0x1994ae
 	jumptextfaceplayer UnknownText_0x199460
 
 FisherScript_0x199358:
-	checkevent EVENT_RETURNED_MACHINE_PART
+	checkevent EVENT_RESTORED_POWER_TO_KANTO
 	iftrue_jumptextfaceplayer UnknownText_0x19964b
 	jumptextfaceplayer UnknownText_0x1995fc
 

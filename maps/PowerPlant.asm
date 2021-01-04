@@ -46,36 +46,36 @@ PowerPlantGuardPhoneScript:
 	end
 
 OfficerScript_0x188df5:
-	checkevent EVENT_RETURNED_MACHINE_PART
+	checkevent EVENT_RESTORED_POWER_TO_KANTO
 	iftrue_jumptextfaceplayer UnknownText_0x188fa2
 	checkevent EVENT_MET_MANAGER_AT_POWER_PLANT
 	iftrue_jumptextfaceplayer UnknownText_0x188f7f
 	jumptextfaceplayer UnknownText_0x188ee0
 
 GymGuyScript_0x188e15:
-	checkevent EVENT_RETURNED_MACHINE_PART
+	checkevent EVENT_RESTORED_POWER_TO_KANTO
 	iftrue_jumptextfaceplayer UnknownText_0x189038
 	jumptextfaceplayer UnknownText_0x188fcf
 
 GymGuyScript_0x188e29:
-	checkevent EVENT_RETURNED_MACHINE_PART
+	checkevent EVENT_RESTORED_POWER_TO_KANTO
 	iftrue_jumptextfaceplayer UnknownText_0x1890ef
 	jumptextfaceplayer UnknownText_0x189079
 
 OfficerScript_0x188e3d:
-	checkevent EVENT_RETURNED_MACHINE_PART
+	checkevent EVENT_RESTORED_POWER_TO_KANTO
 	iftrue_jumptextfaceplayer UnknownText_0x18917f
 	jumptextfaceplayer UnknownText_0x18910e
 
 GymGuyScript_0x188e51:
-	checkevent EVENT_RETURNED_MACHINE_PART
+	checkevent EVENT_RESTORED_POWER_TO_KANTO
 	iftrue_jumptextfaceplayer UnknownText_0x189225
 	jumptextfaceplayer UnknownText_0x1891c2
 
 PowerPlantManager:
 	faceplayer
 	opentext
-	checkevent EVENT_RETURNED_MACHINE_PART
+	checkevent EVENT_RESTORED_POWER_TO_KANTO
 	iftrue PowerPlantTutorZapCannonScript
 	checkkeyitem MACHINE_PART
 	iftrue UnknownScript_0x188e93
@@ -94,7 +94,6 @@ UnknownScript_0x188e93:
 	writetext UnknownText_0x18936e
 	buttonsound
 	takekeyitem MACHINE_PART
-	setevent EVENT_RETURNED_MACHINE_PART
 	clearevent EVENT_SAFFRON_TRAIN_STATION_POPULATION
 	setevent EVENT_ROUTE_5_6_POKEFAN_M_BLOCKS_UNDERGROUND_PATH
 	setevent EVENT_ROUTE_24_ROCKET

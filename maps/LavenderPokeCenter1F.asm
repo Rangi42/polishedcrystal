@@ -39,7 +39,7 @@ PokemonJournalMrFujiScript:
 	done
 
 LavenderPokeCenter1FYoungsterScript:
-	checkevent EVENT_RETURNED_MACHINE_PART
+	checkevent EVENT_RESTORED_POWER_TO_KANTO
 	iffalse_jumptextfaceplayer .NoMachinePartText
 	checkevent EVENT_EXORCISED_LAV_RADIO_TOWER
 	iffalse_jumptextfaceplayer .NoExorcismText

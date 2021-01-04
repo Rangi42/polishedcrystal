@@ -23,7 +23,7 @@ SilphCo1F_MapScriptHeader:
 	const SILPHCO1F_OFFICER
 
 .SilphCo1FMoveOfficerCallback:
-	checkevent EVENT_RETURNED_MACHINE_PART
+	checkevent EVENT_RESTORED_POWER_TO_KANTO
 	iffalse .Nothing
 	moveobject SILPHCO1F_OFFICER, 14, 1
 .Nothing
@@ -32,7 +32,7 @@ SilphCo1F_MapScriptHeader:
 OfficerScript_0x18abe8:
 	faceplayer
 	opentext
-	checkevent EVENT_RETURNED_MACHINE_PART
+	checkevent EVENT_RESTORED_POWER_TO_KANTO
 	iftrue .OfficerScriptAfterPowerRestored
 	jumpopenedtext UnknownText_0x18ac36
 

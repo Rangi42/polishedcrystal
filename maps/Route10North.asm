@@ -52,7 +52,7 @@ Route10NorthFlyPoint:
 	return
 
 Route10NorthZapdos:
-	checkevent EVENT_RETURNED_MACHINE_PART
+	checkevent EVENT_RESTORED_POWER_TO_KANTO
 	iffalse .NoAppear
 	checkevent EVENT_ZAPDOS_GONE
 	iffalse .Appear

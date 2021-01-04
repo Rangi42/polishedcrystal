@@ -53,7 +53,7 @@ Script_ArriveFromGoldenrod:
 	jumptext UnknownText_0x18a993
 
 GymGuyScript_0x18a875:
-	checkevent EVENT_RETURNED_MACHINE_PART
+	checkevent EVENT_RESTORED_POWER_TO_KANTO
 	iftrue_jumptextfaceplayer UnknownText_0x18aa61
 	jumptextfaceplayer UnknownText_0x18a9ca
 

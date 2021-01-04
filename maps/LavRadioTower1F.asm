@@ -37,7 +37,7 @@ GentlemanScript_0x7ee6c:
 	opentext
 	checkflag ENGINE_EXPN_CARD
 	iftrue_jumpopenedtext .UnknownText_0x7f141
-	checkevent EVENT_RETURNED_MACHINE_PART
+	checkevent EVENT_RESTORED_POWER_TO_KANTO
 	iftrue .UnknownScript_0x7ee80
 	jumpopenedtext UnknownText_0x7effb
 

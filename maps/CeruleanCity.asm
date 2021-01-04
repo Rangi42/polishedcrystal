@@ -48,7 +48,7 @@ CeruleanCityFlyPoint:
 	return
 
 CooltrainerMScript_0x184009:
-	checkevent EVENT_RETURNED_MACHINE_PART
+	checkevent EVENT_RESTORED_POWER_TO_KANTO
 	iftrue_jumptextfaceplayer UnknownText_0x184144
 	jumptextfaceplayer UnknownText_0x1840bc
 
@@ -60,7 +60,7 @@ CooltrainerFScript_0x18402a:
 	jumptext UnknownText_0x18424b
 
 FisherScript_0x18404a:
-	checkevent EVENT_RETURNED_MACHINE_PART
+	checkevent EVENT_RESTORED_POWER_TO_KANTO
 	iftrue_jumptextfaceplayer UnknownText_0x18424e
 	checkevent EVENT_MET_ROCKET_GRUNT_AT_CERULEAN_GYM
 	iftrue_jumptextfaceplayer UnknownText_0x184275

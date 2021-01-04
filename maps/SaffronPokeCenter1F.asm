@@ -38,7 +38,7 @@ PokemonJournalSabrinaScript:
 	done
 
 SaffronPokeCenter1FFisherScript:
-	checkevent EVENT_RETURNED_MACHINE_PART
+	checkevent EVENT_RESTORED_POWER_TO_KANTO
 	iftrue_jumptextfaceplayer .Text2
 	jumpthistextfaceplayer
 
