@@ -349,7 +349,6 @@ BT_SetLevel:
 	bit 7, d
 	ld a, 0
 	jr nz, .hyper_training_done
-	ld a, b
 	push hl
 	ld a, e
 	ld [wCurPartyMon], a
@@ -362,8 +361,8 @@ BT_SetLevel:
 	ld bc, wPartyMon1MaxHP - wPartyMon1Exp
 	add hl, bc
 	push hl
-	ld bc, wPartyMon1EVs - wPartyMon1MaxHP
-	add hl, bc
+	ld bc, wPartyMon1EVs - wPartyMon1MaxHP - 1
+	add hl, bc ; 'hl' now points to EVs - 1, needed by CalcPkmnStats
 	pop de
 	pop af
 
