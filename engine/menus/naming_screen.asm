@@ -381,11 +381,11 @@ NamingScreenJoypadLoop:
 	call NamingScreen_GetLastCharacter
 	call NamingScreen_TryAddCharacter
 	jr c, .start
-	ld a, [wcf64]
-	and a ; 0?
+	ld a, [wNamingScreenLetterCase]
+	and a ; already lowercase? (a == 1)
 	ret nz
 	ld a, [wNamingScreenCurNameLength]
-	dec a ; 1?
+	dec a ; first character uppercase, rest lowercase (by default)
 	jr z, .select
 	ret
 
@@ -407,16 +407,16 @@ NamingScreenJoypadLoop:
 
 .b
 	call NamingScreen_DeleteCharacter
-	ld a, [wcf64]
-	and a ; 0?
+	ld a, [wNamingScreenLetterCase]
+	and a ; already uppercase? (a == 0)
 	ret z
 	ld a, [wNamingScreenCurNameLength]
-	and a ; 0?
+	and a ; ; first character uppercase, rest lowercase (by default)
 	ret nz
 	; fallthrough
 
 .select
-	ld hl, wcf64
+	ld hl, wNamingScreenLetterCase
 	ld a, [hl]
 	xor 1
 	ld [hl], a
@@ -805,7 +805,7 @@ LoadNamingScreenGFX:
 	ldh [hSCX], a
 	ld [wGlobalAnimXOffset], a
 	ld [wJumptableIndex], a
-	ld [wcf64], a
+	ld [wNamingScreenLetterCase], a
 	ldh [hBGMapMode], a
 	ld [wNamingScreenCurNameLength], a
 	ld a, $7
@@ -1067,7 +1067,7 @@ INCBIN "gfx/icons/mail2.2bpp.lz"
 	ret
 
 .select
-	ld hl, wcf64
+	ld hl, wNamingScreenLetterCase
 	ld a, [hl]
 	xor $1
 	ld [hl], a

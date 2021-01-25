@@ -241,7 +241,7 @@ GiveTakePartyMonItem:
 .loop
 	farcall DepositSellPack
 
-	ld a, [wcf66]
+	ld a, [wPackUsedItem]
 	and a
 	ret z
 

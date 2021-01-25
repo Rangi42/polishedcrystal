@@ -5,42 +5,42 @@ DoAnimFrame:
 	call StackJumpTable
 
 .Jumptable:
-	dw DoNothing           ; SPRITE_ANIM_SEQ_NULL
-	dw .PartyMon           ; SPRITE_ANIM_SEQ_PARTY_MON
-	dw .PartyMonSwitch     ; SPRITE_ANIM_SEQ_PARTY_MON_SWITCH
-	dw .PartyMonSelected   ; SPRITE_ANIM_SEQ_PARTY_MON_SELECTED
-	dw .NamingScreenCursor ; SPRITE_ANIM_SEQ_NAMING_SCREEN_CURSOR
-	dw .ComposeMailCursor  ; SPRITE_ANIM_SEQ_COMPOSE_MAIL_CURSOR
-	dw .GameFreakLogo      ; SPRITE_ANIM_SEQ_GAMEFREAK_LOGO
-	dw .SlotsGolem         ; SPRITE_ANIM_SEQ_SLOTS_GOLEM
-	dw .SlotsChansey       ; SPRITE_ANIM_SEQ_SLOTS_CHANSEY
-	dw .SlotsChanseyEgg    ; SPRITE_ANIM_SEQ_SLOTS_EGG
-;	dw .DummyGameCursor    ; SPRITE_ANIM_SEQ_DUMMY_GAME_CURSOR
-	dw .PokegearModeArrow  ; SPRITE_ANIM_SEQ_POKEGEAR_MODE_ARROW
-	dw .TradePokeBall      ; SPRITE_ANIM_SEQ_TRADE_POKE_BALL
-	dw .TradeTubeBulge     ; SPRITE_ANIM_SEQ_TRADE_TUBE_BULGE
-	dw .TradeMonBubble     ; SPRITE_ANIM_SEQ_TRADEMON_IN_TUBE
-	dw .RevealNewMon       ; SPRITE_ANIM_SEQ_REVEAL_NEW_MON
-	dw .RadioTuningKnob    ; SPRITE_ANIM_SEQ_RADIO_TUNING_KNOB
-	dw .CutGrassLeaves     ; SPRITE_ANIM_SEQ_CUT_GRASS_LEAVES
-	dw .FlyFrom            ; SPRITE_ANIM_SEQ_FLY_FROM
-	dw .FlyLeaf            ; SPRITE_ANIM_SEQ_FLY_LEAF
-	dw .FlyTo              ; SPRITE_ANIM_SEQ_FLY_TO
-	dw .IntroSuicune       ; SPRITE_ANIM_SEQ_INTRO_SUICUNE
-	dw .IntroPichuWooper   ; SPRITE_ANIM_SEQ_PICHU_WOOPER
-	dw .IntroUnown         ; SPRITE_ANIM_SEQ_UNOWN
-	dw .IntroUnownF        ; SPRITE_ANIM_SEQ_UNOWN_F
-	dw .IntroSuicuneAway   ; SPRITE_ANIM_SEQ_SUICUNE_AWAY
-	dw .Celebi             ; SPRITE_ANIM_SEQ_CELEBI
-	dw .MaxStatSparkle     ; SPRITE_ANIM_SEQ_MAX_STAT_SPARKLE
+	dw DoNothing                  ; SPRITE_ANIM_SEQ_NULL
+	dw AnimSeq_PartyMon           ; SPRITE_ANIM_SEQ_PARTY_MON
+	dw AnimSeq_PartyMonSwitch     ; SPRITE_ANIM_SEQ_PARTY_MON_SWITCH
+	dw AnimSeq_PartyMonSelected   ; SPRITE_ANIM_SEQ_PARTY_MON_SELECTED
+	dw AnimSeq_NamingScreenCursor ; SPRITE_ANIM_SEQ_NAMING_SCREEN_CURSOR
+	dw AnimSeq_MailCursor         ; SPRITE_ANIM_SEQ_COMPOSE_MAIL_CURSOR
+	dw AnimSeq_GameFreakLogo      ; SPRITE_ANIM_SEQ_GAMEFREAK_LOGO
+	dw AnimSeq_SlotsGolem         ; SPRITE_ANIM_SEQ_SLOTS_GOLEM
+	dw AnimSeq_SlotsChansey       ; SPRITE_ANIM_SEQ_SLOTS_CHANSEY
+	dw AnimSeq_SlotsChanseyEgg    ; SPRITE_ANIM_SEQ_SLOTS_EGG
+	;dw AnimSeq_MemoryGameCursor   ; SPRITE_ANIM_SEQ_MEMORY_GAME_CURSOR
+	dw AnimSeq_PokegearArrow      ; SPRITE_ANIM_SEQ_POKEGEAR_MODE_ARROW
+	dw AnimSeq_TradePokeBall      ; SPRITE_ANIM_SEQ_TRADE_POKE_BALL
+	dw AnimSeq_TradeTubeBulge     ; SPRITE_ANIM_SEQ_TRADE_TUBE_BULGE
+	dw AnimSeq_TrademonInTube     ; SPRITE_ANIM_SEQ_TRADEMON_IN_TUBE
+	dw AnimSeq_RevealNewMon       ; SPRITE_ANIM_SEQ_REVEAL_NEW_MON
+	dw AnimSeq_RadioTuningKnob    ; SPRITE_ANIM_SEQ_RADIO_TUNING_KNOB
+	dw AnimSeq_CutLeaves          ; SPRITE_ANIM_SEQ_CUT_GRASS_LEAVES
+	dw AnimSeq_FlyFrom            ; SPRITE_ANIM_SEQ_FLY_FROM
+	dw AnimSeq_FlyLeaf            ; SPRITE_ANIM_SEQ_FLY_LEAF
+	dw AnimSeq_FlyTo              ; SPRITE_ANIM_SEQ_FLY_TO
+	dw AnimSeq_IntroSuicune       ; SPRITE_ANIM_SEQ_INTRO_SUICUNE
+	dw AnimSeq_IntroPichuWooper   ; SPRITE_ANIM_SEQ_PICHU_WOOPER
+	dw AnimSeq_IntroUnown         ; SPRITE_ANIM_SEQ_UNOWN
+	dw AnimSeq_IntroUnownF        ; SPRITE_ANIM_SEQ_UNOWN_F
+	dw AnimSeq_IntroSuicuneAway   ; SPRITE_ANIM_SEQ_SUICUNE_AWAY
+	dw AnimSeq_Celebi             ; SPRITE_ANIM_SEQ_CELEBI
+	dw AnimSeq_MaxStatSparkle     ; SPRITE_ANIM_SEQ_MAX_STAT_SPARKLE
 
-.PartyMon
+AnimSeq_PartyMon:
 	ld a, [wMenuCursorY]
 
 	ld hl, SPRITEANIMSTRUCT_INDEX
 	add hl, bc
 	cp [hl]
-	jr z, .PartyMonSwitch
+	jr z, AnimSeq_PartyMonSwitch
 
 	ld hl, SPRITEANIMSTRUCT_XCOORD
 	add hl, bc
@@ -51,7 +51,7 @@ DoAnimFrame:
 	ld [hl], $0
 	ret
 
-.PartyMonSwitch
+AnimSeq_PartyMonSwitch:
 	ld hl, SPRITEANIMSTRUCT_XCOORD
 	add hl, bc
 	ld [hl], 8 * 3
@@ -76,7 +76,7 @@ DoAnimFrame:
 	ld a, e
 	and a
 	jr z, .load_minus_two
-	cp $1
+	cp 1
 	jr z, .load_minus_one
 .load_zero
 	xor a
@@ -91,54 +91,54 @@ DoAnimFrame:
 	ld [hl], -2
 	ret
 
-.PartyMonSelected
+AnimSeq_PartyMonSelected:
 	ld a, [wMenuCursorY]
 
 	ld hl, SPRITEANIMSTRUCT_INDEX
 	add hl, bc
 	cp [hl]
-	jr z, .PartyMonSelected_offset_right
+	jr z, .three_offset_right
 
 	ld hl, SPRITEANIMSTRUCT_XCOORD
 	add hl, bc
 	ld [hl], 8 * 2
 	ret
 
-.PartyMonSelected_offset_right
+.three_offset_right
 	ld hl, SPRITEANIMSTRUCT_XCOORD
 	add hl, bc
 	ld [hl], 8 * 3
 	ret
 
-.NamingScreenCursor
+AnimSeq_NamingScreenCursor:
 	farjp NamingScreen_AnimateCursor
 
-.ComposeMailCursor
+AnimSeq_MailCursor:
 	farjp ComposeMail_AnimateCursor
 
-.GameFreakLogo:
+AnimSeq_GameFreakLogo:
 	farjp GameFreakLogoJumper
 
-.SlotsGolem:
+AnimSeq_SlotsGolem:
 	farjp SlotMachine_AnimateGolem
 
-.SlotsChansey:
+AnimSeq_SlotsChansey:
 	farcall Slots_AnimateChansey
-	ld hl, wcf64
+	ld hl, wSlotsDelay
 	ld a, [hl]
-	cp $2
+	cp 2
 	ret nz
-	ld [hl], $3
+	ld [hl], 3
 	ld a, SPRITE_ANIM_FRAMESET_SLOTS_CHANSEY_2
 	jp _ReinitSpriteAnimFrame
 
-.SlotsChanseyEgg:
+AnimSeq_SlotsChanseyEgg:
 	ld hl, SPRITEANIMSTRUCT_JUMPTABLE_INDEX
 	add hl, bc
 	ld a, [hl]
 	dec [hl]
 	ld e, a
-	and $1
+	and 1
 	jr z, .move_vertical
 
 	ld hl, SPRITEANIMSTRUCT_XCOORD
@@ -147,8 +147,8 @@ DoAnimFrame:
 	cp 15 * 8
 	jr c, .move_right
 	call DeinitializeSprite
-	ld a, $4
-	ld [wcf64], a
+	ld a, 4
+	ld [wSlotsDelay], a
 	ld de, SFX_PLACE_PUZZLE_PIECE_DOWN
 	jp PlaySFX
 
@@ -164,64 +164,62 @@ DoAnimFrame:
 	ld [hl], a
 	ret
 
-;.DummyGameCursor
-;	farcall DummyGame_InterpretJoypad_AnimateCursor
-;	ret
+;AnimSeq_MemoryGameCursor:
+	;farjp MemoryGame_InterpretJoypad_AnimateCursor
 
-.PokegearModeArrow
+AnimSeq_PokegearArrow:
 	farjp AnimatePokegearModeIndicatorArrow
 
-.TradePokeBall
+AnimSeq_TradePokeBall:
 	ld hl, SPRITEANIMSTRUCT_JUMPTABLE_INDEX
 	add hl, bc
 	ld a, [hl]
 	call StackJumpTable
+.anon_dw
+	dw .zero
+	dw .one
+	dw .two
+	dw .three
+	dw .four
+	dw .delete
 
-.TradePokeBall_Jumptable
-	dw .sixteen_zero
-	dw .sixteen_one
-	dw .sixteen_two
-	dw .sixteen_three
-	dw .sixteen_four
-	dw .sixteen_five
-
-.sixteen_zero
+.zero
 	ld a, SPRITE_ANIM_FRAMESET_TRADE_POKE_BALL_0
 	call _ReinitSpriteAnimFrame
 
 	ld hl, SPRITEANIMSTRUCT_JUMPTABLE_INDEX
 	add hl, bc
-	ld [hl], $2
+	ld [hl], 2
 
 	ld hl, SPRITEANIMSTRUCT_0C
 	add hl, bc
 	ld [hl], $20
 	ret
 
-.sixteen_two
+.two
 	ld hl, SPRITEANIMSTRUCT_0C
 	add hl, bc
 	ld a, [hl]
 	and a
-	jr z, .asm_8d4af
+	jr z, .next
 	dec [hl]
 	ret
 
-.asm_8d4af
-	call .IncrementSpriteAnimStruct0B
+.next
+	call AnimSeqs_IncAnonJumptableIndex
 
 	ld hl, SPRITEANIMSTRUCT_0C
 	add hl, bc
 	ld [hl], $40
 
-.sixteen_three
+.three
 	ld hl, SPRITEANIMSTRUCT_0C
 	add hl, bc
 	ld a, [hl]
-	cp $30
-	jr c, .asm_8d4cd
+	cp 48
+	jr c, .done
 	dec [hl]
-	ld d, $28
+	ld d, 40
 	call Sine
 
 	ld hl, SPRITEANIMSTRUCT_YOFFSET
@@ -229,12 +227,12 @@ DoAnimFrame:
 	ld [hl], a
 	ret
 
-.asm_8d4cd
+.done
 	ld de, SFX_GOT_SAFARI_BALLS
 	call PlaySFX
-	jr .sixteen_five
+	jr .delete
 
-.sixteen_one
+.one
 	ld hl, SPRITEANIMSTRUCT_JUMPTABLE_INDEX
 	add hl, bc
 	ld [hl], $4
@@ -248,12 +246,12 @@ DoAnimFrame:
 	ld [hl], $24
 	ret
 
-.sixteen_four
+.four
 	ld hl, SPRITEANIMSTRUCT_0D
 	add hl, bc
 	ld a, [hl]
 	and a
-	jr z, .asm_8d51c
+	jr z, .done2
 	ld d, a
 
 	ld hl, SPRITEANIMSTRUCT_0C
@@ -284,18 +282,18 @@ DoAnimFrame:
 	ld de, SFX_SWITCH_POKEMON
 	jp PlaySFX
 
-.asm_8d51c
+.done2
 	xor a
 
 	ld hl, SPRITEANIMSTRUCT_YOFFSET
 	add hl, bc
 	ld [hl], a
-	jp .IncrementSpriteAnimStruct0B
+	jp AnimSeqs_IncAnonJumptableIndex
 
-.sixteen_five
+.delete
 	jp DeinitializeSprite
 
-.TradeTubeBulge
+AnimSeq_TradeTubeBulge:
 	ld hl, SPRITEANIMSTRUCT_XCOORD
 	add hl, bc
 	ld a, [hl]
@@ -303,7 +301,7 @@ DoAnimFrame:
 	inc [hl]
 	cp $b0
 	jr nc, .delete
-	and $3
+	and 3
 	ret nz
 	ld de, SFX_POKEBALLS_PLACED_ON_TABLE
 	jp PlaySFX
@@ -311,17 +309,17 @@ DoAnimFrame:
 .delete
 	jp DeinitializeSprite
 
-.TradeMonBubble
+AnimSeq_TrademonInTube:
 	farjp TradeAnim_AnimateTrademonInTube
 
-.RevealNewMon:
+AnimSeq_RevealNewMon:
 	ld hl, SPRITEANIMSTRUCT_0C
 	add hl, bc
 	ld a, [hl]
 	cp $80
-	jr nc, .finish_RevealNewMon
+	jr nc, .finish_EggShell
 	ld d, a
-	add $8
+	add 8
 	ld [hl], a
 
 	ld hl, SPRITEANIMSTRUCT_JUMPTABLE_INDEX
@@ -347,13 +345,13 @@ DoAnimFrame:
 	ld [hl], a
 	ret
 
-.finish_RevealNewMon
+.finish_EggShell
 	jp DeinitializeSprite
 
-.RadioTuningKnob:
+AnimSeq_RadioTuningKnob:
 	farjp AnimateTuningKnob
 
-.CutGrassLeaves
+AnimSeq_CutLeaves:
 	ld hl, SPRITEANIMSTRUCT_0D
 	add hl, bc
 	ld e, [hl]
@@ -392,7 +390,7 @@ DoAnimFrame:
 	ld [hl], a
 	ret
 
-.FlyFrom:
+AnimSeq_FlyFrom:
 	ld hl, SPRITEANIMSTRUCT_YCOORD
 	add hl, bc
 	ld a, [hl]
@@ -417,7 +415,7 @@ DoAnimFrame:
 	ld d, a
 	cp $40
 	jr nc, .skip
-	add $8
+	add 8
 	ld [hl], a
 .skip
 	ld hl, SPRITEANIMSTRUCT_0E
@@ -431,7 +429,7 @@ DoAnimFrame:
 	ld [hl], a
 	ret
 
-.FlyLeaf:
+AnimSeq_FlyLeaf:
 	ld hl, SPRITEANIMSTRUCT_XCOORD
 	add hl, bc
 	ld a, [hl]
@@ -459,7 +457,7 @@ DoAnimFrame:
 .delete_leaf
 	jp DeinitializeSprite
 
-.FlyTo:
+AnimSeq_FlyTo:
 	ld hl, SPRITEANIMSTRUCT_YCOORD
 	add hl, bc
 	ld a, [hl]
@@ -476,10 +474,10 @@ DoAnimFrame:
 	ld a, [hl]
 	ld d, a
 	and a
-	jr z, .asm_8d621
-	sub $2
+	jr z, .stay
+	sub 2
 	ld [hl], a
-.asm_8d621
+.stay
 	ld hl, SPRITEANIMSTRUCT_0E
 	add hl, bc
 	ld a, [hl]
@@ -491,22 +489,22 @@ DoAnimFrame:
 	ld [hl], a
 	ret
 
-.IntroSuicune
-	ld a, [wcf65]
+AnimSeq_IntroSuicune:
+	ld a, [wIntroSceneTimer]
 	and a
 	ret z
 	ld hl, SPRITEANIMSTRUCT_YOFFSET
 	add hl, bc
-	ld [hl], $0
+	ld [hl], 0
 
 	ld hl, SPRITEANIMSTRUCT_0D
 	add hl, bc
 	ld a, [hl]
-	add $2
+	add 2
 	ld [hl], a
 	cpl
 	inc a
-	ld d, $20
+	ld d, 32
 	call Sine
 
 	ld hl, SPRITEANIMSTRUCT_YOFFSET
@@ -515,17 +513,17 @@ DoAnimFrame:
 	ld a, SPRITE_ANIM_FRAMESET_INTRO_SUICUNE_2
 	jp _ReinitSpriteAnimFrame
 
-.IntroPichuWooper
+AnimSeq_IntroPichuWooper:
 	ld hl, SPRITEANIMSTRUCT_0C
 	add hl, bc
 	ld a, [hl]
-	cp $14
+	cp 20
 	ret nc
-	add $2
+	add 2
 	ld [hl], a
 	cpl
 	inc a
-	ld d, $20
+	ld d, 32
 	call Sine
 
 	ld hl, SPRITEANIMSTRUCT_YOFFSET
@@ -533,7 +531,7 @@ DoAnimFrame:
 	ld [hl], a
 	ret
 
-.IntroUnown
+AnimSeq_IntroUnown:
 	ld hl, SPRITEANIMSTRUCT_JUMPTABLE_INDEX
 	add hl, bc
 	ld d, [hl]
@@ -560,25 +558,25 @@ DoAnimFrame:
 	ld [hl], a
 	ret
 
-.IntroUnownF
-	ld a, [wcf64]
+AnimSeq_IntroUnownF:
+	ld a, [wIntroSceneFrameCounter]
 	cp $40
 	ret nz
 	ld a, SPRITE_ANIM_FRAMESET_INTRO_UNOWN_F_2
 	jp _ReinitSpriteAnimFrame
 
-.IntroSuicuneAway
+AnimSeq_IntroSuicuneAway:
 	ld hl, SPRITEANIMSTRUCT_YCOORD
 	add hl, bc
 	ld a, [hl]
-	add $10
+	add 16
 	ld [hl], a
 	ret
 
-.Celebi
+AnimSeq_Celebi:
 	farjp UpdateCelebiPosition
 
-.MaxStatSparkle
+AnimSeq_MaxStatSparkle:
 	ldh a, [hVBlankCounter]
 	push af
 	ld d, 4
@@ -594,7 +592,7 @@ DoAnimFrame:
 	ld [hl], a
 	ret
 
-.IncrementSpriteAnimStruct0B:
+AnimSeqs_IncAnonJumptableIndex:
 	ld hl, SPRITEANIMSTRUCT_JUMPTABLE_INDEX
 	add hl, bc
 	inc [hl]

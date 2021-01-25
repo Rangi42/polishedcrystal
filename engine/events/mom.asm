@@ -129,7 +129,7 @@ Special_BankOfMom:
 	ld [hli], a
 	ld [hl], a
 	ld a, $6
-	ld [wcf64], a
+	ld [wMomBankDigitCursorPosition], a
 	call LoadStandardMenuHeader
 	call Mom_SetUpDepositMenu
 	call Mom_Wait10Frames
@@ -193,7 +193,7 @@ Special_BankOfMom:
 	ld [hli], a
 	ld [hl], a
 	ld a, $6
-	ld [wcf64], a
+	ld [wMomBankDigitCursorPosition], a
 	call LoadStandardMenuHeader
 	call Mom_SetUpWithdrawMenu
 	call Mom_Wait10Frames

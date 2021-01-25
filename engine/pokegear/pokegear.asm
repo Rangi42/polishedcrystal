@@ -71,9 +71,8 @@ PokeGear:
 	call TownMap_InitCursorAndPlayerIconPositions
 	xor a
 	ld [wJumptableIndex], a
-	ld [wcf64], a
-	ld [wcf65], a
-	ld [wcf66], a
+	ld [wPokegearCard], a
+	ld [wPokegearMapRegion], a
 	ld [wPokegearPhoneScrollPosition], a
 	ld [wPokegearPhoneCursorPosition], a
 	ld [wPokegearPhoneSelectedPerson], a
@@ -162,7 +161,7 @@ InitPokegearModeIndicatorArrow:
 	ret
 
 AnimatePokegearModeIndicatorArrow:
-	ld hl, wcf64
+	ld hl, wPokegearCard
 	ld e, [hl]
 	ld d, 0
 	ld hl, .XCoords
@@ -185,7 +184,7 @@ TownMap_InitCursorAndPlayerIconPositions:
 Pokegear_InitJumptableIndices:
 	xor a ; CLOCK_CARD
 	ld [wJumptableIndex], a
-	ld [wcf64], a
+	ld [wPokegearCard], a
 	ret
 
 InitPokegearTilemap:
@@ -195,7 +194,7 @@ InitPokegearTilemap:
 	ld bc, wTileMapEnd - wTileMap
 	ld a, $4f
 	rst ByteFill
-	ld a, [wcf64]
+	ld a, [wPokegearCard]
 	and $3
 	add a
 	ld e, a
@@ -208,7 +207,7 @@ InitPokegearTilemap:
 	call _hl_
 	call Pokegear_FinishTilemap
 	call TownMapPals
-	ld a, [wcf64]
+	ld a, [wPokegearCard]
 	cp MAP_CARD
 	jr nz, .not_town_map
 	ld a, [wJumptableIndex]
@@ -221,7 +220,7 @@ InitPokegearTilemap:
 	cp 7 ; Orange
 	call z, TownMapOrangeFlips
 .not_town_map
-	ld a, [wcf65]
+	ld a, [wPokegearMapRegion]
 	and a
 	jr nz, .transition
 	xor a ; LOW(vBGMap0)
@@ -241,10 +240,10 @@ InitPokegearTilemap:
 	xor a
 .finish
 	ldh [hWY], a
-	ld a, [wcf65]
+	ld a, [wPokegearMapRegion]
 	and 1
 	xor 1
-	ld [wcf65], a
+	ld [wPokegearMapRegion], a
 	ret
 
 .UpdateBGMap:
@@ -1257,7 +1256,7 @@ Pokegear_SwitchPage:
 	ld a, c
 	ld [wJumptableIndex], a
 	ld a, b
-	ld [wcf64], a
+	ld [wPokegearCard], a
 	jp DeleteSpriteAnimStruct2ToEnd
 
 ExitPokegearRadio_HandleMusic:

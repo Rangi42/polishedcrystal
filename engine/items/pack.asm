@@ -43,7 +43,7 @@ Pack:
 	xor a
 	ldh [hBGMapMode], a
 	call Pack_InitGFX
-	ld a, [wcf64]
+	ld a, [wPackJumptableIndex]
 	ld [wJumptableIndex], a
 	jp Pack_InitColors
 
@@ -616,7 +616,7 @@ GiveItem:
 .give
 	ld a, [wJumptableIndex]
 	push af
-	ld a, [wcf64]
+	ld a, [wPackJumptableIndex]
 	push af
 	call GetCurNick
 	ld hl, wStringBuffer1
@@ -625,7 +625,7 @@ GiveItem:
 	rst CopyBytes
 	call TryGiveItemToPartymon
 	pop af
-	ld [wcf64], a
+	ld [wPackJumptableIndex], a
 	pop af
 	ld [wJumptableIndex], a
 .finish
@@ -689,7 +689,7 @@ BattlePack:
 	xor a
 	ldh [hBGMapMode], a
 	call Pack_InitGFX
-	ld a, [wcf64]
+	ld a, [wPackJumptableIndex]
 	ld [wJumptableIndex], a
 	jp Pack_InitColors
 
@@ -973,9 +973,9 @@ InitPackBuffers:
 	inc a
 	add a
 	dec a
-	ld [wcf64], a
+	ld [wPackJumptableIndex], a
 	xor a
-	ld [wcf66], a
+	ld [wPackUsedItem], a
 	xor a
 	ld [wSwitchItem], a
 	ret
@@ -983,10 +983,10 @@ InitPackBuffers:
 DepositSellInitPackBuffers:
 	xor a
 	ldh [hBGMapMode], a
-	ld [wJumptableIndex], a
-	ld [wcf64], a
-	ld [wCurPocket], a
-	ld [wcf66], a
+	ld [wJumptableIndex], a ; PACKSTATE_INITGFX
+	ld [wPackJumptableIndex], a ; PACKSTATE_INITGFX
+	ld [wCurPocket], a ; ITEM_POCKET
+	ld [wPackUsedItem], a
 	ld [wSwitchItem], a
 	call Pack_InitGFX
 	jp Pack_InitColors
@@ -1113,13 +1113,13 @@ DepositSellTutorial_InterpretJoypad:
 
 .a_button
 	ld a, TRUE
-	ld [wcf66], a
+	ld [wPackUsedItem], a
 	and a
 	ret
 
 .b_button
-	xor a
-	ld [wcf66], a
+	xor a ; FALSE
+	ld [wPackUsedItem], a
 	and a
 	ret
 
@@ -1165,8 +1165,8 @@ TutorialPack:
 	call .RunJumptable
 	call DepositSellTutorial_InterpretJoypad
 	jr c, .loop
-	xor a
-	ld [wcf66], a
+	xor a ; FALSE
+	ld [wPackUsedItem], a
 	ret
 
 .autoinput_right_right_a
@@ -1265,15 +1265,15 @@ Pack_JumptableNext:
 Pack_QuitNoScript:
 	ld hl, wJumptableIndex
 	set 7, [hl]
-	xor a
-	ld [wcf66], a
+	xor a ; FALSE
+	ld [wPackUsedItem], a
 	ret
 
 Pack_QuitRunScript:
 	ld hl, wJumptableIndex
 	set 7, [hl]
 	ld a, TRUE
-	ld [wcf66], a
+	ld [wPackUsedItem], a
 	ret
 
 Pack_PrintTextNoScroll:
@@ -1398,7 +1398,7 @@ Pack_InterpretJoypad:
 .d_left
 	ld a, b
 	ld [wJumptableIndex], a
-	ld [wcf64], a
+	ld [wPackJumptableIndex], a
 	push de
 	ld de, SFX_SWITCH_POCKETS
 	call PlaySFX
@@ -1409,7 +1409,7 @@ Pack_InterpretJoypad:
 .d_right
 	ld a, c
 	ld [wJumptableIndex], a
-	ld [wcf64], a
+	ld [wPackJumptableIndex], a
 	push de
 	ld de, SFX_SWITCH_POCKETS
 	call PlaySFX
@@ -1762,7 +1762,7 @@ Special_ChooseItem::
 .loop
 	call DepositSellPack
 
-	ld a, [wcf66]
+	ld a, [wPackUsedItem]
 	and a
 	ret z
 

@@ -187,7 +187,7 @@ Slots_BetAndStart:
 	call Slots_IlluminateBetLights
 	call Slots_InitBias
 	ld a, 32
-	ld [wcf64], a
+	ld [wSlotsDelay], a
 	ld a, 4
 	ld [wReel1ReelAction], a
 	ld [wReel2ReelAction], a
@@ -201,7 +201,7 @@ Slots_BetAndStart:
 	jp Slots_PlaySFX
 
 Slots_WaitStart:
-	ld hl, wcf64
+	ld hl, wSlotsDelay
 	ld a, [hl]
 	and a
 	jr z, .proceed
@@ -286,9 +286,9 @@ Slots_FlashIfWin:
 .GotIt:
 	call Slots_Next
 	ld a, 16
-	ld [wcf64], a
+	ld [wSlotsDelay], a
 Slots_FlashScreen:
-	ld hl, wcf64
+	ld hl, wSlotsDelay
 	ld a, [hl]
 	and a
 	jr z, .done
@@ -314,14 +314,14 @@ Slots_GiveEarnedCoins:
 	call DmgToCgbBGPals
 	call SlotGetPayout
 	xor a
-	ld [wcf64], a
+	ld [wSlotsDelay], a
 	jp Slots_Next
 
 Slots_PayoutTextAndAnim:
 	call SlotPayoutText
 	call Slots_Next
 Slots_PayoutAnim:
-	ld hl, wcf64
+	ld hl, wSlotsDelay
 	ld a, [hl]
 	inc [hl]
 	and $1
@@ -347,7 +347,7 @@ Slots_PayoutAnim:
 	ld [hl], e
 	dec hl
 	ld [hl], d
-	ld a, [wcf64]
+	ld a, [wSlotsDelay]
 	and $7
 	ret nz
 	ld de, SFX_GET_COIN_FROM_SLOTS
@@ -920,9 +920,9 @@ ReelAction_InitGolem:
 	ld [hl], a
 	pop bc
 	xor a
-	ld [wcf64], a
+	ld [wSlotsDelay], a
 ReelAction_WaitGolem:
-	ld a, [wcf64]
+	ld a, [wSlotsDelay]
 	cp 2
 	jr z, .two
 	cp 1
@@ -944,7 +944,7 @@ ReelAction_WaitGolem:
 
 ReelAction_EndGolem:
 	xor a
-	ld [wcf64], a
+	ld [wSlotsDelay], a
 	ld hl, wReel1ReelAction - wReel1
 	add hl, bc
 	dec [hl]
@@ -971,20 +971,20 @@ Slots_InitChansey:
 	call _InitSpriteAnimStruct
 	pop bc
 	xor a
-	ld [wcf64], a
+	ld [wSlotsDelay], a
 	ret
 
 ReelAction_WaitChansey:
-	ld a, [wcf64]
+	ld a, [wSlotsDelay]
 	and a
 	ret z
 	ld hl, wReel1ReelAction - wReel1
 	add hl, bc
 	inc [hl]
 	ld a, $2
-	ld [wcf64], a
+	ld [wSlotsDelay], a
 ReelAction_WaitEgg:
-	ld a, [wcf64]
+	ld a, [wSlotsDelay]
 	cp $4
 	ret c
 	ld hl, wReel1ReelAction - wReel1
@@ -1011,7 +1011,7 @@ ReelAction_DropReel:
 	and a
 	jr nz, .EggAgain
 	ld a, $5
-	ld [wcf64], a
+	ld [wSlotsDelay], a
 	jp Slots_StopReel
 
 .EggAgain:
@@ -1023,7 +1023,7 @@ ReelAction_DropReel:
 	dec [hl]
 	dec [hl]
 	ld a, $1
-	ld [wcf64], a
+	ld [wSlotsDelay], a
 	ret
 
 ReelAction_BoringReelDrops:
@@ -1698,7 +1698,7 @@ SlotMachine_AnimateGolem:
 	and a
 	jr nz, .retain
 	ld a, $2
-	ld [wcf64], a
+	ld [wSlotsDelay], a
 	ld hl, SPRITEANIMSTRUCT_INDEX
 	add hl, bc
 	ld [hl], $0
@@ -1738,7 +1738,7 @@ SlotMachine_AnimateGolem:
 	add hl, bc
 	ld [hl], $2
 	ld a, $1
-	ld [wcf64], a
+	ld [wSlotsDelay], a
 	ld a, SFX_PLACE_PUZZLE_PIECE_DOWN
 	jp Slots_PlaySFX
 
@@ -1797,10 +1797,10 @@ Slots_AnimateChansey:
 	add hl, bc
 	inc [hl]
 	ld a, $1
-	ld [wcf64], a
+	ld [wSlotsDelay], a
 
 .one
-	ld a, [wcf64]
+	ld a, [wSlotsDelay]
 	cp $2
 	jr z, .retain
 	cp $5

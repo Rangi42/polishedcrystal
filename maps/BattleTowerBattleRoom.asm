@@ -43,7 +43,7 @@ Script_BattleRoomLoop:
 	special FadeOutPalettes
 	reloadmap
 	ifnotequal $0, Script_FailedBattleTowerChallenge
-	copybytetovar wNrOfBeatenBattleTowerTrainers ; wcf64
+	copybytetovar wNrOfBeatenBattleTowerTrainers
 	ifequal BATTLETOWER_NROFTRAINERS, Script_BeatenAllTrainers
 	applymovement BATTLETOWERBATTLEROOM_OPPONENT, MovementData_BattleTowerBattleRoomOpponentWalksOut
 	warpsound
