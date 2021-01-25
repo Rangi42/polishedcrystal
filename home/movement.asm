@@ -2,7 +2,7 @@ InitMovementBuffer::
 	ld [wMovementBufferObject], a
 	xor a
 	ld [wMovementBufferCount], a
-	ld [wd004], a
+	ld [wd004], a ; unused
 	ret
 
 DecrementMovementBufferCount::

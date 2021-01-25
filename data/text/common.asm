@@ -3373,7 +3373,7 @@ UnknownText_0x1c41e6::
 SECTION "UnknownText_0x1c4212", ROMX
 UnknownText_0x1c4212::
 	text "Trade "
-	text_from_ram wd004
+	text_from_ram wBufferTrademonNick
 	line "for "
 	text_from_ram wStringBuffer1
 	text "?"
