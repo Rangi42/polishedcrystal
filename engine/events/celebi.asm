@@ -26,7 +26,7 @@ Special_CelebiShrineEvent:
 	add hl, bc
 	ld [hl], $80
 	ld a, 160 ; frame count
-	ld [wcf64], a
+	ld [wFrameCounter], a
 	ld d, $0
 .loop
 	ld a, [wJumptableIndex]
@@ -72,7 +72,7 @@ Special_CelebiShrineEvent:
 	ret
 
 CelebiEvent_CountDown:
-	ld hl, wcf64
+	ld hl, wFrameCounter
 	ld a, [hl]
 	and a
 	jr z, .done

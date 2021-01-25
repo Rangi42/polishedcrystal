@@ -45,7 +45,7 @@ SpecialsPointers::
 	add_special Special_UnownPuzzle
 	add_special Special_SlotMachine
 	add_special Special_CardFlip
-;	add_special Special_DummyNonfunctionalGameCornerGame
+;	add_special Special_UnusedMemoryGame
 	add_special FadeOutPalettes
 	add_special Special_FadeBlackQuickly
 	add_special FadeInPalettes

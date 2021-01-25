@@ -170,11 +170,11 @@ Special_CardFlip:
 	ld hl, _CardFlip
 	; fallthrough
 
-;Special_DummyNonfunctionalGameCornerGame:
+;Special_UnusedMemoryGame:
 ;	call Special_CheckCoins
 ;	ret c
-;	ld a, BANK(_DummyGame)
-;	ld hl, _DummyGame
+;	ld a, BANK(_MemoryGame)
+;	ld hl, _MemoryGame
 ;	call Special_StartGameCornerGame
 ;	ret
 

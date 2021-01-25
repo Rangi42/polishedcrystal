@@ -62,10 +62,10 @@ TrainerCard:
 	call ApplyTilemapInVBlank
 	ld hl, wJumptableIndex
 	xor a
-	ld [hli], a
-	ld [hli], a
-	ld [hli], a
-	ld [hl], a
+	ld [hli], a ; wJumptableIndex
+	ld [hli], a ; wTrainerCardBadgeFrameCounter
+	ld [hli], a ; wTrainerCardBadgeTileID
+	ld [hl], a  ; TODO: check if this is still needed
 	ret
 
 .Jumptable:
@@ -457,7 +457,7 @@ endr
 	jr nz, .loop2
 
 	xor a
-	ld [wcf64], a
+	ld [wTrainerCardBadgeFrameCounter], a
 	pop hl
 	jp TrainerCard_Page2_3_OAMUpdate
 
@@ -487,10 +487,10 @@ TrainerCard_Page2_3_AnimateBadges:
 	ldh a, [hVBlankCounter]
 	and $7
 	ret nz
-	ld a, [wcf64]
+	ld a, [wTrainerCardBadgeFrameCounter]
 	inc a
 	and $7
-	ld [wcf64], a
+	ld [wTrainerCardBadgeFrameCounter], a
 TrainerCard_Page2_3_OAMUpdate:
 ; copy flag array pointer
 	ld a, [hli]
@@ -518,7 +518,7 @@ TrainerCard_Page2_3_OAMUpdate:
 rept 4
 	inc hl
 endr
-	ld a, [wcf64]
+	ld a, [wTrainerCardBadgeFrameCounter]
 	; hl += a
 	add l
 	ld l, a
@@ -526,7 +526,7 @@ endr
 	sub l
 	ld h, a
 	ld a, [hl]
-	ld [wcf65], a
+	ld [wTrainerCardBadgeTileID], a
 	call .PrepOAM
 	pop hl
 .skip_badge
@@ -538,7 +538,7 @@ endr
 	ret
 
 .PrepOAM:
-	ld a, [wcf65]
+	ld a, [wTrainerCardBadgeTileID]
 	and $80
 	jr nz, .xflip
 	ld hl, .facing1
@@ -559,7 +559,7 @@ endr
 	ld [de], a
 	inc de
 
-	ld a, [wcf65]
+	ld a, [wTrainerCardBadgeTileID]
 	and $7f
 	add [hl]
 	ld [de], a

@@ -272,8 +272,6 @@ Special_BattleTower_BeginChallenge:
 	xor a
 	ld [wBattleTowerBattleEnded], a
 	ld [wNrOfBeatenBattleTowerTrainers], a
-	ld [wcf65], a
-	ld [wcf66], a
 	ret
 
 Special_BattleTower_LoadOpponentTrainerAndPokemonsWithOTSprite:

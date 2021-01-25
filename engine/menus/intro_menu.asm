@@ -954,7 +954,7 @@ Intro_PlacePlayerSprite:
 	db 10 * 8 + 4, 10 * 8, 3
 
 CrystalIntroSequence:
-	farcall Copyright_GFPresents
+	farcall SplashScreen
 	jr c, StartTitleScreen
 	farcall CrystalIntro
 
@@ -1121,16 +1121,15 @@ TitleScreenTimer:
 	jr z, .ok
 	ld de, 56 * 60
 .ok
-	ld hl, wcf65
+	ld hl, wTitleScreenTimer
 	ld [hl], e
 	inc hl
 	ld [hl], d
 	ret
 
 TitleScreenMain:
-
 ; Run the timer down.
-	ld hl, wcf65
+	ld hl, wTitleScreenTimer
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
@@ -1190,7 +1189,7 @@ TitleScreenMain:
 	ld hl, wMusicFade
 	ld [hl], 8 ; 1 second
 
-	ld hl, wcf65
+	ld hl, wTitleScreenTimer
 	inc [hl]
 	ret
 
@@ -1214,7 +1213,7 @@ TitleScreenEnd:
 
 ; Wait until the music is done fading.
 
-	ld hl, wcf65
+	ld hl, wTitleScreenTimer
 	inc [hl]
 
 	ld a, [wMusicFade]

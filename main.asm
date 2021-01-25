@@ -422,7 +422,7 @@ SECTION "bank38", ROMX
 
 INCLUDE "engine/games/card_flip.asm"
 INCLUDE "engine/games/unown_puzzle.asm"
-;INCLUDE "engine/games/dummy_game.asm"
+;INCLUDE "engine/games/memory_game.asm"
 INCLUDE "engine/pokemon/bills_pc.asm"
 INCLUDE "engine/gfx/fade.asm"
 
@@ -430,7 +430,8 @@ INCLUDE "engine/gfx/fade.asm"
 SECTION "bank39", ROMX
 
 INCLUDE "engine/menus/options_menu.asm"
-INCLUDE "engine/movie/crystal_intro.asm"
+INCLUDE "engine/movie/splash.asm"
+INCLUDE "engine/movie/intro.asm"
 
 
 SECTION "Typefaces", ROMX

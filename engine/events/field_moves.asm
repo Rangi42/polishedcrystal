@@ -25,13 +25,13 @@ ShakeHeadbuttTree:
 	ld [wCurSpriteOAMAddr], a
 	farcall DoNextFrameForAllSprites
 	call HideHeadbuttTree
-	ld a, $20
-	ld [wcf64], a
+	ld a, 32
+	ld [wFrameCounter], a
 	call WaitSFX
 	ld de, SFX_SANDSTORM
 	call PlaySFX
 .loop
-	ld hl, wcf64
+	ld hl, wFrameCounter
 	ld a, [hl]
 	and a
 	jr z, .done
@@ -129,7 +129,7 @@ Cut_SpawnAnimateTree:
 	add hl, bc
 	ld [hl], $74
 	ld a, 32
-	ld [wcf64], a
+	ld [wFrameCounter], a
 ; Cut_StartWaiting
 	ld hl, wJumptableIndex
 	inc [hl]
@@ -147,7 +147,7 @@ Cut_SpawnAnimateLeaves:
 	ld a, $30
 	call Cut_SpawnLeaf
 	ld a, 32 ; frames
-	ld [wcf64], a
+	ld [wFrameCounter], a
 ; Cut_StartWaiting
 	ld hl, wJumptableIndex
 	inc [hl]
@@ -161,7 +161,7 @@ Cut_StartWaiting:
 	inc [hl]
 
 Cut_WaitAnimSFX:
-	ld hl, wcf64
+	ld hl, wFrameCounter
 	ld a, [hl]
 	and a
 	jr z, .finished
@@ -272,7 +272,7 @@ FlyFromAnim:
 	add hl, bc
 	ld [hl], SPRITE_ANIM_SEQ_FLY_FROM
 	ld a, 128
-	ld [wcf64], a
+	ld [wFrameCounter], a
 .loop
 	ld a, [wJumptableIndex]
 	bit 7, a
@@ -309,7 +309,7 @@ FlyToAnim:
 	add hl, bc
 	ld [hl], 11 * 8
 	ld a, 64
-	ld [wcf64], a
+	ld [wFrameCounter], a
 .loop
 	ld a, [wJumptableIndex]
 	bit 7, a
@@ -351,7 +351,7 @@ FlyFunction_InitGFX:
 
 FlyFunction_FrameTimer:
 	call .SpawnLeaf
-	ld hl, wcf64
+	ld hl, wFrameCounter
 	ld a, [hl]
 	and a
 	jr z, .exit
@@ -369,7 +369,7 @@ FlyFunction_FrameTimer:
 	ret
 
 .SpawnLeaf:
-	ld hl, wcf65
+	ld hl, wFrameCounter2
 	ld a, [hl]
 	inc [hl]
 	and $7

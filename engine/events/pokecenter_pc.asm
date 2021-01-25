@@ -380,7 +380,7 @@ PlayerDepositItemMenu:
 	farcall DepositSellInitPackBuffers
 .loop
 	farcall DepositSellPack
-	ld a, [wcf66]
+	ld a, [wPackUsedItem]
 	and a
 	jr z, .close
 	call .TryDepositItem

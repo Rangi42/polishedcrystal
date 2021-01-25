@@ -747,11 +747,11 @@ EggHatch_AnimationSequence:
 	ld c, 80
 	call DelayFrames
 	xor a
-	ld [wcf64], a
+	ld [wFrameCounter], a
 	ldh a, [hSCX]
 	ld b, a
 .outerloop
-	ld hl, wcf64
+	ld hl, wFrameCounter
 	ld a, [hl]
 	inc [hl]
 	cp 8
@@ -810,7 +810,7 @@ Hatch_LoadFrontpicPal:
 	jp GetCGBLayout
 
 EggHatch_CrackShell:
-	ld a, [wcf64]
+	ld a, [wFrameCounter]
 	dec a
 	and $7
 	cp $7

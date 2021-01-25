@@ -12,8 +12,8 @@ _TitleScreen:
 	ld hl, wJumptableIndex
 	ld [hli], a ; wJumptableIndex
 	ld [hli], a ; wIntroSceneFrameCounter
-	ld [hli], a ; wTitleScreenTimerLo
-	ld [hl], a  ; wTitleScreenTimerHi
+	ld [hli], a ; wTitleScreenTimer
+	ld [hl], a  ; wTitleScreenTimer+1
 
 ; Turn LCD off
 	call DisableLCD
