@@ -163,8 +163,8 @@ wUnownPuzzleCornerTile::
 wKeepSevenBiasChance::
 wTempDayOfWeek::
 	db
-	ds 1
-wd004: db
+
+	ds 2 ; unused
 
 wStartFlypoint:: db
 wEndFlypoint:: db

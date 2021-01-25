@@ -965,8 +965,7 @@ wOtherPlayerLinkMode:: db
 wOtherPlayerLinkAction:: db
 	ds 3
 wPlayerLinkAction:: db
-wcf57:: db ; TODO: replace with meaningful label
-	ds 3
+	ds 4
 wLinkTimeoutFrames:: dw
 wLinkByteTimeout:: dw
 
