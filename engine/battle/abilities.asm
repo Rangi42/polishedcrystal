@@ -140,7 +140,7 @@ ObliviousAbility:
 TraceAbility:
 	call GetOpponentAbility
 	inc a
-	ret z
+	ret z ; Neutralizing Gas sentinel upon fainting
 	dec a
 	ret z
 	cp TRACE
@@ -510,7 +510,7 @@ SynchronizeAbility:
 	ld a, BATTLE_VARS_STATUS
 	call GetBattleVar
 	and 1 << PAR | 1 << BRN | 1 << PSN
-	ret z ; not statused
+	ret z ; not statused or frozen/asleep (which doesn't proc Synchronize)
 	call DisableAnimations
 	call ShowAbilityActivation
 	farcall ResetMiss
@@ -713,6 +713,10 @@ PoisonTouchAbility:
 	cp SHIELD_DUST
 	ret z
 PoisonPointAbility:
+	; there are 2 poison resistance abilities, so check one here
+	call GetOpponentAbility
+	cp PASTEL_VEIL
+	ret z
 	call CheckIfTargetIsPoisonType
 	ret z
 	call CheckIfTargetIsSteelType
