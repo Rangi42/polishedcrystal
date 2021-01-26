@@ -214,7 +214,7 @@ HandleEndturnBlockB:
 
 .do_it
 	; uproar
-	farcall HandleAbilities ; and pickup/harvest (no need to move below orbs)
+	farcall EndturnAbilitiesB ; and pickup/harvest (no need to move below orbs)
 	jp HandleStatusOrbs
 
 HandleWeather:
