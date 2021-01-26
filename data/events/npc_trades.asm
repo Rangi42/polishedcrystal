@@ -2,7 +2,7 @@ NPCTrades:
 ; OT names have 3 characters less padding so the total struct is 32 bytes
 ; TRADE_WITH_MIKE_FOR_MACHOP in Goldenrod City
 	rawchar 0, ABRA,       MACHOP,     "Muscle@@@@@"
-	db $EE, $EE, $EE, HIDDEN_ABILITY | ADAMANT, MALE,   LEVEL_BALL,   SITRUS_BERRY
+	db $EE, $EE, $EE, HIDDEN_ABILITY | ADAMANT, FEMALE, LEVEL_BALL,   SITRUS_BERRY
 	dw 37460
 	rawchar "Mike@@@@", $00
 ; TRADE_WITH_KYLE_FOR_VOLTORB in Violet City
