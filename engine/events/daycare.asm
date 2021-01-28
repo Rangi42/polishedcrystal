@@ -101,7 +101,7 @@ DayCareLadyIntroText: ; 16781
 	inc a
 DayCareManIntroText: ; 1678f
 	set 7, [hl]
-DayCarePersonIntroText
+DayCarePersonIntroText:
 	call PrintDayCareText
 	jp YesNoBox
 ; 16798

@@ -374,7 +374,7 @@ BattleAnim_Scald:
 	anim_wait 6
 	anim_ret
 
-BattleAnim_ThrowPokeBall
+BattleAnim_ThrowPokeBall:
 	anim_jumpif NO_ITEM, .TheTrainerBlockedTheBall
 	anim_jumpif MASTER_BALL, .MasterBall
 	; any other ball

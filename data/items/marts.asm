@@ -39,7 +39,7 @@ Marts: ; 160a9
 	dw BattleTowerMart1
 	dw BattleTowerMart2
 	dw BattleTowerMart3
-MartsEnd
+MartsEnd:
 ; 160ed
 
 

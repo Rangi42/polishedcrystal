@@ -34,18 +34,15 @@ Facings:
 	dw FacingSplash1        ; FACING_SPLASH_1
 	dw FacingSplash2        ; FACING_SPLASH_2
 	dw FacingCutTree        ; FACING_CUT_TREE
-	dw FacingRailUpperHi      ; FACING_RAIL_UPPER_HI
-	dw FacingRailUpperLo      ; FACING_RAIL_UPPER_LO
-	dw FacingRailLowerHi      ; FACING_RAIL_LOWER_HI
-	dw FacingRailLowerLo      ; FACING_RAIL_LOWER_LO
-	dw FacingRailUpperHiFlip  ; FACING_RAIL_UPPER_HI_FLIP
-	dw FacingRailUpperLoFlip  ; FACING_RAIL_UPPER_LO_FLIP
-	dw FacingRailLowerHiFlip  ; FACING_RAIL_LOWER_HI_FLIP
-	dw FacingRailLowerLoFlip  ; FACING_RAIL_LOWER_LO_FLIP
-	dw FacingEdgeHi           ; FACING_EDGE_HI
-	dw FacingEdgeLo           ; FACING_EDGE_LO
-	dw FacingArchLeft         ; FACING_ARCH_LEFT
-	dw FacingArchRight        ; FACING_ARCH_RIGHT
+	dw FacingRailUpper      ; FACING_RAIL_UPPER
+	dw FacingRailLower      ; FACING_RAIL_LOWER
+	dw FacingRailUpperFlip  ; FACING_RAIL_UPPER_FLIP
+	dw FacingRailLowerFlip  ; FACING_RAIL_LOWER_FLIP
+	dw FacingEdge           ; FACING_EDGE
+	dw FacingArchLeft       ; FACING_ARCH_LEFT
+	dw FacingArchRight      ; FACING_ARCH_RIGHT
+	dw FacingRailLeft       ; FACING_RAIL_LEFT
+	dw FacingRailRight      ; FACING_RAIL_RIGHT
 FacingsEnd: dw 0
 
 NUM_FACINGS EQU (FacingsEnd - Facings) / 2
@@ -293,52 +290,37 @@ FacingCutTree:
 	db 12,  0, 2, $06
 	db 12,  8, 2, $07
 
-FacingRailUpperHi:
-	db 3 ; #
+FacingRailUpper:
+	db 4 ; #
 	db  4,  8, 4, $ce
 	db 12,  0, 4, $ce
 	db 12,  8, 4, $cf
+	db 20,  0, 4, $cf
 
-FacingRailUpperLo:
-	db 1 ; #
-	db  4,  0, 4, $cf
-
-FacingRailLowerHi:
-	db 1 ; #
-	db 12,  8, 4, $ce
-
-FacingRailLowerLo:
-	db 3 ; #
+FacingRailLower:
+	db 4 ; #
+	db -4,  8, 4, $ce
 	db  4,  0, 4, $ce
 	db  4,  8, 4, $cf
 	db 12,  0, 4, $cf
 
-FacingRailUpperHiFlip:
-	db 3 ; #
+FacingRailUpperFlip:
+	db 4 ; #
 	db  4,  0, 4 | X_FLIP, $ce
 	db 12,  8, 4 | X_FLIP, $ce
 	db 12,  0, 4 | X_FLIP, $cf
+	db 20,  8, 4 | X_FLIP, $cf
 
-FacingRailUpperLoFlip:
-	db 1 ; #
-	db  4,  8, 4 | X_FLIP, $cf
-
-FacingRailLowerHiFlip:
-	db 1 ; #
-	db 12,  0, 4 | X_FLIP, $ce
-
-FacingRailLowerLoFlip:
-	db 3 ; #
+FacingRailLowerFlip:
+	db 4 ; #
+	db -4,  0, 4 | X_FLIP, $ce
 	db  4,  8, 4 | X_FLIP, $ce
 	db  4,  0, 4 | X_FLIP, $cf
 	db 12,  8, 4 | X_FLIP, $cf
 
-FacingEdgeHi:
-	db 1 ; #
-	db 12,  0, 4, $df
-
-FacingEdgeLo:
-	db 1 ; #
+FacingEdge:
+	db 2 ; #
+	db -4,  0, 4, $df
 	db  4,  8, 4, $df
 
 FacingArchLeft:
@@ -350,3 +332,17 @@ FacingArchRight:
 	db 2 ; #
 	db  4,  8, 4 | X_FLIP, $e0
 	db  4,  0, 4 | X_FLIP, $e1
+
+FacingRailLeft:
+	db 4 ; #
+	db 12,  0, 4, $e3
+	db 12,  8, 4, $e2
+	db 12, 16, 4, $e2
+	db 12, 24, 4, $e2
+
+FacingRailRight:
+	db 4 ; #
+	db 12,  0, 4, $e2
+	db 12,  8, 4, $e2
+	db 12, 16, 4, $e2
+	db 12, 24, 4, $e3

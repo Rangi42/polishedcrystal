@@ -59,7 +59,7 @@ Script_Whiteout: ; 0x124ce
 	text_jump ForfeitToTrainerText
 	db "@"
 
-OverworldWhiteoutFade
+OverworldWhiteoutFade:
 	farcall FadeOutPalettes
 	call ClearTileMap
 	call ClearSprites

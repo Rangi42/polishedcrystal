@@ -51,7 +51,7 @@ UnknownScript_0x73617:
 	turnobject PLAYER, UP
 	showtext UnknownText_0x7364d
 	applymovement PLAYER, MovementData_0x73629
-Route18GateDoNothingScript
+Route18GateDoNothingScript:
 	end
 
 Route18GateStepUpThreeMovementData:

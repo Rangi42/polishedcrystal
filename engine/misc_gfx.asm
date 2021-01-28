@@ -139,7 +139,7 @@ DoHBlankHDMATransfer_toBGMap:
 	jr nz, .waitHDMALoop
 	reti
 
-DoHBlankHDMATransfer
+DoHBlankHDMATransfer:
 	ld b, $7f
 ; a lot of waiting around for hardware registers
 	; [rHDMA1, rHDMA2] = hl & $fff0

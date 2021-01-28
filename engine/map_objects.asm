@@ -533,18 +533,15 @@ MapObjectMovementPattern:
 	dw .MovementShakingGrass         ; SPRITEMOVEFN_GRASS
 	dw .MovementSplashingPuddle      ; SPRITEMOVEFN_PUDDLE
 	dw .MovementCutTree              ; SPRITEMOVEFN_CUT_TREE
-	dw .MovementRailUpperHi          ; SPRITEMOVEFN_RAIL_UPPER_HI
-	dw .MovementRailUpperLo          ; SPRITEMOVEFN_RAIL_UPPER_LO
-	dw .MovementRailLowerHi          ; SPRITEMOVEFN_RAIL_LOWER_HI
-	dw .MovementRailLowerLo          ; SPRITEMOVEFN_RAIL_LOWER_LO
-	dw .MovementRailUpperHiFlip      ; SPRITEMOVEFN_RAIL_UPPER_HI_FLIP
-	dw .MovementRailUpperLoFlip      ; SPRITEMOVEFN_RAIL_UPPER_LO_FLIP
-	dw .MovementRailLowerHiFlip      ; SPRITEMOVEFN_RAIL_LOWER_HI_FLIP
-	dw .MovementRailLowerLoFlip      ; SPRITEMOVEFN_RAIL_LOWER_LO_FLIP
-	dw .MovementEdgeHi               ; SPRITEMOVEFN_EDGE_HI
-	dw .MovementEdgeLo               ; SPRITEMOVEFN_EDGE_LO
+	dw .MovementRailUpper            ; SPRITEMOVEFN_RAIL_UPPER
+	dw .MovementRailLower            ; SPRITEMOVEFN_RAIL_LOWER
+	dw .MovementRailUpperFlip        ; SPRITEMOVEFN_RAIL_UPPER_FLIP
+	dw .MovementRailLowerFlip        ; SPRITEMOVEFN_RAIL_LOWER_FLIP
+	dw .MovementEdge                 ; SPRITEMOVEFN_EDGE
 	dw .MovementArchLeft             ; SPRITEMOVEFN_ARCH_LEFT
 	dw .MovementArchRight            ; SPRITEMOVEFN_ARCH_RIGHT
+	dw .MovementRailLeft             ; SPRITEMOVEFN_RAIL_LEFT
+	dw .MovementRailRight            ; SPRITEMOVEFN_RAIL_RIGHT
 
 .RandomWalkY:
 	call Random
@@ -733,44 +730,24 @@ MapObjectMovementPattern:
 	ld a, PERSON_ACTION_BOUNCE
 	jr ._ActionA_StepType04
 
-.MovementRailUpperHi:
-	ld a, PERSON_ACTION_RAIL_UPPER_HI
+.MovementRailUpper:
+	ld a, PERSON_ACTION_RAIL_UPPER
 	jr ._ActionA_StepType04
 
-.MovementRailUpperLo:
-	ld a, PERSON_ACTION_RAIL_UPPER_LO
+.MovementRailLower:
+	ld a, PERSON_ACTION_RAIL_LOWER
 	jr ._ActionA_StepType04
 
-.MovementRailLowerHi:
-	ld a, PERSON_ACTION_RAIL_LOWER_HI
+.MovementRailUpperFlip:
+	ld a, PERSON_ACTION_RAIL_UPPER_FLIP
 	jr ._ActionA_StepType04
 
-.MovementRailLowerLo:
-	ld a, PERSON_ACTION_RAIL_LOWER_LO
+.MovementRailLowerFlip:
+	ld a, PERSON_ACTION_RAIL_LOWER_FLIP
 	jr ._ActionA_StepType04
 
-.MovementRailUpperHiFlip:
-	ld a, PERSON_ACTION_RAIL_UPPER_HI_FLIP
-	jr ._ActionA_StepType04
-
-.MovementRailUpperLoFlip:
-	ld a, PERSON_ACTION_RAIL_UPPER_LO_FLIP
-	jr ._ActionA_StepType04
-
-.MovementRailLowerHiFlip:
-	ld a, PERSON_ACTION_RAIL_LOWER_HI_FLIP
-	jr ._ActionA_StepType04
-
-.MovementRailLowerLoFlip:
-	ld a, PERSON_ACTION_RAIL_LOWER_LO_FLIP
-	jr ._ActionA_StepType04
-
-.MovementEdgeHi:
-	ld a, PERSON_ACTION_EDGE_HI
-	jr ._ActionA_StepType04
-
-.MovementEdgeLo:
-	ld a, PERSON_ACTION_EDGE_LO
+.MovementEdge:
+	ld a, PERSON_ACTION_EDGE
 	jr ._ActionA_StepType04
 
 .MovementArchLeft:
@@ -779,6 +756,14 @@ MapObjectMovementPattern:
 
 .MovementArchRight:
 	ld a, PERSON_ACTION_ARCH_RIGHT
+	jr ._ActionA_StepType04
+
+.MovementRailLeft:
+	ld a, PERSON_ACTION_RAIL_LEFT
+	jr ._ActionA_StepType04
+
+.MovementRailRight:
+	ld a, PERSON_ACTION_RAIL_RIGHT
 	jr ._ActionA_StepType04
 
 .MovementCutTree:

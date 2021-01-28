@@ -308,7 +308,7 @@ KangaskhanFrontpic:       INCBIN "gfx/pokemon/kangaskhan/front.2bpp.lz"
 KangaskhanBackpic:        INCBIN "gfx/pokemon/kangaskhan/back.2bpp.lz"
 
 
-SECTION "Pokemon Pics 14", ROMX
+SECTION "Pokemon Pics 14.2", ROMX
 
 HorseaFrontpic:           INCBIN "gfx/pokemon/horsea/front.2bpp.lz"
 HorseaBackpic:            INCBIN "gfx/pokemon/horsea/back.2bpp.lz"

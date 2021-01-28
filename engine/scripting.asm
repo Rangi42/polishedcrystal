@@ -1325,7 +1325,7 @@ EarthquakeMovement:
 	step_shake 16 ; the 16 gets overwritten with the script byte
 	step_sleep 16 ; the 16 gets overwritten with the lower 6 bits of the script byte
 	step_end
-EarthquakeMovementEnd
+EarthquakeMovementEnd:
 
 Script_randomwildmon:
 	xor a

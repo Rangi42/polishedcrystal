@@ -1,6 +1,6 @@
 SRAM_Begin EQU $a000
 SRAM_End   EQU $c000
-GLOBAL SRAM_Begin, SRAM_End
+EXPORT SRAM_Begin, SRAM_End
 
 
 SECTION "Scratch", SRAM

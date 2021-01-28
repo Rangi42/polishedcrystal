@@ -880,7 +880,7 @@ DigFunction: ; cb9c
 	call FieldMoveJumptableReset
 	ld a, $2
 
-dig_incave
+dig_incave:
 	ld [wBuffer2], a
 .loop
 	ld hl, .DigTable

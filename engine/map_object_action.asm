@@ -18,18 +18,15 @@ Pointers445f: ; 445f
 	dw SetFacingCutTree,               SetFacingCutTree           ; PERSON_ACTION_CUT_TREE
 	dw SetFacingSkyfall,               SetFacingCurrent           ; PERSON_ACTION_SKYFALL
 	dw SetFacingRun,                   SetFacingCurrent           ; PERSON_ACTION_RUN
-	dw SetFacingRailUpperHi,           SetFacingRailUpperHi       ; PERSON_ACTION_RAIL_UPPER_HI
-	dw SetFacingRailUpperLo,           SetFacingRailUpperLo       ; PERSON_ACTION_RAIL_UPPER_LO
-	dw SetFacingRailLowerHi,           SetFacingRailLowerHi       ; PERSON_ACTION_RAIL_LOWER_HI
-	dw SetFacingRailLowerLo,           SetFacingRailLowerLo       ; PERSON_ACTION_RAIL_LOWER_LO
-	dw SetFacingRailUpperHiFlip,       SetFacingRailUpperHiFlip   ; PERSON_ACTION_RAIL_UPPER_HI_FLIP
-	dw SetFacingRailUpperLoFlip,       SetFacingRailUpperLoFlip   ; PERSON_ACTION_RAIL_UPPER_LO_FLIP
-	dw SetFacingRailLowerHiFlip,       SetFacingRailLowerHiFlip   ; PERSON_ACTION_RAIL_LOWER_HI_FLIP
-	dw SetFacingRailLowerLoFlip,       SetFacingRailLowerLoFlip   ; PERSON_ACTION_RAIL_LOWER_LO_FLIP
-	dw SetFacingEdgeHi,                SetFacingEdgeHi            ; PERSON_ACTION_EDGE_HI
-	dw SetFacingEdgeLo,                SetFacingEdgeLo            ; PERSON_ACTION_EDGE_LO
+	dw SetFacingRailUpper,             SetFacingRailUpper         ; PERSON_ACTION_RAIL_UPPER
+	dw SetFacingRailLower,             SetFacingRailLower         ; PERSON_ACTION_RAIL_LOWER
+	dw SetFacingRailUpperFlip,         SetFacingRailUpperFlip     ; PERSON_ACTION_RAIL_UPPER_FLIP
+	dw SetFacingRailLowerFlip,         SetFacingRailLowerFlip     ; PERSON_ACTION_RAIL_LOWER_FLIP
+	dw SetFacingEdge,                  SetFacingEdge              ; PERSON_ACTION_EDGE
 	dw SetFacingArchLeft,              SetFacingArchLeft          ; PERSON_ACTION_ARCH_LEFT
 	dw SetFacingArchRight,             SetFacingArchRight         ; PERSON_ACTION_ARCH_RIGHT
+	dw SetFacingRailLeft,              SetFacingRailLeft          ; PERSON_ACTION_RAIL_LEFT
+	dw SetFacingRailRight,             SetFacingRailRight         ; PERSON_ACTION_RAIL_RIGHT
 ; 44a3
 
 SetFacingStanding: ; 44a3
@@ -56,44 +53,24 @@ SetFacingCutTree:
 	ld a, FACING_CUT_TREE
 	jr SetFixedFacing
 
-SetFacingRailUpperHi:
-	ld a, FACING_RAIL_UPPER_HI
+SetFacingRailUpper:
+	ld a, FACING_RAIL_UPPER
 	jr SetFixedFacing
 
-SetFacingRailUpperLo:
-	ld a, FACING_RAIL_UPPER_LO
+SetFacingRailLower:
+	ld a, FACING_RAIL_LOWER
 	jr SetFixedFacing
 
-SetFacingRailLowerHi:
-	ld a, FACING_RAIL_LOWER_HI
+SetFacingRailUpperFlip:
+	ld a, FACING_RAIL_UPPER_FLIP
 	jr SetFixedFacing
 
-SetFacingRailLowerLo:
-	ld a, FACING_RAIL_LOWER_LO
+SetFacingRailLowerFlip:
+	ld a, FACING_RAIL_LOWER_FLIP
 	jr SetFixedFacing
 
-SetFacingRailUpperHiFlip:
-	ld a, FACING_RAIL_UPPER_HI_FLIP
-	jr SetFixedFacing
-
-SetFacingRailUpperLoFlip:
-	ld a, FACING_RAIL_UPPER_LO_FLIP
-	jr SetFixedFacing
-
-SetFacingRailLowerHiFlip:
-	ld a, FACING_RAIL_LOWER_HI_FLIP
-	jr SetFixedFacing
-
-SetFacingRailLowerLoFlip:
-	ld a, FACING_RAIL_LOWER_LO_FLIP
-	jr SetFixedFacing
-
-SetFacingEdgeHi:
-	ld a, FACING_EDGE_HI
-	jr SetFixedFacing
-
-SetFacingEdgeLo:
-	ld a, FACING_EDGE_LO
+SetFacingEdge:
+	ld a, FACING_EDGE
 	jr SetFixedFacing
 
 SetFacingArchLeft:
@@ -102,6 +79,14 @@ SetFacingArchLeft:
 
 SetFacingArchRight:
 	ld a, FACING_ARCH_RIGHT
+	jr SetFixedFacing
+
+SetFacingRailLeft:
+	ld a, FACING_RAIL_LEFT
+	jr SetFixedFacing
+
+SetFacingRailRight:
+	ld a, FACING_RAIL_RIGHT
 	jr SetFixedFacing
 
 SetFacingBigDoll: ; 45c5
