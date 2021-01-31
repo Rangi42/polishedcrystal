@@ -5,8 +5,8 @@ AI_Basic:
 ;  -Using status-only moves if the player can't be statused
 ;  -Using moves that fail if they've already been used
 
-	ld hl, wStringBuffer5 - 1
-	ld de, wEnemyMonMoves
+	ld hl, wAIMoveScore - 1
+	ld de, wAIMoves
 	ld b, NUM_MOVES + 1
 .checkmove
 	dec b
@@ -85,8 +85,8 @@ AI_Setup:
 ; 50% chance to greatly encourage stat-down moves during the first turn of player's Pokemon.
 ; Almost 90% chance to greatly discourage stat-modifying moves otherwise.
 
-	ld hl, wStringBuffer5 - 1
-	ld de, wEnemyMonMoves
+	ld hl, wAIMoveScore - 1
+	ld de, wAIMoves
 	ld b, NUM_MOVES + 1
 .checkmove
 	dec b
@@ -159,8 +159,8 @@ AI_Types:
 ; Discourage not very effective moves unless
 ; all damaging moves are of the same type.
 ; Overridden by the "Aggressive" AI layer
-	ld hl, wStringBuffer5 - 1
-	ld de, wEnemyMonMoves
+	ld hl, wAIMoveScore - 1
+	ld de, wAIMoves
 	ld b, NUM_MOVES + 1
 .checkmove
 	dec b
@@ -212,7 +212,7 @@ AI_Types:
 	push bc
 	ld a, [wEnemyMoveStruct + MOVE_TYPE]
 	ld d, a
-	ld hl, wEnemyMonMoves
+	ld hl, wAIMoves
 	lb bc, (NUM_MOVES + 1), 0
 .checkmove2
 	dec b
@@ -266,8 +266,8 @@ AI_IsFixedDamageMove:
 AI_Offensive:
 ; Greatly discourage non-damaging moves.
 
-	ld hl, wStringBuffer5 - 1
-	ld de, wEnemyMonMoves
+	ld hl, wAIMoveScore - 1
+	ld de, wAIMoves
 	ld b, NUM_MOVES + 1
 .checkmove
 	dec b
@@ -292,8 +292,8 @@ AI_Offensive:
 AI_Smart:
 ; Context-specific scoring.
 
-	ld hl, wStringBuffer5
-	ld de, wEnemyMonMoves
+	ld hl, wAIMoveScore
+	ld de, wAIMoves
 	ld b, NUM_MOVES + 1
 .checkmove
 	dec b
@@ -2195,7 +2195,7 @@ AIHasMoveEffect:
 ; Return carry if the enemy has move b.
 
 	push hl
-	ld hl, wEnemyMonMoves
+	ld hl, wAIMoves
 	ld c, NUM_MOVES
 
 .checkmove
@@ -2236,7 +2236,7 @@ AIHasMoveInArray:
 
 	ld b, a
 	ld c, NUM_MOVES + 1
-	ld de, wEnemyMonMoves
+	ld de, wAIMoves
 
 .check
 	dec c
@@ -2295,8 +2295,8 @@ AI_Opportunist:
 	ret c
 
 .asm_39322
-	ld hl, wStringBuffer5 - 1
-	ld de, wEnemyMonMoves
+	ld hl, wAIMoveScore - 1
+	ld de, wAIMoves
 	ld c, NUM_MOVES + 1
 .checkmove
 	inc hl
@@ -2364,7 +2364,7 @@ AI_Aggressive:
 ; regular type matchup layer
 
 	; Figure out which attack does the most damage and put it in c.
-	ld hl, wEnemyMonMoves
+	ld hl, wAIMoves
 	ld bc, 0
 	ld de, 0
 .checkmove
@@ -2394,7 +2394,7 @@ AI_Aggressive:
 	; Ignore unusable moves
 	pop bc
 	push bc
-	ld hl, wStringBuffer5 - 1
+	ld hl, wAIMoveScore - 1
 	ld c, b
 	ld b, 0
 	add hl, bc
@@ -2432,8 +2432,8 @@ AI_Aggressive:
 	ret z
 
 ; Discourage moves that do less damage unless they're reckless too.
-	ld hl, wStringBuffer5 - 1
-	ld de, wEnemyMonMoves
+	ld hl, wAIMoveScore - 1
+	ld de, wAIMoves
 	ld b, 0
 .checkmove2
 	inc b
@@ -2575,8 +2575,8 @@ AI_Cautious:
 	and a
 	ret z
 
-	ld hl, wStringBuffer5 - 1
-	ld de, wEnemyMonMoves
+	ld hl, wAIMoveScore - 1
+	ld de, wAIMoves
 	ld c, NUM_MOVES + 1
 .asm_39425
 	inc hl
@@ -2624,8 +2624,8 @@ AI_Status:
 ; Dismiss status moves that don't affect the player.
 	ld a, 1
 	ldh [hBattleTurn], a
-	ld hl, wStringBuffer5 - 1
-	ld de, wEnemyMonMoves
+	ld hl, wAIMoveScore - 1
+	ld de, wAIMoves
 	ld b, NUM_MOVES + 1
 .checkmove
 	dec b
@@ -2770,8 +2770,8 @@ AI_Risky:
 ; Use any move that will KO the target.
 ; Risky moves will often be an exception (see below).
 
-	ld hl, wStringBuffer5 - 1
-	ld de, wEnemyMonMoves
+	ld hl, wAIMoveScore - 1
+	ld de, wAIMoves
 	ld c, NUM_MOVES + 1
 .checkmove
 	inc hl

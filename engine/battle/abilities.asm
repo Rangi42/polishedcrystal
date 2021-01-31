@@ -140,7 +140,7 @@ ObliviousAbility:
 TraceAbility:
 	call GetOpponentAbility
 	inc a
-	ret z
+	ret z ; Neutralizing Gas sentinel upon fainting
 	dec a
 	ret z
 	cp TRACE
@@ -510,7 +510,7 @@ SynchronizeAbility:
 	ld a, BATTLE_VARS_STATUS
 	call GetBattleVar
 	and 1 << PAR | 1 << BRN | 1 << PSN
-	ret z ; not statused
+	ret z ; not statused or frozen/asleep (which doesn't proc Synchronize)
 	call DisableAnimations
 	call ShowAbilityActivation
 	farcall ResetMiss
@@ -713,6 +713,10 @@ PoisonTouchAbility:
 	cp SHIELD_DUST
 	ret z
 PoisonPointAbility:
+	; there are 2 poison resistance abilities, so check one here
+	call GetOpponentAbility
+	cp PASTEL_VEIL
+	ret z
 	call CheckIfTargetIsPoisonType
 	ret z
 	call CheckIfTargetIsSteelType
@@ -771,7 +775,7 @@ CheckNullificationAbilities:
 ; Doesn't deal with the active effect of this, but just checking if they apply vs
 ; an opponent's used attack (not Overcoat vs powder which is checked with Grass)
 	; Most abilities depends on types and can use a lookup table, but a few
-	; doesn't. Check these first.
+	; don't. Check these first.
 	call GetOpponentAbilityAfterMoldBreaker
 	ld b, a
 	cp DAMP
@@ -826,11 +830,9 @@ CheckNullificationAbilities:
 	ret nc
 
 .ability_ok
-	; Set wAttackMissed to 3 (means ability immunity kicked in), and wTypeMatchup
-	; to 0 (not neccessary for the engine itself, but helps the AI)
 	ld a, ATKFAIL_ABILITY
 	ld [wAttackMissed], a
-	xor a
+	xor a ; kind of redundant, but helpful for the AI
 	ld [wTypeMatchup], a
 	ret
 
@@ -1160,26 +1162,28 @@ WeatherRecoveryAbility:
 	jp EnableAnimations
 
 EndturnAbilitiesA:
-	ld hl, .ability_table
+	ld hl, EndturnAbilityTableA
+	jr _EndturnAbilities
+
+EndturnAbilitiesB:
+; these 2 routines are deliberately seperate to maintain vanilla accuracy
+	ld hl, EndturnAbilityTableB
+	; fallthrough
+_EndturnAbilities:
+	push hl
+	call HasUserFainted
+	pop hl
+	ret z
 	call UserAbilityJumptable
 	ld hl, StatusHealAbilities
 	jp UserAbilityJumptable
 
-.ability_table
+EndturnAbilityTableA:
 	dbw SHED_SKIN, ShedSkinAbility
 	dbw HYDRATION, HydrationAbility
 	dbw -1, -1
 
-HandleAbilities:
-; Abilities handled at the end of the turn.
-	call HasUserFainted
-	ret z
-	ld hl, EndTurnAbilities
-	call UserAbilityJumptable
-	ld hl, StatusHealAbilities
-	jp UserAbilityJumptable
-
-EndTurnAbilities:
+EndturnAbilityTableB:
 	dbw HARVEST, HarvestAbility
 	dbw MOODY, MoodyAbility
 	dbw PICKUP, PickupAbility

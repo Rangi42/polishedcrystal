@@ -83,6 +83,7 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * Acrozz, Ruvaldak, Serious Senator, and WorldsBoss for trainer and NPC dialog.
 * ShockSlayer for Eusine's losing text.
 * Hello for correcting composers in the music player.
+* Salamandar for Battle Tower sets.
 
 
 ## Special Thanks
