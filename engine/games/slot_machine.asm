@@ -97,12 +97,12 @@ _SlotMachine:
 ;	call PlayMusic
 
 	xor a
-	ld [wd002], a
+	ld [wKeepSevenBiasChance], a
 	call Random
 	and %00101010
 	ret nz
 	ld a, $1
-	ld [wd002], a
+	ld [wKeepSevenBiasChance], a
 	ret
 
 Slots_GetPals:
@@ -873,11 +873,11 @@ ReelAction_WaitReel2SkipTo7:
 	add hl, bc
 	ld a, [hl]
 	and a
-	jr z, .asm_92d02
+	jr z, .ready
 	dec [hl]
 	ret
 
-.asm_92d02
+.ready
 	ld a, SFX_THROW_BALL
 	call Slots_PlaySFX
 	ld hl, wReel1ReelAction - wReel1
@@ -1648,13 +1648,17 @@ endr
 	text_jump UnknownText_0x1c50bb
 	text_end
 
+; Oddly, the rarest mode (wKeepSevenBiasChance = 1) is the one with
+; the worse odds to favor seven symbol streaks (12.5% vs 25%).
+; it's possible that either the wKeepSevenBiasChance initialization
+; or this code was intended to lead to flipped percentages.
 .LinedUpSevens:
 	ld a, SFX_2ND_PLACE
 	call Slots_PlaySFX
 	call WaitSFX
-	ld a, [wd002]
+	ld a, [wKeepSevenBiasChance]
 	and a
-	jr nz, .asm_931ff
+	jr nz, .lower_seven_streak_odds
 	call Random
 	and $14
 	ret z
@@ -1662,7 +1666,7 @@ endr
 	ld [wSlotBias], a
 	ret
 
-.asm_931ff
+.lower_seven_streak_odds
 	call Random
 	and $1c
 	ret z

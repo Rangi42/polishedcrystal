@@ -1923,7 +1923,7 @@ Itemfinder:
 
 RestorePPEffect:
 	ld a, [wCurItem]
-	ld [wd002], a
+	ld [wTempItem], a
 
 .loop
 	; Party Screen opens to choose on which Pkmn to use the Item
@@ -1932,14 +1932,14 @@ RestorePPEffect:
 	jp c, ItemNotUsed_ExitMenu
 
 .loop2
-	ld a, [wd002]
+	ld a, [wTempItem]
 	cp MAX_ELIXIR
 	jp z, Elixir_RestorePPofAllMoves
 	cp ELIXIR
 	jp z, Elixir_RestorePPofAllMoves
 
 	ld hl, TextJump_RaiseThePPOfWhichMove
-	ld a, [wd002]
+	ld a, [wTempItem]
 	cp PP_UP
 	jr z, .ppup
 	cp PP_MAX
@@ -1972,7 +1972,7 @@ RestorePPEffect:
 	call CopyName1
 	pop hl
 
-	ld a, [wd002]
+	ld a, [wTempItem]
 	cp PP_UP
 	jr z, .ppup2
 	cp PP_MAX
@@ -1996,7 +1996,7 @@ RestorePPEffect:
 	jr .loop2
 
 .do_ppup
-	ld a, [wd002]
+	ld a, [wTempItem]
 	cp PP_MAX
 	jr nz, .not_pp_max
 	ld a, [hl]
@@ -2013,7 +2013,7 @@ RestorePPEffect:
 	call Play_SFX_FULL_HEAL
 
 	ld hl, TextJump_PPsIncreased
-	ld a, [wd002]
+	ld a, [wTempItem]
 	cp PP_UP
 	jr z, .ppup3
 	ld hl, TextJump_PPsMaximized
@@ -2127,7 +2127,7 @@ RestorePP:
 	cp b
 	jr nc, .dont_restore
 
-	ld a, [wd002]
+	ld a, [wTempItem]
 	cp MAX_ELIXIR
 	jr z, .restore_all
 	cp MAX_ETHER
@@ -2614,7 +2614,7 @@ AbilityCap:
 ; If a pokémon doesn't have its hidden ability, switch between its
 ; 1st and 2nd ability
 	ld a, [wCurItem]
-	ld [wd002], a
+	ld [wTempItem], a
 
 	ld b, PARTYMENUACTION_HEALING_ITEM
 	call UseItem_SelectMon
@@ -2629,7 +2629,7 @@ AbilityCap:
 	ld e, l
 	pop hl
 	push hl
-	ld a, [wd002]
+	ld a, [wTempItem]
 	cp ABILITYPATCH
 	ld a, [de]
 	ld b, ABILITY_2 ; xor to change later

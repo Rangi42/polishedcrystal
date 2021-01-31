@@ -55,6 +55,11 @@ wTownMapCursorCoordinates:: dw
 ENDU
 
 NEXTU
+; phone call data
+wPhoneScriptBank:: db
+wPhoneCaller:: dw
+
+NEXTU
 ; radio data
 wCurRadioLine:: db
 wNextRadioLine:: db
@@ -66,10 +71,8 @@ wRadioText:: ds 2 * SCREEN_WIDTH
 wRadioTextEnd::
 
 NEXTU
-; trainer HUD data
-	ds 1
-wPlaceBallsDirection:: db
-wTrainerHUDTiles:: db
+; lucky number show
+wLuckyNumberDigitsBuffer:: ds 5
 
 NEXTU
 ; movement buffer data
@@ -79,15 +82,69 @@ wMovementBufferObject:: db
 wMovementBuffer:: ds 55
 
 NEXTU
-; other buffers
-wEarthquakeMovementDataBuffer::
-wLuckyNumberDigitsBuffer:: ds 5
+; trainer HUD data
+	ds 1
+wPlaceBallsDirection:: db
+wTrainerHUDTiles:: db
 
 NEXTU
-; unidentified
-wd002:: db ; TODO: replace with meaningful labels
-wd003:: db ; TODO: replace with meaningful labels
-wd004:: db ; TODO: replace with meaningful labels
+; battle exp gain
+wExperienceGained:: ds 3
+
+NEXTU
+; earthquake data buffer
+wEarthquakeMovementDataBuffer:: ds 5
+
+NEXTU
+; switching items in pack
+wSwitchItemBuffer:: ds 2 ; may store 1 or 2 bytes
+
+NEXTU
+; switching pokemon in party
+; may store NAME_LENGTH, PARTYMON_STRUCT_LENGTH, or MAIL_STRUCT_LENGTH bytes
+wSwitchMonBuffer:: ds 48
+
+NEXTU
+; giving pokemon mail
+wMonMailMessageBuffer:: ds MAIL_MSG_LENGTH + 1
+
+NEXTU
+; bill's pc
+UNION
+wBoxNameBuffer:: ds BOX_NAME_LENGTH
+NEXTU
+	ds 1
+wBillsPCTempListIndex:: db
+wBillsPCTempBoxCount:: db
+ENDU
+
+NEXTU
+; prof. oak's pc
+wTempPokedexSeenCount:: db
+wTempPokedexCaughtCount:: db
+
+NEXTU
+; player's room pc
+UNION
+wDecoNameBuffer:: ds ITEM_NAME_LENGTH
+NEXTU
+wNumOwnedDecoCategories:: db
+wOwnedDecoCategories:: ds 16
+ENDU
+
+NEXTU
+; trade
+wCurTradePartyMon:: db
+wCurOTTradePartyMon:: db
+wBufferTrademonNick:: ds MON_NAME_LENGTH
+
+NEXTU
+; link battle record data
+wLinkBattleRecordBuffer::
+wLinkBattleRecordName::   ds NAME_LENGTH
+wLinkBattleRecordWins::   dw
+wLinkBattleRecordLosses:: dw
+wLinkBattleRecordDraws::  dw
 
 NEXTU
 wMoveScreenMode:: db ; normal, learning, reminder, deletion
@@ -99,7 +156,13 @@ wMoveScreenMoves:: ds 55
 
 NEXTU
 ; miscellaneous
-wTempDayOfWeek:: db
+wTempItem::
+wTempPartyCount::
+wPrevPartyLevel::
+wUnownPuzzleCornerTile::
+wKeepSevenBiasChance::
+wTempDayOfWeek::
+	db
 
 	ds 2 ; unused
 
@@ -509,20 +572,19 @@ wMagikarpLengthMmLo:: db
 NEXTU
 ; link data
 	ds 9
-wLinkBuffer:: ds 4
+wLinkBattleRNPreamble:: ds 4
 wLinkBattleRNs:: ds 10
-wLinkBattleEarlyEnd:: dw
-wLinkBufferEnd::
 
 NEXTU
 ; battle data
 	ds 7
 wCurEnemyItem:: db
 	ds 15
-wTempEnemyMonSpecies:: db
-wTempBattleMonSpecies:: db
 
 ENDU
+
+wTempEnemyMonSpecies:: db
+wTempBattleMonSpecies:: db
 
 wEnemyMon:: battle_struct wEnemyMon
 
@@ -656,17 +718,30 @@ wPokedexShowPointerBank:: db
 wEnemyFleeing:: db
 wNumFleeAttempts:: db
 
-wLinkOTExchangeStart::
+wOTPartyData::
 wOTPlayerName:: ds NAME_LENGTH
 wOTPlayerID:: dw
 wOTPartyCount:: db
 wOTPartySpecies:: ds PARTY_LENGTH + 1 ; legacy scripts don't check PartyCount
 
-; OT party data -- OTPartyMon1 and nicknames is always available
-; TODO: organize this union better
+; OT party data -- OTPartyMon1 and nicknames is always available (nicknames available because DudeBag doesn't extend very far)
 wOTPartyMons::
 wOTPartyMon1:: party_struct wOTPartyMon1
+
 UNION
+; OTPartymon2-6 (and OTs/nicknames)
+wOTPartyMon2:: party_struct wOTPartyMon2
+wOTPartyMon3:: party_struct wOTPartyMon3
+wOTPartyMon4:: party_struct wOTPartyMon4
+wOTPartyMon5:: party_struct wOTPartyMon5
+wOTPartyMon6:: party_struct wOTPartyMon6
+
+wOTPartyMonsEnd::
+wOTPartyMonOT:: ds NAME_LENGTH * PARTY_LENGTH
+wOTPartyMonNicknames:: ds MON_NAME_LENGTH * PARTY_LENGTH ; make sure this is always available!
+wOTPartyDataEnd::
+
+NEXTU
 ; catch tutorial dude bag
 wDudeBag::
 wDudeNumItems:: db
@@ -680,18 +755,7 @@ wDudeBalls:: ds 2 * 2
 wDudeBallsEnd:: db
 wDudeBagEnd::
 
-NEXTU
-wOTPartyMon2:: party_struct wOTPartyMon2
-wOTPartyMon3:: party_struct wOTPartyMon3
-wOTPartyMon4:: party_struct wOTPartyMon4
-wOTPartyMon5:: party_struct wOTPartyMon5
-wOTPartyMon6:: party_struct wOTPartyMon6
 ENDU
-wOTPartyMonsEnd::
-wOTPartyMonOT:: ds NAME_LENGTH * PARTY_LENGTH
-wOTPartyMonNicknames:: ds MON_NAME_LENGTH * PARTY_LENGTH
-wOTPartyDataEnd::
-wLinkOTExchangeEnd::
 
 wBattleAction:: db
 wLinkBattleSentAction:: db
