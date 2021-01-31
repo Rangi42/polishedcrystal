@@ -19,6 +19,7 @@ AIChooseMove:
 
 	; Just bypass the checks alltogether
 	pop af
+	ld [wEnemyEncoreCount], a
 	ret
 
 .not_struggling
