@@ -70,12 +70,6 @@ MapBattleTower1FSignpost0Script:
 		para "The items they"
 		line "hold must also be"
 		cont "different."
-
-		para "Certain #mon"
-		line "may also have"
-
-		para "level restrictions"
-		line "placed on them."
 		done
 
 ReceptionistScript_0x9e3e2:
