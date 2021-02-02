@@ -182,7 +182,6 @@ endc
 	const BATTLETYPE_LEGENDARY
 
 ; attack failure modes, higher gives priority
-; TODO: complete this functionality
 	const_def 1
 	const ATKFAIL_MISSED  ; "<USER>'s attack missed!"
 	const ATKFAIL_PROTECT ; "<TARGET> is protecting itself!"
@@ -192,7 +191,7 @@ endc
 	const ATKFAIL_ACCMISS ; missed from accuracy
 	const ATKFAIL_CUSTOM  ; custom message
 
-; deferred switch types
+; deferred switch types (bitflags)
 	const_def
 	const SWITCH_DEFERRED
 	const SWITCH_EXPLICIT

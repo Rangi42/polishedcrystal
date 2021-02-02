@@ -36,7 +36,7 @@ AIChooseMove:
 	; to switch if we can.
 	call _AIChooseMove
 
-	; See if we have a good switch target.
+	; Strongly encourage switch-out by pretending we have Perish 1.
 	ld a, [wEnemyPerishCount]
 	push af
 	ld a, 1
@@ -198,16 +198,11 @@ endc
 	jr .badge_loop
 
 .BadgeAILayers:
-	; Don't do redundant things (such as paralyzing a paralyzed foe, etc)
-	db 0, AI_BASIC_F
-	; Learn about type advantage
-	db 2, AI_TYPES_F
-	; Learn about ineffective status moves (Hypnosis vs Insomnia, etc)
-	db 4, AI_STATUS_F
-	; Maximize damage potential
-	db 8, AI_AGGRESSIVE_F
-	; "Smart" AI
-	db 16, AI_SMART_F
+	db 0, AI_BASIC_F ; Avoid paralyzing a paralyzed foe, etc.
+	db 2, AI_TYPES_F ; We've mastered type matchups. Hop would be proud.
+	db 4, AI_STATUS_F ; Hypnosis vs Insomnia, etc.
+	db 8, AI_AGGRESSIVE_F ; Use most damaging move.
+	db 16, AI_SMART_F ; "Advanced" AI
 	db -1
 
 ; Decrement the scores of all moves one by one until one reaches 0.
