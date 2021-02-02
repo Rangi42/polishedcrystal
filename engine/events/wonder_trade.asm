@@ -10,7 +10,7 @@ WonderTrade::
 	ld hl, .Text_WonderTradePrompt
 	call PrintText
 
-	ld b, 6
+	ld b, PARTYMENUACTION_GIVE_MON
 	farcall SelectTradeOrDayCareMon
 	ret c
 

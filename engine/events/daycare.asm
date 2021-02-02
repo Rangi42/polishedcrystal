@@ -109,7 +109,7 @@ DayCareAskDepositPokemon:
 	jr c, .OnlyOneMon
 	ld a, DAYCARETEXT_WHICH_ONE
 	call PrintDayCareText
-	ld b, 6
+	ld b, PARTYMENUACTION_GIVE_MON
 	farcall SelectTradeOrDayCareMon
 	jr c, .Declined
 	ld hl, wPartyMon1IsEgg

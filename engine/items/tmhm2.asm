@@ -403,9 +403,9 @@ ChooseMonToLearnTMHM_NoRefresh:
 	farcall InitPartyMenuGFX
 	ld a, [wPutativeTMHMMove]
 	and a
-	ld a, 3 ; TeachWhichPKMNString
+	ld a, PARTYMENUACTION_TEACH_TM
 	jr nz, .got_text
-	ld a, 9 ; TutorWhichPKMNString
+	ld a, PARTYMENUACTION_MOVE_RELEARNER
 .got_text
 	ld [wPartyMenuActionText], a
 .loopback
