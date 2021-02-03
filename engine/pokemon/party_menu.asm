@@ -45,14 +45,9 @@ BT_PartySelect:
 	jr c, .loop
 	; Banned mons don't get the "Enter" option
 	ld a, [wCurPartyMon]
-	ld c, a
-	ld b, 0
-	ld hl, wBT_PartySelections
-	add hl, bc
-	ld a, [hl]
-	inc a
+	call BT_CheckEnterState
 	ld a, [wMenuCursorY]
-	jr nz, .got_cursor_pos
+	jr nc, .got_cursor_pos
 	inc a
 .got_cursor_pos
 	dec a ; Enter
