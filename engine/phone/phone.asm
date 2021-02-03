@@ -345,17 +345,17 @@ MakePhoneCallFromPokegear:
 
 .DoPhoneCall:
 	ld a, b
-	ld [wd002], a
+	ld [wPhoneScriptBank], a
 	ld a, l
-	ld [wd003], a
+	ld [wPhoneCaller], a
 	ld a, h
-	ld [wd004], a
+	ld [wPhoneCaller+1], a
 	ld b, BANK(UnknownScript_0x90205)
 	ld de, UnknownScript_0x90205
 	jp ExecuteCallbackScript
 
 UnknownScript_0x90205:
-	ptcall wd002
+	ptcall wPhoneScriptBank
 	return
 
 UnknownScript_0x90209:

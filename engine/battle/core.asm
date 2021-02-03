@@ -6866,13 +6866,13 @@ AnimateExpBar:
 	jp nc, .finish
 
 	ldh a, [hQuotient + 2]
-	ld [wd004], a
+	ld [wExperienceGained + 2], a
 	push af
 	ldh a, [hQuotient + 1]
-	ld [wd003], a
+	ld [wExperienceGained + 1], a
 	push af
 	ldh a, [hQuotient]
-	ld [wd002], a
+	ld [wExperienceGained], a
 	push af
 	xor a ; PARTYMON
 	ld [wMonType], a
@@ -6885,10 +6885,10 @@ AnimateExpBar:
 	call CalcExpBar
 	push bc
 	ld hl, wTempMonExp + 2
-	ld a, [wd004]
+	ld a, [wExperienceGained + 2]
 	add [hl]
 	ld [hld], a
-	ld a, [wd003]
+	ld a, [wExperienceGained + 1]
 	adc [hl]
 	ld [hld], a
 	jr nc, .NoOverflow
@@ -7927,7 +7927,7 @@ ReadAndPrintLinkBattleRecord:
 	push hl
 	ld h, d
 	ld l, e
-	ld de, wd002
+	ld de, wLinkBattleRecordName
 	ld bc, NAME_LENGTH - 1
 	rst CopyBytes
 	ld a, "@"
@@ -7935,27 +7935,27 @@ ReadAndPrintLinkBattleRecord:
 	inc de
 	ld bc, 6
 	rst CopyBytes
-	ld de, wd002
+	ld de, wLinkBattleRecordName
 	pop hl
 	rst PlaceString
 	pop hl
 	ld de, 26
 	add hl, de
 	push hl
-	ld de, wd002 + 11 ; win
+	ld de, wLinkBattleRecordWins
 	lb bc, 2, 4
 	call PrintNum
 	pop hl
 	ld de, 5
 	add hl, de
 	push hl
-	ld de, wd002 + 13 ; lose
+	ld de, wLinkBattleRecordLosses
 	lb bc, 2, 4
 	call PrintNum
 	pop hl
 	ld de, 5
 	add hl, de
-	ld de, wd002 + 15 ; draw
+	ld de, wLinkBattleRecordDraws
 	lb bc, 2, 4
 	call PrintNum
 	jr .next
@@ -8192,7 +8192,7 @@ AddLastBattleToLinkRecord:
 .FindOpponentAndAppendRecord:
 	ld b, 5
 	ld hl, sLinkBattleRecord + 17
-	ld de, wd002
+	ld de, wLinkBattleRecordBuffer
 .loop3
 	push bc
 	push de
@@ -8214,22 +8214,22 @@ AddLastBattleToLinkRecord:
 	pop bc
 	dec b
 	jr nz, .loop3
-	lb bc, $0, $1
+	lb bc, 0, 1
 .loop4
 	ld a, b
 	add b
 	add b
 	ld e, a
-	ld d, $0
-	ld hl, wd002
+	ld d, 0
+	ld hl, wLinkBattleRecordBuffer
 	add hl, de
 	push hl
 	ld a, c
 	add c
 	add c
 	ld e, a
-	ld d, $0
-	ld hl, wd002
+	ld d, 0
+	ld hl, wLinkBattleRecordBuffer
 	add hl, de
 	ld d, h
 	ld e, l
@@ -8261,7 +8261,7 @@ AddLastBattleToLinkRecord:
 	ld hl, sLinkBattleRecord
 	rst AddNTimes
 	push hl
-	ld de, wd002
+	ld de, wLinkBattleRecordBuffer
 	ld bc, 18
 	rst CopyBytes
 	pop hl
@@ -8275,7 +8275,7 @@ AddLastBattleToLinkRecord:
 	push hl
 	ld bc, 18
 	rst CopyBytes
-	ld hl, wd002
+	ld hl, wLinkBattleRecordBuffer
 	ld bc, 18
 	pop de
 	rst CopyBytes

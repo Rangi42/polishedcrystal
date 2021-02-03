@@ -68,7 +68,7 @@ AddEggMonToParty:
 	ld hl, wPartyMon1Species
 	ld bc, PARTYMON_STRUCT_LENGTH
 	ld a, e
-	ld [wd002], a
+	ld [wTempPartyCount], a
 .loop2
 	add hl, bc
 	dec a
@@ -82,7 +82,7 @@ AddEggMonToParty:
 
 	ld hl, wPartyMonOT
 	ld bc, NAME_LENGTH
-	ld a, [wd002]
+	ld a, [wTempPartyCount]
 .loop3
 	add hl, bc
 	dec a
@@ -98,7 +98,7 @@ AddEggMonToParty:
 
 	ld hl, wPartyMonNicknames
 	ld bc, MON_NAME_LENGTH
-	ld a, [wd002]
+	ld a, [wTempPartyCount]
 .loop4
 	add hl, bc
 	dec a

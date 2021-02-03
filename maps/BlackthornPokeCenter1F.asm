@@ -53,7 +53,7 @@ ProfOaksAide4Script:
 	line "Uh-oh! You've only"
 
 	para "caught "
-	deciram wd003, 1, 3
+	deciram wTempPokedexCaughtCount, 1, 3
 	text " kinds"
 	line "of #mon."
 
@@ -103,7 +103,7 @@ ProfOaksAide4Script:
 	line "Great job! You've"
 
 	para "caught "
-	deciram wd003, 1, 3
+	deciram wTempPokedexCaughtCount, 1, 3
 	text " kinds"
 	line "of #mon."
 

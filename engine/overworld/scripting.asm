@@ -1987,7 +1987,7 @@ Script_givepokeitem:
 	push bc
 	inc hl
 	ld bc, MAIL_MSG_LENGTH
-	ld de, wd002
+	ld de, wMonMailMessageBuffer
 	ld a, [wScriptBank]
 	call FarCopyBytes
 	pop bc
@@ -2714,11 +2714,11 @@ Script_count_seen_caught:
 	ld hl, wPokedexSeen
 	ld b, wEndPokedexSeen - wPokedexSeen
 	call CountSetBits
-	ld [wd002], a
+	ld [wTempPokedexSeenCount], a
 	ld hl, wPokedexCaught
 	ld b, wEndPokedexCaught - wPokedexCaught
 	call CountSetBits
-	ld [wd003], a
+	ld [wTempPokedexCaughtCount], a
 	ret
 
 Script_trainerpic:

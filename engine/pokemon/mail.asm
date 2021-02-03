@@ -202,7 +202,7 @@ GivePokeItem::
 	rst AddNTimes
 	ld d, h
 	ld e, l
-	ld hl, wd002
+	ld hl, wMonMailMessageBuffer
 	ld bc, MAIL_MSG_LENGTH + 1
 	ld a, BANK(sPartyMail)
 	call GetSRAMBank
