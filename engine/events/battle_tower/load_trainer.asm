@@ -58,6 +58,7 @@ endc
 .found_trainer:
 	ld hl, sBTTrainers
 	ld a, [sNrOfBeatenBattleTowerTrainers]
+	ld a, 0 ; TODO: fix
 	ld c, a
 	ld a, b
 	ld b, 0
@@ -89,6 +90,7 @@ PopulateBattleTowerTeam:
 	; to get the party in the correct order. Yes, we need to do this,
 	; we can't abuse the fact that the legality checker already did
 	; this, or we run into trouble after the first battle.
+	farcall BT_LoadPartySelections
 	farcall BT_SetPlayerOT
 
 	; Now copy the OT data to the player party struct

@@ -183,13 +183,7 @@ sBTChoiceOfLevelGroup:: db
 sBTTrainers:: ds BATTLETOWER_NROFTRAINERS
 sBattleTowerSaveFileFlags:: db
 
-sBTMonOfTrainers::
-sBTMonPrevTrainer1:: db
-sBTMonPrevTrainer2:: db
-sBTMonPrevTrainer3:: db
-sBTMonPrevPrevTrainer1:: db
-sBTMonPrevPrevTrainer2:: db
-sBTMonPrevPrevTrainer3:: db
+sBT_PartySelections:: ds PARTY_LENGTH
 
 
 SECTION "Boxes 1-7",  SRAM

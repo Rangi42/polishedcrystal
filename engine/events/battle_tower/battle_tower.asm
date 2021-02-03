@@ -275,8 +275,26 @@ Special_BattleTower_BeginChallenge:
 	ld [wNrOfBeatenBattleTowerTrainers], a
 
 	; Commit party selection to SRAM
-	
-	ret
+	ld a, BANK(sBT_PartySelections)
+	call GetSRAMBank
+	ld hl, wBT_PartySelections
+	ld de, sBT_PartySelections
+	ld bc, PARTY_LENGTH
+	rst CopyBytes
+	jp CloseSRAM
+
+BT_LoadPartySelections:
+; Loads party selections from SRAM
+	; Set amount of mons for battle
+	ld a, 3
+	ld [wBT_PartySelectCounter], a
+	ld a, BANK(sBT_PartySelections)
+	call GetSRAMBank
+	ld hl, sBT_PartySelections
+	ld de, wBT_PartySelections
+	ld bc, PARTY_LENGTH
+	rst CopyBytes
+	jp CloseSRAM
 
 Special_BattleTower_LoadOpponentTrainerAndPokemonsWithOTSprite:
 	farcall Function_LoadOpponentTrainer
