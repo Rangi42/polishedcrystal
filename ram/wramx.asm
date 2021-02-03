@@ -850,7 +850,10 @@ wObjectStructsEnd::
 
 wStoneTableAddress:: dw
 
-	ds 22
+wBattleTowerCurStreak:: dw
+wBattleTowerTopStreak:: dw
+
+	ds 18
 
 wMapObjects::
 wPlayerObject:: map_object wPlayer

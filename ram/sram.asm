@@ -87,7 +87,7 @@ sMapData::     ds wCurMapDataEnd - wCurMapData
 sPokemonData:: ds wPokemonDataEnd - wPokemonData
 sGameDataEnd::
 
-	ds $18a
+	ds 394
 
 sChecksum:: dw
 
