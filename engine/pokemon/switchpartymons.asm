@@ -8,7 +8,7 @@ _SwitchPartyMons:
 	ld [wBuffer2], a
 	cp b
 	ret z
-	call .SwapMonAndMail
+	call SwapMonAndMail
 	ld a, [wBuffer3]
 	call .ClearSprite
 	ld a, [wBuffer2]
@@ -36,7 +36,7 @@ _SwitchPartyMons:
 	ld de, SFX_SWITCH_POKEMON
 	jp WaitPlaySFX
 
-.SwapMonAndMail:
+SwapMonAndMail:
 	push hl
 	push de
 	push bc

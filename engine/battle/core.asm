@@ -1440,7 +1440,7 @@ ResetParticipants::
 	push af
 	xor a
 	ld hl, wPartyParticipants
-	ld bc, 6
+	ld bc, PARTY_LENGTH
 	rst ByteFill
 	pop af
 	pop bc
@@ -4219,7 +4219,6 @@ BattleMenuPKMN_Loop:
 	ldh a, [hJoyPressed]
 	bit B_BUTTON_F, a
 	jr z, .clear_carry
-	ret z
 
 .set_carry
 	scf

@@ -83,7 +83,22 @@ endc
 INCLUDE "data/battle_tower/classes.asm"
 
 PopulateBattleTowerTeam:
-; Loads 3 pokémon from a set and places it in OTPartyMon
+; Prepares your and the opponent's parties for battle tower battle
+	; Populate wOTPartyMons with your selections. Used for legality
+	; checking, but works just as well here as a straightforward way
+	; to get the party in the correct order. Yes, we need to do this,
+	; we can't abuse the fact that the legality checker already did
+	; this, or we run into trouble after the first battle.
+	farcall BT_SetPlayerOT
+
+	; Now copy the OT data to the player party struct
+	ld hl, wOTPartyCount
+	ld de, wPartyCount
+	ld bc, wPartyMonNicknamesEnd - wPartyCount
+	rst CopyBytes
+
+.generate_team
+	; Now add the enemy trainer data
 	; Zerofill the OTPartyMon struct
 	xor a
 	ld hl, wOTPartyMons
@@ -117,25 +132,7 @@ PopulateBattleTowerTeam:
 	ld bc, BTMON_SIZE
 	rst AddNTimes
 
-	; Verify that the species hasn't been chosen already
-	ld a, [hl]
-	ld d, a
-	inc e
-.species_loop
-	dec e
-	jr z, .species_ok
-	push hl
-	ld hl, wOTPartyMon1Species
-	ld a, e
-	dec a
-	call GetPartyLocation
-	ld a, [hl]
-	pop hl
-	cp d
-	jr z, .loop ; Duplicate species -- re-roll
-	jr .species_loop
-.species_ok
-	; Species is OK. Store species data in wOTPartyMon and wOTPartySpecies
+	; Store species data in wOTPartyMon and wOTPartySpecies
 	pop de
 	push de
 	push hl
@@ -240,6 +237,10 @@ PopulateBattleTowerTeam:
 	ld a, d
 	and a
 	jr nz, .nick_loop
+
+	; Check if the team is legal. Otherwise, generate a new team.
+	farcall BT_LegalityCheck
+	jp nz, .generate_team
 	ret
 
 .Copy:

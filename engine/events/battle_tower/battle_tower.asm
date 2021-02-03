@@ -269,9 +269,13 @@ Special_BattleTower_MaxVolume:
 	jp MaxVolume
 
 Special_BattleTower_BeginChallenge:
+	; Reset battle count
 	xor a
 	ld [wBattleTowerBattleEnded], a
 	ld [wNrOfBeatenBattleTowerTrainers], a
+
+	; Commit party selection to SRAM
+	
 	ret
 
 Special_BattleTower_LoadOpponentTrainerAndPokemonsWithOTSprite:
@@ -591,6 +595,163 @@ Function_HasPartyAnEgg:
 	ret
 
 .found
+	scf
+	ret
+
+BT_SetPlayerOT:
+; Interprets the selected party mons for entering and populates wOTParty
+; with the chosen Pokémon from the player. Used for 2 things: legality
+; checking and to fix the party order according to player choices.
+	; Number of party mons
+	ld a, [wBT_PartySelectCounter]
+	ld [wOTPartyCount], a
+
+	; The rest is iterated
+	ld bc, 0
+	ld d, a
+.loop
+	; Party species array
+	push de
+	ld hl, wPartySpecies
+	ld de, wOTPartySpecies
+	ld a, 1 ; just a single byte to copy each iteration
+	call .CopyPartyData
+
+	; Main party struct
+	ld hl, wPartyMons
+	ld de, wOTPartyMons
+	ld a, PARTYMON_STRUCT_LENGTH
+	call .CopyPartyData
+
+	; Nickname struct
+	ld hl, wPartyMonNicknames
+	ld de, wOTPartyMonNicknames
+	ld a, MON_NAME_LENGTH
+	call .CopyPartyData
+
+	; OT name struct
+	ld hl, wPartyMonOT
+	ld de, wOTPartyMonOT
+	ld a, NAME_LENGTH
+	call .CopyPartyData
+	pop de
+
+	inc c
+	ld a, c
+	cp d
+	jr nz, .loop
+
+	; Add party species terminator, then we're done
+	ld hl, wOTPartySpecies
+	add hl, bc
+	ld [hl], -1
+	ret
+
+.CopyPartyData:
+; Copy a bytes from hl to de, with relative addresses depending on
+; which mon we're currently working on. Preserves bc.
+	; First, correct de to the current mon target index we're adding.
+	; Just add a*bc (struct length * loop iterator)
+	push hl
+	ld h, d
+	ld l, e
+	push af
+	rst AddNTimes
+	pop af
+	ld d, h
+	ld e, l
+	pop hl
+
+	; Now, correct hl to the current mon source index.
+	; Get the source index from party selection
+	push bc
+	push hl
+	ld hl, wBT_PartySelections
+	add hl, bc
+	ld c, [hl] ; b always remains zero, no need to mess with it
+	pop hl
+
+	; Now bc holds party index, so we can AddNTimes like with de earlier
+	push af
+	rst AddNTimes
+	pop af
+
+	; Now copy the data
+	ld c, a
+	rst CopyBytes
+	pop bc
+	ret
+
+BT_LegalityCheck:
+; Check OT party for violations of Species or Item Clause. Used to verify
+; both the player team when entering after copying to OT data, and the
+; generated AI team. Returns z if the team is legal, otherwise nz and the error
+; in a (1: 2+ share species, 2: 2+ share item)
+; Species Clause: more than 1 Pokémon are the same species
+; Item Clause: more than 1 Pokémon holds the same item
+	; Party size
+	ld hl, wOTPartyMon1Species
+	call .CheckAnyIdentical
+	ld a, 1
+	jr c, .illegal
+	ld hl, wOTPartyMon1Item
+	call .CheckAnyIdentical
+	ld a, 2
+	jr c, .illegal
+	xor a
+.illegal
+	and a
+	ret
+
+.CheckAnyIdentical:
+; Check if any of the indexes referred to by hl in the party is identical.
+; Ignores indexes with value 0 (to allow several mons holding no items).
+	ld a, [wOTPartyCount]
+	ld e, a ; Total party size
+	ld d, 0 ; Outer iterator
+.outer_loop
+	; Check if we've finished validation. If so, everything is legal.
+	ld a, d
+	cp e
+	ret z
+
+	ld b, [hl] ; Current value to compare to
+
+	; Don't check a value of 0, to allow for several mons holding no item
+	ld a, b
+	and a
+	jr z, .next_outer
+
+	; Now do the actual checking
+	ld c, d ; Inner iterator
+	push hl
+.inner_loop
+	; Is index identical?
+	push bc
+	ld bc, PARTYMON_STRUCT_LENGTH
+	add hl, bc
+	pop bc
+	ld a, [hl]
+	cp b
+	jr z, .identical
+
+	; Check next index if identical
+	inc c
+	ld a, c
+	cp e
+	jr nz, .inner_loop
+
+.next_outer
+	; No index was identical, or it was 0. Advance to next value to check.
+	pop hl
+	push bc
+	ld bc, PARTYMON_STRUCT_LENGTH
+	add hl, bc
+	pop bc
+	inc d
+	jr .outer_loop
+.identical
+	pop hl
 	scf
 	ret
 

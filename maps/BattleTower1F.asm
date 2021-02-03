@@ -99,6 +99,49 @@ Script_Menu_ChallengeExplanationCancel:
 	jumpopenedtext Text_WeHopeToServeYouAgain
 
 Script_ChoseChallenge:
+	writethistext
+		text "Choose #mon"
+		line "to enter."
+		prompt
+	callasm .SelectPartyParticipants
+	iffalse Script_Menu_ChallengeExplanationCancel
+	writethistext
+		text "Before entering"
+		line "the Battle Room,"
+
+		para "your progress will"
+		line "be saved."
+		done
+	yesorno
+	iffalse Script_Menu_ChallengeExplanationCancel
+	setscene $0
+	special Special_TryQuickSave
+	iffalse Script_Menu_ChallengeExplanationCancel
+	setscene $1
+	special Special_BattleTower_MarkNewSaveFile ; set 1, [sBattleTowerSaveFileFlags]
+	special Special_BattleTower_BeginChallenge
+	writethistext
+		text "Right this way to"
+		line "your Battle Room."
+		done
+	waitbutton
+	closetext
+	jump Script_WalkToBattleTowerElevator
+	endtext
+
+.SelectPartyParticipants:
+	; Clear old BT participants selection
+	xor a
+	ld [wBT_PartySelectCounter], a
+	farcall BT_PartySelect
+	ld hl, hScriptVar
+	ld [hl], 0
+	ret c
+	inc [hl]
+	ret
+
+
+
 	special Special_BattleTower_ResetTrainersSRAM
 	special Special_BattleTower_CheckForRules
 	ifnotequal $0, Script_WaitButton

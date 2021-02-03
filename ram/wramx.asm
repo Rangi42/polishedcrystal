@@ -259,6 +259,9 @@ NEXTU
 wAIMoves:: ds 4 ; enemy moves excluding unusable moves
 wAIMoveScore:: ds 4 ; score for each move
 wAIFlags:: ds 2 ; modified from trainer struct as player get more badges
+NEXTU
+wBT_PartySelectCounter:: db
+wBT_PartySelections:: ds PARTY_LENGTH
 ENDU
 
 wBattleMenuCursorBuffer:: dw
