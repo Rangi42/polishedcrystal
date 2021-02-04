@@ -33,7 +33,7 @@ BattleTower1FTrigger0:
 	special Special_BattleTower_CheckSaveFileExistsAndIsYours
 	iffalse .Done
 	special Special_BattleTower_GetChallengeState ; copybytetovar sBattleTowerChallengeState
-	ifequal BATTLETOWER_CHALLENGE_IN_PROGESS, .ContinueChallenge
+	ifequal BATTLETOWER_CHALLENGE_IN_PROGRESS, .ContinueChallenge
 	ifequal BATTLETOWER_SAVED_AND_LEFT, .ResumeChallenge
 	jump .Done
 

@@ -168,7 +168,7 @@ CopyBTTrainerToTemp:
 
 	ld a, BANK(sBattleTowerChallengeState)
 	call GetSRAMBank
-	ld a, BATTLETOWER_CHALLENGE_IN_PROGESS
+	ld a, BATTLETOWER_CHALLENGE_IN_PROGRESS
 	ld [sBattleTowerChallengeState], a
 	ld hl, sNrOfBeatenBattleTowerTrainers
 	inc [hl]
