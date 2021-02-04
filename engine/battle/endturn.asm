@@ -215,7 +215,9 @@ HandleEndturnBlockB:
 .do_it
 	; uproar
 	farcall EndturnAbilitiesB ; and pickup/harvest (no need to move below orbs)
-	jp HandleStatusOrbs
+	call SwitchTurn
+	call HandleStatusOrbs
+	jp SwitchTurn
 
 HandleWeather:
 	ld a, [wBattleWeather]
@@ -933,14 +935,8 @@ HandleHealingItems:
 	farjp UseConfusionHealingItem
 
 HandleStatusOrbs:
-	call SetFastestTurn
 	; Done for target to simplify checks so invert
 	; turn
-	call SwitchTurn
-	call .do_it
-	call SwitchTurn
-
-.do_it
 	call HasOpponentFainted
 	ret z
 
