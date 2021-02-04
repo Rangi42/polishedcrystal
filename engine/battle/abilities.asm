@@ -1,4 +1,7 @@
 RunActivationAbilitiesInner:
+	; Chain-triggering causes graphical glitches, so ensure animations
+	; are re-enabled (which also takes care of existing ability slideouts)
+	farcall EnableAnimations
 	call HasUserFainted
 	ret z
 	call HasOpponentFainted
