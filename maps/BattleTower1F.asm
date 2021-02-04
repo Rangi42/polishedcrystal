@@ -70,6 +70,11 @@ MapBattleTower1FSignpost0Script:
 		para "The items they"
 		line "hold must also be"
 		cont "different."
+
+		para "Eggs or certain"
+		line "Legendary #mon"
+		cont "aren't eligible"
+		cont "to battle."
 		done
 
 ReceptionistScript_0x9e3e2:
