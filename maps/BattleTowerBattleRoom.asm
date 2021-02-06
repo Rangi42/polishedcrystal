@@ -23,7 +23,6 @@ BattleTowerBattleRoom_MapScriptHeader:
 BattleTowerBattleRoomEnterBattleRoom:
 	disappear BATTLETOWERBATTLEROOM_OPPONENT
 	priorityjump Script_BattleRoom
-	setscene $1
 	end
 
 Script_BattleRoom:
@@ -100,7 +99,6 @@ Script_DontBattleNextOpponent:
 		done
 	yesorno
 	iffalse Script_DontSaveAndEndTheSession
-	special Special_BattleTower_SaveLevelGroup
 	special SaveOptions
 	writebyte BATTLETOWER_SAVED_AND_LEFT
 	special Special_BattleTower_SetChallengeState

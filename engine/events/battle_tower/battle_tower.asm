@@ -1,44 +1,3 @@
-Special_BattleTower_FindChallengeLevel:
-	; e = maximum party level [1-100]
-	ldh a, [rSVBK]
-	push af
-	ld a, $1
-	ldh [rSVBK], a
-	ld hl, wPartyMon1Level
-	ld bc, PARTYMON_STRUCT_LENGTH
-	ld a, [wPartyCount]
-	ld d, a
-	ld e, 1
-.loop
-	add hl, bc
-	ld a, [hl]
-	cp e
-	jr c, .ok
-	ld e, a
-.ok
-	dec d
-	ld a, d
-	jr nz, .loop
-	pop af
-	ldh [rSVBK], a
-
-	; wBTChoiceOfLvlGroup = (e + 9) / 10 [1-10]
-	ld a, 9
-	add e
-	ld c, 10
-	call SimpleDivide
-
-	ldh a, [rSVBK]
-	push af
-	ld a, $3
-	ldh [rSVBK], a
-	ld a, b
-	ld [wBTChoiceOfLvlGroup], a
-	ldh [hScriptVar], a
-	pop af
-	ldh [rSVBK], a
-	ret
-
 Special_BattleTower_Battle:
 	xor a
 	ld [wBattleTowerBattleEnded], a
@@ -77,9 +36,9 @@ RunBattleTowerTrainer:
 	ldh [hScriptVar], a
 	and a
 	jr nz, .lost
-	ld a, BANK(sNrOfBeatenBattleTowerTrainers)
+	ld a, BANK(sBT_CurTrainer)
 	call GetSRAMBank
-	ld a, [sNrOfBeatenBattleTowerTrainers]
+	ld a, [sBT_CurTrainer]
 	ld [wNrOfBeatenBattleTowerTrainers], a
 	call CloseSRAM
 	ld hl, wStringBuffer3
@@ -170,7 +129,7 @@ CopyBTTrainerToTemp:
 	call GetSRAMBank
 	ld a, BATTLETOWER_CHALLENGE_IN_PROGRESS
 	ld [sBattleTowerChallengeState], a
-	ld hl, sNrOfBeatenBattleTowerTrainers
+	ld hl, sBT_CurTrainer
 	inc [hl]
 	jp CloseSRAM
 
@@ -182,31 +141,39 @@ Special_BattleTower_ResetTrainersSRAM:
 	ld bc, BATTLETOWER_NROFTRAINERS
 	rst ByteFill
 	xor a
-	ld [sNrOfBeatenBattleTowerTrainers], a
-	jp CloseSRAM
-
-Special_BattleTower_CheckNewSaveFile:
-	call Special_BattleTower_CheckSaveFileExistsAndIsYours
-	ldh a, [hScriptVar]
-	and a
-	ret z
-
-	ld a, BANK(sBattleTowerSaveFileFlags)
-	call GetSRAMBank
-	ld a, [sBattleTowerSaveFileFlags]
-	and $2
-	ldh [hScriptVar], a
+	ld [sBT_CurTrainer], a
 	jp CloseSRAM
 
 Special_BattleTower_GetChallengeState:
+	call BT_GetTowerStatus
+	and a
+	ldh [hScriptVar], a
+	ret
+
+BT_GetTowerStatus:
+; Check tower challenge status. Returns:
+; z|c: The save isn't ours (a=0)
+; z|nc: No ongoing challenge (a=0)
+; nz|nc: Challenge ongoing, with status in a (a=1+)
+	call BT_CheckSaveOwnership
+	scf
+	ret z
+
 	ld hl, sBattleTowerChallengeState
 	ld a, BANK(sBattleTowerChallengeState)
 	call GetSRAMBank
 	ld a, [hl]
-	ldh [hScriptVar], a
+	and a
 	jp CloseSRAM
 
 Special_BattleTower_SetChallengeState:
+	; Don't mess with BT state on a previously existing save.
+	; The game should never try this, so crash if it does.
+	call BT_GetTowerStatus
+	ld a, ERR_BT_STATE
+	jp c, Crash
+
+	; Otherwise, go ahead and write the challenge state
 	ldh a, [hScriptVar]
 	ld c, a
 	ld a, BANK(sBattleTowerChallengeState)
@@ -215,52 +182,33 @@ Special_BattleTower_SetChallengeState:
 	ld [sBattleTowerChallengeState], a
 	jp CloseSRAM
 
-Special_BattleTower_MarkNewSaveFile:
-	ld a, BANK(sBattleTowerSaveFileFlags)
-	call GetSRAMBank
-	ld a, [sBattleTowerSaveFileFlags]
-	or $2
-	ld [sBattleTowerSaveFileFlags], a
-	jp CloseSRAM
+Special_BattleTower_SelectParticipants:
+	; Clear old BT participants selection
+	xor a
+	ld [wBT_PartySelectCounter], a
 
-Special_BattleTower_SaveLevelGroup:
-	ld a, BANK(sBTChoiceOfLevelGroup)
-	call GetSRAMBank
-	ldh a, [rSVBK]
-	push af
-	ld a, $3
-	ldh [rSVBK], a
-	ld a, [wBTChoiceOfLvlGroup]
-	ld [sBTChoiceOfLevelGroup], a
-	pop af
-	ldh [rSVBK], a
-	jp CloseSRAM
+	; Select 3 mons to enter
+	farcall BT_PartySelect
 
-Special_BattleTower_LoadLevelGroup:
-	ld a, BANK(sBTChoiceOfLevelGroup)
-	call GetSRAMBank
-	ldh a, [rSVBK]
-	push af
-	ld a, $3
-	ldh [rSVBK], a
-	ld a, [sBTChoiceOfLevelGroup]
-	ld [wBTChoiceOfLvlGroup], a
-	pop af
-	ldh [rSVBK], a
-	jp CloseSRAM
+	; Update script var so the scripting engine can make sense of the result
+	ld hl, hScriptVar
+	ld [hl], 0
+	ret c
+	inc [hl]
+	ret
 
-Special_BattleTower_CheckSaveFileExistsAndIsYours:
+BT_CheckSaveOwnership:
+; Returns z if the save isn't ours.
 	ld a, [wSaveFileExists]
 	and a
-	jr z, .nope
+	ret z
+
 	farcall CompareLoadedAndSavedPlayerID
 	jr z, .yes
 	xor a
-	jr .nope
+	ret
 .yes
-	ld a, $1
-.nope
-	ldh [hScriptVar], a
+	or 1
 	ret
 
 Special_BattleTower_MaxVolume:
@@ -269,11 +217,8 @@ Special_BattleTower_MaxVolume:
 	jp MaxVolume
 
 Special_BattleTower_BeginChallenge:
-	; Reset battle count
-	xor a
-	ld [wBattleTowerBattleEnded], a
-	ld [wNrOfBeatenBattleTowerTrainers], a
-
+; Initializes Battle Tower challenge data.
+; possible future idea: occasional special trainers (leaders/etc) after tycoon?
 	; Commit party selection to SRAM
 	ld a, BANK(sBT_PartySelections)
 	call GetSRAMBank
@@ -281,7 +226,43 @@ Special_BattleTower_BeginChallenge:
 	ld de, sBT_PartySelections
 	ld bc, PARTY_LENGTH
 	rst CopyBytes
-	jp CloseSRAM
+
+	; Reset amount of battled trainers
+	xor a
+	ld [sBT_CurTrainer], a
+
+	; Generates a list of Trainers for the player to battle.
+	ld b, 0
+	ld de, sBTTrainers
+.outer_loop
+	; Generate a trainer
+	ld a, BATTLETOWER_NUM_TRAINERS
+	call RandomRange
+	ld [de], a
+
+	; Now iterate through what we already have to verify uniqueness.
+	ld hl, sBTTrainers
+	ld c, b
+	inc c
+.inner_loop
+	dec c
+	jr z, .next
+	cp [hl]
+	jr z, .outer_loop
+	inc hl
+	jr .inner_loop
+.next
+	inc de
+	inc b
+	ld a, b
+	cp BATTLETOWER_NROFTRAINERS
+	jr nz, .outer_loop
+
+	; Replace the 7th trainer with Tycoon (TODO: maybe only every 21th battle?)
+	dec de
+	ld a, BATTLETOWER_TYCOON
+	ld [de], a
+	ret
 
 BT_LoadPartySelections:
 ; Loads party selections from SRAM
@@ -296,26 +277,45 @@ BT_LoadPartySelections:
 	rst CopyBytes
 	jp CloseSRAM
 
+BT_GetCurTrainer:
+; Returns beaten trainers so far
+	ld a, BANK(sBT_CurTrainer)
+	call GetSRAMBank
+	ld a, [sBT_CurTrainer]
+	jp CloseSRAM
+
+BT_IncrementCurTrainer:
+; Increments amount of beaten trainers so far
+	ld a, BANK(sBT_CurTrainer)
+	call GetSRAMBank
+	ld a, [sBT_CurTrainer]
+	inc a
+	ld [sBT_CurTrainer], a
+	jp CloseSRAM
+
 Special_BattleTower_LoadOpponentTrainerAndPokemonsWithOTSprite:
-	farcall Function_LoadOpponentTrainer
-	ldh a, [rSVBK]
-	push af
-	ld a, BANK(wBT_OTTrainerClass)
-	ldh [rSVBK], a
-	ld hl, wBT_OTTrainerClass
-	ld a, [hl]
-	dec a
+	call BT_GetCurTrainer
 	ld c, a
-	ld b, $0
-	pop af
-	ldh [rSVBK], a
+	ld a, BANK(sBTTrainers)
+	call GetSRAMBank
+	ld b, 0
+	ld hl, sBTTrainers
+	add hl, bc
+	ld c, [hl]
+	call CloseSRAM
+
+	push bc
+	farcall WriteBattleTowerTrainerName
+	pop bc
+	ld c, a
+	dec c
 	ld hl, BTTrainerClassSprites
 	add hl, bc
 	ld a, [hl]
 	ld [wBTTempOTSprite], a
 
-; Load sprite of the opponent trainer
-; because s/he is chosen randomly and appears out of nowhere
+	; Load sprite of the opponent trainer
+	; because s/he is chosen randomly and appears out of nowhere
 	ld [wMap1ObjectSprite], a
 	ldh [hUsedSpriteIndex], a
 	ld a, 24
@@ -323,17 +323,6 @@ Special_BattleTower_LoadOpponentTrainerAndPokemonsWithOTSprite:
 	farjp GetUsedSprite
 
 INCLUDE "data/trainers/sprites.asm"
-
-Special_BattleTower_CheckForRules:
-	farcall CheckForBattleTowerRules
-	jr c, .yes
-	xor a
-	jr .done
-.yes
-	ld a, 1
-.done
-	ldh [hScriptVar], a
-	ret
 
 Special_BattleTower_MainMenu:
 	ld a, $4
@@ -381,240 +370,6 @@ MenuData2_ChallengeExplanationCancel:
 	db "Challenge@"
 	db "Explanation@"
 	db "Cancel@"
-
-CheckForBattleTowerRules:
-	ld de, .PointerTables
-	call BattleTower_ExecuteJumptable
-	ret z
-	call BattleTower_PleaseReturnWhenReady
-	scf
-	ret
-
-.PointerTables:
-	db 5
-	dw .Functions
-	dw .TextPointers
-
-.Functions:
-	dw Function_PartyCountEq3
-	dw Function_HasPartyAnEgg
-	dw Function_PartySpeciesAreUnique
-	dw Function_PartyItemsAreUnique
-	dw Function_UberRestriction
-
-.TextPointers:
-	dw JumpText_ExcuseMeYoureNotReady
-	dw JumpText_OnlyThreePkmnMayBeEntered
-	dw JumpText_YouCantTakeAnEgg
-	dw JumpText_ThePkmnMustAllBeDifferentKinds
-	dw JumpText_ThePkmnMustNotHoldTheSameItems
-	dw JumpText_UberRestriction
-
-JumpText_ExcuseMeYoureNotReady:
-	; Excuse me. You're not ready.
-	text_jump Text_ExcuseMeYoureNotReady
-	text_end
-
-BattleTower_PleaseReturnWhenReady:
-	ld hl, .PleaseReturnWhenReady
-	jp PrintText
-
-.PleaseReturnWhenReady:
-	; Please return when you're ready.
-	text_jump UnknownText_0x1c5962
-	text_end
-
-JumpText_OnlyThreePkmnMayBeEntered:
-	; Three #MON must be entered.
-	text_jump Text_OnlyThreePkmnMayBeEntered
-	text_end
-
-JumpText_ThePkmnMustAllBeDifferentKinds:
-	; The @  #MON must all be different kinds.
-	text_jump Text_ThePkmnMustAllBeDifferentKinds
-	text_end
-
-JumpText_ThePkmnMustNotHoldTheSameItems:
-	; The @  #MON must not hold the same items.
-	text_jump Text_ThePkmnMustNotHoldTheSameItems
-	text_end
-
-JumpText_YouCantTakeAnEgg:
-	; You can't take an EGG!
-	text_jump Text_YouCantTakeAnEgg
-	text_end
-
-JumpText_UberRestriction:
-	; @  must be <LV>70 or higher.
-	text_jump Text_UberRestriction
-	text_end
-
-BattleTower_ExecuteJumptable:
-	ld bc, 0
-.loop
-	call .DoJumptableFunction
-	call c, .PrintFailureText
-	call .Next_CheckReachedEnd
-	jr nz, .loop
-	ld a, b
-	and a
-	ret
-
-.DoJumptableFunction:
-	push de
-	push bc
-	call .GetFunctionPointer
-	ld a, c
-	call JumpTable
-	pop bc
-	pop de
-	ret
-
-.Next_CheckReachedEnd:
-	inc c
-	ld a, [de]
-	cp c
-	ret
-
-.GetFunctionPointer:
-	inc de
-	ld a, [de]
-	ld l, a
-	inc de
-	ld a, [de]
-	ld h, a
-	ret
-
-.GetTextPointers:
-	inc de
-	inc de
-	inc de
-	ld a, [de]
-	ld l, a
-	inc de
-	ld a, [de]
-	ld h, a
-	ret
-
-.LoadTextPointer:
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	ret
-
-.PrintFailureText:
-	push de
-	push bc
-	ld a, b
-	and a
-	call z, .PrintFirstText
-	pop bc
-	call .PrintNthText
-	ld b, $1
-	pop de
-	ret
-
-.PrintFirstText:
-	push de
-	call .GetTextPointers
-	call .LoadTextPointer
-	call PrintText
-	pop de
-	ret
-
-.PrintNthText:
-	push bc
-	call .GetTextPointers
-	inc hl
-	inc hl
-	ld b, $0
-	add hl, bc
-	add hl, bc
-	call .LoadTextPointer
-	call PrintText
-	pop bc
-	ret
-
-Function_PartyCountEq3:
-	ld a, [wPartyCount]
-	cp 3
-	ret z
-	scf
-	ret
-
-Function_PartySpeciesAreUnique:
-	ld hl, wPartyMon1Species
-	jr VerifyUniqueness
-
-Function_PartyItemsAreUnique:
-	ld hl, wPartyMon1Item
-	; fallthrough
-
-VerifyUniqueness:
-	ld de, wPartyCount
-	ld a, [de]
-	inc de
-	dec a
-	jr z, .done
-	ld b, a
-.loop
-	push hl
-	push de
-	ld c, b
-	ld a, [hl]
-	and a
-	jr z, .next
-.loop2
-	call .nextmon
-	cp [hl]
-	jr z, .gotcha
-
-.next2
-	dec c
-	jr nz, .loop2
-
-.next
-	pop de
-	pop hl
-	call .nextmon
-	dec b
-	jr nz, .loop
-
-.done
-	and a
-	ret
-
-.gotcha
-	pop de
-	pop hl
-	scf
-	ret
-
-.nextmon
-	push bc
-	ld bc, PARTYMON_STRUCT_LENGTH
-	add hl, bc
-	inc de
-	pop bc
-	ret
-
-Function_HasPartyAnEgg:
-	ld hl, wPartyMon1IsEgg
-	ld a, [wPartyCount]
-	ld c, a
-	ld de, PARTYMON_STRUCT_LENGTH
-.loop
-	bit MON_IS_EGG_F, [hl]
-	jr nz, .found
-	add hl, de
-	dec c
-	jr nz, .loop
-	and a
-	ret
-
-.found
-	scf
-	ret
 
 BT_SetPlayerOT:
 ; Interprets the selected party mons for entering and populates wOTParty
@@ -770,44 +525,5 @@ BT_LegalityCheck:
 	jr .outer_loop
 .identical
 	pop hl
-	scf
-	ret
-
-Function_UberRestriction:
-	ld hl, wPartyMon1Level
-	ld bc, PARTYMON_STRUCT_LENGTH
-	ld de, wPartySpecies
-	ld a, [wPartyCount]
-.loop
-	push af
-	ld a, [de]
-	push bc
-	push de
-	push hl
-	ld de, 1
-	ld hl, UberMons
-	call IsInArray
-	pop bc
-	pop de
-	pop hl
-	jr nc, .next
-.uber
-	ld a, [hl]
-	cp 70
-	jr c, .uber_under_70
-.next
-	add hl, bc
-	inc de
-	pop af
-	dec a
-	jr nz, .loop
-	and a
-	ret
-
-.uber_under_70
-	pop af
-	ld a, [de]
-	ld [wd265], a
-	call GetPokemonName
 	scf
 	ret

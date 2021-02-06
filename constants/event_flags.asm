@@ -2343,7 +2343,7 @@
 	const EVENT_SLOWPOKE_WELL_ENTRANCE_HIDDEN_SUPER_POTION
 
 ; Unused placeholder events
-	const EVENT_886
+	const EVENT_BATTLE_TOWER_INTRO
 	const EVENT_887
 	const EVENT_888
 	const EVENT_889

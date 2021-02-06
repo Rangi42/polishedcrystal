@@ -181,4 +181,5 @@ BattleCommand_transform:
 	ld [hl], a
 	cp IMPOSTER
 	ret z ; avoid infinite loop
+
 	farjp RunActivationAbilitiesInner

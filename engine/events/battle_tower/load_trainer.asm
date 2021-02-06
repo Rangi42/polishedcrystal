@@ -1,87 +1,26 @@
 BTMON_SIZE EQU 11 ; species + item + 4 moves + 3 DVs + 2 personality
 
-Function_LoadOpponentTrainer:
+INCLUDE "data/battle_tower/classes.asm"
+INCLUDE "data/battle_tower/sets.asm"
+
+WriteBattleTowerTrainerName:
+; Returns trainer class in a
 	ldh a, [rSVBK]
 	push af
-	ld a, BANK(wBT_OTTrainer)
+	ld a, BANK(wBT_OTName)
 	ldh [rSVBK], a
-
-	; Fill BT_OTTrainer with zeros
-	xor a
-	ld hl, wBT_OTTrainer
-	ld bc, wBT_OTTrainerEnd - wBT_OTTrainer
-	rst ByteFill
-
-	ld a, BANK(sBTTrainers)
-	call GetSRAMBank
-	ld a, [sNrOfBeatenBattleTowerTrainers]
-	call CloseSRAM
-
-	; Every 3rd complete battle tower session, meet the tycoon
-.tycoon_loop
-	sub BATTLETOWER_NROFTRAINERS * 3
-	jr nc, .tycoon_loop
-	inc a
-	jr z, .load_tycoon
-
-	ldh a, [hRandomAdd]
-	ld b, a
-.resample ; loop to find a random trainer
-	call Random
-	ldh a, [hRandomAdd]
-	add b
-	ld b, a ; b contains the nr of the trainer
-	and %01111111
-if BATTLETOWER_NUM_TRAINERS != 128
-	cp BATTLETOWER_NUM_TRAINERS
-	jr nc, .resample
-endc
-	ld b, a
-
-	ld a, BANK(sBTTrainers)
-	call GetSRAMBank
-
-	ld c, BATTLETOWER_NROFTRAINERS
-	ld hl, sBTTrainers
-.next_trainer
-	ld a, [hli]
-	cp b
-	jr z, .resample
-	dec c
-	jr nz, .next_trainer ; c <= 7  initialise all 7 trainers?
-	jp .found_trainer
-
-.load_tycoon:
-	ld a, BATTLETOWER_NUM_TRAINERS
-	ld b, a
-
-.found_trainer:
-	ld hl, sBTTrainers
-	ld a, [sNrOfBeatenBattleTowerTrainers]
-	ld a, 0 ; TODO: fix
-	ld c, a
-	ld a, b
-	ld b, 0
-	add hl, bc
-	ld [hl], a
-
-	call CloseSRAM
-
-; Copy name (10 bytes) and class (1 byte) of trainer
 	ld hl, BattleTowerTrainers
+	ld a, NAME_LENGTH
+	rst AddNTimes
 	ld de, wBT_OTName
 	ld bc, NAME_LENGTH
-	rst AddNTimes
-	ld bc, NAME_LENGTH
 	rst CopyBytes
-
-	call CloseSRAM
-
+	ld a, [wBT_OTTrainerClass]
+	ld c, a
 	pop af
 	ldh [rSVBK], a
+	ld a, c
 	ret
-
-INCLUDE "data/battle_tower/classes.asm"
 
 PopulateBattleTowerTeam:
 ; Prepares your and the opponent's parties for battle tower battle
@@ -99,79 +38,124 @@ PopulateBattleTowerTeam:
 	ld bc, wPartyMonNicknamesEnd - wPartyCount
 	rst CopyBytes
 
+	; Generate opponent set usage
+	call BT_GetSetTable
+
 .generate_team
 	; Now add the enemy trainer data
-	; Zerofill the OTPartyMon struct
+	; Mark the OT struct as not having any mons
 	xor a
-	ld hl, wOTPartyMons
-	ld bc, wOTPartyMonsEnd - wOTPartyMons
-	rst ByteFill
-
-	; Set party size
-	ld a, BATTLETOWER_NROFPKMNS
 	ld [wOTPartyCount], a
 
-	; Get the set and size
-	ld a, [wNrOfBeatenBattleTowerTrainers]
-	call BT_GetTargetSet
-	call BT_GetSetSize
-	ld d, a
+	; Now append the list of mons according to chosen sets
+	ld de, wBT_OTMonSet
 
-	; Pick randomly among the set but never duplicate species.
-	ld e, 0
+	; Pick a random index in the set.
+	ld hl, wBT_OTMonNumber + 2
+	dec a
+	ld [hld], a
+	ld [hld], a
+	ld [hl], a
+	ld b, BATTLETOWER_NROFPKMNS
+.generate_loop
+	push bc
+	ld a, [de]
+	ld b, a
+	inc de
+	ld c, [hl]
+	call BT_AppendOTMon
+
+	; Store actual index generated.
+	ld a, c
+	ld [hli], a
+	pop bc
+	dec b
+	jr nz, .generate_loop
+
+	; Check if the team is legal. Otherwise, generate a new team.
+	farcall BT_LegalityCheck
+	jr nz, .generate_team
+
+	; Set everything to level 50, then we're done.
+	ld a, 50
+	jp BT_SetLevel
+
+BT_AppendOTMon:
+; Appends mon c from set b to OT party. If c is -1, appends a random set b mon.
+; Preserves de, hl, b. If c is -1, it is set to the actual resulting index.
 	push hl
 	push de
-.loop
-	pop de
-	pop hl
-	ld a, e
-	cp BATTLETOWER_NROFPKMNS
-	jp z, .set_level
-	push hl
-	push de
-	ld a, d
+	push bc
+	ld hl, BattleTowerMons
+	ld a, b
+	push bc
+	call BT_GetTargetSet
+	pop bc
+	ld a, c
+	inc a
+	jr nz, .got_mon_index
+	call BT_GetSetSize
 	call RandomRange
-	ld bc, BTMON_SIZE
+	ld c, a
+
+.got_mon_index
+	; hl now points to the correct set. Make it point to the correct index.
+	push bc
+	ld b, 0
+	ld a, BTMON_SIZE
 	rst AddNTimes
 
-	; Store species data in wOTPartyMon and wOTPartySpecies
-	pop de
-	push de
+	; Now we can actually start adding data.
+	ld b, [hl]
+	ld a, b
+	ld [wNamedObjectIndexBuffer], a ; for later nickname setup
 	push hl
-	ld a, e
+
+	; Add first species byte.
 	ld hl, wOTPartySpecies
-	ld c, a
-	ld b, 0
-	add hl, bc
-	ld b, h
-	ld c, l
-	ld hl, wOTPartyMon1Species
+	ld a, [wOTPartyCount]
+	push af
+	add l
+	ld l, a
+	adc h
+	sub l
+	ld h, a
+	ld [hl], b
+	pop af
+
+	; Also append terminator
+	inc hl
+	ld [hl], -1
+
+	; Set de to the relevant partymon struct.
+	ld hl, wOTPartyMon1
 	call GetPartyLocation
-	pop de
+	ld d, h
+	ld e, l
+	pop hl
 
-	; wOTPartyMon in hl, target battle tower data in de
-	; Species
-	ld a, [de]
-	ld [hl], a
-	ld [bc], a
-	inc de
+	; Add second species byte
+	ld bc, 1
+	ld a, MON_SPECIES
+	call .Copy
 
-	ld bc, wOTPartyMon1Item - wOTPartyMon1Species
-	add hl, bc
-	ld a, [de]
-	ld [hl], a
-	inc de
+	; Add item
+	ld bc, 1
+	ld a, MON_ITEM
+	call .Copy
 
-	ld bc, wOTPartyMon1Moves - wOTPartyMon1Item
-	add hl, bc
-	ld b, NUM_MOVES
+	; Add moves
+	ld bc, NUM_MOVES
+	ld a, MON_MOVES
 	call .Copy
 
 	push hl
+	ld hl, MON_MOVES
+	add hl, de
 	push de
 	push hl
-	ld bc, wOTPartyMon1PP - wOTPartyMon1Moves
-	add hl, bc
+	ld hl, MON_PP
+	add hl, de
 	ld d, h
 	ld e, l
 	pop hl
@@ -179,85 +163,227 @@ PopulateBattleTowerTeam:
 	pop de
 	pop hl
 
-	ld bc, wOTPartyMon1DVs - wOTPartyMon1Moves
-	add hl, bc
-	ld b, 3
+	ld bc, 3
+	ld a, MON_DVS
 	call .Copy
 
-	ld bc, wOTPartyMon1Personality - wOTPartyMon1DVs
-	add hl, bc
-	ld b, 2
+	ld bc, 2
+	ld a, MON_PERSONALITY
 	call .Copy
 
 	; We're done copying the struct. Now generate the rest.
 	; Happiness is always 255
-	ld bc, wOTPartyMon1Happiness - wOTPartyMon1Personality
-	add hl, bc
+	ld hl, MON_HAPPINESS
+	add hl, de
 	ld [hl], 255
 
-	; Set EVs to 252
-	ld bc, wOTPartyMon1EVs - wOTPartyMon1Happiness
-	add hl, bc
-	push hl
+	; Set EVs
+	farcall BT_GetCurTrainer
+	call BT_GetEVsForTrainer
+	ld hl, MON_EVS
+	add hl, de
 	ld bc, 6
-	ld a, 252
 	rst ByteFill
-	pop hl
 
-	pop de
-	inc e
-	push de
-	jp .loop
-
-.set_level
-	ld a, 50
-	call BT_SetLevel
-
-	; Initialize trainer nicknames
-	ld a, [wOTPartyCount]
-	ld d, a
-.nick_loop
-	dec d
-	push de
-	ld a, d
-	ld hl, wOTPartyMon1Species
-	call GetPartyLocation
+	; If Speed DV is zero, also set Speed EV to zero
+	ld hl, wPartyMon1DefSpdDV - wPartyMon1
+	add hl, de
 	ld a, [hl]
-	ld [wNamedObjectIndexBuffer], a
+	and $f
+	jr nz, .speed_dv_ok
+	ld hl, MON_SPD_EV
+	add hl, de
+	ld [hl], a
+
+.speed_dv_ok
+	; Set up nickname. Species is already in named object index buffer.
 	call GetPokemonName
 	ld hl, wOTPartyMonNicknames
-	pop de
-	push de
-	ld a, d
+	ld a, [wOTPartyCount]
 	call SkipNames
 	ld d, h
 	ld e, l
 	ld hl, wStringBuffer1
 	ld bc, MON_NAME_LENGTH
 	rst CopyBytes
+
+	; All done, now we just have to increment the party counter
+	ld a, [wOTPartyCount]
+	inc a
+	ld [wOTPartyCount], a
+	pop bc
+
+	; Overwrite c with actual set index, assuming it was -1 previously.
+	ld a, c
+	pop bc
+	ld c, a
 	pop de
-	ld a, d
-	and a
-	jr nz, .nick_loop
-
-	; Check if the team is legal. Otherwise, generate a new team.
-	farcall BT_LegalityCheck
-	jp nz, .generate_team
-	ret
-
-.Copy:
-	push hl
-.copy_loop
-	ld a, [de]
-	ld [hli], a
-	inc de
-	dec b
-	jr nz, .copy_loop
 	pop hl
 	ret
 
+.Copy:
+; Copies bc bytes from hl to de+a. Preserves de but (deliberately) not hl.
+	push de
+	add e
+	ld e, a
+	adc d
+	sub e
+	ld d, a
+	rst CopyBytes
+	pop de
+	ret
+
+BT_GetSetTable:
+; Generates the appropriate set table given our current winstreak.
+; Our current winstreak gives a certain amount of BP, but also serves
+; to determine what sets the opponent Trainer gets his/her Pokémon from.
+; This is read from BattleTowerSetTable.
+	farcall BT_GetCurTrainer
+	call BT_GetPointsForTrainer
+
+	; There's no set table beyond 8, so don't try to check beyond that.
+	cp 9
+	jr c, .got_bp_amount
+	ld a, 8
+.got_bp_amount
+	dec a ; we want 0-7, not 1-8
+	add a
+	ld c, a
+
+	; Select one of 2 set tables at random
+	ld hl, BattleTowerSetTable
+	call Random
+	and 1
+
+	; Get the set
+	add c
+	add l
+	ld l, a
+	adc h
+	sub l
+	ld h, a
+
+	; Store which sets to use.
+	ld c, [hl]
+	ld b, BATTLETOWER_NROFPKMNS
+	ld hl, wBT_OTMonSet
+.add_loop
+	ld a, c
+	and %11
+	ld [hli], a
+	srl c
+	srl c
+	dec b
+	jr nz, .add_loop
+
+	; Now shuffle the team. The - 1 is intentional, we iterate one less.
+	ld c, BATTLETOWER_NROFPKMNS
+
+.shuffle_loop
+	; This is intentional. We iterate one less than the amount of mons.
+	dec c
+	jr z, .shuffle_done
+	ld b, 0
+	ld hl, wBT_OTMonSet
+	ld a, c
+	inc a
+	call RandomRange
+	push bc
+	ld c, a
+	push hl
+	add hl, bc
+	ld d, h
+	ld e, l
+	pop hl
+	pop bc
+	add hl, bc
+	ld a, [de]
+	ld b, [hl]
+	ld [hl], a
+	ld a, b
+	ld [de], a
+	dec c
+	jr nz, .shuffle_loop
+
+.shuffle_done
+	; Ensure that we generate a random mon number
+	ld a, -1
+	ld hl, wBT_OTMonNumber
+	ld bc, BATTLETOWER_NROFPKMNS
+	rst ByteFill
+	ret
+
+BT_GetPointsForTrainer:
+; Returns BP reward that the given trainer in a gives from the table below.
+; Challenge run 1: 1, 2, 2, 3, 3, 4, 5, 20 total
+; Challenge run 2: 2, 3, 3, 4, 4, 5, 6, 27 total
+; Challenge run 3: 3, 4, 4, 5, 5, 6, 7, 34 total (Tycoon run)
+; Challenge run 4: 4, 5, 5, 6, 6, 7, 8, 41 total
+; Challenge run 5: 5, 6, 6, 7, 7, 8, 8, 47 total
+; Challenge run 6: 6, 7, 7, 8, 8, 8, 8, 52 total (Tycoon run)
+; Challenge run 7: 7, 8, 8, 8, 8, 8, 8, 55 total
+; Challenge run 8, 8, 8, 8, 8, 8, 8, 8, 56 total (not more beyond this point)
+	; a is dealt with later
+	ld b, a
+
+	; If our current streak exceeds 255, just return 8.
+	ld a, [wBattleTowerCurStreak]
+	and a
+	jr nz, .overflow
+
+	; Calculate (current challenge trainer + current streak) / 7.
+	; This effectively gives us challenge run in b and current trainer in a.
+	ld a, [wBattleTowerCurStreak + 1]
+	add b
+	jr c, .overflow
+	ld c, 7
+	call SimpleDivide
+
+	inc a ; Current trainer (1-7)
+
+	; +1 for trainer 2-3, +2 for 4-5, +3 for 6, +4 for 7.
+	cp 7
+	jr nz, .no_extra
+	inc a
+.no_extra
+	rrca
+	add b
+
+	; Cap at 8
+	cp 9
+	ret c
+.overflow
+	ld a, 8
+	ret
+
+BT_GetEVsForTrainer:
+; Return EVs for given trainer in a. Value is (CurStreak + CurTrainer) * 8,
+; capped at 252.
+	ld b, a
+
+	; If our current streak exceeds 255, just return 252.
+	ld a, [wBattleTowerCurStreak]
+	and a
+	jr nz, .overflow
+
+	ld a, [wBattleTowerCurStreak + 1]
+	add b
+	jr c, .overflow
+	cp 32
+	jr nc, .overflow
+
+	; EVs = (current streak + current trainer) * 8
+	add a
+	add a
+	add a
+	ret
+
+.overflow
+	ld a, 252
+	ret
+
 BT_GetTargetSet:
-; Set hl to target set a. If a is higher than the amount of sets, gives the last set.
+; Set hl to target set a. If higher than the amount of sets, gives the last set.
 	cp BATTLETOWER_NUM_SETS
 	jr c, .ok
 	ld a, BATTLETOWER_NUM_SETS - 1

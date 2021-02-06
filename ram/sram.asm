@@ -171,17 +171,17 @@ sHallOfFameEnd::
 SECTION "SRAM Battle Tower", SRAM
 
 ; Battle Tower data must be in SRAM because you can save and leave between battles
-sBattleTowerChallengeState::
-; 0: normal
-; 2: battle tower
-	db
+sBattleTowerChallengeState:: db ; current challenge progress status
 
 sBattleTower::
-sNrOfBeatenBattleTowerTrainers:: db
-sBTChoiceOfLevelGroup:: db
+sBT_CurTrainer:: db
+
+	ds 1 ; unused, may be 0-4 in old saves
+
 ; Battle Tower trainers are saved here, so nobody appears more than once
 sBTTrainers:: ds BATTLETOWER_NROFTRAINERS
-sBattleTowerSaveFileFlags:: db
+
+	ds 1 ; unused, may be 0 or 2 in old saves
 
 sBT_PartySelections:: ds PARTY_LENGTH
 

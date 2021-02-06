@@ -56,6 +56,9 @@ BSOD:
 	dec a ; a == ERR_STACK_UNDERFLOW?
 	ld de, .StackUnderflow
 	jr z, .PrintErrorType
+	dec a ; a == ERR_STACK_UNDERFLOW?
+	ld de, .BTOldSave
+	jr z, .PrintErrorType
 	ld de, .UnknownError
 .PrintErrorType
 	hlcoord 1, 14
@@ -130,6 +133,9 @@ endc
 
 .StackUnderflow:
 	db "Stack underflow@"
+
+.BTOldSave:
+	db "Old save@"
 
 .UnknownError:
 	db "Unknown error@"

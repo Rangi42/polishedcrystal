@@ -325,6 +325,8 @@ wAIFlags:: ds 2 ; modified from trainer struct as player get more badges
 NEXTU
 wBT_PartySelectCounter:: db
 wBT_PartySelections:: ds PARTY_LENGTH
+wBT_OTMonSet:: ds BATTLETOWER_NROFPKMNS
+wBT_OTMonNumber:: ds BATTLETOWER_NROFPKMNS
 ENDU
 
 wBattleMenuCursorBuffer:: dw
@@ -1057,9 +1059,9 @@ wFarfetchdPosition:: db
 wAlways0SceneID:: db
 wAzaleaTownSceneID:: db
 wBattleTower1FSceneID:: db
-wBattleTowerBattleRoomSceneID:: db
-wBattleTowerElevatorSceneID:: db
-wBattleTowerHallwaySceneID:: db
+wBattleTowerBattleRoomSceneID:: db ; unused
+wBattleTowerElevatorSceneID:: db ; unused
+wBattleTowerHallwaySceneID:: db ; unused
 wBattleTowerOutsideSceneID:: db
 wBellchimeTrailSceneID:: db
 wBrunosRoomSceneID:: db
