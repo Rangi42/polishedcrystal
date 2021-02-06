@@ -1169,7 +1169,7 @@ RevivalHerb:
 
 	call RevivePokemon
 	and a
-	jp WontHaveAnyEffectMessage
+	jp nz, WontHaveAnyEffectMessage
 
 	ld c, HAPPINESS_REVIVALHERB
 	predef ChangeHappiness
