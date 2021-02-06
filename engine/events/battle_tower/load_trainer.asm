@@ -357,7 +357,7 @@ BT_GetPointsForTrainer:
 	ret
 
 BT_GetEVsForTrainer:
-; Return EVs for given trainer in a. Value is (CurStreak + CurTrainer) * 8,
+; Return EVs for given trainer in a. Value is (CurStreak + CurTrainer) * 16,
 ; capped at 252.
 	ld b, a
 
@@ -369,13 +369,11 @@ BT_GetEVsForTrainer:
 	ld a, [wBattleTowerCurStreak + 1]
 	add b
 	jr c, .overflow
-	cp 32
+	cp 16
 	jr nc, .overflow
 
-	; EVs = (current streak + current trainer) * 8
-	add a
-	add a
-	add a
+	; EVs = (current streak + current trainer) * 16
+	swap a
 	ret
 
 .overflow
