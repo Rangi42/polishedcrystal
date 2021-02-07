@@ -339,13 +339,14 @@ BT_GetPointsForTrainer:
 	call SimpleDivide
 
 	inc a ; Current trainer (1-7)
+	inc b ; Current challenge run (1-36, 37+ means 255+ wins, handled above)
 
 	; +1 for trainer 2-3, +2 for 4-5, +3 for 6, +4 for 7.
 	cp 7
 	jr nz, .no_extra
 	inc a
 .no_extra
-	rrca
+	srl a ; can't use rra since carry state is unknown
 	add b
 
 	; Cap at 8

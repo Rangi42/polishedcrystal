@@ -92,8 +92,8 @@ AI_Redundant:
 	ret
 
 .PerishSong:
-	ld a, [wPlayerSubStatus1]
-	bit SUBSTATUS_PERISH, a
+	ld a, [wPlayerPerishCount]
+	and a
 	ret
 
 .Reflect:

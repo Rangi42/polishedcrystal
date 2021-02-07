@@ -770,16 +770,15 @@ HandlePerishSong:
 	call HasUserFainted
 	ret z
 
-	ld hl, wPlayerPerishCount
 	ldh a, [hBattleTurn]
 	and a
+	ld hl, wPlayerPerishCount
 	jr z, .got_count
 	ld hl, wEnemyPerishCount
 
 .got_count
-	ld a, BATTLE_VARS_SUBSTATUS1
-	call GetBattleVar
-	bit SUBSTATUS_PERISH, a
+	ld a, [hl]
+	and a
 	ret z
 	dec [hl]
 	ld a, [hl]
@@ -789,9 +788,6 @@ HandlePerishSong:
 	call StdBattleTextbox
 	pop af
 	ret nz
-	ld a, BATTLE_VARS_SUBSTATUS1
-	call GetBattleVarAddr
-	res SUBSTATUS_PERISH, [hl]
 
 	call GetMaxHP
 	predef_jump SubtractHPFromUser
