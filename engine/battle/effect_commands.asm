@@ -5241,6 +5241,15 @@ SetDeferredSwitch:
 	pop af
 	ret
 
+InvertDeferredSwitch:
+; For reflecting move effects
+	ld a, [wDeferredSwitch]
+	and a
+	ret nz
+	xor 1 << SWITCH_TARGET
+	ld [wDeferredSwitch], a
+	ret
+
 CheckPlayerHasMonToSwitchTo:
 	ld a, [wPartyCount]
 	ld d, a

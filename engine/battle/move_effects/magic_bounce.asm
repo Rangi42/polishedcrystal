@@ -77,6 +77,8 @@ BattleCommand_bounceback:
 	xor 1
 	ld [wEnemyGoesFirst], a
 
+	call InvertDeferredSwitch
+
 	; Do the move
 	call UpdateMoveData
 	call BattleCommand_lowersub
@@ -86,6 +88,8 @@ BattleCommand_bounceback:
 	ld a, [wEnemyGoesFirst]
 	xor 1
 	ld [wEnemyGoesFirst], a
+
+	call InvertDeferredSwitch
 
 	ld a, BATTLE_VARS_SUBSTATUS2
 	call GetBattleVarAddr
