@@ -104,36 +104,19 @@ AI_Setup:
 
 	cp EFFECT_ATTACK_UP
 	jr c, .checkmove
-	cp EFFECT_EVASION_UP + 1
+	cp EFFECT_ATTACK_DOWN
 	jr c, .statup
-
-;	cp EFFECT_ATTACK_DOWN - 1
-	jr z, .checkmove
-	cp EFFECT_EVASION_DOWN + 1
-	jr c, .statdown
-
-	cp EFFECT_ATTACK_UP_2
-	jr c, .checkmove
-	cp EFFECT_EVASION_UP_2 + 1
-	jr c, .statup
-
-;	cp EFFECT_ATTACK_DOWN_2 - 1
-	jr z, .checkmove
 	cp EFFECT_EVASION_DOWN_2 + 1
-	jr c, .statdown
+	jr nc, .checkmove
 
-	cp EFFECT_MINIMIZE
-	jr nz, .checkmove
+	; stat-down move
+	ld a, [wPlayerTurnsTaken]
+	and a
+	jr nz, .discourage
+	jr .encourage
 
 .statup
 	ld a, [wEnemyTurnsTaken]
-	and a
-	jr nz, .discourage
-
-	jr .encourage
-
-.statdown
-	ld a, [wPlayerTurnsTaken]
 	and a
 	jr nz, .discourage
 

@@ -988,6 +988,33 @@ HoneClaws:
 	forceraisestat ACCURACY
 	endmove
 
+DefenseCurl:
+	checkobedience
+	usedmovetext
+	doturn
+	forceraisestat DEFENSE
+	curl
+	endmove
+
+Minimize:
+	checkobedience
+	usedmovetext
+	doturn
+	forceraisestat $10 | EVASION
+	minimize
+	endmove
+
+ShellSmash:
+	checkobedience
+	usedmovetext
+	doturn
+	forcelowerstat DEFENSE
+	forcelowerstat SP_DEFENSE
+	forceraisestat $10 | ATTACK
+	forceraisestat $10 | SP_ATTACK
+	forceraisestat $10 | SPEED
+	endmove
+
 AttackDown:
 Growl:
 	checkobedience
@@ -1134,17 +1161,6 @@ EvasionDown2:
 	checkhit
 	bounceback
 	loweroppstat $10 | EVASION
-	endmove
-
-ShellSmash:
-	checkobedience
-	usedmovetext
-	doturn
-	forcelowerstat DEFENSE
-	forcelowerstat SP_DEFENSE
-	forceraisestat $10 | ATTACK
-	forceraisestat $10 | SP_ATTACK
-	forceraisestat $10 | SPEED
 	endmove
 
 ResetStats:
@@ -2146,22 +2162,6 @@ Dig:
 	supereffectivetext
 	postfainteffects
 	posthiteffects
-	endmove
-
-DefenseCurl:
-	checkobedience
-	usedmovetext
-	doturn
-	forceraisestat DEFENSE
-	curl
-	endmove
-
-Minimize:
-	checkobedience
-	usedmovetext
-	doturn
-	forceraisestat $10 | EVASION
-	minimize
 	endmove
 
 FlareBlitz:
