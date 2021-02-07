@@ -13,6 +13,7 @@ AI_Redundant:
 .Moves:
 	dbw EFFECT_DREAM_EATER,   .DreamEater
 	dbw EFFECT_HEAL,          .Heal
+	dbw EFFECT_ROAR,          .Roar
 	dbw EFFECT_LIGHT_SCREEN,  .LightScreen
 	dbw EFFECT_FOCUS_ENERGY,  .FocusEnergy
 	dbw EFFECT_CONFUSE,       .Confuse
@@ -100,6 +101,16 @@ AI_Redundant:
 	ld a, [wEnemyScreens]
 	and SCREENS_REFLECT
 	ret
+
+.Roar:
+	push hl
+	push de
+	push bc
+	farcall CheckAnyOtherAliveOpponentMons
+	pop bc
+	pop de
+	pop hl
+	jr .InvertZero
 
 .Safeguard:
 	ld a, [wEnemyGuards]
