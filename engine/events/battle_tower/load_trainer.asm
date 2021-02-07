@@ -5,21 +5,20 @@ INCLUDE "data/battle_tower/sets.asm"
 
 WriteBattleTowerTrainerName:
 ; Returns trainer class in a
-	ldh a, [rSVBK]
-	push af
-	ld a, BANK(wBT_OTName)
-	ldh [rSVBK], a
 	ld hl, BattleTowerTrainers
 	ld a, NAME_LENGTH
 	rst AddNTimes
-	ld de, wBT_OTName
-	ld bc, NAME_LENGTH
+	ld de, wOTPlayerName
+	ld bc, NAME_LENGTH - 1
 	rst CopyBytes
-	ld a, [wBT_OTTrainerClass]
-	ld c, a
-	pop af
-	ldh [rSVBK], a
-	ld a, c
+
+	; Add terminator
+	ld a, "@"
+	ld [de], a
+
+	; The 11th byte is actually trainer class, not a terminator.
+	ld a, [hl]
+	ld [wOtherTrainerClass], a
 	ret
 
 PopulateBattleTowerTeam:

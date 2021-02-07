@@ -129,7 +129,6 @@ SpecialsPointers::
 
 ; Battle Tower
 	add_special Special_BattleTower_Battle
-	add_special Special_BattleTower_ResetTrainersSRAM
 	add_special Special_BattleTower_GetChallengeState
 	add_special Special_BattleTower_SetChallengeState
 	add_special Special_BattleTower_SelectParticipants

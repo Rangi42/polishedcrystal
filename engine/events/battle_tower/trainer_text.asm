@@ -1,15 +1,9 @@
 BattleTowerText::
-; Print text c for trainer [wBT_OTTrainerClass]
+; Print text c for trainer [wOtherTrainerClass]
 ; 1: Intro text
 ; 2: Player lost
 ; 3: Player won
-	ldh a, [rSVBK]
-	push af
-	ld a, BANK(wBT_OTTrainerClass)
-	ldh [rSVBK], a
-	ld hl, wBT_OTTrainerClass
-	ld a, [hl]
-
+	ld a, [wOtherTrainerClass]
 	cp TOWERTYCOON
 	jr z, .tycoon
 
@@ -26,13 +20,8 @@ BattleTowerText::
 	jr nz, .female
 
 	; generate a random number between 0 and 24
-	ldh a, [hRandomAdd]
-	and $1f
-	cp 25
-	jr c, .okay0
-	sub 25
-
-.okay0
+	ld a, 25
+	call RandomRange
 	ld hl, BTMaleTrainerTexts
 	jr .proceed
 
@@ -44,15 +33,10 @@ BattleTowerText::
 
 .female
 	; generate a random number between 0 and 14
-	ldh a, [hRandomAdd]
-	and $f
-	cp 15
-	jr c, .okay1
-	sub 15
-
-.okay1
+	ld a, 15
+	call RandomRange
 	ld hl, BTFemaleTrainerTexts
-
+	; fallthrough
 .proceed
 	ld b, 0
 	dec c
@@ -83,8 +67,6 @@ BattleTowerText::
 	ld l, c
 	ld h, a
 	bccoord 1, 14
-	pop af
-	ldh [rSVBK], a
 	jp PlaceWholeStringInBoxAtOnce
 
 INCLUDE "data/trainers/genders.asm"

@@ -25,7 +25,6 @@ RunBattleTowerTrainer:
 	xor a
 	ld [wLinkMode], a
 	farcall HealPartyEvenForNuzlocke
-	call ReadBTTrainerParty
 	farcall PopulateBattleTowerTeam
 
 	predef StartBattle
@@ -36,14 +35,13 @@ RunBattleTowerTrainer:
 	ldh [hScriptVar], a
 	and a
 	jr nz, .lost
-	ld a, BANK(sBT_CurTrainer)
-	call GetSRAMBank
-	ld a, [sBT_CurTrainer]
+	call BT_IncrementCurTrainer
+
+	; Used to track if we've beaten everything yet.
+	; TODO: Maybe delegate this to Special_BattleTower_Battle's return result?
 	ld [wNrOfBeatenBattleTowerTrainers], a
-	call CloseSRAM
-	ld hl, wStringBuffer3
-	ld a, [wNrOfBeatenBattleTowerTrainers]
 	add "1"
+	ld hl, wStringBuffer3
 	ld [hli], a
 	ld [hl], "@"
 
@@ -55,94 +53,6 @@ RunBattleTowerTrainer:
 	ld a, $1
 	ld [wBattleTowerBattleEnded], a
 	ret
-
-ReadBTTrainerParty:
-; Initialise the BattleTower-Trainer and his Pkmn
-	call CopyBTTrainerToTemp
-
-	ld hl, wBT_OTTempName
-	ld de, wOTPlayerName
-	ld bc, NAME_LENGTH - 1
-	rst CopyBytes
-	ld a, "@"
-	ld [de], a
-
-	ld hl, wBT_OTTempTrainerClass
-	ld a, [hli]
-	ld [wOtherTrainerClass], a
-	ld a, LOW(wOTPartyMonNicknames)
-	ld [wBGMapBuffer], a
-	ld a, HIGH(wOTPartyMonNicknames)
-	ld [wBGMapBuffer + 1], a
-
-	; Copy Pkmn into Memory from the address in hl
-	ld de, wOTPartyMon1Species
-	ld bc, wOTPartyCount
-	ld a, BATTLETOWER_NROFPKMNS ; Number of Pkmn the BattleTower-Trainer has
-	ld [bc], a
-	inc bc
-.otpartymon_loop
-	push af
-	ld a, [hl]
-	ld [bc], a
-	inc bc
-	push bc
-	ld bc, PARTYMON_STRUCT_LENGTH
-	rst CopyBytes
-	push de
-	ld a, [wBGMapBuffer]
-	ld e, a
-	ld a, [wBGMapBuffer + 1]
-	ld d, a
-	ld bc, MON_NAME_LENGTH
-	rst CopyBytes
-	ld a, e
-	ld [wBGMapBuffer], a
-	ld a, d
-	ld [wBGMapBuffer + 1], a
-	pop de
-	pop bc
-	pop af
-	dec a
-	and a
-	jr nz, .otpartymon_loop
-	ld a, -1
-	ld [bc], a
-	ret
-
-CopyBTTrainerToTemp:
-; copy the BattleTower-Trainer data that lies at 'wBT_OTTrainer' to 'wBT_OTTemp'
-	ldh a, [rSVBK]
-	push af
-	ld a, BANK(wBT_OTTrainer)
-	ldh [rSVBK], a
-
-	ld hl, wBT_OTTrainer
-	ld de, wBT_OTTemp ; wMisc
-	ld bc, BATTLE_TOWER_STRUCT_LENGTH
-	rst CopyBytes
-
-	pop af
-	ldh [rSVBK], a
-
-	ld a, BANK(sBattleTowerChallengeState)
-	call GetSRAMBank
-	ld a, BATTLETOWER_CHALLENGE_IN_PROGRESS
-	ld [sBattleTowerChallengeState], a
-	ld hl, sBT_CurTrainer
-	inc [hl]
-	jp CloseSRAM
-
-Special_BattleTower_ResetTrainersSRAM:
-	ld a, BANK(sBTTrainers)
-	call GetSRAMBank
-	ld a, $ff
-	ld hl, sBTTrainers
-	ld bc, BATTLETOWER_NROFTRAINERS
-	rst ByteFill
-	xor a
-	ld [sBT_CurTrainer], a
-	jp CloseSRAM
 
 Special_BattleTower_GetChallengeState:
 	call BT_GetTowerStatus
@@ -278,14 +188,14 @@ BT_LoadPartySelections:
 	jp CloseSRAM
 
 BT_GetCurTrainer:
-; Returns beaten trainers so far
+; Returns beaten trainers so far in a.
 	ld a, BANK(sBT_CurTrainer)
 	call GetSRAMBank
 	ld a, [sBT_CurTrainer]
 	jp CloseSRAM
 
 BT_IncrementCurTrainer:
-; Increments amount of beaten trainers so far
+; Increments amount of beaten trainers so far and returns result in a.
 	ld a, BANK(sBT_CurTrainer)
 	call GetSRAMBank
 	ld a, [sBT_CurTrainer]

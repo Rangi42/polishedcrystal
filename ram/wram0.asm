@@ -351,10 +351,6 @@ wOddEggName:: ds MON_NAME_LENGTH
 wOddEggOTName:: ds MON_NAME_LENGTH
 
 NEXTU
-; battle tower temp struct
-wBT_OTTemp:: battle_tower_struct wBT_OTTemp
-
-NEXTU
 ; hall of fame temp struct
 wHallOfFameTemp:: hall_of_fame wHallOfFameTemp
 
