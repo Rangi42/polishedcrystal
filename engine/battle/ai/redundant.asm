@@ -102,6 +102,8 @@ AI_Redundant:
 	and SCREENS_REFLECT
 	ret
 
+.BatonPass:
+	call CallOpponentTurn
 .Roar:
 	push hl
 	push de
@@ -180,10 +182,7 @@ AI_Redundant:
 .DreamEater:
 	ld a, [wBattleMonStatus]
 	and SLP
-	jr .InvertZero
-
-.BatonPass:
-	farcall CheckAnyOtherAliveMons
+	; fallthrough
 .InvertZero:
 	jr z, .Redundant
 .NotRedundant:

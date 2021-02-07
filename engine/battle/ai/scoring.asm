@@ -1776,26 +1776,32 @@ AI_Smart_Earthquake:
 	ret
 
 AI_Smart_BatonPass:
-; Changes scoring as follows:
-; +1: Don't bother
-; 0 or less: Good idea
-	push hl
-	farcall AIWantsSwitchCheck
-	pop hl
-	inc [hl]
-	ld a, [wEnemySwitchMonParam]
-	and $f0
-	push af
+; Check total net stat boost effect:
+; <0: Discourage
+; >2: Encourage
+	ld hl, wEnemyAtkLevel
+	ld b, 7
 	xor a
-	ld [wEnemySwitchMonParam], a
-	ld [wEnemyAISwitchScore], a
-	pop af
-	ret z
 .loop
+	add [hl]
+	inc hl
+	dec b
+	jr nz, .loop
+
+	sub BASE_STAT_LEVEL * 7
+	jr c, .discourage
+	cp 3
+	ret c
+
+	; Encourage
 	dec [hl]
-	sub $10
-	ret z
-	jr .loop
+	dec [hl]
+	ret
+
+.discourage
+	inc [hl]
+	inc [hl]
+	ret
 
 AI_Smart_Pursuit:
 ; 50% chance to greatly encourage this move if player's HP is below 25%.
