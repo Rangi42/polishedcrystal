@@ -170,7 +170,7 @@ sHallOfFameEnd::
 
 SECTION "SRAM Battle Tower", SRAM
 
-; Battle Tower data must be in SRAM because you can save and leave between battles
+; Battle Tower data must be in SRAM because you can reset between battles
 sBattleTowerChallengeState:: db ; current challenge progress status
 
 sBattleTower::

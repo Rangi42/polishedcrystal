@@ -323,6 +323,9 @@ wAIMoves:: ds 4 ; enemy moves excluding unusable moves
 wAIMoveScore:: ds 4 ; score for each move
 wAIFlags:: ds 2 ; modified from trainer struct as player get more badges
 NEXTU
+; Most of this data is tracked in SRAM to last between saves.
+; It's only moved here as part of battle initialization, mostly.
+; Thus, it's OK for it to reuse other WRAM space.
 wBT_PartySelectCounter:: db
 wBT_PartySelections:: ds PARTY_LENGTH
 wBT_OTMonSet:: ds BATTLETOWER_NROFPKMNS

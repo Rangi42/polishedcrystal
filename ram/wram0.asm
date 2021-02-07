@@ -1041,7 +1041,7 @@ NEXTU
 wStatsScreenFlags:: db
 
 NEXTU
-; battle tower
+; battle tower (only stored here as part of a dialog, otherwise in SRAM)
 wNrOfBeatenBattleTowerTrainers:: db
 
 NEXTU
