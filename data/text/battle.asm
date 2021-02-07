@@ -1299,8 +1299,9 @@ IdentifiedText:
 	prompt
 
 StartPerishText:
-	text "Both #mon will"
-	line "faint in 3 turns!"
+	text "#mon that heard"
+	line "the song will"
+	cont "faint in 3 turns!"
 	prompt
 
 SandstormBrewedText:
