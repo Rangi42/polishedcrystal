@@ -321,7 +321,8 @@ BT_GetPointsForTrainer:
 ; Challenge run 5: 5, 6, 6, 7, 7, 8, 8, 47 total
 ; Challenge run 6: 6, 7, 7, 8, 8, 8, 8, 52 total (Tycoon run)
 ; Challenge run 7: 7, 8, 8, 8, 8, 8, 8, 55 total
-; Challenge run 8, 8, 8, 8, 8, 8, 8, 8, 56 total (not more beyond this point)
+; Challenge run 8: 8, 8, 8, 8, 8, 8, 8, 56 total
+; Challenge runs after 8 award the same as run 8.
 	; a is dealt with later
 	ld b, a
 

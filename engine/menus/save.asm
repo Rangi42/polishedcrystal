@@ -71,6 +71,7 @@ SaveAndChangeBox:
 Link_SaveGame:
 	call AskOverwriteSaveFile
 	ret c
+ForceGameSave:
 	call SetWRAMStateForSave
 	call SavedTheGame
 	call ClearWRAMStateAfterSave

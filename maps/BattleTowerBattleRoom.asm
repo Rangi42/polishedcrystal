@@ -49,21 +49,23 @@ Script_BattleRoomLoop:
 	disappear BATTLETOWERBATTLEROOM_OPPONENT
 	applymovement BATTLETOWERBATTLEROOM_RECEPTIONIST, MovementData_BattleTowerBattleRoomReceptionistWalksToPlayer
 	applyonemovement PLAYER, turn_head_down
-	showtext Text_YourPokemonWillBeHealedToFullHealth
-	special SaveMusic
-	playmusic MUSIC_HEAL
-	special FadeOutPalettes
-	special LoadMapPalettes
-	pause 60
-	special FadeInPalettes
-	special RestoreMusic
 	opentext
+	writethistext
+		text "<PLAYER> received"
+		line ""
+		text_from_ram wStringBuffer1
+		text " BP!"
+		done
+	waitsfx
+	specialsound
+	waitbutton
+Script_AskNextBattle:
 	copybytetovar wNrOfBeatenBattleTowerTrainers
 	ifequal BATTLETOWER_NROFTRAINERS - 1, .WarnAboutTycoon
 	writethistext
 		text "Next up, opponent"
-		line "no."
-		text_from_ram wStringBuffer3
+		line "No. "
+		deciram wStringBuffer3, 2, 5
 		text ". Ready?"
 		done
 	jump .ShownText
@@ -112,7 +114,7 @@ Script_DontSaveAndEndTheSession:
 		line "Room challenge?"
 		done
 	yesorno
-	iffalse Script_ContinueAndBattleNextOpponent
+	iffalse Script_AskNextBattle
 	writebyte BATTLETOWER_NO_CHALLENGE
 	special Special_BattleTower_SetChallengeState
 	closetext
@@ -181,12 +183,6 @@ MovementData_BattleTowerBattleRoomReceptionistWalksAway:
 	slow_step_left
 	turn_head_right
 	step_end
-
-Text_YourPokemonWillBeHealedToFullHealth:
-	text "Your #mon will"
-	line "be healed to full"
-	cont "health."
-	done
 
 Text_ThanksForVisiting:
 	text "Thanks for"

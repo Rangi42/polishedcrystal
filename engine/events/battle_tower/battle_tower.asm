@@ -35,15 +35,29 @@ RunBattleTowerTrainer:
 	ldh [hScriptVar], a
 	and a
 	jr nz, .lost
+
+	; Display awarded BP for the battle (saved after conclusion)
+	call BT_GetCurTrainer
+	farcall BT_GetPointsForTrainer
+	add "0"
+	ld hl, wStringBuffer1
+	ld [hli], a
+	ld [hl], "@"
 	call BT_IncrementCurTrainer
 
 	; Used to track if we've beaten everything yet.
 	; TODO: Maybe delegate this to Special_BattleTower_Battle's return result?
 	ld [wNrOfBeatenBattleTowerTrainers], a
-	add "1"
-	ld hl, wStringBuffer3
-	ld [hli], a
-	ld [hl], "@"
+
+	; Convert total winstreak to determine next battle number
+	inc a
+	ld hl, wBattleTowerCurStreak + 1
+	add [hl]
+	ld [wStringBuffer3 + 1], a
+	dec hl
+	ld a, [hl]
+	adc 0
+	ld [wStringBuffer3], a
 
 .lost
 	pop af
@@ -203,7 +217,8 @@ BT_IncrementCurTrainer:
 	ld [sBT_CurTrainer], a
 	jp CloseSRAM
 
-Special_BattleTower_LoadOpponentTrainerAndPokemonsWithOTSprite:
+BT_GetCurTrainerIndex:
+; Get trainer index for current trainer
 	call BT_GetCurTrainer
 	ld c, a
 	ld a, BANK(sBTTrainers)
@@ -211,8 +226,13 @@ Special_BattleTower_LoadOpponentTrainerAndPokemonsWithOTSprite:
 	ld b, 0
 	ld hl, sBTTrainers
 	add hl, bc
-	ld c, [hl]
-	call CloseSRAM
+	ld a, [hl]
+	jp CloseSRAM
+
+Special_BattleTower_LoadOpponentTrainerAndPokemonsWithOTSprite:
+	call BT_GetCurTrainerIndex
+	ld c, a
+	ld b, 0
 
 	push bc
 	farcall WriteBattleTowerTrainerName
