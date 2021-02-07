@@ -5245,7 +5245,7 @@ InvertDeferredSwitch:
 ; For reflecting move effects
 	ld a, [wDeferredSwitch]
 	and a
-	ret nz
+	ret z
 	xor 1 << SWITCH_TARGET
 	ld [wDeferredSwitch], a
 	ret
