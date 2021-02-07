@@ -116,8 +116,8 @@ ReloadSpriteIndex::
 
 LoadOverworldGFX::
 	ld hl, OverworldEffectGFX
-	lb bc, BANK(OverworldEffectGFX), 17
-	ld de, vTiles0 tile $6f
+	lb bc, BANK(OverworldEffectGFX), 22
+	ld de, vTiles0 tile $6a
 	jp DecompressRequest2bpp
 
 SafeGetSprite:
@@ -148,7 +148,7 @@ GetSprite::
 	ld l, [hl]
 	ld h, a
 	; load the length into c
-	ld c, 15
+	ld c, 16
 	ld a, l
 	cp BIG_GYARADOS_SPRITE
 	ret z
@@ -333,6 +333,7 @@ GetUsedSprite::
 	pop bc
 	ld l, c
 	ld h, 0
+.ok
 rept 4
 	add hl, hl
 endr

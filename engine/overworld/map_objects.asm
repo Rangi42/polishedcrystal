@@ -551,8 +551,7 @@ endr
 	dw .StandingFlip                 ; SPRITEMOVEFN_STANDING_FLIP
 	dw .MovementPokecomNews          ; SPRITEMOVEFN_POKECOM_NEWS
 	dw .MovementArchTree             ; SPRITEMOVEFN_ARCH_TREE
-	dw .MovementSailboatTop          ; SPRITEMOVEFN_SAILBOAT_TOP
-	dw .MovementSailboatBottom       ; SPRITEMOVEFN_SAILBOAT_BOTTOM
+	dw .MovementSailboat             ; SPRITEMOVEFN_SAILBOAT
 
 .RandomWalkY:
 	call Random
@@ -753,12 +752,8 @@ endr
 	ld a, OBJECT_ACTION_ARCH_TREE
 	jr ._ActionA_StepFunction_Standing
 
-.MovementSailboatTop:
-	ld a, OBJECT_ACTION_SAILBOAT_TOP
-	jr ._ActionA_StepFunction_Standing
-
-.MovementSailboatBottom:
-	ld a, OBJECT_ACTION_SAILBOAT_BOTTOM
+.MovementSailboat:
+	ld a, OBJECT_ACTION_SAILBOAT
 	jr ._ActionA_StepFunction_Standing
 
 .StandingFlip:
@@ -851,12 +846,12 @@ endr
 	add hl, de
 	ld a, [hl]
 	maskbits NUM_DIRECTIONS
-	ld d, 1 * 8 + 6
+	ld d, 6
 	cp DOWN
 	jr z, .ok_13
 	cp UP
 	jr z, .ok_13
-	ld d, 1 * 8 + 4
+	ld d, 4
 .ok_13
 	ld hl, OBJECT_SPRITE_Y_OFFSET
 	add hl, bc
@@ -2881,11 +2876,17 @@ InitSprites:
 	ld c, a
 	ld b, HIGH(wVirtualOAM)
 	ld a, [hli]
+	inc a
 	ldh [hUsedSpriteTile], a
+	dec a
 	add c
 	cp LOW(wVirtualOAMEnd)
 	jr nc, .full
 .addsprite
+	ldh a, [hUsedSpriteTile]
+	dec a
+	ldh [hUsedSpriteTile], a
+	jr z, .finished
 	ldh a, [hCurSpriteYPixel]
 	add [hl]
 	inc hl
@@ -2927,10 +2928,8 @@ InitSprites:
 	or d
 	ld [bc], a
 	inc c
-	ldh a, [hUsedSpriteTile]
-	dec a
-	ldh [hUsedSpriteTile], a
-	jr nz, .addsprite
+	jr .addsprite
+.finished
 	ld a, c
 	ldh [hUsedSpriteIndex], a
 .done

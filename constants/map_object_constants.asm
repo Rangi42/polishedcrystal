@@ -170,8 +170,7 @@ MAPOBJECT_SCREEN_HEIGHT EQU (SCREEN_HEIGHT / 2) + 2
 	const SPRITEMOVEDATA_ARCH_TREE_UP         ; 27
 	const SPRITEMOVEDATA_ARCH_TREE_LEFT       ; 28
 	const SPRITEMOVEDATA_ARCH_TREE_RIGHT      ; 29
-	const SPRITEMOVEDATA_SAILBOAT_TOP         ; 2a
-	const SPRITEMOVEDATA_SAILBOAT_BOTTOM      ; 2b
+	const SPRITEMOVEDATA_SAILBOAT             ; 2a
 NUM_SPRITEMOVEDATA EQU const_value
 
 ; sprite movement functions
@@ -205,8 +204,7 @@ NUM_SPRITEMOVEDATA EQU const_value
 	const SPRITEMOVEFN_STANDING_FLIP         ; 19
 	const SPRITEMOVEFN_POKECOM_NEWS          ; 1a
 	const SPRITEMOVEFN_ARCH_TREE             ; 1b
-	const SPRITEMOVEFN_SAILBOAT_TOP          ; 1c
-	const SPRITEMOVEFN_SAILBOAT_BOTTOM       ; 1d
+	const SPRITEMOVEFN_SAILBOAT              ; 1c
 
 ; StepTypesJumptable indexes (see engine/overworld/map_objects.asm)
 	const_def
@@ -261,8 +259,7 @@ NUM_SPRITEMOVEDATA EQU const_value
 	const OBJECT_ACTION_POKECOM_NEWS    ; 15
 	const OBJECT_ACTION_ARCH_TREE       ; 16
 	const OBJECT_ACTION_RUN             ; 17
-	const OBJECT_ACTION_SAILBOAT_TOP    ; 18
-	const OBJECT_ACTION_SAILBOAT_BOTTOM ; 19
+	const OBJECT_ACTION_SAILBOAT        ; 18
 
 ; see data/sprites/facings.asm:Facings
 	const_def
@@ -313,8 +310,7 @@ NUM_SPRITEMOVEDATA EQU const_value
 	const FACING_ARCH_TREE_UP    ; 2c
 	const FACING_ARCH_TREE_LEFT  ; 2d
 	const FACING_ARCH_TREE_RIGHT ; 2e
-	const FACING_SAILBOAT_TOP    ; 2f
-	const FACING_SAILBOAT_BOTTOM ; 30
+	const FACING_SAILBOAT        ; 2f
 
 ; DoPlayerMovement.DoStep arguments (see engine/overworld/player_movement.asm)
 	const_def

@@ -23,8 +23,7 @@ ObjectActionPairPointers:
 	dw SetFacingPokecomNews,           SetFacingPokecomNews       ; OBJECT_ACTION_POKECOM_NEWS
 	dw SetFacingArchTree,              SetFacingArchTree          ; OBJECT_ACTION_ARCH_TREE
 	dw SetFacingRun,                   SetFacingCurrent           ; OBJECT_ACTION_RUN
-	dw SetFacingSailboatTop,           SetFacingSailboatTop       ; OBJECT_ACTION_SAILBOAT_TOP
-	dw SetFacingSailboatBottom,        SetFacingSailboatBottom    ; OBJECT_ACTION_SAILBOAT_BOTTOM
+	dw SetFacingSailboat,              SetFacingSailboat          ; OBJECT_ACTION_SAILBOAT
 
 SetFacingStanding:
 	ld a, STANDING
@@ -50,12 +49,8 @@ SetFacingPokecomNews:
 	ld a, FACING_POKECOM_NEWS
 	jr SetFixedFacing
 
-SetFacingSailboatTop:
-	ld a, FACING_SAILBOAT_TOP
-	jr SetFixedFacing
-
-SetFacingSailboatBottom:
-	ld a, FACING_SAILBOAT_BOTTOM
+SetFacingSailboat:
+	ld a, FACING_SAILBOAT
 	jr SetFixedFacing
 
 SetFacingBigDoll:

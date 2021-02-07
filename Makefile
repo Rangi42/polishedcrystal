@@ -164,7 +164,9 @@ gfx/music_player/note_lines.2bpp: tools/gfx += --interleave --png=$<
 gfx/new_game/shrink1.2bpp: rgbgfx += -h
 gfx/new_game/shrink2.2bpp: rgbgfx += -h
 
-gfx/overworld/overworld.2bpp: gfx/overworld/puddle_splash.2bpp gfx/overworld/cut_grass.2bpp gfx/overworld/cut_tree.2bpp gfx/overworld/heal_machine.2bpp gfx/overworld/fishing_rod.2bpp gfx/overworld/shadow.2bpp gfx/overworld/shaking_grass.2bpp gfx/overworld/boulder_dust.2bpp ; cat $^ > $@
+gfx/overworld/overworld.2bpp: tools/gfx += --interleave --png=$<
+gfx/overworld/headbutt_tree.2bpp: tools/gfx += --interleave --png=$<
+gfx/overworld/celebi.2bpp: tools/gfx += --interleave --png=$<
 
 gfx/pack/pack_top_left.2bpp: gfx/pack/pack_top.2bpp gfx/pack/pack_left.2bpp ; cat $^ > $@
 
@@ -181,6 +183,15 @@ gfx/pokegear/pokegear.2bpp: tools/gfx += --trim-whitespace
 gfx/pokegear/pokegear_sprites.2bpp: tools/gfx += --trim-whitespace
 
 gfx/pokemon/%/back.2bpp: rgbgfx += -h
+
+gfx/sprites/%.2bpp: tools/gfx += --interleave --png=$<
+
+gfx/icons/%.2bpp: tools/gfx += --interleave --png=$<
+gfx/icons/item.2bpp: tools/gfx =
+gfx/icons/mail.2bpp: tools/gfx =
+gfx/icons/mail2.2bpp: tools/gfx =
+
+gfx/emotes/%.2bpp: tools/gfx += --interleave --png=$<
 
 gfx/slots/slots_1.2bpp: tools/gfx += --trim-whitespace
 gfx/slots/slots_2.2bpp: tools/gfx += --interleave --png=$<
