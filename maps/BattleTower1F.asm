@@ -97,7 +97,7 @@ BattleTower1FTrigger0:
 		para "For that, you get"
 		line "this great prize!"
 		prompt
-	giveitem ABILITYPATCH
+	verbosegiveitem ABILITYPATCH
 	; fallthrough
 .CommitResult:
 	special Special_BattleTower_CommitChallengeResult
