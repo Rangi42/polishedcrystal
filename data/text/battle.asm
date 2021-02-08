@@ -143,8 +143,8 @@ BattleText_UserItemLetItMoveFirst::
 	text "<USER>'s"
 	line ""
 	text_from_ram wStringBuffer1
-	text " let it"
-	cont "move first."
+	text " let"
+	cont "it move first."
 	prompt
 
 BattleText_UserRecoveredPPUsing:
