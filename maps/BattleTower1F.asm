@@ -101,6 +101,9 @@ BattleTower1FTrigger0:
 	; fallthrough
 .CommitResult:
 	special Special_BattleTower_CommitChallengeResult
+	iffalse .WeHopeToServeYouAgain
+	setevent EVENT_BEAT_PALMER
+.WeHopeToServeYouAgain:
 	writethistext
 		text "We hope to serve"
 		line "you again."

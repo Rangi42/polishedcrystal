@@ -80,6 +80,7 @@ Special_BattleTower_CommitChallengeResult:
 ; Commits battle result to game data, giving BP and updating streak data.
 ; Does not reset the challenge state, that is done by saving the game.
 ; This ensures that resetting the game doesn't annul this action.
+; Returns true script-wise if we beat the Tycoon.
 	; Award BP depending on how many trainers we defeated.
 
 	; First byte is always zero (GiveBP wants a 2-byte parameter as input)
@@ -133,12 +134,26 @@ Special_BattleTower_CommitChallengeResult:
 	; Reset winstreak if we lost
 	call BT_GetTowerStatus
 	cp BATTLETOWER_WON_CHALLENGE
-	ret z
+	jr nz, .reset_streak
 
+	; Figure out if we beat the Tycoon
+	call BT_GetCurTrainer
+	dec a
+	call BT_GetTrainerIndex
+	cp BATTLETOWER_TYCOON
+	ld a, 0
+	ldh [hScriptVar], a
+	ret nz
+	inc a
+	ldh [hScriptVar], a
+	ret
+
+.reset_streak
 	xor a
 	ld hl, wBattleTowerCurStreak
 	ld [hli], a
 	ld [hl], a
+	ldh [hScriptVar], a
 	ret
 
 Special_BattleTower_GetChallengeState:
@@ -313,6 +328,8 @@ BT_IncrementCurTrainer:
 BT_GetCurTrainerIndex:
 ; Get trainer index for current trainer
 	call BT_GetCurTrainer
+	; fallthrough
+BT_GetTrainerIndex:
 	ld c, a
 	ld a, BANK(sBTTrainers)
 	call GetSRAMBank
