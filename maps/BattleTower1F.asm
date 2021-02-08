@@ -114,11 +114,12 @@ BattleTower1FTrigger0:
 MapBattleTower1FSignpost0Script:
 	opentext
 	writethistext
+		text "Streak: "
 		deciram wBattleTowerCurStreak, 2, 5
-		text " current wins."
-		line ""
+		text " wins"
+		line "Record: "
 		deciram wBattleTowerTopStreak, 2, 5
-		text " record wins."
+		text " wins"
 		done
 	waitbutton
 
