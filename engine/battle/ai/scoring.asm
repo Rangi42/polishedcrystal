@@ -1603,35 +1603,60 @@ AI_Smart_Foresight:
 
 AI_Smart_PerishSong:
 	push hl
+
+	; Strongly discourage if useless or if we can't switch out
 	farcall CheckAnyOtherAliveEnemyMons
-	pop hl
 	jr z, .no
 
-	ld a, [wPlayerSubStatus2]
+	ld a, [wPlayerPerishCount]
+	and a
+	jr nz, .no
+
+	call GetOpponentAbilityAfterMoldBreaker
+	cp SOUNDPROOF
+	jr z, .no
+
+	farcall GetSwitchScores
+	ld a, [wEnemyAISwitchScore]
+	and a
+	jr z, .no
+
+	; Encourage if player can't switch out
+	farcall CheckAnyOtherAlivePartyMons
+	jr z, .yes
+
+	call CheckIfTargetIsGhostType
+	jr z, .neutral
+
+	call GetOpponentItemAfterUnnerve
+	ld a, b
+	cp HELD_SHED_SHELL
+	jr z, .neutral
+	call SwitchTurn
+	farcall CheckIfTrappedByAbility
+	call SwitchTurn
+	jr z, .yes
+
+	ld a, [wPlayerWrapCount]
+	and a
+	jr nz, .yes
+	ld a, [wEnemySubStatus2]
 	bit SUBSTATUS_CANT_RUN, a
 	jr nz, .yes
 
-	push hl
-	farcall CheckPlayerMoveTypeMatchups
-	ld a, [wEnemyAISwitchScore]
-	cp 10 ; 1.0
+.neutral
 	pop hl
-	ret c
-
-	call AI_50_50
-	ret c
-
-	inc [hl]
 	ret
 
 .yes
-	call AI_50_50
-	ret c
-
+	pop hl
+	dec [hl]
+	dec [hl]
 	dec [hl]
 	ret
 
 .no
+	pop hl
 	ld a, [hl]
 	add 5
 	ld [hl], a

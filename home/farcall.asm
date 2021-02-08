@@ -49,9 +49,7 @@ CallOpponentTurn::
 	pop hl
 	call SwitchTurn
 	call RetrieveAHLAndCallFunction
-	push af
 	call SwitchTurn
-	pop af
 	ret
 
 StackCallInBankB:
