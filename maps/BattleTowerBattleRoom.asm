@@ -40,10 +40,8 @@ Script_BattleRoomLoop:
 	closetext
 	special Special_BattleTower_Battle ; calls predef startbattle
 	special FadeOutPalettes
+	ifequal BTCHALLENGE_LOST, Script_LostBattleTower
 	reloadmap
-	ifnotequal $0, Script_FailedBattleTowerChallenge
-	copybytetovar wNrOfBeatenBattleTowerTrainers
-	ifequal BATTLETOWER_NROFTRAINERS, Script_BeatenAllTrainers
 	applymovement BATTLETOWERBATTLEROOM_OPPONENT, MovementData_BattleTowerBattleRoomOpponentWalksOut
 	warpsound
 	disappear BATTLETOWERBATTLEROOM_OPPONENT
@@ -59,7 +57,8 @@ Script_BattleRoomLoop:
 	waitsfx
 	specialsound
 	waitbutton
-Script_AskNextBattle:
+	ifequal BTCHALLENGE_WON, Script_BeatenAllTrainers
+.AskNextBattle:
 	copybytetovar wNrOfBeatenBattleTowerTrainers
 	ifequal BATTLETOWER_NROFTRAINERS - 1, .WarnAboutTycoon
 	writethistext
@@ -87,20 +86,19 @@ Script_AskNextBattle:
 		done
 .ShownText
 	yesorno
-	iffalse Script_DontBattleNextOpponent
-Script_ContinueAndBattleNextOpponent:
+	iffalse .DontBattleNextOpponent
 	closetext
 	applyonemovement PLAYER, turn_head_right
 	applymovement BATTLETOWERBATTLEROOM_RECEPTIONIST, MovementData_BattleTowerBattleRoomReceptionistWalksAway
 	jump Script_BattleRoomLoop
 
-Script_DontBattleNextOpponent:
+.DontBattleNextOpponent:
 	writethistext
 		text "Save and end the"
 		line "session?"
 		done
 	yesorno
-	iffalse Script_DontSaveAndEndTheSession
+	iffalse .DontSaveAndEndTheSession
 	special SaveOptions
 	writebyte BATTLETOWER_SAVED_AND_LEFT
 	special Special_BattleTower_SetChallengeState
@@ -108,34 +106,33 @@ Script_DontBattleNextOpponent:
 	waitsfx
 	special FadeOutPalettes
 	special SoftReset
-Script_DontSaveAndEndTheSession:
+.DontSaveAndEndTheSession:
 	writethistext
 		text "Cancel your Battle"
 		line "Room challenge?"
+
+		para "Beware, it counts"
+		line "as a loss."
 		done
 	yesorno
-	iffalse Script_AskNextBattle
-	writebyte BATTLETOWER_NO_CHALLENGE
-	special Special_BattleTower_SetChallengeState
-	closetext
+	iffalse .AskNextBattle
 	special FadeOutPalettes
-	warpfacing UP, BATTLE_TOWER_1F, 10, 8
-	jumptext Text_WeHopeToServeYouAgain
 
-Script_FailedBattleTowerChallenge:
-	pause 60
-	special Special_BattleTower_Fade
-	warpfacing UP, BATTLE_TOWER_1F, 10, 8
-	writebyte BATTLETOWER_NO_CHALLENGE
+Script_LostBattleTower:
+	writebyte BATTLETOWER_LOST_CHALLENGE
 	special Special_BattleTower_SetChallengeState
-	showtext Text_ThanksForVisiting
+	jump Script_ReturnToBattleTowerLobby
+	warpfacing UP, BATTLE_TOWER_1F, 10, 8
 	end
 
 Script_BeatenAllTrainers:
-	pause 60
-	setevent EVENT_BEAT_PALMER
-	special Special_BattleTower_Fade
+	writebyte BATTLETOWER_WON_CHALLENGE
+	special Special_BattleTower_SetChallengeState
+	; fallthrough
+Script_ReturnToBattleTowerLobby:
 	warpfacing UP, BATTLE_TOWER_1F, 10, 8
+	end
+
 Script_BeatenAllTrainers2:
 	opentext
 	writethistext
@@ -147,7 +144,7 @@ Script_BeatenAllTrainers2:
 		para "For that, you get"
 		line "this great prize!"
 		prompt
-	jump Script_GivePlayerHisPrize
+	endtext
 
 MovementData_BattleTowerBattleRoomPlayerWalksIn:
 	step_up
@@ -183,8 +180,3 @@ MovementData_BattleTowerBattleRoomReceptionistWalksAway:
 	slow_step_left
 	turn_head_right
 	step_end
-
-Text_ThanksForVisiting:
-	text "Thanks for"
-	line "visiting!"
-	done

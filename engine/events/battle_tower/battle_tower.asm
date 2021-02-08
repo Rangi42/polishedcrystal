@@ -32,9 +32,9 @@ RunBattleTowerTrainer:
 	farcall LoadPokemonData
 	farcall HealPartyEvenForNuzlocke
 	ld a, [wBattleResult]
-	ldh [hScriptVar], a
 	and a
-	jr nz, .lost
+	ld b, BTCHALLENGE_LOST
+	jr nz, .got_result
 
 	; Display awarded BP for the battle (saved after conclusion)
 	call BT_GetCurTrainer
@@ -44,10 +44,11 @@ RunBattleTowerTrainer:
 	ld [hli], a
 	ld [hl], "@"
 	call BT_IncrementCurTrainer
-
-	; Used to track if we've beaten everything yet.
-	; TODO: Maybe delegate this to Special_BattleTower_Battle's return result?
-	ld [wNrOfBeatenBattleTowerTrainers], a
+	cp BATTLETOWER_NROFTRAINERS - 1
+	ld b, BTCHALLENGE_TYCOON
+	jr z, .got_result
+	ld b, BTCHALLENGE_WON
+	jr nc, .got_result
 
 	; Convert total winstreak to determine next battle number
 	inc a
@@ -58,14 +59,80 @@ RunBattleTowerTrainer:
 	ld a, [hl]
 	adc 0
 	ld [wStringBuffer3], a
+	ld b, BTCHALLENGE_NEXT
 
-.lost
+.got_result
+	ld a, b
+	ldh [hScriptVar], a
 	pop af
 	ld [wInBattleTowerBattle], a
 	pop af
 	ld [wOptions2], a
 	ld a, $1
 	ld [wBattleTowerBattleEnded], a
+	ret
+
+Special_BattleTower_CommitChallengeResult:
+; Commits battle result to game data, giving BP and updating streak data.
+	; Award BP depending on how many trainers we defeated.
+
+	; First byte is always zero (GiveBP wants a 2-byte parameter as input)
+	xor a
+	ld [wStringBuffer3], a
+
+	call BT_GetCurTrainer
+.bp_loop
+	sub 1
+	jr c, .bp_done
+	push af
+	farcall BT_GetPointsForTrainer
+	ld bc, wStringBuffer3 + 1
+	ld [bc], a
+	dec bc
+	farcall GiveBP
+	pop af
+	jr .bp_loop
+
+.bp_done
+	; Now, handle streak. Append defeated trainers to current winstreak.
+	call BT_GetCurTrainer
+	ld hl, wBattleTowerCurStreak + 1
+	add [hl]
+	ld [hld], a
+	ld a, [hl]
+	adc 0
+	ld [hl], a
+
+	; If this is a new record, update it.
+	ld de, wBattleTowerTopStreak
+	ld a, [de]
+	cp [hl]
+	ld a, [hli]
+	jr nc, .no_new_hibyte_record
+	ld [de], a
+	inc de
+	ld a, [hl]
+	ld [de], a
+	jr .record_done
+
+.no_new_hibyte_record
+	inc de
+	ld a, [de]
+	cp [hl]
+	ld a, [hli]
+	jr nc, .record_done
+	ld [de], a
+
+.record_done
+	; Reset winstreak if we lost
+	call BT_GetTowerStatus
+	cp BATTLETOWER_WON_CHALLENGE
+	ret z
+
+	xor a
+	ld hl, wBattleTowerCurStreak
+	ld [hli], a
+	ld [hl], a
 	ret
 
 Special_BattleTower_GetChallengeState:

@@ -129,6 +129,7 @@ SpecialsPointers::
 
 ; Battle Tower
 	add_special Special_BattleTower_Battle
+	add_special Special_BattleTower_CommitChallengeResult
 	add_special Special_BattleTower_GetChallengeState
 	add_special Special_BattleTower_SetChallengeState
 	add_special Special_BattleTower_SelectParticipants
@@ -136,7 +137,6 @@ SpecialsPointers::
 	add_special Special_BattleTower_BeginChallenge
 	add_special Special_BattleTower_LoadOpponentTrainerAndPokemonsWithOTSprite
 	add_special Special_BattleTower_MainMenu
-	add_special Special_BattleTower_Fade
 
 ; Polished Crystal
 	add_special SaveOptions

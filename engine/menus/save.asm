@@ -226,6 +226,16 @@ SaveGameData::
 	call SavePlayerData
 	call SavePokemonData
 	call SaveBox
+
+	; This function is never called mid-Battle Tower (only in the beginning).
+	; So this is always a safe action, and gets rid of potential old BT state
+	; from a previous save. Done before checksum generation in case user resets
+	; mid-save.
+	ld a, BANK(sBattleTowerChallengeState)
+	call GetSRAMBank
+	xor a
+	ld [sBattleTowerChallengeState], a
+
 	call SaveChecksum
 	call ValidateBackupSave
 	call SaveBackupOptions
@@ -234,15 +244,7 @@ SaveGameData::
 	call SaveBackupChecksum
 	farcall BackupPartyMonMail
 	farcall SaveRTC
-	ld a, BANK(sBattleTowerChallengeState)
-	call GetSRAMBank
-	ld a, [sBattleTowerChallengeState]
-	cp BATTLETOWER_RECEIVED_REWARD
-	jr nz, .ok
-	xor a
-	ld [sBattleTowerChallengeState], a
-.ok
-	call CloseSRAM
+	call CloseSRAM ; just in case
 	pop af
 	ldh [hVBlank], a
 	ret
@@ -538,15 +540,6 @@ LoadPlayerData:
 	ld de, wCurMapData
 	ld bc, wCurMapDataEnd - wCurMapData
 	rst CopyBytes
-	call CloseSRAM
-	ld a, BANK(sBattleTowerChallengeState)
-	call GetSRAMBank
-	ld a, [sBattleTowerChallengeState]
-	cp BATTLETOWER_RECEIVED_REWARD
-	jr nz, .not_4
-	ld a, BATTLETOWER_WON_CHALLENGE
-	ld [sBattleTowerChallengeState], a
-.not_4
 	jp CloseSRAM
 
 LoadPokemonData:

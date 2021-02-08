@@ -115,22 +115,6 @@ FadeOutPalettes::
 	ld c, 10
 	jp FadeToWhite
 
-Special_BattleTower_Fade:
-	call FillWhiteBGColor
-	ld c, $9
-	call GetTimePalFade
-	ld b, $4
-.asm_8c09c
-	call DmgToCgbTimePals
-	inc hl
-	inc hl
-	inc hl
-	ld c, $7
-	call DelayFrames
-	dec b
-	jr nz, .asm_8c09c
-	ret
-
 Special_FadeInQuickly:
 	ld c, $0
 	call GetTimePalFade

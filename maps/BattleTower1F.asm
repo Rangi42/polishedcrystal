@@ -31,10 +31,15 @@ BattleTower1F_MapScriptHeader:
 
 BattleTower1FTrigger0:
 ; Triggers (usefully) if we're in an ongoing battle tower run.
+	; Only trigger this once.
+	setscene 1
+
 	; Check current battle status to see if we need to resume or reset winstreak
 	special Special_BattleTower_GetChallengeState
-	ifequal BATTLETOWER_CHALLENGE_IN_PROGRESS, .MidBattleReset
+	ifequal BATTLETOWER_CHALLENGE_IN_PROGRESS, .LeftWithoutSaving
 	ifequal BATTLETOWER_SAVED_AND_LEFT, .ResumeChallenge
+	ifequal BATTLETOWER_LOST_CHALLENGE, .LostChallenge
+	ifequal BATTLETOWER_WON_CHALLENGE, .WonChallenge
 	end
 
 .ResumeChallenge
@@ -50,13 +55,58 @@ BattleTower1FTrigger0:
 	priorityjump Script_ReturnToBattleChallenge
 	end
 
-.MidBattleReset
+.LeftWithoutSaving:
 	; The player resetted the game in the middle of a battle.
 	; This counts as a battle loss, and will reset the winstreak.
-	writebyte BATTLETOWER_NO_CHALLENGE
-	special Special_BattleTower_SetChallengeState
-	priorityjump BattleTower_LeftWithoutSaving
+	priorityjump .LeftWithoutSaving2
 	end
+.LeftWithoutSaving2:
+	opentext
+	writethistext
+		text "Excuse me!"
+		line "You didn't save"
+
+		para "before exiting"
+		line "the Battle Room."
+
+		para "I'm awfully sorry,"
+		line "but your challenge"
+
+		para "will be declared"
+		line "invalid."
+		done
+	waitbutton
+	jump .CommitResult
+
+.LostChallenge:
+	priorityjump .CommitResult
+	end
+
+.WonChallenge:
+	priorityjump .WonChallenge2
+	end
+.WonChallenge2:
+	opentext
+	writethistext
+		text "Congratulations!"
+
+		para "You've beaten all"
+		line "the trainers!"
+
+		para "For that, you get"
+		line "this great prize!"
+		prompt
+	giveitem ABILITYPATCH
+	; fallthrough
+.CommitResult:
+	special Special_BattleTower_CommitChallengeResult
+	opentext
+	writethistext
+		text "We hope to serve"
+		line "you again."
+		done
+	waitbutton
+	endtext
 
 MapBattleTower1FSignpost0Script:
 	opentext
@@ -211,42 +261,6 @@ Script_ReturnToBattleChallenge:
 	warpcheck
 	end
 
-Script_GivePlayerHisPrize:
-	writebyte BATTLETOWER_WON_CHALLENGE
-	special Special_BattleTower_SetChallengeState
-	givebp 3
-	writethistext
-		text "<PLAYER> earned"
-		line "3 Battle Points!"
-		done
-	waitsfx
-	specialsound
-	waitbutton
-	writebyte BATTLETOWER_RECEIVED_REWARD
-	special Special_BattleTower_SetChallengeState
-	endtext
-
-Script_WaitButton:
-	waitendtext
-
-BattleTower_LeftWithoutSaving:
-	opentext
-	writethistext
-		text "Excuse me!"
-		line "You didn't save"
-
-		para "before exiting"
-		line "the Battle Room."
-
-		para "I'm awfully sorry,"
-		line "but your challenge"
-
-		para "will be declared"
-		line "invalid."
-		done
-	waitbutton
-	jumpopenedtext Text_WeHopeToServeYouAgain
-
 BattleTowerPharmacistScript:
 	faceplayer
 	opentext
@@ -317,11 +331,6 @@ MovementData_BattleTower1FWalkToElevator:
 	step_up
 	step_up
 	step_end
-
-Text_WeHopeToServeYouAgain:
-	text "We hope to serve"
-	line "you again."
-	done
 
 Text_WeveBeenWaitingForYou:
 	text "We've been waiting"
