@@ -273,7 +273,7 @@ Special_BattleTower_BeginChallenge:
 	call Divide
 	pop de
 	ldh a, [hRemainder]
-	cp BATTLETOWER_NROFTRAINERS * 0
+	cp BATTLETOWER_NROFTRAINERS * 2
 	jr nz, .close_sram
 	dec de
 	ld a, BATTLETOWER_TYCOON

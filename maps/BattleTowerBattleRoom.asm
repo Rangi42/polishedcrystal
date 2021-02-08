@@ -58,9 +58,8 @@ Script_BattleRoomLoop:
 	specialsound
 	waitbutton
 	ifequal BTCHALLENGE_WON, Script_BeatenAllTrainers
+	ifequal BTCHALLENGE_TYCOON, .WarnAboutTycoon
 .AskNextBattle:
-	copybytetovar wNrOfBeatenBattleTowerTrainers
-	ifequal BATTLETOWER_NROFTRAINERS - 1, .WarnAboutTycoon
 	writethistext
 		text "Next up, opponent"
 		line "No. "
