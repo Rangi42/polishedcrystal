@@ -111,6 +111,15 @@ BattleTower1FTrigger0:
 MapBattleTower1FSignpost0Script:
 	opentext
 	writethistext
+		deciram wBattleTowerCurStreak, 2, 5
+		text " current wins."
+		line ""
+		deciram wBattleTowerTopStreak, 2, 5
+		text " record wins."
+		done
+	waitbutton
+
+	writethistext
 		text "Battle Tower rules"
 		line "are written here."
 
