@@ -44,11 +44,9 @@ RunBattleTowerTrainer:
 	ld [hli], a
 	ld [hl], "@"
 	call BT_IncrementCurTrainer
-	cp BATTLETOWER_NROFTRAINERS - 1
-	ld b, BTCHALLENGE_TYCOON
-	jr z, .got_result
+	cp BATTLETOWER_NROFTRAINERS
 	ld b, BTCHALLENGE_WON
-	jr nc, .got_result
+	jr z, .got_result
 
 	; Convert total winstreak to determine next battle number
 	inc a
@@ -59,6 +57,12 @@ RunBattleTowerTrainer:
 	ld a, [hl]
 	adc 0
 	ld [wStringBuffer3], a
+
+	; Check if we're battling the Tycoon. If so, give a special msg.
+	call BT_GetCurTrainerIndex
+	cp BATTLETOWER_TYCOON
+	ld b, BTCHALLENGE_TYCOON
+	jr z, .got_result
 	ld b, BTCHALLENGE_NEXT
 
 .got_result
@@ -74,6 +78,8 @@ RunBattleTowerTrainer:
 
 Special_BattleTower_CommitChallengeResult:
 ; Commits battle result to game data, giving BP and updating streak data.
+; Does not reset the challenge state, that is done by saving the game.
+; This ensures that resetting the game doesn't annul this action.
 	; Award BP depending on how many trainers we defeated.
 
 	; First byte is always zero (GiveBP wants a 2-byte parameter as input)
@@ -249,11 +255,25 @@ Special_BattleTower_BeginChallenge:
 	cp BATTLETOWER_NROFTRAINERS
 	jr nz, .outer_loop
 
-	; Replace the 7th trainer with Tycoon (TODO: maybe only every 21th battle?)
+	; Replace the 7th trainer with Tycoon every 3rd run
+	push de
+	ld a, [wBattleTowerCurStreak]
+	ldh [hDividend], a
+	ld a, [wBattleTowerCurStreak + 1]
+	ldh [hDividend + 1], a
+	ld a, BATTLETOWER_NROFTRAINERS * 3
+	ldh [hDivisor], a
+	ld b, 2
+	call Divide
+	pop de
+	ldh a, [hRemainder]
+	cp BATTLETOWER_NROFTRAINERS * 0
+	jr nz, .close_sram
 	dec de
 	ld a, BATTLETOWER_TYCOON
 	ld [de], a
-	ret
+.close_sram
+	jp CloseSRAM
 
 BT_LoadPartySelections:
 ; Loads party selections from SRAM
