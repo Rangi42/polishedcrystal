@@ -79,6 +79,7 @@ BattleTower1FTrigger0:
 	jump .CommitResult
 
 .LostChallenge:
+	opentext
 	priorityjump .CommitResult
 	end
 
@@ -100,7 +101,6 @@ BattleTower1FTrigger0:
 	; fallthrough
 .CommitResult:
 	special Special_BattleTower_CommitChallengeResult
-	opentext
 	writethistext
 		text "We hope to serve"
 		line "you again."
