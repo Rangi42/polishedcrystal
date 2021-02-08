@@ -47,21 +47,15 @@ PopulateBattleTowerTeam:
 	ld [wOTPartyCount], a
 
 	; Now append the list of mons according to chosen sets
-	ld de, wBT_OTMonSet
-
-	; Pick a random index in the set.
-	ld hl, wBT_OTMonNumber + 2
-	dec a
-	ld [hld], a
-	ld [hld], a
-	ld [hl], a
+	ld hl, wBT_OTMonParty
 	ld b, BATTLETOWER_NROFPKMNS
 .generate_loop
 	push bc
-	ld a, [de]
+	ld a, [hli]
 	ld b, a
-	inc de
-	ld c, [hl]
+
+	; Ignore set index, we want to pick a random mon.
+	ld c, -1
 	call BT_AppendOTMon
 
 	; Store actual index generated.
@@ -74,6 +68,53 @@ PopulateBattleTowerTeam:
 	; Check if the team is legal. Otherwise, generate a new team.
 	farcall BT_LegalityCheck
 	jr nz, .generate_team
+
+	; Don't reuse recently seen mons.
+	ld a, BANK(sBT_OTMonParties)
+	call GetSRAMBank
+	ld de, wBT_OTMonParty
+	ld b, BATTLETOWER_NROFPKMNS
+.repeat_outer_loop
+	ld c, BATTLETOWER_NROFPKMNS * BATTLETOWER_SAVEDPARTIES
+	ld hl, sBT_OTMonParties
+.repeat_loop
+	; Check if set is identical
+	ld a, [de]
+	cp [hl]
+	inc de
+	inc hl
+	jr nz, .next_repeat
+
+	; Set is identical. Check mon number.
+	ld a, [de]
+	cp [hl]
+
+	; If number is also identical, re-roll.
+	jr z, .generate_team
+.next_repeat
+	dec de
+	inc hl
+	dec c
+	jr nz, .repeat_loop
+
+	; Check next party slot
+	inc de
+	inc de
+	dec b
+	jr nz, .repeat_outer_loop
+
+	; Done with checks. Shift SRAM parties and store current party.
+	ld hl, sBT_OTMonParties + BATTLETOWER_PARTYDATA_SIZE
+	ld de, sBT_OTMonParties
+	ld bc, BATTLETOWER_PARTYDATA_SIZE * (BATTLETOWER_SAVEDPARTIES - 1)
+	rst CopyBytes
+
+	; And insert the current party in the last slot
+	ld hl, wBT_OTMonParty
+	ld bc, BATTLETOWER_PARTYDATA_SIZE
+	rst CopyBytes
+
+	call CloseSRAM
 
 	; Set everything to level 50, then we're done.
 	ld a, 50
@@ -265,11 +306,13 @@ BT_GetSetTable:
 	; Store which sets to use.
 	ld c, [hl]
 	ld b, BATTLETOWER_NROFPKMNS
-	ld hl, wBT_OTMonSet
+	ld hl, wBT_OTMonParty
 .add_loop
 	ld a, c
 	and %11
 	ld [hli], a
+	ld [hl], -1 ; pick a random number within a set
+	inc hl
 	srl c
 	srl c
 	dec b
@@ -281,13 +324,14 @@ BT_GetSetTable:
 .shuffle_loop
 	; This is intentional. We iterate one less than the amount of mons.
 	dec c
-	jr z, .shuffle_done
+	ret z
 	ld b, 0
-	ld hl, wBT_OTMonSet
+	ld hl, wBT_OTMonParty
 	ld a, c
 	inc a
 	call RandomRange
 	push bc
+	add a ; each index is 2 bytes
 	ld c, a
 	push hl
 	add hl, bc
@@ -296,6 +340,7 @@ BT_GetSetTable:
 	pop hl
 	pop bc
 	add hl, bc
+	add hl, bc
 	ld a, [de]
 	ld b, [hl]
 	ld [hl], a
@@ -303,14 +348,6 @@ BT_GetSetTable:
 	ld [de], a
 	dec c
 	jr nz, .shuffle_loop
-
-.shuffle_done
-	; Ensure that we generate a random mon number
-	ld a, -1
-	ld hl, wBT_OTMonNumber
-	ld bc, BATTLETOWER_NROFPKMNS
-	rst ByteFill
-	ret
 
 BT_GetPointsForTrainer:
 ; Returns BP reward that the given trainer in a gives from the table below.

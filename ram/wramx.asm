@@ -328,8 +328,7 @@ NEXTU
 ; Thus, it's OK for it to reuse other WRAM space.
 wBT_PartySelectCounter:: db
 wBT_PartySelections:: ds PARTY_LENGTH
-wBT_OTMonSet:: ds BATTLETOWER_NROFPKMNS
-wBT_OTMonNumber:: ds BATTLETOWER_NROFPKMNS
+wBT_OTMonParty:: ds BATTLETOWER_PARTYDATA_SIZE
 ENDU
 
 wBattleMenuCursorBuffer:: dw

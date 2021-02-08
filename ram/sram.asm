@@ -185,6 +185,9 @@ sBTTrainers:: ds BATTLETOWER_NROFTRAINERS
 
 sBT_PartySelections:: ds PARTY_LENGTH
 
+; Repeat prevention
+sBT_OTMonParties:: ds BATTLETOWER_PARTYDATA_SIZE * BATTLETOWER_SAVEDPARTIES
+
 
 SECTION "Boxes 1-7",  SRAM
 

@@ -228,6 +228,12 @@ Special_BattleTower_BeginChallenge:
 	xor a
 	ld [sBT_CurTrainer], a
 
+	; Blank previously used opponent Pokémon
+	ld a, -1
+	ld hl, sBT_OTMonParties
+	ld bc, BATTLETOWER_PARTYDATA_SIZE * BATTLETOWER_SAVEDPARTIES
+	rst ByteFill
+
 	; Generates a list of Trainers for the player to battle.
 	ld b, 0
 	ld de, sBTTrainers
