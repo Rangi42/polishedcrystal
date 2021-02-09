@@ -1356,50 +1356,50 @@
 	db 56, ZUBAT
 	db 59, GOLBAT
 	db 57, PSYDUCK
-	db 58, PSYDUCK
+	db 58, VULPIX
 	db 60, GOLDUCK
 	db 61, GOLDUCK
-	db 62, GOLDUCK
+	db 62, NINETALES
 	; day
 	db 56, ZUBAT
 	db 59, GOLBAT
 	db 57, PSYDUCK
-	db 58, PSYDUCK
+	db 58, VULPIX
 	db 60, GOLDUCK
 	db 61, GOLDUCK
-	db 62, GOLDUCK
+	db 62, NINETALES
 	; nite
 	db 56, ZUBAT
 	db 59, GOLBAT
 	db 57, PSYDUCK
-	db 58, PSYDUCK
+	db 58, VULPIX
 	db 60, GOLDUCK
 	db 61, GOLDUCK
-	db 62, GOLDUCK
+	db 62, NINETALES
 
 	map_id SEAFOAM_ISLANDS_B1F
 	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
 	; morn
 	db 57, SEEL
 	db 60, GOLBAT
-	db 58, PSYDUCK
-	db 59, GOLDUCK
+	db 58, VULPIX
+	db 59, NINETALES
 	db 61, ZUBAT
 	db 62, GOLBAT
 	db 63, GOLBAT
 	; day
 	db 57, SEEL
 	db 60, GOLBAT
-	db 58, PSYDUCK
-	db 59, GOLDUCK
+	db 58, VULPIX
+	db 59, NINETALES
 	db 61, ZUBAT
 	db 62, GOLBAT
 	db 63, GOLBAT
 	; nite
 	db 57, SEEL
 	db 60, GOLBAT
-	db 58, PSYDUCK
-	db 59, GOLDUCK
+	db 58, VULPIX
+	db 59, NINETALES
 	db 61, ZUBAT
 	db 62, GOLBAT
 	db 63, GOLBAT
