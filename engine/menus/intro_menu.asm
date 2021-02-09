@@ -56,6 +56,7 @@ NewGame:
 _NewGame_FinishSetup:
 	call ResetWRAM
 	call NewGame_ClearTileMapEtc
+	call CheckVBA
 	call SetInitialOptions
 	call ProfElmSpeech
 	call InitializeWorld
@@ -346,10 +347,10 @@ Continue:
 	call DelayFrames
 	call ConfirmContinue
 	jp c, CloseWindow
+	call CheckVBA
 	call Continue_CheckRTC_RestartClock
 	jp c, CloseWindow
 	call Continue_CheckEGO_ResetInitialOptions
-;	jp c, CloseWindow
 	ld a, $8
 	ld [wMusicFade], a
 	xor a ; MUSIC_NONE
@@ -398,19 +399,29 @@ ConfirmContinue:
 	scf
 	ret
 
+CheckVBA:
+	xor a
+	ldh [rSC], a
+	ldh a, [rSC]
+	and %01111100
+	cp %01111100
+	ret z
+	ld hl, .WarnVBAText
+	jp PrintText
+
+.WarnVBAText:
+	text_jump _WarnVBAText
+	text_end
+
 Continue_CheckRTC_RestartClock:
 	call CheckRTCStatus
 	and %10000000 ; Day count exceeded 16383
-	jr z, .pass
+	jr z, Continue_CheckEGO_ResetInitialOptions.pass
 	farcall RestartClock
 	ld a, c
 	and a
-	jr z, .pass
+	jr z, Continue_CheckEGO_ResetInitialOptions.pass
 	scf
-	ret
-
-.pass
-	xor a
 	ret
 
 Continue_CheckEGO_ResetInitialOptions:

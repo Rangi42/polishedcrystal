@@ -3318,6 +3318,21 @@ endc
 	line "later!"
 	done
 
+SECTION "_WarnVBAText", ROMX
+_WarnVBAText::
+	text "Warning!"
+
+	para "This Game Boy"
+	line "emulator has bugs"
+
+	para "that may crash"
+	line "Polished Crystal."
+
+	para "Please use another"
+	line "emulator, such as"
+	cont "BGB or Gambatte."
+	prompt
+
 SECTION "UnknownText_0x1c40e6", ROMX
 UnknownText_0x1c40e6::
 	text "The clock's time"
