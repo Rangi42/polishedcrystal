@@ -47,9 +47,7 @@ BT_PartySelect:
 	ld a, [wCurPartyMon]
 	call BT_CheckEnterState
 	ld a, [wMenuCursorY]
-	jr nc, .got_cursor_pos
-	inc a
-.got_cursor_pos
+	adc 0
 	dec a ; Enter
 	jr z, .Enter
 	dec a ; Stats
@@ -311,12 +309,12 @@ BT_AddCurSelection:
 	jr c, .return
 	inc [hl]
 
-	ld hl, wBT_PartySelections
-	add l
+	add LOW(wBT_PartySelections)
 	ld l, a
-	adc h
+	adc HIGH(wBT_PartySelections)
 	sub l
 	ld h, a
+
 	ld a, [wCurPartyMon]
 	ld [hl], a
 	and a

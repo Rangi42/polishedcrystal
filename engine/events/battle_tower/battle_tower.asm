@@ -89,7 +89,7 @@ Special_BattleTower_CommitChallengeResult:
 
 	call BT_GetCurTrainer
 .bp_loop
-	sub 1
+	sub 1 ; no-optimize a++|a-- (dec a can't set carry)
 	jr c, .bp_done
 	push af
 	farcall BT_GetPointsForTrainer
@@ -509,9 +509,9 @@ BT_LegalityCheck:
 	jr c, .illegal
 	ld hl, wOTPartyMon1Item
 	call .CheckAnyIdentical
-	ld a, 2
-	jr c, .illegal
-	xor a
+	; a = carry (illegal) ? 2 : 0
+	sbc a
+	and 2
 .illegal
 	and a
 	ret

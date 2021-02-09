@@ -80,6 +80,17 @@ ResetDamage::
 	ld [wCurDamage + 1], a
 	ret
 
+CallOpponentTurn::
+	ldh [hFarCallSavedA], a
+	ld a, h
+	ldh [hFarCallSavedH], a
+	ld a, l
+	ldh [hFarCallSavedL], a
+	pop hl
+	call SwitchTurn
+	call RetrieveAHLAndCallFunction
+	; fallthrough
+
 BattleCommand_switchturn::
 SwitchTurn::
 	ldh a, [hBattleTurn]

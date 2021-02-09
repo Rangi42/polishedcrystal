@@ -40,18 +40,6 @@ FarPointerCall::
 	ld l, a
 	jr _DoFarCall
 
-CallOpponentTurn::
-	ldh [hFarCallSavedA], a
-	ld a, h
-	ldh [hFarCallSavedH], a
-	ld a, l
-	ldh [hFarCallSavedL], a
-	pop hl
-	call SwitchTurn
-	call RetrieveAHLAndCallFunction
-	call SwitchTurn
-	ret
-
 StackCallInBankB:
 	ld a, b
 StackCallInBankA:
