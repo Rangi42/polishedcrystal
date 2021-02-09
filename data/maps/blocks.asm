@@ -706,6 +706,22 @@ SECTION "BattleTowerOutside_BlockData", ROMX
 BattleTowerOutside_BlockData:
 	INCBIN "maps/BattleTowerOutside.ablk.lz"
 
+SECTION "BattleFactory1F_BlockData", ROMX
+BattleFactory1F_BlockData:
+	INCBIN "maps/BattleFactory1F.ablk.lz"
+
+SECTION "BattleFactoryBattleRoom_BlockData", ROMX
+BattleFactoryBattleRoom_BlockData:
+	INCBIN "maps/BattleFactoryBattleRoom.ablk.lz"
+
+SECTION "BattleFactoryElevator_BlockData", ROMX
+BattleFactoryElevator_BlockData:
+	INCBIN "maps/BattleFactoryElevator.ablk.lz"
+
+SECTION "BattleFactoryHallway_BlockData", ROMX
+BattleFactoryHallway_BlockData:
+	INCBIN "maps/BattleFactoryHallway.ablk.lz"
+
 SECTION "WhirlIslandNE_BlockData", ROMX
 WhirlIslandNE_BlockData:
 	INCBIN "maps/WhirlIslandNE.ablk.lz"

@@ -8,7 +8,7 @@ BattleTowerOutside_MapScriptHeader:
 	warp_event  8, 21, ROUTE_40_BATTLE_TOWER_GATE, 3
 	warp_event  9, 21, ROUTE_40_BATTLE_TOWER_GATE, 4
 	warp_event  8,  9, BATTLE_TOWER_1F, 1 ; hole
-	warp_event  9,  9, BATTLE_TOWER_1F, 2 ; hole
+	warp_event  9,  9, BATTLE_FACTORY_1F, 2 ; hole
 
 	def_coord_events
 	coord_event  8,  9, 1, BattleTowerOutsidePanUpTrigger1
@@ -48,7 +48,7 @@ BattleTowerOutsidePanUpTrigger1:
 
 BattleTowerOutsidePanUpTrigger2:
 	scall BattleTowerOutsidePanUpHelperScript
-	warpfacing UP, BATTLE_TOWER_1F, 11, 13
+	warpfacing UP, BATTLE_FACTORY_1F, 11, 13
 	end
 
 BattleTowerOutsidePanUpHelperScript:

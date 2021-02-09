@@ -132,7 +132,7 @@ Special_BattleTower_CommitChallengeResult:
 
 .record_done
 	; Reset winstreak if we lost
-	call BT_GetTowerStatus
+	call BT_GetChallengeState
 	cp BATTLETOWER_WON_CHALLENGE
 	jr nz, .reset_streak
 
@@ -157,13 +157,26 @@ Special_BattleTower_CommitChallengeResult:
 	ret
 
 Special_BattleTower_GetChallengeState:
-	call BT_GetTowerStatus
+	call BT_GetChallengeState
 	and a
 	ldh [hScriptVar], a
 	ret
 
+BT_GetChallengeState:
+; Returns the current challenge state for Battle Tower, or zero if none.
+	call BT_GetTowerStatus
+	ret c
+	and BATTLETOWER_CHALLENGEMASK
+	ret
+
+BT_GetBattleMode:
+	call BT_GetTowerStatus
+	ret c
+	and BATTLETOWER_MODEMASK
+	ret
+
 BT_GetTowerStatus:
-; Check tower challenge status. Returns:
+; Check tower status (challenge state + battle mode). Returns:
 ; z|c: The save isn't ours (a=0)
 ; z|nc: No ongoing challenge (a=0)
 ; nz|nc: Challenge ongoing, with status in a (a=1+)
@@ -187,12 +200,47 @@ Special_BattleTower_SetChallengeState:
 
 	; Otherwise, go ahead and write the challenge state
 	ldh a, [hScriptVar]
+	; fallthrough
+BT_SetChallengeState:
+	and BATTLETOWER_CHALLENGEMASK
+	ld c, a
+	call BT_GetTowerStatus
+	and ~BATTLETOWER_CHALLENGEMASK
+	or c
+	; fallthrough
+BT_SetTowerStatus:
 	ld c, a
 	ld a, BANK(sBattleTowerChallengeState)
 	call GetSRAMBank
 	ld a, c
 	ld [sBattleTowerChallengeState], a
 	jp CloseSRAM
+
+BT_SetBattleMode:
+	and BATTLETOWER_MODEMASK
+	ld c, a
+	push bc
+	call BT_GetTowerStatus
+	pop bc
+	and ~BATTLETOWER_MODEMASK
+	or c
+	jr BT_SetTowerStatus
+
+Special_BattleTower_SetupRentalMode:
+	ld a, BATTLETOWER_RENTALMODE
+	call BT_SetBattleMode
+
+	; Reset amount of battled trainers. Done in case we abort the initial
+	; selection, which should reset our winstreak and not award any BP.
+	ld a, BANK(sBT_CurTrainer)
+	call GetSRAMBank
+	xor a
+	ld [sBT_CurTrainer], a
+	call CloseSRAM
+
+	; Give the player 6 rental mons
+	farcall NewRentalTeam
+	ret
 
 Special_BattleTower_SelectParticipants:
 	; Clear old BT participants selection
@@ -231,13 +279,18 @@ Special_BattleTower_MaxVolume:
 Special_BattleTower_BeginChallenge:
 ; Initializes Battle Tower challenge data.
 ; possible future idea: occasional special trainers (leaders/etc) after tycoon?
-	; Commit party selection to SRAM
+	call BT_GetBattleMode
+	push af
+
+	; Commit party selection to SRAM in regular mode (Rental is already copied)
 	ld a, BANK(sBT_PartySelections)
 	call GetSRAMBank
+	pop af
+	cp BATTLETOWER_RENTALMODE
 	ld hl, wBT_PartySelections
 	ld de, sBT_PartySelections
 	ld bc, PARTY_LENGTH
-	rst CopyBytes
+	call nz, CopyBytes
 
 	; Reset amount of battled trainers
 	xor a
@@ -278,14 +331,19 @@ Special_BattleTower_BeginChallenge:
 
 	; Replace the 7th trainer with Tycoon every 3rd run
 	push de
-	ld a, [wBattleTowerCurStreak]
+	call BT_GetCurStreakAddr
+	ld a, [hli]
 	ldh [hDividend], a
-	ld a, [wBattleTowerCurStreak + 1]
+	ld a, [hl]
 	ldh [hDividend + 1], a
 	ld a, BATTLETOWER_NROFTRAINERS * 3
 	ldh [hDivisor], a
 	ld b, 2
 	call Divide
+
+	; GetCurStreakAddr closes SRAM, so reopen it.
+	ld a, BANK(sBTTrainers)
+	call GetSRAMBank
 	pop de
 	ldh a, [hRemainder]
 	cp BATTLETOWER_NROFTRAINERS * 2
@@ -295,6 +353,16 @@ Special_BattleTower_BeginChallenge:
 	ld [de], a
 .close_sram
 	jp CloseSRAM
+
+BT_GetCurStreakAddr:
+; Sets hl to the streak address for the current battle mode.
+; Closes SRAM.
+	call BT_GetBattleMode
+	cp BATTLETOWER_RENTALMODE
+	ld hl, wBattleFactoryCurStreak
+	ret z
+	ld hl, wBattleTowerCurStreak
+	ret
 
 BT_LoadPartySelections:
 ; Loads party selections from SRAM
@@ -364,53 +432,6 @@ Special_BattleTower_LoadOpponentTrainerAndPokemonsWithOTSprite:
 
 INCLUDE "data/trainers/sprites.asm"
 
-Special_BattleTower_MainMenu:
-	ld a, $4
-	ldh [hScriptVar], a
-	ld hl, MenuDataHeader_ChallengeExplanationCancel
-	call LoadMenuHeader
-	call ChallengeExplanationCancelMenu
-	jp CloseWindow
-
-ChallengeExplanationCancelMenu:
-	call VerticalMenu
-	jr c, .Exit
-	ldh a, [hScriptVar]
-	cp $5
-	jr nz, .UsewMenuCursorY
-	ld a, [wMenuCursorY]
-	cp $3
-	ret z
-	jr c, .UsewMenuCursorY
-	dec a
-	jr .LoadToScriptVar
-
-.UsewMenuCursorY:
-	ld a, [wMenuCursorY]
-
-.LoadToScriptVar:
-	ldh [hScriptVar], a
-	ret
-
-.Exit:
-	ld a, $4
-	ldh [hScriptVar], a
-	ret
-
-MenuDataHeader_ChallengeExplanationCancel:
-	db $40 ; flags
-	db  0,  0 ; start coords
-	db  7, 14 ; end coords
-	dw MenuData2_ChallengeExplanationCancel
-	db 1 ; default option
-
-MenuData2_ChallengeExplanationCancel:
-	db $a0 ; flags
-	db 3
-	db "Challenge@"
-	db "Explanation@"
-	db "Cancel@"
-
 BT_SetPlayerOT:
 ; Interprets the selected party mons for entering and populates wOTParty
 ; with the chosen Pokémon from the player. Used for 2 things: legality
@@ -447,6 +468,21 @@ BT_SetPlayerOT:
 	ld de, wOTPartyMonOT
 	ld a, NAME_LENGTH
 	call .CopyPartyData
+
+	; In rental mode, also copy party selection to SRAM
+	push bc
+	call BT_GetBattleMode
+	pop bc
+	cp BATTLETOWER_RENTALMODE
+	jr nz, .not_rental
+	ld a, BANK(sBT_MonParty)
+	call GetSRAMBank
+	ld hl, wBT_MonParty
+	ld de, sBT_MonParty
+	ld a, 2
+	call .CopyPartyData
+	call CloseSRAM
+.not_rental
 	pop de
 
 	inc c
@@ -499,71 +535,19 @@ BT_LegalityCheck:
 ; Check OT party for violations of Species or Item Clause. Used to verify
 ; both the player team when entering after copying to OT data, and the
 ; generated AI team. Returns z if the team is legal, otherwise nz and the error
-; in a (1: 2+ share species, 2: 2+ share item)
+; in b (1: 2+ share item, 2: 2+ share species)
 ; Species Clause: more than 1 Pokémon are the same species
 ; Item Clause: more than 1 Pokémon holds the same item
 	; Party size
-	ld hl, wOTPartyMon1Species
-	call .CheckAnyIdentical
-	ld a, 1
-	jr c, .illegal
 	ld hl, wOTPartyMon1Item
-	call .CheckAnyIdentical
-	; a = carry (illegal) ? 2 : 0
-	sbc a
-	and 2
-.illegal
-	and a
-	ret
-
-.CheckAnyIdentical:
-; Check if any of the indexes referred to by hl in the party is identical.
-; Ignores indexes with value 0 (to allow several mons holding no items).
+	lb bc, 1, PARTYMON_STRUCT_LENGTH
 	ld a, [wOTPartyCount]
-	ld e, a ; Total party size
-	ld d, 0 ; Outer iterator
-.outer_loop
-	; Check if we've finished validation. If so, everything is legal.
-	ld a, d
-	cp e
-	ret z
-
-	ld b, [hl] ; Current value to compare to
-
-	; Don't check a value of 0, to allow for several mons holding no item
-	ld a, b
-	and a
-	jr z, .next_outer
-
-	; Now do the actual checking
-	ld c, d ; Inner iterator
-	push hl
-.inner_loop
-	; Is index identical?
-	push bc
-	ld bc, PARTYMON_STRUCT_LENGTH
-	add hl, bc
-	pop bc
-	ld a, [hl]
-	cp b
-	jr z, .identical
-
-	; Check next index if identical
-	inc c
-	ld a, c
-	cp e
-	jr nz, .inner_loop
-
-.next_outer
-	; No index was identical, or it was 0. Advance to next value to check.
-	pop hl
-	push bc
-	ld bc, PARTYMON_STRUCT_LENGTH
-	add hl, bc
-	pop bc
-	inc d
-	jr .outer_loop
-.identical
-	pop hl
-	scf
+	call ArrayIsUnique
+	ret nz ; illegal (b=1)
+	dec b
+	ld hl, wOTPartyMon1Species
+	call ArrayIsUnique
+	ret z ; legit (b=0)
+	inc b
+	inc b
 	ret

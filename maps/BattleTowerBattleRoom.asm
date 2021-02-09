@@ -132,19 +132,6 @@ Script_ReturnToBattleTowerLobby:
 	warpfacing UP, BATTLE_TOWER_1F, 10, 8
 	end
 
-Script_BeatenAllTrainers2:
-	opentext
-	writethistext
-		text "Congratulations!"
-
-		para "You've beaten all"
-		line "the trainers!"
-
-		para "For that, you get"
-		line "this great prize!"
-		prompt
-	endtext
-
 MovementData_BattleTowerBattleRoomPlayerWalksIn:
 	step_up
 	step_up

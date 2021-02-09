@@ -60,6 +60,11 @@ INCLUDE "maps/BattleTowerBattleRoom.asm"
 INCLUDE "maps/BattleTowerElevator.asm"
 INCLUDE "maps/BattleTowerHallway.asm"
 INCLUDE "maps/BattleTowerOutside.asm"
+; 3 maps in HGSS, but just replicated from Tower for now
+INCLUDE "maps/BattleFactory1F.asm"
+INCLUDE "maps/BattleFactoryBattleRoom.asm"
+INCLUDE "maps/BattleFactoryElevator.asm"
+INCLUDE "maps/BattleFactoryHallway.asm"
 
 
 SECTION "New Bark Scripts", ROMX

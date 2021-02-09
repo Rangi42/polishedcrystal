@@ -328,7 +328,8 @@ NEXTU
 ; Thus, it's OK for it to reuse other WRAM space.
 wBT_PartySelectCounter:: db
 wBT_PartySelections:: ds PARTY_LENGTH
-wBT_OTMonParty:: ds BATTLETOWER_PARTYDATA_SIZE
+wBT_MonParty:: ds BATTLETOWER_PARTYDATA_SIZE
+wBT_OTMonParty:: ds BATTLETOWER_PARTYDATA_SIZE ; also for starting rental setup
 ENDU
 
 wBattleMenuCursorBuffer:: dw
@@ -921,8 +922,10 @@ wStoneTableAddress:: dw
 
 wBattleTowerCurStreak:: dw
 wBattleTowerTopStreak:: dw
+wBattleFactoryCurStreak:: dw
+wBattleFactoryTopStreak:: dw
 
-	ds 18
+	ds 14
 
 wMapObjects::
 wPlayerObject:: map_object wPlayer
@@ -1061,7 +1064,7 @@ wFarfetchdPosition:: db
 ; map triggers
 wAlways0SceneID:: db
 wAzaleaTownSceneID:: db
-wBattleTower1FSceneID:: db
+wBattleFacilitySceneID:: db
 wBattleTowerBattleRoomSceneID:: db ; unused
 wBattleTowerElevatorSceneID:: db ; unused
 wBattleTowerHallwaySceneID:: db ; unused

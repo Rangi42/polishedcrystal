@@ -21,6 +21,107 @@ WriteBattleTowerTrainerName:
 	ld [wOtherTrainerClass], a
 	ret
 
+NewRentalTeam:
+; Gives the player 6 rental Pokémon to choose from. The first 3
+; are guranteed to be legal together (the first 6 run into problems with
+; Item Clause).
+.generate_team
+	xor a
+	ld [wOTPartyCount], a
+
+	ld hl, wBT_MonParty
+	ld b, BATTLETOWER_NROFPKMNS
+
+.generate_loop
+	; always pick from the same set
+	push bc
+	lb bc, 2, -1
+	call BT_AppendOTMon
+
+	ld a, b
+	ld [hli], a
+	ld a, c
+	ld [hli], a
+	ld b, a
+	ld c, -1
+	pop bc
+	dec b
+	jr nz, .generate_loop
+
+	; Check if the team is legal. Otherwise, generate a new team.
+	farcall BT_LegalityCheck
+	jr nz, .generate_team
+
+.generate_filler
+	; The picks are legal. Now, generate filler to fill up the rest
+	; of the party without checking for legality. We do, however, still
+	; want them to be distinct sets, checked later.
+	ld a, BATTLETOWER_NROFPKMNS
+	ld [wOTPartyCount], a
+
+	ld hl, wBT_MonParty + BATTLETOWER_PARTYDATA_SIZE
+	ld b, PARTY_LENGTH - BATTLETOWER_NROFPKMNS
+
+.filler_loop
+	push bc
+	lb bc, 2, -1
+	call BT_AppendOTMon
+
+	ld a, b
+	ld [hli], a
+	ld a, c
+	ld [hli], a
+	ld b, a
+	ld c, -1
+	pop bc
+	dec b
+	jr nz, .filler_loop
+
+	; Now, verify that all sets are distinct. This does check both
+	; group + index, even if group is currently redundant. This is
+	; in case we generate mons from different groups in the future.
+	ld de, wBT_MonParty
+	ld a, [wOTPartyCount]
+	dec a
+	ld c, a
+.outer_loop
+	ld h, d
+	ld l, e
+	inc hl
+	inc hl
+	ld b, c
+.inner_loop
+	; Is group identical?
+	ld a, [de]
+	cp [hl]
+	inc de
+	inc hl
+	jr nz, .next
+
+	; Is set identical?
+	ld a, [de]
+	cp [hl]
+	jr z, .generate_filler
+
+.next
+	dec de
+	inc hl
+	dec b
+	jr nz, .inner_loop
+	inc de
+	inc de
+	dec c
+	jr nz, .outer_loop
+
+	; Every set is distinct. Copy to party and set level.
+	ld hl, wOTPartyCount
+	ld de, wPartyCount
+	ld bc, wPartyMonNicknamesEnd - wPartyCount
+	rst CopyBytes
+
+	ld a, 50
+	jp BT_SetLevel
+
 PopulateBattleTowerTeam:
 ; Prepares your and the opponent's parties for battle tower battle
 	; Populate wOTPartyMons with your selections. Used for legality
@@ -28,17 +129,55 @@ PopulateBattleTowerTeam:
 	; to get the party in the correct order. Yes, we need to do this,
 	; we can't abuse the fact that the legality checker already did
 	; this, or we run into trouble after the first battle.
+	farcall BT_GetBattleMode
+	cp BATTLETOWER_RENTALMODE
+	jr z, .rental
 	farcall BT_LoadPartySelections
 	farcall BT_SetPlayerOT
 
+	; Generate opponent set usage
+	call BT_GetSetTable
+	jr .copy_player_data
+
+.rental
+	; First, copy rental data from SRAM
+	ld a, BANK(sBT_MonParty)
+	call GetSRAMBank
+	ld hl, sBT_MonParty
+	ld de, wBT_MonParty
+	ld bc, BATTLETOWER_PARTYDATA_SIZE
+	rst CopyBytes
+	call CloseSRAM
+
+	; Now, add rental choices to OT party
+	xor a
+	ld [wOTPartyCount], a
+	ld hl, wBT_MonParty
+
+	ld b, BATTLETOWER_NROFPKMNS
+.rental_loop
+	push bc
+	ld a, [hli]
+	ld b, a
+	ld a, [hli]
+	ld c, a
+	call BT_AppendOTMon
+	pop bc
+	dec b
+	jr nz, .rental_loop
+
+	; OT will just use group 2 mons
+	ld a, 2
+	ld [wBT_OTMonParty], a
+	ld [wBT_OTMonParty + 2], a
+	ld [wBT_OTMonParty + 4], a
+	; fallthrough
+.copy_player_data
 	; Now copy the OT data to the player party struct
 	ld hl, wOTPartyCount
 	ld de, wPartyCount
 	ld bc, wPartyMonNicknamesEnd - wPartyCount
 	rst CopyBytes
-
-	; Generate opponent set usage
-	call BT_GetSetTable
 
 .generate_team
 	; Now add the enemy trainer data
@@ -212,10 +351,22 @@ BT_AppendOTMon:
 	call .Copy
 
 	; We're done copying the struct. Now generate the rest.
+	; Some of this might seem unnecessary, but is required to
+	; make the stats screen look good for rental mons.
 	; Happiness is always 255
 	ld hl, MON_HAPPINESS
 	add hl, de
 	ld [hl], 255
+
+	; Set capture data
+	ld hl, MON_CAUGHTDATA
+	add hl, de
+	ld a, POKE_BALL
+	ld [hli], a
+	ld a, 50
+	ld [hli], a
+	ld a, BATTLE_TOWER
+	ld [hli], a
 
 	; Set EVs
 	farcall BT_GetCurTrainer
@@ -501,7 +652,10 @@ BT_SetLevel:
 	ld bc, wPartyMon1Exp - wPartyMon1Level
 	add hl, bc
 	push hl
+	push de
+	ld d, a ; needed for CalcExpAtLevel
 	farcall CalcExpAtLevel
+	pop de
 	pop hl
 	push hl
 	ldh a, [hProduct + 1]

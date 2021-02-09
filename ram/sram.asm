@@ -183,7 +183,11 @@ sBTTrainers:: ds BATTLETOWER_NROFTRAINERS
 
 	ds 1 ; unused, may be 0 or 2 in old saves
 
+UNION
 sBT_PartySelections:: ds PARTY_LENGTH
+NEXTU
+sBT_MonParty:: ds BATTLETOWER_PARTYDATA_SIZE
+ENDU
 
 ; Repeat prevention
 sBT_OTMonParties:: ds BATTLETOWER_PARTYDATA_SIZE * BATTLETOWER_SAVEDPARTIES

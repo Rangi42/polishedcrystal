@@ -112,11 +112,11 @@ BT_PartySelect:
 	; Entered 3 mons. Check legality, and if OK, prompt to enter those 3.
 	farcall BT_SetPlayerOT
 	farcall BT_LegalityCheck
-	dec a
-	ld hl, .same_species
-	jr z, .reset_and_print_error
-	dec a
+	dec b
 	ld hl, .same_item
+	jr z, .reset_and_print_error
+	dec b
+	ld hl, .same_species
 	jr z, .reset_and_print_error
 
 	call InitPartyMenuLayout

@@ -853,6 +853,10 @@ ENDM
 	map_attributes BattleTowerHallway, BATTLE_TOWER_HALLWAY, $0, 0
 	map_attributes Route40BattleTowerGate, ROUTE_40_BATTLE_TOWER_GATE, $0, 0
 	map_attributes BattleTowerOutside, BATTLE_TOWER_OUTSIDE, $5, 0
+	map_attributes BattleFactory1F, BATTLE_FACTORY_1F, $0, 0
+	map_attributes BattleFactoryBattleRoom, BATTLE_FACTORY_BATTLE_ROOM, $0, 0
+	map_attributes BattleFactoryElevator, BATTLE_FACTORY_ELEVATOR, $0, 0
+	map_attributes BattleFactoryHallway, BATTLE_FACTORY_HALLWAY, $0, 0
 	map_attributes CliffEdgeGate, CLIFF_EDGE_GATE, $9, 0
 	map_attributes CliffCave, CLIFF_CAVE, $9, 0
 	map_attributes ViridianGym, VIRIDIAN_GYM, $0, 0

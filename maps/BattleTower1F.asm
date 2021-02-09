@@ -76,11 +76,11 @@ BattleTower1FTrigger0:
 		line "invalid."
 		done
 	waitbutton
-	jump .CommitResult
+	jump Script_CommitBattleTowerResult
 
 .LostChallenge:
 	opentext
-	priorityjump .CommitResult
+	priorityjump Script_CommitBattleTowerResult
 	end
 
 .WonChallenge:
@@ -99,7 +99,7 @@ BattleTower1FTrigger0:
 		prompt
 	verbosegiveitem ABILITYPATCH
 	; fallthrough
-.CommitResult:
+Script_CommitBattleTowerResult:
 	special Special_BattleTower_CommitChallengeResult
 	iffalse .WeHopeToServeYouAgain
 	setevent EVENT_BEAT_PALMER
@@ -213,8 +213,9 @@ ReceptionistScript_BattleTower:
 		text "Want to go into a"
 		line "Battle Room?"
 		done
-
-	special Special_BattleTower_MainMenu
+	loadmenu MenuDataHeader_BattleInfoCancel
+	verticalmenu
+	closewindow
 	ifequal $1, .Challenge
 	ifequal $2, .Explanation
 	writethistext
@@ -230,6 +231,11 @@ ReceptionistScript_BattleTower:
 		prompt
 	special Special_BattleTower_SelectParticipants
 	iffalse .BattleTowerMenu
+	scall Script_MustSaveBeforeBattle
+	iffalse .BattleTowerMenu
+	jump Script_PrepareForBattle
+
+Script_MustSaveBeforeBattle:
 	writethistext
 		text "Before entering"
 		line "the Battle Room,"
@@ -238,15 +244,18 @@ ReceptionistScript_BattleTower:
 		line "be saved."
 		done
 	yesorno
-	iffalse .BattleTowerMenu
+	iffalse .End
 
 	; Done here to ensure it's saved in case the player resets later.
 	; The scene script running after the player saves but before the
 	; challenge starts is harmless since there's no challenge prepared.
 	setscene $0
 	special Special_TryQuickSave
-	iffalse .BattleTowerMenu
+	; fallthrough
+.End:
+	end
 
+Script_PrepareForBattle:
 	; Initializes opponent trainers and stores player mon choices in SRAM
 	special Special_BattleTower_BeginChallenge
 	; fallthrough
@@ -273,6 +282,20 @@ Script_ReturnToBattleChallenge:
 	applyonemovement PLAYER, step_up
 	warpcheck
 	end
+
+MenuDataHeader_BattleInfoCancel:
+	db $40 ; flags
+	db  4, 11 ; start coords
+	db 11, 19 ; end coords
+	dw MenuData2_BattleInfoCancel
+	db 1 ; default option
+
+MenuData2_BattleInfoCancel:
+	db $a0 ; flags
+	db 3
+	db "Battle@"
+	db "Info@"
+	db "Cancel@"
 
 BattleTowerPharmacistScript:
 	faceplayer
@@ -344,14 +367,6 @@ MovementData_BattleTower1FWalkToElevator:
 	step_up
 	step_up
 	step_end
-
-Text_WeveBeenWaitingForYou:
-	text "We've been waiting"
-	line "for you. This way"
-
-	para "to a Battle Room,"
-	line "please."
-	done
 
 Text_BattleTowerCooltrainerF:
 	text "There are lots of"

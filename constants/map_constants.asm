@@ -521,6 +521,10 @@ ENDM
 	map_const BATTLE_TOWER_HALLWAY,                       11,  2 ; 15
 	map_const ROUTE_40_BATTLE_TOWER_GATE,                  5,  4 ; 16
 	map_const BATTLE_TOWER_OUTSIDE,                       10, 13 ; 17
+	map_const BATTLE_FACTORY_1F,                          11,  7 ; 18
+	map_const BATTLE_FACTORY_BATTLE_ROOM,                  4,  4 ; 19
+	map_const BATTLE_FACTORY_ELEVATOR,                     2,  2 ; 20
+	map_const BATTLE_FACTORY_HALLWAY,                     11,  2 ; 21
 
 	newgroup                                                     ; 23
 
