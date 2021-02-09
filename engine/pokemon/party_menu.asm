@@ -262,6 +262,7 @@ BT_CheckEnterState:
 	push af
 	ld hl, wPartyMon1Species
 	call GetPartyLocation
+	ld a, [hl]
 	ld de, 1
 	ld hl, UberMons
 	call IsInArray
