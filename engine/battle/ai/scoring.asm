@@ -1628,7 +1628,7 @@ AI_Smart_PerishSong:
 	call CheckIfTargetIsGhostType
 	jr z, .neutral
 
-	call GetOpponentItemAfterUnnerve
+	farcall GetOpponentItemAfterUnnerve
 	ld a, b
 	cp HELD_SHED_SHELL
 	jr z, .neutral
