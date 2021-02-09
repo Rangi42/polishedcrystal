@@ -36,8 +36,6 @@ The final, non-beta 3.0 release should include all of these.
    * Rattata/Raticate in Kanto
    * Grimer/Muk in Goldenrod City (Celadon's Muk are a sign of its pollution, Goldenrod's Alolan Muk would be a sign that they manage pollution better)
    * Sandshrew/Sandslash and Vulpix/Ninetales in the Ice Path and/or Seafoam Islands
-   * Diglett/Dugtrio on Cinnabar Island (right now I replaced all Diglett with the Alolan ones, with the explanation that the volcano affected climate everywhere, but I'd rather have the ones in Diglett's Cave be normal)
-   * Geodude/Graveler/Golem in Rock Tunnel (the Lodestone there is already used to evolve Magnezone)
    * Marowak, Exeggutor, and Raichu evolve while holding the Odd Souvenir (bought on Shamouti Island)
    * Ponyta/Rapidash on Shamouti Island
    * Corsola/Cursola in Scary Cave
