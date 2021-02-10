@@ -5851,7 +5851,7 @@ WildSpeciesForms:
 	ret
 
 .EkansArbok:
-	call RegionCheck
+	call RandomRegionCheck
 	ld a, e
 	and a
 	ld a, ARBOK_JOHTO_FORM
