@@ -35,7 +35,7 @@ The final, non-beta 3.0 release should include all of these.
    * Rattata/Raticate in Kanto
    * Grimer/Muk in Goldenrod City (Celadon's Muk are a sign of its pollution, Goldenrod's Alolan Muk would be a sign that they manage pollution better)
    * Sandshrew/Sandslash and Vulpix/Ninetales in the Ice Path and/or Seafoam Islands
-   * Marowak, Exeggutor, and Raichu evolve while holding the Odd Souvenir (bought on Shamouti Island)
+   * Marowak, Exeggutor, and Raichu evolve while holding the Odd Souvenir
    * Ponyta/Rapidash on Shamouti Island
    * Corsola/Cursola in Scary Cave
    * Farfetch'd/Sirfetch'd instead of non-faithful Farfetch'd
@@ -91,6 +91,7 @@ Shamouti Island:
 * Shamouti Island
 * Shamouti Hotel (haunted room) (EVENT_SAW_HAUNTED_ROOM)
 * Shamouti Restaurant (works like Seven Stars Restaurant) (different subset of all trainers every day of the week)
+  - Should award Odd Souvenir to make it a renewable reward
 
 
 ### Optimizations
