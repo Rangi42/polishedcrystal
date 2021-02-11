@@ -141,6 +141,7 @@ AbilityNames:
 	dw TanglingHair
 	dw NeutralizingGas
 	dw PastelVeil
+	dw QuickDraw
 
 NoAbility:       rawchar "---@"
 Stench:          rawchar "Stench@"
@@ -284,3 +285,4 @@ Corrosion:       rawchar "Corrosion@"
 TanglingHair:    rawchar "Tangling Hair@"
 NeutralizingGas: rawchar "Neutralizing Gas@"
 PastelVeil:      rawchar "Pastel Veil@"
+QuickDraw:       rawchar "Quick Draw@"

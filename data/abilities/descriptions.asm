@@ -141,6 +141,7 @@ AbilityDescriptions:
 	dw TanglingHairDescription
 	dw NeutralizingGasDescription
 	dw PastelVeilDescription
+	dw QuickDrawDescription
 
 NoAbilityDescription:
 	db    "Abilities are"
@@ -697,3 +698,7 @@ TanglingHairDescription:
 NeutralizingGasDescription:
 	db    "Suppresses all"
 	next1 "other Abilities.@"
+
+QuickDrawDescription:
+	db    "Moves first"
+	next1 "occasionally.@"
