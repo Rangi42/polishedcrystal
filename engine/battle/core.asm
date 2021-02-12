@@ -5326,6 +5326,7 @@ CheckUsableMove:
 	call GetTrueUserAbility
 	cp GORILLA_TACTICS
 	jr z, .check_choiced
+	jr .usable
 
 .assault_vest
 	; Assault Vest check
