@@ -682,8 +682,8 @@ ParentalBondDescription:
 	next1 "attack together.@"
 
 BerserkDescription:
-	db    "Damaged over half"
-	next1 "boosts Spcl.Atk."
+	db    "Ups Spcl.Atk. when"
+	next1 "damaged over half.@"
 
 SlushRushDescription:
 	db    "Boosts Speed in"

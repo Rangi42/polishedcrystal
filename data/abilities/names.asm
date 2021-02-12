@@ -135,6 +135,7 @@ AbilityNames:
 	dw ToughClaws
 	dw Pixilate
 	dw ParentalBond
+	dw Berserk
 	dw SlushRush
 	dw Galvanize
 	dw Corrosion
