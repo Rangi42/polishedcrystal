@@ -2177,6 +2177,8 @@ BattleAnimFunction_Moon:
 	call BattleAnim_AnonJumptable
 .anon_dw
 	dw Functionce306
+	dw Functionce330
+	dw Functionce34c
 
 BattleAnimFunction_21:
 	call BattleAnim_AnonJumptable
