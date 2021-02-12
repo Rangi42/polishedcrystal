@@ -37,18 +37,24 @@ BattleCommand_counter:
 	or [hl]
 	ret z
 
+	; Don't double damage twice for Parental Bond
+	ld a, BATTLE_VARS_SUBSTATUS2
+	call GetBattleVar
+	bit SUBSTATUS_IN_ABILITY, a
+	jr nz, .got_damage
+
 	ld a, [hl]
 	add a
 	ld [hld], a
 	ld a, [hl]
 	adc a
 	ld [hl], a
-	jr nc, .capped
+	jr nc, .got_damage
 	ld a, $ff
 	ld [hli], a
 	ld [hl], a
-.capped
 
+.got_damage
 	xor a
 	ld [wAttackMissed], a
 	ret

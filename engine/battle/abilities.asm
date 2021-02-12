@@ -537,6 +537,39 @@ SynchronizeAbility:
 	farcall BattleCommand_burn
 	jp EnableAnimations
 
+ResolveOpponentBerserk_CheckMultihit:
+; Does nothing if we're currently in an ongoing multihit move.
+	; Regular multihit
+	ld a, BATTLE_VARS_SUBSTATUS3
+	call GetBattleVarAddr
+	bit SUBSTATUS_IN_LOOP, [hl]
+	ret nz
+
+	; Check if user has Parental Bond
+	call GetTrueUserAbility
+	cp PARENTAL_BOND
+	ret z
+
+	; fallthrough
+ResolveOpponentBerserk:
+	ld a, BATTLE_VARS_SUBSTATUS2_OPP
+	call GetBattleVarAddr
+	bit SUBSTATUS_IN_ABILITY, [hl]
+	ret z
+	res SUBSTATUS_IN_ABILITY, [hl]
+
+	call GetOpponentAbilityAfterMoldBreaker
+	cp BERSERK
+	ret nz
+
+	farcall CheckSheerForceNegation
+	ret z
+
+	call SwitchTurn
+	ld b, SP_ATTACK
+	call StatUpAbility
+	jp SwitchTurn
+
 RunFaintAbilities:
 ; abilities that run after an attack faints an enemy
 	farcall GetFutureSightUser

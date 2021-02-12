@@ -93,6 +93,7 @@ CallOpponentTurn::
 
 BattleCommand_switchturn::
 SwitchTurn::
+; Preserves all registers.
 	ldh a, [hBattleTurn]
 	push af
 	xor 1

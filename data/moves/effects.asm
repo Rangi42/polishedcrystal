@@ -1519,6 +1519,8 @@ Counter:
 	checkobedience
 	usedmovetext
 	doturn
+	hastarget
+	checkhit ; needed for Parental Bond, it can't miss
 	counter
 	moveanim
 	failuretext
@@ -1995,6 +1997,8 @@ MirrorCoat:
 	checkobedience
 	usedmovetext
 	doturn
+	hastarget
+	checkhit
 	counter
 	moveanim
 	failuretext

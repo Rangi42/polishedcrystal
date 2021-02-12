@@ -135,6 +135,7 @@ AbilityDescriptions:
 	dw ToughClawsDescription
 	dw PixilateDescription
 	dw ParentalBondDescription
+	dw BerserkDescription
 	dw SlushRushDescription
 	dw GalvanizeDescription
 	dw CorrosionDescription
@@ -679,6 +680,10 @@ PixilateDescription:
 ParentalBondDescription:
 	db    "Parent and child"
 	next1 "attack together.@"
+
+BerserkDescription:
+	db    "Damaged over half"
+	next1 "boosts Spcl.Atk."
 
 SlushRushDescription:
 	db    "Boosts Speed in"

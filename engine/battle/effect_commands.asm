@@ -1700,6 +1700,10 @@ BattleCommand_checkhit:
 	ret z
 	cp EFFECT_ROAR
 	ret z
+	cp EFFECT_COUNTER
+	ret z
+	cp EFFECT_MIRROR_COAT
+	ret z
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
 	cp STRUGGLE
@@ -3022,19 +3026,22 @@ BattleCommand_posthiteffects:
 	ret nz
 
 	; Multi-hit attacks have their own multihit code
-	ld a, BATTLE_VARS_MOVE_EFFECT
-	call GetBattleVar
-	cp EFFECT_MULTI_HIT
-	ret z
+	ld a, BATTLE_VARS_SUBSTATUS3
+	call GetBattleVarAddr
+	bit SUBSTATUS_IN_LOOP, [hl]
+	ret nz
 
 	ld a, BATTLE_VARS_SUBSTATUS2
 	call GetBattleVarAddr
 	bit SUBSTATUS_IN_ABILITY, [hl]
 	res SUBSTATUS_IN_ABILITY, [hl]
-	ret nz
+	jr nz, .resolve_berserk
 	set SUBSTATUS_IN_ABILITY, [hl]
 	ld b, checkhit_command
 	jp SkipToBattleCommandBackwards
+
+.resolve_berserk
+	farjp ResolveOpponentBerserk
 
 CheckEndMoveEffects:
 ; Effects handled at move end skipped by Sheer Force negation except for rampage
@@ -4193,7 +4200,34 @@ PlayFXAnimID:
 	ret
 
 TakeOpponentDamage:
-	call CallOpponentTurn
+; user takes damage, doesn't apply berserk so don't run the regular damage func
+	ld hl, wCurDamage
+	ld a, [hli]
+	ld b, a
+	ld a, [hl]
+	or b
+	jr z, .did_no_damage
+
+	ld a, c
+	and a
+	jr nz, .mimic_sub_check
+
+	ld a, BATTLE_VARS_SUBSTATUS4
+	call GetBattleVar
+	bit SUBSTATUS_SUBSTITUTE, a
+	jr z, .mimic_sub_check
+	call SwitchTurn
+	call SelfInflictDamageToSubstitute
+	jp SwitchTurn
+
+.mimic_sub_check
+	ld a, [hld]
+	ld c, a
+	ld b, [hl]
+	farcall SubtractHPFromUser
+.did_no_damage
+	jp RefreshBattleHuds
+
 TakeDamage:
 ; opponent takes damage
 	ld hl, wCurDamage
@@ -4215,7 +4249,7 @@ TakeDamage:
 	ld a, [hld]
 	ld c, a
 	ld b, [hl]
-	farcall SubtractHPFromOpponent
+	farcall DealDamageToOpponent
 .did_no_damage
 	jp RefreshBattleHuds
 
@@ -5312,6 +5346,9 @@ BattleCommand_endloop:
 	call GetBattleVarAddr
 	res SUBSTATUS_IN_LOOP, [hl]
 
+	push de
+	farcall ResolveOpponentBerserk
+	pop de
 	ld hl, wStringBuffer1
 	ld a, [de]
 	swap a

@@ -696,6 +696,9 @@ PerformMove:
 	ld a, BATTLE_VARS_SUBSTATUS2
 	call GetBattleVarAddr
 	res SUBSTATUS_IN_ABILITY, [hl]
+	ld a, BATTLE_VARS_SUBSTATUS2_OPP
+	call GetBattleVarAddr
+	res SUBSTATUS_IN_ABILITY, [hl]
 	ld a, BATTLE_VARS_MOVE
 	call GetBattleVar
 	cp DESTINY_BOND
@@ -707,6 +710,9 @@ PerformMove:
 	farcall DoTurn
 .end_protect
 	ld a, BATTLE_VARS_SUBSTATUS2
+	call GetBattleVarAddr
+	res SUBSTATUS_IN_ABILITY, [hl]
+	ld a, BATTLE_VARS_SUBSTATUS2_OPP
 	call GetBattleVarAddr
 	res SUBSTATUS_IN_ABILITY, [hl]
 
@@ -1722,13 +1728,70 @@ LeppaRestorePP:
 	ld [hl], d
 	ret
 
+DealDamageToOpponent:
+; ONLY runs from attacking damage.
+	; If user has more than 50%HP, set Berserk flag. Unset later if we still
+	; have more than 50%HP.
+	push bc
+	call SwitchTurn
+	call GetHalfMaxHP
+	call CompareHP
+	call SwitchTurn
+	jr z, .not_over_half
+	jr c, .not_over_half
+	ld a, BATTLE_VARS_SUBSTATUS2_OPP
+	call GetBattleVarAddr
+	set SUBSTATUS_IN_ABILITY, [hl]
+
+.not_over_half
+	pop bc
+	push de
+	ld de, _SubtractHP
+	ld a, [hBattleTurn]
+	and a
+	push af
+	call z, _SubtractHPFromEnemy
+	pop af
+	call nz, _SubtractHPFromPlayer
+	pop de
+
+	; deal with Berserk
+	push bc
+	call SwitchTurn
+	call GetHalfMaxHP
+	call CompareHP
+	call SwitchTurn
+	jr c, .half_or_less
+	jr z, .half_or_less
+
+	; We still have more than 50%HP, so remove berserk flag
+	ld a, BATTLE_VARS_SUBSTATUS2_OPP
+	call GetBattleVarAddr
+	res SUBSTATUS_IN_ABILITY, [hl]
+	; fallthrough
+.half_or_less
+	farcall ResolveOpponentBerserk_CheckMultihit
+	call SwitchTurn
+	call HandleUserHealingItems
+	pop bc
+	jp SwitchTurn
+
 SubtractHPFromOpponent:
 	call CallOpponentTurn
 SubtractHPFromUser:
 	ldh a, [hBattleTurn]
 	and a
 	jr nz, SubtractHPFromEnemy
+	jr SubtractHPFromPlayer
+
 SubtractHPFromPlayer:
+	push de
+	ld de, SubtractHP
+	call _SubtractHPFromPlayer
+	pop de
+	ret
+
+_SubtractHPFromPlayer:
 	ld hl, wBattleMonMaxHP
 	ld a, [hli]
 	ld [wBuffer2], a
@@ -1738,12 +1801,19 @@ SubtractHPFromPlayer:
 	ldh a, [hBattleTurn]
 	push af
 	call SetPlayerTurn
-	call _SubtractHP
+	call _de_
 	pop af
 	ldh [hBattleTurn], a
 	ret
 
 SubtractHPFromEnemy:
+	push de
+	ld de, SubtractHP
+	call _SubtractHPFromEnemy
+	pop de
+	ret
+
+_SubtractHPFromEnemy:
 	ld hl, wEnemyMonMaxHP
 	ld a, [hli]
 	ld [wBuffer2], a
@@ -1753,9 +1823,23 @@ SubtractHPFromEnemy:
 	ldh a, [hBattleTurn]
 	push af
 	call SetEnemyTurn
-	call _SubtractHP
+	call _de_
 	pop af
 	ldh [hBattleTurn], a
+	ret
+
+SubtractHP:
+	call _SubtractHP
+	; fallthrough
+HandleUserHealingItems:
+	call HasUserFainted
+	ret z
+	push bc
+	call HandleHPHealingItem
+	call UseHeldStatusHealingItem
+	call HandleStatBoostBerry
+	call UseConfusionHealingItem
+	pop bc
 	ret
 
 _SubtractHP:
@@ -1767,7 +1851,7 @@ _SubtractHP:
 	call UpdateHPBarBattleHuds
 	pop af
 	jr z, .set_first_faint
-	farjp HandleHealingItems
+	ret
 
 .set_first_faint
 	ld hl, wWhichMonFaintedFirst

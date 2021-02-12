@@ -136,6 +136,7 @@
 	const TOUGH_CLAWS
 	const PIXILATE
 	const PARENTAL_BOND
+	const BERSERK
 	const SLUSH_RUSH
 	const GALVANIZE
 	const CORROSION
