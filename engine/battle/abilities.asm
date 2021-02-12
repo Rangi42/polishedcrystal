@@ -1470,6 +1470,7 @@ OffensiveDamageAbilities:
 	dbw GUTS, GutsAbility
 	dbw PIXILATE, PixilateAbility
 	dbw GALVANIZE, GalvanizeAbility
+	dbw GORILLA_TACTICS, GorillaTacticsAbility
 	dbw -1, -1
 
 DefensiveDamageAbilities:
@@ -1494,6 +1495,8 @@ HugePowerAbility:
 
 HustleAbility:
 ; 150% physical attack, 80% accuracy (done elsewhere)
+GorillaTacticsAbility:
+; 150% physical attack, locks into one move (done elsewhere)
 	ld a, $32
 	jp ApplyPhysicalAttackDamageMod
 

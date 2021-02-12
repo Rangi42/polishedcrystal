@@ -4804,8 +4804,8 @@ MoveSelectionScreen:
 	jr z, .choiced
 	dec a
 	jr z, .assault_vest
-	dec a
-	jr z, .encored
+	sub 3 ; 5 or 6 gives the same message
+	jr z, .encore_or_gorilla_tactics
 	ld b, 0
 	ld hl, wBattleMonMoves
 	add hl, bc
@@ -4827,12 +4827,12 @@ MoveSelectionScreen:
 	ld hl, BattleText_TheMoveIsDisabled
 	jr .place_textbox_start_over
 
-.encored
+.encore_or_gorilla_tactics
 	ld a, [wPlayerSelectedMove]
 	ld [wNamedObjectIndexBuffer], a
 	call GetMoveName
 
-	ld hl, BattleText_EncoreOnlyAllowsMove
+	ld hl, BattleText_MonCanOnlyUseMove
 	jr .place_textbox_start_over
 
 .choiced
@@ -5244,9 +5244,10 @@ CheckUsableMove:
 ; If nz, a contains a number describing why it isn't usable:
 ; 1 - no PP
 ; 2 - disabled
-; 3 - choiced
+; 3 - choiced item
 ; 4 - assault vest on status move
 ; 5 - encored
+; 6 - choiced ability
 	push hl
 	push de
 	push bc
@@ -5264,7 +5265,7 @@ CheckUsableMove:
 	ld a, [hl]
 	and $3f
 	ld a, 1
-	jr z, .end
+	jp z, .end
 
 	; Check Encore
 	ldh a, [hBattleTurn]
@@ -5319,8 +5320,14 @@ CheckUsableMove:
 	cp HELD_CHOICE
 	jr z, .check_choiced
 	cp HELD_ASSAULT_VEST
-	jr nz, .usable
+	jr z, .assault_vest
 
+	; Check for Gorilla Tactics
+	call GetTrueUserAbility
+	cp GORILLA_TACTICS
+	jr z, .check_choiced
+
+.assault_vest
 	; Assault Vest check
 	ld a, b
 	call GetMoveFixedCategory
@@ -5341,8 +5348,16 @@ CheckUsableMove:
 	jr z, .usable
 	dec a
 	cp c
+	jr z, .usable
+
+	; Choice items take priority over Gorilla Tactics message-wise
+	farcall GetUserItem
+	ld a, b
+	cp HELD_CHOICE
 	ld a, 3
-	jr nz, .end
+	jr z, .end
+	add a ; sets a to 6, which is what we want
+	jr .end
 
 	; fallthrough
 .usable

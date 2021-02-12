@@ -139,6 +139,7 @@ AbilityDescriptions:
 	dw GalvanizeDescription
 	dw CorrosionDescription
 	dw TanglingHairDescription
+	dw GorillaTacticsDescription
 	dw NeutralizingGasDescription
 	dw PastelVeilDescription
 	dw QuickDrawDescription
@@ -694,6 +695,10 @@ CorrosionDescription:
 TanglingHairDescription:
 	db    "Contact may lower"
 	next1 "the foe's Speed.@"
+
+GorillaTacticsDescription:
+	db    "Boosts Attack, but"
+	next1 "allows one move.@"
 
 NeutralizingGasDescription:
 	db    "Suppresses all"

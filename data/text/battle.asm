@@ -500,10 +500,10 @@ BattleText_ItemOnlyAllowsMove: ; choice items
 	text "!"
 	prompt
 
-BattleText_EncoreOnlyAllowsMove:
-	text "The encore"
-	line "only allows use"
-	cont "of "
+BattleText_MonCanOnlyUseMove:
+	text "<USER> can"
+	line "only use"
+	cont ""
 	text_from_ram wStringBuffer1
 	text "!"
 	prompt

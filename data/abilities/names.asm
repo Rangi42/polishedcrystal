@@ -139,6 +139,7 @@ AbilityNames:
 	dw Galvanize
 	dw Corrosion
 	dw TanglingHair
+	dw GorillaTactics
 	dw NeutralizingGas
 	dw PastelVeil
 	dw QuickDraw
@@ -283,6 +284,7 @@ SlushRush:       rawchar "Slush Rush@"
 Galvanize:       rawchar "Galvanize@"
 Corrosion:       rawchar "Corrosion@"
 TanglingHair:    rawchar "Tangling Hair@"
+GorillaTactics:  rawchar "Gorilla Tactics@"
 NeutralizingGas: rawchar "Neutralizing Gas@"
 PastelVeil:      rawchar "Pastel Veil@"
 QuickDraw:       rawchar "Quick Draw@"
