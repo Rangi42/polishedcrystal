@@ -186,7 +186,7 @@ BattleAnimFrameData:
 	dw .Frameset_b8 ; b8
 	dw .Frameset_b9 ; b9
 
-     ; OAM index (see battle/objects/oam.asm), flip flags / duration
+; OAM index (see battle/objects/oam.asm), flip flags / duration
 .Frameset_00:
 	db BATTLEANIMOAMSET_00, $06
 	db -4

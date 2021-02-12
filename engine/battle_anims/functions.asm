@@ -87,6 +87,7 @@ DoBattleAnimFrame:
 	dw BattleAnimFunction_4F ; 4f
 	dw BattleAnimFunction_StraightDescent
 	dw BattleAnimFunction_PowerGem
+	dw BattleAnimFunction_Moon
 
 BattleAnim_AnonJumptable:
 	ld hl, BATTLEANIMSTRUCT_ANON_JT_INDEX
@@ -2171,6 +2172,11 @@ PowerGemFunction3:
 .asm_ce35b
 	call DeinitBattleAnimation
 	ret
+
+BattleAnimFunction_Moon:
+	call BattleAnim_AnonJumptable
+.anon_dw
+	dw Functionce306
 
 BattleAnimFunction_21:
 	call BattleAnim_AnonJumptable

@@ -40,6 +40,7 @@ AnimObjGFX:
 	anim_obj_gfx 40, AnimObjMiscGFX
 	anim_obj_gfx 36, AnimObjSkyAttackGFX
 	anim_obj_gfx 16, AnimObjGlobeGFX
+	anim_obj_gfx 16, AnimObjMoonGFX
 	anim_obj_gfx 48, AnimObjShapesGFX
 	anim_obj_gfx 18, AnimObjObjectsGFX
 	anim_obj_gfx 38, AnimObjShineGFX

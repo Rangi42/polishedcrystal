@@ -220,7 +220,9 @@ BATTLEANIM_BASE_TILE EQU 7 * 7  ; Maximum size of a pokemon picture
 	const ANIM_OBJ_PLAYERHEAD_1ROW
 	const ANIM_OBJ_ENEMYFEET_2ROW
 	const ANIM_OBJ_PLAYERHEAD_2ROW
+	const ANIM_OBJ_MOONBLAST
 	const ANIM_OBJ_MOON
+	const ANIM_OBJ_MOON_CHARGE
 	const ANIM_OBJ_ENERGY_BALL
 	const ANIM_OBJ_HAIL
 	const ANIM_OBJ_GEM
@@ -337,6 +339,7 @@ BATTLEANIM_BASE_TILE EQU 7 * 7  ; Maximum size of a pokemon picture
 	const BATTLEANIMFUNC_4F
 	const BATTLEANIMFUNC_STRAIGHTDESCENT
 	const BATTLEANIMFUNC_POWERGEM
+	const BATTLEANIMFUNC_MOON
 
 ; BattleAnimFrameData indexes (see data/battle_anims/framesets.asm)
 	const_def
@@ -837,6 +840,7 @@ BATTLEANIM_BASE_TILE EQU 7 * 7  ; Maximum size of a pokemon picture
 	const ANIM_GFX_MISC
 	const ANIM_GFX_SKY_ATTACK
 	const ANIM_GFX_GLOBE
+	const ANIM_GFX_MOON
 	const ANIM_GFX_SHAPES
 	const ANIM_GFX_OBJECTS
 	const ANIM_GFX_SHINE
