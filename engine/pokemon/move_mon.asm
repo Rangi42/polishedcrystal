@@ -1714,8 +1714,10 @@ CalcPkmnStatC:
 	dec c
 	jr nz, .hyper_training_loop
 	pop bc
+	jr nc, .not_hyper_trained
+	ld b, b ; should never run (yet)
 	ld a, $f
-	jr c, .GotDV
+	jr .GotDV
 
 .not_hyper_trained
 	ld a, c
