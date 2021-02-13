@@ -230,7 +230,12 @@ HandleWeather:
 	and a ; cp WEATHER_NONE
 	ret z
 
+	; Freeze the timer at 255 for permaweather (overworld weather)
 	ld hl, wWeatherCount
+	inc [hl]
+	jr z, .infinite_weather
+	dec [hl]
+.infinite_weather
 	dec [hl]
 	jr nz, .ongoing
 
