@@ -682,7 +682,7 @@ wWaterEncounterRate:: db
 wListMoves_MoveIndicesBuffer:: ds NUM_MOVES
 wPutativeTMHMMove:: db
 wForgettingMove:: db
-wBattleHasJustStarted:: db
+wTotalBattleTurns:: db
 
 ; TODO: apply imported wd265 labels to appropriate locations
 wNamedObjectIndexBuffer::

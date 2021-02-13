@@ -472,16 +472,15 @@ RepeatBallMultiplier:
 
 TimerBallMultiplier:
 ; multiply catch rate by 1 + (turns passed * 3) / 10, capped at 4
-	ld a, [wPlayerTurnsTaken]
-	inc a ; turns taken start at 0, we want to start from 1.
-	cp 10
-	jr nc, .nocap
-	ld a, 10
-.nocap
+	ld a, [wTotalBattleTurns]
 	ld b, a
 	add a
 	add b
 	add 10
+	cp 40
+	jr c, .nocap
+	ld a, 40
+.nocap
 	ldh [hMultiplier], a
 	call Multiply
 	ln a, 1, 10 ; x0.1 after the above multiplier gives 1.3x, 1.6x, 1.9x, ..., 4x.
@@ -534,7 +533,7 @@ DiveBallMultiplier:
 
 QuickBallMultiplier:
 ; multiply catch rate by 5 on first turn
-	ld a, [wPlayerTurnsTaken]
+	ld a, [wTotalBattleTurns]
 	and a
 	ret nz
 

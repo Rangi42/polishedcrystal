@@ -10,8 +10,7 @@ DoBattle:
 	ld [wDeferredSwitch], a
 	ld [wPlayerSwitchTarget], a
 	ld [wEnemySwitchTarget], a
-	inc a
-	ld [wBattleHasJustStarted], a
+	ld [wTotalBattleTurns], a
 	ld hl, wOTPartyMon1HP
 	ld bc, PARTYMON_STRUCT_LENGTH - 1
 	ld d, BATTLEACTION_SWITCH1 - 1
@@ -147,7 +146,6 @@ BattleTurn:
 	ld [wPlayerSwitchTarget], a
 	ld [wEnemySwitchTarget], a
 	ld [wEnemyUsingItem], a
-	ld [wBattleHasJustStarted], a
 	ld [wCurDamage], a
 	ld [wCurDamage + 1], a
 
@@ -2948,9 +2946,9 @@ CheckIfCurPartyMonIsFitToFight:
 	or [hl]
 	ret nz
 
-	ld a, [wBattleHasJustStarted]
+	ld a, [wTotalBattleTurns]
 	and a
-	jr nz, .finish_fail
+	jr z, .finish_fail
 
 	ld a, [wCurPartyMon]
 	ld hl, wPartyMon1IsEgg
@@ -7254,9 +7252,9 @@ UserSentOutText:
 
 	ld hl, JumpText_GoPkmn ; If we're in a LinkBattle print just "Go <PlayerMon>"
 
-	ld a, [wBattleHasJustStarted]
+	ld a, [wTotalBattleTurns]
 	and a
-	jr nz, .skip_to_textbox
+	jr z, .skip_to_textbox
 
 .not_linked
 ; Depending on the HP of the enemy Pkmn, the game prints a different text
