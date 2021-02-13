@@ -1715,7 +1715,7 @@ CalcPkmnStatC:
 	jr nz, .hyper_training_loop
 	pop bc
 	jr nc, .not_hyper_trained
-	ld b, b ; should never run (yet)
+	ld b, b ;  no-optimize nops (BGB breakpoint; should never run yet)
 	ld a, $f
 	jr .GotDV
 

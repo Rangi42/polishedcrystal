@@ -112,24 +112,24 @@
 	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
 	; morn
 	dbp 49, MAROWAK
+	dbp 50, GRAVELER
 	dbp 50, GRAVELER, ALOLAN_FORM
 	dbp 51, MACHOKE
 	dbp 51, GOLBAT
 	dbp 54, MACHOKE
-	dbp 51, MAROWAK
 	dbp 51, MAROWAK
 	; day
 	dbp 49, MAROWAK
+	dbp 50, GRAVELER
 	dbp 50, GRAVELER, ALOLAN_FORM
 	dbp 51, MACHOKE
 	dbp 51, GOLBAT
 	dbp 54, MACHOKE
 	dbp 51, MAROWAK
-	dbp 51, MAROWAK
 	; nite
-	dbp 49, GOLBAT
+	dbp 49, MAROWAK
+	dbp 50, GRAVELER
 	dbp 50, GRAVELER, ALOLAN_FORM
-	dbp 51, GRAVELER, ALOLAN_FORM
 	dbp 51, HAUNTER
 	dbp 54, GOLBAT
 	dbp 51, GOLBAT
@@ -139,27 +139,27 @@
 	db 4 percent, 4 percent, 4 percent ; encounter rates: morn/day/nite
 	; morn
 	dbp 50, MAROWAK
-	dbp 51, GRAVELER, ALOLAN_FORM
+	dbp 51, GRAVELER
 	dbp 52, ONIX
 	dbp 52, GOLBAT
 	dbp 55, MACHOKE
-	dbp 52, MAROWAK
+	dbp 51, GRAVELER, ALOLAN_FORM
 	dbp 52, MAROWAK
 	; day
 	dbp 50, MAROWAK
-	dbp 51, GRAVELER, ALOLAN_FORM
+	dbp 51, GRAVELER
 	dbp 52, ONIX
 	dbp 52, GOLBAT
 	dbp 55, MACHOKE
-	dbp 52, MAROWAK
+	dbp 51, GRAVELER, ALOLAN_FORM
 	dbp 52, MAROWAK
 	; nite
-	dbp 50, GOLBAT
-	dbp 51, GRAVELER, ALOLAN_FORM
+	dbp 50, MAROWAK
+	dbp 51, GRAVELER
 	dbp 52, ONIX
 	dbp 52, HAUNTER
 	dbp 55, GOLBAT
-	dbp 52, GOLBAT
+	dbp 51, GRAVELER, ALOLAN_FORM
 	dbp 52, GOLBAT
 
 	map_id ROCK_TUNNEL_2F
@@ -1031,7 +1031,7 @@
 	; morn
 	dbp 66, TANGELA
 	dbp 67, PONYTA
-	dbp 67, ARBOK
+	dbp 67, ARBOK ; randomly Kanto or Johto form
 	dbp 70, RAPIDASH
 	dbp 68, DODRIO
 	dbp 71, SKARMORY
@@ -1039,7 +1039,7 @@
 	; day
 	dbp 66, TANGELA
 	dbp 67, PONYTA
-	dbp 67, ARBOK
+	dbp 67, ARBOK ; randomly Kanto or Johto form
 	dbp 70, RAPIDASH
 	dbp 68, DODRIO
 	dbp 71, SKARMORY

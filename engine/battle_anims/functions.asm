@@ -2150,7 +2150,7 @@ PowerGemFunction2:
 	ld hl, BATTLEANIMSTRUCT_0F
 	add hl, bc
 	ld a, [hl]
-	xor $ff
+	cpl
 	inc a
 	ld [hl], a
 	ld hl, BATTLEANIMSTRUCT_YOFFSET
@@ -2166,12 +2166,7 @@ PowerGemFunction3:
 	cp $c0
 	ret nc
 	ld a, $8
-	call Functionce70a
-	ret
-
-.asm_ce35b
-	call DeinitBattleAnimation
-	ret
+	jp Functionce70a
 
 BattleAnimFunction_Moon:
 	call BattleAnim_AnonJumptable
