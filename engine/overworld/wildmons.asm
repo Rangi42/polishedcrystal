@@ -366,7 +366,6 @@ _ChooseWildEncounter:
 	push hl ; wild mon data pointer
 	ld a, 100
 	call RandomRange
-	inc a ; 1 <= a <= 100
 	ld b, -1
 	ld h, d
 	ld l, e
