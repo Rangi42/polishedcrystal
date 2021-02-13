@@ -1745,7 +1745,7 @@ DealDamageToOpponent:
 	pop bc
 	push de
 	ld de, _SubtractHP
-	ld a, [hBattleTurn]
+	ldh a, [hBattleTurn]
 	and a
 	push af
 	call z, _SubtractHPFromEnemy
@@ -1780,8 +1780,7 @@ SubtractHPFromUser:
 	ldh a, [hBattleTurn]
 	and a
 	jr nz, SubtractHPFromEnemy
-	jr SubtractHPFromPlayer
-
+	; fallthrough
 SubtractHPFromPlayer:
 	push de
 	ld de, SubtractHP
