@@ -5922,11 +5922,11 @@ GenerateWildForm:
 	jp PopBCDEHL
 
 WildSpeciesForms:
-	dpw UNOWN,     .Unown
-	dpw MAGIKARP,  .Magikarp
-	dpw EKANS,     .EkansArbok
-	dpw ARBOK,     .EkansArbok
-	dbw 0,         .Default
+	dpw UNOWN,    .Unown
+	dpw MAGIKARP, .Magikarp
+	dpw EKANS,    .EkansArbok
+	dpw ARBOK,    .EkansArbok
+	dbw 0,        .Default
 
 .Default:
 	ld a, PLAIN_FORM
