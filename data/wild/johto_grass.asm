@@ -1814,7 +1814,7 @@
 	; morn
 	dbp 69, TANGELA
 	dbp 70, PONYTA
-	dbp 71, ARBOK
+	dbp 71, ARBOK ; randomly Kanto or Johto form
 	dbp 74, RAPIDASH
 	dbp 73, DODRIO
 	dbp 75, SKARMORY
@@ -1822,7 +1822,7 @@
 	; day
 	dbp 69, TANGELA
 	dbp 70, PONYTA
-	dbp 71, ARBOK
+	dbp 71, ARBOK ; randomly Kanto or Johto form
 	dbp 74, RAPIDASH
 	dbp 73, DODRIO
 	dbp 75, SKARMORY

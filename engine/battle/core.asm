@@ -5896,7 +5896,7 @@ GenerateWildForm:
 	jr nz, .done
 	ld a, [wTempEnemyMonSpecies]
 	ld c, a
-	ld hl, WildSpeciesForms
+	ld hl, RandomWildSpeciesForms
 .loop
 	; Check species
 	ld a, [hli]
@@ -5921,26 +5921,20 @@ GenerateWildForm:
 	ld [wCurForm], a
 	jp PopBCDEHL
 
-WildSpeciesForms:
+RandomWildSpeciesForms:
 	dpw UNOWN,    .Unown
 	dpw MAGIKARP, .Magikarp
 	dpw EKANS,    .EkansArbok
 	dpw ARBOK,    .EkansArbok
 	dbw 0,        .Default
 
-.Default:
-	ld a, PLAIN_FORM
-	ret
-
 .Unown:
 	; Random Unown letter
 	ld a, NUM_UNOWN
-	call BattleRandomRange
-	inc a
-	ld b, a
+	call .RandomForm
 	; Can't use any letters that haven't been unlocked
 	call CheckUnownLetter
-	jr c, .Unown ; re-roll
+	jr nc, .Unown ; re-roll
 	ret
 
 .Magikarp:
@@ -5949,21 +5943,21 @@ WildSpeciesForms:
 	jr .RandomForm
 
 .EkansArbok:
-	; Random Arbok pattern (we've already handled specific regional forms)
-	ld a, 2 ; kanto or johto
+	; Random Arbok form (if not already specified)
+	ld a, 2 ; ARBOK_JOHTO_FORM or ARBOK_KANTO_FORM
 	; fallthrough
 .RandomForm:
 	call BattleRandomRange
 	inc a
 	ret
 
-ElectricLandmarks:
-	db ROCK_TUNNEL
-	db LIGHTNING_ISLAND
-	db -1
+.Default:
+	ld a, PLAIN_FORM
+	ret
 
 CheckUnownLetter:
-; Return carry if the Unown letter in b hasn't been unlocked yet
+; Return carry if the Unown letter in a has been unlocked.
+	ld b, a
 	ld a, [wUnlockedUnowns]
 	ld c, a
 	ld de, 0
@@ -5988,7 +5982,7 @@ CheckUnownLetter:
 	pop bc
 	pop de
 
-	jr c, .match
+	ret c ; unlocked letter, returns carry
 
 .next
 ; Make sure we haven't gone past the end of the table
@@ -5998,14 +5992,7 @@ CheckUnownLetter:
 	cp UnlockedUnownLetterSets.End - UnlockedUnownLetterSets
 	jr c, .loop
 
-; Hasn't been unlocked, or the letter is invalid
-	scf
-	ret
-
-.match
-; Valid letter
-	and a
-	ret
+	ret ; not unlocked or invalid letter, returns not carry
 
 CheckValidMagikarpLength:
 ; Return carry if the Magikarp length is invalid for the current area
