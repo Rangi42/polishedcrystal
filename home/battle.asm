@@ -713,17 +713,17 @@ CheckMoveSpeed::
 	cp QUICK_DRAW
 	jr nz, .quick_draw_done
 	ld b, a
-	call BufferAbility
+	farcall BufferAbility
 	ld a, 100
 	call RandomRange
 	cp 30
 	jr nc, .quick_draw_done
 
-	call DisableAnimations
-	call ShowAbilityActivation
+	farcall DisableAnimations
+	farcall ShowAbilityActivation
 	ld hl, BattleText_UserItemLetItMoveFirst
 	call StdBattleTextbox
-	call EnableAnimations
+	farcall EnableAnimations
 	jr .set_priority
 
 .quick_draw_done
@@ -759,8 +759,8 @@ CheckMoveSpeed::
 	ld a, 100
 	call BattleRandomRange
 	cp c
-	ret nc
 	pop de
+	ret nc
 .activate_item
 	push de
 	farcall ItemRecoveryAnim
