@@ -456,7 +456,7 @@ PokeBallEffect:
 	ld [wCurSpecies], a
 	ld [wCurPartySpecies], a
 	ld a, [wOTPartyMon1Form]
-	and FORM_MASK
+	and BASEMON_MASK
 	ld [wCurForm], a
 	call GetBaseData
 
@@ -1417,7 +1417,7 @@ UseItem_GetBaseDataAndNickParameters:
 	ld a, MON_FORM
 	call GetPartyParamLocation
 	ld a, [hl]
-	and FORM_MASK
+	and BASEMON_MASK
 	ld [wCurForm], a
 	call GetBaseData
 	ld a, [wCurPartyMon]

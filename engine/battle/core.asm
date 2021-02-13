@@ -5890,17 +5890,28 @@ GenerateWildForm:
 	push de
 	push bc
 	ld a, [wWildMonForm]
-	and a
+	ld b, a
+	and FORM_MASK
+	ld a, b
 	jr nz, .done
 	ld a, [wTempEnemyMonSpecies]
-	ld b, a
+	ld c, a
 	ld hl, WildSpeciesForms
 .loop
+	; Check species
 	ld a, [hli]
 	and a
 	jr z, .ok
-	cp b
+	cp c
+	; Load and increase hl before jumping so we have a consistent hl value after
+	ld a, [hli]
+	jr nz, .next
+
+	; Check extspecies
+	xor b
+	and EXTSPECIES_MASK
 	jr z, .ok
+.next
 	inc hl
 	inc hl
 	jr .loop
@@ -5911,19 +5922,10 @@ GenerateWildForm:
 	jp PopBCDEHL
 
 WildSpeciesForms:
-	dbw UNOWN,     .Unown
-	dbw MAGIKARP,  .Magikarp
-	dbw EKANS,     .EkansArbok
-	dbw ARBOK,     .EkansArbok
-	dbw SANDSHREW, .IceForm
-	dbw SANDSLASH, .IceForm
-	dbw VULPIX,    .IceForm
-	dbw NINETALES, .IceForm
-	dbw DIGLETT,   .FireForm
-	dbw DUGTRIO,   .FireForm
-	dbw GEODUDE,   .ElectricForm
-	dbw GRAVELER,  .ElectricForm
-	dbw GOLEM,     .ElectricForm
+	dpw UNOWN,     .Unown
+	dpw MAGIKARP,  .Magikarp
+	dpw EKANS,     .EkansArbok
+	dpw ARBOK,     .EkansArbok
 	dbw 0,         .Default
 
 .Default:
@@ -5944,51 +5946,19 @@ WildSpeciesForms:
 .Magikarp:
 	; Random Magikarp pattern
 	ld a, NUM_MAGIKARP
+	jr .RandomForm
+
+.EkansArbok:
+	; Random Arbok pattern (we've already handled specific regional forms)
+	ld a, 2 ; kanto or johto
+	; fallthrough
+.RandomForm:
 	call BattleRandomRange
 	inc a
 	ret
 
-.EkansArbok:
-	call RandomRegionCheck
-	ld a, e
-	and a
-	ld a, ARBOK_JOHTO_FORM
-	ret z
-	inc a ; ARBOK_KANTO_FORM
-	ret
-
-.IceForm:
-	ld hl, IceLandmarks
-	jr .LandmarkForm
-.FireForm:
-	ld hl, FireLandmarks
-	jr .LandmarkForm
-.ElectricForm:
-	ld hl, ElectricLandmarks
-	; fallthrough
-.LandmarkForm:
-	ld a, [wCurLandmark]
-	ld de, 1
-	call IsInArray
-	jr nc, .Default
-	ld a, ALOLAN_FORM
-	ret
-
-IceLandmarks:
-	db ICE_PATH
-	db SEAFOAM_ISLANDS
-	db ICE_ISLAND
-	db -1
-
-FireLandmarks:
-	db CINNABAR_VOLCANO
-	db FIRE_ISLAND
-	db -1
-
 ElectricLandmarks:
-	db MAGNET_TUNNEL
 	db ROCK_TUNNEL
-	db DIM_CAVE
 	db LIGHTNING_ISLAND
 	db -1
 
@@ -7197,7 +7167,7 @@ GetNewBaseExp:
 	; b = form
 	ld a, MON_FORM
 	call OTPartyAttr
-	and FORM_MASK
+	and BASEMON_MASK
 	ld b, a
 	; bc = index
 	call GetSpeciesAndFormIndex

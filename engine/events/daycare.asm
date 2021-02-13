@@ -473,11 +473,11 @@ DayCare_GiveEgg:
 	cp MAGIKARP
 	jr nz, .not_red_magikarp
 	ld a, [wEggMonForm]
-	and FORM_MASK
+	and BASEMON_MASK
 	cp GYARADOS_RED_FORM
 	jr c, .not_red_magikarp
 	ld a, [wEggMonForm]
-	and $ff - FORM_MASK
+	and $ff - BASEMON_MASK
 	or PLAIN_FORM
 	ld [wEggMonForm], a
 .not_red_magikarp
@@ -781,7 +781,7 @@ DayCare_InitBreeding:
 	ld hl, wBreedMon1Form
 	call .inherit_mother_unless_samespecies
 	ld a, [hl]
-	and FORM_MASK
+	and BASEMON_MASK
 	ld [wCurForm], a
 
 	call GetBaseData

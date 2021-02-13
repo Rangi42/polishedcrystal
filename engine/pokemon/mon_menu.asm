@@ -416,7 +416,7 @@ UpdateMewtwoForm:
 	ld a, MON_FORM
 	call GetPartyParamLocation
 	ld a, [hl]
-	and $ff - FORM_MASK
+	and $ff - BASEMON_MASK
 	or d
 	ld [hl], a
 	ret
@@ -1217,7 +1217,7 @@ GetForgottenMoves::
 	ld a, MON_FORM
 	call GetPartyParamLocation
 	ld a, [hl]
-	and FORM_MASK
+	and BASEMON_MASK
 	ld b, a
 	; bc = index
 	call GetSpeciesAndFormIndex

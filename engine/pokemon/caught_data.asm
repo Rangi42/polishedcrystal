@@ -5,7 +5,7 @@ CheckPartyFullAfterContest:
 	ld [wCurPartySpecies], a
 	ld [wCurSpecies], a
 	ld a, [wContestMonForm]
-	and FORM_MASK
+	and BASEMON_MASK
 	ld [wCurForm], a
 	call GetBaseData
 	ld hl, wPartyCount

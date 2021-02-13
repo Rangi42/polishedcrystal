@@ -1240,7 +1240,7 @@ LinkTradeAnim_LoadTradeMonData:
 	ld [hli], a
 	inc de
 	ld a, [de]
-	and FORM_MASK
+	and BASEMON_MASK
 	ld [hl], a
 	ret
 

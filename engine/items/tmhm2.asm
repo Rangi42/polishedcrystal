@@ -448,7 +448,7 @@ TeachTMHM:
 	ld a, MON_FORM
 	call GetPartyParamLocation
 	ld a, [hl]
-	and FORM_MASK
+	and BASEMON_MASK
 	ld [wCurForm], a
 	predef CanLearnTMHMMove
 

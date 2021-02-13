@@ -173,7 +173,7 @@ StatsScreen_CopyToTempMon:
 	ld a, [wBufferMon]
 	ld [wCurSpecies], a
 	ld a, [wBufferMonForm]
-	and FORM_MASK
+	and BASEMON_MASK
 	ld [wCurForm], a
 	call GetBaseData
 	ld hl, wBufferMon
@@ -327,14 +327,22 @@ StatsScreen_InitUpperHalf:
 	ld a, [wCurPartySpecies]
 	ld [wd265], a
 	ld [wCurSpecies], a
+	ld c, a
+	ld a, [wCurForm]
+	ld b, a
+	call GetPokedexNumber
+	ld a, b
+	ld [wStringBuffer1], a
+	ld a, c
+	ld [wStringBuffer1 + 1], a
 	hlcoord 8, 0
 	ld [hl], "№"
 	inc hl
 	ld [hl], "."
 	inc hl
 	hlcoord 10, 0
-	lb bc, PRINTNUM_LEADINGZEROS | 1, 3
-	ld de, wd265
+	lb bc, PRINTNUM_LEADINGZEROS | 2, 3
+	ld de, wStringBuffer1
 	call PrintNum
 	hlcoord 14, 0
 	call PrintLevel

@@ -112,10 +112,10 @@ BT_PartySelect:
 	; Entered 3 mons. Check legality, and if OK, prompt to enter those 3.
 	farcall BT_SetPlayerOT
 	farcall BT_LegalityCheck
-	dec a
+	dec e
 	ld hl, .same_species
 	jr z, .reset_and_print_error
-	dec a
+	dec e
 	ld hl, .same_item
 	jr z, .reset_and_print_error
 
@@ -645,7 +645,7 @@ PlacePartyMonTMHMCompatibility:
 	ld bc, PARTYMON_STRUCT_LENGTH
 	rst AddNTimes
 	ld a, [hl]
-	and FORM_MASK
+	and BASEMON_MASK
 	ld [wCurForm], a
 	predef CanLearnTMHMMove
 	pop hl
@@ -706,7 +706,7 @@ PlacePartyMonEvoStoneCompatibility:
 	ld bc, PARTYMON_STRUCT_LENGTH
 	rst AddNTimes
 	ld a, [hl]
-	and FORM_MASK
+	and BASEMON_MASK
 	ld b, a
 	; c = species
 	ld c, e

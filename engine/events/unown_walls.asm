@@ -4,7 +4,7 @@ SpecialHoOhChamber:
 	ld [wCurPartySpecies], a
 	ld [wCurSpecies], a
 	ld a, [wPartyMon1Form]
-	and FORM_MASK
+	and BASEMON_MASK
 	ld [wCurForm], a
 	call GetBaseData
 	ld a, [wBaseType1]

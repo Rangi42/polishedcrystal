@@ -1245,7 +1245,7 @@ BattleCommand_stab:
 	ld [wCurSpecies], a
 	ld a, MON_FORM
 	call TrueUserPartyAttr
-	and FORM_MASK
+	and BASEMON_MASK
 	ld [wCurForm], a
 	call GetBaseData
 	ld hl, wBaseType
@@ -3327,7 +3327,7 @@ UnevolvedEviolite:
 	; b = form
 	ld a, MON_FORM
 	call OpponentPartyAttr
-	and FORM_MASK
+	and BASEMON_MASK
 	ld b, a
 	; bc = index
 	call GetSpeciesAndFormIndex

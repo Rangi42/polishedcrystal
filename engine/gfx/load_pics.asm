@@ -5,7 +5,7 @@ GetVariant:
 
 ; Return CurForm based on Form at hl
 	ld a, [hl]
-	and FORM_MASK
+	and BASEMON_MASK
 	jr nz, .ok
 
 	ld a, [wCurPartySpecies]
@@ -40,7 +40,7 @@ GetVariant:
 ; hl is ...MonForm
 
 	ld a, [hl]
-	and FORM_MASK
+	and BASEMON_MASK
 	cp PIKACHU_RED_FORM
 	jr nc, .use_form
 

@@ -110,6 +110,43 @@ rept _NARG
 endr
 ENDM
 
+dp: MACRO
+; Converts a pkm constant to 8bit species + extspecies.
+; Argument 2 is optional and allows you to also specify form.
+if _NARG == 2
+	db LOW(\1), HIGH(\1) << MON_EXTSPECIES_F | \2
+else
+	db LOW(\1), HIGH(\1) << MON_EXTSPECIES_F
+endc
+ENDM
+
+dbp: MACRO
+	db \1
+	shift
+if _NARG == 2
+	db LOW(\1), HIGH(\1) << MON_EXTSPECIES_F | \2
+else
+	db LOW(\1), HIGH(\1) << MON_EXTSPECIES_F
+endc
+ENDM
+
+dpb: MACRO
+if _NARG == 2
+	db LOW(\1), HIGH(\1) << MON_EXTSPECIES_F, \2
+else
+	db LOW(\1), HIGH(\1) << MON_EXTSPECIES_F | \2, \3
+endc
+ENDM
+
+dpw: MACRO
+if _NARG == 2
+	dbbw LOW(\1), HIGH(\1) << MON_EXTSPECIES_F, \2
+else
+	dbbw LOW(\1), HIGH(\1) << MON_EXTSPECIES_F | \2, \3
+endc
+ENDM
+
+
 genders: MACRO
 ; eight arguments, all MALE or FEMALE
 x = 0

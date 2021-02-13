@@ -505,7 +505,7 @@ GetMonPalettePointer:
 	; b = form
 	inc hl ; Form is in the byte after Shiny
 	ld a, [hl]
-	and FORM_MASK
+	and BASEMON_MASK
 	ld b, a
 	; bc = index
 	call GetSpeciesAndFormIndex
