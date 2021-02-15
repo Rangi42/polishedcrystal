@@ -13,10 +13,10 @@ GoldenrodPPSpeechHouse_MapScriptHeader:
 	bg_event  7,  1, BGEVENT_JUMPSTD, radio2
 
 	def_object_events
-	object_event  1,  4, SPRITE_FISHER, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x55659, -1
-	object_event  5,  3, SPRITE_CUTE_GIRL, SPRITEMOVEDATA_STANDING_LEFT, 1, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x556ca, -1
+	object_event  1,  4, SPRITE_FISHER, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, GoldenrodPPSpeechHouseFisherText, -1
+	object_event  5,  3, SPRITE_CUTE_GIRL, SPRITEMOVEDATA_STANDING_LEFT, 1, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, GoldenrodPPSpeechHouseLassText, -1
 
-UnknownText_0x55659:
+GoldenrodPPSpeechHouseFisherText:
 	text "Once while I was"
 	line "battling, my"
 
@@ -30,7 +30,7 @@ UnknownText_0x55659:
 	line "gone."
 	done
 
-UnknownText_0x556ca:
+GoldenrodPPSpeechHouseLassText:
 	text "Sometimes, a"
 	line "healthy #mon"
 

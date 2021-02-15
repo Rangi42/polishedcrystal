@@ -98,7 +98,7 @@ OlivineCityRivalLighthouseScript:
 
 OlivineCityYoungster1Script:
 	random 2
-	iffalse_jumptextfaceplayer UnknownText_0x1a8b41
+	iffalse_jumptextfaceplayer OlivineCityStandingYoungsterPokedexText
 	jumpthistextfaceplayer
 
 	text "That thing you"
@@ -224,7 +224,7 @@ OlivineCityRivalLighthouseText:
 	cont "less weak!"
 	done
 
-UnknownText_0x1a8b41:
+OlivineCityStandingYoungsterPokedexText:
 	text "Wow, you have a"
 	line "#dex!"
 

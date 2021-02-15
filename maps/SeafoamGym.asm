@@ -18,7 +18,7 @@ SeafoamGym_MapScriptHeader:
 	object_event 12,  7, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerScientistLinden, -1
 	object_event 10,  5, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerSupernerdWaldo, -1
 	object_event  6, 14, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerSupernerdMerle, -1
-	object_event 12, 11, SPRITE_BLAINE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, BlaineScript_0x1ab4fb, -1
+	object_event 12, 11, SPRITE_BLAINE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, SeafoamGymBlaineScript, -1
 
 	object_const_def
 	const SEAFOAMGYM_GYM_GUY
@@ -69,15 +69,15 @@ GenericTrainerSupernerdMerle:
 	cont "you are."
 	done
 
-BlaineScript_0x1ab4fb:
+SeafoamGymBlaineScript:
 	faceplayer
 	opentext
 	checkflag ENGINE_VOLCANOBADGE
 	iftrue .FightDone
-	writetext UnknownText_0x1ab548
+	writetext BlaineIntroText
 	waitbutton
 	closetext
-	winlosstext UnknownText_0x1ab646, 0
+	winlosstext BlaineWinLossText, 0
 	loadtrainer BLAINE, 1
 	startbattle
 	iftrue .ReturnAfterBattle
@@ -92,7 +92,7 @@ BlaineScript_0x1ab4fb:
 	setevent EVENT_BEAT_SUPER_NERD_WALDO
 	setevent EVENT_BEAT_SUPER_NERD_MERLE
 	opentext
-	writetext UnknownText_0x1ab683
+	writetext ReceivedVolcanoBadgeText
 	playsound SFX_GET_BADGE
 	waitsfx
 	setflag ENGINE_VOLCANOBADGE
@@ -113,8 +113,8 @@ BlaineScript_0x1ab4fb:
 	specialphonecall SPECIALCALL_LYRASEGG
 .FightDone:
 	checkevent EVENT_GOT_TM61_WILL_O_WISP
-	iftrue_jumpopenedtext UnknownText_0x1ab71c
-	writetext UnknownText_0x1ab69d
+	iftrue_jumpopenedtext BlaineFightDoneText
+	writetext BlaineAfterBattleText
 	buttonsound
 	verbosegivetmhm TM_WILL_O_WISP
 	setevent EVENT_GOT_TM61_WILL_O_WISP
@@ -234,7 +234,7 @@ SupernerdMerleBeatenText:
 	text "Pardon me!"
 	done
 
-UnknownText_0x1ab548:
+BlaineIntroText:
 	text "Blaine: Waaah!"
 
 	para "My Gym in Cinnabar"
@@ -262,7 +262,7 @@ UnknownText_0x1ab548:
 	line "have Burn Heal!"
 	done
 
-UnknownText_0x1ab646:
+BlaineWinLossText:
 	text "Blaine: Awesome."
 	line "I've burned out…"
 
@@ -270,17 +270,17 @@ UnknownText_0x1ab646:
 	line "Volcano Badge!"
 	done
 
-UnknownText_0x1ab683:
+ReceivedVolcanoBadgeText:
 	text "<PLAYER> received"
 	line "the Volcano Badge."
 	done
 
-UnknownText_0x1ab69d:
+BlaineAfterBattleText:
 	text "Here, I'll give you"
 	line "this, too."
 	done
 
-UnknownText_0x1ab71c:
+BlaineFightDoneText:
 	text "Blaine: My fire"
 	line "#mon will be"
 

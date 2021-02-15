@@ -190,54 +190,54 @@ NameRaterIntroText:
 	; Hello, hello! I'm the NAME RATER.
 	; I rate the names of #MON.
 	; Would you like me to rate names?
-	text_jump UnknownText_0x1c0043
+	text_jump _NameRaterHelloText
 	text_end
 
 NameRaterWhichMonText:
 	; Which #MON's nickname should I rate for you?
-	text_jump UnknownText_0x1c00a0
+	text_jump _NameRaterWhichMonText
 	text_end
 
 NameRaterIsGoodText:
 	; Hm… @ … That's a fairly decent name.
 	; But, how about a slightly better nickname?
 	; Want me to give it a better name?
-	text_jump UnknownText_0x1c00cd
+	text_jump _NameRaterBetterNameText
 	text_end
 
 NameRaterWhichNameText:
 	; All right. What name should we give it, then?
-	text_jump UnknownText_0x1c0142
+	text_jump _NameRaterWhatNameText
 	text_end
 
 NameRaterEvenBetterText:
 	; That's a better name than before! Well done!
-	text_jump UnknownText_0x1c0171
+	text_jump _NameRaterFinishedText
 	text_end
 
 NameRaterCancelText:
 	; OK, then. Come again sometime.
-	text_jump UnknownText_0x1c019e
+	text_jump _NameRaterComeAgainText
 	text_end
 
 NameRaterTradedText:
 	; Hm… @ ? What a great name! It's perfect.
 	; Treat @ with loving care.
-	text_jump UnknownText_0x1c01be
+	text_jump _NameRaterPerfectNameText
 	text_end
 
 NameRaterEggText:
 	; Whoa… That's just an EGG.
-	text_jump UnknownText_0x1c0208
+	text_jump _NameRaterEggText
 	text_end
 
 NameRaterSameAsBeforeText:
 	; It might look the different as before,
 	; but this new name is much better! Well done!
-	text_jump UnknownText_0x1c0222
+	text_jump _NameRaterSameNameText
 	text_end
 
 NameRaterDoneText:
 	; All right. This #MON is now named @ .
-	text_jump UnknownText_0x1c0272
+	text_jump _NameRaterNamedText
 	text_end

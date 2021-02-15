@@ -1699,22 +1699,22 @@ Text_NoEmptySlot:
 
 Text_ThrowAwayHowMany:
 	; Throw away how many?
-	text_jump UnknownText_0x1c0ba5
+	text_jump _AskThrowAwayText
 	text_end
 
 Text_ConfirmThrowAway:
 	; Throw away @ @ (S)?
-	text_jump UnknownText_0x1c0bbb
+	text_jump _AskQuantityThrowAwayText
 	text_end
 
 Text_ThrewAway:
 	; Threw away @ (S).
-	text_jump UnknownText_0x1c0bd8
+	text_jump _ThrewAwayText
 	text_end
 
 Text_ThisIsntTheTime:
 	; OAK:  ! This isn't the time to use that!
-	text_jump UnknownText_0x1c0bee
+	text_jump _OakThisIsntTheTimeText
 	text_end
 
 TextJump_YouDontHaveAPkmn:
@@ -1724,7 +1724,7 @@ TextJump_YouDontHaveAPkmn:
 
 Text_RegisteredItem:
 	; Registered the @ .
-	text_jump UnknownText_0x1c0c2e
+	text_jump _RegisteredItemText
 	text_end
 
 Text_UnregisteredItem:
@@ -1733,12 +1733,12 @@ Text_UnregisteredItem:
 
 Text_CantRegister:
 	; You can't register that item.
-	text_jump UnknownText_0x1c0c45
+	text_jump _CantRegisterText
 	text_end
 
 Text_MoveItemWhere:
 	; Where should this be moved to?
-	text_jump UnknownText_0x1c0c63
+	text_jump _AskItemMoveText
 	text_end
 
 Text_PackEmptyString:

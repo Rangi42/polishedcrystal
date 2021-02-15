@@ -457,7 +457,7 @@ Pokegear_UpdateClock:
 	jp PlaceWholeStringInBoxAtOnce
 
 .DayText:
-	text_jump UnknownText_0x1c5821
+	text_jump _GearTodayText
 	text_end
 
 PokegearMap_CheckRegion:
@@ -917,12 +917,12 @@ PokegearPhone_MakePhoneCall:
 
 .dotdotdot
 	;
-	text_jump UnknownText_0x1c5824
+	text_jump _GearEllipseText
 	text_end
 
 .OutOfServiceArea:
 	; You're out of the service area.
-	text_jump UnknownText_0x1c5827
+	text_jump _GearOutOfServiceText
 	text_end
 
 PokegearPhone_FinishPhoneCall:
@@ -1306,17 +1306,17 @@ Pokegear_LoadTilemapRLE:
 
 PokegearText_WhomToCall:
 	; Whom do you want to call?
-	text_jump UnknownText_0x1c5847
+	text_jump _PokegearAskWhoCallText
 	text_end
 
 PokegearText_PressAnyButtonToExit:
 	; Press any button to exit.
-	text_jump UnknownText_0x1c5862
+	text_jump _PokegearPressButtonText
 	text_end
 
 PokegearText_DeleteStoredNumber:
 	; Delete this stored phone number?
-	text_jump UnknownText_0x1c587d
+	text_jump _PokegearAskDeleteText
 	text_end
 
 PokegearSpritesGFX:

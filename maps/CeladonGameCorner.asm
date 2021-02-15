@@ -42,44 +42,44 @@ CeladonGameCorner_MapScriptHeader:
 	bg_event 13, 11, BGEVENT_LEFT, MapCeladonGameCornerSignpost35Script
 	bg_event 18,  6, BGEVENT_READ, MapCeladonGameCornerSignpost35Script
 	bg_event 18,  7, BGEVENT_READ, MapCeladonGameCornerSignpost35Script
-	bg_event 18,  8, BGEVENT_JUMPTEXT, UnknownText_0x7254f
+	bg_event 18,  8, BGEVENT_JUMPTEXT, CeladonGameCornerLighterText
 	bg_event 18,  9, BGEVENT_READ, MapCeladonGameCornerSignpost35Script
 	bg_event 18, 10, BGEVENT_READ, MapCeladonGameCornerSignpost35Script
 	bg_event 18, 11, BGEVENT_RIGHT, MapCeladonGameCornerSignpost35Script
-	bg_event 15,  0, BGEVENT_JUMPTEXT, UnknownText_0x724f3
-	bg_event  9,  0, BGEVENT_JUMPTEXT, UnknownText_0x72521
+	bg_event 15,  0, BGEVENT_JUMPTEXT, CeladonGameCornerPoster1Text
+	bg_event  9,  0, BGEVENT_JUMPTEXT, CeladonGameCornerPoster2Text
 
 	def_object_events
 	object_event  5,  2, SPRITE_CLERK, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumpstd, gamecornercoinvendor, -1
-	object_event  3,  2, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x721d0, -1
-	object_event 14, 10, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, PokefanMScript_0x72123, -1
-	object_event 17,  7, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, TeacherScript_0x7212e, -1
-	object_event 11,  7, SPRITE_FISHING_GURU, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, FishingGuruScript_0x72139, -1
-	object_event  8, 10, SPRITE_FAT_GUY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, (1 << DAY) | (1 << NITE), PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, FisherScript_0x72144, -1
+	object_event  3,  2, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeladonGameCornerReceptionistText, -1
+	object_event 14, 10, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, CeladonGameCornerPokefanMScript, -1
+	object_event 17,  7, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, CeladonGameCornerTeacherScript, -1
+	object_event 11,  7, SPRITE_FISHING_GURU, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, CeladonGameCornerFishingGuruScript, -1
+	object_event  8, 10, SPRITE_FAT_GUY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, (1 << DAY) | (1 << NITE), PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, CeladonGameCornerFisherScript, -1
 	object_event 11,  3, SPRITE_GYM_GUY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeladonGymGuyText, -1
-	object_event  2,  8, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, GrampsScript_0x72190, -1
+	object_event  2,  8, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, CeladonGameCornerGrampsScript, -1
 
-PokefanMScript_0x72123:
-	showtextfaceplayer UnknownText_0x72215
+CeladonGameCornerPokefanMScript:
+	showtextfaceplayer CeladonGameCornerPokefanMText
 	turnobject LAST_TALKED, LEFT
 	end
 
-TeacherScript_0x7212e:
-	showtextfaceplayer UnknownText_0x72242
+CeladonGameCornerTeacherScript:
+	showtextfaceplayer CeladonGameCornerTeacherText
 	turnobject LAST_TALKED, RIGHT
 	end
 
-FishingGuruScript_0x72139:
-	showtextfaceplayer UnknownText_0x72295
+CeladonGameCornerFishingGuruScript:
+	showtextfaceplayer CeladonGameCornerFishingGuruText
 	turnobject LAST_TALKED, RIGHT
 	end
 
-FisherScript_0x72144:
+CeladonGameCornerFisherScript:
 	faceplayer
 	opentext
 	checkevent EVENT_GOT_COINS_FROM_GAMBLER_AT_CELADON
 	iftrue .FisherOffer
-	writetext UnknownText_0x722dc
+	writetext CeladonGameCornerFisherText1
 	buttonsound
 	checkkeyitem COIN_CASE
 	iffalse UnknownScript_0x7217b
@@ -100,7 +100,7 @@ FisherScript_0x72144:
 	scall MapCeladonGameCornerSignpost16Script
 	opentext
 .UnknownScript_0x72169:
-	writetext UnknownText_0x72345
+	writetext CeladonGameCornerFisherText2
 	jump .FisherEnd
 .FisherNotEnough:
 	writetext FisherNotEnoughText
@@ -114,21 +114,21 @@ FisherScript_0x72144:
 	db "Coin@"
 
 UnknownScript_0x7217b:
-	writetext UnknownText_0x7238a
+	writetext CeladonGameCornerFisherNoCoinCaseText
 	waitbutton
 	closetext
 	turnobject LAST_TALKED, LEFT
 	end
 
 UnknownScript_0x72184:
-	writetext UnknownText_0x723d9
+	writetext CeladonGameCornerFisherFullCoinCaseText
 	waitbutton
 	closetext
 	turnobject LAST_TALKED, LEFT
 	end
 
-GrampsScript_0x72190:
-	showtextfaceplayer UnknownText_0x724ad
+CeladonGameCornerGrampsScript:
+	showtextfaceplayer CeladonGameCornerGrampsText
 	turnobject LAST_TALKED, LEFT
 	end
 
@@ -153,12 +153,12 @@ MapCeladonGameCornerSignpost11Script:
 
 MapCeladonGameCornerSignpost9Script:
 	opentext
-	writetext UnknownText_0x72567
+	writetext CeladonGameCornerSodaCanText
 	waitbutton
 	special Special_CardFlip
 	endtext
 
-UnknownText_0x721d0:
+CeladonGameCornerReceptionistText:
 	text "Welcome!"
 
 	para "You may exchange"
@@ -168,13 +168,13 @@ UnknownText_0x721d0:
 	line "next door."
 	done
 
-UnknownText_0x72215:
+CeladonGameCornerPokefanMText:
 	text "The slot machines"
 	line "are all state of"
 	cont "the art."
 	done
 
-UnknownText_0x72242:
+CeladonGameCornerTeacherText:
 	text "It's this machine"
 	line "I want."
 
@@ -185,7 +185,7 @@ UnknownText_0x72242:
 	line "today."
 	done
 
-UnknownText_0x72295:
+CeladonGameCornerFishingGuruText:
 	text "I think this slot"
 	line "machine will pay"
 	cont "out…"
@@ -194,7 +194,7 @@ UnknownText_0x72295:
 	line "among machines."
 	done
 
-UnknownText_0x722dc:
+CeladonGameCornerFisherText1:
 	text "Gahahaha!"
 
 	para "The coins just"
@@ -207,7 +207,7 @@ UnknownText_0x722dc:
 	line "with you!"
 	done
 
-UnknownText_0x72345:
+CeladonGameCornerFisherText2:
 	text "Gahahaha!"
 
 	para "It makes me feel"
@@ -217,7 +217,7 @@ UnknownText_0x72345:
 	line "people!"
 	done
 
-UnknownText_0x7238a:
+CeladonGameCornerFisherNoCoinCaseText:
 	text "Hey, you don't"
 	line "have a Coin Case."
 
@@ -226,7 +226,7 @@ UnknownText_0x7238a:
 	cont "coins, kid?"
 	done
 
-UnknownText_0x723d9:
+CeladonGameCornerFisherFullCoinCaseText:
 	text "Hey, your Coin"
 	line "Case is full, kid."
 
@@ -271,7 +271,7 @@ CeladonGymGuyText:
 	line "enough coins yet…"
 	done
 
-UnknownText_0x724ad:
+CeladonGameCornerGrampsText:
 	text "Hmmm… The odds are"
 	line "surely better for"
 
@@ -279,7 +279,7 @@ UnknownText_0x724ad:
 	line "but… What to do?"
 	done
 
-UnknownText_0x724f3:
+CeladonGameCornerPoster1Text:
 	text "Hey!"
 
 	para "Underneath this"
@@ -288,7 +288,7 @@ UnknownText_0x724f3:
 	para "There's nothing!"
 	done
 
-UnknownText_0x72521:
+CeladonGameCornerPoster2Text:
 	text "Hey!"
 
 	para "Underneath this"
@@ -297,12 +297,12 @@ UnknownText_0x72521:
 	para "There's nothing!"
 	done
 
-UnknownText_0x7254f:
+CeladonGameCornerLighterText:
 	text "There's a lighter"
 	line "here."
 	done
 
-UnknownText_0x72567:
+CeladonGameCornerSodaCanText:
 	text "A can of soda…"
 
 	para "Someone must be"

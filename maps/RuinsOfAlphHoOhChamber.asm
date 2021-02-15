@@ -3,7 +3,7 @@ RuinsOfAlphHoOhChamber_MapScriptHeader:
 	scene_script RuinsofAlphHoOhChamberTrigger0
 
 	def_callbacks
-	callback MAPCALLBACK_TILES, UnknownScript_0x5857c
+	callback MAPCALLBACK_TILES, RuinsOfAlphHoOhChamberHiddenDoorsCallback
 
 	def_warp_events
 	warp_event  3,  9, RUINS_OF_ALPH_OUTSIDE, 1
@@ -28,25 +28,25 @@ RuinsofAlphHoOhChamberTrigger0:
 	special SpecialHoOhChamber
 	checkevent EVENT_WALL_OPENED_IN_HO_OH_CHAMBER
 	iffalse .End
-	priorityjump UnknownScript_0x58596
+	priorityjump RuinsOfAlphHoOhChamberWallOpenScript
 .End
 	end
 
-UnknownScript_0x5857c:
+RuinsOfAlphHoOhChamberHiddenDoorsCallback:
 	checkevent EVENT_WALL_OPENED_IN_HO_OH_CHAMBER
-	iftrue UnknownScript_0x58586
+	iftrue .WallOpen
 	changeblock 4, 0, $24
-UnknownScript_0x58586:
+.WallOpen:
 	checkevent EVENT_SOLVED_HO_OH_PUZZLE
-	iffalse UnknownScript_0x5858d
+	iffalse .FloorClosed
 	return
 
-UnknownScript_0x5858d:
+.FloorClosed:
 	changeblock 2, 2, $1
 	changeblock 4, 2, $2
 	return
 
-UnknownScript_0x58596:
+RuinsOfAlphHoOhChamberWallOpenScript:
 	pause 30
 	earthquake 30
 	showemote EMOTE_SHOCK, PLAYER, 20
@@ -63,10 +63,10 @@ MapRuinsofAlphHoOhChamberSignpost2Script:
 	writebyte $3
 	special Special_UnownPuzzle
 	closetext
-	iftrue UnknownScript_0x585ba
+	iftrue .PuzzleComplete
 	end
 
-UnknownScript_0x585ba:
+.PuzzleComplete:
 	setevent EVENT_RUINS_OF_ALPH_INNER_CHAMBER_TOURISTS
 	setevent EVENT_SOLVED_HO_OH_PUZZLE
 	setflag ENGINE_UNLOCKED_UNOWNS_4
@@ -87,14 +87,14 @@ UnknownScript_0x585ba:
 
 MapRuinsofAlphHoOhChamberSignpost3Script:
 	unowntypeface
-	showtext UnknownText_0x586aa
+	showtext RuinsOfAlphHoOhChamberDescriptionText
 	restoretypeface
 	special MapCallbackSprites_LoadUsedSpritesGFX
 	end
 
 MapRuinsofAlphHoOhChamberSignpost5Script:
 	checkevent EVENT_WALL_OPENED_IN_HO_OH_CHAMBER
-	iftrue_jumptext UnknownText_0x58ea2
+	iftrue_jumptext RuinsOfAlphAerodactylChamberWallHoleText
 MapRuinsofAlphHoOhChamberSignpost4Script:
 	opentext
 	checkevent EVENT_RUINS_OF_ALPH_OUTSIDE_TOURIST_YOUNGSTERS
@@ -102,13 +102,13 @@ MapRuinsofAlphHoOhChamberSignpost4Script:
 	writetext UnusedText_0x58e70
 	jump .unownwords
 .unsolved
-	writetext UnknownText_0x58e4f
+	writetext RuinsOfAlphAerodactylChamberWallPatternLeftText
 .unownwords
 	writebyte $3
 	special Special_DisplayUnownWords
 	endtext
 
-UnknownText_0x586aa:
+RuinsOfAlphHoOhChamberDescriptionText:
 	text "A #mon that"
 	line "flew gracefully on"
 

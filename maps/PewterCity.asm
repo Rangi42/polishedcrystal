@@ -23,10 +23,10 @@ PewterCity_MapScriptHeader:
 	bg_event 19, 29, BGEVENT_JUMPTEXT, PewterCityTrainerTipsText
 
 	def_object_events
-	object_event 22, 11, SPRITE_BATTLE_GIRL, SPRITEMOVEDATA_STANDING_DOWN, 2, 2, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x18c042, -1
+	object_event 22, 11, SPRITE_BATTLE_GIRL, SPRITEMOVEDATA_STANDING_DOWN, 2, 2, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, PewterCityCooltrainerFText, -1
 	object_event 19, 10, SPRITE_COOL_DUDE, SPRITEMOVEDATA_SPINRANDOM_SLOW, 2, 2, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, PewterCityCooltrainermText, -1
-	object_event 14, 29, SPRITE_CHILD, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, PAL_NPC_PURPLE, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x18c080, -1
-	object_event 29, 17, SPRITE_GRAMPS, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, GrampsScript_0x18c00f, -1
+	object_event 14, 29, SPRITE_CHILD, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, PAL_NPC_PURPLE, OBJECTTYPE_COMMAND, jumptextfaceplayer, PewterCityBugCatcherText, -1
+	object_event 29, 17, SPRITE_GRAMPS, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, PewterCityGrampsScript, -1
 	object_event  7, 17, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, PewterCityYoungsterScript, -1
 	fruittree_event 32,  3, FRUITTREE_PEWTER_CITY_1, PETAYA_BERRY, PAL_NPC_RED
 	fruittree_event 30,  3, FRUITTREE_PEWTER_CITY_2, APICOT_BERRY, PAL_NPC_BLUE
@@ -35,12 +35,12 @@ PewterCityFlyPoint:
 	setflag ENGINE_FLYPOINT_PEWTER
 	return
 
-GrampsScript_0x18c00f:
+PewterCityGrampsScript:
 	checkevent EVENT_GOT_OLD_AMBER
-	iftrue_jumptextfaceplayer UnknownText_0x18c1aa
+	iftrue_jumptextfaceplayer PewterCityGrampsText_GotSilverWing
 	faceplayer
 	opentext
-	writetext UnknownText_0x18c0c6
+	writetext PewterCityGrampsText
 	buttonsound
 	verbosegiveitem OLD_AMBER
 	iffalse_endtext
@@ -56,7 +56,7 @@ PewterCityYoungsterScript:
 	iffalse_endtext
 	jumpopenedtext PewterCityYoungsterText2
 
-UnknownText_0x18c042:
+PewterCityCooltrainerFText:
 	text "#mon can only"
 	line "be two types at"
 	cont "once, but if it"
@@ -88,7 +88,7 @@ PewterCityCooltrainermText:
 	cont "though."
 	done
 
-UnknownText_0x18c080:
+PewterCityBugCatcherText:
 	text "At night, Clefairy"
 	line "come out to play"
 	cont "at Mt.Moon."
@@ -97,7 +97,7 @@ UnknownText_0x18c080:
 	line "night."
 	done
 
-UnknownText_0x18c0c6:
+PewterCityGrampsText:
 	text "Ah, you came all"
 	line "the way out here"
 	cont "from Johto?"
@@ -119,7 +119,7 @@ UnknownText_0x18c0c6:
 	cont "I found in Johto."
 	done
 
-UnknownText_0x18c1aa:
+PewterCityGrampsText_GotSilverWing:
 	text "Going to new, un-"
 	line "known places and"
 	cont "seeing new people…"

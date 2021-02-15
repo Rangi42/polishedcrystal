@@ -13,24 +13,24 @@ EcruteakItemfinderHouse_MapScriptHeader:
 	bg_event  2,  1, BGEVENT_JUMPSTD, radio2
 
 	def_object_events
-	object_event  2,  3, SPRITE_ACE_TRAINER_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, CooltrainerMScript_0x9a5fb, -1
-	object_event  3,  3, SPRITE_BOOK_PAPER_POKEDEX, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, BookScript_0x9a620, -1
+	object_event  2,  3, SPRITE_ACE_TRAINER_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, EcruteakItemfinderGuy, -1
+	object_event  3,  3, SPRITE_BOOK_PAPER_POKEDEX, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, EcruteakHistoryBook, -1
 
-CooltrainerMScript_0x9a5fb:
+EcruteakItemfinderGuy:
 	checkevent EVENT_GOT_ITEMFINDER
-	iftrue_jumptextfaceplayer UnknownText_0x9a70e
+	iftrue_jumptextfaceplayer ItemfinderExplanationText
 	faceplayer
 	opentext
-	writetext UnknownText_0x9a63c
+	writetext EcruteakItemfinderAdventureText
 	yesorno
-	iffalse_jumpopenedtext UnknownText_0x9a805
-	writetext UnknownText_0x9a6b5
+	iffalse_jumpopenedtext EcruteakItemfinderToEachHisOwnText
+	writetext EcruteakItemfinderTrueSpiritText
 	buttonsound
 	verbosegivekeyitem ITEMFINDER
 	setevent EVENT_GOT_ITEMFINDER
 	jumpthisopenedtext
 
-UnknownText_0x9a70e:
+ItemfinderExplanationText:
 	text "There are many"
 	line "items lying about"
 
@@ -56,12 +56,12 @@ UnknownText_0x9a70e:
 	line "Burned Tower."
 	done
 
-BookScript_0x9a620:
+EcruteakHistoryBook:
 	opentext
-	writetext UnknownText_0x9a826
+	writetext EcruteakHistoryBookText
 	yesorno
 	iffalse_endtext
-	writetext UnknownText_0x9a84c
+	writetext EcruteakTwoTowersText
 	yesorno
 	iffalse_endtext
 	jumpthisopenedtext
@@ -89,7 +89,7 @@ BookScript_0x9a620:
 	line "grassland."
 	done
 
-UnknownText_0x9a63c:
+EcruteakItemfinderAdventureText:
 	text "Ah. You're on an"
 	line "adventure with"
 	cont "your #mon?"
@@ -102,7 +102,7 @@ UnknownText_0x9a63c:
 	line "I right?"
 	done
 
-UnknownText_0x9a6b5:
+EcruteakItemfinderTrueSpiritText:
 	text "Good! You under-"
 	line "stand the true"
 
@@ -113,19 +113,19 @@ UnknownText_0x9a6b5:
 	line "this with you."
 	done
 
-UnknownText_0x9a805:
+EcruteakItemfinderToEachHisOwnText:
 	text "Oh… To each his"
 	line "own, I suppose…"
 	done
 
-UnknownText_0x9a826:
+EcruteakHistoryBookText:
 	text "History of"
 	line "Ecruteak"
 
 	para "Want to read it?"
 	done
 
-UnknownText_0x9a84c:
+EcruteakTwoTowersText:
 	text "In Ecruteak, there"
 	line "were two towers."
 

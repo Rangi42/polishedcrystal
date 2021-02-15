@@ -157,7 +157,7 @@ DragonsDenB1FSilverScript:
 .GiveCyndaquilEgg:
 	giveegg CYNDAQUIL, EGG_LEVEL
 .GotRivalsEgg
-	farwritetext UnknownText_0x1bdfa5 ; in text/common_1.asm
+	farwritetext _ReceivedEggText ; in text/common_1.asm
 	playsound SFX_GET_EGG_FROM_DAYCARE_LADY
 	waitsfx
 	writetext .DescribeEggText

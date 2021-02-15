@@ -13,10 +13,10 @@ PewterMart_MapScriptHeader:
 
 	def_object_events
 	mart_clerk_event  1,  3, MARTTYPE_STANDARD, MART_PEWTER
-	object_event  9,  2, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1a2dd8, -1
-	object_event  6,  6, SPRITE_POKEMANIAC, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1a2e3a, -1
+	object_event  9,  2, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, PewterMartYoungsterText, -1
+	object_event  6,  6, SPRITE_POKEMANIAC, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, PewterMartSuperNerdText, -1
 
-UnknownText_0x1a2dd8:
+PewterMartYoungsterText:
 	text "Hi! Check out my"
 	line "Gyarados!"
 
@@ -27,7 +27,7 @@ UnknownText_0x1a2dd8:
 	line "it has become."
 	done
 
-UnknownText_0x1a2e3a:
+PewterMartSuperNerdText:
 	text "There once was a"
 	line "weird old man who"
 	cont "sold Magikarp."

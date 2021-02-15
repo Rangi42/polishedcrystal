@@ -15,11 +15,11 @@ CeladonCafe_MapScriptHeader:
 
 	def_object_events
 	object_event  7,  4, SPRITE_MAYLENE, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, MayleneScript, -1
-	object_event  4,  3, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, TeacherScript_0x73084, -1
-	object_event  4,  6, SPRITE_FAT_GUY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, FisherScript_0x73051, -1
-	object_event  1,  7, SPRITE_FAT_GUY, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, FisherScript_0x73062, -1
-	object_event  1,  2, SPRITE_FAT_GUY, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, FisherScript_0x73073, -1
-	object_event  9,  3, SPRITE_POKEMANIAC, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x730de, -1
+	object_event  4,  3, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, CeladonCafeTeacher, -1
+	object_event  4,  6, SPRITE_FAT_GUY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, CeladonCafeFisher1, -1
+	object_event  1,  7, SPRITE_FAT_GUY, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, CeladonCafeFisher2, -1
+	object_event  1,  2, SPRITE_FAT_GUY, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, CeladonCafeFisher3, -1
+	object_event  9,  3, SPRITE_POKEMANIAC, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_COMMAND, jumptextfaceplayer, ChefText_Eatathon, -1
 	object_event 11,  4, SPRITE_BAKER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeladonCafeBakerText, -1
 
 	object_const_def
@@ -67,40 +67,40 @@ MayleneScript:
 	turnobject CELADONCAFE_MAYLENE, RIGHT
 	end
 
-TeacherScript_0x73084:
+CeladonCafeTeacher:
 	checkkeyitem COIN_CASE
 	iftrue .NoCoinCase
-	showtext UnknownText_0x73201
-	showtextfaceplayer UnknownText_0x73212
+	showtext TeacherText_CrunchCrunch
+	showtextfaceplayer TeacherText_NoCoinCase
 	turnobject LAST_TALKED, LEFT
 	end
 
 .NoCoinCase:
-	showtext UnknownText_0x73254
+	showtext TeacherText_KeepEating
 	turnobject CELADONCAFE_TEACHER, RIGHT
-	showtext UnknownText_0x73278
+	showtext TeacherText_MoreChef
 	turnobject CELADONCAFE_TEACHER, LEFT
 	end
 
-FisherScript_0x73051:
-	showtext UnknownText_0x73129
-	showtextfaceplayer UnknownText_0x7313a
+CeladonCafeFisher1:
+	showtext Fisher1Text_Snarfle
+	showtextfaceplayer Fisher1Text_Concentration
 	turnobject LAST_TALKED, LEFT
 	end
 
-FisherScript_0x73062:
-	showtext UnknownText_0x7316a
-	showtextfaceplayer UnknownText_0x73178
+CeladonCafeFisher2:
+	showtext Fisher2Text_GulpChew
+	showtextfaceplayer Fisher2Text_Quantity
 	turnobject LAST_TALKED, RIGHT
 	end
 
-FisherScript_0x73073:
-	showtext UnknownText_0x731ae
-	showtextfaceplayer UnknownText_0x731bd
+CeladonCafeFisher3:
+	showtext Fisher3Text_MunchMunch
+	showtextfaceplayer Fisher3Text_GoldenrodIsBest
 	turnobject LAST_TALKED, RIGHT
 	end
 
-UnknownText_0x730de:
+ChefText_Eatathon:
 	text "Hi!"
 
 	para "We're holding an"
@@ -110,22 +110,22 @@ UnknownText_0x730de:
 	line "right now. Sorry."
 	done
 
-UnknownText_0x73129:
+Fisher1Text_Snarfle:
 	text "…Snarfle, chew…"
 	done
 
-UnknownText_0x7313a:
+Fisher1Text_Concentration:
 	text "Don't talk to me!"
 
 	para "You'll break my"
 	line "concentration!"
 	done
 
-UnknownText_0x7316a:
+Fisher2Text_GulpChew:
 	text "…Gulp… Chew…"
 	done
 
-UnknownText_0x73178:
+Fisher2Text_Quantity:
 	text "I take quantity"
 	line "over quality!"
 
@@ -133,22 +133,22 @@ UnknownText_0x73178:
 	line "full!"
 	done
 
-UnknownText_0x731ae:
+Fisher3Text_MunchMunch:
 	text "Munch, munch…"
 	done
 
-UnknownText_0x731bd:
+Fisher3Text_GoldenrodIsBest:
 	text "The food is good"
 	line "here, but Golden-"
 	cont "rod has the best"
 	cont "food anywhere."
 	done
 
-UnknownText_0x73201:
+TeacherText_CrunchCrunch:
 	text "Crunch… Crunch…"
 	done
 
-UnknownText_0x73212:
+TeacherText_NoCoinCase:
 	text "Nobody here will"
 	line "give you a Coin"
 
@@ -156,13 +156,13 @@ UnknownText_0x73212:
 	line "look in Johto."
 	done
 
-UnknownText_0x73254:
+TeacherText_KeepEating:
 	text "Crunch… Crunch…"
 
 	para "I can keep eating!"
 	done
 
-UnknownText_0x73278:
+TeacherText_MoreChef:
 	text "More, Chef!"
 	done
 

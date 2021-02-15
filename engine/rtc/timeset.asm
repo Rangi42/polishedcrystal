@@ -254,12 +254,12 @@ PrintTwoDigitNumberRightAlign:
 
 Text_WokeUpOak:
 	; Zzz… Hm? Wha…? You woke me up! Will you check the clock for me?
-	text_jump UnknownText_0x1bc29c
+	text_jump _OakTimeWokeUpText
 	text_end
 
 Text_WhatTimeIsIt:
 	; What time is it?
-	text_jump UnknownText_0x1bc2eb
+	text_jump _OakTimeWhatTimeIsItText
 	text_end
 
 String_oclock:
@@ -267,7 +267,7 @@ String_oclock:
 
 Text_WhatHrs:
 	; What?@ @
-	text_jump UnknownText_0x1bc2fd
+	text_jump _OakTimeWhatHoursText
 	start_asm
 	hlcoord 1, 16
 	call DisplayHourOClock
@@ -276,12 +276,12 @@ Text_WhatHrs:
 
 .QuestionMark:
 	; ?
-	text_jump UnknownText_0x1bc305
+	text_jump _OakTimeHoursQuestionMarkText
 	text_end
 
 Text_HowManyMinutes:
 	; How many minutes?
-	text_jump UnknownText_0x1bc308
+	text_jump _OakTimeHowManyMinutesText
 	text_end
 
 String_min:
@@ -289,7 +289,7 @@ String_min:
 
 Text_WhoaMins:
 	; Whoa!@ @
-	text_jump UnknownText_0x1bc31b
+	text_jump _OakTimeWhoaMinutesText
 	start_asm
 	hlcoord 7, 14
 	call DisplayMinutesWithMinString
@@ -298,7 +298,7 @@ Text_WhoaMins:
 
 .QuestionMark:
 	; ?
-	text_jump UnknownText_0x1bc323
+	text_jump _OakTimeMinutesQuestionMarkText
 	text_end
 
 OakText_ResponseToSetTime:
@@ -338,12 +338,12 @@ OakText_ResponseToSetTime:
 
 .overslept
 	; ! I overslept!
-	text_jump UnknownText_0x1bc326
+	text_jump _OakTimeOversleptText
 	text_end
 
 .yikes
 	; ! Yikes! I over- slept!
-	text_jump UnknownText_0x1bc336
+	text_jump _OakTimeYikesText
 	text_end
 
 .napped
@@ -352,7 +352,7 @@ OakText_ResponseToSetTime:
 
 .sodark
 	; ! No wonder it's so dark!
-	text_jump UnknownText_0x1bc34f
+	text_jump _OakTimeSoDarkText
 	text_end
 
 TimesetBackgroundGFX:
@@ -491,7 +491,7 @@ Special_SetDayOfWeek:
 
 .WhatDayIsItText:
 	; What day is it?
-	text_jump UnknownText_0x1bc369
+	text_jump _OakTimeWhatDayIsItText
 	text_end
 
 .ConfirmWeekdayText:
@@ -503,7 +503,7 @@ Special_SetDayOfWeek:
 
 .IsIt:
 	; , is it?
-	text_jump UnknownText_0x1bc37a
+	text_jump _OakTimeIsItText
 	text_end
 
 Special_InitialSetDSTFlag:
@@ -553,7 +553,7 @@ Special_InitialClearDSTFlag:
 
 .IsThatOK:
 	; , is that OK?
-	text_jump UnknownText_0x1c5ff1
+	text_jump _TimeAskOkayText
 	text_end
 
 PrintHour:

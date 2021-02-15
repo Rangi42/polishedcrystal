@@ -26,7 +26,7 @@ GentlemanAlfredScript:
 	end_if_just_battled
 	checkevent EVENT_JASMINE_RETURNED_TO_GYM
 	iftrue_jumptextfaceplayer GentlemanAlfredFinalText
-	jumptextfaceplayer UnknownText_0x5b13e
+	jumptextfaceplayer GentlemanAlfredAfterBattleText
 
 TrainerSailorHuey1:
 	trainer SAILOR, HUEY1, EVENT_BEAT_SAILOR_HUEY, SailorHuey1SeenText, SailorHuey1BeatenText, 0, SailorHuey1Script
@@ -115,7 +115,7 @@ UnknownScript_0x5b03e:
 
 UnknownScript_0x5b03f:
 	opentext
-	writetext UnknownText_0x5b1b6
+	writetext SailorHueyGiveProteinText
 	waitbutton
 	verbosegiveitem PROTEIN
 	iffalse UnknownScript_0x5b06f
@@ -173,7 +173,7 @@ GentlemanAlfredBeatenText:
 	line "you're serious."
 	done
 
-UnknownText_0x5b13e:
+GentlemanAlfredAfterBattleText:
 	text "Up top is a #-"
 	line "mon that keeps the"
 	cont "Lighthouse lit."
@@ -197,7 +197,7 @@ GentlemanAlfredFinalText:
 	line "real service!"
 	done
 
-UnknownText_0x5b1b6:
+SailorHueyGiveProteinText:
 	text "Man! You're as"
 	line "tough as ever!"
 

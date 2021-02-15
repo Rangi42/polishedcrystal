@@ -30,8 +30,8 @@ Route19_MapScriptHeader:
 	object_event 11, 20, SPRITE_SWIMMER_GUY, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerSwimmermJerome, -1
 	object_event 13, 43, SPRITE_SWIMMER_GUY, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerSwimmermHarold, -1
 	object_event 13, 51, SPRITE_COSPLAYER, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerCosplayerBrooke, -1
-	object_event  9,  3, SPRITE_ENGINEER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, EngineerScript_0x19ea4d, -1
-	object_event 11,  3, SPRITE_ENGINEER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, EngineerScript_0x19ea61, -1
+	object_event  9,  3, SPRITE_ENGINEER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, Route19Fisher1Script, -1
+	object_event 11,  3, SPRITE_ENGINEER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, Route19Fisher2Script, -1
 	tmhmball_event 14, 52, TM_SCALD, EVENT_ROUTE_19_TM_SCALD
 
 	object_const_def
@@ -109,12 +109,12 @@ GenericTrainerCosplayerBrooke:
 	cont "too."
 	done
 
-EngineerScript_0x19ea4d:
+Route19Fisher1Script:
 	checkevent EVENT_CINNABAR_ROCKS_CLEARED
-	iffalse_jumptextfaceplayer UnknownText_0x19ecaf
-	jumptextfaceplayer UnknownText_0x19ed24
+	iffalse_jumptextfaceplayer Route19Fisher1Text
+	jumptextfaceplayer Route19Fisher1Text_RocksCleared
 
-EngineerScript_0x19ea61:
+Route19Fisher2Script:
 	checkevent EVENT_CINNABAR_ROCKS_CLEARED
 	iffalse_jumptextfaceplayer Route19EngineerText1
 	jumptextfaceplayer Route19EngineerText2
@@ -176,7 +176,7 @@ CosplayerBrookeBeatenText:
 	cont "costume!"
 	done
 
-UnknownText_0x19ecaf:
+Route19Fisher1Text:
 	text "Sorry. This road"
 	line "is closed for"
 	cont "construction."
@@ -188,7 +188,7 @@ UnknownText_0x19ecaf:
 	line "from Pallet Town."
 	done
 
-UnknownText_0x19ed24:
+Route19Fisher1Text_RocksCleared:
 	text "I'm all sweaty."
 	line "Time for a swim!"
 	done

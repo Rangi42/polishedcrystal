@@ -126,9 +126,9 @@ IlexForestFarfetchdCallback:
 
 IlexForestCharcoalApprenticeScript:
 	checkevent EVENT_HERDED_FARFETCHD
-	iftrue_jumptextfaceplayer UnknownText_0x6f019
+	iftrue_jumptextfaceplayer IlexForestApprenticeAfterText
 	setscene $0
-	jumptextfaceplayer UnknownText_0x6ef5c
+	jumptextfaceplayer IlexForestApprenticeIntroText
 
 IlexForestFarfetchdScript:
 	faceplayer
@@ -443,7 +443,7 @@ MapIlexForestSignpost4Script:
 	pause 20
 	showemote EMOTE_SHOCK, PLAYER, 20
 	special Special_FadeOutMusic
-	applymovement PLAYER, MovementData_0x6ef58
+	applymovement PLAYER, IlexForestPlayerStepsDownMovement
 	pause 30
 	turnobject PLAYER, DOWN
 	pause 20
@@ -456,9 +456,9 @@ MapIlexForestSignpost4Script:
 	special CheckCaughtCelebi
 	iffalse DoNothingScript
 	appear ILEXFOREST_KURT
-	applymovement ILEXFOREST_KURT, MovementData_0x6ef4e
+	applymovement ILEXFOREST_KURT, IlexForestKurtStepsUpMovement
 	showtext Text_KurtCaughtCelebi
-	applymovement ILEXFOREST_KURT, MovementData_0x6ef53
+	applymovement ILEXFOREST_KURT, IlexFOrestKurtStepsDownMovement
 	disappear ILEXFOREST_KURT
 	end
 
@@ -723,21 +723,21 @@ MovementData_Farfetched_Pos9_Pos8_Down:
 	run_step_up
 	step_end
 
-MovementData_0x6ef4e:
+IlexForestKurtStepsUpMovement:
 	step_up
 	step_up
 	step_up
 	step_up
 	step_end
 
-MovementData_0x6ef53:
+IlexFOrestKurtStepsDownMovement:
 	step_down
 	step_down
 	step_down
 	step_down
 	step_end
 
-MovementData_0x6ef58:
+IlexForestPlayerStepsDownMovement:
 	fix_facing
 	slow_step_down
 	remove_fixed_facing
@@ -809,7 +809,7 @@ MovementData_IlexForestLyraLeaves:
 	slow_step_left
 	step_end
 
-UnknownText_0x6ef5c:
+IlexForestApprenticeIntroText:
 	text "Oh, man… My boss"
 	line "is going to be"
 	cont "steaming…"
@@ -828,7 +828,7 @@ UnknownText_0x6ef5c:
 	line "and scary for me…"
 	done
 
-UnknownText_0x6f019:
+IlexForestApprenticeAfterText:
 	text "Wow! Thanks a"
 	line "whole bunch!"
 

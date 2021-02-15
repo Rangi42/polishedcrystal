@@ -12,17 +12,17 @@ VioletNicknameSpeechHouse_MapScriptHeader:
 	def_bg_events
 
 	def_object_events
-	object_event  2,  3, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x693fa, -1
-	object_event  6,  4, SPRITE_TWIN, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x6945e, -1
-	object_event  5,  2, SPRITE_EEVEE, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, EeveeScript_0x693ef, -1
+	object_event  2,  3, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, VioletNicknameSpeechHouseTeacherText, -1
+	object_event  6,  4, SPRITE_TWIN, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, VioletNicknameSpeechHouseLassText, -1
+	object_event  5,  2, SPRITE_EEVEE, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, VioletNicknameSpeechHouseBirdScript, -1
 	object_event  0,  2, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, (1 << EVE) | (1 << NITE), PAL_NPC_PURPLE, OBJECTTYPE_COMMAND, jumptextfaceplayer, VioletNicknameSpeechHouseGrampsText, -1
 
-EeveeScript_0x693ef:
+VioletNicknameSpeechHouseBirdScript:
 	faceplayer
-	showcrytext UnknownText_0x6947c, EEVEE
+	showcrytext VioletNicknameSpeechHouseBirdText, EEVEE
 	end
 
-UnknownText_0x693fa:
+VioletNicknameSpeechHouseTeacherText:
 	text "She uses the names"
 	line "of her favorite"
 	cont "things to eat."
@@ -32,7 +32,7 @@ UnknownText_0x693fa:
 	cont "#mon, I mean."
 	done
 
-UnknownText_0x6945e:
+VioletNicknameSpeechHouseLassText:
 	text "I call my Eevee"
 	line "Strawberry!"
 	done
@@ -48,6 +48,6 @@ VioletNicknameSpeechHouseGrampsText:
 	line "Flying-type Gym."
 	done
 
-UnknownText_0x6947c:
+VioletNicknameSpeechHouseBirdText:
 	text "Strawberry: Eevee!"
 	done

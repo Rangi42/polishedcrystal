@@ -3,7 +3,7 @@ RuinsOfAlphAerodactylChamber_MapScriptHeader:
 	scene_script RuinsofAlphAerodactylChamberTrigger0
 
 	def_callbacks
-	callback MAPCALLBACK_TILES, UnknownScript_0x58db9
+	callback MAPCALLBACK_TILES, RuinsOfAlphAerodactylChamberHiddenDoorsCallback
 
 	def_warp_events
 	warp_event  3,  9, RUINS_OF_ALPH_OUTSIDE, 4
@@ -27,25 +27,25 @@ RuinsOfAlphAerodactylChamber_MapScriptHeader:
 RuinsofAlphAerodactylChamberTrigger0:
 	checkevent EVENT_WALL_OPENED_IN_AERODACTYL_CHAMBER
 	iffalse .End
-	priorityjump UnknownScript_0x58dd3
+	priorityjump RuinsOfAlphAerodactylChamberWallOpenScript
 .End
 	end
 
-UnknownScript_0x58db9:
+RuinsOfAlphAerodactylChamberHiddenDoorsCallback:
 	checkevent EVENT_WALL_OPENED_IN_AERODACTYL_CHAMBER
-	iftrue UnknownScript_0x58dc3
+	iftrue .WallOpen
 	changeblock 4, 0, $24
-UnknownScript_0x58dc3:
+.WallOpen:
 	checkevent EVENT_SOLVED_AERODACTYL_PUZZLE
-	iffalse UnknownScript_0x58dca
+	iffalse .FloorClosed
 	return
 
-UnknownScript_0x58dca:
+.FloorClosed:
 	changeblock 2, 2, $1
 	changeblock 4, 2, $2
 	return
 
-UnknownScript_0x58dd3:
+RuinsOfAlphAerodactylChamberWallOpenScript:
 	pause 30
 	earthquake 30
 	showemote EMOTE_SHOCK, PLAYER, 20
@@ -62,10 +62,10 @@ MapRuinsofAlphAerodactylChamberSignpost2Script:
 	writebyte $2
 	special Special_UnownPuzzle
 	closetext
-	iftrue UnknownScript_0x58df7
+	iftrue .PuzzleComplete
 	end
 
-UnknownScript_0x58df7:
+.PuzzleComplete:
 	setevent EVENT_RUINS_OF_ALPH_INNER_CHAMBER_TOURISTS
 	setevent EVENT_SOLVED_AERODACTYL_PUZZLE
 	setflag ENGINE_UNLOCKED_UNOWNS_3
@@ -86,14 +86,14 @@ UnknownScript_0x58df7:
 
 MapRuinsofAlphAerodactylChamberSignpost3Script:
 	unowntypeface
-	showtext UnknownText_0x58ee7
+	showtext RuinsOfAlphAerodactylChamberDescriptionText
 	restoretypeface
 	special MapCallbackSprites_LoadUsedSpritesGFX
 	end
 
 MapRuinsofAlphAerodactylChamberSignpost5Script:
 	checkevent EVENT_WALL_OPENED_IN_AERODACTYL_CHAMBER
-	iftrue_jumptext UnknownText_0x58ea2
+	iftrue_jumptext RuinsOfAlphAerodactylChamberWallHoleText
 MapRuinsofAlphAerodactylChamberSignpost4Script:
 	opentext
 	checkevent EVENT_RUINS_OF_ALPH_OUTSIDE_TOURIST_YOUNGSTERS
@@ -101,13 +101,13 @@ MapRuinsofAlphAerodactylChamberSignpost4Script:
 	writetext UnusedText_0x58e70
 	jump .unownwords
 .unsolved
-	writetext UnknownText_0x58e4f
+	writetext RuinsOfAlphAerodactylChamberWallPatternLeftText
 .unownwords
 	writebyte $1
 	special Special_DisplayUnownWords
 	endtext
 
-UnknownText_0x58e4f:
+RuinsOfAlphAerodactylChamberWallPatternLeftText:
 	text "Patterns appeared"
 	line "on the walls…"
 	done
@@ -116,12 +116,12 @@ UnusedText_0x58e70:
 	text "It's Unown text!"
 	done
 
-UnknownText_0x58ea2:
+RuinsOfAlphAerodactylChamberWallHoleText:
 	text "There's a big hole"
 	line "in the wall!"
 	done
 
-UnknownText_0x58ee7:
+RuinsOfAlphAerodactylChamberDescriptionText:
 	text "This flying #-"
 	line "mon attacked its"
 

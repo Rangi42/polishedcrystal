@@ -57,7 +57,7 @@ rept 3
 endr
 	waitsfx
 	opentext
-	farwritetext UnknownText_0x1c0b65
+	farwritetext _UseSacredAshText
 	playsound SFX_CAUGHT_MON
 	waitsfx
 	waitendtext

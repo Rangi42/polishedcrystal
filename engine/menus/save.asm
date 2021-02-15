@@ -6,8 +6,8 @@ SaveMenu:
 	call SpeechTextbox
 	call UpdateSprites
 	call ApplyTilemap
-	ld hl, UnknownText_0x15283
-	ld b, BANK(UnknownText_0x15283)
+	ld hl, WouldYouLikeToSaveTheGameText
+	ld b, BANK(WouldYouLikeToSaveTheGameText)
 	call MapTextbox
 	call LoadMenuTextbox
 	call YesNoBox
@@ -44,7 +44,7 @@ SaveAfterLinkTrade:
 
 ChangeBoxSaveGame:
 	push de
-	ld hl, UnknownText_0x152a1
+	ld hl, ChangeBoxSaveText
 	call MenuTextbox
 	call YesNoBox
 	call ExitMenu
@@ -116,7 +116,7 @@ MovePkmnWOMail_InsertMon_SaveGame:
 	jp PlaySFX
 
 StartMovePkmnWOMail_SaveGame:
-	ld hl, UnknownText_0x152a6
+	ld hl, MoveMonWOMailSaveText
 	call MenuTextbox
 	call YesNoBox
 	call ExitMenu
@@ -169,8 +169,8 @@ AskOverwriteSaveFile:
 	jr z, .erase
 	call CompareLoadedAndSavedPlayerID
 	jr z, .ok
-	ld hl, UnknownText_0x15297
-	ld b, BANK(UnknownText_0x15297)
+	ld hl, AnotherSaveFileText
+	ld b, BANK(AnotherSaveFileText)
 	call MapTextbox
 	call LoadMenuTextbox
 	call YesNoBox
@@ -207,7 +207,7 @@ CompareLoadedAndSavedPlayerID:
 SavedTheGame:
 	call SaveGameData
 	; <PLAYER> saved the game!
-	ld hl, UnknownText_0x1528d
+	ld hl, SavedTheGameText
 	call PrintText
 	ld de, SFX_SAVE
 	call WaitPlaySFX
@@ -436,7 +436,7 @@ TryLoadSaveFile:
 	push af
 	set NO_TEXT_SCROLL, a
 	ld [wOptions1], a
-	ld hl, UnknownText_0x1529c
+	ld hl, SaveFileCorruptedText
 	call PrintText
 	pop af
 	ld [wOptions1], a
@@ -849,39 +849,39 @@ Checksum:
 	jr nz, .loop
 	ret
 
-UnknownText_0x15283:
+WouldYouLikeToSaveTheGameText:
 	; Would you like to save the game?
-	text_jump UnknownText_0x1c454b
+	text_jump _WouldYouLikeToSaveTheGameText
 	text_end
 
-UnknownText_0x15288:
+SavingDontTurnOffThePowerText:
 	; SAVING… DON'T TURN OFF THE POWER.
-	text_jump UnknownText_0x1c456d
+	text_jump _SavingDontTurnOffThePowerText
 	text_end
 
-UnknownText_0x1528d:
+SavedTheGameText:
 	; saved the game.
-	text_jump UnknownText_0x1c4590
+	text_jump _SavedTheGameText
 	text_end
 
-UnknownText_0x15297:
+AnotherSaveFileText:
 	; There is another save file. Is it OK to overwrite?
-	text_jump UnknownText_0x1c45d9
+	text_jump _AnotherSaveFileText
 	text_end
 
-UnknownText_0x1529c:
+SaveFileCorruptedText:
 	; The save file is corrupted!
-	text_jump UnknownText_0x1c460d
+	text_jump _SaveFileCorruptedText
 	text_end
 
-UnknownText_0x152a1:
+ChangeBoxSaveText:
 	; When you change a #MON BOX, data will be saved. OK?
-	text_jump UnknownText_0x1c462a
+	text_jump _ChangeBoxSaveText
 	text_end
 
-UnknownText_0x152a6:
+MoveMonWOMailSaveText:
 	; Each time you move a #MON, data will be saved. OK?
-	text_jump UnknownText_0x1c465f
+	text_jump _MoveMonWOMailSaveText
 	text_end
 
 UpgradeSaveVersion:

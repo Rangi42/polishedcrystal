@@ -36,9 +36,9 @@ FuchsiaCity_MapScriptHeader:
 	bg_event 11, 35, BGEVENT_JUMPTEXT, FuchsiaCityCarefulSwimmingSignText
 
 	def_object_events
-	object_event 23, 18, SPRITE_CAMPER, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x194b45, -1
-	object_event 10,  8, SPRITE_POKEFAN_M, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 1, 1, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x194b83, -1
-	object_event 16, 13, SPRITE_TEACHER, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x194bd3, -1
+	object_event 23, 18, SPRITE_CAMPER, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, FuchsiaCityYoungsterText, -1
+	object_event 10,  8, SPRITE_POKEFAN_M, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 1, 1, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_COMMAND, jumptextfaceplayer, FuchsiaCityPokefanMText, -1
+	object_event 16, 13, SPRITE_TEACHER, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, FuchsiaCityTeacherText, -1
 	object_event 28,  8, SPRITE_POKEFAN_F, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_COMMAND, jumptextfaceplayer, FuchsiaCityPokefanFText, -1
 	cuttree_event 16, 19, EVENT_FUCHSIA_CITY_CUT_TREE
 	fruittree_event 14, 17, FRUITTREE_FUCHSIA_CITY, LIECHI_BERRY, PAL_NPC_RED
@@ -47,7 +47,7 @@ FuchsiaCityFlyPoint:
 	setflag ENGINE_FLYPOINT_FUCHSIA
 	return
 
-UnknownText_0x194b45:
+FuchsiaCityYoungsterText:
 	text "One of the Elite"
 	line "Four used to be"
 
@@ -55,7 +55,7 @@ UnknownText_0x194b45:
 	line "Fuchsia's Gym."
 	done
 
-UnknownText_0x194b83:
+FuchsiaCityPokefanMText:
 	text "Koga's daughter"
 	line "succeeded him as"
 
@@ -64,7 +64,7 @@ UnknownText_0x194b83:
 	cont "the Elite Four."
 	done
 
-UnknownText_0x194bd3:
+FuchsiaCityTeacherText:
 	text "The Safari Game is"
 	line "canceled…"
 

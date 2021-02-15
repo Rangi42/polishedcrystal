@@ -11,31 +11,31 @@ RadioTower1F_MapScriptHeader:
 	def_coord_events
 
 	def_bg_events
-	bg_event  3,  0, BGEVENT_JUMPTEXT, UnknownText_0x5d5e7
-	bg_event 13,  0, BGEVENT_JUMPTEXT, UnknownText_0x5d631
+	bg_event  3,  0, BGEVENT_JUMPTEXT, RadioTower1FDirectoryText
+	bg_event 13,  0, BGEVENT_JUMPTEXT, RadioTower1FLuckyChannelSignText
 
 	def_object_events
-	object_event  8,  6, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, ReceptionistScript_0x5cd3d, EVENT_GOLDENROD_CITY_CIVILIANS
+	object_event  8,  6, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, RadioTower1FLuckyNumberManScript, EVENT_GOLDENROD_CITY_CIVILIANS
 	object_event 14,  6, SPRITE_WHITNEY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, RadioTower1FWhitneyScript, EVENT_GOLDENROD_GYM_WHITNEY
-	object_event  5,  6, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, ReceptionistScript_0x5cd29, -1
-	object_event 17,  5, SPRITE_CUTE_GIRL, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x5d476, EVENT_GOLDENROD_CITY_CIVILIANS
-	object_event 17,  3, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x5d4ac, EVENT_GOLDENROD_CITY_CIVILIANS
+	object_event  5,  6, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, RadioTower1FReceptionistScript, -1
+	object_event 17,  5, SPRITE_CUTE_GIRL, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, RadioTower1FLassText, EVENT_GOLDENROD_CITY_CIVILIANS
+	object_event 17,  3, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, RadioTower1FYoungsterText, EVENT_GOLDENROD_CITY_CIVILIANS
 	object_event 14,  1, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerGruntM3, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
-	object_event 12,  6, SPRITE_BATTLE_GIRL, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, CooltrainerFScript_0x5cdd5, EVENT_GOLDENROD_CITY_CIVILIANS
+	object_event 12,  6, SPRITE_BATTLE_GIRL, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, RadioTower1FRadioCardWomanScript, EVENT_GOLDENROD_CITY_CIVILIANS
 
 	object_const_def
 	const RADIOTOWER1F_FELICITY
 	const RADIOTOWER1F_WHITNEY
 
-ReceptionistScript_0x5cd29:
+RadioTower1FReceptionistScript:
 	checkflag ENGINE_ROCKETS_IN_RADIO_TOWER
-	iftrue_jumptextfaceplayer UnknownText_0x5ce81
-	jumptextfaceplayer UnknownText_0x5ce77
+	iftrue_jumptextfaceplayer RadioTower1FReceptionistNoToursText
+	jumptextfaceplayer RadioTower1FReceptionistWelcomeText
 
-ReceptionistScript_0x5cd3d:
+RadioTower1FLuckyNumberManScript:
 	faceplayer
 	opentext
-	writetext UnknownText_0x5ceba
+	writetext RadioTower1FLuckyNumberManAskToPlayText
 	waitbutton
 	checkevent EVENT_INTRODUCED_FELICITY
 	iftrue .introduced
@@ -51,28 +51,28 @@ ReceptionistScript_0x5cd3d:
 .skip
 	special Special_PrintTodaysLuckyNumber
 	checkflag ENGINE_LUCKY_NUMBER_SHOW
-	iftrue_jumpopenedtext UnknownText_0x5cf7e
-	writetext UnknownText_0x5cf3a
+	iftrue_jumpopenedtext RadioTower1FLuckyNumberManComeAgainText
+	writetext RadioTower1FLuckyNumberManThisWeeksIdIsText
 	buttonsound
 	closetext
-	applymovement RADIOTOWER1F_FELICITY, MovementData_0x5ce71
+	applymovement RADIOTOWER1F_FELICITY, RadioTower1FLuckyNumberManGoToPCMovement
 	opentext
-	writetext UnknownText_0x5cf5a
+	writetext RadioTower1FLuckyNumberManCheckIfMatchText
 	buttonsound
 	waitsfx
-	writetext UnknownText_0x5cf79
+	writetext RadioTower1FLuckyNumberManDotDotDotText
 	playsound SFX_DEX_FANFARE_20_49
 	waitsfx
 	buttonsound
 	special Special_CheckForLuckyNumberWinners
 	closetext
-	applymovement RADIOTOWER1F_FELICITY, MovementData_0x5ce74
+	applymovement RADIOTOWER1F_FELICITY, RadioTower1FLuckyNumberManReturnToPlayerMovement
 	opentext
 	ifequal 1, .FirstPlace
 	ifequal 2, .SecondPlace
 	ifequal 3, .ThirdPlace
 	ifequal 4, .FourthPlace
-	jumpopenedtext UnknownText_0x5d0c0
+	jumpopenedtext RadioTower1FLuckyNumberManNoneOfYourIDNumbersMatchText
 
 .FirstPlace:
 	writetext WonFirstPlaceText
@@ -80,10 +80,10 @@ ReceptionistScript_0x5cd3d:
 	waitsfx
 	buttonsound
 	giveitem MASTER_BALL
-	iffalse_jumpopenedtext UnknownText_0x5d0e6
+	iffalse_jumpopenedtext RadioTower1FLuckyNumberManNoRoomForYourPrizeText
 	itemnotify
 	setflag ENGINE_LUCKY_NUMBER_SHOW
-	jumpopenedtext UnknownText_0x5cf7e
+	jumpopenedtext RadioTower1FLuckyNumberManComeAgainText
 
 .SecondPlace:
 	writetext WonSecondPlaceText
@@ -91,10 +91,10 @@ ReceptionistScript_0x5cd3d:
 	waitsfx
 	buttonsound
 	giveitem BOTTLE_CAP
-	iffalse_jumpopenedtext UnknownText_0x5d0e6
+	iffalse_jumpopenedtext RadioTower1FLuckyNumberManNoRoomForYourPrizeText
 	itemnotify
 	setflag ENGINE_LUCKY_NUMBER_SHOW
-	jumpopenedtext UnknownText_0x5cf7e
+	jumpopenedtext RadioTower1FLuckyNumberManComeAgainText
 
 .ThirdPlace:
 	writetext WonThirdPlaceText
@@ -102,10 +102,10 @@ ReceptionistScript_0x5cd3d:
 	waitsfx
 	buttonsound
 	giveitem PP_MAX
-	iffalse_jumpopenedtext UnknownText_0x5d0e6
+	iffalse_jumpopenedtext RadioTower1FLuckyNumberManNoRoomForYourPrizeText
 	itemnotify
 	setflag ENGINE_LUCKY_NUMBER_SHOW
-	jumpopenedtext UnknownText_0x5cf7e
+	jumpopenedtext RadioTower1FLuckyNumberManComeAgainText
 
 .FourthPlace:
 	writetext WonFourthPlaceText
@@ -113,58 +113,58 @@ ReceptionistScript_0x5cd3d:
 	waitsfx
 	buttonsound
 	giveitem PP_UP
-	iffalse_jumpopenedtext UnknownText_0x5d0e6
+	iffalse_jumpopenedtext RadioTower1FLuckyNumberManNoRoomForYourPrizeText
 	itemnotify
 	setflag ENGINE_LUCKY_NUMBER_SHOW
 	jumpthisopenedtext
 
-UnknownText_0x5cf7e:
+RadioTower1FLuckyNumberManComeAgainText:
 	text "Please come back"
 	line "next week for the"
 	cont "next Lucky Number."
 	done
 
-CooltrainerFScript_0x5cdd5:
+RadioTower1FRadioCardWomanScript:
 	checkevent EVENT_GOLDENROD_GYM_WHITNEY
-	iftrue_jumptextfaceplayer UnknownText_0x5d3e5
+	iftrue_jumptextfaceplayer RadioTower1FRadioCardWomanTuneInText
 	faceplayer
 	opentext
-	writetext UnknownText_0x5d12d
+	writetext RadioTower1FRadioCardWomanOfferQuizText
 	yesorno
-	iffalse_jumpopenedtext UnknownText_0x5d443
-	writetext UnknownText_0x5d1f2
-	yesorno
-	iffalse UnknownScript_0x5ce42
-	playsound SFX_ELEVATOR_END
-	waitsfx
-	writetext UnknownText_0x5d231
+	iffalse_jumpopenedtext RadioTower1FRadioCardWomanNotTakingQuizText
+	writetext RadioTower1FRadioCardWomanQuestion1Text
 	yesorno
 	iffalse UnknownScript_0x5ce42
 	playsound SFX_ELEVATOR_END
 	waitsfx
-	writetext UnknownText_0x5d282
+	writetext RadioTower1FRadioCardWomanQuestion2Text
+	yesorno
+	iffalse UnknownScript_0x5ce42
+	playsound SFX_ELEVATOR_END
+	waitsfx
+	writetext RadioTower1FRadioCardWomanQuestion3Text
 	yesorno
 	iftrue UnknownScript_0x5ce42
 	playsound SFX_ELEVATOR_END
 	waitsfx
-	writetext UnknownText_0x5d2bc
+	writetext RadioTower1FRadioCardWomanQuestion4Text
 	yesorno
 	iftrue UnknownScript_0x5ce42
 	playsound SFX_ELEVATOR_END
 	waitsfx
-	writetext UnknownText_0x5d30e
+	writetext RadioTower1FRadioCardWomanQuestion5Text
 	yesorno
 	iftrue UnknownScript_0x5ce42
 	playsound SFX_ELEVATOR_END
 	waitsfx
-	writetext UnknownText_0x5d37b
+	writetext RadioTower1FRadioCardWomanYouWinText
 	buttonsound
 	stringtotext RadioCardText, $1
 	callstd receiveitem
-	writetext UnknownText_0x5d3c0
+	writetext RadioTower1FPokegearIsARadioText
 	buttonsound
 	setflag ENGINE_RADIO_CARD
-	writetext UnknownText_0x5d3e5
+	writetext RadioTower1FRadioCardWomanTuneInText
 	waitbutton
 	closetext
 	showemote EMOTE_SHOCK, RADIOTOWER1F_WHITNEY, 15
@@ -182,7 +182,7 @@ RadioCardText:
 
 UnknownScript_0x5ce42:
 	playsound SFX_WRONG
-	jumpopenedtext UnknownText_0x5d409
+	jumpopenedtext RadioTower1FRadioCardWomanWrongAnswerText
 
 GenericTrainerGruntM3:
 	generictrainer GRUNTM, 3, EVENT_BEAT_ROCKET_GRUNTM_3, GruntM3SeenText, GruntM3BeatenText
@@ -199,12 +199,12 @@ RadioTower1FWhitneyScript:
 	turnobject RADIOTOWER1F_WHITNEY, LEFT
 	end
 
-MovementData_0x5ce71:
+RadioTower1FLuckyNumberManGoToPCMovement:
 	step_right
 	turn_head_up
 	step_end
 
-MovementData_0x5ce74:
+RadioTower1FLuckyNumberManReturnToPlayerMovement:
 	step_left
 	turn_head_up
 	step_end
@@ -228,18 +228,18 @@ RadioTower1FWhitneyLeaves2MovementData:
 	step_left
 	step_end
 
-UnknownText_0x5ce77:
+RadioTower1FReceptionistWelcomeText:
 	text "Welcome!"
 	done
 
-UnknownText_0x5ce81:
+RadioTower1FReceptionistNoToursText:
 	text "Hello. I'm sorry,"
 	line "but we're not"
 	cont "offering any tours"
 	cont "today."
 	done
 
-UnknownText_0x5ceba:
+RadioTower1FLuckyNumberManAskToPlayText:
 	text "Hi, are you here"
 	line "for the Lucky Num-"
 	cont "ber Show?"
@@ -260,19 +260,19 @@ ExplainLuckyNumberShowText:
 	line "you win a prize."
 	done
 
-UnknownText_0x5cf3a:
+RadioTower1FLuckyNumberManThisWeeksIdIsText:
 	text "This week's ID"
 	line "number is "
 	text_from_ram wStringBuffer3
 	text "."
 	done
 
-UnknownText_0x5cf5a:
+RadioTower1FLuckyNumberManCheckIfMatchText:
 	text "Let's see if you"
 	line "have a match."
 	done
 
-UnknownText_0x5cf79:
+RadioTower1FLuckyNumberManDotDotDotText:
 	text "……"
 	line "……"
 	done
@@ -317,12 +317,12 @@ WonFourthPlaceText:
 	line "prize, a PP Up."
 	done
 
-UnknownText_0x5d0c0:
+RadioTower1FLuckyNumberManNoneOfYourIDNumbersMatchText:
 	text "Nope, none of your"
 	line "ID numbers match."
 	done
 
-UnknownText_0x5d0e6:
+RadioTower1FLuckyNumberManNoRoomForYourPrizeText:
 	text "You've got no room"
 	line "for your prize."
 
@@ -330,7 +330,7 @@ UnknownText_0x5d0e6:
 	line "back right away."
 	done
 
-UnknownText_0x5d12d:
+RadioTower1FRadioCardWomanOfferQuizText:
 	text "We have a special"
 	line "quiz campaign on"
 	cont "right now."
@@ -349,7 +349,7 @@ UnknownText_0x5d12d:
 	line "take the quiz?"
 	done
 
-UnknownText_0x5d1f2:
+RadioTower1FRadioCardWomanQuestion1Text:
 	text "Question 1:"
 
 	para "Is there a #mon"
@@ -357,7 +357,7 @@ UnknownText_0x5d1f2:
 	cont "in the morning?"
 	done
 
-UnknownText_0x5d231:
+RadioTower1FRadioCardWomanQuestion2Text:
 	text "Correct!"
 	line "Question 2:"
 
@@ -365,7 +365,7 @@ UnknownText_0x5d231:
 	line "be female. True?"
 	done
 
-UnknownText_0x5d282:
+RadioTower1FRadioCardWomanQuestion3Text:
 	text "Bull's-eye!"
 	line "Question 3:"
 
@@ -373,7 +373,7 @@ UnknownText_0x5d282:
 	line "any moves via TM?"
 	done
 
-UnknownText_0x5d2bc:
+RadioTower1FRadioCardWomanQuestion4Text:
 	text "So far so good!"
 	line "Question 4:"
 
@@ -384,7 +384,7 @@ UnknownText_0x5d2bc:
 	line "ingredients?"
 	done
 
-UnknownText_0x5d30e:
+RadioTower1FRadioCardWomanQuestion5Text:
 	text "Wow! Right again!"
 	line "Here's the final"
 	cont "question:"
@@ -396,7 +396,7 @@ UnknownText_0x5d30e:
 	line "on their reels?"
 	done
 
-UnknownText_0x5d37b:
+RadioTower1FRadioCardWomanYouWinText:
 	text "Bingo! You got it!"
 	line "Congratulations!"
 
@@ -404,18 +404,18 @@ UnknownText_0x5d37b:
 	line "a Radio Card!"
 	done
 
-UnknownText_0x5d3c0:
+RadioTower1FPokegearIsARadioText:
 	text "<PLAYER>'s #gear"
 	line "can now double as"
 	cont "a radio!"
 	done
 
-UnknownText_0x5d3e5:
+RadioTower1FRadioCardWomanTuneInText:
 	text "Please tune in to"
 	line "our radio shows."
 	done
 
-UnknownText_0x5d409:
+RadioTower1FRadioCardWomanWrongAnswerText:
 	text "Oh, dear."
 	line "Sorry, but you"
 
@@ -423,13 +423,13 @@ UnknownText_0x5d409:
 	line "Please try again!"
 	done
 
-UnknownText_0x5d443:
+RadioTower1FRadioCardWomanNotTakingQuizText:
 	text "Oh. I see. Please"
 	line "see me if you"
 	cont "change your mind."
 	done
 
-UnknownText_0x5d476:
+RadioTower1FLassText:
 	text "Ben is a fabulous"
 	line "DJ."
 
@@ -437,7 +437,7 @@ UnknownText_0x5d476:
 	line "makes me melt!"
 	done
 
-UnknownText_0x5d4ac:
+RadioTower1FYoungsterText:
 	text "I love Mary, from"
 	line "#mon Talk."
 
@@ -492,7 +492,7 @@ RadioTower1FWhitney2Text:
 	line "back to the Gym!"
 	done
 
-UnknownText_0x5d5e7:
+RadioTower1FDirectoryText:
 	text "1F Reception"
 	line "2F Sales"
 
@@ -503,7 +503,7 @@ UnknownText_0x5d5e7:
 	line "   Office"
 	done
 
-UnknownText_0x5d631:
+RadioTower1FLuckyChannelSignText:
 	text "Lucky Channel!"
 
 	para "Win with #mon"

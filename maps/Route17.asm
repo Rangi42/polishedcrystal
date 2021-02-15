@@ -2,7 +2,7 @@ Route17_MapScriptHeader:
 	def_scene_scripts
 
 	def_callbacks
-	callback MAPCALLBACK_NEWMAP, UnknownScript_0x1ad0ab
+	callback MAPCALLBACK_NEWMAP, Route17AlwaysOnBikeCallback
 
 	def_warp_events
 
@@ -30,7 +30,7 @@ Route17_MapScriptHeader:
 	object_event  6, 42, SPRITE_ROUGHNECK, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, GenericTrainerRoughneckTheron, -1
 	object_event  4, 91, SPRITE_ROUGHNECK, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, GenericTrainerRoughneckMarkey, -1
 
-UnknownScript_0x1ad0ab:
+Route17AlwaysOnBikeCallback:
 	setflag ENGINE_ALWAYS_ON_BIKE
 	setflag ENGINE_DOWNHILL
 	return

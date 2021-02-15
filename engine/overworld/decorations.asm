@@ -387,7 +387,7 @@ PopulateDecoCategoryMenu:
 
 .NothingToChooseText:
 	; There's nothing to choose.
-	text_jump UnknownText_0x1bc471
+	text_jump _NothingToChooseText
 	text_end
 
 .NonscrollingMenuHeader:
@@ -810,7 +810,7 @@ DecoAction_SetItUp_Ornament:
 	ret
 
 WhichSidePutOnText:
-	text_jump UnknownText_0x1bc48c
+	text_jump _WhichSidePutOnText
 	text_end
 
 DecoAction_PutItAway_Ornament:
@@ -835,7 +835,7 @@ DecoAction_PutItAway_Ornament:
 	ret
 
 WhichSidePutAwayText:
-	text_jump UnknownText_0x1bc4b2
+	text_jump _WhichSidePutAwayText
 	text_end
 
 DecoAction_AskWhichSide:
@@ -884,23 +884,23 @@ WhichSideMenuData:
 
 DecoText_PutAwayTheDeco:
 	; Put away the @ .
-	text_jump UnknownText_0x1bc4d7
+	text_jump _PutAwayTheDecoText
 	text_end
 
 DecoText_NothingToPutAway:
-	text_jump UnknownText_0x1bc4ec
+	text_jump _NothingToPutAwayText
 	text_end
 
 DecoText_SetUpTheDeco:
-	text_jump UnknownText_0x1bc509
+	text_jump _SetUpTheDecoText
 	text_end
 
 DecoText_PutAwayAndSetUp:
-	text_jump UnknownText_0x1bc51c
+	text_jump _PutAwayAndSetUpText
 	text_end
 
 DecoText_AlreadySetUp:
-	text_jump UnknownText_0x1bc546
+	text_jump _AlreadySetUpText
 	text_end
 
 GetDecorationName_c_de:
@@ -974,20 +974,20 @@ DecorationDesc_PosterPointers:
 
 DecorationDesc_TownMapPoster:
 	opentext
-	farwritetext UnknownText_0x1bc55d
+	farwritetext _LookTownMapText
 	waitbutton
 	special Special_TownMap
 	closetext
 	end
 
 DecorationDesc_PikachuPoster:
-	farjumptext UnknownText_0x1bc570
+	farjumptext _LookPikachuPosterText
 
 DecorationDesc_ClefairyPoster:
-	farjumptext UnknownText_0x1bc591
+	farjumptext _LookClefairyPosterText
 
 DecorationDesc_MarillPoster:
-	farjumptext UnknownText_0x1bc5b3
+	farjumptext _LookJigglypuffPosterText
 
 DecorationDesc_NullPoster:
 	end
@@ -1011,7 +1011,7 @@ DecorationDesc_Ornament:
 	ret
 
 .OrnamentScript:
-	farjumptext UnknownText_0x1bc5d7
+	farjumptext _LookAdorableDecoText
 
 DecorationDesc_Console:
 	ld a, [wDecoConsole]
@@ -1032,7 +1032,7 @@ DecorationDesc_GiantOrnament:
 	ret
 
 .BigDollScript:
-	farjumptext UnknownText_0x1bc5ef
+	farjumptext _LookGiantDecoText
 
 ToggleMaptileDecorations:
 	lb de, 0, 4 ; bed coordinates

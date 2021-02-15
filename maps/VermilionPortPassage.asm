@@ -15,9 +15,9 @@ VermilionPortPassage_MapScriptHeader:
 	def_bg_events
 
 	def_object_events
-	object_event  5, 23, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x7701d, -1
+	object_event  5, 23, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, VermilionPortPassageTeacherText, -1
 
-UnknownText_0x7701d:
+VermilionPortPassageTeacherText:
 	text "The Fast Ship"
 	line "sails on Wednes-"
 	cont "days and Sundays"

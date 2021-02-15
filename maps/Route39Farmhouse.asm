@@ -14,24 +14,24 @@ Route39Farmhouse_MapScriptHeader:
 	bg_event  7,  1, BGEVENT_JUMPSTD, picturebookshelf
 
 	def_object_events
-	object_event  3,  2, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, PokefanMScript_0x9ceb4, -1
-	object_event  5,  4, SPRITE_MATRON, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, PokefanFScript_0x9cf0e, -1
+	object_event  3,  2, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, PokefanM_DairyFarmer, -1
+	object_event  5,  4, SPRITE_MATRON, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, PokefanF_AcrobaticsFarmer, -1
 
-PokefanMScript_0x9ceb4:
+PokefanM_DairyFarmer:
 	faceplayer
 	opentext
 	checkevent EVENT_HEALED_MOOMOO
-	iftrue UnknownScript_0x9cec5
-	writetext UnknownText_0x9cf38
+	iftrue FarmerMScript_SellMilk
+	writetext FarmerMText_SickCow
 	waitbutton
 	closetext
 	setevent EVENT_TALKED_TO_FARMER_ABOUT_MOOMOO
 	end
 
-UnknownScript_0x9cec5:
+FarmerMScript_SellMilk:
 	checkflag ENGINE_BOUGHT_MOOMOO_MILK
-	iftrue UnknownScript_0x9cf08
-	writetext UnknownText_0x9cfe1
+	iftrue .Milking
+	writetext FarmerMText_BuyMilk
 	special PlaceMoneyTopRight
 	loadmenu .MenuDataHeader
 	verticalmenu
@@ -60,19 +60,19 @@ UnknownScript_0x9cec5:
 	special PlaceMoneyTopRight
 	waitsfx
 	playsound SFX_TRANSACTION
-	writetext UnknownText_0x9d05d
+	writetext FarmerMText_GotMilk
 	buttonsound
 	itemnotify
 	endtext
 
 .Cancel:
-	jumpopenedtext UnknownText_0x9d0b7
+	jumpopenedtext FarmerMText_NoSale
 
 .NotEnoughMoney:
-	jumpopenedtext UnknownText_0x9d07c
+	jumpopenedtext FarmerMText_NoMoney
 
 .BagFull:
-	jumpopenedtext UnknownText_0x9d09d
+	jumpopenedtext FarmerMText_NoRoom
 
 .MenuDataHeader:
 	db $40 ; flags
@@ -88,27 +88,27 @@ UnknownScript_0x9cec5:
 	db "×12   ¥6000@"
 	db "Cancel@"
 
-UnknownScript_0x9cf08:
-	jumpopenedtext UnknownText_0x9d0dc
+.Milking:
+	jumpopenedtext FarmerMText_Milking
 
-PokefanFScript_0x9cf0e:
+PokefanF_AcrobaticsFarmer:
 	faceplayer
 	opentext
 	checkevent EVENT_GOT_TM62_ACROBATICS_FROM_MOOMOO_FARM
-	iftrue UnknownScript_0x9cf2f
+	iftrue .GotAcrobatics
 	checkevent EVENT_HEALED_MOOMOO
-	iftrue UnknownScript_0x9cf22
-	jumpopenedtext UnknownText_0x9d0f6
+	iftrue .GiveAcrobatics
+	jumpopenedtext FarmerFText_InTrouble
 
-UnknownScript_0x9cf22:
-	writetext UnknownText_0x9d156
+.GiveAcrobatics:
+	writetext FarmerFText_HealedMiltank
 	buttonsound
 	verbosegivetmhm TM_ACROBATICS
 	setevent EVENT_GOT_TM62_ACROBATICS_FROM_MOOMOO_FARM
-UnknownScript_0x9cf2f:
-	jumpopenedtext UnknownText_0x9d1c7
+.GotAcrobatics:
+	jumpopenedtext FarmerFText_AcrobaticsSpeech
 
-UnknownText_0x9cf38:
+FarmerMText_SickCow:
 	text "My Miltank ain't"
 	line "givin' me milk"
 	cont "n'more."
@@ -126,7 +126,7 @@ UnknownText_0x9cf38:
 	line "Berries, I reckon."
 	done
 
-UnknownText_0x9cfe1:
+FarmerMText_BuyMilk:
 	text "How'd you like my"
 	line "Moomoo Milk?"
 
@@ -140,32 +140,32 @@ UnknownText_0x9cfe1:
 	line "fer just ¥500."
 	done
 
-UnknownText_0x9d05d:
+FarmerMText_GotMilk:
 	text "Here ya go!"
 	line "Drink up'n enjoy!"
 	done
 
-UnknownText_0x9d07c:
+FarmerMText_NoMoney:
 	text "Sorry, there."
 	line "No cash, no sale!"
 	done
 
-UnknownText_0x9d09d:
+FarmerMText_NoRoom:
 	text "I reckon yer"
 	line "Bag's full."
 	done
 
-UnknownText_0x9d0b7:
+FarmerMText_NoSale:
 	text "You don't want it?"
 	line "Come again, hear?"
 	done
 
-UnknownText_0x9d0dc:
+FarmerMText_Milking:
 	text "I best go do my"
 	line "milkin'."
 	done
 
-UnknownText_0x9d0f6:
+FarmerFText_InTrouble:
 	text "Our milk even goes"
 	line "out to Kanto."
 
@@ -176,7 +176,7 @@ UnknownText_0x9d0f6:
 	line "in trouble."
 	done
 
-UnknownText_0x9d156:
+FarmerFText_HealedMiltank:
 	text "You fixed our"
 	line "Miltank, hon. Now"
 
@@ -187,7 +187,7 @@ UnknownText_0x9d156:
 	line "fer your trouble."
 	done
 
-UnknownText_0x9d1c7:
+FarmerFText_AcrobaticsSpeech:
 	text "That there's"
 	line "Acrobatics."
 

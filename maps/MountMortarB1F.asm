@@ -14,7 +14,7 @@ MountMortarB1F_MapScriptHeader:
 
 	def_object_events
 	object_event 11, 31, SPRITE_HIKER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, MountMortarB1FHikerScript, -1
-	object_event 16,  4, SPRITE_BLACK_BELT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, KiyoScript_0x7e1f6, -1
+	object_event 16,  4, SPRITE_BLACK_BELT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, MountMortarB1FKiyoScript, -1
 	strengthboulder_event  9, 10
 	itemball_event 29, 12, HYPER_POTION, 1, EVENT_MOUNT_MORTAR_B1F_HYPER_POTION
 	itemball_event  4, 16, CARBOS, 1, EVENT_MOUNT_MORTAR_B1F_CARBOS
@@ -52,26 +52,26 @@ MountMortarB1FTutorDefenseCurlScript:
 	takeitem SILVER_LEAF
 	jumpopenedtext Text_MountMortarB1FTutorTaught
 
-KiyoScript_0x7e1f6:
+MountMortarB1FKiyoScript:
 	checkevent EVENT_GOT_TYROGUE_FROM_KIYO
-	iftrue_jumptextfaceplayer UnknownText_0x7e36a
+	iftrue_jumptextfaceplayer MountMortarB1FKiyoGotTyrogueText
 	faceplayer
 	checkevent EVENT_BEAT_KIYO
 	iftrue UnknownScript_0x7e217
-	showtext UnknownText_0x7e24d
-	winlosstext UnknownText_0x7e2a9, 0
+	showtext MountMortarB1FKiyoIntroText
+	winlosstext MountMortarB1FKiyoWinText, 0
 	loadtrainer KARATE_KING, KIYO
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_KIYO
 UnknownScript_0x7e217:
 	opentext
-	writetext UnknownText_0x7e2c0
+	writetext MountMortarB1FTyrogueRewardText
 	buttonsound
 	waitsfx
 	checkcode VAR_PARTYCOUNT
 	ifequal $6, UnknownScript_0x7e237
-	writetext UnknownText_0x7e355
+	writetext MountMortarB1FReceiveMonText
 	playsound SFX_CAUGHT_MON
 	waitsfx
 	givepoke TYROGUE, 10
@@ -80,7 +80,7 @@ UnknownScript_0x7e217:
 	setevent EVENT_GOT_TYROGUE_FROM_KIYO
 	jumpthisopenedtext
 
-UnknownText_0x7e36a:
+MountMortarB1FKiyoGotTyrogueText:
 	text "Tyrogue is a"
 	line "Fighting-type."
 
@@ -95,7 +95,7 @@ UnknownText_0x7e36a:
 	done
 
 UnknownScript_0x7e237:
-	jumpopenedtext UnknownText_0x7e3df
+	jumpopenedtext MountMortarB1FKiyoFullPartyText
 
 MountMortarB1FHikerText:
 	text "My #mon used"
@@ -144,7 +144,7 @@ Text_MountMortarB1FTutorTaught:
 	cont "Defense Curl!"
 	done
 
-UnknownText_0x7e24d:
+MountMortarB1FKiyoIntroText:
 	text "Hey!"
 
 	para "I am the Karate"
@@ -159,12 +159,12 @@ UnknownText_0x7e24d:
 	para "Hwaaarggh!"
 	done
 
-UnknownText_0x7e2a9:
+MountMortarB1FKiyoWinText:
 	text "Waaaarggh!"
 	line "I'm beaten!"
 	done
 
-UnknownText_0x7e2c0:
+MountMortarB1FTyrogueRewardText:
 	text "I… I'm crushed…"
 
 	para "My training is"
@@ -180,12 +180,12 @@ UnknownText_0x7e2c0:
 	line "fighting #mon."
 	done
 
-UnknownText_0x7e355:
+MountMortarB1FReceiveMonText:
 	text "<PLAYER> received"
 	line "Tyrogue."
 	done
 
-UnknownText_0x7e3df:
+MountMortarB1FKiyoFullPartyText:
 	text "You have no room"
 	line "in your party!"
 	done

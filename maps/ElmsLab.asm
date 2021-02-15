@@ -160,7 +160,7 @@ ElmCheckEverstone:
 	writebyte TOGEKISS
 	special Special_FindThatSpeciesYourTrainerID
 	iftrue ShowElmTogepiScript
-	jumpopenedtext UnknownText_0x79a40
+	jumpopenedtext ElmThoughtEggHatchedText
 
 ElmEggHatchedScript:
 	writebyte TOGEPI
@@ -1192,7 +1192,7 @@ ElmWaitingEggHatchText:
 	line "Egg changed any?"
 	done
 
-UnknownText_0x79a40:
+ElmThoughtEggHatchedText:
 	text "<PLAYER>? I thought"
 	line "the Egg hatched."
 

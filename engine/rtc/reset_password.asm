@@ -25,12 +25,12 @@ _ResetClock:
 
 .text_okay
 	; Select CONTINUE & reset settings.
-	text_jump UnknownText_0x1c55db
+	text_jump _PasswordAskResetText
 	text_end
 
 .text_askreset
 	; Reset the clock?
-	text_jump UnknownText_0x1c561c
+	text_jump _PasswordAskResetClockText
 	text_end
 
 .NoYes_MenuDataHeader:

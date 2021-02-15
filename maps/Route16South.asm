@@ -2,7 +2,7 @@ Route16South_MapScriptHeader:
 	def_scene_scripts
 
 	def_callbacks
-	callback MAPCALLBACK_NEWMAP, UnknownScript_0x1ad318
+	callback MAPCALLBACK_NEWMAP, Route16SouthAlwaysOnBikeCallback
 
 	def_warp_events
 	warp_event  9, 10, ROUTE_16_17_GATE, 1
@@ -16,7 +16,7 @@ Route16South_MapScriptHeader:
 	def_object_events
 	object_event  6, 11, SPRITE_OFFICER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, OfficerfJamieScript, -1
 
-UnknownScript_0x1ad318:
+Route16SouthAlwaysOnBikeCallback:
 	setflag ENGINE_ALWAYS_ON_BIKE
 	return
 

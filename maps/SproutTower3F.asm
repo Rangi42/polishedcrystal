@@ -7,15 +7,15 @@ SproutTower3F_MapScriptHeader:
 	warp_event  8, 14, SPROUT_TOWER_2F, 4
 
 	def_coord_events
-	coord_event  9,  9, 0, UnknownScript_0x184947
+	coord_event  9,  9, 0, SproutTower3FRivalScene
 
 	def_bg_events
-	bg_event  6,  1, BGEVENT_JUMPTEXT, UnknownText_0x184f61
-	bg_event  9,  1, BGEVENT_JUMPTEXT, UnknownText_0x184f61
-	bg_event  7,  0, BGEVENT_JUMPTEXT, UnknownText_0x184f37
-	bg_event  8,  0, BGEVENT_JUMPTEXT, UnknownText_0x184f37
-	bg_event  3, 15, BGEVENT_JUMPTEXT, UnknownText_0x184f61
-	bg_event 12, 15, BGEVENT_JUMPTEXT, UnknownText_0x184f61
+	bg_event  6,  1, BGEVENT_JUMPTEXT, SproutTower3FStatueText
+	bg_event  9,  1, BGEVENT_JUMPTEXT, SproutTower3FStatueText
+	bg_event  7,  0, BGEVENT_JUMPTEXT, SproutTower3FPaintingText
+	bg_event  8,  0, BGEVENT_JUMPTEXT, SproutTower3FPaintingText
+	bg_event  3, 15, BGEVENT_JUMPTEXT, SproutTower3FStatueText
+	bg_event 12, 15, BGEVENT_JUMPTEXT, SproutTower3FStatueText
 
 	def_object_events
 	object_event  8,  4, SPRITE_SILVER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_SPROUT_TOWER
@@ -29,7 +29,7 @@ SproutTower3F_MapScriptHeader:
 	object_const_def
 	const SPROUTTOWER3F_SILVER
 
-UnknownScript_0x184947:
+SproutTower3FRivalScene:
 	turnobject PLAYER, UP
 	showemote EMOTE_SHOCK, PLAYER, 15
 	special Special_FadeOutMusic
@@ -38,18 +38,18 @@ UnknownScript_0x184947:
 	pause 15
 	playsound SFX_TACKLE
 	earthquake 79
-	applymovement PLAYER, MovementData_0x184a1d
+	applymovement PLAYER, SproutTower3FPlayerApproachesRivalMovement
 	applyonemovement SPROUTTOWER3F_SILVER, step_up
-	showtext UnknownText_0x184a27
+	showtext SproutTowerElderLecturesRivalText
 	showemote EMOTE_SHOCK, SPROUTTOWER3F_SILVER, 15
 	turnobject SPROUTTOWER3F_SILVER, DOWN
 	pause 15
-	applymovement SPROUTTOWER3F_SILVER, MovementData_0x184a24
+	applymovement SPROUTTOWER3F_SILVER, SproutTower3FRivalLeavesElderMovement
 	playmusic MUSIC_RIVAL_ENCOUNTER
-	showtext UnknownText_0x184aec
+	showtext SproutTowerRivalOnlyCareAboutStrongText
 	turnobject SPROUTTOWER3F_SILVER, UP
 	opentext
-	writetext UnknownText_0x184bc8
+	writetext SproutTowerRivalUsedEscapeRopeText
 	pause 15
 	closetext
 	playsound SFX_WARP_TO
@@ -64,7 +64,7 @@ UnknownScript_0x184947:
 
 ElderLiScript:
 	checkevent EVENT_GOT_TM70_FLASH
-	iftrue_jumptextfaceplayer UnknownText_0x184d88
+	iftrue_jumptextfaceplayer SageLiAfterBattleText
 	faceplayer
 	showtext SageLiSeenText
 	winlosstext SageLiBeatenText, 0
@@ -72,7 +72,7 @@ ElderLiScript:
 	startbattle
 	reloadmapafterbattle
 	opentext
-	writetext UnknownText_0x184cc2
+	writetext SageLiTakeThisFlashText
 	buttonsound
 	verbosegivetmhm TM_FLASH
 	setevent EVENT_GOT_TM70_FLASH
@@ -112,19 +112,19 @@ GenericTrainerSageNeal:
 	line "on your journey."
 	done
 
-MovementData_0x184a1d:
+SproutTower3FPlayerApproachesRivalMovement:
 	step_up
 	step_up
 	step_up
 	step_up
 	step_end
 
-MovementData_0x184a24:
+SproutTower3FRivalLeavesElderMovement:
 	step_right
 	step_down
 	step_end
 
-UnknownText_0x184a27:
+SproutTowerElderLecturesRivalText:
 	text "Elder: You are in-"
 	line "deed skilled as a"
 	cont "trainer."
@@ -145,7 +145,7 @@ UnknownText_0x184a27:
 	line "tools of war…"
 	done
 
-UnknownText_0x184aec:
+SproutTowerRivalOnlyCareAboutStrongText:
 	text "…"
 	line "…Humph!"
 
@@ -171,7 +171,7 @@ UnknownText_0x184aec:
 	cont "weak #mon."
 	done
 
-UnknownText_0x184bc8:
+SproutTowerRivalUsedEscapeRopeText:
 	text "<RIVAL> used an"
 	line "Escape Rope!"
 	done
@@ -203,7 +203,7 @@ SageLiBeatenText:
 	text "Ah, excellent!"
 	done
 
-UnknownText_0x184cc2:
+SageLiTakeThisFlashText:
 	text "You and your #-"
 	line "mon should have"
 
@@ -214,7 +214,7 @@ UnknownText_0x184cc2:
 	line "TM."
 	done
 
-UnknownText_0x184d88:
+SageLiAfterBattleText:
 	text "I hope you learn"
 	line "and grow from your"
 	cont "journey."
@@ -253,13 +253,13 @@ SageNealBeatenText:
 	line "is bright!"
 	done
 
-UnknownText_0x184f37:
+SproutTower3FPaintingText:
 	text "It's a powerful"
 	line "painting of a"
 	cont "Bellsprout."
 	done
 
-UnknownText_0x184f61:
+SproutTower3FStatueText:
 	text "A #mon statue…"
 
 	para "It looks very"

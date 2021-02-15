@@ -13,10 +13,10 @@ DragonShrine_MapScriptHeader:
 	def_bg_events
 
 	def_object_events
-	object_event  5,  1, SPRITE_ELDER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, ElderScript_0x18d1a5, EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
+	object_event  5,  1, SPRITE_ELDER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, DragonShrineElder1Script, EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	object_event  4,  8, SPRITE_CLAIR, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_DRAGON_SHRINE_CLAIR
-	object_event  2,  4, SPRITE_ELDER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x18d840, EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
-	object_event  7,  4, SPRITE_ELDER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x18d8b1, EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
+	object_event  2,  4, SPRITE_ELDER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_COMMAND, jumptextfaceplayer, DragonShrineElder2Text, EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
+	object_event  7,  4, SPRITE_ELDER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_COMMAND, jumptextfaceplayer, DragonShrineElder3Text, EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 
 	object_const_def
 	const DRAGONSHRINE_ELDER1
@@ -27,16 +27,16 @@ DragonShrineTrigger0:
 	end
 
 DragonShrineTestScript:
-	applymovement PLAYER, MovementData_0x18d2bf
+	applymovement PLAYER, DragonShrinePlayerWalkInMovement
 	applyonemovement DRAGONSHRINE_ELDER1, slow_step_down
 	opentext
-	writetext UnknownText_0x18d2ea
+	writetext DragonShrineElderGreetingText
 	buttonsound
 .Question1:
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
-	writetext UnknownText_0x18d3bc
+	writetext DragonShrineQuestion1Text
 	buttonsound
-	loadmenu MenuDataHeader_0x18d215
+	loadmenu DragonShrineQuestion1_MenuHeader
 	verticalmenu
 	closewindow
 	ifequal $1, .RightAnswer
@@ -46,9 +46,9 @@ DragonShrineTestScript:
 
 .Question2:
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_3
-	writetext UnknownText_0x18d3d3
+	writetext DragonShrineQuestion2Text
 	buttonsound
-	loadmenu MenuDataHeader_0x18d234
+	loadmenu DragonShrineQuestion2_MenuHeader
 	verticalmenu
 	closewindow
 	ifequal $1, .RightAnswer
@@ -56,9 +56,9 @@ DragonShrineTestScript:
 	ifequal $3, .WrongAnswer
 .Question3:
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_4
-	writetext UnknownText_0x18d3f3
+	writetext DragonShrineQuestion3Text
 	buttonsound
-	loadmenu MenuDataHeader_0x18d258
+	loadmenu DragonShrineQuestion3_MenuHeader
 	verticalmenu
 	closewindow
 	ifequal $1, .WrongAnswer
@@ -66,9 +66,9 @@ DragonShrineTestScript:
 	ifequal $3, .RightAnswer
 .Question4:
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_5
-	writetext UnknownText_0x18d420
+	writetext DragonShrineQuestion4Text
 	buttonsound
-	loadmenu MenuDataHeader_0x18d283
+	loadmenu DragonShrineQuestion4_MenuHeader
 	verticalmenu
 	closewindow
 	ifequal $1, .RightAnswer
@@ -76,9 +76,9 @@ DragonShrineTestScript:
 	ifequal $3, .RightAnswer
 .Question5:
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_6
-	writetext UnknownText_0x18d44a
+	writetext DragonShrineQuestion5Text
 	buttonsound
-	loadmenu MenuDataHeader_0x18d2a5
+	loadmenu DragonShrineQuestion5_MenuHeader
 	verticalmenu
 	closewindow
 	ifequal $1, .WrongAnswer
@@ -87,7 +87,7 @@ DragonShrineTestScript:
 .RightAnswer:
 	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_6
 	iftrue .PassedTheTest
-	writetext UnknownText_0x18d82d
+	writetext DragonShrineRightAnswerText
 	buttonsound
 	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_5
 	iftrue .Question5
@@ -100,9 +100,9 @@ DragonShrineTestScript:
 .WrongAnswer:
 	closetext
 	turnobject DRAGONSHRINE_ELDER1, LEFT
-	showtext UnknownText_0x18d7f6
+	showtext DragonShrineWrongAnswerText1
 	turnobject DRAGONSHRINE_ELDER1, DOWN
-	showtext UnknownText_0x18d816
+	showtext DragonShrineWrongAnswerText2
 	setevent EVENT_ANSWERED_DRAGON_MASTER_QUIZ_WRONG
 	opentext
 	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_6
@@ -116,7 +116,7 @@ DragonShrineTestScript:
 	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
 	iftrue .Question1
 .PassedTheTest:
-	writetext UnknownText_0x18d47c
+	writetext DragonShrinePassedTestText
 	waitbutton
 	closetext
 	playsound SFX_ENTER_DOOR
@@ -126,24 +126,24 @@ DragonShrineTestScript:
 	waitsfx
 	turnobject PLAYER, DOWN
 	pause 30
-	applymovement DRAGONSHRINE_CLAIR, MovementData_0x18d2d4
+	applymovement DRAGONSHRINE_CLAIR, DragonShrineClairWalkInMovement
 	turnobject DRAGONSHRINE_CLAIR, RIGHT
 	turnobject PLAYER, LEFT
 	turnobject DRAGONSHRINE_ELDER1, LEFT
-	showtext UnknownText_0x18d916
+	showtext DragonShrineClairYouPassedText
 	special Special_FadeOutMusic
-	applymovement DRAGONSHRINE_CLAIR, MovementData_0x18d2da
-	showtext UnknownText_0x18d974
-	applymovement DRAGONSHRINE_CLAIR, MovementData_0x18d2dd
-	showtext UnknownText_0x18d983
-	applymovement DRAGONSHRINE_ELDER1, MovementData_0x18d2c9
+	applymovement DRAGONSHRINE_CLAIR, DragonShrineClairBigStepLeftMovement
+	showtext DragonShrineClairThatCantBeText
+	applymovement DRAGONSHRINE_CLAIR, DragonShrineClairSlowStepLeftMovement
+	showtext DragonShrineClairYoureLyingText
+	applymovement DRAGONSHRINE_ELDER1, DragonShrineElderWalkToClairMovement
 	turnobject DRAGONSHRINE_CLAIR, UP
-	showtext UnknownText_0x18d520
+	showtext DragonShrineMustIInformLanceText
 	showemote EMOTE_SHOCK, DRAGONSHRINE_CLAIR, 15
-	showtext UnknownText_0x18d9ae
-	applymovement DRAGONSHRINE_CLAIR, MovementData_0x18d2e0
+	showtext DragonShrineIUnderstandText
+	applymovement DRAGONSHRINE_CLAIR, DragonShrineClairTwoSlowStepsRightMovement
 	opentext
-	writetext UnknownText_0x18d9bf
+	writetext DragonShrineHereRisingBadgeText
 	waitbutton
 	setflag ENGINE_RISINGBADGE
 	playsound SFX_GET_BADGE
@@ -152,43 +152,43 @@ DragonShrineTestScript:
 	specialphonecall SPECIALCALL_MASTERBALL
 	setscene $1
 	setmapscene DRAGONS_DEN_B1F, $1
-	writetext UnknownText_0x18d9f2
+	writetext DragonShrinePlayerReceivedRisingBadgeText
 	buttonsound
-	writetext UnknownText_0x18da0b
+	writetext DragonShrineRisingBadgeExplanationText
 	waitbutton
 	closetext
-	applymovement DRAGONSHRINE_ELDER1, MovementData_0x18d2ce
+	applymovement DRAGONSHRINE_ELDER1, DragonShrineElderWalkAway1Movement
 	turnobject DRAGONSHRINE_CLAIR, UP
-	applymovement DRAGONSHRINE_ELDER1, MovementData_0x18d2d1
+	applymovement DRAGONSHRINE_ELDER1, DragonShrineElderWalkAway2Movement
 	turnobject PLAYER, UP
-	showtext UnknownText_0x18d5a3
-	showtext UnknownText_0x18dab4
-	applymovement DRAGONSHRINE_CLAIR, MovementData_0x18d2e3
+	showtext DragonShrineElderScoldsClairText
+	showtext DragonShrineSpeechlessText
+	applymovement DRAGONSHRINE_CLAIR, DragonShrineClairWalkOutMovement
 	playsound SFX_ENTER_DOOR
 	disappear DRAGONSHRINE_CLAIR
 	waitsfx
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	end
 
-ElderScript_0x18d1a5:
+DragonShrineElder1Script:
 	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
-	iftrue_jumptextfaceplayer UnknownText_0x18d5e5
+	iftrue_jumptextfaceplayer DragonShrineComeAgainText
 	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_7
-	iftrue_jumptextfaceplayer UnknownText_0x18d6ca
+	iftrue_jumptextfaceplayer DragonShrineSymbolicDragonText
 	checkevent EVENT_GOT_DRATINI
 	iffalse .GiveDratini
 	checkevent EVENT_BEAT_RIVAL_IN_MT_MOON
-	iftrue_jumptextfaceplayer UnknownText_0x18d782
-	jumptextfaceplayer UnknownText_0x18d724
+	iftrue_jumptextfaceplayer DragonShrineSilverIsInTrainingText
+	jumptextfaceplayer DragonShrineClairsGrandfatherText
 
 .GiveDratini:
 	faceplayer
 	opentext
-	writetext UnknownText_0x18d604
+	writetext DragonShrineTakeThisDratiniText
 	waitbutton
 	checkcode VAR_PARTYCOUNT
 	ifequal 6, .PartyFull
-	writetext UnknownText_0x18d697
+	writetext DragonShrinePlayerReceivedDratiniText
 	playsound SFX_CAUGHT_MON
 	waitsfx
 	givepoke DRATINI, NO_FORM, 15, SITRUS_BERRY
@@ -200,12 +200,12 @@ ElderScript_0x18d1a5:
 .NoExtremeSpeed
 	setevent EVENT_GOT_DRATINI
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_7
-	jumpopenedtext UnknownText_0x18d6ca
+	jumpopenedtext DragonShrineSymbolicDragonText
 
 .PartyFull:
-	jumpopenedtext UnknownText_0x18d6ac
+	jumpopenedtext DragonShrinePartyFullText
 
-MenuDataHeader_0x18d215:
+DragonShrineQuestion1_MenuHeader:
 	db $40 ; flags
 	db 04, 08 ; start coords
 	db 11, 19 ; end coords
@@ -219,7 +219,7 @@ MenuData2_0x18d21d:
 	db "Underling@"
 	db "Friend@"
 
-MenuDataHeader_0x18d234:
+DragonShrineQuestion2_MenuHeader:
 	db $40 ; flags
 	db 04, 09 ; start coords
 	db 11, 19 ; end coords
@@ -233,7 +233,7 @@ MenuData2_0x18d23c:
 	db "Training@"
 	db "Cheating@"
 
-MenuDataHeader_0x18d258:
+DragonShrineQuestion3_MenuHeader:
 	db $40 ; flags
 	db 04, 05 ; start coords
 	db 11, 19 ; end coords
@@ -247,7 +247,7 @@ MenuData2_0x18d260:
 	db "Tough person@"
 	db "Anybody@"
 
-MenuDataHeader_0x18d283:
+DragonShrineQuestion4_MenuHeader:
 	db $40 ; flags
 	db 04, 08 ; start coords
 	db 11, 19 ; end coords
@@ -261,7 +261,7 @@ MenuData2_0x18d28b:
 	db "Violence@"
 	db "Knowledge@"
 
-MenuDataHeader_0x18d2a5:
+DragonShrineQuestion5_MenuHeader:
 	db $40 ; flags
 	db 04, 11 ; start coords
 	db 11, 19 ; end coords
@@ -275,7 +275,7 @@ MenuData2_0x18d2ad:
 	db "Weak@"
 	db "Both@"
 
-MovementData_0x18d2bf:
+DragonShrinePlayerWalkInMovement:
 	slow_step_up
 	slow_step_up
 	slow_step_up
@@ -285,24 +285,24 @@ MovementData_0x18d2bf:
 	slow_step_up
 	step_end
 
-MovementData_0x18d2c9:
+DragonShrineElderWalkToClairMovement:
 	slow_step_left
 	slow_step_left
 	slow_step_left
 	turn_head_down
 	step_end
 
-MovementData_0x18d2ce:
+DragonShrineElderWalkAway1Movement:
 	slow_step_right
 	slow_step_right
 	step_end
 
-MovementData_0x18d2d1:
+DragonShrineElderWalkAway2Movement:
 	slow_step_right
 	turn_head_down
 	step_end
 
-MovementData_0x18d2d4:
+DragonShrineClairWalkInMovement:
 	slow_step_up
 	slow_step_up
 	slow_step_up
@@ -310,22 +310,22 @@ MovementData_0x18d2d4:
 	slow_step_up
 	step_end
 
-MovementData_0x18d2da:
+DragonShrineClairBigStepLeftMovement:
 	fix_facing
 	run_step_left
 	step_end
 
-MovementData_0x18d2dd:
+DragonShrineClairSlowStepLeftMovement:
 	slow_step_left
 	remove_fixed_facing
 	step_end
 
-MovementData_0x18d2e0:
+DragonShrineClairTwoSlowStepsRightMovement:
 	slow_step_right
 	slow_step_right
 	step_end
 
-MovementData_0x18d2e3:
+DragonShrineClairWalkOutMovement:
 	step_down
 	step_down
 	step_down
@@ -334,7 +334,7 @@ MovementData_0x18d2e3:
 	step_down
 	step_end
 
-UnknownText_0x18d2ea:
+DragonShrineElderGreetingText:
 	text "Hm… Good to see"
 	line "you here."
 
@@ -357,29 +357,29 @@ UnknownText_0x18d2ea:
 	para "Ready?"
 	done
 
-UnknownText_0x18d3bc:
+DragonShrineQuestion1Text:
 	text "What are #mon"
 	line "to you?"
 	done
 
-UnknownText_0x18d3d3:
+DragonShrineQuestion2Text:
 	text "What helps you to"
 	line "win battles?"
 	done
 
-UnknownText_0x18d3f3:
+DragonShrineQuestion3Text:
 	text "What kind of"
 	line "trainer do you"
 	cont "wish to battle?"
 	done
 
-UnknownText_0x18d420:
+DragonShrineQuestion4Text:
 	text "What is most"
 	line "important for"
 	cont "raising #mon?"
 	done
 
-UnknownText_0x18d44a:
+DragonShrineQuestion5Text:
 	text "Strong #mon."
 	line "Weak #mon."
 
@@ -387,7 +387,7 @@ UnknownText_0x18d44a:
 	line "important?"
 	done
 
-UnknownText_0x18d47c:
+DragonShrinePassedTestText:
 	text "Hm… I see…"
 
 	para "You care deeply"
@@ -406,7 +406,7 @@ UnknownText_0x18d47c:
 	cont "#mon League."
 	done
 
-UnknownText_0x18d520:
+DragonShrineMustIInformLanceText:
 	text "Clair!"
 
 	para "This child is"
@@ -421,7 +421,7 @@ UnknownText_0x18d520:
 	line "Lance of this?"
 	done
 
-UnknownText_0x18d5a3:
+DragonShrineElderScoldsClairText:
 	text "Clair…"
 
 	para "Reflect upon what"
@@ -431,12 +431,12 @@ UnknownText_0x18d5a3:
 	line "child has."
 	done
 
-UnknownText_0x18d5e5:
+DragonShrineComeAgainText:
 	text "Come again, if you"
 	line "so desire."
 	done
 
-UnknownText_0x18d604:
+DragonShrineTakeThisDratiniText:
 	text "Hm… Good to see"
 	line "you here."
 
@@ -453,17 +453,17 @@ UnknownText_0x18d604:
 	line "your worth."
 	done
 
-UnknownText_0x18d697:
+DragonShrinePlayerReceivedDratiniText:
 	text "<PLAYER> received"
 	line "Dratini!"
 	done
 
-UnknownText_0x18d6ac:
+DragonShrinePartyFullText:
 	text "Hm? Your #mon"
 	line "party is full."
 	done
 
-UnknownText_0x18d6ca:
+DragonShrineSymbolicDragonText:
 	text "Dragon #mon are"
 	line "symbolic of our"
 	cont "clan."
@@ -475,7 +475,7 @@ UnknownText_0x18d6ca:
 	line "one."
 	done
 
-UnknownText_0x18d724:
+DragonShrineClairsGrandfatherText:
 	text "Clair appears to"
 	line "have learned an"
 
@@ -486,7 +486,7 @@ UnknownText_0x18d724:
 	line "grandfather."
 	done
 
-UnknownText_0x18d782:
+DragonShrineSilverIsInTrainingText:
 	text "A boy close to"
 	line "your age is in"
 	cont "training here."
@@ -498,21 +498,21 @@ UnknownText_0x18d782:
 	line "little worrisome…"
 	done
 
-UnknownText_0x18d7f6:
+DragonShrineWrongAnswerText1:
 	text "Hah? I didn't"
 	line "quite catch that…"
 	done
 
-UnknownText_0x18d816:
+DragonShrineWrongAnswerText2:
 	text "What was it you"
 	line "said?"
 	done
 
-UnknownText_0x18d82d:
+DragonShrineRightAnswerText:
 	text "Oh, I understand…"
 	done
 
-UnknownText_0x18d840:
+DragonShrineElder2Text:
 	text "It's been quite"
 	line "some time since a"
 
@@ -524,7 +524,7 @@ UnknownText_0x18d840:
 	line "Master Lance."
 	done
 
-UnknownText_0x18d8b1:
+DragonShrineElder3Text:
 	text "You know young"
 	line "Master Lance?"
 
@@ -536,7 +536,7 @@ UnknownText_0x18d8b1:
 	line "blood."
 	done
 
-UnknownText_0x18d916:
+DragonShrineClairYouPassedText:
 	text "So how did it go?"
 
 	para "I guess there's no"
@@ -549,34 +549,34 @@ UnknownText_0x18d916:
 	para "…What? You passed?"
 	done
 
-UnknownText_0x18d974:
+DragonShrineClairThatCantBeText:
 	text "That can't be!"
 	done
 
-UnknownText_0x18d983:
+DragonShrineClairYoureLyingText:
 	text "You're lying!"
 
 	para "Even I haven't"
 	line "been approved!"
 	done
 
-UnknownText_0x18d9ae:
+DragonShrineIUnderstandText:
 	text "I-I understand…"
 	done
 
-UnknownText_0x18d9bf:
+DragonShrineHereRisingBadgeText:
 	text "Here, this is the"
 	line "Rising Badge…"
 
 	para "Hurry up! Take it!"
 	done
 
-UnknownText_0x18d9f2:
+DragonShrinePlayerReceivedRisingBadgeText:
 	text "<PLAYER> received"
 	line "the Rising Badge."
 	done
 
-UnknownText_0x18da0b:
+DragonShrineRisingBadgeExplanationText:
 	text "The Rising Badge"
 	line "will enable your"
 
@@ -594,6 +594,6 @@ UnknownText_0x18da0b:
 	line "question."
 	done
 
-UnknownText_0x18dab4:
+DragonShrineSpeechlessText:
 	text "………………………………"
 	done

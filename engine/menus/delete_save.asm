@@ -19,7 +19,7 @@ _DeleteSaveData:
 
 .Text_ClearAllSaveData:
 	; Clear all save data?
-	text_jump UnknownText_0x1c564a
+	text_jump _ClearAllSaveDataText
 	text_end
 
 _ResetInitialOptions:

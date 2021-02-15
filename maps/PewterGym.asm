@@ -14,20 +14,20 @@ PewterGym_MapScriptHeader:
 	bg_event  7, 11, BGEVENT_READ, PewterGymStatue
 
 	def_object_events
-	object_event  5,  1, SPRITE_BROCK, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, BrockScript_0x1a2864, -1
+	object_event  5,  1, SPRITE_BROCK, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, PewterGymBrockScript, -1
 	object_event  2,  7, SPRITE_CAMPER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerCamperJerry, -1
 	object_event  7,  5, SPRITE_HIKER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerHikerEdwin, -1
 	object_event  6, 11, SPRITE_GYM_GUY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 1, PewterGymGuyScript, -1
 
-BrockScript_0x1a2864:
+PewterGymBrockScript:
 	faceplayer
 	opentext
 	checkflag ENGINE_BOULDERBADGE
 	iftrue .FightDone
-	writetext UnknownText_0x1a28d0
+	writetext BrockIntroText
 	waitbutton
 	closetext
-	winlosstext UnknownText_0x1a29bb, 0
+	winlosstext BrockWinLossText, 0
 	loadtrainer BROCK, 1
 	startbattle
 	reloadmapafterbattle
@@ -35,7 +35,7 @@ BrockScript_0x1a2864:
 	setevent EVENT_BEAT_CAMPER_JERRY
 	setevent EVENT_BEAT_HIKER_EDWIN
 	opentext
-	writetext UnknownText_0x1a2a3d
+	writetext ReceivedBoulderBadgeText
 	playsound SFX_GET_BADGE
 	waitsfx
 	setflag ENGINE_BOULDERBADGE
@@ -56,8 +56,8 @@ BrockScript_0x1a2864:
 	specialphonecall SPECIALCALL_LYRASEGG
 .FightDone:
 	checkevent EVENT_GOT_TM48_ROCK_SLIDE
-	iftrue_jumpopenedtext UnknownText_0x1a2ada
-	writetext UnknownText_0x1a2a57
+	iftrue_jumpopenedtext BrockFightDoneText
+	writetext BrockBoulderBadgeText
 	buttonsound
 	verbosegivetmhm TM_ROCK_SLIDE
 	setevent EVENT_GOT_TM48_ROCK_SLIDE
@@ -101,7 +101,7 @@ PewterGymStatue:
 .Beaten:
 	jumpstd gymstatue2
 
-UnknownText_0x1a28d0:
+BrockIntroText:
 	text "Brock: Wow, it's"
 	line "not often that we"
 
@@ -126,7 +126,7 @@ UnknownText_0x1a28d0:
 	para "Come on!"
 	done
 
-UnknownText_0x1a29bb:
+BrockWinLossText:
 	text "Brock: Your #-"
 	line "mon's powerful at-"
 	cont "tacks overcame my"
@@ -139,12 +139,12 @@ UnknownText_0x1a29bb:
 	line "this Badge."
 	done
 
-UnknownText_0x1a2a3d:
+ReceivedBoulderBadgeText:
 	text "<PLAYER> received"
 	line "the Boulder Badge."
 	done
 
-UnknownText_0x1a2a57:
+BrockBoulderBadgeText:
 	text "Brock: <PLAYER>,"
 	line "thanks. I enjoyed"
 
@@ -157,7 +157,7 @@ UnknownText_0x1a2a57:
 	cont "too."
 	done
 
-UnknownText_0x1a2ada:
+BrockFightDoneText:
 	text "Brock: The world"
 	line "is huge. There are"
 

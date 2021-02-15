@@ -920,7 +920,7 @@ DoRepelStep:
 	ret
 
 RepelWoreOffScript:
-	farjumptext UnknownText_0x1bd308
+	farjumptext _RepelWoreOffText
 
 UseAnotherRepelScript:
 	opentext
@@ -956,7 +956,7 @@ DoPlayerEvent:
 	ret
 
 PlayerEventScriptPointers:
-	dba Invalid_0x96c2d          ; PLAYEREVENT_NONE
+	dba InvalidEventScript          ; PLAYEREVENT_NONE
 	dba SeenByTrainerScript      ; PLAYEREVENT_SEENBYTRAINER
 	dba TalkToTrainerScript      ; PLAYEREVENT_TALKTOTRAINER
 	dba FindItemInBallScript     ; PLAYEREVENT_ITEMBALL
@@ -968,11 +968,11 @@ PlayerEventScriptPointers:
 	dba ChangeDirectionScript    ; PLAYEREVENT_JOYCHANGEFACING
 	dba FindTMHMInBallScript     ; PLAYEREVENT_TMHMBALL
 	dba FindKeyItemInBallScript  ; PLAYEREVENT_KEYITEMBALL
-	dba Invalid_0x96c2d          ; NUM_PLAYER_EVENTS
+	dba InvalidEventScript          ; NUM_PLAYER_EVENTS
 
 HatchEggScript:
 	callasm OverworldHatchEgg
-Invalid_0x96c2d:
+InvalidEventScript:
 	end
 
 WarpToNewMapScript:

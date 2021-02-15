@@ -163,7 +163,7 @@ GiveANickname_YesNo:
 
 TextJump_GiveANickname:
 	; Give a nickname to the @  you received?
-	text_jump UnknownText_0x1c12fc
+	text_jump _CaughtAskNicknameText
 	text_end
 
 SetCaughtData:

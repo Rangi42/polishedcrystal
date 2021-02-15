@@ -333,7 +333,7 @@ LinkTimeout:
 
 .LinkTimeoutText:
 	; Too much time has elapsed. Please try again.
-	text_jump UnknownText_0x1c4183
+	text_jump _LinkTimeoutText
 	text_end
 
 ExchangeBytes:
@@ -1208,7 +1208,7 @@ LinkTrade_TradeStatsMenu:
 
 .Text_CantTradeLastMon:
 	; If you trade that #MON, you won't be able to battle.
-	text_jump UnknownText_0x1c41b1
+	text_jump _LinkTradeCantBattleText
 	text_end
 
 .String_Stats_Trade:
@@ -1216,7 +1216,7 @@ LinkTrade_TradeStatsMenu:
 
 .Text_Abnormal:
 	; Your friend's @  appears to be abnormal!
-	text_jump UnknownText_0x1c41e6
+	text_jump _LinkAbnormalMonText
 	text_end
 
 ValidateOTTrademon:
@@ -1732,7 +1732,7 @@ LinkTrade:
 
 .TradeThisForThat:
 	; Trade @ for @ ?
-	text_jump UnknownText_0x1c4212
+	text_jump _LinkAskTradeForText
 	text_end
 
 .TradeCompleted:

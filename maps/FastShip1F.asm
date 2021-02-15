@@ -26,10 +26,10 @@ FastShip1F_MapScriptHeader:
 	def_bg_events
 
 	def_object_events
-	object_event 25,  2, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, SailorScript_0x75160, -1
+	object_event 25,  2, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, FastShip1FSailor1Script, -1
 	object_event 19,  6, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_FAST_SHIP_1F_GENTLEMAN
-	object_event 14,  7, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, SailorScript_0x751d0, -1
-	object_event 22, 17, SPRITE_SAILOR, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x753c0, -1
+	object_event 14,  7, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, FastShip1FSailor2Script, -1
+	object_event 22, 17, SPRITE_SAILOR, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, FastShip1FSailor3Text, -1
 
 	object_const_def
 	const FASTSHIP1F_SAILOR1
@@ -41,9 +41,9 @@ FastShip1FTrigger0:
 	end
 
 FastShip1FPriorityJump2:
-	applymovement FASTSHIP1F_SAILOR1, MovementData_0x7520e
-	applymovement PLAYER, MovementData_0x75217
-	applymovement FASTSHIP1F_SAILOR1, MovementData_0x75211
+	applymovement FASTSHIP1F_SAILOR1, FastShip1F_SailorStepAsideMovement
+	applymovement PLAYER, FastShip1F_PlayerEntersShipMovement
+	applymovement FASTSHIP1F_SAILOR1, FastShip1F_SailorBlocksDoorMovement
 	pause 30
 	playsound SFX_BOAT
 	earthquake 30
@@ -58,13 +58,13 @@ FastShip1FPriorityJump2:
 	setscene $0
 	end
 
-SailorScript_0x75160:
+FastShip1FSailor1Script:
 	faceplayer
 	opentext
 	checkevent EVENT_FAST_SHIP_HAS_ARRIVED
 	iftrue .Arrived
 	checkevent EVENT_FAST_SHIP_DESTINATION_OLIVINE
-	iftrue_jumpopenedtext UnknownText_0x7529b
+	iftrue_jumpopenedtext FastShip1FSailor1Text_ToOlivine
 	jumpthisopenedtext
 
 	text "Fast Ship S.S.Aqua"
@@ -79,7 +79,7 @@ SailorScript_0x75160:
 .Arrived:
 	checkevent EVENT_FAST_SHIP_DESTINATION_OLIVINE
 	iftrue ._Olivine
-	writetext UnknownText_0x754be
+	writetext FastShip1FSailor1Text_InVermilion
 	waitbutton
 	closetext
 	scall .LetThePlayerOut
@@ -92,7 +92,7 @@ SailorScript_0x75160:
 	end
 
 ._Olivine:
-	writetext UnknownText_0x7548d
+	writetext FastShip1FSailor1Text_InOlivine
 	waitbutton
 	closetext
 	scall .LetThePlayerOut
@@ -107,64 +107,64 @@ SailorScript_0x75160:
 .LetThePlayerOut:
 	checkcode VAR_FACING
 	ifequal RIGHT, .YouAreFacingRight
-	applymovement FASTSHIP1F_SAILOR1, MovementData_0x7520e
-	applymovement PLAYER, MovementData_0x75235
+	applymovement FASTSHIP1F_SAILOR1, FastShip1F_SailorStepAsideMovement
+	applymovement PLAYER, FastShip1F_PlayerLeavesShipMovement
 	end
 
 .YouAreFacingRight:
-	applymovement FASTSHIP1F_SAILOR1, MovementData_0x75214
-	applymovement PLAYER, MovementData_0x75238
+	applymovement FASTSHIP1F_SAILOR1, FastShip1F_SailorStepAsideDownMovement
+	applymovement PLAYER, FastShip1F_PlayerLeavesShipRightMovement
 	end
 
-SailorScript_0x751d0:
+FastShip1FSailor2Script:
 	checkevent EVENT_FAST_SHIP_FIRST_TIME
-	iftrue_jumptextfaceplayer UnknownText_0x7534f
-	jumptextfaceplayer UnknownText_0x752f9
+	iftrue_jumptextfaceplayer FastShip1FSailor2Text
+	jumptextfaceplayer FastShip1FSailor2Text_FirstTime
 
 WorriedGrandpaTriggerRight:
 	moveobject FASTSHIP1F_GENTLEMAN, 20, 6
 WorriedGrandpaTriggerLeft:
 	appear FASTSHIP1F_GENTLEMAN
-	applymovement FASTSHIP1F_GENTLEMAN, MovementData_0x7521b
+	applymovement FASTSHIP1F_GENTLEMAN, FastShip1F_GrandpaRunsInMovement
 	playsound SFX_TACKLE
-	applymovement PLAYER, MovementData_0x7522e
+	applymovement PLAYER, FastShip1F_PlayerHitByGrandpaMovement
 	applyonemovement FASTSHIP1F_GENTLEMAN, step_right
-	showtext UnknownText_0x75412
+	showtext FastShip1FGrandpaText
 	turnobject PLAYER, RIGHT
-	applymovement FASTSHIP1F_GENTLEMAN, MovementData_0x75222
+	applymovement FASTSHIP1F_GENTLEMAN, FastShip1F_GrandpaRunsOutMovement
 	disappear FASTSHIP1F_GENTLEMAN
 	setscene $0
 	end
 
-MovementData_0x7520e:
+FastShip1F_SailorStepAsideMovement:
 	slow_step_left
 	turn_head_right
 	step_end
 
-MovementData_0x75211:
+FastShip1F_SailorBlocksDoorMovement:
 	slow_step_right
 	turn_head_down
 	step_end
 
-MovementData_0x75214:
+FastShip1F_SailorStepAsideDownMovement:
 	slow_step_down
 	turn_head_up
 	step_end
 
-MovementData_0x75217:
+FastShip1F_PlayerEntersShipMovement:
 	step_down
 	step_down
 	turn_head_down
 	step_end
 
-MovementData_0x7521b:
+FastShip1F_GrandpaRunsInMovement:
 	run_step_right
 	run_step_right
 	run_step_right
 	run_step_right
 	step_end
 
-MovementData_0x75222:
+FastShip1F_GrandpaRunsOutMovement:
 	run_step_down
 	run_step_right
 	run_step_right
@@ -178,22 +178,22 @@ MovementData_0x75222:
 	run_step_down
 	step_end
 
-MovementData_0x7522e:
+FastShip1F_PlayerHitByGrandpaMovement:
 	run_step_right
 	turn_head_left
 	step_end
 
-MovementData_0x75235:
+FastShip1F_PlayerLeavesShipMovement:
 	step_up
 	step_up
 	step_end
 
-MovementData_0x75238:
+FastShip1F_PlayerLeavesShipRightMovement:
 	step_right
 	step_up
 	step_end
 
-UnknownText_0x7529b:
+FastShip1FSailor1Text_ToOlivine:
 	text "Fast Ship S.S.Aqua"
 	line "is en route to"
 	cont "Olivine City."
@@ -203,7 +203,7 @@ UnknownText_0x7529b:
 	cont "we arrive."
 	done
 
-UnknownText_0x752f9:
+FastShip1FSailor2Text_FirstTime:
 	text "Here's your cabin."
 
 	para "If your #mon"
@@ -214,7 +214,7 @@ UnknownText_0x752f9:
 	line "them."
 	done
 
-UnknownText_0x7534f:
+FastShip1FSailor2Text:
 	text "Here's your cabin."
 
 	para "You can heal your"
@@ -226,7 +226,7 @@ UnknownText_0x7534f:
 	cont "you're sleeping."
 	done
 
-UnknownText_0x753c0:
+FastShip1FSailor3Text:
 	text "The passengers are"
 	line "all trainers."
 
@@ -235,7 +235,7 @@ UnknownText_0x753c0:
 	cont "their cabins."
 	done
 
-UnknownText_0x75412:
+FastShip1FGrandpaText:
 	text "Whoa! Excuse me."
 	line "I was in a hurry!"
 
@@ -249,13 +249,13 @@ UnknownText_0x75412:
 	line "know!"
 	done
 
-UnknownText_0x7548d:
+FastShip1FSailor1Text_InOlivine:
 	text "Fast Ship S.S.Aqua"
 	line "has arrived in"
 	cont "Olivine City."
 	done
 
-UnknownText_0x754be:
+FastShip1FSailor1Text_InVermilion:
 	text "Fast Ship S.S.Aqua"
 	line "has arrived in"
 	cont "Vermilion City."

@@ -95,7 +95,7 @@ CherrygroveSilverTriggerNorth:
 	applymovement CHERRYGROVECITY_SILVER, CherrygroveCity_RivalWalksToYou
 	turnobject PLAYER, RIGHT
 	playmusic MUSIC_RIVAL_ENCOUNTER
-	showtext UnknownText_0x19c4e2
+	showtext CherrygroveRivalText_Seen
 	checkevent EVENT_GOT_TOTODILE_FROM_ELM
 	iftrue .Totodile
 	checkevent EVENT_GOT_CHIKORITA_FROM_ELM
@@ -354,7 +354,7 @@ GuideGentPokegearText:
 	line "your journey!"
 	done
 
-UnknownText_0x19c4e2:
+CherrygroveRivalText_Seen:
 	text "…… …… ……"
 
 	para "You got a #mon"

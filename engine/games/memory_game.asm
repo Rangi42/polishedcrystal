@@ -316,12 +316,12 @@ MemoryGame_CheckMatch:
 
 MemoryGameText_Yeah:
 	; , yeah!
-	text_jump UnknownText_0x1c1a5b
+	text_jump _MemoryGameYeahText
 	text_end
 
 MemoryGameText_Darn:
 	; Darn…
-	text_jump UnknownText_0x1c1a65
+	text_jump _MemoryGameDarnText
 	text_end
 
 MemoryGame_InitBoard:

@@ -16,7 +16,7 @@ VioletGym_MapScriptHeader:
 
 	def_object_events
 	object_event  4, 13, SPRITE_GYM_GUY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_DARK_CAVE_FALKNER
-	object_event  5,  1, SPRITE_FALKNER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, FalknerScript_0x683c2, EVENT_VIOLET_GYM_FALKNER
+	object_event  5,  1, SPRITE_FALKNER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, VioletGymFalknerScript, EVENT_VIOLET_GYM_FALKNER
 	object_event  7,  6, SPRITE_BIRD_KEEPER, SPRITEMOVEDATA_STANDING_LEFT, 0, 2, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerBird_keeperRod, EVENT_VIOLET_GYM_FALKNER
 	object_event  2, 10, SPRITE_BIRD_KEEPER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 2, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerBird_keeperAbe, EVENT_VIOLET_GYM_FALKNER
 	object_event  7, 13, SPRITE_GYM_GUY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, VioletGymGuyScript, EVENT_VIOLET_GYM_FALKNER
@@ -40,36 +40,36 @@ VioletGymFalknerAwayScript:
 	warp VIOLET_CITY, 18, 22
 	end
 
-FalknerScript_0x683c2:
+VioletGymFalknerScript:
 	faceplayer
 	opentext
 	checkevent EVENT_BEAT_FALKNER
 	iftrue .FightDone
-	writetext UnknownText_0x68473
+	writetext FalknerIntroText
 	waitbutton
 	closetext
-	winlosstext UnknownText_0x6854a, 0
+	winlosstext FalknerWinLossText, 0
 	loadtrainer FALKNER, 1
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_FALKNER
 	opentext
-	writetext UnknownText_0x685af
+	writetext ReceivedZephyrBadgeText
 	playsound SFX_GET_BADGE
 	waitsfx
 	setflag ENGINE_ZEPHYRBADGE
 .FightDone:
 	checkevent EVENT_GOT_TM31_ROOST
-	iftrue_jumpopenedtext UnknownText_0x68735
+	iftrue_jumpopenedtext FalknerFightDoneText
 	setevent EVENT_BEAT_BIRD_KEEPER_ROD
 	setevent EVENT_BEAT_BIRD_KEEPER_ABE
 	setmapscene ELMS_LAB, $2
 	specialphonecall SPECIALCALL_ASSISTANT
-	writetext UnknownText_0x685c8
+	writetext FalknerZephyrBadgeText
 	buttonsound
 	verbosegivetmhm TM_ROOST
 	setevent EVENT_GOT_TM31_ROOST
-	jumpopenedtext UnknownText_0x68648
+	jumpopenedtext FalknerTMMudSlapText
 
 GenericTrainerBird_keeperRod:
 	generictrainer BIRD_KEEPER, ROD, EVENT_BEAT_BIRD_KEEPER_ROD, Bird_keeperRodSeenText, Bird_keeperRodBeatenText
@@ -107,7 +107,7 @@ VioletGymStatue:
 .LyraToo
 	jumpstd gymstatue3
 
-UnknownText_0x68473:
+FalknerIntroText:
 	text "I'm Falkner, the"
 	line "Violet #mon Gym"
 	cont "Leader!"
@@ -130,7 +130,7 @@ UnknownText_0x68473:
 	line "#mon!"
 	done
 
-UnknownText_0x6854a:
+FalknerWinLossText:
 	text "…Darn! My dad's"
 	line "cherished bird"
 	cont "#mon…"
@@ -143,12 +143,12 @@ UnknownText_0x6854a:
 	cont "Zephyr Badge."
 	done
 
-UnknownText_0x685af:
+ReceivedZephyrBadgeText:
 	text "<PLAYER> received"
 	line "the Zephyr Badge."
 	done
 
-UnknownText_0x685c8:
+FalknerZephyrBadgeText:
 	text "The Zephyr Badge"
 	line "enables you to"
 
@@ -160,7 +160,7 @@ UnknownText_0x685c8:
 	line "too."
 	done
 
-UnknownText_0x68648:
+FalknerTMMudSlapText:
 	text "By using a TM, a"
 	line "#mon will"
 
@@ -179,7 +179,7 @@ UnknownText_0x68648:
 	cont "half the max HP."
 	done
 
-UnknownText_0x68735:
+FalknerFightDoneText:
 	text "There are #mon"
 	line "Gyms in cities and"
 	cont "towns ahead."

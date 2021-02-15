@@ -20,12 +20,12 @@ TinTower1F_MapScriptHeader:
 	object_event  5,  9, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, RAIKOU, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_TIN_TOWER_1F_RAIKOU
 	object_event 10,  9, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, ENTEI, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_TIN_TOWER_1F_ENTEI
 	object_event  6,  3, SPRITE_EUSINE, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, TinTowerEusineHoOhText, EVENT_TIN_TOWER_1F_EUSINE
-	object_event  3,  9, SPRITE_ELDER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x185386, EVENT_TIN_TOWER_1F_WISE_TRIO_1
-	object_event  9, 11, SPRITE_ELDER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x185433, EVENT_TIN_TOWER_1F_WISE_TRIO_1
-	object_event 12,  6, SPRITE_ELDER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x185544, EVENT_TIN_TOWER_1F_WISE_TRIO_1
-	object_event  2,  2, SPRITE_ELDER, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, SageScript_0x18517c, EVENT_TIN_TOWER_1F_WISE_TRIO_2
-	object_event  7,  1, SPRITE_ELDER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, SageScript_0x185188, EVENT_TIN_TOWER_1F_WISE_TRIO_2
-	object_event 12,  2, SPRITE_ELDER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, SageScript_0x1851bc, EVENT_TIN_TOWER_1F_WISE_TRIO_2
+	object_event  3,  9, SPRITE_ELDER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, TinTower1FSage1Text, EVENT_TIN_TOWER_1F_WISE_TRIO_1
+	object_event  9, 11, SPRITE_ELDER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, TinTower1FSage2Text, EVENT_TIN_TOWER_1F_WISE_TRIO_1
+	object_event 12,  6, SPRITE_ELDER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, TinTower1FSage3Text, EVENT_TIN_TOWER_1F_WISE_TRIO_1
+	object_event  2,  2, SPRITE_ELDER, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, TinTower1FSage4Script, EVENT_TIN_TOWER_1F_WISE_TRIO_2
+	object_event  7,  1, SPRITE_ELDER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, TinTower1FSage5Script, EVENT_TIN_TOWER_1F_WISE_TRIO_2
+	object_event 12,  2, SPRITE_ELDER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, TinTower1FSage6Script, EVENT_TIN_TOWER_1F_WISE_TRIO_2
 
 	object_const_def
 	const TINTOWER1F_SUICUNE
@@ -151,25 +151,25 @@ SuicuneBattle:
 	playsound SFX_ENTER_DOOR
 	moveobject TINTOWER1F_EUSINE, 8, 15
 	appear TINTOWER1F_EUSINE
-	applymovement TINTOWER1F_EUSINE, MovementData_0x1851ec
+	applymovement TINTOWER1F_EUSINE, TinTower1FEusineEntersMovement
 	playsound SFX_ENTER_DOOR
 	moveobject TINTOWER1F_SAGE1, 7, 15
 	appear TINTOWER1F_SAGE1
-	applymovement TINTOWER1F_SAGE1, MovementData_0x1851f5
+	applymovement TINTOWER1F_SAGE1, TinTower1FSage1EntersMovement
 	playsound SFX_ENTER_DOOR
 	moveobject TINTOWER1F_SAGE2, 7, 15
 	appear TINTOWER1F_SAGE2
-	applymovement TINTOWER1F_SAGE2, MovementData_0x1851fb
+	applymovement TINTOWER1F_SAGE2, TinTower1FSage2EntersMovement
 	playsound SFX_ENTER_DOOR
 	moveobject TINTOWER1F_SAGE3, 7, 15
 	appear TINTOWER1F_SAGE3
-	applymovement TINTOWER1F_SAGE3, MovementData_0x1851fe
+	applymovement TINTOWER1F_SAGE3, TinTower1FSage3EntersMovement
 	moveobject TINTOWER1F_SAGE1, 5, 13
 	moveobject TINTOWER1F_SAGE2, 7, 13
 	moveobject TINTOWER1F_SAGE3, 9, 13
 	turnobject PLAYER, RIGHT
 	showtext TinTowerEusineSuicuneText
-	applymovement TINTOWER1F_EUSINE, MovementData_0x1851f1
+	applymovement TINTOWER1F_EUSINE, TinTower1FEusineLeavesMovement
 	playsound SFX_EXIT_BUILDING
 	disappear TINTOWER1F_EUSINE
 	waitsfx
@@ -178,22 +178,22 @@ SuicuneBattle:
 	playmapmusic
 	end
 
-SageScript_0x18517c:
+TinTower1FSage4Script:
 	checkevent EVENT_FOUGHT_HO_OH
 	iftrue UnknownScript_0x185185
-	jumptextfaceplayer UnknownText_0x1855ee
+	jumptextfaceplayer TinTower1FSage4Text1
 
 UnknownScript_0x185185:
-	jumptextfaceplayer UnknownText_0x185765
+	jumptextfaceplayer TinTower1FSage4Text2
 
-SageScript_0x185188:
+TinTower1FSage5Script:
 	faceplayer
 	opentext
 	checkevent EVENT_FOUGHT_HO_OH
 	iftrue UnknownScript_0x1851b6
 	checkevent EVENT_GOT_RAINBOW_WING
 	iftrue UnknownScript_0x1851b0
-	writetext UnknownText_0x185629
+	writetext TinTower1FSage5Text1
 	buttonsound
 	verbosegivekeyitem RAINBOW_WING
 	closetext
@@ -207,18 +207,18 @@ SageScript_0x185188:
 	closetext
 	opentext
 UnknownScript_0x1851b0:
-	jumpopenedtext UnknownText_0x18564a
+	jumpopenedtext TinTower1FSage5Text2
 
 UnknownScript_0x1851b6:
-	jumpopenedtext UnknownText_0x185803
+	jumpopenedtext TinTower1FSage5Text3
 
-SageScript_0x1851bc:
+TinTower1FSage6Script:
 	checkevent EVENT_FOUGHT_HO_OH
 	iftrue UnknownScript_0x1851c5
-	jumptextfaceplayer UnknownText_0x185654
+	jumptextfaceplayer TinTower1FSage6Text1
 
 UnknownScript_0x1851c5:
-	jumptextfaceplayer UnknownText_0x1858d0
+	jumptextfaceplayer TinTower1FSage6Text2
 
 TinTowerPlayerMovement1:
 	slow_step_up
@@ -262,20 +262,20 @@ TinTowerPlayerMovement2:
 	remove_fixed_facing
 	step_end
 
-MovementData_0x1851ec:
+TinTower1FEusineEntersMovement:
 	step_up
 	step_up
 	step_up
 	turn_head_left
 	step_end
 
-MovementData_0x1851f1:
+TinTower1FEusineLeavesMovement:
 	step_down
 	step_down
 	step_down
 	step_end
 
-MovementData_0x1851f5:
+TinTower1FSage1EntersMovement:
 	step_up
 	step_up
 	step_left
@@ -283,12 +283,12 @@ MovementData_0x1851f5:
 	turn_head_up
 	step_end
 
-MovementData_0x1851fb:
+TinTower1FSage2EntersMovement:
 	step_up
 	step_up
 	step_end
 
-MovementData_0x1851fe:
+TinTower1FSage3EntersMovement:
 	step_up
 	step_right
 	step_right
@@ -333,7 +333,7 @@ TinTowerEusineSuicuneText:
 	para "Later, <PLAYER>!"
 	done
 
-UnknownText_0x185386:
+TinTower1FSage1Text:
 	text "According to"
 	line "legend…"
 
@@ -353,7 +353,7 @@ UnknownText_0x185386:
 	line "humans?"
 	done
 
-UnknownText_0x185433:
+TinTower1FSage2Text:
 if DEF(FAITHFUL)
 	text "When the Brass"
 else
@@ -389,7 +389,7 @@ endc
 	line "say."
 	done
 
-UnknownText_0x185544:
+TinTower1FSage3Text:
 	text "The two towers are"
 	line "said to have been"
 
@@ -406,7 +406,7 @@ UnknownText_0x185544:
 	line "important today."
 	done
 
-UnknownText_0x1855ee:
+TinTower1FSage4Text1:
 	text "Ho-Oh appears to"
 	line "have descended"
 
@@ -414,16 +414,16 @@ UnknownText_0x1855ee:
 	line "Bell Tower!"
 	done
 
-UnknownText_0x185629:
+TinTower1FSage5Text1:
 	text "This will protect"
 	line "you. Take it."
 	done
 
-UnknownText_0x18564a:
+TinTower1FSage5Text2:
 	text "Now, go."
 	done
 
-UnknownText_0x185654:
+TinTower1FSage6Text1:
 	text "I believe you are"
 	line "being tested."
 
@@ -454,7 +454,7 @@ TinTowerEusineHoOhText:
 	line "#Maniac!"
 	done
 
-UnknownText_0x185765:
+TinTower1FSage4Text2:
 	text "The legendary"
 	line "#mon are said"
 
@@ -471,7 +471,7 @@ UnknownText_0x185765:
 	line "put out the fire…"
 	done
 
-UnknownText_0x185803:
+TinTower1FSage5Text3:
 	text "When the legendary"
 	line "#mon appeared…"
 
@@ -492,7 +492,7 @@ UnknownText_0x185803:
 	cont "frightened people."
 	done
 
-UnknownText_0x1858d0:
+TinTower1FSage6Text2:
 	text "Of the legendary"
 	line "#mon, Suicune"
 

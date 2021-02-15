@@ -12,84 +12,84 @@ NationalParkBugContest_MapScriptHeader:
 	def_coord_events
 
 	def_bg_events
-	bg_event 16, 44, BGEVENT_JUMPTEXT, UnknownText_0x5c750
-	bg_event 29, 31, BGEVENT_JUMPTEXT, UnknownText_0x5c771
-	bg_event 14,  4, BGEVENT_JUMPTEXT, UnknownText_0x5c7c6
+	bg_event 16, 44, BGEVENT_JUMPTEXT, NationalParkRelaxationSquareText
+	bg_event 29, 31, BGEVENT_JUMPTEXT, NationalParkBattleNoticeText
+	bg_event 14,  4, BGEVENT_JUMPTEXT, NationalParkTrainerTipsText
 	bg_event  8, 47, BGEVENT_ITEM + FULL_HEAL, EVENT_NATIONAL_PARK_HIDDEN_FULL_HEAL
 
 	def_object_events
-	object_event 21, 29, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, BugCatcherScript_0x5c8ec, EVENT_BUG_CATCHING_CONTESTANT_1A
-	object_event 30, 22, SPRITE_BUG_MANIAC, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, BugManiacScript_0x5c8f4, EVENT_BUG_CATCHING_CONTESTANT_2A
-	object_event 11, 18, SPRITE_ACE_TRAINER_M, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, CooltrainerMScript_0x5c8fc, EVENT_BUG_CATCHING_CONTESTANT_3A
-	object_event  9, 13, SPRITE_POKEFAN_M, SPRITEMOVEDATA_WALK_UP_DOWN, 0, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, PokefanMScript_0x5c904, EVENT_BUG_CATCHING_CONTESTANT_4A
-	object_event 25,  9, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, BugCatcherScript_0x5c90c, EVENT_BUG_CATCHING_CONTESTANT_5A
-	object_event 29, 13, SPRITE_CAMPER, SPRITEMOVEDATA_WANDER, 3, 3, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, YoungsterScript_0x5c914, EVENT_BUG_CATCHING_CONTESTANT_6A
-	object_event  9, 23, SPRITE_PICNICKER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, LassScript_0x5c91c, EVENT_BUG_CATCHING_CONTESTANT_7A
-	object_event 13, 27, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, BugCatcherScript_0x5c924, EVENT_BUG_CATCHING_CONTESTANT_8A
-	object_event 18,  8, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, YoungsterScript_0x5c92c, EVENT_BUG_CATCHING_CONTESTANT_9A
-	object_event 19, 34, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WANDER, 3, 3, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, YoungsterScript_0x5c934, EVENT_BUG_CATCHING_CONTESTANT_10A
+	object_event 21, 29, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, BugCatchingContestant1AScript, EVENT_BUG_CATCHING_CONTESTANT_1A
+	object_event 30, 22, SPRITE_BUG_MANIAC, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, BugCatchingContestant2AScript, EVENT_BUG_CATCHING_CONTESTANT_2A
+	object_event 11, 18, SPRITE_ACE_TRAINER_M, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, BugCatchingContestant3AScript, EVENT_BUG_CATCHING_CONTESTANT_3A
+	object_event  9, 13, SPRITE_POKEFAN_M, SPRITEMOVEDATA_WALK_UP_DOWN, 0, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, BugCatchingContestant4AScript, EVENT_BUG_CATCHING_CONTESTANT_4A
+	object_event 25,  9, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, BugCatchingContestant5AScript, EVENT_BUG_CATCHING_CONTESTANT_5A
+	object_event 29, 13, SPRITE_CAMPER, SPRITEMOVEDATA_WANDER, 3, 3, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, BugCatchingContestant6AScript, EVENT_BUG_CATCHING_CONTESTANT_6A
+	object_event  9, 23, SPRITE_PICNICKER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, BugCatchingContestant7AScript, EVENT_BUG_CATCHING_CONTESTANT_7A
+	object_event 13, 27, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, BugCatchingContestant8AScript, EVENT_BUG_CATCHING_CONTESTANT_8A
+	object_event 18,  8, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, BugCatchingContestant9AScript, EVENT_BUG_CATCHING_CONTESTANT_9A
+	object_event 19, 34, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WANDER, 3, 3, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, BugCatchingContestant10AScript, EVENT_BUG_CATCHING_CONTESTANT_10A
 	itemball_event 37, 12, SHINY_STONE, 1, EVENT_NATIONAL_PARK_SHINY_STONE
 	tmhmball_event  3, 43, TM_DIG, EVENT_NATIONAL_PARK_TM_DIG
 
-BugCatcherScript_0x5c8ec:
+BugCatchingContestant1AScript:
 	faceplayer
-	jumptext UnknownText_0x5c94c
+	jumptext BugCatchingContestant1AText
 
-BugManiacScript_0x5c8f4:
+BugCatchingContestant2AScript:
 	faceplayer
-	jumptext UnknownText_0x5c973
+	jumptext BugCatchingContestant2AText
 
-CooltrainerMScript_0x5c8fc:
+BugCatchingContestant3AScript:
 	faceplayer
-	jumptext UnknownText_0x5c9a3
+	jumptext BugCatchingContestant3AText
 
-PokefanMScript_0x5c904:
+BugCatchingContestant4AScript:
 	faceplayer
-	jumptext UnknownText_0x5c9cc
+	jumptext BugCatchingContestant4AText
 
-BugCatcherScript_0x5c90c:
+BugCatchingContestant5AScript:
 	faceplayer
-	jumptext UnknownText_0x5ca15
+	jumptext BugCatchingContestant5AText
 
-YoungsterScript_0x5c914:
+BugCatchingContestant6AScript:
 	faceplayer
-	jumptext UnknownText_0x5ca52
+	jumptext BugCatchingContestant6AText
 
-LassScript_0x5c91c:
+BugCatchingContestant7AScript:
 	faceplayer
-	jumptext UnknownText_0x5ca8f
+	jumptext BugCatchingContestant7AText
 
-BugCatcherScript_0x5c924:
+BugCatchingContestant8AScript:
 	faceplayer
-	jumptext UnknownText_0x5cac8
+	jumptext BugCatchingContestant8AText
 
-YoungsterScript_0x5c92c:
+BugCatchingContestant9AScript:
 	faceplayer
-	jumptext UnknownText_0x5cb25
+	jumptext BugCatchingContestant9AText
 
-YoungsterScript_0x5c934:
+BugCatchingContestant10AScript:
 	faceplayer
-	jumptext UnknownText_0x5cb64
+	jumptext BugCatchingContestant10AText
 
-UnknownText_0x5c94c:
+BugCatchingContestant1AText:
 	text "Don: I'm going to"
 	line "win! Don't bother"
 	cont "me."
 	done
 
-UnknownText_0x5c973:
+BugCatchingContestant2AText:
 	text "Lou: My Parasect"
 	line "puts #mon to"
 	cont "sleep with Spore."
 	done
 
-UnknownText_0x5c9a3:
+BugCatchingContestant3AText:
 	text "Nick: I'm raising"
 	line "fast #mon for"
 	cont "battles."
 	done
 
-UnknownText_0x5c9cc:
+BugCatchingContestant4AText:
 	text "William: I'm not"
 	line "concerned about"
 	cont "winning."
@@ -98,7 +98,7 @@ UnknownText_0x5c9cc:
 	line "for rare #mon."
 	done
 
-UnknownText_0x5ca15:
+BugCatchingContestant5AText:
 	text "Benny: Ssh! You'll"
 	line "scare off Scyther."
 
@@ -106,7 +106,7 @@ UnknownText_0x5ca15:
 	line "later."
 	done
 
-UnknownText_0x5ca52:
+BugCatchingContestant6AText:
 	text "Barry: You should"
 	line "weaken Bug #mon"
 
@@ -114,7 +114,7 @@ UnknownText_0x5ca52:
 	line "a Ball."
 	done
 
-UnknownText_0x5ca8f:
+BugCatchingContestant7AText:
 	text "Cindy: I love Bug"
 	line "#mon."
 
@@ -122,7 +122,7 @@ UnknownText_0x5ca8f:
 	line "like them too."
 	done
 
-UnknownText_0x5cac8:
+BugCatchingContestant8AText:
 	text "Josh: I've been"
 	line "collecting Bug"
 
@@ -133,7 +133,7 @@ UnknownText_0x5cac8:
 	line "going to lose!"
 	done
 
-UnknownText_0x5cb25:
+BugCatchingContestant9AText:
 	text "Johnny: If you've"
 	line "got the time to"
 
@@ -141,7 +141,7 @@ UnknownText_0x5cb25:
 	line "Bug #mon."
 	done
 
-UnknownText_0x5cb64:
+BugCatchingContestant10AText:
 	text "Kipp: I've studied"
 	line "about Bug #mon"
 	cont "a lot."

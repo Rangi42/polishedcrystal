@@ -14,7 +14,7 @@ MahoganyGym_MapScriptHeader:
 	bg_event  6, 15, BGEVENT_READ, MahoganyGymStatue
 
 	def_object_events
-	object_event  5,  3, SPRITE_PRYCE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, PryceScript_0x199a9e, -1
+	object_event  5,  3, SPRITE_PRYCE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, MahoganyGymPryceScript, -1
 	object_event  4,  6, SPRITE_SKIER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerSkierRoxanne, -1
 	object_event  0, 17, SPRITE_BOARDER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerBoarderRonald, -1
 	object_event  9, 17, SPRITE_SKIER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerSkierClarissa, -1
@@ -22,21 +22,21 @@ MahoganyGym_MapScriptHeader:
 	object_event  2,  4, SPRITE_BOARDER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerBoarderDouglas, -1
 	object_event  7, 15, SPRITE_GYM_GUY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, MahoganyGymGuyScript, -1
 
-PryceScript_0x199a9e:
+MahoganyGymPryceScript:
 	faceplayer
 	opentext
 	checkevent EVENT_BEAT_PRYCE
 	iftrue .FightDone
-	writetext UnknownText_0x199b8d
+	writetext PryceText_Intro
 	waitbutton
 	closetext
-	winlosstext UnknownText_0x199cb3, 0
+	winlosstext PryceText_Impressed, 0
 	loadtrainer PRYCE, 1
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_PRYCE
 	opentext
-	writetext UnknownText_0x199d3b
+	writetext Text_ReceivedGlacierBadge
 	playsound SFX_GET_BADGE
 	waitsfx
 	setflag ENGINE_GLACIERBADGE
@@ -52,13 +52,13 @@ PryceScript_0x199a9e:
 	setmapscene MAHOGANY_TOWN, $1
 .FightDone:
 	checkevent EVENT_GOT_TM67_AVALANCHE
-	iftrue_jumpopenedtext UnknownText_0x199e59
+	iftrue_jumpopenedtext PryceText_CherishYourPokemon
 	setevent EVENT_BEAT_SKIER_ROXANNE
 	setevent EVENT_BEAT_SKIER_CLARISSA
 	setevent EVENT_BEAT_BOARDER_RONALD
 	setevent EVENT_BEAT_BOARDER_BRAD
 	setevent EVENT_BEAT_BOARDER_DOUGLAS
-	writetext UnknownText_0x199d55
+	writetext PryceText_GlacierBadgeSpeech
 	buttonsound
 	verbosegivetmhm TM_AVALANCHE
 	setevent EVENT_GOT_TM67_AVALANCHE
@@ -142,7 +142,7 @@ MahoganyGymStatue:
 .LyraToo
 	jumpstd gymstatue3
 
-UnknownText_0x199b8d:
+PryceText_Intro:
 	text "#mon have many"
 	line "experiences in"
 
@@ -173,7 +173,7 @@ UnknownText_0x199b8d:
 	line "my power!"
 	done
 
-UnknownText_0x199cb3:
+PryceText_Impressed:
 	text "Ah, I am impressed"
 	line "by your prowess."
 
@@ -187,12 +187,12 @@ UnknownText_0x199cb3:
 	line "this Badge!"
 	done
 
-UnknownText_0x199d3b:
+Text_ReceivedGlacierBadge:
 	text "<PLAYER> received"
 	line "the Glacier Badge."
 	done
 
-UnknownText_0x199d55:
+PryceText_GlacierBadgeSpeech:
 	text "That Badge will"
 	line "let your #mon"
 
@@ -203,7 +203,7 @@ UnknownText_0x199d55:
 	line "a gift from me!"
 	done
 
-UnknownText_0x199e59:
+PryceText_CherishYourPokemon:
 	text "When the ice and"
 	line "snow melt, spring"
 	cont "arrives."

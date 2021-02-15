@@ -5471,7 +5471,7 @@ BattleCommand_charge:
 	jp EndMoveEffect
 
 .UsedText:
-	text_jump UnknownText_0x1c0d0e ; "[USER]"
+	text_jump Text_BattleUser ; "[USER]"
 	start_asm
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
@@ -5490,17 +5490,17 @@ BattleCommand_charge:
 
 .SolarBeam:
 ; 'took in sunlight!'
-	text_jump UnknownText_0x1c0d26
+	text_jump _BattleTookSunlightText
 	text_end
 
 .Fly:
 ; 'flew up high!'
-	text_jump UnknownText_0x1c0d5c
+	text_jump _BattleFlewText
 	text_end
 
 .Dig:
 ; 'dug a hole!'
-	text_jump UnknownText_0x1c0d6c
+	text_jump _BattleDugText
 	text_end
 
 BattleCommand_traptarget:

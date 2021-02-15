@@ -603,7 +603,7 @@ Script_verbosegiveitem:
 	jp ScriptCall
 
 GiveItemScript:
-	farwritetext UnknownText_0x1c4719
+	farwritetext _ReceivedItemText
 	iffalse .Full
 	specialsound
 	waitbutton
@@ -646,15 +646,15 @@ Script_verbosegiveitem2:
 Script_itemnotify:
 	call GetPocketName
 	call CurItemName
-	ld b, BANK(UnknownText_0x1c472c)
-	ld hl, UnknownText_0x1c472c
+	ld b, BANK(_PutItemInPocketText)
+	ld hl, _PutItemInPocketText
 	jp MapTextbox
 
 Script_pocketisfull:
 	call GetPocketName
 	call CurItemName
-	ld b, BANK(UnknownText_0x1c474b)
-	ld hl, UnknownText_0x1c474b
+	ld b, BANK(_PocketIsFullText)
+	ld hl, _PocketIsFullText
 	jp MapTextbox
 
 Script_specialsound:
@@ -2768,7 +2768,7 @@ Script_verbosegivetmhm:
 	jp ScriptCall
 
 GiveTMHMScript:
-	farwritetext UnknownText_0x1c4719
+	farwritetext _ReceivedItemText
 	playsound SFX_GET_TM
 	waitsfx
 	waitbutton
@@ -2778,8 +2778,8 @@ GiveTMHMScript:
 Script_tmhmnotify:
 	call GetTMHMPocketName
 	call CurTMHMName
-	ld b, BANK(UnknownText_0x1c472c)
-	ld hl, UnknownText_0x1c472c
+	ld b, BANK(_PutItemInPocketText)
+	ld hl, _PutItemInPocketText
 	jp MapTextbox
 
 Script_tmhmtotext:
@@ -2966,7 +2966,7 @@ Script_verbosegivekeyitem:
 	jp ScriptCall
 
 GiveKeyItemScript:
-	farwritetext UnknownText_0x1c4719
+	farwritetext _ReceivedItemText
 	playsound SFX_KEY_ITEM
 	waitbutton
 	keyitemnotify
@@ -2975,6 +2975,6 @@ GiveKeyItemScript:
 Script_keyitemnotify:
 	call GetKeyItemPocketName
 	call GetCurKeyItemName
-	ld b, BANK(UnknownText_0x1c472c)
-	ld hl, UnknownText_0x1c472c
+	ld b, BANK(_PutItemInPocketText)
+	ld hl, _PutItemInPocketText
 	jp MapTextbox

@@ -16,7 +16,7 @@ GoldenrodGym_MapScriptHeader:
 
 	def_object_events
 	object_event  9,  6, SPRITE_CUTE_GIRL, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerSrandjrJoandcath1, -1
-	object_event  8,  3, SPRITE_WHITNEY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, WhitneyScript_0x5400c, -1
+	object_event  8,  3, SPRITE_WHITNEY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, GoldenrodGymWhitneyScript, -1
 	object_event  9, 13, SPRITE_LASS, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 4, GenericTrainerLassCathy, -1
 	object_event  9,  7, SPRITE_CUTE_GIRL, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerSrandjrJoandcath2, -1
 	object_event  0,  2, SPRITE_BEAUTY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerBeautyVictoria, -1
@@ -26,12 +26,12 @@ GoldenrodGym_MapScriptHeader:
 	object_const_def
 	const GOLDENRODGYM_LASS2
 
-WhitneyScript_0x5400c:
+GoldenrodGymWhitneyScript:
 	faceplayer
 	checkevent EVENT_BEAT_WHITNEY
 	iftrue .FightDone
-	showtext UnknownText_0x54122
-	winlosstext UnknownText_0x541a5, 0
+	showtext WhitneyBeforeText
+	winlosstext WhitneyShouldntBeSoSeriousText, 0
 	loadtrainer WHITNEY, 1
 	startbattle
 	reloadmapafterbattle
@@ -46,22 +46,22 @@ WhitneyScript_0x5400c:
 	opentext
 	checkevent EVENT_MADE_WHITNEY_CRY
 	iffalse .StoppedCrying
-	jumpopenedtext UnknownText_0x541f4
+	jumpopenedtext WhitneyYouMeanieText
 
 .StoppedCrying:
 	checkevent EVENT_GOT_TM45_ATTRACT
-	iftrue_jumpopenedtext UnknownText_0x54360
+	iftrue_jumpopenedtext WhitneyGoodCryText
 	checkflag ENGINE_PLAINBADGE
-	iftrue UnknownScript_0x54064
-	writetext UnknownText_0x54222
+	iftrue .GotPlainBadge
+	writetext WhitneyWhatDoYouWantText
 	buttonsound
 	waitsfx
-	writetext UnknownText_0x54273
+	writetext PlayerReceivedPlainBadgeText
 	playsound SFX_GET_BADGE
 	waitsfx
 	setflag ENGINE_PLAINBADGE
-UnknownScript_0x54064:
-	writetext UnknownText_0x5428b
+.GotPlainBadge:
+	writetext WhitneyPlainBadgeText
 	buttonsound
 	verbosegivetmhm TM_ATTRACT
 	setevent EVENT_GOT_TM45_ATTRACT
@@ -184,7 +184,7 @@ JoWalksAwayMovement:
 	turn_head_left
 	step_end
 
-UnknownText_0x54122:
+WhitneyBeforeText:
 	text "Hi! I'm Whitney!"
 
 	para "Everyone was into"
@@ -199,7 +199,7 @@ UnknownText_0x54122:
 	cont "you--I'm good!"
 	done
 
-UnknownText_0x541a5:
+WhitneyShouldntBeSoSeriousText:
 	text "Sob…"
 
 	para "…Waaaaaaah!"
@@ -210,7 +210,7 @@ UnknownText_0x541a5:
 	cont "you child, you!"
 	done
 
-UnknownText_0x541f4:
+WhitneyYouMeanieText:
 	text "Waaaaah!"
 
 	para "Waaaaah!"
@@ -219,7 +219,7 @@ UnknownText_0x541f4:
 	line "…You meanie!"
 	done
 
-UnknownText_0x54222:
+WhitneyWhatDoYouWantText:
 	text "…Sniff…"
 
 	para "What? What do you"
@@ -230,12 +230,12 @@ UnknownText_0x54222:
 	cont "the Plain Badge."
 	done
 
-UnknownText_0x54273:
+PlayerReceivedPlainBadgeText:
 	text "<PLAYER> received"
 	line "the Plain Badge."
 	done
 
-UnknownText_0x5428b:
+WhitneyPlainBadgeText:
 	text "The Plain Badge"
 	line "lets your #mon"
 
@@ -246,7 +246,7 @@ UnknownText_0x5428b:
 	line "this too!"
 	done
 
-UnknownText_0x54360:
+WhitneyGoodCryText:
 	text "Ah, that was a"
 	line "good cry!"
 

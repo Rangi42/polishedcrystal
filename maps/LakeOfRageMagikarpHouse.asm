@@ -13,9 +13,9 @@ LakeOfRageMagikarpHouse_MapScriptHeader:
 	bg_event  7,  1, BGEVENT_JUMPSTD, difficultbookshelf
 
 	def_object_events
-	object_event  2,  3, SPRITE_FISHING_GURU, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, FishingGuruScript_0x19a6ae, -1
+	object_event  2,  3, SPRITE_FISHING_GURU, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, MagikarpLengthRaterScript, -1
 
-FishingGuruScript_0x19a6ae:
+MagikarpLengthRaterScript:
 	faceplayer
 	opentext
 	checkevent EVENT_LAKE_OF_RAGE_ELIXIR_ON_STANDBY
@@ -25,15 +25,15 @@ FishingGuruScript_0x19a6ae:
 	checkevent EVENT_CLEARED_ROCKET_HIDEOUT
 	iftrue UnknownScript_0x19a6d7
 	checkevent EVENT_LAKE_OF_RAGE_EXPLAINED_WEIRD_MAGIKARP
-	iftrue_jumpopenedtext UnknownText_0x19a84d
-	writetext UnknownText_0x19a72e
+	iftrue_jumpopenedtext MagikarpLengthRaterText_MenInBlack
+	writetext MagikarpLengthRaterText_LakeOfRageHistory
 	waitbutton
 	closetext
 	setevent EVENT_LAKE_OF_RAGE_EXPLAINED_WEIRD_MAGIKARP
 	end
 
 UnknownScript_0x19a6d7:
-	writetext UnknownText_0x19a890
+	writetext MagikarpLengthRaterText_WorldsLargestMagikarp
 	waitbutton
 	closetext
 	setevent EVENT_LAKE_OF_RAGE_ASKED_FOR_MAGIKARP
@@ -43,20 +43,20 @@ UnknownScript_0x19a6e0:
 	writebyte MAGIKARP
 	special Special_FindThatSpecies
 	iffalse UnknownScript_0x19a6d7
-	writetext UnknownText_0x19a93e
+	writetext MagikarpLengthRaterText_YouHaveAMagikarp
 	waitbutton
 	special Special_CheckMagikarpLength
-	iffalse_jumpopenedtext UnknownText_0x19aa5c
+	iffalse_jumpopenedtext MagikarpLengthRaterText_NotMagikarp
 	ifequal $1, UnknownScript_0x19a722
 	ifequal $2, UnknownScript_0x19a716
 	jump UnknownScript_0x19a6fe
 
 UnknownScript_0x19a6fe:
-	writetext UnknownText_0x19a977
+	writetext MagikarpLengthRaterText_Memento
 	buttonsound
 	verbosegiveitem ELIXIR
 	iffalse UnknownScript_0x19a711
-	writetext UnknownText_0x19a9c3
+	writetext MagikarpLengthRaterText_Bonus
 	waitbutton
 	closetext
 	clearevent EVENT_LAKE_OF_RAGE_ELIXIR_ON_STANDBY
@@ -90,7 +90,7 @@ UnknownScript_0x19a722:
 	line "Maybe next time."
 	done
 
-UnknownText_0x19a72e:
+MagikarpLengthRaterText_LakeOfRageHistory:
 	text "Lake of Rage is"
 	line "actually a crater"
 
@@ -119,7 +119,7 @@ UnknownText_0x19a72e:
 	line "what's happening."
 	done
 
-UnknownText_0x19a84d:
+MagikarpLengthRaterText_MenInBlack:
 	text "The lake hasn't"
 	line "been normal since"
 
@@ -127,7 +127,7 @@ UnknownText_0x19a84d:
 	line "black arrived."
 	done
 
-UnknownText_0x19a890:
+MagikarpLengthRaterText_WorldsLargestMagikarp:
 	text "Lake of Rage is"
 	line "back to normal."
 
@@ -144,7 +144,7 @@ UnknownText_0x19a890:
 	cont "you do."
 	done
 
-UnknownText_0x19a93e:
+MagikarpLengthRaterText_YouHaveAMagikarp:
 	text "Ah, you have a"
 	line "Magikarp! Let's"
 
@@ -152,7 +152,7 @@ UnknownText_0x19a93e:
 	line "baby is."
 	done
 
-UnknownText_0x19a977:
+MagikarpLengthRaterText_Memento:
 	text "Wow! This one is"
 	line "outstanding!"
 
@@ -163,7 +163,7 @@ UnknownText_0x19a977:
 	line "memento!"
 	done
 
-UnknownText_0x19a9c3:
+MagikarpLengthRaterText_Bonus:
 	text "The record is the"
 	line "important thing."
 
@@ -171,7 +171,7 @@ UnknownText_0x19a9c3:
 	line "a bonus!"
 	done
 
-UnknownText_0x19aa5c:
+MagikarpLengthRaterText_NotMagikarp:
 	text "What? That's not a"
 	line "Magikarp!"
 	done

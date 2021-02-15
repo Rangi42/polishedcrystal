@@ -1100,7 +1100,7 @@ TradeAnim_SentToOTText:
 
 .Text_WasSentTo:
 	; was sent to @ .
-	text_jump UnknownText_0x1bc6e9
+	text_jump _MonWasSentToText
 	text_end
 
 .Text_MonName:
@@ -1119,12 +1119,12 @@ TradeAnim_OTBidsFarewell:
 
 .Text_BidsFarewellToMon:
 	; bids farewell to
-	text_jump UnknownText_0x1bc703
+	text_jump _BidsFarewellToMonText
 	text_end
 
 .Text_MonName:
 	; .
-	text_jump UnknownText_0x1bc719
+	text_jump _MonNameBidsFarewellText
 	text_end
 
 TradeAnim_TakeCareOfText:
@@ -1141,7 +1141,7 @@ TradeAnim_TakeCareOfText:
 
 .Text_TakeGoodCareOfMon:
 	; Take good care of @ .
-	text_jump UnknownText_0x1bc71f
+	text_jump _TakeGoodCareOfMonText
 	text_end
 
 TradeAnim_OTSendsText1:
@@ -1157,12 +1157,12 @@ TradeAnim_OTSendsText1:
 
 .Text_ForYourMon:
 	; For @ 's @ ,
-	text_jump UnknownText_0x1bc739
+	text_jump _ForYourMonSendsText
 	text_end
 
 .Text_OTSends:
 	; sends @ .
-	text_jump UnknownText_0x1bc74c
+	text_jump _OTSendsText
 	text_end
 
 TradeAnim_OTSendsText2:
@@ -1178,12 +1178,12 @@ TradeAnim_OTSendsText2:
 
 .Text_WillTrade:
 	; will trade @ @
-	text_jump UnknownText_0x1bc75e
+	text_jump _WillTradeText
 	text_end
 
 .Text_ForYourMon:
 	; for @ 's @ .
-	text_jump UnknownText_0x1bc774
+	text_jump _ForYourMonWillTradeText
 	text_end
 
 TradeAnim_Wait80Frames:

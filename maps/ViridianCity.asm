@@ -24,12 +24,12 @@ ViridianCity_MapScriptHeader:
 	bg_event 21, 15, BGEVENT_JUMPTEXT, TrainerHouseSignText
 
 	def_object_events
-	object_event 18,  5, SPRITE_GRAMPS, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, GrampsScript_0x1a9a4c, -1
-	object_event 32,  8, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, GrampsScript_0x1a9a61, EVENT_BLUE_IN_CINNABAR
-	object_event 30,  8, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, GrampsScript_0x1a9a61, EVENT_VIRIDIAN_GYM_BLUE
-	object_event  6, 23, SPRITE_FAT_GUY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, FisherScript_0x1a9a75, -1
-	object_event 17, 21, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_WANDER, 3, 3, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1a9daa, -1
-	object_event 31, 23, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_WANDER, 1, 2, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, ViridianCityYoungsterText, -1
+	object_event 18,  5, SPRITE_GRAMPS, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ViridianCityCoffeeGramps, -1
+	object_event 32,  8, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, ViridianCityGrampsNearGym, EVENT_BLUE_IN_CINNABAR
+	object_event 30,  8, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, ViridianCityGrampsNearGym, EVENT_VIRIDIAN_GYM_BLUE
+	object_event  6, 23, SPRITE_FAT_GUY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, ViridianCityDreamEaterFisher, -1
+	object_event 17, 21, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_WANDER, 3, 3, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, ViridianCityYoungsterText, -1
+	object_event 31, 23, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_WANDER, 1, 2, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, ViridianCityYoungster2Text, -1
 	cuttree_event 14,  4, EVENT_VIRIDIAN_CITY_CUT_TREE_1
 	cuttree_event  8, 22, EVENT_VIRIDIAN_CITY_CUT_TREE_2
 
@@ -37,25 +37,25 @@ ViridianCityFlyPoint:
 	setflag ENGINE_FLYPOINT_VIRIDIAN
 	return
 
-GrampsScript_0x1a9a4c:
+ViridianCityCoffeeGramps:
 	faceplayer
 	opentext
-	writetext UnknownText_0x1a9aa5
+	writetext ViridianCityCoffeeGrampsQuestionText
 	yesorno
-	iffalse_jumpopenedtext UnknownText_0x1a9bb7
-	jumpopenedtext UnknownText_0x1a9b6f
+	iffalse_jumpopenedtext ViridianCityCoffeeGrampsDoubtedText
+	jumpopenedtext ViridianCityCoffeeGrampsBelievedText
 
-GrampsScript_0x1a9a61:
+ViridianCityGrampsNearGym:
 	checkevent EVENT_BLUE_IN_CINNABAR
-	iftrue_jumptextfaceplayer UnknownText_0x1a9c7e
-	jumptextfaceplayer UnknownText_0x1a9c11
+	iftrue_jumptextfaceplayer ViridianCityGrampsNearGymBlueReturnedText
+	jumptextfaceplayer ViridianCityGrampsNearGymText
 
-FisherScript_0x1a9a75:
+ViridianCityDreamEaterFisher:
 	faceplayer
 	opentext
 	checkevent EVENT_LISTENED_TO_DREAM_EATER_INTRO
 	iftrue ViridianCityTutorDreamEaterScript
-	writetext UnknownText_0x1a9cc4
+	writetext ViridianCityDreamEaterFisherText
 	waitbutton
 	setevent EVENT_LISTENED_TO_DREAM_EATER_INTRO
 ViridianCityTutorDreamEaterScript:
@@ -80,7 +80,7 @@ ViridianCityTutorDreamEaterScript:
 	takeitem SILVER_LEAF
 	jumpopenedtext Text_ViridianCityTutorTaught
 
-UnknownText_0x1a9aa5:
+ViridianCityCoffeeGrampsQuestionText:
 	text "Hey, kid! I just"
 	line "had a double shot"
 
@@ -100,7 +100,7 @@ UnknownText_0x1a9aa5:
 	para "Do you believe me?"
 	done
 
-UnknownText_0x1a9b6f:
+ViridianCityCoffeeGrampsBelievedText:
 	text "Good, good. Yes, I"
 	line "was something out"
 
@@ -108,7 +108,7 @@ UnknownText_0x1a9b6f:
 	line "let me tell you!"
 	done
 
-UnknownText_0x1a9bb7:
+ViridianCityCoffeeGrampsDoubtedText:
 	text "What? You little"
 	line "whelp!"
 
@@ -119,7 +119,7 @@ UnknownText_0x1a9bb7:
 	line "or two. Humph!"
 	done
 
-UnknownText_0x1a9c11:
+ViridianCityGrampsNearGymText:
 	text "This Gym didn't"
 	line "have a Leader"
 	cont "until recently."
@@ -131,7 +131,7 @@ UnknownText_0x1a9c11:
 	line "often away."
 	done
 
-UnknownText_0x1a9c7e:
+ViridianCityGrampsNearGymBlueReturnedText:
 	text "Are you going to"
 	line "battle the Leader?"
 
@@ -139,7 +139,7 @@ UnknownText_0x1a9c7e:
 	line "You'll need it."
 	done
 
-UnknownText_0x1a9cc4:
+ViridianCityDreamEaterFisherText:
 	text "Yawn!"
 
 	para "I must have dozed"
@@ -192,7 +192,7 @@ Text_ViridianCityTutorTaught:
 	para "…Zzzzz…"
 	done
 
-UnknownText_0x1a9daa:
+ViridianCityYoungsterText:
 	text "I heard that there"
 	line "are many items on"
 
@@ -200,7 +200,7 @@ UnknownText_0x1a9daa:
 	line "Viridian Forest."
 	done
 
-ViridianCityYoungsterText:
+ViridianCityYoungster2Text:
 	text "The leader of Team"
 	line "Rocket was the Gym"
 

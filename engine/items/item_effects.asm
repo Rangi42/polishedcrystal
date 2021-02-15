@@ -796,27 +796,27 @@ PokeBallEffect:
 
 Text_NoShake:
 	; Oh no! The #MON broke free!
-	text_jump UnknownText_0x1c5aa6
+	text_jump _BallBrokeFreeText
 	text_end
 
 Text_OneShake:
 	; Aww! It appeared to be caught!
-	text_jump UnknownText_0x1c5ac3
+	text_jump _BallAppearedCaughtText
 	text_end
 
 Text_TwoShakes:
 	; Aargh! Almost had it!
-	text_jump UnknownText_0x1c5ae3
+	text_jump _BallAlmostHadItText
 	text_end
 
 Text_ThreeShakes:
 	; Shoot! It was so close too!
-	text_jump UnknownText_0x1c5afa
+	text_jump _BallSoCloseText
 	text_end
 
 Text_GotchaMonWasCaught:
 	; Gotcha! @ was caught!@ @
-	text_jump UnknownText_0x1c5b17
+	text_jump Text_BallCaught
 	start_asm
 	call WaitSFX
 	push bc
@@ -836,17 +836,17 @@ TextJump_Waitbutton:
 
 Text_SentToBillsPC:
 	; was sent to BILL's PC.
-	text_jump UnknownText_0x1c5b38
+	text_jump _BallSentToPCText
 	text_end
 
 Text_AddedToPokedex:
 	; 's data was newly added to the #DEX.@ @
-	text_jump UnknownText_0x1c5b53
+	text_jump _NewDexDataText
 	text_end
 
 Text_AskNicknameNewlyCaughtMon:
 	; Give a nickname to @ ?
-	text_jump UnknownText_0x1c5b7f
+	text_jump _AskGiveNicknameText
 	text_end
 
 ReturnToBattle_UseBall:
@@ -1734,7 +1734,7 @@ FreshSnackFunction:
 
 .Text_CantBeUsed:
 	; That can't be used on this #MON.
-	text_jump UnknownText_0x1c5bac
+	text_jump _ItemCantUseOnMonText
 	text_end
 
 EscapeRope:
@@ -1826,7 +1826,7 @@ BlueCard:
 	jp MenuTextboxWaitButton
 
 .bluecardtext
-	text_jump UnknownText_0x1c5c5e
+	text_jump _BlueCardBalanceText
 	text_end
 
 CoinCase:
@@ -1834,7 +1834,7 @@ CoinCase:
 	jp MenuTextboxWaitButton
 
 .coincasetext
-	text_jump UnknownText_0x1c5c7b
+	text_jump _CoinCaseCountText
 	text_end
 
 ApricornBox:
@@ -1938,13 +1938,13 @@ RestorePPEffect:
 	cp ELIXIR
 	jp z, Elixir_RestorePPofAllMoves
 
-	ld hl, TextJump_RaiseThePPOfWhichMove
+	ld hl, RaiseThePPOfWhichMoveText
 	ld a, [wTempItem]
 	cp PP_UP
 	jr z, .ppup
 	cp PP_MAX
 	jr z, .ppup
-	ld hl, TextJump_RestoreThePPOfWhichMove
+	ld hl, RestoreThePPOfWhichMoveText
 
 .ppup
 	call PrintText
@@ -1991,7 +1991,7 @@ RestorePPEffect:
 
 .CantUsePPUpOnSketch:
 .pp_is_maxed_out
-	ld hl, TextJump_PPIsMaxedOut
+	ld hl, PPIsMaxedOutText
 	call PrintText
 	jr .loop2
 
@@ -2012,11 +2012,11 @@ RestorePPEffect:
 	call ApplyPPUp
 	call Play_SFX_FULL_HEAL
 
-	ld hl, TextJump_PPsIncreased
+	ld hl, PPsIncreasedText
 	ld a, [wTempItem]
 	cp PP_UP
 	jr z, .ppup3
-	ld hl, TextJump_PPsMaximized
+	ld hl, PPsMaximizedText
 .ppup3
 	call PrintText
 
@@ -2039,7 +2039,7 @@ BattleRestorePP:
 
 .not_in_battle
 	call Play_SFX_FULL_HEAL
-	ld hl, UnknownText_0xf739
+	ld hl, PPRestoredText
 	call PrintText
 	jr FinishPPRestore
 
@@ -2158,34 +2158,34 @@ RestorePP:
 	xor a
 	ret
 
-TextJump_RaiseThePPOfWhichMove:
+RaiseThePPOfWhichMoveText:
 	; Raise the PP of which move?
 	text_jump Text_RaiseThePPOfWhichMove
 	text_end
 
-TextJump_RestoreThePPOfWhichMove:
+RestoreThePPOfWhichMoveText:
 	; Restore the PP of which move?
 	text_jump Text_RestoreThePPOfWhichMove
 	text_end
 
-TextJump_PPIsMaxedOut:
+PPIsMaxedOutText:
 	; 's PP is maxed out.
 	text_jump Text_PPIsMaxedOut
 	text_end
 
-TextJump_PPsIncreased:
+PPsIncreasedText:
 	; 's PP increased.
 	text_jump Text_PPsIncreased
 	text_end
 
-TextJump_PPsMaximized:
+PPsMaximizedText:
 	; 's PP maximized.
 	text_jump Text_PPsMaximized
 	text_end
 
-UnknownText_0xf739:
+PPRestoredText:
 	; PP was restored.
-	text_jump UnknownText_0x1c5cf1
+	text_jump _PPRestoredText
 	text_end
 
 SquirtBottle:
@@ -2346,12 +2346,12 @@ ItemNotUsed_ExitMenu:
 
 LooksBitterText:
 	; It looks bitter…
-	text_jump UnknownText_0x1c5d3e
+	text_jump _ItemLooksBitterText
 	text_end
 
 CantUseOnEggText:
 	; That can't be used on an EGG.
-	text_jump UnknownText_0x1c5d50
+	text_jump _ItemCantUseOnEggText
 	text_end
 
 AlreadyInThatBallText:
@@ -2360,27 +2360,27 @@ AlreadyInThatBallText:
 
 IsntTheTimeText:
 	; OAK:  ! This isn't the time to use that!
-	text_jump UnknownText_0x1c5d6e
+	text_jump _ItemOakWarningText
 	text_end
 
 WontHaveAnyEffectText:
 	; It won't have any effect.
-	text_jump UnknownText_0x1c5db6
+	text_jump _ItemWontHaveEffectText
 	text_end
 
 BlockedTheBallText:
 	; The trainer blocked the BALL!
-	text_jump UnknownText_0x1c5dd0
+	text_jump _BallBlockedText
 	text_end
 
 DontBeAThiefText:
 	; Don't be a thief!
-	text_jump UnknownText_0x1c5def
+	text_jump _BallDontBeAThiefText
 	text_end
 
 Ball_BoxIsFullText:
 	; The #MON BOX is full. That can't be used now.
-	text_jump UnknownText_0x1c5e3a
+	text_jump _BallBoxFullText
 	text_end
 
 Ball_MonIsHiddenText:
@@ -2405,7 +2405,7 @@ Revive_NuzlockeFailureText:
 
 UsedItemText:
 	; used the@ .
-	text_jump UnknownText_0x1c5e68
+	text_jump _ItemUsedText
 	text_end
 
 ApplyPPUp:

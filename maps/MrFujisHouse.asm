@@ -12,13 +12,13 @@ MrFujisHouse_MapScriptHeader:
 	def_bg_events
 
 	def_object_events
-	object_event  4,  1, SPRITE_POKEMANIAC, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x7e8f1, -1
-	object_event  3,  4, SPRITE_CUTE_GIRL, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x7e940, -1
+	object_event  4,  1, SPRITE_POKEMANIAC, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, MrFujisHouseSuperNerdText, -1
+	object_event  3,  4, SPRITE_CUTE_GIRL, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, MrFujisHouseLassText, -1
 	pokemon_event  8,  4, PSYDUCK, -1, -1, PAL_NPC_BROWN, MrFujisPsyduckText, -1
 	pokemon_event  5,  5, NIDORINO, -1, -1, PAL_NPC_PURPLE, MrFujisNidorinoText, -1
 	pokemon_event  1,  3, PIDGEY, -1, -1, PAL_NPC_BROWN, MrFujisPidgeyText, -1
 
-UnknownText_0x7e8f1:
+MrFujisHouseSuperNerdText:
 	text "Mr.Fuji does live"
 	line "here, but he's not"
 	cont "home now."
@@ -27,7 +27,7 @@ UnknownText_0x7e8f1:
 	line "House of Souls."
 	done
 
-UnknownText_0x7e940:
+MrFujisHouseLassText:
 	text "Some cold-hearted"
 	line "people stop caring"
 	cont "for their #mon."

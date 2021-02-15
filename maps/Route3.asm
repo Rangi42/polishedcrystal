@@ -11,7 +11,7 @@ Route3_MapScriptHeader:
 	def_coord_events
 
 	def_bg_events
-	bg_event 63, 15, BGEVENT_JUMPTEXT, UnknownText_0x1ae163
+	bg_event 63, 15, BGEVENT_JUMPTEXT, Route3MtMoonSquareSignText
 	bg_event 11, 17, BGEVENT_ITEM + MOON_STONE, EVENT_ROUTE_3_HIDDEN_MOON_STONE
 	bg_event  8, 15, BGEVENT_JUMPTEXT, Route3MeteoriteText
 	bg_event  8, 17, BGEVENT_JUMPTEXT, Route3MeteoriteText
@@ -271,6 +271,6 @@ Route3MeteoriteText:
 	cont "space?"
 	done
 
-UnknownText_0x1ae163:
+Route3MtMoonSquareSignText:
 	text "Mt.Moon Tunnel"
 	done

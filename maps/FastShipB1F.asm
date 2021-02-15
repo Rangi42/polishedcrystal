@@ -8,14 +8,14 @@ FastShipB1F_MapScriptHeader:
 	warp_event 27, 11, FAST_SHIP_1F, 12
 
 	def_coord_events
-	coord_event 26,  5, 0, UnknownScript_0x7673c
-	coord_event 27,  5, 0, UnknownScript_0x76751
+	coord_event 26,  5, 0, FastShipB1FSailorBlocksLeft
+	coord_event 27,  5, 0, FastShipB1FSailorBlocksRight
 
 	def_bg_events
 
 	def_object_events
-	object_event 26,  4, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, SailorScript_0x76767, EVENT_FAST_SHIP_B1F_SAILOR_LEFT
-	object_event 27,  4, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, SailorScript_0x76767, EVENT_FAST_SHIP_B1F_SAILOR_RIGHT
+	object_event 26,  4, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, FastShipB1FSailorScript, EVENT_FAST_SHIP_B1F_SAILOR_LEFT
+	object_event 27,  4, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, FastShipB1FSailorScript, EVENT_FAST_SHIP_B1F_SAILOR_RIGHT
 	object_event  5,  9, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerSailorJeff, EVENT_FAST_SHIP_PASSENGERS_FIRST_TRIP
 	object_event  2,  2, SPRITE_PICNICKER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerPicnickerDebra, EVENT_FAST_SHIP_PASSENGERS_FIRST_TRIP
 	object_event 22,  7, SPRITE_JUGGLER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerJugglerFritz, EVENT_FAST_SHIP_PASSENGERS_FIRST_TRIP
@@ -32,49 +32,49 @@ FastShipB1F_MapScriptHeader:
 	const FASTSHIPB1F_SAILOR1
 	const FASTSHIPB1F_SAILOR2
 
-UnknownScript_0x7673c:
+FastShipB1FSailorBlocksLeft:
 	checkevent EVENT_FAST_SHIP_B1F_SAILOR_RIGHT
-	iftrue UnknownScript_0x76766
-	applymovement FASTSHIPB1F_SAILOR2, MovementData_0x76876
+	iftrue FastShipB1FAlreadyBlocked
+	applymovement FASTSHIPB1F_SAILOR2, FastShipB1FSailorBlocksLeftMovement
 	moveobject FASTSHIPB1F_SAILOR1, 26, 4
 	appear FASTSHIPB1F_SAILOR1
 	pause 5
 	disappear FASTSHIPB1F_SAILOR2
 	end
 
-UnknownScript_0x76751:
+FastShipB1FSailorBlocksRight:
 	checkevent EVENT_FAST_SHIP_B1F_SAILOR_LEFT
-	iftrue UnknownScript_0x76766
-	applymovement FASTSHIPB1F_SAILOR1, MovementData_0x76871
+	iftrue FastShipB1FAlreadyBlocked
+	applymovement FASTSHIPB1F_SAILOR1, FastShipB1FSailorBlocksRightMovement
 	moveobject FASTSHIPB1F_SAILOR2, 27, 4
 	appear FASTSHIPB1F_SAILOR2
 	pause 5
 	disappear FASTSHIPB1F_SAILOR1
-UnknownScript_0x76766:
+FastShipB1FAlreadyBlocked:
 	end
 
-SailorScript_0x76767:
+FastShipB1FSailorScript:
 	checkevent EVENT_FAST_SHIP_FIRST_TIME
-	iftrue_jumptextfaceplayer UnknownText_0x7699d
+	iftrue_jumptextfaceplayer FastShipB1FOnDutySailorDirectionsText
 	faceplayer
 	opentext
 	checkevent EVENT_FAST_SHIP_LAZY_SAILOR
 	iftrue UnknownScript_0x7678d
 	checkevent EVENT_FAST_SHIP_INFORMED_ABOUT_LAZY_SAILOR
-	iftrue_jumpopenedtext UnknownText_0x76907
+	iftrue_jumpopenedtext FastShipB1FOnDutySailorRefusedText
 	setevent EVENT_FAST_SHIP_INFORMED_ABOUT_LAZY_SAILOR
 	clearevent EVENT_FAST_SHIP_CABINS_NNW_NNE_NE_SAILOR
-	jumpopenedtext UnknownText_0x7687b
+	jumpopenedtext FastShipB1FOnDutySailorText
 
 UnknownScript_0x7678d:
-	writetext UnknownText_0x7692e
+	writetext FastShipB1FOnDutySailorThanksText
 	checkevent EVENT_FAST_SHIP_FOUND_GIRL
 	iffalse UnknownScript_0x76799
 	waitendtext
 
 UnknownScript_0x76799:
 	buttonsound
-	jumpopenedtext UnknownText_0x7696d
+	jumpopenedtext FastShipB1FOnDutySailorSawLittleGirlText
 
 GenericTrainerSailorJeff:
 	generictrainer SAILOR, JEFF, EVENT_BEAT_SAILOR_JEFF, SailorJeffSeenText, SailorJeffBeatenText
@@ -183,21 +183,21 @@ GenericTrainerSchoolboyRicky:
 	cont "in the ruins."
 	done
 
-MovementData_0x76871:
+FastShipB1FSailorBlocksRightMovement:
 	fix_facing
 	run_step_right
 	remove_fixed_facing
 	turn_head_down
 	step_end
 
-MovementData_0x76876:
+FastShipB1FSailorBlocksLeftMovement:
 	fix_facing
 	run_step_left
 	remove_fixed_facing
 	turn_head_down
 	step_end
 
-UnknownText_0x7687b:
+FastShipB1FOnDutySailorText:
 	text "Hey, kid. Could I"
 	line "get you to look"
 	cont "for my buddy?"
@@ -211,14 +211,14 @@ UnknownText_0x7687b:
 	cont "duty right now."
 	done
 
-UnknownText_0x76907:
+FastShipB1FOnDutySailorRefusedText:
 	text "Oh, gee…"
 
 	para "The Captain will"
 	line "be furious…"
 	done
 
-UnknownText_0x7692e:
+FastShipB1FOnDutySailorThanksText:
 	text "Thanks, kid!"
 	line "I chewed him out"
 
@@ -226,14 +226,14 @@ UnknownText_0x7692e:
 	line "slacking off!"
 	done
 
-UnknownText_0x7696d:
+FastShipB1FOnDutySailorSawLittleGirlText:
 	text "A little girl?"
 
 	para "I may have seen"
 	line "her go by here."
 	done
 
-UnknownText_0x7699d:
+FastShipB1FOnDutySailorDirectionsText:
 	text "The dining room is"
 	line "up ahead."
 

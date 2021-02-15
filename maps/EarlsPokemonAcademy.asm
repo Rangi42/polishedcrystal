@@ -18,38 +18,38 @@ EarlsPokemonAcademy_MapScriptHeader:
 	def_object_events
 	object_event  4,  2, SPRITE_FAT_GUY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, AcademyEarl, EVENT_EARLS_ACADEMY_EARL
 	object_event  2,  4, SPRITE_BOOK_PAPER_POKEDEX, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, AcademyNotebook, -1
-	object_event  2,  5, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x68d80, -1
-	object_event  4,  7, SPRITE_CHILD, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x68e39, -1
-	object_event  3, 11, SPRITE_GAMER_GIRL, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, GameboyKidScript_0x68a86, -1
-	object_event  4, 11, SPRITE_GAMEBOY_KID, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, GameboyKidScript_0x68a91, -1
+	object_event  2,  5, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, EarlsPokemonAcademyYoungster1Text, -1
+	object_event  4,  7, SPRITE_CHILD, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_COMMAND, jumptextfaceplayer, EarlsPokemonAcademyYoungster2Text, -1
+	object_event  3, 11, SPRITE_GAMER_GIRL, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, EarlsPokemonAcademyGameboyKid1Script, -1
+	object_event  4, 11, SPRITE_GAMEBOY_KID, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, EarlsPokemonAcademyGameboyKid2Script, -1
 
 	object_const_def
 	const EARLSPOKEMONACADEMY_EARL
 
 AcademyEarl:
 	givekeyitem TYPE_CHART ; failsafe in case Violet City Earl is gone already in a save
-	applymovement EARLSPOKEMONACADEMY_EARL, MovementData_0x68b2d
+	applymovement EARLSPOKEMONACADEMY_EARL, AcademyEarlSpinMovement
 	faceplayer
 	opentext
-	writetext UnknownText_0x68b3b
+	writetext AcademyEarlIntroText
 	yesorno
 	iffalse .Part1
-	writetext UnknownText_0x68bbd
+	writetext AcademyEarlTeachHowToWinText
 	yesorno
-	iffalse_jumpopenedtext UnknownText_0x68d31
+	iffalse_jumpopenedtext AcademyEarlNoMoreToTeachText
 .Part1:
-	writetext UnknownText_0x68c51
+	writetext AcademyEarlTeachMoreText
 	yesorno
-	iffalse_jumpopenedtext UnknownText_0x68d31
-	jumpopenedtext UnknownText_0x68c7b
+	iffalse_jumpopenedtext AcademyEarlNoMoreToTeachText
+	jumpopenedtext AcademyEarlTeachHowToRaiseWellText
 
-GameboyKidScript_0x68a86:
-	showtextfaceplayer UnknownText_0x68dda
+EarlsPokemonAcademyGameboyKid1Script:
+	showtextfaceplayer EarlsPokemonAcademyGameboyKid1Text
 	turnobject LAST_TALKED, DOWN
 	end
 
-GameboyKidScript_0x68a91:
-	showtextfaceplayer UnknownText_0x68e07
+EarlsPokemonAcademyGameboyKid2Script:
+	showtextfaceplayer EarlsPokemonAcademyGameboyKid2Text
 	turnobject LAST_TALKED, DOWN
 	end
 
@@ -153,7 +153,7 @@ PokemonJournalWillScript:
 	cont "late."
 	done
 
-MovementData_0x68b2d:
+AcademyEarlSpinMovement:
 	turn_head_down
 	turn_head_left
 	turn_head_up
@@ -169,7 +169,7 @@ MovementData_0x68b2d:
 	turn_head_down
 	step_end
 
-UnknownText_0x68b3b:
+AcademyEarlIntroText:
 	text "Earl, I am!"
 
 	para "Wonderful are"
@@ -184,7 +184,7 @@ UnknownText_0x68b3b:
 	cont "a winner is you?"
 	done
 
-UnknownText_0x68bbd:
+AcademyEarlTeachHowToWinText:
 	text "Good! Teach you,"
 	line "I will!"
 
@@ -200,13 +200,13 @@ UnknownText_0x68bbd:
 	line "want to hear?"
 	done
 
-UnknownText_0x68c51:
+AcademyEarlTeachMoreText:
 	text "So, want to know"
 	line "how to raise"
 	cont "#mon well?"
 	done
 
-UnknownText_0x68c7b:
+AcademyEarlTeachHowToRaiseWellText:
 	text "Fine! Teach you,"
 	line "I will!"
 
@@ -227,7 +227,7 @@ UnknownText_0x68c7b:
 	cont "become!"
 	done
 
-UnknownText_0x68d31:
+AcademyEarlNoMoreToTeachText:
 	text "Oh! Smart student"
 	line "you are! Nothing"
 	cont "more do I teach!"
@@ -236,7 +236,7 @@ UnknownText_0x68d31:
 	line "you must be!"
 	done
 
-UnknownText_0x68d80:
+EarlsPokemonAcademyYoungster1Text:
 	text "I'm taking notes"
 	line "of the teacher's"
 	cont "lecture."
@@ -246,19 +246,19 @@ UnknownText_0x68d80:
 	cont "blackboard too."
 	done
 
-UnknownText_0x68dda:
+EarlsPokemonAcademyGameboyKid1Text:
 	text "I traded my best"
 	line "#mon to the"
 	cont "guy beside me."
 	done
 
-UnknownText_0x68e07:
+EarlsPokemonAcademyGameboyKid2Text:
 	text "Huh? The #mon I"
 	line "just got is hold-"
 	cont "ing something!"
 	done
 
-UnknownText_0x68e39:
+EarlsPokemonAcademyYoungster2Text:
 	text "A #mon holding"
 	line "a Berry will heal"
 	cont "itself in battle."

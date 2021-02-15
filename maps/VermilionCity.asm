@@ -37,11 +37,11 @@ VermilionCity_MapScriptHeader:
 	def_object_events
 	object_event 35, 18, SPRITE_BIG_SNORLAX, SPRITEMOVEDATA_SNORLAX, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, VermilionSnorlax, EVENT_VERMILION_CITY_SNORLAX
 	object_event 18, 31, SPRITE_LAWRENCE, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_LAWRENCE_VERMILION_CITY
-	object_event 18, 13, SPRITE_BATTLE_GIRL, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1aaa15, -1
+	object_event 18, 13, SPRITE_BATTLE_GIRL, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, VermilionCityTeacherText, -1
 	object_event 23, 10, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, VermilionMachokeOwnerText, -1
 	object_event 26, 11, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, MACHOKE, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, VermilionMachoke, -1
-	object_event 14, 20, SPRITE_ROCKER, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1aab1a, -1
-	object_event 25, 16, SPRITE_POKEMANIAC, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, VermilionCitySuperNerdText, -1
+	object_event 14, 20, SPRITE_ROCKER, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, VermilionCitySuperNerdText, -1
+	object_event 25, 16, SPRITE_POKEMANIAC, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, VermilionCitySuperNerd2Text, -1
 	object_event 10,  9, SPRITE_SAILOR, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, VermilionCitySailorText, -1
 	object_event 31, 16, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_PURPLE, OBJECTTYPE_SCRIPT, 0, VermilionGymBadgeGuy, -1
 	cuttree_event 13, 23, EVENT_VERMILION_CITY_CUT_TREE
@@ -133,11 +133,11 @@ VermilionMachoke:
 VermilionSnorlax:
 	opentext
 	special SpecialSnorlaxAwake
-	iftrue UnknownScript_0x1aa9ab
-	jumpopenedtext UnknownText_0x1aab64
+	iftrue .Awake
+	jumpopenedtext VermilionCitySnorlaxSleepingText
 
-UnknownScript_0x1aa9ab:
-	writetext UnknownText_0x1aab84
+.Awake:
+	writetext VermilionCityRadioNearSnorlaxText
 	pause 15
 	cry SNORLAX
 	closetext
@@ -151,30 +151,30 @@ UnknownScript_0x1aa9ab:
 
 VermilionGymBadgeGuy:
 	checkevent EVENT_GOT_BOTTLE_CAP_FROM_VERMILION_GUY
-	iftrue_jumptextfaceplayer UnknownText_0x1aad4a
+	iftrue_jumptextfaceplayer VermilionCityBadgeGuyBattleEdgeText
 	checkcode VAR_BADGES
 	ifequal 16, .AllBadges
 	ifgreater 13, .MostBadges
 	ifgreater 9, .SomeBadges
-	jumptextfaceplayer UnknownText_0x1aabc8
+	jumptextfaceplayer VermilionCityBadgeGuyTrainerText
 
 .SomeBadges:
-	jumptextfaceplayer UnknownText_0x1aac2b
+	jumptextfaceplayer VermilionCityBadgeGuySomeBadgesText
 
 .MostBadges:
-	jumptextfaceplayer UnknownText_0x1aac88
+	jumptextfaceplayer VermilionCityBadgeGuyMostBadgesText
 
 .AllBadges:
 	faceplayer
 	opentext
-	writetext UnknownText_0x1aacf3
+	writetext VermilionCityBadgeGuyAllBadgesText
 	buttonsound
 	verbosegiveitem BOTTLE_CAP
 	iffalse_endtext
 	setevent EVENT_GOT_BOTTLE_CAP_FROM_VERMILION_GUY
 	jumpthisopenedtext
 
-UnknownText_0x1aad4a:
+VermilionCityBadgeGuyBattleEdgeText:
 	text "Having a variety"
 	line "of #mon types"
 
@@ -237,7 +237,7 @@ LawrenceIntroText:
 	cont "Farewell!"
 	done
 
-UnknownText_0x1aaa15:
+VermilionCityTeacherText:
 	text "Vermilion Port is"
 	line "Kanto's seaside"
 	cont "gateway."
@@ -273,7 +273,7 @@ VermilionMachokeText2:
 	line "ground flat."
 	done
 
-UnknownText_0x1aab1a:
+VermilionCitySuperNerdText:
 	text "There are eight"
 	line "Gyms in Kanto."
 
@@ -282,7 +282,7 @@ UnknownText_0x1aab1a:
 	cont "#mon Gym."
 	done
 
-VermilionCitySuperNerdText:
+VermilionCitySuperNerd2Text:
 	text "The man over there"
 	line "said his building"
 
@@ -297,12 +297,12 @@ VermilionCitySailorText:
 	line "good sea air!"
 	done
 
-UnknownText_0x1aab64:
+VermilionCitySnorlaxSleepingText:
 	text "Snorlax is snoring"
 	line "peacefully…"
 	done
 
-UnknownText_0x1aab84:
+VermilionCityRadioNearSnorlaxText:
 	text "The #gear was"
 	line "placed near the"
 	cont "sleeping Snorlax…"
@@ -312,7 +312,7 @@ UnknownText_0x1aab84:
 	para "Snorlax woke up!"
 	done
 
-UnknownText_0x1aabc8:
+VermilionCityBadgeGuyTrainerText:
 	text "Skilled trainers"
 	line "gather in Kanto."
 
@@ -323,7 +323,7 @@ UnknownText_0x1aabc8:
 	line "to defeat."
 	done
 
-UnknownText_0x1aac2b:
+VermilionCityBadgeGuySomeBadgesText:
 	text "You've started to"
 	line "collect Kanto Gym"
 	cont "Badges?"
@@ -333,7 +333,7 @@ UnknownText_0x1aac2b:
 	cont "here are tough?"
 	done
 
-UnknownText_0x1aac88:
+VermilionCityBadgeGuyMostBadgesText:
 	text "I guess you'll be"
 	line "finished with your"
 
@@ -345,7 +345,7 @@ UnknownText_0x1aac88:
 	cont "Badges."
 	done
 
-UnknownText_0x1aacf3:
+VermilionCityBadgeGuyAllBadgesText:
 	text "Congratulations!"
 
 	para "You got all the"

@@ -14,26 +14,26 @@ OlivineGym_MapScriptHeader:
 	bg_event  6, 13, BGEVENT_READ, OlivineGymStatue
 
 	def_object_events
-	object_event  5,  3, SPRITE_JASMINE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, JasmineScript_0x9c12f, EVENT_OLIVINE_GYM_JASMINE
+	object_event  5,  3, SPRITE_JASMINE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, OlivineGymJasmineScript, EVENT_OLIVINE_GYM_JASMINE
 	object_event  7, 13, SPRITE_GYM_GUY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, OlivineGymGuyScript, -1
 	object_event  3, 10, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_TRAINER, 2, OlivineGymGentlemanPreston, EVENT_OLIVINE_GYM_JASMINE
 	object_event  6,  7, SPRITE_LASS, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_TRAINER, 2, OlivineGymLassConnie, EVENT_OLIVINE_GYM_JASMINE
 
-JasmineScript_0x9c12f:
+OlivineGymJasmineScript:
 	faceplayer
 	opentext
 	checkevent EVENT_BEAT_JASMINE
 	iftrue .FightDone
-	writetext UnknownText_0x9c1b9
+	writetext Jasmine_SteelTypeIntro
 	waitbutton
 	closetext
-	winlosstext UnknownText_0x9c2bb, 0
+	winlosstext Jasmine_BetterTrainer, 0
 	loadtrainer JASMINE, 1
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_JASMINE
 	opentext
-	writetext UnknownText_0x9c33a
+	writetext Text_ReceivedMineralBadge
 	playsound SFX_GET_BADGE
 	waitsfx
 	setflag ENGINE_MINERALBADGE
@@ -41,8 +41,8 @@ JasmineScript_0x9c12f:
 	setmapscene ROUTE_42, $1
 .FightDone:
 	checkevent EVENT_GOT_TM23_IRON_TAIL
-	iftrue_jumpopenedtext UnknownText_0x9c3d1
-	writetext UnknownText_0x9c354
+	iftrue_jumpopenedtext Jasmine_GoodLuck
+	writetext Jasmine_BadgeSpeech
 	buttonsound
 	verbosegivetmhm TM_IRON_TAIL
 	setevent EVENT_GOT_TM23_IRON_TAIL
@@ -149,7 +149,7 @@ OlivineGymStatue:
 .LyraToo
 	jumpstd gymstatue3
 
-UnknownText_0x9c1b9:
+Jasmine_SteelTypeIntro:
 	text "…Thank you for"
 	line "your help at the"
 	cont "Lighthouse…"
@@ -174,7 +174,7 @@ UnknownText_0x9c1b9:
 	para "…Um… May I begin?"
 	done
 
-UnknownText_0x9c2bb:
+Jasmine_BetterTrainer:
 	text "…You are a better"
 	line "trainer than me,"
 
@@ -188,12 +188,12 @@ UnknownText_0x9c2bb:
 	line "this Badge."
 	done
 
-UnknownText_0x9c33a:
+Text_ReceivedMineralBadge:
 	text "<PLAYER> received"
 	line "the Mineral Badge."
 	done
 
-UnknownText_0x9c354:
+Jasmine_BadgeSpeech:
 	text "With that Badge,"
 	line "all #mon up"
 
@@ -207,7 +207,7 @@ UnknownText_0x9c354:
 	line "this too…"
 	done
 
-UnknownText_0x9c3d1:
+Jasmine_GoodLuck:
 	text "Um… I don't know"
 	line "how to say this,"
 	cont "but good luck…"

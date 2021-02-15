@@ -339,8 +339,8 @@ MakePhoneCallFromPokegear:
 	jr .DoPhoneCall
 
 .OutOfArea:
-	ld b, BANK(UnknownScript_0x90209)
-	ld de, UnknownScript_0x90209
+	ld b, BANK(LoadOutOfAreaScript)
+	ld de, LoadOutOfAreaScript
 	jp ExecuteCallbackScript
 
 .DoPhoneCall:
@@ -350,24 +350,24 @@ MakePhoneCallFromPokegear:
 	ld [wPhoneCaller], a
 	ld a, h
 	ld [wPhoneCaller+1], a
-	ld b, BANK(UnknownScript_0x90205)
-	ld de, UnknownScript_0x90205
+	ld b, BANK(LoadPhoneScriptBank)
+	ld de, LoadPhoneScriptBank
 	jp ExecuteCallbackScript
 
-UnknownScript_0x90205:
+LoadPhoneScriptBank:
 	ptcall wPhoneScriptBank
 	return
 
-UnknownScript_0x90209:
-	scall UnknownScript_0x90657
+LoadOutOfAreaScript:
+	scall PhoneOutOfAreaScript
 	return
 
-UnknownScript_0x90657:
-	farwritetext UnknownText_0x1c558b
+PhoneOutOfAreaScript:
+	farwritetext _PhoneOutOfAreaText
 	end
 
 PhoneScript_JustTalkToThem:
-	farwritetext UnknownText_0x1c55ac
+	farwritetext _PhoneJustTalkToThemText
 	end
 
 LoadCallerScript:
@@ -394,7 +394,7 @@ WrongNumber:
 	db TRAINER_NONE, PHONE_00
 	dba .script
 .script
-	farjumptext UnknownText_0x1c5565
+	farjumptext _PhoneWrongNumberText
 
 Script_ReceivePhoneCall:
 	refreshscreen
@@ -519,21 +519,21 @@ Phone_CallEnd:
 	jp HangUp_Wait20Frames
 
 HangUp_Beep:
-	ld hl, UnknownText_0x9032a
+	ld hl, PhoneClickText
 	call PrintText
 	ld de, SFX_HANG_UP
 	jp PlaySFX
 
-UnknownText_0x9032a:
-	text_jump UnknownText_0x1c5580
+PhoneClickText:
+	text_jump _PhoneClickText
 	text_end
 
 HangUp_BoopOn:
-	ld hl, UnknownText_0x90336
+	ld hl, PhoneEllipseText
 	jp PrintText
 
-UnknownText_0x90336:
-	text_jump UnknownText_0x1c5588
+PhoneEllipseText:
+	text_jump _PhoneEllipseText
 	text_end
 
 Phone_StartRinging:

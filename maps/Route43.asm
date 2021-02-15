@@ -2,7 +2,7 @@ Route43_MapScriptHeader:
 	def_scene_scripts
 
 	def_callbacks
-	callback MAPCALLBACK_NEWMAP, UnknownScript_0x19d051
+	callback MAPCALLBACK_NEWMAP, Route43CheckIfRocketsScript
 	callback MAPCALLBACK_TILES, Route43RainScript
 
 	def_warp_events
@@ -37,9 +37,9 @@ Route43_MapScriptHeader:
 	object_const_def
 	const ROUTE43_SIGHTSEER_F
 
-UnknownScript_0x19d051:
+Route43CheckIfRocketsScript:
 	checkevent EVENT_CLEARED_ROCKET_HIDEOUT
-	iftrue UnknownScript_0x19d05c
+	iftrue Route43NoRocketsScript
 	setmapscene ROUTE_43_GATE, $0
 	return
 
@@ -53,7 +53,7 @@ Route43RainScript:
 	changemap Route43Raining_BlockData
 	return
 
-UnknownScript_0x19d05c:
+Route43NoRocketsScript:
 	setmapscene ROUTE_43_GATE, $1
 	return
 
@@ -242,7 +242,7 @@ PokemaniacBrent1Script:
 	iftrue UnknownScript_0x19d138
 	checkevent EVENT_BRENT_ASKED_FOR_PHONE_NUMBER
 	iftrue UnknownScript_0x19d0b8
-	writetext UnknownText_0x19d359
+	writetext PokemaniacBrentAfterBattleText
 	buttonsound
 	setevent EVENT_BRENT_ASKED_FOR_PHONE_NUMBER
 	scall UnknownScript_0x19d12c
@@ -369,7 +369,7 @@ PicnickerTiffany1Script:
 	iffalse UnknownScript_0x19d233
 	checkevent EVENT_TIFFANY_ASKED_FOR_PHONE_NUMBER
 	iftrue UnknownScript_0x19d1aa
-	writetext UnknownText_0x19d618
+	writetext PicnickerTiffanyWantsPicnicText
 	buttonsound
 	setevent EVENT_TIFFANY_ASKED_FOR_PHONE_NUMBER
 	scall UnknownScript_0x19d239
@@ -445,7 +445,7 @@ UnknownScript_0x19d230:
 	jump UnknownScript_0x19d259
 
 UnknownScript_0x19d233:
-	jumpopenedtext UnknownText_0x19d64b
+	jumpopenedtext PicnickerTiffanyClefairyText
 
 UnknownScript_0x19d239:
 	jumpstd asknumber1f
@@ -499,7 +499,7 @@ PokemaniacBrent1BeatenText:
 	line "mon! Darlings!"
 	done
 
-UnknownText_0x19d359:
+PokemaniacBrentAfterBattleText:
 	text "I'd be happy just"
 	line "to own a single"
 	cont "rare #mon."
@@ -560,14 +560,14 @@ PicnickerTiffany1BeatenText:
 	text "I played too much!"
 	done
 
-UnknownText_0x19d618:
+PicnickerTiffanyWantsPicnicText:
 	text "I'm having a pic-"
 	line "nic with #mon."
 
 	para "Won't you join us?"
 	done
 
-UnknownText_0x19d64b:
+PicnickerTiffanyClefairyText:
 	text "Isn't my Clefairy"
 	line "just the most"
 	cont "adorable thing?"

@@ -55,7 +55,7 @@ VioletPokeCenter1FElmsAideScript:
 	checkcode VAR_PARTYCOUNT
 	ifequal PARTY_LENGTH, .PartyFull
 	giveegg TOGEPI, EGG_LEVEL
-	farwritetext UnknownText_0x1bdfa5
+	farwritetext _ReceivedEggText
 	playsound SFX_GET_EGG_FROM_DAYCARE_LADY
 	waitsfx
 	setevent EVENT_GOT_TOGEPI_EGG_FROM_ELMS_AIDE

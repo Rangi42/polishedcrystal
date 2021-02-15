@@ -3,7 +3,7 @@ RuinsOfAlphOmanyteChamber_MapScriptHeader:
 	scene_script RuinsofAlphOmanyteChamberTrigger0
 
 	def_callbacks
-	callback MAPCALLBACK_TILES, UnknownScript_0x58bf8
+	callback MAPCALLBACK_TILES, RuinsofAlphOmanyteChamberHiddenDoorsCallback
 
 	def_warp_events
 	warp_event  3,  9, RUINS_OF_ALPH_OUTSIDE, 3
@@ -28,25 +28,25 @@ RuinsofAlphOmanyteChamberTrigger0:
 	special SpecialOmanyteChamber
 	checkevent EVENT_WALL_OPENED_IN_OMANYTE_CHAMBER
 	iffalse .End
-	priorityjump UnknownScript_0x58c12
+	priorityjump RuinsOfAlphOmanyteChamberWallOpenScript
 .End
 	end
 
-UnknownScript_0x58bf8:
+RuinsofAlphOmanyteChamberHiddenDoorsCallback:
 	checkevent EVENT_WALL_OPENED_IN_OMANYTE_CHAMBER
-	iftrue UnknownScript_0x58c02
+	iftrue .WallOpen
 	changeblock 4, 0, $24
-UnknownScript_0x58c02:
+.WallOpen:
 	checkevent EVENT_SOLVED_OMANYTE_PUZZLE
-	iffalse UnknownScript_0x58c09
+	iffalse .FloorClosed
 	return
 
-UnknownScript_0x58c09:
+.FloorClosed:
 	changeblock 2, 2, $1
 	changeblock 4, 2, $2
 	return
 
-UnknownScript_0x58c12:
+RuinsOfAlphOmanyteChamberWallOpenScript:
 	pause 30
 	earthquake 30
 	showemote EMOTE_SHOCK, PLAYER, 20
@@ -63,10 +63,10 @@ MapRuinsofAlphOmanyteChamberSignpost2Script:
 	writebyte $1
 	special Special_UnownPuzzle
 	closetext
-	iftrue UnknownScript_0x58c36
+	iftrue .PuzzleComplete
 	end
 
-UnknownScript_0x58c36:
+.PuzzleComplete:
 	setevent EVENT_RUINS_OF_ALPH_INNER_CHAMBER_TOURISTS
 	setevent EVENT_SOLVED_OMANYTE_PUZZLE
 	setflag ENGINE_UNLOCKED_UNOWNS_2
@@ -87,14 +87,14 @@ UnknownScript_0x58c36:
 
 MapRuinsofAlphOmanyteChamberSignpost3Script:
 	unowntypeface
-	showtext UnknownText_0x58d26
+	showtext RuinsOfAlphOmanyteChamberDescriptionText
 	restoretypeface
 	special MapCallbackSprites_LoadUsedSpritesGFX
 	end
 
 MapRuinsofAlphOmanyteChamberSignpost5Script:
 	checkevent EVENT_WALL_OPENED_IN_OMANYTE_CHAMBER
-	iftrue_jumptext UnknownText_0x58ea2
+	iftrue_jumptext RuinsOfAlphAerodactylChamberWallHoleText
 MapRuinsofAlphOmanyteChamberSignpost4Script:
 	opentext
 	checkevent EVENT_RUINS_OF_ALPH_OUTSIDE_TOURIST_YOUNGSTERS
@@ -102,13 +102,13 @@ MapRuinsofAlphOmanyteChamberSignpost4Script:
 	writetext UnusedText_0x58e70
 	jump .unownwords
 .unsolved
-	writetext UnknownText_0x58e4f
+	writetext RuinsOfAlphAerodactylChamberWallPatternLeftText
 .unownwords
 	writebyte $2
 	special Special_DisplayUnownWords
 	endtext
 
-UnknownText_0x58d26:
+RuinsOfAlphOmanyteChamberDescriptionText:
 	text "This #mon"
 	line "drifted in the"
 

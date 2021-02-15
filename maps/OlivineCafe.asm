@@ -12,10 +12,10 @@ OlivineCafe_MapScriptHeader:
 	def_bg_events
 
 	def_object_events
-	object_event  6,  2, SPRITE_BAKER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, BakerScript_0x9c8c1, -1
+	object_event  6,  2, SPRITE_BAKER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, OlivineCafeStrengthSailorScript, -1
 	object_event  4,  4, SPRITE_LYRA, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, OlivineCafeLyraScript, EVENT_GOT_AMULET_COIN_FROM_LYRA
-	object_event  9,  3, SPRITE_FISHING_GURU, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x9c9c5, -1
-	object_event  9,  6, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x9ca09, -1
+	object_event  9,  3, SPRITE_FISHING_GURU, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_COMMAND, jumptextfaceplayer, OlivineCafeFishingGuruText, -1
+	object_event  9,  6, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, OlivineCafeSailorText, -1
 	object_event  7,  4, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, (1 << MORN), 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, OlivineCafeOfficerText, -1
 	object_event  7,  4, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, (1 << DAY), 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, OlivineCafeYoungsterText, -1
 	object_event  3,  2, SPRITE_FAT_GUY, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, (1 << EVE) | (1 << NITE), 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, OlivineCafeFisherText, -1
@@ -24,7 +24,7 @@ OlivineCafe_MapScriptHeader:
 	const OLIVINECAFE_BAKER
 	const OLIVINECAFE_LYRA
 
-BakerScript_0x9c8c1:
+OlivineCafeStrengthSailorScript:
 	faceplayer
 	opentext
 	checkevent EVENT_BEAT_BAKER_CHELSIE
@@ -79,7 +79,7 @@ OlivineCafeMovementData_LyraLeaves:
 	step_down
 	step_end
 
-UnknownText_0x9c9c5:
+OlivineCafeFishingGuruText:
 	text "Olivine Café's"
 	line "menu is chock full"
 
@@ -87,7 +87,7 @@ UnknownText_0x9c9c5:
 	line "beefy sailors!"
 	done
 
-UnknownText_0x9ca09:
+OlivineCafeSailorText:
 	text "Whenever I roll"
 	line "into this town, I"
 
