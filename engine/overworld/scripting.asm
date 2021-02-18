@@ -1305,7 +1305,6 @@ EarthquakeMovementEnd:
 Script_randomwildmon:
 	xor a
 	ld [wBattleScriptFlags], a
-	ld [wWildMonForm], a
 	ret
 
 Script_loadmemtrainer:
