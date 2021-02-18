@@ -4886,7 +4886,7 @@ MoveSelectionScreen:
 	dec a
 	jr z, .assault_vest
 	sub 3 ; 5 or 6 gives the same message
-	jr z, .encore_or_gorilla_tactics
+	jr c, .encore_or_gorilla_tactics
 	ld b, 0
 	ld hl, wBattleMonMoves
 	add hl, bc
