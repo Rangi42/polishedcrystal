@@ -397,9 +397,11 @@ wCurMart:: ds 16
 wCurMartEnd::
 NEXTU
 ; miscellaneous
-wInverseBattleScore::
 wCurElevator:: db
-wCurElevatorFloors::
+wCurElevatorFloors:: db
+NEXTU
+wInverseBattleScore::
+wCurMessageScrollPosition:: db
 wCurMessageIndex:: db
 wMailboxCount:: db
 wMailboxItems:: ds MAILBOX_CAPACITY
