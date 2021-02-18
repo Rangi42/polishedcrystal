@@ -2408,6 +2408,28 @@ BattleBGEffect_SineWave:
 	ldh a, [hLYOverrideEnd]
 	cp c
 	jr c, .next
+
+	; If ability slideouts are up, don't sinewave them.
+	ld a, [wAnimationsDisabled]
+	ld d, a
+	bit 6, d
+	jr z, .no_player_slideout
+	ld a, c
+	cp $3f
+	jr c, .no_player_slideout
+	cp $4f
+	jr c, .next
+
+.no_player_slideout
+	bit 7, d
+	jr z, .no_enemy_slideout
+	ld a, c
+	cp $17
+	jr c, .no_enemy_slideout
+	cp $27
+	jr c, .next
+
+.no_enemy_slideout
 	ld a, [wBattleAnimTemp2]
 	ld d, a
 	ld a, [wBattleAnimTemp0]

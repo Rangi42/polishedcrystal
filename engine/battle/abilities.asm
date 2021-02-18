@@ -310,7 +310,8 @@ ImposterAbility:
 	ret z
 
 	call DisableAnimations
-	call ShowAbilityActivation
+	; flags for the transform wave anim to not affect slideouts
+	farcall ShowPotentialAbilityActivation
 	farcall BattleCommand_transform
 	jp EnableAnimations
 
