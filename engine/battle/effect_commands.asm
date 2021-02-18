@@ -2017,17 +2017,27 @@ BattleCommand_checkhit:
 	ret
 
 BattleCommand_effectchance:
+; Doesn't work against Substitute or Shield Dust
 	push bc
 	push hl
 	xor a
 	ld [wEffectFailed], a
 	call CheckSubstituteOpp
-	jr nz, .failed
+	jr nz, EffectChanceFailed
 
 	call GetOpponentAbilityAfterMoldBreaker
 	cp SHIELD_DUST
-	jr z, .failed
+	jr z, EffectChanceFailed
+	jr _CheckEffectChance
 
+BattleCommand_selfeffectchance:
+; Works even if opponent has Substitute or Shield Dust up
+	push bc
+	push hl
+	xor a
+	ld [wEffectFailed], a
+	; fallthrough
+_CheckEffectChance:
 	ld hl, wPlayerMoveStruct + MOVE_CHANCE
 	ldh a, [hBattleTurn]
 	and a
@@ -2039,23 +2049,23 @@ BattleCommand_effectchance:
 	ld b, a
 	call GetTrueUserAbility
 	cp SHEER_FORCE
-	jr z, .failed
+	jr z, EffectChanceFailed
 	cp SERENE_GRACE
 	jr nz, .skip_serene_grace
 	sla b
-	jr c, .end ; Carry means the effect byte overflowed, so gurantee it
+	jr c, EffectChanceEnd ; The effect byte overflowed, so gurantee it
 
 .skip_serene_grace
 	ld a, 100
 	call BattleRandomRange
 	cp b
-	jr c, .end
-
-.failed
+	jr c, EffectChanceEnd
+	; fallthrough
+EffectChanceFailed:
 	ld a, 1
 	ld [wEffectFailed], a
 	and a
-.end
+EffectChanceEnd:
 	pop hl
 	pop bc
 	ret

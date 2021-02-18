@@ -109,6 +109,7 @@ BattleCommandPointers:
 	command startrain
 	command startsun
 	command effectchance
+	command selfeffectchance
 	command switchturn
 	command bellydrum
 	command rage

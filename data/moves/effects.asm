@@ -418,7 +418,7 @@ MetalClaw:
 	hastarget
 	checkhit
 	critical
-	effectchance
+	selfeffectchance
 	damagestats
 	damagecalc
 	stab
@@ -441,7 +441,7 @@ SteelWing:
 	hastarget
 	checkhit
 	critical
-	effectchance
+	selfeffectchance
 	damagestats
 	damagecalc
 	stab
@@ -464,7 +464,7 @@ FlameCharge:
 	hastarget
 	checkhit
 	critical
-	effectchance
+	selfeffectchance
 	damagestats
 	damagecalc
 	stab
@@ -487,7 +487,7 @@ Ancientpower:
 	hastarget
 	checkhit
 	critical
-	effectchance
+	selfeffectchance
 	damagestats
 	damagecalc
 	stab
@@ -1929,7 +1929,7 @@ RapidSpin:
 	hastarget
 	checkhit
 	critical
-	effectchance
+	selfeffectchance
 	damagestats
 	damagecalc
 	stab
