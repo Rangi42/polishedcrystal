@@ -20,7 +20,7 @@ NameInputUpper:
 	rawchar "A B C D E F G H I"
 	rawchar "J K L M N O P Q R"
 	rawchar "S T U V W X Y Z  "
-	rawchar "? ! ♂ ♀ . \, : & %"
+	rawchar "? ! ♂ ♀ . , : & %"
 	rawchar "Lower  Del   End "
 
 BoxNameInputUpper:
@@ -28,7 +28,7 @@ BoxNameInputUpper:
 	rawchar "J K L M N O P Q R"
 	rawchar "S T U V W X Y Z  "
 	rawchar "/ ( ) ¥ <PK> <MN> ★ ♥ ♪"
-	rawchar "? ! ♂ ♀ . \, : & %"
+	rawchar "? ! ♂ ♀ . , : & %"
 	rawchar "Lower  Del   End "
 
 MailEntry_Uppercase:
@@ -42,7 +42,7 @@ MailEntry_Uppercase:
 MailEntry_Lowercase:
 	rawchar "a b c d e f g h i j"
 	rawchar "k l m n o p q r s t"
-	rawchar "u v w x y z   - . \,"
+	rawchar "u v w x y z   - . ,"
 	rawchar "'d 'l 'm 'r 's 't 'v ( ) &"
 	rawchar "“ ” ' % ↑ ↓ № ★ ♥ ♪"
 	rawchar "Upper  Del   End   "
