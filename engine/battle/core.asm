@@ -4487,6 +4487,10 @@ CheckRunSpeed:
 	dec a
 	jp nz, .forfeit_to_trainer
 
+	push hl
+	call HasPlayerFainted
+	pop hl
+	jr z, .no_flee_ability
 	call CheckNeutralizingGas
 	jr z, .no_flee_ability
 	ld a, [wPlayerAbility]
