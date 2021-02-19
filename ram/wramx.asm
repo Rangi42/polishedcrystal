@@ -278,7 +278,7 @@ wAvailableCallersEnd::
 NEXTU
 ; phone caller contact
 	ds 1
-wCallerContact:: ds PHONE_CONTACT_SIZE 
+wCallerContact:: ds PHONE_CONTACT_SIZE
 
 NEXTU
 ; backup menu data
@@ -444,9 +444,6 @@ wPokemonWithdrawDepositParameter::
 wItemQuantityChangeBuffer:: db
 wItemQuantityBuffer:: db
 
-;TempMPWaveform::
-wTempMon:: party_struct wTempMon
-
 wSpriteFlags::
 ; 5: use vbk1 if set, otherwise vbk0
 	db
@@ -492,7 +489,11 @@ wBGMapAnchor:: dw
 
 wOldTileset:: db
 
-	ds 63 ; unused
+wTempMon:: party_struct wTempMon
+wTempMonOT:: ds NAME_LENGTH
+wTempMonNickname:: ds MON_NAME_LENGTH
+
+	ds 41 ; unused
 
 wOverworldMapAnchor:: dw
 wMetatileStandingY:: db
