@@ -21,10 +21,10 @@ Special_CheckForLuckyNumberWinners:
 	farcall GetStorageBoxMon
 	jr z, .next
 
-	ld hl, wBufferMonIsEgg
+	ld hl, wTempMonIsEgg
 	bit MON_IS_EGG_F, [hl]
 	jr nz, .next
-	ld de, wBufferMonID
+	ld de, wTempMonID
 	push bc
 	ld hl, wBuffer1
 	lb bc, PRINTNUM_LEADINGZEROS | 2, 5

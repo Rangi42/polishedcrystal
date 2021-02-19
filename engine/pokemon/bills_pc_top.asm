@@ -586,10 +586,10 @@ SetBoxIcons:
 PCIconLoop:
 	call GetStorageBoxMon
 	jr z, .next
-	ld a, [wBufferMon]
+	ld a, [wTempMon]
 	ld [wCurIcon], a
 	ld [hli], a
-	ld a, [wBufferMonForm]
+	ld a, [wTempMonForm]
 	ld [wCurIconForm], a
 	ld a, e
 	push hl
@@ -615,8 +615,8 @@ WriteIconPaletteData:
 	push hl
 	push de
 	push bc
-	ld a, [wBufferMonSpecies]
-	ld hl, wBufferMonPersonality
+	ld a, [wTempMonSpecies]
+	ld hl, wTempMonPersonality
 	farcall _GetMonIconPalette
 	pop bc
 	push bc
@@ -784,13 +784,13 @@ _GetCursorMon:
 	; Prepare frontpic. Split into decompression + loading to make sure we
 	; refresh the pokepic and the palette in a single frame (decompression
 	; is unpredictable, but bpp copy can be relied upon).
-	ld a, [wBufferMonSpecies]
-	ld hl, wBufferMonForm
+	ld a, [wTempMonSpecies]
+	ld hl, wTempMonForm
 	ld de, vTiles2
 	push de
 	push af
 	predef GetVariant
-	ld a, [wBufferMonIsEgg]
+	ld a, [wTempMonIsEgg]
 	ld d, a
 	pop af
 	bit MON_IS_EGG_F, d
@@ -806,7 +806,7 @@ _GetCursorMon:
 	push hl
 	ld a, "@"
 	ld [wStringBuffer2], a
-	ld a, [wBufferMonItem]
+	ld a, [wTempMonItem]
 	and a
 	jr z, .no_item
 	ld [wNamedObjectIndexBuffer], a
@@ -838,7 +838,7 @@ _GetCursorMon:
 	rst ByteFill
 	pop hl
 	ld de, wStringBuffer1
-	ld a, [wBufferMonItem]
+	ld a, [wTempMonItem]
 	and a
 	call nz, PlaceVWFString
 	call DelayFrame
@@ -862,8 +862,8 @@ _GetCursorMon:
 	call FillBoxWithByte
 
 	; Colors
-	ld bc, wBufferMonPersonality
-	ld a, [wBufferMonSpecies]
+	ld bc, wTempMonPersonality
+	ld a, [wTempMonSpecies]
 	farcall GetMonNormalOrShinyPalettePointer
 	ld de, wBillsPC_PokepicPal
 	ld b, 4
@@ -878,7 +878,7 @@ _GetCursorMon:
 
 	; Show or hide item icon
 	ld hl, wVirtualOAM + 24
-	ld a, [wBufferMonItem]
+	ld a, [wTempMonItem]
 	and a
 	ld [hl], -1
 	jr z, .item_icon_done
@@ -908,16 +908,16 @@ _GetCursorMon:
 
 	; Nickname
 	hlcoord 8, 0
-	ld de, wBufferMonNick
+	ld de, wTempMonNickname
 	call PlaceString
 
 	; If we're dealing with an egg, we're done now.
-	ld a, [wBufferMonIsEgg]
+	ld a, [wTempMonIsEgg]
 	bit MON_IS_EGG_F, a
 	ret nz
 
 	; Species name
-	ld a, [wBufferMonSpecies]
+	ld a, [wTempMonSpecies]
 	ld [wNamedObjectIndexBuffer], a
 	hlcoord 8, 1
 	ld a, "/"
@@ -925,12 +925,6 @@ _GetCursorMon:
 	call GetPokemonName
 	ld de, wStringBuffer1
 	call PlaceString
-
-	; Several functions rely on having the mon in wTempMon
-	ld hl, wBufferMon
-	ld de, wTempMon
-	ld bc, PARTYMON_STRUCT_LENGTH
-	rst CopyBytes
 
 	; Level
 	hlcoord 0, 8
@@ -1247,7 +1241,7 @@ BillsPC_Menu:
 
 BillsPC_Item:
 	call BillsPC_HideCursor
-	ld a, [wBufferMonItem]
+	ld a, [wTempMonItem]
 	and a
 	ld hl, .ItemIsSelected
 	ld de, .ItemMenu
@@ -1268,7 +1262,7 @@ BillsPC_Item:
 	done
 
 .ItCanHoldAnItem:
-	text_from_ram wBufferMonNick
+	text_from_ram wTempMonNickname
 	text " can"
 	line "hold an item."
 	done
@@ -1408,7 +1402,7 @@ InitializeBoxes:
 	rawchar "Box   @"
 
 AddStorageMon:
-; Adds wBufferMon to the storage system if possible.
+; Adds wTempMon to the storage system if possible.
 ; Returns z if the active box is full. Otherwise, returns nz with bcde
 ; pointing towards storage box, storage slot, mondb bank, mondb entry.
 	; First check if the active box is full.
@@ -1471,8 +1465,8 @@ SetBoxPointer:
 	jp PopBCDEHL
 
 GetStorageBoxMon:
-; Reads storage bank+entry from box b slot c and put it in wBufferMon.
-; If there is a checksum error, put Bad Egg data in wBufferMon instead.
+; Reads storage bank+entry from box b slot c and put it in wTempMon.
+; If there is a checksum error, put Bad Egg data in wTempMon instead.
 ; Returns c in case of a Bad Egg, z if the requested mon doesn't exist,
 ; nz|nc otherwise. If b==0, read from party list.
 	; TODO: DON'T READ LEGACY SAVE DATA
@@ -1512,7 +1506,7 @@ GetStorageBoxMon:
 	ld bc, BOXMON_STRUCT_LENGTH
 	ld a, e
 	rst AddNTimes
-	ld de, wBufferMon
+	ld de, wTempMon
 	ld bc, BOXMON_STRUCT_LENGTH
 	rst CopyBytes
 	pop de
@@ -1523,7 +1517,7 @@ GetStorageBoxMon:
 	add hl, bc
 	ld a, e
 	call SkipNames
-	ld de, wBufferMonNick
+	ld de, wTempMonNickname
 	ld bc, MON_NAME_LENGTH
 	rst CopyBytes
 	pop de
@@ -1532,7 +1526,7 @@ GetStorageBoxMon:
 	add hl, bc
 	ld a, e
 	call SkipNames
-	ld de, wBufferMonOT
+	ld de, wTempMonOT
 	ld bc, NAME_LENGTH
 	rst CopyBytes
 	or 1
@@ -1559,7 +1553,7 @@ GetStorageBoxMon:
 	ld bc, PARTYMON_STRUCT_LENGTH
 	rst AddNTimes
 	push de
-	ld de, wBufferMon
+	ld de, wTempMon
 	ld c, PARTYMON_STRUCT_LENGTH
 	rst CopyBytes
 	pop de
@@ -1567,22 +1561,22 @@ GetStorageBoxMon:
 	ld hl, wPartyMonNicknames
 	ld a, e
 	call SkipNames
-	ld de, wBufferMonNick
+	ld de, wTempMonNickname
 	ld bc, MON_NAME_LENGTH
 	rst CopyBytes
 	pop de
 	ld hl, wPartyMonOT
 	ld a, e
 	call SkipNames
-	ld de, wBufferMonOT
+	ld de, wTempMonOT
 	ld bc, NAME_LENGTH
 	rst CopyBytes
 	or 1
 	jp PopBCDEHL
 
 GetStorageMon:
-; Reads storage bank d, entry e and put it in wBufferMon.
-; If there is a checksum error, put Bad Egg data in wBufferMon instead.
+; Reads storage bank d, entry e and put it in wTempMon.
+; If there is a checksum error, put Bad Egg data in wTempMon instead.
 ; Returns c in case of a Bad Egg, z if the requested mon doesn't exist,
 ; nz|nc otherwise.
 	ld a, d
@@ -1612,25 +1606,25 @@ GetStorageMon:
 	dec a
 	rst AddNTimes
 
-	; Write to wBufferMon
-	ld de, wBufferMon
+	; Write to wTempMon
+	ld de, wTempMon
 	ld bc, BOXMON_STRUCT_LENGTH
 	rst CopyBytes
-	ld de, wBufferMonNick
+	ld de, wTempMonNickname
 	ld bc, NAME_LENGTH - 1
 	rst CopyBytes
-	ld de, wBufferMonOT
+	ld de, wTempMonOT
 	ld bc, NAME_LENGTH - 1
 	rst CopyBytes
 
-	; Decode the resulting wBufferMon. This also returns a
+	; Decode the resulting wTempMon. This also returns a
 	; Bad Egg failsafe on a checksum error.
-	call DecodeBufferMon
+	call DecodeTempMon
 .done
 	jp PopBCDEHL
 
 NewStorageMon:
-; Writes Pokémon from wBufferMon to free space in storage, if there
+; Writes Pokémon from wTempMon to free space in storage, if there
 ; is space. Returns nz on success with storage bank d, entry e.
 ; Returns z if the storage is full, otherwise nz with de pointing to
 ; bank and entry.
@@ -1668,14 +1662,14 @@ NewStorageMon:
 	jr .loop
 
 _NewStorageMon:
-; Writes Pokémon from wBufferMon to storage bank d, entry e. Does not
+; Writes Pokémon from wTempMon to storage bank d, entry e. Does not
 ; verify that the space is empty -- if you want that, you probably want
 ; NewStorageMon (without underline) which finds an unused de to run this.
 ; Returns nz (denoting successful write into the storage list).
 	push hl
 	push bc
 	push de
-	call EncodeBufferMon
+	call EncodeTempMon
 	pop de
 
 	; Check which SRAM bank to use
@@ -1699,13 +1693,13 @@ _NewStorageMon:
 	push de
 	ld d, h
 	ld e, l
-	ld hl, wBufferMon
+	ld hl, wTempMon
 	ld bc, BOXMON_STRUCT_LENGTH
 	rst CopyBytes
-	ld hl, wBufferMonNick
+	ld hl, wTempMonNickname
 	ld bc, NAME_LENGTH - 1
 	rst CopyBytes
-	ld hl, wBufferMonOT
+	ld hl, wTempMonOT
 	ld bc, NAME_LENGTH - 1
 	rst CopyBytes
 	pop de
@@ -1723,23 +1717,23 @@ _NewStorageMon:
 	or 1
 	jp CloseSRAM
 
-DecodeBufferMon:
-; Decodes BufferMon. Returns nz. Sets carry in case of invalid checksum.
+DecodeTempMon:
+; Decodes TempMon. Returns nz. Sets carry in case of invalid checksum.
 	; First, run a checksum check. Don't use the result until we've done
 	; character replacements back to their original state
-	call ChecksumBufferMon
+	call ChecksumTempMon
 	push af
 
 	; Convert 7bit nicknames back to their origianl state.
-	ld hl, wBufferMonNick
+	ld hl, wTempMonNickname
 	ld b, MON_NAME_LENGTH - 1
 	call .Prepare
-	ld hl, wBufferMonOT
+	ld hl, wTempMonOT
 	ld b, PLAYER_NAME_LENGTH - 1
 	call .Prepare
 
 	; Shift unused OT bytes
-	ld hl, wBufferMonOT + NAME_LENGTH
+	ld hl, wTempMonOT + NAME_LENGTH
 	ld d, h
 	ld e, l
 	dec de
@@ -1754,7 +1748,7 @@ DecodeBufferMon:
 
 	; Add nickname terminators
 	ld [hl], "@" ; OTname terminator
-	ld hl, wBufferMonNick + MON_NAME_LENGTH - 1
+	ld hl, wTempMonNickname + MON_NAME_LENGTH - 1
 	ld [hl], "@"
 
 	; Now we have a complete decoded boxmon struct with names.
@@ -1769,18 +1763,18 @@ DecodeBufferMon:
 
 .set_partymon_data
 	; Calculate stats
-	ld hl, wBufferMonOT + PLAYER_NAME_LENGTH
+	ld hl, wTempMonOT + PLAYER_NAME_LENGTH
 	ld a, [hl]
 	and HYPER_TRAINING_MASK
 	inc a
 	ld b, a
-	ld hl, wBufferMonEVs - 1
-	ld de, wBufferMonMaxHP
+	ld hl, wTempMonEVs - 1
+	ld de, wTempMonMaxHP
 	predef CalcPkmnStats
 
 	; Set HP to full
-	ld hl, wBufferMonMaxHP
-	ld de, wBufferMonHP
+	ld hl, wTempMonMaxHP
+	ld de, wTempMonHP
 	ld a, [hli]
 	ld [de], a
 	inc de
@@ -1788,7 +1782,7 @@ DecodeBufferMon:
 	ld [de], a
 
 	; Eggs have 0 current HP
-	ld hl, wBufferMonIsEgg
+	ld hl, wTempMonIsEgg
 	bit MON_IS_EGG_F, [hl]
 	jr z, .not_egg
 	xor a
@@ -1797,8 +1791,8 @@ DecodeBufferMon:
 	ld [de], a
 
 .not_egg
-	ld hl, wBufferMonMoves
-	ld de, wBufferMonPP
+	ld hl, wTempMonMoves
+	ld de, wTempMonPP
 	predef FillPP
 	or 1
 	ret
@@ -1824,34 +1818,34 @@ DecodeBufferMon:
 	ret
 
 SetBadEgg:
-	; Load failsafe data into the BufferMon pokémon struct
-	ld hl, wBufferMon
+	; Load failsafe data into the TempMon pokémon struct
+	ld hl, wTempMon
 	ld bc, BOXMON_STRUCT_LENGTH
 	ld a, 1
 	rst ByteFill
 
 	; Set data that can't be 1 to other things
 	xor a
-	ld hl, wBufferMonItem
+	ld hl, wTempMonItem
 	ld [hl], a
-	ld hl, wBufferMonMoves + 1
+	ld hl, wTempMonMoves + 1
 	ld bc, NUM_MOVES - 1
 	rst ByteFill
-	ld hl, wBufferMonPersonality
+	ld hl, wTempMonPersonality
 	ld [hl], ABILITY_1 | QUIRKY
 	inc hl
 	ld [hl], MALE | IS_EGG_MASK | 1
-	ld hl, wBufferMonHappiness ; egg cycles
+	ld hl, wTempMonHappiness ; egg cycles
 	ld [hl], 255
-	ld hl, wBufferMonExp
+	ld hl, wTempMonExp
 	ld c, 3
 	rst ByteFill
 
 	; Set nickname fields
-	ld hl, wBufferMonNick
+	ld hl, wTempMonNickname
 	ld de, .BadEgg
 	call CopyName2
-	ld hl, wBufferMonOT
+	ld hl, wTempMonOT
 	ld [hl], "?"
 	inc hl
 	ld [hl], "@"
@@ -1860,10 +1854,10 @@ SetBadEgg:
 .BadEgg:
 	rawchar "Bad Egg@"
 
-EncodeBufferMon:
-; Encodes BufferMon to prepare for storage
+EncodeTempMon:
+; Encodes TempMon to prepare for storage
 	; Shift unused OT bytes
-	ld hl, wBufferMonOT + PLAYER_NAME_LENGTH
+	ld hl, wTempMonOT + PLAYER_NAME_LENGTH
 	ld d, h
 	ld e, l
 	dec de
@@ -1877,14 +1871,14 @@ EncodeBufferMon:
 	ld [de], a
 
 	; Convert nicknames to 7bit
-	ld hl, wBufferMonNick
+	ld hl, wTempMonNickname
 	ld b, MON_NAME_LENGTH - 1
 	call .Prepare
-	ld hl, wBufferMonOT
+	ld hl, wTempMonOT
 	ld b, PLAYER_NAME_LENGTH - 1
 	call .Prepare
 
-	jr ChecksumBufferMon
+	jr ChecksumTempMon
 
 .Prepare:
 	ld a, [hl]
@@ -1906,28 +1900,28 @@ EncodeBufferMon:
 	jr nz, .Prepare
 	ret
 
-ChecksumBufferMon:
-; Calculate and write a checksum and to BufferMon. Use a nonzero baseline to
+ChecksumTempMon:
+; Calculate and write a checksum and to TempMon. Use a nonzero baseline to
 ; avoid a complete null content from having 0 as a checksum.
 ; Returns z if an existing checksum is identical to the written checksum.
 	; boxmon struct
-	ld bc, wBufferMon
+	ld bc, wTempMon
 	ld hl, 127
 	lb de, BOXMON_STRUCT_LENGTH, 0
 	call .DoChecksum
 
 	; extra bytes in otname
-	ld bc, wBufferMonOT + PLAYER_NAME_LENGTH - 1
+	ld bc, wTempMonOT + PLAYER_NAME_LENGTH - 1
 	ld d, 3
 	call .DoChecksum
 
 	; nickname (7bit only)
-	ld bc, wBufferMonNick
+	ld bc, wTempMonNickname
 	ld d, $80 | MON_NAME_LENGTH - 1
 	call .DoChecksum
 
 	; otname (7bit only)
-	ld bc, wBufferMonOT
+	ld bc, wTempMonOT
 	ld d, $80 | MON_NAME_LENGTH - 1
 	call .DoChecksum
 
@@ -1938,10 +1932,10 @@ ChecksumBufferMon:
 	; Checksum is 16bit, further ones are padded with zeroes.
 	; The padding being nonzero is also counted as invalid.
 	ld b, 0 ; used for checksum error detection
-	ld hl, wBufferMonNick
+	ld hl, wTempMonNickname
 	ld c, MON_NAME_LENGTH - 1
 	call .WriteChecksum
-	ld hl, wBufferMonOT
+	ld hl, wTempMonOT
 	ld c, PLAYER_NAME_LENGTH - 1
 .WriteChecksum:
 	ld a, [hl]
