@@ -3571,39 +3571,44 @@ _HeldStatusHealingItem:
 	or 1
 	ret
 
+StealConfusionHealingItem:
+	farcall GetOpponentItem
+	call _HeldConfusionHealingItem
+	ret z
+	jp StealBattleItem
+
 UseOpponentConfusionHealingItem:
 	call CallOpponentTurn
 UseConfusionHealingItem:
+	predef GetUserItemAfterUnnerve
+	call _HeldConfusionHealingItem
+	ret z
+	jp UseBattleItem
+
+_HeldConfusionHealingItem:
 	ld a, BATTLE_VARS_SUBSTATUS3
 	call GetBattleVar
 	bit SUBSTATUS_CONFUSED, a
 	ret z
-	predef GetUserItemAfterUnnerve
 	ld a, b
 	cp HELD_HEAL_CONFUSE
 	jr z, .confusion_healing
 	cp HELD_HEAL_STATUS
-	ret nz
+	jr nz, .ret_z
 	ld a, c
 	cp ALL_STATUS
-	ret nz
-	jr UseHeldStatusHealingItem
+	jr z, _HeldStatusHealingItem
+
+.ret_z
+	xor a
+	ret
 
 .confusion_healing
 	ld a, BATTLE_VARS_SUBSTATUS3
 	call GetBattleVarAddr
 	res SUBSTATUS_CONFUSED, [hl]
-	call GetCurItemName
 	call ItemRecoveryAnim
-	ld hl, BattleText_ItemHealedConfusion
-	call StdBattleTextbox
-	call GetPartymonItem
-	ldh a, [hBattleTurn]
-	and a
-	call nz, GetOTPartymonItem
-	xor a
-	ld [bc], a
-	ld [hl], a
+	or 1
 	ret
 
 GetPartymonItem:
