@@ -3581,14 +3581,15 @@ UseConfusionHealingItem:
 	predef GetUserItemAfterUnnerve
 	ld a, b
 	cp HELD_HEAL_CONFUSE
-	jr z, .heal_status
+	jr z, .confusion_healing
 	cp HELD_HEAL_STATUS
 	ret nz
 	ld a, c
 	cp ALL_STATUS
 	ret nz
+	jr UseHeldStatusHealingItem
 
-.heal_status
+.confusion_healing
 	ld a, BATTLE_VARS_SUBSTATUS3
 	call GetBattleVarAddr
 	res SUBSTATUS_CONFUSED, [hl]
