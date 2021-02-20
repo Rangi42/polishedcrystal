@@ -3538,26 +3538,28 @@ UseHeldStatusHealingItem:
 	jp UseBattleItem
 
 _HeldStatusHealingItem:
-	ld hl, HeldStatusHealingEffects
-.loop
-	ld a, [hli]
-	cp $ff
-	ret z
-	inc hl
-	cp b
-	jr nz, .loop
-	dec hl
-	ld b, [hl]
+	ld a, b
+	cp HELD_HEAL_STATUS
+	jr z, .item_ok
+
+	; return z to mark that this held item has no effect
+	xor a
+	ret
+
+.item_ok
 	ld a, BATTLE_VARS_STATUS
 	call GetBattleVarAddr
-	and b
+
+	; We can't use xor since SLP or PSN+TOX wont be nullified then.
+	ld a, c
+	and [hl]
 	ret z
 	xor a
 	ld [hl], a
 	push bc
 	call UpdateUserInParty
 	pop bc
-	ld a, b
+	ld a, c
 	cp ALL_STATUS
 	jr nz, .skip_confuse
 	ld a, BATTLE_VARS_SUBSTATUS3
@@ -3568,8 +3570,6 @@ _HeldStatusHealingItem:
 	call ItemRecoveryAnim
 	or 1
 	ret
-
-INCLUDE "data/battle/held_heal_status.asm"
 
 UseOpponentConfusionHealingItem:
 	call CallOpponentTurn
@@ -3583,6 +3583,9 @@ UseConfusionHealingItem:
 	cp HELD_HEAL_CONFUSE
 	jr z, .heal_status
 	cp HELD_HEAL_STATUS
+	ret nz
+	ld a, c
+	cp ALL_STATUS
 	ret nz
 
 .heal_status
