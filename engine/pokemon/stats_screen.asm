@@ -53,10 +53,8 @@ StatsScreenMain:
 StatsScreenPointerTable:
 	dw MonStatsInit       ; regular pokémon
 	dw EggStatsInit       ; egg
-	dw StatsScreenWaitCry
 	dw EggStatsJoypad
 	dw StatsScreen_LoadPage
-	dw StatsScreenWaitCry
 	dw MonStatsJoypad
 	dw StatsScreen_Exit
 
@@ -103,7 +101,7 @@ MonStatsInit:
 	call StatsScreen_InitUpperHalf
 	ld hl, wStatsScreenFlags
 	set 4, [hl]
-	ld h, 4
+	ld h, 3
 	jp StatsScreen_SetJumptableIndex
 
 .egg
@@ -136,7 +134,7 @@ EggStatsJoypad:
 	jp StatsScreen_JoypadAction
 
 .quit
-	ld h, 7
+	ld h, 5
 	jp StatsScreen_SetJumptableIndex
 
 StatsScreen_LoadPage:
@@ -157,14 +155,6 @@ MonStatsJoypad:
 .next
 	and D_DOWN | D_UP | D_LEFT | D_RIGHT | A_BUTTON | B_BUTTON
 	jp StatsScreen_JoypadAction
-
-StatsScreenWaitCry:
-	call IsSFXPlaying
-	ret nc
-	ld a, [wJumptableIndex]
-	inc a
-	ld [wJumptableIndex], a
-	ret
 
 StatsScreen_CopyToTempMon:
 	ld a, [wMonType]
@@ -309,7 +299,7 @@ StatsScreen_JoypadAction:
 	and %11111100
 	or c
 	ld [wStatsScreenFlags], a
-	ld h, 4
+	ld h, 3
 	jp StatsScreen_SetJumptableIndex
 
 .load_mon
@@ -317,7 +307,7 @@ StatsScreen_JoypadAction:
 	jp StatsScreen_SetJumptableIndex
 
 .b_button
-	ld h, 7
+	ld h, 5
 	jp StatsScreen_SetJumptableIndex
 
 StatsScreen_InitUpperHalf:
