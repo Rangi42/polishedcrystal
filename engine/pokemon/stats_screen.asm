@@ -189,30 +189,8 @@ StatsScreen_CopyToTempMon:
 
 StatsScreen_GetJoypad:
 	call GetJoypad
-	ld a, [wMonType]
-	cp TEMPMON
-	jr nz, .notbreedmon
-	push hl
-	push de
-	push bc
-	farcall StatsScreenDPad
-	pop bc
-	pop de
-	pop hl
-	ld a, [wMenuJoypad]
-	and D_DOWN | D_UP
-	jr nz, .set_carry
-	ld a, [wMenuJoypad]
-	jr .clear_flags
-
-.notbreedmon
 	ldh a, [hJoyPressed]
-.clear_flags
 	and a
-	ret
-
-.set_carry
-	scf
 	ret
 
 StatsScreen_JoypadAction:
