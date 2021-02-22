@@ -42,32 +42,6 @@ SaveAfterLinkTrade:
 	farcall SaveRTC
 	jp ClearWRAMStateAfterSave
 
-ChangeBoxSaveGame:
-	push de
-	ld hl, ChangeBoxSaveText
-	call MenuTextbox
-	call YesNoBox
-	call ExitMenu
-	jr c, .refused
-	call AskOverwriteSaveFile
-	jr c, .refused
-	jr nc, SaveAndChangeBox
-.refused
-	pop de
-	ret
-
-SaveAndChangeBox:
-	call SetWRAMStateForSave
-	call SaveBox
-	pop de
-	ld a, e
-	ld [wCurBox], a
-	call LoadBox
-	call SavedTheGame
-	call ClearWRAMStateAfterSave
-	and a
-	ret
-
 Link_SaveGame:
 	call AskOverwriteSaveFile
 	ret c
@@ -872,11 +846,6 @@ AnotherSaveFileText:
 SaveFileCorruptedText:
 	; The save file is corrupted!
 	text_jump _SaveFileCorruptedText
-	text_end
-
-ChangeBoxSaveText:
-	; When you change a #MON BOX, data will be saved. OK?
-	text_jump _ChangeBoxSaveText
 	text_end
 
 MoveMonWOMailSaveText:

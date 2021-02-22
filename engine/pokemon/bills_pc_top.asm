@@ -1366,6 +1366,174 @@ CopyBoxmonToTempMon:
 	rst CopyBytes
 	jp CloseSRAM
 
+NewStorageBoxPointer:
+; Sets bc to an unused box storage location. Clobbers wTempMon. Returns:
+; nc|z: Active box has free space
+; nc|nz: Active box full, space found elsewhere
+; c|z: Storage System filled completely.
+; c|nz: Storage System has space, but the database is full. Save to free space.
+	; First, figure out if we have space in the storage system.
+
+	; Check active box.
+	ld a, [wCurBox]
+	inc a
+	ld b, a
+	ld d, NUM_NEWBOXES
+.outer_loop
+	ld c, 1
+.inner_loop
+	call GetStorageBoxMon
+	jr z, .found_free_space
+	inc c
+	ld a, c
+	cp MONS_PER_BOX + 1
+	jr nz, .inner_loop
+	inc b
+	ld a, b
+	cp NUM_NEWBOXES + 1
+	jr nz, .dont_wrap_box
+	ld b, 1
+.dont_wrap_box
+	dec d
+	jr nz, .outer_loop
+
+	; Storage system completely filled.
+	scf
+	ret
+
+.found_free_space
+	; Check if there's a free database entry.
+	call NewStoragePointer
+	jr nc, .storage_ok
+
+	; If we still have no space left, we need to save.
+	or 1
+	scf
+	ret
+
+.storage_ok
+	; Returns z if the new storage was found in our active box, nz otherwise.
+	ld a, [wCurBox]
+	inc a
+	cp b
+	ret
+
+NewStoragePointer:
+; Sets de to an unused pokedb entry. Clobbers wTempMon. Returns c if none
+; was found.
+	; Try twice, flushing the database if the first one failed.
+	call .GetStorage
+	ret nc
+	call FlushStorageSystem
+	; fallthrough
+.GetStorage:
+	ld d, 1
+.outer_loop
+	ld e, 1
+.inner_loop
+	call GetStorageMon
+	jr z, .found_free_space
+	inc e
+	ld a, e
+	cp MONDB_ENTRIES + 1
+	jr nz, .inner_loop
+	inc d
+	ld a, d
+	cp 3
+	ccf
+	jr nc, .outer_loop
+	ret
+.found_free_space
+	xor a
+	ret
+
+FlushStorageSystem:
+; Frees up orphaned pokedb entries.
+	push hl
+	push de
+	push bc
+
+	; Clear used pokedb entries.
+	ld a, BANK(sBoxMons1)
+	call GetSRAMBank
+	call .ClearEntries
+	ld a, BANK(sBoxMons2)
+	call GetSRAMBank
+	call .ClearEntries
+
+	; Now, set flags as per box usage.
+	ld hl, sNewBox1Entries
+.loop
+	ld d, NUM_NEWBOXES * 2 ; current + backup
+	push hl
+	push de
+	call .SetUsedEntries
+	pop de
+	pop hl
+	ld bc, sNewBox2 - sNewBox1
+	add hl, bc
+	dec d
+	jr nz, .loop
+	call CloseSRAM
+	jp PopBCDEHL
+
+.ClearEntries:
+; Clears current pokedb allocations
+	xor a
+	ld hl, sBoxMons1UsedEntries
+	ld bc, sBoxMons1End - sBoxMons1UsedEntries
+	rst ByteFill
+	ret
+
+.SetUsedEntries:
+; Allocates all entries used by current box in hl.
+	ld bc, sNewBox1Banks - sNewBox1Entries
+	ld d, h
+	ld e, l
+	add hl, bc
+	lb bc, MONS_PER_BOX, 0
+	ld a, BANK(sNewBox1)
+	call GetSRAMBank
+.set_loop
+	push de
+	push bc
+	ld a, [de]
+	ld e, a
+	ld d, 0
+	and a
+	jr z, .set_next
+
+	; Check which pokedbbank the entry resides in.
+	ld b, CHECK_FLAG
+	predef FlagPredef
+	ld a, BANK(sBoxMons1)
+	jr z, .got_pokedb_bank
+	ld a, BANK(sBoxMons2)
+.got_pokedb_bank
+	call GetSRAMBank
+
+	; Mark the pokedb entry as used.
+	push hl
+	ld hl, sBoxMons1UsedEntries
+	ld c, e
+	dec c ; flags are 0-indexed
+	ld b, SET_FLAG
+	predef FlagPredef
+	pop hl
+
+	; Switch SRAM bank back to the newbox pointer table.
+	ld a, BANK(sNewBox1)
+	call GetSRAMBank
+.set_next
+	; Advance to next box entry.
+	pop bc
+	pop de
+	inc de
+	inc c
+	dec b
+	jr nz, .set_loop
+	ret
+
 InitializeBoxes:
 ; Initializes the Storage System boxes as empty with default names.
 	ld a, BANK(sNewBox1)

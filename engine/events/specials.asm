@@ -522,7 +522,7 @@ BillBoxSwitch:
 	; change boxes (overwrites wMisc)
 	ld a, [wTempScriptBuffer]
 	ld e, a
-	farcall ChangeBoxSaveGame
+	farcall Link_SaveGame
 	; a = carry (didn't save) ? FALSE : TRUE
 	sbc a
 	inc a
