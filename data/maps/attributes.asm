@@ -463,7 +463,7 @@ ENDM
 	map_attributes CeladonOutskirts, CELADON_OUTSKIRTS, $f, SOUTH
 	connection south, Route7, ROUTE_7, 0
 
-	map_attributes Route23, ROUTE_23, $f, NORTH
+	map_attributes Route23, ROUTE_23, $2c, NORTH
 	connection north, IndigoPlateau, INDIGO_PLATEAU, 0
 
 	map_attributes IndigoPlateau, INDIGO_PLATEAU, $2c, SOUTH
