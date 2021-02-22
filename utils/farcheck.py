@@ -40,7 +40,6 @@ for filename in iglob('**/*.asm', recursive=True):
 	printed = False
 	cur_label = None
 	cur_bank = None
-	# Read each file line by line
 	with open(filename, 'r') as f:
 		for i, line in enumerate(f, 1):
 			if (m := re.match(def_rx, line)):
@@ -51,7 +50,6 @@ for filename in iglob('**/*.asm', recursive=True):
 					cur_bank = bank
 				else:
 					print(f"{filename}:{i}: cannot get bank of '{label}'", file=sys.stderr)
-					#sym_banks[label] = cur_bank
 			elif (m := re.match(ref_rx, line)):
 				label = m.group(1)
 				if label.startswith('.') and cur_label is not None:
