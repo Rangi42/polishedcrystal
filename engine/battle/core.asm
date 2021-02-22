@@ -1550,7 +1550,7 @@ StealLeppaBerry:
 	call GetNonfullPPMove
 	ret z
 	push bc
-	call ConsumeOpponentItem
+	farcall ConsumeOpponentItem
 	pop bc
 	jp LeppaRestorePP
 
