@@ -27,38 +27,6 @@ CheckCurPartyMonFainted:
 	and a
 	ret
 
-GetBoxPointer:
-	dec b
-	ld c, b
-	ld b, 0
-	ld hl, .boxes
-	add hl, bc
-	add hl, bc
-	add hl, bc
-	ld a, [hli]
-	ld b, a
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	ret
-
-.boxes
-	;  bank, address
-	dba sBox1
-	dba sBox2
-	dba sBox3
-	dba sBox4
-	dba sBox5
-	dba sBox6
-	dba sBox7
-	dba sBox8
-	dba sBox9
-	dba sBox10
-	dba sBox11
-	dba sBox12
-	dba sBox13
-	dba sBox14
-
 GetBoxCountWithC:
 	ld a, [wCurBox]
 	ld b, a
