@@ -57,8 +57,9 @@ sSaveVersion3:: dw
 sSaveUpgradePhase:: db
 sSaveUpgradePhase2:: db
 sSaveUpgradePhase3:: db
+sWritingBackup:: db ; 1 if we're saving, anything else if not.
 
-	ds 155
+	ds 154
 
 sRTCStatusFlags:: ds 8
 sLuckyNumberDay:: db
@@ -125,6 +126,7 @@ sNewBox12:: newbox sNewBox12
 sNewBox13:: newbox sNewBox13
 sNewBox14:: newbox sNewBox14
 sNewBox15:: newbox sNewBox15
+sNewBoxEnd::
 
 sBackupNewBox1:: newbox sBackupNewBox1
 sBackupNewBox2:: newbox sBackupNewBox2
@@ -142,6 +144,8 @@ sBackupNewBox13:: newbox sBackupNewBox13
 sBackupNewBox14:: newbox sBackupNewBox14
 sBackupNewBox15:: newbox sBackupNewBox15
 ENDU
+
+sSavedBoxState:: db
 
 SECTION "Link Battle Data", SRAM
 

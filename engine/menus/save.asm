@@ -1,3 +1,5 @@
+BOXSAVE_USECURRENT EQU 1
+
 SaveMenu:
 	ld c, 4
 	call SFXDelayFrames
@@ -50,61 +52,6 @@ ForceGameSave:
 	call SavedTheGame
 	call ClearWRAMStateAfterSave
 	and a
-	ret
-
-MovePkmnWOMail_SaveGame:
-	call SetWRAMStateForSave
-	push de
-	call SaveBox
-	pop de
-	ld a, e
-	ld [wCurBox], a
-	call LoadBox
-	jp ClearWRAMStateAfterSave
-
-MovePkmnWOMail_InsertMon_SaveGame:
-	call SetWRAMStateForSave
-	push de
-	call SaveBox
-	pop de
-	ld a, e
-	ld [wCurBox], a
-	ld a, $1
-	ld [wSaveFileExists], a
-	farcall StageRTCTimeForSave
-	call ValidateSave
-	call SaveOptions
-	call SavePlayerData
-	call SavePokemonData
-	call SaveChecksum
-	call ValidateBackupSave
-	call SaveBackupOptions
-	call SaveBackupPlayerData
-	call SaveBackupPokemonData
-	call SaveBackupChecksum
-	farcall BackupPartyMonMail
-	farcall SaveRTC
-	call LoadBox
-	call ClearWRAMStateAfterSave
-	ld de, SFX_SAVE
-	jp PlaySFX
-
-StartMovePkmnWOMail_SaveGame:
-	ld hl, MoveMonWOMailSaveText
-	call MenuTextbox
-	call YesNoBox
-	call ExitMenu
-	jr c, .refused
-	call AskOverwriteSaveFile
-	jr c, .refused
-	call SetWRAMStateForSave
-	call SavedTheGame
-	call ClearWRAMStateAfterSave
-	and a
-	ret
-
-.refused
-	scf
 	ret
 
 SetWRAMStateForSave:
@@ -199,7 +146,6 @@ SaveGameData::
 	call SaveOptions
 	call SavePlayerData
 	call SavePokemonData
-	call SaveBox
 
 	; This function is never called mid-Battle Tower (only in the beginning).
 	; So this is always a safe action, and gets rid of potential old BT state
@@ -210,21 +156,60 @@ SaveGameData::
 	xor a
 	ld [sBattleTowerChallengeState], a
 
+	; At this point, there is no longer any harm in setting this. We can't set
+	; it earlier, because it might confuse the load routine into using bad
+	; box/mail data, and we can't set it later because we need to set it
+	; before our main save copy is valid.
+	ld a, 1
+	call SetSavePhase
+
 	call SaveChecksum
-	call ValidateBackupSave
-	call SaveBackupOptions
-	call SaveBackupPlayerData
-	call SaveBackupPokemonData
-	call SaveBackupChecksum
-	farcall BackupPartyMonMail
-	farcall SaveRTC
+	call WriteBackupSave
+	farcall SaveRTC ; should we move this?
 	call CloseSRAM ; just in case
 	pop af
 	ldh [hVBlank], a
 	ret
 
+WriteBackupSave:
+; Runs after saving the main copy. Writes the "pseudo-WRAM" copies of storage
+; and mail, then creates the backup save. This process is automatically run
+; on game load if we have a valid main save but not a backup save.
+	; Save storage and mail to backup
+	farcall BackupPartyMonMail
+	call SaveStorageSystem
+
+	; Save the backup copy of game data.
+	call ValidateBackupSave
+	call SaveBackupOptions
+	call SaveBackupPlayerData
+	call SaveBackupPokemonData
+	call SaveBackupChecksum
+
+	; Finished saving.
+	xor a
+	call SetSavePhase
+	jp CloseSRAM
+
+LoadStorageSystem:
+; Copy backup storage system to active.
+	ld hl, sBackupNewBox1
+	ld de, sNewBox1
+	jr CopyStorageSystem
+
+SaveStorageSystem:
+; Copy active storage system to backup.
+	ld hl, sNewBox1
+	ld de, sBackupNewBox1
+	; fallthrough
+CopyStorageSystem:
+	ld a, BANK(sNewBox1)
+	call GetSRAMBank
+	ld bc, sNewBoxEnd - sNewBox1
+	rst CopyBytes
+	jp CloseSRAM
+
 ErasePreviousSave:
-	call EraseBoxes
 	call EraseHallOfFame
 	call EraseLinkBattleStats
 	call EraseBattleTowerStatus
@@ -306,10 +291,6 @@ SavePokemonData:
 	rst CopyBytes
 	jp CloseSRAM
 
-SaveBox:
-	call GetBoxAddress
-	jp SaveBoxAddress
-
 SaveChecksum:
 	ld hl, sGameData
 	ld bc, sGameDataEnd - sGameData
@@ -374,19 +355,38 @@ SaveBackupChecksum:
 	ld [sBackupChecksum + 1], a
 	jp CloseSRAM
 
+WasMidSaveAborted:
+; Returns z if the system was reset mid-saving.
+	ld a, BANK(sWritingBackup)
+	call GetSRAMBank
+	ld a, [sWritingBackup]
+	dec a
+	jp CloseSRAM
+
+SetSavePhase:
+; set current save phase: 1 (saving), 0 (not saving).
+	push af
+	ld a, BANK(sWritingBackup)
+	call GetSRAMBank
+	pop af
+	ld [sWritingBackup], a
+	jp CloseSRAM
+
 TryLoadSaveFile:
 	call VerifyChecksum
 	jr nz, .backup
 	call LoadPlayerData
 	call LoadPokemonData
-	call LoadBox
+
+	; If a mid-save was aborted but main save data is good, finish it.
+	call WasMidSaveAborted
+	call z, WriteBackupSave
 	farcall RestorePartyMonMail
-	call ValidateBackupSave
-	call SaveBackupOptions
-	call SaveBackupPlayerData
-	call SaveBackupPokemonData
-	call SaveBackupChecksum
+	call LoadStorageSystem
 	call UpgradeSaveVersion
+
+	; Just in case
+	call WriteBackupSave
 	and a
 	ret
 
@@ -395,13 +395,9 @@ TryLoadSaveFile:
 	jr nz, .corrupt
 	call LoadBackupPlayerData
 	call LoadBackupPokemonData
-	call LoadBox
 	farcall RestorePartyMonMail
-	call ValidateSave
-	call SaveOptions
-	call SavePlayerData
-	call SavePokemonData
-	call SaveChecksum
+	call LoadStorageSystem
+	call SaveGameData
 	and a
 	ret
 
@@ -525,10 +521,6 @@ LoadPokemonData:
 	rst CopyBytes
 	jp CloseSRAM
 
-LoadBox:
-	call GetBoxAddress
-	jp LoadBoxAddress
-
 VerifyChecksum:
 	ld hl, sGameData
 	ld bc, sGameDataEnd - sGameData
@@ -584,228 +576,6 @@ VerifyBackupChecksum:
 	call CloseSRAM
 	pop af
 	ret
-
-GetBoxAddress:
-	ld a, [wCurBox]
-	cp NUM_BOXES
-	jr c, .ok
-	xor a
-	ld [wCurBox], a
-
-.ok
-	ld e, a
-	ld d, 0
-	ld hl, BoxAddresses
-rept 5
-	add hl, de
-endr
-	ld a, [hli]
-	push af
-	ld a, [hli]
-	ld e, a
-	ld a, [hli]
-	ld d, a
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	pop af
-	ret
-
-SaveBoxAddress:
-; Save box via wMisc.
-; We do this in three steps because the size of wMisc is less than
-; the size of sBox.
-	push hl
-; Load the first part of the active box.
-	push af
-	push de
-	ld a, BANK(sBox)
-	call GetSRAMBank
-	ld hl, sBox
-	ld de, wMisc
-	ld bc, (wMiscEnd - wMisc)
-	rst CopyBytes
-	call CloseSRAM
-	pop de
-	pop af
-; Save it to the target box.
-	push af
-	push de
-	call GetSRAMBank
-	ld hl, wMisc
-	ld bc, (wMiscEnd - wMisc)
-	rst CopyBytes
-	call CloseSRAM
-
-; Load the second part of the active box.
-	ld a, BANK(sBox)
-	call GetSRAMBank
-	ld hl, sBox + (wMiscEnd - wMisc)
-	ld de, wMisc
-	ld bc, (wMiscEnd - wMisc)
-	rst CopyBytes
-	call CloseSRAM
-	pop de
-	pop af
-
-	ld hl, (wMiscEnd - wMisc)
-	add hl, de
-	ld e, l
-	ld d, h
-; Save it to the next part of the target box.
-	push af
-	push de
-	call GetSRAMBank
-	ld hl, wMisc
-	ld bc, (wMiscEnd - wMisc)
-	rst CopyBytes
-	call CloseSRAM
-
-; Load the third and final part of the active box.
-	ld a, BANK(sBox)
-	call GetSRAMBank
-	ld hl, sBox + (wMiscEnd - wMisc) * 2
-	ld de, wMisc
-	ld bc, sBoxEnd - (sBox + (wMiscEnd - wMisc) * 2) ; $8e
-	rst CopyBytes
-	call CloseSRAM
-	pop de
-	pop af
-
-	ld hl, (wMiscEnd - wMisc)
-	add hl, de
-	ld e, l
-	ld d, h
-; Save it to the final part of the target box.
-	call GetSRAMBank
-	ld hl, wMisc
-	ld bc, sBoxEnd - (sBox + (wMiscEnd - wMisc) * 2) ; $8e
-	rst CopyBytes
-	call CloseSRAM
-
-	pop hl
-	ret
-
-LoadBoxAddress:
-; Load box via wMisc.
-; We do this in three steps because the size of wMisc is less than
-; the size of sBox.
-	push hl
-	ld l, e
-	ld h, d
-; Load part 1
-	push af
-	push hl
-	call GetSRAMBank
-	ld de, wMisc
-	ld bc, (wMiscEnd - wMisc)
-	rst CopyBytes
-	call CloseSRAM
-	ld a, BANK(sBox)
-	call GetSRAMBank
-	ld hl, wMisc
-	ld de, sBox
-	ld bc, (wMiscEnd - wMisc)
-	rst CopyBytes
-	call CloseSRAM
-	pop hl
-	pop af
-
-	ld de, (wMiscEnd - wMisc)
-	add hl, de
-; Load part 2
-	push af
-	push hl
-	call GetSRAMBank
-	ld de, wMisc
-	ld bc, (wMiscEnd - wMisc)
-	rst CopyBytes
-	call CloseSRAM
-	ld a, BANK(sBox)
-	call GetSRAMBank
-	ld hl, wMisc
-	ld de, sBox + (wMiscEnd - wMisc)
-	ld bc, (wMiscEnd - wMisc)
-	rst CopyBytes
-	call CloseSRAM
-	pop hl
-	pop af
-; Load part 3
-	ld de, (wMiscEnd - wMisc)
-	add hl, de
-	call GetSRAMBank
-	ld de, wMisc
-	ld bc, sBoxEnd - (sBox + (wMiscEnd - wMisc) * 2) ; $8e
-	rst CopyBytes
-	call CloseSRAM
-	ld a, BANK(sBox)
-	call GetSRAMBank
-	ld hl, wMisc
-	ld de, sBox + (wMiscEnd - wMisc) * 2
-	ld bc, sBoxEnd - (sBox + (wMiscEnd - wMisc) * 2) ; $8e
-	rst CopyBytes
-	call CloseSRAM
-
-	pop hl
-	ret
-
-EraseBoxes:
-	ld hl, BoxAddresses
-	ld c, NUM_BOXES
-.next
-	push bc
-	ld a, [hli]
-	call GetSRAMBank
-	ld a, [hli]
-	ld e, a
-	ld a, [hli]
-	ld d, a
-	xor a
-	ld [de], a
-	inc de
-	ld a, -1
-	ld [de], a
-	inc de
-	ld bc, sBoxEnd - (sBox + 2)
-.clear
-	xor a
-	ld [de], a
-	inc de
-	dec bc
-	ld a, b
-	or c
-	jr nz, .clear
-	ld a, [hli]
-	ld e, a
-	ld a, [hli]
-	ld d, a
-	ld a, -1
-	ld [de], a
-	inc de
-	xor a
-	ld [de], a
-	call CloseSRAM
-	pop bc
-	dec c
-	jr nz, .next
-	ret
-
-BoxAddresses:
-; dbww bank, address, address
-	dbww BANK(sBox1),  sBox1,  sBox1End
-	dbww BANK(sBox2),  sBox2,  sBox2End
-	dbww BANK(sBox3),  sBox3,  sBox3End
-	dbww BANK(sBox4),  sBox4,  sBox4End
-	dbww BANK(sBox5),  sBox5,  sBox5End
-	dbww BANK(sBox6),  sBox6,  sBox6End
-	dbww BANK(sBox7),  sBox7,  sBox7End
-	dbww BANK(sBox8),  sBox8,  sBox8End
-	dbww BANK(sBox9),  sBox9,  sBox9End
-	dbww BANK(sBox10), sBox10, sBox10End
-	dbww BANK(sBox11), sBox11, sBox11End
-	dbww BANK(sBox12), sBox12, sBox12End
-	dbww BANK(sBox13), sBox13, sBox13End
-	dbww BANK(sBox14), sBox14, sBox14End
 
 Checksum:
 	ld de, 0
@@ -953,154 +723,7 @@ ResetHyperTrainingBits:
 	ret
 
 UpgradeStorageSystem:
-; Upgrades the Storage System to the modern Polished system
-	; Normally, we don't care about Pokémon allocation order. However,
-	; to preserve Box organization from older saves in this case, we allocate
-	; Pokémon entries in the same order as they are in the boxes. The reason is
-	; that in case the user decides it's a Good Idea(TM) to reset the game mid-
-	; upgrade, we can still preserve the upgrade process fully, which we can't
-	; otherwise do since we need to overwrite old data as we go (we don't have
-	; the space to store both old and new completely, so sBox is used as backup
-	; while we write the new data).
-
-	; Maybe continue where we left off.
-.outer_loop
-	call GetUpgradePhase
-	cp 28
-	jr nc, .finalize
-	and a
-	jr nz, .init_done
-
-	; Clear pokedb usage flags (Safe, the data was previously unused).
-	ld a, BANK(sBoxMons1)
-	call .clearusedentries
-	ld a, BANK(sBoxMons2)
-	call .clearusedentries
-
-.init_done
-	; Odd phases has already extracted
-	ccf
-	rra
-	jr c, .extraction_done
-
-	; Extract a box to sBox
-	ld [wCurBox], a
-	call LoadBox
-	jp .next_phase
-
-.clearusedentries
-	call GetSRAMBank
-	ld hl, sBoxMons1UsedEntries
-	ld bc, (MONDB_ENTRIES + 7) / 8
-	xor a
-	rst ByteFill
 	ret
-
-.extraction_done
-	; Allocate entries for the given box
-	; At this point, we know that sBox is complete, so we can safely overwrite
-	; its former box data.
-
-	; Check which bank to use.
-	ld d, 1
-	cp 7
-	jr c, .got_pokedb_bank
-	sub 7
-	inc d
-.got_pokedb_bank
-	ld b, a
-	ld a, -20
-	inc b
-.entry_loop
-	add 20
-	dec b
-	jr nz, .entry_loop
-	ld e, a
-	; de contains pokedb bank and entry-1.
-
-	; Figure out how many Pokémon there are in the box.
-	ld a, BANK(sBox)
-	call GetSRAMBank
-	ld a, [sBoxCount]
-	ld b, a
-	ld c, -1
-	inc b
-.loop
-	inc c
-	inc e
-	dec b
-	jr z, .next_phase
-
-	; Copy the Pokémon to a buffer for use for NewStorageMon
-	push bc
-	push de
-	ld a, BANK(sBox)
-	call GetSRAMBank
-	ld hl, sBoxMons
-	ld a, c
-	ld bc, BOXMON_STRUCT_LENGTH
-	push af
-	rst AddNTimes
-	ld de, wBufferMon
-	rst CopyBytes
-
-	ld hl, sBoxMonNicknames
-	pop af
-	push af
-	call SkipNames
-	ld de, wBufferMonNick
-	rst CopyBytes
-	ld hl, sBoxMonOT
-	pop af
-	call SkipNames
-	ld de, wBufferMonOT
-	rst CopyBytes
-	pop de
-	farcall _NewStorageMon
-	pop bc
-	jr .loop
-
-.finalize
-	; At this point, we have a complete storage. Write the new box structure.
-
-	; Initializes new boxes
-	call InitializeBoxes
-
-	; Populate boxes
-	ld d, 1 ; 1-7
-	call .do_storage_loop
-	inc d ; 8-14
-.do_storage_loop
-	ld e, 140
-.storage_loop
-	farcall GetStorageMon
-	call nz, .add_to_box
-	dec e
-	jr nz, .storage_loop
-	ret
-
-.add_to_box
-	ld a, d
-	dec a
-	ld b, 0
-	jr z, .got_box_half
-	ld b, 7
-.got_box_half
-	ld a, e
-	dec a
-.box_count_loop
-	inc b
-	sub 20
-	jr nc, .box_count_loop
-	add 21
-	ld c, a
-	farjp SetBoxPointer
-
-.next_phase
-	call GetUpgradePhase
-	inc a
-	call SetUpgradePhase
-	jp .outer_loop
 
 GetUpgradePhase:
 SetUpgradePhase:
