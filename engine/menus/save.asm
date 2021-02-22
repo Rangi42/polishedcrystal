@@ -33,13 +33,13 @@ SaveMenu:
 
 SaveAfterLinkTrade:
 	call SetWRAMStateForSave
-	farcall StageRTCTimeForSave
+	call StageRTCTimeForSave
 	call SavePokemonData
 	call SaveChecksum
 	call SaveBackupPokemonData
 	call SaveBackupChecksum
 	farcall BackupPartyMonMail
-	farcall SaveRTC
+	call SaveRTC
 	jp ClearWRAMStateAfterSave
 
 ChangeBoxSaveGame:
@@ -97,7 +97,7 @@ MovePkmnWOMail_InsertMon_SaveGame:
 	ld [wCurBox], a
 	ld a, $1
 	ld [wSaveFileExists], a
-	farcall StageRTCTimeForSave
+	call StageRTCTimeForSave
 	call ValidateSave
 	call SaveOptions
 	call SavePlayerData
@@ -109,7 +109,7 @@ MovePkmnWOMail_InsertMon_SaveGame:
 	call SaveBackupPokemonData
 	call SaveBackupChecksum
 	farcall BackupPartyMonMail
-	farcall SaveRTC
+	call SaveRTC
 	call LoadBox
 	call ClearWRAMStateAfterSave
 	ld de, SFX_SAVE
@@ -220,7 +220,7 @@ SaveGameData::
 	ldh [hVBlank], a
 	dec a ; ld a, TRUE
 	ld [wSaveFileExists], a
-	farcall StageRTCTimeForSave
+	call StageRTCTimeForSave
 	call ValidateSave
 	call SaveOptions
 	call SavePlayerData
@@ -243,7 +243,7 @@ SaveGameData::
 	call SaveBackupPokemonData
 	call SaveBackupChecksum
 	farcall BackupPartyMonMail
-	farcall SaveRTC
+	call SaveRTC
 	call CloseSRAM ; just in case
 	pop af
 	ldh [hVBlank], a

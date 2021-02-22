@@ -135,6 +135,7 @@ INCLUDE "data/moves/effects.asm"
 SECTION "bankA", ROMX
 
 INCLUDE "engine/link/link.asm"
+INCLUDE "engine/movie/trade_animation.asm"
 
 
 SECTION "Wild Data", ROMX
@@ -223,7 +224,6 @@ INCLUDE "data/collision_permissions.asm"
 
 SECTION "bank13", ROMX
 
-INCLUDE "engine/menus/empty_sram.asm"
 INCLUDE "engine/events/checksave.asm"
 INCLUDE "data/maps/scenes.asm"
 INCLUDE "engine/rtc/reset_password.asm"

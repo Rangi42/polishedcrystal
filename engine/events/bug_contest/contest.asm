@@ -47,7 +47,7 @@ Special_GiveParkBalls:
 	ld [wContestMon], a
 	ld a, 20
 	ld [wParkBallsRemaining], a
-	farjp StartBugContestTimer
+	jp StartBugContestTimer
 
 BugCatchingContestBattleScript::
 	writecode VAR_BATTLETYPE, BATTLETYPE_CONTEST

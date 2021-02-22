@@ -1645,10 +1645,8 @@ LinkTrade:
 	jr z, .player_2
 	predef TradeAnimation
 	jr .done_animation
-
 .player_2
-	farcall TradeAnimationPlayer2
-
+	call TradeAnimationPlayer2
 .done_animation
 	pop af
 	ld c, a
@@ -1841,8 +1839,6 @@ SetTradeRoomBGPals:
 	farcall LoadLinkTradePalette
 	farcall ApplyPals
 	jp SetPalettes
-
-INCLUDE "engine/movie/trade_animation.asm"
 
 WaitForOtherPlayerToExit:
 	ld c, 3

@@ -816,7 +816,7 @@ BTBuyMenuLoop:
 	ld de, wBattlePoints
 	ld bc, hMoneyTemp + 1
 	ld a, 2
-	farcall SubtractFunds
+	call SubtractFunds
 	ld a, MARTTEXT_HERE_YOU_GO
 	call LoadBuyMenuText
 	call JoyWaitAorB

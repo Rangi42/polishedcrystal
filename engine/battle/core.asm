@@ -3688,7 +3688,7 @@ DrawPlayerHUD:
 	ld [hl], $55
 	inc hl
 	ld [hl], $56
-	farjp FinishBattleAnim
+	jp FinishBattleAnim
 
 CheckDanger:
 	ld hl, wBattleMonHP
@@ -3915,7 +3915,7 @@ endr
 	ld [hl], $57
 	inc hl
 	ld [hl], $58
-	farjp FinishBattleAnim
+	jp FinishBattleAnim
 
 BattleAnimateHPBar:
 	predef AnimateHPBar
@@ -8551,7 +8551,7 @@ BattleStartMessage:
 	call Call_PlayBattleAnim
 
 .not_shiny
-	farcall CheckSleepingTreeMon
+	call CheckSleepingTreeMon
 	jr c, .skip_cry
 
 	farcall CheckBattleEffects
