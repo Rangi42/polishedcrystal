@@ -120,7 +120,7 @@ Init::
 	ld a, BANK(GameInit) ; aka BANK(WriteOAMDMACodeToHRAM)
 	rst Bankswitch
 
-	call WriteOAMDMACodeToHRAM
+	call WriteOAMDMACodeToHRAM ; far-ok
 
 	xor a
 	ldh [hMapAnims], a

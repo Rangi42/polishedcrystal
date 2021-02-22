@@ -12,6 +12,8 @@ ref_rx = re.compile(r'^\s+(?:call|jp|jr|dw|dwb)\s+(?:(?:z|nz|c|nc)\s*,\s*)?([A-Z
 far_rx = re.compile(r'^\s+(?:farcall|farjp)\s+([A-Z0-9_\.]+)', re.IGNORECASE)
 ram_rx = re.compile(r'^[vwh][A-Z]')
 
+suppress = 'far-ok'
+
 exclude = {
 'data/text/unused_sweet_honey.asm',
 'engine/games/memory_game.asm',
@@ -56,8 +58,11 @@ for filename in iglob('**/*.asm', recursive=True):
 					label = cur_label + label
 				bank = sym_banks.get(label, None)
 				if bank is not None and bank != cur_bank and bank != 0 and not re.match(ram_rx, label):
-					code = line.split(';', 1)[0].strip()
-					print(f"{filename}:{i}: '{code}' in bank {cur_bank:02X} references '{label}' in bank {bank:02X}")
+					code, *comment = line.split(';', 1)
+					code = code.strip()
+					comment = comment[0].strip() if comment else ''
+					if suppress not in comment:
+						print(f"{filename}:{i}: '{code}' in bank {cur_bank:02X} references '{label}' in bank {bank:02X}")
 			elif (m := re.match(far_rx, line)):
 				label = m.group(1)
 				if label.startswith('.') and cur_label is not None:
