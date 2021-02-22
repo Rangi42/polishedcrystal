@@ -191,7 +191,7 @@ Init::
 	call InitSound
 	xor a
 	ld [wMapMusic], a
-	jp GameInit
+	jp GameInit ; far-ok
 
 ClearVRAM::
 ; Wipe VRAM banks 0 and 1

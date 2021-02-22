@@ -254,11 +254,11 @@ HandleWeather:
 	ld [wBattleWeather], a
 	ret
 
-.WeatherEndedMessages:
-	dw BattleText_TheRainStopped
-	dw BattleText_TheSunlightFaded
-	dw BattleText_TheSandstormSubsided
-	dw BattleText_TheHailStopped
+.WeatherEndedMessages: ; these are all used with StdBattleTextbox
+	dw BattleText_TheRainStopped ; far-ok
+	dw BattleText_TheSunlightFaded ; far-ok
+	dw BattleText_TheSandstormSubsided ; far-ok
+	dw BattleText_TheHailStopped ; far-ok
 
 .ongoing
 	; the above needs actual [wBattleWeather] to be

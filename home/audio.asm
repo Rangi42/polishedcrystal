@@ -12,7 +12,7 @@ InitSound::
 	ld a, BANK(_InitSound)
 	rst Bankswitch
 
-	call _InitSound
+	call _InitSound ; far-ok
 
 	pop af
 	rst Bankswitch
@@ -31,7 +31,7 @@ UpdateSound::
 	ld a, BANK(_UpdateSound)
 	rst Bankswitch
 
-	call _UpdateSound
+	call _UpdateSound ; far-ok
 
 	pop af
 	rst Bankswitch
@@ -72,11 +72,11 @@ PlayMusic::
 	and a
 	jr z, .nomusic
 
-	call _PlayMusic
+	call _PlayMusic ; far-ok
 	jr .end
 
 .nomusic
-	call _InitSound
+	call _InitSound ; far-ok
 
 .end
 	pop af
@@ -99,10 +99,10 @@ PlayMusic2::
 
 	push de
 	ld de, MUSIC_NONE
-	call _PlayMusic
+	call _PlayMusic ; far-ok
 	call DelayFrame
 	pop de
-	call _PlayMusic
+	call _PlayMusic ; far-ok
 
 	pop af
 	rst Bankswitch
@@ -146,7 +146,7 @@ endr
 	ld a, BANK(_PlayCryHeader)
 	rst Bankswitch
 
-	call _PlayCryHeader
+	call _PlayCryHeader ; far-ok
 
 	pop af
 	rst Bankswitch
@@ -182,7 +182,7 @@ PlaySFX::
 
 	ld a, e
 	ld [wCurSFX], a
-	call _PlaySFX
+	call _PlaySFX ; far-ok
 
 	pop af
 	rst Bankswitch

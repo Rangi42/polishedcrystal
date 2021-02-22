@@ -2289,10 +2289,10 @@ WinTrainerBattle:
 	ld [hl], a
 	ret
 
-.SentToMomTexts:
-	dw SentSomeToMomText
-	dw SentHalfToMomText
-	dw SentAllToMomText
+.SentToMomTexts: ; these are all used with StdBattleTextbox
+	dw SentSomeToMomText ; far-ok
+	dw SentHalfToMomText ; far-ok
+	dw SentAllToMomText ; far-ok
 
 .CheckMaxedOutMomMoney:
 	ld hl, wMomsMoney + 2
