@@ -1156,7 +1156,6 @@ LinkTrade_TradeStatsMenu:
 	call CheckAnyOtherAliveMonsForTrade
 	jp nc, LinkTrade
 	xor a
-	ld [wPlayerLinkAction+1], a
 	ld [wOtherPlayerLinkAction], a
 	hlcoord 0, 12
 	lb bc, 4, 18
@@ -1169,7 +1168,6 @@ LinkTrade_TradeStatsMenu:
 
 .abnormal
 	xor a
-	ld [wPlayerLinkAction+1], a
 	ld [wOtherPlayerLinkAction], a
 	ld a, [wCurOTTradePartyMon]
 	ld hl, wOTPartyMon1IsEgg
@@ -1350,7 +1348,6 @@ ExitLinkCommunications:
 
 LinkTrade:
 	xor a
-	ld [wPlayerLinkAction+1], a
 	ld [wOtherPlayerLinkAction], a
 	hlcoord 0, 12
 	lb bc, 4, 18
@@ -2187,20 +2184,20 @@ Link_ResetSerialRegistersAfterLinkClosure:
 
 Link_EnsureSync:
 	add $d0
-	ld [wPlayerLinkAction], a
-	ld [wPlayerLinkAction+1], a
+	ld [wLinkPlayerSyncBuffer], a
+	ld [wLinkPlayerSyncBuffer + 1], a
 	ld a, $2
 	ldh [hVBlank], a
 	call DelayFrame
 	call DelayFrame
 .receive_loop
-	call Serial_ExchangeLinkMenuSelection
-	ld a, [wOtherPlayerLinkMode]
+	call Serial_ExchangeSyncBytes
+	ld a, [wLinkReceivedSyncBuffer]
 	ld b, a
 	and $f0
 	cp $d0
 	jr z, .done
-	ld a, [wOtherPlayerLinkAction]
+	ld a, [wLinkReceivedSyncBuffer + 1]
 	ld b, a
 	and $f0
 	cp $d0

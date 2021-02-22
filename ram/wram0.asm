@@ -956,12 +956,18 @@ ENDU
 
 wTileAnimBuffer:: ds 1 tiles
 
-; addresses dealing with serial comms
+; link data
+UNION
 wOtherPlayerLinkMode:: db
 wOtherPlayerLinkAction:: db
 	ds 3
-wPlayerLinkAction:: dw
-	ds 3
+wPlayerLinkAction:: db
+	ds 4
+NEXTU
+wLinkReceivedSyncBuffer:: ds 5
+wLinkPlayerSyncBuffer:: ds 5
+ENDU
+
 wLinkTimeoutFrames:: dw
 wLinkByteTimeout:: dw
 
