@@ -34,6 +34,13 @@ with open(sys.argv[1], 'r') as f:
 			bank, addr, label = m.groups()
 			sym_banks[label] = int(bank, 16)
 
+def get_label_bank(m, n=1):
+	label = m.group(n)
+	if label.startswith('.') and cur_label is not None:
+		label = cur_label + label
+	bank = sym_banks.get(label, None)
+	return (label, bank)
+
 for filename in iglob('**/*.asm', recursive=True):
 	if filename in exclude:
 		continue
@@ -43,18 +50,14 @@ for filename in iglob('**/*.asm', recursive=True):
 	with open(filename, 'r') as f:
 		for i, line in enumerate(f, 1):
 			if (m := re.match(def_rx, line)):
-				label = m.group(1)
+				label, bank = get_label_bank(m)
 				cur_label = label
-				bank = sym_banks.get(label, None)
 				if bank is not None:
 					cur_bank = bank
 				else:
 					print(f"{filename}:{i}: cannot get bank of '{label}'", file=sys.stderr)
 			elif (m := re.match(ref_rx, line)):
-				label = m.group(1)
-				if label.startswith('.') and cur_label is not None:
-					label = cur_label + label
-				bank = sym_banks.get(label, None)
+				label, bank = get_label_bank(m)
 				if bank is not None and bank != cur_bank and bank != 0 and not re.match(ram_rx, label):
 					code, *comment = line.split(';', 1)
 					code = code.strip()
@@ -62,10 +65,7 @@ for filename in iglob('**/*.asm', recursive=True):
 					if suppress not in comment:
 						print(f"{filename}:{i}: '{code}' in bank {cur_bank:02X} references '{label}' in bank {bank:02X}")
 			elif (m := re.match(far_rx, line)):
-				label = m.group(1)
-				if label.startswith('.') and cur_label is not None:
-					label = cur_label + label
-				bank = sym_banks.get(label, None)
+				label, bank = get_label_bank(m)
 				if bank is not None and bank == cur_bank:
 					code = line.split(';', 1)[0].strip()
 					print(f"{filename}:{i}: '{code}' in bank {cur_bank:02X} references '{label}' already in bank {bank:02X}")
