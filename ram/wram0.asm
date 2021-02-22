@@ -960,8 +960,8 @@ wTileAnimBuffer:: ds 1 tiles
 wOtherPlayerLinkMode:: db
 wOtherPlayerLinkAction:: db
 	ds 3
-wPlayerLinkAction:: db
-	ds 4
+wPlayerLinkAction:: dw
+	ds 3
 wLinkTimeoutFrames:: dw
 wLinkByteTimeout:: dw
 
