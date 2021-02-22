@@ -566,11 +566,9 @@ DoPoisonBurnDamage:
 	ld a, BATTLE_VARS_STATUS
 	call GetBattleVar
 	and 1 << BRN | 1 << TOX
-	jr z, .got_damage_amount
 	; Burn and Toxic does (or starts at) 1/16 damage as of Gen VII
-	call GetSixteenthMaxHP
+	call nz, GetSixteenthMaxHP
 
-.got_damage_amount
 	ldh a, [hBattleTurn]
 	and a
 	ld hl, wPlayerToxicCount

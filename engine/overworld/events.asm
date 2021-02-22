@@ -73,9 +73,7 @@ EnterMap:
 
 	ldh a, [hMapEntryMethod]
 	cp MAPSETUP_CONNECTION
-	jr nz, .dont_enable
-	call EnableEvents
-.dont_enable
+	call z, EnableEvents
 
 	ldh a, [hMapEntryMethod]
 	cp MAPSETUP_RELOADMAP

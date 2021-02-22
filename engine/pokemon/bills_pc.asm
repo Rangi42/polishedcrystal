@@ -1537,11 +1537,8 @@ BillsPC_CheckSpaceInDestination:
 ; Exceeding box or party capacity is a big no-no.
 	ld a, [wBillsPC_LoadedBox]
 	and a
-	jr z, .party
 	ld e, MONS_PER_BOX + 1
-	jr .compare
-
-.party
+	jr nz, .compare
 	ld e, PARTY_LENGTH + 1
 .compare
 	ld a, [wBillsPC_NumMonsInBox]

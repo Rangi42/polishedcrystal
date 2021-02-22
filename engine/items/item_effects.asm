@@ -365,9 +365,7 @@ PokeBallEffect:
 	cp BATTLETYPE_CONTEST
 	jr z, .skipReturnToBattle
 	cp BATTLETYPE_SAFARI
-	jr z, .skipReturnToBattle
-	call ReturnToBattle_UseBall
-
+	call nz, ReturnToBattle_UseBall
 .skipReturnToBattle
 	ld hl, wOptions1
 	res NO_TEXT_SCROLL, [hl]
@@ -2031,9 +2029,7 @@ BattleRestorePP:
 	jr nz, .not_in_battle
 	ld a, [wPlayerSubStatus2]
 	bit SUBSTATUS_TRANSFORMED, a
-	jr nz, .not_in_battle
-	call .UpdateBattleMonPP
-
+	call z, .UpdateBattleMonPP
 .not_in_battle
 	call Play_SFX_FULL_HEAL
 	ld hl, PPRestoredText

@@ -490,10 +490,7 @@ ParsePlayerAction:
 	call SetPalettes
 	ld a, [wCurPlayerMove]
 	cp STRUGGLE
-	jr z, .struggle
-	call PlayClickSFX
-
-.struggle
+	call nz, PlayClickSFX
 	ld a, $1
 	ldh [hBGMapMode], a
 	pop af
@@ -852,13 +849,11 @@ ForceDeferredSwitch:
 	bit SWITCH_TARGET, [hl]
 	jr nz, .check_target_alive
 	farcall CheckAnyOtherAliveMons
-	jr nz, .alive_check_done
-	call HasUserFainted
+	call z, HasUserFainted
 	jr .alive_check_done
 .check_target_alive
 	farcall CheckAnyOtherAliveOpponentMons
-	jr nz, .alive_check_done
-	call HasOpponentFainted
+	call z, HasOpponentFainted
 .alive_check_done
 	pop hl
 	jp z, .all_done
@@ -2179,10 +2174,8 @@ WinTrainerBattle:
 .skip_heal
 	ld a, [wMonStatusFlags]
 	bit 0, a
-	jr nz, .skip_win_loss_text
-	call PrintWinLossText
+	call z, PrintWinLossText
 
-.skip_win_loss_text
 	jp .GiveMoney
 
 .battle_tower
@@ -2543,9 +2536,7 @@ LostBattle:
 
 	ld a, [wMonStatusFlags]
 	bit 0, a
-	jr nz, .skip_win_loss_text
-	call PrintWinLossText
-.skip_win_loss_text
+	call z, PrintWinLossText
 
 	ld a, [wBattleType]
 	cp BATTLETYPE_CANLOSE
@@ -3498,8 +3489,7 @@ _HeldHPHealingItem:
 	cp SITRUS_BERRY
 	jr z, .quarter_maxhp
 	cp FIGY_BERRY
-	jr nz, .got_hp_to_restore
-	call GetThirdMaxHP
+	call z, GetThirdMaxHP
 	jr .got_hp_to_restore
 
 .quarter_maxhp
@@ -4190,9 +4180,7 @@ BattleMenu_SafariBall:
 	cp BATTLETYPE_TUTORIAL
 	jr z, .tutorial2
 	cp BATTLETYPE_SAFARI
-	jr z, .tutorial2
-	call GetMonBackpic
-
+	call nz, GetMonBackpic
 .tutorial2
 	call GetMonFrontpic
 	ld a, $1

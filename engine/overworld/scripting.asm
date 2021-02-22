@@ -1103,16 +1103,6 @@ ApplyPersonFacing::
 	ld hl, wVramState
 	bit 6, [hl]
 	jr nz, .text_state
-	call .DisableTextTiles
-.text_state
-	jp UpdateSprites
-
-.not_visible
-	pop de
-	scf
-	ret
-
-.DisableTextTiles:
 	call LoadMapPart
 	hlcoord 0, 0
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
@@ -1123,6 +1113,12 @@ ApplyPersonFacing::
 	ld a, b
 	or c
 	jr nz, .loop
+.text_state
+	jp UpdateSprites
+
+.not_visible
+	pop de
+	scf
 	ret
 
 Script_variablesprite:

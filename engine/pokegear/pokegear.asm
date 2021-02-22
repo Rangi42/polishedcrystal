@@ -1815,9 +1815,7 @@ PlayRadio:
 	ld l, a
 	ld a, [wPokegearRadioChannelBank]
 	and a
-	jr z, .zero
-	call FarCall_hl
-.zero
+	call nz, FarCall_hl
 	call DelayFrame
 	jr .loop
 

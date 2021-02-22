@@ -575,9 +575,7 @@ Slots_SpinReels:
 	add hl, bc
 	ld a, [hl]
 	and $f
-	jr nz, .skip
-	call ReelActionJumptable
-.skip
+	call z, ReelActionJumptable
 	ld hl, wReel1SpinRate - wReel1
 	add hl, bc
 	ld a, [hl]

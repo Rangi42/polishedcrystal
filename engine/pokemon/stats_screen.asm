@@ -646,11 +646,10 @@ StatsScreen_LoadGFX:
 	rst PlaceString
 	ld a, [wTempMonCaughtGender]
 	and FEMALE
-	jr z, .male
 	ld a, "♀"
-	jr .got_gender
-.male
-	ld a, "♂"
+	jr nz, .got_gender
+	assert "♀" - 1 == "♂"
+	dec a
 .got_gender
 	hlcoord 8, 15
 	ld [hl], a

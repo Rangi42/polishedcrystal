@@ -685,8 +685,7 @@ MenuClickSound::
 	jr z, .nosound
 	ld hl, wMenuFlags
 	bit 3, [hl]
-	jr nz, .nosound
-	call PlayClickSFX
+	call z, PlayClickSFX
 .nosound
 	pop af
 	ret

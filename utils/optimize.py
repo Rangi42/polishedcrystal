@@ -140,7 +140,7 @@ patterns = {
 'a|b|c|d|e|h|l = z|nz|c|nc ? P : Q': [
 	# Bad: jr z|nz|c|nc, .p / ld a|b|c|d|e|h|l, Q / jr .ok / .p / (ld a|b|c|d|e|h|l, P | xor a) / (.ok | jr .ok)
 	# Good: ld a|b|c|d|e|h|l, Q / jr nz|z|nc|c, .ok / .p / (ld a|b|c|d|e|h|l, P | xor a) / .ok
-	(lambda line1, prev: re.match(r'j[rp] n?c,', line1.code)),
+	(lambda line1, prev: re.match(r'j[rp] n?[zc],', line1.code)),
 	(lambda line2, prev: re.match(r'ldh? [abcdehl],', line2.code)),
 	(lambda line3, prev: re.match(r'j[rp] ', line3.code) and ',' not in line3.code
 		and line3.code != 'jp hl'),
@@ -295,8 +295,7 @@ patterns = {
 'Tail call': [
 	# Bad: call Foo / ret (unless Foo messes with the stack)
 	# Good: jr|jp Foo
-	(lambda line1, prev: line1.code.startswith('call ')
-		and ',' not in line1.code),
+	(lambda line1, prev: line1.code.startswith('call ') and ',' not in line1.code),
 	(lambda line2, prev: line2.code == 'ret'),
 ],
 'Tail predef': [
@@ -308,10 +307,20 @@ patterns = {
 'Fallthrough': [
 	# Bad: call Foo / ret / Foo: ...
 	# Good: fall through to Foo: ...
-	(lambda line1, prev: line1.code.startswith('call ')
-		and ',' not in line1.code),
+	(lambda line1, prev: line1.code.startswith('call ') and ',' not in line1.code),
 	(lambda line2, prev: line2.code == 'ret'),
 	(lambda line3, prev: line3.code.rstrip(':') == prev[0].code[4:].strip()),
+],
+'Conditional call': [
+	# Bad: jr z|nz|c|nc, .skip / call Foo / .skip
+	# Good: call nz|z|nc|c, Foo
+	# Bad: jr z|nz|c|nc, .ok / call Foo / jr .ok
+	# Good: call nz|z|nc|c, Foo / jr .ok
+	(lambda line1, prev: re.match(r'j[rp] n?[zc],', line1.code)),
+	(lambda line2, prev: line2.code.startswith('call ') and ',' not in line2.code),
+	(lambda line3, prev: (re.match(r'j[rp] ', line3.code) and ',' not in line3.code
+		and line3.code.split()[-1].strip() == prev[0].code.split(',')[1].strip())
+		or line3.code.rstrip(':') == prev[0].code.split(',')[1].strip()),
 ],
 'Conditional fallthrough': [
 	# Bad: jr z|nz|c|nc, .foo / jr .bar / .foo: ...
@@ -433,8 +442,7 @@ patterns = {
 	(lambda line1, prev: re.match(r'[A-Za-z_\.]', line1.text[0])
 		and ' ' not in line1.code
 		and line1.code.lower() not in {'endc', 'endr', 'endm'}),
-	(lambda line2, prev: line2.code.startswith('jr ')
-		and ',' not in line2.code),
+	(lambda line2, prev: line2.code.startswith('jr ') and ',' not in line2.code),
 ],
 }
 
