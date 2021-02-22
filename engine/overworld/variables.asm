@@ -118,28 +118,8 @@ _GetVarAction::
 	ret
 
 .BoxFreeSpace:
-; Remaining slots in the current box.
-	push bc
-	push de
-	ld a, [wCurBox]
-	ld b, a
-	inc b
-	ld c, 1
-	ld d, 0
-.boxloop
-	farcall GetStorageBoxMon
-	jr nz, .not_empty_boxslot
-	inc d
-.not_empty_boxslot
-	ld a, c
-	cp MONS_PER_BOX
-	jr z, .done_boxspace
-	inc c
-	jr .boxloop
-.done_boxspace
-	ld a, d
-	pop de
-	pop bc
+; Remaining database entries
+	farcall CheckFreeDatabaseEntries
 	jp .loadstringbuffer2
 
 .BattleResult:

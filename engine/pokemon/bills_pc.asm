@@ -116,10 +116,8 @@ FlushStorageSystem:
 
 	; Clear used pokedb entries.
 	ld a, BANK(sBoxMons1)
-	call GetSRAMBank
 	call .ClearEntries
 	ld a, BANK(sBoxMons2)
-	call GetSRAMBank
 	call .ClearEntries
 
 	; Now, set flags as per box usage.
@@ -139,7 +137,8 @@ FlushStorageSystem:
 	jp PopBCDEHL
 
 .ClearEntries:
-; Clears current pokedb allocations
+; Clears current pokedb allocations for storage bank a
+	call GetSRAMBank
 	xor a
 	ld hl, sBoxMons1UsedEntries
 	ld bc, sBoxMons1End - sBoxMons1UsedEntries
@@ -194,6 +193,31 @@ FlushStorageSystem:
 	dec b
 	jr nz, .set_loop
 	ret
+
+CheckFreeDatabaseEntries:
+; Returns amount of unused database entries left, or 255 if 255+. We don't
+; really care if we have 255 or 314 entries left, only if we're running low.
+	; Flush the storage system of duplicate entries.
+	call FlushStorageSystem
+
+	; Now, count used entries.
+	ld a, BANK(sBoxMons1)
+	call .CountEntries
+	push bc
+	ld a, BANK(sBoxMons2)
+	call .CountEntries
+	call CloseSRAM
+	pop bc
+	add c
+	ret nc
+	ld a, 255
+	ret
+
+.CountEntries:
+	call GetSRAMBank
+	ld hl, sBoxMons1UsedEntries
+	ld b, (MONDB_ENTRIES + 7) / 8
+	jp CountSetBits
 
 InitializeBoxes:
 ; Initializes the Storage System boxes as empty with default names.

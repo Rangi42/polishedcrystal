@@ -54,11 +54,9 @@ BillPhoneNearlyFullText:
 	text "Thanks for"
 	line "waiting!"
 
-	para "<PLAYER>, you can"
-	line "only fit "
-	text_from_ram wStringBuffer3
-	text " more"
-	cont "#mon."
+	para "<PLAYER>, your"
+	line "database is almost"
+	cont "overtaxed!"
 
 	para "Maybe you should"
 	line "save your game?"
@@ -69,7 +67,8 @@ BillPhoneFullText:
 	line "waiting!"
 
 	para "<PLAYER>, your"
-	line "database is full!"
+	line "database is"
+	cont "overtaxed."
 	prompt
 
 BillPhoneNewlyFullText:
