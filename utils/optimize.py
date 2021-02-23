@@ -454,8 +454,12 @@ for filename in iglob('**/*.asm', recursive=True):
 	printed = False
 	# Read each file line by line
 	with open(filename, 'r') as f:
-		lines = [text.rstrip() for text in f]
-		n = len(lines)
+		try:
+			lines = [text.rstrip() for text in f]
+			n = len(lines)
+		except UnicodeDecodeError as ex:
+			print('ERROR!!! %s: %s\n' % (filename, str(ex)))
+			continue
 	# Apply each pattern to the lines
 	for pattern_name, conditions in patterns.items():
 		printed_this = False
