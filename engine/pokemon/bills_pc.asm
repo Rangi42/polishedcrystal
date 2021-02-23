@@ -1980,6 +1980,7 @@ MovePKMNWitoutMail_InsertMon:
 	ld a, $1
 	ld [wGameLogicPaused], a
 	farcall SaveGameData
+	farcall SaveCurrentVersion
 	xor a
 	ld [wGameLogicPaused], a
 	jp .CopyToBox
