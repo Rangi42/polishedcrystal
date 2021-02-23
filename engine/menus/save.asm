@@ -206,6 +206,7 @@ CompareLoadedAndSavedPlayerID:
 
 SavedTheGame:
 	call SaveGameData
+	call SaveCurrentVersion
 	; <PLAYER> saved the game!
 	ld hl, SavedTheGameText
 	call PrintText
@@ -920,6 +921,16 @@ UpgradeSaveVersion:
 	ld a, b
 	ld [sSaveVersion], a
 	ld a, c
+	ld [sSaveVersion + 1], a
+	jp CloseSRAM
+
+SaveCurrentVersion:
+; Writes current save version into the save.
+	ld a, BANK(sSaveVersion)
+	call GetSRAMBank
+	ld a, HIGH(SAVE_VERSION)
+	ld [sSaveVersion], a
+	ld a, LOW(SAVE_VERSION)
 	ld [sSaveVersion + 1], a
 	jp CloseSRAM
 
