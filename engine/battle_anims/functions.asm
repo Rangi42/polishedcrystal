@@ -1437,12 +1437,9 @@ Functioncd8cc:
 	add hl, bc
 	ld [hl], a
 	bit 7, a
-	jr nz, .asm_cd8e6
 	ld a, $3d
-	jr .asm_cd8e8
-
-.asm_cd8e6
-	ld a, $3c
+	jr z, .asm_cd8e8
+	dec a ; ld a, $3c
 .asm_cd8e8
 	call ReinitBattleAnimFrameset
 	ld hl, BATTLEANIMSTRUCT_0F
@@ -3115,11 +3112,8 @@ Functionce260:
 	call BattleAnim_IncAnonJumptableIndex
 	ldh a, [hBattleTurn]
 	and a
-	jr nz, .asm_ce26c
 	ld a, $f0
-	jr .asm_ce26e
-
-.asm_ce26c
+	jr z, .asm_ce26e
 	ld a, $cc
 .asm_ce26e
 	ld hl, BATTLEANIMSTRUCT_0F

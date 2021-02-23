@@ -868,9 +868,8 @@ DrawChData:
 	jr nz, .blank_hit
 	ld a, [wNoiseHit]
 	and a
-	jr z, .blank_hit
 	ld a, MP_METER8
-	jr .got_hit
+	jr nz, .got_hit
 .blank_hit
 	ld a, " "
 .got_hit

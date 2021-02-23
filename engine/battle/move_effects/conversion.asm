@@ -112,7 +112,7 @@ BattleCommand_conversion:
 	ld [wCurPlayerMove], a
 
 	push bc
-	farcall UpdateMoveData
+	call UpdateMoveData
 	pop bc
 	ld a, b
 	jr .validate_choice

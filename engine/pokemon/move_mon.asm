@@ -938,7 +938,7 @@ RestorePPofDepositedPokemon:
 	push bc
 	push hl
 	push de
-	farcall GetMaxPPOfMove
+	call GetMaxPPOfMove
 	pop de
 	pop hl
 	ld a, [wd265]
@@ -1080,7 +1080,7 @@ RetrieveBreedmon:
 	ld a, [wPartyCount]
 	dec a
 	ld [wCurPartyMon], a
-	farcall HealPartyMonEvenForNuzlocke
+	call HealPartyMonEvenForNuzlocke
 	ld a, [wCurPartyLevel]
 	ld d, a
 	farcall CalcExpAtLevel
@@ -2104,8 +2104,7 @@ GivePoke::
 .set_caught_data
 	farcall GiveANickname_YesNo
 	pop de
-	jr c, .skip_nickname
-	call InitNickname
+	call nc, InitNickname
 
 .skip_nickname
 	pop bc

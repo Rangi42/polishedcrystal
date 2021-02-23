@@ -274,7 +274,7 @@ InitPokegearTilemap:
 	db " Switch▶@"
 
 .Map:
-	farcall PokegearMap
+	call PokegearMap
 	ld a, $7
 	ld bc, $12
 	hlcoord 1, 2
@@ -907,7 +907,7 @@ PokegearPhone_MakePhoneCall:
 	ret
 
 .no_service
-	farcall Phone_NoSignal
+	call Phone_NoSignal
 	ld hl, .OutOfServiceArea
 	call PrintText
 	ld a, $a
@@ -929,7 +929,7 @@ PokegearPhone_FinishPhoneCall:
 	ldh a, [hJoyPressed]
 	and A_BUTTON | B_BUTTON
 	ret z
-	farcall HangUp
+	call HangUp
 	ld a, $a
 	ld [wJumptableIndex], a
 	ld hl, PokegearText_WhomToCall
@@ -1084,7 +1084,7 @@ PokegearPhoneContactSubmenu:
 	ld d, 0
 	add hl, de
 	ld c, [hl]
-	farcall CheckCanDeletePhoneNumber
+	call CheckCanDeletePhoneNumber
 	ld a, c
 	and a
 	jr z, .cant_delete
@@ -1766,7 +1766,7 @@ _TownMap:
 	jr .loop2
 
 .InitTilemap:
-	farcall PokegearMap
+	call PokegearMap
 	ld a, $7
 	ld bc, 6
 	hlcoord 1, 0
@@ -1815,9 +1815,7 @@ PlayRadio:
 	ld l, a
 	ld a, [wPokegearRadioChannelBank]
 	and a
-	jr z, .zero
-	call FarCall_hl
-.zero
+	call nz, FarCall_hl
 	call DelayFrame
 	jr .loop
 

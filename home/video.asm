@@ -437,7 +437,7 @@ AnimateTileset::
 	ld a, BANK(_AnimateTileset)
 	rst Bankswitch
 
-	call _AnimateTileset
+	call _AnimateTileset ; far-ok
 
 	pop af
 	ldh [rVBK], a

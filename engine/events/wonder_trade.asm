@@ -142,7 +142,7 @@ DoWonderTrade:
 	call Trade_GetAttributeOfCurrentPartymon
 	ld b, h
 	ld c, l
-	farcall GetCaughtGender
+	call GetCaughtGender
 	ld [wPlayerTrademonCaughtData], a
 
 	xor a
@@ -370,7 +370,7 @@ GetGSBallPichu:
 	call Trade_GetAttributeOfCurrentPartymon
 	ld b, h
 	ld c, l
-	farcall GetCaughtGender
+	call GetCaughtGender
 	ld [wPlayerTrademonCaughtData], a
 	ld [wOTTrademonCaughtData], a
 

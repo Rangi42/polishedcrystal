@@ -277,7 +277,7 @@ DoKeyItemEffect::
 	call StackJumpTable
 
 KeyItemEffects:
-	dw Bicycle            ; BICYCLE
+	dw BikeFunction       ; BICYCLE
 	dw OldRod             ; OLD_ROD
 	dw GoodRod            ; GOOD_ROD
 	dw SuperRod           ; SUPER_ROD
@@ -365,9 +365,7 @@ PokeBallEffect:
 	cp BATTLETYPE_CONTEST
 	jr z, .skipReturnToBattle
 	cp BATTLETYPE_SAFARI
-	jr z, .skipReturnToBattle
-	call ReturnToBattle_UseBall
-
+	call nz, ReturnToBattle_UseBall
 .skipReturnToBattle
 	ld hl, wOptions1
 	res NO_TEXT_SCROLL, [hl]
@@ -577,7 +575,7 @@ PokeBallEffect:
 	ld a, [wPartyCount]
 	dec a
 	ld [wCurPartyMon], a
-	farcall HealPartyMonEvenForNuzlocke
+	call HealPartyMonEvenForNuzlocke
 .SkipPartyMonHealBall:
 
 	ld a, [wInitialOptions]
@@ -624,7 +622,7 @@ PokeBallEffect:
 .SendToPC:
 	call ClearSprites
 
-	farcall SentPkmnIntoBox
+	call SentPkmnIntoBox
 
 	farcall SetBoxMonCaughtData
 
@@ -704,7 +702,7 @@ PokeBallEffect:
 	jr .return_from_capture
 
 .catch_bug_contest_mon
-	farcall BugContest_SetCaughtContestMon
+	call BugContest_SetCaughtContestMon
 	jr .return_from_capture
 
 .FinishTutorial:
@@ -852,9 +850,6 @@ Text_AskNicknameNewlyCaughtMon:
 ReturnToBattle_UseBall:
 	farjp _ReturnToBattle_UseBall
 
-Bicycle:
-	farjp BikeFunction
-
 EvoStoneEffect:
 	ld b, PARTYMENUACTION_EVO_STONE
 	call UseItem_SelectMon
@@ -900,7 +895,7 @@ LowerEVBerry:
 
 .ev_value_ok
 	ld [hl], a
-	farcall UpdatePkmnStats
+	call UpdatePkmnStats
 	ld c, HAPPINESS_USEDEVBERRY
 	predef ChangeHappiness
 	call GetStatStringAndPlayFullHealSFX
@@ -932,7 +927,7 @@ VitaminEffect:
 
 .ev_value_ok
 	ld [hl], a
-	farcall UpdatePkmnStats
+	call UpdatePkmnStats
 
 	call GetStatStringAndPlayFullHealSFX
 	ld hl, ItemStatRoseText
@@ -983,7 +978,7 @@ StatStrings:
 
 GetEVRelativePointer:
 	ld a, [wCurItem]
-	farcall CheckItemParam
+	call CheckItemParam
 	ld c, a
 	ld b, 0
 	ret
@@ -1029,7 +1024,7 @@ RareCandy:
 	pop de
 	pop bc
 
-	farcall UpdatePkmnStats
+	call UpdatePkmnStats
 	farcall LevelUpHappinessMod
 
 	ld a, PARTYMENUTEXT_LEVEL_UP
@@ -1134,7 +1129,7 @@ HealStatus:
 GetItemHealingAction:
 	push hl
 	ld a, [wCurItem]
-	farcall CheckItemParam
+	call CheckItemParam
 	ld c, a
 	ld hl, .StatusHealingActionTexts
 .next
@@ -1636,7 +1631,7 @@ GetHealingItemAmount:
 	cp FIGY_BERRY
 	jr z, .figy_berry
 
-	farcall CheckItemParam
+	call CheckItemParam
 	ld e, a
 	ld d, 0
 	cp -1
@@ -1740,7 +1735,7 @@ FreshSnackFunction:
 EscapeRope:
 	xor a
 	ld [wItemEffectSucceeded], a
-	farcall EscapeRopeFunction
+	call EscapeRopeFunction
 
 	ld a, [wItemEffectSucceeded]
 	dec a
@@ -1753,7 +1748,7 @@ RepelEffect:
 	ld hl, TextJump_RepelUsedEarlierIsStillInEffect
 	jp nz, PrintText
 
-	farcall CheckItemParam
+	call CheckItemParam
 	ld [wRepelEffect], a
 
 	ld a, [wCurItem]
@@ -1798,7 +1793,7 @@ DireHit:
 	jp UseItemText
 
 XItemEffect:
-	farcall CheckItemParam
+	call CheckItemParam
 	ld b, a
 
 	ld a, STAT_SKIPTEXT | STAT_SILENT
@@ -1916,7 +1911,7 @@ SuperRod:
 	; fallthrough
 
 UseRod:
-	farjp FishFunction
+	jp FishFunction
 
 Itemfinder:
 	farjp ItemFinder
@@ -2034,9 +2029,7 @@ BattleRestorePP:
 	jr nz, .not_in_battle
 	ld a, [wPlayerSubStatus2]
 	bit SUBSTATUS_TRANSFORMED, a
-	jr nz, .not_in_battle
-	call .UpdateBattleMonPP
-
+	call z, .UpdateBattleMonPP
 .not_in_battle
 	call Play_SFX_FULL_HEAL
 	ld hl, PPRestoredText

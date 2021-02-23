@@ -270,9 +270,8 @@ IsKantoRadioOffAir:
 	jr nz, .no
 	ld a, [wPokegearFlags]
 	bit 3, a
-	jr nz, .no
 	ld a, TRUE
-	jr .ok
+	jr z, .ok
 .no
 	xor a ; ld a, FALSE
 .ok

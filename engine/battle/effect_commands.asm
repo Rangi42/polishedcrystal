@@ -5718,11 +5718,10 @@ FinishConfusingTarget:
 	cp EFFECT_CONFUSE_HIT
 	jr z, .got_effect
 	cp EFFECT_SWAGGER
-	jr z, .got_effect
-	call AnimateCurrentMove
-
+	call nz, AnimateCurrentMove
 .got_effect
 	ld hl, BecameConfusedText
+	; fallthrough
 FinishConfusingTargetAnim:
 ; parameter hl: contains pointer to text box
 	ld de, ANIM_CONFUSED
@@ -6604,5 +6603,16 @@ _CheckBattleEffects:
 	push hl
 	push de
 	push bc
-	farcall CheckBattleEffects
+	call CheckBattleEffects
 	jp PopBCDEHL
+
+CheckBattleEffects:
+; Return carry if battle scene is turned off.
+	ld a, [wOptions1]
+	bit BATTLE_EFFECTS, a
+	jr z, .off
+	and a
+	ret
+.off
+	scf
+	ret

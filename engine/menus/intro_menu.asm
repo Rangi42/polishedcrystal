@@ -416,20 +416,20 @@ CheckVBA:
 Continue_CheckRTC_RestartClock:
 	call CheckRTCStatus
 	and %10000000 ; Day count exceeded 16383
-	jr z, Continue_CheckEGO_ResetInitialOptions.pass
+	jr z, Continue_FinishReset
 	farcall RestartClock
 	ld a, c
 	and a
-	jr z, Continue_CheckEGO_ResetInitialOptions.pass
+	jr z, Continue_FinishReset
 	scf
 	ret
 
 Continue_CheckEGO_ResetInitialOptions:
 	ld a, [wInitialOptions2]
 	bit RESET_INIT_OPTS, a
-	jr z, .pass
-	farcall SetInitialOptions
-.pass
+	call nz, SetInitialOptions
+	; fallthrough
+Continue_FinishReset:
 	xor a
 	ret
 
@@ -898,11 +898,10 @@ DrawIntroPlayerPic:
 	ld [wCurPartySpecies], a
 	ld a, [wPlayerGender]
 	bit 0, a
-	jr z, .male
 	ld a, CARRIE
-	jr .ok
-.male
-	ld a, CAL
+	jr nz, .ok
+	assert CARRIE + 1 == CAL
+	inc a
 .ok
 	ld [wTrainerClass], a
 Intro_PrepTrainerPic:

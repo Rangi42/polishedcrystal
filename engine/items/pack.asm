@@ -1344,20 +1344,20 @@ DrawPackGFX:
 	jp DecompressRequest2bpp
 
 .MaleGFX:
-	dw PackM0GFX
-	dw PackM1GFX
-	dw PackM2GFX
-	dw PackM3GFX
-	dw PackM4GFX
-	dw PackM5GFX
+	dw PackM0GFX ; far-ok
+	dw PackM1GFX ; far-ok
+	dw PackM2GFX ; far-ok
+	dw PackM3GFX ; far-ok
+	dw PackM4GFX ; far-ok
+	dw PackM5GFX ; far-ok
 
 .FemaleGFX:
-	dw PackF0GFX
-	dw PackF1GFX
-	dw PackF2GFX
-	dw PackF3GFX
-	dw PackF4GFX
-	dw PackF5GFX
+	dw PackF0GFX ; far-ok
+	dw PackF1GFX ; far-ok
+	dw PackF2GFX ; far-ok
+	dw PackF3GFX ; far-ok
+	dw PackF4GFX ; far-ok
+	dw PackF5GFX ; far-ok
 
 Pack_InterpretJoypad:
 	ld hl, wMenuJoypad

@@ -94,7 +94,7 @@ PrintTempMonStats:
 rept 8
 	inc hl
 endr
-	farcall PrintNatureIndicators
+	call PrintNatureIndicators
 	pop hl
 	pop bc
 

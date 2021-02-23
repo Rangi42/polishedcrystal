@@ -175,11 +175,9 @@ SetBoxmonOrEggmonCaughtData:
 	; CaughtGender
 	ld a, [wPlayerGender]
 	and a
-	jr z, .male
+	assert !MALE
+	jr z, .ok
 	ld a, FEMALE
-	jr .ok
-.male
-	ld a, MALE
 .ok
 	ld b, a
 	; CaughtTime

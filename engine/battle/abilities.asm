@@ -1,7 +1,7 @@
 RunActivationAbilitiesInner:
 	; Chain-triggering causes graphical glitches, so ensure animations
 	; are re-enabled (which also takes care of existing ability slideouts)
-	farcall EnableAnimations
+	call EnableAnimations
 	call HasUserFainted
 	ret z
 	call HasOpponentFainted
@@ -615,9 +615,7 @@ AftermathAbility:
 RunHitAbilities:
 ; abilities that run on hitting the enemy with an offensive attack
 	call CheckContactMove
-	jr c, .skip_contact_abilities
-	call RunContactAbilities
-.skip_contact_abilities
+	call nc, RunContactAbilities
 	; Store type and category (phy/spe/sta) so that abilities can check on them
 	ld a, BATTLE_VARS_MOVE_CATEGORY
 	call GetBattleVar
