@@ -7,10 +7,8 @@ CopyPkmnOrEggToTempMon:
 	ld hl, wOTPartyMon1IsEgg
 	cp OTPARTYMON
 	jr z, .got_addr
-	ld hl, sBoxMon1IsEgg
-	ld bc, BOXMON_STRUCT_LENGTH
-	ld a, BANK(sBoxMon1IsEgg)
-	call GetSRAMBank
+	ld a, ERR_OLDBOX
+	jp Crash
 .got_addr
 	ld a, [wCurPartyMon]
 	rst AddNTimes
@@ -39,8 +37,8 @@ _CopyPkmnToTempMon:
 	ld bc, PARTYMON_STRUCT_LENGTH
 	cp OTPARTYMON
 	jr z, .copywholestruct
-	ld bc, BOXMON_STRUCT_LENGTH
-	farjp CopyBoxmonToTempMon
+	ld a, ERR_OLDBOX
+	jp Crash
 
 .copywholestruct
 	ld a, [wCurPartyMon]
@@ -139,11 +137,8 @@ GetPkmnSpecies:
 	ret
 
 .boxmon
-	ld a, BANK(sBoxSpecies)
-	call GetSRAMBank
-	ld hl, sBoxSpecies
-	call .done
-	jp CloseSRAM
+	ld a, ERR_OLDBOX
+	jp Crash
 
 .breedmon
 	ld a, [wBreedMon1Species]
@@ -179,12 +174,8 @@ GetPkmnForm:
 	ret
 
 .boxmon
-	ld a, BANK(sBoxSpecies)
-	call GetSRAMBank
-	ld hl, sBoxMon1Form
-	ld bc, BOXMON_STRUCT_LENGTH
-	call .getnthmon
-	jp CloseSRAM
+	ld a, ERR_OLDBOX
+	jp Crash
 
 .breedmon
 	ld a, [wBreedMon1Form]

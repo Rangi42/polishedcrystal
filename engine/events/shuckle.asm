@@ -112,9 +112,7 @@ SpecialReturnShuckie:
 	cp 150
 	ld a, $3
 	jr nc, .HappyToStayWithYou
-	xor a ; take from pc
-	ld [wPokemonWithdrawDepositParameter], a
-	predef RemoveMonFromPartyOrBox
+	predef RemoveMonFromParty
 	ld a, $2
 .HappyToStayWithYou:
 	ldh [hScriptVar], a

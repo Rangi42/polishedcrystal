@@ -1353,15 +1353,3 @@ BillsPC_CursorPosValid:
 	xor a
 	ld a, b
 	ret
-
-CopyBoxmonToTempMon:
-	ld a, [wCurPartyMon]
-	ld hl, sBoxMon1Species
-	ld bc, BOXMON_STRUCT_LENGTH
-	rst AddNTimes
-	ld de, wTempMonSpecies
-	ld bc, BOXMON_STRUCT_LENGTH
-	ld a, BANK(sBoxMon1Species)
-	call GetSRAMBank
-	rst CopyBytes
-	jp CloseSRAM
