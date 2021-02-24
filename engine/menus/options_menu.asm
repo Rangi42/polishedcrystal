@@ -344,9 +344,7 @@ Options_Sound:
 .Display:
 	ldh a, [hJoyPressed]
 	and D_LEFT | D_RIGHT
-	jr z, .DontRestartMapMusic
-	call RestartMapMusic
-.DontRestartMapMusic
+	call nz, RestartMapMusic
 	hlcoord 11, 13
 	rst PlaceString
 	and a

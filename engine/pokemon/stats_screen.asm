@@ -624,11 +624,10 @@ StatsScreen_LoadGFX:
 	rst PlaceString
 	ld a, [wTempMonCaughtGender]
 	and FEMALE
-	jr z, .male
 	ld a, "♀"
-	jr .got_gender
-.male
-	ld a, "♂"
+	jr nz, .got_gender
+	assert "♀" - 1 == "♂"
+	dec a
 .got_gender
 	hlcoord 8, 15
 	ld [hl], a
@@ -754,11 +753,8 @@ StatsScreen_LoadGFX:
 	db "Nature/@"
 
 .OrangePage:
-	farjp OrangePage_
-
 ; Fourth stats page code by TPP Anniversary Crystal 251
 ; Ported by FIQ
-OrangePage_:
 	call TN_PrintToD
 	call TN_PrintLV
 	call TN_PrintLocation
@@ -767,7 +763,7 @@ OrangePage_:
 	ld a, $3e
 	rst ByteFill
 	hlcoord 1, 12
-	ld de, .ability
+	ld de, .AbilityString
 	rst PlaceString
 	ld a, [wTempMonAbility]
 	and ABILITY_MASK
@@ -775,7 +771,7 @@ OrangePage_:
 	rrca
 	ld e, a
 	ld d, 0
-	ld hl, .ability_tiles
+	ld hl, .AbilityTiles
 	add hl, de
 	ld a, [hl]
 	hlcoord 9, 12
@@ -790,10 +786,10 @@ OrangePage_:
 	pop bc
 	farjp PrintAbilityDescription
 
-.ability
+.AbilityString:
 	db "Ability/@"
 
-.ability_tiles
+.AbilityTiles:
 	; $3f = bold H
 	db $3f, "1", "2", $3f
 

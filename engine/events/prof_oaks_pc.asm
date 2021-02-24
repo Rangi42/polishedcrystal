@@ -3,9 +3,7 @@ ProfOaksPC:
 	ld hl, OakPCText1
 	call MenuTextbox
 	call YesNoBox
-	jr c, .shutdown
-	call ProfOaksPCBoot ; player chose "yes"?
-.shutdown
+	call nc, ProfOaksPCBoot ; player chose "yes"?
 	ld hl, OakPCText4
 	call PrintText
 	call JoyWaitAorB

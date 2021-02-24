@@ -254,11 +254,11 @@ HandleWeather:
 	ld [wBattleWeather], a
 	ret
 
-.WeatherEndedMessages:
-	dw BattleText_TheRainStopped
-	dw BattleText_TheSunlightFaded
-	dw BattleText_TheSandstormSubsided
-	dw BattleText_TheHailStopped
+.WeatherEndedMessages: ; these are all used with StdBattleTextbox
+	dw BattleText_TheRainStopped ; far-ok
+	dw BattleText_TheSunlightFaded ; far-ok
+	dw BattleText_TheSandstormSubsided ; far-ok
+	dw BattleText_TheHailStopped ; far-ok
 
 .ongoing
 	; the above needs actual [wBattleWeather] to be
@@ -566,11 +566,9 @@ DoPoisonBurnDamage:
 	ld a, BATTLE_VARS_STATUS
 	call GetBattleVar
 	and 1 << BRN | 1 << TOX
-	jr z, .got_damage_amount
 	; Burn and Toxic does (or starts at) 1/16 damage as of Gen VII
-	call GetSixteenthMaxHP
+	call nz, GetSixteenthMaxHP
 
-.got_damage_amount
 	ldh a, [hBattleTurn]
 	and a
 	ld hl, wPlayerToxicCount

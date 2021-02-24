@@ -4408,9 +4408,6 @@ BattleCommand_sleeptarget:
 	jr c, .ability_ok
 	jr nz, .failed
 
-	call CheckSubstituteOpp
-	ld hl, ButItFailedText
-	jr nz, .failed
 	ld a, [wAttackMissed]
 	and a
 	ld hl, AttackMissedText
@@ -4529,6 +4526,9 @@ CanStatusTarget:
 	pop af
 	and a
 	jr z, .no_mold_breaker
+	call CheckSubstituteOpp
+	ld hl, ButItFailedText
+	jr nz, .end
 	call GetOpponentAbilityAfterMoldBreaker
 	jr .got_ability
 .no_mold_breaker
@@ -4588,8 +4588,6 @@ CanStatusTarget:
 	ret
 
 BattleCommand_poisontarget:
-	call CheckSubstituteOpp
-	ret nz
 	ld b, 1
 	call CanPoisonTarget
 	ret nz
@@ -4760,6 +4758,8 @@ HandleBigRoot:
 BattleCommand_burntarget:
 	xor a
 	ld [wNumHits], a
+
+	; Needs to be checked here too, because it should prevent defrosting
 	call CheckSubstituteOpp
 	ret nz
 	ld a, BATTLE_VARS_STATUS_OPP
@@ -4863,8 +4863,6 @@ BattleCommand_freezetarget:
 BattleCommand_paralyzetarget:
 	xor a
 	ld [wNumHits], a
-	call CheckSubstituteOpp
-	ret nz
 	ld b, 1
 	call CanParalyzeTarget
 	ret nz
@@ -4996,14 +4994,48 @@ ResetMiss:
 	ld [wAttackMissed], a
 	ret
 
+DisplayStatusProblem:
+; Prints message and an animation upon being afflicted by a status problem.
+	ld a, BATTLE_VARS_STATUS_OPP
+	call GetBattleVar
+	and a
+	ret z ; Nothing happened?
+
+	ld e, a
+	call ShowPotentialAbilityActivation
+	ld bc, 4
+	ld hl, StatusProblemTable - 4
+.loop
+	add hl, bc
+	ld a, [hli]
+	and e
+	jr z, .loop
+
+	ld a, [hli]
+	ld d, [hl]
+	ld e, a
+	inc hl
+	push hl
+	call PlayOpponentBattleAnim
+	pop hl
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	jp StdBattleTextbox
+
+StatusProblemTable:
+	dbww 1 << TOX, ANIM_PSN, BadlyPoisonedText ; needs to be before PSN
+	dbww 1 << PAR, ANIM_PAR, ParalyzedText
+	dbww 1 << FRZ, ANIM_FRZ, FrozenSolidText
+	dbww 1 << BRN, ANIM_BRN, WasBurnedText
+	dbww 1 << PSN, ANIM_PSN, WasPoisonedText
+	dbww SLP, ANIM_SLP, FellAsleepText
+
 BattleCommand_burn:
 	ld a, [wTypeModifier]
 	and a
 	jp z, .failed_ineffective
 
-	call CheckSubstituteOpp
-	ld hl, ButItFailedText
-	jr nz, .failed
 	ld a, [wAttackMissed]
 	and a
 	ld hl, AttackMissedText
@@ -5718,11 +5750,10 @@ FinishConfusingTarget:
 	cp EFFECT_CONFUSE_HIT
 	jr z, .got_effect
 	cp EFFECT_SWAGGER
-	jr z, .got_effect
-	call AnimateCurrentMove
-
+	call nz, AnimateCurrentMove
 .got_effect
 	ld hl, BecameConfusedText
+	; fallthrough
 FinishConfusingTargetAnim:
 ; parameter hl: contains pointer to text box
 	ld de, ANIM_CONFUSED
@@ -5752,9 +5783,6 @@ BattleCommand_paralyze:
 	jr c, .ability_ok
 	jr nz, .failed
 
-	call CheckSubstituteOpp
-	ld hl, ButItFailedText
-	jr nz, .failed
 	ld a, [wAttackMissed]
 	and a
 	ld hl, AttackMissedText
@@ -6604,5 +6632,16 @@ _CheckBattleEffects:
 	push hl
 	push de
 	push bc
-	farcall CheckBattleEffects
+	call CheckBattleEffects
 	jp PopBCDEHL
+
+CheckBattleEffects:
+; Return carry if battle scene is turned off.
+	ld a, [wOptions1]
+	bit BATTLE_EFFECTS, a
+	jr z, .off
+	and a
+	ret
+.off
+	scf
+	ret

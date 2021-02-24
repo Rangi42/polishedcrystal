@@ -1,7 +1,7 @@
 RunActivationAbilitiesInner:
 	; Chain-triggering causes graphical glitches, so ensure animations
 	; are re-enabled (which also takes care of existing ability slideouts)
-	farcall EnableAnimations
+	call EnableAnimations
 	call HasUserFainted
 	ret z
 	call HasOpponentFainted
@@ -615,9 +615,7 @@ AftermathAbility:
 RunHitAbilities:
 ; abilities that run on hitting the enemy with an offensive attack
 	call CheckContactMove
-	jr c, .skip_contact_abilities
-	call RunContactAbilities
-.skip_contact_abilities
+	call nc, RunContactAbilities
 	; Store type and category (phy/spe/sta) so that abilities can check on them
 	ld a, BATTLE_VARS_MOVE_CATEGORY
 	call GetBattleVar
@@ -727,85 +725,63 @@ EffectSporeAbility:
 	jr c, PoisonPointAbility
 	cp 1 + 66 percent
 	jr c, StaticAbility
-	; there are 2 sleep resistance abilities, so check one here
-	call GetOpponentAbility
-	cp VITAL_SPIRIT
-	ret z
-	lb bc, INSOMNIA, HELD_PREVENT_SLEEP
-	ld d, SLP
+
+	ld hl, CanSleepTarget
+	ld c, SLP
 	jr AfflictStatusAbility
 FlameBodyAbility:
-	call CheckIfTargetIsFireType
-	ret z
-	lb bc, WATER_VEIL, HELD_PREVENT_BURN
-	ld d, BRN
+	ld hl, CanBurnTarget
+	ld c, 1 << BRN
 	jr AfflictStatusAbility
 PoisonTouchAbility:
 	; Poison Touch is the same as an opposing Poison Point, and since
 	; abilities always run from the ability user's POV...
 	; Doesn't apply when opponent has a Substitute up...
-	farcall CheckSubstituteOpp
-	ret nz
-	call GetOpponentAbilityAfterMoldBreaker
-	cp SHIELD_DUST
-	ret z
+	ld b, 1
+	jr DoPoisonAbility
 PoisonPointAbility:
-	; there are 2 poison resistance abilities, so check one here
-	call GetOpponentAbility
-	cp PASTEL_VEIL
-	ret z
-	call CheckIfTargetIsPoisonType
-	ret z
-	call CheckIfTargetIsSteelType
-	ret z
-	lb bc, IMMUNITY, HELD_PREVENT_POISON
-	ld d, PSN
-	jr AfflictStatusAbility
+	ld b, 0
+	; fallthrough
+DoPoisonAbility:
+	ld hl, CanPoisonTarget
+	ld c, 1 << PSN
+	jr _AfflictStatusAbility
 StaticAbility:
-	call CheckIfTargetIsElectricType
-	ret z
-	lb bc, LIMBER, HELD_PREVENT_PARALYZE
-	ld d, PAR
+	ld hl, CanParalyzeTarget
+	ld c, 1 << PAR
+	; fallthrough
 AfflictStatusAbility:
-; While BattleCommand_whatever already does all these checks,
-; duplicating them here is minor logic, and it avoids spamming
-; needless ability activations that ends up not actually doing
-; anything.
+	ld b, 0
+_AfflictStatusAbility:
+	push hl
+	push bc
+	ld a, BANK(CanPoisonTarget)
+	call FarCall_hl
+	pop bc
+	pop hl
+	ret nz
+
 	call HasOpponentFainted
 	ret z
-	call GetOpponentAbility
-	cp b
-	ret z
-	push de
-	farcall GetOpponentItem
-	pop de
-	ld a, b
-	cp c
-	ret z
-	ld b, d
+
 	ld a, BATTLE_VARS_STATUS_OPP
-	call GetBattleVar
-	and a
-	ret nz
-	call DisableAnimations
-	call ShowAbilityActivation
-	ld a, b
+	call GetBattleVarAddr
+	ld a, c
 	cp SLP
-	jr z, .slp
-	cp BRN
-	jr z, .brn
-	cp PSN
-	jr z, .psn
-	farcall BattleCommand_paralyze
-	jp EnableAnimations
-.slp
-	farcall BattleCommand_sleeptarget
-	jp EnableAnimations
-.brn
-	farcall BattleCommand_burn
-	jp EnableAnimations
-.psn
-	farcall BattleCommand_poison
+	jr nz, .got_status
+
+	; sleep for 1-3 turns (+1 including wakeup turn)
+	ld a, 3
+	call RandomRange
+	inc a
+.got_status
+	ld [hl], a
+
+	call DisableAnimations
+	farcall DisplayStatusProblem
+	call UpdateOpponentInParty
+	call UpdateBattleHuds
+	farcall PostStatusWithSynchronize
 	jp EnableAnimations
 
 CheckNullificationAbilities:

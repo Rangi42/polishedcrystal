@@ -739,7 +739,7 @@ WaterfallFunction:
 .TryWaterfall:
 ; Waterfall
 	ld de, ENGINE_RISINGBADGE
-	farcall CheckBadge
+	call CheckBadge
 	ld a, $80
 	ret c
 	call CheckMapCanWaterfall

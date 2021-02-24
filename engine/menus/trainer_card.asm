@@ -423,10 +423,8 @@ TrainerCard_Page1_PrintGameTime:
 	hlcoord 15, 12
 	ld a, [hl]
 	cp ":"
-	jr z, .space
 	ld a, ":"
-	jr .ok
-.space
+	jr nz, .ok
 	ld a, " "
 .ok
 	ld [hl], a

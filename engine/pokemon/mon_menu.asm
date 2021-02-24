@@ -236,10 +236,10 @@ GiveTakePartyMonItem:
 
 .GiveItem:
 
-	farcall DepositSellInitPackBuffers
+	call DepositSellInitPackBuffers
 
 .loop
-	farcall DepositSellPack
+	call DepositSellPack
 
 	ld a, [wPackUsedItem]
 	and a
@@ -493,7 +493,7 @@ StartMenuYesNo:
 
 ComposeMailMessage:
 	ld de, wTempMailMessage
-	farcall _ComposeMailMessage
+	call _ComposeMailMessage
 	ld hl, wPlayerName
 	ld de, wTempMailAuthor
 	ld bc, NAME_LENGTH - 1

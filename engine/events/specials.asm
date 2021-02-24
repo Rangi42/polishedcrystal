@@ -282,11 +282,9 @@ SpecialSnorlaxAwake:
 ; check background music
 	ld a, [wMapMusic]
 	cp MUSIC_POKE_FLUTE_CHANNEL
-	jr nz, .nope
 	ld a, TRUE
-	jr .done
-.nope
-	xor a
+	jr z, .done
+	xor a ; ld a, FALSE
 .done
 	ldh [hScriptVar], a
 	ret

@@ -47,7 +47,7 @@ Special_MagnetTrain:
 	jr z, .initialize
 	bit 7, a
 	jr nz, .done
-	farcall PlaySpriteAnimations
+	call PlaySpriteAnimations
 	call MagnetTrain_Jumptable
 	call MagnetTrain_UpdateLYOverrides
 	call PushLYOverrides
@@ -390,7 +390,7 @@ MagnetTrain_Jumptable:
 	jp PlaySFX
 
 MagnetTrain_Jumptable_FirstRunThrough:
-	farcall PlaySpriteAnimations
+	call PlaySpriteAnimations
 	call MagnetTrain_Jumptable
 	call MagnetTrain_UpdateLYOverrides
 	call PushLYOverrides

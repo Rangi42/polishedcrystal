@@ -35,13 +35,13 @@ SaveMenu:
 
 SaveAfterLinkTrade:
 	call SetWRAMStateForSave
-	farcall StageRTCTimeForSave
+	call StageRTCTimeForSave
 	call SavePokemonData
 	call SaveChecksum
 	call SaveBackupPokemonData
 	call SaveBackupChecksum
 	farcall BackupPartyMonMail
-	farcall SaveRTC
+	call SaveRTC
 	jp ClearWRAMStateAfterSave
 
 Link_SaveGame:
@@ -127,6 +127,7 @@ CompareLoadedAndSavedPlayerID:
 
 SavedTheGame:
 	call SaveGameData
+	call SaveCurrentVersion
 	; <PLAYER> saved the game!
 	ld hl, SavedTheGameText
 	call PrintText
@@ -141,7 +142,7 @@ SaveGameData::
 	ldh [hVBlank], a
 	dec a ; ld a, TRUE
 	ld [wSaveFileExists], a
-	farcall StageRTCTimeForSave
+	call StageRTCTimeForSave
 	call ValidateSave
 	call SaveOptions
 	call SavePlayerData
@@ -659,6 +660,16 @@ UpgradeSaveVersion:
 	ld a, b
 	ld [sSaveVersion], a
 	ld a, c
+	ld [sSaveVersion + 1], a
+	jp CloseSRAM
+
+SaveCurrentVersion:
+; Writes current save version into the save.
+	ld a, BANK(sSaveVersion)
+	call GetSRAMBank
+	ld a, HIGH(SAVE_VERSION)
+	ld [sSaveVersion], a
+	ld a, LOW(SAVE_VERSION)
 	ld [sSaveVersion + 1], a
 	jp CloseSRAM
 

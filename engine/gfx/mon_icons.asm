@@ -461,13 +461,9 @@ FreezeMonIcons:
 	and a
 	jr z, .next
 	cp d
-	jr z, .loadwithtwo
-	ld a, SPRITE_ANIM_SEQ_NULL
-	jr .ok
-
-.loadwithtwo
 	ld a, SPRITE_ANIM_SEQ_PARTY_MON_SWITCH
-
+	jr z, .ok
+	xor a ; SPRITE_ANIM_SEQ_NULL
 .ok
 	push hl
 	ld c, l
@@ -515,12 +511,10 @@ HoldSwitchmonIcon:
 	and a
 	jr z, .next
 	cp d
-	jr z, .is_switchmon
 	ld a, SPRITE_ANIM_SEQ_PARTY_MON_SELECTED
-	jr .join_back
-
-.is_switchmon
-	ld a, SPRITE_ANIM_SEQ_PARTY_MON_SWITCH
+	jr nz, .join_back
+	assert SPRITE_ANIM_SEQ_PARTY_MON_SELECTED - 1 == SPRITE_ANIM_SEQ_PARTY_MON_SWITCH
+	dec a
 .join_back
 	push hl
 	ld c, l

@@ -15,7 +15,21 @@ _DeleteSaveData:
 	ld a, [wMenuCursorY]
 	cp $1
 	ret z
-	farjp EmptyAllSRAMBanks
+
+	xor a
+	call .EmptyBank
+	ld a, 1
+	call .EmptyBank
+	ld a, 2
+	call .EmptyBank
+	ld a, 3
+.EmptyBank:
+	call GetSRAMBank
+	ld hl, SRAM_Begin
+	ld bc, SRAM_End - SRAM_Begin
+	xor a
+	rst ByteFill
+	jp CloseSRAM
 
 .Text_ClearAllSaveData:
 	; Clear all save data?
