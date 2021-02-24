@@ -37,9 +37,6 @@ _BillsPC:
 	text_end
 
 BillsPC_LoadUI:
-	; Debug: Initialize boxes
-	farcall InitializeBoxes
-
 	; Cursor tile
 	ld de, BillsPC_CursorTiles
 	ld hl, vTiles0
@@ -1045,7 +1042,7 @@ ManageBoxes:
 	cp $10
 	jr nc, .regular_left
 	ld a, [wCurBox]
-	add 13
+	add NUM_BOXES - 1
 	; fallthrough
 .new_box
 	cp NUM_BOXES
