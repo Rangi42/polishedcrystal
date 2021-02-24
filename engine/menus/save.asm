@@ -675,66 +675,17 @@ SaveCurrentVersion:
 
 SaveUpgrades:
 	dw ResetHyperTrainingBits
-	assert (@ - SaveUpgrades) == SAVE_VERSION * 2, "Missing save upgrade"
 	dw UpgradeStorageSystem
+	assert (@ - SaveUpgrades) == SAVE_VERSION * 2, "Missing save upgrade"
 
 ResetHyperTrainingBits:
-	; reset player name
-	ld hl, wPlayerName + PLAYER_NAME_LENGTH
-	call .ZeroBits
-
-	; reset daycare names
-	ld hl, wBreedMon1OT + PLAYER_NAME_LENGTH
-	call .ZeroBits
-	ld hl, wBreedMon2OT + PLAYER_NAME_LENGTH
-	call .ZeroBits
-
-	; reset party names
-	ld hl, wPartyMonOT
-	ld d, PARTY_LENGTH
-	ld bc, PLAYER_NAME_LENGTH
-.loop
-	add hl, bc
-	call .ZeroBits
-	dec d
-	jr nz, .loop
-
-	; reset Storage System names
-	ld a, BANK(sBox1)
-	call GetSRAMBank
-	call .storage_loop
-	ld a, BANK(sBox8)
-	call GetSRAMBank
-	call .storage_loop
-	jp CloseSRAM
-
-.storage_loop
-	ld hl, sBox1MonOT
-	lb de, MONS_PER_BOX, 7
-	ld bc, PLAYER_NAME_LENGTH
-.loop2
-	add hl, bc
-	call .ZeroBits
-	dec d
-	jr nz, .loop2
-	push bc
-	ld bc, sBox2MonOT - sBox1MonNicknames
-	add hl, bc
-	pop bc
-	ld d, MONS_PER_BOX
-	dec e
-	jr nz, .loop2
-	ret
-
-.ZeroBits:
-	xor a
-	ld [hli], a
-	ld [hli], a
-	ld [hli], a
+; No-op: handle as part of storage system upgrade instead (We still haven't
+; implemented a means of hyper training your mons yet).
 	ret
 
 UpgradeStorageSystem:
-	ret
+; TODO: on a public release, don't just throw out everything
+	farjp InitializeBoxes
 
 GetUpgradePhase:
 SetUpgradePhase:

@@ -79,12 +79,7 @@ ResetWRAM_NotPlus:
 
 	ld [wCurBox], a
 
-	call SetDefaultBoxNames
-
-	ld a, BANK(sBoxCount)
-	call GetSRAMBank
-	ld hl, sBoxCount
-	call _ResetWRAM_InitList
+	farcall InitializeBoxes
 	call CloseSRAM
 
 START_MONEY EQU 3000
@@ -237,38 +232,6 @@ _ResetWRAM_InitList:
 	dec a
 	ld [hl], a
 	ret
-
-SetDefaultBoxNames:
-	ld hl, wBoxNames
-	ld c, 0
-.loop
-	push hl
-	ld de, .Box
-	call CopyName2
-	dec hl
-	ld a, c
-	inc a
-	cp 10
-	jr c, .less
-	sub 10
-	ld [hl], "1"
-	inc hl
-
-.less
-	add "0"
-	ld [hli], a
-	ld [hl], "@"
-	pop hl
-	ld de, 9
-	add hl, de
-	inc c
-	ld a, c
-	cp NUM_BOXES
-	jr c, .loop
-	ret
-
-.Box:
-	db "Box@"
 
 InitializeMagikarpHouse:
 	ld hl, wBestMagikarpLengthMmHi

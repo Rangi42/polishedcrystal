@@ -68,7 +68,7 @@ MONMENU_MENUOPTION EQU 1
 
 NUM_MON_SUBMENU_ITEMS EQU 8
 
-SAVE_VERSION EQU 1
+SAVE_VERSION EQU 2
 
 ; PartyMenuQualityPointers indexes (see data/party_menu_qualities.asm)
 	const_def

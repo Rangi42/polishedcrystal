@@ -145,8 +145,6 @@ sBackupNewBox14:: newbox sBackupNewBox14
 sBackupNewBox15:: newbox sBackupNewBox15
 ENDU
 
-sSavedBoxState:: db
-
 SECTION "Link Battle Data", SRAM
 
 sLinkBattleResults:: ds $c
@@ -237,28 +235,9 @@ sBT_OTMonParties:: ds BATTLETOWER_PARTYDATA_SIZE * BATTLETOWER_SAVEDPARTIES
 
 SECTION "Boxes 1-7",  SRAM
 
-UNION
-sBox1::  box sBox1
-sBox2::  box sBox2
-sBox3::  box sBox3
-sBox4::  box sBox4
-sBox5::  box sBox5
-sBox6::  box sBox6
-sBox7::  box sBox7
-NEXTU
 sBoxMons1:: pokedb sBoxMons1
-ENDU
+
 
 SECTION "Boxes 8-14", SRAM
 
-UNION
-sBox8::  box sBox8
-sBox9::  box sBox9
-sBox10:: box sBox10
-sBox11:: box sBox11
-sBox12:: box sBox12
-sBox13:: box sBox13
-sBox14:: box sBox14
-NEXTU
 sBoxMons2:: pokedb sBoxMons2
-ENDU

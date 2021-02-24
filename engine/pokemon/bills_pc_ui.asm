@@ -37,6 +37,9 @@ _BillsPC:
 	text_end
 
 BillsPC_LoadUI:
+	; Debug: Initialize boxes
+	farcall InitializeBoxes
+
 	; Cursor tile
 	ld de, BillsPC_CursorTiles
 	ld hl, vTiles0
@@ -520,13 +523,15 @@ SetBoxName:
 
 	; Write new box name
 	ld a, [wCurBox]
-	ld hl, wBoxNames
-	ld bc, BOX_NAME_LENGTH
-	rst AddNTimes
+	ld b, a
+	inc b
+	farcall GetBoxName
+	ld hl, wStringBuffer1
 	ld d, h
 	ld e, l
 
-	; Center the name (b is 0 from earlier)
+	; Center the name
+	ld b, 0
 .loop
 	ld a, [hli]
 	inc b

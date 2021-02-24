@@ -227,14 +227,19 @@ InitializeBoxes:
 	ld hl, sNewBox1
 .loop
 	push bc
+	ld d, b
 	ld bc, sNewBox1Name - sNewBox1
 	xor a
 	rst ByteFill
 	push hl
+	push de
 	ld de, .Box
 	call CopyName2
+	pop de
 	dec hl
-	ld a, b
+	dec hl
+	ld a, NUM_NEWBOXES + 1
+	sub d
 	sub 10
 	add "0" + 10
 	ld [hl], a
@@ -253,6 +258,24 @@ InitializeBoxes:
 
 .Box:
 	rawchar "Box   @"
+
+GetBoxName:
+; Writes name of box b to string buffer 1
+	ld a, BANK(sNewBox1)
+	call GetSRAMBank
+	ld hl, sNewBox1Name
+	ld a, b
+	dec a
+	ld bc, sNewBox2 - sNewBox1
+	rst AddNTimes
+	ld de, wStringBuffer1
+	ld bc, BOX_NAME_LENGTH
+	rst CopyBytes
+
+	; Add terminator
+	ld a, "@"
+	ld [de], a
+	jp CloseSRAM
 
 AddStorageMon:
 ; Adds wTempMon to the storage system if possible.
@@ -321,7 +344,7 @@ GetStorageBoxMon:
 ; Reads storage bank+entry from box b slot c and put it in wTempMon.
 ; If there is a checksum error, put Bad Egg data in wTempMon instead.
 ; Returns c in case of a Bad Egg, z if the requested mon doesn't exist,
-; nz|nc otherwise. If b==0, read from party list.
+; nz|nc otherwise. If b==0, read from party list. c is 1-indexed.
 	; TODO: DON'T READ LEGACY SAVE DATA
 	ld a, b
 	and a
@@ -329,65 +352,60 @@ GetStorageBoxMon:
 	push hl
 	push de
 	push bc
+
+	; bc are 1-indexed, so decrease both
 	dec b
 	dec c
-	ld a, b
-	sub 7
-	ld d, BANK(sBox1)
-	jr c, .got_save_bank
-	ld b, a
-	ld d, BANK(sBox8)
-.got_save_bank
-	ld a, d
+
+	ld a, BANK(sNewBox1)
 	call GetSRAMBank
-	ld d, b
-	ld e, c
-	ld bc, sBox2 - sBox1
+
+	; Figure out which box we're dealing with
+	ld hl, sNewBox1Entries
+	ld a, b
+	ld d, c
+	ld bc, sNewBox2 - sNewBox1
+	rst AddNTimes
+
+	; Get the database entry
 	ld a, d
-	ld hl, sBox1
-	rst AddNTimes
-	ld a, e
-	cp [hl]
-	jr c, .not_empty
-	xor a
-	jr .done
-.not_empty
-	ld bc, sBox1Mons - sBox1
-	add hl, bc
 	push hl
-	push de
-	ld bc, BOXMON_STRUCT_LENGTH
-	ld a, e
-	rst AddNTimes
-	ld de, wTempMon
-	ld bc, BOXMON_STRUCT_LENGTH
-	rst CopyBytes
-	pop de
+	add l
+	ld l, a
+	adc h
+	sub l
+	ld h, a
+	ld a, [hl]
 	pop hl
-	push hl
-	push de
-	ld bc, sBox1MonNicknames - sBox1Mons
+
+	; If the entry is 0, the slot is unused.
+	and a
+	jr z, .done
+	ld e, a
+
+	; Get the database bank
+	ld bc, sNewBox1Banks - sNewBox1Entries
 	add hl, bc
-	ld a, e
-	call SkipNames
-	ld de, wTempMonNickname
-	ld bc, MON_NAME_LENGTH
-	rst CopyBytes
-	pop de
-	pop hl
-	ld bc, sBox1MonOT - sBox1Mons
-	add hl, bc
-	ld a, e
-	call SkipNames
-	ld de, wTempMonOT
-	ld bc, NAME_LENGTH
-	rst CopyBytes
-	or 1
+	ld c, d ; box slot (0-indexed)
+	ld d, 0 ; not banked elsewhere
+	ld b, CHECK_FLAG
+	predef FlagPredef
+	ld d, 1
+	jr z, .got_storage_bank
+	inc d
+.got_storage_bank
+	call GetStorageMon
+	jr c, .done
+	jr nz, .done
+
+	ld b, b ; no-optimize nops (BGB breakpoint)
+	; fallthrough
 .done
 	pop bc
 	pop de
 	pop hl
 	jp CloseSRAM
+
 .read_party
 	ld a, [wPartyCount]
 	cp c
