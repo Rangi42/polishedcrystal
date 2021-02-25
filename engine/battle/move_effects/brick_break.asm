@@ -5,7 +5,7 @@ BattleCommand_brickbreak:
 	jr z, .got_screens
 	ld hl, wPlayerScreens
 .got_screens
-    ld a, [hl]
+	ld a, [hl]
 	and a
 	ret z
 	ld [hl], 0
