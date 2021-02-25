@@ -1,6 +1,6 @@
 ItemNames::
 	rawchar "Park Ball@"
-	rawchar "# Ball@"
+	rawchar "Poké Ball@"
 	rawchar "Great Ball@"
 	rawchar "Ultra Ball@"
 	rawchar "Master Ball@"

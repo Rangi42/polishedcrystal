@@ -1344,7 +1344,7 @@ CalcPkmnStats:
 ; hl is the path to the EVs - 1
 ; de is a pointer where the 6 stats are placed
 
-	ld c, $0
+	ld c, 0
 .loop
 	inc c
 	call CalcPkmnStatC

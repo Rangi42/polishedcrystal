@@ -492,6 +492,7 @@ GetStorageMon:
 	; Bad Egg failsafe on a checksum error.
 	call DecodeTempMon
 .done
+	call CloseSRAM
 	jp PopBCDEHL
 
 NewStorageMon:
@@ -696,18 +697,26 @@ SetBadEgg:
 	rst ByteFill
 
 	; Set data that can't be 1 to other things
+
+	; No held item.
 	xor a
 	ld hl, wTempMonItem
 	ld [hl], a
+
+	; No duplicate moves.
 	ld hl, wTempMonMoves + 1
 	ld bc, NUM_MOVES - 1
 	rst ByteFill
+
+	; More sensible personality data.
 	ld hl, wTempMonPersonality
 	ld [hl], ABILITY_1 | QUIRKY
 	inc hl
 	ld [hl], MALE | IS_EGG_MASK | 1
 	ld hl, wTempMonHappiness ; egg cycles
 	ld [hl], 255
+
+	; 0 EXP.
 	ld hl, wTempMonExp
 	ld c, 3
 	rst ByteFill
@@ -716,6 +725,8 @@ SetBadEgg:
 	ld hl, wTempMonNickname
 	ld de, .BadEgg
 	call CopyName2
+
+	; Dummy OT name.
 	ld hl, wTempMonOT
 	ld [hl], "?"
 	inc hl
