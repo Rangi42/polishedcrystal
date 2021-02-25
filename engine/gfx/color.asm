@@ -419,6 +419,16 @@ ApplyPartyMenuHPPals:
 	ld a, e
 	jp FillBoxWithByte
 
+SetPartyMenuPal:
+; Writes mon icon color a to palette in de
+	ld hl, PartyMenuOBPals
+	ld bc, 1 palettes
+	push bc
+	rst AddNTimes
+	pop bc
+	ld bc, 1 palettes
+	jp FarCopyColorWRAM
+
 InitPartyMenuOBPals:
 	ld hl, PartyMenuOBPals
 	ld de, wOBPals1

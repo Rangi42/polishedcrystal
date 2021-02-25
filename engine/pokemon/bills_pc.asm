@@ -27,6 +27,71 @@ CheckCurPartyMonFainted:
 	and a
 	ret
 
+SwapStorageBoxSlots:
+; Swaps slots from de to bc. Equivalent to bc->de except c may be 0 to mean
+; "put anywhere in the party/box". Returns the following in a:
+; 0: Successful swap
+; 1: Save is required to perform the swap
+; 2: The party is full
+; 3: The box is full
+; 4: Doing this would remove the last healthy mon in party
+	ld a, 1
+	ret
+
+	; Compare source->dest to see if we're "moving" something with itself.
+	ld a, b
+	cp d
+	ld a, c
+	jr nz, .not_equal
+	and a
+	ret z ; Moving from party/box to "anywhere within same party/box".
+	cp e
+	jr nz, .not_equal
+	; fallthrough
+.done
+	xor a
+	ret
+.not_equal
+	; Convert destination slot 0 to a real destination, if we can.
+	push de
+	and a ; a is c from beforehand.
+	jr nz, .got_dest
+
+	ld e, PARTY_LENGTH
+	ld a, b
+	and a
+	jr z, .dest_loop
+	ld e, MONS_PER_BOX
+.dest_loop
+	inc c
+	call GetStorageBoxMon
+	jr z, .got_dest
+	ld a, c
+	cp e
+	jr nz, .dest_loop
+
+	; Party (or Box) is full
+	cp MONS_PER_BOX
+	ld a, 3
+	ret z
+	dec a
+	ret
+
+.got_dest
+	pop de
+
+	; If b<d, swap bc and de. The reason for this is that we want to handle
+	; party->box movement the same way as box->party.
+	ld a, b
+	cp d
+	jr nc, .dont_swap
+	push bc
+	ld b, d
+	ld c, e
+	pop de
+.dont_swap
+	ret
+
 NewStorageBoxPointer:
 ; Sets bc to an unused box storage location. Clobbers wTempMon. Returns:
 ; nc|z: Active box has free space

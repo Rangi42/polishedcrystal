@@ -908,6 +908,7 @@ wBillsPC_CursorHeldSlot:: db ; 0 for nothing held, or 1-20 (1-6 if party)
 wBillsPC_CursorDestBox:: db ; 0 for party, 1-15 otherwise
 wBillsPC_CursorDestSlot:: db ; 0 for release, or 1-20 (1-6 if party)
 wBillsPC_CursorMode:: db ; 0 for regular (red), 1 for switch mode (blue)
+wBillsPC_CursorAnimFlag:: db ; manage cursor behaviour
 wBillsPC_ItemVWF:: ds 10 tiles
 
 NEXTU

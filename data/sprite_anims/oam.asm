@@ -75,8 +75,7 @@ SpriteAnimOAMData:
 	dbw $04, .OAMData_GameFreakLogo4_11  ; SPRITE_ANIM_OAMSET_GAMEFREAK_LOGO_10
 	dbw $00, .OAMData_GameFreakLogo4_11  ; SPRITE_ANIM_OAMSET_GAMEFREAK_LOGO_11
 	dbw $00, .OAMData_MaxStatSparkle     ; SPRITE_ANIM_OAMSET_MAX_STAT_SPARKLE
-	dbw $00, .OAMData_PcCursor1          ; SPRITE_ANIM_OAMSET_PC_CURSOR_1
-	dbw $00, .OAMData_PcCursor2          ; SPRITE_ANIM_OAMSET_PC_CURSOR_2
+	dbw $00, .OAMData_PcCursor           ; SPRITE_ANIM_OAMSET_PC_CURSOR
 
 .OAMData_1x1_Palette0:
 	db 1
@@ -629,20 +628,18 @@ SpriteAnimOAMData:
 	db 1
 	dsprite  2,  0,  2,  0, $00, $0
 
-.OAMData_PcCursor1:
-	db 6
-	dsprite  0, -1,  0,  0, $00, $1
-	dsprite  0, -1, -1,  0, $01, $1
-	dsprite -1,  0, -1,  0, $02, $4
-	dsprite  0,  0, -1,  0, $03, $4
-	dsprite -1,  0,  0,  0, $02, $4 | X_FLIP
-	dsprite  0,  0,  0,  0, $03, $4 | X_FLIP
+.OAMData_PcCursor:
+	db 10
+	; Cursor
+	dsprite  0, -1,  0,  0, $04, $1 | TILE_BANK
+	dsprite  0, -1, -1,  0, $05, $1 | TILE_BANK
+	dsprite -1,  0, -1,  0, $06, $4 | TILE_BANK
+	dsprite  0,  0, -1,  0, $07, $4 | TILE_BANK
+	dsprite -1,  0,  0,  0, $06, $4 | TILE_BANK | X_FLIP
+	dsprite  0,  0,  0,  0, $07, $4 | TILE_BANK | X_FLIP
 
-.OAMData_PcCursor2:
-	db 6
-	dsprite  0, -3,  0,  0, $00, $1
-	dsprite  0, -3, -1,  0, $01, $1
-	dsprite -1, -2, -1,  0, $02, $4
-	dsprite  0, -2, -1,  0, $03, $4
-	dsprite -1, -2,  0,  0, $02, $4 | X_FLIP
-	dsprite  0, -2,  0,  0, $03, $4 | X_FLIP
+	; Mini
+	dsprite  0,  2, -1,  0, $08, $3 | TILE_BANK
+	dsprite  0,  2,  0,  0, $09, $3 | TILE_BANK
+	dsprite  1,  2, -1,  0, $0a, $3 | TILE_BANK
+	dsprite  1,  2,  0,  0, $0b, $3 | TILE_BANK

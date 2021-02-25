@@ -12,6 +12,11 @@ SCREEN_HEIGHT_PX EQU SCREEN_HEIGHT * 8
 BG_MAP_WIDTH  EQU 32
 BG_MAP_HEIGHT EQU 32
 
+PCANIM_STATIC EQU 0 ; used when holding stuff, we don't want to bop then
+PCANIM_ANIMATE EQU 90 ; baseline
+PCANIM_PICKUP EQU 91 ; we're picking up/placing down something
+PCANIM_PICKUP_NEXT EQU 98 ; cursor is at the bottom, ready for pickup
+
 METATILE_WIDTH EQU 4 ; tiles
 SCREEN_META_WIDTH EQU 6 ; metatiles
 SCREEN_META_HEIGHT EQU 5 ; metatiles

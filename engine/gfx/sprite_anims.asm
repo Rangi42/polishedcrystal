@@ -33,7 +33,7 @@ DoAnimFrame:
 	dw AnimSeq_IntroSuicuneAway   ; SPRITE_ANIM_SEQ_SUICUNE_AWAY
 	dw AnimSeq_Celebi             ; SPRITE_ANIM_SEQ_CELEBI
 	dw AnimSeq_MaxStatSparkle     ; SPRITE_ANIM_SEQ_MAX_STAT_SPARKLE
-	dw AnimSeq_PcCursor	          ; SPRITE_ANIM_SEQ_PC_CURSOR
+	dw AnimSeq_PcCursor           ; SPRITE_ANIM_SEQ_PC_CURSOR
 
 AnimSeq_PartyMon:
 	ld a, [wMenuCursorY]
@@ -600,6 +600,7 @@ AnimSeq_PcCursor:
 	push af
 	and $f0
 	ld [hl], a
+	call .FixCursorY
 	pop af
 	push af
 	and $f
@@ -618,6 +619,32 @@ AnimSeq_PcCursor:
 	cp $10
 	ret nc
 	ld [hl], 92
+	ret
+
+.FixCursorY:
+	; Check for static cursor
+	ld a, [wBillsPC_CursorAnimFlag]
+	and a
+	ret z
+
+	; If we're picking up, the PC UI handles this flag.
+	cp PCANIM_PICKUP
+	jr c, .not_picking
+	sub PCANIM_PICKUP - 1
+	add [hl]
+	ld [hl], a
+	ret
+.not_picking
+	cp PCANIM_ANIMATE / 2 + 1
+	jr c, .dont_bop
+	inc [hl]
+	inc [hl]
+.dont_bop
+	dec a
+	ld [wBillsPC_CursorAnimFlag], a
+	ret nz
+	ld a, PCANIM_ANIMATE
+	ld [wBillsPC_CursorAnimFlag], a
 	ret
 
 AnimSeqs_IncAnonJumptableIndex:

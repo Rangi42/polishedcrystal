@@ -328,6 +328,5 @@ SpriteAnimFrameData:
 	dorestart
 
 .Frameset_PcCursor:
-	frame SPRITE_ANIM_OAMSET_PC_CURSOR_1, 45
-	frame SPRITE_ANIM_OAMSET_PC_CURSOR_2, 45
+	frame SPRITE_ANIM_OAMSET_PC_CURSOR, 32
 	dorestart

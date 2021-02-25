@@ -37,16 +37,29 @@ _BillsPC:
 	text_end
 
 BillsPC_LoadUI:
-	; Cursor tile
+	ld a, 1
+	ld [rVBK], a
+
+	; Cursor tiles
 	ld de, BillsPC_CursorTiles
-	ld hl, vTiles0
+	ld hl, vTiles0 + 4 tiles
 	lb bc, BANK(BillsPC_CursorTiles), 4
 	call Get2bpp
 
+	; Blank held cursor mini + item icons
+	ld hl, vTiles0 + 8 tiles
+	ld a, 3 ; mini + shadowmask + items (only uses 2 tiles, but this is ok).
+	call BillsPC_BlankTiles
+
+	xor a
+	ld [rVBK], a
+
 	; Cursor sprite OAM
-	lb de, 48, 24
+	lb de, 46, 24
 	ld a, SPRITE_ANIM_INDEX_PC_CURSOR
 	call _InitSpriteAnimStruct
+	ld a, PCANIM_ANIMATE
+	ld [wBillsPC_CursorAnimFlag], a
 
 	; Colored gender symbols are housed in misc battle gfx stuff
 	ld hl, BattleExtrasGFX
@@ -79,6 +92,7 @@ UseBillsPC:
 	ld a, [wVramState]
 	res 0, a
 	ld [wVramState], a
+
 	call BillsPC_LoadUI
 
 	; Default cursor data (top left of storage, not holding anything)
@@ -90,28 +104,22 @@ UseBillsPC:
 	; Reserve 4 blank tiles for empty slots
 	ld a, 1
 	ldh [rVBK], a
+	ld a, 4
 	ld hl, vTiles3
+.blank_loop
 	ld de, vTiles5 tile $7f
-	push hl
-	push hl
+	push af
 	ld c, 1
-	call Get2bpp
-	pop de
-	pop hl
-	ld bc, 1 tiles
-	add hl, bc
 	push hl
 	push de
-	ld c, 1
 	call Get2bpp
 	pop de
 	pop hl
 	ld bc, 1 tiles
 	add hl, bc
-	ld c, 2
-	call Get2bpp
-	xor a
-	ld [rVBK], a
+	pop af
+	dec a
+	jr nz, .blank_loop
 
 	; Pokepic attributes
 	hlcoord 0, 0, wAttrMap
@@ -197,7 +205,7 @@ UseBillsPC:
 	; Set up for HBlank palette switching
 	ld a, LOW(LCDBillsPC1)
 	ldh [hFunctionTargetLo], a
-	ld a, HIGH(LCDBillsPC2)
+	ld a, HIGH(LCDBillsPC1)
 	ldh [hFunctionTargetHi], a
 	ld hl, rIE
 	set LCD_STAT, [hl]
@@ -556,6 +564,7 @@ SetPartyIcons:
 	ld a, PARTY_LENGTH
 	call BillsPC_BlankTiles
 
+_SetPartyIcons:
 	; Write party members
 	lb bc, 0, 1
 	ld hl, wBillsPC_PartyList
@@ -577,6 +586,7 @@ SetBoxIcons:
 	ld a, MONS_PER_BOX
 	call BillsPC_BlankTiles
 
+_SetBoxIcons:
 	; Write box members
 	ld a, [wCurBox]
 	inc a
@@ -681,7 +691,7 @@ WriteIconPaletteData:
 
 BillsPC_HideCursor:
 	ld hl, wVirtualOAM
-	ld bc, 24
+	ld bc, 64
 	xor a
 	rst ByteFill
 	ret
@@ -690,35 +700,40 @@ BillsPC_UpdateCursorLocation:
 	push hl
 	push de
 	push bc
-	ld hl, wVirtualOAM + 24
+	ld hl, wVirtualOAM + 64
 	ld de, wStringBuffer1
 	ld bc, 4
 	rst CopyBytes
 	farcall PlaySpriteAnimations
 	ld hl, wStringBuffer1
-	ld de, wVirtualOAM + 24
+	ld de, wVirtualOAM + 64
 	ld bc, 4
 	rst CopyBytes
 	jp PopBCDEHL
 
-GetCursorMon:
-; Prints data about Pokémon at cursor if nothing is held (underline to force)
-	; Don't do anything if we're already holding a mon
+BillsPC_GetCursorHeldSlot:
+; Returns current held box+slot to slot bc. Returns z if nothing is held.
+	ld a, [wBillsPC_CursorHeldBox]
+	ld b, a
 	ld a, [wBillsPC_CursorHeldSlot]
+	ld c, a
 	and a
-	jr nz, BillsPC_UpdateCursorLocation
-	; fallthrough
-_GetCursorMon:
-	call BillsPC_UpdateCursorLocation
+	ret
 
-	; Check if cursor is currently hovering over a mon.
+BillsPC_GetCursorSlot:
+; Converts cursor position to slot bc. Returns c if hovering on box name.
+; b is 0 for party, 1-15 for box, c is 1-20 for slot, 0 fir boxname.
+	ld c, 0
+	ld a, [wCurBox]
+	inc a
+	ld b, a
 	ld a, [wBillsPC_CursorPos]
 	sub $10
-	jr c, .clear
+	ret c
 
 	ld b, a
 	and $f
-	; column 0-1 is party
+	; Column 0-1 is party
 	cp 2
 	jr c, .party
 
@@ -736,7 +751,7 @@ _GetCursorMon:
 	ld a, [wCurBox]
 	inc a
 	ld b, a
-	jr .got_storage_location
+	ret
 .party
 	; With existing $yx row 2-4 col 0-1, we want to get y*2+x-3.
 	ld c, a
@@ -748,29 +763,20 @@ _GetCursorMon:
 	sub 3
 	ld c, a
 	ld b, 0
-.got_storage_location
-	call GetStorageBoxMon
-	jr nz, .not_clear
-	ld a, -1
-	ld [wVirtualOAM + 24], a
+	ret
 
-.clear
-	; Clear existing data
-	hlcoord 7, 0
-	lb bc, 4, 13
-	call ClearBox
-	hlcoord 0, 0
-	lb bc, 9, 7
-	call ClearBox
+BillsPC_SetBoxArrows:
 	ld a, [wBillsPC_CursorPos]
 	cp $10
 	jr c, .box_cursors
 
+	; Clear box switch arrows.
 	ld a, " "
 	hlcoord 8, 5
 	ld [hl], a
 	hlcoord 18, 5
 	ld [hl], a
+	xor a
 	ret
 
 .box_cursors
@@ -778,8 +784,53 @@ _GetCursorMon:
 	ld [hl], "◀"
 	hlcoord 18, 5
 	ld [hl], "▶"
+	ret
+
+GetCursorMon:
+; Prints data about Pokémon at cursor if nothing is held (underline to force).
+; Returns z if cursor is on an empty pkmn slot.
+	; Only handle box arrows if we're holding a mon
+	ld a, [wBillsPC_CursorHeldSlot]
+	and a
+	jr z, _GetCursorMon
+
+	call BillsPC_UpdateCursorLocation
+	jr BillsPC_SetBoxArrows
+
+_GetCursorMon:
+	call BillsPC_UpdateCursorLocation
+
+	; Check if cursor is currently hovering over a mon.
+	call BillsPC_GetCursorSlot
+	jr c, .clear
+
+	call GetStorageBoxMon
+	jr nz, .not_clear
 	ld a, -1
-	ld [wVirtualOAM + 24], a
+	ld [wVirtualOAM + 64], a
+	; fallthrough
+.clear
+	; Clear existing data
+
+	; Clear nickname+species+icon
+	hlcoord 7, 0
+	lb bc, 4, 13
+	call ClearBox
+
+	; Clear pokepic
+	hlcoord 0, 0
+	lb bc, 9, 7
+	call ClearBox
+	call BillsPC_SetBoxArrows
+	ld a, [wBillsPC_CursorPos]
+	cp $10
+	jp c, .reset_item
+	xor a
+	ret
+.reset_item
+	ld a, -1
+	ld [wVirtualOAM + 64], a
+	or 1
 	ret
 
 .not_clear
@@ -879,7 +930,7 @@ _GetCursorMon:
 	jr nz, .loop
 
 	; Show or hide item icon
-	ld hl, wVirtualOAM + 24
+	ld hl, wVirtualOAM + 64
 	ld a, [wTempMonItem]
 	and a
 	ld [hl], -1
@@ -955,6 +1006,8 @@ _GetCursorMon:
 	inc a
 	dec b
 	jr nz, .item_loop
+.ret_nz
+	or 1
 	ret
 
 ManageBoxes:
@@ -984,6 +1037,18 @@ ManageBoxes:
 	jp c, .pressed_down
 	jr .loop
 .pressed_a
+	; If we're holding a mon, try to place it in the current cursor location.
+	ld a, [wBillsPC_CursorHeldSlot]
+	and a
+	jr z, .nothing_held_a
+	call BillsPC_PlaceHeldMon ; might not do anything
+	jr .loop
+
+.nothing_held_a
+	; Check if this slot is empty.
+	call GetCursorMon
+	jr z, .loop
+
 	; check if we're on top row (hovering over box name)
 	ld a, [wBillsPC_CursorPos]
 	cp $10
@@ -1005,6 +1070,14 @@ ManageBoxes:
 	jr .loop
 
 .pressed_b
+	; If we're holding a mon, abort the selection.
+	ld a, [wBillsPC_CursorHeldSlot]
+	and a
+	jr z, .nothing_held_b
+	call BillsPC_AbortSelection
+	jr .loop
+
+.nothing_held_b
 	; Prompt if we want to exit Box operations or not.
 	call BillsPC_HideCursor
 	ld hl, .ContinueBoxUse
@@ -1015,7 +1088,7 @@ ManageBoxes:
 	call CloseWindow
 	pop af
 	ret c
-	jr .loop
+	jp .loop
 
 .pressed_select
 	; TODO: Cursor Mode Switch
@@ -1208,7 +1281,117 @@ BillsPC_Stats:
 	call BillsPC_RestoreUI
 	ret
 
+BillsPC_CursorPick1:
+; Plays the first part of the cursor pickup animation
+	ld hl, wBillsPC_CursorAnimFlag
+	ld a, [hl]
+	cp PCANIM_ANIMATE / 2 + 1
+	ld a, PCANIM_PICKUP + 1
+	sbc 0
+	ld [hl], a
+	ld [wBillsPC_CursorAnimFlag], a
+.pick_loop
+	call BillsPC_UpdateCursorLocation
+	call DelayFrame
+	inc [hl]
+	ld a, [hl]
+	cp PCANIM_PICKUP_NEXT
+	jr nz, .pick_loop
+	ret
+
+BillsPC_CursorPick2:
+; Plays the second part of the cursor pickup animation. Stops at regular bop.
+; Just write PCANIM_STATIC to [hl] afterwards if this isn't what you want.
+	ld hl, wBillsPC_CursorAnimFlag
+.pick_loop2
+	call BillsPC_UpdateCursorLocation
+	call DelayFrame
+	dec [hl]
+	ld a, [hl]
+	cp PCANIM_PICKUP
+	jr nc, .pick_loop2
+	ret ; [hl] is now PCANIM_ANIMATE.
+
 BillsPC_Switch:
+; Pick up mon for movement.
+	; Mark current cursor slot for movement.
+	call BillsPC_GetCursorSlot
+	ld a, b
+	ld [wBillsPC_CursorHeldBox], a
+	ld a, c
+	ld [wBillsPC_CursorHeldSlot], a
+
+	push bc
+	call BillsPC_CursorPick1
+
+	; Update pal for the cursor mini, in case we pick it up.
+	ld a, [wTempMonSpecies]
+	ld hl, wTempMonPersonality
+	farcall _GetMonIconPalette
+	ld de, wOBPals1 palette 3
+	farcall SetPartyMenuPal
+	call BillsPC_SetCursorMonIconPal
+
+	; Write mini graphics to cursor sprite area
+	ld a, 1
+	ld [rVBK], a
+	ld a, [wTempMon]
+	ld [wCurIcon], a
+	ld a, [wTempMonForm]
+	ld [wCurIconForm], a
+	ld a, 8
+	farcall GetStorageIcon_a
+
+	; Blank the mini in the box/party itself
+	pop bc
+	inc b
+	dec b
+	ld hl, vTiles4 tile $00
+	jr z, .got_tile_pointer
+	ld hl, vTiles4 tile $18
+.got_tile_pointer
+	ld b, 0
+	dec c
+	ld a, 4 tiles
+	rst AddNTimes
+	ld a, 1
+	call BillsPC_BlankTiles
+
+	xor a
+	ld [rVBK], a
+
+	call BillsPC_CursorPick2
+	ld [hl], PCANIM_STATIC
+	ret
+
+BillsPC_AbortSelection:
+; Deselects the mon currently held, moving it to where it was prior.
+	xor a
+	ld [wBillsPC_CursorHeldBox], a
+	ld [wBillsPC_CursorHeldSlot], a
+
+	; Blank the cursor sprite
+	ld a, 1
+	ld [rVBK], a
+	ld hl, vTiles3 + 8 tiles
+	call BillsPC_BlankTiles
+
+	; Ensure that the icon is returned, if in party/current Box.
+	ldh a, [hBGMapMode]
+	push af
+	xor a
+	ldh [hBGMapMode], a
+	call _SetPartyIcons
+	call _SetBoxIcons
+	pop af
+	ldh [hBGMapMode], a
+	ld a, PCANIM_ANIMATE
+	ld [wBillsPC_CursorAnimFlag], a
+
+	xor a
+	ld [rVBK], a
+	ret
+
 BillsPC_Moves:
 BillsPC_GiveItem:
 BillsPC_MoveItem:
@@ -1315,17 +1498,120 @@ BillsPC_SwitchBox:
 BillsPC_Rename:
 	ret
 
+BillsPC_GetCursorFromTo:
+; Returns source (held mon) in de and destination (cursor location) in bc.
+	call BillsPC_GetCursorHeldSlot
+	ld d, b
+	ld e, c
+	jp BillsPC_GetCursorSlot
+
+BillsPC_PlaceHeldMon:
+; Places held mon at the current cursor location. Might perform swaps, or even
+; be aborted, depending on circumstances.
+	; Get source in de and destination in bc.
+	call BillsPC_GetCursorFromTo
+
+	; Try to swap slots bc and de and interpret result.
+	call SwapStorageBoxSlots
+	and a
+	jr z, .success
+	sub 2
+	ld hl, .MustSaveToContinue
+	jr c, .swap_failed
+	ld hl, .PartyIsFull
+	jr z, .swap_failed
+	ld hl, .BoxIsFull
+	dec a
+	jr z, .swap_failed
+	ld hl, .LastPartyMon
+	; fallthrough
+.swap_failed
+	; Print error message
+	push af
+	call MenuTextbox
+	pop af
+
+	; On carry, we got a confirmation prompt which re-runs this on "yes".
+	jr nc, .menutext_abort
+
+	call YesNoBox
+	push af
+	call .menutext_abort
+	pop af
+	ret c
+
+	; Just re-run this function.
+	jr BillsPC_PlaceHeldMon
+.menutext_abort
+	call BillsPC_UpdateCursorLocation
+	jp CloseWindow
+
+.success
+	; TODO
+	ret
+
+.MustSaveToContinue:
+	text "Save the game to"
+	line "do this?"
+	done
+
+.PartyIsFull:
+	text "The party is full."
+	prompt
+
+.BoxIsFull:
+	text "The box is full."
+	prompt
+
+.LastPartyMon:
+	text "That's your last"
+	line "healthy #mon!"
+	prompt
+
+BillsPC_SetCursorMonIconPal:
+; Sets mon icon used by the cursor. Plays nice with PC hblank interrupt.
+	ld a, BANK("GBC Video")
+	call StackCallInWRAMBankA
+.Function:
+	; Wait until a hblank we can make use of.
+	ld c, LOW(rLY)
+	ld d, 8
+.busyloop
+	ld a, [c]
+	cp d
+	jr nz, .busyloop
+	; The double inc here is intentional, just in case of a badly timed hblank.
+	inc d
+	inc d
+	di
+.busyloop2
+	ld a, [c]
+	cp d
+	jr nz, .busyloop2
+
+	ld c, LOW(rOBPD)
+	ld a, $80 | $18
+	ldh [rOBPI], a
+	ld hl, wOBPals1 palette 3
+rept 8
+	ld a, [hli]
+	ld [c], a
+endr
+	reti
+
 BillsPC_RestoreUI:
+	call ClearSprites
+	call ClearSpriteAnims
+
 	ld hl, rIE
 	set LCD_STAT, [hl]
-	call ClearPalettes
 
 	call BillsPC_LoadUI
+	call GetCursorMon
 
 	ld a, CGB_BILLS_PC
 	call GetCGBLayout
-	call SetPalettes
-	jp GetCursorMon
+	jp SetPalettes
 
 BillsPC_CursorPosValid:
 ; Returns z if the cursor position is valid
