@@ -5473,7 +5473,8 @@ BugManiacGroup:
 	db "Lou@"
 	db TRAINERTYPE_MOVES
 	; party
-	db 19, YANMA, BUG_BITE, QUICK_ATTACK, DOUBLE_TEAM, SONIC_BOOM
+	db 19, YANMA
+		db BUG_BITE, QUICK_ATTACK, DOUBLE_TEAM, SONIC_BOOM
 	db -1 ; end
 
 ; ================
