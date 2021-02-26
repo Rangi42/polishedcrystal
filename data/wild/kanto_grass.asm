@@ -648,6 +648,33 @@
 	dbp 51, HYPNO
 	dbp 51, HYPNO
 
+	map_id ROUTE_12_SOUTH
+	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
+	; morn
+	dbp 50, NIDORINO
+	dbp 50, NIDORINA
+	dbp 50, PIDGEOTTO
+	dbp 51, WEEPINBELL
+	dbp 53, WEEPINBELL
+	dbp 52, FARFETCH_D
+	dbp 54, FARFETCH_D
+	; day
+	dbp 50, NIDORINO
+	dbp 50, NIDORINA
+	dbp 50, PIDGEOTTO
+	dbp 51, WEEPINBELL
+	dbp 53, WEEPINBELL
+	dbp 52, FARFETCH_D
+	dbp 54, FARFETCH_D
+	; nite
+	dbp 50, VENOMOTH
+	dbp 50, NOCTOWL
+	dbp 50, QUAGSIRE
+	dbp 51, GLOOM
+	dbp 53, VENOMOTH
+	dbp 52, QUAGSIRE
+	dbp 54, QUAGSIRE
+
 	map_id ROUTE_13_EAST
 	db 10 percent, 10 percent, 10 percent ; encounter rates: morn/day/nite
 	; morn
