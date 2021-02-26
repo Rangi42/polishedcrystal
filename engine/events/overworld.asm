@@ -1614,6 +1614,7 @@ Script_NotEvenANibble:
 
 Script_GotAnItem:
 	scall Script_FishCastRod
+	callasm Fishing_CheckFacingUp
 	iffalse .NotFacingUp
 	applymovement PLAYER, Movement_HookedItemFacingUp
 	jump .GetTheHookedItem
