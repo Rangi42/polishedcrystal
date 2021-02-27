@@ -212,7 +212,7 @@ CopyWarpData::
 	scf
 	ret
 
-CheckOutdoorMapOrEnvironment5::
+CheckOutdoorOrIsolatedMap::
 	cp ISOLATED
 	ret z
 CheckOutdoorMap::
