@@ -272,8 +272,7 @@ CutDownGrass:
 	call LoadMapPart
 	call UpdateSprites
 	call DelayFrame
-	ld a, 1
-	ld e, a
+	ld a, 1 ; Animation type
 	farcall OWCutAnimation
 	call BufferScreen
 	call GetMovementPermissions
@@ -339,7 +338,6 @@ CutDownTree:
 	call UpdateSprites
 	call DelayFrame
 	xor a ; Animation type
-	ld e, a
 	farcall OWCutAnimation
 	call BufferScreen
 	call GetMovementPermissions

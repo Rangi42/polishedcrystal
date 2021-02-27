@@ -91,11 +91,9 @@ TreeRelativeLocationTable:
 	dwcoord 8 + 2, 8     ; UP
 
 OWCutAnimation:
-	; Animation index in e
+	; Animation index in a
 	; 0: Split tree in half
 	; 1: Mow the lawn
-	ld a, e
-	and $1
 	ld [wJumptableIndex], a
 	call ClearSpriteAnims
 	call WaitSFX
