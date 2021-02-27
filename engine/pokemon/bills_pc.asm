@@ -35,9 +35,7 @@ SwapStorageBoxSlots:
 ; 2: The party is full
 ; 3: The box is full
 ; 4: Doing this would remove the last healthy mon in party
-	ld a, 1
-	ret
-
+; 5: Can't move partymon to Box, because they're holding Mail.
 	; Compare source->dest to see if we're "moving" something with itself.
 	ld a, b
 	cp d
@@ -71,29 +69,224 @@ SwapStorageBoxSlots:
 	jr nz, .dest_loop
 
 	; Party (or Box) is full
+	pop de
 	cp MONS_PER_BOX
-	ld a, 3
-	ret z
-	dec a
+	ld a, 2
+	ret c
+	inc a
 	ret
 
 .got_dest
 	pop de
 
-	; If b<d, swap bc and de. The reason for this is that we want to handle
+	; If d<b, swap bc and de. The reason for this is that we want to handle
 	; party->box movement the same way as box->party.
-	ld a, b
-	cp d
+	ld a, d
+	cp b
 	jr nc, .dont_swap
 	push bc
 	ld b, d
 	ld c, e
 	pop de
 .dont_swap
+	; At this point, b<=d. So if d is party, we're swapping party members, and
+	; if b is nonparty (i.e. >0), we're swapping between box slots.
+	; Otherwise, we're swapping a party slot bc to box slot de.
+	ld a, d
+	and a
+	jr z, .party_swap
+	ld a, b
+	and a
+	jr nz, .box_swap
+
+	; We're swapping a party and box slot. First, verify that we're not losing
+	; our last healthy mon and that the partymon isn't holding Mail.
+	push de
+	push bc
+	ld a, c
+
+	; This is required for CheckCurPartyMonFainted
+	dec a
+	ld [wCurPartyMon], a
+
+	; Is the party slot occupied? Also writes the partymon to wTempMon.
+	call GetStorageBoxMon
+	jr z, .not_last_healthy
+
+	; Check if the partymon is holding Mail. We can't store Mail in a Box.
+	ld a, [wTempMonItem]
+	call ItemIsMail_a
+	ld a, 5
+	jr c, .pop_bcde_and_return
+
+	; Otherwise, check if it is our last healthy mon.
+	call CheckCurPartyMonFainted
+	jr nc, .not_last_healthy
+
+	; Doing this would lose us our last healthy mon, so abort.
+	ld a, 4
+.pop_bcde_and_return
+	pop bc
+	pop de
+	ret
+
+.not_last_healthy
+	pop bc
+
+	; Try to allocate a new pokedb pointer, unless the party slot was empty.
+	ld de, 0 ; in case we're blanking the box slot
+	ld a, [wTempMonEntry]
+	and a
+	call nz, NewStoragePointer
+	jr nc, .found_new_pokedb
+
+	; The pokedb is full, we need to save first.
+	pop de
+	ld a, 1
+	ret
+
+.found_new_pokedb
+	call AddStorageMon
+
+	; Get the current pokedb pointer in the box slot for writing to party.
+	pop hl ; Box slot
+	push bc ; Party slot
+	ld b, h
+	ld c, l
+	push de ; New pokedb pointer
+	call GetStorageBoxPointer
+	ld h, d
+	ld l, e
+	pop de
+	push hl ; Previous pokedb pointer
+	call SetStorageBoxPointer
+
+	; Now, write previous pointer to party, then we're done.
+	pop de
+	pop bc
+	call SetStorageBoxPointer
+	xor a
+	ret
+
+.party_swap
+	; Check if we're placing a mon in a blank party slot. This means we're
+	; shifting every other party member upwards, placing the held mon last.
+	ld hl, wPartyCount
+	ld a, c
+	cp [hl]
+	jr nc, .shift_loop
+	call SwapPartyMons
+	xor a
+	ret
+
+	; Shift the held mon until it's last in the party.
+.shift_loop
+	ld c, e
+	ld a, e
+	inc e
+	cp [hl]
+	ld a, 0
+	ret z
+	call SwapPartyMons
+	jr .shift_loop
+
+.box_swap
+	; Swaps 2 box pointers between box slot A in bc and slot B in de
+
+	push de ; Slot B
+	call GetStorageBoxPointer ; de = A's pointer
+	pop hl ; hl = Slot B
+
+	push bc ; Slot A
+	ld b, h
+	ld c, l ; bc = Slot B
+	push de ; A's pointer
+	call GetStorageBoxPointer ; de = B's pointer
+	ld h, d
+	ld l, e ; hl = B's pointer
+	pop de ; de = A's pointer
+	push hl
+	call SetStorageBoxPointer ; Set Slot B (bc) to have A's pointer (de)
+	pop de ; de = B's pointer
+	pop bc ; bc = Slot A
+	call SetStorageBoxPointer ; Set Slot A (bc) to have B's pointer (de)
+
+	; We're done
+	xor a
+	ret
+
+SwapPartyMons:
+; Swap 1-indexed partymon c and e. Preserves bc, de, hl.
+; TODO: this is more efficient than SwitchPartyMons, maybe make it use this.
+	push hl
+	push de
+	push bc
+	dec c
+	dec e
+	ld d, c
+
+	; Swap species in the species array
+	ld hl, wPartySpecies
+	ld bc, 1
+	call .Swap
+
+	; Swap partymon struct
+	ld hl, wPartyMon1
+	ld c, PARTYMON_STRUCT_LENGTH
+	call .Swap
+
+	; Swap nickname
+	ld hl, wPartyMonNicknames
+	ld c, MON_NAME_LENGTH
+	call .Swap
+
+	; Swap OT name
+	ld hl, wPartyMonOT
+	ld c, NAME_LENGTH
+	call .Swap
+
+	; Swap Mail
+	ld a, BANK(sPartyMon1Mail)
+	call GetSRAMBank
+	ld hl, sPartyMon1Mail
+	ld c, MAIL_STRUCT_LENGTH
+	call .Swap
+	call CloseSRAM
+	jp PopBCDEHL
+.Swap:
+; Swaps bc bytes between hl+d*bc and hl+e*bc
+	; Get pointers to swap
+	push de
+	push hl
+	ld a, d
+	rst AddNTimes
+	ld a, e
+	ld d, h
+	ld e, l
+	pop hl
+	rst AddNTimes
+	; Now hl and de points to which bytes to swap
+
+	push de
+	ld de, wSwitchMonBuffer
+	push bc
+	push hl
+	rst CopyBytes
+	pop de
+	pop bc
+	pop hl
+	push hl
+	push bc
+	rst CopyBytes
+	pop bc
+	pop de
+	ld hl, wSwitchMonBuffer
+	rst CopyBytes
+	pop de
 	ret
 
 NewStorageBoxPointer:
-; Sets bc to an unused box storage location. Clobbers wTempMon. Returns:
+; Sets bcde to an unused box storage location. Clobbers wTempMon. Returns:
 ; nc|z: Active box has free space
 ; nc|nz: Active box full, space found elsewhere
 ; c|z: Storage System filled completely.
@@ -145,8 +338,8 @@ NewStorageBoxPointer:
 	ret
 
 NewStoragePointer:
-; Sets de to an unused pokedb entry. Clobbers wTempMon. Returns c if none
-; was found.
+; Sets de to an unused pokedb entry. Returns c if none was found.
+; Preserves wTempMon.
 	; Try twice, flushing the database if the first one failed.
 	call .GetStorage
 	ret nc
@@ -157,7 +350,7 @@ NewStoragePointer:
 .outer_loop
 	ld e, 1
 .inner_loop
-	call GetStorageMon
+	call IsStorageUsed
 	jr z, .found_free_space
 	inc e
 	ld a, e
@@ -259,6 +452,19 @@ FlushStorageSystem:
 	jr nz, .set_loop
 	ret
 
+GetStorageBoxPointer:
+SetStorageBoxPointer:
+	ret
+
+AddStorageMon:
+; Adds wTempMon to storage pointed to with de. Does nothing if e is 0, meaning
+; a null entry. Returns a fatal error (crash) if the entry is occupied.
+	; Check if the entry is valid.
+	ld a, e
+	and a
+	ret z
+	ret
+
 CheckFreeDatabaseEntries:
 ; Returns amount of unused database entries left, or 255 if 255+. We don't
 ; really care if we have 255 or 314 entries left, only if we're running low.
@@ -342,29 +548,6 @@ GetBoxName:
 	ld [de], a
 	jp CloseSRAM
 
-AddStorageMon:
-; Adds wTempMon to the storage system if possible.
-; Returns z if the active box is full. Otherwise, returns nz with bcde
-; pointing towards storage box, storage slot, mondb bank, mondb entry.
-	; First check if the active box is full.
-	ld a, [wCurBox]
-	ld b, a
-	inc b
-	ld c, 1
-.loop
-	call GetStorageBoxMon
-	jr z, .location_available
-	ld a, c
-	cp MONS_PER_BOX
-	ret z
-	inc c
-	jr .loop
-
-.location_available
-	; Check if we can add a new entry
-	call NewStorageMon
-	ret z
-	; Success! Fallthrough to set box pointer
 SetBoxPointer:
 ; Set box b slot c to point to pokémon storage bank d, entry e.
 ; Returns nz (to denote success).
@@ -510,11 +693,8 @@ GetStorageBoxMon:
 	or 1
 	jp PopBCDEHL
 
-GetStorageMon:
-; Reads storage bank d, entry e and put it in wTempMon.
-; If there is a checksum error, put Bad Egg data in wTempMon instead.
-; Returns c in case of a Bad Egg, z if the requested mon doesn't exist,
-; nz|nc otherwise.
+IsStorageUsed:
+; Returns z if the given storage slot is unused. Preserves wTempMon.
 	ld a, d
 	dec a
 	ld a, BANK(sBoxMons1)
@@ -533,6 +713,26 @@ GetStorageMon:
 	ld hl, sBoxMons1UsedEntries
 	ld d, 0
 	predef FlagPredef
+	call CloseSRAM
+	jp PopBCDEHL
+
+GetStorageMon:
+; Reads storage bank d, entry e and put it in wTempMon.
+; If there is a checksum error, put Bad Egg data in wTempMon instead.
+; Returns c in case of a Bad Egg, z if the requested mon doesn't exist,
+; nz|nc otherwise.
+	ld a, d
+	dec a
+	ld a, BANK(sBoxMons1)
+	jr z, .got_bank
+	ld a, BANK(sBoxMons2)
+.got_bank
+	call GetSRAMBank
+
+	push hl
+	push de
+	push bc
+	call IsStorageUsed
 	jr z, .done ; entry not found
 
 	; Get the correct pointer

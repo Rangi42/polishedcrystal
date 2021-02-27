@@ -489,7 +489,11 @@ wTempMon:: party_struct wTempMon
 wTempMonOT:: ds NAME_LENGTH
 wTempMonNickname:: ds MON_NAME_LENGTH
 
-	ds 41 ; unused
+; Reference pointer to the pokedb, if applicable.
+wTempMonBank:: db ; 0 for party, otherwise 1-2 for pokedb bank (n/a if empty)
+wTempMonEntry:: db ; 0 for empty, otherwise 1-157 (1-6 if party)
+
+	ds 39 ; unused
 
 wOverworldMapAnchor:: dw
 wMetatileStandingY:: db

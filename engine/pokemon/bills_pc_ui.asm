@@ -1524,6 +1524,9 @@ BillsPC_PlaceHeldMon:
 	dec a
 	jr z, .swap_failed
 	ld hl, .LastPartyMon
+	dec a
+	jr z, .swap_failed
+	ld hl, .IsHoldingMail
 	; fallthrough
 .swap_failed
 	; Print error message
@@ -1566,6 +1569,11 @@ BillsPC_PlaceHeldMon:
 .LastPartyMon:
 	text "That's your last"
 	line "healthy #mon!"
+	prompt
+
+.IsHoldingMail:
+	text "Held Mail must be"
+	line "remove first."
 	prompt
 
 BillsPC_SetCursorMonIconPal:
