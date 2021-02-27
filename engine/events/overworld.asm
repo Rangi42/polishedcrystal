@@ -272,7 +272,7 @@ CutDownGrass:
 	call LoadMapPart
 	call UpdateSprites
 	call DelayFrame
-	ld a, [wBuffer6] ; Animation type (always 1)
+	ld a, 1
 	ld e, a
 	farcall OWCutAnimation
 	call BufferScreen
