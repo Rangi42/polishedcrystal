@@ -533,7 +533,6 @@ InitEggMoves:
 	call InheritLevelMove
 	pop bc
 	pop hl
-	pop de
 	jr .level_up_done_inner
 
 .level_up_done
