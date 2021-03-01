@@ -795,10 +795,8 @@ CheckNullificationAbilities:
 	jr z, .damp
 	cp SOUNDPROOF
 	jr z, .soundproof
-
-	; Non-damaging moves only work on Flash Fire and Lightning Rod
 	cp FLASH_FIRE
-	jr z, .check_others
+	jr z, .flash_fire
 	cp LIGHTNING_ROD
 	jr z, .check_others
 
@@ -840,7 +838,15 @@ CheckNullificationAbilities:
 	ld hl, SoundMoves
 	ld de, 1
 	call IsInArray
-	ret nc
+	jr c, .ability_ok
+	ret
+
+.flash_fire
+	; Also affected by status moves and Will-O-Wisp
+	ld a, BATTLE_VARS_MOVE_EFFECT
+	call GetBattleVar
+	cp EFFECT_BURN
+	jr nz, .check_others
 
 .ability_ok
 	ld a, ATKFAIL_ABILITY
