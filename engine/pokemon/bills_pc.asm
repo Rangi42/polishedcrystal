@@ -904,7 +904,10 @@ CheckFreeDatabaseEntries:
 	call GetSRAMBank
 	ld hl, sBoxMons1UsedEntries
 	ld b, (MONDB_ENTRIES + 7) / 8
-	jp CountSetBits
+	call CountSetBits
+	cpl
+	add MONDB_ENTRIES + 1
+	ret
 
 InitializeBoxes:
 ; Initializes the Storage System boxes as empty with default names.

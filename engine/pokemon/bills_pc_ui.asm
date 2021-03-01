@@ -786,6 +786,37 @@ BillsPC_SetBoxArrows:
 	ld [hl], "▶"
 	ret
 
+BillsPC_Withdraw:
+	ld b, 0
+	jr MoveCurMonToBox
+
+BillsPC_Deposit:
+	ld a, [wCurBox]
+	inc a
+	ld b, a
+	; fallthrough
+MoveCurMonToBox:
+	push bc
+	call BillsPC_GetCursorSlot
+	ld d, b
+	ld e, c
+	pop bc
+	ld c, 0
+	call BillsPC_SwapStorage
+	ret nz
+	ld a, 1
+	ldh [rVBK], a
+	ldh a, [hBGMapMode]
+	push af
+	xor a
+	ldh [hBGMapMode], a
+	call SetPartyIcons
+	call SetBoxIcons
+	pop af
+	ldh [hBGMapMode], a
+	xor a
+	ldh [rVBK], a
+	; fallthrough
 GetCursorMon:
 ; Prints data about Pokémon at cursor if nothing is held (underline to force).
 ; Returns z if cursor is on an empty pkmn slot.
@@ -1269,38 +1300,6 @@ BillsPC_MenuJumptable:
 	dw BillsPC_MoveItem
 	dw BillsPC_BagItem
 	dw BillsPC_GiveItem
-
-BillsPC_Withdraw:
-	ld b, 0
-	jr MoveCurMonToBox
-
-BillsPC_Deposit:
-	ld a, [wCurBox]
-	inc a
-	ld b, a
-	; fallthrough
-MoveCurMonToBox:
-	push bc
-	call BillsPC_GetCursorSlot
-	ld d, b
-	ld e, c
-	pop bc
-	ld c, 0
-	call BillsPC_SwapStorage
-	ret nz
-	ld a, 1
-	ldh [rVBK], a
-	ldh a, [hBGMapMode]
-	push af
-	xor a
-	ldh [hBGMapMode], a
-	call SetPartyIcons
-	call SetBoxIcons
-	pop af
-	ldh [hBGMapMode], a
-	xor a
-	ldh [rVBK], a
-	ret
 
 BillsPC_Stats:
 	ld hl, rIE
