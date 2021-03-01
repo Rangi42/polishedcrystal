@@ -493,9 +493,9 @@ NEXTU
 wEncodedTempMon:: savemon_struct wEncodedTempMon
 ENDU
 
-; Reference pointer to the pokedb, if applicable.
-wTempMonBank:: db ; 0 for party, otherwise 1-2 for pokedb bank (n/a if empty)
-wTempMonEntry:: db ; 0 for empty, otherwise 1-157 (1-6 if party)
+; Points towards box + slot if using GetStorageBoxMon. Slot set to 0 if empty.
+wTempMonBox:: db
+wTempMonSlot:: db
 
 	ds 39 ; unused
 

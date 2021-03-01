@@ -1304,7 +1304,8 @@ BillsPC_MenuJumptable:
 BillsPC_Stats:
 	ld hl, rIE
 	res LCD_STAT, [hl]
-	farcall OpenPartyStats
+
+	farcall _OpenPartyStats
 	jp BillsPC_RestoreUI
 
 BillsPC_CursorPick1:

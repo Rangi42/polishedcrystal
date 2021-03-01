@@ -632,12 +632,21 @@ MonMailAction:
 	text_end
 
 OpenPartyStats:
+; Stats screen for partymon in wCurPartyMon.
+	; Switches curpartymon to tempmon bank+entry
+	xor a
+	ld [wTempMonBox], a
+	ld a, [wCurPartyMon]
+	inc a
+	ld [wTempMonSlot], a
+	; fallthrough
+_OpenPartyStats:
+; Stats screen for any mon, as supplied by wTempMonBox+wTempMonSlot
 	call LoadStandardMenuHeader
 	call ClearSprites
-; PartyMon
-	xor a
-	ld [wMonType], a
 	call LowVolume
+	ld a, TEMPMON
+	ld [wMonType], a
 	predef StatsScreenInit
 	call MaxVolume
 	call ExitMenu

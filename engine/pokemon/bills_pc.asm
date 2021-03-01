@@ -135,7 +135,7 @@ SwapStorageBoxSlots:
 
 	; Try to allocate a new pokedb pointer, unless the party slot was empty.
 	ld de, 0 ; in case we're blanking the box slot
-	ld a, [wTempMonEntry]
+	ld a, [wTempMonSlot]
 	and a
 	call nz, NewStoragePointer
 	jr nc, .found_new_pokedb
@@ -538,8 +538,9 @@ ShiftPartySlotToEnd:
 	jr ShiftPartySlotToEnd
 
 CopyBetweenPartyAndTemp:
-; Copies partymon c (1-indexed) to temp if b is 1, or vice versa if b isn't 1.
-; Doesn't preserve registers.
+; Copies between partymon c (1-indexed) and temp. Doesn't preserve registers.
+; If bit 7 of b is set, copies between wOTPartyMons instead of wPartyMons.
+; If bit 0 of b is set, copies from party to temp, otherwise the reverse.
 	dec c
 	ld hl, wPartySpecies
 	ld de, wTempMonSpecies
@@ -564,6 +565,15 @@ CopyBetweenPartyAndTemp:
 .Copy:
 ; Copies c bytes from hl+c*a to de if b is 1, otherwise the reverse.
 	push bc
+	bit 7, b
+	jr z, .got_party
+
+	; Copies from OT party instead.
+	push bc
+	ld bc, wOTPartyMons - wPartyMons
+	add hl, bc
+	pop bc
+.got_party
 	ld b, 0
 	push af
 	rst AddNTimes
@@ -807,6 +817,8 @@ DecodeTempMon:
 	ld b, a
 	ld hl, wTempMonEVs - 1
 	ld de, wTempMonMaxHP
+	ld a, [wTempMonLevel]
+	ld [wCurPartyLevel], a
 	predef CalcPkmnStats
 
 	; Set HP to full
@@ -967,38 +979,104 @@ GetBoxName:
 	ld [de], a
 	jp CloseSRAM
 
+PrevStorageBoxMon:
+; Reads wTempMonBox+wTempMonSlot and attempts to load a previous mon.
+; Returns nz upon success, otherwise z. If there is no previous mon,
+; wTempMonBox+wTempMonSlot is unchanged.
+	push bc
+	ld a, [wTempMonSlot]
+	ld b, a
+	ld c, a
+.loop
+	dec c
+	jr z, .restore_slot
+	push bc
+	ld a, [wTempMonBox]
+	ld b, a
+	call GetStorageBoxMon
+	pop bc
+	jr nz, .done
+	jr .loop
+.restore_slot
+	ld a, b
+	ld [wTempMonSlot], a
+.done
+	pop bc
+	ret
+
+NextStorageBoxMon:
+; Reads wTempMonBox+wTempMonSlot and attempts to load a previous mon.
+; Returns nz upon success, otherwise z. If there is no previous mon,
+; wTempMonBox+wTempMonSlot is unchanged.
+	push bc
+	ld a, [wTempMonSlot]
+	ld b, a
+	ld c, a
+.loop
+	ld a, c
+	inc c
+	cp MONS_PER_BOX
+	jr z, .restore_slot
+.get_storage
+	push bc
+	ld a, [wTempMonBox]
+	ld b, a
+	call GetStorageBoxMon
+	pop bc
+	jr nz, .done
+
+	; If we're dealing with a party, we ran past the amount of mons we have.
+	ld a, [wTempMonBox]
+	and $7f
+	jr nz, .loop
+	; fallthrough
+.restore_slot
+	ld a, b
+	ld [wTempMonSlot], a
+.done
+	pop bc
+	ret
+
 GetStorageBoxMon:
 ; Reads storage bank+entry from box b slot c and put it in wTempMon.
+; This function supports handling the OT party by setting b to $80.
 ; If there is a checksum error, put Bad Egg data in wTempMon instead.
 ; Returns c in case of a Bad Egg, z if the requested mon doesn't exist,
 ; nz|nc otherwise. If b==0, read from party list. c is 1-indexed.
 	xor a
-	ld [wTempMonBank], a
-	ld [wTempMonEntry], a
+	ld [wTempMonSlot], a
 
 	; Check if we're reading party or box data.
 	ld a, b
-	and a
+	ld [wTempMonBox], a
+	and $7f
 	jr z, .read_party
 	push de
 	call GetStorageBoxPointer
 	call GetStorageMon
 	pop de
+	ret z
+	ld a, c
+	ld [wTempMonSlot], a
 	ret
 
 .read_party
+	and a
 	ld a, [wPartyCount]
+	jr z, .got_partycount
+	ld a, [wOTPartyCount]
+.got_partycount
 	cp c
 	jr nc, .party_not_empty
 	xor a
 	ret
 .party_not_empty
 	ld a, c
-	ld [wTempMonEntry], a
+	ld [wTempMonSlot], a
 	push hl
 	push de
 	push bc
-	ld b, 1
+	inc b
 	call CopyBetweenPartyAndTemp
 	or 1
 	jp PopBCDEHL
@@ -1013,11 +1091,6 @@ GetStorageMon:
 	push bc
 	call IsStorageUsed
 	jr z, .done ; entry not found
-
-	ld a, d
-	ld [wTempMonBank], a
-	ld a, e
-	ld [wTempMonEntry], a
 
 	call OpenStorageDB
 
