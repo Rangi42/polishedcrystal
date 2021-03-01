@@ -1624,29 +1624,6 @@ BillsPC_PlaceHeldMon:
 	; TODO: graphics
 	ret
 
-.MustSaveToContinue:
-	text "Save the game to"
-	line "do this?"
-	done
-
-.PartyIsFull:
-	text "The party is full."
-	prompt
-
-.BoxIsFull:
-	text "The box is full."
-	prompt
-
-.LastPartyMon:
-	text "That's your last"
-	line "healthy #mon!"
-	prompt
-
-.IsHoldingMail:
-	text "Held Mail must be"
-	line "remove first."
-	prompt
-
 BillsPC_SetCursorMonIconPal:
 ; Sets mon icon used by the cursor. Plays nice with PC hblank interrupt.
 	ld a, BANK("GBC Video")
