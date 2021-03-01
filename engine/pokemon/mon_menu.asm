@@ -633,12 +633,7 @@ MonMailAction:
 
 OpenPartyStats:
 ; Stats screen for partymon in wCurPartyMon.
-	; Switches curpartymon to tempmon bank+entry
-	xor a
-	ld [wTempMonBox], a
-	ld a, [wCurPartyMon]
-	inc a
-	ld [wTempMonSlot], a
+	call PreparePartyTempMon
 	; fallthrough
 _OpenPartyStats:
 ; Stats screen for any mon, as supplied by wTempMonBox+wTempMonSlot
@@ -771,7 +766,7 @@ ChooseMoveToDelete:
 	call LoadFontsBattleExtra
 	ld a, MOVESCREEN_DELETER
 	ld [wMoveScreenMode], a
-	call MoveScreenLoop
+	call MoveScreen
 	pop bc
 	push af
 	ld a, b
@@ -789,7 +784,7 @@ ChooseMoveToForget:
 	call LoadFontsBattleExtra
 	ld a, MOVESCREEN_NEWMOVE
 	ld [wMoveScreenMode], a
-	call MoveScreenLoop
+	call MoveScreen
 	pop bc
 	push af
 	ld a, b
@@ -833,7 +828,7 @@ ChooseMoveToRelearn:
 	call LoadFontsBattleExtra
 	ld a, MOVESCREEN_REMINDER
 	ld [wMoveScreenMode], a
-	call MoveScreenLoop
+	call MoveScreen
 	pop bc
 	push af
 	ld a, b
@@ -855,7 +850,19 @@ ChooseMoveToRelearn:
 	pop af
 	ret
 
+PreparePartyTempMon:
+; Switches curpartymon to tempmon box+slot
+	xor a
+	ld [wTempMonBox], a
+	ld a, [wCurPartyMon]
+	inc a
+	ld [wTempMonSlot], a
+	ret
+
 ManagePokemonMoves:
+	call PreparePartyTempMon
+	; fallthrough
+_ManagePokemonMoves:
 	ld a, MON_IS_EGG
 	call GetPartyParamLocation
 	bit MON_IS_EGG_F, [hl]
@@ -875,11 +882,23 @@ ManagePokemonMoves:
 	xor a
 	ret
 
+MoveScreen:
+	call PreparePartyTempMon
+	; fallthrough
 MoveScreenLoop:
 ; Returns:
 ; a = >0: f = nc|nz; selected move (index in wMoveScreenSelectedMove)
 ; a =  0: f = nc|z;  user pressed B
 ;         f = c;     no options existed, move screen was aborted early
+	ld a, [wTempMonBox]
+	ld b, a
+	ld a, [wTempMonSlot]
+	ld c, a
+
+	; Update this in case we switched to a different mon.
+	dec a
+	ld [wCurPartyMon], a
+	farcall GetStorageBoxMon
 	xor a
 	ld [wMoveScreenSelectedMove], a
 	ld [wMoveScreenCursor], a
@@ -900,8 +919,7 @@ MoveScreenLoop:
 
 	; Copy over moves from the party struct
 	ld bc, NUM_MOVES
-	ld a, MON_MOVES
-	call GetPartyParamLocation
+	ld hl, wTempMonMoves
 	ld de, wMoveScreenMoves
 .movecopy_loop
 	ld a, [hli]
@@ -1036,36 +1054,23 @@ MoveScreenLoop:
 	ld a, 3
 	jp .update_screen_cursor
 .species_right
-	ld a, [wPartyCount]
-	ld d, a
-	ld a, [wCurPartyMon]
-	dec d
-	cp d
-	jp z, .loop
+	ld a, [wTempMonSlot]
+	ld c, a
 .loop_right
-	inc a
-	ld d, a
-	ld bc, PARTYMON_STRUCT_LENGTH
-	ld hl, wPartyMon1IsEgg
-	rst AddNTimes
-	ld a, [hl]
-	and IS_EGG_MASK
-	ld a, d
-	jr nz, .loop_right_invalid
-	ld hl, wPartyMon1Species
-	rst AddNTimes
-	ld a, [hl]
-	call IsAPokemon
-	ld a, d
-	jr c, .loop_right_invalid
-	ld [wCurPartyMon], a
-	jp MoveScreenLoop
-.loop_right_invalid
-	ld a, [wPartyCount]
-	dec a
-	cp d
-	ld a, d
-	jp z, .loop
+	push bc
+	farcall NextStorageBoxMon
+	pop bc
+	jr nz, .check_right
+
+	; There's no (non-Egg) mons afterwards, so revert wTempMon to what it was.
+	ld a, [wTempMonBox]
+	ld b, a
+	farcall GetStorageBoxMon
+	jp .loop
+.check_right
+	ld a, [wTempMonIsEgg]
+	bit MON_IS_EGG_F, a
+	jp z, MoveScreenLoop
 	jr .loop_right
 .pressed_left
 	ld a, [wMoveScreenMode]
@@ -1077,30 +1082,23 @@ MoveScreenLoop:
 	xor a
 	jr .update_screen_cursor
 .species_left
-	ld a, [wCurPartyMon]
-	and a
-	jp z, .loop
+	ld a, [wTempMonSlot]
+	ld c, a
 .loop_left
-	dec a
-	ld d, a
-	ld bc, PARTYMON_STRUCT_LENGTH
-	ld hl, wPartyMon1IsEgg
-	rst AddNTimes
-	ld a, [hl]
-	and IS_EGG_MASK
-	ld a, d
-	jr nz, .loop_left_invalid
-	ld hl, wPartyMon1Species
-	rst AddNTimes
-	ld a, [hl]
-	call IsAPokemon
-	ld a, d
-	jr c, .loop_left_invalid
-	ld [wCurPartyMon], a
-	jp MoveScreenLoop
-.loop_left_invalid
-	and a
-	jp z, .loop
+	push bc
+	farcall PrevStorageBoxMon
+	pop bc
+	jr nz, .check_left
+
+	; There's no previous (non-Egg) mons, so revert wTempMon to what it was.
+	ld a, [wTempMonBox]
+	ld b, a
+	farcall GetStorageBoxMon
+	jp .loop
+.check_left
+	ld a, [wTempMonIsEgg]
+	bit MON_IS_EGG_F, a
+	jp z, MoveScreenLoop
 	jr .loop_left
 .pressed_up
 	ld a, [wMoveScreenCursor]
@@ -1174,12 +1172,24 @@ MoveScreenLoop:
 	jr .finish_swap
 
 .regular_swap_move
-	ld a, MON_MOVES
-	call GetPartyParamLocation
+	ld hl, wTempMonMoves
 	call .swap_location
-	ld a, MON_PP
-	call GetPartyParamLocation
+	ld hl, wTempMonPP
 	call .swap_location
+.storage_swap_loop
+	farcall UpdateStorageBoxMonFromTemp
+	jr z, .finish_swap
+
+	; undo the swap
+	ld hl, wTempMonMoves
+	call .swap_location
+	ld hl, wTempMonPP
+	call .swap_location
+	ld hl, .MustSaveFirst
+	call PrintTextNoBox
+	xor a
+	ld [wMoveSwapBuffer], a
+	jp .outer_loop
 
 .finish_swap
 	ld hl, wMoveScreenMoves
@@ -1214,6 +1224,11 @@ MoveScreenLoop:
 	ld a, b
 	ld [de], a
 	ret
+
+.MustSaveFirst:
+	text "Please save the"
+	line "game first."
+	prompt
 
 GetForgottenMoves::
 ; retrieve a list of a mon's forgotten moves, excluding ones beyond level
@@ -1317,13 +1332,10 @@ SetUpMoveScreenBG:
 	call GetCGBLayout
 	call LoadFontsBattleExtra
 	call ClearSpriteAnims2
-	ld a, [wCurPartyMon]
-	ld e, a
-	ld d, $0
-	ld hl, wPartySpecies
-	add hl, de
-	ld a, [hl]
+	ld a, [wTempMonSpecies]
 	ld [wd265], a
+	ld a, [wTempMonForm]
+	ld [wCurForm], a
 	farcall LoadMoveMenuMonIcon
 	hlcoord 0, 1
 	lb bc, 9, 18
@@ -1334,16 +1346,11 @@ SetUpMoveScreenBG:
 	hlcoord 2, 0
 	lb bc, 2, 3
 	call ClearBox
-	xor a
-	ld [wMonType], a
-	ld hl, wPartyMonNicknames
-	ld a, [wCurPartyMon]
-	call GetNick
+	ld de, wTempMonNickname
 	hlcoord 5, 1
 	rst PlaceString
-	push bc
-	farcall CopyPkmnToTempMon
-	pop hl
+	ld h, b
+	ld l, c
 	call PrintLevel
 	call SetPalettes
 	hlcoord 16, 0

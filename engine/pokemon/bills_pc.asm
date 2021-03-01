@@ -445,6 +445,30 @@ GetStorageBoxPointer:
 	pop hl
 	jp CloseSRAM
 
+UpdateStorageBoxMonFromTemp:
+; Updates storage pointed to by wTempMonBox+wTempMonSlot with content in
+; wTempMon. If this is part of a Box, this allocates a new entry.
+; Returns z if successful.
+	; Just run a simple copy if we're updating the party.
+	ld a, [wTempMonSlot]
+	ld c, a
+	ld a, [wTempMonBox]
+	and a
+	ld b, a
+	jp z, CopyBetweenPartyAndTemp
+
+	; Otherwise, we need to allocate a new box entry.
+	push bc
+	call NewStoragePointer
+	pop bc
+	sbc a ; converts nc|c to nz|z
+	ret nz
+
+	call AddStorageMon
+	call SetStorageBoxPointer
+	xor a
+	ret
+
 SetStorageBoxPointer:
 ; Sets box b slot c to have storage pointer de. If bc is a party slot, will
 ; fill it with the pokedb entry in de, or empty the slot (potentially shifting
@@ -1005,8 +1029,8 @@ PrevStorageBoxMon:
 	ret
 
 NextStorageBoxMon:
-; Reads wTempMonBox+wTempMonSlot and attempts to load a previous mon.
-; Returns nz upon success, otherwise z. If there is no previous mon,
+; Reads wTempMonBox+wTempMonSlot and attempts to load the next mon.
+; Returns nz upon success, otherwise z. If there is no next mon,
 ; wTempMonBox+wTempMonSlot is unchanged.
 	push bc
 	ld a, [wTempMonSlot]

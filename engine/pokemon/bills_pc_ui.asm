@@ -1420,7 +1420,14 @@ BillsPC_AbortSelection:
 	ret
 
 BillsPC_Moves:
-	ret
+	ld hl, rIE
+	res LCD_STAT, [hl]
+
+	call LoadStandardMenuHeader
+	call ClearSprites
+	farcall _ManagePokemonMoves
+	call ExitMenu
+	jp BillsPC_RestoreUI
 
 BillsPC_GiveItem:
 BillsPC_MoveItem:
