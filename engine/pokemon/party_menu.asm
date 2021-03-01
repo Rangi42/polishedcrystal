@@ -166,14 +166,7 @@ BT_PartySelect:
 	prompt
 
 .Stats:
-	call LoadStandardMenuHeader
-	call ClearSprites
-	xor a ; PARTYMON
-	ld [wMonType], a
-	call LowVolume
-	predef StatsScreenInit
-	call MaxVolume
-	call ExitMenu
+	farcall OpenPartyStats
 	jp .loop
 
 .Moves:

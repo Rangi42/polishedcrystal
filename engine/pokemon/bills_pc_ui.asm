@@ -1419,6 +1419,8 @@ BillsPC_AbortSelection:
 	ret
 
 BillsPC_Moves:
+	ret
+
 BillsPC_GiveItem:
 BillsPC_MoveItem:
 BillsPC_BagItem:
@@ -1667,7 +1669,10 @@ BillsPC_RestoreUI:
 
 	ld a, CGB_BILLS_PC
 	call GetCGBLayout
-	jp SetPalettes
+	call SetPalettes
+	ld a, 1
+	ldh [hBGMapMode], a
+	ret
 
 BillsPC_CursorPosValid:
 ; Returns z if the cursor position is valid
