@@ -1271,15 +1271,42 @@ BillsPC_MenuJumptable:
 	dw BillsPC_GiveItem
 
 BillsPC_Withdraw:
+	ld b, 0
+	jr MoveCurMonToBox
+
 BillsPC_Deposit:
+	ld a, [wCurBox]
+	inc a
+	ld b, a
+	; fallthrough
+MoveCurMonToBox:
+	push bc
+	call BillsPC_GetCursorSlot
+	ld d, b
+	ld e, c
+	pop bc
+	ld c, 0
+	call BillsPC_SwapStorage
+	ret nz
+	ld a, 1
+	ldh [rVBK], a
+	ldh a, [hBGMapMode]
+	push af
+	xor a
+	ldh [hBGMapMode], a
+	call SetPartyIcons
+	call SetBoxIcons
+	pop af
+	ldh [hBGMapMode], a
+	xor a
+	ldh [rVBK], a
 	ret
 
 BillsPC_Stats:
 	ld hl, rIE
 	res LCD_STAT, [hl]
 	farcall OpenPartyStats
-	call BillsPC_RestoreUI
-	ret
+	jp BillsPC_RestoreUI
 
 BillsPC_CursorPick1:
 ; Plays the first part of the cursor pickup animation
@@ -1372,7 +1399,7 @@ BillsPC_AbortSelection:
 
 	; Blank the cursor sprite
 	ld a, 1
-	ld [rVBK], a
+	ldh [rVBK], a
 	ld hl, vTiles3 + 8 tiles
 	call BillsPC_BlankTiles
 
@@ -1389,7 +1416,7 @@ BillsPC_AbortSelection:
 	ld [wBillsPC_CursorAnimFlag], a
 
 	xor a
-	ld [rVBK], a
+	ldh [rVBK], a
 	ret
 
 BillsPC_Moves:
@@ -1505,16 +1532,15 @@ BillsPC_GetCursorFromTo:
 	ld e, c
 	jp BillsPC_GetCursorSlot
 
-BillsPC_PlaceHeldMon:
-; Places held mon at the current cursor location. Might perform swaps, or even
-; be aborted, depending on circumstances.
-	; Get source in de and destination in bc.
-	call BillsPC_GetCursorFromTo
+BillsPC_SwapStorage:
+; Swaps slots bc and de. Returns z on success.
+	push de
+	push bc
 
 	; Try to swap slots bc and de and interpret result.
 	call SwapStorageBoxSlots
 	and a
-	jr z, .success
+	jr z, .done
 	sub 2
 	ld hl, .MustSaveToContinue
 	jr c, .swap_failed
@@ -1538,19 +1564,65 @@ BillsPC_PlaceHeldMon:
 	jr nc, .menutext_abort
 
 	call YesNoBox
-	push af
-	call .menutext_abort
-	pop af
-	ret c
+	jr c, .menutext_abort
 
 	; Just re-run this function.
-	jr BillsPC_PlaceHeldMon
+	farcall ForceGameSave
+	ld hl, .GameSaved
+	call PrintText
+	call BillsPC_UpdateCursorLocation
+	call CloseWindow
+	pop bc
+	pop de
+	jr BillsPC_SwapStorage
 .menutext_abort
 	call BillsPC_UpdateCursorLocation
-	jp CloseWindow
+	call CloseWindow
+.abort
+	or 1
+.done
+	pop bc
+	pop de
+	ret
 
-.success
-	; TODO
+.MustSaveToContinue:
+	text "Save the game to"
+	line "do this?"
+	done
+
+.PartyIsFull:
+	text "The party is full."
+	prompt
+
+.BoxIsFull:
+	text "The box is full."
+	prompt
+
+.LastPartyMon:
+	text "That's your last"
+	line "healthy #mon!"
+	prompt
+
+.IsHoldingMail:
+	text "Held Mail must be"
+	line "remove first."
+	prompt
+
+.GameSaved:
+	text_jump _SavedTheGameText
+	text_end
+
+BillsPC_PlaceHeldMon:
+; Places held mon at the current cursor location. Might perform swaps, or even
+; be aborted, depending on circumstances.
+	; Get source in de and destination in bc.
+	call BillsPC_GetCursorFromTo
+
+	; Try to swap slots bc and de and interpret result.
+	call BillsPC_SwapStorage
+	ret nz
+
+	; TODO: graphics
 	ret
 
 .MustSaveToContinue:
