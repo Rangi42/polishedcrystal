@@ -738,7 +738,7 @@ DecodeTempMon:
 
 	; Move extra data back
 	ld hl, wEncodedTempMonExtra
-	ld hl, wTempMonOT + PLAYER_NAME_LENGTH
+	ld de, wTempMonOT + PLAYER_NAME_LENGTH
 	ld bc, 3
 	rst CopyBytes
 
@@ -749,25 +749,29 @@ DecodeTempMon:
 	ld a, [hl]
 	or $80
 	sub $fa
-	ld d, " "
+	ld c, " "
 	jr z, .replace
 	dec a
-	ld d, "@"
+	ld c, "@"
 	jr z, .replace
 	dec a
-	ld d, 0
+	ld c, 0
 	jr z, .replace
-	ld d, [hl]
+
+	; Reverse the previous decrements
+	add $fc
+	ld c, a
 .replace
-	ld [hl], d
+	ld [hl], c
+	inc hl
 	dec b
 	jr nz, .charmap_loop
 
 	; Copy nick and OT back to its original place. We need to do this backwards
 	; due to overlap between wEncodedTempMon(Nick|OT) and wTempMon(Nick|OT).
-	ld hl, wEncodedTempMonOT + PLAYER_NAME_LENGTH - 1
-	ld de, wTempMonOT + PLAYER_NAME_LENGTH
-	lb bc, 1, PLAYER_NAME_LENGTH - 1
+	ld hl, wEncodedTempMonOT + PLAYER_NAME_LENGTH - 2
+	ld de, wTempMonOT + PLAYER_NAME_LENGTH - 1
+	lb bc, 2, PLAYER_NAME_LENGTH - 1
 
 .outer_loop
 	ld a, "@"
@@ -782,6 +786,7 @@ DecodeTempMon:
 
 	; If this is the first time we leave the loop, do mon nickname now.
 	dec b
+	ld de, wTempMonNickname + MON_NAME_LENGTH - 1
 	ld c, MON_NAME_LENGTH - 1
 	jr nz, .outer_loop
 
