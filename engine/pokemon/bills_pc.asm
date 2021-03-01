@@ -515,7 +515,7 @@ SetStorageBoxPointer:
 	; If this slot was previously empty, we'll append it to the party end.
 	ld a, [wPartyCount]
 	cp c
-	jr c, .partyslot_not_empty
+	jr nc, .partyslot_not_empty
 	inc a
 	ld c, a
 	ld [wPartyCount], a
