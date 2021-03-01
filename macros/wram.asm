@@ -43,8 +43,10 @@ ENDM
 savemon_struct: MACRO
 ; game logic relies on nick being after boxmon and ot being after nick
 	box_struct \1
-\1Nick::           ds NAME_LENGTH - 1
-\1OT::             ds NAME_LENGTH - 1
+\1Extra::          ds 3 ; superfluous OT name bytes
+\1Nick::           ds MON_NAME_LENGTH - 1
+\1OT::             ds PLAYER_NAME_LENGTH - 1
+\1EncodeEnd::
 ENDM
 
 pokedb: MACRO

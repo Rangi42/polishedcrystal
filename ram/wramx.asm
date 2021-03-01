@@ -485,9 +485,13 @@ wBGMapAnchor:: dw
 
 wOldTileset:: db
 
+UNION
 wTempMon:: party_struct wTempMon
-wTempMonOT:: ds NAME_LENGTH
 wTempMonNickname:: ds MON_NAME_LENGTH
+wTempMonOT:: ds NAME_LENGTH
+NEXTU
+wEncodedTempMon:: savemon_struct wEncodedTempMon
+ENDU
 
 ; Reference pointer to the pokedb, if applicable.
 wTempMonBank:: db ; 0 for party, otherwise 1-2 for pokedb bank (n/a if empty)

@@ -56,8 +56,14 @@ BSOD:
 	dec a ; a == ERR_STACK_UNDERFLOW?
 	ld de, .StackUnderflow
 	jr z, .PrintErrorType
-	dec a ; a == ERR_STACK_UNDERFLOW?
+	dec a ; a == ERR_BT_STATE?
 	ld de, .BTOldSave
+	jr z, .PrintErrorType
+	dec a ; a == ERR_OLDBOX?
+	ld de, .OldBox
+	jr z, .PrintErrorType
+	dec a ; a == ERR_NEWBOX?
+	ld de, .NewBox
 	jr z, .PrintErrorType
 	ld de, .UnknownError
 .PrintErrorType
@@ -136,6 +142,12 @@ endc
 
 .BTOldSave:
 	db "Old save@"
+
+.OldBox:
+	db "Using oldbox@"
+
+.NewBox:
+	db "Fatal box error@"
 
 .UnknownError:
 	db "Unknown error@"

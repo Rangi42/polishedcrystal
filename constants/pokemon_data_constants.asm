@@ -110,7 +110,7 @@ MON_SAT                  EQUS "(wPartyMon1SpclAtk - wPartyMon1)"
 MON_SDF                  EQUS "(wPartyMon1SpclDef - wPartyMon1)"
 BOXMON_STRUCT_LENGTH     EQUS "(wPartyMon1End - wPartyMon1)"
 PARTYMON_STRUCT_LENGTH   EQUS "(wPartyMon1StatsEnd - wPartyMon1)"
-SAVEMON_STRUCT_LENGTH    EQUS "BOXMON_STRUCT_LENGTH + (NAME_LENGTH - 1) * 2"
+SAVEMON_STRUCT_LENGTH    EQUS "(wEncodedTempMonEncodeEnd - wEncodedTempMon)"
 
 ; apply to MON_FORM
 SHINY_MASK      EQU %10000000
