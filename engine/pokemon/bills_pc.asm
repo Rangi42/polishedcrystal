@@ -383,7 +383,7 @@ FlushStorageSystem:
 	ld c, 1
 .inner_loop
 	call GetStorageBoxPointer
-	call AllocateStorageFlag
+	call _AllocateStorageFlag
 	ld a, c
 	inc c
 	cp MONS_PER_BOX
@@ -917,12 +917,35 @@ SetBadEgg:
 .BadEgg:
 	rawchar "Bad Egg@"
 
+EnsureStorageSpace:
+; Returns z if we have at least a unallocated pokedb entries left. This exists
+; because flushing incurs a significant performance penalty, so this function
+; avoids it when checking storage if we can get away with it.
+	ld b, a
+
+	; First, check if we have enough entries without flushing.
+	push bc
+	call _CheckFreeDatabaseEntries
+	pop bc
+	cp b
+	sbc a
+	ret z
+
+	; Try again, this time with flushing.
+	push bc
+	call CheckFreeDatabaseEntries
+	pop bc
+	cp b
+	sbc a
+	ret
+
 CheckFreeDatabaseEntries:
 ; Returns amount of unused database entries left, or 255 if 255+. We don't
 ; really care if we have 255 or 314 entries left, only if we're running low.
 	; Flush the storage system of duplicate entries.
 	call FlushStorageSystem
-
+	; fallthrough
+_CheckFreeDatabaseEntries:
 	; Now, count used entries.
 	ld a, BANK(sBoxMons1)
 	call .CountEntries

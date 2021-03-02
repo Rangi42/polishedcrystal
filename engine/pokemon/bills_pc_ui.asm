@@ -598,7 +598,12 @@ _SetBoxIcons:
 PCIconLoop:
 	call GetStorageBoxMon
 	jr z, .next
+	ld a, [wTempMonIsEgg]
+	bit MON_IS_EGG_F, a
 	ld a, [wTempMon]
+	jr z, .got_curicon
+	ld a, EGG
+.got_curicon
 	ld [wCurIcon], a
 	ld [hli], a
 	ld a, [wTempMonForm]
@@ -1429,10 +1434,81 @@ BillsPC_Moves:
 	call ExitMenu
 	jp BillsPC_RestoreUI
 
-BillsPC_GiveItem:
-BillsPC_MoveItem:
-BillsPC_BagItem:
+BillsPC_GetStorageSpace:
+; Forces game save until we have at least a free pokedb entries left.
+; Returns nz if we abort the prompt with insufficient storage space left.
+	ld b, a
+.loop
+	ld a, b
+	push bc
+	farcall EnsureStorageSpace
+	pop bc
+	ret z
+
+	push bc
+	ld hl, BillsPC_MustSaveToContinue
+	call MenuTextbox
+	call YesNoBox
+	push af
+	jr c, .menutext_abort
+	farcall ForceGameSave
+	ld hl, BillsPC_GameSaved
+	call PrintText
+	; fallthrough
+.menutext_abort
+	call BillsPC_UpdateCursorLocation
+	call CloseWindow
+	pop af
+	pop bc
+	jr nc, .loop
+	or 1
 	ret
+
+BillsPC_GiveItem:
+	ret
+
+BillsPC_MoveItem:
+	ret
+
+BillsPC_BagItem:
+	; If we're dealing with a Box mon, we must have at least 1 free pokedb
+	; entry.
+	call BillsPC_GetCursorSlot
+	ld a, b
+	and a
+	jr z, .entries_not_full
+
+	ld a, 1
+	call BillsPC_GetStorageSpace
+	ret nz
+
+.entries_not_full
+	ld a, [wTempMonItem]
+	ld [wCurItem], a
+	ld a, 1
+	ld [wItemQuantityChangeBuffer], a
+	ld hl, wNumItems
+	call ReceiveItem
+	ld hl, .PackFullText
+	jr nc, .print
+	xor a
+	ld [wTempMonItem], a
+	farcall UpdateStorageBoxMonFromTemp
+	call GetCursorMon
+	ld hl, .MovedToPackText
+.print
+	call MenuTextbox
+	call BillsPC_UpdateCursorLocation
+	jp CloseWindow
+
+.PackFullText:
+	text "The Pack is full…"
+	prompt
+
+.MovedToPackText:
+	text "Moved item to Bag."
+	prompt
+
 
 BillsPC_Menu:
 ; hl: menu data header, b: amount of menus to close
@@ -1551,7 +1627,7 @@ BillsPC_SwapStorage:
 	and a
 	jr z, .done
 	sub 2
-	ld hl, .MustSaveToContinue
+	ld hl, BillsPC_MustSaveToContinue
 	jr c, .swap_failed
 	ld hl, .PartyIsFull
 	jr z, .swap_failed
@@ -1577,7 +1653,7 @@ BillsPC_SwapStorage:
 
 	; Just re-run this function.
 	farcall ForceGameSave
-	ld hl, .GameSaved
+	ld hl, BillsPC_GameSaved
 	call PrintText
 	call BillsPC_UpdateCursorLocation
 	call CloseWindow
@@ -1593,11 +1669,6 @@ BillsPC_SwapStorage:
 	pop bc
 	pop de
 	ret
-
-.MustSaveToContinue:
-	text "Save the game to"
-	line "do this?"
-	done
 
 .PartyIsFull:
 	text "The party is full."
@@ -1617,7 +1688,12 @@ BillsPC_SwapStorage:
 	line "remove first."
 	prompt
 
-.GameSaved:
+BillsPC_MustSaveToContinue:
+	text "Save the game to"
+	line "do this?"
+	done
+
+BillsPC_GameSaved:
 	text_jump _SavedTheGameText
 	text_end
 
