@@ -45,7 +45,7 @@ OddEgg1:
 	bigdw 6 ; Spd
 	bigdw 6 ; SAtk
 	bigdw 6 ; SDef
-	db "Egg@@@@@@@@"
+	rawchar "Egg@@@@@@@@"
 
 OddEgg2:
 	db PICHU
@@ -69,7 +69,7 @@ OddEgg2:
 	bigdw 6 ; Spd
 	bigdw 6 ; SAtk
 	bigdw 6 ; SDef
-	db "Egg@@@@@@@@"
+	rawchar "Egg@@@@@@@@"
 
 	db MAGBY
 	db NO_ITEM
@@ -92,7 +92,7 @@ OddEgg2:
 	bigdw 6 ; Spd
 	bigdw 6 ; SAtk
 	bigdw 6 ; SDef
-	db "Egg@@@@@@@@"
+	rawchar "Egg@@@@@@@@"
 
 	db MAGBY
 	db NO_ITEM
@@ -115,7 +115,7 @@ OddEgg2:
 	bigdw 6 ; Spd
 	bigdw 6 ; SAtk
 	bigdw 6 ; SDef
-	db "Egg@@@@@@@@"
+	rawchar "Egg@@@@@@@@"
 
 	db ELEKID
 	db NO_ITEM
@@ -138,7 +138,7 @@ OddEgg2:
 	bigdw 7 ; Spd
 	bigdw 6 ; SAtk
 	bigdw 6 ; SDef
-	db "Egg@@@@@@@@"
+	rawchar "Egg@@@@@@@@"
 
 	db ELEKID
 	db NO_ITEM
@@ -161,7 +161,7 @@ OddEgg2:
 	bigdw 7 ; Spd
 	bigdw 6 ; SAtk
 	bigdw 6 ; SDef
-	db "Egg@@@@@@@@"
+	rawchar "Egg@@@@@@@@"
 
 	db TYROGUE
 	db NO_ITEM
@@ -184,7 +184,7 @@ OddEgg2:
 	bigdw 5 ; Spd
 	bigdw 6 ; SAtk
 	bigdw 6 ; SDef
-	db "Egg@@@@@@@@"
+	rawchar "Egg@@@@@@@@"
 
 	db TYROGUE
 	db NO_ITEM
@@ -207,7 +207,7 @@ OddEgg2:
 	bigdw 5 ; Spd
 	bigdw 6 ; SAtk
 	bigdw 6 ; SDef
-	db "Egg@@@@@@@@"
+	rawchar "Egg@@@@@@@@"
 
 	db MUNCHLAX
 	db NO_ITEM
@@ -230,7 +230,7 @@ OddEgg2:
 	bigdw 5 ; Spd
 	bigdw 6 ; SAtk
 	bigdw 7 ; SDef
-	db "Egg@@@@@@@@"
+	rawchar "Egg@@@@@@@@"
 
 	db MUNCHLAX
 	db NO_ITEM
@@ -253,7 +253,7 @@ OddEgg2:
 	bigdw 5 ; Spd
 	bigdw 6 ; SAtk
 	bigdw 7 ; SDef
-	db "Egg@@@@@@@@"
+	rawchar "Egg@@@@@@@@"
 
 MystriEgg:
 	db TOGEPI
@@ -277,4 +277,4 @@ MystriEgg:
 	bigdw 5 ; Spd
 	bigdw 6 ; SAtk
 	bigdw 6 ; SDef
-	db "Egg@@@@@@@@"
+	rawchar "Egg@@@@@@@@"

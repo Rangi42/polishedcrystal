@@ -643,7 +643,7 @@ SentGetPkmnIntoFromBox:
 ; wPokemonWithdrawDepositParameter == 3: put Pkmn into DayCare
 	; Failsafe: never allow writing $ff to species bytes
 	ld a, [wCurPartySpecies]
-	cp EGG
+	inc a ; cp EGG
 	jr nz, .species_valid
 	ld a, ERR_EGG_SPECIES
 	jp Crash
