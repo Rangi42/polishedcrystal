@@ -469,6 +469,10 @@ UpdateStorageBoxMonFromTemp:
 	xor a
 	ret
 
+RemoveStorageBoxMon:
+; Erases box b slot c. Done by simply just setting it to a null entry.
+	ld e, 0
+	; fallthrough
 SetStorageBoxPointer:
 ; Sets box b slot c to have storage pointer de. If bc is a party slot, will
 ; fill it with the pokedb entry in de, or empty the slot (potentially shifting

@@ -1703,6 +1703,15 @@ BillsPC_Item:
 	db -1
 
 BillsPC_Release:
+	; Don't allow releasing the last healthy mon.
+	call BillsPC_GetCursorSlot
+	ld a, c
+	dec a
+	ld [wCurPartyMon], a
+	farcall CheckCurPartyMonFainted
+	ld hl, BillsPC_LastPartyMon
+	jr c, .print
+
 	; Don't allow releasing the mon if it has HMs.
 	ld hl, wTempMonMoves
 	ld b, NUM_MOVES
@@ -1736,8 +1745,7 @@ BillsPC_Release:
 
 	; Then release the mon.
 	call BillsPC_GetCursorSlot
-	ld e, 0
-	farcall SetStorageBoxPointer
+	farcall RemoveStorageBoxMon
 
 	; Print message and reload current cursor mon.
 	ld hl, .WasReleasedOutside
@@ -1749,6 +1757,7 @@ BillsPC_Release:
 
 .found_hm
 	ld hl, .ItRefusedToGo
+.print
 	jp BillsPC_PrintText
 
 .ItRefusedToGo:
@@ -1800,7 +1809,7 @@ BillsPC_SwapStorage:
 	ld hl, .BoxIsFull
 	dec a
 	jr z, .swap_failed
-	ld hl, .LastPartyMon
+	ld hl, BillsPC_LastPartyMon
 	dec a
 	jr z, .swap_failed
 	ld hl, .IsHoldingMail
@@ -1844,14 +1853,14 @@ BillsPC_SwapStorage:
 	text "The box is full."
 	prompt
 
-.LastPartyMon:
-	text "That's your last"
-	line "healthy #mon!"
-	prompt
-
 .IsHoldingMail:
 	text "Held Mail must be"
 	line "remove first."
+	prompt
+
+BillsPC_LastPartyMon:
+	text "That's your last"
+	line "healthy #mon!"
 	prompt
 
 BillsPC_MustSaveToContinue:
