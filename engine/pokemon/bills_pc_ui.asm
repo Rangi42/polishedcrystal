@@ -1585,23 +1585,24 @@ BillsPC_BagItem:
 	ld [wItemQuantityChangeBuffer], a
 	ld hl, wNumItems
 	call ReceiveItem
-	ld hl, .PackFullText
-	jr nc, .print
+	ld hl, BillsPC_PackFullText
+	jr nc, BillsPC_PrintText
 	xor a
 	ld [wTempMonItem], a
 	farcall UpdateStorageBoxMonFromTemp
 	call GetCursorMon
-	ld hl, .MovedToPackText
-.print
+	ld hl, BillsPC_MovedToPackText
+	; fallthrough
+BillsPC_PrintText:
 	call MenuTextbox
 	call BillsPC_UpdateCursorLocation
 	jp CloseWindow
 
-.PackFullText:
+BillsPC_PackFullText:
 	text "The Pack is full…"
 	prompt
 
-.MovedToPackText:
+BillsPC_MovedToPackText:
 	text "Moved item to Bag."
 	prompt
 
@@ -1702,6 +1703,75 @@ BillsPC_Item:
 	db -1
 
 BillsPC_Release:
+	; Don't allow releasing the mon if it has HMs.
+	ld hl, wTempMonMoves
+	ld b, NUM_MOVES
+.loop
+	ld a, [hli]
+	and a
+	jr z, .no_hms
+	push hl
+	push bc
+	ld hl, HMMoves
+	ld de, 1
+	call IsInArray
+	pop bc
+	pop hl
+	jr c, .found_hm
+	dec b
+	jr nz, .loop
+
+.no_hms
+	ld hl, .ReallyReleaseMon
+	call MenuTextbox
+	call YesNoBox
+	jr c, .done
+
+	; Copy mon nick to a string buffer, since SetStorageBoxPointer might
+	; mangle wTempMon.
+	ld hl, wTempMonNickname
+	ld de, wStringBuffer1
+	ld bc, MON_NAME_LENGTH
+	rst CopyBytes
+
+	; Then release the mon.
+	call BillsPC_GetCursorSlot
+	ld e, 0
+	farcall SetStorageBoxPointer
+
+	; Print message and reload current cursor mon.
+	ld hl, .WasReleasedOutside
+	call PrintText
+	call GetCursorMon
+.done
+	call BillsPC_UpdateCursorLocation
+	jp CloseWindow
+
+.found_hm
+	ld hl, .ItRefusedToGo
+	jp BillsPC_PrintText
+
+.ItRefusedToGo:
+	text "It refused to go!"
+	prompt
+
+.ReallyReleaseMon:
+	text "Really release"
+	line ""
+	text_from_ram wTempMonNickname
+	text "?"
+	done
+
+.WasReleasedOutside:
+	text ""
+	text_from_ram wStringBuffer1
+	text " was"
+	line "released outside."
+	cont "Bye, "
+	text_from_ram wStringBuffer1
+	text "!"
+	prompt
+
 BillsPC_SwitchBox:
 BillsPC_Rename:
 	ret
