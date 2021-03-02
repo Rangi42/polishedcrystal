@@ -1704,6 +1704,7 @@ BillsPC_Item:
 
 BillsPC_Release:
 	; Don't allow releasing the last healthy mon.
+	call BillsPC_HideCursor
 	call BillsPC_GetCursorSlot
 	ld a, c
 	dec a
@@ -1711,6 +1712,10 @@ BillsPC_Release:
 	farcall CheckCurPartyMonFainted
 	ld hl, BillsPC_LastPartyMon
 	jr c, .print
+	ld a, [wTempMonIsEgg]
+	bit MON_IS_EGG_F, a
+	ld hl, .CantReleaseEgg
+	jr nz, .print
 
 	; Don't allow releasing the mon if it has HMs.
 	ld hl, wTempMonMoves
@@ -1759,6 +1764,11 @@ BillsPC_Release:
 	ld hl, .ItRefusedToGo
 .print
 	jp BillsPC_PrintText
+
+.CantReleaseEgg:
+	text "You can't release"
+	line "an Egg!"
+	prompt
 
 .ItRefusedToGo:
 	text "It refused to go!"
