@@ -1177,6 +1177,7 @@ ManageBoxes:
 
 .prepare_menu
 	; check if we're in party or storage
+	ld a, [wBillsPC_CursorPos]
 	and $f
 	cp $2
 	ld hl, .PartyMonMenu
@@ -1665,6 +1666,15 @@ BillsPC_Menu:
 
 BillsPC_Item:
 	call BillsPC_HideCursor
+
+	; Eggs can't be given items.
+	ld a, [wTempMonIsEgg]
+	bit MON_IS_EGG_F, a
+	ld hl, BillsPC_EggsCantHoldItemsText
+	jp nz, BillsPC_PrintText
+
+	; Give a slightly different menu depending on whether the mon is holding
+	; an item right now or not.
 	ld a, [wTempMonItem]
 	and a
 	ld hl, .ItemIsSelected
@@ -1731,6 +1741,11 @@ BillsPC_Item:
 	db BOXMENU_GIVEITEM
 	db BOXMENU_CANCEL
 	db -1
+
+BillsPC_EggsCantHoldItemsText:
+	text "Eggs can't hold"
+	line "items."
+	prompt
 
 BillsPC_Release:
 	; Don't allow releasing the last healthy mon.
