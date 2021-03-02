@@ -1325,19 +1325,23 @@ BillsPC_CursorPick1:
 .pick_loop
 	call BillsPC_UpdateCursorLocation
 	call DelayFrame
-	inc [hl]
 	ld a, [hl]
 	cp PCANIM_PICKUP_NEXT
-	jr nz, .pick_loop
-	ret
+	ret z
+	inc [hl]
+	jr .pick_loop
 
 BillsPC_CursorPick2:
 ; Plays the second part of the cursor pickup animation. Stops at regular bop.
 ; Just write PCANIM_STATIC to [hl] afterwards if this isn't what you want.
 	ld hl, wBillsPC_CursorAnimFlag
+
+	; Skip first delay since we already did one at the end of CursorPick1.
+	jr .start_loop
 .pick_loop2
 	call BillsPC_UpdateCursorLocation
 	call DelayFrame
+.start_loop
 	dec [hl]
 	ld a, [hl]
 	cp PCANIM_PICKUP
@@ -1730,15 +1734,27 @@ BillsPC_SetCursorMonIconPal:
 	ld a, [c]
 	cp d
 	jr nz, .busyloop2
+	ld a, $80
+	ldh [rOBPI], a
+	ld hl, wOBPals1
+	ld e, 8 ; amount of palettes
+	inc d
+.busyloop3
+	ld a, [c]
+	cp d
+	jr nz, .busyloop3
 
 	ld c, LOW(rOBPD)
-	ld a, $80 | $18
-	ldh [rOBPI], a
-	ld hl, wOBPals1 palette 3
+
 rept 8
 	ld a, [hli]
 	ld [c], a
 endr
+
+	ld c, LOW(rLY)
+	inc d
+	dec e
+	jr nz, .busyloop3
 	reti
 
 BillsPC_RestoreUI:
