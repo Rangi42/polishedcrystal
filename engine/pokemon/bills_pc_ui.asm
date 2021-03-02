@@ -1,6 +1,7 @@
 	; Object palettes
 	const_def 1
-	const PAL_CURSOR_MODE
+	const PAL_CURSOR_MODE1
+	const PAL_CURSOR_MODE2
 	const PAL_MINI_ICON
 
 _BillsPC:
@@ -48,7 +49,7 @@ BillsPC_LoadUI:
 	; Cursor tiles
 	ld de, BillsPC_CursorTiles
 	ld hl, vTiles0 + 4 tiles
-	lb bc, BANK(BillsPC_CursorTiles), 4
+	lb bc, BANK(BillsPC_CursorTiles), 2
 	call Get2bpp
 
 	; Blank held cursor mini + item icons
@@ -60,7 +61,7 @@ BillsPC_LoadUI:
 	ld [rVBK], a
 
 	; Cursor sprite OAM
-	lb de, 46, 24
+	lb de, 38, 16
 	ld a, SPRITE_ANIM_INDEX_PC_CURSOR
 	call _InitSpriteAnimStruct
 	ld a, PCANIM_ANIMATE
@@ -98,10 +99,10 @@ UseBillsPC:
 	res 0, a
 	ld [wVramState], a
 
+	call BillsPC_LoadUI
+
 	xor a
 	call BillsPC_SetCursorMode
-
-	call BillsPC_LoadUI
 
 	; Default cursor data (top left of storage, not holding anything)
 	ld a, $12
@@ -321,24 +322,6 @@ UseBillsPC:
 	ret
 
 BillsPC_CursorTiles:
-	dw `33330000
-	dw `22230000
-	dw `22230000
-	dw `22300000
-	dw `22300000
-	dw `23000000
-	dw `23000000
-	dw `30000000
-
-	dw `00003333
-	dw `00003111
-	dw `00003111
-	dw `00000311
-	dw `00000311
-	dw `00000031
-	dw `00000031
-	dw `00000003
-
 	dw `00000000
 	dw `00000000
 	dw `00000000
@@ -346,15 +329,15 @@ BillsPC_CursorTiles:
 	dw `00000000
 	dw `00000000
 	dw `00033333
-	dw `00030000
+	dw `00031111
 
-	dw `00030000
-	dw `00030000
-	dw `00003000
-	dw `00003000
-	dw `00000300
-	dw `00000300
-	dw `00000030
+	dw `00031222
+	dw `00031222
+	dw `00003122
+	dw `00003122
+	dw `00000312
+	dw `00000312
+	dw `00000031
 	dw `00000003
 
 BillsPC_Tiles:
@@ -525,7 +508,6 @@ _BillsPC_SetCursorMode:
 	call StackCallInWRAMBankA
 .Function:
 	ld a, [wBillsPC_CursorMode]
-	ld de, wOBPals1 palette PAL_CURSOR_MODE
 	and a
 	ld hl, .Red
 	jr z, .got_cursor_pal
@@ -534,38 +516,36 @@ _BillsPC_SetCursorMode:
 	jr z, .got_cursor_pal
 	ld hl, .Green
 .got_cursor_pal
-	ld bc, 1 palettes
+	ld de, wOBPals1 palette PAL_CURSOR_MODE1 + 4
+	ld bc, 2
+	rst CopyBytes
+	ld de, wOBPals1 palette PAL_CURSOR_MODE2 + 4
+	ld bc, 2
 	rst CopyBytes
 	ret
 
 .Red:
 if !DEF(MONOCHROME)
-	RGB 31, 31, 31
 	RGB 31, 20, 20
 	RGB 31, 10, 06
-	RGB 31, 31, 31
 else
-	MONOCHROME_RGB_FOUR
+	MONOCHROME_RGB_TWO
 endc
 
 .Blue:
 if !DEF(MONOCHROME)
-	RGB 31, 31, 31
 	RGB 20, 20, 31
 	RGB 06, 10, 31
-	RGB 31, 31, 31
 else
-	MONOCHROME_RGB_FOUR
+	MONOCHROME_RGB_TWO
 endc
 
 .Green:
 if !DEF(MONOCHROME)
-	RGB 31, 31, 31
 	RGB 20, 31, 20
 	RGB 10, 31, 06
-	RGB 31, 31, 31
 else
-	MONOCHROME_RGB_FOUR
+	MONOCHROME_RGB_TWO
 endc
 
 
@@ -1952,10 +1932,6 @@ BillsPC_RestoreUI:
 	call ClearSprites
 	call ClearSpriteAnims
 
-	; Fixes cursor palettes.
-	ld a, [wBillsPC_CursorMode]
-	call _BillsPC_SetCursorMode
-
 	ld hl, rIE
 	set LCD_STAT, [hl]
 
@@ -1964,8 +1940,10 @@ BillsPC_RestoreUI:
 	call BillsPC_LoadUI
 	call GetCursorMon
 
-	ld a, CGB_BILLS_PC
-	call GetCGBLayout
+	; Fixes cursor palettes.
+	ld a, [wBillsPC_CursorMode]
+	call _BillsPC_SetCursorMode
+
 	lb bc, 143, %11
 	farcall HBlankCopyPals
 

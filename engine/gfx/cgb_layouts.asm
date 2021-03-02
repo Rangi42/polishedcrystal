@@ -973,6 +973,12 @@ _CGB_BillsPC:
 	ld hl, .Background
 	call LoadHLPaletteIntoDE
 	ld hl, .Outline
+	call LoadHLPaletteIntoDE
+	ld de, wOBPals1 palette 1
+	ld hl, .CursorPal
+	push hl
+	call LoadHLPaletteIntoDE
+	pop hl
 	jp LoadHLPaletteIntoDE
 
 .Background:
@@ -989,6 +995,20 @@ if !DEF(MONOCHROME)
 	RGB 31, 31, 31
 else
 	MONOCHROME_RGB_FOUR
+endc
+
+.CursorPal:
+; Coloring is fixed up later.
+if !DEF(MONOCHROME)
+	RGB 31, 31, 31
+	RGB 31, 31, 31
+	RGB 00, 00, 00
+	RGB 00, 00, 00
+else
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_BLACK
+	RGB_MONOCHROME_BLACK
 endc
 
 _CGB_UnownPuzzle:
