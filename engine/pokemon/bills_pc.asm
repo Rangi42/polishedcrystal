@@ -989,19 +989,21 @@ InitializeBoxes:
 	push de
 	ld de, .Box
 	call CopyName2
+	dec hl
 	pop de
-	dec hl
-	dec hl
 	ld a, NUM_NEWBOXES + 1
 	sub d
 	sub 10
 	add "0" + 10
 	ld [hl], a
 	jr c, .next
-	sub 10
-	ld [hld], a
 	ld [hl], "1"
+	inc hl
+	sub 10
+	ld [hl], a
 .next
+	inc hl
+	ld [hl], "@"
 	pop hl
 	ld c, sNewBox2 - sNewBox1Name
 	add hl, bc
@@ -1011,24 +1013,41 @@ InitializeBoxes:
 	jp CloseSRAM
 
 .Box:
-	rawchar "Box   @"
+	rawchar "Box @"
 
 GetBoxName:
-; Writes name of box b to string buffer 1
+; Writes name of box b to string buffer 1.
+	ld c, 0
+	call CopyBoxName
+
+	; Ensure that there's a terminator at the end. This isn't included as part
+	; of saved box name.
+	ld a, "@"
+	ld [wStringBuffer1 + BOX_NAME_LENGTH], a
+	ret
+
+SetBoxName:
+; Writes name from string buffer 1 to box b.
+	ld c, 1
+	; fallthrough
+CopyBoxName:
+; Copies between box b and string buffer 1 depending on value of c.
+; c=0: Copy from box b to string buffer 1.
+; c=1: Copy from string buffer 1 to box b.
 	ld a, BANK(sNewBox1)
 	call GetSRAMBank
 	ld hl, sNewBox1Name
 	ld a, b
 	dec a
+	push bc
 	ld bc, sNewBox2 - sNewBox1
 	rst AddNTimes
+	pop bc
 	ld de, wStringBuffer1
+	dec c
+	call z, SwapHLDE
 	ld bc, BOX_NAME_LENGTH
 	rst CopyBytes
-
-	; Add terminator
-	ld a, "@"
-	ld [de], a
 	jp CloseSRAM
 
 PrevStorageBoxMon:

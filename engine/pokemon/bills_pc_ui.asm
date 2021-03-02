@@ -563,7 +563,7 @@ BillsPC_SafeGet2bpp:
 	call DelayFrame
 	jr BillsPC_SafeGet2bpp
 
-SetBoxName:
+BillsPC_PrintBoxName:
 ; Writes name of current Box to box name area in storage system
 	hlcoord 9, 5
 	ld a, " "
@@ -586,7 +586,6 @@ SetBoxName:
 	inc b
 	cp "@"
 	jr nz, .loop
-	inc b
 	srl b
 	ld a, 5
 	sub b
@@ -617,7 +616,7 @@ _SetPartyIcons:
 
 SetBoxIconsAndName:
 	; Blank previous box name
-	call SetBoxName
+	call BillsPC_PrintBoxName
 	; fallthrough
 SetBoxIcons:
 	; Blank current list
@@ -750,11 +749,11 @@ BillsPC_UpdateCursorLocation:
 	push de
 	push bc
 	ld hl, wVirtualOAM + 64
-	ld de, wStringBuffer1
+	ld de, wStringBuffer3
 	ld bc, 4
 	rst CopyBytes
 	farcall PlaySpriteAnimations
-	ld hl, wStringBuffer1
+	ld hl, wStringBuffer3
 	ld de, wVirtualOAM + 64
 	ld bc, 4
 	rst CopyBytes
@@ -1242,7 +1241,7 @@ ManageBoxes:
 	sub NUM_BOXES
 .valid_box
 	ld [wCurBox], a
-	call SetBoxName
+	call BillsPC_PrintBoxName
 	call Delay2
 	ldh a, [hBGMapMode]
 	push af
@@ -1820,8 +1819,28 @@ BillsPC_Release:
 	prompt
 
 BillsPC_SwitchBox:
-BillsPC_Rename:
 	ret
+
+BillsPC_Rename:
+	ld hl, rIE
+	res LCD_STAT, [hl]
+
+	call LoadStandardMenuHeader
+	call ClearSprites
+	ld b, 4
+	ld de, wStringBuffer2
+	farcall NamingScreen
+	ld hl, wStringBuffer2
+	ld de, wStringBuffer1
+	ld bc, BOX_NAME_LENGTH
+	rst CopyBytes
+	ld a, [wCurBox]
+	inc a
+	ld b, a
+	farcall SetBoxName
+	call ExitMenu
+	call BillsPC_PrintBoxName
+	jp BillsPC_RestoreUI
 
 BillsPC_GetCursorFromTo:
 ; Returns source (held mon) in de and destination (cursor location) in bc.
@@ -1932,20 +1951,19 @@ BillsPC_RestoreUI:
 	call ClearSprites
 	call ClearSpriteAnims
 
-	ld hl, rIE
-	set LCD_STAT, [hl]
-
 	; TODO: this draws the pokepic in the wrong palette for a single frame.
 	; Figure out how to best avoid this.
 	call BillsPC_LoadUI
-	call GetCursorMon
 
 	; Fixes cursor palettes.
 	ld a, [wBillsPC_CursorMode]
 	call _BillsPC_SetCursorMode
+	call GetCursorMon
+	ld b, 2
+	call SafeCopyTilemapAtOnce
 
-	lb bc, 143, %11
-	farcall HBlankCopyPals
+	ld hl, rIE
+	set LCD_STAT, [hl]
 
 	ld a, 1
 	ldh [hBGMapMode], a

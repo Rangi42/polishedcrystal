@@ -1108,17 +1108,6 @@ StatsScreen_LoadPageIndicators:
 CopyNickname:
 	ld de, wStringBuffer1
 	ld bc, MON_NAME_LENGTH
-	ld a, [wMonType]
-	cp BOXMON
-	jr nz, .partymon
-	ld a, BANK(sBoxMonNicknames)
-	call GetSRAMBank
-	push de
-	rst CopyBytes
-	pop de
-	jp CloseSRAM
-
-.partymon
 	push de
 	rst CopyBytes
 	pop de

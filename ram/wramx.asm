@@ -105,16 +105,6 @@ NEXTU
 wMonMailMessageBuffer:: ds MAIL_MSG_LENGTH + 1
 
 NEXTU
-; bill's pc
-UNION
-wBoxNameBuffer:: ds BOX_NAME_LENGTH
-NEXTU
-	ds 1
-wBillsPCTempListIndex:: db
-wBillsPCTempBoxCount:: db
-ENDU
-
-NEXTU
 ; prof. oak's pc
 wTempPokedexSeenCount:: db
 wTempPokedexCaughtCount:: db
