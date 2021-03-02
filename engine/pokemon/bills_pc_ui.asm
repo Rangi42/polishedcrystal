@@ -1016,7 +1016,12 @@ _GetCursorMon:
 
 	; Colors
 	ld bc, wTempMonPersonality
+	ld a, [wTempMonIsEgg]
+	bit MON_IS_EGG_F, a
+	ld a, EGG
+	jr nz, .egg
 	ld a, [wTempMonSpecies]
+.egg
 	farcall GetMonNormalOrShinyPalettePointer
 	ld de, wBillsPC_PokepicPal
 	ld b, 4
