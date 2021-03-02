@@ -639,7 +639,7 @@ SpriteAnimOAMData:
 	dsprite  0,  0,  0,  0, $07, $4 | TILE_BANK | X_FLIP
 
 	; Mini
-	dsprite  0,  2, -1,  0, $08, $3 | TILE_BANK
-	dsprite  0,  2,  0,  0, $09, $3 | TILE_BANK
-	dsprite  1,  2, -1,  0, $0a, $3 | TILE_BANK
-	dsprite  1,  2,  0,  0, $0b, $3 | TILE_BANK
+	dsprite  0,  2, -1,  0, $08, $2 | TILE_BANK
+	dsprite  0,  2,  0,  0, $09, $2 | TILE_BANK
+	dsprite  1,  2, -1,  0, $0a, $2 | TILE_BANK
+	dsprite  1,  2,  0,  0, $0b, $2 | TILE_BANK

@@ -973,11 +973,6 @@ _CGB_BillsPC:
 	ld hl, .Background
 	call LoadHLPaletteIntoDE
 	ld hl, .Outline
-	call LoadHLPaletteIntoDE
-	ld de, wOBPals1 palette 1
-	ld hl, .CursorPal1
-	call LoadHLPaletteIntoDE
-	ld hl, .CursorPal2
 	jp LoadHLPaletteIntoDE
 
 .Background:
@@ -991,26 +986,6 @@ if !DEF(MONOCHROME)
 	RGB 26, 26, 30
 	RGB 13, 05, 31
 	RGB 10, 19, 31
-	RGB 31, 31, 31
-else
-	MONOCHROME_RGB_FOUR
-endc
-
-.CursorPal1:
-if !DEF(MONOCHROME)
-	RGB 31, 31, 31
-	RGB 31, 20, 20
-	RGB 31, 10, 06
-	RGB 31, 31, 31
-else
-	MONOCHROME_RGB_FOUR
-endc
-
-.CursorPal2:
-if !DEF(MONOCHROME)
-	RGB 31, 31, 31
-	RGB 20, 20, 31
-	RGB 06, 10, 31
 	RGB 31, 31, 31
 else
 	MONOCHROME_RGB_FOUR

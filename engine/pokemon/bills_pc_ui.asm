@@ -1,3 +1,8 @@
+	; Object palettes
+	const_def 1
+	const PAL_CURSOR_MODE
+	const PAL_MINI_ICON
+
 _BillsPC:
 	call .CheckCanUsePC
 	ret c
@@ -92,6 +97,9 @@ UseBillsPC:
 	ld a, [wVramState]
 	res 0, a
 	ld [wVramState], a
+
+	xor a
+	call BillsPC_SetCursorMode
 
 	call BillsPC_LoadUI
 
@@ -504,6 +512,57 @@ BillsPC_BlankTiles:
 	dec a
 	jr nz, .loop
 	ret
+
+BillsPC_SetCursorMode:
+; Switches cursor mode and updates the cursor palette.
+	ld [wBillsPC_CursorMode], a
+	ld a, BANK("GBC Video")
+	call StackCallInWRAMBankA
+.Function:
+	ld a, [wBillsPC_CursorMode]
+	ld de, wOBPals1 palette PAL_CURSOR_MODE
+	and a
+	ld hl, .Red
+	jr z, .got_cursor_pal
+	dec a
+	ld hl, .Blue
+	jr z, .got_cursor_pal
+	ld hl, .Green
+.got_cursor_pal
+	ld bc, 1 palettes
+	rst CopyBytes
+	jp BillsPC_SetOBPals
+
+.Red:
+if !DEF(MONOCHROME)
+	RGB 31, 31, 31
+	RGB 31, 20, 20
+	RGB 31, 10, 06
+	RGB 31, 31, 31
+else
+	MONOCHROME_RGB_FOUR
+endc
+
+.Blue:
+if !DEF(MONOCHROME)
+	RGB 31, 31, 31
+	RGB 20, 20, 31
+	RGB 06, 10, 31
+	RGB 31, 31, 31
+else
+	MONOCHROME_RGB_FOUR
+endc
+
+.Green:
+if !DEF(MONOCHROME)
+	RGB 31, 31, 31
+	RGB 20, 31, 20
+	RGB 10, 31, 06
+	RGB 31, 31, 31
+else
+	MONOCHROME_RGB_FOUR
+endc
+
 
 BillsPC_SafeRequest2bppInWRA6::
 	ldh a, [hROMBank]
@@ -1091,6 +1150,22 @@ ManageBoxes:
 	ld hl, .BoxMenu
 	jr c, .got_menu
 
+	; If we're in cursor mode 0, open a menu.
+	ld a, [wBillsPC_CursorMode]
+	and a
+	jr z, .prepare_menu
+
+	; Otherwise, either pick the mon up...
+	dec a
+	push af
+	call z, BillsPC_Switch
+	pop af
+
+	; ...or pickup the item.
+	call nz, BillsPC_MoveItem
+	jr .loop
+
+.prepare_menu
 	; check if we're in party or storage
 	and $f
 	cp $2
@@ -1127,7 +1202,24 @@ ManageBoxes:
 	jp .loop
 
 .pressed_select
-	; TODO: Cursor Mode Switch
+	; Don't allow modeswitch from/to mode 2 if holding something.
+	ld a, [wBillsPC_CursorHeldSlot]
+	and a
+	ld a, [wBillsPC_CursorMode]
+	jr z, .not_holding_anything
+	cp 2
+	jp z, .loop
+	xor 1
+	jr .got_new_mode
+.not_holding_anything
+	inc a
+	cp 3
+	jr nz, .got_new_mode
+	xor a
+.got_new_mode
+	call BillsPC_SetCursorMode
+	jp .loop
+
 .pressed_start
 	; Immediately leave the storage system (TODO: Maybe allow searching?)
 	ret
@@ -1364,9 +1456,9 @@ BillsPC_Switch:
 	ld a, [wTempMonSpecies]
 	ld hl, wTempMonPersonality
 	farcall _GetMonIconPalette
-	ld de, wOBPals1 palette 3
+	ld de, wOBPals1 palette PAL_MINI_ICON
 	farcall SetPartyMenuPal
-	call BillsPC_SetCursorMonIconPal
+	call BillsPC_SetOBPals
 
 	; Write mini graphics to cursor sprite area
 	ld a, 1
@@ -1714,8 +1806,8 @@ BillsPC_PlaceHeldMon:
 	; TODO: graphics
 	ret
 
-BillsPC_SetCursorMonIconPal:
-; Sets mon icon used by the cursor. Plays nice with PC hblank interrupt.
+BillsPC_SetOBPals:
+; Sets object palettes. Plays nice with PC hblank interrupt.
 	ld a, BANK("GBC Video")
 	call StackCallInWRAMBankA
 .Function:
