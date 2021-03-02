@@ -514,7 +514,12 @@ BillsPC_BlankTiles:
 	ret
 
 BillsPC_SetCursorMode:
-; Switches cursor mode and updates the cursor palette.
+	call _BillsPC_SetCursorMode
+	jp BillsPC_SetOBPals
+
+_BillsPC_SetCursorMode:
+; Switches cursor mode and updates the cursor palette. Doesn't write palettes,
+; use the non-underscore version of this to do that.
 	ld [wBillsPC_CursorMode], a
 	ld a, BANK("GBC Video")
 	call StackCallInWRAMBankA
@@ -531,7 +536,7 @@ BillsPC_SetCursorMode:
 .got_cursor_pal
 	ld bc, 1 palettes
 	rst CopyBytes
-	jp BillsPC_SetOBPals
+	ret
 
 .Red:
 if !DEF(MONOCHROME)
@@ -1561,7 +1566,27 @@ BillsPC_GetStorageSpace:
 	ret
 
 BillsPC_GiveItem:
-	ret
+	; If we're dealing with a Box mon, we must have at least 1 free pokedb
+	; entry.
+	call BillsPC_GetCursorSlot
+	ld a, b
+	and a
+	jr z, .entries_not_full
+
+	ld a, 1
+	call BillsPC_GetStorageSpace
+	ret nz
+
+.entries_not_full
+	ld hl, rIE
+	res LCD_STAT, [hl]
+
+	call LoadStandardMenuHeader
+	call ClearSprites
+	farcall PCGiveItem
+	call ClearPalettes
+	call ExitMenu
+	jp BillsPC_RestoreUI
 
 BillsPC_MoveItem:
 	ret
@@ -1712,6 +1737,8 @@ BillsPC_Release:
 	farcall CheckCurPartyMonFainted
 	ld hl, BillsPC_LastPartyMon
 	jr c, .print
+
+	; Don't allow releasing Eggs.
 	ld a, [wTempMonIsEgg]
 	bit MON_IS_EGG_F, a
 	ld hl, .CantReleaseEgg
@@ -1771,7 +1798,8 @@ BillsPC_Release:
 	prompt
 
 .ItRefusedToGo:
-	text "It refused to go!"
+	text "You can't release"
+	line "<PK><MN> knowing HMs!"
 	prompt
 
 .ReallyReleaseMon:
@@ -1897,60 +1925,30 @@ BillsPC_PlaceHeldMon:
 
 BillsPC_SetOBPals:
 ; Sets object palettes. Plays nice with PC hblank interrupt.
-	ld a, BANK("GBC Video")
-	call StackCallInWRAMBankA
-.Function:
-	; Wait until a hblank we can make use of.
-	ld c, LOW(rLY)
-	ld d, 8
-.busyloop
-	ld a, [c]
-	cp d
-	jr nz, .busyloop
-	; The double inc here is intentional, just in case of a badly timed hblank.
-	inc d
-	inc d
-	di
-.busyloop2
-	ld a, [c]
-	cp d
-	jr nz, .busyloop2
-	ld a, $80
-	ldh [rOBPI], a
-	ld hl, wOBPals1
-	ld e, 8 ; amount of palettes
-	inc d
-.busyloop3
-	ld a, [c]
-	cp d
-	jr nz, .busyloop3
-
-	ld c, LOW(rOBPD)
-
-rept 8
-	ld a, [hli]
-	ld [c], a
-endr
-
-	ld c, LOW(rLY)
-	inc d
-	dec e
-	jr nz, .busyloop3
-	reti
+	lb bc, 8, %10
+	farjp HBlankCopyPals
 
 BillsPC_RestoreUI:
 	call ClearSprites
 	call ClearSpriteAnims
 
+	; Fixes cursor palettes.
+	ld a, [wBillsPC_CursorMode]
+	call _BillsPC_SetCursorMode
+
 	ld hl, rIE
 	set LCD_STAT, [hl]
 
+	; TODO: this draws the pokepic in the wrong palette for a single frame.
+	; Figure out how to best avoid this.
 	call BillsPC_LoadUI
 	call GetCursorMon
 
 	ld a, CGB_BILLS_PC
 	call GetCGBLayout
-	call SetPalettes
+	lb bc, 143, %11
+	farcall HBlankCopyPals
+
 	ld a, 1
 	ldh [hBGMapMode], a
 	ret

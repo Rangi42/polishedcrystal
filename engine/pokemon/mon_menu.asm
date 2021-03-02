@@ -235,25 +235,10 @@ GiveTakePartyMonItem:
 	db "No held item@"
 
 .GiveItem:
-
-	call DepositSellInitPackBuffers
-
-.loop
-	call DepositSellPack
-
-	ld a, [wPackUsedItem]
-	and a
+	call GetItemToGive
 	ret z
-
-	call CheckUniqueItemPocket
-	jr nz, TryGiveItemToPartymon
-
-	ld hl, CantBeHeldText
-	call MenuTextboxBackup
-	jr .loop
-
+	; fallthrough
 TryGiveItemToPartymon:
-
 	call SpeechTextbox
 	call PartyMonItemName
 	call GetPartyItemLocation
@@ -268,7 +253,7 @@ TryGiveItemToPartymon:
 	jr .already_holding_item
 
 .give_item_to_mon
-	call GiveItemToPokemon
+	call TossItemToGive
 	ld hl, MadeHoldText
 	call MenuTextboxBackup
 	jp GivePartyItem
@@ -284,7 +269,7 @@ TryGiveItemToPartymon:
 	call StartMenuYesNo
 	ret c
 
-	call GiveItemToPokemon
+	call TossItemToGive
 	ld a, [wd265]
 	push af
 	ld a, [wCurItem]
@@ -306,12 +291,82 @@ TryGiveItemToPartymon:
 	ld a, [wd265]
 	ld [wCurItem], a
 	; fallthrough
-
 GivePartyItem:
 	call GetPartyItemLocation
 	ld a, [wCurItem]
 	ld [hl], a
 	call UpdateMewtwoForm
+	ld a, [wCurItem]
+	ld d, a
+	call ItemIsMail
+	ret nc
+	jp ComposeMailMessage
+
+GetItemToGive:
+	call DepositSellInitPackBuffers
+	; fallthrough
+_GetItemToGive:
+; Returns nz if we got an item to give.
+	call DepositSellPack
+
+	ld a, [wPackUsedItem]
+	and a
+	ret z
+
+	call CheckUniqueItemPocket
+	ret nz
+
+	ld hl, CantBeHeldText
+	call MenuTextboxBackup
+	jr _GetItemToGive
+
+PCGiveItem:
+	call DepositSellInitPackBuffers
+.loop
+	call _GetItemToGive
+	ret z
+
+	; Ensure that we aren't trying to give Mail to a Pokémon in storage.
+	ld a, [wCurItem]
+	ld d, a
+	call ItemIsMail
+	jr nc, .item_ok
+
+	ld a, [wTempMonBox]
+	and a
+	jr z, .item_ok
+
+	ld hl, CantPlaceMailInStorageText
+	call MenuTextboxBackup
+	jr .loop
+
+.item_ok
+	call PartyMonItemName
+	call TossItemToGive
+
+	ld hl, wTempMonNickname
+	ld de, wMonOrItemNameBuffer
+	ld bc, MON_NAME_LENGTH
+	rst CopyBytes
+
+	ld hl, MadeHoldText
+	call MenuTextboxBackup
+
+	; Now, actually give the item.
+	ld a, [wTempMonSpecies]
+	ld [wCurPartySpecies], a
+	ld de, wCurItem
+	ld a, [de]
+	ld [wTempMonItem], a
+	ld hl, wTempMonForm
+	call _UpdateMewtwoForm
+	farcall UpdateStorageBoxMonFromTemp
+
+	; We know that if we're dealing with Mail, then we're giving to a partymon.
+	; Thus, there's no harm in using party-specific code.
+	ld a, [wTempMonSlot]
+	dec a
+	ld [wCurPartyMon], a
 	ld a, [wCurItem]
 	ld d, a
 	call ItemIsMail
@@ -403,18 +458,21 @@ TakePartyItem:
 	jp MenuTextboxBackup
 
 UpdateMewtwoForm:
+	ld d, h
+	ld e, l
+	ld a, MON_FORM
+	call GetPartyParamLocation
+_UpdateMewtwoForm:
 	ld a, [wCurPartySpecies]
 	cp MEWTWO
 	ret nz
-	ld a, [hl]
+	ld a, [de]
 	cp ARMOR_SUIT
 	ld a, MEWTWO_ARMORED_FORM
 	jr z, .got_form
 	dec a ; PLAIN_FORM
 .got_form
 	ld d, a
-	ld a, MON_FORM
-	call GetPartyParamLocation
 	ld a, [hl]
 	and $ff - BASEMON_MASK
 	or d
@@ -467,6 +525,11 @@ CantBeHeldText:
 	text_jump _ItemCantHeldText
 	text_end
 
+CantPlaceMailInStorageText:
+	text "Can't place Mail in"
+	line "storage."
+	prompt
+
 GetPartyItemLocation:
 	push af
 	ld a, MON_ITEM
@@ -480,7 +543,7 @@ ReceiveItemFromPokemon:
 	ld hl, wNumItems
 	jp ReceiveItem
 
-GiveItemToPokemon:
+TossItemToGive:
 	ld a, $1
 	ld [wItemQuantityChangeBuffer], a
 	ld hl, wNumItems

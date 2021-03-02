@@ -270,3 +270,70 @@ CopyTilemapInHBlank:
 	pop hl
 	ld sp, hl
 	ret
+
+HBlankCopyPals:
+; Copy palettes during HBlank, starting at LCD row b.
+; Bit 0 of c: Copy BG palettes
+; Bit 1 of c: Copy OB palettes
+	ld a, BANK("GBC Video")
+	call StackCallInWRAMBankA
+.Function:
+	ld e, c
+	ld c, LOW(rLY)
+.busyloop
+	ld a, [c]
+	cp b
+	jr nz, .busyloop
+	di
+	ld d, $3
+
+	; wait until start of H-Blank.
+	bit 0, e
+	lb bc, LOW(rBGPD), LOW(rBGPI)
+	ld hl, wBGPals1
+	push de
+	call nz, .CopyPals
+	pop de
+	bit 1, e
+	ret z
+	lb bc, LOW(rOBPD), LOW(rOBPI)
+	ld hl, wOBPals1
+	; fallthrough
+.CopyPals:
+	; Wait on HBlank. Don't use c, because we want to preserve previous c.
+	ldh a, [rSTAT]
+	and d
+	jr z, .CopyPals
+.busyloop2
+	ldh a, [rSTAT]
+	and d
+	jr nz, .busyloop2
+
+	; Set up pal increment.
+	ld a, $80
+	ld [c], a
+
+	; Copy 8 palettes.
+	ld e, 8
+	ld c, LOW(rSTAT)
+.busyloop3
+	; Wait until HBlank.
+	ld a, [c]
+	and d
+	jr z, .busyloop3
+.busyloop4
+	ld a, [c]
+	and d
+	jr nz, .busyloop4
+
+	ld c, b
+
+rept 8
+	ld a, [hli]
+	ld [c], a
+endr
+
+	ld c, LOW(rSTAT)
+	dec e
+	jr nz, .busyloop3
+	reti
