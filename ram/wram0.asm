@@ -898,11 +898,18 @@ wBillsPC_CursorAnimFlag:: db ; manage cursor behaviour
 wBillsPC_ItemVWF:: ds 10 tiles
 
 ; Quick-move sprite data.
+wBillsPC_QuickFrom::
+wBillsPC_QuickFromBox:: db
+wBillsPC_QuickFromSlot:: db
 wBillsPC_QuickFromX:: db
 wBillsPC_QuickFromY:: db
+
+wBillsPC_QuickTo::
+wBillsPC_QuickToBox:: db
+wBillsPC_QuickToSlot:: db
 wBillsPC_QuickToX:: db
 wBillsPC_QuickToY:: db
-wBillsPC_QuickFrame:: db
+wBillsPC_QuickFrames:: db
 
 NEXTU
 ; raw link data

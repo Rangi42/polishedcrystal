@@ -1624,17 +1624,168 @@ BillsPC_Switch:
 	ld [hl], PCANIM_STATIC
 	ret
 
-BillsPC_AbortSelection:
-; Deselects the mon currently held, moving it to where it was prior.
-	; Blank the cursor sprite + potential item
+BillsPC_PrepareQuickAnim:
+; Sets up a quick-move animation from bc to de.
+	ld hl, wBillsPC_QuickFrom
+	push bc
+	push de
+	call .SetQuickStruct
+	pop bc
+	ld hl, wBillsPC_QuickTo
+	call .SetQuickStruct
+	ld a, PCANIM_QUICKFRAMES
+	ld [wBillsPC_QuickFrames], a
+	lb de, 0, 0
+	ld a, SPRITE_ANIM_INDEX_PC_QUICK
+	call _InitSpriteAnimStruct
+	call BillsPC_UpdateCursorLocation
+	pop bc
+	lb de, -1, 1
+	jp BillsPC_MoveIconData
+
+.SetQuickStruct:
+	ld a, b
+	ld [hli], a
+	ld a, c
+	ld [hli], a
+	call BillsPC_GetXYFromStorageBox
+	ld a, d
+	ld [hli], a
+	ld a, e
+	ld [hli], a
+	ret
+
+BillsPC_GetXYFromStorageBox:
+; Returns appropriate icon XY pos in de from storage box b, slot c. Includes
+; a +8 pixel offset as per normal sprite positioning.
+; Box -1 means held by cursor.
+	inc b
+	jr nz, .not_cursor
+
+	; Cursor held mons are just offset upwards a bit.
+	dec b
+	push bc
+	call BillsPC_GetCursorSlot
+	call BillsPC_GetXYFromStorageBox
+	pop bc
+	ld a, e
+	sub PCANIM_PICKUP_NEXT - PCANIM_PICKUP + 1
+	ld e, a
+	ret
+
+.not_cursor
+	dec b
+	jr z, .party
+	ld a, c
+	and a
+	jr nz, .not_on_boxname
+	; fallthrough
+.boxname_pos
+	lb de, $70, $38
+	ret
+
+.not_on_boxname
+	; We're dealing with a boxmon. If this isn't part of the current Box, return
+	; boxname position since we want to simulate moving the mon towards another
+	; Box.
+	ld a, [wCurBox]
+	inc a
+	cp b
+	jr nz, .boxname_pos
+
+	; The position is within our current Box.
+	ld a, 4
+	lb de, $48, $48
+	jr .fix_xy
+
+.party
+	ld a, 2
+	lb de, $10, $68
+	; fallthrough
+.fix_xy
+	; Fix xy depending on slot c. For every a slots, y changes by 16. Then,
+	; for the remainder, x changes by 24.
+	push bc
+	ld b, a
+	ld a, c
+	dec a
+.loop
+	sub b
+	jr c, .got_y
+	push af
+	ld a, e
+	add 16
+	ld e, a
+	pop af
+	jr .loop
+.got_y
+	add b
+
+	; Multiply remainder by 24.
+	add a ; * 2
+	add a ; * 4
+	add a ; * 8
+	ld b, a
+	add b ; * 16
+	add b ; * 24
+	add d
+	ld d, a
+	pop bc
+	ret
+
+BillsPC_PerformQuickAnim:
+; Performs a synchronous quickmove animation. Used when aborting a selection or
+; when doing a party shift (otherwise it's asynchronous).
+	call BillsPC_PrepareQuickAnim
+.loop
+	call BillsPC_UpdateCursorLocation
+	call DelayFrame
+	ld a, [wBillsPC_QuickFrames]
+	and a
+	jr nz, .loop
+	jp BillsPC_UpdateCursorLocation
+
+BillsPC_FinishQuickAnim:
+; Called from sprite anim code.
+	push hl
+	push de
+	push bc
+
+	; Verify that the destination was either the party or the current Box.
+	; If the destination is another Box, just vanish the sprite.
+	ld a, [wBillsPC_QuickToSlot]
+	ld e, a
+	ld a, [wBillsPC_QuickToBox]
+	ld d, a
+	and a
+	jr z, .ok
+	ld a, [wCurBox]
+	inc a
+	cp d
+.ok
+	lb bc, -1, 1
+	call z, BillsPC_MoveIconData
+
+	; Blank the icon. MoveIconData might have done this already, but this makes
+	; sure it's handled in case we never ran that function.
+	ldh a, [rVBK]
+	push af
 	ld a, 1
 	ldh [rVBK], a
-	ld a, 3
-	ld hl, vTiles3 tile $08
+	ld hl, vTiles3 tile $14
 	call BillsPC_BlankTiles
+	pop af
+	ldh [rVBK], a
+	jp PopBCDEHL
+
+BillsPC_AbortSelection:
+; Deselects the mon currently held, moving it to where it was prior.
+	ld a, 1
+	ldh [rVBK], a
 
 	; If we're dealing with an item, we don't need to reload any tiles.
-	ld a, [wBillsPC_CursorHeldBox]
+	call BillsPC_GetCursorHeldSlot
+	ld a, b
 	and $80
 	push af
 	xor a
@@ -1644,14 +1795,10 @@ BillsPC_AbortSelection:
 	jr nz, .done_reverting_icons
 
 	; Ensure that the icon is returned, if in party/current Box.
-	ldh a, [hBGMapMode]
-	push af
-	xor a
-	ldh [hBGMapMode], a
-	call _SetPartyIcons
-	call _SetBoxIcons
-	pop af
-	ldh [hBGMapMode], a
+	ld d, b
+	ld e, c
+	lb bc, -1, 0
+	call BillsPC_PerformQuickAnim
 
 .done_reverting_icons
 	ld a, PCANIM_ANIMATE

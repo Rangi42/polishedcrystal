@@ -76,6 +76,7 @@ SpriteAnimOAMData:
 	dbw $00, .OAMData_GameFreakLogo4_11  ; SPRITE_ANIM_OAMSET_GAMEFREAK_LOGO_11
 	dbw $00, .OAMData_MaxStatSparkle     ; SPRITE_ANIM_OAMSET_MAX_STAT_SPARKLE
 	dbw $00, .OAMData_PcCursor           ; SPRITE_ANIM_OAMSET_PC_CURSOR
+	dbw $00, .OAMData_PcQuick            ; SPRITE_ANIM_OAMSET_PC_QUICK
 
 .OAMData_1x1_Palette0:
 	db 1
@@ -646,3 +647,13 @@ SpriteAnimOAMData:
 
 	; Item
 	dsprite  2,  0,  0,  4, $10, $0 | TILE_BANK
+
+.OAMData_PcQuick:
+	db 4
+	; Mini
+	dsprite  0,  0,  0,  0, $14, $5 | TILE_BANK
+	dsprite  0,  0,  1,  0, $15, $5 | TILE_BANK
+	dsprite  1,  0,  0,  0, $16, $5 | TILE_BANK
+	dsprite  1,  0,  1,  0, $17, $5 | TILE_BANK
+
+	; Mini shadow (TODO)
