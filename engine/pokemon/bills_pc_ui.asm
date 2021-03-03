@@ -651,6 +651,7 @@ PCIconLoop:
 	ld [hli], a
 	ld a, [wTempMonForm]
 	ld [wCurIconForm], a
+	ld [hli], a
 	ld a, e
 	push hl
 	push de
@@ -669,18 +670,10 @@ PCIconLoop:
 	jr nz, PCIconLoop
 	ret
 
-WriteIconPaletteData:
-; Write box slot c's palette data. If b is zero, write party palette instead.
-; (This is the same input as various "box mon data" functions).
-	push hl
+BillsPC_GetMonPalAddr:
+; Gets mon pal in hl for box b slot c.
 	push de
 	push bc
-	ld a, [wTempMonSpecies]
-	ld hl, wTempMonPersonality
-	farcall _GetMonIconPalette
-	pop bc
-	push bc
-	push af
 	ld a, c
 	dec a
 	inc b
@@ -702,6 +695,23 @@ WriteIconPaletteData:
 	add a
 	ld c, a
 	add hl, bc
+	pop bc
+	pop de
+	ret
+
+WriteIconPaletteData:
+; Write box slot c's palette data. If b is zero, write party palette instead.
+; (This is the same input as various "box mon data" functions).
+	push hl
+	push de
+	push bc
+	ld a, [wTempMonSpecies]
+	ld hl, wTempMonPersonality
+	farcall _GetMonIconPalette
+	pop bc
+	push bc
+	push af
+	call BillsPC_GetMonPalAddr
 
 	; TODO: per-mon palettes
 	ld [hl], $7f
@@ -1365,7 +1375,7 @@ BillsPC_MenuStrings:
 	db "Release@"
 	; box options
 	db "Rename@"
-	; holds and item
+	; holding an item
 	db "Move@"
 	db "Bag@"
 	; doesn't hold an item
@@ -1427,6 +1437,172 @@ BillsPC_CursorPick2:
 	jr nc, .pick_loop2
 	ret ; [hl] is now PCANIM_ANIMATE.
 
+BillsPC_SetIcon:
+; Writes icon tiles to hl depending on species data in de. Assumes vbk1.
+	ld a, [de]
+	inc de
+	ld [wCurIcon], a
+	ld a, [de]
+	ld [wCurIconForm], a
+	push hl
+	call BillsPC_SetOBPals
+	pop hl
+	farjp GetStorageIcon
+
+BillsPC_MoveIconData:
+; Copies icon data from slot bc to slot de, then blanks slot bc.
+; Box -1 is a sentinel for held (slot 0) or quick (slot 1).
+; TODO: can we make this code (.GetAddr especially) less messy?
+	; Copy palette data
+	ldh a, [rSVBK]
+	push af
+	ld a, BANK(wOBPals1)
+	ldh [rSVBK], a
+	xor a
+	ldh [hBGMapMode], a
+	call .Copy
+	pop af
+	ldh [rSVBK], a
+
+	; Copy extspecies data
+	ld a, 1
+	call .Copy
+
+	ld a, 1
+	ldh [rVBK], a
+
+	; Set new icon data.
+	push bc
+	ld b, d
+	ld c, e
+	ld a, 1
+	call .GetAddr
+	push hl
+	ld a, 2
+	call .GetAddr
+	pop de
+	call BillsPC_SetIcon
+	pop bc
+
+	; Blank old icon data.
+	ld a, 2
+	call .GetAddr
+	ld a, 1
+	call BillsPC_BlankTiles
+
+	xor a
+	ldh [rVBK], a
+	inc a
+	ldh [hBGMapMode], a
+	ret
+
+.Copy:
+; Copies from address depending on bc and a to addr depending on de and a.
+	call .GetAddr
+	push bc
+	push de
+	push hl
+	ld b, d
+	ld c, e
+	call .GetAddr
+	ld d, h
+	ld e, l
+	pop hl
+	and a
+	ld bc, 4
+	jr z, .got_len
+	ld c, 2
+.got_len
+	rst CopyBytes
+	pop de
+	pop bc
+	ret
+
+.GetAddr:
+; Depending on a, set hl to an address based on box b slot c.
+	push bc
+	push af
+	inc b
+	jr z, .held
+	dec b
+	jr z, .party
+
+	; Box
+	and a
+	jr z, .box_party_pal
+	dec a
+	jr z, .box_extspecies
+
+	; Boxmon tile
+	ld hl, vTiles4 tile $18
+	jr .get_tile_addr
+
+.box_extspecies
+	ld hl, wBillsPC_BoxList
+	jr .get_ext_addr
+
+.party
+	and a
+	jr z, .box_party_pal
+	dec a
+	jr z, .party_extspecies
+
+	; Party tile
+	ld hl, vTiles4 tile $00
+	; fallthrough
+.get_tile_addr
+	ld b, 4 tiles
+	jr .addntimes
+
+.box_party_pal
+	call BillsPC_GetMonPalAddr
+	jr .got_addr
+
+.party_extspecies
+	ld hl, wBillsPC_PartyList
+	; fallthrough
+.get_ext_addr
+	ld b, 2
+	; fallthrough
+.addntimes
+	ld a, c
+	ld c, b
+	ld b, 0
+	dec a
+	rst AddNTimes
+	jr .got_addr
+
+.held
+	and a
+	jr z, .held_pal
+	dec a
+	jr z, .held_extspecies
+
+	; Held tile
+	ld hl, vTiles3 tile $14
+	dec c
+	jr z, .got_addr
+	ld hl, vTiles3 tile $08
+	jr .got_addr
+
+.held_pal
+	ld hl, wOBPals1 palette $5 + 2
+	dec c
+	jr z, .got_addr
+	ld hl, wOBPals1 palette PAL_MINI_ICON + 2
+	jr .got_addr
+
+.held_extspecies
+	ld hl, wBillsPC_QuickIcon
+	dec c
+	jr z, .got_addr
+	ld hl, wBillsPC_HeldIcon
+	; fallthrough
+.got_addr
+	pop af
+	pop bc
+	ret
+
 BillsPC_Switch:
 ; Pick up mon for movement.
 	; Mark current cursor slot for movement.
@@ -1438,42 +1614,11 @@ BillsPC_Switch:
 
 	push bc
 	call BillsPC_CursorPick1
+	pop bc
 
 	; Update pal for the cursor mini, in case we pick it up.
-	ld a, [wTempMonSpecies]
-	ld hl, wTempMonPersonality
-	farcall _GetMonIconPalette
-	ld de, wOBPals1 palette PAL_MINI_ICON
-	farcall SetPartyMenuPal
-	call BillsPC_SetOBPals
-
-	; Write mini graphics to cursor sprite area
-	ld a, 1
-	ld [rVBK], a
-	ld a, [wTempMon]
-	ld [wCurIcon], a
-	ld a, [wTempMonForm]
-	ld [wCurIconForm], a
-	ld a, 8
-	farcall GetStorageIcon_a
-
-	; Blank the mini in the box/party itself
-	pop bc
-	inc b
-	dec b
-	ld hl, vTiles4 tile $00
-	jr z, .got_tile_pointer
-	ld hl, vTiles4 tile $18
-.got_tile_pointer
-	ld b, 0
-	dec c
-	ld a, 4 tiles
-	rst AddNTimes
-	ld a, 1
-	call BillsPC_BlankTiles
-
-	xor a
-	ld [rVBK], a
+	lb de, -1, 0
+	call BillsPC_MoveIconData
 
 	call BillsPC_CursorPick2
 	ld [hl], PCANIM_STATIC
@@ -1481,15 +1626,22 @@ BillsPC_Switch:
 
 BillsPC_AbortSelection:
 ; Deselects the mon currently held, moving it to where it was prior.
+	; Blank the cursor sprite + potential item
+	ld a, 1
+	ldh [rVBK], a
+	ld a, 3
+	ld hl, vTiles3 tile $08
+	call BillsPC_BlankTiles
+
+	; If we're dealing with an item, we don't need to reload any tiles.
+	ld a, [wBillsPC_CursorHeldBox]
+	and $80
+	push af
 	xor a
 	ld [wBillsPC_CursorHeldBox], a
 	ld [wBillsPC_CursorHeldSlot], a
-
-	; Blank the cursor sprite
-	ld a, 1
-	ldh [rVBK], a
-	ld hl, vTiles3 + 8 tiles
-	call BillsPC_BlankTiles
+	pop af
+	jr nz, .done_reverting_icons
 
 	; Ensure that the icon is returned, if in party/current Box.
 	ldh a, [hBGMapMode]
@@ -1500,12 +1652,14 @@ BillsPC_AbortSelection:
 	call _SetBoxIcons
 	pop af
 	ldh [hBGMapMode], a
+
+.done_reverting_icons
 	ld a, PCANIM_ANIMATE
 	ld [wBillsPC_CursorAnimFlag], a
 
 	xor a
 	ldh [rVBK], a
-	ret
+	jp GetCursorMon
 
 BillsPC_Moves:
 	ld hl, rIE

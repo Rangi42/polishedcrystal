@@ -857,23 +857,6 @@ NEXTU
 wCreditsBlankFrame2bpp:: ds 8 * 8 * 2
 
 NEXTU
-; Bill's PC
-wBillsPCData::
-wBillsPCPokemonList::
-; (species, box number, list index) x30
-	ds 3 * 30
-	ds 721
-wBillsPC_ScrollPosition:: db
-wBillsPC_CursorPosition:: db ; $yx, y is row 0-6, x is column 0-5
-wBillsPC_NumMonsInBox:: db
-wBillsPC_NumMonsOnScreen:: db
-wBillsPC_LoadedBox:: db ; 0 if party, 1 - 14 if box, 15 if active box
-wBillsPC_BackupScrollPosition:: db
-wBillsPC_BackupCursorPosition:: db
-wBillsPC_BackupLoadedBox:: db
-wBillsPC_MonHasMail:: db
-wBillsPCDataEnd::
-NEXTU
 
 wBillsPC_CurPals::
 wBillsPC_CurPartyPals:: ds 2 * 2 * 2 ; 2 bytes per color, 2 colors, 2 mons
@@ -901,6 +884,9 @@ wBillsPC_MonPals5:: ds 2 * 2 * 4
 wBillsPC_PartyList:: ds 6 * 2
 wBillsPC_BoxList:: ds 20 * 2
 
+wBillsPC_HeldIcon:: dw
+wBillsPC_QuickIcon:: dw
+
 ; Cursor data
 wBillsPC_CursorPos:: db ; 0-3 * 4*row, row 0 is title. Bit 7 means in party.
 wBillsPC_CursorHeldBox:: db ; 0 for party, 1-15 otherwise
@@ -910,6 +896,13 @@ wBillsPC_CursorDestSlot:: db ; 0 for release, or 1-20 (1-6 if party)
 wBillsPC_CursorMode:: db ; 0 for regular (red), 1 for switch mode (blue)
 wBillsPC_CursorAnimFlag:: db ; manage cursor behaviour
 wBillsPC_ItemVWF:: ds 10 tiles
+
+; Quick-move sprite data.
+wBillsPC_QuickFromX:: db
+wBillsPC_QuickFromY:: db
+wBillsPC_QuickToX:: db
+wBillsPC_QuickToY:: db
+wBillsPC_QuickFrame:: db
 
 NEXTU
 ; raw link data

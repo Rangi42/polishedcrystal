@@ -423,17 +423,18 @@ GetStorageIcon_a:
 	ld l, a
 	ld h, 0
 
-	ld c, 4
 rept 4
 	add hl, hl
 endr
 
 	ld de, vTiles0
 	add hl, de
+	; fallthrough
+GetStorageIcon:
 	push hl
 
 	push hl
-	ld a, c
+	ld a, 4
 	push af
 	call LoadOverworldMonIcon
 	pop af
