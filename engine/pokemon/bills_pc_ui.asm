@@ -542,8 +542,8 @@ endc
 
 .Green:
 if !DEF(MONOCHROME)
-	RGB 20, 31, 20
-	RGB 10, 31, 06
+	RGB 20, 28, 20
+	RGB 06, 26, 10
 else
 	MONOCHROME_RGB_TWO
 endc
@@ -639,6 +639,14 @@ _SetBoxIcons:
 	lb de, MONS_PER_BOX, $98
 	; fallthrough
 PCIconLoop:
+	; Don't draw mons we're holding.
+	ld a, [wBillsPC_CursorHeldBox]
+	cp b
+	jr nz, .not_holding
+	ld a, [wBillsPC_CursorHeldSlot]
+	cp c
+	jr z, .next
+.not_holding
 	call GetStorageBoxMon
 	jr z, .next
 	ld a, [wTempMonIsEgg]
@@ -1788,13 +1796,21 @@ BillsPC_FinishQuickAnim:
 	; Blank the icon. MoveIconData might have done this already, but this makes
 	; sure it's handled in case we never ran that function.
 	ldh a, [rVBK]
-	push af
-	ld a, 1
+	ld b, a
+	ldh a, [hBGMapMode]
+	ld c, a
+	push bc
+	xor a
+	ldh [hBGMapMode], a
+	inc a
 	ldh [rVBK], a
 	ld hl, vTiles3 tile $14
 	call BillsPC_BlankTiles
-	pop af
+	pop bc
+	ld a, b
 	ldh [rVBK], a
+	ld a, c
+	ldh [hBGMapMode], a
 	jp PopBCDEHL
 
 BillsPC_AbortSelection:
