@@ -44,7 +44,7 @@ _BillsPC:
 
 BillsPC_LoadUI:
 	ld a, 1
-	ld [rVBK], a
+	ldh [rVBK], a
 
 	; Cursor tiles
 	ld de, BillsPC_CursorTiles
@@ -58,7 +58,7 @@ BillsPC_LoadUI:
 	call BillsPC_BlankTiles
 
 	xor a
-	ld [rVBK], a
+	ldh [rVBK], a
 
 	; Cursor sprite OAM
 	lb de, 38, 16
@@ -645,10 +645,10 @@ PCIconLoop:
 	jr nz, .not_holding
 	ld a, [wBillsPC_CursorHeldSlot]
 	cp c
-	jr z, .next
+	jr z, .blank
 .not_holding
 	call GetStorageBoxMon
-	jr z, .next
+	jr z, .blank
 	ld a, [wTempMonIsEgg]
 	bit MON_IS_EGG_F, a
 	ld a, [wTempMon]
@@ -669,6 +669,14 @@ PCIconLoop:
 	pop de
 	pop hl
 	call WriteIconPaletteData
+	jr .next
+
+.blank
+	; Fill storage species slot with a blank species.
+	xor a
+	ld [hli], a
+	ld [hli], a
+
 .next
 	ld a, e
 	add 4
@@ -880,27 +888,50 @@ MoveCurMonToBox:
 	push bc
 	call BillsPC_PerformQuickAnim
 	pop bc
-	ld a, b
-	and a
-	ret nz
-
-	; Perform party shift animation.
-	ld d, b
-	ld e, c
-.loop
-	ld a, [wPartyCount]
-	inc a
-	cp e
+	; fallthrough
+CheckPartyShift:
+; Shifts entries around to ensure there are no blank party entries.
+; This is a purely graphical effect, internal PC functions has already
+; taken care of any blank spots data-wise.
+	xor a
+	ld e, a
+	ld d, a
+	ld b, a
+.outer_loop
+	ld a, e
+	inc e
+	cp PARTY_LENGTH - 1
 	ret z
+	call .CheckBlankIcon
+	jr nz, .outer_loop
 	ld c, e
+.inner_loop
+	ld a, c
 	inc c
+	cp PARTY_LENGTH
+	ret z
+	call .CheckBlankIcon
+	jr z, .inner_loop
+
+	; Found icon to swap
 	push de
 	push bc
 	call BillsPC_PerformQuickAnim
 	pop bc
 	pop de
-	inc e
-	jr .loop
+	jr .outer_loop
+
+.CheckBlankIcon:
+	add a
+	ld hl, wBillsPC_PartyList
+	add l
+	ld l, a
+	adc h
+	sub l
+	ld h, a
+	ld a, [hl]
+	and a
+	ret
 
 GetCursorMon:
 ; Prints data about Pokémon at cursor if nothing is held (underline to force).
@@ -995,11 +1026,11 @@ _GetCursorMon:
 	ld a, 0
 	jr nz, .dont_switch_vbk
 	ld a, 1
-	ld [rVBK], a
+	ldh [rVBK], a
 .dont_switch_vbk
 	farcall GetPreparedFrontpic
 	xor a
-	ld [rVBK], a
+	ldh [rVBK], a
 	ld hl, wBillsPC_ItemVWF
 	ld bc, 10 tiles
 	xor a
@@ -1013,13 +1044,13 @@ _GetCursorMon:
 	call DelayFrame
 
 	ld a, 1
-	ld [rVBK], a
+	ldh [rVBK], a
 	ld hl, vTiles2 tile $31
 	ld de, wBillsPC_ItemVWF
 	ld c, 10
 	call Get2bpp
 	xor a
-	ld [rVBK], a
+	ldh [rVBK], a
 
 	pop af
 	ld a, 2
@@ -1487,6 +1518,8 @@ BillsPC_MoveIconData:
 	ldh [rSVBK], a
 	xor a
 	ldh [hBGMapMode], a
+
+	; Copy palette data
 	call .Copy
 	pop af
 	ldh [rSVBK], a
@@ -1512,6 +1545,11 @@ BillsPC_MoveIconData:
 	pop bc
 
 	; Blank old icon data.
+	ld a, 1
+	call .GetAddr
+	xor a
+	ld [hli], a
+	ld [hli], a
 	ld a, 2
 	call .GetAddr
 	ld a, 1
@@ -2151,9 +2189,6 @@ BillsPC_Release:
 	text "!"
 	prompt
 
-BillsPC_SwitchBox:
-	ret
-
 BillsPC_Rename:
 	ld hl, rIE
 	res LCD_STAT, [hl]
@@ -2280,9 +2315,56 @@ BillsPC_PlaceHeldMon:
 
 	; Try to swap slots bc and de and interpret result.
 	call BillsPC_SwapStorage
-	ret nz
+	ret nz ; failed
 
-	; TODO: graphics
+	; If we moved it onto a box, just move the sprite to its location without
+	; any placing animation.
+	inc c
+	dec c
+	jr nz, .not_on_boxname
+	push de
+	ld e, a
+	ld d, b
+	lb bc, -1, 0
+	call BillsPC_PerformQuickAnim
+	pop bc
+	jr .partyshift
+
+.not_on_boxname
+	; Check if the slot is blank.
+	ld a, c
+	dec a
+	add a
+	inc b
+	dec b
+	ld hl, wBillsPC_PartyList
+	jr z, .got_monlist
+	ld hl, wBillsPC_BoxList
+.got_monlist
+	add l
+	ld l, a
+	adc h
+	sub l
+	ld h, a
+	ld a, [hl]
+	and a
+	push af
+	push de
+	push bc
+	call nz, BillsPC_PrepareQuickAnim
+
+	call BillsPC_CursorPick1
+	pop de
+	lb bc, -1, 0
+	call BillsPC_MoveIconData
+	call BillsPC_CursorPick2
+	pop bc
+	pop af
+.partyshift
+	call CheckPartyShift
+	xor a
+	ld [wBillsPC_CursorHeldBox], a
+	ld [wBillsPC_CursorHeldSlot], a
 	ret
 
 BillsPC_SetOBPals:

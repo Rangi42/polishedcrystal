@@ -76,7 +76,7 @@ LCDBillsPC1::
 	push af
 
 	; Write boxmon palettes
-	ld a, [rSTAT]
+	ldh a, [rSTAT]
 	bit 2, a
 	jr z, .donepc
 	push hl

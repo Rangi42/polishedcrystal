@@ -333,5 +333,5 @@ SpriteAnimFrameData:
 	dorestart
 
 .Frameset_PcQuick:
-	frame SPRITE_ANIM_OAMSET_PC_QUICK, 10
+	frame SPRITE_ANIM_OAMSET_PC_QUICK, 8
 	delanim
