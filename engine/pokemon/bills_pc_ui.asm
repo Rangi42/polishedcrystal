@@ -1313,7 +1313,7 @@ ManageBoxes:
 
 .BoxMenu:
 	db $40 ; flags
-	db 10, 07 ; start coords
+	db 12, 11 ; start coords
 	db 17, 19 ; end coords
 	dw .BoxMenuData2
 	db 1 ; default option
@@ -1348,8 +1348,7 @@ ManageBoxes:
 	db -1
 
 .boxitems
-	db 3
-	db BOXMENU_SWITCHBOX
+	db 2
 	db BOXMENU_RENAME
 	db BOXMENU_CANCEL
 	db -1
@@ -1365,7 +1364,6 @@ BillsPC_MenuStrings:
 	db "Item@"
 	db "Release@"
 	; box options
-	db "Switch box@"
 	db "Rename@"
 	; holds and item
 	db "Move@"
@@ -1382,7 +1380,6 @@ BillsPC_MenuJumptable:
 	dw BillsPC_Moves
 	dw BillsPC_Item
 	dw BillsPC_Release
-	dw BillsPC_SwitchBox
 	dw BillsPC_Rename
 	dw BillsPC_MoveItem
 	dw BillsPC_BagItem
@@ -1831,6 +1828,11 @@ BillsPC_Rename:
 	ld de, wStringBuffer2
 	farcall NamingScreen
 	ld hl, wStringBuffer2
+
+	; Abort if no name was entered.
+	ld a, "@"
+	cp [hl]
+	jr z, .abort
 	ld de, wStringBuffer1
 	ld bc, BOX_NAME_LENGTH
 	rst CopyBytes
@@ -1838,6 +1840,7 @@ BillsPC_Rename:
 	inc a
 	ld b, a
 	farcall SetBoxName
+.abort
 	call ExitMenu
 	call BillsPC_PrintBoxName
 	jp BillsPC_RestoreUI
