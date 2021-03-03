@@ -28,7 +28,8 @@ CheckCurPartyMonFainted:
 	ret
 
 SwapStorageBoxSlots:
-; Swaps slots from de to bc. Equivalent to bc->de except c may be 0 to mean
+; Swaps slots from de to bc. Preserves de, while bc is changed to a proper slot
+; if c is 0, otherwise preserved. Equivalent to bc->de except c may be 0 to mean
 ; "put anywhere in the party/box". Returns the following in a:
 ; 0: Successful swap
 ; 1: Save is required to perform the swap
@@ -79,6 +80,15 @@ SwapStorageBoxSlots:
 .got_dest
 	pop de
 
+	; Now that we have proper slots, preserve bcde from this point.
+	push de
+	push bc
+	call .do_it
+	pop bc
+	pop de
+	ret
+
+.do_it
 	; If d<b, swap bc and de. The reason for this is that we want to handle
 	; party->box movement the same way as box->party.
 	ld a, d

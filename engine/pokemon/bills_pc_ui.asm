@@ -861,20 +861,39 @@ MoveCurMonToBox:
 	pop bc
 	ld c, 0
 	call BillsPC_SwapStorage
+	ret nz ; failed
+
+	; Perform movement animation.
+	ld c, a
+	push de
+	ld d, b
+	ld e, c
+	pop bc
+	push bc
+	call BillsPC_PerformQuickAnim
+	pop bc
+	ld a, b
+	and a
 	ret nz
-	ld a, 1
-	ldh [rVBK], a
-	ldh a, [hBGMapMode]
-	push af
-	xor a
-	ldh [hBGMapMode], a
-	call SetPartyIcons
-	call SetBoxIcons
-	pop af
-	ldh [hBGMapMode], a
-	xor a
-	ldh [rVBK], a
-	; fallthrough
+
+	; Perform party shift animation.
+	ld d, b
+	ld e, c
+.loop
+	ld a, [wPartyCount]
+	inc a
+	cp e
+	ret z
+	ld c, e
+	inc c
+	push de
+	push bc
+	call BillsPC_PerformQuickAnim
+	pop bc
+	pop de
+	inc e
+	jr .loop
+
 GetCursorMon:
 ; Prints data about Pokémon at cursor if nothing is held (underline to force).
 ; Returns z if cursor is on an empty pkmn slot.
@@ -2154,14 +2173,18 @@ BillsPC_GetCursorFromTo:
 	jp BillsPC_GetCursorSlot
 
 BillsPC_SwapStorage:
-; Swaps slots bc and de. Returns z on success.
+; Swaps slots bc and de. Returns z on success with effective slot in a.
 	push de
 	push bc
 
 	; Try to swap slots bc and de and interpret result.
 	call SwapStorageBoxSlots
 	and a
-	jr z, .done
+	jr nz, .failed
+	ld a, c
+	jr .done
+
+.failed
 	sub 2
 	ld hl, BillsPC_MustSaveToContinue
 	jr c, .swap_failed
