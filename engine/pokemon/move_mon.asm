@@ -635,70 +635,6 @@ AddTempmonToParty:
 	and a
 	ret
 
-RestorePPofDepositedPokemon:
-	ld a, b
-	ld hl, sBoxMons
-	ld bc, BOXMON_STRUCT_LENGTH
-	rst AddNTimes
-	ld b, h
-	ld c, l
-	ld hl, MON_PP
-	add hl, bc
-	push hl
-	push bc
-	ld de, wTempMonPP
-	ld bc, NUM_MOVES
-	rst CopyBytes
-	pop bc
-	ld hl, MON_MOVES
-	add hl, bc
-	push hl
-	ld de, wTempMonMoves
-	ld bc, NUM_MOVES
-	rst CopyBytes
-	pop hl
-	pop de
-
-	ld a, [wMenuCursorY]
-	push af
-	ld a, [wMonType]
-	push af
-	ld b, 0
-.loop
-	ld a, [hli]
-	and a
-	jr z, .done
-	ld [wTempMonMoves], a
-	ld a, BOXMON
-	ld [wMonType], a
-	ld a, b
-	ld [wMenuCursorY], a
-	push bc
-	push hl
-	push de
-	call GetMaxPPOfMove
-	pop de
-	pop hl
-	ld a, [wd265]
-	ld b, a
-	ld a, [de]
-	and %11000000
-	add b
-	ld [de], a
-	pop bc
-	inc de
-	inc b
-	ld a, b
-	cp NUM_MOVES
-	jr c, .loop
-
-.done
-	pop af
-	ld [wMonType], a
-	pop af
-	ld [wMenuCursorY], a
-	ret
-
 RetrievePokemonFromDayCareMan:
 	ld a, [wBreedMon1Species]
 	ld [wCurPartySpecies], a
@@ -872,36 +808,23 @@ _DepositBreedmon:
 
 SentPkmnIntoBox:
 ; Sents the Pkmn into one of Bills Boxes
-; the data comes mainly from 'wEnemyMon:'
-	ld a, BANK(sBoxCount)
-	call GetSRAMBank
-	ld de, sBoxCount
-	ld a, [de]
-	cp MONS_PER_BOX
-	jp nc, .full
-	inc a
-	ld [de], a
+; the data comes mainly from wOTPartyMon1
+	farcall NewStorageBoxPointer
+	jr c, .full
+
+	push bc
+	ld b, $81
+	ld c, 1
+	farcall CopyBetweenPartyAndTemp
 
 	ld a, [wCurPartySpecies]
 	ld [wCurSpecies], a
-	ld c, a
-.loop
-	inc de
-	ld a, [de]
-	ld b, a
-	ld a, c
-	ld c, b
-	ld [de], a
-	inc a
-	jr nz, .loop
-
 	ld hl, wOTPartyMon1Form
 	predef GetVariant
 	call GetBaseData
-	call ShiftBoxMon
 
 	ld hl, wPlayerName
-	ld de, sBoxMonOT
+	ld de, wTempMonOT
 	ld bc, NAME_LENGTH
 	rst CopyBytes
 
@@ -909,14 +832,9 @@ SentPkmnIntoBox:
 	ld [wd265], a
 	call GetPokemonName
 
-	ld de, sBoxMonNicknames
 	ld hl, wStringBuffer1
+	ld de, wTempMonNickname
 	ld bc, MON_NAME_LENGTH
-	rst CopyBytes
-
-	ld hl, wOTPartyMon1
-	ld de, sBoxMon1
-	ld bc, BOXMON_STRUCT_LENGTH
 	rst CopyBytes
 
 	ld a, [wCurPartySpecies]
@@ -928,74 +846,17 @@ SentPkmnIntoBox:
 	jr nz, .not_unown
 	farcall UpdateUnownDex
 .not_unown
-
-	ld hl, sBoxMon1Moves
-	ld de, wTempMonMoves
-	ld bc, NUM_MOVES
-	rst CopyBytes
-
-	ld hl, sBoxMon1PP
-	ld de, wTempMonPP
-	ld bc, NUM_MOVES
-	rst CopyBytes
-
-	ld b, 0
-	call RestorePPofDepositedPokemon
-
-	call CloseSRAM
+	pop bc
+	ld a, b
+	ld [wTempMonBox], a
+	ld a, c
+	ld [wTempMonSlot], a
+	farcall UpdateStorageBoxMonFromTemp
 	scf
 	ret
 
 .full
-	call CloseSRAM
 	and a
-	ret
-
-ShiftBoxMon:
-	ld hl, sBoxMonOT
-	ld bc, NAME_LENGTH
-	call .shift
-
-	ld hl, sBoxMonNicknames
-	ld bc, MON_NAME_LENGTH
-	call .shift
-
-	ld hl, sBoxMons
-	ld bc, BOXMON_STRUCT_LENGTH
-
-.shift
-	ld a, [sBoxCount]
-	cp 2
-	ret c
-
-	push hl
-	rst AddNTimes
-	dec hl
-	ld e, l
-	ld d, h
-	pop hl
-
-	ld a, [sBoxCount]
-	dec a
-	rst AddNTimes
-	dec hl
-
-	push hl
-	ld a, [sBoxCount]
-	dec a
-	ld hl, 0
-	rst AddNTimes
-	ld c, l
-	ld b, h
-	pop hl
-.loop
-	ld a, [hld]
-	ld [de], a
-	dec de
-	dec bc
-	ld a, c
-	or b
-	jr nz, .loop
 	ret
 
 GiveEgg::
@@ -1114,106 +975,13 @@ String_Egg:
 	db "Egg@"
 
 RemoveMonFromParty:
-	ld hl, wPartyCount
-	ld a, [hl]
-	dec a
-	ld [hli], a
-	ld a, [wCurPartyMon]
-	ld c, a
+; Done by writing a null entry to the party slot.
 	ld b, 0
-	add hl, bc
-	ld e, l
-	ld d, h
-	inc de
-.loop
-	ld a, [de]
-	inc de
-	ld [hli], a
+	ld a, [wCurPartyMon]
 	inc a
-	jr nz, .loop
-	ld hl, wPartyMonOT
-	ld d, PARTY_LENGTH - 1
-
-	; If this is the last mon in our party, shift
-	; all the other mons up to close the gap.
-	ld a, [wCurPartyMon]
-	call SkipNames
-	ld a, [wCurPartyMon]
-	cp d
-	jr nz, .delete_inside
-	ld [hl], -1
-	jp .finish
-
-.delete_inside
-	; Shift the OT names
-	ld d, h
-	ld e, l
-	ld bc, MON_NAME_LENGTH
-	add hl, bc
-	ld bc, wPartyMonNicknames
-	call CopyDataUntil
-	; Shift the struct
-	ld hl, wPartyMons
-	ld bc, PARTYMON_STRUCT_LENGTH
-	ld a, [wCurPartyMon]
-	rst AddNTimes
-	ld d, h
-	ld e, l
-	ld bc, PARTYMON_STRUCT_LENGTH
-	add hl, bc
-	ld bc, wPartyMonOT
-.copy
-	call CopyDataUntil
-	; Shift the nicknames
-	ld hl, wPartyMonNicknames
-	ld bc, MON_NAME_LENGTH
-	ld a, [wCurPartyMon]
-	rst AddNTimes
-	ld d, h
-	ld e, l
-	ld bc, MON_NAME_LENGTH
-	add hl, bc
-	ld bc, wPartyMonNicknamesEnd
-	call CopyDataUntil
-	; Mail time!
-.finish
-	ld a, [wLinkMode]
-	and a
-	ret nz
-	; Shift mail
-	ld a, BANK(sPartyMail)
-	call GetSRAMBank
-	; If this is the last mon in our party, no need to shift mail.
-	ld hl, wPartyCount
-	ld a, [wCurPartyMon]
-	cp [hl]
-	jr z, .close_sram
-	; Shift our mail messages up.
-	ld hl, sPartyMail
-	ld bc, MAIL_STRUCT_LENGTH
-	rst AddNTimes
-	push hl
-	add hl, bc
-	pop de
-	ld a, [wCurPartyMon]
-	ld b, a
-.loop2
-	push bc
-	push hl
-	ld bc, MAIL_STRUCT_LENGTH
-	rst CopyBytes
-	pop hl
-	push hl
-	ld bc, MAIL_STRUCT_LENGTH
-	add hl, bc
-	pop de
-	pop bc
-	inc b
-	ld a, [wPartyCount]
-	cp b
-	jr nz, .loop2
-.close_sram
-	jp CloseSRAM
+	ld c, a
+	ld e, 0
+	farjp SetStorageBoxPointer
 
 ComputeNPCTrademonStats:
 	ld a, MON_LEVEL
@@ -1678,7 +1446,8 @@ GivePoke::
 	and a
 	jr z, .no_item
 	ld a, [wCurItem]
-	ld [sBoxMon1Item], a
+	ld [wTempMonItem], a
+	farcall UpdateStorageBoxMonFromTemp
 .no_item
 	ld a, POKE_BALL
 	ld [wCurItem], a
@@ -1750,9 +1519,7 @@ GivePoke::
 	jr .skip_nickname
 
 .send_to_box
-	ld a, BANK(sBoxMonOT)
-	call GetSRAMBank
-	ld de, sBoxMonOT
+	ld de, wTempMonOT
 .loop
 	ld a, [wScriptBank]
 	call GetFarByte
@@ -1766,12 +1533,12 @@ GivePoke::
 	ld b, a
 	ld a, POKE_BALL
 	ld c, a
-	ld hl, sBoxMon1ID
+	ld hl, wTempMonID
 	call Random
 	ld [hli], a
 	call Random
 	ld [hl], a
-	call CloseSRAM
+	farcall UpdateStorageBoxMonFromTemp
 	farcall SetGiftBoxMonCaughtData
 	jr .skip_nickname
 
@@ -1803,13 +1570,11 @@ GivePoke::
 	ret z
 	ld hl, TextJump_WasSentToBillsPC
 	call PrintText
-	ld a, BANK(sBoxMonNicknames)
-	call GetSRAMBank
 	ld hl, wMonOrItemNameBuffer
-	ld de, sBoxMonNicknames
+	ld de, wTempMonNickname
 	ld bc, MON_NAME_LENGTH
 	rst CopyBytes
-	call CloseSRAM
+	farcall UpdateStorageBoxMonFromTemp
 	ld b, $1
 	ret
 

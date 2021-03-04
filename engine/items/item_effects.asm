@@ -351,12 +351,8 @@ PokeBallEffect:
 	jr .room_in_party
 
 .check_room
-	ld a, BANK(sBoxCount)
-	call GetSRAMBank
-	ld a, [sBoxCount]
-	cp MONS_PER_BOX
-	call CloseSRAM
-	jp z, Ball_BoxIsFullMessage
+	farcall NewStorageBoxPointer
+	jp c, Ball_BoxIsFullMessage
 
 .room_in_party
 	xor a
@@ -626,11 +622,7 @@ PokeBallEffect:
 
 	farcall SetBoxMonCaughtData
 
-	ld a, BANK(sBoxCount)
-	call GetSRAMBank
-
-	ld a, [sBoxCount]
-	cp MONS_PER_BOX
+	farcall NewStorageBoxPointer
 	jr nz, .BoxNotFullYet
 	ld hl, wBattleResult
 	set 7, [hl]
@@ -640,9 +632,8 @@ PokeBallEffect:
 	jr nz, .SkipBoxMonFriendBall
 	; caught Pokemon become the first Pokemon in the box
 	ld a, FRIEND_BALL_HAPPINESS
-	ld [sBoxMon1Happiness], a
+	ld [wTempMonHappiness], a
 .SkipBoxMonFriendBall:
-	call CloseSRAM
 
 	ld a, [wInitialOptions]
 	bit NUZLOCKE_MODE, a
@@ -661,36 +652,28 @@ PokeBallEffect:
 .AlwaysNicknameBox:
 	xor a
 	ld [wCurPartyMon], a
-	ld a, BOXMON
+	ld a, TEMPMON
 	ld [wMonType], a
 	ld de, wMonOrItemNameBuffer
 	ld b, $0 ; pokemon
 	farcall NamingScreen
 
-	ld a, BANK(sBoxMonNicknames)
-	call GetSRAMBank
-
 	ld hl, wMonOrItemNameBuffer
-	ld de, sBoxMonNicknames
+	ld de, wTempMonNickname
 	ld bc, MON_NAME_LENGTH
 	rst CopyBytes
 
-	ld hl, sBoxMonNicknames
+	ld hl, wTempMonNickname
 	ld de, wStringBuffer1
 	call InitName
 
-	call CloseSRAM
-
 .SkipBoxMonNickname:
-	ld a, BANK(sBoxMonNicknames)
-	call GetSRAMBank
-
-	ld hl, sBoxMonNicknames
+	ld hl, wTempMonNickname
 	ld de, wMonOrItemNameBuffer
 	ld bc, MON_NAME_LENGTH
 	rst CopyBytes
 
-	call CloseSRAM
+	farcall UpdateStorageBoxMonFromTemp
 
 	ld hl, Text_SentToBillsPC
 	call PrintText

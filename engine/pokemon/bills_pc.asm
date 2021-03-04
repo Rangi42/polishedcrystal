@@ -463,19 +463,33 @@ UpdateStorageBoxMonFromTemp:
 	ld a, [wTempMonSlot]
 	ld c, a
 	ld a, [wTempMonBox]
-	and a
 	ld b, a
+	and a
 	jp z, CopyBetweenPartyAndTemp
 
 	; Otherwise, we need to allocate a new box entry.
+	; Erase the current entry before trying to find a new one.
+	; This code exists to gurantee that should the storage commit work once,
+	; it will always continue to work for the same tempmon session without an
+	; enforced save inbetween. Without it, the code could write a new 314th
+	; entry the first write, then fail to reuse the same entry later.
+	call GetStorageBoxPointer
+	push de
+	ld e, 0
+	call SetStorageBoxPointer
 	push bc
 	call NewStoragePointer
 	pop bc
-	sbc a ; converts nc|c to nz|z
-	ret nz
+	jr nc, .found_entry
+	pop de
+	call SetStorageBoxPointer
+	or 1
+	ret
 
+.found_entry
 	call AddStorageMon
 	call SetStorageBoxPointer
+	pop de
 	xor a
 	ret
 

@@ -47,19 +47,11 @@ sMailbox8Backup::  mailmsg sMailbox8Backup
 sMailbox9Backup::  mailmsg sMailbox9Backup
 sMailbox10Backup:: mailmsg sMailbox10Backup
 
-; 3 copies to always know the correct version.
-; If 2==3, use 3. Otherwise, use 1.
 sSaveVersion:: dw
-sSaveVersion2:: dw
-sSaveVersion3:: dw
-; For save upgrades that needs to keep track of progress across game resets.
-; Used the same way as sSaveVersion2.
-sSaveUpgradePhase:: db
-sSaveUpgradePhase2:: db
-sSaveUpgradePhase3:: db
+sUpgradeStep:: db
 sWritingBackup:: db ; 1 if we're saving, anything else if not.
 
-	ds 154
+	ds 160
 
 sRTCStatusFlags:: ds 8
 sLuckyNumberDay:: db
@@ -106,11 +98,6 @@ sCheckValue2:: db ; loaded with 127, used to check save corruption
 
 SECTION "Active Box", SRAM
 
-UNION
-; LEGACY SAVE DATA
-sBox:: box sBox
-	ds $f4
-NEXTU
 sNewBox1:: newbox sNewBox1
 sNewBox2:: newbox sNewBox2
 sNewBox3:: newbox sNewBox3
@@ -143,7 +130,6 @@ sBackupNewBox12:: newbox sBackupNewBox12
 sBackupNewBox13:: newbox sBackupNewBox13
 sBackupNewBox14:: newbox sBackupNewBox14
 sBackupNewBox15:: newbox sBackupNewBox15
-ENDU
 
 SECTION "Link Battle Data", SRAM
 

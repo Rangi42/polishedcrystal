@@ -858,6 +858,9 @@ wCreditsBlankFrame2bpp:: ds 8 * 8 * 2
 
 NEXTU
 
+; If you change ordering of this, remember to fix LCD hblank code too.
+; Note that (as of when comment was written), hblank can't always keep up
+; if doing 4 pals in one go during party shifting.
 wBillsPC_CurPals::
 wBillsPC_CurPartyPals:: ds 2 * 2 * 2 ; 2 bytes per color, 2 colors, 2 mons
 wBillsPC_CurMonPals:: ds 2 * 2 * 4 ; 2 bytes per color, 2 colors, 4 mons
