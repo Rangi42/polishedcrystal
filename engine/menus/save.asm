@@ -684,8 +684,18 @@ ResetHyperTrainingBits:
 	ret
 
 UpgradeStorageSystem:
-; TODO: on a public release, don't just throw out everything
-	farjp InitializeBoxes
+	ld hl, .SaveUpgradeRequired
+	call MenuTextbox
+	call CloseWindow
+	jp SoftReset
+
+.SaveUpgradeRequired:
+	text "Your save appears"
+	line "to be out of date."
+
+	para "Please upgrade to"
+	line "continue playing."
+	prompt
 
 GetUpgradePhase:
 SetUpgradePhase:
