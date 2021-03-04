@@ -1071,6 +1071,7 @@ _GetCursorMon:
 .egg
 	farcall GetMonNormalOrShinyPalettePointer
 	ld de, wBillsPC_PokepicPal
+	push de
 	ld b, 4
 .loop
 	ld a, BANK(PokemonPalettes)
@@ -1080,6 +1081,11 @@ _GetCursorMon:
 	inc de
 	dec b
 	jr nz, .loop
+
+	ld a, [wTempMonShiny]
+	ld [wColorVaryShiny], a
+	pop hl
+	farcall VaryBGPalByTempMonDVs
 
 	; Show or hide item icon
 	ld hl, wVirtualOAM + 64
