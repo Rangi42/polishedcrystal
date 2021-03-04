@@ -926,8 +926,12 @@ ManagePokemonMoves:
 	call PreparePartyTempMon
 	; fallthrough
 _ManagePokemonMoves:
-	ld a, MON_IS_EGG
-	call GetPartyParamLocation
+	ld a, [wTempMonBox]
+	ld b, a
+	ld a, [wTempMonSlot]
+	ld c, a
+	farcall GetStorageBoxMon
+	ld hl, wTempMonIsEgg
 	bit MON_IS_EGG_F, [hl]
 	jr nz, .egg
 	ld hl, wOptions1
