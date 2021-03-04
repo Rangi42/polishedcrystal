@@ -308,8 +308,10 @@ NewStorageBoxPointer:
 .outer_loop
 	ld c, 1
 .inner_loop
+	push de
 	call GetStorageBoxPointer
 	ld a, e
+	pop de
 	and a
 	jr z, .found_free_space
 	ld a, c
