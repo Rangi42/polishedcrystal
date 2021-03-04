@@ -1201,6 +1201,9 @@ ManageBoxes:
 	call GetCursorMon
 	jr z, .loop
 
+	ld de, SFX_READ_TEXT_2
+	call PlaySFX
+
 	; check if we're on top row (hovering over box name)
 	ld a, [wBillsPC_CursorPos]
 	cp $10
@@ -1244,7 +1247,7 @@ ManageBoxes:
 	and a
 	jr z, .nothing_held_b
 	call BillsPC_AbortSelection
-	jr .loop
+	jp .loop
 
 .nothing_held_b
 	; Prompt if we want to exit Box operations or not.
