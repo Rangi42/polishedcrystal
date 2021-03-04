@@ -1446,6 +1446,9 @@ MoveScreen_ListMoves:
 	predef ListMoves
 
 	; Get PP -- either current PP, or default PP for the move
+	ld a, [wMoveScreenMode]
+	and a
+	jr z, .got_pp
 	ld hl, wListMoves_MoveIndicesBuffer
 	ld de, wTempMonMoves
 	ld bc, NUM_MOVES
