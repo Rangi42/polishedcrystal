@@ -272,8 +272,7 @@ CutDownGrass:
 	call LoadMapPart
 	call UpdateSprites
 	call DelayFrame
-	ld a, [wBuffer6] ; Animation type (always 1)
-	ld e, a
+	ld a, 1 ; Animation type
 	farcall OWCutAnimation
 	call BufferScreen
 	call GetMovementPermissions
@@ -339,7 +338,6 @@ CutDownTree:
 	call UpdateSprites
 	call DelayFrame
 	xor a ; Animation type
-	ld e, a
 	farcall OWCutAnimation
 	call BufferScreen
 	call GetMovementPermissions
@@ -1614,6 +1612,7 @@ Script_NotEvenANibble:
 
 Script_GotAnItem:
 	scall Script_FishCastRod
+	callasm Fishing_CheckFacingUp
 	iffalse .NotFacingUp
 	applymovement PLAYER, Movement_HookedItemFacingUp
 	jump .GetTheHookedItem

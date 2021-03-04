@@ -183,7 +183,7 @@ EnterMapWarp:
 
 .SaveDigWarp:
 	call GetMapEnvironment
-	call CheckOutdoorMap
+	call CheckOutdoorOrIsolatedMap
 	ret nz
 	ld a, [wNextMapGroup]
 	ld b, a
@@ -192,13 +192,6 @@ EnterMapWarp:
 	call GetAnyMapEnvironment
 	call CheckIndoorMap
 	ret nz
-	ld a, [wPrevMapGroup]
-	cp GROUP_TIN_TOWER_ROOF
-	jr nz, .not_tin_tower_roof
-	ld a, [wPrevMapNumber]
-	cp MAP_TIN_TOWER_ROOF
-	ret z
-.not_tin_tower_roof
 	ld a, [wPrevWarp]
 	ld [wDigWarpNumber], a
 	ld a, [wPrevMapGroup]
