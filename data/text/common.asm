@@ -4170,11 +4170,20 @@ Text_Waitbutton_2::
 	text_waitbutton
 	text_end
 
+SECTION "_BallCurBoxFullText", ROMX
+_BallCurBoxFullText::
+	text ""
+	text_from_ram wStringBuffer1
+	text " is full."
+	prompt
+
 SECTION "_BallSentToPCText", ROMX
 _BallSentToPCText::
 	text_from_ram wMonOrItemNameBuffer
 	text " was"
-	line "sent to Bill's PC."
+	line "sent to "
+	text_from_ram wStringBuffer1
+	text "."
 	prompt
 
 SECTION "_NewDexDataText", ROMX

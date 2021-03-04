@@ -675,6 +675,32 @@ PokeBallEffect:
 
 	farcall UpdateStorageBoxMonFromTemp
 
+	; Switch current Box if it was full. We can check this by checking if
+	; the tempmon's box location matches the current box.
+	ld a, [wTempMonBox]
+	ld b, a
+	ld a, [wCurBox]
+	inc a
+	cp b
+	jr z, .curbox_not_full
+
+	push bc
+	ld b, a
+	farcall GetBoxName
+	ld hl, Text_CurBoxFull
+	call PrintText
+	pop bc
+
+	; Switch current box.
+	ld a, b
+	dec a
+	ld [wCurBox], a
+
+.curbox_not_full
+	ld a, [wCurBox]
+	inc a
+	ld b, a
+	farcall GetBoxName
 	ld hl, Text_SentToBillsPC
 	call PrintText
 
@@ -813,6 +839,10 @@ Text_GotchaMonWasCaught:
 TextJump_Waitbutton:
 	; @
 	text_jump Text_Waitbutton_2
+	text_end
+
+Text_CurBoxFull:
+	text_jump _BallCurBoxFullText
 	text_end
 
 Text_SentToBillsPC:
