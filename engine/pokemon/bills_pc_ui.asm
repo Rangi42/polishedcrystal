@@ -52,11 +52,6 @@ BillsPC_LoadUI:
 	lb bc, BANK(BillsPC_CursorTiles), 2
 	call Get2bpp
 
-	; Blank held cursor mini + item icons
-	ld hl, vTiles0 + 8 tiles
-	ld a, 3 ; mini + shadowmask + items (only uses 2 tiles, but this is ok).
-	call BillsPC_BlankTiles
-
 	xor a
 	ldh [rVBK], a
 
@@ -129,6 +124,11 @@ UseBillsPC:
 	pop af
 	dec a
 	jr nz, .blank_loop
+
+	; Blank held cursor mini + item icons
+	ld hl, vTiles3 tile $08
+	ld a, 3 ; mini + shadowmask + items (only uses 2 tiles, but this is ok).
+	call BillsPC_BlankTiles
 
 	; Pokepic attributes
 	hlcoord 0, 0, wAttrMap
