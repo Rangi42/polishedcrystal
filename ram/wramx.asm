@@ -1180,8 +1180,8 @@ wErinFightCount::    db
 wEventFlags:: flag_array NUM_EVENTS
 
 wCurBox:: db
-wBoxNames:: ds BOX_NAME_LENGTH * 14 ; old box system used to have 14 boxes
-wBoxNamesEnd::
+
+	ds 126 ; unused (box names used to be stored here)
 
 wCelebiEvent:: db
 

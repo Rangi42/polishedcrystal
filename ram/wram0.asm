@@ -1114,9 +1114,7 @@ wWhichIndexSet:: db
 wScrollingMenuCursorPosition:: db
 wWindowStackSize:: db
 
-wPalColor:: db
-
-	ds 7
+	ds 8
 
 ; menu header
 wMenuHeader::

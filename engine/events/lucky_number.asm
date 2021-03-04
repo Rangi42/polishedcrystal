@@ -86,10 +86,8 @@ Special_CheckForLuckyNumberWinners:
 	dec b
 	ld hl, .MatchInParty
 	jr z, .got_text
-	ld a, b
-	ld hl, wBoxNames
-	ld bc, BOX_NAME_LENGTH
-	rst AddNTimes
+	farcall GetBoxName
+	ld hl, wStringBuffer1
 	ld de, wStringBuffer2
 	ld bc, BOX_NAME_LENGTH
 	rst CopyBytes
