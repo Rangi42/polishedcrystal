@@ -1181,7 +1181,7 @@ wEventFlags:: flag_array NUM_EVENTS
 
 wCurBox:: db
 
-	ds 126 ; unused (box names used to be stored here)
+	ds 126 ; unused
 
 wCelebiEvent:: db
 

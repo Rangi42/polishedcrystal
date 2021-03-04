@@ -108,11 +108,7 @@ ResetWRAM:
 	xor a
 	rst ByteFill
 	ld hl, wMoneyEnd
-	ld bc, wCurBox - wMoneyEnd
-	xor a
-	rst ByteFill
-	ld hl, wCelebiEvent
-	ld bc, wBattlePoints - wCelebiEvent
+	ld bc, wBattlePoints - wMoneyEnd
 	xor a
 	rst ByteFill
 	ld hl, wBattlePointsEnd
