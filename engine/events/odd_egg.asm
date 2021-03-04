@@ -91,10 +91,16 @@ AddEggMonToParty:
 	ld e, l
 	ld d, h
 	ld hl, wOddEggName
-	ld bc, MON_NAME_LENGTH - 1
+	ld bc, PLAYER_NAME_LENGTH - 1
 	rst CopyBytes
-	ld a, "@"
-	ld [de], a
+	ld h, d
+	ld l, e
+	ld [hl], "@"
+	inc hl
+	xor a
+	ld [hli], a
+	ld [hli], a
+	ld [hl], a
 
 	ld hl, wPartyMonNicknames
 	ld bc, MON_NAME_LENGTH
