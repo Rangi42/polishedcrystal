@@ -868,6 +868,11 @@ DecodeTempMon:
 
 .set_partymon_data
 	; Calculate stats
+	ld a, [wTempMonSpecies]
+	ld [wCurSpecies], a
+	ld a, [wTempMonForm]
+	ld [wCurForm], a
+	call GetBaseData
 	ld hl, wTempMonOT + PLAYER_NAME_LENGTH
 	ld a, [hl]
 	and HYPER_TRAINING_MASK
