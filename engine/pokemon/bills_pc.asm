@@ -341,9 +341,12 @@ NewStorageBoxPointer:
 
 .storage_ok
 	; Returns z if the new storage was found in our active box, nz otherwise.
+	; Always return nc.
 	ld a, [wCurBox]
 	inc a
 	cp b
+	ret z
+	or 1
 	ret
 
 NewStoragePointer:
