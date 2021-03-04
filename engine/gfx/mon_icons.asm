@@ -208,11 +208,15 @@ LoadMoveMenuMonIcon:
 	push bc
 
 	depixel 3, 4, 2, 4
+	push de
+	ld hl, wTempMonForm
+	jr _InitScreenMonIcon
 InitScreenMonIcon:
 	push de
 
 	ld a, MON_FORM ; aka MON_IS_EGG
 	call GetPartyParamLocation
+_InitScreenMonIcon:
 	ld a, [hl]
 	and BASEMON_MASK
 	ld [wCurIconForm], a
