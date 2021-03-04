@@ -82,18 +82,10 @@ LCDBillsPC1::
 	push hl
 	push bc
 	ld c, LOW(rBGPD)
-	ld hl, wBillsPC_CurMonPals
+	ld hl, wBillsPC_CurMonPals + 4
 
 	; start of VRAM writes
-	; first mon
-	ld a, $80 | $22
-	ldh [rBGPI], a
-rept 4
-	ld a, [hli]
-	ld [c], a
-endr
-
-	; second mon
+	; second box mon
 	ld a, $80 | $2a
 	ldh [rBGPI], a
 rept 4
@@ -101,7 +93,7 @@ rept 4
 	ld [c], a
 endr
 
-	; third mon
+	; third box mon
 	ld a, $80 | $32
 	ldh [rBGPI], a
 rept 4
@@ -109,7 +101,7 @@ rept 4
 	ld [c], a
 endr
 
-	; fourth mon
+	; fourth box mon
 	ld a, $80 | $3a
 	ldh [rBGPI], a
 rept 4
@@ -137,7 +129,7 @@ LCDBillsPC2::
 	ld hl, wBillsPC_CurPartyPals
 
 	; start of VRAM writes
-	; first mon
+	; first party mon
 	ld a, $80 | $12
 	ldh [rBGPI], a
 rept 4
@@ -145,8 +137,16 @@ rept 4
 	ld [c], a
 endr
 
-	; second mon
+	; second party mon
 	ld a, $80 | $1a
+	ldh [rBGPI], a
+rept 4
+	ld a, [hli]
+	ld [c], a
+endr
+
+	; first box mon
+	ld a, $80 | $22
 	ldh [rBGPI], a
 rept 4
 	ld a, [hli]

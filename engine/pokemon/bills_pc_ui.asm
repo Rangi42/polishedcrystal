@@ -2225,6 +2225,7 @@ BillsPC_GetCursorFromTo:
 
 BillsPC_SwapStorage:
 ; Swaps slots bc and de. Returns z on success with effective slot in a.
+	call BillsPC_UpdateCursorLocation
 	push de
 	push bc
 
@@ -2236,6 +2237,13 @@ BillsPC_SwapStorage:
 	jr .done
 
 .failed
+	push af
+	push hl
+	push bc
+	call BillsPC_HideCursor
+	pop bc
+	pop hl
+	pop af
 	sub 2
 	ld hl, BillsPC_MustSaveToContinue
 	jr c, .swap_failed
