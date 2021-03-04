@@ -178,9 +178,7 @@ PARTY_LENGTH EQU 6
 ; boxes
 MONS_PER_BOX EQU 20
 NUM_BOXES    EQU 15
-
 MONDB_ENTRIES EQU 157
-NUM_NEWBOXES EQU 15
 
 ; hall of fame
 HOF_MON_LENGTH = 1 + 2 + 2 + 1 + (MON_NAME_LENGTH - 1) ; species, id, dvs, level, nick

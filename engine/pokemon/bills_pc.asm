@@ -304,7 +304,7 @@ NewStorageBoxPointer:
 	ld a, [wCurBox]
 	inc a
 	ld b, a
-	ld d, NUM_NEWBOXES
+	ld d, NUM_BOXES
 .outer_loop
 	ld c, 1
 .inner_loop
@@ -320,7 +320,7 @@ NewStorageBoxPointer:
 	jr nz, .inner_loop
 	ld a, b
 	inc b
-	cp NUM_NEWBOXES
+	cp NUM_BOXES
 	jr nz, .dont_wrap_box
 	ld b, 1
 .dont_wrap_box
@@ -405,7 +405,7 @@ FlushStorageSystem:
 	jr nz, .inner_loop
 	ld a, b
 	inc b
-	cp NUM_NEWBOXES * 2 ; current + backup
+	cp NUM_BOXES * 2 ; current + backup
 	jr nz, .outer_loop
 	call CloseSRAM
 	jp PopBCDEHL
@@ -1006,7 +1006,7 @@ InitializeBoxes:
 ; Initializes the Storage System boxes as empty with default names.
 	ld a, BANK(sNewBox1)
 	call GetSRAMBank
-	ld b, NUM_NEWBOXES
+	ld b, NUM_BOXES
 	ld hl, sNewBox1
 .loop
 	push bc
@@ -1020,7 +1020,7 @@ InitializeBoxes:
 	call CopyName2
 	dec hl
 	pop de
-	ld a, NUM_NEWBOXES + 1
+	ld a, NUM_BOXES + 1
 	sub d
 	sub 10
 	add "0" + 10
