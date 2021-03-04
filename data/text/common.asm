@@ -4315,11 +4315,18 @@ _BallDontBeAThiefText::
 	text "Don't be a thief!"
 	prompt
 
-SECTION "_BallBoxFullText", ROMX
-_BallBoxFullText::
-	text "The #mon Box"
+SECTION "_BallStorageFullText", ROMX
+_BallStorageFullText::
+	text "The storage system"
 	line "is full. That"
 	cont "can't be used now."
+	prompt
+
+SECTION "_BallDatabaseFullText", ROMX
+_BallDatabaseFullText::
+	text "The PC database is"
+	line "overtaxed. Please"
+	cont "save the game."
 	prompt
 
 SECTION "Text_MonIsHiddenFromBall", ROMX

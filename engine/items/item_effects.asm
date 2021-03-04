@@ -2229,7 +2229,9 @@ WontHaveAnyEffect_NotUsedMessage:
 	jr ItemWasntUsedMessage
 
 Ball_BoxIsFullMessage:
-	ld hl, Ball_BoxIsFullText
+	ld hl, Ball_StorageFullText
+	jr z, ItemWasntUsedMessage
+	ld hl, Ball_DatabaseTaxedText
 	jr ItemWasntUsedMessage
 
 Ball_MonIsHiddenMessage:
@@ -2354,9 +2356,14 @@ DontBeAThiefText:
 	text_jump _BallDontBeAThiefText
 	text_end
 
-Ball_BoxIsFullText:
+Ball_StorageFullText:
 	; The #MON BOX is full. That can't be used now.
-	text_jump _BallBoxFullText
+	text_jump _BallStorageFullText
+	text_end
+
+Ball_DatabaseTaxedText:
+	; The #MON BOX is full. That can't be used now.
+	text_jump _BallDatabaseFullText
 	text_end
 
 Ball_MonIsHiddenText:
