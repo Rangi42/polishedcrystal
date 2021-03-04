@@ -634,8 +634,8 @@ CopyBetweenPartyAndTemp:
 	pop bc
 	push bc
 	ld c, a
-	dec b
-	call nz, SwapHLDE
+	bit 0, b
+	call z, SwapHLDE
 	ld b, 0
 	rst CopyBytes
 	pop bc
