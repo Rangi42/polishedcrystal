@@ -623,7 +623,7 @@ PokeBallEffect:
 	farcall SetBoxMonCaughtData
 
 	farcall NewStorageBoxPointer
-	jr nz, .BoxNotFullYet
+	jr nc, .BoxNotFullYet
 	ld hl, wBattleResult
 	set 7, [hl]
 .BoxNotFullYet:

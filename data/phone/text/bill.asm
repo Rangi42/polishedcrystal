@@ -100,7 +100,10 @@ BillFlushBySaving:
 	para "Save the game to"
 	line "continue using the"
 	cont "PC."
-	prompt
+
+	para "Do you want to"
+	line "save now?"
+	done
 
 BillThankYouText:
 	text "Thank you for"
