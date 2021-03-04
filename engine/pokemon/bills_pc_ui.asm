@@ -1984,6 +1984,9 @@ BillsPC_BagItem:
 	ld hl, BillsPC_MovedToPackText
 	; fallthrough
 BillsPC_PrintText:
+	push hl
+	call BillsPC_HideCursor
+	pop hl
 	call MenuTextbox
 	call BillsPC_UpdateCursorLocation
 	jp CloseWindow
