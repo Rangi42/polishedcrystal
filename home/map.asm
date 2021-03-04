@@ -1102,7 +1102,7 @@ _LoadTilesetGFX1:
 	; fallthrough
 
 _DoLoadTilesetGFX:
-	ld c, $80
+	ld c, $7f
 _DoLoadTilesetGFX0:
 	ld b, a
 	ld a, [hli]
