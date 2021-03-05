@@ -938,7 +938,7 @@ ForceDeferredSwitch:
 
 	; This is only set exactly by Teleport, which also lacks animation.
 	ld a, [hl]
-	cp SWITCH_DEFERRED
+	cp 1 << SWITCH_DEFERRED
 	jr z, .anim_done
 
 	bit SWITCH_FORCED, [hl]
