@@ -43,10 +43,12 @@ SwapStorageBoxSlots:
 	ld a, c
 	jr nz, .not_equal
 	and a
-	ret z ; Moving from party/box to "anywhere within same party/box".
+	jr z, .equal ; Moving from party/box to "anywhere within same party/box".
 	cp e
 	jr nz, .not_equal
 	; fallthrough
+.equal
+	ld c, e
 .done
 	xor a
 	ret
