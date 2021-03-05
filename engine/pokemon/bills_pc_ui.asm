@@ -721,7 +721,12 @@ WriteIconPaletteData:
 	push hl
 	push de
 	push bc
+	ld a, [wTempMonIsEgg]
+	bit MON_IS_EGG_F, a
 	ld a, [wTempMonSpecies]
+	jr z, .got_species
+	ld a, EGG
+.got_species
 	ld hl, wTempMonPersonality
 	farcall _GetMonIconPalette
 	pop bc
