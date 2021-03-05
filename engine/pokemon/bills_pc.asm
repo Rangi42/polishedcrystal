@@ -1015,6 +1015,7 @@ _CheckFreeDatabaseEntries:
 	call CountSetBits
 	cpl
 	add MONDB_ENTRIES + 1
+	ld c, a
 	ret
 
 InitializeBoxes:
