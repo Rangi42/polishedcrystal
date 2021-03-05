@@ -932,9 +932,15 @@ ForceDeferredSwitch:
 	call UpdateUserInParty
 	pop hl
 
-	; Withdraw animation
+	; Withdraw animation.
 	bit SWITCH_BATON_PASS, [hl]
 	jr nz, .anim_done
+
+	; This is only set exactly by Teleport, which also lacks animation.
+	ld a, [hl]
+	cp SWITCH_DEFERRED
+	jr z, .anim_done
+
 	bit SWITCH_FORCED, [hl]
 	jr nz, .forced_anim
 
