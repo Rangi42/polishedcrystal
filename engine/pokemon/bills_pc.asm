@@ -381,7 +381,8 @@ NewStoragePointer:
 	ret
 
 FlushStorageSystem:
-; Frees up orphaned pokedb entries.
+; Frees up orphaned pokedb entries and reallocates used entries. Beware of soft-
+; resets and make sure this process completes before loading up a game.
 	push hl
 	push de
 	push bc
@@ -1044,7 +1045,11 @@ InitializeBoxes:
 	pop bc
 	dec b
 	jr nz, .loop
-	jp CloseSRAM
+	call CloseSRAM
+
+	; In case we reset the game mid-flush and then chose to start a new game,
+	; ensure that all entries are allocated properly.
+	jp FlushStorageSystem
 
 .Box:
 	rawchar "Box @"
