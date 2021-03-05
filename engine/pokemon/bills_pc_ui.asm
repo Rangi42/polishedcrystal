@@ -1107,6 +1107,7 @@ _GetCursorMon:
 	ld [hl], 0
 	dec hl
 	ld [hl], 4
+	ld d, a
 	call ItemIsMail
 	jr c, .item_icon_done
 	inc [hl]
