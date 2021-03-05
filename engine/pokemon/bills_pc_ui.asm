@@ -1087,8 +1087,6 @@ _GetCursorMon:
 	dec b
 	jr nz, .loop
 
-	ld a, [wTempMonShiny]
-	ld [wColorVaryShiny], a
 	pop hl
 	farcall VaryBGPalByTempMonDVs
 
