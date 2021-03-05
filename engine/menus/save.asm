@@ -302,13 +302,15 @@ ValidateSave:
 SaveOptions:
 	ld a, BANK(sOptions)
 	call GetSRAMBank
-	ld hl, wOptions1
+	ld hl, wOptions
 	ld de, sOptions
-	ld bc, wOptionsEnd - wOptions1
+	ld bc, wOptionsEnd - wOptions
 	rst CopyBytes
+	ld a, [wOptions3]
+	ld [sOptions3], a
 	ld a, [wOptions1]
 	and $ff ^ (1 << NO_TEXT_SCROLL)
-	ld [sOptions], a
+	ld [sOptions + wOptions1 - wOptions], a
 	jp CloseSRAM
 
 SavePlayerData:
@@ -361,10 +363,12 @@ ValidateBackupSave:
 SaveBackupOptions:
 	ld a, BANK(sBackupOptions)
 	call GetSRAMBank
-	ld hl, wOptions1
+	ld hl, wOptions
 	ld de, sBackupOptions
-	ld bc, wOptionsEnd - wOptions1
+	ld bc, wOptionsEnd - wOptions
 	rst CopyBytes
+	ld a, [wOptions3]
+	ld [sBackupOptions3], a
 	jp CloseSRAM
 
 SaveBackupPlayerData:
@@ -484,9 +488,11 @@ TryLoadSaveData:
 
 .corrupt
 	ld hl, DefaultOptions
-	ld de, wOptions1
-	ld bc, wOptionsEnd - wOptions1
+	ld de, wOptions
+	ld bc, wOptionsEnd - wOptions
 	rst CopyBytes
+	ld a, [DefaultOptions3]
+	ld [wOptions3], a
 	jp PanicResetClock
 
 INCLUDE "data/default_options.asm"
@@ -501,9 +507,11 @@ CheckPrimarySaveFile:
 	cp SAVE_CHECK_VALUE_2
 	jr nz, .nope
 	ld hl, sOptions
-	ld de, wOptions1
-	ld bc, wOptionsEnd - wOptions1
+	ld de, wOptions
+	ld bc, wOptionsEnd - wOptions
 	rst CopyBytes
+	ld a, [sOptions3]
+	ld [wOptions3], a
 	call CloseSRAM
 	ld a, $1
 	ld [wSaveFileExists], a
@@ -521,9 +529,11 @@ CheckBackupSaveFile:
 	cp SAVE_CHECK_VALUE_2
 	jr nz, .nope
 	ld hl, sBackupOptions
-	ld de, wOptions1
-	ld bc, wOptionsEnd - wOptions1
+	ld de, wOptions
+	ld bc, wOptionsEnd - wOptions
 	rst CopyBytes
+	ld a, [sBackupOptions3]
+	ld [wOptions3], a
 	ld a, $2
 	ld [wSaveFileExists], a
 

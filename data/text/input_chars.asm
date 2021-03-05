@@ -51,7 +51,7 @@ MailEntry_Uppercase:
 	rawchar "K L M N O P Q R S T"
 	rawchar "U V W X Y Z ? ! … :"
 	rawchar "1 2 3 4 5 6 7 8 9 0"
-	rawchar "<PK> <MN> <PO> <KE> é ♂ ♀ ¥ × /"
+	rawchar "<PK> <MN> <PO> <KE> & ♂ ♀ ¥ × /"
 	rawchar "Lower  Del   End   "
 
 MailEntry_Lowercase:
@@ -62,6 +62,64 @@ if _escape_commas
 else
 	rawchar "u v w x y z   - . ,"
 endc
-	rawchar "'d 'l 'm 'r 's 't 'v ( ) &"
+	rawchar "é 'd 'l 'm 'r 's 't 'v ( )"
+	rawchar "“ ” ' % ↑ ↓ № ★ ♥ ♪"
+	rawchar "Upper  Del   End   "
+
+NameInputLowerQwerty:
+	rawchar "q w e r t y u i o"
+	rawchar "a s d f g h j k l"
+	rawchar "z x c v b n m p -"
+	rawchar "/ ( ) ¥ <PK> <MN> ★ ♥ ♪"
+	rawchar "Upper  Del   End "
+
+BoxNameInputLowerQwerty:
+	rawchar "q w e r t y u i o"
+	rawchar "a s d f g h j k l"
+	rawchar "z x c v b n m p -"
+	rawchar "é 'r 't 's 'd 'l 'v 'm 0"
+	rawchar "1 2 3 4 5 6 7 8 9"
+	rawchar "Upper  Del   End "
+
+NameInputUpperQwerty:
+	rawchar "Q W E R T Y U I O"
+	rawchar "A S D F G H J K L"
+	rawchar "Z X C V B N M P  "
+if _escape_commas
+	rawchar "? ! ♂ ♀ . \, : & %"
+else
+	rawchar "? ! ♂ ♀ . , : & %"
+endc
+	rawchar "Lower  Del   End "
+
+BoxNameInputUpperQwerty:
+	rawchar "Q W E R T Y U I O"
+	rawchar "A S D F G H J K L"
+	rawchar "Z X C V B N M P  "
+	rawchar "/ ( ) ¥ <PK> <MN> ★ ♥ ♪"
+if _escape_commas
+	rawchar "? ! ♂ ♀ . \, : & %"
+else
+	rawchar "? ! ♂ ♀ . , : & %"
+endc
+	rawchar "Lower  Del   End "
+
+MailEntryQwerty_Uppercase:
+	rawchar "Q W E R T Y U I O P"
+	rawchar "A S D F G H J K L :"
+	rawchar "Z X C V B N M ? ! …"
+	rawchar "1 2 3 4 5 6 7 8 9 0"
+	rawchar "<PK> <MN> <PO> <KE> & ♂ ♀ ¥ × /"
+	rawchar "Lower  Del   End   "
+
+MailEntryQwerty_Lowercase:
+	rawchar "q w e r t y u i o p"
+	rawchar "a s d f g h j k l -"
+if _escape_commas
+	rawchar "z x c v b n m \, .  "
+else
+	rawchar "z x c v b n m , .  "
+endc
+	rawchar "é 'r 't 's 'd 'l 'v 'm ( )"
 	rawchar "“ ” ' % ↑ ↓ № ★ ♥ ♪"
 	rawchar "Upper  Del   End   "

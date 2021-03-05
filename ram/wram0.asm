@@ -1206,7 +1206,13 @@ wOBP0:: db
 wOBP1:: db
 
 wNumHits:: db
-	ds 1 ; pretty sure wNumHits only needs one byte?
+
+wOptions3::
+; bit 0: keyword abc/qwerty
+; bits 1-7: unused
+	db
+
+wOptions::
 
 wOptions1::
 ; bit 0-1: text delay
