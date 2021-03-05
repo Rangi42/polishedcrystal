@@ -8,7 +8,7 @@ _DeleteSaveData:
 	call PlayMusic
 	ld hl, .Text_ClearAllSaveData
 	call PrintText
-	ld hl, TitleScreenNoYesMenuDataHeader
+	ld hl, NoYesMenuDataHeader
 	call CopyMenuHeader
 	call VerticalMenu
 	ret c
@@ -46,7 +46,7 @@ _ResetInitialOptions:
 	call PlayMusic
 	ld hl, .Text_ResetInitialOptions
 	call PrintText
-	ld hl, TitleScreenNoYesMenuDataHeader
+	ld hl, NoYesMenuDataHeader
 	call CopyMenuHeader
 	call VerticalMenu
 	ret c
@@ -66,16 +66,3 @@ _ResetInitialOptions:
 	; Reset the initial game options?
 	text_jump ResetInitialOptionsText
 	text_end
-
-TitleScreenNoYesMenuDataHeader:
-	db $00 ; flags
-	db 07, 14 ; start coords
-	db 11, 19 ; end coords
-	dw .MenuData2
-	db 1 ; default option
-
-.MenuData2:
-	db $c0 ; flags
-	db 2 ; items
-	db "No@"
-	db "Yes@"

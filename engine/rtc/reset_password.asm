@@ -8,7 +8,7 @@ _ResetClock:
 	call PlayMusic
 	ld hl, .text_askreset
 	call PrintText
-	ld hl, .NoYes_MenuDataHeader
+	ld hl, NoYesMenuDataHeader
 	call CopyMenuHeader
 	call VerticalMenu
 	ret c
@@ -32,16 +32,3 @@ _ResetClock:
 	; Reset the clock?
 	text_jump _PasswordAskResetClockText
 	text_end
-
-.NoYes_MenuDataHeader:
-	db $00 ; flags
-	db 07, 14 ; start coords
-	db 11, 19 ; end coords
-	dw .NoYes_MenuData2
-	db 1 ; default option
-
-.NoYes_MenuData2:
-	db $c0 ; flags
-	db 2 ; items
-	db "No@"
-	db "Yes@"

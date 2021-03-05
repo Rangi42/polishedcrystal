@@ -1854,6 +1854,8 @@ ShowAbilityActivation::
 
 RunPostBattleAbilities::
 ; Checks party for potentially finding items (Pickup) or curing status (Natural Cure)
+	; Ensure that ability slideouts appear for the correct side for Pickup.
+	call SetPlayerTurn
 	ld a, [wPartyCount]
 	jr .first_pass
 .loop
