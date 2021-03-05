@@ -333,6 +333,11 @@ GetMenu2::
 	ld a, [wMenuCursorY]
 	ret
 
+NoYesBox::
+; Return nc (no) or c (yes).
+	ld hl, NoYesMenuDataHeader
+	jr _ContinueYesNoNoYesBox
+
 YesNoBox::
 	ld a, [wInPokegear]
 	and a
@@ -344,12 +349,13 @@ YesNoBox::
 
 PlaceYesNoBox::
 ; Return nc (yes) or c (no).
-	push bc
 	ld hl, YesNoMenuDataHeader
+	; fallthrough
+
+_ContinueYesNoNoYesBox:
+	push bc
 	call CopyMenuHeader
 	pop bc
-
-.okay
 	ld a, b
 	ld [wMenuBorderLeftCoord], a
 	add 5
@@ -394,6 +400,19 @@ YesNoMenuDataHeader::
 	db 2
 	db "Yes@"
 	db "No@"
+
+NoYesMenuDataHeader::
+	db $40 ; tile backup
+	db  7, 14 ; start coords
+	db 11, 19 ; end coords
+	dw .MenuData2
+	db 1 ; default option
+
+.MenuData2
+	db $c0 ; flags
+	db 2
+	db "No@"
+	db "Yes@"
 
 OffsetMenuDataHeader::
 	call _OffsetMenuDataHeader

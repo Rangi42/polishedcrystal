@@ -4697,19 +4697,6 @@ endr
 	scf
 	ret
 
-NoYesMenuDataHeader:
-	db $40 ; tile backup
-	db 07, 14 ; start coords
-	db 11, 19 ; end coords
-	dw .MenuData2
-	db 1 ; default option
-
-.MenuData2
-	db $c0 ; flags
-	db 2
-	db "No@"
-	db "Yes@"
-
 CheckAmuletCoin:
 	push hl
 	farcall GetPlayerItem
