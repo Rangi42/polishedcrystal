@@ -333,26 +333,42 @@ GetMenu2::
 	ld a, [wMenuCursorY]
 	ret
 
-NoYesBox::
-; Return nc (no) or c (yes).
-	ld hl, NoYesMenuDataHeader
-	jr _ContinueYesNoNoYesBox
-
-YesNoBox::
+GetYesNoBoxPosition:
 	ld a, [wInPokegear]
 	and a
 	lb bc, SCREEN_WIDTH - 6, 7
-	jr z, .got_position
+	ret z
 	dec b
-.got_position
-	; fallthrough
+	ret
 
+NoYesBox:
+; Returns c (no) or nc (yes). Doesn't mess with menu cursor.
+	call GetYesNoBoxPosition
+	; fallthrough
+PlaceNoYesBox:
+	ld hl, NoYesMenuDataHeader
+	call HandleYesNoMenu
+	ret c
+	add 1
+	ret
+
+YesNoBox:
+; Returns c (no) or nc (yes) and sets menu cursor appropriately.
+	call GetYesNoBoxPosition
+	; fallthrough
 PlaceYesNoBox::
-; Return nc (yes) or c (no).
 	ld hl, YesNoMenuDataHeader
-	; fallthrough
+	call HandleYesNoMenu
+	jr c, .fix_menu
+	sub 1
+	ret
+.fix_menu
+	ld a, 2
+	ld [wMenuCursorY], a
+	ret
 
-_ContinueYesNoNoYesBox:
+HandleYesNoMenu:
+; Returns c if cancelled, otherwise $ff or $00 in a for first or second option.
 	push bc
 	call CopyMenuHeader
 	pop bc
@@ -365,27 +381,16 @@ _ContinueYesNoNoYesBox:
 	add 4
 	ld [wMenuBorderBottomCoord], a
 	call PushWindow
-	; fallthrough
-
-InterpretTwoOptionMenu::
 	call VerticalMenu
 	push af
 	ld c, 15
 	call DelayFrames
 	call CloseWindow
-InterpretTwoOptionMenu_AfterCloseWindow::
 	pop af
-	jr c, .no
+	ret c
 	ld a, [wMenuCursorY]
-	cp 2 ; no
-	jr z, .no
+	sub 2
 	and a
-	ret
-
-.no
-	ld a, 2
-	ld [wMenuCursorY], a
-	scf
 	ret
 
 YesNoMenuDataHeader::
