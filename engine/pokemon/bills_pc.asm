@@ -38,17 +38,14 @@ SwapStorageBoxSlots:
 ; 4: Doing this would remove the last healthy mon in party
 ; 5: Can't move partymon to Box, because they're holding Mail.
 	; Compare source->dest to see if we're "moving" something with itself.
+	ld h, -1
 	ld a, b
 	cp d
 	ld a, c
 	jr nz, .not_equal
-	and a
-	jr z, .equal ; Moving from party/box to "anywhere within same party/box".
+	ld h, e
 	cp e
 	jr nz, .not_equal
-	; fallthrough
-.equal
-	ld c, e
 .done
 	xor a
 	ret
@@ -68,6 +65,16 @@ SwapStorageBoxSlots:
 	call GetStorageBoxMon
 	jr z, .got_dest
 	ld a, c
+	cp h
+	jr nz, .dest_next
+
+	; We encountered our current entry while seeking for blank entries. This
+	; basically makes this a no-op (since there's no earlier blank entry), so
+	; return early.
+	pop de
+	jr .done
+
+.dest_next
 	cp e
 	jr nz, .dest_loop
 
