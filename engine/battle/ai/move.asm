@@ -33,8 +33,9 @@ AIChooseMove:
 	ret z
 
 	; Move is unusable. Fix the move selection to a valid move, but prefer
-	; to switch if we can.
-	call _AIChooseMove
+	; to switch if we can, assuming we have usable moves at all.
+	farcall CheckUsableMoves
+	call z, _AIChooseMove
 
 	; Strongly encourage switch-out by pretending we have Perish 1.
 	ld a, [wEnemyPerishCount]
