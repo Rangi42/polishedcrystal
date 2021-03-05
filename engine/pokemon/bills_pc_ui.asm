@@ -2151,7 +2151,7 @@ BillsPC_Release:
 .no_hms
 	ld hl, .ReallyReleaseMon
 	call MenuTextbox
-	call YesNoBox
+	call NoYesBox
 	jr c, .done
 
 	; Copy mon nick to a string buffer, since SetStorageBoxPointer might
