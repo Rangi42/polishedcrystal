@@ -115,9 +115,14 @@ BillsPC_LoadUI:
 	xor a
 	ld [wBillsPC_PreserveCursorPal], a
 	; fallthrough
-BillsPC_RefreshTheme:
+_BillsPC_GetCGBLayout:
 	ld a, CGB_BILLS_PC
 	jp GetCGBLayout
+
+BillsPC_RefreshTheme:
+	ld a, 1
+	ld [wBillsPC_PreserveCursorPal], a
+	jr _BillsPC_GetCGBLayout
 
 UseBillsPC:
 	call ClearTileMap
@@ -1221,8 +1226,6 @@ ManageBoxes:
 	sub NUM_BOXES
 .valid_box
 	ld [wCurBox], a
-	ld a, 1
-	ld [wBillsPC_PreserveCursorPal], a
 	call BillsPC_RefreshTheme
 	call BillsPC_PrintBoxName
 	call Delay2
@@ -2358,23 +2361,26 @@ BillsPC_Theme:
 	ld [wMenuScrollPosition], a
 	call ScrollingMenu
 
-; TODO: fix refreshing the UI on exit
 	call BillsPC_UpdateCursorLocation
 	call CloseWindow
 	call ExitMenu
+	ld b, 0
+	call SafeCopyTilemapAtOnce
 
-; TODO: switch current box's theme from selection
-;	ld a, [wMenuJoypad]
-;	cp B_BUTTON
-;	jr z, .cancel
-;	xor a
-;	ld a, [wScrollingMenuCursorPosition]
-;	jr .done
-;
-;.cancel
-;	scf
-;.done
-	ret
+	ld a, [wMenuJoypad]
+	cp B_BUTTON
+	ret z
+
+	; wBillsPC_BoxThemes[wCurBox] = [wScrollingMenuCursorPosition]
+	ld hl, wBillsPC_BoxThemes
+	ld a, [wCurBox]
+	ld d, 0
+	ld e, a
+	add hl, de
+	ld a, [wScrollingMenuCursorPosition]
+	ld [hl], a
+
+	jp BillsPC_RefreshTheme
 
 .PickAThemeText:
 	text "Please"
