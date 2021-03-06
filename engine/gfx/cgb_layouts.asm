@@ -998,14 +998,15 @@ _CGB_BillsPC:
 	call LoadCPaletteBytesFromHLIntoDE
 	ld a, [wBillsPC_PreserveCursorPal]
 	and a
-	jr nz, .skip_ob_pals
+	jr nz, .apply_pals
 	ld de, wOBPals1 palette 1
 	ld hl, .CursorPal
 	push hl
 	call LoadHLPaletteIntoDE
 	pop hl
-	call LoadHLPaletteIntoDE
-.skip_ob_pals
+	jp LoadHLPaletteIntoDE
+
+.apply_pals
 	call ApplyPals
 	ld a, $1
 	ldh [hCGBPalUpdate], a
