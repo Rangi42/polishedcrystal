@@ -2562,6 +2562,17 @@ BillsPC_PlaceHeldMon:
 	pop de
 	lb bc, -1, 0
 	call BillsPC_MoveIconData
+	call BillsPC_IsHoldingItem
+	jr z, .holding_mon
+
+	ld a, 1
+	ldh [rVBK], a
+	call BillsPC_BlankCursorItem
+	xor a
+	ldh [rVBK], a
+	call GetCursorMon
+
+.holding_mon
 	call BillsPC_CursorPick2
 	pop bc
 	pop af
