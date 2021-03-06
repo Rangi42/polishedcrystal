@@ -1350,6 +1350,9 @@ BillsPC_MenuStrings:
 	; box options
 	db "Rename@"
 	db "Theme@"
+	; holding a mail
+	db "Take@"
+	db "Read@"
 	; holding an item
 	db "Move@"
 	db "Bag@"
@@ -1367,6 +1370,8 @@ BillsPC_MenuJumptable:
 	dw BillsPC_Release
 	dw BillsPC_Rename
 	dw BillsPC_Theme
+	dw BillsPC_TakeMail
+	dw BillsPC_ReadMail
 	dw BillsPC_MoveItem
 	dw BillsPC_BagItem
 	dw BillsPC_GiveItem
@@ -1976,6 +1981,27 @@ BillsPC_IsHoldingItem:
 	pop bc
 	ret
 
+BillsPC_TakeMail:
+	ld a, [wTempMonSlot]
+	dec a
+	ld [wCurPartyMon], a
+	call BillsPC_HideCursor
+	farcall TakeMail
+	jp GetCursorMon
+
+BillsPC_ReadMail:
+	ld a, [wTempMonSlot]
+	dec a
+	ld [wCurPartyMon], a
+	ld hl, rIE
+	res LCD_STAT, [hl]
+
+	call LoadStandardMenuHeader
+	call ClearSprites
+	farcall ReadPartyMonMail
+	call ExitMenu
+	jp BillsPC_RestoreUI
+
 BillsPC_MoveItem:
 ; Pick up item for movement.
 	; Removing items might reallocate a storage mon, so check that we have space
@@ -2128,14 +2154,19 @@ BillsPC_Item:
 	jp nz, BillsPC_PrintText
 
 	; Give a slightly different menu depending on whether the mon is holding
-	; an item right now or not.
+	; an item right now or not and whether or not it's Mail.
 	ld a, [wTempMonItem]
 	and a
-	ld hl, .ItemIsSelected
-	ld de, .ItemMenu
-	jr nz, .got_menu
 	ld hl, .ItCanHoldAnItem
 	ld de, .NoItemMenu
+	jr z, .got_menu
+	ld d, a
+	call ItemIsMail
+	ld hl, .ItemIsSelected
+	ld de, .ItemMenu
+	jr nc, .got_menu
+	ld hl, .ItemIsSelected
+	ld de, .MailMenu
 .got_menu
 	push de
 	call MenuTextbox
@@ -2154,6 +2185,20 @@ BillsPC_Item:
 	text " can"
 	line "hold an item."
 	done
+
+.MailMenu:
+	db $40 ; flags
+	db 03, 11 ; start coords
+	db 12, 19 ; end coords
+	dw .MailMenuData
+	db 1 ; default option
+
+.MailMenuData:
+	db $20 ; flags
+	db 4 ; items
+	dw .mail
+	dw PlaceMenuStrings
+	dw BillsPC_MenuStrings
 
 .ItemMenu:
 	db $40 ; flags
@@ -2182,6 +2227,14 @@ BillsPC_Item:
 	dw .noitems
 	dw PlaceMenuStrings
 	dw BillsPC_MenuStrings
+
+.mail
+	db 4
+	db BOXMENU_MOVEITEM
+	db BOXMENU_TAKEMAIL
+	db BOXMENU_READMAIL
+	db BOXMENU_CANCEL
+	db -1
 
 .items
 	db 3

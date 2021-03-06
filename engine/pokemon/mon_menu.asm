@@ -595,20 +595,36 @@ MonMailAction:
 	call ExitMenu
 
 ; Interpret the menu.
-	jp c, .done
+	ld a, $3
+	ret c
 	ld a, [wMenuCursorY]
 	cp $1
 	jr z, .read
 	cp $2
-	jr z, .take
-	jp .done
+	jr z, TakeMail
+	ld a, $3
+	ret
 
 .read
 	farcall ReadPartyMonMail
 	xor a
 	ret
 
-.take
+.MenuDataHeader:
+	db $40 ; flags
+	db 10, 12 ; start coords
+	db 17, 19 ; end coords
+	dw .MenuData2
+	db 1 ; default option
+
+.MenuData2:
+	db $80 ; flags
+	db 3 ; items
+	db "Read@"
+	db "Take@"
+	db "Quit@"
+
+TakeMail:
 	ld hl, .sendmailtopctext
 	call StartMenuYesNo
 	jr c, .RemoveMailToBag
@@ -649,20 +665,6 @@ MonMailAction:
 .done
 	ld a, $3
 	ret
-
-.MenuDataHeader:
-	db $40 ; flags
-	db 10, 12 ; start coords
-	db 17, 19 ; end coords
-	dw .MenuData2
-	db 1 ; default option
-
-.MenuData2:
-	db $80 ; flags
-	db 3 ; items
-	db "Read@"
-	db "Take@"
-	db "Quit@"
 
 .mailwilllosemessagetext
 ; The MAIL will lose its message. OK?
