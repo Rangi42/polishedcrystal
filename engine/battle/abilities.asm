@@ -1032,6 +1032,8 @@ WaterAbsorbAbility:
 ApplySpeedAbilities:
 ; Passive speed boost abilities
 	call GetTrueUserAbility
+	cp UNBURDEN
+	jr z, .unburden
 	cp SWIFT_SWIM
 	jr z, .swift_swim
 	cp CHLOROPHYLL
@@ -1046,6 +1048,14 @@ ApplySpeedAbilities:
 	and a
 	ret z
 	ln a, 3, 2 ; x1.5
+	jr .apply_mod
+.unburden
+	; Only if we have the Unburden volatile
+	ld a, BATTLE_VARS_SUBSTATUS1
+	call GetBattleVar
+	bit SUBSTATUS_UNBURDEN, a
+	ret z
+	ln a, 2, 1 ; x2
 	jr .apply_mod
 .swift_swim
 	ld h, WEATHER_RAIN
