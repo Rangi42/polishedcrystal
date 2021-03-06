@@ -115,7 +115,7 @@ ItemIsMail_a::
 
 
 SECTION "lcd", ROM0[$0048]
-	jr hFunctionJump
+	jr hLCDInterruptFunction
 
 GetMemCGBLayout::
 	xor a ; CGB_RAM

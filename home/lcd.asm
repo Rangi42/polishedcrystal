@@ -25,7 +25,7 @@ LCDMusicPlayer::
 	push af
 	ldh a, [rLY]
 	cp PIANO_ROLL_HEIGHT_PX
-	jr nc, .donemp
+	jr nc, .done
 
 	push hl
 
@@ -47,18 +47,10 @@ LCDMusicPlayer::
 	add hl, hl
 	add hl, hl
 
-if 0 ; if LOW(wMPNotes)
-	ld a, l
-	add LOW(wMPNotes)
-	ld l, a
-	ld a, h
-	adc HIGH(wMPNotes)
-	ld h, a
-else
+	assert LOW(wMPNotes) == 0
 	ld a, h
 	add HIGH(wMPNotes)
 	ld h, a
-endc
 
 	ld a, [hli]
 	ld [oamSprite00XCoord], a
@@ -68,7 +60,7 @@ endc
 	ld [oamSprite02XCoord], a
 	pop hl
 
-.donemp
+.done
 	pop af
 	reti
 
