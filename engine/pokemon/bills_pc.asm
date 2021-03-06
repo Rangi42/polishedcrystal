@@ -229,6 +229,15 @@ SwapStorageBoxSlots:
 	xor a
 	ret
 
+SwapPartyMonMail:
+	push hl
+	push de
+	push bc
+	dec c
+	dec e
+	ld d, c
+	jr DoMailSwap
+
 SwapPartyMons:
 ; Swap 1-indexed partymon c and e. Preserves bc, de, hl.
 ; TODO: this is more efficient than SwitchPartyMons, maybe make it use this.
@@ -242,32 +251,34 @@ SwapPartyMons:
 	; Swap species in the species array
 	ld hl, wPartySpecies
 	ld bc, 1
-	call .Swap
+	call DoPartySwap
 
 	; Swap partymon struct
 	ld hl, wPartyMon1
 	ld c, PARTYMON_STRUCT_LENGTH
-	call .Swap
+	call DoPartySwap
 
 	; Swap nickname
 	ld hl, wPartyMonNicknames
 	ld c, MON_NAME_LENGTH
-	call .Swap
+	call DoPartySwap
 
 	; Swap OT name
 	ld hl, wPartyMonOT
 	ld c, NAME_LENGTH
-	call .Swap
+	call DoPartySwap
 
+	; fallthrough
+DoMailSwap:
 	; Swap Mail
 	ld a, BANK(sPartyMon1Mail)
 	call GetSRAMBank
 	ld hl, sPartyMon1Mail
-	ld c, MAIL_STRUCT_LENGTH
-	call .Swap
+	ld bc, MAIL_STRUCT_LENGTH
+	call DoPartySwap
 	call CloseSRAM
 	jp PopBCDEHL
-.Swap:
+DoPartySwap:
 ; Swaps bc bytes between hl+d*bc and hl+e*bc
 	; Get pointers to swap
 	push de
