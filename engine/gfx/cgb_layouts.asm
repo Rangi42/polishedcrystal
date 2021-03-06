@@ -969,8 +969,13 @@ _CGB_PokedexUnownMode:
 	jp _CGB_FinishLayout
 
 _CGB_BillsPC:
-	; hl = BillsPC_BackgroundPals + [wBillsPC_BoxTheme] * 6 * 2
-	ld a, [wBillsPC_BoxTheme]
+	; hl = BillsPC_BackgroundPals + wBillsPC_BoxThemes[wCurBox] * 6 * 2
+	ld hl, wBillsPC_BoxThemes
+	ld a, [wCurBox]
+	ld d, 0
+	ld e, a
+	add hl, de
+	ld a, [hl]
 	add a
 	add a
 	ld l, a
@@ -991,12 +996,20 @@ _CGB_BillsPC:
 	pop hl
 	ld c, 5 * 2
 	call LoadCPaletteBytesFromHLIntoDE
+	ld a, [wBillsPC_PreserveCursorPal]
+	and a
+	jr nz, .skip_ob_pals
 	ld de, wOBPals1 palette 1
 	ld hl, .CursorPal
 	push hl
 	call LoadHLPaletteIntoDE
 	pop hl
-	jp LoadHLPaletteIntoDE
+	call LoadHLPaletteIntoDE
+.skip_ob_pals
+	call ApplyPals
+	ld a, $1
+	ldh [hCGBPalUpdate], a
+	ret
 
 .CursorPal:
 ; Coloring is fixed up later.

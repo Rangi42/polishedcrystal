@@ -112,6 +112,10 @@ BillsPC_LoadUI:
 	call DecompressRequest2bpp
 
 	; Set up background + outline palettes
+	xor a
+	ld [wBillsPC_PreserveCursorPal], a
+	; fallthrough
+BillsPC_RefreshTheme:
 	ld a, CGB_BILLS_PC
 	jp GetCGBLayout
 
@@ -1217,6 +1221,9 @@ ManageBoxes:
 	sub NUM_BOXES
 .valid_box
 	ld [wCurBox], a
+	ld a, 1
+	ld [wBillsPC_PreserveCursorPal], a
+	call BillsPC_RefreshTheme
 	call BillsPC_PrintBoxName
 	call Delay2
 	ldh a, [hBGMapMode]
