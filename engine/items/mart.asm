@@ -516,15 +516,15 @@ BuyMenu_InitGFX:
 	jp DelayFrame
 
 .BuyLeftColumnTilemapString:
+	db $15, $15, $15, $15, $15, 0 ; Background
 	db $15, $15, $15, $15, $15, 0
 	db $15, $15, $15, $15, $15, 0
 	db $15, $15, $15, $15, $15, 0
-	db $15, $15, $15, $15, $15, 0
-	db $16, $17, $17, $17, $18, 0
-	db $19, $1e, $1f, $20, $1a, 0
-	db $19, $21, $22, $23, $1a, 0
-	db $19, $24, $25, $26, $1a, 0
-	db $1b, $1c, $1c, $1c, $1d, -1
+	db $15, $19, $19, $19, $15, 0 ; Item icon
+	db $16, $1e, $1f, $20, $17, 0
+	db $16, $21, $22, $23, $17, 0
+	db $16, $24, $25, $26, $17, 0
+	db $15, $1c, $1c, $1c, $15, -1
 
 LoadBuyMenuText:
 ; load text from a nested table
