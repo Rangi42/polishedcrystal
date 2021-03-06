@@ -73,7 +73,7 @@ BillsPC_LoadUI:
 	; Load cursor tiles.
 	ld de, BillsPC_CursorGFX
 	ld hl, vTiles3 tile $04
-	lb bc, BANK(BillsPC_CursorGFX), 2
+	lb bc, BANK(BillsPC_CursorGFX), 3
 	call Get2bpp
 
 	; Blank held cursor mini + item icons.
