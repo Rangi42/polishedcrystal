@@ -82,7 +82,7 @@ endc
 	rawchar "Super Repel@"
 	rawchar "Max Repel@"
 	rawchar "Escape Rope@"
-	rawchar "# Doll@"
+	rawchar "Poké Doll@"
 	rawchar "Ability Cap@"
 	rawchar "Leaf Stone@"
 	rawchar "Fire Stone@"
