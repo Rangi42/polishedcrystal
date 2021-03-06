@@ -389,8 +389,8 @@ HandleYesNoMenu:
 	pop af
 	ret c
 	ld a, [wMenuCursorY]
-	sub 2
-	and a
+	dec a
+	dec a
 	ret
 
 YesNoMenuDataHeader::

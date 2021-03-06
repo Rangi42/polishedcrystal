@@ -1339,7 +1339,7 @@ DrawPackGFX:
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	ld de, vTiles2 tile $27
+	ld de, vTiles2 tile $28
 	lb bc, BANK("Pack Graphics"), 25
 	jp DecompressRequest2bpp
 
@@ -1457,7 +1457,7 @@ Pack_InitGFX:
 	call DisableLCD
 	ld hl, PackInterfaceGFX
 	ld de, vTiles2 tile $01
-	lb bc, BANK(PackInterfaceGFX), 38
+	lb bc, BANK(PackInterfaceGFX), 39
 	call DecompressRequest2bpp
 ; This is where the items themselves will be listed.
 	hlcoord 5, 1
@@ -1489,17 +1489,17 @@ Pack_InitGFX:
 	jp DrawPackGFX
 
 .PackLeftColumnTilemapString:
-	db $15, $15, $15, $15, $15, 0 ; Background (blue if male, pink if female)
-	db $27, $28, $29, $2a, $2b, 0 ; Pack image
-	db $2c, $2d, $2e, $2f, $30, 0
-	db $31, $32, $33, $34, $35, 0
-	db $36, $37, $38, $39, $3a, 0
-	db $3b, $3c, $3d, $3e, $3f, 0
-	db $16, $17, $17, $17, $18, 0 ; Item icon
-	db $19, $1e, $1f, $20, $1a, 0
-	db $19, $21, $22, $23, $1a, 0
-	db $19, $24, $25, $26, $1a, 0
-	db $1b, $1c, $1c, $1c, $1d, -1
+	db $18, $19, $19, $19, $1a, 0 ; Background (blue if male, pink if female)
+	db $28, $29, $2a, $2b, $2c, 0 ; Pack image
+	db $2d, $2e, $2f, $30, $31, 0
+	db $32, $33, $34, $35, $36, 0
+	db $37, $38, $39, $3a, $3b, 0
+	db $3c, $3d, $3e, $3f, $40, 0
+	db $1b, $27, $27, $27, $1d, 0 ; Item icon
+	db $16, $1e, $1f, $20, $17, 0
+	db $16, $21, $22, $23, $17, 0
+	db $16, $24, $25, $26, $17, 0
+	db $15, $1c, $1c, $1c, $15, -1
 
 Pack_GetItemName:
 	ld a, [wCurItem]
