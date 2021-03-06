@@ -392,11 +392,10 @@ GetIcon_a:
 ; Load icon graphics into VRAM starting from tile a.
 	ld l, a
 	ld h, 0
-
+	; fallthrough
 GetIcon:
 	ld c, 8
-	jr DoGetIcon
-
+	; fallthrough
 DoGetIcon:
 ; Load icon graphics into VRAM starting from tile hl.
 
@@ -424,13 +423,11 @@ endr
 
 GetStorageIcon_a:
 ; Load frame 1 icon graphics into VRAM starting from tile a
-	ld l, a
+	ld l, a ; no-optimize hl|bc|de = a * 16 (rept)
 	ld h, 0
-
 rept 4
 	add hl, hl
 endr
-
 	ld de, vTiles0
 	add hl, de
 	; fallthrough

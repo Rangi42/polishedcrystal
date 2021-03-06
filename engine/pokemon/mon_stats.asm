@@ -353,14 +353,9 @@ GetShininess:
 
 .Shininess:
 
-; Shininess
+; Check the shininess value
 	ld a, [hl]
 	and SHINY_MASK
-	ld b, a
-
-; Check the shininess value
-	ld a, b
-	and a
 	ret
 
 GetGender:

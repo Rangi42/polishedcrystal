@@ -813,8 +813,7 @@ SentPkmnIntoBox:
 	jr c, .full
 
 	push bc
-	ld b, $81
-	ld c, 1
+	lb bc, $81, 1
 	farcall CopyBetweenPartyAndTemp
 
 	ld a, [wCurPartySpecies]

@@ -349,7 +349,7 @@ PlaceNoYesBox:
 	ld hl, NoYesMenuDataHeader
 	call HandleYesNoMenu
 	ret c
-	add 1
+	add 1 ; no-optimize a++|a--
 	ret
 
 YesNoBox:
@@ -360,7 +360,7 @@ PlaceYesNoBox::
 	ld hl, YesNoMenuDataHeader
 	call HandleYesNoMenu
 	jr c, .fix_menu
-	sub 1
+	sub 1 ; no-optimize a++|a--
 	ret
 .fix_menu
 	ld a, 2

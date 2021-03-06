@@ -4,6 +4,12 @@
 	const PAL_CURSOR_MODE2
 	const PAL_MINI_ICON
 
+	; Cursor modes
+	const_def
+	const PC_MENU_MODE ; 0
+	const PC_MOVE_MODE ; 1
+	const PC_ITEM_MODE ; 2
+
 _BillsPC:
 	call .CheckCanUsePC
 	ret c
@@ -96,7 +102,7 @@ UseBillsPC:
 
 	call BillsPC_LoadUI
 
-	xor a
+	xor a ; PC_MENU_MODE
 	call BillsPC_SetCursorMode
 
 	; Default cursor data (top left of storage, not holding anything)
@@ -359,40 +365,45 @@ _BillsPC_SetCursorMode:
 	ld a, BANK("GBC Video")
 	call StackCallInWRAMBankA
 .Function:
+	; hl = .CursorPals + [wBillsPC_CursorMode] * 4
 	ld a, [wBillsPC_CursorMode]
-	and a
-	ld hl, .Red
-	jr z, .got_cursor_pal
-	dec a
-	ld hl, .Blue
-	jr z, .got_cursor_pal
-	ld hl, .Green
-.got_cursor_pal
+	add a
+	add a
+	add LOW(.CursorPals)
+	ld l, a
+	adc HIGH(.CursorPals)
+	sub l
+	ld h, a
 	ld de, wOBPals1 palette PAL_CURSOR_MODE1 + 4
-	ld bc, 2
-	rst CopyBytes
+	ld a, [hli]
+	ld [de], a
+	inc de
+	ld a, [hli]
+	ld [de], a
 	ld de, wOBPals1 palette PAL_CURSOR_MODE2 + 4
-	ld bc, 2
-	rst CopyBytes
+	ld a, [hli]
+	ld [de], a
+	inc de
+	ld a, [hl]
+	ld [de], a
 	ret
 
-.Red:
+.CursorPals:
+; PC_MENU_MODE = red
 if !DEF(MONOCHROME)
 	RGB 31, 20, 20
 	RGB 31, 10, 06
 else
 	MONOCHROME_RGB_TWO
 endc
-
-.Blue:
+; PC_MOVE_MODE = blue
 if !DEF(MONOCHROME)
 	RGB 20, 20, 31
 	RGB 06, 10, 31
 else
 	MONOCHROME_RGB_TWO
 endc
-
-.Green:
+; PC_ITEM_MODE = green
 if !DEF(MONOCHROME)
 	RGB 20, 28, 20
 	RGB 06, 26, 10
@@ -779,11 +790,11 @@ CheckPartyShift:
 	jr .outer_loop
 
 .CheckBlankIcon:
+	; a = [wBillsPC_PartyList + a * 2]
 	add a
-	ld hl, wBillsPC_PartyList
-	add l
+	add LOW(wBillsPC_PartyList)
 	ld l, a
-	adc h
+	adc HIGH(wBillsPC_PartyList)
 	sub l
 	ld h, a
 	ld a, [hl]
@@ -1072,18 +1083,18 @@ ManageBoxes:
 	ld hl, .BoxMenu
 	jr c, .got_menu
 
-	; If we're in cursor mode 0, open a menu.
+	; If we're in PC_MENU_MODE, open a menu.
 	ld a, [wBillsPC_CursorMode]
-	and a
+	and a ; PC_MENU_MODE?
 	jr z, .prepare_menu
 
-	; Otherwise, either pick the mon up...
+	; Otherwise, either pick the mon up in PC_MOVE_MODE...
 	dec a
 	push af
 	call z, BillsPC_Switch
 	pop af
 
-	; ...or pickup the item.
+	; ...or pick up the item in PC_ITEM_MODE.
 	call nz, BillsPC_MoveItem
 	jr .loop
 
@@ -1810,6 +1821,7 @@ BillsPC_GiveItem:
 	jp BillsPC_RestoreUI
 
 BillsPC_MoveItem:
+	; TODO
 	ret
 
 BillsPC_BagItem:
