@@ -1191,7 +1191,7 @@ ManageBoxes:
 	jp .loop
 
 .pressed_start
-	; TODO: pick a color scheme (only needs to update BG pals 0+1)
+	; TODO: use Start for something?
 	jp .loop
 
 .pressed_right
@@ -2388,14 +2388,89 @@ BillsPC_Rename:
 BillsPC_Theme:
 	call BillsPC_HideCursor
 
-	; TODO: scrolling theme menu
+	call LoadStandardMenuHeader
 	ld hl, .PickAThemeText
-	jp BillsPC_PrintText
+	call MenuTextbox
+
+	ld hl, wCurBoxTheme
+	ld a, 2 ; num themes
+	ld [hli], a
+	ld c, a
+	xor a
+.loop
+	ld [hli], a
+	inc a
+	dec c
+	jr nz, .loop
+	ld [hl], -1
+
+	ld hl, .ThemeMenuDataHeader
+	call CopyMenuHeader
+	call InitScrollingMenu
+	xor a
+	ld [wMenuScrollPosition], a
+	call ScrollingMenu
+
+; TODO: fix refreshing the UI on exit
+	call BillsPC_UpdateCursorLocation
+	call CloseWindow
+	call ExitMenu
+
+; TODO: switch current box's theme from selection
+;	ld a, [wMenuJoypad]
+;	cp B_BUTTON
+;	jr z, .cancel
+;	xor a
+;	ld a, [wScrollingMenuCursorPosition]
+;	jr .done
+;
+;.cancel
+;	scf
+;.done
+	ret
 
 .PickAThemeText:
-	text "Pick a"
-	line "theme."
-	prompt
+	text "Please"
+	line "pick a theme."
+	done
+
+.ThemeMenuDataHeader:
+	db $40 ; flags
+	db 01, 08 ; start coords
+	db 13, 18 ; end coords
+	dw .ThemeMenuData2
+	db 1 ; default option
+
+.ThemeMenuData2:
+	db $10 ; flags
+	db 6, 0 ; rows, columns
+	db 1 ; horizontal spacing
+	dbw 0, wCurBoxTheme
+	dba .GetThemeString
+	dba NULL
+	dba NULL
+
+.GetThemeString:
+	ld a, [wMenuSelection]
+	push de
+	ld e, a
+	ld d, 0
+	ld hl, .ThemeNames
+	add hl, de
+	add hl, de
+	ld a, [hli]
+	ld d, [hl]
+	ld e, a
+	pop hl
+	rst PlaceString
+	ret
+
+.ThemeNames:
+	dw .LightTheme
+	dw .DarkTheme
+
+.LightTheme: db "Light@"
+.DarkTheme:  db "Dark@"
 
 BillsPC_GetCursorFromTo:
 ; Returns source (held mon) in de and destination (cursor location) in bc.

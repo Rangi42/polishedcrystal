@@ -386,6 +386,8 @@ NEXTU
 wCurElevator:: db
 wCurElevatorFloors:: db
 NEXTU
+wCurBoxTheme:: ds 21
+NEXTU
 wInverseBattleScore::
 wCurMessageScrollPosition:: db
 wCurMessageIndex:: db
@@ -393,8 +395,6 @@ wMailboxCount:: db
 wMailboxItems:: ds MAILBOX_CAPACITY
 wMailboxEnd:: db
 ENDU
-
-	ds 5 ; unused
 
 wCurIconMonHasItemOrMail:: db
 
