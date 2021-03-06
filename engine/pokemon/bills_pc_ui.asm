@@ -2619,7 +2619,6 @@ BillsPC_PlaceHeldMon:
 	call BillsPC_BlankCursorItem
 	xor a
 	ldh [rVBK], a
-	call GetCursorMon
 
 .holding_mon
 	call BillsPC_CursorPick2
@@ -2630,7 +2629,7 @@ BillsPC_PlaceHeldMon:
 	xor a
 	ld [wBillsPC_CursorHeldBox], a
 	ld [wBillsPC_CursorHeldSlot], a
-	ret
+	jp GetCursorMon
 
 BillsPC_SetOBPals:
 ; Sets object palettes. Plays nice with PC hblank interrupt.
