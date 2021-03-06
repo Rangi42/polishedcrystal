@@ -2163,18 +2163,30 @@ BillsPC_Release:
 
 	; Then release the mon.
 	call BillsPC_GetCursorSlot
+	push bc
 	farcall RemoveStorageBoxMon
 
 	; Print message and reload current cursor mon.
 	ld hl, .WasReleasedOutside
 	call PrintText
-	call GetCursorMon
+
+	; TODO: dedicated blanking routine rather than writing to quickslot? To be
+	; clear, we can't just use BlankTiles, because we also need to fix the icon
+	; address which some UI routines use to verify whether or not the location
+	; is blank.
+	call .done
+	pop bc
+	lb de, -1, 1
+	call BillsPC_MoveIconData
+	call CheckPartyShift
+	jp GetCursorMon
+
 .done
 	call BillsPC_UpdateCursorLocation
 	jp CloseWindow
 
 .found_hm
-	ld hl, .ItRefusedToGo
+	ld hl, .CantReleaseHMMons
 .print
 	jp BillsPC_PrintText
 
@@ -2183,7 +2195,7 @@ BillsPC_Release:
 	line "an Egg!"
 	prompt
 
-.ItRefusedToGo:
+.CantReleaseHMMons:
 	text "You can't release"
 	line "<PK><MN> knowing HMs!"
 	prompt
