@@ -1296,7 +1296,7 @@ ManageBoxes:
 
 .BoxMenu:
 	db $40 ; flags
-	db 12, 11 ; start coords
+	db 10, 11 ; start coords
 	db 17, 19 ; end coords
 	dw .BoxMenuData2
 	db 1 ; default option
@@ -1331,8 +1331,9 @@ ManageBoxes:
 	db -1
 
 .boxitems
-	db 2
+	db 3
 	db BOXMENU_RENAME
+	db BOXMENU_THEME
 	db BOXMENU_CANCEL
 	db -1
 
@@ -1348,6 +1349,7 @@ BillsPC_MenuStrings:
 	db "Release@"
 	; box options
 	db "Rename@"
+	db "Theme@"
 	; holding an item
 	db "Move@"
 	db "Bag@"
@@ -1364,6 +1366,7 @@ BillsPC_MenuJumptable:
 	dw BillsPC_Item
 	dw BillsPC_Release
 	dw BillsPC_Rename
+	dw BillsPC_Theme
 	dw BillsPC_MoveItem
 	dw BillsPC_BagItem
 	dw BillsPC_GiveItem
@@ -2304,6 +2307,18 @@ BillsPC_Rename:
 	call ExitMenu
 	call BillsPC_PrintBoxName
 	jp BillsPC_RestoreUI
+
+BillsPC_Theme:
+	call BillsPC_HideCursor
+
+	; TODO: scrolling theme menu
+	ld hl, .PickAThemeText
+	jp BillsPC_PrintText
+
+.PickAThemeText:
+	text "Pick a"
+	line "theme."
+	prompt
 
 BillsPC_GetCursorFromTo:
 ; Returns source (held mon) in de and destination (cursor location) in bc.
