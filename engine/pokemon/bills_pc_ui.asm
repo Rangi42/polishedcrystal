@@ -75,10 +75,10 @@ BillsPC_LoadUI:
 	call DecompressRequest2bpp
 
 	; Box frame tiles
-	ld de, BillsPC_TileGFX
-	ld hl, vTiles2 tile $31
+	ld hl, BillsPC_TileGFX
+	ld de, vTiles2 tile $31
 	lb bc, BANK(BillsPC_TileGFX), 15
-	call Get2bpp
+	call DecompressRequest2bpp
 
 	; Held item icon
 	ld hl, vTiles0 tile 4
@@ -330,9 +330,8 @@ UseBillsPC:
 BillsPC_CursorGFX:
 INCBIN "gfx/pc/cursor.2bpp"
 
-; TODO: LZ compression
 BillsPC_TileGFX:
-INCBIN "gfx/pc/pc.2bpp"
+INCBIN "gfx/pc/pc.2bpp.lz"
 
 BillsPC_BlankTiles:
 ; Used as input to blank empty slots
