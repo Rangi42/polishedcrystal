@@ -654,12 +654,12 @@ BillsPC_UpdateCursorLocation:
 	push bc
 	ld hl, wVirtualOAM + 64
 	ld de, wStringBuffer3
-	ld bc, 4
+	ld bc, 8
 	rst CopyBytes
 	farcall PlaySpriteAnimations
 	ld hl, wStringBuffer3
 	ld de, wVirtualOAM + 64
-	ld bc, 4
+	ld bc, 8
 	rst CopyBytes
 	jp PopBCDEHL
 
@@ -1959,6 +1959,10 @@ GetMonItemUnlessCursor:
 
 BillsPC_BlankCursorItem:
 ; Blanks cursor item and swap icon. Assumes vbk1.
+	; Remove held item icon.
+	ld a, -1
+	ld [wVirtualOAM + 68], a
+
 	; Blank cursor item name. Only uses 10 tiles, but this is ok.
 	ld hl, vTiles5 tile $3b
 	ld a, 3
@@ -2004,13 +2008,23 @@ BillsPC_MoveItem:
 	dec a
 	ldh [hBGMapMode], a
 
+	; Load held item icon
+	ld hl, wVirtualOAM + 68
+	ld [hl], 32
+	inc hl
+	ld [hl], 72
+	inc hl
+	ld [hl], $06
+	inc hl
+	ld [hl], TILE_BANK | PAL_CURSOR_MODE2
+
 	; Load held item name
 	ld hl, vTiles5 tile $3b
 	ld de, wBillsPC_ItemVWF
 	ld c, 10
 	call BillsPC_SafeGet2bpp
 
-	; Load held item icon.
+	; Load cursor item icon.
 	ld hl, vTiles3 tile $10
 	lb bc, BANK(HeldItemIcons), 1
 
