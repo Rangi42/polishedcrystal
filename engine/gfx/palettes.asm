@@ -1898,3 +1898,40 @@ else
 	RGB_MONOCHROME_DARK
 	RGB_MONOCHROME_WHITE
 endc
+
+BillsPC_BackgroundPals:
+if !DEF(MONOCHROME)
+; light
+	RGB 20, 26, 31
+	; two gender colors go here
+	RGB 00, 00, 00
+	RGB 20, 26, 31
+	RGB 05, 06, 18
+	RGB 11, 16, 30
+	RGB 31, 31, 31
+; dark
+	RGB 07, 11, 22
+	; two gender colors go here
+	RGB 31, 31, 31
+	RGB 07, 11, 22
+	RGB 03, 04, 13
+	RGB 13, 24, 29
+	RGB 31, 31, 31
+else
+; light
+	RGB_MONOCHROME_WHITE
+	; two gender colors go here
+	RGB_MONOCHROME_BLACK
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_LIGHT
+	RGB_MONOCHROME_WHITE
+; dark
+	RGB_MONOCHROME_DARK
+	; two gender colors go here
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_BLACK
+	RGB_MONOCHROME_LIGHT
+	RGB_MONOCHROME_WHITE
+endc

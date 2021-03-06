@@ -106,10 +106,10 @@ BillsPC_LoadUI:
 	call DecompressRequest2bpp
 
 	; Box frame tiles
-	ld de, BillsPC_TileGFX
-	ld hl, vTiles2 tile $31
+	ld hl, BillsPC_TileGFX
+	ld de, vTiles2 tile $31
 	lb bc, BANK(BillsPC_TileGFX), 15
-	call Get2bpp
+	call DecompressRequest2bpp
 
 	; Set up background + outline palettes
 	ld a, CGB_BILLS_PC
@@ -337,9 +337,8 @@ UseBillsPC:
 BillsPC_CursorGFX:
 INCBIN "gfx/pc/cursor.2bpp"
 
-; TODO: LZ compression
 BillsPC_TileGFX:
-INCBIN "gfx/pc/pc.2bpp"
+INCBIN "gfx/pc/pc.2bpp.lz"
 
 BillsPC_BlankTiles:
 ; Used as input to blank a*4 tiles (mon icons typically use 4 tiles).
