@@ -59,7 +59,7 @@ _ResetInitialOptions:
 	ld a, BANK(sOptions)
 	call GetSRAMBank
 	ld a, [wInitialOptions2]
-	ld [sOptions + wInitialOptions2 - wOptions1], a ; sInitialOptions2
+	ld [sOptions + wInitialOptions2 - wOptions], a ; sInitialOptions2
 	jp CloseSRAM
 
 .Text_ResetInitialOptions:
