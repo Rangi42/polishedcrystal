@@ -2393,7 +2393,7 @@ BillsPC_Theme:
 
 	call LoadStandardMenuHeader
 	ld hl, .PickAThemeText
-	call MenuTextbox
+	call PrintText
 
 	ld hl, wCurBoxTheme
 	ld a, 2 ; num themes
@@ -2415,7 +2415,6 @@ BillsPC_Theme:
 	call ScrollingMenu
 
 	call BillsPC_UpdateCursorLocation
-	call ExitMenu
 	call ExitMenu
 	ld b, 0
 	call SafeCopyTilemapAtOnce
