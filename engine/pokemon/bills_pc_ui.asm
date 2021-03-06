@@ -52,10 +52,41 @@ BillsPC_LoadUI:
 	ld a, 1
 	ldh [rVBK], a
 
-	; Cursor tiles
+	; Reserve 4 blank tiles for empty slots
+	ld a, 4
+	ld hl, vTiles3
+.blank_loop
+	ld de, vTiles5 tile $7f
+	push af
+	ld c, 1
+	push hl
+	push de
+	call Get2bpp
+	pop de
+	pop hl
+	ld bc, 1 tiles
+	add hl, bc
+	pop af
+	dec a
+	jr nz, .blank_loop
+
+	; Load cursor tiles.
 	ld de, BillsPC_CursorGFX
-	ld hl, vTiles0 + 4 tiles
+	ld hl, vTiles3 tile $04
 	lb bc, BANK(BillsPC_CursorGFX), 2
+	call Get2bpp
+
+	; Blank held cursor mini + item icons.
+	ld hl, vTiles3 tile $08
+	ld a, 7 ; cursor+quick mini/shadow/item + hover item icon
+	call BillsPC_BlankTiles
+
+	call BillsPC_BlankCursorItem
+
+	; Held item icon
+	ld hl, vTiles3 tile $1c
+	ld de, HeldItemIcons
+	lb bc, BANK(HeldItemIcons), 2
 	call Get2bpp
 
 	xor a
@@ -78,12 +109,6 @@ BillsPC_LoadUI:
 	ld de, BillsPC_TileGFX
 	ld hl, vTiles2 tile $31
 	lb bc, BANK(BillsPC_TileGFX), 15
-	call Get2bpp
-
-	; Held item icon
-	ld hl, vTiles0 tile 4
-	ld de, HeldItemIcons
-	lb bc, BANK(HeldItemIcons), 2
 	call Get2bpp
 
 	; Set up background + outline palettes
@@ -111,30 +136,8 @@ UseBillsPC:
 	xor a
 	ld [wBillsPC_CursorHeldSlot], a
 
-	; Reserve 4 blank tiles for empty slots
 	ld a, 1
 	ldh [rVBK], a
-	ld a, 4
-	ld hl, vTiles3
-.blank_loop
-	ld de, vTiles5 tile $7f
-	push af
-	ld c, 1
-	push hl
-	push de
-	call Get2bpp
-	pop de
-	pop hl
-	ld bc, 1 tiles
-	add hl, bc
-	pop af
-	dec a
-	jr nz, .blank_loop
-
-	; Blank held cursor mini + item icons
-	ld hl, vTiles3 tile $08
-	ld a, 3 ; mini + shadowmask + items (only uses 2 tiles, but this is ok).
-	call BillsPC_BlankTiles
 
 	; Pokepic attributes
 	hlcoord 0, 0, wAttrMap
@@ -143,9 +146,13 @@ UseBillsPC:
 	call FillBoxWithByte
 
 	; Item name is in vbk1
-	hlcoord 10, 3, wAttrMap
+	hlcoord 10, 2, wAttrMap ; Cursor's item
 	ld bc, 10
 	ld a, TILE_BANK
+	push bc
+	rst ByteFill
+	pop bc
+	hlcoord 10, 3, wAttrMap ; Mon's item
 	rst ByteFill
 
 	; Storage box
@@ -335,8 +342,8 @@ BillsPC_TileGFX:
 INCBIN "gfx/pc/pc.2bpp"
 
 BillsPC_BlankTiles:
-; Used as input to blank empty slots
-	ld de, vTiles3 tile $00
+; Used as input to blank a*4 tiles (mon icons typically use 4 tiles).
+	ld de, vTiles3 tile $00 ; Reserved blank tiles.
 	ld bc, 4 tiles
 .loop
 	push hl
@@ -707,27 +714,6 @@ BillsPC_GetCursorSlot:
 	ld b, 0
 	ret
 
-BillsPC_SetBoxArrows:
-	ld a, [wBillsPC_CursorPos]
-	cp $10
-	jr c, .box_cursors
-
-	; Clear box switch arrows.
-	ld a, " "
-	hlcoord 8, 5
-	ld [hl], a
-	hlcoord 18, 5
-	ld [hl], a
-	xor a
-	ret
-
-.box_cursors
-	hlcoord 8, 5
-	ld [hl], "◀"
-	hlcoord 18, 5
-	ld [hl], "▶"
-	ret
-
 BillsPC_Withdraw:
 	ld b, 0
 	jr MoveCurMonToBox
@@ -805,12 +791,35 @@ GetCursorMon:
 ; Prints data about Pokémon at cursor if nothing is held (underline to force).
 ; Returns z if cursor is on an empty pkmn slot.
 	; Only handle box arrows if we're holding a mon
-	ld a, [wBillsPC_CursorHeldSlot]
-	and a
+	call BillsPC_GetCursorHeldSlot
+	bit 7, b
+	jr nz, _GetCursorMon
+	inc c
+	dec c
 	jr z, _GetCursorMon
 
 	call BillsPC_UpdateCursorLocation
-	jr BillsPC_SetBoxArrows
+	; fallthrough
+BillsPC_SetBoxArrows:
+	ld a, [wBillsPC_CursorPos]
+	cp $10
+	jr c, .box_cursors
+
+	; Clear box switch arrows.
+	ld a, " "
+	hlcoord 8, 5
+	ld [hl], a
+	hlcoord 18, 5
+	ld [hl], a
+	xor a
+	ret
+
+.box_cursors
+	hlcoord 8, 5
+	ld [hl], "◀"
+	hlcoord 18, 5
+	ld [hl], "▶"
+	ret
 
 _GetCursorMon:
 	call BillsPC_UpdateCursorLocation
@@ -827,12 +836,15 @@ _GetCursorMon:
 .clear
 	; Clear existing data
 
-	; Clear nickname+species+icon
+	; Clear nickname+species+icon. Leave 3rd row (held item) alone.
 	hlcoord 7, 0
-	lb bc, 4, 13
+	lb bc, 2, 13
+	call ClearBox
+	hlcoord 11, 0
+	lb bc, 1, 13
 	call ClearBox
 
-	; Clear pokepic
+	; Clear pokepic + level/gender
 	hlcoord 0, 0
 	lb bc, 9, 7
 	call ClearBox
@@ -874,8 +886,7 @@ _GetCursorMon:
 	push hl
 	ld a, "@"
 	ld [wStringBuffer2], a
-	ld a, [wTempMonItem]
-	and a
+	call GetMonItemUnlessCursor
 	jr z, .no_item
 	ld [wNamedObjectIndexBuffer], a
 	call GetItemName
@@ -906,16 +917,29 @@ _GetCursorMon:
 	rst ByteFill
 	pop hl
 	ld de, wStringBuffer1
-	ld a, [wTempMonItem]
-	and a
+	call GetMonItemUnlessCursor
+	push af
 	call nz, PlaceVWFString
 	call DelayFrame
 
 	ld a, 1
 	ldh [rVBK], a
-	ld hl, vTiles2 tile $31
+	ld hl, vTiles5 tile $31
 	ld de, wBillsPC_ItemVWF
 	ld c, 10
+	call Get2bpp
+	pop af
+	and a
+	ld de, vTiles3 tile $00
+	jr z, .got_item_tile
+	ld d, a
+	call ItemIsMail
+	ld de, vTiles3 tile $1c
+	jr c, .got_item_tile
+	ld de, vTiles3 tile $1d
+.got_item_tile
+	ld hl, vTiles3 tile $20
+	ld c, 1
 	call Get2bpp
 	xor a
 	ldh [rVBK], a
@@ -955,8 +979,7 @@ _GetCursorMon:
 
 	; Show or hide item icon
 	ld hl, wVirtualOAM + 64
-	ld a, [wTempMonItem]
-	and a
+	call GetMonItemUnlessCursor
 	ld [hl], -1
 	jr z, .item_icon_done
 
@@ -965,13 +988,9 @@ _GetCursorMon:
 	ld [hl], 72
 	inc hl
 	inc hl
-	ld [hl], 0
+	ld [hl], TILE_BANK
 	dec hl
-	ld [hl], 4
-	ld d, a
-	call ItemIsMail
-	jr c, .item_icon_done
-	inc [hl]
+	ld [hl], $20
 .item_icon_done
 
 	ld b, 0
@@ -1023,14 +1042,19 @@ _GetCursorMon:
 .genderless
 
 	; Item
+	ld c, 2
 	hlcoord 10, 3
 	ld a, $31
+.item_loop_begin
 	ld b, 10
 .item_loop
 	ld [hli], a
 	inc a
 	dec b
 	jr nz, .item_loop
+	hlcoord 10, 2
+	dec c
+	jr nz, .item_loop_begin
 .ret_nz
 	or 1
 	ret
@@ -1074,6 +1098,15 @@ ManageBoxes:
 	call GetCursorMon
 	jr z, .loop
 
+	; In item move mode, check if the mon is holding an item.
+	ld a, [wBillsPC_CursorMode]
+	cp PC_ITEM_MODE
+	jr nz, .confirm_ok
+	ld a, [wTempMonItem]
+	and a
+	jr z, .loop
+
+.confirm_ok
 	ld de, SFX_READ_TEXT_2
 	call PlaySFX
 
@@ -1112,7 +1145,7 @@ ManageBoxes:
 .got_menu
 	ld b, 1
 	call BillsPC_Menu
-	jr .loop
+	jp .loop
 
 .pressed_b
 	; If we're holding a mon, abort the selection.
@@ -1400,6 +1433,38 @@ BillsPC_MoveIconData:
 	pop af
 	ldh [rSVBK], a
 
+	; Handle held items seperately from this point.
+	call BillsPC_IsHoldingItem
+	jr z, .not_holding_item
+
+	; Check if we're loading or unloading the icon
+	ld a, [wBillsPC_QuickFrames]
+	and a
+	ld de, vTiles3 tile $00 ; Blank.
+	jr z, .got_item_tile
+	ld a, b
+	inc a
+	ld de, vTiles3 tile $20 ; Item for mon cursor is hovering
+	jr nz, .got_item_tile
+	ld de, vTiles3 tile $10 ; Item cursor is holding.
+.got_item_tile
+	ld hl, vTiles3 tile $14 ; Quick tile.
+	push bc
+	ld c, 1
+	call BillsPC_SafeGet2bpp
+	call BillsPC_SetOBPals
+	pop bc
+
+	; Check if we should blank the cursor tile.
+	inc b
+	ld a, c
+	or b
+	ld hl, vTiles3 tile $10
+	ld a, 1
+	call z, BillsPC_BlankTiles
+	jr .done
+
+.not_holding_item
 	; Copy extspecies data
 	ld a, 1
 	call .Copy
@@ -1431,6 +1496,7 @@ BillsPC_MoveIconData:
 	ld a, 1
 	call BillsPC_BlankTiles
 
+.done
 	xor a
 	ldh [rVBK], a
 	inc a
@@ -1450,9 +1516,16 @@ BillsPC_MoveIconData:
 	ld e, l
 	pop hl
 	and a
-	ld bc, 4
+	ld bc, 2
+	jr nz, .got_len
+
+	call BillsPC_IsHoldingItem
+	ld c, 4
 	jr z, .got_len
-	ld c, 2
+
+	; If holding an item, just copy icon pal to quickmove.
+	ld hl, wOBPals1 palette $0 + 2
+	ld de, wOBPals1 palette $5 + 2
 .got_len
 	rst CopyBytes
 	pop de
@@ -1589,10 +1662,29 @@ BillsPC_PrepareQuickAnim:
 	ld [hli], a
 	ld a, c
 	ld [hli], a
+	push bc
 	call BillsPC_GetXYFromStorageBox
+	pop bc
+
+	; If we're dealing with a held item, we need to offset XY slightly.
+
+	; The cursor slot uses a different Y offset.
+	inc b
+	ld b, 0
+	jr nz, .not_cursor
+	ld b, 2
+.not_cursor
+	call BillsPC_IsHoldingItem
+	ld c, 4
+	jr nz, .got_offset
+	lb bc, 0, 0
+.got_offset
 	ld a, d
+	add c
 	ld [hli], a
 	ld a, e
+	add b
+	add c
 	ld [hli], a
 	ret
 
@@ -1615,6 +1707,7 @@ BillsPC_GetXYFromStorageBox:
 	ret
 
 .not_cursor
+	res 7, b
 	dec b
 	jr z, .party
 	ld a, c
@@ -1622,7 +1715,7 @@ BillsPC_GetXYFromStorageBox:
 	jr nz, .not_on_boxname
 	; fallthrough
 .boxname_pos
-	lb de, $70, $38
+	lb de, $6c, $38
 	ret
 
 .not_on_boxname
@@ -1734,14 +1827,10 @@ BillsPC_AbortSelection:
 
 	; If we're dealing with an item, we don't need to reload any tiles.
 	call BillsPC_GetCursorHeldSlot
-	ld a, b
-	and $80
-	push af
-	xor a
-	ld [wBillsPC_CursorHeldBox], a
-	ld [wBillsPC_CursorHeldSlot], a
-	pop af
-	jr nz, .done_reverting_icons
+	bit 7, b
+	push bc
+	call nz, BillsPC_BlankCursorItem
+	pop bc
 
 	; Ensure that the icon is returned, if in party/current Box.
 	ld d, b
@@ -1749,7 +1838,10 @@ BillsPC_AbortSelection:
 	lb bc, -1, 0
 	call BillsPC_PerformQuickAnim
 
-.done_reverting_icons
+	xor a
+	ld [wBillsPC_CursorHeldBox], a
+	ld [wBillsPC_CursorHeldSlot], a
+
 	ld a, PCANIM_ANIMATE
 	ld [wBillsPC_CursorAnimFlag], a
 
@@ -1820,8 +1912,107 @@ BillsPC_GiveItem:
 	call ExitMenu
 	jp BillsPC_RestoreUI
 
+GetMonItemUnlessCursor:
+; Returns mon item unless the cursor is holding it. Returns z if cursor held.
+	push de
+	push bc
+	call .do_it
+	pop bc
+	pop de
+	ld a, 0
+	ret z
+	ld a, [wTempMonItem]
+	and a
+	ret
+
+.do_it
+	; Figure out if we're drawing to cursor item or general held item.
+	call BillsPC_GetCursorFromTo
+
+	; d is $80 | b if it's the same box + cursor is holding an item.
+	ld a, d
+	sub b
+	xor $80
+	ret nz
+	ld a, e
+	cp c
+	ret
+
+BillsPC_BlankCursorItem:
+; Blanks cursor item and swap icon. Assumes vbk1.
+	; Blank cursor item name. Only uses 10 tiles, but this is ok.
+	ld hl, vTiles5 tile $3b
+	ld a, 3
+	jp BillsPC_BlankTiles
+
+BillsPC_IsHoldingItem:
+; Returns nz if we're holding an item.
+	push bc
+	call BillsPC_GetCursorHeldSlot
+	bit 7, b
+	pop bc
+	ret
+
 BillsPC_MoveItem:
-	; TODO
+; Pick up item for movement.
+	; Removing items might reallocate a storage mon, so check that we have space
+	; for that in the database.
+	call BillsPC_GetCursorSlot
+	ld a, b
+	and a
+	jr z, .entries_not_full
+
+	ld a, 1
+	push bc
+	call BillsPC_GetStorageSpace
+	pop bc
+	ret nz
+
+.entries_not_full
+	; Mark current cursor slot for movement.
+	ld a, b
+	or $80 ; Mark that we're holding an item rather than a mon.
+	ld [wBillsPC_CursorHeldBox], a
+	ld a, c
+	ld [wBillsPC_CursorHeldSlot], a
+
+	push bc
+	call BillsPC_CursorPick1
+	pop bc
+
+	ld a, 1
+	ldh [rVBK], a
+	dec a
+	ldh [hBGMapMode], a
+
+	; Load held item name
+	ld hl, vTiles5 tile $3b
+	ld de, wBillsPC_ItemVWF
+	ld c, 10
+	call BillsPC_SafeGet2bpp
+
+	; Load held item icon.
+	ld hl, vTiles3 tile $10
+	lb bc, BANK(HeldItemIcons), 1
+
+	ld a, [wTempMonItem]
+	ld d, a
+	call ItemIsMail
+	ld de, HeldItemIcons ; mail icon
+	jr c, .got_item_tile
+	ld de, HeldItemIcons tile 1 ; regular item icon
+.got_item_tile
+	call BillsPC_SafeGet2bpp
+
+	xor a
+	ldh [rVBK], a
+	inc a
+	ldh [hBGMapMode], a
+
+	call GetCursorMon
+
+	call BillsPC_CursorPick2
+	ld [hl], PCANIM_STATIC
 	ret
 
 BillsPC_BagItem:
@@ -2121,6 +2312,19 @@ BillsPC_SwapStorage:
 	push de
 	push bc
 
+	; Items are handled seperately.
+	call BillsPC_IsHoldingItem
+	jr z, .holding_mon
+
+	; Don't do anything if we're hovering over an empty slot.
+	call GetCursorMon
+	jr z, .abort
+	ld a, c
+	and a
+	jr z, .abort
+	jr .abort
+
+.holding_mon
 	; Try to swap slots bc and de and interpret result.
 	call SwapStorageBoxSlots
 	and a
@@ -2228,6 +2432,8 @@ BillsPC_PlaceHeldMon:
 	lb bc, -1, 0
 	call BillsPC_PerformQuickAnim
 	pop bc
+	ld a, PCANIM_ANIMATE
+	ld [wBillsPC_CursorAnimFlag], a
 	jr .partyshift
 
 .not_on_boxname
