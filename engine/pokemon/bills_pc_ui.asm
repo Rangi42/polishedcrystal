@@ -1442,12 +1442,12 @@ BillsPC_MoveIconData:
 	pop af
 	ldh [rSVBK], a
 
+	ld a, 1
+	ldh [rVBK], a
+
 	; Handle held items seperately from this point.
 	call BillsPC_IsHoldingItem
 	jr z, .not_holding_item
-
-	ld a, 1
-	ldh [rVBK], a
 
 	; Check if we're loading or unloading the icon
 	ld a, [wBillsPC_QuickFrames]
