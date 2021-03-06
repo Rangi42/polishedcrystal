@@ -2322,13 +2322,96 @@ BillsPC_SwapStorage:
 	call BillsPC_IsHoldingItem
 	jr z, .holding_mon
 
-	; Don't do anything if we're hovering over an empty slot.
-	call GetCursorMon
-	jr z, .abort
+	; Don't do anything if we're hovering over an empty slot or boxname.
 	ld a, c
 	and a
-	jr z, .abort
-	jr .abort
+	jp z, .abort
+	farcall GetStorageBoxMon
+	jp z, .abort
+
+	; If we're moving to a Box, we might need to verify that we have the db
+	; space to do so. Box source has already been verified, so box->party is
+	; always safe.
+	ld a, b
+	and a
+	jr z, .entries_not_full
+	ld a, d
+	and $7f
+	ld a, 1
+	jr z, .got_space_req
+	inc a
+.got_space_req
+	call BillsPC_GetStorageSpace
+	jp nz, .abort
+	pop bc
+	pop de
+	push de
+	push bc
+	; fallthrough
+.entries_not_full
+	; Throw out the "is item" flag.
+	ld a, d
+	and $7f
+	ld d, a
+	or b
+	jr nz, .party_check_done
+
+	; If both mons are in the party, possibly transfer Mail.
+	push de
+	push bc
+	farcall SwapPartyMonMail
+	pop bc
+	pop de
+
+.party_check_done
+	; Swap items.
+	push de
+	push bc
+	ld hl, wTempMonItem
+	ld b, d
+	ld c, e
+	farcall GetStorageBoxMon
+	ld e, [hl]
+	ld a, b
+	pop bc
+	push af
+	farcall GetStorageBoxMon
+	pop af
+	ld d, [hl]
+
+	; Ensure that we're not trying to move mail into storage.
+
+	; Check if item d is a mail about to be given to a storage mon.
+	and a
+	call nz, ItemIsMail
+	jr c, .mail_failure
+	push de
+
+	; Check if item e is a mail about to be given to a storage mon.
+	ld a, b
+	ld d, e
+	and a
+	call nz, ItemIsMail
+	jr c, .pop_de_mail_failure
+	ld [hl], e
+	push hl
+	farcall UpdateStorageBoxMonFromTemp
+	pop hl
+	pop de
+	pop bc
+	farcall GetStorageBoxMon
+	ld [hl], d
+	farcall UpdateStorageBoxMonFromTemp
+	xor a
+	jr .done
+
+.pop_de_mail_failure
+	pop de
+	; fallthrough
+.mail_failure
+	pop bc
+	ld a, 6
+	jr .failed
 
 .holding_mon
 	; Try to swap slots bc and de and interpret result.
@@ -2358,6 +2441,11 @@ BillsPC_SwapStorage:
 	dec a
 	jr z, .swap_failed
 	ld hl, .IsHoldingMail
+	dec a
+	jr z, .swap_failed
+
+	; Not returned by SwapStorageBoxSlots, but rather if item move failed.
+	ld hl, .CantStoreMail
 	; fallthrough
 .swap_failed
 	; Print error message
@@ -2379,7 +2467,7 @@ BillsPC_SwapStorage:
 	call CloseWindow
 	pop bc
 	pop de
-	jr BillsPC_SwapStorage
+	jp BillsPC_SwapStorage
 .menutext_abort
 	call BillsPC_UpdateCursorLocation
 	call CloseWindow
@@ -2401,6 +2489,11 @@ BillsPC_SwapStorage:
 .IsHoldingMail:
 	text "Held Mail must be"
 	line "removed first."
+	prompt
+
+.CantStoreMail:
+	text "Can't place Mail in"
+	line "storage."
 	prompt
 
 BillsPC_LastPartyMon:
