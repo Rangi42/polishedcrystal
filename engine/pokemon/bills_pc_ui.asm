@@ -1436,6 +1436,9 @@ BillsPC_MoveIconData:
 	call BillsPC_IsHoldingItem
 	jr z, .not_holding_item
 
+	ld a, 1
+	ldh [rVBK], a
+
 	; Check if we're loading or unloading the icon
 	ld a, [wBillsPC_QuickFrames]
 	and a
@@ -1467,9 +1470,6 @@ BillsPC_MoveIconData:
 	; Copy extspecies data
 	ld a, 1
 	call .Copy
-
-	ld a, 1
-	ldh [rVBK], a
 
 	; Set new icon data.
 	push bc
