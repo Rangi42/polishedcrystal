@@ -896,7 +896,7 @@ wBillsPC_CursorHeldBox:: db ; 0 for party, 1-15 otherwise
 wBillsPC_CursorHeldSlot:: db ; 0 for nothing held, or 1-20 (1-6 if party)
 wBillsPC_CursorDestBox:: db ; 0 for party, 1-15 otherwise
 wBillsPC_CursorDestSlot:: db ; 0 for release, or 1-20 (1-6 if party)
-wBillsPC_CursorMode:: db ; 0 for regular (red), 1 for switch mode (blue)
+wBillsPC_CursorMode:: db ; 0 for regular mode (red), 1 for swap mode (blue), 2 for item mode (green)
 wBillsPC_CursorAnimFlag:: db ; manage cursor behaviour
 wBillsPC_ItemVWF:: ds 10 tiles
 
@@ -913,6 +913,8 @@ wBillsPC_QuickToSlot:: db
 wBillsPC_QuickToX:: db
 wBillsPC_QuickToY:: db
 wBillsPC_QuickFrames:: db
+
+wBillsPC_PreserveCursorPal:: db ; used by _CGB_BillsPC
 
 NEXTU
 ; raw link data

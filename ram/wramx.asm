@@ -919,7 +919,9 @@ wStoneTableAddress:: dw
 wBattleTowerCurStreak:: dw
 wBattleTowerTopStreak:: dw
 
-	ds 18
+wBillsPC_BoxThemes:: ds NUM_BOXES
+
+	ds 3
 
 wMapObjects::
 wPlayerObject:: map_object wPlayer
@@ -955,11 +957,7 @@ wStatusFlags3::
 	; 0 - judge machine
 	db
 
-wBillsPC_BoxTheme::
-; 0 - light
-; 1 - dark
-	db
-
+	ds 1
 wTimeOfDayPal:: db
 	ds 4
 wTimeOfDayPalFlags:: db
