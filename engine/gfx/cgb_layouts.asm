@@ -969,33 +969,34 @@ _CGB_PokedexUnownMode:
 	jp _CGB_FinishLayout
 
 _CGB_BillsPC:
+	; hl = BillsPC_BackgroundPals + [wBillsPC_BoxTheme] * 6 * 2
+	ld a, [wBillsPC_BoxTheme]
+	add a
+	add a
+	ld l, a
+	add a
+	add l
+	add LOW(BillsPC_BackgroundPals)
+	ld l, a
+	adc HIGH(BillsPC_BackgroundPals)
+	sub l
+	ld h, a
 	ld de, wBGPals1
-	ld hl, .Background
-	call LoadHLPaletteIntoDE
-	ld hl, .Outline
-	call LoadHLPaletteIntoDE
+	ld c, 1 * 2
+	call LoadCPaletteBytesFromHLIntoDE
+	push hl
+	ld hl, GenderAndExpBarPals
+	ld c, 2 * 2
+	call LoadCPaletteBytesFromHLIntoDE
+	pop hl
+	ld c, 5 * 2
+	call LoadCPaletteBytesFromHLIntoDE
 	ld de, wOBPals1 palette 1
 	ld hl, .CursorPal
 	push hl
 	call LoadHLPaletteIntoDE
 	pop hl
 	jp LoadHLPaletteIntoDE
-
-.Background:
-	RGB 26, 26, 30
-	RGB 31, 12, 06
-	RGB 04, 17, 31
-	RGB 00, 00, 00
-
-.Outline:
-if !DEF(MONOCHROME)
-	RGB 26, 26, 30
-	RGB 13, 05, 31
-	RGB 10, 19, 31
-	RGB 31, 31, 31
-else
-	MONOCHROME_RGB_FOUR
-endc
 
 .CursorPal:
 ; Coloring is fixed up later.

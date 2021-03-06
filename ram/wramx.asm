@@ -955,7 +955,11 @@ wStatusFlags3::
 	; 0 - judge machine
 	db
 
-	ds 1
+wBillsPC_BoxTheme::
+; 0 - light
+; 1 - dark
+	db
+
 wTimeOfDayPal:: db
 	ds 4
 wTimeOfDayPalFlags:: db

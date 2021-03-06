@@ -234,11 +234,12 @@ LoadMailPalettes:
 	jp ApplyAttrMap
 
 LoadHLPaletteIntoDE:
+	ld c, $8
+LoadCPaletteBytesFromHLIntoDE:
 	ldh a, [rSVBK]
 	push af
 	ld a, $5
 	ldh [rSVBK], a
-	ld c, $8
 .loop
 	ld a, [hli]
 	ld [de], a
