@@ -47,9 +47,9 @@ BillsPC_LoadUI:
 	ldh [rVBK], a
 
 	; Cursor tiles
-	ld de, BillsPC_CursorTiles
+	ld de, BillsPC_CursorGFX
 	ld hl, vTiles0 + 4 tiles
-	lb bc, BANK(BillsPC_CursorTiles), 2
+	lb bc, BANK(BillsPC_CursorGFX), 2
 	call Get2bpp
 
 	xor a
@@ -69,9 +69,9 @@ BillsPC_LoadUI:
 	call DecompressRequest2bpp
 
 	; Box frame tiles
-	ld de, BillsPC_Tiles
+	ld de, BillsPC_TileGFX
 	ld hl, vTiles2 tile $31
-	lb bc, BANK(BillsPC_Tiles), 15
+	lb bc, BANK(BillsPC_TileGFX), 15
 	call Get2bpp
 
 	; Held item icon
@@ -321,160 +321,12 @@ UseBillsPC:
 	pop bc
 	ret
 
-BillsPC_CursorTiles:
-	dw `00000000
-	dw `00000000
-	dw `00000000
-	dw `00000000
-	dw `00000000
-	dw `00000000
-	dw `00033333
-	dw `00031111
+BillsPC_CursorGFX:
+INCBIN "gfx/pc/cursor.2bpp"
 
-	dw `00031222
-	dw `00031222
-	dw `00003122
-	dw `00003122
-	dw `00000312
-	dw `00000312
-	dw `00000031
-	dw `00000003
-
-BillsPC_Tiles:
-	dw `01223333
-	dw `01223333
-	dw `01223333
-	dw `01223333
-	dw `01223333
-	dw `01223333
-	dw `01223333
-	dw `01223333
-
-	dw `00000000
-	dw `11111111
-	dw `22222222
-	dw `22222222
-	dw `33333333
-	dw `33333333
-	dw `33333333
-	dw `33333333
-
-	dw `00000000
-	dw `00011111
-	dw `00122222
-	dw `01222222
-	dw `01222333
-	dw `01223333
-	dw `01223333
-	dw `01223333
-
-	dw `00000000
-	dw `11111111
-	dw `22222222
-	dw `22222222
-	dw `22222222
-	dw `22222222
-	dw `22222222
-	dw `22222222
-
-	dw `00000000
-	dw `00011111
-	dw `00122222
-	dw `01222222
-	dw `01222222
-	dw `01222222
-	dw `01222222
-	dw `01222222
-
-	dw `01222222
-	dw `01222222
-	dw `01222222
-	dw `01222222
-	dw `01222333
-	dw `01223333
-	dw `01223333
-	dw `01223333
-
-	dw `22222222
-	dw `22222222
-	dw `22222222
-	dw `22222222
-	dw `33333333
-	dw `33333333
-	dw `33333333
-	dw `33333333
-
-	dw `00000000
-	dw `11111111
-	dw `22222222
-	dw `22222222
-	dw `23332222
-	dw `23223222
-	dw `23223223
-	dw `23332232
-
-	dw `00000000
-	dw `11111111
-	dw `22222222
-	dw `22222222
-	dw `22222222
-	dw `22222222
-	dw `33232323
-	dw `23233222
-
-	dw `00000000
-	dw `11111111
-	dw `22222222
-	dw `22222222
-	dw `22222222
-	dw `32222222
-	dw `33232232
-	dw `32232232
-
-	dw `23222232
-	dw `23222223
-	dw `22222222
-	dw `22222222
-	dw `33333333
-	dw `33333333
-	dw `33333333
-	dw `33333333
-
-	dw `33232222
-	dw `23232222
-	dw `22222222
-	dw `22222222
-	dw `33333333
-	dw `33333333
-	dw `33333333
-	dw `33333333
-
-	dw `32223332
-	dw `33222232
-	dw `22233322
-	dw `22222222
-	dw `33333333
-	dw `33333333
-	dw `33333333
-	dw `33333333
-
-	dw `01223333
-	dw `01222333
-	dw `01222222
-	dw `01222222
-	dw `01111111
-	dw `01222222
-	dw `01222222
-	dw `01222333
-
-	dw `33333333
-	dw `33333333
-	dw `22222222
-	dw `22222222
-	dw `11111111
-	dw `22222222
-	dw `22222222
-	dw `33333333
+; TODO: LZ compression
+BillsPC_TileGFX:
+INCBIN "gfx/pc/pc.2bpp"
 
 BillsPC_BlankTiles:
 ; Used as input to blank empty slots
@@ -1292,8 +1144,8 @@ ManageBoxes:
 	jp .loop
 
 .pressed_start
-	; Immediately leave the storage system (TODO: Maybe allow searching?)
-	ret
+	; TODO: pick a color scheme (only needs to update BG pals 0+1)
+	jp .loop
 
 .pressed_right
 	ld a, [wBillsPC_CursorPos]
@@ -2326,7 +2178,7 @@ BillsPC_SwapStorage:
 
 .IsHoldingMail:
 	text "Held Mail must be"
-	line "remove first."
+	line "removed first."
 	prompt
 
 BillsPC_LastPartyMon:
