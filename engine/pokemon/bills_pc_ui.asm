@@ -2620,16 +2620,23 @@ BillsPC_PlaceHeldMon:
 	xor a
 	ldh [rVBK], a
 
+	; Redundant, but fixes display when placing back on the same mon.
+	call .blankcursor
+
+	call GetCursorMon
+
 .holding_mon
 	call BillsPC_CursorPick2
 	pop bc
 	pop af
 .partyshift
 	call CheckPartyShift
+	; fallthrough
+.blankcursor
 	xor a
 	ld [wBillsPC_CursorHeldBox], a
 	ld [wBillsPC_CursorHeldSlot], a
-	jp GetCursorMon
+	ret
 
 BillsPC_SetOBPals:
 ; Sets object palettes. Plays nice with PC hblank interrupt.
