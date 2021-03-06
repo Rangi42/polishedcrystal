@@ -1859,6 +1859,11 @@ BillsPC_AbortSelection:
 	jp GetCursorMon
 
 BillsPC_Moves:
+	ld a, [wTempMonIsEgg]
+	bit MON_IS_EGG_F, a
+	ld hl, .CantCheckEggMoves
+	jp nz, BillsPC_PrintText
+
 	ld hl, rIE
 	res LCD_STAT, [hl]
 
@@ -1867,6 +1872,11 @@ BillsPC_Moves:
 	farcall _ManagePokemonMoves
 	call ExitMenu
 	jp BillsPC_RestoreUI
+
+.CantCheckEggMoves:
+	text "You can't check"
+	line "an Egg's moves!"
+	prompt
 
 BillsPC_GetStorageSpace:
 ; Forces game save until we have at least a free pokedb entries left.
@@ -2399,7 +2409,8 @@ BillsPC_SwapStorage:
 	; Check if item d is a mail about to be given to a storage mon.
 	and a
 	call nz, ItemIsMail
-	jr c, .mail_failure
+	ld a, 6
+	jr c, .item_failed
 	push de
 
 	; Check if item e is a mail about to be given to a storage mon.
@@ -2407,7 +2418,14 @@ BillsPC_SwapStorage:
 	ld d, e
 	and a
 	call nz, ItemIsMail
-	jr c, .pop_de_mail_failure
+	ld a, 6
+	jr c, .pop_de_item_failed
+
+	; Don't give Eggs items.
+	ld a, [wTempMonIsEgg]
+	bit MON_IS_EGG_F, a
+	ld a, 7
+	jr nz, .pop_de_item_failed
 	ld [hl], e
 	push hl
 	farcall UpdateStorageBoxMonFromTemp
@@ -2420,12 +2438,11 @@ BillsPC_SwapStorage:
 	xor a
 	jr .done
 
-.pop_de_mail_failure
+.pop_de_item_failed
 	pop de
 	; fallthrough
-.mail_failure
+.item_failed
 	pop bc
-	ld a, 6
 	jr .failed
 
 .holding_mon
@@ -2461,6 +2478,9 @@ BillsPC_SwapStorage:
 
 	; Not returned by SwapStorageBoxSlots, but rather if item move failed.
 	ld hl, .CantStoreMail
+	dec a
+	jr z, .swap_failed
+	ld hl, BillsPC_EggsCantHoldItemsText
 	; fallthrough
 .swap_failed
 	; Print error message
