@@ -1,6 +1,6 @@
 ; pc themes (see data/bills_pc_theme_names.asm)
 	const_def
-	const THEME_DEFAULT
+	const THEME_STANDARD
 	const THEME_PRO
 	const THEME_MOBILE
 	const THEME_CLASSIC
@@ -24,7 +24,7 @@
 	const THEME_FIRE
 	const THEME_WATER
 	const THEME_GRASS
-	const THEME_ELECTRIc
+	const THEME_ELECTRIC
 	const THEME_PSYCHIC
 	const THEME_ICE
 	const THEME_DRAGON

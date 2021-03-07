@@ -1909,7 +1909,7 @@ endc
 
 BillsPC_ThemePals:
 if !DEF(MONOCHROME)
-; default
+; standard
 	RGB 20, 26, 31
 	; two gender colors go here
 	RGB 00, 00, 00
@@ -2150,7 +2150,7 @@ if !DEF(MONOCHROME)
 	RGB 31, 20, 29
 	RGB 31, 31, 31
 else
-; default
+; standard
 	RGB_MONOCHROME_WHITE
 	; two gender colors go here
 	RGB_MONOCHROME_BLACK

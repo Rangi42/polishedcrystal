@@ -102,9 +102,13 @@ ResetWRAM:
 	xor a
 	rst ByteFill
 
-	; erase wGameData, but keep Money, wCurBox, wBoxNames, and wBattlePoints
+	; erase wGameData, but keep wBillsPC_BoxThemes, wMoney, and wBattlePoints
 	ld hl, wGameData
-	ld bc, wMoney - wGameData
+	ld bc, wBillsPC_BoxThemes - wGameData
+	xor a
+	rst ByteFill
+	ld hl, wBillsPC_BoxThemesEnd
+	ld bc, wMoney - wBillsPC_BoxThemesEnd
 	xor a
 	rst ByteFill
 	ld hl, wMoneyEnd

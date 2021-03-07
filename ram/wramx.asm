@@ -918,6 +918,7 @@ wBattleTowerCurStreak:: dw
 wBattleTowerTopStreak:: dw
 
 wBillsPC_BoxThemes:: ds NUM_BOXES
+wBillsPC_BoxThemesEnd::
 
 	ds 3
 

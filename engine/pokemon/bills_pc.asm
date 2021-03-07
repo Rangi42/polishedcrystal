@@ -1030,12 +1030,12 @@ _CheckFreeDatabaseEntries:
 	ret
 
 InitializeBoxes:
-; Initializes the Storage System boxes as empty with default names.
+; Initializes the Storage System boxes as empty with default names and themes.
 	ld a, BANK(sNewBox1)
 	call GetSRAMBank
 	ld b, NUM_BOXES
 	ld hl, sNewBox1
-.loop
+.name_loop
 	push bc
 	ld d, b
 	ld bc, sNewBox1Name - sNewBox1
@@ -1065,15 +1065,29 @@ InitializeBoxes:
 	add hl, bc
 	pop bc
 	dec b
-	jr nz, .loop
+	jr nz, .name_loop
 	call CloseSRAM
 
+	ld hl, BillsPC_DefaultBoxThemes
+	ld de, wBillsPC_BoxThemes
+.theme_loop
+	ld a, [hli]
+	inc a
+	jr z, .done
+	dec a
+	ld [de], a
+	inc de
+	jr .theme_loop
+
+.done
 	; In case we reset the game mid-flush and then chose to start a new game,
 	; ensure that all entries are allocated properly.
 	jp FlushStorageSystem
 
 .Box:
 	rawchar "Box @"
+
+INCLUDE "data/default_box_themes.asm"
 
 GetBoxName:
 ; Writes name of box b to string buffer 1.

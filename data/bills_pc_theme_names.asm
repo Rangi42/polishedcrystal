@@ -1,5 +1,5 @@
 BillsPC_ThemeNames:
-	dw .Default
+	dw .Standard
 	dw .Pro
 	dw .Mobile
 	dw .Classic
@@ -30,7 +30,7 @@ BillsPC_ThemeNames:
 	dw .Dark
 	dw .Fairy
 
-.Default:  db "Default@"
+.Standard: db "Standard@"
 .Pro:      db "Pro@"
 .Mobile:   db "Mobile@"
 .Classic:  db "Classic@"
