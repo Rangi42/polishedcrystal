@@ -118,6 +118,8 @@ CheckPartyFullAfterContest:
 
 .Box_SkipNickname:
 	ld de, wTempMonNickname
+	ld bc, MON_NAME_LENGTH
+	rst CopyBytes
 	farcall UpdateStorageBoxMonFromTemp
 
 .BoxFull:
