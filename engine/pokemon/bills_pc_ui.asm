@@ -1337,7 +1337,7 @@ ManageBoxes:
 
 .BoxMenu:
 	db $40 ; flags
-	db 08, 06 ; start coords
+	db 08, 09 ; start coords
 	db 17, 19 ; end coords
 	dw .BoxMenuData2
 	db 1 ; default option
@@ -1392,7 +1392,7 @@ BillsPC_MenuStrings:
 	; box options
 	db "Rename@"
 	db "Theme@"
-	db "Release All@"
+	db "Release@"
 	; holding a mail
 	db "Take@"
 	db "Read@"
@@ -2444,7 +2444,8 @@ BillsPC_ReleaseAll:
 
 .CantRecallReleasedMons:
 	text "You can't recall"
-	line "released <PK><MN>. Ok?"
+	line "released #mon."
+	cont "Are you sure?"
 	done
 
 .NothingThere:
@@ -2454,7 +2455,7 @@ BillsPC_ReleaseAll:
 .NothingReleased:
 	text "You can't release"
 	line "Eggs or #mon"
-	cont "knowing HMs."
+	cont "with HM moves."
 	prompt
 
 .ReleasedXMon:
@@ -2466,7 +2467,7 @@ BillsPC_ReleaseAll:
 
 .TheRestWasnt:
 	text "The rest are Eggs"
-	line "or knows HMs."
+	line "or know HM moves."
 	prompt
 
 BillsPC_Release:
