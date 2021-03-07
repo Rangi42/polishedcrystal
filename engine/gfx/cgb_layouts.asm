@@ -976,6 +976,7 @@ _CGB_BillsPC:
 	ld e, a
 	add hl, de
 	ld a, [hl]
+BillsPC_PreviewTheme:
 	add a
 	add a
 	ld l, a
@@ -996,7 +997,7 @@ _CGB_BillsPC:
 	pop hl
 	ld c, 5 * 2
 	call LoadCPaletteBytesFromHLIntoDE
-	ld a, [wBillsPC_PreserveCursorPal]
+	ld a, [wBillsPC_ApplyThemePals]
 	and a
 	jr nz, .apply_pals
 	ld de, wOBPals1 palette 1

@@ -386,7 +386,7 @@ NEXTU
 wCurElevator:: db
 wCurElevatorFloors:: db
 NEXTU
-wCurBoxTheme:: ds 21
+wCurBoxTheme:: ds 22
 NEXTU
 wInverseBattleScore::
 wCurMessageScrollPosition:: db
@@ -435,8 +435,6 @@ wSpriteFlags::
 	db
 
 wHandlePlayerStep:: db
-
-	ds 1
 
 wPartyMenuActionText:: db
 

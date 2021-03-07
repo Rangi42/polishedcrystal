@@ -113,7 +113,7 @@ BillsPC_LoadUI:
 
 	; Set up background + outline palettes
 	xor a
-	ld [wBillsPC_PreserveCursorPal], a
+	ld [wBillsPC_ApplyThemePals], a
 	; fallthrough
 _BillsPC_GetCGBLayout:
 	ld a, CGB_BILLS_PC
@@ -121,7 +121,7 @@ _BillsPC_GetCGBLayout:
 
 BillsPC_RefreshTheme:
 	ld a, 1
-	ld [wBillsPC_PreserveCursorPal], a
+	ld [wBillsPC_ApplyThemePals], a
 	jr _BillsPC_GetCGBLayout
 
 UseBillsPC:
@@ -2447,13 +2447,13 @@ BillsPC_Theme:
 	db 1 ; default option
 
 .ThemeMenuData2:
-	db $10 ; flags
+	db $30 ; flags
 	db 6, 0 ; rows, columns
 	db 1 ; horizontal spacing
 	dbw 0, wCurBoxTheme
 	dba .GetThemeString
 	dba NULL
-	dba NULL
+	dba .PreviewTheme
 
 .GetThemeString:
 	ld a, [wMenuSelection]
@@ -2476,6 +2476,16 @@ BillsPC_Theme:
 
 .LightTheme: db "Light@"
 .DarkTheme:  db "Dark@"
+
+.PreviewTheme:
+	ld a, 1
+	ld [wBillsPC_ApplyThemePals], a
+	ld a, [wMenuSelection]
+	cp -1
+	jr z, .current_theme
+	farjp BillsPC_PreviewTheme
+.current_theme
+	farjp _CGB_BillsPC
 
 BillsPC_GetCursorFromTo:
 ; Returns source (held mon) in de and destination (cursor location) in bc.

@@ -914,7 +914,7 @@ wBillsPC_QuickToX:: db
 wBillsPC_QuickToY:: db
 wBillsPC_QuickFrames:: db
 
-wBillsPC_PreserveCursorPal:: db ; used by _CGB_BillsPC
+wBillsPC_ApplyThemePals:: db ; used by _CGB_BillsPC
 
 NEXTU
 ; raw link data
