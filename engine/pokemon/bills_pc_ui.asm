@@ -99,16 +99,16 @@ BillsPC_LoadUI:
 	ld a, PCANIM_ANIMATE
 	ld [wBillsPC_CursorAnimFlag], a
 
-	; Colored gender symbols are housed in misc battle gfx stuff
+	; Gender symbols and shiny star
 	ld hl, BattleExtrasGFX
 	ld de, vTiles2 tile $40
 	lb bc, BANK(BattleExtrasGFX), 4
 	call DecompressRequest2bpp
 
-	; Box frame tiles
+	; Box frame tiles and Pokérus symbol (overwrites first tile of BattleExtrasGFX)
 	ld hl, BillsPC_TileGFX
 	ld de, vTiles2 tile $31
-	lb bc, BANK(BillsPC_TileGFX), 15
+	lb bc, BANK(BillsPC_TileGFX), 16
 	call DecompressRequest2bpp
 
 	; Set up background + outline palettes
