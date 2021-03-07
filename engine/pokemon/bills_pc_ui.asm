@@ -1896,11 +1896,12 @@ BillsPC_Moves:
 	bit MON_IS_EGG_F, a
 	ld hl, .CantCheckEggMoves
 	jp nz, BillsPC_PrintText
+	call LoadStandardMenuHeader
 
 	ld hl, rIE
 	res LCD_STAT, [hl]
 
-	call LoadStandardMenuHeader
+	call ClearBGPalettes
 	call ClearSprites
 	farcall _ManagePokemonMoves
 	call ExitMenu
@@ -2021,10 +2022,12 @@ BillsPC_ReadMail:
 	ld a, [wTempMonSlot]
 	dec a
 	ld [wCurPartyMon], a
+	call LoadStandardMenuHeader
+
 	ld hl, rIE
 	res LCD_STAT, [hl]
 
-	call LoadStandardMenuHeader
+	call ClearBGPalettes
 	call ClearSprites
 	farcall ReadPartyMonMail
 	call ExitMenu
@@ -2387,10 +2390,11 @@ BillsPC_Release:
 	prompt
 
 BillsPC_Rename:
+	call LoadStandardMenuHeader
+
 	ld hl, rIE
 	res LCD_STAT, [hl]
-
-	call LoadStandardMenuHeader
+	call ClearBGPalettes
 	call ClearSprites
 	ld b, 4
 	ld de, wStringBuffer2
