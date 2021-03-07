@@ -2463,7 +2463,7 @@ BillsPC_Theme:
 
 	ld a, [wMenuJoypad]
 	cp B_BUTTON
-	ret z
+	jr z, .refresh_theme ; revert back to what it used to be
 
 	; wBillsPC_BoxThemes[wCurBox] = [wScrollingMenuCursorPosition]
 	ld hl, wBillsPC_BoxThemes
@@ -2474,6 +2474,7 @@ BillsPC_Theme:
 	ld a, [wScrollingMenuCursorPosition]
 	ld [hl], a
 
+.refresh_theme
 	jp BillsPC_RefreshTheme
 
 .PickAThemeText:
