@@ -2170,6 +2170,7 @@ BillsPC_Menu:
 	call LoadMenuHeader
 	xor a
 	ld [wWhichIndexSet], a
+	ldh [hBGMapMode], a ; restored to 1 upon CloseWindow
 	call DoNthMenu
 	pop bc
 	push af
