@@ -1337,7 +1337,7 @@ ManageBoxes:
 
 .BoxMenu:
 	db $40 ; flags
-	db 08, 09 ; start coords
+	db 08, 10 ; start coords
 	db 17, 19 ; end coords
 	dw .BoxMenuData2
 	db 1 ; default option
