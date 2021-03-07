@@ -1337,7 +1337,7 @@ ManageBoxes:
 
 .BoxMenu:
 	db $40 ; flags
-	db 10, 11 ; start coords
+	db 08, 06 ; start coords
 	db 17, 19 ; end coords
 	dw .BoxMenuData2
 	db 1 ; default option
@@ -1372,9 +1372,10 @@ ManageBoxes:
 	db -1
 
 .boxitems
-	db 3
+	db 4
 	db BOXMENU_RENAME
 	db BOXMENU_THEME
+	db BOXMENU_RELEASEALL
 	db BOXMENU_CANCEL
 	db -1
 
@@ -1391,6 +1392,7 @@ BillsPC_MenuStrings:
 	; box options
 	db "Rename@"
 	db "Theme@"
+	db "Release All@"
 	; holding a mail
 	db "Take@"
 	db "Read@"
@@ -1411,6 +1413,7 @@ BillsPC_MenuJumptable:
 	dw BillsPC_Release
 	dw BillsPC_Rename
 	dw BillsPC_Theme
+	dw BillsPC_ReleaseAll
 	dw BillsPC_TakeMail
 	dw BillsPC_ReadMail
 	dw BillsPC_MoveItem
@@ -2300,30 +2303,52 @@ BillsPC_EggsCantHoldItemsText:
 	line "items."
 	prompt
 
-BillsPC_Release:
-	; Don't allow releasing the last healthy mon.
-	call BillsPC_HideCursor
-	call BillsPC_GetCursorSlot
+BillsPC_CanReleaseMon:
+; Verifies if the given mon in box b, slot c, can be released. Returns in a:
+; 0: Can release
+; 1: Can't release last healthy mon
+; 2: Can't release Egg
+; 3: Can't release mon knowing HMs
+; 4: Empty slot
+	; Is there even anything there?
+	farcall GetStorageBoxMon
+	ld a, 4
+	jr z, .done
+
+	; If we're dealing with our party, ensure that this isn't our last mon.
+	ld a, b
+	and a
+	jr nz, .not_last_healthy
 	ld a, c
 	dec a
 	ld [wCurPartyMon], a
+	push hl
+	push de
+	push bc
 	farcall CheckCurPartyMonFainted
-	ld hl, BillsPC_LastPartyMon
-	jr c, .print
-
-	; Don't allow releasing Eggs.
+	pop bc
+	pop de
+	pop hl
+	ld a, 1
+	jr c, .done
+	; fallthrough
+.not_last_healthy
+	; Can't release Eggs.
 	ld a, [wTempMonIsEgg]
 	bit MON_IS_EGG_F, a
-	ld hl, .CantReleaseEgg
-	jr nz, .print
+	ld a, 2
+	ret nz
 
-	; Don't allow releasing the mon if it has HMs.
+	; Ensure that the mon doesn't know any HMs.
+	push de
+	push hl
+	push bc
 	ld hl, wTempMonMoves
 	ld b, NUM_MOVES
 .loop
 	ld a, [hli]
 	and a
-	jr z, .no_hms
+	jr z, .hm_check_done
 	push hl
 	push bc
 	ld hl, HMMoves
@@ -2331,11 +2356,136 @@ BillsPC_Release:
 	call IsInArray
 	pop bc
 	pop hl
-	jr c, .found_hm
+	ld a, 3
+	jr c, .hm_check_done
 	dec b
 	jr nz, .loop
+	xor a
+.hm_check_done
+	pop bc
+	pop hl
+	; fallthrough
+.pop_de_done
+	pop de
+.done
+	and a
+	ret
 
-.no_hms
+BillsPC_ReleaseAll:
+	; Double confirmation.
+	ld hl, .ReallyReleaseBox
+	call MenuTextbox
+	call NoYesBox
+	jr c, .done
+
+	ld hl, .CantRecallReleasedMons
+	call PrintText
+	call NoYesBox
+	jr c, .done
+
+	; We want to give 3 possible messages:
+	; * Nothing was released. You can't release Eggs or PKMN knowing HMs.
+	; * There's nothing there!
+	; * X PKMN released.
+	lb de, 0, 0 ; Successful and failed releases.
+	call BillsPC_GetCursorSlot
+.loop
+	ld a, c
+	inc c
+	cp MONS_PER_BOX
+	jr z, .releases_done
+
+	call BillsPC_CanReleaseMon
+	jr nz, .failed_release
+	inc d
+	push de
+	ld e, 0
+	farcall SetStorageBoxPointer
+	lb de, -1, 1
+	push bc
+	call BillsPC_MoveIconData
+	pop bc
+	pop de
+	jr .loop
+.failed_release
+	; Check if there was something there.
+	cp 4
+	jr z, .loop
+	inc e
+	jr .loop
+.releases_done
+	ld a, d
+	ld [wd265], a
+	or e
+	ld hl, .NothingThere
+	jr z, .print
+	and d
+	ld hl, .NothingReleased
+	jr z, .print2
+	ld hl, .ReleasedXMon
+.print
+	push de
+	call PrintText
+	pop de
+	ld a, e
+	and a
+	ld hl, .TheRestWasnt
+	jr z, .done
+.print2
+	call PrintText
+.done
+	call BillsPC_UpdateCursorLocation
+	jp CloseWindow
+
+.ReallyReleaseBox:
+	text "Really release the"
+	line "entire box?"
+	done
+
+.CantRecallReleasedMons:
+	text "You can't recall"
+	line "released <PK><MN>. Ok?"
+	done
+
+.NothingThere:
+	text "This box is empty."
+	prompt
+
+.NothingReleased:
+	text "You can't release"
+	line "Eggs or #mon"
+	cont "knowing HMs."
+	prompt
+
+.ReleasedXMon:
+	text "Released "
+	deciram wd265, 1, 2
+	text ""
+	line "#mon."
+	prompt
+
+.TheRestWasnt:
+	text "The rest are Eggs"
+	line "or knows HMs."
+	prompt
+
+BillsPC_Release:
+	call BillsPC_HideCursor
+
+	call BillsPC_GetCursorSlot
+	call BillsPC_CanReleaseMon
+	ld hl, BillsPC_LastPartyMon
+	dec a
+	jr z, .print
+	ld hl, .CantReleaseEgg
+	dec a
+	jr z, .print
+	ld hl, .CantReleaseHMMons
+	dec a
+	jr z, .print
+
+	; We don't need to check for error 4 (empty slot) since we can't get to this
+	; menu in that case.
 	ld hl, .ReallyReleaseMon
 	call MenuTextbox
 	call NoYesBox
