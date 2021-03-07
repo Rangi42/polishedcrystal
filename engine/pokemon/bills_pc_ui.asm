@@ -1251,19 +1251,30 @@ ManageBoxes:
 	sub NUM_BOXES
 .valid_box
 	ld [wCurBox], a
-	call BillsPC_RefreshTheme
-	call BillsPC_PrintBoxName
-	call Delay2
-	ldh a, [hBGMapMode]
-	push af
+
 	xor a
 	ldh [hBGMapMode], a
-	ld a, 1
+	inc a
 	ldh [rVBK], a
-	call SetBoxIcons
+
+	ld hl, vTiles4 tile $18
+	ld a, MONS_PER_BOX
+	call BillsPC_BlankTiles
+
 	xor a
 	ldh [rVBK], a
-	pop af
+
+	call BillsPC_RefreshTheme
+	call BillsPC_PrintBoxName
+	ld b, 0
+	call SafeCopyTilemapAtOnce
+
+	ld a, 1
+	ldh [rVBK], a
+	call _SetBoxIcons
+	xor a
+	ldh [rVBK], a
+	inc a
 	ldh [hBGMapMode], a
 	jp .loop
 

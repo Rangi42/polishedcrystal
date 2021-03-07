@@ -1020,10 +1020,8 @@ BillsPC_PreviewTheme:
 	jp LoadHLPaletteIntoDE
 
 .apply_pals
-	call ApplyPals
-	ld a, $1
-	ldh [hCGBPalUpdate], a
-	ret
+	lb bc, 50, %11
+	farjp HBlankCopyPals
 
 .CursorPal:
 ; Coloring is fixed up later.
