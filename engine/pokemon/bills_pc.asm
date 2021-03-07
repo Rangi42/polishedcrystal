@@ -1223,6 +1223,13 @@ GetStorageBoxMon:
 	push bc
 	inc b
 	call CopyBetweenPartyAndTemp
+
+	; Calculate stats
+	ld a, [wTempMonSpecies]
+	ld [wCurSpecies], a
+	ld a, [wTempMonForm]
+	ld [wCurForm], a
+	call GetBaseData
 	or 1
 	jp PopBCDEHL
 
