@@ -13,6 +13,9 @@
 *.2bpp.vram0
 *.2bpp.vram1
 *.2bpp.vram2
+*.2bpp.vram0p
+*.2bpp.vram1p
+*.2bpp.vram2p
 gfx/pokemon/*/*.dimensions
 gfx/pokemon/*/*.animated.tilemap
 gfx/pokemon/*/bitmask.asm

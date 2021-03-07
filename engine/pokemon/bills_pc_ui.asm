@@ -617,39 +617,51 @@ WriteIconPaletteData:
 	push bc
 	push af
 	call BillsPC_GetMonPalAddr
-
-	; TODO: per-mon palettes
-	ld [hl], $7f
-	inc hl
-	ld [hl], $2a
-	inc hl
 	pop af
+
+if !DEF(MONOCHROME)
+	; TODO: per-mon palettes
+	; RGB values copied from PartyMenuOBPals
+	ld [hl], LOW(palred 31 + palgreen 19 + palblue 10)
+	inc hl
+	ld [hl], HIGH(palred 31 + palgreen 19 + palblue 10)
+	inc hl
 	and a ; PAL_OW_RED
-	ld de, $04ff
-	jr z, .got_pal
+	ld de, palred 31 + palgreen 07 + palblue 01
+	jr z, .got_pal2
 	dec a ; PAL_OW_BLUE
-	ld de, $7d2a
-	jr z, .got_pal
+	ld de, palred 10 + palgreen 09 + palblue 31
+	jr z, .got_pal2
 	dec a ; PAL_OW_GREEN
-	ld de, $0ee7
-	jr z, .got_pal
+	ld de, palred 07 + palgreen 23 + palblue 03
+	jr z, .got_pal2
 	dec a ; PAL_OW_BROWN
-	ld de, $0d4f
-	jr z, .got_pal
+	ld de, palred 15 + palgreen 10 + palblue 03
+	jr z, .got_pal2
 	dec a ; PAL_OW_PURPLE
-	ld de, $4892
-	jr z, .got_pal
+	ld de, palred 18 + palgreen 04 + palblue 18
+	jr z, .got_pal2
 	dec a ; PAL_OW_GRAY
-	ld de, $35ad
-	jr z, .got_pal
+	ld de, palred 13 + palgreen 13 + palblue 13
+	jr z, .got_pal2
 	dec a ; PAL_OW_PINK
-	ld de, $2d5f
-	jr z, .got_pal
-	ld de, $56e3 ; PAL_OW_TEAL
-.got_pal
+	ld de, palred 31 + palgreen 10 + palblue 11
+	jr z, .got_pal2
+	; PAL_OW_TEAL
+	ld de, palred 03 + palgreen 23 + palblue 21
+.got_pal2
 	ld [hl], e
 	inc hl
 	ld [hl], d
+else
+	ld [hl], LOW(PAL_MONOCHROME_WHITE)
+	inc hl
+	ld [hl], HIGH(PAL_MONOCHROME_WHITE)
+	inc hl
+	ld [hl], LOW(PAL_MONOCHROME_LIGHT)
+	inc hl
+	ld [hl], HIGH(PAL_MONOCHROME_LIGHT)
+endc
 	jp PopBCDEHL
 
 BillsPC_HideCursor:
