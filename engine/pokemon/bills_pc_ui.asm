@@ -2415,9 +2415,7 @@ BillsPC_Theme:
 	call ScrollingMenu
 
 	call BillsPC_UpdateCursorLocation
-	call ExitMenu
-	ld b, 0
-	call SafeCopyTilemapAtOnce
+	call CloseWindow
 
 	ld a, [wMenuJoypad]
 	cp B_BUTTON
