@@ -138,7 +138,7 @@ UseBillsPC:
 	call BillsPC_LoadUI
 
 	xor a ; PC_MENU_MODE
-	call BillsPC_SetCursorMode
+	call _BillsPC_SetCursorMode
 
 	; Default cursor data (top left of storage, not holding anything)
 	ld a, $12
@@ -378,7 +378,7 @@ BillsPC_BlankTiles:
 
 BillsPC_SetCursorMode:
 	call _BillsPC_SetCursorMode
-	jp BillsPC_SetOBPals
+	jp BillsPC_SetPals
 
 _BillsPC_SetCursorMode:
 ; Switches cursor mode and updates the cursor palette. Doesn't write palettes,
@@ -1264,27 +1264,16 @@ ManageBoxes:
 	sub NUM_BOXES
 .valid_box
 	ld [wCurBox], a
-
+	call BillsPC_RefreshTheme
+	call DelayFrame ; Avoid screen tearing
+	call BillsPC_PrintBoxName
+	ld b, 0
+	call SafeCopyTilemapAtOnce
 	xor a
 	ldh [hBGMapMode], a
 	inc a
 	ldh [rVBK], a
-
-	ld hl, vTiles4 tile $18
-	ld a, MONS_PER_BOX
-	call BillsPC_BlankTiles
-
-	xor a
-	ldh [rVBK], a
-
-	call BillsPC_RefreshTheme
-	call BillsPC_PrintBoxName
-	ld b, 0
-	call SafeCopyTilemapAtOnce
-
-	ld a, 1
-	ldh [rVBK], a
-	call _SetBoxIcons
+	call SetBoxIcons
 	xor a
 	ldh [rVBK], a
 	inc a
@@ -1478,7 +1467,8 @@ BillsPC_SetIcon:
 	ld a, [de]
 	ld [wCurIconForm], a
 	push hl
-	call BillsPC_SetOBPals
+	call BillsPC_SetPals
+	call DelayFrame
 	pop hl
 	farjp GetStorageIcon
 
@@ -1521,7 +1511,7 @@ BillsPC_MoveIconData:
 	push bc
 	ld c, 1
 	call BillsPC_SafeGet2bpp
-	call BillsPC_SetOBPals
+	call BillsPC_SetPals
 	pop bc
 
 	; Check if we should blank the cursor tile.
@@ -2827,10 +2817,51 @@ BillsPC_PlaceHeldMon:
 	ld [wBillsPC_CursorHeldSlot], a
 	ret
 
-BillsPC_SetOBPals:
-; Sets object palettes. Plays nice with PC hblank interrupt.
-	lb bc, 8, %10
-	farjp HBlankCopyPals
+BillsPC_SetPals:
+	call BillsPC_ApplyPals
+	jp SetPalettes
+
+BillsPC_ApplyPals:
+; Sets palettes. This writes palette data for HBlank row1 mons/etc into
+; wBGPals1. This avoids wrong palette flickering for a single frame.
+	ld a, BANK("GBC Video")
+	call StackCallInWRAMBankA
+.Function:
+	ld de, wBillsPC_PalList
+	ld hl, wBGPals1 palette 2
+	ld c, 6
+.loop
+	; Copy white to color 0.
+	ld a, $ff
+	ld [hli], a
+	ld a, $7f
+	ld [hli], a
+
+	; Copy hblank colors to color 1 and 2.
+	ld b, 4
+.inner_loop
+	ld a, [de]
+	inc de
+	ld [hli], a
+	dec b
+	jr nz, .inner_loop
+
+	; Copy black to color 3.
+	xor a
+	ld [hli], a
+	ld [hli], a
+	dec c
+	jr nz, .loop
+
+	; Fix BG3 color 0, which is shared with the main background.
+	ld hl, wBGPals1
+	ld de, wBGPals1 palette 3
+	ld a, [hli]
+	ld [de], a
+	inc de
+	ld a, [hli]
+	ld [de], a
+	ret
 
 BillsPC_RestoreUI:
 	call ClearSprites
@@ -2845,13 +2876,12 @@ BillsPC_RestoreUI:
 	xor a
 	ldh [rVBK], a
 
-	; TODO: this draws the pokepic in the wrong palette for a single frame.
-	; Figure out how to best avoid this.
 	call BillsPC_LoadUI
 
 	; Fixes cursor palettes.
 	ld a, [wBillsPC_CursorMode]
 	call _BillsPC_SetCursorMode
+	call BillsPC_ApplyPals
 	call GetCursorMon
 	ld b, 2
 	call SafeCopyTilemapAtOnce
