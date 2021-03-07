@@ -101,13 +101,13 @@ CheckOwnMonAnywhere:
 	jr z, .next
 
 	; Check if the species is correct
-	ld hl, wBufferMonSpecies
+	ld hl, wTempMonSpecies
 	ldh a, [hScriptVar]
 	cp [hl]
 	jr nz, .next
 
 	; Eggs don't count
-	ld hl, wBufferMonIsEgg
+	ld hl, wTempMonIsEgg
 	bit MON_IS_EGG_F, [hl]
 	jr nz, .next
 
@@ -118,7 +118,7 @@ CheckOwnMonAnywhere:
 	ret nz
 
 	; Verify ID
-	ld hl, wBufferMonID
+	ld hl, wTempMonID
 	ld a, [wPlayerID]
 	cp [hl]
 	jr nz, .next
@@ -128,7 +128,7 @@ CheckOwnMonAnywhere:
 	jr nz, .next
 
 	; Verify OT
-	ld hl, wBufferMonOT
+	ld hl, wTempMonOT
 	ld de, wPlayerName
 .cmp_ot
 	ld a, [de]

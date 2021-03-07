@@ -48,65 +48,6 @@ _CopyPkmnToTempMon:
 	rst CopyBytes
 	ret
 
-CalcBufferMonStats:
-	ld bc, wBufferMon
-	ld hl, wBufferMonOT
-	jr _TempMonStatsCalculation
-
-CalcTempmonStats:
-	ld bc, wTempMon
-_TempMonStatsCalculation:
-	push hl
-	ld hl, MON_LEVEL
-	add hl, bc
-	ld a, [hl]
-	ld [wCurPartyLevel], a
-	pop hl
-	ld de, PLAYER_NAME_LENGTH
-	add hl, de
-	ld a, [hl]
-	and HYPER_TRAINING_MASK
-	ld hl, MON_MAXHP
-	add hl, bc
-	ld d, h
-	ld e, l
-	ld hl, MON_EVS - 1
-	add hl, bc
-	push bc
-	inc a
-	ld b, a
-	predef CalcPkmnStats
-	pop bc
-	ld hl, MON_HP
-	add hl, bc
-	ld d, h
-	ld e, l
-	ld hl, MON_IS_EGG
-	add hl, bc
-	bit MON_IS_EGG_F, [hl]
-	jr z, .not_egg
-	xor a
-	ld [de], a
-	inc de
-	ld [de], a
-	jr .zero_status
-
-.not_egg
-	push bc
-	ld hl, MON_MAXHP
-	add hl, bc
-	ld bc, 2
-	rst CopyBytes
-	pop bc
-
-.zero_status
-	ld hl, MON_STATUS
-	add hl, bc
-	xor a
-	ld [hli], a
-	ld [hl], a
-	ret
-
 GetPkmnSpecies:
 	ld a, [wMonType]
 	and a ; PARTYMON

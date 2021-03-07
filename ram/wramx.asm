@@ -7,10 +7,7 @@ wDefaultSpawnpoint:: db
 
 UNION
 ; mon buffer
-wBufferMonNick:: ds MON_NAME_LENGTH
-wBufferMonOT:: ds NAME_LENGTH
-wBufferMon:: party_struct wBufferMon
-	ds 8
+	ds 78
 wMonOrItemNameBuffer:: ds NAME_LENGTH
 
 NEXTU
