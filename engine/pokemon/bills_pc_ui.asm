@@ -2880,8 +2880,6 @@ BillsPC_RestoreUI:
 	xor a
 	ldh [rVBK], a
 
-	; TODO: this draws the pokepic in the wrong palette for a single frame.
-	; Figure out how to best avoid this.
 	call BillsPC_LoadUI
 
 	; Fixes cursor palettes.
