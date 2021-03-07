@@ -868,9 +868,7 @@ wBillsPC_CurMonPals:: ds 2 * 2 * 4 ; 2 bytes per color, 2 colors, 4 mons
 ; Stores palettes used for party+box.
 wBillsPC_PalList::
 wBillsPC_PokepicPal:: ds 2 * 2 * 1
-
-	ds 2 * 2 * 1 ; unused top-row1 BG3
-
+wBillsPC_PokerusShinyPal:: ds 2 * 2 * 1
 wBillsPC_MonPals1:: ds 2 * 2 * 4
 
 	ds 2 * 2 * 2 ; unused row2 BG2-3

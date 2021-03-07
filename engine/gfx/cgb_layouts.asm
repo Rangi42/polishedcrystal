@@ -994,6 +994,18 @@ BillsPC_PreviewTheme:
 	ld hl, GenderAndExpBarPals
 	ld c, 2 * 2
 	call LoadCPaletteBytesFromHLIntoDE
+	push de
+	ld hl, PokerusAndShinyPals
+	ld de, wBillsPC_PokerusShinyPal
+	ld c, 2 * 2
+	call LoadCPaletteBytesFromHLIntoDE
+
+	; Prevents flickering shiny+pokerus background
+	ld hl, wBGPals1 palette 0
+	ld de, wBGPals1 palette 3
+	ld c, 1 * 2
+	call LoadCPaletteBytesFromHLIntoDE
+	pop de
 	pop hl
 	ld c, 5 * 2
 	call LoadCPaletteBytesFromHLIntoDE

@@ -176,6 +176,47 @@ endr
 	ld de, wBillsPC_CurPals
 	ld c, 24
 	rst CopyBytes
+	ld a, LOW(LCDBillsPC3)
+	ldh [hFunctionTargetLo], a
+	ld a, HIGH(LCDBillsPC3)
+	ldh [hFunctionTargetHi], a
+	pop de
+	pop bc
+	pop hl
+	pop af
+	reti
+
+LCDBillsPC3:
+; Writes white or box background to color0 for BG3
+	push af
+	push hl
+	push bc
+	push de
+	ldh a, [rSVBK]
+	push af
+	ld a, BANK("GBC Video")
+	ldh [rSVBK], a
+
+	ld c, LOW(rBGPD)
+	ld a, [rLY]
+	cp $8a
+	ld hl, wBGPals1
+	jr nc, .got_pal
+	ld hl, wBGPals1 palette $4
+.got_pal
+
+	; start of VRAM writes
+	; BG3 color 0
+	ld a, $80 | $18
+	ldh [rBGPI], a
+rept 2
+	ld a, [hli]
+	ld [c], a
+endr
+	; end of VRAM writes
+
+	pop af
+	ldh [rSVBK], a
 	ld a, LOW(LCDBillsPC1)
 	ldh [hFunctionTargetLo], a
 	ld a, HIGH(LCDBillsPC1)

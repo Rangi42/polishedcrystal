@@ -154,6 +154,12 @@ UseBillsPC:
 	ld a, 2
 	call FillBoxWithByte
 
+	; Shiny and PkRs
+	hlcoord 5, 8, wAttrMap
+	ld a, $3
+	ld [hli], a
+	ld [hl], a
+
 	; Item name is in vbk1
 	hlcoord 10, 2, wAttrMap ; Cursor's item
 	ld bc, 10
@@ -1039,8 +1045,8 @@ _GetCursorMon:
 	ld a, TEMPMON
 	ld [wMonType], a
 	farcall GetGender
-	jr c, .genderless
 	hlcoord 4, 8
+	jr c, .genderless
 	ld a, $41
 	jr nz, .male
 	; female
@@ -1048,6 +1054,25 @@ _GetCursorMon:
 .male
 	ld [hl], a
 .genderless
+
+	; Shiny
+	push hl
+	farcall GetShininess
+	pop hl
+	inc hl
+	jr z, .not_shiny
+	ld [hl], $43
+.not_shiny
+	ld a, [wTempMonPokerusStatus]
+	and a
+	inc hl
+	jr z, .did_pokerus
+	; TODO: smiley face if cured (use shiny color + custom color 3?)
+	ld [hl], "."
+	and $f
+	jr z, .did_pokerus
+	ld [hl], $40 ; Rs
+.did_pokerus
 
 	; Item
 	ld c, 2

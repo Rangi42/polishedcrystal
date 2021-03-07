@@ -94,6 +94,14 @@ else
 	MONOCHROME_RGB_TWO
 endc
 
+PokerusAndShinyPals:
+if !DEF(MONOCHROME)
+	RGB 31, 25, 00
+	RGB 31, 10, 26
+else
+	MONOCHROME_RGB_TWO
+endc
+
 StatsScreenPals:
 if !DEF(MONOCHROME)
 ; pink
