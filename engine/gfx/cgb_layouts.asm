@@ -969,7 +969,7 @@ _CGB_PokedexUnownMode:
 	jp _CGB_FinishLayout
 
 _CGB_BillsPC:
-	; hl = BillsPC_BackgroundPals + wBillsPC_BoxThemes[wCurBox] * 6 * 2
+	; a = wBillsPC_BoxThemes[wCurBox]
 	ld hl, wBillsPC_BoxThemes
 	ld a, [wCurBox]
 	ld d, 0
@@ -977,16 +977,15 @@ _CGB_BillsPC:
 	add hl, de
 	ld a, [hl]
 BillsPC_PreviewTheme:
+	; hl = BillsPC_ThemePals + a * 6 * 2
 	add a
 	add a
-	ld l, a
-	add a
-	add l
-	add LOW(BillsPC_BackgroundPals)
-	ld l, a
-	adc HIGH(BillsPC_BackgroundPals)
-	sub l
-	ld h, a
+	ld e, a
+	ld d, 0
+	ld hl, BillsPC_ThemePals
+	add hl, de
+	add hl, de
+	add hl, de
 	ld de, wBGPals1
 	ld c, 1 * 2
 	call LoadCPaletteBytesFromHLIntoDE

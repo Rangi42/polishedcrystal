@@ -7,8 +7,9 @@
 	; Cursor modes
 	const_def
 	const PC_MENU_MODE ; 0
-	const PC_MOVE_MODE ; 1
+	const PC_SWAP_MODE ; 1
 	const PC_ITEM_MODE ; 2
+NUM_PC_MODES EQU const_value
 
 _BillsPC:
 	call .CheckCanUsePC
@@ -417,7 +418,7 @@ if !DEF(MONOCHROME)
 else
 	MONOCHROME_RGB_TWO
 endc
-; PC_MOVE_MODE = blue
+; PC_SWAP_MODE = blue
 if !DEF(MONOCHROME)
 	RGB 20, 20, 31
 	RGB 06, 10, 31
@@ -1143,7 +1144,7 @@ ManageBoxes:
 	call GetCursorMon
 	jr z, .loop
 
-	; In item move mode, check if the mon is holding an item.
+	; In item mode, check if the mon is holding an item.
 	ld a, [wBillsPC_CursorMode]
 	cp PC_ITEM_MODE
 	jr nz, .confirm_ok
@@ -1166,7 +1167,7 @@ ManageBoxes:
 	and a ; PC_MENU_MODE?
 	jr z, .prepare_menu
 
-	; Otherwise, either pick the mon up in PC_MOVE_MODE...
+	; Otherwise, either pick the mon up in PC_SWAP_MODE...
 	dec a
 	push af
 	call z, BillsPC_Switch
@@ -1214,20 +1215,20 @@ ManageBoxes:
 	jp .loop
 
 .pressed_select
-	; Don't allow modeswitch from/to mode 2 if holding something.
+	; Don't allow modeswitch from/to PC_ITEM_MODE if holding something.
 	ld a, [wBillsPC_CursorHeldSlot]
 	and a
 	ld a, [wBillsPC_CursorMode]
 	jr z, .not_holding_anything
-	cp 2
+	cp PC_ITEM_MODE
 	jp z, .loop
-	xor 1
+	xor PC_MENU_MODE ^ PC_SWAP_MODE
 	jr .got_new_mode
 .not_holding_anything
 	inc a
-	cp 3
+	cp NUM_PC_MODES
 	jr nz, .got_new_mode
-	xor a
+	xor a ; PC_MENU_MODE
 .got_new_mode
 	call BillsPC_SetCursorMode
 	jp .loop
@@ -2448,7 +2449,7 @@ BillsPC_Theme:
 	call PrintText
 
 	ld hl, wCurBoxTheme
-	ld a, 2 ; num themes
+	ld a, NUM_BILLS_PC_THEMES
 	ld [hli], a
 	ld c, a
 	xor a
@@ -2510,7 +2511,7 @@ BillsPC_Theme:
 	push de
 	ld e, a
 	ld d, 0
-	ld hl, .ThemeNames
+	ld hl, BillsPC_ThemeNames
 	add hl, de
 	add hl, de
 	ld a, [hli]
@@ -2519,13 +2520,6 @@ BillsPC_Theme:
 	pop hl
 	rst PlaceString
 	ret
-
-.ThemeNames:
-	dw .LightTheme
-	dw .DarkTheme
-
-.LightTheme: db "Light@"
-.DarkTheme:  db "Dark@"
 
 .PreviewTheme:
 	ld a, 1
@@ -2536,6 +2530,8 @@ BillsPC_Theme:
 	farjp BillsPC_PreviewTheme
 .current_theme
 	farjp _CGB_BillsPC
+
+INCLUDE "data/bills_pc_theme_names.asm"
 
 BillsPC_GetCursorFromTo:
 ; Returns source (held mon) in de and destination (cursor location) in bc.

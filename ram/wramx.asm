@@ -150,12 +150,14 @@ wKeepSevenBiasChance::
 wTempDayOfWeek::
 	db
 
-	ds 2 ; unused
-
 wStartFlypoint:: db
 wEndFlypoint:: db
 
-	ds 55
+wCurBoxTheme:: db
+wCurBoxThemes:: ds NUM_BILLS_PC_THEMES
+wCurBoxThemeEnd:: db
+
+	ds 25
 
 UNION
 ; trainer data
@@ -385,8 +387,6 @@ NEXTU
 ; miscellaneous
 wCurElevator:: db
 wCurElevatorFloors:: db
-NEXTU
-wCurBoxTheme:: ds 22
 NEXTU
 wInverseBattleScore::
 wCurMessageScrollPosition:: db
