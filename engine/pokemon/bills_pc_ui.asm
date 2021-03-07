@@ -848,7 +848,7 @@ _GetCursorMon:
 	hlcoord 7, 0
 	lb bc, 2, 13
 	call ClearBox
-	hlcoord 11, 0
+	hlcoord 7, 3
 	lb bc, 1, 13
 	call ClearBox
 
