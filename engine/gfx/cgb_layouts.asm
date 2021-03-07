@@ -1020,7 +1020,7 @@ BillsPC_PreviewTheme:
 	jp LoadHLPaletteIntoDE
 
 .apply_pals
-	lb bc, 50, %11
+	lb bc, 53, %11
 	farjp HBlankCopyPals
 
 .CursorPal:
