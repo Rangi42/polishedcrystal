@@ -1020,8 +1020,7 @@ BillsPC_PreviewTheme:
 	jp LoadHLPaletteIntoDE
 
 .apply_pals
-	lb bc, 53, %11
-	farjp HBlankCopyPals
+	farjp BillsPC_SetPals
 
 .CursorPal:
 ; Coloring is fixed up later.
