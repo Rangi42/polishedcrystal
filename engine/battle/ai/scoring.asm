@@ -2484,7 +2484,7 @@ AI_Aggressive:
 	pop hl
 	ld a, [wTypeMatchup]
 	and a
-	jp z, AIDiscourageMove
+	call z, AIDiscourageMove
 
 	; If we made it this far, discourage this move.
 	inc [hl]
