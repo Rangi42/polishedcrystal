@@ -362,14 +362,6 @@ GetSpeed::
 .paralyze_done
 	farcall ApplySpeedAbilities
 
-	; Apply Unburden
-	ld a, BATTLE_VARS_SUBSTATUS1
-	call GetBattleVar
-	bit SUBSTATUS_UNBURDEN, a
-	ln a, 2, 1 ; x2
-	call nz, MultiplyAndDivide
-
-.unburden_done
 	; Apply item effects
 	predef GetUserItemAfterUnnerve
 	ld a, b

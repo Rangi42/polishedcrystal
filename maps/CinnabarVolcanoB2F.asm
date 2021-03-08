@@ -87,7 +87,7 @@ CinnabarVolcanoMoltres:
 	cry MOLTRES
 	pause 15
 	closetext
-	loadwildmon MOLTRES, 70
+	loadwildmon MOLTRES, 65
 	writecode VAR_BATTLETYPE, BATTLETYPE_LEGENDARY
 	startbattle
 	disappear CINNABARVOLCANOB2F_MOLTRES

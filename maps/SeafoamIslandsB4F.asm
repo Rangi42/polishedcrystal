@@ -102,7 +102,7 @@ SeafoamIslandsArticuno:
 	cry ARTICUNO
 	pause 15
 	closetext
-	loadwildmon ARTICUNO, 70
+	loadwildmon ARTICUNO, 65
 	writecode VAR_BATTLETYPE, BATTLETYPE_LEGENDARY
 	startbattle
 	disappear SEAFOAMISLANDSB4F_ARTICUNO

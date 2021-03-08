@@ -347,12 +347,12 @@ endr
 	db HIGH(65280), 40
 
 LureBallMultiplier:
-; multiply catch rate by 3 if this is a fishing rod battle
+; multiply catch rate by 5 if this is a fishing rod battle
 	ld a, [wBattleType]
 	cp BATTLETYPE_FISH
 	ret nz
 
-	ln a, 3, 1 ; x3
+	ln a, 5, 1 ; x5
 	jp MultiplyAndDivide
 
 MoonBallMultiplier:
@@ -499,7 +499,7 @@ NestBallMultiplier:
 	jp MultiplyAndDivide
 
 NetBallMultiplier:
-; multiply catch rate by 3 if mon is water or bug type
+; multiply catch rate by 3.5 if mon is water or bug type
 	ld a, [wEnemyMonType1]
 	cp WATER
 	jr z, .ok
@@ -512,7 +512,7 @@ NetBallMultiplier:
 	ret nz
 
 .ok
-	ln a, 3, 1 ; x3
+	ln a, 7, 2 ; x3.5
 	jp MultiplyAndDivide
 
 DiveBallMultiplier:
@@ -541,7 +541,7 @@ QuickBallMultiplier:
 	jp MultiplyAndDivide
 
 DuskBallMultiplier:
-; multiply catch rate by 3.5 at evening, night, or in caves
+; multiply catch rate by 3 at evening, night, or in caves
 	ld a, [wEnvironment]
 	cp CAVE
 	jr z, .dusk
@@ -553,7 +553,7 @@ DuskBallMultiplier:
 	ret nz
 
 .dusk
-	ln a, 7, 2 ; x3.5
+	ln a, 3, 1 ; x3
 	jp MultiplyAndDivide
 
 DreamBallMultiplier:
