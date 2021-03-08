@@ -925,7 +925,7 @@ _GetCursorMon:
 	ld a, "@"
 	ld [wStringBuffer2], a
 	call GetMonItemUnlessCursor
-	jr z, .no_item
+	jr z, .delay_loop
 	ld [wNamedObjectIndexBuffer], a
 	call GetItemName
 	ld hl, wStringBuffer1
@@ -933,9 +933,15 @@ _GetCursorMon:
 	ld bc, ITEM_NAME_LENGTH
 	rst CopyBytes
 
-.no_item
-	; Delay first before finishing frontpic
+.delay_loop
+	; Delay first before finishing frontpic. Retry if it puts us too late.
+	; If we try to proceed otherwise, we might run past the hblank interrupt
+	; window with GetPreparedFrontpic.
 	call DelayFrame
+	ldh a, [rLY]
+	cp $13
+	jr nc, .delay_loop
+
 	ld a, [wAttrMap]
 	and TILE_BANK
 	pop hl
