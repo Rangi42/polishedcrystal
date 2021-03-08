@@ -22,8 +22,9 @@ _BillsPC:
 	ldh [rLYC], a
 	call LoadStandardMenuHeader
 	call UseBillsPC
-	call ReturnToMapFromSubmenu
 
+	; Disable hblank before restoring blockdata, since blockdata and hblank pals
+	; overlap.
 	ld hl, rIE
 	res LCD_STAT, [hl]
 	ld a, LOW(LCDGeneric)
@@ -31,6 +32,7 @@ _BillsPC:
 	ld a, HIGH(LCDGeneric)
 	ldh [hFunctionTargetHi], a
 
+	call ReturnToMapFromSubmenu
 	pop af
 	ld [wOptions1], a
 	jp CloseSubmenu
