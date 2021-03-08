@@ -837,6 +837,7 @@ DeferredSwitch:
 ForceDeferredSwitch:
 ; player switches out due to "switch mode"
 	; Check if we can switch out. If we're fainted OR lack alternatives, abort.
+	ld hl, wDeferredSwitch
 	push hl
 	bit SWITCH_TARGET, [hl]
 	jr nz, .check_target_alive
