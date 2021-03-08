@@ -92,6 +92,12 @@ BillsPC_LoadUI:
 	lb bc, BANK(HeldItemIcons), 2
 	call Get2bpp
 
+	; Cursor mode and Bag sprites
+	ld hl, BillsPC_ObjGFX
+	ld de, vTiles3 tile $24
+	lb bc, BANK(BillsPC_ObjGFX), 18
+	call DecompressRequest2bpp
+
 	xor a
 	ldh [rVBK], a
 
@@ -357,6 +363,9 @@ INCBIN "gfx/pc/cursor.2bpp"
 
 BillsPC_TileGFX:
 INCBIN "gfx/pc/pc.2bpp.lz"
+
+BillsPC_ObjGFX:
+INCBIN "gfx/pc/obj.2bpp.lz"
 
 BillsPC_BlankTiles:
 ; Used as input to blank a*4 tiles (mon icons typically use 4 tiles).
