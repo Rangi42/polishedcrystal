@@ -11,7 +11,6 @@ if DEF(FAITHFUL)
 else
 	db BUG, DARK
 endc
-	db BUG, POISON
 	db 90 ; catch rate
 	db 134 ; base exp
 	db NO_ITEM ; item 1
