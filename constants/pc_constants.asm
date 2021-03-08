@@ -5,7 +5,7 @@
 	const THEME_MOBILE
 	const THEME_CLASSIC
 	const THEME_BLISS
-	const THEME_AQUA
+	const THEME_CONTRAST
 	const THEME_NATURE
 	const THEME_TRUTH
 	const THEME_IDEALS

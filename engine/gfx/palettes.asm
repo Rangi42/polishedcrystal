@@ -1949,13 +1949,13 @@ if !DEF(MONOCHROME)
 	RGB 00, 06, 15
 	RGB 06, 15, 28
 	RGB 31, 31, 31
-; aqua
-	RGB 29, 29, 29
+; contrast
+	RGB 06, 17, 24
 	; two gender colors go here
-	RGB 00, 00, 00
-	RGB 29, 29, 29
-	RGB 09, 11, 20
-	RGB 11, 22, 30
+	RGB 31, 31, 31
+	RGB 06, 17, 24
+	RGB 08, 08, 08
+	RGB 31, 13, 00
 	RGB 31, 31, 31
 ; nature
 	RGB 05, 14, 00

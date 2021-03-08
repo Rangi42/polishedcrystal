@@ -4,7 +4,7 @@ BillsPC_ThemeNames:
 	dw .Mobile
 	dw .Classic
 	dw .Bliss
-	dw .Aqua
+	dw .Contrast
 	dw .Nature
 	dw .Truth
 	dw .Ideals
@@ -35,7 +35,7 @@ BillsPC_ThemeNames:
 .Mobile:   db "Mobile@"
 .Classic:  db "Classic@"
 .Bliss:    db "Bliss@"
-.Aqua:     db "Aqua@"
+.Contrast: db "Contrast@"
 .Nature:   db "Nature@"
 .Truth:    db "Truth@"
 .Ideals:   db "Ideals@"
