@@ -836,16 +836,18 @@ DeferredSwitch:
 
 ForceDeferredSwitch:
 ; player switches out due to "switch mode"
-	; Check if we can switch out
+	; Check if we can switch out. If we're fainted OR lack alternatives, abort.
 	push hl
 	bit SWITCH_TARGET, [hl]
 	jr nz, .check_target_alive
+	call HasUserFainted
+	jr z, .alive_check_done
 	farcall CheckAnyOtherAliveMons
-	call z, HasUserFainted
 	jr .alive_check_done
 .check_target_alive
+	call HasOpponentFainted
+	jr z, .alive_check_done
 	farcall CheckAnyOtherAliveOpponentMons
-	call z, HasOpponentFainted
 .alive_check_done
 	pop hl
 	jp z, .all_done
