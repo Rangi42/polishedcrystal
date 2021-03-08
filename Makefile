@@ -66,13 +66,11 @@ gfx/misc.o
 
 
 .SUFFIXES:
-.PHONY: all clean tidy crystal faithful nortc debug monochrome freespace compare tools
+.PHONY: clean tidy crystal faithful nortc debug monochrome freespace compare tools
 .SECONDEXPANSION:
 .PRECIOUS: %.2bpp %.1bpp
 .SECONDARY:
-
-
-all: crystal freespace
+.DEFAULT_GOAL: crystal
 
 crystal: ROM_NAME = $(NAME)-$(VERSION)
 crystal: $(NAME)-$(VERSION).gbc
