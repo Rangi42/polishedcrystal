@@ -2601,18 +2601,6 @@ BillsPC_Theme:
 	ld hl, .PickAThemeText
 	call PrintText
 
-	ld hl, wCurBoxTheme
-	ld a, NUM_BILLS_PC_THEMES
-	ld [hli], a
-	ld c, a
-	xor a
-.loop
-	ld [hli], a
-	inc a
-	dec c
-	jr nz, .loop
-	ld [hl], -1
-
 	ld hl, .ThemeMenuDataHeader
 	call CopyMenuHeader
 	call InitScrollingMenu
@@ -2655,13 +2643,23 @@ BillsPC_Theme:
 	db $30 ; flags
 	db 6, 0 ; rows, columns
 	db 1 ; horizontal spacing
-	dbw 0, wCurBoxTheme
+	dba .ThemeList
 	dba .GetThemeString
 	dba NULL
 	dba .PreviewTheme
 
+.ThemeList:
+	db NUM_BILLS_PC_THEMES
+x = 1
+rept NUM_BILLS_PC_THEMES
+	db x
+x = x + 1
+endr
+	db -1
+
 .GetThemeString:
 	ld a, [wMenuSelection]
+	dec a
 	push de
 	ld e, a
 	ld d, 0
@@ -2681,6 +2679,7 @@ BillsPC_Theme:
 	ld a, [wMenuSelection]
 	cp -1
 	jr z, .current_theme
+	dec a
 	farjp BillsPC_PreviewTheme
 .current_theme
 	farjp _CGB_BillsPC

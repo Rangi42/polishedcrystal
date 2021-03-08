@@ -149,11 +149,7 @@ wKeepSevenBiasChance::
 wTempDayOfWeek::
 	db
 
-wCurBoxTheme:: db
-wCurBoxThemes:: ds NUM_BILLS_PC_THEMES
-wCurBoxThemeEnd:: db
-
-	ds 27
+	ds 59
 
 UNION
 ; trainer data
