@@ -1438,11 +1438,9 @@ BillsPC_MenuJumptable:
 	dw BillsPC_GiveItem
 
 BillsPC_Stats:
-	ld hl, rIE
-	res LCD_STAT, [hl]
-
+	call BillsPC_PrepareTransistion
 	farcall _OpenPartyStats
-	jp BillsPC_RestoreUI
+	jp BillsPC_ReturnFromTransistion
 
 BillsPC_CursorPick1:
 ; Plays the first part of the cursor pickup animation
@@ -1925,21 +1923,39 @@ BillsPC_AbortSelection:
 	ldh [rVBK], a
 	jp GetCursorMon
 
+BillsPC_PrepareTransistion:
+; Prepares for a screen transistion.
+	; Save the content of the current screen.
+	call LoadStandardMenuHeader
+
+	; After clearing palettes, we need to busyloop. We can't just DelayFrame,
+	; because in case vblank occurs after the ClearPalettes but before
+	; DelayFrame, we end up delaying twice, causing hblank to overwrite the
+	; palette clear.
+	call ClearPalettes
+.busyloop
+	ld a, [hCGBPalUpdate]
+	and a
+	jr nz, .busyloop
+
+	; Disable hblank interrupt.
+	ld hl, rIE
+	res LCD_STAT, [hl]
+
+	jp ClearSprites
+
+BillsPC_ReturnFromTransistion:
+	call ExitMenu
+	jp BillsPC_RestoreUI
+
 BillsPC_Moves:
 	ld a, [wTempMonIsEgg]
 	bit MON_IS_EGG_F, a
 	ld hl, .CantCheckEggMoves
 	jp nz, BillsPC_PrintText
-	call LoadStandardMenuHeader
-
-	ld hl, rIE
-	res LCD_STAT, [hl]
-
-	call ClearBGPalettes
-	call ClearSprites
+	call BillsPC_PrepareTransistion
 	farcall _ManagePokemonMoves
-	call ExitMenu
-	jp BillsPC_RestoreUI
+	jp BillsPC_ReturnFromTransistion
 
 .CantCheckEggMoves:
 	text "You can't check"
@@ -1989,15 +2005,9 @@ BillsPC_GiveItem:
 	ret nz
 
 .entries_not_full
-	ld hl, rIE
-	res LCD_STAT, [hl]
-
-	call LoadStandardMenuHeader
-	call ClearSprites
+	call BillsPC_PrepareTransistion
 	farcall PCGiveItem
-	call ClearPalettes
-	call ExitMenu
-	jp BillsPC_RestoreUI
+	jp BillsPC_ReturnFromTransistion
 
 GetMonItemUnlessCursor:
 ; Returns mon item unless the cursor is holding it. Returns z if cursor held.
@@ -2056,16 +2066,9 @@ BillsPC_ReadMail:
 	ld a, [wTempMonSlot]
 	dec a
 	ld [wCurPartyMon], a
-	call LoadStandardMenuHeader
-
-	ld hl, rIE
-	res LCD_STAT, [hl]
-
-	call ClearBGPalettes
-	call ClearSprites
+	call BillsPC_PrepareTransistion
 	farcall ReadPartyMonMail
-	call ExitMenu
-	jp BillsPC_RestoreUI
+	jp BillsPC_ReturnFromTransistion
 
 BillsPC_MoveItem:
 ; Pick up item for movement.
@@ -2573,12 +2576,7 @@ BillsPC_Release:
 	prompt
 
 BillsPC_Rename:
-	call LoadStandardMenuHeader
-
-	ld hl, rIE
-	res LCD_STAT, [hl]
-	call ClearBGPalettes
-	call ClearSprites
+	call BillsPC_PrepareTransistion
 	ld b, 4
 	ld de, wStringBuffer2
 	farcall NamingScreen
