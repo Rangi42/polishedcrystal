@@ -79,6 +79,7 @@ SpriteAnimOAMData:
 	dbw $00, .OAMData_PcQuick            ; SPRITE_ANIM_OAMSET_PC_QUICK
 	dbw $00, .OAMData_PcMode             ; SPRITE_ANIM_OAMSET_PC_MODE
 	dbw $00, .OAMData_PcMode2            ; SPRITE_ANIM_OAMSET_PC_MODE2
+	dbw $00, .OAMData_PcPack             ; SPRITE_ANIM_OAMSET_PC_PACK
 
 .OAMData_1x1_Palette0:
 	db 1
@@ -670,3 +671,10 @@ SpriteAnimOAMData:
 	db 2
 	dsprite  0,  0,  0,  0, $24, $2 | TILE_BANK
 	dsprite  0,  0,  1,  0, $25, $2 | TILE_BANK
+
+.OAMData_PcPack:
+	db 4
+	dsprite  0,  0,  0,  0, $2f, $2 | TILE_BANK
+	dsprite  0,  0,  1,  0, $30, $2 | TILE_BANK
+	dsprite  1,  0,  0,  0, $31, $2 | TILE_BANK
+	dsprite  1,  0,  1,  0, $32, $2 | TILE_BANK

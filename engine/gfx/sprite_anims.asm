@@ -36,6 +36,7 @@ DoAnimFrame:
 	dw AnimSeq_PcCursor           ; SPRITE_ANIM_SEQ_PC_CURSOR
 	dw AnimSeq_PcQuick            ; SPRITE_ANIM_SEQ_PC_QUICK
 	dw AnimSeq_PcMode             ; SPRITE_ANIM_SEQ_PC_MODE
+	dw AnimSeq_PcPack             ; SPRITE_ANIM_SEQ_PC_PACK
 
 AnimSeq_PartyMon:
 	ld a, [wMenuCursorY]
@@ -596,34 +597,19 @@ AnimSeq_MaxStatSparkle:
 	ret
 
 AnimSeq_PcCursor:
-	ld hl, SPRITEANIMSTRUCT_YOFFSET
-	add hl, bc
-	ld a, [wBillsPC_CursorPos]
-	push af
-	and $f0
-	ld [hl], a
-	call .FixCursorY
-	pop af
-	push af
-	and $f
-	swap a
-	ld h, a
-	rrca
-	add h
-	cp 48
-	jr c, .got_x_offset
-	add 8
-.got_x_offset
+	push de
+	push bc
+	farcall BillsPC_GetCursorSlot
+	farcall BillsPC_GetXYFromStorageBox
+	pop bc
 	ld hl, SPRITEANIMSTRUCT_XOFFSET
 	add hl, bc
-	ld [hl], a
-	pop af
-	cp $10
-	ret nc
-	ld [hl], 92
-	ret
+	ld [hl], d
+	ld hl, SPRITEANIMSTRUCT_YOFFSET
+	add hl, bc
+	ld [hl], e
+	pop de
 
-.FixCursorY:
 	; Check for static cursor
 	ld a, [wBillsPC_CursorAnimFlag]
 	and a
@@ -733,6 +719,27 @@ AnimSeq_PcMode:
 	add h
 	add h
 	ld hl, SPRITEANIMSTRUCT_TILE_ID
+	add hl, bc
+	ld [hl], a
+	ret
+
+AnimSeq_PcPack:
+	; Display male or female pack
+	ld a, [wPlayerGender]
+	add a
+	add a
+	ld hl, SPRITEANIMSTRUCT_TILE_ID
+	add hl, bc
+	ld [hl], a
+
+	; Hide pack outside Item mode
+	ld a, [wBillsPC_CursorMode]
+	cp 2
+	ld a, $80 ; move it out of view
+	jr nz, .got_pack_y
+	xor a
+.got_pack_y
+	ld hl, SPRITEANIMSTRUCT_YOFFSET
 	add hl, bc
 	ld [hl], a
 	ret

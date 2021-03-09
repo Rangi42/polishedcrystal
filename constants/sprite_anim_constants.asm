@@ -71,6 +71,7 @@
 	const SPRITE_ANIM_FRAMESET_PC_QUICK
 	const SPRITE_ANIM_FRAMESET_PC_MODE
 	const SPRITE_ANIM_FRAMESET_PC_MODE2
+	const SPRITE_ANIM_FRAMESET_PC_PACK
 
 ; see engine/sprite_anims.asm:DoAnimFrame.Jumptable
 	const_def
@@ -105,6 +106,7 @@
 	const SPRITE_ANIM_SEQ_PC_CURSOR
 	const SPRITE_ANIM_SEQ_PC_QUICK
 	const SPRITE_ANIM_SEQ_PC_MODE
+	const SPRITE_ANIM_SEQ_PC_PACK
 
 ; see engine/sprites.asm:SpriteAnimSeqData
 	const_def
@@ -146,6 +148,7 @@
 	const SPRITE_ANIM_INDEX_PC_QUICK
 	const SPRITE_ANIM_INDEX_PC_MODE
 	const SPRITE_ANIM_INDEX_PC_MODE2
+	const SPRITE_ANIM_INDEX_PC_PACK
 
 ; see data/sprite_engine.asm:SpriteAnimOAMData
 	const_def
@@ -228,3 +231,4 @@
 	const SPRITE_ANIM_OAMSET_PC_QUICK
 	const SPRITE_ANIM_OAMSET_PC_MODE
 	const SPRITE_ANIM_OAMSET_PC_MODE2
+	const SPRITE_ANIM_OAMSET_PC_PACK

@@ -92,7 +92,7 @@ BillsPC_LoadUI:
 	lb bc, BANK(HeldItemIcons), 2
 	call Get2bpp
 
-	; Cursor mode and Bag sprites
+	; Cursor mode and Pack sprites
 	ld hl, BillsPC_ObjGFX
 	ld de, vTiles3 tile $24
 	lb bc, BANK(BillsPC_ObjGFX), 19
@@ -102,7 +102,7 @@ BillsPC_LoadUI:
 	ldh [rVBK], a
 
 	; Cursor sprite OAM
-	lb de, 38, 16
+	lb de, -18, 0 ; fixed up by the animseq code
 	ld a, SPRITE_ANIM_INDEX_PC_CURSOR
 	call _InitSpriteAnimStruct
 	ld a, PCANIM_ANIMATE
@@ -116,6 +116,18 @@ BillsPC_LoadUI:
 	pop af
 	ld a, SPRITE_ANIM_INDEX_PC_MODE2
 	call _InitSpriteAnimStruct
+
+	; Pack icon.
+	; TODO: Instead of a hack where we prevent the pack from claiming a slot,
+	; maybe implement a sprite anim priority system?
+	ld hl, wSpriteAnim4 ; reserve this for quickanim
+	inc [hl]
+	push hl
+	lb de, $58, $30
+	ld a, SPRITE_ANIM_INDEX_PC_PACK
+	call _InitSpriteAnimStruct
+	pop hl
+	dec [hl]
 
 	; Gender symbols and shiny star
 	ld hl, BattleExtrasGFX
@@ -729,6 +741,7 @@ BillsPC_GetCursorHeldSlot:
 BillsPC_GetCursorSlot:
 ; Converts cursor position to slot bc. Returns c if hovering on box name.
 ; b is 0 for party, 1-15 for box, c is 1-20 for slot, 0 for boxname.
+; If both b and c is 0, the cursor is on the pack.
 	ld c, 0
 	ld a, [wCurBox]
 	inc a
@@ -884,6 +897,9 @@ _GetCursorMon:
 	; Check if cursor is currently hovering over a mon.
 	call BillsPC_GetCursorSlot
 	jr c, .clear
+	ld a, b
+	or c
+	jr z, .clear
 
 	call GetStorageBoxMon
 	jr nz, .not_clear
@@ -909,6 +925,8 @@ _GetCursorMon:
 	ld a, [wBillsPC_CursorPos]
 	cp $10
 	jr c, .reset_item
+	cp $21
+	jr z, .reset_item
 	xor a
 	ret
 .reset_item
@@ -1743,9 +1761,11 @@ BillsPC_PrepareQuickAnim:
 	call .SetQuickStruct
 	ld a, PCANIM_QUICKFRAMES
 	ld [wBillsPC_QuickFrames], a
+
 	lb de, 0, 0
 	ld a, SPRITE_ANIM_INDEX_PC_QUICK
 	call _InitSpriteAnimStruct
+
 	call BillsPC_UpdateCursorLocation
 	pop bc
 	lb de, -1, 1
@@ -1827,6 +1847,10 @@ BillsPC_GetXYFromStorageBox:
 	jr .fix_xy
 
 .party
+	ld a, c
+	and a
+	lb de, $30, $58
+	ret z
 	ld a, 2
 	lb de, $10, $68
 	; fallthrough
@@ -2092,11 +2116,18 @@ BillsPC_ReadMail:
 
 BillsPC_MoveItem:
 ; Pick up item for movement.
-	; Removing items might reallocate a storage mon, so check that we have space
-	; for that in the database.
+	; Check if the cursor is on the pack.
 	call BillsPC_GetCursorSlot
 	ld a, b
-	and a
+	or c
+	jr nz, .not_on_pack
+	xor a
+	jp Crash
+
+.not_on_pack
+	; Removing items might reallocate a storage mon, so check that we have space
+	; for that in the database.
+	and b
 	jr z, .entries_not_full
 
 	ld a, 1
@@ -2163,9 +2194,21 @@ BillsPC_MoveItem:
 	ret
 
 BillsPC_BagItem:
+; Returns z on success.
 	; If we're dealing with a Box mon, we must have at least 1 free pokedb
 	; entry.
 	call BillsPC_GetCursorSlot
+	ld hl, BillsPC_MovedToPackText
+	; fallthrough
+BillsPC_PrintText:
+	push hl
+	call BillsPC_HideCursorAndMode
+	pop hl
+	call MenuTextbox
+	call BillsPC_UpdateCursorLocation
+	jp CloseWindow
+
+_BillsPC_BagItem:
 	ld a, b
 	and a
 	jr z, .entries_not_full
@@ -2175,6 +2218,13 @@ BillsPC_BagItem:
 	ret nz
 
 .entries_not_full
+	farcall GetStorageBoxMon
+	call .do_it
+	ld a, [wTempMonItem]
+	and a
+	ret
+
+.do_it
 	ld a, [wTempMonItem]
 	ld [wCurItem], a
 	ld a, 1
@@ -2186,16 +2236,7 @@ BillsPC_BagItem:
 	xor a
 	ld [wTempMonItem], a
 	farcall UpdateStorageBoxMonFromTemp
-	call GetCursorMon
-	ld hl, BillsPC_MovedToPackText
-	; fallthrough
-BillsPC_PrintText:
-	push hl
-	call BillsPC_HideCursorAndMode
-	pop hl
-	call MenuTextbox
-	call BillsPC_UpdateCursorLocation
-	jp CloseWindow
+	jp GetCursorMon
 
 BillsPC_PackFullText:
 	text "The Pack is full…"
@@ -2725,11 +2766,24 @@ BillsPC_SwapStorage:
 
 	; Items are handled seperately.
 	call BillsPC_IsHoldingItem
-	jr z, .holding_mon
+	jp z, .holding_mon
 
+	; Check if we're on the pack.
+	ld a, b
+	or c
+	jr nz, .not_on_pack
+
+	ld b, d
+	res 7, b
+	ld c, e
+	call _BillsPC_BagItem
+	pop bc
+	pop de
+	ret
+
+.not_on_pack
 	; Don't do anything if we're hovering over an empty slot or boxname.
-	ld a, c
-	and a
+	and c
 	jp z, .abort
 	farcall GetStorageBoxMon
 	jp z, .abort
@@ -2935,11 +2989,23 @@ BillsPC_PlaceHeldMon:
 	call BillsPC_SwapStorage
 	ret nz ; failed
 
+	ld a, b
+	or c
+	jr nz, .not_on_pack
+
+	; Avoid Pack icon flickering.
+	call DelayFrame
+
+	; Prevents quickanim
+	inc a
+	jr .place_icon
+
+.not_on_pack
+	and c
+	jr nz, .not_on_boxname
+
 	; If we moved it onto a box, just move the sprite to its location without
 	; any placing animation.
-	inc c
-	dec c
-	jr nz, .not_on_boxname
 	push de
 	ld e, a
 	ld d, b
@@ -2968,6 +3034,8 @@ BillsPC_PlaceHeldMon:
 	ld h, a
 	ld a, [hl]
 	and a
+	; fallthrough
+.place_icon
 	push af
 	push de
 	push bc
@@ -3088,12 +3156,24 @@ BillsPC_CursorPosValid:
 	cp 6
 	jr nc, .invalid
 
-	; Check for party rows less than 3
+	; Check for party rows less than 2
 	cp 2
 	jr nc, .not_party
 	ld a, b
-	cp $30
+	cp $20
 	jr c, .invalid
+
+	; Rows 3-5 are always valid.
+	cp $30
+	jr nc, .not_party
+
+	; Party row 2 is only valid if we're in Item mode, and only $21.
+	cp $21
+	jr nz, .invalid
+
+	ld a, [wBillsPC_CursorMode]
+	cp PC_ITEM_MODE
+	jr nz, .invalid
 
 .not_party
 	; Check for rows beyond 5
