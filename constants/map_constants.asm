@@ -513,7 +513,7 @@ ENDM
 	map_const CIANWOOD_CITY_PHOTO_STUDIO,                  4,  4 ;  8
 	map_const CIANWOOD_LUGIA_SPEECH_HOUSE,                 4,  4 ;  9
 	map_const MOVE_MANIACS_HOUSE,                          4,  4 ; 10
-	map_const BATTLE_TOWER_1F,                            11,  7 ; 11
+	map_const BATTLE_TOWER_1F,                            11,  8 ; 11
 	map_const BATTLE_TOWER_2F,                            11,  5 ; 12
 	map_const BATTLE_TOWER_BATTLE_ROOM,                    4,  4 ; 13
 	map_const BATTLE_TOWER_ELEVATOR,                       2,  2 ; 14
