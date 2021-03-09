@@ -1873,3 +1873,7 @@ Route49_BlockData:
 SECTION "BattleFactory1F_BlockData", ROMX
 BattleFactory1F_BlockData:
 	INCBIN "maps/BattleFactory1F.ablk.lz"
+
+SECTION "BattleFactoryHallway_BlockData", ROMX
+BattleFactoryHallway_BlockData:
+	INCBIN "maps/BattleFactoryHallway.ablk.lz"
