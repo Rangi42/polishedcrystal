@@ -1272,6 +1272,11 @@ ManageBoxes:
 	jp .loop
 
 .pressed_select
+	; Don't allow modeswitch if cursor is on the pack.
+	ld a, [wBillsPC_CursorPos]
+	cp $21
+	jp z, .loop
+
 	; Don't allow modeswitch from/to PC_ITEM_MODE if holding something.
 	ld a, [wBillsPC_CursorHeldSlot]
 	and a

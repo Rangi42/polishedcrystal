@@ -889,6 +889,7 @@ wBillsPC_HeldIcon:: dw
 wBillsPC_QuickIcon:: dw
 
 ; Cursor data
+wBillsPC_CursorBagItem:: db ; what item from the bag is selected.
 wBillsPC_CursorPos:: db ; 0-3 * 4*row, row 0 is title. Bit 7 means in party.
 wBillsPC_CursorHeldBox:: db ; 0 for party, 1-15 otherwise
 wBillsPC_CursorHeldSlot:: db ; 0 for nothing held, or 1-20 (1-6 if party)
