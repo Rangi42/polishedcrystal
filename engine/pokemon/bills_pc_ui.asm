@@ -2674,9 +2674,7 @@ BillsPC_Rename:
 	ld b, a
 	farcall SetBoxName
 .abort
-	call ExitMenu
-	call BillsPC_PrintBoxName
-	jp BillsPC_RestoreUI
+	jp BillsPC_ReturnFromTransistion
 
 BillsPC_Theme:
 	call BillsPC_HideCursorAndMode
