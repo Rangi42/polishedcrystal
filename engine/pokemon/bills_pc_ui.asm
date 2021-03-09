@@ -753,7 +753,7 @@ BillsPC_GetCursorHeldSlot:
 
 BillsPC_GetCursorSlot:
 ; Converts cursor position to slot bc. Returns c if hovering on box name.
-; b is 0 for party, 1-15 for box, c is 1-20 for slot, 0 fir boxname.
+; b is 0 for party, 1-15 for box, c is 1-20 for slot, 0 for boxname.
 	ld c, 0
 	ld a, [wCurBox]
 	inc a
@@ -933,7 +933,7 @@ _GetCursorMon:
 	call BillsPC_SetBoxArrows
 	ld a, [wBillsPC_CursorPos]
 	cp $10
-	jp c, .reset_item
+	jr c, .reset_item
 	xor a
 	ret
 .reset_item
@@ -1176,7 +1176,7 @@ ManageBoxes:
 	ldh a, [hJoyPressed]
 	ld hl, wInputFlags
 	rrca
-	jp c, .pressed_a
+	jr c, .pressed_a
 	rrca
 	jp c, .pressed_b
 	rrca
@@ -1205,10 +1205,13 @@ ManageBoxes:
 	call GetCursorMon
 	jr z, .loop
 
-	; In item mode, check if the mon is holding an item.
+	; In item mode, if we're on a mon, it must be holding an item.
 	ld a, [wBillsPC_CursorMode]
 	cp PC_ITEM_MODE
 	jr nz, .confirm_ok
+	ld a, [wBillsPC_CursorPos]
+	cp $10
+	jr c, .confirm_ok
 	ld a, [wTempMonItem]
 	and a
 	jr z, .loop
@@ -1292,8 +1295,6 @@ ManageBoxes:
 	xor a ; PC_MENU_MODE
 .got_new_mode
 	call BillsPC_SetCursorMode
-	jp .loop
-
 .pressed_start
 	; TODO: use Start for something?
 	jp .loop
