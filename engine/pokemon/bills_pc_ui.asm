@@ -2536,8 +2536,6 @@ BillsPC_ReleaseAll:
 	prompt
 
 BillsPC_Release:
-	call BillsPC_HideCursorAndMode
-
 	call BillsPC_GetCursorSlot
 	call BillsPC_CanReleaseMon
 	ld hl, BillsPC_LastPartyMon
@@ -2552,6 +2550,7 @@ BillsPC_Release:
 
 	; We don't need to check for error 4 (empty slot) since we can't get to this
 	; menu in that case.
+	call BillsPC_HideCursorAndMode
 	ld hl, .ReallyReleaseMon
 	call MenuTextbox
 	call NoYesBox
@@ -2588,9 +2587,10 @@ BillsPC_Release:
 	call BillsPC_UpdateCursorLocation
 	jp CloseWindow
 
-.found_hm
-	ld hl, .CantReleaseHMMons
 .print
+	push hl
+	call BillsPC_HideCursorAndMode
+	pop hl
 	jp BillsPC_PrintText
 
 .CantReleaseEgg:
@@ -2600,7 +2600,7 @@ BillsPC_Release:
 
 .CantReleaseHMMons:
 	text "You can't release"
-	line "<PK><MN> knowing HMs!"
+	line "<PK><MN> with HM moves!"
 	prompt
 
 .ReallyReleaseMon:
