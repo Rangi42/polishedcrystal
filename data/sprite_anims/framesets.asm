@@ -50,6 +50,8 @@ SpriteAnimFrameData:
 	dw .Frameset_MaxStatSparkle
 	dw .Frameset_PcCursor
 	dw .Frameset_PcQuick
+	dw .Frameset_PcMode
+	dw .Frameset_PcMode2
 
 .Frameset_00:
 	frame SPRITE_ANIM_OAMSET_RED_WALK_1, 32
@@ -335,3 +337,11 @@ SpriteAnimFrameData:
 .Frameset_PcQuick:
 	frame SPRITE_ANIM_OAMSET_PC_QUICK, 8
 	delanim
+
+.Frameset_PcMode:
+	frame SPRITE_ANIM_OAMSET_PC_MODE, 32
+	dorestart
+
+.Frameset_PcMode2:
+	frame SPRITE_ANIM_OAMSET_PC_MODE2, 32
+	dorestart

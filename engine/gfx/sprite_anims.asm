@@ -35,6 +35,7 @@ DoAnimFrame:
 	dw AnimSeq_MaxStatSparkle     ; SPRITE_ANIM_SEQ_MAX_STAT_SPARKLE
 	dw AnimSeq_PcCursor           ; SPRITE_ANIM_SEQ_PC_CURSOR
 	dw AnimSeq_PcQuick            ; SPRITE_ANIM_SEQ_PC_QUICK
+	dw AnimSeq_PcMode             ; SPRITE_ANIM_SEQ_PC_MODE
 
 AnimSeq_PartyMon:
 	ld a, [wMenuCursorY]
@@ -722,6 +723,16 @@ AnimSeq_PcQuick:
 	; Write to sprite anim coord.
 	pop bc
 	pop hl
+	add hl, bc
+	ld [hl], a
+	ret
+
+AnimSeq_PcMode:
+	ld a, [wBillsPC_CursorMode]
+	ld h, a
+	add h
+	add h
+	ld hl, SPRITEANIMSTRUCT_TILE_ID
 	add hl, bc
 	ld [hl], a
 	ret

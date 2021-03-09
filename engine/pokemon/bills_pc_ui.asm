@@ -108,6 +108,15 @@ BillsPC_LoadUI:
 	ld a, PCANIM_ANIMATE
 	ld [wBillsPC_CursorAnimFlag], a
 
+	; Cursor mode icon
+	lb de, $98, $10
+	ld a, SPRITE_ANIM_INDEX_PC_MODE
+	push de
+	call _InitSpriteAnimStruct
+	pop af
+	ld a, SPRITE_ANIM_INDEX_PC_MODE2
+	call _InitSpriteAnimStruct
+
 	; Gender symbols and shiny star
 	ld hl, BattleExtrasGFX
 	ld de, vTiles2 tile $40
@@ -393,7 +402,7 @@ BillsPC_SetCursorMode:
 
 _BillsPC_SetCursorMode:
 ; Switches cursor mode and updates the cursor palette. Doesn't write palettes,
-; use the non-underscore version of this to do that.
+; use the non-underscore version of this to do that. Also updates the mode icon.
 	ld [wBillsPC_CursorMode], a
 	ld a, BANK("GBC Video")
 	call StackCallInWRAMBankA
@@ -680,48 +689,15 @@ BillsPC_HideCursorAndMode:
 	call BillsPC_HideCursor
 	; fallthrough
 BillsPC_HideModeIcon:
-	ld hl, wVirtualOAMSprite32
+	ld hl, wVirtualOAMSprite09
 	ld bc, 20
 	xor a
 	rst ByteFill
 	ret
 
-BillsPC_UpdateModeIcon:
-	ld hl, wVirtualOAMSprite32
-	lb de, $10, $24
-	ld c, 5
-	ld a, [wBillsPC_CursorMode]
-	ld b, a
-.loop
-	ld a, $98
-	ld [hli], a
-	ld a, d
-	ld [hli], a
-	add $8
-	ld d, a
-	ld a, c
-	cp 3
-	ld a, e
-	jr nz, .dont_switch_tile
-	inc b
-	sub c
-.tile_loop
-	add c
-	dec b
-	jr nz, .tile_loop
-.dont_switch_tile
-	ld [hli], a
-	ld e, a
-	inc e
-	ld a, TILE_BANK | PAL_CURSOR_MODE2
-	ld [hli], a
-	dec c
-	jr nz, .loop
-	ret
-
 BillsPC_HideCursor:
 	ld hl, wVirtualOAM
-	ld bc, 64
+	ld bc, 36
 	xor a
 	rst ByteFill
 	ret
@@ -739,7 +715,6 @@ BillsPC_UpdateCursorLocation:
 	ld de, wVirtualOAMSprite30
 	ld bc, 8
 	rst CopyBytes
-	call BillsPC_UpdateModeIcon
 	jp PopBCDEHL
 
 BillsPC_GetCursorHeldSlot:
