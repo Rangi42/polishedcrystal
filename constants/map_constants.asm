@@ -306,6 +306,7 @@ ENDM
 	map_const ROUTE_11_GATE_2F,                            4,  4 ; 14
 	map_const VERMILION_POLLUTION_SPEECH_HOUSE,            4,  4 ; 15
 	map_const VERMILION_S_S_ANNE_SPEECH_HOUSE,             4,  4 ; 16
+	map_const BATTLE_FACTORY_1F,                          13,  6 ; 17
 
 	newgroup                                                     ; 13
 

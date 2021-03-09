@@ -1054,3 +1054,8 @@ SECTION "Routes 48-49 Scripts", ROMX
 
 INCLUDE "maps/Route48.asm"
 INCLUDE "maps/Route49.asm"
+
+
+SECTION "Battle Factory Scripts", ROMX
+
+INCLUDE "maps/BattleFactory1F.asm"
