@@ -43,12 +43,12 @@ BattleTowerOutsideStepDownTrigger:
 
 BattleTowerOutsidePanUpTrigger1:
 	scall BattleTowerOutsidePanUpHelperScript
-	warpfacing UP, BATTLE_TOWER_1F, 10, 13
+	warpfacing UP, BATTLE_TOWER_1F, 10, 15
 	end
 
 BattleTowerOutsidePanUpTrigger2:
 	scall BattleTowerOutsidePanUpHelperScript
-	warpfacing UP, BATTLE_TOWER_1F, 11, 13
+	warpfacing UP, BATTLE_TOWER_1F, 11, 15
 	end
 
 BattleTowerOutsidePanUpHelperScript:

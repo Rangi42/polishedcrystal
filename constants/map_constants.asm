@@ -306,6 +306,7 @@ ENDM
 	map_const ROUTE_11_GATE_2F,                            4,  4 ; 14
 	map_const VERMILION_POLLUTION_SPEECH_HOUSE,            4,  4 ; 15
 	map_const VERMILION_S_S_ANNE_SPEECH_HOUSE,             4,  4 ; 16
+	map_const BATTLE_FACTORY_1F,                          13,  6 ; 17
 
 	newgroup                                                     ; 13
 
@@ -334,17 +335,16 @@ ENDM
 	newgroup                                                     ; 15
 
 	map_const OLIVINE_PORT,                               10, 16 ;  1
-	map_const VERMILION_PORT,                             10, 13 ;  2
+	map_const VERMILION_PORT,                             15, 13 ;  2
 	map_const FAST_SHIP_1F,                               16,  9 ;  3
 	map_const FAST_SHIP_CABINS_NNW_NNE_NE,                 4, 16 ;  4
 	map_const FAST_SHIP_CABINS_SW_SSW_NW,                  4, 16 ;  5
 	map_const FAST_SHIP_CABINS_SE_SSE_CAPTAINS_CABIN,      5, 17 ;  6
 	map_const FAST_SHIP_B1F,                              14,  7 ;  7
 	map_const OLIVINE_PORT_PASSAGE,                        4, 15 ;  8
-	map_const VERMILION_PORT_PASSAGE,                      4, 15 ;  9
-	map_const MOUNT_MOON_SQUARE,                          15,  9 ; 10
-	map_const MOUNT_MOON_GIFT_SHOP,                        4,  4 ; 11
-	map_const TIN_TOWER_ROOF,                              7,  9 ; 12
+	map_const MOUNT_MOON_SQUARE,                          15,  9 ;  9
+	map_const MOUNT_MOON_GIFT_SHOP,                        4,  4 ; 10
+	map_const TIN_TOWER_ROOF,                              7,  9 ; 11
 
 	newgroup                                                     ; 16
 
@@ -514,7 +514,7 @@ ENDM
 	map_const CIANWOOD_CITY_PHOTO_STUDIO,                  4,  4 ;  8
 	map_const CIANWOOD_LUGIA_SPEECH_HOUSE,                 4,  4 ;  9
 	map_const MOVE_MANIACS_HOUSE,                          4,  4 ; 10
-	map_const BATTLE_TOWER_1F,                            11,  7 ; 11
+	map_const BATTLE_TOWER_1F,                            11,  8 ; 11
 	map_const BATTLE_TOWER_2F,                            11,  5 ; 12
 	map_const BATTLE_TOWER_BATTLE_ROOM,                    4,  4 ; 13
 	map_const BATTLE_TOWER_ELEVATOR,                       2,  2 ; 14

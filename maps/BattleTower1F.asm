@@ -5,26 +5,27 @@ BattleTower1F_MapScriptHeader:
 	def_callbacks
 
 	def_warp_events
-	warp_event 10, 13, BATTLE_TOWER_OUTSIDE, 3
-	warp_event 11, 13, BATTLE_TOWER_OUTSIDE, 4
+	warp_event 10, 15, BATTLE_TOWER_OUTSIDE, 3
+	warp_event 11, 15, BATTLE_TOWER_OUTSIDE, 4
 	warp_event 10,  0, BATTLE_TOWER_ELEVATOR, 1
-	warp_event  0,  5, BATTLE_TOWER_2F, 1
+	warp_event  0,  7, BATTLE_TOWER_2F, 1
 
 	def_coord_events
 
 	def_bg_events
 	bg_event 11,  7, BGEVENT_READ, MapBattleTower1FSignpost0Script
+	bg_event  9,  7, BGEVENT_READ, MapBattleTower1FSignpost1Script
 
 	def_object_events
 	object_event 10,  7, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, ReceptionistScript_BattleTower, -1
-	pc_nurse_event  6, 6
-	object_event 14,  6, SPRITE_CLERK, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, pokemart, MARTTYPE_BP, MART_BT_1, -1
-	object_event 16,  6, SPRITE_CLERK, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, pokemart, MARTTYPE_BP, MART_BT_2, -1
-	object_event 18,  6, SPRITE_CLERK, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_COMMAND, pokemart, MARTTYPE_BP, MART_BT_3, -1
-	object_event  6, 12, SPRITE_BURGLAR, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, BattleTowerPharmacistScript, -1
-	object_event 16, 11, SPRITE_ACE_TRAINER_F, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, Text_BattleTowerCooltrainerF, -1
-	object_event  2, 10, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, Text_BattleTowerBugCatcher, -1
-	object_event 20,  9, SPRITE_GRANNY, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, Text_BattleTowerGranny, -1
+	pc_nurse_event  6,  8
+	object_event 14,  8, SPRITE_CLERK, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, pokemart, MARTTYPE_BP, MART_BT_1, -1
+	object_event 16,  8, SPRITE_CLERK, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, pokemart, MARTTYPE_BP, MART_BT_2, -1
+	object_event 18,  8, SPRITE_CLERK, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_COMMAND, pokemart, MARTTYPE_BP, MART_BT_3, -1
+	object_event  6, 14, SPRITE_BURGLAR, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, BattleTowerPharmacistScript, -1
+	object_event 16, 13, SPRITE_ACE_TRAINER_F, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, Text_BattleTowerCooltrainerF, -1
+	object_event  2, 12, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, Text_BattleTowerBugCatcher, -1
+	object_event 20, 11, SPRITE_GRANNY, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, Text_BattleTowerGranny, -1
 
 	object_const_def
 	const BATTLETOWER1F_RECEPTIONIST
@@ -114,16 +115,6 @@ BattleTower1FTrigger0:
 MapBattleTower1FSignpost0Script:
 	opentext
 	writethistext
-		text "Streak: "
-		deciram wBattleTowerCurStreak, 2, 5
-		text " wins"
-		line "Record: "
-		deciram wBattleTowerTopStreak, 2, 5
-		text " wins"
-		done
-	waitbutton
-
-	writethistext
 		text "Battle Tower rules"
 		line "are written here."
 
@@ -146,6 +137,16 @@ MapBattleTower1FSignpost0Script:
 		line "Legendary #mon"
 		cont "aren't eligible"
 		cont "to battle."
+		done
+
+MapBattleTower1FSignpost1Script:
+	jumpthistext
+		text "Streak: "
+		deciram wBattleTowerCurStreak, 2, 5
+		text " wins"
+		line "Record: "
+		deciram wBattleTowerTopStreak, 2, 5
+		text " wins"
 		done
 
 ReceptionistScript_BattleTower:

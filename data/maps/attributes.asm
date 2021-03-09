@@ -718,6 +718,7 @@ ENDM
 	map_attributes Route11Gate2F, ROUTE_11_GATE_2F, $0, 0
 	map_attributes VermilionPollutionSpeechHouse, VERMILION_POLLUTION_SPEECH_HOUSE, $0, 0
 	map_attributes VermilionSSAnneSpeechHouse, VERMILION_S_S_ANNE_SPEECH_HOUSE, $0, 0
+	map_attributes BattleFactory1F, BATTLE_FACTORY_1F, $0, 0
 	map_attributes RedsHouse1F, REDS_HOUSE_1F, $0, 0
 	map_attributes RedsHouse2F, REDS_HOUSE_2F, $0, 0
 	map_attributes BluesHouse1F, BLUES_HOUSE_1F, $0, 0
@@ -736,7 +737,6 @@ ENDM
 	map_attributes FastShipCabins_SE_SSE_CaptainsCabin, FAST_SHIP_CABINS_SE_SSE_CAPTAINS_CABIN, $0, 0
 	map_attributes FastShipB1F, FAST_SHIP_B1F, $0, 0
 	map_attributes OlivinePortPassage, OLIVINE_PORT_PASSAGE, $0, 0
-	map_attributes VermilionPortPassage, VERMILION_PORT_PASSAGE, $0, 0
 	map_attributes MountMoonSquare, MOUNT_MOON_SQUARE, $2d, 0
 	map_attributes MountMoonGiftShop, MOUNT_MOON_GIFT_SHOP, $0, 0
 	map_attributes TinTowerRoof, TIN_TOWER_ROOF, $1, 0

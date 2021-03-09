@@ -83,6 +83,7 @@ ENDM
 	special_bg_pal tileset,  TILESET_GAME_CORNER,         PAL_SINGLE,    GameCornerPalette
 	special_bg_pal tileset,  TILESET_HOTEL,               PAL_SINGLE,    HotelPalette
 	special_bg_pal tileset,  TILESET_BATTLE_TOWER_INSIDE, PAL_SINGLE,    BattleTowerPalette
+	special_bg_pal tileset,  TILESET_BATTLE_FACTORY,      PAL_SINGLE,    BattleFactoryPalette
 	special_bg_pal tileset,  TILESET_RADIO_TOWER,         PAL_SINGLE,    RadioTowerPalette
 	special_bg_pal tileset,  TILESET_QUIET_CAVE,          PAL_SINGLE,    QuietCavePalette
 	special_bg_pal tileset,  TILESET_ICE_PATH,            PAL_SINGLE,    IcePathPalette
@@ -169,6 +170,24 @@ endc
 BattleTowerPalette:
 if !DEF(MONOCHROME)
 INCLUDE "gfx/tilesets/battle_tower_inside.pal"
+else
+rept 5
+	MONOCHROME_RGB_FOUR
+endr
+	RGB_MONOCHROME_LIGHT
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_BLACK
+	MONOCHROME_RGB_FOUR
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_BLACK
+endc
+
+BattleFactoryPalette:
+if !DEF(MONOCHROME)
+INCLUDE "gfx/tilesets/battle_factory.pal"
 else
 rept 5
 	MONOCHROME_RGB_FOUR
