@@ -552,7 +552,6 @@ INCLUDE "maps/VermilionHouseFishingSpeechHouse.asm"
 INCLUDE "maps/VermilionMagnetTrainSpeechHouse.asm"
 INCLUDE "maps/VermilionPollutionSpeechHouse.asm"
 INCLUDE "maps/VermilionPort.asm"
-INCLUDE "maps/VermilionPortPassage.asm"
 INCLUDE "maps/VermilionSSAnneSpeechHouse.asm"
 INCLUDE "maps/PokemonFanClub.asm"
 

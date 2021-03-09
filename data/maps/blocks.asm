@@ -651,8 +651,7 @@ OlivinePort_BlockData:
 
 SECTION "OlivinePortPassage_BlockData", ROMX
 OlivinePortPassage_BlockData:
-VermilionPortPassage_BlockData:
-	INCBIN "maps/PortPassage.ablk.lz"
+	INCBIN "maps/OlivinePortPassage.ablk.lz"
 
 SECTION "OlivineLighthouse1F_BlockData", ROMX
 OlivineLighthouse1F_BlockData:

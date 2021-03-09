@@ -6,14 +6,15 @@ VermilionPort_MapScriptHeader:
 	def_callbacks
 
 	def_warp_events
-	warp_event  9,  5, VERMILION_PORT_PASSAGE, 5
+	warp_event  8,  4, VERMILION_CITY, 8
 	warp_event  7, 17, FAST_SHIP_1F, 1
+	warp_event  9,  4, VERMILION_CITY, 9
 
 	def_coord_events
 	coord_event  7, 11, 0, VermilionPortWalkUpToShipScript
 
 	def_bg_events
-	bg_event 16, 13, BGEVENT_ITEM + IRON, EVENT_VERMILION_PORT_HIDDEN_IRON
+	bg_event 27, 13, BGEVENT_ITEM + IRON, EVENT_VERMILION_PORT_HIDDEN_IRON
 
 	def_object_events
 	object_event  7, 17, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, VermilionPortSailorAtGangwayScript, EVENT_VERMILION_PORT_SAILOR_AT_GANGWAY

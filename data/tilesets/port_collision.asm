@@ -84,3 +84,10 @@
 	tilecoll WATER, WALL, WATER, WATER ; 53
 	tilecoll WALL, WALL, WATER, WARP_CARPET_UP ; 54
 	tilecoll WALL, WATER, WATER, WATER ; 55
+	tilecoll WARP_CARPET_UP, WARP_CARPET_UP, FLOOR, FLOOR ; 56
+	tilecoll WALL, WALL, WALL, WALL ; 57
+	tilecoll WALL, WALL, FLOOR, FLOOR ; 58
+	tilecoll WALL, WALL, FLOOR, WALL ; 59
+	tilecoll FLOOR, FLOOR, WATER, WATER ; 5a
+	tilecoll FLOOR, WALL, WATER, WALL ; 5b
+	tilecoll WALL, WALL, WALL, WALL ; 5c

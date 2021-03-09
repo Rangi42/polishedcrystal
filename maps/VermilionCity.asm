@@ -13,8 +13,8 @@ VermilionCity_MapScriptHeader:
 	warp_event 21, 17, VERMILION_MART, 2
 	warp_event 21, 21, VERMILION_HOUSE_DIGLETTS_CAVE_SPEECH_HOUSE, 1
 	warp_event 10, 23, VERMILION_GYM, 1
-	warp_event 18, 35, VERMILION_PORT_PASSAGE, 1
-	warp_event 19, 35, VERMILION_PORT_PASSAGE, 2
+	warp_event 18, 35, VERMILION_PORT, 1
+	warp_event 19, 35, VERMILION_PORT, 3
 	warp_event 36, 17, DIGLETTS_CAVE, 1
 	warp_event 28, 35, SEAGALLOP_FERRY_VERMILION_GATE, 1
 	warp_event 29, 35, SEAGALLOP_FERRY_VERMILION_GATE, 1
@@ -24,31 +24,26 @@ VermilionCity_MapScriptHeader:
 	def_coord_events
 
 	def_bg_events
-	bg_event 25,  5, BGEVENT_JUMPTEXT, VermilionCitySignText
+	bg_event 19,  9, BGEVENT_JUMPTEXT, VermilionCitySignText
 	bg_event  5, 23, BGEVENT_JUMPTEXT, VermilionGymSignText
 	bg_event  5, 17, BGEVENT_JUMPTEXT, PokemonFanClubSignText
 	bg_event 33, 17, BGEVENT_JUMPTEXT, VermilionCityDiglettsCaveSignText
 	bg_event 27, 19, BGEVENT_JUMPTEXT, VermilionCityPortSignText
-	bg_event 28, 13, BGEVENT_JUMPTEXT, VermilionCityTruckText
-	bg_event 29, 13, BGEVENT_JUMPTEXT, VermilionCityTruckText
-	bg_event 19,  9, BGEVENT_JUMPTEXT, VermilionCityAdvancedTipsSignText
+	bg_event 23, 13, BGEVENT_JUMPTEXT, VermilionCityBattleFactorySignText
+	bg_event 11, 27, BGEVENT_JUMPTEXT, VermilionCityAdvancedTipsSignText
 	bg_event 12, 23, BGEVENT_ITEM + FULL_HEAL, EVENT_VERMILION_CITY_HIDDEN_FULL_HEAL
 
 	def_object_events
 	object_event 35, 18, SPRITE_BIG_SNORLAX, SPRITEMOVEDATA_SNORLAX, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, VermilionSnorlax, EVENT_VERMILION_CITY_SNORLAX
 	object_event 18, 31, SPRITE_LAWRENCE, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_LAWRENCE_VERMILION_CITY
 	object_event 18, 13, SPRITE_BATTLE_GIRL, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, VermilionCityTeacherText, -1
-	object_event 23, 10, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, VermilionMachokeOwnerText, -1
-	object_event 26, 11, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, MACHOKE, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, VermilionMachoke, -1
-	object_event 14, 20, SPRITE_ROCKER, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, VermilionCitySuperNerdText, -1
-	object_event 25, 16, SPRITE_POKEMANIAC, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, VermilionCitySuperNerd2Text, -1
-	object_event 10,  9, SPRITE_SAILOR, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, VermilionCitySailorText, -1
+	object_event 27, 13, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, VermilionMachokeOwnerText, -1
+	pokemon_event 28, 13, MACHOKE, -1, -1, PAL_NPC_BLUE, VermilionMachokeText, -1
+	object_event 16, 20, SPRITE_ROCKER, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, VermilionCitySuperNerdText, -1
+	object_event 32, 12, SPRITE_POKEMANIAC, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, VermilionCitySuperNerd2Text, -1
+	object_event 11,  9, SPRITE_SAILOR, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 3, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, VermilionCitySailorText, -1
 	object_event 31, 16, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_PURPLE, OBJECTTYPE_SCRIPT, 0, VermilionGymBadgeGuy, -1
 	cuttree_event 13, 23, EVENT_VERMILION_CITY_CUT_TREE
-	smashrock_event 26, 14
-	smashrock_event 23, 12
-	smashrock_event 28, 7
-	smashrock_event 29, 9
 
 	object_const_def
 	const VERMILIONCITY_BIG_SNORLAX
@@ -124,11 +119,6 @@ LawrenceWalkAroundRightMovementData:
 	step_down
 	turn_head_right
 	step_end
-
-VermilionMachoke:
-	showcrytext VermilionMachokeText1, MACHOKE
-	earthquake 30
-	jumptext VermilionMachokeText2
 
 VermilionSnorlax:
 	opentext
@@ -248,29 +238,22 @@ VermilionCityTeacherText:
 	done
 
 VermilionMachokeOwnerText:
-	text "My #mon has"
-	line "been preparing the"
+	text "My #mon"
+	line "prepared the land"
 
-	para "land for construc-"
-	line "tion for so long,"
-	cont "it evolved!"
+	para "to construct that"
+	line "huge building!"
 
-	para "But I have no"
-	line "money to start the"
-	cont "project…"
+	para "It was a Machop"
+	line "three years ago,"
+
+	para "but the effort"
+	line "made it evolve!"
 	done
 
-VermilionMachokeText1:
+VermilionMachokeText:
 	text "Machoke: Guooh"
 	line "gogogoh!"
-	done
-
-VermilionMachokeText2:
-	text "A Machoke is"
-	line "growling while"
-
-	para "stomping the"
-	line "ground flat."
 	done
 
 VermilionCitySuperNerdText:
@@ -283,13 +266,15 @@ VermilionCitySuperNerdText:
 	done
 
 VermilionCitySuperNerd2Text:
-	text "The man over there"
-	line "said his building"
+	text "The Battle Factory"
+	line "is brand-new!"
 
-	para "would be finished"
-	line "by now."
+	para "But trainers are"
+	line "already arriving"
 
-	para "What's the hold-up?"
+	para "from distant"
+	line "regions to take"
+	cont "its challenge!"
 	done
 
 VermilionCitySailorText:
@@ -387,20 +372,17 @@ VermilionCityPortSignText:
 	line "Entrance"
 	done
 
-VermilionCityTruckText:
-	text "It's a truck full"
-	line "of building supp-"
-	cont "lies."
-
-	para "Underneath it"
-	line "there's…"
-	cont "nothing!"
-	done
-
 VermilionCityAdvancedTipsSignText:
 	text "Advanced Tips!"
 
 	para "Your Trainer Card"
 	line "has room to show"
 	cont "sixteen Badges!"
+	done
+
+VermilionCityBattleFactorySignText:
+	text "Battle Factory"
+
+	para "Win it All with"
+	line "Rental #mon!"
 	done
