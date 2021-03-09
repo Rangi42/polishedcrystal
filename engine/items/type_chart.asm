@@ -23,14 +23,14 @@ _TypeChart:
 	ldh [rVBK], a
 	ld hl, TypeChartBG0GFX
 	ld de, vTiles4
-	lb bc, BANK(TypeChartBG0GFX), 0 ; 256
+	lb bc, BANK(TypeChartBG0GFX), 255
 	call DecompressRequest2bpp
 	xor a
 	ldh [rVBK], a
 
 	ld hl, TypeChartBG1GFX
 	ld de, vTiles2
-	lb bc, BANK(TypeChartBG1GFX), 29
+	lb bc, BANK(TypeChartBG1GFX), 30
 	call DecompressRequest2bpp
 
 	ld hl, TypeChartOBGFX
@@ -163,7 +163,7 @@ TypeChartBG0GFX:
 INCBIN "gfx/type_chart/bg0.2bpp.lz"
 
 TypeChartBG1GFX:
-INCBIN "gfx/type_chart/bg.2bpp.vram2.lz"
+INCBIN "gfx/type_chart/bg.2bpp.vram2p.lz"
 
 TypeChartOBGFX:
 INCBIN "gfx/type_chart/ob.2bpp.lz"

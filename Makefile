@@ -89,7 +89,7 @@ tools:
 
 clean: tidy
 	find gfx maps data/tilesets -name '*.lz' -delete
-	find gfx \( -name '*.[12]bpp' -o -name '*.2bpp.vram[012]' \) -delete
+	find gfx \( -name '*.[12]bpp' -o -name '*.2bpp.vram[012]' -o -name '*.2bpp.vram[012]p' \) -delete
 	find gfx/pokemon -mindepth 1 \( -name 'bitmask.asm' -o -name 'frames.asm' -o -name 'front.animated.tilemap' -o -name 'front.dimensions' \) -delete
 	find data/tilesets -name '*_collision.bin' -delete
 
@@ -202,7 +202,7 @@ gfx/trainer_card/kris_card.2bpp: rgbgfx += -h
 gfx/trainers/%.2bpp: rgbgfx += -h
 
 gfx/type_chart/bg.2bpp: tools/gfx += --remove-duplicates --remove-xflip --remove-yflip
-gfx/type_chart/bg0.2bpp: gfx/type_chart/bg.2bpp.vram1 gfx/type_chart/bg.2bpp.vram0 ; cat $^ > $@
+gfx/type_chart/bg0.2bpp: gfx/type_chart/bg.2bpp.vram1p gfx/type_chart/bg.2bpp.vram0p ; cat $^ > $@
 gfx/type_chart/ob.2bpp: tools/gfx += --interleave --png=$<
 
 
@@ -237,6 +237,15 @@ gfx/pokemon/%/frames.asm: gfx/pokemon/%/front.animated.tilemap gfx/pokemon/%/fro
 
 %.2bpp.vram2: %.2bpp
 	tools/sub_2bpp.sh $< 256 128 > $@
+
+%.2bpp.vram0p: %.2bpp
+	tools/sub_2bpp.sh $< 127 > $@
+
+%.2bpp.vram1p: %.2bpp
+	tools/sub_2bpp.sh $< 127 128 > $@
+
+%.2bpp.vram2p: %.2bpp
+	tools/sub_2bpp.sh $< 255 128 > $@
 
 %.dimensions: %.png
 	tools/png_dimensions $< $@
