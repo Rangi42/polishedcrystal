@@ -2224,9 +2224,10 @@ BillsPC_Menu:
 	dec b
 	jr z, .menus_closed
 	push bc
-	call CloseWindow
+	call ExitMenu
 	jr .closemenu_loop
 .menus_closed
+	call ApplyTilemap
 	pop af
 	ret c
 	ld a, [wMenuSelection]
