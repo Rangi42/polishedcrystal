@@ -676,6 +676,9 @@ else
 endc
 	jp PopBCDEHL
 
+BillsPC_HideCursorAndMode:
+	call BillsPC_HideCursor
+	; fallthrough
 BillsPC_HideModeIcon:
 	ld hl, wVirtualOAMSprite32
 	ld bc, 20
@@ -1261,7 +1264,7 @@ ManageBoxes:
 
 .nothing_held_b
 	; Prompt if we want to exit Box operations or not.
-	call BillsPC_HideCursor
+	call BillsPC_HideCursorAndMode
 	ld hl, .ContinueBoxUse
 	call MenuTextbox
 	call YesNoBox
@@ -2099,7 +2102,7 @@ BillsPC_TakeMail:
 	ld a, [wTempMonSlot]
 	dec a
 	ld [wCurPartyMon], a
-	call BillsPC_HideCursor
+	call BillsPC_HideCursorAndMode
 	farcall TakeMail
 	jp GetCursorMon
 
@@ -2212,7 +2215,7 @@ BillsPC_BagItem:
 	; fallthrough
 BillsPC_PrintText:
 	push hl
-	call BillsPC_HideCursor
+	call BillsPC_HideCursorAndMode
 	pop hl
 	call MenuTextbox
 	call BillsPC_UpdateCursorLocation
@@ -2255,7 +2258,7 @@ BillsPC_Menu:
 	jp JumpTable
 
 BillsPC_Item:
-	call BillsPC_HideCursor
+	call BillsPC_HideCursorAndMode
 
 	; Eggs can't be given items.
 	ld a, [wTempMonIsEgg]
@@ -2532,7 +2535,7 @@ BillsPC_ReleaseAll:
 	prompt
 
 BillsPC_Release:
-	call BillsPC_HideCursor
+	call BillsPC_HideCursorAndMode
 
 	call BillsPC_GetCursorSlot
 	call BillsPC_CanReleaseMon
@@ -2640,7 +2643,7 @@ BillsPC_Rename:
 	jp BillsPC_RestoreUI
 
 BillsPC_Theme:
-	call BillsPC_HideCursor
+	call BillsPC_HideCursorAndMode
 
 	call LoadStandardMenuHeader
 	ld hl, .PickAThemeText
@@ -2858,7 +2861,7 @@ BillsPC_SwapStorage:
 	push af
 	push hl
 	push bc
-	call BillsPC_HideCursor
+	call BillsPC_HideCursorAndMode
 	pop bc
 	pop hl
 	pop af
