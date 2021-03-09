@@ -2254,12 +2254,12 @@ _BillsPC_BagItem:
 	jp GetCursorMon
 
 .CantPutMailIntoPack:
-	text "Can't put Mail into"
-	line "the pack directly."
+	text "The Mail would"
+	line "lose its message."
 	prompt
 
 BillsPC_PackFullText:
-	text "The Pack is full…"
+	text "The Bag is full…"
 	prompt
 
 BillsPC_MovedToPackText:
