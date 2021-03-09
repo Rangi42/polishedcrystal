@@ -181,6 +181,8 @@ gfx/pokegear/pokegear_sprites.2bpp: tools/gfx += --trim-whitespace
 
 gfx/pokemon/%/back.2bpp: rgbgfx += -h
 
+gfx/pc/obj.2bpp: gfx/pc/modes.2bpp gfx/pc/bags.2bpp ; cat $^ > $@
+
 gfx/slots/slots_1.2bpp: tools/gfx += --trim-whitespace
 gfx/slots/slots_2.2bpp: tools/gfx += --interleave --png=$<
 gfx/slots/slots_3.2bpp: tools/gfx += --interleave --png=$< --remove-duplicates --keep-whitespace --remove-xflip
