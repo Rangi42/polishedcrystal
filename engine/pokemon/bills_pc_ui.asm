@@ -2563,9 +2563,6 @@ BillsPC_Release:
 	jp CloseWindow
 
 .print
-	push hl
-	call BillsPC_HideCursorAndMode
-	pop hl
 	jp BillsPC_PrintText
 
 .CantReleaseEgg:
