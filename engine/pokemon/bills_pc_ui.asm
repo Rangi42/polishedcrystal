@@ -676,6 +676,46 @@ else
 endc
 	jp PopBCDEHL
 
+BillsPC_HideModeIcon:
+	ld hl, wVirtualOAMSprite32
+	ld bc, 20
+	xor a
+	rst ByteFill
+	ret
+
+BillsPC_UpdateModeIcon:
+	ld hl, wVirtualOAMSprite32
+	lb de, $10, $24
+	ld c, 5
+	ld a, [wBillsPC_CursorMode]
+	ld b, a
+.loop
+	ld a, $98
+	ld [hli], a
+	ld a, d
+	ld [hli], a
+	add $8
+	ld d, a
+	ld a, c
+	cp 3
+	ld a, e
+	jr nz, .dont_switch_tile
+	inc b
+	sub c
+.tile_loop
+	add c
+	dec b
+	jr nz, .tile_loop
+.dont_switch_tile
+	ld [hli], a
+	ld e, a
+	inc e
+	ld a, TILE_BANK | PAL_CURSOR_MODE2
+	ld [hli], a
+	dec c
+	jr nz, .loop
+	ret
+
 BillsPC_HideCursor:
 	ld hl, wVirtualOAM
 	ld bc, 64
@@ -687,15 +727,16 @@ BillsPC_UpdateCursorLocation:
 	push hl
 	push de
 	push bc
-	ld hl, wVirtualOAM + 64
+	ld hl, wVirtualOAMSprite30
 	ld de, wStringBuffer3
 	ld bc, 8
 	rst CopyBytes
 	farcall PlaySpriteAnimations
 	ld hl, wStringBuffer3
-	ld de, wVirtualOAM + 64
+	ld de, wVirtualOAMSprite30
 	ld bc, 8
 	rst CopyBytes
+	call BillsPC_UpdateModeIcon
 	jp PopBCDEHL
 
 BillsPC_GetCursorHeldSlot:
@@ -869,7 +910,7 @@ _GetCursorMon:
 	call GetStorageBoxMon
 	jr nz, .not_clear
 	ld a, -1
-	ld [wVirtualOAM + 64], a
+	ld [wVirtualOAMSprite30], a
 	; fallthrough
 .clear
 	; Clear existing data
@@ -894,7 +935,7 @@ _GetCursorMon:
 	ret
 .reset_item
 	ld a, -1
-	ld [wVirtualOAM + 64], a
+	ld [wVirtualOAMSprite30], a
 	or 1
 	ret
 
@@ -1022,7 +1063,7 @@ _GetCursorMon:
 	farcall VaryBGPalByTempMonDVs
 
 	; Show or hide item icon
-	ld hl, wVirtualOAM + 64
+	ld hl, wVirtualOAMSprite30
 	call GetMonItemUnlessCursor
 	ld [hl], -1
 	jr z, .item_icon_done
@@ -2039,7 +2080,7 @@ BillsPC_BlankCursorItem:
 ; Blanks cursor item and swap icon. Assumes vbk1.
 	; Remove held item icon.
 	ld a, -1
-	ld [wVirtualOAM + 68], a
+	ld [wVirtualOAMSprite31], a
 
 	; Blank cursor item name. Only uses 10 tiles, but this is ok.
 	ld hl, vTiles5 tile $3b
@@ -2103,7 +2144,7 @@ BillsPC_MoveItem:
 	ldh [hBGMapMode], a
 
 	; Load held item icon
-	ld hl, wVirtualOAM + 68
+	ld hl, wVirtualOAMSprite31
 	ld [hl], 32
 	inc hl
 	ld [hl], 72
