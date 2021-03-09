@@ -3140,6 +3140,7 @@ BillsPC_RestoreUI:
 	call ClearSprites
 	call ClearSpriteAnims
 
+	; This needs to be done in case a frontpic anim overwrote data here.
 	ld a, 1
 	ldh [rVBK], a
 
