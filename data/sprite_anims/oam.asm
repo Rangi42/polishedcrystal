@@ -77,6 +77,8 @@ SpriteAnimOAMData:
 	dbw $00, .OAMData_MaxStatSparkle     ; SPRITE_ANIM_OAMSET_MAX_STAT_SPARKLE
 	dbw $00, .OAMData_PcCursor           ; SPRITE_ANIM_OAMSET_PC_CURSOR
 	dbw $00, .OAMData_PcQuick            ; SPRITE_ANIM_OAMSET_PC_QUICK
+	dbw $00, .OAMData_PcMode             ; SPRITE_ANIM_OAMSET_PC_MODE
+	dbw $00, .OAMData_PcMode2            ; SPRITE_ANIM_OAMSET_PC_MODE2
 
 .OAMData_1x1_Palette0:
 	db 1
@@ -657,3 +659,14 @@ SpriteAnimOAMData:
 	dsprite  1,  0,  1,  0, $17, $5 | TILE_BANK
 
 	; Mini shadow (TODO)
+
+.OAMData_PcMode:
+	db 3
+	dsprite  0,  0,  2,  0, $26, $2 | TILE_BANK
+	dsprite  0,  0,  3,  0, $27, $2 | TILE_BANK
+	dsprite  0,  0,  4,  0, $28, $2 | TILE_BANK
+
+.OAMData_PcMode2:
+	db 2
+	dsprite  0,  0,  0,  0, $24, $2 | TILE_BANK
+	dsprite  0,  0,  1,  0, $25, $2 | TILE_BANK
