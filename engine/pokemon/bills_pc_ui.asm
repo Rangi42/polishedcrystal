@@ -2227,6 +2227,16 @@ _BillsPC_BagItem:
 .do_it
 	ld a, [wTempMonItem]
 	ld [wCurItem], a
+
+	; Check if this is a Mail (can be invoked when placing using Item Mode).
+	ld d, a
+	call ItemIsMail
+	jr nc, .put_in_pack
+	call BillsPC_HideCursorAndMode
+	ld hl, .CantPutMailIntoPack
+	jr BillsPC_PrintText
+
+.put_in_pack
 	ld a, 1
 	ld [wItemQuantityChangeBuffer], a
 	ld hl, wNumItems
@@ -2237,6 +2247,11 @@ _BillsPC_BagItem:
 	ld [wTempMonItem], a
 	farcall UpdateStorageBoxMonFromTemp
 	jp GetCursorMon
+
+.CantPutMailIntoPack:
+	text "Can't put Mail into"
+	line "the pack directly."
+	prompt
 
 BillsPC_PackFullText:
 	text "The Pack is full…"
@@ -2296,7 +2311,6 @@ BillsPC_Item:
 	ld hl, .ItemIsSelected
 	ld de, .ItemMenu
 	jr nc, .got_menu
-	ld hl, .ItemIsSelected
 	ld de, .MailMenu
 .got_menu
 	push de
