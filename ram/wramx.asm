@@ -52,6 +52,8 @@ wTownMapCursorLandmark:: db
 wTownMapCursorObjectPointer:: dw
 NEXTU
 wTownMapCursorCoordinates:: dw
+wStartFlypoint:: db
+wEndFlypoint:: db
 ENDU
 
 NEXTU
@@ -164,12 +166,7 @@ wKeepSevenBiasChance::
 wTempDayOfWeek::
 	db
 
-	ds 2 ; unused
-
-wStartFlypoint:: db
-wEndFlypoint:: db
-
-	ds 55
+	ds 59
 
 UNION
 ; trainer data
