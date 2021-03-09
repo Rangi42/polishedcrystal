@@ -3138,6 +3138,7 @@ BillsPC_ApplyPals:
 	ret
 
 BillsPC_RestoreUI:
+	call ClearPalettes
 	call ClearSprites
 	call ClearSpriteAnims
 
