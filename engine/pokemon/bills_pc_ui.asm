@@ -2413,6 +2413,8 @@ BillsPC_CanReleaseMon:
 	ret
 
 BillsPC_ReleaseAll:
+	call BillsPC_HideModeIcon
+
 	; Double confirmation.
 	ld hl, .ReallyReleaseBox
 	call MenuTextbox
