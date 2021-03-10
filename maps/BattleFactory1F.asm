@@ -6,6 +6,7 @@ BattleFactory1F_MapScriptHeader:
 	def_warp_events
 	warp_event 12, 11, VERMILION_CITY, 15
 	warp_event 13, 11, VERMILION_CITY, 16
+	warp_event 12,  1, BATTLE_FACTORY_HALLWAY, 1
 
 	def_coord_events
 
