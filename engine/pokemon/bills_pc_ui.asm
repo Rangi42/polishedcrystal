@@ -3242,7 +3242,7 @@ BillsPC_PlaceHeldMon:
 	call DelayFrame
 
 	; Prevents quickanim
-	ld a, 1
+	xor a
 	jr .place_icon
 
 .not_on_pack
@@ -3279,8 +3279,8 @@ BillsPC_PlaceHeldMon:
 	ld h, a
 	ld a, [hl]
 	; fallthrough
-.place_icon
 	and a
+.place_icon
 	push af
 	push de
 	push bc
