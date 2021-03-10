@@ -641,17 +641,17 @@ TakeMail:
 	jr c, .MailboxFull
 	ld hl, .sentmailtopctext
 	call MenuTextboxBackup
-	jr .done
+	jr .TookMail
 
 .MailboxFull:
 	ld hl, .mailboxfulltext
 	call MenuTextboxBackup
-	jr .done
+	jr .KeptMail
 
 .RemoveMailToBag:
 	ld hl, .mailwilllosemessagetext
 	call StartMenuYesNo
-	jr c, .done
+	jr c, .KeptMail
 	call GetPartyItemLocation
 	ld a, [hl]
 	ld [wCurItem], a
@@ -662,13 +662,17 @@ TakeMail:
 	call GetCurNick
 	ld hl, .tookmailfrommontext
 	call MenuTextboxBackup
+	; fallthrough
+.TookMail:
+	scf
 	jr .done
 
 .BagIsFull:
 	ld hl, .bagfulltext
 	call MenuTextboxBackup
 	; fallthrough
-
+.KeptMail:
+	and a
 .done
 	ld a, $3
 	ret

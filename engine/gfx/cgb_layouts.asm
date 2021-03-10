@@ -1016,6 +1016,9 @@ BillsPC_PreviewTheme:
 	push hl
 	call LoadHLPaletteIntoDE
 	pop hl
+	call LoadHLPaletteIntoDE
+	ld hl, .PackPal
+	ld de, wOBPals1 palette 4
 	jp LoadHLPaletteIntoDE
 
 .apply_pals
@@ -1032,6 +1035,19 @@ else
 	RGB_MONOCHROME_WHITE
 	RGB_MONOCHROME_WHITE
 	RGB_MONOCHROME_BLACK
+	RGB_MONOCHROME_BLACK
+endc
+
+.PackPal:
+if !DEF(MONOCHROME)
+	RGB 31, 31, 31
+	RGB 31, 31, 31
+	RGB 07, 19, 07
+	RGB 00, 00, 00
+else
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_DARK
 	RGB_MONOCHROME_BLACK
 endc
 

@@ -1300,8 +1300,6 @@ ManageBoxes:
 	xor a ; PC_MENU_MODE
 .got_new_mode
 	call BillsPC_SetCursorMode
-.pressed_start
-	; TODO: use Start for something?
 	jp .loop
 
 .pressed_right
@@ -1352,6 +1350,16 @@ ManageBoxes:
 	or $8 ; 6 columns, CursorPosValid fixes up final column 6+
 	dec a
 	and LOW(~$8)
+	jr .new_cursor_pos
+
+.pressed_start
+	; Cursor jumps to the box name
+	ld a, [wBillsPC_CursorPos]
+	and $f
+	; Check for party rows less than 2
+	cp 2
+	jr nc, .new_cursor_pos
+	ld a, 2
 	jr .new_cursor_pos
 
 .pressed_up
@@ -3261,10 +3269,17 @@ BillsPC_ApplyPals:
 	ld c, 6
 .loop
 	; Copy white to color 0.
+if !DEF(MONOCHROME)
 	ld a, $ff
 	ld [hli], a
 	ld a, $7f
 	ld [hli], a
+else
+	ld a, LOW(PAL_MONOCHROME_WHITE)
+	ld [hli], a
+	ld a, HIGH(PAL_MONOCHROME_WHITE)
+	ld [hli], a
+endc
 
 	; Copy hblank colors to color 1 and 2.
 	ld b, 4
@@ -3276,9 +3291,16 @@ BillsPC_ApplyPals:
 	jr nz, .inner_loop
 
 	; Copy black to color 3.
+if !DEF(MONOCHROME)
 	xor a
 	ld [hli], a
 	ld [hli], a
+else
+	ld a, LOW(PAL_MONOCHROME_BLACK)
+	ld [hli], a
+	ld a, HIGH(PAL_MONOCHROME_BLACK)
+	ld [hli], a
+endc
 	dec c
 	jr nz, .loop
 

@@ -674,7 +674,7 @@ SpriteAnimOAMData:
 
 .OAMData_PcPack:
 	db 4
-	dsprite  0,  0,  0,  0, $2f, $2 | TILE_BANK
-	dsprite  0,  0,  1,  0, $30, $2 | TILE_BANK
-	dsprite  1,  0,  0,  0, $31, $2 | TILE_BANK
-	dsprite  1,  0,  1,  0, $32, $2 | TILE_BANK
+	dsprite  0,  0,  0,  0, $2f, $4 | TILE_BANK
+	dsprite  0,  0,  1,  0, $30, $4 | TILE_BANK
+	dsprite  1,  0,  0,  0, $31, $4 | TILE_BANK
+	dsprite  1,  0,  1,  0, $32, $4 | TILE_BANK
