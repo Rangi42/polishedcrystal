@@ -1164,6 +1164,19 @@ _GetCursorMon:
 	or 1
 	ret
 
+BillsPC_CheckBagDisplay:
+; Returns z if we should display the bag.
+	call BillsPC_IsHoldingItem
+	jr z, .check_cursor_mode
+	xor a
+	ret
+
+.check_cursor_mode
+	; Always display it in Item Mode.
+	ld a, [wBillsPC_CursorMode]
+	cp PC_ITEM_MODE
+	ret
+
 ManageBoxes:
 ; Main box management function
 .loop
@@ -1208,9 +1221,9 @@ ManageBoxes:
 	cp PC_ITEM_MODE
 	jr nz, .confirm_ok
 	ld a, [wBillsPC_CursorPos]
-	cp $10
+	cp $10 ; If below this, we're on boxname.
 	jr c, .confirm_ok
-	cp $21
+	cp $21 ; Bag location.
 	jr z, .confirm_ok
 	ld a, [wTempMonItem]
 	and a
@@ -2000,12 +2013,27 @@ BillsPC_AbortSelection:
 	ld [wBillsPC_CursorHeldBox], a
 	ld [wBillsPC_CursorHeldSlot], a
 
+	; We might need to move the cursor elsewhere if this removes the bag icon.
+	call BillsPC_MaybeMoveCursor
 	ld a, PCANIM_ANIMATE
 	ld [wBillsPC_CursorAnimFlag], a
 
 	xor a
 	ldh [rVBK], a
 	jp GetCursorMon
+
+BillsPC_MaybeMoveCursor:
+; If the cursor is on the bag, and the bag is no longer there, move it.
+	ld a, [wBillsPC_CursorPos]
+	cp $21
+	ret nz
+
+	call BillsPC_CheckBagDisplay
+	ret z
+
+	ld a, $31 ; Move to right below it.
+	ld [wBillsPC_CursorPos], a
+	ret
 
 BillsPC_PrepareTransistion:
 ; Prepares for a screen transistion.
@@ -3299,11 +3327,6 @@ BillsPC_PlaceHeldMon:
 	xor a
 	ldh [rVBK], a
 
-	; Redundant, but fixes display when placing back on the same mon.
-	call .blankcursor
-
-	call GetCursorMon
-
 .holding_mon
 	call BillsPC_CursorPick2
 	pop bc
@@ -3315,7 +3338,8 @@ BillsPC_PlaceHeldMon:
 	xor a
 	ld [wBillsPC_CursorHeldBox], a
 	ld [wBillsPC_CursorHeldSlot], a
-	ret
+	call BillsPC_MaybeMoveCursor
+	jp GetCursorMon
 
 BillsPC_SetPals:
 	call BillsPC_ApplyPals
@@ -3428,12 +3452,11 @@ BillsPC_CursorPosValid:
 	cp $30
 	jr nc, .not_party
 
-	; Party row 2 is only valid if we're in Item mode, and only $21.
+	; Bag location is only valid sometimes.
 	cp $21
 	jr nz, .invalid
 
-	ld a, [wBillsPC_CursorMode]
-	cp PC_ITEM_MODE
+	call BillsPC_CheckBagDisplay
 	jr nz, .invalid
 
 .not_party

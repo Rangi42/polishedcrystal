@@ -733,8 +733,7 @@ AnimSeq_PcPack:
 	ld [hl], a
 
 	; Hide pack outside Item mode
-	ld a, [wBillsPC_CursorMode]
-	cp 2
+	farcall BillsPC_CheckBagDisplay
 	ld a, $80 ; move it out of view
 	jr nz, .got_pack_y
 	xor a
