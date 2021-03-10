@@ -39,15 +39,6 @@ const_value = const_value + 1
 ENDM
 
 shift_const: MACRO
-\1 EQU (1 << const_value)
+\1 EQU 1 << const_value
 	const \1_F
-ENDM
-
-
-; Enumerate strings
-
-define: MACRO
-if !def(\1)
-\1 equs \2
-endc
 ENDM

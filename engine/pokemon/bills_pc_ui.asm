@@ -2765,10 +2765,8 @@ BillsPC_Theme:
 
 .ThemeList:
 	db NUM_BILLS_PC_THEMES
-x = 1
-rept NUM_BILLS_PC_THEMES
+for x, 1, NUM_BILLS_PC_THEMES + 1
 	db x
-x = x + 1
 endr
 	db -1
 
