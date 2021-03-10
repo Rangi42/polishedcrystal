@@ -1877,3 +1877,7 @@ BattleFactory1F_BlockData:
 SECTION "BattleFactoryHallway_BlockData", ROMX
 BattleFactoryHallway_BlockData:
 	INCBIN "maps/BattleFactoryHallway.ablk.lz"
+
+SECTION "BattleFactoryBattleRoom_BlockData", ROMX
+BattleFactoryBattleRoom_BlockData:
+	INCBIN "maps/BattleFactoryBattleRoom.ablk.lz"

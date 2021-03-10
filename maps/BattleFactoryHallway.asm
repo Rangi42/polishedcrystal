@@ -6,6 +6,7 @@ BattleFactoryHallway_MapScriptHeader:
 	def_warp_events
 	warp_event  4, 13, BATTLE_FACTORY_1F, 3
 	warp_event  5, 13, BATTLE_FACTORY_1F, 3
+	warp_event  4,  4, BATTLE_FACTORY_BATTLE_ROOM, 1
 
 	def_coord_events
 

@@ -308,6 +308,7 @@ ENDM
 	map_const VERMILION_S_S_ANNE_SPEECH_HOUSE,             4,  4 ; 16
 	map_const BATTLE_FACTORY_1F,                          13,  6 ; 17
 	map_const BATTLE_FACTORY_HALLWAY,                      5,  7 ; 18
+	map_const BATTLE_FACTORY_BATTLE_ROOM,                  5,  6 ; 19
 
 	newgroup                                                     ; 13
 

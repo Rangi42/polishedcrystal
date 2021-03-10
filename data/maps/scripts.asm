@@ -62,6 +62,7 @@ INCLUDE "maps/BattleTowerHallway.asm"
 INCLUDE "maps/BattleTowerOutside.asm"
 INCLUDE "maps/BattleFactory1F.asm"
 INCLUDE "maps/BattleFactoryHallway.asm"
+INCLUDE "maps/BattleFactoryBattleRoom.asm"
 
 
 SECTION "New Bark Scripts", ROMX
