@@ -219,6 +219,9 @@ gfx/pokemon/%/frames.asm: gfx/pokemon/%/front.animated.tilemap gfx/pokemon/%/fro
 %.lz: %
 	tools/lzcomp -- $< $@
 
+#%.4bpp: %.png
+#	superfamiconv tiles -R -i $@ -d $<
+
 %.2bpp: %.png
 	$(RGBDS_DIR)rgbgfx $(rgbgfx) -o $@ $<
 	$(if $(tools/gfx),\

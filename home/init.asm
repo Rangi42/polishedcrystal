@@ -139,6 +139,10 @@ Init::
 	ldh [hWX], a
 	ldh [rWX], a
 
+	farcall InitCGBPals
+
+	farcall InitSGBBorder
+
 	ld a, %11100011
 	; LCD on
 	; Win tilemap 1
@@ -160,10 +164,6 @@ Init::
 	ldh [hSingleRet], a
 	ld a, $c3 ; jp
 	ldh [hFunctionJump], a
-
-	farcall InitSGBBorder
-
-	farcall InitCGBPals
 
 	ld a, HIGH(vBGMap1)
 	ldh [hBGMapAddress + 1], a
