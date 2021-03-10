@@ -141,7 +141,7 @@ Serial_ExchangeByte::
 	pop hl
 	call CheckwLinkTimeoutFramesNonzero
 	jr nz, .loop
-	jp SerialDisconnected
+	jr SerialDisconnected
 
 .doNotIncrementTimeoutCounter
 	ldh a, [rIE]

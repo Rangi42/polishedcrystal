@@ -133,6 +133,7 @@ Music:
 	dba Music_MountPyreRSE
 	dba Music_BattleTowerTheme
 	dba Music_BattleTowerLobby
+	dba Music_BattleFactoryRSE
 	dba Music_TrainerBattleBW
 	dba Music_FrontierBrainBattleRSE
 	dba Music_ZinniaEncounterORAS
