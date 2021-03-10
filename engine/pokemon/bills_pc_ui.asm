@@ -3245,10 +3245,17 @@ BillsPC_ApplyPals:
 	ld c, 6
 .loop
 	; Copy white to color 0.
+if !DEF(MONOCHROME)
 	ld a, $ff
 	ld [hli], a
 	ld a, $7f
 	ld [hli], a
+else
+	ld a, LOW(PAL_MONOCHROME_WHITE)
+	ld [hli], a
+	ld a, HIGH(PAL_MONOCHROME_WHITE)
+	ld [hli], a
+endc
 
 	; Copy hblank colors to color 1 and 2.
 	ld b, 4
@@ -3260,9 +3267,16 @@ BillsPC_ApplyPals:
 	jr nz, .inner_loop
 
 	; Copy black to color 3.
+if !DEF(MONOCHROME)
 	xor a
 	ld [hli], a
 	ld [hli], a
+else
+	ld a, LOW(PAL_MONOCHROME_BLACK)
+	ld [hli], a
+	ld a, HIGH(PAL_MONOCHROME_BLACK)
+	ld [hli], a
+endc
 	dec c
 	jr nz, .loop
 
