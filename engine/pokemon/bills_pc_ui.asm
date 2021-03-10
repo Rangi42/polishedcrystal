@@ -2585,8 +2585,8 @@ BillsPC_MaybeRespawnBeast:
 	ld a, [wTempMonSpecies]
 	cp RAIKOU
 	jr nz, .not_raikou
-	jr .done
 	farcall RespawnRoamingRaikou
+	jr .done
 .not_raikou
 	cp ENTEI
 	jr nz, .not_entei
