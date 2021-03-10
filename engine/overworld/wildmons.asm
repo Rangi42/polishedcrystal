@@ -257,9 +257,11 @@ ApplyMusicEffectOnEncounterRate::
 
 ApplyCleanseTagEffectOnEncounterRate::
 ; Cleanse Tag halves encounter rate.
+	ld a, [wPartyCount]
+	and a
+	ret z
 	ld hl, wPartyMon1Item
 	ld de, PARTYMON_STRUCT_LENGTH
-	ld a, [wPartyCount]
 	ld c, a
 .loop
 	ld a, [hl]
