@@ -2310,8 +2310,21 @@ _BillsPC_BagItem:
 	jr nc, BillsPC_PrintText
 	xor a
 	ld [wTempMonItem], a
+	call BillsPC_UpdateMewtwoForm
 	farcall UpdateStorageBoxMonFromTemp
 	jp GetCursorMon
+
+BillsPC_UpdateMewtwoForm:
+; Reloads Mewtwo form in wTempMon if applicable. Preserves bc, de, hl.
+	push hl
+	push de
+	push bc
+	ld a, [wTempMonSpecies]
+	ld [wCurPartySpecies], a
+	ld de, wTempMonItem
+	ld hl, wTempMonForm
+	farcall _UpdateMewtwoForm
+	jp PopBCDEHL
 
 BillsPC_CantPutMailIntoPackText:
 	text "The Mail would"
@@ -2955,6 +2968,7 @@ BillsPC_SwapStorage:
 .compose_check_done
 	ld [wTempMonItem], a
 	ld [wCurItem], a
+	call BillsPC_UpdateMewtwoForm
 	farcall UpdateStorageBoxMonFromTemp
 	ld a, 1
 	ld [wItemQuantityChangeBuffer], a
@@ -3014,12 +3028,14 @@ BillsPC_SwapStorage:
 	; No mail is about to be sent to storage, so proceed with the item move.
 	ld [hl], e
 	push hl
+	call BillsPC_UpdateMewtwoForm
 	farcall UpdateStorageBoxMonFromTemp
 	pop hl
 	pop de
 	pop bc
 	farcall GetStorageBoxMon
 	ld [hl], d
+	call BillsPC_UpdateMewtwoForm
 	farcall UpdateStorageBoxMonFromTemp
 	xor a
 	jr .done
