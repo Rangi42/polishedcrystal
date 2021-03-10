@@ -2277,7 +2277,9 @@ _BillsPC_BagItem:
 	jr z, .entries_not_full
 
 	ld a, 1
+	push bc
 	call BillsPC_GetStorageSpace
+	pop bc
 	ret nz
 
 .entries_not_full
