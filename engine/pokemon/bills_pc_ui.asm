@@ -718,6 +718,9 @@ BillsPC_UpdateCursorLocation:
 	push hl
 	push de
 	push bc
+	ldh a, [rLY]
+	cp $60
+	call nc, DelayFrame
 	ld hl, wVirtualOAMSprite30
 	ld de, wStringBuffer3
 	ld bc, 8
