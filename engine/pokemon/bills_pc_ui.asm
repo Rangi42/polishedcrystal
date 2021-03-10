@@ -1210,6 +1210,8 @@ ManageBoxes:
 	ld a, [wBillsPC_CursorPos]
 	cp $10
 	jr c, .confirm_ok
+	cp $21
+	jr z, .confirm_ok
 	ld a, [wTempMonItem]
 	and a
 	jr z, .loop
@@ -1567,6 +1569,8 @@ BillsPC_MoveIconData:
 	and a
 	ld de, vTiles3 tile $00 ; Blank.
 	jr z, .got_item_tile
+	cp PCANIM_QUICKFRAMES - 1
+	jr nz, .quick_ok
 	ld a, b
 	inc a
 	ld de, vTiles3 tile $20 ; Item for mon cursor is hovering
@@ -1580,6 +1584,7 @@ BillsPC_MoveIconData:
 	call BillsPC_SetPals
 	pop bc
 
+.quick_ok
 	; Check if we should blank the cursor tile.
 	inc b
 	ld a, c
@@ -1594,7 +1599,12 @@ BillsPC_MoveIconData:
 	ld a, 1
 	call .Copy
 
-	; Set new icon data.
+	; Set new icon data unless we're only blanking.
+	ld a, d
+	and e
+	inc a
+	jr z, .blank_old
+
 	push bc
 	ld b, d
 	ld c, e
@@ -1607,6 +1617,7 @@ BillsPC_MoveIconData:
 	call BillsPC_SetIcon
 	pop bc
 
+.blank_old
 	; Blank old icon data.
 	ld a, 1
 	call .GetAddr
@@ -1627,6 +1638,17 @@ BillsPC_MoveIconData:
 
 .Copy:
 ; Copies from address depending on bc and a to addr depending on de and a.
+	; Check if we're blanking.
+	push af
+	ld a, d
+	and e
+	inc a
+	jr nz, .not_blanking
+	pop af
+	ret
+
+.not_blanking
+	pop af
 	call .GetAddr
 	push bc
 	push de
@@ -2208,17 +2230,7 @@ BillsPC_MoveItem:
 	call BillsPC_SafeGet2bpp
 
 	; Load cursor item icon.
-	ld hl, vTiles3 tile $10
-	lb bc, BANK(HeldItemIcons), 1
-
-	ld a, [wBillsPC_CursorItem]
-	ld d, a
-	call ItemIsMail
-	ld de, HeldItemIcons ; mail icon
-	jr c, .got_item_tile
-	ld de, HeldItemIcons tile 1 ; regular item icon
-.got_item_tile
-	call BillsPC_SafeGet2bpp
+	call BillsPC_LoadCursorItemIcon
 
 	xor a
 	ldh [rVBK], a
@@ -2230,6 +2242,19 @@ BillsPC_MoveItem:
 	call BillsPC_CursorPick2
 	ld [hl], PCANIM_STATIC
 	ret
+
+BillsPC_LoadCursorItemIcon:
+	ld hl, vTiles3 tile $10
+	lb bc, BANK(HeldItemIcons), 1
+
+	ld a, [wBillsPC_CursorItem]
+	ld d, a
+	call ItemIsMail
+	ld de, HeldItemIcons ; mail icon
+	jr c, .got_item_tile
+	ld de, HeldItemIcons tile 1 ; regular item icon
+.got_item_tile
+	jp BillsPC_SafeGet2bpp
 
 BillsPC_BagItem:
 ; Returns z on success.
@@ -2271,7 +2296,7 @@ _BillsPC_BagItem:
 	call ItemIsMail
 	jr nc, .put_in_pack
 	call BillsPC_HideCursorAndMode
-	ld hl, .CantPutMailIntoPack
+	ld hl, BillsPC_CantPutMailIntoPackText
 	jr BillsPC_PrintText
 
 .put_in_pack
@@ -2286,7 +2311,7 @@ _BillsPC_BagItem:
 	farcall UpdateStorageBoxMonFromTemp
 	jp GetCursorMon
 
-.CantPutMailIntoPack:
+BillsPC_CantPutMailIntoPackText:
 	text "The Mail would"
 	line "lose its message."
 	prompt
@@ -2537,7 +2562,7 @@ BillsPC_ReleaseAll:
 	push de
 	ld e, 0
 	farcall SetStorageBoxPointer
-	lb de, -1, 1
+	lb de, -1, -1
 	push bc
 	call BillsPC_MoveIconData
 	pop bc
@@ -2643,13 +2668,9 @@ BillsPC_Release:
 	ld hl, .WasReleasedOutside
 	call PrintText
 
-	; TODO: dedicated blanking routine rather than writing to quickslot? To be
-	; clear, we can't just use BlankTiles, because we also need to fix the icon
-	; address which some UI routines use to verify whether or not the location
-	; is blank.
 	call .done
 	pop bc
-	lb de, -1, 1
+	lb de, -1, -1
 	call BillsPC_MoveIconData
 	call CheckPartyShift
 	jp GetCursorMon
@@ -2823,10 +2844,13 @@ BillsPC_SwapStorage:
 	inc a
 	jr nz, .not_on_pack
 
+	; Otherwise, move a mon's item there. Do nothing if the item originated from
+	; the pack (e = -1).
 	ld b, d
 	res 7, b
 	ld c, e
-	call _BillsPC_BagItem
+	inc e
+	call nz, _BillsPC_BagItem
 	pop bc
 	pop de
 	ret
@@ -2840,7 +2864,8 @@ BillsPC_SwapStorage:
 
 	; If we're moving to a Box, we might need to verify that we have the db
 	; space to do so. Box source has already been verified, so box->party is
-	; always safe.
+	; always safe. This also does the right thing if we're moving from the bag,
+	; since it shares box identifier with party.
 	ld a, b
 	and a
 	jr z, .entries_not_full
@@ -2858,6 +2883,82 @@ BillsPC_SwapStorage:
 	push bc
 	; fallthrough
 .entries_not_full
+	; Don't allow Eggs to hold items.
+	ld a, [wTempMonIsEgg]
+	bit MON_IS_EGG_F, a
+	ld a, 7
+	jp nz, .failed
+
+	; Movement from the bag needs special handling.
+	ld a, e
+	inc a
+	jr nz, .moving_between_mon
+
+	; Don't allow putting Mail into storage.
+	ld a, b
+	and a
+	jr z, .mail_ok
+	ld a, [wBillsPC_CursorItem]
+	ld d, a
+	call ItemIsMail
+	ld a, 6
+	jp c, .failed
+
+.mail_ok
+	; If the mon in question is already holding an item, we need to verify that
+	; we have room for this new item in the bag and that it isn't Mail, which
+	; we want to prevent users from accidentally erasing.
+	ld a, [wTempMonItem]
+	and a
+	ld [wCurItem], a
+	jr z, .dest_is_itemless
+
+	ld d, a
+	call ItemIsMail
+	ld a, 8
+	jp c, .failed
+
+	; Try to add the user's current item into the bag.
+	ld a, 1
+	ld [wItemQuantityChangeBuffer], a
+	ld hl, wNumItems
+	call ReceiveItem
+	ld a, 9
+	jp nc, .failed
+	; fallthrough
+.dest_is_itemless
+	; Check if we want to compose a message.
+	ld a, [wBillsPC_CursorItem]
+	ld [wCurItem], a
+	ld d, a
+	call ItemIsMail
+	jr nc, .compose_check_done
+
+	push af
+	ld a, [wTempMonSlot]
+	dec a
+	ld [wCurPartyMon], a
+	ld a, [wTempMonSpecies]
+	ld [wCurPartySpecies], a
+	call BillsPC_PrepareTransistion
+	farcall ComposeMailMessage
+	call BillsPC_ReturnFromTransistion
+
+	; reload cursor item icon
+	ld a, 1
+	ldh [rVBK], a
+	call BillsPC_LoadCursorItemIcon
+	xor a
+	ldh [rVBK], a
+	pop af
+
+.compose_check_done
+	ld [wTempMonItem], a
+	farcall UpdateStorageBoxMonFromTemp
+	xor a
+	jp .done
+
+.moving_between_mon
 	; Throw out the "is item" flag.
 	ld a, d
 	and $7f
@@ -2905,11 +3006,7 @@ BillsPC_SwapStorage:
 	ld a, 6
 	jr c, .pop_de_item_failed
 
-	; Don't give Eggs items.
-	ld a, [wTempMonIsEgg]
-	bit MON_IS_EGG_F, a
-	ld a, 7
-	jr nz, .pop_de_item_failed
+	; No mail is about to be sent to storage, so proceed with the item move.
 	ld [hl], e
 	push hl
 	farcall UpdateStorageBoxMonFromTemp
@@ -2965,6 +3062,12 @@ BillsPC_SwapStorage:
 	dec a
 	jr z, .swap_failed
 	ld hl, BillsPC_EggsCantHoldItemsText
+	dec a
+	jr z, .swap_failed
+	ld hl, BillsPC_CantPutMailIntoPackText
+	dec a
+	jr z, .swap_failed
+	ld hl, BillsPC_PackFullText
 	; fallthrough
 .swap_failed
 	; Print error message
