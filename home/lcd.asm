@@ -198,7 +198,7 @@ LCDBillsPC3:
 	ldh [rSVBK], a
 
 	ld c, LOW(rBGPD)
-	ld a, [rLY]
+	ldh a, [rLY]
 	cp $8a
 	ld hl, wBGPals1
 	jr nc, .got_pal

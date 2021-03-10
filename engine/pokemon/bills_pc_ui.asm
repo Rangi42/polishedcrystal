@@ -2057,7 +2057,7 @@ BillsPC_PrepareTransistion:
 	; palette clear.
 	call ClearPalettes
 .busyloop
-	ld a, [hCGBPalUpdate]
+	ldh a, [hCGBPalUpdate]
 	and a
 	jr nz, .busyloop
 

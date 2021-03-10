@@ -324,8 +324,7 @@ PCPickItem:
 ; For preparing an item to give to a mon of choice later on (or swap).
 ; Returns nz on success.
 	call DepositSellInitPackBuffers
-	call _GetItemToGive
-	ret
+	jr _GetItemToGive
 
 PCGiveItem:
 	call DepositSellInitPackBuffers
