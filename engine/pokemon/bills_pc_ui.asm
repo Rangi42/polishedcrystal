@@ -3140,9 +3140,9 @@ BillsPC_PlaceHeldMon:
 	call BillsPC_SwapStorage
 	ret nz ; failed
 
-	ld a, c
-	inc a
+	inc c
 	jr nz, .not_on_pack
+	dec c
 
 	; Avoid Pack icon flickering.
 	call DelayFrame
@@ -3152,7 +3152,7 @@ BillsPC_PlaceHeldMon:
 	jr .place_icon
 
 .not_on_pack
-	dec a
+	dec c
 	jr nz, .not_on_boxname
 
 	; If we moved it onto a box, just move the sprite to its location without
