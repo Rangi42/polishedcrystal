@@ -1234,7 +1234,13 @@ GetTimeOfDayNotEve:
 	ld a, [wTimeOfDay]
 	cp EVE
 	ret nz
-	dec a ; NITE
+	; Evening uses day encounters 60% of the time
+	; and night encounters 40%.
+	call Random
+	cp 60 percent
+	ld a, DAY
+	ret c
+	inc a ; NITE
 	ret
 
 JohtoGrassWildMons:
