@@ -1300,8 +1300,6 @@ ManageBoxes:
 	xor a ; PC_MENU_MODE
 .got_new_mode
 	call BillsPC_SetCursorMode
-.pressed_start
-	; TODO: use Start for something?
 	jp .loop
 
 .pressed_right
@@ -1352,6 +1350,16 @@ ManageBoxes:
 	or $8 ; 6 columns, CursorPosValid fixes up final column 6+
 	dec a
 	and LOW(~$8)
+	jr .new_cursor_pos
+
+.pressed_start
+	; Cursor jumps to the box name
+	ld a, [wBillsPC_CursorPos]
+	and $f
+	; Check for party rows less than 2
+	cp 2
+	jr nc, .new_cursor_pos
+	ld a, 2
 	jr .new_cursor_pos
 
 .pressed_up
