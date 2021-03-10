@@ -48,11 +48,9 @@ endr
 ENDM
 
 dx: MACRO
-x = 8 * ((\1) - 1)
-	rept \1
+for x, 8 * ((\1) - 1), -1, -8
 	db LOW((\2) >> x)
-x = x - 8
-	endr
+endr
 ENDM
 
 dt: MACRO ; three-byte (big-endian)
