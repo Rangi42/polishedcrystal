@@ -97,7 +97,7 @@ CheckWarpTile::
 WarpCheck::
 	call GetDestinationWarpNumber
 	ret nc
-	jp CopyWarpData
+	jr CopyWarpData
 
 GetDestinationWarpNumber::
 	farcall CheckWarpCollision
@@ -1317,7 +1317,7 @@ GetMovementPermissions::
 	dec e
 	call GetCoordTile
 	ld [wTileUp], a
-	jp .Up
+	jr .Up
 
 .LeftRight:
 	ld a, [wPlayerStandingMapX]
@@ -1335,7 +1335,7 @@ GetMovementPermissions::
 	inc d
 	call GetCoordTile
 	ld [wTileRight], a
-	jp .Right
+	jr .Right
 
 .Down:
 	call .CheckHiNybble
@@ -1884,6 +1884,24 @@ GetAnyMapTileset::
 	ld a, c
 	ret
 
+GetCurrentLandmark::
+	ld a, [wMapGroup]
+	ld b, a
+	ld a, [wMapNumber]
+	ld c, a
+	call GetWorldMapLocation
+	and a ; cp SPECIAL_MAP
+	ret nz
+	; fallthrough
+
+; In a special map, get the backup map group / map id
+GetBackupLandmark::
+	ld a, [wBackupMapGroup]
+	ld b, a
+	ld a, [wBackupMapNumber]
+	ld c, a
+	; fallthrough
+
 GetWorldMapLocation::
 ; given a map group/id in bc, return its location on the Pokégear map.
 	push hl
@@ -1894,23 +1912,6 @@ GetWorldMapLocation::
 	call GetAnyMapField
 	ld a, c
 	jp PopBCDEHL
-
-GetCurrentLandmark::
-	ld a, [wMapGroup]
-	ld b, a
-	ld a, [wMapNumber]
-	ld c, a
-	call GetWorldMapLocation
-	and a ; cp SPECIAL_MAP
-	ret nz
-
-; In a special map, get the backup map group / map id
-GetBackupLandmark::
-	ld a, [wBackupMapGroup]
-	ld b, a
-	ld a, [wBackupMapNumber]
-	ld c, a
-	jp GetWorldMapLocation
 
 RandomRegionCheck::
 ; Returns current region, like RegionCheck, except that Mt. Silver and Route 28
