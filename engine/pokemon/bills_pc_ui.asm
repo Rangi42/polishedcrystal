@@ -1166,6 +1166,12 @@ _GetCursorMon:
 
 BillsPC_CheckBagDisplay:
 ; Returns z if we should display the bag.
+	; Always display it if the cursor is hovering it.
+	ld a, [wBillsPC_CursorPos]
+	cp $21
+	ret z
+	; fallthrough
+_BillsPC_CheckBagDisplay:
 	call BillsPC_IsHoldingItem
 	jr z, .check_cursor_mode
 	xor a
@@ -2024,15 +2030,20 @@ BillsPC_AbortSelection:
 
 BillsPC_MaybeMoveCursor:
 ; If the cursor is on the bag, and the bag is no longer there, move it.
+; Returns z if we moved the cursor.
 	ld a, [wBillsPC_CursorPos]
 	cp $21
 	ret nz
 
-	call BillsPC_CheckBagDisplay
-	ret z
+	call _BillsPC_CheckBagDisplay
+	jr nz, .move_cursor
+	or 1
+	ret
 
+.move_cursor
 	ld a, $31 ; Move to right below it.
 	ld [wBillsPC_CursorPos], a
+	xor a
 	ret
 
 BillsPC_PrepareTransistion:
@@ -3327,19 +3338,25 @@ BillsPC_PlaceHeldMon:
 	xor a
 	ldh [rVBK], a
 
+	; Redundant, but fixes display when placing back on the same mon.
+	call .blankcursor
+
+	call GetCursorMon
+
 .holding_mon
 	call BillsPC_CursorPick2
 	pop bc
 	pop af
 .partyshift
 	call CheckPartyShift
+	call BillsPC_MaybeMoveCursor
+	call z, GetCursorMon
 	; fallthrough
 .blankcursor
 	xor a
 	ld [wBillsPC_CursorHeldBox], a
 	ld [wBillsPC_CursorHeldSlot], a
-	call BillsPC_MaybeMoveCursor
-	jp GetCursorMon
+	ret
 
 BillsPC_SetPals:
 	call BillsPC_ApplyPals
