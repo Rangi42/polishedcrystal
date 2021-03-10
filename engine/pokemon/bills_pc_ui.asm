@@ -2486,7 +2486,8 @@ BillsPC_EggsCantHoldItemsText:
 	prompt
 
 BillsPC_CanReleaseMon:
-; Verifies if the given mon in box b, slot c, can be released. Returns in a:
+; Verifies if the given mon in box b, slot c, can be released. Sets wTempMon.
+; Returns the following in a:
 ; 0: Can release
 ; 1: Can't release last healthy mon
 ; 2: Can't release Egg
@@ -2553,6 +2554,51 @@ BillsPC_CanReleaseMon:
 	and a
 	ret
 
+BillsPC_MaybeRespawnBeast:
+; Respawns a roaming beast if you're releasing your own beast.
+	push hl
+	push de
+	push bc
+	; Check if we are in fact the OT. Doesn't care for the "treat as OT" option
+	; because that would be a bit silly in this particular case.
+	ld hl, wTempMonID
+	ld a, [wPlayerID]
+	cp [hl]
+	jr nz, .done
+	inc hl
+	ld a, [wPlayerID + 1]
+	cp [hl]
+	jr nz, .done
+
+	ld hl, wTempMonOT
+	ld de, wPlayerName
+.loop
+	ld a, [de]
+	cp [hl]
+	inc de
+	inc hl
+	jr nz, .done
+	cp "@"
+	jr nz, .loop
+
+	; This is ours. Check which, if any, beast we should respawn.
+	ld a, [wTempMonSpecies]
+	cp RAIKOU
+	jr nz, .not_raikou
+	jr .done
+	farcall RespawnRoamingRaikou
+.not_raikou
+	cp ENTEI
+	jr nz, .not_entei
+	farcall RespawnRoamingEntei
+	jr .done
+.not_entei
+	cp SUICUNE
+	jr nz, .done
+	farcall RespawnRoamingSuicune
+.done
+	jp PopBCDEHL
+
 BillsPC_ReleaseAll:
 	call BillsPC_HideModeIcon
 
@@ -2583,8 +2629,8 @@ BillsPC_ReleaseAll:
 	jr nz, .failed_release
 	inc d
 	push de
-	ld e, 0
-	farcall SetStorageBoxPointer
+	call BillsPC_MaybeRespawnBeast
+	farcall RemoveStorageBoxMon
 	lb de, -1, -1
 	push bc
 	call BillsPC_MoveIconData
@@ -2685,6 +2731,7 @@ BillsPC_Release:
 	; Then release the mon.
 	call BillsPC_GetCursorSlot
 	push bc
+	call BillsPC_MaybeRespawnBeast
 	farcall RemoveStorageBoxMon
 
 	; Print message and reload current cursor mon.
