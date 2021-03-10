@@ -279,6 +279,9 @@ INCLUDE "audio/music/battletowertheme.asm"
 SECTION "Song - battletowerlobby", ROMX
 INCLUDE "audio/music/battletowerlobby.asm"
 
+SECTION "Song - battlefactory", ROMX
+INCLUDE "audio/music/rse/battlefactory.asm"
+
 SECTION "Song - credits", ROMX
 INCLUDE "audio/music/credits.asm"
 
