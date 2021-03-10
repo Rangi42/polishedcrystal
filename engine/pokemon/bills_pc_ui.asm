@@ -2139,12 +2139,18 @@ BillsPC_IsHoldingItem:
 	ret
 
 BillsPC_TakeMail:
+; Returns carry if mail is taken.
 	ld a, [wTempMonSlot]
 	dec a
 	ld [wCurPartyMon], a
 	call BillsPC_HideCursorAndMode
 	farcall TakeMail
-	jp GetCursorMon
+
+	; Preserve return flags.
+	push af
+	call GetCursorMon
+	pop af
+	ret
 
 BillsPC_ReadMail:
 	ld a, [wTempMonSlot]
@@ -2305,9 +2311,19 @@ _BillsPC_BagItem:
 	ld d, a
 	call ItemIsMail
 	jr nc, .put_in_pack
-	call BillsPC_HideCursorAndMode
-	ld hl, BillsPC_CantPutMailIntoPackText
-	jr BillsPC_PrintText
+
+	call BillsPC_TakeMail
+	push af
+	ld b, 0
+	call SafeCopyTilemapAtOnce
+	pop af
+	sbc a
+	inc a
+	ret nz
+
+	; This lets the function know that the removal succeeded.
+	ld [wTempMonItem], a
+	ret
 
 .put_in_pack
 	ld a, 1
