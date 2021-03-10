@@ -1,17 +1,10 @@
 ; Pic animation arrangement.
 
 POKEANIM: MACRO
-	rept _NARG
-
-; Workaround for a bug where MACRO args can't come after the start of a symbol
-if !def(\1_POKEANIM)
-\1_POKEANIM equs "PokeAnim_\1_"
-endc
-
-	db (\1_POKEANIM - PokeAnim_SetupCommands) / 2
+rept _NARG
+	db (PokeAnim_\1_ - PokeAnim_SetupCommands) / 2
 	shift
-	endr
-
+endr
 	db (PokeAnim_Finish_ - PokeAnim_SetupCommands) / 2
 ENDM
 
@@ -615,14 +608,10 @@ PokeAnim_ConvertAndApplyBitmask:
 	ret
 
 poke_anim_box: MACRO
-y = 7
-rept \1
-x = 7 - \1
-rept \1
+for y, 7, 7 * (\1 + 1), 7
+for x, 7 - \1, 7
 	db x + y
-x = x + 1
 endr
-y = y + 7
 endr
 ENDM
 
