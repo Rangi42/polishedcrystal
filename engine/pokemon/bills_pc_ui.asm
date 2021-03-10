@@ -2126,8 +2126,29 @@ BillsPC_MoveItem:
 	ld a, b
 	or c
 	jr nz, .not_on_pack
+
+	call BillsPC_PrepareTransistion
+	farcall PCPickItem
+	push af
+	call BillsPC_ReturnFromTransistion
+	pop af
+	ret z
+
+	; Reload the item VWF string.
+	ld a, [wCurItem]
+	ld [wNamedObjectIndexBuffer], a
+	ld [wBillsPC_CursorItem], a
+	call GetItemName
+
+	ld hl, wBillsPC_ItemVWF
+	ld bc, 10 tiles
 	xor a
-	jp Crash
+	push hl
+	rst ByteFill
+	pop hl
+	ld de, wStringBuffer1
+	call PlaceVWFString
+	jr .got_cursor_item
 
 .not_on_pack
 	; Removing items might reallocate a storage mon, so check that we have space
@@ -2143,6 +2164,11 @@ BillsPC_MoveItem:
 
 .entries_not_full
 	; Mark current cursor slot for movement.
+	farcall GetStorageBoxMon
+	ld a, [wTempMonItem]
+	ld [wBillsPC_CursorItem], a
+	; fallthrough
+.got_cursor_item
 	ld a, b
 	or $80 ; Mark that we're holding an item rather than a mon.
 	ld [wBillsPC_CursorHeldBox], a
@@ -2178,7 +2204,7 @@ BillsPC_MoveItem:
 	ld hl, vTiles3 tile $10
 	lb bc, BANK(HeldItemIcons), 1
 
-	ld a, [wTempMonItem]
+	ld a, [wBillsPC_CursorItem]
 	ld d, a
 	call ItemIsMail
 	ld de, HeldItemIcons ; mail icon

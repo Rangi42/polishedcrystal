@@ -320,6 +320,13 @@ _GetItemToGive:
 	call MenuTextboxBackup
 	jr _GetItemToGive
 
+PCPickItem:
+; For preparing an item to give to a mon of choice later on (or swap).
+; Returns nz on success.
+	call DepositSellInitPackBuffers
+	call _GetItemToGive
+	ret
+
 PCGiveItem:
 	call DepositSellInitPackBuffers
 .loop
@@ -403,7 +410,7 @@ SwapPartyItem:
 	; wCurPartyMon contains second selected pkmn
 	; getting pkmn2 item and putting into stack item addr + item id
 	call GetPartyItemLocation
-	ld a, [hl] ; a pkmn2 contains item 
+	ld a, [hl] ; a pkmn2 contains item
 	push hl
 	push af
 	; getting pkmn 1 item and putting item id into b
@@ -411,12 +418,12 @@ SwapPartyItem:
 	dec a
 	ld [wCurPartyMon], a
 	call GetPartyItemLocation
-	ld a, [hl] ; a pkmn1 contains item 
+	ld a, [hl] ; a pkmn1 contains item
 	ld b, a
 	; actual swap
-	pop af 
+	pop af
 	ld [hl], a ; pkmn1 get pkm2 item
-	pop hl 
+	pop hl
 	ld a, b
 	ld [hl], a ; pkmn1 get pkm2 item
 	xor a
