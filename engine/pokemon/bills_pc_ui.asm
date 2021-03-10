@@ -2952,7 +2952,12 @@ BillsPC_SwapStorage:
 
 .compose_check_done
 	ld [wTempMonItem], a
+	ld [wCurItem], a
 	farcall UpdateStorageBoxMonFromTemp
+	ld a, 1
+	ld [wItemQuantityChangeBuffer], a
+	ld hl, wNumItems
+	call TossItem
 	xor a
 	jp .done
 
