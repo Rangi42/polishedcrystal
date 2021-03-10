@@ -741,7 +741,7 @@ BillsPC_GetCursorHeldSlot:
 BillsPC_GetCursorSlot:
 ; Converts cursor position to slot bc. Returns c if hovering on box name.
 ; b is 0 for party, 1-15 for box, c is 1-20 for slot, 0 for boxname.
-; If both b and c is 0, the cursor is on the pack.
+; If b is 0 and c is -1, the cursor is on the bag.
 	ld c, 0
 	ld a, [wCurBox]
 	inc a
@@ -782,6 +782,10 @@ BillsPC_GetCursorSlot:
 	sub 3
 	ld c, a
 	ld b, 0
+	ret nz
+
+	; If the result was c=0, the cursor is on the bag, so return c=-1 instead.
+	ld c, -1
 	ret
 
 BillsPC_Withdraw:
@@ -897,8 +901,9 @@ _GetCursorMon:
 	; Check if cursor is currently hovering over a mon.
 	call BillsPC_GetCursorSlot
 	jr c, .clear
-	ld a, b
-	or c
+	ld a, c
+	inc a
+	or b
 	jr z, .clear
 
 	call GetStorageBoxMon
@@ -1853,7 +1858,7 @@ BillsPC_GetXYFromStorageBox:
 
 .party
 	ld a, c
-	and a
+	inc a
 	lb de, $30, $58
 	ret z
 	ld a, 2
@@ -2123,8 +2128,9 @@ BillsPC_MoveItem:
 ; Pick up item for movement.
 	; Check if the cursor is on the pack.
 	call BillsPC_GetCursorSlot
-	ld a, b
-	or c
+	ld a, c
+	inc a
+	or b
 	jr nz, .not_on_pack
 
 	call BillsPC_PrepareTransistion
@@ -2148,6 +2154,7 @@ BillsPC_MoveItem:
 	pop hl
 	ld de, wStringBuffer1
 	call PlaceVWFString
+	lb bc, 0, -1
 	jr .got_cursor_item
 
 .not_on_pack
@@ -2812,8 +2819,8 @@ BillsPC_SwapStorage:
 	jp z, .holding_mon
 
 	; Check if we're on the pack.
-	ld a, b
-	or c
+	ld a, c
+	inc a
 	jr nz, .not_on_pack
 
 	ld b, d
@@ -2826,7 +2833,7 @@ BillsPC_SwapStorage:
 
 .not_on_pack
 	; Don't do anything if we're hovering over an empty slot or boxname.
-	and c
+	dec a
 	jp z, .abort
 	farcall GetStorageBoxMon
 	jp z, .abort
@@ -3032,19 +3039,19 @@ BillsPC_PlaceHeldMon:
 	call BillsPC_SwapStorage
 	ret nz ; failed
 
-	ld a, b
-	or c
+	ld a, c
+	inc a
 	jr nz, .not_on_pack
 
 	; Avoid Pack icon flickering.
 	call DelayFrame
 
 	; Prevents quickanim
-	inc a
+	ld a, 1
 	jr .place_icon
 
 .not_on_pack
-	and c
+	dec a
 	jr nz, .not_on_boxname
 
 	; If we moved it onto a box, just move the sprite to its location without
@@ -3076,9 +3083,9 @@ BillsPC_PlaceHeldMon:
 	sub l
 	ld h, a
 	ld a, [hl]
-	and a
 	; fallthrough
 .place_icon
+	and a
 	push af
 	push de
 	push bc
