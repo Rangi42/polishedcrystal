@@ -49,18 +49,10 @@ LCD::
 	add hl, hl
 	add hl, hl
 
-if 0 ; if LOW(wMPNotes)
-	ld a, l
-	add LOW(wMPNotes)
-	ld l, a
-	ld a, h
-	adc HIGH(wMPNotes)
-	ld h, a
-else
+	assert LOW(wMPNotes) == 0
 	ld a, h
 	add HIGH(wMPNotes)
 	ld h, a
-endc
 
 	ld a, [hli]
 	ld [oamSprite00XCoord], a

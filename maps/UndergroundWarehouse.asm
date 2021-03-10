@@ -17,7 +17,7 @@ UndergroundWarehouse_MapScriptHeader:
 	object_event  9,  8, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerGruntM24, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
 	object_event  8, 15, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerGruntM14, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
 	object_event 14,  3, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 4, GenericTrainerGruntM15, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
-	object_event 12,  8, SPRITE_GENTLEMAN, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, GentlemanScript_0x7d9bf, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
+	object_event 12,  8, SPRITE_GENTLEMAN, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, GoldenrodUndergroundWarehouseDirectorScript, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
 	itemball_event 18, 15, MAX_ETHER, 1, EVENT_UNDERGROUND_WAREHOUSE_MAX_ETHER
 	tmhmball_event 13,  9, TM_X_SCISSOR, EVENT_UNDERGROUND_WAREHOUSE_TM_X_SCISSOR
 	itemball_event  2,  1, ULTRA_BALL, 1, EVENT_UNDERGROUND_WAREHOUSE_ULTRA_BALL
@@ -71,21 +71,21 @@ GenericTrainerGruntM15:
 	cont "I'll remember you!"
 	done
 
-GentlemanScript_0x7d9bf:
+GoldenrodUndergroundWarehouseDirectorScript:
 	checkevent EVENT_RECEIVED_CARD_KEY
-	iftrue_jumptextfaceplayer UnknownText_0x7dc8d
+	iftrue_jumptextfaceplayer DirectorAfterText
 	faceplayer
 	opentext
-	writetext UnknownText_0x7dbc6
+	writetext DirectorIntroText
 	buttonsound
 	verbosegivekeyitem CARD_KEY
 	setevent EVENT_RECEIVED_CARD_KEY
 	setevent EVENT_WAREHOUSE_LAYOUT_1
 	clearevent EVENT_WAREHOUSE_LAYOUT_2
 	clearevent EVENT_WAREHOUSE_LAYOUT_3
-	writetext UnknownText_0x7dc5b
+	writetext DirectorCardKeyText
 	buttonsound
-	jumpopenedtext UnknownText_0x7dc8d
+	jumpopenedtext DirectorAfterText
 
 GruntM24SeenText:
 	text "How did you get"
@@ -126,7 +126,7 @@ GruntM15BeatenText:
 	line "So, that's how?"
 	done
 
-UnknownText_0x7dbc6:
+DirectorIntroText:
 	text "Director: Who?"
 	line "What? You came to"
 	cont "rescue me?"
@@ -145,13 +145,13 @@ UnknownText_0x7dbc6:
 	line "Card Key."
 	done
 
-UnknownText_0x7dc5b:
+DirectorCardKeyText:
 	text "Director: Use that"
 	line "to open the shut-"
 	cont "ters on 3F."
 	done
 
-UnknownText_0x7dc8d:
+DirectorAfterText:
 	text "I'm begging you to"
 	line "help."
 

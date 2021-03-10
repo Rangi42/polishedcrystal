@@ -8,7 +8,7 @@ BattleFactoryHallway_MapScriptHeader:
 	def_callbacks
 
 	def_warp_events
-	warp_event 11,  1, BATTLE_FACTORY_ELEVATOR, 1
+	warp_event 11,  1, BATTLE_FACTORY_1F, 1
 	warp_event  5,  0, BATTLE_FACTORY_BATTLE_ROOM, 1
 	warp_event  7,  0, BATTLE_FACTORY_BATTLE_ROOM, 1
 	warp_event  9,  0, BATTLE_FACTORY_BATTLE_ROOM, 1

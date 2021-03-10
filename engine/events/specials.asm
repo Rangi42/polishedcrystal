@@ -217,12 +217,12 @@ Special_CheckCoins:
 
 .NoCoinsText:
 	; You have no coins.
-	text_jump UnknownText_0x1bd3d7
+	text_jump _NoCoinsText
 	text_end
 
 .NoCoinCaseText:
 	; You don't have a COIN CASE.
-	text_jump UnknownText_0x1bd3eb
+	text_jump _NoCoinCaseText
 	text_end
 
 ScriptReturnCarry:
@@ -282,11 +282,9 @@ SpecialSnorlaxAwake:
 ; check background music
 	ld a, [wMapMusic]
 	cp MUSIC_POKE_FLUTE_CHANNEL
-	jr nz, .nope
 	ld a, TRUE
-	jr .done
-.nope
-	xor a
+	jr z, .done
+	xor a ; ld a, FALSE
 .done
 	ldh [hScriptVar], a
 	ret

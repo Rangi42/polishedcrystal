@@ -214,13 +214,13 @@ LineBreak::
 	pop hl
 	add hl, bc
 	push hl
-	jp NextChar
+	jr NextChar
 
 LineChar::
 	pop hl
 	hlcoord TEXTBOX_INNERX, TEXTBOX_INNERY + 2
 	push hl
-	jp NextChar
+	jr NextChar
 
 ContText::
 	ld a, [wLinkMode]
@@ -236,7 +236,7 @@ ContText::
 	call TextScroll
 	hlcoord TEXTBOX_INNERX, TEXTBOX_INNERY + 2
 	pop de
-	jp NextChar
+	jr NextChar
 
 Paragraph::
 	push de

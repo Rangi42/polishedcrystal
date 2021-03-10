@@ -46,7 +46,7 @@ SailorKentScript:
 	end_if_just_battled
 	checkevent EVENT_JASMINE_RETURNED_TO_GYM
 	iftrue_jumptextfaceplayer SailorKentFinalText
-	jumptextfaceplayer UnknownText_0x5b584
+	jumptextfaceplayer SailorKentAfterBattleText
 
 SailorKentSeenText:
 	text "Jasmine must be"
@@ -62,7 +62,7 @@ SailorKentBeatenText:
 	line "smile either…"
 	done
 
-UnknownText_0x5b584:
+SailorKentAfterBattleText:
 	text "Speaking of sick,"
 	line "I've heard there's"
 

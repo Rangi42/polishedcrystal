@@ -122,7 +122,7 @@ FindNest:
 
 .next_water
 	pop hl
-	ld bc, 3 * 3
+	ld bc, WATER_WILDDATA_LENGTH
 	add hl, bc
 	jr .FindWater
 
@@ -132,7 +132,16 @@ FindNest:
 	push af
 	ld a, [wNamedObjectIndexBuffer]
 	cp [hl]
+	inc hl
+	jr nz, .not_found
+
+	; We want to check if the extspecies bit matches between hl and form
+	ld a, [wCurForm]
+	xor [hl]
+	and EXTSPECIES_MASK
 	jr z, .found
+
+.not_found
 	inc hl
 	inc hl
 	pop af
@@ -307,17 +316,17 @@ _ChooseWildEncounter:
 	call CheckOnWater
 	pop bc
 	ld de, WaterMonProbTable
-	ld b, $4
+	ld b, NUM_WATERMON
 	jr z, .got_table
 	inc hl
 	inc hl
 	call GetTimeOfDayNotEve
 	push bc
-	ld bc, $e
+	ld bc, NUM_GRASSMON * 3
 	rst AddNTimes
 	pop bc
 	ld de, GrassMonProbTable
-	ld b, $c
+	ld b, NUM_GRASSMON
 
 .got_table
 	; Check if we want to force a type
@@ -332,10 +341,7 @@ _ChooseWildEncounter:
 	inc hl ; We don't care about level
 	ld a, [hli]
 	ld [wCurSpecies], a
-; The form isn't determined yet; this could be inaccurate if a variant form
-; were to not have its normal form's typical Steel or Electric typing,
-; since Magnet Pull or Static would be biased.
-	xor a
+	ld a, [hli]
 	ld [wCurForm], a
 	push bc
 	push hl
@@ -349,7 +355,6 @@ _ChooseWildEncounter:
 	cp c
 	jr z, .can_force_type
 	dec b
-	dec b
 	jr nz, .force_loop
 	ld c, $ff
 .can_force_type
@@ -361,34 +366,38 @@ _ChooseWildEncounter:
 	push hl ; wild mon data pointer
 	ld a, 100
 	call RandomRange
-	inc a ; 1 <= a <= 100
-	ld b, a
+	ld b, -1
 	ld h, d
 	ld l, e
 ; This next loop chooses which mon to load up.
 .prob_bracket_loop
-	ld a, [hli]
-	cp b
-	jr nc, .got_it
+	inc b
+	cp [hl]
 	inc hl
-	jr .prob_bracket_loop
+	jr nc, .prob_bracket_loop
 
-.got_it
-	ld a, c
-	ld c, [hl]
-	ld b, 0
+	; At this point, b contains wildmon index to encounter.
+	; Since each entry is 3 bytes, add b*3 to hl.
+	ld a, b
+	add b
+	add b
 	pop hl
 	push hl
-	add hl, bc ; this selects our mon
-	ld c, a
+	add l
+	ld l, a
+	adc h
+	sub l
+	ld h, a
+
+	; Get level
 	ld a, [hli]
 	ld b, a
-; If the Pokemon is encountered by surfing, we need to give the levels some variety.
+
+	; Mons encountered while surfing sometimes get a minor level boost.
 	push bc
 	call CheckOnWater
 	pop bc
 	jr nz, .ok
-; Check if we buff the wild mon, and by how much.
 	call Random
 	cp 35 percent
 	jr c, .ok
@@ -406,25 +415,34 @@ _ChooseWildEncounter:
 .ok
 	ld a, b
 	ld [wCurPartyLevel], a
+	ld a, [hli]
 	ld b, [hl]
-	ld a, b
 	pop hl
 
+	push af
 	cp UNOWN
+	jr nz, .unown_check_done
+
+	; verify that it is actually unown
+	bit MON_EXTSPECIES_F, b
 	jr nz, .unown_check_done
 
 	ld a, [wUnlockedUnowns]
 	and a
-	jr z, .nowildbattle
+	jr nz, .unown_check_done
+	pop af
+	jr .nowildbattle
 
 .unown_check_done
+	pop af
+
 	; Check if we're forcing type
 	ld [wCurSpecies], a
-; The form isn't determined yet; this could be inaccurate if a variant form
-; were to not have its normal form's typical Steel or Electric typing,
-; since Magnet Pull or Static would be biased.
-	xor a
+	ld a, b
 	ld [wCurForm], a
+	ld a, [wCurSpecies]
+	ld b, a
+
 	push bc
 	push hl
 	call GetBaseData
@@ -440,6 +458,8 @@ _ChooseWildEncounter:
 	jr nz, .get_random_mon
 
 .loadwildmon
+	ld a, [wCurForm]
+	ld [wWildMonForm], a
 	ld a, b
 	ld [wTempWildMonSpecies], a
 	call IsAPokemon
@@ -713,16 +733,14 @@ InitRoamMons:
 ; species
 	ld a, RAIKOU
 	ld [wRoamMon1Species], a
-	ld a, ENTEI
+	assert RAIKOU + 1 == ENTEI
+	inc a
 	ld [wRoamMon2Species], a
-;	ld a, SUICUNE
-;	ld [wRoamMon3Species], a
 
 ; level
 	ld a, 40
 	ld [wRoamMon1Level], a
 	ld [wRoamMon2Level], a
-;	ld [wRoamMon3Level], a
 
 ; raikou starting map
 	ld a, GROUP_ROUTE_42
@@ -736,17 +754,10 @@ InitRoamMons:
 	ld a, MAP_ROUTE_37
 	ld [wRoamMon2MapNumber], a
 
-; suicune starting map
-;	ld a, GROUP_ROUTE_38
-;	ld [wRoamMon3MapGroup], a
-;	ld a, MAP_ROUTE_38
-;	ld [wRoamMon3MapNumber], a
-
 ; hp
 	xor a ; generate new stats
 	ld [wRoamMon1HP], a
 	ld [wRoamMon2HP], a
-;	ld [wRoamMon3HP], a
 
 	ret
 
@@ -989,34 +1000,41 @@ RandomPhoneRareWildMon:
 
 .GetGrassmon:
 	push hl
-	ld bc, 5 + 4 * 2 ; Location of the level of the 5th wild Pokemon in that map
+	ld bc, 5 + 4 * 3 ; Location of the level of the 5th wild Pokemon in that map
 	add hl, bc
 	call GetTimeOfDayNotEve
-	ld bc, 7 * 2
+	ld bc, NUM_GRASSMON * 3
 	rst AddNTimes
-.randloop1
-	call Random
-	and $3
-	jr z, .randloop1
-	dec a
+	ld a, 3
+	call RandomRange
 	ld c, a
 	ld b, $0
 	add hl, bc
 	add hl, bc
+	add hl, bc
 ; We now have the pointer to one of the last (rarest) three wild Pokemon found in that area.
 	inc hl
-	ld c, [hl] ; Contains the species index of this rare Pokemon
+	ld a, [hli] ; Contains the species index of this rare Pokemon
+	ld c, a
+	ld a, [hl] ; Contains the form (including extspecies)
+	ld b, a
+	ld [wCurForm], a
 	pop hl
-	ld de, 5 + 0 * 2
+	ld de, 5 + 0 * 3
 	add hl, de
 	inc hl ; Species index of the most common Pokemon on that route
-	ld b, 4
+	ld d, 4
 .loop2
 	ld a, [hli]
-	cp c ; Compare this most common Pokemon with the rare one stored in c.
+	cp c ; Compare this Pokemon with the rare one stored in c.
+	ld a, [hli]
+	jr nz, .next
+	xor b ; Compare extspecies bit
+	and EXTSPECIES_MASK
 	jr z, .done
+.next
 	inc hl
-	dec b
+	dec d
 	jr nz, .loop2
 ; This Pokemon truly is rare.
 	push bc
@@ -1044,7 +1062,7 @@ RandomPhoneRareWildMon:
 
 .SawRareMonText:
 	; I just saw some rare @  in @ . I'll call you if I see another rare #MON, OK?
-	text_jump UnknownText_0x1bd34b
+	text_jump _JustSawSomeRareMonText
 	text_end
 
 RandomPhoneWildMon:
@@ -1059,27 +1077,28 @@ RandomPhoneWildMon:
 	call LookUpWildmonsForMapDE
 
 .ok
-	ld bc, 5 + 0 * 2
+	ld bc, 5 + 0 * 3
 	add hl, bc
 	call GetTimeOfDayNotEve
 	inc a
-	ld bc, 7 * 2
-.loop
-	dec a
-	jr z, .done
-	add hl, bc
-	jr .loop
+	ld bc, NUM_GRASSMON * 3
+	rst AddNTimes
 
-.done
 	call Random
 	and $3
 	ld c, a
-	ld b, $0
-	add hl, bc
-	add hl, bc
+	add a
+	add c
+	add l
+	ld l, a
+	adc h
+	sub l
+	ld h, a
 	inc hl
-	ld a, [hl]
+	ld a, [hli]
 	ld [wNamedObjectIndexBuffer], a
+	ld a, [hl]
+	ld [wCurForm], a
 	call GetPokemonName
 	ld hl, wStringBuffer1
 	ld de, wStringBuffer4

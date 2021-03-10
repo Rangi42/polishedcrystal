@@ -100,12 +100,17 @@ GetPokemonName::
 	push hl
 
 ; Each name is ten characters
-	xor a
-	ld d, a
-	ld h, a
+	push bc
 	ld a, [wNamedObjectIndexBuffer]
-	ld e, a
-	ld l, a
+	ld c, a
+	ld a, [wCurForm]
+	ld b, a
+	call GetExtendedSpeciesIndex
+	ld d, b
+	ld e, c
+	pop bc
+	ld h, d
+	ld l, e
 	add hl, hl ; hl = hl * 4
 	add hl, hl ; hl = hl * 4
 	add hl, de ; hl = (hl*4) + de

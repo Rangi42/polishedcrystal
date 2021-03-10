@@ -95,7 +95,7 @@ PC_CheckPartyForPokemon:
 
 .MustHavePokemonToUse:
 	; Bzzzzt! You must have a #MON to use this!
-	text_jump UnknownText_0x1c1328
+	text_jump _PokecenterPCCantUseText
 	text_end
 
 BillsPC:
@@ -163,7 +163,7 @@ PC_WaitPlaySFX:
 
 _PlayersHousePC:
 	call PC_PlayBootSound
-	ld hl, UnknownText_0x156ff
+	ld hl, PlayersPCTurnOnText
 	call PC_DisplayText
 	ld b, $1
 	call _PlayersPC
@@ -181,15 +181,15 @@ _PlayersHousePC:
 	ld c, $1
 	ret
 
-UnknownText_0x156ff:
+PlayersPCTurnOnText:
 	; turned on the PC.
-	text_jump UnknownText_0x1c1353
+	text_jump _PlayersPCTurnOnText
 	text_end
 
 _PlayersPC:
 	ld a, b
 	ld [wWhichIndexSet], a
-	ld hl, UnknownText_0x157cc
+	ld hl, PlayersPCAskWhatDoText
 	call PC_DisplayTextWaitMenu
 	call .PlayersPC
 	jp ExitMenu
@@ -281,9 +281,9 @@ PC_DisplayTextWaitMenu:
 	ld [wOptions1], a
 	ret
 
-UnknownText_0x157cc:
+PlayersPCAskWhatDoText:
 	; What do you want to do?
-	text_jump UnknownText_0x1c1368
+	text_jump _PlayersPCAskWhatDoText
 	text_end
 
 PlayerWithdrawItemMenu:
@@ -404,7 +404,7 @@ PlayerDepositItemMenu:
 
 .NoItemsInBag:
 	; No items here!
-	text_jump UnknownText_0x1c13df
+	text_jump _PlayersPCNoItemsText
 	text_end
 
 .TryDepositItem:
@@ -595,30 +595,30 @@ PC_DisplayText:
 
 PokeCenterPCText_BootedUpPC:
 	; turned on the PC.
-	text_jump UnknownText_0x1c144d
+	text_jump _PokecenterPCTurnOnText
 	text_end
 
 PokeCenterPCText_AccessWhosePC:
 	; Access whose PC?
-	text_jump UnknownText_0x1c1462
+	text_jump _PokecenterPCWhoseText
 	text_end
 
 PokeCenterPCText_AccessedBillsPC:
 	; BILL's PC accessed. #MON Storage System opened.
-	text_jump UnknownText_0x1c1474
+	text_jump _PokecenterBillsPCText
 	text_end
 
 PokeCenterPCText_AccessedOwnPC:
 	; Accessed own PC. Item Storage System opened.
-	text_jump UnknownText_0x1c14a4
+	text_jump _PokecenterPlayersPCText
 	text_end
 
 PokeCenterPCText_AccessedOaksPC:
 	; PROF.OAK's PC accessed. #DEX Rating System opened.
-	text_jump UnknownText_0x1c14d2
+	text_jump _PokecenterOaksPCText
 	text_end
 
 PokeCenterPCText_LinkClosed:
 	; … Link closed…
-	text_jump UnknownText_0x1c1505
+	text_jump _PokecenterPCOaksClosedText
 	text_end

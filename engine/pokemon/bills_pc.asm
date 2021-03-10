@@ -1537,11 +1537,8 @@ BillsPC_CheckSpaceInDestination:
 ; Exceeding box or party capacity is a big no-no.
 	ld a, [wBillsPC_LoadedBox]
 	and a
-	jr z, .party
 	ld e, MONS_PER_BOX + 1
-	jr .compare
-
-.party
+	jr nz, .compare
 	ld e, PARTY_LENGTH + 1
 .compare
 	ld a, [wBillsPC_NumMonsInBox]
@@ -1980,6 +1977,7 @@ MovePKMNWitoutMail_InsertMon:
 	ld a, $1
 	ld [wGameLogicPaused], a
 	farcall SaveGameData
+	farcall SaveCurrentVersion
 	xor a
 	ld [wGameLogicPaused], a
 	jp .CopyToBox
@@ -2244,10 +2242,8 @@ _ChangeBox_menudataheader:
 
 .boxes
 	db NUM_BOXES
-x = 1
-rept NUM_BOXES
+for x, 1, NUM_BOXES + 1
 	db x
-x = x + 1
 endr
 	db -1
 

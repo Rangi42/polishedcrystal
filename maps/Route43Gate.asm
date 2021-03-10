@@ -15,103 +15,103 @@ Route43Gate_MapScriptHeader:
 	def_bg_events
 
 	def_object_events
-	object_event  2,  4, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x19ad41, EVENT_ROUTE_43_GATE_ROCKETS
-	object_event  7,  4, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x19ad41, EVENT_ROUTE_43_GATE_ROCKETS
-	object_event  0,  4, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, OfficerScript_0x19ac85, EVENT_LAKE_OF_RAGE_CIVILIANS
+	object_event  2,  4, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, RocketText_MakingABundle, EVENT_ROUTE_43_GATE_ROCKETS
+	object_event  7,  4, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, RocketText_MakingABundle, EVENT_ROUTE_43_GATE_ROCKETS
+	object_event  0,  4, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, OfficerScript_GuardWithSludgeBomb, EVENT_LAKE_OF_RAGE_CIVILIANS
 
 	object_const_def
 	const ROUTE43GATE_ROCKET1
 	const ROUTE43GATE_ROCKET2
 
 Route43GateTrigger0:
-	priorityjump UnknownScript_0x19abda
+	priorityjump .RocketTakeover
 	end
 
-UnknownScript_0x19abda:
+.RocketTakeover:
 	playmusic MUSIC_ROCKET_ENCOUNTER
 	checkcode VAR_FACING
-	ifequal DOWN, UnknownScript_0x19abea
-	ifequal UP, UnknownScript_0x19ac38
+	ifequal DOWN, RocketScript_Southbound
+	ifequal UP, RocketScript_Northbound
 	setscene $1
 	end
 
-UnknownScript_0x19abea:
+RocketScript_Southbound:
 	applyonemovement PLAYER, step_down
 	showemote EMOTE_SHOCK, ROUTE43GATE_ROCKET2, 15
-	applymovement ROUTE43GATE_ROCKET2, MovementData_0x19acbb
+	applymovement ROUTE43GATE_ROCKET2, Rocket2Script_BlocksYouSouth
 	turnobject ROUTE43GATE_ROCKET1, UP
 	showemote EMOTE_SHOCK, ROUTE43GATE_ROCKET1, 15
-	applymovement ROUTE43GATE_ROCKET1, MovementData_0x19aca4
+	applymovement ROUTE43GATE_ROCKET1, Rocket1Script_BlocksYouSouth
 	opentext
-	writetext UnknownText_0x19acd2
+	writetext RocketText_TollFee
 	buttonsound
 	checkmoney $0, 999
-	ifequal $0, UnknownScript_0x19ac12
-	jump UnknownScript_0x19ac1d
+	ifequal $0, RocketScript_TollSouth
+	jump RocketScript_YoureBrokeSouth
 
-UnknownScript_0x19ac12:
+RocketScript_TollSouth:
 	takemoney $0, 1000
-	writetext UnknownText_0x19ad0a
-	jump UnknownScript_0x19ac28
+	writetext RocketText_ThankYou
+	jump RocketScript_ShakeDownSouth
 
-UnknownScript_0x19ac1d:
+RocketScript_YoureBrokeSouth:
 	takemoney $0, 1000
-	writetext UnknownText_0x19ad20
-	jump UnknownScript_0x19ac28
+	writetext RocketText_AllYouGot
+	jump RocketScript_ShakeDownSouth
 
-UnknownScript_0x19ac28:
+RocketScript_ShakeDownSouth:
 	buttonsound
 	closetext
-	applymovement ROUTE43GATE_ROCKET1, MovementData_0x19acaa
-	applymovement ROUTE43GATE_ROCKET2, MovementData_0x19acc1
+	applymovement ROUTE43GATE_ROCKET1, Rocket1Script_LetsYouPassSouth
+	applymovement ROUTE43GATE_ROCKET2, Rocket2Script_LetsYouPassSouth
 	setscene $1
 	special RestartMapMusic
 	end
 
-UnknownScript_0x19ac38:
+RocketScript_Northbound:
 	showemote EMOTE_SHOCK, ROUTE43GATE_ROCKET1, 15
-	applymovement ROUTE43GATE_ROCKET1, MovementData_0x19acaf
+	applymovement ROUTE43GATE_ROCKET1, Rocket1Script_BlocksYouNorth
 	turnobject ROUTE43GATE_ROCKET2, DOWN
 	showemote EMOTE_SHOCK, ROUTE43GATE_ROCKET2, 15
-	applymovement ROUTE43GATE_ROCKET2, MovementData_0x19acc7
+	applymovement ROUTE43GATE_ROCKET2, Rocket2Script_BlocksYouNorth
 	opentext
-	writetext UnknownText_0x19acd2
+	writetext RocketText_TollFee
 	buttonsound
 	checkmoney $0, 999
-	ifequal $0, UnknownScript_0x19ac5c
-	jump UnknownScript_0x19ac67
+	ifequal $0, RocketScript_TollNorth
+	jump RocketScript_YoureBrokeNorth
 
-UnknownScript_0x19ac5c:
+RocketScript_TollNorth:
 	takemoney $0, 1000
-	writetext UnknownText_0x19ad0a
-	jump UnknownScript_0x19ac72
+	writetext RocketText_ThankYou
+	jump RocketScript_ShakeDownNorth
 
-UnknownScript_0x19ac67:
+RocketScript_YoureBrokeNorth:
 	takemoney $0, 1000
-	writetext UnknownText_0x19ad20
-	jump UnknownScript_0x19ac72
+	writetext RocketText_AllYouGot
+	jump RocketScript_ShakeDownNorth
 
-UnknownScript_0x19ac72:
+RocketScript_ShakeDownNorth:
 	buttonsound
 	closetext
-	applymovement ROUTE43GATE_ROCKET2, MovementData_0x19accd
-	applymovement ROUTE43GATE_ROCKET1, MovementData_0x19acb5
+	applymovement ROUTE43GATE_ROCKET2, Rocket2Script_LetsYouPassNorth
+	applymovement ROUTE43GATE_ROCKET1, Rocket1Script_LetsYouPassNorth
 	setscene $1
 	special RestartMapMusic
 	end
 
-OfficerScript_0x19ac85:
+OfficerScript_GuardWithSludgeBomb:
 	checkevent EVENT_GOT_TM36_SLUDGE_BOMB
-	iftrue_jumptextfaceplayer UnknownText_0x19ae2d
+	iftrue_jumptextfaceplayer OfficerText_AvoidGrass
 	faceplayer
 	opentext
-	writetext UnknownText_0x19ad9b
+	writetext OfficerText_FoundTM
 	buttonsound
 	verbosegivetmhm TM_SLUDGE_BOMB
 	setevent EVENT_GOT_TM36_SLUDGE_BOMB
 	endtext
 
-MovementData_0x19aca4:
+Rocket1Script_BlocksYouSouth:
 	run_step_up
 	run_step_up
 	run_step_right
@@ -119,14 +119,14 @@ MovementData_0x19aca4:
 	turn_head_up
 	step_end
 
-MovementData_0x19acaa:
+Rocket1Script_LetsYouPassSouth:
 	run_step_left
 	run_step_left
 	run_step_down
 	run_step_down
 	step_end
 
-MovementData_0x19acaf:
+Rocket1Script_BlocksYouNorth:
 	run_step_down
 	run_step_down
 	run_step_right
@@ -134,7 +134,7 @@ MovementData_0x19acaf:
 	turn_head_down
 	step_end
 
-MovementData_0x19acb5:
+Rocket1Script_LetsYouPassNorth:
 	run_step_left
 	run_step_left
 	run_step_up
@@ -142,7 +142,7 @@ MovementData_0x19acb5:
 	turn_head_down
 	step_end
 
-MovementData_0x19acbb:
+Rocket2Script_BlocksYouSouth:
 	run_step_up
 	run_step_up
 	run_step_left
@@ -150,7 +150,7 @@ MovementData_0x19acbb:
 	turn_head_up
 	step_end
 
-MovementData_0x19acc1:
+Rocket2Script_LetsYouPassSouth:
 	run_step_right
 	run_step_right
 	run_step_down
@@ -158,7 +158,7 @@ MovementData_0x19acc1:
 	turn_head_up
 	step_end
 
-MovementData_0x19acc7:
+Rocket2Script_BlocksYouNorth:
 	run_step_down
 	run_step_down
 	run_step_left
@@ -166,14 +166,14 @@ MovementData_0x19acc7:
 	turn_head_down
 	step_end
 
-MovementData_0x19accd:
+Rocket2Script_LetsYouPassNorth:
 	run_step_right
 	run_step_right
 	run_step_up
 	run_step_up
 	step_end
 
-UnknownText_0x19acd2:
+RocketText_TollFee:
 	text "Hold it there,"
 	line "kiddo!"
 
@@ -181,17 +181,17 @@ UnknownText_0x19acd2:
 	line "to go through."
 	done
 
-UnknownText_0x19ad0a:
+RocketText_ThankYou:
 	text "Thank you very"
 	line "much!"
 	done
 
-UnknownText_0x19ad20:
+RocketText_AllYouGot:
 	text "Then pay what you"
 	line "have, please."
 	done
 
-UnknownText_0x19ad41:
+RocketText_MakingABundle:
 	text "He-he-he. We're"
 	line "making a bundle."
 
@@ -202,7 +202,7 @@ UnknownText_0x19ad41:
 	line "Rage."
 	done
 
-UnknownText_0x19ad9b:
+OfficerText_FoundTM:
 	text "I got chased from"
 	line "my post by these"
 	cont "thugs in black."
@@ -215,7 +215,7 @@ UnknownText_0x19ad9b:
 	cont "you take it away?"
 	done
 
-UnknownText_0x19ae2d:
+OfficerText_AvoidGrass:
 	text "Use this gate to"
 	line "avoid walking in"
 	cont "the grass."

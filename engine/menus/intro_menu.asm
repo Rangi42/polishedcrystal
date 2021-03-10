@@ -56,6 +56,7 @@ NewGame:
 _NewGame_FinishSetup:
 	call ResetWRAM
 	call NewGame_ClearTileMapEtc
+	call CheckVBA
 	call SetInitialOptions
 	call ProfElmSpeech
 	call InitializeWorld
@@ -346,10 +347,10 @@ Continue:
 	call DelayFrames
 	call ConfirmContinue
 	jp c, CloseWindow
+	call CheckVBA
 	call Continue_CheckRTC_RestartClock
 	jp c, CloseWindow
 	call Continue_CheckEGO_ResetInitialOptions
-;	jp c, CloseWindow
 	ld a, $8
 	ld [wMusicFade], a
 	xor a ; MUSIC_NONE
@@ -398,27 +399,37 @@ ConfirmContinue:
 	scf
 	ret
 
+CheckVBA:
+	xor a
+	ldh [rSC], a ; no-optimize redundant loads (VBA loads this wrong)
+	ldh a, [rSC]
+	and %01111100
+	cp %01111100
+	ret z
+	ld hl, .WarnVBAText
+	jp PrintText
+
+.WarnVBAText:
+	text_jump _WarnVBAText
+	text_end
+
 Continue_CheckRTC_RestartClock:
 	call CheckRTCStatus
 	and %10000000 ; Day count exceeded 16383
-	jr z, .pass
+	jr z, Continue_FinishReset
 	farcall RestartClock
 	ld a, c
 	and a
-	jr z, .pass
+	jr z, Continue_FinishReset
 	scf
-	ret
-
-.pass
-	xor a
 	ret
 
 Continue_CheckEGO_ResetInitialOptions:
 	ld a, [wInitialOptions2]
 	bit RESET_INIT_OPTS, a
-	jr z, .pass
-	farcall SetInitialOptions
-.pass
+	call nz, SetInitialOptions
+	; fallthrough
+Continue_FinishReset:
 	xor a
 	ret
 
@@ -887,11 +898,10 @@ DrawIntroPlayerPic:
 	ld [wCurPartySpecies], a
 	ld a, [wPlayerGender]
 	bit 0, a
-	jr z, .male
 	ld a, CARRIE
-	jr .ok
-.male
-	ld a, CAL
+	jr nz, .ok
+	assert CARRIE + 1 == CAL
+	inc a
 .ok
 	ld [wTrainerClass], a
 Intro_PrepTrainerPic:

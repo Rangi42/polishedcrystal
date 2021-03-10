@@ -1,13 +1,13 @@
 BlindingFlash::
-	farcall FadeOutPalettes
+	call FadeOutPalettes
 	ld hl, wStatusFlags
 	set 2, [hl] ; Flash
-	farcall ReplaceTimeOfDayPals
-	farcall UpdateTimeOfDayPal
+	call ReplaceTimeOfDayPals
+	call UpdateTimeOfDayPal
 	ld a, CGB_MAPPALS
 	call GetCGBLayout
 	farcall LoadBlindingFlashPalette
-	farjp FadeInPalettes
+	jp FadeInPalettes
 
 ShakeHeadbuttTree:
 	call ClearSpriteAnims
@@ -23,7 +23,7 @@ ShakeHeadbuttTree:
 	ld [hl], $64
 	ld a, 36 * 4
 	ld [wCurSpriteOAMAddr], a
-	farcall DoNextFrameForAllSprites
+	call DoNextFrameForAllSprites
 	call HideHeadbuttTree
 	ld a, 32
 	ld [wFrameCounter], a
@@ -38,7 +38,7 @@ ShakeHeadbuttTree:
 	dec [hl]
 	ld a, 36 * 4
 	ld [wCurSpriteOAMAddr], a
-	farcall DoNextFrameForAllSprites
+	call DoNextFrameForAllSprites
 	call DelayFrame
 	jr .loop
 
@@ -91,11 +91,9 @@ TreeRelativeLocationTable:
 	dwcoord 8 + 2, 8     ; UP
 
 OWCutAnimation:
-	; Animation index in e
+	; Animation index in a
 	; 0: Split tree in half
 	; 1: Mow the lawn
-	ld a, e
-	and $1
 	ld [wJumptableIndex], a
 	call ClearSpriteAnims
 	call WaitSFX
@@ -107,7 +105,7 @@ OWCutAnimation:
 	ret nz
 	ld a, 36 * 4
 	ld [wCurSpriteOAMAddr], a
-	farcall DoNextFrameForAllSprites
+	call DoNextFrameForAllSprites
 	call OWCutJumptable
 	call DelayFrame
 	jr .loop
@@ -279,7 +277,7 @@ FlyFromAnim:
 	jr nz, .exit
 	xor a
 	ld [wCurSpriteOAMAddr], a
-	farcall DoNextFrameForAllSprites
+	call DoNextFrameForAllSprites
 	call FlyFunction_FrameTimer
 	call DelayFrame
 	jr .loop
@@ -316,7 +314,7 @@ FlyToAnim:
 	jr nz, .exit
 	xor a
 	ld [wCurSpriteOAMAddr], a
-	farcall DoNextFrameForAllSprites
+	call DoNextFrameForAllSprites
 	call FlyFunction_FrameTimer
 	call DelayFrame
 	jr .loop
@@ -344,7 +342,7 @@ FlyToAnim:
 FlyFunction_InitGFX:
 	call ClearSpriteAnims
 	ld e, $64
-	farcall FlyFunction_GetMonIcon
+	call FlyFunction_GetMonIcon
 	xor a
 	ld [wJumptableIndex], a
 	ret

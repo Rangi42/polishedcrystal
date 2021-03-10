@@ -140,7 +140,7 @@ DayCareLadyScript:
 .GiveTotodileEgg:
 	giveegg TOTODILE, EGG_LEVEL
 .GotLyrasEgg
-	farwritetext UnknownText_0x1bdfa5
+	farwritetext _ReceivedEggText
 	playsound SFX_GET_EGG_FROM_DAYCARE_LADY
 	waitsfx
 	writetext DayCareLadyText_DescribeLyrasEgg

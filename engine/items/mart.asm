@@ -516,15 +516,15 @@ BuyMenu_InitGFX:
 	jp DelayFrame
 
 .BuyLeftColumnTilemapString:
+	db $15, $15, $15, $15, $15, 0 ; Background
 	db $15, $15, $15, $15, $15, 0
 	db $15, $15, $15, $15, $15, 0
 	db $15, $15, $15, $15, $15, 0
-	db $15, $15, $15, $15, $15, 0
-	db $16, $17, $17, $17, $18, 0
-	db $19, $1e, $1f, $20, $1a, 0
-	db $19, $21, $22, $23, $1a, 0
-	db $19, $24, $25, $26, $1a, 0
-	db $1b, $1c, $1c, $1c, $1d, -1
+	db $15, $19, $19, $19, $15, 0 ; Item icon
+	db $16, $1e, $1f, $20, $17, 0
+	db $16, $21, $22, $23, $17, 0
+	db $16, $24, $25, $26, $17, 0
+	db $15, $1c, $1c, $1c, $15, -1
 
 LoadBuyMenuText:
 ; load text from a nested table
@@ -816,7 +816,7 @@ BTBuyMenuLoop:
 	ld de, wBattlePoints
 	ld bc, hMoneyTemp + 1
 	ld a, 2
-	farcall SubtractFunds
+	call SubtractFunds
 	ld a, MARTTEXT_HERE_YOU_GO
 	call LoadBuyMenuText
 	call JoyWaitAorB
@@ -1049,13 +1049,13 @@ BTMartCompareBP:
 Text_Mart_HowMany:
 Text_BTMart_HowMany:
 	; How many?
-	text_jump UnknownText_0x1c4bfd
+	text_jump _MartHowManyText
 	text_end
 
 Text_Mart_CostsThisMuch:
 Text_AdventurerMart_CostsThisMuch:
 	; @ (S) will be ¥@ .
-	text_jump UnknownText_0x1c4c08
+	text_jump _MartFinalPriceText
 	text_end
 
 MenuDataHeader_Buy:
@@ -1172,42 +1172,42 @@ GetCursorItemPointCost:
 
 Text_HerbShop_Intro:
 	; Hello, dear. I sell inexpensive herbal medicine. They're good, but a trifle bitter. Your #MON may not like them. Hehehehe…
-	text_jump UnknownText_0x1c4c28
+	text_jump _HerbShopLadyIntroText
 	text_end
 
 Text_HerbShop_CostsThisMuch:
 	; @ (S) will be ¥@ .
-	text_jump UnknownText_0x1c4cae
+	text_jump _HerbalLadyFinalPriceText
 	text_end
 
 Text_HerbShop_HereYouGo:
 	; Thank you, dear. Hehehehe…
-	text_jump UnknownText_0x1c4cce
+	text_jump _HerbalLadyThanksText
 	text_end
 
 Text_HerbShop_BagFull:
 	; Oh? Your PACK is full, dear.
-	text_jump UnknownText_0x1c4cea
+	text_jump _HerbalLadyPackFullText
 	text_end
 
 Text_HerbShop_InsufficientFunds:
 	; Hehehe… You don't have the money.
-	text_jump UnknownText_0x1c4d08
+	text_jump _HerbalLadyNoMoneyText
 	text_end
 
 Text_HerbShop_ComeAgain:
 	; Come again, dear. Hehehehe…
-	text_jump UnknownText_0x1c4d2a
+	text_jump _HerbalLadyComeAgainText
 	text_end
 
 Text_BargainShop_Intro:
 	; Hiya! Care to see some bargains? I sell rare items that nobody else carries--but only one of each item.
-	text_jump UnknownText_0x1c4d47
+	text_jump _BargainShopIntroText
 	text_end
 
 Text_BargainShop_CostsThisMuch:
 	; costs ¥@ . Want it?
-	text_jump UnknownText_0x1c4db0
+	text_jump _BargainShopFinalPriceText
 	text_end
 
 Text_BargainShop_HereYouGo:
@@ -1215,34 +1215,34 @@ Text_SilphMart_HereYouGo:
 Text_AdventurerMart_HereYouGo:
 Text_BazaarMart_HereYouGo:
 	; Thanks.
-	text_jump UnknownText_0x1c4dcd
+	text_jump _BargainShopThanksText
 	text_end
 
 Text_BargainShop_BagFull:
 Text_AdventurerMart_BagFull:
 	; Uh-oh, your PACK is chock-full.
-	text_jump UnknownText_0x1c4dd6
+	text_jump _BargainShopPackFullText
 	text_end
 
 Text_BargainShop_SoldOut:
 	; You bought that already. I'm all sold out of it.
-	text_jump UnknownText_0x1c4df7
+	text_jump _BargainShopSoldOutText
 	text_end
 
 Text_BargainShop_InsufficientFunds:
 Text_AdventurerMart_InsufficientFunds:
 	; Uh-oh, you're short on funds.
-	text_jump UnknownText_0x1c4e28
+	text_jump _BargainShopNoFundsText
 	text_end
 
 Text_BargainShop_ComeAgain:
 	; Come by again sometime.
-	text_jump UnknownText_0x1c4e46
+	text_jump _BargainShopComeAgainText
 	text_end
 
 Text_Pharmacist_Intro:
 	; What's up? Need some medicine?
-	text_jump UnknownText_0x1c4e5f
+	text_jump _PharmacyIntroText
 	text_end
 
 Text_HerbShop_HowMany:
@@ -1252,7 +1252,7 @@ Text_AdventurerMart_HowMany:
 Text_InformalMart_HowMany:
 Text_BazaarMart_HowMany:
 	; How many?
-	text_jump UnknownText_0x1c4e7e
+	text_jump _PharmacyHowManyText
 	text_end
 
 Text_Pharmacy_CostsThisMuch:
@@ -1260,13 +1260,13 @@ Text_SilphMart_CostsThisMuch:
 Text_InformalMart_CostsThisMuch:
 Text_BazaarMart_CostsThisMuch:
 	; @ (S) will cost ¥@ .
-	text_jump UnknownText_0x1c4e89
+	text_jump _PharmacyFinalPriceText
 	text_end
 
 Text_Pharmacy_HereYouGo:
 Text_InformalMart_HereYouGo:
 	; Thanks much!
-	text_jump UnknownText_0x1c4eab
+	text_jump _PharmacyThanksText
 	text_end
 
 Text_Pharmacy_BagFull:
@@ -1274,7 +1274,7 @@ Text_SilphMart_BagFull:
 Text_InformalMart_BagFull:
 Text_BazaarMart_BagFull:
 	; You don't have any more space.
-	text_jump UnknownText_0x1c4eb9
+	text_jump _PharmacyPackFullText
 	text_end
 
 Text_Pharmacy_InsufficientFunds:
@@ -1282,13 +1282,13 @@ Text_SilphMart_InsufficientFunds:
 Text_InformalMart_InsufficientFunds:
 Text_BazaarMart_InsufficientFunds:
 	; Huh? That's not enough money.
-	text_jump UnknownText_0x1c4ed8
+	text_jump _PharmacyNoMoneyText
 	text_end
 
 Text_Pharmacist_ComeAgain:
 Text_InformalMart_ComeAgain:
 	; All right. See you around.
-	text_jump UnknownText_0x1c4ef6
+	text_jump _PharmacyComeAgainText
 	text_end
 
 Text_SilphMart_Intro:
@@ -1329,32 +1329,32 @@ Text_TMMart_CostsThisMuch:
 
 Text_BlueCardMart_HowMayIHelpYou:
 	; Which prize would you like?
-	text_jump UnknownText_0x1c589f
+	text_jump _BuenaAskWhichPrizeText
 	text_end
 
 Text_BlueCardMart_CostsThisMuch:
 	; ? Is that right?
-	text_jump UnknownText_0x1c58bc
+	text_jump _BuenaIsThatRightText
 	text_end
 
 Text_BlueCardMart_InsufficientFunds:
 	; You don't have enough points.
-	text_jump UnknownText_0x1c58e0
+	text_jump _BuenaNotEnoughPointsText
 	text_end
 
 Text_BlueCardMart_BagFull:
 	; You have no room for it.
-	text_jump UnknownText_0x1c58ff
+	text_jump _BuenaNoRoomText
 	text_end
 
 Text_BlueCardMart_HereYouGo:
 	; Here you go!
-	text_jump UnknownText_0x1c58d1
+	text_jump _BuenaHereYouGoText
 	text_end
 
 Text_BlueCardMart_ComeAgain:
 	; Oh. Please come back again!
-	text_jump UnknownText_0x1c591a
+	text_jump _BuenaComeAgainText
 	text_end
 
 Text_BTMart_HowMayIHelpYou:
@@ -1454,17 +1454,17 @@ SellMenu:
 
 Text_Mart_SellHowMany:
 	; How many?
-	text_jump UnknownText_0x1c4f33
+	text_jump _MartSellHowManyText
 	text_end
 
 Text_Mart_ICanPayThisMuch:
 	; I can pay you ¥@ . Is that OK?
-	text_jump UnknownText_0x1c4f3e
+	text_jump _MartSellPriceText
 	text_end
 
 Text_Mart_HowMayIHelpYou:
 	; Welcome! How may I help you?
-	text_jump UnknownText_0x1c4f62
+	text_jump _MartWelcomeText
 	text_end
 
 MenuDataHeader_BuySell:
@@ -1484,35 +1484,35 @@ MenuDataHeader_BuySell:
 Text_Mart_HereYouGo:
 Text_BTMart_HereYouGo:
 	; Here you are. Thank you!
-	text_jump UnknownText_0x1c4f80
+	text_jump _MartThanksText
 	text_end
 
 Text_Mart_InsufficientFunds:
 	; You don't have enough money.
-	text_jump UnknownText_0x1c4f9a
+	text_jump _MartNoMoneyText
 	text_end
 
 Text_Mart_BagFull:
 	; You can't carry any more items.
-	text_jump UnknownText_0x1c4fb7
+	text_jump _MartPackFullText
 	text_end
 
 TextMart_CantBuyFromYou:
 	; Sorry, I can't buy that from you.
-	text_jump UnknownText_0x1c4fd7
+	text_jump _MartCantBuyText
 	text_end
 
 Text_Mart_ComeAgain:
 	; Please come again!
-	text_jump UnknownText_0x1c4ff9
+	text_jump _MartComeAgainText
 	text_end
 
 Text_Mart_AnythingElse:
-	text_jump UnknownText_0x1c500d
+	text_jump _MartAskMoreText
 	text_end
 
 Text_Mart_SoldForAmount:
-	text_jump UnknownText_0x1c502e
+	text_jump _MartBoughtText
 	text_end
 
 PlayTransactionSound:

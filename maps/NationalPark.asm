@@ -12,19 +12,19 @@ NationalPark_MapScriptHeader:
 	def_coord_events
 
 	def_bg_events
-	bg_event 16, 44, BGEVENT_JUMPTEXT, UnknownText_0x5c750
-	bg_event 29, 31, BGEVENT_JUMPTEXT, UnknownText_0x5c771
-	bg_event 14,  4, BGEVENT_JUMPTEXT, UnknownText_0x5c7c6
+	bg_event 16, 44, BGEVENT_JUMPTEXT, NationalParkRelaxationSquareText
+	bg_event 29, 31, BGEVENT_JUMPTEXT, NationalParkBattleNoticeText
+	bg_event 14,  4, BGEVENT_JUMPTEXT, NationalParkTrainerTipsText
 	bg_event  8, 47, BGEVENT_ITEM + FULL_HEAL, EVENT_NATIONAL_PARK_HIDDEN_FULL_HEAL
 
 	def_object_events
-	object_event 17, 24, SPRITE_PICNICKER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x5c1d3, -1
-	object_event 16,  4, SPRITE_MATRON, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x5c22e, -1
-	object_event 29, 40, SPRITE_TEACHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, TeacherScript_0x5c008, -1
-	object_event 28,  6, SPRITE_GAMEBOY_KID, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, GameboyKidScript_0x5c037, -1
+	object_event 17, 24, SPRITE_PICNICKER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, NationalParkLassText, -1
+	object_event 16,  4, SPRITE_MATRON, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_COMMAND, jumptextfaceplayer, NationalParkPokefanFText, -1
+	object_event 29, 40, SPRITE_TEACHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, NationalParkTeacher1Script, -1
+	object_event 28,  6, SPRITE_GAMEBOY_KID, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, NationalParkGameboyKidScript, -1
 	object_event 13, 41, SPRITE_SCHOOLGIRL, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 0, GenericTrainerSchoolgirlEliza, -1
 	object_event 12, 41, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 0, GenericTrainerSchoolboyJohnny, -1
-	object_event 19, 41, SPRITE_POKEFAN_F, SPRITEMOVEDATA_WANDER, 2, 1, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x5c3bc, -1
+	object_event 19, 41, SPRITE_POKEFAN_F, SPRITEMOVEDATA_WANDER, 2, 1, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, NationalParkTeacher2Text, -1
 	pokemon_event 28, 40, PERSIAN, -1, -1, PAL_NPC_BROWN, NationalParkPersianText, -1
 	object_event 29, 23, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, OBJECTTYPE_TRAINER, 3, TrainerSchoolboyJack1, -1
 	object_event 20, 29, SPRITE_POKEFAN_F, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, OBJECTTYPE_TRAINER, 2, TrainerPokefanfBeverly1, -1
@@ -35,18 +35,18 @@ NationalPark_MapScriptHeader:
 	itemball_event 37, 12, SHINY_STONE, 1, EVENT_NATIONAL_PARK_SHINY_STONE
 	tmhmball_event  3, 43, TM_DIG, EVENT_NATIONAL_PARK_TM_DIG
 
-TeacherScript_0x5c008:
+NationalParkTeacher1Script:
 	faceplayer
 	opentext
 	checkevent EVENT_GOT_QUICK_CLAW
 	iftrue UnknownScript_0x5c01d
-	writetext UnknownText_0x5c265
+	writetext NationalParkTeacher1Text
 	buttonsound
 	verbosegiveitem QUICK_CLAW
 	iffalse UnknownScript_0x5c021
 	setevent EVENT_GOT_QUICK_CLAW
 UnknownScript_0x5c01d:
-	writetext UnknownText_0x5c30d
+	writetext NationalParkTeacher1Text_GotQuickClaw
 	waitbutton
 UnknownScript_0x5c021:
 	endtext
@@ -96,8 +96,8 @@ GenericTrainerSchoolboyJohnny:
 	cont "Bellsprout."
 	done
 
-GameboyKidScript_0x5c037:
-	showtextfaceplayer UnknownText_0x5c42a
+NationalParkGameboyKidScript:
+	showtextfaceplayer NationalParkGameboyKidText
 	turnobject LAST_TALKED, DOWN
 	end
 
@@ -113,7 +113,7 @@ SchoolboyJack1Script:
 	iftrue UnknownScript_0x5c108
 	checkevent EVENT_JACK_ASKED_FOR_PHONE_NUMBER
 	iftrue UnknownScript_0x5c071
-	writetext UnknownText_0x5c4f3
+	writetext SchoolboyJackTradeMonText
 	buttonsound
 	setevent EVENT_JACK_ASKED_FOR_PHONE_NUMBER
 	scall UnknownScript_0x5c0fc
@@ -234,7 +234,7 @@ PokefanfBeverly1Script:
 	iffalse UnknownScript_0x5c189
 	checkevent EVENT_BEVERLY_ASKED_FOR_PHONE_NUMBER
 	iftrue UnknownScript_0x5c160
-	writetext UnknownText_0x5c5bd
+	writetext PokefanBeverlyCuteMonText
 	buttonsound
 	setevent EVENT_BEVERLY_ASKED_FOR_PHONE_NUMBER
 	scall UnknownScript_0x5c18f
@@ -261,7 +261,7 @@ UnknownScript_0x5c186:
 	jump UnknownScript_0x5c1ab
 
 UnknownScript_0x5c189:
-	jumpopenedtext UnknownText_0x5c68a
+	jumpopenedtext PokefanFBeverlyMarillFriendText
 
 UnknownScript_0x5c18f:
 	jumpstd asknumber1f
@@ -295,7 +295,7 @@ GenericTrainerLassKrise:
 	cont "because I'm cute!"
 	done
 
-UnknownText_0x5c1d3:
+NationalParkLassText:
 	text "Look! Check out my"
 	line "bag!"
 
@@ -303,13 +303,13 @@ UnknownText_0x5c1d3:
 	line "onto it."
 	done
 
-UnknownText_0x5c22e:
+NationalParkPokefanFText:
 	text "This is Mail I got"
 	line "from my daughter."
 	cont "It cheers me up."
 	done
 
-UnknownText_0x5c265:
+NationalParkTeacher1Text:
 	text "Pay attention,"
 	line "please!"
 
@@ -329,7 +329,7 @@ UnknownText_0x5c265:
 	line "this."
 	done
 
-UnknownText_0x5c30d:
+NationalParkTeacher1Text_GotQuickClaw:
 	text "Let a #mon hold"
 	line "that Quick Claw."
 
@@ -360,7 +360,7 @@ SchoolboyJohnnyBeatenText:
 	text "Bellsprout, no…"
 	done
 
-UnknownText_0x5c3bc:
+NationalParkTeacher2Text:
 	text "Those kids should"
 	line "battle inside the"
 	cont "grass."
@@ -373,7 +373,7 @@ NationalParkPersianText:
 	text "Persian: Fufushaa!"
 	done
 
-UnknownText_0x5c42a:
+NationalParkGameboyKidText:
 	text "I'm studying my"
 	line "#dex."
 
@@ -400,7 +400,7 @@ SchoolboyJack1BeatenText:
 	text "Wha-wha-what?"
 	done
 
-UnknownText_0x5c4f3:
+SchoolboyJackTradeMonText:
 	text "There is a lot"
 	line "to learn."
 
@@ -427,7 +427,7 @@ PokefanfBeverly1BeatenText:
 	line "pride, but…"
 	done
 
-UnknownText_0x5c5bd:
+PokefanBeverlyCuteMonText:
 	text "I must say, your"
 	line "#mon are quite"
 	cont "cute, too."
@@ -446,7 +446,7 @@ PokefanmWilliamBeatenText:
 	text "M-my #mon!"
 	done
 
-UnknownText_0x5c68a:
+PokefanFBeverlyMarillFriendText:
 	text "My friend keeps a"
 	line "Marill!"
 
@@ -509,12 +509,12 @@ OfficermKeithDaytimeText:
 	line "tall grass!"
 	done
 
-UnknownText_0x5c750:
+NationalParkRelaxationSquareText:
 	text "Relaxation Square"
 	line "National Park"
 	done
 
-UnknownText_0x5c771:
+NationalParkBattleNoticeText:
 	text "What is this"
 	line "notice?"
 
@@ -525,7 +525,7 @@ UnknownText_0x5c771:
 	line "Warden's Office"
 	done
 
-UnknownText_0x5c7c6:
+NationalParkTrainerTipsText:
 	text "Trainer Tips"
 
 	para "#mon become"

@@ -4,7 +4,7 @@ RuinsOfAlphOutside_MapScriptHeader:
 
 	def_callbacks
 	callback MAPCALLBACK_TILES, RuinsofAlphOutsideTileScript
-	callback MAPCALLBACK_OBJECTS, UnknownScript_0x5800f
+	callback MAPCALLBACK_OBJECTS, RuinsOfAlphOutsideScientistCallback
 
 	def_warp_events
 	warp_event  4, 23, RUINS_OF_ALPH_HO_OH_CHAMBER, 1
@@ -21,24 +21,24 @@ RuinsOfAlphOutside_MapScriptHeader:
 	warp_event 10,  9, RUINS_OF_ALPH_SINJOH_CHAMBER, 1
 
 	def_coord_events
-	coord_event 13, 20, 1, UnknownScript_0x58031
-	coord_event 12, 21, 1, UnknownScript_0x58031
+	coord_event 13, 20, 1, RuinsOfAlphOutsideScientistScene1
+	coord_event 12, 21, 1, RuinsOfAlphOutsideScientistScene1
 
 	def_bg_events
-	bg_event 18, 14, BGEVENT_JUMPTEXT, UnknownText_0x58325
-	bg_event 14, 22, BGEVENT_JUMPTEXT, UnknownText_0x58342
-	bg_event 20, 18, BGEVENT_JUMPTEXT, UnknownText_0x58362
+	bg_event 18, 14, BGEVENT_JUMPTEXT, RuinsOfAlphOutsideMysteryChamberSignText
+	bg_event 14, 22, BGEVENT_JUMPTEXT, RuinsOfAlphSignText
+	bg_event 20, 18, BGEVENT_JUMPTEXT, RuinsOfAlphResearchCenterSignText
 	bg_event 10,  9, BGEVENT_IFNOTSET, MapRuinsofAlphOutsideSealedCaveSign
 	bg_event  4, 13, BGEVENT_ITEM + RARE_CANDY, EVENT_RUINS_OF_ALPH_OUTSIDE_HIDDEN_RARE_CANDY
 
 	def_object_events
-	object_event 13, 21, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, ScientistScript_0x58043, EVENT_RUINS_OF_ALPH_OUTSIDE_SCIENTIST
+	object_event 13, 21, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, RuinsOfAlphOutsideScientistScript, EVENT_RUINS_OF_ALPH_OUTSIDE_SCIENTIST
 	object_event 18, 18, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_RUINS_OF_ALPH_OUTSIDE_SCIENTIST_CLIMAX
 	object_event  6, 26, SPRITE_PSYCHIC, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerPsychicNathan, -1
 	object_event  5, 37, SPRITE_SUPER_NERD, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerSuperNerdStan, -1
-	object_event 15, 23, SPRITE_FISHER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, FisherScript_0x58061, EVENT_RUINS_OF_ALPH_OUTSIDE_TOURIST_FISHER
-	object_event 14, 14, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, YoungsterScript_0x5807e, EVENT_RUINS_OF_ALPH_OUTSIDE_TOURIST_YOUNGSTERS
-	object_event 16, 17, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, YoungsterScript_0x58076, EVENT_RUINS_OF_ALPH_OUTSIDE_TOURIST_YOUNGSTERS
+	object_event 15, 23, SPRITE_FISHER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, RuinsOfAlphOutsideFisherScript, EVENT_RUINS_OF_ALPH_OUTSIDE_TOURIST_FISHER
+	object_event 14, 14, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, RuinsOfAlphOutsideYoungster2Script, EVENT_RUINS_OF_ALPH_OUTSIDE_TOURIST_YOUNGSTERS
+	object_event 16, 17, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, RuinsOfAlphOutsideYoungster1Script, EVENT_RUINS_OF_ALPH_OUTSIDE_TOURIST_YOUNGSTERS
 	smashrock_event  7, 10
 	smashrock_event  8, 10
 	smashrock_event  4, 12
@@ -75,36 +75,36 @@ RuinsofAlphOutsideTileScript:
 .locked
 	return
 
-UnknownScript_0x5800f:
+RuinsOfAlphOutsideScientistCallback:
 	checkflag ENGINE_UNOWN_DEX
-	iftrue UnknownScript_0x5802c
+	iftrue .NoScientist
 	checkevent EVENT_MADE_UNOWN_APPEAR_IN_RUINS
-	iftrue UnknownScript_0x5801e
-	jump UnknownScript_0x5802c
+	iftrue .MaybeScientist
+	jump .NoScientist
 
-UnknownScript_0x5801e:
+.MaybeScientist:
 	checkcode VAR_UNOWNCOUNT
-	ifgreater $0, UnknownScript_0x58027
-	jump UnknownScript_0x5802c
+	ifgreater $0, .YesScientist
+	jump .NoScientist
 
-UnknownScript_0x58027:
+.YesScientist:
 	appear RUINSOFALPHOUTSIDE_SCIENTIST1
 	setscene $1
 	return
 
-UnknownScript_0x5802c:
+.NoScientist:
 	disappear RUINSOFALPHOUTSIDE_SCIENTIST1
 	setscene $0
 	return
 
-UnknownScript_0x58031:
+RuinsOfAlphOutsideScientistScene1:
 	faceobject RUINSOFALPHOUTSIDE_SCIENTIST1, PLAYER
 	faceobject PLAYER, RUINSOFALPHOUTSIDE_SCIENTIST1
-ScientistScript_0x58043:
-	showtext UnknownText_0x580c7
+RuinsOfAlphOutsideScientistScript:
+	showtext RuinsOfAlphOutsideScientistText
 	playmusic MUSIC_SHOW_ME_AROUND
 	follow RUINSOFALPHOUTSIDE_SCIENTIST1, PLAYER
-	applymovement RUINSOFALPHOUTSIDE_SCIENTIST1, MovementData_0x580ba
+	applymovement RUINSOFALPHOUTSIDE_SCIENTIST1, RuinsOfAlphOutsideScientistWalkToLabMovement
 	disappear RUINSOFALPHOUTSIDE_SCIENTIST1
 	stopfollow
 	applyonemovement PLAYER, step_up
@@ -112,29 +112,29 @@ ScientistScript_0x58043:
 	warpcheck
 	end
 
-FisherScript_0x58061:
+RuinsOfAlphOutsideFisherScript:
 	faceplayer
 	opentext
 	checkevent EVENT_TALKED_TO_RUINS_COWARD
-	iftrue_jumpopenedtext UnknownText_0x58420
+	iftrue_jumpopenedtext RuinsOfAlphOutsideFisherText2
 	setevent EVENT_TALKED_TO_RUINS_COWARD
-	writetext UnknownText_0x583a4
+	writetext RuinsOfAlphOutsideFisherText1
 	buttonsound
 	jumpthisopenedtext
 
-UnknownText_0x58420:
+RuinsOfAlphOutsideFisherText2:
 	text "The ruins hide a"
 	line "huge secret!"
 
 	para "…I think…"
 	done
 
-YoungsterScript_0x58076:
+RuinsOfAlphOutsideYoungster1Script:
 	faceplayer
-	jumptext UnknownText_0x58449
+	jumptext RuinsOfAlphOutsideYoungster1Text
 
-YoungsterScript_0x5807e:
-	showtextfaceplayer UnknownText_0x5848e
+RuinsOfAlphOutsideYoungster2Script:
+	showtextfaceplayer RuinsOfAlphOutsideYoungster2Text
 	turnobject LAST_TALKED, UP
 	end
 
@@ -146,7 +146,7 @@ GenericTrainerPsychicNathan:
 	done
 
 GenericTrainerSuperNerdStan:
-	generictrainer SUPER_NERD, STAN, EVENT_BEAT_SUPER_NERD_STAN, UnknownText_0x581e5, UnknownText_0x58217
+	generictrainer SUPER_NERD, STAN, EVENT_BEAT_SUPER_NERD_STAN, SuperNerdStanSeenText, SuperNerdStanBeatenText
 
 	text "The ruins are from"
 	line "about 1,500 years"
@@ -164,7 +164,7 @@ GenericTrainerSuperNerdStan:
 	line "mystery…"
 	done
 
-MovementData_0x580ba:
+RuinsOfAlphOutsideScientistWalkToLabMovement:
 	step_right
 	step_right
 	step_right
@@ -208,7 +208,7 @@ RuinsofAlphScientistClimaxLeaveMovementData:
 	step_right
 	step_end
 
-UnknownText_0x580c7:
+RuinsOfAlphOutsideScientistText:
 	text "Hm? That's a #-"
 	line "dex, isn't it?"
 	cont "May I see it?"
@@ -237,13 +237,13 @@ UnknownText_0x580c7:
 	cont "dex. Follow me."
 	done
 
-UnknownText_0x581e5:
+SuperNerdStanSeenText:
 	text "What do you want?"
 	line "I'm studying--"
 	cont "don't disturb me!"
 	done
 
-UnknownText_0x58217:
+SuperNerdStanBeatenText:
 	text "Sorry…"
 	line "I'm frustrated by"
 
@@ -260,17 +260,17 @@ PsychicNathanBeatenText:
 	text "…"
 	done
 
-UnknownText_0x58325:
+RuinsOfAlphOutsideMysteryChamberSignText:
 	text "Mystery Stone"
 	line "Panel Chamber"
 	done
 
-UnknownText_0x58342:
+RuinsOfAlphSignText:
 	text "Ruins of Alph"
 	line "Visitors Welcome"
 	done
 
-UnknownText_0x58362:
+RuinsOfAlphResearchCenterSignText:
 	text "Ruins of Alph"
 	line "Research Center"
 
@@ -287,7 +287,7 @@ MapRuinsofAlphOutsideSealedCaveSign:
 	cont "the rock."
 	done
 
-UnknownText_0x583a4:
+RuinsOfAlphOutsideFisherText1:
 	text "While exploring"
 	line "the ruins, we"
 
@@ -301,7 +301,7 @@ UnknownText_0x583a4:
 	line "careful too."
 	done
 
-UnknownText_0x58449:
+RuinsOfAlphOutsideYoungster1Text:
 	text "There are many"
 	line "kinds of Unown, so"
 
@@ -309,7 +309,7 @@ UnknownText_0x58449:
 	line "our secret codes."
 	done
 
-UnknownText_0x5848e:
+RuinsOfAlphOutsideYoungster2Text:
 	text "A… H… E… A… D…"
 	line "Hmm…"
 

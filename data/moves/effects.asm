@@ -418,7 +418,7 @@ MetalClaw:
 	hastarget
 	checkhit
 	critical
-	effectchance
+	selfeffectchance
 	damagestats
 	damagecalc
 	stab
@@ -441,7 +441,7 @@ SteelWing:
 	hastarget
 	checkhit
 	critical
-	effectchance
+	selfeffectchance
 	damagestats
 	damagecalc
 	stab
@@ -464,7 +464,7 @@ FlameCharge:
 	hastarget
 	checkhit
 	critical
-	effectchance
+	selfeffectchance
 	damagestats
 	damagecalc
 	stab
@@ -487,7 +487,7 @@ Ancientpower:
 	hastarget
 	checkhit
 	critical
-	effectchance
+	selfeffectchance
 	damagestats
 	damagecalc
 	stab
@@ -1519,6 +1519,8 @@ Counter:
 	checkobedience
 	usedmovetext
 	doturn
+	hastarget
+	checkhit ; needed for Parental Bond, it can't miss
 	counter
 	moveanim
 	failuretext
@@ -1927,7 +1929,7 @@ RapidSpin:
 	hastarget
 	checkhit
 	critical
-	effectchance
+	selfeffectchance
 	damagestats
 	damagecalc
 	stab
@@ -1995,6 +1997,8 @@ MirrorCoat:
 	checkobedience
 	usedmovetext
 	doturn
+	hastarget
+	checkhit
 	counter
 	moveanim
 	failuretext

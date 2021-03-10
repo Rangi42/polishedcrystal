@@ -58,7 +58,7 @@ sLuckyIDNumber:: dw
 
 SECTION "Backup Save", SRAM
 
-sBackupOptions:: ds wOptionsEnd - wOptions1
+sBackupOptions:: ds wOptionsEnd - wOptions
 
 sBackupCheckValue1:: db ; loaded with 99, used to check save corruption
 
@@ -68,7 +68,9 @@ sBackupMapData::     ds wCurMapDataEnd - wCurMapData
 sBackupPokemonData:: ds wPokemonDataEnd - wPokemonData
 sBackupGameDataEnd::
 
-	ds 394
+sBackupOptions3:: db
+
+	ds 393
 
 sBackupChecksum:: dw
 
@@ -77,7 +79,7 @@ sBackupCheckValue2:: db ; loaded with 127, used to check save corruption
 
 SECTION "Save", SRAM
 
-sOptions:: ds wOptionsEnd - wOptions1
+sOptions:: ds wOptionsEnd - wOptions
 
 sCheckValue1:: db ; loaded with 99, used to check save corruption
 
@@ -87,7 +89,9 @@ sMapData::     ds wCurMapDataEnd - wCurMapData
 sPokemonData:: ds wPokemonDataEnd - wPokemonData
 sGameDataEnd::
 
-	ds 394
+sOptions3:: db
+
+	ds 393
 
 sChecksum:: dw
 

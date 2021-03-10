@@ -4,7 +4,7 @@ RuinsOfAlphResearchCenter_MapScriptHeader:
 	scene_script RuinsofAlphResearchCenterTrigger1
 
 	def_callbacks
-	callback MAPCALLBACK_OBJECTS, UnknownScript_0x59185
+	callback MAPCALLBACK_OBJECTS, RuinsOfAlphResearchCenterScientistCallback
 
 	def_warp_events
 	warp_event  2,  7, RUINS_OF_ALPH_OUTSIDE, 6
@@ -13,15 +13,15 @@ RuinsOfAlphResearchCenter_MapScriptHeader:
 	def_coord_events
 
 	def_bg_events
-	bg_event  6,  5, BGEVENT_JUMPTEXT, UnknownText_0x59886
+	bg_event  6,  5, BGEVENT_JUMPTEXT, RuinsOfAlphResearchCenterAcademicBooksText
 	bg_event  3,  4, BGEVENT_READ, MapRuinsofAlphResearchCenterSignpost1Script
-	bg_event  7,  1, BGEVENT_JUMPTEXT, UnknownText_0x5980e
-	bg_event  5,  0, BGEVENT_JUMPTEXT, UnknownText_0x59848
+	bg_event  7,  1, BGEVENT_JUMPTEXT, RuinsOfAlphResearchCenterPrinterText_DoesntWork
+	bg_event  5,  0, BGEVENT_JUMPTEXT, RuinsOfAlphResearchCenterProfSilktreePhotoText
 
 	def_object_events
-	object_event  4,  5, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, ScientistScript_0x591e5, -1
-	object_event  5,  2, SPRITE_SCIENTIST, SPRITEMOVEDATA_WANDER, 1, 2, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, ScientistScript_0x59214, -1
-	object_event  2,  5, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, ScientistScript_0x591d1, EVENT_RUINS_OF_ALPH_RESEARCH_CENTER_SCIENTIST
+	object_event  4,  5, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, RuinsOfAlphResearchCenterScientist1Script, -1
+	object_event  5,  2, SPRITE_SCIENTIST, SPRITEMOVEDATA_WANDER, 1, 2, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, RuinsOfAlphResearchCenterScientist2Script, -1
+	object_event  2,  5, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, RuinsOfAlphResearchCenterScientist3Script, EVENT_RUINS_OF_ALPH_RESEARCH_CENTER_SCIENTIST
 
 	object_const_def
 	const RUINSOFALPHRESEARCHCENTER_SCIENTIST1
@@ -29,22 +29,22 @@ RuinsOfAlphResearchCenter_MapScriptHeader:
 	const RUINSOFALPHRESEARCHCENTER_SCIENTIST3
 
 RuinsofAlphResearchCenterTrigger1:
-	priorityjump UnknownScript_0x59192
+	priorityjump RuinsOfAlphResearchCenterGetUnownDexScript
 RuinsofAlphResearchCenterTrigger0:
 	end
 
-UnknownScript_0x59185:
+RuinsOfAlphResearchCenterScientistCallback:
 	checkscene
-	ifequal $1, UnknownScript_0x5918b
+	ifequal $1, .ShowScientist
 	return
 
-UnknownScript_0x5918b:
+.ShowScientist:
 	moveobject RUINSOFALPHRESEARCHCENTER_SCIENTIST3, 3, 7
 	appear RUINSOFALPHRESEARCHCENTER_SCIENTIST3
 	return
 
-UnknownScript_0x59192:
-	applymovement RUINSOFALPHRESEARCHCENTER_SCIENTIST3, MovementData_0x5926f
+RuinsOfAlphResearchCenterGetUnownDexScript:
+	applymovement RUINSOFALPHRESEARCHCENTER_SCIENTIST3, RuinsOfAlphResearchCenterApproachesComputerMovement
 	playsound SFX_BOOT_PC
 	pause 60
 	playsound SFX_SWITCH_POKEMON
@@ -54,14 +54,14 @@ UnknownScript_0x59192:
 	playsound SFX_TRANSACTION
 	pause 30
 	turnobject RUINSOFALPHRESEARCHCENTER_SCIENTIST3, DOWN
-	showtext UnknownText_0x59278
+	showtext RuinsOfAlphResearchCenterModifiedDexText
 	applyonemovement RUINSOFALPHRESEARCHCENTER_SCIENTIST3, step_down
 	opentext
-	writetext UnknownText_0x592fa
+	writetext RuinsOfAlphResearchCenterDexUpgradedText
 	playsound SFX_ITEM
 	waitsfx
 	setflag ENGINE_UNOWN_DEX
-	writetext UnknownText_0x59311
+	writetext RuinsOfAlphResearchCenterScientist3Text
 	waitbutton
 	closetext
 	applyonemovement RUINSOFALPHRESEARCHCENTER_SCIENTIST3, step_up
@@ -69,20 +69,20 @@ UnknownScript_0x59192:
 	special RestartMapMusic
 	end
 
-ScientistScript_0x591d1:
+RuinsOfAlphResearchCenterScientist3Script:
 	faceplayer
 	opentext
 	checkevent EVENT_RUINS_OF_ALPH_CLIMAX_DONE
 	iftrue .Conclusion
 	checkcode VAR_UNOWNCOUNT
-	ifequal NUM_UNOWN, UnknownScript_0x591df
-	jumpopenedtext UnknownText_0x59311
+	ifequal NUM_UNOWN, .PrinterAvailable
+	jumpopenedtext RuinsOfAlphResearchCenterScientist3Text
 
 .Conclusion:
 	jumpopenedtext RuinsofAlphResearchCenterScientistConclusionText
 
-UnknownScript_0x591df:
-	writetext UnknownText_0x5935f
+.PrinterAvailable:
+	writetext RuinsOfAlphResearchCenterScientist3_PrinterAvailable
 	buttonsound
 	setevent EVENT_DECO_UNOWN_DOLL
 	writetext GotUnownDollText
@@ -142,79 +142,79 @@ RuinsofAlphResearchCenterLeave2MovementData:
 	step_down
 	step_end
 
-ScientistScript_0x591e5:
+RuinsOfAlphResearchCenterScientist1Script:
 	faceplayer
 	opentext
 	checkcode VAR_UNOWNCOUNT
-	ifequal NUM_UNOWN, UnknownScript_0x5920b
+	ifequal NUM_UNOWN, .GotAllUnown
 	checkflag ENGINE_UNOWN_DEX
-	iftrue UnknownScript_0x59205
+	iftrue .GotUnownDex
 	checkevent EVENT_MADE_UNOWN_APPEAR_IN_RUINS
-	iftrue UnknownScript_0x591ff
-	jumpopenedtext UnknownText_0x593ed
+	iftrue .UnownAppeared
+	jumpopenedtext RuinsOfAlphResearchCenterScientist1Text
 
-UnknownScript_0x591ff:
-	jumpopenedtext UnknownText_0x59478
+.UnownAppeared:
+	jumpopenedtext RuinsOfAlphResearchCenterScientist1Text_UnownAppeared
 
-UnknownScript_0x59205:
-	jumpopenedtext UnknownText_0x59445
+.GotUnownDex:
+	jumpopenedtext RuinsOfAlphResearchCenterScientist1Text_GotUnownDex
 
-UnknownScript_0x5920b:
-	writetext UnknownText_0x594cb
+.GotAllUnown:
+	writetext RuinsOfAlphResearchCenterScientist1Text_GotAllUnown
 	waitbutton
 	closetext
 	clearevent EVENT_RUINS_OF_ALPH_OUTSIDE_TOURIST_YOUNGSTERS
 	end
 
-ScientistScript_0x59214:
+RuinsOfAlphResearchCenterScientist2Script:
 	faceplayer
 	opentext
 	checkcode VAR_UNOWNCOUNT
-	ifgreater 3, UnknownScript_0x5922e
+	ifgreater 3, .GotAllUnown
 	checkevent EVENT_MADE_UNOWN_APPEAR_IN_RUINS
-	iftrue UnknownScript_0x59228
-	jumpopenedtext UnknownText_0x5954f
+	iftrue .UnownAppeared
+	jumpopenedtext RuinsOfAlphResearchCenterScientist2Text
 
-UnknownScript_0x59228:
-	jumpopenedtext UnknownText_0x595cb
+.UnownAppeared:
+	jumpopenedtext RuinsOfAlphResearchCenterScientist2Text_UnownAppeared
 
-UnknownScript_0x5922e:
+.GotAllUnown:
 	checkcode VAR_UNOWNCOUNT
-	ifequal NUM_UNOWN, ResearchCompleteScript_0x596d3
+	ifequal NUM_UNOWN, .ResearchComplete
 	checkcode VAR_UNOWNCOUNT
-	ifgreater 10, ResearchOngoingScript_0x59669
-	jumpopenedtext UnknownText_0x59769
+	ifgreater 10, .ResearchOngoing
+	jumpopenedtext RuinsOfAlphResearchCenterScientist2Text_GotAllUnown
 
-ResearchCompleteScript_0x596d3:
-	writetext UnknownText_0x596d3
+.ResearchComplete:
+	writetext RuinsOfAlphResearchCenterScientist2Text_RadioWaves
 	waitbutton
 	closetext
 	clearevent EVENT_RUINS_OF_ALPH_OUTSIDE_TOURIST_YOUNGSTERS
 	end
 
-ResearchOngoingScript_0x59669:
-	jumpopenedtext UnknownText_0x59669
+.ResearchOngoing:
+	jumpopenedtext RuinsOfAlphResearchCenterScientist2Text_FocusedOurStudies
 
 MapRuinsofAlphResearchCenterSignpost1Script:
 	opentext
 	checkevent EVENT_RUINS_OF_ALPH_RESEARCH_CENTER_SCIENTIST
-	iffalse UnknownScript_0x59241
+	iffalse .SkipChecking
 	checkevent EVENT_DECO_UNOWN_DOLL
-	iftrue UnknownScript_0x59241
-	jumpopenedtext UnknownText_0x597b6
+	iftrue .SkipChecking
+	jumpopenedtext RuinsOfAlphResearchCenterComputerText
 
-UnknownScript_0x59241:
+.SkipChecking:
 	checkcode VAR_UNOWNCOUNT
-	jumpopenedtext UnknownText_0x597d9
+	jumpopenedtext RuinsOfAlphResearchCenterComputerText_GotAllUnown
 
-MovementData_0x5926f:
+RuinsOfAlphResearchCenterApproachesComputerMovement:
 	step_up
 	step_up
 	step_left
 	turn_head_up
 	step_end
 
-UnknownText_0x59278:
+RuinsOfAlphResearchCenterModifiedDexText:
 	text "Done!"
 
 	para "I modified your"
@@ -231,12 +231,12 @@ UnknownText_0x59278:
 	cont "they were caught."
 	done
 
-UnknownText_0x592fa:
+RuinsOfAlphResearchCenterDexUpgradedText:
 	text "<PLAYER>'s #dex"
 	line "was upgraded."
 	done
 
-UnknownText_0x59311:
+RuinsOfAlphResearchCenterScientist3Text:
 	text "The Unown you"
 	line "catch will all be"
 	cont "recorded."
@@ -252,7 +252,7 @@ UnknownText_0x59311:
 	cont "find all of them."
 	done
 
-UnknownText_0x5935f:
+RuinsOfAlphResearchCenterScientist3_PrinterAvailable:
 	text "You caught all the"
 	line "Unown variations?"
 
@@ -302,7 +302,7 @@ RuinsofAlphResearchCenterScientistConclusionText:
 	cont "disturb the site."
 	done
 
-UnknownText_0x593ed:
+RuinsOfAlphResearchCenterScientist1Text:
 	text "The ruins are"
 	line "about 1,500 years"
 	cont "old."
@@ -312,13 +312,13 @@ UnknownText_0x593ed:
 	cont "built--or by whom."
 	done
 
-UnknownText_0x59445:
+RuinsOfAlphResearchCenterScientist1Text_GotUnownDex:
 	text "I wonder how many"
 	line "kinds of #mon"
 	cont "are in the ruins?"
 	done
 
-UnknownText_0x59478:
+RuinsOfAlphResearchCenterScientist1Text_UnownAppeared:
 	text "#mon appeared"
 	line "in the ruins?"
 
@@ -329,7 +329,7 @@ UnknownText_0x59478:
 	line "investigate this."
 	done
 
-UnknownText_0x594cb:
+RuinsOfAlphResearchCenterScientist1Text_GotAllUnown:
 	text "Our investigation,"
 	line "with your help, is"
 
@@ -343,7 +343,7 @@ UnknownText_0x594cb:
 	line "#mon."
 	done
 
-UnknownText_0x5954f:
+RuinsOfAlphResearchCenterScientist2Text:
 	text "There are odd pat-"
 	line "terns drawn on the"
 
@@ -356,7 +356,7 @@ UnknownText_0x5954f:
 	cont "of the ruins."
 	done
 
-UnknownText_0x595cb:
+RuinsOfAlphResearchCenterScientist2Text_UnownAppeared:
 	text "The strange #-"
 	line "mon you saw in the"
 	cont "ruins?"
@@ -374,7 +374,7 @@ UnknownText_0x595cb:
 	cont "kinds of them…"
 	done
 
-UnknownText_0x59669:
+RuinsOfAlphResearchCenterScientist2Text_FocusedOurStudies:
 	text "We think something"
 	line "caused the cryptic"
 
@@ -385,7 +385,7 @@ UnknownText_0x59669:
 	line "studies on that."
 	done
 
-UnknownText_0x596d3:
+RuinsOfAlphResearchCenterScientist2Text_RadioWaves:
 	text "According to my"
 	line "research…"
 
@@ -402,7 +402,7 @@ UnknownText_0x596d3:
 	line "link…"
 	done
 
-UnknownText_0x59769:
+RuinsOfAlphResearchCenterScientist2Text_GotAllUnown:
 	text "Why did those"
 	line "ancient patterns"
 
@@ -413,14 +413,14 @@ UnknownText_0x59769:
 	line "deepens…"
 	done
 
-UnknownText_0x597b6:
+RuinsOfAlphResearchCenterComputerText:
 	text "Ruins of Alph"
 
 	para "Exploration"
 	line "Year 10"
 	done
 
-UnknownText_0x597d9:
+RuinsOfAlphResearchCenterComputerText_GotAllUnown:
 	text "Mystery #mon"
 	line "Name: Unown"
 
@@ -429,7 +429,7 @@ UnknownText_0x597d9:
 	line "kinds found."
 	done
 
-UnknownText_0x5980e:
+RuinsOfAlphResearchCenterPrinterText_DoesntWork:
 	text "It's a printer."
 	line "The display says"
 	cont "“PC LOAD LETTER”."
@@ -438,7 +438,7 @@ UnknownText_0x5980e:
 	line "mean?"
 	done
 
-UnknownText_0x59848:
+RuinsOfAlphResearchCenterProfSilktreePhotoText:
 	text "It's a photo of"
 	line "the Research"
 
@@ -446,7 +446,7 @@ UnknownText_0x59848:
 	line "Prof.Silktree."
 	done
 
-UnknownText_0x59886:
+RuinsOfAlphResearchCenterAcademicBooksText:
 	text "There are many"
 	line "academic books."
 

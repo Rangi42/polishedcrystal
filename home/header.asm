@@ -106,6 +106,7 @@ SECTION "vblank", ROM0[$0040]
 	jp VBlank
 
 ItemIsMail::
+; Returns carry if item d is a mail.
 	ld a, d
 	cp FLOWER_MAIL
 	ccf

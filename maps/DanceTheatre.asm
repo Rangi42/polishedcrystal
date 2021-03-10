@@ -19,10 +19,10 @@ DanceTheatre_MapScriptHeader:
 	object_event  6,  2, SPRITE_KIMONO_GIRL, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_GENERICTRAINER, 0, GenericTrainerKimono_girlZuki, -1
 	object_event  9,  1, SPRITE_KIMONO_GIRL, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_GENERICTRAINER, 0, GenericTrainerKimono_girlKuni, -1
 	object_event 11,  2, SPRITE_KIMONO_GIRL, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_GENERICTRAINER, 0, GenericTrainerKimono_girlMiki, -1
-	object_event  7, 10, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, GentlemanScript_0x994c6, -1
-	pokemon_event  6,  8, RHYDON, -1, -1, PAL_NPC_BROWN, UnknownText_0x99a0a, -1
-	object_event 10, 10, SPRITE_ACE_TRAINER_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x99a24, -1
-	object_event  3,  6, SPRITE_GRANNY, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x99aaa, -1
+	object_event  7, 10, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, DanceTheaterSurfGuy, -1
+	pokemon_event  6,  8, RHYDON, -1, -1, PAL_NPC_BROWN, RhydonText, -1
+	object_event 10, 10, SPRITE_ACE_TRAINER_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, DanceTheatreCooltrainerMText, -1
+	object_event  3,  6, SPRITE_GRANNY, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, DanceTheatreGrannyText, -1
 	object_event  1, 10, SPRITE_LADY, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, DanceTheatreLadyText, -1
 
 GenericTrainerKimono_girlNaoko:
@@ -74,13 +74,13 @@ GenericTrainerKimono_girlMiki:
 	line "spirits up too."
 	done
 
-GentlemanScript_0x994c6:
+DanceTheaterSurfGuy:
 	faceplayer
 	opentext
-	writetext UnknownText_0x9980a
+	writetext SurfGuyNeverLeftAScratchText
 	buttonsound
 	checkevent EVENT_GOT_HM03_SURF
-	iftrue_jumpopenedtext UnknownText_0x999d5
+	iftrue_jumpopenedtext SurfGuyElegantKimonoGirlsText
 	checkevent EVENT_BEAT_KIMONO_GIRL_NAOKO
 	iffalse UnknownScript_0x994f3
 	checkevent EVENT_BEAT_KIMONO_GIRL_SAYO
@@ -91,7 +91,7 @@ GentlemanScript_0x994c6:
 	iffalse UnknownScript_0x994f3
 	checkevent EVENT_BEAT_KIMONO_GIRL_MIKI
 	iffalse UnknownScript_0x994f3
-	writetext UnknownText_0x9991a
+	writetext SurfGuyLikeADanceText
 	buttonsound
 	verbosegivetmhm HM_SURF
 	setevent EVENT_GOT_HM03_SURF
@@ -106,10 +106,10 @@ GentlemanScript_0x994c6:
 
 UnknownScript_0x994f3:
 	checkflag ENGINE_PLAYER_IS_FEMALE
-	iftrue_jumpopenedtext UnknownText_0x998d4
+	iftrue_jumpopenedtext SurfGuyLassieGiftText
 	jumpthisopenedtext
 
-UnknownText_0x99891:
+SurfGuyLadGiftText:
 	text "Lad! If you can"
 	line "defeat all the"
 
@@ -118,7 +118,7 @@ UnknownText_0x99891:
 	done
 
 MapDanceTheatreSignpost1Script:
-	jumptext UnknownText_0x99b79
+	jumptext DanceTheatreFancyPanelText
 
 Kimono_girlNaokoSeenText:
 	text "You have lovely"
@@ -179,7 +179,7 @@ Kimono_girlMikiBeatenText:
 	line "at #mon too."
 	done
 
-UnknownText_0x9980a:
+SurfGuyNeverLeftAScratchText:
 	text "Not only are the"
 	line "Kimono Girls great"
 
@@ -194,7 +194,7 @@ UnknownText_0x9980a:
 	line "scratch…"
 	done
 
-UnknownText_0x998d4:
+SurfGuyLassieGiftText:
 	text "Lassie, if you can"
 	line "defeat all the"
 
@@ -202,7 +202,7 @@ UnknownText_0x998d4:
 	line "give you a gift."
 	done
 
-UnknownText_0x9991a:
+SurfGuyLikeADanceText:
 	text "The way you bat-"
 	line "tled, it was like"
 	cont "watching a dance."
@@ -215,18 +215,18 @@ UnknownText_0x9991a:
 	cont "--take it!"
 	done
 
-UnknownText_0x999d5:
+SurfGuyElegantKimonoGirlsText:
 	text "I wish my #mon"
 	line "were as elegant as"
 	cont "the Kimono Girls."
 	done
 
-UnknownText_0x99a0a:
+RhydonText:
 	text "Rhydon: Gugooh"
 	line "gugogooh!"
 	done
 
-UnknownText_0x99a24:
+DanceTheatreCooltrainerMText:
 	text "That man's always"
 	line "with his Rhydon."
 
@@ -240,7 +240,7 @@ UnknownText_0x99a24:
 	cont "#mon?"
 	done
 
-UnknownText_0x99aaa:
+DanceTheatreGrannyText:
 	text "The Kimono Girls"
 	line "are so beautiful…"
 
@@ -271,7 +271,7 @@ DanceTheatreLadyText:
 	para "I wonder why?"
 	done
 
-UnknownText_0x99b79:
+DanceTheatreFancyPanelText:
 	text "It's a fancy panel"
 	line "that's decorated"
 	cont "with flowers."

@@ -13,7 +13,7 @@ FastShipCabins_NNW_NNE_NE_MapScriptHeader:
 	def_bg_events
 
 	def_object_events
-	object_event  4, 26, SPRITE_SAILOR, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, SailorScript_0x755f1, EVENT_FAST_SHIP_CABINS_NNW_NNE_NE_SAILOR
+	object_event  4, 26, SPRITE_SAILOR, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, FastShipLazySailorScript, EVENT_FAST_SHIP_CABINS_NNW_NNE_NE_SAILOR
 	object_event  4,  5, SPRITE_PI, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerPILooker, EVENT_FAST_SHIP_PASSENGERS_FIRST_TRIP
 	object_event  4,  3, SPRITE_ACE_TRAINER_M, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, GenericTrainerCooltrainermSean, EVENT_FAST_SHIP_PASSENGERS_EASTBOUND
 	object_event  1,  5, SPRITE_ACE_TRAINER_F, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerCooltrainerfCarol, EVENT_FAST_SHIP_PASSENGERS_EASTBOUND
@@ -102,43 +102,43 @@ GenericTrainerBurglarCorey:
 	line "lost it…"
 	done
 
-SailorScript_0x755f1:
+FastShipLazySailorScript:
 	special SaveMusic
 	playmusic MUSIC_HIKER_ENCOUNTER
-	showtextfaceplayer UnknownText_0x75812
-	winlosstext UnknownText_0x75897, UnknownText_0x75897
+	showtextfaceplayer SailorStanlySeenText
+	winlosstext SailorStanlyBeatenText, SailorStanlyBeatenText
 	loadtrainer SAILOR, STANLY
 	writecode VAR_BATTLETYPE, BATTLETYPE_CANLOSE
 	startbattle
 	reloadmap
 	special HealParty
 	setevent EVENT_BEAT_SAILOR_STANLY
-	showtext UnknownText_0x758b1
+	showtext SailorStanlyAfterBattleText
 	setevent EVENT_FAST_SHIP_LAZY_SAILOR
 	setmapscene FAST_SHIP_B1F, $1
 	checkcode VAR_FACING
 	ifequal $3, UnknownScript_0x75629
-	applymovement FASTSHIPCABINS_NNW_NNE_NE_SAILOR, MovementData_0x75637
+	applymovement FASTSHIPCABINS_NNW_NNE_NE_SAILOR, FastShipLazySailorLeavesMovement1
 	playsound SFX_EXIT_BUILDING
 	disappear FASTSHIPCABINS_NNW_NNE_NE_SAILOR
 	waitsfx
 	end
 
 UnknownScript_0x75629:
-	applymovement FASTSHIPCABINS_NNW_NNE_NE_SAILOR, MovementData_0x7563c
+	applymovement FASTSHIPCABINS_NNW_NNE_NE_SAILOR, FastShipLazySailorLeavesMovement2
 	playsound SFX_EXIT_BUILDING
 	disappear FASTSHIPCABINS_NNW_NNE_NE_SAILOR
 	waitsfx
 	end
 
-MovementData_0x75637:
+FastShipLazySailorLeavesMovement1:
 	step_left
 	step_left
 	step_up
 	step_up
 	step_end
 
-MovementData_0x7563c:
+FastShipLazySailorLeavesMovement2:
 	step_down
 	step_left
 	step_left
@@ -202,7 +202,7 @@ HikerNolandBeatenText:
 	line "handle!"
 	done
 
-UnknownText_0x75812:
+SailorStanlySeenText:
 	text "Yeah, I'm a sail-"
 	line "or, all right."
 
@@ -217,12 +217,12 @@ UnknownText_0x75812:
 	line "Let's battle!"
 	done
 
-UnknownText_0x75897:
+SailorStanlyBeatenText:
 	text "Sorry! It's all my"
 	line "fault!"
 	done
 
-UnknownText_0x758b1:
+SailorStanlyAfterBattleText:
 	text "Being a sailor, I"
 	line "have to do phys-"
 	cont "ical labor. It's"

@@ -6,7 +6,11 @@ else
 	;   hp  atk  def  spd  sat  sdf
 endc
 
+if DEF(FAITHFUL)
 	db BUG, POISON
+else
+	db BUG, DARK
+endc
 	db 90 ; catch rate
 	db 134 ; base exp
 	db NO_ITEM ; item 1

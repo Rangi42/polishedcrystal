@@ -3,7 +3,7 @@ FindItemInBallScript::
 	iffalse .no_room
 	disappear LAST_TALKED
 	opentext
-	farwritetext UnknownText_0x1c0a1c
+	farwritetext _FoundItemText
 	callasm .ShowItemIcon
 	specialsound
 	itemnotify
@@ -12,7 +12,7 @@ FindItemInBallScript::
 
 .no_room
 	opentext
-	farwritetext UnknownText_0x1c0a1c
+	farwritetext _FoundItemText
 	waitbutton
 	pocketisfull
 	closetext
@@ -47,7 +47,7 @@ FindKeyItemInBallScript::
 	callasm .ReceiveKeyItem
 	disappear LAST_TALKED
 	opentext
-	farwritetext UnknownText_0x1c0a1c
+	farwritetext _FoundItemText
 	callasm .ShowKeyItemIcon
 	specialsound
 	keyitemnotify
@@ -80,7 +80,7 @@ FindTMHMInBallScript::
 	callasm .ReceiveTMHM
 	disappear LAST_TALKED
 	opentext
-	farwritetext UnknownText_0x1c0a1c
+	farwritetext _FoundItemText
 	callasm .ShowTMHMIcon
 	playsound SFX_GET_TM
 	waitsfx

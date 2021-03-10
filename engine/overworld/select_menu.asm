@@ -10,7 +10,7 @@ SelectMenu::
 	jp CloseText
 
 ItemMayBeRegisteredText:
-	text_jump UnknownText_0x1c1cf3
+	text_jump _MayRegisterItemText
 	text_end
 
 CheckRegisteredItem::

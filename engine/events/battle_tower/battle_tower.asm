@@ -535,19 +535,92 @@ BT_LegalityCheck:
 ; Check OT party for violations of Species or Item Clause. Used to verify
 ; both the player team when entering after copying to OT data, and the
 ; generated AI team. Returns z if the team is legal, otherwise nz and the error
-; in b (1: 2+ share item, 2: 2+ share species)
+; in e (1: 2+ share species, 2: 2+ share item)
 ; Species Clause: more than 1 Pokémon are the same species
 ; Item Clause: more than 1 Pokémon holds the same item
-	; Party size
-	ld hl, wOTPartyMon1Item
-	lb bc, 1, PARTYMON_STRUCT_LENGTH
 	ld a, [wOTPartyCount]
-	call ArrayIsUnique
-	ret nz ; illegal (b=1)
-	dec b
-	ld hl, wOTPartyMon1Species
-	call ArrayIsUnique
-	ret z ; legit (b=0)
-	inc b
-	inc b
+	ld e, a
+
+	; Do nothing if we have no mons at all
+	and a
+	ret z
+
+	; Nor if we have a single mon (since we have nothing to compare with)
+	dec e
+	ret z
+
+	ld hl, wOTPartyMon1
+.outer_loop
+	push de
+	ld c, [hl]
+	ld a, MON_FORM
+	call .GetPartyValue
+	ld b, a
+	ld a, MON_ITEM
+	call .GetPartyValue
+	ld d, a
+	push hl
+	call .NextPartyMon
+.inner_loop
+	; Compare species
+	ld a, [hl]
+	cp c
+	jr nz, .species_not_identical
+
+	; Compare extspecies
+	ld a, MON_FORM
+	call .GetPartyValue
+	xor b
+	and EXTSPECIES_MASK
+	ld a, 1
+	jr z, .identical
+
+.species_not_identical
+	ld a, MON_ITEM
+	call .GetPartyValue
+
+	; Allow several mons with no item
+	and a
+	jr z, .item_not_identical
+	cp d
+	ld a, 2
+	jr z, .identical
+
+.item_not_identical
+	call .NextPartyMon
+	dec e
+	jr nz, .inner_loop
+	pop hl
+	call .NextPartyMon
+	pop de
+	dec e
+	jr nz, .outer_loop
+	ret
+
+.identical
+	pop hl
+	pop de
+	ld e, a
+	and a
+	ret
+
+.NextPartyMon:
+; Advance to next party mon.
+	push bc
+	ld bc, PARTYMON_STRUCT_LENGTH
+	add hl, bc
+	pop bc
+	ret
+
+.GetPartyValue:
+; From party field in a, get value for current partymon in hl.
+; Preserves hl.
+	push hl
+	add l
+	ld l, a
+	adc h
+	sub l
+	ld h, a
+	ld a, [hl]
+	pop hl
 	ret

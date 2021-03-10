@@ -120,7 +120,7 @@ Init::
 	ld a, BANK(GameInit) ; aka BANK(WriteOAMDMACodeToHRAM)
 	rst Bankswitch
 
-	call WriteOAMDMACodeToHRAM
+	call WriteOAMDMACodeToHRAM ; far-ok
 
 	xor a
 	ldh [hMapAnims], a
@@ -191,7 +191,7 @@ Init::
 	call InitSound
 	xor a
 	ld [wMapMusic], a
-	jp GameInit
+	jp GameInit ; far-ok
 
 ClearVRAM::
 ; Wipe VRAM banks 0 and 1

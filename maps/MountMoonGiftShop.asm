@@ -14,10 +14,10 @@ MountMoonGiftShop_MapScriptHeader:
 	def_object_events
 	object_event  4,  3, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, (1 << MORN), 0, OBJECTTYPE_COMMAND, pokemart, MARTTYPE_STANDARD, MART_MT_MOON, -1
 	object_event  1,  2, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, (1 << DAY), 0, OBJECTTYPE_COMMAND, pokemart, MARTTYPE_STANDARD, MART_MT_MOON, -1
-	object_event  1,  6, SPRITE_CUTE_GIRL, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, (1 << MORN), PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x771b3, -1
-	object_event  5,  4, SPRITE_CUTE_GIRL, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, (1 << DAY), PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x771b3, -1
+	object_event  1,  6, SPRITE_CUTE_GIRL, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, (1 << MORN), PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, MountMoonGiftShopLassText, -1
+	object_event  5,  4, SPRITE_CUTE_GIRL, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, (1 << DAY), PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, MountMoonGiftShopLassText, -1
 
-UnknownText_0x771b3:
+MountMoonGiftShopLassText:
 	text "When the sun goes"
 	line "down, Clefairy"
 	cont "come out to play."

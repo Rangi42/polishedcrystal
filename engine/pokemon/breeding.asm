@@ -69,7 +69,7 @@ CheckBreedmonCompatibility:
 	ld a, [wBreedMon2Species]
 	ld [wCurSpecies], a
 	ld a, [wBreedMon2Form]
-	and FORM_MASK
+	and BASEMON_MASK
 	ld [wCurForm], a
 	call GetBaseData
 	ld a, [wBaseEggGroups]
@@ -79,7 +79,7 @@ CheckBreedmonCompatibility:
 	ld a, [wBreedMon1Species]
 	ld [wCurSpecies], a
 	ld a, [wBreedMon1Form]
-	and FORM_MASK
+	and BASEMON_MASK
 	ld [wCurForm], a
 	call GetBaseData
 	ld a, [wBaseEggGroups]
@@ -93,7 +93,7 @@ CheckBreedmonCompatibility:
 	jr z, .Compatible
 	ld [wCurSpecies], a
 	ld a, [wBreedMon2Form]
-	and FORM_MASK
+	and BASEMON_MASK
 	ld [wCurForm], a
 	call GetBaseData
 	ld a, [wBaseEggGroups]
@@ -110,7 +110,7 @@ CheckBreedmonCompatibility:
 	jr z, .Compatible
 	ld [wCurSpecies], a
 	ld a, [wBreedMon1Form]
-	and FORM_MASK
+	and BASEMON_MASK
 	ld [wCurForm], a
 	push bc
 	call GetBaseData
@@ -308,7 +308,7 @@ HatchEggs:
 	ld a, MON_FORM
 	call GetPartyParamLocation
 	ld a, [hl]
-	and FORM_MASK
+	and BASEMON_MASK
 	ld [wCurForm], a
 
 	ld a, [wCurPartyMon]
@@ -426,7 +426,7 @@ HatchEggs:
 
 .Text_HatchEgg:
 	; Huh? @ @
-	text_jump UnknownText_0x1c0db0
+	text_jump Text_BreedHuh
 	start_asm
 	ld hl, wVramState
 	res 0, [hl]
@@ -453,12 +453,12 @@ HatchEggs:
 
 .CameOutOfItsEgg:
 	; came out of its EGG!@ @
-	text_jump UnknownText_0x1c0dba
+	text_jump _BreedEggHatchText
 	text_end
 
 .Text_NicknameHatchling:
 	; Give a nickname to @ ?
-	text_jump UnknownText_0x1c0dd8
+	text_jump _BreedAskNicknameText
 	text_end
 
 GetMotherAddr:
@@ -496,7 +496,7 @@ InitEggMoves:
 	ld c, a
 	; b = form
 	ld a, [wEggMonForm]
-	and FORM_MASK
+	and BASEMON_MASK
 	ld b, a
 	predef FillMoves
 
@@ -533,7 +533,6 @@ InitEggMoves:
 	call InheritLevelMove
 	pop bc
 	pop hl
-	pop de
 	jr .level_up_done_inner
 
 .level_up_done
@@ -575,7 +574,7 @@ InheritLevelMove:
 	ld c, a
 	; b = form
 	ld a, [wEggMonForm]
-	and FORM_MASK
+	and BASEMON_MASK
 	ld b, a
 	; bc = index
 	call GetSpeciesAndFormIndex
@@ -611,7 +610,7 @@ InheritEggMove:
 	ld c, a
 	; b = form
 	ld a, [wEggMonForm]
-	and FORM_MASK
+	and BASEMON_MASK
 	ld b, a
 	; bc = index
 	call GetSpeciesAndFormIndex
@@ -928,12 +927,12 @@ DayCareMonCursor:
 
 DayCareMon2Text:
 	; It's @ that was left with the DAY-CARE LADY.
-	text_jump UnknownText_0x1c0df3
+	text_jump _LeftWithDayCareLadyText
 	text_end
 
 DayCareMon1Text:
 	; It's @ that was left with the DAY-CARE MAN.
-	text_jump UnknownText_0x1c0e24
+	text_jump _LeftWithDayCareManText
 	text_end
 
 DayCareMonCompatibilityText:
@@ -962,20 +961,20 @@ DayCareMonCompatibilityText:
 
 .Incompatible:
 	; It has no interest in @ .
-	text_jump UnknownText_0x1c0e6f
+	text_jump _BreedNoInterestText
 	text_end
 
 .HighCompatibility:
 	; It appears to care for @ .
-	text_jump UnknownText_0x1c0e8d
+	text_jump _BreedAppearsToCareForText
 	text_end
 
 .ModerateCompatibility:
 	; It's friendly with @ .
-	text_jump UnknownText_0x1c0eac
+	text_jump _BreedFriendlyText
 	text_end
 
 .SlightCompatibility:
 	; It shows interest in @ .
-	text_jump UnknownText_0x1c0ec6
+	text_jump _BreedShowsInterestText
 	text_end

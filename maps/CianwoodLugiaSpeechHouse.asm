@@ -14,9 +14,9 @@ CianwoodLugiaSpeechHouse_MapScriptHeader:
 	bg_event  1,  1, BGEVENT_JUMPSTD, picturebookshelf
 
 	def_object_events
-	object_event  2,  4, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x9e1bc, -1
-	object_event  6,  5, SPRITE_CUTE_GIRL, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x9e23f, -1
-	object_event  0,  2, SPRITE_TWIN, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x9e2a9, -1
+	object_event  2,  4, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, CianwoodLugiaSpeechHouseTeacherText, -1
+	object_event  6,  5, SPRITE_CUTE_GIRL, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, CianwoodLugiaSpeechHouseLassText, -1
+	object_event  0,  2, SPRITE_TWIN, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_COMMAND, jumptextfaceplayer, CianwoodLugiaSpeechHouseTwinText, -1
 	object_event  5,  3, SPRITE_BLACK_BELT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, CianwoodHouseBlackBeltScript, -1
 
 CianwoodHouseBlackBeltScript:
@@ -52,7 +52,7 @@ CianwoodHouseBlackBeltText2:
 	line "the Gym!"
 	done
 
-UnknownText_0x9e1bc:
+CianwoodLugiaSpeechHouseTeacherText:
 	text "You came from"
 	line "Olivine?"
 
@@ -66,7 +66,7 @@ UnknownText_0x9e1bc:
 	cont "them."
 	done
 
-UnknownText_0x9e23f:
+CianwoodLugiaSpeechHouseLassText:
 	text "I heard that you"
 	line "can only see it if"
 
@@ -78,7 +78,7 @@ UnknownText_0x9e23f:
 	cont "creature."
 	done
 
-UnknownText_0x9e2a9:
+CianwoodLugiaSpeechHouseTwinText:
 	text "I've heard that"
 	line "the whirlpools"
 

@@ -3,7 +3,7 @@ RuinsOfAlphKabutoChamber_MapScriptHeader:
 	scene_script RuinsofAlphKabutoChamberTrigger0
 
 	def_callbacks
-	callback MAPCALLBACK_TILES, UnknownScript_0x58737
+	callback MAPCALLBACK_TILES, RuinsofAlphKabutoChamberHiddenDoorsCallback
 
 	def_warp_events
 	warp_event  3,  9, RUINS_OF_ALPH_OUTSIDE, 2
@@ -23,31 +23,31 @@ RuinsOfAlphKabutoChamber_MapScriptHeader:
 	bg_event  4,  0, BGEVENT_UP, MapRuinsofAlphKabutoChamberSignpost5Script
 
 	def_object_events
-	object_event  5,  5, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x58800, EVENT_RUINS_OF_ALPH_KABUTO_CHAMBER_RECEPTIONIST
-	object_event  3,  1, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, ScientistScript_0x587a8, -1
+	object_event  5,  5, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_COMMAND, jumptextfaceplayer, RuinsOfAlphKabutoChamberReceptionistText, EVENT_RUINS_OF_ALPH_KABUTO_CHAMBER_RECEPTIONIST
+	object_event  3,  1, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, RuinsOfAlphKabutoChamberScientistScript, -1
 
 RuinsofAlphKabutoChamberTrigger0:
 	checkevent EVENT_WALL_OPENED_IN_KABUTO_CHAMBER
 	iffalse .End
-	priorityjump UnknownScript_0x58751
+	priorityjump RuinsofAlphKabutoChamberWallOpenScript
 .End
 	end
 
-UnknownScript_0x58737:
+RuinsofAlphKabutoChamberHiddenDoorsCallback:
 	checkevent EVENT_WALL_OPENED_IN_KABUTO_CHAMBER
-	iftrue UnknownScript_0x58741
+	iftrue .WallOpen
 	changeblock 4, 0, $24
-UnknownScript_0x58741:
+.WallOpen:
 	checkevent EVENT_SOLVED_KABUTO_PUZZLE
-	iffalse UnknownScript_0x58748
+	iffalse .FloorClosed
 	return
 
-UnknownScript_0x58748:
+.FloorClosed:
 	changeblock 2, 2, $1
 	changeblock 4, 2, $2
 	return
 
-UnknownScript_0x58751:
+RuinsofAlphKabutoChamberWallOpenScript:
 	pause 30
 	earthquake 30
 	showemote EMOTE_SHOCK, PLAYER, 20
@@ -64,10 +64,10 @@ MapRuinsofAlphKabutoChamberSignpost2Script:
 	writebyte $0
 	special Special_UnownPuzzle
 	closetext
-	iftrue UnknownScript_0x58778
+	iftrue .PuzzleComplete
 	end
 
-UnknownScript_0x58778:
+.PuzzleComplete:
 	setevent EVENT_RUINS_OF_ALPH_INNER_CHAMBER_TOURISTS
 	setevent EVENT_SOLVED_KABUTO_PUZZLE
 	setflag ENGINE_UNLOCKED_UNOWNS_1
@@ -87,37 +87,37 @@ UnknownScript_0x58778:
 	warpcheck
 	end
 
-ScientistScript_0x587a8:
+RuinsOfAlphKabutoChamberScientistScript:
 	checkcode VAR_UNOWNCOUNT
-	ifequal NUM_UNOWN, UnknownScript_0x587cf
+	ifequal NUM_UNOWN, .AllUnownCaught
 	checkevent EVENT_WALL_OPENED_IN_KABUTO_CHAMBER
-	iftrue_jumptextfaceplayer UnknownText_0x5897c
+	iftrue_jumptextfaceplayer RuinsOfAlphKabutoChamberScientistHoleText
 	faceplayer
 	opentext
 	checkevent EVENT_SOLVED_KABUTO_PUZZLE
-	iffalse UnknownScript_0x587c0
-	writetext UnknownText_0x589b8
+	iffalse .PuzzleIncomplete
+	writetext RuinsOfAlphKabutoChamberScientistTremorText
 	buttonsound
-UnknownScript_0x587c0:
-	writetext UnknownText_0x588f5
+.PuzzleIncomplete:
+	writetext RuinsOfAlphKabutoChamberScientistCrypticText
 	waitbutton
 	closetext
 	turnobject LAST_TALKED, UP
 	end
 
-UnknownScript_0x587cf:
-	jumptextfaceplayer UnknownText_0x594cb
+.AllUnownCaught:
+	jumptextfaceplayer RuinsOfAlphResearchCenterScientist1Text_GotAllUnown
 
 MapRuinsofAlphKabutoChamberSignpost3Script:
 	unowntypeface
-	showtext UnknownText_0x58b3f
+	showtext RuinsOfAlphKabutoChamberDescriptionText
 	restoretypeface
 	special MapCallbackSprites_LoadUsedSpritesGFX
 	end
 
 MapRuinsofAlphKabutoChamberSignpost5Script:
 	checkevent EVENT_WALL_OPENED_IN_KABUTO_CHAMBER
-	iftrue_jumptext UnknownText_0x58ea2
+	iftrue_jumptext RuinsOfAlphAerodactylChamberWallHoleText
 MapRuinsofAlphKabutoChamberSignpost4Script:
 	opentext
 	checkevent EVENT_RUINS_OF_ALPH_OUTSIDE_TOURIST_YOUNGSTERS
@@ -125,13 +125,13 @@ MapRuinsofAlphKabutoChamberSignpost4Script:
 	writetext UnusedText_0x58e70
 	jump .unownwords
 .unsolved
-	writetext UnknownText_0x58e4f
+	writetext RuinsOfAlphAerodactylChamberWallPatternLeftText
 .unownwords
 	writebyte $0
 	special Special_DisplayUnownWords
 	endtext
 
-UnknownText_0x58800:
+RuinsOfAlphKabutoChamberReceptionistText:
 	text "Welcome to this"
 	line "chamber."
 
@@ -156,7 +156,7 @@ UnknownText_0x58800:
 	line "patterns."
 	done
 
-UnknownText_0x588f5:
+RuinsOfAlphKabutoChamberScientistCrypticText:
 	text "Recently, strange,"
 	line "cryptic patterns"
 	cont "have appeared."
@@ -169,7 +169,7 @@ UnknownText_0x588f5:
 	line "look at the walls."
 	done
 
-UnknownText_0x5897c:
+RuinsOfAlphKabutoChamberScientistHoleText:
 	text "Ah! Here's another"
 	line "huge hole!"
 
@@ -177,7 +177,7 @@ UnknownText_0x5897c:
 	line "go through!"
 	done
 
-UnknownText_0x589b8:
+RuinsOfAlphKabutoChamberScientistTremorText:
 	text "That tremor was"
 	line "pretty scary!"
 
@@ -186,7 +186,7 @@ UnknownText_0x589b8:
 	cont "this wall here…"
 	done
 
-UnknownText_0x58b3f:
+RuinsOfAlphKabutoChamberDescriptionText:
 	text "A #mon that hid"
 	line "on the sea floor."
 

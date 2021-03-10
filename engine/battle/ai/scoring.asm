@@ -2411,17 +2411,6 @@ AI_Aggressive:
 	cp EFFECT_MIRROR_COAT
 	jr z, .nodamage
 	call AIDamageCalc
-
-	; Ignore unusable moves
-	pop bc
-	push bc
-	ld hl, wAIMoveScore - 1
-	ld c, b
-	ld b, 0
-	add hl, bc
-	ld a, [hl]
-	cp 60
-	jr nc, .nodamage
 	pop bc
 	pop de
 	pop hl
@@ -2495,7 +2484,7 @@ AI_Aggressive:
 	pop hl
 	ld a, [wTypeMatchup]
 	and a
-	jp z, AIDiscourageMove
+	call z, AIDiscourageMove
 
 	; If we made it this far, discourage this move.
 	inc [hl]

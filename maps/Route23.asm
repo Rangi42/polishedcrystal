@@ -4,48 +4,48 @@ Route23_MapScriptHeader:
 	def_callbacks
 
 	def_warp_events
-	warp_event  7, 135, POKEMON_LEAGUE_GATE, 5
-	warp_event  8, 135, POKEMON_LEAGUE_GATE, 6
-	warp_event  4, 31, VICTORY_ROAD_1F, 1
-	warp_event 14, 31, VICTORY_ROAD_2F, 1
+	warp_event  9, 135, POKEMON_LEAGUE_GATE, 5
+	warp_event 10, 135, POKEMON_LEAGUE_GATE, 6
+	warp_event  6, 31, VICTORY_ROAD_1F, 1
+	warp_event 16, 31, VICTORY_ROAD_2F, 1
 
 	def_coord_events
-	coord_event 14, 131, 0, Route23ZephyrBadgeTriggerScript
-	coord_event  9, 123, 1, Route23HiveBadgeTriggerScript
-	coord_event 10, 107, 2, Route23PlainBadgeTriggerScript
+	coord_event 16, 131, 0, Route23ZephyrBadgeTriggerScript
+	coord_event 11, 123, 1, Route23HiveBadgeTriggerScript
 	coord_event 12, 107, 2, Route23PlainBadgeTriggerScript
-	coord_event 13, 107, 2, Route23PlainBadgeTriggerScript
 	coord_event 14, 107, 2, Route23PlainBadgeTriggerScript
 	coord_event 15, 107, 2, Route23PlainBadgeTriggerScript
-	coord_event  8, 98, 3, Route23FogBadgeTriggerScript
-	coord_event  9, 98, 3, Route23FogBadgeTriggerScript
+	coord_event 16, 107, 2, Route23PlainBadgeTriggerScript
+	coord_event 17, 107, 2, Route23PlainBadgeTriggerScript
+	coord_event 10, 98, 3, Route23FogBadgeTriggerScript
 	coord_event 11, 98, 3, Route23FogBadgeTriggerScript
-	coord_event 12, 98, 3, Route23FogBadgeTriggerScript
 	coord_event 13, 98, 3, Route23FogBadgeTriggerScript
-	coord_event  4, 83, 4, Route23StormBadgeTriggerScript
+	coord_event 14, 98, 3, Route23FogBadgeTriggerScript
+	coord_event 15, 98, 3, Route23FogBadgeTriggerScript
 	coord_event  6, 83, 4, Route23StormBadgeTriggerScript
-	coord_event  7, 83, 4, Route23StormBadgeTriggerScript
-	coord_event  8, 70, 5, Route23MineralBadgeTriggerScript
-	coord_event  9, 70, 5, Route23MineralBadgeTriggerScript
+	coord_event  8, 83, 4, Route23StormBadgeTriggerScript
+	coord_event  9, 83, 4, Route23StormBadgeTriggerScript
 	coord_event 10, 70, 5, Route23MineralBadgeTriggerScript
+	coord_event 11, 70, 5, Route23MineralBadgeTriggerScript
 	coord_event 12, 70, 5, Route23MineralBadgeTriggerScript
-	coord_event 13, 70, 5, Route23MineralBadgeTriggerScript
-	coord_event 12, 55, 6, Route23GlacierBadgeTriggerScript
-	coord_event  6, 47, 7, Route23RisingBadgeTriggerScript
-	coord_event  7, 47, 7, Route23RisingBadgeTriggerScript
+	coord_event 14, 70, 5, Route23MineralBadgeTriggerScript
+	coord_event 15, 70, 5, Route23MineralBadgeTriggerScript
+	coord_event 14, 55, 6, Route23GlacierBadgeTriggerScript
+	coord_event  8, 47, 7, Route23RisingBadgeTriggerScript
+	coord_event  9, 47, 7, Route23RisingBadgeTriggerScript
 
 	def_bg_events
-	bg_event  3, 32, BGEVENT_JUMPTEXT, VictoryRoadSignText
+	bg_event  5, 32, BGEVENT_JUMPTEXT, VictoryRoadSignText
 
 	def_object_events
-	object_event 15, 131, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route23ZephyrBadgeOfficerScript, -1
-	object_event  8, 123, SPRITE_OFFICER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route23HiveBadgeOfficerScript, -1
-	object_event 11, 107, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route23PlainBadgeOfficerScript, -1
-	object_event 10, 98, SPRITE_SWIMMING_OFFICER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route23FogBadgeOfficerScript, -1
-	object_event  5, 83, SPRITE_SWIMMING_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route23StormBadgeOfficerScript, -1
-	object_event 11, 70, SPRITE_OFFICER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route23MineralBadgeOfficerScript, -1
-	object_event 13, 55, SPRITE_OFFICER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route23GlacierBadgeOfficerScript, -1
-	object_event  8, 47, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route23RisingBadgeOfficerScript, -1
+	object_event 17, 131, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route23ZephyrBadgeOfficerScript, -1
+	object_event 10, 123, SPRITE_OFFICER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route23HiveBadgeOfficerScript, -1
+	object_event 13, 107, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route23PlainBadgeOfficerScript, -1
+	object_event 12, 98, SPRITE_SWIMMING_OFFICER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route23FogBadgeOfficerScript, -1
+	object_event  7, 83, SPRITE_SWIMMING_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route23StormBadgeOfficerScript, -1
+	object_event 13, 70, SPRITE_OFFICER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route23MineralBadgeOfficerScript, -1
+	object_event 15, 55, SPRITE_OFFICER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route23GlacierBadgeOfficerScript, -1
+	object_event 10, 47, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route23RisingBadgeOfficerScript, -1
 
 	object_const_def
 	const ROUTE23_OFFICER1

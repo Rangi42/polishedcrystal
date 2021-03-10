@@ -11,22 +11,22 @@ SlowpokeWellB2F_MapScriptHeader:
 	def_bg_events
 
 	def_object_events
-	object_event  5,  4, SPRITE_GYM_GUY, SPRITEMOVEDATA_WANDER, 2, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 1, GymGuyScript_0x5ad0b, -1
+	object_event  5,  4, SPRITE_GYM_GUY, SPRITEMOVEDATA_WANDER, 2, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 1, SlowpokeWellB2FGymGuideScript, -1
 	itemball_event 15,  5, DAMP_ROCK, 1, EVENT_SLOWPOKE_WELL_B2F_DAMP_ROCK
 
-GymGuyScript_0x5ad0b:
+SlowpokeWellB2FGymGuideScript:
 	checkevent EVENT_GOT_KINGS_ROCK_IN_SLOWPOKE_WELL
-	iftrue_jumptextfaceplayer UnknownText_0x5adf2
+	iftrue_jumptextfaceplayer SlowpokeWellB2FGymGuideText_GotKingsRock
 	faceplayer
 	opentext
-	writetext UnknownText_0x5ad2a
+	writetext SlowpokeWellB2FGymGuideText
 	buttonsound
 	verbosegiveitem KINGS_ROCK
 	iffalse_endtext
 	setevent EVENT_GOT_KINGS_ROCK_IN_SLOWPOKE_WELL
 	endtext
 
-UnknownText_0x5ad2a:
+SlowpokeWellB2FGymGuideText:
 	text "I'm waiting to see"
 	line "Slowpoke's moment"
 	cont "of evolution."
@@ -46,7 +46,7 @@ UnknownText_0x5ad2a:
 	cont "you."
 	done
 
-UnknownText_0x5adf2:
+SlowpokeWellB2FGymGuideText_GotKingsRock:
 	text "I'm going to be"
 	line "like Slowpoke."
 

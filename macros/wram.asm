@@ -25,7 +25,7 @@ box_struct: MACRO
 \1Nature::         db
 \1Gender::
 \1IsEgg::
-\1IsDead::
+\1ExtSpecies::
 \1Form::           db
 \1PP::             ds NUM_MOVES
 \1Happiness::      db
@@ -70,7 +70,7 @@ battle_struct: MACRO
 \1Nature::         db
 \1Gender::
 \1IsEgg::
-\1IsDead::
+\1ExtSpecies::
 \1Form::           db
 \1PP::             ds NUM_MOVES
 \1Happiness::      db
@@ -234,7 +234,7 @@ trademon: MACRO
 \1Nature:: db
 \1Gender::
 \1IsEgg::
-\1IsDead::
+\1ExtSpecies::
 \1Form:: db
 \1ID:: dw
 \1CaughtData:: db

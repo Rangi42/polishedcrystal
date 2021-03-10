@@ -12,11 +12,11 @@ GoldenrodBillsHouse_MapScriptHeader:
 	def_bg_events
 
 	def_object_events
-	object_event  2,  3, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_UP, 2, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, GrampsScript_0x189538, -1
+	object_event  2,  3, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_UP, 2, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, BillsGrandpa, -1
 	object_event  5,  3, SPRITE_MATRON, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, BillsMom, -1
 	object_event  5,  4, SPRITE_SCHOOLGIRL, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, BillsSister, -1
 
-GrampsScript_0x189538:
+BillsGrandpa:
 	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	iftrue_jumptextfaceplayer BillsGrandpaComeAgainText
 	checkevent EVENT_GOT_SHINY_STONE_FROM_BILLS_GRANDPA
@@ -286,31 +286,31 @@ GrampsScript_0x189538:
 
 BillsMom:
 	checkevent EVENT_NEVER_MET_BILL
-	iffalse_jumptextfaceplayer UnknownText_0x54f4e
-	jumptextfaceplayer UnknownText_0x54ea8
+	iffalse_jumptextfaceplayer BillsMomText_AfterEcruteak
+	jumptextfaceplayer BillsMomText_BeforeEcruteak
 
 BillsSister:
 	faceplayer
 	opentext
 	checkcellnum PHONE_BILL
-	iftrue UnknownScript_0x54c58
-	writetext UnknownText_0x54f9e
+	iftrue .GotBillsNumber
+	writetext BillsSisterUsefulNumberText
 	askforphonenumber PHONE_BILL
-	ifequal $1, UnknownScript_0x54c64
-	ifequal $2, UnknownScript_0x54c5e
+	ifequal $1, .NoRoom
+	ifequal $2, .Refused
 	waitsfx
 	addcellnum PHONE_BILL
-	writetext UnknownText_0x54fd9
+	writetext RecordedBillsNumberText
 	playsound SFX_REGISTER_PHONE_NUMBER
 	waitsfx
 	buttonsound
-UnknownScript_0x54c58: ;0x54c58
-	jumpopenedtext UnknownText_0x55069
+.GotBillsNumber:
+	jumpopenedtext BillsSisterStorageSystemText
 
-UnknownScript_0x54c64:
-	writetext UnknownText_0x55046
+.NoRoom:
+	writetext BillsSisterPhoneFullText
 	buttonsound
-UnknownScript_0x54c5e:
+.Refused:
 	jumpthisopenedtext
 
 	text "My brother made"
@@ -491,7 +491,7 @@ BillsGrandpaPichuText:
 	line "evolves."
 	done
 
-UnknownText_0x54ea8:
+BillsMomText_BeforeEcruteak:
 	text "Oh, you collect"
 	line "#mon? My son"
 	cont "Bill is an expert."
@@ -509,7 +509,7 @@ UnknownText_0x54ea8:
 	line "being called…"
 	done
 
-UnknownText_0x54f4e:
+BillsMomText_AfterEcruteak:
 	text "My husband was"
 	line "once known as a"
 
@@ -526,7 +526,7 @@ UnknownText_0x54f4e:
 	line "all day long."
 	done
 
-UnknownText_0x54f9e:
+BillsSisterUsefulNumberText:
 	text "Are you a trainer?"
 
 	para "I've got a useful"
@@ -534,17 +534,17 @@ UnknownText_0x54f9e:
 	cont "you."
 	done
 
-UnknownText_0x54fd9:
+RecordedBillsNumberText:
 	text "<PLAYER> recorded"
 	line "Bill's number."
 	done
 
-UnknownText_0x55046:
+BillsSisterPhoneFullText:
 	text "You can't record"
 	line "any more numbers."
 	done
 
-UnknownText_0x55069:
+BillsSisterStorageSystemText:
 	text "My big brother"
 	line "Bill made the PC"
 

@@ -1798,11 +1798,9 @@ Music_Tempo:
 	ld a, [wTempoAdjustment]
 	ld l, a
 	bit 7, a
-	jr nz, .negative
 	ld h, 0
-	jr .ok
-.negative
-	ld h, $ff
+	jr z, .ok
+	dec h ; negative
 .ok
 	add hl, de
 	push hl

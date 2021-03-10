@@ -26,7 +26,7 @@ Route35_MapScriptHeader:
 	object_event  6, 10, SPRITE_FIREBREATHER, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, GenericTrainerFirebreatherWalt, -1
 	object_event 20,  7, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 2, -1, -1, 0, OBJECTTYPE_TRAINER, 3, TrainerBug_catcherArnie1, -1
 	object_event  9, 10, SPRITE_JUGGLER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, OBJECTTYPE_TRAINER, 2, TrainerJugglerIrwin, -1
-	object_event  9,  6, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, OfficermScript_0x19ca49, -1
+	object_event  9,  6, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, TrainerOfficerDirk, -1
 	cuttree_event 21,  6, EVENT_ROUTE_35_CUT_TREE
 	fruittree_event  6, 25, FRUITTREE_ROUTE_35, LEPPA_BERRY, PAL_NPC_RED
 	tmhmball_event 17, 16, TM_HONE_CLAWS, EVENT_ROUTE_35_TM_HONE_CLAWS
@@ -51,44 +51,44 @@ JugglerIrwin1Script:
 	writecode VAR_CALLERID, PHONE_JUGGLER_IRWIN
 	opentext
 	checkcellnum PHONE_JUGGLER_IRWIN
-	iftrue UnknownScript_0x19c90f
+	iftrue Route35NumberAcceptedM
 	checkevent EVENT_IRWIN_ASKED_FOR_PHONE_NUMBER
 	iftrue UnknownScript_0x19c8ec
-	writetext UnknownText_0x19cd5a
+	writetext JugglerIrwinAfterBattleText
 	buttonsound
 	setevent EVENT_IRWIN_ASKED_FOR_PHONE_NUMBER
-	scall UnknownScript_0x19c903
+	scall Route35AskNumber1M
 	jump UnknownScript_0x19c8ef
 
 UnknownScript_0x19c8ec:
-	scall UnknownScript_0x19c907
+	scall Route35AskNumber2M
 UnknownScript_0x19c8ef:
 	askforphonenumber PHONE_JUGGLER_IRWIN
-	ifequal $1, UnknownScript_0x19c917
-	ifequal $2, UnknownScript_0x19c913
+	ifequal $1, Route35PhoneFullM
+	ifequal $2, Route35NumberDeclinedM
 	trainertotext JUGGLER, IRWIN1, $0
-	scall UnknownScript_0x19c90b
-	jump UnknownScript_0x19c90f
+	scall Route35RegisteredNumberM
+	jump Route35NumberAcceptedM
 
-UnknownScript_0x19c903:
+Route35AskNumber1M:
 	jumpstd asknumber1m
 
-UnknownScript_0x19c907:
+Route35AskNumber2M:
 	jumpstd asknumber2m
 
-UnknownScript_0x19c90b:
+Route35RegisteredNumberM:
 	jumpstd registerednumberm
 
-UnknownScript_0x19c90f:
+Route35NumberAcceptedM:
 	jumpstd numberacceptedm
 
-UnknownScript_0x19c913:
+Route35NumberDeclinedM:
 	jumpstd numberdeclinedm
 
-UnknownScript_0x19c917:
+Route35PhoneFullM:
 	jumpstd phonefullm
 
-UnknownScript_0x19c91b:
+Route35RematchM:
 	jumpstd rematchm
 
 GenericTrainerCamperIvan:
@@ -135,27 +135,27 @@ Bug_catcherArnie1Script:
 	checkflag ENGINE_YANMA_SWARM
 	iftrue UnknownScript_0x19ca2f
 	checkcellnum PHONE_BUG_CATCHER_ARNIE
-	iftrue UnknownScript_0x19c90f
+	iftrue Route35NumberAcceptedM
 	checkevent EVENT_ARNIE_ASKED_FOR_PHONE_NUMBER
 	iftrue UnknownScript_0x19c9a4
-	writetext UnknownText_0x19cdf6
+	writetext BugCatcherArnieAfterBattleText
 	buttonsound
 	setevent EVENT_ARNIE_ASKED_FOR_PHONE_NUMBER
-	scall UnknownScript_0x19c903
+	scall Route35AskNumber1M
 	jump UnknownScript_0x19c9a7
 
 UnknownScript_0x19c9a4:
-	scall UnknownScript_0x19c907
+	scall Route35AskNumber2M
 UnknownScript_0x19c9a7:
 	askforphonenumber PHONE_BUG_CATCHER_ARNIE
-	ifequal $1, UnknownScript_0x19c917
-	ifequal $2, UnknownScript_0x19c913
+	ifequal $1, Route35PhoneFullM
+	ifequal $2, Route35NumberDeclinedM
 	trainertotext BUG_CATCHER, ARNIE1, $0
-	scall UnknownScript_0x19c90b
-	jump UnknownScript_0x19c90f
+	scall Route35RegisteredNumberM
+	jump Route35NumberAcceptedM
 
 UnknownScript_0x19c9bb:
-	scall UnknownScript_0x19c91b
+	scall Route35RematchM
 	winlosstext Bug_catcherArnie1BeatenText, 0
 	copybytetovar wArnieFightCount
 	ifequal 4, .Fight4
@@ -215,7 +215,7 @@ UnknownScript_0x19c9bb:
 	end
 
 UnknownScript_0x19ca2f:
-	jumpopenedtext UnknownText_0x19ce38
+	jumpopenedtext BugCatcherArnieYanmaText
 
 GenericTrainerFirebreatherWalt:
 	generictrainer FIREBREATHER, WALT, EVENT_BEAT_FIREBREATHER_WALT, FirebreatherWaltSeenText, FirebreatherWaltBeatenText
@@ -225,7 +225,7 @@ GenericTrainerFirebreatherWalt:
 	cont "wild #mon."
 	done
 
-OfficermScript_0x19ca49:
+TrainerOfficerDirk:
 	faceplayer
 	opentext
 	checktime 1 << NITE
@@ -234,10 +234,10 @@ OfficermScript_0x19ca49:
 	iftrue UnknownScript_0x19ca6d
 	special SaveMusic
 	playmusic MUSIC_OFFICER_ENCOUNTER
-	writetext UnknownText_0x19ceea
+	writetext OfficerDirkSeenText
 	waitbutton
 	closetext
-	winlosstext UnknownText_0x19cf06, 0
+	winlosstext OfficerDirkBeatenText, 0
 	loadtrainer OFFICERM, DIRK
 	startbattle
 	reloadmapafterbattle
@@ -245,10 +245,10 @@ OfficermScript_0x19ca49:
 	endtext
 
 UnknownScript_0x19ca6d:
-	jumpopenedtext UnknownText_0x19cf0f
+	jumpopenedtext OfficerDirkAfterBattleText
 
 UnknownScript_0x19ca73:
-	jumpopenedtext UnknownText_0x19cf56
+	jumpopenedtext OfficerDirkPrettyToughText
 
 CamperIvanSeenText:
 	text "I've been getting"
@@ -314,7 +314,7 @@ JugglerIrwin1BeatenText:
 	line "jolt!"
 	done
 
-UnknownText_0x19cd5a:
+JugglerIrwinAfterBattleText:
 	text "I was going to"
 	line "dazzle you with my"
 	cont "prize #mon."
@@ -334,7 +334,7 @@ Bug_catcherArnie1BeatenText:
 	line "have lost that…"
 	done
 
-UnknownText_0x19cdf6:
+BugCatcherArnieAfterBattleText:
 	text "My Venonat won me"
 	line "the Bug-Catching"
 
@@ -342,7 +342,7 @@ UnknownText_0x19cdf6:
 	line "National Park."
 	done
 
-UnknownText_0x19ce38:
+BugCatcherArnieYanmaText:
 	text "Wow… Look at all"
 	line "those Yanma!"
 
@@ -360,16 +360,16 @@ FirebreatherWaltBeatenText:
 	line "tip of my nose!"
 	done
 
-UnknownText_0x19ceea:
+OfficerDirkSeenText:
 	text "Danger lurks in"
 	line "the night!"
 	done
 
-UnknownText_0x19cf06:
+OfficerDirkBeatenText:
 	text "Whoops!"
 	done
 
-UnknownText_0x19cf0f:
+OfficerDirkAfterBattleText:
 	text "You know, night-"
 	line "time is fun in its"
 	cont "own ways."
@@ -378,7 +378,7 @@ UnknownText_0x19cf0f:
 	line "it, OK?"
 	done
 
-UnknownText_0x19cf56:
+OfficerDirkPrettyToughText:
 	text "Your #mon look"
 	line "pretty tough."
 

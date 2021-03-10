@@ -10,8 +10,8 @@ Route25_MapScriptHeader:
 	def_bg_events
 
 	def_object_events
-	object_event 30,  8, SPRITE_ACE_TRAINER_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, CooltrainerMScript_0x19efac, EVENT_ROUTE_25_COOLTRAINER_M_BEFORE
-	object_event 32,  8, SPRITE_ACE_TRAINER_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x19f520, EVENT_ROUTE_25_COOLTRAINER_M_AFTER
+	object_event 30,  8, SPRITE_ACE_TRAINER_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, TrainerCooltrainermKevin, EVENT_ROUTE_25_COOLTRAINER_M_BEFORE
+	object_event 32,  8, SPRITE_ACE_TRAINER_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, CooltrainermKevinAfterBattleText, EVENT_ROUTE_25_COOLTRAINER_M_AFTER
 	object_event  7, 11, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerSchoolboyDudley, -1
 	object_event 11,  8, SPRITE_LASS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerLassEllen, -1
 	object_event 14, 10, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerSchoolboyJoe, -1
@@ -85,34 +85,34 @@ Route25SlowpokeScript:
 	cry SLOWPOKE
 	waitendtext
 
-CooltrainerMScript_0x19efac:
+TrainerCooltrainermKevin:
 	checkevent EVENT_BEAT_SUPER_NERD_PAT
 	iffalse_jumptextfaceplayer NuggetBridgeNotClearedText
 	faceplayer
 	opentext
 	checkevent EVENT_CLEARED_NUGGET_BRIDGE
-	iftrue UnknownScript_0x19efc7
-	writetext UnknownText_0x19f43b
+	iftrue .AfterNuggetBridge
+	writetext CooltrainermKevinNuggetText
 	buttonsound
 	verbosegiveitem NUGGET
 	iffalse_endtext
 	setevent EVENT_CLEARED_NUGGET_BRIDGE
-UnknownScript_0x19efc7:
-	writetext UnknownText_0x19f49d
+.AfterNuggetBridge:
+	writetext CooltrainermKevinSeenText
 	waitbutton
 	closetext
 	follow ROUTE25_COOLTRAINERM_BEFORE, PLAYER
 	applymovement ROUTE25_COOLTRAINERM_BEFORE, Route25CooltrainerMovementData
 	stopfollow
 	turnobject ROUTE25_COOLTRAINERM_BEFORE, LEFT
-	winlosstext UnknownText_0x19f4fd, 0
+	winlosstext CooltrainermKevinBeatenText, 0
 	loadtrainer COOLTRAINERM, KEVIN
 	startbattle
 	disappear ROUTE25_COOLTRAINERM_BEFORE
 	appear ROUTE25_COOLTRAINERM_AFTER
 	reloadmapafterbattle
 	setevent EVENT_BEAT_COOLTRAINERM_KEVIN
-	jumptext UnknownText_0x19f520
+	jumptext CooltrainermKevinAfterBattleText
 
 Route25CooltrainerMovementData:
 	step_right
@@ -216,7 +216,7 @@ Route25SlowpokeText2:
 	text "…… ……Yawn?"
 	done
 
-UnknownText_0x19f43b:
+CooltrainermKevinNuggetText:
 	text "You took on one"
 	line "more battle than"
 
@@ -227,7 +227,7 @@ UnknownText_0x19f43b:
 	line "win a prize."
 	done
 
-UnknownText_0x19f49d:
+CooltrainermKevinSeenText:
 	text "But after seeing"
 	line "how you battle, I"
 
@@ -238,12 +238,12 @@ UnknownText_0x19f49d:
 	line "me take you on."
 	done
 
-UnknownText_0x19f4fd:
+CooltrainermKevinBeatenText:
 	text "I've never had a"
 	line "battle this good!"
 	done
 
-UnknownText_0x19f520:
+CooltrainermKevinAfterBattleText:
 	text "That was a great"
 	line "battle!"
 

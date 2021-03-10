@@ -93,8 +93,9 @@ CallOpponentTurn::
 
 BattleCommand_switchturn::
 SwitchTurn::
-	ldh a, [hBattleTurn]
+; Preserves all registers.
 	push af
+	ldh a, [hBattleTurn]
 	xor 1
 	ldh [hBattleTurn], a
 	pop af
@@ -687,9 +688,7 @@ CheckMoveSpeed::
 	ld e, a
 	ld d, 0
 	push de
-	call SetPlayerTurn
-	call CheckSpeed
-	call nz, SetEnemyTurn
+	call SetFastestTurn
 	pop de
 	call .do_it
 	call SwitchTurn
@@ -708,14 +707,34 @@ CheckMoveSpeed::
 	; Increases d if player is given priority, decreases if enemy is given it.
 	; d can be +2 or -2 if one is holding Quick Claw and the other Lagging Tail.
 	push de
+
+	; Quick Draw works like Quick Claw except 30% of the time
+	call GetTrueUserAbility
+	cp QUICK_DRAW
+	jr nz, .quick_draw_done
+	ld b, a
+	farcall BufferAbility
+	ld a, 100
+	call RandomRange
+	cp 30
+	jr nc, .quick_draw_done
+
+	farcall DisableAnimations
+	farcall ShowAbilityActivation
+	ld hl, BattleText_UserItemLetItMoveFirst
+	call StdBattleTextbox
+	farcall EnableAnimations
+	jr .set_priority
+
+.quick_draw_done
 	predef GetUserItemAfterUnnerve
-	pop de
 	ld a, b
 	cp HELD_QUICK_CLAW
 	jr z, .quick_claw
 	cp HELD_CUSTAP_BERRY
 	jr z, .custap_berry
 	cp HELD_LAGGING_TAIL
+	pop de
 	ret nz
 
 	; Lagging tail gives the foe priority
@@ -727,7 +746,6 @@ CheckMoveSpeed::
 	ret
 
 .custap_berry
-	push de
 	farcall QuarterPinchOrGluttony
 	pop de
 	ret nz
@@ -741,14 +759,16 @@ CheckMoveSpeed::
 	ld a, 100
 	call BattleRandomRange
 	cp c
+	pop de
 	ret nc
-	push de
 .activate_item
+	push de
 	farcall ItemRecoveryAnim
 	predef GetUserItemAfterUnnerve
 	call GetCurItemName
 	ld hl, BattleText_UserItemLetItMoveFirst
 	call StdBattleTextbox
+.set_priority
 	pop de
 	inc d
 	ldh a, [hBattleTurn]

@@ -1245,7 +1245,7 @@ BattleCommand_stab:
 	ld [wCurSpecies], a
 	ld a, MON_FORM
 	call TrueUserPartyAttr
-	and FORM_MASK
+	and BASEMON_MASK
 	ld [wCurForm], a
 	call GetBaseData
 	ld hl, wBaseType
@@ -1700,6 +1700,10 @@ BattleCommand_checkhit:
 	ret z
 	cp EFFECT_ROAR
 	ret z
+	cp EFFECT_COUNTER
+	ret z
+	cp EFFECT_MIRROR_COAT
+	ret z
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
 	cp STRUGGLE
@@ -2013,17 +2017,27 @@ BattleCommand_checkhit:
 	ret
 
 BattleCommand_effectchance:
+; Doesn't work against Substitute or Shield Dust
 	push bc
 	push hl
 	xor a
 	ld [wEffectFailed], a
 	call CheckSubstituteOpp
-	jr nz, .failed
+	jr nz, EffectChanceFailed
 
 	call GetOpponentAbilityAfterMoldBreaker
 	cp SHIELD_DUST
-	jr z, .failed
+	jr z, EffectChanceFailed
+	jr _CheckEffectChance
 
+BattleCommand_selfeffectchance:
+; Works even if opponent has Substitute or Shield Dust up
+	push bc
+	push hl
+	xor a
+	ld [wEffectFailed], a
+	; fallthrough
+_CheckEffectChance:
 	ld hl, wPlayerMoveStruct + MOVE_CHANCE
 	ldh a, [hBattleTurn]
 	and a
@@ -2035,23 +2049,23 @@ BattleCommand_effectchance:
 	ld b, a
 	call GetTrueUserAbility
 	cp SHEER_FORCE
-	jr z, .failed
+	jr z, EffectChanceFailed
 	cp SERENE_GRACE
 	jr nz, .skip_serene_grace
 	sla b
-	jr c, .end ; Carry means the effect byte overflowed, so gurantee it
+	jr c, EffectChanceEnd ; The effect byte overflowed, so gurantee it
 
 .skip_serene_grace
 	ld a, 100
 	call BattleRandomRange
 	cp b
-	jr c, .end
-
-.failed
+	jr c, EffectChanceEnd
+	; fallthrough
+EffectChanceFailed:
 	ld a, 1
 	ld [wEffectFailed], a
 	and a
-.end
+EffectChanceEnd:
 	pop hl
 	pop bc
 	ret
@@ -3022,19 +3036,22 @@ BattleCommand_posthiteffects:
 	ret nz
 
 	; Multi-hit attacks have their own multihit code
-	ld a, BATTLE_VARS_MOVE_EFFECT
-	call GetBattleVar
-	cp EFFECT_MULTI_HIT
-	ret z
+	ld a, BATTLE_VARS_SUBSTATUS3
+	call GetBattleVarAddr
+	bit SUBSTATUS_IN_LOOP, [hl]
+	ret nz
 
 	ld a, BATTLE_VARS_SUBSTATUS2
 	call GetBattleVarAddr
 	bit SUBSTATUS_IN_ABILITY, [hl]
 	res SUBSTATUS_IN_ABILITY, [hl]
-	ret nz
+	jr nz, .resolve_berserk
 	set SUBSTATUS_IN_ABILITY, [hl]
 	ld b, checkhit_command
 	jp SkipToBattleCommandBackwards
+
+.resolve_berserk
+	farjp ResolveOpponentBerserk
 
 CheckEndMoveEffects:
 ; Effects handled at move end skipped by Sheer Force negation except for rampage
@@ -3320,7 +3337,7 @@ UnevolvedEviolite:
 	; b = form
 	ld a, MON_FORM
 	call OpponentPartyAttr
-	and FORM_MASK
+	and BASEMON_MASK
 	ld b, a
 	; bc = index
 	call GetSpeciesAndFormIndex
@@ -4193,7 +4210,34 @@ PlayFXAnimID:
 	ret
 
 TakeOpponentDamage:
-	call CallOpponentTurn
+; user takes damage, doesn't apply berserk so don't run the regular damage func
+	ld hl, wCurDamage
+	ld a, [hli]
+	ld b, a
+	ld a, [hl]
+	or b
+	jr z, .did_no_damage
+
+	ld a, c
+	and a
+	jr nz, .mimic_sub_check
+
+	ld a, BATTLE_VARS_SUBSTATUS4
+	call GetBattleVar
+	bit SUBSTATUS_SUBSTITUTE, a
+	jr z, .mimic_sub_check
+	call SwitchTurn
+	call SelfInflictDamageToSubstitute
+	jp SwitchTurn
+
+.mimic_sub_check
+	ld a, [hld]
+	ld c, a
+	ld b, [hl]
+	farcall SubtractHPFromUser
+.did_no_damage
+	jp RefreshBattleHuds
+
 TakeDamage:
 ; opponent takes damage
 	ld hl, wCurDamage
@@ -4215,7 +4259,7 @@ TakeDamage:
 	ld a, [hld]
 	ld c, a
 	ld b, [hl]
-	farcall SubtractHPFromOpponent
+	farcall DealDamageToOpponent
 .did_no_damage
 	jp RefreshBattleHuds
 
@@ -4364,9 +4408,6 @@ BattleCommand_sleeptarget:
 	jr c, .ability_ok
 	jr nz, .failed
 
-	call CheckSubstituteOpp
-	ld hl, ButItFailedText
-	jr nz, .failed
 	ld a, [wAttackMissed]
 	and a
 	ld hl, AttackMissedText
@@ -4485,6 +4526,9 @@ CanStatusTarget:
 	pop af
 	and a
 	jr z, .no_mold_breaker
+	call CheckSubstituteOpp
+	ld hl, ButItFailedText
+	jr nz, .end
 	call GetOpponentAbilityAfterMoldBreaker
 	jr .got_ability
 .no_mold_breaker
@@ -4544,8 +4588,6 @@ CanStatusTarget:
 	ret
 
 BattleCommand_poisontarget:
-	call CheckSubstituteOpp
-	ret nz
 	ld b, 1
 	call CanPoisonTarget
 	ret nz
@@ -4716,6 +4758,8 @@ HandleBigRoot:
 BattleCommand_burntarget:
 	xor a
 	ld [wNumHits], a
+
+	; Needs to be checked here too, because it should prevent defrosting
 	call CheckSubstituteOpp
 	ret nz
 	ld a, BATTLE_VARS_STATUS_OPP
@@ -4819,8 +4863,6 @@ BattleCommand_freezetarget:
 BattleCommand_paralyzetarget:
 	xor a
 	ld [wNumHits], a
-	call CheckSubstituteOpp
-	ret nz
 	ld b, 1
 	call CanParalyzeTarget
 	ret nz
@@ -4952,14 +4994,48 @@ ResetMiss:
 	ld [wAttackMissed], a
 	ret
 
+DisplayStatusProblem:
+; Prints message and an animation upon being afflicted by a status problem.
+	ld a, BATTLE_VARS_STATUS_OPP
+	call GetBattleVar
+	and a
+	ret z ; Nothing happened?
+
+	ld e, a
+	call ShowPotentialAbilityActivation
+	ld bc, 4
+	ld hl, StatusProblemTable - 4
+.loop
+	add hl, bc
+	ld a, [hli]
+	and e
+	jr z, .loop
+
+	ld a, [hli]
+	ld d, [hl]
+	ld e, a
+	inc hl
+	push hl
+	call PlayOpponentBattleAnim
+	pop hl
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	jp StdBattleTextbox
+
+StatusProblemTable:
+	dbww 1 << TOX, ANIM_PSN, BadlyPoisonedText ; needs to be before PSN
+	dbww 1 << PAR, ANIM_PAR, ParalyzedText
+	dbww 1 << FRZ, ANIM_FRZ, FrozenSolidText
+	dbww 1 << BRN, ANIM_BRN, WasBurnedText
+	dbww 1 << PSN, ANIM_PSN, WasPoisonedText
+	dbww SLP, ANIM_SLP, FellAsleepText
+
 BattleCommand_burn:
 	ld a, [wTypeModifier]
 	and a
 	jp z, .failed_ineffective
 
-	call CheckSubstituteOpp
-	ld hl, ButItFailedText
-	jr nz, .failed
 	ld a, [wAttackMissed]
 	and a
 	ld hl, AttackMissedText
@@ -5312,6 +5388,9 @@ BattleCommand_endloop:
 	call GetBattleVarAddr
 	res SUBSTATUS_IN_LOOP, [hl]
 
+	push de
+	farcall ResolveOpponentBerserk
+	pop de
 	ld hl, wStringBuffer1
 	ld a, [de]
 	swap a
@@ -5434,7 +5513,7 @@ BattleCommand_charge:
 	jp EndMoveEffect
 
 .UsedText:
-	text_jump UnknownText_0x1c0d0e ; "[USER]"
+	text_jump Text_BattleUser ; "[USER]"
 	start_asm
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
@@ -5453,17 +5532,17 @@ BattleCommand_charge:
 
 .SolarBeam:
 ; 'took in sunlight!'
-	text_jump UnknownText_0x1c0d26
+	text_jump _BattleTookSunlightText
 	text_end
 
 .Fly:
 ; 'flew up high!'
-	text_jump UnknownText_0x1c0d5c
+	text_jump _BattleFlewText
 	text_end
 
 .Dig:
 ; 'dug a hole!'
-	text_jump UnknownText_0x1c0d6c
+	text_jump _BattleDugText
 	text_end
 
 BattleCommand_traptarget:
@@ -5671,11 +5750,10 @@ FinishConfusingTarget:
 	cp EFFECT_CONFUSE_HIT
 	jr z, .got_effect
 	cp EFFECT_SWAGGER
-	jr z, .got_effect
-	call AnimateCurrentMove
-
+	call nz, AnimateCurrentMove
 .got_effect
 	ld hl, BecameConfusedText
+	; fallthrough
 FinishConfusingTargetAnim:
 ; parameter hl: contains pointer to text box
 	ld de, ANIM_CONFUSED
@@ -5705,9 +5783,6 @@ BattleCommand_paralyze:
 	jr c, .ability_ok
 	jr nz, .failed
 
-	call CheckSubstituteOpp
-	ld hl, ButItFailedText
-	jr nz, .failed
 	ld a, [wAttackMissed]
 	and a
 	ld hl, AttackMissedText
@@ -6557,5 +6632,16 @@ _CheckBattleEffects:
 	push hl
 	push de
 	push bc
-	farcall CheckBattleEffects
+	call CheckBattleEffects
 	jp PopBCDEHL
+
+CheckBattleEffects:
+; Return carry if battle scene is turned off.
+	ld a, [wOptions1]
+	bit BATTLE_EFFECTS, a
+	jr z, .off
+	and a
+	ret
+.off
+	scf
+	ret

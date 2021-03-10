@@ -14,12 +14,12 @@ CeladonMansionRoof_MapScriptHeader:
 	bg_event  6,  1, BGEVENT_LEFT, MapCeladonMansionRoofSignpost0Script
 
 	def_object_events
-	object_event  7,  5, SPRITE_FAT_GUY, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x71a3f, -1
+	object_event  7,  5, SPRITE_FAT_GUY, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeladonMansionRoofFisherText, -1
 
 MapCeladonMansionRoofSignpost0Script:
-	jumptext UnknownText_0x71aa1
+	jumptext CeladonMansionRoofGraffitiText
 
-UnknownText_0x71a3f:
+CeladonMansionRoofFisherText:
 	text "High places--I do"
 	line "love them so!"
 
@@ -30,7 +30,7 @@ UnknownText_0x71a3f:
 	line "me is smoke!"
 	done
 
-UnknownText_0x71aa1:
+CeladonMansionRoofGraffitiText:
 	text "There's graffiti"
 	line "on the wall…"
 

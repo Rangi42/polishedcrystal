@@ -33,8 +33,9 @@ AIChooseMove:
 	ret z
 
 	; Move is unusable. Fix the move selection to a valid move, but prefer
-	; to switch if we can.
-	call _AIChooseMove
+	; to switch if we can, assuming we have usable moves at all.
+	farcall CheckUsableMoves
+	call z, _AIChooseMove
 
 	; Strongly encourage switch-out by pretending we have Perish 1.
 	ld a, [wEnemyPerishCount]
@@ -301,23 +302,23 @@ endc
 	ld [wCurEnemyMoveNum], a
 	ret
 
-AIScoringPointers:
-	dw AI_Basic
-	dw AI_Setup
-	dw AI_Types
-	dw AI_Offensive
-	dw AI_Smart
-	dw AI_Opportunist
-	dw AI_Aggressive
-	dw AI_Cautious
-	dw AI_Status
-	dw AI_Risky
-	dw DoNothing
-	dw DoNothing
-	dw DoNothing
-	dw DoNothing
-	dw DoNothing
-	dw DoNothing
+AIScoringPointers: ; these are all farcalled in BANK(AIScoring)
+	dw AI_Basic ; far-ok
+	dw AI_Setup ; far-ok
+	dw AI_Types ; far-ok
+	dw AI_Offensive ; far-ok
+	dw AI_Smart ; far-ok
+	dw AI_Opportunist ; far-ok
+	dw AI_Aggressive ; far-ok
+	dw AI_Cautious ; far-ok
+	dw AI_Status ; far-ok
+	dw AI_Risky ; far-ok
+	dw DoNothing ; far-ok
+	dw DoNothing ; far-ok
+	dw DoNothing ; far-ok
+	dw DoNothing ; far-ok
+	dw DoNothing ; far-ok
+	dw DoNothing ; far-ok
 
 if DEF(DEBUG)
 AIDebug:

@@ -53,10 +53,8 @@ StatsScreenMain:
 StatsScreenPointerTable:
 	dw MonStatsInit       ; regular pokémon
 	dw EggStatsInit       ; egg
-	dw StatsScreenWaitCry
 	dw EggStatsJoypad
 	dw StatsScreen_LoadPage
-	dw StatsScreenWaitCry
 	dw MonStatsJoypad
 	dw StatsScreen_Exit
 
@@ -103,7 +101,7 @@ MonStatsInit:
 	call StatsScreen_InitUpperHalf
 	ld hl, wStatsScreenFlags
 	set 4, [hl]
-	ld h, 4
+	ld h, 3
 	jp StatsScreen_SetJumptableIndex
 
 .egg
@@ -136,7 +134,7 @@ EggStatsJoypad:
 	jp StatsScreen_JoypadAction
 
 .quit
-	ld h, 7
+	ld h, 5
 	jp StatsScreen_SetJumptableIndex
 
 StatsScreen_LoadPage:
@@ -158,14 +156,6 @@ MonStatsJoypad:
 	and D_DOWN | D_UP | D_LEFT | D_RIGHT | A_BUTTON | B_BUTTON
 	jp StatsScreen_JoypadAction
 
-StatsScreenWaitCry:
-	call IsSFXPlaying
-	ret nc
-	ld a, [wJumptableIndex]
-	inc a
-	ld [wJumptableIndex], a
-	ret
-
 StatsScreen_CopyToTempMon:
 	ld a, [wMonType]
 	cp TEMPMON
@@ -173,7 +163,7 @@ StatsScreen_CopyToTempMon:
 	ld a, [wBufferMon]
 	ld [wCurSpecies], a
 	ld a, [wBufferMonForm]
-	and FORM_MASK
+	and BASEMON_MASK
 	ld [wCurForm], a
 	call GetBaseData
 	ld hl, wBufferMon
@@ -309,7 +299,7 @@ StatsScreen_JoypadAction:
 	and %11111100
 	or c
 	ld [wStatsScreenFlags], a
-	ld h, 4
+	ld h, 3
 	jp StatsScreen_SetJumptableIndex
 
 .load_mon
@@ -317,7 +307,7 @@ StatsScreen_JoypadAction:
 	jp StatsScreen_SetJumptableIndex
 
 .b_button
-	ld h, 7
+	ld h, 5
 	jp StatsScreen_SetJumptableIndex
 
 StatsScreen_InitUpperHalf:
@@ -327,14 +317,22 @@ StatsScreen_InitUpperHalf:
 	ld a, [wCurPartySpecies]
 	ld [wd265], a
 	ld [wCurSpecies], a
+	ld c, a
+	ld a, [wCurForm]
+	ld b, a
+	call GetPokedexNumber
+	ld a, b
+	ld [wStringBuffer1], a
+	ld a, c
+	ld [wStringBuffer1 + 1], a
 	hlcoord 8, 0
 	ld [hl], "№"
 	inc hl
 	ld [hl], "."
 	inc hl
 	hlcoord 10, 0
-	lb bc, PRINTNUM_LEADINGZEROS | 1, 3
-	ld de, wd265
+	lb bc, PRINTNUM_LEADINGZEROS | 2, 3
+	ld de, wStringBuffer1
 	call PrintNum
 	hlcoord 14, 0
 	call PrintLevel
@@ -658,11 +656,10 @@ StatsScreen_LoadGFX:
 	rst PlaceString
 	ld a, [wTempMonCaughtGender]
 	and FEMALE
-	jr z, .male
 	ld a, "♀"
-	jr .got_gender
-.male
-	ld a, "♂"
+	jr nz, .got_gender
+	assert "♀" - 1 == "♂"
+	dec a
 .got_gender
 	hlcoord 8, 15
 	ld [hl], a
@@ -792,11 +789,8 @@ StatsScreen_LoadGFX:
 	db "Nature/@"
 
 .OrangePage:
-	farjp OrangePage_
-
 ; Fourth stats page code by TPP Anniversary Crystal 251
 ; Ported by FIQ
-OrangePage_:
 	call TN_PrintToD
 	call TN_PrintLV
 	call TN_PrintLocation
@@ -805,7 +799,7 @@ OrangePage_:
 	ld a, $3e
 	rst ByteFill
 	hlcoord 1, 12
-	ld de, .ability
+	ld de, .AbilityString
 	rst PlaceString
 	ld a, [wTempMonAbility]
 	and ABILITY_MASK
@@ -813,7 +807,7 @@ OrangePage_:
 	rrca
 	ld e, a
 	ld d, 0
-	ld hl, .ability_tiles
+	ld hl, .AbilityTiles
 	add hl, de
 	ld a, [hl]
 	hlcoord 9, 12
@@ -828,10 +822,10 @@ OrangePage_:
 	pop bc
 	farjp PrintAbilityDescription
 
-.ability
+.AbilityString:
 	db "Ability/@"
 
-.ability_tiles
+.AbilityTiles:
 	; $3f = bold H
 	db $3f, "1", "2", $3f
 

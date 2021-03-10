@@ -333,7 +333,7 @@ LinkTimeout:
 
 .LinkTimeoutText:
 	; Too much time has elapsed. Please try again.
-	text_jump UnknownText_0x1c4183
+	text_jump _LinkTimeoutText
 	text_end
 
 ExchangeBytes:
@@ -1208,7 +1208,7 @@ LinkTrade_TradeStatsMenu:
 
 .Text_CantTradeLastMon:
 	; If you trade that #MON, you won't be able to battle.
-	text_jump UnknownText_0x1c41b1
+	text_jump _LinkTradeCantBattleText
 	text_end
 
 .String_Stats_Trade:
@@ -1216,7 +1216,7 @@ LinkTrade_TradeStatsMenu:
 
 .Text_Abnormal:
 	; Your friend's @  appears to be abnormal!
-	text_jump UnknownText_0x1c41e6
+	text_jump _LinkAbnormalMonText
 	text_end
 
 ValidateOTTrademon:
@@ -1645,10 +1645,8 @@ LinkTrade:
 	jr z, .player_2
 	predef TradeAnimation
 	jr .done_animation
-
 .player_2
-	farcall TradeAnimationPlayer2
-
+	call TradeAnimationPlayer2
 .done_animation
 	pop af
 	ld c, a
@@ -1732,7 +1730,7 @@ LinkTrade:
 
 .TradeThisForThat:
 	; Trade @ for @ ?
-	text_jump UnknownText_0x1c4212
+	text_jump _LinkAskTradeForText
 	text_end
 
 .TradeCompleted:
@@ -1841,8 +1839,6 @@ SetTradeRoomBGPals:
 	farcall LoadLinkTradePalette
 	farcall ApplyPals
 	jp SetPalettes
-
-INCLUDE "engine/movie/trade_animation.asm"
 
 WaitForOtherPlayerToExit:
 	ld c, 3
@@ -2184,19 +2180,20 @@ Link_ResetSerialRegistersAfterLinkClosure:
 
 Link_EnsureSync:
 	add $d0
-	ld [wPlayerLinkAction], a
+	ld [wLinkPlayerSyncBuffer], a
+	ld [wLinkPlayerSyncBuffer + 1], a
 	ld a, $2
 	ldh [hVBlank], a
 	call DelayFrame
 	call DelayFrame
 .receive_loop
-	call Serial_ExchangeLinkMenuSelection
-	ld a, [wOtherPlayerLinkMode]
+	call Serial_ExchangeSyncBytes
+	ld a, [wLinkReceivedSyncBuffer]
 	ld b, a
 	and $f0
 	cp $d0
 	jr z, .done
-	ld a, [wOtherPlayerLinkAction]
+	ld a, [wLinkReceivedSyncBuffer + 1]
 	ld b, a
 	and $f0
 	cp $d0

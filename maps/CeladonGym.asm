@@ -14,7 +14,7 @@ CeladonGym_MapScriptHeader:
 	bg_event  6, 15, BGEVENT_READ, CeladonGymStatue
 
 	def_object_events
-	object_event  5,  3, SPRITE_ERIKA, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ErikaScript_0x72a6a, -1
+	object_event  5,  3, SPRITE_ERIKA, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, CeladonGymErikaScript, -1
 	object_event  7,  8, SPRITE_LASS, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, GenericTrainerLassMichelle, -1
 	object_event  2,  8, SPRITE_PICNICKER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, GenericTrainerPicnickerTanya, -1
 	object_event  3,  5, SPRITE_BEAUTY, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, GenericTrainerBeautyJulia, -1
@@ -22,15 +22,15 @@ CeladonGym_MapScriptHeader:
 	object_event  4, 10, SPRITE_TWIN, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerTwinsJoandzoe1, -1
 	object_event  5, 10, SPRITE_TWIN, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerTwinsJoandzoe2, -1
 
-ErikaScript_0x72a6a:
+CeladonGymErikaScript:
 	faceplayer
 	opentext
 	checkflag ENGINE_RAINBOWBADGE
 	iftrue .FightDone
-	writetext UnknownText_0x72b28
+	writetext ErikaBeforeBattleText
 	waitbutton
 	closetext
-	winlosstext UnknownText_0x72c3e, 0
+	winlosstext ErikaBeatenText, 0
 	loadtrainer ERIKA, 1
 	startbattle
 	reloadmapafterbattle
@@ -41,7 +41,7 @@ ErikaScript_0x72a6a:
 	setevent EVENT_BEAT_AROMA_LADY_DAHLIA
 	setevent EVENT_BEAT_TWINS_JO_AND_ZOE
 	opentext
-	writetext UnknownText_0x72c96
+	writetext PlayerReceivedRainbowBadgeText
 	playsound SFX_GET_BADGE
 	waitsfx
 	setflag ENGINE_RAINBOWBADGE
@@ -62,8 +62,8 @@ ErikaScript_0x72a6a:
 	specialphonecall SPECIALCALL_LYRASEGG
 .FightDone:
 	checkevent EVENT_GOT_TM19_GIGA_DRAIN
-	iftrue_jumpopenedtext UnknownText_0x72d8f
-	writetext UnknownText_0x72cb0
+	iftrue_jumpopenedtext ErikaAfterBattleText
+	writetext ErikaExplainTMText
 	buttonsound
 	verbosegivetmhm TM_GIGA_DRAIN
 	setevent EVENT_GOT_TM19_GIGA_DRAIN
@@ -129,7 +129,7 @@ CeladonGymStatue:
 .Beaten:
 	jumpstd gymstatue2
 
-UnknownText_0x72b28:
+ErikaBeforeBattleText:
 	text "Erika: Hello…"
 	line "Lovely weather,"
 
@@ -157,7 +157,7 @@ UnknownText_0x72b28:
 	line "shall not lose."
 	done
 
-UnknownText_0x72c3e:
+ErikaBeatenText:
 	text "Erika: Oh!"
 	line "I concede defeat…"
 
@@ -168,12 +168,12 @@ UnknownText_0x72c3e:
 	line "the Rainbow Badge…"
 	done
 
-UnknownText_0x72c96:
+PlayerReceivedRainbowBadgeText:
 	text "<PLAYER> received"
 	line "the Rainbow Badge."
 	done
 
-UnknownText_0x72cb0:
+ErikaExplainTMText:
 	text "Erika: That was a"
 	line "delightful match."
 
@@ -196,7 +196,7 @@ ErikaOutroText:
 	line "it pleases you…"
 	done
 
-UnknownText_0x72d8f:
+ErikaAfterBattleText:
 	text "Erika: Losing"
 	line "leaves a bitter"
 	cont "aftertaste…"

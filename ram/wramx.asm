@@ -52,6 +52,8 @@ wTownMapCursorLandmark:: db
 wTownMapCursorObjectPointer:: dw
 NEXTU
 wTownMapCursorCoordinates:: dw
+wStartFlypoint:: db
+wEndFlypoint:: db
 ENDU
 
 NEXTU
@@ -164,12 +166,7 @@ wKeepSevenBiasChance::
 wTempDayOfWeek::
 	db
 
-	ds 2 ; unused
-
-wStartFlypoint:: db
-wEndFlypoint:: db
-
-	ds 55
+	ds 59
 
 UNION
 ; trainer data
@@ -278,7 +275,7 @@ wAvailableCallersEnd::
 NEXTU
 ; phone caller contact
 	ds 1
-wCallerContact:: ds PHONE_CONTACT_SIZE 
+wCallerContact:: ds PHONE_CONTACT_SIZE
 
 NEXTU
 ; backup menu data
@@ -398,9 +395,11 @@ wCurMart:: ds 16
 wCurMartEnd::
 NEXTU
 ; miscellaneous
-wInverseBattleScore::
 wCurElevator:: db
-wCurElevatorFloors::
+wCurElevatorFloors:: db
+NEXTU
+wInverseBattleScore::
+wCurMessageScrollPosition:: db
 wCurMessageIndex:: db
 wMailboxCount:: db
 wMailboxItems:: ds MAILBOX_CAPACITY
@@ -442,9 +441,6 @@ wPokemonWithdrawDepositParameter::
 
 wItemQuantityChangeBuffer:: db
 wItemQuantityBuffer:: db
-
-;TempMPWaveform::
-wTempMon:: party_struct wTempMon
 
 wSpriteFlags::
 ; 5: use vbk1 if set, otherwise vbk0
@@ -491,7 +487,11 @@ wBGMapAnchor:: dw
 
 wOldTileset:: db
 
-	ds 63 ; unused
+wTempMon:: party_struct wTempMon
+wTempMonOT:: ds NAME_LENGTH
+wTempMonNickname:: ds MON_NAME_LENGTH
+
+	ds 41 ; unused
 
 wOverworldMapAnchor:: dw
 wMetatileStandingY:: db
@@ -683,7 +683,7 @@ wWaterEncounterRate:: db
 wListMoves_MoveIndicesBuffer:: ds NUM_MOVES
 wPutativeTMHMMove:: db
 wForgettingMove:: db
-wBattleHasJustStarted:: db
+wTotalBattleTurns:: db
 
 ; TODO: apply imported wd265 labels to appropriate locations
 wNamedObjectIndexBuffer::

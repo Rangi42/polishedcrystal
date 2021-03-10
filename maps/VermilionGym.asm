@@ -34,7 +34,7 @@ VermilionGym_MapScriptHeader:
 	object_event  5,  5, SPRITE_ELECTRIC_FENCE_RIGHT, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptext, VermilionGymElectricFenceText, EVENT_VERMILION_GYM_SWITCH_1
 	object_event  4,  4, SPRITE_ELECTRIC_FENCE_LEFT, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptext, VermilionGymElectricFenceText, EVENT_VERMILION_GYM_SWITCH_2
 	object_event  5,  4, SPRITE_ELECTRIC_FENCE_RIGHT, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptext, VermilionGymElectricFenceText, EVENT_VERMILION_GYM_SWITCH_2
-	object_event  5,  2, SPRITE_SURGE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, SurgeScript_0x1920a5, -1
+	object_event  5,  2, SPRITE_SURGE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, VermilionGymSurgeScript, -1
 	object_event  8,  8, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 4, GenericTrainerGentlemanGregory, -1
 	object_event  4,  7, SPRITE_ROCKER, SPRITEMOVEDATA_STANDING_DOWN, 0, 3, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerGuitaristmVincent, -1
 	object_event  0, 10, SPRITE_JUGGLER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 4, GenericTrainerJugglerHorton, -1
@@ -59,15 +59,15 @@ VermilionGymDoorsScript:
 .done
 	return
 
-SurgeScript_0x1920a5:
+VermilionGymSurgeScript:
 	faceplayer
 	opentext
 	checkflag ENGINE_THUNDERBADGE
 	iftrue .FightDone
-	writetext UnknownText_0x192142
+	writetext LtSurgeIntroText
 	waitbutton
 	closetext
-	winlosstext UnknownText_0x192238, 0
+	winlosstext LtSurgeWinLossText, 0
 	loadtrainer LT_SURGE, 1
 	startbattle
 	reloadmapafterbattle
@@ -77,7 +77,7 @@ SurgeScript_0x1920a5:
 	setevent EVENT_BEAT_JUGGLER_HORTON
 	setevent EVENT_BEAT_GUITARISTF_JANET
 	opentext
-	writetext UnknownText_0x192277
+	writetext ReceivedThunderBadgeText
 	playsound SFX_GET_BADGE
 	waitsfx
 	setflag ENGINE_THUNDERBADGE
@@ -98,8 +98,8 @@ SurgeScript_0x1920a5:
 	specialphonecall SPECIALCALL_LYRASEGG
 .FightDone:
 	checkevent EVENT_GOT_TM43_WILD_CHARGE
-	iftrue_jumpopenedtext UnknownText_0x192303
-	writetext UnknownText_0x192291
+	iftrue_jumpopenedtext LtSurgeFightDoneText
+	writetext LtSurgeThunderBadgeText
 	buttonsound
 	verbosegivetmhm TM_WILD_CHARGE
 	setevent EVENT_GOT_TM43_WILD_CHARGE
@@ -183,7 +183,7 @@ VermilionGymTrashCanScript:
 
 .reset_switches
 	opentext
-	writetext UnknownText_0x19261e
+	writetext VermilionGymTrashCanText
 	buttonsound
 	writetext VermilionGymResetSwitchesText
 	playsound SFX_WRONG
@@ -202,7 +202,7 @@ VermilionGymStatue:
 .Beaten:
 	jumpstd gymstatue2
 
-UnknownText_0x192142:
+LtSurgeIntroText:
 	text "Surge: Hey, you"
 	line "little tyke!"
 
@@ -225,7 +225,7 @@ UnknownText_0x192142:
 	cont "enemies in war!"
 	done
 
-UnknownText_0x192238:
+LtSurgeWinLossText:
 	text "Surge: Arrrgh!"
 	line "You are strong!"
 
@@ -233,12 +233,12 @@ UnknownText_0x192238:
 	line "the Thunder Badge!"
 	done
 
-UnknownText_0x192277:
+ReceivedThunderBadgeText:
 	text "<PLAYER> received"
 	line "the Thunder Badge."
 	done
 
-UnknownText_0x192291:
+LtSurgeThunderBadgeText:
 	text "Surge: Consider it"
 	line "proof that you"
 	cont "defeated me."
@@ -262,7 +262,7 @@ SurgeOutroText:
 	line "lightning!"
 	done
 
-UnknownText_0x192303:
+LtSurgeFightDoneText:
 	text "Surge: Hey, kid!"
 	line "Still slugging and"
 	cont "chugging away?"
@@ -374,7 +374,7 @@ VermilionGymResetSwitchesText:
 	cont "again!"
 	done
 
-UnknownText_0x19261e:
+VermilionGymTrashCanText:
 	text "Nope! Nothing here"
 	line "but trash."
 	done

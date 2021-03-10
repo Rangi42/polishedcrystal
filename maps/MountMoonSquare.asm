@@ -52,15 +52,15 @@ ClefairyDance:
 	pause 30
 	follow MOUNTMOONSQUARE_CLEFAIRY1, MOUNTMOONSQUARE_CLEFAIRY2
 	cry CLEFAIRY
-	applymovement MOUNTMOONSQUARE_CLEFAIRY1, MovementData_0x77123
+	applymovement MOUNTMOONSQUARE_CLEFAIRY1, ClefairyDanceStep1
 	cry CLEFAIRY
 	applyonemovement MOUNTMOONSQUARE_CLEFAIRY1, slow_jump_step_right
 	cry CLEFAIRY
-	applymovement MOUNTMOONSQUARE_CLEFAIRY1, MovementData_0x77128
+	applymovement MOUNTMOONSQUARE_CLEFAIRY1, ClefairyDanceStep3
 	cry CLEFAIRY
 	applyonemovement MOUNTMOONSQUARE_CLEFAIRY1, slow_jump_step_left
 	cry CLEFAIRY
-	applymovement MOUNTMOONSQUARE_CLEFAIRY1, MovementData_0x77123
+	applymovement MOUNTMOONSQUARE_CLEFAIRY1, ClefairyDanceStep1
 	stopfollow
 	applyonemovement MOUNTMOONSQUARE_CLEFAIRY2, slow_step_down
 	follow MOUNTMOONSQUARE_CLEFAIRY1, MOUNTMOONSQUARE_CLEFAIRY2
@@ -73,7 +73,7 @@ ClefairyDance:
 	cry CLEFAIRY
 	pause 15
 	follow MOUNTMOONSQUARE_CLEFAIRY1, MOUNTMOONSQUARE_CLEFAIRY2
-	applymovement MOUNTMOONSQUARE_CLEFAIRY1, MovementData_0x77134
+	applymovement MOUNTMOONSQUARE_CLEFAIRY1, ClefairyFleeMovement
 	disappear MOUNTMOONSQUARE_CLEFAIRY1
 	disappear MOUNTMOONSQUARE_CLEFAIRY2
 	stopfollow
@@ -81,17 +81,17 @@ ClefairyDance:
 	setflag ENGINE_MT_MOON_SQUARE_CLEFAIRY
 	end
 
-MovementData_0x77123:
+ClefairyDanceStep1:
 	slow_step_down
 	slow_jump_step_down
 	step_end
 
-MovementData_0x77128:
+ClefairyDanceStep3:
 	slow_step_up
 	slow_jump_step_up
 	step_end
 
-MovementData_0x77134:
+ClefairyFleeMovement:
 	step_right
 	step_right
 	step_right

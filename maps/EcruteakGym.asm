@@ -47,7 +47,7 @@ EcruteakGym_MapScriptHeader:
 
 	def_object_events
 	object_event  4, 14, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_ECRUTEAK_GYM_GRAMPS
-	object_event  5,  1, SPRITE_MORTY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, MortyScript_0x99d58, -1
+	object_event  5,  1, SPRITE_MORTY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, EcruteakGymMortyScript, -1
 	object_event  2,  7, SPRITE_SAGE, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerSageJeffrey, -1
 	object_event  3, 13, SPRITE_SAGE, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerSagePing, -1
 	object_event  7,  5, SPRITE_GRANNY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerMediumMartha, -1
@@ -58,24 +58,24 @@ EcruteakGym_MapScriptHeader:
 	const ECRUTEAKGYM_GRAMPS
 
 EcruteakGymTrigger0:
-	priorityjump UnknownScript_0x99dc6
+	priorityjump EcruteakGymClosed
 	end
 
-MortyScript_0x99d58:
+EcruteakGymMortyScript:
 	faceplayer
 	opentext
 	checkevent EVENT_BEAT_MORTY
 	iftrue .FightDone
-	writetext UnknownText_0x99e65
+	writetext MortyIntroText
 	waitbutton
 	closetext
-	winlosstext UnknownText_0x9a00a, 0
+	winlosstext MortyWinLossText, 0
 	loadtrainer MORTY, 1
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_MORTY
 	opentext
-	writetext UnknownText_0x9a043
+	writetext Text_ReceivedFogBadge
 	playsound SFX_GET_BADGE
 	waitsfx
 	setflag ENGINE_FOGBADGE
@@ -84,23 +84,23 @@ MortyScript_0x99d58:
 	setevent EVENT_RANG_CLEAR_BELL_2
 .FightDone:
 	checkevent EVENT_GOT_TM30_SHADOW_BALL
-	iftrue_jumpopenedtext UnknownText_0x9a145
+	iftrue_jumpopenedtext MortyFightDoneText
 	setevent EVENT_BEAT_SAGE_JEFFREY
 	setevent EVENT_BEAT_SAGE_PING
 	setevent EVENT_BEAT_MEDIUM_MARTHA
 	setevent EVENT_BEAT_MEDIUM_GRACE
-	writetext UnknownText_0x9a059
+	writetext MortyText_FogBadgeSpeech
 	buttonsound
 	verbosegivetmhm TM_SHADOW_BALL
 	setevent EVENT_GOT_TM30_SHADOW_BALL
-	jumpopenedtext UnknownText_0x9a0ec
+	jumpopenedtext MortyText_ShadowBallSpeech
 
-UnknownScript_0x99dc6:
+EcruteakGymClosed:
 	applyonemovement PLAYER, step_up
 	applyonemovement ECRUTEAKGYM_GRAMPS, slow_step_down
-	showtext UnknownText_0x9a49c
+	showtext EcruteakGymClosedText
 	follow PLAYER, ECRUTEAKGYM_GRAMPS
-	applymovement PLAYER, MovementData_0x99e5f
+	applymovement PLAYER, EcruteakGymPlayerSlowStepDownMovement
 	stopfollow
 	special FadeOutPalettes
 	playsound SFX_ENTER_DOOR
@@ -163,13 +163,13 @@ EcruteakGymStatue:
 .LyraToo
 	jumpstd gymstatue3
 
-MovementData_0x99e5f:
+EcruteakGymPlayerSlowStepDownMovement:
 	fix_facing
 	slow_step_down
 	remove_fixed_facing
 	step_end
 
-UnknownText_0x99e65:
+MortyIntroText:
 	text "Good of you to"
 	line "have come."
 
@@ -210,7 +210,7 @@ UnknownText_0x99e65:
 	cont "level!"
 	done
 
-UnknownText_0x9a00a:
+MortyWinLossText:
 	text "I'm not good"
 	line "enough yet…"
 
@@ -218,12 +218,12 @@ UnknownText_0x9a00a:
 	line "Badge is yours."
 	done
 
-UnknownText_0x9a043:
+Text_ReceivedFogBadge:
 	text "<PLAYER> received"
 	line "the Fog Badge."
 	done
 
-UnknownText_0x9a059:
+MortyText_FogBadgeSpeech:
 	text "By having the Fog"
 	line "Badge, #mon up"
 
@@ -240,7 +240,7 @@ UnknownText_0x9a059:
 	line "this too."
 	done
 
-UnknownText_0x9a0ec:
+MortyText_ShadowBallSpeech:
 	text "It's Shadow Ball."
 	line "It causes damage"
 
@@ -251,7 +251,7 @@ UnknownText_0x9a0ec:
 	line "appeals to you."
 	done
 
-UnknownText_0x9a145:
+MortyFightDoneText:
 	text "I see…"
 
 	para "Your journey has"
@@ -336,7 +336,7 @@ EcruteakGymGuyWinText:
 	cont "pure terror!"
 	done
 
-UnknownText_0x9a49c:
+EcruteakGymClosedText:
 	text "Morty, the Gym"
 	line "Leader, is absent."
 

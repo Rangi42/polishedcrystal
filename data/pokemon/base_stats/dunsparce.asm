@@ -17,7 +17,11 @@ endc
 	db NO_ITEM ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
 	INCBIN "gfx/pokemon/dunsparce/front.dimensions"
+if DEF(FAITHFUL)
 	abilities_for DUNSPARCE, SERENE_GRACE, RUN_AWAY, RATTLED
+else
+	abilities_for DUNSPARCE, SERENE_GRACE, RUN_AWAY, SAND_STREAM
+endc
 	db MEDIUM_FAST ; growth rate
 	dn FIELD, FIELD ; egg groups
 

@@ -25,21 +25,17 @@ The final, non-beta 3.0 release should include all of these.
 * Variety Channel with daily unique music
 * Separate radio channels for March and Lullaby, available every day
 * Send gift Pokémon to the PC if the party is full
-* Generate Battle Tower Pokémon
 * Generate random team for Psychic Inver
 * Wild Ghosts and the SilphScope2
 * More location-unique wild moves (see [material/moves.txt](material/moves.txt))
 * Finish wild rosters
 * DVs to vary palettes for trainers' duplicate Pokémon (e.g. Clair's Dragonairs)
-* Encounter both kinds of regional Arboks in Route 28 + Mt. Silver
 * Complete Alolan and Galarian forms
    * Persian as a one-time trade from an Alolan tourist (you can breed it for more)
    * Rattata/Raticate in Kanto
    * Grimer/Muk in Goldenrod City (Celadon's Muk are a sign of its pollution, Goldenrod's Alolan Muk would be a sign that they manage pollution better)
    * Sandshrew/Sandslash and Vulpix/Ninetales in the Ice Path and/or Seafoam Islands
-   * Diglett/Dugtrio on Cinnabar Island (right now I replaced all Diglett with the Alolan ones, with the explanation that the volcano affected climate everywhere, but I'd rather have the ones in Diglett's Cave be normal)
-   * Geodude/Graveler/Golem in Rock Tunnel (the Lodestone there is already used to evolve Magnezone)
-   * Marowak, Exeggutor, and Raichu evolve while holding the Odd Souvenir (bought on Shamouti Island)
+   * Marowak, Exeggutor, and Raichu evolve while holding the Odd Souvenir
    * Ponyta/Rapidash on Shamouti Island
    * Corsola/Cursola in Scary Cave
    * Farfetch'd/Sirfetch'd instead of non-faithful Farfetch'd
@@ -95,6 +91,7 @@ Shamouti Island:
 * Shamouti Island
 * Shamouti Hotel (haunted room) (EVENT_SAW_HAUNTED_ROOM)
 * Shamouti Restaurant (works like Seven Stars Restaurant) (different subset of all trainers every day of the week)
+  - Should award Odd Souvenir to make it a renewable reward
 
 
 ### Optimizations

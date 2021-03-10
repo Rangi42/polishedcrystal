@@ -72,27 +72,27 @@ PicnickerErin1Script:
 	checkflag ENGINE_ERIN
 	iftrue UnknownScript_0x1a96da
 	checkcellnum PHONE_PICNICKER_ERIN
-	iftrue UnknownScript_0x1a975b
+	iftrue Route46NumberAcceptedF
 	checkevent EVENT_ERIN_ASKED_FOR_PHONE_NUMBER
 	iftrue UnknownScript_0x1a96c3
-	writetext UnknownText_0x1a98c6
+	writetext PicnickerErinAfterBattleText
 	buttonsound
 	setevent EVENT_ERIN_ASKED_FOR_PHONE_NUMBER
-	scall UnknownScript_0x1a974f
+	scall Route46AskNumber1F
 	jump UnknownScript_0x1a96c6
 
 UnknownScript_0x1a96c3:
-	scall UnknownScript_0x1a9753
+	scall Route46AskNumber2F
 UnknownScript_0x1a96c6:
 	askforphonenumber PHONE_PICNICKER_ERIN
-	ifequal $1, UnknownScript_0x1a9763
-	ifequal $2, UnknownScript_0x1a975f
+	ifequal $1, Route46PhoneFullF
+	ifequal $2, Route46NumberDeclinedF
 	trainertotext PICNICKER, ERIN1, $0
-	scall UnknownScript_0x1a9757
-	jump UnknownScript_0x1a975b
+	scall Route46RegisteredNumberF
+	jump Route46NumberAcceptedF
 
 UnknownScript_0x1a96da:
-	scall UnknownScript_0x1a9767
+	scall Route46RematchF
 	winlosstext PicnickerErin1BeatenText, 0
 	copybytetovar wErinFightCount
 	ifequal 2, .Fight2
@@ -129,52 +129,52 @@ UnknownScript_0x1a96da:
 	iftrue UnknownScript_0x1a973b
 	checkevent EVENT_GOT_CALCIUM_FROM_ERIN
 	iftrue UnknownScript_0x1a973a
-	scall UnknownScript_0x1a9772
+	scall Route46RematchGiftF
 	verbosegiveitem CALCIUM
-	iffalse UnknownScript_0x1a976b
+	iffalse ErinNoRoomForCalcium
 	setevent EVENT_GOT_CALCIUM_FROM_ERIN
-	jump UnknownScript_0x1a975b
+	jump Route46NumberAcceptedF
 
 UnknownScript_0x1a973a:
 	end
 
 UnknownScript_0x1a973b:
 	opentext
-	writetext UnknownText_0x1a9927
+	writetext PicnickerErin2BeatenText
 	waitbutton
 	verbosegiveitem CALCIUM
-	iffalse UnknownScript_0x1a976b
+	iffalse ErinNoRoomForCalcium
 	clearevent EVENT_ERIN_CALCIUM
 	setevent EVENT_GOT_CALCIUM_FROM_ERIN
-	jump UnknownScript_0x1a975b
+	jump Route46NumberAcceptedF
 
-UnknownScript_0x1a974f:
+Route46AskNumber1F:
 	jumpstd asknumber1f
 
-UnknownScript_0x1a9753:
+Route46AskNumber2F:
 	jumpstd asknumber2f
 
-UnknownScript_0x1a9757:
+Route46RegisteredNumberF:
 	jumpstd registerednumberf
 
-UnknownScript_0x1a975b:
+Route46NumberAcceptedF:
 	jumpstd numberacceptedf
 
-UnknownScript_0x1a975f:
+Route46NumberDeclinedF:
 	jumpstd numberdeclinedf
 
-UnknownScript_0x1a9763:
+Route46PhoneFullF:
 	jumpstd phonefullf
 
-UnknownScript_0x1a9767:
+Route46RematchF:
 	jumpstd rematchf
 
-UnknownScript_0x1a976b:
+ErinNoRoomForCalcium:
 	setevent EVENT_ERIN_CALCIUM
 	jumpstd packfullf
 	end
 
-UnknownScript_0x1a9772:
+Route46RematchGiftF:
 	jumpstd rematchgiftf
 
 GenericTrainerHikerBailey:
@@ -264,7 +264,7 @@ PicnickerErin1BeatenText:
 	text "Oh, rats!"
 	done
 
-UnknownText_0x1a98c6:
+PicnickerErinAfterBattleText:
 	text "I've been to many"
 	line "Gyms, but the Gym"
 
@@ -275,7 +275,7 @@ UnknownText_0x1a98c6:
 	line "pretty flowers!"
 	done
 
-UnknownText_0x1a9927:
+PicnickerErin2BeatenText:
 	text "Aww… I keep losing"
 	line "all the time!"
 

@@ -20,9 +20,9 @@ KurtsHouse_MapScriptHeader:
 	bg_event  4,  1, BGEVENT_JUMPTEXT, KurtsHouseCelebiStatueText
 
 	def_object_events
-	object_event  3,  2, SPRITE_KURT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, KurtScript_0x18e178, EVENT_KURTS_HOUSE_KURT_1
+	object_event  3,  2, SPRITE_KURT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Kurt1, EVENT_KURTS_HOUSE_KURT_1
 	object_event  5,  3, SPRITE_SCHOOLGIRL, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, KurtsGranddaughter1, EVENT_KURTS_HOUSE_GRANDDAUGHTER_1
-	object_event 14,  3, SPRITE_KURT, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, KurtScript_0x18e3bd, EVENT_KURTS_HOUSE_KURT_2
+	object_event 14,  3, SPRITE_KURT, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Kurt2, EVENT_KURTS_HOUSE_KURT_2
 	object_event 11,  4, SPRITE_SCHOOLGIRL, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, KurtsGranddaughter2, EVENT_KURTS_HOUSE_GRANDDAUGHTER_2
 	pokemon_event  6,  3, SLOWPOKE, -1, -1, PAL_NPC_RED, KurtsHouseSlowpokeText, EVENT_KURTS_HOUSE_SLOWPOKE
 
@@ -53,14 +53,14 @@ UnknownScript_0x18e16f:
 UnknownScript_0x18e177:
 	return
 
-KurtScript_0x18e178:
+Kurt1:
 	faceplayer
 	opentext
 	checkevent EVENT_KURT_GAVE_YOU_APRICORN_BOX
 	iftrue .GotApricornBox
 	checkevent EVENT_CLEARED_SLOWPOKE_WELL
 	iftrue .ClearedSlowpokeWell
-	writetext UnknownText_0x18e473
+	writetext KurtsHouseKurtMakingBallsMustWaitText
 	waitbutton
 	closetext
 	special Special_FadeOutMusic
@@ -69,7 +69,7 @@ KurtScript_0x18e178:
 	ifequal UP, .RunAround
 	turnobject PLAYER, DOWN
 	playsound SFX_FLY
-	applymovement KURTSHOUSE_KURT1, MovementData_0x18e466
+	applymovement KURTSHOUSE_KURT1, KurtsHouseKurtExitHouseMovement
 	playsound SFX_EXIT_BUILDING
 	disappear KURTSHOUSE_KURT1
 	waitsfx
@@ -79,7 +79,7 @@ KurtScript_0x18e178:
 .RunAround:
 	turnobject PLAYER, DOWN
 	playsound SFX_FLY
-	applymovement KURTSHOUSE_KURT1, MovementData_0x18e46c
+	applymovement KURTSHOUSE_KURT1, KurtsHouseKurtGoAroundPlayerThenExitHouseMovement
 	playsound SFX_EXIT_BUILDING
 	disappear KURTSHOUSE_KURT1
 	waitsfx
@@ -87,7 +87,7 @@ KurtScript_0x18e178:
 	end
 
 .ClearedSlowpokeWell:
-	writetext UnknownText_0x18e615
+	writetext KurtsHouseKurtHonoredToMakeBallsText
 	buttonsound
 	verbosegivekeyitem APRICORN_BOX
 	setevent EVENT_KURT_GAVE_YOU_APRICORN_BOX
@@ -113,15 +113,15 @@ KurtScript_0x18e178:
 	iftrue .CheckApricorns
 	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_3
 	iftrue .CheckApricorns
-	writetext UnknownText_0x18e6c9
+	writetext KurtsHouseKurtBallsFromApricornsText
 	waitbutton
 .CheckApricorns:
 	callasm .CheckHaveAnyApricorns
 	iftrue .AskApricorn
 	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
-	iftrue_jumpopenedtext UnknownText_0x18e82a
+	iftrue_jumpopenedtext KurtsHouseKurtTurnedOutGreatText
 	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_3
-	iftrue_jumpopenedtext UnknownText_0x18e6c9
+	iftrue_jumpopenedtext KurtsHouseKurtBallsFromApricornsText
 	endtext
 
 .CheckHaveAnyApricorns:
@@ -136,11 +136,11 @@ endr
 	ret
 
 .AskApricorn:
-	writetext UnknownText_0x18e736
+	writetext KurtsHouseKurtAskYouHaveAnApricornText
 	buttonsound
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_3
 	special Special_SelectApricornForKurt
-	iffalse_jumpopenedtext UnknownText_0x18e7bc
+	iffalse_jumpopenedtext KurtsHouseKurtThatsALetdownText
 	ifequal BLU_APRICORN, .Blu
 	ifequal YLW_APRICORN, .Ylw
 	ifequal GRN_APRICORN, .Grn
@@ -183,7 +183,7 @@ endr
 	stopfollow
 	pause 15
 	turnobject KURTSHOUSE_KURT1, DOWN
-	showtext UnknownText_0x18e779
+	showtext KurtsHouseKurtItWillTakeADayText
 	applymovement PLAYER, KurtsHouseStepAwayFromKurt_MovementData
 	special Special_FadeBlackQuickly
 	special Special_ReloadSpritesNoPalettes
@@ -191,16 +191,16 @@ endr
 	waitsfx
 	pause 35
 	warpfacing UP, KURTS_HOUSE, 3, 3
-	jump KurtScript_0x18e178
+	jump Kurt1
 
 .ThatTurnedOutGreat:
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
-	jumpopenedtext UnknownText_0x18e82a
+	jumpopenedtext KurtsHouseKurtTurnedOutGreatText
 
 .GiveLevelBall:
 	checkflag ENGINE_KURT_MAKING_BALLS
 	iftrue KurtMakingBallsScript
-	writetext UnknownText_0x18e7fb
+	writetext KurtsHouseKurtJustFinishedYourBallText
 	buttonsound
 	verbosegiveitem2 LEVEL_BALL, VAR_KURT_APRICORNS
 	iffalse_endtext
@@ -210,7 +210,7 @@ endr
 .GiveLureBall:
 	checkflag ENGINE_KURT_MAKING_BALLS
 	iftrue KurtMakingBallsScript
-	writetext UnknownText_0x18e7fb
+	writetext KurtsHouseKurtJustFinishedYourBallText
 	buttonsound
 	verbosegiveitem2 LURE_BALL, VAR_KURT_APRICORNS
 	iffalse_endtext
@@ -220,7 +220,7 @@ endr
 .GiveMoonBall:
 	checkflag ENGINE_KURT_MAKING_BALLS
 	iftrue KurtMakingBallsScript
-	writetext UnknownText_0x18e7fb
+	writetext KurtsHouseKurtJustFinishedYourBallText
 	buttonsound
 	verbosegiveitem2 MOON_BALL, VAR_KURT_APRICORNS
 	iffalse_endtext
@@ -230,7 +230,7 @@ endr
 .GiveFriendBall:
 	checkflag ENGINE_KURT_MAKING_BALLS
 	iftrue KurtMakingBallsScript
-	writetext UnknownText_0x18e7fb
+	writetext KurtsHouseKurtJustFinishedYourBallText
 	buttonsound
 	verbosegiveitem2 FRIEND_BALL, VAR_KURT_APRICORNS
 	iffalse_endtext
@@ -240,7 +240,7 @@ endr
 .GiveFastBall:
 	checkflag ENGINE_KURT_MAKING_BALLS
 	iftrue KurtMakingBallsScript
-	writetext UnknownText_0x18e7fb
+	writetext KurtsHouseKurtJustFinishedYourBallText
 	buttonsound
 	verbosegiveitem2 FAST_BALL, VAR_KURT_APRICORNS
 	iffalse_endtext
@@ -250,7 +250,7 @@ endr
 .GiveHeavyBall:
 	checkflag ENGINE_KURT_MAKING_BALLS
 	iftrue KurtMakingBallsScript
-	writetext UnknownText_0x18e7fb
+	writetext KurtsHouseKurtJustFinishedYourBallText
 	buttonsound
 	verbosegiveitem2 HEAVY_BALL, VAR_KURT_APRICORNS
 	iffalse_endtext
@@ -260,7 +260,7 @@ endr
 .GiveLoveBall:
 	checkflag ENGINE_KURT_MAKING_BALLS
 	iftrue KurtMakingBallsScript
-	writetext UnknownText_0x18e7fb
+	writetext KurtsHouseKurtJustFinishedYourBallText
 	buttonsound
 	verbosegiveitem2 LOVE_BALL, VAR_KURT_APRICORNS
 	iffalse_endtext
@@ -272,7 +272,7 @@ endr
 	iftrue .GaveGSBallToKurt
 	checkkeyitem GS_BALL
 	iffalse .NoGSBall
-	writetext UnknownText_0x18e8ab
+	writetext KurtsHouseKurtWhatIsThatText
 	waitbutton
 	closetext
 	setevent EVENT_GAVE_GS_BALL_TO_KURT
@@ -283,12 +283,12 @@ endr
 .GaveGSBallToKurt:
 	checkflag ENGINE_KURT_MAKING_BALLS
 	iffalse .NotMakingBalls
-	writetext UnknownText_0x18e934
+	writetext KurtsHouseKurtImCheckingItNowText
 	waitbutton
-	jumpopenedtext UnknownText_0x18e949
+	jumpopenedtext KurtsHouseKurtAhHaISeeText
 
 .NotMakingBalls:
-	writetext UnknownText_0x18e95c
+	writetext KurtsHouseKurtThisBallStartedToShakeText
 	waitbutton
 	closetext
 	setevent EVENT_FOREST_IS_RESTLESS
@@ -301,13 +301,13 @@ endr
 	ifequal UP, .GSBallRunAround
 	turnobject PLAYER, DOWN
 	playsound SFX_FLY
-	applymovement KURTSHOUSE_KURT1, MovementData_0x18e466
+	applymovement KURTSHOUSE_KURT1, KurtsHouseKurtExitHouseMovement
 	jump .KurtHasLeftTheBuilding
 
 .GSBallRunAround:
 	turnobject PLAYER, DOWN
 	playsound SFX_FLY
-	applymovement KURTSHOUSE_KURT1, MovementData_0x18e46c
+	applymovement KURTSHOUSE_KURT1, KurtsHouseKurtGoAroundPlayerThenExitHouseMovement
 .KurtHasLeftTheBuilding:
 	playsound SFX_EXIT_BUILDING
 	disappear KURTSHOUSE_KURT1
@@ -317,7 +317,7 @@ endr
 	setmapscene AZALEA_TOWN, $2
 	end
 
-KurtScript_0x18e3bd:
+Kurt2:
 	faceplayer
 	opentext
 	checkevent EVENT_GAVE_GS_BALL_TO_KURT
@@ -325,14 +325,14 @@ KurtScript_0x18e3bd:
 KurtMakingBallsScript:
 	checkevent EVENT_BUGGING_KURT_TOO_MUCH
 	iffalse Script_FirstTimeBuggingKurt
-	writetext UnknownText_0x18e7d8
+	writetext KurtsHouseKurtDontBotherMeText
 	waitbutton
 	closetext
 	turnobject LAST_TALKED, UP
 	end
 
 Script_FirstTimeBuggingKurt:
-	writetext UnknownText_0x18e863
+	writetext KurtsHouseKurtGranddaughterHelpingWorkFasterText
 	waitbutton
 	closetext
 	turnobject LAST_TALKED, UP
@@ -340,10 +340,10 @@ Script_FirstTimeBuggingKurt:
 	end
 
 KurtScript_ImCheckingItNow:
-	writetext UnknownText_0x18e934
+	writetext KurtsHouseKurtImCheckingItNowText
 	waitbutton
 	turnobject LAST_TALKED, UP
-	jumpopenedtext UnknownText_0x18e949
+	jumpopenedtext KurtsHouseKurtAhHaISeeText
 
 KurtsGranddaughter1:
 	faceplayer
@@ -401,9 +401,9 @@ PokemonJournalProfWestwoodScript:
 	cont "Balls."
 	done
 
-MovementData_0x18e46c:
+KurtsHouseKurtGoAroundPlayerThenExitHouseMovement:
 	big_step_right
-MovementData_0x18e466:
+KurtsHouseKurtExitHouseMovement:
 	run_step_down
 	run_step_down
 	run_step_down
@@ -436,7 +436,7 @@ KurtsHouseStepAwayFromKurt_MovementData:
 	step_left
 	step_end
 
-UnknownText_0x18e473:
+KurtsHouseKurtMakingBallsMustWaitText:
 	text "Hm? Who are you?"
 
 	para "<PLAYER>, eh? You"
@@ -477,7 +477,7 @@ UnknownText_0x18e473:
 	cont "way!"
 	done
 
-UnknownText_0x18e615:
+KurtsHouseKurtHonoredToMakeBallsText:
 	text "Kurt: Hi, <PLAYER>!"
 
 	para "You handled your-"
@@ -499,7 +499,7 @@ UnknownText_0x18e615:
 	line "Apricorn Box!"
 	done
 
-UnknownText_0x18e6c9:
+KurtsHouseKurtBallsFromApricornsText:
 	text "Kurt: I make Balls"
 	line "from Apricorns."
 
@@ -511,7 +511,7 @@ UnknownText_0x18e6c9:
 	line "out of them."
 	done
 
-UnknownText_0x18e736:
+KurtsHouseKurtAskYouHaveAnApricornText:
 	text "Kurt: You have an"
 	line "Apricorn for me?"
 
@@ -524,7 +524,7 @@ KurtsHouseKurtGetStartedText:
 	line "started right now!"
 	done
 
-UnknownText_0x18e779:
+KurtsHouseKurtItWillTakeADayText:
 	text "Kurt: It'll take a"
 	line "while to make you"
 
@@ -532,23 +532,23 @@ UnknownText_0x18e779:
 	line "for it later."
 	done
 
-UnknownText_0x18e7bc:
+KurtsHouseKurtThatsALetdownText:
 	text "Kurt: Oh…"
 	line "That's a letdown."
 	done
 
-UnknownText_0x18e7d8:
+KurtsHouseKurtDontBotherMeText:
 	text "Kurt: I'm working!"
 	line "Don't bother me!"
 	done
 
-UnknownText_0x18e7fb:
+KurtsHouseKurtJustFinishedYourBallText:
 	text "Kurt: Ah, <PLAYER>!"
 	line "I just finished"
 	cont "your Ball. Here!"
 	done
 
-UnknownText_0x18e82a:
+KurtsHouseKurtTurnedOutGreatText:
 	text "Kurt: That turned"
 	line "out great."
 
@@ -556,7 +556,7 @@ UnknownText_0x18e82a:
 	line "#mon with it."
 	done
 
-UnknownText_0x18e863:
+KurtsHouseKurtGranddaughterHelpingWorkFasterText:
 	text "Kurt: Now that my"
 	line "granddaughter is"
 
@@ -564,7 +564,7 @@ UnknownText_0x18e863:
 	line "work much faster."
 	done
 
-UnknownText_0x18e8ab:
+KurtsHouseKurtWhatIsThatText:
 	text "Wh-what is that?"
 
 	para "I've never seen"
@@ -580,17 +580,17 @@ UnknownText_0x18e8ab:
 	line "for you."
 	done
 
-UnknownText_0x18e934:
+KurtsHouseKurtImCheckingItNowText:
 	text "I'm checking it"
 	line "now."
 	done
 
-UnknownText_0x18e949:
+KurtsHouseKurtAhHaISeeText:
 	text "Ah-ha! I see!"
 	line "So…"
 	done
 
-UnknownText_0x18e95c:
+KurtsHouseKurtThisBallStartedToShakeText:
 	text "<PLAYER>!"
 
 	para "This Ball started"

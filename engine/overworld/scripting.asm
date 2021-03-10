@@ -603,7 +603,7 @@ Script_verbosegiveitem:
 	jp ScriptCall
 
 GiveItemScript:
-	farwritetext UnknownText_0x1c4719
+	farwritetext _ReceivedItemText
 	iffalse .Full
 	specialsound
 	waitbutton
@@ -646,15 +646,15 @@ Script_verbosegiveitem2:
 Script_itemnotify:
 	call GetPocketName
 	call CurItemName
-	ld b, BANK(UnknownText_0x1c472c)
-	ld hl, UnknownText_0x1c472c
+	ld b, BANK(_PutItemInPocketText)
+	ld hl, _PutItemInPocketText
 	jp MapTextbox
 
 Script_pocketisfull:
 	call GetPocketName
 	call CurItemName
-	ld b, BANK(UnknownText_0x1c474b)
-	ld hl, UnknownText_0x1c474b
+	ld b, BANK(_PocketIsFullText)
+	ld hl, _PocketIsFullText
 	jp MapTextbox
 
 Script_specialsound:
@@ -1103,16 +1103,6 @@ ApplyPersonFacing::
 	ld hl, wVramState
 	bit 6, [hl]
 	jr nz, .text_state
-	call .DisableTextTiles
-.text_state
-	jp UpdateSprites
-
-.not_visible
-	pop de
-	scf
-	ret
-
-.DisableTextTiles:
 	call LoadMapPart
 	hlcoord 0, 0
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
@@ -1123,6 +1113,12 @@ ApplyPersonFacing::
 	ld a, b
 	or c
 	jr nz, .loop
+.text_state
+	jp UpdateSprites
+
+.not_visible
+	pop de
+	scf
 	ret
 
 Script_variablesprite:
@@ -1305,7 +1301,6 @@ EarthquakeMovementEnd:
 Script_randomwildmon:
 	xor a
 	ld [wBattleScriptFlags], a
-	ld [wWildMonForm], a
 	ret
 
 Script_loadmemtrainer:
@@ -1397,7 +1392,7 @@ Script_reloadmapafterbattle:
 	jr z, .done
 	ld b, BANK(Script_SpecialBillCall)
 	ld de, Script_SpecialBillCall
-	farcall LoadScriptBDE
+	call LoadScriptBDE
 .done
 ; fallthrough
 
@@ -2538,7 +2533,7 @@ Script_reloadmappart::
 Script_warpcheck:
 	call WarpCheck
 	ret nc
-	farjp EnableEvents
+	jp EnableEvents
 
 Script_newloadmap:
 ; parameters:
@@ -2768,7 +2763,7 @@ Script_verbosegivetmhm:
 	jp ScriptCall
 
 GiveTMHMScript:
-	farwritetext UnknownText_0x1c4719
+	farwritetext _ReceivedItemText
 	playsound SFX_GET_TM
 	waitsfx
 	waitbutton
@@ -2778,8 +2773,8 @@ GiveTMHMScript:
 Script_tmhmnotify:
 	call GetTMHMPocketName
 	call CurTMHMName
-	ld b, BANK(UnknownText_0x1c472c)
-	ld hl, UnknownText_0x1c472c
+	ld b, BANK(_PutItemInPocketText)
+	ld hl, _PutItemInPocketText
 	jp MapTextbox
 
 Script_tmhmtotext:
@@ -2966,7 +2961,7 @@ Script_verbosegivekeyitem:
 	jp ScriptCall
 
 GiveKeyItemScript:
-	farwritetext UnknownText_0x1c4719
+	farwritetext _ReceivedItemText
 	playsound SFX_KEY_ITEM
 	waitbutton
 	keyitemnotify
@@ -2975,6 +2970,6 @@ GiveKeyItemScript:
 Script_keyitemnotify:
 	call GetKeyItemPocketName
 	call GetCurKeyItemName
-	ld b, BANK(UnknownText_0x1c472c)
-	ld hl, UnknownText_0x1c472c
+	ld b, BANK(_PutItemInPocketText)
+	ld hl, _PutItemInPocketText
 	jp MapTextbox

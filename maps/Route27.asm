@@ -9,15 +9,15 @@ Route27_MapScriptHeader:
 	warp_event 36,  5, TOHJO_FALLS, 2
 
 	def_coord_events
-	coord_event 18, 10, 0, UnknownScript_0x1a0873
-	coord_event 19, 10, 0, UnknownScript_0x1a0881
+	coord_event 18, 10, 0, FirstStepIntoKantoLeftScene
+	coord_event 19, 10, 0, FirstStepIntoKantoRightScene
 
 	def_bg_events
 	bg_event 25,  7, BGEVENT_JUMPTEXT, TohjoFallsSignText
 
 	def_object_events
 	object_event 48, 12, SPRITE_VETERAN_F, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route27VeteranfScript, -1
-	object_event 21, 10, SPRITE_FAT_GUY, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1a0a71, -1
+	object_event 21, 10, SPRITE_FAT_GUY, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, Route27FisherText, -1
 	object_event 48,  7, SPRITE_ACE_TRAINER_M, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerCooltrainermBlake, -1
 	object_event 58,  6, SPRITE_ACE_TRAINER_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerAceDuoJakeandbri1, -1
 	object_event 59,  6, SPRITE_ACE_TRAINER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerAceDuoJakeandbri2, -1
@@ -33,22 +33,22 @@ Route27_MapScriptHeader:
 	const ROUTE27_VETERAN_F
 	const ROUTE27_FISHER
 
-UnknownScript_0x1a0873:
+FirstStepIntoKantoLeftScene:
 	turnobject ROUTE27_FISHER, LEFT
 	showemote EMOTE_SHOCK, ROUTE27_FISHER, 15
-	applymovement ROUTE27_FISHER, MovementData_0x1a0a66
-	jump UnknownScript_0x1a088c
+	applymovement ROUTE27_FISHER, Route27FisherStepLeftTwiceMovement
+	jump FirstStepIntoKantoScene_Continue
 
-UnknownScript_0x1a0881:
+FirstStepIntoKantoRightScene:
 	turnobject ROUTE27_FISHER, LEFT
 	showemote EMOTE_SHOCK, ROUTE27_FISHER, 15
 	applyonemovement ROUTE27_FISHER, step_left
-UnknownScript_0x1a088c:
+FirstStepIntoKantoScene_Continue:
 	turnobject PLAYER, RIGHT
 	opentext
-	writetext UnknownText_0x1a0a6b
+	writetext Route27FisherHeyText
 	buttonsound
-	writetext UnknownText_0x1a0a71
+	writetext Route27FisherText
 	waitbutton
 	closetext
 	setscene $1
@@ -200,7 +200,7 @@ Bird_keeperJose1Script:
 	iftrue UnknownScript_0x1a0963
 	checkevent EVENT_JOSE_ASKED_FOR_PHONE_NUMBER
 	iftrue UnknownScript_0x1a08e8
-	writetext UnknownText_0x1a0e42
+	writetext BirdKeeperJose2AfterBattleText
 	buttonsound
 	setevent EVENT_JOSE_ASKED_FOR_PHONE_NUMBER
 	scall UnknownScript_0x1a0957
@@ -335,7 +335,7 @@ CooltrainerfReena1Script:
 	iftrue UnknownScript_0x1a0a3b
 	checkevent EVENT_REENA_ASKED_FOR_PHONE_NUMBER
 	iftrue UnknownScript_0x1a09d2
-	writetext UnknownText_0x1a0c35
+	writetext CooltrainerfReenaAfterBattleText
 	buttonsound
 	setevent EVENT_REENA_ASKED_FOR_PHONE_NUMBER
 	scall UnknownScript_0x1a0a2f
@@ -424,17 +424,17 @@ GenericTrainerCooltrainerfMegan:
 	cont "later on."
 	done
 
-MovementData_0x1a0a66:
+Route27FisherStepLeftTwiceMovement:
 	step_left
 	step_left
 	turn_head_left
 	step_end
 
-UnknownText_0x1a0a6b:
+Route27FisherHeyText:
 	text "Hey!"
 	done
 
-UnknownText_0x1a0a71:
+Route27FisherText:
 	text "Do you know what"
 	line "you just did?"
 
@@ -490,7 +490,7 @@ CooltrainerfReena1BeatenText:
 	line "too strong!"
 	done
 
-UnknownText_0x1a0c35:
+CooltrainerfReenaAfterBattleText:
 	text "You're just a kid,"
 	line "but you're not to"
 
@@ -537,7 +537,7 @@ Bird_keeperJose1BeatenText:
 	text "Tweet!"
 	done
 
-UnknownText_0x1a0e42:
+BirdKeeperJose2AfterBattleText:
 	text "Bird Keepers like"
 	line "me mimic bird"
 

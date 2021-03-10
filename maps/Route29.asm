@@ -25,7 +25,7 @@ Route29_MapScriptHeader:
 	cuttree_event 21, 11, EVENT_ROUTE_29_CUT_TREE_2
 	fruittree_event 12,  2, FRUITTREE_ROUTE_29, ORAN_BERRY, PAL_NPC_BLUE
 	object_event 25,  3, SPRITE_FAT_GUY, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_COMMAND, jumptextfaceplayer, Route29FisherText, -1
-	object_event 13,  4, SPRITE_COOL_DUDE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, CooltrainerMScript_0x1a1031, -1
+	object_event 13,  4, SPRITE_COOL_DUDE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, Route29CooltrainerMScript, -1
 	itemball_event 48,  2, POTION, 1, EVENT_ROUTE_29_POTION
 
 	object_const_def
@@ -108,7 +108,7 @@ Route29RefusedTutorial:
 	writetext CatchingTutorialRefusedText
 	jump Route29FinishTutorial
 
-CooltrainerMScript_0x1a1031:
+Route29CooltrainerMScript:
 	checktime (1 << EVE) | (1 << NITE)
 	iftrue_jumptextfaceplayer Text_WaitingForMorning
 	jumptextfaceplayer Text_WaitingForNight

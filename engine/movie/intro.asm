@@ -1234,10 +1234,8 @@ endc
 .BWFade:
 ; Fade between black and white.
 if !DEF(MONOCHROME)
-hue = 0
-rept 32
+for hue, 32
 	RGB hue, hue, hue
-hue = hue + 1
 endr
 else
 rept 8
@@ -1257,10 +1255,8 @@ endc
 .BlackLBlueFade:
 ; Fade between black and light blue.
 if !DEF(MONOCHROME)
-hue = 0
-rept 32
+for hue, 32
 	RGB 0, hue / 2, hue
-hue = hue + 1
 endr
 else
 rept 8
@@ -1280,10 +1276,8 @@ endc
 .BlackBlueFade:
 ; Fade between black and blue.
 if !DEF(MONOCHROME)
-hue = 0
-rept 32
+for hue, 32
 	RGB 0, 0, hue
-hue = hue + 1
 endr
 else
 rept 8
@@ -1405,12 +1399,9 @@ endr
 
 .FastFadePalettes:
 if !DEF(MONOCHROME)
-hue = 31
-rept 8
+for hue, 31, 9, -3
 	RGB hue, hue, hue
-hue = hue - 1
-	RGB hue, hue, hue
-hue = hue - 2
+	RGB hue - 1, hue - 1, hue - 1
 endr
 else
 rept 4
@@ -1429,10 +1420,8 @@ endc
 
 .SlowFadePalettes:
 if !DEF(MONOCHROME)
-hue = 31
-rept 16
+for hue, 31, 15, -1
 	RGB hue, hue, hue
-hue = hue - 1
 endr
 else
 rept 8

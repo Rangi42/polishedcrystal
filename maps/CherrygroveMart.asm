@@ -12,11 +12,11 @@ CherrygroveMart_MapScriptHeader:
 	def_bg_events
 
 	def_object_events
-	object_event  1,  3, SPRITE_CLERK, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ClerkScript_0x19680a, -1
-	object_event  7,  6, SPRITE_COOL_DUDE, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, CooltrainerMScript_0x19681d, -1
-	object_event  2,  5, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1968a0, -1
+	object_event  1,  3, SPRITE_CLERK, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, CherrygroveMartClerkScript, -1
+	object_event  7,  6, SPRITE_COOL_DUDE, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, CherrygroveMartCooltrainerMScript, -1
+	object_event  2,  5, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, CherrygroveMartYoungsterText, -1
 
-ClerkScript_0x19680a:
+CherrygroveMartClerkScript:
 	checkevent EVENT_GAVE_MYSTERY_EGG_TO_ELM
 	iftrue .AfterDex
 	pokemart MARTTYPE_STANDARD, MART_CHERRYGROVE
@@ -24,9 +24,9 @@ ClerkScript_0x19680a:
 .AfterDex:
 	pokemart MARTTYPE_STANDARD, MART_CHERRYGROVE_DEX
 
-CooltrainerMScript_0x19681d:
+CherrygroveMartCooltrainerMScript:
 	checkevent EVENT_GAVE_MYSTERY_EGG_TO_ELM
-	iftrue_jumptextfaceplayer UnknownText_0x196873
+	iftrue_jumptextfaceplayer CherrygroveMartCooltrainerMText_PokeBallsInStock
 	jumpthistextfaceplayer
 
 	text "They're fresh out"
@@ -36,13 +36,13 @@ CooltrainerMScript_0x19681d:
 	line "more of them?"
 	done
 
-UnknownText_0x196873:
+CherrygroveMartCooltrainerMText_PokeBallsInStock:
 	text "# Balls are in"
 	line "stock! Now I can"
 	cont "catch #mon!"
 	done
 
-UnknownText_0x1968a0:
+CherrygroveMartYoungsterText:
 	text "When I was walking"
 	line "in the grass, a"
 

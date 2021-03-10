@@ -18,15 +18,15 @@ PalletTown_MapScriptHeader:
 	bg_event 11,  5, BGEVENT_JUMPTEXT, BluesHouseSignText
 
 	def_object_events
-	object_event  3,  8, SPRITE_AROMA_LADY, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1ac6e7, -1
-	object_event 12, 14, SPRITE_FAT_GUY, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1ac720, -1
+	object_event  3,  8, SPRITE_AROMA_LADY, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, PalletTownTeacherText, -1
+	object_event 12, 14, SPRITE_FAT_GUY, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, PalletTownFisherText, -1
 	object_event 17,  7, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, PalletTownYoungsterText, -1
 
 PalletTownFlyPoint:
 	setflag ENGINE_FLYPOINT_PALLET
 	return
 
-UnknownText_0x1ac6e7:
+PalletTownTeacherText:
 	text "I'm raising #-"
 	line "mon too."
 
@@ -34,7 +34,7 @@ UnknownText_0x1ac6e7:
 	line "private guards."
 	done
 
-UnknownText_0x1ac720:
+PalletTownFisherText:
 	text "Technology is"
 	line "incredible!"
 

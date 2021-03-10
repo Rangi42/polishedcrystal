@@ -144,7 +144,7 @@ Route42SuicuneScript:
 	showemote EMOTE_SHOCK, PLAYER, 15
 	pause 15
 	playsound SFX_WARP_FROM
-	applymovement ROUTE42_SUICUNE, MovementData_0x1a9356
+	applymovement ROUTE42_SUICUNE, Route42SuicuneMovement
 	disappear ROUTE42_SUICUNE
 	pause 10
 	setscene $0
@@ -166,7 +166,7 @@ FisherTully1Script:
 	iftrue UnknownScript_0x1a92fd
 	checkevent EVENT_TULLY_ASKED_FOR_PHONE_NUMBER
 	iftrue UnknownScript_0x1a9268
-	writetext UnknownText_0x1a93ab
+	writetext FisherTullyAfterBattleText
 	buttonsound
 	setevent EVENT_TULLY_ASKED_FOR_PHONE_NUMBER
 	scall UnknownScript_0x1a92f1
@@ -317,7 +317,7 @@ MovementData_Route42LyraLeave:
 	step_left
 	step_end
 
-MovementData_0x1a9356:
+Route42SuicuneMovement:
 	fix_facing
 	fast_jump_step_up
 	fast_jump_step_up
@@ -403,7 +403,7 @@ FisherTully1BeatenText:
 	line "right."
 	done
 
-UnknownText_0x1a93ab:
+FisherTullyAfterBattleText:
 	text "I want to become"
 	line "the trainer Champ"
 

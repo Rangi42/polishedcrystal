@@ -142,7 +142,7 @@ DoWonderTrade:
 	call Trade_GetAttributeOfCurrentPartymon
 	ld b, h
 	ld c, l
-	farcall GetCaughtGender
+	call GetCaughtGender
 	ld [wPlayerTrademonCaughtData], a
 
 	xor a
@@ -284,6 +284,23 @@ endr
 	call Random
 	and GENDER_MASK
 	ld b, a
+	; Egg for Egg
+	ld a, [wPlayerTrademonSpecies]
+	inc a ; cp EGG
+	jr nz, .not_egg
+	dec a ; ld a, EGG
+	ld [wOTTrademonSpecies], a
+	push bc
+	ld hl, wPartyMonNicknames
+	ld bc, MON_NAME_LENGTH
+	call Trade_GetAttributeOfLastPartymon
+	ld hl, .EggString
+	call CopyTradeName
+	pop bc
+	ld a, b
+	or IS_EGG_MASK
+	ld b, a
+.not_egg
 	; Form
 	ld a, [wCurForm]
 	add b
@@ -319,6 +336,9 @@ endr
 	pop af
 	ld [wCurPartyMon], a
 	jp PopAFBCDEHL
+
+.EggString:
+	rawchar "Egg@@@@@@@@"
 
 GetGSBallPichu:
 	ld a, 2
@@ -370,7 +390,7 @@ GetGSBallPichu:
 	call Trade_GetAttributeOfCurrentPartymon
 	ld b, h
 	ld c, l
-	farcall GetCaughtGender
+	call GetCaughtGender
 	ld [wPlayerTrademonCaughtData], a
 	ld [wOTTrademonCaughtData], a
 
@@ -520,6 +540,9 @@ INCLUDE "data/pokemon/valid_variants.asm"
 
 GetWonderTradeHeldItem:
 ; Returns a level-scaled item reward
+	ld a, [wOTTrademonSpecies]
+	inc a ; cp EGG
+	ret z
 	push de
 	ld hl, wPartyMon1Level
 	ld bc, PARTYMON_STRUCT_LENGTH

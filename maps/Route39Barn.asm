@@ -13,10 +13,10 @@ Route39Barn_MapScriptHeader:
 
 	def_object_events
 	object_event  3,  3, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, MILTANK, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, MooMoo, -1
-	object_event  2,  3, SPRITE_TWIN, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, TwinScript_0x9cc76, -1
-	object_event  4,  3, SPRITE_TWIN, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, TwinScript_0x9cc90, -1
+	object_event  2,  3, SPRITE_TWIN, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, Route39BarnTwin1Script, -1
+	object_event  4,  3, SPRITE_TWIN, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, Route39BarnTwin2Script, -1
 
-TwinScript_0x9cc76:
+Route39BarnTwin1Script:
 	faceplayer
 	opentext
 	checkevent EVENT_HEALED_MOOMOO
@@ -34,7 +34,7 @@ TwinScript_0x9cc76:
 	turnobject LAST_TALKED, RIGHT
 	end
 
-TwinScript_0x9cc90:
+Route39BarnTwin2Script:
 	faceplayer
 	opentext
 	checkevent EVENT_HEALED_MOOMOO
@@ -132,7 +132,7 @@ MooMoo:
 	jumpopenedtext Text_TotallyHealthy
 
 .HappyCow:
-	showcrytext UnknownText_0x9cd92, MILTANK
+	showcrytext MoomooHappyMooText, MILTANK
 	end
 
 Text_MoomooIsSick:
@@ -155,7 +155,7 @@ Text_ItsCryIsWeak:
 	text "Its cry is weak…"
 	done
 
-UnknownText_0x9cd92:
+MoomooHappyMooText:
 	text "Miltank: Mooo!"
 	done
 

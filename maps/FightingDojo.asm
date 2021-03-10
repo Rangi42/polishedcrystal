@@ -11,8 +11,8 @@ FightingDojo_MapScriptHeader:
 	def_coord_events
 
 	def_bg_events
-	bg_event  4,  0, BGEVENT_JUMPTEXT, UnknownText_0x189bc0
-	bg_event  5,  0, BGEVENT_JUMPTEXT, UnknownText_0x189be0
+	bg_event  4,  0, BGEVENT_JUMPTEXT, FightingDojoSign1Text
+	bg_event  5,  0, BGEVENT_JUMPTEXT, FightingDojoSign2Text
 	bg_event  9,  0, BGEVENT_READ, MapFightingDojoSignpost2Script
 
 	def_object_events
@@ -22,7 +22,7 @@ FightingDojo_MapScriptHeader:
 	object_event  0,  4, SPRITE_CONSOLE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, RematchBlue2Script, EVENT_REMATCH_GYM_LEADER_4
 	object_event  0,  5, SPRITE_COPYCAT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, RematchBrown1Script, EVENT_REMATCH_GYM_LEADER_5
 	object_event  0,  6, SPRITE_CONSOLE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, RematchBrown2Script, EVENT_REMATCH_GYM_LEADER_6
-	object_event  4,  4, SPRITE_BLACK_BELT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, BlackBeltScript_0x189b61, -1
+	object_event  4,  4, SPRITE_BLACK_BELT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, FightingDojoBlackBelt, -1
 
 	object_const_def
 	const REMATCH_RED_1
@@ -182,10 +182,10 @@ ENDM
 .NoAgatha
 	return
 
-BlackBeltScript_0x189b61:
+FightingDojoBlackBelt:
 	checkevent EVENT_BEAT_BLUE
 	iftrue .BlackBeltExplainsRematchesScript
-	jumptextfaceplayer UnknownText_0x189b6c
+	jumptextfaceplayer FightingDojoBlackBeltText
 .BlackBeltExplainsRematchesScript
 	jumptextfaceplayer BlackBeltText_ExplainsRematches
 
@@ -322,7 +322,7 @@ RematchBrown2Script:
 .Brown2SaturdayNight
 	jump RematchAgathaScript
 
-UnknownText_0x189b6c:
+FightingDojoBlackBeltText:
 	text "Hello!"
 
 	para "Karate King, the"
@@ -345,12 +345,12 @@ BlackBeltText_ExplainsRematches:
 	line "them!"
 	done
 
-UnknownText_0x189bc0:
+FightingDojoSign1Text:
 	text "What goes around"
 	line "comes around!"
 	done
 
-UnknownText_0x189be0:
+FightingDojoSign2Text:
 	text "Enemies on every"
 	line "side!"
 	done

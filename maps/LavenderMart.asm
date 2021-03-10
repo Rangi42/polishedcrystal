@@ -13,10 +13,10 @@ LavenderMart_MapScriptHeader:
 
 	def_object_events
 	mart_clerk_event  1,  3, MARTTYPE_STANDARD, MART_LAVENDER
-	object_event  6,  6, SPRITE_HIKER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x7eb29, -1
-	object_event  9,  2, SPRITE_ROCKER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x7ebac, -1
+	object_event  6,  6, SPRITE_HIKER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, LavenderMartPokefanMText, -1
+	object_event  9,  2, SPRITE_ROCKER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, LavenderMartRockerText, -1
 
-UnknownText_0x7eb29:
+LavenderMartPokefanMText:
 	text "Repel is a neces-"
 	line "sity if you are"
 
@@ -30,7 +30,7 @@ UnknownText_0x7eb29:
 	line "all the caves."
 	done
 
-UnknownText_0x7ebac:
+LavenderMartRockerText:
 	text "I heard about a"
 	line "craftsman who"
 

@@ -8,7 +8,7 @@
 	db LUM_BERRY ; item 2
 	dn GENDERLESS, 15 ; gender, step cycles to hatch
 	INCBIN "gfx/pokemon/moltres_galarian/front.dimensions"
-	abilities_for MOLTRES_GALARIAN, PRESSURE, PRESSURE, PRESSURE ; TODO: BERSERK
+	abilities_for MOLTRES_GALARIAN, BERSERK, BERSERK, BERSERK
 	db SLOW ; growth rate
 	dn NO_EGGS, NO_EGGS ; egg groups
 

@@ -580,7 +580,7 @@ MapTeamRocketBaseB1FSignpost0Script:
 	opentext
 	checkevent EVENT_TURNED_OFF_SECURITY_CAMERAS
 	iftrue UnknownScript_0x6cabe
-	writetext UnknownText_0x6cdad
+	writetext TeamRocketBaseB1FSecretSwitchText
 	playsound SFX_TALLY
 	waitbutton
 	closetext
@@ -593,7 +593,7 @@ MapTeamRocketBaseB1FSignpost0Script:
 	end
 
 UnknownScript_0x6cabe:
-	jumpopenedtext UnknownText_0x6cdd0
+	jumpopenedtext TeamRocketBaseB1FSwitchOffText
 
 SecurityCameraMovement1:
 	run_step_right
@@ -743,12 +743,12 @@ SecurityCameraText:
 	line "shiny."
 	done
 
-UnknownText_0x6cdad:
+TeamRocketBaseB1FSecretSwitchText:
 	text "A secret switch!"
 	line "Better press it."
 	done
 
-UnknownText_0x6cdd0:
+TeamRocketBaseB1FSwitchOffText:
 	text "The switch is"
 	line "turned off."
 	done

@@ -1,6 +1,60 @@
 INCLUDE "constants.asm"
 
 
+SECTION "Tileset Headers", ROMX
+
+tileset: MACRO
+	dba \1GFX0, \1GFX1, \1GFX2
+	dba \1Meta, \1Coll, \1Attr
+	dw \1Anim
+ENDM
+
+Tilesets::
+	tileset TilesetJohto1
+	tileset TilesetJohto2
+	tileset TilesetJohto3
+	tileset TilesetJohto4
+	tileset TilesetKanto1
+	tileset TilesetKanto2
+	tileset TilesetShamouti
+	tileset TilesetValencia
+	tileset TilesetFaraway
+	tileset TilesetHouse1
+	tileset TilesetHouse2
+	tileset TilesetHouse3
+	tileset TilesetPokeCenter
+	tileset TilesetPokeCom
+	tileset TilesetMart
+	tileset TilesetGate
+	tileset TilesetGym1
+	tileset TilesetGym2
+	tileset TilesetGym3
+	tileset TilesetPort
+	tileset TilesetLab
+	tileset TilesetFacility
+	tileset TilesetMansion
+	tileset TilesetGameCorner
+	tileset TilesetDecor
+	tileset TilesetMuseum
+	tileset TilesetHotel
+	tileset TilesetTower
+	tileset TilesetBattleTower
+	tileset TilesetRadioTower
+	tileset TilesetLighthouse
+	tileset TilesetWarehouse
+	tileset TilesetCave
+	tileset TilesetQuietCave
+	tileset TilesetIcePath
+	tileset TilesetTunnel
+	tileset TilesetForest
+	tileset TilesetPark
+	tileset TilesetSafari
+	tileset TilesetRuins
+	tileset TilesetAlph
+	tileset TilesetPokemonMansion
+	tileset TilesetBattleFactory
+
+
 SECTION "Tileset Data - johto_traditional", ROMX
 
 TilesetJohto1GFX0::
@@ -744,6 +798,24 @@ TilesetPokemonMansionColl::
 INCBIN "data/tilesets/pokemon_mansion_collision.bin.lz"
 
 
+SECTION "Tileset Data - battle_factory", ROMX
+
+TilesetBattleFactoryGFX0::
+INCBIN "gfx/tilesets/battle_factory.2bpp.vram0.lz"
+
+TilesetBattleFactoryGFX1::
+INCBIN "gfx/tilesets/battle_factory.2bpp.vram1.lz"
+
+TilesetBattleFactoryMeta::
+INCBIN "data/tilesets/battle_factory_metatiles.bin.lz"
+
+TilesetBattleFactoryAttr::
+INCBIN "data/tilesets/battle_factory_attributes.bin.lz"
+
+TilesetBattleFactoryColl::
+INCBIN "data/tilesets/battle_factory_collision.bin.lz"
+
+
 SECTION "Tileset Data - GFX2", ROMX
 
 ; None of the tilesets need "★" GFX, so consolidate them here.
@@ -789,57 +861,5 @@ TilesetSafariGFX2::
 TilesetRuinsGFX2::
 TilesetAlphGFX2::
 TilesetPokemonMansionGFX2::
+TilesetBattleFactoryGFX2::
 	db $ff ; Compressed data is terminated with $ff.
-
-
-SECTION "Tileset Headers", ROMX
-
-tileset: MACRO
-	dba \1GFX0, \1GFX1, \1GFX2
-	dba \1Meta, \1Coll, \1Attr
-	dw \1Anim
-ENDM
-
-Tilesets::
-	tileset TilesetJohto1
-	tileset TilesetJohto2
-	tileset TilesetJohto3
-	tileset TilesetJohto4
-	tileset TilesetKanto1
-	tileset TilesetKanto2
-	tileset TilesetShamouti
-	tileset TilesetValencia
-	tileset TilesetFaraway
-	tileset TilesetHouse1
-	tileset TilesetHouse2
-	tileset TilesetHouse3
-	tileset TilesetPokeCenter
-	tileset TilesetPokeCom
-	tileset TilesetMart
-	tileset TilesetGate
-	tileset TilesetGym1
-	tileset TilesetGym2
-	tileset TilesetGym3
-	tileset TilesetPort
-	tileset TilesetLab
-	tileset TilesetFacility
-	tileset TilesetMansion
-	tileset TilesetGameCorner
-	tileset TilesetDecor
-	tileset TilesetMuseum
-	tileset TilesetHotel
-	tileset TilesetTower
-	tileset TilesetBattleTower
-	tileset TilesetRadioTower
-	tileset TilesetLighthouse
-	tileset TilesetWarehouse
-	tileset TilesetCave
-	tileset TilesetQuietCave
-	tileset TilesetIcePath
-	tileset TilesetTunnel
-	tileset TilesetForest
-	tileset TilesetPark
-	tileset TilesetSafari
-	tileset TilesetRuins
-	tileset TilesetAlph
-	tileset TilesetPokemonMansion

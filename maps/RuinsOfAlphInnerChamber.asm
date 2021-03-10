@@ -49,35 +49,35 @@ RuinsOfAlphInnerChamber_MapScriptHeader:
 	bg_event 17, 24, BGEVENT_JUMPTEXT, RuinsofAlphStatueText
 
 	def_object_events
-	object_event  3,  7, SPRITE_FISHER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x58fac, EVENT_RUINS_OF_ALPH_INNER_CHAMBER_TOURISTS
-	object_event 14, 14, SPRITE_POKEFAN_F, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x58fda, EVENT_RUINS_OF_ALPH_INNER_CHAMBER_TOURISTS
-	object_event 11, 19, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x59024, EVENT_RUINS_OF_ALPH_INNER_CHAMBER_TOURISTS
+	object_event  3,  7, SPRITE_FISHER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, RuinsOfAlphInnerChamberFisherText, EVENT_RUINS_OF_ALPH_INNER_CHAMBER_TOURISTS
+	object_event 14, 14, SPRITE_POKEFAN_F, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, RuinsOfAlphInnerChamberTeacherText, EVENT_RUINS_OF_ALPH_INNER_CHAMBER_TOURISTS
+	object_event 11, 19, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, RuinsOfAlphInnerChamberGrampsText, EVENT_RUINS_OF_ALPH_INNER_CHAMBER_TOURISTS
 	object_event  7, 11, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x58a03, EVENT_RUINS_OF_ALPH_INNER_CHAMBER_TOURISTS
 
 RuinsofAlphInnerChamberTrigger1:
-	priorityjump UnknownScript_0x58f6e
+	priorityjump RuinsOfAlphInnerChamberStrangePresenceScript
 RuinsofAlphInnerChamberTrigger0:
 	end
 
-UnknownScript_0x58f6e:
-	showtext UnknownText_0x58f89
+RuinsOfAlphInnerChamberStrangePresenceScript:
+	showtext RuinsOfAlphStrangePresenceText
 	setscene $0
 	setevent EVENT_MADE_UNOWN_APPEAR_IN_RUINS
 	clearevent EVENT_RUINS_OF_ALPH_OUTSIDE_TOURIST_FISHER
 	end
 
-UnknownText_0x58f89:
+RuinsOfAlphStrangePresenceText:
 	text "There is a strange"
 	line "presence here…"
 	done
 
-UnknownText_0x58fac:
+RuinsOfAlphInnerChamberFisherText:
 	text "This is a big"
 	line "room, but there's"
 	cont "nothing here."
 	done
 
-UnknownText_0x58fda:
+RuinsOfAlphInnerChamberTeacherText:
 	text "This place has a"
 	line "mystical quality"
 	cont "to it."
@@ -86,7 +86,7 @@ UnknownText_0x58fda:
 	line "ethereal even."
 	done
 
-UnknownText_0x59024:
+RuinsOfAlphInnerChamberGrampsText:
 	text "The ruins have not"
 	line "been robbed or"
 	cont "tampered with."

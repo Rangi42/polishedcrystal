@@ -204,7 +204,7 @@ GetMonSprite:
 	ld a, [wBreedMon1Shiny]
 	ld d, a
 	ld a, [wBreedMon1Form]
-	and FORM_MASK
+	and BASEMON_MASK
 	ld e, a
 	ld a, [wBreedMon1Species]
 	jr .Mon
@@ -213,7 +213,7 @@ GetMonSprite:
 	ld a, [wBreedMon2Shiny]
 	ld d, a
 	ld a, [wBreedMon2Form]
-	and FORM_MASK
+	and BASEMON_MASK
 	ld e, a
 	ld a, [wBreedMon2Species]
 	jr .Mon

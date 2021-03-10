@@ -112,11 +112,11 @@ BT_PartySelect:
 	; Entered 3 mons. Check legality, and if OK, prompt to enter those 3.
 	farcall BT_SetPlayerOT
 	farcall BT_LegalityCheck
-	dec b
-	ld hl, .same_item
-	jr z, .reset_and_print_error
-	dec b
+	dec e
 	ld hl, .same_species
+	jr z, .reset_and_print_error
+	dec e
+	ld hl, .same_item
 	jr z, .reset_and_print_error
 
 	call InitPartyMenuLayout
@@ -645,7 +645,7 @@ PlacePartyMonTMHMCompatibility:
 	ld bc, PARTYMON_STRUCT_LENGTH
 	rst AddNTimes
 	ld a, [hl]
-	and FORM_MASK
+	and BASEMON_MASK
 	ld [wCurForm], a
 	predef CanLearnTMHMMove
 	pop hl
@@ -706,7 +706,7 @@ PlacePartyMonEvoStoneCompatibility:
 	ld bc, PARTYMON_STRUCT_LENGTH
 	rst AddNTimes
 	ld a, [hl]
-	and FORM_MASK
+	and BASEMON_MASK
 	ld b, a
 	; c = species
 	ld c, e
@@ -1168,52 +1168,52 @@ PrintPartyMenuActionText:
 
 .Text_RecoveredSomeHP:
 	; recovered @ HP!
-	text_jump UnknownText_0x1bc0a2
+	text_jump _RecoveredSomeHPText
 	text_end
 
 .Text_CuredOfPoison:
 	; 's cured of poison.
-	text_jump UnknownText_0x1bc0bb
+	text_jump _CuredOfPoisonText
 	text_end
 
 .Text_RidOfParalysis:
 	; 's rid of paralysis.
-	text_jump UnknownText_0x1bc0d2
+	text_jump _RidOfParalysisText
 	text_end
 
 .Text_BurnWasHealed:
 	; 's burn was healed.
-	text_jump UnknownText_0x1bc0ea
+	text_jump _BurnWasHealedText
 	text_end
 
 .Text_Defrosted:
 	; was defrosted.
-	text_jump UnknownText_0x1bc101
+	text_jump _WasDefrostedText
 	text_end
 
 .Text_WokeUp:
 	; woke up.
-	text_jump UnknownText_0x1bc115
+	text_jump _WokeUpText
 	text_end
 
 .Text_HealthReturned:
 	; 's health returned.
-	text_jump UnknownText_0x1bc123
+	text_jump _HealthReturnedText
 	text_end
 
 .Text_Revitalized:
 	; is revitalized.
-	text_jump UnknownText_0x1bc13a
+	text_jump _RevitalizedText
 	text_end
 
 .Text_GrewToLevel:
 	; grew to level @ !@ @
-	text_jump UnknownText_0x1bc14f
+	text_jump _GrewToLevelText
 	text_end
 
 .Text_CameToItsSenses:
 	; came to its senses.
-	text_jump UnknownText_0x1bc16e
+	text_jump _CameToItsSensesText
 	text_end
 
 .PrintText:

@@ -67,26 +67,20 @@ if DEF(DEBUG)
 	; judge machine
 	setflag ENGINE_JUDGE_MACHINE
 	; all key items
-x = 0
-rept NUM_KEY_ITEMS
+for x, NUM_KEY_ITEMS
 if x != MACHINE_PART
 	givekeyitem x
 endc
-x = x + 1
 endr
 	; all tms+hms
-x = 0
-rept NUM_TMS + NUM_HMS
+for x, NUM_TMS + NUM_HMS
 	givetmhm x
-x = x + 1
 endr
 	; useful items
-x = POKE_BALL
-rept CHERISH_BALL - POKE_BALL + 1
+for x, POKE_BALL, CHERISH_BALL + 1
 if x != PARK_BALL && x != SAFARI_BALL
 	giveitem x, 99
 endc
-x = x + 1
 endr
 	giveitem MAX_POTION, 99
 	giveitem FULL_RESTORE, 99
@@ -126,10 +120,8 @@ endr
 	giveitem ODD_SOUVENIR, 10
 	giveitem ARMOR_SUIT, 1
 	; all decorations
-x = EVENT_DECO_BED_1
-rept EVENT_DECO_BIG_LAPRAS_DOLL - EVENT_DECO_BED_1 + 1
+for x, EVENT_DECO_BED_1, EVENT_DECO_BIG_LAPRAS_DOLL + 1
 	setevent x
-x = x + 1
 endr
 	; max money
 	givemoney $0, 1000000
@@ -180,8 +172,8 @@ endr
 	setevent EVENT_BEAT_BLUE
 	setevent EVENT_BEAT_ELITE_FOUR
 	setevent EVENT_BEAT_ELITE_FOUR_AGAIN
-;	setevent EVENT_BATTLE_TOWER_OPEN
-;	clearevent EVENT_BATTLE_TOWER_CLOSED
+	setevent EVENT_BATTLE_TOWER_OPEN
+	clearevent EVENT_BATTLE_TOWER_CLOSED
 	; fly anywhere
 	setflag ENGINE_FLYPOINT_NEW_BARK
 	setflag ENGINE_FLYPOINT_CHERRYGROVE

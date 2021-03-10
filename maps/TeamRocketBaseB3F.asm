@@ -12,8 +12,8 @@ TeamRocketBaseB3F_MapScriptHeader:
 	warp_event 27, 14, TEAM_ROCKET_BASE_B2F, 5
 
 	def_coord_events
-	coord_event 10,  8, 2, UnknownScript_0x6e04b
-	coord_event 11,  8, 2, UnknownScript_0x6e052
+	coord_event 10,  8, 2, RocketBaseBossLeft
+	coord_event 11,  8, 2, RocketBaseBossRight
 	coord_event  8, 10, 1, RocketBaseRival
 
 	def_bg_events
@@ -37,7 +37,7 @@ TeamRocketBaseB3F_MapScriptHeader:
 	object_event  5, 14, SPRITE_ROCKET, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, OBJECTTYPE_TRAINER, 3, RaticateTailGrunt, EVENT_TEAM_ROCKET_BASE_POPULATION
 	object_event 23, 11, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 0, GenericTrainerRocketScientistRoss, EVENT_TEAM_ROCKET_BASE_POPULATION
 	object_event 11, 15, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerRocketScientistMitch, EVENT_TEAM_ROCKET_BASE_POPULATION
-	object_event 24, 14, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x6e235, EVENT_TEAM_ROCKET_BASE_POPULATION
+	object_event 24, 14, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, TeamRocketBaseB3FRocketText, EVENT_TEAM_ROCKET_BASE_POPULATION
 	itemball_event  1, 12, PROTEIN, 1, EVENT_TEAM_ROCKET_BASE_B3F_PROTEIN
 	itemball_event  3, 12, X_SPCL_DEF, 1, EVENT_TEAM_ROCKET_BASE_B3F_X_SPCL_DEF
 	itemball_event 28,  9, FULL_HEAL, 1, EVENT_TEAM_ROCKET_BASE_B3F_FULL_HEAL
@@ -70,7 +70,7 @@ LanceGetPasswordScript:
 	pause 20
 	applyonemovement TEAMROCKETBASEB3F_LANCE, step_right
 	showtext LanceGetPasswordText
-	applymovement TEAMROCKETBASEB3F_LANCE, MovementData_0x6e12c
+	applymovement TEAMROCKETBASEB3F_LANCE, RocketBaseLanceLeavesMovement
 	disappear TEAMROCKETBASEB3F_LANCE
 	setscene $1
 	end
@@ -92,29 +92,29 @@ RocketBaseRival:
 	special RestartMapMusic
 	end
 
-UnknownScript_0x6e04b:
-	applymovement PLAYER, MovementData_0x6e133
-	jump UnknownScript_0x6e056
+RocketBaseBossLeft:
+	applymovement PLAYER, RocketBasePlayerApproachesBossLeftMovement
+	jump RocketBaseBoss
 
-UnknownScript_0x6e052:
-	applymovement PLAYER, MovementData_0x6e13a
-UnknownScript_0x6e056:
+RocketBaseBossRight:
+	applymovement PLAYER, RocketBasePlayerApproachesBossRightMovement
+RocketBaseBoss:
 	pause 30
 	showemote EMOTE_SHOCK, TEAMROCKETBASEB3F_PETREL, 15
 	playmusic MUSIC_ROCKET_ENCOUNTER
 	turnobject TEAMROCKETBASEB3F_PETREL, DOWN
-	showtext UnknownText_0x6e400
+	showtext ExecutiveM4BeforeText
 	applyonemovement TEAMROCKETBASEB3F_PETREL, step_down
-	winlosstext UnknownText_0x6e511, 0
+	winlosstext ExecutiveM4BeatenText, 0
 	setlasttalked TEAMROCKETBASEB3F_PETREL
 	loadtrainer PETREL, PETREL2
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_PETREL_2
-	showtext UnknownText_0x6e548
-	applymovement TEAMROCKETBASEB3F_PETREL, MovementData_0x6e144
+	showtext ExecutiveM4AfterText
+	applymovement TEAMROCKETBASEB3F_PETREL, RocketBaseBossHitsTableMovement
 	playsound SFX_TACKLE
-	applymovement TEAMROCKETBASEB3F_PETREL, MovementData_0x6e147
+	applymovement TEAMROCKETBASEB3F_PETREL, RocketBaseBossLeavesMovement
 	disappear TEAMROCKETBASEB3F_PETREL
 	setscene $3
 	end
@@ -129,7 +129,7 @@ SlowpokeTailGrunt:
 
 GruntF5Script:
 	end_if_just_battled
-	showtext UnknownText_0x6e611
+	showtext GruntF5AfterBattleText
 	setevent EVENT_LEARNED_SLOWPOKETAIL
 	end
 
@@ -138,7 +138,7 @@ RaticateTailGrunt:
 
 GruntM28Script:
 	end_if_just_battled
-	showtext UnknownText_0x6e737
+	showtext GruntM28AfterBattleText
 	setevent EVENT_LEARNED_RATICATE_TAIL
 	end
 
@@ -182,10 +182,10 @@ BossDoor:
 	jump .OpenSesame
 
 .NeedsPassword:
-	jumpopenedtext UnknownText_0x6e970
+	jumpopenedtext TeamRocketBaseB3FLockedDoorNeedsPasswordText
 
 .OpenSesame:
-	writetext UnknownText_0x6e9a3
+	writetext TeamRocketBaseB3FLockedDoorOpenSesameText
 	waitbutton
 	playsound SFX_ENTER_DOOR
 	changeblock 10, 8, $7
@@ -195,7 +195,7 @@ BossDoor:
 	waitsfx
 	end
 
-MovementData_0x6e12c:
+RocketBaseLanceLeavesMovement:
 	step_down
 	step_left
 	step_left
@@ -204,7 +204,7 @@ MovementData_0x6e12c:
 	step_left
 	step_end
 
-MovementData_0x6e133:
+RocketBasePlayerApproachesBossLeftMovement:
 	step_up
 	step_up
 	step_up
@@ -213,7 +213,7 @@ MovementData_0x6e133:
 	turn_head_up
 	step_end
 
-MovementData_0x6e13a:
+RocketBasePlayerApproachesBossRightMovement:
 	step_up
 	step_up
 	step_left
@@ -223,12 +223,12 @@ MovementData_0x6e13a:
 	turn_head_up
 	step_end
 
-MovementData_0x6e144:
+RocketBaseBossHitsTableMovement:
 	run_step_right
 	run_step_right
 	step_end
 
-MovementData_0x6e147:
+RocketBaseBossLeavesMovement:
 	fix_facing
 	fast_jump_step_left
 	remove_fixed_facing
@@ -305,7 +305,7 @@ LanceGetPasswordText:
 	line "get the passwords."
 	done
 
-UnknownText_0x6e235:
+TeamRocketBaseB3FRocketText:
 	text "Urrggh… The guy"
 	line "in the cape is"
 	cont "incredibly tough…"
@@ -353,7 +353,7 @@ RocketBaseRivalText:
 	cont "the likes of you!"
 	done
 
-UnknownText_0x6e400:
+ExecutiveM4BeforeText:
 	text "What? Who are you?"
 	line "This is the office"
 
@@ -380,7 +380,7 @@ UnknownText_0x6e400:
 	cont "place!"
 	done
 
-UnknownText_0x6e511:
+ExecutiveM4BeatenText:
 	text "I… I couldn't do a"
 	line "thing…"
 
@@ -388,7 +388,7 @@ UnknownText_0x6e511:
 	line "forgive me…"
 	done
 
-UnknownText_0x6e548:
+ExecutiveM4AfterText:
 	text "No, I can't let"
 	line "this affect me."
 
@@ -418,7 +418,7 @@ GruntF5BeatenText:
 	line "I'll tell you."
 	done
 
-UnknownText_0x6e611:
+GruntF5AfterBattleText:
 	text "The password to"
 	line "the boss's room is"
 
@@ -452,7 +452,7 @@ GruntM28BeatenText:
 	line "You're good!"
 	done
 
-UnknownText_0x6e737:
+GruntM28AfterBattleText:
 	text "Hyuck-hyuck-hyuck!"
 
 	para "The password to"
@@ -491,14 +491,14 @@ RocketScientistMitchBeatenText:
 	cont "battling."
 	done
 
-UnknownText_0x6e970:
+TeamRocketBaseB3FLockedDoorNeedsPasswordText:
 	text "The door's closed…"
 
 	para "It needs two"
 	line "passwords to open."
 	done
 
-UnknownText_0x6e9a3:
+TeamRocketBaseB3FLockedDoorOpenSesameText:
 	text "The door's closed…"
 
 	para "<PLAYER> entered"

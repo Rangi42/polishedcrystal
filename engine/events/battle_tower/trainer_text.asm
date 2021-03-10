@@ -228,483 +228,483 @@ BTTycoonTexts:
 	dw BTWinTycoon
 
 BTGreetingM1:
-	text_jump BattleTowerText_0x1ec000
+	text_jump _BTGreetingM1Text
 	text_end
 
 BTLossM1:
-	text_jump BattleTowerText_0x1ec03b
+	text_jump _BTLossM1Text
 	text_end
 
 BTWinM1:
-	text_jump UnknownText_0x1ec060
+	text_jump _BTWinM1Text
 	text_end
 
 BTGreetingM2:
-	text_jump BattleTowerText_0x1ec080
+	text_jump _BTGreetingM2Text
 	text_end
 
 BTLossM2:
-	text_jump UnknownText_0x1ec0a3
+	text_jump _BTLossM2Text
 	text_end
 
 BTWinM2:
-	text_jump UnknownText_0x1ec0c4
+	text_jump _BTWinM2Text
 	text_end
 
 BTGreetingM3:
-	text_jump UnknownText_0x1ec0e1
+	text_jump _BTGreetingM3Text
 	text_end
 
 BTLossM3:
-	text_jump UnknownText_0x1ec108
+	text_jump _BTLossM3Text
 	text_end
 
 BTWinM3:
-	text_jump UnknownText_0x1ec12a
+	text_jump _BTWinM3Text
 	text_end
 
 BTGreetingM4:
-	text_jump UnknownText_0x1ec14d
+	text_jump _BTGreetingM4Text
 	text_end
 
 BTLossM4:
-	text_jump UnknownText_0x1ec16f
+	text_jump _BTLossM4Text
 	text_end
 
 BTWinM4:
-	text_jump UnknownText_0x1ec190
+	text_jump _BTWinM4Text
 	text_end
 
 BTGreetingM5:
-	text_jump UnknownText_0x1ec1ae
+	text_jump _BTGreetingM5Text
 	text_end
 
 BTLossM5:
-	text_jump UnknownText_0x1ec1d0
+	text_jump _BTLossM5Text
 	text_end
 
 BTWinM5:
-	text_jump UnknownText_0x1ec1f4
+	text_jump _BTWinM5Text
 	text_end
 
 BTGreetingM6:
-	text_jump UnknownText_0x1ec216
+	text_jump _BTGreetingM6Text
 	text_end
 
 BTLossM6:
-	text_jump UnknownText_0x1ec238
+	text_jump _BTLossM6Text
 	text_end
 
 BTWinM6:
-	text_jump UnknownText_0x1ec259
+	text_jump _BTWinM6Text
 	text_end
 
 BTGreetingM7:
-	text_jump UnknownText_0x1ec27b
+	text_jump _BTGreetingM7Text
 	text_end
 
 BTLossM7:
-	text_jump UnknownText_0x1ec2a0
+	text_jump _BTLossM7Text
 	text_end
 
 BTWinM7:
-	text_jump UnknownText_0x1ec2c0
+	text_jump _BTWinM7Text
 	text_end
 
 BTGreetingM8:
-	text_jump UnknownText_0x1ec2d9
+	text_jump _BTGreetingM8Text
 	text_end
 
 BTLossM8:
-	text_jump UnknownText_0x1ec2fe
+	text_jump _BTLossM8Text
 	text_end
 
 BTWinM8:
-	text_jump UnknownText_0x1ec320
+	text_jump _BTWinM8Text
 	text_end
 
 BTGreetingM9:
-	text_jump UnknownText_0x1ec33f
+	text_jump _BTGreetingM9Text
 	text_end
 
 BTLossM9:
-	text_jump UnknownText_0x1ec36c
+	text_jump _BTLossM9Text
 	text_end
 
 BTWinM9:
-	text_jump UnknownText_0x1ec389
+	text_jump _BTWinM9Text
 	text_end
 
 BTGreetingM10:
-	text_jump UnknownText_0x1ec3ad
+	text_jump _BTGreetingM10Text
 	text_end
 
 BTLossM10:
-	text_jump UnknownText_0x1ec3c5
+	text_jump _BTLossM10Text
 	text_end
 
 BTWinM10:
-	text_jump UnknownText_0x1ec3e5
+	text_jump _BTWinM10Text
 	text_end
 
 BTGreetingM11:
-	text_jump UnknownText_0x1ec402
+	text_jump _BTGreetingM11Text
 	text_end
 
 BTLossM11:
-	text_jump UnknownText_0x1ec411
+	text_jump _BTLossM11Text
 	text_end
 
 BTWinM11:
-	text_jump UnknownText_0x1ec41f
+	text_jump _BTWinM11Text
 	text_end
 
 BTGreetingM12:
-	text_jump UnknownText_0x1ec42e
+	text_jump _BTGreetingM12Text
 	text_end
 
 BTLossM12:
-	text_jump UnknownText_0x1ec461
+	text_jump _BTLossM12Text
 	text_end
 
 BTWinM12:
-	text_jump UnknownText_0x1ec4a0
+	text_jump _BTWinM12Text
 	text_end
 
 BTGreetingM13:
-	text_jump UnknownText_0x1ec4d6
+	text_jump _BTGreetingM13Text
 	text_end
 
 BTLossM13:
-	text_jump UnknownText_0x1ec4f5
+	text_jump _BTLossM13Text
 	text_end
 
 BTWinM13:
-	text_jump UnknownText_0x1ec512
+	text_jump _BTWinM13Text
 	text_end
 
 BTGreetingM14:
-	text_jump UnknownText_0x1ec532
+	text_jump _BTGreetingM14Text
 	text_end
 
 BTLossM14:
-	text_jump UnknownText_0x1ec54b
+	text_jump _BTLossM14Text
 	text_end
 
 BTWinM14:
-	text_jump UnknownText_0x1ec565
+	text_jump _BTWinM14Text
 	text_end
 
 BTGreetingM15:
-	text_jump UnknownText_0x1ec580
+	text_jump _BTGreetingM15Text
 	text_end
 
 BTLossM15:
-	text_jump UnknownText_0x1ec59d
+	text_jump _BTLossM15Text
 	text_end
 
 BTWinM15:
-	text_jump UnknownText_0x1ec5b5
+	text_jump _BTWinM15Text
 	text_end
 
 BTGreetingM16:
-	text_jump UnknownText_0x1ec5d3
+	text_jump _BTGreetingM16Text
 	text_end
 
 BTLossM16:
-	text_jump UnknownText_0x1ec5ee
+	text_jump _BTLossM16Text
 	text_end
 
 BTWinM16:
-	text_jump UnknownText_0x1ec60d
+	text_jump _BTWinM16Text
 	text_end
 
 BTGreetingM17:
-	text_jump UnknownText_0x1ec631
+	text_jump _BTGreetingM17Text
 	text_end
 
 BTLossM17:
-	text_jump UnknownText_0x1ec651
+	text_jump _BTLossM17Text
 	text_end
 
 BTWinM17:
-	text_jump UnknownText_0x1ec68f
+	text_jump _BTWinM17Text
 	text_end
 
 BTGreetingM18:
-	text_jump UnknownText_0x1ec6b1
+	text_jump _BTGreetingM18Text
 	text_end
 
 BTLossM18:
-	text_jump UnknownText_0x1ec6d0
+	text_jump _BTLossM18Text
 	text_end
 
 BTWinM18:
-	text_jump UnknownText_0x1ec708
+	text_jump _BTWinM18Text
 	text_end
 
 BTGreetingM19:
-	text_jump UnknownText_0x1ec720
+	text_jump _BTGreetingM19Text
 	text_end
 
 BTLossM19:
-	text_jump UnknownText_0x1ec73e
+	text_jump _BTLossM19Text
 	text_end
 
 BTWinM19:
-	text_jump UnknownText_0x1ec75b
+	text_jump _BTWinM19Text
 	text_end
 
 BTGreetingM20:
-	text_jump UnknownText_0x1ec77f
+	text_jump _BTGreetingM20Text
 	text_end
 
 BTLossM20:
-	text_jump UnknownText_0x1ec798
+	text_jump _BTLossM20Text
 	text_end
 
 BTWinM20:
-	text_jump UnknownText_0x1ec7bb
+	text_jump _BTWinM20Text
 	text_end
 
 BTGreetingM21:
-	text_jump UnknownText_0x1ec7d8
+	text_jump _BTGreetingM21Text
 	text_end
 
 BTLossM21:
-	text_jump UnknownText_0x1ec818
+	text_jump _BTLossM21Text
 	text_end
 
 BTWinM21:
-	text_jump UnknownText_0x1ec837
+	text_jump _BTWinM21Text
 	text_end
 
 BTGreetingM22:
-	text_jump UnknownText_0x1ec858
+	text_jump _BTGreetingM22Text
 	text_end
 
 BTLossM22:
-	text_jump UnknownText_0x1ec876
+	text_jump _BTLossM22Text
 	text_end
 
 BTWinM22:
-	text_jump UnknownText_0x1ec898
+	text_jump _BTWinM22Text
 	text_end
 
 BTGreetingM23:
-	text_jump UnknownText_0x1ec8b1
+	text_jump _BTGreetingM23Text
 	text_end
 
 BTLossM23:
-	text_jump UnknownText_0x1ec8d5
+	text_jump _BTLossM23Text
 	text_end
 
 BTWinM23:
-	text_jump UnknownText_0x1ec8f0
+	text_jump _BTWinM23Text
 	text_end
 
 BTGreetingM24:
-	text_jump UnknownText_0x1ec911
+	text_jump _BTGreetingM24Text
 	text_end
 
 BTLossM24:
-	text_jump UnknownText_0x1ec928
+	text_jump _BTLossM24Text
 	text_end
 
 BTWinM24:
-	text_jump UnknownText_0x1ec949
+	text_jump _BTWinM24Text
 	text_end
 
 BTGreetingM25:
-	text_jump UnknownText_0x1ec969
+	text_jump _BTGreetingM25Text
 	text_end
 
 BTLossM25:
-	text_jump UnknownText_0x1ec986
+	text_jump _BTLossM25Text
 	text_end
 
 BTWinM25:
-	text_jump UnknownText_0x1ec99b
+	text_jump _BTWinM25Text
 	text_end
 
 BTGreetingF1:
-	text_jump UnknownText_0x1ec9bd
+	text_jump _BTGreetingF1Text
 	text_end
 
 BTLossF1:
-	text_jump UnknownText_0x1ec9d9
+	text_jump _BTLossF1Text
 	text_end
 
 BTWinF1:
-	text_jump UnknownText_0x1ec9f7
+	text_jump _BTWinF1Text
 	text_end
 
 BTGreetingF2:
-	text_jump UnknownText_0x1eca0a
+	text_jump _BTGreetingF2Text
 	text_end
 
 BTLossF2:
-	text_jump UnknownText_0x1eca2a
+	text_jump _BTLossF2Text
 	text_end
 
 BTWinF2:
-	text_jump UnknownText_0x1eca47
+	text_jump _BTWinF2Text
 	text_end
 
 BTGreetingF3:
-	text_jump UnknownText_0x1eca64
+	text_jump _BTGreetingF3Text
 	text_end
 
 BTLossF3:
-	text_jump UnknownText_0x1eca82
+	text_jump _BTLossF3Text
 	text_end
 
 BTWinF3:
-	text_jump UnknownText_0x1eca9d
+	text_jump _BTWinF3Text
 	text_end
 
 BTGreetingF4:
-	text_jump UnknownText_0x1ecabf
+	text_jump _BTGreetingF4Text
 	text_end
 
 BTLossF4:
-	text_jump UnknownText_0x1ecade
+	text_jump _BTLossF4Text
 	text_end
 
 BTWinF4:
-	text_jump UnknownText_0x1ecafa
+	text_jump _BTWinF4Text
 	text_end
 
 BTGreetingF5:
-	text_jump UnknownText_0x1ecb19
+	text_jump _BTGreetingF5Text
 	text_end
 
 BTLossF5:
-	text_jump UnknownText_0x1ecb37
+	text_jump _BTLossF5Text
 	text_end
 
 BTWinF5:
-	text_jump UnknownText_0x1ecb55
+	text_jump _BTWinF5Text
 	text_end
 
 BTGreetingF6:
-	text_jump UnknownText_0x1ecb70
+	text_jump _BTGreetingF6Text
 	text_end
 
 BTLossF6:
-	text_jump UnknownText_0x1ecb92
+	text_jump _BTLossF6Text
 	text_end
 
 BTWinF6:
-	text_jump UnknownText_0x1ecbb6
+	text_jump _BTWinF6Text
 	text_end
 
 BTGreetingF7:
-	text_jump UnknownText_0x1ecbd9
+	text_jump _BTGreetingF7Text
 	text_end
 
 BTLossF7:
-	text_jump UnknownText_0x1ecbf3
+	text_jump _BTLossF7Text
 	text_end
 
 BTWinF7:
-	text_jump UnknownText_0x1ecc15
+	text_jump _BTWinF7Text
 	text_end
 
 BTGreetingF8:
-	text_jump UnknownText_0x1ecc39
+	text_jump _BTGreetingF8Text
 	text_end
 
 BTLossF8:
-	text_jump UnknownText_0x1ecc55
+	text_jump _BTLossF8Text
 	text_end
 
 BTWinF8:
-	text_jump UnknownText_0x1ecc75
+	text_jump _BTWinF8Text
 	text_end
 
 BTGreetingF9:
-	text_jump UnknownText_0x1ecc92
+	text_jump _BTGreetingF9Text
 	text_end
 
 BTLossF9:
-	text_jump UnknownText_0x1ecca7
+	text_jump _BTLossF9Text
 	text_end
 
 BTWinF9:
-	text_jump UnknownText_0x1eccc1
+	text_jump _BTWinF9Text
 	text_end
 
 BTGreetingF10:
-	text_jump UnknownText_0x1eccd7
+	text_jump _BTGreetingF10Text
 	text_end
 
 BTLossF10:
-	text_jump UnknownText_0x1eccef
+	text_jump _BTLossF10Text
 	text_end
 
 BTWinF10:
-	text_jump UnknownText_0x1ecd0e
+	text_jump _BTWinF10Text
 	text_end
 
 BTGreetingF11:
-	text_jump UnknownText_0x1ecd2b
+	text_jump _BTGreetingF11Text
 	text_end
 
 BTLossF11:
-	text_jump UnknownText_0x1ecd4d
+	text_jump _BTLossF11Text
 	text_end
 
 BTWinF11:
-	text_jump UnknownText_0x1ecd6b
+	text_jump _BTWinF11Text
 	text_end
 
 BTGreetingF12:
-	text_jump UnknownText_0x1ecd8d
+	text_jump _BTGreetingF12Text
 	text_end
 
 BTLossF12:
-	text_jump UnknownText_0x1ecdaf
+	text_jump _BTLossF12Text
 	text_end
 
 BTWinF12:
-	text_jump UnknownText_0x1ecdcf
+	text_jump _BTWinF12Text
 	text_end
 
 BTGreetingF13:
-	text_jump UnknownText_0x1ecded
+	text_jump _BTGreetingF13Text
 	text_end
 
 BTLossF13:
-	text_jump UnknownText_0x1ece0d
+	text_jump _BTLossF13Text
 	text_end
 
 BTWinF13:
-	text_jump UnknownText_0x1ece2a
+	text_jump _BTWinF13Text
 	text_end
 
 BTGreetingF14:
-	text_jump UnknownText_0x1ece4b
+	text_jump _BTGreetingF14Text
 	text_end
 
 BTLossF14:
-	text_jump UnknownText_0x1ece70
+	text_jump _BTLossF14Text
 	text_end
 
 BTWinF14:
-	text_jump UnknownText_0x1ece8a
+	text_jump _BTWinF14Text
 	text_end
 
 BTGreetingF15:
-	text_jump UnknownText_0x1ecea8
+	text_jump _BTGreetingF15Text
 	text_end
 
 BTLossF15:
-	text_jump UnknownText_0x1ecec9
+	text_jump _BTLossF15Text
 	text_end
 
 BTWinF15:
-	text_jump UnknownText_0x1ecee8
+	text_jump _BTWinF15Text
 	text_end
 
 BTGreetingTycoon:

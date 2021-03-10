@@ -333,23 +333,45 @@ GetMenu2::
 	ld a, [wMenuCursorY]
 	ret
 
-YesNoBox::
+GetYesNoBoxPosition:
 	ld a, [wInPokegear]
 	and a
 	lb bc, SCREEN_WIDTH - 6, 7
-	jr z, .got_position
+	ret z
 	dec b
-.got_position
-	; fallthrough
+	ret
 
+NoYesBox:
+; Returns c (no) or nc (yes). Doesn't mess with menu cursor.
+	call GetYesNoBoxPosition
+	; fallthrough
+PlaceNoYesBox:
+	ld hl, NoYesMenuDataHeader
+	call HandleYesNoMenu
+	ret c
+	add 1 ; no-optimize a++|a--
+	ret
+
+YesNoBox:
+; Returns c (no) or nc (yes) and sets menu cursor appropriately.
+	call GetYesNoBoxPosition
+	; fallthrough
 PlaceYesNoBox::
-; Return nc (yes) or c (no).
-	push bc
 	ld hl, YesNoMenuDataHeader
+	call HandleYesNoMenu
+	jr c, .fix_menu
+	sub 1 ; no-optimize a++|a--
+	ret
+.fix_menu
+	ld a, 2
+	ld [wMenuCursorY], a
+	ret
+
+HandleYesNoMenu:
+; Returns c if cancelled, otherwise $ff or $00 in a for first or second option.
+	push bc
 	call CopyMenuHeader
 	pop bc
-
-.okay
 	ld a, b
 	ld [wMenuBorderLeftCoord], a
 	add 5
@@ -359,27 +381,16 @@ PlaceYesNoBox::
 	add 4
 	ld [wMenuBorderBottomCoord], a
 	call PushWindow
-	; fallthrough
-
-InterpretTwoOptionMenu::
 	call VerticalMenu
 	push af
 	ld c, 15
 	call DelayFrames
 	call CloseWindow
-InterpretTwoOptionMenu_AfterCloseWindow::
 	pop af
-	jr c, .no
+	ret c
 	ld a, [wMenuCursorY]
-	cp 2 ; no
-	jr z, .no
-	and a
-	ret
-
-.no
-	ld a, 2
-	ld [wMenuCursorY], a
-	scf
+	dec a
+	dec a
 	ret
 
 YesNoMenuDataHeader::
@@ -394,6 +405,19 @@ YesNoMenuDataHeader::
 	db 2
 	db "Yes@"
 	db "No@"
+
+NoYesMenuDataHeader::
+	db $40 ; tile backup
+	db  7, 14 ; start coords
+	db 11, 19 ; end coords
+	dw .MenuData2
+	db 1 ; default option
+
+.MenuData2
+	db $c0 ; flags
+	db 2
+	db "No@"
+	db "Yes@"
 
 OffsetMenuDataHeader::
 	call _OffsetMenuDataHeader
@@ -685,8 +709,7 @@ MenuClickSound::
 	jr z, .nosound
 	ld hl, wMenuFlags
 	bit 3, [hl]
-	jr nz, .nosound
-	call PlayClickSFX
+	call z, PlayClickSFX
 .nosound
 	pop af
 	ret

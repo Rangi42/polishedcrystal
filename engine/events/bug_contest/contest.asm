@@ -47,7 +47,7 @@ Special_GiveParkBalls:
 	ld [wContestMon], a
 	ld a, 20
 	ld [wParkBallsRemaining], a
-	farjp StartBugContestTimer
+	jp StartBugContestTimer
 
 BugCatchingContestBattleScript::
 	writecode VAR_BATTLETYPE, BATTLETYPE_CONTEST
@@ -61,14 +61,14 @@ BugCatchingContestBattleScript::
 .OutOfBalls:
 	playsound SFX_ELEVATOR_END
 	opentext
-	farwritetext UnknownText_0x1bd2e7
+	farwritetext _BugCatchingContestIsOverText
 	waitbutton
 	jump BugCatchingContestReturnToGateScript
 
 BugCatchingContestOverScript::
 	playsound SFX_ELEVATOR_END
 	opentext
-	farwritetext UnknownText_0x1bd2ca
+	farwritetext _BugCatchingContestTimeUpText
 	waitbutton
 
 BugCatchingContestReturnToGateScript:

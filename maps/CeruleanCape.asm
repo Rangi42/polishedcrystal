@@ -32,7 +32,7 @@ CeruleanCape_MapScriptHeader:
 	object_event  7, 26, SPRITE_LADY, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 1, TrainerLadyJessica, -1
 	object_event 32, 11, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerFisherLeroy, -1
 	object_event -4, 8, SPRITE_ACE_TRAINER_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_25_COOLTRAINER_M_BEFORE
-	object_event -2, 8, SPRITE_ACE_TRAINER_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x19f520, EVENT_ROUTE_25_COOLTRAINER_M_AFTER
+	object_event -2, 8, SPRITE_ACE_TRAINER_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, CooltrainermKevinAfterBattleText, EVENT_ROUTE_25_COOLTRAINER_M_AFTER
 	itemball_event 31, 12, SHELL_BELL, 1, EVENT_CERULEAN_CAPE_SHELL_BELL
 
 	object_const_def
@@ -54,9 +54,9 @@ CeruleanCapeDateInterruptedTrigger1:
 	playmusic MUSIC_BEAUTY_ENCOUNTER
 	turnobject CERULEANCAPE_MISTY, UP
 	pause 5
-	applymovement CERULEANCAPE_MISTY, MovementData_0x19efed
-	showtext UnknownText_0x19f006
-	applymovement CERULEANCAPE_MISTY, MovementData_0x19effa
+	applymovement CERULEANCAPE_MISTY, Route25MistyApproachesPlayerMovement1
+	showtext Route25MistyDateText
+	applymovement CERULEANCAPE_MISTY, Route25MistyLeavesPlayerMovement1
 	jump CeruleanCapeDateFinishScript
 
 CeruleanCapeDateInterruptedTrigger2:
@@ -64,18 +64,18 @@ CeruleanCapeDateInterruptedTrigger2:
 	pause 30
 	showemote EMOTE_SHOCK, CERULEANCAPE_BOYFRIEND, 10
 	turnobject CERULEANCAPE_MISTY, DOWN
-	applymovement CERULEANCAPE_BOYFRIEND, MovementData_0x19efea
+	applymovement CERULEANCAPE_BOYFRIEND, Route25MistysDateLeavesMovement2
 	disappear CERULEANCAPE_BOYFRIEND
 	pause 15
 	playmusic MUSIC_BEAUTY_ENCOUNTER
 	turnobject CERULEANCAPE_MISTY, UP
 	pause 5
-	applymovement CERULEANCAPE_MISTY, MovementData_0x19eff4
-	showtext UnknownText_0x19f006
-	applymovement CERULEANCAPE_MISTY, MovementData_0x19effd
+	applymovement CERULEANCAPE_MISTY, Route25MistyApproachesPlayerMovement2
+	showtext Route25MistyDateText
+	applymovement CERULEANCAPE_MISTY, Route25MistyLeavesPlayerMovement2
 CeruleanCapeDateFinishScript:
 	turnobject PLAYER, LEFT
-	applymovement CERULEANCAPE_MISTY, MovementData_0x19f000
+	applymovement CERULEANCAPE_MISTY, Route25MistyLeavesMovement
 	disappear CERULEANCAPE_MISTY
 	clearevent EVENT_TRAINERS_IN_CERULEAN_GYM
 	setscene $0
@@ -97,7 +97,7 @@ CeruleanCapeDateInterruptedTrigger3:
 	turnobject CERULEANCAPE_MISTY, DOWN
 	pause 5
 	applymovement CERULEANCAPE_MISTY, .ApproachMovement
-	showtext UnknownText_0x19f006
+	showtext Route25MistyDateText
 	applymovement CERULEANCAPE_MISTY, .LeaveMovement
 	disappear CERULEANCAPE_MISTY
 	clearevent EVENT_TRAINERS_IN_CERULEAN_GYM
@@ -372,14 +372,14 @@ GenericTrainerFisherLeroy:
 	line "right for me now…"
 	done
 
-MovementData_0x19efea:
+Route25MistysDateLeavesMovement2:
 	run_step_down
 	run_step_down
 	step_end
 
-MovementData_0x19efed:
+Route25MistyApproachesPlayerMovement1:
 	step_up
-MovementData_0x19eff4:
+Route25MistyApproachesPlayerMovement2:
 	step_up
 	step_up
 	step_left
@@ -387,17 +387,17 @@ MovementData_0x19eff4:
 	step_left
 	step_end
 
-MovementData_0x19effa:
+Route25MistyLeavesPlayerMovement1:
 	step_down
 	step_left
 	step_end
 
-MovementData_0x19effd:
+Route25MistyLeavesPlayerMovement2:
 	step_up
 	step_left
 	step_end
 
-MovementData_0x19f000:
+Route25MistyLeavesMovement:
 	step_left
 	step_left
 	step_left
@@ -405,7 +405,7 @@ MovementData_0x19f000:
 	step_left
 	step_end
 
-UnknownText_0x19f006:
+Route25MistyDateText:
 	text "Misty: Aww! Why"
 	line "did you have to"
 

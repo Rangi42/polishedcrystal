@@ -13,7 +13,7 @@ _Squirtbottle:
 	farjump WateredWeirdTreeScript
 
 .NothingHappenedScript:
-	farjumptext UnknownText_0x1c0b3b
+	farjumptext _SquirtbottleNothingText
 
 .CheckCanUseSquirtbottle:
 	ld a, [wMapGroup]

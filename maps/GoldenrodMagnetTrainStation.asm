@@ -15,31 +15,31 @@ GoldenrodMagnetTrainStation_MapScriptHeader:
 	def_bg_events
 
 	def_object_events
-	object_event  9,  9, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, OfficerScript_0x550ec, -1
-	object_event 11, 14, SPRITE_GENTLEMAN, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x552a3, EVENT_GOLDENROD_TRAIN_STATION_GENTLEMAN
+	object_event  9,  9, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, GoldenrodMagnetTrainStationOfficerScript, -1
+	object_event 11, 14, SPRITE_GENTLEMAN, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, GoldenrodMagnetTrainStationGentlemanText, EVENT_GOLDENROD_TRAIN_STATION_GENTLEMAN
 	object_event  6, 12, SPRITE_LASS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, GoldenrodMagnetTrainStationCooltrainerfScript, -1
 
 	object_const_def
 	const GOLDENRODMAGNETTRAINSTATION_OFFICER
 
-OfficerScript_0x550ec:
+GoldenrodMagnetTrainStationOfficerScript:
 	faceplayer
 	opentext
 	checkevent EVENT_RESTORED_POWER_TO_KANTO
 	iftrue .MagnetTrainToSaffron
-	jumpopenedtext UnknownText_0x55160
+	jumpopenedtext GoldenrodMagnetTrainStationOfficerTheTrainHasntComeInText
 
 .MagnetTrainToSaffron:
-	writetext UnknownText_0x551b7
+	writetext GoldenrodMagnetTrainStationOfficerAreYouComingAboardText
 	yesorno
-	iffalse_jumpopenedtext UnknownText_0x5524f
+	iffalse_jumpopenedtext GoldenrodMagnetTrainStationOfficerHopeToSeeYouAgainText
 	checkkeyitem PASS
-	iffalse_jumpopenedtext UnknownText_0x5522c
-	writetext UnknownText_0x551ed
+	iffalse_jumpopenedtext GoldenrodMagnetTrainStationOfficerYouDontHaveARailPassText
+	writetext GoldenrodMagnetTrainStationOfficerRightThisWayText
 	waitbutton
 	closetext
-	applymovement GOLDENRODMAGNETTRAINSTATION_OFFICER, MovementData_0x55146
-	applymovement PLAYER, MovementData_0x5514f
+	applymovement GOLDENRODMAGNETTRAINSTATION_OFFICER, GoldenrodMagnetTrainStationOfficerApproachTrainDoorMovement
+	applymovement PLAYER, GoldenrodMagnetTrainStationPlayerApproachAndEnterTrainMovement
 	writebyte $0
 	special Special_MagnetTrain
 	warpcheck
@@ -49,10 +49,10 @@ OfficerScript_0x550ec:
 	end
 
 Script_ArriveFromSaffron:
-	applymovement GOLDENRODMAGNETTRAINSTATION_OFFICER, MovementData_0x55146
-	applymovement PLAYER, MovementData_0x55158
-	applymovement GOLDENRODMAGNETTRAINSTATION_OFFICER, MovementData_0x5514b
-	jumptext UnknownText_0x5526a
+	applymovement GOLDENRODMAGNETTRAINSTATION_OFFICER, GoldenrodMagnetTrainStationOfficerApproachTrainDoorMovement
+	applymovement PLAYER, GoldenrodMagnetTrainStationPlayerLeaveTrainAndEnterStationMovement
+	applymovement GOLDENRODMAGNETTRAINSTATION_OFFICER, GoldenrodMagnetTrainStationOfficerReturnToBoardingGateMovement
+	jumptext GoldenrodMagnetTrainStationOfficerArrivedInGoldenrodText
 
 GoldenrodMagnetTrainStationCooltrainerfScript:
 	checkevent EVENT_RESTORED_POWER_TO_KANTO
@@ -62,20 +62,20 @@ GoldenrodMagnetTrainStationCooltrainerfScript:
 .PowerRestored
 	jumptextfaceplayer GoldenrodMagnetTrainStationCooltrainerfText2
 
-MovementData_0x55146:
+GoldenrodMagnetTrainStationOfficerApproachTrainDoorMovement:
 	step_up
 	step_up
 	step_right
 	turn_head_left
 	step_end
 
-MovementData_0x5514b:
+GoldenrodMagnetTrainStationOfficerReturnToBoardingGateMovement:
 	step_left
 	step_down
 	step_down
 	step_end
 
-MovementData_0x5514f:
+GoldenrodMagnetTrainStationPlayerApproachAndEnterTrainMovement:
 	step_up
 	step_up
 	step_up
@@ -86,7 +86,7 @@ MovementData_0x5514f:
 	step_up
 	step_end
 
-MovementData_0x55158:
+GoldenrodMagnetTrainStationPlayerLeaveTrainAndEnterStationMovement:
 	step_left
 	step_left
 	step_down
@@ -96,7 +96,7 @@ MovementData_0x55158:
 	turn_head_up
 	step_end
 
-UnknownText_0x55160:
+GoldenrodMagnetTrainStationOfficerTheTrainHasntComeInText:
 	text "The train hasn't"
 	line "come in…"
 
@@ -107,7 +107,7 @@ UnknownText_0x55160:
 	para "That won't work."
 	done
 
-UnknownText_0x551b7:
+GoldenrodMagnetTrainStationOfficerAreYouComingAboardText:
 	text "We'll soon depart"
 	line "for Saffron."
 
@@ -115,7 +115,7 @@ UnknownText_0x551b7:
 	line "aboard?"
 	done
 
-UnknownText_0x551ed:
+GoldenrodMagnetTrainStationOfficerRightThisWayText:
 	text "May I see your"
 	line "rail pass, please?"
 
@@ -123,17 +123,17 @@ UnknownText_0x551ed:
 	line "way, please."
 	done
 
-UnknownText_0x5522c:
+GoldenrodMagnetTrainStationOfficerYouDontHaveARailPassText:
 	text "Sorry. You don't"
 	line "have a rail pass."
 	done
 
-UnknownText_0x5524f:
+GoldenrodMagnetTrainStationOfficerHopeToSeeYouAgainText:
 	text "We hope to see you"
 	line "again!"
 	done
 
-UnknownText_0x5526a:
+GoldenrodMagnetTrainStationOfficerArrivedInGoldenrodText:
 	text "We have arrived in"
 	line "Goldenrod."
 
@@ -141,7 +141,7 @@ UnknownText_0x5526a:
 	line "again."
 	done
 
-UnknownText_0x552a3:
+GoldenrodMagnetTrainStationGentlemanText:
 	text "I'm the President."
 
 	para "My dream was to"

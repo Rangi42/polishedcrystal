@@ -277,7 +277,7 @@ DoKeyItemEffect::
 	call StackJumpTable
 
 KeyItemEffects:
-	dw Bicycle            ; BICYCLE
+	dw BikeFunction       ; BICYCLE
 	dw OldRod             ; OLD_ROD
 	dw GoodRod            ; GOOD_ROD
 	dw SuperRod           ; SUPER_ROD
@@ -365,9 +365,7 @@ PokeBallEffect:
 	cp BATTLETYPE_CONTEST
 	jr z, .skipReturnToBattle
 	cp BATTLETYPE_SAFARI
-	jr z, .skipReturnToBattle
-	call ReturnToBattle_UseBall
-
+	call nz, ReturnToBattle_UseBall
 .skipReturnToBattle
 	ld hl, wOptions1
 	res NO_TEXT_SCROLL, [hl]
@@ -456,7 +454,7 @@ PokeBallEffect:
 	ld [wCurSpecies], a
 	ld [wCurPartySpecies], a
 	ld a, [wOTPartyMon1Form]
-	and FORM_MASK
+	and BASEMON_MASK
 	ld [wCurForm], a
 	call GetBaseData
 
@@ -577,7 +575,7 @@ PokeBallEffect:
 	ld a, [wPartyCount]
 	dec a
 	ld [wCurPartyMon], a
-	farcall HealPartyMonEvenForNuzlocke
+	call HealPartyMonEvenForNuzlocke
 .SkipPartyMonHealBall:
 
 	ld a, [wInitialOptions]
@@ -624,7 +622,7 @@ PokeBallEffect:
 .SendToPC:
 	call ClearSprites
 
-	farcall SentPkmnIntoBox
+	call SentPkmnIntoBox
 
 	farcall SetBoxMonCaughtData
 
@@ -704,7 +702,7 @@ PokeBallEffect:
 	jr .return_from_capture
 
 .catch_bug_contest_mon
-	farcall BugContest_SetCaughtContestMon
+	call BugContest_SetCaughtContestMon
 	jr .return_from_capture
 
 .FinishTutorial:
@@ -796,27 +794,27 @@ PokeBallEffect:
 
 Text_NoShake:
 	; Oh no! The #MON broke free!
-	text_jump UnknownText_0x1c5aa6
+	text_jump _BallBrokeFreeText
 	text_end
 
 Text_OneShake:
 	; Aww! It appeared to be caught!
-	text_jump UnknownText_0x1c5ac3
+	text_jump _BallAppearedCaughtText
 	text_end
 
 Text_TwoShakes:
 	; Aargh! Almost had it!
-	text_jump UnknownText_0x1c5ae3
+	text_jump _BallAlmostHadItText
 	text_end
 
 Text_ThreeShakes:
 	; Shoot! It was so close too!
-	text_jump UnknownText_0x1c5afa
+	text_jump _BallSoCloseText
 	text_end
 
 Text_GotchaMonWasCaught:
 	; Gotcha! @ was caught!@ @
-	text_jump UnknownText_0x1c5b17
+	text_jump Text_BallCaught
 	start_asm
 	call WaitSFX
 	push bc
@@ -836,24 +834,21 @@ TextJump_Waitbutton:
 
 Text_SentToBillsPC:
 	; was sent to BILL's PC.
-	text_jump UnknownText_0x1c5b38
+	text_jump _BallSentToPCText
 	text_end
 
 Text_AddedToPokedex:
 	; 's data was newly added to the #DEX.@ @
-	text_jump UnknownText_0x1c5b53
+	text_jump _NewDexDataText
 	text_end
 
 Text_AskNicknameNewlyCaughtMon:
 	; Give a nickname to @ ?
-	text_jump UnknownText_0x1c5b7f
+	text_jump _AskGiveNicknameText
 	text_end
 
 ReturnToBattle_UseBall:
 	farjp _ReturnToBattle_UseBall
-
-Bicycle:
-	farjp BikeFunction
 
 EvoStoneEffect:
 	ld b, PARTYMENUACTION_EVO_STONE
@@ -900,7 +895,7 @@ LowerEVBerry:
 
 .ev_value_ok
 	ld [hl], a
-	farcall UpdatePkmnStats
+	call UpdatePkmnStats
 	ld c, HAPPINESS_USEDEVBERRY
 	predef ChangeHappiness
 	call GetStatStringAndPlayFullHealSFX
@@ -932,7 +927,7 @@ VitaminEffect:
 
 .ev_value_ok
 	ld [hl], a
-	farcall UpdatePkmnStats
+	call UpdatePkmnStats
 
 	call GetStatStringAndPlayFullHealSFX
 	ld hl, ItemStatRoseText
@@ -983,7 +978,7 @@ StatStrings:
 
 GetEVRelativePointer:
 	ld a, [wCurItem]
-	farcall CheckItemParam
+	call CheckItemParam
 	ld c, a
 	ld b, 0
 	ret
@@ -1029,7 +1024,7 @@ RareCandy:
 	pop de
 	pop bc
 
-	farcall UpdatePkmnStats
+	call UpdatePkmnStats
 	farcall LevelUpHappinessMod
 
 	ld a, PARTYMENUTEXT_LEVEL_UP
@@ -1134,7 +1129,7 @@ HealStatus:
 GetItemHealingAction:
 	push hl
 	ld a, [wCurItem]
-	farcall CheckItemParam
+	call CheckItemParam
 	ld c, a
 	ld hl, .StatusHealingActionTexts
 .next
@@ -1417,7 +1412,7 @@ UseItem_GetBaseDataAndNickParameters:
 	ld a, MON_FORM
 	call GetPartyParamLocation
 	ld a, [hl]
-	and FORM_MASK
+	and BASEMON_MASK
 	ld [wCurForm], a
 	call GetBaseData
 	ld a, [wCurPartyMon]
@@ -1636,7 +1631,7 @@ GetHealingItemAmount:
 	cp FIGY_BERRY
 	jr z, .figy_berry
 
-	farcall CheckItemParam
+	call CheckItemParam
 	ld e, a
 	ld d, 0
 	cp -1
@@ -1734,13 +1729,13 @@ FreshSnackFunction:
 
 .Text_CantBeUsed:
 	; That can't be used on this #MON.
-	text_jump UnknownText_0x1c5bac
+	text_jump _ItemCantUseOnMonText
 	text_end
 
 EscapeRope:
 	xor a
 	ld [wItemEffectSucceeded], a
-	farcall EscapeRopeFunction
+	call EscapeRopeFunction
 
 	ld a, [wItemEffectSucceeded]
 	dec a
@@ -1753,7 +1748,7 @@ RepelEffect:
 	ld hl, TextJump_RepelUsedEarlierIsStillInEffect
 	jp nz, PrintText
 
-	farcall CheckItemParam
+	call CheckItemParam
 	ld [wRepelEffect], a
 
 	ld a, [wCurItem]
@@ -1798,7 +1793,7 @@ DireHit:
 	jp UseItemText
 
 XItemEffect:
-	farcall CheckItemParam
+	call CheckItemParam
 	ld b, a
 
 	ld a, STAT_SKIPTEXT | STAT_SILENT
@@ -1826,7 +1821,7 @@ BlueCard:
 	jp MenuTextboxWaitButton
 
 .bluecardtext
-	text_jump UnknownText_0x1c5c5e
+	text_jump _BlueCardBalanceText
 	text_end
 
 CoinCase:
@@ -1834,7 +1829,7 @@ CoinCase:
 	jp MenuTextboxWaitButton
 
 .coincasetext
-	text_jump UnknownText_0x1c5c7b
+	text_jump _CoinCaseCountText
 	text_end
 
 ApricornBox:
@@ -1916,7 +1911,7 @@ SuperRod:
 	; fallthrough
 
 UseRod:
-	farjp FishFunction
+	jp FishFunction
 
 Itemfinder:
 	farjp ItemFinder
@@ -1938,13 +1933,13 @@ RestorePPEffect:
 	cp ELIXIR
 	jp z, Elixir_RestorePPofAllMoves
 
-	ld hl, TextJump_RaiseThePPOfWhichMove
+	ld hl, RaiseThePPOfWhichMoveText
 	ld a, [wTempItem]
 	cp PP_UP
 	jr z, .ppup
 	cp PP_MAX
 	jr z, .ppup
-	ld hl, TextJump_RestoreThePPOfWhichMove
+	ld hl, RestoreThePPOfWhichMoveText
 
 .ppup
 	call PrintText
@@ -1991,32 +1986,44 @@ RestorePPEffect:
 
 .CantUsePPUpOnSketch:
 .pp_is_maxed_out
-	ld hl, TextJump_PPIsMaxedOut
+	ld hl, PPIsMaxedOutText
 	call PrintText
 	jr .loop2
 
 .do_ppup
+	ld c, 3 << 6
 	ld a, [wTempItem]
 	cp PP_MAX
-	jr nz, .not_pp_max
-	ld a, [hl]
-	or 3 << 6 ; maximize PP Up count
-	jr .raised_pp
-.not_pp_max
+	ld b, 3
+	jr z, .pp_restore_loop
+	ld b, 1
+.pp_restore_loop
+	push hl
+	push bc
 	ld a, [hl]
 	add 1 << 6 ; increase PP Up count by 1
-.raised_pp
 	ld [hl], a
 	ld a, $1
 	ld [wd265], a
 	call ApplyPPUp
+	pop bc
+	pop hl
+
+	; Unless PP is maxed, we might want to continue increasing PP further.
+	ld a, [hl]
+	and c
+	cp c
+	jr z, .maxed_pp
+	dec b
+	jr nz, .pp_restore_loop
+.maxed_pp
 	call Play_SFX_FULL_HEAL
 
-	ld hl, TextJump_PPsIncreased
+	ld hl, PPsIncreasedText
 	ld a, [wTempItem]
 	cp PP_UP
 	jr z, .ppup3
-	ld hl, TextJump_PPsMaximized
+	ld hl, PPsMaximizedText
 .ppup3
 	call PrintText
 
@@ -2034,12 +2041,10 @@ BattleRestorePP:
 	jr nz, .not_in_battle
 	ld a, [wPlayerSubStatus2]
 	bit SUBSTATUS_TRANSFORMED, a
-	jr nz, .not_in_battle
-	call .UpdateBattleMonPP
-
+	call z, .UpdateBattleMonPP
 .not_in_battle
 	call Play_SFX_FULL_HEAL
-	ld hl, UnknownText_0xf739
+	ld hl, PPRestoredText
 	call PrintText
 	jr FinishPPRestore
 
@@ -2158,34 +2163,34 @@ RestorePP:
 	xor a
 	ret
 
-TextJump_RaiseThePPOfWhichMove:
+RaiseThePPOfWhichMoveText:
 	; Raise the PP of which move?
 	text_jump Text_RaiseThePPOfWhichMove
 	text_end
 
-TextJump_RestoreThePPOfWhichMove:
+RestoreThePPOfWhichMoveText:
 	; Restore the PP of which move?
 	text_jump Text_RestoreThePPOfWhichMove
 	text_end
 
-TextJump_PPIsMaxedOut:
+PPIsMaxedOutText:
 	; 's PP is maxed out.
 	text_jump Text_PPIsMaxedOut
 	text_end
 
-TextJump_PPsIncreased:
+PPsIncreasedText:
 	; 's PP increased.
 	text_jump Text_PPsIncreased
 	text_end
 
-TextJump_PPsMaximized:
+PPsMaximizedText:
 	; 's PP maximized.
 	text_jump Text_PPsMaximized
 	text_end
 
-UnknownText_0xf739:
+PPRestoredText:
 	; PP was restored.
-	text_jump UnknownText_0x1c5cf1
+	text_jump _PPRestoredText
 	text_end
 
 SquirtBottle:
@@ -2346,12 +2351,12 @@ ItemNotUsed_ExitMenu:
 
 LooksBitterText:
 	; It looks bitter…
-	text_jump UnknownText_0x1c5d3e
+	text_jump _ItemLooksBitterText
 	text_end
 
 CantUseOnEggText:
 	; That can't be used on an EGG.
-	text_jump UnknownText_0x1c5d50
+	text_jump _ItemCantUseOnEggText
 	text_end
 
 AlreadyInThatBallText:
@@ -2360,27 +2365,27 @@ AlreadyInThatBallText:
 
 IsntTheTimeText:
 	; OAK:  ! This isn't the time to use that!
-	text_jump UnknownText_0x1c5d6e
+	text_jump _ItemOakWarningText
 	text_end
 
 WontHaveAnyEffectText:
 	; It won't have any effect.
-	text_jump UnknownText_0x1c5db6
+	text_jump _ItemWontHaveEffectText
 	text_end
 
 BlockedTheBallText:
 	; The trainer blocked the BALL!
-	text_jump UnknownText_0x1c5dd0
+	text_jump _BallBlockedText
 	text_end
 
 DontBeAThiefText:
 	; Don't be a thief!
-	text_jump UnknownText_0x1c5def
+	text_jump _BallDontBeAThiefText
 	text_end
 
 Ball_BoxIsFullText:
 	; The #MON BOX is full. That can't be used now.
-	text_jump UnknownText_0x1c5e3a
+	text_jump _BallBoxFullText
 	text_end
 
 Ball_MonIsHiddenText:
@@ -2405,7 +2410,7 @@ Revive_NuzlockeFailureText:
 
 UsedItemText:
 	; used the@ .
-	text_jump UnknownText_0x1c5e68
+	text_jump _ItemUsedText
 	text_end
 
 ApplyPPUp:

@@ -17,22 +17,22 @@ BuenaPhoneScript_CheckTimeOfDay1:
 	iftrue .morn
 	checktime 1 << DAY
 	iftrue .day
-	writetext UnknownText_0xa0d42
+	writetext BuenaPhoneNiteAnswerText
 	buttonsound
 	end
 
 .morn
-	writetext UnknownText_0xa0c28
+	writetext BuenaPhoneMorningAnswerText
 	buttonsound
 	end
 
 .day
-	writetext UnknownText_0xa0c72
+	writetext BuenaPhoneDayAnswerText
 	buttonsound
 	end
 
 BuenaPhoneScript_AfterMidnight1:
-	writetext UnknownText_0xa0caf
+	writetext BuenaPhoneMidnightAnswerText
 	end
 
 BuenaPhoneScript_CheckTimeOfDay2:
@@ -42,27 +42,27 @@ BuenaPhoneScript_CheckTimeOfDay2:
 	iftrue .morn
 	checktime 1 << DAY
 	iftrue .day
-	writetext UnknownText_0xa0e29
+	writetext BuenaPhoneNiteText
 	buttonsound
 	end
 
 .morn
-	writetext UnknownText_0xa0d96
+	writetext BuenaPhoneMorningText
 	buttonsound
 	end
 
 .day
-	writetext UnknownText_0xa0dcf
+	writetext BuenaPhoneDayText
 	buttonsound
 	end
 
 BuenaPhoneScript_AfterMidnight2:
-	writetext UnknownText_0xa0e01
+	writetext BuenaPhoneMidnightText
 	buttonsound
 	end
 
 BuenaPhoneScript_Rocket:
-	writetext UnknownText_0xa0e5e
+	writetext BuenaPhoneRocketText
 	end
 
 BuenaPhoneScript_Random2:
@@ -91,59 +91,59 @@ BuenaPhoneScript_Random2:
 	ifequal 13, .thirteen
 
 .zero
-	writetext UnknownText_0xa0efb
+	writetext BuenaPhoneWentOutWithBenText
 	jump .finish
 
 .one
-	writetext UnknownText_0xa0fcf
+	writetext BuenaPhoneReceptionistText
 	jump .finish
 
 .two
-	writetext UnknownText_0xa109d
+	writetext BuenaPhoneLuckyNumberShowText
 	jump .finish
 
 .three
-	writetext UnknownText_0xa1143
+	writetext BuenaPhoneStressedFromWorkText
 	jump .finish
 
 .four
-	writetext UnknownText_0xa1244
+	writetext BuenaPhoneProfessorOakText
 	jump .finish
 
 .five
-	writetext UnknownText_0xa1318
+	writetext BuenaPhoneGotAColdText
 	jump .finish
 
 .six
-	writetext UnknownText_0xa13d8
+	writetext BuenaPhoneRadioCardQuestionsText
 	jump .finish
 
 .seven
-	writetext UnknownText_0xa1488
+	writetext BuenaPhonePikachuFanClubText
 	jump .finish
 
 .eight
-	writetext UnknownText_0xa15de
+	writetext BuenaPhoneRadioTowerDirectorText
 	jump .finish
 
 .nine
-	writetext UnknownText_0xa1717
+	writetext BuenaPhoneWhenDoYouRelaxText
 	jump .finish
 
 .ten
-	writetext UnknownText_0xa183d
+	writetext BuenaPhoneStarterPokemonText
 	jump .finish
 
 .eleven
-	writetext UnknownText_0xa19b1
+	writetext BuenaPhoneCompanyVacationText
 	jump .finish
 
 .twelve
-	writetext UnknownText_0xa1ac0
+	writetext BuenaPhoneBenAndFernText
 	jump .finish
 
 .thirteen
-	writetext UnknownText_0xa1bed
+	writetext BuenaPhoneGoingShoppingText
 
 .finish
 	end
@@ -155,15 +155,15 @@ BuenaPhoneScript_Random1:
 	ifequal 2, .two
 
 .zero
-	writetext UnknownText_0xa1c88
+	writetext BuenaPhoneFavoriteSlotMachineAnswerText
 	end
 
 .one
-	writetext UnknownText_0xa1d5f
+	writetext BuenaPhonePokegearAnswerText
 	end
 
 .two
-	writetext UnknownText_0xa1e2f
+	writetext BuenaPhoneCoopedUpInRadioTowerAnswerText
 	end
 
 INCLUDE "data/phone/text/buena.asm"

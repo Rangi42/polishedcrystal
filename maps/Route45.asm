@@ -163,80 +163,80 @@ BlackbeltKenji1Script:
 	checkevent EVENT_KENJI_ASKED_FOR_PHONE_NUMBER
 	iftrue UnknownScript_0x19e0cd
 	special Special_SampleKenjiBreakCountdown
-	writetext UnknownText_0x19e5e2
+	writetext BlackbeltKenjiAfterBattleText
 	waitbutton
 	setevent EVENT_KENJI_ASKED_FOR_PHONE_NUMBER
-	scall UnknownScript_0x19e11b
+	scall Route45AskNumber1M
 	jump UnknownScript_0x19e0d0
 
 UnknownScript_0x19e0cd:
-	scall UnknownScript_0x19e11f
+	scall Route45AskNumber2M
 UnknownScript_0x19e0d0:
 	askforphonenumber PHONE_BLACKBELT_KENJI
-	ifequal $1, UnknownScript_0x19e12f
-	ifequal $2, UnknownScript_0x19e12b
+	ifequal $1, Route45PhoneFullM
+	ifequal $2, Route45NumberDeclinedM
 	trainertotext BLACKBELT_T, KENJI1, $0
-	scall UnknownScript_0x19e123
-	jump UnknownScript_0x19e127
+	scall Route45RegisteredNumberM
+	jump Route45NumberAcceptedM
 
 UnknownScript_0x19e0e4:
 	checkcode VAR_KENJI_BREAK
-	ifnotequal $1, UnknownScript_0x19e127
+	ifnotequal $1, Route45NumberAcceptedM
 	checktime 1 << MORN
 	iftrue UnknownScript_0x19e10c
 	checktime (1 << EVE) | (1 << NITE)
 	iftrue UnknownScript_0x19e112
 	checkevent EVENT_KENJI_ON_BREAK
-	iffalse UnknownScript_0x19e127
-	scall UnknownScript_0x19e137
+	iffalse Route45NumberAcceptedM
+	scall Route45GiftM
 	verbosegiveitem PP_UP
 	iffalse UnknownScript_0x19e118
 	clearevent EVENT_KENJI_ON_BREAK
 	special Special_SampleKenjiBreakCountdown
-	jump UnknownScript_0x19e127
+	jump Route45NumberAcceptedM
 
 UnknownScript_0x19e10c:
-	jumpopenedtext UnknownText_0x19e634
+	jumpopenedtext BlackbeltKenjiMorningText
 
 UnknownScript_0x19e112:
-	jumpopenedtext UnknownText_0x19e66c
+	jumpopenedtext BlackbeltKenjiNightText
 
 UnknownScript_0x19e118:
-	jump UnknownScript_0x19e13b
+	jump Route45PackFullM
 
-UnknownScript_0x19e11b:
+Route45AskNumber1M:
 	jumpstd asknumber1m
 
-UnknownScript_0x19e11f:
+Route45AskNumber2M:
 	jumpstd asknumber2m
 
-UnknownScript_0x19e123:
+Route45RegisteredNumberM:
 	jumpstd registerednumberm
 
-UnknownScript_0x19e127:
+Route45NumberAcceptedM:
 	jumpstd numberacceptedm
 
-UnknownScript_0x19e12b:
+Route45NumberDeclinedM:
 	jumpstd numberdeclinedm
 
-UnknownScript_0x19e12f:
+Route45PhoneFullM:
 	jumpstd phonefullm
 
-UnknownScript_0x19e133:
+Route45RematchM:
 	jumpstd rematchm
 
-UnknownScript_0x19e137:
+Route45GiftM:
 	jumpstd giftm
 
-UnknownScript_0x19e13b:
+Route45PackFullM:
 	jumpstd packfullm
 
-UnknownScript_0x19e13f:
+HikerParryHasIron:
 	setevent EVENT_PARRY_IRON
 	jumpstd packfullm
 	end
 
-UnknownScript_0x19e146:
+Route45RematchGiftM:
 	jumpstd rematchgiftm
 
 GenericTrainerHikerErik:
@@ -270,27 +270,27 @@ HikerParry1Script:
 	checkflag ENGINE_PARRY
 	iftrue UnknownScript_0x19e1b8
 	checkcellnum PHONE_HIKER_PARRY
-	iftrue UnknownScript_0x19e127
+	iftrue Route45NumberAcceptedM
 	checkevent EVENT_PARRY_ASKED_FOR_PHONE_NUMBER
 	iftrue UnknownScript_0x19e1a1
-	writetext UnknownText_0x19e434
+	writetext HikerParryAfterBattleText
 	buttonsound
 	setevent EVENT_PARRY_ASKED_FOR_PHONE_NUMBER
-	scall UnknownScript_0x19e11b
+	scall Route45AskNumber1M
 	jump UnknownScript_0x19e1a4
 
 UnknownScript_0x19e1a1:
-	scall UnknownScript_0x19e11f
+	scall Route45AskNumber2M
 UnknownScript_0x19e1a4:
 	askforphonenumber PHONE_HIKER_PARRY
-	ifequal $1, UnknownScript_0x19e12f
-	ifequal $2, UnknownScript_0x19e12b
+	ifequal $1, Route45PhoneFullM
+	ifequal $2, Route45NumberDeclinedM
 	trainertotext HIKER, PARRY1, $0
-	scall UnknownScript_0x19e123
-	jump UnknownScript_0x19e127
+	scall Route45RegisteredNumberM
+	jump Route45NumberAcceptedM
 
 UnknownScript_0x19e1b8:
-	scall UnknownScript_0x19e133
+	scall Route45RematchM
 	winlosstext HikerParry1BeatenText, 0
 	copybytetovar wParryFightCount
 	ifequal 2, .Fight2
@@ -327,24 +327,24 @@ UnknownScript_0x19e1b8:
 	iftrue UnknownScript_0x19e219
 	checkevent EVENT_GOT_IRON_FROM_PARRY
 	iftrue UnknownScript_0x19e218
-	scall UnknownScript_0x19e146
+	scall Route45RematchGiftM
 	verbosegiveitem IRON
-	iffalse UnknownScript_0x19e13f
+	iffalse HikerParryHasIron
 	setevent EVENT_GOT_IRON_FROM_PARRY
-	jump UnknownScript_0x19e127
+	jump Route45NumberAcceptedM
 
 UnknownScript_0x19e218:
 	end
 
 UnknownScript_0x19e219:
 	opentext
-	writetext UnknownText_0x19e52c
+	writetext HikerParryGivesIronText
 	waitbutton
 	verbosegiveitem IRON
-	iffalse UnknownScript_0x19e13f
+	iffalse HikerParryHasIron
 	clearevent EVENT_PARRY_IRON
 	setevent EVENT_GOT_IRON_FROM_PARRY
-	jump UnknownScript_0x19e127
+	jump Route45NumberAcceptedM
 
 GenericTrainerHikerTimothy:
 	generictrainer HIKER, TIMOTHY, EVENT_BEAT_HIKER_TIMOTHY, HikerTimothySeenText, HikerTimothyBeatenText
@@ -381,7 +381,7 @@ GenericTrainerCooltrainerfKelly:
 	done
 
 GenericTrainerCamperQuentin:
-	generictrainer CAMPER, QUENTIN, EVENT_BEAT_CAMPER_QUENTIN, UnknownText_0x19e87f, UnknownText_0x19e899
+	generictrainer CAMPER, QUENTIN, EVENT_BEAT_CAMPER_QUENTIN, CamperQuentinSeenText, CamperQuentinBeatenText
 
 	text "Have you been to"
 	line "the Battle Tower?"
@@ -436,7 +436,7 @@ HikerParry1BeatenText:
 	line "big loser!"
 	done
 
-UnknownText_0x19e434:
+HikerParryAfterBattleText:
 	text "I'm not much good"
 	line "at thinking, see?"
 
@@ -463,7 +463,7 @@ HikerTimothyBeatenText:
 	line "They're there too!"
 	done
 
-UnknownText_0x19e52c:
+HikerParryGivesIronText:
 	text "I just can't find"
 	line "a way to win!"
 
@@ -488,7 +488,7 @@ BlackbeltKenji1BeatenText:
 	text "Waaaargh!"
 	done
 
-UnknownText_0x19e5e2:
+BlackbeltKenjiAfterBattleText:
 	text "This calls for"
 	line "extreme measures."
 
@@ -497,13 +497,13 @@ UnknownText_0x19e5e2:
 	cont "solitude."
 	done
 
-UnknownText_0x19e634:
+BlackbeltKenjiMorningText:
 	text "I'm going to train"
 	line "a bit more before"
 	cont "I break for lunch."
 	done
 
-UnknownText_0x19e66c:
+BlackbeltKenjiNightText:
 	text "We had plenty of"
 	line "rest at lunch, so"
 
@@ -538,7 +538,7 @@ CooltrainerfKellyBeatenText:
 	text "Fine. I lost."
 	done
 
-UnknownText_0x19e87f:
+CamperQuentinSeenText:
 	text "I'm really, really"
 	line "tough!"
 
@@ -547,7 +547,7 @@ UnknownText_0x19e87f:
 	cont "tough I really am?"
 	done
 
-UnknownText_0x19e899:
+CamperQuentinBeatenText:
 	text "I was tough at the"
 	line "Battle Tower…"
 	done

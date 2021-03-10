@@ -318,6 +318,11 @@ BT_AppendOTMon:
 	ld a, MON_SPECIES
 	call .Copy
 
+	; Add form byte
+	ld bc, 1
+	ld a, MON_FORM
+	call .Copy
+
 	; Add item
 	ld bc, 1
 	ld a, MON_ITEM
@@ -346,7 +351,8 @@ BT_AppendOTMon:
 	ld a, MON_DVS
 	call .Copy
 
-	ld bc, 2
+	; The 2nd personality byte is specified as part of extspecies
+	ld bc, 1
 	ld a, MON_PERSONALITY
 	call .Copy
 

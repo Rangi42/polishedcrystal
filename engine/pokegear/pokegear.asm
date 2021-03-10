@@ -274,7 +274,7 @@ InitPokegearTilemap:
 	db " Switch▶@"
 
 .Map:
-	farcall PokegearMap
+	call PokegearMap
 	ld a, $7
 	ld bc, $12
 	hlcoord 1, 2
@@ -457,7 +457,7 @@ Pokegear_UpdateClock:
 	jp PlaceWholeStringInBoxAtOnce
 
 .DayText:
-	text_jump UnknownText_0x1c5821
+	text_jump _GearTodayText
 	text_end
 
 PokegearMap_CheckRegion:
@@ -907,7 +907,7 @@ PokegearPhone_MakePhoneCall:
 	ret
 
 .no_service
-	farcall Phone_NoSignal
+	call Phone_NoSignal
 	ld hl, .OutOfServiceArea
 	call PrintText
 	ld a, $a
@@ -917,19 +917,19 @@ PokegearPhone_MakePhoneCall:
 
 .dotdotdot
 	;
-	text_jump UnknownText_0x1c5824
+	text_jump _GearEllipseText
 	text_end
 
 .OutOfServiceArea:
 	; You're out of the service area.
-	text_jump UnknownText_0x1c5827
+	text_jump _GearOutOfServiceText
 	text_end
 
 PokegearPhone_FinishPhoneCall:
 	ldh a, [hJoyPressed]
 	and A_BUTTON | B_BUTTON
 	ret z
-	farcall HangUp
+	call HangUp
 	ld a, $a
 	ld [wJumptableIndex], a
 	ld hl, PokegearText_WhomToCall
@@ -1084,7 +1084,7 @@ PokegearPhoneContactSubmenu:
 	ld d, 0
 	add hl, de
 	ld c, [hl]
-	farcall CheckCanDeletePhoneNumber
+	call CheckCanDeletePhoneNumber
 	ld a, c
 	and a
 	jr z, .cant_delete
@@ -1306,17 +1306,17 @@ Pokegear_LoadTilemapRLE:
 
 PokegearText_WhomToCall:
 	; Whom do you want to call?
-	text_jump UnknownText_0x1c5847
+	text_jump _PokegearAskWhoCallText
 	text_end
 
 PokegearText_PressAnyButtonToExit:
 	; Press any button to exit.
-	text_jump UnknownText_0x1c5862
+	text_jump _PokegearPressButtonText
 	text_end
 
 PokegearText_DeleteStoredNumber:
 	; Delete this stored phone number?
-	text_jump UnknownText_0x1c587d
+	text_jump _PokegearAskDeleteText
 	text_end
 
 PokegearSpritesGFX:
@@ -1766,7 +1766,7 @@ _TownMap:
 	jr .loop2
 
 .InitTilemap:
-	farcall PokegearMap
+	call PokegearMap
 	ld a, $7
 	ld bc, 6
 	hlcoord 1, 0
@@ -1815,9 +1815,7 @@ PlayRadio:
 	ld l, a
 	ld a, [wPokegearRadioChannelBank]
 	and a
-	jr z, .zero
-	call FarCall_hl
-.zero
+	call nz, FarCall_hl
 	call DelayFrame
 	jr .loop
 

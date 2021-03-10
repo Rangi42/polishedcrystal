@@ -150,7 +150,7 @@ Bird_keeperTheoScript:
 	end_if_just_battled
 	checkevent EVENT_JASMINE_RETURNED_TO_GYM
 	iftrue_jumptextfaceplayer Bird_keeperTheoFinalText
-	jumptextfaceplayer UnknownText_0x5b2df
+	jumptextfaceplayer BirdKeeperTheoAfterBattleText
 
 GenericTrainerGentlemanPreston:
 	generictrainer GENTLEMAN, PRESTON, EVENT_BEAT_GENTLEMAN_PRESTON, GentlemanPrestonSeenText, GentlemanPrestonBeatenText
@@ -187,7 +187,7 @@ Bird_keeperTheoBeatenText:
 	line "concerned…"
 	done
 
-UnknownText_0x5b2df:
+BirdKeeperTheoAfterBattleText:
 	text "How the heck do"
 	line "you go up?"
 

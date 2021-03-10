@@ -956,12 +956,18 @@ ENDU
 
 wTileAnimBuffer:: ds 1 tiles
 
-; addresses dealing with serial comms
+; link data
+UNION
 wOtherPlayerLinkMode:: db
 wOtherPlayerLinkAction:: db
 	ds 3
 wPlayerLinkAction:: db
 	ds 4
+NEXTU
+wLinkReceivedSyncBuffer:: ds 5
+wLinkPlayerSyncBuffer:: ds 5
+ENDU
+
 wLinkTimeoutFrames:: dw
 wLinkByteTimeout:: dw
 
@@ -1200,7 +1206,13 @@ wOBP0:: db
 wOBP1:: db
 
 wNumHits:: db
-	ds 1 ; pretty sure wNumHits only needs one byte?
+
+wOptions3::
+; bit 0: keyword abc/qwerty
+; bits 1-7: unused
+	db
+
+wOptions::
 
 wOptions1::
 ; bit 0-1: text delay

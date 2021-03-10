@@ -11,18 +11,18 @@ TrainerHouse1F_MapScriptHeader:
 	def_coord_events
 
 	def_bg_events
-	bg_event  7,  0, BGEVENT_JUMPTEXT, UnknownText_0x9b1f4
-	bg_event  9,  0, BGEVENT_JUMPTEXT, UnknownText_0x9b25d
-	bg_event  4,  6, BGEVENT_JUMPTEXT, UnknownText_0x9b2c1
+	bg_event  7,  0, BGEVENT_JUMPTEXT, TrainerHouseSign1Text
+	bg_event  9,  0, BGEVENT_JUMPTEXT, TrainerHouseSign2Text
+	bg_event  4,  6, BGEVENT_JUMPTEXT, TrainerHouseIllegibleText
 
 	def_object_events
-	object_event  0, 10, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x9af7f, -1
-	object_event  8, 10, SPRITE_ACE_TRAINER_M, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x9b025, -1
-	object_event  6,  2, SPRITE_ACE_TRAINER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 2, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x9b0b5, -1
-	object_event  7,  7, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x9b11d, -1
-	object_event  2,  4, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x9b1c9, -1
+	object_event  0, 10, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, TrainerHouse1FReceptionistText, -1
+	object_event  8, 10, SPRITE_ACE_TRAINER_M, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, TrainerHouse1FCooltrainerMText, -1
+	object_event  6,  2, SPRITE_ACE_TRAINER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 2, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, TrainerHouse1FCooltrainerFText, -1
+	object_event  7,  7, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, TrainerHouse1FYoungsterText, -1
+	object_event  2,  4, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, TrainerHouse1FGentlemanText, -1
 
-UnknownText_0x9af7f:
+TrainerHouse1FReceptionistText:
 	text "Welcome to Trainer"
 	line "House, the newest"
 
@@ -39,7 +39,7 @@ UnknownText_0x9af7f:
 	line "downstairs."
 	done
 
-UnknownText_0x9b025:
+TrainerHouse1FCooltrainerMText:
 	text "Viridian is the"
 	line "town closest to"
 	cont "Indigo Plateau."
@@ -58,7 +58,7 @@ UnknownText_0x9b025:
 	line "#mon League."
 	done
 
-UnknownText_0x9b0b5:
+TrainerHouse1FCooltrainerFText:
 	text "They hold practice"
 	line "battles downstairs"
 	cont "here."
@@ -70,7 +70,7 @@ UnknownText_0x9b0b5:
 	line "battles."
 	done
 
-UnknownText_0x9b11d:
+TrainerHouse1FYoungsterText:
 	text "I guess you can't"
 	line "become the Champ"
 
@@ -87,13 +87,13 @@ UnknownText_0x9b11d:
 	line "towns in Kanto."
 	done
 
-UnknownText_0x9b1c9:
+TrainerHouse1FGentlemanText:
 	text "Whew… I'm taking a"
 	line "rest from #mon"
 	cont "battles."
 	done
 
-UnknownText_0x9b1f4:
+TrainerHouseSign1Text:
 	text "Practice battles"
 	line "are held in the"
 
@@ -105,7 +105,7 @@ UnknownText_0x9b1f4:
 	cont "participate."
 	done
 
-UnknownText_0x9b25d:
+TrainerHouseSign2Text:
 	text "There are no rules"
 	line "or regulations for"
 
@@ -116,7 +116,7 @@ UnknownText_0x9b25d:
 	line "goes!"
 	done
 
-UnknownText_0x9b2c1:
+TrainerHouseIllegibleText:
 	text "…What's this?"
 	line "A strategy memo?"
 

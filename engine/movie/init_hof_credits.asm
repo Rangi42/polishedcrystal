@@ -10,7 +10,7 @@ InitDisplayForHallOfFame:
 
 .SavingRecordDontTurnOff:
 	; SAVING RECORD… DON'T TURN OFF!
-	text_jump UnknownText_0x1bd39e
+	text_jump _SavingRecordText
 	text_end
 
 InitDisplayForLeafCredits:
