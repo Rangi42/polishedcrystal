@@ -1,6 +1,3 @@
-
-	ds 16 * 11
-
 LITERAL_NOIR_RGB_COLORS EQU 1
 
 ; 4bpp palette 0
