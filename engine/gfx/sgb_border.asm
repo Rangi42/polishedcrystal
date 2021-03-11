@@ -64,8 +64,8 @@ InitSGBBorder::
 	ldh [rSVBK], a
 
 	ld hl, SGBBorderGFX
-	ld b, BANK(SGBBorderGFX)
-	call FarDecompressAtB_D000
+	ld a, BANK(SGBBorderGFX)
+	call FarDecompress
 
 	di
 	ld hl, MaskEnFreezePacket

@@ -92,7 +92,7 @@ Pokegear_LoadGFX:
 	ld hl, TownMapGFX
 	ld de, vTiles2
 	ld a, BANK(TownMapGFX)
-	call FarDecompress
+	call FarDecompressToDE
 	ld hl, PokegearGFX
 	ld de, vTiles2 tile $40
 	ld a, BANK(PokegearGFX)
