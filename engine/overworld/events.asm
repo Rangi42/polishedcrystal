@@ -981,12 +981,12 @@ WarpToNewMapScript:
 FallIntoMapScript:
 	newloadmap MAPSETUP_FALL
 	playsound SFX_KINESIS
-	applymovement PLAYER, MovementData_0x96c48
+	applymovement PLAYER, .SkyfallMovement
 	playsound SFX_STRENGTH
 	scall LandAfterPitfallScript
 	end
 
-MovementData_0x96c48:
+.SkyfallMovement:
 	skyfall
 	step_end
 

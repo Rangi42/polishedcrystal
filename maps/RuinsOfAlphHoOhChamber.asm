@@ -99,7 +99,7 @@ MapRuinsofAlphHoOhChamberSignpost4Script:
 	opentext
 	checkevent EVENT_RUINS_OF_ALPH_OUTSIDE_TOURIST_YOUNGSTERS
 	iftrue .unsolved
-	writetext UnusedText_0x58e70
+	writetext RuinsOfAlphChambersItsUnownText
 	jump .unownwords
 .unsolved
 	writetext RuinsOfAlphAerodactylChamberWallPatternLeftText
