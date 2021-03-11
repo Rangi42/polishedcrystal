@@ -3476,7 +3476,7 @@ BillsPC_CursorPosValid:
 	cp $21
 	jr nz, .invalid
 
-	call BillsPC_CheckBagDisplay
+	call _BillsPC_CheckBagDisplay
 	jr nz, .invalid
 
 .not_party
