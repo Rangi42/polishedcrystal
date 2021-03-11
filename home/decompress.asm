@@ -1,13 +1,18 @@
 FarDecompressWRA6::
+; Decompress LZ data from a:hl to 6:d000.
 	ld b, a
 FarDecompressWRA6InB::
+; Decompress LZ data from b:hl to 6:d000.
 	call RunFunctionInWRA6
-FarDecompressAtB_D000::
+FarDecompressInB::
+; Decompress LZ data from b:hl to d000.
 	ld a, b
-	ld de, wDecompressScratch
-
 FarDecompress::
-; Decompress graphics data from a:hl to de.
+; Decompress LZ data from a:hl to d000.
+	ld de, wDecompressScratch
+	assert wDecompressScratch == WRAM1_Begin
+FarDecompressToDE::
+; Decompress LZ data from a:hl to de.
 	call StackCallInBankA
 Decompress::
 	ldh a, [hVBlank]

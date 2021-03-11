@@ -882,13 +882,13 @@ DecompressCreditsGFX:
 	jr z, .ok
 	ld hl, CreditsSequence1GFX
 .ok
-	ld de, wDecompressedCreditsGFX
 	ld b, BANK("Credits Graphics")
 	ld a, BANK(wDecompressedCreditsGFX)
+	assert wDecompressedCreditsGFX == WRAM1_Begin
 	call StackCallInWRAMBankA
 
 .Function
-	jp FarDecompressAtB_D000
+	jp FarDecompressInB
 
 CreditsScript:
 

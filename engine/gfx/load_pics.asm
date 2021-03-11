@@ -117,9 +117,7 @@ _GetFrontpic:
 	call GetFrontpicPointer
 	ld a, BANK(wDecompressScratch)
 	ldh [rSVBK], a
-	ld a, b
-	ld de, wDecompressScratch
-	call FarDecompress
+	call FarDecompressInB
 	; Save decompressed size
 	swap e
 	swap d
@@ -285,7 +283,6 @@ endr
 	inc hl
 	ld a, BANK(BackPicPointers)
 	call GetFarHalfword
-	ld de, wDecompressScratch
 	pop af
 	call FarDecompress
 	ld hl, wDecompressScratch
@@ -327,7 +324,6 @@ GetTrainerPic:
 	call GetFarHalfword
 	pop af
 _Decompress7x7Pic:
-	ld de, wDecompressScratch
 	call FarDecompress
 	pop hl
 	ld de, wDecompressScratch

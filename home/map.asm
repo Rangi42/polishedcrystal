@@ -549,7 +549,7 @@ ChangeMap::
 
 .Function:
 	push de
-	call FarDecompressAtB_D000
+	call FarDecompressInB
 	pop de
 
 	ld a, d
