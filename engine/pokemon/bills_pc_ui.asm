@@ -2349,9 +2349,16 @@ BillsPC_LoadCursorItemIcon:
 BillsPC_BagItem:
 	; If we're dealing with a Box mon, we must have at least 1 free pokedb
 	; entry.
+	ld a, [wTempMonItem]
+	ld b, a
+	push bc
 	call BillsPC_GetCursorSlot
 	call _BillsPC_BagItem
+	pop bc
 	ret nz
+	ld a, b
+	ld [wNamedObjectIndexBuffer], a
+	call GetItemName
 	ld hl, BillsPC_MovedToPackText
 	; fallthrough
 BillsPC_PrintText:
@@ -2487,7 +2494,10 @@ BillsPC_PackFullText:
 	prompt
 
 BillsPC_MovedToPackText:
-	text "Moved item to Bag."
+	text "Moved "
+	text_from_ram wStringBuffer1
+	text ""
+	line "to Bag."
 	prompt
 
 
