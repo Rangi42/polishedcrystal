@@ -2347,10 +2347,11 @@ BillsPC_LoadCursorItemIcon:
 	jp BillsPC_SafeGet2bpp
 
 BillsPC_BagItem:
-; Returns z on success.
 	; If we're dealing with a Box mon, we must have at least 1 free pokedb
 	; entry.
 	call BillsPC_GetCursorSlot
+	call _BillsPC_BagItem
+	ret nz
 	ld hl, BillsPC_MovedToPackText
 	; fallthrough
 BillsPC_PrintText:
@@ -2362,6 +2363,7 @@ BillsPC_PrintText:
 	jp CloseWindow
 
 _BillsPC_BagItem:
+; Returns z on success.
 	ld a, b
 	and a
 	jr z, .entries_not_full
