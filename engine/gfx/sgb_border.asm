@@ -1,3 +1,36 @@
+SGBBorderMap:
+INCBIN "gfx/sgb/sgb_border.bin"
+
+InitSGBBorder::
+	ldh a, [hCGB]
+	and a
+	ret nz
+
+	ld hl, SGBBorderGFX
+	ld a, BANK(SGBBorderGFX)
+	call FarDecompress
+
+	di
+	ld hl, MaskEnFreezePacket
+	call SendSGBPacket
+	ei
+
+	ld de, ChrTrnPacket
+	ld hl, wDecompressScratch
+	call CopyGfxToSuperNintendoVRAM
+
+	ld de, PctTrnPacket
+	ld hl, SGBBorderMap
+	call CopyGfxToSuperNintendoVRAM
+
+	ld hl, vTiles0
+	ld bc, VRAM_End - vTiles0
+	xor a
+	rst ByteFill
+
+	ld hl, MaskEnCancelPacket
+	; fallthrough
+
 SendSGBPacket:
 	ld a, [hl]
 	and $7
@@ -54,48 +87,6 @@ SGBDelayCycles:
 	jr nz, .wait
 	ret
 
-InitSGBBorder::
-	ldh a, [hCGB]
-	and a
-	ret nz
-
-	ld a, BANK(wDecompressScratch)
-	push af
-	ldh [rSVBK], a
-
-	ld hl, SGBBorderGFX
-	ld a, BANK(SGBBorderGFX)
-	call FarDecompress
-
-	di
-	ld hl, MaskEnFreezePacket
-	call SendSGBPacket
-	ei
-
-	ld de, ChrTrnPacket
-	ld hl, wDecompressScratch
-	call CopyGfxToSuperNintendoVRAM
-
-	ld de, PctTrnPacket
-	ld hl, SGBBorderMap
-	call CopyGfxToSuperNintendoVRAM
-
-	ld de, PalTrnPacket
-	ld hl, SGBBorderPals - $80 tiles
-	call CopyGfxToSuperNintendoVRAM
-
-	ld hl, vTiles0
-	ld bc, VRAM_End - vTiles0
-	xor a
-	rst ByteFill
-
-	ld hl, MaskEnCancelPacket
-	call SendSGBPacket
-
-	pop af
-	ldh [rSVBK], a
-	ret
-
 CopyGfxToSuperNintendoVRAM:
 	di
 	push de
@@ -135,20 +126,19 @@ CopyGfxToSuperNintendoVRAM:
 	ei
 	ret
 
-SGBBorderMap:
-INCBIN "gfx/sgb/sgb_border.bin"
-
 MaskEnFreezePacket:
 	db $b9, $01, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00
 MaskEnCancelPacket:
 	db $b9, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00
 
-PalTrnPacket:
-	db $59, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00
 ChrTrnPacket:
 	db $99, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00
 PctTrnPacket:
 	db $a1, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00
 
+	ds 8
+
 SGBBorderPals:
 INCLUDE "gfx/sgb/sgb_border.pal"
+
+	assert SGBBorderMap + $80 tiles == SGBBorderPals

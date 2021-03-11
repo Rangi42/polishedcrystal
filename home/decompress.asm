@@ -15,6 +15,7 @@ FarDecompressToDE::
 ; Decompress LZ data from a:hl to de.
 	call StackCallInBankA
 Decompress::
+; Decompress LZ data from hl to de.
 	ldh a, [hVBlank]
 	push af
 	ld a, 2 ; sound only XXX use constants for vblank modes
