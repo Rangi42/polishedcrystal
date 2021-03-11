@@ -603,6 +603,40 @@ PCIconLoop:
 	jr nz, PCIconLoop
 	ret
 
+BillsPC_GetMonIconAddr:
+	push de
+	push bc
+	inc b
+	dec b
+	ld hl, wBillsPC_PartyList
+	jr z, .got_tile_base
+	ld hl, wBillsPC_BoxList
+.got_tile_base
+	ld a, 2
+	ld b, 0
+	dec c
+	rst AddNTimes
+	pop bc
+	pop de
+	ret
+
+BillsPC_GetMonTileAddr:
+	push de
+	push bc
+	inc b
+	dec b
+	ld hl, vTiles4 tile $00
+	jr z, .got_tile_base
+	ld hl, vTiles4 tile $18
+.got_tile_base
+	ld a, 4 tiles
+	ld b, 0
+	dec c
+	rst AddNTimes
+	pop bc
+	pop de
+	ret
+
 BillsPC_GetMonPalAddr:
 ; Gets mon pal in hl for box b slot c.
 	push de
@@ -2376,12 +2410,11 @@ _BillsPC_BagItem:
 	jr nc, BillsPC_PrintText
 	xor a
 	ld [wTempMonItem], a
-	call BillsPC_UpdateMewtwoForm
-	farcall UpdateStorageBoxMonFromTemp
+	call BillsPC_UpdateStorage_CheckMewtwo
 	jp GetCursorMon
 
-BillsPC_UpdateMewtwoForm:
-; Reloads Mewtwo form in wTempMon if applicable. Preserves bc, de, hl.
+BillsPC_UpdateStorage_CheckMewtwo:
+; Updates storage and potentially switches Mewtwo form if item changed.
 	push hl
 	push de
 	push bc
@@ -2389,7 +2422,57 @@ BillsPC_UpdateMewtwoForm:
 	ld [wCurPartySpecies], a
 	ld de, wTempMonItem
 	ld hl, wTempMonForm
+	ld a, [hl]
+	ld b, a
+	push bc
 	farcall _UpdateMewtwoForm
+	farcall UpdateStorageBoxMonFromTemp
+	pop bc
+	ld a, [wTempMonForm]
+	cp b
+	jr z, .done
+
+	; Check if we should reload the icon. If the mon is in another box, don't
+	; bother.
+	ld a, [wCurBox]
+	inc a
+	ld b, a
+	ld a, [wTempMonBox]
+	and a
+	jr z, .update
+	cp b
+	jr nz, .done
+
+.update
+	; Reload icon
+	xor a
+	ldh [hBGMapMode], a
+	inc a
+	ldh [rVBK], a
+
+	ld a, [wTempMonBox]
+	ld b, a
+	ld a, [wTempMonSlot]
+	ld c, a
+
+	call BillsPC_GetMonIconAddr
+	ld a, [wTempMonSpecies]
+	ld [hli], a
+	ld [wCurIcon], a
+	ld a, [wTempMonForm]
+	ld [hld], a
+	ld [wCurIconForm], a
+	call BillsPC_GetMonTileAddr
+	push bc
+	farcall GetStorageIcon
+	pop bc
+	call WriteIconPaletteData
+
+	xor a
+	ldh [rVBK], a
+	inc a
+	ldh [hBGMapMode], a
+.done
 	jp PopBCDEHL
 
 BillsPC_CantPutMailIntoPackText:
@@ -3081,8 +3164,7 @@ BillsPC_SwapStorage:
 .compose_check_done
 	ld [wTempMonItem], a
 	ld [wCurItem], a
-	call BillsPC_UpdateMewtwoForm
-	farcall UpdateStorageBoxMonFromTemp
+	call BillsPC_UpdateStorage_CheckMewtwo
 	ld a, 1
 	ld [wItemQuantityChangeBuffer], a
 	ld hl, wNumItems
@@ -3141,15 +3223,13 @@ BillsPC_SwapStorage:
 	; No mail is about to be sent to storage, so proceed with the item move.
 	ld [hl], e
 	push hl
-	call BillsPC_UpdateMewtwoForm
-	farcall UpdateStorageBoxMonFromTemp
+	call BillsPC_UpdateStorage_CheckMewtwo
 	pop hl
 	pop de
 	pop bc
 	farcall GetStorageBoxMon
 	ld [hl], d
-	call BillsPC_UpdateMewtwoForm
-	farcall UpdateStorageBoxMonFromTemp
+	call BillsPC_UpdateStorage_CheckMewtwo
 	xor a
 	jr .done
 
