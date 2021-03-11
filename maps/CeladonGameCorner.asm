@@ -82,9 +82,9 @@ CeladonGameCornerFisherScript:
 	writetext CeladonGameCornerFisherText1
 	buttonsound
 	checkkeyitem COIN_CASE
-	iffalse UnknownScript_0x7217b
+	iffalse .NoCoinCase
 	checkcoins 49999
-	ifequal $0, UnknownScript_0x72184
+	ifequal $0, .FullCoinCase
 	stringtotext .coinname, $1
 	callstd receiveitem
 	givecoins 18
@@ -92,14 +92,14 @@ CeladonGameCornerFisherScript:
 .FisherOffer:
 	writetext FisherOfferText
 	yesorno
-	iffalse .UnknownScript_0x72169
+	iffalse .GotCoins
 	checkcoins 50
 	ifequal $2, .FisherNotEnough
 	takecoins 50
 	playsound SFX_TRANSACTION
 	scall MapCeladonGameCornerSignpost16Script
 	opentext
-.UnknownScript_0x72169:
+.GotCoins:
 	writetext CeladonGameCornerFisherText2
 	jump .FisherEnd
 .FisherNotEnough:
@@ -113,14 +113,14 @@ CeladonGameCornerFisherScript:
 .coinname
 	db "Coin@"
 
-UnknownScript_0x7217b:
+.NoCoinCase:
 	writetext CeladonGameCornerFisherNoCoinCaseText
 	waitbutton
 	closetext
 	turnobject LAST_TALKED, LEFT
 	end
 
-UnknownScript_0x72184:
+.FullCoinCase:
 	writetext CeladonGameCornerFisherFullCoinCaseText
 	waitbutton
 	closetext

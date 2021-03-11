@@ -2,7 +2,7 @@ KurtsHouse_MapScriptHeader:
 	def_scene_scripts
 
 	def_callbacks
-	callback MAPCALLBACK_OBJECTS, UnknownScript_0x18e154
+	callback MAPCALLBACK_OBJECTS, KurtsHouseKurtCallback
 
 	def_warp_events
 	warp_event  3,  7, AZALEA_TOWN, 4
@@ -32,25 +32,25 @@ KurtsHouse_MapScriptHeader:
 	const KURTSHOUSE_KURT2
 	const KURTSHOUSE_TWIN2
 
-UnknownScript_0x18e154:
+KurtsHouseKurtCallback:
 	checkevent EVENT_CLEARED_SLOWPOKE_WELL
-	iffalse UnknownScript_0x18e177
+	iffalse .Done
 	checkevent EVENT_FOREST_IS_RESTLESS
-	iftrue UnknownScript_0x18e177
+	iftrue .Done
 	checkflag ENGINE_KURT_MAKING_BALLS
-	iftrue UnknownScript_0x18e16f
+	iftrue .MakingBalls
 	disappear KURTSHOUSE_KURT2
 	appear KURTSHOUSE_KURT1
 	disappear KURTSHOUSE_TWIN2
 	appear KURTSHOUSE_TWIN1
 	return
 
-UnknownScript_0x18e16f:
+.MakingBalls:
 	disappear KURTSHOUSE_KURT1
 	appear KURTSHOUSE_KURT2
 	disappear KURTSHOUSE_TWIN1
 	appear KURTSHOUSE_TWIN2
-UnknownScript_0x18e177:
+.Done:
 	return
 
 Kurt1:

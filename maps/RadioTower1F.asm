@@ -134,32 +134,32 @@ RadioTower1FRadioCardWomanScript:
 	iffalse_jumpopenedtext RadioTower1FRadioCardWomanNotTakingQuizText
 	writetext RadioTower1FRadioCardWomanQuestion1Text
 	yesorno
-	iffalse UnknownScript_0x5ce42
+	iffalse .WrongAnswer
 	playsound SFX_ELEVATOR_END
 	waitsfx
 	writetext RadioTower1FRadioCardWomanQuestion2Text
 	yesorno
-	iffalse UnknownScript_0x5ce42
+	iffalse .WrongAnswer
 	playsound SFX_ELEVATOR_END
 	waitsfx
 	writetext RadioTower1FRadioCardWomanQuestion3Text
 	yesorno
-	iftrue UnknownScript_0x5ce42
+	iftrue .WrongAnswer
 	playsound SFX_ELEVATOR_END
 	waitsfx
 	writetext RadioTower1FRadioCardWomanQuestion4Text
 	yesorno
-	iftrue UnknownScript_0x5ce42
+	iftrue .WrongAnswer
 	playsound SFX_ELEVATOR_END
 	waitsfx
 	writetext RadioTower1FRadioCardWomanQuestion5Text
 	yesorno
-	iftrue UnknownScript_0x5ce42
+	iftrue .WrongAnswer
 	playsound SFX_ELEVATOR_END
 	waitsfx
 	writetext RadioTower1FRadioCardWomanYouWinText
 	buttonsound
-	stringtotext RadioCardText, $1
+	stringtotext .RadioCardText, $1
 	callstd receiveitem
 	writetext RadioTower1FPokegearIsARadioText
 	buttonsound
@@ -177,12 +177,19 @@ RadioTower1FRadioCardWomanScript:
 	disappear RADIOTOWER1F_WHITNEY
 	end
 
-RadioCardText:
+.RadioCardText:
 	db "Radio Card@"
 
-UnknownScript_0x5ce42:
+.WrongAnswer:
 	playsound SFX_WRONG
-	jumpopenedtext RadioTower1FRadioCardWomanWrongAnswerText
+	jumpthisopenedtext
+
+	text "Oh, dear."
+	line "Sorry, but you"
+
+	para "got it wrong."
+	line "Please try again!"
+	done
 
 GenericTrainerGruntM3:
 	generictrainer GRUNTM, 3, EVENT_BEAT_ROCKET_GRUNTM_3, GruntM3SeenText, GruntM3BeatenText
@@ -413,14 +420,6 @@ RadioTower1FPokegearIsARadioText:
 RadioTower1FRadioCardWomanTuneInText:
 	text "Please tune in to"
 	line "our radio shows."
-	done
-
-RadioTower1FRadioCardWomanWrongAnswerText:
-	text "Oh, dear."
-	line "Sorry, but you"
-
-	para "got it wrong."
-	line "Please try again!"
 	done
 
 RadioTower1FRadioCardWomanNotTakingQuizText:

@@ -45,24 +45,24 @@ GenericTrainerBreederTheresa:
 	done
 
 TrainerJugglerIrwin:
-	trainer JUGGLER, IRWIN1, EVENT_BEAT_JUGGLER_IRWIN, JugglerIrwin1SeenText, JugglerIrwin1BeatenText, 0, JugglerIrwin1Script
+	trainer JUGGLER, IRWIN1, EVENT_BEAT_JUGGLER_IRWIN, JugglerIrwin1SeenText, JugglerIrwin1BeatenText, 0, .Script
 
-JugglerIrwin1Script:
+.Script:
 	writecode VAR_CALLERID, PHONE_JUGGLER_IRWIN
 	opentext
 	checkcellnum PHONE_JUGGLER_IRWIN
 	iftrue Route35NumberAcceptedM
 	checkevent EVENT_IRWIN_ASKED_FOR_PHONE_NUMBER
-	iftrue UnknownScript_0x19c8ec
+	iftrue .AskedAlready
 	writetext JugglerIrwinAfterBattleText
 	buttonsound
 	setevent EVENT_IRWIN_ASKED_FOR_PHONE_NUMBER
 	scall Route35AskNumber1M
-	jump UnknownScript_0x19c8ef
+	jump .AskForNumber
 
-UnknownScript_0x19c8ec:
+.AskedAlready:
 	scall Route35AskNumber2M
-UnknownScript_0x19c8ef:
+.AskForNumber:
 	askforphonenumber PHONE_JUGGLER_IRWIN
 	ifequal $1, Route35PhoneFullM
 	ifequal $2, Route35NumberDeclinedM
@@ -124,29 +124,29 @@ GenericTrainerPicnickerKim:
 	done
 
 TrainerBug_catcherArnie1:
-	trainer BUG_CATCHER, ARNIE1, EVENT_BEAT_BUG_CATCHER_ARNIE, Bug_catcherArnie1SeenText, Bug_catcherArnie1BeatenText, 0, Bug_catcherArnie1Script
+	trainer BUG_CATCHER, ARNIE1, EVENT_BEAT_BUG_CATCHER_ARNIE, Bug_catcherArnie1SeenText, Bug_catcherArnie1BeatenText, 0, .Script
 
-Bug_catcherArnie1Script:
+.Script:
 	writecode VAR_CALLERID, PHONE_BUG_CATCHER_ARNIE
 	end_if_just_battled
 	opentext
 	checkflag ENGINE_ARNIE
-	iftrue UnknownScript_0x19c9bb
+	iftrue .WantsBattle
 	checkflag ENGINE_YANMA_SWARM
-	iftrue UnknownScript_0x19ca2f
+	iftrue .YanmaSwarming
 	checkcellnum PHONE_BUG_CATCHER_ARNIE
 	iftrue Route35NumberAcceptedM
 	checkevent EVENT_ARNIE_ASKED_FOR_PHONE_NUMBER
-	iftrue UnknownScript_0x19c9a4
+	iftrue .AskedAlready
 	writetext BugCatcherArnieAfterBattleText
 	buttonsound
 	setevent EVENT_ARNIE_ASKED_FOR_PHONE_NUMBER
 	scall Route35AskNumber1M
-	jump UnknownScript_0x19c9a7
+	jump .AskForNumber
 
-UnknownScript_0x19c9a4:
+.AskedAlready:
 	scall Route35AskNumber2M
-UnknownScript_0x19c9a7:
+.AskForNumber:
 	askforphonenumber PHONE_BUG_CATCHER_ARNIE
 	ifequal $1, Route35PhoneFullM
 	ifequal $2, Route35NumberDeclinedM
@@ -154,7 +154,7 @@ UnknownScript_0x19c9a7:
 	scall Route35RegisteredNumberM
 	jump Route35NumberAcceptedM
 
-UnknownScript_0x19c9bb:
+.WantsBattle:
 	scall Route35RematchM
 	winlosstext Bug_catcherArnie1BeatenText, 0
 	copybytetovar wArnieFightCount
@@ -214,7 +214,7 @@ UnknownScript_0x19c9bb:
 	clearflag ENGINE_ARNIE
 	end
 
-UnknownScript_0x19ca2f:
+.YanmaSwarming:
 	jumpopenedtext BugCatcherArnieYanmaText
 
 GenericTrainerFirebreatherWalt:
@@ -229,9 +229,9 @@ TrainerOfficerDirk:
 	faceplayer
 	opentext
 	checktime 1 << NITE
-	iffalse UnknownScript_0x19ca73
+	iffalse .NotNight
 	checkevent EVENT_BEAT_OFFICERM_DIRK
-	iftrue UnknownScript_0x19ca6d
+	iftrue .AfterBattle
 	special SaveMusic
 	playmusic MUSIC_OFFICER_ENCOUNTER
 	writetext OfficerDirkSeenText
@@ -244,10 +244,10 @@ TrainerOfficerDirk:
 	setevent EVENT_BEAT_OFFICERM_DIRK
 	endtext
 
-UnknownScript_0x19ca6d:
+.AfterBattle:
 	jumpopenedtext OfficerDirkAfterBattleText
 
-UnknownScript_0x19ca73:
+.NotNight:
 	jumpopenedtext OfficerDirkPrettyToughText
 
 CamperIvanSeenText:

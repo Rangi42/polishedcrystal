@@ -209,10 +209,10 @@ DragonShrineQuestion1_MenuHeader:
 	db $40 ; flags
 	db 04, 08 ; start coords
 	db 11, 19 ; end coords
-	dw MenuData2_0x18d21d
+	dw .MenuData
 	db 1 ; default option
 
-MenuData2_0x18d21d:
+.MenuData:
 	db $81 ; flags
 	db 3 ; items
 	db "Ally@"
@@ -223,10 +223,10 @@ DragonShrineQuestion2_MenuHeader:
 	db $40 ; flags
 	db 04, 09 ; start coords
 	db 11, 19 ; end coords
-	dw MenuData2_0x18d23c
+	dw .MenuData
 	db 1 ; default option
 
-MenuData2_0x18d23c:
+.MenuData:
 	db $81 ; flags
 	db 3 ; items
 	db "Strategy@"
@@ -237,10 +237,10 @@ DragonShrineQuestion3_MenuHeader:
 	db $40 ; flags
 	db 04, 05 ; start coords
 	db 11, 19 ; end coords
-	dw MenuData2_0x18d260
+	dw .MenuData
 	db 1 ; default option
 
-MenuData2_0x18d260:
+.MenuData:
 	db $81 ; flags
 	db 3 ; items
 	db "Weak person@"
@@ -251,10 +251,10 @@ DragonShrineQuestion4_MenuHeader:
 	db $40 ; flags
 	db 04, 08 ; start coords
 	db 11, 19 ; end coords
-	dw MenuData2_0x18d28b
+	dw .MenuData
 	db 1 ; default option
 
-MenuData2_0x18d28b:
+.MenuData:
 	db $81 ; flags
 	db 3 ; items
 	db "Love@"
@@ -265,10 +265,10 @@ DragonShrineQuestion5_MenuHeader:
 	db $40 ; flags
 	db 04, 11 ; start coords
 	db 11, 19 ; end coords
-	dw MenuData2_0x18d2ad
+	dw .MenuData
 	db 1 ; default option
 
-MenuData2_0x18d2ad:
+.MenuData:
 	db $81 ; flags
 	db 3 ; items
 	db "Strong@"
