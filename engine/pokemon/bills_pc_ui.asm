@@ -1412,7 +1412,7 @@ ManageBoxes:
 	; Cursor jumps to the box name
 	ld a, [wBillsPC_CursorPos]
 	and $f
-	; Check for party rows less than 2
+	; If we were at the party area, set to first boxmon column.
 	cp 2
 	jr nc, .new_cursor_pos
 	ld a, 2
