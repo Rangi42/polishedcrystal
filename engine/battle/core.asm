@@ -1843,10 +1843,7 @@ _SubtractHP:
 	push af
 	call UpdateHPBarBattleHuds
 	pop af
-	jr z, .set_first_faint
-	ret
-
-.set_first_faint
+	ret nz
 	ld hl, wWhichMonFaintedFirst
 	ld a, [hl]
 	and a

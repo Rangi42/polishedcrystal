@@ -108,10 +108,9 @@ TrainerCard_Page1_Joypad:
 	ld hl, hJoyLast
 	ld a, [hl]
 	and D_RIGHT | A_BUTTON
-	jr nz, .pressed_right_a
-	ret
+	ret z
 
-.pressed_right_a
+; pressed_right_or_a
 	ld a, $2
 	ld [wJumptableIndex], a
 	ret
@@ -155,7 +154,11 @@ TrainerCard_Page2_Joypad:
 	jr nz, .pressed_a
 	ld a, [hl]
 	and D_LEFT
-	jr nz, .d_left
+	ret z
+
+; pressed_left
+	xor a
+	ld [wJumptableIndex], a
 	ret
 
 .pressed_right
@@ -176,11 +179,6 @@ TrainerCard_Page2_Joypad:
 
 .quit
 	ld a, $6
-	ld [wJumptableIndex], a
-	ret
-
-.d_left
-	xor a
 	ld [wJumptableIndex], a
 	ret
 
@@ -220,16 +218,15 @@ TrainerCard_Page3_Joypad:
 	jr nz, .quit
 	ld a, [hl]
 	and D_LEFT
-	jr nz, .d_left
+	ret z
+
+; pressed_left
+	ld a, $2
+	ld [wJumptableIndex], a
 	ret
 
 .quit
 	ld a, $6
-	ld [wJumptableIndex], a
-	ret
-
-.d_left
-	ld a, $2
 	ld [wJumptableIndex], a
 	ret
 

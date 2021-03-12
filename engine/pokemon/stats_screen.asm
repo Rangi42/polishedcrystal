@@ -192,10 +192,8 @@ StatsScreen_JoypadAction:
 	bit D_UP_F, a
 	jr nz, .d_up
 	bit D_DOWN_F, a
-	jr nz, .d_down
-	ret
-
-.d_down
+	ret z
+; d_down
 	farcall NextStorageBoxMon
 	jr .load_mon
 
@@ -949,9 +947,7 @@ CheckFaintedFrzSlp:
 	add hl, bc
 	ld a, [hl]
 	and (1 << FRZ) | SLP
-	jr nz, .fainted_frz_slp
-	ret
-
+	ret z
 .fainted_frz_slp
 	scf
 	ret
@@ -1049,9 +1045,7 @@ StatsScreen_AnimateEgg:
 	jr c, .animate
 	ld e, $8
 	cp 11
-	jr c, .animate
-	ret
-
+	ret nc
 .animate
 	push de
 	ld a, $1

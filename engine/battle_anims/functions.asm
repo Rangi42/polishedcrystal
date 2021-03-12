@@ -2744,10 +2744,7 @@ Functionce023:
 	add hl, bc
 	ld a, [hl]
 	cp $6c
-	jr c, .asm_ce02d
-	ret
-
-.asm_ce02d
+	ret nc
 	ld a, $2
 	call Functionce70a
 	ld hl, BATTLEANIMSTRUCT_0F
