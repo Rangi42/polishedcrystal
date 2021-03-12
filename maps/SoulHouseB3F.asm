@@ -21,17 +21,17 @@ SoulHouseB3FMrFujiScript:
 	faceplayer
 	opentext
 	writetext .Text1
-	buttonsound
+	promptbutton
 	verbosegivekeyitem SILPHSCOPE2
 	setflag ENGINE_HAVE_SILPHSCOPE2
 	setevent EVENT_GOT_SILPHSCOPE2_FROM_MR_FUJI
 	writetext .Text2
 	waitbutton
 	closetext
-	checkcode VAR_FACING
+	readvar VAR_FACING
 	ifequal RIGHT, .GoAround
 	applymovement SOULHOUSEB3F_MRFUJI, .LeaveMovement
-	jump .Finish
+	sjump .Finish
 .GoAround
 	applymovement SOULHOUSEB3F_MRFUJI, .GoAroundMovement1
 	turnobject PLAYER, UP

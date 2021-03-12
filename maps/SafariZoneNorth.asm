@@ -79,7 +79,7 @@ SafariZoneNorthTutorDoubleEdgeScript:
 	writetext Text_SafariZoneNorthTutorQuestion
 	yesorno
 	iffalse .TutorRefused
-	writebyte DOUBLE_EDGE
+	setval DOUBLE_EDGE
 	writetext ClearText
 	special Special_MoveTutor
 	ifequal $0, .TeachMove

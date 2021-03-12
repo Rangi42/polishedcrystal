@@ -43,7 +43,7 @@ Route19ClearSmashRocks:
 	iffalse .Done
 	appear ROUTE19_ROCK1
 .Done:
-	return
+	endcallback
 
 Route19ClearRocks:
 	checkevent EVENT_CINNABAR_ROCKS_CLEARED
@@ -55,7 +55,7 @@ Route19ClearRocks:
 	changeblock 12, 6, $7a
 	changeblock 8, 8, $7a
 .Done:
-	return
+	endcallback
 
 GenericTrainerSwimmerfDawn:
 	generictrainer SWIMMERF, DAWN, EVENT_BEAT_SWIMMERF_DAWN, SwimmerfDawnSeenText, SwimmerfDawnBeatenText

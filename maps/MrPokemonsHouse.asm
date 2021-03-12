@@ -29,7 +29,7 @@ MrPokemonsHouse_MapScriptHeader:
 	const MRPOKEMONSHOUSE_POKEDEX
 
 MrPokemonsHouseTrigger0:
-	priorityjump .MrPokemonEvent
+	prioritysjump .MrPokemonEvent
 	end
 
 .MrPokemonEvent:
@@ -39,24 +39,24 @@ MrPokemonsHouseTrigger0:
 	applymovement PLAYER, MrPokemonsHouse_PlayerWalksToMrPokemon
 	opentext
 	writetext MrPokemonIntroText2
-	buttonsound
+	promptbutton
 	waitsfx
 	verbosegivekeyitem MYSTERY_EGG
 	setevent EVENT_GOT_MYSTERY_EGG_FROM_MR_POKEMON
 	blackoutmod CHERRYGROVE_CITY
 if !DEF(DEBUG)
 	writetext MrPokemonIntroText3
-	buttonsound
+	promptbutton
 	turnobject MRPOKEMONSHOUSE_GENTLEMAN, RIGHT
 	writetext MrPokemonIntroText4
-	buttonsound
+	promptbutton
 	turnobject MRPOKEMONSHOUSE_GENTLEMAN, DOWN
 	turnobject MRPOKEMONSHOUSE_OAK, LEFT
 	writetext MrPokemonIntroText5
 	waitbutton
 endc
 	closetext
-	jump MrPokemonsHouse_OakScript
+	sjump MrPokemonsHouse_OakScript
 
 MrPokemonsHouse_MrPokemonScript:
 	faceplayer
@@ -71,7 +71,7 @@ MrPokemonsHouse_MrPokemonScript:
 	writetext MrPokemonText_GimmeTheScale
 	yesorno
 	iffalse_jumpopenedtext MrPokemonText_Disappointed
-	checkcode VAR_PARTYCOUNT
+	readvar VAR_PARTYCOUNT
 	ifequal PARTY_LENGTH, .party_full
 	special SpecialGiveShinyDitto
 	opentext
@@ -150,7 +150,7 @@ MrPokemonsHouse_CabinetScript:
 	writetext MrPokemonsHouse_CabinetText
 	checkevent EVENT_TRADED_RED_SCALE
 	iffalse .NoRedScale
-	buttonsound
+	promptbutton
 	writetext MrPokemonsHouse_RedScaleCabinetText
 .NoRedScale
 	waitbutton

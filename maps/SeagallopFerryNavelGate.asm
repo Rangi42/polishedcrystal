@@ -20,13 +20,13 @@ SeagallopFerryNavelGate_MapScriptHeader:
 	const SEAGALLOPFERRYNAVELGATE_SAILOR
 
 SeagallopFerryNavelGateTrigger1:
-	priorityjump SeagallopFerryNavelGate_PlayerArrives
+	prioritysjump SeagallopFerryNavelGate_PlayerArrives
 SeagallopFerryNavelGateTrigger0:
 	end
 
 SeagallopFerryNavelGateVisited:
 	setevent EVENT_VISITED_NAVEL_ROCK
-	return
+	endcallback
 
 SeagallopFerryNavelGate_PlayerArrives:
 	applymovement SEAGALLOPFERRYNAVELGATE_SAILOR, SeagallopFerryNavelGateSailorArrive1MovementData

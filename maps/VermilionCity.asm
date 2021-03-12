@@ -54,13 +54,13 @@ VermilionCity_MapScriptHeader:
 VermilionCitySetupLawrenceCallback:
 	checkscene
 	iftrue .done
-	checkcode VAR_XCOORD
+	readvar VAR_XCOORD
 	ifequal 18, .done
 	disappear VERMILIONCITY_LAWRENCE
 	moveobject VERMILIONCITY_LAWRENCE, 19, 31
 	appear VERMILIONCITY_LAWRENCE
 .done
-	return
+	endcallback
 
 LawrenceIntroScript:
 	turnobject PLAYER, UP
@@ -73,11 +73,11 @@ LawrenceIntroScript:
 	applymovement VERMILIONCITY_LAWRENCE, LawrenceBumpMovementData
 	showemote EMOTE_SHOCK, VERMILIONCITY_LAWRENCE, 15
 	pause 15
-	checkcode VAR_XCOORD
+	readvar VAR_XCOORD
 	ifequal 18, .left
 	applymovement VERMILIONCITY_LAWRENCE, LawrenceWalkAroundRightMovementData
 	turnobject PLAYER, LEFT
-	jump .continue
+	sjump .continue
 
 .left
 	applymovement VERMILIONCITY_LAWRENCE, LawrenceWalkAroundLeftMovementData
@@ -133,7 +133,7 @@ VermilionSnorlax:
 	pause 15
 	cry SNORLAX
 	closetext
-	writecode VAR_BATTLETYPE, BATTLETYPE_FORCEITEM
+	loadvar VAR_BATTLETYPE, BATTLETYPE_FORCEITEM
 	loadwildmon SNORLAX, 60
 	startbattle
 	disappear VERMILIONCITY_BIG_SNORLAX
@@ -144,7 +144,7 @@ VermilionSnorlax:
 VermilionGymBadgeGuy:
 	checkevent EVENT_GOT_BOTTLE_CAP_FROM_VERMILION_GUY
 	iftrue_jumptextfaceplayer VermilionCityBadgeGuyBattleEdgeText
-	checkcode VAR_BADGES
+	readvar VAR_BADGES
 	ifequal 16, .AllBadges
 	ifgreater 13, .MostBadges
 	ifgreater 9, .SomeBadges
@@ -160,7 +160,7 @@ VermilionGymBadgeGuy:
 	faceplayer
 	opentext
 	writetext VermilionCityBadgeGuyAllBadgesText
-	buttonsound
+	promptbutton
 	verbosegiveitem BOTTLE_CAP
 	iffalse_endtext
 	setevent EVENT_GOT_BOTTLE_CAP_FROM_VERMILION_GUY

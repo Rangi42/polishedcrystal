@@ -40,7 +40,7 @@ GoldenrodMagnetTrainStationOfficerScript:
 	closetext
 	applymovement GOLDENRODMAGNETTRAINSTATION_OFFICER, GoldenrodMagnetTrainStationOfficerApproachTrainDoorMovement
 	applymovement PLAYER, GoldenrodMagnetTrainStationPlayerApproachAndEnterTrainMovement
-	writebyte $0
+	setval $0
 	special Special_MagnetTrain
 	warpcheck
 	newloadmap MAPSETUP_TRAIN

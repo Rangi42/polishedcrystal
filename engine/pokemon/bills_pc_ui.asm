@@ -48,7 +48,7 @@ _BillsPC:
 
 .Text_GottaHavePokemon:
 	; You gotta have #MON to call!
-	text_jump _PCGottaHavePokemonText
+	text_far _PCGottaHavePokemonText
 	text_end
 
 BillsPC_LoadUI:
@@ -2495,7 +2495,7 @@ BillsPC_PackFullText:
 
 BillsPC_MovedToPackText:
 	text "Moved "
-	text_from_ram wStringBuffer1
+	text_ram wStringBuffer1
 	text ""
 	line "to Bag."
 	prompt
@@ -2559,13 +2559,13 @@ BillsPC_Item:
 	jp BillsPC_Menu
 
 .ItemIsSelected:
-	text_from_ram wStringBuffer2
+	text_ram wStringBuffer2
 	text " is"
 	line "selected."
 	done
 
 .ItCanHoldAnItem:
-	text_from_ram wTempMonNickname
+	text_ram wTempMonNickname
 	text " can"
 	line "hold an item."
 	done
@@ -2843,7 +2843,7 @@ BillsPC_ReleaseAll:
 
 .ReleasedXMon:
 	text "Released "
-	deciram wd265, 1, 2
+	text_decimal wd265, 1, 2
 	text ""
 	line "#mon."
 	prompt
@@ -2918,17 +2918,17 @@ BillsPC_Release:
 .ReallyReleaseMon:
 	text "Really release"
 	line ""
-	text_from_ram wTempMonNickname
+	text_ram wTempMonNickname
 	text "?"
 	done
 
 .WasReleasedOutside:
 	text ""
-	text_from_ram wStringBuffer1
+	text_ram wStringBuffer1
 	text " was"
 	line "released outside."
 	cont "Bye, "
-	text_from_ram wStringBuffer1
+	text_ram wStringBuffer1
 	text "!"
 	prompt
 
@@ -3355,7 +3355,7 @@ BillsPC_MustSaveToContinue:
 	done
 
 BillsPC_GameSaved:
-	text_jump _SavedTheGameText
+	text_far _SavedTheGameText
 	text_end
 
 BillsPC_PlaceHeldMon:

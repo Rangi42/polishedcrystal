@@ -55,7 +55,7 @@ CianwoodCityFlyPointAndSuicune:
 	iffalse .Done
 	disappear CIANWOODCITY_EUSINE
 .Done:
-	return
+	endcallback
 
 CianwoodCitySuicuneAndEusine:
 	turnobject PLAYER, UP
@@ -74,7 +74,7 @@ CianwoodCitySuicuneAndEusine:
 	checkevent EVENT_GOT_HM05_WHIRLPOOL
 	iftrue .NoLyra
 	setmapscene ROUTE_42, $1
-	jump .Continue
+	sjump .Continue
 .NoLyra
 	setmapscene ROUTE_42, $2
 .Continue

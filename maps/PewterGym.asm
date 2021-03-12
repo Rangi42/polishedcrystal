@@ -39,26 +39,26 @@ PewterGymBrockScript:
 	playsound SFX_GET_BADGE
 	waitsfx
 	setflag ENGINE_BOULDERBADGE
-	checkcode VAR_BADGES
+	readvar VAR_BADGES
 	ifequal 9, .FirstBadge
 	ifequal 10, .SecondBadge
 	ifequal 12, .LyrasEgg
-	jump .FightDone
+	sjump .FightDone
 .FirstBadge:
 	specialphonecall SPECIALCALL_FIRSTBADGE
-	jump .FightDone
+	sjump .FightDone
 .SecondBadge:
 	checkevent EVENT_GOT_GS_BALL_FROM_POKECOM_CENTER
 	iftrue .FightDone
 	specialphonecall SPECIALCALL_SECONDBADGE
-	jump .FightDone
+	sjump .FightDone
 .LyrasEgg:
 	specialphonecall SPECIALCALL_LYRASEGG
 .FightDone:
 	checkevent EVENT_GOT_TM48_ROCK_SLIDE
 	iftrue_jumpopenedtext BrockFightDoneText
 	writetext BrockBoulderBadgeText
-	buttonsound
+	promptbutton
 	verbosegivetmhm TM_ROCK_SLIDE
 	setevent EVENT_GOT_TM48_ROCK_SLIDE
 	jumpthisopenedtext
@@ -94,7 +94,7 @@ PewterGymGuyScript:
 	jumptextfaceplayer PewterGymGuyText
 
 PewterGymStatue:
-	trainertotext BROCK, 1, $1
+	gettrainername BROCK, 1, $1
 	checkflag ENGINE_BOULDERBADGE
 	iftrue .Beaten
 	jumpstd gymstatue1

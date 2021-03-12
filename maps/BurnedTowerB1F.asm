@@ -38,7 +38,7 @@ BurnedTowerB1FLadderCallback:
 	iftrue .NoChange
 	changeblock 6, 14, $2
 .NoChange:
-	return
+	endcallback
 
 ReleaseTheBeasts:
 	playmusic MUSIC_NONE
@@ -109,10 +109,10 @@ ReleaseTheBeasts:
 
 BurnedTowerB1FEusine:
 	showtextfaceplayer BurnedTowerB1FEusineText
-	checkcode VAR_FACING
+	readvar VAR_FACING
 	ifequal $1, .Movement
 	applymovement BURNEDTOWERB1F_EUSINE, BurnedTowerB1FEusineMovement1
-	jump UnknownScript_0x18622a
+	sjump UnknownScript_0x18622a
 
 .Movement:
 	applymovement BURNEDTOWERB1F_EUSINE, BurnedTowerB1FEusineMovement2

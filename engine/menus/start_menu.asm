@@ -302,7 +302,7 @@ StartMenu_Quit:
 	ret
 
 .EndTheContestText:
-	text_jump _StartMenuContestEndText
+	text_far _StartMenuContestEndText
 	text_end
 
 StartMenu_Save:

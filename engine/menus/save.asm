@@ -612,32 +612,32 @@ Checksum:
 
 WouldYouLikeToSaveTheGameText:
 	; Would you like to save the game?
-	text_jump _WouldYouLikeToSaveTheGameText
+	text_far _WouldYouLikeToSaveTheGameText
 	text_end
 
 SavingDontTurnOffThePowerText:
 	; SAVING… DON'T TURN OFF THE POWER.
-	text_jump _SavingDontTurnOffThePowerText
+	text_far _SavingDontTurnOffThePowerText
 	text_end
 
 SavedTheGameText:
 	; saved the game.
-	text_jump _SavedTheGameText
+	text_far _SavedTheGameText
 	text_end
 
 AnotherSaveFileText:
 	; There is another save file. Is it OK to overwrite?
-	text_jump _AnotherSaveFileText
+	text_far _AnotherSaveFileText
 	text_end
 
 SaveFileCorruptedText:
 	; The save file is corrupted!
-	text_jump _SaveFileCorruptedText
+	text_far _SaveFileCorruptedText
 	text_end
 
 MoveMonWOMailSaveText:
 	; Each time you move a #MON, data will be saved. OK?
-	text_jump _MoveMonWOMailSaveText
+	text_far _MoveMonWOMailSaveText
 	text_end
 
 UpgradeSaveVersion:

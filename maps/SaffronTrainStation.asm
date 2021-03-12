@@ -38,7 +38,7 @@ SaffronMagnetTrainStationOfficerScript:
 	closetext
 	applymovement SAFFRONTRAINSTATION_OFFICER, SaffronMagnetTrainStationOfficerApproachTrainDoorMovement
 	applymovement PLAYER, SaffronMagnetTrainStationPlayerApproachAndEnterTrainMovement
-	writebyte $1
+	setval $1
 	special Special_MagnetTrain
 	warpcheck
 	newloadmap MAPSETUP_TRAIN

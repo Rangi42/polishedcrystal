@@ -27,27 +27,27 @@ PokeCenter2F_MapScriptHeader:
 	const POKECENTER2F_BATTLE_RECEPTIONIST
 
 PokeCenter2FLeftTradeCenterTrigger:
-	priorityjump Script_LeftCableTradeCenter
+	prioritysjump Script_LeftCableTradeCenter
 PokeCenter2FDummyTrigger:
 	end
 
 PokeCenter2FLeftColosseumTrigger:
-	priorityjump Script_LeftCableColosseum
+	prioritysjump Script_LeftCableColosseum
 	end
 
 PokeCenter2FTileCallback:
 	callasm .CheckPokeCenter2FRegion
 	ifequal $0, .done
 	ifequal $2, .shamouti2f
-	changemap KantoPokeCenter2F_BlockData
+	changemapblocks KantoPokeCenter2F_BlockData
 .done
-	return
+	endcallback
 
 .shamouti2f
-	changemap KantoPokeCenter2F_BlockData
+	changemapblocks KantoPokeCenter2F_BlockData
 	changeblock 0, 6, $3c
 	changeblock 2, 0, $4a
-	return
+	endcallback
 
 .CheckPokeCenter2FRegion:
 	call GetBackupLandmark
@@ -96,7 +96,7 @@ Script_WalkOutOfLinkRoom:
 	clearflag ENGINE_KRIS_IN_CABLE_CLUB
 	playsound SFX_TINGLE
 	applymovement PLAYER, PokeCenter2FMovementData_PlayerSpinsClockwiseEndsFacingRight
-	writebyte (PAL_NPC_BLUE) << 4
+	setval (PAL_NPC_BLUE) << 4
 	special Special_SetPlayerPalette
 	applymovement PLAYER, PokeCenter2FMovementData_PlayerSpinsClockwiseEndsFacingLeft
 	special UpdatePlayerSprite
@@ -130,7 +130,7 @@ endc
 	writetext Text_PleaseWait
 	special Special_CheckLinkTimeout
 	iffalse .LinkTimedOut
-	copybytetovar wOtherPlayerLinkMode
+	readmem wOtherPlayerLinkMode
 	iffalse .LinkedToFirstGen
 	special Special_CheckBothSelectedSameRoom
 	iffalse .IncompatibleRooms
@@ -159,7 +159,7 @@ endc
 
 .LinkTimedOut:
 	writetext Text_LinkTimedOut
-	jump .AbortLink
+	sjump .AbortLink
 
 .DidNotSave:
 	writetext Text_PleaseComeAgain
@@ -197,7 +197,7 @@ endc
 	writetext Text_PleaseWait
 	special Special_CheckLinkTimeout
 	iffalse .LinkTimedOut
-	copybytetovar wOtherPlayerLinkMode
+	readmem wOtherPlayerLinkMode
 	iffalse .LinkedToFirstGen
 	special Special_CheckBothSelectedSameRoom
 	iffalse .IncompatibleRooms
@@ -226,7 +226,7 @@ endc
 
 .LinkTimedOut:
 	writetext Text_LinkTimedOut
-	jump .AbortLink
+	sjump .AbortLink
 
 .DidNotSave:
 	writetext Text_PleaseComeAgain
@@ -246,20 +246,20 @@ Script_BattleRoomClosed:
 PokeCenter2F_CheckGender:
 	checkflag ENGINE_PLAYER_IS_FEMALE
 	iftrue .Female
-	applymovement2 PokeCenter2FMovementData_ReceptionistWalksUpAndLeft_LookRight
+	applymovementlasttalked PokeCenter2FMovementData_ReceptionistWalksUpAndLeft_LookRight
 	applymovement PLAYER, PokeCenter2FMovementData_PlayerTakesThreeStepsUp
 	end
 
 .Female:
-	applymovement2 PokeCenter2FMovementData_ReceptionistWalksUpAndLeft_LookRight
+	applymovementlasttalked PokeCenter2FMovementData_ReceptionistWalksUpAndLeft_LookRight
 	applymovement PLAYER, PokeCenter2FMovementData_PlayerTakesTwoStepsUp
 	showtext Text_OhPleaseWait
-	applymovement2 PokeCenter2FMovementData_ReceptionistLooksRight
+	applymovementlasttalked PokeCenter2FMovementData_ReceptionistLooksRight
 	turnobject PLAYER, LEFT
 	showtext Text_ChangeTheLook
 	playsound SFX_TINGLE
 	applymovement PLAYER, PokeCenter2FMovementData_PlayerSpinsClockwiseEndsFacingRight
-	writebyte (PAL_NPC_RED) << 4
+	setval (PAL_NPC_RED) << 4
 	special Special_SetPlayerPalette
 	applymovement PLAYER, PokeCenter2FMovementData_PlayerSpinsClockwiseEndsFacingLeft
 	setflag ENGINE_KRIS_IN_CABLE_CLUB

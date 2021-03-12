@@ -24,7 +24,7 @@ CeladonUniversityPrincipalsOfficeMatsumotoScript:
 	faceplayer
 	opentext
 	writetext .Text1
-	buttonsound
+	promptbutton
 	verbosegiveitem RARE_CANDY
 	iffalse_endtext
 	setevent EVENT_GOT_RARE_CANDY_IN_UNIVERSITY

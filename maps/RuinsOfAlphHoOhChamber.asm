@@ -28,7 +28,7 @@ RuinsofAlphHoOhChamberTrigger0:
 	special SpecialHoOhChamber
 	checkevent EVENT_WALL_OPENED_IN_HO_OH_CHAMBER
 	iffalse .End
-	priorityjump RuinsOfAlphHoOhChamberWallOpenScript
+	prioritysjump RuinsOfAlphHoOhChamberWallOpenScript
 .End
 	end
 
@@ -39,12 +39,12 @@ RuinsOfAlphHoOhChamberHiddenDoorsCallback:
 .WallOpen:
 	checkevent EVENT_SOLVED_HO_OH_PUZZLE
 	iffalse .FloorClosed
-	return
+	endcallback
 
 .FloorClosed:
 	changeblock 2, 2, $1
 	changeblock 4, 2, $2
-	return
+	endcallback
 
 RuinsOfAlphHoOhChamberWallOpenScript:
 	pause 30
@@ -60,7 +60,7 @@ RuinsOfAlphHoOhChamberWallOpenScript:
 
 MapRuinsofAlphHoOhChamberSignpost2Script:
 	refreshscreen
-	writebyte $3
+	setval $3
 	special Special_UnownPuzzle
 	closetext
 	iftrue .PuzzleComplete
@@ -100,11 +100,11 @@ MapRuinsofAlphHoOhChamberSignpost4Script:
 	checkevent EVENT_RUINS_OF_ALPH_OUTSIDE_TOURIST_YOUNGSTERS
 	iftrue .unsolved
 	writetext RuinsOfAlphChambersItsUnownText
-	jump .unownwords
+	sjump .unownwords
 .unsolved
 	writetext RuinsOfAlphAerodactylChamberWallPatternLeftText
 .unownwords
-	writebyte $3
+	setval $3
 	special Special_DisplayUnownWords
 	endtext
 

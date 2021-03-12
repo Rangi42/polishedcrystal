@@ -27,17 +27,17 @@ GameFreakGameDesignerScript:
 	faceplayer
 	opentext
 	writetext GameFreakGameDesignerText
-	checkcode VAR_DEXCAUGHT
+	readvar VAR_DEXCAUGHT
 	ifgreater 252, UnknownScript_0x7167e
 	waitendtext
 
 UnknownScript_0x7167e:
-	buttonsound
+	promptbutton
 	writetext GameFreakGameDesignerCompletedPokedexText
 	playsound SFX_DEX_FANFARE_230_PLUS
 	waitsfx
 	writetext GameFreakGameDesignerPauseForDiplomaText
-	buttonsound
+	promptbutton
 	special Diploma
 	jumpopenedtext GameFreakGameDesignerAfterDiplomaText
 

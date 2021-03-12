@@ -61,7 +61,7 @@ TrainerYoungsterJoey:
 	trainer YOUNGSTER, JOEY1, EVENT_BEAT_YOUNGSTER_JOEY, YoungsterJoey1SeenText, YoungsterJoey1BeatenText, 0, .Script
 
 .Script:
-	writecode VAR_CALLERID, PHONE_YOUNGSTER_JOEY
+	loadvar VAR_CALLERID, PHONE_YOUNGSTER_JOEY
 	opentext
 	checkflag ENGINE_JOEY
 	iftrue .Rematch
@@ -70,10 +70,10 @@ TrainerYoungsterJoey:
 	checkevent EVENT_JOEY_ASKED_FOR_PHONE_NUMBER
 	iftrue .AskAgain
 	writetext YoungsterJoey1AfterText
-	buttonsound
+	promptbutton
 	setevent EVENT_JOEY_ASKED_FOR_PHONE_NUMBER
 	callstd asknumber1m
-	jump .RequestNumber
+	sjump .RequestNumber
 
 .AskAgain:
 	callstd asknumber2m
@@ -81,14 +81,14 @@ TrainerYoungsterJoey:
 	askforphonenumber PHONE_YOUNGSTER_JOEY
 	ifequal $1, .PhoneFull
 	ifequal $2, .NumberDeclined
-	trainertotext YOUNGSTER, JOEY1, $0
+	gettrainername YOUNGSTER, JOEY1, $0
 	callstd registerednumberm
 	jumpstd numberacceptedm
 
 .Rematch:
 	callstd rematchm
 	winlosstext YoungsterJoey1BeatenText, 0
-	copybytetovar wJoeyFightCount
+	readmem wJoeyFightCount
 	ifequal 4, .Fight4
 	ifequal 3, .Fight3
 	ifequal 2, .Fight2
@@ -110,7 +110,7 @@ TrainerYoungsterJoey:
 	loadtrainer YOUNGSTER, JOEY1
 	startbattle
 	reloadmapafterbattle
-	loadvar wJoeyFightCount, 1
+	loadmem wJoeyFightCount, 1
 	clearflag ENGINE_JOEY
 	end
 
@@ -118,7 +118,7 @@ TrainerYoungsterJoey:
 	loadtrainer YOUNGSTER, JOEY2
 	startbattle
 	reloadmapafterbattle
-	loadvar wJoeyFightCount, 2
+	loadmem wJoeyFightCount, 2
 	clearflag ENGINE_JOEY
 	end
 
@@ -126,7 +126,7 @@ TrainerYoungsterJoey:
 	loadtrainer YOUNGSTER, JOEY3
 	startbattle
 	reloadmapafterbattle
-	loadvar wJoeyFightCount, 3
+	loadmem wJoeyFightCount, 3
 	clearflag ENGINE_JOEY
 	end
 
@@ -134,7 +134,7 @@ TrainerYoungsterJoey:
 	loadtrainer YOUNGSTER, JOEY4
 	startbattle
 	reloadmapafterbattle
-	loadvar wJoeyFightCount, 4
+	loadmem wJoeyFightCount, 4
 	clearflag ENGINE_JOEY
 	end
 

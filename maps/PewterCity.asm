@@ -33,7 +33,7 @@ PewterCity_MapScriptHeader:
 
 PewterCityFlyPoint:
 	setflag ENGINE_FLYPOINT_PEWTER
-	return
+	endcallback
 
 PewterCityGrampsScript:
 	checkevent EVENT_GOT_OLD_AMBER
@@ -41,7 +41,7 @@ PewterCityGrampsScript:
 	faceplayer
 	opentext
 	writetext PewterCityGrampsText
-	buttonsound
+	promptbutton
 	verbosegiveitem OLD_AMBER
 	iffalse_endtext
 	setevent EVENT_GOT_OLD_AMBER

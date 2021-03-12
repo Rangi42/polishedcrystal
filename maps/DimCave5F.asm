@@ -31,7 +31,7 @@ DimCave5F_MapScriptHeader:
 
 DimCave5FSetUpStoneTable:
 	usestonetable .StoneTable
-	return
+	endcallback
 
 .StoneTable:
 	stonetable 4, DIMCAVE5F_BOULDER, .Boulder
@@ -69,7 +69,7 @@ DimCave5FRileyScript:
 .Beaten
 	opentext
 	writetext .ItemText
-	buttonsound
+	promptbutton
 	verbosegiveitem POWER_BRACER
 	iffalse_endtext
 	writetext .GoodbyeText

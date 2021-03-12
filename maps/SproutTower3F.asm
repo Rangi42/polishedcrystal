@@ -73,7 +73,7 @@ ElderLiScript:
 	reloadmapafterbattle
 	opentext
 	writetext SageLiTakeThisFlashText
-	buttonsound
+	promptbutton
 	verbosegivetmhm TM_FLASH
 	setevent EVENT_GOT_TM70_FLASH
 	setevent EVENT_BEAT_ELDER_LI

@@ -3,59 +3,59 @@ Phone_GenericCall_Male:
 	farscall PhoneScript_Random2
 	ifequal 0, UnknownScript_0xa0013
 	farscall PhoneScript_Generic_Male
-	farjump Phone_FoundAMon_Male
+	farsjump Phone_FoundAMon_Male
 
 UnknownScript_0xa0013:
-	farjump Phone_BraggingCall_Male
+	farsjump Phone_BraggingCall_Male
 
 Phone_GenericCall_Female:
 	special RandomPhoneMon
 	farscall PhoneScript_Random2
 	ifequal 0, UnknownScript_0xa002a
 	farscall PhoneScript_Generic_Female
-	farjump Phone_FoundAMon_Female
+	farsjump Phone_FoundAMon_Female
 
 UnknownScript_0xa002a:
-	farjump Phone_BraggingCall_Female
+	farsjump Phone_BraggingCall_Female
 
 Phone_BraggingCall_Male:
 	farscall Phone_WhosBragging_Male
-	farjump Phone_FoundAMon_Male
+	farsjump Phone_FoundAMon_Male
 
 Phone_BraggingCall_Female:
 	farscall Phone_WhosBragging_Female
-	farjump Phone_FoundAMon_Female
+	farsjump Phone_FoundAMon_Female
 
 Phone_FoundAMon_Male:
 	special RandomPhoneWildMon
 	farscall PhoneScript_Random2
 	ifequal 0, UnknownScript_0xa0051
 	farscall Phone_WhoDefeatedMon_Male
-	farjump PhoneScript_HangupText_Male
+	farsjump PhoneScript_HangupText_Male
 
 UnknownScript_0xa0051:
-	farjump Phone_GotAwayCall_Male
+	farsjump Phone_GotAwayCall_Male
 
 Phone_FoundAMon_Female:
 	special RandomPhoneWildMon
 	farscall PhoneScript_Random2
 	ifequal 0, UnknownScript_0xa0068
 	farscall Phone_WhoDefeatedMon_Female
-	farjump PhoneScript_HangupText_Female
+	farsjump PhoneScript_HangupText_Female
 
 UnknownScript_0xa0068:
-	farjump Phone_GotAwayCall_Female
+	farsjump Phone_GotAwayCall_Female
 
 Phone_GotAwayCall_Male:
 	farscall Phone_WhoLostAMon_Male
-	farjump PhoneScript_HangupText_Male
+	farsjump PhoneScript_HangupText_Male
 
 Phone_GotAwayCall_Female:
 	farscall Phone_WhoLostAMon_Female
-	farjump PhoneScript_HangupText_Female
+	farsjump PhoneScript_HangupText_Female
 
 Phone_WhosBragging_Male:
-	checkcode VAR_CALLERID
+	readvar VAR_CALLERID
 	ifequal PHONE_SCHOOLBOY_JACK, .Jack
 	ifequal PHONE_COOLTRAINERM_GAVEN, .Gaven
 	ifequal PHONE_BIRDKEEPER_JOSE, .Jose
@@ -76,91 +76,91 @@ Phone_WhosBragging_Male:
 
 .Jack:
 	farwritetext JackIntelligenceKeepsRisingText
-	buttonsound
+	promptbutton
 	end
 
 .Gaven:
 	farwritetext GavenMonGreaterThanImaginedText
-	buttonsound
+	promptbutton
 	end
 
 .Jose:
 	farwritetext JoseMonsStickHasADeliciousAromaText
-	buttonsound
+	promptbutton
 	end
 
 .Joey:
 	farwritetext JoeyMonLookingSharperText
-	buttonsound
+	promptbutton
 	end
 
 .Wade:
 	farwritetext WadeAreYourMonGrowingText
-	buttonsound
+	promptbutton
 	end
 
 .Ralph:
 	farwritetext RalphNeglectingKidsText
-	buttonsound
+	promptbutton
 	end
 
 .Anthony:
 	farwritetext AnthonyMonAteSomeBerriesText
-	buttonsound
+	promptbutton
 	end
 
 .Todd:
 	farwritetext ToddLooksCuteLikeMeText
-	buttonsound
+	promptbutton
 	end
 
 .Arnie:
 	farwritetext ArnieMonIsSoCuteText
-	buttonsound
+	promptbutton
 	end
 
 .Alan:
 	farwritetext AlanGettingStrongerText
-	buttonsound
+	promptbutton
 	end
 
 .Chad:
 	farwritetext ChadObservingWildText
-	buttonsound
+	promptbutton
 	end
 
 .Derek:
 	farwritetext DerekCheekPinchingText
-	buttonsound
+	promptbutton
 	end
 
 .Tully:
 	farwritetext TullyMonHasGrownText
-	buttonsound
+	promptbutton
 	end
 
 .Brent:
 	farwritetext BrentRareTradeText
-	buttonsound
+	promptbutton
 	end
 
 .Vance:
 	farwritetext VanceMonHasBecomeTougherText
-	buttonsound
+	promptbutton
 	end
 
 .Wilton:
 	farwritetext WiltonMonHasGrownText
-	buttonsound
+	promptbutton
 	end
 
 .Parry:
 	farwritetext ParryNothingCanMatchText
-	buttonsound
+	promptbutton
 	end
 
 Phone_WhosBragging_Female:
-	checkcode VAR_CALLERID
+	readvar VAR_CALLERID
 	ifequal PHONE_POKEFAN_BEVERLY, .Beverly
 	ifequal PHONE_COOLTRAINERF_BETH, .Beth
 	ifequal PHONE_COOLTRAINERF_REENA, .Reena
@@ -172,46 +172,46 @@ Phone_WhosBragging_Female:
 
 .Beverly:
 	farwritetext BeverlyMadeMonEvenCuterText
-	buttonsound
+	promptbutton
 	end
 
 .Beth:
 	farwritetext BethExhilaratingRideText
-	buttonsound
+	promptbutton
 	end
 
 .Reena:
 	farwritetext ReenaMonsIsAPerfectMatchText
-	buttonsound
+	promptbutton
 	end
 
 .Liz:
 	farwritetext LizMonAlwaysWantsToNuzzleText
-	buttonsound
+	promptbutton
 	end
 
 .Gina:
 	farwritetext GinaGettingInSyncWithMonText
-	buttonsound
+	promptbutton
 	end
 
 .Dana:
 	farwritetext DanaTakingPhotosText
-	buttonsound
+	promptbutton
 	end
 
 .Tiffany:
 	farwritetext TiffanyMonIsAdorableText
-	buttonsound
+	promptbutton
 	end
 
 .Erin:
 	farwritetext ErinMonIsMuchStrongerText
-	buttonsound
+	promptbutton
 	end
 
 Phone_WhoDefeatedMon_Male:
-	checkcode VAR_CALLERID
+	readvar VAR_CALLERID
 	ifequal PHONE_SCHOOLBOY_JACK, .Jack
 	ifequal PHONE_COOLTRAINERM_GAVEN, .Gaven
 	ifequal PHONE_BIRDKEEPER_JOSE, .Jose
@@ -232,91 +232,91 @@ Phone_WhoDefeatedMon_Male:
 
 .Jack:
 	farwritetext JackDefeatedMonText
-	buttonsound
+	promptbutton
 	end
 
 .Gaven:
 	farwritetext GavenDefeatedMonText
-	buttonsound
+	promptbutton
 	end
 
 .Jose:
 	farwritetext JoseDefeatedMonText
-	buttonsound
+	promptbutton
 	end
 
 .Joey:
 	farwritetext JoeyDefeatedMonText
-	buttonsound
+	promptbutton
 	end
 
 .Wade:
 	farwritetext WadeDefeatedMonText
-	buttonsound
+	promptbutton
 	end
 
 .Ralph:
 	farwritetext RalphDefeatedMonText
-	buttonsound
+	promptbutton
 	end
 
 .Anthony:
 	farwritetext AnthonyDefeatedMonText
-	buttonsound
+	promptbutton
 	end
 
 .Todd:
 	farwritetext ToddDefeatedMonText
-	buttonsound
+	promptbutton
 	end
 
 .Arnie:
 	farwritetext ArnieDefeatedMonText
-	buttonsound
+	promptbutton
 	end
 
 .Alan:
 	farwritetext AlanDefeatedMonText
-	buttonsound
+	promptbutton
 	end
 
 .Chad:
 	farwritetext ChadDefeatedMonText
-	buttonsound
+	promptbutton
 	end
 
 .Derek:
 	farwritetext DerekDefeatedMonText
-	buttonsound
+	promptbutton
 	end
 
 .Tully:
 	farwritetext TullyDefeatedMonText
-	buttonsound
+	promptbutton
 	end
 
 .Brent:
 	farwritetext BrentDefeatedMonText
-	buttonsound
+	promptbutton
 	end
 
 .Vance:
 	farwritetext VanceDefeatedMonText
-	buttonsound
+	promptbutton
 	end
 
 .Wilton:
 	farwritetext WiltonDefeatedMonText
-	buttonsound
+	promptbutton
 	end
 
 .Parry:
 	farwritetext ParryDefeatedMonText
-	buttonsound
+	promptbutton
 	end
 
 Phone_WhoDefeatedMon_Female:
-	checkcode VAR_CALLERID
+	readvar VAR_CALLERID
 	ifequal PHONE_POKEFAN_BEVERLY, .Beverly
 	ifequal PHONE_COOLTRAINERF_BETH, .Beth
 	ifequal PHONE_COOLTRAINERF_REENA, .Reena
@@ -328,46 +328,46 @@ Phone_WhoDefeatedMon_Female:
 
 .Beverly:
 	farwritetext BeverlyDefeatedMonText
-	buttonsound
+	promptbutton
 	end
 
 .Beth:
 	farwritetext BethDefeatedMonText
-	buttonsound
+	promptbutton
 	end
 
 .Reena:
 	farwritetext ReenaDefeatedMonText
-	buttonsound
+	promptbutton
 	end
 
 .Liz:
 	farwritetext LizDefeatedMonText
-	buttonsound
+	promptbutton
 	end
 
 .Gina:
 	farwritetext GinaDefeatedMonText
-	buttonsound
+	promptbutton
 	end
 
 .Dana:
 	farwritetext DanaDefeatedMonText
-	buttonsound
+	promptbutton
 	end
 
 .Tiffany:
 	farwritetext TiffanyDefeatedMonText
-	buttonsound
+	promptbutton
 	end
 
 .Erin:
 	farwritetext ErinDefeatedMonText
-	buttonsound
+	promptbutton
 	end
 
 Phone_WhoLostAMon_Male:
-	checkcode VAR_CALLERID
+	readvar VAR_CALLERID
 	ifequal PHONE_SCHOOLBOY_JACK, .Jack
 	ifequal PHONE_COOLTRAINERM_GAVEN, .Gaven
 	ifequal PHONE_BIRDKEEPER_JOSE, .Jose
@@ -388,91 +388,91 @@ Phone_WhoLostAMon_Male:
 
 .Jack:
 	farwritetext JackLostAMonText
-	buttonsound
+	promptbutton
 	end
 
 .Gaven:
 	farwritetext GavenLostAMonText
-	buttonsound
+	promptbutton
 	end
 
 .Jose:
 	farwritetext JoseLostAMonText
-	buttonsound
+	promptbutton
 	end
 
 .Joey:
 	farwritetext JoeyLostAMonText
-	buttonsound
+	promptbutton
 	end
 
 .Wade:
 	farwritetext WadeLostAMonText
-	buttonsound
+	promptbutton
 	end
 
 .Ralph:
 	farwritetext RalphLostAMonText
-	buttonsound
+	promptbutton
 	end
 
 .Anthony:
 	farwritetext AnthonyLostAMonText
-	buttonsound
+	promptbutton
 	end
 
 .Todd:
 	farwritetext ToddLostAMonText
-	buttonsound
+	promptbutton
 	end
 
 .Arnie:
 	farwritetext ArnieLostAMonText
-	buttonsound
+	promptbutton
 	end
 
 .Alan:
 	farwritetext AlanLostAMonText
-	buttonsound
+	promptbutton
 	end
 
 .Chad:
 	farwritetext ChadLostAMonText
-	buttonsound
+	promptbutton
 	end
 
 .Derek:
 	farwritetext DerekLostAMonText
-	buttonsound
+	promptbutton
 	end
 
 .Tully:
 	farwritetext TullyLostAMonText
-	buttonsound
+	promptbutton
 	end
 
 .Brent:
 	farwritetext BrentLostAMonText
-	buttonsound
+	promptbutton
 	end
 
 .Vance:
 	farwritetext VanceLostAMonText
-	buttonsound
+	promptbutton
 	end
 
 .Wilton:
 	farwritetext WiltonLostAMonText
-	buttonsound
+	promptbutton
 	end
 
 .Parry:
 	farwritetext ParryLostAMonText
-	buttonsound
+	promptbutton
 	end
 
 Phone_WhoLostAMon_Female:
-	checkcode VAR_CALLERID
+	readvar VAR_CALLERID
 	ifequal PHONE_POKEFAN_BEVERLY, .Beverly
 	ifequal PHONE_COOLTRAINERF_BETH, .Beth
 	ifequal PHONE_COOLTRAINERF_REENA, .Reena
@@ -484,54 +484,54 @@ Phone_WhoLostAMon_Female:
 
 .Beverly:
 	farwritetext BeverlyLostAMonText
-	buttonsound
+	promptbutton
 	end
 
 .Beth:
 	farwritetext BethLostAMonText
-	buttonsound
+	promptbutton
 	end
 
 .Reena:
 	farwritetext ReenaLostAMonText
-	buttonsound
+	promptbutton
 	end
 
 .Liz:
 	farwritetext LizLostAMonText
-	buttonsound
+	promptbutton
 	end
 
 .Gina:
 	farwritetext GinaLostAMonText
-	buttonsound
+	promptbutton
 	end
 
 .Dana:
 	farwritetext DanaLostAMonText
-	buttonsound
+	promptbutton
 	end
 
 .Tiffany:
 	farwritetext TiffanyLostAMonText
-	buttonsound
+	promptbutton
 	end
 
 .Erin:
 	farwritetext ErinLostAMonText
-	buttonsound
+	promptbutton
 	end
 
 PhoneScript_WantsToBattle_Male:
 	farscall PhoneScript_RematchText_Male
-	farjump PhoneScript_HangupText_Male
+	farsjump PhoneScript_HangupText_Male
 
 PhoneScript_WantsToBattle_Female:
 	farscall PhoneScript_RematchText_Female
-	farjump PhoneScript_HangupText_Female
+	farsjump PhoneScript_HangupText_Female
 
 PhoneScript_RematchText_Male:
-	checkcode VAR_CALLERID
+	readvar VAR_CALLERID
 	ifequal PHONE_SCHOOLBOY_JACK, .Jack
 	ifequal PHONE_SAILOR_HUEY, .Huey
 	ifequal PHONE_COOLTRAINERM_GAVEN, .Gaven
@@ -552,91 +552,91 @@ PhoneScript_RematchText_Male:
 
 .Jack:
 	farwritetext JackBattleRematchText
-	buttonsound
+	promptbutton
 	end
 
 .Huey:
 	farwritetext HueyBattleRematchText
-	buttonsound
+	promptbutton
 	end
 
 .Gaven:
 	farwritetext GavenBattleRematchText
-	buttonsound
+	promptbutton
 	end
 
 .Jose:
 	farwritetext JoseBattleRematchText
-	buttonsound
+	promptbutton
 	end
 
 .Joey:
 	farwritetext JoeyBattleRematchText
-	buttonsound
+	promptbutton
 	end
 
 .Wade:
 	farwritetext WadeBattleRematchText
-	buttonsound
+	promptbutton
 	end
 
 .Ralph:
 	farwritetext RalphBattleRematchText
-	buttonsound
+	promptbutton
 	end
 
 .Anthony:
 	farwritetext AnthonyBattleRematchText
-	buttonsound
+	promptbutton
 	end
 
 .Todd:
 	farwritetext ToddBattleRematchText
-	buttonsound
+	promptbutton
 	end
 
 .Arnie:
 	farwritetext ArnieBattleRematchText
-	buttonsound
+	promptbutton
 	end
 
 .Alan:
 	farwritetext AlanBattleRematchText
-	buttonsound
+	promptbutton
 	end
 
 .Chad:
 	farwritetext ChadBattleRematchText
-	buttonsound
+	promptbutton
 	end
 
 .Tully:
 	farwritetext TullyBattleRematchText
-	buttonsound
+	promptbutton
 	end
 
 .Brent:
 	farwritetext BrentBattleRematchText
-	buttonsound
+	promptbutton
 	end
 
 .Vance:
 	farwritetext VanceBattleRematchText
-	buttonsound
+	promptbutton
 	end
 
 .Wilton:
 	farwritetext WiltonBattleRematchText
-	buttonsound
+	promptbutton
 	end
 
 .Parry:
 	farwritetext ParryBattleRematchText
-	buttonsound
+	promptbutton
 	end
 
 PhoneScript_RematchText_Female:
-	checkcode VAR_CALLERID
+	readvar VAR_CALLERID
 	ifequal PHONE_COOLTRAINERF_BETH, .Beth
 	ifequal PHONE_COOLTRAINERF_REENA, .Reena
 	ifequal PHONE_PICNICKER_LIZ, .Liz
@@ -647,37 +647,37 @@ PhoneScript_RematchText_Female:
 
 .Beth:
 	farwritetext BethBattleRematchText
-	buttonsound
+	promptbutton
 	end
 
 .Reena:
 	farwritetext ReenaBattleRematchText
-	buttonsound
+	promptbutton
 	end
 
 .Liz:
 	farwritetext LizBattleRematchText
-	buttonsound
+	promptbutton
 	end
 
 .Gina:
 	farwritetext GinaBattleRematchText
-	buttonsound
+	promptbutton
 	end
 
 .Dana:
 	farwritetext DanaBattleRematchText
-	buttonsound
+	promptbutton
 	end
 
 .Tiffany:
 	farwritetext TiffanyBattleRematchText
-	buttonsound
+	promptbutton
 	end
 
 .Erin:
 	farwritetext ErinBattleRematchText
-	buttonsound
+	promptbutton
 	end
 
 LizWrongNumberScript:
@@ -689,7 +689,7 @@ TiffanyItsAwful:
 	end
 
 PhoneScript_HangupText_Male:
-	checkcode VAR_CALLERID
+	readvar VAR_CALLERID
 	ifequal PHONE_SCHOOLBOY_JACK, .Jack
 	ifequal PHONE_SAILOR_HUEY, .Huey
 	ifequal PHONE_COOLTRAINERM_GAVEN, .Gaven
@@ -792,7 +792,7 @@ PhoneScript_HangupText_Male:
 	end
 
 PhoneScript_HangupText_Female:
-	checkcode VAR_CALLERID
+	readvar VAR_CALLERID
 	ifequal PHONE_POKEFAN_BEVERLY, .Beverly
 	ifequal PHONE_COOLTRAINERF_BETH, .Beth
 	ifequal PHONE_COOLTRAINERF_REENA, .Reena
@@ -837,65 +837,65 @@ PhoneScript_HangupText_Female:
 Phone_CheckIfUnseenRare_Male:
 	scall PhoneScriptRareWildMon
 	iffalse UnknownScript_0xa058e
-	farjump Phone_GenericCall_Male
+	farsjump Phone_GenericCall_Male
 
 UnknownScript_0xa058e:
-	farjump PhoneScript_HangupText_Male
+	farsjump PhoneScript_HangupText_Male
 
 Phone_CheckIfUnseenRare_Female:
 	scall PhoneScriptRareWildMon
 	iffalse UnknownScript_0xa059c
-	farjump Phone_GenericCall_Female
+	farsjump Phone_GenericCall_Female
 
 UnknownScript_0xa059c:
-	farjump PhoneScript_HangupText_Female
+	farsjump PhoneScript_HangupText_Female
 
 PhoneScriptRareWildMon:
 	special RandomPhoneRareWildMon
 	end
 
 PhoneScript_BugCatchingContest:
-	checkcode VAR_CALLERID
+	readvar VAR_CALLERID
 	ifequal PHONE_BUG_CATCHER_WADE, .Wade
 	ifequal PHONE_POKEFANM_DEREK, .Derek
 
 .Wade:
 	farwritetext WadeBugCatchingContestText
-	buttonsound
-	jump PhoneScript_HangupText_Male
+	promptbutton
+	sjump PhoneScript_HangupText_Male
 
 .Derek:
 	farwritetext DerekBugCatchingContestText
-	buttonsound
-	jump PhoneScript_HangupText_Male
+	promptbutton
+	sjump PhoneScript_HangupText_Male
 
 IrwinRocketRumorScript:
 	farwritetext IrwinRocketTakeoverRumorText
-	buttonsound
-	jump PhoneScript_HangupText_Male
+	promptbutton
+	sjump PhoneScript_HangupText_Male
 
 GinaRocketRumorScript:
 	farwritetext GinaRocketTakeoverRumorText
-	buttonsound
-	jump PhoneScript_HangupText_Female
+	promptbutton
+	sjump PhoneScript_HangupText_Female
 
 ArnieSwarmScript:
 	farwritetext ArnieSwarmText
-	buttonsound
-	jump PhoneScript_HangupText_Male
+	promptbutton
+	sjump PhoneScript_HangupText_Male
 
 RalphItemScript:
 	farwritetext RalphItemText
-	buttonsound
-	jump PhoneScript_HangupText_Male
+	promptbutton
+	sjump PhoneScript_HangupText_Male
 
 AnthonySwarmScript:
 	farwritetext AnthonySwarmText
-	buttonsound
-	jump PhoneScript_HangupText_Male
+	promptbutton
+	sjump PhoneScript_HangupText_Male
 
 PhoneScript_FoundItem_Male:
-	checkcode VAR_CALLERID
+	readvar VAR_CALLERID
 	ifequal PHONE_BIRDKEEPER_JOSE, .Jose
 	ifequal PHONE_BUG_CATCHER_WADE, .Wade
 	ifequal PHONE_SCHOOLBOY_ALAN, .Alan
@@ -928,7 +928,7 @@ PhoneScript_FoundItem_Male:
 	end
 
 PhoneScript_FoundItem_Female:
-	checkcode VAR_CALLERID
+	readvar VAR_CALLERID
 	ifequal PHONE_POKEFAN_BEVERLY, .Beverly
 	ifequal PHONE_PICNICKER_GINA, .Gina
 	ifequal PHONE_LASS_DANA, .Dana
@@ -952,13 +952,13 @@ PhoneScript_FoundItem_Female:
 
 ToddItemScript:
 	farwritetext ToddDepartmentStoreBargainSaleText
-	buttonsound
-	jump PhoneScript_HangupText_Male
+	promptbutton
+	sjump PhoneScript_HangupText_Male
 
 KenjiCallingPhoneScript:
 	farwritetext KenjiRemainDedicatedText
-	buttonsound
-	jump PhoneScript_HangupText_Male
+	promptbutton
+	sjump PhoneScript_HangupText_Male
 
 JackTriviaScript:
 	random 11
@@ -976,58 +976,58 @@ JackTriviaScript:
 
 UnknownScript_0xa0682:
 	farwritetext JackThunderTriviaText
-	buttonsound
-	jump PhoneScript_HangupText_Male
+	promptbutton
+	sjump PhoneScript_HangupText_Male
 
 UnknownScript_0xa068a:
 	farwritetext JackRolloutTriviaText
-	buttonsound
-	jump PhoneScript_HangupText_Male
+	promptbutton
+	sjump PhoneScript_HangupText_Male
 
 UnknownScript_0xa0692:
 	farwritetext JackSolarbeamTriviaText
-	buttonsound
-	jump PhoneScript_HangupText_Male
+	promptbutton
+	sjump PhoneScript_HangupText_Male
 
 UnknownScript_0xa069a:
 	farwritetext JackStompTriviaText
-	buttonsound
-	jump PhoneScript_HangupText_Male
+	promptbutton
+	sjump PhoneScript_HangupText_Male
 
 UnknownScript_0xa06a2:
 	farwritetext JackGustTriviaText
-	buttonsound
-	jump PhoneScript_HangupText_Male
+	promptbutton
+	sjump PhoneScript_HangupText_Male
 
 UnknownScript_0xa06aa:
 	farwritetext JackTwisterTriviaText
-	buttonsound
-	jump PhoneScript_HangupText_Male
+	promptbutton
+	sjump PhoneScript_HangupText_Male
 
 UnknownScript_0xa06b2:
 	farwritetext JackEarthquakeTriviaText
-	buttonsound
-	jump PhoneScript_HangupText_Male
+	promptbutton
+	sjump PhoneScript_HangupText_Male
 
 UnknownScript_0xa06ba:
 	farwritetext JackMagnitudeTriviaText
-	buttonsound
-	jump PhoneScript_HangupText_Male
+	promptbutton
+	sjump PhoneScript_HangupText_Male
 
 UnknownScript_0xa06c2:
 	farwritetext JackSandstormTriviaText
-	buttonsound
-	jump PhoneScript_HangupText_Male
+	promptbutton
+	sjump PhoneScript_HangupText_Male
 
 UnknownScript_0xa06ca:
 	farwritetext JackSunnyDayTriviaText
-	buttonsound
-	jump PhoneScript_HangupText_Male
+	promptbutton
+	sjump PhoneScript_HangupText_Male
 
 UnknownScript_0xa06d2:
 	farwritetext JackRainDanceTriviaText
-	buttonsound
-	jump PhoneScript_HangupText_Male
+	promptbutton
+	sjump PhoneScript_HangupText_Male
 
 LizGossipRandomScript:
 	random 10
@@ -1044,53 +1044,53 @@ LizGossipRandomScript:
 
 UnknownScript_0xa0704:
 	farwritetext LizRuinsOfAlphGossipText
-	buttonsound
-	jump PhoneScript_HangupText_Female
+	promptbutton
+	sjump PhoneScript_HangupText_Female
 
 UnknownScript_0xa070c:
 	farwritetext LizFalknerGossipText
-	buttonsound
-	jump PhoneScript_HangupText_Female
+	promptbutton
+	sjump PhoneScript_HangupText_Female
 
 UnknownScript_0xa0714:
 	farwritetext LizEarlGossipText
-	buttonsound
-	jump PhoneScript_HangupText_Female
+	promptbutton
+	sjump PhoneScript_HangupText_Female
 
 UnknownScript_0xa071c:
 	farwritetext LizSurfPikachuGossipText
-	buttonsound
-	jump PhoneScript_HangupText_Female
+	promptbutton
+	sjump PhoneScript_HangupText_Female
 
 UnknownScript_0xa0724:
 	farwritetext LizMooMooMilkGossipText
-	buttonsound
-	jump PhoneScript_HangupText_Female
+	promptbutton
+	sjump PhoneScript_HangupText_Female
 
 UnknownScript_0xa072c:
 	farwritetext LizSalonGossipText
-	buttonsound
-	jump PhoneScript_HangupText_Female
+	promptbutton
+	sjump PhoneScript_HangupText_Female
 
 UnknownScript_0xa0734:
 	farwritetext LizWhitneyGossipText
-	buttonsound
-	jump PhoneScript_HangupText_Female
+	promptbutton
+	sjump PhoneScript_HangupText_Female
 
 UnknownScript_0xa073c:
 	farwritetext LizBugCatchingContestGossipText
-	buttonsound
-	jump PhoneScript_HangupText_Female
+	promptbutton
+	sjump PhoneScript_HangupText_Female
 
 UnknownScript_0xa0744:
 	farwritetext LizBeautifulMonGossipText
-	buttonsound
-	jump PhoneScript_HangupText_Female
+	promptbutton
+	sjump PhoneScript_HangupText_Female
 
 UnknownScript_0xa074c:
 	farwritetext LizForgotGossipText
-	buttonsound
-	jump PhoneScript_HangupText_Female
+	promptbutton
+	sjump PhoneScript_HangupText_Female
 
 ChadOakGossipScript:
 	random 10
@@ -1107,53 +1107,53 @@ ChadOakGossipScript:
 
 UnknownScript_0xa077e:
 	farwritetext ChadBlueGossipText
-	buttonsound
-	jump PhoneScript_HangupText_Male
+	promptbutton
+	sjump PhoneScript_HangupText_Male
 
 UnknownScript_0xa0786:
 	farwritetext ChadDaisyGossipText
-	buttonsound
-	jump PhoneScript_HangupText_Male
+	promptbutton
+	sjump PhoneScript_HangupText_Male
 
 UnknownScript_0xa078e:
 	farwritetext ChadProfElmGossipText
-	buttonsound
-	jump PhoneScript_HangupText_Male
+	promptbutton
+	sjump PhoneScript_HangupText_Male
 
 UnknownScript_0xa0796:
 	farwritetext ChadProfOaksDreamGossipText
-	buttonsound
-	jump PhoneScript_HangupText_Male
+	promptbutton
+	sjump PhoneScript_HangupText_Male
 
 UnknownScript_0xa079e:
 	farwritetext ChadKurtGossipText
-	buttonsound
-	jump PhoneScript_HangupText_Male
+	promptbutton
+	sjump PhoneScript_HangupText_Male
 
 UnknownScript_0xa07a6:
 	farwritetext ChadLeagueGossipText
-	buttonsound
-	jump PhoneScript_HangupText_Male
+	promptbutton
+	sjump PhoneScript_HangupText_Male
 
 UnknownScript_0xa07ae:
 	farwritetext ChadPokemonTalkGossipText
-	buttonsound
-	jump PhoneScript_HangupText_Male
+	promptbutton
+	sjump PhoneScript_HangupText_Male
 
 UnknownScript_0xa07b6:
 	farwritetext ChadProfOakTrainerGossipText
-	buttonsound
-	jump PhoneScript_HangupText_Male
+	promptbutton
+	sjump PhoneScript_HangupText_Male
 
 UnknownScript_0xa07be:
 	farwritetext ChadDaisyTeaGossipText
-	buttonsound
-	jump PhoneScript_HangupText_Male
+	promptbutton
+	sjump PhoneScript_HangupText_Male
 
 UnknownScript_0xa07c6:
 	farwritetext ChadProfOakTravelingGossipText
-	buttonsound
-	jump PhoneScript_HangupText_Male
+	promptbutton
+	sjump PhoneScript_HangupText_Male
 
 BrentBillTriviaScript:
 	random 10
@@ -1170,53 +1170,53 @@ BrentBillTriviaScript:
 
 UnknownScript_0xa07f8:
 	farwritetext BrentFatherGossipText
-	buttonsound
-	jump PhoneScript_HangupText_Male
+	promptbutton
+	sjump PhoneScript_HangupText_Male
 
 UnknownScript_0xa0800:
 	farwritetext BrentGrandpaGossipText
-	buttonsound
-	jump PhoneScript_HangupText_Male
+	promptbutton
+	sjump PhoneScript_HangupText_Male
 
 UnknownScript_0xa0808:
 	farwritetext BrentGoldenrodGossipText
-	buttonsound
-	jump PhoneScript_HangupText_Male
+	promptbutton
+	sjump PhoneScript_HangupText_Male
 
 UnknownScript_0xa0810:
 	farwritetext BrentRoute25GossipText
-	buttonsound
-	jump PhoneScript_HangupText_Male
+	promptbutton
+	sjump PhoneScript_HangupText_Male
 
 UnknownScript_0xa0818:
 	farwritetext BrentAbraGossipText
-	buttonsound
-	jump PhoneScript_HangupText_Male
+	promptbutton
+	sjump PhoneScript_HangupText_Male
 
 UnknownScript_0xa0820:
 	farwritetext BrentSisterGossipText
-	buttonsound
-	jump PhoneScript_HangupText_Male
+	promptbutton
+	sjump PhoneScript_HangupText_Male
 
 UnknownScript_0xa0828:
 	farwritetext BrentMilkGossipText
-	buttonsound
-	jump PhoneScript_HangupText_Male
+	promptbutton
+	sjump PhoneScript_HangupText_Male
 
 UnknownScript_0xa0830:
 	farwritetext BrentBattlingGossipText
-	buttonsound
-	jump PhoneScript_HangupText_Male
+	promptbutton
+	sjump PhoneScript_HangupText_Male
 
 UnknownScript_0xa0838:
 	farwritetext BrentFlowerShopGossipText
-	buttonsound
-	jump PhoneScript_HangupText_Male
+	promptbutton
+	sjump PhoneScript_HangupText_Male
 
 UnknownScript_0xa0840:
 	farwritetext BrentKimonoGirlGossipText
-	buttonsound
-	jump PhoneScript_HangupText_Male
+	promptbutton
+	sjump PhoneScript_HangupText_Male
 
 IrwinRumorScript:
 	checkevent EVENT_OPENED_MT_SILVER
@@ -1244,198 +1244,198 @@ IrwinRumorScript:
 	checkflag ENGINE_PLAINBADGE
 	iftrue UnknownScript_0xa0898
 	farwritetext IrwinCalledRightAwayText
-	buttonsound
-	jump PhoneScript_HangupText_Male
+	promptbutton
+	sjump PhoneScript_HangupText_Male
 
 UnknownScript_0xa0898:
 	farwritetext IrwinPlainBadgeGossipText
-	buttonsound
-	jump PhoneScript_HangupText_Male
+	promptbutton
+	sjump PhoneScript_HangupText_Male
 
 UnknownScript_0xa08a0:
 	farwritetext IrwinJasmineReturnedGossipText
-	buttonsound
-	jump PhoneScript_HangupText_Male
+	promptbutton
+	sjump PhoneScript_HangupText_Male
 
 UnknownScript_0xa08a8:
 	farwritetext IrwinRocketHideoutGossipText
-	buttonsound
-	jump PhoneScript_HangupText_Male
+	promptbutton
+	sjump PhoneScript_HangupText_Male
 
 UnknownScript_0xa08b0:
 	farwritetext IrwinRadioTowerGossipText
-	buttonsound
-	jump PhoneScript_HangupText_Male
+	promptbutton
+	sjump PhoneScript_HangupText_Male
 
 UnknownScript_0xa08b8:
 	farwritetext IrwinRisingBadgeGossipText
-	buttonsound
-	jump PhoneScript_HangupText_Male
+	promptbutton
+	sjump PhoneScript_HangupText_Male
 
 UnknownScript_0xa08c0:
 	farwritetext IrwinEliteFourGossipText
-	buttonsound
-	jump PhoneScript_HangupText_Male
+	promptbutton
+	sjump PhoneScript_HangupText_Male
 
 UnknownScript_0xa08c8:
 	farwritetext IrwinVermilionCityGossipText
-	buttonsound
-	jump PhoneScript_HangupText_Male
+	promptbutton
+	sjump PhoneScript_HangupText_Male
 
 UnknownScript_0xa08d0:
 	farwritetext IrwinTrainPassGossipText
-	buttonsound
-	jump PhoneScript_HangupText_Male
+	promptbutton
+	sjump PhoneScript_HangupText_Male
 
 UnknownScript_0xa08d8:
 	farwritetext IrwinSnorlaxGossipText
-	buttonsound
-	jump PhoneScript_HangupText_Male
+	promptbutton
+	sjump PhoneScript_HangupText_Male
 
 UnknownScript_0xa08e0:
 	farwritetext IrwinMtSilverGossipText
-	buttonsound
-	jump PhoneScript_HangupText_Male
+	promptbutton
+	sjump PhoneScript_HangupText_Male
 
 UnknownScript_0xa08e8:
 	farwritetext IrwinFogBadgeGossipText
-	buttonsound
-	jump PhoneScript_HangupText_Male
+	promptbutton
+	sjump PhoneScript_HangupText_Male
 
 UnknownScript_0xa08f0:
 	farwritetext IrwinMarshBadgeGossipText
-	buttonsound
-	jump PhoneScript_HangupText_Male
+	promptbutton
+	sjump PhoneScript_HangupText_Male
 
 JackPhoneTipsScript:
 	farwritetext JackHeardSomeGreatTipsText
-	buttonsound
-	jump PhoneScript_HangupText_Male
+	promptbutton
+	sjump PhoneScript_HangupText_Male
 
 BeverlyHangUpScript:
 	farwritetext BeverlyLetsChatAboutMonAgainText
-	buttonsound
-	jump PhoneScript_HangupText_Female
+	promptbutton
+	sjump PhoneScript_HangupText_Female
 
 HueyHangUpScript:
 	farwritetext HueyWeHaveToBattleAgainSometimeText
-	buttonsound
-	jump PhoneScript_HangupText_Male
+	promptbutton
+	sjump PhoneScript_HangupText_Male
 
 GavenHangUpNotThursdayScript:
 	farwritetext GavenHangUpNotThursdayText
-	buttonsound
-	jump PhoneScript_HangupText_Male
+	promptbutton
+	sjump PhoneScript_HangupText_Male
 
 BethHangUpScript:
 	farwritetext BethLetsBattleAgainSometimeText
-	buttonsound
-	jump PhoneScript_HangupText_Female
+	promptbutton
+	sjump PhoneScript_HangupText_Female
 
 JoseHangUpScript:
 	farwritetext JoseHaventGottenItemYetText
-	buttonsound
-	jump PhoneScript_HangupText_Male
+	promptbutton
+	sjump PhoneScript_HangupText_Male
 
 ReenaForwardScript:
 	farwritetext ReenaForwardText
-	buttonsound
-	jump PhoneScript_HangupText_Female
+	promptbutton
+	sjump PhoneScript_HangupText_Female
 
 JoeyHangUpScript:
 	farwritetext JoeyDevisingStrategiesText
-	buttonsound
-	jump PhoneScript_HangupText_Male
+	promptbutton
+	sjump PhoneScript_HangupText_Male
 
 WadeNoBerriesScript:
 	farwritetext WadeNoBerriesText
-	buttonsound
-	jump PhoneScript_HangupText_Male
+	promptbutton
+	sjump PhoneScript_HangupText_Male
 
 RalphNoItemScript:
 	farwritetext RalphNoItemText
-	buttonsound
-	jump PhoneScript_HangupText_Male
+	promptbutton
+	sjump PhoneScript_HangupText_Male
 
 LizHangUpScript:
 	farwritetext LizFawningOverMonText
-	buttonsound
-	jump PhoneScript_HangupText_Female
+	promptbutton
+	sjump PhoneScript_HangupText_Female
 
 AnthonyHangUpScript:
 	farwritetext AnthonyWasntPayingAttentionText
-	buttonsound
-	jump PhoneScript_HangupText_Male
+	promptbutton
+	sjump PhoneScript_HangupText_Male
 
 ToddNoItemScript:
 	farwritetext ToddSavingUpForBargainSaleText
-	buttonsound
-	jump PhoneScript_HangupText_Male
+	promptbutton
+	sjump PhoneScript_HangupText_Male
 
 GinaHangUpScript:
 	farwritetext GinaHaventFoundAnythingYetText
-	buttonsound
-	jump PhoneScript_HangupText_Female
+	promptbutton
+	sjump PhoneScript_HangupText_Female
 
 ArnieHangUpScript:
 	farwritetext ArnieHaventSeenRareMonText
-	buttonsound
-	jump PhoneScript_HangupText_Male
+	promptbutton
+	sjump PhoneScript_HangupText_Male
 
 AlanHangUpScript:
 	farwritetext AlanHaventPickedUpAnythingText
-	buttonsound
-	jump PhoneScript_HangupText_Male
+	promptbutton
+	sjump PhoneScript_HangupText_Male
 
 DanaHangUpScript:
 	farwritetext DanaCanYouWaitABitLongerText
-	buttonsound
-	jump PhoneScript_HangupText_Female
+	promptbutton
+	sjump PhoneScript_HangupText_Female
 
 ChadHangUpScript:
 	farwritetext ChadGoingToStudyHardText
-	buttonsound
-	jump PhoneScript_HangupText_Male
+	promptbutton
+	sjump PhoneScript_HangupText_Male
 
 DerekHangUpScript:
 	farwritetext DerekLetsGetTogetherText
-	buttonsound
-	jump PhoneScript_HangupText_Male
+	promptbutton
+	sjump PhoneScript_HangupText_Male
 
 TullyNoItemScript:
 	farwritetext TullyNoItemText
-	buttonsound
-	jump PhoneScript_HangupText_Male
+	promptbutton
+	sjump PhoneScript_HangupText_Male
 
 BrentHangUpScript:
 	farwritetext BrentSorryImTooBusyText
-	buttonsound
-	jump PhoneScript_HangupText_Male
+	promptbutton
+	sjump PhoneScript_HangupText_Male
 
 TiffanyNoItemScript:
 	farwritetext TiffanyNoItemText
-	buttonsound
-	jump PhoneScript_HangupText_Female
+	promptbutton
+	sjump PhoneScript_HangupText_Female
 
 VanceLookingForwardScript:
 	farwritetext VanceLookingForwardText
-	buttonsound
-	jump PhoneScript_HangupText_Male
+	promptbutton
+	sjump PhoneScript_HangupText_Male
 
 WiltonHaventFoundAnythingScript:
 	farwritetext WiltonHaventFoundAnythingText
-	buttonsound
-	jump PhoneScript_HangupText_Male
+	promptbutton
+	sjump PhoneScript_HangupText_Male
 
 ParryBattleWithMeScript:
 	farwritetext ParryBattleWithMeText
-	buttonsound
-	jump PhoneScript_HangupText_Male
+	promptbutton
+	sjump PhoneScript_HangupText_Male
 
 ErinWorkingHardScript:
 	farwritetext ErinWorkingHardText
-	buttonsound
-	jump PhoneScript_HangupText_Female
+	promptbutton
+	sjump PhoneScript_HangupText_Female
 
 IrwinRandomTextScript:
 	random 3
@@ -1445,31 +1445,31 @@ IrwinRandomTextScript:
 
 IrwinEscapadeScript:
 	farwritetext IrwinYourEscapadesRockText
-	buttonsound
-	jump PhoneScript_HangupText_Male
+	promptbutton
+	sjump PhoneScript_HangupText_Male
 
 IrwinGoodMatchScript:
 	farwritetext IrwinGoodMatchText
-	buttonsound
-	jump PhoneScript_HangupText_Male
+	promptbutton
+	sjump PhoneScript_HangupText_Male
 
 IrwinSoMuchToChatAboutScript:
 	farwritetext IrwinSoMuchToChatAboutText
-	buttonsound
-	jump PhoneScript_HangupText_Male
+	promptbutton
+	sjump PhoneScript_HangupText_Male
 
 KenjiAnswerPhoneScript:
-	checkcode VAR_KENJI_BREAK
+	readvar VAR_KENJI_BREAK
 	ifequal 2, UnknownScript_0xa0a00
 	ifequal 1, UnknownScript_0xa0a08
 	farwritetext KenjiCallMeBackAnotherTimeText
-	buttonsound
-	jump PhoneScript_HangupText_Male
+	promptbutton
+	sjump PhoneScript_HangupText_Male
 
 UnknownScript_0xa0a00:
 	farwritetext KenjiIllHaveTimeToChatTomorrowText
-	buttonsound
-	jump PhoneScript_HangupText_Male
+	promptbutton
+	sjump PhoneScript_HangupText_Male
 
 UnknownScript_0xa0a08:
 	checktime 1 << MORN
@@ -1478,18 +1478,18 @@ UnknownScript_0xa0a08:
 	iffalse UnknownScript_0xa0a25
 	setevent EVENT_KENJI_ON_BREAK
 	farwritetext KenjiTakingABreakText
-	buttonsound
-	jump PhoneScript_HangupText_Male
+	promptbutton
+	sjump PhoneScript_HangupText_Male
 
 UnknownScript_0xa0a1d:
 	farwritetext KenjiHangUpMorningText
-	buttonsound
-	jump PhoneScript_HangupText_Male
+	promptbutton
+	sjump PhoneScript_HangupText_Male
 
 UnknownScript_0xa0a25:
 	farwritetext KenjiHangUpNightText
-	buttonsound
-	jump PhoneScript_HangupText_Male
+	promptbutton
+	sjump PhoneScript_HangupText_Male
 
 JackWantsBattleScript:
 	farwritetext JackReminderText
@@ -1589,48 +1589,48 @@ ErinComeBattleScript:
 
 BeverlyComePickUpScript:
 	farwritetext BeverlyComePickUpText
-	buttonsound
-	jump PhoneScript_HangupText_Female
+	promptbutton
+	sjump PhoneScript_HangupText_Female
 
 WadeComeQuickScript:
 	farwritetext WadeComeQuickText
-	buttonsound
-	jump PhoneScript_HangupText_Male
+	promptbutton
+	sjump PhoneScript_HangupText_Male
 
 GinaComePickUpScript:
 	farwritetext GinaComePickUpText
-	buttonsound
-	jump PhoneScript_HangupText_Female
+	promptbutton
+	sjump PhoneScript_HangupText_Female
 
 AlanComePickUpScript:
 	farwritetext AlanComePickUpGiftText
-	buttonsound
-	jump PhoneScript_HangupText_Male
+	promptbutton
+	sjump PhoneScript_HangupText_Male
 
 DanaComePickUpScript:
 	farwritetext DanaComePickUpText
-	buttonsound
-	jump PhoneScript_HangupText_Female
+	promptbutton
+	sjump PhoneScript_HangupText_Female
 
 DerekComePickUpScript:
 	farwritetext DerekComePickUpText
-	buttonsound
-	jump PhoneScript_HangupText_Male
+	promptbutton
+	sjump PhoneScript_HangupText_Male
 
 TullyHurryScript:
 	farwritetext TullyHurryText
-	buttonsound
-	jump PhoneScript_HangupText_Male
+	promptbutton
+	sjump PhoneScript_HangupText_Male
 
 TiffanyHurryScript:
 	farwritetext TiffanyHurryText
-	buttonsound
-	jump PhoneScript_HangupText_Female
+	promptbutton
+	sjump PhoneScript_HangupText_Female
 
 WiltonWantThisScript:
 	farwritetext WiltonWantThisText
-	buttonsound
-	jump PhoneScript_HangupText_Male
+	promptbutton
+	sjump PhoneScript_HangupText_Male
 
 RalphHurryScript:
 	farwritetext RalphHurryText

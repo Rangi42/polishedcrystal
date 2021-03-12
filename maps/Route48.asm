@@ -31,7 +31,7 @@ Route48JessieJamesCallback:
 	setflag ENGINE_FLYPOINT_YELLOW_FOREST
 	disappear ROUTE48_JESSIE
 	disappear ROUTE48_JAMES
-	return
+	endcallback
 
 Route48JessieJamesScript2:
 	moveobject ROUTE48_JESSIE, 15, 13

@@ -47,7 +47,7 @@ Route32Pokecenter1FFishingGuruScript:
 	yesorno
 	iffalse_jumpopenedtext .NoText
 	writetext .YesText
-	buttonsound
+	promptbutton
 	verbosegivekeyitem OLD_ROD
 	writetext .AfterText
 	waitbutton
@@ -104,11 +104,11 @@ Route32PokeCenter1FPokefanMScript:
 	yesorno
 	iftrue .Yes
 	writetext .Text2
-	jump .Continue
+	sjump .Continue
 .Yes:
 	writetext .Text3
 .Continue
-	buttonsound
+	promptbutton
 	verbosegiveitem LURE_BALL
 	iffalse .NoRoom
 	setevent EVENT_GOT_LURE_BALL_FROM_FRENCHMAN

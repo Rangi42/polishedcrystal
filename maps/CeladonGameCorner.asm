@@ -80,12 +80,12 @@ CeladonGameCornerFisherScript:
 	checkevent EVENT_GOT_COINS_FROM_GAMBLER_AT_CELADON
 	iftrue .FisherOffer
 	writetext CeladonGameCornerFisherText1
-	buttonsound
+	promptbutton
 	checkkeyitem COIN_CASE
 	iffalse .NoCoinCase
 	checkcoins 49999
 	ifequal $0, .FullCoinCase
-	stringtotext .coinname, $1
+	getstring .coinname, $1
 	callstd receiveitem
 	givecoins 18
 	setevent EVENT_GOT_COINS_FROM_GAMBLER_AT_CELADON
@@ -101,7 +101,7 @@ CeladonGameCornerFisherScript:
 	opentext
 .GotCoins:
 	writetext CeladonGameCornerFisherText2
-	jump .FisherEnd
+	sjump .FisherEnd
 .FisherNotEnough:
 	writetext FisherNotEnoughText
 .FisherEnd:
@@ -136,13 +136,13 @@ MapCeladonGameCornerSignpost35Script:
 	random $6
 	ifequal $0, MapCeladonGameCornerSignpost16Script
 	refreshscreen
-	writebyte $0
+	setval $0
 	special Special_SlotMachine
 	endtext
 
 MapCeladonGameCornerSignpost16Script:
 	refreshscreen
-	writebyte $1
+	setval $1
 	special Special_SlotMachine
 	endtext
 

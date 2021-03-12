@@ -26,11 +26,11 @@ LavRadioTower1FUpstairsScript:
 	checkevent EVENT_EXORCISED_LAV_RADIO_TOWER
 	iftrue .Exorcised
 	warpmod 1, HAUNTED_RADIO_TOWER_2F
-	return
+	endcallback
 
 .Exorcised:
 	warpmod 1, LAV_RADIO_TOWER_2F
-	return
+	endcallback
 
 LavRadioTower1FGentlemanScript:
 	faceplayer
@@ -40,8 +40,8 @@ LavRadioTower1FGentlemanScript:
 	checkevent EVENT_RESTORED_POWER_TO_KANTO
 	iffalse_jumpopenedtext .OffTheAirText
 	writetext .ReturnedMachinePartText
-	buttonsound
-	stringtotext .expncardname, $1
+	promptbutton
+	getstring .expncardname, $1
 	callstd receiveitem
 	setflag ENGINE_EXPN_CARD
 	jumpthisopenedtext

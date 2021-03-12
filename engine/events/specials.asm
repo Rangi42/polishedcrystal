@@ -217,12 +217,12 @@ Special_CheckCoins:
 
 .NoCoinsText:
 	; You have no coins.
-	text_jump _NoCoinsText
+	text_far _NoCoinsText
 	text_end
 
 .NoCoinCaseText:
 	; You don't have a COIN CASE.
-	text_jump _NoCoinCaseText
+	text_far _NoCoinCaseText
 	text_end
 
 ScriptReturnCarry:

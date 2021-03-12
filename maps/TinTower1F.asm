@@ -37,7 +37,7 @@ TinTower1F_MapScriptHeader:
 	const TINTOWER1F_SAGE3
 
 TinTower1FTrigger0:
-	priorityjump SuicuneBattle
+	prioritysjump SuicuneBattle
 	end
 
 UnknownScript_0x18502f:
@@ -54,31 +54,31 @@ UnknownScript_0x185047:
 	iffalse .Done
 	appear TINTOWER1F_EUSINE
 .Done:
-	return
+	endcallback
 
 UnknownScript_0x185050:
 	checkevent EVENT_FOUGHT_SUICUNE
 	iftrue UnknownScript_0x185077
 	appear TINTOWER1F_SUICUNE
-	writebyte RAIKOU
+	setval RAIKOU
 	special SpecialMonCheck
 	iftrue UnknownScript_0x185065
 	appear TINTOWER1F_RAIKOU
-	jump UnknownScript_0x185067
+	sjump UnknownScript_0x185067
 
 UnknownScript_0x185065:
 	disappear TINTOWER1F_RAIKOU
 UnknownScript_0x185067:
-	writebyte ENTEI
+	setval ENTEI
 	special SpecialMonCheck
 	iftrue UnknownScript_0x185074
 	appear TINTOWER1F_ENTEI
-	jump UnknownScript_0x185076
+	sjump UnknownScript_0x185076
 
 UnknownScript_0x185074:
 	disappear TINTOWER1F_ENTEI
 UnknownScript_0x185076:
-	return
+	endcallback
 
 UnknownScript_0x185077:
 	disappear TINTOWER1F_SUICUNE
@@ -86,19 +86,19 @@ UnknownScript_0x185077:
 	disappear TINTOWER1F_ENTEI
 	clearevent EVENT_TIN_TOWER_1F_WISE_TRIO_1
 	setevent EVENT_TIN_TOWER_1F_WISE_TRIO_2
-	return
+	endcallback
 
 TinTowerStairsCallback:
 	checkevent EVENT_GOT_RAINBOW_WING
 	iftrue .NoChange
 	changeblock 8, 2, $9
 .NoChange:
-	return
+	endcallback
 
 SuicuneBattle:
 	applymovement PLAYER, TinTowerPlayerMovement1
 	pause 15
-	writebyte RAIKOU
+	setval RAIKOU
 	special SpecialMonCheck
 	iftrue .Next1 ; if player caught Raikou, he doesn't appear in Tin Tower
 	applymovement TINTOWER1F_RAIKOU, TinTowerRaikouMovement1
@@ -111,7 +111,7 @@ SuicuneBattle:
 	playsound SFX_EXIT_BUILDING
 	waitsfx
 .Next1:
-	writebyte ENTEI
+	setval ENTEI
 	special SpecialMonCheck
 	iftrue .Next2 ; if player caught Entei, he doesn't appear in Tin Tower
 	applymovement TINTOWER1F_ENTEI, TinTowerEnteiMovement1
@@ -131,7 +131,7 @@ SuicuneBattle:
 	cry SUICUNE
 	pause 20
 	loadwildmon SUICUNE, 40
-	writecode VAR_BATTLETYPE, BATTLETYPE_LEGENDARY
+	loadvar VAR_BATTLETYPE, BATTLETYPE_LEGENDARY
 	startbattle
 	dontrestartmapmusic
 	disappear TINTOWER1F_SUICUNE
@@ -194,7 +194,7 @@ TinTower1FSage5Script:
 	checkevent EVENT_GOT_RAINBOW_WING
 	iftrue UnknownScript_0x1851b0
 	writetext TinTower1FSage5Text1
-	buttonsound
+	promptbutton
 	verbosegivekeyitem RAINBOW_WING
 	closetext
 	refreshscreen

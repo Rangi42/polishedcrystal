@@ -39,15 +39,15 @@ BlackthornGym1FBoulderCallback:
 	iffalse .skip3
 	changeblock 8, 6, $3b
 .skip3
-	return
+	endcallback
 
 BlackthornGymStatue:
-	trainertotext CLAIR, 1, $1
+	gettrainername CLAIR, 1, $1
 	checkflag ENGINE_RISINGBADGE
 	iftrue .Beaten
 	jumpstd gymstatue1
 .Beaten:
-	checkcode VAR_BADGES
+	readvar VAR_BADGES
 	ifgreater 15, .LyraToo
 	jumpstd gymstatue2
 .LyraToo

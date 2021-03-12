@@ -1488,17 +1488,17 @@ Slots_AskBet:
 
 .Text_BetHowManyCoins:
 	; Bet how many coins?
-	text_jump _SlotsBetHowManyCoinsText
+	text_far _SlotsBetHowManyCoinsText
 	text_end
 
 .Text_Start:
 	; Start!
-	text_jump _SlotsStartText
+	text_far _SlotsStartText
 	text_end
 
 .Text_NotEnoughCoins:
 	; Not enough coins.
-	text_jump _SlotsNotEnoughCoinsText
+	text_far _SlotsNotEnoughCoinsText
 	text_end
 
 .MenuDataHeader:
@@ -1545,11 +1545,11 @@ Slots_AskPlayAgain:
 	ret
 
 .Text_OutOfCoins:
-	text_jump _SlotsRanOutOfCoinsText
+	text_far _SlotsRanOutOfCoinsText
 	text_end
 
 .Text_PlayAgain:
-	text_jump _SlotsPlayAgainText
+	text_far _SlotsPlayAgainText
 	text_end
 
 SlotGetPayout:
@@ -1618,7 +1618,7 @@ SlotPayoutText:
 	dbw "15@@", .LinedUpMonOrCherry
 
 .Text_PrintPayout:
-	start_asm
+	text_asm
 	ld a, [wSlotMatched]
 	add $25
 	ldcoord_a 2, 13
@@ -1638,12 +1638,12 @@ endr
 
 .Text_LinedUpWonCoins:
 	; lined up! Won @  coins!
-	text_jump _SlotsLinedUpText
+	text_far _SlotsLinedUpText
 	text_end
 
 .Text_Darn:
 	; Darn!
-	text_jump _SlotsDarnText
+	text_far _SlotsDarnText
 	text_end
 
 ; Oddly, the rarest mode (wKeepSevenBiasChance = 1) is the one with

@@ -50,11 +50,11 @@ Special_GiveParkBalls:
 	jp StartBugContestTimer
 
 BugCatchingContestBattleScript::
-	writecode VAR_BATTLETYPE, BATTLETYPE_CONTEST
+	loadvar VAR_BATTLETYPE, BATTLETYPE_CONTEST
 	randomwildmon
 	startbattle
 	reloadmapafterbattle
-	copybytetovar wParkBallsRemaining
+	readmem wParkBallsRemaining
 	iffalse .OutOfBalls
 	end
 
@@ -63,7 +63,7 @@ BugCatchingContestBattleScript::
 	opentext
 	farwritetext _BugCatchingContestIsOverText
 	waitbutton
-	jump BugCatchingContestReturnToGateScript
+	sjump BugCatchingContestReturnToGateScript
 
 BugCatchingContestOverScript::
 	playsound SFX_ELEVATOR_END
@@ -110,8 +110,8 @@ _BugContestJudging:
 	jp BugContest_GetPlayersResult
 
 BugContest_FirstPlaceText:
-	text_jump ContestJudging_FirstPlaceText
-	start_asm
+	text_far ContestJudging_FirstPlaceText
+	text_asm
 	ld de, SFX_1ST_PLACE
 	call PlaySFX
 	call WaitSFX
@@ -120,13 +120,13 @@ BugContest_FirstPlaceText:
 
 BugContest_FirstPlaceScoreText:
 	; The winning score was @  points!
-	text_jump ContestJudging_FirstPlaceScoreText
+	text_far ContestJudging_FirstPlaceScoreText
 	text_end
 
 BugContest_SecondPlaceText:
 	; Placing second was @ , who caught a @ !@ @
-	text_jump ContestJudging_SecondPlaceText
-	start_asm
+	text_far ContestJudging_SecondPlaceText
+	text_asm
 	ld de, SFX_2ND_PLACE
 	call PlaySFX
 	call WaitSFX
@@ -135,13 +135,13 @@ BugContest_SecondPlaceText:
 
 BugContest_SecondPlaceScoreText:
 	; The score was @  points!
-	text_jump ContestJudging_SecondPlaceScoreText
+	text_far ContestJudging_SecondPlaceScoreText
 	text_end
 
 BugContest_ThirdPlaceText:
 	; Placing third was @ , who caught a @ !@ @
-	text_jump ContestJudging_ThirdPlaceText
-	start_asm
+	text_far ContestJudging_ThirdPlaceText
+	text_asm
 	ld de, SFX_3RD_PLACE
 	call PlaySFX
 	call WaitSFX
@@ -150,7 +150,7 @@ BugContest_ThirdPlaceText:
 
 BugContest_ThirdPlaceScoreText:
 	; The score was @  points!
-	text_jump ContestJudging_ThirdPlaceScoreText
+	text_far ContestJudging_ThirdPlaceScoreText
 	text_end
 
 LoadContestantName:

@@ -53,13 +53,13 @@ BattleTower1FTrigger0:
 
 	; Schedule script for running. This prevents odd issues that a regular jump
 	; causes for scene scripts. This is NOT a true jump, so "end" is necessary.
-	priorityjump Script_ReturnToBattleChallenge
+	prioritysjump Script_ReturnToBattleChallenge
 	end
 
 .LeftWithoutSaving:
 	; The player resetted the game in the middle of a battle.
 	; This counts as a battle loss, and will reset the winstreak.
-	priorityjump .LeftWithoutSaving2
+	prioritysjump .LeftWithoutSaving2
 	end
 .LeftWithoutSaving2:
 	opentext
@@ -77,15 +77,15 @@ BattleTower1FTrigger0:
 		line "invalid."
 		done
 	waitbutton
-	jump .CommitResult
+	sjump .CommitResult
 
 .LostChallenge:
 	opentext
-	priorityjump .CommitResult
+	prioritysjump .CommitResult
 	end
 
 .WonChallenge:
-	priorityjump .WonChallenge2
+	prioritysjump .WonChallenge2
 	end
 .WonChallenge2:
 	opentext
@@ -142,10 +142,10 @@ MapBattleTower1FSignpost0Script:
 MapBattleTower1FSignpost1Script:
 	jumpthistext
 		text "Streak: "
-		deciram wBattleTowerCurStreak, 2, 5
+		text_decimal wBattleTowerCurStreak, 2, 5
 		text " wins"
 		line "Record: "
-		deciram wBattleTowerTopStreak, 2, 5
+		text_decimal wBattleTowerTopStreak, 2, 5
 		text " wins"
 		done
 
@@ -158,7 +158,7 @@ ReceptionistScript_BattleTower:
 		para "I could show you"
 		line "to a Battle Room."
 		done
-	buttonsound
+	promptbutton
 	checkevent EVENT_BATTLE_TOWER_INTRO
 	iftrue .BattleTowerMenu
 
@@ -253,7 +253,7 @@ ReceptionistScript_BattleTower:
 	; fallthrough
 Script_ReturnToBattleChallenge:
 	; From this point onwards, resetting the game should count as a streak loss
-	writebyte BATTLETOWER_CHALLENGE_IN_PROGRESS
+	setval BATTLETOWER_CHALLENGE_IN_PROGRESS
 	special Special_BattleTower_SetChallengeState
 
 	; Everything ready to go for challenge start
@@ -312,7 +312,7 @@ BattleTowerTutorTrickScript:
 		done
 	yesorno
 	iffalse .TutorRefused
-	writebyte TRICK
+	setval TRICK
 	writetext ClearText
 	special Special_MoveTutor
 	ifequal $0, .TeachMove

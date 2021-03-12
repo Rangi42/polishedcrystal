@@ -43,7 +43,7 @@ KurtsHouseKurtCallback:
 	appear KURTSHOUSE_KURT1
 	disappear KURTSHOUSE_TWIN2
 	appear KURTSHOUSE_TWIN1
-	return
+	endcallback
 
 .MakingBalls:
 	disappear KURTSHOUSE_KURT1
@@ -51,7 +51,7 @@ KurtsHouseKurtCallback:
 	disappear KURTSHOUSE_TWIN1
 	appear KURTSHOUSE_TWIN2
 .Done:
-	return
+	endcallback
 
 Kurt1:
 	faceplayer
@@ -65,7 +65,7 @@ Kurt1:
 	closetext
 	special Special_FadeOutMusic
 	setevent EVENT_AZALEA_TOWN_SLOWPOKETAIL_ROCKET
-	checkcode VAR_FACING
+	readvar VAR_FACING
 	ifequal UP, .RunAround
 	turnobject PLAYER, DOWN
 	playsound SFX_FLY
@@ -88,7 +88,7 @@ Kurt1:
 
 .ClearedSlowpokeWell:
 	writetext KurtsHouseKurtHonoredToMakeBallsText
-	buttonsound
+	promptbutton
 	verbosegivekeyitem APRICORN_BOX
 	setevent EVENT_KURT_GAVE_YOU_APRICORN_BOX
 .GotApricornBox:
@@ -137,7 +137,7 @@ endr
 
 .AskApricorn:
 	writetext KurtsHouseKurtAskYouHaveAnApricornText
-	buttonsound
+	promptbutton
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_3
 	special Special_SelectApricornForKurt
 	iffalse_jumpopenedtext KurtsHouseKurtThatsALetdownText
@@ -149,27 +149,27 @@ endr
 	ifequal PNK_APRICORN, .Pnk
 ; .Red
 	setevent EVENT_GAVE_KURT_RED_APRICORN
-	jump .GaveKurtApricorns
+	sjump .GaveKurtApricorns
 
 .Blu:
 	setevent EVENT_GAVE_KURT_BLU_APRICORN
-	jump .GaveKurtApricorns
+	sjump .GaveKurtApricorns
 
 .Ylw:
 	setevent EVENT_GAVE_KURT_YLW_APRICORN
-	jump .GaveKurtApricorns
+	sjump .GaveKurtApricorns
 
 .Grn:
 	setevent EVENT_GAVE_KURT_GRN_APRICORN
-	jump .GaveKurtApricorns
+	sjump .GaveKurtApricorns
 
 .Wht:
 	setevent EVENT_GAVE_KURT_WHT_APRICORN
-	jump .GaveKurtApricorns
+	sjump .GaveKurtApricorns
 
 .Blk:
 	setevent EVENT_GAVE_KURT_BLK_APRICORN
-	jump .GaveKurtApricorns
+	sjump .GaveKurtApricorns
 
 .Pnk:
 	setevent EVENT_GAVE_KURT_PNK_APRICORN
@@ -191,7 +191,7 @@ endr
 	waitsfx
 	pause 35
 	warpfacing UP, KURTS_HOUSE, 3, 3
-	jump Kurt1
+	sjump Kurt1
 
 .ThatTurnedOutGreat:
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
@@ -201,71 +201,71 @@ endr
 	checkflag ENGINE_KURT_MAKING_BALLS
 	iftrue KurtMakingBallsScript
 	writetext KurtsHouseKurtJustFinishedYourBallText
-	buttonsound
-	verbosegiveitem2 LEVEL_BALL, VAR_KURT_APRICORNS
+	promptbutton
+	verbosegiveitemvar LEVEL_BALL, VAR_KURT_APRICORNS
 	iffalse_endtext
 	clearevent EVENT_GAVE_KURT_RED_APRICORN
-	jump .ThatTurnedOutGreat
+	sjump .ThatTurnedOutGreat
 
 .GiveLureBall:
 	checkflag ENGINE_KURT_MAKING_BALLS
 	iftrue KurtMakingBallsScript
 	writetext KurtsHouseKurtJustFinishedYourBallText
-	buttonsound
-	verbosegiveitem2 LURE_BALL, VAR_KURT_APRICORNS
+	promptbutton
+	verbosegiveitemvar LURE_BALL, VAR_KURT_APRICORNS
 	iffalse_endtext
 	clearevent EVENT_GAVE_KURT_BLU_APRICORN
-	jump .ThatTurnedOutGreat
+	sjump .ThatTurnedOutGreat
 
 .GiveMoonBall:
 	checkflag ENGINE_KURT_MAKING_BALLS
 	iftrue KurtMakingBallsScript
 	writetext KurtsHouseKurtJustFinishedYourBallText
-	buttonsound
-	verbosegiveitem2 MOON_BALL, VAR_KURT_APRICORNS
+	promptbutton
+	verbosegiveitemvar MOON_BALL, VAR_KURT_APRICORNS
 	iffalse_endtext
 	clearevent EVENT_GAVE_KURT_YLW_APRICORN
-	jump .ThatTurnedOutGreat
+	sjump .ThatTurnedOutGreat
 
 .GiveFriendBall:
 	checkflag ENGINE_KURT_MAKING_BALLS
 	iftrue KurtMakingBallsScript
 	writetext KurtsHouseKurtJustFinishedYourBallText
-	buttonsound
-	verbosegiveitem2 FRIEND_BALL, VAR_KURT_APRICORNS
+	promptbutton
+	verbosegiveitemvar FRIEND_BALL, VAR_KURT_APRICORNS
 	iffalse_endtext
 	clearevent EVENT_GAVE_KURT_GRN_APRICORN
-	jump .ThatTurnedOutGreat
+	sjump .ThatTurnedOutGreat
 
 .GiveFastBall:
 	checkflag ENGINE_KURT_MAKING_BALLS
 	iftrue KurtMakingBallsScript
 	writetext KurtsHouseKurtJustFinishedYourBallText
-	buttonsound
-	verbosegiveitem2 FAST_BALL, VAR_KURT_APRICORNS
+	promptbutton
+	verbosegiveitemvar FAST_BALL, VAR_KURT_APRICORNS
 	iffalse_endtext
 	clearevent EVENT_GAVE_KURT_WHT_APRICORN
-	jump .ThatTurnedOutGreat
+	sjump .ThatTurnedOutGreat
 
 .GiveHeavyBall:
 	checkflag ENGINE_KURT_MAKING_BALLS
 	iftrue KurtMakingBallsScript
 	writetext KurtsHouseKurtJustFinishedYourBallText
-	buttonsound
-	verbosegiveitem2 HEAVY_BALL, VAR_KURT_APRICORNS
+	promptbutton
+	verbosegiveitemvar HEAVY_BALL, VAR_KURT_APRICORNS
 	iffalse_endtext
 	clearevent EVENT_GAVE_KURT_BLK_APRICORN
-	jump .ThatTurnedOutGreat
+	sjump .ThatTurnedOutGreat
 
 .GiveLoveBall:
 	checkflag ENGINE_KURT_MAKING_BALLS
 	iftrue KurtMakingBallsScript
 	writetext KurtsHouseKurtJustFinishedYourBallText
-	buttonsound
-	verbosegiveitem2 LOVE_BALL, VAR_KURT_APRICORNS
+	promptbutton
+	verbosegiveitemvar LOVE_BALL, VAR_KURT_APRICORNS
 	iffalse_endtext
 	clearevent EVENT_GAVE_KURT_PNK_APRICORN
-	jump .ThatTurnedOutGreat
+	sjump .ThatTurnedOutGreat
 
 .CanGiveGSBallToKurt:
 	checkevent EVENT_GAVE_GS_BALL_TO_KURT
@@ -297,12 +297,12 @@ endr
 	special Special_FadeOutMusic
 	pause 20
 	showemote EMOTE_SHOCK, KURTSHOUSE_KURT1, 30
-	checkcode VAR_FACING
+	readvar VAR_FACING
 	ifequal UP, .GSBallRunAround
 	turnobject PLAYER, DOWN
 	playsound SFX_FLY
 	applymovement KURTSHOUSE_KURT1, KurtsHouseKurtExitHouseMovement
-	jump .KurtHasLeftTheBuilding
+	sjump .KurtHasLeftTheBuilding
 
 .GSBallRunAround:
 	turnobject PLAYER, DOWN

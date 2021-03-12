@@ -173,7 +173,7 @@ endc
 
 	call UpdateTime
 	bccoord 1, 15
-	call Text_WeekDay
+	call TextCommand_DAY
 	decoord 4, 16
 	ldh a, [hHours]
 	ld c, a

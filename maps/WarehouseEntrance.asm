@@ -57,21 +57,21 @@ WarehouseEntranceResetSwitches:
 	clearevent EVENT_SWITCH_12
 	clearevent EVENT_SWITCH_13
 	clearevent EVENT_SWITCH_14
-	writebyte $0
-	copyvartobyte wUndergroundSwitchPositions
-	return
+	setval $0
+	writemem wUndergroundSwitchPositions
+	endcallback
 
 WarehouseEntranceCheckBasementKey:
 	checkevent EVENT_USED_BASEMENT_KEY
 	iffalse .LockBasementDoor
-	return
+	endcallback
 
 .LockBasementDoor:
 	changeblock 16, 6, $3d
-	return
+	endcallback
 
 WarehouseEntranceCheckDayOfWeek:
-	checkcode VAR_WEEKDAY
+	readvar VAR_WEEKDAY
 	ifequal MONDAY, .Monday
 	ifequal TUESDAY, .Tuesday
 	ifequal WEDNESDAY, .Wednesday
@@ -84,7 +84,7 @@ WarehouseEntranceCheckDayOfWeek:
 	disappear WAREHOUSEENTRANCE_SUPER_NERD5
 	appear WAREHOUSEENTRANCE_SUPER_NERD6
 	appear WAREHOUSEENTRANCE_GRANNY
-	return
+	endcallback
 
 .Monday:
 	disappear WAREHOUSEENTRANCE_GRAMPS
@@ -95,42 +95,42 @@ WarehouseEntranceCheckDayOfWeek:
 	disappear WAREHOUSEENTRANCE_SUPER_NERD5
 	disappear WAREHOUSEENTRANCE_SUPER_NERD6
 	disappear WAREHOUSEENTRANCE_GRANNY
-	return
+	endcallback
 
 .Tuesday:
 	disappear WAREHOUSEENTRANCE_GRAMPS
 	appear WAREHOUSEENTRANCE_SUPER_NERD5
 	disappear WAREHOUSEENTRANCE_SUPER_NERD6
 	disappear WAREHOUSEENTRANCE_GRANNY
-	return
+	endcallback
 
 .Wednesday:
 	disappear WAREHOUSEENTRANCE_GRAMPS
 	disappear WAREHOUSEENTRANCE_SUPER_NERD5
 	appear WAREHOUSEENTRANCE_SUPER_NERD6
 	disappear WAREHOUSEENTRANCE_GRANNY
-	return
+	endcallback
 
 .Thursday:
 	disappear WAREHOUSEENTRANCE_GRAMPS
 	appear WAREHOUSEENTRANCE_SUPER_NERD5
 	disappear WAREHOUSEENTRANCE_SUPER_NERD6
 	disappear WAREHOUSEENTRANCE_GRANNY
-	return
+	endcallback
 
 .Friday:
 	disappear WAREHOUSEENTRANCE_GRAMPS
 	disappear WAREHOUSEENTRANCE_SUPER_NERD5
 	appear WAREHOUSEENTRANCE_SUPER_NERD6
 	disappear WAREHOUSEENTRANCE_GRANNY
-	return
+	endcallback
 
 .Saturday:
 	disappear WAREHOUSEENTRANCE_GRAMPS
 	appear WAREHOUSEENTRANCE_SUPER_NERD5
 	disappear WAREHOUSEENTRANCE_SUPER_NERD6
 	appear WAREHOUSEENTRANCE_GRANNY
-	return
+	endcallback
 
 GenericTrainerSupernerdEric:
 	generictrainer SUPER_NERD, ERIC, EVENT_BEAT_SUPER_NERD_ERIC, SupernerdEricSeenText, SupernerdEricBeatenText
@@ -184,7 +184,7 @@ GenericTrainerCosplayerClara:
 	done
 
 BitterMerchantScript:
-	checkcode VAR_WEEKDAY
+	readvar VAR_WEEKDAY
 	ifequal SUNDAY, .Open
 	ifequal SATURDAY, .Open
 	jumptext GoldenrodUndergroundWeAreNotOpenTodayText
@@ -195,7 +195,7 @@ BitterMerchantScript:
 BargainMerchantScript:
 	checkflag ENGINE_GOLDENROD_UNDERGROUND_MERCHANT_CLOSED
 	iftrue_jumptext GoldenrodUndergroundWeAreNotOpenTodayText
-	checkcode VAR_WEEKDAY
+	readvar VAR_WEEKDAY
 	ifequal MONDAY, .CheckMorn
 	jumptext GoldenrodUndergroundWeAreNotOpenTodayText
 
@@ -205,7 +205,7 @@ BargainMerchantScript:
 	pokemart MARTTYPE_BARGAIN, 0
 
 OlderHaircutBrotherScript:
-	checkcode VAR_WEEKDAY
+	readvar VAR_WEEKDAY
 	ifequal TUESDAY, .DoHaircut
 	ifequal THURSDAY, .DoHaircut
 	ifequal SATURDAY, .DoHaircut
@@ -222,32 +222,32 @@ OlderHaircutBrotherScript:
 	checkmoney $0, 500
 	ifequal $2, .NotEnoughMoney
 	writetext GoldenrodUndergroundOlderHaircutBrotherAskWhichMonText
-	buttonsound
+	promptbutton
 	special Special_YoungerHaircutBrother
 	ifequal $0, .Refused
 	ifequal $1, .Refused
 	setflag ENGINE_GOLDENROD_UNDERGROUND_GOT_HAIRCUT
 	ifequal $2, .two
 	ifequal $3, .three
-	jump .else
+	sjump .else
 
 .two
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	clearevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
 	clearevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_3
-	jump .then
+	sjump .then
 
 .three
 	clearevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
 	clearevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_3
-	jump .then
+	sjump .then
 
 .else
 	clearevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	clearevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_3
-	jump .then
+	sjump .then
 
 .then
 	takemoney $0, 500
@@ -268,7 +268,7 @@ OlderHaircutBrotherScript:
 	iftrue EitherHaircutBrotherScript_SlightlyHappier
 	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
 	iftrue EitherHaircutBrotherScript_Happier
-	jump EitherHaircutBrotherScript_MuchHappier
+	sjump EitherHaircutBrotherScript_MuchHappier
 
 .Refused:
 	jumpopenedtext GoldenrodUndergroundOlderHaircutBrotherThatsAShameText
@@ -280,7 +280,7 @@ OlderHaircutBrotherScript:
 	jumpopenedtext GoldenrodUndergroundOlderHaircutBrotherOneHaircutADayText
 
 YoungerHaircutBrotherScript:
-	checkcode VAR_WEEKDAY
+	readvar VAR_WEEKDAY
 	ifequal SUNDAY, .DoHaircut
 	ifequal WEDNESDAY, .DoHaircut
 	ifequal FRIDAY, .DoHaircut
@@ -297,26 +297,26 @@ YoungerHaircutBrotherScript:
 	checkmoney $0, 300
 	ifequal $2, .NotEnoughMoney
 	writetext GoldenrodUndergroundYoungerHaircutBrotherAskWhichMonText
-	buttonsound
+	promptbutton
 	special Special_OlderHaircutBrother
 	ifequal $0, .Refused
 	ifequal $1, .Refused
 	setflag ENGINE_GOLDENROD_UNDERGROUND_GOT_HAIRCUT
 	ifequal $2, .two
 	ifequal $3, .three
-	jump .else
+	sjump .else
 
 .two
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	clearevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
 	clearevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_3
-	jump .then
+	sjump .then
 
 .three
 	clearevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
 	clearevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_3
-	jump .then
+	sjump .then
 
 .else
 	clearevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
@@ -341,7 +341,7 @@ YoungerHaircutBrotherScript:
 	iftrue EitherHaircutBrotherScript_SlightlyHappier
 	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
 	iftrue EitherHaircutBrotherScript_Happier
-	jump EitherHaircutBrotherScript_MuchHappier
+	sjump EitherHaircutBrotherScript_MuchHappier
 
 .Refused:
 	jumpopenedtext GoldenrodUndergroundYoungerHaircutBrotherHowDisappointingText
@@ -560,19 +560,19 @@ GoldenrodUndergroundYoungerHaircutBrotherOneHaircutADayText:
 	done
 
 HaircutBrosText_SlightlyHappier:
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text " looks a"
 	line "little happier."
 	done
 
 HaircutBrosText_Happier:
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text " looks"
 	line "happy."
 	done
 
 HaircutBrosText_MuchHappier:
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text " looks"
 	line "delighted!"
 	done

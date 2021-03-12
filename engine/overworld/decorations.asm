@@ -381,7 +381,7 @@ PopulateDecoCategoryMenu:
 
 .NothingToChooseText:
 	; There's nothing to choose.
-	text_jump _NothingToChooseText
+	text_far _NothingToChooseText
 	text_end
 
 .NonscrollingMenuHeader:
@@ -804,7 +804,7 @@ DecoAction_SetItUp_Ornament:
 	ret
 
 WhichSidePutOnText:
-	text_jump _WhichSidePutOnText
+	text_far _WhichSidePutOnText
 	text_end
 
 DecoAction_PutItAway_Ornament:
@@ -829,7 +829,7 @@ DecoAction_PutItAway_Ornament:
 	ret
 
 WhichSidePutAwayText:
-	text_jump _WhichSidePutAwayText
+	text_far _WhichSidePutAwayText
 	text_end
 
 DecoAction_AskWhichSide:
@@ -878,23 +878,23 @@ WhichSideMenuData:
 
 DecoText_PutAwayTheDeco:
 	; Put away the @ .
-	text_jump _PutAwayTheDecoText
+	text_far _PutAwayTheDecoText
 	text_end
 
 DecoText_NothingToPutAway:
-	text_jump _NothingToPutAwayText
+	text_far _NothingToPutAwayText
 	text_end
 
 DecoText_SetUpTheDeco:
-	text_jump _SetUpTheDecoText
+	text_far _SetUpTheDecoText
 	text_end
 
 DecoText_PutAwayAndSetUp:
-	text_jump _PutAwayAndSetUpText
+	text_far _PutAwayAndSetUpText
 	text_end
 
 DecoText_AlreadySetUp:
-	text_jump _AlreadySetUpText
+	text_far _AlreadySetUpText
 	text_end
 
 GetDecorationName_c_de:

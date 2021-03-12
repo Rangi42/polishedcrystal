@@ -74,7 +74,7 @@ ProfIvyScript:
 	checkevent EVENT_GOT_MOON_STONE_FROM_IVY
 	iftrue .GotItem
 	writetext .ThanksText
-	buttonsound
+	promptbutton
 	verbosegiveitem MOON_STONE
 	iffalse_endtext
 	setevent EVENT_GOT_MOON_STONE_FROM_IVY
@@ -204,9 +204,9 @@ IvysLabNidorinoScript:
 	iftrue .Healed
 	opentext
 	writetext .WeakCry
-	writebyte NIDORINO
+	setval NIDORINO
 	special PlaySlowCry
-	buttonsound
+	promptbutton
 	jumpthisopenedtext
 
 	text "Its cry is weak…"
@@ -242,7 +242,7 @@ IvysLabHealingMachine:
 	special HealParty
 	special SaveMusic
 	playmusic MUSIC_NONE
-	writebyte 1 ; Machine is in Elm's Lab
+	setval 1 ; Machine is in Elm's Lab
 	special HealMachineAnim
 	pause 30
 	special RestoreMusic

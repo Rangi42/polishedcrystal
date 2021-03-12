@@ -34,7 +34,7 @@ CherrygroveCity_MapScriptHeader:
 
 CherrygroveCityFlyPoint:
 	setflag ENGINE_FLYPOINT_CHERRYGROVE
-	return
+	endcallback
 
 CherrygroveGuideGentTrigger:
 	applymovement PLAYER, GuideGentPlayerMovement
@@ -61,12 +61,12 @@ CherrygroveCityGuideGent:
 	turnobject PLAYER, RIGHT
 	opentext
 	writetext GuideGentGiftText
-	buttonsound
-	stringtotext .mapcardname, $1
+	promptbutton
+	getstring .mapcardname, $1
 	callstd receiveitem
 	setflag ENGINE_MAP_CARD
 	writetext GotMapCardText
-	buttonsound
+	promptbutton
 	writetext GuideGentPokegearText
 	waitbutton
 	closetext
@@ -103,28 +103,28 @@ CherrygroveSilverTriggerNorth:
 	winlosstext SilverCherrygroveWinText, SilverCherrygroveLossText
 	setlasttalked CHERRYGROVECITY_SILVER
 	loadtrainer RIVAL0, 3
-	writecode VAR_BATTLETYPE, BATTLETYPE_CANLOSE
+	loadvar VAR_BATTLETYPE, BATTLETYPE_CANLOSE
 	startbattle
 	setevent EVENT_RIVAL_CHERRYGROVE_CITY
 	reloadmap
-	jump .FinishRival
+	sjump .FinishRival
 
 .Totodile:
 	winlosstext SilverCherrygroveWinText, SilverCherrygroveLossText
 	setlasttalked CHERRYGROVECITY_SILVER
 	loadtrainer RIVAL0, 1
-	writecode VAR_BATTLETYPE, BATTLETYPE_CANLOSE
+	loadvar VAR_BATTLETYPE, BATTLETYPE_CANLOSE
 	startbattle
 	dontrestartmapmusic
 	setevent EVENT_RIVAL_CHERRYGROVE_CITY
 	reloadmap
-	jump .FinishRival
+	sjump .FinishRival
 
 .Chikorita:
 	winlosstext SilverCherrygroveWinText, SilverCherrygroveLossText
 	setlasttalked CHERRYGROVECITY_SILVER
 	loadtrainer RIVAL0, 2
-	writecode VAR_BATTLETYPE, BATTLETYPE_CANLOSE
+	loadvar VAR_BATTLETYPE, BATTLETYPE_CANLOSE
 	startbattle
 	dontrestartmapmusic
 	setevent EVENT_RIVAL_CHERRYGROVE_CITY
@@ -161,7 +161,7 @@ MysticWaterGuy:
 	faceplayer
 	opentext
 	writetext MysticWaterGuyTextBefore
-	buttonsound
+	promptbutton
 	verbosegiveitem MYSTIC_WATER
 	iffalse_endtext
 	setevent EVENT_GOT_MYSTIC_WATER_IN_CHERRYGROVE

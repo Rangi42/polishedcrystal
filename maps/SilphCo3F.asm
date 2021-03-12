@@ -32,7 +32,7 @@ SilphCo3FSilphEmployeeScript:
 	faceplayer
 	opentext
 	writetext .Text1
-	buttonsound
+	promptbutton
 	verbosegiveitem CHERISH_BALL
 	iffalse_endtext
 	setevent EVENT_GOT_CHERISH_BALL_FROM_SAFFRON

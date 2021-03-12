@@ -25,10 +25,10 @@ _ResetClock:
 
 .text_okay
 	; Select CONTINUE & reset settings.
-	text_jump _PasswordAskResetText
+	text_far _PasswordAskResetText
 	text_end
 
 .text_askreset
 	; Reset the clock?
-	text_jump _PasswordAskResetClockText
+	text_far _PasswordAskResetClockText
 	text_end

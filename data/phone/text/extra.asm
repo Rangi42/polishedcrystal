@@ -292,7 +292,7 @@ IrwinSoMuchToChatAboutText:
 ArnieMonIsSoCuteText:
 	text "I'm always with my"
 	line ""
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text "!"
 
 	para "It's so cute!"
@@ -304,7 +304,7 @@ ArnieDefeatedMonText:
 	line "here, I saw this"
 
 	para ""
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text " for the"
 	line "first time."
 
@@ -316,7 +316,7 @@ ArnieLostAMonText:
 	text "I was wondering,"
 	line "do you happen to"
 	cont "have "
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text "?"
 
 	para "I can't seem to"
@@ -338,7 +338,7 @@ ArnieBattleRematchText:
 
 	para "I'll be here on"
 	line ""
-	text_from_ram wStringBuffer5
+	text_ram wStringBuffer5
 	text "!"
 	done
 
@@ -353,12 +353,12 @@ ArnieSwarmText:
 
 	para "A whole bunch of"
 	line ""
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text " have"
 
 	para "appeared around"
 	line ""
-	text_from_ram wStringBuffer5
+	text_ram wStringBuffer5
 	text "!"
 
 	para "You have to see"
@@ -381,7 +381,7 @@ ArnieReminderText:
 	para "Let's battle. I'll"
 	line "be waiting for you"
 	cont "on "
-	text_from_ram wStringBuffer5
+	text_ram wStringBuffer5
 	text "!"
 	done
 
@@ -398,7 +398,7 @@ ArnieHurryText:
 
 AlanGettingStrongerText:
 	text "My "
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text "'s"
 	line "getting stronger,"
 
@@ -411,7 +411,7 @@ AlanDefeatedMonText:
 	line "knocked out a wild"
 
 	para ""
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text " just"
 	line "the other day."
 
@@ -422,7 +422,7 @@ AlanDefeatedMonText:
 AlanLostAMonText:
 	text "By the way, a wild"
 	line ""
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text " escaped"
 	cont "on me yesterday."
 
@@ -439,7 +439,7 @@ AlanBattleRematchText:
 
 	para "I'm hanging out on"
 	line ""
-	text_from_ram wStringBuffer5
+	text_ram wStringBuffer5
 	text "."
 
 	para "Can you come down"
@@ -458,7 +458,7 @@ AlanFoundItemText:
 	line "Why don't you come"
 
 	para "to "
-	text_from_ram wStringBuffer5
+	text_ram wStringBuffer5
 	line "and pick it up?"
 	done
 
@@ -477,7 +477,7 @@ AlanReminderText:
 
 	para "I'm waiting on"
 	line ""
-	text_from_ram wStringBuffer5
+	text_ram wStringBuffer5
 	text "!"
 	done
 
@@ -490,13 +490,13 @@ AlanComePickUpGiftText:
 
 	para "I'm waiting on"
 	line ""
-	text_from_ram wStringBuffer5
+	text_ram wStringBuffer5
 	text "!"
 	done
 
 DanaTakingPhotosText:
 	text "My "
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text " is"
 	line "getting prettier!"
 
@@ -508,7 +508,7 @@ DanaDefeatedMonText:
 	text "It took only an"
 	line "instant to KO a"
 	cont "wild "
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text "."
 
 	para "It must be because"
@@ -521,7 +521,7 @@ DanaDefeatedMonText:
 DanaLostAMonText:
 	text "You know what?"
 	line "A wild "
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 
 	para "got away from me"
 	line "again."
@@ -536,7 +536,7 @@ DanaLostAMonText:
 DanaBattleRematchText:
 	text "Right now, I'm on"
 	line ""
-	text_from_ram wStringBuffer5
+	text_ram wStringBuffer5
 	text "."
 
 	para "If you're close"
@@ -562,7 +562,7 @@ DanaFoundItemText:
 
 	para "it! I'm waiting on"
 	line ""
-	text_from_ram wStringBuffer5
+	text_ram wStringBuffer5
 	text "!"
 	done
 
@@ -586,7 +586,7 @@ DanaReminderText:
 
 	para "I'm waiting on"
 	line ""
-	text_from_ram wStringBuffer5
+	text_ram wStringBuffer5
 	text "!"
 	done
 
@@ -601,7 +601,7 @@ DanaComePickUpText:
 
 	para "I'm waiting on"
 	line ""
-	text_from_ram wStringBuffer5
+	text_ram wStringBuffer5
 	text "!"
 	done
 
@@ -609,7 +609,7 @@ ChadObservingWildText:
 	text "I recently began"
 	line "observing wild"
 	cont ""
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text "."
 
 	para "I've been learning"
@@ -630,7 +630,7 @@ ChadDefeatedMonText:
 	line "to knock out a"
 
 	para "wild "
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text " a"
 	line "while back."
 
@@ -646,7 +646,7 @@ ChadLostAMonText:
 	line "close to catching"
 
 	para "a wild "
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text ","
 	line "but it got away."
 
@@ -655,7 +655,7 @@ ChadLostAMonText:
 
 	para "wanting to observe"
 	line ""
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text ". Rats…"
 	done
 
@@ -668,7 +668,7 @@ ChadBattleRematchText:
 
 	para "I'll be on"
 	line ""
-	text_from_ram wStringBuffer5
+	text_ram wStringBuffer5
 	text "!"
 	done
 
@@ -844,7 +844,7 @@ ChadReminderText:
 
 	para "The place is"
 	line ""
-	text_from_ram wStringBuffer5
+	text_ram wStringBuffer5
 	text "."
 
 	para "Hurry over--I'm"
@@ -854,7 +854,7 @@ ChadReminderText:
 DerekCheekPinchingText:
 	text "Listen to this."
 	line "My "
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 
 	para "grins happily when"
 	line "I pinch its cheek."
@@ -869,11 +869,11 @@ DerekDefeatedMonText:
 	text "Oh, and recently,"
 	line "my Pikachu beat a"
 	cont "wild "
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text "!"
 
 	para "A wild "
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text ","
 	line "I tell you!"
 
@@ -890,7 +890,7 @@ DerekDefeatedMonText:
 DerekLostAMonText:
 	text "Oh, and I saw a"
 	line "wild "
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text " a"
 	cont "little while ago."
 
@@ -950,7 +950,7 @@ DerekComePickUpText:
 
 	para "I'm waiting on"
 	line ""
-	text_from_ram wStringBuffer5
+	text_ram wStringBuffer5
 	text "."
 
 	para "Come pick this up"
@@ -959,7 +959,7 @@ DerekComePickUpText:
 
 TullyMonHasGrownText:
 	text "My "
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text " has"
 	line "grown again."
 
@@ -973,7 +973,7 @@ TullyMonHasGrownText:
 TullyDefeatedMonText:
 	text "Oh yeah, I KO'd a"
 	line "wild "
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text "."
 
 	para "It was huge, like"
@@ -987,7 +987,7 @@ TullyDefeatedMonText:
 TullyLostAMonText:
 	text "Oh yeah, I lost a"
 	line "wild "
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text "."
 
 	para "It was huge, like"
@@ -1004,7 +1004,7 @@ TullyBattleRematchText:
 
 	para "I'll be fishing on"
 	line ""
-	text_from_ram wStringBuffer5
+	text_ram wStringBuffer5
 	text "."
 
 	para "Swing by if you"
@@ -1026,7 +1026,7 @@ TullyFoundItemText:
 
 	para "I'll be waiting on"
 	line ""
-	text_from_ram wStringBuffer5
+	text_ram wStringBuffer5
 	text "."
 	done
 
@@ -1048,7 +1048,7 @@ TullyForwardText:
 
 	para "Our battle will be"
 	line "on "
-	text_from_ram wStringBuffer5
+	text_ram wStringBuffer5
 	text "."
 	done
 
@@ -1058,7 +1058,7 @@ TullyHurryText:
 
 	para "Hustle over to"
 	line ""
-	text_from_ram wStringBuffer5
+	text_ram wStringBuffer5
 	text "."
 	done
 
@@ -1081,7 +1081,7 @@ BrentDefeatedMonText:
 	line "down this wild"
 
 	para ""
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text "."
 	line "It wasn't rare"
 
@@ -1119,7 +1119,7 @@ BrentBattleRematchText:
 
 	para "You know where--"
 	line ""
-	text_from_ram wStringBuffer5
+	text_ram wStringBuffer5
 	text "."
 	done
 
@@ -1222,13 +1222,13 @@ BrentReminderText:
 
 	para "Hurry over to"
 	line ""
-	text_from_ram wStringBuffer5
+	text_ram wStringBuffer5
 	text "."
 	done
 
 TiffanyMonIsAdorableText:
 	text "My "
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text "'s"
 	line "adorable, don't"
 
@@ -1244,7 +1244,7 @@ TiffanyDefeatedMonText:
 	line "battle a wild"
 
 	para ""
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text " a while"
 	line "ago…"
 
@@ -1255,7 +1255,7 @@ TiffanyDefeatedMonText:
 
 	para "I hate those nasty"
 	line ""
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text "!"
 	done
 
@@ -1264,7 +1264,7 @@ TiffanyLostAMonText:
 	line "battle a wild"
 
 	para ""
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text " a while"
 	line "ago…"
 
@@ -1289,12 +1289,12 @@ TiffanyBattleRematchText:
 	para "I'll be waiting"
 	line "with Clefairy on"
 	cont ""
-	text_from_ram wStringBuffer5
+	text_ram wStringBuffer5
 	text "."
 	done
 
 TiffanyItsAwfulText:
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text "!"
 
 	para "It's awful."
@@ -1325,7 +1325,7 @@ TiffanyFoundItemText:
 
 	para "Come collect it on"
 	line ""
-	text_from_ram wStringBuffer5
+	text_ram wStringBuffer5
 	text "."
 	done
 
@@ -1346,7 +1346,7 @@ TiffanyAsleepText:
 
 	para "Please hurry to"
 	line ""
-	text_from_ram wStringBuffer5
+	text_ram wStringBuffer5
 	text "!"
 	done
 
@@ -1360,13 +1360,13 @@ TiffanyHurryText:
 
 	para "Please hurry to"
 	line ""
-	text_from_ram wStringBuffer5
+	text_ram wStringBuffer5
 	text "!"
 	done
 
 VanceMonHasBecomeTougherText:
 	text "My "
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text "'s"
 	line "become tougher."
 
@@ -1377,7 +1377,7 @@ VanceMonHasBecomeTougherText:
 VanceDefeatedMonText:
 	text "We can easily beat"
 	line ""
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text "!"
 
 	para "…Huh? You too?"
@@ -1387,7 +1387,7 @@ VanceDefeatedMonText:
 VanceLostAMonText:
 	text "But get this, a"
 	line "wild "
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 
 	para "just barely eluded"
 	line "us."
@@ -1399,7 +1399,7 @@ VanceLostAMonText:
 VanceBattleRematchText:
 	text "Right now, I'm on"
 	line ""
-	text_from_ram wStringBuffer5
+	text_ram wStringBuffer5
 	text "."
 
 	para "You know, where I"
@@ -1424,14 +1424,14 @@ VanceHurryHurryText:
 	line "Hurry, hurry!"
 
 	para ""
-	text_from_ram wStringBuffer5
+	text_ram wStringBuffer5
 	text "!"
 	line "Fly over now!"
 	done
 
 WiltonMonHasGrownText:
 	text "My "
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text "'s"
 	line "grown impressive!"
 
@@ -1442,7 +1442,7 @@ WiltonMonHasGrownText:
 WiltonDefeatedMonText:
 	text "We beat a wild"
 	line ""
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text "…"
 
 	para "You know, I have"
@@ -1458,7 +1458,7 @@ WiltonLostAMonText:
 
 	para "to landing a wild"
 	line ""
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text "."
 
 	para "I tell you, it was"
@@ -1468,7 +1468,7 @@ WiltonLostAMonText:
 WiltonBattleRematchText:
 	text "I'm fishing on"
 	line ""
-	text_from_ram wStringBuffer5
+	text_ram wStringBuffer5
 	text ","
 
 	para "but nothing's"
@@ -1489,7 +1489,7 @@ WiltonFoundItemText:
 
 	para "Come pick it up on"
 	line ""
-	text_from_ram wStringBuffer5
+	text_ram wStringBuffer5
 	text "."
 	done
 
@@ -1510,7 +1510,7 @@ WiltonNotBitingText:
 
 	para "like before on"
 	line ""
-	text_from_ram wStringBuffer5
+	text_ram wStringBuffer5
 	text "…"
 
 	para "You have to come"
@@ -1525,7 +1525,7 @@ WiltonWantThisText:
 	line "know where?"
 
 	para ""
-	text_from_ram wStringBuffer5
+	text_ram wStringBuffer5
 	text "…"
 	line "Just head from"
 
@@ -1600,14 +1600,14 @@ KenjiHangUpNightText:
 ParryNothingCanMatchText:
 	text "Nothing can match"
 	line "my "
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text " now."
 	done
 
 ParryDefeatedMonText:
 	text "Yeah, we KO'd a"
 	line "wild "
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text "!"
 
 	para "That was OK, but I"
@@ -1619,7 +1619,7 @@ ParryLostAMonText:
 	line "spotted a wild"
 
 	para ""
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text "."
 	line "We were debating"
 
@@ -1642,7 +1642,7 @@ ParryBattleRematchText:
 
 	para "Yep! We'll meet on"
 	line ""
-	text_from_ram wStringBuffer5
+	text_ram wStringBuffer5
 	text "!"
 	done
 
@@ -1659,7 +1659,7 @@ ParryBattleWithMeText:
 ParryHaventYouGottenToText:
 	text "Haven't you gotten"
 	line "to "
-	text_from_ram wStringBuffer5
+	text_ram wStringBuffer5
 	text "?"
 
 	para "Waiting here isn't"
@@ -1668,9 +1668,9 @@ ParryHaventYouGottenToText:
 	done
 
 ErinMonIsMuchStrongerText:
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "'s "
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	line "is much stronger"
 	cont "than before!"
 	done
@@ -1679,7 +1679,7 @@ ErinDefeatedMonText:
 	text "And, and…"
 	line "I just battled and"
 	cont "beat "
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text "!"
 
 	para "I've raised my"
@@ -1690,7 +1690,7 @@ ErinLostAMonText:
 	text "But, but…"
 
 	para "A wild "
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	line "got away from me"
 
 	para "again. It's just"
@@ -1706,7 +1706,7 @@ ErinBattleRematchText:
 
 	para "I'll be waiting on"
 	line ""
-	text_from_ram wStringBuffer5
+	text_ram wStringBuffer5
 	text "!"
 	done
 
@@ -1729,6 +1729,6 @@ ErinComeBattleText:
 
 	para "I'll be waiting on"
 	line ""
-	text_from_ram wStringBuffer5
+	text_ram wStringBuffer5
 	text "!"
 	done

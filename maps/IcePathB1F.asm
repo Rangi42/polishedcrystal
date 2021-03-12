@@ -37,7 +37,7 @@ IcePathB1F_MapScriptHeader:
 
 IcePathB1FSetUpStoneTable:
 	usestonetable .StoneTable
-	return
+	endcallback
 
 .StoneTable:
 	stonetable 3, ICEPATHB1F_BOULDER1, .Boulder1
@@ -49,22 +49,22 @@ IcePathB1FSetUpStoneTable:
 .Boulder1:
 	disappear ICEPATHB1F_BOULDER1
 	clearevent EVENT_BOULDER_IN_ICE_PATH_1A
-	jump .FinishBoulder
+	sjump .FinishBoulder
 
 .Boulder2:
 	disappear ICEPATHB1F_BOULDER2
 	clearevent EVENT_BOULDER_IN_ICE_PATH_2A
-	jump .FinishBoulder
+	sjump .FinishBoulder
 
 .Boulder3:
 	disappear ICEPATHB1F_BOULDER3
 	clearevent EVENT_BOULDER_IN_ICE_PATH_3A
-	jump .FinishBoulder
+	sjump .FinishBoulder
 
 .Boulder4:
 	disappear ICEPATHB1F_BOULDER4
 	clearevent EVENT_BOULDER_IN_ICE_PATH_4A
-	jump .FinishBoulder
+	sjump .FinishBoulder
 
 .FinishBoulder:
 	pause 30
@@ -92,7 +92,7 @@ IcePathB1FTutorIcyWindScript:
 	writetext Text_IcePathB1FTutorQuestion
 	yesorno
 	iffalse .TutorRefused
-	writebyte ICY_WIND
+	setval ICY_WIND
 	writetext ClearText
 	special Special_MoveTutor
 	ifequal $0, .TeachMove

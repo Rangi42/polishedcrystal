@@ -85,13 +85,13 @@ Buena:
 	iffalse .Introduction
 	checkflag ENGINE_BUENAS_PASSWORD_2
 	iftrue .PlayedAlready
-	checkcode VAR_HOUR
+	readvar VAR_HOUR
 	ifless 18, .TooEarly
 	checkflag ENGINE_BUENAS_PASSWORD
 	iffalse .TuneIn
 	checkkeyitem BLUE_CARD
 	iffalse .NoBlueCard
-	checkcode VAR_BLUECARDBALANCE
+	readvar VAR_BLUECARDBALANCE
 	ifequal 30, .BlueCardCapped0
 	playmusic MUSIC_BUENAS_PASSWORD
 	writetext RadioTower2FBuenaDoYouKnowPasswordText
@@ -101,7 +101,7 @@ Buena:
 	waitbutton
 	closetext
 	turnobject RADIOTOWER2F_BUENA, RIGHT
-	checkcode VAR_FACING
+	readvar VAR_FACING
 	ifnotequal RIGHT, .DontNeedToMove
 	applymovement PLAYER, RadioTower2FPlayerWalksToMicrophoneMovement
 .DontNeedToMove:
@@ -113,9 +113,9 @@ Buena:
 	closetext
 	iffalse .WrongAnswer
 	showtext RadioTower2FBuenaCorrectAnswerText
-	checkcode VAR_BLUECARDBALANCE
-	addvar $1
-	writevarcode VAR_BLUECARDBALANCE
+	readvar VAR_BLUECARDBALANCE
+	addval $1
+	writevar VAR_BLUECARDBALANCE
 	waitsfx
 	playsound SFX_TRANSACTION
 	setflag ENGINE_BUENAS_PASSWORD_2
@@ -125,13 +125,13 @@ Buena:
 	special Special_FadeOutMusic
 	pause 20
 	special RestartMapMusic
-	checkcode VAR_BLUECARDBALANCE
+	readvar VAR_BLUECARDBALANCE
 	ifequal $1e, .BlueCardCapped1
 	end
 
 .Introduction:
 	writetext RadioTower2FBuenaShowIntroductionText
-	buttonsound
+	promptbutton
 	setevent EVENT_MET_BUENA
 	verbosegivekeyitem BLUE_CARD
 .TuneIn:
@@ -231,7 +231,7 @@ Buena:
 	setevent EVENT_BUENA_OFFERED_HER_PHONE_NUMBER
 	opentext
 	writetext RadioTower2FBuenaOfferPhoneNumberText
-	jump .AskForNumber
+	sjump .AskForNumber
 
 .OfferedNumberBefore:
 	opentext
@@ -243,7 +243,7 @@ Buena:
 	writetext RadioTower2FRegisteredBuenasNumberText
 	playsound SFX_REGISTER_PHONE_NUMBER
 	waitsfx
-	buttonsound
+	promptbutton
 	writetext RadioTower2FBuenaCallMeText
 	waitbutton
 	closetext

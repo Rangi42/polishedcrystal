@@ -33,7 +33,7 @@ FlowerShopTeacherScript:
 	faceplayer
 	opentext
 	writetext GoldenrodFlowerShopTeacherHeresTheSquirtbottleText
-	buttonsound
+	promptbutton
 	verbosegivekeyitem SQUIRTBOTTLE
 	setevent EVENT_GOT_SQUIRTBOTTLE
 	closetext
@@ -63,7 +63,7 @@ FlowerShopTeacherScript:
 	giveitem MULCH
 	iffalse_jumpopenedtext NoRoomForMulchText
 	takemoney $0, 200
-	jump .Done
+	sjump .Done
 
 .Buy10:
 	checkmoney $0, 2000

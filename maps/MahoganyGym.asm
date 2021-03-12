@@ -59,7 +59,7 @@ MahoganyGymPryceScript:
 	setevent EVENT_BEAT_BOARDER_BRAD
 	setevent EVENT_BEAT_BOARDER_DOUGLAS
 	writetext PryceText_GlacierBadgeSpeech
-	buttonsound
+	promptbutton
 	verbosegivetmhm TM_AVALANCHE
 	setevent EVENT_GOT_TM67_AVALANCHE
 	jumpthisopenedtext
@@ -131,12 +131,12 @@ MahoganyGymGuyScript:
 	jumptextfaceplayer MahoganyGymGuyText
 
 MahoganyGymStatue:
-	trainertotext PRYCE, 1, $1
+	gettrainername PRYCE, 1, $1
 	checkflag ENGINE_GLACIERBADGE
 	iftrue .Beaten
 	jumpstd gymstatue1
 .Beaten:
-	checkcode VAR_BADGES
+	readvar VAR_BADGES
 	ifgreater 14, .LyraToo
 	jumpstd gymstatue2
 .LyraToo

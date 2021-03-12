@@ -25,7 +25,7 @@ CianwoodPharmacist:
 	faceplayer
 	opentext
 	writetext PharmacistGiveSecretpotionText
-	buttonsound
+	promptbutton
 	verbosegivekeyitem SECRETPOTION
 	setevent EVENT_GOT_SECRETPOTION_FROM_PHARMACY
 	writetext PharmacistDescribeSecretpotionText

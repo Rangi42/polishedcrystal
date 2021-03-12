@@ -27,7 +27,7 @@ SilphCo1F_MapScriptHeader:
 	iffalse .Nothing
 	moveobject SILPHCO1F_OFFICER, 14, 1
 .Nothing
-	return
+	endcallback
 
 SilphCoOfficerScript:
 	faceplayer

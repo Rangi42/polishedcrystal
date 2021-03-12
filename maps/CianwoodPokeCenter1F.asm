@@ -51,7 +51,7 @@ CianwoodGymGuyScript:
 	writetext .Text
 	waitbutton
 	writetext .StrengthText1
-	buttonsound
+	promptbutton
 	verbosegivetmhm HM_STRENGTH
 	setevent EVENT_GOT_HM04_STRENGTH
 	writetext .StrengthText2

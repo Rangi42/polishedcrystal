@@ -48,7 +48,7 @@ Route36NationalParkGate_MapScriptHeader:
 	const ROUTE36NATIONALPARKGATE_OFFICER2
 
 Route36NationalParkGateTrigger2:
-	priorityjump Route36NationalParkGateLeftTheContestEarly
+	prioritysjump Route36NationalParkGateLeftTheContestEarly
 Route36NationalParkGateTrigger0:
 Route36NationalParkGateTrigger1:
 	end
@@ -57,16 +57,16 @@ Route36NationalParkGateCheckIfContestRunning:
 	checkflag ENGINE_BUG_CONTEST_TIMER
 	iftrue .BugContestIsRunning
 	setscene $0
-	return
+	endcallback
 
 .BugContestIsRunning:
 	setscene $2
-	return
+	endcallback
 
 Route36NationalParkGateCheckIfContestAvailable:
 	checkevent EVENT_WARPED_FROM_ROUTE_35_NATIONAL_PARK_GATE
 	iftrue .Return
-	checkcode VAR_WEEKDAY
+	readvar VAR_WEEKDAY
 	ifequal TUESDAY, .SetContestOfficer
 	ifequal THURSDAY, .SetContestOfficer
 	ifequal SATURDAY, .SetContestOfficer
@@ -74,20 +74,20 @@ Route36NationalParkGateCheckIfContestAvailable:
 	iftrue .SetContestOfficer
 	disappear ROUTE36NATIONALPARKGATE_OFFICER1
 	appear ROUTE36NATIONALPARKGATE_OFFICER2
-	return
+	endcallback
 
 .SetContestOfficer:
 	appear ROUTE36NATIONALPARKGATE_OFFICER1
 	disappear ROUTE36NATIONALPARKGATE_OFFICER2
 .Return:
-	return
+	endcallback
 
 Route36NationalParkGateLeftTheContestEarly:
 	turnobject PLAYER, UP
 	opentext
-	checkcode VAR_CONTESTMINUTES
-	addvar $1
-	RAM2MEM $0
+	readvar VAR_CONTESTMINUTES
+	addval $1
+	getnum $0
 	writetext Route35NationalParkGateOfficer1WantToFinishText
 	yesorno
 	iffalse .GoBackToContest
@@ -160,7 +160,7 @@ Route36NationalParkGateLeftTheContestEarly:
 	end
 
 Route36OfficerScriptContest:
-	checkcode VAR_WEEKDAY
+	readvar VAR_WEEKDAY
 	ifequal SUNDAY, .ContestNotOn
 	ifequal MONDAY, .ContestNotOn
 	ifequal WEDNESDAY, .ContestNotOn
@@ -173,7 +173,7 @@ Route36OfficerScriptContest:
 	writetext Route35NationalParkGateOfficer1AskToParticipateText
 	yesorno
 	iffalse_jumpopenedtext Route35NationalParkGateOfficer1TakePartInFutureText
-	checkcode VAR_PARTYCOUNT
+	readvar VAR_PARTYCOUNT
 	ifgreater $1, .LeaveMonsWithOfficer
 	special ContestDropOffMons
 	clearevent EVENT_LEFT_MONS_WITH_CONTEST_OFFICER
@@ -181,7 +181,7 @@ Route36OfficerScriptContest:
 	setflag ENGINE_BUG_CONTEST_TIMER
 	special PlayMapMusic
 	writetext Route35NationalParkGateOfficer1GiveParkBallsText
-	buttonsound
+	promptbutton
 	waitsfx
 	writetext Route35NationalParkGatePlayerReceivedParkBallsText
 	playsound SFX_ITEM
@@ -203,9 +203,9 @@ Route36OfficerScriptContest:
 	jumptextfaceplayer Route36NationalParkGateOfficer1SomeMonOnlySeenInParkText
 
 .LeaveMonsWithOfficer:
-	checkcode VAR_PARTYCOUNT
+	readvar VAR_PARTYCOUNT
 	ifless $6, .ContinueLeavingMons
-	checkcode VAR_BOXSPACE
+	readvar VAR_BOXSPACE
 	iffalse_jumpopenedtext Route35NationalParkGateOfficer1MakeRoomText
 .ContinueLeavingMons:
 	special CheckFirstMonIsEgg
@@ -217,12 +217,12 @@ Route36OfficerScriptContest:
 	iftrue_jumpopenedtext Route35NationalParkGateOfficer1FirstMonCantBattleText
 	setevent EVENT_LEFT_MONS_WITH_CONTEST_OFFICER
 	writetext Route35NationalParkGateOfficer1WellHoldYourMonText
-	buttonsound
+	promptbutton
 	writetext Route35NationalParkGatePlayersMonLeftWithHelperText
 	playsound SFX_GOT_SAFARI_BALLS
 	waitsfx
-	buttonsound
-	jump .ResumeStartingContest
+	promptbutton
+	sjump .ResumeStartingContest
 
 Route36Officer_ContestHasConcluded:
 	checkevent EVENT_CONTEST_OFFICER_HAS_PRIZE
@@ -230,8 +230,8 @@ Route36Officer_ContestHasConcluded:
 	faceplayer
 	opentext
 	writetext Route36NationalParkGateOfficer1HeresThePrizeText
-	buttonsound
-	copybytetovar wBugContestOfficerPrize
+	promptbutton
+	readmem wBugContestOfficerPrize
 	verbosegiveitem ITEM_FROM_MEM
 	iffalse_jumpopenedtext Route36NationalParkGateOfficer1WellHoldPrizeText
 	clearevent EVENT_CONTEST_OFFICER_HAS_PRIZE

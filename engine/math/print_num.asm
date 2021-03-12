@@ -3,7 +3,7 @@ _PrintNum::
 ; High nibble of c denotes decimal point location.
 ; Works on up to 1-8 digits and up to 4 bytes (up to 99999999).
 ; The higher b nibble has some flags:
-; Bit 4: For each number printed, add a text delay (used for deciram)
+; Bit 4: For each number printed, add a text delay (used for text_decimal)
 ; Bit 5: Print a pokedollar sign before the number itself
 ; Bit 6: Left-aligned number instead of right-aligned
 ; Bit 7: Print leading zeros

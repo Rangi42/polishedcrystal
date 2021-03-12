@@ -25,7 +25,7 @@ EcruteakItemfinderGuy:
 	yesorno
 	iffalse_jumpopenedtext EcruteakItemfinderToEachHisOwnText
 	writetext EcruteakItemfinderTrueSpiritText
-	buttonsound
+	promptbutton
 	verbosegivekeyitem ITEMFINDER
 	setevent EVENT_GOT_ITEMFINDER
 	jumpthisopenedtext

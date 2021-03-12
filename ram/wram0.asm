@@ -983,7 +983,6 @@ wMemCGBLayout:: db
 UNION
 wCreditsPos:: dw
 wCreditsTimer:: db
-wCopyingSGBTileData:: db
 wTrainerCardBadgePaletteAddr:: dw
 
 NEXTU

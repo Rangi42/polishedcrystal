@@ -30,7 +30,7 @@ ManiaScript:
 	iffalse .partyfull
 	special TeachShuckiePoisonJab
 	writetext ManiaText_TakeCareOfShuckie
-	buttonsound
+	promptbutton
 	waitsfx
 	writetext ManiaText_GotShuckie
 	playsound SFX_KEY_ITEM

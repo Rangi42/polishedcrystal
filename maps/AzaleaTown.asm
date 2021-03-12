@@ -49,17 +49,17 @@ AzaleaTown_MapScriptHeader:
 
 AzaleaTownFlypointCallback:
 	setflag ENGINE_FLYPOINT_AZALEA
-	return
+	endcallback
 
 AzaleaTownRainScript:
 	special Special_GetOvercastIndex
 	ifequal AZALEA_OVERCAST, .rain
-	changemap AzaleaTown_BlockData
-	return
+	changemapblocks AzaleaTown_BlockData
+	endcallback
 
 .rain
-	changemap AzaleaTownRaining_BlockData
-	return
+	changemapblocks AzaleaTownRaining_BlockData
+	endcallback
 
 AzaleaTownRivalBattleTrigger1:
 	moveobject AZALEATOWN_SILVER, 11, 11
@@ -85,7 +85,7 @@ AzaleaTownRivalBattleTrigger2:
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle
-	jump .AfterBattle
+	sjump .AfterBattle
 
 .Totodile:
 	winlosstext .WinText, .LossText
@@ -94,7 +94,7 @@ AzaleaTownRivalBattleTrigger2:
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle
-	jump .AfterBattle
+	sjump .AfterBattle
 
 .Chikorita:
 	winlosstext .WinText, .LossText
@@ -103,7 +103,7 @@ AzaleaTownRivalBattleTrigger2:
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle
-	jump .AfterBattle
+	sjump .AfterBattle
 
 .AfterBattle:
 	special DeleteSavedMusic
@@ -206,13 +206,13 @@ AzaleaTown_CelebiTrigger:
 
 		para "What is going on?"
 		done
-	buttonsound
+	promptbutton
 	turnobject AZALEATOWN_KURT, RIGHT
 	writethistext
 		text "<PLAYER>, here's"
 		line "your GS Ball back!"
 		done
-	buttonsound
+	promptbutton
 	writetext AzaleaTownKurtText
 	waitbutton
 	verbosegivekeyitem GS_BALL

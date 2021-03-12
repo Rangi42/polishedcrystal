@@ -24,7 +24,7 @@ OlivineLighthouse1FSailorScript:
 	faceplayer
 	opentext
 	writetext .Text1
-	buttonsound
+	promptbutton
 	verbosegiveitem FULL_RESTORE
 	iffalse_endtext
 	setevent EVENT_GOT_FULL_RESTORE_FROM_LIGHTHOUSE

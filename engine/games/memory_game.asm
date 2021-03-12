@@ -303,7 +303,7 @@ MemoryGame_CheckMatch:
 	jp PrintText
 
 .VictoryText:
-	start_asm
+	text_asm
 	push bc
 	hlcoord 2, 13
 	call MemoryGame_PlaceCard
@@ -316,12 +316,12 @@ MemoryGame_CheckMatch:
 
 MemoryGameText_Yeah:
 	; , yeah!
-	text_jump _MemoryGameYeahText
+	text_far _MemoryGameYeahText
 	text_end
 
 MemoryGameText_Darn:
 	; Darn…
-	text_jump _MemoryGameDarnText
+	text_far _MemoryGameDarnText
 	text_end
 
 MemoryGame_InitBoard:

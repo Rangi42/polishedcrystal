@@ -426,8 +426,8 @@ HatchEggs:
 
 .Text_HatchEgg:
 	; Huh? @ @
-	text_jump Text_BreedHuh
-	start_asm
+	text_far Text_BreedHuh
+	text_asm
 	ld hl, wVramState
 	res 0, [hl]
 	push hl
@@ -448,17 +448,17 @@ HatchEggs:
 
 .ClearTextbox:
 	;
-	text_jump ClearText
+	text_far ClearText
 	text_end
 
 .CameOutOfItsEgg:
 	; came out of its EGG!@ @
-	text_jump _BreedEggHatchText
+	text_far _BreedEggHatchText
 	text_end
 
 .Text_NicknameHatchling:
 	; Give a nickname to @ ?
-	text_jump _BreedAskNicknameText
+	text_far _BreedAskNicknameText
 	text_end
 
 GetMotherAddr:
@@ -927,12 +927,12 @@ DayCareMonCursor:
 
 DayCareMon2Text:
 	; It's @ that was left with the DAY-CARE LADY.
-	text_jump _LeftWithDayCareLadyText
+	text_far _LeftWithDayCareLadyText
 	text_end
 
 DayCareMon1Text:
 	; It's @ that was left with the DAY-CARE MAN.
-	text_jump _LeftWithDayCareManText
+	text_far _LeftWithDayCareManText
 	text_end
 
 DayCareMonCompatibilityText:
@@ -961,20 +961,20 @@ DayCareMonCompatibilityText:
 
 .Incompatible:
 	; It has no interest in @ .
-	text_jump _BreedNoInterestText
+	text_far _BreedNoInterestText
 	text_end
 
 .HighCompatibility:
 	; It appears to care for @ .
-	text_jump _BreedAppearsToCareForText
+	text_far _BreedAppearsToCareForText
 	text_end
 
 .ModerateCompatibility:
 	; It's friendly with @ .
-	text_jump _BreedFriendlyText
+	text_far _BreedFriendlyText
 	text_end
 
 .SlightCompatibility:
 	; It shows interest in @ .
-	text_jump _BreedShowsInterestText
+	text_far _BreedShowsInterestText
 	text_end

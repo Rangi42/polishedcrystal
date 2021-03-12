@@ -42,7 +42,7 @@ NewBarkTown_MapScriptHeader:
 NewBarkTownFlyPoint:
 	setflag ENGINE_FLYPOINT_NEW_BARK
 	clearevent EVENT_FIRST_TIME_BANKING_WITH_MOM
-	return
+	endcallback
 
 NewBarkTown_TeacherStopsYouTrigger1:
 	playmusic MUSIC_MOM
@@ -98,15 +98,15 @@ NewBarkTown_LyraIntroTrigger:
 
 NewBarkTown_LyraFinalTrigger1:
 	moveobject NEWBARKTOWN_LYRA, 14, 11
-	jump NewBarkTown_LyraFinalTrigger
+	sjump NewBarkTown_LyraFinalTrigger
 
 NewBarkTown_LyraFinalTrigger2:
 	moveobject NEWBARKTOWN_LYRA, 14, 12
-	jump NewBarkTown_LyraFinalTrigger
+	sjump NewBarkTown_LyraFinalTrigger
 
 NewBarkTown_LyraFinalTrigger3:
 	moveobject NEWBARKTOWN_LYRA, 14, 13
-	jump NewBarkTown_LyraFinalTrigger
+	sjump NewBarkTown_LyraFinalTrigger
 
 NewBarkTown_LyraFinalTrigger4:
 	moveobject NEWBARKTOWN_LYRA, 14, 14
@@ -127,11 +127,11 @@ NewBarkTown_LyraFinalTrigger:
 	checkevent EVENT_GOT_CHIKORITA_FROM_ELM
 	iftrue .Chikorita
 	loadtrainer LYRA1, LYRA1_10
-	jump .AfterBattle
+	sjump .AfterBattle
 
 .Totodile:
 	loadtrainer LYRA1, LYRA1_11
-	jump .AfterBattle
+	sjump .AfterBattle
 
 .Chikorita:
 	loadtrainer LYRA1, LYRA1_12

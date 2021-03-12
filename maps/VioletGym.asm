@@ -25,7 +25,7 @@ VioletGym_MapScriptHeader:
 	const VIOLETGYM_GYM_GUY2
 
 VioletGymTrigger0:
-	priorityjump VioletGymFalknerAwayScript
+	prioritysjump VioletGymFalknerAwayScript
 	end
 
 VioletGymFalknerAwayScript:
@@ -66,7 +66,7 @@ VioletGymFalknerScript:
 	setmapscene ELMS_LAB, $2
 	specialphonecall SPECIALCALL_ASSISTANT
 	writetext FalknerZephyrBadgeText
-	buttonsound
+	promptbutton
 	verbosegivetmhm TM_ROOST
 	setevent EVENT_GOT_TM31_ROOST
 	jumpopenedtext FalknerTMMudSlapText
@@ -96,12 +96,12 @@ VioletGymGuyScript:
 	jumptextfaceplayer VioletGymGuyText
 
 VioletGymStatue:
-	trainertotext FALKNER, 1, $1
+	gettrainername FALKNER, 1, $1
 	checkflag ENGINE_ZEPHYRBADGE
 	iftrue .Beaten
 	jumpstd gymstatue1
 .Beaten:
-	checkcode VAR_BADGES
+	readvar VAR_BADGES
 	ifgreater 8, .LyraToo
 	jumpstd gymstatue2
 .LyraToo

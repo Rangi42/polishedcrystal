@@ -58,7 +58,7 @@ EcruteakGym_MapScriptHeader:
 	const ECRUTEAKGYM_GRAMPS
 
 EcruteakGymTrigger0:
-	priorityjump EcruteakGymClosed
+	prioritysjump EcruteakGymClosed
 	end
 
 EcruteakGymMortyScript:
@@ -90,7 +90,7 @@ EcruteakGymMortyScript:
 	setevent EVENT_BEAT_MEDIUM_MARTHA
 	setevent EVENT_BEAT_MEDIUM_GRACE
 	writetext MortyText_FogBadgeSpeech
-	buttonsound
+	promptbutton
 	verbosegivetmhm TM_SHADOW_BALL
 	setevent EVENT_GOT_TM30_SHADOW_BALL
 	jumpopenedtext MortyText_ShadowBallSpeech
@@ -152,12 +152,12 @@ EcruteakGymGuyScript:
 	jumptextfaceplayer EcruteakGymGuyText
 
 EcruteakGymStatue:
-	trainertotext MORTY, 1, $1
+	gettrainername MORTY, 1, $1
 	checkflag ENGINE_FOGBADGE
 	iftrue .Beaten
 	jumpstd gymstatue1
 .Beaten:
-	checkcode VAR_BADGES
+	readvar VAR_BADGES
 	ifgreater 11, .LyraToo
 	jumpstd gymstatue2
 .LyraToo

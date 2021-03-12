@@ -29,20 +29,20 @@ CeladonUniversityClassroom1_MapScriptHeader:
 	const CELADONUNIVERSITYCLASSROOM1_IMAKUNI
 
 CeladonUniversityClassroom1ImakuniScript:
-	checkcode VAR_FACING
+	readvar VAR_FACING
 	ifequal UP, .Up
 	ifequal DOWN, .Down
 	ifequal LEFT, .Left
 	turnobject CELADONUNIVERSITYCLASSROOM1_IMAKUNI, RIGHT
-	jump .Continue
+	sjump .Continue
 
 .Up:
 	turnobject CELADONUNIVERSITYCLASSROOM1_IMAKUNI, UP
-	jump .Continue
+	sjump .Continue
 
 .Down:
 	turnobject CELADONUNIVERSITYCLASSROOM1_IMAKUNI, DOWN
-	jump .Continue
+	sjump .Continue
 
 .Left:
 	turnobject CELADONUNIVERSITYCLASSROOM1_IMAKUNI, LEFT
@@ -67,7 +67,7 @@ CeladonUniversityClassroom1ImakuniScript:
 	iftrue_jumptext .Text6
 	opentext
 	writetext .Text5
-	buttonsound
+	promptbutton
 	verbosegiveitem PERSIM_BERRY
 	iffalse_endtext
 	setevent EVENT_GOT_PERSIM_BERRY_FROM_IMAKUNI

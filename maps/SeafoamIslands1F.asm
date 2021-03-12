@@ -20,4 +20,4 @@ SeafoamIslands1F_MapScriptHeader:
 
 SeafoamIslands1FClearRocks:
 	setevent EVENT_CINNABAR_ROCKS_CLEARED
-	return
+	endcallback

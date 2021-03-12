@@ -79,26 +79,26 @@ SaffronGymSabrinaScript:
 	playsound SFX_GET_BADGE
 	waitsfx
 	setflag ENGINE_SOULBADGE
-	checkcode VAR_BADGES
+	readvar VAR_BADGES
 	ifequal 9, .FirstBadge
 	ifequal 10, .SecondBadge
 	ifequal 12, .LyrasEgg
-	jump .FightDone
+	sjump .FightDone
 .FirstBadge:
 	specialphonecall SPECIALCALL_FIRSTBADGE
-	jump .FightDone
+	sjump .FightDone
 .SecondBadge:
 	checkevent EVENT_GOT_GS_BALL_FROM_POKECOM_CENTER
 	iftrue .FightDone
 	specialphonecall SPECIALCALL_SECONDBADGE
-	jump .FightDone
+	sjump .FightDone
 .LyrasEgg:
 	specialphonecall SPECIALCALL_LYRASEGG
 .FightDone:
 	checkevent EVENT_GOT_TM29_PSYCHIC
 	iftrue_jumpopenedtext SabrinaFightDoneText
 	writetext SabrinaMarshBadgeText
-	buttonsound
+	promptbutton
 	verbosegivetmhm TM_PSYCHIC
 	setevent EVENT_GOT_TM29_PSYCHIC
 	jumpthisopenedtext
@@ -180,7 +180,7 @@ SaffronGymGuyScript:
 	jumptextfaceplayer SaffronGymGuyText
 
 SaffronGymStatue:
-	trainertotext SABRINA, 1, $1
+	gettrainername SABRINA, 1, $1
 	checkflag ENGINE_SOULBADGE
 	iftrue .Beaten
 	jumpstd gymstatue1

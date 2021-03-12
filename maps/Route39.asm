@@ -37,7 +37,7 @@ TrainerPokefanmDerek1:
 	trainer POKEFANM, DEREK1, EVENT_BEAT_POKEFANM_DEREK, PokefanmDerek1SeenText, PokefanmDerek1BeatenText, 0, .Script
 
 .Script:
-	writecode VAR_CALLERID, PHONE_POKEFANM_DEREK
+	loadvar VAR_CALLERID, PHONE_POKEFANM_DEREK
 	opentext
 	checkflag ENGINE_DEREK_HAS_NUGGET
 	iftrue .HasNugget
@@ -48,10 +48,10 @@ TrainerPokefanmDerek1:
 	checkevent EVENT_DEREK_ASKED_FOR_PHONE_NUMBER
 	iftrue .AskedAlready
 	writetext PokefanMDerekText_NotBragging
-	buttonsound
+	promptbutton
 	setevent EVENT_DEREK_ASKED_FOR_PHONE_NUMBER
 	scall .AskNumber1
-	jump .AskForNumber
+	sjump .AskForNumber
 
 .AskedAlready:
 	scall .AskNumber2
@@ -59,19 +59,19 @@ TrainerPokefanmDerek1:
 	askforphonenumber PHONE_POKEFANM_DEREK
 	ifequal $1, .PhoneFull
 	ifequal $2, .NumberDeclined
-	trainertotext POKEFANM, DEREK1, $0
+	gettrainername POKEFANM, DEREK1, $0
 	scall .RegisteredNumber
-	jump .NumberAccepted
+	sjump .NumberAccepted
 
 .HasNugget:
 	scall .Gift
 	verbosegiveitem NUGGET
 	iffalse .NoRoom
 	clearflag ENGINE_DEREK_HAS_NUGGET
-	jump .NumberAccepted
+	sjump .NumberAccepted
 
 .NoRoom:
-	jump .PackFull
+	sjump .PackFull
 
 .WantsPikachu:
 	jumpopenedtext PokefanMDerekPikachuIsItText
@@ -154,7 +154,7 @@ Route39CowgirlAnnieScript:
 .Beaten:
 	opentext
 	writetext .AfterText1
-	buttonsound
+	promptbutton
 	verbosegiveitem PP_MAX
 	iffalse_endtext
 	setevent EVENT_GOT_PP_MAX_FROM_ROUTE_39_LEADER

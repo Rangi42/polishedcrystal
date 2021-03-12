@@ -49,17 +49,17 @@ TossItemFromPC:
 
 .TossHowMany:
 	; Toss out how many @ (S)?
-	text_jump _ItemsTossOutHowManyText
+	text_far _ItemsTossOutHowManyText
 	text_end
 
 .ConfirmToss:
 	; Throw away @ @ (S)?
-	text_jump _ItemsThrowAwayText
+	text_far _ItemsThrowAwayText
 	text_end
 
 .TossedThisMany:
 	; Discarded @ (S).
-	text_jump _ItemsDiscardedText
+	text_far _ItemsDiscardedText
 	text_end
 
 CantUseItem:
@@ -67,7 +67,7 @@ CantUseItem:
 	jp MenuTextboxWaitButton
 
 CantUseItemText:
-	text_jump _ItemsOakWarningText
+	text_far _ItemsOakWarningText
 	text_end
 
 PartyMonItemName:
@@ -500,35 +500,35 @@ GiveTakeItemMenuData:
 	db "Swap@"
 
 TookAndMadeHoldText:
-	text_jump _PokemonSwapItemText
+	text_far _PokemonSwapItemText
 	text_end
 
 MadeHoldText:
-	text_jump _PokemonHoldItemText
+	text_far _PokemonHoldItemText
 	text_end
 
 PleaseRemoveMailText:
-	text_jump _PokemonRemoveMailText
+	text_far _PokemonRemoveMailText
 	text_end
 
 IsntHoldingAnythingText:
-	text_jump _PokemonNotHoldingText
+	text_far _PokemonNotHoldingText
 	text_end
 
 ItemStorageIsFullText:
-	text_jump _ItemStorageFullText
+	text_far _ItemStorageFullText
 	text_end
 
 TookFromText:
-	text_jump _PokemonTookItemText
+	text_far _PokemonTookItemText
 	text_end
 
 SwitchAlreadyHoldingText:
-	text_jump _PokemonAskSwapItemText
+	text_far _PokemonAskSwapItemText
 	text_end
 
 CantBeHeldText:
-	text_jump _ItemCantHeldText
+	text_far _ItemCantHeldText
 	text_end
 
 CantPlaceMailInStorageText:
@@ -678,32 +678,32 @@ TakeMail:
 
 .mailwilllosemessagetext
 ; The MAIL will lose its message. OK?
-	text_jump _MailLoseMessageText
+	text_far _MailLoseMessageText
 	text_end
 
 .tookmailfrommontext
 ; MAIL detached from <POKEMON>.
-	text_jump _MailDetachedText
+	text_far _MailDetachedText
 	text_end
 
 .bagfulltext
 ; There's no space for removing MAIL.
-	text_jump _MailNoSpaceText
+	text_far _MailNoSpaceText
 	text_end
 
 .sendmailtopctext
 ; Send the removed MAIL to your PC?
-	text_jump _MailAskSendToPCText
+	text_far _MailAskSendToPCText
 	text_end
 
 .mailboxfulltext
 ; Your PC's MAILBOX is full.
-	text_jump _MailboxFullText
+	text_far _MailboxFullText
 	text_end
 
 .sentmailtopctext
 ; The MAIL was sent to your PC.
-	text_jump _MailSentToPCText
+	text_far _MailSentToPCText
 	text_end
 
 OpenPartyStats:
@@ -803,7 +803,7 @@ MonMenu_FreshSnack:
 
 .Text_NotEnoughHP:
 	; Not enough HP!
-	text_jump _PokemonNotEnoughHPText
+	text_far _PokemonNotEnoughHPText
 	text_end
 
 .CheckMonHasEnoughHP:
@@ -1673,5 +1673,5 @@ String_PowAcc:
 
 Text_CantForgetHM:
 ; HM moves can't be forgotten now.
-	text_jump _MoveCantForgetHMText
+	text_far _MoveCantForgetHMText
 	text_end

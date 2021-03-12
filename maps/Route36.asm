@@ -43,14 +43,14 @@ Route36_MapScriptHeader:
 	const ROUTE36_COOLTRAINERF
 
 Route36ArthurCallback:
-	checkcode VAR_WEEKDAY
+	readvar VAR_WEEKDAY
 	ifequal THURSDAY, .ArthurAppears
 	disappear ROUTE36_ARTHUR
-	return
+	endcallback
 
 .ArthurAppears:
 	appear ROUTE36_ARTHUR
-	return
+	endcallback
 
 Route36SuicuneScript:
 	showemote EMOTE_SHOCK, PLAYER, 15
@@ -86,7 +86,7 @@ WateredWeirdTreeScript:: ; export (for when you use Squirtbottle from pack)
 	playsound SFX_SANDSTORM
 	applyonemovement ROUTE36_WEIRD_TREE, tree_shake
 	showtext SudowoodoAttackedText
-	writecode VAR_BATTLETYPE, BATTLETYPE_TRAP
+	loadvar VAR_BATTLETYPE, BATTLETYPE_TRAP
 	loadwildmon SUDOWOODO, 20
 	startbattle
 	setevent EVENT_FOUGHT_SUDOWOODO
@@ -112,7 +112,7 @@ Route36FloriaScript:
 	waitbutton
 	closetext
 	clearevent EVENT_FLORIA_AT_FLOWER_SHOP
-	checkcode VAR_FACING
+	readvar VAR_FACING
 	ifequal UP, .Up
 	applymovement ROUTE36_FLORIA, FloriaMovement1
 	disappear ROUTE36_FLORIA
@@ -137,7 +137,7 @@ Route36RockSmashGuyScript:
 
 .ClearedSudowoodo:
 	writetext RockSmashGuyText2
-	buttonsound
+	promptbutton
 	verbosegivetmhm TM_ROCK_SMASH
 	setevent EVENT_GOT_TM50_ROCK_SMASH
 .AlreadyGotRockSmash:
@@ -152,7 +152,7 @@ TrainerSchoolboyAlan1:
 	trainer SCHOOLBOY, ALAN1, EVENT_BEAT_SCHOOLBOY_ALAN, SchoolboyAlan1SeenText, SchoolboyAlan1BeatenText, 0, .Script
 
 .Script:
-	writecode VAR_CALLERID, PHONE_SCHOOLBOY_ALAN
+	loadvar VAR_CALLERID, PHONE_SCHOOLBOY_ALAN
 	opentext
 	checkflag ENGINE_ALAN
 	iftrue .ChooseRematch
@@ -163,10 +163,10 @@ TrainerSchoolboyAlan1:
 	checkevent EVENT_ALAN_ASKED_FOR_PHONE_NUMBER
 	iftrue .AskAgainForPhoneNumber
 	writetext SchoolboyAlanBooksText
-	buttonsound
+	promptbutton
 	setevent EVENT_ALAN_ASKED_FOR_PHONE_NUMBER
 	callstd asknumber1m
-	jump .ContinueAskForPhoneNumber
+	sjump .ContinueAskForPhoneNumber
 
 .AskAgainForPhoneNumber:
 	callstd asknumber2m
@@ -174,14 +174,14 @@ TrainerSchoolboyAlan1:
 	askforphonenumber PHONE_SCHOOLBOY_ALAN
 	ifequal $1, .PhoneFull
 	ifequal $2, .NumberDeclined
-	trainertotext SCHOOLBOY, ALAN1, $0
+	gettrainername SCHOOLBOY, ALAN1, $0
 	callstd registerednumberm
 	jumpstd numberacceptedm
 
 .ChooseRematch:
 	callstd rematchm
 	winlosstext SchoolboyAlan1BeatenText, 0
-	copybytetovar wAlanFightCount
+	readmem wAlanFightCount
 	ifequal 4, .Fight4
 	ifequal 3, .Fight3
 	ifequal 2, .Fight2
@@ -203,7 +203,7 @@ TrainerSchoolboyAlan1:
 	loadtrainer SCHOOLBOY, ALAN1
 	startbattle
 	reloadmapafterbattle
-	loadvar wAlanFightCount, 1
+	loadmem wAlanFightCount, 1
 	clearflag ENGINE_ALAN
 	end
 
@@ -211,7 +211,7 @@ TrainerSchoolboyAlan1:
 	loadtrainer SCHOOLBOY, ALAN2
 	startbattle
 	reloadmapafterbattle
-	loadvar wAlanFightCount, 2
+	loadmem wAlanFightCount, 2
 	clearflag ENGINE_ALAN
 	end
 
@@ -219,7 +219,7 @@ TrainerSchoolboyAlan1:
 	loadtrainer SCHOOLBOY, ALAN3
 	startbattle
 	reloadmapafterbattle
-	loadvar wAlanFightCount, 3
+	loadmem wAlanFightCount, 3
 	clearflag ENGINE_ALAN
 	end
 
@@ -227,7 +227,7 @@ TrainerSchoolboyAlan1:
 	loadtrainer SCHOOLBOY, ALAN4
 	startbattle
 	reloadmapafterbattle
-	loadvar wAlanFightCount, 4
+	loadmem wAlanFightCount, 4
 	clearflag ENGINE_ALAN
 	end
 
@@ -294,7 +294,7 @@ Route36CooltrainerfChiaraScript:
 .Beaten:
 	opentext
 	writetext .AfterText1
-	buttonsound
+	promptbutton
 	verbosegiveitem BINDING_BAND
 	iffalse_endtext
 	setevent EVENT_GOT_BINDING_BAND_FROM_ROUTE_36_LEADER
@@ -395,16 +395,16 @@ ArthurScript:
 	opentext
 	checkevent EVENT_GOT_HARD_STONE_FROM_ARTHUR
 	iftrue .AlreadyGotStone
-	checkcode VAR_WEEKDAY
+	readvar VAR_WEEKDAY
 	ifnotequal THURSDAY, ArthurNotThursdayScript
 	checkevent EVENT_MET_ARTHUR_OF_THURSDAY
 	iftrue .MetArthur
 	writetext MeetArthurText
-	buttonsound
+	promptbutton
 	setevent EVENT_MET_ARTHUR_OF_THURSDAY
 .MetArthur:
 	writetext ArthurGivesGiftText
-	buttonsound
+	promptbutton
 	verbosegiveitem HARD_STONE
 	iffalse .BagFull
 	setevent EVENT_GOT_HARD_STONE_FROM_ARTHUR

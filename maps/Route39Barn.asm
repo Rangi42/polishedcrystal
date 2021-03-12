@@ -57,25 +57,25 @@ MooMoo:
 	iftrue .HappyCow
 	opentext
 	writetext Text_WeakMoo
-	writebyte MILTANK
+	setval MILTANK
 	special PlaySlowCry
-	buttonsound
+	promptbutton
 	writetext Text_ItsCryIsWeak
 	checkevent EVENT_TALKED_TO_FARMER_ABOUT_MOOMOO
 	iftrue .GiveBerry
 	waitendtext
 
 .GiveBerry:
-	buttonsound
+	promptbutton
 	writetext Text_AskGiveBerry
 	yesorno
 	iffalse_jumpopenedtext Text_RefusedToGiveBerry
 	checkitem ORAN_BERRY
 	iffalse .MaybeSitrusBerry
 	takeitem ORAN_BERRY
-	copybytetovar wMooMooBerries
-	addvar 1
-	copyvartobyte wMooMooBerries
+	readmem wMooMooBerries
+	addval 1
+	writemem wMooMooBerries
 	ifequal 3, .ThreeOranBerries
 	ifequal 5, .FiveOranBerries
 	ifequal 7, .SevenOranBerries
@@ -85,9 +85,9 @@ MooMoo:
 	checkitem SITRUS_BERRY
 	iffalse_jumpopenedtext Text_NoBerries
 	takeitem SITRUS_BERRY
-	copybytetovar wMooMooBerries
-	addvar 2
-	copyvartobyte wMooMooBerries
+	readmem wMooMooBerries
+	addval 2
+	writemem wMooMooBerries
 	ifgreater 6, .SevenSitrusBerries
 	ifgreater 4, .FiveSitrusBerries
 	ifgreater 2, .ThreeSitrusBerries
@@ -95,38 +95,38 @@ MooMoo:
 
 .ThreeOranBerries:
 	writetext Text_GaveOranBerry
-	buttonsound
+	promptbutton
 	jumpopenedtext Text_LittleHealthier
 
 .FiveOranBerries:
 	writetext Text_GaveOranBerry
-	buttonsound
+	promptbutton
 	jumpopenedtext Text_QuiteHealthy
 
 .SevenOranBerries:
 	playmusic MUSIC_HEAL
 	writetext Text_GaveOranBerry
 	pause 60
-	buttonsound
+	promptbutton
 	special RestartMapMusic
 	setevent EVENT_HEALED_MOOMOO
 	jumpopenedtext Text_TotallyHealthy
 
 .ThreeSitrusBerries:
 	writetext Text_GaveSitrusBerry
-	buttonsound
+	promptbutton
 	jumpopenedtext Text_LittleHealthier
 
 .FiveSitrusBerries:
 	writetext Text_GaveSitrusBerry
-	buttonsound
+	promptbutton
 	jumpopenedtext Text_QuiteHealthy
 
 .SevenSitrusBerries:
 	playmusic MUSIC_HEAL
 	writetext Text_GaveSitrusBerry
 	pause 60
-	buttonsound
+	promptbutton
 	special RestartMapMusic
 	setevent EVENT_HEALED_MOOMOO
 	jumpopenedtext Text_TotallyHealthy

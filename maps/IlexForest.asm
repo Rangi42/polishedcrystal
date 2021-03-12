@@ -53,14 +53,14 @@ IlexForest_MapScriptHeader:
 	const ILEXFOREST_YOUNGSTER
 
 IlexForestTrigger1:
-	priorityjump IlexForestFinishCelebiEventScript
+	prioritysjump IlexForestFinishCelebiEventScript
 IlexForestTrigger0:
 	end
 
 IlexForestFarfetchdCallback:
 	checkevent EVENT_GOT_HM01_CUT
 	iftrue .Static
-	copybytetovar wFarfetchdPosition
+	readmem wFarfetchdPosition
 	ifequal  1, .PositionOne
 	ifequal  2, .PositionTwo
 	ifequal  3, .PositionThree
@@ -72,57 +72,57 @@ IlexForestFarfetchdCallback:
 	ifequal  9, .PositionNine
 	ifequal 10, .PositionTen
 .Static:
-	return
+	endcallback
 
 .PositionOne:
 	moveobject ILEXFOREST_FARFETCHD, 16, 33
 	appear ILEXFOREST_FARFETCHD
-	return
+	endcallback
 
 .PositionTwo:
 	moveobject ILEXFOREST_FARFETCHD, 17, 27
 	appear ILEXFOREST_FARFETCHD
-	return
+	endcallback
 
 .PositionThree:
 	moveobject ILEXFOREST_FARFETCHD, 22, 26
 	appear ILEXFOREST_FARFETCHD
-	return
+	endcallback
 
 .PositionFour:
 	moveobject ILEXFOREST_FARFETCHD, 31, 24
 	appear ILEXFOREST_FARFETCHD
-	return
+	endcallback
 
 .PositionFive:
 	moveobject ILEXFOREST_FARFETCHD, 30, 33
 	appear ILEXFOREST_FARFETCHD
-	return
+	endcallback
 
 .PositionSix:
 	moveobject ILEXFOREST_FARFETCHD, 26, 37
 	appear ILEXFOREST_FARFETCHD
-	return
+	endcallback
 
 .PositionSeven:
 	moveobject ILEXFOREST_FARFETCHD, 24, 33
 	appear ILEXFOREST_FARFETCHD
-	return
+	endcallback
 
 .PositionEight:
 	moveobject ILEXFOREST_FARFETCHD, 17, 31
 	appear ILEXFOREST_FARFETCHD
-	return
+	endcallback
 
 .PositionNine:
 	moveobject ILEXFOREST_FARFETCHD, 12, 37
 	appear ILEXFOREST_FARFETCHD
-	return
+	endcallback
 
 .PositionTen:
 	moveobject ILEXFOREST_FARFETCHD, 8, 30
 	appear ILEXFOREST_FARFETCHD
-	return
+	endcallback
 
 IlexForestCharcoalApprenticeScript:
 	checkevent EVENT_HERDED_FARFETCHD
@@ -132,10 +132,10 @@ IlexForestCharcoalApprenticeScript:
 
 IlexForestFarfetchdScript:
 	faceplayer
-	copybytetovar wFarfetchdPosition
+	readmem wFarfetchdPosition
 	ifequal  0, .Position1
 	showcrytext Text_Kwaaaa, FARFETCH_D
-	copybytetovar wFarfetchdPosition
+	readmem wFarfetchdPosition
 	ifequal  2, .Position2
 	ifequal  3, .Position3
 	ifequal  4, .Position4
@@ -150,7 +150,7 @@ IlexForestFarfetchdScript:
 	faceplayer
 	opentext
 	writetext Text_ItsTheMissingPokemon
-	buttonsound
+	promptbutton
 	writetext Text_Kwaaaa
 	cry FARFETCH_D
 	waitbutton
@@ -158,127 +158,127 @@ IlexForestFarfetchdScript:
 	applymovement ILEXFOREST_FARFETCHD, MovementData_Farfetchd_Pos1_Pos2
 .NewPosition2:
 	moveobject ILEXFOREST_FARFETCHD, 17, 27
-	writebyte 2
+	setval 2
 .NewPosition:
 	disappear ILEXFOREST_FARFETCHD
 	appear ILEXFOREST_FARFETCHD
-	copyvartobyte wFarfetchdPosition
+	writemem wFarfetchdPosition
 	end
 
 .Position2:
-	checkcode VAR_FACING
+	readvar VAR_FACING
 	ifequal DOWN, .Position2_Down
 	applymovement ILEXFOREST_FARFETCHD, MovementData_Farfetchd_Pos2_Pos3
 .NewPosition3:
 	moveobject ILEXFOREST_FARFETCHD, 22, 26
-	writebyte 3
-	jump .NewPosition
+	setval 3
+	sjump .NewPosition
 
 .Position2_Down:
 	applymovement ILEXFOREST_FARFETCHD, MovementData_Farfetchd_Pos2_Pos8
 .NewPosition8:
 	moveobject ILEXFOREST_FARFETCHD, 17, 31
-	writebyte 8
-	jump .NewPosition
+	setval 8
+	sjump .NewPosition
 
 .Position3:
-	checkcode VAR_FACING
+	readvar VAR_FACING
 	ifequal LEFT, .Position3_Left
 	applymovement ILEXFOREST_FARFETCHD, MovementData_Farfetchd_Pos3_Pos4
 .NewPosition4:
 	moveobject ILEXFOREST_FARFETCHD, 31, 24
-	writebyte 4
-	jump .NewPosition
+	setval 4
+	sjump .NewPosition
 
 .Position3_Left:
 	applymovement ILEXFOREST_FARFETCHD, MovementData_Farfetchd_Pos3_Pos2
-	jump .NewPosition2
+	sjump .NewPosition2
 
 .Position4:
-	checkcode VAR_FACING
+	readvar VAR_FACING
 	ifequal UP, .Position4_Up
 	applymovement ILEXFOREST_FARFETCHD, MovementData_Farfetchd_Pos4_Pos5
 .NewPosition5:
 	moveobject ILEXFOREST_FARFETCHD, 30, 33
-	writebyte 5
-	jump .NewPosition
+	setval 5
+	sjump .NewPosition
 
 .Position4_Up:
 	applymovement ILEXFOREST_FARFETCHD, MovementData_Farfetchd_Pos4_Pos3
-	jump .NewPosition3
+	sjump .NewPosition3
 
 .Position5:
-	checkcode VAR_FACING
+	readvar VAR_FACING
 	ifequal UP, .Position5_Up
 	ifequal LEFT, .Position5_Left
 	ifequal RIGHT, .Position5_Right
 	applymovement ILEXFOREST_FARFETCHD, MovementData_Farfetchd_Pos5_Pos6
 .NewPosition6:
 	moveobject ILEXFOREST_FARFETCHD, 26, 37
-	writebyte 6
-	jump .NewPosition
+	setval 6
+	sjump .NewPosition
 
 .Position5_Left:
 	applymovement ILEXFOREST_FARFETCHD, MovementData_Farfetchd_Pos5_Pos7
 .NewPosition7:
 	moveobject ILEXFOREST_FARFETCHD, 24, 33
-	writebyte 7
-	jump .NewPosition
+	setval 7
+	sjump .NewPosition
 
 .Position5_Up:
 	applymovement ILEXFOREST_FARFETCHD, MovementData_Farfetched_Pos5_Pos4_Up
-	jump .NewPosition4
+	sjump .NewPosition4
 
 .Position5_Right:
 	applymovement ILEXFOREST_FARFETCHD, MovementData_Farfetched_Pos5_Pos4_Right
-	jump .NewPosition4
+	sjump .NewPosition4
 
 .Position6:
-	checkcode VAR_FACING
+	readvar VAR_FACING
 	ifequal RIGHT, .Position6_Right
 	applymovement ILEXFOREST_FARFETCHD, MovementData_Farfetched_Pos6_Pos7
-	jump .NewPosition7
+	sjump .NewPosition7
 
 .Position6_Right:
 	applymovement ILEXFOREST_FARFETCHD, MovementData_Farfetched_Pos6_Pos5
-	jump .NewPosition5
+	sjump .NewPosition5
 
 .Position7:
-	checkcode VAR_FACING
+	readvar VAR_FACING
 	ifequal DOWN, .Position7_Down
 	ifequal LEFT, .Position7_Left
 	applymovement ILEXFOREST_FARFETCHD, MovementData_Farfetched_Pos7_Pos8
-	jump .NewPosition8
+	sjump .NewPosition8
 
 .Position7_Left:
 	applymovement ILEXFOREST_FARFETCHD, MovementData_Farfetched_Pos7_Pos6
-	jump .NewPosition6
+	sjump .NewPosition6
 
 .Position7_Down:
 	applymovement ILEXFOREST_FARFETCHD, MovementData_Farfetched_Pos7_Pos5
-	jump .NewPosition5
+	sjump .NewPosition5
 
 .Position8:
-	checkcode VAR_FACING
+	readvar VAR_FACING
 	ifequal UP, .Position8_Up
 	ifequal LEFT, .Position8_Left
 	ifequal RIGHT, .Position8_Right
 	applymovement ILEXFOREST_FARFETCHD, MovementData_Farfetched_Pos8_Pos9
 	moveobject ILEXFOREST_FARFETCHD, 12, 37
-	writebyte 9
-	jump .NewPosition
+	setval 9
+	sjump .NewPosition
 
 .Position8_Right:
 	applymovement ILEXFOREST_FARFETCHD, MovementData_Farfetched_Pos8_Pos7
-	jump .NewPosition7
+	sjump .NewPosition7
 
 .Position8_Up:
 .Position8_Left:
 	applymovement ILEXFOREST_FARFETCHD, MovementData_Farfetched_Pos8_Pos2
-	jump .NewPosition2
+	sjump .NewPosition2
 
 .Position9:
-	checkcode VAR_FACING
+	readvar VAR_FACING
 	ifequal DOWN, .Position9_Down
 	ifequal RIGHT, .Position9_Right
 	applymovement ILEXFOREST_FARFETCHD, MovementData_Farfetched_Pos9_Pos10
@@ -286,16 +286,16 @@ IlexForestFarfetchdScript:
 	setevent EVENT_CHARCOAL_KILN_BOSS
 	setevent EVENT_HERDED_FARFETCHD
 	moveobject ILEXFOREST_FARFETCHD, 8, 30
-	writebyte 10
-	jump .NewPosition
+	setval 10
+	sjump .NewPosition
 
 .Position9_Right:
 	applymovement ILEXFOREST_FARFETCHD, MovementData_Farfetched_Pos9_Pos8_Right
-	jump .NewPosition8
+	sjump .NewPosition8
 
 .Position9_Down:
 	applymovement ILEXFOREST_FARFETCHD, MovementData_Farfetched_Pos9_Pos8_Down
-	jump .NewPosition8
+	sjump .NewPosition8
 
 IlexForestFinishCelebiEventScript:
 	setevent EVENT_TIME_TRAVEL_FINISHED
@@ -319,13 +319,13 @@ IlexForestFinishCelebiEventScript:
 	turnobject ILEXFOREST_LYRA, DOWN
 	setlasttalked ILEXFOREST_LYRA
 	opentext
-	jump IlexForestLyraContinueScript
+	sjump IlexForestLyraContinueScript
 
 IlexForestLyraScript:
 	faceplayer
 	opentext
 	writetext Text_IlexForestLyraArmorSuit
-	buttonsound
+	promptbutton
 IlexForestLyraContinueScript:
 	verbosegiveitem ARMOR_SUIT
 	iffalse_endtext
@@ -333,7 +333,7 @@ IlexForestLyraContinueScript:
 	writetext Text_IlexForestLyraGoodbye
 	waitbutton
 	closetext
-	checkcode VAR_FACING
+	readvar VAR_FACING
 	ifequal LEFT, .NotBlockingPath
 	applymovement PLAYER, MovementData_PlayerStepAside
 .NotBlockingPath
@@ -344,7 +344,7 @@ IlexForestLyraContinueScript:
 IlexForestApprenticeTrigger:
 	showemote EMOTE_SHOCK, ILEXFOREST_YOUNGSTER, 15
 	turnobject PLAYER, UP
-	jump IlexForestCharcoalApprenticeScript
+	sjump IlexForestCharcoalApprenticeScript
 
 IlexForestCharcoalMasterScript:
 	checkevent EVENT_GOT_HM01_CUT
@@ -352,7 +352,7 @@ IlexForestCharcoalMasterScript:
 	faceplayer
 	opentext
 	writetext Text_CharcoalMasterIntro
-	buttonsound
+	promptbutton
 	verbosegivetmhm HM_CUT
 	setevent EVENT_GOT_HM01_CUT
 	writetext Text_CharcoalMasterOutro
@@ -382,7 +382,7 @@ IlexForestTutorHeadbuttScript:
 	writetext Text_IlexForestTutorQuestion
 	yesorno
 	iffalse .TutorRefused
-	writebyte HEADBUTT
+	setval HEADBUTT
 	writetext ClearText
 	special Special_MoveTutor
 	ifequal $0, .TeachMove

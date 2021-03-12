@@ -1064,7 +1064,7 @@ RandomPhoneRareWildMon:
 
 .SawRareMonText:
 	; I just saw some rare @  in @ . I'll call you if I see another rare #MON, OK?
-	text_jump _JustSawSomeRareMonText
+	text_far _JustSawSomeRareMonText
 	text_end
 
 RandomPhoneWildMon:

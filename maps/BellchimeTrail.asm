@@ -23,13 +23,13 @@ BellchimeTrail_MapScriptHeader:
 	const BELLCHIMETRAIL_VALERIE
 
 BellchimeTrailStepDownTrigger:
-	priorityjump .Script
+	prioritysjump .Script
 	end
 
 .Script:
-	checkcode VAR_YCOORD
+	readvar VAR_YCOORD
 	ifnotequal $9, .Done
-	checkcode VAR_XCOORD
+	readvar VAR_XCOORD
 	ifnotequal $15, .Done
 	applyonemovement PLAYER, step_down
 .Done
@@ -47,11 +47,11 @@ SetupValerieMorningWalkCallback:
 	iffalse .Disappear
 .Appear:
 	appear BELLCHIMETRAIL_VALERIE
-	return
+	endcallback
 
 .Disappear:
 	disappear BELLCHIMETRAIL_VALERIE
-	return
+	endcallback
 
 BellchimeTrailPanUpTrigger:
 	playsound SFX_EXIT_BUILDING
@@ -108,14 +108,14 @@ BellchimeTrailValerieScript:
 	setevent EVENT_BEAT_VALERIE
 	opentext
 	writetext .RewardText
-	buttonsound
+	promptbutton
 	verbosegivetmhm TM_DAZZLINGLEAM
 	setevent EVENT_GOT_TM49_DAZZLINGLEAM_FROM_VALERIE
 	writetext .FarewellText
 .Depart
 	waitbutton
 	closetext
-	checkcode VAR_FACING
+	readvar VAR_FACING
 	ifnotequal RIGHT, .SkipGoAround
 	applymovement BELLCHIMETRAIL_VALERIE, .ValerieGoesAroundMovement
 .SkipGoAround
@@ -131,31 +131,31 @@ BellchimeTrailValerieScript:
 	closetext
 	winlosstext .RematchBeatenText, 0
 	setlasttalked BELLCHIMETRAIL_VALERIE
-	checkcode VAR_BADGES
+	readvar VAR_BADGES
 	ifequal 16, .Battle3
 	checkevent EVENT_BEAT_ELITE_FOUR
 	iftrue .Battle2
 	loadtrainer VALERIE, 1
 	startbattle
 	reloadmapafterbattle
-	jump .AfterRematch
+	sjump .AfterRematch
 
 .Battle2:
 	loadtrainer VALERIE, 2
 	startbattle
 	reloadmapafterbattle
-	jump .AfterRematch
+	sjump .AfterRematch
 
 .Battle3:
 	loadtrainer VALERIE, 3
 	startbattle
 	reloadmapafterbattle
-	jump .AfterRematch
+	sjump .AfterRematch
 
 .AfterRematch:
 	opentext
 	writetext .RematchFarewellText
-	jump .Depart
+	sjump .Depart
 
 .IntroText:
 	text "If it isn't the"

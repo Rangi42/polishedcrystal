@@ -56,7 +56,7 @@ SaffronCity_MapScriptHeader:
 
 SaffronCityFlyPoint:
 	setflag ENGINE_FLYPOINT_SAFFRON
-	return
+	endcallback
 
 SaffronCityLass1Script:
 	checkevent EVENT_RESTORED_POWER_TO_KANTO

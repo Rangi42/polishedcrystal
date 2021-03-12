@@ -28,13 +28,13 @@ CinnabarVolcanoB2FBouldersLand:
 	iffalse .skip1
 	changeblock 6, 6, $5f
 .skip1
-	return
+	endcallback
 
 CinnabarVolcanoB2FLawrenceEncounterScript:
 	showemote EMOTE_SHOCK, PLAYER, 15
 	special Special_FadeOutMusic
 	pause 15
-	checkcode VAR_FACING
+	readvar VAR_FACING
 	ifequal UP, .up
 	ifequal DOWN, .down
 	ifequal LEFT, .left
@@ -42,19 +42,19 @@ CinnabarVolcanoB2FLawrenceEncounterScript:
 	appear CINNABARVOLCANOB2F_LAWRENCE
 	applymovement CINNABARVOLCANOB2F_LAWRENCE, CinnabarVolcanoB2FMovementData_LawrenceApproachLeftRight
 	turnobject PLAYER, DOWN
-	jump .continue
+	sjump .continue
 .up
 	moveobject CINNABARVOLCANOB2F_LAWRENCE, 13, 24
 	appear CINNABARVOLCANOB2F_LAWRENCE
 	applymovement CINNABARVOLCANOB2F_LAWRENCE, CinnabarVolcanoB2FMovementData_LawrenceApproachUp
 	turnobject CINNABARVOLCANOB2F_LAWRENCE, UP
 	turnobject PLAYER, DOWN
-	jump .continue
+	sjump .continue
 .down
 	moveobject CINNABARVOLCANOB2F_LAWRENCE, 13, 24
 	appear CINNABARVOLCANOB2F_LAWRENCE
 	applymovement CINNABARVOLCANOB2F_LAWRENCE, CinnabarVolcanoB2FMovementData_LawrenceApproachDown
-	jump .continue
+	sjump .continue
 .left
 	moveobject CINNABARVOLCANOB2F_LAWRENCE, 14, 24
 	appear CINNABARVOLCANOB2F_LAWRENCE
@@ -88,12 +88,12 @@ CinnabarVolcanoMoltres:
 	pause 15
 	closetext
 	loadwildmon MOLTRES, 65
-	writecode VAR_BATTLETYPE, BATTLETYPE_LEGENDARY
+	loadvar VAR_BATTLETYPE, BATTLETYPE_LEGENDARY
 	startbattle
 	disappear CINNABARVOLCANOB2F_MOLTRES
 	setevent EVENT_CINNABAR_VOLCANO_MOLTRES
 	reloadmapafterbattle
-	writebyte MOLTRES
+	setval MOLTRES
 	special SpecialMonCheck
 	iffalse .NoCandela
 	setevent EVENT_CELADON_UNIVERSITY_CANDELA
@@ -105,7 +105,7 @@ CinnabarVolcanoMoltres:
 	iffalse .end
 	special SpecialBirdsCheck
 	iffalse .end
-	jump CinnabarVolcanoB2FLawrenceEncounterScript
+	sjump CinnabarVolcanoB2FLawrenceEncounterScript
 .end
 	end
 

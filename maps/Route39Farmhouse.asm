@@ -38,7 +38,7 @@ FarmerMScript_SellMilk:
 	closewindow
 	ifequal $1, .Buy1
 	ifequal $2, .Buy12
-	jump .Cancel
+	sjump .Cancel
 
 .Buy1:
 	checkmoney $0, 500
@@ -46,7 +46,7 @@ FarmerMScript_SellMilk:
 	giveitem MOOMOO_MILK
 	iffalse .BagFull
 	takemoney $0, 500
-	jump .Done
+	sjump .Done
 
 .Buy12:
 	checkmoney $0, 6000
@@ -61,7 +61,7 @@ FarmerMScript_SellMilk:
 	waitsfx
 	playsound SFX_TRANSACTION
 	writetext FarmerMText_GotMilk
-	buttonsound
+	promptbutton
 	itemnotify
 	endtext
 
@@ -102,7 +102,7 @@ PokefanF_AcrobaticsFarmer:
 
 .GiveAcrobatics:
 	writetext FarmerFText_HealedMiltank
-	buttonsound
+	promptbutton
 	verbosegivetmhm TM_ACROBATICS
 	setevent EVENT_GOT_TM62_ACROBATICS_FROM_MOOMOO_FARM
 .GotAcrobatics:

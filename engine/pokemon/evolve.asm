@@ -478,22 +478,22 @@ IsMonHoldingEverstone:
 
 Text_CongratulationsYourPokemon:
 	; Congratulations! Your @ @
-	text_jump _CongratulationsYourPokemonText
+	text_far _CongratulationsYourPokemonText
 	text_end
 
 Text_EvolvedIntoPKMN:
 	; evolved into @ !
-	text_jump _EvolvedIntoText
+	text_far _EvolvedIntoText
 	text_end
 
 Text_StoppedEvolving:
 	; Huh? @ stopped evolving!
-	text_jump _StoppedEvolvingText
+	text_far _StoppedEvolvingText
 	text_end
 
 Text_WhatEvolving:
 	; What? @ is evolving!
-	text_jump _EvolvingText
+	text_far _EvolvingText
 	text_end
 
 LearnEvolutionMove:

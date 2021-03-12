@@ -36,10 +36,10 @@ PokemonFanClubChairmanScript:
 	yesorno
 	iffalse_jumpopenedtext PokemonFanClubChairmanHowDisappointingText
 	writetext PokemonFanClubChairmanRapidashText
-	buttonsound
+	promptbutton
 UnknownScript_0x191802:
 	writetext PokemonFanClubChairmanIWantYouToHaveThisText
-	buttonsound
+	promptbutton
 	verbosegiveitem RARE_CANDY
 	iffalse_endtext
 	setevent EVENT_LISTENED_TO_FAN_CLUB_PRESIDENT
@@ -57,9 +57,9 @@ PokemonFanClubClefairyGuyScript:
 	iftrue UnknownScript_0x191844
 	waitendtext
 UnknownScript_0x191844:
-	buttonsound
+	promptbutton
 	writetext PokemonFanClubClefairyGuyTakeThisDollBackToGirlText
-	buttonsound
+	promptbutton
 	waitsfx
 	disappear POKEMONFANCLUB_CLEFAIRY_DOLL
 	verbosegivekeyitem LOST_ITEM

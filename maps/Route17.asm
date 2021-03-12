@@ -33,7 +33,7 @@ Route17_MapScriptHeader:
 Route17AlwaysOnBikeCallback:
 	setflag ENGINE_ALWAYS_ON_BIKE
 	setflag ENGINE_DOWNHILL
-	return
+	endcallback
 
 GenericTrainerBikerReilly:
 	generictrainer BIKER, REILLY, EVENT_BEAT_BIKER_REILLY, BikerReillySeenText, BikerReillyBeatenText

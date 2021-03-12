@@ -418,7 +418,7 @@ DoTextUntilTerminator::
 
 .TextCommand:
 	cp NGRAMS_START
-	jr nc, Text_Started
+	jr nc, _ImplicitlyStartedText
 	push hl
 	ld e, a
 	ld d, 0
@@ -429,24 +429,23 @@ DoTextUntilTerminator::
 	inc hl
 	ld d, [hl]
 	pop hl
-	; jp de
 	push de
 	ret
 
 TextCommands::
-	dw Text_Start      ; $00 <START>
-	dw Text_FromRAM    ; $01 <RAM>
-	dw Text_WaitButton ; $02 <WAIT>
-	dw Text_ASM        ; $03 <ASM>
-	dw Text_PrintNum   ; $04 <NUM>
-	dw Text_Exit       ; $05 <EXIT>
-	dw Text_PlaySound  ; $06 <SOUND>
-	dw Text_WeekDay    ; $07 <DAY>
-	dw Text_Jump       ; $08 <FAR>
+	dw TextCommand_START         ; $00 <START>
+	dw TextCommand_RAM           ; $01 <RAM>
+	dw TextCommand_PROMPT_BUTTON ; $02 <WAIT>
+	dw TextCommand_ASM           ; $03 <ASM>
+	dw TextCommand_DECIMAL       ; $04 <NUM>
+	dw TextCommand_PAUSE         ; $05 <PAUSE>
+	dw TextCommand_SOUND         ; $06 <SOUND>
+	dw TextCommand_DAY           ; $07 <DAY>
+	dw TextCommand_FAR           ; $08 <FAR>
 
-Text_Started:
+_ImplicitlyStartedText:
 	dec hl
-Text_Start::
+TextCommand_START::
 ; write text until "@"
 	ld d, h
 	ld e, l
@@ -458,8 +457,7 @@ Text_Start::
 	inc hl
 	ret
 
-Text_FromRAM::
-; text_from_ram
+TextCommand_RAM::
 ; write text from a ram address
 	ld a, [hli]
 	ld e, a
@@ -472,8 +470,7 @@ Text_FromRAM::
 	pop hl
 	ret
 
-Text_Jump::
-; text_jump
+TextCommand_FAR::
 ; write text from a different bank
 	ldh a, [hROMBank]
 	push af
@@ -495,9 +492,8 @@ Text_Jump::
 	rst Bankswitch
 	ret
 
-Text_WaitButton::
-; wait for button press
-; show arrow
+TextCommand_PROMPT_BUTTON::
+; wait for button press; show arrow
 	push hl
 	ld a, [wLinkMode]
 	cp LINK_COLOSSEUM
@@ -511,7 +507,7 @@ Text_WaitButton::
 	pop hl
 	ret
 
-Text_ASM::
+TextCommand_ASM::
 	bit 7, h
 	jr nz, .not_rom
 	jp hl
@@ -520,7 +516,8 @@ Text_ASM::
 	ld [hl], "@"
 	ret
 
-Text_PrintNum::
+TextCommand_DECIMAL::
+; print a decimal number
 	ld a, [hli]
 	ld e, a
 	ld a, [hli]
@@ -544,7 +541,8 @@ FinishString:
 	pop hl
 	ret
 
-Text_Exit::
+TextCommand_PAUSE::
+; wait for button press or 30 frames
 	push hl
 	push bc
 	call GetJoypad
@@ -558,7 +556,8 @@ Text_Exit::
 	pop hl
 	ret
 
-Text_PlaySound::
+TextCommand_SOUND::
+; play a sound effect
 	ld a, [hli]
 	push hl
 	push de
@@ -569,7 +568,8 @@ Text_PlaySound::
 	call WaitSFX
 	jp PopBCDEHL
 
-Text_WeekDay::
+TextCommand_DAY::
+; print the day of the week
 	call GetWeekday
 PrintDayOfWeek::
 	push hl

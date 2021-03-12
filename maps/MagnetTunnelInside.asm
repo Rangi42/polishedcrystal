@@ -50,13 +50,13 @@ MagnetTunnelInsideTileCallback:
 	checkevent EVENT_MAGNET_TUNNEL_LODESTONE_IN_PIT
 	iffalse .NoPit
 	changeblock 34, 4, $68
-	return
+	endcallback
 .NoPit
 	checkevent EVENT_MAGNET_TUNNEL_LODESTONE_4
 	iffalse .NoMachine4
 	changeblock 34, 8, $66
 .NoMachine4
-	return
+	endcallback
 
 MagnetTunnelInsideMachine1:
 	checkevent EVENT_MAGNET_TUNNEL_LODESTONE_1

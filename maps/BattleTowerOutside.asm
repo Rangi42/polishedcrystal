@@ -26,13 +26,13 @@ BattleTowerOutside_MapScriptHeader:
 	object_event  9,  9, SPRITE_RATTATA_BACK, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptext, BattleTowerOutsideDoorsClosedText, EVENT_BATTLE_TOWER_OPEN
 
 BattleTowerOutsideStepDownTrigger:
-	priorityjump .Script
+	prioritysjump .Script
 	end
 
 .Script:
-	checkcode VAR_YCOORD
+	readvar VAR_YCOORD
 	ifnotequal $9, .Done
-	checkcode VAR_XCOORD
+	readvar VAR_XCOORD
 	ifequal $8, .Down
 	ifnotequal $9, .Done
 .Down

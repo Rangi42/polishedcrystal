@@ -43,21 +43,21 @@ JoeyTopPercentageText:
 	text "Hey, do you remem-"
 	line "ber my super cool"
 	cont ""
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text "?"
 
 	para "My "
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text " is"
 	line "different from"
 	cont "regular "
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text "."
 
 	para "It's in the top"
 	line "percentage of"
 	cont ""
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text "."
 
 	para "Do you know what"

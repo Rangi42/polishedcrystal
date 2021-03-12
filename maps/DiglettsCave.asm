@@ -31,7 +31,7 @@ DiglettsCaveFossilManiacScript:
 	faceplayer
 	opentext
 	writetext .GreetingText
-	buttonsound
+	promptbutton
 	special Special_ChooseItem
 	iffalse_jumpopenedtext .NoItemText
 	special GetFossilManiacPrice
@@ -40,7 +40,7 @@ DiglettsCaveFossilManiacScript:
 	special PlaceMoneyTopRight
 	yesorno
 	iffalse_jumpopenedtext .NoItemText
-	copybytetovar wCurItem
+	readmem wCurItem
 	takeitem ITEM_FROM_MEM
 	waitsfx
 	playsound SFX_TRANSACTION
@@ -81,7 +81,7 @@ DiglettsCaveFossilManiacScript:
 
 	para "I'll give you"
 	line "¥"
-	deciram hMoneyTemp, 3, 7
+	text_decimal hMoneyTemp, 3, 7
 	text " for it."
 	cont "Whaddaya say?"
 	done

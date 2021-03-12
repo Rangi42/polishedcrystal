@@ -27,14 +27,14 @@ Route37_MapScriptHeader:
 	const ROUTE37_SUNNY
 
 SunnyCallback:
-	checkcode VAR_WEEKDAY
+	readvar VAR_WEEKDAY
 	ifequal SUNDAY, .SunnyAppears
 	disappear ROUTE37_SUNNY
-	return
+	endcallback
 
 .SunnyAppears:
 	appear ROUTE37_SUNNY
-	return
+	endcallback
 
 GenericTrainerTwinsToriandtil1:
 	generictrainer TWINS, ANNANDANNE1, EVENT_BEAT_TWINS_ANN_AND_ANNE, TwinsToriandtil1SeenText, TwinsToriandtil1BeatenText
@@ -68,22 +68,22 @@ SunnyScript:
 	opentext
 	checkevent EVENT_GOT_MAGNET_FROM_SUNNY
 	iftrue SunnySundayScript
-	checkcode VAR_WEEKDAY
+	readvar VAR_WEEKDAY
 	ifnotequal SUNDAY, SunnyNotSundayScript
 	checkevent EVENT_MET_SUNNY_OF_SUNDAY
 	iftrue .MetSunny
 	writetext MeetSunnyText
-	buttonsound
+	promptbutton
 	setevent EVENT_MET_SUNNY_OF_SUNDAY
 .MetSunny:
 	checkflag ENGINE_PLAYER_IS_FEMALE
 	iftrue .Kris
 	writetext SunnyGivesGiftText1
-	buttonsound
-	jump .next
+	promptbutton
+	sjump .next
 .Kris:
 	writetext SunnyGivesGiftText2
-	buttonsound
+	promptbutton
 .next
 	verbosegiveitem MAGNET
 	iffalse SunnyDoneScript

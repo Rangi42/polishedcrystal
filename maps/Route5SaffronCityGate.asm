@@ -32,7 +32,7 @@ Route5SaffronCityGateBlackBeltScript:
 	faceplayer
 	opentext
 	writetext .Text1
-	buttonsound
+	promptbutton
 	verbosegiveitem PROTEIN
 	iffalse_endtext
 	setevent EVENT_GOT_PROTEIN_FROM_SAFFRON_GATE

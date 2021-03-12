@@ -85,5 +85,5 @@ DisplayCaughtContestMonStats:
 
 SwitchMonText:
 	; Switch #MON?
-	text_jump _ContestAskSwitchText
+	text_far _ContestAskSwitchText
 	text_end

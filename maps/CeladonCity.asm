@@ -55,7 +55,7 @@ CeladonCity_MapScriptHeader:
 
 CeladonCityFlyPoint:
 	setflag ENGINE_FLYPOINT_CELADON
-	return
+	endcallback
 
 CeladonCityScript:
 	faceplayer
@@ -73,7 +73,7 @@ CeladonCityTutorSwaggerScript:
 	writetext Text_CeladonCityTutorQuestion
 	yesorno
 	iffalse .TutorRefused
-	writebyte SWAGGER
+	setval SWAGGER
 	writetext ClearText
 	special Special_MoveTutor
 	ifequal $0, .TeachMove

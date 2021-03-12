@@ -19,7 +19,7 @@ HallOfFame_MapScriptHeader:
 	const HALLOFFAME_LANCE
 
 HallOfFameEntranceTrigger:
-	priorityjump .Script
+	prioritysjump .Script
 	end
 
 .Script:
@@ -30,15 +30,15 @@ HallOfFameEntranceTrigger:
 	opentext
 	writetext .LanceText1
 	waitbutton
-	checkcode VAR_BADGES
+	readvar VAR_BADGES
 	ifequal 16, .CheckGoldTrophy
 	checkevent EVENT_DECO_SILVER_TROPHY
 	iftrue .NoTrophy
-	jump .SilverTrophy
+	sjump .SilverTrophy
 .CheckGoldTrophy
 	checkevent EVENT_DECO_GOLD_TROPHY
 	iftrue .NoTrophy
-	jump .GoldTrophy
+	sjump .GoldTrophy
 .SilverTrophy
 	writetext .LanceTrophyText
 	waitbutton
@@ -49,7 +49,7 @@ HallOfFameEntranceTrigger:
 	waitbutton
 	writetext .SilverTrophySentText
 	waitbutton
-	jump .NoTrophy
+	sjump .NoTrophy
 .GoldTrophy
 	writetext .LanceTrophyText
 	waitbutton
@@ -60,7 +60,7 @@ HallOfFameEntranceTrigger:
 	waitbutton
 	writetext .GoldTrophySentText
 	waitbutton
-	jump .NoTrophy
+	sjump .NoTrophy
 .NoTrophy
 	writetext .LanceText2
 	waitbutton
@@ -69,9 +69,9 @@ HallOfFameEntranceTrigger:
 	applyonemovement PLAYER, slow_step_up
 	setscene $1
 	pause 15
-	writebyte 2 ; Machine is in the Hall of Fame
+	setval 2 ; Machine is in the Hall of Fame
 	special HealMachineAnim
-	checkcode VAR_BADGES
+	readvar VAR_BADGES
 	ifless 16, .NotATrueRematch
 	setevent EVENT_BEAT_ELITE_FOUR_AGAIN
 .NotATrueRematch
