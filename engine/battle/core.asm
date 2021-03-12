@@ -680,10 +680,10 @@ PerformMove:
 	xor a
 	ld [wDamageTaken], a
 	ld [wDamageTaken + 1], a
-	ld a, BATTLE_VARS_SUBSTATUS2
+	ld a, BATTLE_VARS_SUBSTATUS2_OPP
 	call GetBattleVarAddr
 	res SUBSTATUS_IN_ABILITY, [hl]
-	ld a, BATTLE_VARS_SUBSTATUS2_OPP
+	ld a, BATTLE_VARS_SUBSTATUS2
 	call GetBattleVarAddr
 	res SUBSTATUS_IN_ABILITY, [hl]
 	ld a, BATTLE_VARS_MOVE
