@@ -170,7 +170,7 @@ DoPoisonStep::
 	ret
 
 .PoisonRecoveryText:
-	text_jump _PoisonFaintText
+	text_far _PoisonFaintText
 	text_end
 
 LoadPoisonBGPals:

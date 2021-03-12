@@ -1,7 +1,7 @@
 JackAnswerPhoneText:
 	text "Hello. This is"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "…"
 
 	para "Good morning,"
@@ -11,7 +11,7 @@ JackAnswerPhoneText:
 JackAnswerPhoneDayText:
 	text "Hello. This is"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "…"
 
 	para "How's it going,"
@@ -21,7 +21,7 @@ JackAnswerPhoneDayText:
 JackAnswerPhoneNiteText:
 	text "Hello. This is"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "…"
 
 	para "Good evening,"
@@ -33,7 +33,7 @@ JackGreetText:
 	line "morning!"
 
 	para "It's me, "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 	line "How are you doing?"
 	done
@@ -42,7 +42,7 @@ JackGreetDayText:
 	text "<PLAYER>, howdy!"
 
 	para "It's me, "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 	line "Isn't it nice out?"
 	done
@@ -52,7 +52,7 @@ JackGreetNiteText:
 	line "evening!"
 
 	para "It's me, "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 	line "Got a minute?"
 	done
@@ -62,7 +62,7 @@ JackGenericText:
 	line "#mon doing?"
 
 	para "My "
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text " is"
 	line "so curious, it's a"
 
@@ -73,7 +73,7 @@ JackGenericText:
 BeverlyAnswerPhoneText:
 	text "Hello, this is"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 
 	para "Oh! Good morning,"
@@ -83,7 +83,7 @@ BeverlyAnswerPhoneText:
 BeverlyAnswerPhoneDayText:
 	text "Hello, this is"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 
 	para "Oh! Good day,"
@@ -93,7 +93,7 @@ BeverlyAnswerPhoneDayText:
 BeverlyAnswerPhoneNiteText:
 	text "Hello, this is"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 
 	para "Oh! Good evening,"
@@ -105,7 +105,7 @@ BeverlyGreetText:
 	line "Good morning."
 
 	para "This is "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 	line "Were you asleep?"
 	done
@@ -113,7 +113,7 @@ BeverlyGreetText:
 BeverlyGreetDayText:
 	text "Hi, <PLAYER>."
 	line "This is "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 
 	para "How are you doing?"
@@ -122,7 +122,7 @@ BeverlyGreetDayText:
 BeverlyGreetNiteText:
 	text "Hi, <PLAYER>."
 	line "This is "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 
 	para "Were you awake?"
@@ -133,7 +133,7 @@ BeverlyGenericText:
 	line "#mon happy?"
 
 	para "My "
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text " is"
 	line "healthy. It eats a"
 	cont "lot every day."
@@ -142,7 +142,7 @@ BeverlyGenericText:
 HueyAnswerPhoneText:
 	text "Yeah, this is"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 
 	para "Huh? What's up,"
@@ -152,7 +152,7 @@ HueyAnswerPhoneText:
 HueyAnswerPhoneDayText:
 	text "Yeah, this is"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 
 	para "Huh? What's up"
@@ -162,7 +162,7 @@ HueyAnswerPhoneDayText:
 HueyAnswerPhoneNiteText:
 	text "Yeah, this is"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 
 	para "Huh? What's up"
@@ -174,7 +174,7 @@ HueyGreetText:
 	line "You awake?"
 
 	para "It's me, "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "!"
 	line "How's it going?"
 	done
@@ -184,7 +184,7 @@ HueyGreetDayText:
 	line "free right now?"
 
 	para "It's me, "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "!"
 	line "How's it going?"
 	done
@@ -194,7 +194,7 @@ HueyGreetNiteText:
 	line "Were you asleep?"
 
 	para "It's me, "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "!"
 	line "How's it going?"
 	done
@@ -207,7 +207,7 @@ UnknownGenericText:
 	line "bit too energetic."
 
 	para ""
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text ","
 	line "especially."
 
@@ -221,7 +221,7 @@ UnknownGenericText:
 
 UnknownTougherThanEverText:
 	text "My "
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text "'s"
 	line "looking tougher"
 	cont "than ever."
@@ -233,7 +233,7 @@ UnknownTougherThanEverText:
 GavenAnswerPhoneText:
 	text "Hello, this is"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text " speaking…"
 
 	para "Hi, <PLAYER>!"
@@ -243,7 +243,7 @@ GavenAnswerPhoneText:
 GavenAnswerPhoneDayText:
 	text "Hello, this is"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text " speaking…"
 
 	para "Hi, <PLAYER>!"
@@ -252,7 +252,7 @@ GavenAnswerPhoneDayText:
 GavenAnswerPhoneNiteText:
 	text "Hello, this is"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text " speaking…"
 
 	para "Hi, <PLAYER>!"
@@ -264,7 +264,7 @@ GavenGreetText:
 	line "morning!"
 
 	para "It's me, "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 	line "How are you doing?"
 	done
@@ -273,7 +273,7 @@ GavenGreetDayText:
 	text "Hi, <PLAYER>!"
 
 	para "It's me, "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 	line "How are you doing?"
 	done
@@ -283,7 +283,7 @@ GavenGreetNiteText:
 	line "evening!"
 
 	para "It's me, "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 	line "How are you doing?"
 	done
@@ -293,7 +293,7 @@ GavenGenericText:
 	line "#mon doing?"
 
 	para "My "
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text "'s"
 	line "doing as great as"
 	cont "ever."
@@ -306,7 +306,7 @@ GavenGenericText:
 BethAnswerPhoneText:
 	text "Hello, this is"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 	para "Oh, <PLAYER>."
 	line "Good morning."
@@ -316,7 +316,7 @@ BethAnswerPhoneText:
 BethAnswerPhoneDayText:
 	text "Hello, this is"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 
 	para "Oh. Hi, <PLAYER>."
@@ -325,7 +325,7 @@ BethAnswerPhoneDayText:
 BethAnswerPhoneNiteText:
 	text "Hello, this is"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 
 	para "Oh, <PLAYER>."
@@ -337,7 +337,7 @@ BethGreetText:
 	line "<PLAYER>!"
 
 	para "This is "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 	line "Were you sleeping?"
 	done
@@ -345,7 +345,7 @@ BethGreetText:
 BethGreetDayText:
 	text "<PLAYER>, hi!"
 	line "This is "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 
 	para "Do you have some"
@@ -357,7 +357,7 @@ BethGreetNiteText:
 	line "Good evening."
 
 	para "This is "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 
 	para "I hope you were"
@@ -384,7 +384,7 @@ BethGenericText:
 JoseAnswerPhoneText:
 	text "Hello, this is"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "…"
 
 	para "Oh, <PLAYER>?"
@@ -394,7 +394,7 @@ JoseAnswerPhoneText:
 JoseAnswerPhoneDayText:
 	text "Hello, this is"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "…"
 
 	para "Oh, <PLAYER>? Hi!"
@@ -403,7 +403,7 @@ JoseAnswerPhoneDayText:
 JoseAnswerPhoneNiteText:
 	text "Hello, this is"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "…"
 
 	para "Oh, <PLAYER>?"
@@ -415,7 +415,7 @@ JoseGreetText:
 
 	para "Tweet! Yeah, it's"
 	line "me, "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 	done
 
@@ -424,7 +424,7 @@ JoseGreetDayText:
 
 	para "Tweet! Yeah, it's"
 	line "me, "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 	done
 
@@ -433,7 +433,7 @@ JoseGreetNiteText:
 
 	para "Tweet! Yeah, it's"
 	line "me, "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 	done
 
@@ -442,7 +442,7 @@ JoseGenericText:
 	line "still cooking?"
 
 	para "My "
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text " has"
 	line "too much energy."
 
@@ -454,7 +454,7 @@ JoseGenericText:
 ReenaAnswerPhoneText:
 	text "Hello, this is"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "…"
 
 	para "Oh. Hi, <PLAYER>."
@@ -464,7 +464,7 @@ ReenaAnswerPhoneText:
 ReenaAnswerPhoneDayText:
 	text "Hello, this is"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "…"
 
 	para "Oh, hi, <PLAYER>,"
@@ -474,7 +474,7 @@ ReenaAnswerPhoneDayText:
 ReenaAnswerPhoneNiteText:
 	text "Hello, this is"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "…"
 
 	para "Oh, hi, <PLAYER>,"
@@ -486,7 +486,7 @@ ReenaGreetText:
 	line "up and answer!"
 
 	para "It's me, "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "!"
 	done
 
@@ -495,7 +495,7 @@ ReenaGreetDayText:
 	line "up and answer!"
 
 	para "It's me, "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "!"
 	done
 
@@ -504,7 +504,7 @@ ReenaGreetNiteText:
 	line "up and answer!"
 
 	para "It's me, "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "!"
 	done
 
@@ -526,7 +526,7 @@ ReenaGenericText:
 
 JoeyAnswerPhoneText:
 	text "Hi, "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text " here!"
 
 	para "Oh, <PLAYER>? You"
@@ -535,7 +535,7 @@ JoeyAnswerPhoneText:
 
 JoeyAnswerPhoneDayText:
 	text "Hi, "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text " here!"
 
 	para "Oh, <PLAYER>? You"
@@ -544,7 +544,7 @@ JoeyAnswerPhoneDayText:
 
 JoeyAnswerPhoneNiteText:
 	text "Hi, "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text " here!"
 
 	para "Oh, <PLAYER>? You"
@@ -556,7 +556,7 @@ JoeyGreetText:
 	line "How're you doing?"
 
 	para "This is "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text ","
 	line "got a minute?"
 	done
@@ -566,7 +566,7 @@ JoeyGreetDayText:
 	line "it going?"
 
 	para "This is "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 	line "Got a minute?"
 	done
@@ -576,7 +576,7 @@ JoeyGreetNiteText:
 	line "How're you doing?"
 
 	para "This is "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text ","
 	line "got a minute?"
 	done
@@ -586,7 +586,7 @@ JoeyGenericText:
 	line "#mon doing?"
 
 	para "My "
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text "'s"
 	line "raring to go, just"
 	cont "like always."
@@ -601,7 +601,7 @@ JoeyGenericText:
 WadeAnswerPhoneText:
 	text "Hello? This is"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text " speaking."
 
 	para "Oh. Hi, <PLAYER>!"
@@ -611,7 +611,7 @@ WadeAnswerPhoneText:
 WadeAnswerPhoneDayText:
 	text "Hello? This is"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text " speaking."
 
 	para "Oh, hi, <PLAYER>!"
@@ -620,7 +620,7 @@ WadeAnswerPhoneDayText:
 WadeAnswerPhoneNiteText:
 	text "Hello? This is"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text " speaking."
 
 	para "Oh, hi, <PLAYER>!"
@@ -632,7 +632,7 @@ WadeGreetText:
 	line "morning!"
 
 	para "It's me, "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 	line "Isn't it nice out?"
 	done
@@ -641,7 +641,7 @@ WadeGreetDayText:
 	text "<PLAYER>, howdy!"
 
 	para "It's me, "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 	line "Isn't it nice out?"
 	done
@@ -651,7 +651,7 @@ WadeGreetNiteText:
 	line "<PLAYER>!"
 
 	para "It's me, "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 	line "Were you awake?"
 	done
@@ -668,7 +668,7 @@ WadeGenericText:
 
 	para "Of all my #mon,"
 	line ""
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text " is the"
 	cont "hardest to handle."
 
@@ -709,21 +709,21 @@ RalphAnswerPhoneNiteText:
 RalphGreetText:
 	text "Hiya, it's Uncle"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 	done
 
 RalphGreetDayText:
 	text "Hiya, it's Uncle"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 	done
 
 RalphGreetNiteText:
 	text "Hiya, it's Uncle"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 	done
 
@@ -738,7 +738,7 @@ RalphGenericText:
 
 LizAnswerPhoneText:
 	text "Hello, "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	line "speaking."
 
 	para "Oh, <PLAYER>."
@@ -747,7 +747,7 @@ LizAnswerPhoneText:
 
 LizAnswerPhoneDayText:
 	text "Hello, "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	line "speaking."
 
 	para "Oh, <PLAYER>."
@@ -756,7 +756,7 @@ LizAnswerPhoneDayText:
 
 LizAnswerPhoneNiteText:
 	text "Hello, "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	line "speaking."
 
 	para "Oh, <PLAYER>."
@@ -768,7 +768,7 @@ LizGreetText:
 	line "<PLAYER>."
 
 	para "This is "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 	line "Were you sleeping?"
 	done
@@ -776,7 +776,7 @@ LizGreetText:
 LizGreetDayText:
 	text "Hi, <PLAYER>."
 	line "This is "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 
 	para "How are things"
@@ -788,7 +788,7 @@ LizGreetNiteText:
 	line "<PLAYER>."
 
 	para "This is "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 	line "Are you awake?"
 	done
@@ -802,7 +802,7 @@ LizGenericText:
 
 	para "Me, I take my"
 	line ""
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text " to the"
 
 	para "#mon Center in"
@@ -817,7 +817,7 @@ LizGenericText:
 
 AnthonyAnswerPhoneText:
 	text "Yeah, "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text " the"
 	line "Hiker here."
 
@@ -826,7 +826,7 @@ AnthonyAnswerPhoneText:
 
 AnthonyAnswerPhoneDayText:
 	text "Yeah, "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text " the"
 	line "Hiker here."
 
@@ -836,7 +836,7 @@ AnthonyAnswerPhoneDayText:
 
 AnthonyAnswerPhoneNiteText:
 	text "Yeah, "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text " the"
 	line "Hiker here."
 
@@ -848,7 +848,7 @@ AnthonyGreetText:
 	text "Yo, <PLAYER>?"
 
 	para "This is "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	line "the Hiker!"
 	done
 
@@ -857,7 +857,7 @@ AnthonyGreetDayText:
 	line "<PLAYER>?"
 
 	para "This is "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	line "the Hiker!"
 	done
 
@@ -866,7 +866,7 @@ AnthonyGreetNiteText:
 	line "awake?"
 
 	para "This is "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	line "the Hiker!"
 	done
 
@@ -875,7 +875,7 @@ AnthonyGenericText:
 	line "as feisty as ever?"
 
 	para "My "
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text " and"
 	line "me--we have energy"
 
@@ -889,7 +889,7 @@ AnthonyGenericText:
 ToddAnswerPhoneText:
 	text "Yes? This is"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text " speaking."
 
 	para "Hey, <PLAYER>!"
@@ -898,7 +898,7 @@ ToddAnswerPhoneText:
 ToddAnswerPhoneDayText:
 	text "Yes? This is"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text " speaking."
 
 	para "This must be"
@@ -908,7 +908,7 @@ ToddAnswerPhoneDayText:
 ToddAnswerPhoneNiteText:
 	text "Yes? This is"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text " speaking."
 
 	para "Ah, <PLAYER>!"
@@ -917,7 +917,7 @@ ToddAnswerPhoneNiteText:
 ToddGreetText:
 	text "Hello, this is"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 
 	para "<PLAYER>, right?"
@@ -926,7 +926,7 @@ ToddGreetText:
 ToddGreetDayText:
 	text "Hello, this is"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 
 	para "<PLAYER>, what are"
@@ -936,7 +936,7 @@ ToddGreetDayText:
 ToddGreetNiteText:
 	text "Hello, this is"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 
 	para "<PLAYER>, sorry to"
@@ -960,7 +960,7 @@ ToddGenericText:
 GinaAnswerPhoneText:
 	text "Hello? This is"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "…"
 
 	para "Oh, <PLAYER>!"
@@ -970,7 +970,7 @@ GinaAnswerPhoneText:
 GinaAnswerPhoneDayText:
 	text "Hello? This is"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "…"
 
 	para "Oh, <PLAYER>!"
@@ -980,7 +980,7 @@ GinaAnswerPhoneDayText:
 GinaAnswerPhoneNiteText:
 	text "Hello? This is"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "…"
 
 	para "Oh, <PLAYER>!"
@@ -991,7 +991,7 @@ GinaGreetText:
 	text "<PLAYER>?"
 
 	para "It's "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 	line "Good morning!"
 	done
@@ -1000,7 +1000,7 @@ GinaGreetDayText:
 	text "<PLAYER>?"
 
 	para "It's "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text ". Is"
 	line "this a bad time?"
 	done
@@ -1009,7 +1009,7 @@ GinaGreetNiteText:
 	text "<PLAYER>?"
 
 	para "It's "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 	line "Got time to chat?"
 	done
@@ -1020,13 +1020,13 @@ GinaGenericText:
 
 	para "I train every day"
 	line "with "
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text "."
 	done
 
 IrwinAnswerPhoneText:
 	text "Hello? "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	line "here…"
 
 	para "Hey, <PLAYER>!"
@@ -1034,7 +1034,7 @@ IrwinAnswerPhoneText:
 
 IrwinAnswerPhoneDayText:
 	text "Hello? "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	line "here…"
 
 	para "Wow, <PLAYER>!"
@@ -1042,7 +1042,7 @@ IrwinAnswerPhoneDayText:
 
 IrwinAnswerPhoneNiteText:
 	text "Hello? "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	line "here…"
 
 	para "Yippee, <PLAYER>!"
@@ -1054,7 +1054,7 @@ IrwinGreetText:
 
 	para "It's your pal,"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "!"
 	done
 
@@ -1064,7 +1064,7 @@ IrwinGreetDayText:
 
 	para "It's your buddy"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "!"
 	done
 
@@ -1074,14 +1074,14 @@ IrwinGreetNiteText:
 
 	para "It's your sidekick"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "!"
 	done
 
 ArnieAnswerPhoneText:
 	text "Yeah, hello."
 	line "This is "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 
 	para "…Huh, <PLAYER>? Yo!"
@@ -1090,7 +1090,7 @@ ArnieAnswerPhoneText:
 ArnieAnswerPhoneDayText:
 	text "Yeah, hello, you"
 	line "got "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 
 	para "…Huh, <PLAYER>? Yo!"
@@ -1099,7 +1099,7 @@ ArnieAnswerPhoneDayText:
 ArnieAnswerPhoneNiteText:
 	text "Yeah, hello, you"
 	line "got "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 
 	para "…Huh, <PLAYER>? Yo!"
@@ -1108,7 +1108,7 @@ ArnieAnswerPhoneNiteText:
 ArnieGreetText:
 	text "Yeah, hello?"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text " calling."
 
 	para "What are you up"
@@ -1118,7 +1118,7 @@ ArnieGreetText:
 ArnieGreetDayText:
 	text "Yeah, hello?"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text " calling."
 
 	para "Where are you now,"
@@ -1128,7 +1128,7 @@ ArnieGreetDayText:
 ArnieGreetNiteText:
 	text "Yeah, hello?"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text " calling."
 
 	para "Are you awake now,"
@@ -1143,7 +1143,7 @@ ArnieGenericText:
 
 AlanAnswerPhoneText:
 	text "Yup, it's "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "!"
 
 	para "Is this <PLAYER>?"
@@ -1152,7 +1152,7 @@ AlanAnswerPhoneText:
 
 AlanAnswerPhoneDayText:
 	text "Yup, it's "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "!"
 
 	para "Is that <PLAYER>?"
@@ -1160,7 +1160,7 @@ AlanAnswerPhoneDayText:
 
 AlanAnswerPhoneNiteText:
 	text "Yup, it's "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "!"
 
 	para "Is that <PLAYER>?"
@@ -1170,21 +1170,21 @@ AlanAnswerPhoneNiteText:
 AlanGreetText:
 	text "Hello! It's me,"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "!"
 	done
 
 AlanGreetDayText:
 	text "Hello! It's me,"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "!"
 	done
 
 AlanGreetNiteText:
 	text "Hello! It's me,"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "!"
 	done
 
@@ -1203,7 +1203,7 @@ AlanGenericText:
 
 DanaAnswerPhoneText:
 	text "Hi, "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text " on the"
 	line "line."
 
@@ -1212,7 +1212,7 @@ DanaAnswerPhoneText:
 
 DanaAnswerPhoneDayText:
 	text "Hi, "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text " on the"
 	line "line."
 
@@ -1222,7 +1222,7 @@ DanaAnswerPhoneDayText:
 
 DanaAnswerPhoneNiteText:
 	text "Hi, "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text " on the"
 	line "line."
 
@@ -1235,7 +1235,7 @@ DanaGreetText:
 
 	para "It's me!"
 	line "It's me, "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "!"
 	done
 
@@ -1244,7 +1244,7 @@ DanaGreetDayText:
 
 	para "It's me!"
 	line "It's me, "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "!"
 	done
 
@@ -1253,13 +1253,13 @@ DanaGreetNiteText:
 
 	para "It's me!"
 	line "It's me, "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "!"
 	done
 
 DanaGenericText:
 	text "My "
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text " is"
 	line "so full of energy,"
 
@@ -1273,7 +1273,7 @@ DanaGenericText:
 ChadAnswerPhoneText:
 	text "Hello, this is"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "…"
 
 	para "Hi, <PLAYER>!"
@@ -1283,7 +1283,7 @@ ChadAnswerPhoneText:
 ChadAnswerPhoneDayText:
 	text "Hello, this is"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "…"
 
 	para "Hi, <PLAYER>, good"
@@ -1293,7 +1293,7 @@ ChadAnswerPhoneDayText:
 ChadAnswerPhoneNiteText:
 	text "Hello, this is"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "…"
 
 	para "Hi, <PLAYER>, good"
@@ -1305,7 +1305,7 @@ ChadGreetText:
 	line "morning!"
 
 	para "It's "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 	line "How are you?"
 	done
@@ -1315,7 +1315,7 @@ ChadGreetDayText:
 	line "day!"
 
 	para "It's "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 	line "How are you?"
 	done
@@ -1325,7 +1325,7 @@ ChadGreetNiteText:
 	line "evening!"
 
 	para "It's "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 	line "How are you?"
 	done
@@ -1375,7 +1375,7 @@ DerekGreetText:
 	line "morning!"
 
 	para "It's "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text ", how"
 	line "pika are you?"
 	done
@@ -1385,7 +1385,7 @@ DerekGreetDayText:
 	line "pika day!"
 
 	para "It's "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text ", how"
 	line "pika are you?"
 	done
@@ -1395,7 +1395,7 @@ DerekGreetNiteText:
 	line "evening!"
 
 	para "It's "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text ". Were"
 	line "you pika awake?"
 	done
@@ -1405,7 +1405,7 @@ DerekGenericText:
 	line "this! My lovable"
 
 	para ""
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text " looked"
 	line "at me and grinned!"
 
@@ -1417,7 +1417,7 @@ DerekGenericText:
 TullyAnswerPhoneText:
 	text "Hello, this is"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "…"
 
 	para "Oh, Good morning,"
@@ -1427,7 +1427,7 @@ TullyAnswerPhoneText:
 TullyAnswerPhoneDayText:
 	text "Hello, this is"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "…"
 
 	para "That voice…"
@@ -1437,7 +1437,7 @@ TullyAnswerPhoneDayText:
 TullyAnswerPhoneNiteText:
 	text "Hello, this is"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "…"
 
 	para "This must be"
@@ -1447,7 +1447,7 @@ TullyAnswerPhoneNiteText:
 TullyGreetText:
 	text "Hello!"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text " here…"
 
 	para "Good morning! The"
@@ -1457,7 +1457,7 @@ TullyGreetText:
 TullyGreetDayText:
 	text "Hello!"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text " here…"
 
 	para "What a perfect day"
@@ -1467,7 +1467,7 @@ TullyGreetDayText:
 TullyGreetNiteText:
 	text "Hello!"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text " here…"
 
 	para "It's a great night"
@@ -1484,7 +1484,7 @@ TullyGenericText:
 
 BrentAnswerPhoneText:
 	text "Yes? "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text " here…"
 
 	para "Ah, <PLAYER>. What"
@@ -1493,7 +1493,7 @@ BrentAnswerPhoneText:
 
 BrentAnswerPhoneDayText:
 	text "Yes? "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text " here…"
 
 	para "Ah, <PLAYER>. What"
@@ -1502,7 +1502,7 @@ BrentAnswerPhoneDayText:
 
 BrentAnswerPhoneNiteText:
 	text "Yes? "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text " here…"
 
 	para "Ah, <PLAYER>. What"
@@ -1515,7 +1515,7 @@ BrentGreetText:
 
 	para "Hey! It's me,"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 	done
 
@@ -1525,7 +1525,7 @@ BrentGreetDayText:
 
 	para "Hey, it's me,"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 	done
 
@@ -1535,7 +1535,7 @@ BrentGreetNiteText:
 
 	para "Hey, it's me,"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 	done
 
@@ -1553,7 +1553,7 @@ BrentGenericText:
 	line "I'm impressed."
 
 	para "Heh, my "
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	line "is so tough, it"
 
 	para "doesn't need to go"
@@ -1564,7 +1564,7 @@ BrentGenericText:
 TiffanyAnswerPhoneText:
 	text "Yes? This is"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 
 	para "Oh, <PLAYER>."
@@ -1574,7 +1574,7 @@ TiffanyAnswerPhoneText:
 TiffanyAnswerPhoneDayText:
 	text "Yes? This is"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 
 	para "Oh, <PLAYER>."
@@ -1584,7 +1584,7 @@ TiffanyAnswerPhoneDayText:
 TiffanyAnswerPhoneNiteText:
 	text "Yes? This is"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 
 	para "Oh, <PLAYER>, good"
@@ -1596,7 +1596,7 @@ TiffanyGreetText:
 
 	para "Good morning. This"
 	line "is "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 	done
 
@@ -1604,7 +1604,7 @@ TiffanyGreetDayText:
 	text "Is this <PLAYER>?"
 
 	para "Hi, it's "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 	done
 
@@ -1613,7 +1613,7 @@ TiffanyGreetNiteText:
 
 	para "Good evening. This"
 	line "is "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 	done
 
@@ -1629,7 +1629,7 @@ TiffanyGenericText:
 	line "too hard."
 
 	para "My "
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text " is"
 	line "cute and lively"
 
@@ -1643,7 +1643,7 @@ TiffanyGenericText:
 VanceAnswerPhoneText:
 	text "Yes, hello?"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text " here!"
 
 	para "Morning, <PLAYER>!"
@@ -1655,7 +1655,7 @@ VanceAnswerPhoneText:
 VanceAnswerPhoneDayText:
 	text "Yes, hello?"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text " here!"
 
 	para "Hi, <PLAYER>!"
@@ -1667,7 +1667,7 @@ VanceAnswerPhoneDayText:
 VanceAnswerPhoneNiteText:
 	text "Yes, hello?"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text " here!"
 
 	para "Evening, <PLAYER>!"
@@ -1682,7 +1682,7 @@ VanceGreetText:
 	line "<PLAYER>!"
 
 	para "It's "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "!"
 	line "Good morning!"
 	done
@@ -1691,7 +1691,7 @@ VanceGreetDayText:
 	text "Hi, <PLAYER>!"
 
 	para "It's "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "!"
 	line "Remember me?"
 	done
@@ -1701,7 +1701,7 @@ VanceGreetNiteText:
 	line "<PLAYER>!"
 
 	para "It's "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "!"
 	line "Are you free now?"
 	done
@@ -1711,7 +1711,7 @@ VanceGenericText:
 	line "#mon fine?"
 
 	para "My "
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	line "looks like it will"
 
 	para "get tough enough"
@@ -1724,7 +1724,7 @@ VanceGenericText:
 WiltonAnswerPhoneText:
 	text "Hello, you have"
 	line "reached "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "…"
 
 	para "Ah, <PLAYER>."
@@ -1733,7 +1733,7 @@ WiltonAnswerPhoneText:
 WiltonAnswerPhoneDayText:
 	text "Hello, you have"
 	line "reached "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "…"
 
 	para "Ah, <PLAYER>, is"
@@ -1743,7 +1743,7 @@ WiltonAnswerPhoneDayText:
 WiltonAnswerPhoneNiteText:
 	text "Hello, you have"
 	line "reached "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "…"
 
 	para "Ah, if it isn't"
@@ -1752,7 +1752,7 @@ WiltonAnswerPhoneNiteText:
 
 WiltonGreetText:
 	text "Ah, it's "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "…"
 
 	para "Have you got a"
@@ -1761,7 +1761,7 @@ WiltonGreetText:
 
 WiltonGreetDayText:
 	text "Ah, it's "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "…"
 
 	para "Can you talk now?"
@@ -1769,7 +1769,7 @@ WiltonGreetDayText:
 
 WiltonGreetNiteText:
 	text "Ah, it's "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "…"
 
 	para "Sorry for calling"
@@ -1781,13 +1781,13 @@ WiltonGenericText:
 	line "grown any?"
 
 	para "My "
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text " has"
 	line "grown quite a bit."
 	done
 
 KenjiAnswerPhoneText:
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text " here…"
 
 	para "<PLAYER>! Beautiful"
@@ -1795,7 +1795,7 @@ KenjiAnswerPhoneText:
 	done
 
 KenjiAnswerPhoneDayText:
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text " here…"
 
 	para "<PLAYER>! Beautiful"
@@ -1803,7 +1803,7 @@ KenjiAnswerPhoneDayText:
 	done
 
 KenjiAnswerPhoneNiteText:
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text " here…"
 
 	para "<PLAYER>! Beautiful"
@@ -1813,28 +1813,28 @@ KenjiAnswerPhoneNiteText:
 KenjiGreetText:
 	text "Hey, <PLAYER>!"
 	line "This is "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "!"
 	done
 
 KenjiGreetDayText:
 	text "Hey, <PLAYER>!"
 	line "This is "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "!"
 	done
 
 KenjiGreetNiteText:
 	text "Hey, <PLAYER>!"
 	line "This is "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "!"
 	done
 
 ParryAnswerPhoneText:
 	text "Yup, yup!"
 	line "It's "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "!"
 
 	para "Hah, and here's"
@@ -1844,7 +1844,7 @@ ParryAnswerPhoneText:
 ParryAnswerPhoneDayText:
 	text "Yup, yup!"
 	line "It's "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "!"
 
 	para "Hah, and here's"
@@ -1854,7 +1854,7 @@ ParryAnswerPhoneDayText:
 ParryAnswerPhoneNiteText:
 	text "Yup, yup!"
 	line "It's "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "!"
 
 	para "Hah, and here's"
@@ -1864,7 +1864,7 @@ ParryAnswerPhoneNiteText:
 ParryGreetText:
 	text "<PLAYER>, it's"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "!"
 
 	para "Have you had a"
@@ -1874,7 +1874,7 @@ ParryGreetText:
 ParryGreetDayText:
 	text "<PLAYER>, it's"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "!"
 
 	para "Have you had a"
@@ -1884,7 +1884,7 @@ ParryGreetDayText:
 ParryGreetNiteText:
 	text "<PLAYER>, it's"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "!"
 
 	para "Have you had a"
@@ -1896,7 +1896,7 @@ ParryGenericText:
 	line "looking good?"
 
 	para "My "
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text " and"
 	line "me--we're looking"
 
@@ -1907,7 +1907,7 @@ ParryGenericText:
 ErinAnswerPhoneText:
 	text "Yes, this is"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "…"
 
 	para "Oh. Hi, <PLAYER>!"
@@ -1917,7 +1917,7 @@ ErinAnswerPhoneText:
 ErinAnswerPhoneDayText:
 	text "Yes, this is"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "…"
 
 	para "Oh, hi, <PLAYER>!"
@@ -1927,7 +1927,7 @@ ErinAnswerPhoneDayText:
 ErinAnswerPhoneNiteText:
 	text "Yes, this is"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "…"
 
 	para "Oh, hi, <PLAYER>!"
@@ -1937,7 +1937,7 @@ ErinGreetText:
 	text "<PLAYER>!"
 
 	para "It's "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "!"
 	line "Good morning!"
 	done
@@ -1946,7 +1946,7 @@ ErinGreetDayText:
 	text "<PLAYER>!"
 
 	para "It's "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "!"
 	line "Working hard?"
 	done
@@ -1955,7 +1955,7 @@ ErinGreetNiteText:
 	text "<PLAYER>!"
 
 	para "It's "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "!"
 	line "Were you up?"
 	done
@@ -1965,10 +1965,10 @@ ErinGenericText:
 	line "your #mon?"
 
 	para "Hey, "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "'s"
 	line ""
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text " is"
 	cont "looking good!"
 	done

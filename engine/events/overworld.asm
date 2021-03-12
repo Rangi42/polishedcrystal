@@ -59,7 +59,7 @@ CheckBadge:
 .BadgeRequiredText:
 	; Sorry! A new BADGE
 	; is required.
-	text_jump _BadgeRequiredText
+	text_far _BadgeRequiredText
 	text_end
 
 CheckPartyMove:
@@ -143,7 +143,7 @@ FieldMoveFailed:
 
 .CantUseHere:
 	; Can't use that here.
-	text_jump _CantUseItemText
+	text_far _CantUseItemText
 	text_end
 
 CutFunction:
@@ -193,7 +193,7 @@ CutFunction:
 
 Text_NothingToCut:
 	; There's nothing to CUT here.
-	text_jump _CutNothingText
+	text_far _CutNothingText
 	text_end
 
 CheckMapForSomethingToCut:
@@ -385,8 +385,8 @@ Script_UseFlash:
 	endtext
 
 UseFlashTextScript:
-	text_jump _BlindingFlashText
-	start_asm
+	text_far _BlindingFlashText
+	text_asm
 	call WaitSFX
 	ld de, SFX_FLASH
 	call PlaySFX
@@ -487,11 +487,11 @@ AutoSurfScript:
 	end
 
 CantSurfText:
-	text_jump _CantSurfText
+	text_far _CantSurfText
 	text_end
 
 AlreadySurfingText:
-	text_jump _AlreadySurfingText
+	text_far _AlreadySurfingText
 	text_end
 
 GetSurfType:
@@ -921,7 +921,7 @@ EscapeRopeOrDig:
 
 .Text_CantUseHere:
 	; Can't use that here.
-	text_jump _CantUseDigText
+	text_far _CantUseDigText
 	text_end
 
 .UsedEscapeRopeScript:
@@ -1010,7 +1010,7 @@ TeleportFunction:
 
 .Text_CantUseHere:
 	; Can't use that here.
-	text_jump _CantUseTeleportText
+	text_far _CantUseTeleportText
 	text_end
 
 .TeleportScript:

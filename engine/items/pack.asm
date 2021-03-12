@@ -642,7 +642,7 @@ GiveItem:
 	jp Pack_PrintTextNoScroll
 .Egg:
 	; An EGG can't hold an item.
-	text_jump Text_AnEGGCantHoldAnItem
+	text_far Text_AnEGGCantHoldAnItem
 	text_end
 
 BattlePack:
@@ -1699,51 +1699,51 @@ Text_NoEmptySlot:
 
 Text_ThrowAwayHowMany:
 	; Throw away how many?
-	text_jump _AskThrowAwayText
+	text_far _AskThrowAwayText
 	text_end
 
 Text_ConfirmThrowAway:
 	; Throw away @ @ (S)?
-	text_jump _AskQuantityThrowAwayText
+	text_far _AskQuantityThrowAwayText
 	text_end
 
 Text_ThrewAway:
 	; Threw away @ (S).
-	text_jump _ThrewAwayText
+	text_far _ThrewAwayText
 	text_end
 
 Text_ThisIsntTheTime:
 	; OAK:  ! This isn't the time to use that!
-	text_jump _OakThisIsntTheTimeText
+	text_far _OakThisIsntTheTimeText
 	text_end
 
 TextJump_YouDontHaveAPkmn:
 	; You don't have a #MON!
-	text_jump Text_YouDontHaveAPkmn
+	text_far Text_YouDontHaveAPkmn
 	text_end
 
 Text_RegisteredItem:
 	; Registered the @ .
-	text_jump _RegisteredItemText
+	text_far _RegisteredItemText
 	text_end
 
 Text_UnregisteredItem:
-	text_jump UnregisteredItemText
+	text_far UnregisteredItemText
 	text_end
 
 Text_CantRegister:
 	; You can't register that item.
-	text_jump _CantRegisterText
+	text_far _CantRegisterText
 	text_end
 
 Text_MoveItemWhere:
 	; Where should this be moved to?
-	text_jump _AskItemMoveText
+	text_far _AskItemMoveText
 	text_end
 
 Text_PackEmptyString:
 	;
-	text_jump ClearText
+	text_far ClearText
 	text_end
 
 PackInterfaceGFX:
@@ -1779,5 +1779,5 @@ Special_ChooseItem::
 	jr .loop
 
 .ItemCantBeSelectedText:
-	text_jump ItemCantBeSelectedText
+	text_far ItemCantBeSelectedText
 	text_end

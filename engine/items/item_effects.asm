@@ -794,28 +794,28 @@ PokeBallEffect:
 
 Text_NoShake:
 	; Oh no! The #MON broke free!
-	text_jump _BallBrokeFreeText
+	text_far _BallBrokeFreeText
 	text_end
 
 Text_OneShake:
 	; Aww! It appeared to be caught!
-	text_jump _BallAppearedCaughtText
+	text_far _BallAppearedCaughtText
 	text_end
 
 Text_TwoShakes:
 	; Aargh! Almost had it!
-	text_jump _BallAlmostHadItText
+	text_far _BallAlmostHadItText
 	text_end
 
 Text_ThreeShakes:
 	; Shoot! It was so close too!
-	text_jump _BallSoCloseText
+	text_far _BallSoCloseText
 	text_end
 
 Text_GotchaMonWasCaught:
 	; Gotcha! @ was caught!@ @
-	text_jump Text_BallCaught
-	start_asm
+	text_far Text_BallCaught
+	text_asm
 	call WaitSFX
 	push bc
 	ld de, MUSIC_NONE
@@ -829,22 +829,22 @@ Text_GotchaMonWasCaught:
 
 TextJump_Waitbutton:
 	; @
-	text_jump Text_Waitbutton_2
+	text_far Text_Waitbutton_2
 	text_end
 
 Text_SentToBillsPC:
 	; was sent to BILL's PC.
-	text_jump _BallSentToPCText
+	text_far _BallSentToPCText
 	text_end
 
 Text_AddedToPokedex:
 	; 's data was newly added to the #DEX.@ @
-	text_jump _NewDexDataText
+	text_far _NewDexDataText
 	text_end
 
 Text_AskNicknameNewlyCaughtMon:
 	; Give a nickname to @ ?
-	text_jump _AskGiveNicknameText
+	text_far _AskGiveNicknameText
 	text_end
 
 ReturnToBattle_UseBall:
@@ -904,7 +904,7 @@ LowerEVBerry:
 	jp UseDisposableItem
 
 ItemHappinessRoseButStatFellText:
-	text_jump _ItemHappinessRoseButStatFellText
+	text_far _ItemHappinessRoseButStatFellText
 	text_end
 
 VitaminEffect:
@@ -939,7 +939,7 @@ VitaminEffect:
 
 ItemStatRoseText:
 	; 's @ rose.
-	text_jump _ItemStatRoseText
+	text_far _ItemStatRoseText
 	text_end
 
 SetUpEVModifier:
@@ -1729,7 +1729,7 @@ FreshSnackFunction:
 
 .Text_CantBeUsed:
 	; That can't be used on this #MON.
-	text_jump _ItemCantUseOnMonText
+	text_far _ItemCantUseOnMonText
 	text_end
 
 EscapeRope:
@@ -1758,7 +1758,7 @@ RepelEffect:
 
 TextJump_RepelUsedEarlierIsStillInEffect:
 	; The REPEL used earlier is still in effect.
-	text_jump Text_RepelUsedEarlierIsStillInEffect
+	text_far Text_RepelUsedEarlierIsStillInEffect
 	text_end
 
 PokeDoll:
@@ -1821,7 +1821,7 @@ BlueCard:
 	jp MenuTextboxWaitButton
 
 .bluecardtext
-	text_jump _BlueCardBalanceText
+	text_far _BlueCardBalanceText
 	text_end
 
 CoinCase:
@@ -1829,7 +1829,7 @@ CoinCase:
 	jp MenuTextboxWaitButton
 
 .coincasetext
-	text_jump _CoinCaseCountText
+	text_far _CoinCaseCountText
 	text_end
 
 ApricornBox:
@@ -2165,32 +2165,32 @@ RestorePP:
 
 RaiseThePPOfWhichMoveText:
 	; Raise the PP of which move?
-	text_jump Text_RaiseThePPOfWhichMove
+	text_far Text_RaiseThePPOfWhichMove
 	text_end
 
 RestoreThePPOfWhichMoveText:
 	; Restore the PP of which move?
-	text_jump Text_RestoreThePPOfWhichMove
+	text_far Text_RestoreThePPOfWhichMove
 	text_end
 
 PPIsMaxedOutText:
 	; 's PP is maxed out.
-	text_jump Text_PPIsMaxedOut
+	text_far Text_PPIsMaxedOut
 	text_end
 
 PPsIncreasedText:
 	; 's PP increased.
-	text_jump Text_PPsIncreased
+	text_far Text_PPsIncreased
 	text_end
 
 PPsMaximizedText:
 	; 's PP maximized.
-	text_jump Text_PPsMaximized
+	text_far Text_PPsMaximized
 	text_end
 
 PPRestoredText:
 	; PP was restored.
-	text_jump _PPRestoredText
+	text_far _PPRestoredText
 	text_end
 
 SquirtBottle:
@@ -2317,10 +2317,10 @@ Ball_ReplacePartyMonCaughtBall:
 
 BallReplacedText:
 	text "Put "
-	text_from_ram wStringBuffer1
+	text_ram wStringBuffer1
 	text " in"
 	line "the "
-	text_from_ram wStringBuffer2
+	text_ram wStringBuffer2
 	text "."
 	prompt
 
@@ -2351,66 +2351,66 @@ ItemNotUsed_ExitMenu:
 
 LooksBitterText:
 	; It looks bitter…
-	text_jump _ItemLooksBitterText
+	text_far _ItemLooksBitterText
 	text_end
 
 CantUseOnEggText:
 	; That can't be used on an EGG.
-	text_jump _ItemCantUseOnEggText
+	text_far _ItemCantUseOnEggText
 	text_end
 
 AlreadyInThatBallText:
-	text_jump AlreadyInThatBallTextData
+	text_far AlreadyInThatBallTextData
 	text_end
 
 IsntTheTimeText:
 	; OAK:  ! This isn't the time to use that!
-	text_jump _ItemOakWarningText
+	text_far _ItemOakWarningText
 	text_end
 
 WontHaveAnyEffectText:
 	; It won't have any effect.
-	text_jump _ItemWontHaveEffectText
+	text_far _ItemWontHaveEffectText
 	text_end
 
 BlockedTheBallText:
 	; The trainer blocked the BALL!
-	text_jump _BallBlockedText
+	text_far _BallBlockedText
 	text_end
 
 DontBeAThiefText:
 	; Don't be a thief!
-	text_jump _BallDontBeAThiefText
+	text_far _BallDontBeAThiefText
 	text_end
 
 Ball_BoxIsFullText:
 	; The #MON BOX is full. That can't be used now.
-	text_jump _BallBoxFullText
+	text_far _BallBoxFullText
 	text_end
 
 Ball_MonIsHiddenText:
 	; The #MON can't be seen!
-	text_jump Text_MonIsHiddenFromBall
+	text_far Text_MonIsHiddenFromBall
 	text_end
 
 Ball_MonCantBeCaughtText:
 	; The #MON can't be caught!
-	text_jump Text_MonCantBeCaught
+	text_far Text_MonCantBeCaught
 	text_end
 
 Ball_NuzlockeFailureText:
 	; You already encountered a #MON here.
-	text_jump Text_NuzlockeBallFailure
+	text_far Text_NuzlockeBallFailure
 	text_end
 
 Revive_NuzlockeFailureText:
 	; You can't revive #MON in NUZLOCKE mode!
-	text_jump Text_NuzlockeReviveFailure
+	text_far Text_NuzlockeReviveFailure
 	text_end
 
 UsedItemText:
 	; used the@ .
-	text_jump _ItemUsedText
+	text_far _ItemUsedText
 	text_end
 
 ApplyPPUp:
@@ -2701,7 +2701,7 @@ AbilityCap:
 ChangeAbilityToText:
 	text "Change ability to"
 	line ""
-	text_from_ram wStringBuffer1
+	text_ram wStringBuffer1
 	text "?"
 	done
 

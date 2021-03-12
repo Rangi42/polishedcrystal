@@ -465,7 +465,7 @@ IndigoPlateauYellowScript:
 	line "good care of that"
 
 	para ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text ","
 	line "<PLAYER>!"
 
@@ -477,7 +477,7 @@ IndigoPlateauYellowScript:
 .ReceivedKantoStarterText:
 	text "<PLAYER> received"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "!"
 	done
 

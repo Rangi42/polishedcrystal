@@ -380,7 +380,7 @@ AskTeachTMHM:
 	call PrintText
 	ld de, SFX_CHOOSE_PC_OPTION
 	call WaitPlaySFX
-	call Text_WaitButton
+	call TextCommand_PROMPT_BUTTON
 	ld hl, Text_ItContained
 	call PrintText
 	call YesNoBox
@@ -606,27 +606,27 @@ KnowsMove:
 
 .Text_knows:
 	; knows @ .
-	text_jump _KnowsMoveText
+	text_far _KnowsMoveText
 	text_end
 
 Text_BootedTM:
 	; Booted up a TM.
-	text_jump _BootedTMText
+	text_far _BootedTMText
 	text_end
 
 Text_BootedHM:
 	; Booted up an HM.
-	text_jump _BootedHMText
+	text_far _BootedHMText
 	text_end
 
 Text_ItContained:
 	; It contained @ . Teach @ to a #MON?
-	text_jump _ContainedMoveText
+	text_far _ContainedMoveText
 	text_end
 
 Text_TMHMNotCompatible:
 	; is not compatible with @ . It can't learn @ .
-	text_jump _TMHMNotCompatibleText
+	text_far _TMHMNotCompatibleText
 	text_end
 
 INCLUDE "data/moves/tmhm_order.asm"

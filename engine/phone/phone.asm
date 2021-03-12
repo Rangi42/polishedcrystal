@@ -525,7 +525,7 @@ HangUp_Beep:
 	jp PlaySFX
 
 PhoneClickText:
-	text_jump _PhoneClickText
+	text_far _PhoneClickText
 	text_end
 
 HangUp_BoopOn:
@@ -533,7 +533,7 @@ HangUp_BoopOn:
 	jp PrintText
 
 PhoneEllipseText:
-	text_jump _PhoneEllipseText
+	text_far _PhoneEllipseText
 	text_end
 
 Phone_StartRinging:

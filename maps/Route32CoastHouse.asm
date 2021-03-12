@@ -62,7 +62,7 @@ GourmetManiacScript:
 
 	para "Would you accept"
 	line "¥"
-	deciram hMoneyTemp, 3, 7
+	text_decimal hMoneyTemp, 3, 7
 	text " for it?"
 	done
 

@@ -87,7 +87,7 @@ PhotoStudioPrestoText:
 	text "Presto! All done."
 
 	para "Your "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	line "looks happier!"
 	done
 

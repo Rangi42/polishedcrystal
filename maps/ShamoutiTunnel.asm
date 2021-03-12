@@ -66,7 +66,7 @@ OreManiacScript:
 
 	para "Will you sell it"
 	line "for ¥"
-	deciram hMoneyTemp, 3, 7
+	text_decimal hMoneyTemp, 3, 7
 	text "?"
 	done
 

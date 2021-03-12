@@ -130,7 +130,7 @@ EcruteakShrineInsideReiBlessingText:
 	done
 
 EcruteakShrineInsideHappinessText:
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text " looks"
 	line "content."
 	done

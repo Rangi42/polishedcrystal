@@ -82,7 +82,7 @@ GoldenrodHappinessRaterTeacherText:
 
 	para "Oh? Let me see"
 	line "your "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "…"
 	done
 

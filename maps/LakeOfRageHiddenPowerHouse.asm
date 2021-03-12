@@ -46,10 +46,10 @@ HiddenPowerGuy:
 	text "I can sense it…"
 
 	para "Your "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	line "has a Hidden Power"
 	cont "of "
-	text_from_ram wStringBuffer1
+	text_ram wStringBuffer1
 	text "!"
 	done
 

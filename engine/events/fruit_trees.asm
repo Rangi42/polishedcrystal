@@ -17,7 +17,7 @@ FruitTreeScript::
 	callasm FertilizedFruitTree
 	jumpthisopenedtext
 
-	text_jump _UsedMulchText
+	text_far _UsedMulchText
 	text_end
 
 PickBerryScript:
@@ -61,7 +61,7 @@ PickBerryScript:
 	promptbutton
 	jumpthisopenedtext
 
-	text_jump _FruitPackIsFullText
+	text_far _FruitPackIsFullText
 	text_end
 
 .ShowBerryIcon:
@@ -110,14 +110,14 @@ PickApricornScript:
 	specialsound
 	jumpthisopenedtext
 
-	text_jump _PutAwayTheApricornText
+	text_far _PutAwayTheApricornText
 	text_end
 
 .packisfull
 	promptbutton
 	jumpthisopenedtext
 
-	text_jump _ApricornBoxIsFullText
+	text_far _ApricornBoxIsFullText
 	text_end
 
 .GetApricornName:
@@ -168,5 +168,5 @@ GetFruitTreeCount:
 	ret
 
 NoApricornBoxText:
-	text_jump _NoApricornBoxText
+	text_far _NoApricornBoxText
 	text_end

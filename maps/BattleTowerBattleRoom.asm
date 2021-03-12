@@ -51,7 +51,7 @@ Script_BattleRoomLoop:
 	writethistext
 		text "<PLAYER> received"
 		line ""
-		text_from_ram wStringBuffer1
+		text_ram wStringBuffer1
 		text " BP!"
 		done
 	waitsfx
@@ -63,7 +63,7 @@ Script_BattleRoomLoop:
 	writethistext
 		text "Next up, opponent"
 		line "No. "
-		deciram wStringBuffer3, 2, 5
+		text_decimal wStringBuffer3, 2, 5
 		text ". Ready?"
 		done
 	sjump .ShownText

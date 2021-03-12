@@ -47,7 +47,7 @@ SilverCavePokeCenterGrampsScript:
 	jumpthisopenedtext
 
 	text "Oh, you've read "
-	deciram hScriptVar, 1, 2
+	text_decimal hScriptVar, 1, 2
 	line "of them?"
 
 	para "Not bad, but I've"

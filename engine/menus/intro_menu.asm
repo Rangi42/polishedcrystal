@@ -410,7 +410,7 @@ CheckVBA:
 	jp PrintText
 
 .WarnVBAText:
-	text_jump _WarnVBAText
+	text_far _WarnVBAText
 	text_end
 
 Continue_CheckRTC_RestartClock:
@@ -693,12 +693,12 @@ endc
 	jp PrintText
 
 ElmText1:
-	text_jump _ElmText1
+	text_far _ElmText1
 	text_end
 
 ElmText2:
-	text_jump _ElmText2
-	start_asm
+	text_far _ElmText2
+	text_asm
 	ld a, SYLVEON
 	call PlayCry
 	call WaitSFX
@@ -706,23 +706,23 @@ ElmText2:
 	ret
 
 ElmText3:
-	text_jump Text_Waitbutton_2
+	text_far Text_Waitbutton_2
 	text_end
 
 ElmText4:
-	text_jump _ElmText4
+	text_far _ElmText4
 	text_end
 
 ElmText5:
-	text_jump _ElmText5
+	text_far _ElmText5
 	text_end
 
 ElmText6:
-	text_jump _ElmText6
+	text_far _ElmText6
 	text_end
 
 ElmText7:
-	text_jump _ElmText7
+	text_far _ElmText7
 	text_end
 
 InitGender:
@@ -802,17 +802,17 @@ endc
 
 AreYouABoyOrAreYouAGirlText:
 	; Are you a boy? Or are you a girl?
-	text_jump Text_AreYouABoyOrAreYouAGirl
+	text_far Text_AreYouABoyOrAreYouAGirl
 	text_end
 
 SoYoureABoyText:
 	; So you're a boy?
-	text_jump Text_SoYoureABoy
+	text_far Text_SoYoureABoy
 	text_end
 
 SoYoureAGirlText:
 	; So you're a girl?
-	text_jump Text_SoYoureAGirl
+	text_far Text_SoYoureAGirl
 	text_end
 
 NamePlayer:

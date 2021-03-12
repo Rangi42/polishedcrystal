@@ -560,19 +560,19 @@ GoldenrodUndergroundYoungerHaircutBrotherOneHaircutADayText:
 	done
 
 HaircutBrosText_SlightlyHappier:
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text " looks a"
 	line "little happier."
 	done
 
 HaircutBrosText_Happier:
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text " looks"
 	line "happy."
 	done
 
 HaircutBrosText_MuchHappier:
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text " looks"
 	line "delighted!"
 	done

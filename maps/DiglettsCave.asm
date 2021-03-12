@@ -81,7 +81,7 @@ DiglettsCaveFossilManiacScript:
 
 	para "I'll give you"
 	line "¥"
-	deciram hMoneyTemp, 3, 7
+	text_decimal hMoneyTemp, 3, 7
 	text " for it."
 	cont "Whaddaya say?"
 	done

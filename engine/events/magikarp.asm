@@ -72,7 +72,7 @@ Special_CheckMagikarpLength:
 
 .MeasureItText:
 	; Let me measure that MAGIKARP. …Hm, it measures @ .
-	text_jump _MagikarpGuruMeasureText
+	text_far _MagikarpGuruMeasureText
 	text_end
 
 PrintMagikarpLength:
@@ -372,5 +372,5 @@ Special_MagikarpHouseSign:
 
 .CurrentRecordtext:
 	; "CURRENT RECORD"
-	text_jump _KarpGuruRecordText
+	text_far _KarpGuruRecordText
 	text_end

@@ -37,7 +37,7 @@ BugContest_SetCaughtContestMon:
 
 .caughttext
 	; Caught @ !
-	text_jump _ContestCaughtMonText
+	text_far _ContestCaughtMonText
 	text_end
 
 DisplayAlreadyCaughtText:
@@ -47,5 +47,5 @@ DisplayAlreadyCaughtText:
 
 .AlreadyCaughtText:
 	; You already caught a @ .
-	text_jump _ContestAlreadyCaughtText
+	text_far _ContestAlreadyCaughtText
 	text_end

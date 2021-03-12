@@ -196,7 +196,7 @@ Route35NationalParkGatePlayerGoAroundOfficerAndEnterParkMovement:
 
 Route35NationalParkGateOfficer1AskToParticipateText:
 	text "Today's "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 	line "That means the"
 
@@ -263,7 +263,7 @@ Route35NationalParkGateOfficer1AskToUseFirstMonText:
 
 	para "You'll have to use"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text ", the"
 
 	para "first #mon in"
@@ -347,7 +347,7 @@ Route35NationalParkGateOfficer1EggAsFirstMonText:
 
 Route35NationalParkGateOfficer1WantToFinishText:
 	text "You still have "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	line "minute(s) left."
 
 	para "Do you want to"

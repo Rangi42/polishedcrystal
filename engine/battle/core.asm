@@ -6880,8 +6880,8 @@ BoostExp:
 	jp MultiplyAndDivide
 
 Text_PkmnGainedExpPoint:
-	text_jump Text_Gained
-	start_asm
+	text_far Text_Gained
+	text_asm
 	ld hl, TextJump_StringBuffer2ExpPoints
 	ld a, [wStringBuffer2 + 3] ; IsTradedMon
 	and a
@@ -6891,11 +6891,11 @@ Text_PkmnGainedExpPoint:
 	ret
 
 TextJump_ABoostedStringBuffer2ExpPoints:
-	text_jump Text_ABoostedStringBuffer2ExpPoints
+	text_far Text_ABoostedStringBuffer2ExpPoints
 	text_end
 
 TextJump_StringBuffer2ExpPoints:
-	text_jump Text_StringBuffer2ExpPoints
+	text_far Text_StringBuffer2ExpPoints
 	text_end
 
 AnimateExpBar:
@@ -7252,29 +7252,29 @@ UserSentOutText:
 	jp BattleTextbox
 
 JumpText_GoPkmn:
-	text_jump Text_GoPkmn
-	start_asm
+	text_far Text_GoPkmn
+	text_asm
 	jr Function_TextJump_BattleMonNick01
 
 JumpText_DoItPkmn:
-	text_jump Text_DoItPkmn
-	start_asm
+	text_far Text_DoItPkmn
+	text_asm
 	jr Function_TextJump_BattleMonNick01
 
 JumpText_GoForItPkmn:
-	text_jump Text_GoForItPkmn
-	start_asm
+	text_far Text_GoForItPkmn
+	text_asm
 	jr Function_TextJump_BattleMonNick01
 
 JumpText_YourFoesWeakGetmPkmn:
-	text_jump Text_YourFoesWeakGetmPkmn
-	start_asm
+	text_far Text_YourFoesWeakGetmPkmn
+	text_asm
 Function_TextJump_BattleMonNick01:
 	ld hl, TextJump_BattleMonNick01
 	ret
 
 TextJump_BattleMonNick01:
-	text_jump Text_BattleMonNick01
+	text_far Text_BattleMonNick01
 	text_end
 
 WithdrawPkmnText:
@@ -7282,8 +7282,8 @@ WithdrawPkmnText:
 	jp BattleTextbox
 
 .WithdrawPkmnText:
-	text_jump Text_BattleMonNickComma
-	start_asm
+	text_far Text_BattleMonNickComma
+	text_asm
 ; Print text to withdraw Pkmn
 ; depending on HP the message is different
 	push de
@@ -7333,19 +7333,19 @@ WithdrawPkmnText:
 	ret
 
 TextJump_ThatsEnoughComeBack:
-	text_jump Text_ThatsEnoughComeBack
+	text_far Text_ThatsEnoughComeBack
 	text_end
 
 TextJump_OKComeBack:
-	text_jump Text_OKComeBack
+	text_far Text_OKComeBack
 	text_end
 
 TextJump_GoodComeBack:
-	text_jump Text_GoodComeBack
+	text_far Text_GoodComeBack
 	text_end
 
 TextJump_ComeBack:
-	text_jump Text_ComeBack
+	text_far Text_ComeBack
 	text_end
 
 HandleSafariAngerEatingStatus:

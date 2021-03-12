@@ -45,27 +45,27 @@ WonderTrade::
 	jp ReturnToMapWithSpeechTextbox
 
 .Text_WonderTradeQuestion:
-	text_jump WonderTradeQuestionText
+	text_far WonderTradeQuestionText
 	text_end
 
 .Text_WonderTradePrompt:
-	text_jump WonderTradePromptText
+	text_far WonderTradePromptText
 	text_end
 
 ;.Text_WonderTradeCantTradeEgg:
-;	text_jump WonderTradeCantTradeEggText
+;	text_far WonderTradeCantTradeEggText
 ;	text_end
 
 .Text_WonderTradeConfirm:
-	text_jump WonderTradeConfirmText
+	text_far WonderTradeConfirmText
 	text_end
 
 .Text_WonderTradeSetup:
-	text_jump WonderTradeSetupText
+	text_far WonderTradeSetupText
 	text_end
 
 .Text_WonderTradeReady:
-	text_jump WonderTradeReadyText
+	text_far WonderTradeReadyText
 	text_end
 
 DoWonderTrade:

@@ -270,7 +270,7 @@ ExplainLuckyNumberShowText:
 RadioTower1FLuckyNumberManThisWeeksIdIsText:
 	text "This week's ID"
 	line "number is "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 	done
 

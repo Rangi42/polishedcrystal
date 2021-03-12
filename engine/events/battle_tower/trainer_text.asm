@@ -228,493 +228,493 @@ BTTycoonTexts:
 	dw BTWinTycoon
 
 BTGreetingM1:
-	text_jump _BTGreetingM1Text
+	text_far _BTGreetingM1Text
 	text_end
 
 BTLossM1:
-	text_jump _BTLossM1Text
+	text_far _BTLossM1Text
 	text_end
 
 BTWinM1:
-	text_jump _BTWinM1Text
+	text_far _BTWinM1Text
 	text_end
 
 BTGreetingM2:
-	text_jump _BTGreetingM2Text
+	text_far _BTGreetingM2Text
 	text_end
 
 BTLossM2:
-	text_jump _BTLossM2Text
+	text_far _BTLossM2Text
 	text_end
 
 BTWinM2:
-	text_jump _BTWinM2Text
+	text_far _BTWinM2Text
 	text_end
 
 BTGreetingM3:
-	text_jump _BTGreetingM3Text
+	text_far _BTGreetingM3Text
 	text_end
 
 BTLossM3:
-	text_jump _BTLossM3Text
+	text_far _BTLossM3Text
 	text_end
 
 BTWinM3:
-	text_jump _BTWinM3Text
+	text_far _BTWinM3Text
 	text_end
 
 BTGreetingM4:
-	text_jump _BTGreetingM4Text
+	text_far _BTGreetingM4Text
 	text_end
 
 BTLossM4:
-	text_jump _BTLossM4Text
+	text_far _BTLossM4Text
 	text_end
 
 BTWinM4:
-	text_jump _BTWinM4Text
+	text_far _BTWinM4Text
 	text_end
 
 BTGreetingM5:
-	text_jump _BTGreetingM5Text
+	text_far _BTGreetingM5Text
 	text_end
 
 BTLossM5:
-	text_jump _BTLossM5Text
+	text_far _BTLossM5Text
 	text_end
 
 BTWinM5:
-	text_jump _BTWinM5Text
+	text_far _BTWinM5Text
 	text_end
 
 BTGreetingM6:
-	text_jump _BTGreetingM6Text
+	text_far _BTGreetingM6Text
 	text_end
 
 BTLossM6:
-	text_jump _BTLossM6Text
+	text_far _BTLossM6Text
 	text_end
 
 BTWinM6:
-	text_jump _BTWinM6Text
+	text_far _BTWinM6Text
 	text_end
 
 BTGreetingM7:
-	text_jump _BTGreetingM7Text
+	text_far _BTGreetingM7Text
 	text_end
 
 BTLossM7:
-	text_jump _BTLossM7Text
+	text_far _BTLossM7Text
 	text_end
 
 BTWinM7:
-	text_jump _BTWinM7Text
+	text_far _BTWinM7Text
 	text_end
 
 BTGreetingM8:
-	text_jump _BTGreetingM8Text
+	text_far _BTGreetingM8Text
 	text_end
 
 BTLossM8:
-	text_jump _BTLossM8Text
+	text_far _BTLossM8Text
 	text_end
 
 BTWinM8:
-	text_jump _BTWinM8Text
+	text_far _BTWinM8Text
 	text_end
 
 BTGreetingM9:
-	text_jump _BTGreetingM9Text
+	text_far _BTGreetingM9Text
 	text_end
 
 BTLossM9:
-	text_jump _BTLossM9Text
+	text_far _BTLossM9Text
 	text_end
 
 BTWinM9:
-	text_jump _BTWinM9Text
+	text_far _BTWinM9Text
 	text_end
 
 BTGreetingM10:
-	text_jump _BTGreetingM10Text
+	text_far _BTGreetingM10Text
 	text_end
 
 BTLossM10:
-	text_jump _BTLossM10Text
+	text_far _BTLossM10Text
 	text_end
 
 BTWinM10:
-	text_jump _BTWinM10Text
+	text_far _BTWinM10Text
 	text_end
 
 BTGreetingM11:
-	text_jump _BTGreetingM11Text
+	text_far _BTGreetingM11Text
 	text_end
 
 BTLossM11:
-	text_jump _BTLossM11Text
+	text_far _BTLossM11Text
 	text_end
 
 BTWinM11:
-	text_jump _BTWinM11Text
+	text_far _BTWinM11Text
 	text_end
 
 BTGreetingM12:
-	text_jump _BTGreetingM12Text
+	text_far _BTGreetingM12Text
 	text_end
 
 BTLossM12:
-	text_jump _BTLossM12Text
+	text_far _BTLossM12Text
 	text_end
 
 BTWinM12:
-	text_jump _BTWinM12Text
+	text_far _BTWinM12Text
 	text_end
 
 BTGreetingM13:
-	text_jump _BTGreetingM13Text
+	text_far _BTGreetingM13Text
 	text_end
 
 BTLossM13:
-	text_jump _BTLossM13Text
+	text_far _BTLossM13Text
 	text_end
 
 BTWinM13:
-	text_jump _BTWinM13Text
+	text_far _BTWinM13Text
 	text_end
 
 BTGreetingM14:
-	text_jump _BTGreetingM14Text
+	text_far _BTGreetingM14Text
 	text_end
 
 BTLossM14:
-	text_jump _BTLossM14Text
+	text_far _BTLossM14Text
 	text_end
 
 BTWinM14:
-	text_jump _BTWinM14Text
+	text_far _BTWinM14Text
 	text_end
 
 BTGreetingM15:
-	text_jump _BTGreetingM15Text
+	text_far _BTGreetingM15Text
 	text_end
 
 BTLossM15:
-	text_jump _BTLossM15Text
+	text_far _BTLossM15Text
 	text_end
 
 BTWinM15:
-	text_jump _BTWinM15Text
+	text_far _BTWinM15Text
 	text_end
 
 BTGreetingM16:
-	text_jump _BTGreetingM16Text
+	text_far _BTGreetingM16Text
 	text_end
 
 BTLossM16:
-	text_jump _BTLossM16Text
+	text_far _BTLossM16Text
 	text_end
 
 BTWinM16:
-	text_jump _BTWinM16Text
+	text_far _BTWinM16Text
 	text_end
 
 BTGreetingM17:
-	text_jump _BTGreetingM17Text
+	text_far _BTGreetingM17Text
 	text_end
 
 BTLossM17:
-	text_jump _BTLossM17Text
+	text_far _BTLossM17Text
 	text_end
 
 BTWinM17:
-	text_jump _BTWinM17Text
+	text_far _BTWinM17Text
 	text_end
 
 BTGreetingM18:
-	text_jump _BTGreetingM18Text
+	text_far _BTGreetingM18Text
 	text_end
 
 BTLossM18:
-	text_jump _BTLossM18Text
+	text_far _BTLossM18Text
 	text_end
 
 BTWinM18:
-	text_jump _BTWinM18Text
+	text_far _BTWinM18Text
 	text_end
 
 BTGreetingM19:
-	text_jump _BTGreetingM19Text
+	text_far _BTGreetingM19Text
 	text_end
 
 BTLossM19:
-	text_jump _BTLossM19Text
+	text_far _BTLossM19Text
 	text_end
 
 BTWinM19:
-	text_jump _BTWinM19Text
+	text_far _BTWinM19Text
 	text_end
 
 BTGreetingM20:
-	text_jump _BTGreetingM20Text
+	text_far _BTGreetingM20Text
 	text_end
 
 BTLossM20:
-	text_jump _BTLossM20Text
+	text_far _BTLossM20Text
 	text_end
 
 BTWinM20:
-	text_jump _BTWinM20Text
+	text_far _BTWinM20Text
 	text_end
 
 BTGreetingM21:
-	text_jump _BTGreetingM21Text
+	text_far _BTGreetingM21Text
 	text_end
 
 BTLossM21:
-	text_jump _BTLossM21Text
+	text_far _BTLossM21Text
 	text_end
 
 BTWinM21:
-	text_jump _BTWinM21Text
+	text_far _BTWinM21Text
 	text_end
 
 BTGreetingM22:
-	text_jump _BTGreetingM22Text
+	text_far _BTGreetingM22Text
 	text_end
 
 BTLossM22:
-	text_jump _BTLossM22Text
+	text_far _BTLossM22Text
 	text_end
 
 BTWinM22:
-	text_jump _BTWinM22Text
+	text_far _BTWinM22Text
 	text_end
 
 BTGreetingM23:
-	text_jump _BTGreetingM23Text
+	text_far _BTGreetingM23Text
 	text_end
 
 BTLossM23:
-	text_jump _BTLossM23Text
+	text_far _BTLossM23Text
 	text_end
 
 BTWinM23:
-	text_jump _BTWinM23Text
+	text_far _BTWinM23Text
 	text_end
 
 BTGreetingM24:
-	text_jump _BTGreetingM24Text
+	text_far _BTGreetingM24Text
 	text_end
 
 BTLossM24:
-	text_jump _BTLossM24Text
+	text_far _BTLossM24Text
 	text_end
 
 BTWinM24:
-	text_jump _BTWinM24Text
+	text_far _BTWinM24Text
 	text_end
 
 BTGreetingM25:
-	text_jump _BTGreetingM25Text
+	text_far _BTGreetingM25Text
 	text_end
 
 BTLossM25:
-	text_jump _BTLossM25Text
+	text_far _BTLossM25Text
 	text_end
 
 BTWinM25:
-	text_jump _BTWinM25Text
+	text_far _BTWinM25Text
 	text_end
 
 BTGreetingF1:
-	text_jump _BTGreetingF1Text
+	text_far _BTGreetingF1Text
 	text_end
 
 BTLossF1:
-	text_jump _BTLossF1Text
+	text_far _BTLossF1Text
 	text_end
 
 BTWinF1:
-	text_jump _BTWinF1Text
+	text_far _BTWinF1Text
 	text_end
 
 BTGreetingF2:
-	text_jump _BTGreetingF2Text
+	text_far _BTGreetingF2Text
 	text_end
 
 BTLossF2:
-	text_jump _BTLossF2Text
+	text_far _BTLossF2Text
 	text_end
 
 BTWinF2:
-	text_jump _BTWinF2Text
+	text_far _BTWinF2Text
 	text_end
 
 BTGreetingF3:
-	text_jump _BTGreetingF3Text
+	text_far _BTGreetingF3Text
 	text_end
 
 BTLossF3:
-	text_jump _BTLossF3Text
+	text_far _BTLossF3Text
 	text_end
 
 BTWinF3:
-	text_jump _BTWinF3Text
+	text_far _BTWinF3Text
 	text_end
 
 BTGreetingF4:
-	text_jump _BTGreetingF4Text
+	text_far _BTGreetingF4Text
 	text_end
 
 BTLossF4:
-	text_jump _BTLossF4Text
+	text_far _BTLossF4Text
 	text_end
 
 BTWinF4:
-	text_jump _BTWinF4Text
+	text_far _BTWinF4Text
 	text_end
 
 BTGreetingF5:
-	text_jump _BTGreetingF5Text
+	text_far _BTGreetingF5Text
 	text_end
 
 BTLossF5:
-	text_jump _BTLossF5Text
+	text_far _BTLossF5Text
 	text_end
 
 BTWinF5:
-	text_jump _BTWinF5Text
+	text_far _BTWinF5Text
 	text_end
 
 BTGreetingF6:
-	text_jump _BTGreetingF6Text
+	text_far _BTGreetingF6Text
 	text_end
 
 BTLossF6:
-	text_jump _BTLossF6Text
+	text_far _BTLossF6Text
 	text_end
 
 BTWinF6:
-	text_jump _BTWinF6Text
+	text_far _BTWinF6Text
 	text_end
 
 BTGreetingF7:
-	text_jump _BTGreetingF7Text
+	text_far _BTGreetingF7Text
 	text_end
 
 BTLossF7:
-	text_jump _BTLossF7Text
+	text_far _BTLossF7Text
 	text_end
 
 BTWinF7:
-	text_jump _BTWinF7Text
+	text_far _BTWinF7Text
 	text_end
 
 BTGreetingF8:
-	text_jump _BTGreetingF8Text
+	text_far _BTGreetingF8Text
 	text_end
 
 BTLossF8:
-	text_jump _BTLossF8Text
+	text_far _BTLossF8Text
 	text_end
 
 BTWinF8:
-	text_jump _BTWinF8Text
+	text_far _BTWinF8Text
 	text_end
 
 BTGreetingF9:
-	text_jump _BTGreetingF9Text
+	text_far _BTGreetingF9Text
 	text_end
 
 BTLossF9:
-	text_jump _BTLossF9Text
+	text_far _BTLossF9Text
 	text_end
 
 BTWinF9:
-	text_jump _BTWinF9Text
+	text_far _BTWinF9Text
 	text_end
 
 BTGreetingF10:
-	text_jump _BTGreetingF10Text
+	text_far _BTGreetingF10Text
 	text_end
 
 BTLossF10:
-	text_jump _BTLossF10Text
+	text_far _BTLossF10Text
 	text_end
 
 BTWinF10:
-	text_jump _BTWinF10Text
+	text_far _BTWinF10Text
 	text_end
 
 BTGreetingF11:
-	text_jump _BTGreetingF11Text
+	text_far _BTGreetingF11Text
 	text_end
 
 BTLossF11:
-	text_jump _BTLossF11Text
+	text_far _BTLossF11Text
 	text_end
 
 BTWinF11:
-	text_jump _BTWinF11Text
+	text_far _BTWinF11Text
 	text_end
 
 BTGreetingF12:
-	text_jump _BTGreetingF12Text
+	text_far _BTGreetingF12Text
 	text_end
 
 BTLossF12:
-	text_jump _BTLossF12Text
+	text_far _BTLossF12Text
 	text_end
 
 BTWinF12:
-	text_jump _BTWinF12Text
+	text_far _BTWinF12Text
 	text_end
 
 BTGreetingF13:
-	text_jump _BTGreetingF13Text
+	text_far _BTGreetingF13Text
 	text_end
 
 BTLossF13:
-	text_jump _BTLossF13Text
+	text_far _BTLossF13Text
 	text_end
 
 BTWinF13:
-	text_jump _BTWinF13Text
+	text_far _BTWinF13Text
 	text_end
 
 BTGreetingF14:
-	text_jump _BTGreetingF14Text
+	text_far _BTGreetingF14Text
 	text_end
 
 BTLossF14:
-	text_jump _BTLossF14Text
+	text_far _BTLossF14Text
 	text_end
 
 BTWinF14:
-	text_jump _BTWinF14Text
+	text_far _BTWinF14Text
 	text_end
 
 BTGreetingF15:
-	text_jump _BTGreetingF15Text
+	text_far _BTGreetingF15Text
 	text_end
 
 BTLossF15:
-	text_jump _BTLossF15Text
+	text_far _BTLossF15Text
 	text_end
 
 BTWinF15:
-	text_jump _BTWinF15Text
+	text_far _BTWinF15Text
 	text_end
 
 BTGreetingTycoon:
-	text_jump BattleTowerText_GreetingTycoon
+	text_far BattleTowerText_GreetingTycoon
 	text_end
 
 BTLossTycoon:
-	text_jump BattleTowerText_LossTycoon
+	text_far BattleTowerText_LossTycoon
 	text_end
 
 BTWinTycoon:
-	text_jump BattleTowerText_WinTycoon
+	text_far BattleTowerText_WinTycoon
 	text_end

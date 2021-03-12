@@ -425,7 +425,7 @@ RuinsOfAlphResearchCenterComputerText_GotAllUnown:
 	line "Name: Unown"
 
 	para "A total of "
-	deciram hScriptVar, 1, 2
+	text_decimal hScriptVar, 1, 2
 	line "kinds found."
 	done
 

@@ -209,12 +209,12 @@ Special_CheckForLuckyNumberWinners:
 
 .FoundPartymonText:
 	; Congratulations! We have a match with the ID number of @  in your party.
-	text_jump _LuckyNumberMatchPartyText
+	text_far _LuckyNumberMatchPartyText
 	text_end
 
 .FoundBoxmonText:
 	; Congratulations! We have a match with the ID number of @  in your PC BOX.
-	text_jump _LuckyNumberMatchPCText
+	text_far _LuckyNumberMatchPCText
 	text_end
 
 Special_PrintTodaysLuckyNumber:

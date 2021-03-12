@@ -411,13 +411,13 @@ TradeTexts:
 
 ConnectLinkCableText:
 	; OK, connect the Game Link Cable.
-	text_jump _NPCTradeCableText
+	text_far _NPCTradeCableText
 	text_end
 
 TradedForText:
 	; traded givemon for getmon
-	text_jump Text_NPCTraded
-	start_asm
+	text_far Text_NPCTraded
+	text_asm
 	ld de, MUSIC_NONE
 	call PlayMusic
 	call DelayFrame
@@ -425,95 +425,95 @@ TradedForText:
 	ret
 
 .done
-	; play_sound SFX_DEX_FANFARE_80_109
-	; interpret_data
-	text_jump _NPCTradeFanfareText
+	; text_sound SFX_DEX_FANFARE_80_109
+	; text_pause
+	text_far _NPCTradeFanfareText
 	text_end
 
 TradeIntroText1:
 	; I collect #MON. Do you have @ ? Want to trade it for my @ ?
-	text_jump _NPCTradeIntroText1
+	text_far _NPCTradeIntroText1
 	text_end
 
 TradeCancelText1:
 	; You don't want to trade? Aww…
-	text_jump _NPCTradeCancelText1
+	text_far _NPCTradeCancelText1
 	text_end
 
 TradeWrongText1:
 	; Huh? That's not @ .  What a letdown…
-	text_jump _NPCTradeWrongText1
+	text_far _NPCTradeWrongText1
 	text_end
 
 TradeCompleteText1:
 	; Yay! I got myself @ ! Thanks!
-	text_jump _NPCTradeCompleteText1
+	text_far _NPCTradeCompleteText1
 	text_end
 
 TradeAfterText1:
 	; Hi, how's my old @  doing?
-	text_jump _NPCTradeAfterText1
+	text_far _NPCTradeAfterText1
 	text_end
 
 TradeIntroText2:
 TradeIntroText3:
 	; Hi, I'm looking for this #MON. If you have @ , would you trade it for my @ ?
-	text_jump _NPCTradeIntroText2
+	text_far _NPCTradeIntroText2
 	text_end
 
 TradeCancelText2:
 TradeCancelText3:
 	; You don't have one either? Gee, that's really disappointing…
-	text_jump _NPCTradeCancelText2
+	text_far _NPCTradeCancelText2
 	text_end
 
 TradeWrongText2:
 TradeWrongText3:
 	; You don't have @ ? That's too bad, then.
-	text_jump _NPCTradeWrongText2
+	text_far _NPCTradeWrongText2
 	text_end
 
 TradeCompleteText2:
 	; Great! Thank you! I finally got @ .
-	text_jump _NPCTradeCompleteText2
+	text_far _NPCTradeCompleteText2
 	text_end
 
 TradeAfterText2:
 	; Hi! The @ you traded me is doing great!
-	text_jump _NPCTradeAfterText2
+	text_far _NPCTradeAfterText2
 	text_end
 
 TradeIntroText4:
 	; 's cute, but I don't have it. Do you have @ ? Want to trade it for my @ ?
-	text_jump _NPCTradeIntroText3
+	text_far _NPCTradeIntroText3
 	text_end
 
 TradeCancelText4:
 	; You don't want to trade? Oh, darn…
-	text_jump _NPCTradeCancelText3
+	text_far _NPCTradeCancelText3
 	text_end
 
 TradeWrongText4:
 	; That's not @ . Please trade with me if you get one.
-	text_jump _NPCTradeWrongText3
+	text_far _NPCTradeWrongText3
 	text_end
 
 TradeCompleteText4:
 	; Wow! Thank you! I always wanted @ !
-	text_jump _NPCTradeCompleteText3
+	text_far _NPCTradeCompleteText3
 	text_end
 
 TradeAfterText4:
 	; How is that @  I traded you doing? Your @ 's so cute!
-	text_jump _NPCTradeAfterText3
+	text_far _NPCTradeAfterText3
 	text_end
 
 TradeCompleteText3:
 	; Uh? What happened?
-	text_jump _NPCTradeCompleteText4
+	text_far _NPCTradeCompleteText4
 	text_end
 
 TradeAfterText3:
 	; Trading is so odd… I still have a lot to learn about it.
-	text_jump _NPCTradeAfterText4
+	text_far _NPCTradeAfterText4
 	text_end
