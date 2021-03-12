@@ -72,7 +72,7 @@ Route45Dragon_tamerScript:
 .Beaten:
 	opentext
 	writetext .AfterText1
-	buttonsound
+	promptbutton
 	verbosegiveitem FOCUS_SASH
 	iffalse_endtext
 	setevent EVENT_GOT_FOCUS_SASH_FROM_ROUTE_45_LEADER
@@ -156,7 +156,7 @@ TrainerBlackbeltKenji:
 	trainer BLACKBELT_T, KENJI1, EVENT_BEAT_BLACKBELT_KENJI, BlackbeltKenji1SeenText, BlackbeltKenji1BeatenText, 0, BlackbeltKenji1Script
 
 BlackbeltKenji1Script:
-	writecode VAR_CALLERID, PHONE_BLACKBELT_KENJI
+	loadvar VAR_CALLERID, PHONE_BLACKBELT_KENJI
 	opentext
 	checkcellnum PHONE_BLACKBELT_KENJI
 	iftrue UnknownScript_0x19e0e4
@@ -167,7 +167,7 @@ BlackbeltKenji1Script:
 	waitbutton
 	setevent EVENT_KENJI_ASKED_FOR_PHONE_NUMBER
 	scall Route45AskNumber1M
-	jump UnknownScript_0x19e0d0
+	sjump UnknownScript_0x19e0d0
 
 UnknownScript_0x19e0cd:
 	scall Route45AskNumber2M
@@ -175,12 +175,12 @@ UnknownScript_0x19e0d0:
 	askforphonenumber PHONE_BLACKBELT_KENJI
 	ifequal $1, Route45PhoneFullM
 	ifequal $2, Route45NumberDeclinedM
-	trainertotext BLACKBELT_T, KENJI1, $0
+	gettrainername BLACKBELT_T, KENJI1, $0
 	scall Route45RegisteredNumberM
-	jump Route45NumberAcceptedM
+	sjump Route45NumberAcceptedM
 
 UnknownScript_0x19e0e4:
-	checkcode VAR_KENJI_BREAK
+	readvar VAR_KENJI_BREAK
 	ifnotequal $1, Route45NumberAcceptedM
 	checktime 1 << MORN
 	iftrue UnknownScript_0x19e10c
@@ -193,7 +193,7 @@ UnknownScript_0x19e0e4:
 	iffalse UnknownScript_0x19e118
 	clearevent EVENT_KENJI_ON_BREAK
 	special Special_SampleKenjiBreakCountdown
-	jump Route45NumberAcceptedM
+	sjump Route45NumberAcceptedM
 
 UnknownScript_0x19e10c:
 	jumpopenedtext BlackbeltKenjiMorningText
@@ -202,7 +202,7 @@ UnknownScript_0x19e112:
 	jumpopenedtext BlackbeltKenjiNightText
 
 UnknownScript_0x19e118:
-	jump Route45PackFullM
+	sjump Route45PackFullM
 
 Route45AskNumber1M:
 	jumpstd asknumber1m
@@ -265,7 +265,7 @@ TrainerHikerParry:
 	trainer HIKER, PARRY1, EVENT_BEAT_HIKER_PARRY, HikerParry1SeenText, HikerParry1BeatenText, 0, HikerParry1Script
 
 HikerParry1Script:
-	writecode VAR_CALLERID, PHONE_HIKER_PARRY
+	loadvar VAR_CALLERID, PHONE_HIKER_PARRY
 	opentext
 	checkflag ENGINE_PARRY
 	iftrue UnknownScript_0x19e1b8
@@ -274,10 +274,10 @@ HikerParry1Script:
 	checkevent EVENT_PARRY_ASKED_FOR_PHONE_NUMBER
 	iftrue UnknownScript_0x19e1a1
 	writetext HikerParryAfterBattleText
-	buttonsound
+	promptbutton
 	setevent EVENT_PARRY_ASKED_FOR_PHONE_NUMBER
 	scall Route45AskNumber1M
-	jump UnknownScript_0x19e1a4
+	sjump UnknownScript_0x19e1a4
 
 UnknownScript_0x19e1a1:
 	scall Route45AskNumber2M
@@ -285,14 +285,14 @@ UnknownScript_0x19e1a4:
 	askforphonenumber PHONE_HIKER_PARRY
 	ifequal $1, Route45PhoneFullM
 	ifequal $2, Route45NumberDeclinedM
-	trainertotext HIKER, PARRY1, $0
+	gettrainername HIKER, PARRY1, $0
 	scall Route45RegisteredNumberM
-	jump Route45NumberAcceptedM
+	sjump Route45NumberAcceptedM
 
 UnknownScript_0x19e1b8:
 	scall Route45RematchM
 	winlosstext HikerParry1BeatenText, 0
-	copybytetovar wParryFightCount
+	readmem wParryFightCount
 	ifequal 2, .Fight2
 	ifequal 1, .Fight1
 	ifequal 0, .LoadFight0
@@ -306,7 +306,7 @@ UnknownScript_0x19e1b8:
 	loadtrainer HIKER, PARRY1
 	startbattle
 	reloadmapafterbattle
-	loadvar wParryFightCount, 1
+	loadmem wParryFightCount, 1
 	clearflag ENGINE_PARRY
 	end
 
@@ -314,7 +314,7 @@ UnknownScript_0x19e1b8:
 	loadtrainer HIKER, PARRY2
 	startbattle
 	reloadmapafterbattle
-	loadvar wParryFightCount, 2
+	loadmem wParryFightCount, 2
 	clearflag ENGINE_PARRY
 	end
 
@@ -331,7 +331,7 @@ UnknownScript_0x19e1b8:
 	verbosegiveitem IRON
 	iffalse HikerParryHasIron
 	setevent EVENT_GOT_IRON_FROM_PARRY
-	jump Route45NumberAcceptedM
+	sjump Route45NumberAcceptedM
 
 UnknownScript_0x19e218:
 	end
@@ -344,7 +344,7 @@ UnknownScript_0x19e219:
 	iffalse HikerParryHasIron
 	clearevent EVENT_PARRY_IRON
 	setevent EVENT_GOT_IRON_FROM_PARRY
-	jump Route45NumberAcceptedM
+	sjump Route45NumberAcceptedM
 
 GenericTrainerHikerTimothy:
 	generictrainer HIKER, TIMOTHY, EVENT_BEAT_HIKER_TIMOTHY, HikerTimothySeenText, HikerTimothyBeatenText

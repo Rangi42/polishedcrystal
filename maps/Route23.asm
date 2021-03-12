@@ -65,7 +65,7 @@ Route23ZephyrBadgeOfficerScript:
 Route23ZephyrBadgeTriggerScript:
 	faceobject ROUTE23_OFFICER1, PLAYER
 	faceobject PLAYER, ROUTE23_OFFICER1
-	stringtotext .ZephyrBadgeText, 0
+	getstring .ZephyrBadgeText, 0
 	opentext
 	writetext Route23OfficerNeedBadgeText
 	waitbutton
@@ -74,7 +74,7 @@ Route23ZephyrBadgeTriggerScript:
 	checkscene
 	ifgreater $0, Route23OfficerHaveBadgeScript
 	setscene $1
-	jump Route23OfficerHaveBadgeScript
+	sjump Route23OfficerHaveBadgeScript
 
 .ZephyrBadgeText:
 	db "Zephyr Badge@"
@@ -83,7 +83,7 @@ Route23HiveBadgeOfficerScript:
 Route23HiveBadgeTriggerScript:
 	faceobject ROUTE23_OFFICER2, PLAYER
 	faceobject PLAYER, ROUTE23_OFFICER2
-	stringtotext .HiveBadgeText, 0
+	getstring .HiveBadgeText, 0
 	opentext
 	writetext Route23OfficerNeedBadgeText
 	waitbutton
@@ -92,7 +92,7 @@ Route23HiveBadgeTriggerScript:
 	checkscene
 	ifgreater $1, Route23OfficerHaveBadgeScript
 	setscene $2
-	jump Route23OfficerHaveBadgeScript
+	sjump Route23OfficerHaveBadgeScript
 
 .HiveBadgeText:
 	db "Hive Badge@"
@@ -101,7 +101,7 @@ Route23PlainBadgeOfficerScript:
 Route23PlainBadgeTriggerScript:
 	faceobject ROUTE23_OFFICER3, PLAYER
 	faceobject PLAYER, ROUTE23_OFFICER3
-	stringtotext .PlainBadgeText, 0
+	getstring .PlainBadgeText, 0
 	opentext
 	writetext Route23OfficerNeedBadgeText
 	waitbutton
@@ -110,7 +110,7 @@ Route23PlainBadgeTriggerScript:
 	checkscene
 	ifgreater $2, Route23OfficerHaveBadgeScript
 	setscene $3
-	jump Route23OfficerHaveBadgeScript
+	sjump Route23OfficerHaveBadgeScript
 
 .PlainBadgeText:
 	db "Plain Badge@"
@@ -119,7 +119,7 @@ Route23FogBadgeOfficerScript:
 Route23FogBadgeTriggerScript:
 	faceobject ROUTE23_OFFICER4, PLAYER
 	faceobject PLAYER, ROUTE23_OFFICER4
-	stringtotext .FogBadgeText, 0
+	getstring .FogBadgeText, 0
 	opentext
 	writetext Route23OfficerNeedBadgeText
 	waitbutton
@@ -128,7 +128,7 @@ Route23FogBadgeTriggerScript:
 	checkscene
 	ifgreater $3, Route23OfficerHaveBadgeScript
 	setscene $4
-	jump Route23OfficerHaveBadgeScript
+	sjump Route23OfficerHaveBadgeScript
 
 .FogBadgeText:
 	db "Fog Badge@"
@@ -137,7 +137,7 @@ Route23StormBadgeOfficerScript:
 Route23StormBadgeTriggerScript:
 	faceobject ROUTE23_OFFICER5, PLAYER
 	faceobject PLAYER, ROUTE23_OFFICER5
-	stringtotext .StormBadgeText, 0
+	getstring .StormBadgeText, 0
 	opentext
 	writetext Route23OfficerNeedBadgeText
 	waitbutton
@@ -146,7 +146,7 @@ Route23StormBadgeTriggerScript:
 	checkscene
 	ifgreater $4, Route23OfficerHaveBadgeScript
 	setscene $5
-	jump Route23OfficerHaveBadgeScript
+	sjump Route23OfficerHaveBadgeScript
 
 .StormBadgeText:
 	db "Storm Badge@"
@@ -155,7 +155,7 @@ Route23MineralBadgeOfficerScript:
 Route23MineralBadgeTriggerScript:
 	faceobject ROUTE23_OFFICER6, PLAYER
 	faceobject PLAYER, ROUTE23_OFFICER6
-	stringtotext .MineralBadgeText, 0
+	getstring .MineralBadgeText, 0
 	opentext
 	writetext Route23OfficerNeedBadgeText
 	waitbutton
@@ -164,7 +164,7 @@ Route23MineralBadgeTriggerScript:
 	checkscene
 	ifgreater $5, Route23OfficerHaveBadgeScript
 	setscene $6
-	jump Route23OfficerHaveBadgeScript
+	sjump Route23OfficerHaveBadgeScript
 
 .MineralBadgeText:
 	db "Mineral Badge@"
@@ -173,7 +173,7 @@ Route23GlacierBadgeOfficerScript:
 Route23GlacierBadgeTriggerScript:
 	faceobject ROUTE23_OFFICER7, PLAYER
 	faceobject PLAYER, ROUTE23_OFFICER7
-	stringtotext .GlacierBadgeText, 0
+	getstring .GlacierBadgeText, 0
 	opentext
 	writetext Route23OfficerNeedBadgeText
 	waitbutton
@@ -182,7 +182,7 @@ Route23GlacierBadgeTriggerScript:
 	checkscene
 	ifgreater $6, Route23OfficerHaveBadgeScript
 	setscene $7
-	jump Route23OfficerHaveBadgeScript
+	sjump Route23OfficerHaveBadgeScript
 
 .GlacierBadgeText:
 	db "Glacier Badge@"
@@ -191,7 +191,7 @@ Route23RisingBadgeOfficerScript:
 Route23RisingBadgeTriggerScript:
 	faceobject ROUTE23_OFFICER8, PLAYER
 	faceobject PLAYER, ROUTE23_OFFICER8
-	stringtotext .RisingBadgeText, 0
+	getstring .RisingBadgeText, 0
 	opentext
 	writetext Route23OfficerNeedBadgeText
 	waitbutton
@@ -200,7 +200,7 @@ Route23RisingBadgeTriggerScript:
 	checkscene
 	ifgreater $7, Route23OfficerHaveBadgeScript
 	setscene $8
-	jump Route23OfficerHaveBadgeScript
+	sjump Route23OfficerHaveBadgeScript
 
 .RisingBadgeText:
 	db "Rising Badge@"
@@ -219,7 +219,7 @@ Route23OfficerNoBadgeText:
 Route23OfficerHaveBadgeScript:
 	writetext .SeeBadgeText
 	playsound SFX_DEX_FANFARE_50_79
-	buttonsound
+	promptbutton
 	jumpthisopenedtext
 
 	text "OK then! Please,"

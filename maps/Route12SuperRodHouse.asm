@@ -23,7 +23,7 @@ Route12SuperRodHouseFishingGuruScript:
 	yesorno
 	iffalse UnknownScript_0x7f4a6
 	writetext GiveSuperRodText
-	buttonsound
+	promptbutton
 	verbosegivekeyitem SUPER_ROD
 	iffalse UnknownScript_0x7f4aa
 	setevent EVENT_GOT_SUPER_ROD

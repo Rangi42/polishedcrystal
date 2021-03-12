@@ -55,7 +55,7 @@ OlivineCity_MapScriptHeader:
 
 OlivineCityFlyPoint:
 	setflag ENGINE_FLYPOINT_OLIVINE
-	return
+	endcallback
 
 OlivineCityRivalGymScript:
 	turnobject PLAYER, UP

@@ -35,7 +35,7 @@ ViridianCity_MapScriptHeader:
 
 ViridianCityFlyPoint:
 	setflag ENGINE_FLYPOINT_VIRIDIAN
-	return
+	endcallback
 
 ViridianCityCoffeeGramps:
 	faceplayer
@@ -66,7 +66,7 @@ ViridianCityTutorDreamEaterScript:
 	writetext Text_ViridianCityTutorQuestion
 	yesorno
 	iffalse .TutorRefused
-	writebyte DREAM_EATER
+	setval DREAM_EATER
 	writetext ClearText
 	special Special_MoveTutor
 	ifequal $0, .TeachMove

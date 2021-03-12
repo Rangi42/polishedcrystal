@@ -41,7 +41,7 @@ CeruleanCape_MapScriptHeader:
 
 CeruleanCapeFlyPoint:
 	setflag ENGINE_FLYPOINT_CERULEAN_CAPE
-	return
+	endcallback
 
 CeruleanCapeDateInterruptedTrigger1:
 	showemote EMOTE_HEART, CERULEANCAPE_MISTY, 15
@@ -57,7 +57,7 @@ CeruleanCapeDateInterruptedTrigger1:
 	applymovement CERULEANCAPE_MISTY, Route25MistyApproachesPlayerMovement1
 	showtext Route25MistyDateText
 	applymovement CERULEANCAPE_MISTY, Route25MistyLeavesPlayerMovement1
-	jump CeruleanCapeDateFinishScript
+	sjump CeruleanCapeDateFinishScript
 
 CeruleanCapeDateInterruptedTrigger2:
 	showemote EMOTE_HEART, CERULEANCAPE_MISTY, 15
@@ -307,7 +307,7 @@ TrainerLadyJessica:
 	trainer LADY, JESSICA, EVENT_BEAT_LADY_JESSICA, .SeenText, .BeatenText, 0, .Script
 
 .Script:
-	end_if_just_battled
+	endifjustbattled
 	opentext
 	checkevent EVENT_SPOKE_TO_LADY_JESSICA
 	iftrue .SpokeAgain

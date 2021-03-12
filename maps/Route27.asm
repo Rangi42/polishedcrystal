@@ -37,7 +37,7 @@ FirstStepIntoKantoLeftScene:
 	turnobject ROUTE27_FISHER, LEFT
 	showemote EMOTE_SHOCK, ROUTE27_FISHER, 15
 	applymovement ROUTE27_FISHER, Route27FisherStepLeftTwiceMovement
-	jump FirstStepIntoKantoScene_Continue
+	sjump FirstStepIntoKantoScene_Continue
 
 FirstStepIntoKantoRightScene:
 	turnobject ROUTE27_FISHER, LEFT
@@ -47,7 +47,7 @@ FirstStepIntoKantoScene_Continue:
 	turnobject PLAYER, RIGHT
 	opentext
 	writetext Route27FisherHeyText
-	buttonsound
+	promptbutton
 	writetext Route27FisherText
 	waitbutton
 	closetext
@@ -104,7 +104,7 @@ Route27VeteranfScript:
 .Beaten:
 	opentext
 	writetext .AfterText1
-	buttonsound
+	promptbutton
 	verbosegiveitem CHOICE_SPECS
 	iffalse_endtext
 	setevent EVENT_GOT_CHOICE_SPECS_FROM_ROUTE_27_LEADER
@@ -190,7 +190,7 @@ TrainerBird_keeperJose1:
 	trainer BIRD_KEEPER, JOSE1, EVENT_BEAT_BIRD_KEEPER_JOSE, Bird_keeperJose1SeenText, Bird_keeperJose1BeatenText, 0, Bird_keeperJose1Script
 
 Bird_keeperJose1Script:
-	writecode VAR_CALLERID, PHONE_BIRDKEEPER_JOSE
+	loadvar VAR_CALLERID, PHONE_BIRDKEEPER_JOSE
 	opentext
 	checkflag ENGINE_JOSE
 	iftrue UnknownScript_0x1a08ff
@@ -201,10 +201,10 @@ Bird_keeperJose1Script:
 	checkevent EVENT_JOSE_ASKED_FOR_PHONE_NUMBER
 	iftrue UnknownScript_0x1a08e8
 	writetext BirdKeeperJose2AfterBattleText
-	buttonsound
+	promptbutton
 	setevent EVENT_JOSE_ASKED_FOR_PHONE_NUMBER
 	scall UnknownScript_0x1a0957
-	jump UnknownScript_0x1a08eb
+	sjump UnknownScript_0x1a08eb
 
 UnknownScript_0x1a08e8:
 	scall UnknownScript_0x1a095b
@@ -212,14 +212,14 @@ UnknownScript_0x1a08eb:
 	askforphonenumber PHONE_BIRDKEEPER_JOSE
 	ifequal $1, UnknownScript_0x1a096b
 	ifequal $2, UnknownScript_0x1a0967
-	trainertotext BIRD_KEEPER, JOSE1, $0
+	gettrainername BIRD_KEEPER, JOSE1, $0
 	scall UnknownScript_0x1a095f
-	jump UnknownScript_0x1a0963
+	sjump UnknownScript_0x1a0963
 
 UnknownScript_0x1a08ff:
 	scall UnknownScript_0x1a096f
 	winlosstext Bird_keeperJose1BeatenText, 0
-	copybytetovar wJoseFightCount
+	readmem wJoseFightCount
 	ifequal 2, .Fight2
 	ifequal 1, .Fight1
 	ifequal 0, .LoadFight0
@@ -233,7 +233,7 @@ UnknownScript_0x1a08ff:
 	loadtrainer BIRD_KEEPER, JOSE1
 	startbattle
 	reloadmapafterbattle
-	loadvar wJoseFightCount, 1
+	loadmem wJoseFightCount, 1
 	clearflag ENGINE_JOSE
 	end
 
@@ -241,7 +241,7 @@ UnknownScript_0x1a08ff:
 	loadtrainer BIRD_KEEPER, JOSE2
 	startbattle
 	reloadmapafterbattle
-	loadvar wJoseFightCount, 2
+	loadmem wJoseFightCount, 2
 	clearflag ENGINE_JOSE
 	end
 
@@ -257,10 +257,10 @@ UnknownScript_0x1a0945:
 	verbosegiveitem STAR_PIECE
 	iffalse UnknownScript_0x1a0954
 	clearflag ENGINE_JOSE_HAS_STAR_PIECE
-	jump UnknownScript_0x1a0963
+	sjump UnknownScript_0x1a0963
 
 UnknownScript_0x1a0954:
-	jump UnknownScript_0x1a0977
+	sjump UnknownScript_0x1a0977
 
 UnknownScript_0x1a0957:
 	jumpstd asknumber1m
@@ -327,7 +327,7 @@ TrainerCooltrainerfReena:
 	trainer COOLTRAINERF, REENA1, EVENT_BEAT_COOLTRAINERF_REENA, CooltrainerfReena1SeenText, CooltrainerfReena1BeatenText, 0, CooltrainerfReena1Script
 
 CooltrainerfReena1Script:
-	writecode VAR_CALLERID, PHONE_COOLTRAINERF_REENA
+	loadvar VAR_CALLERID, PHONE_COOLTRAINERF_REENA
 	opentext
 	checkflag ENGINE_REENA
 	iftrue UnknownScript_0x1a09e9
@@ -336,10 +336,10 @@ CooltrainerfReena1Script:
 	checkevent EVENT_REENA_ASKED_FOR_PHONE_NUMBER
 	iftrue UnknownScript_0x1a09d2
 	writetext CooltrainerfReenaAfterBattleText
-	buttonsound
+	promptbutton
 	setevent EVENT_REENA_ASKED_FOR_PHONE_NUMBER
 	scall UnknownScript_0x1a0a2f
-	jump UnknownScript_0x1a09d5
+	sjump UnknownScript_0x1a09d5
 
 UnknownScript_0x1a09d2:
 	scall UnknownScript_0x1a0a33
@@ -347,14 +347,14 @@ UnknownScript_0x1a09d5:
 	askforphonenumber PHONE_COOLTRAINERF_REENA
 	ifequal $1, UnknownScript_0x1a0a43
 	ifequal $2, UnknownScript_0x1a0a3f
-	trainertotext COOLTRAINERF, REENA1, $0
+	gettrainername COOLTRAINERF, REENA1, $0
 	scall UnknownScript_0x1a0a37
-	jump UnknownScript_0x1a0a3b
+	sjump UnknownScript_0x1a0a3b
 
 UnknownScript_0x1a09e9:
 	scall UnknownScript_0x1a0a47
 	winlosstext CooltrainerfReena1BeatenText, 0
-	copybytetovar wReenaFightCount
+	readmem wReenaFightCount
 	ifequal 2, .Fight2
 	ifequal 1, .Fight1
 	ifequal 0, .LoadFight0
@@ -368,7 +368,7 @@ UnknownScript_0x1a09e9:
 	loadtrainer COOLTRAINERF, REENA1
 	startbattle
 	reloadmapafterbattle
-	loadvar wReenaFightCount, 1
+	loadmem wReenaFightCount, 1
 	clearflag ENGINE_REENA
 	end
 
@@ -376,7 +376,7 @@ UnknownScript_0x1a09e9:
 	loadtrainer COOLTRAINERF, REENA2
 	startbattle
 	reloadmapafterbattle
-	loadvar wReenaFightCount, 2
+	loadmem wReenaFightCount, 2
 	clearflag ENGINE_REENA
 	end
 

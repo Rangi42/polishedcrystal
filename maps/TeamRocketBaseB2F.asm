@@ -81,15 +81,15 @@ TeamRocketBaseB2F_MapScriptHeader:
 TransmitterDoorCallback:
 	checkevent EVENT_OPENED_DOOR_TO_ROCKET_HIDEOUT_TRANSMITTER
 	iftrue .Change
-	return
+	endcallback
 
 .Change:
 	changeblock 14, 12, $7
-	return
+	endcallback
 
 RocketBaseBossFLeft:
 	moveobject TEAMROCKETBASEB2F_LANCE, 9, 13
-	jump RocketBaseBossFScript
+	sjump RocketBaseBossFScript
 
 RocketBaseBossFRight:
 	moveobject TEAMROCKETBASEB2F_ARIANA, 21, 16
@@ -179,7 +179,7 @@ LanceHealsScript:
 	showtext LanceHealsText2
 	setscene $1
 	setevent EVENT_LANCE_HEALED_YOU_IN_TEAM_ROCKET_BASE
-	checkcode VAR_FACING
+	readvar VAR_FACING
 	ifequal RIGHT, .FacingRight
 	applymovement TEAMROCKETBASEB2F_LANCE, RocketBaseLanceLeavesAfterHealMovement
 	disappear TEAMROCKETBASEB2F_LANCE
@@ -246,7 +246,7 @@ RocketElectrode1:
 	reloadmapafterbattle
 	special PlayMapMusic
 	applymovement PLAYER, RocketBasePlayerLeavesElectrodesMovement1
-	jump RocketBaseElectrodeScript
+	sjump RocketBaseElectrodeScript
 
 RocketElectrode2:
 	cry ELECTRODE
@@ -264,7 +264,7 @@ RocketElectrode2:
 	reloadmapafterbattle
 	special PlayMapMusic
 	applymovement PLAYER, RocketBasePlayerLeavesElectrodesMovement2
-	jump RocketBaseElectrodeScript
+	sjump RocketBaseElectrodeScript
 
 RocketElectrode3:
 	cry ELECTRODE
@@ -282,7 +282,7 @@ RocketElectrode3:
 	reloadmapafterbattle
 	special PlayMapMusic
 	applymovement PLAYER, RocketBasePlayerLeavesElectrodesMovement3
-	jump RocketBaseElectrodeScript
+	sjump RocketBaseElectrodeScript
 
 TeamRocketBaseB2FReloadMap:
 	reloadmapafterbattle
@@ -295,7 +295,7 @@ RocketBaseElectrodeScript:
 	turnobject PLAYER, RIGHT
 	opentext
 	writetext RocketBaseLanceElectrodeDoneText
-	buttonsound
+	promptbutton
 	verbosegivetmhm TM_THIEF
 	setevent EVENT_GOT_TM46_THIEF_FROM_LANCE
 	writetext RocketBaseLanceWhirlpoolText

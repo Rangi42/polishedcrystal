@@ -20,7 +20,7 @@ Route30BerryHousePokefanMScript:
 	checkevent EVENT_GOT_MULCH_FROM_ROUTE_30_HOUSE
 	iftrue .GotMulch
 	writetext Route30BerrySpeechHouseMonEatBerriesText
-	buttonsound
+	promptbutton
 	verbosegiveitem MULCH
 	iffalse_endtext
 	setevent EVENT_GOT_MULCH_FROM_ROUTE_30_HOUSE

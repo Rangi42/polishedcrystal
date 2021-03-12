@@ -26,7 +26,7 @@ BillsGrandpa:
 	checkevent EVENT_MET_BILLS_GRANDPA
 	iftrue .MetGrandpa
 	writetext BillsGrandpaIntroText
-	buttonsound
+	promptbutton
 	setevent EVENT_MET_BILLS_GRANDPA
 .MetGrandpa:
 	checkevent EVENT_SHOWED_TOGEPI_TO_BILLS_GRANDPA
@@ -48,7 +48,7 @@ BillsGrandpa:
 	checkevent EVENT_SHOWED_SNUBBULL_TO_BILLS_GRANDPA
 	iftrue .ShowedSnubbull
 	writetext BillsGrandpaSnubbullText
-	buttonsound
+	promptbutton
 	writetext BillsGrandpaAskToSeeMonText
 	yesorno
 	iffalse_jumpopenedtext BillsGrandpaYouDontHaveItTextText
@@ -58,11 +58,11 @@ BillsGrandpa:
 	ifnotequal SNUBBULL, .WrongPokemon
 	scall .CorrectPokemon
 	setevent EVENT_SHOWED_SNUBBULL_TO_BILLS_GRANDPA
-	jump .ShowedSnubbull
+	sjump .ShowedSnubbull
 
 .GotEverstone:
 	writetext BillsGrandpaBellsproutText
-	buttonsound
+	promptbutton
 	writetext BillsGrandpaAskToSeeMonText
 	yesorno
 	iffalse_jumpopenedtext BillsGrandpaYouDontHaveItTextText
@@ -72,11 +72,11 @@ BillsGrandpa:
 	ifnotequal BELLSPROUT, .WrongPokemon
 	scall .CorrectPokemon
 	setevent EVENT_SHOWED_BELLSPROUT_TO_BILLS_GRANDPA
-	jump .ShowedBellsprout
+	sjump .ShowedBellsprout
 
 .GotLeafStone:
 	writetext BillsGrandpaStaryuText
-	buttonsound
+	promptbutton
 	writetext BillsGrandpaAskToSeeMonText
 	yesorno
 	iffalse_jumpopenedtext BillsGrandpaYouDontHaveItTextText
@@ -86,11 +86,11 @@ BillsGrandpa:
 	ifnotequal STARYU, .WrongPokemon
 	scall .CorrectPokemon
 	setevent EVENT_SHOWED_STARYU_TO_BILLS_GRANDPA
-	jump .ShowedStaryu
+	sjump .ShowedStaryu
 
 .GotWaterStone:
 	writetext BillsGrandpaGrowlitheText
-	buttonsound
+	promptbutton
 	writetext BillsGrandpaAskToSeeMonText
 	yesorno
 	iffalse_jumpopenedtext BillsGrandpaYouDontHaveItTextText
@@ -100,11 +100,11 @@ BillsGrandpa:
 	ifnotequal GROWLITHE, .WrongPokemon
 	scall .CorrectPokemon
 	setevent EVENT_SHOWED_GROWLITHE_TO_BILLS_GRANDPA
-	jump .ShowedGrowlithe
+	sjump .ShowedGrowlithe
 
 .GotFireStone:
 	writetext BillsGrandpaPichuText
-	buttonsound
+	promptbutton
 	writetext BillsGrandpaAskToSeeMonText
 	yesorno
 	iffalse_jumpopenedtext BillsGrandpaYouDontHaveItTextText
@@ -114,11 +114,11 @@ BillsGrandpa:
 	ifnotequal PICHU, .WrongPokemon
 	scall .CorrectPokemon
 	setevent EVENT_SHOWED_PICHU_TO_BILLS_GRANDPA
-	jump .ShowedPichu
+	sjump .ShowedPichu
 
 .GotThunderstone:
 	writetext BillsGrandpaJigglypuffText
-	buttonsound
+	promptbutton
 	writetext BillsGrandpaAskToSeeMonText
 	yesorno
 	iffalse_jumpopenedtext BillsGrandpaYouDontHaveItTextText
@@ -128,11 +128,11 @@ BillsGrandpa:
 	ifnotequal JIGGLYPUFF, .WrongPokemon
 	scall .CorrectPokemon
 	setevent EVENT_SHOWED_JIGGLYPUFF_TO_BILLS_GRANDPA
-	jump .ShowedJigglypuff
+	sjump .ShowedJigglypuff
 
 .GotMoonStone:
 	writetext BillsGrandpaOddishText
-	buttonsound
+	promptbutton
 	writetext BillsGrandpaAskToSeeMonText
 	yesorno
 	iffalse_jumpopenedtext BillsGrandpaYouDontHaveItTextText
@@ -142,11 +142,11 @@ BillsGrandpa:
 	ifnotequal ODDISH, .WrongPokemon
 	scall .CorrectPokemon
 	setevent EVENT_SHOWED_ODDISH_TO_BILLS_GRANDPA
-	jump .ShowedOddish
+	sjump .ShowedOddish
 
 .GotSunStone:
 	writetext BillsGrandpaMurkrowText
-	buttonsound
+	promptbutton
 	writetext BillsGrandpaAskToSeeMonText
 	yesorno
 	iffalse_jumpopenedtext BillsGrandpaYouDontHaveItTextText
@@ -156,11 +156,11 @@ BillsGrandpa:
 	ifnotequal MURKROW, .WrongPokemon
 	scall .CorrectPokemon
 	setevent EVENT_SHOWED_MURKROW_TO_BILLS_GRANDPA
-	jump .ShowedMurkrow
+	sjump .ShowedMurkrow
 
 .GotDuskStone:
 	writetext BillsGrandpaTogepiText
-	buttonsound
+	promptbutton
 	writetext BillsGrandpaAskToSeeMonText
 	yesorno
 	iffalse_jumpopenedtext BillsGrandpaYouDontHaveItTextText
@@ -170,7 +170,7 @@ BillsGrandpa:
 	ifnotequal TOGEPI, .WrongPokemon
 	scall .CorrectPokemon
 	setevent EVENT_SHOWED_TOGEPI_TO_BILLS_GRANDPA
-	jump .ShowedTogepi
+	sjump .ShowedTogepi
 
 .ShowedSnubbull:
 	checkevent EVENT_GOT_EVERSTONE_FROM_BILLS_GRANDPA
@@ -261,17 +261,17 @@ BillsGrandpa:
 
 .ExcitedToSee:
 	writetext BillsGrandpaExcitedToSeeText
-	buttonsound
+	promptbutton
 	end
 
 .CorrectPokemon:
 	writetext BillsGrandpaShownPokemonText
-	buttonsound
+	promptbutton
 	end
 
 .ReceiveItem:
 	writetext BillsGrandpaTokenOfAppreciationText
-	buttonsound
+	promptbutton
 	end
 
 .WrongPokemon:
@@ -303,13 +303,13 @@ BillsSister:
 	writetext RecordedBillsNumberText
 	playsound SFX_REGISTER_PHONE_NUMBER
 	waitsfx
-	buttonsound
+	promptbutton
 .GotBillsNumber:
 	jumpopenedtext BillsSisterStorageSystemText
 
 .NoRoom:
 	writetext BillsSisterPhoneFullText
-	buttonsound
+	promptbutton
 .Refused:
 	jumpthisopenedtext
 

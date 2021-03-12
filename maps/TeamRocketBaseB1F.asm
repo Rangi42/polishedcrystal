@@ -70,7 +70,7 @@ TeamRocketBaseB1F_MapScriptHeader:
 
 TeamRocketBaseB1FHideSecurityGruntCallback:
 	disappear TEAMROCKETBASEB1F_ROCKET1
-	return
+	endcallback
 
 SecurityCamera1a:
 	checkevent EVENT_SECURITY_CAMERA_1
@@ -513,7 +513,7 @@ VoltorbExplodingTrap:
 	cry VOLTORB
 	special FadeInPalettes
 	setlasttalked -1
-	writecode VAR_BATTLETYPE, BATTLETYPE_TRAP
+	loadvar VAR_BATTLETYPE, BATTLETYPE_TRAP
 	loadwildmon VOLTORB, 30
 	startbattle
 	end
@@ -524,7 +524,7 @@ GeodudeExplodingTrap:
 	cry GEODUDE
 	special FadeInPalettes
 	setlasttalked -1
-	writecode VAR_BATTLETYPE, BATTLETYPE_TRAP
+	loadvar VAR_BATTLETYPE, BATTLETYPE_TRAP
 	loadwildmon GEODUDE, 28
 	startbattle
 	end
@@ -535,7 +535,7 @@ KoffingExplodingTrap:
 	cry KOFFING
 	special FadeInPalettes
 	setlasttalked -1
-	writecode VAR_BATTLETYPE, BATTLETYPE_TRAP
+	loadvar VAR_BATTLETYPE, BATTLETYPE_TRAP
 	loadwildmon KOFFING, 28
 	startbattle
 	end

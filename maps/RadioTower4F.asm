@@ -45,7 +45,7 @@ RadioTower4FDJMaryScript:
 
 .ClearedRockets:
 	writetext RadioTower4FDJMaryText_ClearedRockets
-	buttonsound
+	promptbutton
 	verbosegiveitem PINK_BOW
 	iffalse_endtext
 	setevent EVENT_GOT_PINK_BOW_FROM_MARY

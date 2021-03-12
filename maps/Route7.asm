@@ -56,7 +56,7 @@ Route7Snorlax:
 	pause 15
 	cry SNORLAX
 	closetext
-	writecode VAR_BATTLETYPE, BATTLETYPE_FORCEITEM
+	loadvar VAR_BATTLETYPE, BATTLETYPE_FORCEITEM
 	loadwildmon SNORLAX, 60
 	startbattle
 	disappear ROUTE7_BIG_SNORLAX

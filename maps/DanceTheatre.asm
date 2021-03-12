@@ -78,7 +78,7 @@ DanceTheaterSurfGuy:
 	faceplayer
 	opentext
 	writetext SurfGuyNeverLeftAScratchText
-	buttonsound
+	promptbutton
 	checkevent EVENT_GOT_HM03_SURF
 	iftrue_jumpopenedtext SurfGuyElegantKimonoGirlsText
 	checkevent EVENT_BEAT_KIMONO_GIRL_NAOKO
@@ -92,7 +92,7 @@ DanceTheaterSurfGuy:
 	checkevent EVENT_BEAT_KIMONO_GIRL_MIKI
 	iffalse .KimonoGirlsUndefeated
 	writetext SurfGuyLikeADanceText
-	buttonsound
+	promptbutton
 	verbosegivetmhm HM_SURF
 	setevent EVENT_GOT_HM03_SURF
 	jumpthisopenedtext

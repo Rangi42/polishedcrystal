@@ -50,7 +50,7 @@ ViridianGymBlueScript:
 	checkevent EVENT_GOT_TM71_STONE_EDGE
 	iftrue_jumpopenedtext LeaderBlueEpilogueText
 	writetext LeaderBlueAfterText
-	buttonsound
+	promptbutton
 	verbosegivetmhm TM_STONE_EDGE
 	setevent EVENT_GOT_TM71_STONE_EDGE
 	jumpopenedtext BlueOutroText
@@ -114,7 +114,7 @@ GenericTrainerAceDuoElanandida2:
 	done
 
 ViridianGymStatue:
-	trainertotext BLUE, 1, $1
+	gettrainername BLUE, 1, $1
 	checkflag ENGINE_EARTHBADGE
 	iftrue .Beaten
 	jumpstd gymstatue1

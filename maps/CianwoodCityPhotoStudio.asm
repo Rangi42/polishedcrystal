@@ -23,7 +23,7 @@ CianwoodPhotoStudioFishingGuruScript:
 	yesorno
 	iffalse_jumpopenedtext PhotoStudioRefusedText
 	writetext PhotoStudioWhichMonText
-	buttonsound
+	promptbutton
 	special Special_CianwoodPhotograph
 	ifequal $0, .NoPicture
 	ifequal $1, .EggPicture
@@ -38,7 +38,7 @@ CianwoodPhotoStudioFishingGuruScript:
 	waitsfx
 	pause 10
 	special FadeInPalettes
-	copybytetovar wCurPartySpecies
+	readmem wCurPartySpecies
 	pokepic 0
 	cry 0
 	waitsfx

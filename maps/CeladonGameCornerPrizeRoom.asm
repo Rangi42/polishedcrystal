@@ -40,36 +40,36 @@ CeladonPrizeRoom_tmcounterloop:
 	iftrue CeladonPrizeRoom_alreadyhavetm
 	checkcoins 3500
 	ifequal $2, CeladonPrizeRoom_notenoughcoins
-	tmhmtotext TM_DOUBLE_TEAM, $0
+	gettmhmname TM_DOUBLE_TEAM, $0
 	scall CeladonPrizeRoom_askbuytm
 	iffalse_jumpopenedtext CeladonPrizeRoom_ComeAgainText
 	givetmhm TM_DOUBLE_TEAM
 	takecoins 3500
-	jump CeladonPrizeRoom_purchased
+	sjump CeladonPrizeRoom_purchased
 
 .toxic
 	checktmhm TM_TOXIC
 	iftrue CeladonPrizeRoom_alreadyhavetm
 	checkcoins 5500
 	ifequal $2, CeladonPrizeRoom_notenoughcoins
-	tmhmtotext TM_TOXIC, $0
+	gettmhmname TM_TOXIC, $0
 	scall CeladonPrizeRoom_askbuytm
 	iffalse_jumpopenedtext CeladonPrizeRoom_ComeAgainText
 	givetmhm TM_TOXIC
 	takecoins 5500
-	jump CeladonPrizeRoom_purchased
+	sjump CeladonPrizeRoom_purchased
 
 .gigaimpact
 	checktmhm TM_GIGA_IMPACT
 	iftrue CeladonPrizeRoom_alreadyhavetm
 	checkcoins 7500
 	ifequal $2, CeladonPrizeRoom_notenoughcoins
-	tmhmtotext TM_GIGA_IMPACT, $0
+	gettmhmname TM_GIGA_IMPACT, $0
 	scall CeladonPrizeRoom_askbuytm
 	iffalse_jumpopenedtext CeladonPrizeRoom_ComeAgainText
 	givetmhm TM_GIGA_IMPACT
 	takecoins 7500
-	jump CeladonPrizeRoom_purchased
+	sjump CeladonPrizeRoom_purchased
 
 CeladonPrizeRoom_askbuy:
 	writetext CeladonPrizeRoom_ConfirmPurchaseText
@@ -86,12 +86,12 @@ CeladonPrizeRoom_purchased:
 	playsound SFX_TRANSACTION
 	writetext CeladonPrizeRoom_HereYouGoText
 	waitbutton
-	jump CeladonPrizeRoom_tmcounterloop
+	sjump CeladonPrizeRoom_tmcounterloop
 
 CeladonPrizeRoom_alreadyhavetm:
 	writetext CeladonPrizeRoom_AlreadyHaveTMText
 	waitbutton
-	jump CeladonPrizeRoom_tmcounterloop
+	sjump CeladonPrizeRoom_tmcounterloop
 
 CeladonPrizeRoom_notenoughcoins:
 	jumpopenedtext CeladonPrizeRoom_NotEnoughCoinsText
@@ -135,56 +135,56 @@ CeladonGameCornerPokemonVendor:
 .mr__mime
 	checkcoins 3333
 	ifequal $2, CeladonPrizeRoom_notenoughcoins
-	checkcode VAR_PARTYCOUNT
+	readvar VAR_PARTYCOUNT
 	ifequal $6, CeladonPrizeRoom_notenoughroom
-	pokenamemem MR__MIME, $0
+	getmonname MR__MIME, $0
 	scall CeladonPrizeRoom_askbuy
 	iffalse_jumpopenedtext CeladonPrizeRoom_ComeAgainText
 	waitsfx
 	playsound SFX_TRANSACTION
 	writetext CeladonPrizeRoom_HereYouGoText
 	waitbutton
-	writebyte MR__MIME
+	setval MR__MIME
 	special Special_GameCornerPrizeMonCheckDex
 	givepoke MR__MIME, 10
 	takecoins 3333
-	jump .loop
+	sjump .loop
 
 .eevee
 	checkcoins 6666
 	ifequal $2, CeladonPrizeRoom_notenoughcoins
-	checkcode VAR_PARTYCOUNT
+	readvar VAR_PARTYCOUNT
 	ifequal $6, CeladonPrizeRoom_notenoughroom
-	pokenamemem EEVEE, $0
+	getmonname EEVEE, $0
 	scall CeladonPrizeRoom_askbuy
 	iffalse_jumpopenedtext CeladonPrizeRoom_ComeAgainText
 	waitsfx
 	playsound SFX_TRANSACTION
 	writetext CeladonPrizeRoom_HereYouGoText
 	waitbutton
-	writebyte EEVEE
+	setval EEVEE
 	special Special_GameCornerPrizeMonCheckDex
 	givepoke EEVEE, 20
 	takecoins 6666
-	jump .loop
+	sjump .loop
 
 .porygon
 	checkcoins 9999
 	ifequal $2, CeladonPrizeRoom_notenoughcoins
-	checkcode VAR_PARTYCOUNT
+	readvar VAR_PARTYCOUNT
 	ifequal $6, CeladonPrizeRoom_notenoughroom
-	pokenamemem PORYGON, $0
+	getmonname PORYGON, $0
 	scall CeladonPrizeRoom_askbuy
 	iffalse_jumpopenedtext CeladonPrizeRoom_ComeAgainText
 	waitsfx
 	playsound SFX_TRANSACTION
 	writetext CeladonPrizeRoom_HereYouGoText
 	waitbutton
-	writebyte PORYGON
+	setval PORYGON
 	special Special_GameCornerPrizeMonCheckDex
 	givepoke PORYGON, 30
 	takecoins 9999
-	jump .loop
+	sjump .loop
 
 .MenuDataHeader:
 	db $40 ; flags

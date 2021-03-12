@@ -28,12 +28,12 @@ RadioTower3F_MapScriptHeader:
 CardKeyShutterCallback:
 	checkevent EVENT_USED_THE_CARD_KEY_IN_THE_RADIO_TOWER
 	iftrue .Change
-	return
+	endcallback
 
 .Change:
 	changeblock 14, 2, $2a
 	changeblock 14, 4, $1
-	return
+	endcallback
 
 RadioTower3FGymGuideScript:
 	checkevent EVENT_CLEARED_RADIO_TOWER
@@ -66,7 +66,7 @@ RadioTower3FCooltrainerFScript:
 	faceplayer
 	opentext
 	writetext RadioTower3FCooltrainerFYoureMyHeroText
-	buttonsound
+	promptbutton
 	verbosegiveitem HEAT_ROCK
 	iffalse_endtext
 	writetext RadioTower3FCooltrainerFItsAHeatRockText

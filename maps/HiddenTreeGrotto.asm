@@ -29,24 +29,24 @@ HiddenGrottoCallback:
 	ifequal GROTTO_POKEMON, .pokemon
 	ifequal GROTTO_ITEM, .item
 	ifequal GROTTO_HIDDEN_ITEM, .hidden_item
-	return
+	endcallback
 
 .pokemon
 	clearevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_1
-	return
+	endcallback
 
 .item
 	clearevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
-	return
+	endcallback
 
 .hidden_item
 	clearevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_3
-	return
+	endcallback
 
 HiddenGrottoPokemonScript:
 	special EmptiedHiddenGrotto
 	loadgrottomon
-	writecode VAR_BATTLETYPE, BATTLETYPE_GROTTO
+	loadvar VAR_BATTLETYPE, BATTLETYPE_GROTTO
 	startbattle
 	disappear HIDDENTREEGROTTO_POKEMON
 	reloadmapafterbattle
@@ -56,7 +56,7 @@ HiddenGrottoHiddenItemScript:
 	dw EVENT_TEMPORARY_UNTIL_MAP_RELOAD_3
 HiddenGrottoItemScript:
 	special GetHiddenGrottoContents
-	itemtotext $0, $1
+	getitemname $0, $1
 	giveitem ITEM_FROM_MEM
 	iffalse .PackFull
 	disappear HIDDENTREEGROTTO_ITEM

@@ -39,7 +39,7 @@ Route46TutorRoute46Script:
 	writetext Text_Route46TutorQuestion
 	yesorno
 	iffalse .TutorRefused
-	writebyte ROLLOUT
+	setval ROLLOUT
 	writetext ClearText
 	special Special_MoveTutor
 	ifequal $0, .TeachMove
@@ -67,7 +67,7 @@ TrainerPicnickerErin1:
 	trainer PICNICKER, ERIN1, EVENT_BEAT_PICNICKER_ERIN, PicnickerErin1SeenText, PicnickerErin1BeatenText, 0, PicnickerErin1Script
 
 PicnickerErin1Script:
-	writecode VAR_CALLERID, PHONE_PICNICKER_ERIN
+	loadvar VAR_CALLERID, PHONE_PICNICKER_ERIN
 	opentext
 	checkflag ENGINE_ERIN
 	iftrue UnknownScript_0x1a96da
@@ -76,10 +76,10 @@ PicnickerErin1Script:
 	checkevent EVENT_ERIN_ASKED_FOR_PHONE_NUMBER
 	iftrue UnknownScript_0x1a96c3
 	writetext PicnickerErinAfterBattleText
-	buttonsound
+	promptbutton
 	setevent EVENT_ERIN_ASKED_FOR_PHONE_NUMBER
 	scall Route46AskNumber1F
-	jump UnknownScript_0x1a96c6
+	sjump UnknownScript_0x1a96c6
 
 UnknownScript_0x1a96c3:
 	scall Route46AskNumber2F
@@ -87,14 +87,14 @@ UnknownScript_0x1a96c6:
 	askforphonenumber PHONE_PICNICKER_ERIN
 	ifequal $1, Route46PhoneFullF
 	ifequal $2, Route46NumberDeclinedF
-	trainertotext PICNICKER, ERIN1, $0
+	gettrainername PICNICKER, ERIN1, $0
 	scall Route46RegisteredNumberF
-	jump Route46NumberAcceptedF
+	sjump Route46NumberAcceptedF
 
 UnknownScript_0x1a96da:
 	scall Route46RematchF
 	winlosstext PicnickerErin1BeatenText, 0
-	copybytetovar wErinFightCount
+	readmem wErinFightCount
 	ifequal 2, .Fight2
 	ifequal 1, .Fight1
 	ifequal 0, .LoadFight0
@@ -108,7 +108,7 @@ UnknownScript_0x1a96da:
 	loadtrainer PICNICKER, ERIN1
 	startbattle
 	reloadmapafterbattle
-	loadvar wErinFightCount, 1
+	loadmem wErinFightCount, 1
 	clearflag ENGINE_ERIN
 	end
 
@@ -116,7 +116,7 @@ UnknownScript_0x1a96da:
 	loadtrainer PICNICKER, ERIN2
 	startbattle
 	reloadmapafterbattle
-	loadvar wErinFightCount, 2
+	loadmem wErinFightCount, 2
 	clearflag ENGINE_ERIN
 	end
 
@@ -133,7 +133,7 @@ UnknownScript_0x1a96da:
 	verbosegiveitem CALCIUM
 	iffalse ErinNoRoomForCalcium
 	setevent EVENT_GOT_CALCIUM_FROM_ERIN
-	jump Route46NumberAcceptedF
+	sjump Route46NumberAcceptedF
 
 UnknownScript_0x1a973a:
 	end
@@ -146,7 +146,7 @@ UnknownScript_0x1a973b:
 	iffalse ErinNoRoomForCalcium
 	clearevent EVENT_ERIN_CALCIUM
 	setevent EVENT_GOT_CALCIUM_FROM_ERIN
-	jump Route46NumberAcceptedF
+	sjump Route46NumberAcceptedF
 
 Route46AskNumber1F:
 	jumpstd asknumber1f

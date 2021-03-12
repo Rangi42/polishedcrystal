@@ -36,7 +36,7 @@ CeladonUniversityClassroom4RaymondScript:
 	checkevent EVENT_INTRODUCED_CELADON_FOUR
 	iftrue .IntroducedCeladonFour1
 	writetext .IntroText1
-	jump .AfterIntro
+	sjump .AfterIntro
 .IntroducedCeladonFour1
 	writetext .IntroText2
 .AfterIntro
@@ -63,7 +63,7 @@ CeladonUniversityClassroom4RaymondScript:
 	checkevent EVENT_GOT_CHOICE_BAND_FROM_CELADON_FOUR
 	iftrue_jumpopenedtext .FinalText
 	writetext .AfterText2
-	buttonsound
+	promptbutton
 	verbosegiveitem CHOICE_BAND
 	iffalse_endtext
 	setevent EVENT_GOT_CHOICE_BAND_FROM_CELADON_FOUR
@@ -210,7 +210,7 @@ CeladonUniversityClassroom4Rich_boyScript:
 	checkevent EVENT_GOT_ABILITY_CAP_IN_UNIVERSITY
 	iftrue .GotItem
 	writetext .Text1
-	buttonsound
+	promptbutton
 	verbosegiveitem ABILITY_CAP
 	iffalse_endtext
 	setevent EVENT_GOT_ABILITY_CAP_IN_UNIVERSITY
@@ -270,7 +270,7 @@ CeladonUniversityClassroom4Bookshelf1:
 	iftrue_jumptext .Text2
 	opentext
 	writetext .Text1
-	buttonsound
+	promptbutton
 	verbosegiveitem X_SPCL_ATK
 	iffalse_endtext
 	setevent EVENT_GOT_X_SPCL_ATK_IN_UNIVERSITY

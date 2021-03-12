@@ -44,11 +44,11 @@ SetupValerieAfterMorningWalkScript:
 	iffalse .Appear
 .Disappear:
 	disappear VALERIESHOUSE_VALERIE
-	jump SetupFairyBookScript
+	sjump SetupFairyBookScript
 
 .Appear
 	appear VALERIESHOUSE_VALERIE
-	jump SetupFairyBookScript
+	sjump SetupFairyBookScript
 
 SetupFairyBookScript:
 	disappear VALERIESHOUSE_RED_FAIRY_BOOK
@@ -58,7 +58,7 @@ SetupFairyBookScript:
 	disappear VALERIESHOUSE_VIOLET_FAIRY_BOOK
 	disappear VALERIESHOUSE_PINK_FAIRY_BOOK
 	disappear VALERIESHOUSE_YELLOW_FAIRY_BOOK
-	checkcode VAR_WEEKDAY
+	readvar VAR_WEEKDAY
 	ifequal MONDAY, .Monday
 	ifequal TUESDAY, .Tuesday
 	ifequal WEDNESDAY, .Wednesday
@@ -67,25 +67,25 @@ SetupFairyBookScript:
 	ifequal SATURDAY, .Saturday
 .Sunday
 	appear VALERIESHOUSE_PINK_FAIRY_BOOK
-	return
+	endcallback
 .Monday
 	appear VALERIESHOUSE_BROWN_FAIRY_BOOK
-	return
+	endcallback
 .Tuesday
 	appear VALERIESHOUSE_RED_FAIRY_BOOK
-	return
+	endcallback
 .Wednesday
 	appear VALERIESHOUSE_BLUE_FAIRY_BOOK
-	return
+	endcallback
 .Thursday
 	appear VALERIESHOUSE_GREEN_FAIRY_BOOK
-	return
+	endcallback
 .Friday
 	appear VALERIESHOUSE_YELLOW_FAIRY_BOOK
-	return
+	endcallback
 .Saturday
 	appear VALERIESHOUSE_VIOLET_FAIRY_BOOK
-	return
+	endcallback
 
 ValeriesHouseValerieText:
 	text "Valerie: My"

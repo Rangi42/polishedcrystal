@@ -264,7 +264,7 @@ CheckSpecialPhoneCall::
 
 .script
 	pause 30
-	jump Script_ReceivePhoneCall
+	sjump Script_ReceivePhoneCall
 
 .DoSpecialPhoneCall:
 	ld a, [wSpecialPhoneCallID]
@@ -355,12 +355,12 @@ MakePhoneCallFromPokegear:
 	jp ExecuteCallbackScript
 
 LoadPhoneScriptBank:
-	ptcall wPhoneScriptBank
-	return
+	memcall wPhoneScriptBank
+	endcallback
 
 LoadOutOfAreaScript:
 	scall PhoneOutOfAreaScript
-	return
+	endcallback
 
 PhoneOutOfAreaScript:
 	farwritetext _PhoneOutOfAreaText
@@ -399,7 +399,7 @@ WrongNumber:
 Script_ReceivePhoneCall:
 	refreshscreen
 	callasm RingTwice_StartCall
-	ptcall wCallerContact + PHONE_CONTACT_SCRIPT2_BANK
+	memcall wCallerContact + PHONE_CONTACT_SCRIPT2_BANK
 	waitbutton
 	callasm HangUp
 	closetext
@@ -408,7 +408,7 @@ Script_ReceivePhoneCall:
 
 Script_SpecialBillCall::
 	callasm .LoadBillScript
-	jump Script_ReceivePhoneCall
+	sjump Script_ReceivePhoneCall
 
 .LoadBillScript:
 	ld e, PHONE_BILL

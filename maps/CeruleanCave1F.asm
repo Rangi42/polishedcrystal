@@ -35,11 +35,11 @@ CeruleanCave1FTileScript:
 	checkscene
 	iftrue .underfoot
 	callasm CeruleanCave1F_OverheadBridgeAsm
-	return
+	endcallback
 
 .underfoot:
 	callasm CeruleanCave1F_UnderfootBridgeAsm
-	return
+	endcallback
 
 CeruleanCave1F_OverheadBridgeAsm:
 	changebridgeblock 20, 2, $ea, CERULEAN_CAVE_1F

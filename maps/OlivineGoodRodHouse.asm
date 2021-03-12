@@ -23,7 +23,7 @@ GoodRodGuru:
 	yesorno
 	iffalse_jumpopenedtext DontWantGoodRodText
 	writetext GiveGoodRodText
-	buttonsound
+	promptbutton
 	verbosegivekeyitem GOOD_ROD
 	writetext GaveGoodRodText
 	waitbutton

@@ -13,114 +13,114 @@ MomPhoneScript:
 	iftrue MomPhoneNoGymQuestScript
 	checkevent EVENT_GOT_A_POKEMON_FROM_ELM
 	iftrue MomPhoneNoPokedexScript
-	jump MomPhoneNoPokemonScript
+	sjump MomPhoneNoPokemonScript
 
 .bcec5
 	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_8
 	iftrue MomPhoneHangUpScript
 	farwritetext MomPhoneGreetingText
-	buttonsound
-	mapnametotext $0
-	checkcode VAR_ROOFPALETTE
+	promptbutton
+	getcurlandmarkname $0
+	readvar VAR_ROOFPALETTE
 	ifequal $1, MomPhonePalette1
 	ifequal $2, MomPhonePalette2
-	jump MomPhoneOther
+	sjump MomPhoneOther
 
 MomPhoneLandmark:
 	farwritetext MomPhoneLandmarkText
-	buttonsound
-	jump MomSavingMoney
+	promptbutton
+	sjump MomSavingMoney
 
 MomPhonePalette1:
-	checkcode VAR_MAPGROUP
+	readvar VAR_MAPGROUP
 	ifequal GROUP_NEW_BARK_TOWN, .newbark
 	ifequal GROUP_CHERRYGROVE_CITY, .cherrygrove
 	ifequal GROUP_VIOLET_CITY, .violet
 	ifequal GROUP_AZALEA_TOWN, .azalea
 	ifequal GROUP_GOLDENROD_CITY, .goldenrod
 	farwritetext MomPhoneGenericAreaText
-	buttonsound
-	jump MomSavingMoney
+	promptbutton
+	sjump MomSavingMoney
 
 .newbark
 	farwritetext MomPhoneNewBarkText
-	buttonsound
-	jump MomSavingMoney
+	promptbutton
+	sjump MomSavingMoney
 
 .cherrygrove
 	farwritetext MomPhoneCherrygroveText
-	buttonsound
-	jump MomSavingMoney
+	promptbutton
+	sjump MomSavingMoney
 
 .violet
-	landmarktotext SPROUT_TOWER, 1
-	jump MomPhoneLandmark
+	getlandmarkname SPROUT_TOWER, 1
+	sjump MomPhoneLandmark
 .azalea
-	landmarktotext SLOWPOKE_WELL, 1
-	jump MomPhoneLandmark
+	getlandmarkname SLOWPOKE_WELL, 1
+	sjump MomPhoneLandmark
 .goldenrod
-	landmarktotext RADIO_TOWER, 1
-	jump MomPhoneLandmark
+	getlandmarkname RADIO_TOWER, 1
+	sjump MomPhoneLandmark
 
 MomPhonePalette2:
 	farwritetext MomOtherAreaText
-	buttonsound
-	jump MomSavingMoney
+	promptbutton
+	sjump MomSavingMoney
 
 MomPhoneOther:
 	farwritetext MomDeterminedText
-	buttonsound
-	jump MomSavingMoney
+	promptbutton
+	sjump MomSavingMoney
 
 MomSavingMoney:
 	checkflag ENGINE_MOM_SAVING_MONEY
 	iffalse UnknownScript_0xbcf49
 	checkmoney $1, 0
 	ifequal $0, UnknownScript_0xbcf55
-	jump UnknownScript_0xbcf63
+	sjump UnknownScript_0xbcf63
 
 UnknownScript_0xbcf49:
 	checkmoney $1, 0
 	ifequal $0, UnknownScript_0xbcf79
-	jump UnknownScript_0xbcf6e
+	sjump UnknownScript_0xbcf6e
 
 UnknownScript_0xbcf55:
-	readmoney $1, $0
+	getmoney $1, $0
 	farwritetext MomCheckBalanceText
 	yesorno
 	iftrue MomPhoneSaveMoneyScript
-	jump MomPhoneWontSaveMoneyScript
+	sjump MomPhoneWontSaveMoneyScript
 
 UnknownScript_0xbcf63:
 	farwritetext MomImportantToSaveText
 	yesorno
 	iftrue MomPhoneSaveMoneyScript
-	jump MomPhoneWontSaveMoneyScript
+	sjump MomPhoneWontSaveMoneyScript
 
 UnknownScript_0xbcf6e:
 	farwritetext MomYoureNotSavingText
 	yesorno
 	iftrue MomPhoneSaveMoneyScript
-	jump MomPhoneWontSaveMoneyScript
+	sjump MomPhoneWontSaveMoneyScript
 
 UnknownScript_0xbcf79:
-	readmoney $1, $0
+	getmoney $1, $0
 	farwritetext MomYouveSavedText
 	yesorno
 	iftrue MomPhoneSaveMoneyScript
-	jump MomPhoneWontSaveMoneyScript
+	sjump MomPhoneWontSaveMoneyScript
 
 MomPhoneSaveMoneyScript:
 	setflag ENGINE_MOM_SAVING_MONEY
 	farwritetext MomOKIllSaveText
-	buttonsound
-	jump MomPhoneHangUpScript
+	promptbutton
+	sjump MomPhoneHangUpScript
 
 MomPhoneWontSaveMoneyScript:
 	clearflag ENGINE_MOM_SAVING_MONEY
 	farwritetext MomPhoneWontSaveMoneyText
-	buttonsound
-	jump MomPhoneHangUpScript
+	promptbutton
+	sjump MomPhoneHangUpScript
 
 MomPhoneHangUpScript:
 	farwritetext MomPhoneHangUpText
@@ -145,7 +145,7 @@ MomPhoneLectureScript:
 	farwritetext MomPhoneLectureText
 	yesorno
 	iftrue MomPhoneSaveMoneyScript
-	jump MomPhoneWontSaveMoneyScript
+	sjump MomPhoneWontSaveMoneyScript
 
 ; Bill
 
@@ -155,24 +155,24 @@ BillPhoneScript1:
 	checktime 1 << MORN
 	iffalse .nitegreet
 	farwritetext BillPhoneMornGreetingText
-	buttonsound
-	jump .main
+	promptbutton
+	sjump .main
 
 .daygreet
 	farwritetext BillPhoneDayGreetingText
-	buttonsound
-	jump .main
+	promptbutton
+	sjump .main
 
 .nitegreet
 	farwritetext BillPhoneNiteGreetingText
-	buttonsound
-	jump .main
+	promptbutton
+	sjump .main
 
 .main
 	farwritetext BillPhoneGenericText
-	buttonsound
-	checkcode VAR_BOXSPACE
-	RAM2MEM $0
+	promptbutton
+	readvar VAR_BOXSPACE
+	getnum $0
 	ifequal $0, .full
 	ifless $6, .nearlyfull
 	farwritetext BillPhoneNotFullText
@@ -184,10 +184,10 @@ BillPhoneScript1:
 
 .full
 	farwritetext BillPhoneFullText
-	jump BillPhoneScriptCheckForBoxes
+	sjump BillPhoneScriptCheckForBoxes
 
 BillPhoneScript2:
-	checkcode VAR_SPECIALPHONECALL
+	readvar VAR_SPECIALPHONECALL
 	ifequal SPECIALCALL_SECONDBADGE, BillPhoneScriptSecondBadge
 	farwritetext BillPhoneNewlyFullText
 BillPhoneScriptCheckForBoxes:
@@ -214,7 +214,7 @@ BillPhoneWholePCFull:
 ; Elm
 
 ElmPhoneScript1:
-	checkcode VAR_SPECIALPHONECALL
+	readvar VAR_SPECIALPHONECALL
 	ifequal SPECIALCALL_POKERUS, .pokerus
 	checkevent EVENT_SHOWED_TOGEPI_TO_ELM
 	iftrue .discovery
@@ -277,7 +277,7 @@ ElmPhoneScript1:
 	end
 
 ElmPhoneScript2:
-	checkcode VAR_SPECIALPHONECALL
+	readvar VAR_SPECIALPHONECALL
 	ifequal SPECIALCALL_ROBBED, .disaster
 	ifequal SPECIALCALL_ASSISTANT, .assistant
 	ifequal SPECIALCALL_WEIRDBROADCAST, .rocket
@@ -320,35 +320,35 @@ LyraPhoneScript:
 	checktime 1 << NITE
 	iftrue .nitegreet
 	farwritetext LyraPhoneMornGreetingText
-	buttonsound
-	jump .main
+	promptbutton
+	sjump .main
 
 .daygreet
 	farwritetext LyraPhoneDayGreetingText
-	buttonsound
-	jump .main
+	promptbutton
+	sjump .main
 
 .evegreet
 	farwritetext LyraPhoneEveGreetingText
-	buttonsound
-	jump .main
+	promptbutton
+	sjump .main
 
 .nitegreet
 	farwritetext LyraPhoneNiteGreetingText
-	buttonsound
-	jump .main
+	promptbutton
+	sjump .main
 
 .main
 	farwritetext LyraPhoneMainText
 	end
 
 LyraPhoneScript2:
-	checkcode VAR_SPECIALPHONECALL
+	readvar VAR_SPECIALPHONECALL
 	ifequal SPECIALCALL_YELLOWFOREST, .yellowforest
 	ifequal SPECIALCALL_FIRSTBADGE, .firstbadge
 	ifequal SPECIALCALL_LYRASEGG, .lyrasegg
 	specialphonecall SPECIALCALL_NONE
-	jump LyraPhoneScript
+	sjump LyraPhoneScript
 
 .yellowforest
 	farwritetext LyraPhoneYellowForestText
@@ -362,22 +362,22 @@ LyraPhoneScript2:
 
 .lyrasegg
 	farwritetext LyraPhoneLyrasEggIntroText
-	buttonsound
+	promptbutton
 	checkevent EVENT_GOT_TOTODILE_FROM_ELM
 	iftrue .lyrasegg_totodile
 	checkevent EVENT_GOT_CHIKORITA_FROM_ELM
 	iftrue .lyrasegg_chikorita
 	farwritetext LyraPhoneLyrasEggChikoritaText
-	jump .lyrasegg_end
+	sjump .lyrasegg_end
 
 .lyrasegg_totodile
 	farwritetext LyraPhoneLyrasEggCyndaquilText
-	jump .lyrasegg_end
+	sjump .lyrasegg_end
 
 .lyrasegg_chikorita:
 	farwritetext LyraPhoneLyrasEggTotodileText
 .lyrasegg_end
-	buttonsound
+	promptbutton
 	farwritetext LyraPhoneLyrasEggEndText
 	setevent EVENT_LYRA_GAVE_AWAY_EGG
 	specialphonecall SPECIALCALL_NONE
@@ -386,26 +386,26 @@ LyraPhoneScript2:
 ; Jack
 
 JackPhoneScript1:
-	trainertotext SCHOOLBOY, JACK1, $0
+	gettrainername SCHOOLBOY, JACK1, $0
 	checkflag ENGINE_JACK
 	iftrue UnknownScript_0xbd0f3
 	farscall PhoneScript_AnswerPhone_Male
 	checkflag ENGINE_JACK_MONDAY_MORNING
 	iftrue UnknownScript_0xbd0ef
-	checkcode VAR_WEEKDAY
+	readvar VAR_WEEKDAY
 	ifnotequal MONDAY, UnknownScript_0xbd0ef
 	checktime 1 << MORN
 	iftrue JackMondayMorning
 
 UnknownScript_0xbd0ef:
-	farjump JackPhoneTipsScript
+	farsjump JackPhoneTipsScript
 
 UnknownScript_0xbd0f3:
-	landmarktotext NATIONAL_PARK, $2
-	farjump JackWantsBattleScript
+	getlandmarkname NATIONAL_PARK, $2
+	farsjump JackWantsBattleScript
 
 JackPhoneScript2:
-	trainertotext SCHOOLBOY, JACK1, $0
+	gettrainername SCHOOLBOY, JACK1, $0
 	farscall PhoneScript_GreetPhone_Male
 	farscall PhoneScript_Random2
 	ifequal $0, JackBattleTrivia
@@ -419,37 +419,37 @@ JackPhoneScript2:
 UnknownScript_0xbd11e:
 	farscall PhoneScript_Random3
 	ifequal $0, JackFindsRare
-	farjump Phone_GenericCall_Male
+	farsjump Phone_GenericCall_Male
 
 JackMondayMorning:
 	setflag ENGINE_JACK_MONDAY_MORNING
 
 JackWantsToBattle:
-	landmarktotext NATIONAL_PARK, $2
+	getlandmarkname NATIONAL_PARK, $2
 	setflag ENGINE_JACK
-	farjump PhoneScript_WantsToBattle_Male
+	farsjump PhoneScript_WantsToBattle_Male
 
 JackFindsRare:
-	farjump Phone_CheckIfUnseenRare_Male
+	farsjump Phone_CheckIfUnseenRare_Male
 
 JackBattleTrivia:
-	farjump JackTriviaScript
+	farsjump JackTriviaScript
 
 ; Beverly
 
 BeverlyPhoneScript1:
-	trainertotext POKEFANF, BEVERLY1, $0
+	gettrainername POKEFANF, BEVERLY1, $0
 	farscall PhoneScript_AnswerPhone_Female
 	checkflag ENGINE_BEVERLY_HAS_NUGGET
 	iftrue UnknownScript_0xbd151
-	farjump BeverlyHangUpScript
+	farsjump BeverlyHangUpScript
 
 UnknownScript_0xbd151:
-	landmarktotext NATIONAL_PARK, $2
-	farjump BeverlyComePickUpScript
+	getlandmarkname NATIONAL_PARK, $2
+	farsjump BeverlyComePickUpScript
 
 BeverlyPhoneScript2:
-	trainertotext POKEFANF, BEVERLY1, $0
+	gettrainername POKEFANF, BEVERLY1, $0
 	farscall PhoneScript_GreetPhone_Female
 	checkflag ENGINE_BEVERLY_HAS_NUGGET
 	iftrue UnknownScript_0xbd16e
@@ -457,37 +457,37 @@ BeverlyPhoneScript2:
 	ifequal $0, UnknownScript_0xbd172
 
 UnknownScript_0xbd16e:
-	farjump Phone_GenericCall_Female
+	farsjump Phone_GenericCall_Female
 
 UnknownScript_0xbd172:
 	setflag ENGINE_BEVERLY_HAS_NUGGET
-	landmarktotext NATIONAL_PARK, $2
-	farjump PhoneScript_FoundItem_Female
+	getlandmarkname NATIONAL_PARK, $2
+	farsjump PhoneScript_FoundItem_Female
 
 ; Huey
 
 HueyPhoneScript1:
-	trainertotext SAILOR, HUEY1, $0
+	gettrainername SAILOR, HUEY1, $0
 	checkflag ENGINE_HUEY
 	iftrue UnknownScript_0xbd1a2
 	farscall PhoneScript_AnswerPhone_Male
 	checkflag ENGINE_HUEY_WEDNESDAY_NIGHT
 	iftrue UnknownScript_0xbd19b
-	checkcode VAR_WEEKDAY
+	readvar VAR_WEEKDAY
 	ifnotequal WEDNESDAY, UnknownScript_0xbd19b
 	checktime (1 << EVE) | (1 << NITE)
 	iftrue HueyWednesdayNight
 
 UnknownScript_0xbd19b:
 	special RandomPhoneMon
-	farjump HueyHangUpScript
+	farsjump HueyHangUpScript
 
 UnknownScript_0xbd1a2:
-	landmarktotext LIGHTHOUSE, $2
-	farjump HueyWantsBattleScript
+	getlandmarkname LIGHTHOUSE, $2
+	farsjump HueyWantsBattleScript
 
 HueyPhoneScript2:
-	trainertotext SAILOR, HUEY1, $0
+	gettrainername SAILOR, HUEY1, $0
 	farscall PhoneScript_GreetPhone_Male
 	checkflag ENGINE_HUEY
 	iftrue UnknownScript_0xbd1c9
@@ -498,39 +498,39 @@ HueyPhoneScript2:
 	ifequal $1, HueyWantsBattle
 
 UnknownScript_0xbd1c9:
-	farjump PhoneScript_MonFlavorText
+	farsjump PhoneScript_MonFlavorText
 
 HueyWednesdayNight:
 	setflag ENGINE_HUEY_WEDNESDAY_NIGHT
 
 HueyWantsBattle:
-	landmarktotext LIGHTHOUSE, $2
+	getlandmarkname LIGHTHOUSE, $2
 	setflag ENGINE_HUEY
-	farjump PhoneScript_WantsToBattle_Male
+	farsjump PhoneScript_WantsToBattle_Male
 
 ; Gaven
 
 GavenPhoneScript1:
-	trainertotext COOLTRAINERM, GAVEN1, $0
+	gettrainername COOLTRAINERM, GAVEN1, $0
 	checkflag ENGINE_GAVEN
 	iftrue UnknownScript_0xbd1fd
 	farscall PhoneScript_AnswerPhone_Male
 	checkflag ENGINE_GAVEN_THURSDAY_MORNING
 	iftrue UnknownScript_0xbd1f9
-	checkcode VAR_WEEKDAY
+	readvar VAR_WEEKDAY
 	ifnotequal THURSDAY, UnknownScript_0xbd1f9
 	checktime 1 << MORN
 	iftrue GavenThursdayMorningScript
 
 UnknownScript_0xbd1f9:
-	farjump GavenHangUpNotThursdayScript
+	farsjump GavenHangUpNotThursdayScript
 
 UnknownScript_0xbd1fd:
-	landmarktotext ROUTE_26, $2
-	farjump GavenReminderScript
+	getlandmarkname ROUTE_26, $2
+	farsjump GavenReminderScript
 
 GavenPhoneScript2:
-	trainertotext COOLTRAINERM, GAVEN1, $0
+	gettrainername COOLTRAINERM, GAVEN1, $0
 	farscall PhoneScript_GreetPhone_Male
 	checkflag ENGINE_GAVEN
 	iftrue UnknownScript_0xbd220
@@ -542,42 +542,42 @@ GavenPhoneScript2:
 UnknownScript_0xbd220:
 	farscall PhoneScript_Random3
 	ifequal $0, GavenFoundRare
-	farjump Phone_GenericCall_Male
+	farsjump Phone_GenericCall_Male
 
 GavenThursdayMorningScript:
 	setflag ENGINE_GAVEN_THURSDAY_MORNING
 
 GavenWantsRematch:
-	landmarktotext ROUTE_26, $2
+	getlandmarkname ROUTE_26, $2
 	setflag ENGINE_GAVEN
-	farjump PhoneScript_WantsToBattle_Male
+	farsjump PhoneScript_WantsToBattle_Male
 
 GavenFoundRare:
-	farjump Phone_CheckIfUnseenRare_Male
+	farsjump Phone_CheckIfUnseenRare_Male
 
 ; Beth
 
 BethPhoneScript1:
-	trainertotext COOLTRAINERF, BETH1, $0
+	gettrainername COOLTRAINERF, BETH1, $0
 	checkflag ENGINE_BETH
 	iftrue UnknownScript_0xbd260
 	farscall PhoneScript_AnswerPhone_Female
 	checkflag ENGINE_BETH_FRIDAY_AFTERNOON
 	iftrue UnknownScript_0xbd25c
-	checkcode VAR_WEEKDAY
+	readvar VAR_WEEKDAY
 	ifnotequal FRIDAY, UnknownScript_0xbd25c
 	checktime 1 << DAY
 	iftrue BethFridayAfternoon
 
 UnknownScript_0xbd25c:
-	farjump BethHangUpScript
+	farsjump BethHangUpScript
 
 UnknownScript_0xbd260:
-	landmarktotext ROUTE_26, $2
-	farjump BethBattleReminderScript
+	getlandmarkname ROUTE_26, $2
+	farsjump BethBattleReminderScript
 
 BethPhoneScript2:
-	trainertotext COOLTRAINERF, BETH1, $0
+	gettrainername COOLTRAINERF, BETH1, $0
 	farscall PhoneScript_GreetPhone_Female
 	checkflag ENGINE_BETH
 	iftrue UnknownScript_0xbd283
@@ -587,20 +587,20 @@ BethPhoneScript2:
 	ifequal $0, BethWantsBattle
 
 UnknownScript_0xbd283:
-	farjump Phone_GenericCall_Female
+	farsjump Phone_GenericCall_Female
 
 BethFridayAfternoon:
 	setflag ENGINE_BETH_FRIDAY_AFTERNOON
 
 BethWantsBattle:
-	landmarktotext ROUTE_26, $2
+	getlandmarkname ROUTE_26, $2
 	setflag ENGINE_BETH
-	farjump PhoneScript_WantsToBattle_Female
+	farsjump PhoneScript_WantsToBattle_Female
 
 ; Jose
 
 JosePhoneScript1:
-	trainertotext BIRD_KEEPER, JOSE2, $0
+	gettrainername BIRD_KEEPER, JOSE2, $0
 	checkflag ENGINE_JOSE
 	iftrue UnknownScript_0xbd2bd
 	farscall PhoneScript_AnswerPhone_Male
@@ -608,24 +608,24 @@ JosePhoneScript1:
 	iftrue UnknownScript_0xbd2b9
 	checkflag ENGINE_JOSE_HAS_STAR_PIECE
 	iftrue UnknownScript_0xbd2c4
-	checkcode VAR_WEEKDAY
+	readvar VAR_WEEKDAY
 	ifnotequal SATURDAY, UnknownScript_0xbd2b9
 	checktime (1 << EVE) | (1 << NITE)
 	iftrue JoseSaturdayNight
 
 UnknownScript_0xbd2b9:
-	farjump JoseHangUpScript
+	farsjump JoseHangUpScript
 
 UnknownScript_0xbd2bd:
-	landmarktotext ROUTE_27, $2
-	farjump JoseReminderScript
+	getlandmarkname ROUTE_27, $2
+	farsjump JoseReminderScript
 
 UnknownScript_0xbd2c4:
-	landmarktotext ROUTE_27, $2
-	farjump JoseReminderScript
+	getlandmarkname ROUTE_27, $2
+	farsjump JoseReminderScript
 
 JosePhoneScript2:
-	trainertotext BIRD_KEEPER, JOSE2, $0
+	gettrainername BIRD_KEEPER, JOSE2, $0
 	farscall PhoneScript_GreetPhone_Male
 	checkflag ENGINE_JOSE
 	iftrue UnknownScript_0xbd2f5
@@ -641,47 +641,47 @@ JosePhoneScript2:
 UnknownScript_0xbd2f5:
 	farscall PhoneScript_Random3
 	ifequal $0, JoseFoundRare
-	farjump Phone_GenericCall_Male
+	farsjump Phone_GenericCall_Male
 
 JoseSaturdayNight:
 	setflag ENGINE_JOSE_SATURDAY_NIGHT
 
 JoseWantsBattle:
-	landmarktotext ROUTE_27, $2
+	getlandmarkname ROUTE_27, $2
 	setflag ENGINE_JOSE
-	farjump PhoneScript_WantsToBattle_Male
+	farsjump PhoneScript_WantsToBattle_Male
 
 JoseFoundRare:
-	farjump Phone_CheckIfUnseenRare_Male
+	farsjump Phone_CheckIfUnseenRare_Male
 
 JoseHasStarPiece:
 	setflag ENGINE_JOSE_HAS_STAR_PIECE
-	landmarktotext ROUTE_27, $2
-	farjump PhoneScript_FoundItem_Male
+	getlandmarkname ROUTE_27, $2
+	farsjump PhoneScript_FoundItem_Male
 
 ; Reena
 
 ReenaPhoneScript1:
-	trainertotext COOLTRAINERF, REENA1, $0
+	gettrainername COOLTRAINERF, REENA1, $0
 	checkflag ENGINE_REENA
 	iftrue UnknownScript_0xbd33f
 	farscall PhoneScript_AnswerPhone_Female
 	checkflag ENGINE_REENA_SUNDAY_MORNING
 	iftrue UnknownScript_0xbd33b
-	checkcode VAR_WEEKDAY
+	readvar VAR_WEEKDAY
 	ifnotequal SUNDAY, UnknownScript_0xbd33b
 	checktime 1 << MORN
 	iftrue ReenaSundayMorning
 
 UnknownScript_0xbd33b:
-	farjump ReenaForwardScript
+	farsjump ReenaForwardScript
 
 UnknownScript_0xbd33f:
-	landmarktotext ROUTE_27, $2
-	farjump ReenaHurryScript
+	getlandmarkname ROUTE_27, $2
+	farsjump ReenaHurryScript
 
 ReenaPhoneScript2:
-	trainertotext COOLTRAINERF, REENA1, $0
+	gettrainername COOLTRAINERF, REENA1, $0
 	farscall PhoneScript_GreetPhone_Female
 	checkflag ENGINE_REENA
 	iftrue UnknownScript_0xbd362
@@ -691,26 +691,26 @@ ReenaPhoneScript2:
 	ifequal $0, ReenaWantsBattle
 
 UnknownScript_0xbd362:
-	farjump Phone_GenericCall_Female
+	farsjump Phone_GenericCall_Female
 
 ReenaSundayMorning:
 	setflag ENGINE_REENA_SUNDAY_MORNING
 
 ReenaWantsBattle:
-	landmarktotext ROUTE_27, $2
+	getlandmarkname ROUTE_27, $2
 	setflag ENGINE_REENA
-	farjump PhoneScript_WantsToBattle_Female
+	farsjump PhoneScript_WantsToBattle_Female
 
 ; Joey
 
 JoeyPhoneScript1:
-	trainertotext YOUNGSTER, JOEY1, $0
+	gettrainername YOUNGSTER, JOEY1, $0
 	checkflag ENGINE_JOEY
 	iftrue UnknownScript_0xbd399
 	farscall PhoneScript_AnswerPhone_Male
 	checkflag ENGINE_JOEY_MONDAY_AFTERNOON
 	iftrue UnknownScript_0xbd392
-	checkcode VAR_WEEKDAY
+	readvar VAR_WEEKDAY
 	ifnotequal MONDAY, UnknownScript_0xbd392
 	checktime 1 << DAY
 	iftrue JoeyMondayAfternoon
@@ -718,15 +718,15 @@ JoeyPhoneScript1:
 UnknownScript_0xbd392:
 	special RandomPhoneMon
 	farwritetext JoeyDevisingStrategiesText
-	buttonsound
-	farjump PhoneScript_HangupText_Male
+	promptbutton
+	farsjump PhoneScript_HangupText_Male
 
 UnknownScript_0xbd399:
-	landmarktotext ROUTE_30, $2
-	farjump JoeyReminderScript
+	getlandmarkname ROUTE_30, $2
+	farsjump JoeyReminderScript
 
 JoeyPhoneScript2:
-	trainertotext YOUNGSTER, JOEY1, $0
+	gettrainername YOUNGSTER, JOEY1, $0
 	farscall PhoneScript_GreetPhone_Male
 	checkflag ENGINE_JOEY
 	iftrue UnknownScript_0xbd3c0
@@ -737,20 +737,20 @@ JoeyPhoneScript2:
 	ifequal $1, JoeyWantsBattle
 
 UnknownScript_0xbd3c0:
-	farjump Phone_GenericCall_Male
+	farsjump Phone_GenericCall_Male
 
 JoeyMondayAfternoon:
 	setflag ENGINE_JOEY_MONDAY_AFTERNOON
 
 JoeyWantsBattle:
-	landmarktotext ROUTE_30, $2
+	getlandmarkname ROUTE_30, $2
 	setflag ENGINE_JOEY
-	farjump PhoneScript_WantsToBattle_Male
+	farsjump PhoneScript_WantsToBattle_Male
 
 ; Wade
 
 WadePhoneScript1:
-	trainertotext BUG_CATCHER, WADE1, $0
+	gettrainername BUG_CATCHER, WADE1, $0
 	checkflag ENGINE_WADE
 	iftrue UnknownScript_0xbd41a
 	farscall PhoneScript_AnswerPhone_Male
@@ -758,7 +758,7 @@ WadePhoneScript1:
 	iftrue UnknownScript_0xbd3f6
 	checkflag ENGINE_WADE_HAS_ITEM
 	iftrue UnknownScript_0xbd421
-	checkcode VAR_WEEKDAY
+	readvar VAR_WEEKDAY
 	ifnotequal TUESDAY, UnknownScript_0xbd3f6
 	checktime (1 << EVE) | (1 << NITE)
 	iftrue WadeTuesdayNight
@@ -768,33 +768,33 @@ UnknownScript_0xbd3f6:
 	ifequal $0, UnknownScript_0xbd412
 	checkflag ENGINE_DAILY_BUG_CONTEST
 	iftrue UnknownScript_0xbd412
-	checkcode VAR_WEEKDAY
+	readvar VAR_WEEKDAY
 	ifequal TUESDAY, UnknownScript_0xbd416
 	ifequal THURSDAY, UnknownScript_0xbd416
 	ifequal SATURDAY, UnknownScript_0xbd416
 
 UnknownScript_0xbd412:
-	farjump WadeNoBerriesScript
+	farsjump WadeNoBerriesScript
 
 UnknownScript_0xbd416:
-	farjump PhoneScript_BugCatchingContest
+	farsjump PhoneScript_BugCatchingContest
 
 UnknownScript_0xbd41a:
-	landmarktotext ROUTE_31, $2
-	farjump WadeQuickBattleScript
+	getlandmarkname ROUTE_31, $2
+	farsjump WadeQuickBattleScript
 
 UnknownScript_0xbd421:
-	landmarktotext ROUTE_31, $2
-	farjump WadeComeQuickScript
+	getlandmarkname ROUTE_31, $2
+	farsjump WadeComeQuickScript
 
 WadePhoneScript2:
-	trainertotext BUG_CATCHER, WADE1, $0
+	gettrainername BUG_CATCHER, WADE1, $0
 	farscall PhoneScript_GreetPhone_Male
 	farscall PhoneScript_Random2
 	ifequal $0, UnknownScript_0xbd44c
 	checkflag ENGINE_DAILY_BUG_CONTEST
 	iftrue UnknownScript_0xbd44c
-	checkcode VAR_WEEKDAY
+	readvar VAR_WEEKDAY
 	ifequal TUESDAY, UnknownScript_0xbd480
 	ifequal THURSDAY, UnknownScript_0xbd480
 	ifequal SATURDAY, UnknownScript_0xbd480
@@ -816,25 +816,25 @@ UnknownScript_0xbd44c:
 UnknownScript_0xbd474:
 	farscall PhoneScript_Random3
 	ifequal $0, WadeFoundRare
-	farjump Phone_GenericCall_Male
+	farsjump Phone_GenericCall_Male
 
 UnknownScript_0xbd480:
-	farjump PhoneScript_BugCatchingContest
+	farsjump PhoneScript_BugCatchingContest
 
 WadeTuesdayNight:
 	setflag ENGINE_WADE_TUESDAY_NIGHT
 
 WadeWantsBattle2:
-	landmarktotext ROUTE_31, $2
+	getlandmarkname ROUTE_31, $2
 	setflag ENGINE_WADE
-	farjump PhoneScript_WantsToBattle_Male
+	farsjump PhoneScript_WantsToBattle_Male
 
 WadeFoundRare:
-	farjump Phone_CheckIfUnseenRare_Male
+	farsjump Phone_CheckIfUnseenRare_Male
 
 WadeHasItem2:
 	setflag ENGINE_WADE_HAS_ITEM
-	landmarktotext ROUTE_31, $2
+	getlandmarkname ROUTE_31, $2
 	clearevent EVENT_WADE_HAS_ORAN_BERRY
 	clearevent EVENT_WADE_HAS_PECHA_BERRY
 	clearevent EVENT_WADE_HAS_CHERI_BERRY
@@ -847,50 +847,50 @@ WadeHasItem2:
 
 UnknownScript_0xbd4b9:
 	setevent EVENT_WADE_HAS_ORAN_BERRY
-	jump UnknownScript_0xbd4ce
+	sjump UnknownScript_0xbd4ce
 
 UnknownScript_0xbd4bf:
 	setevent EVENT_WADE_HAS_PECHA_BERRY
-	jump UnknownScript_0xbd4ce
+	sjump UnknownScript_0xbd4ce
 
 UnknownScript_0xbd4c5:
 	setevent EVENT_WADE_HAS_CHERI_BERRY
-	jump UnknownScript_0xbd4ce
+	sjump UnknownScript_0xbd4ce
 
 UnknownScript_0xbd4cb:
 	setevent EVENT_WADE_HAS_PERSIM_BERRY
 
 UnknownScript_0xbd4ce:
-	farjump PhoneScript_FoundItem_Male
+	farsjump PhoneScript_FoundItem_Male
 
 ; Ralph
 
 RalphPhoneScript1:
-	trainertotext FISHER, RALPH1, $0
+	gettrainername FISHER, RALPH1, $0
 	checkflag ENGINE_RALPH
 	iftrue Ralph_Rematch
 	farscall PhoneScript_AnswerPhone_Male
 	checkflag ENGINE_RALPH_WEDNESDAY_MORNING
 	iftrue Ralph_CheckSwarm
-	checkcode VAR_WEEKDAY
+	readvar VAR_WEEKDAY
 	ifnotequal WEDNESDAY, Ralph_CheckSwarm
 	checktime 1 << MORN
 	iftrue Ralph_WednesdayMorning
 Ralph_CheckSwarm:
 	checkflag ENGINE_SPECIAL_WILDDATA
 	iftrue Ralph_ReportSwarm
-	farjump RalphNoItemScript
+	farsjump RalphNoItemScript
 
 Ralph_Rematch:
-	landmarktotext ROUTE_32, $2
-	farjump RalphReminderScript
+	getlandmarkname ROUTE_32, $2
+	farsjump RalphReminderScript
 
 Ralph_ReportSwarm:
-	landmarktotext ROUTE_32, $2
-	farjump RalphHurryScript
+	getlandmarkname ROUTE_32, $2
+	farsjump RalphHurryScript
 
 RalphPhoneScript2:
-	trainertotext FISHER, RALPH1, $0
+	gettrainername FISHER, RALPH1, $0
 	farscall PhoneScript_GreetPhone_Male
 	checkflag ENGINE_FLYPOINT_GOLDENROD
 	iffalse Ralph_CheckSwarm2
@@ -903,52 +903,52 @@ RalphPhoneScript2:
 Ralph_CheckSwarm2:
 	farscall PhoneScript_Random5
 	ifequal $0, Ralph_SetUpSwarm
-	farjump Phone_GenericCall_Male
+	farsjump Phone_GenericCall_Male
 
 Ralph_WednesdayMorning:
 	setflag ENGINE_RALPH_WEDNESDAY_MORNING
 Ralph_FightMe:
-	landmarktotext ROUTE_32, $2
+	getlandmarkname ROUTE_32, $2
 	setflag ENGINE_RALPH
-	farjump PhoneScript_WantsToBattle_Male
+	farsjump PhoneScript_WantsToBattle_Male
 
 Ralph_SetUpSwarm:
 	checkflag ENGINE_SPECIAL_WILDDATA
 	iftrue UnknownScript_0xbd55c
 	setflag ENGINE_SPECIAL_WILDDATA
-	pokenamemem QWILFISH, $1
-	landmarktotext ROUTE_32, $2
-	writebyte FISHSWARM_QWILFISH
+	getmonname QWILFISH, $1
+	getlandmarkname ROUTE_32, $2
+	setval FISHSWARM_QWILFISH
 	special Special_ActivateFishingSwarm
-	farjump RalphItemScript
+	farsjump RalphItemScript
 
 UnknownScript_0xbd55c:
-	farjump Phone_GenericCall_Male
+	farsjump Phone_GenericCall_Male
 
 ; Liz
 
 LizPhoneScript1:
-	trainertotext PICNICKER, LIZ1, $0
+	gettrainername PICNICKER, LIZ1, $0
 	checkflag ENGINE_LIZ
 	iftrue UnknownScript_0xbd586
 	farscall PhoneScript_AnswerPhone_Female
 	checkflag ENGINE_LIZ_THURSDAY_AFTERNOON
 	iftrue UnknownScript_0xbd57f
-	checkcode VAR_WEEKDAY
+	readvar VAR_WEEKDAY
 	ifnotequal THURSDAY, UnknownScript_0xbd57f
 	checktime 1 << DAY
 	iftrue LizThursdayAfternoon
 
 UnknownScript_0xbd57f:
 	special RandomPhoneMon
-	farjump LizHangUpScript
+	farsjump LizHangUpScript
 
 UnknownScript_0xbd586:
-	landmarktotext ROUTE_32, $2
-	farjump LizReminderScript
+	getlandmarkname ROUTE_32, $2
+	farsjump LizReminderScript
 
 LizPhoneScript2:
-	trainertotext PICNICKER, LIZ1, $0
+	gettrainername PICNICKER, LIZ1, $0
 	farscall PhoneScript_Random4
 	ifequal $0, LizWrongNumber
 	farscall PhoneScript_GreetPhone_Female
@@ -966,18 +966,18 @@ UnknownScript_0xbd5a9:
 	ifequal $0, LizWantsBattle
 
 UnknownScript_0xbd5bf:
-	farjump Phone_GenericCall_Female
+	farsjump Phone_GenericCall_Female
 
 LizThursdayAfternoon:
 	setflag ENGINE_LIZ_THURSDAY_AFTERNOON
 
 LizWantsBattle:
-	landmarktotext ROUTE_32, $2
+	getlandmarkname ROUTE_32, $2
 	setflag ENGINE_LIZ
-	farjump PhoneScript_WantsToBattle_Female
+	farsjump PhoneScript_WantsToBattle_Female
 
 LizWrongNumber:
-	farjump LizWrongNumberScript
+	farsjump LizWrongNumberScript
 
 LizGossip:
 	random $9
@@ -992,54 +992,54 @@ LizGossip:
 	ifequal $8, UnknownScript_0xbd62a
 
 UnknownScript_0xbd5fa:
-	trainerclassname COOLTRAINERM, $1
-	jump LizGossipScript
+	gettrainerclassname COOLTRAINERM, $1
+	sjump LizGossipScript
 
 UnknownScript_0xbd600:
-	trainerclassname BEAUTY, $1
-	jump LizGossipScript
+	gettrainerclassname BEAUTY, $1
+	sjump LizGossipScript
 
 UnknownScript_0xbd606:
-	trainerclassname GRUNTM, $1
-	jump LizGossipScript
+	gettrainerclassname GRUNTM, $1
+	sjump LizGossipScript
 
 UnknownScript_0xbd60c:
-	trainerclassname TEACHER, $1
-	jump LizGossipScript
+	gettrainerclassname TEACHER, $1
+	sjump LizGossipScript
 
 UnknownScript_0xbd612:
-	trainerclassname SWIMMERF, $1
-	jump LizGossipScript
+	gettrainerclassname SWIMMERF, $1
+	sjump LizGossipScript
 
 UnknownScript_0xbd618:
-	trainerclassname KIMONO_GIRL_1, $1
-	jump LizGossipScript
+	gettrainerclassname KIMONO_GIRL_1, $1
+	sjump LizGossipScript
 
 UnknownScript_0xbd61e:
-	trainerclassname SKIER, $1
-	jump LizGossipScript
+	gettrainerclassname SKIER, $1
+	sjump LizGossipScript
 
 UnknownScript_0xbd624:
-	trainerclassname MEDIUM, $1
-	jump LizGossipScript
+	gettrainerclassname MEDIUM, $1
+	sjump LizGossipScript
 
 UnknownScript_0xbd62a:
-	trainerclassname POKEFANM, $1
-	jump LizGossipScript
+	gettrainerclassname POKEFANM, $1
+	sjump LizGossipScript
 
 LizGossipScript:
-	farjump LizGossipRandomScript
+	farsjump LizGossipRandomScript
 
 ; Anthony
 
 AnthonyPhoneScript1:
-	trainertotext HIKER, ANTHONY1, $0
+	gettrainername HIKER, ANTHONY1, $0
 	checkflag ENGINE_ANTHONY
 	iftrue UnknownScript_0xbd65d
 	farscall PhoneScript_AnswerPhone_Male
 	checkflag ENGINE_ANTHONY_FRIDAY_NIGHT
 	iftrue UnknownScript_0xbd653
-	checkcode VAR_WEEKDAY
+	readvar VAR_WEEKDAY
 	ifnotequal FRIDAY, UnknownScript_0xbd653
 	checktime (1 << EVE) | (1 << NITE)
 	iftrue AnthonyFridayNight
@@ -1047,18 +1047,18 @@ AnthonyPhoneScript1:
 UnknownScript_0xbd653:
 	checkflag ENGINE_DUNSPARCE_SWARM
 	iftrue UnknownScript_0xbd664
-	farjump AnthonyHangUpScript
+	farsjump AnthonyHangUpScript
 
 UnknownScript_0xbd65d:
-	landmarktotext ROUTE_33, $2
-	farjump AnthonyReminderScript
+	getlandmarkname ROUTE_33, $2
+	farsjump AnthonyReminderScript
 
 UnknownScript_0xbd664:
-	landmarktotext ROUTE_33, $2
-	farjump AnthonyHurryScript
+	getlandmarkname ROUTE_33, $2
+	farsjump AnthonyHurryScript
 
 AnthonyPhoneScript2:
-	trainertotext HIKER, ANTHONY1, $0
+	gettrainername HIKER, ANTHONY1, $0
 	farscall PhoneScript_GreetPhone_Male
 	checkflag ENGINE_FLYPOINT_GOLDENROD
 	iffalse UnknownScript_0xbd68d
@@ -1072,38 +1072,38 @@ AnthonyPhoneScript2:
 UnknownScript_0xbd68d:
 	farscall PhoneScript_Random5
 	ifequal $0, AnthonyTriesDunsparceSwarm
-	farjump Phone_GenericCall_Male
+	farsjump Phone_GenericCall_Male
 
 AnthonyFridayNight:
 	setflag ENGINE_ANTHONY_FRIDAY_NIGHT
 
 AnthonyWantsBattle:
-	landmarktotext ROUTE_33, $2
+	getlandmarkname ROUTE_33, $2
 	setflag ENGINE_ANTHONY
-	farjump PhoneScript_WantsToBattle_Male
+	farsjump PhoneScript_WantsToBattle_Male
 
 AnthonyTriesDunsparceSwarm:
 	checkflag ENGINE_DUNSPARCE_SWARM
 	iftrue UnknownScript_0xbd6bd
 	setflag ENGINE_DUNSPARCE_SWARM
-	pokenamemem DUNSPARCE, $1
+	getmonname DUNSPARCE, $1
 	swarm SWARM_DUNSPARCE, DARK_CAVE_VIOLET_ENTRANCE
-	landmarktotext DARK_CAVE, $2
-	farjump AnthonySwarmScript
+	getlandmarkname DARK_CAVE, $2
+	farsjump AnthonySwarmScript
 
 UnknownScript_0xbd6bd:
-	farjump Phone_GenericCall_Male
+	farsjump Phone_GenericCall_Male
 
 ; Todd
 
 ToddPhoneScript1:
-	trainertotext CAMPER, TODD1, $0
+	gettrainername CAMPER, TODD1, $0
 	checkflag ENGINE_TODD
 	iftrue UnknownScript_0xbd6ea
 	farscall PhoneScript_AnswerPhone_Male
 	checkflag ENGINE_TODD_SATURDAY_MORNING
 	iftrue UnknownScript_0xbd6e0
-	checkcode VAR_WEEKDAY
+	readvar VAR_WEEKDAY
 	ifnotequal SATURDAY, UnknownScript_0xbd6e0
 	checktime 1 << MORN
 	iftrue ToddSaturdayMorning
@@ -1111,17 +1111,17 @@ ToddPhoneScript1:
 UnknownScript_0xbd6e0:
 	checkflag ENGINE_GOLDENROD_DEPT_STORE_SALE_IS_ON
 	iftrue UnknownScript_0xbd6f1
-	farjump ToddNoItemScript
+	farsjump ToddNoItemScript
 
 UnknownScript_0xbd6ea:
-	landmarktotext ROUTE_34, $2
-	farjump ToddForwardScript
+	getlandmarkname ROUTE_34, $2
+	farsjump ToddForwardScript
 
 UnknownScript_0xbd6f1:
-	farjump ToddHurryScript
+	farsjump ToddHurryScript
 
 ToddPhoneScript2:
-	trainertotext CAMPER, TODD1, $0
+	gettrainername CAMPER, TODD1, $0
 	farscall PhoneScript_GreetPhone_Male
 	checkflag ENGINE_TODD
 	iftrue UnknownScript_0xbd717
@@ -1139,27 +1139,27 @@ UnknownScript_0xbd717:
 UnknownScript_0xbd71f:
 	farscall PhoneScript_Random3
 	ifequal $0, ToddFoundRare
-	farjump Phone_GenericCall_Male
+	farsjump Phone_GenericCall_Male
 
 ToddSaturdayMorning:
 	setflag ENGINE_TODD_SATURDAY_MORNING
 
 ToddWantsBattle:
-	landmarktotext ROUTE_34, $2
+	getlandmarkname ROUTE_34, $2
 	setflag ENGINE_TODD
-	farjump PhoneScript_WantsToBattle_Male
+	farsjump PhoneScript_WantsToBattle_Male
 
 ToddFoundRare:
-	farjump Phone_CheckIfUnseenRare_Male
+	farsjump Phone_CheckIfUnseenRare_Male
 
 ToddDeptStoreSale:
 	setflag ENGINE_GOLDENROD_DEPT_STORE_SALE_IS_ON
-	farjump ToddItemScript
+	farsjump ToddItemScript
 
 ; Gina
 
 GinaPhoneScript1:
-	trainertotext PICNICKER, GINA1, $0
+	gettrainername PICNICKER, GINA1, $0
 	checkflag ENGINE_GINA
 	iftrue UnknownScript_0xbd776
 	farscall PhoneScript_AnswerPhone_Female
@@ -1167,7 +1167,7 @@ GinaPhoneScript1:
 	iftrue UnknownScript_0xbd768
 	checkflag ENGINE_GINA_HAS_LEAF_STONE
 	iftrue UnknownScript_0xbd77d
-	checkcode VAR_WEEKDAY
+	readvar VAR_WEEKDAY
 	ifnotequal SUNDAY, UnknownScript_0xbd768
 	checktime 1 << DAY
 	iftrue GinaSundayDay
@@ -1175,21 +1175,21 @@ GinaPhoneScript1:
 UnknownScript_0xbd768:
 	checkflag ENGINE_ROCKETS_IN_RADIO_TOWER
 	iftrue UnknownScript_0xbd772
-	farjump GinaHangUpScript
+	farsjump GinaHangUpScript
 
 UnknownScript_0xbd772:
-	farjump GinaRocketRumorScript
+	farsjump GinaRocketRumorScript
 
 UnknownScript_0xbd776:
-	landmarktotext ROUTE_34, $2
-	farjump GinaReminderScript
+	getlandmarkname ROUTE_34, $2
+	farsjump GinaReminderScript
 
 UnknownScript_0xbd77d:
-	landmarktotext ROUTE_34, $2
-	farjump GinaComePickUpScript
+	getlandmarkname ROUTE_34, $2
+	farsjump GinaComePickUpScript
 
 GinaPhoneScript2:
-	trainertotext PICNICKER, GINA1, $0
+	gettrainername PICNICKER, GINA1, $0
 	farscall PhoneScript_GreetPhone_Female
 	checkflag ENGINE_ROCKETS_IN_RADIO_TOWER
 	iftrue GinaRockets
@@ -1213,56 +1213,56 @@ UnknownScript_0xbd7b2:
 	ifequal $0, GinaWantsBattle
 
 UnknownScript_0xbd7c8:
-	farjump Phone_GenericCall_Female
+	farsjump Phone_GenericCall_Female
 
 GinaSundayDay:
 	setflag ENGINE_GINA_SUNDAY_AFTERNOON
 
 GinaWantsBattle:
-	landmarktotext ROUTE_34, $2
+	getlandmarkname ROUTE_34, $2
 	setflag ENGINE_GINA
-	farjump PhoneScript_WantsToBattle_Female
+	farsjump PhoneScript_WantsToBattle_Female
 
 GinaRockets:
-	farjump GinaRocketRumorScript
+	farsjump GinaRocketRumorScript
 
 GinaHasLeafStone:
 	setflag ENGINE_GINA_HAS_LEAF_STONE
-	landmarktotext ROUTE_34, $2
-	farjump PhoneScript_FoundItem_Female
+	getlandmarkname ROUTE_34, $2
+	farsjump PhoneScript_FoundItem_Female
 
 ; Irwin
 
 IrwinPhoneScript1:
-	trainertotext JUGGLER, IRWIN1, $0
+	gettrainername JUGGLER, IRWIN1, $0
 	farscall PhoneScript_AnswerPhone_Male
 	checkflag ENGINE_ROCKETS_IN_RADIO_TOWER
 	iftrue UnknownScript_0xbd7f9
-	farjump IrwinRandomTextScript
+	farsjump IrwinRandomTextScript
 
 UnknownScript_0xbd7f9:
-	farjump IrwinRocketRumorScript
+	farsjump IrwinRocketRumorScript
 
 IrwinPhoneScript2:
-	trainertotext JUGGLER, IRWIN1, $0
+	gettrainername JUGGLER, IRWIN1, $0
 	farscall PhoneScript_GreetPhone_Male
 	checkflag ENGINE_ROCKETS_IN_RADIO_TOWER
 	iftrue UnknownScript_0xbd80f
-	farjump IrwinRumorScript
+	farsjump IrwinRumorScript
 
 UnknownScript_0xbd80f:
-	farjump IrwinRocketRumorScript
+	farsjump IrwinRocketRumorScript
 
 ; Arnie
 
 ArniePhoneScript1:
-	trainertotext BUG_CATCHER, ARNIE1, $0
+	gettrainername BUG_CATCHER, ARNIE1, $0
 	checkflag ENGINE_ARNIE
 	iftrue UnknownScript_0xbd83c
 	farscall PhoneScript_AnswerPhone_Male
 	checkflag ENGINE_ARNIE_TUESDAY_MORNING
 	iftrue UnknownScript_0xbd832
-	checkcode VAR_WEEKDAY
+	readvar VAR_WEEKDAY
 	ifnotequal TUESDAY, UnknownScript_0xbd832
 	checktime 1 << MORN
 	iftrue ArnieTuesdayMorning
@@ -1270,18 +1270,18 @@ ArniePhoneScript1:
 UnknownScript_0xbd832:
 	checkflag ENGINE_YANMA_SWARM
 	iftrue UnknownScript_0xbd843
-	farjump ArnieHangUpScript
+	farsjump ArnieHangUpScript
 
 UnknownScript_0xbd83c:
-	landmarktotext ROUTE_35, $2
-	farjump ArnieReminderScript
+	getlandmarkname ROUTE_35, $2
+	farsjump ArnieReminderScript
 
 UnknownScript_0xbd843:
-	landmarktotext ROUTE_35, $2
-	farjump ArnieHurryScript
+	getlandmarkname ROUTE_35, $2
+	farsjump ArnieHurryScript
 
 ArniePhoneScript2:
-	trainertotext BUG_CATCHER, ARNIE1, $0
+	gettrainername BUG_CATCHER, ARNIE1, $0
 	farscall PhoneScript_GreetPhone_Male
 	checkflag ENGINE_ARNIE
 	iftrue UnknownScript_0xbd866
@@ -1295,35 +1295,35 @@ UnknownScript_0xbd866:
 	ifequal $0, ArnieYanmaSwarm
 	farscall PhoneScript_Random3
 	ifequal $0, ArnieFoundRare
-	farjump Phone_GenericCall_Male
+	farsjump Phone_GenericCall_Male
 
 ArnieTuesdayMorning:
 	setflag ENGINE_ARNIE_TUESDAY_MORNING
 
 ArnieWantsBattle:
-	landmarktotext ROUTE_35, $2
+	getlandmarkname ROUTE_35, $2
 	setflag ENGINE_ARNIE
-	farjump PhoneScript_WantsToBattle_Male
+	farsjump PhoneScript_WantsToBattle_Male
 
 ArnieYanmaSwarm: ; start swarm
 	checkflag ENGINE_YANMA_SWARM
 	iftrue ArnieYanmaAlreadySwarming
 	setflag ENGINE_YANMA_SWARM
-	pokenamemem YANMA, $1
+	getmonname YANMA, $1
 	swarm SWARM_YANMA, ROUTE_35
-	landmarktotext ROUTE_35, $2
-	farjump ArnieSwarmScript
+	getlandmarkname ROUTE_35, $2
+	farsjump ArnieSwarmScript
 
 ArnieFoundRare:
-	farjump Phone_CheckIfUnseenRare_Male
+	farsjump Phone_CheckIfUnseenRare_Male
 
 ArnieYanmaAlreadySwarming:
-	farjump Phone_GenericCall_Male
+	farsjump Phone_GenericCall_Male
 
 ; Alan
 
 AlanPhoneScript1:
-	trainertotext SCHOOLBOY, ALAN1, $0
+	gettrainername SCHOOLBOY, ALAN1, $0
 	checkflag ENGINE_ALAN
 	iftrue UnknownScript_0xbd8cf
 	farscall PhoneScript_AnswerPhone_Male
@@ -1331,24 +1331,24 @@ AlanPhoneScript1:
 	iftrue UnknownScript_0xbd8cb
 	checkflag ENGINE_ALAN_HAS_FIRE_STONE
 	iftrue UnknownScript_0xbd8d6
-	checkcode VAR_WEEKDAY
+	readvar VAR_WEEKDAY
 	ifnotequal WEDNESDAY, UnknownScript_0xbd8cb
 	checktime 1 << DAY
 	iftrue AlanWednesdayDay
 
 UnknownScript_0xbd8cb:
-	farjump AlanHangUpScript
+	farsjump AlanHangUpScript
 
 UnknownScript_0xbd8cf:
-	landmarktotext ROUTE_36, $2
-	farjump AlanReminderScript
+	getlandmarkname ROUTE_36, $2
+	farsjump AlanReminderScript
 
 UnknownScript_0xbd8d6:
-	landmarktotext ROUTE_36, $2
-	farjump AlanComePickUpScript
+	getlandmarkname ROUTE_36, $2
+	farsjump AlanComePickUpScript
 
 AlanPhoneScript2:
-	trainertotext SCHOOLBOY, ALAN1, $0
+	gettrainername SCHOOLBOY, ALAN1, $0
 	farscall PhoneScript_GreetPhone_Male
 	checkflag ENGINE_ALAN
 	iftrue UnknownScript_0xbd915
@@ -1368,25 +1368,25 @@ UnknownScript_0xbd90d:
 	ifequal $0, AlanHasFireStone
 
 UnknownScript_0xbd915:
-	farjump Phone_GenericCall_Male
+	farsjump Phone_GenericCall_Male
 
 AlanWednesdayDay:
 	setflag ENGINE_ALAN_WEDNESDAY_AFTERNOON
 
 AlanWantsBattle:
-	landmarktotext ROUTE_36, $2
+	getlandmarkname ROUTE_36, $2
 	setflag ENGINE_ALAN
-	farjump PhoneScript_WantsToBattle_Male
+	farsjump PhoneScript_WantsToBattle_Male
 
 AlanHasFireStone:
 	setflag ENGINE_ALAN_HAS_FIRE_STONE
-	landmarktotext ROUTE_36, $2
-	farjump PhoneScript_FoundItem_Male
+	getlandmarkname ROUTE_36, $2
+	farsjump PhoneScript_FoundItem_Male
 
 ; Dana
 
 DanaPhoneScript1:
-	trainertotext LASS, DANA1, $0
+	gettrainername LASS, DANA1, $0
 	checkflag ENGINE_DANA
 	iftrue UnknownScript_0xbd959
 	farscall PhoneScript_AnswerPhone_Female
@@ -1394,24 +1394,24 @@ DanaPhoneScript1:
 	iftrue UnknownScript_0xbd955
 	checkflag ENGINE_DANA_HAS_THUNDERSTONE
 	iftrue UnknownScript_0xbd960
-	checkcode VAR_WEEKDAY
+	readvar VAR_WEEKDAY
 	ifnotequal THURSDAY, UnknownScript_0xbd955
 	checktime (1 << EVE) | (1 << NITE)
 	iftrue DanaThursdayNight
 
 UnknownScript_0xbd955:
-	farjump DanaHangUpScript
+	farsjump DanaHangUpScript
 
 UnknownScript_0xbd959:
-	landmarktotext ROUTE_38, $2
-	farjump DanaReminderScript
+	getlandmarkname ROUTE_38, $2
+	farsjump DanaReminderScript
 
 UnknownScript_0xbd960:
-	landmarktotext ROUTE_38, $2
-	farjump DanaComePickUpScript
+	getlandmarkname ROUTE_38, $2
+	farsjump DanaComePickUpScript
 
 DanaPhoneScript2:
-	trainertotext LASS, DANA1, $0
+	gettrainername LASS, DANA1, $0
 	farscall PhoneScript_GreetPhone_Female
 	checkflag ENGINE_DANA
 	iftrue UnknownScript_0xbd99f
@@ -1433,47 +1433,47 @@ UnknownScript_0xbd997:
 UnknownScript_0xbd99f:
 	farscall PhoneScript_Random3
 	ifequal $0, DanaFoundRare
-	farjump Phone_GenericCall_Female
+	farsjump Phone_GenericCall_Female
 
 DanaThursdayNight:
 	setflag ENGINE_DANA_THURSDAY_NIGHT
 
 DanaWantsBattle:
-	landmarktotext ROUTE_38, $2
+	getlandmarkname ROUTE_38, $2
 	setflag ENGINE_DANA
-	farjump PhoneScript_WantsToBattle_Female
+	farsjump PhoneScript_WantsToBattle_Female
 
 DanaFoundRare:
-	farjump Phone_CheckIfUnseenRare_Female
+	farsjump Phone_CheckIfUnseenRare_Female
 
 DanaHasThunderstone:
 	setflag ENGINE_DANA_HAS_THUNDERSTONE
-	landmarktotext ROUTE_38, $2
-	farjump PhoneScript_FoundItem_Female
+	getlandmarkname ROUTE_38, $2
+	farsjump PhoneScript_FoundItem_Female
 
 ; Chad
 
 ChadPhoneScript1:
-	trainertotext SCHOOLBOY, CHAD1, $0
+	gettrainername SCHOOLBOY, CHAD1, $0
 	checkflag ENGINE_CHAD
 	iftrue UnknownScript_0xbd9e9
 	farscall PhoneScript_AnswerPhone_Male
 	checkflag ENGINE_CHAD_FRIDAY_MORNING
 	iftrue UnknownScript_0xbd9e5
-	checkcode VAR_WEEKDAY
+	readvar VAR_WEEKDAY
 	ifnotequal FRIDAY, UnknownScript_0xbd9e5
 	checktime 1 << MORN
 	iftrue ChadFridayMorning
 
 UnknownScript_0xbd9e5:
-	farjump ChadHangUpScript
+	farsjump ChadHangUpScript
 
 UnknownScript_0xbd9e9:
-	landmarktotext ROUTE_38, $2
-	farjump ChadReminderScript
+	getlandmarkname ROUTE_38, $2
+	farsjump ChadReminderScript
 
 ChadPhoneScript2:
-	trainertotext SCHOOLBOY, CHAD1, $0
+	gettrainername SCHOOLBOY, CHAD1, $0
 	farscall PhoneScript_GreetPhone_Male
 	farscall PhoneScript_Random2
 	ifequal $0, ChadOakGossip
@@ -1487,24 +1487,24 @@ ChadPhoneScript2:
 UnknownScript_0xbda14:
 	farscall PhoneScript_Random3
 	ifequal $0, ChadFoundRare
-	farjump Phone_GenericCall_Male
+	farsjump Phone_GenericCall_Male
 
 ChadFridayMorning:
 	setflag ENGINE_CHAD_FRIDAY_MORNING
 
 ChadWantsBattle:
-	landmarktotext ROUTE_38, $2
+	getlandmarkname ROUTE_38, $2
 	setflag ENGINE_CHAD
-	farjump PhoneScript_WantsToBattle_Male
+	farsjump PhoneScript_WantsToBattle_Male
 
 ChadFoundRare:
-	farjump Phone_CheckIfUnseenRare_Male
+	farsjump Phone_CheckIfUnseenRare_Male
 
 ChadOakGossip:
-	farjump ChadOakGossipScript
+	farsjump ChadOakGossipScript
 
 DerekPhoneScript1:
-	trainertotext POKEFANM, DEREK1, $0
+	gettrainername POKEFANM, DEREK1, $0
 	farscall PhoneScript_AnswerPhone_Male
 	checkflag ENGINE_DEREK_HAS_NUGGET
 	iftrue UnknownScript_0xbda67
@@ -1512,29 +1512,29 @@ DerekPhoneScript1:
 	ifequal $0, UnknownScript_0xbda5f
 	checkflag ENGINE_DAILY_BUG_CONTEST
 	iftrue UnknownScript_0xbda5f
-	checkcode VAR_WEEKDAY
+	readvar VAR_WEEKDAY
 	ifequal TUESDAY, UnknownScript_0xbda63
 	ifequal THURSDAY, UnknownScript_0xbda63
 	ifequal SATURDAY, UnknownScript_0xbda63
 
 UnknownScript_0xbda5f:
-	farjump DerekHangUpScript
+	farsjump DerekHangUpScript
 
 UnknownScript_0xbda63:
-	farjump PhoneScript_BugCatchingContest
+	farsjump PhoneScript_BugCatchingContest
 
 UnknownScript_0xbda67:
-	landmarktotext ROUTE_39, $2
-	farjump DerekComePickUpScript
+	getlandmarkname ROUTE_39, $2
+	farsjump DerekComePickUpScript
 
 DerekPhoneScript2:
-	trainertotext POKEFANM, DEREK1, $0
+	gettrainername POKEFANM, DEREK1, $0
 	farscall PhoneScript_GreetPhone_Male
 	farscall PhoneScript_Random2
 	ifequal $0, UnknownScript_0xbda92
 	checkflag ENGINE_DAILY_BUG_CONTEST
 	iftrue UnknownScript_0xbda92
-	checkcode VAR_WEEKDAY
+	readvar VAR_WEEKDAY
 	ifequal TUESDAY, UnknownScript_0xbda9e
 	ifequal THURSDAY, UnknownScript_0xbda9e
 	ifequal SATURDAY, UnknownScript_0xbda9e
@@ -1542,18 +1542,18 @@ DerekPhoneScript2:
 UnknownScript_0xbda92:
 	farscall PhoneScript_Random4
 	ifequal $0, UnknownScript_0xbdaa2
-	farjump Phone_GenericCall_Male
+	farsjump Phone_GenericCall_Male
 
 UnknownScript_0xbda9e:
-	farjump PhoneScript_BugCatchingContest
+	farsjump PhoneScript_BugCatchingContest
 
 UnknownScript_0xbdaa2:
 	setflag ENGINE_DEREK_HAS_NUGGET
-	landmarktotext ROUTE_39, $2
-	farjump PhoneScript_FoundItem_Male
+	getlandmarkname ROUTE_39, $2
+	farsjump PhoneScript_FoundItem_Male
 
 TullyPhoneScript1:
-	trainertotext FISHER, TULLY1, $0
+	gettrainername FISHER, TULLY1, $0
 	checkflag ENGINE_TULLY
 	iftrue UnknownScript_0xbdad5
 	farscall PhoneScript_AnswerPhone_Male
@@ -1561,24 +1561,24 @@ TullyPhoneScript1:
 	iftrue UnknownScript_0xbdad1
 	checkflag ENGINE_TULLY_HAS_WATER_STONE
 	iftrue UnknownScript_0xbdadc
-	checkcode VAR_WEEKDAY
+	readvar VAR_WEEKDAY
 	ifnotequal SUNDAY, UnknownScript_0xbdad1
 	checktime (1 << EVE) | (1 << NITE)
 	iftrue TullySundayNight
 
 UnknownScript_0xbdad1:
-	farjump TullyNoItemScript
+	farsjump TullyNoItemScript
 
 UnknownScript_0xbdad5:
-	landmarktotext ROUTE_42, $2
-	farjump TullyForwardScript
+	getlandmarkname ROUTE_42, $2
+	farsjump TullyForwardScript
 
 UnknownScript_0xbdadc:
-	landmarktotext ROUTE_42, $2
-	farjump TullyHurryScript
+	getlandmarkname ROUTE_42, $2
+	farsjump TullyHurryScript
 
 TullyPhoneScript2:
-	trainertotext FISHER, TULLY1, $0
+	gettrainername FISHER, TULLY1, $0
 	farscall PhoneScript_GreetPhone_Male
 	checkflag ENGINE_TULLY
 	iftrue UnknownScript_0xbdb1b
@@ -1598,42 +1598,42 @@ UnknownScript_0xbdb13:
 	ifequal $0, TullyFoundWaterStone
 
 UnknownScript_0xbdb1b:
-	farjump Phone_GenericCall_Male
+	farsjump Phone_GenericCall_Male
 
 TullySundayNight:
 	setflag ENGINE_TULLY_SUNDAY_NIGHT
 
 TullyWantsBattle:
-	landmarktotext ROUTE_42, $2
+	getlandmarkname ROUTE_42, $2
 	setflag ENGINE_TULLY
-	farjump PhoneScript_WantsToBattle_Male
+	farsjump PhoneScript_WantsToBattle_Male
 
 TullyFoundWaterStone:
 	setflag ENGINE_TULLY_HAS_WATER_STONE
-	landmarktotext ROUTE_42, $2
-	farjump PhoneScript_FoundItem_Male
+	getlandmarkname ROUTE_42, $2
+	farsjump PhoneScript_FoundItem_Male
 
 BrentPhoneScript1:
-	trainertotext POKEMANIAC, BRENT1, $0
+	gettrainername POKEMANIAC, BRENT1, $0
 	checkflag ENGINE_BRENT
 	iftrue UnknownScript_0xbdb59
 	farscall PhoneScript_AnswerPhone_Male
 	checkflag ENGINE_BRENT_MONDAY_MORNING
 	iftrue UnknownScript_0xbdb55
-	checkcode VAR_WEEKDAY
+	readvar VAR_WEEKDAY
 	ifnotequal MONDAY, UnknownScript_0xbdb55
 	checktime 1 << MORN
 	iftrue BrentMondayMorning
 
 UnknownScript_0xbdb55:
-	farjump BrentHangUpScript
+	farsjump BrentHangUpScript
 
 UnknownScript_0xbdb59:
-	landmarktotext ROUTE_43, $2
-	farjump BrentReminderScript
+	getlandmarkname ROUTE_43, $2
+	farsjump BrentReminderScript
 
 BrentPhoneScript2:
-	trainertotext POKEMANIAC, BRENT1, $0
+	gettrainername POKEMANIAC, BRENT1, $0
 	farscall PhoneScript_GreetPhone_Male
 	farscall PhoneScript_Random2
 	ifequal $0, BrentBillTrivia
@@ -1645,21 +1645,21 @@ BrentPhoneScript2:
 	ifequal $0, BrentWantsBattle
 
 UnknownScript_0xbdb84:
-	farjump Phone_GenericCall_Male
+	farsjump Phone_GenericCall_Male
 
 BrentMondayMorning:
 	setflag ENGINE_BRENT_MONDAY_MORNING
 
 BrentWantsBattle:
-	landmarktotext ROUTE_43, $2
+	getlandmarkname ROUTE_43, $2
 	setflag ENGINE_BRENT
-	farjump PhoneScript_WantsToBattle_Male
+	farsjump PhoneScript_WantsToBattle_Male
 
 BrentBillTrivia:
-	farjump BrentBillTriviaScript
+	farsjump BrentBillTriviaScript
 
 TiffanyPhoneScript1:
-	trainertotext PICNICKER, TIFFANY1, $0
+	gettrainername PICNICKER, TIFFANY1, $0
 	checkflag ENGINE_TIFFANY
 	iftrue UnknownScript_0xbdbc2
 	farscall PhoneScript_AnswerPhone_Female
@@ -1667,24 +1667,24 @@ TiffanyPhoneScript1:
 	iftrue UnknownScript_0xbdbbe
 	checkflag ENGINE_TIFFANY_HAS_PINK_BOW
 	iftrue UnknownScript_0xbdbc9
-	checkcode VAR_WEEKDAY
+	readvar VAR_WEEKDAY
 	ifnotequal TUESDAY, UnknownScript_0xbdbbe
 	checktime 1 << DAY
 	iftrue TiffanyTuesdayAfternoon
 
 UnknownScript_0xbdbbe:
-	farjump TiffanyNoItemScript
+	farsjump TiffanyNoItemScript
 
 UnknownScript_0xbdbc2:
-	landmarktotext ROUTE_43, $2
-	farjump TiffanyAsleepScript
+	getlandmarkname ROUTE_43, $2
+	farsjump TiffanyAsleepScript
 
 UnknownScript_0xbdbc9:
-	landmarktotext ROUTE_43, $2
-	farjump TiffanyHurryScript
+	getlandmarkname ROUTE_43, $2
+	farsjump TiffanyHurryScript
 
 TiffanyPhoneScript2:
-	trainertotext PICNICKER, TIFFANY1, $0
+	gettrainername PICNICKER, TIFFANY1, $0
 	farscall PhoneScript_Random4
 	ifequal $0, TiffanysFamilyMembers
 	farscall PhoneScript_GreetPhone_Female
@@ -1706,15 +1706,15 @@ UnknownScript_0xbdc08:
 	ifequal $0, TiffanyHasPinkBow
 
 UnknownScript_0xbdc10:
-	farjump Phone_GenericCall_Female
+	farsjump Phone_GenericCall_Female
 
 TiffanyTuesdayAfternoon:
 	setflag ENGINE_TIFFANY_TUESDAY_AFTERNOON
 
 TiffanyWantsBattle:
-	landmarktotext ROUTE_43, $2
+	getlandmarkname ROUTE_43, $2
 	setflag ENGINE_TIFFANY
-	farjump PhoneScript_WantsToBattle_Female
+	farsjump PhoneScript_WantsToBattle_Female
 
 TiffanysFamilyMembers:
 	random $6
@@ -1726,60 +1726,60 @@ TiffanysFamilyMembers:
 	ifequal $5, UnknownScript_0xbdc5e
 
 UnknownScript_0xbdc3b:
-	stringtotext Phone_GrandmaString, $1
-	jump UnknownScript_0xbdc65
+	getstring Phone_GrandmaString, $1
+	sjump UnknownScript_0xbdc65
 
 UnknownScript_0xbdc42:
-	stringtotext Phone_GrandpaString, $1
-	jump UnknownScript_0xbdc65
+	getstring Phone_GrandpaString, $1
+	sjump UnknownScript_0xbdc65
 
 UnknownScript_0xbdc49:
-	stringtotext Phone_MomString, $1
-	jump UnknownScript_0xbdc65
+	getstring Phone_MomString, $1
+	sjump UnknownScript_0xbdc65
 
 UnknownScript_0xbdc50:
-	stringtotext Phone_DadString, $1
-	jump UnknownScript_0xbdc65
+	getstring Phone_DadString, $1
+	sjump UnknownScript_0xbdc65
 
 UnknownScript_0xbdc57:
-	stringtotext Phone_SisterString, $1
-	jump UnknownScript_0xbdc65
+	getstring Phone_SisterString, $1
+	sjump UnknownScript_0xbdc65
 
 UnknownScript_0xbdc5e:
-	stringtotext Phone_BrotherString, $1
-	jump UnknownScript_0xbdc65
+	getstring Phone_BrotherString, $1
+	sjump UnknownScript_0xbdc65
 
 UnknownScript_0xbdc65:
-	farjump TiffanyItsAwful
+	farsjump TiffanyItsAwful
 
 TiffanyHasPinkBow:
 	setflag ENGINE_TIFFANY_HAS_PINK_BOW
-	landmarktotext ROUTE_43, $2
-	farjump PhoneScript_FoundItem_Female
+	getlandmarkname ROUTE_43, $2
+	farsjump PhoneScript_FoundItem_Female
 
 ; Vance
 
 VancePhoneScript1:
-	trainertotext BIRD_KEEPER, VANCE1, $0
+	gettrainername BIRD_KEEPER, VANCE1, $0
 	checkflag ENGINE_VANCE
 	iftrue UnknownScript_0xbdc96
 	farscall PhoneScript_AnswerPhone_Male
 	checkflag ENGINE_VANCE_WEDNESDAY_NIGHT
 	iftrue UnknownScript_0xbdc92
-	checkcode VAR_WEEKDAY
+	readvar VAR_WEEKDAY
 	ifnotequal WEDNESDAY, UnknownScript_0xbdc92
 	checktime (1 << EVE) | (1 << NITE)
 	iftrue VanceWednesdayNight
 
 UnknownScript_0xbdc92:
-	farjump VanceLookingForwardScript
+	farsjump VanceLookingForwardScript
 
 UnknownScript_0xbdc96:
-	landmarktotext ROUTE_44, $2
-	farjump VanceHurryHurryScript
+	getlandmarkname ROUTE_44, $2
+	farsjump VanceHurryHurryScript
 
 VancePhoneScript2:
-	trainertotext BIRD_KEEPER, VANCE1, $0
+	gettrainername BIRD_KEEPER, VANCE1, $0
 	farscall PhoneScript_GreetPhone_Male
 	checkflag ENGINE_VANCE
 	iftrue UnknownScript_0xbdcbd
@@ -1790,18 +1790,18 @@ VancePhoneScript2:
 	ifequal $1, VanceWantsRematch
 
 UnknownScript_0xbdcbd:
-	farjump Phone_GenericCall_Male
+	farsjump Phone_GenericCall_Male
 
 VanceWednesdayNight:
 	setflag ENGINE_VANCE_WEDNESDAY_NIGHT
 
 VanceWantsRematch:
-	landmarktotext ROUTE_44, $2
+	getlandmarkname ROUTE_44, $2
 	setflag ENGINE_VANCE
-	farjump PhoneScript_WantsToBattle_Male
+	farsjump PhoneScript_WantsToBattle_Male
 
 WiltonPhoneScript1:
-	trainertotext FISHER, WILTON1, $0
+	gettrainername FISHER, WILTON1, $0
 	checkflag ENGINE_WILTON
 	iftrue UnknownScript_0xbdcf7
 	farscall PhoneScript_AnswerPhone_Male
@@ -1809,24 +1809,24 @@ WiltonPhoneScript1:
 	iftrue UnknownScript_0xbdcf3
 	checkflag ENGINE_WILTON_HAS_ITEM
 	iftrue UnknownScript_0xbdcfe
-	checkcode VAR_WEEKDAY
+	readvar VAR_WEEKDAY
 	ifnotequal THURSDAY, UnknownScript_0xbdcf3
 	checktime 1 << MORN
 	iftrue WiltonThursdayMorning
 
 UnknownScript_0xbdcf3:
-	farjump WiltonHaventFoundAnythingScript
+	farsjump WiltonHaventFoundAnythingScript
 
 UnknownScript_0xbdcf7:
-	landmarktotext ROUTE_44, $2
-	farjump WiltonNotBitingScript
+	getlandmarkname ROUTE_44, $2
+	farsjump WiltonNotBitingScript
 
 UnknownScript_0xbdcfe:
-	landmarktotext ROUTE_44, $2
-	farjump WiltonWantThisScript
+	getlandmarkname ROUTE_44, $2
+	farsjump WiltonWantThisScript
 
 WiltonPhoneScript2:
-	trainertotext FISHER, WILTON1, $0
+	gettrainername FISHER, WILTON1, $0
 	farscall PhoneScript_GreetPhone_Male
 	checkflag ENGINE_WILTON
 	iftrue UnknownScript_0xbdd2f
@@ -1840,19 +1840,19 @@ WiltonPhoneScript2:
 	ifequal $0, WiltonHasItem
 
 UnknownScript_0xbdd2f:
-	farjump Phone_GenericCall_Male
+	farsjump Phone_GenericCall_Male
 
 WiltonThursdayMorning:
 	setflag ENGINE_WILTON_THRUSDAY_MORNING
 
 WiltonWantsBattle:
-	landmarktotext ROUTE_44, $2
+	getlandmarkname ROUTE_44, $2
 	setflag ENGINE_WILTON
-	farjump PhoneScript_WantsToBattle_Male
+	farsjump PhoneScript_WantsToBattle_Male
 
 WiltonHasItem:
 	setflag ENGINE_WILTON_HAS_ITEM
-	landmarktotext ROUTE_44, $2
+	getlandmarkname ROUTE_44, $2
 	clearevent EVENT_WILTON_HAS_ULTRA_BALL
 	clearevent EVENT_WILTON_HAS_GREAT_BALL
 	clearevent EVENT_WILTON_HAS_POKE_BALL
@@ -1860,57 +1860,57 @@ WiltonHasItem:
 	ifequal $0, UnknownScript_0xbdd5e
 	random $3
 	ifequal $0, UnknownScript_0xbdd64
-	jump UnknownScript_0xbdd6a
+	sjump UnknownScript_0xbdd6a
 
 UnknownScript_0xbdd5e:
 	setevent EVENT_WILTON_HAS_ULTRA_BALL
-	jump UnknownScript_0xbdd6d
+	sjump UnknownScript_0xbdd6d
 
 UnknownScript_0xbdd64:
 	setevent EVENT_WILTON_HAS_GREAT_BALL
-	jump UnknownScript_0xbdd6d
+	sjump UnknownScript_0xbdd6d
 
 UnknownScript_0xbdd6a:
 	setevent EVENT_WILTON_HAS_POKE_BALL
 
 UnknownScript_0xbdd6d:
-	farjump PhoneScript_FoundItem_Male
+	farsjump PhoneScript_FoundItem_Male
 
 ; Kenji
 
 KenjiPhoneScript1:
-	trainertotext BLACKBELT_T, KENJI1, $0
+	gettrainername BLACKBELT_T, KENJI1, $0
 	farscall PhoneScript_AnswerPhone_Male
-	farjump KenjiAnswerPhoneScript
+	farsjump KenjiAnswerPhoneScript
 
 KenjiPhoneScript2:
-	trainertotext BLACKBELT_T, KENJI1, $0
+	gettrainername BLACKBELT_T, KENJI1, $0
 	farscall PhoneScript_GreetPhone_Male
-	farjump KenjiCallingPhoneScript
+	farsjump KenjiCallingPhoneScript
 
 ; Parry
 
 ParryPhoneScript1:
-	trainertotext HIKER, PARRY1, $0
+	gettrainername HIKER, PARRY1, $0
 	checkflag ENGINE_PARRY
 	iftrue UnknownScript_0xbddac
 	farscall PhoneScript_AnswerPhone_Male
 	checkflag ENGINE_PARRY_FRIDAY_AFTERNOON
 	iftrue UnknownScript_0xbdda8
-	checkcode VAR_WEEKDAY
+	readvar VAR_WEEKDAY
 	ifnotequal FRIDAY, UnknownScript_0xbdda8
 	checktime 1 << DAY
 	iftrue ParryFridayDay
 
 UnknownScript_0xbdda8:
-	farjump ParryBattleWithMeScript
+	farsjump ParryBattleWithMeScript
 
 UnknownScript_0xbddac:
-	landmarktotext ROUTE_45, $2
-	farjump ParryHaventYouGottenToScript
+	getlandmarkname ROUTE_45, $2
+	farsjump ParryHaventYouGottenToScript
 
 ParryPhoneScript2:
-	trainertotext HIKER, PARRY1, $0
+	gettrainername HIKER, PARRY1, $0
 	farscall PhoneScript_GreetPhone_Male
 	checkflag ENGINE_PARRY
 	iftrue UnknownScript_0xbddd3
@@ -1921,39 +1921,39 @@ ParryPhoneScript2:
 	ifequal $1, ParryWantsBattle
 
 UnknownScript_0xbddd3:
-	farjump Phone_GenericCall_Male
+	farsjump Phone_GenericCall_Male
 
 ParryFridayDay:
 	setflag ENGINE_PARRY_FRIDAY_AFTERNOON
 
 ParryWantsBattle:
-	landmarktotext ROUTE_45, $2
+	getlandmarkname ROUTE_45, $2
 	setflag ENGINE_PARRY
-	farjump PhoneScript_WantsToBattle_Male
+	farsjump PhoneScript_WantsToBattle_Male
 
 ; Erin
 
 ErinPhoneScript1:
-	trainertotext PICNICKER, ERIN1, $0
+	gettrainername PICNICKER, ERIN1, $0
 	checkflag ENGINE_ERIN
 	iftrue UnknownScript_0xbde07
 	farscall PhoneScript_AnswerPhone_Female
 	checkflag ENGINE_ERIN_SATURDAY_NIGHT
 	iftrue UnknownScript_0xbde03
-	checkcode VAR_WEEKDAY
+	readvar VAR_WEEKDAY
 	ifnotequal SATURDAY, UnknownScript_0xbde03
 	checktime (1 << EVE) | (1 << NITE)
 	iftrue ErinSaturdayNight
 
 UnknownScript_0xbde03:
-	farjump ErinWorkingHardScript
+	farsjump ErinWorkingHardScript
 
 UnknownScript_0xbde07:
-	landmarktotext ROUTE_46, $2
-	farjump ErinComeBattleScript
+	getlandmarkname ROUTE_46, $2
+	farsjump ErinComeBattleScript
 
 ErinPhoneScript2:
-	trainertotext PICNICKER, ERIN1, $0
+	gettrainername PICNICKER, ERIN1, $0
 	farscall PhoneScript_GreetPhone_Female
 	checkflag ENGINE_ERIN
 	iftrue UnknownScript_0xbde2e
@@ -1964,15 +1964,15 @@ ErinPhoneScript2:
 	ifequal $1, ErinWantsBattle
 
 UnknownScript_0xbde2e:
-	farjump Phone_GenericCall_Female
+	farsjump Phone_GenericCall_Female
 
 ErinSaturdayNight:
 	setflag ENGINE_ERIN_SATURDAY_NIGHT
 
 ErinWantsBattle:
-	landmarktotext ROUTE_46, $2
+	getlandmarkname ROUTE_46, $2
 	setflag ENGINE_ERIN
-	farjump PhoneScript_WantsToBattle_Female
+	farsjump PhoneScript_WantsToBattle_Female
 
 PhoneScript_Random2:
 	random 2
@@ -1999,7 +1999,7 @@ PhoneScript_AnswerPhone_Male:
 	iftrue PhoneScript_AnswerPhone_Male_Day
 	checktime (1 << EVE) | (1 << NITE)
 	iftrue PhoneScript_AnswerPhone_Male_Nite
-	checkcode VAR_CALLERID
+	readvar VAR_CALLERID
 	ifequal PHONE_SCHOOLBOY_JACK, .Jack
 	ifequal PHONE_SAILOR_HUEY, .Huey
 	ifequal PHONE_COOLTRAINERM_GAVEN, .Gaven
@@ -2023,106 +2023,106 @@ PhoneScript_AnswerPhone_Male:
 
 .Jack:
 	farwritetext JackAnswerPhoneText
-	buttonsound
+	promptbutton
 	end
 
 .Huey:
 	farwritetext HueyAnswerPhoneText
-	buttonsound
+	promptbutton
 	end
 
 .Gaven:
 	farwritetext GavenAnswerPhoneText
-	buttonsound
+	promptbutton
 	end
 
 .Jose:
 	farwritetext JoseAnswerPhoneText
-	buttonsound
+	promptbutton
 	end
 
 .Joey:
 	farwritetext JoeyAnswerPhoneText
-	buttonsound
+	promptbutton
 	end
 
 .Wade:
 	farwritetext WadeAnswerPhoneText
-	buttonsound
+	promptbutton
 	end
 
 .Ralph:
 	farwritetext RalphAnswerPhoneText
-	buttonsound
+	promptbutton
 	end
 
 .Anthony:
 	farwritetext AnthonyAnswerPhoneText
-	buttonsound
+	promptbutton
 	end
 
 .Todd:
 	farwritetext ToddAnswerPhoneText
-	buttonsound
+	promptbutton
 	end
 
 .Irwin:
 	farwritetext IrwinAnswerPhoneText
-	buttonsound
+	promptbutton
 	end
 
 .Arnie:
 	farwritetext ArnieAnswerPhoneText
-	buttonsound
+	promptbutton
 	end
 
 .Alan:
 	farwritetext AlanAnswerPhoneText
-	buttonsound
+	promptbutton
 	end
 
 .Chad:
 	farwritetext ChadAnswerPhoneText
-	buttonsound
+	promptbutton
 	end
 
 .Derek:
 	farwritetext DerekAnswerPhoneText
-	buttonsound
+	promptbutton
 	end
 
 .Tully:
 	farwritetext TullyAnswerPhoneText
-	buttonsound
+	promptbutton
 	end
 
 .Brent:
 	farwritetext BrentAnswerPhoneText
-	buttonsound
+	promptbutton
 	end
 
 .Vance:
 	farwritetext VanceAnswerPhoneText
-	buttonsound
+	promptbutton
 	end
 
 .Wilton:
 	farwritetext WiltonAnswerPhoneText
-	buttonsound
+	promptbutton
 	end
 
 .Kenji:
 	farwritetext KenjiAnswerPhoneText
-	buttonsound
+	promptbutton
 	end
 
 .Parry:
 	farwritetext ParryAnswerPhoneText
-	buttonsound
+	promptbutton
 	end
 
 PhoneScript_AnswerPhone_Male_Day:
-	checkcode VAR_CALLERID
+	readvar VAR_CALLERID
 	ifequal PHONE_SCHOOLBOY_JACK, .Jack
 	ifequal PHONE_SAILOR_HUEY, .Huey
 	ifequal PHONE_COOLTRAINERM_GAVEN, .Gaven
@@ -2146,106 +2146,106 @@ PhoneScript_AnswerPhone_Male_Day:
 
 .Jack:
 	farwritetext JackAnswerPhoneDayText
-	buttonsound
+	promptbutton
 	end
 
 .Huey:
 	farwritetext HueyAnswerPhoneDayText
-	buttonsound
+	promptbutton
 	end
 
 .Gaven:
 	farwritetext GavenAnswerPhoneDayText
-	buttonsound
+	promptbutton
 	end
 
 .Jose:
 	farwritetext JoseAnswerPhoneDayText
-	buttonsound
+	promptbutton
 	end
 
 .Joey:
 	farwritetext JoeyAnswerPhoneDayText
-	buttonsound
+	promptbutton
 	end
 
 .Wade:
 	farwritetext WadeAnswerPhoneDayText
-	buttonsound
+	promptbutton
 	end
 
 .Ralph:
 	farwritetext RalphAnswerPhoneDayText
-	buttonsound
+	promptbutton
 	end
 
 .Anthony:
 	farwritetext AnthonyAnswerPhoneDayText
-	buttonsound
+	promptbutton
 	end
 
 .Todd:
 	farwritetext ToddAnswerPhoneDayText
-	buttonsound
+	promptbutton
 	end
 
 .Irwin:
 	farwritetext IrwinAnswerPhoneDayText
-	buttonsound
+	promptbutton
 	end
 
 .Arnie:
 	farwritetext ArnieAnswerPhoneDayText
-	buttonsound
+	promptbutton
 	end
 
 .Alan:
 	farwritetext AlanAnswerPhoneDayText
-	buttonsound
+	promptbutton
 	end
 
 .Chad:
 	farwritetext ChadAnswerPhoneDayText
-	buttonsound
+	promptbutton
 	end
 
 .Derek:
 	farwritetext DerekAnswerPhoneDayText
-	buttonsound
+	promptbutton
 	end
 
 .Tully:
 	farwritetext TullyAnswerPhoneDayText
-	buttonsound
+	promptbutton
 	end
 
 .Brent:
 	farwritetext BrentAnswerPhoneDayText
-	buttonsound
+	promptbutton
 	end
 
 .Vance:
 	farwritetext VanceAnswerPhoneDayText
-	buttonsound
+	promptbutton
 	end
 
 .Wilton:
 	farwritetext WiltonAnswerPhoneDayText
-	buttonsound
+	promptbutton
 	end
 
 .Kenji:
 	farwritetext KenjiAnswerPhoneDayText
-	buttonsound
+	promptbutton
 	end
 
 .Parry:
 	farwritetext ParryAnswerPhoneDayText
-	buttonsound
+	promptbutton
 	end
 
 PhoneScript_AnswerPhone_Male_Nite:
-	checkcode VAR_CALLERID
+	readvar VAR_CALLERID
 	ifequal PHONE_SCHOOLBOY_JACK, .Jack
 	ifequal PHONE_SAILOR_HUEY, .Huey
 	ifequal PHONE_COOLTRAINERM_GAVEN, .Gaven
@@ -2269,102 +2269,102 @@ PhoneScript_AnswerPhone_Male_Nite:
 
 .Jack:
 	farwritetext JackAnswerPhoneNiteText
-	buttonsound
+	promptbutton
 	end
 
 .Huey:
 	farwritetext HueyAnswerPhoneNiteText
-	buttonsound
+	promptbutton
 	end
 
 .Gaven:
 	farwritetext GavenAnswerPhoneNiteText
-	buttonsound
+	promptbutton
 	end
 
 .Jose:
 	farwritetext JoseAnswerPhoneNiteText
-	buttonsound
+	promptbutton
 	end
 
 .Joey:
 	farwritetext JoeyAnswerPhoneNiteText
-	buttonsound
+	promptbutton
 	end
 
 .Wade:
 	farwritetext WadeAnswerPhoneNiteText
-	buttonsound
+	promptbutton
 	end
 
 .Ralph:
 	farwritetext RalphAnswerPhoneNiteText
-	buttonsound
+	promptbutton
 	end
 
 .Anthony:
 	farwritetext AnthonyAnswerPhoneNiteText
-	buttonsound
+	promptbutton
 	end
 
 .Todd:
 	farwritetext ToddAnswerPhoneNiteText
-	buttonsound
+	promptbutton
 	end
 
 .Irwin:
 	farwritetext IrwinAnswerPhoneNiteText
-	buttonsound
+	promptbutton
 	end
 
 .Arnie:
 	farwritetext ArnieAnswerPhoneNiteText
-	buttonsound
+	promptbutton
 	end
 
 .Alan:
 	farwritetext AlanAnswerPhoneNiteText
-	buttonsound
+	promptbutton
 	end
 
 .Chad:
 	farwritetext ChadAnswerPhoneNiteText
-	buttonsound
+	promptbutton
 	end
 
 .Derek:
 	farwritetext DerekAnswerPhoneNiteText
-	buttonsound
+	promptbutton
 	end
 
 .Tully:
 	farwritetext TullyAnswerPhoneNiteText
-	buttonsound
+	promptbutton
 	end
 
 .Brent:
 	farwritetext BrentAnswerPhoneNiteText
-	buttonsound
+	promptbutton
 	end
 
 .Vance:
 	farwritetext VanceAnswerPhoneNiteText
-	buttonsound
+	promptbutton
 	end
 
 .Wilton:
 	farwritetext WiltonAnswerPhoneNiteText
-	buttonsound
+	promptbutton
 	end
 
 .Kenji:
 	farwritetext KenjiAnswerPhoneNiteText
-	buttonsound
+	promptbutton
 	end
 
 .Parry:
 	farwritetext ParryAnswerPhoneNiteText
-	buttonsound
+	promptbutton
 	end
 
 PhoneScript_AnswerPhone_Female:
@@ -2372,7 +2372,7 @@ PhoneScript_AnswerPhone_Female:
 	iftrue PhoneScript_AnswerPhone_Female_Day
 	checktime (1 << EVE) | (1 << NITE)
 	iftrue PhoneScript_AnswerPhone_Female_Nite
-	checkcode VAR_CALLERID
+	readvar VAR_CALLERID
 	ifequal PHONE_POKEFAN_BEVERLY, .Beverly
 	ifequal PHONE_COOLTRAINERF_BETH, .Beth
 	ifequal PHONE_COOLTRAINERF_REENA, .Reena
@@ -2384,46 +2384,46 @@ PhoneScript_AnswerPhone_Female:
 
 .Beverly:
 	farwritetext BeverlyAnswerPhoneText
-	buttonsound
+	promptbutton
 	end
 
 .Beth:
 	farwritetext BethAnswerPhoneText
-	buttonsound
+	promptbutton
 	end
 
 .Reena:
 	farwritetext ReenaAnswerPhoneText
-	buttonsound
+	promptbutton
 	end
 
 .Liz:
 	farwritetext LizAnswerPhoneText
-	buttonsound
+	promptbutton
 	end
 
 .Gina:
 	farwritetext GinaAnswerPhoneText
-	buttonsound
+	promptbutton
 	end
 
 .Dana:
 	farwritetext DanaAnswerPhoneText
-	buttonsound
+	promptbutton
 	end
 
 .Tiffany:
 	farwritetext TiffanyAnswerPhoneText
-	buttonsound
+	promptbutton
 	end
 
 .Erin:
 	farwritetext ErinAnswerPhoneText
-	buttonsound
+	promptbutton
 	end
 
 PhoneScript_AnswerPhone_Female_Day:
-	checkcode VAR_CALLERID
+	readvar VAR_CALLERID
 	ifequal PHONE_POKEFAN_BEVERLY, .Beverly
 	ifequal PHONE_COOLTRAINERF_BETH, .Beth
 	ifequal PHONE_COOLTRAINERF_REENA, .Reena
@@ -2435,46 +2435,46 @@ PhoneScript_AnswerPhone_Female_Day:
 
 .Beverly:
 	farwritetext BeverlyAnswerPhoneDayText
-	buttonsound
+	promptbutton
 	end
 
 .Beth:
 	farwritetext BethAnswerPhoneDayText
-	buttonsound
+	promptbutton
 	end
 
 .Reena:
 	farwritetext ReenaAnswerPhoneDayText
-	buttonsound
+	promptbutton
 	end
 
 .Liz:
 	farwritetext LizAnswerPhoneDayText
-	buttonsound
+	promptbutton
 	end
 
 .Gina:
 	farwritetext GinaAnswerPhoneDayText
-	buttonsound
+	promptbutton
 	end
 
 .Dana:
 	farwritetext DanaAnswerPhoneDayText
-	buttonsound
+	promptbutton
 	end
 
 .Tiffany:
 	farwritetext TiffanyAnswerPhoneDayText
-	buttonsound
+	promptbutton
 	end
 
 .Erin:
 	farwritetext ErinAnswerPhoneDayText
-	buttonsound
+	promptbutton
 	end
 
 PhoneScript_AnswerPhone_Female_Nite:
-	checkcode VAR_CALLERID
+	readvar VAR_CALLERID
 	ifequal PHONE_POKEFAN_BEVERLY, .Beverly
 	ifequal PHONE_COOLTRAINERF_BETH, .Beth
 	ifequal PHONE_COOLTRAINERF_REENA, .Reena
@@ -2486,42 +2486,42 @@ PhoneScript_AnswerPhone_Female_Nite:
 
 .Beverly:
 	farwritetext BeverlyAnswerPhoneNiteText
-	buttonsound
+	promptbutton
 	end
 
 .Beth:
 	farwritetext BethAnswerPhoneNiteText
-	buttonsound
+	promptbutton
 	end
 
 .Reena:
 	farwritetext ReenaAnswerPhoneNiteText
-	buttonsound
+	promptbutton
 	end
 
 .Liz:
 	farwritetext LizAnswerPhoneNiteText
-	buttonsound
+	promptbutton
 	end
 
 .Gina:
 	farwritetext GinaAnswerPhoneNiteText
-	buttonsound
+	promptbutton
 	end
 
 .Dana:
 	farwritetext DanaAnswerPhoneNiteText
-	buttonsound
+	promptbutton
 	end
 
 .Tiffany:
 	farwritetext TiffanyAnswerPhoneNiteText
-	buttonsound
+	promptbutton
 	end
 
 .Erin:
 	farwritetext ErinAnswerPhoneNiteText
-	buttonsound
+	promptbutton
 	end
 
 PhoneScript_GreetPhone_Male:
@@ -2529,7 +2529,7 @@ PhoneScript_GreetPhone_Male:
 	iftrue PhoneScript_GreetPhone_Male_Day
 	checktime (1 << EVE) | (1 << NITE)
 	iftrue PhoneScript_GreetPhone_Male_Nite
-	checkcode VAR_CALLERID
+	readvar VAR_CALLERID
 	ifequal PHONE_SCHOOLBOY_JACK, .Jack
 	ifequal PHONE_SAILOR_HUEY, .Huey
 	ifequal PHONE_COOLTRAINERM_GAVEN, .Gaven
@@ -2553,106 +2553,106 @@ PhoneScript_GreetPhone_Male:
 
 .Jack:
 	farwritetext JackGreetText
-	buttonsound
+	promptbutton
 	end
 
 .Huey:
 	farwritetext HueyGreetText
-	buttonsound
+	promptbutton
 	end
 
 .Gaven:
 	farwritetext GavenGreetText
-	buttonsound
+	promptbutton
 	end
 
 .Jose:
 	farwritetext JoseGreetText
-	buttonsound
+	promptbutton
 	end
 
 .Joey:
 	farwritetext JoeyGreetText
-	buttonsound
+	promptbutton
 	end
 
 .Wade:
 	farwritetext WadeGreetText
-	buttonsound
+	promptbutton
 	end
 
 .Ralph:
 	farwritetext RalphGreetText
-	buttonsound
+	promptbutton
 	end
 
 .Anthony:
 	farwritetext AnthonyGreetText
-	buttonsound
+	promptbutton
 	end
 
 .Todd:
 	farwritetext ToddGreetText
-	buttonsound
+	promptbutton
 	end
 
 .Irwin:
 	farwritetext IrwinGreetText
-	buttonsound
+	promptbutton
 	end
 
 .Arnie:
 	farwritetext ArnieGreetText
-	buttonsound
+	promptbutton
 	end
 
 .Alan:
 	farwritetext AlanGreetText
-	buttonsound
+	promptbutton
 	end
 
 .Chad:
 	farwritetext ChadGreetText
-	buttonsound
+	promptbutton
 	end
 
 .Derek:
 	farwritetext DerekGreetText
-	buttonsound
+	promptbutton
 	end
 
 .Tully:
 	farwritetext TullyGreetText
-	buttonsound
+	promptbutton
 	end
 
 .Brent:
 	farwritetext BrentGreetText
-	buttonsound
+	promptbutton
 	end
 
 .Vance:
 	farwritetext VanceGreetText
-	buttonsound
+	promptbutton
 	end
 
 .Wilton:
 	farwritetext WiltonGreetText
-	buttonsound
+	promptbutton
 	end
 
 .Kenji:
 	farwritetext KenjiGreetText
-	buttonsound
+	promptbutton
 	end
 
 .Parry:
 	farwritetext ParryGreetText
-	buttonsound
+	promptbutton
 	end
 
 PhoneScript_GreetPhone_Male_Day:
-	checkcode VAR_CALLERID
+	readvar VAR_CALLERID
 	ifequal PHONE_SCHOOLBOY_JACK, .Jack
 	ifequal PHONE_SAILOR_HUEY, .Huey
 	ifequal PHONE_COOLTRAINERM_GAVEN, .Gaven
@@ -2676,106 +2676,106 @@ PhoneScript_GreetPhone_Male_Day:
 
 .Jack:
 	farwritetext JackGreetDayText
-	buttonsound
+	promptbutton
 	end
 
 .Huey:
 	farwritetext HueyGreetDayText
-	buttonsound
+	promptbutton
 	end
 
 .Gaven:
 	farwritetext GavenGreetDayText
-	buttonsound
+	promptbutton
 	end
 
 .Jose:
 	farwritetext JoseGreetDayText
-	buttonsound
+	promptbutton
 	end
 
 .Joey:
 	farwritetext JoeyGreetDayText
-	buttonsound
+	promptbutton
 	end
 
 .Wade:
 	farwritetext WadeGreetDayText
-	buttonsound
+	promptbutton
 	end
 
 .Ralph:
 	farwritetext RalphGreetDayText
-	buttonsound
+	promptbutton
 	end
 
 .Anthony:
 	farwritetext AnthonyGreetDayText
-	buttonsound
+	promptbutton
 	end
 
 .Todd:
 	farwritetext ToddGreetDayText
-	buttonsound
+	promptbutton
 	end
 
 .Irwin:
 	farwritetext IrwinGreetDayText
-	buttonsound
+	promptbutton
 	end
 
 .Arnie:
 	farwritetext ArnieGreetDayText
-	buttonsound
+	promptbutton
 	end
 
 .Alan:
 	farwritetext AlanGreetDayText
-	buttonsound
+	promptbutton
 	end
 
 .Chad:
 	farwritetext ChadGreetDayText
-	buttonsound
+	promptbutton
 	end
 
 .Derek:
 	farwritetext DerekGreetDayText
-	buttonsound
+	promptbutton
 	end
 
 .Tully:
 	farwritetext TullyGreetDayText
-	buttonsound
+	promptbutton
 	end
 
 .Brent:
 	farwritetext BrentGreetDayText
-	buttonsound
+	promptbutton
 	end
 
 .Vance:
 	farwritetext VanceGreetDayText
-	buttonsound
+	promptbutton
 	end
 
 .Wilton:
 	farwritetext WiltonGreetDayText
-	buttonsound
+	promptbutton
 	end
 
 .Kenji:
 	farwritetext KenjiGreetDayText
-	buttonsound
+	promptbutton
 	end
 
 .Parry:
 	farwritetext ParryGreetDayText
-	buttonsound
+	promptbutton
 	end
 
 PhoneScript_GreetPhone_Male_Nite:
-	checkcode VAR_CALLERID
+	readvar VAR_CALLERID
 	ifequal PHONE_SCHOOLBOY_JACK, .Jack
 	ifequal PHONE_SAILOR_HUEY, .Huey
 	ifequal PHONE_COOLTRAINERM_GAVEN, .Gaven
@@ -2799,102 +2799,102 @@ PhoneScript_GreetPhone_Male_Nite:
 
 .Jack:
 	farwritetext JackGreetNiteText
-	buttonsound
+	promptbutton
 	end
 
 .Huey:
 	farwritetext HueyGreetNiteText
-	buttonsound
+	promptbutton
 	end
 
 .Gaven:
 	farwritetext GavenGreetNiteText
-	buttonsound
+	promptbutton
 	end
 
 .Jose:
 	farwritetext JoseGreetNiteText
-	buttonsound
+	promptbutton
 	end
 
 .Joey:
 	farwritetext JoeyGreetNiteText
-	buttonsound
+	promptbutton
 	end
 
 .Wade:
 	farwritetext WadeGreetNiteText
-	buttonsound
+	promptbutton
 	end
 
 .Ralph:
 	farwritetext RalphGreetNiteText
-	buttonsound
+	promptbutton
 	end
 
 .Anthony:
 	farwritetext AnthonyGreetNiteText
-	buttonsound
+	promptbutton
 	end
 
 .Todd:
 	farwritetext ToddGreetNiteText
-	buttonsound
+	promptbutton
 	end
 
 .Irwin:
 	farwritetext IrwinGreetNiteText
-	buttonsound
+	promptbutton
 	end
 
 .Arnie:
 	farwritetext ArnieGreetNiteText
-	buttonsound
+	promptbutton
 	end
 
 .Alan:
 	farwritetext AlanGreetNiteText
-	buttonsound
+	promptbutton
 	end
 
 .Chad:
 	farwritetext ChadGreetNiteText
-	buttonsound
+	promptbutton
 	end
 
 .Derek:
 	farwritetext DerekGreetNiteText
-	buttonsound
+	promptbutton
 	end
 
 .Tully:
 	farwritetext TullyGreetNiteText
-	buttonsound
+	promptbutton
 	end
 
 .Brent:
 	farwritetext BrentGreetNiteText
-	buttonsound
+	promptbutton
 	end
 
 .Vance:
 	farwritetext VanceGreetNiteText
-	buttonsound
+	promptbutton
 	end
 
 .Wilton:
 	farwritetext WiltonGreetNiteText
-	buttonsound
+	promptbutton
 	end
 
 .Kenji:
 	farwritetext KenjiGreetNiteText
-	buttonsound
+	promptbutton
 	end
 
 .Parry:
 	farwritetext ParryGreetNiteText
-	buttonsound
+	promptbutton
 	end
 
 PhoneScript_GreetPhone_Female:
@@ -2902,7 +2902,7 @@ PhoneScript_GreetPhone_Female:
 	iftrue PhoneScript_GreetPhone_Female_Day
 	checktime (1 << EVE) | (1 << NITE)
 	iftrue PhoneScript_GreetPhone_Female_Nite
-	checkcode VAR_CALLERID
+	readvar VAR_CALLERID
 	ifequal PHONE_POKEFAN_BEVERLY, .Beverly
 	ifequal PHONE_COOLTRAINERF_BETH, .Beth
 	ifequal PHONE_COOLTRAINERF_REENA, .Reena
@@ -2914,46 +2914,46 @@ PhoneScript_GreetPhone_Female:
 
 .Beverly:
 	farwritetext BeverlyGreetText
-	buttonsound
+	promptbutton
 	end
 
 .Beth:
 	farwritetext BethGreetText
-	buttonsound
+	promptbutton
 	end
 
 .Reena:
 	farwritetext ReenaGreetText
-	buttonsound
+	promptbutton
 	end
 
 .Liz:
 	farwritetext LizGreetText
-	buttonsound
+	promptbutton
 	end
 
 .Gina:
 	farwritetext GinaGreetText
-	buttonsound
+	promptbutton
 	end
 
 .Dana:
 	farwritetext DanaGreetText
-	buttonsound
+	promptbutton
 	end
 
 .Tiffany:
 	farwritetext TiffanyGreetText
-	buttonsound
+	promptbutton
 	end
 
 .Erin:
 	farwritetext ErinGreetText
-	buttonsound
+	promptbutton
 	end
 
 PhoneScript_GreetPhone_Female_Day:
-	checkcode VAR_CALLERID
+	readvar VAR_CALLERID
 	ifequal PHONE_POKEFAN_BEVERLY, .Beverly
 	ifequal PHONE_COOLTRAINERF_BETH, .Beth
 	ifequal PHONE_COOLTRAINERF_REENA, .Reena
@@ -2965,46 +2965,46 @@ PhoneScript_GreetPhone_Female_Day:
 
 .Beverly:
 	farwritetext BeverlyGreetDayText
-	buttonsound
+	promptbutton
 	end
 
 .Beth:
 	farwritetext BethGreetDayText
-	buttonsound
+	promptbutton
 	end
 
 .Reena:
 	farwritetext ReenaGreetDayText
-	buttonsound
+	promptbutton
 	end
 
 .Liz:
 	farwritetext LizGreetDayText
-	buttonsound
+	promptbutton
 	end
 
 .Gina:
 	farwritetext GinaGreetDayText
-	buttonsound
+	promptbutton
 	end
 
 .Dana:
 	farwritetext DanaGreetDayText
-	buttonsound
+	promptbutton
 	end
 
 .Tiffany:
 	farwritetext TiffanyGreetDayText
-	buttonsound
+	promptbutton
 	end
 
 .Erin:
 	farwritetext ErinGreetDayText
-	buttonsound
+	promptbutton
 	end
 
 PhoneScript_GreetPhone_Female_Nite:
-	checkcode VAR_CALLERID
+	readvar VAR_CALLERID
 	ifequal PHONE_POKEFAN_BEVERLY, .Beverly
 	ifequal PHONE_COOLTRAINERF_BETH, .Beth
 	ifequal PHONE_COOLTRAINERF_REENA, .Reena
@@ -3016,46 +3016,46 @@ PhoneScript_GreetPhone_Female_Nite:
 
 .Beverly:
 	farwritetext BeverlyGreetNiteText
-	buttonsound
+	promptbutton
 	end
 
 .Beth:
 	farwritetext BethGreetNiteText
-	buttonsound
+	promptbutton
 	end
 
 .Reena:
 	farwritetext ReenaGreetNiteText
-	buttonsound
+	promptbutton
 	end
 
 .Liz:
 	farwritetext LizGreetNiteText
-	buttonsound
+	promptbutton
 	end
 
 .Gina:
 	farwritetext GinaGreetNiteText
-	buttonsound
+	promptbutton
 	end
 
 .Dana:
 	farwritetext DanaGreetNiteText
-	buttonsound
+	promptbutton
 	end
 
 .Tiffany:
 	farwritetext TiffanyGreetNiteText
-	buttonsound
+	promptbutton
 	end
 
 .Erin:
 	farwritetext ErinGreetNiteText
-	buttonsound
+	promptbutton
 	end
 
 PhoneScript_Generic_Male:
-	checkcode VAR_CALLERID
+	readvar VAR_CALLERID
 	ifequal PHONE_SCHOOLBOY_JACK, .Jack
 	ifequal PHONE_COOLTRAINERM_GAVEN, .Gaven
 	ifequal PHONE_BIRDKEEPER_JOSE, .Jose
@@ -3076,96 +3076,96 @@ PhoneScript_Generic_Male:
 
 .Jack:
 	farwritetext JackGenericText
-	buttonsound
+	promptbutton
 	end
 
 .Unknown:
 	farwritetext UnknownGenericText
-	buttonsound
+	promptbutton
 	end
 
 .Gaven:
 	farwritetext GavenGenericText
-	buttonsound
+	promptbutton
 	end
 
 .Jose:
 	farwritetext JoseGenericText
-	buttonsound
+	promptbutton
 	end
 
 .Joey:
 	farwritetext JoeyGenericText
-	buttonsound
+	promptbutton
 	end
 
 .Wade:
 	farwritetext WadeGenericText
-	buttonsound
+	promptbutton
 	end
 
 .Ralph:
 	farwritetext RalphGenericText
-	buttonsound
+	promptbutton
 	end
 
 .Anthony:
 	farwritetext AnthonyGenericText
-	buttonsound
+	promptbutton
 	end
 
 .Todd:
 	farwritetext ToddGenericText
-	buttonsound
+	promptbutton
 	end
 
 .Arnie:
 	farwritetext ArnieGenericText
-	buttonsound
+	promptbutton
 	end
 
 .Alan:
 	farwritetext AlanGenericText
-	buttonsound
+	promptbutton
 	end
 
 .Chad:
 	farwritetext ChadGenericText
-	buttonsound
+	promptbutton
 	end
 
 .Derek:
 	farwritetext DerekGenericText
-	buttonsound
+	promptbutton
 	end
 
 .Tully:
 	farwritetext TullyGenericText
-	buttonsound
+	promptbutton
 	end
 
 .Brent:
 	farwritetext BrentGenericText
-	buttonsound
+	promptbutton
 	end
 
 .Vance:
 	farwritetext VanceGenericText
-	buttonsound
+	promptbutton
 	end
 
 .Wilton:
 	farwritetext WiltonGenericText
-	buttonsound
+	promptbutton
 	end
 
 .Parry:
 	farwritetext ParryGenericText
-	buttonsound
+	promptbutton
 	end
 
 PhoneScript_Generic_Female:
-	checkcode VAR_CALLERID
+	readvar VAR_CALLERID
 	ifequal PHONE_POKEFAN_BEVERLY, .Beverly
 	ifequal PHONE_COOLTRAINERF_BETH, .Beth
 	ifequal PHONE_COOLTRAINERF_REENA, .Reena
@@ -3177,42 +3177,42 @@ PhoneScript_Generic_Female:
 
 .Beverly:
 	farwritetext BeverlyGenericText
-	buttonsound
+	promptbutton
 	end
 
 .Beth:
 	farwritetext BethGenericText
-	buttonsound
+	promptbutton
 	end
 
 .Reena:
 	farwritetext ReenaGenericText
-	buttonsound
+	promptbutton
 	end
 
 .Liz:
 	farwritetext LizGenericText
-	buttonsound
+	promptbutton
 	end
 
 .Gina:
 	farwritetext GinaGenericText
-	buttonsound
+	promptbutton
 	end
 
 .Dana:
 	farwritetext DanaGenericText
-	buttonsound
+	promptbutton
 	end
 
 .Tiffany:
 	farwritetext TiffanyGenericText
-	buttonsound
+	promptbutton
 	end
 
 .Erin:
 	farwritetext ErinGenericText
-	buttonsound
+	promptbutton
 	end
 
 PhoneScript_MonFlavorText:
@@ -3220,13 +3220,13 @@ PhoneScript_MonFlavorText:
 	farscall PhoneScript_Random2
 	ifequal $0, .TooEnergetic
 	farwritetext UnknownGenericText
-	buttonsound
-	farjump PhoneScript_HangupText_Male
+	promptbutton
+	farsjump PhoneScript_HangupText_Male
 
 .TooEnergetic:
 	farwritetext UnknownTougherThanEverText
-	buttonsound
-	farjump PhoneScript_HangupText_Male
+	promptbutton
+	farsjump PhoneScript_HangupText_Male
 
 Phone_GrandmaString: db "Grandma@"
 Phone_GrandpaString: db "Grandpa@"

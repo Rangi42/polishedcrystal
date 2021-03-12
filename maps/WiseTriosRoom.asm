@@ -39,17 +39,17 @@ WiseTriosRoomCallback:
 	iftrue .WiseTrio2
 	clearevent EVENT_WISE_TRIOS_ROOM_WISE_TRIO_1
 	setevent EVENT_WISE_TRIOS_ROOM_WISE_TRIO_2
-	return
+	endcallback
 
 .WiseTrio2:
 	setevent EVENT_WISE_TRIOS_ROOM_WISE_TRIO_1
 	clearevent EVENT_WISE_TRIOS_ROOM_WISE_TRIO_2
-	return
+	endcallback
 
 .NoWiseTrio:
 	setevent EVENT_WISE_TRIOS_ROOM_WISE_TRIO_1
 	setevent EVENT_WISE_TRIOS_ROOM_WISE_TRIO_2
-	return
+	endcallback
 
 WiseTriosRoom_CannotEnterTinTowerScript:
 	turnobject WISETRIOSROOM_ELDER3, UP
@@ -86,7 +86,7 @@ ElderKojiScript:
 	showemote EMOTE_SHOCK, WISETRIOSROOM_ELDER6, 20
 	opentext
 	writetext SageKojiAfterBattleQuestionText
-	buttonsound
+	promptbutton
 	writetext SageKojiAfterBattleSpeechText
 	waitbutton
 	closetext

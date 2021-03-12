@@ -18,7 +18,7 @@ WillsRoom_MapScriptHeader:
 	object_event  5,  7, SPRITE_WILL, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, WillScript, -1
 
 WillsRoomEntranceTrigger:
-	priorityjump .Script
+	prioritysjump .Script
 	end
 
 .Script:
@@ -43,10 +43,10 @@ WillsRoomDoorCallback:
 	iffalse .OpenDoor
 	changeblock 4, 2, $16
 .OpenDoor:
-	return
+	endcallback
 
 WillScript:
-	checkcode VAR_BADGES
+	readvar VAR_BADGES
 	ifequal 16, .Rematch
 	checkevent EVENT_BEAT_ELITE_4_WILL
 	iftrue_jumptextfaceplayer .AfterText
@@ -56,7 +56,7 @@ WillScript:
 	startbattle
 	reloadmapafterbattle
 	showtext .AfterText
-	jump .EndBattle
+	sjump .EndBattle
 
 .Rematch:
 	checkevent EVENT_BEAT_ELITE_4_WILL

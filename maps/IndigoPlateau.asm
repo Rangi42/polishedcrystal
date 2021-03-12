@@ -17,7 +17,7 @@ IndigoPlateau_MapScriptHeader:
 
 IndigoPlateauFlyPoint:
 	setflag ENGINE_FLYPOINT_INDIGO_PLATEAU
-	return
+	endcallback
 
 IndigoPlateauSignText:
 	text "Indigo Plateau"

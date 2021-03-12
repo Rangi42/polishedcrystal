@@ -52,22 +52,22 @@ FuchsiaGymJanineScript:
 	playsound SFX_GET_BADGE
 	waitsfx
 	setflag ENGINE_MARSHBADGE
-	checkcode VAR_BADGES
+	readvar VAR_BADGES
 	ifequal 9, .FirstBadge
 	ifequal 10, .SecondBadge
 	ifequal 12, .LyrasEgg
-	jump UnknownScript_0x195e02
+	sjump UnknownScript_0x195e02
 .FirstBadge:
 	specialphonecall SPECIALCALL_FIRSTBADGE
-	jump UnknownScript_0x195e02
+	sjump UnknownScript_0x195e02
 .SecondBadge:
 	checkevent EVENT_GOT_GS_BALL_FROM_POKECOM_CENTER
 	iftrue UnknownScript_0x195e02
 	specialphonecall SPECIALCALL_SECONDBADGE
-	jump UnknownScript_0x195e02
+	sjump UnknownScript_0x195e02
 .LyrasEgg:
 	specialphonecall SPECIALCALL_LYRASEGG
-	jump UnknownScript_0x195e02
+	sjump UnknownScript_0x195e02
 .FightDone:
 	faceplayer
 	opentext
@@ -75,7 +75,7 @@ UnknownScript_0x195e02:
 	checkevent EVENT_GOT_TM66_POISON_JAB
 	iftrue_jumpopenedtext JanineText_ApplyMyself
 	writetext JanineText_ToxicSpeech
-	buttonsound
+	promptbutton
 	verbosegivetmhm TM_POISON_JAB
 	setevent EVENT_GOT_TM66_POISON_JAB
 	jumpthisopenedtext
@@ -194,7 +194,7 @@ FuchsiaGymGuyScript:
 	jumptextfaceplayer FuchsiaGymGuyText
 
 FuchsiaGymStatue:
-	trainertotext JANINE, 1, $1
+	gettrainername JANINE, 1, $1
 	checkflag ENGINE_MARSHBADGE
 	iftrue .Beaten
 	jumpstd gymstatue1

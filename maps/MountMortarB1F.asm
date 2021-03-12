@@ -38,7 +38,7 @@ MountMortarB1FTutorDefenseCurlScript:
 	writetext Text_MountMortarB1FTutorQuestion
 	yesorno
 	iffalse .TutorRefused
-	writebyte DEFENSE_CURL
+	setval DEFENSE_CURL
 	writetext ClearText
 	special Special_MoveTutor
 	ifequal $0, .TeachMove
@@ -67,15 +67,15 @@ MountMortarB1FKiyoScript:
 UnknownScript_0x7e217:
 	opentext
 	writetext MountMortarB1FTyrogueRewardText
-	buttonsound
+	promptbutton
 	waitsfx
-	checkcode VAR_PARTYCOUNT
+	readvar VAR_PARTYCOUNT
 	ifequal $6, UnknownScript_0x7e237
 	writetext MountMortarB1FReceiveMonText
 	playsound SFX_CAUGHT_MON
 	waitsfx
 	givepoke TYROGUE, 10
-	writebyte PREMIER_BALL
+	setval PREMIER_BALL
 	special SetLastPartyMonBall
 	setevent EVENT_GOT_TYROGUE_FROM_KIYO
 	jumpthisopenedtext

@@ -29,7 +29,7 @@ OlivinePort_MapScriptHeader:
 	const OLIVINEPORT_SAILOR3
 
 OlivinePortTrigger1:
-	priorityjump UnknownScript_0x748b1
+	prioritysjump UnknownScript_0x748b1
 OlivinePortTrigger0:
 	end
 
@@ -92,7 +92,7 @@ OlivinePortWalkUpToShipScript:
 	opentext
 	checkevent EVENT_FAST_SHIP_FIRST_TIME
 	iffalse UnknownScript_0x7494e
-	checkcode VAR_WEEKDAY
+	readvar VAR_WEEKDAY
 	ifequal SUNDAY, UnknownScript_0x74977
 	ifequal SATURDAY, UnknownScript_0x74977
 	ifequal TUESDAY, UnknownScript_0x74981
@@ -103,7 +103,7 @@ UnknownScript_0x7494e:
 	yesorno
 	iffalse OlivinePortNotRidingMoveAwayScript
 	writetext OlivinePortAskTicketText
-	buttonsound
+	promptbutton
 	checkkeyitem S_S_TICKET
 	iffalse UnknownScript_0x7496d
 	writetext OlivinePortFlashTicketText
@@ -111,7 +111,7 @@ UnknownScript_0x7494e:
 	closetext
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
 	applymovement PLAYER, OlivinePortApproachFastShipFirstTimeMovement
-	jump OlivinePortSailorAtGangwayScript
+	sjump OlivinePortSailorAtGangwayScript
 
 UnknownScript_0x7496d:
 	writetext OlivinePortNoTicketText
@@ -154,7 +154,7 @@ OlivinePortSailorAfterHOFScript:
 	iftrue OlivinePortAlreadyRodeScript
 	checkevent EVENT_FAST_SHIP_FIRST_TIME
 	iffalse UnknownScript_0x749c0
-	checkcode VAR_WEEKDAY
+	readvar VAR_WEEKDAY
 	ifequal SUNDAY, UnknownScript_0x749f2
 	ifequal SATURDAY, UnknownScript_0x749f2
 	ifequal TUESDAY, UnknownScript_0x749f8
@@ -165,21 +165,21 @@ UnknownScript_0x749c0:
 	yesorno
 	iffalse OlivinePortNotRidingScript
 	writetext OlivinePortAskTicketText
-	buttonsound
+	promptbutton
 	checkkeyitem S_S_TICKET
 	iffalse UnknownScript_0x749ec
 	writetext OlivinePortFlashTicketText
 	waitbutton
 	closetext
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
-	checkcode VAR_FACING
+	readvar VAR_FACING
 	ifequal RIGHT, UnknownScript_0x749e5
 	applymovement PLAYER, OlivinePortApproachFastShipAfterHOFMovement
-	jump OlivinePortSailorAtGangwayScript
+	sjump OlivinePortSailorAtGangwayScript
 
 UnknownScript_0x749e5:
 	applymovement PLAYER, OlivinePortApproachFastShipAfterHOFRightMovement
-	jump OlivinePortSailorAtGangwayScript
+	sjump OlivinePortSailorAtGangwayScript
 
 UnknownScript_0x749ec:
 	jumpopenedtext OlivinePortNoTicketText

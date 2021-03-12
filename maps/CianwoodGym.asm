@@ -64,7 +64,7 @@ CianwoodGymChuckScript:
 	setevent EVENT_BEAT_BLACKBELT_NOB
 	setevent EVENT_BEAT_BLACKBELT_LUNG
 	writetext ChuckExplainBadgeText
-	buttonsound
+	promptbutton
 	verbosegivetmhm TM_DYNAMICPUNCH
 	setevent EVENT_GOT_TM01_DYNAMICPUNCH
 	jumpopenedtext ChuckExplainTMText
@@ -101,12 +101,12 @@ GenericTrainerBlackbeltLung:
 	done
 
 CianwoodGymStatue:
-	trainertotext CHUCK, 1, $1
+	gettrainername CHUCK, 1, $1
 	checkflag ENGINE_STORMBADGE
 	iftrue .Beaten
 	jumpstd gymstatue1
 .Beaten:
-	checkcode VAR_BADGES
+	readvar VAR_BADGES
 	ifgreater 12, .LyraToo
 	jumpstd gymstatue2
 .LyraToo

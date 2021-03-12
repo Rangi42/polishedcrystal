@@ -36,21 +36,21 @@ MomTrigger1:
 	showemote EMOTE_SHOCK, PLAYERSHOUSE1F_MOM1, 15
 	turnobject PLAYERSHOUSE1F_MOM1, RIGHT
 	turnobject PLAYER, LEFT
-	jump MomEventScript
+	sjump MomEventScript
 
 MomTrigger2:
 	playmusic MUSIC_MOM
 	showemote EMOTE_SHOCK, PLAYERSHOUSE1F_MOM1, 15
 	turnobject PLAYERSHOUSE1F_MOM1, RIGHT
 	applyonemovement PLAYER, slow_step_left
-	jump MomEventScript
+	sjump MomEventScript
 
 MomTrigger3:
 	playmusic MUSIC_MOM
 	showemote EMOTE_SHOCK, PLAYERSHOUSE1F_MOM1, 15
 	turnobject PLAYERSHOUSE1F_MOM1, UP
 	applymovement PLAYER, .two_steps_down
-	jump MomEventScript
+	sjump MomEventScript
 
 .two_steps_down
 	step_down
@@ -65,8 +65,8 @@ MomTrigger4:
 MomEventScript:
 	opentext
 	writetext MomIntroText
-	buttonsound
-	stringtotext GearName, $1
+	promptbutton
+	getstring GearName, $1
 	callstd receiveitem
 	setflag ENGINE_POKEGEAR
 	setflag ENGINE_PHONE_CARD
@@ -75,7 +75,7 @@ MomEventScript:
 	setevent EVENT_PLAYERS_HOUSE_MOM_1
 	clearevent EVENT_PLAYERS_HOUSE_MOM_2
 	writetext MomPokegearText
-	buttonsound
+	promptbutton
 	special Special_SetDayOfWeek
 .InitialSetDSTFlag:
 	writetext MomDSTText
@@ -84,7 +84,7 @@ MomEventScript:
 	special Special_InitialSetDSTFlag
 	yesorno
 	iffalse .InitialSetDSTFlag
-	jump .InitializedDSTFlag
+	sjump .InitializedDSTFlag
 .NotDST:
 	special Special_InitialClearDSTFlag
 	yesorno
@@ -94,7 +94,7 @@ MomEventScript:
 	yesorno
 	iftrue .NoInstructions
 	writetext MomInstructionsText
-	buttonsound
+	promptbutton
 .NoInstructions:
 	writetext MomOutroText
 	waitbutton
@@ -170,7 +170,7 @@ MomScript:
 
 .MomEvent:
 	playmusic MUSIC_MOM
-	jump MomEventScript
+	sjump MomEventScript
 
 MomIntroText:
 if DEF(DEBUG)
@@ -285,18 +285,18 @@ NeighborScript:
 
 .MornScript:
 	writetext .MornIntroText
-	buttonsound
-	jump .Main
+	promptbutton
+	sjump .Main
 
 .DayScript:
 	writetext .DayIntroText
-	buttonsound
-	jump .Main
+	promptbutton
+	sjump .Main
 
 .NiteScript:
 	writetext .NiteIntroText
-	buttonsound
-	jump .Main
+	promptbutton
+	sjump .Main
 
 .Main:
 	writetext .NeighborText

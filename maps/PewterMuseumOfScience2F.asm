@@ -27,7 +27,7 @@ Museum2FPokefanMScript:
 	checkunits
 	iftrue .metric
 	writetext Museum2FPokefanMImperialText
-	jump .ok
+	sjump .ok
 .metric
 	writetext Museum2FPokefanMMetricText
 .ok
@@ -41,7 +41,7 @@ Museum2FTutorSeismicTossScript:
 	writetext Text_Museum2FTutorQuestion
 	yesorno
 	iffalse .TutorRefused
-	writebyte SEISMIC_TOSS
+	setval SEISMIC_TOSS
 	writetext ClearText
 	special Special_MoveTutor
 	ifequal $0, .TeachMove

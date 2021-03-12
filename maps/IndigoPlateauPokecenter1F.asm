@@ -55,7 +55,7 @@ PrepareEliteFourCallback:
 	clearevent EVENT_BEAT_ELITE_4_KAREN
 	clearevent EVENT_BEAT_CHAMPION_LANCE
 	setevent EVENT_LANCES_ROOM_OAK_AND_MARY
-	return
+	endcallback
 
 PlateauRivalBattleTrigger1:
 	moveobject INDIGOPLATEAUPOKECENTER1F_SILVER, 15, 9
@@ -63,7 +63,7 @@ PlateauRivalBattleTrigger1:
 PlateauRivalBattleTrigger2:
 	checkevent EVENT_FINAL_BATTLE_WITH_LYRA
 	iftrue .LyraFight
-	checkcode VAR_WEEKDAY
+	readvar VAR_WEEKDAY
 	ifequal MONDAY, .MaybeRivalFight
 	ifequal TUESDAY, .MaybeLyraFight
 	ifequal WEDNESDAY, .MaybeRivalFight
@@ -99,7 +99,7 @@ PlateauRivalBattleTrigger2:
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle
-	jump .RivalPostBattle
+	sjump .RivalPostBattle
 
 .RivalTotodile:
 	winlosstext PlateauRivalWinText, PlateauRivalLoseText
@@ -108,7 +108,7 @@ PlateauRivalBattleTrigger2:
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle
-	jump .RivalPostBattle
+	sjump .RivalPostBattle
 
 .RivalChikorita:
 	winlosstext PlateauRivalWinText, PlateauRivalLoseText
@@ -162,7 +162,7 @@ PlateauRivalBattleTrigger2:
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle
-	jump .LyraPostBattle
+	sjump .LyraPostBattle
 
 .LyraTotodile:
 	winlosstext PlateauRivalWinText, PlateauRivalLoseText
@@ -171,7 +171,7 @@ PlateauRivalBattleTrigger2:
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle
-	jump .LyraPostBattle
+	sjump .LyraPostBattle
 
 .LyraChikorita:
 	winlosstext PlateauRivalWinText, PlateauRivalLoseText
@@ -356,43 +356,43 @@ IndigoPlateauYellowScript:
 	yesorno
 	iffalse_jumpopenedtext .RefusedText
 	writetext .GiveStarterText
-	buttonsound
+	promptbutton
 	waitsfx
-	checkcode VAR_PARTYCOUNT
+	readvar VAR_PARTYCOUNT
 	ifequal $6, .PartyFull
 	checkevent EVENT_GOT_BULBASAUR_FROM_IVY
 	iftrue .Squirtle
 	checkevent EVENT_GOT_CHARMANDER_FROM_IVY
 	iftrue .Bulbasaur
-	pokenamemem CHARMANDER, $0
+	getmonname CHARMANDER, $0
 	writetext .ReceivedKantoStarterText
 	playsound SFX_CAUGHT_MON
 	waitsfx
-	buttonsound
+	promptbutton
 	givepoke CHARMANDER, NO_FORM, 10, SITRUS_BERRY
-	jump .Finish
+	sjump .Finish
 
 .Bulbasaur:
-	pokenamemem BULBASAUR, $0
+	getmonname BULBASAUR, $0
 	writetext .ReceivedKantoStarterText
 	playsound SFX_CAUGHT_MON
 	waitsfx
-	buttonsound
+	promptbutton
 	givepoke BULBASAUR, NO_FORM, 10, SITRUS_BERRY
-	jump .Finish
+	sjump .Finish
 
 .Squirtle:
-	pokenamemem SQUIRTLE, $0
+	getmonname SQUIRTLE, $0
 	writetext .ReceivedKantoStarterText
 	playsound SFX_CAUGHT_MON
 	waitsfx
-	buttonsound
+	promptbutton
 	givepoke SQUIRTLE, NO_FORM, 10, SITRUS_BERRY
 .Finish:
 	writetext .GoodbyeText
 	waitbutton
 	closetext
-	checkcode VAR_FACING
+	readvar VAR_FACING
 	turnobject PLAYER, DOWN
 	ifnotequal UP, .noleftstep
 	applyonemovement INDIGOPLATEAUPOKECENTER1F_YELLOW, step_left

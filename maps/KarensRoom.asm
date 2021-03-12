@@ -19,7 +19,7 @@ KarensRoom_MapScriptHeader:
 	object_event  5,  7, SPRITE_KAREN, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, KarenScript, -1
 
 KarensRoomEntranceTrigger:
-	priorityjump .Script
+	prioritysjump .Script
 	end
 
 .Script:
@@ -44,10 +44,10 @@ KarensRoomDoorCallback:
 	iffalse .OpenDoor
 	changeblock 4, 2, $16
 .OpenDoor:
-	return
+	endcallback
 
 KarenScript:
-	checkcode VAR_BADGES
+	readvar VAR_BADGES
 	ifequal 16, .Rematch
 	checkevent EVENT_BEAT_ELITE_4_KAREN
 	iftrue_jumptextfaceplayer .AfterText
@@ -57,7 +57,7 @@ KarenScript:
 	startbattle
 	reloadmapafterbattle
 	showtext .AfterText
-	jump .EndBattle
+	sjump .EndBattle
 
 .Rematch:
 	checkevent EVENT_BEAT_ELITE_4_KAREN

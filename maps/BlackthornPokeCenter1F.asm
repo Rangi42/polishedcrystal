@@ -44,8 +44,8 @@ ProfOaksAide4Script:
 	opentext
 	writetext .HiText
 	waitbutton
-	count_seen_caught
-	checkcode VAR_DEXCAUGHT
+	countseencaught
+	readvar VAR_DEXCAUGHT
 	ifgreater 59, .HereYouGo
 	jumpthisopenedtext
 

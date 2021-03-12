@@ -73,29 +73,29 @@ RuinsofAlphOutsideTileScript:
 	iffalse .locked
 	changeblock 10, 8, $9f
 .locked
-	return
+	endcallback
 
 RuinsOfAlphOutsideScientistCallback:
 	checkflag ENGINE_UNOWN_DEX
 	iftrue .NoScientist
 	checkevent EVENT_MADE_UNOWN_APPEAR_IN_RUINS
 	iftrue .MaybeScientist
-	jump .NoScientist
+	sjump .NoScientist
 
 .MaybeScientist:
-	checkcode VAR_UNOWNCOUNT
+	readvar VAR_UNOWNCOUNT
 	ifgreater $0, .YesScientist
-	jump .NoScientist
+	sjump .NoScientist
 
 .YesScientist:
 	appear RUINSOFALPHOUTSIDE_SCIENTIST1
 	setscene $1
-	return
+	endcallback
 
 .NoScientist:
 	disappear RUINSOFALPHOUTSIDE_SCIENTIST1
 	setscene $0
-	return
+	endcallback
 
 RuinsOfAlphOutsideScientistScene1:
 	faceobject RUINSOFALPHOUTSIDE_SCIENTIST1, PLAYER
@@ -119,7 +119,7 @@ RuinsOfAlphOutsideFisherScript:
 	iftrue_jumpopenedtext RuinsOfAlphOutsideFisherText2
 	setevent EVENT_TALKED_TO_RUINS_COWARD
 	writetext RuinsOfAlphOutsideFisherText1
-	buttonsound
+	promptbutton
 	jumpthisopenedtext
 
 RuinsOfAlphOutsideFisherText2:

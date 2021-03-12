@@ -47,7 +47,7 @@ CeladonHomeDecorStore1FClerkScript:
 	waitbutton
 	writetext BulbasaurDollSentText
 	waitbutton
-	jump .Start
+	sjump .Start
 
 .CharmanderDoll:
 	checkmoney $0, 16000
@@ -61,7 +61,7 @@ CeladonHomeDecorStore1FClerkScript:
 	waitbutton
 	writetext CharmanderDollSentText
 	waitbutton
-	jump .Start
+	sjump .Start
 
 .SquirtleDoll:
 	checkmoney $0, 16000
@@ -75,17 +75,17 @@ CeladonHomeDecorStore1FClerkScript:
 	waitbutton
 	writetext SquirtleDollSentText
 	waitbutton
-	jump .Start
+	sjump .Start
 
 .NotEnoughMoney:
 	writetext CeladonHomeDecorStore1FNoMoneyText
 	waitbutton
-	jump .Start
+	sjump .Start
 
 .AlreadyBought:
 	writetext CeladonHomeDecorStore1FAlreadyBoughtText
 	waitbutton
-	jump .Start
+	sjump .Start
 
 .MenuData:
 	db $40 ; flags

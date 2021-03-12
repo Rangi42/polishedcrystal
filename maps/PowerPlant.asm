@@ -92,7 +92,7 @@ PowerPlantManager:
 
 UnknownScript_0x188e93:
 	writetext PowerPlantManagerThatsThePartText
-	buttonsound
+	promptbutton
 	takekeyitem MACHINE_PART
 	clearevent EVENT_SAFFRON_TRAIN_STATION_POPULATION
 	setevent EVENT_ROUTE_5_6_POKEFAN_M_BLOCKS_UNDERGROUND_PATH
@@ -111,7 +111,7 @@ PowerPlantTutorZapCannonScript:
 	writetext Text_PowerPlantTutorQuestion
 	yesorno
 	iffalse .TutorRefused
-	writebyte ZAP_CANNON
+	setval ZAP_CANNON
 	writetext ClearText
 	special Special_MoveTutor
 	ifequal $0, .TeachMove

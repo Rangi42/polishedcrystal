@@ -20,11 +20,11 @@ CeladonMansionRoofHousePharmacistScript:
 	faceplayer
 	opentext
 	writetext .IntroText
-	buttonsound
+	promptbutton
 	checktime 1 << NITE
 	iffalse_jumpopenedtext .NotNiteText
 	writetext .StoryText
-	buttonsound
+	promptbutton
 	verbosegivetmhm TM_CURSE
 	setevent EVENT_GOT_TM03_CURSE
 	jumpthisopenedtext

@@ -36,7 +36,7 @@ FuchsiaSafariBallHouseOfficerScript:
 	giveitem SAFARI_BALL
 	iffalse_jumpopenedtext .BagFullText
 	takemoney $0, 2000
-	jump .Done
+	sjump .Done
 
 .Buy10:
 	checkmoney $0, 20000
@@ -50,7 +50,7 @@ FuchsiaSafariBallHouseOfficerScript:
 	waitsfx
 	playsound SFX_TRANSACTION
 	writetext .GoodbyeText
-	buttonsound
+	promptbutton
 	itemnotify
 	endtext
 

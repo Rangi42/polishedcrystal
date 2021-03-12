@@ -1,19 +1,19 @@
 FruitTreeScript::
 	opentext
 	farwritetext _FruitBearingTreeText
-	buttonsound
-	copybytetovar wCurFruit
+	promptbutton
+	readmem wCurFruit
 	callasm CheckFruitTree
 	iffalse PickBerryScript
 	farwritetext _NothingHereText
-	buttonsound
+	promptbutton
 	checkitem MULCH
 	iffalse_endtext
 	farwritetext _WantToUseMulchText
 	yesorno
 	iffalse_endtext
 	takeitem MULCH
-	copybytetovar wCurFruit
+	readmem wCurFruit
 	callasm FertilizedFruitTree
 	jumpthisopenedtext
 
@@ -21,33 +21,33 @@ FruitTreeScript::
 	text_end
 
 PickBerryScript:
-	copybytetovar wCurFruit
+	readmem wCurFruit
 	ifless NUM_APRICORNS+1, PickApricornScript
-	itemtotext $0, $0
+	getitemname $0, $0
 	farwritetext _HeyItsFruitText
 	callasm GetFruitTreeCount
 	ifequal $1, .try_one
 	ifequal $2, .try_two
-	copybytetovar wCurFruit
+	readmem wCurFruit
 	giveitem ITEM_FROM_MEM, 3
 	iffalse .try_two
-	buttonsound
+	promptbutton
 	farwritetext _ObtainedThreeFruitText
 	callasm .ShowBerryIcon
-	jump .continue
+	sjump .continue
 .try_two
-	copybytetovar wCurFruit
+	readmem wCurFruit
 	giveitem ITEM_FROM_MEM, 2
 	iffalse .try_one
-	buttonsound
+	promptbutton
 	farwritetext _ObtainedTwoFruitText
 	callasm .ShowBerryIcon
-	jump .continue
+	sjump .continue
 .try_one
-	copybytetovar wCurFruit
+	readmem wCurFruit
 	giveitem ITEM_FROM_MEM
 	iffalse .packisfull
-	buttonsound
+	promptbutton
 	farwritetext _ObtainedOneFruitText
 	callasm .ShowBerryIcon
 .continue
@@ -58,7 +58,7 @@ PickBerryScript:
 	end
 
 .packisfull
-	buttonsound
+	promptbutton
 	jumpthisopenedtext
 
 	text_jump _FruitPackIsFullText
@@ -77,32 +77,32 @@ PickBerryScript:
 PickApricornScript:
 	checkkeyitem APRICORN_BOX
 	iffalse_jumpopenedtext NoApricornBoxText
-	copybytetovar wCurFruit
+	readmem wCurFruit
 	callasm .GetApricornName
 	farwritetext _HeyItsFruitText
 	callasm GetFruitTreeCount
 	ifequal $1, .try_one
 	ifequal $2, .try_two
-	copybytetovar wCurFruit
+	readmem wCurFruit
 	giveapricorn ITEM_FROM_MEM, 3
 	iffalse .try_two
-	buttonsound
+	promptbutton
 	farwritetext _ObtainedThreeFruitText
 	callasm .ShowApricornIcon
-	jump .continue
+	sjump .continue
 .try_two
-	copybytetovar wCurFruit
+	readmem wCurFruit
 	giveapricorn ITEM_FROM_MEM, 2
 	iffalse .try_one
-	buttonsound
+	promptbutton
 	farwritetext _ObtainedTwoFruitText
 	callasm .ShowApricornIcon
-	jump .continue
+	sjump .continue
 .try_one
-	copybytetovar wCurFruit
+	readmem wCurFruit
 	giveapricorn ITEM_FROM_MEM
 	iffalse .packisfull
-	buttonsound
+	promptbutton
 	farwritetext _ObtainedOneFruitText
 	callasm .ShowApricornIcon
 .continue
@@ -114,7 +114,7 @@ PickApricornScript:
 	text_end
 
 .packisfull
-	buttonsound
+	promptbutton
 	jumpthisopenedtext
 
 	text_jump _ApricornBoxIsFullText

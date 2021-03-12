@@ -25,7 +25,7 @@ CianwoodHouseBlackBeltScript:
 	faceplayer
 	opentext
 	writetext CianwoodHouseBlackBeltText1
-	buttonsound
+	promptbutton
 	verbosegiveitem ASSAULT_VEST
 	iffalse_endtext
 	setevent EVENT_GOT_ASSAULT_VEST_FROM_CIANWOOD

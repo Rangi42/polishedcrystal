@@ -57,7 +57,7 @@ VermilionGymDoorsScript:
 .resample
 	callasm SampleVermilionGymTrashCans
 .done
-	return
+	endcallback
 
 VermilionGymSurgeScript:
 	faceplayer
@@ -81,26 +81,26 @@ VermilionGymSurgeScript:
 	playsound SFX_GET_BADGE
 	waitsfx
 	setflag ENGINE_THUNDERBADGE
-	checkcode VAR_BADGES
+	readvar VAR_BADGES
 	ifequal 9, .FirstBadge
 	ifequal 10, .SecondBadge
 	ifequal 12, .LyrasEgg
-	jump .FightDone
+	sjump .FightDone
 .FirstBadge:
 	specialphonecall SPECIALCALL_FIRSTBADGE
-	jump .FightDone
+	sjump .FightDone
 .SecondBadge:
 	checkevent EVENT_GOT_GS_BALL_FROM_POKECOM_CENTER
 	iftrue .FightDone
 	specialphonecall SPECIALCALL_SECONDBADGE
-	jump .FightDone
+	sjump .FightDone
 .LyrasEgg:
 	specialphonecall SPECIALCALL_LYRASEGG
 .FightDone:
 	checkevent EVENT_GOT_TM43_WILD_CHARGE
 	iftrue_jumpopenedtext LtSurgeFightDoneText
 	writetext LtSurgeThunderBadgeText
-	buttonsound
+	promptbutton
 	verbosegivetmhm TM_WILD_CHARGE
 	setevent EVENT_GOT_TM43_WILD_CHARGE
 	jumpopenedtext SurgeOutroText
@@ -165,7 +165,7 @@ VermilionGymTrashCanScript:
 	opentext
 	writetext VermilionGymFoundSwitchText
 	playsound SFX_PUSH_BUTTON
-	buttonsound
+	promptbutton
 	checkevent EVENT_VERMILION_GYM_SWITCH_1
 	iftrue .second_switch
 	writetext VermilionGymFoundFirstSwitchText
@@ -184,7 +184,7 @@ VermilionGymTrashCanScript:
 .reset_switches
 	opentext
 	writetext VermilionGymTrashCanText
-	buttonsound
+	promptbutton
 	writetext VermilionGymResetSwitchesText
 	playsound SFX_WRONG
 	waitbutton
@@ -195,7 +195,7 @@ VermilionGymTrashCanScript:
 	end
 
 VermilionGymStatue:
-	trainertotext LT_SURGE, 1, $1
+	gettrainername LT_SURGE, 1, $1
 	checkflag ENGINE_THUNDERBADGE
 	iftrue .Beaten
 	jumpstd gymstatue1

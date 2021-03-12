@@ -56,13 +56,13 @@ OlivineCafeLyraScript:
 	faceplayer
 	opentext
 	writetext OlivineCafeLyraText1
-	buttonsound
+	promptbutton
 	verbosegiveitem AMULET_COIN
 	iffalse_endtext
 	writetext OlivineCafeLyraText2
 	waitbutton
 	closetext
-	checkcode VAR_FACING
+	readvar VAR_FACING
 	ifnotequal UP, .GoStraightDown
 	applyonemovement OLIVINECAFE_LYRA, step_right
 .GoStraightDown

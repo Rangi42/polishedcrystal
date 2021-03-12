@@ -46,7 +46,7 @@ GoldenrodHarborTutorHyperVoiceScript:
 	writetext Text_GoldenrodHarborTutorQuestion
 	yesorno
 	iffalse .TutorRefused
-	writebyte HYPER_VOICE
+	setval HYPER_VOICE
 	writetext ClearText
 	special Special_MoveTutor
 	ifequal $0, .TeachMove
@@ -115,7 +115,7 @@ GoldenrodHarborPokefanmScript:
 	waitbutton
 	writetext GoldenrodHarborMagikarpDollSentText
 	waitbutton
-	jump .Start
+	sjump .Start
 
 .MarillDoll:
 	checkmoney $0, 5600
@@ -129,7 +129,7 @@ GoldenrodHarborPokefanmScript:
 	waitbutton
 	writetext GoldenrodHarborMarillDollSentText
 	waitbutton
-	jump .Start
+	sjump .Start
 
 .OctilleryDoll:
 	checkmoney $0, 11200
@@ -143,17 +143,17 @@ GoldenrodHarborPokefanmScript:
 	waitbutton
 	writetext GoldenrodHarborOctilleryDollSentText
 	waitbutton
-	jump .Start
+	sjump .Start
 
 .NotEnoughMoney:
 	writetext GoldenrodHarborNoMoneyText
 	waitbutton
-	jump .Start
+	sjump .Start
 
 .AlreadyBought:
 	writetext GoldenrodHarborAlreadyBoughtText
 	waitbutton
-	jump .Start
+	sjump .Start
 
 .MenuData:
 	db $40 ; flags
@@ -196,7 +196,7 @@ GoldenrodHarborYoungsterScript:
 	waitbutton
 	writetext GoldenrodHarborMagnaPlantSentText
 	waitbutton
-	jump .Start
+	sjump .Start
 
 .TropicPlant:
 	checkmoney $0, 9600
@@ -210,7 +210,7 @@ GoldenrodHarborYoungsterScript:
 	waitbutton
 	writetext GoldenrodHarborTropicPlantSentText
 	waitbutton
-	jump .Start
+	sjump .Start
 
 .JumboPlant:
 	checkmoney $0, 12800
@@ -224,17 +224,17 @@ GoldenrodHarborYoungsterScript:
 	waitbutton
 	writetext GoldenrodHarborJumboPlantSentText
 	waitbutton
-	jump .Start
+	sjump .Start
 
 .NotEnoughMoney:
 	writetext GoldenrodHarborNoMoneyText
 	waitbutton
-	jump .Start
+	sjump .Start
 
 .AlreadyBought:
 	writetext GoldenrodHarborAlreadyBoughtText
 	waitbutton
-	jump .Start
+	sjump .Start
 
 .MenuData:
 	db $40 ; flags

@@ -32,7 +32,7 @@ CeladonUniversityCafeteriaCoreyScript:
 	checkevent EVENT_INTRODUCED_CELADON_FOUR
 	iftrue .IntroducedCeladonFour1
 	writetext .IntroText1
-	jump .AfterIntro
+	sjump .AfterIntro
 .IntroducedCeladonFour1
 	writetext .IntroText2
 .AfterIntro
@@ -59,7 +59,7 @@ CeladonUniversityCafeteriaCoreyScript:
 	checkevent EVENT_GOT_CHOICE_BAND_FROM_CELADON_FOUR
 	iftrue_jumpopenedtext .FinalText
 	writetext .AfterText2
-	buttonsound
+	promptbutton
 	verbosegiveitem CHOICE_BAND
 	iffalse_endtext
 	setevent EVENT_GOT_CHOICE_BAND_FROM_CELADON_FOUR
@@ -188,7 +188,7 @@ CeladonUniversityCafeteriaYoungster2Script:
 	faceplayer
 	opentext
 	writetext .Text1
-	buttonsound
+	promptbutton
 	verbosegiveitem LEMONADE
 	iffalse_endtext
 	setevent EVENT_GOT_LEMONADE_IN_UNIVERSITY

@@ -44,7 +44,7 @@ RadioTower1FLuckyNumberManScript:
 	setevent EVENT_INTRODUCED_FELICITY
 .introduced
 	writetext ExplainLuckyNumberShowText
-	buttonsound
+	promptbutton
 	special Special_CheckLuckyNumberShowFlag
 	iffalse .skip
 	special Special_ResetLuckyNumberShowFlag
@@ -53,17 +53,17 @@ RadioTower1FLuckyNumberManScript:
 	checkflag ENGINE_LUCKY_NUMBER_SHOW
 	iftrue_jumpopenedtext RadioTower1FLuckyNumberManComeAgainText
 	writetext RadioTower1FLuckyNumberManThisWeeksIdIsText
-	buttonsound
+	promptbutton
 	closetext
 	applymovement RADIOTOWER1F_FELICITY, RadioTower1FLuckyNumberManGoToPCMovement
 	opentext
 	writetext RadioTower1FLuckyNumberManCheckIfMatchText
-	buttonsound
+	promptbutton
 	waitsfx
 	writetext RadioTower1FLuckyNumberManDotDotDotText
 	playsound SFX_DEX_FANFARE_20_49
 	waitsfx
-	buttonsound
+	promptbutton
 	special Special_CheckForLuckyNumberWinners
 	closetext
 	applymovement RADIOTOWER1F_FELICITY, RadioTower1FLuckyNumberManReturnToPlayerMovement
@@ -78,7 +78,7 @@ RadioTower1FLuckyNumberManScript:
 	writetext WonFirstPlaceText
 	playsound SFX_1ST_PLACE
 	waitsfx
-	buttonsound
+	promptbutton
 	giveitem MASTER_BALL
 	iffalse_jumpopenedtext RadioTower1FLuckyNumberManNoRoomForYourPrizeText
 	itemnotify
@@ -89,7 +89,7 @@ RadioTower1FLuckyNumberManScript:
 	writetext WonSecondPlaceText
 	playsound SFX_2ND_PLACE
 	waitsfx
-	buttonsound
+	promptbutton
 	giveitem BOTTLE_CAP
 	iffalse_jumpopenedtext RadioTower1FLuckyNumberManNoRoomForYourPrizeText
 	itemnotify
@@ -100,7 +100,7 @@ RadioTower1FLuckyNumberManScript:
 	writetext WonThirdPlaceText
 	playsound SFX_2ND_PLACE
 	waitsfx
-	buttonsound
+	promptbutton
 	giveitem PP_MAX
 	iffalse_jumpopenedtext RadioTower1FLuckyNumberManNoRoomForYourPrizeText
 	itemnotify
@@ -111,7 +111,7 @@ RadioTower1FLuckyNumberManScript:
 	writetext WonFourthPlaceText
 	playsound SFX_3RD_PLACE
 	waitsfx
-	buttonsound
+	promptbutton
 	giveitem PP_UP
 	iffalse_jumpopenedtext RadioTower1FLuckyNumberManNoRoomForYourPrizeText
 	itemnotify
@@ -158,11 +158,11 @@ RadioTower1FRadioCardWomanScript:
 	playsound SFX_ELEVATOR_END
 	waitsfx
 	writetext RadioTower1FRadioCardWomanYouWinText
-	buttonsound
-	stringtotext .RadioCardText, $1
+	promptbutton
+	getstring .RadioCardText, $1
 	callstd receiveitem
 	writetext RadioTower1FPokegearIsARadioText
-	buttonsound
+	promptbutton
 	setflag ENGINE_RADIO_CARD
 	writetext RadioTower1FRadioCardWomanTuneInText
 	waitbutton

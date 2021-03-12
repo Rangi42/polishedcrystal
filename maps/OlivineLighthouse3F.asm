@@ -68,7 +68,7 @@ OlivineLighthouse3FBattleGirlEmy:
 .Beaten:
 	opentext
 	writetext .AfterText1
-	buttonsound
+	promptbutton
 	verbosegiveitem PROTECT_PADS
 	iffalse_endtext
 	setevent EVENT_GOT_PROTECT_PADS_FROM_LIGHTHOUSE_LEADER
@@ -147,7 +147,7 @@ TrainerBird_keeperTheo:
 	trainer BIRD_KEEPER, THEO, EVENT_BEAT_BIRD_KEEPER_THEO, Bird_keeperTheoSeenText, Bird_keeperTheoBeatenText, 0, Bird_keeperTheoScript
 
 Bird_keeperTheoScript:
-	end_if_just_battled
+	endifjustbattled
 	checkevent EVENT_JASMINE_RETURNED_TO_GYM
 	iftrue_jumptextfaceplayer Bird_keeperTheoFinalText
 	jumptextfaceplayer BirdKeeperTheoAfterBattleText

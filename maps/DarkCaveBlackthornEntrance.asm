@@ -22,7 +22,7 @@ DarkCaveBlackthornEntrancePharmacistScript:
 	checkevent EVENT_GOT_BLACKGLASSES_IN_DARK_CAVE
 	iftrue_jumpopenedtext .PharmacistText2
 	writetext .PharmacistText1
-	buttonsound
+	promptbutton
 	verbosegiveitem BLACKGLASSES
 	iffalse_endtext
 	setevent EVENT_GOT_BLACKGLASSES_IN_DARK_CAVE

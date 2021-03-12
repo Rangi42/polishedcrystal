@@ -40,7 +40,7 @@ MagikarpLengthRaterScript:
 	end
 
 .AskedForMagikarp:
-	writebyte MAGIKARP
+	setval MAGIKARP
 	special Special_FindThatSpecies
 	iffalse .ClearedRocketHideout
 	writetext MagikarpLengthRaterText_YouHaveAMagikarp
@@ -51,7 +51,7 @@ MagikarpLengthRaterScript:
 	ifequal $2, .TooShort
 .GetReward:
 	writetext MagikarpLengthRaterText_Memento
-	buttonsound
+	promptbutton
 	verbosegiveitem ELIXIR
 	iffalse .NoRoom
 	writetext MagikarpLengthRaterText_Bonus

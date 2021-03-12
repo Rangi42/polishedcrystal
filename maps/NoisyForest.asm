@@ -61,7 +61,7 @@ NoisyForestAnabelScript:
 .Beaten
 	opentext
 	writetext .ItemText
-	buttonsound
+	promptbutton
 	verbosegiveitem POWER_BAND
 	iffalse_endtext
 	writetext .GoodbyeText
@@ -266,7 +266,7 @@ NoisyForestPikabluScript:
 	disappear NOISYFOREST_MARILL
 	opentext
 	writetext .OwnerText2
-	buttonsound
+	promptbutton
 	verbosegiveitem ODD_SOUVENIR
 	iffalse .NoItem
 	setevent EVENT_GOT_ODD_SOUVENIR_FROM_PIKABLU_GUY
@@ -281,7 +281,7 @@ NoisyForestPikabluScript:
 
 .NoItem:
 	writetext .OwnerText4
-	jump .Leave
+	sjump .Leave
 
 .PikabluText:
 	text "Marill: Rill!"

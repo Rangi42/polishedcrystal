@@ -29,7 +29,7 @@ SafariZoneWestRestHouse2FlanneryScript:
 	checkevent EVENT_INTRODUCED_FLANNERY
 	iftrue .Introduced
 	writetext .IntroText
-	jump .Question
+	sjump .Question
 .Introduced
 	writetext .RematchText
 .Question
@@ -43,7 +43,7 @@ SafariZoneWestRestHouse2FlanneryScript:
 	checkevent EVENT_BEAT_ELITE_FOUR_AGAIN
 	iftrue .Rematch
 	loadtrainer FLANNERY, 1
-	jump .StartBattle
+	sjump .StartBattle
 .Rematch
 	loadtrainer FLANNERY, 2
 .StartBattle

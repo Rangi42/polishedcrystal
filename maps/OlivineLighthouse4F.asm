@@ -43,7 +43,7 @@ TrainerSailorKent:
 	trainer SAILOR, KENT, EVENT_BEAT_SAILOR_KENT, SailorKentSeenText, SailorKentBeatenText, 0, SailorKentScript
 
 SailorKentScript:
-	end_if_just_battled
+	endifjustbattled
 	checkevent EVENT_JASMINE_RETURNED_TO_GYM
 	iftrue_jumptextfaceplayer SailorKentFinalText
 	jumptextfaceplayer SailorKentAfterBattleText

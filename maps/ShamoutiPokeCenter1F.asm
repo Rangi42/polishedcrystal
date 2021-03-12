@@ -23,7 +23,7 @@ ShamoutiPokeCenter1F_MapScriptHeader:
 
 ShamoutiPokeCenter1FFixStairScript:
 	changeblock 0, 6, $39
-	return
+	endcallback
 
 PokemonJournalLoreleiScript:
 	setflag ENGINE_READ_LORELEI_JOURNAL
@@ -69,51 +69,51 @@ ShamoutiPokeCenter1FIvyScript:
 .Bulbasaur:
 	setevent EVENT_GOT_BULBASAUR_FROM_IVY
 	writetext .ChoseKantoStarterText
-	buttonsound
+	promptbutton
 	waitsfx
-	checkcode VAR_PARTYCOUNT
+	readvar VAR_PARTYCOUNT
 	ifequal $6, .NoRoom
-	pokenamemem BULBASAUR, $0
+	getmonname BULBASAUR, $0
 	writetext .ReceivedKantoStarterText
 	playsound SFX_CAUGHT_MON
 	waitsfx
-	buttonsound
+	promptbutton
 	givepoke BULBASAUR, NO_FORM, 10, SITRUS_BERRY
-	jump .Finish
+	sjump .Finish
 
 .Charmander:
 	setevent EVENT_GOT_CHARMANDER_FROM_IVY
 	writetext .ChoseKantoStarterText
-	buttonsound
+	promptbutton
 	waitsfx
-	checkcode VAR_PARTYCOUNT
+	readvar VAR_PARTYCOUNT
 	ifequal $6, .NoRoom
-	pokenamemem CHARMANDER, $0
+	getmonname CHARMANDER, $0
 	writetext .ReceivedKantoStarterText
 	playsound SFX_CAUGHT_MON
 	waitsfx
-	buttonsound
+	promptbutton
 	givepoke CHARMANDER, NO_FORM, 10, SITRUS_BERRY
-	jump .Finish
+	sjump .Finish
 
 .Squirtle:
 	setevent EVENT_GOT_SQUIRTLE_FROM_IVY
 	writetext .ChoseKantoStarterText
-	buttonsound
+	promptbutton
 	waitsfx
-	checkcode VAR_PARTYCOUNT
+	readvar VAR_PARTYCOUNT
 	ifequal $6, .NoRoom
-	pokenamemem SQUIRTLE, $0
+	getmonname SQUIRTLE, $0
 	writetext .ReceivedKantoStarterText
 	playsound SFX_CAUGHT_MON
 	waitsfx
-	buttonsound
+	promptbutton
 	givepoke SQUIRTLE, NO_FORM, 10, SITRUS_BERRY
 .Finish:
 	writetext .GoodbyeText
 	waitbutton
 	closetext
-	checkcode VAR_FACING
+	readvar VAR_FACING
 	turnobject PLAYER, DOWN
 	ifnotequal UP, .noleftstep
 	applyonemovement SHAMOUTIPOKECENTER1F_IVY, step_left

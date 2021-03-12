@@ -43,7 +43,7 @@ LavenderTownFlyPoint:
 	setevent EVENT_ROUTE_8_PROTESTORS
 	clearevent EVENT_ROUTE_8_KANTO_POKEMON_FEDERATION
 	setflag ENGINE_FLYPOINT_LAVENDER
-	return
+	endcallback
 
 LavenderTownExpositionTrigger1:
 	moveobject LAVENDERTOWN_YOUNGSTER1, 14, 8
@@ -52,7 +52,7 @@ LavenderTownExpositionTrigger1:
 	applymovement LAVENDERTOWN_YOUNGSTER1, .ApproachPlayerMovement
 	scall LavenderTownSharedExpositionScript
 	applymovement LAVENDERTOWN_YOUNGSTER1, .GoAroundPlayerMovement
-	jump LavenderTownFinishExpositionScript
+	sjump LavenderTownFinishExpositionScript
 
 .ApproachPlayerMovement:
 	big_step_left
@@ -78,7 +78,7 @@ LavenderTownExpositionTrigger2:
 	applymovement LAVENDERTOWN_YOUNGSTER1, .ApproachPlayerMovement
 	scall LavenderTownSharedExpositionScript
 	applymovement LAVENDERTOWN_YOUNGSTER1, .GoAroundPlayerMovement
-	jump LavenderTownFinishExpositionScript
+	sjump LavenderTownFinishExpositionScript
 
 .ApproachPlayerMovement:
 	step_down
@@ -104,7 +104,7 @@ LavenderTownExpositionTrigger3:
 	applymovement LAVENDERTOWN_YOUNGSTER1, .ApproachPlayerMovement
 	scall LavenderTownSharedExpositionScript
 	applymovement LAVENDERTOWN_YOUNGSTER1, .GoAroundPlayerMovement
-	jump LavenderTownFinishExpositionScript
+	sjump LavenderTownFinishExpositionScript
 
 .ApproachPlayerMovement:
 	step_down

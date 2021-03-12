@@ -32,7 +32,7 @@ MountMoon1F_MapScriptHeader:
 	const MOUNTMOON1F_SILVER
 
 MountMoon1FTrigger0:
-	priorityjump .RivalBattle
+	prioritysjump .RivalBattle
 	end
 
 .RivalBattle:
@@ -53,7 +53,7 @@ MountMoon1FTrigger0:
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle
-	jump .FinishBattle
+	sjump .FinishBattle
 
 .Totodile:
 	winlosstext MountMoonSilverTextWin, MountMoonSilverTextLoss
@@ -62,7 +62,7 @@ MountMoon1FTrigger0:
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle
-	jump .FinishBattle
+	sjump .FinishBattle
 
 .Chikorita:
 	winlosstext MountMoonSilverTextWin, MountMoonSilverTextLoss
@@ -71,7 +71,7 @@ MountMoon1FTrigger0:
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle
-	jump .FinishBattle
+	sjump .FinishBattle
 
 .FinishBattle:
 	special DeleteSavedMusic

@@ -23,7 +23,7 @@ Route22Past_MapScriptHeader:
 	const ROUTE22PAST_GIOVANNI
 
 Route22PastTrigger0:
-	priorityjump Route22PastCelebiEventScript
+	prioritysjump Route22PastCelebiEventScript
 	end
 
 Route22PastCelebiEventScript:

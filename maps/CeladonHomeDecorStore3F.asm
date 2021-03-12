@@ -44,7 +44,7 @@ CeladonHomeDecorStore3FClerk1Script:
 	waitbutton
 	writetext RedCarpetSentText
 	waitbutton
-	jump .Start
+	sjump .Start
 
 .YellowCarpet:
 	checkmoney $0, 45000
@@ -58,7 +58,7 @@ CeladonHomeDecorStore3FClerk1Script:
 	waitbutton
 	writetext YellowCarpetSentText
 	waitbutton
-	jump .Start
+	sjump .Start
 
 .GreenCarpet:
 	checkmoney $0, 45000
@@ -72,17 +72,17 @@ CeladonHomeDecorStore3FClerk1Script:
 	waitbutton
 	writetext GreenCarpetSentText
 	waitbutton
-	jump .Start
+	sjump .Start
 
 .NotEnoughMoney:
 	writetext CeladonHomeDecorStore3FNoMoneyText
 	waitbutton
-	jump .Start
+	sjump .Start
 
 .AlreadyBought:
 	writetext CeladonHomeDecorStore3FAlreadyBoughtText
 	waitbutton
-	jump .Start
+	sjump .Start
 
 .MenuData:
 	db $40 ; flags

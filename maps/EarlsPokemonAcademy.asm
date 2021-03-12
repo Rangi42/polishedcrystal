@@ -70,27 +70,27 @@ AcademyBlackboard:
 .Poison:
 	writetext AcademyPoisonText
 	waitbutton
-	jump .Loop
+	sjump .Loop
 
 .Paralysis:
 	writetext AcademyParalysisText
 	waitbutton
-	jump .Loop
+	sjump .Loop
 
 .Sleep:
 	writetext AcademySleepText
 	waitbutton
-	jump .Loop
+	sjump .Loop
 
 .Burn:
 	writetext AcademyBurnText
 	waitbutton
-	jump .Loop
+	sjump .Loop
 
 .Freeze:
 	writetext AcademyFreezeText
 	waitbutton
-	jump .Loop
+	sjump .Loop
 
 .MenuHeader:
 	db $40 ; flags

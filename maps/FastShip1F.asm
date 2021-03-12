@@ -36,7 +36,7 @@ FastShip1F_MapScriptHeader:
 	const FASTSHIP1F_GENTLEMAN
 
 FastShip1FTrigger1:
-	priorityjump FastShip1FPriorityJump2
+	prioritysjump FastShip1FPriorityJump2
 FastShip1FTrigger0:
 	end
 
@@ -105,7 +105,7 @@ FastShip1FSailor1Script:
 	end
 
 .LetThePlayerOut:
-	checkcode VAR_FACING
+	readvar VAR_FACING
 	ifequal RIGHT, .YouAreFacingRight
 	applymovement FASTSHIP1F_SAILOR1, FastShip1F_SailorStepAsideMovement
 	applymovement PLAYER, FastShip1F_PlayerLeavesShipMovement

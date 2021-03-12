@@ -24,7 +24,7 @@ TradeCenter_MapScriptHeader:
 	const TRADECENTER_CHRIS2
 
 TradeCenterTrigger0:
-	priorityjump TradeCenter_Initialize
+	prioritysjump TradeCenter_Initialize
 	end
 
 TradeCenter_SetWhichChris:
@@ -32,12 +32,12 @@ TradeCenter_SetWhichChris:
 	iffalse .Chris2
 	disappear TRADECENTER_CHRIS2
 	appear TRADECENTER_CHRIS1
-	return
+	endcallback
 
 .Chris2:
 	disappear TRADECENTER_CHRIS1
 	appear TRADECENTER_CHRIS2
-	return
+	endcallback
 
 TradeCenter_Initialize:
 	setscene $1

@@ -24,7 +24,7 @@ ShamoutiHotel1F_MapScriptHeader:
 
 ShamoutiHotel1FRestaurantTrigger:
 	setmapscene SHAMOUTI_HOTEL_RESTAURANT, $0
-	return
+	endcallback
 
 ShamoutiHotel1FReceptionistText:
 	text "Welcome to the"
@@ -47,7 +47,7 @@ ShamoutiHotel1FArtistScript:
 	yesorno
 	iftrue .Yes
 	writetext .Text2
-	buttonsound
+	promptbutton
 	special SpecialTrendyPhrase
 	setflag ENGINE_CHANGED_TRENDY_PHRASE
 	jumpopenedtext .Text3

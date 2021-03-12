@@ -22,15 +22,15 @@ WhirlIslandLugiaChamberLugia:
 	iftrue .NoAppear
 	checkkeyitem SILVER_WING
 	iftrue .Appear
-	jump .NoAppear
+	sjump .NoAppear
 
 .Appear:
 	appear WHIRLISLANDLUGIACHAMBER_LUGIA
-	return
+	endcallback
 
 .NoAppear:
 	disappear WHIRLISLANDLUGIACHAMBER_LUGIA
-	return
+	endcallback
 
 Lugia:
 	faceplayer
@@ -40,7 +40,7 @@ Lugia:
 	pause 15
 	closetext
 	setevent EVENT_FOUGHT_LUGIA
-	writecode VAR_BATTLETYPE, BATTLETYPE_LEGENDARY
+	loadvar VAR_BATTLETYPE, BATTLETYPE_LEGENDARY
 	loadwildmon LUGIA, 75
 	startbattle
 	disappear WHIRLISLANDLUGIACHAMBER_LUGIA

@@ -20,18 +20,18 @@ Route33_MapScriptHeader:
 Route33RainScript:
 	special Special_GetOvercastIndex
 	ifequal AZALEA_OVERCAST, .rain
-	changemap Route33_BlockData
-	return
+	changemapblocks Route33_BlockData
+	endcallback
 
 .rain
-	changemap Route33Raining_BlockData
-	return
+	changemapblocks Route33Raining_BlockData
+	endcallback
 
 TrainerHikerAnthony:
 	trainer HIKER, ANTHONY1, EVENT_BEAT_HIKER_ANTHONY, HikerAnthony1SeenText, HikerAnthony1BeatenText, 0, .Script
 
 .Script:
-	writecode VAR_CALLERID, PHONE_HIKER_ANTHONY
+	loadvar VAR_CALLERID, PHONE_HIKER_ANTHONY
 	opentext
 	checkflag ENGINE_ANTHONY
 	iftrue .Rematch
@@ -42,10 +42,10 @@ TrainerHikerAnthony:
 	checkevent EVENT_ANTHONY_ASKED_FOR_PHONE_NUMBER
 	iftrue .AskAgain
 	writetext HikerAnthony1AfterText
-	buttonsound
+	promptbutton
 	setevent EVENT_ANTHONY_ASKED_FOR_PHONE_NUMBER
 	callstd asknumber1m
-	jump .AskForPhoneNumber
+	sjump .AskForPhoneNumber
 
 .AskAgain:
 	callstd asknumber2m
@@ -53,14 +53,14 @@ TrainerHikerAnthony:
 	askforphonenumber PHONE_HIKER_ANTHONY
 	ifequal $1, .PhoneFull
 	ifequal $2, .NumberDeclined
-	trainertotext HIKER, ANTHONY1, $0
+	gettrainername HIKER, ANTHONY1, $0
 	callstd registerednumberm
 	jumpstd numberacceptedm
 
 .Rematch:
 	callstd rematchm
 	winlosstext HikerAnthony1BeatenText, 0
-	copybytetovar wAnthonyFightCount
+	readmem wAnthonyFightCount
 	ifequal 4, .Fight4
 	ifequal 3, .Fight3
 	ifequal 2, .Fight2
@@ -82,7 +82,7 @@ TrainerHikerAnthony:
 	loadtrainer HIKER, ANTHONY1
 	startbattle
 	reloadmapafterbattle
-	loadvar wAnthonyFightCount, 1
+	loadmem wAnthonyFightCount, 1
 	clearflag ENGINE_ANTHONY
 	end
 
@@ -90,7 +90,7 @@ TrainerHikerAnthony:
 	loadtrainer HIKER, ANTHONY2
 	startbattle
 	reloadmapafterbattle
-	loadvar wAnthonyFightCount, 2
+	loadmem wAnthonyFightCount, 2
 	clearflag ENGINE_ANTHONY
 	end
 
@@ -98,7 +98,7 @@ TrainerHikerAnthony:
 	loadtrainer HIKER, ANTHONY3
 	startbattle
 	reloadmapafterbattle
-	loadvar wAnthonyFightCount, 3
+	loadmem wAnthonyFightCount, 3
 	clearflag ENGINE_ANTHONY
 	end
 
@@ -106,7 +106,7 @@ TrainerHikerAnthony:
 	loadtrainer HIKER, ANTHONY4
 	startbattle
 	reloadmapafterbattle
-	loadvar wAnthonyFightCount, 4
+	loadmem wAnthonyFightCount, 4
 	clearflag ENGINE_ANTHONY
 	end
 

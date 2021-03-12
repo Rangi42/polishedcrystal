@@ -22,7 +22,7 @@ BattleTowerBattleRoom_MapScriptHeader:
 
 BattleTowerBattleRoomEnterBattleRoom:
 	disappear BATTLETOWERBATTLEROOM_OPPONENT
-	priorityjump Script_BattleRoom
+	prioritysjump Script_BattleRoom
 	end
 
 Script_BattleRoom:
@@ -36,7 +36,7 @@ Script_BattleRoomLoop:
 	applymovement BATTLETOWERBATTLEROOM_OPPONENT, MovementData_BattleTowerBattleRoomOpponentWalksIn
 	opentext
 	battletowertext 1
-	buttonsound
+	promptbutton
 	closetext
 	special Special_BattleTower_Battle ; calls predef startbattle
 	special FadeOutPalettes
@@ -66,7 +66,7 @@ Script_BattleRoomLoop:
 		deciram wStringBuffer3, 2, 5
 		text ". Ready?"
 		done
-	jump .ShownText
+	sjump .ShownText
 .WarnAboutTycoon
 	writethistext
 		text "Congratulations"
@@ -89,7 +89,7 @@ Script_BattleRoomLoop:
 	closetext
 	applyonemovement PLAYER, turn_head_right
 	applymovement BATTLETOWERBATTLEROOM_RECEPTIONIST, MovementData_BattleTowerBattleRoomReceptionistWalksAway
-	jump Script_BattleRoomLoop
+	sjump Script_BattleRoomLoop
 
 .DontBattleNextOpponent:
 	writethistext
@@ -99,7 +99,7 @@ Script_BattleRoomLoop:
 	yesorno
 	iffalse .DontSaveAndEndTheSession
 	special SaveOptions
-	writebyte BATTLETOWER_SAVED_AND_LEFT
+	setval BATTLETOWER_SAVED_AND_LEFT
 	special Special_BattleTower_SetChallengeState
 	playsound SFX_SAVE
 	waitsfx
@@ -118,14 +118,14 @@ Script_BattleRoomLoop:
 	special FadeOutPalettes
 
 Script_LostBattleTower:
-	writebyte BATTLETOWER_LOST_CHALLENGE
+	setval BATTLETOWER_LOST_CHALLENGE
 	special Special_BattleTower_SetChallengeState
-	jump Script_ReturnToBattleTowerLobby
+	sjump Script_ReturnToBattleTowerLobby
 	warpfacing UP, BATTLE_TOWER_1F, 10, 8
 	end
 
 Script_BeatenAllTrainers:
-	writebyte BATTLETOWER_WON_CHALLENGE
+	setval BATTLETOWER_WON_CHALLENGE
 	special Special_BattleTower_SetChallengeState
 	; fallthrough
 Script_ReturnToBattleTowerLobby:

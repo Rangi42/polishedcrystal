@@ -22,4 +22,4 @@ VioletOutskirtsAvalanche:
 	changeblock 4, -2, $0a
 	changeblock 6, -2, $0a
 .end
-	return
+	endcallback

@@ -26,7 +26,7 @@ CinnabarIsland_MapScriptHeader:
 
 CinnabarIslandFlyPoint:
 	setflag ENGINE_FLYPOINT_CINNABAR
-	return
+	endcallback
 
 CinnabarIslandBlue:
 	faceplayer
@@ -39,7 +39,7 @@ CinnabarIslandBlue:
 .HeardIntro
 	writetext CinnabarIslandBlueBattleText
 	waitbutton
-	checkcode VAR_BADGES
+	readvar VAR_BADGES
 	ifgreater 14, .Ready
 	jumpopenedtext CinnabarIslandBlueNotReadyText
 

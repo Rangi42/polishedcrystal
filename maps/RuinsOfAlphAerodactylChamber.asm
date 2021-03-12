@@ -27,7 +27,7 @@ RuinsOfAlphAerodactylChamber_MapScriptHeader:
 RuinsofAlphAerodactylChamberTrigger0:
 	checkevent EVENT_WALL_OPENED_IN_AERODACTYL_CHAMBER
 	iffalse .End
-	priorityjump RuinsOfAlphAerodactylChamberWallOpenScript
+	prioritysjump RuinsOfAlphAerodactylChamberWallOpenScript
 .End
 	end
 
@@ -38,12 +38,12 @@ RuinsOfAlphAerodactylChamberHiddenDoorsCallback:
 .WallOpen:
 	checkevent EVENT_SOLVED_AERODACTYL_PUZZLE
 	iffalse .FloorClosed
-	return
+	endcallback
 
 .FloorClosed:
 	changeblock 2, 2, $1
 	changeblock 4, 2, $2
-	return
+	endcallback
 
 RuinsOfAlphAerodactylChamberWallOpenScript:
 	pause 30
@@ -59,7 +59,7 @@ RuinsOfAlphAerodactylChamberWallOpenScript:
 
 MapRuinsofAlphAerodactylChamberSignpost2Script:
 	refreshscreen
-	writebyte $2
+	setval $2
 	special Special_UnownPuzzle
 	closetext
 	iftrue .PuzzleComplete
@@ -99,11 +99,11 @@ MapRuinsofAlphAerodactylChamberSignpost4Script:
 	checkevent EVENT_RUINS_OF_ALPH_OUTSIDE_TOURIST_YOUNGSTERS
 	iftrue .unsolved
 	writetext RuinsOfAlphChambersItsUnownText
-	jump .unownwords
+	sjump .unownwords
 .unsolved
 	writetext RuinsOfAlphAerodactylChamberWallPatternLeftText
 .unownwords
-	writebyte $1
+	setval $1
 	special Special_DisplayUnownWords
 	endtext
 

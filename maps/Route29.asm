@@ -38,13 +38,13 @@ Route29Tuscany:
 
 .TuscanyDisappears:
 	disappear ROUTE29_TUSCANY
-	return
+	endcallback
 
 .DoesTuscanyAppear:
-	checkcode VAR_WEEKDAY
+	readvar VAR_WEEKDAY
 	ifnotequal TUESDAY, .TuscanyDisappears
 	appear ROUTE29_TUSCANY
-	return
+	endcallback
 
 Route29Tutorial1:
 	turnobject ROUTE29_LYRA, UP
@@ -61,7 +61,7 @@ Route29Tutorial1:
 	closetext
 	follow ROUTE29_LYRA, PLAYER
 	applymovement ROUTE29_LYRA, LyraMovementData1b
-	jump Route29TutorialScript
+	sjump Route29TutorialScript
 
 Route29Tutorial2:
 	turnobject ROUTE29_LYRA, UP
@@ -88,8 +88,8 @@ Route29TutorialScript:
 	opentext
 	writetext CatchingTutorialDebriefText
 Route29FinishTutorial:
-	buttonsound
-	itemtotext POKE_BALL, $1
+	promptbutton
+	getitemname POKE_BALL, $1
 	callstd receiveitem
 	giveitem POKE_BALL, 5
 	itemnotify
@@ -106,7 +106,7 @@ Route29FinishTutorial:
 Route29RefusedTutorial:
 	setevent EVENT_NEVER_LEARNED_TO_CATCH_POKEMON
 	writetext CatchingTutorialRefusedText
-	jump Route29FinishTutorial
+	sjump Route29FinishTutorial
 
 Route29CooltrainerMScript:
 	checktime (1 << EVE) | (1 << NITE)
@@ -118,16 +118,16 @@ TuscanyScript:
 	iftrue_jumptextfaceplayer TuscanyTuesdayText
 	faceplayer
 	opentext
-	checkcode VAR_WEEKDAY
+	readvar VAR_WEEKDAY
 	ifnotequal TUESDAY, TuscanyNotTuesdayScript
 	checkevent EVENT_MET_TUSCANY_OF_TUESDAY
 	iftrue .MetTuscany
 	writetext MeetTuscanyText
-	buttonsound
+	promptbutton
 	setevent EVENT_MET_TUSCANY_OF_TUESDAY
 .MetTuscany:
 	writetext TuscanyGivesGiftText
-	buttonsound
+	promptbutton
 	verbosegiveitem SILK_SCARF
 	iffalse_endtext
 	setevent EVENT_GOT_SILK_SCARF_FROM_TUSCANY

@@ -58,7 +58,7 @@ SSAquaGranddaughterBefore:
 	checkflag ENGINE_PLAYER_IS_FEMALE
 	iftrue UnknownScript_0x75f03
 	showtext SSAquaGranddaughterWasPlayingMText
-	jump UnknownScript_0x75f09
+	sjump UnknownScript_0x75f09
 
 UnknownScript_0x75f03:
 	showtext SSAquaGranddaughterWasPlayingFText
@@ -67,10 +67,10 @@ UnknownScript_0x75f09:
 	applyonemovement FASTSHIPCABINS_SE_SSE_CAPTAINSCABIN_GENTLEMAN, step_down
 	opentext
 	writetext SSAquaEntertainedGranddaughterText
-	buttonsound
+	promptbutton
 	setevent EVENT_VERMILION_PORT_SAILOR_AT_GANGWAY
 	setmapscene FAST_SHIP_1F, $0
-	jump SSAquaMetalCoatAndDocking
+	sjump SSAquaMetalCoatAndDocking
 
 SSAquaGrandpa:
 	checkevent EVENT_GOT_MACHO_BRACE_FROM_GRANDPA_ON_SS_AQUA
@@ -87,7 +87,7 @@ SSAquaGrandpa:
 
 SSAquaMetalCoatAndDocking:
 	writetext SSAquaGrandpaHaveThisText
-	buttonsound
+	promptbutton
 	verbosegiveitem MACHO_BRACE
 	setevent EVENT_GOT_MACHO_BRACE_FROM_GRANDPA_ON_SS_AQUA
 	closetext
@@ -103,7 +103,7 @@ SSAquaMetalCoatAndDocking:
 
 SSAquaFoundGranddaughter:
 	writetext SSAquaGrandpaHaveThisText
-	buttonsound
+	promptbutton
 	verbosegiveitem MACHO_BRACE
 	iffalse_endtext
 	setevent EVENT_GOT_MACHO_BRACE_FROM_GRANDPA_ON_SS_AQUA

@@ -47,7 +47,7 @@ LoreleiAfterIntroScript:
 	setevent EVENT_BEAT_LORELEI
 	opentext
 	writetext LoreleiRewardText
-	buttonsound
+	promptbutton
 	verbosegiveitem ICY_ROCK
 	setevent EVENT_GOT_ICY_ROCK_FROM_LORELEI
 	jumpthisopenedtext
@@ -87,7 +87,7 @@ LoreleiAfterRematchIntroScript:
 	checkevent EVENT_GOT_ICY_ROCK_FROM_LORELEI
 	iftrue_jumpopenedtext LoreleiRematchAfterText
 	writetext LoreleiRewardText
-	buttonsound
+	promptbutton
 	verbosegiveitem ICY_ROCK
 	setevent EVENT_GOT_ICY_ROCK_FROM_LORELEI
 	jumpthisopenedtext
@@ -114,7 +114,7 @@ LoreleiRematchAfterText:
 LoreleiReintroductionScript:
 	writetext LoreleiRematchIntroAgainText
 	waitbutton
-	jump LoreleiAfterRematchIntroScript
+	sjump LoreleiAfterRematchIntroScript
 
 Text_IcePathB3FIceRock:
 	text "The boulder is"

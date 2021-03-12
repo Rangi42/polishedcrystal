@@ -64,7 +64,7 @@ TrainerGuitaristmClyde:
 	trainer GUITARISTM, CLYDE, EVENT_BEAT_GUITARISTM_CLYDE, GuitaristmClydeSeenText, GuitaristmClydeBeatenText, 0, GuitaristmClydeScript
 
 GuitaristmClydeScript:
-	end_if_just_battled
+	endifjustbattled
 	opentext
 	checkbp 0
 	iffalse .BattleTower

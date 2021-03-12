@@ -42,7 +42,7 @@ QuietCaveB3FMarleyScript:
 .Beaten
 	opentext
 	writetext .ItemText
-	buttonsound
+	promptbutton
 	verbosegiveitem POWER_ANKLET
 	iffalse_endtext
 	writetext .GoodbyeText

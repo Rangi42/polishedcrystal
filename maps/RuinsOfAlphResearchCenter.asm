@@ -29,19 +29,19 @@ RuinsOfAlphResearchCenter_MapScriptHeader:
 	const RUINSOFALPHRESEARCHCENTER_SCIENTIST3
 
 RuinsofAlphResearchCenterTrigger1:
-	priorityjump RuinsOfAlphResearchCenterGetUnownDexScript
+	prioritysjump RuinsOfAlphResearchCenterGetUnownDexScript
 RuinsofAlphResearchCenterTrigger0:
 	end
 
 RuinsOfAlphResearchCenterScientistCallback:
 	checkscene
 	ifequal $1, .ShowScientist
-	return
+	endcallback
 
 .ShowScientist:
 	moveobject RUINSOFALPHRESEARCHCENTER_SCIENTIST3, 3, 7
 	appear RUINSOFALPHRESEARCHCENTER_SCIENTIST3
-	return
+	endcallback
 
 RuinsOfAlphResearchCenterGetUnownDexScript:
 	applymovement RUINSOFALPHRESEARCHCENTER_SCIENTIST3, RuinsOfAlphResearchCenterApproachesComputerMovement
@@ -74,7 +74,7 @@ RuinsOfAlphResearchCenterScientist3Script:
 	opentext
 	checkevent EVENT_RUINS_OF_ALPH_CLIMAX_DONE
 	iftrue .Conclusion
-	checkcode VAR_UNOWNCOUNT
+	readvar VAR_UNOWNCOUNT
 	ifequal NUM_UNOWN, .PrinterAvailable
 	jumpopenedtext RuinsOfAlphResearchCenterScientist3Text
 
@@ -83,16 +83,16 @@ RuinsOfAlphResearchCenterScientist3Script:
 
 .PrinterAvailable:
 	writetext RuinsOfAlphResearchCenterScientist3_PrinterAvailable
-	buttonsound
+	promptbutton
 	setevent EVENT_DECO_UNOWN_DOLL
 	writetext GotUnownDollText
 	playsound SFX_ITEM
 	pause 60
 	waitbutton
 	writetext UnownDollSentText
-	buttonsound
+	promptbutton
 	writetext RuinsofAlphResearchCenterScientistRewardText
-	buttonsound
+	promptbutton
 	writetext RuinsofAlphResearchCenterScientistInterruptedText
 	pause 30
 	closetext
@@ -106,12 +106,12 @@ RuinsOfAlphResearchCenterScientist3Script:
 	showemote EMOTE_SHOCK, RUINSOFALPHRESEARCHCENTER_SCIENTIST1, 15
 	showemote EMOTE_SHOCK, RUINSOFALPHRESEARCHCENTER_SCIENTIST2, 15
 	showtext RuinsofAlphResearchCenterScientistShockedText
-	checkcode VAR_FACING
+	readvar VAR_FACING
 	ifequal UP, .GoAround
 	follow RUINSOFALPHRESEARCHCENTER_SCIENTIST3, PLAYER
 	applymovement RUINSOFALPHRESEARCHCENTER_SCIENTIST3, RuinsofAlphResearchCenterLeave2MovementData
 	stopfollow
-	jump .Continue
+	sjump .Continue
 .GoAround:
 	applymovement RUINSOFALPHRESEARCHCENTER_SCIENTIST3, RuinsofAlphResearchCenterScientistStepAsideMovementData
 	follow RUINSOFALPHRESEARCHCENTER_SCIENTIST3, PLAYER
@@ -145,7 +145,7 @@ RuinsofAlphResearchCenterLeave2MovementData:
 RuinsOfAlphResearchCenterScientist1Script:
 	faceplayer
 	opentext
-	checkcode VAR_UNOWNCOUNT
+	readvar VAR_UNOWNCOUNT
 	ifequal NUM_UNOWN, .GotAllUnown
 	checkflag ENGINE_UNOWN_DEX
 	iftrue .GotUnownDex
@@ -169,7 +169,7 @@ RuinsOfAlphResearchCenterScientist1Script:
 RuinsOfAlphResearchCenterScientist2Script:
 	faceplayer
 	opentext
-	checkcode VAR_UNOWNCOUNT
+	readvar VAR_UNOWNCOUNT
 	ifgreater 3, .GotAllUnown
 	checkevent EVENT_MADE_UNOWN_APPEAR_IN_RUINS
 	iftrue .UnownAppeared
@@ -179,9 +179,9 @@ RuinsOfAlphResearchCenterScientist2Script:
 	jumpopenedtext RuinsOfAlphResearchCenterScientist2Text_UnownAppeared
 
 .GotAllUnown:
-	checkcode VAR_UNOWNCOUNT
+	readvar VAR_UNOWNCOUNT
 	ifequal NUM_UNOWN, .ResearchComplete
-	checkcode VAR_UNOWNCOUNT
+	readvar VAR_UNOWNCOUNT
 	ifgreater 10, .ResearchOngoing
 	jumpopenedtext RuinsOfAlphResearchCenterScientist2Text_GotAllUnown
 
@@ -204,7 +204,7 @@ MapRuinsofAlphResearchCenterSignpost1Script:
 	jumpopenedtext RuinsOfAlphResearchCenterComputerText
 
 .SkipChecking:
-	checkcode VAR_UNOWNCOUNT
+	readvar VAR_UNOWNCOUNT
 	jumpopenedtext RuinsOfAlphResearchCenterComputerText_GotAllUnown
 
 RuinsOfAlphResearchCenterApproachesComputerMovement:

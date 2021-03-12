@@ -31,11 +31,11 @@ Route24TileScript:
 	checkscene
 	iftrue .underfoot
 	callasm Route24_OverheadBridgeAsm
-	return
+	endcallback
 
 .underfoot:
 	callasm Route24_UnderfootBridgeAsm
-	return
+	endcallback
 
 Route24_OverheadBridgeAsm:
 	changebridgeblock 20, 16, $ee, ROUTE_24
@@ -89,7 +89,7 @@ Route24RocketScript:
 	playmusic MUSIC_ROCKET_ENCOUNTER
 	opentext
 	writetext Route24RocketAfterBattleText
-	buttonsound
+	promptbutton
 	special Special_FadeOutMusic
 	writetext Route24RocketDisappearsText
 	waitbutton

@@ -95,7 +95,7 @@ Route4TutorIronHeadScript:
 	writetext Text_Route4Tutor1Question
 	yesorno
 	iffalse .TutorRefused
-	writebyte IRON_HEAD
+	setval IRON_HEAD
 	writetext ClearText
 	special Special_MoveTutor
 	ifequal $0, .TeachMove
@@ -125,7 +125,7 @@ Route4TutorAquaTailScript:
 	writetext Text_Route4Tutor2Question
 	yesorno
 	iffalse .TutorRefused
-	writebyte AQUA_TAIL
+	setval AQUA_TAIL
 	writetext ClearText
 	special Special_MoveTutor
 	ifequal $0, .TeachMove

@@ -23,12 +23,12 @@ HiddenPowerGuy:
 	checkevent EVENT_GOT_TM10_HIDDEN_POWER
 	iftrue .AlreadyGotItem
 	writetext .Text1
-	buttonsound
+	promptbutton
 	verbosegivetmhm TM_HIDDEN_POWER
 	setevent EVENT_GOT_TM10_HIDDEN_POWER
 	writetext .Text2
 	waitbutton
-	jump .CheckHiddenPower
+	sjump .CheckHiddenPower
 .AlreadyGotItem:
 	writetext .Text4
 	waitbutton
@@ -37,7 +37,7 @@ HiddenPowerGuy:
 	yesorno
 	iffalse_jumpopenedtext .Text7
 	writetext .Text5
-	buttonsound
+	promptbutton
 	special Special_HiddenPowerGuru
 	iffalse_jumpopenedtext .Text4
 	ifequal $1, .Egg

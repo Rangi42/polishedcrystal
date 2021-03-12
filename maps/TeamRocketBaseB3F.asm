@@ -51,17 +51,17 @@ TeamRocketBaseB3F_MapScriptHeader:
 	const TEAMROCKETBASEB3F_SILVER
 
 TeamRocketBaseB3FTrigger0:
-	priorityjump LanceGetPasswordScript
+	prioritysjump LanceGetPasswordScript
 	end
 
 TeamRocketBaseB3FCheckGiovanniDoor:
 	checkevent EVENT_OPENED_DOOR_TO_GIOVANNIS_OFFICE
 	iftrue .OpenSesame
-	return
+	endcallback
 
 .OpenSesame:
 	changeblock 10, 8, $7
-	return
+	endcallback
 
 LanceGetPasswordScript:
 	turnobject PLAYER, LEFT
@@ -94,7 +94,7 @@ RocketBaseRival:
 
 RocketBaseBossLeft:
 	applymovement PLAYER, RocketBasePlayerApproachesBossLeftMovement
-	jump RocketBaseBoss
+	sjump RocketBaseBoss
 
 RocketBaseBossRight:
 	applymovement PLAYER, RocketBasePlayerApproachesBossRightMovement
@@ -128,7 +128,7 @@ SlowpokeTailGrunt:
 	trainer GRUNTF, 5, EVENT_BEAT_ROCKET_GRUNTF_5, GruntF5SeenText, GruntF5BeatenText, 0, GruntF5Script
 
 GruntF5Script:
-	end_if_just_battled
+	endifjustbattled
 	showtext GruntF5AfterBattleText
 	setevent EVENT_LEARNED_SLOWPOKETAIL
 	end
@@ -137,7 +137,7 @@ RaticateTailGrunt:
 	trainer GRUNTM, 28, EVENT_BEAT_ROCKET_GRUNTM_28, GruntM28SeenText, GruntM28BeatenText, 0, GruntM28Script
 
 GruntM28Script:
-	end_if_just_battled
+	endifjustbattled
 	showtext GruntM28AfterBattleText
 	setevent EVENT_LEARNED_RATICATE_TAIL
 	end
@@ -179,7 +179,7 @@ BossDoor:
 	iffalse .NeedsPassword
 	checkevent EVENT_LEARNED_RATICATE_TAIL
 	iffalse .NeedsPassword
-	jump .OpenSesame
+	sjump .OpenSesame
 
 .NeedsPassword:
 	jumpopenedtext TeamRocketBaseB3FLockedDoorNeedsPasswordText

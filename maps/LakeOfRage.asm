@@ -50,31 +50,31 @@ LakeOfRage_MapScriptHeader:
 
 LakeOfRageFlyPoint:
 	setflag ENGINE_FLYPOINT_LAKE_OF_RAGE
-	return
+	endcallback
 
 LakeOfRageWesleyAndEngineer:
 	checkevent EVENT_LAKE_OF_RAGE_CIVILIANS
 	iftrue .NoEngineer
 	moveobject LAKEOFRAGE_LANCE, 18, 29
 .NoEngineer
-	checkcode VAR_WEEKDAY
+	readvar VAR_WEEKDAY
 	ifequal WEDNESDAY, .WesleyAppears
 	disappear LAKEOFRAGE_WESLEY
-	return
+	endcallback
 
 .WesleyAppears:
 	appear LAKEOFRAGE_WESLEY
-	return
+	endcallback
 
 LakeOfRageFloodScript:
 	special Special_GetOvercastIndex
 	ifequal LAKE_OF_RAGE_OVERCAST, .flood
-	changemap LakeOfRage_BlockData
-	return
+	changemapblocks LakeOfRage_BlockData
+	endcallback
 
 .flood
-	changemap LakeOfRageFlooded_BlockData
-	return
+	changemapblocks LakeOfRageFlooded_BlockData
+	endcallback
 
 LakeOfRageSignText:
 	text "Lake of Rage,"
@@ -90,7 +90,7 @@ LakeOfRageFishingGuruSign:
 	waitendtext
 
 .Continue:
-	buttonsound
+	promptbutton
 	special Special_MagikarpHouseSign
 	endtext
 
@@ -104,7 +104,7 @@ LakeOfRageLanceScript:
 	iftrue .AskForHelpAgain
 	opentext
 	writetext .OverheardText
-	buttonsound
+	promptbutton
 	faceplayer
 	writetext .IntroText
 	yesorno
@@ -131,7 +131,7 @@ LakeOfRageLanceScript:
 	writetext .QuestionText
 	yesorno
 	iffalse .Refused
-	jump .Agreed
+	sjump .Agreed
 
 .OverheardText:
 	text "This lake is full"
@@ -221,7 +221,7 @@ LakeOfRageRedGyaradosScript:
 	pause 15
 	closetext
 	loadwildmon GYARADOS, GYARADOS_RED_FORM, 35
-	writecode VAR_BATTLETYPE, BATTLETYPE_RED_GYARADOS
+	loadvar VAR_BATTLETYPE, BATTLETYPE_RED_GYARADOS
 	startbattle
 	ifequal $1, .Continue
 	disappear LAKEOFRAGE_RED_GYARADOS
@@ -250,18 +250,18 @@ LakeOfRageRedGyaradosScript:
 WesleyScript:
 	checkevent EVENT_GOT_BLACK_BELT_FROM_WESLEY
 	iftrue_jumptextfaceplayer .WednesdayText
-	checkcode VAR_WEEKDAY
+	readvar VAR_WEEKDAY
 	ifnotequal WEDNESDAY, .NotWednesday
 	faceplayer
 	opentext
 	checkevent EVENT_MET_WESLEY_OF_WEDNESDAY
 	iftrue .MetWesley
 	writetext .MeetText
-	buttonsound
+	promptbutton
 	setevent EVENT_MET_WESLEY_OF_WEDNESDAY
 .MetWesley:
 	writetext .GivesGiftText
-	buttonsound
+	promptbutton
 	verbosegiveitem BLACK_BELT
 	iffalse_endtext
 	setevent EVENT_GOT_BLACK_BELT_FROM_WESLEY

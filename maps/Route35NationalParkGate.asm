@@ -32,7 +32,7 @@ Route35NationalParkGate_MapScriptHeader:
 	const ROUTE35NATIONALPARKGATE_OFFICER2
 
 Route35NationalParkGateTrigger2:
-	priorityjump Route35NationalParkGate_LeavingContestEarly
+	prioritysjump Route35NationalParkGate_LeavingContestEarly
 Route35NationalParkGateTrigger0:
 Route35NationalParkGateTrigger1:
 	end
@@ -41,14 +41,14 @@ Route35NationalParkGate_CheckIfStillInContest:
 	checkflag ENGINE_BUG_CONTEST_TIMER
 	iftrue Route35NationalParkGate_Yes
 	setscene $0
-	return
+	endcallback
 
 Route35NationalParkGate_Yes:
 	setscene $2
-	return
+	endcallback
 
 Route35NationalParkGate_CheckIfContestDay:
-	checkcode VAR_WEEKDAY
+	readvar VAR_WEEKDAY
 	ifequal TUESDAY, Route35NationalParkGate_IsContestDay
 	ifequal THURSDAY, Route35NationalParkGate_IsContestDay
 	ifequal SATURDAY, Route35NationalParkGate_IsContestDay
@@ -57,21 +57,21 @@ Route35NationalParkGate_CheckIfContestDay:
 	disappear ROUTE35NATIONALPARKGATE_OFFICER1
 	appear ROUTE35NATIONALPARKGATE_BUG_MANIAC
 	appear ROUTE35NATIONALPARKGATE_OFFICER2
-	return
+	endcallback
 
 Route35NationalParkGate_IsContestDay:
 	appear ROUTE35NATIONALPARKGATE_OFFICER1
 	disappear ROUTE35NATIONALPARKGATE_BUG_MANIAC
 	disappear ROUTE35NATIONALPARKGATE_OFFICER2
-	return
+	endcallback
 
 Route35NationalParkGate_LeavingContestEarly:
 	applymovement PLAYER, Route35NationalParkGatePlayerApproachOfficer1Movement
 	turnobject ROUTE35NATIONALPARKGATE_OFFICER1, RIGHT
 	opentext
-	checkcode VAR_CONTESTMINUTES
-	addvar $1
-	RAM2MEM $0
+	readvar VAR_CONTESTMINUTES
+	addval $1
+	getnum $0
 	writetext Route35NationalParkGateOfficer1WantToFinishText
 	yesorno
 	iffalse Route35NationalParkGate_GoBackIn
@@ -92,7 +92,7 @@ Route35NationalParkGate_GoBackIn:
 	end
 
 Route35OfficerScriptContest:
-	checkcode VAR_WEEKDAY
+	readvar VAR_WEEKDAY
 	ifequal SUNDAY, Route35NationalParkGate_NoContestToday
 	ifequal MONDAY, Route35NationalParkGate_NoContestToday
 	ifequal WEDNESDAY, Route35NationalParkGate_NoContestToday
@@ -105,7 +105,7 @@ Route35OfficerScriptContest:
 	writetext Route35NationalParkGateOfficer1AskToParticipateText
 	yesorno
 	iffalse Route35NationalParkGate_DeclinedToParticipate
-	checkcode VAR_PARTYCOUNT
+	readvar VAR_PARTYCOUNT
 	ifgreater $1, Route35NationalParkGate_LeaveTheRestBehind
 	special ContestDropOffMons
 	clearevent EVENT_LEFT_MONS_WITH_CONTEST_OFFICER
@@ -113,7 +113,7 @@ Route35NationalParkGate_OkayToProceed:
 	setflag ENGINE_BUG_CONTEST_TIMER
 	special PlayMapMusic
 	writetext Route35NationalParkGateOfficer1GiveParkBallsText
-	buttonsound
+	promptbutton
 	writetext Route35NationalParkGatePlayerReceivedParkBallsText
 	playsound SFX_ITEM
 	waitsfx
@@ -130,7 +130,7 @@ Route35NationalParkGate_OkayToProceed:
 	end
 
 Route35NationalParkGate_EnterContest:
-	checkcode VAR_FACING
+	readvar VAR_FACING
 	ifequal LEFT, Route35NationalParkGate_FacingLeft
 	applymovement PLAYER, Route35NationalParkGatePlayerGoAroundOfficerAndEnterParkMovement
 	end
@@ -140,9 +140,9 @@ Route35NationalParkGate_FacingLeft:
 	end
 
 Route35NationalParkGate_LeaveTheRestBehind:
-	checkcode VAR_PARTYCOUNT
+	readvar VAR_PARTYCOUNT
 	ifless 6, Route35NationalParkGate_LessThanFullParty
-	checkcode VAR_BOXSPACE
+	readvar VAR_BOXSPACE
 	iffalse_jumpopenedtext Route35NationalParkGateOfficer1MakeRoomText
 Route35NationalParkGate_LessThanFullParty: ; 6a27d
 	special CheckFirstMonIsEgg
@@ -154,12 +154,12 @@ Route35NationalParkGate_LessThanFullParty: ; 6a27d
 	iftrue Route35NationalParkGate_FirstMonIsFainted
 	setevent EVENT_LEFT_MONS_WITH_CONTEST_OFFICER
 	writetext Route35NationalParkGateOfficer1WellHoldYourMonText
-	buttonsound
+	promptbutton
 	writetext Route35NationalParkGatePlayersMonLeftWithHelperText
 	playsound SFX_GOT_SAFARI_BALLS
 	waitsfx
-	buttonsound
-	jump Route35NationalParkGate_OkayToProceed
+	promptbutton
+	sjump Route35NationalParkGate_OkayToProceed
 
 Route35NationalParkGate_DeclinedToParticipate:
 	jumpopenedtext Route35NationalParkGateOfficer1TakePartInFutureText

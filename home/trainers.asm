@@ -160,7 +160,7 @@ LoadTrainer_continue::
 	ret
 
 .generic_trainer_script
-	end_if_just_battled
+	endifjustbattled
 	jumpstashedtext
 
 FacingPlayerDistance_bc::

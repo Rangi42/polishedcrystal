@@ -696,7 +696,7 @@ TryBGEvent:
 	ld [hld], a
 	ld a, [wCurBGEventScriptAddr + 1]
 	ld [hld], a
-	ld [hl], writebyte_command ; just to be safe (as opposed to directly writing to hScriptVar)
+	ld [hl], setval_command ; just to be safe (as opposed to directly writing to hScriptVar)
 	jr .callMapScriptAndReturnCarry
 
 CheckBGEventFlag:
@@ -807,24 +807,24 @@ CheckMenuOW:
 
 StartMenuScript:
 	callasm StartMenu
-	jump StartMenuCallback
+	sjump StartMenuCallback
 
 SelectMenuScript:
 	callasm SelectMenu
-	jump SelectMenuCallback
+	sjump SelectMenuCallback
 
 StartMenuCallback:
 SelectMenuCallback:
-	copybytetovar hMenuReturn
+	readmem hMenuReturn
 	ifequal HMENURETURN_SCRIPT, .Script
 	ifequal HMENURETURN_ASM, .Asm
 	end
 
 .Script:
-	ptjump wQueuedScriptBank
+	memjump wQueuedScriptBank
 
 .Asm:
-	ptcallasm wQueuedScriptBank
+	memcallasm wQueuedScriptBank
 	end
 
 CountStep:
@@ -995,7 +995,7 @@ LandAfterPitfallScript:
 	end
 
 EdgeWarpScript: ; 4
-	reloadandreturn MAPSETUP_CONNECTION
+	reloadend MAPSETUP_CONNECTION
 
 ChangeDirectionScript: ; 9
 	deactivatefacing 6

@@ -52,7 +52,7 @@ EcruteakCity_MapScriptHeader:
 
 EcruteakCityFlyPoint:
 	setflag ENGINE_FLYPOINT_ECRUTEAK
-	return
+	endcallback
 
 EcruteakCityLass2Script:
 	checkevent EVENT_RELEASED_THE_BEASTS

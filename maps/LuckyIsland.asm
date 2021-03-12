@@ -27,19 +27,19 @@ LuckyIsland_MapScriptHeader:
 Script_ChangeLuckyIslandMap:
 	special CheckIfTrendyPhraseIsLucky
 	iftrue .show
-	changemap LuckyIslandHidden_BlockData
+	changemapblocks LuckyIslandHidden_BlockData
 	setevent EVENT_LUCKY_ISLAND_CIVILIANS
 .hide_poke_ball
 	setevent EVENT_LUCKY_ISLAND_LUCKY_EGG
-	return
+	endcallback
 
 .show
-	changemap LuckyIsland_BlockData
+	changemapblocks LuckyIsland_BlockData
 	clearevent EVENT_LUCKY_ISLAND_CIVILIANS
 	checkevent EVENT_GOT_LUCKY_EGG_FROM_LUCKY_ISLAND
 	iftrue .hide_poke_ball
 	clearevent EVENT_LUCKY_ISLAND_LUCKY_EGG
-	return
+	endcallback
 
 GenericTrainerFisherHall:
 	generictrainer FISHER, HALL, EVENT_BEAT_FISHER_HALL, .SeenText, .BeatenText

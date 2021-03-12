@@ -31,7 +31,7 @@ MrPsychicsHouseTutorZenHeadbuttScript:
 	writetext Text_MrPsychicsHouseTutorQuestion
 	yesorno
 	iffalse .TutorRefused
-	writebyte ZEN_HEADBUTT
+	setval ZEN_HEADBUTT
 	writetext ClearText
 	special Special_MoveTutor
 	ifequal $0, .TeachMove

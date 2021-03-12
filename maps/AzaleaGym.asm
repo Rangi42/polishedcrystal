@@ -23,12 +23,12 @@ AzaleaGym_MapScriptHeader:
 	object_event  5, 10, SPRITE_TWIN, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerTwinsAmyandmay2, -1
 
 AzaleaGymStatue:
-	trainertotext BUGSY, 1, $1
+	gettrainername BUGSY, 1, $1
 	checkflag ENGINE_HIVEBADGE
 	iftrue .Beaten
 	jumpstd gymstatue1
 .Beaten:
-	checkcode VAR_BADGES
+	readvar VAR_BADGES
 	ifgreater 9, .LyraToo
 	jumpstd gymstatue2
 .LyraToo
@@ -76,7 +76,7 @@ AzaleaGymBugsyScript:
 		para "Here, I also want"
 		line "you to have this."
 		done
-	buttonsound
+	promptbutton
 	verbosegivetmhm TM_U_TURN
 	setevent EVENT_GOT_TM69_U_TURN
 	jumpthisopenedtext

@@ -75,7 +75,7 @@ GoldenrodCityFlyPointAndFloria:
 	iftrue .Done
 	clearevent EVENT_FLORIA_AT_SUDOWOODO
 .Done:
-	return
+	endcallback
 
 GoldenrodCityMoveTutor:
 ; Move Tutor
@@ -84,20 +84,20 @@ GoldenrodCityMoveTutor:
 	checkkeyitem COIN_CASE
 	iffalse .MoveTutorDisappear
 	appear GOLDENRODCITY_POKEFAN_M2
-	return
+	endcallback
 
 .MoveTutorDisappear
 	disappear GOLDENRODCITY_POKEFAN_M2
-	return
+	endcallback
 
 GoldenrodCityTrigger0:
-	priorityjump GoldenrodCityStepDownScript
+	prioritysjump GoldenrodCityStepDownScript
 	end
 
 GoldenrodCityStepDownScript:
-	checkcode VAR_YCOORD
+	readvar VAR_YCOORD
 	ifnotequal $f, .Done
-	checkcode VAR_XCOORD
+	readvar VAR_XCOORD
 	ifnotequal $9, .Done
 	applyonemovement PLAYER, step_down
 .Done
@@ -140,21 +140,21 @@ MoveTutor:
 	jumpopenedtext GoldenrodCityMoveTutorBButText
 
 .FirePunch:
-	writebyte FIRE_PUNCH
+	setval FIRE_PUNCH
 	writetext ClearText
 	special Special_MoveTutor
 	ifequal $0, .TeachMove
 	jumpopenedtext GoldenrodCityMoveTutorBButText
 
 .ThunderPunch:
-	writebyte THUNDERPUNCH
+	setval THUNDERPUNCH
 	writetext ClearText
 	special Special_MoveTutor
 	ifequal $0, .TeachMove
 	jumpopenedtext GoldenrodCityMoveTutorBButText
 
 .IcePunch:
-	writebyte ICE_PUNCH
+	setval ICE_PUNCH
 	writetext ClearText
 	special Special_MoveTutor
 	ifequal $0, .TeachMove
@@ -177,7 +177,7 @@ MoveTutor:
 
 .TeachMove:
 	writetext GoldenrodCityMoveTutorIfYouUnderstandYouveMadeItText
-	buttonsound
+	promptbutton
 	takecoins 200
 	waitsfx
 	playsound SFX_TRANSACTION
@@ -214,7 +214,7 @@ GoldenrodCityRocketScoutScript:
 .RocketScout:
 	opentext
 	writetext GoldenrodCityRocketScoutText1
-	buttonsound
+	promptbutton
 	faceplayer
 	writetext GoldenrodCityRocketScoutText2
 	waitbutton

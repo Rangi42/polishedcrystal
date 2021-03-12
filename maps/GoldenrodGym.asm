@@ -54,7 +54,7 @@ GoldenrodGymWhitneyScript:
 	checkflag ENGINE_PLAINBADGE
 	iftrue .GotPlainBadge
 	writetext WhitneyWhatDoYouWantText
-	buttonsound
+	promptbutton
 	waitsfx
 	writetext PlayerReceivedPlainBadgeText
 	playsound SFX_GET_BADGE
@@ -62,7 +62,7 @@ GoldenrodGymWhitneyScript:
 	setflag ENGINE_PLAINBADGE
 .GotPlainBadge:
 	writetext WhitneyPlainBadgeText
-	buttonsound
+	promptbutton
 	verbosegivetmhm TM_ATTRACT
 	setevent EVENT_GOT_TM45_ATTRACT
 	jumpthisopenedtext
@@ -163,12 +163,12 @@ GoldenrodGymGuyScript:
 	done
 
 GoldenrodGymStatue:
-	trainertotext WHITNEY, 1, $1
+	gettrainername WHITNEY, 1, $1
 	checkflag ENGINE_PLAINBADGE
 	iftrue .Beaten
 	jumpstd gymstatue1
 .Beaten:
-	checkcode VAR_BADGES
+	readvar VAR_BADGES
 	ifgreater 10, .LyraToo
 	jumpstd gymstatue2
 .LyraToo

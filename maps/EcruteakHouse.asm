@@ -34,7 +34,7 @@ EcruteakHouseInitializeSages:
 	iftrue .DontBlockTower
 	checkevent EVENT_CLEARED_RADIO_TOWER
 	iftrue .BlockTower
-	return
+	endcallback
 
 .BlockTower:
 	clearevent EVENT_RANG_CLEAR_BELL_1
@@ -44,11 +44,11 @@ EcruteakHouseInitializeSages:
 	iftrue .NoClearBell
 	setscene $0
 .NoClearBell:
-	return
+	endcallback
 
 .DontBlockTower:
 	clearevent EVENT_ECRUTEAK_HOUSE_WANDERING_SAGE
-	return
+	endcallback
 
 EcruteakHouse_XYTrigger1:
 	checkevent EVENT_RANG_CLEAR_BELL_2

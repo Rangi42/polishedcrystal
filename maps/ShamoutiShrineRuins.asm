@@ -36,24 +36,24 @@ ShamoutiShrineRuinsLawrenceScript:
 	playmusic MUSIC_ZINNIA_ENCOUNTER_ORAS
 	opentext
 	writetext .AfterText
-	buttonsound
+	promptbutton
 	verbosegivekeyitem SILVER_WING
 	writetext .SilverWingText
 	waitbutton
 	closetext
-	checkcode VAR_FACING
+	readvar VAR_FACING
 	ifequal UP, .up
 	ifequal DOWN, .down
 	ifequal LEFT, .left
 .right
 	turnobject SHAMOUTISHRINERUINS_LAWRENCE, RIGHT
-	jump .continue
+	sjump .continue
 .up
 	turnobject SHAMOUTISHRINERUINS_LAWRENCE, UP
-	jump .continue
+	sjump .continue
 .down
 	turnobject SHAMOUTISHRINERUINS_LAWRENCE, DOWN
-	jump .continue
+	sjump .continue
 .left
 	turnobject SHAMOUTISHRINERUINS_LAWRENCE, LEFT
 .continue

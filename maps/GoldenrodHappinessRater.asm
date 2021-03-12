@@ -22,7 +22,7 @@ GoldenrodHappinessRaterTeacherScript:
 	opentext
 	special GetFirstPokemonHappiness
 	writetext GoldenrodHappinessRaterTeacherText
-	buttonsound
+	promptbutton
 	ifgreater $f9, .LovesYouALot
 	ifgreater $c7, .ReallyTrustsYou
 	ifgreater $95, .SortOfHappy

@@ -24,8 +24,8 @@ ProfOaksAide2Script:
 	iftrue .Explain
 	writetext ProfOaksAide2HiText
 	waitbutton
-	count_seen_caught
-	checkcode VAR_DEXCAUGHT
+	countseencaught
+	readvar VAR_DEXCAUGHT
 	ifgreater 29, .HereYouGo
 .UhOh
 	jumpopenedtext ProfOaksAide2UhOhText

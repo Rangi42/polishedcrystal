@@ -22,7 +22,7 @@ Route5CleanseTagHouseGrannyScript:
 	checkevent EVENT_GOT_CLEANSE_TAG
 	iftrue UnknownScript_0x18b649
 	writetext Route5CleanseTagHouseGrannyText1
-	buttonsound
+	promptbutton
 	verbosegiveitem CLEANSE_TAG
 	iffalse UnknownScript_0x18b64d
 	setevent EVENT_GOT_CLEANSE_TAG

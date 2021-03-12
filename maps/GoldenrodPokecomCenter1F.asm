@@ -60,7 +60,7 @@ JudgeMachineScreenCallback:
 	changeblock 26, 2, $4d
 	changeblock 28, 2, $4e
 .Done
-	return
+	endcallback
 
 GoldenrodPokecenter1FNurseScript:
 	setevent EVENT_WELCOMING_TO_POKECOM_CENTER
@@ -185,7 +185,7 @@ WonderTradeReceptionistScript:
 	setevent EVENT_INTRODUCED_TEALA
 .introduced
 	writetext WonderTradeExplanationText
-	buttonsound
+	promptbutton
 	special WonderTrade
 	iffalse .done
 	playmusic MUSIC_POKECOM_CENTER
@@ -197,7 +197,7 @@ WonderTradeReceptionistScript:
 	setevent EVENT_CAN_GIVE_GS_BALL_TO_KURT
 	playmusic MUSIC_SPIKY_EARED_PICHU_HGSS
 	writetext WonderTradeForGSBallPichuText
-	buttonsound
+	promptbutton
 	verbosegivekeyitem GS_BALL
 	writetext WonderTradeForGSBallPichuText2
 	waitbutton
@@ -355,7 +355,7 @@ JudgeMachineEngineerScript:
 	checkevent EVENT_BRED_AN_EGG
 	iffalse .NotBredYet
 	showtextfaceplayer JudgeMachineEngineerFinishedText
-	checkcode VAR_FACING
+	readvar VAR_FACING
 	ifnotequal RIGHT, .GoLeft
 	applyonemovement GOLDENRODPOKECOMCENTER1F_ENGINEER, step_down
 	applyonemovement GOLDENRODPOKECOMCENTER1F_ENGINEER, step_left

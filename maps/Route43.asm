@@ -41,21 +41,21 @@ Route43CheckIfRocketsScript:
 	checkevent EVENT_CLEARED_ROCKET_HIDEOUT
 	iftrue Route43NoRocketsScript
 	setmapscene ROUTE_43_GATE, $0
-	return
+	endcallback
 
 Route43RainScript:
 	special Special_GetOvercastIndex
 	ifequal LAKE_OF_RAGE_OVERCAST, .flood
-	changemap Route43_BlockData
-	return
+	changemapblocks Route43_BlockData
+	endcallback
 
 .flood
-	changemap Route43Raining_BlockData
-	return
+	changemapblocks Route43Raining_BlockData
+	endcallback
 
 Route43NoRocketsScript:
 	setmapscene ROUTE_43_GATE, $1
-	return
+	endcallback
 
 Route43SightseerfScript:
 	checkevent EVENT_GOT_FLAME_ORB_FROM_ROUTE_43_LEADER
@@ -95,7 +95,7 @@ Route43SightseerfScript:
 .Beaten:
 	opentext
 	writetext .AfterText1
-	buttonsound
+	promptbutton
 	verbosegiveitem FLAME_ORB
 	iffalse_endtext
 	setevent EVENT_GOT_FLAME_ORB_FROM_ROUTE_43_LEADER
@@ -234,7 +234,7 @@ TrainerPokemaniacBrent1:
 	trainer POKEMANIAC, BRENT1, EVENT_BEAT_POKEMANIAC_BRENT, PokemaniacBrent1SeenText, PokemaniacBrent1BeatenText, 0, PokemaniacBrent1Script
 
 PokemaniacBrent1Script:
-	writecode VAR_CALLERID, PHONE_POKEMANIAC_BRENT
+	loadvar VAR_CALLERID, PHONE_POKEMANIAC_BRENT
 	opentext
 	checkflag ENGINE_BRENT
 	iftrue UnknownScript_0x19d0cf
@@ -243,10 +243,10 @@ PokemaniacBrent1Script:
 	checkevent EVENT_BRENT_ASKED_FOR_PHONE_NUMBER
 	iftrue UnknownScript_0x19d0b8
 	writetext PokemaniacBrentAfterBattleText
-	buttonsound
+	promptbutton
 	setevent EVENT_BRENT_ASKED_FOR_PHONE_NUMBER
 	scall UnknownScript_0x19d12c
-	jump UnknownScript_0x19d0bb
+	sjump UnknownScript_0x19d0bb
 
 UnknownScript_0x19d0b8:
 	scall UnknownScript_0x19d130
@@ -254,14 +254,14 @@ UnknownScript_0x19d0bb:
 	askforphonenumber PHONE_POKEMANIAC_BRENT
 	ifequal $1, UnknownScript_0x19d140
 	ifequal $2, UnknownScript_0x19d13c
-	trainertotext POKEMANIAC, BRENT1, $0
+	gettrainername POKEMANIAC, BRENT1, $0
 	scall UnknownScript_0x19d134
-	jump UnknownScript_0x19d138
+	sjump UnknownScript_0x19d138
 
 UnknownScript_0x19d0cf:
 	scall UnknownScript_0x19d144
 	winlosstext PokemaniacBrent1BeatenText, 0
-	copybytetovar wBrentFightCount
+	readmem wBrentFightCount
 	ifequal 3, .Fight3
 	ifequal 2, .Fight2
 	ifequal 1, .Fight1
@@ -279,7 +279,7 @@ UnknownScript_0x19d0cf:
 	loadtrainer POKEMANIAC, BRENT1
 	startbattle
 	reloadmapafterbattle
-	loadvar wBrentFightCount, 1
+	loadmem wBrentFightCount, 1
 	clearflag ENGINE_BRENT
 	end
 
@@ -287,7 +287,7 @@ UnknownScript_0x19d0cf:
 	loadtrainer POKEMANIAC, BRENT2
 	startbattle
 	reloadmapafterbattle
-	loadvar wBrentFightCount, 2
+	loadmem wBrentFightCount, 2
 	clearflag ENGINE_BRENT
 	end
 
@@ -295,7 +295,7 @@ UnknownScript_0x19d0cf:
 	loadtrainer POKEMANIAC, BRENT3
 	startbattle
 	reloadmapafterbattle
-	loadvar wBrentFightCount, 3
+	loadmem wBrentFightCount, 3
 	clearflag ENGINE_BRENT
 	end
 
@@ -357,7 +357,7 @@ TrainerPicnickerTiffany1:
 	trainer PICNICKER, TIFFANY1, EVENT_BEAT_PICNICKER_TIFFANY, PicnickerTiffany1SeenText, PicnickerTiffany1BeatenText, 0, PicnickerTiffany1Script
 
 PicnickerTiffany1Script:
-	writecode VAR_CALLERID, PHONE_PICNICKER_TIFFANY
+	loadvar VAR_CALLERID, PHONE_PICNICKER_TIFFANY
 	opentext
 	checkflag ENGINE_TIFFANY
 	iftrue UnknownScript_0x19d1c1
@@ -370,10 +370,10 @@ PicnickerTiffany1Script:
 	checkevent EVENT_TIFFANY_ASKED_FOR_PHONE_NUMBER
 	iftrue UnknownScript_0x19d1aa
 	writetext PicnickerTiffanyWantsPicnicText
-	buttonsound
+	promptbutton
 	setevent EVENT_TIFFANY_ASKED_FOR_PHONE_NUMBER
 	scall UnknownScript_0x19d239
-	jump UnknownScript_0x19d1ad
+	sjump UnknownScript_0x19d1ad
 
 UnknownScript_0x19d1aa:
 	scall UnknownScript_0x19d23d
@@ -381,14 +381,14 @@ UnknownScript_0x19d1ad:
 	askforphonenumber PHONE_PICNICKER_TIFFANY
 	ifequal $1, UnknownScript_0x19d24d
 	ifequal $2, UnknownScript_0x19d249
-	trainertotext PICNICKER, TIFFANY1, $0
+	gettrainername PICNICKER, TIFFANY1, $0
 	scall UnknownScript_0x19d241
-	jump UnknownScript_0x19d245
+	sjump UnknownScript_0x19d245
 
 UnknownScript_0x19d1c1:
 	scall UnknownScript_0x19d251
 	winlosstext PicnickerTiffany1BeatenText, 0
-	copybytetovar wTiffanyFightCount
+	readmem wTiffanyFightCount
 	ifequal 3, .Fight3
 	ifequal 2, .Fight2
 	ifequal 1, .Fight1
@@ -406,7 +406,7 @@ UnknownScript_0x19d1c1:
 	loadtrainer PICNICKER, TIFFANY1
 	startbattle
 	reloadmapafterbattle
-	loadvar wTiffanyFightCount, 1
+	loadmem wTiffanyFightCount, 1
 	clearflag ENGINE_TIFFANY
 	end
 
@@ -414,7 +414,7 @@ UnknownScript_0x19d1c1:
 	loadtrainer PICNICKER, TIFFANY2
 	startbattle
 	reloadmapafterbattle
-	loadvar wTiffanyFightCount, 2
+	loadmem wTiffanyFightCount, 2
 	clearflag ENGINE_TIFFANY
 	end
 
@@ -422,7 +422,7 @@ UnknownScript_0x19d1c1:
 	loadtrainer PICNICKER, TIFFANY3
 	startbattle
 	reloadmapafterbattle
-	loadvar wTiffanyFightCount, 3
+	loadmem wTiffanyFightCount, 3
 	clearflag ENGINE_TIFFANY
 	end
 
@@ -439,10 +439,10 @@ UnknownScript_0x19d21e:
 	iffalse UnknownScript_0x19d230
 	clearflag ENGINE_TIFFANY_HAS_PINK_BOW
 	setevent EVENT_TIFFANY_GAVE_PINK_BOW
-	jump UnknownScript_0x19d245
+	sjump UnknownScript_0x19d245
 
 UnknownScript_0x19d230:
-	jump UnknownScript_0x19d259
+	sjump UnknownScript_0x19d259
 
 UnknownScript_0x19d233:
 	jumpopenedtext PicnickerTiffanyClefairyText
