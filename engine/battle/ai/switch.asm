@@ -310,10 +310,8 @@ AIWantsSwitchCheck:
 	; little improvement
 	ld b, $10
 	cp 9
-	jr nc, .set_switch_score
 	; No reason to switch
-	ret
-
+	ret c
 .set_switch_score
 	ld a, [wEnemySwitchMonParam]
 	add b

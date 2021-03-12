@@ -322,6 +322,13 @@ patterns = {
 		and line3.code.split()[-1].strip() == prev[0].code.split(',')[1].strip())
 		or line3.code.rstrip(':') == prev[0].code.split(',')[1].strip()),
 ],
+'Conditional return': [
+	# Bad: jr z|nz|c|nc, .skip / ret / .skip
+	# Good: ret nz|z|nc|c .bar
+	(lambda line1, prev: re.match(r'j[rp] n?[zc],', line1.code)),
+	(lambda line2, prev: line2.code == 'ret'),
+	(lambda line3, prev: line3.code.rstrip(':') == prev[0].code.split(',')[1].strip()),
+],
 'Conditional fallthrough': [
 	# Bad: jr z|nz|c|nc, .foo / jr .bar / .foo: ...
 	# Good: jr nz|z|nc|c .bar / .foo: ...

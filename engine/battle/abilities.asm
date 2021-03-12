@@ -576,23 +576,18 @@ RunFaintAbilities:
 	farcall GetFutureSightUser
 	ret nz
 	call GetTrueUserAbility
-	call .user_abilities
+	call _RunFaintUserAbilities
 	call GetOpponentAbilityAfterMoldBreaker
 	push af
 	call SwitchTurn
 	pop af
-	call .opponent_abilities
+	call _RunFaintOpponentAbilities
 	jp SwitchTurn
 
-.user_abilities
-	cp MOXIE
-	jp z, MoxieAbility
-	ret
-.opponent_abilities
+_RunFaintOpponentAbilities:
 	cp AFTERMATH
-	jp z, AftermathAbility
-	ret
-
+	ret nz
+	; fallthrough
 AftermathAbility:
 	; Damp protects against this
 	call GetOpponentAbility
@@ -924,10 +919,15 @@ JustifiedAbility:
 	cp DARK
 	ret nz
 	jr AttackUpAbility
+_RunFaintUserAbilities:
+	cp MOXIE
+	ret nz
+	; fallthrough
 MoxieAbility:
 	; Don't run if battle is over
 	farcall CheckAnyOtherAliveOpponentMons
 	ret z
+	; fallthrough
 SapSipperAbility:
 AttackUpAbility:
 	ld b, ATTACK
@@ -943,8 +943,7 @@ RattledAbility:
 	cp DARK
 	jr z, .ok
 	cp GHOST
-	jr z, .ok
-	ret
+	ret nz
 .ok
 	; fallthrough
 MotorDriveAbility:

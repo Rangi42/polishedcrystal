@@ -956,9 +956,7 @@ HandleStatusOrbs:
 	jr z, .burn
 	cp HELD_SELF_PSN
 	ld b, 1 << PSN | 1 << TOX
-	jr z, .poison
-	ret
-.poison
+	ret nz
 	push bc
 	ld b, 0
 	farcall CanPoisonTarget

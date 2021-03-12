@@ -158,9 +158,7 @@ CheckUpdatePlayerSprite:
 	call .CheckSurfing
 	jr c, .ok
 	call .CheckSurfing2
-	jr c, .ok
-	ret
-
+	ret nc
 .ok
 	jp UpdatePlayerSprite
 
