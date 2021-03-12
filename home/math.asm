@@ -41,6 +41,17 @@ Multiply::
 
 	jp PopBCDEHL
 
+Divide::
+; Divide hDividend length b (max 4 bytes) by hDivisor. Result in hQuotient.
+; All values are big endian.
+	push hl
+	push de
+	push bc
+
+	homecall _Divide
+
+	jp PopBCDEHL
+
 MultiplyAndDivide::
 ; a = $xy: multiply multiplicands by x, then divide by y
 ; Used for damage modifiers, catch rate modifiers, etc.
@@ -55,16 +66,6 @@ MultiplyAndDivide::
 	and $f
 	ldh [c], a
 	ld b, 4
+	call Divide
 	pop bc
-	; fallthrough
-
-Divide::
-; Divide hDividend length b (max 4 bytes) by hDivisor. Result in hQuotient.
-; All values are big endian.
-	push hl
-	push de
-	push bc
-
-	homecall _Divide
-
-	jp PopBCDEHL
+	ret
