@@ -2982,12 +2982,17 @@ BattleCommand_posthiteffects:
 	call nz, ConsumeOpponentItem
 
 .rocky_helmet_done
+	call GetTrueUserAbility
+	cp STENCH
+	ld c, 10
+	jr z, .do_flinch_up
 	call GetUserItem
 	push bc
 	call GetCurItemName
 	pop bc
 	ld a, b
 	cp HELD_FLINCH_UP
+.do_flinch_up
 	call z, .flinch_up
 	jp .checkfaint
 .flinch_up
