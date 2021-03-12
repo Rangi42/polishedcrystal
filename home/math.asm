@@ -19,15 +19,12 @@ SimpleDivide::
 	dec c
 	jr z, .div0
 	ld b, 0
-	and a
-	ret z
 .loop
 	inc b
 	sub c
 	jr nc, .loop
-	ret z
-	add c
 	dec b
+	add c
 	ret
 .div0
 	ld a, ERR_DIV_ZERO
@@ -44,6 +41,23 @@ Multiply::
 
 	jp PopBCDEHL
 
+MultiplyAndDivide::
+; a = $xy: multiply multiplicands by x, then divide by y
+; Used for damage modifiers, catch rate modifiers, etc.
+	push bc
+	ld b, a
+	swap a
+	and $f
+	ld c, LOW(hMultiplier)
+	ldh [c], a
+	call Multiply
+	ld a, b
+	and $f
+	ldh [c], a
+	ld b, 4
+	pop bc
+	; fallthrough
+
 Divide::
 ; Divide hDividend length b (max 4 bytes) by hDivisor. Result in hQuotient.
 ; All values are big endian.
@@ -54,25 +68,3 @@ Divide::
 	homecall _Divide
 
 	jp PopBCDEHL
-
-MultiplyAndDivide::
-; a = $xy: multiply multiplicands by x, then divide by y
-; Used for damage modifiers, catch rate modifiers, etc.
-	push bc
-	push hl
-	ld b, a
-	swap a
-	and $f
-	ld hl, hMultiplier
-	ld [hl], a
-	push bc
-	call Multiply
-	pop bc
-	ld a, b
-	and $f
-	ld [hl], a
-	ld b, 4
-	call Divide
-	pop hl
-	pop bc
-	ret
