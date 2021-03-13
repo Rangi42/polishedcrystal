@@ -538,9 +538,8 @@ TryEnemyFlee:
 	jr nz, .Stay
 
 	ld a, [wTempEnemyMonSpecies]
-	ld de, 1
 	ld hl, AlwaysFleeMons
-	call IsInArray
+	call IsInByteArray
 	jr c, .Flee
 
 	call BattleRandom
@@ -550,9 +549,8 @@ TryEnemyFlee:
 
 	push bc
 	ld a, [wTempEnemyMonSpecies]
-	ld de, 1
 	ld hl, OftenFleeMons
-	call IsInArray
+	call IsInByteArray
 	pop bc
 	jr c, .Flee
 
@@ -561,9 +559,8 @@ TryEnemyFlee:
 	jr nc, .Stay
 
 	ld a, [wTempEnemyMonSpecies]
-	ld de, 1
 	ld hl, SometimesFleeMons
-	call IsInArray
+	call IsInByteArray
 	jr c, .Flee
 
 .Stay:
@@ -643,8 +640,8 @@ GetMovePriority:
 	ld a, BATTLE_VARS_MOVE
 	call GetBattleVar
 
-	ld de, 2
 	ld hl, MovePriorities
+	ld de, 2
 	call IsInArray
 	inc a
 	jr z, .got_priority
@@ -2377,8 +2374,7 @@ IsBossTrainer:
 IsBossTrainerCommon:
 	push de
 	ld a, [wOtherTrainerClass]
-	ld de, $1
-	call IsInArray
+	call IsInByteArray
 	pop de
 	ret
 
@@ -5780,9 +5776,8 @@ ApplyLegendaryDVs:
 
 	push hl
 	ld a, [wCurPartySpecies]
-	ld de, 1
 	ld hl, LegendaryMons
-	call IsInArray
+	call IsInByteArray
 	pop hl
 	jr nc, .done
 
@@ -5859,8 +5854,7 @@ CheckSleepingTreeMon:
 
 .Check:
 	ld a, [wTempEnemyMonSpecies]
-	ld de, 1 ; length of species id
-	call IsInArray
+	call IsInByteArray
 ; If it's a match, the opponent is asleep
 	ret c
 
@@ -5960,10 +5954,9 @@ CheckUnownLetter:
 	ld l, a
 
 	push de
-	ld a, b
-	ld de, 1
 	push bc
-	call IsInArray
+	ld a, b
+	call IsInByteArray
 	pop bc
 	pop de
 
@@ -7095,8 +7088,8 @@ GetNewBaseExp:
 ; exceptions: Chansey, Blissey
 	ld a, MON_SPECIES
 	call OTPartyAttr
-	ld de, 3
 	ld hl, NewBaseExpExceptions
+	ld de, 3
 	call IsInArray
 	jr nc, .calc_base_exp
 	inc hl
@@ -7158,9 +7151,8 @@ GetNewBaseExp:
 	jr .stage_1_or_nonevolver
 
 .not_basic
-	ld de, 1
 	ld hl, LegendaryMons
-	call IsInArray
+	call IsInByteArray
 	jr c, .legendary
 	farcall GetPreEvolution
 .legendary

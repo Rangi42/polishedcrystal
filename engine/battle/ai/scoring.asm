@@ -41,9 +41,7 @@ AI_Basic:
 	push de
 	push bc
 	ld hl, .statusonlyeffects
-	ld de, 1
-	call IsInArray
-
+	call IsInByteArray
 	pop bc
 	pop de
 	pop hl
@@ -240,9 +238,8 @@ AI_IsFixedDamageMove:
 	push hl
 	push de
 	push bc
-	ld de, 1
 	ld hl, .FixedDamageMoves
-	call IsInArray
+	call IsInByteArray
 	jp PopBCDEHL
 
 .FixedDamageMoves:
@@ -1153,8 +1150,7 @@ AI_Smart_Encore:
 	push hl
 	ld a, [wPlayerSelectedMove]
 	ld hl, .EncoreMoves
-	ld de, 1
-	call IsInArray
+	call IsInByteArray
 	pop hl
 	jr nc, .asm_38c81
 
@@ -1340,8 +1336,7 @@ AI_Smart_Disable:
 	push hl
 	ld a, [wPlayerSelectedMove]
 	ld hl, UsefulMoves
-	ld de, 1
-	call IsInArray
+	call IsInByteArray
 
 	pop hl
 	jr nc, .asm_38dee
@@ -2333,8 +2328,7 @@ AI_Opportunist:
 	push de
 	push bc
 	ld hl, .stallmoves
-	ld de, 1
-	call IsInArray
+	call IsInByteArray
 
 	pop bc
 	pop de
@@ -2512,9 +2506,8 @@ AIDamageCalc:
 	jr z, .return
 	cp EFFECT_REVERSAL
 	jr z, .reversal
-	ld de, 1
 	ld hl, .ConstantDamageEffects
-	call IsInArray
+	call IsInByteArray
 	jr nc, .regular_damage
 	farcall BattleCommand_constantdamage
 	farjp BattleCommand_resettypematchup
@@ -2602,8 +2595,7 @@ AI_Cautious:
 	push de
 	push bc
 	ld hl, .residualmoves
-	ld de, 1
-	call IsInArray
+	call IsInByteArray
 
 	pop bc
 	pop de
@@ -2804,9 +2796,8 @@ AI_Risky:
 
 ; Don't use risky moves at max hp.
 	ld a, [wEnemyMoveStruct + MOVE_EFFECT]
-	ld de, 1
 	ld hl, .RiskyMoves
-	call IsInArray
+	call IsInByteArray
 	jr nc, .checkko
 
 	call AICheckEnemyMaxHP

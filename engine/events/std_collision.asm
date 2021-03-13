@@ -1,8 +1,8 @@
 CheckFacingTileForStdScript::
 ; Checks to see if the tile you're facing has a std script associated with it.  If so, executes the script and returns carry.
 	ld a, c
-	ld de, 3
 	ld hl, TileCollisionStdScripts
+	ld de, 3
 	call IsInArray
 	jr nc, .notintable
 

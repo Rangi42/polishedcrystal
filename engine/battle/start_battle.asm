@@ -131,7 +131,7 @@ PlayBattleMusic:
 	jp PopBCDEHL
 
 .loadfromarray
-	ld e, 3
+	ld e, 3 ; d is already 0 from 'ld de, MUSIC_NONE'
 	call IsInArray
 	ret nc
 	inc hl
