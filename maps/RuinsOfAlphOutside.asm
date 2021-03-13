@@ -19,6 +19,7 @@ RuinsOfAlphOutside_MapScriptHeader:
 	warp_event 15, 26, ROUTE_32_RUINS_OF_ALPH_GATE, 1
 	warp_event 15, 27, ROUTE_32_RUINS_OF_ALPH_GATE, 2
 	warp_event 10,  9, RUINS_OF_ALPH_SINJOH_CHAMBER, 1
+	warp_event 12, 36, HIDDEN_CAVE_GROTTO, 1
 
 	def_coord_events
 	coord_event 13, 20, 1, RuinsOfAlphOutsideScientistScene1
@@ -30,6 +31,8 @@ RuinsOfAlphOutside_MapScriptHeader:
 	bg_event 20, 18, BGEVENT_JUMPTEXT, RuinsOfAlphResearchCenterSignText
 	bg_event 10,  9, BGEVENT_IFNOTSET, MapRuinsofAlphOutsideSealedCaveSign
 	bg_event  4, 13, BGEVENT_ITEM + RARE_CANDY, EVENT_RUINS_OF_ALPH_OUTSIDE_HIDDEN_RARE_CANDY
+	bg_event  12, 35, BGEVENT_JUMPSTD, cavegrotto, HIDDENGROTTO_RUINSOFALPH
+
 
 	def_object_events
 	object_event 13, 21, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, RuinsOfAlphOutsideScientistScript, EVENT_RUINS_OF_ALPH_OUTSIDE_SCIENTIST
@@ -73,29 +76,29 @@ RuinsofAlphOutsideTileScript:
 	iffalse .locked
 	changeblock 10, 8, $9f
 .locked
-	endcallback
+	return
 
 RuinsOfAlphOutsideScientistCallback:
 	checkflag ENGINE_UNOWN_DEX
 	iftrue .NoScientist
 	checkevent EVENT_MADE_UNOWN_APPEAR_IN_RUINS
 	iftrue .MaybeScientist
-	sjump .NoScientist
+	jump .NoScientist
 
 .MaybeScientist:
-	readvar VAR_UNOWNCOUNT
+	checkcode VAR_UNOWNCOUNT
 	ifgreater $0, .YesScientist
-	sjump .NoScientist
+	jump .NoScientist
 
 .YesScientist:
 	appear RUINSOFALPHOUTSIDE_SCIENTIST1
 	setscene $1
-	endcallback
+	return
 
 .NoScientist:
 	disappear RUINSOFALPHOUTSIDE_SCIENTIST1
 	setscene $0
-	endcallback
+	return
 
 RuinsOfAlphOutsideScientistScene1:
 	faceobject RUINSOFALPHOUTSIDE_SCIENTIST1, PLAYER
@@ -119,7 +122,7 @@ RuinsOfAlphOutsideFisherScript:
 	iftrue_jumpopenedtext RuinsOfAlphOutsideFisherText2
 	setevent EVENT_TALKED_TO_RUINS_COWARD
 	writetext RuinsOfAlphOutsideFisherText1
-	promptbutton
+	buttonsound
 	jumpthisopenedtext
 
 RuinsOfAlphOutsideFisherText2:

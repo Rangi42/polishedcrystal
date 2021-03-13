@@ -6,6 +6,7 @@ Route39_MapScriptHeader:
 	def_warp_events
 	warp_event  1,  3, ROUTE_39_BARN, 1
 	warp_event  5,  3, ROUTE_39_FARMHOUSE, 1
+	warp_event  4, 20, HIDDEN_TREE_GROTTO, 1
 
 	def_coord_events
 
@@ -14,6 +15,8 @@ Route39_MapScriptHeader:
 	bg_event  9,  5, BGEVENT_JUMPTEXT, MoomooFarmSignText
 	bg_event 15,  7, BGEVENT_JUMPTEXT, Route39SignText
 	bg_event  5, 13, BGEVENT_ITEM + NUGGET, EVENT_ROUTE_39_HIDDEN_NUGGET
+	bg_event  4, 19, BGEVENT_JUMPSTD, treegrotto, HIDDENGROTTO_ROUTE_39
+	bg_event  5, 19, BGEVENT_JUMPSTD, treegrotto, HIDDENGROTTO_ROUTE_39
 
 	def_object_events
 	object_event  7, 14, SPRITE_COWGIRL, SPRITEMOVEDATA_WANDER, 1, 2, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route39CowgirlAnnieScript, -1
@@ -26,7 +29,7 @@ Route39_MapScriptHeader:
 	pokemon_event  8, 13, MILTANK, -1, -1, PAL_NPC_RED, Route39MiltankText, -1
 	object_event 13,  7, SPRITE_PSYCHIC, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerPsychicNorman, -1
 	fruittree_event  9,  3, FRUITTREE_ROUTE_39, CHESTO_BERRY, PAL_NPC_PURPLE
-	object_event  4, 22, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, TrainerPokefanfJaime, -1
+	object_event  4, 22, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, PokefanFScript_0x1a5bbe, -1
 	object_event  4, 30, SPRITE_BEAUTY, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, Route39BeautyText, -1
 	tmhmball_event  1,  7, TM_BULLDOZE, EVENT_ROUTE_39_TM_BULLDOZE
 
@@ -34,70 +37,70 @@ Route39_MapScriptHeader:
 	const ROUTE39_COWGIRL
 
 TrainerPokefanmDerek1:
-	trainer POKEFANM, DEREK1, EVENT_BEAT_POKEFANM_DEREK, PokefanmDerek1SeenText, PokefanmDerek1BeatenText, 0, .Script
+	trainer POKEFANM, DEREK1, EVENT_BEAT_POKEFANM_DEREK, PokefanmDerek1SeenText, PokefanmDerek1BeatenText, 0, PokefanmDerek1Script
 
-.Script:
-	loadvar VAR_CALLERID, PHONE_POKEFANM_DEREK
+PokefanmDerek1Script:
+	writecode VAR_CALLERID, PHONE_POKEFANM_DEREK
 	opentext
 	checkflag ENGINE_DEREK_HAS_NUGGET
-	iftrue .HasNugget
+	iftrue UnknownScript_0x1a5b4a
 	checkcellnum PHONE_POKEFANM_DEREK
-	iftrue .NumberAccepted
+	iftrue UnknownScript_0x1a5b6e
 	checkpoke PIKACHU
-	iffalse .WantsPikachu
+	iffalse UnknownScript_0x1a5b5c
 	checkevent EVENT_DEREK_ASKED_FOR_PHONE_NUMBER
-	iftrue .AskedAlready
-	writetext PokefanMDerekText_NotBragging
-	promptbutton
+	iftrue UnknownScript_0x1a5b33
+	writetext UnknownText_0x1a5cf8
+	buttonsound
 	setevent EVENT_DEREK_ASKED_FOR_PHONE_NUMBER
-	scall .AskNumber1
-	sjump .AskForNumber
+	scall UnknownScript_0x1a5b62
+	jump UnknownScript_0x1a5b36
 
-.AskedAlready:
-	scall .AskNumber2
-.AskForNumber:
+UnknownScript_0x1a5b33:
+	scall UnknownScript_0x1a5b66
+UnknownScript_0x1a5b36:
 	askforphonenumber PHONE_POKEFANM_DEREK
-	ifequal $1, .PhoneFull
-	ifequal $2, .NumberDeclined
-	gettrainername POKEFANM, DEREK1, $0
-	scall .RegisteredNumber
-	sjump .NumberAccepted
+	ifequal $1, UnknownScript_0x1a5b76
+	ifequal $2, UnknownScript_0x1a5b72
+	trainertotext POKEFANM, DEREK1, $0
+	scall UnknownScript_0x1a5b6a
+	jump UnknownScript_0x1a5b6e
 
-.HasNugget:
-	scall .Gift
+UnknownScript_0x1a5b4a:
+	scall UnknownScript_0x1a5b7a
 	verbosegiveitem NUGGET
-	iffalse .NoRoom
+	iffalse UnknownScript_0x1a5b59
 	clearflag ENGINE_DEREK_HAS_NUGGET
-	sjump .NumberAccepted
+	jump UnknownScript_0x1a5b6e
 
-.NoRoom:
-	sjump .PackFull
+UnknownScript_0x1a5b59:
+	jump UnknownScript_0x1a5b7e
 
-.WantsPikachu:
-	jumpopenedtext PokefanMDerekPikachuIsItText
+UnknownScript_0x1a5b5c:
+	jumpopenedtext UnknownText_0x1a5dec
 
-.AskNumber1:
+UnknownScript_0x1a5b62:
 	jumpstd asknumber1m
 
-.AskNumber2:
+UnknownScript_0x1a5b66:
 	jumpstd asknumber2m
 
-.RegisteredNumber:
+UnknownScript_0x1a5b6a:
 	jumpstd registerednumberm
 
-.NumberAccepted:
+UnknownScript_0x1a5b6e:
 	jumpstd numberacceptedm
 
-.NumberDeclined:
+UnknownScript_0x1a5b72:
 	jumpstd numberdeclinedm
 
-.PhoneFull:
+UnknownScript_0x1a5b76:
 	jumpstd phonefullm
 
-.Gift:
+UnknownScript_0x1a5b7a:
 	jumpstd giftm
 
-.PackFull:
+UnknownScript_0x1a5b7e:
 	jumpstd packfullm
 
 GenericTrainerPokefanfRuth:
@@ -154,7 +157,7 @@ Route39CowgirlAnnieScript:
 .Beaten:
 	opentext
 	writetext .AfterText1
-	promptbutton
+	buttonsound
 	verbosegiveitem PP_MAX
 	iffalse_endtext
 	setevent EVENT_GOT_PP_MAX_FROM_ROUTE_39_LEADER
@@ -252,28 +255,28 @@ GenericTrainerPsychicNorman:
 	cont "potential."
 	done
 
-TrainerPokefanfJaime:
+PokefanFScript_0x1a5bbe:
 	faceplayer
 	opentext
 	checktime 1 << NITE
-	iffalse .NotNight
+	iffalse UnknownScript_0x1a5be5
 	checkevent EVENT_BEAT_POKEFANF_JAIME
-	iftrue .Beaten
-	writetext PokefanfJaimeSeenText
+	iftrue UnknownScript_0x1a5bdf
+	writetext UnknownText_0x1a5ee8
 	waitbutton
 	closetext
-	winlosstext PokefanfJaimeBeatenText, 0
+	winlosstext UnknownText_0x1a5f17, 0
 	loadtrainer POKEFANF, JAIME
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_POKEFANF_JAIME
 	endtext
 
-.Beaten:
-	jumpopenedtext PokefanfJaimeAfterBattleText
+UnknownScript_0x1a5bdf:
+	jumpopenedtext UnknownText_0x1a5f31
 
-.NotNight:
-	jumpopenedtext PokefanfJaimeHopeItGetsDarkText
+UnknownScript_0x1a5be5:
+	jumpopenedtext UnknownText_0x1a5ec4
 
 Route39MiltankText:
 	text "Miltank: Mooo!"
@@ -302,7 +305,7 @@ PokefanmDerek1BeatenText:
 	line "show off Pikachu…"
 	done
 
-PokefanMDerekText_NotBragging:
+UnknownText_0x1a5cf8:
 	text "I'm not listening"
 	line "to your bragging!"
 
@@ -327,7 +330,7 @@ PokefanfRuthBeatenText:
 	line "losing."
 	done
 
-PokefanMDerekPikachuIsItText:
+UnknownText_0x1a5dec:
 	text "Pikachu is it!"
 	line "Don't you agree?"
 	done
@@ -343,24 +346,24 @@ PsychicNormanBeatenText:
 	line "have potential."
 	done
 
-PokefanfJaimeHopeItGetsDarkText:
+UnknownText_0x1a5ec4:
 	text "Ufufufu… I hope it"
 	line "gets dark soon."
 	done
 
-PokefanfJaimeSeenText:
+UnknownText_0x1a5ee8:
 	text "You came at just"
 	line "the right time."
 
 	para "Let's battle."
 	done
 
-PokefanfJaimeBeatenText:
+UnknownText_0x1a5f17:
 	text "Oh, how disap-"
 	line "pointing…"
 	done
 
-PokefanfJaimeAfterBattleText:
+UnknownText_0x1a5f31:
 	text "I met my Meowth at"
 	line "night, right here"
 	cont "on Route 39."

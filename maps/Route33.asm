@@ -6,11 +6,14 @@ Route33_MapScriptHeader:
 
 	def_warp_events
 	warp_event 11,  9, UNION_CAVE_1F, 3
+	warp_event  6, 10, HIDDEN_TREE_GROTTO, 1
 
 	def_coord_events
 
 	def_bg_events
 	bg_event 11, 11, BGEVENT_JUMPTEXT, Route33SignText
+	bg_event  6,  9, BGEVENT_JUMPSTD, treegrotto, HIDDENGROTTO_ROUTE_33
+	bg_event  7,  9, BGEVENT_JUMPSTD, treegrotto, HIDDENGROTTO_ROUTE_33
 
 	def_object_events
 	object_event  6, 13, SPRITE_HIKER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, OBJECTTYPE_TRAINER, 2, TrainerHikerAnthony, -1
@@ -20,18 +23,18 @@ Route33_MapScriptHeader:
 Route33RainScript:
 	special Special_GetOvercastIndex
 	ifequal AZALEA_OVERCAST, .rain
-	changemapblocks Route33_BlockData
-	endcallback
+	changemap Route33_BlockData
+	return
 
 .rain
-	changemapblocks Route33Raining_BlockData
-	endcallback
+	changemap Route33Raining_BlockData
+	return
 
 TrainerHikerAnthony:
 	trainer HIKER, ANTHONY1, EVENT_BEAT_HIKER_ANTHONY, HikerAnthony1SeenText, HikerAnthony1BeatenText, 0, .Script
 
 .Script:
-	loadvar VAR_CALLERID, PHONE_HIKER_ANTHONY
+	writecode VAR_CALLERID, PHONE_HIKER_ANTHONY
 	opentext
 	checkflag ENGINE_ANTHONY
 	iftrue .Rematch
@@ -42,10 +45,10 @@ TrainerHikerAnthony:
 	checkevent EVENT_ANTHONY_ASKED_FOR_PHONE_NUMBER
 	iftrue .AskAgain
 	writetext HikerAnthony1AfterText
-	promptbutton
+	buttonsound
 	setevent EVENT_ANTHONY_ASKED_FOR_PHONE_NUMBER
 	callstd asknumber1m
-	sjump .AskForPhoneNumber
+	jump .AskForPhoneNumber
 
 .AskAgain:
 	callstd asknumber2m
@@ -53,14 +56,14 @@ TrainerHikerAnthony:
 	askforphonenumber PHONE_HIKER_ANTHONY
 	ifequal $1, .PhoneFull
 	ifequal $2, .NumberDeclined
-	gettrainername HIKER, ANTHONY1, $0
+	trainertotext HIKER, ANTHONY1, $0
 	callstd registerednumberm
 	jumpstd numberacceptedm
 
 .Rematch:
 	callstd rematchm
 	winlosstext HikerAnthony1BeatenText, 0
-	readmem wAnthonyFightCount
+	copybytetovar wAnthonyFightCount
 	ifequal 4, .Fight4
 	ifequal 3, .Fight3
 	ifequal 2, .Fight2
@@ -82,7 +85,7 @@ TrainerHikerAnthony:
 	loadtrainer HIKER, ANTHONY1
 	startbattle
 	reloadmapafterbattle
-	loadmem wAnthonyFightCount, 1
+	loadvar wAnthonyFightCount, 1
 	clearflag ENGINE_ANTHONY
 	end
 
@@ -90,7 +93,7 @@ TrainerHikerAnthony:
 	loadtrainer HIKER, ANTHONY2
 	startbattle
 	reloadmapafterbattle
-	loadmem wAnthonyFightCount, 2
+	loadvar wAnthonyFightCount, 2
 	clearflag ENGINE_ANTHONY
 	end
 
@@ -98,7 +101,7 @@ TrainerHikerAnthony:
 	loadtrainer HIKER, ANTHONY3
 	startbattle
 	reloadmapafterbattle
-	loadmem wAnthonyFightCount, 3
+	loadvar wAnthonyFightCount, 3
 	clearflag ENGINE_ANTHONY
 	end
 
@@ -106,7 +109,7 @@ TrainerHikerAnthony:
 	loadtrainer HIKER, ANTHONY4
 	startbattle
 	reloadmapafterbattle
-	loadmem wAnthonyFightCount, 4
+	loadvar wAnthonyFightCount, 4
 	clearflag ENGINE_ANTHONY
 	end
 
