@@ -1618,10 +1618,11 @@ INCLUDE "data/moves/punching_moves.asm"
 MoveBoostAbility:
 	ld a, BATTLE_VARS_MOVE
 	call GetBattleVar
+	ld de, 1
 	push bc
 	call IsInArray
 	pop bc
-	ret c
+	ret nc
 	ld a, b
 	jp MultiplyAndDivide
 
