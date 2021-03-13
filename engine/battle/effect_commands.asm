@@ -1623,6 +1623,13 @@ BattleCommand_damagevariation:
 	ret c
 
 .go
+if DEF(DEBUG)
+	push hl
+	ld hl, DealtXDamageText
+	call StdBattleTextbox
+	pop hl
+endc
+
 	; Start with the current (100%) damage.
 	xor a
 	ldh [hMultiplicand + 0], a

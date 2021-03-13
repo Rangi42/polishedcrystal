@@ -63,6 +63,15 @@ BattleText_EnemyCantEscape:
 	line "can't escape!"
 	prompt
 
+if DEF(DEBUG)
+DealtXDamageText:
+	text "Dealt "
+	text_decimal wCurDamage, 2, 5
+	text " dmg"
+	line "before roll."
+	prompt
+endc
+
 HurtByPoisonText:
 	text "<USER> is"
 	line "hurt by poison!"
