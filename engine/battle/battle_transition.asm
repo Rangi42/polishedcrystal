@@ -574,9 +574,8 @@ StartTrainerBattle_LoadPokeBallGraphics:
 	jr nz, .loop1
 
 	ld a, [wOtherTrainerClass]
-	ld de, 1
 	ld hl, .RocketTrainerClasses
-	call IsInArray
+	call IsInByteArray
 	ld de, RocketTransition
 	jr c, .got_transition
 	ld de, PokeBallTransition

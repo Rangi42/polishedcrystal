@@ -1913,8 +1913,7 @@ Script_checkpoke:
 	ldh [hScriptVar], a
 	call GetScriptByte
 	ld hl, wPartySpecies
-	ld de, 1
-	call IsInArray
+	call IsInByteArray
 	ret nc
 	ld a, TRUE
 	ldh [hScriptVar], a

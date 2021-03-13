@@ -256,9 +256,8 @@ BT_CheckEnterState:
 	ld hl, wPartyMon1Species
 	call GetPartyLocation
 	ld a, [hl]
-	ld de, 1
 	ld hl, UberMons
-	call IsInArray
+	call IsInByteArray
 	jr c, .banned
 	pop af
 

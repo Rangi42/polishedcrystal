@@ -298,8 +298,8 @@ CheckOverworldTileArrays:
 	ld h, [hl]
 	ld l, a
 	; Look up the tile you're facing
-	ld de, 2
 	ld a, c
+	dec de ; ld de, 2
 	call IsInArray
 	jr nc, .nope
 	; Load the replacement to b

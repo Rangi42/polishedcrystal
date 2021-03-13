@@ -1083,8 +1083,7 @@ MoveScreenLoop:
 	ld a, [hl]
 	push bc
 	ld hl, HMMoves
-	ld de, 1
-	call IsInArray
+	call IsInByteArray
 	pop bc
 	ld a, c
 	jr nc, .ok

@@ -21,6 +21,7 @@ gfx/pokemon/*/*.animated.tilemap
 gfx/pokemon/*/bitmask.asm
 gfx/pokemon/*/frames.asm
 data/tilesets/*_collision.bin
+bank_ends.txt
 
 # local tools
 deploy.sh

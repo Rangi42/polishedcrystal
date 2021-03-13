@@ -987,8 +987,7 @@ BattleCommand_doturn:
 	ld a, BATTLE_VARS_MOVE_EFFECT
 	call GetBattleVar
 	ld hl, ContinuousMoves
-	ld de, 1
-	call IsInArray
+	call IsInByteArray
 
 	ld hl, HasNoPPLeftText
 	jr c, .print
@@ -1143,10 +1142,9 @@ BattleCommand_critical:
 .CheckCritical:
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
-	ld de, 1
-	ld hl, CriticalHitMoves
 	push bc
-	call IsInArray
+	ld hl, CriticalHitMoves
+	call IsInByteArray
 	pop bc
 	jr nc, .ScopeLens
 
@@ -1443,12 +1441,11 @@ CheckTypeMatchup:
 
 _CheckTypeMatchup:
 	push hl
-	ld de, 1 ; IsInArray checks below use single-byte arrays
 ; Handle powder moves
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
 	ld hl, PowderMoves
-	call IsInArray
+	call IsInByteArray
 	jr nc, .skip_powder
 	call GetOpponentItemAfterUnnerve
 	ld a, b
@@ -1558,7 +1555,6 @@ _CheckTypeMatchup:
 	ret
 
 BattleCommand_checkpowder:
-	ld de, 1
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
 	cp SING
@@ -1566,7 +1562,7 @@ BattleCommand_checkpowder:
 	cp THUNDER_WAVE
 	jr z, .twave
 	ld hl, PowderMoves
-	call IsInArray
+	call IsInByteArray
 	ret nc
 	jr BattleCommand_resettypematchup
 .sing
@@ -2225,8 +2221,7 @@ BattleCommand_moveanimnosub:
 	ld a, [wEnemyMonSpecies]
 .got_user_species
 	ld hl, FuryAttackUsers
-	ld de, 1
-	call IsInArray
+	call IsInByteArray
 	pop de
 	jr nc, .multihit
 	ld a, $2
@@ -2260,10 +2255,9 @@ StatUpDownAnim:
 	jr z, .got_user_species
 	ld a, [wEnemyMonSpecies]
 .got_user_species
-	ld hl, WithdrawUsers
-	ld de, 1
 	push af
-	call IsInArray
+	ld hl, WithdrawUsers
+	call IsInByteArray
 	jr nc, .not_withdraw
 	pop af
 	ld a, $1
@@ -2271,8 +2265,7 @@ StatUpDownAnim:
 .not_withdraw
 	pop af ; restore species to a
 	inc hl ; ld hl, HardenUsers
-	; ld de, 1
-	call IsInArray
+	call IsInByteArray
 	jr nc, .not_harden
 	ld a, $2
 	jr .got_kick_counter
@@ -3268,8 +3261,7 @@ EndMoveDamageChecks:
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
 	ld hl, SoundMoves
-	ld de, 1
-	call IsInArray
+	call IsInByteArray
 	pop bc
 	ret nc
 
@@ -6057,8 +6049,7 @@ CheckSubstituteOpp:
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
 	ld hl, SoundMoves
-	ld de, 1
-	call IsInArray
+	call IsInByteArray
 	pop hl
 	pop de
 	pop bc
@@ -6428,9 +6419,8 @@ GetUserItemAfterUnnerve::
 	ld a, [hl]
 	push de
 	push hl
-	ld de, 1
 	ld hl, EdibleBerries
-	call IsInArray
+	call IsInByteArray
 	pop hl
 	pop de
 	ret c
