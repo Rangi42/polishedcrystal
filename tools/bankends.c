@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include "parsemap.h"
 
@@ -23,13 +24,24 @@ int compare_free_space (const void * first, const void * second) {
 }
 
 int main (int argc, char ** argv) {
-  if (argc != 2) {
-    fprintf(stderr, "usage: %s file.map\n", *argv);
+  char * filename = NULL;
+  int quiet = 0;
+  if (argc > 1) {
+    filename = argv[1];
+    if (!strcmp(filename, "-q")) {
+      quiet = 1;
+      filename = argc > 2 ? argv[2] : NULL;
+    } else if (argc > 2) {
+      quiet = !strcmp(argv[2], "-q");
+    }
+  }
+  if (!filename) {
+    fprintf(stderr, "usage: %s [-q] file.map\n", *argv);
     return 1;
   }
-  MapSection * sections = get_sections_from_map_file(argv[1]);
+  MapSection * sections = get_sections_from_map_file(filename);
   if (!sections) {
-    fprintf(stderr, "error: could not retrieve section data from %s\n", argv[1]);
+    fprintf(stderr, "error: could not retrieve section data from %s\n", filename);
     return 2;
   }
   unsigned short bank_ends[BANKS];
@@ -58,9 +70,11 @@ int main (int argc, char ** argv) {
     total_free_space += free_space[p * 2];
   }
   float percentage = total_free_space * 100.0f / ROMSIZE;
-  puts(EPIGRAPH);
-  printf("Free space: %u/%u (%.2f%%)\n\n", total_free_space, ROMSIZE, percentage);
-  puts("bank\tend\tfree");
-  for (p = 0; p < BANKS; p ++) printf("$%02x\t$%04hx\t$%04hx\n", p, bank_ends[p], free_space[p * 2]);
+  if (!quiet) puts(EPIGRAPH);
+  printf("Free space: %u/%u (%.2f%%)\n", total_free_space, ROMSIZE, percentage);
+  if (!quiet) {
+    puts("\nbank\tend\tfree");
+    for (p = 0; p < BANKS; p ++) printf("$%02x\t$%04hx\t$%04hx\n", p, bank_ends[p], free_space[p * 2]);
+  }
   return 0;
 }
