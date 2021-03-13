@@ -22,13 +22,13 @@ CeladonEusine:
 	faceplayer
 	opentext
 	writetext CeladonEusineText1
-	buttonsound
+	promptbutton
 	special SpecialBeastsCheck
 	iftrue .HoOh
 	writetext EusineNoBeastsText
 	waitbutton
 	closetext
-	writebyte RAIKOU
+	setval RAIKOU
 	special SpecialMonCheck
 	iftrue .OwnRaikou
 	showtext EusineShowsRaikouText
@@ -37,10 +37,10 @@ CeladonEusine:
 	cry RAIKOU
 	waitbutton
 	closepokepic
-	writebyte RAIKOU
+	setval RAIKOU
 	special SpecialSeenMon
 .OwnRaikou
-	writebyte ENTEI
+	setval ENTEI
 	special SpecialMonCheck
 	iftrue .OwnEntei
 	showtext EusineShowsEnteiText
@@ -49,10 +49,10 @@ CeladonEusine:
 	cry ENTEI
 	waitbutton
 	closepokepic
-	writebyte ENTEI
+	setval ENTEI
 	special SpecialSeenMon
 .OwnEntei
-	writebyte SUICUNE
+	setval SUICUNE
 	special SpecialMonCheck
 	iftrue .OwnSuicune
 	showtext EusineShowsSuicuneText
@@ -61,7 +61,7 @@ CeladonEusine:
 	cry SUICUNE
 	waitbutton
 	closepokepic
-	writebyte SUICUNE
+	setval SUICUNE
 	special SpecialSeenMon
 .OwnSuicune
 	jumptext EusineQuestHintText
@@ -70,7 +70,7 @@ CeladonEusine:
 	writetext EusineLeavesCeladonText
 	waitbutton
 	closetext
-	checkcode VAR_FACING
+	readvar VAR_FACING
 	ifnotequal UP, .PathClear
 	applymovement PLAYER, .PlayerStepsAsideMovement
 .PathClear:

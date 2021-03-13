@@ -43,25 +43,25 @@ Route10North_MapScriptHeader:
 	const ROUTE10_KRIS
 
 Route10NorthTrigger1:
-	priorityjump Route10NorthLawrenceEncounter1Script
+	prioritysjump Route10NorthLawrenceEncounter1Script
 Route10NorthTrigger0:
 	end
 
 Route10NorthFlyPoint:
 	setflag ENGINE_FLYPOINT_ROCK_TUNNEL
-	return
+	endcallback
 
 Route10NorthZapdos:
-	checkevent EVENT_RETURNED_MACHINE_PART
+	checkevent EVENT_RESTORED_POWER_TO_KANTO
 	iffalse .NoAppear
 	checkevent EVENT_ZAPDOS_GONE
 	iffalse .Appear
 .NoAppear
 	disappear ROUTE10_ZAPDOS
-	return
+	endcallback
 .Appear:
 	appear ROUTE10_ZAPDOS
-	return
+	endcallback
 
 Route10NorthLawrenceEncounter1Script:
 	applyonemovement PLAYER, step_down
@@ -89,7 +89,7 @@ Route10NorthLawrenceEncounter1Script:
 	applymovement PLAYER, Route10NorthMovementData_PanDown
 	applyonemovement PLAYER, show_object
 	disappear ROUTE10_CHRIS
-	jump .Finish
+	sjump .Finish
 .FemalePan
 	appear ROUTE10_KRIS
 	applyonemovement PLAYER, hide_object
@@ -130,7 +130,7 @@ Route10NorthLawrenceEncounter2Script:
 	showemote EMOTE_SHOCK, PLAYER, 15
 	special Special_FadeOutMusic
 	pause 15
-	checkcode VAR_FACING
+	readvar VAR_FACING
 	ifequal UP, .up
 	ifequal DOWN, .down
 	ifequal LEFT, .left
@@ -140,21 +140,21 @@ Route10NorthLawrenceEncounter2Script:
 	appear ROUTE10_LAWRENCE
 	applymovement ROUTE10_LAWRENCE, Route10NorthMovementData_LawrenceApproach2LeftRight
 	turnobject PLAYER, LEFT
-	jump .continue
+	sjump .continue
 .up
 	moveobject ROUTE10_LAWRENCE, 8, 44
 	moveobject ROUTE10_LAWRENCES_ZAPDOS, 12, 44
 	appear ROUTE10_LAWRENCE
 	applymovement ROUTE10_LAWRENCE, Route10NorthMovementData_LawrenceApproach2UpDown
 	turnobject ROUTE10_LAWRENCE, DOWN
-	jump .continue
+	sjump .continue
 .down
 	moveobject ROUTE10_LAWRENCE, 8, 44
 	moveobject ROUTE10_LAWRENCES_ZAPDOS, 12, 44
 	appear ROUTE10_LAWRENCE
 	applymovement ROUTE10_LAWRENCE, Route10NorthMovementData_LawrenceApproach2UpDown
 	turnobject ROUTE10_LAWRENCE, UP
-	jump .continue
+	sjump .continue
 .left
 	moveobject ROUTE10_LAWRENCE, 9, 44
 	moveobject ROUTE10_LAWRENCES_ZAPDOS, 12, 44
@@ -193,14 +193,14 @@ Route10Zapdos:
 	cry ZAPDOS
 	pause 15
 	closetext
-	loadwildmon ZAPDOS, 60
-	writecode VAR_BATTLETYPE, BATTLETYPE_LEGENDARY
+	loadwildmon ZAPDOS, 65
+	loadvar VAR_BATTLETYPE, BATTLETYPE_LEGENDARY
 	startbattle
 	disappear ROUTE10_ZAPDOS
 	setevent EVENT_ZAPDOS_GONE
 	setevent EVENT_ROUTE_10_ZAPDOS
 	reloadmapafterbattle
-	writebyte ZAPDOS
+	setval ZAPDOS
 	special SpecialMonCheck
 	iffalse .NoSpark
 	setevent EVENT_CELADON_UNIVERSITY_SPARK
@@ -212,7 +212,7 @@ Route10Zapdos:
 	iffalse .end
 	special SpecialBirdsCheck
 	iffalse .end
-	jump Route10NorthLawrenceEncounter2Script
+	sjump Route10NorthLawrenceEncounter2Script
 .end
 	end
 

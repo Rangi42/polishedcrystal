@@ -5,19 +5,19 @@ IndigoPlateau_MapScriptHeader:
 	callback MAPCALLBACK_NEWMAP, IndigoPlateauFlyPoint
 
 	def_warp_events
-	warp_event  9,  5, INDIGO_PLATEAU_POKECENTER_1F, 1
-	warp_event 10,  5, INDIGO_PLATEAU_POKECENTER_1F, 2
+	warp_event 11,  5, INDIGO_PLATEAU_POKECENTER_1F, 1
+	warp_event 12,  5, INDIGO_PLATEAU_POKECENTER_1F, 2
 
 	def_coord_events
 
 	def_bg_events
-	bg_event 11,  7, BGEVENT_JUMPTEXT, IndigoPlateauSignText
+	bg_event 13,  7, BGEVENT_JUMPTEXT, IndigoPlateauSignText
 
 	def_object_events
 
 IndigoPlateauFlyPoint:
 	setflag ENGINE_FLYPOINT_INDIGO_PLATEAU
-	return
+	endcallback
 
 IndigoPlateauSignText:
 	text "Indigo Plateau"

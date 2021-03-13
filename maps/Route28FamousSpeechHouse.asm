@@ -21,7 +21,7 @@ Celebrity:
 	faceplayer
 	opentext
 	writetext CelebrityText1
-	buttonsound
+	promptbutton
 	verbosegivetmhm TM_STEEL_WING
 	setevent EVENT_GOT_TM47_STEEL_WING
 	endtext

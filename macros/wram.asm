@@ -25,7 +25,7 @@ box_struct: MACRO
 \1Nature::         db
 \1Gender::
 \1IsEgg::
-\1IsDead::
+\1ExtSpecies::
 \1Form::           db
 \1PP::             ds NUM_MOVES
 \1Happiness::      db
@@ -70,7 +70,7 @@ battle_struct: MACRO
 \1Nature::         db
 \1Gender::
 \1IsEgg::
-\1IsDead::
+\1ExtSpecies::
 \1Form::           db
 \1PP::             ds NUM_MOVES
 \1Happiness::      db
@@ -160,22 +160,6 @@ channel_struct: MACRO
 \1Field0x30::         dw
 ENDM
 
-battle_tower_struct: MACRO
-\1Name:: ds NAME_LENGTH - 1
-\1TrainerClass:: db
-\1Pkmn1:: party_struct \1Pkmn1
-\1Pkmn1Name:: ds MON_NAME_LENGTH
-\1Pkmn1NameEnd::
-\1Pkmn2:: party_struct \1Pkmn2
-\1Pkmn2Name:: ds MON_NAME_LENGTH
-\1Pkmn2NameEnd::
-\1Pkmn3:: party_struct \1Pkmn3
-\1Pkmn3Name:: ds MON_NAME_LENGTH
-\1Pkmn3NameEnd::
-\1Padding: ds BATTLETOWER_PADDING_SIZE
-\1TrainerEnd::
-ENDM
-
 mailmsg: MACRO
 \1Message:: ds MAIL_MSG_LENGTH
 \1MessageEnd:: db
@@ -250,7 +234,7 @@ trademon: MACRO
 \1Nature:: db
 \1Gender::
 \1IsEgg::
-\1IsDead::
+\1ExtSpecies::
 \1Form:: db
 \1ID:: dw
 \1CaughtData:: db

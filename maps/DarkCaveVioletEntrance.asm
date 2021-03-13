@@ -68,7 +68,7 @@ DarkCaveVioletEntranceFalknerTrigger:
 	scall .BeatUrsaring
 	opentext
 	writetext DarkCaveVioletEntranceFalknerDarkIntroText
-	jump .Finish
+	sjump .Finish
 
 .BeatUrsaring:
 	special SaveMusic

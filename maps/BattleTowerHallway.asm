@@ -23,26 +23,18 @@ BattleTowerHallway_MapScriptHeader:
 	object_event 11,  2, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, ObjectEvent, -1
 
 BattleTowerHallwayTrigger0:
-	priorityjump .ChooseBattleRoom
-	setscene $1
+	prioritysjump .ChooseBattleRoom
 	end
 
 .ChooseBattleRoom:
+	; TODO: base this on winstreak instead since level group is gone
 	follow BATTLETOWERHALLWAY_RECEPTIONIST, PLAYER
 	callasm .asm_load_battle_room
-	jump .WalkToChosenBattleRoom
+	sjump .WalkToChosenBattleRoom
 
 .asm_load_battle_room
-	ldh a, [rSVBK]
-	push af
-
-	ld a, BANK(wBTChoiceOfLvlGroup)
-	ldh [rSVBK], a
-	ld a, [wBTChoiceOfLvlGroup]
+	ld a, 1
 	ldh [hScriptVar], a
-
-	pop af
-	ldh [rSVBK], a
 	ret
 
 ; enter different rooms for different levels to battle against
@@ -58,23 +50,23 @@ BattleTowerHallwayTrigger0:
 	ifequal 9, .L90L100
 	ifequal 10, .L90L100
 	applymovement BATTLETOWERHALLWAY_RECEPTIONIST, MovementData_BattleTowerHallwayWalkTo1020Room
-	jump .EnterBattleRoom
+	sjump .EnterBattleRoom
 
 .L30L40: ; 0x9f603
 	applymovement BATTLETOWERHALLWAY_RECEPTIONIST, MovementData_BattleTowerHallwayWalkTo3040Room
-	jump .EnterBattleRoom
+	sjump .EnterBattleRoom
 
 .L50L60: ; 0x9f60a
 	applymovement BATTLETOWERHALLWAY_RECEPTIONIST, MovementData_BattleTowerHallwayWalkTo5060Room
-	jump .EnterBattleRoom
+	sjump .EnterBattleRoom
 
 .L70L80: ; 0x9f611
 	applymovement BATTLETOWERHALLWAY_RECEPTIONIST, MovementData_BattleTowerHallwayWalkTo7080Room
-	jump .EnterBattleRoom
+	sjump .EnterBattleRoom
 
 .L90L100: ; 0x9f618
 	applymovement BATTLETOWERHALLWAY_RECEPTIONIST, MovementData_BattleTowerHallwayWalkTo90100Room
-	jump .EnterBattleRoom
+	sjump .EnterBattleRoom
 
 .EnterBattleRoom: ; 0x9f61f
 	faceobject PLAYER, BATTLETOWERHALLWAY_RECEPTIONIST

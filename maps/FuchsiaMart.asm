@@ -13,10 +13,10 @@ FuchsiaMart_MapScriptHeader:
 
 	def_object_events
 	mart_clerk_event  1,  3, MARTTYPE_STANDARD, MART_FUCHSIA
-	object_event  3,  2, SPRITE_FAT_GUY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x195cf5, -1
-	object_event  7,  6, SPRITE_BATTLE_GIRL, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x195d36, -1
+	object_event  3,  2, SPRITE_FAT_GUY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, FuchsiaMartFisherText, -1
+	object_event  7,  6, SPRITE_BATTLE_GIRL, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, FuchsiaMartCooltrainerFText, -1
 
-UnknownText_0x195cf5:
+FuchsiaMartFisherText:
 	text "I was hoping to"
 	line "buy some Safari"
 
@@ -27,7 +27,7 @@ UnknownText_0x195cf5:
 	line "more…"
 	done
 
-UnknownText_0x195d36:
+FuchsiaMartCooltrainerFText:
 	text "The Safari Zone"
 	line "Warden's grand-"
 	cont "daughter lives in"

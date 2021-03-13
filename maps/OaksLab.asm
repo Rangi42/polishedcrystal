@@ -47,7 +47,7 @@ Oak:
 	checkevent EVENT_TALKED_TO_OAK_IN_KANTO
 	iftrue .GiveStarter
 	writetext OakWelcomeKantoText
-	buttonsound
+	promptbutton
 	setevent EVENT_TALKED_TO_OAK_IN_KANTO
 .GiveStarter:
 	checkevent EVENT_GOT_A_POKEMON_FROM_OAK
@@ -55,42 +55,42 @@ Oak:
 	checkevent EVENT_GOT_A_POKEMON_FROM_IVY
 	iffalse .CheckBadges
 	writetext OakLabGiveStarterText
-	buttonsound
+	promptbutton
 	waitsfx
-	checkcode VAR_PARTYCOUNT
+	readvar VAR_PARTYCOUNT
 	ifequal $6, .PartyFull
 	checkevent EVENT_GOT_BULBASAUR_FROM_IVY
 	iftrue .Charmander
 	checkevent EVENT_GOT_CHARMANDER_FROM_IVY
 	iftrue .Squirtle
-	pokenamemem BULBASAUR, $0
+	getmonname BULBASAUR, $0
 	writetext OakLabReceivedKantoStarterText
 	playsound SFX_CAUGHT_MON
 	waitsfx
-	buttonsound
+	promptbutton
 	givepoke BULBASAUR, NO_FORM, 10, SITRUS_BERRY
 	setevent EVENT_GOT_A_POKEMON_FROM_OAK
-	jump .CheckBadges
+	sjump .CheckBadges
 
 .Charmander:
-	pokenamemem CHARMANDER, $0
+	getmonname CHARMANDER, $0
 	writetext OakLabReceivedKantoStarterText
 	playsound SFX_CAUGHT_MON
 	waitsfx
-	buttonsound
+	promptbutton
 	givepoke CHARMANDER, NO_FORM, 10, SITRUS_BERRY
 	setevent EVENT_GOT_A_POKEMON_FROM_OAK
-	jump .CheckBadges
+	sjump .CheckBadges
 
 .Squirtle:
-	pokenamemem SQUIRTLE, $0
+	getmonname SQUIRTLE, $0
 	writetext OakLabReceivedKantoStarterText
 	playsound SFX_CAUGHT_MON
 	waitsfx
-	buttonsound
+	promptbutton
 	givepoke SQUIRTLE, NO_FORM, 10, SITRUS_BERRY
 	setevent EVENT_GOT_A_POKEMON_FROM_OAK
-	jump .CheckBadges
+	sjump .CheckBadges
 
 .PartyFull:
 	writetext OakLabPartyFullText
@@ -100,21 +100,21 @@ Oak:
 	iftrue .CheckPokedex
 	checkevent EVENT_BEAT_ELITE_FOUR_AGAIN
 	iftrue .BattleOak
-	checkcode VAR_BADGES
+	readvar VAR_BADGES
 	ifequal 16, .Complain1
 	ifequal  8, .Complain2
 	writetext OakYesKantoBadgesText
-	buttonsound
+	promptbutton
 .CheckPokedex:
 	writetext OakLabDexCheckText
 	waitbutton
 	special ProfOaksPCBoot
 	checkevent EVENT_GOT_OVAL_CHARM_FROM_OAK
 	iftrue .NoOvalCharm
-	checkcode VAR_DEXSEEN
+	readvar VAR_DEXSEEN
 	ifless NUM_POKEMON, .NoOvalCharm
 	writetext OakLabSeenAllText
-	buttonsound
+	promptbutton
 	verbosegivekeyitem OVAL_CHARM
 	setevent EVENT_GOT_OVAL_CHARM_FROM_OAK
 	writetext OakLabOvalCharmText
@@ -122,10 +122,10 @@ Oak:
 .NoOvalCharm
 	checkevent EVENT_GOT_SHINY_CHARM_FROM_OAK
 	iftrue .NoShinyCharm
-	checkcode VAR_DEXCAUGHT
+	readvar VAR_DEXCAUGHT
 	ifless NUM_POKEMON, .NoShinyCharm
 	writetext OakLabCaughtAllText
-	buttonsound
+	promptbutton
 	verbosegivekeyitem SHINY_CHARM
 	setflag ENGINE_HAVE_SHINY_CHARM
 	setevent EVENT_GOT_SHINY_CHARM_FROM_OAK
@@ -154,25 +154,25 @@ Oak:
 	reloadmapafterbattle
 	opentext
 	writetext OakOpenMtSilverText
-	buttonsound
+	promptbutton
 	setevent EVENT_BEAT_PROF_OAK
 	setevent EVENT_OPENED_MT_SILVER
-	jump .CheckPokedex
+	sjump .CheckPokedex
 
 .NotReady:
 	writetext OakRefusedText
-	buttonsound
-	jump .CheckPokedex
+	promptbutton
+	sjump .CheckPokedex
 
 .Complain1:
 	writetext OakNoEliteFourRematchText
-	buttonsound
-	jump .CheckPokedex
+	promptbutton
+	sjump .CheckPokedex
 
 .Complain2:
 	writetext OakNoKantoBadgesText
-	buttonsound
-	jump .CheckPokedex
+	promptbutton
+	sjump .CheckPokedex
 
 EeveeDollScript:
 	turnobject OAKSLAB_OAK, RIGHT
@@ -237,7 +237,7 @@ OakLabPartyFullText:
 OakLabReceivedKantoStarterText:
 	text "<PLAYER> received"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "!"
 	done
 

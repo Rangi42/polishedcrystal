@@ -27,11 +27,11 @@ NavelRockRoofDailyLeafRematchCallback:
 	iftrue .Disappear
 	appear NAVELROCKROOF_GREEN
 .Disappear
-	return
+	endcallback
 
 .Appear:
 	appear NAVELROCKROOF_GREEN
-	return
+	endcallback
 
 Leaf:
 	special Special_FadeOutMusic
@@ -60,25 +60,25 @@ Leaf:
 .Sun
 	checkflag ENGINE_PLAYER_IS_FEMALE
 	iftrue .FemaleEndingSequence
-	checkcode VAR_FACING
+	readvar VAR_FACING
 	ifequal UP, .RightMaleEndingSequence
 	turnobject PLAYER, UP
 	moveobject NAVELROCKROOF_CHRIS, 7, 8
 	appear NAVELROCKROOF_CHRIS
-	jump .EndingSequence
+	sjump .EndingSequence
 
 .RightMaleEndingSequence:
 	applyonemovement PLAYER, slow_step_up
 	appear NAVELROCKROOF_CHRIS
-	jump .EndingSequence
+	sjump .EndingSequence
 
 .FemaleEndingSequence:
-	checkcode VAR_FACING
+	readvar VAR_FACING
 	ifequal UP, .RightFemaleEndingSequence
 	turnobject PLAYER, UP
 	moveobject NAVELROCKROOF_KRIS, 7, 8
 	appear NAVELROCKROOF_KRIS
-	jump .EndingSequence
+	sjump .EndingSequence
 
 .RightFemaleEndingSequence:
 	applyonemovement PLAYER, slow_step_up

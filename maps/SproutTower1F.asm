@@ -13,23 +13,38 @@ SproutTower1F_MapScriptHeader:
 	def_coord_events
 
 	def_bg_events
-	bg_event  5, 15, BGEVENT_JUMPTEXT, UnknownText_0x1846d6
-	bg_event 10, 15, BGEVENT_JUMPTEXT, UnknownText_0x1846d6
+	bg_event  5, 15, BGEVENT_JUMPTEXT, SproutTower1FStatueText
+	bg_event 10, 15, BGEVENT_JUMPTEXT, SproutTower1FStatueText
 
 	def_object_events
-	object_event  5,  4, SPRITE_SAGE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1845d8, -1
-	object_event  4,  7, SPRITE_SAGE, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x18460a, -1
-	object_event  9, 12, SPRITE_GRANNY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, GrannyScript_0x184504, -1
-	object_event  7,  9, SPRITE_TEACHER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x18469d, -1
+	object_event  5,  4, SPRITE_SAGE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, SproutTower1FSage1Text, -1
+	object_event  4,  7, SPRITE_SAGE, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, SproutTower1FSage2Text, -1
+	object_event  9, 12, SPRITE_GRANNY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, SproutTower1FGrannyScript, -1
+	object_event  7,  9, SPRITE_TEACHER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, SproutTower1FTeacherText, -1
 	object_event  1,  5, SPRITE_SAGE, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 4, GenericTrainerSageChow, -1
 	itemball_event 14,  7, PARALYZEHEAL, 1, EVENT_SPROUT_TOWER1F_PARALYZEHEAL
 
-GrannyScript_0x184504:
+SproutTower1FGrannyScript:
 	checkunits
-	iftrue .metric
-	jumptextfaceplayer UnknownText_0x184649_Imperial
-.metric
-	jumptextfaceplayer UnknownText_0x184649_Metric
+	iftrue_jumptextfaceplayer .MetricText
+	jumpthistextfaceplayer
+
+	text "A Bellsprout over"
+	line "100 feet tall…"
+
+	para "People say that it"
+	line "became the center"
+	cont "pillar here."
+	done
+
+.MetricText:
+	text "A Bellsprout over"
+	line "30 meters tall…"
+
+	para "People say that it"
+	line "became the center"
+	cont "pillar here."
+	done
 
 GenericTrainerSageChow:
 	generictrainer SAGE, CHOW, EVENT_BEAT_SAGE_CHOW, SageChowSeenText, SageChowBeatenText
@@ -55,13 +70,13 @@ SageChowBeatenText:
 	text "Th-Thank you!"
 	done
 
-UnknownText_0x1845d8:
+SproutTower1FSage1Text:
 	text "Only if you reach"
 	line "the top will you"
 	cont "obtain a TM."
 	done
 
-UnknownText_0x18460a:
+SproutTower1FSage2Text:
 	text "Sprout Tower was"
 	line "built long ago"
 
@@ -69,25 +84,7 @@ UnknownText_0x18460a:
 	line "#mon training."
 	done
 
-UnknownText_0x184649_Imperial:
-	text "A Bellsprout over"
-	line "100 feet tall…"
-
-	para "People say that it"
-	line "became the center"
-	cont "pillar here."
-	done
-
-UnknownText_0x184649_Metric:
-	text "A Bellsprout over"
-	line "30 meters tall…"
-
-	para "People say that it"
-	line "became the center"
-	cont "pillar here."
-	done
-
-UnknownText_0x18469d:
+SproutTower1FTeacherText:
 	text "See the pillar"
 	line "shaking?"
 
@@ -95,7 +92,7 @@ UnknownText_0x18469d:
 	line "ing upstairs."
 	done
 
-UnknownText_0x1846d6:
+SproutTower1FStatueText:
 	text "A #mon statue…"
 
 	para "It looks very"

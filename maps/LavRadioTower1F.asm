@@ -12,44 +12,41 @@ LavRadioTower1F_MapScriptHeader:
 	def_coord_events
 
 	def_bg_events
-	bg_event 11,  0, BGEVENT_JUMPTEXT, UnknownText_0x7f2e3
-	bg_event  5,  0, BGEVENT_JUMPTEXT, UnknownText_0x7f32d
+	bg_event 11,  0, BGEVENT_JUMPTEXT, LavRadioTower1FDirectoryText
+	bg_event  5,  0, BGEVENT_JUMPTEXT, LavRadioTower1FPokeFluteSignText
 
 	def_object_events
-	object_event  6,  6, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x7eebf, -1
-	object_event 15,  1, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x7eefa, -1
-	object_event  1,  3, SPRITE_POKEMANIAC, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x7ef90, -1
-	object_event  9,  1, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, GentlemanScript_0x7ee6c, -1
-	object_event 14,  6, SPRITE_POKEMANIAC, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, SuperNerdScript_0x7eea2, -1
+	object_event  6,  6, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, LavRadioTower1FReceptionistText, -1
+	object_event 15,  1, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, LavRadioTower1FOfficerText, -1
+	object_event  1,  3, SPRITE_POKEMANIAC, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, LavRadioTower1FSuperNerd1Text, -1
+	object_event  9,  1, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, LavRadioTower1FGentlemanScript, -1
+	object_event 14,  6, SPRITE_POKEMANIAC, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, LavRadioTower1FSuperNerd2Script, -1
 
 LavRadioTower1FUpstairsScript:
 	checkevent EVENT_EXORCISED_LAV_RADIO_TOWER
 	iftrue .Exorcised
 	warpmod 1, HAUNTED_RADIO_TOWER_2F
-	return
+	endcallback
 
 .Exorcised:
 	warpmod 1, LAV_RADIO_TOWER_2F
-	return
+	endcallback
 
-GentlemanScript_0x7ee6c:
+LavRadioTower1FGentlemanScript:
 	faceplayer
 	opentext
 	checkflag ENGINE_EXPN_CARD
-	iftrue_jumpopenedtext .UnknownText_0x7f141
-	checkevent EVENT_RETURNED_MACHINE_PART
-	iftrue .UnknownScript_0x7ee80
-	jumpopenedtext UnknownText_0x7effb
-
-.UnknownScript_0x7ee80:
-	writetext UnknownText_0x7f0a1
-	buttonsound
-	stringtotext .expncardname, $1
+	iftrue_jumpopenedtext .GotExpnCardText
+	checkevent EVENT_RESTORED_POWER_TO_KANTO
+	iffalse_jumpopenedtext .OffTheAirText
+	writetext .ReturnedMachinePartText
+	promptbutton
+	getstring .expncardname, $1
 	callstd receiveitem
 	setflag ENGINE_EXPN_CARD
 	jumpthisopenedtext
 
-.UnknownText_0x7f141:
+.GotExpnCardText:
 	text "With that thing,"
 	line "you can tune into"
 
@@ -59,12 +56,47 @@ GentlemanScript_0x7ee6c:
 	para "Gahahahaha!"
 	done
 
+.OffTheAirText:
+	text "Oh, no, no, no!"
+
+	para "We've been off the"
+	line "air ever since the"
+
+	para "Power Plant shut"
+	line "down."
+
+	para "All my efforts to"
+	line "start this station"
+
+	para "would be wasted if"
+	line "I can't broadcast."
+
+	para "I'll be ruined!"
+	done
+
+.ReturnedMachinePartText:
+	text "Ah! So you're the"
+	line "<PLAYER> who solved"
+
+	para "the Power Plant's"
+	line "problem?"
+
+	para "Thanks to you, I"
+	line "never lost my job."
+
+	para "I tell you, you're"
+	line "a real lifesaver!"
+
+	para "Please take this"
+	line "as my thanks."
+	done
+
 .expncardname
 	db "Expn.Card@"
 
-SuperNerdScript_0x7eea2:
+LavRadioTower1FSuperNerd2Script:
 	checkflag ENGINE_EXPN_CARD
-	iftrue_jumptextfaceplayer UnknownText_0x7f248
+	iftrue_jumptextfaceplayer LavRadioTower1FSuperNerd2Text_GotExpnCard
 	jumpthistextfaceplayer
 
 	text "Hey there!"
@@ -85,7 +117,7 @@ SuperNerdScript_0x7eea2:
 	line "better get one!"
 	done
 
-UnknownText_0x7eebf:
+LavRadioTower1FReceptionistText:
 	text "Welcome!"
 	line "Feel free to look"
 
@@ -93,7 +125,7 @@ UnknownText_0x7eebf:
 	line "this floor."
 	done
 
-UnknownText_0x7eefa:
+LavRadioTower1FOfficerText:
 	text "Sorry, but you can"
 	line "only tour the"
 	cont "ground floor."
@@ -108,7 +140,7 @@ UnknownText_0x7eefa:
 	line "up our security."
 	done
 
-UnknownText_0x7ef90:
+LavRadioTower1FSuperNerd1Text:
 	text "Many people are"
 	line "hard at work here"
 
@@ -120,42 +152,7 @@ UnknownText_0x7ef90:
 	cont "on good shows."
 	done
 
-UnknownText_0x7effb:
-	text "Oh, no, no, no!"
-
-	para "We've been off the"
-	line "air ever since the"
-
-	para "Power Plant shut"
-	line "down."
-
-	para "All my efforts to"
-	line "start this station"
-
-	para "would be wasted if"
-	line "I can't broadcast."
-
-	para "I'll be ruined!"
-	done
-
-UnknownText_0x7f0a1:
-	text "Ah! So you're the"
-	line "<PLAYER> who solved"
-
-	para "the Power Plant's"
-	line "problem?"
-
-	para "Thanks to you, I"
-	line "never lost my job."
-
-	para "I tell you, you're"
-	line "a real lifesaver!"
-
-	para "Please take this"
-	line "as my thanks."
-	done
-
-UnknownText_0x7f248:
+LavRadioTower1FSuperNerd2Text_GotExpnCard:
 	text "Hey there!"
 
 	para "I am the super"
@@ -172,7 +169,7 @@ UnknownText_0x7f248:
 	cont "off the air!"
 	done
 
-UnknownText_0x7f2e3:
+LavRadioTower1FDirectoryText:
 	text "1F Reception"
 	line "2F Sales"
 
@@ -183,7 +180,7 @@ UnknownText_0x7f2e3:
 	line "   Office"
 	done
 
-UnknownText_0x7f32d:
+LavRadioTower1FPokeFluteSignText:
 	text "Perk Up #mon"
 	line "with Mellow Sounds"
 
@@ -192,7 +189,7 @@ UnknownText_0x7f32d:
 	done
 
 ; TODO: use this text
-UnknownText_0x7f36b:
+LavRadioTower1FReferenceLibraryText:
 	text "Wow! A full rack"
 	line "of #mon CDs and"
 	cont "videos."

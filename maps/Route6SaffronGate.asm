@@ -14,11 +14,11 @@ Route6SaffronGate_MapScriptHeader:
 	def_bg_events
 
 	def_object_events
-	object_event  0,  4, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, OfficerScript_0x1926ea, -1
+	object_event  0,  4, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, Route6SaffronGuardScript, -1
 
-OfficerScript_0x1926ea:
-	checkevent EVENT_RETURNED_MACHINE_PART
-	iftrue_jumptextfaceplayer UnknownText_0x1927cb
+Route6SaffronGuardScript:
+	checkevent EVENT_RESTORED_POWER_TO_KANTO
+	iftrue_jumptextfaceplayer Route6SaffronGuardMagnetTrainText
 	jumpthistextfaceplayer
 
 	text "Welcome to Saffron"
@@ -41,7 +41,7 @@ OfficerScript_0x1926ea:
 	line "Plant."
 	done
 
-UnknownText_0x1927cb:
+Route6SaffronGuardMagnetTrainText:
 	text "The Magnet Train"
 	line "is the most famous"
 

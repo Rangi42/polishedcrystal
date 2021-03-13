@@ -52,7 +52,7 @@ PokemonMansion1FHiddenPPUp:
 	giveitem PP_UP
 	iffalse .PackFull
 	opentext
-	itemtotext PP_UP, $0
+	getitemname PP_UP, $0
 	writetext PokemonMansion1FFoundItemText
 	playsound SFX_ITEM
 	waitsfx
@@ -63,9 +63,9 @@ PokemonMansion1FHiddenPPUp:
 
 .PackFull:
 	opentext
-	itemtotext PP_UP, $0
+	getitemname PP_UP, $0
 	writetext PokemonMansion1FFoundItemText
-	buttonsound
+	promptbutton
 	jumpopenedtext PokemonMansion1FNoRoomForItemText
 
 BurglarPeteSeenText:
@@ -90,7 +90,7 @@ BurglarLouisBeatenText:
 PokemonMansion1FFoundItemText:
 	text "<PLAYER> found"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "!"
 	done
 

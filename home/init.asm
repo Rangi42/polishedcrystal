@@ -120,7 +120,7 @@ Init::
 	ld a, BANK(GameInit) ; aka BANK(WriteOAMDMACodeToHRAM)
 	rst Bankswitch
 
-	call WriteOAMDMACodeToHRAM
+	call WriteOAMDMACodeToHRAM ; far-ok
 
 	xor a
 	ldh [hMapAnims], a
@@ -138,6 +138,10 @@ Init::
 	ld a, 7
 	ldh [hWX], a
 	ldh [rWX], a
+
+	farcall InitCGBPals
+
+	farcall InitSGBBorder
 
 	ld a, %11100011
 	; LCD on
@@ -160,10 +164,6 @@ Init::
 	ldh [hSingleRet], a
 	ld a, $c3 ; jp
 	ldh [hFunctionJump], a
-
-	farcall InitSGBBorder
-
-	farcall InitCGBPals
 
 	ld a, HIGH(vBGMap1)
 	ldh [hBGMapAddress + 1], a
@@ -191,7 +191,7 @@ Init::
 	call InitSound
 	xor a
 	ld [wMapMusic], a
-	jp GameInit
+	jp GameInit ; far-ok
 
 ClearVRAM::
 ; Wipe VRAM banks 0 and 1

@@ -3,8 +3,7 @@ if !DEF(TM01)
 TM01 = const_value
 	enum_start 1
 endc
-	define _\@_1, "TM_\1"
-	const _\@_1
+	const TM_\1
 	enum \1_TMNUM
 ENDM
 
@@ -12,8 +11,7 @@ add_hm: MACRO
 if !DEF(HM01)
 HM01 = const_value
 endc
-	define _\@_1, "HM_\1"
-	const _\@_1
+	const HM_\1
 	enum \1_TMNUM
 ENDM
 

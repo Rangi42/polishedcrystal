@@ -60,6 +60,9 @@ INCLUDE "maps/BattleTowerBattleRoom.asm"
 INCLUDE "maps/BattleTowerElevator.asm"
 INCLUDE "maps/BattleTowerHallway.asm"
 INCLUDE "maps/BattleTowerOutside.asm"
+INCLUDE "maps/BattleFactory1F.asm"
+INCLUDE "maps/BattleFactoryHallway.asm"
+INCLUDE "maps/BattleFactoryBattleRoom.asm"
 
 
 SECTION "New Bark Scripts", ROMX
@@ -552,7 +555,6 @@ INCLUDE "maps/VermilionHouseFishingSpeechHouse.asm"
 INCLUDE "maps/VermilionMagnetTrainSpeechHouse.asm"
 INCLUDE "maps/VermilionPollutionSpeechHouse.asm"
 INCLUDE "maps/VermilionPort.asm"
-INCLUDE "maps/VermilionPortPassage.asm"
 INCLUDE "maps/VermilionSSAnneSpeechHouse.asm"
 INCLUDE "maps/PokemonFanClub.asm"
 

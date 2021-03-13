@@ -22,8 +22,7 @@ _InitScrollingMenuNoBGMapUpdate::
 _ScrollingMenu::
 	call ScrollingMenuJoyAction
 	jr c, .exit
-	jr nz, _ScrollingMenu
-	call ScrollingMenu_InitDisplay
+	call z, ScrollingMenu_InitDisplay
 	jr _ScrollingMenu
 
 .exit

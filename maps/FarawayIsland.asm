@@ -25,13 +25,13 @@ FarawayIsland_MapScriptHeader:
 	const FARAWAYISLAND_LAWRENCE
 
 FarawayIslandTrigger1:
-	priorityjump FarawayIsland_PlayerArrives
+	prioritysjump FarawayIsland_PlayerArrives
 FarawayIslandTrigger0:
 	end
 
 FarawayIslandVisited:
 	setevent EVENT_VISITED_FARAWAY_ISLAND
-	return
+	endcallback
 
 FarawayIslandSetupLawrence:
 	disappear FARAWAYISLAND_LAWRENCE
@@ -41,7 +41,7 @@ FarawayIslandSetupLawrence:
 	iftrue .Done
 	appear FARAWAYISLAND_LAWRENCE
 .Done
-	return
+	endcallback
 
 FarawayIsland_PlayerArrives:
 	applymovement FARAWAYISLAND_SAILOR, FarawayIslandSailorArrive1MovementData

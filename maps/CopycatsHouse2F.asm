@@ -30,12 +30,12 @@ CopycatsHouse2FCallback:
 	iftrue .Part1
 	disappear COPYCATSHOUSE2F_COPYCAT2
 	appear COPYCATSHOUSE2F_COPYCAT1
-	jump .Done
+	sjump .Done
 .Part1:
 	disappear COPYCATSHOUSE2F_COPYCAT1
 	appear COPYCATSHOUSE2F_COPYCAT2
 .Done:
-	return
+	endcallback
 
 Copycat1Script:
 	faceplayer
@@ -47,31 +47,31 @@ Copycat1Script:
 	iftrue CopycatFoundLostItemScript
 	applymovement COPYCATSHOUSE2F_COPYCAT1, CopycatSpinMovement
 	faceplayer
-	writebyte (PAL_NPC_RED) << 4
+	setval (PAL_NPC_RED) << 4
 	special Special_SetCopycatPalette
 	variablesprite SPRITE_COPYCAT, SPRITE_CHRIS
 	special MapCallbackSprites_LoadUsedSpritesGFX
-	checkevent EVENT_RETURNED_MACHINE_PART
+	checkevent EVENT_RESTORED_POWER_TO_KANTO
 	iftrue .ReturnedMachinePart
 	showtext .Greeting1Text
 	applymovement COPYCATSHOUSE2F_COPYCAT1, CopycatSpinMovement
-	jump CopycatRetortScript
+	sjump CopycatRetortScript
 
 .ReturnedMachinePart:
 	showtext .LostDoll1Text
 	applymovement COPYCATSHOUSE2F_COPYCAT1, CopycatSpinMovement
-	jump CopycatWorriedScript
+	sjump CopycatWorriedScript
 
 .GotPass:
 	applymovement COPYCATSHOUSE2F_COPYCAT1, CopycatSpinMovement
 	faceplayer
-	writebyte (PAL_NPC_RED) << 4
+	setval (PAL_NPC_RED) << 4
 	special Special_SetCopycatPalette
 	variablesprite SPRITE_COPYCAT, SPRITE_CHRIS
 	special MapCallbackSprites_LoadUsedSpritesGFX
 	showtext .Thanks1Text
 	applymovement COPYCATSHOUSE2F_COPYCAT1, CopycatSpinMovement
-	jump CopycatFinalScript
+	sjump CopycatFinalScript
 
 .Greeting1Text:
 	text "<PLAYER>: Hi! Do"
@@ -125,31 +125,31 @@ Copycat2Script:
 	iftrue CopycatFoundLostItemScript
 	applymovement COPYCATSHOUSE2F_COPYCAT2, CopycatSpinMovement
 	faceplayer
-	writebyte (PAL_NPC_BLUE) << 4
+	setval (PAL_NPC_BLUE) << 4
 	special Special_SetCopycatPalette
 	variablesprite SPRITE_COPYCAT, SPRITE_KRIS
 	special MapCallbackSprites_LoadUsedSpritesGFX
-	checkevent EVENT_RETURNED_MACHINE_PART
+	checkevent EVENT_RESTORED_POWER_TO_KANTO
 	iftrue .ReturnedMachinePart
 	showtext .Greeting2Text
 	applymovement COPYCATSHOUSE2F_COPYCAT2, CopycatSpinMovement
-	jump CopycatRetortScript
+	sjump CopycatRetortScript
 
 .ReturnedMachinePart:
 	showtext .LostDoll2Text
 	applymovement COPYCATSHOUSE2F_COPYCAT2, CopycatSpinMovement
-	jump CopycatWorriedScript
+	sjump CopycatWorriedScript
 
 .GotPass:
 	applymovement COPYCATSHOUSE2F_COPYCAT2, CopycatSpinMovement
 	faceplayer
-	writebyte (PAL_NPC_BLUE) << 4
+	setval (PAL_NPC_BLUE) << 4
 	special Special_SetCopycatPalette
 	variablesprite SPRITE_COPYCAT, SPRITE_KRIS
 	special MapCallbackSprites_LoadUsedSpritesGFX
 	showtext .Thanks2Text
 	applymovement COPYCATSHOUSE2F_COPYCAT2, CopycatSpinMovement
-	jump CopycatFinalScript
+	sjump CopycatFinalScript
 
 .Greeting2Text:
 	text "<PLAYER>: Hi. You"
@@ -195,7 +195,7 @@ Copycat2Script:
 	done
 CopycatRetortScript:
 	faceplayer
-	writebyte (PAL_NPC_GREEN) << 4
+	setval (PAL_NPC_GREEN) << 4
 	special Special_SetCopycatPalette
 	variablesprite SPRITE_COPYCAT, SPRITE_LASS
 	special MapCallbackSprites_LoadUsedSpritesGFX
@@ -210,7 +210,7 @@ CopycatRetortScript:
 
 CopycatWorriedScript:
 	faceplayer
-	writebyte (PAL_NPC_GREEN) << 4
+	setval (PAL_NPC_GREEN) << 4
 	special Special_SetCopycatPalette
 	variablesprite SPRITE_COPYCAT, SPRITE_LASS
 	special MapCallbackSprites_LoadUsedSpritesGFX
@@ -231,11 +231,11 @@ CopycatWorriedScript:
 CopycatFoundLostItemScript:
 	opentext
 	writetext .FoundDollText
-	buttonsound
+	promptbutton
 	takekeyitem LOST_ITEM
 	setevent EVENT_RETURNED_LOST_ITEM_TO_COPYCAT
 	clearevent EVENT_COPYCATS_HOUSE_2F_DOLL
-	jump CopycatGivePassScript
+	sjump CopycatGivePassScript
 
 .FoundDollText:
 	text "Copycat: Yay!"
@@ -253,7 +253,7 @@ CopycatReturnedLostItemScript:
 	opentext
 CopycatGivePassScript:
 	writetext .GivePassText
-	buttonsound
+	promptbutton
 	verbosegivekeyitem PASS
 	iffalse_endtext
 	setevent EVENT_GOT_PASS_FROM_COPYCAT
@@ -279,7 +279,7 @@ CopycatGivePassScript:
 
 CopycatFinalScript:
 	faceplayer
-	writebyte (PAL_NPC_GREEN) << 4
+	setval (PAL_NPC_GREEN) << 4
 	special Special_SetCopycatPalette
 	variablesprite SPRITE_COPYCAT, SPRITE_LASS
 	special MapCallbackSprites_LoadUsedSpritesGFX
@@ -303,7 +303,7 @@ CopycatsDodrioScript:
 	opentext
 	writetext .Text1
 	cry DODRIO
-	buttonsound
+	promptbutton
 	jumpthisopenedtext
 
 	text "Mirror, mirror on"

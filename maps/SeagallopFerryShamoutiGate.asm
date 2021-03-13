@@ -20,7 +20,7 @@ SeagallopFerryShamoutiGate_MapScriptHeader:
 	const SEAGALLOPFERRYSHAMOUTIGATE_SAILOR
 
 SeagallopFerryShamoutiGateTrigger1:
-	priorityjump SeagallopFerryShamoutiGate_PlayerArrives
+	prioritysjump SeagallopFerryShamoutiGate_PlayerArrives
 SeagallopFerryShamoutiGateTrigger0:
 	end
 
@@ -44,7 +44,7 @@ SeagallopFerryShamoutiGateSailorScript:
 	closewindow
 	ifequal $1, .ToVermilion
 	ifequal $2, .ToValencia
-	jump .RefuseFerry
+	sjump .RefuseFerry
 
 .OnlyVermilion
 	writetext SeagallopFerryShamoutiToVermilionQuestionText

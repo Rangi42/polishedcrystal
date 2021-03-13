@@ -46,7 +46,7 @@ VioletCity_MapScriptHeader:
 
 VioletCityFlyPoint:
 	setflag ENGINE_FLYPOINT_VIOLET
-	return
+	endcallback
 
 VioletCityEarlScript:
 	applymovement VIOLETCITY_EARL, VioletCitySpinningEarl_MovementData
@@ -70,7 +70,7 @@ VioletCityEarlScript:
 	special RestartMapMusic
 	opentext
 	writetext Text_HereTeacherIAm
-	buttonsound
+	promptbutton
 	verbosegivekeyitem TYPE_CHART
 	writetext Text_EarlsTypeChart
 	waitbutton

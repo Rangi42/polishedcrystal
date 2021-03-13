@@ -82,6 +82,7 @@ SAVE_VERSION EQU 1
 	const PARTYMENUACTION_GIVE_MON_FEMALE ; unused?
 	const PARTYMENUACTION_GIVE_ITEM
 	const PARTYMENUACTION_MOVE_RELEARNER
+	const PARTYMENUACTION_BATTLE_TOWER
 ; PrintPartyMenuActionText arguments (see engine/pokemon/party_menu.asm)
 	const_def $f0
 	const PARTYMENUTEXT_HEAL_PSN

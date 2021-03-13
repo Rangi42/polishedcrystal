@@ -44,7 +44,7 @@ _PlayerDecorationMenu:
 .MenuData
 	db STATICMENU_CURSOR | STATICMENU_WRAP ; flags
 	db 0 ; items
-	dw wd002
+	dw wNumOwnedDecoCategories
 	dw PlaceNthMenuStrings
 	dw .pointers
 
@@ -75,7 +75,7 @@ _PlayerDecorationMenu:
 	ld a, 7
 	call .AppendToStringBuffer2
 	ld hl, wStringBuffer2
-	ld de, wd002
+	ld de, wDecoNameBuffer
 	ld bc, ITEM_NAME_LENGTH
 	rst CopyBytes
 	ret
@@ -132,7 +132,7 @@ _PlayerDecorationMenu:
 
 Deco_FillTempWithMinusOne:
 	xor a
-	ld hl, wd002
+	ld hl, wNumOwnedDecoCategories
 	ld [hli], a
 	ld a, -1
 	ld bc, $10
@@ -158,7 +158,7 @@ CheckAllDecorationFlags:
 	jr .loop
 
 AppendDecoIndex:
-	ld hl, wd002
+	ld hl, wNumOwnedDecoCategories
 	inc [hl]
 	ld e, [hl]
 	ld d, $0
@@ -173,7 +173,7 @@ FindOwnedDecosInCategory:
 	pop hl
 	call CheckAllDecorationFlags
 	pop bc
-	ld a, [wd002]
+	ld a, [wNumOwnedDecoCategories]
 	and a
 	ret z
 
@@ -341,7 +341,7 @@ DecoExitMenu:
 	ret
 
 PopulateDecoCategoryMenu:
-	ld a, [wd002]
+	ld a, [wNumOwnedDecoCategories]
 	and a
 	jr z, .empty
 	cp 8
@@ -351,14 +351,11 @@ PopulateDecoCategoryMenu:
 	ld hl, .NonscrollingMenuHeader
 	call LoadMenuHeader
 	call DoNthMenu
-	jr c, .no_action_1
-	call DoDecorationAction2
-
-.no_action_1
+	call nc, DoDecorationAction2
 	jp ExitMenu
 
 .beyond_eight
-	ld hl, wd002
+	ld hl, wNumOwnedDecoCategories
 	ld e, [hl]
 	dec [hl]
 	ld d, 0
@@ -375,10 +372,7 @@ PopulateDecoCategoryMenu:
 	call ScrollingMenu
 	ld a, [wMenuJoypad]
 	cp 2
-	jr z, .no_action_2
-	call DoDecorationAction2
-
-.no_action_2
+	call nz, DoDecorationAction2
 	jp ExitMenu
 
 .empty
@@ -387,7 +381,7 @@ PopulateDecoCategoryMenu:
 
 .NothingToChooseText:
 	; There's nothing to choose.
-	text_jump UnknownText_0x1bc471
+	text_far _NothingToChooseText
 	text_end
 
 .NonscrollingMenuHeader:
@@ -399,7 +393,7 @@ PopulateDecoCategoryMenu:
 .NonscrollingMenuData:
 	db STATICMENU_CURSOR | STATICMENU_WRAP
 	db 0 ; items
-	dw wd002
+	dw wDecoNameBuffer
 	dw DecorationMenuFunction
 	dw DecorationAttributes
 
@@ -413,7 +407,7 @@ PopulateDecoCategoryMenu:
 	db SCROLLINGMENU_DISPLAY_ARROWS ; flags
 	db 8, 0 ; rows, columns
 	db SCROLLINGMENU_ITEMS_NORMAL ; horizontal spacing
-	dbw 0, wd002 ; text pointer
+	dbw 0, wDecoNameBuffer ; text pointer
 	dba DecorationMenuFunction
 	dbw 0, 0
 	dbw 0, 0
@@ -810,7 +804,7 @@ DecoAction_SetItUp_Ornament:
 	ret
 
 WhichSidePutOnText:
-	text_jump UnknownText_0x1bc48c
+	text_far _WhichSidePutOnText
 	text_end
 
 DecoAction_PutItAway_Ornament:
@@ -835,7 +829,7 @@ DecoAction_PutItAway_Ornament:
 	ret
 
 WhichSidePutAwayText:
-	text_jump UnknownText_0x1bc4b2
+	text_far _WhichSidePutAwayText
 	text_end
 
 DecoAction_AskWhichSide:
@@ -884,23 +878,23 @@ WhichSideMenuData:
 
 DecoText_PutAwayTheDeco:
 	; Put away the @ .
-	text_jump UnknownText_0x1bc4d7
+	text_far _PutAwayTheDecoText
 	text_end
 
 DecoText_NothingToPutAway:
-	text_jump UnknownText_0x1bc4ec
+	text_far _NothingToPutAwayText
 	text_end
 
 DecoText_SetUpTheDeco:
-	text_jump UnknownText_0x1bc509
+	text_far _SetUpTheDecoText
 	text_end
 
 DecoText_PutAwayAndSetUp:
-	text_jump UnknownText_0x1bc51c
+	text_far _PutAwayAndSetUpText
 	text_end
 
 DecoText_AlreadySetUp:
-	text_jump UnknownText_0x1bc546
+	text_far _AlreadySetUpText
 	text_end
 
 GetDecorationName_c_de:
@@ -974,20 +968,20 @@ DecorationDesc_PosterPointers:
 
 DecorationDesc_TownMapPoster:
 	opentext
-	farwritetext UnknownText_0x1bc55d
+	farwritetext _LookTownMapText
 	waitbutton
 	special Special_TownMap
 	closetext
 	end
 
 DecorationDesc_PikachuPoster:
-	farjumptext UnknownText_0x1bc570
+	farjumptext _LookPikachuPosterText
 
 DecorationDesc_ClefairyPoster:
-	farjumptext UnknownText_0x1bc591
+	farjumptext _LookClefairyPosterText
 
 DecorationDesc_MarillPoster:
-	farjumptext UnknownText_0x1bc5b3
+	farjumptext _LookJigglypuffPosterText
 
 DecorationDesc_NullPoster:
 	end
@@ -1011,7 +1005,7 @@ DecorationDesc_Ornament:
 	ret
 
 .OrnamentScript:
-	farjumptext UnknownText_0x1bc5d7
+	farjumptext _LookAdorableDecoText
 
 DecorationDesc_Console:
 	ld a, [wDecoConsole]
@@ -1032,7 +1026,7 @@ DecorationDesc_GiantOrnament:
 	ret
 
 .BigDollScript:
-	farjumptext UnknownText_0x1bc5ef
+	farjumptext _LookGiantDecoText
 
 ToggleMaptileDecorations:
 	lb de, 0, 4 ; bed coordinates

@@ -14,37 +14,37 @@ TeamRocketBaseB2F_MapScriptHeader:
 	def_coord_events
 	coord_event  5, 14, 0, LanceHealsScript
 	coord_event  4, 13, 0, LanceHealsScript
-	coord_event 14, 11, 1, UnknownScript_0x6cf95
-	coord_event 15, 11, 1, UnknownScript_0x6cf9c
-	coord_event 14, 12, 2, UnknownScript_0x6d075
-	coord_event 15, 12, 2, UnknownScript_0x6d075
-	coord_event 12,  3, 2, UnknownScript_0x6d07a
-	coord_event 12, 10, 2, UnknownScript_0x6d07a
-	coord_event 12, 11, 2, UnknownScript_0x6d07a
+	coord_event 14, 11, 1, RocketBaseBossFLeft
+	coord_event 15, 11, 1, RocketBaseBossFRight
+	coord_event 14, 12, 2, RocketBaseCantLeaveScript
+	coord_event 15, 12, 2, RocketBaseCantLeaveScript
+	coord_event 12,  3, 2, RocketBaseLancesSideScript
+	coord_event 12, 10, 2, RocketBaseLancesSideScript
+	coord_event 12, 11, 2, RocketBaseLancesSideScript
 
 	def_bg_events
-	bg_event 14, 12, BGEVENT_IFNOTSET, MapTeamRocketBaseB2FSignpostPtr1
-	bg_event 15, 12, BGEVENT_IFNOTSET, MapTeamRocketBaseB2FSignpostPtr1
-	bg_event 17,  9, BGEVENT_READ, MapTeamRocketBaseB2FSignpost21Script
-	bg_event 16,  9, BGEVENT_READ, MapTeamRocketBaseB2FSignpost21Script
-	bg_event 15,  9, BGEVENT_READ, MapTeamRocketBaseB2FSignpost21Script
-	bg_event 14,  9, BGEVENT_READ, MapTeamRocketBaseB2FSignpost21Script
-	bg_event 13,  9, BGEVENT_READ, MapTeamRocketBaseB2FSignpost21Script
-	bg_event 12,  9, BGEVENT_READ, MapTeamRocketBaseB2FSignpost21Script
-	bg_event 12,  8, BGEVENT_READ, MapTeamRocketBaseB2FSignpost21Script
-	bg_event 12,  7, BGEVENT_READ, MapTeamRocketBaseB2FSignpost21Script
-	bg_event 12,  6, BGEVENT_READ, MapTeamRocketBaseB2FSignpost21Script
-	bg_event 12,  5, BGEVENT_READ, MapTeamRocketBaseB2FSignpost21Script
-	bg_event 12,  4, BGEVENT_READ, MapTeamRocketBaseB2FSignpost21Script
-	bg_event 13,  4, BGEVENT_READ, MapTeamRocketBaseB2FSignpost21Script
-	bg_event 14,  4, BGEVENT_READ, MapTeamRocketBaseB2FSignpost21Script
-	bg_event 15,  4, BGEVENT_READ, MapTeamRocketBaseB2FSignpost21Script
-	bg_event 16,  4, BGEVENT_READ, MapTeamRocketBaseB2FSignpost21Script
-	bg_event 17,  4, BGEVENT_READ, MapTeamRocketBaseB2FSignpost21Script
-	bg_event 17,  5, BGEVENT_READ, MapTeamRocketBaseB2FSignpost21Script
-	bg_event 17,  6, BGEVENT_READ, MapTeamRocketBaseB2FSignpost21Script
-	bg_event 17,  7, BGEVENT_READ, MapTeamRocketBaseB2FSignpost21Script
-	bg_event 17,  8, BGEVENT_READ, MapTeamRocketBaseB2FSignpost21Script
+	bg_event 14, 12, BGEVENT_IFNOTSET, TeamRocketBaseB2FLockedDoor
+	bg_event 15, 12, BGEVENT_IFNOTSET, TeamRocketBaseB2FLockedDoor
+	bg_event 17,  9, BGEVENT_READ, TeamRocketBaseB2FTransmitterScript
+	bg_event 16,  9, BGEVENT_READ, TeamRocketBaseB2FTransmitterScript
+	bg_event 15,  9, BGEVENT_READ, TeamRocketBaseB2FTransmitterScript
+	bg_event 14,  9, BGEVENT_READ, TeamRocketBaseB2FTransmitterScript
+	bg_event 13,  9, BGEVENT_READ, TeamRocketBaseB2FTransmitterScript
+	bg_event 12,  9, BGEVENT_READ, TeamRocketBaseB2FTransmitterScript
+	bg_event 12,  8, BGEVENT_READ, TeamRocketBaseB2FTransmitterScript
+	bg_event 12,  7, BGEVENT_READ, TeamRocketBaseB2FTransmitterScript
+	bg_event 12,  6, BGEVENT_READ, TeamRocketBaseB2FTransmitterScript
+	bg_event 12,  5, BGEVENT_READ, TeamRocketBaseB2FTransmitterScript
+	bg_event 12,  4, BGEVENT_READ, TeamRocketBaseB2FTransmitterScript
+	bg_event 13,  4, BGEVENT_READ, TeamRocketBaseB2FTransmitterScript
+	bg_event 14,  4, BGEVENT_READ, TeamRocketBaseB2FTransmitterScript
+	bg_event 15,  4, BGEVENT_READ, TeamRocketBaseB2FTransmitterScript
+	bg_event 16,  4, BGEVENT_READ, TeamRocketBaseB2FTransmitterScript
+	bg_event 17,  4, BGEVENT_READ, TeamRocketBaseB2FTransmitterScript
+	bg_event 17,  5, BGEVENT_READ, TeamRocketBaseB2FTransmitterScript
+	bg_event 17,  6, BGEVENT_READ, TeamRocketBaseB2FTransmitterScript
+	bg_event 17,  7, BGEVENT_READ, TeamRocketBaseB2FTransmitterScript
+	bg_event 17,  8, BGEVENT_READ, TeamRocketBaseB2FTransmitterScript
 	bg_event 26,  7, BGEVENT_ITEM + FULL_HEAL, EVENT_TEAM_ROCKET_BASE_B2F_HIDDEN_FULL_HEAL
 
 	def_object_events
@@ -81,49 +81,49 @@ TeamRocketBaseB2F_MapScriptHeader:
 TransmitterDoorCallback:
 	checkevent EVENT_OPENED_DOOR_TO_ROCKET_HIDEOUT_TRANSMITTER
 	iftrue .Change
-	return
+	endcallback
 
 .Change:
 	changeblock 14, 12, $7
-	return
+	endcallback
 
-UnknownScript_0x6cf95:
+RocketBaseBossFLeft:
 	moveobject TEAMROCKETBASEB2F_LANCE, 9, 13
-	jump UnknownScript_0x6cfac
+	sjump RocketBaseBossFScript
 
-UnknownScript_0x6cf9c:
+RocketBaseBossFRight:
 	moveobject TEAMROCKETBASEB2F_ARIANA, 21, 16
 	moveobject TEAMROCKETBASEB2F_PETREL, 21, 16
 	moveobject TEAMROCKETBASEB2F_DRAGONITE, 10, 13
 	moveobject TEAMROCKETBASEB2F_LANCE, 10, 13
-UnknownScript_0x6cfac:
+RocketBaseBossFScript:
 	appear TEAMROCKETBASEB2F_ARIANA
 	appear TEAMROCKETBASEB2F_PETREL
-	showtext UnknownText_0x6d2ad
+	showtext RocketBaseExecutiveFHoldItText
 	turnobject PLAYER, DOWN
 	showemote EMOTE_SHOCK, PLAYER, 15
-	applymovement PLAYER, MovementData_0x6d21f
+	applymovement PLAYER, RocketBasePlayerApproachesBossFMovement
 	playmusic MUSIC_ROCKET_ENCOUNTER
-	applymovement TEAMROCKETBASEB2F_ARIANA, MovementData_0x6d224
+	applymovement TEAMROCKETBASEB2F_ARIANA, RocketBaseBossFApproachesPlayerMovement
 	turnobject PLAYER, UP
-	applymovement TEAMROCKETBASEB2F_PETREL, MovementData_0x6d22f
-	showtext UnknownText_0x6d2c3
+	applymovement TEAMROCKETBASEB2F_PETREL, RocketBaseGruntApproachesPlayerMovement
+	showtext RocketBaseBossFThrashText
 	cry DRAGONITE
 	turnobject TEAMROCKETBASEB2F_ARIANA, LEFT
 	turnobject PLAYER, LEFT
 	appear TEAMROCKETBASEB2F_DRAGONITE
-	applymovement TEAMROCKETBASEB2F_DRAGONITE, MovementData_0x6d236
-	applymovement TEAMROCKETBASEB2F_ARIANA, MovementData_0x6d23b
-	applymovement TEAMROCKETBASEB2F_PETREL, MovementData_0x6d24c
+	applymovement TEAMROCKETBASEB2F_DRAGONITE, RocketBaseDragoniteAttacksMovement
+	applymovement TEAMROCKETBASEB2F_ARIANA, RocketBaseBossFHitMovement
+	applymovement TEAMROCKETBASEB2F_PETREL, RocketBaseGruntProtectsBossFMovement
 	appear TEAMROCKETBASEB2F_LANCE
-	applymovement TEAMROCKETBASEB2F_LANCE, MovementData_0x6d244
-	showtext UnknownText_0x6d38c
+	applymovement TEAMROCKETBASEB2F_LANCE, RocketBaseLanceApproachesBossFMovement
+	showtext RocketBaseLanceShareFunText
 	turnobject PLAYER, RIGHT
-	applymovement TEAMROCKETBASEB2F_ARIANA, MovementData_0x6d241
-	showtext UnknownText_0x6d3bd
+	applymovement TEAMROCKETBASEB2F_ARIANA, RocketBaseBossFFacesPlayerMovement
+	showtext RocketBaseBossDontMeddleText
 	applyonemovement TEAMROCKETBASEB2F_PETREL, big_step_left
 	applyonemovement TEAMROCKETBASEB2F_ARIANA, big_step_left
-	winlosstext UnknownText_0x6d45c, 0
+	winlosstext RocketBaseBossWinText, 0
 	setlasttalked TEAMROCKETBASEB2F_ARIANA
 	loadtrainer ARIANA, ARIANA2
 	startbattle
@@ -133,7 +133,7 @@ UnknownScript_0x6cfac:
 	setevent EVENT_TEAM_ROCKET_BASE_B2F_LANCE
 	reloadmapafterbattle
 	setevent EVENT_BEAT_ARIANA_2
-	showtext UnknownText_0x6d4c6
+	showtext RocketBaseBossRetreatText
 	special Special_FadeBlackQuickly
 	special Special_ReloadSpritesNoPalettes
 	disappear TEAMROCKETBASEB2F_PETREL
@@ -146,24 +146,24 @@ UnknownScript_0x6cfac:
 	setscene $2
 	clearevent EVENT_TEAM_ROCKET_BASE_B2F_LANCE
 	turnobject TEAMROCKETBASEB2F_LANCE, DOWN
-	showtext UnknownText_0x6d5d8
-	applymovement TEAMROCKETBASEB2F_LANCE, MovementData_0x6d250
+	showtext RocketBaseLancePostBattleText
+	applymovement TEAMROCKETBASEB2F_LANCE, RocketBaseLanceChecksPlayerMovement
 	turnobject PLAYER, UP
-	showtext UnknownText_0x6d64e
+	showtext RocketBaseLancePowerOffText
 	follow TEAMROCKETBASEB2F_LANCE, PLAYER
-	applymovement TEAMROCKETBASEB2F_LANCE, MovementData_0x6d254
+	applymovement TEAMROCKETBASEB2F_LANCE, RocketBaseLanceApproachesMachineMovement
 	stopfollow
-	applymovement TEAMROCKETBASEB2F_LANCE, MovementData_0x6d258
-	showtext UnknownText_0x6d6cf
-	applymovement TEAMROCKETBASEB2F_LANCE, MovementData_0x6d267
+	applymovement TEAMROCKETBASEB2F_LANCE, RocketBaseLancePacesMovement
+	showtext RockerBaseLanceElectrodeFaintText
+	applymovement TEAMROCKETBASEB2F_LANCE, RocketBaseLanceApproachesElectrodesMovement
 	disappear TEAMROCKETBASEB2F_LANCE
 
-UnknownScript_0x6d075:
-	applymovement PLAYER, MovementData_0x6d271
+RocketBaseCantLeaveScript:
+	applymovement PLAYER, RocketBasePlayerCantLeaveElectrodesMovement
 	end
 
-UnknownScript_0x6d07a:
-	showtext UnknownText_0x6d7ea
+RocketBaseLancesSideScript:
+	showtext RocketBaseLancesSideText
 	applyonemovement PLAYER, step_left
 	end
 
@@ -179,14 +179,14 @@ LanceHealsScript:
 	showtext LanceHealsText2
 	setscene $1
 	setevent EVENT_LANCE_HEALED_YOU_IN_TEAM_ROCKET_BASE
-	checkcode VAR_FACING
-	ifequal RIGHT, UnknownScript_0x6d0be
-	applymovement TEAMROCKETBASEB2F_LANCE, MovementData_0x6d212
+	readvar VAR_FACING
+	ifequal RIGHT, .FacingRight
+	applymovement TEAMROCKETBASEB2F_LANCE, RocketBaseLanceLeavesAfterHealMovement
 	disappear TEAMROCKETBASEB2F_LANCE
 	end
 
-UnknownScript_0x6d0be:
-	applymovement TEAMROCKETBASEB2F_LANCE, MovementData_0x6d219
+.FacingRight:
+	applymovement TEAMROCKETBASEB2F_LANCE, RocketBaseLanceLeavesAfterHealRightMovement
 	disappear TEAMROCKETBASEB2F_LANCE
 	end
 
@@ -234,77 +234,77 @@ RocketElectrode1:
 	cry ELECTRODE
 	loadwildmon ELECTRODE, 33
 	startbattle
-	iftrue UnknownScript_0x6d182
+	iftrue TeamRocketBaseB2FReloadMap
 	disappear TEAMROCKETBASEB2F_ELECTRODE1
 	disappear TEAMROCKETBASEB2F_ELECTRODE4
 	checkevent EVENT_TEAM_ROCKET_BASE_B2F_ELECTRODE_1
-	iffalse UnknownScript_0x6d182
+	iffalse TeamRocketBaseB2FReloadMap
 	checkevent EVENT_TEAM_ROCKET_BASE_B2F_ELECTRODE_2
-	iffalse UnknownScript_0x6d182
+	iffalse TeamRocketBaseB2FReloadMap
 	checkevent EVENT_TEAM_ROCKET_BASE_B2F_ELECTRODE_3
-	iffalse UnknownScript_0x6d182
+	iffalse TeamRocketBaseB2FReloadMap
 	reloadmapafterbattle
 	special PlayMapMusic
-	applymovement PLAYER, MovementData_0x6d28c
-	jump UnknownScript_0x6d184
+	applymovement PLAYER, RocketBasePlayerLeavesElectrodesMovement1
+	sjump RocketBaseElectrodeScript
 
 RocketElectrode2:
 	cry ELECTRODE
 	loadwildmon ELECTRODE, 33
 	startbattle
-	iftrue UnknownScript_0x6d182
+	iftrue TeamRocketBaseB2FReloadMap
 	disappear TEAMROCKETBASEB2F_ELECTRODE2
 	disappear TEAMROCKETBASEB2F_ELECTRODE5
 	checkevent EVENT_TEAM_ROCKET_BASE_B2F_ELECTRODE_1
-	iffalse UnknownScript_0x6d182
+	iffalse TeamRocketBaseB2FReloadMap
 	checkevent EVENT_TEAM_ROCKET_BASE_B2F_ELECTRODE_2
-	iffalse UnknownScript_0x6d182
+	iffalse TeamRocketBaseB2FReloadMap
 	checkevent EVENT_TEAM_ROCKET_BASE_B2F_ELECTRODE_3
-	iffalse UnknownScript_0x6d182
+	iffalse TeamRocketBaseB2FReloadMap
 	reloadmapafterbattle
 	special PlayMapMusic
-	applymovement PLAYER, MovementData_0x6d299
-	jump UnknownScript_0x6d184
+	applymovement PLAYER, RocketBasePlayerLeavesElectrodesMovement2
+	sjump RocketBaseElectrodeScript
 
 RocketElectrode3:
 	cry ELECTRODE
 	loadwildmon ELECTRODE, 33
 	startbattle
-	iftrue UnknownScript_0x6d182
+	iftrue TeamRocketBaseB2FReloadMap
 	disappear TEAMROCKETBASEB2F_ELECTRODE3
 	disappear TEAMROCKETBASEB2F_ELECTRODE6
 	checkevent EVENT_TEAM_ROCKET_BASE_B2F_ELECTRODE_1
-	iffalse UnknownScript_0x6d182
+	iffalse TeamRocketBaseB2FReloadMap
 	checkevent EVENT_TEAM_ROCKET_BASE_B2F_ELECTRODE_2
-	iffalse UnknownScript_0x6d182
+	iffalse TeamRocketBaseB2FReloadMap
 	checkevent EVENT_TEAM_ROCKET_BASE_B2F_ELECTRODE_3
-	iffalse UnknownScript_0x6d182
+	iffalse TeamRocketBaseB2FReloadMap
 	reloadmapafterbattle
 	special PlayMapMusic
-	applymovement PLAYER, MovementData_0x6d2a4
-	jump UnknownScript_0x6d184
+	applymovement PLAYER, RocketBasePlayerLeavesElectrodesMovement3
+	sjump RocketBaseElectrodeScript
 
-UnknownScript_0x6d182:
+TeamRocketBaseB2FReloadMap:
 	reloadmapafterbattle
 	end
 
-UnknownScript_0x6d184:
+RocketBaseElectrodeScript:
 	moveobject TEAMROCKETBASEB2F_LANCE, 18, 6
 	appear TEAMROCKETBASEB2F_LANCE
-	applymovement TEAMROCKETBASEB2F_LANCE, MovementData_0x6d27a
+	applymovement TEAMROCKETBASEB2F_LANCE, RocketBaseLanceLeavesElectrodesMovement
 	turnobject PLAYER, RIGHT
 	opentext
-	writetext UnknownText_0x6d809
-	buttonsound
+	writetext RocketBaseLanceElectrodeDoneText
+	promptbutton
 	verbosegivetmhm TM_THIEF
 	setevent EVENT_GOT_TM46_THIEF_FROM_LANCE
-	writetext UnknownText_0x6d8f8
+	writetext RocketBaseLanceWhirlpoolText
 	waitbutton
 	closetext
 	turnobject TEAMROCKETBASEB2F_LANCE, DOWN
-	showtext UnknownText_0x6d994
+	showtext RocketBaseLanceMonMasterText
 	turnobject PLAYER, DOWN
-	applymovement TEAMROCKETBASEB2F_LANCE, MovementData_0x6d283
+	applymovement TEAMROCKETBASEB2F_LANCE, RocketBaseLanceLeavesBaseMovement
 	disappear TEAMROCKETBASEB2F_LANCE
 	setevent EVENT_CLEARED_ROCKET_HIDEOUT
 	clearflag ENGINE_ROCKET_SIGNAL_ON_CH20
@@ -320,15 +320,12 @@ UnknownScript_0x6d184:
 	setevent EVENT_SECURITY_CAMERA_5
 	end
 
-MapTeamRocketBaseB2FSignpostPtr1:
+TeamRocketBaseB2FLockedDoor:
 	dw EVENT_OPENED_DOOR_TO_ROCKET_HIDEOUT_TRANSMITTER
 	opentext
 	checkevent EVENT_LEARNED_HAIL_GIOVANNI
-	iftrue UnknownScript_0x6d1e8
-	jumpopenedtext UnknownText_0x6dd39
-
-UnknownScript_0x6d1e8:
-	writetext UnknownText_0x6dd6b
+	iffalse_jumpopenedtext RocketBaseDoorNoPasswordText
+	writetext RocketBaseDoorKnowPasswordText
 	waitbutton
 	playsound SFX_ENTER_DOOR
 	changeblock 14, 12, $7
@@ -338,18 +335,32 @@ UnknownScript_0x6d1e8:
 	waitsfx
 	end
 
-MapTeamRocketBaseB2FSignpost21Script:
-	opentext
+TeamRocketBaseB2FTransmitterScript:
 	checkevent EVENT_CLEARED_ROCKET_HIDEOUT
-	iftrue UnknownScript_0x6d207
-	jumpopenedtext UnknownText_0x6dda7
+	iftrue_jumptext .DeactivateTransmitterText
+	jumpthistext
 
-UnknownScript_0x6d207:
-	jumpopenedtext UnknownText_0x6de03
+	text "It's the radio"
+	line "transmitter that's"
 
-MovementData_0x6d212:
+	para "sending the"
+	line "sinister signal."
+
+	para "It's working at"
+	line "full capacity."
+	done
+
+.DeactivateTransmitterText:
+	text "The radio trans-"
+	line "mitter has finally"
+
+	para "stopped its evil"
+	line "broadcast."
+	done
+
+RocketBaseLanceLeavesAfterHealMovement:
 	step_right
-MovementData_0x6d219:
+RocketBaseLanceLeavesAfterHealRightMovement:
 	step_right
 	step_right
 	step_right
@@ -357,14 +368,14 @@ MovementData_0x6d219:
 	step_right
 	step_end
 
-MovementData_0x6d21f:
+RocketBasePlayerApproachesBossFMovement:
 	step_down
 	step_down
 	step_down
 	turn_head_right
 	step_end
 
-MovementData_0x6d224:
+RocketBaseBossFApproachesPlayerMovement:
 	run_step_left
 	run_step_left
 	run_step_up
@@ -377,7 +388,7 @@ MovementData_0x6d224:
 	turn_head_down
 	step_end
 
-MovementData_0x6d22f:
+RocketBaseGruntApproachesPlayerMovement:
 	run_step_left
 	run_step_left
 	run_step_up
@@ -386,14 +397,14 @@ MovementData_0x6d22f:
 	run_step_left
 	step_end
 
-MovementData_0x6d236:
+RocketBaseDragoniteAttacksMovement:
 	run_step_right
 	run_step_right
 	run_step_right
 	run_step_right
 	step_end
 
-MovementData_0x6d23b:
+RocketBaseBossFHitMovement:
 	fix_facing
 	set_sliding
 	jump_step_right
@@ -401,36 +412,36 @@ MovementData_0x6d23b:
 	remove_fixed_facing
 	step_end
 
-MovementData_0x6d241:
+RocketBaseBossFFacesPlayerMovement:
 	slow_step_down
 	turn_head_left
 	step_end
 
-MovementData_0x6d244:
+RocketBaseLanceApproachesBossFMovement:
 	step_right
 	step_right
 	step_right
 	step_end
 
-MovementData_0x6d24c:
+RocketBaseGruntProtectsBossFMovement:
 	run_step_left
 	run_step_up
 	turn_head_left
 	step_end
 
-MovementData_0x6d250:
+RocketBaseLanceChecksPlayerMovement:
 	step_right
 	step_right
 	turn_head_down
 	step_end
 
-MovementData_0x6d254:
+RocketBaseLanceApproachesMachineMovement:
 	step_up
 	step_up
 	step_up
 	step_end
 
-MovementData_0x6d258:
+RocketBaseLancePacesMovement:
 	step_sleep_8
 	step_left
 	step_left
@@ -447,7 +458,7 @@ MovementData_0x6d258:
 	turn_head_down
 	step_end
 
-MovementData_0x6d267:
+RocketBaseLanceApproachesElectrodesMovement:
 	step_right
 	step_right
 	step_right
@@ -459,7 +470,7 @@ MovementData_0x6d267:
 	step_up
 	step_end
 
-MovementData_0x6d271:
+RocketBasePlayerCantLeaveElectrodesMovement:
 	step_up
 	step_left
 	step_left
@@ -468,7 +479,7 @@ MovementData_0x6d271:
 	turn_head_up
 	step_end
 
-MovementData_0x6d27a:
+RocketBaseLanceLeavesElectrodesMovement:
 	step_down
 	step_down
 	step_down
@@ -479,7 +490,7 @@ MovementData_0x6d27a:
 	step_left
 	step_end
 
-MovementData_0x6d283:
+RocketBaseLanceLeavesBaseMovement:
 	step_down
 	step_down
 	step_left
@@ -490,7 +501,7 @@ MovementData_0x6d283:
 	step_left
 	step_end
 
-MovementData_0x6d28c:
+RocketBasePlayerLeavesElectrodesMovement1:
 	step_right
 	step_right
 	step_down
@@ -505,7 +516,7 @@ MovementData_0x6d28c:
 	step_right
 	step_end
 
-MovementData_0x6d299:
+RocketBasePlayerLeavesElectrodesMovement2:
 	step_right
 	step_right
 	step_down
@@ -518,7 +529,7 @@ MovementData_0x6d299:
 	step_right
 	step_end
 
-MovementData_0x6d2a4:
+RocketBasePlayerLeavesElectrodesMovement3:
 	step_right
 	step_right
 	step_down
@@ -529,12 +540,12 @@ MovementData_0x6d2a4:
 	step_right
 	step_end
 
-UnknownText_0x6d2ad:
+RocketBaseExecutiveFHoldItText:
 	text "Hold it right"
 	line "there!"
 	done
 
-UnknownText_0x6d2c3:
+RocketBaseBossFThrashText:
 	text "We can't have a"
 	line "brat like you on"
 	cont "the loose."
@@ -554,13 +565,13 @@ UnknownText_0x6d2c3:
 	cont "thrashed."
 	done
 
-UnknownText_0x6d38c:
+RocketBaseLanceShareFunText:
 	text "Hey! Don't be so"
 	line "selfish. Spread"
 	cont "the fun around."
 	done
 
-UnknownText_0x6d3bd:
+RocketBaseBossDontMeddleText:
 	text "What? You had an"
 	line "accomplice?"
 
@@ -577,7 +588,7 @@ UnknownText_0x6d3bd:
 	line "with Team Rocket!"
 	done
 
-UnknownText_0x6d45c:
+RocketBaseBossWinText:
 	text "Tch, you really"
 	line "are strong."
 
@@ -590,7 +601,7 @@ UnknownText_0x6d45c:
 	line "an Executive."
 	done
 
-UnknownText_0x6d4c6:
+RocketBaseBossRetreatText:
 	text "…This hideout is"
 	line "done for…"
 
@@ -618,7 +629,7 @@ UnknownText_0x6d4c6:
 	para "Fufufufu…"
 	done
 
-UnknownText_0x6d5d8:
+RocketBaseLancePostBattleText:
 	text "Lance: That did"
 	line "it. We defeated"
 
@@ -632,7 +643,7 @@ UnknownText_0x6d5d8:
 	line "the process…"
 	done
 
-UnknownText_0x6d64e:
+RocketBaseLancePowerOffText:
 	text "Sorry, <PLAYER>."
 	line "I saw how well you"
 
@@ -646,7 +657,7 @@ UnknownText_0x6d64e:
 	line "radio signal."
 	done
 
-UnknownText_0x6d6cf:
+RockerBaseLanceElectrodeFaintText:
 	text "It's this machine"
 	line "that's causing all"
 	cont "the problems."
@@ -676,12 +687,12 @@ UnknownText_0x6d6cf:
 	line "split the job."
 	done
 
-UnknownText_0x6d7ea:
+RocketBaseLancesSideText:
 	text "Lance: Leave this"
 	line "side to me."
 	done
 
-UnknownText_0x6d809:
+RocketBaseLanceElectrodeDoneText:
 	text "Lance: That odd"
 	line "signal has finally"
 	cont "stopped."
@@ -703,7 +714,7 @@ UnknownText_0x6d809:
 	cont "any need for it."
 	done
 
-UnknownText_0x6d8f8:
+RocketBaseLanceWhirlpoolText:
 	text "That's Thief."
 	line "I trust you won't"
 
@@ -711,7 +722,7 @@ UnknownText_0x6d8f8:
 	line "Team Rocket does."
 	done
 
-UnknownText_0x6d994:
+RocketBaseLanceMonMasterText:
 	text "<PLAYER>…"
 
 	para "The journey to be-"
@@ -795,37 +806,18 @@ GruntM19BeatenText:
 	text "Grrrr…"
 	done
 
-UnknownText_0x6dd39:
+RocketBaseDoorNoPasswordText:
 	text "The door's closed…"
 
 	para "It needs a pass-"
 	line "word to open."
 	done
 
-UnknownText_0x6dd6b:
+RocketBaseDoorKnowPasswordText:
 	text "The door's closed…"
 
 	para "<PLAYER> entered"
 	line "the password."
 
 	para "The door opened!"
-	done
-
-UnknownText_0x6dda7:
-	text "It's the radio"
-	line "transmitter that's"
-
-	para "sending the"
-	line "sinister signal."
-
-	para "It's working at"
-	line "full capacity."
-	done
-
-UnknownText_0x6de03:
-	text "The radio trans-"
-	line "mitter has finally"
-
-	para "stopped its evil"
-	line "broadcast."
 	done

@@ -27,7 +27,7 @@ GiovannisCave_MapScriptHeader:
 	const GIOVANNISCAVE_GIOVANNI
 
 GiovannisCaveTrigger1:
-	priorityjump GiovannisCaveCelebiEventScript
+	prioritysjump GiovannisCaveCelebiEventScript
 GiovannisCaveTrigger0:
 	end
 

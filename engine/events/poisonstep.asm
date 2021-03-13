@@ -139,7 +139,7 @@ DoPoisonStep::
 	end
 
 .whiteout
-	farjump Script_OverworldWhiteout
+	farsjump Script_OverworldWhiteout
 
 .CheckWhitedOut:
 	xor a
@@ -170,7 +170,7 @@ DoPoisonStep::
 	ret
 
 .PoisonRecoveryText:
-	text_jump UnknownText_0x1c0acc
+	text_far _PoisonFaintText
 	text_end
 
 LoadPoisonBGPals:

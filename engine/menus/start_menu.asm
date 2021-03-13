@@ -278,20 +278,14 @@ endr
 .DrawBugContestStatus:
 	ld hl, wStatusFlags2
 	bit 2, [hl] ; ENGINE_BUG_CONTEST_TIMER
-	jr nz, .contest
-	ret
-.contest
+	ret z
 	farjp StartMenu_PrintBugContestStatus
 
 StartMenu_Exit:
-; Exit the menu.
-
 	ld a, 1
 	ret
 
 StartMenu_Quit:
-; Retire from the bug catching contest.
-
 	ld hl, .EndTheContestText
 	call StartMenuYesNo
 	jr c, .DontEndContest
@@ -306,32 +300,27 @@ StartMenu_Quit:
 	ret
 
 .EndTheContestText:
-	text_jump UnknownText_0x1c1a6c
+	text_far _StartMenuContestEndText
 	text_end
 
 StartMenu_Save:
-; Save the game.
-
 	call BufferScreen
 	farcall SaveMenu
 	jr nc, .asm_12919
 	xor a
 	ret
+
 .asm_12919
 	ld a, 1
 	ret
 
 StartMenu_Option:
-; Game options.
-
 	call FadeToMenu
 	farcall OptionsMenu
 	ld a, 6
 	ret
 
 StartMenu_Status:
-; Player status.
-
 	call FadeToMenu
 	farcall TrainerCard
 	call CloseSubmenu
@@ -339,21 +328,17 @@ StartMenu_Status:
 	ret
 
 StartMenu_Pokedex:
-
 	ld a, [wPartyCount]
 	and a
 	jr z, .asm_12949
-
 	call FadeToMenu
 	farcall Pokedex
 	call CloseSubmenu
-
 .asm_12949
 	xor a
 	ret
 
 StartMenu_Pokegear:
-
 	call FadeToMenu
 	farcall InitPokegearPalettes
 	farcall PokeGear
@@ -365,10 +350,9 @@ StartMenu_Pokegear:
 	ret
 
 StartMenu_Pack:
-
 	call FadeToMenu
-	farcall Pack
-	ld a, [wcf66]
+	call Pack
+	ld a, [wPackUsedItem]
 	and a
 	jr nz, .used_item
 	call CloseSubmenu
@@ -381,23 +365,18 @@ StartMenu_Pack:
 	ret
 
 StartMenu_Pokemon:
-
 	ld a, [wPartyCount]
 	and a
 	jr z, .return
-
 	call FadeToMenu
-
 .choosemenu
 	xor a
 	ld [wPartyMenuActionText], a ; Choose a POKéMON.
 	call ClearBGPalettes
-
 .menu
 	farcall LoadPartyMenuGFX
 	farcall InitPartyMenuWithCancel
 	farcall InitPartyMenuGFX
-
 .menunoreload
 	farcall WritePartyMenuTilemap
 	farcall PrintPartyMenuText
@@ -406,7 +385,6 @@ StartMenu_Pokemon:
 	call DelayFrame
 	farcall PartyMenuSelect
 	jr c, .return ; if cancelled or pressed B
-
 	call PokemonActionSubmenu
 	push af
 	call SFXDelay2
@@ -419,7 +397,6 @@ StartMenu_Pokemon:
 	jr z, .quit
 	dec a ; 3?
 	jr z, .menu
-
 .return
 	call CloseSubmenu
 	xor a

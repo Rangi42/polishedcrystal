@@ -33,15 +33,14 @@ NUM_STRING_BUFFERS EQU const_value
 	const VAR_XCOORD           ; 12
 	const VAR_YCOORD           ; 13
 	const VAR_SPECIALPHONECALL ; 14
-	const VAR_BT_WIN_STREAK    ; 15
-	const VAR_KURT_APRICORNS   ; 16
-	const VAR_CALLERID         ; 17
-	const VAR_BLUECARDBALANCE  ; 18
-	const VAR_BUENASPASSWORD   ; 19
-	const VAR_KENJI_BREAK      ; 1a
-	const VAR_PKMN_JOURNALS    ; 1b
-	const VAR_TRAINER_STARS    ; 1c
-NUM_VARS EQU const_value   ; 1d
+	const VAR_KURT_APRICORNS   ; 15
+	const VAR_CALLERID         ; 16
+	const VAR_BLUECARDBALANCE  ; 17
+	const VAR_BUENASPASSWORD   ; 18
+	const VAR_KENJI_BREAK      ; 19
+	const VAR_PKMN_JOURNALS    ; 1a
+	const VAR_TRAINER_STARS    ; 1b
+NUM_VARS EQU const_value   ; 1c
 
 ; variable action types
 RETVAR_STRBUF2 EQU (0 << 6)
@@ -231,7 +230,7 @@ NUM_HIDDEN_GROTTOES EQU const_value - 1
 	const SWARM_DUNSPARCE ; 0
 	const SWARM_YANMA     ; 1
 
-; ActivateFishingSwarm writebyte arguments
+; ActivateFishingSwarm setval arguments
 	const_def
 	const FISHSWARM_NONE     ; 0
 	const FISHSWARM_QWILFISH ; 1

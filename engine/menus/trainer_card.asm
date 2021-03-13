@@ -62,10 +62,10 @@ TrainerCard:
 	call ApplyTilemapInVBlank
 	ld hl, wJumptableIndex
 	xor a
-	ld [hli], a
-	ld [hli], a
-	ld [hli], a
-	ld [hl], a
+	ld [hli], a ; wJumptableIndex
+	ld [hli], a ; wTrainerCardBadgeFrameCounter
+	ld [hli], a ; wTrainerCardBadgeTileID
+	ld [hl], a  ; TODO: check if this is still needed
 	ret
 
 .Jumptable:
@@ -108,10 +108,9 @@ TrainerCard_Page1_Joypad:
 	ld hl, hJoyLast
 	ld a, [hl]
 	and D_RIGHT | A_BUTTON
-	jr nz, .pressed_right_a
-	ret
+	ret z
 
-.pressed_right_a
+; pressed_right_or_a
 	ld a, $2
 	ld [wJumptableIndex], a
 	ret
@@ -155,7 +154,11 @@ TrainerCard_Page2_Joypad:
 	jr nz, .pressed_a
 	ld a, [hl]
 	and D_LEFT
-	jr nz, .d_left
+	ret z
+
+; pressed_left
+	xor a
+	ld [wJumptableIndex], a
 	ret
 
 .pressed_right
@@ -176,11 +179,6 @@ TrainerCard_Page2_Joypad:
 
 .quit
 	ld a, $6
-	ld [wJumptableIndex], a
-	ret
-
-.d_left
-	xor a
 	ld [wJumptableIndex], a
 	ret
 
@@ -220,16 +218,15 @@ TrainerCard_Page3_Joypad:
 	jr nz, .quit
 	ld a, [hl]
 	and D_LEFT
-	jr nz, .d_left
+	ret z
+
+; pressed_left
+	ld a, $2
+	ld [wJumptableIndex], a
 	ret
 
 .quit
 	ld a, $6
-	ld [wJumptableIndex], a
-	ret
-
-.d_left
-	ld a, $2
 	ld [wJumptableIndex], a
 	ret
 
@@ -423,10 +420,8 @@ TrainerCard_Page1_PrintGameTime:
 	hlcoord 15, 12
 	ld a, [hl]
 	cp ":"
-	jr z, .space
 	ld a, ":"
-	jr .ok
-.space
+	jr nz, .ok
 	ld a, " "
 .ok
 	ld [hl], a
@@ -457,7 +452,7 @@ endr
 	jr nz, .loop2
 
 	xor a
-	ld [wcf64], a
+	ld [wTrainerCardBadgeFrameCounter], a
 	pop hl
 	jp TrainerCard_Page2_3_OAMUpdate
 
@@ -487,10 +482,10 @@ TrainerCard_Page2_3_AnimateBadges:
 	ldh a, [hVBlankCounter]
 	and $7
 	ret nz
-	ld a, [wcf64]
+	ld a, [wTrainerCardBadgeFrameCounter]
 	inc a
 	and $7
-	ld [wcf64], a
+	ld [wTrainerCardBadgeFrameCounter], a
 TrainerCard_Page2_3_OAMUpdate:
 ; copy flag array pointer
 	ld a, [hli]
@@ -518,7 +513,7 @@ TrainerCard_Page2_3_OAMUpdate:
 rept 4
 	inc hl
 endr
-	ld a, [wcf64]
+	ld a, [wTrainerCardBadgeFrameCounter]
 	; hl += a
 	add l
 	ld l, a
@@ -526,7 +521,7 @@ endr
 	sub l
 	ld h, a
 	ld a, [hl]
-	ld [wcf65], a
+	ld [wTrainerCardBadgeTileID], a
 	call .PrepOAM
 	pop hl
 .skip_badge
@@ -538,7 +533,7 @@ endr
 	ret
 
 .PrepOAM:
-	ld a, [wcf65]
+	ld a, [wTrainerCardBadgeTileID]
 	and $80
 	jr nz, .xflip
 	ld hl, .facing1
@@ -559,7 +554,7 @@ endr
 	ld [de], a
 	inc de
 
-	ld a, [wcf65]
+	ld a, [wTrainerCardBadgeTileID]
 	and $7f
 	add [hl]
 	ld [de], a

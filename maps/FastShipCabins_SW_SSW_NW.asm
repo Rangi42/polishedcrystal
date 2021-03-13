@@ -64,14 +64,14 @@ TrainerGuitaristmClyde:
 	trainer GUITARISTM, CLYDE, EVENT_BEAT_GUITARISTM_CLYDE, GuitaristmClydeSeenText, GuitaristmClydeBeatenText, 0, GuitaristmClydeScript
 
 GuitaristmClydeScript:
-	end_if_just_battled
+	endifjustbattled
 	opentext
 	checkbp 0
 	iffalse .BattleTower
-	jumpopenedtext UnknownText_0x75d65
+	jumpopenedtext GuitaristClydeAfterBattleText
 
 .BattleTower:
-	jumpopenedtext UnknownText_0x75cfe
+	jumpopenedtext GuitaristClydeAfterBattleMobileText
 
 FastShipBed:
 	showtext FastShipBedText1
@@ -165,7 +165,7 @@ GuitaristmClydeBeatenText:
 	line "Total distortion!"
 	done
 
-UnknownText_0x75d65:
+GuitaristClydeAfterBattleText:
 	text "Speaking of the"
 	line "Radio Station,"
 
@@ -173,7 +173,7 @@ UnknownText_0x75d65:
 	line "lucky number?"
 	done
 
-UnknownText_0x75cfe:
+GuitaristClydeAfterBattleMobileText:
 	text "I was going to"
 	line "make my debut at"
 	cont "the Battle Tower…"

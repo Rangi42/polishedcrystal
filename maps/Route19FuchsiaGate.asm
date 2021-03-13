@@ -14,11 +14,11 @@ Route19FuchsiaGate_MapScriptHeader:
 	def_bg_events
 
 	def_object_events
-	object_event  0,  4, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, OfficerScript_0x1ab3f6, -1
+	object_event  0,  4, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, Route19FuchsiaGateOfficerScript, -1
 
-OfficerScript_0x1ab3f6:
+Route19FuchsiaGateOfficerScript:
 	checkevent EVENT_CINNABAR_ROCKS_CLEARED
-	iftrue_jumptextfaceplayer UnknownText_0x1ab48a
+	iftrue_jumptextfaceplayer Route19FuchsiaGateOfficerText_RocksCleared
 	jumpthistextfaceplayer
 
 	text "Cinnabar's volcano"
@@ -33,7 +33,7 @@ OfficerScript_0x1ab3f6:
 	cont "are safe…"
 	done
 
-UnknownText_0x1ab48a:
+Route19FuchsiaGateOfficerText_RocksCleared:
 	text "No Cinnabar citi-"
 	line "zens were injured"
 

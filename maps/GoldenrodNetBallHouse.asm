@@ -21,7 +21,7 @@ GoldenrodNetBallHouseYoungsterScript:
 	faceplayer
 	opentext
 	writetext .Text1
-	buttonsound
+	promptbutton
 	verbosegiveitem NET_BALL
 	iffalse_endtext
 	setevent EVENT_GOT_NET_BALL_FROM_GOLDENROD

@@ -12,9 +12,9 @@ CianwoodCityPhotoStudio_MapScriptHeader:
 	def_bg_events
 
 	def_object_events
-	object_event  2,  3, SPRITE_FISHING_GURU, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, FishingGuruScript_0x9e0e0, -1
+	object_event  2,  3, SPRITE_FISHING_GURU, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, CianwoodPhotoStudioFishingGuruScript, -1
 
-FishingGuruScript_0x9e0e0:
+CianwoodPhotoStudioFishingGuruScript:
 	faceplayer
 	opentext
 	checkflag ENGINE_DAILY_PHOTOGRAPH
@@ -23,7 +23,7 @@ FishingGuruScript_0x9e0e0:
 	yesorno
 	iffalse_jumpopenedtext PhotoStudioRefusedText
 	writetext PhotoStudioWhichMonText
-	buttonsound
+	promptbutton
 	special Special_CianwoodPhotograph
 	ifequal $0, .NoPicture
 	ifequal $1, .EggPicture
@@ -38,7 +38,7 @@ FishingGuruScript_0x9e0e0:
 	waitsfx
 	pause 10
 	special FadeInPalettes
-	copybytetovar wCurPartySpecies
+	readmem wCurPartySpecies
 	pokepic 0
 	cry 0
 	waitsfx
@@ -87,7 +87,7 @@ PhotoStudioPrestoText:
 	text "Presto! All done."
 
 	para "Your "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	line "looks happier!"
 	done
 

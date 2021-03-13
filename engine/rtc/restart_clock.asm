@@ -50,12 +50,12 @@ RestartClock:
 
 .Text_ClockTimeMayBeWrong:
 	; The clock's time may be wrong. Please reset the time.
-	text_jump UnknownText_0x1c40e6
+	text_far _ClockTimeMayBeWrongText
 	text_end
 
 .Text_SetWithControlPad:
 	; Set with the Control Pad. Confirm: A Button Cancel:  B Button
-	text_jump UnknownText_0x1c411c
+	text_far _ClockSetWithControlPadText
 	text_end
 
 .SetClock:
@@ -104,12 +104,12 @@ RestartClock:
 
 .Text_IsThisOK:
 	; Is this OK?
-	text_jump UnknownText_0x1c415b
+	text_far _ClockIsThisOKText
 	text_end
 
 .Text_ClockReset:
 	; The clock has been reset.
-	text_jump UnknownText_0x1c4168
+	text_far _ClockHasResetText
 	text_end
 
 .joy_loop

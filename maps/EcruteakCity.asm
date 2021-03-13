@@ -35,13 +35,13 @@ EcruteakCity_MapScriptHeader:
 	bg_event 21, 11, BGEVENT_JUMPTEXT, EcruteakBarrierStationSignText
 
 	def_object_events
-	object_event 20, 15, SPRITE_GRAMPS, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1a4105, -1
-	object_event 20, 21, SPRITE_GRAMPS, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1a4147, -1
-	object_event 19, 26, SPRITE_CUTE_GIRL, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, PAL_NPC_PURPLE, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1a41db, -1
-	object_event  3,  9, SPRITE_CUTE_GIRL, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, LassScript_0x1a4015, -1
-	object_event  9, 22, SPRITE_FISHER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, FisherScript_0x1a4029, -1
-	object_event 11, 16, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1a4386, -1
-	object_event  3,  7, SPRITE_GRAMPS, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1a43cb, EVENT_ECRUTEAK_CITY_GRAMPS
+	object_event 20, 15, SPRITE_GRAMPS, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, EcruteakCityGramps1Text, -1
+	object_event 20, 21, SPRITE_GRAMPS, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, EcruteakCityGramps2Text, -1
+	object_event 19, 26, SPRITE_CUTE_GIRL, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, PAL_NPC_PURPLE, OBJECTTYPE_COMMAND, jumptextfaceplayer, EcruteakCityLass1Text, -1
+	object_event  3,  9, SPRITE_CUTE_GIRL, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, EcruteakCityLass2Script, -1
+	object_event  9, 22, SPRITE_FISHER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, EcruteakCityFisherScript, -1
+	object_event 11, 16, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, EcruteakCityYoungsterText, -1
+	object_event  3,  7, SPRITE_GRAMPS, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, EcruteakCityGramps3Text, EVENT_ECRUTEAK_CITY_GRAMPS
 	object_event 11, 11, SPRITE_HEX_MANIAC, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, (1 << EVE) | (1 << NITE), 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, EcruteakCityHexManiacText, -1
 	object_event 11, 11, SPRITE_SIGHTSEER_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, (1 << MORN) | (1 << DAY), 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, EcruteakCitySightseerMText, -1
 	pokemon_event 12, 11, SMEARGLE, -1, (1 << MORN) | (1 << DAY), PAL_NPC_BROWN, EcruteakCitySmeargleText, -1
@@ -52,19 +52,19 @@ EcruteakCity_MapScriptHeader:
 
 EcruteakCityFlyPoint:
 	setflag ENGINE_FLYPOINT_ECRUTEAK
-	return
+	endcallback
 
-LassScript_0x1a4015:
+EcruteakCityLass2Script:
 	checkevent EVENT_RELEASED_THE_BEASTS
-	iftrue_jumptextfaceplayer UnknownText_0x1a4269
-	jumptextfaceplayer UnknownText_0x1a421a
+	iftrue_jumptextfaceplayer EcruteakCityLass2Text_ReleasedBeasts
+	jumptextfaceplayer EcruteakCityLass2Text
 
-FisherScript_0x1a4029:
+EcruteakCityFisherScript:
 	checkevent EVENT_JASMINE_RETURNED_TO_GYM
-	iftrue_jumptextfaceplayer UnknownText_0x1a4325
-	jumptextfaceplayer UnknownText_0x1a42ac
+	iftrue_jumptextfaceplayer EcruteakCityFisherText_JasmineReturned
+	jumptextfaceplayer EcruteakCityFisherText
 
-UnknownText_0x1a4105:
+EcruteakCityGramps1Text:
 	text "Ecruteak used to"
 	line "have two towers:"
 
@@ -72,7 +72,7 @@ UnknownText_0x1a4105:
 	line "east and west."
 	done
 
-UnknownText_0x1a4147:
+EcruteakCityGramps2Text:
 	text "Ah, child."
 	line "Have you learned"
 
@@ -87,7 +87,7 @@ UnknownText_0x1a4147:
 	cont "nice, I hear."
 	done
 
-UnknownText_0x1a41db:
+EcruteakCityLass1Text:
 	text "I'm going to get"
 	line "my #mon blessed"
 
@@ -114,7 +114,7 @@ EcruteakCitySmeargleText:
 	text "Smeargle: Smeer!"
 	done
 
-UnknownText_0x1a421a:
+EcruteakCityLass2Text:
 	text "The tower that"
 	line "used to be here…"
 
@@ -123,14 +123,14 @@ UnknownText_0x1a421a:
 	cont "taller."
 	done
 
-UnknownText_0x1a4269:
+EcruteakCityLass2Text_ReleasedBeasts:
 	text "Three big #mon"
 	line "ran off in differ-"
 	cont "ent directions."
 	cont "What were they?"
 	done
 
-UnknownText_0x1a42ac:
+EcruteakCityFisherText:
 	text "I heard a rumor"
 	line "about Olivine"
 	cont "Lighthouse."
@@ -143,7 +143,7 @@ UnknownText_0x1a42ac:
 	cont "are in trouble."
 	done
 
-UnknownText_0x1a4325:
+EcruteakCityFisherText_JasmineReturned:
 	text "The #mon at"
 	line "Olivine Lighthouse"
 	cont "has been cured."
@@ -153,7 +153,7 @@ UnknownText_0x1a4325:
 	cont "night again."
 	done
 
-UnknownText_0x1a4386:
+EcruteakCityYoungsterText:
 	text "I hear #mon are"
 	line "rampaging at the"
 
@@ -161,7 +161,7 @@ UnknownText_0x1a4386:
 	line "like to see that."
 	done
 
-UnknownText_0x1a43cb:
+EcruteakCityGramps3Text:
 	text "In the distant"
 	line "past…"
 

@@ -13,6 +13,7 @@ AI_Redundant:
 .Moves:
 	dbw EFFECT_DREAM_EATER,   .DreamEater
 	dbw EFFECT_HEAL,          .Heal
+	dbw EFFECT_ROAR,          .Roar
 	dbw EFFECT_LIGHT_SCREEN,  .LightScreen
 	dbw EFFECT_FOCUS_ENERGY,  .FocusEnergy
 	dbw EFFECT_CONFUSE,       .Confuse
@@ -92,14 +93,26 @@ AI_Redundant:
 	ret
 
 .PerishSong:
-	ld a, [wPlayerSubStatus1]
-	bit SUBSTATUS_PERISH, a
+	ld a, [wPlayerPerishCount]
+	and a
 	ret
 
 .Reflect:
 	ld a, [wEnemyScreens]
 	and SCREENS_REFLECT
 	ret
+
+.BatonPass:
+	call CallOpponentTurn
+.Roar:
+	push hl
+	push de
+	push bc
+	farcall CheckAnyOtherAliveOpponentMons
+	pop bc
+	pop de
+	pop hl
+	jr .InvertZero
 
 .Safeguard:
 	ld a, [wEnemyGuards]
@@ -169,10 +182,7 @@ AI_Redundant:
 .DreamEater:
 	ld a, [wBattleMonStatus]
 	and SLP
-	jr .InvertZero
-
-.BatonPass:
-	farcall CheckAnyOtherAliveMons
+	; fallthrough
 .InvertZero:
 	jr z, .Redundant
 .NotRedundant:

@@ -46,16 +46,16 @@ VioletPokeCenter1FElmsAideScript:
 	checkevent EVENT_REFUSED_TO_TAKE_EGG_FROM_ELMS_AIDE
 	iftrue .SecondTimeAsking
 	writetext .IntroText
-	jump .AskTakeEgg
+	sjump .AskTakeEgg
 .SecondTimeAsking:
 	writetext .QuestionText
 .AskTakeEgg:
 	yesorno
 	iffalse .RefusedEgg
-	checkcode VAR_PARTYCOUNT
+	readvar VAR_PARTYCOUNT
 	ifequal PARTY_LENGTH, .PartyFull
 	giveegg TOGEPI, EGG_LEVEL
-	farwritetext UnknownText_0x1bdfa5
+	farwritetext _ReceivedEggText
 	playsound SFX_GET_EGG_FROM_DAYCARE_LADY
 	waitsfx
 	setevent EVENT_GOT_TOGEPI_EGG_FROM_ELMS_AIDE
@@ -65,11 +65,11 @@ VioletPokeCenter1FElmsAideScript:
 	writetext .GoodbyeText
 	waitbutton
 	closetext
-	checkcode VAR_FACING
+	readvar VAR_FACING
 	ifequal UP, .AideWalksAroundPlayer
 	turnobject PLAYER, DOWN
 	applymovement VIOLETPOKECENTER1F_SCIENTIST, .WalkStraightMovement
-	jump .Finish
+	sjump .Finish
 .AideWalksAroundPlayer:
 	applymovement VIOLETPOKECENTER1F_SCIENTIST, .WalkAroundMovement
 	turnobject PLAYER, DOWN

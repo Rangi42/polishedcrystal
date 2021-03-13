@@ -11,7 +11,7 @@ SECTION "_HeyItsFruitText", ROMX
 _HeyItsFruitText::
 	text "Hey! It's"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "!"
 	done
 
@@ -19,7 +19,7 @@ SECTION "_ObtainedOneFruitText", ROMX
 _ObtainedOneFruitText::
 	text "Obtained a"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "!"
 	done
 
@@ -27,7 +27,7 @@ SECTION "_ObtainedTwoFruitText", ROMX
 _ObtainedTwoFruitText::
 	text "Obtained two"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "!"
 	done
 
@@ -35,7 +35,7 @@ SECTION "_ObtainedThreeFruitText", ROMX
 _ObtainedThreeFruitText::
 	text "Obtained three"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "!"
 	done
 
@@ -61,7 +61,7 @@ SECTION "_PutAwayTheApricornText", ROMX
 _PutAwayTheApricornText::
 	text "<PLAYER> put the"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text " in"
 	cont "the Apricorn Box."
 	done
@@ -87,92 +87,92 @@ _UsedMulchText::
 	line "fertilized!"
 	done
 
-SECTION "UnknownText_0x1bc06b", ROMX
-UnknownText_0x1bc06b::
+SECTION "_WhichApricornText", ROMX
+_WhichApricornText::
 	text "Which Apricorn"
 	line "should I use?"
 	done
 
-SECTION "UnknownText_0x1bc089", ROMX
-UnknownText_0x1bc089::
+SECTION "_HowManyShouldIMakeText", ROMX
+_HowManyShouldIMakeText::
 	text "How many should I"
 	line "make?"
 	done
 
-SECTION "UnknownText_0x1bc0a2", ROMX
-UnknownText_0x1bc0a2::
-	text_from_ram wStringBuffer1
+SECTION "_RecoveredSomeHPText", ROMX
+_RecoveredSomeHPText::
+	text_ram wStringBuffer1
 	line "recovered "
-	deciram wCurHPAnimDeltaHP, 2, 3
+	text_decimal wCurHPAnimDeltaHP, 2, 3
 	text "HP!"
 	done
 
-SECTION "UnknownText_0x1bc0bb", ROMX
-UnknownText_0x1bc0bb::
-	text_from_ram wStringBuffer1
+SECTION "_CuredOfPoisonText", ROMX
+_CuredOfPoisonText::
+	text_ram wStringBuffer1
 	text "'s"
 	line "cured of poison."
 	done
 
-SECTION "UnknownText_0x1bc0d2", ROMX
-UnknownText_0x1bc0d2::
-	text_from_ram wStringBuffer1
+SECTION "_RidOfParalysisText", ROMX
+_RidOfParalysisText::
+	text_ram wStringBuffer1
 	text "'s"
 	line "rid of paralysis."
 	done
 
-SECTION "UnknownText_0x1bc0ea", ROMX
-UnknownText_0x1bc0ea::
-	text_from_ram wStringBuffer1
+SECTION "_BurnWasHealedText", ROMX
+_BurnWasHealedText::
+	text_ram wStringBuffer1
 	text "'s"
 	line "burn was healed."
 	done
 
-SECTION "UnknownText_0x1bc101", ROMX
-UnknownText_0x1bc101::
-	text_from_ram wStringBuffer1
+SECTION "_WasDefrostedText", ROMX
+_WasDefrostedText::
+	text_ram wStringBuffer1
 	line "was defrosted."
 	done
 
-SECTION "UnknownText_0x1bc115", ROMX
-UnknownText_0x1bc115::
-	text_from_ram wStringBuffer1
+SECTION "_WokeUpText", ROMX
+_WokeUpText::
+	text_ram wStringBuffer1
 	line "woke up."
 	done
 
-SECTION "UnknownText_0x1bc123", ROMX
-UnknownText_0x1bc123::
-	text_from_ram wStringBuffer1
+SECTION "_HealthReturnedText", ROMX
+_HealthReturnedText::
+	text_ram wStringBuffer1
 	text "'s"
 	line "health returned."
 	done
 
-SECTION "UnknownText_0x1bc13a", ROMX
-UnknownText_0x1bc13a::
-	text_from_ram wStringBuffer1
+SECTION "_RevitalizedText", ROMX
+_RevitalizedText::
+	text_ram wStringBuffer1
 	line "is revitalized."
 	done
 
-SECTION "UnknownText_0x1bc14f", ROMX
-UnknownText_0x1bc14f::
-	text_from_ram wStringBuffer1
+SECTION "_GrewToLevelText", ROMX
+_GrewToLevelText::
+	text_ram wStringBuffer1
 	text " grew to"
 	line "level "
-	deciram wCurPartyLevel, 1, 3
+	text_decimal wCurPartyLevel, 1, 3
 	text "!"
-	play_sound SFX_DEX_FANFARE_50_79
-	text_waitbutton
+	text_sound SFX_DEX_FANFARE_50_79
+	text_promptbutton
 	text_end
 
-SECTION "UnknownText_0x1bc16e", ROMX
-UnknownText_0x1bc16e::
-	text_from_ram wStringBuffer1
+SECTION "_CameToItsSensesText", ROMX
+_CameToItsSensesText::
+	text_ram wStringBuffer1
 	text " came"
 	line "to its senses."
 	done
 
-SECTION "UnknownText_0x1bc29c", ROMX
-UnknownText_0x1bc29c::
+SECTION "_OakTimeWokeUpText", ROMX
+_OakTimeWokeUpText::
 	text "………………………………"
 	line "………………………………"
 
@@ -183,44 +183,44 @@ UnknownText_0x1bc29c::
 	line "clock for me?"
 	prompt
 
-SECTION "UnknownText_0x1bc2eb", ROMX
-UnknownText_0x1bc2eb::
+SECTION "_OakTimeWhatTimeIsItText", ROMX
+_OakTimeWhatTimeIsItText::
 	text "What time is it?"
 	done
 
-SECTION "UnknownText_0x1bc2fd", ROMX
-UnknownText_0x1bc2fd::
+SECTION "_OakTimeWhatHoursText", ROMX
+_OakTimeWhatHoursText::
 	text "What?"
 	done
 
-SECTION "UnknownText_0x1bc305", ROMX
-UnknownText_0x1bc305::
+SECTION "_OakTimeHoursQuestionMarkText", ROMX
+_OakTimeHoursQuestionMarkText::
 	text "?"
 	done
 
-SECTION "UnknownText_0x1bc308", ROMX
-UnknownText_0x1bc308::
+SECTION "_OakTimeHowManyMinutesText", ROMX
+_OakTimeHowManyMinutesText::
 	text "How many minutes?"
 	done
 
-SECTION "UnknownText_0x1bc31b", ROMX
-UnknownText_0x1bc31b::
+SECTION "_OakTimeWhoaMinutesText", ROMX
+_OakTimeWhoaMinutesText::
 	text "Whoa!"
 	done
 
-SECTION "UnknownText_0x1bc323", ROMX
-UnknownText_0x1bc323::
+SECTION "_OakTimeMinutesQuestionMarkText", ROMX
+_OakTimeMinutesQuestionMarkText::
 	text "?"
 	done
 
-SECTION "UnknownText_0x1bc326", ROMX
-UnknownText_0x1bc326::
+SECTION "_OakTimeOversleptText", ROMX
+_OakTimeOversleptText::
 	text "!"
 	line "I overslept!"
 	done
 
-SECTION "UnknownText_0x1bc336", ROMX
-UnknownText_0x1bc336::
+SECTION "_OakTimeYikesText", ROMX
+_OakTimeYikesText::
 	text "!"
 	line "Yikes! I over-"
 	cont "slept!"
@@ -233,109 +233,109 @@ ProfElmNappedText::
 	cont "too long!"
 	done
 
-SECTION "UnknownText_0x1bc34f", ROMX
-UnknownText_0x1bc34f::
+SECTION "_OakTimeSoDarkText", ROMX
+_OakTimeSoDarkText::
 	text "!"
 	line "No wonder it's so"
 	cont "dark!"
 	done
 
-SECTION "UnknownText_0x1bc369", ROMX
-UnknownText_0x1bc369::
+SECTION "_OakTimeWhatDayIsItText", ROMX
+_OakTimeWhatDayIsItText::
 	text "What day is it?"
 	done
 
-SECTION "UnknownText_0x1bc37a", ROMX
-UnknownText_0x1bc37a::
+SECTION "_OakTimeIsItText", ROMX
+_OakTimeIsItText::
 	text ", is it?"
 	done
 
-SECTION "UnknownText_0x1bc471", ROMX
-UnknownText_0x1bc471::
+SECTION "_NothingToChooseText", ROMX
+_NothingToChooseText::
 	text "There's nothing to"
 	line "choose."
 	prompt
 
-SECTION "UnknownText_0x1bc48c", ROMX
-UnknownText_0x1bc48c::
+SECTION "_WhichSidePutOnText", ROMX
+_WhichSidePutOnText::
 	text "Which side do you"
 	line "want to put it on?"
 	done
 
-SECTION "UnknownText_0x1bc4b2", ROMX
-UnknownText_0x1bc4b2::
+SECTION "_WhichSidePutAwayText", ROMX
+_WhichSidePutAwayText::
 	text "Which side do you"
 	line "want to put away?"
 	done
 
-SECTION "UnknownText_0x1bc4d7", ROMX
-UnknownText_0x1bc4d7::
+SECTION "_PutAwayTheDecoText", ROMX
+_PutAwayTheDecoText::
 	text "Put away the"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 	prompt
 
-SECTION "UnknownText_0x1bc4ec", ROMX
-UnknownText_0x1bc4ec::
+SECTION "_NothingToPutAwayText", ROMX
+_NothingToPutAwayText::
 	text "There's nothing to"
 	line "put away."
 	prompt
 
-SECTION "UnknownText_0x1bc509", ROMX
-UnknownText_0x1bc509::
+SECTION "_SetUpTheDecoText", ROMX
+_SetUpTheDecoText::
 	text "Set up the"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 	prompt
 
-SECTION "UnknownText_0x1bc51c", ROMX
-UnknownText_0x1bc51c::
+SECTION "_PutAwayAndSetUpText", ROMX
+_PutAwayAndSetUpText::
 	text "Put away the"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 
 	para "and set up the"
 	line ""
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text "."
 	prompt
 
-SECTION "UnknownText_0x1bc546", ROMX
-UnknownText_0x1bc546::
+SECTION "_AlreadySetUpText", ROMX
+_AlreadySetUpText::
 	text "That's already set"
 	line "up."
 	prompt
 
-SECTION "UnknownText_0x1bc55d", ROMX
-UnknownText_0x1bc55d::
+SECTION "_LookTownMapText", ROMX
+_LookTownMapText::
 	text "It's the Town Map."
 	done
 
-SECTION "UnknownText_0x1bc570", ROMX
-UnknownText_0x1bc570::
+SECTION "_LookPikachuPosterText", ROMX
+_LookPikachuPosterText::
 	text "It's a poster of a"
 	line "cute Pikachu."
 	done
 
-SECTION "UnknownText_0x1bc591", ROMX
-UnknownText_0x1bc591::
+SECTION "_LookClefairyPosterText", ROMX
+_LookClefairyPosterText::
 	text "It's a poster of a"
 	line "cute Clefairy."
 	done
 
-SECTION "UnknownText_0x1bc5b3", ROMX
-UnknownText_0x1bc5b3::
+SECTION "_LookJigglypuffPosterText", ROMX
+_LookJigglypuffPosterText::
 	text "It's a poster of a"
 	line "cute Marill."
 	done
 
-SECTION "UnknownText_0x1bc5d7", ROMX
-UnknownText_0x1bc5d7::
+SECTION "_LookAdorableDecoText", ROMX
+_LookAdorableDecoText::
 	text "It's an adorable"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 	done
 
@@ -343,117 +343,117 @@ SECTION "DecoConsoleText", ROMX
 DecoConsoleText::
 	text "It's a shiny"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 	done
 
-SECTION "UnknownText_0x1bc5ef", ROMX
-UnknownText_0x1bc5ef::
+SECTION "_LookGiantDecoText", ROMX
+_LookGiantDecoText::
 	text "A giant doll! It's"
 	line "fluffy and cuddly."
 	done
 
-SECTION "UnknownText_0x1bc615", ROMX
-UnknownText_0x1bc615::
+SECTION "_MomHiHowAreYouText", ROMX
+_MomHiHowAreYouText::
 	text "Hi, <PLAYER>!"
 	line "How are you?"
 	prompt
 
-SECTION "UnknownText_0x1bc62a", ROMX
-UnknownText_0x1bc62a::
+SECTION "_MomFoundAnItemText", ROMX
+_MomFoundAnItemText::
 	text "I found a useful"
 	line "item shopping, so"
 	prompt
 
-SECTION "UnknownText_0x1bc64e", ROMX
-UnknownText_0x1bc64e::
+SECTION "_MomBoughtWithYourMoneyText", ROMX
+_MomBoughtWithYourMoneyText::
 	text "I bought it with"
 	line "your money. Sorry!"
 	prompt
 
-SECTION "UnknownText_0x1bc673", ROMX
-UnknownText_0x1bc673::
+SECTION "_MomItsInPCText", ROMX
+_MomItsInPCText::
 	text "It's in your PC."
 	line "You'll like it!"
 	done
 
-SECTION "UnknownText_0x1bc693", ROMX
-UnknownText_0x1bc693::
+SECTION "_MomFoundADollText", ROMX
+_MomFoundADollText::
 	text "While shopping"
 	line "today, I saw this"
 	cont "adorable doll, so"
 	prompt
 
-SECTION "UnknownText_0x1bc6c7", ROMX
-UnknownText_0x1bc6c7::
+SECTION "_MomItsInYourRoomText", ROMX
+_MomItsInYourRoomText::
 	text "It's in your room."
 	line "You'll love it!"
 	done
 
-SECTION "UnknownText_0x1bc6e9", ROMX
-UnknownText_0x1bc6e9::
-	text_from_ram wPlayerTrademonSpeciesName
+SECTION "_MonWasSentToText", ROMX
+_MonWasSentToText::
+	text_ram wPlayerTrademonSpeciesName
 	text " was"
 	line "sent to "
-	text_from_ram wOTTrademonSenderName
+	text_ram wOTTrademonSenderName
 	text "."
 	done
 
-SECTION "UnknownText_0x1bc703", ROMX
-UnknownText_0x1bc703::
-	text_from_ram wOTTrademonSenderName
+SECTION "_BidsFarewellToMonText", ROMX
+_BidsFarewellToMonText::
+	text_ram wOTTrademonSenderName
 	text " bids"
 	line "farewell to"
 	done
 
-SECTION "UnknownText_0x1bc719", ROMX
-UnknownText_0x1bc719::
-	text_from_ram wOTTrademonSpeciesName
+SECTION "_MonNameBidsFarewellText", ROMX
+_MonNameBidsFarewellText::
+	text_ram wOTTrademonSpeciesName
 	text "."
 	done
 
-SECTION "UnknownText_0x1bc71f", ROMX
-UnknownText_0x1bc71f::
+SECTION "_TakeGoodCareOfMonText", ROMX
+_TakeGoodCareOfMonText::
 	text "Take good care of"
 	line ""
-	text_from_ram wOTTrademonSpeciesName
+	text_ram wOTTrademonSpeciesName
 	text "."
 	done
 
-SECTION "UnknownText_0x1bc739", ROMX
-UnknownText_0x1bc739::
+SECTION "_ForYourMonSendsText", ROMX
+_ForYourMonSendsText::
 	text "For "
-	text_from_ram wPlayerTrademonSenderName
+	text_ram wPlayerTrademonSenderName
 	text "'s"
 	line ""
-	text_from_ram wPlayerTrademonSpeciesName
+	text_ram wPlayerTrademonSpeciesName
 	text ","
 	done
 
-SECTION "UnknownText_0x1bc74c", ROMX
-UnknownText_0x1bc74c::
-	text_from_ram wOTTrademonSenderName
+SECTION "_OTSendsText", ROMX
+_OTSendsText::
+	text_ram wOTTrademonSenderName
 	text " sends"
 	line ""
-	text_from_ram wOTTrademonSpeciesName
+	text_ram wOTTrademonSpeciesName
 	text "."
 	done
 
-SECTION "UnknownText_0x1bc75e", ROMX
-UnknownText_0x1bc75e::
-	text_from_ram wOTTrademonSenderName
+SECTION "_WillTradeText", ROMX
+_WillTradeText::
+	text_ram wOTTrademonSenderName
 	text " will"
 	line "trade "
-	text_from_ram wOTTrademonSpeciesName
+	text_ram wOTTrademonSpeciesName
 	text_end
 
-SECTION "UnknownText_0x1bc774", ROMX
-UnknownText_0x1bc774::
+SECTION "_ForYourMonWillTradeText", ROMX
+_ForYourMonWillTradeText::
 	text "for "
-	text_from_ram wPlayerTrademonSenderName
+	text_ram wPlayerTrademonSenderName
 	text "'s"
 	line ""
-	text_from_ram wPlayerTrademonSpeciesName
+	text_ram wPlayerTrademonSpeciesName
 	text "."
 	done
 
@@ -481,7 +481,7 @@ SECTION "_OPT_OakText1", ROMX
 _OPT_OakText1::
 	text_start
 	line "Oak: "
-	text_from_ram wMonOrItemNameBuffer
+	text_ram wMonOrItemNameBuffer
 	text_end
 
 SECTION "_OPT_OakText2", ROMX
@@ -494,7 +494,7 @@ SECTION "_OPT_OakText3", ROMX
 _OPT_OakText3::
 	text_start
 	line ""
-	text_from_ram wStringBuffer1
+	text_ram wStringBuffer1
 	text "."
 	done
 
@@ -502,7 +502,7 @@ SECTION "_OPT_MaryText1", ROMX
 _OPT_MaryText1::
 	text_start
 	line "Mary: "
-	text_from_ram wStringBuffer1
+	text_ram wStringBuffer1
 	text "'s"
 	done
 
@@ -707,7 +707,7 @@ SECTION "_PokedexShowText", ROMX
 _PokedexShowText::
 	text_start
 	line ""
-	text_from_ram wStringBuffer1
+	text_ram wStringBuffer1
 	text_end
 
 ; Pokémon Music Channel / Pokémusic
@@ -746,7 +746,7 @@ SECTION "_BenFernText1", ROMX
 _BenFernText1::
 	text_start
 	line "Today's "
-	current_day
+	text_today
 	text ","
 	done
 
@@ -822,8 +822,8 @@ SECTION "_LC_Text8", ROMX
 _LC_Text8::
 	text_start
 	line "Number is "
-	interpret_data
-	text_from_ram wStringBuffer1
+	text_pause
+	text_ram wStringBuffer1
 	text "!"
 	done
 
@@ -881,10 +881,10 @@ SECTION "_PnP_Text4", ROMX
 _PnP_Text4::
 	text_start
 	line "@"
-	text_from_ram wStringBuffer2
+	text_ram wStringBuffer2
 	text_start
 	text " @"
-	text_from_ram wStringBuffer1
+	text_ram wStringBuffer1
 	text_end
 
 SECTION "_PnP_cute", ROMX
@@ -987,7 +987,7 @@ SECTION "_PnP_Text5", ROMX
 _PnP_Text5::
 	text_start
 	line "@"
-	text_from_ram wStringBuffer1
+	text_ram wStringBuffer1
 	text_end
 
 SECTION "_RocketRadioText1", ROMX
@@ -1030,7 +1030,7 @@ SECTION "_RocketRadioText7", ROMX
 _RocketRadioText7::
 	text_start
 	line "Giovanni! "
-	interpret_data
+	text_pause
 	text "Can you"
 	done
 
@@ -1038,7 +1038,7 @@ SECTION "_RocketRadioText8", ROMX
 _RocketRadioText8::
 	text_start
 	line "hear?"
-	interpret_data
+	text_pause
 	text " We did it!"
 	done
 
@@ -1046,7 +1046,7 @@ SECTION "_RocketRadioText9", ROMX
 _RocketRadioText9::
 	text_start
 	line ""
-	interpret_data
+	text_pause
 	text "Where is our boss?"
 	done
 
@@ -1054,7 +1054,7 @@ SECTION "_RocketRadioText10", ROMX
 _RocketRadioText10::
 	text_start
 	line ""
-	interpret_data
+	text_pause
 	text "Is he listening?"
 	done
 
@@ -1080,7 +1080,7 @@ SECTION "_BuenaRadioText4", ROMX
 _BuenaRadioText4::
 	text_start
 	line ""
-	text_from_ram wStringBuffer1
+	text_ram wStringBuffer1
 	text "!"
 	done
 
@@ -1170,7 +1170,7 @@ SECTION "Text_EnemyUsed", ROMX
 Text_EnemyUsed::
 	text "<ENEMY>"
 	line "used "
-	text_from_ram wMonOrItemNameBuffer
+	text_ram wMonOrItemNameBuffer
 	text "!"
 	prompt
 
@@ -1178,33 +1178,33 @@ SECTION "Text_EnemyUsedOn", ROMX
 Text_EnemyUsedOn::
 	text "<ENEMY>"
 	line "used "
-	text_from_ram wMonOrItemNameBuffer
+	text_ram wMonOrItemNameBuffer
 	text_start
 	cont "on "
-	text_from_ram wEnemyMonNick
+	text_ram wEnemyMonNick
 	text "!"
 	prompt
 
-SECTION "UnknownText_0x1bd2bc", ROMX
-UnknownText_0x1bd2bc::
+SECTION "_AskFloorElevatorText", ROMX
+_AskFloorElevatorText::
 	text "Which floor?"
 	done
 
-SECTION "UnknownText_0x1bd2ca", ROMX
-UnknownText_0x1bd2ca::
+SECTION "_BugCatchingContestTimeUpText", ROMX
+_BugCatchingContestTimeUpText::
 	text "Announcer: BEEEP!"
 
 	para "Time's up!"
 	done
 
-SECTION "UnknownText_0x1bd2e7", ROMX
-UnknownText_0x1bd2e7::
+SECTION "_BugCatchingContestIsOverText", ROMX
+_BugCatchingContestIsOverText::
 	text "Announcer: The"
 	line "Contest is over!"
 	done
 
-SECTION "UnknownText_0x1bd308", ROMX
-UnknownText_0x1bd308::
+SECTION "_RepelWoreOffText", ROMX
+_RepelWoreOffText::
 	text "Repel's effect"
 	line "wore off."
 	done
@@ -1217,14 +1217,14 @@ UseAnotherRepelText::
 	para "Use another?"
 	done
 
-SECTION "UnknownText_0x1bd34b", ROMX
-UnknownText_0x1bd34b::
+SECTION "_JustSawSomeRareMonText", ROMX
+_JustSawSomeRareMonText::
 	text "I just saw some"
 	line "rare "
-	text_from_ram wStringBuffer1
+	text_ram wStringBuffer1
 	text " in"
 	cont ""
-	text_from_ram wStringBuffer2
+	text_ram wStringBuffer2
 	text "."
 
 	para "I'll call you if I"
@@ -1232,110 +1232,110 @@ UnknownText_0x1bd34b::
 	cont "#mon, OK?"
 	prompt
 
-SECTION "UnknownText_0x1bd39e", ROMX
-UnknownText_0x1bd39e::
+SECTION "_SavingRecordText", ROMX
+_SavingRecordText::
 	text "Saving record…"
 	line "Don't turn off!"
 	done
 
-SECTION "UnknownText_0x1bd3d7", ROMX
-UnknownText_0x1bd3d7::
+SECTION "_NoCoinsText", ROMX
+_NoCoinsText::
 	text "You have no coins."
 	prompt
 
-SECTION "UnknownText_0x1bd3eb", ROMX
-UnknownText_0x1bd3eb::
+SECTION "_NoCoinCaseText", ROMX
+_NoCoinCaseText::
 	text "You don't have a"
 	line "Coin Case."
 	prompt
 
-SECTION "UnknownText_0x1bd407", ROMX
-UnknownText_0x1bd407::
+SECTION "_NPCTradeCableText", ROMX
+_NPCTradeCableText::
 	text "OK, connect the"
 	line "Game Link Cable."
 	prompt
 
-SECTION "UnknownText_0x1bd429", ROMX
-UnknownText_0x1bd429::
+SECTION "Text_NPCTraded", ROMX
+Text_NPCTraded::
 	text "<PLAYER> traded"
 	line ""
-	text_from_ram wMonOrItemNameBuffer
+	text_ram wMonOrItemNameBuffer
 	text " for"
 	cont ""
-	text_from_ram wStringBuffer2
+	text_ram wStringBuffer2
 	text "."
 	done
 
-SECTION "UnknownText_0x1bd445", ROMX
-UnknownText_0x1bd445::
-	play_sound SFX_DEX_FANFARE_80_109
-	interpret_data
+SECTION "_NPCTradeFanfareText", ROMX
+_NPCTradeFanfareText::
+	text_sound SFX_DEX_FANFARE_80_109
+	text_pause
 	text_end
 
-SECTION "UnknownText_0x1bd449", ROMX
-UnknownText_0x1bd449::
+SECTION "_NPCTradeIntroText1", ROMX
+_NPCTradeIntroText1::
 	text "I collect #mon."
 	line "Do you have"
 	cont ""
-	text_from_ram wStringBuffer1
+	text_ram wStringBuffer1
 	text "?"
 
 	para "Want to trade it"
 	line "for my "
-	text_from_ram wStringBuffer2
+	text_ram wStringBuffer2
 	text "?"
 	done
 
-SECTION "UnknownText_0x1bd48c", ROMX
-UnknownText_0x1bd48c::
+SECTION "_NPCTradeCancelText1", ROMX
+_NPCTradeCancelText1::
 	text "You don't want to"
 	line "trade? Aww…"
 	done
 
-SECTION "UnknownText_0x1bd4aa", ROMX
-UnknownText_0x1bd4aa::
+SECTION "_NPCTradeWrongText1", ROMX
+_NPCTradeWrongText1::
 	text "Huh? That's not"
 	line ""
-	text_from_ram wStringBuffer1
+	text_ram wStringBuffer1
 	text "."
 	cont "What a letdown…"
 	done
 
-SECTION "UnknownText_0x1bd4d2", ROMX
-UnknownText_0x1bd4d2::
+SECTION "_NPCTradeCompleteText1", ROMX
+_NPCTradeCompleteText1::
 	text "Yay! I got myself"
 	line ""
-	text_from_ram wStringBuffer1
+	text_ram wStringBuffer1
 	text "!"
 	cont "Thanks!"
 	done
 
-SECTION "UnknownText_0x1bd4f4", ROMX
-UnknownText_0x1bd4f4::
+SECTION "_NPCTradeAfterText1", ROMX
+_NPCTradeAfterText1::
 	text "Hi, how's my old"
 	line ""
-	text_from_ram wStringBuffer2
+	text_ram wStringBuffer2
 	text " doing?"
 	done
 
-SECTION "UnknownText_0x1bd512", ROMX
-UnknownText_0x1bd512::
+SECTION "_NPCTradeIntroText2", ROMX
+_NPCTradeIntroText2::
 	text "Hi, I'm looking"
 	line "for this #mon."
 
 	para "If you have"
 	line ""
-	text_from_ram wStringBuffer1
+	text_ram wStringBuffer1
 	text ", would"
 
 	para "you trade it for"
 	line "my "
-	text_from_ram wStringBuffer2
+	text_ram wStringBuffer2
 	text "?"
 	done
 
-SECTION "UnknownText_0x1bd565", ROMX
-UnknownText_0x1bd565::
+SECTION "_NPCTradeCancelText2", ROMX
+_NPCTradeCancelText2::
 	text "You don't have"
 	line "one either?"
 
@@ -1343,105 +1343,105 @@ UnknownText_0x1bd565::
 	line "disappointing…"
 	done
 
-SECTION "UnknownText_0x1bd5a1", ROMX
-UnknownText_0x1bd5a1::
+SECTION "_NPCTradeWrongText2", ROMX
+_NPCTradeWrongText2::
 	text "You don't have"
 	line ""
-	text_from_ram wStringBuffer1
+	text_ram wStringBuffer1
 	text "? That's"
 	cont "too bad, then."
 	done
 
-SECTION "UnknownText_0x1bd5cc", ROMX
-UnknownText_0x1bd5cc::
+SECTION "_NPCTradeCompleteText2", ROMX
+_NPCTradeCompleteText2::
 	text "Great! Thank you!"
 
 	para "I finally got"
 	line ""
-	text_from_ram wStringBuffer1
+	text_ram wStringBuffer1
 	text "."
 	done
 
-SECTION "UnknownText_0x1bd5f4", ROMX
-UnknownText_0x1bd5f4::
+SECTION "_NPCTradeAfterText2", ROMX
+_NPCTradeAfterText2::
 	text "Hi! The "
-	text_from_ram wMonOrItemNameBuffer
+	text_ram wMonOrItemNameBuffer
 	line "you traded me is"
 	cont "doing great!"
 	done
 
-SECTION "UnknownText_0x1bd621", ROMX
-UnknownText_0x1bd621::
-	text_from_ram wMonOrItemNameBuffer
+SECTION "_NPCTradeIntroText3", ROMX
+_NPCTradeIntroText3::
+	text_ram wMonOrItemNameBuffer
 	text "'s cute,"
 	line "but I don't have"
 
 	para "it. Do you have"
 	line ""
-	text_from_ram wStringBuffer1
+	text_ram wStringBuffer1
 	text "?"
 
 	para "Want to trade it"
 	line "for my "
-	text_from_ram wStringBuffer2
+	text_ram wStringBuffer2
 	text "?"
 	done
 
-SECTION "UnknownText_0x1bd673", ROMX
-UnknownText_0x1bd673::
+SECTION "_NPCTradeCancelText3", ROMX
+_NPCTradeCancelText3::
 	text "You don't want to"
 	line "trade? Oh, darn…"
 	done
 
-SECTION "UnknownText_0x1bd696", ROMX
-UnknownText_0x1bd696::
+SECTION "_NPCTradeWrongText3", ROMX
+_NPCTradeWrongText3::
 	text "That's not"
 	line ""
-	text_from_ram wStringBuffer1
+	text_ram wStringBuffer1
 	text "."
 
 	para "Please trade with"
 	line "me if you get one."
 	done
 
-SECTION "UnknownText_0x1bd6cd", ROMX
-UnknownText_0x1bd6cd::
+SECTION "_NPCTradeCompleteText3", ROMX
+_NPCTradeCompleteText3::
 	text "Wow! Thank you!"
 	line "I always wanted"
 	cont ""
-	text_from_ram wMonOrItemNameBuffer
+	text_ram wMonOrItemNameBuffer
 	text "!"
 	done
 
-SECTION "UnknownText_0x1bd6f5", ROMX
-UnknownText_0x1bd6f5::
+SECTION "_NPCTradeAfterText3", ROMX
+_NPCTradeAfterText3::
 	text "How is that"
 	line ""
-	text_from_ram wStringBuffer2
+	text_ram wStringBuffer2
 	text " I"
 	cont "traded you doing?"
 
 	para "Your "
-	text_from_ram wMonOrItemNameBuffer
+	text_ram wMonOrItemNameBuffer
 	text "'s"
 	line "so cute!"
 	done
 
-SECTION "UnknownText_0x1bd731", ROMX
-UnknownText_0x1bd731::
+SECTION "_NPCTradeCompleteText4", ROMX
+_NPCTradeCompleteText4::
 	text "Uh? What happened?"
 	done
 
-SECTION "UnknownText_0x1bd745", ROMX
-UnknownText_0x1bd745::
+SECTION "_NPCTradeAfterText4", ROMX
+_NPCTradeAfterText4::
 	text "Trading is so odd…"
 
 	para "I still have a lot"
 	line "to learn about it."
 	done
 
-SECTION "UnknownText_0x1bd77f", ROMX
-UnknownText_0x1bd77f::
+SECTION "_MomLeavingText1", ROMX
+_MomLeavingText1::
 	text "Wow, that's a cute"
 	line "#mon."
 
@@ -1469,16 +1469,16 @@ UnknownText_0x1bd77f::
 	line "save your money?"
 	done
 
-SECTION "UnknownText_0x1bd868", ROMX
-UnknownText_0x1bd868::
+SECTION "_MomLeavingText2", ROMX
+_MomLeavingText2::
 	text "OK, I'll take care"
 	line "of your money."
 
 	para "………………"
 	prompt
 
-SECTION "UnknownText_0x1bd88e", ROMX
-UnknownText_0x1bd88e::
+SECTION "_MomLeavingText3", ROMX
+_MomLeavingText3::
 	text "Be careful."
 
 	para "#mon are your"
@@ -1488,8 +1488,8 @@ UnknownText_0x1bd88e::
 	para "Now, go on!"
 	done
 
-SECTION "UnknownText_0x1bd8da", ROMX
-UnknownText_0x1bd8da::
+SECTION "_MomIsThisAboutYourMoneyText", ROMX
+_MomIsThisAboutYourMoneyText::
 	text "Hi! Welcome home!"
 	line "You're trying very"
 	cont "hard, I see."
@@ -1501,56 +1501,56 @@ UnknownText_0x1bd8da::
 	line "your money?"
 	done
 
-SECTION "UnknownText_0x1bd942", ROMX
-UnknownText_0x1bd942::
+SECTION "_MomBankWhatDoYouWantToDoText", ROMX
+_MomBankWhatDoYouWantToDoText::
 	text "What do you want"
 	line "to do?"
 	done
 
-SECTION "UnknownText_0x1bd95b", ROMX
-UnknownText_0x1bd95b::
+SECTION "_MomStoreMoneyText", ROMX
+_MomStoreMoneyText::
 	text "How much do you"
 	line "want to save?"
 	done
 
-SECTION "UnknownText_0x1bd97a", ROMX
-UnknownText_0x1bd97a::
+SECTION "_MomTakeMoneyText", ROMX
+_MomTakeMoneyText::
 	text "How much do you"
 	line "want to take?"
 	done
 
-SECTION "UnknownText_0x1bd999", ROMX
-UnknownText_0x1bd999::
+SECTION "_MomSaveMoneyText", ROMX
+_MomSaveMoneyText::
 	text "Do you want to"
 	line "save some money?"
 	done
 
-SECTION "UnknownText_0x1bd9ba", ROMX
-UnknownText_0x1bd9ba::
+SECTION "_MomHaventSavedThatMuchText", ROMX
+_MomHaventSavedThatMuchText::
 	text "You haven't saved"
 	line "that much."
 	prompt
 
-SECTION "UnknownText_0x1bd9d7", ROMX
-UnknownText_0x1bd9d7::
+SECTION "_MomNotEnoughRoomInWalletText", ROMX
+_MomNotEnoughRoomInWalletText::
 	text "You can't take"
 	line "that much."
 	prompt
 
-SECTION "UnknownText_0x1bd9f1", ROMX
-UnknownText_0x1bd9f1::
+SECTION "_MomInsufficientFundsInWalletText", ROMX
+_MomInsufficientFundsInWalletText::
 	text "You don't have"
 	line "that much."
 	prompt
 
-SECTION "UnknownText_0x1bda0b", ROMX
-UnknownText_0x1bda0b::
+SECTION "_MomNotEnoughRoomInBankText", ROMX
+_MomNotEnoughRoomInBankText::
 	text "You can't save"
 	line "that much."
 	prompt
 
-SECTION "UnknownText_0x1bda25", ROMX
-UnknownText_0x1bda25::
+SECTION "_MomStartSavingMoneyText", ROMX
+_MomStartSavingMoneyText::
 	text "OK, I'll save your"
 	line "money. Trust me!"
 
@@ -1558,33 +1558,33 @@ UnknownText_0x1bda25::
 	line "with it!"
 	done
 
-SECTION "UnknownText_0x1bda5b", ROMX
-UnknownText_0x1bda5b::
+SECTION "_MomStoredMoneyText", ROMX
+_MomStoredMoneyText::
 	text "Your money's safe"
 	line "here! Get going!"
 	done
 
-SECTION "UnknownText_0x1bda7e", ROMX
-UnknownText_0x1bda7e::
+SECTION "_MomTakenMoneyText", ROMX
+_MomTakenMoneyText::
 	text "<PLAYER>, don't"
 	line "give up!"
 	done
 
-SECTION "UnknownText_0x1bda90", ROMX
-UnknownText_0x1bda90::
+SECTION "_MomJustDoWhatYouCanText", ROMX
+_MomJustDoWhatYouCanText::
 	text "Just do what"
 	line "you can."
 	done
 
-SECTION "UnknownText_0x1bdaa9", ROMX
-UnknownText_0x1bdaa9::
+SECTION "_DayCareManIntroText", ROMX
+_DayCareManIntroText::
 	text "I'm the Day-Care"
 	line "Man. Want me to"
 	cont "raise a #mon?"
 	done
 
-SECTION "UnknownText_0x1bdad8", ROMX
-UnknownText_0x1bdad8::
+SECTION "_DayCareManIntroEggText", ROMX
+_DayCareManIntroEggText::
 	text "I'm the Day-Care"
 	line "Man. Do you know"
 	cont "about Eggs?"
@@ -1603,8 +1603,8 @@ UnknownText_0x1bdad8::
 	line "raise a #mon?"
 	done
 
-SECTION "UnknownText_0x1bdb85", ROMX
-UnknownText_0x1bdb85::
+SECTION "_DayCareLadyIntroText", ROMX
+_DayCareLadyIntroText::
 	text "I'm the Day-Care"
 	line "Lady."
 
@@ -1612,8 +1612,8 @@ UnknownText_0x1bdb85::
 	line "#mon for you?"
 	done
 
-SECTION "UnknownText_0x1bdbbb", ROMX
-UnknownText_0x1bdbbb::
+SECTION "_DayCareLadyIntroEggText", ROMX
+_DayCareLadyIntroEggText::
 	text "I'm the Day-Care"
 	line "Lady. Do you know"
 	cont "about Eggs?"
@@ -1632,97 +1632,97 @@ UnknownText_0x1bdbbb::
 	line "#mon for you?"
 	done
 
-SECTION "UnknownText_0x1bdc79", ROMX
-UnknownText_0x1bdc79::
+SECTION "_WhatShouldIRaiseText", ROMX
+_WhatShouldIRaiseText::
 	text "What should I"
 	line "raise for you?"
 	prompt
 
-SECTION "UnknownText_0x1bdc97", ROMX
-UnknownText_0x1bdc97::
+SECTION "_OnlyOneMonText", ROMX
+_OnlyOneMonText::
 	text "Oh? But you have"
 	line "just one #mon."
 	prompt
 
-SECTION "UnknownText_0x1bdcb8", ROMX
-UnknownText_0x1bdcb8::
+SECTION "_CantAcceptEggText", ROMX
+_CantAcceptEggText::
 	text "Sorry, but I can't"
 	line "accept an Egg."
 	prompt
 
-SECTION "UnknownText_0x1bdcda", ROMX
-UnknownText_0x1bdcda::
+SECTION "_RemoveMailText", ROMX
+_RemoveMailText::
 	text "Remove Mail before"
 	line "you come see me."
 	prompt
 
-SECTION "UnknownText_0x1bdcff", ROMX
-UnknownText_0x1bdcff::
+SECTION "_LastHealthyMonText", ROMX
+_LastHealthyMonText::
 	text "If you give me"
 	line "that, what will"
 	cont "you battle with?"
 	prompt
 
-SECTION "UnknownText_0x1bdd30", ROMX
-UnknownText_0x1bdd30::
+SECTION "_IllRaiseYourMonText", ROMX
+_IllRaiseYourMonText::
 	text "OK. I'll raise"
 	line "your "
-	text_from_ram wStringBuffer1
+	text_ram wStringBuffer1
 	text "."
 	prompt
 
-SECTION "UnknownText_0x1bdd4b", ROMX
-UnknownText_0x1bdd4b::
+SECTION "_ComeBackLaterText", ROMX
+_ComeBackLaterText::
 	text "Come back for it"
 	line "later."
 	done
 
-SECTION "UnknownText_0x1bdd64", ROMX
-UnknownText_0x1bdd64::
+SECTION "_AreWeGeniusesText", ROMX
+_AreWeGeniusesText::
 	text "Are we geniuses or"
 	line "what? Want to see"
 	cont "your "
-	text_from_ram wStringBuffer1
+	text_ram wStringBuffer1
 	text "?"
 	done
 
-SECTION "UnknownText_0x1bdd96", ROMX
-UnknownText_0x1bdd96::
+SECTION "_YourMonHasGrownText", ROMX
+_YourMonHasGrownText::
 	text "Your "
-	text_from_ram wStringBuffer1
+	text_ram wStringBuffer1
 	line "has grown a lot."
 
 	para "Its level grew"
 	line "by "
-	deciram wStringBuffer2 + 1, 1, 3
+	text_decimal wStringBuffer2 + 1, 1, 3
 	text "."
 
 	para "If you want your"
 	line "#mon back, it"
 	cont "will cost ¥"
-	deciram wStringBuffer2 + 2, 3, 5
+	text_decimal wStringBuffer2 + 2, 3, 5
 	text "."
 	done
 
-SECTION "UnknownText_0x1bde04", ROMX
-UnknownText_0x1bde04::
+SECTION "_PerfectHeresYourMonText", ROMX
+_PerfectHeresYourMonText::
 	text "Perfect! Here's"
 	line "your #mon."
 	prompt
 
-SECTION "UnknownText_0x1bde1f", ROMX
-UnknownText_0x1bde1f::
+SECTION "_GotBackMonText", ROMX
+_GotBackMonText::
 	text "<PLAYER> got back"
 	line ""
-	text_from_ram wStringBuffer1
+	text_ram wStringBuffer1
 	text "."
 	prompt
 
-SECTION "UnknownText_0x1bde32", ROMX
-UnknownText_0x1bde32::
+SECTION "_BackAlreadyText", ROMX
+_BackAlreadyText::
 	text "Huh? Back already?"
 	line "Your "
-	text_from_ram wStringBuffer1
+	text_ram wStringBuffer1
 
 	para "needs a little"
 	line "more time with us."
@@ -1732,35 +1732,35 @@ UnknownText_0x1bde32::
 	cont "will cost ¥100."
 	done
 
-SECTION "UnknownText_0x1bdea2", ROMX
-UnknownText_0x1bdea2::
+SECTION "_HaveNoRoomText", ROMX
+_HaveNoRoomText::
 	text "You have no room"
 	line "for it."
 	prompt
 
-SECTION "UnknownText_0x1bdebc", ROMX
-UnknownText_0x1bdebc::
+SECTION "_NotEnoughMoneyText", ROMX
+_NotEnoughMoneyText::
 	text "You don't have"
 	line "enough money."
 	prompt
 
-SECTION "UnknownText_0x1bded9", ROMX
-UnknownText_0x1bded9::
+SECTION "_OhFineThenText", ROMX
+_OhFineThenText::
 	text "Oh, fine then."
 	prompt
 
-SECTION "UnknownText_0x1bdee9", ROMX
-UnknownText_0x1bdee9::
+SECTION "_ComeAgainText", ROMX
+_ComeAgainText::
 	text "Come again."
 	done
 
-SECTION "UnknownText_0x1bdef6", ROMX
-UnknownText_0x1bdef6::
+SECTION "_NotYetText", ROMX
+_NotYetText::
 	text "Not yet…"
 	done
 
-SECTION "UnknownText_0x1bdf00", ROMX
-UnknownText_0x1bdf00::
+SECTION "_FoundAnEggText", ROMX
+_FoundAnEggText::
 	text "Ah, it's you!"
 
 	para "We were raising"
@@ -1779,33 +1779,33 @@ UnknownText_0x1bdf00::
 	line "it. You want it?"
 	done
 
-SECTION "UnknownText_0x1bdfa5", ROMX
-UnknownText_0x1bdfa5::
+SECTION "_ReceivedEggText", ROMX
+_ReceivedEggText::
 	text "<PLAYER> received"
 	line "the Egg!"
 	done
 
-SECTION "UnknownText_0x1bdfba", ROMX
-UnknownText_0x1bdfba::
+SECTION "_TakeGoodCareOfEggText", ROMX
+_TakeGoodCareOfEggText::
 	text "Take good care of"
 	line "it."
 	done
 
-SECTION "UnknownText_0x1bdfd1", ROMX
-UnknownText_0x1bdfd1::
+SECTION "_IllKeepItThanksText", ROMX
+_IllKeepItThanksText::
 	text "Well then, I'll"
 	line "keep it. Thanks!"
 	done
 
-SECTION "UnknownText_0x1bdff2", ROMX
-UnknownText_0x1bdff2::
+SECTION "_NoRoomForEggText", ROMX
+_NoRoomForEggText::
 	text "You have no room"
 	line "in your party."
 	cont "Come back later."
 	done
 
-SECTION "UnknownText_0x1c0043", ROMX
-UnknownText_0x1c0043::
+SECTION "_NameRaterHelloText", ROMX
+_NameRaterHelloText::
 	text "Hello, hello! I'm"
 	line "the Name Rater."
 
@@ -1816,17 +1816,17 @@ UnknownText_0x1c0043::
 	line "to rate names?"
 	done
 
-SECTION "UnknownText_0x1c00a0", ROMX
-UnknownText_0x1c00a0::
+SECTION "_NameRaterWhichMonText", ROMX
+_NameRaterWhichMonText::
 	text "Which #mon's"
 	line "nickname should I"
 	cont "rate for you?"
 	prompt
 
-SECTION "UnknownText_0x1c00cd", ROMX
-UnknownText_0x1c00cd::
+SECTION "_NameRaterBetterNameText", ROMX
+_NameRaterBetterNameText::
 	text "Hm… "
-	text_from_ram wStringBuffer1
+	text_ram wStringBuffer1
 	text "…"
 	line "That's a fairly"
 	cont "decent name."
@@ -1839,48 +1839,48 @@ UnknownText_0x1c00cd::
 	line "a better name?"
 	done
 
-SECTION "UnknownText_0x1c0142", ROMX
-UnknownText_0x1c0142::
+SECTION "_NameRaterWhatNameText", ROMX
+_NameRaterWhatNameText::
 	text "All right. What"
 	line "name should we"
 	cont "give it, then?"
 	prompt
 
-SECTION "UnknownText_0x1c0171", ROMX
-UnknownText_0x1c0171::
+SECTION "_NameRaterFinishedText", ROMX
+_NameRaterFinishedText::
 	text "That's a better"
 	line "name than before!"
 
 	para "Well done!"
 	done
 
-SECTION "UnknownText_0x1c019e", ROMX
-UnknownText_0x1c019e::
+SECTION "_NameRaterComeAgainText", ROMX
+_NameRaterComeAgainText::
 	text "OK, then. Come"
 	line "again sometime."
 	done
 
-SECTION "UnknownText_0x1c01be", ROMX
-UnknownText_0x1c01be::
+SECTION "_NameRaterPerfectNameText", ROMX
+_NameRaterPerfectNameText::
 	text "Hm… "
-	text_from_ram wStringBuffer1
+	text_ram wStringBuffer1
 	text "?"
 	line "What a great name!"
 	cont "It's perfect."
 
 	para "Treat "
-	text_from_ram wStringBuffer1
+	text_ram wStringBuffer1
 	line "with loving care."
 	done
 
-SECTION "UnknownText_0x1c0208", ROMX
-UnknownText_0x1c0208::
+SECTION "_NameRaterEggText", ROMX
+_NameRaterEggText::
 	text "Whoa… That's just"
 	line "an Egg."
 	done
 
-SECTION "UnknownText_0x1c0222", ROMX
-UnknownText_0x1c0222::
+SECTION "_NameRaterSameNameText", ROMX
+_NameRaterSameNameText::
 	text "It might look the"
 	line "same as before,"
 
@@ -1890,18 +1890,18 @@ UnknownText_0x1c0222::
 	para "Well done!"
 	done
 
-SECTION "UnknownText_0x1c0272", ROMX
-UnknownText_0x1c0272::
+SECTION "_NameRaterNamedText", ROMX
+_NameRaterNamedText::
 	text "All right. This"
 	line "#mon is now"
 	cont "named "
-	text_from_ram wStringBuffer1
+	text_ram wStringBuffer1
 	text "."
 	prompt
 
 SECTION "Text_Gained", ROMX
 Text_Gained::
-	text_from_ram wStringBuffer1
+	text_ram wStringBuffer1
 	text " gained@"
 	text_end
 
@@ -1909,14 +1909,14 @@ SECTION "Text_ABoostedStringBuffer2ExpPoints", ROMX
 Text_ABoostedStringBuffer2ExpPoints::
 	line "a boosted"
 	cont ""
-	deciram wStringBuffer2, 3, 6
+	text_decimal wStringBuffer2, 3, 6
 	text " Exp. Points!"
 	prompt
 
 SECTION "Text_StringBuffer2ExpPoints", ROMX
 Text_StringBuffer2ExpPoints::
 	line ""
-	deciram wStringBuffer2, 3, 6
+	text_decimal wStringBuffer2, 3, 6
 	text " Exp. Points!"
 	prompt
 
@@ -1944,13 +1944,13 @@ Text_YourFoesWeakGetmPkmn::
 
 SECTION "Text_BattleMonNick01", ROMX
 Text_BattleMonNick01::
-	text_from_ram wBattleMonNick
+	text_ram wBattleMonNick
 	text "!"
 	done
 
 SECTION "Text_BattleMonNickComma", ROMX
 Text_BattleMonNickComma::
-	text_from_ram wBattleMonNick
+	text_ram wBattleMonNick
 	text ",@"
 	text_end
 
@@ -1978,40 +1978,40 @@ Text_ComeBack::
 	line "back!"
 	done
 
-SECTION "UnknownText_0x1c0373", ROMX
-UnknownText_0x1c0373::
+SECTION "_BootedTMText", ROMX
+_BootedTMText::
 	text "Booted up a TM."
 	done
 
-SECTION "UnknownText_0x1c0384", ROMX
-UnknownText_0x1c0384::
+SECTION "_BootedHMText", ROMX
+_BootedHMText::
 	text "Booted up an HM."
 	done
 
-SECTION "UnknownText_0x1c0396", ROMX
-UnknownText_0x1c0396::
+SECTION "_ContainedMoveText", ROMX
+_ContainedMoveText::
 	text "It contained"
 	line ""
-	text_from_ram wStringBuffer2
+	text_ram wStringBuffer2
 	text "."
 
 	para "Teach "
-	text_from_ram wStringBuffer2
+	text_ram wStringBuffer2
 	line "to a #mon?"
 	done
 
-SECTION "UnknownText_0x1c03c2", ROMX
-UnknownText_0x1c03c2::
-	text_from_ram wStringBuffer2
+SECTION "_TMHMNotCompatibleText", ROMX
+_TMHMNotCompatibleText::
+	text_ram wStringBuffer2
 	text " is"
 	line "not compatible"
 	cont "with "
-	text_from_ram wStringBuffer1
+	text_ram wStringBuffer1
 	text "."
 
 	para "It can't learn"
 	line ""
-	text_from_ram wStringBuffer2
+	text_ram wStringBuffer2
 	text "."
 	prompt
 
@@ -2021,35 +2021,35 @@ _BadgeRequiredText::
 	line "is required."
 	prompt
 
-SECTION "UnknownText_0x1c05c8", ROMX
-UnknownText_0x1c05c8::
+SECTION "_CantUseItemText", ROMX
+_CantUseItemText::
 	text "Can't use that"
 	line "here."
 	prompt
 
-SECTION "UnknownText_0x1c05dd", ROMX
-UnknownText_0x1c05dd::
-	text_from_ram wStringBuffer2
+SECTION "_UseCutText", ROMX
+_UseCutText::
+	text_ram wStringBuffer2
 	text " used"
 	line "Cut!"
 	prompt
 
-SECTION "UnknownText_0x1c05ec", ROMX
-UnknownText_0x1c05ec::
+SECTION "_CutNothingText", ROMX
+_CutNothingText::
 	text "There's nothing to"
 	line "Cut here."
 	prompt
 
-SECTION "UnknownText_0x1c0609", ROMX
-UnknownText_0x1c0609::
+SECTION "_BlindingFlashText", ROMX
+_BlindingFlashText::
 	text "A blinding Flash"
 	line "lights the area!"
-	text_waitbutton
+	text_promptbutton
 	text_end
 
 SECTION "_UsedSurfText", ROMX
 _UsedSurfText::
-	text_from_ram wStringBuffer2
+	text_ram wStringBuffer2
 	text " used"
 	line "Surf!"
 	done
@@ -2072,68 +2072,68 @@ _AskSurfText::
 	line "Want to Surf?"
 	done
 
-SECTION "UnknownText_0x1c068e", ROMX
-UnknownText_0x1c068e::
-	text_from_ram wStringBuffer2
+SECTION "_UseWaterfallText", ROMX
+_UseWaterfallText::
+	text_ram wStringBuffer2
 	text " used"
 	line "Waterfall!"
 	done
 
-SECTION "UnknownText_0x1c06a3", ROMX
-UnknownText_0x1c06a3::
+SECTION "_HugeWaterfallText", ROMX
+_HugeWaterfallText::
 	text "Wow, it's a huge"
 	line "waterfall."
 	done
 
-SECTION "UnknownText_0x1c06bf", ROMX
-UnknownText_0x1c06bf::
+SECTION "_AskWaterfallText", ROMX
+_AskWaterfallText::
 	text "Do you want to use"
 	line "Waterfall?"
 	done
 
-SECTION "UnknownText_0x1c06de", ROMX
-UnknownText_0x1c06de::
-	text_from_ram wStringBuffer2
+SECTION "_UseDigText", ROMX
+_UseDigText::
+	text_ram wStringBuffer2
 	text " used"
 	line "Dig!"
 	done
 
-SECTION "UnknownText_0x1c06ed", ROMX
-UnknownText_0x1c06ed::
+SECTION "_UseEscapeRopeText", ROMX
+_UseEscapeRopeText::
 	text "<PLAYER> used an"
 	line "Escape Rope."
 	done
 
-SECTION "UnknownText_0x1c0705", ROMX
-UnknownText_0x1c0705::
+SECTION "_CantUseDigText", ROMX
+_CantUseDigText::
 	text "Can't use that"
 	line "here."
 	done
 
-SECTION "UnknownText_0x1c073b", ROMX
-UnknownText_0x1c073b::
+SECTION "_CantUseTeleportText", ROMX
+_CantUseTeleportText::
 	text "Can't use that"
 	line "here."
 
 	para ""
 	done
 
-SECTION "UnknownText_0x1c0774", ROMX
-UnknownText_0x1c0774::
-	text_from_ram wStringBuffer2
+SECTION "_UseStrengthText", ROMX
+_UseStrengthText::
+	text_ram wStringBuffer2
 	text " used"
 	line "Strength!"
 	done
 
-SECTION "UnknownText_0x1c0788", ROMX
-UnknownText_0x1c0788::
-	text_from_ram wStringBuffer1
+SECTION "_MoveBoulderText", ROMX
+_MoveBoulderText::
+	text_ram wStringBuffer1
 	text " can"
 	line "move boulders."
 	prompt
 
-SECTION "UnknownText_0x1c07a0", ROMX
-UnknownText_0x1c07a0::
+SECTION "_AskStrengthText", ROMX
+_AskStrengthText::
 	text "A #mon may be"
 	line "able to move this."
 
@@ -2141,27 +2141,27 @@ UnknownText_0x1c07a0::
 	line "Strength?"
 	done
 
-SECTION "UnknownText_0x1c07d8", ROMX
-UnknownText_0x1c07d8::
+SECTION "_BouldersMoveText", ROMX
+_BouldersMoveText::
 	text "Boulders may now"
 	line "be moved!"
 	done
 
-SECTION "UnknownText_0x1c07f4", ROMX
-UnknownText_0x1c07f4::
+SECTION "_BouldersMayMoveText", ROMX
+_BouldersMayMoveText::
 	text "A #mon may be"
 	line "able to move this."
 	done
 
-SECTION "UnknownText_0x1c0816", ROMX
-UnknownText_0x1c0816::
-	text_from_ram wStringBuffer2
+SECTION "_UseWhirlpoolText", ROMX
+_UseWhirlpoolText::
+	text_ram wStringBuffer2
 	text " used"
 	line "Whirlpool!"
 	prompt
 
-SECTION "UnknownText_0x1c082b", ROMX
-UnknownText_0x1c082b::
+SECTION "_MayPassWhirlpoolText", ROMX
+_MayPassWhirlpoolText::
 	text "It's a vicious"
 	line "whirlpool!"
 
@@ -2169,8 +2169,8 @@ UnknownText_0x1c082b::
 	line "able to pass it."
 	done
 
-SECTION "UnknownText_0x1c0864", ROMX
-UnknownText_0x1c0864::
+SECTION "_AskWhirlpoolText", ROMX
+_AskWhirlpoolText::
 	text "A whirlpool is in"
 	line "the way."
 
@@ -2178,20 +2178,20 @@ UnknownText_0x1c0864::
 	line "Whirlpool?"
 	done
 
-SECTION "UnknownText_0x1c0897", ROMX
-UnknownText_0x1c0897::
-	text_from_ram wStringBuffer2
+SECTION "_UseHeadbuttText", ROMX
+_UseHeadbuttText::
+	text_ram wStringBuffer2
 	text " did a"
 	line "Headbutt!"
 	prompt
 
-SECTION "UnknownText_0x1c08ac", ROMX
-UnknownText_0x1c08ac::
+SECTION "_HeadbuttNothingText", ROMX
+_HeadbuttNothingText::
 	text "Nope. Nothing…"
 	done
 
-SECTION "UnknownText_0x1c08bc", ROMX
-UnknownText_0x1c08bc::
+SECTION "_AskHeadbuttText", ROMX
+_AskHeadbuttText::
 	text "A #mon could be"
 	line "in this tree."
 
@@ -2199,9 +2199,9 @@ UnknownText_0x1c08bc::
 	line "it?"
 	done
 
-SECTION "UnknownText_0x1c08f0", ROMX
-UnknownText_0x1c08f0::
-	text_from_ram wStringBuffer2
+SECTION "_UseRockSmashText", ROMX
+_UseRockSmashText::
+	text_ram wStringBuffer2
 	text " used"
 if DEF(FAITHFUL)
 	line "Rock Smash!"
@@ -2210,14 +2210,14 @@ else
 endc
 	prompt
 
-SECTION "UnknownText_0x1c0906", ROMX
-UnknownText_0x1c0906::
+SECTION "_MaySmashText", ROMX
+_MaySmashText::
 	text "Maybe a #mon"
 	line "can break this."
 	done
 
-SECTION "UnknownText_0x1c0924", ROMX
-UnknownText_0x1c0924::
+SECTION "_AskRockSmashText", ROMX
+_AskRockSmashText::
 	text "This rock looks"
 	line "breakable."
 
@@ -2230,58 +2230,58 @@ else
 endc
 	done
 
-SECTION "UnknownText_0x1c0958", ROMX
-UnknownText_0x1c0958::
+SECTION "_RodBiteText", ROMX
+_RodBiteText::
 	text "Oh!"
 	line "A bite!"
 	prompt
 
-SECTION "UnknownText_0x1c0965", ROMX
-UnknownText_0x1c0965::
+SECTION "_RodNothingText", ROMX
+_RodNothingText::
 	text "Not even a nibble!"
 	prompt
 
-SECTION "UnknownText_0x1c099a", ROMX
-UnknownText_0x1c099a::
+SECTION "_CantGetOffBikeText", ROMX
+_CantGetOffBikeText::
 	text "You can't get off"
 	line "here!"
 	done
 
-SECTION "UnknownText_0x1c09b2", ROMX
-UnknownText_0x1c09b2::
+SECTION "_GotOnBikeText", ROMX
+_GotOnBikeText::
 	text "<PLAYER> got on the"
 	line ""
-	text_from_ram wStringBuffer2
+	text_ram wStringBuffer2
 	text "."
 	done
 
-SECTION "UnknownText_0x1c09c7", ROMX
-UnknownText_0x1c09c7::
+SECTION "_GotOffBikeText", ROMX
+_GotOffBikeText::
 	text "<PLAYER> got off"
 	line "the "
-	text_from_ram wStringBuffer2
+	text_ram wStringBuffer2
 	text "."
 	done
 
-SECTION "UnknownText_0x1c09dd", ROMX
-UnknownText_0x1c09dd::
+SECTION "_AskCutText", ROMX
+_AskCutText::
 	text "This tree can be"
 	line "Cut!"
 
 	para "Want to use Cut?"
 	done
 
-SECTION "UnknownText_0x1c0a05", ROMX
-UnknownText_0x1c0a05::
+SECTION "_CanCutText", ROMX
+_CanCutText::
 	text "This tree can be"
 	line "Cut!"
 	done
 
-SECTION "UnknownText_0x1c0a1c", ROMX
-UnknownText_0x1c0a1c::
+SECTION "_FoundItemText", ROMX
+_FoundItemText::
 	text "<PLAYER> found"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "!"
 	done
 
@@ -2302,7 +2302,7 @@ WhiteoutToWildText::
 	para "<PLAYER> panicked"
 	line "and dropped"
 	cont "¥"
-	deciram hMoneyTemp, 3, 7
+	text_decimal hMoneyTemp, 3, 7
 	text "…"
 
 	para "………………"
@@ -2319,7 +2319,7 @@ WhiteoutToTrainerText::
 
 	para "<PLAYER> paid"
 	line "¥"
-	deciram hMoneyTemp, 3, 7
+	text_decimal hMoneyTemp, 3, 7
 	text " to the"
 	cont "winner…"
 
@@ -2337,7 +2337,7 @@ ForfeitToTrainerText::
 
 	para "<PLAYER> paid"
 	line "¥"
-	deciram hMoneyTemp, 3, 7
+	text_decimal hMoneyTemp, 3, 7
 	text " to the"
 	cont "winner…"
 
@@ -2348,15 +2348,15 @@ ForfeitToTrainerText::
 	line "out!"
 	done
 
-SECTION "UnknownText_0x1c0acc", ROMX
-UnknownText_0x1c0acc::
-	text_from_ram wStringBuffer3
+SECTION "_PoisonFaintText", ROMX
+_PoisonFaintText::
+	text_ram wStringBuffer3
 	line "recovered from"
 	cont "its poisoning!"
 	prompt
 
-SECTION "UnknownText_0x1c0b3b", ROMX
-UnknownText_0x1c0b3b::
+SECTION "_SquirtbottleNothingText", ROMX
+_SquirtbottleNothingText::
 	text "<PLAYER> sprinkled"
 	line "water."
 
@@ -2364,8 +2364,8 @@ UnknownText_0x1c0b3b::
 	line "happened…"
 	done
 
-SECTION "UnknownText_0x1c0b65", ROMX
-UnknownText_0x1c0b65::
+SECTION "_UseSacredAshText", ROMX
+_UseSacredAshText::
 	text "<PLAYER>'s #mon"
 	line "were all healed!"
 	done
@@ -2376,31 +2376,31 @@ Text_AnEGGCantHoldAnItem::
 	line "an item."
 	prompt
 
-SECTION "UnknownText_0x1c0ba5", ROMX
-UnknownText_0x1c0ba5::
+SECTION "_AskThrowAwayText", ROMX
+_AskThrowAwayText::
 	text "Throw away how"
 	line "many?"
 	done
 
-SECTION "UnknownText_0x1c0bbb", ROMX
-UnknownText_0x1c0bbb::
+SECTION "_AskQuantityThrowAwayText", ROMX
+_AskQuantityThrowAwayText::
 	text "Throw away "
-	deciram wItemQuantityChangeBuffer, 1, 2
+	text_decimal wItemQuantityChangeBuffer, 1, 2
 	line ""
-	text_from_ram wStringBuffer2
+	text_ram wStringBuffer2
 	text "(s)?"
 	done
 
-SECTION "UnknownText_0x1c0bd8", ROMX
-UnknownText_0x1c0bd8::
+SECTION "_ThrewAwayText", ROMX
+_ThrewAwayText::
 	text "Threw away"
 	line ""
-	text_from_ram wStringBuffer2
+	text_ram wStringBuffer2
 	text "(s)."
 	prompt
 
-SECTION "UnknownText_0x1c0bee", ROMX
-UnknownText_0x1c0bee::
+SECTION "_OakThisIsntTheTimeText", ROMX
+_OakThisIsntTheTimeText::
 	text "Oak: <PLAYER>!"
 	line "This isn't the"
 	cont "time to use that!"
@@ -2412,11 +2412,11 @@ Text_YouDontHaveAPkmn::
 	line "#mon!"
 	prompt
 
-SECTION "UnknownText_0x1c0c2e", ROMX
-UnknownText_0x1c0c2e::
+SECTION "_RegisteredItemText", ROMX
+_RegisteredItemText::
 	text "Registered the"
 	line ""
-	text_from_ram wStringBuffer2
+	text_ram wStringBuffer2
 	text "."
 	prompt
 
@@ -2424,18 +2424,18 @@ SECTION "UnregisteredItemText", ROMX
 UnregisteredItemText::
 	text "Unregistered the"
 	line ""
-	text_from_ram wStringBuffer2
+	text_ram wStringBuffer2
 	text "."
 	prompt
 
-SECTION "UnknownText_0x1c0c45", ROMX
-UnknownText_0x1c0c45::
+SECTION "_CantRegisterText", ROMX
+_CantRegisterText::
 	text "You can't register"
 	line "that item."
 	prompt
 
-SECTION "UnknownText_0x1c0c63", ROMX
-UnknownText_0x1c0c63::
+SECTION "_AskItemMoveText", ROMX
+_AskItemMoveText::
 	text "Where should this"
 	line "be moved to?"
 	done
@@ -2456,94 +2456,94 @@ Text_SoYoureAGirl::
 	text "So you're a girl?"
 	done
 
-SECTION "UnknownText_0x1c0d0e", ROMX
-UnknownText_0x1c0d0e::
+SECTION "Text_BattleUser", ROMX
+Text_BattleUser::
 	text "<USER>@"
 	text_end
 
-SECTION "UnknownText_0x1c0d26", ROMX
-UnknownText_0x1c0d26::
+SECTION "_BattleTookSunlightText", ROMX
+_BattleTookSunlightText::
 	line "took in sunlight!"
 	prompt
 
-SECTION "UnknownText_0x1c0d5c", ROMX
-UnknownText_0x1c0d5c::
+SECTION "_BattleFlewText", ROMX
+_BattleFlewText::
 	line "flew up high!"
 	prompt
 
-SECTION "UnknownText_0x1c0d6c", ROMX
-UnknownText_0x1c0d6c::
+SECTION "_BattleDugText", ROMX
+_BattleDugText::
 	line "dug a hole!"
 	prompt
 
-SECTION "UnknownText_0x1c0db0", ROMX
-UnknownText_0x1c0db0::
+SECTION "Text_BreedHuh", ROMX
+Text_BreedHuh::
 	text "Huh?"
 	para "@"
 	text_end
 
-SECTION "UnknownText_0x1c0dba", ROMX
-UnknownText_0x1c0dba::
-	text_from_ram wStringBuffer1
+SECTION "_BreedEggHatchText", ROMX
+_BreedEggHatchText::
+	text_ram wStringBuffer1
 	text " came"
 	line "out of its Egg!"
-	play_sound SFX_CAUGHT_MON
-	text_waitbutton
+	text_sound SFX_CAUGHT_MON
+	text_promptbutton
 	text_end
 
-SECTION "UnknownText_0x1c0dd8", ROMX
-UnknownText_0x1c0dd8::
+SECTION "_BreedAskNicknameText", ROMX
+_BreedAskNicknameText::
 	text "Give a nickname to"
 	line ""
-	text_from_ram wStringBuffer1
+	text_ram wStringBuffer1
 	text "?"
 	done
 
-SECTION "UnknownText_0x1c0df3", ROMX
-UnknownText_0x1c0df3::
+SECTION "_LeftWithDayCareLadyText", ROMX
+_LeftWithDayCareLadyText::
 	text "It's "
-	text_from_ram wBreedMon2Nick
+	text_ram wBreedMon2Nick
 	line "that was left with"
 	cont "the Day-Care Lady."
 	done
 
-SECTION "UnknownText_0x1c0e24", ROMX
-UnknownText_0x1c0e24::
+SECTION "_LeftWithDayCareManText", ROMX
+_LeftWithDayCareManText::
 	text "It's "
-	text_from_ram wBreedMon1
+	text_ram wBreedMon1
 	line "that was left with"
 	cont "the Day-Care Man."
 	done
 
-SECTION "UnknownText_0x1c0e6f", ROMX
-UnknownText_0x1c0e6f::
+SECTION "_BreedNoInterestText", ROMX
+_BreedNoInterestText::
 	text "It has no interest"
 	line "in "
-	text_from_ram wStringBuffer1
+	text_ram wStringBuffer1
 	text "."
 	prompt
 
-SECTION "UnknownText_0x1c0e8d", ROMX
-UnknownText_0x1c0e8d::
+SECTION "_BreedAppearsToCareForText", ROMX
+_BreedAppearsToCareForText::
 	text "It appears to care"
 	line "for "
-	text_from_ram wStringBuffer1
+	text_ram wStringBuffer1
 	text "."
 	prompt
 
-SECTION "UnknownText_0x1c0eac", ROMX
-UnknownText_0x1c0eac::
+SECTION "_BreedFriendlyText", ROMX
+_BreedFriendlyText::
 	text "It's friendly with"
 	line ""
-	text_from_ram wStringBuffer1
+	text_ram wStringBuffer1
 	text "."
 	prompt
 
-SECTION "UnknownText_0x1c0ec6", ROMX
-UnknownText_0x1c0ec6::
+SECTION "_BreedShowsInterestText", ROMX
+_BreedShowsInterestText::
 	text "It shows interest"
 	line "in "
-	text_from_ram wStringBuffer1
+	text_ram wStringBuffer1
 	text "."
 	prompt
 
@@ -2590,24 +2590,24 @@ MailMovedFromBoxText::
 
 SECTION "Text_WasSentToBillsPC", ROMX
 Text_WasSentToBillsPC::
-	text_from_ram wStringBuffer1
+	text_ram wStringBuffer1
 	text " was"
 	line "sent to Bill's PC."
 	prompt
 
-SECTION "UnknownText_0x1c1006", ROMX
-UnknownText_0x1c1006::
+SECTION "_PCGottaHavePokemonText", ROMX
+_PCGottaHavePokemonText::
 	text "You gotta have"
 	line "#mon to call!"
 	prompt
 
-SECTION "UnknownText_0x1c1024", ROMX
-UnknownText_0x1c1024::
+SECTION "_PCWhatText", ROMX
+_PCWhatText::
 	text "What?"
 	done
 
-SECTION "UnknownText_0x1c102b", ROMX
-UnknownText_0x1c102b::
+SECTION "_PCMonHoldingMailText", ROMX
+_PCMonHoldingMailText::
 	text "There is a #mon"
 	line "holding Mail."
 
@@ -2615,23 +2615,23 @@ UnknownText_0x1c102b::
 	line "Mail."
 	prompt
 
-SECTION "UnknownText_0x1c10c0", ROMX
-UnknownText_0x1c10c0::
+SECTION "_ContestCaughtMonText", ROMX
+_ContestCaughtMonText::
 	text "Caught "
-	text_from_ram wStringBuffer1
+	text_ram wStringBuffer1
 	text "!"
 	prompt
 
-SECTION "UnknownText_0x1c10cf", ROMX
-UnknownText_0x1c10cf::
+SECTION "_ContestAskSwitchText", ROMX
+_ContestAskSwitchText::
 	text "Switch #mon?"
 	done
 
-SECTION "UnknownText_0x1c10dd", ROMX
-UnknownText_0x1c10dd::
+SECTION "_ContestAlreadyCaughtText", ROMX
+_ContestAlreadyCaughtText::
 	text "You already caught"
 	line "a "
-	text_from_ram wStringBuffer1
+	text_ram wStringBuffer1
 	text "."
 	prompt
 
@@ -2639,15 +2639,15 @@ SECTION "ContestJudging_FirstPlaceText", ROMX
 ContestJudging_FirstPlaceText::
 	text "This Bug-Catching"
 	line "Contest winner is"
-	interpret_data
+	text_pause
 	text "…"
 
 	para ""
-	text_from_ram wBugContestWinnerName
+	text_ram wBugContestWinnerName
 	text ","
 	line "who caught a"
 	cont ""
-	text_from_ram wStringBuffer1
+	text_ram wStringBuffer1
 	text "!@"
 	text_end
 
@@ -2655,7 +2655,7 @@ SECTION "ContestJudging_FirstPlaceScoreText", ROMX
 ContestJudging_FirstPlaceScoreText::
 	para "The winning score"
 	line "was "
-	deciram wBugContestFirstPlaceScore, 2, 3
+	text_decimal wBugContestFirstPlaceScore, 2, 3
 	text " points!"
 	prompt
 
@@ -2663,11 +2663,11 @@ SECTION "ContestJudging_SecondPlaceText", ROMX
 ContestJudging_SecondPlaceText::
 	text "Placing second was"
 	line ""
-	text_from_ram wBugContestWinnerName
+	text_ram wBugContestWinnerName
 	text ","
 	para "who caught a"
 	line ""
-	text_from_ram wStringBuffer1
+	text_ram wStringBuffer1
 	text "!@"
 	text_end
 
@@ -2675,7 +2675,7 @@ SECTION "ContestJudging_SecondPlaceScoreText", ROMX
 ContestJudging_SecondPlaceScoreText::
 	para "The score was"
 	line ""
-	deciram wBugContestSecondPlaceScore, 2, 3
+	text_decimal wBugContestSecondPlaceScore, 2, 3
 	text " points!"
 	prompt
 
@@ -2683,11 +2683,11 @@ SECTION "ContestJudging_ThirdPlaceText", ROMX
 ContestJudging_ThirdPlaceText::
 	text "Placing third was"
 	line ""
-	text_from_ram wBugContestWinnerName
+	text_ram wBugContestWinnerName
 	text ","
 	para "who caught a"
 	line ""
-	text_from_ram wStringBuffer1
+	text_ram wStringBuffer1
 	text "!@"
 	text_end
 
@@ -2695,82 +2695,82 @@ SECTION "ContestJudging_ThirdPlaceScoreText", ROMX
 ContestJudging_ThirdPlaceScoreText::
 	para "The score was"
 	line ""
-	deciram wBugContestThirdPlaceScore, 2, 3
+	text_decimal wBugContestThirdPlaceScore, 2, 3
 	text " points!"
 	prompt
 
-SECTION "UnknownText_0x1c1203", ROMX
-UnknownText_0x1c1203::
+SECTION "_MagikarpGuruMeasureText", ROMX
+_MagikarpGuruMeasureText::
 	text "Let me measure"
 	line "that Magikarp."
 
 	para "…Hm, it measures"
 	line ""
-	text_from_ram wStringBuffer1
+	text_ram wStringBuffer1
 	text "."
 	prompt
 
-SECTION "UnknownText_0x1c123a", ROMX
-UnknownText_0x1c123a::
+SECTION "_KarpGuruRecordText", ROMX
+_KarpGuruRecordText::
 	text "Current Record"
 	para ""
-	text_from_ram wStringBuffer1
+	text_ram wStringBuffer1
 	text " caught by"
 	line ""
-	text_from_ram wMagikarpRecordHoldersName
-	text_waitbutton
+	text_ram wMagikarpRecordHoldersName
+	text_promptbutton
 	text_end
 
-SECTION "UnknownText_0x1c1261", ROMX
-UnknownText_0x1c1261::
+SECTION "_LuckyNumberMatchPartyText", ROMX
+_LuckyNumberMatchPartyText::
 	text "Congratulations!"
 
 	para "We have a match"
 	line "with the ID number"
 
 	para "of "
-	text_from_ram wStringBuffer1
+	text_ram wStringBuffer1
 	text " in"
 	line "your party."
 	prompt
 
-SECTION "UnknownText_0x1c12ae", ROMX
-UnknownText_0x1c12ae::
+SECTION "_LuckyNumberMatchPCText", ROMX
+_LuckyNumberMatchPCText::
 	text "Congratulations!"
 
 	para "We have a match"
 	line "with the ID number"
 
 	para "of "
-	text_from_ram wStringBuffer1
+	text_ram wStringBuffer1
 	text " in"
 	line "your PC Box."
 	prompt
 
-SECTION "UnknownText_0x1c12fc", ROMX
-UnknownText_0x1c12fc::
+SECTION "_CaughtAskNicknameText", ROMX
+_CaughtAskNicknameText::
 	text "Give a nickname to"
 	line "the "
-	text_from_ram wStringBuffer1
+	text_ram wStringBuffer1
 	text " you"
 	cont "received?"
 	done
 
-SECTION "UnknownText_0x1c1328", ROMX
-UnknownText_0x1c1328::
+SECTION "_PokecenterPCCantUseText", ROMX
+_PokecenterPCCantUseText::
 	text "Bzzzzt! You must"
 	line "have a #mon to"
 	cont "use this!"
 	prompt
 
-SECTION "UnknownText_0x1c1353", ROMX
-UnknownText_0x1c1353::
+SECTION "_PlayersPCTurnOnText", ROMX
+_PlayersPCTurnOnText::
 	text "<PLAYER> turned on"
 	line "the PC."
 	prompt
 
-SECTION "UnknownText_0x1c1368", ROMX
-UnknownText_0x1c1368::
+SECTION "_PlayersPCAskWhatDoText", ROMX
+_PlayersPCAskWhatDoText::
 	text "What do you want"
 	line "to do?"
 	done
@@ -2784,9 +2784,9 @@ _PlayersPCHowManyWithdrawText::
 SECTION "_PlayersPCWithdrewItemsText", ROMX
 _PlayersPCWithdrewItemsText::
 	text "Withdrew "
-	deciram wItemQuantityChangeBuffer, 1, 2
+	text_decimal wItemQuantityChangeBuffer, 1, 2
 	line ""
-	text_from_ram wStringBuffer2
+	text_ram wStringBuffer2
 	text "(s)."
 	prompt
 
@@ -2796,8 +2796,8 @@ _PlayersPCNoRoomWithdrawText::
 	line "for more items."
 	prompt
 
-SECTION "UnknownText_0x1c13df", ROMX
-UnknownText_0x1c13df::
+SECTION "_PlayersPCNoItemsText", ROMX
+_PlayersPCNoItemsText::
 	text "No items here!"
 	prompt
 
@@ -2816,9 +2816,9 @@ _PlayersPCHowManyDepositText::
 SECTION "_PlayersPCDepositItemsText", ROMX
 _PlayersPCDepositItemsText::
 	text "Deposited "
-	deciram wItemQuantityChangeBuffer, 1, 2
+	text_decimal wItemQuantityChangeBuffer, 1, 2
 	line ""
-	text_from_ram wStringBuffer2
+	text_ram wStringBuffer2
 	text "(s)."
 	prompt
 
@@ -2828,19 +2828,19 @@ _PlayersPCNoRoomDepositText::
 	line "store items."
 	prompt
 
-SECTION "UnknownText_0x1c144d", ROMX
-UnknownText_0x1c144d::
+SECTION "_PokecenterPCTurnOnText", ROMX
+_PokecenterPCTurnOnText::
 	text "<PLAYER> turned on"
 	line "the PC."
 	prompt
 
-SECTION "UnknownText_0x1c1462", ROMX
-UnknownText_0x1c1462::
+SECTION "_PokecenterPCWhoseText", ROMX
+_PokecenterPCWhoseText::
 	text "Access whose PC?"
 	done
 
-SECTION "UnknownText_0x1c1474", ROMX
-UnknownText_0x1c1474::
+SECTION "_PokecenterBillsPCText", ROMX
+_PokecenterBillsPCText::
 	text "Bill's PC"
 	line "accessed."
 
@@ -2848,16 +2848,16 @@ UnknownText_0x1c1474::
 	line "System opened."
 	prompt
 
-SECTION "UnknownText_0x1c14a4", ROMX
-UnknownText_0x1c14a4::
+SECTION "_PokecenterPlayersPCText", ROMX
+_PokecenterPlayersPCText::
 	text "Accessed own PC."
 
 	para "Item Storage"
 	line "System opened."
 	prompt
 
-SECTION "UnknownText_0x1c14d2", ROMX
-UnknownText_0x1c14d2::
+SECTION "_PokecenterOaksPCText", ROMX
+_PokecenterOaksPCText::
 	text "Prof.Oak's PC"
 	line "accessed."
 
@@ -2865,8 +2865,8 @@ UnknownText_0x1c14d2::
 	line "System opened."
 	prompt
 
-SECTION "UnknownText_0x1c1505", ROMX
-UnknownText_0x1c1505::
+SECTION "_PokecenterPCOaksClosedText", ROMX
+_PokecenterPCOaksClosedText::
 	text "…"
 	line "Link closed…"
 	done
@@ -2885,10 +2885,10 @@ _OakPCText2::
 
 SECTION "_OakPCText3", ROMX
 _OakPCText3::
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text " #mon seen"
 	line ""
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text " #mon owned"
 
 	para "Prof.Oak's"
@@ -3059,169 +3059,169 @@ _OakPCText4::
 	line "Oak's PC closed."
 	done
 
-SECTION "UnknownText_0x1c1a5b", ROMX
-UnknownText_0x1c1a5b::
+SECTION "_MemoryGameYeahText", ROMX
+_MemoryGameYeahText::
 	text " , yeah!"
 	done
 
-SECTION "UnknownText_0x1c1a65", ROMX
-UnknownText_0x1c1a65::
+SECTION "_MemoryGameDarnText", ROMX
+_MemoryGameDarnText::
 	text "Darn…"
 	done
 
-SECTION "UnknownText_0x1c1a6c", ROMX
-UnknownText_0x1c1a6c::
+SECTION "_StartMenuContestEndText", ROMX
+_StartMenuContestEndText::
 	text "Would you like to"
 	line "end the Contest?"
 	done
 
-SECTION "UnknownText_0x1c1a90", ROMX
-UnknownText_0x1c1a90::
+SECTION "_ItemsTossOutHowManyText", ROMX
+_ItemsTossOutHowManyText::
 	text "Toss out how many"
 	line ""
-	text_from_ram wStringBuffer2
+	text_ram wStringBuffer2
 	text "(s)?"
 	done
 
-SECTION "UnknownText_0x1c1aad", ROMX
-UnknownText_0x1c1aad::
+SECTION "_ItemsThrowAwayText", ROMX
+_ItemsThrowAwayText::
 	text "Throw away "
-	deciram wItemQuantityChangeBuffer, 1, 2
+	text_decimal wItemQuantityChangeBuffer, 1, 2
 	line ""
-	text_from_ram wStringBuffer2
+	text_ram wStringBuffer2
 	text "(s)?"
 	done
 
-SECTION "UnknownText_0x1c1aca", ROMX
-UnknownText_0x1c1aca::
+SECTION "_ItemsDiscardedText", ROMX
+_ItemsDiscardedText::
 	text "Discarded"
 	line ""
-	text_from_ram wStringBuffer1
+	text_ram wStringBuffer1
 	text "(s)."
 	prompt
 
-SECTION "UnknownText_0x1c1b03", ROMX
-UnknownText_0x1c1b03::
+SECTION "_ItemsOakWarningText", ROMX
+_ItemsOakWarningText::
 	text "Oak: <PLAYER>!"
 	line "This isn't the"
 	cont "time to use that!"
 	done
 
-SECTION "UnknownText_0x1c1b2c", ROMX
-UnknownText_0x1c1b2c::
+SECTION "_PokemonSwapItemText", ROMX
+_PokemonSwapItemText::
 	text "Took "
-	text_from_ram wMonOrItemNameBuffer
+	text_ram wMonOrItemNameBuffer
 	text "'s"
 	line ""
-	text_from_ram wStringBuffer1
+	text_ram wStringBuffer1
 	text " and"
 
 	para "made it hold"
 	line ""
-	text_from_ram wStringBuffer2
+	text_ram wStringBuffer2
 	text "."
 	prompt
 
-SECTION "UnknownText_0x1c1b57", ROMX
-UnknownText_0x1c1b57::
+SECTION "_PokemonHoldItemText", ROMX
+_PokemonHoldItemText::
 	text "Made "
-	text_from_ram wMonOrItemNameBuffer
+	text_ram wMonOrItemNameBuffer
 	line "hold "
-	text_from_ram wStringBuffer2
+	text_ram wStringBuffer2
 	text "."
 	prompt
 
-SECTION "UnknownText_0x1c1b6f", ROMX
-UnknownText_0x1c1b6f::
+SECTION "_PokemonRemoveMailText", ROMX
+_PokemonRemoveMailText::
 	text "Please remove the"
 	line "Mail first."
 	prompt
 
-SECTION "UnknownText_0x1c1b8e", ROMX
-UnknownText_0x1c1b8e::
-	text_from_ram wMonOrItemNameBuffer
+SECTION "_PokemonNotHoldingText", ROMX
+_PokemonNotHoldingText::
+	text_ram wMonOrItemNameBuffer
 	text " isn't"
 	line "holding anything."
 	prompt
 
-SECTION "UnknownText_0x1c1baa", ROMX
-UnknownText_0x1c1baa::
+SECTION "_ItemStorageFullText", ROMX
+_ItemStorageFullText::
 	text "Item storage space"
 	line "full."
 	prompt
 
-SECTION "UnknownText_0x1c1bc4", ROMX
-UnknownText_0x1c1bc4::
+SECTION "_PokemonTookItemText", ROMX
+_PokemonTookItemText::
 	text "Took "
-	text_from_ram wStringBuffer1
+	text_ram wStringBuffer1
 	line "from "
-	text_from_ram wMonOrItemNameBuffer
+	text_ram wMonOrItemNameBuffer
 	text "."
 	prompt
 
-SECTION "UnknownText_0x1c1bdc", ROMX
-UnknownText_0x1c1bdc::
-	text_from_ram wMonOrItemNameBuffer
+SECTION "_PokemonAskSwapItemText", ROMX
+_PokemonAskSwapItemText::
+	text_ram wMonOrItemNameBuffer
 	text " is"
 	line "already holding"
 
 	para ""
-	text_from_ram wStringBuffer1
+	text_ram wStringBuffer1
 	text "."
 	line "Switch items?"
 	done
 
-SECTION "UnknownText_0x1c1c09", ROMX
-UnknownText_0x1c1c09::
+SECTION "_ItemCantHeldText", ROMX
+_ItemCantHeldText::
 	text "That item can't be"
 	line "held."
 	prompt
 
-SECTION "UnknownText_0x1c1c22", ROMX
-UnknownText_0x1c1c22::
+SECTION "_MailLoseMessageText", ROMX
+_MailLoseMessageText::
 	text "The Mail will lose"
 	line "its message. OK?"
 	done
 
-SECTION "UnknownText_0x1c1c47", ROMX
-UnknownText_0x1c1c47::
+SECTION "_MailDetachedText", ROMX
+_MailDetachedText::
 	text "Mail detached from"
 	line ""
-	text_from_ram wStringBuffer1
+	text_ram wStringBuffer1
 	text "."
 	prompt
 
-SECTION "UnknownText_0x1c1c62", ROMX
-UnknownText_0x1c1c62::
+SECTION "_MailNoSpaceText", ROMX
+_MailNoSpaceText::
 	text "There's no space"
 	line "for removing Mail."
 	prompt
 
-SECTION "UnknownText_0x1c1c86", ROMX
-UnknownText_0x1c1c86::
+SECTION "_MailAskSendToPCText", ROMX
+_MailAskSendToPCText::
 	text "Send the removed"
 	line "Mail to your PC?"
 	done
 
-SECTION "UnknownText_0x1c1ca9", ROMX
-UnknownText_0x1c1ca9::
+SECTION "_MailboxFullText", ROMX
+_MailboxFullText::
 	text "Your PC's Mailbox"
 	line "is full."
 	prompt
 
-SECTION "UnknownText_0x1c1cc4", ROMX
-UnknownText_0x1c1cc4::
+SECTION "_MailSentToPCText", ROMX
+_MailSentToPCText::
 	text "The Mail was sent"
 	line "to your PC."
 	prompt
 
-SECTION "UnknownText_0x1c1ce3", ROMX
-UnknownText_0x1c1ce3::
+SECTION "_PokemonNotEnoughHPText", ROMX
+_PokemonNotEnoughHPText::
 	text "Not enough HP!"
 	prompt
 
-SECTION "UnknownText_0x1c1cf3", ROMX
-UnknownText_0x1c1cf3::
+SECTION "_MayRegisterItemText", ROMX
+_MayRegisterItemText::
 	text "An item in your"
 	line "Bag may be"
 
@@ -3318,8 +3318,23 @@ endc
 	line "later!"
 	done
 
-SECTION "UnknownText_0x1c40e6", ROMX
-UnknownText_0x1c40e6::
+SECTION "_WarnVBAText", ROMX
+_WarnVBAText::
+	text "Warning!"
+
+	para "This Game Boy"
+	line "emulator has bugs"
+
+	para "that may crash"
+	line "Polished Crystal."
+
+	para "Please use another"
+	line "emulator, such as"
+	cont "BGB or Gambatte."
+	prompt
+
+SECTION "_ClockTimeMayBeWrongText", ROMX
+_ClockTimeMayBeWrongText::
 	text "The clock's time"
 	line "may be wrong."
 
@@ -3327,8 +3342,8 @@ UnknownText_0x1c40e6::
 	line "time."
 	prompt
 
-SECTION "UnknownText_0x1c411c", ROMX
-UnknownText_0x1c411c::
+SECTION "_ClockSetWithControlPadText", ROMX
+_ClockSetWithControlPadText::
 	text "Set with the"
 	line "Control Pad."
 
@@ -3336,69 +3351,69 @@ UnknownText_0x1c411c::
 	line "Cancel:  B Button"
 	done
 
-SECTION "UnknownText_0x1c415b", ROMX
-UnknownText_0x1c415b::
+SECTION "_ClockIsThisOKText", ROMX
+_ClockIsThisOKText::
 	text "Is this OK?"
 	done
 
-SECTION "UnknownText_0x1c4168", ROMX
-UnknownText_0x1c4168::
+SECTION "_ClockHasResetText", ROMX
+_ClockHasResetText::
 	text "The clock has been"
 	line "reset."
 	done
 
-SECTION "UnknownText_0x1c4183", ROMX
-UnknownText_0x1c4183::
+SECTION "_LinkTimeoutText", ROMX
+_LinkTimeoutText::
 	text "Too much time has"
 	line "elapsed. Please"
 	cont "try again."
 	prompt
 
-SECTION "UnknownText_0x1c41b1", ROMX
-UnknownText_0x1c41b1::
+SECTION "_LinkTradeCantBattleText", ROMX
+_LinkTradeCantBattleText::
 	text "If you trade that"
 	line "#mon, you won't"
 	cont "be able to battle."
 	prompt
 
-SECTION "UnknownText_0x1c41e6", ROMX
-UnknownText_0x1c41e6::
+SECTION "_LinkAbnormalMonText", ROMX
+_LinkAbnormalMonText::
 	text "Your friend's"
 	line ""
-	text_from_ram wStringBuffer1
+	text_ram wStringBuffer1
 	text " appears"
 	cont "to be abnormal!"
 	prompt
 
-SECTION "UnknownText_0x1c4212", ROMX
-UnknownText_0x1c4212::
+SECTION "_LinkAskTradeForText", ROMX
+_LinkAskTradeForText::
 	text "Trade "
-	text_from_ram wd004
+	text_ram wBufferTrademonNick
 	line "for "
-	text_from_ram wStringBuffer1
+	text_ram wStringBuffer1
 	text "?"
 	done
 
-SECTION "UnknownText_0x1c454b", ROMX
-UnknownText_0x1c454b::
+SECTION "_WouldYouLikeToSaveTheGameText", ROMX
+_WouldYouLikeToSaveTheGameText::
 	text "Would you like to"
 	line "save the game?"
 	done
 
-SECTION "UnknownText_0x1c456d", ROMX
-UnknownText_0x1c456d::
+SECTION "_SavingDontTurnOffThePowerText", ROMX
+_SavingDontTurnOffThePowerText::
 	text "Saving… Don't turn"
 	line "off the power!"
 	done
 
-SECTION "UnknownText_0x1c4590", ROMX
-UnknownText_0x1c4590::
+SECTION "_SavedTheGameText", ROMX
+_SavedTheGameText::
 	text "<PLAYER> saved"
 	line "the game."
 	done
 
-SECTION "UnknownText_0x1c45d9", ROMX
-UnknownText_0x1c45d9::
+SECTION "_AnotherSaveFileText", ROMX
+_AnotherSaveFileText::
 	text "Warning! There is"
 	line "a save file from"
 	cont "another game."
@@ -3408,28 +3423,28 @@ UnknownText_0x1c45d9::
 	cont "save file?"
 	done
 
-SECTION "UnknownText_0x1c460d", ROMX
-UnknownText_0x1c460d::
+SECTION "_SaveFileCorruptedText", ROMX
+_SaveFileCorruptedText::
 	text "The save file is"
 	line "corrupted!"
 	prompt
 
-SECTION "UnknownText_0x1c462a", ROMX
-UnknownText_0x1c462a::
+SECTION "_ChangeBoxSaveText", ROMX
+_ChangeBoxSaveText::
 	text "When you change a"
 	line "#mon Box, data"
 	cont "will be saved. OK?"
 	done
 
-SECTION "UnknownText_0x1c465f", ROMX
-UnknownText_0x1c465f::
+SECTION "_MoveMonWOMailSaveText", ROMX
+_MoveMonWOMailSaveText::
 	text "Each time you move"
 	line "a #mon, data"
 	cont "will be saved. OK?"
 	done
 
-SECTION "UnknownText_0x1c46b7", ROMX
-UnknownText_0x1c46b7::
+SECTION "_WindowPoppingErrorText", ROMX
+_WindowPoppingErrorText::
 	text "No windows avail-"
 	line "able for popping."
 	done
@@ -3439,79 +3454,79 @@ _ObjectEventText::
 	text "Object event"
 	done
 
-SECTION "UnknownText_0x1c4719", ROMX
-UnknownText_0x1c4719::
+SECTION "_ReceivedItemText", ROMX
+_ReceivedItemText::
 	text "<PLAYER> received"
 	line ""
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text "."
 	done
 
-SECTION "UnknownText_0x1c472c", ROMX
-UnknownText_0x1c472c::
+SECTION "_PutItemInPocketText", ROMX
+_PutItemInPocketText::
 	text "<PLAYER> put the"
 	line ""
-	text_from_ram wStringBuffer1
+	text_ram wStringBuffer1
 	text " in"
 	cont "the "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 	prompt
 
-SECTION "UnknownText_0x1c474b", ROMX
-UnknownText_0x1c474b::
+SECTION "_PocketIsFullText", ROMX
+_PocketIsFullText::
 	text "The "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	line "is full…"
 	prompt
 
-SECTION "UnknownText_0x1c4b92", ROMX
-UnknownText_0x1c4b92::
+SECTION "_CongratulationsYourPokemonText", ROMX
+_CongratulationsYourPokemonText::
 	text "Congratulations!"
 	line "Your "
-	text_from_ram wStringBuffer2
+	text_ram wStringBuffer2
 	text_end
 
-SECTION "UnknownText_0x1c4baf", ROMX
-UnknownText_0x1c4baf::
+SECTION "_EvolvedIntoText", ROMX
+_EvolvedIntoText::
 	para "evolved into"
 	line ""
-	text_from_ram wStringBuffer1
+	text_ram wStringBuffer1
 	text "!"
 	done
 
-SECTION "UnknownText_0x1c4bc5", ROMX
-UnknownText_0x1c4bc5::
+SECTION "_StoppedEvolvingText", ROMX
+_StoppedEvolvingText::
 	text "Huh? "
-	text_from_ram wStringBuffer2
+	text_ram wStringBuffer2
 	line "stopped evolving!"
 	prompt
 
-SECTION "UnknownText_0x1c4be3", ROMX
-UnknownText_0x1c4be3::
+SECTION "_EvolvingText", ROMX
+_EvolvingText::
 	text "What? "
-	text_from_ram wStringBuffer2
+	text_ram wStringBuffer2
 	line "is evolving!"
 	done
 
-SECTION "UnknownText_0x1c4bfd", ROMX
-UnknownText_0x1c4bfd::
+SECTION "_MartHowManyText", ROMX
+_MartHowManyText::
 	text "How many?"
 	done
 
-SECTION "UnknownText_0x1c4c08", ROMX
-UnknownText_0x1c4c08::
-	deciram wItemQuantityChangeBuffer, 1, 2
+SECTION "_MartFinalPriceText", ROMX
+_MartFinalPriceText::
+	text_decimal wItemQuantityChangeBuffer, 1, 2
 	text " "
-	text_from_ram wStringBuffer2
+	text_ram wStringBuffer2
 	text "(s)"
 	line "will be ¥"
-	deciram hMoneyTemp, 3, 7
+	text_decimal hMoneyTemp, 3, 7
 	text "."
 	done
 
-SECTION "UnknownText_0x1c4c28", ROMX
-UnknownText_0x1c4c28::
+SECTION "_HerbShopLadyIntroText", ROMX
+_HerbShopLadyIntroText::
 	text "Hello, dear."
 
 	para "I sell inexpensive"
@@ -3526,48 +3541,48 @@ UnknownText_0x1c4c28::
 	para "Hehehehe…"
 	done
 
-SECTION "UnknownText_0x1c4ca3", ROMX
-UnknownText_0x1c4ca3::
+SECTION "_HerbalLadyHowManyText", ROMX
+_HerbalLadyHowManyText::
 	text "How many?"
 	done
 
-SECTION "UnknownText_0x1c4cae", ROMX
-UnknownText_0x1c4cae::
-	deciram wItemQuantityChangeBuffer, 1, 2
+SECTION "_HerbalLadyFinalPriceText", ROMX
+_HerbalLadyFinalPriceText::
+	text_decimal wItemQuantityChangeBuffer, 1, 2
 	text " "
-	text_from_ram wStringBuffer2
+	text_ram wStringBuffer2
 	text "(s)"
 	line "will be ¥"
-	deciram hMoneyTemp, 3, 7
+	text_decimal hMoneyTemp, 3, 7
 	text "."
 	done
 
-SECTION "UnknownText_0x1c4cce", ROMX
-UnknownText_0x1c4cce::
+SECTION "_HerbalLadyThanksText", ROMX
+_HerbalLadyThanksText::
 	text "Thank you, dear."
 	line "Hehehehe…"
 	done
 
-SECTION "UnknownText_0x1c4cea", ROMX
-UnknownText_0x1c4cea::
+SECTION "_HerbalLadyPackFullText", ROMX
+_HerbalLadyPackFullText::
 	text "Oh? Your Bag is"
 	line "full, dear."
 	done
 
-SECTION "UnknownText_0x1c4d08", ROMX
-UnknownText_0x1c4d08::
+SECTION "_HerbalLadyNoMoneyText", ROMX
+_HerbalLadyNoMoneyText::
 	text "Hehehe… You don't"
 	line "have the money."
 	done
 
-SECTION "UnknownText_0x1c4d2a", ROMX
-UnknownText_0x1c4d2a::
+SECTION "_HerbalLadyComeAgainText", ROMX
+_HerbalLadyComeAgainText::
 	text "Come again, dear."
 	line "Hehehehe…"
 	done
 
-SECTION "UnknownText_0x1c4d47", ROMX
-UnknownText_0x1c4d47::
+SECTION "_BargainShopIntroText", ROMX
+_BargainShopIntroText::
 	text "Hiya! Care to see"
 	line "some bargains?"
 
@@ -3578,169 +3593,169 @@ UnknownText_0x1c4d47::
 	line "one of each item."
 	done
 
-SECTION "UnknownText_0x1c4db0", ROMX
-UnknownText_0x1c4db0::
-	text_from_ram wStringBuffer2
+SECTION "_BargainShopFinalPriceText", ROMX
+_BargainShopFinalPriceText::
+	text_ram wStringBuffer2
 	text " costs"
 	line "¥"
-	deciram hMoneyTemp, 3, 7
+	text_decimal hMoneyTemp, 3, 7
 	text ". Want it?"
 	done
 
-SECTION "UnknownText_0x1c4dcd", ROMX
-UnknownText_0x1c4dcd::
+SECTION "_BargainShopThanksText", ROMX
+_BargainShopThanksText::
 	text "Thanks."
 	done
 
-SECTION "UnknownText_0x1c4dd6", ROMX
-UnknownText_0x1c4dd6::
+SECTION "_BargainShopPackFullText", ROMX
+_BargainShopPackFullText::
 	text "Uh-oh, your Bag"
 	line "is chock-full."
 	done
 
-SECTION "UnknownText_0x1c4df7", ROMX
-UnknownText_0x1c4df7::
+SECTION "_BargainShopSoldOutText", ROMX
+_BargainShopSoldOutText::
 	text "You bought that"
 	line "already. I'm all"
 	cont "sold out of it."
 	done
 
-SECTION "UnknownText_0x1c4e28", ROMX
-UnknownText_0x1c4e28::
+SECTION "_BargainShopNoFundsText", ROMX
+_BargainShopNoFundsText::
 	text "Uh-oh, you're"
 	line "short on funds."
 	done
 
-SECTION "UnknownText_0x1c4e46", ROMX
-UnknownText_0x1c4e46::
+SECTION "_BargainShopComeAgainText", ROMX
+_BargainShopComeAgainText::
 	text "Come by again"
 	line "sometime."
 	done
 
-SECTION "UnknownText_0x1c4e5f", ROMX
-UnknownText_0x1c4e5f::
+SECTION "_PharmacyIntroText", ROMX
+_PharmacyIntroText::
 	text "What's up? Need"
 	line "some medicine?"
 	done
 
-SECTION "UnknownText_0x1c4e7e", ROMX
-UnknownText_0x1c4e7e::
+SECTION "_PharmacyHowManyText", ROMX
+_PharmacyHowManyText::
 	text "How many?"
 	done
 
-SECTION "UnknownText_0x1c4e89", ROMX
-UnknownText_0x1c4e89::
-	deciram wItemQuantityChangeBuffer, 1, 2
+SECTION "_PharmacyFinalPriceText", ROMX
+_PharmacyFinalPriceText::
+	text_decimal wItemQuantityChangeBuffer, 1, 2
 	text " "
-	text_from_ram wStringBuffer2
+	text_ram wStringBuffer2
 	text "(s)"
 	line "will cost ¥"
-	deciram hMoneyTemp, 3, 7
+	text_decimal hMoneyTemp, 3, 7
 	text "."
 	done
 
-SECTION "UnknownText_0x1c4eab", ROMX
-UnknownText_0x1c4eab::
+SECTION "_PharmacyThanksText", ROMX
+_PharmacyThanksText::
 	text "Thanks much!"
 	done
 
-SECTION "UnknownText_0x1c4eb9", ROMX
-UnknownText_0x1c4eb9::
+SECTION "_PharmacyPackFullText", ROMX
+_PharmacyPackFullText::
 	text "You don't have any"
 	line "more space."
 	done
 
-SECTION "UnknownText_0x1c4ed8", ROMX
-UnknownText_0x1c4ed8::
+SECTION "_PharmacyNoMoneyText", ROMX
+_PharmacyNoMoneyText::
 	text "Huh? That's not"
 	line "enough money."
 	done
 
-SECTION "UnknownText_0x1c4ef6", ROMX
-UnknownText_0x1c4ef6::
+SECTION "_PharmacyComeAgainText", ROMX
+_PharmacyComeAgainText::
 	text "All right."
 	line "See you around."
 	done
 
-SECTION "UnknownText_0x1c4f33", ROMX
-UnknownText_0x1c4f33::
+SECTION "_MartSellHowManyText", ROMX
+_MartSellHowManyText::
 	text "How many?"
 	done
 
-SECTION "UnknownText_0x1c4f3e", ROMX
-UnknownText_0x1c4f3e::
+SECTION "_MartSellPriceText", ROMX
+_MartSellPriceText::
 	text "I can pay you"
 	line "¥"
-	deciram hMoneyTemp, 3, 7
+	text_decimal hMoneyTemp, 3, 7
 	text "."
 
 	para "Is that OK?"
 	done
 
-SECTION "UnknownText_0x1c4f62", ROMX
-UnknownText_0x1c4f62::
+SECTION "_MartWelcomeText", ROMX
+_MartWelcomeText::
 	text "Welcome! How may I"
 	line "help you?"
 	done
 
-SECTION "UnknownText_0x1c4f80", ROMX
-UnknownText_0x1c4f80::
+SECTION "_MartThanksText", ROMX
+_MartThanksText::
 	text "Here you are."
 	line "Thank you!"
 	done
 
-SECTION "UnknownText_0x1c4f9a", ROMX
-UnknownText_0x1c4f9a::
+SECTION "_MartNoMoneyText", ROMX
+_MartNoMoneyText::
 	text "You don't have"
 	line "enough money."
 	done
 
-SECTION "UnknownText_0x1c4fb7", ROMX
-UnknownText_0x1c4fb7::
+SECTION "_MartPackFullText", ROMX
+_MartPackFullText::
 	text "You can't carry"
 	line "any more items."
 	done
 
-SECTION "UnknownText_0x1c4fd7", ROMX
-UnknownText_0x1c4fd7::
+SECTION "_MartCantBuyText", ROMX
+_MartCantBuyText::
 	text "Sorry, I can't buy"
 	line "that from you."
 	prompt
 
-SECTION "UnknownText_0x1c4ff9", ROMX
-UnknownText_0x1c4ff9::
+SECTION "_MartComeAgainText", ROMX
+_MartComeAgainText::
 	text "Please come again!"
 	done
 
-SECTION "UnknownText_0x1c500d", ROMX
-UnknownText_0x1c500d::
+SECTION "_MartAskMoreText", ROMX
+_MartAskMoreText::
 	text "Can I do anything"
 	line "else for you?"
 	done
 
-SECTION "UnknownText_0x1c502e", ROMX
-UnknownText_0x1c502e::
+SECTION "_MartBoughtText", ROMX
+_MartBoughtText::
 	text "Got ¥"
-	deciram hMoneyTemp, 3, 7
+	text_decimal hMoneyTemp, 3, 7
 	text " for"
 	line ""
-	text_from_ram wStringBuffer2
+	text_ram wStringBuffer2
 	text "(s)."
 	done
 
-SECTION "UnknownText_0x1c5049", ROMX
-UnknownText_0x1c5049::
+SECTION "_SlotsBetHowManyCoinsText", ROMX
+_SlotsBetHowManyCoinsText::
 	text "Bet how many"
 	line "coins?"
 	done
 
 SECTION "TMMartCostsThisMuchText", ROMX
 TMMartCostsThisMuchText::
-	text_from_ram wStringBuffer2
+	text_ram wStringBuffer2
 	text " "
-	text_from_ram wStringBuffer1
+	text_ram wStringBuffer1
 	line "will be ¥"
-	deciram hMoneyTemp, 3, 7
+	text_decimal hMoneyTemp, 3, 7
 	text "."
 	done
 
@@ -3756,12 +3771,12 @@ BTMartHowMayIHelpYouText::
 
 SECTION "BTMartCostsThisMuchText", ROMX
 BTMartCostsThisMuchText::
-	deciram wItemQuantityChangeBuffer, 1, 2
+	text_decimal wItemQuantityChangeBuffer, 1, 2
 	text " "
-	text_from_ram wStringBuffer1
+	text_ram wStringBuffer1
 	text "(s)"
 	line "will cost "
-	deciram hMoneyTemp+1, 2, 4
+	text_decimal hMoneyTemp+1, 2, 4
 	text " BP."
 	done
 
@@ -3784,82 +3799,82 @@ BTMartComeAgainText::
 	line "any time you want!"
 	done
 
-SECTION "UnknownText_0x1c505e", ROMX
-UnknownText_0x1c505e::
+SECTION "_SlotsStartText", ROMX
+_SlotsStartText::
 	text "Start!"
 	done
 
-SECTION "UnknownText_0x1c5066", ROMX
-UnknownText_0x1c5066::
+SECTION "_SlotsNotEnoughCoinsText", ROMX
+_SlotsNotEnoughCoinsText::
 	text "Not enough"
 	line "coins."
 	prompt
 
-SECTION "UnknownText_0x1c5079", ROMX
-UnknownText_0x1c5079::
+SECTION "_SlotsRanOutOfCoinsText", ROMX
+_SlotsRanOutOfCoinsText::
 	text "Darn… Ran out of"
 	line "coins…"
 	done
 
-SECTION "UnknownText_0x1c5092", ROMX
-UnknownText_0x1c5092::
+SECTION "_SlotsPlayAgainText", ROMX
+_SlotsPlayAgainText::
 	text "Play again?"
 	done
 
-SECTION "UnknownText_0x1c509f", ROMX
-UnknownText_0x1c509f::
+SECTION "_SlotsLinedUpText", ROMX
+_SlotsLinedUpText::
 	text "lined up!"
 	line "Won "
-	text_from_ram wStringBuffer2
+	text_ram wStringBuffer2
 	text " coins!"
 	done
 
-SECTION "UnknownText_0x1c50bb", ROMX
-UnknownText_0x1c50bb::
+SECTION "_SlotsDarnText", ROMX
+_SlotsDarnText::
 	text "Darn!"
 	done
 
-SECTION "UnknownText_0x1c5565", ROMX
-UnknownText_0x1c5565::
+SECTION "_PhoneWrongNumberText", ROMX
+_PhoneWrongNumberText::
 	text "Huh? Sorry, wrong"
 	line "number!"
 	done
 
-SECTION "UnknownText_0x1c5580", ROMX
-UnknownText_0x1c5580::
+SECTION "_PhoneClickText", ROMX
+_PhoneClickText::
 	text "Click!"
 	done
 
-SECTION "UnknownText_0x1c5588", ROMX
-UnknownText_0x1c5588::
+SECTION "_PhoneEllipseText", ROMX
+_PhoneEllipseText::
 	text "……"
 	done
 
-SECTION "UnknownText_0x1c558b", ROMX
-UnknownText_0x1c558b::
+SECTION "_PhoneOutOfAreaText", ROMX
+_PhoneOutOfAreaText::
 	text "That number is out"
 	line "of the area."
 	done
 
-SECTION "UnknownText_0x1c55ac", ROMX
-UnknownText_0x1c55ac::
+SECTION "_PhoneJustTalkToThemText", ROMX
+_PhoneJustTalkToThemText::
 	text "Just go talk to"
 	line "that person!"
 	done
 
-SECTION "UnknownText_0x1c55db", ROMX
-UnknownText_0x1c55db::
+SECTION "_PasswordAskResetText", ROMX
+_PasswordAskResetText::
 	text "Select Continue to"
 	line "set the time."
 	prompt
 
-SECTION "UnknownText_0x1c561c", ROMX
-UnknownText_0x1c561c::
+SECTION "_PasswordAskResetClockText", ROMX
+_PasswordAskResetClockText::
 	text "Reset the clock?"
 	done
 
-SECTION "UnknownText_0x1c564a", ROMX
-UnknownText_0x1c564a::
+SECTION "_ClearAllSaveDataText", ROMX
+_ClearAllSaveDataText::
 	text "Clear all save"
 	line "data?"
 	done
@@ -3870,161 +3885,161 @@ ResetInitialOptionsText::
 	line "game options?"
 	done
 
-SECTION "UnknownText_0x1c5660", ROMX
-UnknownText_0x1c5660::
-	text_from_ram wMonOrItemNameBuffer
+SECTION "_LearnedMoveText", ROMX
+_LearnedMoveText::
+	text_ram wMonOrItemNameBuffer
 	text " learned"
 	line ""
-	text_from_ram wStringBuffer2
+	text_ram wStringBuffer2
 	text "!"
-	play_sound SFX_DEX_FANFARE_50_79
-	text_waitbutton
+	text_sound SFX_DEX_FANFARE_50_79
+	text_promptbutton
 	text_end
 
-SECTION "UnknownText_0x1c5678", ROMX
-UnknownText_0x1c5678::
+SECTION "_MoveAskForgetText", ROMX
+_MoveAskForgetText::
 	text "Which move should"
 	next "be forgotten?"
 	prompt
 
-SECTION "UnknownText_0x1c5699", ROMX
-UnknownText_0x1c5699::
+SECTION "_StopLearningMoveText", ROMX
+_StopLearningMoveText::
 	text "Stop learning"
 	line ""
-	text_from_ram wStringBuffer2
+	text_ram wStringBuffer2
 	text "?"
 	done
 
-SECTION "UnknownText_0x1c56af", ROMX
-UnknownText_0x1c56af::
-	text_from_ram wMonOrItemNameBuffer
+SECTION "_DidNotLearnMoveText", ROMX
+_DidNotLearnMoveText::
+	text_ram wMonOrItemNameBuffer
 	line "did not learn"
 	cont ""
-	text_from_ram wStringBuffer2
+	text_ram wStringBuffer2
 	text "."
 	prompt
 
-SECTION "UnknownText_0x1c56c9", ROMX
-UnknownText_0x1c56c9::
-	text_from_ram wMonOrItemNameBuffer
+SECTION "_AskForgetMoveText", ROMX
+_AskForgetMoveText::
+	text_ram wMonOrItemNameBuffer
 	line "wants to learn"
 	cont ""
-	text_from_ram wStringBuffer2
+	text_ram wStringBuffer2
 	text "!"
 
 	para "Should it forget"
 	line "an old move for"
 	cont ""
-	text_from_ram wStringBuffer2
+	text_ram wStringBuffer2
 	text "?"
 	done
 
-SECTION "UnknownText_0x1c5740", ROMX
-UnknownText_0x1c5740::
+SECTION "Text_MoveForgetCount", ROMX
+Text_MoveForgetCount::
 	text "1, 2 and…"
-	interpret_data
+	text_pause
 	text_end
 
-SECTION "UnknownText_0x1c574e", ROMX
-UnknownText_0x1c574e::
+SECTION "_MoveForgotText", ROMX
+_MoveForgotText::
 	text " Poof!"
-	interpret_data
+	text_pause
 
 	para ""
-	text_from_ram wMonOrItemNameBuffer
+	text_ram wMonOrItemNameBuffer
 	text " forgot"
 	line ""
-	text_from_ram wStringBuffer1
+	text_ram wStringBuffer1
 	text "."
 
 	para "And…"
 	prompt
 
-SECTION "UnknownText_0x1c5772", ROMX
-UnknownText_0x1c5772::
+SECTION "_MoveCantForgetHMText", ROMX
+_MoveCantForgetHMText::
 	text "HM moves can't be"
 	line "forgotten now."
 	prompt
 
-SECTION "UnknownText_0x1c5793", ROMX
-UnknownText_0x1c5793::
+SECTION "_CardFlipPlayWithThreeCoinsText", ROMX
+_CardFlipPlayWithThreeCoinsText::
 	text "Play with three"
 	line "coins?"
 	done
 
-SECTION "UnknownText_0x1c57ab", ROMX
-UnknownText_0x1c57ab::
+SECTION "_CardFlipNotEnoughCoinsText", ROMX
+_CardFlipNotEnoughCoinsText::
 	text "Not enough coins…"
 	prompt
 
-SECTION "UnknownText_0x1c57be", ROMX
-UnknownText_0x1c57be::
+SECTION "_CardFlipChooseACardText", ROMX
+_CardFlipChooseACardText::
 	text "Choose a card."
 	done
 
-SECTION "UnknownText_0x1c57ce", ROMX
-UnknownText_0x1c57ce::
+SECTION "_CardFlipPlaceYourBetText", ROMX
+_CardFlipPlaceYourBetText::
 	text "Place your bet."
 	done
 
-SECTION "UnknownText_0x1c57df", ROMX
-UnknownText_0x1c57df::
+SECTION "_CardFlipPlayAgainText", ROMX
+_CardFlipPlayAgainText::
 	text "Want to play"
 	line "again?"
 	done
 
-SECTION "UnknownText_0x1c57f4", ROMX
-UnknownText_0x1c57f4::
+SECTION "_CardFlipShuffledText", ROMX
+_CardFlipShuffledText::
 	text "The cards have"
 	line "been shuffled."
 	prompt
 
-SECTION "UnknownText_0x1c5813", ROMX
-UnknownText_0x1c5813::
+SECTION "_CardFlipYeahText", ROMX
+_CardFlipYeahText::
 	text "Yeah!"
 	done
 
-SECTION "UnknownText_0x1c581a", ROMX
-UnknownText_0x1c581a::
+SECTION "_CardFlipDarnText", ROMX
+_CardFlipDarnText::
 	text "Darn…"
 	done
 
-SECTION "UnknownText_0x1c5821", ROMX
-UnknownText_0x1c5821::
-	current_day
+SECTION "_GearTodayText", ROMX
+_GearTodayText::
+	text_today
 	text_end
 
-SECTION "UnknownText_0x1c5824", ROMX
-UnknownText_0x1c5824::
+SECTION "_GearEllipseText", ROMX
+_GearEllipseText::
 	text "……"
 	done
 
-SECTION "UnknownText_0x1c5827", ROMX
-UnknownText_0x1c5827::
+SECTION "_GearOutOfServiceText", ROMX
+_GearOutOfServiceText::
 	text "You're out of the"
 	line "service area."
 	prompt
 
-SECTION "UnknownText_0x1c5847", ROMX
-UnknownText_0x1c5847::
+SECTION "_PokegearAskWhoCallText", ROMX
+_PokegearAskWhoCallText::
 	text "Whom do you want"
 	line "to call?"
 	done
 
-SECTION "UnknownText_0x1c5862", ROMX
-UnknownText_0x1c5862::
+SECTION "_PokegearPressButtonText", ROMX
+_PokegearPressButtonText::
 	text "Press any button"
 	line "to exit."
 	done
 
-SECTION "UnknownText_0x1c587d", ROMX
-UnknownText_0x1c587d::
+SECTION "_PokegearAskDeleteText", ROMX
+_PokegearAskDeleteText::
 	text "Delete this stored"
 	line "phone number?"
 	done
 
-SECTION "UnknownText_0x1c589f", ROMX
-UnknownText_0x1c589f::
+SECTION "_BuenaAskWhichPrizeText", ROMX
+_BuenaAskWhichPrizeText::
 	text "You can cash in"
 	line "your saved points"
 
@@ -4035,32 +4050,32 @@ UnknownText_0x1c589f::
 	line "you like?"
 	done
 
-SECTION "UnknownText_0x1c58bc", ROMX
-UnknownText_0x1c58bc::
-	text_from_ram wStringBuffer1
+SECTION "_BuenaIsThatRightText", ROMX
+_BuenaIsThatRightText::
+	text_ram wStringBuffer1
 	text "?"
 	line "Is that right?"
 	done
 
-SECTION "UnknownText_0x1c58d1", ROMX
-UnknownText_0x1c58d1::
+SECTION "_BuenaHereYouGoText", ROMX
+_BuenaHereYouGoText::
 	text "Here you go!"
 	done
 
-SECTION "UnknownText_0x1c58e0", ROMX
-UnknownText_0x1c58e0::
+SECTION "_BuenaNotEnoughPointsText", ROMX
+_BuenaNotEnoughPointsText::
 	text "You don't have"
 	line "enough points."
 	done
 
-SECTION "UnknownText_0x1c58ff", ROMX
-UnknownText_0x1c58ff::
+SECTION "_BuenaNoRoomText", ROMX
+_BuenaNoRoomText::
 	text "You have no room"
 	line "for it."
 	done
 
-SECTION "UnknownText_0x1c591a", ROMX
-UnknownText_0x1c591a::
+SECTION "_BuenaComeAgainText", ROMX
+_BuenaComeAgainText::
 	text "Oh. Please come"
 	line "back again!"
 	done
@@ -4072,8 +4087,8 @@ Text_ExcuseMeYoureNotReady::
 	para ""
 	done
 
-SECTION "UnknownText_0x1c5962", ROMX
-UnknownText_0x1c5962::
+SECTION "_BattleTowerReturnWhenReadyText", ROMX
+_BattleTowerReturnWhenReadyText::
 	text "Please return when"
 	line "you're ready."
 	done
@@ -4110,95 +4125,95 @@ Text_YouCantTakeAnEgg::
 
 SECTION "Text_UberRestriction", ROMX
 Text_UberRestriction::
-	text_from_ram wStringBuffer1
+	text_ram wStringBuffer1
 	text " must be"
 	line "<LV>70 or higher."
 	para ""
 	done
 
-SECTION "UnknownText_0x1c5aa6", ROMX
-UnknownText_0x1c5aa6::
+SECTION "_BallBrokeFreeText", ROMX
+_BallBrokeFreeText::
 	text "Oh no! The #mon"
 	line "broke free!"
 	prompt
 
-SECTION "UnknownText_0x1c5ac3", ROMX
-UnknownText_0x1c5ac3::
+SECTION "_BallAppearedCaughtText", ROMX
+_BallAppearedCaughtText::
 	text "Aww! It appeared"
 	line "to be caught!"
 	prompt
 
-SECTION "UnknownText_0x1c5ae3", ROMX
-UnknownText_0x1c5ae3::
+SECTION "_BallAlmostHadItText", ROMX
+_BallAlmostHadItText::
 	text "Aargh!"
 	line "Almost had it!"
 	prompt
 
-SECTION "UnknownText_0x1c5afa", ROMX
-UnknownText_0x1c5afa::
+SECTION "_BallSoCloseText", ROMX
+_BallSoCloseText::
 	text "Shoot! It was so"
 	line "close too!"
 	prompt
 
-SECTION "UnknownText_0x1c5b17", ROMX
-UnknownText_0x1c5b17::
+SECTION "Text_BallCaught", ROMX
+Text_BallCaught::
 	text "Gotcha! "
-	text_from_ram wEnemyMonNick
+	text_ram wEnemyMonNick
 	line "was caught!"
-	play_sound SFX_CAUGHT_MON
+	text_sound SFX_CAUGHT_MON
 	text_end
 
 SECTION "Text_Waitbutton_2", ROMX
 Text_Waitbutton_2::
-	text_waitbutton
+	text_promptbutton
 	text_end
 
-SECTION "UnknownText_0x1c5b38", ROMX
-UnknownText_0x1c5b38::
-	text_from_ram wMonOrItemNameBuffer
+SECTION "_BallSentToPCText", ROMX
+_BallSentToPCText::
+	text_ram wMonOrItemNameBuffer
 	text " was"
 	line "sent to Bill's PC."
 	prompt
 
-SECTION "UnknownText_0x1c5b53", ROMX
-UnknownText_0x1c5b53::
-	text_from_ram wEnemyMonNick
+SECTION "_NewDexDataText", ROMX
+_NewDexDataText::
+	text_ram wEnemyMonNick
 	text "'s data"
 	line "was newly added to"
 	cont "the #dex."
-	play_sound SFX_SLOT_MACHINE_START
-	text_waitbutton
+	text_sound SFX_SLOT_MACHINE_START
+	text_promptbutton
 	text_end
 
-SECTION "UnknownText_0x1c5b7f", ROMX
-UnknownText_0x1c5b7f::
+SECTION "_AskGiveNicknameText", ROMX
+_AskGiveNicknameText::
 	text "Give a nickname to"
 	line ""
-	text_from_ram wStringBuffer1
+	text_ram wStringBuffer1
 	text "?"
 	done
 
 SECTION "_ItemHappinessRoseButStatFellText", ROMX
 _ItemHappinessRoseButStatFellText::
-	text_from_ram wStringBuffer1
+	text_ram wStringBuffer1
 	text " became"
 	line "friendly. Base"
 	cont ""
-	text_from_ram wStringBuffer2
+	text_ram wStringBuffer2
 	text " fell!"
 	prompt
 
 SECTION "_ItemStatRoseText", ROMX
 _ItemStatRoseText::
-	text_from_ram wStringBuffer1
+	text_ram wStringBuffer1
 	text "'s"
 	line ""
-	text_from_ram wStringBuffer2
+	text_ram wStringBuffer2
 	text " rose."
 	prompt
 
-SECTION "UnknownText_0x1c5bac", ROMX
-UnknownText_0x1c5bac::
+SECTION "_ItemCantUseOnMonText", ROMX
+_ItemCantUseOnMonText::
 	text "That can't be used"
 	line "on this #mon."
 	prompt
@@ -4210,19 +4225,19 @@ Text_RepelUsedEarlierIsStillInEffect::
 	cont "in effect."
 	prompt
 
-SECTION "UnknownText_0x1c5c5e", ROMX
-UnknownText_0x1c5c5e::
+SECTION "_BlueCardBalanceText", ROMX
+_BlueCardBalanceText::
 	text "You now have"
 	line ""
-	deciram wBlueCardBalance, 1, 2
+	text_decimal wBlueCardBalance, 1, 2
 	text " points."
 	done
 
-SECTION "UnknownText_0x1c5c7b", ROMX
-UnknownText_0x1c5c7b::
+SECTION "_CoinCaseCountText", ROMX
+_CoinCaseCountText::
 	text "Coins:"
 	line ""
-	deciram wCoins, 2, 5
+	text_decimal wCoins, 2, 5
 	text_end
 
 SECTION "Text_RaiseThePPOfWhichMove", ROMX
@@ -4239,67 +4254,67 @@ Text_RestoreThePPOfWhichMove::
 
 SECTION "Text_PPIsMaxedOut", ROMX
 Text_PPIsMaxedOut::
-	text_from_ram wStringBuffer2
+	text_ram wStringBuffer2
 	text "'s PP"
 	line "is maxed out."
 	prompt
 
 SECTION "Text_PPsIncreased", ROMX
 Text_PPsIncreased::
-	text_from_ram wStringBuffer2
+	text_ram wStringBuffer2
 	text "'s PP"
 	line "increased."
 	prompt
 
 SECTION "Text_PPsMaximized", ROMX
 Text_PPsMaximized::
-	text_from_ram wStringBuffer2
+	text_ram wStringBuffer2
 	text "'s PP"
 	line "maximized."
 	prompt
 
-SECTION "UnknownText_0x1c5cf1", ROMX
-UnknownText_0x1c5cf1::
+SECTION "_PPRestoredText", ROMX
+_PPRestoredText::
 	text "PP was restored."
 	prompt
 
-SECTION "UnknownText_0x1c5d3e", ROMX
-UnknownText_0x1c5d3e::
+SECTION "_ItemLooksBitterText", ROMX
+_ItemLooksBitterText::
 	text "It looks bitter…"
 	prompt
 
-SECTION "UnknownText_0x1c5d50", ROMX
-UnknownText_0x1c5d50::
+SECTION "_ItemCantUseOnEggText", ROMX
+_ItemCantUseOnEggText::
 	text "That can't be used"
 	line "on an Egg."
 	prompt
 
-SECTION "UnknownText_0x1c5d6e", ROMX
-UnknownText_0x1c5d6e::
+SECTION "_ItemOakWarningText", ROMX
+_ItemOakWarningText::
 	text "Oak: <PLAYER>!"
 	line "This isn't the"
 	cont "time to use that!"
 	prompt
 
-SECTION "UnknownText_0x1c5db6", ROMX
-UnknownText_0x1c5db6::
+SECTION "_ItemWontHaveEffectText", ROMX
+_ItemWontHaveEffectText::
 	text "It won't have any"
 	line "effect."
 	prompt
 
-SECTION "UnknownText_0x1c5dd0", ROMX
-UnknownText_0x1c5dd0::
+SECTION "_BallBlockedText", ROMX
+_BallBlockedText::
 	text "The trainer"
 	line "blocked the Ball!"
 	prompt
 
-SECTION "UnknownText_0x1c5def", ROMX
-UnknownText_0x1c5def::
+SECTION "_BallDontBeAThiefText", ROMX
+_BallDontBeAThiefText::
 	text "Don't be a thief!"
 	prompt
 
-SECTION "UnknownText_0x1c5e3a", ROMX
-UnknownText_0x1c5e3a::
+SECTION "_BallBoxFullText", ROMX
+_BallBoxFullText::
 	text "The #mon Box"
 	line "is full. That"
 	cont "can't be used now."
@@ -4331,63 +4346,63 @@ Text_NuzlockeReviveFailure::
 	cont "Nuzlocke mode!"
 	prompt
 
-SECTION "UnknownText_0x1c5e68", ROMX
-UnknownText_0x1c5e68::
+SECTION "_ItemUsedText", ROMX
+_ItemUsedText::
 	text "<PLAYER> used the"
 	line ""
-	text_from_ram wStringBuffer2
+	text_ram wStringBuffer2
 	text "."
 	done
 
-SECTION "UnknownText_0x1c5ea8", ROMX
-UnknownText_0x1c5ea8::
-	text_from_ram wStringBuffer1
+SECTION "_KnowsMoveText", ROMX
+_KnowsMoveText::
+	text_ram wStringBuffer1
 	text " knows"
 	line ""
-	text_from_ram wStringBuffer2
+	text_ram wStringBuffer2
 	text "."
 	prompt
 
-SECTION "UnknownText_0x1c5eba", ROMX
-UnknownText_0x1c5eba::
+SECTION "_MoveKnowsOneText", ROMX
+_MoveKnowsOneText::
 	text "That #mon knows"
 	line "only one move."
 	done
 
-SECTION "UnknownText_0x1c5eda", ROMX
-UnknownText_0x1c5eda::
+SECTION "_AskDeleteMoveText", ROMX
+_AskDeleteMoveText::
 	text "Oh, make it forget"
 	line ""
-	text_from_ram wStringBuffer1
+	text_ram wStringBuffer1
 	text "?"
 	done
 
-SECTION "UnknownText_0x1c5ef5", ROMX
-UnknownText_0x1c5ef5::
+SECTION "_DeleterForgotMoveText", ROMX
+_DeleterForgotMoveText::
 	text "Done! Your #mon"
 	line "forgot the move."
 	done
 
-SECTION "UnknownText_0x1c5f17", ROMX
-UnknownText_0x1c5f17::
+SECTION "_DeleterEggText", ROMX
+_DeleterEggText::
 	text "An Egg doesn't"
 	line "know any moves!"
 	done
 
-SECTION "UnknownText_0x1c5f36", ROMX
-UnknownText_0x1c5f36::
+SECTION "_DeleterNoComeAgainText", ROMX
+_DeleterNoComeAgainText::
 	text "No? Come visit me"
 	line "again."
 	done
 
-SECTION "UnknownText_0x1c5f50", ROMX
-UnknownText_0x1c5f50::
+SECTION "_DeleterAskWhichMoveText", ROMX
+_DeleterAskWhichMoveText::
 	text "Which move should"
 	line "it forget, then?"
 	prompt
 
-SECTION "UnknownText_0x1c5f74", ROMX
-UnknownText_0x1c5f74::
+SECTION "_DeleterIntroText", ROMX
+_DeleterIntroText::
 	text "Um… Oh, yes, I'm"
 	line "the Move Deleter."
 
@@ -4398,8 +4413,8 @@ UnknownText_0x1c5f74::
 	line "#mon forget?"
 	done
 
-SECTION "UnknownText_0x1c5fd1", ROMX
-UnknownText_0x1c5fd1::
+SECTION "_DeleterAskWhichMonText", ROMX
+_DeleterAskWhichMonText::
 	text "Which #mon?"
 	prompt
 
@@ -4409,40 +4424,40 @@ Text_DSTIsThatOK::
 	line "is that OK?"
 	done
 
-SECTION "UnknownText_0x1c5ff1", ROMX
-UnknownText_0x1c5ff1::
+SECTION "_TimeAskOkayText", ROMX
+_TimeAskOkayText::
 	text ","
 	line "is that OK?"
 	done
 
-SECTION "UnknownText_0x1c6000", ROMX
-UnknownText_0x1c6000::
+SECTION "_TimesetAskDSTText", ROMX
+_TimesetAskDSTText::
 	text "Do you want to"
 	line "switch to Daylight"
 	cont "Saving Time?"
 	done
 
-SECTION "UnknownText_0x1c6030", ROMX
-UnknownText_0x1c6030::
+SECTION "_TimesetDSTText", ROMX
+_TimesetDSTText::
 	text "I set the clock"
 	line "forward by one"
 	cont "hour."
 	prompt
 
-SECTION "UnknownText_0x1c6056", ROMX
-UnknownText_0x1c6056::
+SECTION "_TimesetAskNotDSTText", ROMX
+_TimesetAskNotDSTText::
 	text "Is Daylight Saving"
 	line "Time over?"
 	done
 
-SECTION "UnknownText_0x1c6075", ROMX
-UnknownText_0x1c6075::
+SECTION "_TimesetNotDSTText", ROMX
+_TimesetNotDSTText::
 	text "I put the clock"
 	line "back one hour."
 	prompt
 
-SECTION "UnknownText_0x1c6095", ROMX
-UnknownText_0x1c6095::
+SECTION "_TimesetAskAdjustDSTText", ROMX
+_TimesetAskAdjustDSTText::
 	text "Do you want to"
 	line "adjust your clock"
 
@@ -4450,8 +4465,8 @@ UnknownText_0x1c6095::
 	line "Saving Time?"
 	done
 
-SECTION "UnknownText_0x1c60d1", ROMX
-UnknownText_0x1c60d1::
+SECTION "_MomLostGearBookletText", ROMX
+_MomLostGearBookletText::
 	text "I lost the in-"
 	line "struction booklet"
 	cont "for the #gear."
@@ -4491,7 +4506,7 @@ SECTION "WonderTradeConfirmText", ROMX
 WonderTradeConfirmText::
 	text "Offer to trade"
 	line ""
-	text_from_ram wStringBuffer1
+	text_ram wStringBuffer1
 	text "?"
 	done
 

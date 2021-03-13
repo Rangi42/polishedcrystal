@@ -12,7 +12,7 @@ SproutTower2F_MapScriptHeader:
 	def_coord_events
 
 	def_bg_events
-	bg_event 10, 15, BGEVENT_JUMPTEXT, UnknownText_0x1848c8
+	bg_event 10, 15, BGEVENT_JUMPTEXT, SproutTower2FStatueText
 
 	def_object_events
 	object_event 10,  3, SPRITE_SAGE, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 4, GenericTrainerSageNico, -1
@@ -62,7 +62,7 @@ SageEdmondBeatenText:
 	text "Oh, I'm weak!"
 	done
 
-UnknownText_0x1848c8:
+SproutTower2FStatueText:
 	text "A #mon statue…"
 
 	para "It looks very"

@@ -26,12 +26,12 @@ TrainerHouseB1FCallback:
 	iftrue .Cal
 	disappear TRAINERHOUSEB1F_CAL
 	appear TRAINERHOUSEB1F_CARRIE
-	jump .Done
+	sjump .Done
 .Cal:
 	disappear TRAINERHOUSEB1F_CARRIE
 	appear TRAINERHOUSEB1F_CAL
 .Done:
-	return
+	endcallback
 
 TrainerHouseReceptionistScript:
 	turnobject PLAYER, UP
@@ -39,16 +39,16 @@ TrainerHouseReceptionistScript:
 	checkflag ENGINE_FOUGHT_IN_TRAINER_HALL_TODAY
 	iftrue .FoughtTooManyTimes
 	writetext TrainerHouseB1FIntroText
-	buttonsound
+	promptbutton
 	checkflag ENGINE_PLAYER_IS_FEMALE
 	iftrue .GetCalName
-	trainertotext CARRIE, 1, $0
-	jump .GotName
+	gettrainername CARRIE, 1, $0
+	sjump .GotName
 .GetCalName
-	trainertotext CAL, 1, $0
+	gettrainername CAL, 1, $0
 .GotName:
 	writetext TrainerHouseB1FYourOpponentIsText
-	buttonsound
+	promptbutton
 	writetext TrainerHouseB1FAskWantToBattleText
 	yesorno
 	iffalse .Declined
@@ -63,7 +63,7 @@ TrainerHouseReceptionistScript:
 	iftrue .LoadTrainerCal
 	setlasttalked TRAINERHOUSEB1F_CARRIE
 	loadtrainer CARRIE, 1
-	jump .StartBattle
+	sjump .StartBattle
 .LoadTrainerCal
 	setlasttalked TRAINERHOUSEB1F_CAL
 	loadtrainer CAL, 1
@@ -141,7 +141,7 @@ TrainerHouseB1FIntroText:
 	done
 
 TrainerHouseB1FYourOpponentIsText:
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text " is your"
 	line "opponent today."
 	done

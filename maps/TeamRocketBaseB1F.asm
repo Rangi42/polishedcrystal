@@ -2,7 +2,7 @@ TeamRocketBaseB1F_MapScriptHeader:
 	def_scene_scripts
 
 	def_callbacks
-	callback MAPCALLBACK_OBJECTS, TeamRocketBaseB1FCallback1
+	callback MAPCALLBACK_OBJECTS, TeamRocketBaseB1FHideSecurityGruntCallback
 
 	def_warp_events
 	warp_event 27,  2, MAHOGANY_MART_1F, 3
@@ -47,12 +47,12 @@ TeamRocketBaseB1F_MapScriptHeader:
 	coord_event  5, 13, 0, ExplodingTrap22
 
 	def_bg_events
-	bg_event 19, 11, BGEVENT_READ, MapTeamRocketBaseB1FSignpost0Script
-	bg_event 24,  1, BGEVENT_UP, MapTeamRocketBaseB1FSignpost5Script
-	bg_event  6,  1, BGEVENT_UP, MapTeamRocketBaseB1FSignpost5Script
-	bg_event  8, 15, BGEVENT_UP, MapTeamRocketBaseB1FSignpost5Script
-	bg_event 22, 15, BGEVENT_UP, MapTeamRocketBaseB1FSignpost5Script
-	bg_event 24,  5, BGEVENT_UP, MapTeamRocketBaseB1FSignpost5Script
+	bg_event 19, 11, BGEVENT_READ, TeamRocketBaseB1FSecretSwitch
+	bg_event 24,  1, BGEVENT_UP, TeamRocketBaseB1FSecurityCamera
+	bg_event  6,  1, BGEVENT_UP, TeamRocketBaseB1FSecurityCamera
+	bg_event  8, 15, BGEVENT_UP, TeamRocketBaseB1FSecurityCamera
+	bg_event 22, 15, BGEVENT_UP, TeamRocketBaseB1FSecurityCamera
+	bg_event 24,  5, BGEVENT_UP, TeamRocketBaseB1FSecurityCamera
 	bg_event 20, 11, BGEVENT_JUMPSTD, teamrocketoath
 	bg_event 21, 11, BGEVENT_JUMPSTD, teamrocketoath
 	bg_event  3, 11, BGEVENT_ITEM + REVIVE, EVENT_TEAM_ROCKET_BASE_B1F_HIDDEN_REVIVE
@@ -68,9 +68,9 @@ TeamRocketBaseB1F_MapScriptHeader:
 	object_const_def
 	const TEAMROCKETBASEB1F_ROCKET1
 
-TeamRocketBaseB1FCallback1:
+TeamRocketBaseB1FHideSecurityGruntCallback:
 	disappear TEAMROCKETBASEB1F_ROCKET1
-	return
+	endcallback
 
 SecurityCamera1a:
 	checkevent EVENT_SECURITY_CAMERA_1
@@ -513,7 +513,7 @@ VoltorbExplodingTrap:
 	cry VOLTORB
 	special FadeInPalettes
 	setlasttalked -1
-	writecode VAR_BATTLETYPE, BATTLETYPE_TRAP
+	loadvar VAR_BATTLETYPE, BATTLETYPE_TRAP
 	loadwildmon VOLTORB, 30
 	startbattle
 	end
@@ -524,7 +524,7 @@ GeodudeExplodingTrap:
 	cry GEODUDE
 	special FadeInPalettes
 	setlasttalked -1
-	writecode VAR_BATTLETYPE, BATTLETYPE_TRAP
+	loadvar VAR_BATTLETYPE, BATTLETYPE_TRAP
 	loadwildmon GEODUDE, 28
 	startbattle
 	end
@@ -535,7 +535,7 @@ KoffingExplodingTrap:
 	cry KOFFING
 	special FadeInPalettes
 	setlasttalked -1
-	writecode VAR_BATTLETYPE, BATTLETYPE_TRAP
+	loadvar VAR_BATTLETYPE, BATTLETYPE_TRAP
 	loadwildmon KOFFING, 28
 	startbattle
 	end
@@ -573,14 +573,14 @@ GenericTrainerGruntM16:
 	cont "courage and walk."
 	done
 
-MapTeamRocketBaseB1FSignpost5Script:
+TeamRocketBaseB1FSecurityCamera:
 	jumptext SecurityCameraText
 
-MapTeamRocketBaseB1FSignpost0Script:
+TeamRocketBaseB1FSecretSwitch:
 	opentext
 	checkevent EVENT_TURNED_OFF_SECURITY_CAMERAS
-	iftrue UnknownScript_0x6cabe
-	writetext UnknownText_0x6cdad
+	iftrue .SecretSwitchOff
+	writetext TeamRocketBaseB1FSecretSwitchText
 	playsound SFX_TALLY
 	waitbutton
 	closetext
@@ -592,8 +592,8 @@ MapTeamRocketBaseB1FSignpost0Script:
 	setevent EVENT_SECURITY_CAMERA_5
 	end
 
-UnknownScript_0x6cabe:
-	jumpopenedtext UnknownText_0x6cdd0
+.SecretSwitchOff:
+	jumpopenedtext TeamRocketBaseB1FSwitchOffText
 
 SecurityCameraMovement1:
 	run_step_right
@@ -743,12 +743,12 @@ SecurityCameraText:
 	line "shiny."
 	done
 
-UnknownText_0x6cdad:
+TeamRocketBaseB1FSecretSwitchText:
 	text "A secret switch!"
 	line "Better press it."
 	done
 
-UnknownText_0x6cdd0:
+TeamRocketBaseB1FSwitchOffText:
 	text "The switch is"
 	line "turned off."
 	done

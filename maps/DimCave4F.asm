@@ -38,11 +38,11 @@ DimCave4FBouldersLand:
 	changeblock 26, 24, $c9
 	changeblock 4, 24, $b9
 .skip
-	return
+	endcallback
 
 DimCave4FSetUpStoneTable:
 	usestonetable .StoneTable
-	return
+	endcallback
 
 .StoneTable:
 	stonetable 6, DIMCAVE4F_BOULDER, .Boulder

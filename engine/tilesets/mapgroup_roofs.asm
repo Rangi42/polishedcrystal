@@ -20,9 +20,9 @@ LoadMapGroupRoof::
 	jp DecompressRequest2bpp
 
 .Roofs:
-	dw Roof0GFX
-	dw Roof1GFX
-	dw Roof2GFX
-	dw Roof3GFX
+	dw Roof0GFX ; far-ok
+	dw Roof1GFX ; far-ok
+	dw Roof2GFX ; far-ok
+	dw Roof3GFX ; far-ok
 
 INCLUDE "data/maps/roofs.asm"

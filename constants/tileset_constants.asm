@@ -41,6 +41,7 @@
 	const TILESET_RUINS_OF_ALPH        ; 28
 	const TILESET_ALPH_WORD_ROOM       ; 29
 	const TILESET_POKEMON_MANSION      ; 2a
+	const TILESET_BATTLE_FACTORY       ; 2b
 
 	const_def
 	const PAL_BG_GRAY   ; 0

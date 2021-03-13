@@ -207,7 +207,7 @@ StartTrainerBattle_NextScene:
 StartTrainerBattle_SetUpBGMap:
 	call StartTrainerBattle_NextScene
 	xor a
-	ld [wcf64], a
+	ld [wBattleTransitionCounter], a
 	ldh [hBGMapMode], a
 	ret
 
@@ -225,21 +225,21 @@ StartTrainerBattle_SetUpForWavyOutro:
 
 	call StartTrainerBattle_NextScene
 
-	ld a, $43
+	ld a, LOW(rSCX)
 	ldh [hLCDCPointer], a
 	xor a
 	ldh [hLYOverrideStart], a
 	ld a, $90
 	ldh [hLYOverrideEnd], a
 	xor a
-	ld [wcf64], a
-	ld [wcf65], a
+	ld [wBattleTransitionCounter], a
+	ld [wBattleTransitionSineWaveOffset], a
 	ld hl, rIE
 	set LCD_STAT, [hl]
 	ret
 
 StartTrainerBattle_SineWave:
-	ld a, [wcf64]
+	ld a, [wBattleTransitionCounter]
 	cp $60
 	jr c, .DoSineWave
 	ld a, $20
@@ -247,10 +247,10 @@ StartTrainerBattle_SineWave:
 	ret
 
 .DoSineWave:
-	ld hl, wcf65
+	ld hl, wBattleTransitionSineWaveOffset
 	ld a, [hl]
 	inc [hl]
-	ld hl, wcf64
+	ld hl, wBattleTransitionCounter
 	ld d, [hl]
 	add [hl]
 	ld [hl], a
@@ -280,7 +280,7 @@ StartTrainerBattle_SetUpForSpinOutro:
 	ldh [rSVBK], a
 	call StartTrainerBattle_NextScene
 	xor a
-	ld [wcf64], a
+	ld [wBattleTransitionCounter], a
 	ret
 
 spintable_entry: MACRO
@@ -299,7 +299,7 @@ ENDM
 StartTrainerBattle_SpinToBlack:
 	xor a
 	ldh [hBGMapMode], a
-	ld a, [wcf64]
+	ld a, [wBattleTransitionCounter]
 	ld e, a
 	ld d, 0
 	ld hl, .spintable
@@ -309,11 +309,11 @@ endr
 	ld a, [hli]
 	cp -1
 	jr z, .end
-	ld [wcf65], a
+	ld [wBattleTransitionSpinQuadrant], a
 	call .load
 	ld a, $2
 	ldh [hBGMapMode], a
-	ld hl, wcf64
+	ld hl, wBattleTransitionCounter
 	ld a, [hl]
 	inc [hl]
 .mod_3
@@ -392,7 +392,7 @@ endr
 	and $ff ^ PALETTE_MASK
 	or PAL_BG_TEXT ; black
 	ld [hl], a
-	ld a, [wcf65]
+	ld a, [wBattleTransitionSpinQuadrant]
 	bit 0, a
 	jr z, .leftside
 	inc hl
@@ -403,7 +403,7 @@ endr
 	dec c
 	jr nz, .loop1
 	pop hl
-	ld a, [wcf65]
+	ld a, [wBattleTransitionSpinQuadrant]
 	bit 1, a
 	ld bc, SCREEN_WIDTH
 	jr z, .upper
@@ -418,7 +418,7 @@ endr
 	jr z, .loop
 	ld c, a
 .loop2
-	ld a, [wcf65]
+	ld a, [wBattleTransitionSpinQuadrant]
 	bit 0, a
 	jr z, .leftside2
 	dec hl
@@ -448,13 +448,13 @@ StartTrainerBattle_SetUpForRandomScatterOutro:
 	ldh [rSVBK], a
 	call StartTrainerBattle_NextScene
 	ld a, $10
-	ld [wcf64], a
+	ld [wBattleTransitionCounter], a
 	ld a, $2
 	ldh [hBGMapMode], a
 	ret
 
 StartTrainerBattle_SpeckleToBlack:
-	ld hl, wcf64
+	ld hl, wBattleTransitionCounter
 	ld a, [hl]
 	and a
 	jr z, .done

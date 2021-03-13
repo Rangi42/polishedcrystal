@@ -1,4 +1,4 @@
-_DummyGame:
+_MemoryGame:
 	call .LoadGFXAndPals
 	call DelayFrame
 .loop
@@ -11,13 +11,13 @@ _DummyGame:
 	ld a, CGB_DIPLOMA
 	call GetCGBLayout
 	call ClearSpriteAnims
-	ld hl, DummyGameGFX
+	ld hl, MemoryGameGFX
 	ld de, vTiles2 tile $00
 	call Decompress
-	ld hl, MissingDummyGameGFX
+	ld hl, MissingMemoryGameGFX
 	ld de, vTiles0 tile $00
 	ld bc, 4 tiles
-	ld a, BANK(MissingDummyGameGFX)
+	ld a, BANK(MissingMemoryGameGFX)
 	call FarCopyBytes
 	ld a, $8
 	ld hl, wc300
@@ -68,7 +68,7 @@ _DummyGame:
 	dw .AskPlayAgain
 
 .RestartGame:
-	call DummyGame_InitStrings
+	call MemoryGame_InitStrings
 	ld hl, wJumptableIndex
 	inc [hl]
 	ret
@@ -81,44 +81,44 @@ _DummyGame:
 	ret
 
 .proceed
-	call DummyGame_InitBoard
+	call MemoryGame_InitBoard
 	ld hl, wJumptableIndex
 	inc [hl]
 	xor a
-	ld [wDummyGameCounter], a
-	ld hl, wDummyGameLastMatches
+	ld [wMemoryGameCounter], a
+	ld hl, wMemoryGameLastMatches
 rept 4
 	ld [hli], a
 endr
 	ld [hl], a
-	ld [wDummyGameNumCardsMatched], a
+	ld [wMemoryGameNumCardsMatched], a
 .InitBoardTilemapAndCursorObject:
-	ld hl, wDummyGameCounter
+	ld hl, wMemoryGameCounter
 	ld a, [hl]
 	cp 45
 	jr nc, .spawn_object
 	inc [hl]
-	call DummyGame_Card2Coord
+	call MemoryGame_Card2Coord
 	xor a
-	ld [wDummyGameLastCardPicked], a
-	jp DummyGame_PlaceCard
+	ld [wMemoryGameLastCardPicked], a
+	jp MemoryGame_PlaceCard
 
 .spawn_object
 	depixel 6, 3, 4, 4
-	ld a, SPRITE_ANIM_INDEX_DUMMY_GAME
+	ld a, SPRITE_ANIM_INDEX_MEMORY_GAME
 	call _InitSpriteAnimStruct
 	ld a, 5
-	ld [wDummyGameNumberTriesRemaining], a
+	ld [wMemoryGameNumberTriesRemaining], a
 	ld hl, wJumptableIndex
 	inc [hl]
 	ret
 
 .CheckTriesRemaining:
-	ld a, [wDummyGameNumberTriesRemaining]
+	ld a, [wMemoryGameNumberTriesRemaining]
 	hlcoord 17, 0
 	add "0"
 	ld [hl], a
-	ld hl, wDummyGameNumberTriesRemaining
+	ld hl, wMemoryGameNumberTriesRemaining
 	ld a, [hl]
 	and a
 	jr nz, .next_try
@@ -129,60 +129,60 @@ endr
 .next_try
 	dec [hl]
 	xor a
-	ld [wcf64], a
+	ld [wMemoryGameCardChoice], a
 	ld hl, wJumptableIndex
 	inc [hl]
 .PickCard1:
-	ld a, [wcf64]
+	ld a, [wMemoryGameCardChoice]
 	and a
 	ret z
 	dec a
 	ld e, a
 	ld d, 0
-	ld hl, wDummyGameCards
+	ld hl, wMemoryGameCards
 	add hl, de
 	ld a, [hl]
 	cp -1
 	ret z
-	ld [wDummyGameLastCardPicked], a
-	ld [wDummyGameCard1], a
+	ld [wMemoryGameLastCardPicked], a
+	ld [wMemoryGameCard1], a
 	ld a, e
-	ld [wDummyGameCard1Location], a
-	call DummyGame_Card2Coord
-	call DummyGame_PlaceCard
+	ld [wMemoryGameCard1Location], a
+	call MemoryGame_Card2Coord
+	call MemoryGame_PlaceCard
 	xor a
-	ld [wcf64], a
+	ld [wMemoryGameCardChoice], a
 	ld hl, wJumptableIndex
 	inc [hl]
 	ret
 
 .PickCard2:
-	ld a, [wcf64]
+	ld a, [wMemoryGameCardChoice]
 	and a
 	ret z
 	dec a
-	ld hl, wDummyGameCard1Location
+	ld hl, wMemoryGameCard1Location
 	cp [hl]
 	ret z
 	ld e, a
 	ld d, 0
-	ld hl, wDummyGameCards
+	ld hl, wMemoryGameCards
 	add hl, de
 	ld a, [hl]
 	cp -1
 	ret z
-	ld [wDummyGameLastCardPicked], a
-	ld [wDummyGameCard2], a
+	ld [wMemoryGameLastCardPicked], a
+	ld [wMemoryGameCard2], a
 	ld a, e
-	ld [wDummyGameCard2Location], a
-	call DummyGame_Card2Coord
-	call DummyGame_PlaceCard
+	ld [wMemoryGameCard2Location], a
+	call MemoryGame_Card2Coord
+	call MemoryGame_PlaceCard
 	ld a, 64
-	ld [wDummyGameCounter], a
+	ld [wMemoryGameCounter], a
 	ld hl, wJumptableIndex
 	inc [hl]
 .DelayPickAgain:
-	ld hl, wDummyGameCounter
+	ld hl, wMemoryGameCounter
 	ld a, [hl]
 	and a
 	jr z, .PickAgain
@@ -190,7 +190,7 @@ endr
 	ret
 
 .PickAgain:
-	call DummyGame_CheckMatch
+	call MemoryGame_CheckMatch
 	ld a, $3
 	ld [wJumptableIndex], a
 	ret
@@ -200,27 +200,27 @@ endr
 	and A_BUTTON
 	ret z
 	xor a
-	ld [wDummyGameCounter], a
+	ld [wMemoryGameCounter], a
 .RevelationLoop:
-	ld hl, wDummyGameCounter
+	ld hl, wMemoryGameCounter
 	ld a, [hl]
 	cp 45
 	jr nc, .finish_round
 	inc [hl]
 	push af
-	call DummyGame_Card2Coord
+	call MemoryGame_Card2Coord
 	pop af
 	push hl
 	ld e, a
 	ld d, $0
-	ld hl, wDummyGameCards
+	ld hl, wMemoryGameCards
 	add hl, de
 	ld a, [hl]
 	pop hl
 	cp -1
 	jr z, .RevelationLoop
-	ld [wDummyGameLastCardPicked], a
-	call DummyGame_PlaceCard
+	ld [wMemoryGameLastCardPicked], a
+	call MemoryGame_PlaceCard
 	jr .RevelationLoop
 
 .finish_round
@@ -239,129 +239,129 @@ endr
 	ld [wJumptableIndex], a
 	ret
 
-DummyGame_CheckMatch:
-	ld hl, wDummyGameCard1
+MemoryGame_CheckMatch:
+	ld hl, wMemoryGameCard1
 	ld a, [hli]
 	cp [hl]
 	jr nz, .no_match
 
-	ld a, [wDummyGameCard1Location]
-	call DummyGame_Card2Coord
-	call DummyGame_DeleteCard
+	ld a, [wMemoryGameCard1Location]
+	call MemoryGame_Card2Coord
+	call MemoryGame_DeleteCard
 
-	ld a, [wDummyGameCard2Location]
-	call DummyGame_Card2Coord
-	call DummyGame_DeleteCard
+	ld a, [wMemoryGameCard2Location]
+	call MemoryGame_Card2Coord
+	call MemoryGame_DeleteCard
 
-	ld a, [wDummyGameCard1Location]
+	ld a, [wMemoryGameCard1Location]
 	ld e, a
 	ld d, $0
-	ld hl, wDummyGameCards
+	ld hl, wMemoryGameCards
 	add hl, de
 	ld [hl], -1
 
-	ld a, [wDummyGameCard2Location]
+	ld a, [wMemoryGameCard2Location]
 	ld e, a
 	ld d, 0
-	ld hl, wDummyGameCards
+	ld hl, wMemoryGameCards
 	add hl, de
 	ld [hl], -1
 
-	ld hl, wDummyGameLastMatches
+	ld hl, wMemoryGameLastMatches
 .find_empty_slot
 	ld a, [hli]
 	and a
 	jr nz, .find_empty_slot
 	dec hl
-	ld a, [wDummyGameCard1]
+	ld a, [wMemoryGameCard1]
 	ld [hl], a
-	ld [wDummyGameLastCardPicked], a
-	ld hl, wDummyGameNumCardsMatched
+	ld [wMemoryGameLastCardPicked], a
+	ld hl, wMemoryGameNumCardsMatched
 	ld e, [hl]
 	inc [hl]
 	inc [hl]
 	ld d, 0
 	hlcoord 5, 0
 	add hl, de
-	call DummyGame_PlaceCard
+	call MemoryGame_PlaceCard
 	ld hl, .VictoryText
 	jp PrintText
 
 .no_match
 	xor a
-	ld [wDummyGameLastCardPicked], a
+	ld [wMemoryGameLastCardPicked], a
 
-	ld a, [wDummyGameCard1Location]
-	call DummyGame_Card2Coord
-	call DummyGame_PlaceCard
+	ld a, [wMemoryGameCard1Location]
+	call MemoryGame_Card2Coord
+	call MemoryGame_PlaceCard
 
-	ld a, [wDummyGameCard2Location]
-	call DummyGame_Card2Coord
-	call DummyGame_PlaceCard
+	ld a, [wMemoryGameCard2Location]
+	call MemoryGame_Card2Coord
+	call MemoryGame_PlaceCard
 
-	ld hl, DummyGameText_Darn
+	ld hl, MemoryGameText_Darn
 	jp PrintText
 
 .VictoryText:
-	start_asm
+	text_asm
 	push bc
 	hlcoord 2, 13
-	call DummyGame_PlaceCard
-	ld hl, DummyGameText_Yeah
+	call MemoryGame_PlaceCard
+	ld hl, MemoryGameText_Yeah
 	pop bc
 	inc bc
 	inc bc
 	inc bc
 	ret
 
-DummyGameText_Yeah:
+MemoryGameText_Yeah:
 	; , yeah!
-	text_jump UnknownText_0x1c1a5b
+	text_far _MemoryGameYeahText
 	text_end
 
-DummyGameText_Darn:
+MemoryGameText_Darn:
 	; Darn…
-	text_jump UnknownText_0x1c1a65
+	text_far _MemoryGameDarnText
 	text_end
 
-DummyGame_InitBoard:
-	ld hl, wDummyGameCards
-	ld bc, wDummyGameCardsEnd - wDummyGameCards
+MemoryGame_InitBoard:
+	ld hl, wMemoryGameCards
+	ld bc, wMemoryGameCardsEnd - wMemoryGameCards
 	xor a
 	rst ByteFill
-	call DummyGame_GetDistributionOfTiles
+	call MemoryGame_GetDistributionOfTiles
 
 	ld c, 2
 	ld b, [hl]
-	call DummyGame_SampleTilePlacement
+	call MemoryGame_SampleTilePlacement
 
 	ld c, 8
 	ld b, [hl]
-	call DummyGame_SampleTilePlacement
+	call MemoryGame_SampleTilePlacement
 
 	ld c, 4
 	ld b, [hl]
-	call DummyGame_SampleTilePlacement
+	call MemoryGame_SampleTilePlacement
 
 	ld c, 7
 	ld b, [hl]
-	call DummyGame_SampleTilePlacement
+	call MemoryGame_SampleTilePlacement
 
 	ld c, 3
 	ld b, [hl]
-	call DummyGame_SampleTilePlacement
+	call MemoryGame_SampleTilePlacement
 
 	ld c, 6
 	ld b, [hl]
-	call DummyGame_SampleTilePlacement
+	call MemoryGame_SampleTilePlacement
 
 	ld c, 1
 	ld b, [hl]
-	call DummyGame_SampleTilePlacement
+	call MemoryGame_SampleTilePlacement
 
 	ld c, 5
-	ld hl, wDummyGameCards
-	ld b, wDummyGameCardsEnd - wDummyGameCards
+	ld hl, wMemoryGameCards
+	ld b, wMemoryGameCardsEnd - wMemoryGameCards
 .loop
 	ld a, [hl]
 	and a
@@ -373,9 +373,9 @@ DummyGame_InitBoard:
 	jr nz, .loop
 	ret
 
-DummyGame_SampleTilePlacement:
+MemoryGame_SampleTilePlacement:
 	push hl
-	ld de, wDummyGameCards
+	ld de, wMemoryGameCards
 .loop
 	call Random
 	and %00111111
@@ -394,7 +394,7 @@ DummyGame_SampleTilePlacement:
 	inc hl
 	ret
 
-DummyGame_GetDistributionOfTiles:
+MemoryGame_GetDistributionOfTiles:
 	ld a, [wMenuCursorY]
 	dec a
 	ld l, a
@@ -411,8 +411,8 @@ DummyGame_GetDistributionOfTiles:
 	db $02, $02, $04, $06, $06, $08, $08, $09
 	db $02, $02, $02, $04, $07, $08, $08, $0c
 
-DummyGame_PlaceCard:
-	ld a, [wDummyGameLastCardPicked]
+MemoryGame_PlaceCard:
+	ld a, [wMemoryGameLastCardPicked]
 	sla a
 	sla a
 	add 4
@@ -428,7 +428,7 @@ DummyGame_PlaceCard:
 	ld c, 3
 	jp DelayFrames
 
-DummyGame_DeleteCard:
+MemoryGame_DeleteCard:
 	ld a, $1
 	ld [hli], a
 	ld [hld], a
@@ -439,7 +439,7 @@ DummyGame_DeleteCard:
 	ld c, 3
 	jp DelayFrames
 
-DummyGame_InitStrings:
+MemoryGame_InitStrings:
 	hlcoord 0, 0
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
 	ld a, $1
@@ -458,7 +458,7 @@ DummyGame_InitStrings:
 .japstr2
 	db "№.Turns@"
 
-DummyGame_Card2Coord:
+MemoryGame_Card2Coord:
 	ld d, 0
 .find_row
 	sub 9
@@ -484,7 +484,7 @@ DummyGame_Card2Coord:
 	add hl, de
 	ret
 
-DummyGame_InterpretJoypad_AnimateCursor:
+MemoryGame_InterpretJoypad_AnimateCursor:
 	ld a, [wJumptableIndex]
 	cp $7
 	jr nc, .quit
@@ -518,7 +518,7 @@ DummyGame_InterpretJoypad_AnimateCursor:
 	add hl, bc
 	ld a, [hl]
 	inc a
-	ld [wcf64], a
+	ld [wMemoryGameCardChoice], a
 	ret
 
 .pressed_left
@@ -577,10 +577,10 @@ DummyGame_InterpretJoypad_AnimateCursor:
 	ld [hl], a
 	ret
 
-DummyGameGFX:
-INCBIN "gfx/dummy_game/dummy_game.2bpp.lz"
+MemoryGameGFX:
+INCBIN "gfx/memory_game/memory_game.2bpp.lz"
 
-MissingDummyGameGFX:
+MissingMemoryGameGFX:
 ; Graphics for an unused Game Corner
 ; game were meant to be here.
 

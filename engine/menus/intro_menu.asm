@@ -56,6 +56,7 @@ NewGame:
 _NewGame_FinishSetup:
 	call ResetWRAM
 	call NewGame_ClearTileMapEtc
+	call CheckVBA
 	call SetInitialOptions
 	call ProfElmSpeech
 	call InitializeWorld
@@ -346,10 +347,10 @@ Continue:
 	call DelayFrames
 	call ConfirmContinue
 	jp c, CloseWindow
+	call CheckVBA
 	call Continue_CheckRTC_RestartClock
 	jp c, CloseWindow
 	call Continue_CheckEGO_ResetInitialOptions
-;	jp c, CloseWindow
 	ld a, $8
 	ld [wMusicFade], a
 	xor a ; MUSIC_NONE
@@ -398,27 +399,37 @@ ConfirmContinue:
 	scf
 	ret
 
+CheckVBA:
+	xor a
+	ldh [rSC], a ; no-optimize redundant loads (VBA loads this wrong)
+	ldh a, [rSC]
+	and %01111100
+	cp %01111100
+	ret z
+	ld hl, .WarnVBAText
+	jp PrintText
+
+.WarnVBAText:
+	text_far _WarnVBAText
+	text_end
+
 Continue_CheckRTC_RestartClock:
 	call CheckRTCStatus
 	and %10000000 ; Day count exceeded 16383
-	jr z, .pass
+	jr z, Continue_FinishReset
 	farcall RestartClock
 	ld a, c
 	and a
-	jr z, .pass
+	jr z, Continue_FinishReset
 	scf
-	ret
-
-.pass
-	xor a
 	ret
 
 Continue_CheckEGO_ResetInitialOptions:
 	ld a, [wInitialOptions2]
 	bit RESET_INIT_OPTS, a
-	jr z, .pass
-	farcall SetInitialOptions
-.pass
+	call nz, SetInitialOptions
+	; fallthrough
+Continue_FinishReset:
 	xor a
 	ret
 
@@ -682,12 +693,12 @@ endc
 	jp PrintText
 
 ElmText1:
-	text_jump _ElmText1
+	text_far _ElmText1
 	text_end
 
 ElmText2:
-	text_jump _ElmText2
-	start_asm
+	text_far _ElmText2
+	text_asm
 	ld a, SYLVEON
 	call PlayCry
 	call WaitSFX
@@ -695,23 +706,23 @@ ElmText2:
 	ret
 
 ElmText3:
-	text_jump Text_Waitbutton_2
+	text_far Text_Waitbutton_2
 	text_end
 
 ElmText4:
-	text_jump _ElmText4
+	text_far _ElmText4
 	text_end
 
 ElmText5:
-	text_jump _ElmText5
+	text_far _ElmText5
 	text_end
 
 ElmText6:
-	text_jump _ElmText6
+	text_far _ElmText6
 	text_end
 
 ElmText7:
-	text_jump _ElmText7
+	text_far _ElmText7
 	text_end
 
 InitGender:
@@ -791,17 +802,17 @@ endc
 
 AreYouABoyOrAreYouAGirlText:
 	; Are you a boy? Or are you a girl?
-	text_jump Text_AreYouABoyOrAreYouAGirl
+	text_far Text_AreYouABoyOrAreYouAGirl
 	text_end
 
 SoYoureABoyText:
 	; So you're a boy?
-	text_jump Text_SoYoureABoy
+	text_far Text_SoYoureABoy
 	text_end
 
 SoYoureAGirlText:
 	; So you're a girl?
-	text_jump Text_SoYoureAGirl
+	text_far Text_SoYoureAGirl
 	text_end
 
 NamePlayer:
@@ -887,11 +898,10 @@ DrawIntroPlayerPic:
 	ld [wCurPartySpecies], a
 	ld a, [wPlayerGender]
 	bit 0, a
-	jr z, .male
 	ld a, CARRIE
-	jr .ok
-.male
-	ld a, CAL
+	jr nz, .ok
+	assert CARRIE + 1 == CAL
+	inc a
 .ok
 	ld [wTrainerClass], a
 Intro_PrepTrainerPic:
@@ -954,7 +964,7 @@ Intro_PlacePlayerSprite:
 	db 10 * 8 + 4, 10 * 8, 3
 
 CrystalIntroSequence:
-	farcall Copyright_GFPresents
+	farcall SplashScreen
 	jr c, StartTitleScreen
 	farcall CrystalIntro
 
@@ -1121,16 +1131,15 @@ TitleScreenTimer:
 	jr z, .ok
 	ld de, 56 * 60
 .ok
-	ld hl, wcf65
+	ld hl, wTitleScreenTimer
 	ld [hl], e
 	inc hl
 	ld [hl], d
 	ret
 
 TitleScreenMain:
-
 ; Run the timer down.
-	ld hl, wcf65
+	ld hl, wTitleScreenTimer
 	ld e, [hl]
 	inc hl
 	ld d, [hl]
@@ -1190,7 +1199,7 @@ TitleScreenMain:
 	ld hl, wMusicFade
 	ld [hl], 8 ; 1 second
 
-	ld hl, wcf65
+	ld hl, wTitleScreenTimer
 	inc [hl]
 	ret
 
@@ -1214,7 +1223,7 @@ TitleScreenEnd:
 
 ; Wait until the music is done fading.
 
-	ld hl, wcf65
+	ld hl, wTitleScreenTimer
 	inc [hl]
 
 	ld a, [wMusicFade]

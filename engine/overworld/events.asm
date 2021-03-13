@@ -73,9 +73,7 @@ EnterMap:
 
 	ldh a, [hMapEntryMethod]
 	cp MAPSETUP_CONNECTION
-	jr nz, .dont_enable
-	call EnableEvents
-.dont_enable
+	call z, EnableEvents
 
 	ldh a, [hMapEntryMethod]
 	cp MAPSETUP_RELOADMAP
@@ -113,7 +111,7 @@ MapEvents:
 	ret nz
 	call PlayerEvents
 	call DisableEvents
-	farjp ScriptEvents
+	jp ScriptEvents
 
 NextOverworldFrame:
 	; If we haven't already performed a delay outside DelayFrame as a result
@@ -240,7 +238,7 @@ PlayerEvents:
 
 .ok
 	push af
-	farcall EnableScriptMode
+	call EnableScriptMode
 	pop af
 
 	ld [wScriptRunning], a
@@ -380,8 +378,8 @@ RunSceneScript:
 	ld hl, wScriptFlags
 	res 3, [hl]
 
-	farcall EnableScriptMode
-	farcall ScriptEvents
+	call EnableScriptMode
+	call ScriptEvents
 
 	ld hl, wScriptFlags
 	bit 3, [hl]
@@ -698,7 +696,7 @@ TryBGEvent:
 	ld [hld], a
 	ld a, [wCurBGEventScriptAddr + 1]
 	ld [hld], a
-	ld [hl], writebyte_command ; just to be safe (as opposed to directly writing to hScriptVar)
+	ld [hl], setval_command ; just to be safe (as opposed to directly writing to hScriptVar)
 	jr .callMapScriptAndReturnCarry
 
 CheckBGEventFlag:
@@ -809,24 +807,24 @@ CheckMenuOW:
 
 StartMenuScript:
 	callasm StartMenu
-	jump StartMenuCallback
+	sjump StartMenuCallback
 
 SelectMenuScript:
 	callasm SelectMenu
-	jump SelectMenuCallback
+	sjump SelectMenuCallback
 
 StartMenuCallback:
 SelectMenuCallback:
-	copybytetovar hMenuReturn
+	readmem hMenuReturn
 	ifequal HMENURETURN_SCRIPT, .Script
 	ifequal HMENURETURN_ASM, .Asm
 	end
 
 .Script:
-	ptjump wQueuedScriptBank
+	memjump wQueuedScriptBank
 
 .Asm:
-	ptcallasm wQueuedScriptBank
+	memcallasm wQueuedScriptBank
 	end
 
 CountStep:
@@ -879,7 +877,7 @@ CountStep:
 	jr c, .doscript
 
 .skip_poison
-	farcall DoBikeStep
+	call DoBikeStep
 
 .done
 	xor a
@@ -920,7 +918,7 @@ DoRepelStep:
 	ret
 
 RepelWoreOffScript:
-	farjumptext UnknownText_0x1bd308
+	farjumptext _RepelWoreOffText
 
 UseAnotherRepelScript:
 	opentext
@@ -956,7 +954,7 @@ DoPlayerEvent:
 	ret
 
 PlayerEventScriptPointers:
-	dba Invalid_0x96c2d          ; PLAYEREVENT_NONE
+	dba InvalidEventScript          ; PLAYEREVENT_NONE
 	dba SeenByTrainerScript      ; PLAYEREVENT_SEENBYTRAINER
 	dba TalkToTrainerScript      ; PLAYEREVENT_TALKTOTRAINER
 	dba FindItemInBallScript     ; PLAYEREVENT_ITEMBALL
@@ -968,11 +966,11 @@ PlayerEventScriptPointers:
 	dba ChangeDirectionScript    ; PLAYEREVENT_JOYCHANGEFACING
 	dba FindTMHMInBallScript     ; PLAYEREVENT_TMHMBALL
 	dba FindKeyItemInBallScript  ; PLAYEREVENT_KEYITEMBALL
-	dba Invalid_0x96c2d          ; NUM_PLAYER_EVENTS
+	dba InvalidEventScript          ; NUM_PLAYER_EVENTS
 
 HatchEggScript:
 	callasm OverworldHatchEgg
-Invalid_0x96c2d:
+InvalidEventScript:
 	end
 
 WarpToNewMapScript:
@@ -983,12 +981,12 @@ WarpToNewMapScript:
 FallIntoMapScript:
 	newloadmap MAPSETUP_FALL
 	playsound SFX_KINESIS
-	applymovement PLAYER, MovementData_0x96c48
+	applymovement PLAYER, .SkyfallMovement
 	playsound SFX_STRENGTH
 	scall LandAfterPitfallScript
 	end
 
-MovementData_0x96c48:
+.SkyfallMovement:
 	skyfall
 	step_end
 
@@ -997,7 +995,7 @@ LandAfterPitfallScript:
 	end
 
 EdgeWarpScript: ; 4
-	reloadandreturn MAPSETUP_CONNECTION
+	reloadend MAPSETUP_CONNECTION
 
 ChangeDirectionScript: ; 9
 	deactivatefacing 6

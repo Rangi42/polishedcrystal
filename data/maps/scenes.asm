@@ -8,9 +8,9 @@ ENDM
 MapScenes::
 	scene_var AZALEA_TOWN,                            wAzaleaTownSceneID
 	scene_var BATTLE_TOWER_1F,                        wBattleTower1FSceneID
-	scene_var BATTLE_TOWER_BATTLE_ROOM,               wBattleTowerBattleRoomSceneID
-	scene_var BATTLE_TOWER_ELEVATOR,                  wBattleTowerElevatorSceneID
-	scene_var BATTLE_TOWER_HALLWAY,                   wBattleTowerHallwaySceneID
+	scene_var BATTLE_TOWER_BATTLE_ROOM,               wAlways0SceneID
+	scene_var BATTLE_TOWER_ELEVATOR,                  wAlways0SceneID
+	scene_var BATTLE_TOWER_HALLWAY,                   wAlways0SceneID
 	scene_var BATTLE_TOWER_OUTSIDE,                   wBattleTowerOutsideSceneID
 	scene_var BELLCHIME_TRAIL,                        wBellchimeTrailSceneID
 	scene_var BRUNOS_ROOM,                            wBrunosRoomSceneID

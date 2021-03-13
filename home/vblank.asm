@@ -172,7 +172,7 @@ VBlankUpdateSound::
 ; sound only
 	ld a, BANK(_UpdateSound)
 	rst Bankswitch
-	jp _UpdateSound
+	jp _UpdateSound ; far-ok
 
 VBlank6::
 ; palettes
@@ -295,4 +295,4 @@ VBlank7::
 ; also updates oam, and pals if specified
 	ld a, BANK(VBlankSafeCopyTilemapAtOnce)
 	rst Bankswitch
-	jp VBlankSafeCopyTilemapAtOnce
+	jp VBlankSafeCopyTilemapAtOnce ; far-ok

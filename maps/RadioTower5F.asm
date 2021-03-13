@@ -56,7 +56,7 @@ Petrel1Script:
 	reloadmapafterbattle
 	opentext
 	writetext FakeDirectorTextAfter
-	buttonsound
+	promptbutton
 	verbosegivekeyitem BASEMENT_KEY
 	closetext
 	setevent EVENT_BEAT_PETREL_1
@@ -79,7 +79,7 @@ GenericTrainerAriana1:
 	done
 
 RadioTower5FRocketBossTrigger:
-	applymovement PLAYER, MovementData_0x60125
+	applymovement PLAYER, RadioTower5FPlayerTwoStepsLeftMovement
 	playmusic MUSIC_ROCKET_ENCOUNTER
 	turnobject RADIOTOWER5F_ARCHER, RIGHT
 	showtext RadioTower5FRocketBossBeforeText
@@ -116,7 +116,7 @@ RadioTower5FRocketBossTrigger:
 	turnobject PLAYER, RIGHT
 	opentext
 	writetext RadioTower5FDirectorThankYouText
-	buttonsound
+	promptbutton
 	verbosegivekeyitem CLEAR_BELL
 	writetext RadioTower5FDirectorDescribeClearBellText
 	waitbutton
@@ -182,7 +182,7 @@ RadioTower5FDirectorWalksOut:
 	step_up
 	step_end
 
-MovementData_0x60125:
+RadioTower5FPlayerTwoStepsLeftMovement:
 	step_left
 	step_left
 	step_end

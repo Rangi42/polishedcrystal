@@ -37,7 +37,7 @@ PokemonJournalAgathaScript:
 	done
 
 Route10PokeCenter1FGymGuyScript:
-	checkevent EVENT_RETURNED_MACHINE_PART
+	checkevent EVENT_RESTORED_POWER_TO_KANTO
 	iftrue_jumptextfaceplayer .Text2
 	jumpthistextfaceplayer
 

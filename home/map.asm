@@ -97,7 +97,7 @@ CheckWarpTile::
 WarpCheck::
 	call GetDestinationWarpNumber
 	ret nc
-	jp CopyWarpData
+	jr CopyWarpData
 
 GetDestinationWarpNumber::
 	farcall CheckWarpCollision
@@ -212,7 +212,7 @@ CopyWarpData::
 	scf
 	ret
 
-CheckOutdoorMapOrEnvironment5::
+CheckOutdoorOrIsolatedMap::
 	cp ISOLATED
 	ret z
 CheckOutdoorMap::
@@ -549,7 +549,7 @@ ChangeMap::
 
 .Function:
 	push de
-	call FarDecompressAtB_D000
+	call FarDecompressInB
 	pop de
 
 	ld a, d
@@ -1102,7 +1102,7 @@ _LoadTilesetGFX1:
 	; fallthrough
 
 _DoLoadTilesetGFX:
-	ld c, $80
+	ld c, $7f
 _DoLoadTilesetGFX0:
 	ld b, a
 	ld a, [hli]
@@ -1317,7 +1317,7 @@ GetMovementPermissions::
 	dec e
 	call GetCoordTile
 	ld [wTileUp], a
-	jp .Up
+	jr .Up
 
 .LeftRight:
 	ld a, [wPlayerStandingMapX]
@@ -1335,7 +1335,7 @@ GetMovementPermissions::
 	inc d
 	call GetCoordTile
 	ld [wTileRight], a
-	jp .Right
+	jr .Right
 
 .Down:
 	call .CheckHiNybble
@@ -1884,6 +1884,24 @@ GetAnyMapTileset::
 	ld a, c
 	ret
 
+GetCurrentLandmark::
+	ld a, [wMapGroup]
+	ld b, a
+	ld a, [wMapNumber]
+	ld c, a
+	call GetWorldMapLocation
+	and a ; cp SPECIAL_MAP
+	ret nz
+	; fallthrough
+
+; In a special map, get the backup map group / map id
+GetBackupLandmark::
+	ld a, [wBackupMapGroup]
+	ld b, a
+	ld a, [wBackupMapNumber]
+	ld c, a
+	; fallthrough
+
 GetWorldMapLocation::
 ; given a map group/id in bc, return its location on the Pokégear map.
 	push hl
@@ -1895,22 +1913,21 @@ GetWorldMapLocation::
 	ld a, c
 	jp PopBCDEHL
 
-GetCurrentLandmark::
-	ld a, [wMapGroup]
-	ld b, a
-	ld a, [wMapNumber]
-	ld c, a
-	call GetWorldMapLocation
-	and a ; cp SPECIAL_MAP
-	ret nz
-
-; In a special map, get the backup map group / map id
-GetBackupLandmark::
-	ld a, [wBackupMapGroup]
-	ld b, a
-	ld a, [wBackupMapNumber]
-	ld c, a
-	jp GetWorldMapLocation
+RandomRegionCheck::
+; Returns current region, like RegionCheck, except that Mt. Silver and Route 28
+; is considered Kanto or Johto at random.
+; e returns 0 in Johto, 1 in Kanto and 2 in Shamouti Island.
+	call GetCurrentLandmark
+	cp SILVER_CAVE
+	jr z, .random
+	cp ROUTE_28
+	jr nz, RegionCheck
+	; fallthrough
+.random
+	call Random
+	and 1
+	ld e, a
+	ret
 
 RegionCheck::
 ; Checks if the player is in Kanto or Johto.

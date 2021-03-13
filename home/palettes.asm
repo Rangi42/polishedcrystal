@@ -221,10 +221,10 @@ CopyPals::
 ; de += 8 (next pal)
 	ld a, 1 palettes ; NUM_PAL_COLORS * 2 ; bytes per pal
 	add e
-	jr nc, .ok
-	inc d
-.ok
 	ld e, a
+	adc d
+	sub e
+	ld d, a
 
 ; how many more pals?
 	pop bc

@@ -26,7 +26,7 @@ EcruteakPokeCenter1F_MapScriptHeader:
 	const ECRUTEAKPOKECENTER1F_BILL
 
 EcruteakPokeCenter1FBillWalksUpTrigger:
-	priorityjump .Script
+	prioritysjump .Script
 	end
 
 .Script:
@@ -100,23 +100,23 @@ EcruteakPokeCenter1FBillScript:
 	yesorno
 	iffalse_jumpopenedtext .NoText
 	writetext .YesText
-	buttonsound
+	promptbutton
 	waitsfx
-	checkcode VAR_PARTYCOUNT
+	readvar VAR_PARTYCOUNT
 	ifequal $6, .NoRoom
 	writetext .GotEeveeText
 	playsound SFX_CAUGHT_MON
 	waitsfx
 	givepoke EEVEE, 5
-	givepokeitem .GiftEeveeMail
+	givepokemail .GiftEeveeMail
 	callasm .SetEeveeMailOT
-	writebyte GREAT_BALL
+	setval GREAT_BALL
 	special SetLastPartyMonBall
 	setevent EVENT_GOT_EEVEE
 	writetext .GoodbyeText
 	waitbutton
 	closetext
-	checkcode VAR_FACING
+	readvar VAR_FACING
 	turnobject PLAYER, DOWN
 	ifnotequal UP, .noleftstep
 	applyonemovement ECRUTEAKPOKECENTER1F_BILL, step_left

@@ -5,8 +5,8 @@ AI_Basic:
 ;  -Using status-only moves if the player can't be statused
 ;  -Using moves that fail if they've already been used
 
-	ld hl, wStringBuffer5 - 1
-	ld de, wEnemyMonMoves
+	ld hl, wAIMoveScore - 1
+	ld de, wAIMoves
 	ld b, NUM_MOVES + 1
 .checkmove
 	dec b
@@ -85,8 +85,8 @@ AI_Setup:
 ; 50% chance to greatly encourage stat-down moves during the first turn of player's Pokemon.
 ; Almost 90% chance to greatly discourage stat-modifying moves otherwise.
 
-	ld hl, wStringBuffer5 - 1
-	ld de, wEnemyMonMoves
+	ld hl, wAIMoveScore - 1
+	ld de, wAIMoves
 	ld b, NUM_MOVES + 1
 .checkmove
 	dec b
@@ -102,38 +102,28 @@ AI_Setup:
 
 	ld a, [wEnemyMoveStruct + MOVE_EFFECT]
 
+	cp EFFECT_CURSE
+	jr nz, .not_curse
+	call CheckIfUserIsGhostType
+	jr nz, .checkmove
+	jr .statup
+
+.not_curse
 	cp EFFECT_ATTACK_UP
 	jr c, .checkmove
-	cp EFFECT_EVASION_UP + 1
+	cp EFFECT_ATTACK_DOWN
 	jr c, .statup
-
-;	cp EFFECT_ATTACK_DOWN - 1
-	jr z, .checkmove
-	cp EFFECT_EVASION_DOWN + 1
-	jr c, .statdown
-
-	cp EFFECT_ATTACK_UP_2
-	jr c, .checkmove
-	cp EFFECT_EVASION_UP_2 + 1
-	jr c, .statup
-
-;	cp EFFECT_ATTACK_DOWN_2 - 1
-	jr z, .checkmove
 	cp EFFECT_EVASION_DOWN_2 + 1
-	jr c, .statdown
+	jr nc, .checkmove
 
-	cp EFFECT_MINIMIZE
-	jr nz, .checkmove
+	; stat-down move
+	ld a, [wPlayerTurnsTaken]
+	and a
+	jr nz, .discourage
+	jr .encourage
 
 .statup
 	ld a, [wEnemyTurnsTaken]
-	and a
-	jr nz, .discourage
-
-	jr .encourage
-
-.statdown
-	ld a, [wPlayerTurnsTaken]
 	and a
 	jr nz, .discourage
 
@@ -159,8 +149,8 @@ AI_Types:
 ; Discourage not very effective moves unless
 ; all damaging moves are of the same type.
 ; Overridden by the "Aggressive" AI layer
-	ld hl, wStringBuffer5 - 1
-	ld de, wEnemyMonMoves
+	ld hl, wAIMoveScore - 1
+	ld de, wAIMoves
 	ld b, NUM_MOVES + 1
 .checkmove
 	dec b
@@ -212,7 +202,7 @@ AI_Types:
 	push bc
 	ld a, [wEnemyMoveStruct + MOVE_TYPE]
 	ld d, a
-	ld hl, wEnemyMonMoves
+	ld hl, wAIMoves
 	lb bc, (NUM_MOVES + 1), 0
 .checkmove2
 	dec b
@@ -266,8 +256,8 @@ AI_IsFixedDamageMove:
 AI_Offensive:
 ; Greatly discourage non-damaging moves.
 
-	ld hl, wStringBuffer5 - 1
-	ld de, wEnemyMonMoves
+	ld hl, wAIMoveScore - 1
+	ld de, wAIMoves
 	ld b, NUM_MOVES + 1
 .checkmove
 	dec b
@@ -292,8 +282,8 @@ AI_Offensive:
 AI_Smart:
 ; Context-specific scoring.
 
-	ld hl, wStringBuffer5
-	ld de, wEnemyMonMoves
+	ld hl, wAIMoveScore
+	ld de, wAIMoves
 	ld b, NUM_MOVES + 1
 .checkmove
 	dec b
@@ -1613,35 +1603,60 @@ AI_Smart_Foresight:
 
 AI_Smart_PerishSong:
 	push hl
+
+	; Strongly discourage if useless or if we can't switch out
 	farcall CheckAnyOtherAliveEnemyMons
-	pop hl
 	jr z, .no
 
-	ld a, [wPlayerSubStatus2]
+	ld a, [wPlayerPerishCount]
+	and a
+	jr nz, .no
+
+	call GetOpponentAbilityAfterMoldBreaker
+	cp SOUNDPROOF
+	jr z, .no
+
+	farcall GetSwitchScores
+	ld a, [wEnemyAISwitchScore]
+	and a
+	jr z, .no
+
+	; Encourage if player can't switch out
+	farcall CheckAnyOtherAlivePartyMons
+	jr z, .yes
+
+	call CheckIfTargetIsGhostType
+	jr z, .neutral
+
+	farcall GetOpponentItemAfterUnnerve
+	ld a, b
+	cp HELD_SHED_SHELL
+	jr z, .neutral
+	call SwitchTurn
+	farcall CheckIfTrappedByAbility
+	call SwitchTurn
+	jr z, .yes
+
+	ld a, [wPlayerWrapCount]
+	and a
+	jr nz, .yes
+	ld a, [wEnemySubStatus2]
 	bit SUBSTATUS_CANT_RUN, a
 	jr nz, .yes
 
-	push hl
-	farcall CheckPlayerMoveTypeMatchups
-	ld a, [wEnemyAISwitchScore]
-	cp 10 ; 1.0
+.neutral
 	pop hl
-	ret c
-
-	call AI_50_50
-	ret c
-
-	inc [hl]
 	ret
 
 .yes
-	call AI_50_50
-	ret c
-
+	pop hl
+	dec [hl]
+	dec [hl]
 	dec [hl]
 	ret
 
 .no
+	pop hl
 	ld a, [hl]
 	add 5
 	ld [hl], a
@@ -1793,26 +1808,32 @@ AI_Smart_Earthquake:
 	ret
 
 AI_Smart_BatonPass:
-; Changes scoring as follows:
-; +1: Don't bother
-; 0 or less: Good idea
-	push hl
-	farcall AIWantsSwitchCheck
-	pop hl
-	inc [hl]
-	ld a, [wEnemySwitchMonParam]
-	and $f0
-	push af
+; Check total net stat boost effect:
+; <0: Discourage
+; >2: Encourage
+	ld hl, wEnemyAtkLevel
+	ld b, 7
 	xor a
-	ld [wEnemySwitchMonParam], a
-	ld [wEnemyAISwitchScore], a
-	pop af
-	ret z
 .loop
+	add [hl]
+	inc hl
+	dec b
+	jr nz, .loop
+
+	sub BASE_STAT_LEVEL * 7
+	jr c, .discourage
+	cp 3
+	ret c
+
+	; Encourage
 	dec [hl]
-	sub $10
-	ret z
-	jr .loop
+	dec [hl]
+	ret
+
+.discourage
+	inc [hl]
+	inc [hl]
+	ret
 
 AI_Smart_Pursuit:
 ; 50% chance to greatly encourage this move if player's HP is below 25%.
@@ -2195,7 +2216,7 @@ AIHasMoveEffect:
 ; Return carry if the enemy has move b.
 
 	push hl
-	ld hl, wEnemyMonMoves
+	ld hl, wAIMoves
 	ld c, NUM_MOVES
 
 .checkmove
@@ -2236,7 +2257,7 @@ AIHasMoveInArray:
 
 	ld b, a
 	ld c, NUM_MOVES + 1
-	ld de, wEnemyMonMoves
+	ld de, wAIMoves
 
 .check
 	dec c
@@ -2295,8 +2316,8 @@ AI_Opportunist:
 	ret c
 
 .asm_39322
-	ld hl, wStringBuffer5 - 1
-	ld de, wEnemyMonMoves
+	ld hl, wAIMoveScore - 1
+	ld de, wAIMoves
 	ld c, NUM_MOVES + 1
 .checkmove
 	inc hl
@@ -2364,7 +2385,7 @@ AI_Aggressive:
 ; regular type matchup layer
 
 	; Figure out which attack does the most damage and put it in c.
-	ld hl, wEnemyMonMoves
+	ld hl, wAIMoves
 	ld bc, 0
 	ld de, 0
 .checkmove
@@ -2390,17 +2411,6 @@ AI_Aggressive:
 	cp EFFECT_MIRROR_COAT
 	jr z, .nodamage
 	call AIDamageCalc
-
-	; Ignore unusable moves
-	pop bc
-	push bc
-	ld hl, wStringBuffer5 - 1
-	ld c, b
-	ld b, 0
-	add hl, bc
-	ld a, [hl]
-	cp 60
-	jr nc, .nodamage
 	pop bc
 	pop de
 	pop hl
@@ -2432,8 +2442,8 @@ AI_Aggressive:
 	ret z
 
 ; Discourage moves that do less damage unless they're reckless too.
-	ld hl, wStringBuffer5 - 1
-	ld de, wEnemyMonMoves
+	ld hl, wAIMoveScore - 1
+	ld de, wAIMoves
 	ld b, 0
 .checkmove2
 	inc b
@@ -2474,7 +2484,7 @@ AI_Aggressive:
 	pop hl
 	ld a, [wTypeMatchup]
 	and a
-	jp z, AIDiscourageMove
+	call z, AIDiscourageMove
 
 	; If we made it this far, discourage this move.
 	inc [hl]
@@ -2575,8 +2585,8 @@ AI_Cautious:
 	and a
 	ret z
 
-	ld hl, wStringBuffer5 - 1
-	ld de, wEnemyMonMoves
+	ld hl, wAIMoveScore - 1
+	ld de, wAIMoves
 	ld c, NUM_MOVES + 1
 .asm_39425
 	inc hl
@@ -2624,8 +2634,8 @@ AI_Status:
 ; Dismiss status moves that don't affect the player.
 	ld a, 1
 	ldh [hBattleTurn], a
-	ld hl, wStringBuffer5 - 1
-	ld de, wEnemyMonMoves
+	ld hl, wAIMoveScore - 1
+	ld de, wAIMoves
 	ld b, NUM_MOVES + 1
 .checkmove
 	dec b
@@ -2770,8 +2780,8 @@ AI_Risky:
 ; Use any move that will KO the target.
 ; Risky moves will often be an exception (see below).
 
-	ld hl, wStringBuffer5 - 1
-	ld de, wEnemyMonMoves
+	ld hl, wAIMoveScore - 1
+	ld de, wAIMoves
 	ld c, NUM_MOVES + 1
 .checkmove
 	inc hl

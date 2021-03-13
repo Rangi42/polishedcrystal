@@ -901,7 +901,7 @@ GetSubstitutePic:
 
 	ld hl, SubstituteFrontpic
 	ld a, BANK(SubstituteFrontpic)
-	ld de, wTempTileMap
+	assert wTempTileMap == WRAM1_Begin
 	call FarDecompress
 	call .CopyPic
 	ld hl, vTiles2 tile $00
@@ -913,7 +913,7 @@ GetSubstitutePic:
 .player
 	ld hl, SubstituteBackpic
 	ld a, BANK(SubstituteBackpic)
-	ld de, wTempTileMap
+	assert wTempTileMap == WRAM1_Begin
 	call FarDecompress
 	call .CopyPic
 	ld hl, vTiles2 tile $31

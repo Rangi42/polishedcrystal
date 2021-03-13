@@ -24,9 +24,8 @@ GetSpriteVTile::
 	cp SPRITE_BIG_GYARADOS
 	jr z, .use_last_struct
 	cp SPRITE_SAILBOAT
-	jr z, .use_last_struct
 	ldh a, [hObjectStructIndexBuffer]
-	jr .got_sprite_tile
+	jr nz, .got_sprite_tile
 .use_last_struct
 	ld a, NUM_OBJECT_STRUCTS - 1
 .got_sprite_tile

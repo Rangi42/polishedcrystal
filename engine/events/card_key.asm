@@ -34,4 +34,4 @@ _CardKey:
 
 .CardKeyScript:
 	closetext
-	farjump MapRadioTower3FSignpost2Script
+	farsjump CardKeySlotScript

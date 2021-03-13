@@ -10,8 +10,7 @@ DoBattle:
 	ld [wDeferredSwitch], a
 	ld [wPlayerSwitchTarget], a
 	ld [wEnemySwitchTarget], a
-	inc a
-	ld [wBattleHasJustStarted], a
+	ld [wTotalBattleTurns], a
 	ld hl, wOTPartyMon1HP
 	ld bc, PARTYMON_STRUCT_LENGTH - 1
 	ld d, BATTLEACTION_SWITCH1 - 1
@@ -96,7 +95,7 @@ DoBattle:
 	call SendInUserPkmn
 .not_linked_2
 	call AutomaticRainWhenOvercast
-	call HandleFirstAirBalloon
+	call SpikesDamageBoth ; for Air Balloon
 	call BoostGiovannisArmoredMewtwo
 	call RunBothActivationAbilities
 	jp BattleTurn
@@ -147,7 +146,6 @@ BattleTurn:
 	ld [wPlayerSwitchTarget], a
 	ld [wEnemySwitchTarget], a
 	ld [wEnemyUsingItem], a
-	ld [wBattleHasJustStarted], a
 	ld [wCurDamage], a
 	ld [wCurDamage + 1], a
 
@@ -257,6 +255,12 @@ HandleBerserkGene:
 	ret nz
 	farcall UseStatItemText
 	farcall ConsumeUserItem
+
+	; Own Tempo prevents confusion. Safeguard, however, doesn't.
+	call GetTrueUserAbility
+	cp OWN_TEMPO
+	ret z
+
 	ld a, BATTLE_VARS_SUBSTATUS3
 	call GetBattleVarAddr
 	bit SUBSTATUS_CONFUSED, [hl]
@@ -358,14 +362,6 @@ GetSpeed::
 .paralyze_done
 	farcall ApplySpeedAbilities
 
-	; Apply Unburden
-	ld a, BATTLE_VARS_SUBSTATUS1
-	call GetBattleVar
-	bit SUBSTATUS_UNBURDEN, a
-	ln a, 2, 1 ; x2
-	call nz, MultiplyAndDivide
-
-.unburden_done
 	; Apply item effects
 	predef GetUserItemAfterUnnerve
 	ld a, b
@@ -486,10 +482,7 @@ ParsePlayerAction:
 	call SetPalettes
 	ld a, [wCurPlayerMove]
 	cp STRUGGLE
-	jr z, .struggle
-	call PlayClickSFX
-
-.struggle
+	call nz, PlayClickSFX
 	ld a, $1
 	ldh [hBGMapMode], a
 	pop af
@@ -687,6 +680,9 @@ PerformMove:
 	xor a
 	ld [wDamageTaken], a
 	ld [wDamageTaken + 1], a
+	ld a, BATTLE_VARS_SUBSTATUS2_OPP
+	call GetBattleVarAddr
+	res SUBSTATUS_IN_ABILITY, [hl]
 	ld a, BATTLE_VARS_SUBSTATUS2
 	call GetBattleVarAddr
 	res SUBSTATUS_IN_ABILITY, [hl]
@@ -701,6 +697,9 @@ PerformMove:
 	farcall DoTurn
 .end_protect
 	ld a, BATTLE_VARS_SUBSTATUS2
+	call GetBattleVarAddr
+	res SUBSTATUS_IN_ABILITY, [hl]
+	ld a, BATTLE_VARS_SUBSTATUS2_OPP
 	call GetBattleVarAddr
 	res SUBSTATUS_IN_ABILITY, [hl]
 
@@ -837,18 +836,19 @@ DeferredSwitch:
 
 ForceDeferredSwitch:
 ; player switches out due to "switch mode"
-	; Check if we can switch out
+	; Check if we can switch out. If we're fainted OR lack alternatives, abort.
+	ld hl, wDeferredSwitch
 	push hl
 	bit SWITCH_TARGET, [hl]
 	jr nz, .check_target_alive
-	farcall CheckAnyOtherAliveMons
-	jr nz, .alive_check_done
 	call HasUserFainted
+	jr z, .alive_check_done
+	farcall CheckAnyOtherAliveMons
 	jr .alive_check_done
 .check_target_alive
-	farcall CheckAnyOtherAliveOpponentMons
-	jr nz, .alive_check_done
 	call HasOpponentFainted
+	jr z, .alive_check_done
+	farcall CheckAnyOtherAliveOpponentMons
 .alive_check_done
 	pop hl
 	jp z, .all_done
@@ -927,9 +927,15 @@ ForceDeferredSwitch:
 	call UpdateUserInParty
 	pop hl
 
-	; Withdraw animation
+	; Withdraw animation.
 	bit SWITCH_BATON_PASS, [hl]
 	jr nz, .anim_done
+
+	; This is only set exactly by Teleport, which also lacks animation.
+	ld a, [hl]
+	cp 1 << SWITCH_DEFERRED
+	jr z, .anim_done
+
 	bit SWITCH_FORCED, [hl]
 	jr nz, .forced_anim
 
@@ -1434,7 +1440,7 @@ ResetParticipants::
 	push af
 	xor a
 	ld hl, wPartyParticipants
-	ld bc, 6
+	ld bc, PARTY_LENGTH
 	rst ByteFill
 	pop af
 	pop bc
@@ -1540,7 +1546,7 @@ StealLeppaBerry:
 	call GetNonfullPPMove
 	ret z
 	push bc
-	call ConsumeOpponentItem
+	farcall ConsumeOpponentItem
 	pop bc
 	jp LeppaRestorePP
 
@@ -1716,13 +1722,69 @@ LeppaRestorePP:
 	ld [hl], d
 	ret
 
+DealDamageToOpponent:
+; ONLY runs from attacking damage.
+	; If user has more than 50%HP, set Berserk flag. Unset later if we still
+	; have more than 50%HP.
+	push bc
+	call SwitchTurn
+	call GetHalfMaxHP
+	call CompareHP
+	call SwitchTurn
+	jr z, .not_over_half
+	jr c, .not_over_half
+	ld a, BATTLE_VARS_SUBSTATUS2_OPP
+	call GetBattleVarAddr
+	set SUBSTATUS_IN_ABILITY, [hl]
+
+.not_over_half
+	pop bc
+	push de
+	ld de, _SubtractHP
+	ldh a, [hBattleTurn]
+	and a
+	push af
+	call z, _SubtractHPFromEnemy
+	pop af
+	call nz, _SubtractHPFromPlayer
+	pop de
+
+	; deal with Berserk
+	push bc
+	call SwitchTurn
+	call GetHalfMaxHP
+	call CompareHP
+	call SwitchTurn
+	jr c, .half_or_less
+	jr z, .half_or_less
+
+	; We still have more than 50%HP, so remove berserk flag
+	ld a, BATTLE_VARS_SUBSTATUS2_OPP
+	call GetBattleVarAddr
+	res SUBSTATUS_IN_ABILITY, [hl]
+	; fallthrough
+.half_or_less
+	farcall ResolveOpponentBerserk_CheckMultihit
+	call SwitchTurn
+	call HandleUserHealingItems
+	pop bc
+	jp SwitchTurn
+
 SubtractHPFromOpponent:
 	call CallOpponentTurn
 SubtractHPFromUser:
 	ldh a, [hBattleTurn]
 	and a
 	jr nz, SubtractHPFromEnemy
+	; fallthrough
 SubtractHPFromPlayer:
+	push de
+	ld de, SubtractHP
+	call _SubtractHPFromPlayer
+	pop de
+	ret
+
+_SubtractHPFromPlayer:
 	ld hl, wBattleMonMaxHP
 	ld a, [hli]
 	ld [wBuffer2], a
@@ -1732,12 +1794,19 @@ SubtractHPFromPlayer:
 	ldh a, [hBattleTurn]
 	push af
 	call SetPlayerTurn
-	call _SubtractHP
+	call _de_
 	pop af
 	ldh [hBattleTurn], a
 	ret
 
 SubtractHPFromEnemy:
+	push de
+	ld de, SubtractHP
+	call _SubtractHPFromEnemy
+	pop de
+	ret
+
+_SubtractHPFromEnemy:
 	ld hl, wEnemyMonMaxHP
 	ld a, [hli]
 	ld [wBuffer2], a
@@ -1747,9 +1816,23 @@ SubtractHPFromEnemy:
 	ldh a, [hBattleTurn]
 	push af
 	call SetEnemyTurn
-	call _SubtractHP
+	call _de_
 	pop af
 	ldh [hBattleTurn], a
+	ret
+
+SubtractHP:
+	call _SubtractHP
+	; fallthrough
+HandleUserHealingItems:
+	call HasUserFainted
+	ret z
+	push bc
+	call HandleHPHealingItem
+	call UseHeldStatusHealingItem
+	call HandleStatBoostBerry
+	call UseConfusionHealingItem
+	pop bc
 	ret
 
 _SubtractHP:
@@ -1760,10 +1843,7 @@ _SubtractHP:
 	push af
 	call UpdateHPBarBattleHuds
 	pop af
-	jr z, .set_first_faint
-	farjp HandleHealingItems
-
-.set_first_faint
+	ret nz
 	ld hl, wWhichMonFaintedFirst
 	ld a, [hl]
 	and a
@@ -2092,10 +2172,8 @@ WinTrainerBattle:
 .skip_heal
 	ld a, [wMonStatusFlags]
 	bit 0, a
-	jr nz, .skip_win_loss_text
-	call PrintWinLossText
+	call z, PrintWinLossText
 
-.skip_win_loss_text
 	jp .GiveMoney
 
 .battle_tower
@@ -2202,10 +2280,10 @@ WinTrainerBattle:
 	ld [hl], a
 	ret
 
-.SentToMomTexts:
-	dw SentSomeToMomText
-	dw SentHalfToMomText
-	dw SentAllToMomText
+.SentToMomTexts: ; these are all used with StdBattleTextbox
+	dw SentSomeToMomText ; far-ok
+	dw SentHalfToMomText ; far-ok
+	dw SentAllToMomText ; far-ok
 
 .CheckMaxedOutMomMoney:
 	ld hl, wMomsMoney + 2
@@ -2456,9 +2534,7 @@ LostBattle:
 
 	ld a, [wMonStatusFlags]
 	bit 0, a
-	jr nz, .skip_win_loss_text
-	call PrintWinLossText
-.skip_win_loss_text
+	call z, PrintWinLossText
 
 	ld a, [wBattleType]
 	cp BATTLETYPE_CANLOSE
@@ -2801,6 +2877,7 @@ NewEnemyMonStatus:
 	ld [wEnemyEncoreCount], a
 	ld [wEnemyProtectCount], a
 	ld [wEnemyToxicCount], a
+	ld [wEnemyPerishCount], a
 	ld [wPlayerWrapCount], a
 	ld [wEnemyWrapCount], a
 	ld [wEnemyTurnsTaken], a
@@ -2857,9 +2934,9 @@ CheckIfCurPartyMonIsFitToFight:
 	or [hl]
 	ret nz
 
-	ld a, [wBattleHasJustStarted]
+	ld a, [wTotalBattleTurns]
 	and a
-	jr nz, .finish_fail
+	jr z, .finish_fail
 
 	ld a, [wCurPartyMon]
 	ld hl, wPartyMon1IsEgg
@@ -2984,6 +3061,7 @@ endr
 	ld [wPlayerEncoreCount], a
 	ld [wPlayerProtectCount], a
 	ld [wPlayerToxicCount], a
+	ld [wPlayerPerishCount], a
 	ld [wEnemyWrapCount], a
 	ld [wPlayerWrapCount], a
 	ld [wPlayerTurnsTaken], a
@@ -2998,7 +3076,7 @@ BreakAttraction:
 	res SUBSTATUS_IN_LOVE, [hl]
 	ret
 
-HandleFirstAirBalloon:
+SpikesDamageBoth:
 ; for the first mon, Spikes logic doesn't run by itself, and we also want to perform
 ; speed checks to see whose air balloon to announce first.
 	ldh a, [hBattleTurn]
@@ -3409,8 +3487,7 @@ _HeldHPHealingItem:
 	cp SITRUS_BERRY
 	jr z, .quarter_maxhp
 	cp FIGY_BERRY
-	jr nz, .got_hp_to_restore
-	call GetThirdMaxHP
+	call z, GetThirdMaxHP
 	jr .got_hp_to_restore
 
 .quarter_maxhp
@@ -3449,26 +3526,28 @@ UseHeldStatusHealingItem:
 	jp UseBattleItem
 
 _HeldStatusHealingItem:
-	ld hl, HeldStatusHealingEffects
-.loop
-	ld a, [hli]
-	cp $ff
-	ret z
-	inc hl
-	cp b
-	jr nz, .loop
-	dec hl
-	ld b, [hl]
+	ld a, b
+	cp HELD_HEAL_STATUS
+	jr z, .item_ok
+
+	; return z to mark that this held item has no effect
+	xor a
+	ret
+
+.item_ok
 	ld a, BATTLE_VARS_STATUS
 	call GetBattleVarAddr
-	and b
+
+	; We can't use xor since SLP or PSN+TOX wont be nullified then.
+	ld a, c
+	and [hl]
 	ret z
 	xor a
 	ld [hl], a
 	push bc
 	call UpdateUserInParty
 	pop bc
-	ld a, b
+	ld a, c
 	cp ALL_STATUS
 	jr nz, .skip_confuse
 	ld a, BATTLE_VARS_SUBSTATUS3
@@ -3480,37 +3559,44 @@ _HeldStatusHealingItem:
 	or 1
 	ret
 
-INCLUDE "data/battle/held_heal_status.asm"
+StealConfusionHealingItem:
+	farcall GetOpponentItem
+	call _HeldConfusionHealingItem
+	ret z
+	jp StealBattleItem
 
 UseOpponentConfusionHealingItem:
 	call CallOpponentTurn
 UseConfusionHealingItem:
+	predef GetUserItemAfterUnnerve
+	call _HeldConfusionHealingItem
+	ret z
+	jp UseBattleItem
+
+_HeldConfusionHealingItem:
 	ld a, BATTLE_VARS_SUBSTATUS3
 	call GetBattleVar
 	bit SUBSTATUS_CONFUSED, a
 	ret z
-	predef GetUserItemAfterUnnerve
 	ld a, b
 	cp HELD_HEAL_CONFUSE
-	jr z, .heal_status
+	jr z, .confusion_healing
 	cp HELD_HEAL_STATUS
-	ret nz
+	jr nz, .ret_z
+	ld a, c
+	cp ALL_STATUS
+	jr z, _HeldStatusHealingItem
 
-.heal_status
+.ret_z
+	xor a
+	ret
+
+.confusion_healing
 	ld a, BATTLE_VARS_SUBSTATUS3
 	call GetBattleVarAddr
 	res SUBSTATUS_CONFUSED, [hl]
-	call GetCurItemName
 	call ItemRecoveryAnim
-	ld hl, BattleText_ItemHealedConfusion
-	call StdBattleTextbox
-	call GetPartymonItem
-	ldh a, [hBattleTurn]
-	and a
-	call nz, GetOTPartymonItem
-	xor a
-	ld [bc], a
-	ld [hl], a
+	or 1
 	ret
 
 GetPartymonItem:
@@ -3590,7 +3676,7 @@ DrawPlayerHUD:
 	ld [hl], $55
 	inc hl
 	ld [hl], $56
-	farjp FinishBattleAnim
+	jp FinishBattleAnim
 
 CheckDanger:
 	ld hl, wBattleMonHP
@@ -3817,7 +3903,7 @@ endr
 	ld [hl], $57
 	inc hl
 	ld [hl], $58
-	farjp FinishBattleAnim
+	jp FinishBattleAnim
 
 BattleAnimateHPBar:
 	predef AnimateHPBar
@@ -4092,9 +4178,7 @@ BattleMenu_SafariBall:
 	cp BATTLETYPE_TUTORIAL
 	jr z, .tutorial2
 	cp BATTLETYPE_SAFARI
-	jr z, .tutorial2
-	call GetMonBackpic
-
+	call nz, GetMonBackpic
 .tutorial2
 	call GetMonFrontpic
 	ld a, $1
@@ -4213,7 +4297,6 @@ BattleMenuPKMN_Loop:
 	ldh a, [hJoyPressed]
 	bit B_BUTTON_F, a
 	jr z, .clear_carry
-	ret z
 
 .set_carry
 	scf
@@ -4399,6 +4482,10 @@ CheckRunSpeed:
 	dec a
 	jp nz, .forfeit_to_trainer
 
+	push hl
+	call HasPlayerFainted
+	pop hl
+	jr z, .no_flee_ability
 	call CheckNeutralizingGas
 	jr z, .no_flee_ability
 	ld a, [wPlayerAbility]
@@ -4602,19 +4689,6 @@ endr
 	scf
 	ret
 
-NoYesMenuDataHeader:
-	db $40 ; tile backup
-	db 07, 14 ; start coords
-	db 11, 19 ; end coords
-	dw .MenuData2
-	db 1 ; default option
-
-.MenuData2
-	db $c0 ; flags
-	db 2
-	db "No@"
-	db "Yes@"
-
 CheckAmuletCoin:
 	push hl
 	farcall GetPlayerItem
@@ -4797,8 +4871,8 @@ MoveSelectionScreen:
 	jr z, .choiced
 	dec a
 	jr z, .assault_vest
-	dec a
-	jr z, .encored
+	sub 3 ; 5 or 6 gives the same message
+	jr c, .encore_or_gorilla_tactics
 	ld b, 0
 	ld hl, wBattleMonMoves
 	add hl, bc
@@ -4820,12 +4894,12 @@ MoveSelectionScreen:
 	ld hl, BattleText_TheMoveIsDisabled
 	jr .place_textbox_start_over
 
-.encored
+.encore_or_gorilla_tactics
 	ld a, [wPlayerSelectedMove]
 	ld [wNamedObjectIndexBuffer], a
 	call GetMoveName
 
-	ld hl, BattleText_EncoreOnlyAllowsMove
+	ld hl, BattleText_MonCanOnlyUseMove
 	jr .place_textbox_start_over
 
 .choiced
@@ -5237,9 +5311,10 @@ CheckUsableMove:
 ; If nz, a contains a number describing why it isn't usable:
 ; 1 - no PP
 ; 2 - disabled
-; 3 - choiced
+; 3 - choiced item
 ; 4 - assault vest on status move
 ; 5 - encored
+; 6 - choiced ability
 	push hl
 	push de
 	push bc
@@ -5257,7 +5332,7 @@ CheckUsableMove:
 	ld a, [hl]
 	and $3f
 	ld a, 1
-	jr z, .end
+	jp z, .end
 
 	; Check Encore
 	ldh a, [hBattleTurn]
@@ -5312,8 +5387,15 @@ CheckUsableMove:
 	cp HELD_CHOICE
 	jr z, .check_choiced
 	cp HELD_ASSAULT_VEST
-	jr nz, .usable
+	jr z, .assault_vest
 
+	; Check for Gorilla Tactics
+	call GetTrueUserAbility
+	cp GORILLA_TACTICS
+	jr z, .check_choiced
+	jr .usable
+
+.assault_vest
 	; Assault Vest check
 	ld a, b
 	call GetMoveFixedCategory
@@ -5334,8 +5416,16 @@ CheckUsableMove:
 	jr z, .usable
 	dec a
 	cp c
+	jr z, .usable
+
+	; Choice items take priority over Gorilla Tactics message-wise
+	farcall GetUserItem
+	ld a, b
+	cp HELD_CHOICE
 	ld a, 3
-	jr nz, .end
+	jr z, .end
+	add a ; sets a to 6, which is what we want
+	jr .end
 
 	; fallthrough
 .usable
@@ -5785,17 +5875,28 @@ GenerateWildForm:
 	push de
 	push bc
 	ld a, [wWildMonForm]
-	and a
+	ld b, a
+	and FORM_MASK
+	ld a, b
 	jr nz, .done
 	ld a, [wTempEnemyMonSpecies]
-	ld b, a
-	ld hl, WildSpeciesForms
+	ld c, a
+	ld hl, RandomWildSpeciesForms
 .loop
+	; Check species
 	ld a, [hli]
 	and a
 	jr z, .ok
-	cp b
+	cp c
+	; Load and increase hl before jumping so we have a consistent hl value after
+	ld a, [hli]
+	jr nz, .next
+
+	; Check extspecies
+	xor b
+	and EXTSPECIES_MASK
 	jr z, .ok
+.next
 	inc hl
 	inc hl
 	jr .loop
@@ -5805,90 +5906,43 @@ GenerateWildForm:
 	ld [wCurForm], a
 	jp PopBCDEHL
 
-WildSpeciesForms:
-	dbw UNOWN,     .Unown
-	dbw MAGIKARP,  .Magikarp
-	dbw EKANS,     .EkansArbok
-	dbw ARBOK,     .EkansArbok
-	dbw SANDSHREW, .IceForm
-	dbw SANDSLASH, .IceForm
-	dbw VULPIX,    .IceForm
-	dbw NINETALES, .IceForm
-	dbw DIGLETT,   .FireForm
-	dbw DUGTRIO,   .FireForm
-	dbw GEODUDE,   .ElectricForm
-	dbw GRAVELER,  .ElectricForm
-	dbw GOLEM,     .ElectricForm
-	dbw 0,         .Default
-
-.Default:
-	ld a, PLAIN_FORM
-	ret
+RandomWildSpeciesForms:
+	dpw UNOWN,    .Unown
+	dpw MAGIKARP, .Magikarp
+	dpw EKANS,    .EkansArbok
+	dpw ARBOK,    .EkansArbok
+	dbw 0,        .Default
 
 .Unown:
 	; Random Unown letter
 	ld a, NUM_UNOWN
-	call BattleRandomRange
-	inc a
-	ld b, a
+	call .RandomForm
 	; Can't use any letters that haven't been unlocked
 	call CheckUnownLetter
-	jr c, .Unown ; re-roll
+	jr nc, .Unown ; re-roll
 	ret
 
 .Magikarp:
 	; Random Magikarp pattern
 	ld a, NUM_MAGIKARP
+	jr .RandomForm
+
+.EkansArbok:
+	; Random Arbok form (if not already specified)
+	ld a, 2 ; ARBOK_JOHTO_FORM or ARBOK_KANTO_FORM
+	; fallthrough
+.RandomForm:
 	call BattleRandomRange
 	inc a
 	ret
 
-.EkansArbok:
-	call RegionCheck
-	ld a, e
-	and a
-	ld a, ARBOK_JOHTO_FORM
-	ret z
-	inc a ; ARBOK_KANTO_FORM
+.Default:
+	ld a, PLAIN_FORM
 	ret
-
-.IceForm:
-	ld hl, IceLandmarks
-	jr .LandmarkForm
-.FireForm:
-	ld hl, FireLandmarks
-	jr .LandmarkForm
-.ElectricForm:
-	ld hl, ElectricLandmarks
-	; fallthrough
-.LandmarkForm:
-	ld a, [wCurLandmark]
-	ld de, 1
-	call IsInArray
-	jr nc, .Default
-	ld a, ALOLAN_FORM
-	ret
-
-IceLandmarks:
-	db ICE_PATH
-	db SEAFOAM_ISLANDS
-	db ICE_ISLAND
-	db -1
-
-FireLandmarks:
-	db CINNABAR_VOLCANO
-	db FIRE_ISLAND
-	db -1
-
-ElectricLandmarks:
-	db MAGNET_TUNNEL
-	db ROCK_TUNNEL
-	db DIM_CAVE
-	db LIGHTNING_ISLAND
-	db -1
 
 CheckUnownLetter:
-; Return carry if the Unown letter in b hasn't been unlocked yet
+; Return carry if the Unown letter in a has been unlocked.
+	ld b, a
 	ld a, [wUnlockedUnowns]
 	ld c, a
 	ld de, 0
@@ -5913,7 +5967,7 @@ CheckUnownLetter:
 	pop bc
 	pop de
 
-	jr c, .match
+	ret c ; unlocked letter, returns carry
 
 .next
 ; Make sure we haven't gone past the end of the table
@@ -5923,14 +5977,7 @@ CheckUnownLetter:
 	cp UnlockedUnownLetterSets.End - UnlockedUnownLetterSets
 	jr c, .loop
 
-; Hasn't been unlocked, or the letter is invalid
-	scf
-	ret
-
-.match
-; Valid letter
-	and a
-	ret
+	ret ; not unlocked or invalid letter, returns not carry
 
 CheckValidMagikarpLength:
 ; Return carry if the Magikarp length is invalid for the current area
@@ -6830,8 +6877,8 @@ BoostExp:
 	jp MultiplyAndDivide
 
 Text_PkmnGainedExpPoint:
-	text_jump Text_Gained
-	start_asm
+	text_far Text_Gained
+	text_asm
 	ld hl, TextJump_StringBuffer2ExpPoints
 	ld a, [wStringBuffer2 + 3] ; IsTradedMon
 	and a
@@ -6841,11 +6888,11 @@ Text_PkmnGainedExpPoint:
 	ret
 
 TextJump_ABoostedStringBuffer2ExpPoints:
-	text_jump Text_ABoostedStringBuffer2ExpPoints
+	text_far Text_ABoostedStringBuffer2ExpPoints
 	text_end
 
 TextJump_StringBuffer2ExpPoints:
-	text_jump Text_StringBuffer2ExpPoints
+	text_far Text_StringBuffer2ExpPoints
 	text_end
 
 AnimateExpBar:
@@ -6861,13 +6908,13 @@ AnimateExpBar:
 	jp nc, .finish
 
 	ldh a, [hQuotient + 2]
-	ld [wd004], a
+	ld [wExperienceGained + 2], a
 	push af
 	ldh a, [hQuotient + 1]
-	ld [wd003], a
+	ld [wExperienceGained + 1], a
 	push af
 	ldh a, [hQuotient]
-	ld [wd002], a
+	ld [wExperienceGained], a
 	push af
 	xor a ; PARTYMON
 	ld [wMonType], a
@@ -6880,10 +6927,10 @@ AnimateExpBar:
 	call CalcExpBar
 	push bc
 	ld hl, wTempMonExp + 2
-	ld a, [wd004]
+	ld a, [wExperienceGained + 2]
 	add [hl]
 	ld [hld], a
-	ld a, [wd003]
+	ld a, [wExperienceGained + 1]
 	adc [hl]
 	ld [hld], a
 	jr nc, .NoOverflow
@@ -7092,7 +7139,7 @@ GetNewBaseExp:
 	; b = form
 	ld a, MON_FORM
 	call OTPartyAttr
-	and FORM_MASK
+	and BASEMON_MASK
 	ld b, a
 	; bc = index
 	call GetSpeciesAndFormIndex
@@ -7147,9 +7194,9 @@ UserSentOutText:
 
 	ld hl, JumpText_GoPkmn ; If we're in a LinkBattle print just "Go <PlayerMon>"
 
-	ld a, [wBattleHasJustStarted]
+	ld a, [wTotalBattleTurns]
 	and a
-	jr nz, .skip_to_textbox
+	jr z, .skip_to_textbox
 
 .not_linked
 ; Depending on the HP of the enemy Pkmn, the game prints a different text
@@ -7202,29 +7249,29 @@ UserSentOutText:
 	jp BattleTextbox
 
 JumpText_GoPkmn:
-	text_jump Text_GoPkmn
-	start_asm
+	text_far Text_GoPkmn
+	text_asm
 	jr Function_TextJump_BattleMonNick01
 
 JumpText_DoItPkmn:
-	text_jump Text_DoItPkmn
-	start_asm
+	text_far Text_DoItPkmn
+	text_asm
 	jr Function_TextJump_BattleMonNick01
 
 JumpText_GoForItPkmn:
-	text_jump Text_GoForItPkmn
-	start_asm
+	text_far Text_GoForItPkmn
+	text_asm
 	jr Function_TextJump_BattleMonNick01
 
 JumpText_YourFoesWeakGetmPkmn:
-	text_jump Text_YourFoesWeakGetmPkmn
-	start_asm
+	text_far Text_YourFoesWeakGetmPkmn
+	text_asm
 Function_TextJump_BattleMonNick01:
 	ld hl, TextJump_BattleMonNick01
 	ret
 
 TextJump_BattleMonNick01:
-	text_jump Text_BattleMonNick01
+	text_far Text_BattleMonNick01
 	text_end
 
 WithdrawPkmnText:
@@ -7232,8 +7279,8 @@ WithdrawPkmnText:
 	jp BattleTextbox
 
 .WithdrawPkmnText:
-	text_jump Text_BattleMonNickComma
-	start_asm
+	text_far Text_BattleMonNickComma
+	text_asm
 ; Print text to withdraw Pkmn
 ; depending on HP the message is different
 	push de
@@ -7283,19 +7330,19 @@ WithdrawPkmnText:
 	ret
 
 TextJump_ThatsEnoughComeBack:
-	text_jump Text_ThatsEnoughComeBack
+	text_far Text_ThatsEnoughComeBack
 	text_end
 
 TextJump_OKComeBack:
-	text_jump Text_OKComeBack
+	text_far Text_OKComeBack
 	text_end
 
 TextJump_GoodComeBack:
-	text_jump Text_GoodComeBack
+	text_far Text_GoodComeBack
 	text_end
 
 TextJump_ComeBack:
-	text_jump Text_ComeBack
+	text_far Text_ComeBack
 	text_end
 
 HandleSafariAngerEatingStatus:
@@ -7922,7 +7969,7 @@ ReadAndPrintLinkBattleRecord:
 	push hl
 	ld h, d
 	ld l, e
-	ld de, wd002
+	ld de, wLinkBattleRecordName
 	ld bc, NAME_LENGTH - 1
 	rst CopyBytes
 	ld a, "@"
@@ -7930,27 +7977,27 @@ ReadAndPrintLinkBattleRecord:
 	inc de
 	ld bc, 6
 	rst CopyBytes
-	ld de, wd002
+	ld de, wLinkBattleRecordName
 	pop hl
 	rst PlaceString
 	pop hl
 	ld de, 26
 	add hl, de
 	push hl
-	ld de, wd002 + 11 ; win
+	ld de, wLinkBattleRecordWins
 	lb bc, 2, 4
 	call PrintNum
 	pop hl
 	ld de, 5
 	add hl, de
 	push hl
-	ld de, wd002 + 13 ; lose
+	ld de, wLinkBattleRecordLosses
 	lb bc, 2, 4
 	call PrintNum
 	pop hl
 	ld de, 5
 	add hl, de
-	ld de, wd002 + 15 ; draw
+	ld de, wLinkBattleRecordDraws
 	lb bc, 2, 4
 	call PrintNum
 	jr .next
@@ -8187,7 +8234,7 @@ AddLastBattleToLinkRecord:
 .FindOpponentAndAppendRecord:
 	ld b, 5
 	ld hl, sLinkBattleRecord + 17
-	ld de, wd002
+	ld de, wLinkBattleRecordBuffer
 .loop3
 	push bc
 	push de
@@ -8209,22 +8256,22 @@ AddLastBattleToLinkRecord:
 	pop bc
 	dec b
 	jr nz, .loop3
-	lb bc, $0, $1
+	lb bc, 0, 1
 .loop4
 	ld a, b
 	add b
 	add b
 	ld e, a
-	ld d, $0
-	ld hl, wd002
+	ld d, 0
+	ld hl, wLinkBattleRecordBuffer
 	add hl, de
 	push hl
 	ld a, c
 	add c
 	add c
 	ld e, a
-	ld d, $0
-	ld hl, wd002
+	ld d, 0
+	ld hl, wLinkBattleRecordBuffer
 	add hl, de
 	ld d, h
 	ld e, l
@@ -8256,7 +8303,7 @@ AddLastBattleToLinkRecord:
 	ld hl, sLinkBattleRecord
 	rst AddNTimes
 	push hl
-	ld de, wd002
+	ld de, wLinkBattleRecordBuffer
 	ld bc, 18
 	rst CopyBytes
 	pop hl
@@ -8270,7 +8317,7 @@ AddLastBattleToLinkRecord:
 	push hl
 	ld bc, 18
 	rst CopyBytes
-	ld hl, wd002
+	ld hl, wLinkBattleRecordBuffer
 	ld bc, 18
 	pop de
 	rst CopyBytes
@@ -8477,7 +8524,7 @@ BattleStartMessage:
 	call Call_PlayBattleAnim
 
 .not_shiny
-	farcall CheckSleepingTreeMon
+	call CheckSleepingTreeMon
 	jr c, .skip_cry
 
 	farcall CheckBattleEffects
@@ -8566,8 +8613,7 @@ BoostGiovannisArmoredMewtwo:
 	ld a, [wOtherTrainerID]
 	cp GIOVANNI1
 	ret nz
-	ld a, 1
-	ldh [hBattleTurn], a
+	call SetEnemyTurn
 	ld de, ANIM_SHARPEN
 	call Call_PlayBattleAnim
 	ld b, ATTACK

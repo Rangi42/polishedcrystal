@@ -202,7 +202,7 @@ GivePokeItem::
 	rst AddNTimes
 	ld d, h
 	ld e, l
-	ld hl, wd002
+	ld hl, wMonMailMessageBuffer
 	ld bc, MAIL_MSG_LENGTH + 1
 	ld a, BANK(sPartyMail)
 	call GetSRAMBank
@@ -302,7 +302,7 @@ _PlayerMailBoxMenu:
 	jp MenuTextboxBackup
 
 .EmptyMailboxText:
-	text_jump _EmptyMailboxText
+	text_far _EmptyMailboxText
 	text_end
 
 InitMail:
@@ -360,7 +360,7 @@ MailboxPC_PrintMailAuthor:
 
 MailboxPC:
 	xor a
-	ld [wOBPals2 palette 6], a
+	ld [wCurMessageScrollPosition], a
 	ld a, 1
 	ld [wCurMessageIndex], a
 .loop
@@ -374,11 +374,11 @@ MailboxPC:
 
 	ld a, [wCurMessageIndex]
 	ld [wMenuCursorBuffer], a
-	ld a, [wOBPals2 palette 6]
+	ld a, [wCurMessageScrollPosition]
 	ld [wMenuScrollPosition], a
 	call ScrollingMenu
 	ld a, [wMenuScrollPosition]
-	ld [wOBPals2 palette 6], a
+	ld [wCurMessageScrollPosition], a
 	ld a, [wMenuCursorY]
 	ld [wCurMessageIndex], a
 
@@ -442,15 +442,15 @@ MailboxPC:
 	jp MenuTextboxBackup
 
 .PutAwayText:
-	text_jump ClearedMailPutAwayText
+	text_far ClearedMailPutAwayText
 	text_end
 
 .PackFullText:
-	text_jump MailPackFullText
+	text_far MailPackFullText
 	text_end
 
 .MessageLostText:
-	text_jump MailMessageLostText
+	text_far MailMessageLostText
 	text_end
 
 .GetMailType:
@@ -513,15 +513,15 @@ MailboxPC:
 	jp CloseSubmenu
 
 .HoldingMailText:
-	text_jump MailAlreadyHoldingItemText
+	text_far MailAlreadyHoldingItemText
 	text_end
 
 .EggText:
-	text_jump MailEggText
+	text_far MailEggText
 	text_end
 
 .MailMovedText:
-	text_jump MailMovedFromBoxText
+	text_far MailMovedFromBoxText
 	text_end
 
 .TopMenuDataHeader:

@@ -10,37 +10,37 @@ GoldenrodBikeShop_MapScriptHeader:
 	def_coord_events
 
 	def_bg_events
-	bg_event  1,  2, BGEVENT_JUMPTEXT, UnknownText_0x548ed
-	bg_event  0,  3, BGEVENT_JUMPTEXT, UnknownText_0x548ed
-	bg_event  1,  3, BGEVENT_JUMPTEXT, UnknownText_0x548ed
-	bg_event  0,  5, BGEVENT_JUMPTEXT, UnknownText_0x548ed
-	bg_event  1,  5, BGEVENT_JUMPTEXT, UnknownText_0x548ed
-	bg_event  0,  6, BGEVENT_JUMPTEXT, UnknownText_0x548ed
-	bg_event  1,  6, BGEVENT_JUMPTEXT, UnknownText_0x548ed
-	bg_event  6,  6, BGEVENT_JUMPTEXT, UnknownText_0x548ed
-	bg_event  7,  6, BGEVENT_JUMPTEXT, UnknownText_0x548ed
-	bg_event  3,  0, BGEVENT_JUMPTEXT, UnknownText_0x548c0
+	bg_event  1,  2, BGEVENT_JUMPTEXT, GoldenrodBikeShopBicycleText
+	bg_event  0,  3, BGEVENT_JUMPTEXT, GoldenrodBikeShopBicycleText
+	bg_event  1,  3, BGEVENT_JUMPTEXT, GoldenrodBikeShopBicycleText
+	bg_event  0,  5, BGEVENT_JUMPTEXT, GoldenrodBikeShopBicycleText
+	bg_event  1,  5, BGEVENT_JUMPTEXT, GoldenrodBikeShopBicycleText
+	bg_event  0,  6, BGEVENT_JUMPTEXT, GoldenrodBikeShopBicycleText
+	bg_event  1,  6, BGEVENT_JUMPTEXT, GoldenrodBikeShopBicycleText
+	bg_event  6,  6, BGEVENT_JUMPTEXT, GoldenrodBikeShopBicycleText
+	bg_event  7,  6, BGEVENT_JUMPTEXT, GoldenrodBikeShopBicycleText
+	bg_event  3,  0, BGEVENT_JUMPTEXT, GoldenrodBikeShopJustReleasedCompactBikeText
 
 	def_object_events
-	object_event  7,  2, SPRITE_CLERK, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, ClerkScript_0x54750, -1
+	object_event  7,  2, SPRITE_CLERK, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, GoldenrodBikeShopClerkScript, -1
 
-ClerkScript_0x54750:
+GoldenrodBikeShopClerkScript:
 	checkevent EVENT_GOT_BICYCLE
-	iftrue_jumptextfaceplayer UnknownText_0x5485f
+	iftrue_jumptextfaceplayer GoldenrodBikeShopClerkFirstRateBikesText
 	faceplayer
 	opentext
-	writetext UnknownText_0x54787
+	writetext GoldenrodBikeShopClerkIntroText
 	yesorno
-	iffalse_jumpopenedtext UnknownText_0x54898
-	writetext UnknownText_0x547f8
-	buttonsound
+	iffalse_jumpopenedtext GoldenrodBikeShopClerkRefusedText
+	writetext GoldenrodBikeShopClerkAgreedText
+	promptbutton
 	waitsfx
 	verbosegivekeyitem BICYCLE
 	setflag ENGINE_BIKE_SHOP_CALL_ENABLED
 	setevent EVENT_GOT_BICYCLE
 	jumpthisopenedtext
 
-UnknownText_0x5485f:
+GoldenrodBikeShopClerkFirstRateBikesText:
 	text "My Bicycles are"
 	line "first-rate! You"
 
@@ -48,7 +48,7 @@ UnknownText_0x5485f:
 	line "anywhere."
 	done
 
-UnknownText_0x54787:
+GoldenrodBikeShopClerkIntroText:
 	text "…sigh… I opened"
 	line "a branch here,"
 
@@ -61,7 +61,7 @@ UnknownText_0x54787:
 	cont "tise for me?"
 	done
 
-UnknownText_0x547f8:
+GoldenrodBikeShopClerkAgreedText:
 	text "Really? Great!"
 
 	para "Give me your name"
@@ -71,18 +71,18 @@ UnknownText_0x547f8:
 	line "a Bicycle."
 	done
 
-UnknownText_0x54898:
+GoldenrodBikeShopClerkRefusedText:
 	text "…sigh… Oh, for"
 	line "the kindness of"
 	cont "people…"
 	done
 
-UnknownText_0x548ed:
+GoldenrodBikeShopBicycleText:
 	text "It's a shiny new"
 	line "Bicycle!"
 	done
 
-UnknownText_0x548c0:
+GoldenrodBikeShopJustReleasedCompactBikeText:
 	text "Just released!"
 
 	para "First-rate compact"

@@ -43,7 +43,7 @@ Pack:
 	xor a
 	ldh [hBGMapMode], a
 	call Pack_InitGFX
-	ld a, [wcf64]
+	ld a, [wPackJumptableIndex]
 	ld [wJumptableIndex], a
 	jp Pack_InitColors
 
@@ -616,7 +616,7 @@ GiveItem:
 .give
 	ld a, [wJumptableIndex]
 	push af
-	ld a, [wcf64]
+	ld a, [wPackJumptableIndex]
 	push af
 	call GetCurNick
 	ld hl, wStringBuffer1
@@ -625,7 +625,7 @@ GiveItem:
 	rst CopyBytes
 	call TryGiveItemToPartymon
 	pop af
-	ld [wcf64], a
+	ld [wPackJumptableIndex], a
 	pop af
 	ld [wJumptableIndex], a
 .finish
@@ -642,7 +642,7 @@ GiveItem:
 	jp Pack_PrintTextNoScroll
 .Egg:
 	; An EGG can't hold an item.
-	text_jump Text_AnEGGCantHoldAnItem
+	text_far Text_AnEGGCantHoldAnItem
 	text_end
 
 BattlePack:
@@ -689,7 +689,7 @@ BattlePack:
 	xor a
 	ldh [hBGMapMode], a
 	call Pack_InitGFX
-	ld a, [wcf64]
+	ld a, [wPackJumptableIndex]
 	ld [wJumptableIndex], a
 	jp Pack_InitColors
 
@@ -775,7 +775,8 @@ BattlePack:
 	lb bc, $5, $9 ; Balls, Berries
 	call Pack_InterpretJoypad
 	ret c
-	jp TMHMSubmenu
+	jp nz, PackSortMenu
+	jp KeyItemSubmenu.unusable
 
 .InitBerriesPocket:
 	ld a, BERRIES - 1
@@ -818,10 +819,6 @@ BattlePack:
 	farcall CheckKeyItemContext
 	ld a, [wItemAttributeParamBuffer]
 	jp KeyItemSubmenu
-
-TMHMSubmenu:
-	jp nz, PackSortMenu
-	jr KeyItemSubmenu
 
 ItemSubmenu:
 	jp nz, PackSortMenu
@@ -905,6 +902,7 @@ KeyItemSubmenu:
 	ld hl, MenuDataHeader_Use
 	ld de, .UsableJumptable
 	jr nz, .proceed
+.unusable:
 	ld hl, MenuDataHeader_Quit
 	ld de, .UnusableJumptable
 .proceed
@@ -975,9 +973,9 @@ InitPackBuffers:
 	inc a
 	add a
 	dec a
-	ld [wcf64], a
+	ld [wPackJumptableIndex], a
 	xor a
-	ld [wcf66], a
+	ld [wPackUsedItem], a
 	xor a
 	ld [wSwitchItem], a
 	ret
@@ -985,10 +983,10 @@ InitPackBuffers:
 DepositSellInitPackBuffers:
 	xor a
 	ldh [hBGMapMode], a
-	ld [wJumptableIndex], a
-	ld [wcf64], a
-	ld [wCurPocket], a
-	ld [wcf66], a
+	ld [wJumptableIndex], a ; PACKSTATE_INITGFX
+	ld [wPackJumptableIndex], a ; PACKSTATE_INITGFX
+	ld [wCurPocket], a ; ITEM_POCKET
+	ld [wPackUsedItem], a
 	ld [wSwitchItem], a
 	call Pack_InitGFX
 	jp Pack_InitColors
@@ -1115,13 +1113,13 @@ DepositSellTutorial_InterpretJoypad:
 
 .a_button
 	ld a, TRUE
-	ld [wcf66], a
+	ld [wPackUsedItem], a
 	and a
 	ret
 
 .b_button
-	xor a
-	ld [wcf66], a
+	xor a ; FALSE
+	ld [wPackUsedItem], a
 	and a
 	ret
 
@@ -1167,8 +1165,8 @@ TutorialPack:
 	call .RunJumptable
 	call DepositSellTutorial_InterpretJoypad
 	jr c, .loop
-	xor a
-	ld [wcf66], a
+	xor a ; FALSE
+	ld [wPackUsedItem], a
 	ret
 
 .autoinput_right_right_a
@@ -1267,15 +1265,15 @@ Pack_JumptableNext:
 Pack_QuitNoScript:
 	ld hl, wJumptableIndex
 	set 7, [hl]
-	xor a
-	ld [wcf66], a
+	xor a ; FALSE
+	ld [wPackUsedItem], a
 	ret
 
 Pack_QuitRunScript:
 	ld hl, wJumptableIndex
 	set 7, [hl]
 	ld a, TRUE
-	ld [wcf66], a
+	ld [wPackUsedItem], a
 	ret
 
 Pack_PrintTextNoScroll:
@@ -1341,25 +1339,25 @@ DrawPackGFX:
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	ld de, vTiles2 tile $27
+	ld de, vTiles2 tile $28
 	lb bc, BANK("Pack Graphics"), 25
 	jp DecompressRequest2bpp
 
 .MaleGFX:
-	dw PackM0GFX
-	dw PackM1GFX
-	dw PackM2GFX
-	dw PackM3GFX
-	dw PackM4GFX
-	dw PackM5GFX
+	dw PackM0GFX ; far-ok
+	dw PackM1GFX ; far-ok
+	dw PackM2GFX ; far-ok
+	dw PackM3GFX ; far-ok
+	dw PackM4GFX ; far-ok
+	dw PackM5GFX ; far-ok
 
 .FemaleGFX:
-	dw PackF0GFX
-	dw PackF1GFX
-	dw PackF2GFX
-	dw PackF3GFX
-	dw PackF4GFX
-	dw PackF5GFX
+	dw PackF0GFX ; far-ok
+	dw PackF1GFX ; far-ok
+	dw PackF2GFX ; far-ok
+	dw PackF3GFX ; far-ok
+	dw PackF4GFX ; far-ok
+	dw PackF5GFX ; far-ok
 
 Pack_InterpretJoypad:
 	ld hl, wMenuJoypad
@@ -1400,7 +1398,7 @@ Pack_InterpretJoypad:
 .d_left
 	ld a, b
 	ld [wJumptableIndex], a
-	ld [wcf64], a
+	ld [wPackJumptableIndex], a
 	push de
 	ld de, SFX_SWITCH_POCKETS
 	call PlaySFX
@@ -1411,7 +1409,7 @@ Pack_InterpretJoypad:
 .d_right
 	ld a, c
 	ld [wJumptableIndex], a
-	ld [wcf64], a
+	ld [wPackJumptableIndex], a
 	push de
 	ld de, SFX_SWITCH_POCKETS
 	call PlaySFX
@@ -1459,7 +1457,7 @@ Pack_InitGFX:
 	call DisableLCD
 	ld hl, PackInterfaceGFX
 	ld de, vTiles2 tile $01
-	lb bc, BANK(PackInterfaceGFX), 38
+	lb bc, BANK(PackInterfaceGFX), 39
 	call DecompressRequest2bpp
 ; This is where the items themselves will be listed.
 	hlcoord 5, 1
@@ -1491,17 +1489,17 @@ Pack_InitGFX:
 	jp DrawPackGFX
 
 .PackLeftColumnTilemapString:
-	db $15, $15, $15, $15, $15, 0 ; Background (blue if male, pink if female)
-	db $27, $28, $29, $2a, $2b, 0 ; Pack image
-	db $2c, $2d, $2e, $2f, $30, 0
-	db $31, $32, $33, $34, $35, 0
-	db $36, $37, $38, $39, $3a, 0
-	db $3b, $3c, $3d, $3e, $3f, 0
-	db $16, $17, $17, $17, $18, 0 ; Item icon
-	db $19, $1e, $1f, $20, $1a, 0
-	db $19, $21, $22, $23, $1a, 0
-	db $19, $24, $25, $26, $1a, 0
-	db $1b, $1c, $1c, $1c, $1d, -1
+	db $18, $19, $19, $19, $1a, 0 ; Background (blue if male, pink if female)
+	db $28, $29, $2a, $2b, $2c, 0 ; Pack image
+	db $2d, $2e, $2f, $30, $31, 0
+	db $32, $33, $34, $35, $36, 0
+	db $37, $38, $39, $3a, $3b, 0
+	db $3c, $3d, $3e, $3f, $40, 0
+	db $1b, $27, $27, $27, $1d, 0 ; Item icon
+	db $16, $1e, $1f, $20, $17, 0
+	db $16, $21, $22, $23, $17, 0
+	db $16, $24, $25, $26, $17, 0
+	db $15, $1c, $1c, $1c, $15, -1
 
 Pack_GetItemName:
 	ld a, [wCurItem]
@@ -1701,51 +1699,51 @@ Text_NoEmptySlot:
 
 Text_ThrowAwayHowMany:
 	; Throw away how many?
-	text_jump UnknownText_0x1c0ba5
+	text_far _AskThrowAwayText
 	text_end
 
 Text_ConfirmThrowAway:
 	; Throw away @ @ (S)?
-	text_jump UnknownText_0x1c0bbb
+	text_far _AskQuantityThrowAwayText
 	text_end
 
 Text_ThrewAway:
 	; Threw away @ (S).
-	text_jump UnknownText_0x1c0bd8
+	text_far _ThrewAwayText
 	text_end
 
 Text_ThisIsntTheTime:
 	; OAK:  ! This isn't the time to use that!
-	text_jump UnknownText_0x1c0bee
+	text_far _OakThisIsntTheTimeText
 	text_end
 
 TextJump_YouDontHaveAPkmn:
 	; You don't have a #MON!
-	text_jump Text_YouDontHaveAPkmn
+	text_far Text_YouDontHaveAPkmn
 	text_end
 
 Text_RegisteredItem:
 	; Registered the @ .
-	text_jump UnknownText_0x1c0c2e
+	text_far _RegisteredItemText
 	text_end
 
 Text_UnregisteredItem:
-	text_jump UnregisteredItemText
+	text_far UnregisteredItemText
 	text_end
 
 Text_CantRegister:
 	; You can't register that item.
-	text_jump UnknownText_0x1c0c45
+	text_far _CantRegisterText
 	text_end
 
 Text_MoveItemWhere:
 	; Where should this be moved to?
-	text_jump UnknownText_0x1c0c63
+	text_far _AskItemMoveText
 	text_end
 
 Text_PackEmptyString:
 	;
-	text_jump ClearText
+	text_far ClearText
 	text_end
 
 PackInterfaceGFX:
@@ -1764,7 +1762,7 @@ Special_ChooseItem::
 .loop
 	call DepositSellPack
 
-	ld a, [wcf66]
+	ld a, [wPackUsedItem]
 	and a
 	ret z
 
@@ -1781,5 +1779,5 @@ Special_ChooseItem::
 	jr .loop
 
 .ItemCantBeSelectedText:
-	text_jump ItemCantBeSelectedText
+	text_far ItemCantBeSelectedText
 	text_end

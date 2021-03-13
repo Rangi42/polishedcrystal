@@ -48,11 +48,11 @@ Special_BankOfMom:
 	ret
 
 .InitializeBank:
-	ld hl, UnknownText_0x16649
+	ld hl, MomLeavingText1
 	call PrintText
 	call YesNoBox
 	jr c, .DontSaveMoney
-	ld hl, UnknownText_0x1664e
+	ld hl, MomLeavingText2
 	call PrintText
 	ld a, %10000001
 	jr .done_1
@@ -62,14 +62,14 @@ Special_BankOfMom:
 
 .done_1
 	ld [wMomSavingMoney], a
-	ld hl, UnknownText_0x16653
+	ld hl, MomLeavingText3
 	call PrintText
 	ld a, $8
 	ld [wJumptableIndex], a
 	ret
 
 .IsThisAboutYourMoney:
-	ld hl, UnknownText_0x16658
+	ld hl, MomIsThisAboutYourMoneyText
 	call PrintText
 	call YesNoBox
 	jr c, .nope
@@ -85,10 +85,10 @@ Special_BankOfMom:
 	ret
 
 .AccessBankOfMom:
-	ld hl, UnknownText_0x1665d
+	ld hl, MomBankWhatDoYouWantToDoText
 	call PrintText
 	call LoadStandardMenuHeader
-	ld hl, MenuDataHeader_0x166b5
+	ld hl, BankOfMom_MenuHeader
 	call CopyMenuHeader
 	call VerticalMenu
 	call CloseWindow
@@ -121,7 +121,7 @@ Special_BankOfMom:
 	ret
 
 .StoreMoney:
-	ld hl, UnknownText_0x16662
+	ld hl, MomStoreMoneyText
 	call PrintText
 	xor a
 	ld hl, wStringBuffer2
@@ -129,7 +129,7 @@ Special_BankOfMom:
 	ld [hli], a
 	ld [hl], a
 	ld a, $6
-	ld [wcf64], a
+	ld [wMomBankDigitCursorPosition], a
 	call LoadStandardMenuHeader
 	call Mom_SetUpDepositMenu
 	call Mom_Wait10Frames
@@ -144,7 +144,7 @@ Special_BankOfMom:
 	jr z, .CancelDeposit
 	ld de, wMoney
 	ld bc, wStringBuffer2
-	farcall CompareMoney
+	call CompareMoney
 	jr c, .DontHaveThatMuchToDeposit
 	ld hl, wStringBuffer2
 	ld de, wStringBuffer2 + 3
@@ -152,11 +152,11 @@ Special_BankOfMom:
 	rst CopyBytes
 	ld bc, wMomsMoney
 	ld de, wStringBuffer2
-	farcall GiveMoney
+	call GiveMoney
 	jr c, .CantDepositThatMuch
 	ld bc, wStringBuffer2 + 3
 	ld de, wMoney
-	farcall TakeMoney
+	call TakeMoney
 	ld hl, wStringBuffer2
 	ld de, wMomsMoney
 	ld bc, 3
@@ -164,17 +164,17 @@ Special_BankOfMom:
 	ld de, SFX_TRANSACTION
 	call PlaySFX
 	call WaitSFX
-	ld hl, UnknownText_0x1668a
+	ld hl, MomStoredMoneyText
 	call PrintText
 	ld a, $8
 	jr .done_4
 
 .DontHaveThatMuchToDeposit:
-	ld hl, UnknownText_0x1667b
+	ld hl, MomInsufficientFundsInWalletText
 	jp PrintText
 
 .CantDepositThatMuch:
-	ld hl, UnknownText_0x16680
+	ld hl, MomNotEnoughRoomInBankText
 	jp PrintText
 
 .CancelDeposit:
@@ -185,7 +185,7 @@ Special_BankOfMom:
 	ret
 
 .TakeMoney:
-	ld hl, UnknownText_0x16667
+	ld hl, MomTakeMoneyText
 	call PrintText
 	xor a
 	ld hl, wStringBuffer2
@@ -193,7 +193,7 @@ Special_BankOfMom:
 	ld [hli], a
 	ld [hl], a
 	ld a, $6
-	ld [wcf64], a
+	ld [wMomBankDigitCursorPosition], a
 	call LoadStandardMenuHeader
 	call Mom_SetUpWithdrawMenu
 	call Mom_Wait10Frames
@@ -212,15 +212,15 @@ Special_BankOfMom:
 	rst CopyBytes
 	ld de, wMomsMoney
 	ld bc, wStringBuffer2
-	farcall CompareMoney
+	call CompareMoney
 	jr c, .InsufficientFundsInBank
 	ld bc, wMoney
 	ld de, wStringBuffer2
-	farcall GiveMoney
+	call GiveMoney
 	jr c, .NotEnoughRoomInWallet
 	ld bc, wStringBuffer2 + 3
 	ld de, wMomsMoney
-	farcall TakeMoney
+	call TakeMoney
 	ld hl, wStringBuffer2
 	ld de, wMoney
 	ld bc, 3
@@ -228,17 +228,17 @@ Special_BankOfMom:
 	ld de, SFX_TRANSACTION
 	call PlaySFX
 	call WaitSFX
-	ld hl, UnknownText_0x1668f
+	ld hl, MomTakenMoneyText
 	call PrintText
 	ld a, $8
 	jr .done_5
 
 .InsufficientFundsInBank:
-	ld hl, UnknownText_0x16671
+	ld hl, MomHaventSavedThatMuchText
 	jp PrintText
 
 .NotEnoughRoomInWallet:
-	ld hl, UnknownText_0x16676
+	ld hl, MomNotEnoughRoomInWalletText
 	jp PrintText
 
 .CancelWithdraw:
@@ -249,13 +249,13 @@ Special_BankOfMom:
 	ret
 
 .StopOrStartSavingMoney:
-	ld hl, UnknownText_0x1666c
+	ld hl, MomSaveMoneyText
 	call PrintText
 	call YesNoBox
 	jr c, .StopSavingMoney
 	ld a, $81
 	ld [wMomSavingMoney], a
-	ld hl, UnknownText_0x16685
+	ld hl, MomStartSavingMoneyText
 	call PrintText
 	ld a, $8
 	ld [wJumptableIndex], a
@@ -269,7 +269,7 @@ Special_BankOfMom:
 	ret
 
 .AskDST:
-	ld hl, UnknownText_0x16694
+	ld hl, MomJustDoWhatYouCanText
 	call PrintText
 
 .JustDoWhatYouCan:
@@ -368,33 +368,33 @@ DSTChecks:
 
 .Text_AdjustClock:
 	; Do you want to adjust your clock for Daylight Saving Time?
-	text_jump UnknownText_0x1c6095
+	text_far _TimesetAskAdjustDSTText
 	text_end
 
 .Text_LostInstructionBooklet:
 	; I lost the instruction booklet for the POKéGEAR.
 	; Come back again in a while.
-	text_jump UnknownText_0x1c60d1
+	text_far _MomLostGearBookletText
 	text_end
 
 .Text_SwitchToDST:
 	; Do you want to switch to Daylight Saving Time?
-	text_jump UnknownText_0x1c6000
+	text_far _TimesetAskDSTText
 	text_end
 
 .Text_SetClockForward:
 	; I set the clock forward by one hour.
-	text_jump UnknownText_0x1c6030
+	text_far _TimesetDSTText
 	text_end
 
 .Text_IsDSTOver:
 	; Is Daylight Saving Time over?
-	text_jump UnknownText_0x1c6056
+	text_far _TimesetAskNotDSTText
 	text_end
 
 .Text_SetClockBack:
 	; I put the clock back one hour.
-	text_jump UnknownText_0x1c6075
+	text_far _TimesetNotDSTText
 	text_end
 
 Mom_SetUpWithdrawMenu:
@@ -521,7 +521,7 @@ Mom_WithdrawDepositMenuJoypad:
 	ld c, l
 	ld b, h
 	ld de, wStringBuffer2
-	farjp GiveMoney
+	jp GiveMoney
 
 .decrementdigit
 	ld hl, .DigitQuantities
@@ -529,7 +529,7 @@ Mom_WithdrawDepositMenuJoypad:
 	ld c, l
 	ld b, h
 	ld de, wStringBuffer2
-	farjp TakeMoney
+	jp TakeMoney
 
 .getdigitquantity
 	ld a, [wMomBankDigitCursorPosition]
@@ -567,84 +567,84 @@ Mom_WithdrawDepositMenuJoypad:
 	dt 90
 	dt 9
 
-UnknownText_0x16649:
+MomLeavingText1:
 	; Wow, that's a cute #MON. Where did you get it? … So, you're leaving on an adventure… OK! I'll help too. But what can I do for you? I know! I'll save money for you. On a long journey, money's important. Do you want me to save your money?
-	text_jump UnknownText_0x1bd77f
+	text_far _MomLeavingText1
 	text_end
 
-UnknownText_0x1664e:
+MomLeavingText2:
 	; OK, I'll take care of your money.
-	text_jump UnknownText_0x1bd868
+	text_far _MomLeavingText2
 	text_end
 
-UnknownText_0x16653:
+MomLeavingText3:
 	; Be careful. #MON are your friends. You need to work as a team. Now, go on!
-	text_jump UnknownText_0x1bd88e
+	text_far _MomLeavingText3
 	text_end
 
-UnknownText_0x16658:
+MomIsThisAboutYourMoneyText:
 	; Hi! Welcome home! You're trying very hard, I see. I've kept your room tidy. Or is this about your money?
-	text_jump UnknownText_0x1bd8da
+	text_far _MomIsThisAboutYourMoneyText
 	text_end
 
-UnknownText_0x1665d:
+MomBankWhatDoYouWantToDoText:
 	; What do you want to do?
-	text_jump UnknownText_0x1bd942
+	text_far _MomBankWhatDoYouWantToDoText
 	text_end
 
-UnknownText_0x16662:
+MomStoreMoneyText:
 	; How much do you want to save?
-	text_jump UnknownText_0x1bd95b
+	text_far _MomStoreMoneyText
 	text_end
 
-UnknownText_0x16667:
+MomTakeMoneyText:
 	; How much do you want to take?
-	text_jump UnknownText_0x1bd97a
+	text_far _MomTakeMoneyText
 	text_end
 
-UnknownText_0x1666c:
+MomSaveMoneyText:
 	; Do you want to save some money?
-	text_jump UnknownText_0x1bd999
+	text_far _MomSaveMoneyText
 	text_end
 
-UnknownText_0x16671:
+MomHaventSavedThatMuchText:
 	; You haven't saved that much.
-	text_jump UnknownText_0x1bd9ba
+	text_far _MomHaventSavedThatMuchText
 	text_end
 
-UnknownText_0x16676:
+MomNotEnoughRoomInWalletText:
 	; You can't take that much.
-	text_jump UnknownText_0x1bd9d7
+	text_far _MomNotEnoughRoomInWalletText
 	text_end
 
-UnknownText_0x1667b:
+MomInsufficientFundsInWalletText:
 	; You don't have that much.
-	text_jump UnknownText_0x1bd9f1
+	text_far _MomInsufficientFundsInWalletText
 	text_end
 
-UnknownText_0x16680:
+MomNotEnoughRoomInBankText:
 	; You can't save that much.
-	text_jump UnknownText_0x1bda0b
+	text_far _MomNotEnoughRoomInBankText
 	text_end
 
-UnknownText_0x16685:
+MomStartSavingMoneyText:
 	; OK, I'll save your money. Trust me! , stick with it!
-	text_jump UnknownText_0x1bda25
+	text_far _MomStartSavingMoneyText
 	text_end
 
-UnknownText_0x1668a:
+MomStoredMoneyText:
 	; Your money's safe here! Get going!
-	text_jump UnknownText_0x1bda5b
+	text_far _MomStoredMoneyText
 	text_end
 
-UnknownText_0x1668f:
+MomTakenMoneyText:
 	; , don't give up!
-	text_jump UnknownText_0x1bda7e
+	text_far _MomTakenMoneyText
 	text_end
 
-UnknownText_0x16694:
+MomJustDoWhatYouCanText:
 	; Just do what you can.
-	text_jump UnknownText_0x1bda90
+	text_far _MomJustDoWhatYouCanText
 	text_end
 
 Mom_SavedString:
@@ -659,14 +659,14 @@ Mom_DepositString:
 Mom_HeldString:
 	db "Held@"
 
-MenuDataHeader_0x166b5:
+BankOfMom_MenuHeader:
 	db $40 ; flags
 	db 00, 00 ; start coords
 	db 10, 10 ; end coords
-	dw MenuData2_0x166bd
+	dw .MenuData
 	db 1 ; default option
 
-MenuData2_0x166bd:
+.MenuData:
 	db $80 ; flags
 	db 4 ; items
 	db "Get@"

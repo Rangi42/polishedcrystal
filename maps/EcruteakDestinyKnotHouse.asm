@@ -22,7 +22,7 @@ EcruteakDestinyKnotHouseCooltrainerFScript:
 	faceplayer
 	opentext
 	writetext .Text1
-	buttonsound
+	promptbutton
 	special SpecialBeastsCheck
 	iffalse_jumpopenedtext .Text2
 	special SpecialBirdsCheck

@@ -22,11 +22,11 @@ Route27RestHouseGranny:
 	iftrue .HeardIntro
 	writetext .IntroText
 	setevent EVENT_LISTENED_TO_SKILL_SWAP_INTRO
-	jump .Continue
+	sjump .Continue
 .HeardIntro
 	writetext .HeardIntroText
 .Continue
-	buttonsound
+	promptbutton
 	special GetFirstPokemonHappiness
 	ifgreater $95, .Loyal
 	jumpthisopenedtext
@@ -48,7 +48,7 @@ Route27RestHouseGranny:
 	iffalse .NoSilverLeaf
 	yesorno
 	iffalse .TutorRefused
-	writebyte SKILL_SWAP
+	setval SKILL_SWAP
 	writetext ClearText
 	special Special_MoveTutor
 	ifequal $0, .TeachMove

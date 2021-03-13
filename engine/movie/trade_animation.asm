@@ -1,6 +1,6 @@
 TradeAnimation:
 	xor a
-	ld [wcf66], a
+	ld [wUnusedTradeAnimPlayEvolutionMusic], a
 	ld hl, wPlayerTrademonSenderName
 	ld de, wOTTrademonSenderName
 	call LinkTradeAnim_LoadTradePlayerNames
@@ -56,7 +56,7 @@ TradeAnimation:
 
 TradeAnimationPlayer2:
 	xor a
-	ld [wcf66], a
+	ld [wUnusedTradeAnimPlayEvolutionMusic], a
 	ld hl, wOTTrademonSenderName
 	ld de, wPlayerTrademonSenderName
 	call LinkTradeAnim_LoadTradePlayerNames
@@ -127,7 +127,7 @@ RunTradeAnimSequence:
 	push af
 	set NO_TEXT_SCROLL, [hl]
 	call .TradeAnimLayout
-	ld a, [wcf66]
+	ld a, [wUnusedTradeAnimPlayEvolutionMusic] ; TODO: figure out what can be removed if this is unused (presumably this and next 2 lines)
 	and a
 	jr nz, .anim_loop
 	ld de, MUSIC_EVOLUTION
@@ -199,7 +199,7 @@ DoTradeAnimation:
 	jr nz, .finished
 	call .DoTradeAnimCommand
 	farcall PlaySpriteAnimations
-	ld hl, wcf65
+	ld hl, wFrameCounter2
 	inc [hl]
 	call DelayFrame
 	and a
@@ -369,8 +369,8 @@ TradeAnim_InitTubeAnim:
 	call DmgToCgbObjPal0
 
 	call TradeAnim_IncrementJumptableIndex
-	ld a, $5c
-	ld [wcf64], a
+	ld a, 92
+	ld [wFrameCounter], a
 	ret
 
 TradeAnim_TubeToOT2:
@@ -438,7 +438,7 @@ TradeAnim_TubeToPlayer5:
 TradeAnim_TubeToOT6:
 TradeAnim_TubeToPlayer6:
 	ld a, $80
-	ld [wcf64], a
+	ld [wFrameCounter], a
 	jp TradeAnim_IncrementJumptableIndex
 
 TradeAnim_TubeToOT8:
@@ -467,7 +467,7 @@ TradeAnim_TubeToOT7:
 TradeAnim_TubeToPlayer2:
 TradeAnim_TubeToPlayer7:
 	call TradeAnim_FlashBGPals
-	ld hl, wcf64
+	ld hl, wFrameCounter
 	ld a, [hl]
 	and a
 	jp z, TradeAnim_IncrementJumptableIndex
@@ -947,7 +947,7 @@ TradeAnim_RockingBall:
 	call _InitSpriteAnimStruct
 	call TradeAnim_AdvanceScriptPointer
 	ld a, $20
-	ld [wcf64], a
+	ld [wFrameCounter], a
 	ret
 
 TradeAnim_DropBall:
@@ -962,7 +962,7 @@ TradeAnim_DropBall:
 	ld [hl], $dc
 	call TradeAnim_AdvanceScriptPointer
 	ld a, $38
-	ld [wcf64], a
+	ld [wFrameCounter], a
 	ret
 
 TradeAnim_Poof:
@@ -971,7 +971,7 @@ TradeAnim_Poof:
 	call _InitSpriteAnimStruct
 	call TradeAnim_AdvanceScriptPointer
 	ld a, $10
-	ld [wcf64], a
+	ld [wFrameCounter], a
 	ld de, SFX_BALL_POOF
 	jp PlaySFX
 
@@ -983,7 +983,7 @@ TradeAnim_BulgeThroughTube:
 	call _InitSpriteAnimStruct
 	call TradeAnim_AdvanceScriptPointer
 	ld a, $40
-	ld [wcf64], a
+	ld [wFrameCounter], a
 	ret
 
 TradeAnim_AnimateTrademonInTube:
@@ -1100,12 +1100,12 @@ TradeAnim_SentToOTText:
 
 .Text_WasSentTo:
 	; was sent to @ .
-	text_jump UnknownText_0x1bc6e9
+	text_far _MonWasSentToText
 	text_end
 
 .Text_MonName:
 	;
-	text_jump ClearText
+	text_far ClearText
 	text_end
 
 TradeAnim_OTBidsFarewell:
@@ -1119,12 +1119,12 @@ TradeAnim_OTBidsFarewell:
 
 .Text_BidsFarewellToMon:
 	; bids farewell to
-	text_jump UnknownText_0x1bc703
+	text_far _BidsFarewellToMonText
 	text_end
 
 .Text_MonName:
 	; .
-	text_jump UnknownText_0x1bc719
+	text_far _MonNameBidsFarewellText
 	text_end
 
 TradeAnim_TakeCareOfText:
@@ -1141,7 +1141,7 @@ TradeAnim_TakeCareOfText:
 
 .Text_TakeGoodCareOfMon:
 	; Take good care of @ .
-	text_jump UnknownText_0x1bc71f
+	text_far _TakeGoodCareOfMonText
 	text_end
 
 TradeAnim_OTSendsText1:
@@ -1157,12 +1157,12 @@ TradeAnim_OTSendsText1:
 
 .Text_ForYourMon:
 	; For @ 's @ ,
-	text_jump UnknownText_0x1bc739
+	text_far _ForYourMonSendsText
 	text_end
 
 .Text_OTSends:
 	; sends @ .
-	text_jump UnknownText_0x1bc74c
+	text_far _OTSendsText
 	text_end
 
 TradeAnim_OTSendsText2:
@@ -1178,12 +1178,12 @@ TradeAnim_OTSendsText2:
 
 .Text_WillTrade:
 	; will trade @ @
-	text_jump UnknownText_0x1bc75e
+	text_far _WillTradeText
 	text_end
 
 .Text_ForYourMon:
 	; for @ 's @ .
-	text_jump UnknownText_0x1bc774
+	text_far _ForYourMonWillTradeText
 	text_end
 
 TradeAnim_Wait80Frames:
@@ -1240,12 +1240,12 @@ LinkTradeAnim_LoadTradeMonData:
 	ld [hli], a
 	inc de
 	ld a, [de]
-	and FORM_MASK
+	and BASEMON_MASK
 	ld [hl], a
 	ret
 
 TradeAnim_FlashBGPals:
-	ld a, [wcf65]
+	ld a, [wFrameCounter2]
 	and $7
 	ret nz
 	ldh a, [rBGP]
@@ -1276,7 +1276,7 @@ LoadTradeBubbleGFX:
 	ret
 
 TradeAnim_WaitAnim:
-	ld hl, wcf64
+	ld hl, wFrameCounter
 	ld a, [hl]
 	and a
 	jp z, TradeAnim_AdvanceScriptPointer
@@ -1284,7 +1284,7 @@ TradeAnim_WaitAnim:
 	ret
 
 TradeAnim_WaitAnim2:
-	ld hl, wcf64
+	ld hl, wFrameCounter
 	ld a, [hl]
 	and a
 	jp z, TradeAnim_AdvanceScriptPointer

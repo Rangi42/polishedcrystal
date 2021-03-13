@@ -26,7 +26,7 @@ MomTriesToBuySomething::
 
 .Script:
 	callasm .ASMFunction
-	farjump Script_ReceivePhoneCall
+	farsjump Script_ReceivePhoneCall
 
 .ASMFunction:
 	call MomBuysItem_DeductFunds
@@ -155,17 +155,17 @@ Mom_GetScriptPointer:
 	ret
 
 .ItemScript:
-	farwritetext UnknownText_0x1bc615
-	farwritetext UnknownText_0x1bc62a
-	farwritetext UnknownText_0x1bc64e
-	farwritetext UnknownText_0x1bc673
+	farwritetext _MomHiHowAreYouText
+	farwritetext _MomFoundAnItemText
+	farwritetext _MomBoughtWithYourMoneyText
+	farwritetext _MomItsInPCText
 	end
 
 .DollScript:
-	farwritetext UnknownText_0x1bc615
-	farwritetext UnknownText_0x1bc693
-	farwritetext UnknownText_0x1bc64e
-	farwritetext UnknownText_0x1bc6c7
+	farwritetext _MomHiHowAreYouText
+	farwritetext _MomFoundADollText
+	farwritetext _MomBoughtWithYourMoneyText
+	farwritetext _MomItsInYourRoomText
 	end
 
 GetItemFromMom:

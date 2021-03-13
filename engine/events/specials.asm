@@ -170,11 +170,11 @@ Special_CardFlip:
 	ld hl, _CardFlip
 	; fallthrough
 
-;Special_DummyNonfunctionalGameCornerGame:
+;Special_UnusedMemoryGame:
 ;	call Special_CheckCoins
 ;	ret c
-;	ld a, BANK(_DummyGame)
-;	ld hl, _DummyGame
+;	ld a, BANK(_MemoryGame)
+;	ld hl, _MemoryGame
 ;	call Special_StartGameCornerGame
 ;	ret
 
@@ -217,12 +217,12 @@ Special_CheckCoins:
 
 .NoCoinsText:
 	; You have no coins.
-	text_jump UnknownText_0x1bd3d7
+	text_far _NoCoinsText
 	text_end
 
 .NoCoinCaseText:
 	; You don't have a COIN CASE.
-	text_jump UnknownText_0x1bd3eb
+	text_far _NoCoinCaseText
 	text_end
 
 ScriptReturnCarry:
@@ -282,11 +282,9 @@ SpecialSnorlaxAwake:
 ; check background music
 	ld a, [wMapMusic]
 	cp MUSIC_POKE_FLUTE_CHANNEL
-	jr nz, .nope
 	ld a, TRUE
-	jr .done
-.nope
-	xor a
+	jr z, .done
+	xor a ; ld a, FALSE
 .done
 	ldh [hScriptVar], a
 	ret

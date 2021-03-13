@@ -12,11 +12,11 @@ CeruleanPoliceStation_MapScriptHeader:
 	def_bg_events
 
 	def_object_events
-	object_event  3,  1, SPRITE_FISHING_GURU, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x18805a, -1
-	object_event  5,  4, SPRITE_MATRON, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1880c3, -1
+	object_event  3,  1, SPRITE_FISHING_GURU, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeruleanPoliceStationFishingGuruText, -1
+	object_event  5,  4, SPRITE_MATRON, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeruleanPoliceStationPokefanFText, -1
 	pokemon_event  3,  5, DIGLETT, -1, -1, PAL_NPC_BROWN, CeruleanDiglettText, -1
 
-UnknownText_0x18805a:
+CeruleanPoliceStationFishingGuruText:
 	text "I heard that some"
 	line "shady character is"
 	cont "skulking about."
@@ -26,7 +26,7 @@ UnknownText_0x18805a:
 	cont "to be a thief."
 	done
 
-UnknownText_0x1880c3:
+CeruleanPoliceStationPokefanFText:
 	text "We were held up by"
 	line "robbers before."
 	done

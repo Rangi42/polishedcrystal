@@ -16,7 +16,7 @@ _BillsPC:
 
 .Text_GottaHavePokemon:
 	; You gotta have #MON to call!
-	text_jump UnknownText_0x1c1006
+	text_far _PCGottaHavePokemonText
 	text_end
 
 .LogIn:
@@ -36,7 +36,7 @@ _BillsPC:
 
 .Text_What:
 	; What?
-	text_jump UnknownText_0x1c1024
+	text_far _PCWhatText
 	text_end
 
 .LogOut:
@@ -128,7 +128,7 @@ BillsPC_MovePKMNMenu:
 
 .Text_MonHoldingMail:
 	; There is a #MON holding MAIL. Please remove the MAIL.
-	text_jump UnknownText_0x1c102b
+	text_far _PCMonHoldingMailText
 	text_end
 
 BillsPC_DepositMenu:

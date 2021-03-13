@@ -19,8 +19,7 @@ BattleTowerElevator_MapScriptHeader:
 	const BATTLETOWERELEVATOR_RECEPTIONIST
 
 BattleTowerElevatorTrigger0:
-	priorityjump .RideElevator
-	setscene $1
+	prioritysjump .RideElevator
 	end
 
 .RideElevator:

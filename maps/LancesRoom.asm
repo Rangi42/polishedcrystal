@@ -28,7 +28,7 @@ LancesRoom_MapScriptHeader:
 	const LANCESROOM_OAK
 
 LancesRoomEntranceTrigger:
-	priorityjump .Script
+	prioritysjump .Script
 	end
 
 .Script:
@@ -59,19 +59,19 @@ LancesRoomDoorCallback:
 	iffalse .LanceExitClosed
 	changeblock 6, 0, $b
 .LanceExitClosed:
-	return
+	endcallback
 
 ApproachLanceFromLeftTrigger:
 	special Special_FadeOutMusic
 	applymovement PLAYER, ApproachLanceFromLeftMovement
-	jump LanceScript
+	sjump LanceScript
 
 ApproachLanceFromRightTrigger:
 	special Special_FadeOutMusic
 	applymovement PLAYER, ApproachLanceFromRightMovement
 LanceScript:
 	turnobject LANCESROOM_LANCE, LEFT
-	checkcode VAR_BADGES
+	readvar VAR_BADGES
 	ifequal 16, .Rematch
 	showtext .SeenText
 	winlosstext .BeatenText, 0
@@ -81,7 +81,7 @@ LanceScript:
 	dontrestartmapmusic
 	reloadmapafterbattle
 	showtext .AfterText
-	jump .EndBattle
+	sjump .EndBattle
 
 .Rematch:
 	showtext .SeenRematchText

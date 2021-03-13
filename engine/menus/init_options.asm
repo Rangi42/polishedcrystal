@@ -122,7 +122,7 @@ SetInitialOptions:
 	ret
 
 .InitialOptionsText:
-	text_jump _InitialOptionsText
+	text_far _InitialOptionsText
 	text_end
 
 .BGPalette:

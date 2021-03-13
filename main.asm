@@ -135,6 +135,7 @@ INCLUDE "data/moves/effects.asm"
 SECTION "bankA", ROMX
 
 INCLUDE "engine/link/link.asm"
+INCLUDE "engine/movie/trade_animation.asm"
 
 
 SECTION "Wild Data", ROMX
@@ -223,7 +224,6 @@ INCLUDE "data/collision_permissions.asm"
 
 SECTION "bank13", ROMX
 
-INCLUDE "engine/menus/empty_sram.asm"
 INCLUDE "engine/events/checksave.asm"
 INCLUDE "data/maps/scenes.asm"
 INCLUDE "engine/rtc/reset_password.asm"
@@ -239,10 +239,8 @@ INCLUDE "engine/events/catch_tutorial.asm"
 INCLUDE "engine/movie/evolution_animation.asm"
 INCLUDE "engine/movie/init_hof_credits.asm"
 INCLUDE "engine/battle/sliding_intro.asm"
-INCLUDE "engine/battle/check_battle_scene.asm"
 INCLUDE "engine/movie/bsod.asm"
 INCLUDE "engine/events/judge_machine.asm"
-
 INCLUDE "engine/events/poisonstep.asm"
 INCLUDE "engine/events/squirtbottle.asm"
 INCLUDE "engine/events/card_key.asm"
@@ -422,7 +420,7 @@ SECTION "bank38", ROMX
 
 INCLUDE "engine/games/card_flip.asm"
 INCLUDE "engine/games/unown_puzzle.asm"
-;INCLUDE "engine/games/dummy_game.asm"
+;INCLUDE "engine/games/memory_game.asm"
 INCLUDE "engine/pokemon/bills_pc.asm"
 INCLUDE "engine/gfx/fade.asm"
 
@@ -430,7 +428,8 @@ INCLUDE "engine/gfx/fade.asm"
 SECTION "bank39", ROMX
 
 INCLUDE "engine/menus/options_menu.asm"
-INCLUDE "engine/movie/crystal_intro.asm"
+INCLUDE "engine/movie/splash.asm"
+INCLUDE "engine/movie/intro.asm"
 
 
 SECTION "Typefaces", ROMX

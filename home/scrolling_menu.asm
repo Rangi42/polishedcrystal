@@ -6,9 +6,9 @@ ScrollingMenu::
 	ld a, BANK(_ScrollingMenu) ; aka BANK(_InitScrollingMenu)
 	rst Bankswitch
 
-	call _InitScrollingMenu
+	call _InitScrollingMenu ; far-ok
 	call .UpdatePalettes
-	call _ScrollingMenu
+	call _ScrollingMenu ; far-ok
 
 	pop af
 	rst Bankswitch

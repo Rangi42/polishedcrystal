@@ -374,10 +374,10 @@ ApplyAttrMap:
 	jr nz, .col
 	ld a, BG_MAP_WIDTH - SCREEN_WIDTH
 	add e
-	jr nc, .okay
-	inc d
-.okay
 	ld e, a
+	adc d
+	sub e
+	ld d, a
 	dec b
 	jr nz, .row
 	xor a
@@ -505,7 +505,7 @@ GetMonPalettePointer:
 	; b = form
 	inc hl ; Form is in the byte after Shiny
 	ld a, [hl]
-	and FORM_MASK
+	and BASEMON_MASK
 	ld b, a
 	; bc = index
 	call GetSpeciesAndFormIndex

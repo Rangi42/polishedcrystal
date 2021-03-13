@@ -86,6 +86,8 @@ DoBattleAnimFrame:
 	dw BattleAnimFunction_4E ; 4e
 	dw BattleAnimFunction_4F ; 4f
 	dw BattleAnimFunction_StraightDescent
+	dw BattleAnimFunction_PowerGem
+	dw BattleAnimFunction_Moon
 
 BattleAnim_AnonJumptable:
 	ld hl, BATTLEANIMSTRUCT_ANON_JT_INDEX
@@ -1435,12 +1437,9 @@ Functioncd8cc:
 	add hl, bc
 	ld [hl], a
 	bit 7, a
-	jr nz, .asm_cd8e6
 	ld a, $3d
-	jr .asm_cd8e8
-
-.asm_cd8e6
-	ld a, $3c
+	jr z, .asm_cd8e8
+	dec a ; ld a, $3c
 .asm_cd8e8
 	call ReinitBattleAnimFrameset
 	ld hl, BATTLEANIMSTRUCT_0F
@@ -2098,6 +2097,81 @@ BattleAnimFunction_StraightDescent:
 	ld [hl], a
 	ret
 
+BattleAnimFunction_PowerGem:
+	call BattleAnim_AnonJumptable
+.anon_dw
+	dw PowerGemFunction1
+	dw PowerGemFunction2
+	dw PowerGemFunction3
+
+PowerGemFunction1:
+	ld hl, BATTLEANIMSTRUCT_YOFFSET
+	add hl, bc
+	ld a, [hl]
+	cp $ff
+	jr nz, .asm_ce319
+	call BattleAnim_IncAnonJumptableIndex
+	ld hl, BATTLEANIMSTRUCT_0F
+	add hl, bc
+	ld [hl], $2
+	ret
+
+.asm_ce319
+	ld d, a
+	ld hl, BATTLEANIMSTRUCT_0F
+	add hl, bc
+	ld e, [hl]
+	ld hl, hPushOAM
+	add hl, de
+	ld e, l
+	ld d, h
+	ld hl, BATTLEANIMSTRUCT_YOFFSET
+	add hl, bc
+	ld [hl], d
+	ld hl, BATTLEANIMSTRUCT_0F
+	add hl, bc
+	ld [hl], e
+	ret
+
+PowerGemFunction2:
+	ld hl, BATTLEANIMSTRUCT_10
+	add hl, bc
+	ld a, [hl]
+	and a
+	jr z, .asm_ce33a
+	dec [hl]
+	ret
+
+.asm_ce33a
+	ld [hl], $4
+	ld hl, BATTLEANIMSTRUCT_0F
+	add hl, bc
+	ld a, [hl]
+	cpl
+	inc a
+	ld [hl], a
+	ld hl, BATTLEANIMSTRUCT_YOFFSET
+	add hl, bc
+	add [hl]
+	ld [hl], a
+	ret
+
+PowerGemFunction3:
+	ld hl, BATTLEANIMSTRUCT_XCOORD
+	add hl, bc
+	ld a, [hl]
+	cp $c0
+	ret nc
+	ld a, $8
+	jp Functionce70a
+
+BattleAnimFunction_Moon:
+	call BattleAnim_AnonJumptable
+.anon_dw
+	dw Functionce306
+	dw Functionce330
+	dw Functionce34c
+
 BattleAnimFunction_21:
 	call BattleAnim_AnonJumptable
 .anon_dw
@@ -2670,10 +2744,7 @@ Functionce023:
 	add hl, bc
 	ld a, [hl]
 	cp $6c
-	jr c, .asm_ce02d
-	ret
-
-.asm_ce02d
+	ret nc
 	ld a, $2
 	call Functionce70a
 	ld hl, BATTLEANIMSTRUCT_0F
@@ -3038,11 +3109,8 @@ Functionce260:
 	call BattleAnim_IncAnonJumptableIndex
 	ldh a, [hBattleTurn]
 	and a
-	jr nz, .asm_ce26c
 	ld a, $f0
-	jr .asm_ce26e
-
-.asm_ce26c
+	jr z, .asm_ce26e
 	ld a, $cc
 .asm_ce26e
 	ld hl, BATTLEANIMSTRUCT_0F

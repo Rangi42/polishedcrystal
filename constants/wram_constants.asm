@@ -6,6 +6,9 @@
 	const TEMPMON    ; 3
 	const WILDMON    ; 4
 
+; wOptions3
+QWERTY_KEYBOARD_F EQU 0
+
 ; Text box flags
 ; TODO: add the other bits used
 NO_LINE_SPACING EQU 2

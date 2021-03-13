@@ -59,7 +59,7 @@ CheckBadge:
 .BadgeRequiredText:
 	; Sorry! A new BADGE
 	; is required.
-	text_jump _BadgeRequiredText
+	text_far _BadgeRequiredText
 	text_end
 
 CheckPartyMove:
@@ -128,7 +128,7 @@ CheckForSurfingPikachu:
 	ret
 
 FieldMovePokepicScript:
-	copybytetovar wBuffer6
+	readmem wBuffer6
 	refreshscreen
 	pokepic 0
 	cry 0
@@ -143,7 +143,7 @@ FieldMoveFailed:
 
 .CantUseHere:
 	; Can't use that here.
-	text_jump UnknownText_0x1c05c8
+	text_far _CantUseItemText
 	text_end
 
 CutFunction:
@@ -193,7 +193,7 @@ CutFunction:
 
 Text_NothingToCut:
 	; There's nothing to CUT here.
-	text_jump UnknownText_0x1c05ec
+	text_far _CutNothingText
 	text_end
 
 CheckMapForSomethingToCut:
@@ -249,7 +249,7 @@ Script_CutFromMenu:
 	ifequal $0, Script_CutTree
 ;Script_CutGrass:
 	callasm PrepareOverworldMove
-	farwritetext UnknownText_0x1c05dd
+	farwritetext _UseCutText
 	closetext
 	scall FieldMovePokepicScript
 	callasm CutDownGrass
@@ -272,8 +272,7 @@ CutDownGrass:
 	call LoadMapPart
 	call UpdateSprites
 	call DelayFrame
-	ld a, [wBuffer6] ; Animation type (always 1)
-	ld e, a
+	ld a, 1 ; Animation type
 	farcall OWCutAnimation
 	call BufferScreen
 	call GetMovementPermissions
@@ -317,7 +316,7 @@ INCLUDE "data/events/field_move_blocks.asm"
 
 Script_CutTree:
 	callasm PrepareOverworldMove
-	farwritetext UnknownText_0x1c05dd
+	farwritetext _UseCutText
 	closetext
 	waitsfx
 	scall FieldMovePokepicScript
@@ -339,7 +338,6 @@ CutDownTree:
 	call UpdateSprites
 	call DelayFrame
 	xor a ; Animation type
-	ld e, a
 	farcall OWCutAnimation
 	call BufferScreen
 	call GetMovementPermissions
@@ -382,13 +380,13 @@ Script_UseFlash:
 	callasm PrepareOverworldMove
 	scall FieldMovePokepicScript
 	opentext
-	writetext UnknownText_0xc8f3
+	writetext UseFlashTextScript
 	callasm BlindingFlash
 	endtext
 
-UnknownText_0xc8f3:
-	text_jump UnknownText_0x1c0609
-	start_asm
+UseFlashTextScript:
+	text_far _BlindingFlashText
+	text_asm
 	call WaitSFX
 	ld de, SFX_FLASH
 	call PlaySFX
@@ -478,8 +476,8 @@ UsedSurfScript:
 	scall FieldMovePokepicScript
 
 AutoSurfScript:
-	copybytetovar wBuffer2
-	writevarcode VAR_MOVEMENT
+	readmem wBuffer2
+	writevar VAR_MOVEMENT
 
 	special UpdatePlayerSprite
 	special PlayMapMusic
@@ -489,11 +487,11 @@ AutoSurfScript:
 	end
 
 CantSurfText:
-	text_jump _CantSurfText
+	text_far _CantSurfText
 	text_end
 
 AlreadySurfingText:
-	text_jump _AlreadySurfingText
+	text_far _AlreadySurfingText
 	text_end
 
 GetSurfType:
@@ -718,7 +716,7 @@ FlyFunction:
 	farscall Script_AbortBugContest
 	special WarpToSpawnPoint
 	callasm SkipUpdateMapSprites
-	writecode VAR_MOVEMENT, PLAYER_NORMAL
+	loadvar VAR_MOVEMENT, PLAYER_NORMAL
 	newloadmap MAPSETUP_FLY
 	callasm FlyToAnim
 	special WaitSFX
@@ -739,7 +737,7 @@ WaterfallFunction:
 .TryWaterfall:
 ; Waterfall
 	ld de, ENGINE_RISINGBADGE
-	farcall CheckBadge
+	call CheckBadge
 	ld a, $80
 	ret c
 	call CheckMapCanWaterfall
@@ -778,7 +776,7 @@ Script_WaterfallFromMenu:
 
 Script_UsedWaterfall:
 	callasm PrepareOverworldMove
-	farwritetext UnknownText_0x1c068e
+	farwritetext _UseWaterfallText
 	waitbutton
 	closetext
 	scall FieldMovePokepicScript
@@ -828,13 +826,13 @@ TryWaterfallOW::
 	ret
 
 Script_CantDoWaterfall:
-	farjumptext UnknownText_0x1c06a3
+	farjumptext _HugeWaterfallText
 
 Script_AskWaterfall:
 	checkflag ENGINE_AUTOWATERFALL_ACTIVE
 	iftrue Script_AutoWaterfall
 	opentext
-	farwritetext UnknownText_0x1c06bf
+	farwritetext _AskWaterfallText
 	yesorno
 	iftrue Script_UsedWaterfall
 	endtext
@@ -923,22 +921,22 @@ EscapeRopeOrDig:
 
 .Text_CantUseHere:
 	; Can't use that here.
-	text_jump UnknownText_0x1c0705
+	text_far _CantUseDigText
 	text_end
 
 .UsedEscapeRopeScript:
 	reloadmappart
 	special UpdateTimePals
-	farwritetext UnknownText_0x1c06ed
+	farwritetext _UseEscapeRopeText
 	waitbutton
 	closetext
-	jump .UsedDigOrEscapeRopeScript
+	sjump .UsedDigOrEscapeRopeScript
 
 .UsedDigScript:
 	reloadmappart
 	special UpdateTimePals
 	callasm PrepareOverworldMove
-	farwritetext UnknownText_0x1c06de
+	farwritetext _UseDigText
 	waitbutton
 	closetext
 	scall FieldMovePokepicScript
@@ -948,7 +946,7 @@ EscapeRopeOrDig:
 	applymovement PLAYER, .DigOut
 	farscall Script_AbortBugContest
 	special WarpToSpawnPoint
-	writecode VAR_MOVEMENT, PLAYER_NORMAL
+	loadvar VAR_MOVEMENT, PLAYER_NORMAL
 	newloadmap MAPSETUP_DOOR
 	playsound SFX_WARP_FROM
 	applymovement PLAYER, .DigReturn
@@ -1012,7 +1010,7 @@ TeleportFunction:
 
 .Text_CantUseHere:
 	; Can't use that here.
-	text_jump UnknownText_0x1c073b
+	text_far _CantUseTeleportText
 	text_end
 
 .TeleportScript:
@@ -1022,7 +1020,7 @@ TeleportFunction:
 	applymovement PLAYER, .TeleportFrom
 	farscall Script_AbortBugContest
 	special WarpToSpawnPoint
-	writecode VAR_MOVEMENT, PLAYER_NORMAL
+	loadvar VAR_MOVEMENT, PLAYER_NORMAL
 	newloadmap MAPSETUP_TELEPORT
 	playsound SFX_WARP_FROM
 	applymovement PLAYER, .TeleportTo
@@ -1077,29 +1075,29 @@ Script_StrengthFromMenu:
 
 Script_UsedStrength:
 	callasm SetStrengthFlag
-	farwritetext UnknownText_0x1c0774
+	farwritetext _UseStrengthText
 	waitbutton
 	closetext
 	scall FieldMovePokepicScript
 	opentext
-	farwritetext UnknownText_0x1c0788
+	farwritetext _MoveBoulderText
 	endtext
 
 AskStrengthScript:
 	callasm TryStrengthOW
 	iffalse .AskStrength
 	ifequal $1, .DontMeetRequirements
-	jump .AlreadyUsedStrength
+	sjump .AlreadyUsedStrength
 
 .DontMeetRequirements:
-	farjumptext UnknownText_0x1c07f4
+	farjumptext _BouldersMayMoveText
 
 .AlreadyUsedStrength:
-	farjumptext UnknownText_0x1c07d8
+	farjumptext _BouldersMoveText
 
 .AskStrength:
 	opentext
-	farwritetext UnknownText_0x1c07a0
+	farwritetext _AskStrengthText
 	yesorno
 	iftrue Script_UsedStrength
 	endtext
@@ -1207,7 +1205,7 @@ Script_WhirlpoolFromMenu:
 
 Script_UsedWhirlpool:
 	callasm PrepareOverworldMove
-	farwritetext UnknownText_0x1c0816
+	farwritetext _UseWhirlpoolText
 	closetext
 	scall FieldMovePokepicScript
 	setflag ENGINE_AUTOWHIRLPOOL_ACTIVE
@@ -1215,7 +1213,7 @@ Script_UsedWhirlpool:
 
 Script_AutoWhirlpool:
 	playsound SFX_SURF
-	checkcode VAR_FACING
+	readvar VAR_FACING
 	ifequal UP, .Up
 	ifequal DOWN, .Down
 	ifequal RIGHT, .Right
@@ -1277,13 +1275,13 @@ TryWhirlpoolOW::
 	ret
 
 Script_MightyWhirlpool:
-	farjumptext UnknownText_0x1c082b
+	farjumptext _MayPassWhirlpoolText
 
 Script_AskWhirlpoolOW:
 	checkflag ENGINE_AUTOWHIRLPOOL_ACTIVE
 	iftrue Script_AutoWhirlpool
 	opentext
-	farwritetext UnknownText_0x1c0864
+	farwritetext _AskWhirlpoolText
 	yesorno
 	iftrue Script_UsedWhirlpool
 	endtext
@@ -1315,7 +1313,7 @@ HeadbuttFromMenuScript:
 
 HeadbuttScript:
 	callasm PrepareOverworldMove
-	farwritetext UnknownText_0x1c0897
+	farwritetext _UseHeadbuttText
 	closetext
 
 	scall FieldMovePokepicScript
@@ -1340,7 +1338,7 @@ AutoHeadbuttScript:
 	endtext
 
 .no_item
-	farjumptext UnknownText_0x1c08ac
+	farjumptext _HeadbuttNothingText
 
 TryHeadbuttOW::
 	ld d, HEADBUTT
@@ -1361,7 +1359,7 @@ AskHeadbuttScript:
 	checkflag ENGINE_HEADBUTT_ACTIVE
 	iftrue AutoHeadbuttScript
 	opentext
-	farwritetext UnknownText_0x1c08bc
+	farwritetext _AskHeadbuttText
 	yesorno
 	iftrue HeadbuttScript
 	endtext
@@ -1417,7 +1415,7 @@ RockSmashFromMenuScript:
 
 RockSmashScript:
 	callasm PrepareOverworldMove
-	farwritetext UnknownText_0x1c08f0
+	farwritetext _UseRockSmashText
 	closetext
 	waitsfx
 	scall FieldMovePokepicScript
@@ -1425,11 +1423,11 @@ RockSmashScript:
 AutoRockSmashScript:
 	playsound SFX_STRENGTH
 	earthquake 84
-	applymovement2 MovementData_0xcf55
+	applymovementlasttalked MovementData_RockSmash
 	disappear -2
 
 	callasm RockMonEncounter
-	copybytetovar wTempWildMonSpecies
+	readmem wTempWildMonSpecies
 	iffalse .no_battle
 	randomwildmon
 	startbattle
@@ -1445,7 +1443,7 @@ AutoRockSmashScript:
 .no_item
 	end
 
-MovementData_0xcf55:
+MovementData_RockSmash:
 	rock_smash 10
 	step_end
 
@@ -1456,13 +1454,13 @@ AskRockSmashScript:
 	checkflag ENGINE_ROCK_SMASH_ACTIVE
 	iftrue AutoRockSmashScript
 	opentext
-	farwritetext UnknownText_0x1c0924
+	farwritetext _AskRockSmashText
 	yesorno
 	iftrue RockSmashScript
 	endtext
 
 .no
-	farjumptext UnknownText_0x1c0906
+	farjumptext _MaySmashText
 
 HasRockSmash:
 	ld d, ROCK_SMASH
@@ -1607,16 +1605,17 @@ FishFunction:
 
 Script_NotEvenANibble:
 	scall Script_FishCastRod
-	farwritetext UnknownText_0x1c0965
+	farwritetext _RodNothingText
 	closetext
 	callasm PutTheRodAway
 	end
 
 Script_GotAnItem:
 	scall Script_FishCastRod
+	callasm Fishing_CheckFacingUp
 	iffalse .NotFacingUp
 	applymovement PLAYER, Movement_HookedItemFacingUp
-	jump .GetTheHookedItem
+	sjump .GetTheHookedItem
 .NotFacingUp:
 	applymovement PLAYER, Movement_HookedItemNotFacingUp
 .GetTheHookedItem:
@@ -1633,13 +1632,13 @@ Script_GotABite:
 	callasm Fishing_CheckFacingUp
 	iffalse .NotFacingUp
 	applymovement PLAYER, Movement_BiteFacingUp
-	jump .FightTheHookedPokemon
+	sjump .FightTheHookedPokemon
 .NotFacingUp:
 	applymovement PLAYER, Movement_BiteNotFacingUp
 .FightTheHookedPokemon:
 	pause 40
 	applymovement PLAYER, Movement_RestoreRod
-	farwritetext UnknownText_0x1c0958
+	farwritetext _RodBiteText
 	closetext
 	callasm PutTheRodAway
 	randomwildmon
@@ -1685,15 +1684,15 @@ Fishing_CheckFacingUp:
 
 Script_FishCastRod:
 	reloadmappart
-	loadvar hBGMapMode, $0
+	loadmem hBGMapMode, $0
 	special UpdateTimePals
 	callasm LoadFishingGFX
 	loademote EMOTE_SHOCK
-	applymovement PLAYER, MovementData_0xd093
+	applymovement PLAYER, MovementData_CastRod
 	pause 40
 	end
 
-MovementData_0xd093:
+MovementData_CastRod:
 	fish_cast_rod
 	step_end
 
@@ -1787,8 +1786,8 @@ BikeFunction:
 Script_GetOnBike:
 	reloadmappart
 	special UpdateTimePals
-	writecode VAR_MOVEMENT, PLAYER_BIKE
-	farwritetext UnknownText_0x1c09b2
+	loadvar VAR_MOVEMENT, PLAYER_BIKE
+	farwritetext _GotOnBikeText
 	waitbutton
 FinishGettingOnBike:
 	closetext
@@ -1797,14 +1796,14 @@ FinishGettingOnBike:
 	end
 
 Script_GetOnBike_Register:
-	writecode VAR_MOVEMENT, PLAYER_BIKE
-	jump FinishGettingOnBike
+	loadvar VAR_MOVEMENT, PLAYER_BIKE
+	sjump FinishGettingOnBike
 
 Script_GetOffBike:
 	reloadmappart
 	special UpdateTimePals
-	writecode VAR_MOVEMENT, PLAYER_NORMAL
-	farwritetext UnknownText_0x1c09c7
+	loadvar VAR_MOVEMENT, PLAYER_NORMAL
+	farwritetext _GotOffBikeText
 	waitbutton
 FinishGettingOffBike:
 	closetext
@@ -1813,11 +1812,11 @@ FinishGettingOffBike:
 	end
 
 Script_GetOffBike_Register:
-	writecode VAR_MOVEMENT, PLAYER_NORMAL
-	jump FinishGettingOffBike
+	loadvar VAR_MOVEMENT, PLAYER_NORMAL
+	sjump FinishGettingOffBike
 
 Script_CantGetOffBike:
-	farwritetext UnknownText_0x1c099a
+	farwritetext _CantGetOffBikeText
 	waitendtext
 
 HasCutAvailable::
@@ -1846,10 +1845,10 @@ AskCutTreeScript:
 	checkflag ENGINE_AUTOCUT_ACTIVE
 	iftrue AutoCutTreeScript
 	opentext
-	farwritetext UnknownText_0x1c09dd
+	farwritetext _AskCutText
 	yesorno
 	iftrue Script_CutTree
 	endtext
 
 .no
-	farjumptext UnknownText_0x1c0a05
+	farjumptext _CanCutText

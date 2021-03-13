@@ -14,7 +14,7 @@ Route38EcruteakGate_MapScriptHeader:
 	def_bg_events
 
 	def_object_events
-	object_event  5,  2, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x9cbda, -1
+	object_event  5,  2, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, Route38EcruteakGateOfficerText, -1
 	object_event  8,  3, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, ProfOaksAide2Script, -1
 
 ProfOaksAide2Script:
@@ -24,8 +24,8 @@ ProfOaksAide2Script:
 	iftrue .Explain
 	writetext ProfOaksAide2HiText
 	waitbutton
-	count_seen_caught
-	checkcode VAR_DEXCAUGHT
+	countseencaught
+	readvar VAR_DEXCAUGHT
 	ifgreater 29, .HereYouGo
 .UhOh
 	jumpopenedtext ProfOaksAide2UhOhText
@@ -42,7 +42,7 @@ ProfOaksAide2Script:
 .NoRoom
 	jumpopenedtext ProfOaksAide2NoRoomText
 
-UnknownText_0x9cbda:
+Route38EcruteakGateOfficerText:
 	text "Where did you say"
 	line "you're from?"
 
@@ -77,7 +77,7 @@ ProfOaksAide2UhOhText:
 	line "Uh-oh! You've only"
 
 	para "caught "
-	deciram wd003, 1, 3
+	text_decimal wTempPokedexCaughtCount, 1, 3
 	text " kinds"
 	line "of #mon."
 
@@ -91,7 +91,7 @@ ProfOaksAide2HereYouGoText:
 	line "Great job! You've"
 
 	para "caught "
-	deciram wd003, 1, 3
+	text_decimal wTempPokedexCaughtCount, 1, 3
 	text " kinds"
 	line "of #mon."
 

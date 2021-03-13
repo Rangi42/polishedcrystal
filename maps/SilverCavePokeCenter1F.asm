@@ -41,13 +41,13 @@ SilverCavePokeCenterGrampsScript:
 	opentext
 	writetext .GreetingText
 	waitbutton
-	checkcode VAR_PKMN_JOURNALS
+	readvar VAR_PKMN_JOURNALS
 	ifequal 0, .ReadNone
 	ifequal NUM_POKEMON_JOURNALS, .ReadThemAll
 	jumpthisopenedtext
 
 	text "Oh, you've read "
-	deciram hScriptVar, 1, 2
+	text_decimal hScriptVar, 1, 2
 	line "of them?"
 
 	para "Not bad, but I've"
@@ -71,7 +71,7 @@ SilverCavePokeCenterGrampsScript:
 
 .ReadThemAll:
 	writetext .ReadAllText
-	buttonsound
+	promptbutton
 	verbosegiveitem EXPERT_BELT
 	iffalse_endtext
 	setevent EVENT_GOT_EXPERT_BELT

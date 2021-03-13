@@ -66,13 +66,11 @@ gfx/misc.o
 
 
 .SUFFIXES:
-.PHONY: all clean tidy crystal faithful nortc debug monochrome freespace compare tools
+.PHONY: clean tidy crystal faithful nortc debug monochrome freespace compare tools
 .SECONDEXPANSION:
 .PRECIOUS: %.2bpp %.1bpp
 .SECONDARY:
-
-
-all: crystal freespace
+.DEFAULT_GOAL: crystal
 
 crystal: ROM_NAME = $(NAME)-$(VERSION)
 crystal: $(NAME)-$(VERSION).gbc
@@ -91,7 +89,7 @@ tools:
 
 clean: tidy
 	find gfx maps data/tilesets -name '*.lz' -delete
-	find gfx \( -name '*.[12]bpp' -o -name '*.2bpp.vram[012]' \) -delete
+	find gfx \( -name '*.[12]bpp' -o -name '*.2bpp.vram[012]' -o -name '*.2bpp.vram[012]p' \) -delete
 	find gfx/pokemon -mindepth 1 \( -name 'bitmask.asm' -o -name 'frames.asm' -o -name 'front.animated.tilemap' -o -name 'front.dimensions' \) -delete
 	find data/tilesets -name '*_collision.bin' -delete
 
@@ -166,6 +164,7 @@ gfx/new_game/shrink2.2bpp: rgbgfx += -h
 
 gfx/overworld/overworld.2bpp: gfx/overworld/puddle_splash.2bpp gfx/overworld/cut_grass.2bpp gfx/overworld/cut_tree.2bpp gfx/overworld/heal_machine.2bpp gfx/overworld/fishing_rod.2bpp gfx/overworld/shadow.2bpp gfx/overworld/shaking_grass.2bpp gfx/overworld/boulder_dust.2bpp ; cat $^ > $@
 
+gfx/pack/pack_left.2bpp: tools/gfx += --trim-whitespace
 gfx/pack/pack_top_left.2bpp: gfx/pack/pack_top.2bpp gfx/pack/pack_left.2bpp ; cat $^ > $@
 
 gfx/paintings/%.2bpp: rgbgfx += -h
@@ -203,7 +202,7 @@ gfx/trainer_card/kris_card.2bpp: rgbgfx += -h
 gfx/trainers/%.2bpp: rgbgfx += -h
 
 gfx/type_chart/bg.2bpp: tools/gfx += --remove-duplicates --remove-xflip --remove-yflip
-gfx/type_chart/bg0.2bpp: gfx/type_chart/bg.2bpp.vram1 gfx/type_chart/bg.2bpp.vram0 ; cat $^ > $@
+gfx/type_chart/bg0.2bpp: gfx/type_chart/bg.2bpp.vram1p gfx/type_chart/bg.2bpp.vram0p ; cat $^ > $@
 gfx/type_chart/ob.2bpp: tools/gfx += --interleave --png=$<
 
 
@@ -219,6 +218,9 @@ gfx/pokemon/%/frames.asm: gfx/pokemon/%/front.animated.tilemap gfx/pokemon/%/fro
 
 %.lz: %
 	tools/lzcomp -- $< $@
+
+#%.4bpp: %.png
+#	superfamiconv tiles -R -i $@ -d $<
 
 %.2bpp: %.png
 	$(RGBDS_DIR)rgbgfx $(rgbgfx) -o $@ $<
@@ -238,6 +240,15 @@ gfx/pokemon/%/frames.asm: gfx/pokemon/%/front.animated.tilemap gfx/pokemon/%/fro
 
 %.2bpp.vram2: %.2bpp
 	tools/sub_2bpp.sh $< 256 128 > $@
+
+%.2bpp.vram0p: %.2bpp
+	tools/sub_2bpp.sh $< 127 > $@
+
+%.2bpp.vram1p: %.2bpp
+	tools/sub_2bpp.sh $< 127 128 > $@
+
+%.2bpp.vram2p: %.2bpp
+	tools/sub_2bpp.sh $< 255 128 > $@
 
 %.dimensions: %.png
 	tools/png_dimensions $< $@

@@ -5,7 +5,7 @@ CheckPartyFullAfterContest:
 	ld [wCurPartySpecies], a
 	ld [wCurSpecies], a
 	ld a, [wContestMonForm]
-	and FORM_MASK
+	and BASEMON_MASK
 	ld [wCurForm], a
 	call GetBaseData
 	ld hl, wPartyCount
@@ -163,7 +163,7 @@ GiveANickname_YesNo:
 
 TextJump_GiveANickname:
 	; Give a nickname to the @  you received?
-	text_jump UnknownText_0x1c12fc
+	text_far _CaughtAskNicknameText
 	text_end
 
 SetCaughtData:
@@ -175,11 +175,9 @@ SetBoxmonOrEggmonCaughtData:
 	; CaughtGender
 	ld a, [wPlayerGender]
 	and a
-	jr z, .male
+	assert !MALE
+	jr z, .ok
 	ld a, FEMALE
-	jr .ok
-.male
-	ld a, MALE
 .ok
 	ld b, a
 	; CaughtTime

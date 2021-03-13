@@ -286,29 +286,32 @@ BattleAnimations::
 BattleAnim_0:
 	anim_ret
 
-; Moonblast animation from Pokémon Prism
 BattleAnim_Moonblast:
-	anim_3gfx ANIM_GFX_GLOBE, ANIM_GFX_BEAM, ANIM_GFX_AEROBLAST
+	anim_3gfx ANIM_GFX_MOON, ANIM_GFX_SHINE, ANIM_GFX_CHARGE
 	anim_bgp $1b
-	anim_obj ANIM_OBJ_MOON,  6, 0, 9, 0, $1
+	anim_obj ANIM_OBJ_MOON, 44, 104, $1
+	anim_obj ANIM_OBJ_MOON_CHARGE, 44, 88, $30
+	anim_obj ANIM_OBJ_MOON_CHARGE, 44, 88, $31
+	anim_obj ANIM_OBJ_MOON_CHARGE, 44, 88, $32
+	anim_obj ANIM_OBJ_MOON_CHARGE, 44, 88, $33
+	anim_obj ANIM_OBJ_MOON_CHARGE, 44, 88, $34
+	anim_obj ANIM_OBJ_MOON_CHARGE, 44, 88, $35
+	anim_obj ANIM_OBJ_MOON_CHARGE, 44, 88, $36
+	anim_obj ANIM_OBJ_MOON_CHARGE, 44, 88, $37
+	anim_wait 1
 	anim_sound 0, 0, SFX_MOONLIGHT
-	anim_wait 63
-	anim_bgeffect ANIM_BG_1F, $50, $4, $10
-	anim_bgeffect ANIM_BG_06, $0, $2, $0
-	anim_sound 0, 0, SFX_AEROBLAST
-	anim_obj ANIM_OBJ_AEROBLAST,  9, 0, 11, 0, $0
-	anim_wait 32
-	anim_sound 0, 0, SFX_HYPER_BEAM
-	anim_obj ANIM_OBJ_BEAM, 10, 0, 10, 4, $0
-	anim_wait 2
-	anim_sound 0, 1, SFX_HYPER_BEAM
-	anim_obj ANIM_OBJ_BEAM, 12, 0,  9, 4, $0
-	anim_wait 2
-	anim_sound 0, 1, SFX_HYPER_BEAM
-	anim_obj ANIM_OBJ_BEAM, 14, 0,  8, 4, $0
-	anim_obj ANIM_OBJ_BEAM_CONTACT, 15, 6,  7, 6, $0
-	anim_wait 48
-	anim_bgp $e4
+	anim_wait 96
+	anim_clearobjs
+	anim_sound 3, 0, SFX_RAZOR_WIND
+	anim_obj ANIM_OBJ_MOONBLAST, 64, 92, $4
+	anim_wait 16
+	anim_sound 0, 0, SFX_METRONOME
+	anim_obj ANIM_OBJ_GLIMMER, 132, 28, $0
+	anim_wait 5
+	anim_obj ANIM_OBJ_GLIMMER, 112, 60, $0
+	anim_wait 5
+	anim_obj ANIM_OBJ_GLIMMER, 144, 68, $0
+	anim_wait 21
 	anim_ret
 
 BattleAnim_PlayRough:
@@ -5095,35 +5098,56 @@ BattleAnim_Ancientpower:
 	anim_wait 6
 	anim_ret
 
-; Power Gem animation from Pokémon Prism
 BattleAnim_PowerGem:
-	anim_2gfx ANIM_GFX_ICE, ANIM_GFX_SPEED
-.loop
-	anim_bgeffect ANIM_BG_1F, $8, $2, $0
-	anim_sound 6, 2, SFX_SHINE
-	anim_obj ANIM_OBJ_GEM,  7, 4, 9, 4, $4
-	anim_obj ANIM_OBJ_GEM,  7, 4, 11, 0, $4
-	anim_obj ANIM_OBJ_GEM,  8, 4, 10, 0, $4
-	anim_obj ANIM_OBJ_GEM,  8, 4, 11, 4, $4
-	anim_wait 4
-	anim_sound 6, 2, SFX_FLASH
-	anim_obj ANIM_OBJ_SPARKLE,  8, 0,  9, 0, $4
-	anim_wait 4
-	anim_obj ANIM_OBJ_SPARKLE,  8, 0, 11, 0, $4
-	anim_obj ANIM_OBJ_FLASH,  8, 0, 10, 0, $0
-	anim_wait 6
-	anim_obj ANIM_OBJ_SPARKLE,  8, 0, 10, 0, $4
+	anim_1gfx ANIM_GFX_SHINE
+	anim_bgp $1b
+	anim_bgeffect ANIM_BG_06, $0, $2, $0
+	anim_sound 0, 0, SFX_METRONOME
+	anim_obj ANIM_OBJ_POWER_GEM, 70, 108, $0
+	anim_wait 1
+	anim_obj ANIM_OBJ_POWER_GEM, 46, 88, $0
+	anim_wait 1
+	anim_obj ANIM_OBJ_POWER_GEM, 64, 92, $0
+	anim_wait 1
+	anim_obj ANIM_OBJ_POWER_GEM, 24, 90, $0
+	anim_wait 1
+	anim_obj ANIM_OBJ_POWER_GEM, 36, 72, $0
+	anim_wait 1
+	anim_obj ANIM_OBJ_POWER_GEM, 44, 112, $0
+	anim_wait 1
+	anim_obj ANIM_OBJ_POWER_GEM, 30, 106, $0
+	anim_wait 1
+	anim_obj ANIM_OBJ_POWER_GEM, 56, 104, $0
+	anim_wait 1
+	anim_obj ANIM_OBJ_POWER_GEM, 54, 68, $0
+	anim_wait 1
+	anim_obj ANIM_OBJ_POWER_GEM, 76, 78, $0
+	anim_wait 80
+	anim_sound 0, 1, SFX_SHINE
+	anim_incobj  5
 	anim_wait 2
-	anim_obj ANIM_OBJ_FLASH, 10, 0,  7, 6, $0
-	anim_wait 4
-	anim_obj ANIM_OBJ_FLASH, 12, 0,  9, 4, $0
+	anim_incobj  1
 	anim_wait 2
-	anim_obj ANIM_OBJ_SPARKLE,  8, 0, 12, 0, $4
+	anim_sound 0, 1, SFX_SHINE
+	anim_incobj  3
 	anim_wait 2
-	anim_obj ANIM_OBJ_FLASH, 14, 0,  8, 0, $0
+	anim_incobj  10
 	anim_wait 2
-	anim_loop 2, .loop
-	anim_wait 6
+	anim_sound 0, 1, SFX_SHINE
+	anim_incobj  8
+	anim_wait 2
+	anim_incobj  2
+	anim_wait 2
+	anim_sound 0, 1, SFX_SHINE
+	anim_incobj  4
+	anim_wait 2
+	anim_incobj  6
+	anim_wait 2
+	anim_sound 0, 1, SFX_SHINE
+	anim_incobj  7
+	anim_wait 2
+	anim_incobj  9
+	anim_wait 32
 	anim_ret
 
 BattleAnim_ShadowBall:

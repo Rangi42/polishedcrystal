@@ -2,7 +2,6 @@ InitMovementBuffer::
 	ld [wMovementBufferObject], a
 	xor a
 	ld [wMovementBufferCount], a
-	ld [wd004], a
 	ret
 
 DecrementMovementBufferCount::
@@ -89,7 +88,7 @@ ComputePathToWalkToPlayer::
 	ld a, l
 	call .GetMovementData
 	ld c, e
-	jp AppendToMovementBufferNTimes
+	jr AppendToMovementBufferNTimes
 
 .GetMovementData:
 	push de

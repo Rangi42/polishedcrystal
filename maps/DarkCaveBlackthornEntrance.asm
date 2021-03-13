@@ -12,27 +12,29 @@ DarkCaveBlackthornEntrance_MapScriptHeader:
 	def_bg_events
 
 	def_object_events
-	object_event  7,  3, SPRITE_PHARMACIST, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, PharmacistScript_0x18c720, -1
+	object_event  7,  3, SPRITE_PHARMACIST, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, DarkCaveBlackthornEntrancePharmacistScript, -1
 	itemball_event 21, 24, REVIVE, 1, EVENT_DARK_CAVE_BLACKTHORN_ENTRANCE_REVIVE
 	tmhmball_event  7, 22, TM_DARK_PULSE, EVENT_DARK_CAVE_BLACKTHORN_ENTRANCE_TM_DARK_PULSE
 
-PharmacistScript_0x18c720:
+DarkCaveBlackthornEntrancePharmacistScript:
 	faceplayer
 	opentext
 	checkevent EVENT_GOT_BLACKGLASSES_IN_DARK_CAVE
-	iftrue UnknownScript_0x18c735
-	writetext UnknownText_0x18c73f
-	buttonsound
+	iftrue_jumpopenedtext .PharmacistText2
+	writetext .PharmacistText1
+	promptbutton
 	verbosegiveitem BLACKGLASSES
-	iffalse UnknownScript_0x18c739
+	iffalse_endtext
 	setevent EVENT_GOT_BLACKGLASSES_IN_DARK_CAVE
-UnknownScript_0x18c735:
-	writetext UnknownText_0x18c80c
-	waitbutton
-UnknownScript_0x18c739:
-	endtext
+	jumpthisopenedtext
 
-UnknownText_0x18c73f:
+.PharmacistText2:
+	text "BlackGlasses ups"
+	line "the power of Dark-"
+	cont "type moves."
+	done
+
+.PharmacistText1:
 	text "Whoa! You startled"
 	line "me there!"
 
@@ -52,10 +54,4 @@ UnknownText_0x18c73f:
 	line "pair of Black-"
 	cont "Glasses, so forget"
 	cont "you saw me, OK?"
-	done
-
-UnknownText_0x18c80c:
-	text "BlackGlasses ups"
-	line "the power of Dark-"
-	cont "type moves."
 	done

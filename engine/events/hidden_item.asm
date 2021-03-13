@@ -1,8 +1,8 @@
 HiddenItemScript:
 	opentext
-	copybytetovar wHiddenItemID
-	itemtotext STRING_BUFFER_3, USE_SCRIPT_VAR
-	farwritetext UnknownText_0x1c0a1c
+	readmem wHiddenItemID
+	getitemname STRING_BUFFER_3, USE_SCRIPT_VAR
+	farwritetext _FoundItemText
 	giveitem ITEM_FROM_MEM
 	iffalse .bag_full
 	callasm SetMemEvent
@@ -11,7 +11,7 @@ HiddenItemScript:
 	endtext
 
 .bag_full
-	buttonsound
+	promptbutton
 	pocketisfull
 	endtext
 

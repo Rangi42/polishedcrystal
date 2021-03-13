@@ -651,8 +651,7 @@ OlivinePort_BlockData:
 
 SECTION "OlivinePortPassage_BlockData", ROMX
 OlivinePortPassage_BlockData:
-VermilionPortPassage_BlockData:
-	INCBIN "maps/PortPassage.ablk.lz"
+	INCBIN "maps/OlivinePortPassage.ablk.lz"
 
 SECTION "OlivineLighthouse1F_BlockData", ROMX
 OlivineLighthouse1F_BlockData:
@@ -1870,3 +1869,15 @@ Route48_BlockData:
 SECTION "Route49_BlockData", ROMX
 Route49_BlockData:
 	INCBIN "maps/Route49.ablk.lz"
+
+SECTION "BattleFactory1F_BlockData", ROMX
+BattleFactory1F_BlockData:
+	INCBIN "maps/BattleFactory1F.ablk.lz"
+
+SECTION "BattleFactoryHallway_BlockData", ROMX
+BattleFactoryHallway_BlockData:
+	INCBIN "maps/BattleFactoryHallway.ablk.lz"
+
+SECTION "BattleFactoryBattleRoom_BlockData", ROMX
+BattleFactoryBattleRoom_BlockData:
+	INCBIN "maps/BattleFactoryBattleRoom.ablk.lz"

@@ -32,7 +32,7 @@ BlackthornGym2F_MapScriptHeader:
 
 BlackthornGym2FBoulders:
 	usestonetable .BoulderTable
-	return
+	endcallback
 
 .BoulderTable:
 	stonetable 5, BLACKTHORNGYM2F_BOULDER1, .Disappear4
@@ -42,11 +42,11 @@ BlackthornGym2FBoulders:
 
 .Disappear4:
 	disappear BLACKTHORNGYM2F_BOULDER1
-	jump .Fall
+	sjump .Fall
 
 .Disappear5:
 	disappear BLACKTHORNGYM2F_BOULDER2
-	jump .Fall
+	sjump .Fall
 
 .Disappear6:
 	disappear BLACKTHORNGYM2F_BOULDER3

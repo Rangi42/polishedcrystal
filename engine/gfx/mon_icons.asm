@@ -141,7 +141,7 @@ _GetMonIconPalette:
 	; b = form
 	inc hl ; Form is in the byte after Shiny
 	ld a, [hld]
-	and FORM_MASK
+	and BASEMON_MASK
 	ld b, a
 
 	; check shininess at hl
@@ -214,7 +214,7 @@ InitScreenMonIcon:
 	ld a, MON_FORM ; aka MON_IS_EGG
 	call GetPartyParamLocation
 	ld a, [hl]
-	and FORM_MASK
+	and BASEMON_MASK
 	ld [wCurIconForm], a
 	bit MON_IS_EGG_F, [hl]
 	ld a, [wd265]
@@ -260,7 +260,7 @@ InitPartyMenuIcon:
 	ld a, [hl]
 	bit MON_IS_EGG_F, a
 	jr nz, .egg
-	and FORM_MASK
+	and BASEMON_MASK
 	ld [wCurIconForm], a
 	ld hl, wPartySpecies
 	add hl, de
@@ -343,7 +343,7 @@ Fly_PrepMonIcon:
 	push de
 	ld a, MON_FORM
 	call GetPartyParamLocation
-	and FORM_MASK
+	and BASEMON_MASK
 	ld [wCurIconForm], a
 	ld a, [wCurPartyMon]
 	ld hl, wPartySpecies
@@ -421,13 +421,9 @@ FreezeMonIcons:
 	and a
 	jr z, .next
 	cp d
-	jr z, .loadwithtwo
-	ld a, SPRITE_ANIM_SEQ_NULL
-	jr .ok
-
-.loadwithtwo
 	ld a, SPRITE_ANIM_SEQ_PARTY_MON_SWITCH
-
+	jr z, .ok
+	xor a ; SPRITE_ANIM_SEQ_NULL
 .ok
 	push hl
 	ld c, l
@@ -475,12 +471,10 @@ HoldSwitchmonIcon:
 	and a
 	jr z, .next
 	cp d
-	jr z, .is_switchmon
 	ld a, SPRITE_ANIM_SEQ_PARTY_MON_SELECTED
-	jr .join_back
-
-.is_switchmon
-	ld a, SPRITE_ANIM_SEQ_PARTY_MON_SWITCH
+	jr nz, .join_back
+	assert SPRITE_ANIM_SEQ_PARTY_MON_SELECTED - 1 == SPRITE_ANIM_SEQ_PARTY_MON_SWITCH
+	dec a
 .join_back
 	push hl
 	ld c, l

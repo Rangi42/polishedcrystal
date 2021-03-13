@@ -233,7 +233,11 @@ NamingScreen_InitText:
 
 .not_box
 	call ClearBox
+	ld a, [wOptions3]
+	bit QWERTY_KEYBOARD_F, a
 	ld de, NameInputUpper
+	jr z, NamingScreen_ApplyTextInputMode
+	ld de, NameInputUpperQwerty
 NamingScreen_ApplyTextInputMode:
 	call NamingScreen_IsTargetBox
 	jr nz, .not_box
@@ -381,11 +385,11 @@ NamingScreenJoypadLoop:
 	call NamingScreen_GetLastCharacter
 	call NamingScreen_TryAddCharacter
 	jr c, .start
-	ld a, [wcf64]
-	and a ; 0?
+	ld a, [wNamingScreenLetterCase]
+	and a ; already lowercase? (a == 1)
 	ret nz
 	ld a, [wNamingScreenCurNameLength]
-	dec a ; 1?
+	dec a ; first character uppercase, rest lowercase (by default)
 	jr z, .select
 	ret
 
@@ -407,22 +411,26 @@ NamingScreenJoypadLoop:
 
 .b
 	call NamingScreen_DeleteCharacter
-	ld a, [wcf64]
-	and a ; 0?
+	ld a, [wNamingScreenLetterCase]
+	and a ; already uppercase? (a == 0)
 	ret z
 	ld a, [wNamingScreenCurNameLength]
-	and a ; 0?
+	and a ; ; first character uppercase, rest lowercase (by default)
 	ret nz
 	; fallthrough
 
 .select
-	ld hl, wcf64
+	ld hl, wNamingScreenLetterCase
 	ld a, [hl]
 	xor 1
 	ld [hl], a
 	jr z, .upper
+	ld a, [wOptions3]
+	bit QWERTY_KEYBOARD_F, a
 	ld de, NameInputLower
-	jp NamingScreen_ApplyTextInputMode
+	jr z, .ready
+	ld de, NameInputLowerQwerty
+	jr .ready
 
 .end
 	call NamingScreen_StoreEntry
@@ -431,7 +439,12 @@ NamingScreenJoypadLoop:
 	ret
 
 .upper
+	ld a, [wOptions3]
+	bit QWERTY_KEYBOARD_F, a
 	ld de, NameInputUpper
+	jr z, .ready
+	ld de, NameInputUpperQwerty
+.ready
 	jp NamingScreen_ApplyTextInputMode
 
 .GetCursorPosition:
@@ -533,10 +546,9 @@ NamingScreen_AnimateCursor:
 	jr nz, .left
 	ld a, [hl]
 	and D_RIGHT
-	jr nz, .right
-	ret
+	ret z
 
-.right
+; right
 	call NamingScreen_GetCursorPosition
 	and a
 	jr nz, .asm_11ab7
@@ -805,7 +817,7 @@ LoadNamingScreenGFX:
 	ldh [hSCX], a
 	ld [wGlobalAnimXOffset], a
 	ld [wJumptableIndex], a
-	ld [wcf64], a
+	ld [wNamingScreenLetterCase], a
 	ldh [hBGMapMode], a
 	ld [wNamingScreenCurNameLength], a
 	ld a, $7
@@ -913,7 +925,11 @@ INCBIN "gfx/icons/mail2.2bpp.lz"
 	hlcoord 1, 1
 	lb bc, 4, SCREEN_WIDTH - 2
 	call ClearBox
+	ld a, [wOptions3]
+	bit QWERTY_KEYBOARD_F, a
 	ld de, MailEntry_Uppercase
+	jr z, .PlaceMailCharset
+	ld de, MailEntryQwerty_Uppercase
 
 .PlaceMailCharset:
 	hlcoord 1, 7
@@ -1067,16 +1083,25 @@ INCBIN "gfx/icons/mail2.2bpp.lz"
 	ret
 
 .select
-	ld hl, wcf64
+	ld hl, wNamingScreenLetterCase
 	ld a, [hl]
 	xor $1
 	ld [hl], a
 	jr nz, .switch_to_lowercase
+	ld a, [wOptions3]
+	bit QWERTY_KEYBOARD_F, a
 	ld de, MailEntry_Uppercase
-	jp .PlaceMailCharset
+	jr z, .ready
+	ld de, MailEntryQwerty_Uppercase
+	jr .ready
 
 .switch_to_lowercase
+	ld a, [wOptions3]
+	bit QWERTY_KEYBOARD_F, a
 	ld de, MailEntry_Lowercase
+	jr z, .ready
+	ld de, MailEntryQwerty_Lowercase
+.ready
 	jp .PlaceMailCharset
 
 ; called from engine/sprite_anims.asm
@@ -1134,10 +1159,9 @@ ComposeMail_AnimateCursor:
 	jr nz, .left
 	ld a, [hl]
 	and D_RIGHT
-	jr nz, .right
-	ret
+	ret z
 
-.right
+; right
 	call ComposeMail_GetCursorPosition
 	and a
 	jr nz, .case_del_done_right

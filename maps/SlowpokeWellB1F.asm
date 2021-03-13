@@ -17,8 +17,8 @@ SlowpokeWellB1F_MapScriptHeader:
 	object_event  5,  6, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, GenericTrainerGruntM2, EVENT_SLOWPOKE_WELL_ROCKETS
 	object_event 10,  4, SPRITE_ROCKET_GIRL, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 4, GenericTrainerGruntF1, EVENT_SLOWPOKE_WELL_ROCKETS
 	object_event  0, 17, SPRITE_KURT, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, end, NULL, EVENT_SLOWPOKE_WELL_KURT
-	object_event  7,  4, SPRITE_SLOWPOKETAIL, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, SlowpokeScript_0x5a681, EVENT_SLOWPOKE_WELL_SLOWPOKES
-	object_event  6,  2, SPRITE_SLOWPOKETAIL, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, OBJECTTYPE_POKEMON, SLOWPOKE, UnknownText_0x5ac61, EVENT_SLOWPOKE_WELL_SLOWPOKES
+	object_event  7,  4, SPRITE_SLOWPOKETAIL, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, SlowpokeWellB1FSlowpokeWithMailScript, EVENT_SLOWPOKE_WELL_SLOWPOKES
+	object_event  6,  2, SPRITE_SLOWPOKETAIL, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, OBJECTTYPE_POKEMON, SLOWPOKE, SlowpokeWellB1FTaillessSlowpokeText, EVENT_SLOWPOKE_WELL_SLOWPOKES
 	strengthboulder_event  3, 2
 	itemball_event 10,  3, SUPER_POTION, 1, EVENT_SLOWPOKE_WELL_B1F_SUPER_POTION
 
@@ -105,13 +105,13 @@ GenericTrainerGruntF1:
 	line "selling them?"
 	done
 
-SlowpokeScript_0x5a681:
+SlowpokeWellB1FSlowpokeWithMailScript:
 	faceplayer
 	opentext
 	cry SLOWPOKE
-	writetext UnknownText_0x5abcb
+	writetext SlowpokeWellB1FSlowpokeWithMailText
 	yesorno
-	iftrue_jumpopenedtext UnknownText_0x5ac09
+	iftrue_jumpopenedtext SlowpokeWellB1FSlowpokeMailText
 	endtext
 
 KurtSlowpokeWellVictoryMovementData:
@@ -224,7 +224,7 @@ GruntF1BeatenText:
 	text "You rotten brat!"
 	done
 
-UnknownText_0x5abcb:
+SlowpokeWellB1FSlowpokeWithMailText:
 	text "A Slowpoke with"
 	line "its tail cut off…"
 
@@ -232,7 +232,7 @@ UnknownText_0x5abcb:
 	line "Read it?"
 	done
 
-UnknownText_0x5ac09:
+SlowpokeWellB1FSlowpokeMailText:
 	text "<PLAYER> read the"
 	line "Mail."
 
@@ -245,7 +245,7 @@ UnknownText_0x5ac09:
 	para "Love, Dad"
 	done
 
-UnknownText_0x5ac61:
+SlowpokeWellB1FTaillessSlowpokeText:
 	text "A Slowpoke with"
 	line "its tail cut off…"
 	done

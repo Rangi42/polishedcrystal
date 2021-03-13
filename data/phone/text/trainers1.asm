@@ -1,68 +1,68 @@
-UnknownText_0x1b4dc5:
+JackAnswerPhoneText:
 	text "Hello. This is"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "…"
 
 	para "Good morning,"
 	line "<PLAYER>!"
 	done
 
-UnknownText_0x1b4ded:
+JackAnswerPhoneDayText:
 	text "Hello. This is"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "…"
 
 	para "How's it going,"
 	line "<PLAYER>?"
 	done
 
-UnknownText_0x1b4e16:
+JackAnswerPhoneNiteText:
 	text "Hello. This is"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "…"
 
 	para "Good evening,"
 	line "<PLAYER>!"
 	done
 
-UnknownText_0x1b4e3e:
+JackGreetText:
 	text "<PLAYER>, good"
 	line "morning!"
 
 	para "It's me, "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 	line "How are you doing?"
 	done
 
-UnknownText_0x1b4e72:
+JackGreetDayText:
 	text "<PLAYER>, howdy!"
 
 	para "It's me, "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 	line "Isn't it nice out?"
 	done
 
-UnknownText_0x1b4e9e:
+JackGreetNiteText:
 	text "<PLAYER>, good"
 	line "evening!"
 
 	para "It's me, "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 	line "Got a minute?"
 	done
 
-UnknownText_0x1b4ecd:
+JackGenericText:
 	text "How are your"
 	line "#mon doing?"
 
 	para "My "
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text " is"
 	line "so curious, it's a"
 
@@ -70,136 +70,136 @@ UnknownText_0x1b4ecd:
 	line "it's like me…"
 	done
 
-UnknownText_0x1b4f21:
+BeverlyAnswerPhoneText:
 	text "Hello, this is"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 
 	para "Oh! Good morning,"
 	line "<PLAYER>."
 	done
 
-UnknownText_0x1b4f4d:
+BeverlyAnswerPhoneDayText:
 	text "Hello, this is"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 
 	para "Oh! Good day,"
 	line "<PLAYER>."
 	done
 
-UnknownText_0x1b4f75:
+BeverlyAnswerPhoneNiteText:
 	text "Hello, this is"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 
 	para "Oh! Good evening,"
 	line "<PLAYER>."
 	done
 
-UnknownText_0x1b4fa1:
+BeverlyGreetText:
 	text "Hello, <PLAYER>."
 	line "Good morning."
 
 	para "This is "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 	line "Were you asleep?"
 	done
 
-UnknownText_0x1b4fda:
+BeverlyGreetDayText:
 	text "Hi, <PLAYER>."
 	line "This is "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 
 	para "How are you doing?"
 	done
 
-UnknownText_0x1b5004:
+BeverlyGreetNiteText:
 	text "Hi, <PLAYER>."
 	line "This is "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 
 	para "Were you awake?"
 	done
 
-UnknownText_0x1b502b:
+BeverlyGenericText:
 	text "Keeping your"
 	line "#mon happy?"
 
 	para "My "
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text " is"
 	line "healthy. It eats a"
 	cont "lot every day."
 	done
 
-UnknownText_0x1b5073:
+HueyAnswerPhoneText:
 	text "Yeah, this is"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 
 	para "Huh? What's up,"
 	line "<PLAYER>?"
 	done
 
-UnknownText_0x1b509b:
+HueyAnswerPhoneDayText:
 	text "Yeah, this is"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 
 	para "Huh? What's up"
 	line "<PLAYER>?"
 	done
 
-UnknownText_0x1b50c2:
+HueyAnswerPhoneNiteText:
 	text "Yeah, this is"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 
 	para "Huh? What's up"
 	line "<PLAYER>?"
 	done
 
-UnknownText_0x1b50e9:
+HueyGreetText:
 	text "Yo, <PLAYER>!"
 	line "You awake?"
 
 	para "It's me, "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "!"
 	line "How's it going?"
 	done
 
-UnknownText_0x1b511a:
+HueyGreetDayText:
 	text "Yo, <PLAYER>! You"
 	line "free right now?"
 
 	para "It's me, "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "!"
 	line "How's it going?"
 	done
 
-UnknownText_0x1b5154:
+HueyGreetNiteText:
 	text "Yo, <PLAYER>!"
 	line "Were you asleep?"
 
 	para "It's me, "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "!"
 	line "How's it going?"
 	done
 
-UnknownText_0x1b518b:
+UnknownGenericText:
 	text "How are your"
 	line "#mon doing?"
 
@@ -207,7 +207,7 @@ UnknownText_0x1b518b:
 	line "bit too energetic."
 
 	para ""
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text ","
 	line "especially."
 
@@ -219,9 +219,9 @@ UnknownText_0x1b518b:
 	line "bit much for me!"
 	done
 
-UnknownText_0x1b522b:
+UnknownTougherThanEverText:
 	text "My "
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text "'s"
 	line "looking tougher"
 	cont "than ever."
@@ -230,70 +230,70 @@ UnknownText_0x1b522b:
 	line "tougher than me!"
 	done
 
-UnknownText_0x1b5270:
+GavenAnswerPhoneText:
 	text "Hello, this is"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text " speaking…"
 
 	para "Hi, <PLAYER>!"
 	line "Good morning!"
 	done
 
-UnknownText_0x1b52a5:
+GavenAnswerPhoneDayText:
 	text "Hello, this is"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text " speaking…"
 
 	para "Hi, <PLAYER>!"
 	done
 
-UnknownText_0x1b52cc:
+GavenAnswerPhoneNiteText:
 	text "Hello, this is"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text " speaking…"
 
 	para "Hi, <PLAYER>!"
 	line "Good evening!"
 	done
 
-UnknownText_0x1b5301:
+GavenGreetText:
 	text "<PLAYER>, good"
 	line "morning!"
 
 	para "It's me, "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 	line "How are you doing?"
 	done
 
-UnknownText_0x1b5335:
+GavenGreetDayText:
 	text "Hi, <PLAYER>!"
 
 	para "It's me, "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 	line "How are you doing?"
 	done
 
-UnknownText_0x1b535f:
+GavenGreetNiteText:
 	text "<PLAYER>, good"
 	line "evening!"
 
 	para "It's me, "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 	line "How are you doing?"
 	done
 
-UnknownText_0x1b5393:
+GavenGenericText:
 	text "How are your"
 	line "#mon doing?"
 
 	para "My "
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text "'s"
 	line "doing as great as"
 	cont "ever."
@@ -303,68 +303,68 @@ UnknownText_0x1b5393:
 	cont "Champs!"
 	done
 
-UnknownText_0x1b53f7:
+BethAnswerPhoneText:
 	text "Hello, this is"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 	para "Oh, <PLAYER>."
 	line "Good morning."
 	para ""
 	done
 
-UnknownText_0x1b5424:
+BethAnswerPhoneDayText:
 	text "Hello, this is"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 
 	para "Oh. Hi, <PLAYER>."
 	done
 
-UnknownText_0x1b5446:
+BethAnswerPhoneNiteText:
 	text "Hello, this is"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 
 	para "Oh, <PLAYER>."
 	line "Good evening."
 	done
 
-UnknownText_0x1b5472:
+BethGreetText:
 	text "Good morning,"
 	line "<PLAYER>!"
 
 	para "This is "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 	line "Were you sleeping?"
 	done
 
-UnknownText_0x1b54a6:
+BethGreetDayText:
 	text "<PLAYER>, hi!"
 	line "This is "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 
 	para "Do you have some"
 	line "time?"
 	done
 
-UnknownText_0x1b54d4:
+BethGreetNiteText:
 	text "Hi, <PLAYER>."
 	line "Good evening."
 
 	para "This is "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 
 	para "I hope you were"
 	line "awake."
 	done
 
-UnknownText_0x1b5510:
+BethGenericText:
 	text "Are you the kind"
 	line "of person who goes"
 
@@ -381,68 +381,68 @@ UnknownText_0x1b5510:
 	line "#mon trainer."
 	done
 
-UnknownText_0x1b55ae:
+JoseAnswerPhoneText:
 	text "Hello, this is"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "…"
 
 	para "Oh, <PLAYER>?"
 	line "Good morning!"
 	done
 
-UnknownText_0x1b55da:
+JoseAnswerPhoneDayText:
 	text "Hello, this is"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "…"
 
 	para "Oh, <PLAYER>? Hi!"
 	done
 
-UnknownText_0x1b55fc:
+JoseAnswerPhoneNiteText:
 	text "Hello, this is"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "…"
 
 	para "Oh, <PLAYER>?"
 	line "Good evening!"
 	done
 
-UnknownText_0x1b5628:
+JoseGreetText:
 	text "Oh, <PLAYER>?"
 
 	para "Tweet! Yeah, it's"
 	line "me, "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 	done
 
-UnknownText_0x1b564c:
+JoseGreetDayText:
 	text "Oh, <PLAYER>?"
 
 	para "Tweet! Yeah, it's"
 	line "me, "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 	done
 
-UnknownText_0x1b5670:
+JoseGreetNiteText:
 	text "Oh, <PLAYER>?"
 
 	para "Tweet! Yeah, it's"
 	line "me, "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 	done
 
-UnknownText_0x1b5694:
+JoseGenericText:
 	text "Are your #mon"
 	line "still cooking?"
 
 	para "My "
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text " has"
 	line "too much energy."
 
@@ -451,64 +451,64 @@ UnknownText_0x1b5694:
 	cont "for a while."
 	done
 
-UnknownText_0x1b5702:
+ReenaAnswerPhoneText:
 	text "Hello, this is"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "…"
 
 	para "Oh. Hi, <PLAYER>."
 	line "What's up?"
 	done
 
-UnknownText_0x1b572e:
+ReenaAnswerPhoneDayText:
 	text "Hello, this is"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "…"
 
 	para "Oh, hi, <PLAYER>,"
 	line "what's up?"
 	done
 
-UnknownText_0x1b575a:
+ReenaAnswerPhoneNiteText:
 	text "Hello, this is"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "…"
 
 	para "Oh, hi, <PLAYER>,"
 	line "what's up?"
 	done
 
-UnknownText_0x1b5786:
+ReenaGreetText:
 	text "You're slow! Hurry"
 	line "up and answer!"
 
 	para "It's me, "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "!"
 	done
 
-UnknownText_0x1b57b7:
+ReenaGreetDayText:
 	text "You're slow! Hurry"
 	line "up and answer!"
 
 	para "It's me, "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "!"
 	done
 
-UnknownText_0x1b57e8:
+ReenaGreetNiteText:
 	text "You're slow! Hurry"
 	line "up and answer!"
 
 	para "It's me, "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "!"
 	done
 
-UnknownText_0x1b5819:
+ReenaGenericText:
 	text "Hey, how are your"
 	line "#mon doing?"
 
@@ -524,69 +524,69 @@ UnknownText_0x1b5819:
 	line "is that?"
 	done
 
-UnknownText_0x1b589a:
+JoeyAnswerPhoneText:
 	text "Hi, "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text " here!"
 
 	para "Oh, <PLAYER>? You"
 	line "doing well?"
 	done
 
-UnknownText_0x1b58c2:
+JoeyAnswerPhoneDayText:
 	text "Hi, "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text " here!"
 
 	para "Oh, <PLAYER>? You"
 	line "doing well?"
 	done
 
-UnknownText_0x1b58ea:
+JoeyAnswerPhoneNiteText:
 	text "Hi, "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text " here!"
 
 	para "Oh, <PLAYER>? You"
 	line "doing well?"
 	done
 
-UnknownText_0x1b5912:
+JoeyGreetText:
 	text "Yo, <PLAYER>!"
 	line "How're you doing?"
 
 	para "This is "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text ","
 	line "got a minute?"
 	done
 
-UnknownText_0x1b5948:
+JoeyGreetDayText:
 	text "Yo, <PLAYER>! How's"
 	line "it going?"
 
 	para "This is "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 	line "Got a minute?"
 	done
 
-UnknownText_0x1b597c:
+JoeyGreetNiteText:
 	text "Yo, <PLAYER>!"
 	line "How're you doing?"
 
 	para "This is "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text ","
 	line "got a minute?"
 	done
 
-UnknownText_0x1b59b2:
+JoeyGenericText:
 	text "How are your"
 	line "#mon doing?"
 
 	para "My "
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text "'s"
 	line "raring to go, just"
 	cont "like always."
@@ -598,65 +598,65 @@ UnknownText_0x1b59b2:
 	line "trainer with it!"
 	done
 
-UnknownText_0x1b5a3b:
+WadeAnswerPhoneText:
 	text "Hello? This is"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text " speaking."
 
 	para "Oh. Hi, <PLAYER>!"
 	line "Good morning!"
 	done
 
-UnknownText_0x1b5a74:
+WadeAnswerPhoneDayText:
 	text "Hello? This is"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text " speaking."
 
 	para "Oh, hi, <PLAYER>!"
 	done
 
-UnknownText_0x1b5a9f:
+WadeAnswerPhoneNiteText:
 	text "Hello? This is"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text " speaking."
 
 	para "Oh, hi, <PLAYER>!"
 	line "Good evening!"
 	done
 
-UnknownText_0x1b5ad8:
+WadeGreetText:
 	text "<PLAYER>, good"
 	line "morning!"
 
 	para "It's me, "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 	line "Isn't it nice out?"
 	done
 
-UnknownText_0x1b5b0b:
+WadeGreetDayText:
 	text "<PLAYER>, howdy!"
 
 	para "It's me, "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 	line "Isn't it nice out?"
 	done
 
-UnknownText_0x1b5b37:
+WadeGreetNiteText:
 	text "Good evening,"
 	line "<PLAYER>!"
 
 	para "It's me, "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 	line "Were you awake?"
 	done
 
-UnknownText_0x1b5b68:
+WadeGenericText:
 	text "How are your"
 	line "#mon doing?"
 
@@ -668,7 +668,7 @@ UnknownText_0x1b5b68:
 
 	para "Of all my #mon,"
 	line ""
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text " is the"
 	cont "hardest to handle."
 
@@ -676,7 +676,7 @@ UnknownText_0x1b5b68:
 	line "exhausting."
 	done
 
-UnknownText_0x1b5c10:
+RalphAnswerPhoneText:
 	text "Yes? Ah, <PLAYER>."
 
 	para "You're courteous"
@@ -686,7 +686,7 @@ UnknownText_0x1b5c10:
 	line "call on the phone."
 	done
 
-UnknownText_0x1b5c63:
+RalphAnswerPhoneDayText:
 	text "Yes? Ah, <PLAYER>."
 
 	para "You're courteous"
@@ -696,7 +696,7 @@ UnknownText_0x1b5c63:
 	line "call on the phone."
 	done
 
-UnknownText_0x1b5cb6:
+RalphAnswerPhoneNiteText:
 	text "Yes? Ah, <PLAYER>."
 
 	para "You're courteous"
@@ -706,28 +706,28 @@ UnknownText_0x1b5cb6:
 	line "call on the phone."
 	done
 
-UnknownText_0x1b5d09:
+RalphGreetText:
 	text "Hiya, it's Uncle"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 	done
 
-UnknownText_0x1b5d21:
+RalphGreetDayText:
 	text "Hiya, it's Uncle"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 	done
 
-UnknownText_0x1b5d39:
+RalphGreetNiteText:
 	text "Hiya, it's Uncle"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 	done
 
-UnknownText_0x1b5d51:
+RalphGenericText:
 	text "Are you taking"
 	line "good care of your"
 
@@ -736,64 +736,64 @@ UnknownText_0x1b5d51:
 	cont "partners!"
 	done
 
-UnknownText_0x1b5d9f:
+LizAnswerPhoneText:
 	text "Hello, "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	line "speaking."
 
 	para "Oh, <PLAYER>."
 	line "Good morning."
 	done
 
-UnknownText_0x1b5dcc:
+LizAnswerPhoneDayText:
 	text "Hello, "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	line "speaking."
 
 	para "Oh, <PLAYER>."
 	line "How are you?"
 	done
 
-UnknownText_0x1b5df8:
+LizAnswerPhoneNiteText:
 	text "Hello, "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	line "speaking."
 
 	para "Oh, <PLAYER>."
 	line "Good evening."
 	done
 
-UnknownText_0x1b5e25:
+LizGreetText:
 	text "Good morning,"
 	line "<PLAYER>."
 
 	para "This is "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 	line "Were you sleeping?"
 	done
 
-UnknownText_0x1b5e59:
+LizGreetDayText:
 	text "Hi, <PLAYER>."
 	line "This is "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 
 	para "How are things"
 	line "going for you?"
 	done
 
-UnknownText_0x1b5e8e:
+LizGreetNiteText:
 	text "Good evening,"
 	line "<PLAYER>."
 
 	para "This is "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 	line "Are you awake?"
 	done
 
-UnknownText_0x1b5ebe:
+LizGenericText:
 	text "I had some time,"
 	line "so I called you."
 
@@ -802,7 +802,7 @@ UnknownText_0x1b5ebe:
 
 	para "Me, I take my"
 	line ""
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text " to the"
 
 	para "#mon Center in"
@@ -815,18 +815,18 @@ UnknownText_0x1b5ebe:
 	line "the receptionist!"
 	done
 
-UnknownText_0x1b5f7a:
+AnthonyAnswerPhoneText:
 	text "Yeah, "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text " the"
 	line "Hiker here."
 
 	para "Ah, <PLAYER>!"
 	done
 
-UnknownText_0x1b5f9e:
+AnthonyAnswerPhoneDayText:
 	text "Yeah, "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text " the"
 	line "Hiker here."
 
@@ -834,9 +834,9 @@ UnknownText_0x1b5f9e:
 	line "right?"
 	done
 
-UnknownText_0x1b5fc9:
+AnthonyAnswerPhoneNiteText:
 	text "Yeah, "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text " the"
 	line "Hiker here."
 
@@ -844,38 +844,38 @@ UnknownText_0x1b5fc9:
 	line "it?"
 	done
 
-UnknownText_0x1b5ff6:
+AnthonyGreetText:
 	text "Yo, <PLAYER>?"
 
 	para "This is "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	line "the Hiker!"
 	done
 
-UnknownText_0x1b6017:
+AnthonyGreetDayText:
 	text "Hey, is this"
 	line "<PLAYER>?"
 
 	para "This is "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	line "the Hiker!"
 	done
 
-UnknownText_0x1b6041:
+AnthonyGreetNiteText:
 	text "<PLAYER>, you still"
 	line "awake?"
 
 	para "This is "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	line "the Hiker!"
 	done
 
-UnknownText_0x1b606f:
+AnthonyGenericText:
 	text "Are your #mon"
 	line "as feisty as ever?"
 
 	para "My "
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text " and"
 	line "me--we have energy"
 
@@ -886,64 +886,64 @@ UnknownText_0x1b606f:
 	line "all our energy."
 	done
 
-UnknownText_0x1b60f5:
+ToddAnswerPhoneText:
 	text "Yes? This is"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text " speaking."
 
 	para "Hey, <PLAYER>!"
 	done
 
-UnknownText_0x1b611b:
+ToddAnswerPhoneDayText:
 	text "Yes? This is"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text " speaking."
 
 	para "This must be"
 	line "<PLAYER>."
 	done
 
-UnknownText_0x1b6149:
+ToddAnswerPhoneNiteText:
 	text "Yes? This is"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text " speaking."
 
 	para "Ah, <PLAYER>!"
 	done
 
-UnknownText_0x1b616e:
+ToddGreetText:
 	text "Hello, this is"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 
 	para "<PLAYER>, right?"
 	done
 
-UnknownText_0x1b618f:
+ToddGreetDayText:
 	text "Hello, this is"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 
 	para "<PLAYER>, what are"
 	line "you doing?"
 	done
 
-UnknownText_0x1b61bd:
+ToddGreetNiteText:
 	text "Hello, this is"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 
 	para "<PLAYER>, sorry to"
 	line "call you so late."
 	done
 
-UnknownText_0x1b61f2:
+ToddGenericText:
 	text "How do you raise"
 	line "your #mon?"
 
@@ -957,238 +957,238 @@ UnknownText_0x1b61f2:
 	line "with items."
 	done
 
-UnknownText_0x1b626a:
+GinaAnswerPhoneText:
 	text "Hello? This is"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "…"
 
 	para "Oh, <PLAYER>!"
 	line "Good morning!"
 	done
 
-UnknownText_0x1b6296:
+GinaAnswerPhoneDayText:
 	text "Hello? This is"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "…"
 
 	para "Oh, <PLAYER>!"
 	line "Hi, how are you?"
 	done
 
-UnknownText_0x1b62c5:
+GinaAnswerPhoneNiteText:
 	text "Hello? This is"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "…"
 
 	para "Oh, <PLAYER>!"
 	line "Good evening!"
 	done
 
-UnknownText_0x1b62f1:
+GinaGreetText:
 	text "<PLAYER>?"
 
 	para "It's "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 	line "Good morning!"
 	done
 
-UnknownText_0x1b630e:
+GinaGreetDayText:
 	text "<PLAYER>?"
 
 	para "It's "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text ". Is"
 	line "this a bad time?"
 	done
 
-UnknownText_0x1b6331:
+GinaGreetNiteText:
 	text "<PLAYER>?"
 
 	para "It's "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 	line "Got time to chat?"
 	done
 
-UnknownText_0x1b6352:
+GinaGenericText:
 	text "Are your #mon"
 	line "still tough?"
 
 	para "I train every day"
 	line "with "
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text "."
 	done
 
-UnknownText_0x1b638c:
+IrwinAnswerPhoneText:
 	text "Hello? "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	line "here…"
 
 	para "Hey, <PLAYER>!"
 	done
 
-UnknownText_0x1b63a8:
+IrwinAnswerPhoneDayText:
 	text "Hello? "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	line "here…"
 
 	para "Wow, <PLAYER>!"
 	done
 
-UnknownText_0x1b63c4:
+IrwinAnswerPhoneNiteText:
 	text "Hello? "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	line "here…"
 
 	para "Yippee, <PLAYER>!"
 	done
 
-UnknownText_0x1b63e3:
+IrwinGreetText:
 	text "Uh, hello."
 	line "<PLAYER>?"
 
 	para "It's your pal,"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "!"
 	done
 
-UnknownText_0x1b6407:
+IrwinGreetDayText:
 	text "Uh, hello,"
 	line "<PLAYER>?"
 
 	para "It's your buddy"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "!"
 	done
 
-UnknownText_0x1b642c:
+IrwinGreetNiteText:
 	text "Uh, hello,"
 	line "<PLAYER>?"
 
 	para "It's your sidekick"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "!"
 	done
 
-UnknownText_0x1b6454:
+ArnieAnswerPhoneText:
 	text "Yeah, hello."
 	line "This is "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 
 	para "…Huh, <PLAYER>? Yo!"
 	done
 
-UnknownText_0x1b647e:
+ArnieAnswerPhoneDayText:
 	text "Yeah, hello, you"
 	line "got "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 
 	para "…Huh, <PLAYER>? Yo!"
 	done
 
-UnknownText_0x1b64a8:
+ArnieAnswerPhoneNiteText:
 	text "Yeah, hello, you"
 	line "got "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 
 	para "…Huh, <PLAYER>? Yo!"
 	done
 
-UnknownText_0x1b64d2:
+ArnieGreetText:
 	text "Yeah, hello?"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text " calling."
 
 	para "What are you up"
 	line "to, <PLAYER>?"
 	done
 
-UnknownText_0x1b6506:
+ArnieGreetDayText:
 	text "Yeah, hello?"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text " calling."
 
 	para "Where are you now,"
 	line "<PLAYER>?"
 	done
 
-UnknownText_0x1b6539:
+ArnieGreetNiteText:
 	text "Yeah, hello?"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text " calling."
 
 	para "Are you awake now,"
 	line "<PLAYER>?"
 	done
 
-UnknownText_0x1b656c:
+ArnieGenericText:
 	text "I bet your #mon"
 	line "are a lot stronger"
 	cont "than before."
 	done
 
-UnknownText_0x1b659d:
+AlanAnswerPhoneText:
 	text "Yup, it's "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "!"
 
 	para "Is this <PLAYER>?"
 	line "Good morning!"
 	done
 
-UnknownText_0x1b65c7:
+AlanAnswerPhoneDayText:
 	text "Yup, it's "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "!"
 
 	para "Is that <PLAYER>?"
 	done
 
-UnknownText_0x1b65e3:
+AlanAnswerPhoneNiteText:
 	text "Yup, it's "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "!"
 
 	para "Is that <PLAYER>?"
 	line "Good evening!"
 	done
 
-UnknownText_0x1b660d:
+AlanGreetText:
 	text "Hello! It's me,"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "!"
 	done
 
-UnknownText_0x1b6624:
+AlanGreetDayText:
 	text "Hello! It's me,"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "!"
 	done
 
-UnknownText_0x1b663b:
+AlanGreetNiteText:
 	text "Hello! It's me,"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "!"
 	done
 
-UnknownText_0x1b6652:
+AlanGenericText:
 	text "<PLAYER>, are you"
 	line "raising your"
 	cont "#mon properly?"
@@ -1201,18 +1201,18 @@ UnknownText_0x1b6652:
 	cont "love and care."
 	done
 
-UnknownText_0x1b66c8:
+DanaAnswerPhoneText:
 	text "Hi, "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text " on the"
 	line "line."
 
 	para "Hey! It's <PLAYER>!"
 	done
 
-UnknownText_0x1b66ec:
+DanaAnswerPhoneDayText:
 	text "Hi, "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text " on the"
 	line "line."
 
@@ -1220,9 +1220,9 @@ UnknownText_0x1b66ec:
 	line "It's <PLAYER>!"
 	done
 
-UnknownText_0x1b6713:
+DanaAnswerPhoneNiteText:
 	text "Hi, "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text " on the"
 	line "line."
 
@@ -1230,36 +1230,36 @@ UnknownText_0x1b6713:
 	line "What's up?"
 	done
 
-UnknownText_0x1b6738:
+DanaGreetText:
 	text "Uh, <PLAYER>?"
 
 	para "It's me!"
 	line "It's me, "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "!"
 	done
 
-UnknownText_0x1b6757:
+DanaGreetDayText:
 	text "Uh, <PLAYER>?"
 
 	para "It's me!"
 	line "It's me, "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "!"
 	done
 
-UnknownText_0x1b6776:
+DanaGreetNiteText:
 	text "Uh, <PLAYER>?"
 
 	para "It's me!"
 	line "It's me, "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "!"
 	done
 
-UnknownText_0x1b6795:
+DanaGenericText:
 	text "My "
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text " is"
 	line "so full of energy,"
 
@@ -1270,67 +1270,67 @@ UnknownText_0x1b6795:
 	line "#mon doing?"
 	done
 
-UnknownText_0x1b67e2:
+ChadAnswerPhoneText:
 	text "Hello, this is"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "…"
 
 	para "Hi, <PLAYER>!"
 	line "Good morning!"
 	done
 
-UnknownText_0x1b680e:
+ChadAnswerPhoneDayText:
 	text "Hello, this is"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "…"
 
 	para "Hi, <PLAYER>, good"
 	line "day!"
 	done
 
-UnknownText_0x1b6836:
+ChadAnswerPhoneNiteText:
 	text "Hello, this is"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "…"
 
 	para "Hi, <PLAYER>, good"
 	line "evening!"
 	done
 
-UnknownText_0x1b6862:
+ChadGreetText:
 	text "Hi, <PLAYER>, good"
 	line "morning!"
 
 	para "It's "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 	line "How are you?"
 	done
 
-UnknownText_0x1b6890:
+ChadGreetDayText:
 	text "Hi, <PLAYER>, good"
 	line "day!"
 
 	para "It's "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 	line "How are you?"
 	done
 
-UnknownText_0x1b68ba:
+ChadGreetNiteText:
 	text "Hi, <PLAYER>, good"
 	line "evening!"
 
 	para "It's "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 	line "How are you?"
 	done
 
-UnknownText_0x1b68e8:
+ChadGenericText:
 	text "How are your"
 	line "#mon doing?"
 
@@ -1349,63 +1349,63 @@ UnknownText_0x1b68e8:
 	cont "be a big surprise."
 	done
 
-UnknownText_0x1b69a8:
+DerekAnswerPhoneText:
 	text "Hi, <PLAYER>?"
 
 	para "Good morning pika."
 	line "What's up pika?"
 	done
 
-UnknownText_0x1b69d2:
+DerekAnswerPhoneDayText:
 	text "Hi, <PLAYER>?"
 
 	para "Good day pika,"
 	line "what's up pika?"
 	done
 
-UnknownText_0x1b69f8:
+DerekAnswerPhoneNiteText:
 	text "Hi, <PLAYER>?"
 
 	para "Good evening pika,"
 	line "what's up pika?"
 	done
 
-UnknownText_0x1b6a22:
+DerekGreetText:
 	text "<PLAYER> pika, good"
 	line "morning!"
 
 	para "It's "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text ", how"
 	line "pika are you?"
 	done
 
-UnknownText_0x1b6a56:
+DerekGreetDayText:
 	text "<PLAYER> pika, good"
 	line "pika day!"
 
 	para "It's "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text ", how"
 	line "pika are you?"
 	done
 
-UnknownText_0x1b6a8b:
+DerekGreetNiteText:
 	text "<PLAYER> pika, good"
 	line "evening!"
 
 	para "It's "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text ". Were"
 	line "you pika awake?"
 	done
 
-UnknownText_0x1b6ac2:
+DerekGenericText:
 	text "You have to hear"
 	line "this! My lovable"
 
 	para ""
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text " looked"
 	line "at me and grinned!"
 
@@ -1414,67 +1414,67 @@ UnknownText_0x1b6ac2:
 	cont "together as one!"
 	done
 
-UnknownText_0x1b6b39:
+TullyAnswerPhoneText:
 	text "Hello, this is"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "…"
 
 	para "Oh, Good morning,"
 	line "<PLAYER>."
 	done
 
-UnknownText_0x1b6b65:
+TullyAnswerPhoneDayText:
 	text "Hello, this is"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "…"
 
 	para "That voice…"
 	line "<PLAYER>, right?"
 	done
 
-UnknownText_0x1b6b92:
+TullyAnswerPhoneNiteText:
 	text "Hello, this is"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "…"
 
 	para "This must be"
 	line "<PLAYER>!"
 	done
 
-UnknownText_0x1b6bb9:
+TullyGreetText:
 	text "Hello!"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text " here…"
 
 	para "Good morning! The"
 	line "weather's great!"
 	done
 
-UnknownText_0x1b6bef:
+TullyGreetDayText:
 	text "Hello!"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text " here…"
 
 	para "What a perfect day"
 	line "for fishing!"
 	done
 
-UnknownText_0x1b6c23:
+TullyGreetNiteText:
 	text "Hello!"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text " here…"
 
 	para "It's a great night"
 	line "for fishing!"
 	done
 
-UnknownText_0x1b6c56:
+TullyGenericText:
 	text "How's your trip"
 	line "coming along?"
 
@@ -1482,64 +1482,64 @@ UnknownText_0x1b6c56:
 	line "about my fishing!"
 	done
 
-UnknownText_0x1b6c96:
+BrentAnswerPhoneText:
 	text "Yes? "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text " here…"
 
 	para "Ah, <PLAYER>. What"
 	line "can I do for you?"
 	done
 
-UnknownText_0x1b6cc6:
+BrentAnswerPhoneDayText:
 	text "Yes? "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text " here…"
 
 	para "Ah, <PLAYER>. What"
 	line "can I do for you?"
 	done
 
-UnknownText_0x1b6cf6:
+BrentAnswerPhoneNiteText:
 	text "Yes? "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text " here…"
 
 	para "Ah, <PLAYER>. What"
 	line "can I do for you?"
 	done
 
-UnknownText_0x1b6d26:
+BrentGreetText:
 	text "Hiya, <PLAYER>. How"
 	line "are you doing?"
 
 	para "Hey! It's me,"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 	done
 
-UnknownText_0x1b6d57:
+BrentGreetDayText:
 	text "Hiya, <PLAYER>, how"
 	line "are you doing?"
 
 	para "Hey, it's me,"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 	done
 
-UnknownText_0x1b6d88:
+BrentGreetNiteText:
 	text "Hiya, <PLAYER>, how"
 	line "are you doing?"
 
 	para "Hey, it's me,"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 	done
 
-UnknownText_0x1b6db9:
+BrentGenericText:
 	text "Oh yeah, I saw you"
 	line "coming out of a"
 
@@ -1553,7 +1553,7 @@ UnknownText_0x1b6db9:
 	line "I'm impressed."
 
 	para "Heh, my "
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	line "is so tough, it"
 
 	para "doesn't need to go"
@@ -1561,63 +1561,63 @@ UnknownText_0x1b6db9:
 	cont "often. Heheh!"
 	done
 
-UnknownText_0x1b6e7c:
+TiffanyAnswerPhoneText:
 	text "Yes? This is"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 
 	para "Oh, <PLAYER>."
 	line "Good morning."
 	done
 
-UnknownText_0x1b6ea6:
+TiffanyAnswerPhoneDayText:
 	text "Yes? This is"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 
 	para "Oh, <PLAYER>."
 	line "Hello."
 	done
 
-UnknownText_0x1b6ec9:
+TiffanyAnswerPhoneNiteText:
 	text "Yes? This is"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 
 	para "Oh, <PLAYER>, good"
 	line "evening."
 	done
 
-UnknownText_0x1b6ef3:
+TiffanyGreetText:
 	text "Is this <PLAYER>?"
 
 	para "Good morning. This"
 	line "is "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 	done
 
-UnknownText_0x1b6f1c:
+TiffanyGreetDayText:
 	text "Is this <PLAYER>?"
 
 	para "Hi, it's "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 	done
 
-UnknownText_0x1b6f37:
+TiffanyGreetNiteText:
 	text "Is this <PLAYER>?"
 
 	para "Good evening. This"
 	line "is "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 	done
 
-UnknownText_0x1b6f60:
+TiffanyGenericText:
 	text "Are your #mon"
 	line "doing well?"
 
@@ -1629,7 +1629,7 @@ UnknownText_0x1b6f60:
 	line "too hard."
 
 	para "My "
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text " is"
 	line "cute and lively"
 
@@ -1640,10 +1640,10 @@ UnknownText_0x1b6f60:
 	line "every day."
 	done
 
-UnknownText_0x1b7019:
+VanceAnswerPhoneText:
 	text "Yes, hello?"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text " here!"
 
 	para "Morning, <PLAYER>!"
@@ -1652,10 +1652,10 @@ UnknownText_0x1b7019:
 	line "#mon?"
 	done
 
-UnknownText_0x1b7057:
+VanceAnswerPhoneDayText:
 	text "Yes, hello?"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text " here!"
 
 	para "Hi, <PLAYER>!"
@@ -1664,10 +1664,10 @@ UnknownText_0x1b7057:
 	line "#mon flying?"
 	done
 
-UnknownText_0x1b7092:
+VanceAnswerPhoneNiteText:
 	text "Yes, hello?"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text " here!"
 
 	para "Evening, <PLAYER>!"
@@ -1677,41 +1677,41 @@ UnknownText_0x1b7092:
 	line "see some action?"
 	done
 
-UnknownText_0x1b70e7:
+VanceGreetText:
 	text "Good morning,"
 	line "<PLAYER>!"
 
 	para "It's "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "!"
 	line "Good morning!"
 	done
 
-UnknownText_0x1b7112:
+VanceGreetDayText:
 	text "Hi, <PLAYER>!"
 
 	para "It's "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "!"
 	line "Remember me?"
 	done
 
-UnknownText_0x1b7132:
+VanceGreetNiteText:
 	text "Good evening,"
 	line "<PLAYER>!"
 
 	para "It's "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "!"
 	line "Are you free now?"
 	done
 
-UnknownText_0x1b7161:
+VanceGenericText:
 	text "Are you and your"
 	line "#mon fine?"
 
 	para "My "
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	line "looks like it will"
 
 	para "get tough enough"
@@ -1721,182 +1721,182 @@ UnknownText_0x1b7161:
 	line "#mon!"
 	done
 
-UnknownText_0x1b71d5:
+WiltonAnswerPhoneText:
 	text "Hello, you have"
 	line "reached "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "…"
 
 	para "Ah, <PLAYER>."
 	done
 
-UnknownText_0x1b71fc:
+WiltonAnswerPhoneDayText:
 	text "Hello, you have"
 	line "reached "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "…"
 
 	para "Ah, <PLAYER>, is"
 	line "it?"
 	done
 
-UnknownText_0x1b722a:
+WiltonAnswerPhoneNiteText:
 	text "Hello, you have"
 	line "reached "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "…"
 
 	para "Ah, if it isn't"
 	line "<PLAYER>."
 	done
 
-UnknownText_0x1b725c:
+WiltonGreetText:
 	text "Ah, it's "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "…"
 
 	para "Have you got a"
 	line "moment?"
 	done
 
-UnknownText_0x1b7283:
+WiltonGreetDayText:
 	text "Ah, it's "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "…"
 
 	para "Can you talk now?"
 	done
 
-UnknownText_0x1b72a5:
+WiltonGreetNiteText:
 	text "Ah, it's "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "…"
 
 	para "Sorry for calling"
 	line "so late."
 	done
 
-UnknownText_0x1b72d0:
+WiltonGenericText:
 	text "Have your #mon"
 	line "grown any?"
 
 	para "My "
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text " has"
 	line "grown quite a bit."
 	done
 
-UnknownText_0x1b730b:
-	text_from_ram wStringBuffer3
+KenjiAnswerPhoneText:
+	text_ram wStringBuffer3
 	text " here…"
 
 	para "<PLAYER>! Beautiful"
 	line "morning, hey?"
 	done
 
-UnknownText_0x1b7331:
-	text_from_ram wStringBuffer3
+KenjiAnswerPhoneDayText:
+	text_ram wStringBuffer3
 	text " here…"
 
 	para "<PLAYER>! Beautiful"
 	line "weather, hey?"
 	done
 
-UnknownText_0x1b7357:
-	text_from_ram wStringBuffer3
+KenjiAnswerPhoneNiteText:
+	text_ram wStringBuffer3
 	text " here…"
 
 	para "<PLAYER>! Beautiful"
 	line "moonlight, hey?"
 	done
 
-UnknownText_0x1b737f:
+KenjiGreetText:
 	text "Hey, <PLAYER>!"
 	line "This is "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "!"
 	done
 
-UnknownText_0x1b7397:
+KenjiGreetDayText:
 	text "Hey, <PLAYER>!"
 	line "This is "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "!"
 	done
 
-UnknownText_0x1b73af:
+KenjiGreetNiteText:
 	text "Hey, <PLAYER>!"
 	line "This is "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "!"
 	done
 
-UnknownText_0x1b73c7:
+ParryAnswerPhoneText:
 	text "Yup, yup!"
 	line "It's "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "!"
 
 	para "Hah, and here's"
 	line "<PLAYER>!"
 	done
 
-UnknownText_0x1b73ef:
+ParryAnswerPhoneDayText:
 	text "Yup, yup!"
 	line "It's "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "!"
 
 	para "Hah, and here's"
 	line "<PLAYER>!"
 	done
 
-UnknownText_0x1b7417:
+ParryAnswerPhoneNiteText:
 	text "Yup, yup!"
 	line "It's "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "!"
 
 	para "Hah, and here's"
 	line "<PLAYER>!"
 	done
 
-UnknownText_0x1b743f:
+ParryGreetText:
 	text "<PLAYER>, it's"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "!"
 
 	para "Have you had a"
 	line "proper breakfast?"
 	done
 
-UnknownText_0x1b746f:
+ParryGreetDayText:
 	text "<PLAYER>, it's"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "!"
 
 	para "Have you had a"
 	line "proper lunch?"
 	done
 
-UnknownText_0x1b749b:
+ParryGreetNiteText:
 	text "<PLAYER>, it's"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "!"
 
 	para "Have you had a"
 	line "proper dinner?"
 	done
 
-UnknownText_0x1b74c8:
+ParryGenericText:
 	text "Are your #mon"
 	line "looking good?"
 
 	para "My "
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text " and"
 	line "me--we're looking"
 
@@ -1904,71 +1904,71 @@ UnknownText_0x1b74c8:
 	line "Hahahah!"
 	done
 
-UnknownText_0x1b751a:
+ErinAnswerPhoneText:
 	text "Yes, this is"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "…"
 
 	para "Oh. Hi, <PLAYER>!"
 	line "Good morning!"
 	done
 
-UnknownText_0x1b7548:
+ErinAnswerPhoneDayText:
 	text "Yes, this is"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "…"
 
 	para "Oh, hi, <PLAYER>!"
 	line "Yahoo!"
 	done
 
-UnknownText_0x1b756f:
+ErinAnswerPhoneNiteText:
 	text "Yes, this is"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "…"
 
 	para "Oh, hi, <PLAYER>!"
 	done
 
-UnknownText_0x1b758f:
+ErinGreetText:
 	text "<PLAYER>!"
 
 	para "It's "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "!"
 	line "Good morning!"
 	done
 
-UnknownText_0x1b75ac:
+ErinGreetDayText:
 	text "<PLAYER>!"
 
 	para "It's "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "!"
 	line "Working hard?"
 	done
 
-UnknownText_0x1b75c9:
+ErinGreetNiteText:
 	text "<PLAYER>!"
 
 	para "It's "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "!"
 	line "Were you up?"
 	done
 
-UnknownText_0x1b75e5:
+ErinGenericText:
 	text "Are you raising"
 	line "your #mon?"
 
 	para "Hey, "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "'s"
 	line ""
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text " is"
 	cont "looking good!"
 	done

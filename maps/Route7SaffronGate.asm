@@ -14,12 +14,12 @@ Route7SaffronGate_MapScriptHeader:
 	def_bg_events
 
 	def_object_events
-	object_event  5,  1, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, OfficerScript_0x73518, -1
+	object_event  5,  1, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, Route7SaffronGuardScript, -1
 	object_event  3,  3, SPRITE_SILPH_EMPLOYEE, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, Route7SaffronGateSilphEmployeeText, -1
 
-OfficerScript_0x73518:
-	checkevent EVENT_RETURNED_MACHINE_PART
-	iftrue_jumptextfaceplayer UnknownText_0x73592
+Route7SaffronGuardScript:
+	checkevent EVENT_RESTORED_POWER_TO_KANTO
+	iftrue_jumptextfaceplayer Route7SaffronGuardSeriousText
 	jumpthistextfaceplayer
 
 	text "Did you hear about"
@@ -31,7 +31,7 @@ OfficerScript_0x73518:
 	cont "Lavender Town."
 	done
 
-UnknownText_0x73592:
+Route7SaffronGuardSeriousText:
 	text "I take my guard"
 	line "job seriously."
 

@@ -53,11 +53,11 @@ CinnabarVolcanoB1FBouldersLand:
 	iffalse .skip4
 	changeblock 14, 10, $5d
 .skip4
-	return
+	endcallback
 
 CinnabarVolcanoB1FBouldersFall:
 	usestonetable .BoulderTable
-	return
+	endcallback
 
 .BoulderTable:
 	stonetable 7, CINNABARVOLCANOB1F_BOULDER, .Disappear
@@ -65,7 +65,7 @@ CinnabarVolcanoB1FBouldersFall:
 
 .Disappear:
 	disappear CINNABARVOLCANOB1F_BOULDER
-	jump .Fall
+	sjump .Fall
 
 .Fall:
 	pause 30

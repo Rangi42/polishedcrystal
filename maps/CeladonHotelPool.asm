@@ -22,7 +22,7 @@ CeladonHotelPoolSwimmerMScript:
 	faceplayer
 	opentext
 	writetext .Text1
-	buttonsound
+	promptbutton
 	verbosegiveitem SAFE_GOGGLES
 	iffalse_endtext
 	setevent EVENT_GOT_SAFE_GOGGLES_FROM_CELADON

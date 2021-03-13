@@ -2139,9 +2139,7 @@ UpdateMapObjectDataAndSprites::
 .loop
 	ldh [hMapObjectIndexBuffer], a
 	call DoesObjectHaveASprite
-	jr z, .ok
-	call UpdateCurObjectData
-.ok
+	call nz, UpdateCurObjectData
 	ld hl, OBJECT_LENGTH
 	add hl, bc
 	ld b, h
@@ -2162,8 +2160,7 @@ BattleStart_HideAllSpritesExceptBattleParticipants:
 	jr z, .ok
 	ldh a, [hLastTalked]
 	and a
-	jr z, .ok
-	call RespawnObject ; respawn opponent
+	call nz, RespawnObject ; respawn opponent
 .ok
 	jp _UpdateSprites
 

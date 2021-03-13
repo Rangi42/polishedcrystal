@@ -49,17 +49,17 @@ TossItemFromPC:
 
 .TossHowMany:
 	; Toss out how many @ (S)?
-	text_jump UnknownText_0x1c1a90
+	text_far _ItemsTossOutHowManyText
 	text_end
 
 .ConfirmToss:
 	; Throw away @ @ (S)?
-	text_jump UnknownText_0x1c1aad
+	text_far _ItemsThrowAwayText
 	text_end
 
 .TossedThisMany:
 	; Discarded @ (S).
-	text_jump UnknownText_0x1c1aca
+	text_far _ItemsDiscardedText
 	text_end
 
 CantUseItem:
@@ -67,7 +67,7 @@ CantUseItem:
 	jp MenuTextboxWaitButton
 
 CantUseItemText:
-	text_jump UnknownText_0x1c1b03
+	text_far _ItemsOakWarningText
 	text_end
 
 PartyMonItemName:
@@ -236,12 +236,12 @@ GiveTakePartyMonItem:
 
 .GiveItem:
 
-	farcall DepositSellInitPackBuffers
+	call DepositSellInitPackBuffers
 
 .loop
-	farcall DepositSellPack
+	call DepositSellPack
 
-	ld a, [wcf66]
+	ld a, [wPackUsedItem]
 	and a
 	ret z
 
@@ -416,7 +416,7 @@ UpdateMewtwoForm:
 	ld a, MON_FORM
 	call GetPartyParamLocation
 	ld a, [hl]
-	and $ff - FORM_MASK
+	and $ff - BASEMON_MASK
 	or d
 	ld [hl], a
 	ret
@@ -436,35 +436,35 @@ GiveTakeItemMenuData:
 	db "Swap@"
 
 TookAndMadeHoldText:
-	text_jump UnknownText_0x1c1b2c
+	text_far _PokemonSwapItemText
 	text_end
 
 MadeHoldText:
-	text_jump UnknownText_0x1c1b57
+	text_far _PokemonHoldItemText
 	text_end
 
 PleaseRemoveMailText:
-	text_jump UnknownText_0x1c1b6f
+	text_far _PokemonRemoveMailText
 	text_end
 
 IsntHoldingAnythingText:
-	text_jump UnknownText_0x1c1b8e
+	text_far _PokemonNotHoldingText
 	text_end
 
 ItemStorageIsFullText:
-	text_jump UnknownText_0x1c1baa
+	text_far _ItemStorageFullText
 	text_end
 
 TookFromText:
-	text_jump UnknownText_0x1c1bc4
+	text_far _PokemonTookItemText
 	text_end
 
 SwitchAlreadyHoldingText:
-	text_jump UnknownText_0x1c1bdc
+	text_far _PokemonAskSwapItemText
 	text_end
 
 CantBeHeldText:
-	text_jump UnknownText_0x1c1c09
+	text_far _ItemCantHeldText
 	text_end
 
 GetPartyItemLocation:
@@ -493,7 +493,7 @@ StartMenuYesNo:
 
 ComposeMailMessage:
 	ld de, wTempMailMessage
-	farcall _ComposeMailMessage
+	call _ComposeMailMessage
 	ld hl, wPlayerName
 	ld de, wTempMailAuthor
 	ld bc, NAME_LENGTH - 1
@@ -603,32 +603,32 @@ MonMailAction:
 
 .mailwilllosemessagetext
 ; The MAIL will lose its message. OK?
-	text_jump UnknownText_0x1c1c22
+	text_far _MailLoseMessageText
 	text_end
 
 .tookmailfrommontext
 ; MAIL detached from <POKEMON>.
-	text_jump UnknownText_0x1c1c47
+	text_far _MailDetachedText
 	text_end
 
 .bagfulltext
 ; There's no space for removing MAIL.
-	text_jump UnknownText_0x1c1c62
+	text_far _MailNoSpaceText
 	text_end
 
 .sendmailtopctext
 ; Send the removed MAIL to your PC?
-	text_jump UnknownText_0x1c1c86
+	text_far _MailAskSendToPCText
 	text_end
 
 .mailboxfulltext
 ; Your PC's MAILBOX is full.
-	text_jump UnknownText_0x1c1ca9
+	text_far _MailboxFullText
 	text_end
 
 .sentmailtopctext
 ; The MAIL was sent to your PC.
-	text_jump UnknownText_0x1c1cc4
+	text_far _MailSentToPCText
 	text_end
 
 OpenPartyStats:
@@ -724,7 +724,7 @@ MonMenu_FreshSnack:
 
 .Text_NotEnoughHP:
 	; Not enough HP!
-	text_jump UnknownText_0x1c1ce3
+	text_far _PokemonNotEnoughHPText
 	text_end
 
 .CheckMonHasEnoughHP:
@@ -1217,7 +1217,7 @@ GetForgottenMoves::
 	ld a, MON_FORM
 	call GetPartyParamLocation
 	ld a, [hl]
-	and FORM_MASK
+	and BASEMON_MASK
 	ld b, a
 	; bc = index
 	call GetSpeciesAndFormIndex
@@ -1575,5 +1575,5 @@ String_PowAcc:
 
 Text_CantForgetHM:
 ; HM moves can't be forgotten now.
-	text_jump UnknownText_0x1c5772
+	text_far _MoveCantForgetHMText
 	text_end

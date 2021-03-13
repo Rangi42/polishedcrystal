@@ -707,8 +707,7 @@ NormalStep:
 	cp COLL_TALL_GRASS
 	jr z, .shake_grass
 	cp COLL_PUDDLE
-	jr nz, SetWalkStepType
-	call SplashPuddle
+	call z, SplashPuddle
 	jr SetWalkStepType
 
 .shake_grass

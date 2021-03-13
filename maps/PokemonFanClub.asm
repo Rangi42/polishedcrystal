@@ -10,56 +10,56 @@ PokemonFanClub_MapScriptHeader:
 	def_coord_events
 
 	def_bg_events
-	bg_event  7,  0, BGEVENT_JUMPTEXT, UnknownText_0x191dfc
-	bg_event  9,  0, BGEVENT_JUMPTEXT, UnknownText_0x191e29
+	bg_event  7,  0, BGEVENT_JUMPTEXT, PokemonFanClubListenSignText
+	bg_event  9,  0, BGEVENT_JUMPTEXT, PokemonFanClubBraggingSignText
 	bg_event  0,  1, BGEVENT_READ, PokemonJournalGreenScript
 
 	def_object_events
 	object_event  3,  3, SPRITE_MON_ICON, SPRITEMOVEDATA_STILL, 0, CLEFAIRY, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptext, ClefairyDollText, EVENT_VERMILION_FAN_CLUB_DOLL
-	object_event  5,  1, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, GentlemanScript_0x1917e9, -1
-	object_event  6,  1, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x191b6d, -1
-	object_event  3,  4, SPRITE_FAT_GUY, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, FisherScript_0x191824, -1
-	object_event  7,  2, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x191d73, -1
+	object_event  5,  1, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, PokemonFanClubChairmanScript, -1
+	object_event  6,  1, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, PokemonFanClubReceptionistText, -1
+	object_event  3,  4, SPRITE_FAT_GUY, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, PokemonFanClubClefairyGuyScript, -1
+	object_event  7,  2, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, PokemonFanClubTeacherText, -1
 	pokemon_event  7,  3, ODDISH, -1, -1, PAL_NPC_GREEN, FanClubOddishText, -1
 
 	object_const_def
 	const POKEMONFANCLUB_CLEFAIRY_DOLL
 
-GentlemanScript_0x1917e9:
+PokemonFanClubChairmanScript:
 	checkevent EVENT_LISTENED_TO_FAN_CLUB_PRESIDENT
-	iftrue_jumptextfaceplayer UnknownText_0x191ae0
+	iftrue_jumptextfaceplayer PokemonFanClubChairmanMoreTalesToTellText
 	faceplayer
 	opentext
 	checkevent EVENT_LISTENED_TO_FAN_CLUB_PRESIDENT_BUT_BAG_WAS_FULL
 	iftrue UnknownScript_0x191802
-	writetext UnknownText_0x191881
+	writetext PokemonFanClubChairmanDidYouVisitToHearAboutMyMonText
 	yesorno
-	iffalse_jumpopenedtext UnknownText_0x191b38
-	writetext UnknownText_0x191911
-	buttonsound
+	iffalse_jumpopenedtext PokemonFanClubChairmanHowDisappointingText
+	writetext PokemonFanClubChairmanRapidashText
+	promptbutton
 UnknownScript_0x191802:
-	writetext UnknownText_0x191a3d
-	buttonsound
+	writetext PokemonFanClubChairmanIWantYouToHaveThisText
+	promptbutton
 	verbosegiveitem RARE_CANDY
 	iffalse_endtext
 	setevent EVENT_LISTENED_TO_FAN_CLUB_PRESIDENT
-	jumpopenedtext UnknownText_0x191a72
+	jumpopenedtext PokemonFanClubChairmanItsARareCandyText
 
-FisherScript_0x191824:
+PokemonFanClubClefairyGuyScript:
 	checkevent EVENT_GOT_LOST_ITEM_FROM_FAN_CLUB
-	iftrue_jumptextfaceplayer UnknownText_0x191d1e
-	checkevent EVENT_RETURNED_MACHINE_PART
-	iffalse_jumptextfaceplayer UnknownText_0x191ba0
+	iftrue_jumptextfaceplayer PokemonFanClubClefairyGuyGoingToGetARealClefairyText
+	checkevent EVENT_RESTORED_POWER_TO_KANTO
+	iffalse_jumptextfaceplayer PokemonFanClubClefairyGuyClefairyIsSoAdorableText
 	faceplayer
 	opentext
-	writetext UnknownText_0x191bff
+	writetext PokemonFanClubClefairyGuyMakingDoWithADollIFoundText
 	checkevent EVENT_MET_COPYCAT_FOUND_OUT_ABOUT_LOST_ITEM
 	iftrue UnknownScript_0x191844
 	waitendtext
 UnknownScript_0x191844:
-	buttonsound
-	writetext UnknownText_0x191c5a
-	buttonsound
+	promptbutton
+	writetext PokemonFanClubClefairyGuyTakeThisDollBackToGirlText
+	promptbutton
 	waitsfx
 	disappear POKEMONFANCLUB_CLEFAIRY_DOLL
 	verbosegivekeyitem LOST_ITEM
@@ -67,8 +67,6 @@ UnknownScript_0x191844:
 	endtext
 
 PokemonJournalGreenScript:
-	setevent EVENT_RETURNED_MACHINE_PART
-	setevent EVENT_MET_COPYCAT_FOUND_OUT_ABOUT_LOST_ITEM
 	setflag ENGINE_READ_GREEN_JOURNAL
 	jumpthistext
 
@@ -86,7 +84,7 @@ PokemonJournalGreenScript:
 	cont "#mon."
 	done
 
-UnknownText_0x191881:
+PokemonFanClubChairmanDidYouVisitToHearAboutMyMonText:
 	text "I'm the Chairman"
 	line "of the #mon Fan"
 	cont "Club."
@@ -103,7 +101,7 @@ UnknownText_0x191881:
 	cont "#mon?"
 	done
 
-UnknownText_0x191911:
+PokemonFanClubChairmanRapidashText:
 	text "Good!"
 	line "Then listen up!"
 
@@ -129,13 +127,13 @@ UnknownText_0x191911:
 	cont "you too long!"
 	done
 
-UnknownText_0x191a3d:
+PokemonFanClubChairmanIWantYouToHaveThisText:
 	text "Thanks for hearing"
 	line "me out. I want you"
 	cont "to have this!"
 	done
 
-UnknownText_0x191a72:
+PokemonFanClubChairmanItsARareCandyText:
 	text "It's a Rare Candy"
 	line "that makes #mon"
 	cont "stronger."
@@ -147,7 +145,7 @@ UnknownText_0x191a72:
 	line "you can have it."
 	done
 
-UnknownText_0x191ae0:
+PokemonFanClubChairmanMoreTalesToTellText:
 	text "Hello, <PLAYER>!"
 
 	para "Did you come see"
@@ -158,20 +156,20 @@ UnknownText_0x191ae0:
 	line "tales to tell…"
 	done
 
-UnknownText_0x191b38:
+PokemonFanClubChairmanHowDisappointingText:
 	text "How disappointing…"
 
 	para "Come back if you"
 	line "want to listen."
 	done
 
-UnknownText_0x191b6d:
+PokemonFanClubReceptionistText:
 	text "Our Chairman is"
 	line "very vocal when it"
 	cont "comes to #mon…"
 	done
 
-UnknownText_0x191ba0:
+PokemonFanClubClefairyGuyClefairyIsSoAdorableText:
 	text "I love the way"
 	line "Clefairy waggles"
 
@@ -182,7 +180,7 @@ UnknownText_0x191ba0:
 	line "It's so adorable!"
 	done
 
-UnknownText_0x191bff:
+PokemonFanClubClefairyGuyMakingDoWithADollIFoundText:
 	text "I love Clefairy,"
 	line "but I could never"
 
@@ -193,7 +191,7 @@ UnknownText_0x191bff:
 	line "found."
 	done
 
-UnknownText_0x191c5a:
+PokemonFanClubClefairyGuyTakeThisDollBackToGirlText:
 	text "Oh, I see now. The"
 	line "girl who lost this"
 
@@ -212,7 +210,7 @@ UnknownText_0x191c5a:
 	line "No worries!"
 	done
 
-UnknownText_0x191d1e:
+PokemonFanClubClefairyGuyGoingToGetARealClefairyText:
 	text "You watch. I'm"
 	line "going to get a"
 
@@ -220,7 +218,7 @@ UnknownText_0x191d1e:
 	line "my friend."
 	done
 
-UnknownText_0x191d73:
+PokemonFanClubTeacherText:
 	text "Look at my darling"
 	line "Oddish!"
 
@@ -241,13 +239,13 @@ FanClubOddishText:
 	text "Oddish: Diish!"
 	done
 
-UnknownText_0x191dfc:
+PokemonFanClubListenSignText:
 	text "Let's all listen"
 	line "politely to other"
 	cont "trainers."
 	done
 
-UnknownText_0x191e29:
+PokemonFanClubBraggingSignText:
 	text "If someone brags,"
 	line "brag right back!"
 	done

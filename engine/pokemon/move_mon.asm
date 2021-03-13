@@ -107,7 +107,7 @@ TryAddMonToParty:
 	inc hl
 	ld a, [wTrainerGroupBank]
 	call GetFarByte
-	and FORM_MASK
+	and BASEMON_MASK
 .got_trainer_form
 	ld [wCurForm], a
 .not_trainer_form
@@ -118,7 +118,7 @@ TryAddMonToParty:
 	ld a, wRoamMon1Form - wRoamMon1
 	farcall DoGetRoamMonData
 	ld a, [hl]
-	and FORM_MASK
+	and BASEMON_MASK
 	ld [wCurForm], a
 .not_roaming_form
 
@@ -397,7 +397,7 @@ endr
 	ld a, [wCurPartySpecies]
 	ld c, a
 	ld a, [wPartyMon1Form]
-	and FORM_MASK
+	and BASEMON_MASK
 	ld b, a
 	call GetGenderRatio
 	pop af
@@ -643,7 +643,7 @@ SentGetPkmnIntoFromBox:
 ; wPokemonWithdrawDepositParameter == 3: put Pkmn into DayCare
 	; Failsafe: never allow writing $ff to species bytes
 	ld a, [wCurPartySpecies]
-	cp EGG
+	inc a ; cp EGG
 	jr nz, .species_valid
 	ld a, ERR_EGG_SPECIES
 	jp Crash
@@ -938,7 +938,7 @@ RestorePPofDepositedPokemon:
 	push bc
 	push hl
 	push de
-	farcall GetMaxPPOfMove
+	call GetMaxPPOfMove
 	pop de
 	pop hl
 	ld a, [wd265]
@@ -969,7 +969,7 @@ RetrievePokemonFromDayCareMan:
 	call WaitSFX
 	call GetBreedMon1LevelGrowth
 	ld a, b
-	ld [wd002], a
+	ld [wPrevPartyLevel], a
 	ld a, e
 	ld [wCurPartyLevel], a
 	xor a
@@ -984,7 +984,7 @@ RetrievePokemonFromDayCareLady:
 	call WaitSFX
 	call GetBreedMon2LevelGrowth
 	ld a, b
-	ld [wd002], a
+	ld [wPrevPartyLevel], a
 	ld a, e
 	ld [wCurPartyLevel], a
 	ld a, PC_DEPOSIT
@@ -1080,7 +1080,7 @@ RetrieveBreedmon:
 	ld a, [wPartyCount]
 	dec a
 	ld [wCurPartyMon], a
-	farcall HealPartyMonEvenForNuzlocke
+	call HealPartyMonEvenForNuzlocke
 	ld a, [wCurPartyLevel]
 	ld d, a
 	farcall CalcExpAtLevel
@@ -1538,7 +1538,7 @@ ComputeNPCTrademonStats:
 	ld a, MON_FORM
 	call GetPartyParamLocation
 	ld a, [hl]
-	and FORM_MASK
+	and BASEMON_MASK
 	ld [wCurForm], a
 	call GetBaseData
 	ld a, MON_MAXHP
@@ -1569,7 +1569,7 @@ UpdatePkmnStats:
 	ld a, MON_FORM
 	call GetPartyParamLocation
 	ld a, [hl]
-	and FORM_MASK
+	and BASEMON_MASK
 	ld [wCurForm], a
 	call GetBaseData
 	ld a, MON_LEVEL
@@ -1652,7 +1652,7 @@ CalcPkmnStats:
 ; Calculates all 6 Stats of a Pkmn
 ; b: Hyper Training (bit 7-2), apply EVs (bit 0)
 ; 'c' counts from 1-6 and points with 'wBaseStats' to the base value
-; hl is the path to the EVs
+; hl is the path to the EVs - 1
 ; de is a pointer where the 6 stats are placed
 
 	ld c, $0
@@ -1714,8 +1714,10 @@ CalcPkmnStatC:
 	dec c
 	jr nz, .hyper_training_loop
 	pop bc
+	jr nc, .not_hyper_trained
+	ld b, b ;  no-optimize nops (BGB breakpoint; should never run yet)
 	ld a, $f
-	jr c, .GotDV
+	jr .GotDV
 
 .not_hyper_trained
 	ld a, c
@@ -2102,8 +2104,7 @@ GivePoke::
 .set_caught_data
 	farcall GiveANickname_YesNo
 	pop de
-	jr c, .skip_nickname
-	call InitNickname
+	call nc, InitNickname
 
 .skip_nickname
 	pop bc
@@ -2131,7 +2132,7 @@ GivePoke::
 
 TextJump_WasSentToBillsPC:
 	; was sent to BILL's PC.
-	text_jump Text_WasSentToBillsPC
+	text_far Text_WasSentToBillsPC
 	text_end
 
 InitNickname:

@@ -25,11 +25,11 @@ PlayersHouse2F_MapScriptHeader:
 PlayersHouse2FInitializeRoom:
 	special ToggleDecorationsVisibility
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_8
-	return
+	endcallback
 
 PlayersHouse2FSetSpawn:
 	special ToggleMaptileDecorations
-	return
+	endcallback
 
 Doll1:
 	describedecoration 1
@@ -67,26 +67,20 @@ if DEF(DEBUG)
 	; judge machine
 	setflag ENGINE_JUDGE_MACHINE
 	; all key items
-x = 0
-rept NUM_KEY_ITEMS
+for x, NUM_KEY_ITEMS
 if x != MACHINE_PART
 	givekeyitem x
 endc
-x = x + 1
 endr
 	; all tms+hms
-x = 0
-rept NUM_TMS + NUM_HMS
+for x, NUM_TMS + NUM_HMS
 	givetmhm x
-x = x + 1
 endr
 	; useful items
-x = POKE_BALL
-rept CHERISH_BALL - POKE_BALL + 1
+for x, POKE_BALL, CHERISH_BALL + 1
 if x != PARK_BALL && x != SAFARI_BALL
 	giveitem x, 99
 endc
-x = x + 1
 endr
 	giveitem MAX_POTION, 99
 	giveitem FULL_RESTORE, 99
@@ -126,10 +120,8 @@ endr
 	giveitem ODD_SOUVENIR, 10
 	giveitem ARMOR_SUIT, 1
 	; all decorations
-x = EVENT_DECO_BED_1
-rept EVENT_DECO_BIG_LAPRAS_DOLL - EVENT_DECO_BED_1 + 1
+for x, EVENT_DECO_BED_1, EVENT_DECO_BIG_LAPRAS_DOLL + 1
 	setevent x
-x = x + 1
 endr
 	; max money
 	givemoney $0, 1000000
@@ -143,8 +135,8 @@ endr
 	givemoney $0, 1000000
 	givemoney $0, 999999
 	givecoins 50000
-	loadvar wBattlePoints+0, 0
-	loadvar wBattlePoints+1, 250
+	loadmem wBattlePoints+0, 0
+	loadmem wBattlePoints+1, 250
 	; all badges
 	setflag ENGINE_ZEPHYRBADGE
 	setflag ENGINE_HIVEBADGE
@@ -180,8 +172,8 @@ endr
 	setevent EVENT_BEAT_BLUE
 	setevent EVENT_BEAT_ELITE_FOUR
 	setevent EVENT_BEAT_ELITE_FOUR_AGAIN
-;	setevent EVENT_BATTLE_TOWER_OPEN
-;	clearevent EVENT_BATTLE_TOWER_CLOSED
+	setevent EVENT_BATTLE_TOWER_OPEN
+	clearevent EVENT_BATTLE_TOWER_CLOSED
 	; fly anywhere
 	setflag ENGINE_FLYPOINT_NEW_BARK
 	setflag ENGINE_FLYPOINT_CHERRYGROVE
@@ -218,45 +210,45 @@ endr
 	setflag ENGINE_HAVE_SHINY_CHARM
 	; good party
 	givepoke MEWTWO, NO_FORM, 100, BRIGHTPOWDER
-	loadvar wPartyMon1EVs+0, 252
-	loadvar wPartyMon1EVs+1, 252
-	loadvar wPartyMon1EVs+2, 252
-	loadvar wPartyMon1EVs+3, 252
-	loadvar wPartyMon1EVs+4, 252
-	loadvar wPartyMon1EVs+5, 252
-	loadvar wPartyMon1DVs+0, $ff
-	loadvar wPartyMon1DVs+1, $ff
-	loadvar wPartyMon1DVs+2, $ff
-	loadvar wPartyMon1Personality, ABILITY_2 | MODEST
-	loadvar wPartyMon1Stats+0, HIGH(999)
-	loadvar wPartyMon1Stats+1, LOW(999)
-	loadvar wPartyMon1Stats+2, HIGH(999)
-	loadvar wPartyMon1Stats+3, LOW(999)
-	loadvar wPartyMon1Stats+4, HIGH(999)
-	loadvar wPartyMon1Stats+5, LOW(999)
-	loadvar wPartyMon1Stats+6, HIGH(999)
-	loadvar wPartyMon1Stats+7, LOW(999)
-	loadvar wPartyMon1Stats+8, HIGH(999)
-	loadvar wPartyMon1Stats+9, LOW(999)
+	loadmem wPartyMon1EVs+0, 252
+	loadmem wPartyMon1EVs+1, 252
+	loadmem wPartyMon1EVs+2, 252
+	loadmem wPartyMon1EVs+3, 252
+	loadmem wPartyMon1EVs+4, 252
+	loadmem wPartyMon1EVs+5, 252
+	loadmem wPartyMon1DVs+0, $ff
+	loadmem wPartyMon1DVs+1, $ff
+	loadmem wPartyMon1DVs+2, $ff
+	loadmem wPartyMon1Personality, ABILITY_2 | MODEST
+	loadmem wPartyMon1Stats+0, HIGH(999)
+	loadmem wPartyMon1Stats+1, LOW(999)
+	loadmem wPartyMon1Stats+2, HIGH(999)
+	loadmem wPartyMon1Stats+3, LOW(999)
+	loadmem wPartyMon1Stats+4, HIGH(999)
+	loadmem wPartyMon1Stats+5, LOW(999)
+	loadmem wPartyMon1Stats+6, HIGH(999)
+	loadmem wPartyMon1Stats+7, LOW(999)
+	loadmem wPartyMon1Stats+8, HIGH(999)
+	loadmem wPartyMon1Stats+9, LOW(999)
 	; hm slaves
 	givepoke MEW, NO_FORM, 100, LEFTOVERS
 	givepoke MEW, NO_FORM, 100, LEFTOVERS
-	loadvar wPartyMon2Moves+0, FLY
-	loadvar wPartyMon2Moves+1, SURF
-	loadvar wPartyMon2Moves+2, STRENGTH
-	loadvar wPartyMon2Moves+3, CUT
-	loadvar wPartyMon2PP+0, 15
-	loadvar wPartyMon2PP+1, 15
-	loadvar wPartyMon2PP+2, 15
-	loadvar wPartyMon2PP+3, 30
-	loadvar wPartyMon3Moves+0, FLASH
-	loadvar wPartyMon3Moves+1, ROCK_SMASH
-	loadvar wPartyMon3Moves+2, HEADBUTT
-	loadvar wPartyMon3Moves+3, WATERFALL
-	loadvar wPartyMon3PP+0, 20
-	loadvar wPartyMon3PP+1, 15
-	loadvar wPartyMon3PP+2, 15
-	loadvar wPartyMon3PP+3, 15
+	loadmem wPartyMon2Moves+0, FLY
+	loadmem wPartyMon2Moves+1, SURF
+	loadmem wPartyMon2Moves+2, STRENGTH
+	loadmem wPartyMon2Moves+3, CUT
+	loadmem wPartyMon2PP+0, 15
+	loadmem wPartyMon2PP+1, 15
+	loadmem wPartyMon2PP+2, 15
+	loadmem wPartyMon2PP+3, 30
+	loadmem wPartyMon3Moves+0, FLASH
+	loadmem wPartyMon3Moves+1, ROCK_SMASH
+	loadmem wPartyMon3Moves+2, HEADBUTT
+	loadmem wPartyMon3Moves+3, WATERFALL
+	loadmem wPartyMon3PP+0, 20
+	loadmem wPartyMon3PP+1, 15
+	loadmem wPartyMon3PP+2, 15
+	loadmem wPartyMon3PP+3, 15
 	; variant form test
 	givepoke SLOWKING, GALARIAN_FORM, 50
 ;	givepoke ARTICUNO, GALARIAN_FORM, 50

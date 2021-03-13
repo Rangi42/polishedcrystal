@@ -1,13 +1,13 @@
 BlindingFlash::
-	farcall FadeOutPalettes
+	call FadeOutPalettes
 	ld hl, wStatusFlags
 	set 2, [hl] ; Flash
-	farcall ReplaceTimeOfDayPals
-	farcall UpdateTimeOfDayPal
+	call ReplaceTimeOfDayPals
+	call UpdateTimeOfDayPal
 	ld a, CGB_MAPPALS
 	call GetCGBLayout
 	farcall LoadBlindingFlashPalette
-	farjp FadeInPalettes
+	jp FadeInPalettes
 
 ShakeHeadbuttTree:
 	call ClearSpriteAnims
@@ -23,22 +23,22 @@ ShakeHeadbuttTree:
 	ld [hl], $64
 	ld a, 36 * 4
 	ld [wCurSpriteOAMAddr], a
-	farcall DoNextFrameForAllSprites
+	call DoNextFrameForAllSprites
 	call HideHeadbuttTree
-	ld a, $20
-	ld [wcf64], a
+	ld a, 32
+	ld [wFrameCounter], a
 	call WaitSFX
 	ld de, SFX_SANDSTORM
 	call PlaySFX
 .loop
-	ld hl, wcf64
+	ld hl, wFrameCounter
 	ld a, [hl]
 	and a
 	jr z, .done
 	dec [hl]
 	ld a, 36 * 4
 	ld [wCurSpriteOAMAddr], a
-	farcall DoNextFrameForAllSprites
+	call DoNextFrameForAllSprites
 	call DelayFrame
 	jr .loop
 
@@ -91,11 +91,9 @@ TreeRelativeLocationTable:
 	dwcoord 8 + 2, 8     ; UP
 
 OWCutAnimation:
-	; Animation index in e
+	; Animation index in a
 	; 0: Split tree in half
 	; 1: Mow the lawn
-	ld a, e
-	and $1
 	ld [wJumptableIndex], a
 	call ClearSpriteAnims
 	call WaitSFX
@@ -107,7 +105,7 @@ OWCutAnimation:
 	ret nz
 	ld a, 36 * 4
 	ld [wCurSpriteOAMAddr], a
-	farcall DoNextFrameForAllSprites
+	call DoNextFrameForAllSprites
 	call OWCutJumptable
 	call DelayFrame
 	jr .loop
@@ -129,7 +127,7 @@ Cut_SpawnAnimateTree:
 	add hl, bc
 	ld [hl], $74
 	ld a, 32
-	ld [wcf64], a
+	ld [wFrameCounter], a
 ; Cut_StartWaiting
 	ld hl, wJumptableIndex
 	inc [hl]
@@ -147,7 +145,7 @@ Cut_SpawnAnimateLeaves:
 	ld a, $30
 	call Cut_SpawnLeaf
 	ld a, 32 ; frames
-	ld [wcf64], a
+	ld [wFrameCounter], a
 ; Cut_StartWaiting
 	ld hl, wJumptableIndex
 	inc [hl]
@@ -161,7 +159,7 @@ Cut_StartWaiting:
 	inc [hl]
 
 Cut_WaitAnimSFX:
-	ld hl, wcf64
+	ld hl, wFrameCounter
 	ld a, [hl]
 	and a
 	jr z, .finished
@@ -272,14 +270,14 @@ FlyFromAnim:
 	add hl, bc
 	ld [hl], SPRITE_ANIM_SEQ_FLY_FROM
 	ld a, 128
-	ld [wcf64], a
+	ld [wFrameCounter], a
 .loop
 	ld a, [wJumptableIndex]
 	bit 7, a
 	jr nz, .exit
 	xor a
 	ld [wCurSpriteOAMAddr], a
-	farcall DoNextFrameForAllSprites
+	call DoNextFrameForAllSprites
 	call FlyFunction_FrameTimer
 	call DelayFrame
 	jr .loop
@@ -309,14 +307,14 @@ FlyToAnim:
 	add hl, bc
 	ld [hl], 11 * 8
 	ld a, 64
-	ld [wcf64], a
+	ld [wFrameCounter], a
 .loop
 	ld a, [wJumptableIndex]
 	bit 7, a
 	jr nz, .exit
 	xor a
 	ld [wCurSpriteOAMAddr], a
-	farcall DoNextFrameForAllSprites
+	call DoNextFrameForAllSprites
 	call FlyFunction_FrameTimer
 	call DelayFrame
 	jr .loop
@@ -344,14 +342,14 @@ FlyToAnim:
 FlyFunction_InitGFX:
 	call ClearSpriteAnims
 	ld e, $64
-	farcall FlyFunction_GetMonIcon
+	call FlyFunction_GetMonIcon
 	xor a
 	ld [wJumptableIndex], a
 	ret
 
 FlyFunction_FrameTimer:
 	call .SpawnLeaf
-	ld hl, wcf64
+	ld hl, wFrameCounter
 	ld a, [hl]
 	and a
 	jr z, .exit
@@ -369,7 +367,7 @@ FlyFunction_FrameTimer:
 	ret
 
 .SpawnLeaf:
-	ld hl, wcf65
+	ld hl, wFrameCounter2
 	ld a, [hl]
 	inc [hl]
 	and $7

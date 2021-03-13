@@ -52,7 +52,6 @@ _GetVarAction::
 	dwb wXCoord,                        RETVAR_STRBUF2
 	dwb wYCoord,                        RETVAR_STRBUF2
 	dwb wSpecialPhoneCallID,            RETVAR_STRBUF2
-	dwb wNrOfBeatenBattleTowerTrainers, RETVAR_STRBUF2
 	dwb wKurtApricornQuantity,          RETVAR_STRBUF2
 	dwb wCurCaller,                     RETVAR_ADDR_DE
 	dwb wBlueCardBalance,               RETVAR_ADDR_DE

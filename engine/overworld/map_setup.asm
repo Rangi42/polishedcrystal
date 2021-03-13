@@ -88,9 +88,7 @@ LoadObjectMasks:
 	push bc
 	push de
 	call GetObjectTimeMask
-	jr c, .next
-	call CheckObjectFlag
-.next
+	call nc, CheckObjectFlag
 	pop de
 	ld [de], a
 	inc de
@@ -160,9 +158,7 @@ CheckUpdatePlayerSprite:
 	call .CheckSurfing
 	jr c, .ok
 	call .CheckSurfing2
-	jr c, .ok
-	ret
-
+	ret nc
 .ok
 	jp UpdatePlayerSprite
 
@@ -251,15 +247,17 @@ DecompressMetatiles:
 	call TilesetUnchanged
 	ret z
 
-	; Decompressed RAM is all at $d000
+	assert wDecompressedMetatiles == WRAM1_Begin
 	ld hl, wTilesetBlocksBank
 	ld c, BANK(wDecompressedMetatiles)
 	call .Decompress
 
+	assert wDecompressedAttributes == WRAM1_Begin
 	ld hl, wTilesetAttributesBank
 	ld c, BANK(wDecompressedAttributes)
 	call .Decompress
 
+	assert wDecompressedCollisions == WRAM1_Begin
 	ld hl, wTilesetCollisionBank
 	ld c, BANK(wDecompressedCollisions)
 
@@ -269,9 +267,8 @@ DecompressMetatiles:
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	ld de, wDecompressedMetatiles
 	ld a, c
 	call StackCallInWRAMBankA
 
 .FunctionD000
-	jp FarDecompressAtB_D000
+	jp FarDecompressInB

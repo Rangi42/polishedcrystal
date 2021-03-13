@@ -14,7 +14,7 @@ ViridianGym_MapScriptHeader:
 	bg_event  9, 43, BGEVENT_READ, ViridianGymStatue
 
 	def_object_events
-	object_event  7,  2, SPRITE_BLUE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, BlueScript_0x9aa26, EVENT_VIRIDIAN_GYM_BLUE
+	object_event  7,  2, SPRITE_BLUE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ViridianGymBlueScript, EVENT_VIRIDIAN_GYM_BLUE
 	object_event  8, 43, SPRITE_GYM_GUY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, ViridianGymGuyScript, EVENT_VIRIDIAN_GYM_BLUE
 	object_event  7, 35, SPRITE_ACE_TRAINER_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerAceDuoAraandbela1, -1
 	object_event  6, 35, SPRITE_ACE_TRAINER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerAceDuoAraandbela2, -1
@@ -23,7 +23,7 @@ ViridianGym_MapScriptHeader:
 	object_event  6,  8, SPRITE_ACE_TRAINER_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerAceDuoElanandida1, -1
 	object_event  7,  8, SPRITE_ACE_TRAINER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerAceDuoElanandida2, -1
 
-BlueScript_0x9aa26:
+ViridianGymBlueScript:
 	faceplayer
 	opentext
 	checkflag ENGINE_EARTHBADGE
@@ -50,7 +50,7 @@ BlueScript_0x9aa26:
 	checkevent EVENT_GOT_TM71_STONE_EDGE
 	iftrue_jumpopenedtext LeaderBlueEpilogueText
 	writetext LeaderBlueAfterText
-	buttonsound
+	promptbutton
 	verbosegivetmhm TM_STONE_EDGE
 	setevent EVENT_GOT_TM71_STONE_EDGE
 	jumpopenedtext BlueOutroText
@@ -114,7 +114,7 @@ GenericTrainerAceDuoElanandida2:
 	done
 
 ViridianGymStatue:
-	trainertotext BLUE, 1, $1
+	gettrainername BLUE, 1, $1
 	checkflag ENGINE_EARTHBADGE
 	iftrue .Beaten
 	jumpstd gymstatue1

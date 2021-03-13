@@ -251,13 +251,13 @@ UpdateBGMap::
 	ld bc, BG_MAP_WIDTH - (SCREEN_WIDTH - 1)
 .row
 ; Copy a row of 20 tiles
-	rept (SCREEN_WIDTH / 2) - 1
+rept (SCREEN_WIDTH / 2) - 1
 	pop de
 	ld [hl], e
 	inc l
 	ld [hl], d
 	inc l
-	endr
+endr
 	pop de
 	ld [hl], e
 	inc l
@@ -314,7 +314,7 @@ _Serve1bppRequest::
 
 ; # tiles to copy
 .next
-	rept 4
+rept 4
 	pop de
 	ld a, e
 	ld [hli], a
@@ -322,12 +322,13 @@ _Serve1bppRequest::
 	ld a, d
 	ld [hli], a
 	ld [hli], a
-	endr
+endr
 	dec b
 	jr nz, .next
 	jp WriteVTileSourceAndDestinationAndReturn
+
 .nextopaque
-	rept 4
+rept 4
 	pop de
 	ld a, e
 	ld [hl], $ff
@@ -337,10 +338,10 @@ _Serve1bppRequest::
 	ld [hl], $ff
 	inc hl
 	ld [hli], a
-	endr
+endr
 	dec b
 	jr nz, .nextopaque
-	jp WriteVTileSourceAndDestinationAndReturn
+	jr WriteVTileSourceAndDestinationAndReturn
 
 LYOverrideStackCopy::
 	ldh a, [hLYOverrideStackCopyAmount]
@@ -389,13 +390,13 @@ _Serve2bppRequest::
 	ld l, e
 
 .next
-	rept 8
+rept 8
 	pop de
 	ld a, e
 	ld [hli], a
 	ld a, d
 	ld [hli], a
-	endr
+endr
 	dec b
 	jr nz, .next
 
@@ -437,7 +438,7 @@ AnimateTileset::
 	ld a, BANK(_AnimateTileset)
 	rst Bankswitch
 
-	call _AnimateTileset
+	call _AnimateTileset ; far-ok
 
 	pop af
 	ldh [rVBK], a

@@ -47,7 +47,7 @@ CinnabarVolcano1F_MapScriptHeader:
 
 CinnabarVolcano1FBouldersFall:
 	usestonetable .BoulderTable
-	return
+	endcallback
 
 .BoulderTable:
 	stonetable 6, CINNABARVOLCANO1F_BOULDER1, .Disappear1
@@ -58,19 +58,19 @@ CinnabarVolcano1FBouldersFall:
 
 .Disappear1:
 	disappear CINNABARVOLCANO1F_BOULDER1
-	jump .Fall
+	sjump .Fall
 
 .Disappear2:
 	disappear CINNABARVOLCANO1F_BOULDER2
-	jump .Fall
+	sjump .Fall
 
 .Disappear3:
 	disappear CINNABARVOLCANO1F_BOULDER3
-	jump .Fall
+	sjump .Fall
 
 .Disappear4:
 	disappear CINNABARVOLCANO1F_BOULDER4
-	jump .Fall
+	sjump .Fall
 
 .Fall:
 	pause 30
@@ -102,7 +102,7 @@ CinnabarVolcano1FBuckScript:
 .Beaten
 	opentext
 	writetext .ItemText
-	buttonsound
+	promptbutton
 	verbosegiveitem POWER_BELT
 	iffalse_endtext
 	writetext .GoodbyeText

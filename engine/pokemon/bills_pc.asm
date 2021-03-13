@@ -695,9 +695,6 @@ BillsPC_InitRAM:
 	rst ByteFill
 	xor a
 	ld [wJumptableIndex], a
-	ld [wcf64], a
-	ld [wcf65], a
-	ld [wcf66], a
 	ld [wBillsPC_CursorPosition], a
 	ld [wBillsPC_ScrollPosition], a
 	ret
@@ -1354,15 +1351,15 @@ copy_box_data: MACRO
 	ld a, [wBillsPC_LoadedBox]
 	ld [de], a
 	inc de
-	ld a, [wd003]
+	ld a, [wBillsPCTempListIndex]
 	ld [de], a
 	inc a
-	ld [wd003], a
+	ld [wBillsPCTempListIndex], a
 	inc de
 	inc hl
-	ld a, [wd004]
+	ld a, [wBillsPCTempBoxCount]
 	inc a
-	ld [wd004], a
+	ld [wBillsPCTempBoxCount], a
 	jr .loop\@
 
 .done\@
@@ -1371,7 +1368,7 @@ IF \1
 ENDC
 	ld a, -1
 	ld [de], a
-	ld a, [wd004]
+	ld a, [wBillsPCTempBoxCount]
 	inc a
 	ld [wBillsPC_NumMonsInBox], a
 ENDM
@@ -1383,8 +1380,8 @@ CopyBoxmonSpecies:
 	rst ByteFill
 	ld de, wBillsPCPokemonList
 	xor a
-	ld [wd003], a
-	ld [wd004], a
+	ld [wBillsPCTempListIndex], a
+	ld [wBillsPCTempBoxCount], a
 	ld a, [wBillsPC_LoadedBox]
 	and a
 	jr z, .party
@@ -1540,11 +1537,8 @@ BillsPC_CheckSpaceInDestination:
 ; Exceeding box or party capacity is a big no-no.
 	ld a, [wBillsPC_LoadedBox]
 	and a
-	jr z, .party
 	ld e, MONS_PER_BOX + 1
-	jr .compare
-
-.party
+	jr nz, .compare
 	ld e, PARTY_LENGTH + 1
 .compare
 	ld a, [wBillsPC_NumMonsInBox]
@@ -1983,6 +1977,7 @@ MovePKMNWitoutMail_InsertMon:
 	ld a, $1
 	ld [wGameLogicPaused], a
 	farcall SaveGameData
+	farcall SaveCurrentVersion
 	xor a
 	ld [wGameLogicPaused], a
 	jp .CopyToBox
@@ -2247,10 +2242,8 @@ _ChangeBox_menudataheader:
 
 .boxes
 	db NUM_BOXES
-x = 1
-rept NUM_BOXES
+for x, 1, NUM_BOXES + 1
 	db x
-x = x + 1
 endr
 	db -1
 
@@ -2458,7 +2451,7 @@ BillsPC_ChangeBoxSubmenu:
 
 .Name:
 	ld b, $4 ; box
-	ld de, wd002
+	ld de, wBoxNameBuffer
 	farcall NamingScreen
 	call ClearTileMap
 	call LoadStandardFont
@@ -2468,13 +2461,13 @@ BillsPC_ChangeBoxSubmenu:
 	call GetBoxName
 	ld e, l
 	ld d, h
-	ld hl, wd002
+	ld hl, wBoxNameBuffer
 	ld c, BOX_NAME_LENGTH - 1
 	call InitString
 	ld a, [wMenuSelection]
 	dec a
 	call GetBoxName
-	ld de, wd002
+	ld de, wBoxNameBuffer
 	jp CopyName2
 
 .MenuDataHeader:

@@ -22,8 +22,7 @@ BattleTowerBattleRoom_MapScriptHeader:
 
 BattleTowerBattleRoomEnterBattleRoom:
 	disappear BATTLETOWERBATTLEROOM_OPPONENT
-	priorityjump Script_BattleRoom
-	setscene $1
+	prioritysjump Script_BattleRoom
 	end
 
 Script_BattleRoom:
@@ -37,37 +36,37 @@ Script_BattleRoomLoop:
 	applymovement BATTLETOWERBATTLEROOM_OPPONENT, MovementData_BattleTowerBattleRoomOpponentWalksIn
 	opentext
 	battletowertext 1
-	buttonsound
+	promptbutton
 	closetext
 	special Special_BattleTower_Battle ; calls predef startbattle
 	special FadeOutPalettes
+	ifequal BTCHALLENGE_LOST, Script_LostBattleTower
 	reloadmap
-	ifnotequal $0, Script_FailedBattleTowerChallenge
-	copybytetovar wNrOfBeatenBattleTowerTrainers ; wcf64
-	ifequal BATTLETOWER_NROFTRAINERS, Script_BeatenAllTrainers
 	applymovement BATTLETOWERBATTLEROOM_OPPONENT, MovementData_BattleTowerBattleRoomOpponentWalksOut
 	warpsound
 	disappear BATTLETOWERBATTLEROOM_OPPONENT
 	applymovement BATTLETOWERBATTLEROOM_RECEPTIONIST, MovementData_BattleTowerBattleRoomReceptionistWalksToPlayer
 	applyonemovement PLAYER, turn_head_down
-	showtext Text_YourPokemonWillBeHealedToFullHealth
-	special SaveMusic
-	playmusic MUSIC_HEAL
-	special FadeOutPalettes
-	special LoadMapPalettes
-	pause 60
-	special FadeInPalettes
-	special RestoreMusic
 	opentext
-	copybytetovar wNrOfBeatenBattleTowerTrainers
-	ifequal BATTLETOWER_NROFTRAINERS - 1, .WarnAboutTycoon
+	writethistext
+		text "<PLAYER> received"
+		line ""
+		text_ram wStringBuffer1
+		text " BP!"
+		done
+	waitsfx
+	specialsound
+	waitbutton
+	ifequal BTCHALLENGE_WON, Script_BeatenAllTrainers
+	ifequal BTCHALLENGE_TYCOON, .WarnAboutTycoon
+.AskNextBattle:
 	writethistext
 		text "Next up, opponent"
-		line "no."
-		text_from_ram wStringBuffer3
+		line "No. "
+		text_decimal wStringBuffer3, 2, 5
 		text ". Ready?"
 		done
-	jump .ShownText
+	sjump .ShownText
 .WarnAboutTycoon
 	writethistext
 		text "Congratulations"
@@ -86,56 +85,53 @@ Script_BattleRoomLoop:
 		done
 .ShownText
 	yesorno
-	iffalse Script_DontBattleNextOpponent
-Script_ContinueAndBattleNextOpponent:
+	iffalse .DontBattleNextOpponent
 	closetext
 	applyonemovement PLAYER, turn_head_right
 	applymovement BATTLETOWERBATTLEROOM_RECEPTIONIST, MovementData_BattleTowerBattleRoomReceptionistWalksAway
-	jump Script_BattleRoomLoop
+	sjump Script_BattleRoomLoop
 
-Script_DontBattleNextOpponent:
+.DontBattleNextOpponent:
 	writethistext
 		text "Save and end the"
 		line "session?"
 		done
 	yesorno
-	iffalse Script_DontSaveAndEndTheSession
-	special Special_BattleTower_SaveLevelGroup
+	iffalse .DontSaveAndEndTheSession
 	special SaveOptions
-	writebyte BATTLETOWER_SAVED_AND_LEFT
+	setval BATTLETOWER_SAVED_AND_LEFT
 	special Special_BattleTower_SetChallengeState
 	playsound SFX_SAVE
 	waitsfx
 	special FadeOutPalettes
 	special SoftReset
-Script_DontSaveAndEndTheSession:
+.DontSaveAndEndTheSession:
 	writethistext
 		text "Cancel your Battle"
 		line "Room challenge?"
+
+		para "Beware, it counts"
+		line "as a loss."
 		done
 	yesorno
-	iffalse Script_ContinueAndBattleNextOpponent
-	writebyte BATTLETOWER_NO_CHALLENGE
-	special Special_BattleTower_SetChallengeState
-	closetext
+	iffalse .AskNextBattle
 	special FadeOutPalettes
-	warpfacing UP, BATTLE_TOWER_1F, 10, 8
-	jumptext Text_WeHopeToServeYouAgain
 
-Script_FailedBattleTowerChallenge:
-	pause 60
-	special Special_BattleTower_Fade
-	warpfacing UP, BATTLE_TOWER_1F, 10, 8
-	writebyte BATTLETOWER_NO_CHALLENGE
+Script_LostBattleTower:
+	setval BATTLETOWER_LOST_CHALLENGE
 	special Special_BattleTower_SetChallengeState
-	showtext Text_ThanksForVisiting
+	sjump Script_ReturnToBattleTowerLobby
+	warpfacing UP, BATTLE_TOWER_1F, 10, 8
 	end
 
 Script_BeatenAllTrainers:
-	pause 60
-	setevent EVENT_BEAT_PALMER
-	special Special_BattleTower_Fade
+	setval BATTLETOWER_WON_CHALLENGE
+	special Special_BattleTower_SetChallengeState
+	; fallthrough
+Script_ReturnToBattleTowerLobby:
 	warpfacing UP, BATTLE_TOWER_1F, 10, 8
+	end
+
 Script_BeatenAllTrainers2:
 	opentext
 	writethistext
@@ -147,7 +143,7 @@ Script_BeatenAllTrainers2:
 		para "For that, you get"
 		line "this great prize!"
 		prompt
-	jump Script_GivePlayerHisPrize
+	endtext
 
 MovementData_BattleTowerBattleRoomPlayerWalksIn:
 	step_up
@@ -183,14 +179,3 @@ MovementData_BattleTowerBattleRoomReceptionistWalksAway:
 	slow_step_left
 	turn_head_right
 	step_end
-
-Text_YourPokemonWillBeHealedToFullHealth:
-	text "Your #mon will"
-	line "be healed to full"
-	cont "health."
-	done
-
-Text_ThanksForVisiting:
-	text "Thanks for"
-	line "visiting!"
-	done

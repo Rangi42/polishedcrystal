@@ -31,7 +31,7 @@ SilphCo2FScientist1Script:
 	checkevent EVENT_GOT_UP_GRADE
 	iftrue SilphCo2FScientist1GaveUpGradeScript
 	writetext SilphCo2FScientist1Text1
-	buttonsound
+	promptbutton
 	verbosegiveitem UP_GRADE
 	iffalse SilphCo2FScientist1NoRoomForUpGradeScript
 	setevent EVENT_GOT_UP_GRADE

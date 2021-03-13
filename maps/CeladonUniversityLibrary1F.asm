@@ -90,7 +90,7 @@ CeladonUniversityLibrary1FCooltrainermScript:
 	faceplayer
 	opentext
 	writetext .Text1
-	buttonsound
+	promptbutton
 	verbosegiveitem FOCUS_BAND
 	iffalse_endtext
 	setevent EVENT_GOT_FOCUS_BAND_IN_UNIVERSITY

@@ -47,7 +47,7 @@ Special_MagnetTrain:
 	jr z, .initialize
 	bit 7, a
 	jr nz, .done
-	farcall PlaySpriteAnimations
+	call PlaySpriteAnimations
 	call MagnetTrain_Jumptable
 	call MagnetTrain_UpdateLYOverrides
 	call PushLYOverrides
@@ -89,20 +89,20 @@ Special_MagnetTrain:
 MagnetTrain_UpdateLYOverrides:
 	ld hl, wLYOverridesBackup
 	ld c, $2f
-	ld a, [wcf64]
+	ld a, [wMagnetTrainOffset]
 	add a
 	ldh [hSCX], a
 	call .loadloop
 	ld c, $30
-	ld a, [wcf65]
+	ld a, [wMagnetTrainPosition]
 	call .loadloop
 	ld c, $31
-	ld a, [wcf64]
+	ld a, [wMagnetTrainOffset]
 	add a
 	call .loadloop
 	ld a, [wMagnetTrainDirection]
 	ld d, a
-	ld hl, wcf64
+	ld hl, wMagnetTrainOffset
 	ld a, [hl]
 	add d
 	add d
@@ -326,12 +326,12 @@ MagnetTrain_Jumptable:
 	ld [hl], $0
 	call .Next
 	ld a, $80
-	ld [wcf66], a
+	ld [wMagnetTrainWaitCounter], a
 	ret
 
 .MoveTrain1:
 	ld hl, wMagnetTrainHoldPosition
-	ld a, [wcf65]
+	ld a, [wMagnetTrainPosition]
 	cp [hl]
 	jr z, .PrepareToHoldTrain
 	ld e, a
@@ -339,7 +339,7 @@ MagnetTrain_Jumptable:
 	cpl
 	inc a
 	add e
-	ld [wcf65], a
+	ld [wMagnetTrainPosition], a
 	ld hl, wGlobalAnimXOffset
 	ld a, [wMagnetTrainDirection]
 	add [hl]
@@ -349,11 +349,11 @@ MagnetTrain_Jumptable:
 .PrepareToHoldTrain:
 	call .Next
 	ld a, $80
-	ld [wcf66], a
+	ld [wMagnetTrainWaitCounter], a
 	ret
 
 .WaitScene:
-	ld hl, wcf66
+	ld hl, wMagnetTrainWaitCounter
 	ld a, [hl]
 	and a
 	jp z, .Next
@@ -362,7 +362,7 @@ MagnetTrain_Jumptable:
 
 .MoveTrain2:
 	ld hl, wMagnetTrainFinalPosition
-	ld a, [wcf65]
+	ld a, [wMagnetTrainPosition]
 	cp [hl]
 	jp z, .Next
 	ld e, a
@@ -373,7 +373,7 @@ MagnetTrain_Jumptable:
 	ld a, e
 	add d
 	add d
-	ld [wcf65], a
+	ld [wMagnetTrainPosition], a
 	ld hl, wGlobalAnimXOffset
 	ld a, [wMagnetTrainDirection]
 	ld d, a
@@ -390,7 +390,7 @@ MagnetTrain_Jumptable:
 	jp PlaySFX
 
 MagnetTrain_Jumptable_FirstRunThrough:
-	farcall PlaySpriteAnimations
+	call PlaySpriteAnimations
 	call MagnetTrain_Jumptable
 	call MagnetTrain_UpdateLYOverrides
 	call PushLYOverrides

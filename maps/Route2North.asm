@@ -14,7 +14,7 @@ Route2North_MapScriptHeader:
 	def_coord_events
 
 	def_bg_events
-	bg_event 11, 11, BGEVENT_JUMPTEXT, UnknownText_0x1ac49f
+	bg_event 11, 11, BGEVENT_JUMPTEXT, Route2DiglettsCaveSignText
 
 	def_object_events
 	object_event  6,  6, SPRITE_BUG_MANIAC, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerBug_maniacEd, -1
@@ -55,6 +55,6 @@ Route2NorthCooltrainermText:
 	line "Snorlax."
 	done
 
-UnknownText_0x1ac49f:
+Route2DiglettsCaveSignText:
 	text "Diglett's Cave"
 	done

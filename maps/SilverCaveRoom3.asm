@@ -23,7 +23,7 @@ SilverCaveRoom3DailyRedRematchCallback:
 	iftrue .Disappear
 	appear SILVERCAVEROOM3_RED
 .Disappear
-	return
+	endcallback
 
 Red:
 	special Special_FadeOutMusic

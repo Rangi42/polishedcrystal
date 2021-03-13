@@ -79,9 +79,8 @@ InitPokedex:
 
 	xor a
 	ld [wJumptableIndex], a
-	ld [wDexEntryPrevJumptableIndex], a
-	ld [wcf65], a
-	ld [wcf66], a
+	ld [wPrevDexEntryJumptableIndex], a
+	ld [wPrevDexEntryBackup], a
 	ld hl, wPokedexDataStart
 	ld bc, wPokedexDataEnd - wPokedexDataStart
 	rst ByteFill
@@ -245,7 +244,7 @@ Pokedex_UpdateMainScreen:
 	ld a, DEXSTATE_DEX_ENTRY_SCR
 	ld [wJumptableIndex], a
 	ld a, DEXSTATE_MAIN_SCR
-	ld [wDexEntryPrevJumptableIndex], a
+	ld [wPrevDexEntryJumptableIndex], a
 	ret
 
 .select
@@ -327,7 +326,7 @@ Pokedex_UpdateDexEntryScreen:
 	ld [wLastVolume], a
 .max_volume
 	call MaxVolume
-	ld a, [wDexEntryPrevJumptableIndex]
+	ld a, [wPrevDexEntryJumptableIndex]
 	ld [wJumptableIndex], a
 	ret
 
@@ -617,7 +616,7 @@ Pokedex_UpdateSearchScreen:
 	ld a, [wDexListingCursor]
 	ld [wDexListingCursorBackup], a
 	ld a, [wPrevDexEntry]
-	ld [wcf65], a
+	ld [wPrevDexEntryBackup], a
 	xor a
 	ld [wDexListingScrollOffset], a
 	ld [wDexListingCursor], a
@@ -690,7 +689,7 @@ Pokedex_UpdateSearchResultsScreen:
 	ld a, DEXSTATE_DEX_ENTRY_SCR
 	ld [wJumptableIndex], a
 	ld a, DEXSTATE_SEARCH_RESULTS_SCR
-	ld [wDexEntryPrevJumptableIndex], a
+	ld [wPrevDexEntryJumptableIndex], a
 	ret
 
 .return_to_search_screen
@@ -698,7 +697,7 @@ Pokedex_UpdateSearchResultsScreen:
 	ld [wDexListingScrollOffset], a
 	ld a, [wDexListingCursorBackup]
 	ld [wDexListingCursor], a
-	ld a, [wcf65]
+	ld a, [wPrevDexEntryBackup]
 	ld [wPrevDexEntry], a
 	call Pokedex_BlackOutBG
 	call ClearSprites
@@ -2459,7 +2458,7 @@ NewPokedexEntry:
 .NewPokedexEntry:
 	xor a
 	ldh [hBGMapMode], a
-	farcall Pokedex_DrawDexEntryScreenRightEdge
+	call Pokedex_DrawDexEntryScreenRightEdge
 	call Pokedex_ResetBGMapMode
 	call DisableLCD
 	call LoadStandardFont

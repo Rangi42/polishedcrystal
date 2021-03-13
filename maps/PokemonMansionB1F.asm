@@ -43,7 +43,7 @@ PokemonMansionB1FHiddenRareCandy:
 	giveitem RARE_CANDY
 	iffalse .PackFull
 	opentext
-	itemtotext RARE_CANDY, $0
+	getitemname RARE_CANDY, $0
 	writetext PokemonMansion1FFoundItemText
 	playsound SFX_ITEM
 	waitsfx
@@ -54,9 +54,9 @@ PokemonMansionB1FHiddenRareCandy:
 
 .PackFull:
 	opentext
-	itemtotext RARE_CANDY, $0
+	getitemname RARE_CANDY, $0
 	writetext PokemonMansion1FFoundItemText
-	buttonsound
+	promptbutton
 	jumpopenedtext PokemonMansion1FNoRoomForItemText
 
 PokemonMansionB1FHiddenBerserkGene:
@@ -65,7 +65,7 @@ PokemonMansionB1FHiddenBerserkGene:
 	giveitem BERSERK_GENE
 	iffalse .PackFull
 	opentext
-	itemtotext BERSERK_GENE, $0
+	getitemname BERSERK_GENE, $0
 	writetext PokemonMansion1FFoundItemText
 	playsound SFX_ITEM
 	waitsfx
@@ -76,9 +76,9 @@ PokemonMansionB1FHiddenBerserkGene:
 
 .PackFull:
 	opentext
-	itemtotext BERSERK_GENE, $0
+	getitemname BERSERK_GENE, $0
 	writetext PokemonMansion1FFoundItemText
-	buttonsound
+	promptbutton
 	jumpopenedtext PokemonMansion1FNoRoomForItemText
 
 ScientistBraydonSeenText:

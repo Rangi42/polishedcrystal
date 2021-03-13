@@ -354,10 +354,8 @@ UpdateChannels:
 	bit NOTE_NOISE_SAMPLING, [hl]
 	jr nz, .asm_e824d
 	bit NOTE_VIBRATO_OVERRIDE, [hl]
-	jr nz, .asm_e823a
-	ret
+	ret z
 
-.asm_e823a
 	ld a, [wCurTrackFrequency]
 	ldh [rNR33], a
 	ret
@@ -1798,11 +1796,9 @@ Music_Tempo:
 	ld a, [wTempoAdjustment]
 	ld l, a
 	bit 7, a
-	jr nz, .negative
 	ld h, 0
-	jr .ok
-.negative
-	ld h, $ff
+	jr z, .ok
+	dec h ; negative
 .ok
 	add hl, de
 	push hl

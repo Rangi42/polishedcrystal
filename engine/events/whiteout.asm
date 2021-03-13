@@ -1,6 +1,6 @@
 Script_BattleWhiteout::
 	callasm BattleBGMap
-	jump Script_Whiteout
+	sjump Script_Whiteout
 
 Script_OverworldWhiteout::
 	refreshscreen
@@ -9,18 +9,18 @@ Script_OverworldWhiteout::
 Script_Whiteout:
 	callasm LoseMoney
 	iffalse .whiteout_text
-	copybytetovar wBattlePlayerAction
+	readmem wBattlePlayerAction
 	ifequal BATTLEACTION_FORFEIT, .forfeit_text
 	callasm DetermineWildBattlePanic
 	iffalse .whiteout_wild_text
 	farwritetext WhiteoutToTrainerText
-	jump .text_done
+	sjump .text_done
 .forfeit_text
 	farwritetext ForfeitToTrainerText
-	jump .text_done
+	sjump .text_done
 .whiteout_wild_text
 	farwritetext WhiteoutToWildText
-	jump .text_done
+	sjump .text_done
 .whiteout_text
 	farwritetext WhiteoutText
 .text_done

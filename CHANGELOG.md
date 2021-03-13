@@ -150,6 +150,7 @@ These changes have been made since the current 2.2.0 release. If you build the p
 * Add: Instant text option.
 * Add: Imperial or metric units.
 * Add: 12-hour or 24-hour clock.
+* Add: ABC or QWERTY keyboard.
 * Add: Item icons in the Bag.
 * Add: Thrown Balls use individual icons.
 * Add: Pokédex shows shiny palettes after getting the Shiny Charm.

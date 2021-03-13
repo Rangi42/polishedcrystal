@@ -353,12 +353,12 @@ AI_Items:
 	ld a, [bc]
 	bit CONTEXT_USE_F, a
 	jr nz, .CheckHalfOrQuarterHP
-	farcall AICheckEnemyHalfHP
+	call AICheckEnemyHalfHP
 	jp c, .DontUse
 	ld a, [bc]
 	bit UNKNOWN_USE_F, a
 	jp nz, .CheckQuarterHP
-	farcall AICheckEnemyQuarterHP
+	call AICheckEnemyQuarterHP
 	jp nc, .UseHealItem
 	call Random
 	cp 1 + 50 percent
@@ -366,7 +366,7 @@ AI_Items:
 	jp .DontUse
 
 .CheckQuarterHP:
-	farcall AICheckEnemyQuarterHP
+	call AICheckEnemyQuarterHP
 	jp c, .DontUse
 	call Random
 	cp -1 + 20 percent
@@ -374,9 +374,9 @@ AI_Items:
 	jr .UseHealItem
 
 .CheckHalfOrQuarterHP:
-	farcall AICheckEnemyHalfHP
+	call AICheckEnemyHalfHP
 	jp c, .DontUse
-	farcall AICheckEnemyQuarterHP
+	call AICheckEnemyQuarterHP
 	jp nc, .UseHealItem
 	call Random
 	cp -1 + 20 percent
@@ -728,9 +728,9 @@ PrintText_CopyItemName:
 	ret
 
 TextJump_EnemyUsed:
-	text_jump Text_EnemyUsed
+	text_far Text_EnemyUsed
 	text_end
 
 TextJump_EnemyUsedOn:
-	text_jump Text_EnemyUsedOn
+	text_far Text_EnemyUsedOn
 	text_end

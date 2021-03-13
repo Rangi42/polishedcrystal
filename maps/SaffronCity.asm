@@ -40,14 +40,14 @@ SaffronCity_MapScriptHeader:
 	bg_event 35, 21, BGEVENT_JUMPTEXT, SaffronTrainerTips2Text
 
 	def_object_events
-	object_event  7, 14, SPRITE_CUTE_GIRL, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, LassScript_0x19932a, -1
-	object_event 18, 30, SPRITE_POKEFAN_M, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, PokefanMScript_0x19933e, -1
-	object_event 32,  7, SPRITE_COOL_DUDE, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1994fe, -1
-	object_event 20, 24, SPRITE_ACE_TRAINER_F, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x19958e, -1
-	object_event 27, 12, SPRITE_FAT_GUY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, FisherScript_0x199358, -1
-	object_event 15, 19, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1996a5, -1
-	object_event 35, 22, SPRITE_BIRD_KEEPER, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1996e5, -1
-	object_event 14,  6, SPRITE_CUTE_GIRL, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x199745, -1
+	object_event  7, 14, SPRITE_CUTE_GIRL, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, SaffronCityLass1Script, -1
+	object_event 18, 30, SPRITE_POKEFAN_M, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, SaffronCityPokefanMScript, -1
+	object_event 32,  7, SPRITE_COOL_DUDE, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, SaffronCityCooltrainerMText, -1
+	object_event 20, 24, SPRITE_ACE_TRAINER_F, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, SaffronCityCooltrainerFText, -1
+	object_event 27, 12, SPRITE_FAT_GUY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, SaffronCityFisherScript, -1
+	object_event 15, 19, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, SaffronCityYoungster1Text, -1
+	object_event 35, 22, SPRITE_BIRD_KEEPER, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, SaffronCityYoungster2Text, -1
+	object_event 14,  6, SPRITE_CUTE_GIRL, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, SaffronCityLass2Text, -1
 	object_event  3, 24, SPRITE_BLACK_BELT, SPRITEMOVEDATA_WALK_UP_DOWN, 4, 0, -1, (1 << MORN) | (1 << EVE), 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, SaffronCityBlackBelt1Text, -1
 	object_event  4, 25, SPRITE_BLACK_BELT, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, (1 << DAY) | (1 << NITE), 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, SaffronCityBlackBelt2Text, -1
 	object_event 22,  8, SPRITE_PSYCHIC, SPRITEMOVEDATA_SPINRANDOM_SLOW, 4, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, SaffronCitySuperNerdText, -1
@@ -56,24 +56,24 @@ SaffronCity_MapScriptHeader:
 
 SaffronCityFlyPoint:
 	setflag ENGINE_FLYPOINT_SAFFRON
-	return
+	endcallback
 
-LassScript_0x19932a:
-	checkevent EVENT_RETURNED_MACHINE_PART
-	iftrue_jumptextfaceplayer UnknownText_0x19940d
-	jumptextfaceplayer UnknownText_0x19938d
+SaffronCityLass1Script:
+	checkevent EVENT_RESTORED_POWER_TO_KANTO
+	iftrue_jumptextfaceplayer SaffronCityLass1Text_ReturnedMachinePart
+	jumptextfaceplayer SaffronCityLass1Text
 
-PokefanMScript_0x19933e:
-	checkevent EVENT_RETURNED_MACHINE_PART
-	iftrue_jumptextfaceplayer UnknownText_0x1994ae
-	jumptextfaceplayer UnknownText_0x199460
+SaffronCityPokefanMScript:
+	checkevent EVENT_RESTORED_POWER_TO_KANTO
+	iftrue_jumptextfaceplayer SaffronCityPokefanMText_ReturnedMachinePart
+	jumptextfaceplayer SaffronCityPokefanMText
 
-FisherScript_0x199358:
-	checkevent EVENT_RETURNED_MACHINE_PART
-	iftrue_jumptextfaceplayer UnknownText_0x19964b
-	jumptextfaceplayer UnknownText_0x1995fc
+SaffronCityFisherScript:
+	checkevent EVENT_RESTORED_POWER_TO_KANTO
+	iftrue_jumptextfaceplayer SaffronCityFisherText_ReturnedMachinePart
+	jumptextfaceplayer SaffronCityFisherText
 
-UnknownText_0x19938d:
+SaffronCityLass1Text:
 	text "A little girl who"
 	line "is an expert at"
 
@@ -87,7 +87,7 @@ UnknownText_0x19938d:
 	line "It's confusing."
 	done
 
-UnknownText_0x19940d:
+SaffronCityLass1Text_ReturnedMachinePart:
 	text "The Copycat girl"
 	line "looked unhappy."
 
@@ -96,7 +96,7 @@ UnknownText_0x19940d:
 	cont "Doll--Clefairy."
 	done
 
-UnknownText_0x199460:
+SaffronCityPokefanMText:
 	text "You came out from"
 	line "Johto?"
 
@@ -105,7 +105,7 @@ UnknownText_0x199460:
 	cont "Train's running."
 	done
 
-UnknownText_0x1994ae:
+SaffronCityPokefanMText_ReturnedMachinePart:
 	text "You came out from"
 	line "Johto?"
 
@@ -114,7 +114,7 @@ UnknownText_0x1994ae:
 	cont "the Magnet Train."
 	done
 
-UnknownText_0x1994fe:
+SaffronCityCooltrainerMText:
 	text "I went to the Gym,"
 	line "raring for battles"
 	cont "against trainers…"
@@ -129,7 +129,7 @@ UnknownText_0x1994fe:
 	line "embarrassed."
 	done
 
-UnknownText_0x19958e:
+SaffronCityCooltrainerFText:
 	text "This is Silph Co.,"
 	line "famous for #mon"
 	cont "merchandise."
@@ -141,7 +141,7 @@ UnknownText_0x19958e:
 	line "that."
 	done
 
-UnknownText_0x1995fc:
+SaffronCityFisherText:
 	text "Chew… Chew…"
 
 	para "I hear there's big"
@@ -151,7 +151,7 @@ UnknownText_0x1995fc:
 	para "Chew… Chew…"
 	done
 
-UnknownText_0x19964b:
+SaffronCityFisherText_ReturnedMachinePart:
 	text "Chew… Chew…"
 
 	para "I hear there was"
@@ -162,7 +162,7 @@ UnknownText_0x19964b:
 	line "Haaah, I'm full!"
 	done
 
-UnknownText_0x1996a5:
+SaffronCityYoungster1Text:
 	text "Going into an"
 	line "alley for the"
 
@@ -170,7 +170,7 @@ UnknownText_0x1996a5:
 	line "me sorta anxious."
 	done
 
-UnknownText_0x1996e5:
+SaffronCityYoungster2Text:
 	text "There's a place"
 	line "called Trainer"
 
@@ -181,7 +181,7 @@ UnknownText_0x1996e5:
 	line "over the place."
 	done
 
-UnknownText_0x199745:
+SaffronCityLass2Text:
 	text "Our city was"
 	line "featured on a"
 	cont "radio program."

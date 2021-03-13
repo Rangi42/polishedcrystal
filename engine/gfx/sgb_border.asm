@@ -1,3 +1,36 @@
+SGBBorderMap:
+INCBIN "gfx/sgb/sgb_border.bin"
+
+InitSGBBorder::
+	ldh a, [hCGB]
+	and a
+	ret nz
+
+	ld hl, SGBBorderGFX
+	ld a, BANK(SGBBorderGFX)
+	call FarDecompress
+
+	di
+	ld hl, MaskEnFreezePacket
+	call SendSGBPacket
+	ei
+
+	ld de, ChrTrnPacket
+	ld hl, wDecompressScratch
+	call CopyGfxToSuperNintendoVRAM
+
+	ld de, PctTrnPacket
+	ld hl, SGBBorderMap
+	call CopyGfxToSuperNintendoVRAM
+
+	ld hl, vTiles0
+	ld bc, VRAM_End - vTiles0
+	xor a
+	rst ByteFill
+
+	ld hl, MaskEnCancelPacket
+	; fallthrough
+
 SendSGBPacket:
 	ld a, [hl]
 	and $7
@@ -54,54 +87,6 @@ SGBDelayCycles:
 	jr nz, .wait
 	ret
 
-InitSGBBorder::
-	ldh a, [hCGB]
-	and a
-	ret nz
-
-	ld a, BANK(wDecompressScratch)
-	push af
-	ldh [rSVBK], a
-
-	ld hl, SGBBorderGFX
-	ld b, BANK(SGBBorderGFX)
-	call FarDecompressAtB_D000
-
-	di
-	ld hl, MaskEnFreezePacket
-	call SendSGBPacket
-	ei
-
-	ld a, TRUE
-	ld [wCopyingSGBTileData], a
-	ld de, ChrTrnPacket
-	ld hl, wDecompressScratch
-	call CopyGfxToSuperNintendoVRAM
-
-	xor a
-	ld [wCopyingSGBTileData], a
-	ld de, PctTrnPacket
-	ld hl, SGBBorderMap
-	call CopyGfxToSuperNintendoVRAM
-
-	xor a
-	ld [wCopyingSGBTileData], a
-	ld de, PalTrnPacket
-	ld hl, SGBBorderMap ; not SGBBorderPals
-	call CopyGfxToSuperNintendoVRAM
-
-	ld hl, vTiles0
-	ld bc, VRAM_End - vTiles0
-	xor a
-	rst ByteFill
-
-	ld hl, MaskEnCancelPacket
-	call SendSGBPacket
-
-	pop af
-	ldh [rSVBK], a
-	ret
-
 CopyGfxToSuperNintendoVRAM:
 	di
 	push de
@@ -109,12 +94,6 @@ CopyGfxToSuperNintendoVRAM:
 	ld a, $e4
 	ldh [rBGP], a
 	ld de, vTiles1
-	ld a, [wCopyingSGBTileData]
-	and a
-	jr z, .notCopyingTileData
-	call CopySGBBorderTiles
-	jr .next
-.notCopyingTileData
 	ld bc, $1000
 .copyData
 	ld a, [hli]
@@ -124,7 +103,6 @@ CopyGfxToSuperNintendoVRAM:
 	ld a, c
 	or b
 	jr nz, .copyData
-.next
 	ld hl, vBGMap0
 	ld de, $c
 	ld a, $80
@@ -148,51 +126,19 @@ CopyGfxToSuperNintendoVRAM:
 	ei
 	ret
 
-CopySGBBorderTiles:
-; SGB tile data is stored in a 4BPP planar format.
-; Each tile is 32 bytes. The first 16 bytes contain bit planes 1 and 2, while
-; the second 16 bytes contain bit planes 3 and 4.
-; This function converts 2BPP planar data into this format by mapping
-; 2BPP colors 0-3 to 4BPP colors 0-3. 4BPP colors 4-15 are not used.
-	ld b, 128
-.tileLoop
-; Copy bit planes 1 and 2 of the tile data.
-	ld c, 16
-.copyLoop
-	ld a, [hli]
-	ld [de], a
-	inc de
-	dec c
-	jr nz, .copyLoop
-; Zero bit planes 3 and 4.
-	ld c, 16
-	xor a
-.zeroLoop
-	ld [de], a
-	inc de
-	dec c
-	jr nz, .zeroLoop
-	dec b
-	jr nz, .tileLoop
-	ret
-
 MaskEnFreezePacket:
 	db $b9, $01, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00
 MaskEnCancelPacket:
 	db $b9, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00
 
-PalTrnPacket:
-	db $59, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00
 ChrTrnPacket:
 	db $99, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00
 PctTrnPacket:
 	db $a1, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00, $00
 
-SGBBorderMap:
-INCBIN "gfx/sgb/sgb_border.bin"
+	ds 8
 
 SGBBorderPals:
 INCLUDE "gfx/sgb/sgb_border.pal"
 
-SGBBorderGFX:
-INCBIN "gfx/sgb/sgb_border.2bpp.lz"
+	assert SGBBorderMap + $80 tiles == SGBBorderPals

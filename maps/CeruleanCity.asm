@@ -30,12 +30,12 @@ CeruleanCity_MapScriptHeader:
 	bg_event  4, 13, BGEVENT_ITEM + BERSERK_GENE, EVENT_FOUND_BERSERK_GENE_IN_CERULEAN_CITY
 
 	def_object_events
-	object_event 21, 20, SPRITE_BATTLE_GIRL, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, CooltrainerFScript_0x18402a, -1
-	object_event  6,  8, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 1, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, YoungsterScript_0x184064, -1
-	object_event 30, 22, SPRITE_COOL_DUDE, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, CooltrainerMScript_0x184009, -1
-	object_event 23, 11, SPRITE_POKEMANIAC, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1841a8, -1
+	object_event 21, 20, SPRITE_BATTLE_GIRL, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, CeruleanCityCooltrainerFScript, -1
+	object_event  6,  8, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 1, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, CeruleanCityYoungsterScript, -1
+	object_event 30, 22, SPRITE_COOL_DUDE, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, CeruleanCityCooltrainerMScript, -1
+	object_event 23, 11, SPRITE_POKEMANIAC, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeruleanCitySuperNerdText, -1
 	object_event 20, 20, SPRITE_MON_ICON, SPRITEMOVEDATA_STILL, 0, SLOWBRO, -1, -1, PAL_NPC_RED, OBJECTTYPE_POKEMON, SLOWBRO, CeruleanCitySlowbroText, -1
-	object_event 14, 18, SPRITE_FAT_GUY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, FisherScript_0x18404a, -1
+	object_event 13, 18, SPRITE_FAT_GUY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, CeruleanCityFisherScript, -1
 	object_event  2, 10, SPRITE_ACE_TRAINER_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeruleanCaveGuardText, EVENT_BEAT_BLUE
 	object_event 44, 16, SPRITE_BALL_CUT_FRUIT, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_9_CUT_TREE
 
@@ -45,32 +45,32 @@ CeruleanCity_MapScriptHeader:
 
 CeruleanCityFlyPoint:
 	setflag ENGINE_FLYPOINT_CERULEAN
-	return
+	endcallback
 
-CooltrainerMScript_0x184009:
-	checkevent EVENT_RETURNED_MACHINE_PART
-	iftrue_jumptextfaceplayer UnknownText_0x184144
-	jumptextfaceplayer UnknownText_0x1840bc
+CeruleanCityCooltrainerMScript:
+	checkevent EVENT_RESTORED_POWER_TO_KANTO
+	iftrue_jumptextfaceplayer CeruleanCityCooltrainerMText2
+	jumptextfaceplayer CeruleanCityCooltrainerMText1
 
-CooltrainerFScript_0x18402a:
-	showtextfaceplayer UnknownText_0x1841fa
+CeruleanCityCooltrainerFScript:
+	showtextfaceplayer CeruleanCityCooltrainerFText1
 	turnobject CERULEANCITY_COOLTRAINER_F, LEFT
-	showtext UnknownText_0x184229
+	showtext CeruleanCityCooltrainerFText2
 	showcrytext CeruleanCitySlowbroText, SLOWBRO
-	jumptext UnknownText_0x18424b
+	jumptext CeruleanCityCooltrainerFText3
 
-FisherScript_0x18404a:
-	checkevent EVENT_RETURNED_MACHINE_PART
-	iftrue_jumptextfaceplayer UnknownText_0x18424e
+CeruleanCityFisherScript:
+	checkevent EVENT_RESTORED_POWER_TO_KANTO
+	iftrue_jumptextfaceplayer CeruleanCityFisherText
 	checkevent EVENT_MET_ROCKET_GRUNT_AT_CERULEAN_GYM
-	iftrue_jumptextfaceplayer UnknownText_0x184275
-	jumptextfaceplayer UnknownText_0x18424e
+	iftrue_jumptextfaceplayer CeruleanCityFisherRocketTipText
+	jumptextfaceplayer CeruleanCityFisherText
 
-YoungsterScript_0x184064:
+CeruleanCityYoungsterScript:
 	checkevent EVENT_FOUND_BERSERK_GENE_IN_CERULEAN_CITY
 	iftrue_jumptextfaceplayer CeruleanCityYoungsterText
 	faceplayer
-	showtext UnknownText_0x1842a9
+	showtext CeruleanCityYoungsterText1
 	waitsfx
 	playsound SFX_SECOND_PART_OF_ITEMFINDER
 	waitsfx
@@ -90,9 +90,9 @@ YoungsterScript_0x184064:
 	waitsfx
 	showemote EMOTE_SHOCK, CERULEANCITY_YOUNGSTER, 15
 	turnobject CERULEANCITY_YOUNGSTER, LEFT
-	jumptext UnknownText_0x1842ee
+	jumptext CeruleanCityYoungsterText2
 
-UnknownText_0x1840bc:
+CeruleanCityCooltrainerMText1:
 	text "Kanto's Power"
 	line "Plant?"
 
@@ -107,7 +107,7 @@ UnknownText_0x1840bc:
 	cont "some sort there."
 	done
 
-UnknownText_0x184144:
+CeruleanCityCooltrainerMText2:
 	text "You're collecting"
 	line "every single kind"
 	cont "of #mon?"
@@ -117,7 +117,7 @@ UnknownText_0x184144:
 	cont "it sounds fun too."
 	done
 
-UnknownText_0x1841a8:
+CeruleanCitySuperNerdText:
 	text "The Cape in the"
 	line "north is a good"
 
@@ -129,41 +129,41 @@ CeruleanCitySlowbroText:
 	text "Slowbro: Yarah?"
 	done
 
-UnknownText_0x1841fa:
+CeruleanCityCooltrainerFText1:
 	text "My Slowbro and I"
 	line "make an awesome"
 	cont "combination!"
 	done
 
-UnknownText_0x184229:
+CeruleanCityCooltrainerFText2:
 	text "Slowbro, show me"
 	line "your Confusion!"
 	done
 
-UnknownText_0x18424b:
+CeruleanCityCooltrainerFText3:
 	text "…"
 	done
 
-UnknownText_0x18424e:
+CeruleanCityFisherText:
 	text "I'm a huge fan of"
 	line "Cerulean Gym's"
 	cont "Misty."
 	done
 
-UnknownText_0x184275:
+CeruleanCityFisherRocketTipText:
 	text "I saw this shady"
 	line "guy go off toward"
 	cont "Cerulean Cape."
 	done
 
-UnknownText_0x1842a9:
+CeruleanCityYoungsterText1:
 	text "There's a cave"
 	line "here with scary-"
 	cont "powerful #mon"
 	cont "in it."
 	done
 
-UnknownText_0x1842ee:
+CeruleanCityYoungsterText2:
 	text "Ayuh?"
 
 	para "My Itemfinder is"

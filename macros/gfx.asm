@@ -1,6 +1,6 @@
 RGB: MACRO
 rept _NARG / 3
-if DEF(NOIR)
+if DEF(NOIR) && !DEF(LITERAL_NOIR_RGB_COLORS)
 x = (299 * \1 + 587 * \2 + 114 * \3) / 1000
 	dw palred x + palgreen x + palblue x
 else

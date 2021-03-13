@@ -254,12 +254,12 @@ PrintTwoDigitNumberRightAlign:
 
 Text_WokeUpOak:
 	; Zzz… Hm? Wha…? You woke me up! Will you check the clock for me?
-	text_jump UnknownText_0x1bc29c
+	text_far _OakTimeWokeUpText
 	text_end
 
 Text_WhatTimeIsIt:
 	; What time is it?
-	text_jump UnknownText_0x1bc2eb
+	text_far _OakTimeWhatTimeIsItText
 	text_end
 
 String_oclock:
@@ -267,8 +267,8 @@ String_oclock:
 
 Text_WhatHrs:
 	; What?@ @
-	text_jump UnknownText_0x1bc2fd
-	start_asm
+	text_far _OakTimeWhatHoursText
+	text_asm
 	hlcoord 1, 16
 	call DisplayHourOClock
 	ld hl, .QuestionMark
@@ -276,12 +276,12 @@ Text_WhatHrs:
 
 .QuestionMark:
 	; ?
-	text_jump UnknownText_0x1bc305
+	text_far _OakTimeHoursQuestionMarkText
 	text_end
 
 Text_HowManyMinutes:
 	; How many minutes?
-	text_jump UnknownText_0x1bc308
+	text_far _OakTimeHowManyMinutesText
 	text_end
 
 String_min:
@@ -289,8 +289,8 @@ String_min:
 
 Text_WhoaMins:
 	; Whoa!@ @
-	text_jump UnknownText_0x1bc31b
-	start_asm
+	text_far _OakTimeWhoaMinutesText
+	text_asm
 	hlcoord 7, 14
 	call DisplayMinutesWithMinString
 	ld hl, .QuestionMark
@@ -298,11 +298,11 @@ Text_WhoaMins:
 
 .QuestionMark:
 	; ?
-	text_jump UnknownText_0x1bc323
+	text_far _OakTimeMinutesQuestionMarkText
 	text_end
 
 OakText_ResponseToSetTime:
-	start_asm
+	text_asm
 	decoord 1, 14
 	ld a, [wInitHourBuffer]
 	ld c, a
@@ -338,21 +338,21 @@ OakText_ResponseToSetTime:
 
 .overslept
 	; ! I overslept!
-	text_jump UnknownText_0x1bc326
+	text_far _OakTimeOversleptText
 	text_end
 
 .yikes
 	; ! Yikes! I over- slept!
-	text_jump UnknownText_0x1bc336
+	text_far _OakTimeYikesText
 	text_end
 
 .napped
-	text_jump ProfElmNappedText
+	text_far ProfElmNappedText
 	text_end
 
 .sodark
 	; ! No wonder it's so dark!
-	text_jump UnknownText_0x1bc34f
+	text_far _OakTimeSoDarkText
 	text_end
 
 TimesetBackgroundGFX:
@@ -491,11 +491,11 @@ Special_SetDayOfWeek:
 
 .WhatDayIsItText:
 	; What day is it?
-	text_jump UnknownText_0x1bc369
+	text_far _OakTimeWhatDayIsItText
 	text_end
 
 .ConfirmWeekdayText:
-	start_asm
+	text_asm
 	hlcoord 1, 14
 	call .PlaceWeekdayString
 	ld hl, .IsIt
@@ -503,7 +503,7 @@ Special_SetDayOfWeek:
 
 .IsIt:
 	; , is it?
-	text_jump UnknownText_0x1bc37a
+	text_far _OakTimeIsItText
 	text_end
 
 Special_InitialSetDSTFlag:
@@ -515,7 +515,7 @@ Special_InitialSetDSTFlag:
 	jp PlaceWholeStringInBoxAtOnce
 
 .Text:
-	start_asm
+	text_asm
 	call UpdateTime
 	ldh a, [hHours]
 	ld b, a
@@ -528,7 +528,7 @@ Special_InitialSetDSTFlag:
 
 .DSTIsThatOK:
 	; DST, is that OK?
-	text_jump Text_DSTIsThatOK
+	text_far Text_DSTIsThatOK
 	text_end
 
 Special_InitialClearDSTFlag:
@@ -540,7 +540,7 @@ Special_InitialClearDSTFlag:
 	jp PlaceWholeStringInBoxAtOnce
 
 .Text:
-	start_asm
+	text_asm
 	call UpdateTime
 	ldh a, [hHours]
 	ld b, a
@@ -553,7 +553,7 @@ Special_InitialClearDSTFlag:
 
 .IsThatOK:
 	; , is that OK?
-	text_jump UnknownText_0x1c5ff1
+	text_far _TimeAskOkayText
 	text_end
 
 PrintHour:

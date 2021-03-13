@@ -2,7 +2,7 @@ CalcLevel:
 	ld a, [wTempMonSpecies]
 	ld [wCurSpecies], a
 	ld a, [wTempMonForm]
-	and FORM_MASK
+	and BASEMON_MASK
 	ld [wCurForm], a
 	call GetBaseData
 	ld d, 1

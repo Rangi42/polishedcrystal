@@ -264,7 +264,7 @@ CheckSpecialPhoneCall::
 
 .script
 	pause 30
-	jump Script_ReceivePhoneCall
+	sjump Script_ReceivePhoneCall
 
 .DoSpecialPhoneCall:
 	ld a, [wSpecialPhoneCallID]
@@ -339,35 +339,35 @@ MakePhoneCallFromPokegear:
 	jr .DoPhoneCall
 
 .OutOfArea:
-	ld b, BANK(UnknownScript_0x90209)
-	ld de, UnknownScript_0x90209
+	ld b, BANK(LoadOutOfAreaScript)
+	ld de, LoadOutOfAreaScript
 	jp ExecuteCallbackScript
 
 .DoPhoneCall:
 	ld a, b
-	ld [wd002], a
+	ld [wPhoneScriptBank], a
 	ld a, l
-	ld [wd003], a
+	ld [wPhoneCaller], a
 	ld a, h
-	ld [wd004], a
-	ld b, BANK(UnknownScript_0x90205)
-	ld de, UnknownScript_0x90205
+	ld [wPhoneCaller+1], a
+	ld b, BANK(LoadPhoneScriptBank)
+	ld de, LoadPhoneScriptBank
 	jp ExecuteCallbackScript
 
-UnknownScript_0x90205:
-	ptcall wd002
-	return
+LoadPhoneScriptBank:
+	memcall wPhoneScriptBank
+	endcallback
 
-UnknownScript_0x90209:
-	scall UnknownScript_0x90657
-	return
+LoadOutOfAreaScript:
+	scall PhoneOutOfAreaScript
+	endcallback
 
-UnknownScript_0x90657:
-	farwritetext UnknownText_0x1c558b
+PhoneOutOfAreaScript:
+	farwritetext _PhoneOutOfAreaText
 	end
 
 PhoneScript_JustTalkToThem:
-	farwritetext UnknownText_0x1c55ac
+	farwritetext _PhoneJustTalkToThemText
 	end
 
 LoadCallerScript:
@@ -394,12 +394,12 @@ WrongNumber:
 	db TRAINER_NONE, PHONE_00
 	dba .script
 .script
-	farjumptext UnknownText_0x1c5565
+	farjumptext _PhoneWrongNumberText
 
 Script_ReceivePhoneCall:
 	refreshscreen
 	callasm RingTwice_StartCall
-	ptcall wCallerContact + PHONE_CONTACT_SCRIPT2_BANK
+	memcall wCallerContact + PHONE_CONTACT_SCRIPT2_BANK
 	waitbutton
 	callasm HangUp
 	closetext
@@ -408,7 +408,7 @@ Script_ReceivePhoneCall:
 
 Script_SpecialBillCall::
 	callasm .LoadBillScript
-	jump Script_ReceivePhoneCall
+	sjump Script_ReceivePhoneCall
 
 .LoadBillScript:
 	ld e, PHONE_BILL
@@ -519,21 +519,21 @@ Phone_CallEnd:
 	jp HangUp_Wait20Frames
 
 HangUp_Beep:
-	ld hl, UnknownText_0x9032a
+	ld hl, PhoneClickText
 	call PrintText
 	ld de, SFX_HANG_UP
 	jp PlaySFX
 
-UnknownText_0x9032a:
-	text_jump UnknownText_0x1c5580
+PhoneClickText:
+	text_far _PhoneClickText
 	text_end
 
 HangUp_BoopOn:
-	ld hl, UnknownText_0x90336
+	ld hl, PhoneEllipseText
 	jp PrintText
 
-UnknownText_0x90336:
-	text_jump UnknownText_0x1c5588
+PhoneEllipseText:
+	text_far _PhoneEllipseText
 	text_end
 
 Phone_StartRinging:

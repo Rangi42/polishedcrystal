@@ -241,7 +241,6 @@ WRAMX $2
 	org $d000
 	"Pic Animations RAM"
 	align 8
-	"Battle Tower"
 	"Sound Stack"
 
 WRAMX $3

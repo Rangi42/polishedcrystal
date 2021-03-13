@@ -13,10 +13,10 @@ Route39Barn_MapScriptHeader:
 
 	def_object_events
 	object_event  3,  3, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, MILTANK, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, MooMoo, -1
-	object_event  2,  3, SPRITE_TWIN, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, TwinScript_0x9cc76, -1
-	object_event  4,  3, SPRITE_TWIN, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, TwinScript_0x9cc90, -1
+	object_event  2,  3, SPRITE_TWIN, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, Route39BarnTwin1Script, -1
+	object_event  4,  3, SPRITE_TWIN, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, Route39BarnTwin2Script, -1
 
-TwinScript_0x9cc76:
+Route39BarnTwin1Script:
 	faceplayer
 	opentext
 	checkevent EVENT_HEALED_MOOMOO
@@ -34,7 +34,7 @@ TwinScript_0x9cc76:
 	turnobject LAST_TALKED, RIGHT
 	end
 
-TwinScript_0x9cc90:
+Route39BarnTwin2Script:
 	faceplayer
 	opentext
 	checkevent EVENT_HEALED_MOOMOO
@@ -57,25 +57,25 @@ MooMoo:
 	iftrue .HappyCow
 	opentext
 	writetext Text_WeakMoo
-	writebyte MILTANK
+	setval MILTANK
 	special PlaySlowCry
-	buttonsound
+	promptbutton
 	writetext Text_ItsCryIsWeak
 	checkevent EVENT_TALKED_TO_FARMER_ABOUT_MOOMOO
 	iftrue .GiveBerry
 	waitendtext
 
 .GiveBerry:
-	buttonsound
+	promptbutton
 	writetext Text_AskGiveBerry
 	yesorno
 	iffalse_jumpopenedtext Text_RefusedToGiveBerry
 	checkitem ORAN_BERRY
 	iffalse .MaybeSitrusBerry
 	takeitem ORAN_BERRY
-	copybytetovar wMooMooBerries
-	addvar 1
-	copyvartobyte wMooMooBerries
+	readmem wMooMooBerries
+	addval 1
+	writemem wMooMooBerries
 	ifequal 3, .ThreeOranBerries
 	ifequal 5, .FiveOranBerries
 	ifequal 7, .SevenOranBerries
@@ -85,9 +85,9 @@ MooMoo:
 	checkitem SITRUS_BERRY
 	iffalse_jumpopenedtext Text_NoBerries
 	takeitem SITRUS_BERRY
-	copybytetovar wMooMooBerries
-	addvar 2
-	copyvartobyte wMooMooBerries
+	readmem wMooMooBerries
+	addval 2
+	writemem wMooMooBerries
 	ifgreater 6, .SevenSitrusBerries
 	ifgreater 4, .FiveSitrusBerries
 	ifgreater 2, .ThreeSitrusBerries
@@ -95,44 +95,44 @@ MooMoo:
 
 .ThreeOranBerries:
 	writetext Text_GaveOranBerry
-	buttonsound
+	promptbutton
 	jumpopenedtext Text_LittleHealthier
 
 .FiveOranBerries:
 	writetext Text_GaveOranBerry
-	buttonsound
+	promptbutton
 	jumpopenedtext Text_QuiteHealthy
 
 .SevenOranBerries:
 	playmusic MUSIC_HEAL
 	writetext Text_GaveOranBerry
 	pause 60
-	buttonsound
+	promptbutton
 	special RestartMapMusic
 	setevent EVENT_HEALED_MOOMOO
 	jumpopenedtext Text_TotallyHealthy
 
 .ThreeSitrusBerries:
 	writetext Text_GaveSitrusBerry
-	buttonsound
+	promptbutton
 	jumpopenedtext Text_LittleHealthier
 
 .FiveSitrusBerries:
 	writetext Text_GaveSitrusBerry
-	buttonsound
+	promptbutton
 	jumpopenedtext Text_QuiteHealthy
 
 .SevenSitrusBerries:
 	playmusic MUSIC_HEAL
 	writetext Text_GaveSitrusBerry
 	pause 60
-	buttonsound
+	promptbutton
 	special RestartMapMusic
 	setevent EVENT_HEALED_MOOMOO
 	jumpopenedtext Text_TotallyHealthy
 
 .HappyCow:
-	showcrytext UnknownText_0x9cd92, MILTANK
+	showcrytext MoomooHappyMooText, MILTANK
 	end
 
 Text_MoomooIsSick:
@@ -155,7 +155,7 @@ Text_ItsCryIsWeak:
 	text "Its cry is weak…"
 	done
 
-UnknownText_0x9cd92:
+MoomooHappyMooText:
 	text "Miltank: Mooo!"
 	done
 

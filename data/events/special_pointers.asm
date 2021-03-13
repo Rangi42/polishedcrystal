@@ -45,7 +45,7 @@ SpecialsPointers::
 	add_special Special_UnownPuzzle
 	add_special Special_SlotMachine
 	add_special Special_CardFlip
-;	add_special Special_DummyNonfunctionalGameCornerGame
+;	add_special Special_UnusedMemoryGame
 	add_special FadeOutPalettes
 	add_special Special_FadeBlackQuickly
 	add_special FadeInPalettes
@@ -128,22 +128,15 @@ SpecialsPointers::
 	add_special Special_InitialClearDSTFlag
 
 ; Battle Tower
-	add_special Special_BattleTower_FindChallengeLevel
 	add_special Special_BattleTower_Battle
-	add_special Special_BattleTower_ResetTrainersSRAM
-	add_special Special_BattleTower_CheckNewSaveFile
+	add_special Special_BattleTower_CommitChallengeResult
 	add_special Special_BattleTower_GetChallengeState
 	add_special Special_BattleTower_SetChallengeState
-	add_special Special_BattleTower_MarkNewSaveFile
-	add_special Special_BattleTower_SaveLevelGroup
-	add_special Special_BattleTower_LoadLevelGroup
-	add_special Special_BattleTower_CheckSaveFileExistsAndIsYours
+	add_special Special_BattleTower_SelectParticipants
 	add_special Special_BattleTower_MaxVolume
 	add_special Special_BattleTower_BeginChallenge
 	add_special Special_BattleTower_LoadOpponentTrainerAndPokemonsWithOTSprite
-	add_special Special_BattleTower_CheckForRules
 	add_special Special_BattleTower_MainMenu
-	add_special Special_BattleTower_Fade
 
 ; Polished Crystal
 	add_special SaveOptions

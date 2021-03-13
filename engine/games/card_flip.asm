@@ -108,7 +108,7 @@ _CardFlip:
 
 .PlayWithThreeCoinsText:
 	; Play with three coins?
-	text_jump UnknownText_0x1c5793
+	text_far _CardFlipPlayWithThreeCoinsText
 	text_end
 
 .DeductCoins:
@@ -146,7 +146,7 @@ _CardFlip:
 
 .NotEnoughCoinsText:
 	; Not enough coins…
-	text_jump UnknownText_0x1c57ab
+	text_far _CardFlipNotEnoughCoinsText
 	text_end
 
 .ChooseACard:
@@ -224,7 +224,7 @@ _CardFlip:
 
 .ChooseACardText:
 	; Choose a card.
-	text_jump UnknownText_0x1c57be
+	text_far _CardFlipChooseACardText
 	text_end
 
 .PlaceYourBet:
@@ -242,7 +242,7 @@ _CardFlip:
 
 .PlaceYourBetText:
 	; Place your bet.
-	text_jump UnknownText_0x1c57ce
+	text_far _CardFlipPlaceYourBetText
 	text_end
 
 .CheckTheCard:
@@ -307,12 +307,12 @@ _CardFlip:
 
 .PlayAgainText:
 	; Want to play again?
-	text_jump UnknownText_0x1c57df
+	text_far _CardFlipPlayAgainText
 	text_end
 
 .CardsShuffledText:
 	; The cards have been shuffled.
-	text_jump UnknownText_0x1c57f4
+	text_far _CardFlipShuffledText
 	text_end
 
 .Quit:
@@ -1023,10 +1023,7 @@ CardFlip_CheckWinCondition:
 .loop
 	push bc
 	call .IsCoinCaseFull
-	jr c, .full
-	call .AddCoinPlaySFX
-
-.full
+	call nc, .AddCoinPlaySFX
 	call CardFlip_PrintCoinBalance
 	ld c, 2
 	call DelayFrames
@@ -1037,12 +1034,12 @@ CardFlip_CheckWinCondition:
 
 .Text_Yeah:
 	; Yeah!
-	text_jump UnknownText_0x1c5813
+	text_far _CardFlipYeahText
 	text_end
 
 .Text_Darn:
 	; Darn…
-	text_jump UnknownText_0x1c581a
+	text_far _CardFlipDarnText
 	text_end
 
 .AddCoinPlaySFX:

@@ -53,17 +53,17 @@ _PlaceMenuQuantity:
 	jp PrintNum
 
 PlaceMoneyTopRight:
-	ld hl, MenuDataHeader_0x24b15
+	ld hl, MoneyTopRightMenuHeader
 	call CopyMenuHeader
 	jr PlaceMoneyDataHeader
 
 PlaceMoneyBottomLeft:
-	ld hl, MenuDataHeader_0x24b1d
+	ld hl, MoneyBottomLeftMenuHeader
 	call CopyMenuHeader
 	jr PlaceMoneyDataHeader
 
 PlaceMoneyAtTopLeftOfTextbox:
-	ld hl, MenuDataHeader_0x24b15
+	ld hl, MoneyTopRightMenuHeader
 	lb de, 0, 11
 	call OffsetMenuDataHeader
 
@@ -76,14 +76,14 @@ PlaceMoneyDataHeader:
 	lb bc, PRINTNUM_MONEY | 3, 7
 	jp PrintNum
 
-MenuDataHeader_0x24b15:
+MoneyTopRightMenuHeader:
 	db $40 ; flags
 	db 00, 10 ; start coords
 	db 02, 19 ; end coords
 	dw NULL
 	db 1 ; default option
 
-MenuDataHeader_0x24b1d:
+MoneyBottomLeftMenuHeader:
 	db $40 ; flags
 	db 11, 00 ; start coords
 	db 13, 09 ; end coords

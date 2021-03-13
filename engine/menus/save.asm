@@ -6,8 +6,8 @@ SaveMenu:
 	call SpeechTextbox
 	call UpdateSprites
 	call ApplyTilemap
-	ld hl, UnknownText_0x15283
-	ld b, BANK(UnknownText_0x15283)
+	ld hl, WouldYouLikeToSaveTheGameText
+	ld b, BANK(WouldYouLikeToSaveTheGameText)
 	call MapTextbox
 	call LoadMenuTextbox
 	call YesNoBox
@@ -33,18 +33,18 @@ SaveMenu:
 
 SaveAfterLinkTrade:
 	call SetWRAMStateForSave
-	farcall StageRTCTimeForSave
+	call StageRTCTimeForSave
 	call SavePokemonData
 	call SaveChecksum
 	call SaveBackupPokemonData
 	call SaveBackupChecksum
 	farcall BackupPartyMonMail
-	farcall SaveRTC
+	call SaveRTC
 	jp ClearWRAMStateAfterSave
 
 ChangeBoxSaveGame:
 	push de
-	ld hl, UnknownText_0x152a1
+	ld hl, ChangeBoxSaveText
 	call MenuTextbox
 	call YesNoBox
 	call ExitMenu
@@ -71,6 +71,7 @@ SaveAndChangeBox:
 Link_SaveGame:
 	call AskOverwriteSaveFile
 	ret c
+ForceGameSave:
 	call SetWRAMStateForSave
 	call SavedTheGame
 	call ClearWRAMStateAfterSave
@@ -96,7 +97,7 @@ MovePkmnWOMail_InsertMon_SaveGame:
 	ld [wCurBox], a
 	ld a, $1
 	ld [wSaveFileExists], a
-	farcall StageRTCTimeForSave
+	call StageRTCTimeForSave
 	call ValidateSave
 	call SaveOptions
 	call SavePlayerData
@@ -108,14 +109,14 @@ MovePkmnWOMail_InsertMon_SaveGame:
 	call SaveBackupPokemonData
 	call SaveBackupChecksum
 	farcall BackupPartyMonMail
-	farcall SaveRTC
+	call SaveRTC
 	call LoadBox
 	call ClearWRAMStateAfterSave
 	ld de, SFX_SAVE
 	jp PlaySFX
 
 StartMovePkmnWOMail_SaveGame:
-	ld hl, UnknownText_0x152a6
+	ld hl, MoveMonWOMailSaveText
 	call MenuTextbox
 	call YesNoBox
 	call ExitMenu
@@ -168,8 +169,8 @@ AskOverwriteSaveFile:
 	jr z, .erase
 	call CompareLoadedAndSavedPlayerID
 	jr z, .ok
-	ld hl, UnknownText_0x15297
-	ld b, BANK(UnknownText_0x15297)
+	ld hl, AnotherSaveFileText
+	ld b, BANK(AnotherSaveFileText)
 	call MapTextbox
 	call LoadMenuTextbox
 	call YesNoBox
@@ -205,8 +206,9 @@ CompareLoadedAndSavedPlayerID:
 
 SavedTheGame:
 	call SaveGameData
+	call SaveCurrentVersion
 	; <PLAYER> saved the game!
-	ld hl, UnknownText_0x1528d
+	ld hl, SavedTheGameText
 	call PrintText
 	ld de, SFX_SAVE
 	call WaitPlaySFX
@@ -219,12 +221,22 @@ SaveGameData::
 	ldh [hVBlank], a
 	dec a ; ld a, TRUE
 	ld [wSaveFileExists], a
-	farcall StageRTCTimeForSave
+	call StageRTCTimeForSave
 	call ValidateSave
 	call SaveOptions
 	call SavePlayerData
 	call SavePokemonData
 	call SaveBox
+
+	; This function is never called mid-Battle Tower (only in the beginning).
+	; So this is always a safe action, and gets rid of potential old BT state
+	; from a previous save. Done before checksum generation in case user resets
+	; mid-save.
+	ld a, BANK(sBattleTowerChallengeState)
+	call GetSRAMBank
+	xor a
+	ld [sBattleTowerChallengeState], a
+
 	call SaveChecksum
 	call ValidateBackupSave
 	call SaveBackupOptions
@@ -232,16 +244,8 @@ SaveGameData::
 	call SaveBackupPokemonData
 	call SaveBackupChecksum
 	farcall BackupPartyMonMail
-	farcall SaveRTC
-	ld a, BANK(sBattleTowerChallengeState)
-	call GetSRAMBank
-	ld a, [sBattleTowerChallengeState]
-	cp BATTLETOWER_RECEIVED_REWARD
-	jr nz, .ok
-	xor a
-	ld [sBattleTowerChallengeState], a
-.ok
-	call CloseSRAM
+	call SaveRTC
+	call CloseSRAM ; just in case
 	pop af
 	ldh [hVBlank], a
 	ret
@@ -298,13 +302,15 @@ ValidateSave:
 SaveOptions:
 	ld a, BANK(sOptions)
 	call GetSRAMBank
-	ld hl, wOptions1
+	ld hl, wOptions
 	ld de, sOptions
-	ld bc, wOptionsEnd - wOptions1
+	ld bc, wOptionsEnd - wOptions
 	rst CopyBytes
+	ld a, [wOptions3]
+	ld [sOptions3], a
 	ld a, [wOptions1]
 	and $ff ^ (1 << NO_TEXT_SCROLL)
-	ld [sOptions], a
+	ld [sOptions + wOptions1 - wOptions], a
 	jp CloseSRAM
 
 SavePlayerData:
@@ -357,10 +363,12 @@ ValidateBackupSave:
 SaveBackupOptions:
 	ld a, BANK(sBackupOptions)
 	call GetSRAMBank
-	ld hl, wOptions1
+	ld hl, wOptions
 	ld de, sBackupOptions
-	ld bc, wOptionsEnd - wOptions1
+	ld bc, wOptionsEnd - wOptions
 	rst CopyBytes
+	ld a, [wOptions3]
+	ld [sBackupOptions3], a
 	jp CloseSRAM
 
 SaveBackupPlayerData:
@@ -433,7 +441,7 @@ TryLoadSaveFile:
 	push af
 	set NO_TEXT_SCROLL, a
 	ld [wOptions1], a
-	ld hl, UnknownText_0x1529c
+	ld hl, SaveFileCorruptedText
 	call PrintText
 	pop af
 	ld [wOptions1], a
@@ -480,9 +488,11 @@ TryLoadSaveData:
 
 .corrupt
 	ld hl, DefaultOptions
-	ld de, wOptions1
-	ld bc, wOptionsEnd - wOptions1
+	ld de, wOptions
+	ld bc, wOptionsEnd - wOptions
 	rst CopyBytes
+	ld a, [DefaultOptions3]
+	ld [wOptions3], a
 	jp PanicResetClock
 
 INCLUDE "data/default_options.asm"
@@ -497,9 +507,11 @@ CheckPrimarySaveFile:
 	cp SAVE_CHECK_VALUE_2
 	jr nz, .nope
 	ld hl, sOptions
-	ld de, wOptions1
-	ld bc, wOptionsEnd - wOptions1
+	ld de, wOptions
+	ld bc, wOptionsEnd - wOptions
 	rst CopyBytes
+	ld a, [sOptions3]
+	ld [wOptions3], a
 	call CloseSRAM
 	ld a, $1
 	ld [wSaveFileExists], a
@@ -517,9 +529,11 @@ CheckBackupSaveFile:
 	cp SAVE_CHECK_VALUE_2
 	jr nz, .nope
 	ld hl, sBackupOptions
-	ld de, wOptions1
-	ld bc, wOptionsEnd - wOptions1
+	ld de, wOptions
+	ld bc, wOptionsEnd - wOptions
 	rst CopyBytes
+	ld a, [sBackupOptions3]
+	ld [wOptions3], a
 	ld a, $2
 	ld [wSaveFileExists], a
 
@@ -537,15 +551,6 @@ LoadPlayerData:
 	ld de, wCurMapData
 	ld bc, wCurMapDataEnd - wCurMapData
 	rst CopyBytes
-	call CloseSRAM
-	ld a, BANK(sBattleTowerChallengeState)
-	call GetSRAMBank
-	ld a, [sBattleTowerChallengeState]
-	cp BATTLETOWER_RECEIVED_REWARD
-	jr nz, .not_4
-	ld a, BATTLETOWER_WON_CHALLENGE
-	ld [sBattleTowerChallengeState], a
-.not_4
 	jp CloseSRAM
 
 LoadPokemonData:
@@ -855,39 +860,39 @@ Checksum:
 	jr nz, .loop
 	ret
 
-UnknownText_0x15283:
+WouldYouLikeToSaveTheGameText:
 	; Would you like to save the game?
-	text_jump UnknownText_0x1c454b
+	text_far _WouldYouLikeToSaveTheGameText
 	text_end
 
-UnknownText_0x15288:
+SavingDontTurnOffThePowerText:
 	; SAVING… DON'T TURN OFF THE POWER.
-	text_jump UnknownText_0x1c456d
+	text_far _SavingDontTurnOffThePowerText
 	text_end
 
-UnknownText_0x1528d:
+SavedTheGameText:
 	; saved the game.
-	text_jump UnknownText_0x1c4590
+	text_far _SavedTheGameText
 	text_end
 
-UnknownText_0x15297:
+AnotherSaveFileText:
 	; There is another save file. Is it OK to overwrite?
-	text_jump UnknownText_0x1c45d9
+	text_far _AnotherSaveFileText
 	text_end
 
-UnknownText_0x1529c:
+SaveFileCorruptedText:
 	; The save file is corrupted!
-	text_jump UnknownText_0x1c460d
+	text_far _SaveFileCorruptedText
 	text_end
 
-UnknownText_0x152a1:
+ChangeBoxSaveText:
 	; When you change a #MON BOX, data will be saved. OK?
-	text_jump UnknownText_0x1c462a
+	text_far _ChangeBoxSaveText
 	text_end
 
-UnknownText_0x152a6:
+MoveMonWOMailSaveText:
 	; Each time you move a #MON, data will be saved. OK?
-	text_jump UnknownText_0x1c465f
+	text_far _MoveMonWOMailSaveText
 	text_end
 
 UpgradeSaveVersion:
@@ -926,6 +931,16 @@ UpgradeSaveVersion:
 	ld a, b
 	ld [sSaveVersion], a
 	ld a, c
+	ld [sSaveVersion + 1], a
+	jp CloseSRAM
+
+SaveCurrentVersion:
+; Writes current save version into the save.
+	ld a, BANK(sSaveVersion)
+	call GetSRAMBank
+	ld a, HIGH(SAVE_VERSION)
+	ld [sSaveVersion], a
+	ld a, LOW(SAVE_VERSION)
 	ld [sSaveVersion + 1], a
 	jp CloseSRAM
 

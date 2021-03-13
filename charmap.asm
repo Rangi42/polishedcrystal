@@ -7,7 +7,7 @@
 	charmap "<WAIT>",   $02
 	charmap "<ASM>",    $03
 	charmap "<NUM>",    $04
-	charmap "<EXIT>",   $05
+	charmap "<PAUSE>",  $05
 	charmap "<SOUND>",  $06
 	charmap "<DAY>",    $07
 	charmap "<FAR>",    $08

@@ -3,6 +3,12 @@ CheckFaint:
 
 HandleBetweenTurnEffects:
 ; Things handled at endturn. Things commented out are currently not in Polished.
+	ld hl, wTotalBattleTurns
+	inc [hl]
+	jr nz, .done_turn_increment
+	dec [hl]
+
+.done_turn_increment
 	call CheckFaint
 	ret c
 	call HandleWeather
@@ -182,7 +188,7 @@ HandleBetweenTurnEffects:
 	cp 3
 	jr nz, .not_both2
 
-	farcall HandleFirstAirBalloon
+	farcall SpikesDamageBoth
 	farcall RunBothActivationAbilities
 	jp .endturn_loop
 .not_both2
@@ -214,15 +220,22 @@ HandleEndturnBlockB:
 
 .do_it
 	; uproar
-	farcall HandleAbilities ; and pickup/harvest (no need to move below orbs)
-	jp HandleStatusOrbs
+	farcall EndturnAbilitiesB ; and pickup/harvest (no need to move below orbs)
+	call SwitchTurn
+	call HandleStatusOrbs
+	jp SwitchTurn
 
 HandleWeather:
 	ld a, [wBattleWeather]
 	and a ; cp WEATHER_NONE
 	ret z
 
+	; Freeze the timer at 255 for permaweather (overworld weather)
 	ld hl, wWeatherCount
+	inc [hl]
+	jr z, .infinite_weather
+	dec [hl]
+.infinite_weather
 	dec [hl]
 	jr nz, .ongoing
 
@@ -241,11 +254,11 @@ HandleWeather:
 	ld [wBattleWeather], a
 	ret
 
-.WeatherEndedMessages:
-	dw BattleText_TheRainStopped
-	dw BattleText_TheSunlightFaded
-	dw BattleText_TheSandstormSubsided
-	dw BattleText_TheHailStopped
+.WeatherEndedMessages: ; these are all used with StdBattleTextbox
+	dw BattleText_TheRainStopped ; far-ok
+	dw BattleText_TheSunlightFaded ; far-ok
+	dw BattleText_TheSandstormSubsided ; far-ok
+	dw BattleText_TheHailStopped ; far-ok
 
 .ongoing
 	; the above needs actual [wBattleWeather] to be
@@ -553,11 +566,9 @@ DoPoisonBurnDamage:
 	ld a, BATTLE_VARS_STATUS
 	call GetBattleVar
 	and 1 << BRN | 1 << TOX
-	jr z, .got_damage_amount
 	; Burn and Toxic does (or starts at) 1/16 damage as of Gen VII
-	call GetSixteenthMaxHP
+	call nz, GetSixteenthMaxHP
 
-.got_damage_amount
 	ldh a, [hBattleTurn]
 	and a
 	ld hl, wPlayerToxicCount
@@ -768,16 +779,15 @@ HandlePerishSong:
 	call HasUserFainted
 	ret z
 
-	ld hl, wPlayerPerishCount
 	ldh a, [hBattleTurn]
 	and a
+	ld hl, wPlayerPerishCount
 	jr z, .got_count
 	ld hl, wEnemyPerishCount
 
 .got_count
-	ld a, BATTLE_VARS_SUBSTATUS1
-	call GetBattleVar
-	bit SUBSTATUS_PERISH, a
+	ld a, [hl]
+	and a
 	ret z
 	dec [hl]
 	ld a, [hl]
@@ -787,9 +797,6 @@ HandlePerishSong:
 	call StdBattleTextbox
 	pop af
 	ret nz
-	ld a, BATTLE_VARS_SUBSTATUS1
-	call GetBattleVarAddr
-	res SUBSTATUS_PERISH, [hl]
 
 	call GetMaxHP
 	predef_jump SubtractHPFromUser
@@ -933,14 +940,8 @@ HandleHealingItems:
 	farjp UseConfusionHealingItem
 
 HandleStatusOrbs:
-	call SetFastestTurn
 	; Done for target to simplify checks so invert
 	; turn
-	call SwitchTurn
-	call .do_it
-	call SwitchTurn
-
-.do_it
 	call HasOpponentFainted
 	ret z
 
@@ -955,9 +956,7 @@ HandleStatusOrbs:
 	jr z, .burn
 	cp HELD_SELF_PSN
 	ld b, 1 << PSN | 1 << TOX
-	jr z, .poison
-	ret
-.poison
+	ret nz
 	push bc
 	ld b, 0
 	farcall CanPoisonTarget

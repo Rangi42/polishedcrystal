@@ -55,7 +55,7 @@ ScaryCave1FMiraScript:
 .Beaten
 	opentext
 	writetext .ItemText
-	buttonsound
+	promptbutton
 	verbosegiveitem POWER_LENS
 	iffalse_endtext
 	writetext .GoodbyeText
@@ -148,7 +148,7 @@ ScaryCave1FPharmacistScript:
 	iffalse .NoSilverLeaf
 	yesorno
 	iffalse .TutorRefused
-	writebyte SUCKER_PUNCH
+	setval SUCKER_PUNCH
 	writetext ClearText
 	special Special_MoveTutor
 	ifequal $0, .TeachMove
