@@ -23,7 +23,7 @@ SilverCaveOutside_MapScriptHeader:
 
 SilverCaveOutsideFlyPoint:
 	setflag ENGINE_FLYPOINT_SILVER_CAVE
-	return
+	endcallback
 
 MtSilverSignText:
 	text "Mt.Silver"
