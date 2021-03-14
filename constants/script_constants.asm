@@ -230,7 +230,7 @@ NUM_HIDDEN_GROTTOES EQU const_value - 1
 	const SWARM_DUNSPARCE ; 0
 	const SWARM_YANMA     ; 1
 
-; ActivateFishingSwarm writebyte arguments
+; ActivateFishingSwarm setval arguments
 	const_def
 	const FISHSWARM_NONE     ; 0
 	const FISHSWARM_QWILFISH ; 1
