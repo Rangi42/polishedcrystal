@@ -6,8 +6,6 @@ _CheckContactMove::
 	jr z, .protective_pads
 	ld a, BATTLE_VARS_MOVE
 	call GetBattleVar
-	cp STRUGGLE
-	ret z
 	ld hl, ContactMoves
 	call IsInByteArray
 .protective_pads

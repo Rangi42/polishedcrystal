@@ -12,4 +12,4 @@ MetronomeExcepts:
 	db SLEEP_TALK
 	db THIEF
 	db TRANSFORM
-	db -1
+	db STRUGGLE ; -1

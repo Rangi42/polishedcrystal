@@ -90,4 +90,4 @@ ContactMoves:
 	db WRAP
 	db X_SCISSOR
 	db ZEN_HEADBUTT
-	db -1
+	db STRUGGLE ; -1
