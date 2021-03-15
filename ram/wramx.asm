@@ -1052,9 +1052,8 @@ wFarfetchdPosition:: db
 wAlways0SceneID:: db
 wAzaleaTownSceneID:: db
 wBattleTower1FSceneID:: db
-wBattleTowerBattleRoomSceneID:: db ; unused
-wBattleTowerElevatorSceneID:: db ; unused
-wBattleTowerHallwaySceneID:: db ; unused
+wBattleFactory1FSceneID:: db
+	ds 2 ; unused
 wBattleTowerOutsideSceneID:: db
 wBellchimeTrailSceneID:: db
 wBrunosRoomSceneID:: db
