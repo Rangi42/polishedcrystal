@@ -503,8 +503,9 @@ IncreaseMetronomeCount:
 	ret
 .reset
 	; Struggle doesn't update last move set but does reset count
-	cp STRUGGLE
+	inc a ; cp STRUGGLE
 	jr z, .done_update_selected_move
+	dec a
 	ld [de], a
 .done_update_selected_move
 	xor a
@@ -1033,7 +1034,7 @@ BattleConsumePP:
 
 	ld a, BATTLE_VARS_MOVE
 	call GetBattleVar
-	cp STRUGGLE
+	inc a ; cp STRUGGLE
 	jr z, .end
 
 	ld a, BATTLE_VARS_SUBSTATUS3
@@ -1208,7 +1209,7 @@ BattleCommand_stab:
 	; Struggle doesn't apply STAB or matchups
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
-	cp STRUGGLE
+	inc a ; cp STRUGGLE
 	ret z
 
 	; Apply type matchups
@@ -1709,7 +1710,7 @@ BattleCommand_checkhit:
 	ret z
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
-	cp STRUGGLE
+	inc a ; cp STRUGGLE
 	ret z
 
 	; Immunity might be set already from Prankster
@@ -5619,7 +5620,7 @@ BattleCommand_traptarget:
 BattleCommand_recoil:
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
-	cp STRUGGLE
+	inc a ; cp STRUGGLE
 	jp z, .StruggleRecoil
 
 	; For all other moves, potentially disable
@@ -5648,7 +5649,6 @@ BattleCommand_recoil:
 .recoil_floor
 	call FloorBC
 	predef SubtractHPFromUser
-
 .recoil_text
 	ld hl, RecoilText
 	jp StdBattleTextbox
