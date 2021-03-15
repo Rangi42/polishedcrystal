@@ -1643,7 +1643,7 @@ RecklessAbility:
 ; 120% damage for (Hi) Jump Kick and recoil moves except for Struggle
 	ld a, BATTLE_VARS_MOVE
 	call GetBattleVar
-	cp STRUGGLE
+	inc a ; cp STRUGGLE
 	ret z
 	ld a, BATTLE_VARS_MOVE_EFFECT
 	call GetBattleVar

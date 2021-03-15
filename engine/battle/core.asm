@@ -481,7 +481,7 @@ ParsePlayerAction:
 	call FarCopyColorWRAM
 	call SetPalettes
 	ld a, [wCurPlayerMove]
-	cp STRUGGLE
+	inc a ; cp STRUGGLE
 	call nz, PlayClickSFX
 	ld a, $1
 	ldh [hBGMapMode], a
@@ -5601,22 +5601,18 @@ LinkBattleSendReceiveAction:
 	and a
 	jr nz, .switch
 	ld a, [wCurPlayerMove]
-	ld b, BATTLEACTION_STRUGGLE
-	cp STRUGGLE
-	jr z, .struggle
+	inc a ; cp STRUGGLE
+	ld a, BATTLEACTION_STRUGGLE
+	jr z, .use_move
 	ld a, [wCurMoveNum]
-	jr .use_move
+.use_move
+	and $0f
+	ret
 
 .switch
 	ld a, [wPlayerSwitchTarget]
 	add BATTLEACTION_SWITCH1 - 1
 	jr .use_move
-
-.struggle
-	ld a, b
-.use_move
-	and $0f
-	ret
 
 LoadEnemyMon:
 ; Initialize wildmon data
