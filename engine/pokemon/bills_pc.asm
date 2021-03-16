@@ -766,7 +766,8 @@ ChecksumTempMon:
 	lb de, BOXMON_STRUCT_LENGTH + 3, 0
 	call .DoChecksum
 
-	; nickname + OT
+	; nickname + OT. This skips e=36 (boxstruct+4) due to a double-increase.
+	; Counterintuitive but harmless.
 	ld bc, wEncodedTempMonNick
 	ld d, $80 | (wEncodedTempMonEncodeEnd - wEncodedTempMonNick)
 	call .DoChecksum
