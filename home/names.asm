@@ -17,7 +17,7 @@ GetName::
 	push af
 
 	ld a, [wNamedObjectTypeBuffer]
-	cp PKMN_NAME
+	cp MON_NAME
 	jr nz, .NotPokeName
 
 	ld a, [wCurSpecies]

@@ -290,14 +290,14 @@ wBattleBerriesPocketScrollPosition:: db
 
 wTMHMMoveNameBackup:: ds MOVE_NAME_LENGTH
 
-wStringBuffer1:: ds 24
-wStringBuffer2:: ds 19
-wStringBuffer3:: ds 19
+wStringBuffer1:: ds STRING_BUFFER_LENGTH + 5
+wStringBuffer2:: ds STRING_BUFFER_LENGTH
+wStringBuffer3:: ds STRING_BUFFER_LENGTH
 
 UNION
 ; mostly used for the phone, Buffer4 is also used in some overworld events
-wStringBuffer4:: ds 19
-wStringBuffer5:: ds 19
+wStringBuffer4:: ds STRING_BUFFER_LENGTH
+wStringBuffer5:: ds STRING_BUFFER_LENGTH
 NEXTU
 wAIMoves:: ds 4 ; enemy moves excluding unusable moves
 wAIMoveScore:: ds 4 ; score for each move

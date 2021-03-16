@@ -351,7 +351,7 @@ DismissAbilityOverlays:
 	ld c, SLIDEOUT_WIDTH
 .attr_loop
 	ld a, [hl]
-	and $ff ^ (PALETTE_MASK | TILE_BANK | PRIORITY)
+	and $ff ^ (PALETTE_MASK | VRAM_BANK_1 | PRIORITY)
 	or b
 	ld [hli], a
 	dec c

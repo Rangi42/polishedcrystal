@@ -48,7 +48,7 @@ SpecialGiveShuckie:
 
 ; Engine flag for this event.
 	ld hl, wDailyFlags
-	set 5, [hl] ; ENGINE_SHUCKIE_GIVEN
+	set 5, [hl] ; ENGINE_GOT_SHUCKIE_TODAY
 	ld a, TRUE
 	ldh [hScriptVar], a
 	ret

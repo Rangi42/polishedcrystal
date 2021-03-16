@@ -1,15 +1,35 @@
-	; Object palettes
+; Object palettes
 	const_def 1
 	const PAL_CURSOR_MODE1
 	const PAL_CURSOR_MODE2
 	const PAL_MINI_ICON
 
-	; Cursor modes
+; Cursor modes
 	const_def
 	const PC_MENU_MODE ; 0
 	const PC_SWAP_MODE ; 1
 	const PC_ITEM_MODE ; 2
 NUM_PC_MODES EQU const_value
+
+; BillsPC_MenuStrings indexes
+; BillsPC_MenuJumptable indexes
+	const_def
+	const BOXMENU_CANCEL
+	const BOXMENU_WITHDRAW
+	const BOXMENU_DEPOSIT
+	const BOXMENU_STATS
+	const BOXMENU_SWITCH
+	const BOXMENU_MOVES
+	const BOXMENU_ITEM
+	const BOXMENU_RELEASE
+	const BOXMENU_RENAME
+	const BOXMENU_THEME
+	const BOXMENU_RELEASEALL
+	const BOXMENU_TAKEMAIL
+	const BOXMENU_READMAIL
+	const BOXMENU_MOVEITEM
+	const BOXMENU_BAGITEM
+	const BOXMENU_GIVEITEM
 
 _BillsPC:
 	call .CheckCanUsePC
@@ -193,7 +213,7 @@ UseBillsPC:
 	; Item name is in vbk1
 	hlcoord 10, 2, wAttrMap ; Cursor's item
 	ld bc, 10
-	ld a, TILE_BANK
+	ld a, VRAM_BANK_1
 	push bc
 	rst ByteFill
 	pop bc
@@ -256,13 +276,13 @@ UseBillsPC:
 	; Party
 	hlcoord 1, 11
 	lb bc, 3, 2
-	lb de, $80, 2 | TILE_BANK
+	lb de, $80, 2 | VRAM_BANK_1
 	call .WriteIconTilemap
 
 	; Storage
 	hlcoord 8, 7
 	lb bc, 5, 4
-	lb de, $98, 4 | TILE_BANK
+	lb de, $98, 4 | VRAM_BANK_1
 	call .WriteIconTilemap
 
 	; Update attribute map data
@@ -309,7 +329,7 @@ UseBillsPC:
 	db $33, $32, $33 ; bottom
 .BoxAttr:
 	db 1, 1, 1 | X_FLIP ; top
-	db 1, 2 | TILE_BANK, 1 | X_FLIP ; middle
+	db 1, 2 | VRAM_BANK_1, 1 | X_FLIP ; middle
 	db 1 | Y_FLIP, 1 | Y_FLIP, 1 | X_FLIP | Y_FLIP ; bottom
 
 .SpecialRow:
@@ -1022,7 +1042,7 @@ _GetCursorMon:
 	jr nc, .delay_loop
 
 	ld a, [wAttrMap]
-	and TILE_BANK
+	and VRAM_BANK_1
 	pop hl
 	push af
 	ld a, 0
@@ -1070,7 +1090,7 @@ _GetCursorMon:
 	pop af
 	ld a, 2
 	jr nz, .got_new_tile_bank
-	ld a, 2 | TILE_BANK
+	ld a, 2 | VRAM_BANK_1
 .got_new_tile_bank
 	hlcoord 0, 0, wAttrMap
 	lb bc, 7, 7
@@ -1111,7 +1131,7 @@ _GetCursorMon:
 	ld [hl], 72
 	inc hl
 	inc hl
-	ld [hl], TILE_BANK
+	ld [hl], VRAM_BANK_1
 	dec hl
 	ld [hl], $20
 .item_icon_done
@@ -2311,7 +2331,7 @@ BillsPC_MoveItem:
 	inc hl
 	ld [hl], $06
 	inc hl
-	ld [hl], TILE_BANK | PAL_CURSOR_MODE2
+	ld [hl], VRAM_BANK_1 | PAL_CURSOR_MODE2
 
 	; Load held item name
 	ld hl, vTiles5 tile $3b

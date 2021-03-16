@@ -1206,7 +1206,7 @@ wTextDelayFrames:: db
 
 wGenericDelay:: db
 
-wGameTimerPause::
+wGameTimerPaused::
 ; bit 0
 	db
 

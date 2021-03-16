@@ -161,7 +161,7 @@ EngineFlags:
 	engine_flag wSwarmFlags, 0 ; buenas password 2
 	engine_flag wSwarmFlags, 1 ; goldenrod dept store sale is on
 
-	engine_flag wGameTimerPause, 7 ; game timer pause
+	engine_flag wGameTimerPaused, 7 ; game timer pause
 
 	engine_flag wPlayerGender, 0 ; player is female
 

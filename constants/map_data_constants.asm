@@ -4,18 +4,19 @@ GROUP_NONE EQU 0
 MAP_NONE   EQU 0
 
 ; map struct members (see data/maps/maps.asm)
-	const_def
-	const MAP_MAPATTRIBUTES_BANK ; 0
-	const MAP_TILESET            ; 1
-	const MAP_ENVIRONMENT        ; 2
-	const MAP_MAPATTRIBUTES      ; 3
-	const MAP_MAPATTRIBUTES_HI   ; 4
-	const MAP_LOCATION           ; 5
-	const MAP_MUSIC              ; 6
-	const MAP_PALETTE            ; 7
-	const MAP_FISHGROUP          ; 8
+rsreset
+MAP_MAPATTRIBUTES_BANK rb ; 0
+MAP_TILESET            rb ; 1
+MAP_ENVIRONMENT        rb ; 2
+MAP_MAPATTRIBUTES      rw ; 3
+MAP_LOCATION           rb ; 5
+MAP_MUSIC              rb ; 6
+MAP_PALETTE            rb ; 7
+MAP_FISHGROUP          rb ; 8
+MAP_LENGTH EQU _RS
 
 ; map environments (wEnvironment)
+; EnvironmentColorsPointers indexes (see data/maps/environment_colors.asm)
 	const_def 1
 	const TOWN
 	const ROUTE
@@ -24,6 +25,7 @@ MAP_NONE   EQU 0
 	const ISOLATED
 	const GATE
 	const DUNGEON
+NUM_ENVIRONMENTS EQU const_value - 1
 
 ; map palettes (wEnvironment)
 	const_def
@@ -32,6 +34,8 @@ MAP_NONE   EQU 0
 	const PALETTE_NITE
 	const PALETTE_MORN
 	const PALETTE_EVE
+NUM_MAP_PALETTES EQU const_value
+
 IN_DARKNESS EQU %1000
 DARKNESS_PALSET EQU %00011011 ; brightlevel 0, 1, 2, 3
 
@@ -51,25 +55,26 @@ DARKNESS_PALSET EQU %00011011 ; brightlevel 0, 1, 2, 3
 	const FISHGROUP_QWILFISH
 	const FISHGROUP_REMORAID
 	const FISHGROUP_QWILFISH_NO_SWARM
+NUM_FISHGROUPS EQU const_value - 1
 
 ; wMapConnections
+; connection directions (see data/maps/data.asm)
 	const_def
 	shift_const EAST
 	shift_const WEST
 	shift_const SOUTH
 	shift_const NORTH
 
-; Overcast indexes
+; GetOvercastIndex return values (see home/map.asm)
 	const_def
 	const NOT_OVERCAST
 	const AZALEA_OVERCAST
 	const LAKE_OF_RAGE_OVERCAST
 	const STORMY_BEACH_OVERCAST
 
-; see data/maps/spawn_points.asm
-const_value = -1
-	const SPAWN_N_A
-	const SPAWN_HOME ; $00
+; SpawnPoints indexes (see data/maps/spawn_points.asm)
+	const_def
+	const SPAWN_HOME
 ; kanto
 	const SPAWN_PALLET
 	const SPAWN_VIRIDIAN
@@ -78,7 +83,7 @@ const_value = -1
 	const SPAWN_CERULEAN
 	const SPAWN_CERULEAN_CAPE
 	const SPAWN_ROCK_TUNNEL
-	const SPAWN_VERMILION ; $08
+	const SPAWN_VERMILION
 	const SPAWN_LAVENDER
 	const SPAWN_SAFFRON
 	const SPAWN_CELADON
@@ -87,7 +92,7 @@ const_value = -1
 	const SPAWN_INDIGO
 ; johto
 	const SPAWN_NEW_BARK
-	const SPAWN_CHERRYGROVE ; $10
+	const SPAWN_CHERRYGROVE
 	const SPAWN_VIOLET
 	const SPAWN_UNION_CAVE
 	const SPAWN_AZALEA
@@ -95,7 +100,7 @@ const_value = -1
 	const SPAWN_GOLDENROD
 	const SPAWN_OLIVINE
 	const SPAWN_ECRUTEAK
-	const SPAWN_MAHOGANY ; $18
+	const SPAWN_MAHOGANY
 	const SPAWN_YELLOW_FOREST
 	const SPAWN_LAKE_OF_RAGE
 	const SPAWN_BLACKTHORN
@@ -103,9 +108,12 @@ const_value = -1
 	const SPAWN_FAST_SHIP
 NUM_SPAWNS EQU const_value
 
-; see data/maps/flypoints.asm
+SPAWN_N_A EQU -1
+
+; Flypoints indexes (see data/maps/flypoints.asm)
 	const_def
 ; johto
+JOHTO_FLYPOINT EQU const_value
 	const FLY_NEW_BARK
 	const FLY_CHERRYGROVE
 	const FLY_VIOLET
@@ -136,3 +144,4 @@ KANTO_FLYPOINT EQU const_value
 	const FLY_FUCHSIA
 	const FLY_CINNABAR
 	const FLY_INDIGO
+NUM_FLYPOINTS EQU const_value

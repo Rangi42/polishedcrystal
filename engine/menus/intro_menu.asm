@@ -82,7 +82,6 @@ ResetWRAM_NotPlus:
 	farcall InitializeBoxes
 	call CloseSRAM
 
-START_MONEY EQU 3000
 	ld hl, wMoney
 	ld [hl], LOW(START_MONEY / $10000)
 	inc hl
@@ -209,13 +208,12 @@ endr
 
 	ld [wWhichMomItem], a
 
-START_ITEM_TRIGGER_BALANCE EQU 2300
 	ld hl, wMomItemTriggerBalance
-	ld [hl], LOW(START_ITEM_TRIGGER_BALANCE / $10000)
+	ld [hl], LOW(MOM_MONEY / $10000)
 	inc hl
-	ld [hl], LOW(START_ITEM_TRIGGER_BALANCE / $100)
+	ld [hl], LOW(MOM_MONEY / $100)
 	inc hl
-	ld [hl], LOW(START_ITEM_TRIGGER_BALANCE)
+	ld [hl], LOW(MOM_MONEY)
 
 	call InitializeNPCNames
 
@@ -401,7 +399,7 @@ FinishContinueFunction:
 	xor a
 	ld [wDontPlayMapMusicOnReload], a
 	ld [wLinkMode], a
-	ld hl, wGameTimerPause
+	ld hl, wGameTimerPaused
 	set 0, [hl]
 	res 7, [hl]
 	ld hl, wEnteredMapFromContinue

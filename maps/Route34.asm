@@ -45,7 +45,7 @@ Route34_MapScriptHeader:
 	const ROUTE34_LYRA
 
 Route34EggCheckCallback:
-	checkflag ENGINE_DAYCARE_MAN_HAS_EGG
+	checkflag ENGINE_DAY_CARE_MAN_HAS_EGG
 	iftrue .PutDayCareManOutside
 	checkscene
 	iftrue .PutDayCareManOutside
@@ -59,7 +59,7 @@ Route34EggCheckCallback:
 	sjump .CheckMon1
 
 .CheckMon1:
-	checkflag ENGINE_DAYCARE_MAN_HAS_MON
+	checkflag ENGINE_DAY_CARE_MAN_HAS_MON
 	iffalse .HideMon1
 	clearevent EVENT_DAYCARE_MON_1
 	sjump .CheckMon2
@@ -69,7 +69,7 @@ Route34EggCheckCallback:
 	sjump .CheckMon2
 
 .CheckMon2:
-	checkflag ENGINE_DAYCARE_LADY_HAS_MON
+	checkflag ENGINE_DAY_CARE_LADY_HAS_MON
 	iffalse .HideMon2
 	clearevent EVENT_DAYCARE_MON_2
 	endcallback
@@ -174,7 +174,7 @@ DayCareManScript_Outside:
 	waitbutton
 	closetext
 	ifequal $1, .end_fail
-	clearflag ENGINE_DAYCARE_MAN_HAS_EGG
+	clearflag ENGINE_DAY_CARE_MAN_HAS_EGG
 	setevent EVENT_BRED_AN_EGG
 	readvar VAR_FACING
 	ifequal LEFT, .walk_around_player
@@ -206,7 +206,7 @@ TrainerCamperTodd1:
 .Script:
 	loadvar VAR_CALLERID, PHONE_CAMPER_TODD
 	opentext
-	checkflag ENGINE_TODD
+	checkflag ENGINE_TODD_READY_FOR_REMATCH
 	iftrue .Rematch
 	checkflag ENGINE_GOLDENROD_DEPT_STORE_SALE_IS_ON
 	iftrue_jumpopenedtext CamperToddSaleText
@@ -256,7 +256,7 @@ TrainerCamperTodd1:
 	startbattle
 	reloadmapafterbattle
 	loadmem wToddFightCount, 1
-	clearflag ENGINE_TODD
+	clearflag ENGINE_TODD_READY_FOR_REMATCH
 	end
 
 .LoadFight1:
@@ -264,7 +264,7 @@ TrainerCamperTodd1:
 	startbattle
 	reloadmapafterbattle
 	loadmem wToddFightCount, 2
-	clearflag ENGINE_TODD
+	clearflag ENGINE_TODD_READY_FOR_REMATCH
 	end
 
 .LoadFight2:
@@ -272,7 +272,7 @@ TrainerCamperTodd1:
 	startbattle
 	reloadmapafterbattle
 	loadmem wToddFightCount, 3
-	clearflag ENGINE_TODD
+	clearflag ENGINE_TODD_READY_FOR_REMATCH
 	end
 
 .LoadFight3:
@@ -280,14 +280,14 @@ TrainerCamperTodd1:
 	startbattle
 	reloadmapafterbattle
 	loadmem wToddFightCount, 4
-	clearflag ENGINE_TODD
+	clearflag ENGINE_TODD_READY_FOR_REMATCH
 	end
 
 .LoadFight4:
 	loadtrainer CAMPER, TODD5
 	startbattle
 	reloadmapafterbattle
-	clearflag ENGINE_TODD
+	clearflag ENGINE_TODD_READY_FOR_REMATCH
 	end
 
 .NumberAccepted:
@@ -305,7 +305,7 @@ TrainerPicnickerGina1:
 .Script:
 	loadvar VAR_CALLERID, PHONE_PICNICKER_GINA
 	opentext
-	checkflag ENGINE_GINA
+	checkflag ENGINE_GINA_READY_FOR_REMATCH
 	iftrue .Rematch
 	checkflag ENGINE_GINA_HAS_LEAF_STONE
 	iftrue .LeafStone
@@ -355,7 +355,7 @@ TrainerPicnickerGina1:
 	startbattle
 	reloadmapafterbattle
 	loadmem wGinaFightCount, 1
-	clearflag ENGINE_GINA
+	clearflag ENGINE_GINA_READY_FOR_REMATCH
 	end
 
 .LoadFight1:
@@ -363,7 +363,7 @@ TrainerPicnickerGina1:
 	startbattle
 	reloadmapafterbattle
 	loadmem wGinaFightCount, 2
-	clearflag ENGINE_GINA
+	clearflag ENGINE_GINA_READY_FOR_REMATCH
 	end
 
 .LoadFight2:
@@ -371,7 +371,7 @@ TrainerPicnickerGina1:
 	startbattle
 	reloadmapafterbattle
 	loadmem wGinaFightCount, 3
-	clearflag ENGINE_GINA
+	clearflag ENGINE_GINA_READY_FOR_REMATCH
 	end
 
 .LoadFight3:
@@ -379,14 +379,14 @@ TrainerPicnickerGina1:
 	startbattle
 	reloadmapafterbattle
 	loadmem wGinaFightCount, 4
-	clearflag ENGINE_GINA
+	clearflag ENGINE_GINA_READY_FOR_REMATCH
 	end
 
 .LoadFight4:
 	loadtrainer PICNICKER, GINA5
 	startbattle
 	reloadmapafterbattle
-	clearflag ENGINE_GINA
+	clearflag ENGINE_GINA_READY_FOR_REMATCH
 	end
 
 .LeafStone:

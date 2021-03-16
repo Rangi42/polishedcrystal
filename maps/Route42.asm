@@ -158,7 +158,7 @@ TrainerFisherTully1:
 FisherTully1Script:
 	loadvar VAR_CALLERID, PHONE_FISHER_TULLY
 	opentext
-	checkflag ENGINE_TULLY
+	checkflag ENGINE_TULLY_READY_FOR_REMATCH
 	iftrue UnknownScript_0x1a927f
 	checkflag ENGINE_TULLY_HAS_WATER_STONE
 	iftrue UnknownScript_0x1a92dc
@@ -204,7 +204,7 @@ UnknownScript_0x1a927f:
 	startbattle
 	reloadmapafterbattle
 	loadmem wTullyFightCount, 1
-	clearflag ENGINE_TULLY
+	clearflag ENGINE_TULLY_READY_FOR_REMATCH
 	end
 
 .LoadFight1:
@@ -212,7 +212,7 @@ UnknownScript_0x1a927f:
 	startbattle
 	reloadmapafterbattle
 	loadmem wTullyFightCount, 2
-	clearflag ENGINE_TULLY
+	clearflag ENGINE_TULLY_READY_FOR_REMATCH
 	end
 
 .LoadFight2:
@@ -220,14 +220,14 @@ UnknownScript_0x1a927f:
 	startbattle
 	reloadmapafterbattle
 	loadmem wTullyFightCount, 3
-	clearflag ENGINE_TULLY
+	clearflag ENGINE_TULLY_READY_FOR_REMATCH
 	end
 
 .LoadFight3:
 	loadtrainer FISHER, TULLY4
 	startbattle
 	reloadmapafterbattle
-	clearflag ENGINE_TULLY
+	clearflag ENGINE_TULLY_READY_FOR_REMATCH
 	end
 
 UnknownScript_0x1a92dc:

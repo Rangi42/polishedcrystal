@@ -2521,5 +2521,4 @@ INCBIN "gfx/pokedex/slowpoke.2bpp.lz"
 QuestionMarkLZ:
 INCBIN "gfx/pokedex/question_mark.2bpp.lz"
 
-Footprints:
 INCLUDE "gfx/pokemon/footprints.asm"

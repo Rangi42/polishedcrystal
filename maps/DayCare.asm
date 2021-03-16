@@ -30,7 +30,7 @@ DayCareTrigger0:
 	end
 
 DayCareEggCheckCallback:
-	checkflag ENGINE_DAYCARE_MAN_HAS_EGG
+	checkflag ENGINE_DAY_CARE_MAN_HAS_EGG
 	iftrue .PutDayCareManOutside
 	clearevent EVENT_DAYCARE_MAN_IN_DAYCARE
 	setevent EVENT_DAYCARE_MAN_ON_ROUTE_34
@@ -116,7 +116,7 @@ DayCareManScript_Inside:
 DayCareLadyScript:
 	faceplayer
 	opentext
-	checkflag ENGINE_DAYCARE_MAN_HAS_EGG
+	checkflag ENGINE_DAY_CARE_MAN_HAS_EGG
 	iftrue_jumpopenedtext Text_GrampsLookingForYou
 	checkevent EVENT_LYRA_GAVE_AWAY_EGG
 	iffalse .NoLyrasEgg

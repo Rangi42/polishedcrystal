@@ -37,7 +37,7 @@ HandleObjectStep:
 	add hl, bc
 	bit OBJ_FLAGS2_6, [hl]
 	jp nz, SetFacingStanding
-	bit OBJ_FLAGS2_5, [hl]
+	bit FROZEN_F, [hl]
 	jr nz, HandleObjectAction
 	ld de, ObjectActionPairPointers ; use first column
 	jr _HandleObjectAction
@@ -2543,7 +2543,7 @@ FreezeAllObjects:
 	jr z, .next
 	ld hl, OBJECT_FLAGS2
 	add hl, bc
-	set OBJ_FLAGS2_5, [hl]
+	set FROZEN_F, [hl]
 .next
 	ld hl, OBJECT_LENGTH
 	add hl, bc
@@ -2573,7 +2573,7 @@ _UnfreezeFollowerObject::
 	call GetObjectStruct
 	ld hl, OBJECT_FLAGS2
 	add hl, bc
-	res OBJ_FLAGS2_5, [hl]
+	res FROZEN_F, [hl]
 	ret
 
 UnfreezeAllObjects::
@@ -2586,7 +2586,7 @@ UnfreezeAllObjects::
 	jr z, .next
 	ld hl, OBJECT_FLAGS2
 	add hl, bc
-	res OBJ_FLAGS2_5, [hl]
+	res FROZEN_F, [hl]
 .next
 	ld hl, OBJECT_LENGTH
 	add hl, bc
@@ -2811,7 +2811,7 @@ InitSprites:
 	xor a
 	bit 7, [hl]
 	jr nz, .skip1
-	or TILE_BANK
+	or VRAM_BANK_1
 .skip1
 	ld hl, OBJECT_FLAGS2
 	add hl, bc
@@ -2904,7 +2904,7 @@ InitSprites:
 	inc hl
 	ld [bc], a
 	ld a, d
-	and TILE_BANK
+	and VRAM_BANK_1
 	jr z, .vram0
 	ld a, [bc]
 	cp $80

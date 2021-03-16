@@ -744,7 +744,7 @@ TN_PrintLocation:
 	and a
 	ret z
 	ld de, .event
-	cp $ff
+	cp LANDMARK_EVENT
 	jr z, .print
 	ld e, a
 	farcall GetLandmarkName

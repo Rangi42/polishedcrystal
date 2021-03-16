@@ -1,5 +1,4 @@
 ; joypad buttons
-
 	const_def
 	const A_BUTTON_F ; 0
 	const B_BUTTON_F ; 1

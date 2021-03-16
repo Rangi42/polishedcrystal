@@ -34,7 +34,7 @@ UpdateGameTimer::
 	ret nz
 
 ; Is the timer paused?
-	ld hl, wGameTimerPause
+	ld hl, wGameTimerPaused
 	bit 0, [hl]
 	ret z
 

@@ -5705,9 +5705,9 @@ endc
 
 	; If we're headbutting trees, some monsters enter battle asleep
 	call CheckSleepingTreeMon
-	; a = carry ? SLP & 3 (asleep for 3 turns) : 0 (no status)
+	; a = carry ? TREEMON_SLEEP_TURNS : 0
 	sbc a
-	and SLP & 3
+	and TREEMON_SLEEP_TURNS
 	ld hl, wOTPartyMon1Status
 	ld [hli], a
 
@@ -7510,7 +7510,8 @@ DropPlayerSub:
 	push af
 	ld a, [wBattleMonSpecies]
 	ld [wCurPartySpecies], a
-	call GetBattleMonVariant
+	ld hl, wBattleMonForm
+	predef GetVariant
 	ld de, vTiles2 tile $31
 	predef GetBackpic
 	pop af
@@ -7545,7 +7546,8 @@ DropEnemySub:
 	ld a, [wEnemyMonSpecies]
 	ld [wCurSpecies], a
 	ld [wCurPartySpecies], a
-	call GetEnemyMonVariant
+	ld hl, wEnemyMonForm
+	predef GetVariant
 	call GetBaseData
 	ld de, vTiles2
 	predef FrontpicPredef
@@ -8208,10 +8210,10 @@ AddLastBattleToLinkRecord:
 .CheckOverflow:
 	dec hl
 	ld a, [hli]
-	cp HIGH(9999)
+	cp HIGH(MAX_LINK_RECORD)
 	ret c
 	ld a, [hl]
-	cp LOW(9999)
+	cp LOW(MAX_LINK_RECORD)
 	ret
 
 .FindOpponentAndAppendRecord:

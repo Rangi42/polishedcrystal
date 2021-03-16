@@ -19,7 +19,7 @@ GivePokerusAndConvertBerries:
 ; If we haven't been to Goldenrod City at least once,
 ; prevent the contraction of Pokerus.
 	ld hl, wStatusFlags2
-	bit 6, [hl] ; ENGINE_GIVE_POKERUS
+	bit 6, [hl] ; ENGINE_REACHED_GOLDENROD
 	ret z
 	call Random
 	ldh a, [hRandomAdd]

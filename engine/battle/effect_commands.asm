@@ -1474,11 +1474,11 @@ _CheckTypeMatchup:
 	ld c, [hl]
 	ld a, $10 ; 1.0
 	ld [wTypeMatchup], a
-	ld hl, InverseTypeMatchup
+	ld hl, InverseTypeMatchups
 	ld a, [wBattleType]
 	cp BATTLETYPE_INVERSE
 	jr z, .TypesLoop
-	ld hl, TypeMatchup
+	ld hl, TypeMatchups
 .TypesLoop:
 	ld a, [hli]
 	; terminator
@@ -5620,6 +5620,7 @@ BattleCommand_traptarget:
 BattleCommand_recoil:
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
+	ld b, a
 	inc a ; cp STRUGGLE
 	jp z, .StruggleRecoil
 
@@ -5885,7 +5886,7 @@ BattleCommand_heal:
 	call GetBattleVarAddr
 	ld a, [hl]
 	and a
-	ld [hl], REST_TURNS + 1
+	ld [hl], REST_SLEEP_TURNS + 1
 	ld hl, WentToSleepText
 	jr z, .no_status_to_heal
 	ld hl, RestedText
@@ -6442,7 +6443,7 @@ GetItemHeldEffect:
 	dec a
 	ld c, a
 	ld b, 0
-	ld a, NUM_ITEMATTRS
+	ld a, ITEMATTR_STRUCT_LENGTH
 	rst AddNTimes
 	ld a, BANK(ItemAttributes)
 	call GetFarHalfword

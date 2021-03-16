@@ -1,3 +1,11 @@
+; item ids
+; indexes for:
+; - ItemNames (see data/items/names.asm)
+; - ItemNameOrder (see data/items/name_order.asm)
+; - ItemDescriptions (see data/items/descriptions.asm)
+; - ItemAttributes (see data/items/attributes.asm)
+; - ItemIconPointers (see data/items/icon_pointers.asm)
+; - ItemEffects (see engine/items/item_effects.asm)
 	const_def
 	const NO_ITEM      ; 00
 
@@ -291,13 +299,12 @@
 	const MIRAGE_MAIL  ; fe
 NUM_ITEMS EQU const_value - 1
 
-	const ITEM_FROM_MEM ; ff
-
-PARK_BALL EQU $00
+PARK_BALL      EQU $00
 USE_SCRIPT_VAR EQU $00
-ALWAYS_ITEM_2 EQU $ff
+ITEM_FROM_MEM  EQU $ff
+ALWAYS_ITEM_2  EQU $ff
 
-; See data/items/name_order.asm
+; Alphabetical order (see data/items/name_order.asm)
 	const_def
 	const NAM_NO_ITEM
 	const NAM_ABILITY_CAP
@@ -571,7 +578,12 @@ endc
 	const PNK_APRICORN ; 7
 NUM_APRICORNS EQU const_value - 1
 
-; Key Item constants
+; key item ids
+; indexes for:
+; - KeyItemNames (see data/items/key_names.asm)
+; - KeyItemDescriptions (see data/items/descriptions.asm)
+; - KeyItemAttributes (see data/items/attributes.asm)
+; - KeyItemEffects (see engine/items/item_effects.asm)
 	const_def
 	const BICYCLE      ; 00
 	const OLD_ROD      ; 01

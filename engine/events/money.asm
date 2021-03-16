@@ -21,7 +21,7 @@ GiveMoney::
 	ret
 
 MaxMoney:
-	dt 9999999
+	dt MAX_MONEY
 
 TakeMoney::
 	call SubtractMoney
