@@ -58,7 +58,7 @@ ApplyPartyPatches:
 	add #3, #b, 662
 	set #4, 1
 	callnz #temp, .apply_to_list
-	add #b, BOX_SIZE
+	add #b, BOX_SIZE_v6
 	decrement #c
 	jumpnz #c, .box_loop
 	return

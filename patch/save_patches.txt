@@ -24,7 +24,10 @@ ConvertToNewbox:
 	mulacum #1, #length, 32
 	set #3, 32 ; size of mon struct
 	call CopyFrom1To2
-;copy nick
+; set aside hyper training bytes
+	push #2
+	add #2, 3
+; copy nick
 	add #1, 828
 	mulacum #1, #length, -21 ; offset from box mon n + 1 to nickname n
 	set #3, 10
@@ -33,9 +36,13 @@ ConvertToNewbox:
 	subtract #1, 230 ; offset from nickname n+1 to OT n
 	set #3, 7
 	call CopyFrom1To2
-	increment #1 ; skip terminator byte (will always be 0007+OT)
+	increment #1 ; skip excess terminator byte (always 0x53)
+	set #4, #2
+; copy hyper training bytes
+	pop #2
 	set #3, 3
 	call CopyFrom1To2
+	set #2, #4
 	increment #length
 	jump .copy_temp_loop
 
@@ -69,8 +76,9 @@ ConvertToNewbox:
 	increment #2
 	readbyte #3
 	mulacum #result, #3, #2
-	iflt #2, 32, .mon_struct_loop
+	iflt #2, 35, .mon_struct_loop
 ; convert nickname/OT chars to 7-bit, accounting for special chars
+	increment #2 ; one multiplier (36) is skipped upon checksum calculation
 	pushpos
 .nickname_ot_loop
 	increment #2
@@ -87,12 +95,7 @@ ConvertToNewbox:
 	and #3, 0x7f
 	writebyte #3
 	mulacum #result, #3, #2
-	iflt #2, 49, .nickname_ot_loop
-.hyper_training_loop
-	increment #2
-	readbyte #3
-	mulacum #result, #3, #2
-	iflt #2, 52, .hyper_training_loop
+	iflt #2, 53, .nickname_ot_loop
 ; write checksum for each 16 lower bits (starting with MSB) into encoded nickname/OT chars
 	poppos
 	rotateleft #result, -15
@@ -105,13 +108,14 @@ ConvertToNewbox:
 	rotateleft #result, 1
 	decrement #2
 	jumpnz #2, .write_checksum_loop
+	readbyte #temp ; skip the 17th byte in nick+OT
 	decrement #length
 	jump .encode_outer_loop
 
 .done_encode_loop
 ; copy all of temp back to pokedb (#1 is already set to sBox_v6)
 	remainder #temp, #a, 7
-	multiply #temp, 1040
+	multiply #temp, BOX_SIZE
 	add #2, sBoxMons1, #temp
 	iflt #a, 7, .got_target
 	add #2, sBoxMons2, #temp
@@ -119,11 +123,25 @@ ConvertToNewbox:
 	multiply #3, #b, 52
 	call CopyFrom1To2
 	increment #a
+	set #1, sBoxMons2UsedEntries
+	ifeq #a, 14, .next
+	set #1, sBoxMons1UsedEntries
+	ifeq #a, 7, .next
+	set #1, sBox1_v6
+	iflt #a, 7, .got_source_2
+	set #1, sBox8_v6
+.got_source_2
+	remainder #temp, #a, 7
+	mulacum #1, #temp, BOX_SIZE_v6
+.next
+	subtract #1, #2
+	seek #2
+	fillbyte #1, #zero
 	iflt #a, 14, .box_outer_loop
 
-; we can now overwrite old sBox with newbox
+; we can now fill sBackupNewBox with newbox
 	set #a, #zero
-	set #target, sBox1
+	set #target, sBackupNewBox1
 	set #source, sBoxMons1UsedEntries
 	call .newbox_outer_loop
 
@@ -134,6 +152,29 @@ ConvertToNewbox:
 	seek #target
 	fillbyte 23, #zero ; clear out box 15
 	writedata .box15, 6
+	fillbyte 3, #zero
+
+; shift link battle/HOF/battle tower data to end of box names
+	set #1, 3499
+	set #2, 388
+	call ShiftSaveDataBack
+	seekback #2
+	pos #temp
+	bufnumber #temp
+	printbuf
+	fillbyte 184, #zero
+
+; clear old box names
+	set #1, BOX_NAMES_OFFSET
+	call GetGameDataPointer
+	seek #result
+	fillbyte 126, #zero
+
+; set default box themes
+	set #1, BOX_THEMES_OFFSET
+	call GetGameDataPointer
+	seek #result
+	writedata .default_themes, 15
 	return
 
 .newbox_outer_loop
@@ -181,3 +222,6 @@ ConvertToNewbox:
 
 .box15
 	db 0x81, 0xae, 0xb7, 0xe1, 0xe5, 0x53 ; "Box15@"
+
+.default_themes
+	db 0x17, 0x15, 0x16, 0x18, 0x0D, 0x19, 0x0C, 0x0E, 0x12, 0x0F, 0x10, 0x11, 0x1A, 0x13, 0x1B

@@ -33,8 +33,9 @@ PatchSavefile:
 	pop #build
 	set #curbuild, #build
 	call FixSavefileChecksum
-	; seek sBuildNumber
-	; writehalfword #build
+	seek sSaveVersion
+	set #build, 0x0200
+	writehalfword #build
 	print .done_string
 	exit #zero
 
