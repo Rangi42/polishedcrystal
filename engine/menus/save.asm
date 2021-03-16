@@ -929,6 +929,14 @@ VerifyGameVersion:
 	hlcoord 0, 0
 	ld de, .SaveUpgradeScreen
 	rst PlaceString
+	ld de, wStringBuffer1
+	hlcoord 14, 10
+	lb bc, PRINTNUM_LEADINGZEROS | 2, 5
+	call PrintNum
+	ld de, wStringBuffer2
+	hlcoord 14, 11
+	lb bc, PRINTNUM_LEADINGZEROS | 2, 5
+	call PrintNum
 
 .infinite_loop
 	halt
@@ -945,12 +953,8 @@ VerifyGameVersion:
 	next1 "save upgrading"
 	next1 "instructions."
 	next1 ""
-;	next1 "Game Version: "
-;	text_decimal wStringBuffer1, 2, 5
-;	text ""
-;	next1 "Save Version: "
-;	text_decimal wStringBuffer2, 2, 5
-;	text ""
+	next1 "Game Version:"
+	next1 "Save Version:"
 	done
 
 SaveCurrentVersion:
