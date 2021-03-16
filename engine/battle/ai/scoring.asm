@@ -413,7 +413,7 @@ AI_Smart_LeechHit:
 
 ; 60% chance to discourage this move if not very effective.
 	ld a, [wd265]
-	cp 10 ; 1.0
+	cp BASE_AI_SWITCH_SCORE
 	jr c, .asm_38815
 
 ; Do nothing if effectiveness is neutral.
@@ -761,7 +761,7 @@ AI_Smart_Roar:
 	push hl
 	farcall CheckPlayerMoveTypeMatchups
 	ld a, [wEnemyAISwitchScore]
-	cp 10 ; neutral
+	cp BASE_AI_SWITCH_SCORE
 	pop hl
 	ret c
 	inc [hl]
@@ -1389,7 +1389,7 @@ AI_Smart_MeanLook:
 	push hl
 	farcall CheckPlayerMoveTypeMatchups
 	ld a, [wEnemyAISwitchScore]
-	cp $b ; not very effective
+	cp BASE_AI_SWITCH_SCORE + 1
 	pop hl
 	ret nc
 

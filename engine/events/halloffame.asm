@@ -1,5 +1,3 @@
-HOF_MASTER_COUNT EQU 200
-
 HallOfFame::
 	call HallOfFame_FadeOutMusic
 	farcall InitDisplayForHallOfFame

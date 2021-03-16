@@ -134,7 +134,7 @@ GetSprite::
 	dec a
 	ld c, a
 	ld b, 0
-	ld a, NUM_SPRITEHEADER_FIELDS
+	ld a, NUM_SPRITEDATA_FIELDS
 	rst AddNTimes
 	; load the address into de
 	ld a, [hli]
@@ -266,11 +266,11 @@ _GetSpritePalette::
 	call GetMonSprite
 	jr c, .is_pokemon
 
-	ld hl, SpriteHeaders + SPRITEHEADER_PALETTE
+	ld hl, SpriteHeaders + SPRITEDATA_PALETTE
 	dec a
 	ld c, a
 	ld b, 0
-	ld a, NUM_SPRITEHEADER_FIELDS
+	ld a, NUM_SPRITEDATA_FIELDS
 	rst AddNTimes
 	ld a, [hl]
 	ret

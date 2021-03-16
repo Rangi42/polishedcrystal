@@ -1,40 +1,40 @@
-; object struct
-	const_def
-	const OBJECT_SPRITE              ; 00
-	const OBJECT_MAP_OBJECT_INDEX    ; 01
-	const OBJECT_SPRITE_TILE         ; 02
-	const OBJECT_MOVEMENTTYPE        ; 03
-	const OBJECT_FLAGS1              ; 04
-	const OBJECT_FLAGS2              ; 05
-	const OBJECT_PALETTE             ; 06
-	const OBJECT_DIRECTION_WALKING   ; 07
-	const OBJECT_FACING              ; 08
-	const OBJECT_STEP_TYPE           ; 09
-	const OBJECT_STEP_DURATION       ; 0a
-	const OBJECT_ACTION              ; 0b
-	const OBJECT_STEP_FRAME          ; 0c
-	const OBJECT_FACING_STEP         ; 0d
-	const OBJECT_NEXT_TILE           ; 0e
-	const OBJECT_STANDING_TILE       ; 0f
-	const OBJECT_NEXT_MAP_X          ; 10
-	const OBJECT_NEXT_MAP_Y          ; 11
-	const OBJECT_MAP_X               ; 12
-	const OBJECT_MAP_Y               ; 13
-	const OBJECT_INIT_X              ; 14
-	const OBJECT_INIT_Y              ; 15
-	const OBJECT_RADIUS              ; 16
-	const OBJECT_SPRITE_X            ; 17
-	const OBJECT_SPRITE_Y            ; 18
-	const OBJECT_SPRITE_X_OFFSET     ; 19
-	const OBJECT_SPRITE_Y_OFFSET     ; 1a
-	const OBJECT_MOVEMENT_BYTE_INDEX ; 1b
-	const OBJECT_1C                  ; 1c
-	const OBJECT_1D                  ; 1d
-	const OBJECT_1E                  ; 1e
-	const OBJECT_1F                  ; 1f
-	const OBJECT_RANGE               ; 20
-OBJECT_LENGTH EQU const_value
-NUM_OBJECT_STRUCTS EQU 13
+; object_struct members (see macros/wram.asm)
+rsreset
+OBJECT_SPRITE              rb ; 00
+OBJECT_MAP_OBJECT_INDEX    rb ; 01
+OBJECT_SPRITE_TILE         rb ; 02
+OBJECT_MOVEMENTTYPE        rb ; 03
+OBJECT_FLAGS1              rb ; 04
+OBJECT_FLAGS2              rb ; 05
+OBJECT_PALETTE             rb ; 06
+OBJECT_DIRECTION_WALKING   rb ; 07
+OBJECT_FACING              rb ; 08
+OBJECT_STEP_TYPE           rb ; 09
+OBJECT_STEP_DURATION       rb ; 0a
+OBJECT_ACTION              rb ; 0b
+OBJECT_STEP_FRAME          rb ; 0c
+OBJECT_FACING_STEP         rb ; 0d
+OBJECT_NEXT_TILE           rb ; 0e
+OBJECT_STANDING_TILE       rb ; 0f
+OBJECT_NEXT_MAP_X          rb ; 10
+OBJECT_NEXT_MAP_Y          rb ; 11
+OBJECT_MAP_X               rb ; 12
+OBJECT_MAP_Y               rb ; 13
+OBJECT_INIT_X              rb ; 14
+OBJECT_INIT_Y              rb ; 15
+OBJECT_RADIUS              rb ; 16
+OBJECT_SPRITE_X            rb ; 17
+OBJECT_SPRITE_Y            rb ; 18
+OBJECT_SPRITE_X_OFFSET     rb ; 19
+OBJECT_SPRITE_Y_OFFSET     rb ; 1a
+OBJECT_MOVEMENT_BYTE_INDEX rb ; 1b
+OBJECT_1C                  rb ; 1c
+OBJECT_1D                  rb ; 1d
+OBJECT_1E                  rb ; 1e
+OBJECT_1F                  rb ; 1f
+OBJECT_RANGE               rb ; 20
+OBJECT_LENGTH EQU _RS
+NUM_OBJECT_STRUCTS EQU 13 ; see wObjectStructs
 
 ; object_struct OBJECT_FACING values
 OW_DOWN  EQU DOWN  << 2
@@ -69,7 +69,7 @@ EMOTE_OBJECT  EQU 1 << EMOTE_OBJECT_F
 	const OBJ_FLAGS2_2    ; 2
 	const OVERHEAD_F      ; 3
 	const USE_OBP1_F      ; 4
-	const OBJ_FLAGS2_5    ; 5
+	const FROZEN_F        ; 5
 	const OBJ_FLAGS2_6    ; 6
 	const OBJ_FLAGS2_7    ; 7
 
@@ -95,35 +95,35 @@ ABSOLUTE_TILE_ID_F    EQU 2
 RELATIVE_ATTRIBUTES EQU 1 << RELATIVE_ATTRIBUTES_F
 ABSOLUTE_TILE_ID    EQU 1 << ABSOLUTE_TILE_ID_F
 
-; map object struct
-	const_def
-	const MAPOBJECT_OBJECT_STRUCT_ID ; 0
-	const MAPOBJECT_SPRITE           ; 1
-	const MAPOBJECT_Y_COORD          ; 2
-	const MAPOBJECT_X_COORD          ; 3
-	const MAPOBJECT_MOVEMENT         ; 4
-	const MAPOBJECT_RADIUS           ; 5
-	const MAPOBJECT_HOUR             ; 6
-	const MAPOBJECT_TIMEOFDAY        ; 7
-	const MAPOBJECT_COLOR            ; 8
-	const MAPOBJECT_RANGE            ; 9
-	const MAPOBJECT_SCRIPT_POINTER   ; a
-	const MAPOBJECT_POINTER_HI       ; b
-	const MAPOBJECT_EVENT_FLAG       ; c
-	const MAPOBJECT_FLAG_HI          ; d
-MAPOBJECT_LENGTH EQU const_value
+; map_object struct members (see macros/wram.asm)
+rsreset
+MAPOBJECT_OBJECT_STRUCT_ID rb ; 0
+MAPOBJECT_SPRITE           rb ; 1
+MAPOBJECT_Y_COORD          rb ; 2
+MAPOBJECT_X_COORD          rb ; 3
+MAPOBJECT_MOVEMENT         rb ; 4
+MAPOBJECT_RADIUS           rb ; 5
+MAPOBJECT_HOUR             rb ; 6
+MAPOBJECT_TIMEOFDAY        rb ; 7
+MAPOBJECT_COLOR            rb ; 8
+MAPOBJECT_RANGE            rb ; 9
+MAPOBJECT_SCRIPT_POINTER   rw ; a
+MAPOBJECT_EVENT_FLAG       rw ; c
+MAPOBJECT_LENGTH EQU _RS
+NUM_OBJECTS EQU $15
+PLAYER_OBJECT EQU 0
 
 ; SpriteMovementData struct members (see data/sprites/map_objects.asm)
-	const_def
-	const SPRITEMOVEATTR_MOVEMENT ; 0
-	const SPRITEMOVEATTR_FACING   ; 1
-	const SPRITEMOVEATTR_ACTION   ; 2
-	const SPRITEMOVEATTR_FLAGS1   ; 3
-	const SPRITEMOVEATTR_FLAGS2   ; 4
-	const SPRITEMOVEATTR_PALFLAGS ; 5
-NUM_SPRITEMOVEDATA_FIELDS EQU const_value
+rsreset
+SPRITEMOVEATTR_MOVEMENT rb ; 0
+SPRITEMOVEATTR_FACING   rb ; 1
+SPRITEMOVEATTR_ACTION   rb ; 2
+SPRITEMOVEATTR_FLAGS1   rb ; 3
+SPRITEMOVEATTR_FLAGS2   rb ; 4
+SPRITEMOVEATTR_PALFLAGS rb ; 5
+NUM_SPRITEMOVEDATA_FIELDS EQU _RS
 
-MAPOBJECT_SCREEN_WIDTH EQU (SCREEN_WIDTH / 2) + 2
+MAPOBJECT_SCREEN_WIDTH  EQU (SCREEN_WIDTH / 2) + 2
 MAPOBJECT_SCREEN_HEIGHT EQU (SCREEN_HEIGHT / 2) + 2
 
 ; SpriteMovementData indexes (see data/sprites/map_objects.asm)
@@ -174,8 +174,7 @@ MAPOBJECT_SCREEN_HEIGHT EQU (SCREEN_HEIGHT / 2) + 2
 	const SPRITEMOVEDATA_SAILBOAT_BOTTOM      ; 2b
 NUM_SPRITEMOVEDATA EQU const_value
 
-; sprite movement functions
-; see engine/map_objects.asm:StepFunction_FromMovement.Pointers
+; StepFunction_FromMovement.Pointers indexes (see engine/overworld/map_objects.asm)
 	const_def
 	const SPRITEMOVEFN_00                    ; 00
 	const SPRITEMOVEFN_RANDOM_WALK_Y         ; 01
@@ -207,6 +206,7 @@ NUM_SPRITEMOVEDATA EQU const_value
 	const SPRITEMOVEFN_ARCH_TREE             ; 1b
 	const SPRITEMOVEFN_SAILBOAT_TOP          ; 1c
 	const SPRITEMOVEFN_SAILBOAT_BOTTOM       ; 1d
+NUM_SPRITEMOVEFN EQU const_value
 
 ; StepTypesJumptable indexes (see engine/overworld/map_objects.asm)
 	const_def
@@ -234,6 +234,7 @@ NUM_SPRITEMOVEDATA EQU const_value
 	const STEP_TYPE_SKYFALL_TOP      ; 15
 	const STEP_TYPE_NPC_STAIRS       ; 16
 	const STEP_TYPE_PLAYER_STAIRS    ; 17
+NUM_STEP_TYPES EQU const_value
 
 ; ObjectActionPairPointers indexes (see engine/overworld/map_object_action.asm)
 	const_def
@@ -263,8 +264,9 @@ NUM_SPRITEMOVEDATA EQU const_value
 	const OBJECT_ACTION_RUN             ; 17
 	const OBJECT_ACTION_SAILBOAT_TOP    ; 18
 	const OBJECT_ACTION_SAILBOAT_BOTTOM ; 19
+NUM_OBJECT_ACTIONS EQU const_value
 
-; see data/sprites/facings.asm:Facings
+; Facings indexes (see data/sprites/facings.asm)
 	const_def
 	const FACING_STEP_DOWN_0     ; 00
 	const FACING_STEP_DOWN_1     ; 01
@@ -315,6 +317,7 @@ NUM_SPRITEMOVEDATA EQU const_value
 	const FACING_ARCH_TREE_RIGHT ; 2e
 	const FACING_SAILBOAT_TOP    ; 2f
 	const FACING_SAILBOAT_BOTTOM ; 30
+NUM_FACINGS EQU const_value
 
 ; DoPlayerMovement.DoStep arguments (see engine/overworld/player_movement.asm)
 	const_def
@@ -330,3 +333,4 @@ NUM_SPRITEMOVEDATA EQU const_value
 	const STEP_SPIN          ; 9
 	const STEP_FAST          ; a (same as STEP_RUN but without doubling animation speed)
 	const STEP_STAIRS        ; b
+NUM_STEPS EQU const_value

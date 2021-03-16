@@ -458,9 +458,9 @@ TrainerFisherRalph1:
 .Script:
 	loadvar VAR_CALLERID, PHONE_FISHER_RALPH
 	opentext
-	checkflag ENGINE_RALPH
+	checkflag ENGINE_RALPH_READY_FOR_REMATCH
 	iftrue .Rematch
-	checkflag ENGINE_SPECIAL_WILDDATA
+	checkflag ENGINE_FISH_SWARM
 	iftrue .Swarm
 	checkcellnum PHONE_FISHER_RALPH
 	iftrue .NumberAccepted
@@ -508,7 +508,7 @@ TrainerFisherRalph1:
 	startbattle
 	reloadmapafterbattle
 	loadmem wRalphFightCount, 1
-	clearflag ENGINE_RALPH
+	clearflag ENGINE_RALPH_READY_FOR_REMATCH
 	end
 
 .LoadFight1:
@@ -516,7 +516,7 @@ TrainerFisherRalph1:
 	startbattle
 	reloadmapafterbattle
 	loadmem wRalphFightCount, 2
-	clearflag ENGINE_RALPH
+	clearflag ENGINE_RALPH_READY_FOR_REMATCH
 	end
 
 .LoadFight2:
@@ -524,7 +524,7 @@ TrainerFisherRalph1:
 	startbattle
 	reloadmapafterbattle
 	loadmem wRalphFightCount, 3
-	clearflag ENGINE_RALPH
+	clearflag ENGINE_RALPH_READY_FOR_REMATCH
 	end
 
 .LoadFight3:
@@ -532,14 +532,14 @@ TrainerFisherRalph1:
 	startbattle
 	reloadmapafterbattle
 	loadmem wRalphFightCount, 4
-	clearflag ENGINE_RALPH
+	clearflag ENGINE_RALPH_READY_FOR_REMATCH
 	end
 
 .LoadFight4:
 	loadtrainer FISHER, RALPH5
 	startbattle
 	reloadmapafterbattle
-	clearflag ENGINE_RALPH
+	clearflag ENGINE_RALPH_READY_FOR_REMATCH
 	end
 
 .Swarm:
@@ -570,7 +570,7 @@ TrainerPicnickerLiz1:
 .Script:
 	loadvar VAR_CALLERID, PHONE_PICNICKER_LIZ
 	opentext
-	checkflag ENGINE_LIZ
+	checkflag ENGINE_LIZ_READY_FOR_REMATCH
 	iftrue .Rematch
 	checkcellnum PHONE_PICNICKER_LIZ
 	iftrue .NumberAccepted
@@ -618,7 +618,7 @@ TrainerPicnickerLiz1:
 	startbattle
 	reloadmapafterbattle
 	loadmem wLizFightCount, 1
-	clearflag ENGINE_LIZ
+	clearflag ENGINE_LIZ_READY_FOR_REMATCH
 	end
 
 .LoadFight1:
@@ -626,7 +626,7 @@ TrainerPicnickerLiz1:
 	startbattle
 	reloadmapafterbattle
 	loadmem wLizFightCount, 2
-	clearflag ENGINE_LIZ
+	clearflag ENGINE_LIZ_READY_FOR_REMATCH
 	end
 
 .LoadFight2:
@@ -634,7 +634,7 @@ TrainerPicnickerLiz1:
 	startbattle
 	reloadmapafterbattle
 	loadmem wLizFightCount, 3
-	clearflag ENGINE_LIZ
+	clearflag ENGINE_LIZ_READY_FOR_REMATCH
 	end
 
 .LoadFight3:
@@ -642,14 +642,14 @@ TrainerPicnickerLiz1:
 	startbattle
 	reloadmapafterbattle
 	loadmem wLizFightCount, 4
-	clearflag ENGINE_LIZ
+	clearflag ENGINE_LIZ_READY_FOR_REMATCH
 	end
 
 .LoadFight4:
 	loadtrainer PICNICKER, LIZ5
 	startbattle
 	reloadmapafterbattle
-	clearflag ENGINE_LIZ
+	clearflag ENGINE_LIZ_READY_FOR_REMATCH
 	end
 
 .NumberAccepted:

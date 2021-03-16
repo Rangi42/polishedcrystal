@@ -121,10 +121,10 @@ PlayCryHeader::
 	push af
 
 	; Cry headers are stuck in one bank.
-	ld a, BANK(CryHeaders)
+	ld a, BANK(PokemonCries)
 	rst Bankswitch
 
-	ld hl, CryHeaders
+	ld hl, PokemonCries
 rept 6
 	add hl, de
 endr

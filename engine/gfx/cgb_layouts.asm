@@ -158,7 +158,7 @@ _CGB_FinishBattleScreenLayout:
 	push bc
 	hlcoord 0, 0, wAttrMap
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
-	ld a, PAL_BATTLE_BG_PLAYER_HP
+	ld a, PAL_BATTLE_BG_ENEMY_HP
 	rst ByteFill
 
 	hlcoord 0, 4, wAttrMap
@@ -173,12 +173,12 @@ _CGB_FinishBattleScreenLayout:
 
 	hlcoord 0, 0, wAttrMap
 	lb bc, 4, 10
-	ld a, PAL_BATTLE_BG_PLAYER_HP
+	ld a, PAL_BATTLE_BG_ENEMY_HP
 	call FillBoxWithByte
 
 	hlcoord 10, 7, wAttrMap
 	lb bc, 5, 10
-	ld a, PAL_BATTLE_BG_ENEMY_HP
+	ld a, PAL_BATTLE_BG_PLAYER_HP
 	call FillBoxWithByte
 
 	hlcoord 12, 11, wAttrMap
@@ -1213,22 +1213,22 @@ _CGB_JudgeSystem:
 
 	; up/down arrows
 	hlcoord 0, 0, wAttrMap
-	ld a, 1 | TILE_BANK
+	ld a, 1 | VRAM_BANK_1
 	ld [hli], a
 	; top row
 	ld bc, 17
 	ld a, 1
 	rst ByteFill
 	; gender icon
-	ld a, 6 | TILE_BANK
+	ld a, 6 | VRAM_BANK_1
 	ld [hli], a
 	; shiny icon and second row
-	ld a, 1 | TILE_BANK
+	ld a, 1 | VRAM_BANK_1
 	ld bc, 21
 	rst ByteFill
 	; left/right arrows
 	hlcoord 0, 2, wAttrMap
-	ld [hl], 0 | TILE_BANK
+	ld [hl], 0 | VRAM_BANK_1
 	; frontpic
 	hlcoord 0, 6, wAttrMap
 	lb bc, 7, 7
@@ -1237,15 +1237,15 @@ _CGB_JudgeSystem:
 	; chart
 	hlcoord 9, 4, wAttrMap
 	lb bc, 12, 8
-	ld a, 5 | TILE_BANK
+	ld a, 5 | VRAM_BANK_1
 	call FillBoxWithByte
 	hlcoord 8, 6, wAttrMap
 	lb bc, 8, 1
-	ld a, 5 | TILE_BANK
+	ld a, 5 | VRAM_BANK_1
 	call FillBoxWithByte
 	hlcoord 17, 6, wAttrMap
 	lb bc, 8, 1
-	ld a, 5 | TILE_BANK
+	ld a, 5 | VRAM_BANK_1
 	call FillBoxWithByte
 	; stat values
 	ld c, STAT_HP
@@ -1268,7 +1268,7 @@ _CGB_JudgeSystem:
 	call .FillStat
 	; heading
 	hlcoord 0, 3, wAttrMap
-	ld a, 0 | TILE_BANK
+	ld a, 0 | VRAM_BANK_1
 	ld bc, 11
 	rst ByteFill
 

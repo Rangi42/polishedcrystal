@@ -40,7 +40,7 @@ ManiaScript:
 	end
 
 .alreadyhaveshuckie
-	checkflag ENGINE_SHUCKIE_GIVEN
+	checkflag ENGINE_GOT_SHUCKIE_TODAY
 	iffalse .returnshuckie
 	jumpopenedtext ManiaText_TakeCareOfShuckie
 

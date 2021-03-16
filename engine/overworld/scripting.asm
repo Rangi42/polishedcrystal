@@ -2338,10 +2338,10 @@ Script_endall:
 	jp StopScript
 
 Script_halloffame:
-	ld hl, wGameTimerPause
+	ld hl, wGameTimerPaused
 	res 0, [hl]
 	farcall HallOfFame
-	ld hl, wGameTimerPause
+	ld hl, wGameTimerPaused
 	set 0, [hl]
 	jr ReturnFromCredits
 

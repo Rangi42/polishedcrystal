@@ -1,3 +1,5 @@
+; song ids
+; Music indexes (see audio/music_pointers.asm)
 	const_def
 	const MUSIC_NONE                           ; 00
 	const MUSIC_CRYSTAL_OPENING                ; 01
@@ -191,9 +193,9 @@
 	const MUSIC_GYM_LEADER_BATTLE_PRISM        ; bd ; unused
 	const MUSIC_PALETTE_BATTLE_PRISM           ; be ; unused
 	const MUSIC_UNDERTALE_MEGALOVANIA          ; bf ; unused
-NUM_SONGS EQU const_value
+NUM_MUSIC_SONGS EQU const_value
 
-; special
-MUSIC_RADIO_TOWER EQU -1
+; GetMapMusic picks music for these values (see data/maps/special_map_music.asm)
+MUSIC_RADIO_TOWER   EQU -1
 MUSIC_MAHOGANY_MART EQU -2
-MUSIC_LAVENDER EQU -3
+MUSIC_LAVENDER      EQU -3

@@ -58,6 +58,8 @@ BATTLEEXTRA_GFX_START EQU $5f
 
 ; Actual characters
 
+FIRST_REGULAR_TEXT_CHAR EQU $7f
+
 ; map tiles:
 
 	charmap " ",        $7f

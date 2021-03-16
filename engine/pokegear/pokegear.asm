@@ -1827,7 +1827,7 @@ PlayRadio:
 .PlayStation:
 	ld a, -1
 	ld [wEnemyTurnsTaken], a
-	ld hl, .StationPointers
+	ld hl, PlayRadioStationPointers
 	ld d, $0
 	add hl, de
 	add hl, de
@@ -1849,8 +1849,8 @@ PlayRadio:
 	ld [hl], "”"
 	jp ApplyTilemapInVBlank
 
-.StationPointers:
-	dw .OakOrPnP
+PlayRadioStationPointers:
+	dw LoadStation_PokemonChannel
 	dw LoadStation_OaksPokemonTalk
 	dw LoadStation_PokedexShow
 	dw LoadStation_PokemonMusic
@@ -1860,7 +1860,7 @@ PlayRadio:
 	dw LoadStation_LetsAllSing
 	dw LoadStation_RocketRadio
 
-.OakOrPnP:
+LoadStation_PokemonChannel:
 	call GetCurrentLandmark
 	cp KANTO_LANDMARK
 	jr nc, .kanto_or_orange
@@ -1870,7 +1870,7 @@ PlayRadio:
 	jp z, LoadStation_PokedexShow
 	jp LoadStation_OaksPokemonTalk
 
-.kanto_or_orange
+.kanto_or_orange:
 	jp LoadStation_PlacesAndPeople
 
 PokegearMap:

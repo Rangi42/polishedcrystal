@@ -140,7 +140,7 @@ MomPhoneNoGymQuestScript:
 
 MomPhoneLectureScript:
 	setevent EVENT_TALKED_TO_MOM_AFTER_MYSTERY_EGG_QUEST
-	setflag ENGINE_DST
+	setflag ENGINE_MOM_ACTIVE
 	specialphonecall SPECIALCALL_NONE
 	farwritetext MomPhoneLectureText
 	yesorno
@@ -387,7 +387,7 @@ LyraPhoneScript2:
 
 JackPhoneScript1:
 	gettrainername SCHOOLBOY, JACK1, $0
-	checkflag ENGINE_JACK
+	checkflag ENGINE_JACK_READY_FOR_REMATCH
 	iftrue UnknownScript_0xbd0f3
 	farscall PhoneScript_AnswerPhone_Male
 	checkflag ENGINE_JACK_MONDAY_MORNING
@@ -409,7 +409,7 @@ JackPhoneScript2:
 	farscall PhoneScript_GreetPhone_Male
 	farscall PhoneScript_Random2
 	ifequal $0, JackBattleTrivia
-	checkflag ENGINE_JACK
+	checkflag ENGINE_JACK_READY_FOR_REMATCH
 	iftrue UnknownScript_0xbd11e
 	checkflag ENGINE_JACK_MONDAY_MORNING
 	iftrue UnknownScript_0xbd11e
@@ -426,7 +426,7 @@ JackMondayMorning:
 
 JackWantsToBattle:
 	getlandmarkname NATIONAL_PARK, $2
-	setflag ENGINE_JACK
+	setflag ENGINE_JACK_READY_FOR_REMATCH
 	farsjump PhoneScript_WantsToBattle_Male
 
 JackFindsRare:
@@ -468,7 +468,7 @@ UnknownScript_0xbd172:
 
 HueyPhoneScript1:
 	gettrainername SAILOR, HUEY1, $0
-	checkflag ENGINE_HUEY
+	checkflag ENGINE_HUEY_READY_FOR_REMATCH
 	iftrue UnknownScript_0xbd1a2
 	farscall PhoneScript_AnswerPhone_Male
 	checkflag ENGINE_HUEY_WEDNESDAY_NIGHT
@@ -489,7 +489,7 @@ UnknownScript_0xbd1a2:
 HueyPhoneScript2:
 	gettrainername SAILOR, HUEY1, $0
 	farscall PhoneScript_GreetPhone_Male
-	checkflag ENGINE_HUEY
+	checkflag ENGINE_HUEY_READY_FOR_REMATCH
 	iftrue UnknownScript_0xbd1c9
 	checkflag ENGINE_HUEY_WEDNESDAY_NIGHT
 	iftrue UnknownScript_0xbd1c9
@@ -505,14 +505,14 @@ HueyWednesdayNight:
 
 HueyWantsBattle:
 	getlandmarkname LIGHTHOUSE, $2
-	setflag ENGINE_HUEY
+	setflag ENGINE_HUEY_READY_FOR_REMATCH
 	farsjump PhoneScript_WantsToBattle_Male
 
 ; Gaven
 
 GavenPhoneScript1:
 	gettrainername COOLTRAINERM, GAVEN1, $0
-	checkflag ENGINE_GAVEN
+	checkflag ENGINE_GAVEN_READY_FOR_REMATCH
 	iftrue UnknownScript_0xbd1fd
 	farscall PhoneScript_AnswerPhone_Male
 	checkflag ENGINE_GAVEN_THURSDAY_MORNING
@@ -532,7 +532,7 @@ UnknownScript_0xbd1fd:
 GavenPhoneScript2:
 	gettrainername COOLTRAINERM, GAVEN1, $0
 	farscall PhoneScript_GreetPhone_Male
-	checkflag ENGINE_GAVEN
+	checkflag ENGINE_GAVEN_READY_FOR_REMATCH
 	iftrue UnknownScript_0xbd220
 	checkflag ENGINE_GAVEN_THURSDAY_MORNING
 	iftrue UnknownScript_0xbd220
@@ -549,7 +549,7 @@ GavenThursdayMorningScript:
 
 GavenWantsRematch:
 	getlandmarkname ROUTE_26, $2
-	setflag ENGINE_GAVEN
+	setflag ENGINE_GAVEN_READY_FOR_REMATCH
 	farsjump PhoneScript_WantsToBattle_Male
 
 GavenFoundRare:
@@ -559,7 +559,7 @@ GavenFoundRare:
 
 BethPhoneScript1:
 	gettrainername COOLTRAINERF, BETH1, $0
-	checkflag ENGINE_BETH
+	checkflag ENGINE_BETH_READY_FOR_REMATCH
 	iftrue UnknownScript_0xbd260
 	farscall PhoneScript_AnswerPhone_Female
 	checkflag ENGINE_BETH_FRIDAY_AFTERNOON
@@ -579,7 +579,7 @@ UnknownScript_0xbd260:
 BethPhoneScript2:
 	gettrainername COOLTRAINERF, BETH1, $0
 	farscall PhoneScript_GreetPhone_Female
-	checkflag ENGINE_BETH
+	checkflag ENGINE_BETH_READY_FOR_REMATCH
 	iftrue UnknownScript_0xbd283
 	checkflag ENGINE_BETH_FRIDAY_AFTERNOON
 	iftrue UnknownScript_0xbd283
@@ -594,14 +594,14 @@ BethFridayAfternoon:
 
 BethWantsBattle:
 	getlandmarkname ROUTE_26, $2
-	setflag ENGINE_BETH
+	setflag ENGINE_BETH_READY_FOR_REMATCH
 	farsjump PhoneScript_WantsToBattle_Female
 
 ; Jose
 
 JosePhoneScript1:
 	gettrainername BIRD_KEEPER, JOSE2, $0
-	checkflag ENGINE_JOSE
+	checkflag ENGINE_JOSE_READY_FOR_REMATCH
 	iftrue UnknownScript_0xbd2bd
 	farscall PhoneScript_AnswerPhone_Male
 	checkflag ENGINE_JOSE_SATURDAY_NIGHT
@@ -627,7 +627,7 @@ UnknownScript_0xbd2c4:
 JosePhoneScript2:
 	gettrainername BIRD_KEEPER, JOSE2, $0
 	farscall PhoneScript_GreetPhone_Male
-	checkflag ENGINE_JOSE
+	checkflag ENGINE_JOSE_READY_FOR_REMATCH
 	iftrue UnknownScript_0xbd2f5
 	checkflag ENGINE_JOSE_SATURDAY_NIGHT
 	iftrue UnknownScript_0xbd2f5
@@ -648,7 +648,7 @@ JoseSaturdayNight:
 
 JoseWantsBattle:
 	getlandmarkname ROUTE_27, $2
-	setflag ENGINE_JOSE
+	setflag ENGINE_JOSE_READY_FOR_REMATCH
 	farsjump PhoneScript_WantsToBattle_Male
 
 JoseFoundRare:
@@ -663,7 +663,7 @@ JoseHasStarPiece:
 
 ReenaPhoneScript1:
 	gettrainername COOLTRAINERF, REENA1, $0
-	checkflag ENGINE_REENA
+	checkflag ENGINE_REENA_READY_FOR_REMATCH
 	iftrue UnknownScript_0xbd33f
 	farscall PhoneScript_AnswerPhone_Female
 	checkflag ENGINE_REENA_SUNDAY_MORNING
@@ -683,7 +683,7 @@ UnknownScript_0xbd33f:
 ReenaPhoneScript2:
 	gettrainername COOLTRAINERF, REENA1, $0
 	farscall PhoneScript_GreetPhone_Female
-	checkflag ENGINE_REENA
+	checkflag ENGINE_REENA_READY_FOR_REMATCH
 	iftrue UnknownScript_0xbd362
 	checkflag ENGINE_REENA_SUNDAY_MORNING
 	iftrue UnknownScript_0xbd362
@@ -698,14 +698,14 @@ ReenaSundayMorning:
 
 ReenaWantsBattle:
 	getlandmarkname ROUTE_27, $2
-	setflag ENGINE_REENA
+	setflag ENGINE_REENA_READY_FOR_REMATCH
 	farsjump PhoneScript_WantsToBattle_Female
 
 ; Joey
 
 JoeyPhoneScript1:
 	gettrainername YOUNGSTER, JOEY1, $0
-	checkflag ENGINE_JOEY
+	checkflag ENGINE_JOEY_READY_FOR_REMATCH
 	iftrue UnknownScript_0xbd399
 	farscall PhoneScript_AnswerPhone_Male
 	checkflag ENGINE_JOEY_MONDAY_AFTERNOON
@@ -728,7 +728,7 @@ UnknownScript_0xbd399:
 JoeyPhoneScript2:
 	gettrainername YOUNGSTER, JOEY1, $0
 	farscall PhoneScript_GreetPhone_Male
-	checkflag ENGINE_JOEY
+	checkflag ENGINE_JOEY_READY_FOR_REMATCH
 	iftrue UnknownScript_0xbd3c0
 	checkflag ENGINE_JOEY_MONDAY_AFTERNOON
 	iftrue UnknownScript_0xbd3c0
@@ -744,14 +744,14 @@ JoeyMondayAfternoon:
 
 JoeyWantsBattle:
 	getlandmarkname ROUTE_30, $2
-	setflag ENGINE_JOEY
+	setflag ENGINE_JOEY_READY_FOR_REMATCH
 	farsjump PhoneScript_WantsToBattle_Male
 
 ; Wade
 
 WadePhoneScript1:
 	gettrainername BUG_CATCHER, WADE1, $0
-	checkflag ENGINE_WADE
+	checkflag ENGINE_WADE_READY_FOR_REMATCH
 	iftrue UnknownScript_0xbd41a
 	farscall PhoneScript_AnswerPhone_Male
 	checkflag ENGINE_WADE_TUESDAY_NIGHT
@@ -800,7 +800,7 @@ WadePhoneScript2:
 	ifequal SATURDAY, UnknownScript_0xbd480
 
 UnknownScript_0xbd44c:
-	checkflag ENGINE_WADE
+	checkflag ENGINE_WADE_READY_FOR_REMATCH
 	iftrue UnknownScript_0xbd474
 	checkflag ENGINE_WADE_TUESDAY_NIGHT
 	iftrue UnknownScript_0xbd474
@@ -826,7 +826,7 @@ WadeTuesdayNight:
 
 WadeWantsBattle2:
 	getlandmarkname ROUTE_31, $2
-	setflag ENGINE_WADE
+	setflag ENGINE_WADE_READY_FOR_REMATCH
 	farsjump PhoneScript_WantsToBattle_Male
 
 WadeFoundRare:
@@ -867,7 +867,7 @@ UnknownScript_0xbd4ce:
 
 RalphPhoneScript1:
 	gettrainername FISHER, RALPH1, $0
-	checkflag ENGINE_RALPH
+	checkflag ENGINE_RALPH_READY_FOR_REMATCH
 	iftrue Ralph_Rematch
 	farscall PhoneScript_AnswerPhone_Male
 	checkflag ENGINE_RALPH_WEDNESDAY_MORNING
@@ -877,7 +877,7 @@ RalphPhoneScript1:
 	checktime 1 << MORN
 	iftrue Ralph_WednesdayMorning
 Ralph_CheckSwarm:
-	checkflag ENGINE_SPECIAL_WILDDATA
+	checkflag ENGINE_FISH_SWARM
 	iftrue Ralph_ReportSwarm
 	farsjump RalphNoItemScript
 
@@ -894,7 +894,7 @@ RalphPhoneScript2:
 	farscall PhoneScript_GreetPhone_Male
 	checkflag ENGINE_FLYPOINT_GOLDENROD
 	iffalse Ralph_CheckSwarm2
-	checkflag ENGINE_RALPH
+	checkflag ENGINE_RALPH_READY_FOR_REMATCH
 	iftrue Ralph_CheckSwarm2
 	checkflag ENGINE_RALPH_WEDNESDAY_MORNING
 	iftrue Ralph_CheckSwarm2
@@ -909,13 +909,13 @@ Ralph_WednesdayMorning:
 	setflag ENGINE_RALPH_WEDNESDAY_MORNING
 Ralph_FightMe:
 	getlandmarkname ROUTE_32, $2
-	setflag ENGINE_RALPH
+	setflag ENGINE_RALPH_READY_FOR_REMATCH
 	farsjump PhoneScript_WantsToBattle_Male
 
 Ralph_SetUpSwarm:
-	checkflag ENGINE_SPECIAL_WILDDATA
+	checkflag ENGINE_FISH_SWARM
 	iftrue UnknownScript_0xbd55c
-	setflag ENGINE_SPECIAL_WILDDATA
+	setflag ENGINE_FISH_SWARM
 	getmonname QWILFISH, $1
 	getlandmarkname ROUTE_32, $2
 	setval FISHSWARM_QWILFISH
@@ -929,7 +929,7 @@ UnknownScript_0xbd55c:
 
 LizPhoneScript1:
 	gettrainername PICNICKER, LIZ1, $0
-	checkflag ENGINE_LIZ
+	checkflag ENGINE_LIZ_READY_FOR_REMATCH
 	iftrue UnknownScript_0xbd586
 	farscall PhoneScript_AnswerPhone_Female
 	checkflag ENGINE_LIZ_THURSDAY_AFTERNOON
@@ -952,7 +952,7 @@ LizPhoneScript2:
 	farscall PhoneScript_Random4
 	ifequal $0, LizWrongNumber
 	farscall PhoneScript_GreetPhone_Female
-	checkflag ENGINE_LIZ
+	checkflag ENGINE_LIZ_READY_FOR_REMATCH
 	iftrue UnknownScript_0xbd5a9
 	checkflag ENGINE_LIZ_THURSDAY_AFTERNOON
 	iftrue UnknownScript_0xbd5a9
@@ -973,7 +973,7 @@ LizThursdayAfternoon:
 
 LizWantsBattle:
 	getlandmarkname ROUTE_32, $2
-	setflag ENGINE_LIZ
+	setflag ENGINE_LIZ_READY_FOR_REMATCH
 	farsjump PhoneScript_WantsToBattle_Female
 
 LizWrongNumber:
@@ -1034,7 +1034,7 @@ LizGossipScript:
 
 AnthonyPhoneScript1:
 	gettrainername HIKER, ANTHONY1, $0
-	checkflag ENGINE_ANTHONY
+	checkflag ENGINE_ANTHONY_READY_FOR_REMATCH
 	iftrue UnknownScript_0xbd65d
 	farscall PhoneScript_AnswerPhone_Male
 	checkflag ENGINE_ANTHONY_FRIDAY_NIGHT
@@ -1062,7 +1062,7 @@ AnthonyPhoneScript2:
 	farscall PhoneScript_GreetPhone_Male
 	checkflag ENGINE_FLYPOINT_GOLDENROD
 	iffalse UnknownScript_0xbd68d
-	checkflag ENGINE_ANTHONY
+	checkflag ENGINE_ANTHONY_READY_FOR_REMATCH
 	iftrue UnknownScript_0xbd68d
 	checkflag ENGINE_ANTHONY_FRIDAY_NIGHT
 	iftrue UnknownScript_0xbd68d
@@ -1079,7 +1079,7 @@ AnthonyFridayNight:
 
 AnthonyWantsBattle:
 	getlandmarkname ROUTE_33, $2
-	setflag ENGINE_ANTHONY
+	setflag ENGINE_ANTHONY_READY_FOR_REMATCH
 	farsjump PhoneScript_WantsToBattle_Male
 
 AnthonyTriesDunsparceSwarm:
@@ -1098,7 +1098,7 @@ UnknownScript_0xbd6bd:
 
 ToddPhoneScript1:
 	gettrainername CAMPER, TODD1, $0
-	checkflag ENGINE_TODD
+	checkflag ENGINE_TODD_READY_FOR_REMATCH
 	iftrue UnknownScript_0xbd6ea
 	farscall PhoneScript_AnswerPhone_Male
 	checkflag ENGINE_TODD_SATURDAY_MORNING
@@ -1123,7 +1123,7 @@ UnknownScript_0xbd6f1:
 ToddPhoneScript2:
 	gettrainername CAMPER, TODD1, $0
 	farscall PhoneScript_GreetPhone_Male
-	checkflag ENGINE_TODD
+	checkflag ENGINE_TODD_READY_FOR_REMATCH
 	iftrue UnknownScript_0xbd717
 	checkflag ENGINE_TODD_SATURDAY_MORNING
 	iftrue UnknownScript_0xbd717
@@ -1146,7 +1146,7 @@ ToddSaturdayMorning:
 
 ToddWantsBattle:
 	getlandmarkname ROUTE_34, $2
-	setflag ENGINE_TODD
+	setflag ENGINE_TODD_READY_FOR_REMATCH
 	farsjump PhoneScript_WantsToBattle_Male
 
 ToddFoundRare:
@@ -1160,7 +1160,7 @@ ToddDeptStoreSale:
 
 GinaPhoneScript1:
 	gettrainername PICNICKER, GINA1, $0
-	checkflag ENGINE_GINA
+	checkflag ENGINE_GINA_READY_FOR_REMATCH
 	iftrue UnknownScript_0xbd776
 	farscall PhoneScript_AnswerPhone_Female
 	checkflag ENGINE_GINA_SUNDAY_AFTERNOON
@@ -1193,7 +1193,7 @@ GinaPhoneScript2:
 	farscall PhoneScript_GreetPhone_Female
 	checkflag ENGINE_ROCKETS_IN_RADIO_TOWER
 	iftrue GinaRockets
-	checkflag ENGINE_GINA
+	checkflag ENGINE_GINA_READY_FOR_REMATCH
 	iftrue UnknownScript_0xbd7c8
 	checkflag ENGINE_GINA_SUNDAY_AFTERNOON
 	iftrue UnknownScript_0xbd7c8
@@ -1220,7 +1220,7 @@ GinaSundayDay:
 
 GinaWantsBattle:
 	getlandmarkname ROUTE_34, $2
-	setflag ENGINE_GINA
+	setflag ENGINE_GINA_READY_FOR_REMATCH
 	farsjump PhoneScript_WantsToBattle_Female
 
 GinaRockets:
@@ -1257,7 +1257,7 @@ UnknownScript_0xbd80f:
 
 ArniePhoneScript1:
 	gettrainername BUG_CATCHER, ARNIE1, $0
-	checkflag ENGINE_ARNIE
+	checkflag ENGINE_ARNIE_READY_FOR_REMATCH
 	iftrue UnknownScript_0xbd83c
 	farscall PhoneScript_AnswerPhone_Male
 	checkflag ENGINE_ARNIE_TUESDAY_MORNING
@@ -1283,7 +1283,7 @@ UnknownScript_0xbd843:
 ArniePhoneScript2:
 	gettrainername BUG_CATCHER, ARNIE1, $0
 	farscall PhoneScript_GreetPhone_Male
-	checkflag ENGINE_ARNIE
+	checkflag ENGINE_ARNIE_READY_FOR_REMATCH
 	iftrue UnknownScript_0xbd866
 	checkflag ENGINE_ARNIE_TUESDAY_MORNING
 	iftrue UnknownScript_0xbd866
@@ -1302,7 +1302,7 @@ ArnieTuesdayMorning:
 
 ArnieWantsBattle:
 	getlandmarkname ROUTE_35, $2
-	setflag ENGINE_ARNIE
+	setflag ENGINE_ARNIE_READY_FOR_REMATCH
 	farsjump PhoneScript_WantsToBattle_Male
 
 ArnieYanmaSwarm: ; start swarm
@@ -1324,7 +1324,7 @@ ArnieYanmaAlreadySwarming:
 
 AlanPhoneScript1:
 	gettrainername SCHOOLBOY, ALAN1, $0
-	checkflag ENGINE_ALAN
+	checkflag ENGINE_ALAN_READY_FOR_REMATCH
 	iftrue UnknownScript_0xbd8cf
 	farscall PhoneScript_AnswerPhone_Male
 	checkflag ENGINE_ALAN_WEDNESDAY_AFTERNOON
@@ -1350,7 +1350,7 @@ UnknownScript_0xbd8d6:
 AlanPhoneScript2:
 	gettrainername SCHOOLBOY, ALAN1, $0
 	farscall PhoneScript_GreetPhone_Male
-	checkflag ENGINE_ALAN
+	checkflag ENGINE_ALAN_READY_FOR_REMATCH
 	iftrue UnknownScript_0xbd915
 	checkflag ENGINE_ALAN_WEDNESDAY_AFTERNOON
 	iftrue UnknownScript_0xbd915
@@ -1375,7 +1375,7 @@ AlanWednesdayDay:
 
 AlanWantsBattle:
 	getlandmarkname ROUTE_36, $2
-	setflag ENGINE_ALAN
+	setflag ENGINE_ALAN_READY_FOR_REMATCH
 	farsjump PhoneScript_WantsToBattle_Male
 
 AlanHasFireStone:
@@ -1387,7 +1387,7 @@ AlanHasFireStone:
 
 DanaPhoneScript1:
 	gettrainername LASS, DANA1, $0
-	checkflag ENGINE_DANA
+	checkflag ENGINE_DANA_READY_FOR_REMATCH
 	iftrue UnknownScript_0xbd959
 	farscall PhoneScript_AnswerPhone_Female
 	checkflag ENGINE_DANA_THURSDAY_NIGHT
@@ -1413,7 +1413,7 @@ UnknownScript_0xbd960:
 DanaPhoneScript2:
 	gettrainername LASS, DANA1, $0
 	farscall PhoneScript_GreetPhone_Female
-	checkflag ENGINE_DANA
+	checkflag ENGINE_DANA_READY_FOR_REMATCH
 	iftrue UnknownScript_0xbd99f
 	checkflag ENGINE_DANA_THURSDAY_NIGHT
 	iftrue UnknownScript_0xbd99f
@@ -1440,7 +1440,7 @@ DanaThursdayNight:
 
 DanaWantsBattle:
 	getlandmarkname ROUTE_38, $2
-	setflag ENGINE_DANA
+	setflag ENGINE_DANA_READY_FOR_REMATCH
 	farsjump PhoneScript_WantsToBattle_Female
 
 DanaFoundRare:
@@ -1455,7 +1455,7 @@ DanaHasThunderstone:
 
 ChadPhoneScript1:
 	gettrainername SCHOOLBOY, CHAD1, $0
-	checkflag ENGINE_CHAD
+	checkflag ENGINE_CHAD_READY_FOR_REMATCH
 	iftrue UnknownScript_0xbd9e9
 	farscall PhoneScript_AnswerPhone_Male
 	checkflag ENGINE_CHAD_FRIDAY_MORNING
@@ -1477,7 +1477,7 @@ ChadPhoneScript2:
 	farscall PhoneScript_GreetPhone_Male
 	farscall PhoneScript_Random2
 	ifequal $0, ChadOakGossip
-	checkflag ENGINE_CHAD
+	checkflag ENGINE_CHAD_READY_FOR_REMATCH
 	iftrue UnknownScript_0xbda14
 	checkflag ENGINE_CHAD_FRIDAY_MORNING
 	iftrue UnknownScript_0xbda14
@@ -1494,7 +1494,7 @@ ChadFridayMorning:
 
 ChadWantsBattle:
 	getlandmarkname ROUTE_38, $2
-	setflag ENGINE_CHAD
+	setflag ENGINE_CHAD_READY_FOR_REMATCH
 	farsjump PhoneScript_WantsToBattle_Male
 
 ChadFoundRare:
@@ -1554,7 +1554,7 @@ UnknownScript_0xbdaa2:
 
 TullyPhoneScript1:
 	gettrainername FISHER, TULLY1, $0
-	checkflag ENGINE_TULLY
+	checkflag ENGINE_TULLY_READY_FOR_REMATCH
 	iftrue UnknownScript_0xbdad5
 	farscall PhoneScript_AnswerPhone_Male
 	checkflag ENGINE_TULLY_SUNDAY_NIGHT
@@ -1580,7 +1580,7 @@ UnknownScript_0xbdadc:
 TullyPhoneScript2:
 	gettrainername FISHER, TULLY1, $0
 	farscall PhoneScript_GreetPhone_Male
-	checkflag ENGINE_TULLY
+	checkflag ENGINE_TULLY_READY_FOR_REMATCH
 	iftrue UnknownScript_0xbdb1b
 	checkflag ENGINE_TULLY_SUNDAY_NIGHT
 	iftrue UnknownScript_0xbdb1b
@@ -1605,7 +1605,7 @@ TullySundayNight:
 
 TullyWantsBattle:
 	getlandmarkname ROUTE_42, $2
-	setflag ENGINE_TULLY
+	setflag ENGINE_TULLY_READY_FOR_REMATCH
 	farsjump PhoneScript_WantsToBattle_Male
 
 TullyFoundWaterStone:
@@ -1615,7 +1615,7 @@ TullyFoundWaterStone:
 
 BrentPhoneScript1:
 	gettrainername POKEMANIAC, BRENT1, $0
-	checkflag ENGINE_BRENT
+	checkflag ENGINE_BRENT_READY_FOR_REMATCH
 	iftrue UnknownScript_0xbdb59
 	farscall PhoneScript_AnswerPhone_Male
 	checkflag ENGINE_BRENT_MONDAY_MORNING
@@ -1637,7 +1637,7 @@ BrentPhoneScript2:
 	farscall PhoneScript_GreetPhone_Male
 	farscall PhoneScript_Random2
 	ifequal $0, BrentBillTrivia
-	checkflag ENGINE_BRENT
+	checkflag ENGINE_BRENT_READY_FOR_REMATCH
 	iftrue UnknownScript_0xbdb84
 	checkflag ENGINE_BRENT_MONDAY_MORNING
 	iftrue UnknownScript_0xbdb84
@@ -1652,7 +1652,7 @@ BrentMondayMorning:
 
 BrentWantsBattle:
 	getlandmarkname ROUTE_43, $2
-	setflag ENGINE_BRENT
+	setflag ENGINE_BRENT_READY_FOR_REMATCH
 	farsjump PhoneScript_WantsToBattle_Male
 
 BrentBillTrivia:
@@ -1660,7 +1660,7 @@ BrentBillTrivia:
 
 TiffanyPhoneScript1:
 	gettrainername PICNICKER, TIFFANY1, $0
-	checkflag ENGINE_TIFFANY
+	checkflag ENGINE_TIFFANY_READY_FOR_REMATCH
 	iftrue UnknownScript_0xbdbc2
 	farscall PhoneScript_AnswerPhone_Female
 	checkflag ENGINE_TIFFANY_TUESDAY_AFTERNOON
@@ -1688,7 +1688,7 @@ TiffanyPhoneScript2:
 	farscall PhoneScript_Random4
 	ifequal $0, TiffanysFamilyMembers
 	farscall PhoneScript_GreetPhone_Female
-	checkflag ENGINE_TIFFANY
+	checkflag ENGINE_TIFFANY_READY_FOR_REMATCH
 	iftrue UnknownScript_0xbdc10
 	checkflag ENGINE_TIFFANY_TUESDAY_AFTERNOON
 	iftrue UnknownScript_0xbdc10
@@ -1713,7 +1713,7 @@ TiffanyTuesdayAfternoon:
 
 TiffanyWantsBattle:
 	getlandmarkname ROUTE_43, $2
-	setflag ENGINE_TIFFANY
+	setflag ENGINE_TIFFANY_READY_FOR_REMATCH
 	farsjump PhoneScript_WantsToBattle_Female
 
 TiffanysFamilyMembers:
@@ -1761,7 +1761,7 @@ TiffanyHasPinkBow:
 
 VancePhoneScript1:
 	gettrainername BIRD_KEEPER, VANCE1, $0
-	checkflag ENGINE_VANCE
+	checkflag ENGINE_VANCE_READY_FOR_REMATCH
 	iftrue UnknownScript_0xbdc96
 	farscall PhoneScript_AnswerPhone_Male
 	checkflag ENGINE_VANCE_WEDNESDAY_NIGHT
@@ -1781,7 +1781,7 @@ UnknownScript_0xbdc96:
 VancePhoneScript2:
 	gettrainername BIRD_KEEPER, VANCE1, $0
 	farscall PhoneScript_GreetPhone_Male
-	checkflag ENGINE_VANCE
+	checkflag ENGINE_VANCE_READY_FOR_REMATCH
 	iftrue UnknownScript_0xbdcbd
 	checkflag ENGINE_VANCE_WEDNESDAY_NIGHT
 	iftrue UnknownScript_0xbdcbd
@@ -1797,12 +1797,12 @@ VanceWednesdayNight:
 
 VanceWantsRematch:
 	getlandmarkname ROUTE_44, $2
-	setflag ENGINE_VANCE
+	setflag ENGINE_VANCE_READY_FOR_REMATCH
 	farsjump PhoneScript_WantsToBattle_Male
 
 WiltonPhoneScript1:
 	gettrainername FISHER, WILTON1, $0
-	checkflag ENGINE_WILTON
+	checkflag ENGINE_WILTON_READY_FOR_REMATCH
 	iftrue UnknownScript_0xbdcf7
 	farscall PhoneScript_AnswerPhone_Male
 	checkflag ENGINE_WILTON_THRUSDAY_MORNING
@@ -1828,7 +1828,7 @@ UnknownScript_0xbdcfe:
 WiltonPhoneScript2:
 	gettrainername FISHER, WILTON1, $0
 	farscall PhoneScript_GreetPhone_Male
-	checkflag ENGINE_WILTON
+	checkflag ENGINE_WILTON_READY_FOR_REMATCH
 	iftrue UnknownScript_0xbdd2f
 	checkflag ENGINE_WILTON_THRUSDAY_MORNING
 	iftrue UnknownScript_0xbdd2f
@@ -1847,7 +1847,7 @@ WiltonThursdayMorning:
 
 WiltonWantsBattle:
 	getlandmarkname ROUTE_44, $2
-	setflag ENGINE_WILTON
+	setflag ENGINE_WILTON_READY_FOR_REMATCH
 	farsjump PhoneScript_WantsToBattle_Male
 
 WiltonHasItem:
@@ -1892,7 +1892,7 @@ KenjiPhoneScript2:
 
 ParryPhoneScript1:
 	gettrainername HIKER, PARRY1, $0
-	checkflag ENGINE_PARRY
+	checkflag ENGINE_PARRY_READY_FOR_REMATCH
 	iftrue UnknownScript_0xbddac
 	farscall PhoneScript_AnswerPhone_Male
 	checkflag ENGINE_PARRY_FRIDAY_AFTERNOON
@@ -1912,7 +1912,7 @@ UnknownScript_0xbddac:
 ParryPhoneScript2:
 	gettrainername HIKER, PARRY1, $0
 	farscall PhoneScript_GreetPhone_Male
-	checkflag ENGINE_PARRY
+	checkflag ENGINE_PARRY_READY_FOR_REMATCH
 	iftrue UnknownScript_0xbddd3
 	checkflag ENGINE_PARRY_FRIDAY_AFTERNOON
 	iftrue UnknownScript_0xbddd3
@@ -1928,14 +1928,14 @@ ParryFridayDay:
 
 ParryWantsBattle:
 	getlandmarkname ROUTE_45, $2
-	setflag ENGINE_PARRY
+	setflag ENGINE_PARRY_READY_FOR_REMATCH
 	farsjump PhoneScript_WantsToBattle_Male
 
 ; Erin
 
 ErinPhoneScript1:
 	gettrainername PICNICKER, ERIN1, $0
-	checkflag ENGINE_ERIN
+	checkflag ENGINE_ERIN_READY_FOR_REMATCH
 	iftrue UnknownScript_0xbde07
 	farscall PhoneScript_AnswerPhone_Female
 	checkflag ENGINE_ERIN_SATURDAY_NIGHT
@@ -1955,7 +1955,7 @@ UnknownScript_0xbde07:
 ErinPhoneScript2:
 	gettrainername PICNICKER, ERIN1, $0
 	farscall PhoneScript_GreetPhone_Female
-	checkflag ENGINE_ERIN
+	checkflag ENGINE_ERIN_READY_FOR_REMATCH
 	iftrue UnknownScript_0xbde2e
 	checkflag ENGINE_ERIN_SATURDAY_NIGHT
 	iftrue UnknownScript_0xbde2e
@@ -1971,7 +1971,7 @@ ErinSaturdayNight:
 
 ErinWantsBattle:
 	getlandmarkname ROUTE_46, $2
-	setflag ENGINE_ERIN
+	setflag ENGINE_ERIN_READY_FOR_REMATCH
 	farsjump PhoneScript_WantsToBattle_Female
 
 PhoneScript_Random2:

@@ -49,10 +49,10 @@ LoadCryHeader::
 	call GetCryIndex
 	ret c
 
-	anonbankpush CryHeaders
+	anonbankpush PokemonCries
 
 .Function:
-	ld hl, CryHeaders
+	ld hl, PokemonCries
 rept 6
 	add hl, bc
 endr

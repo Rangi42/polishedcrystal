@@ -1,4 +1,6 @@
 ; nature constants
+; NatureNames indexes (see data/natures.asm)
+; NatureIndicators indexes (see data/natures.asm)
 	const_def
 	const HARDY
 	const LONELY

@@ -144,7 +144,7 @@ TrainerBird_keeperVance1:
 Bird_keeperVance1Script:
 	loadvar VAR_CALLERID, PHONE_BIRDKEEPER_VANCE
 	opentext
-	checkflag ENGINE_VANCE
+	checkflag ENGINE_VANCE_READY_FOR_REMATCH
 	iftrue UnknownScript_0x19d86a
 	checkcellnum PHONE_BIRDKEEPER_VANCE
 	iftrue Route44NumberAcceptedM
@@ -184,7 +184,7 @@ UnknownScript_0x19d86a:
 	startbattle
 	reloadmapafterbattle
 	loadmem wVanceFightCount, 1
-	clearflag ENGINE_VANCE
+	clearflag ENGINE_VANCE_READY_FOR_REMATCH
 	end
 
 .LoadFight1:
@@ -192,14 +192,14 @@ UnknownScript_0x19d86a:
 	startbattle
 	reloadmapafterbattle
 	loadmem wVanceFightCount, 2
-	clearflag ENGINE_VANCE
+	clearflag ENGINE_VANCE_READY_FOR_REMATCH
 	end
 
 .LoadFight2:
 	loadtrainer BIRD_KEEPER, VANCE3
 	startbattle
 	reloadmapafterbattle
-	clearflag ENGINE_VANCE
+	clearflag ENGINE_VANCE_READY_FOR_REMATCH
 	checkevent EVENT_VANCE_CARBOS
 	iftrue UnknownScript_0x19d8cb
 	checkevent EVENT_GOT_CARBOS_FROM_VANCE
@@ -272,7 +272,7 @@ TrainerFisherWilton1:
 FisherWilton1Script:
 	loadvar VAR_CALLERID, PHONE_FISHER_WILTON
 	opentext
-	checkflag ENGINE_WILTON
+	checkflag ENGINE_WILTON_READY_FOR_REMATCH
 	iftrue UnknownScript_0x19d96e
 	checkflag ENGINE_WILTON_HAS_ITEM
 	iftrue UnknownScript_0x19d9b4
@@ -320,7 +320,7 @@ UnknownScript_0x19d96e:
 	startbattle
 	reloadmapafterbattle
 	loadmem wWiltonFightCount, 1
-	clearflag ENGINE_WILTON
+	clearflag ENGINE_WILTON_READY_FOR_REMATCH
 	end
 
 .LoadFight1:
@@ -328,14 +328,14 @@ UnknownScript_0x19d96e:
 	startbattle
 	reloadmapafterbattle
 	loadmem wWiltonFightCount, 2
-	clearflag ENGINE_WILTON
+	clearflag ENGINE_WILTON_READY_FOR_REMATCH
 	end
 
 .LoadFight2:
 	loadtrainer FISHER, WILTON3
 	startbattle
 	reloadmapafterbattle
-	clearflag ENGINE_WILTON
+	clearflag ENGINE_WILTON_READY_FOR_REMATCH
 	end
 
 UnknownScript_0x19d9b4:

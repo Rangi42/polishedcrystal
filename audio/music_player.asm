@@ -226,7 +226,7 @@ RenderMusicPlayer:
 
 	ld a, [wSongSelection]
 	; let's see if a song is currently selected
-	cp NUM_SONGS
+	cp NUM_MUSIC_SONGS
 	jr nc, .bad_selection
 	and a
 	jr nz, _RedrawMusicPlayer
@@ -267,14 +267,14 @@ MusicPlayerLoop:
 	ld a, [wSongSelection]
 	dec a
 	jp nz, _RedrawMusicPlayer
-	ld a, NUM_SONGS - 1
+	ld a, NUM_MUSIC_SONGS - 1
 	jp _RedrawMusicPlayer
 
 .right:
 ; next song
 	ld a, [wSongSelection]
 	inc a
-	cp NUM_SONGS
+	cp NUM_MUSIC_SONGS
 	jp nz, _RedrawMusicPlayer
 	ld a, 1
 	jp _RedrawMusicPlayer
@@ -284,17 +284,17 @@ MusicPlayerLoop:
 	ld a, [wSongSelection]
 	sub MP_LIST_PAGE_SKIP
 	jr z, .zerofix
-	cp NUM_SONGS
+	cp NUM_MUSIC_SONGS
 	jp c, _RedrawMusicPlayer
 .zerofix
-	ld a, NUM_SONGS - 1
+	ld a, NUM_MUSIC_SONGS - 1
 	jp _RedrawMusicPlayer
 
 .up:
 ; 10 songs ahead
 	ld a, [wSongSelection]
 	add MP_LIST_PAGE_SKIP
-	cp NUM_SONGS
+	cp NUM_MUSIC_SONGS
 	jp c, _RedrawMusicPlayer
 	ld a, 1
 	jp _RedrawMusicPlayer
@@ -1532,7 +1532,7 @@ SongSelector:
 	ld [wSelectorTop], a ; backup, in case of B button
 	cp MP_LIST_CURSOR_Y
 	jr nc, .ok
-	add NUM_SONGS - 1
+	add NUM_MUSIC_SONGS - 1
 .ok
 	sub MP_LIST_CURSOR_Y - 1
 	ld [wSongSelection], a
@@ -1554,9 +1554,9 @@ SongSelector:
 .a:
 ; select song
 	ld a, [wSongSelection]
-	cp NUM_SONGS - MP_LIST_CURSOR_Y + 1
+	cp NUM_MUSIC_SONGS - MP_LIST_CURSOR_Y + 1
 	jr c, .no_overflow
-	sub NUM_SONGS - MP_LIST_CURSOR_Y
+	sub NUM_MUSIC_SONGS - MP_LIST_CURSOR_Y
 	jr .got_song
 .no_overflow
 	add MP_LIST_CURSOR_Y - 1
@@ -1571,7 +1571,7 @@ SongSelector:
 	ld a, [wSongSelection]
 	dec a
 	jr nz, .no_underflow_up
-	ld a, NUM_SONGS - 1
+	ld a, NUM_MUSIC_SONGS - 1
 .no_underflow_up
 	ld [wSongSelection], a
 	call UpdateSelectorNames
@@ -1581,7 +1581,7 @@ SongSelector:
 ; next song
 	ld a, [wSongSelection]
 	inc a
-	cp NUM_SONGS
+	cp NUM_MUSIC_SONGS
 	jr nz, .no_overflow_down
 	ld a, 1
 .no_overflow_down
@@ -1594,7 +1594,7 @@ SongSelector:
 	ld a, [wSongSelection]
 	cp MP_LIST_PAGE_SKIP + 1
 	jr nc, .no_underflow_left
-	add NUM_SONGS - 1
+	add NUM_MUSIC_SONGS - 1
 .no_underflow_left
 	sub MP_LIST_PAGE_SKIP
 	ld [wSongSelection], a
@@ -1604,9 +1604,9 @@ SongSelector:
 .right:
 ; 10 songs ahead
 	ld a, [wSongSelection]
-	cp NUM_SONGS - MP_LIST_PAGE_SKIP
+	cp NUM_MUSIC_SONGS - MP_LIST_PAGE_SKIP
 	jr c, .no_overflow_right
-	sub NUM_SONGS - 1
+	sub NUM_MUSIC_SONGS - 1
 .no_overflow_right
 	add MP_LIST_PAGE_SKIP
 	ld [wSongSelection], a
@@ -1645,7 +1645,7 @@ endr
 	inc b
 	inc c
 	ld a, c
-	cp NUM_SONGS
+	cp NUM_MUSIC_SONGS
 	jr c, .noOverflow
 	ld c, 1
 	ld de, SongInfo

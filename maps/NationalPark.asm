@@ -107,7 +107,7 @@ TrainerSchoolboyJack1:
 SchoolboyJack1Script:
 	loadvar VAR_CALLERID, PHONE_SCHOOLBOY_JACK
 	opentext
-	checkflag ENGINE_JACK
+	checkflag ENGINE_JACK_READY_FOR_REMATCH
 	iftrue UnknownScript_0x5c088
 	checkcellnum PHONE_SCHOOLBOY_JACK
 	iftrue UnknownScript_0x5c108
@@ -155,7 +155,7 @@ UnknownScript_0x5c088:
 	startbattle
 	reloadmapafterbattle
 	loadmem wJackFightCount, 1
-	clearflag ENGINE_JACK
+	clearflag ENGINE_JACK_READY_FOR_REMATCH
 	end
 
 .LoadFight1:
@@ -163,7 +163,7 @@ UnknownScript_0x5c088:
 	startbattle
 	reloadmapafterbattle
 	loadmem wJackFightCount, 2
-	clearflag ENGINE_JACK
+	clearflag ENGINE_JACK_READY_FOR_REMATCH
 	end
 
 .LoadFight2:
@@ -171,7 +171,7 @@ UnknownScript_0x5c088:
 	startbattle
 	reloadmapafterbattle
 	loadmem wJackFightCount, 3
-	clearflag ENGINE_JACK
+	clearflag ENGINE_JACK_READY_FOR_REMATCH
 	end
 
 .LoadFight3:
@@ -179,14 +179,14 @@ UnknownScript_0x5c088:
 	startbattle
 	reloadmapafterbattle
 	loadmem wJackFightCount, 4
-	clearflag ENGINE_JACK
+	clearflag ENGINE_JACK_READY_FOR_REMATCH
 	end
 
 .LoadFight4:
 	loadtrainer SCHOOLBOY, JACK5
 	startbattle
 	reloadmapafterbattle
-	clearflag ENGINE_JACK
+	clearflag ENGINE_JACK_READY_FOR_REMATCH
 	end
 
 UnknownScript_0x5c0fc:

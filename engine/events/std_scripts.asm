@@ -161,7 +161,7 @@ PokeCenterNurseScript:
 
 	checkphonecall ; elm already called about pokerus
 	iftrue .no
-	checkflag ENGINE_POKERUS ; nurse already talked about pokerus
+	checkflag ENGINE_CAUGHT_POKERUS ; nurse already talked about pokerus
 	iftrue .no
 	special SpecialCheckPokerus
 	iftrue .pokerus
@@ -195,7 +195,7 @@ PokeCenterNurseScript:
 	closetext
 
 .pokerus_done
-	setflag ENGINE_POKERUS
+	setflag ENGINE_CAUGHT_POKERUS
 	specialphonecall SPECIALCALL_POKERUS
 	end
 

@@ -440,50 +440,50 @@ SpriteAnimOAMData:
 
 .OAMData_IntroPichu:
 	db 25
-	dsprite -3,  4, -3,  4, $00, $1 | TILE_BANK
-	dsprite -3,  4, -2,  4, $01, $1 | TILE_BANK
-	dsprite -3,  4, -1,  4, $02, $1 | TILE_BANK
-	dsprite -3,  4,  0,  4, $03, $1 | TILE_BANK
-	dsprite -3,  4,  1,  4, $04, $1 | TILE_BANK
-	dsprite -2,  4, -3,  4, $10, $1 | TILE_BANK
-	dsprite -2,  4, -2,  4, $11, $1 | TILE_BANK
-	dsprite -2,  4, -1,  4, $12, $1 | TILE_BANK
-	dsprite -2,  4,  0,  4, $13, $1 | TILE_BANK
-	dsprite -2,  4,  1,  4, $14, $1 | TILE_BANK
-	dsprite -1,  4, -3,  4, $20, $1 | TILE_BANK
-	dsprite -1,  4, -2,  4, $21, $1 | TILE_BANK
-	dsprite -1,  4, -1,  4, $22, $1 | TILE_BANK
-	dsprite -1,  4,  0,  4, $23, $1 | TILE_BANK
-	dsprite -1,  4,  1,  4, $24, $1 | TILE_BANK
-	dsprite  0,  4, -3,  4, $30, $1 | TILE_BANK
-	dsprite  0,  4, -2,  4, $31, $1 | TILE_BANK
-	dsprite  0,  4, -1,  4, $32, $1 | TILE_BANK
-	dsprite  0,  4,  0,  4, $33, $1 | TILE_BANK
-	dsprite  0,  4,  1,  4, $34, $1 | TILE_BANK
-	dsprite  1,  4, -3,  4, $40, $1 | TILE_BANK
-	dsprite  1,  4, -2,  4, $41, $1 | TILE_BANK
-	dsprite  1,  4, -1,  4, $42, $1 | TILE_BANK
-	dsprite  1,  4,  0,  4, $43, $1 | TILE_BANK
-	dsprite  1,  4,  1,  4, $44, $1 | TILE_BANK
+	dsprite -3,  4, -3,  4, $00, $1 | VRAM_BANK_1
+	dsprite -3,  4, -2,  4, $01, $1 | VRAM_BANK_1
+	dsprite -3,  4, -1,  4, $02, $1 | VRAM_BANK_1
+	dsprite -3,  4,  0,  4, $03, $1 | VRAM_BANK_1
+	dsprite -3,  4,  1,  4, $04, $1 | VRAM_BANK_1
+	dsprite -2,  4, -3,  4, $10, $1 | VRAM_BANK_1
+	dsprite -2,  4, -2,  4, $11, $1 | VRAM_BANK_1
+	dsprite -2,  4, -1,  4, $12, $1 | VRAM_BANK_1
+	dsprite -2,  4,  0,  4, $13, $1 | VRAM_BANK_1
+	dsprite -2,  4,  1,  4, $14, $1 | VRAM_BANK_1
+	dsprite -1,  4, -3,  4, $20, $1 | VRAM_BANK_1
+	dsprite -1,  4, -2,  4, $21, $1 | VRAM_BANK_1
+	dsprite -1,  4, -1,  4, $22, $1 | VRAM_BANK_1
+	dsprite -1,  4,  0,  4, $23, $1 | VRAM_BANK_1
+	dsprite -1,  4,  1,  4, $24, $1 | VRAM_BANK_1
+	dsprite  0,  4, -3,  4, $30, $1 | VRAM_BANK_1
+	dsprite  0,  4, -2,  4, $31, $1 | VRAM_BANK_1
+	dsprite  0,  4, -1,  4, $32, $1 | VRAM_BANK_1
+	dsprite  0,  4,  0,  4, $33, $1 | VRAM_BANK_1
+	dsprite  0,  4,  1,  4, $34, $1 | VRAM_BANK_1
+	dsprite  1,  4, -3,  4, $40, $1 | VRAM_BANK_1
+	dsprite  1,  4, -2,  4, $41, $1 | VRAM_BANK_1
+	dsprite  1,  4, -1,  4, $42, $1 | VRAM_BANK_1
+	dsprite  1,  4,  0,  4, $43, $1 | VRAM_BANK_1
+	dsprite  1,  4,  1,  4, $44, $1 | VRAM_BANK_1
 
 .OAMData_IntroWooper:
 	db 16
-	dsprite -2,  0, -3,  4, $00, $2 | TILE_BANK
-	dsprite -2,  0, -2,  4, $01, $2 | TILE_BANK
-	dsprite -2,  0, -1,  4, $02, $2 | TILE_BANK
-	dsprite -2,  0,  0,  4, $03, $2 | TILE_BANK
-	dsprite -1,  0, -3,  4, $04, $2 | TILE_BANK
-	dsprite -1,  0, -2,  4, $05, $2 | TILE_BANK
-	dsprite -1,  0, -1,  4, $06, $2 | TILE_BANK
-	dsprite -1,  0,  0,  4, $07, $2 | TILE_BANK
-	dsprite  0,  0, -3,  4, $08, $2 | TILE_BANK
-	dsprite  0,  0, -2,  4, $09, $2 | TILE_BANK
-	dsprite  0,  0, -1,  4, $0a, $2 | TILE_BANK
-	dsprite  0,  0,  0,  4, $0b, $2 | TILE_BANK
-	dsprite  1,  0, -3,  4, $0c, $2 | TILE_BANK
-	dsprite  1,  0, -2,  4, $0d, $2 | TILE_BANK
-	dsprite  1,  0, -1,  4, $0e, $2 | TILE_BANK
-	dsprite  1,  0,  0,  4, $0f, $2 | TILE_BANK
+	dsprite -2,  0, -3,  4, $00, $2 | VRAM_BANK_1
+	dsprite -2,  0, -2,  4, $01, $2 | VRAM_BANK_1
+	dsprite -2,  0, -1,  4, $02, $2 | VRAM_BANK_1
+	dsprite -2,  0,  0,  4, $03, $2 | VRAM_BANK_1
+	dsprite -1,  0, -3,  4, $04, $2 | VRAM_BANK_1
+	dsprite -1,  0, -2,  4, $05, $2 | VRAM_BANK_1
+	dsprite -1,  0, -1,  4, $06, $2 | VRAM_BANK_1
+	dsprite -1,  0,  0,  4, $07, $2 | VRAM_BANK_1
+	dsprite  0,  0, -3,  4, $08, $2 | VRAM_BANK_1
+	dsprite  0,  0, -2,  4, $09, $2 | VRAM_BANK_1
+	dsprite  0,  0, -1,  4, $0a, $2 | VRAM_BANK_1
+	dsprite  0,  0,  0,  4, $0b, $2 | VRAM_BANK_1
+	dsprite  1,  0, -3,  4, $0c, $2 | VRAM_BANK_1
+	dsprite  1,  0, -2,  4, $0d, $2 | VRAM_BANK_1
+	dsprite  1,  0, -1,  4, $0e, $2 | VRAM_BANK_1
+	dsprite  1,  0,  0,  4, $0f, $2 | VRAM_BANK_1
 
 .OAMData_IntroUnown1:
 	db 1

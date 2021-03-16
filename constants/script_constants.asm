@@ -1,4 +1,4 @@
-; script vars
+; object constants
 PLAYER      EQU  0
 LAST_TALKED EQU -2
 
@@ -8,6 +8,8 @@ LAST_TALKED EQU -2
 	const STRING_BUFFER_4 ; use wStringBuffer4
 	const STRING_BUFFER_5 ; use wStringBuffer5
 NUM_STRING_BUFFERS EQU const_value
+
+STRING_BUFFER_LENGTH EQU 19
 
 ; readvar/writevar/loadvar arguments
 ; _GetVarAction.VarActionTable indexes (see engine/overworld/variables.asm)
