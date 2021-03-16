@@ -1512,6 +1512,7 @@ Disable:
 	hastarget
 	checkhit
 	bounceback
+	failuretext
 	disable
 	endmove
 
@@ -1536,6 +1537,7 @@ Encore:
 	hastarget
 	checkhit
 	bounceback
+	failuretext
 	encore
 	endmove
 
