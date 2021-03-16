@@ -384,6 +384,7 @@ SetSavePhase:
 	jp CloseSRAM
 
 TryLoadSaveFile:
+	call VerifyGameVersion
 	call VerifyChecksum
 	jr nz, .backup
 	call LoadPlayerData
@@ -394,7 +395,6 @@ TryLoadSaveFile:
 	call z, WriteBackupSave
 	farcall RestorePartyMonMail
 	call LoadStorageSystem
-	call UpgradeSaveVersion
 
 	; Just in case
 	call WriteBackupSave
@@ -640,44 +640,63 @@ MoveMonWOMailSaveText:
 	text_far _MoveMonWOMailSaveText
 	text_end
 
-UpgradeSaveVersion:
-; upgrade older saves to a newer version
+VerifyGameVersion:
+; Verify that the current game version matches the one in the save file.
+	; Write game and save version to strbuf for the update screen if applicable.
+	ld hl, wStringBuffer1
+	ld de, wStringBuffer2
+	ld [hl], HIGH(SAVE_VERSION)
+	inc hl
+	ld a, LOW(SAVE_VERSION)
+	ld [hld], a
 	ld a, BANK(sSaveVersion)
 	call GetSRAMBank
-	ld a, [sSaveVersion]
-	ld b, a
-	ld a, [sSaveVersion + 1]
-	ld c, a
+	push hl
+	ld hl, sSaveVersion
+	ld de, wStringBuffer2
+	ld bc, 2
+	push de
+	rst CopyBytes
 	call CloseSRAM
-
-.version_upgrade_loop
-	ld a, b
-	cp HIGH(SAVE_VERSION)
+	pop de
+	pop hl
+	ld a, [de]
+	cp [hl]
 	jr nz, .needs_upgrade
-	ld a, c
-	cp LOW(SAVE_VERSION)
-	jr z, .write_current_version
+	inc hl
+	inc de
+	ld a, [de]
+	cp [hl]
+	ret z
+
 .needs_upgrade
-	ld hl, SaveUpgrades
-	add hl, bc
-	add hl, bc
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-	push bc
-	call _hl_
-	call SaveGameData
-	pop bc
-	inc bc
-	jr .version_upgrade_loop
-.write_current_version
-	ld a, BANK(sSaveVersion)
-	call GetSRAMBank
-	ld a, b
-	ld [sSaveVersion], a
-	ld a, c
-	ld [sSaveVersion + 1], a
-	jp CloseSRAM
+	call ClearScreen
+	hlcoord 0, 0
+	ld de, .SaveUpgradeScreen
+	rst PlaceString
+
+.infinite_loop
+	halt
+	jr .infinite_loop
+
+.SaveUpgradeScreen
+	db    "Your save is too old"
+	next1 "or too new for this"
+	next1 "version of the game"
+	next1 "to run. If too old,"
+	next1 "please consult the"
+	next1 "documentation for"
+	next1 "this release for"
+	next1 "save upgrading"
+	next1 "instructions."
+	next1 ""
+;	next1 "Game Version: "
+;	text_decimal wStringBuffer1, 2, 5
+;	text ""
+;	next1 "Save Version: "
+;	text_decimal wStringBuffer2, 2, 5
+;	text ""
+	done
 
 SaveCurrentVersion:
 ; Writes current save version into the save.
@@ -688,31 +707,3 @@ SaveCurrentVersion:
 	ld a, LOW(SAVE_VERSION)
 	ld [sSaveVersion + 1], a
 	jp CloseSRAM
-
-SaveUpgrades:
-	dw ResetHyperTrainingBits
-	dw UpgradeStorageSystem
-	assert (@ - SaveUpgrades) == SAVE_VERSION * 2, "Missing save upgrade"
-
-ResetHyperTrainingBits:
-; No-op: handle as part of storage system upgrade instead (We still haven't
-; implemented a means of hyper training your mons yet).
-	ret
-
-UpgradeStorageSystem:
-	ld hl, .SaveUpgradeRequired
-	call MenuTextbox
-	call CloseWindow
-	jp SoftReset
-
-.SaveUpgradeRequired:
-	text "Your save appears"
-	line "to be out of date."
-
-	para "Please upgrade to"
-	line "continue playing."
-	prompt
-
-GetUpgradePhase:
-SetUpgradePhase:
-	ret
