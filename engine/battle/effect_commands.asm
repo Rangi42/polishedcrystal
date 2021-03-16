@@ -5620,6 +5620,7 @@ BattleCommand_traptarget:
 BattleCommand_recoil:
 	ld a, BATTLE_VARS_MOVE_ANIM
 	call GetBattleVar
+	ld b, a
 	inc a ; cp STRUGGLE
 	jp z, .StruggleRecoil
 
