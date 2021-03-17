@@ -1,0 +1,33 @@
+ItemIndexOffsets_Build0ToBuild4:
+	; upper bound, offset
+	db 0x16, 0
+	db 0x37, 1
+	db 0x52, 2
+	db 0x71, 3
+	db 0x7d, -26
+	db 0x82, -20
+	db 0x86, -16
+	db 0x87, -78
+	db 0xc2, -16
+	db 0xf4, -1
+	db 0
+
+ItemIndexOffsets_Build1ToBuild4:
+	db 0x53, 0
+	db 0x62, 1
+	db 0x67, 7
+	db 0xa7, 11
+	db 0xea, 20
+	db 0
+
+ItemIndexOffsets_Build2ToBuild4:
+	db 0x63, 0
+	db 0x68, 6
+	db 0xa8, 10
+	db 0xeb, 19
+	db 0
+
+ItemIndexOffsets_Build3ToBuild4:
+	db 0x6e, 0
+	db 0xfa, 4
+	db 0

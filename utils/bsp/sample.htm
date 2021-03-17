@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>BSP patcher sample</title>
+  <script src="bsppatch.js"></script>
+  <script>
+    function patch (button) {
+      var form = document.forms[0];
+      if ((form.bsp.files.length != 1) || (form.source.files.length != 1)) return alert("You must select a patch and an input file!");
+      var filename = form.bsp.files[0].name.split(".").slice(0, -1).concat(form.source.files[0].name.split(".").slice(1).slice(-1)).join(".");
+      button.disabled = true;
+      var bsp_data, input_data;
+      var bsp_file_reader = new FileReader();
+      bsp_file_reader.onload = function () {
+        bsp_data = bsp_file_reader.result;
+        if (input_data !== undefined) {
+          begin_patch(bsp_data, input_data, filename);
+          bsp_data = input_data = undefined;
+        }
+      }
+      var input_file_reader = new FileReader();
+      input_file_reader.onload = function () {
+        input_data = input_file_reader.result;
+        if (bsp_data !== undefined) {
+          begin_patch(bsp_data, input_data, filename);
+          bsp_data = input_data = undefined;
+        }
+      }
+      bsp_file_reader.readAsArrayBuffer(form.bsp.files[0]);
+      input_file_reader.readAsArrayBuffer(form.source.files[0]);
+    }
+
+    function create_message (message) {
+      var messages = document.getElementById("messages");
+      var message_element = document.createElement("p");
+      message_element.innerText = message;
+      if (messages.firstChild) {
+        messages.firstChild.style.color = "#666666";
+        messages.insertBefore(message_element, messages.firstChild);
+      } else
+        messages.appendChild(message_element);
+    }
+
+    function create_menu (options, callback) {
+      var messages = document.getElementById("messages");
+      var div = document.createElement("div");
+      var option, n;
+      for (n = 0; n < options.length; n ++) {
+        option = document.createElement("input");
+        option.type = "button";
+        option.value = options[n];
+        option.onclick = (function (num) {
+          var p = document.createElement("p");
+          p.style.fontStyle = "italic";
+          p.innerText = options[num];
+          messages.replaceChild(p, div);
+          callback(num);
+        }).bind(null, n);
+        div.appendChild(option);
+      }
+      if (messages.firstChild) {
+        messages.firstChild.style.color = "#666666";
+        messages.insertBefore(div, messages.firstChild);
+      } else
+        messages.appendChild(div);
+    }
+    
+    function escape_HTML (str) {
+      var result = "";
+      var pos;
+      for (pos = 0; pos < str.length; pos ++) result += "&#" + str.charCodeAt(pos) + ";";
+      return result;
+    }
+
+    function begin_patch (bsp, input, filename) {
+      var patcher = new BSPPatcher(bsp, input);
+      var patch_result = document.getElementById("result");
+      patcher.print = function (message) {
+        create_message(message);
+        patcher.run();
+      }
+      patcher.menu = function (options) {
+        return create_menu(options, function (option) {patcher.run(option);});
+      }
+      patcher.error = function (error) {
+        patch_result.innerText = "Error: " + error.toString();
+      }
+      patcher.failure = function (status) {
+        patch_result.innerText = "Patch finished with status " + status.toString();
+      }
+      patcher.success = function (data) {
+        var url = URL.createObjectURL(new Blob([data], {type: "application/octet-stream"}));
+        patch_result.innerHTML = "Patch succeeded! <a href=\"" + escape_HTML(url) + "\" download=\"" + escape_HTML(filename) + "\">Get file</a>";
+      }
+      patcher.run();
+    }
+  </script>
+</head>
+<body>
+  <form style="text-align: center;" name="inputs">
+    Patch file: <input type="file" name="bsp" /><br />
+    Input file: <input type="file" name="source" /><br />
+    <input type="button" value="Begin patching" onclick="patch(this);" />
+  </form>
+  <div style="text-align: center; color: #ff0000;" id="result"></div>
+  <hr />
+  <div id="messages" style="text-align: left; font-family: monospace;"></div>
+</body>
+</html>

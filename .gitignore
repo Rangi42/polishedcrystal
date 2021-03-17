@@ -3,6 +3,7 @@
 *.map
 *.sym
 *.exe
+*.bsp
 *.h.gch
 *.pyc
 *$py.class

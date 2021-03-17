@@ -1,0 +1,218 @@
+DoNothing:
+	return
+
+GetGameDataPointer:
+	set #address, GameDataStartPointers
+.get_pointer_loop
+	gethalfwordinc #temp, #address
+	ifge #temp, #curbuild, .got_pointer
+	add #address, 8
+	jump .get_pointer_loop
+
+.got_pointer
+	getwordinc #temp, #address
+	add #result, #1, #temp
+	ifeq #savefile, 1, .done
+	getword #temp, #address
+	add #result, #1, #temp
+.done
+	return
+
+GetGameDataOffsetConstant:
+; (0 = items, 1 = medicine, 2 = balls, 3 = berries, 4 = PC items, 5 = party count, 6 = daycare man, 7 = daycare lady, error if >7)
+; returns targeted constant from OldPocketOffsets
+	set #address, PocketOffsetsByBuild
+.get_offset_loop
+	gethalfwordinc #temp, #address
+	jumpz #temp, .error_build
+	ifge #temp, #curbuild, .get_constant_loop
+	add #address, 18
+	jump .get_offset_loop
+
+.get_constant_loop
+	gethalfwordinc #result, #address
+	jumpz #result, .error_oob
+	retz #1
+	decrement #1
+	jump .get_constant_loop
+
+.error_build
+	bufstring .error_build_string_1
+	bufnumber #curbuild
+	bufstring .error_build_string_2
+	printbuf
+	exit 1
+
+.error_oob
+	print .error_oob_string
+	exit 1
+
+.error_build_string_1
+	string "ERROR: Invalid build " 
+.error_build_string_2
+	string " for GetGameDataOffsetConstant"
+
+.error_oob_string
+	string "ERROR: GetGameDataOffsetConstant went out-of-bounds"
+
+ShiftFlags:
+	; thank you kindly to ax6 for creating the base of this function
+	; in: #1: flag array size (in bits), #2: pointer to mapping table
+	; file pointer must be at the beginning of the array
+	; the mapping table is a halfword array of upper bound index (exclusive), offset; end with -1
+	pushpos
+	add #1, 31
+	shiftright #1, 5
+	shiftleft #3, #1, 2
+	add #3, 4
+	seekfwd #3
+	set #3, #1
+.readloop
+	seekback 8
+	readword #4
+	push #4
+	decrement #3
+	jumpnz #3, .readloop
+	stackread #address, #1
+	seek #address
+
+.fixloop
+	; #3 = current index, #4 = offset, #5 = upper bound index, #6 = stack pos
+	gethalfwordinc #5, #2
+	ifeq #5, 0xffff, .done
+	gethalfwordinc #4, #2
+	jumpz #4, .next
+.innerloop
+	shiftright #source, #3, 5
+	shiftleft #source, 2
+	add #source, #address
+	seek #source
+	getfileword #source ; word to read from
+	and #temp, #3, 31
+	shiftright #source, #temp
+	or #source, -2 ; get source bit, preserve other target bits
+	add #6, #3, #4
+	and #6, 0xffff
+	and #temp, #6, 31
+	subtract #temp, #zero, #temp
+	shiftright #6, 5 ; get target stack pos
+	stackread #target, #6 ; word to write to
+	rotateleft #target, #temp
+	or #target, 1
+	and #target, #source
+	subtract #temp, #zero, #temp
+	rotateleft #target, #temp
+	stackwrite #6, #target
+	increment #3
+	iflt #3, #5, .innerloop
+.next
+	set #3, #5
+	jump .fixloop
+
+.done
+	stackread #2, #1
+	seek #2
+.writeloop
+	pop #2
+	writeword #2
+	decrement #1
+	jumpnz #1, .writeloop
+	poppos
+	return
+
+FlagAction:
+	; current file pointer: flag array
+	; #1: flag number
+	; #2: action (0: clear, 1: set, 2: toggle, >2: none)
+	; returns old value
+	pushpos
+	shiftright #temp, #1, 3
+	seekfwd #temp
+	getfilebyte #temp
+	and #1, 7
+	shiftright #result, #temp, #1
+	and #result, 1
+	shiftleft #1, 1, #1
+	ifgt #2, 2, .done
+	jumptable #2
+	dw .clear
+	dw .set
+	dw .toggle
+
+.clear
+	jumpz #result, .done
+.toggle
+	xor #temp, #1
+	jump .write
+
+.set
+	or #temp, #1
+.write
+	writebyte #temp
+.done
+	poppos
+	return
+
+CopyFrom1To2:
+	; #1: source, #2: #target, #3: count
+	retz #3
+	seek #1
+	readbyte #temp
+	increment #1
+	seek #2
+	writebyte #temp
+	increment #2
+	decrement #3
+	jump CopyFrom1To2
+
+ShiftSaveDataBack:
+	; #1: count, #2: amount
+	retz #1
+	seekfwd #2
+	getfilebyte #temp
+	seekback #2
+	writebyte #temp
+	decrement #1
+	jump ShiftSaveDataBack
+
+ShiftSaveDataForward:
+	; #1: count, #2: amount, #3: starting offset
+	add #3, #1
+	increment #1
+.loop
+	seek #3
+	getfilebyte #temp
+	seekfwd #2
+	writebyte #temp
+	decrement #3
+	decrement #1
+	jumpnz #1, .loop
+	return
+
+PrintWithLeadingZeros:
+	; prints number #1 in #2 digits, with leading zeros
+	push -0x30 ;so it will become 0 when 0x30 is added to it
+	increment #2
+	jump .handle_loop
+.push_loop
+	remainder #temp, #1, 10
+	divide #1, 10
+	push #temp
+.handle_loop
+	decrement #2
+	jumpnz #2, .push_loop
+.pop_loop
+	pop #temp
+	add #temp, 0x30 ;0x30 is ASCII for '0'
+	retz #temp
+	bufchar #temp
+	jump .pop_loop
+
+YesNoMenu:
+	dw .yes
+	dw .no
+	dw -1
+.yes
+	string "Yes"
+.no
+	string "No"
