@@ -725,12 +725,12 @@ EncodeTempMon:
 	ld e, l
 .loop
 	ld a, [de]
+	srl [hl]
+	srl [hl]
 	and %11000000
 	or [hl]
 	ld [hl], a
 	inc de
-	srl [hl]
-	srl [hl]
 	dec b
 	jr nz, .loop
 
@@ -976,7 +976,7 @@ DecodeTempMon:
 .not_egg
 	ld hl, wTempMonMoves
 	ld de, wTempMonPP
-	predef FillPP
+	farcall RestoreTempPP
 	or 1
 	ret
 

@@ -2516,6 +2516,18 @@ ComputeMaxPP:
 	pop bc
 	ret
 
+RestoreTempPP:
+	ld hl, wTempMonMoves
+	ld de, wTempMonPP
+	ld a, [wMenuCursorY]
+	push af
+	ld a, TEMPMON
+	ld [wMonType], a
+	call _RestoreAllPP
+	pop af
+	ld [wMenuCursorY], a
+	ret
+
 RestoreAllPP:
 	ld a, MON_PP
 	call GetPartyParamLocation
@@ -2524,8 +2536,11 @@ RestoreAllPP:
 	call GetPartyParamLocation
 	pop de
 	xor a ; PARTYMON
-	ld [wMenuCursorY], a
 	ld [wMonType], a
+	; fallthrough
+_RestoreAllPP:
+	xor a
+	ld [wMenuCursorY], a
 	ld c, NUM_MOVES
 .loop
 	ld a, [hli]
