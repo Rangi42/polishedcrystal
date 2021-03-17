@@ -159,10 +159,13 @@ ConvertToNewbox:
 	set #2, 388
 	call ShiftSaveDataBack
 	seekback #2
-	pos #temp
-	bufnumber #temp
-	printbuf
 	fillbyte 184, #zero
+
+; copy backup new box into active new box
+	set #1, sBackupNewBox1
+	set #2, sNewBox1
+	subtract #3, sBackupNewBox1, sNewBox1
+	call CopyFrom1To2
 
 ; clear old box names
 	set #1, BOX_NAMES_OFFSET

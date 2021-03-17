@@ -40,7 +40,7 @@ PatchSavefile:
 
 .latest_build
 	print .latest_build_string
-	exit 1
+	exit 0
 
 .future_build
 	bufstring .future_build_string_1
@@ -57,7 +57,7 @@ PatchSavefile:
 	exit 1
 
 .latest_build_string
-	string "The savefile already corresponds to the current build of Polished Crystal. No patching is necessary."
+	string "The savefile already corresponds to the current build of Polished Crystal. No patching is necessary. Redownload if instructed to."
 .future_build_string_1
 	string "The savefile indicates it corresponds to build "
 .future_build_string_2
@@ -74,43 +74,55 @@ PatchSavefile:
 CheckSavefileIsValid:
 	; returns 0 if invalid, 1 if primary is valid, or 2 if backup is valid
 	set #savefile, 1
-	set #2, .backup
+	set #2, .backup ; we're gonna be using #1 for checksum calcs and storing check value 1
 	set #address, CheckPointers
 	jump .check_1
 
 .backup
 	set #savefile, 2
-	set #2, .invalid ; we're gonna be using #1 for checksum calcs
+	set #2, .invalid 
 	set #address, BackupCheckPointers
 	; fallthrough
 .check_1
 	gethalfwordinc #build, #address
 	gethalfwordinc #temp, #address
 	seek #temp
-	readbyte #temp
-	ifeq #temp, 97, .get_build
-.check_1_cont
-	add #address, 2 ; skip sSaveVersion
+	set #1, #temp
+	readbyte #3
+	ifeq #3, 97, .check_value_97
 	ifne #build, 7, .not_build_6
-	decrement #build ; specific to v6 since it shares all other check pointers with v7, except sCheckValue1 == 99
+	set #build, 6 ; specific to v6 since it shares all other check pointers with v7, except sCheckValue1 == 99
 .not_build_6
-	ifeq #temp, 99, .check_2
+	ifeq #3, 99, .check_value_99
+.check_1_cont
 	ifeq #build, #zero, #2
 	add #address, 4
 	jump .check_1
 
-.get_build
+.check_value_99
+	gethalfwordinc #temp, #address
+	ifeq #build, 6, .get_build
+	jump .check_2
+.check_value_97
 	gethalfwordinc #temp, #address
 	ifeq #temp, #zero, .check_1_cont ; if this is true, a value was 97 when it shouldn't have been
+.get_build
 	seek #temp
 	getfilehalfword #build
 	shiftright #temp, #build, 8
 	shiftleft #build, 8
 	or #build, #temp
 	and #build, 0xffff
-	ifge #build, 7, .check_2
+	ifeq #build, 2, .build_7 ; edge case where v6 with sSaveVersion 0002 is actually v7, could theoretically cause conflicts but odds are tiny
+	ifeq #3, 97, .check_2
+	set #build, 6
+	jump .check_2
+
+.build_7
 	set #build, 7 ; hotfix in case someone got the trial version of newbox
 	writehalfword 0x0700
+	seek #1
+	writebyte 97
 .check_2
 	gethalfwordinc #temp, #address
 	seek #temp
