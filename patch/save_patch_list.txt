@@ -40,4 +40,7 @@ SavePatches:
 	dh 7
 	dw ConvertToNewbox ; first build with version number
 
+	dh 7 ; 7.1
+	dw ChangeCheckValue ; implicit, only to convert check value to 97
+
 	dh 0

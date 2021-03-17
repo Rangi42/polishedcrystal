@@ -28,9 +28,10 @@ GameDataSizes:
 
 CheckPointers:
 ; stored in DESCENDING order, build 0 check pointers should be end of list
-; build number, check value 1, build number pointer (zero if skipped), check value 2, checksum
-	dh 6
-	dh sCheckValue1, 0, sCheckValue2, sChecksum
+; build number
+; check value 1, build number pointer (zero if skipped), check value 2, checksum
+	dh 7
+	dh sCheckValue1, sSaveVersion, sCheckValue2, sChecksum
 
 	dh 5
 	dh sCheckValue1, 0, sCheckValue2_v5, sChecksum_v5
@@ -51,8 +52,8 @@ CheckPointers:
 	dh sCheckValue1_v0, 0, sCheckValue2_v0, sChecksum_v0
 
 BackupCheckPointers:
-	dh 6
-	dh sBackupCheckValue1, 0, sBackupCheckValue2, sBackupChecksum
+	dh 7
+	dh sBackupCheckValue1, sSaveVersion, sBackupCheckValue2, sBackupChecksum
 
 	dh 5
 	dh sBackupCheckValue1, 0, sBackupCheckValue2_v5, sBackupChecksum_v5

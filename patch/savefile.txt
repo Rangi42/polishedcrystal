@@ -19,9 +19,6 @@ PatchSavefile:
 	set #address, SavePatches
 .loop
 	gethalfwordinc #curbuild, #address
-	bufchar 0x76
-	bufnumber #curbuild
-	printbuf
 	jumpz #curbuild, .done
 	getwordinc #patch, #address
 	ifle #curbuild, #build, .loop
@@ -34,7 +31,9 @@ PatchSavefile:
 	set #curbuild, #build
 	call FixSavefileChecksum
 	seek sSaveVersion
-	set #build, 0x0200
+	shiftleft #temp, #build, 8
+	shiftright #build, 8
+	or #build, #temp
 	writehalfword #build
 	print .done_string
 	exit #zero
@@ -90,7 +89,11 @@ CheckSavefileIsValid:
 	seek #temp
 	readbyte #temp
 	ifeq #temp, 97, .get_build
-	add #address, 2 ; skip sBuildNumber
+.check_1_cont
+	add #address, 2 ; skip sSaveVersion
+	ifne #build, 7, .not_build_6
+	decrement #build ; specific to v6 since it shares all other check pointers with v7, except sCheckValue1 == 99
+.not_build_6
 	ifeq #temp, 99, .check_2
 	ifeq #build, #zero, #2
 	add #address, 4
@@ -98,9 +101,16 @@ CheckSavefileIsValid:
 
 .get_build
 	gethalfwordinc #temp, #address
-	ifeq #temp, #zero, #2 ; if this is true, something went horribly wrong
+	ifeq #temp, #zero, .check_1_cont ; if this is true, a value was 97 when it shouldn't have been
 	seek #temp
-	readhalfword #build
+	getfilehalfword #build
+	shiftright #temp, #build, 8
+	shiftleft #build, 8
+	or #build, #temp
+	and #build, 0xffff
+	ifge #build, 7, .check_2
+	set #build, 7 ; hotfix in case someone got the trial version of newbox
+	writehalfword 0x0700
 .check_2
 	gethalfwordinc #temp, #address
 	seek #temp
