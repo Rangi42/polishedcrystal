@@ -2471,10 +2471,10 @@ NewPokedexEntry:
 	ld [wDexMonForm], a
 	call Pokedex_DrawDexEntryScreenBG
 	call Pokedex_DrawFootprint
-	hlcoord 0, 17
-	ld [hl], $3b
-	inc hl
-	ld bc, 19
+	hlcoord 0, SCREEN_HEIGHT - 1
+	ld a, $3b
+	ld [hli], a
+	ld bc, SCREEN_WIDTH - 1
 	ld a, " "
 	rst ByteFill
 	farcall DisplayDexEntry

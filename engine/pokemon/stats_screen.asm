@@ -324,10 +324,10 @@ StatsScreen_InitUpperHalf:
 	ld a, c
 	ld [wStringBuffer1 + 1], a
 	hlcoord 8, 0
-	ld [hl], "№"
-	inc hl
-	ld [hl], "."
-	inc hl
+	ld a, "№"
+	ld [hli], a
+	ld a, "."
+	ld [hli], a
 	hlcoord 10, 0
 	lb bc, PRINTNUM_LEADINGZEROS | 2, 3
 	ld de, wStringBuffer1
@@ -580,11 +580,11 @@ StatsScreen_LoadGFX:
 	ld de, wTempMonExp + 2
 	farcall FillInExpBar
 	hlcoord 10, 16
-	ld [hl], "<XP1>"
-	inc hl
+	ld a, "<XP1>"
+	ld [hli], a
 	ld [hl], "<XP2>"
 	hlcoord 19, 16
-	ld [hl], "<XPEND>" ; exp bar end cap
+	ld [hl], "<XPEND>"
 	ret
 
 .PrintNextLevel:

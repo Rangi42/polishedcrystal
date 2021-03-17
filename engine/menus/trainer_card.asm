@@ -395,7 +395,7 @@ TrainerCard_Page1_PrintDexCaught_GameTime:
 	dec a
 	cp -1
 	ret z
-	ld [hl], $28
+	ld [hl], $28 ; no-optimize *hl++|*hl-- = N
 	inc hl
 	jr .star_loop
 

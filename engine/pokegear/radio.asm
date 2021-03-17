@@ -774,10 +774,10 @@ CopyDexEntryPart1:
 	ld bc, SCREEN_WIDTH - 1
 	call FarCopyBytes
 	ld hl, wPokedexShowPointerAddr
-	ld [hl], "<START>"
-	inc hl
-	ld [hl], "<LINE>"
-	inc hl
+	ld a, "<START>"
+	ld [hli], a
+	ld a, "<LINE>"
+	ld [hli], a
 .loop
 	ld a, [hli]
 	cp "@"

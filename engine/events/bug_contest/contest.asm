@@ -185,8 +185,8 @@ LoadContestantName:
 	cp "@"
 	jr nz, .next
 	dec hl
-	ld [hl], " "
-	inc hl
+	ld a, " "
+	ld [hli], a
 	ld d, h
 	ld e, l
 ; Restore the Trainer Class ID and Trainer ID pointer.  Save de for later.

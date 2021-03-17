@@ -1039,8 +1039,8 @@ LoadScriptBDE::
 	and a
 	ret nz
 ; Set the flag
-	ld [hl], 1
-	inc hl
+	inc a ; 1
+	ld [hli], a
 ; Load the script pointer b:de into (wMapReentryScriptBank):(wMapReentryScriptAddress)
 	ld [hl], b
 	inc hl

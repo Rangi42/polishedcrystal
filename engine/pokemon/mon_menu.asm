@@ -1499,8 +1499,8 @@ PlaceMoveData:
 	lb bc, BANK(CategoryIconGFX), 2
 	call Request2bpp
 	hlcoord 1, 12
-	ld [hl], $59
-	inc hl
+	ld a, $59
+	ld [hli], a
 	ld [hl], $5a
 
 	ld hl, Moves + MOVE_TYPE
@@ -1522,12 +1522,12 @@ PlaceMoveData:
 	lb bc, BANK(TypeIconGFX), 4
 	call Request1bpp
 	hlcoord 3, 12
-	ld [hl], $5b
-	inc hl
-	ld [hl], $5c
-	inc hl
-	ld [hl], $5d
-	inc hl
+	ld a, $5b
+	ld [hli], a
+	inc a ; $5c
+	ld [hli], a
+	inc a ; $5d
+	ld [hli], a
 	ld [hl], $5e
 
 	ld hl, Moves + MOVE_POWER

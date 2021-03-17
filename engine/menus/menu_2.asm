@@ -44,10 +44,10 @@ PlaceMenuItemQuantity:
 	push de
 	pop hl
 _PlaceMenuQuantity:
-	ld de, $15
+	ld de, SCREEN_WIDTH + 1
 	add hl, de
-	ld [hl], "×"
-	inc hl
+	ld a, "×"
+	ld [hli], a
 	ld de, wMenuSelectionQuantity
 	lb bc, 1, 2
 	jp PrintNum

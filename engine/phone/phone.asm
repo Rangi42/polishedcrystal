@@ -430,8 +430,8 @@ Phone_TextboxWithName:
 	push bc
 	call Phone_CallerTextbox
 	hlcoord 1, 1
-	ld [hl], "<PHONE>"
-	inc hl
+	ld a, "<PHONE>"
+	ld [hli], a
 	inc hl
 	ld d, h
 	ld e, l

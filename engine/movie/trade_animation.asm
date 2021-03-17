@@ -498,10 +498,10 @@ TradeAnim_TubeAnimJumptable:
 .Three:
 	call TradeAnim_BlankTileMap
 	hlcoord 9, 3
-	ld [hl], $5c
-	inc hl
+	ld a, $5c
+	ld [hli], a
 	ld bc, 10
-	ld a, $5d
+	inc a ; $5d
 	rst ByteFill
 	hlcoord 3, 2
 	jr TradeAnim_CopyTradeGameBoyTilemap

@@ -139,9 +139,9 @@ MusicPlayer::
 	hlcoord 8, 17, wAttrMap
 	ld [hl], $2
 	hlcoord 12, 17, wAttrMap
-	ld [hl], $1
-	inc hl
-	ld [hl], $1
+	ld a, $1
+	ld [hli], a
+	ld [hl], a
 
 	farcall ApplyAttrMapVBank0
 	ld a, $1
@@ -714,7 +714,7 @@ DrawPitchTransposition:
 	and a
 	ret z
 .continue
-	ld [hl], "P"
+	ld [hl], "P" ; no-optimize *hl++|*hl-- = N
 	inc hl
 	lb bc, PRINTNUM_LEFTALIGN | 1, 2
 	ld de, wPitchTransposition
@@ -731,7 +731,7 @@ DrawTempoAdjustment:
 	and a
 	ret z
 .continue
-	ld [hl], "T"
+	ld [hl], "T" ; no-optimize *hl++|*hl-- = N
 	inc hl
 	lb bc, PRINTNUM_LEFTALIGN | 1, 3
 	ld de, wTempoAdjustment
@@ -1681,8 +1681,8 @@ MPLPlaceString:
 	lb bc, 1, 3
 	call PrintNum
 	pop de
-	ld [hl], " "
-	inc hl
+	ld a, " "
+	ld [hli], a
 	push hl
 	push de
 	rst PlaceString
@@ -1711,7 +1711,7 @@ MPLPlaceString:
 	sub c
 	jr z, .ok
 .loop2
-	ld [hl], " "
+	ld [hl], " " ; no-optimize *hl++|*hl-- = N
 	inc hl
 	dec a
 	jr nz, .loop2
@@ -1721,8 +1721,8 @@ MPLPlaceString:
 	ld bc, 17
 	ld hl, wStringBuffer2
 	add hl, bc
-	ld [hl], "…"
-	inc hl
+	ld a, "…"
+	ld [hli], a
 	ld [hl], "@"
 .ok
 	pop hl

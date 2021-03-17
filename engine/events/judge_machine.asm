@@ -140,8 +140,8 @@ JudgeSystem::
 	ld d, h
 	ld e, l
 	hlcoord 0, 0
-	ld [hl], JUDGE_UP_DOWN_TILE
-	inc hl
+	ld a, JUDGE_UP_DOWN_TILE
+	ld [hli], a
 	rst PlaceString
 
 ; Place the level
@@ -190,10 +190,10 @@ JudgeSystem::
 	ld a, [wCurPartySpecies]
 	ld [wd265], a
 	hlcoord 1, 13
-	ld [hl], "№"
-	inc hl
-	ld [hl], "."
-	inc hl
+	ld a, "№"
+	ld [hli], a
+	ld a, "."
+	ld [hli], a
 	lb bc, PRINTNUM_LEADINGZEROS | 1, 3
 	ld de, wd265
 	call PrintNum

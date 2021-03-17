@@ -98,15 +98,6 @@ StageBallTilesData:
 	add hl, bc
 	ret
 
-DrawPlayerHUDBorder:
-	hlcoord 19, 11
-	ld [hl], "<XPEND>"
-	hlcoord 10, 11
-	ld [hl], "<XP1>"
-	inc hl
-	ld [hl], "<XP2>"
-	ret
-
 DrawPlayerPartyIconHUDBorder:
 	ld hl, .tiles
 	ld de, wTrainerHUDTiles

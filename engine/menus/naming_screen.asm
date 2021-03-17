@@ -677,8 +677,8 @@ NamingScreen_DeleteCharacter:
 	ret z
 	dec [hl]
 	call NamingScreen_GetTextCursorPosition
-	ld [hl], NAMINGSCREEN_UNDERLINE
-	inc hl
+	ld a, NAMINGSCREEN_UNDERLINE
+	ld [hli], a
 	ld a, [hl]
 	cp NAMINGSCREEN_UNDERLINE
 	ret nz
@@ -704,8 +704,8 @@ NamingScreen_InitNameEntry:
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	ld [hl], NAMINGSCREEN_UNDERLINE
-	inc hl
+	ld a, NAMINGSCREEN_UNDERLINE
+	ld [hli], a
 	ld a, [wNamingScreenMaxNameLength]
 	dec a
 	ld c, a
@@ -835,7 +835,7 @@ INCBIN "gfx/naming_screen/lines.2bpp"
 
 INCLUDE "data/text/input_chars.asm"
 
-_ComposeMailMessage: ; 11e75 (mail?)
+_ComposeMailMessage:
 	ld hl, wNamingScreenDestinationPointer
 	ld [hl], e
 	inc hl
@@ -1045,8 +1045,8 @@ INCBIN "gfx/icons/mail2.2bpp.lz"
 	ret nz
 	inc [hl]
 	call NamingScreen_GetTextCursorPosition
-	ld [hl], NAMINGSCREEN_UNDERLINE
-	dec hl
+	ld a, NAMINGSCREEN_UNDERLINE
+	ld [hld], a
 	ld [hl], "<NEXT>"
 	ret
 
@@ -1071,8 +1071,8 @@ INCBIN "gfx/icons/mail2.2bpp.lz"
 	ret nz
 	dec [hl]
 	call NamingScreen_GetTextCursorPosition
-	ld [hl], NAMINGSCREEN_UNDERLINE
-	inc hl
+	ld a, NAMINGSCREEN_UNDERLINE
+	ld [hli], a
 	ld [hl], "<NEXT>"
 	ret
 

@@ -20,8 +20,8 @@ PrintBCDNumber::
 	jr z, .loop
 	bit 7, b
 	jr nz, .loop ; skip currency symbol
-	ld [hl], "¥"
-	inc hl
+	ld a, "¥"
+	ld [hli], a
 .loop
 	ld a, [de]
 	swap a
@@ -40,8 +40,8 @@ PrintBCDNumber::
 .skipRightAlignmentAdjustment
 	bit 5, b
 	jr z, .skipCurrencySymbol
-	ld [hl], "¥" ; currency symbol
-	inc hl
+	ld a, "¥"
+	ld [hli], a
 .skipCurrencySymbol
 	ld [hl], "0"
 	call PrintLetterDelay
@@ -56,7 +56,7 @@ PrintBCDDigit::
 ; if bit 7 is set, then no numbers have been printed yet
 	bit 5, b ; print the currency symbol?
 	jr z, .skipCurrencySymbol
-	ld [hl], "¥"
+	ld [hl], "¥" ; no-optimize *hl++|*hl-- = N
 	inc hl
 	res 5, b
 .skipCurrencySymbol

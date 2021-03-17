@@ -105,32 +105,28 @@ WhiteOutDecompressedItemIconCorners:
 	ld hl, wDecompressScratch tile 0
 	ld a, [hl]
 	and b
-	ld [hl], a
-	inc hl
+	ld [hli], a
 	ld a, [hl]
 	and b
 	ld [hl], a
 	ld hl, wDecompressScratch tile 2
 	ld a, [hl]
 	and c
-	ld [hl], a
-	inc hl
+	ld [hli], a
 	ld a, [hl]
 	and c
 	ld [hl], a
 	ld hl, wDecompressScratch tile 6 + 7 * 2
 	ld a, [hl]
 	and b
-	ld [hl], a
-	inc hl
+	ld [hli], a
 	ld a, [hl]
 	and b
 	ld [hl], a
 	ld hl, wDecompressScratch tile 8 + 7 * 2
 	ld a, [hl]
 	and c
-	ld [hl], a
-	inc hl
+	ld [hli], a
 	ld a, [hl]
 	and c
 	ld [hl], a
