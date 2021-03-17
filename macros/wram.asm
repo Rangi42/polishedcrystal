@@ -115,18 +115,6 @@ battle_struct: MACRO
 \1StructEnd::
 ENDM
 
-box: MACRO
-\1Count::           db
-\1Species::         ds MONS_PER_BOX + 1
-\1Mons::
-\1Mon1::            box_struct \1Mon1
-\1Mon2::            ds BOXMON_STRUCT_LENGTH * (MONS_PER_BOX - 1)
-\1MonOT::           ds NAME_LENGTH * MONS_PER_BOX
-\1MonNicknames::    ds MON_NAME_LENGTH * MONS_PER_BOX
-\1MonNicknamesEnd::
-\1End::             dw ; padding
-ENDM
-
 map_connection_struct: MACRO
 \1ConnectedMapGroup::       db
 \1ConnectedMapNumber::      db
