@@ -12,7 +12,7 @@ BSOD:
 	push af
 	ld a, 5
 	ldh [rSVBK], a
-	ld hl, .Palette
+	ld hl, BSODPalette
 	ld de, wBGPals2
 	ld bc, 1 palettes
 	rst CopyBytes
@@ -31,71 +31,72 @@ BSOD:
 	lb bc, BANK(FontNormal), 111
 	call Get1bpp
 
-	ld de, .Message
+	ld de, BSODMessage
 	hlcoord 1, 1
 	rst PlaceString
 
 	ldh a, [hCrashCode]
-	call .printnum_simple
+	call PrintNum_NoHRAM
 
 	and a ; a == ERR_RST_0?
-	ld de, .Rst0
-	jr z, .PrintErrorType
+	ld de, BSOD_Rst0
+	jr z, .done
 	dec a ; a == ERR_DIV_ZERO?
-	ld de, .DivZero
-	jr z, .PrintErrorType
+	ld de, BSOD_DivZero
+	jr z, .done
 	dec a ; a == ERR_EGG_SPECIES?
-	ld de, .EggSpecies
-	jr z, .PrintErrorType
+	ld de, BSOD_EggSpecies
+	jr z, .done
 	dec a ; a == ERR_EXECUTING_RAM?
-	ld de, .ExecutingRAM
-	jr z, .PrintErrorType
+	ld de, BSOD_ExecutingRAM
+	jr z, .done
 	dec a ; a == ERR_STACK_OVERFLOW?
-	ld de, .StackOverflow
-	jr z, .PrintErrorType
+	ld de, BSOD_StackOverflow
+	jr z, .done
 	dec a ; a == ERR_STACK_UNDERFLOW?
-	ld de, .StackUnderflow
-	jr z, .PrintErrorType
-	dec a ; a == ERR_STACK_UNDERFLOW?
-	ld de, .BTOldSave
-	jr z, .PrintErrorType
+	ld de, BSOD_StackUnderflow
+	jr z, .done
+	dec a ; a == ERR_BT_STATE?
+	ld de, BSOD_OldBTState
+	jr z, .done
 	dec a ; a == ERR_VERSION_MISMATCH?
-	ld de, .VersionMismatch
-	jr z, .PrintErrorType
-	ld de, .UnknownError
-.PrintErrorType
+	ld de, BSOD_VersionMismatch
+	jr z, .done
+	ld de, BSOD_UnknownError
+.done
 	hlcoord 1, 14
 	rst PlaceString
 
 	call ApplyTilemapInVBlank
 
-.infiniteloop
+.infinite_loop
 	call DelayFrame
-	jr .infiniteloop
+	jr .infinite_loop
 
-.printnum_simple
+PrintNum_NoHRAM:
 ; reimplementation of PrintNum without touching hram
 	ld b, 100
 	hlcoord 8, 12
 	push af
-	call .do_printnum
+	call .print_digit
 	ld b, 10
-	call .do_printnum
+	call .print_digit
 	add "0"
 	ld [hl], a
 	pop af
 	ret
-.do_printnum
+
+.print_digit:
 	ld [hl], "0" - 1
-.printnum_loop
+.loop
 	inc [hl]
 	sub b
-	jr nc, .printnum_loop
+	jr nc, .loop
 	add b
 	inc hl
 	ret
 
-.Palette:
+BSODPalette:
 if !DEF(MONOCHROME)
 	RGB 00, 00, 31
 	RGB 00, 00, 31
@@ -108,7 +109,7 @@ else
 	RGB_MONOCHROME_WHITE
 endc
 
-.Message:
+BSODMessage:
 	db    "      #mon"
 	next1 " Polished Crystal"
 	next  "       ERROR"
@@ -119,29 +120,29 @@ endc
 	next1 "tinyurl.com/pkpc3."
 	next  "Error:@"
 
-.Rst0:
+BSOD_Rst0:
 	db "rst 0@"
 
-.DivZero:
+BSOD_DivZero:
 	db "Division by zero@"
 
-.EggSpecies:
+BSOD_EggSpecies:
 	db "<PK><MN> species is Egg@"
 
-.ExecutingRAM:
+BSOD_ExecutingRAM:
 	db "Executing RAM@"
 
-.StackOverflow:
+BSOD_StackOverflow:
 	db "Stack overflow@"
 
-.StackUnderflow:
+BSOD_StackUnderflow:
 	db "Stack underflow@"
 
-.BTOldSave:
-	db "Old save@"
+BSOD_OldBTState:
+	db "Old Battle Tower@"
 
-.VersionMismatch:
-	db "Game ver mismatch@"
+BSOD_VersionMismatch:
+	db "Version mismatch@"
 
-.UnknownError:
+BSOD_UnknownError:
 	db "Unknown error@"

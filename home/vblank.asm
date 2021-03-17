@@ -18,6 +18,8 @@ VBlank::
 	ldh a, [hROMBank]
 	ldh [hROMBankBackup], a
 
+	; Skip the .VBlanks table if [hVBlank] is just 7.
+	; _SafeCopyTilemapAtOnce sets it to 1 << 7 | 7 to execute actual VBlank7.
 	ldh a, [hVBlank]
 	cp 7
 	jr z, .skipToGameTime
@@ -31,8 +33,10 @@ VBlank::
 	ld hl, sp+$0
 	ld a, h
 	cp HIGH(wStackBottom)
-	jr c, .SPTooLow
-	jr nz, .SPTooHigh
+	ld a, ERR_STACK_OVERFLOW
+	jr c, .crash
+	ld a, ERR_STACK_UNDERFLOW
+	jr nz, .crash
 
 	ld hl, sp+$b
 	ld a, [hl]
@@ -42,22 +46,23 @@ VBlank::
 	jr nc, .crash
 
 	ldh a, [rSVBK]
-	push af
+	ld e, a
 	ld a, BANK(wGameVersion)
 	ldh [rSVBK], a
-	ld a, [wGameVersion]
+	ld hl, wGameVersion
+	ld a, [hli]
 	cp HIGH(SAVE_VERSION)
 	jr nz, .version_crash
-	ld a, [wGameVersion + 1]
+	ld a, [hl]
 	cp LOW(SAVE_VERSION)
 	ld a, ERR_VERSION_MISMATCH
 	jr nz, .version_crash
-	pop af
+	ld a, e
 	ldh [rSVBK], a
 
 .skip_crash
 	ldh a, [hVBlank]
-	and 7
+	and %111
 	add a
 	ld e, a
 	ld d, 0
@@ -94,19 +99,9 @@ VBlank::
 	reti
 
 .version_crash
-	pop af
+	ld a, e
 	ldh [rSVBK], a
 	ld a, ERR_VERSION_MISMATCH
-	jr .crash
-
-.SPTooLow
-	; keep in mind that lower sp = higher stack frame
-	ld a, ERR_STACK_OVERFLOW
-	jr .crash
-
-.SPTooHigh
-	ld a, ERR_STACK_UNDERFLOW
-	; fallthrough
 .crash
 	di
 	jp Crash
