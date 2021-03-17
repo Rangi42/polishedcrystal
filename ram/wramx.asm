@@ -1356,7 +1356,7 @@ wDayCareMan::
 wBreedMon1::
 wBreedMon1Nick::  ds MON_NAME_LENGTH
 wBreedMon1OT:: ds NAME_LENGTH
-wBreedMon1Stats:: box_struct wBreedMon1
+wBreedMon1Stats:: oldbox_struct wBreedMon1
 
 wDayCareLady::
 ; bit 7: active
@@ -1372,11 +1372,11 @@ wBreedMotherOrNonDitto::
 wBreedMon2::
 wBreedMon2Nick:: ds MON_NAME_LENGTH
 wBreedMon2OT:: ds NAME_LENGTH
-wBreedMon2Stats:: box_struct wBreedMon2
+wBreedMon2Stats:: oldbox_struct wBreedMon2
 
 wEggNick:: ds MON_NAME_LENGTH
 wEggOT:: ds NAME_LENGTH
-wEggMon:: box_struct wEggMon
+wEggMon:: oldbox_struct wEggMon
 
 wBugContestSecondPartySpecies:: db
 wContestMon:: party_struct wContestMon
