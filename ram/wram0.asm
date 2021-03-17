@@ -895,8 +895,22 @@ wLinkPlayerPartyMon3:: party_struct wLinkPlayerPartyMon3
 wLinkPlayerPartyMon4:: party_struct wLinkPlayerPartyMon4
 wLinkPlayerPartyMon5:: party_struct wLinkPlayerPartyMon5
 wLinkPlayerPartyMon6:: party_struct wLinkPlayerPartyMon6
-wLinkPlayerPartyMonOTs:: ds PARTY_LENGTH * NAME_LENGTH
-wLinkPlayerPartyMonNicks:: ds PARTY_LENGTH * MON_NAME_LENGTH
+
+wLinkPlayerPartyMonOTs::
+wLinkPlayerPartyMon1OT:: ds NAME_LENGTH
+wLinkPlayerPartyMon2OT:: ds NAME_LENGTH
+wLinkPlayerPartyMon3OT:: ds NAME_LENGTH
+wLinkPlayerPartyMon4OT:: ds NAME_LENGTH
+wLinkPlayerPartyMon5OT:: ds NAME_LENGTH
+wLinkPlayerPartyMon6OT:: ds NAME_LENGTH
+
+wLinkPlayerPartyMonNicknames::
+wLinkPlayerPartyMon1Nickname:: ds MON_NAME_LENGTH
+wLinkPlayerPartyMon2Nickname:: ds MON_NAME_LENGTH
+wLinkPlayerPartyMon3Nickname:: ds MON_NAME_LENGTH
+wLinkPlayerPartyMon4Nickname:: ds MON_NAME_LENGTH
+wLinkPlayerPartyMon5Nickname:: ds MON_NAME_LENGTH
+wLinkPlayerPartyMon6Nickname:: ds MON_NAME_LENGTH
 wLinkPlayerDataEnd::
 
 NEXTU
