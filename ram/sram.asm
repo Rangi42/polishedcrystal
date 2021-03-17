@@ -117,6 +117,7 @@ sNewBox12:: newbox sNewBox12
 sNewBox13:: newbox sNewBox13
 sNewBox14:: newbox sNewBox14
 sNewBox15:: newbox sNewBox15
+sNewBox16:: newbox sNewBox16
 sNewBoxEnd::
 
 sBackupNewBox1:: newbox sBackupNewBox1
@@ -134,6 +135,7 @@ sBackupNewBox12:: newbox sBackupNewBox12
 sBackupNewBox13:: newbox sBackupNewBox13
 sBackupNewBox14:: newbox sBackupNewBox14
 sBackupNewBox15:: newbox sBackupNewBox15
+sBackupNewBox16:: newbox sBackupNewBox16
 
 SECTION "Link Battle Data", SRAM
 
