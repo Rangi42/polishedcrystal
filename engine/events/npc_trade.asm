@@ -97,7 +97,7 @@ DoNPCTrade:
 	call GetTradeMonName
 	call CopyTradeName
 
-	ld hl, wPartyMonOT
+	ld hl, wPartyMonOTs
 	ld bc, NAME_LENGTH
 	call Trade_GetAttributeOfCurrentPartymon
 	ld de, wPlayerTrademonOTName
@@ -163,7 +163,7 @@ DoNPCTrade:
 	ld c, a
 	farcall SetGiftPartyMonCaughtData
 
-	ld e, NPCTRADE_NICK
+	ld e, NPCTRADE_NICKNAME
 	call GetTradeAttribute
 	ld de, wOTTrademonNickname
 	call CopyTradeName
@@ -183,7 +183,7 @@ DoNPCTrade:
 	ld de, wOTTrademonSenderName
 	call CopyTradeOT
 
-	ld hl, wPartyMonOT
+	ld hl, wPartyMonOTs
 	ld bc, NAME_LENGTH
 	call Trade_GetAttributeOfLastPartymon
 	ld hl, wOTTrademonOTName

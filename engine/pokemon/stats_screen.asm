@@ -383,7 +383,7 @@ StatsScreen_InitUpperHalf:
 	dw wPartyMonNicknames
 	dw wOTPartyMonNicknames
 	dw sBoxMonNicknames
-	dw wBufferMonNick
+	dw wBufferMonNickname
 
 StatsScreen_PlaceHorizontalDivider:
 	hlcoord 0, 7
@@ -814,9 +814,9 @@ StatsScreen_LoadGFX:
 	db $3f, "1", "2", $3f
 
 StatsScreen_OTNamePointers:
-	dw wPartyMonOT
-	dw wOTPartyMonOT
-	dw sBoxMonOT
+	dw wPartyMonOTs
+	dw wOTPartyMonOTs
+	dw sBoxMonOTs
 	dw wBufferMonOT
 
 TN_PrintToD:

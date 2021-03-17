@@ -98,7 +98,7 @@ box: MACRO
 \1Mons::
 \1Mon1::            box_struct \1Mon1
 \1Mon2::            ds BOXMON_STRUCT_LENGTH * (MONS_PER_BOX - 1)
-\1MonOT::           ds NAME_LENGTH * MONS_PER_BOX
+\1MonOTs::          ds NAME_LENGTH * MONS_PER_BOX
 \1MonNicknames::    ds MON_NAME_LENGTH * MONS_PER_BOX
 \1MonNicknamesEnd::
 \1End::             dw ; padding
@@ -117,7 +117,6 @@ map_connection_struct: MACRO
 ENDM
 
 channel_struct: MACRO
-; Addreses are wChannel1 (c101).
 \1MusicID::           dw
 \1MusicBank::         db
 \1Flags::             db ; 0:on/off 1:subroutine 3:sfx 4:noise 5:rest
@@ -161,22 +160,22 @@ channel_struct: MACRO
 ENDM
 
 mailmsg: MACRO
-\1Message:: ds MAIL_MSG_LENGTH
-\1MessageEnd:: db
-\1Author:: ds PLAYER_NAME_LENGTH
-\1AuthorNationality:: dw
-\1AuthorID:: dw
-\1Species:: db
-\1Type:: db
+\1Message::     ds MAIL_MSG_LENGTH
+\1MessageEnd::  db
+\1Author::      ds PLAYER_NAME_LENGTH
+\1Nationality:: dw
+\1AuthorID::    dw
+\1Species::     db
+\1Type::        db
 \1End::
 ENDM
 
 hof_mon: MACRO
-\1Species:: db
-\1ID:: dw
+\1Species::     db
+\1ID::          dw
 \1Personality:: dw
-\1Level:: db
-\1Nickname:: ds MON_NAME_LENGTH - 1
+\1Level::       db
+\1Nickname::    ds MON_NAME_LENGTH - 1
 \1End::
 ENDM
 
@@ -195,8 +194,8 @@ ENDM
 
 bugcontestwinner: MACRO
 \1PersonID:: db
-\1Mon:: db
-\1Score:: dw
+\1Mon::      db
+\1Score::    dw
 ENDM
 
 hall_of_fame: MACRO
@@ -211,45 +210,45 @@ hall_of_fame: MACRO
 ENDM
 
 link_battle_record: MACRO
-\1Name:: ds NAME_LENGTH - 1
-\1ID:: dw
-\1Wins:: dw
+\1Name::   ds NAME_LENGTH - 1
+\1ID::     dw
+\1Wins::   dw
 \1Losses:: dw
-\1Draws:: dw
+\1Draws::  dw
 ENDM
 
 trademon: MACRO
-\1Species:: db
+\1Species::     db
 \1SpeciesName:: ds MON_NAME_LENGTH
-\1Nickname:: ds MON_NAME_LENGTH
-\1SenderName:: ds NAME_LENGTH
-\1OTName:: ds NAME_LENGTH
+\1Nickname::    ds MON_NAME_LENGTH
+\1SenderName::  ds NAME_LENGTH
+\1OTName::      ds NAME_LENGTH
 \1DVs::
-\1HPAtkDV:: db
-\1DefSpdDV:: db
-\1SatSdfDV:: db
+\1HPAtkDV::     db
+\1DefSpdDV::    db
+\1SatSdfDV::    db
 \1Personality::
 \1Shiny::
 \1Ability::
-\1Nature:: db
+\1Nature::      db
 \1Gender::
 \1IsEgg::
 \1ExtSpecies::
-\1Form:: db
-\1ID:: dw
-\1CaughtData:: db
+\1Form::        db
+\1ID::          dw
+\1CaughtData::  db
 \1End::
 ENDM
 
 move_struct: MACRO
-\1Animation:: db
-\1Effect:: db
-\1Power:: db
-\1Type:: db
-\1Accuracy:: db
-\1PP:: db
+\1Animation::    db
+\1Effect::       db
+\1Power::        db
+\1Type::         db
+\1Accuracy::     db
+\1PP::           db
 \1EffectChance:: db
-\1Category:: db
+\1Category::     db
 \1End::
 ENDM
 
@@ -271,38 +270,38 @@ slot_reel: MACRO
 ENDM
 
 object_struct: MACRO
-\1Sprite:: db
-\1MapObjectIndex:: db
-\1SpriteTile:: db
-\1MovementType:: db
-\1Flags:: dw
-\1Palette:: db
-\1Walking:: db
-\1Direction:: db
-\1StepType:: db
-\1StepDuration:: db
-\1Action:: db
-\1ObjectStepFrame:: db
-\1Facing:: db
-\1StandingTile:: db ; collision
-\1LastTile:: db     ; collision
-\1StandingMapX:: db
-\1StandingMapY:: db
-\1LastMapX:: db
-\1LastMapY:: db
-\1ObjectInitX:: db
-\1ObjectInitY:: db
-\1Radius:: db
-\1SpriteX:: db
-\1SpriteY:: db
-\1SpriteXOffset:: db
-\1SpriteYOffset:: db
+\1Sprite::            db
+\1MapObjectIndex::    db
+\1SpriteTile::        db
+\1MovementType::      db
+\1Flags::             dw
+\1Palette::           db
+\1Walking::           db
+\1Direction::         db
+\1StepType::          db
+\1StepDuration::      db
+\1Action::            db
+\1ObjectStepFrame::   db
+\1Facing::            db
+\1StandingTile::      db ; collision
+\1LastTile::          db ; collision
+\1StandingMapX::      db
+\1StandingMapY::      db
+\1LastMapX::          db
+\1LastMapY::          db
+\1ObjectInitX::       db
+\1ObjectInitY::       db
+\1Radius::            db
+\1SpriteX::           db
+\1SpriteY::           db
+\1SpriteXOffset::     db
+\1SpriteYOffset::     db
 \1MovementByteIndex:: db
-\1Object28:: db
-\1Object29:: db
-\1Object30:: db
-\1Object31:: db
-\1Range:: db
+\1Object28::          db
+\1Object29::          db
+\1Object30::          db
+\1Object31::          db
+\1Range::             db
 \1StructEnd::
 ENDM
 
@@ -335,55 +334,54 @@ sprite_oam_struct: MACRO
 ENDM
 
 sprite_anim_struct: MACRO
-\1Index:: db          ; 0
-\1FramesetID:: db     ; 1
-\1AnimSeqID:: db      ; 2
-\1TileID:: db         ; 3
-\1XCoord:: db         ; 4
-\1YCoord:: db         ; 5
-\1XOffset:: db        ; 6
-\1YOffset:: db        ; 7
-\1Duration:: db       ; 8
-\1DurationOffset:: db ; 9
-\1FrameIndex:: db     ; a
-\1Sprite0b:: db
-\1Sprite0c:: db
-\1Sprite0d:: db
-\1Sprite0e:: db
-\1Sprite0f:: db
+\1Index::          db
+\1FramesetID::     db
+\1AnimSeqID::      db
+\1TileID::         db
+\1XCoord::         db
+\1YCoord::         db
+\1XOffset::        db
+\1YOffset::        db
+\1Duration::       db
+\1DurationOffset:: db
+\1FrameIndex::     db
+\1JumptableIndex:: db
+\1Var1::           ds 1
+\1Var2::           ds 1
+\1Var3::           ds 1
+\1Var4::           ds 1
 ENDM
 
 battle_anim_struct: MACRO
-; Placeholder until we can figure out what it all means
-\1_Index::  db
-\1_Anim01:: db
-\1_Anim02:: db
-\1_FramesetIndex:: db
-\1_FunctionIndex:: db
-\1_Anim05:: db
-\1_TileID:: db
-\1_XCoord:: db
-\1_YCoord:: db
-\1_XOffset:: db
-\1_YOffset:: db
-\1_Anim0b:: db
-\1_Anim0c:: db
-\1_Anim0d:: db
+\1_Index::              db
+\1_Anim01::             db
+\1_Anim02::             db
+\1_FramesetIndex::      db
+\1_FunctionIndex::      db
+\1_Anim05::             db
+\1_TileID::             db
+\1_XCoord::             db
+\1_YCoord::             db
+\1_XOffset::            db
+\1_YOffset::            db
+\1_Anim0b::             db
+\1_Anim0c::             db
+\1_Anim0d::             db
 \1_AnonJumptableIndex:: db
-\1_Anim0f:: db
-\1_Anim10:: db
-\1_Anim11:: db
-\1_Anim12:: db
-\1_Anim13:: db
-\1_Anim14:: db
-\1_Anim15:: db
-\1_Anim16:: db
-\1_Anim17:: db
+\1_Anim0f::             db
+\1_Anim10::             db
+\1_Anim11::             db
+\1_Anim12::             db
+\1_Anim13::             db
+\1_Anim14::             db
+\1_Anim15::             db
+\1_Anim16::             db
+\1_Anim17::             db
 ENDM
 
 battle_bg_effect: MACRO
 \1_Function:: db
-\1_01:: db
-\1_02:: db
-\1_03:: db
+\1_01::       db
+\1_02::       db
+\1_03::       db
 ENDM

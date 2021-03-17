@@ -297,14 +297,14 @@ PlaceUsersName::
 
 _PlaceBattleNickname:
 	push de
-	ld de, wBattleMonNick
+	ld de, wBattleMonNickname
 	and a
 	jr z, PlaceCommandCharacter
 	ld de, .EnemyText
 	rst PlaceString
 	ld h, b
 	ld l, c
-	ld de, wEnemyMonNick
+	ld de, wEnemyMonNickname
 	jr PlaceCommandCharacter
 
 .EnemyText:

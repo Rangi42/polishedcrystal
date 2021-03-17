@@ -19,13 +19,13 @@ FieldMoveJumptable:
 	scf
 	ret
 
-GetPartyNick:
+GetPartyNickname:
 ; write wCurPartyMon nickname to wStringBuffer1-3
 	ld hl, wPartyMonNicknames
 	ld a, BOXMON
 	ld [wMonType], a
 	ld a, [wCurPartyMon]
-	call GetNick
+	call GetNickname
 	call CopyName1
 ; copy text from wStringBuffer2 to wStringBuffer3
 	ld de, wStringBuffer2
@@ -445,7 +445,7 @@ SurfFunction:
 .DoSurf:
 	call GetSurfType
 	ld [wBuffer2], a
-	call GetPartyNick
+	call GetPartyNickname
 	ld hl, SurfFromMenuScript
 	call QueueScript
 	ld a, $81
@@ -577,7 +577,7 @@ TrySurfOW::
 
 	call GetSurfType
 	ld [wBuffer2], a
-	call GetPartyNick
+	call GetPartyNickname
 
 	ld a, BANK(AskSurfScript)
 	ld hl, AskSurfScript
@@ -893,7 +893,7 @@ EscapeRopeOrDig:
 	ld a, [wBuffer2]
 	cp $2
 	jr nz, .escaperope
-	call GetPartyNick
+	call GetPartyNickname
 	ld hl, .UsedDigScript
 	call QueueScript
 	ld a, $81
@@ -996,7 +996,7 @@ TeleportFunction:
 	ret
 
 .DoTeleport:
-	call GetPartyNick
+	call GetPartyNickname
 	ld hl, .TeleportScript
 	call QueueScript
 	ld a, $81
@@ -1067,7 +1067,7 @@ PrepareOverworldMove:
 	add hl, de
 	ld a, [hl]
 	ld [wBuffer6], a
-	jp GetPartyNick
+	jp GetPartyNickname
 
 Script_StrengthFromMenu:
 	reloadmappart

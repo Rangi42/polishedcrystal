@@ -248,7 +248,7 @@ endr
 	ld [wBuffer2], a
 	ld a, [wCurPartyMon]
 	ld hl, wPartyMonNicknames
-	call GetNick
+	call GetNickname
 	call CopyName1
 	ld hl, Text_WhatEvolving
 	call PrintText

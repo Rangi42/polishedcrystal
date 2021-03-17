@@ -528,11 +528,11 @@ PokeBallEffect:
 	rst CopyBytes
 	pop af
 	push af
-	ld hl, wPartyMonOT
+	ld hl, wPartyMonOTs
 	call SkipNames
 	ld d, h
 	ld e, l
-	ld hl, wOTPartyMonOT
+	ld hl, wOTPartyMonOTs
 	ld bc, NAME_LENGTH
 	rst CopyBytes
 	pop af
@@ -1417,7 +1417,7 @@ UseItem_GetBaseDataAndNickParameters:
 	call GetBaseData
 	ld a, [wCurPartyMon]
 	ld hl, wPartyMonNicknames
-	jp GetNick
+	jp GetNickname
 
 UseItem_GetHPParameter:
 	ld a, MON_HP
@@ -2311,7 +2311,7 @@ Ball_ReplacePartyMonCaughtBall:
 	call UseDisposableItem
 
 	; wStringBuffer2 already contains the item name from GetItemName + CopyName1
-	call GetCurNick
+	call GetCurNickname
 	ld hl, BallReplacedText
 	jp PrintText
 

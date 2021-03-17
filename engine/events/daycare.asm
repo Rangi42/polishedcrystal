@@ -38,7 +38,7 @@ Special_DayCareMan:
 
 .AskWithdrawMon:
 	farcall GetBreedMon1LevelGrowth
-	ld hl, wBreedMon1Nick
+	ld hl, wBreedMon1Nickname
 	call GetPriceToRetrieveBreedmon
 	call DayCare_AskWithdrawBreedMon
 	jr c, .print_text
@@ -74,7 +74,7 @@ Special_DayCareLady:
 
 .AskWithdrawMon:
 	farcall GetBreedMon2LevelGrowth
-	ld hl, wBreedMon2Nick
+	ld hl, wBreedMon2Nickname
 	call GetPriceToRetrieveBreedmon
 	call DayCare_AskWithdrawBreedMon
 	jr c, .print_text
@@ -128,7 +128,7 @@ DayCareAskDepositPokemon:
 	jr c, .HoldingMail
 	ld hl, wPartyMonNicknames
 	ld a, [wCurPartyMon]
-	call GetNick
+	call GetNickname
 	and a
 	ret
 
@@ -487,13 +487,13 @@ DayCare_GiveEgg:
 	ld hl, wPartyMonNicknames
 	ld bc, MON_NAME_LENGTH
 	call DayCare_GetCurrentPartyMember
-	ld hl, wEggNick
+	ld hl, wEggMonNickname
 	rst CopyBytes
 
-	ld hl, wPartyMonOT
+	ld hl, wPartyMonOTs
 	ld bc, NAME_LENGTH
 	call DayCare_GetCurrentPartyMember
-	ld hl, wEggOT
+	ld hl, wEggMonOT
 	rst CopyBytes
 
 	ld hl, wPartyMon1
@@ -715,10 +715,10 @@ DayCare_InitBreeding:
 	ld hl, wEggMon
 	ld bc, wEggMonEnd - wEggMon
 	rst ByteFill
-	ld hl, wEggNick
+	ld hl, wEggMonNickname
 	ld bc, MON_NAME_LENGTH
 	rst ByteFill
-	ld hl, wEggOT
+	ld hl, wEggMonOT
 	ld bc, NAME_LENGTH
 	rst ByteFill
 	ld a, [wBreedMon1Species]
@@ -787,11 +787,11 @@ DayCare_InitBreeding:
 	call GetBaseData
 
 	; Set name and item
-	ld hl, wEggNick
+	ld hl, wEggMonNickname
 	ld de, .String_EGG
 	call CopyName2
 	ld hl, wPlayerName
-	ld de, wEggOT
+	ld de, wEggMonOT
 	ld bc, NAME_LENGTH
 	rst CopyBytes
 	xor a

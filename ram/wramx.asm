@@ -7,7 +7,7 @@ wDefaultSpawnpoint:: db
 
 UNION
 ; mon buffer
-wBufferMonNick:: ds MON_NAME_LENGTH
+wBufferMonNickname:: ds MON_NAME_LENGTH
 wBufferMonOT:: ds NAME_LENGTH
 wBufferMon:: party_struct wBufferMon
 	ds 8
@@ -138,7 +138,7 @@ NEXTU
 ; trade
 wCurTradePartyMon:: db
 wCurOTTradePartyMon:: db
-wBufferTrademonNick:: ds MON_NAME_LENGTH
+wBufferTrademonNickname:: ds MON_NAME_LENGTH
 
 NEXTU
 ; link battle record data
@@ -745,7 +745,7 @@ wOTPartyMon5:: party_struct wOTPartyMon5
 wOTPartyMon6:: party_struct wOTPartyMon6
 
 wOTPartyMonsEnd::
-wOTPartyMonOT:: ds NAME_LENGTH * PARTY_LENGTH
+wOTPartyMonOTs:: ds NAME_LENGTH * PARTY_LENGTH
 wOTPartyMonNicknames:: ds MON_NAME_LENGTH * PARTY_LENGTH ; make sure this is always available!
 wOTPartyDataEnd::
 
@@ -1337,7 +1337,7 @@ wPartyMon4:: party_struct wPartyMon4
 wPartyMon5:: party_struct wPartyMon5
 wPartyMon6:: party_struct wPartyMon6
 
-wPartyMonOT:: ds NAME_LENGTH * PARTY_LENGTH
+wPartyMonOTs:: ds NAME_LENGTH * PARTY_LENGTH
 
 wPartyMonNicknames:: ds MON_NAME_LENGTH * PARTY_LENGTH
 wPartyMonNicknamesEnd::
@@ -1364,7 +1364,7 @@ wDayCareMan::
 	db
 
 wBreedMon1::
-wBreedMon1Nick::  ds MON_NAME_LENGTH
+wBreedMon1Nickname:: ds MON_NAME_LENGTH
 wBreedMon1OT:: ds NAME_LENGTH
 wBreedMon1Stats:: box_struct wBreedMon1
 
@@ -1380,12 +1380,12 @@ wBreedMotherOrNonDitto::
 	db
 
 wBreedMon2::
-wBreedMon2Nick:: ds MON_NAME_LENGTH
+wBreedMon2Nickname:: ds MON_NAME_LENGTH
 wBreedMon2OT:: ds NAME_LENGTH
 wBreedMon2Stats:: box_struct wBreedMon2
 
-wEggNick:: ds MON_NAME_LENGTH
-wEggOT:: ds NAME_LENGTH
+wEggMonNickname:: ds MON_NAME_LENGTH
+wEggMonOT:: ds NAME_LENGTH
 wEggMon:: box_struct wEggMon
 
 wBugContestSecondPartySpecies:: db

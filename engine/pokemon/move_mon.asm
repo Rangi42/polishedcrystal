@@ -31,11 +31,11 @@ TryAddMonToParty:
 	ld a, -1
 	ld [de], a
 	; Now let's load the OT name.
-	ld hl, wPartyMonOT
+	ld hl, wPartyMonOTs
 	ld a, [wMonType]
 	and $f
 	jr z, .loadOTname
-	ld hl, wOTPartyMonOT
+	ld hl, wOTPartyMonOTs
 
 .loadOTname
 	ldh a, [hMoveMon] ; Restore index from backup
@@ -554,13 +554,13 @@ AddTempmonToParty:
 	ld hl, wTempMonSpecies
 	rst CopyBytes
 
-	ld hl, wPartyMonOT
+	ld hl, wPartyMonOTs
 	ld a, [wPartyCount]
 	dec a
 	call SkipNames
 	ld d, h
 	ld e, l
-	ld hl, wOTPartyMonOT
+	ld hl, wOTPartyMonOTs
 	ld a, [wCurPartyMon]
 	call SkipNames
 	ld bc, NAME_LENGTH
@@ -730,10 +730,10 @@ SentGetPkmnIntoFromBox:
 	ld de, wBreedMon1OT
 	jr z, .okay5
 	dec a
-	ld hl, wPartyMonOT
+	ld hl, wPartyMonOTs
 	ld a, [wPartyCount]
 	jr nz, .okay6
-	ld hl, sBoxMonOT
+	ld hl, sBoxMonOTs
 	ld a, [sBoxCount]
 
 .okay6
@@ -743,14 +743,14 @@ SentGetPkmnIntoFromBox:
 	ld e, l
 
 .okay5
-	ld hl, sBoxMonOT
+	ld hl, sBoxMonOTs
 	ld a, [wPokemonWithdrawDepositParameter]
 	and a
 	jr z, .okay7
 	ld hl, wBreedMon1OT
 	cp DAY_CARE_WITHDRAW
 	jr z, .okay8
-	ld hl, wPartyMonOT
+	ld hl, wPartyMonOTs
 
 .okay7
 	ld a, [wCurPartyMon]
@@ -761,7 +761,7 @@ SentGetPkmnIntoFromBox:
 	rst CopyBytes
 	ld a, [wPokemonWithdrawDepositParameter]
 	cp DAY_CARE_DEPOSIT
-	ld de, wBreedMon1Nick
+	ld de, wBreedMon1Nickname
 	jr z, .okay9
 	dec a
 	ld hl, wPartyMonNicknames
@@ -781,7 +781,7 @@ SentGetPkmnIntoFromBox:
 	ld a, [wPokemonWithdrawDepositParameter]
 	and a
 	jr z, .okay11
-	ld hl, wBreedMon1Nick
+	ld hl, wBreedMon1Nickname
 	cp DAY_CARE_WITHDRAW
 	jr z, .okay12
 	ld hl, wPartyMonNicknames
@@ -825,14 +825,14 @@ SentGetPkmnIntoFromBox:
 
 	push bc
 	push hl
-	ld hl, sBoxMonOT
+	ld hl, sBoxMonOTs
 	ld a, [wPokemonWithdrawDepositParameter]
 	and a
 	jr z, .prepare_hyper_addr
 	ld hl, wBreedMon1OT
 	cp DAY_CARE_WITHDRAW
 	jr z, .got_hyper_addr
-	ld hl, wPartyMonOT
+	ld hl, wPartyMonOTs
 
 .prepare_hyper_addr
 	ld a, [wCurPartyMon]
@@ -1008,10 +1008,10 @@ RetrieveBreedmon:
 	ld a, [wPokemonWithdrawDepositParameter]
 	and a
 	ld a, [wBreedMon1Species]
-	ld de, wBreedMon1Nick
+	ld de, wBreedMon1Nickname
 	jr z, .okay
 	ld a, [wBreedMon2Species]
-	ld de, wBreedMon2Nick
+	ld de, wBreedMon2Nickname
 
 .okay
 	ld [hli], a
@@ -1024,7 +1024,7 @@ RetrieveBreedmon:
 	call SwapHLDE
 	rst CopyBytes
 	push hl
-	ld hl, wPartyMonOT
+	ld hl, wPartyMonOTs
 	ld a, [wPartyCount]
 	dec a
 	call SkipNames
@@ -1107,11 +1107,11 @@ GetLastPartyMon:
 	ret
 
 DepositMonWithDayCareMan:
-	ld de, wBreedMon1Nick
+	ld de, wBreedMon1Nickname
 	jr _DepositBreedmon
 
 DepositMonWithDayCareLady:
-	ld de, wBreedMon2Nick
+	ld de, wBreedMon2Nickname
 
 _DepositBreedmon:
 	ld a, [wCurPartyMon]
@@ -1119,7 +1119,7 @@ _DepositBreedmon:
 	call SkipNames
 	rst CopyBytes
 	ld a, [wCurPartyMon]
-	ld hl, wPartyMonOT
+	ld hl, wPartyMonOTs
 	call SkipNames
 	rst CopyBytes
 	ld a, [wCurPartyMon]
@@ -1163,7 +1163,7 @@ SentPkmnIntoBox:
 	call ShiftBoxMon
 
 	ld hl, wPlayerName
-	ld de, sBoxMonOT
+	ld de, sBoxMonOTs
 	ld bc, NAME_LENGTH
 	rst CopyBytes
 
@@ -1214,7 +1214,7 @@ SentPkmnIntoBox:
 	ret
 
 ShiftBoxMon:
-	ld hl, sBoxMonOT
+	ld hl, sBoxMonOTs
 	ld bc, NAME_LENGTH
 	call .shift
 
@@ -1403,12 +1403,12 @@ RemoveMonFromPartyOrBox:
 	ld [hli], a
 	inc a
 	jr nz, .loop
-	ld hl, wPartyMonOT
+	ld hl, wPartyMonOTs
 	ld d, PARTY_LENGTH - 1
 	ld a, [wPokemonWithdrawDepositParameter]
 	and a
 	jr z, .party
-	ld hl, sBoxMonOT
+	ld hl, sBoxMonOTs
 	ld d, MONS_PER_BOX - 1
 
 .party
@@ -1453,13 +1453,13 @@ RemoveMonFromPartyOrBox:
 	jr z, .party5
 	ld bc, BOXMON_STRUCT_LENGTH
 	add hl, bc
-	ld bc, sBoxMonOT
+	ld bc, sBoxMonOTs
 	jr .copy
 
 .party5
 	ld bc, PARTYMON_STRUCT_LENGTH
 	add hl, bc
-	ld bc, wPartyMonOT
+	ld bc, wPartyMonOTs
 .copy
 	call CopyDataUntil
 	; Shift the nicknames
@@ -1640,7 +1640,7 @@ GetHyperTraining:
 
 GetHyperTrainingAddr:
 	ld a, [wCurPartyMon]
-	ld hl, wPartyMonOT
+	ld hl, wPartyMonOTs
 	push bc
 	call SkipNames
 	ld bc, PLAYER_NAME_LENGTH
@@ -2030,7 +2030,7 @@ GivePoke::
 
 	push hl
 	ld a, [wCurPartyMon]
-	ld hl, wPartyMonOT
+	ld hl, wPartyMonOTs
 	call SkipNames
 	ld d, h
 	ld e, l
@@ -2061,9 +2061,9 @@ GivePoke::
 	jr .skip_nickname
 
 .send_to_box
-	ld a, BANK(sBoxMonOT)
+	ld a, BANK(sBoxMonOTs)
 	call GetSRAMBank
-	ld de, sBoxMonOT
+	ld de, sBoxMonOTs
 .loop
 	ld a, [wScriptBank]
 	call GetFarByte

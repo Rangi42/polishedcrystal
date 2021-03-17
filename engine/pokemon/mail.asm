@@ -209,7 +209,7 @@ GivePokeItem::
 	rst CopyBytes
 	pop af
 	push af
-	ld hl, wPartyMonOT
+	ld hl, wPartyMonOTs
 	ld bc, NAME_LENGTH
 	rst AddNTimes
 	ld bc, NAME_LENGTH - 1

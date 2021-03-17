@@ -19,9 +19,9 @@ PerformAbilityGFX:
 	; Get user nickname (post-processed with n-grams)
 	ldh a, [hBattleTurn]
 	and a
-	ld de, wBattleMonNick
+	ld de, wBattleMonNickname
 	jr z, .got_pkmn_name
-	ld de, wEnemyMonNick
+	ld de, wEnemyMonNickname
 .got_pkmn_name
 	ld hl, wAbilityPkmn
 	rst PlaceString
