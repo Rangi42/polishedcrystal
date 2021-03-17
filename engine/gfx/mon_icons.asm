@@ -141,7 +141,7 @@ _GetMonIconPalette:
 	; b = form
 	inc hl ; Form is in the byte after Shiny
 	ld a, [hld]
-	and BASEMON_MASK
+	and SPECIESFORM_MASK
 	ld b, a
 
 	; check shininess at hl
@@ -218,7 +218,7 @@ InitScreenMonIcon:
 	call GetPartyParamLocation
 _InitScreenMonIcon:
 	ld a, [hl]
-	and BASEMON_MASK
+	and SPECIESFORM_MASK
 	ld [wCurIconForm], a
 	bit MON_IS_EGG_F, [hl]
 	ld a, [wd265]
@@ -264,7 +264,7 @@ InitPartyMenuIcon:
 	ld a, [hl]
 	bit MON_IS_EGG_F, a
 	jr nz, .egg
-	and BASEMON_MASK
+	and SPECIESFORM_MASK
 	ld [wCurIconForm], a
 	ld hl, wPartySpecies
 	add hl, de
@@ -347,7 +347,7 @@ Fly_PrepMonIcon:
 	push de
 	ld a, MON_FORM
 	call GetPartyParamLocation
-	and BASEMON_MASK
+	and SPECIESFORM_MASK
 	ld [wCurIconForm], a
 	ld a, [wCurPartyMon]
 	ld hl, wPartySpecies

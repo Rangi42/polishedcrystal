@@ -5,7 +5,7 @@ CheckPartyFullAfterContest:
 	ld [wCurPartySpecies], a
 	ld [wCurSpecies], a
 	ld a, [wContestMonForm]
-	and BASEMON_MASK
+	and SPECIESFORM_MASK
 	ld [wCurForm], a
 	call GetBaseData
 	ld hl, wPartyCount
@@ -180,12 +180,12 @@ SetBoxmonOrEggmonCaughtData:
 	rrca
 	rrca
 	rrca
-	and CAUGHTTIME_MASK
+	and CAUGHT_TIME_MASK
 	or b
 	ld b, a
 	; CaughtBall
 	ld a, [wCurItem]
-	and CAUGHTBALL_MASK
+	and CAUGHT_BALL_MASK
 	or b
 	ld [hli], a
 	; CaughtLevel
@@ -220,13 +220,13 @@ SetGiftMonCaughtData:
 	rrca
 	rrca
 	rrca
-	and CAUGHTTIME_MASK
+	and CAUGHT_TIME_MASK
 	or b
 	ld b, a
 	; CaughtBall
 	; c contains it
 	ld a, c
-	and CAUGHTBALL_MASK
+	and CAUGHT_BALL_MASK
 	or b
 	ld [hli], a
 	; CaughtLevel

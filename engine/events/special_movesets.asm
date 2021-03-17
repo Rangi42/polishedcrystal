@@ -94,7 +94,7 @@ SetLastPartyMonBall:
 	ldh a, [hScriptVar]
 	ld c, a
 	ld a, [hl]
-	and $ff - CAUGHTBALL_MASK
+	and $ff - CAUGHT_BALL_MASK
 	or c
 	ld [hl], a
 	ret

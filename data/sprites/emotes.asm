@@ -1,4 +1,4 @@
-EmotesPointers:
+Emotes:
 	dba ShockEmote    ; EMOTE_SHOCK
 	dba QuestionEmote ; EMOTE_QUESTION
 	dba HappyEmote    ; EMOTE_HAPPY

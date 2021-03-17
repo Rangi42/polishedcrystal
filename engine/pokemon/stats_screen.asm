@@ -404,7 +404,7 @@ StatsScreen_LoadGFX:
 	; draw center
 	; index = $40 + [wTempMonCaughtBall]
 	ld a, [wTempMonCaughtBall]
-	and CAUGHTBALL_MASK
+	and CAUGHT_BALL_MASK
 	add $40
 	hlcoord 8, 6
 	ld [hl], a ; center

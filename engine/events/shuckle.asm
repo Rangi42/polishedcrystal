@@ -65,7 +65,7 @@ _GetLastPartyMonAttribute:
 	rst AddNTimes
 	ret
 
-SpecialReturnShuckie:
+ReturnShuckie:
 	farcall SelectMonFromParty
 	jr c, .refused
 

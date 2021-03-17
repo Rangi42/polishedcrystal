@@ -134,7 +134,7 @@ MostStatNames:
 PrintStatDifferences:
 	ld a, [wTextboxFlags]
 	push af
-	set NO_LINE_SPACING, a
+	set NO_LINE_SPACING_F, a
 	ld [wTextboxFlags], a
 
 	; Figure out length of largest modifier (+x, +xx or +xxx)
@@ -417,7 +417,7 @@ GetGender:
 	ld c, a
 	push bc ; b == gender|form
 	ld a, b
-	and BASEMON_MASK
+	and SPECIESFORM_MASK
 	ld b, a
 	call GetGenderRatio ; c = gender ratio
 	pop af ; a = gender|form
@@ -426,11 +426,11 @@ GetGender:
 
 ; Fixed values ignore the Personality gender value.
 	ld a, c
-	cp GENDERLESS
+	cp GENDER_UNKNOWN
 	jr z, .Genderless
-	and a ; cp ALL_MALE
+	and a ; cp GENDER_F0
 	jr z, .Male
-	cp ALL_FEMALE
+	cp GENDER_F100
 	jr z, .Female
 
 ; Otherwise, use the Personality gender value directly.

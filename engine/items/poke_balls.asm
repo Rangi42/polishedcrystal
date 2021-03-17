@@ -363,7 +363,7 @@ MoonBallMultiplier:
 	ld c, a
 	; b = form
 	ld a, [wEnemyMonForm]
-	and BASEMON_MASK
+	and SPECIESFORM_MASK
 	ld b, a
 	; bc = index
 	call GetSpeciesAndFormIndex

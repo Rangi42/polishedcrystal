@@ -749,7 +749,7 @@ Script_trainertext:
 	call GetScriptByte
 	ld c, a
 	ld b, 0
-	ld hl, wWalkingX
+	ld hl, wSeenTextPointer
 	add hl, bc
 	add hl, bc
 	ld a, [hli]

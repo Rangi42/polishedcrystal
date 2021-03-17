@@ -3,7 +3,18 @@ trainerclass: MACRO
 const_value = 1
 ENDM
 
-; trainer groups
+; trainer class ids
+; `trainerclass` indexes are for:
+; - TrainerClassNames (see data/trainers/class_names.asm)
+; - TrainerClassAttributes (see data/trainers/attributes.asm)
+; - TrainerClassDVsAndPersonality (see data/trainers/dvs.asm)
+; - TrainerGroups (see data/trainers/party_pointers.asm)
+; - TrainerEncounterMusic (see data/trainers/encounter_music.asm)
+; - TrainerPicPointers (see data/trainers/pic_pointers.asm)
+; - TrainerPalettes (see data/trainers/palettes.asm)
+; - BTTrainerClassSprites (see data/trainers/sprites.asm)
+; - BTTrainerClassGenders (see data/trainers/genders.asm)
+; trainer constants are indexes for the sub-tables of TrainerGroups (see data/trainers/parties.asm)
 	enum_start
 CHRIS EQU __enum__
 	trainerclass TRAINER_NONE ; 0

@@ -7,23 +7,23 @@ else
 endc
 
 if DEF(FAITHFUL)
-	db WATER, WATER
+	db WATER, WATER ; type
 else
-	db WATER, GRASS
+	db WATER, GRASS ; type
 endc
 	db 45 ; catch rate
 	db 185 ; base exp
 	db NO_ITEM ; item 1
 	db KINGS_ROCK ; item 2
-	dn FEMALE_50, 3 ; gender, step cycles to hatch
+	dn GENDER_F50, 3 ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/politoed/front.dimensions"
 	abilities_for POLITOED, WATER_ABSORB, DAMP, DRIZZLE
-	db MEDIUM_SLOW ; growth rate
-	dn AMPHIBIAN, AMPHIBIAN ; egg groups
+	db GROWTH_MEDIUM_SLOW ; growth rate
+	dn EGG_WATER_1, EGG_WATER_1 ; egg groups
 
 	ev_yield   0,   0,   0,   0,   0,   3
-	;         hp, atk, def, spd, sat, sdf
+	;         hp  atk  def  spd  sat  sdf
 
-	; tmhm
+	; tm/hm learnset
 	tmhm DYNAMICPUNCH, CURSE, CALM_MIND, TOXIC, HAIL, HIDDEN_POWER, ICE_BEAM, BLIZZARD, HYPER_BEAM, PROTECT, RAIN_DANCE, GIGA_DRAIN, BULLDOZE, EARTHQUAKE, RETURN, DIG, PSYCHIC, ROCK_SMASH, DOUBLE_TEAM, SUBSTITUTE, FACADE, REST, ATTRACT, THIEF, FOCUS_BLAST, ENERGY_BALL, SCALD, WATER_PULSE, GIGA_IMPACT, SURF, STRENGTH, WHIRLPOOL, WATERFALL, BODY_SLAM, COUNTER, DEFENSE_CURL, DOUBLE_EDGE, EARTH_POWER, ENDURE, HEADBUTT, HYPER_VOICE, ICE_PUNCH, ICY_WIND, SEISMIC_TOSS, SLEEP_TALK, SWAGGER
 	; end

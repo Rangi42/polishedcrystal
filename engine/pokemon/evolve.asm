@@ -125,7 +125,7 @@ EvolveAfterBattle_MasterLoop:
 	cp PICHU
 	jr nz, .not_spiky_eared_pichu
 	ld a, [wTempMonForm]
-	and BASEMON_MASK
+	and SPECIESFORM_MASK
 	cp 2
 	jp z, .dont_evolve_2
 
@@ -237,7 +237,7 @@ endr
 	ld a, [wTempMonLevel]
 	ld [wCurPartyLevel], a
 	ld a, [wTempMonForm]
-	and BASEMON_MASK
+	and SPECIESFORM_MASK
 	ld [wCurForm], a
 	ld a, $1
 	ld [wMonTriedToEvolve], a
@@ -301,7 +301,7 @@ endr
 	call ClearTileMap
 	call UpdateSpeciesNameIfNotNicknamed
 	ld a, [wTempMonForm]
-	and BASEMON_MASK
+	and SPECIESFORM_MASK
 	ld [wCurForm], a
 	call GetBaseData
 
@@ -407,7 +407,7 @@ _PlainFormOnEvolution:
 _ChangeFormOnEvolution:
 	ld b, a
 	ld a, [wTempMonForm]
-	and $ff - BASEMON_MASK
+	and $ff - SPECIESFORM_MASK
 	or b
 	ld [wTempMonForm], a
 	ret
@@ -758,7 +758,7 @@ GetPartyEvosAttacksPointer:
 	ld bc, PARTYMON_STRUCT_LENGTH
 	rst AddNTimes
 	ld a, [hl]
-	and BASEMON_MASK
+	and SPECIESFORM_MASK
 	ld b, a
 	; c = species
 	pop af

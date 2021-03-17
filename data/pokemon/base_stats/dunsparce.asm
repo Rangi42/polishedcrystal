@@ -7,27 +7,27 @@ else
 endc
 
 if DEF(FAITHFUL)
-	db NORMAL, NORMAL
+	db NORMAL, NORMAL ; type
 else
-	db NORMAL, GROUND
+	db NORMAL, GROUND ; type
 endc
 	db 190 ; catch rate
 	db 75 ; base exp
 	db NO_ITEM ; item 1
 	db NO_ITEM ; item 2
-	dn FEMALE_50, 3 ; gender, step cycles to hatch
+	dn GENDER_F50, 3 ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/dunsparce/front.dimensions"
 if DEF(FAITHFUL)
 	abilities_for DUNSPARCE, SERENE_GRACE, RUN_AWAY, RATTLED
 else
 	abilities_for DUNSPARCE, SERENE_GRACE, RUN_AWAY, SAND_STREAM
 endc
-	db MEDIUM_FAST ; growth rate
-	dn FIELD, FIELD ; egg groups
+	db GROWTH_MEDIUM_FAST ; growth rate
+	dn EGG_GROUND, EGG_GROUND ; egg groups
 
 	ev_yield   1,   0,   0,   0,   0,   0
-	;         hp, atk, def, spd, sat, sdf
+	;         hp  atk  def  spd  sat  sdf
 
-	; tmhm
+	; tm/hm learnset
 	tmhm CURSE, CALM_MIND, TOXIC, BULK_UP, HIDDEN_POWER, SUNNY_DAY, ICE_BEAM, BLIZZARD, PROTECT, RAIN_DANCE, BULLDOZE, SOLAR_BEAM, IRON_TAIL, THUNDERBOLT, THUNDER, EARTHQUAKE, RETURN, DIG, SHADOW_BALL, ROCK_SMASH, DOUBLE_TEAM, FLAMETHROWER, FIRE_BLAST, SUBSTITUTE, FACADE, REST, ATTRACT, THIEF, ROCK_SLIDE, ROOST, WILD_CHARGE, WATER_PULSE, POISON_JAB, THUNDER_WAVE, GYRO_BALL, STRENGTH, AQUA_TAIL, BODY_SLAM, COUNTER, DEFENSE_CURL, DOUBLE_EDGE, DREAM_EATER, ENDURE, HEADBUTT, ROLLOUT, SLEEP_TALK, SWAGGER, ZAP_CANNON, ZEN_HEADBUTT
 	; end
