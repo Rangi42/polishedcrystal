@@ -82,10 +82,10 @@ _CopyTilemapAtOnce::
 	ldh [hMapAnims], a
 
 	di
-	coord hl, 0, 0, wAttrMap
+	hlcoord 0, 0, wAttrMap
 	ld a, 1 ; BANK(vStandingFrameTiles)
 	call CopyFullTilemapInHBlank
-	coord hl, 0, 0
+	hlcoord 0, 0
 	xor a ; BANK(vObjTiles)
 	call CopyFullTilemapInHBlank
 
@@ -122,28 +122,28 @@ VBlankSafeCopyTilemapAtOnce::
 	bit 7, a
 	jr z, .attrAndBGCopy
 ; if we only need to update tiles, copy the remaining half in hblank
-	coord hl, 0, 9
+	hlcoord 0, 9
 	ld de, BG_MAP_WIDTH * 9
 	ld b, 9
 	jr CopyTilemapInHBlank
 .attrAndBGCopy
 ; now copy both tile and attr map, of alternating groups of 5/5/4
-	coord hl, 0, 3, wAttrMap
+	hlcoord 0, 3, wAttrMap
 	ld de, BG_MAP_WIDTH * 3
 	call Copy5RowsOfTilemapInHBlank_VBK1
-	coord hl, 0, 3
+	hlcoord 0, 3
 	ld de, BG_MAP_WIDTH * 3
 	call Copy5RowsOfTilemapInHBlank_VBK0
-	coord hl, 0, 8, wAttrMap
+	hlcoord 0, 8, wAttrMap
 	ld de, BG_MAP_WIDTH * 8
 	call Copy5RowsOfTilemapInHBlank_VBK1
-	coord hl, 0, 8
+	hlcoord 0, 8
 	ld de, BG_MAP_WIDTH * 8
 	call Copy5RowsOfTilemapInHBlank_VBK0
-	coord hl, 0, 13, wAttrMap
+	hlcoord 0, 13, wAttrMap
 	ld de, BG_MAP_WIDTH * 13
 	call Copy5RowsOfTilemapInHBlank_VBK1
-	coord hl, 0, 13
+	hlcoord 0, 13
 	ld de, BG_MAP_WIDTH * 13
 
 ; fallthrough
