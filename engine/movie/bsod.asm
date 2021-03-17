@@ -59,6 +59,9 @@ BSOD:
 	dec a ; a == ERR_STACK_UNDERFLOW?
 	ld de, .BTOldSave
 	jr z, .PrintErrorType
+	dec a ; a == ERR_VERSION_MISMATCH?
+	ld de, .VersionMismatch
+	jr z, .PrintErrorType
 	ld de, .UnknownError
 .PrintErrorType
 	hlcoord 1, 14
@@ -136,6 +139,9 @@ endc
 
 .BTOldSave:
 	db "Old save@"
+
+.VersionMismatch:
+	db "Game ver mismatch@"
 
 .UnknownError:
 	db "Unknown error@"
