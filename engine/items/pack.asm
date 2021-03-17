@@ -1311,7 +1311,7 @@ DrawPackGFX:
 .loop
 	dec b
 	jr nz, .normal_insert
-	ld [hl], $1
+	ld [hl], $1 ; no-optimize *hl++|*hl-- = N
 	inc hl
 	jr .insert_ok
 .normal_insert

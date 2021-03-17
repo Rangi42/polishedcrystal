@@ -178,8 +178,8 @@ PrintHLNum:
 	dec a
 	ldh [hPrintNum + 4], a
 	ret nz
-	ld [hl], "."
-	inc hl
+	ld a, "."
+	ld [hli], a
 	ret
 .printnum_delay
 	push hl

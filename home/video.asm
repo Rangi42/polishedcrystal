@@ -330,13 +330,13 @@ endr
 .nextopaque
 rept 4
 	pop de
+	ld a, $ff
+	ld [hli], a
 	ld a, e
-	ld [hl], $ff
-	inc hl
+	ld [hli], a
+	ld a, $ff
 	ld [hli], a
 	ld a, d
-	ld [hl], $ff
-	inc hl
 	ld [hli], a
 endr
 	dec b

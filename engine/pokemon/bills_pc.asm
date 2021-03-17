@@ -952,7 +952,7 @@ SetBadEgg:
 
 	; More sensible personality data.
 	ld hl, wTempMonPersonality
-	ld [hl], ABILITY_1 | QUIRKY
+	ld [hl], ABILITY_1 | QUIRKY ; no-optimize *hl++|*hl-- = N
 	inc hl
 	ld [hl], MALE | IS_EGG_MASK | 1
 	ld hl, wTempMonHappiness ; egg cycles
@@ -970,8 +970,8 @@ SetBadEgg:
 
 	; Dummy OT name.
 	ld hl, wTempMonOT
-	ld [hl], "?"
-	inc hl
+	ld a, "?"
+	ld [hli], a
 	ld [hl], "@"
 	ret
 
@@ -1054,7 +1054,7 @@ InitializeBoxes:
 	add "0" + 10
 	ld [hl], a
 	jr c, .next
-	ld [hl], "1"
+	ld [hl], "1" ; no-optimize *hl++|*hl-- = N
 	inc hl
 	sub 10
 	ld [hl], a

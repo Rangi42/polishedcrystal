@@ -709,9 +709,9 @@ WriteIconPaletteData:
 if !DEF(MONOCHROME)
 	; TODO: per-mon palettes
 	; RGB values copied from PartyMenuOBPals
-	ld [hl], LOW(palred 31 + palgreen 19 + palblue 10)
+	ld [hl], LOW(palred 31 + palgreen 19 + palblue 10) ; no-optimize *hl++|*hl-- = N
 	inc hl
-	ld [hl], HIGH(palred 31 + palgreen 19 + palblue 10)
+	ld [hl], HIGH(palred 31 + palgreen 19 + palblue 10) ; no-optimize *hl++|*hl-- = N
 	inc hl
 	and a ; PAL_OW_RED
 	ld de, palred 31 + palgreen 07 + palblue 01
@@ -741,11 +741,11 @@ if !DEF(MONOCHROME)
 	inc hl
 	ld [hl], d
 else
-	ld [hl], LOW(PAL_MONOCHROME_WHITE)
+	ld [hl], LOW(PAL_MONOCHROME_WHITE) ; no-optimize *hl++|*hl-- = N
 	inc hl
-	ld [hl], HIGH(PAL_MONOCHROME_WHITE)
+	ld [hl], HIGH(PAL_MONOCHROME_WHITE) ; no-optimize *hl++|*hl-- = N
 	inc hl
-	ld [hl], LOW(PAL_MONOCHROME_LIGHT)
+	ld [hl], LOW(PAL_MONOCHROME_LIGHT) ; no-optimize *hl++|*hl-- = N
 	inc hl
 	ld [hl], HIGH(PAL_MONOCHROME_LIGHT)
 endc
@@ -1125,15 +1125,13 @@ _GetCursorMon:
 	call GetMonItemUnlessCursor
 	ld [hl], -1
 	jr z, .item_icon_done
-
-	ld [hl], 40
-	inc hl
-	ld [hl], 72
-	inc hl
-	inc hl
+	ld a, 40
+	ld [hli], a
+	ld a, 72
+	ld [hli], a
+	ld a, $20
+	ld [hli], a
 	ld [hl], VRAM_BANK_1
-	dec hl
-	ld [hl], $20
 .item_icon_done
 
 	ld b, 0
@@ -2325,12 +2323,12 @@ BillsPC_MoveItem:
 
 	; Load held item icon
 	ld hl, wVirtualOAMSprite31
-	ld [hl], 32
-	inc hl
-	ld [hl], 72
-	inc hl
-	ld [hl], $06
-	inc hl
+	ld a, 32
+	ld [hli], a
+	ld a, 72
+	ld [hli], a
+	ld a, $06
+	ld [hli], a
 	ld [hl], VRAM_BANK_1 | PAL_CURSOR_MODE2
 
 	; Load held item name

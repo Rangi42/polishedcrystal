@@ -1135,15 +1135,16 @@ SendInUserPkmn:
 	call GetBattleVarAddr
 	res SUBSTATUS_ENDURE, [hl]
 	res SUBSTATUS_PROTECT, [hl]
-	inc hl ; substatus2
+	inc hl
+	; substatus2
 	ld a, 1 << SUBSTATUS_LOCK_ON ; only flag here that should be preserved
 	and [hl]
-	ld [hl], a
-	inc hl ; substatus3
+	ld [hli], a
+	; substatus3
 	ld a, 1 << SUBSTATUS_CONFUSED ; only flag here that should be preserved
 	and [hl]
-	ld [hl], a
-	inc hl ; substatus4
+	ld [hli], a
+	; substatus4
 	ld a, ~(1 << SUBSTATUS_RAGE | 1 << SUBSTATUS_FLINCHED | 1 << SUBSTATUS_CURLED)
 	and [hl]
 	ld [hl], a
@@ -2312,10 +2313,10 @@ AddBattleMoneyToAccount:
 	ld a, [hl]
 	sbc LOW(9999999 / $10000)
 	ret c
-	ld [hl], LOW(9999999 / $10000)
-	inc hl
-	ld [hl], LOW(9999999 / $100)
-	inc hl
+	ld a, LOW(9999999 / $10000)
+	ld [hli], a
+	ld a, LOW(9999999 / $100)
+	ld [hli], a
 	ld [hl], LOW(9999999)
 	ret
 
@@ -3639,10 +3640,15 @@ DrawPlayerHUD:
 	xor a
 	ldh [hBGMapMode], a
 
-	; Clear the area
 	farcall ClearPlayerHUD
 
-	farcall DrawPlayerHUDBorder
+	; DrawPlayerHUDBorder
+	hlcoord 19, 11
+	ld [hl], "<XPEND>"
+	hlcoord 10, 11
+	ld a, "<XP1>"
+	ld [hli], a
+	ld [hl], "<XP2>"
 
 	call PrintPlayerHUD
 
@@ -3669,8 +3675,8 @@ DrawPlayerHUD:
 	; Status icon
 	farcall LoadPlayerStatusIcon
 	hlcoord 12, 8
-	ld [hl], $55
-	inc hl
+	ld a, $55
+	ld [hli], a
 	ld [hl], $56
 	jp FinishBattleAnim
 
@@ -3896,8 +3902,8 @@ endr
 
 	farcall LoadEnemyStatusIcon
 	hlcoord 2, 1
-	ld [hl], $57
-	inc hl
+	ld a, $57
+	ld [hli], a
 	ld [hl], $58
 	jp FinishBattleAnim
 
@@ -5260,10 +5266,9 @@ MoveInfoBox:
 
 .PrintPP:
 	hlcoord 2, 11
-rept 2
-	ld [hl], "<BOLDP>"
-	inc hl
-endr
+	ld a, "<BOLDP>"
+	ld [hli], a
+	ld [hli], a
 	inc hl
 	push hl
 	ld de, wStringBuffer1
@@ -5272,8 +5277,8 @@ endr
 	pop hl
 	inc hl
 	inc hl
-	ld [hl], "/"
-	inc hl
+	ld a, "/"
+	ld [hli], a
 	ld de, wNamedObjectIndexBuffer
 	lb bc, 1, 2
 	jp PrintNum

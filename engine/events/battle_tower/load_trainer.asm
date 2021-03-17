@@ -317,8 +317,8 @@ BT_GetSetTable:
 	ld a, c
 	and %11
 	ld [hli], a
-	ld [hl], -1 ; pick a random number within a set
-	inc hl
+	ld a, -1 ; pick a random number within a set
+	ld [hli], a
 	srl c
 	srl c
 	dec b

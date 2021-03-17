@@ -74,11 +74,13 @@ Init::
 	ldh [rLCDC], a
 
 ; Clear WRAM bank 0
+; Can't use rst ByteFill since we haven't initialized sp yet,
+; and wStack is part of WRAM0.
 	ld hl, wRAM0Start
 	ld bc, wRAM0End - wRAM0Start
 .ByteFill:
-	ld [hl], 0
-	inc hl
+	xor a
+	ld [hli], a
 	dec bc
 	ld a, b
 	or c

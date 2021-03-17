@@ -2101,10 +2101,9 @@ CopyTempObjectData:
 ; -1, -1, [de], [de + 1], [de + 2], [hMapObjectIndexBuffer], [NextMapX], [NextMapY], -1
 ; This spawns the object at the same place as whichever object is loaded into bc.
 	ld hl, wTempObjectCopyMapObjectIndex
-	ld [hl], -1
-	inc hl
-	ld [hl], -1
-	inc hl
+	ld a, -1
+	ld [hli], a
+	ld [hli], a
 	ld a, [de]
 	inc de
 	ld [hli], a

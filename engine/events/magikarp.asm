@@ -85,13 +85,13 @@ PrintMagikarpLength:
 	call PrintNum
 	dec hl
 	ld a, [hl]
-	ld [hl], "."
+	ld [hl], "." ; no-optimize *hl++|*hl-- = N
 	inc hl
 	ld [hli], a
-	ld [hl], "c"
-	inc hl
-	ld [hl], "m"
-	inc hl
+	ld a, "c"
+	ld [hli], a
+	ld a, "m"
+	ld [hli], a
 	ld [hl], "@"
 	ret
 
@@ -156,13 +156,13 @@ PrintMagikarpLength:
 	ld de, wMagikarpLengthMmHi
 	lb bc, PRINTNUM_LEFTALIGN | 1, 2
 	call PrintNum
-	ld [hl], "′"
-	inc hl
+	ld a, "′"
+	ld [hli], a
 	ld de, wMagikarpLengthMmLo
 	lb bc, PRINTNUM_LEFTALIGN | 1, 2
 	call PrintNum
-	ld [hl], "″"
-	inc hl
+	ld a, "″"
+	ld [hli], a
 	ld [hl], "@"
 	ret
 

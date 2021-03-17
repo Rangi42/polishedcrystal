@@ -83,10 +83,11 @@ ResetWRAM_NotPlus:
 	call CloseSRAM
 
 	ld hl, wMoney
-	ld [hl], LOW(START_MONEY / $10000)
-	inc hl
-	ld [hl], LOW(START_MONEY / $100)
-	inc hl
+	xor a
+	assert START_MONEY < $10000
+	ld [hli], a
+	ld a, HIGH(START_MONEY)
+	ld [hli], a
 	ld [hl], LOW(START_MONEY)
 	ret
 
@@ -209,10 +210,11 @@ endr
 	ld [wWhichMomItem], a
 
 	ld hl, wMomItemTriggerBalance
-	ld [hl], LOW(MOM_MONEY / $10000)
-	inc hl
-	ld [hl], LOW(MOM_MONEY / $100)
-	inc hl
+	xor a
+	assert MOM_MONEY < $10000
+	ld [hli], a
+	ld a, HIGH(MOM_MONEY)
+	ld [hli], a
 	ld [hl], LOW(MOM_MONEY)
 
 	call InitializeNPCNames
@@ -553,8 +555,8 @@ Continue_DisplayGameTime:
 	ld de, wGameTimeHours
 	lb bc, 2, 3
 	call PrintNum
-	ld [hl], ":"
-	inc hl
+	ld a, ":"
+	ld [hli], a
 	ld de, wGameTimeMinutes
 	lb bc, PRINTNUM_LEADINGZEROS | 1, 2
 	jp PrintNum

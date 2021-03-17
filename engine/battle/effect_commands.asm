@@ -4281,9 +4281,9 @@ SelfInflictDamageToSubstitute:
 
 	ld hl, wCurDamage
 	ld a, [hl]
-	ld [hl], 0
-	inc hl
 	and a
+	ld a, 0
+	ld [hli], a
 	jr nz, .broke
 
 	ld a, [de]

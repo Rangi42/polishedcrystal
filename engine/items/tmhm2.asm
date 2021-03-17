@@ -209,8 +209,8 @@ TMHM_DisplayPocketItems:
 	push af
 	sub NUM_TMS
 	ld [wd265], a
-	ld [hl], "H"
-	inc hl
+	ld a, "H"
+	ld [hli], a
 	ld de, wd265
 	lb bc, PRINTNUM_LEFTALIGN | 1, 2
 	call PrintNum

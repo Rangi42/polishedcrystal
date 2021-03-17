@@ -87,16 +87,13 @@ _PrepMonFrontpic:
 
 PrintLevel::
 ; Print wTempMonLevel at hl
-
-	ld a, [wTempMonLevel]
-	ld [hl], "<LV>"
-	inc hl
-
+	ld a, "<LV>"
+	ld [hli], a
 ; How many digits?
 	ld c, 2
+	ld a, [wTempMonLevel]
 	cp 100
 	jr c, Print8BitNumRightAlign
-
 ; 3-digit numbers overwrite the :L.
 	dec hl
 	inc c
