@@ -17,7 +17,7 @@ GetName::
 	push af
 
 	ld a, [wNamedObjectTypeBuffer]
-	cp PKMN_NAME
+	cp MON_NAME
 	jr nz, .NotPokeName
 
 	ld a, [wCurSpecies]
@@ -43,7 +43,6 @@ GetName::
 	ld h, [hl]
 	ld l, a
 	ld a, [wCurSpecies]
-	dec a
 	call GetNthString
 	ld de, wStringBuffer1
 	ld bc, ITEM_NAME_LENGTH
@@ -97,23 +96,21 @@ GetBasePokemonName::
 	ret
 
 GetPokemonName::
-	ld de, wStringBuffer1
-_GetPokemonName::
 ; Get Pokemon name wNamedObjectIndexBuffer.
-	ldh a, [hROMBank]
-	push af
 	push hl
-	ld a, BANK(PokemonNames)
-	push de
-	rst Bankswitch
 
 ; Each name is ten characters
+	push bc
 	ld a, [wNamedObjectIndexBuffer]
-	dec a
-	ld d, 0
-	ld e, a
-	ld h, 0
-	ld l, a
+	ld c, a
+	ld a, [wCurForm]
+	ld b, a
+	call GetExtendedSpeciesIndex
+	ld d, b
+	ld e, c
+	pop bc
+	ld h, d
+	ld l, e
 	add hl, hl ; hl = hl * 4
 	add hl, hl ; hl = hl * 4
 	add hl, de ; hl = (hl*4) + de
@@ -122,18 +119,17 @@ _GetPokemonName::
 	add hl, de
 
 ; Terminator
-	pop de
+	ld de, wStringBuffer1
 	push de
 	ld bc, MON_NAME_LENGTH - 1
-	rst CopyBytes
+	ld a, BANK(PokemonNames)
+	call FarCopyBytes
 	ld h, d
 	ld l, e
 	ld [hl], "@"
 	pop de
 
 	pop hl
-	pop af
-	rst Bankswitch
 	ret
 
 GetCurItemName::

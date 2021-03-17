@@ -6,11 +6,7 @@ ENDM
 
 commandx: MACRO
 	enum \1_command
-\1_macro: MACRO
-	db \1
-	db \2
-ENDM
-\1 equs "\1_macro \1_command,"
+\1 equs "db \1_command,"
 	dw BattleCommand_\1
 ENDM
 
@@ -113,6 +109,7 @@ BattleCommandPointers:
 	command startrain
 	command startsun
 	command effectchance
+	command selfeffectchance
 	command switchturn
 	command bellydrum
 	command rage

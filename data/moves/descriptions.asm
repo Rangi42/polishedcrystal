@@ -170,7 +170,7 @@ MoveDescriptions::
 	dw WillOWispDescription
 	dw ZenHeadbuttDescription
 	dw FacadeDescription
-	dw FlameWheelDescription
+	dw FlameChargeDescription
 	dw HyperVoiceDescription
 	dw CurseDescription
 	dw GyroBallDescription
@@ -346,7 +346,6 @@ GunkShotDescription:
 EmberDescription:
 FlamethrowerDescription:
 FireBlastDescription:
-FlameWheelDescription:
 SacredFireDescription:
 ScaldDescription:
 	db   "An attack that may"
@@ -389,6 +388,10 @@ MetalClawDescription:
 SteelWingDescription:
 	db   "An attack that may"
 	next "up user's Defense.@"
+
+FlameChargeDescription:
+	db   "An attack that may"
+	next "up user's Speed.@"
 
 AncientpowerDescription:
 	db   "An attack that may"

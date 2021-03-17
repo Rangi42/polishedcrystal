@@ -1,3 +1,4 @@
+; Cries indexes (see audio/cry_pointers.asm)
 	const_def
 
 ; gen 1
@@ -71,3 +72,5 @@
 	const CRY_TYROGUE
 	const CRY_DUNSPARCE
 	const CRY_DONPHAN
+
+NUM_CRIES EQU const_value

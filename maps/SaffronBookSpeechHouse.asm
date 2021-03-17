@@ -1,21 +1,21 @@
 SaffronBookSpeechHouse_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event  2,  7, SAFFRON_CITY, 18
 	warp_event  3,  7, SAFFRON_CITY, 18
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 2 ; bg events
-	bg_event  5,  1, SIGNPOST_JUMPSTD, picturebookshelf
-	bg_event  7,  1, SIGNPOST_JUMPSTD, difficultbookshelf
+	def_bg_events
+	bg_event  5,  1, BGEVENT_JUMPSTD, picturebookshelf
+	bg_event  7,  1, BGEVENT_JUMPSTD, difficultbookshelf
 
-	db 2 ; object events
-	object_event  2,  3, SPRITE_CUTE_GIRL, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_PURPLE, PERSONTYPE_COMMAND, jumptextfaceplayer, SaffronBookSpeechHouseLassText, -1
-	object_event  3,  3, SPRITE_BOOK_PAPER_POKEDEX, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptext, SaffronBookSpeechHouseBookText, -1
+	def_object_events
+	object_event  2,  3, SPRITE_CUTE_GIRL, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_PURPLE, OBJECTTYPE_COMMAND, jumptextfaceplayer, SaffronBookSpeechHouseLassText, -1
+	object_event  3,  3, SPRITE_BOOK_PAPER_POKEDEX, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptext, SaffronBookSpeechHouseBookText, -1
 
 SaffronBookSpeechHouseLassText:
 	text "I absolutely love"

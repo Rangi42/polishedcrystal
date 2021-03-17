@@ -1,16 +1,16 @@
 AskRememberPassword:
 	lb bc, 14, 7
-	push bc
 	ld hl, YesNoMenuDataHeader
-	call CopyMenuDataHeader
+	push bc
+	call CopyMenuHeader
 	pop bc
 	ld a, b
 	ld [wMenuBorderLeftCoord], a
-	add $5
+	add 5
 	ld [wMenuBorderRightCoord], a
 	ld a, c
 	ld [wMenuBorderTopCoord], a
-	add $4
+	add 4
 	ld [wMenuBorderBottomCoord], a
 	call PushWindow
 	call VerticalMenu

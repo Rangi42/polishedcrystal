@@ -25,21 +25,17 @@ The final, non-beta 3.0 release should include all of these.
 * Variety Channel with daily unique music
 * Separate radio channels for March and Lullaby, available every day
 * Send gift Pokémon to the PC if the party is full
-* Generate Battle Tower Pokémon
 * Generate random team for Psychic Inver
 * Wild Ghosts and the SilphScope2
 * More location-unique wild moves (see [material/moves.txt](material/moves.txt))
 * Finish wild rosters
 * DVs to vary palettes for trainers' duplicate Pokémon (e.g. Clair's Dragonairs)
-* Encounter both kinds of regional Arboks in Route 28 + Mt. Silver
 * Complete Alolan and Galarian forms
    * Persian as a one-time trade from an Alolan tourist (you can breed it for more)
    * Rattata/Raticate in Kanto
    * Grimer/Muk in Goldenrod City (Celadon's Muk are a sign of its pollution, Goldenrod's Alolan Muk would be a sign that they manage pollution better)
    * Sandshrew/Sandslash and Vulpix/Ninetales in the Ice Path and/or Seafoam Islands
-   * Diglett/Dugtrio on Cinnabar Island (right now I replaced all Diglett with the Alolan ones, with the explanation that the volcano affected climate everywhere, but I'd rather have the ones in Diglett's Cave be normal)
-   * Geodude/Graveler/Golem in Rock Tunnel (the Lodestone there is already used to evolve Magnezone)
-   * Marowak, Exeggutor, and Raichu evolve while holding the Odd Souvenir (bought on Shamouti Island)
+   * Marowak, Exeggutor, and Raichu evolve while holding the Odd Souvenir
    * Ponyta/Rapidash on Shamouti Island
    * Corsola/Cursola in Scary Cave
    * Farfetch'd/Sirfetch'd instead of non-faithful Farfetch'd
@@ -66,7 +62,7 @@ The final, non-beta 3.0 release should include all of these.
 * Replace Skyla with Marlon (team: Politoed, Tentacruel, Blastoise, Starmie, Mantine, Cloyster, Vaporeon)
 * Nurse trainer class (heals you afterwards)
 * Gambler trainer class (uses Game Corner mons)
-* Soldier trainer class (in Lt. Surge's Gym)
+* Soldier trainer class (in Lt. Surge's Gym; also ones elsewhere with Remoraid, Octillery, Forretress, Skarmory, Electrode, Donphan)
 
 Shamouti Island:
 
@@ -95,11 +91,13 @@ Shamouti Island:
 * Shamouti Island
 * Shamouti Hotel (haunted room) (EVENT_SAW_HAUNTED_ROOM)
 * Shamouti Restaurant (works like Seven Stars Restaurant) (different subset of all trainers every day of the week)
+  - Should award Odd Souvenir to make it a renewable reward
 
 
 ### Optimizations
 
 * Optimize map scripts with the various new commands and PERSONTYPE_GENERICTRAINER
+* Phone uses a bitfield to allow storing all numbers
 
 
 ## Postponed until 4.0
@@ -178,7 +176,6 @@ Some of these may never be added; they're just suggestions.
 * More Orange Islands
 * Add [Sweet Honey](http://iimarck.us/i/sweet-honey/) that acts like Sweet Scent and attracts rare Pokémon
 * First Pokémon walks behind you ([comet's prototype](https://hax.iimarck.us/topic/6248/) and [diff](https://github.com/yenatch/pokecrystal/commit/dbc5cd2025a0214c5b2cd1e3330f50603a0bb9d1))
-* Evening (intervals: morn 4–11, day 11–6, eve 6–9, nite 9–4)
 * Seasons with appropriate day/night lengths from B/W (affects palettes, tiles, wild Pokémon, dialog, accessible areas, etc)
 * Dive areas
 * Rock Climb areas
@@ -192,11 +189,9 @@ Some of these may never be added; they're just suggestions.
 * Restore [unused memory game](http://iimarck.us/i/memory/) ([more info](https://tcrf.net/Pok%C3%A9mon_Gold_and_Silver#Unused_Memory_Game))
 * Restore the Pikachu's Beach minigame
 * Level ranges for wild Pokémon, instead of single values
-* Use the News Machine for something (Mystery Gift?)
 * Championship title defense like in Gen VII (challengers: rival, Lyra, Lance, Prof.Oak, Prof.Elm, Clair, Blue, Eusine, Kimono Girl Naoko, Palmer, Lorelei, Agatha, Steven, Cynthia, Caitlin, and Lawrence)
-* Phone uses a bitfield to allow storing all numbers
 * Make more trainers rematchable
-* Allow evolution during battle
+* Allow evolution during battle (optional)
 * Battle [En and Madoka](http://bulbapedia.bulbagarden.net/wiki/The_Legendary_Rotation_Battle!) somewhere (Trainer House after catching the legendary trios, different trainer each day?)
    * Madoka:
    * She entered this tournament with new Pokémon! Which Pokémon wil she use?

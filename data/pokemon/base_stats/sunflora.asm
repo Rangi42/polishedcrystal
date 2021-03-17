@@ -1,8 +1,8 @@
 if DEF(FAITHFUL)
-	db  75,  75,  55,  30, 105,  85
+	db  75,  75,  55,  30, 105,  85 ; 425 BST
 	;   hp  atk  def  spd  sat  sdf
 else
-	db  75,  55,  75,  85, 105,  85
+	db  75,  55,  75,  85, 105,  85 ; 480 BST
 	;   hp  atk  def  spd  sat  sdf
 endc
 
@@ -24,17 +24,14 @@ endc
 	db NO_ITEM ; item 1
 	db NO_ITEM ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
-	dn 6, 6 ; frontpic dimensions
-	db CHLOROPHYLL ; ability 1
-	db SOLAR_POWER ; ability 2
-	db EARLY_BIRD ; hidden ability
+	INCBIN "gfx/pokemon/sunflora/front.dimensions"
+	abilities_for SUNFLORA, CHLOROPHYLL, SOLAR_POWER, EARLY_BIRD
 	db MEDIUM_SLOW ; growth rate
 	dn PLANT, PLANT ; egg groups
 
-	; ev_yield
 	ev_yield   0,   0,   0,   0,   2,   0
 	;         hp, atk, def, spd, sat, sdf
 
 	; tmhm
-	tmhm CURSE, TOXIC, HIDDEN_POWER, SUNNY_DAY, HYPER_BEAM, LIGHT_SCREEN, PROTECT, GIGA_DRAIN, SAFEGUARD, SOLAR_BEAM, RETURN, DOUBLE_TEAM, FLAMETHROWER, SLUDGE_BOMB, FIRE_BLAST, SUBSTITUTE, FACADE, REST, ATTRACT, ENERGY_BALL, ENDURE, GIGA_IMPACT, FLASH, SWORDS_DANCE, CUT, DEFENSE_CURL, DOUBLE_EDGE, EARTH_POWER, ROLLOUT, SEED_BOMB, SLEEP_TALK, SWAGGER
+	tmhm CURSE, TOXIC, HIDDEN_POWER, SUNNY_DAY, HYPER_BEAM, LIGHT_SCREEN, PROTECT, GIGA_DRAIN, SAFEGUARD, SOLAR_BEAM, RETURN, DOUBLE_TEAM, FLAMETHROWER, SLUDGE_BOMB, FIRE_BLAST, SUBSTITUTE, FACADE, REST, ATTRACT, ENERGY_BALL, GIGA_IMPACT, FLASH, SWORDS_DANCE, CUT, DEFENSE_CURL, DOUBLE_EDGE, EARTH_POWER, ENDURE, ROLLOUT, SEED_BOMB, SLEEP_TALK, SWAGGER
 	; end

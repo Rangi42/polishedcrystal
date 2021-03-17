@@ -2748,10 +2748,10 @@ Sfx_3RdPlace:
 	endchannel
 
 
-SECTION "Sfx_GetEggFromDaycareLady", ROMX
+SECTION "Sfx_GetEggFromDayCareLady", ROMX
 
-Sfx_GetEggFromDaycareLady:
-Sfx_GetEggFromDaycareMan:
+Sfx_GetEggFromDayCareLady:
+Sfx_GetEggFromDayCareMan:
 	musicheader 4, 5, .Ch5
 	musicheader 1, 6, .Ch6
 	musicheader 1, 7, .Ch7

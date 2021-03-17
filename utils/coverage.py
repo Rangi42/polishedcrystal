@@ -43,7 +43,7 @@ def main():
 			if s['beg'] > s['end']:
 				continue
 			if s['beg'] == 0x0000 and s['end'] > 0xFFFF:
-				# https://github.com/rednex/rgbds/issues/515
+				# https://github.com/gbdev/rgbds/issues/515
 				continue
 			beg = s['beg'] & bank_mask
 			end = s['end'] & bank_mask

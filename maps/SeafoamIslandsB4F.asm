@@ -1,9 +1,9 @@
 SeafoamIslandsB4F_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 6 ; warp events
+	def_warp_events
 	warp_event  3,  3, SEAFOAM_ISLANDS_B3F, 5
 	warp_event  7, 11, SEAFOAM_ISLANDS_B3F, 6
 	warp_event 25,  7, SEAFOAM_ISLANDS_B3F, 7
@@ -11,18 +11,18 @@ SeafoamIslandsB4F_MapScriptHeader:
 	warp_event 31, 13, SEAFOAM_ISLANDS_B3F, 9
 	warp_event 37, 13, SEAFOAM_ISLANDS_B3F, 10
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 0 ; bg events
+	def_bg_events
 
-	db 5 ; object events
-	object_event 22, 13, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, ARTICUNO, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, SeafoamIslandsArticuno, EVENT_SEAFOAM_ISLANDS_ARTICUNO
-	object_event 16, 16, SPRITE_LAPRAS, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LAWRENCE_FINAL_BIRD_SURF
-	object_event 21, 16, SPRITE_LAWRENCE, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LAWRENCE_FINAL_BIRD
+	def_object_events
+	object_event 22, 13, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, ARTICUNO, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, SeafoamIslandsArticuno, EVENT_SEAFOAM_ISLANDS_ARTICUNO
+	object_event 16, 16, SPRITE_LAPRAS, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_LAWRENCE_FINAL_BIRD_SURF
+	object_event 21, 16, SPRITE_LAWRENCE, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_LAWRENCE_FINAL_BIRD
 	itemball_event 33,  7, NEVERMELTICE, 1, EVENT_SEAFOAM_ISLANDS_B4F_NEVERMELTICE
 	itemball_event 23,  2, ULTRA_BALL, 1, EVENT_SEAFOAM_ISLANDS_B4F_ULTRA_BALL
 
-	const_def 1 ; object constants
+	object_const_def
 	const SEAFOAMISLANDSB4F_ARTICUNO
 	const SEAFOAMISLANDSB4F_LAWRENCE_SURF
 	const SEAFOAMISLANDSB4F_LAWRENCE
@@ -31,7 +31,7 @@ SeafoamIslandsB4FLawrenceEncounterScript:
 	showemote EMOTE_SHOCK, PLAYER, 15
 	special Special_FadeOutMusic
 	pause 15
-	checkcode VAR_FACING
+	readvar VAR_FACING
 	ifequal UP, .up
 	ifequal DOWN, .down
 	ifequal LEFT, .left
@@ -43,7 +43,7 @@ SeafoamIslandsB4FLawrenceEncounterScript:
 	appear SEAFOAMISLANDSB4F_LAWRENCE
 	applymovement SEAFOAMISLANDSB4F_LAWRENCE, SeafoamIslandsB4FMovementData_LawrenceApproach
 	turnobject PLAYER, DOWN
-	jump .continue
+	sjump .continue
 .up
 	moveobject SEAFOAMISLANDSB4F_LAWRENCE_SURF, 17, 16
 	appear SEAFOAMISLANDSB4F_LAWRENCE_SURF
@@ -54,7 +54,7 @@ SeafoamIslandsB4FLawrenceEncounterScript:
 	applymovement SEAFOAMISLANDSB4F_LAWRENCE, SeafoamIslandsB4FMovementData_LawrenceApproach
 	turnobject SEAFOAMISLANDSB4F_LAWRENCE, RIGHT
 	turnobject PLAYER, LEFT
-	jump .continue
+	sjump .continue
 .down
 	moveobject SEAFOAMISLANDSB4F_LAWRENCE_SURF, 17, 16
 	appear SEAFOAMISLANDSB4F_LAWRENCE_SURF
@@ -66,7 +66,7 @@ SeafoamIslandsB4FLawrenceEncounterScript:
 	applymovement SEAFOAMISLANDSB4F_LAWRENCE, SeafoamIslandsB4FMovementData_LawrenceContinueDown
 	turnobject SEAFOAMISLANDSB4F_LAWRENCE, RIGHT
 	turnobject PLAYER, LEFT
-	jump .continue
+	sjump .continue
 .left
 	moveobject SEAFOAMISLANDSB4F_LAWRENCE_SURF, 18, 16
 	appear SEAFOAMISLANDSB4F_LAWRENCE_SURF
@@ -102,13 +102,13 @@ SeafoamIslandsArticuno:
 	cry ARTICUNO
 	pause 15
 	closetext
-	loadwildmon ARTICUNO, 70
-	writecode VAR_BATTLETYPE, BATTLETYPE_LEGENDARY
+	loadwildmon ARTICUNO, 65
+	loadvar VAR_BATTLETYPE, BATTLETYPE_LEGENDARY
 	startbattle
 	disappear SEAFOAMISLANDSB4F_ARTICUNO
 	setevent EVENT_SEAFOAM_ISLANDS_ARTICUNO
 	reloadmapafterbattle
-	writebyte ARTICUNO
+	setval ARTICUNO
 	special SpecialMonCheck
 	iffalse .NoBlanche
 	setevent EVENT_CELADON_UNIVERSITY_BLANCHE
@@ -120,7 +120,7 @@ SeafoamIslandsArticuno:
 	iffalse .end
 	special SpecialBirdsCheck
 	iffalse .end
-	jump SeafoamIslandsB4FLawrenceEncounterScript
+	sjump SeafoamIslandsB4FLawrenceEncounterScript
 .end
 	end
 

@@ -22,7 +22,6 @@ GetFinalPkmnTextPointer::
 
 .nothing:
 	xor a
-	and a
 	ret
 
 .rival_or_lyra:

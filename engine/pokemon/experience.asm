@@ -2,7 +2,7 @@ CalcLevel:
 	ld a, [wTempMonSpecies]
 	ld [wCurSpecies], a
 	ld a, [wTempMonForm]
-	and FORM_MASK
+	and BASEMON_MASK
 	ld [wCurForm], a
 	call GetBaseData
 	ld d, 1
@@ -36,15 +36,16 @@ CalcLevel:
 CalcExpAtLevel:
 ; (a/b)*n**3 + c*n**2 + d*n - e
 	ld a, d
-	cp 1
+	dec a
 	jr nz, .UseExpFormula
 ; Pokémon have 0 experience at level 1
-	xor a
-	ldh [hProduct], a
-	ldh [hProduct + 1], a
-	ldh [hProduct + 2], a
-	ldh [hProduct + 3], a
+	ld hl, hProduct
+	ld [hli], a
+	ld [hli], a
+	ld [hli], a
+	ld [hl], a
 	ret
+
 .UseExpFormula
 	ld a, [wBaseGrowthRate]
 	add a

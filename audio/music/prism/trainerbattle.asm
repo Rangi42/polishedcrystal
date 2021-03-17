@@ -629,7 +629,7 @@ Music_TrainerBattlePrism_L8:
 	note A_, 2
 	octave 3
 	note D#, 2
-Music_TrainerBattlePrism_L9
+Music_TrainerBattlePrism_L9:
 	octave 2
 	note G_, 2
 	octave 3

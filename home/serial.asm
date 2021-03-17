@@ -141,20 +141,20 @@ Serial_ExchangeByte::
 	pop hl
 	call CheckwLinkTimeoutFramesNonzero
 	jr nz, .loop
-	jp SerialDisconnected
+	jr SerialDisconnected
 
 .doNotIncrementTimeoutCounter
 	ldh a, [rIE]
 	and 1 << SERIAL | 1 << TIMER | 1 << LCD_STAT | 1 << VBLANK
 	cp 1 << SERIAL
 	jr nz, .loop
-	ld a, [wcf5d]
+	ld a, [wLinkByteTimeout]
 	dec a
-	ld [wcf5d], a
+	ld [wLinkByteTimeout], a
 	jr nz, .loop
-	ld a, [wcf5d + 1]
+	ld a, [wLinkByteTimeout + 1]
 	dec a
-	ld [wcf5d + 1], a
+	ld [wLinkByteTimeout + 1], a
 	jr nz, .loop
 	ldh a, [hSerialConnectionStatus]
 	cp USING_EXTERNAL_CLOCK
@@ -174,9 +174,9 @@ Serial_ExchangeByte::
 	jr nz, .skipReloadingTimeoutCounter2
 
 	;xor a
-	ld [wcf5d], a
+	ld [wLinkByteTimeout], a
 	ld a, $50
-	ld [wcf5d + 1], a
+	ld [wLinkByteTimeout + 1], a
 
 .skipReloadingTimeoutCounter2
 	ldh a, [hSerialReceive]
@@ -231,11 +231,10 @@ SerialDisconnected::
 	ld [wLinkTimeoutFrames + 1], a
 	ret
 
-; This is used to exchange the button press and selected menu item on the link menu.
-; The data is sent thrice and read twice to increase reliability.
-Serial_ExchangeLinkMenuSelection::
-	ld hl, wPlayerLinkAction
-	ld de, wOtherPlayerLinkMode
+; This is used to check that both players entered the same Cable Club room.
+Serial_ExchangeSyncBytes::
+	ld hl, wLinkPlayerSyncBuffer
+	ld de, wLinkReceivedSyncBuffer
 	ld c, $2
 	ld a, $1
 	ldh [hSerialIgnoringInitialData], a
@@ -272,7 +271,7 @@ PlaceWaitingText::
 	and a
 	jr z, .notinbattle
 
-	call TextBox
+	call Textbox
 	jr .proceed
 
 .notinbattle

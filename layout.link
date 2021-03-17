@@ -1,0 +1,290 @@
+ROM0
+	org $0000
+	"NULL"
+	org $0000
+	"rst00 EntryPoint"
+	org $0008
+	"rst08 FarCall"
+	org $0010
+	"rst10 Bankswitch"
+	org $0018
+	"rst18 AddNTimes"
+	org $0020
+	"rst20 CopyBytes"
+	org $0028
+	"rst28 ByteFill"
+	org $0030
+	"rst30 PlaceString"
+	org $0038
+	"rst38 Predef"
+	org $0040
+	"vblank"
+	org $0048
+	"lcd"
+	org $0050
+	"timer"
+	org $0058
+	"serial"
+;	org $0060
+;	"joypad"
+	org $005b
+	"High Home"
+	org $0100
+	"Header"
+	org $0150
+	"Home"
+
+ROMX $01
+	"bank1"
+	"Effect Command Pointers"
+
+ROMX $02
+	"bank2"
+	"Trainer Pic Pointers"
+
+ROMX $03
+	"bank3"
+
+ROMX $04
+	"bank4"
+
+ROMX $05
+	"bank5"
+
+ROMX $06
+	"Evolution"
+	"Evolutions and Attacks"
+
+ROMX $07
+	"Enemy Trainer Parties"
+
+ROMX $08
+	"Clock Reset"
+	"Egg Moves"
+
+ROMX $09
+	"bank9"
+
+ROMX $0A
+	"bankA"
+
+ROMX $0B
+	"bankB"
+
+ROMX $0C
+	"Wild Data"
+
+ROMX $0D
+	"Effect Commands"
+
+ROMX $0E
+	"Enemy Trainers"
+
+ROMX $0F
+	"Battle Core"
+
+ROMX $10
+	"Pokedex"
+
+ROMX $11
+	"bank11"
+
+ROMX $12
+	"Crystal Features 1"
+
+ROMX $13
+	"bank13"
+	"Tileset Headers"
+
+ROMX $14
+	"bank14"
+
+ROMX $15
+	"Moves"
+
+ROMX $20
+	"bank20"
+
+ROMX $21
+	"bank21"
+
+ROMX $22
+	"Crystal Features 2"
+
+ROMX $23
+	"bank23"
+
+ROMX $24
+	"bank24"
+	"Special Map Scripts"
+
+ROMX $25
+	"Map Headers"
+	"Events"
+
+ROMX $26
+	"Second Map Headers"
+
+ROMX $27
+	"Special Map Blockdata"
+	"Pokemon Center Scripts 4"
+
+ROMX $28
+	"Phone Scripts"
+
+ROMX $29
+	"New Bark Scripts"
+
+ROMX $2A
+	"New Bark Scripts 2"
+
+ROMX $2B
+	"Pokemon Center Scripts 1"
+
+ROMX $2C
+	"Pokemon Center Scripts 2"
+
+ROMX $2D
+	"Pokemon Center Scripts 3"
+
+ROMX $2E
+	"bank2E"
+
+ROMX $2F
+	"Phone Scripts 2"
+
+ROMX $30
+	"Battle Tower Scripts"
+
+ROMX $31
+	"Battle Tower Text"
+
+ROMX $32
+	"bank32"
+
+ROMX $33
+	"Move Animations"
+
+ROMX $34
+	"Pic Animations"
+
+ROMX $35
+	"Pic Animations Frames 1"
+
+ROMX $36
+	"Pic Animations Frames 2"
+
+ROMX $37
+	"Pic Animations Bitmasks"
+
+ROMX $38
+	"bank38"
+
+ROMX $39
+	"bank39"
+
+ROMX $3E
+	"bank3E"
+
+ROMX $3F
+	"bank3F"
+
+ROMX $3A
+	"Audio"
+
+ROMX $3C
+	"Cries"
+
+ROMX $41
+	"bank41"
+
+ROMX $42
+	"Credits"
+
+ROMX $48
+	"Pic Pointers"
+
+VRAM $0
+	"VRAM0"
+
+VRAM $1
+	"VRAM1"
+
+WRAM0
+	org $c000
+	"Stack"
+	align 8
+	"Audio RAM"
+	"WRAM 0"
+	org $c308
+	"Sprite Animations"
+	"Music Player RAM"
+	org $c400
+	align 8
+	"Sprites"
+	org $c4a0
+	"Tilemap and Attrmap"
+	"Battle"
+	org $c960
+	"Overworld Map"
+	org $cee0
+	"Video"
+
+WRAMX $1
+	org $d000
+	"WRAM 1"
+	"Enemy Party"
+	"Game Data"
+	"Party"
+
+WRAMX $2
+	org $d000
+	"Pic Animations RAM"
+	align 8
+	"Sound Stack"
+
+WRAMX $3
+	org $d000
+	"Metatiles"
+
+WRAMX $4
+	org $d000
+	"Attributes"
+
+WRAMX $5
+	org $d000
+	"Collisions or Music Player"
+	org $d400
+	"Battle Animations RAM"
+	org $dd00
+	"GBC Video"
+
+WRAMX $6
+	org $d000
+	"Scratch RAM"
+
+WRAMX $7
+	org $d000
+	"Window Stack"
+
+SRAM $0
+	"Scratch"
+	"SRAM Bank 0"
+	org $b200
+	"Backup Save"
+
+SRAM $1
+	"Save"
+	"Active Box"
+	"Link Battle Data"
+	"SRAM Hall of Fame"
+	"SRAM Battle Tower"
+
+SRAM $2
+	"Boxes 1-7"
+
+SRAM $3
+	"Boxes 8-14"
+
+HRAM
+	"HRAM"

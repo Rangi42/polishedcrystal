@@ -1,21 +1,21 @@
 Route22_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 1 ; warp events
+	def_warp_events
 	warp_event  3,  5, POKEMON_LEAGUE_GATE, 1
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 1 ; bg events
-	bg_event  6,  6, SIGNPOST_JUMPTEXT, VictoryRoadEntranceSignText
+	def_bg_events
+	bg_event  6,  6, BGEVENT_JUMPTEXT, VictoryRoadEntranceSignText
 
-	db 2 ; object events
-	object_event 14, 11, SPRITE_KUKUI, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, KukuiScript, -1
-	object_event 20,  2, SPRITE_ACE_TRAINER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, Route22CooltrainerfText, -1
+	def_object_events
+	object_event 14, 11, SPRITE_KUKUI, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, KukuiScript, -1
+	object_event 20,  2, SPRITE_ACE_TRAINER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, Route22CooltrainerfText, -1
 
-	const_def 1 ; object constants
+	object_const_def
 	const ROUTE22_KUKUI
 
 KukuiScript:
@@ -26,7 +26,7 @@ KukuiScript:
 	checkevent EVENT_INTRODUCED_KUKUI
 	iftrue .Introduced
 	writetext .IntroText
-	jump .Question
+	sjump .Question
 .Introduced
 	writetext .RematchText
 .Question
@@ -40,7 +40,7 @@ KukuiScript:
 	checkevent EVENT_BEAT_ELITE_FOUR_AGAIN
 	iftrue .Rematch
 	loadtrainer KUKUI, 1
-	jump .StartBattle
+	sjump .StartBattle
 .Rematch
 	loadtrainer KUKUI, 2
 .StartBattle

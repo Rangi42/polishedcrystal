@@ -1,3 +1,5 @@
+; song ids
+; Music indexes (see audio/music_pointers.asm)
 	const_def
 	const MUSIC_NONE                           ; 00
 	const MUSIC_CRYSTAL_OPENING                ; 01
@@ -94,104 +96,106 @@
 	const MUSIC_POKEMON_TOWER_RBY              ; 5c
 	const MUSIC_LAVENDER_TOWN                  ; 5d
 	const MUSIC_KANTO_WILD_BATTLE              ; 5e
-	const MUSIC_CERULEAN_CITY_HGSS             ; 5f
-	const MUSIC_BICYCLE_RB                     ; 60
-	const MUSIC_NUGGET_BRIDGE_HGSS             ; 61
-	const MUSIC_MAGNET_TRAIN                   ; 62
-	const MUSIC_BLACK_CITY_BW                  ; 63
-	const MUSIC_POKEMON_LULLABY                ; 64
-	const MUSIC_CELADON_CITY                   ; 65
-	const MUSIC_GAME_CORNER_DPPT               ; 66
-	const MUSIC_CANALAVE_CITY_DPPT             ; 67
-	const MUSIC_BICYCLE_XY                     ; 68
-	const MUSIC_ROUTE_12                       ; 69
-	const MUSIC_POKE_FLUTE_CHANNEL             ; 6a
-	const MUSIC_ROUTE_209_DPPT                 ; 6b
-	const MUSIC_ROUTE_210_DPPT                 ; 6c
-	const MUSIC_ROUTE_225_DPPT                 ; 6d
-	const MUSIC_WILD_BATTLE_GO                 ; 6e
-	const MUSIC_DIGLETTS_CAVE_RBY              ; 6f
-	const MUSIC_VIRIDIAN_FOREST                ; 70
-	const MUSIC_HIKER_ENCOUNTER                ; 71
-	const MUSIC_VIRIDIAN_CITY                  ; 72
-	const MUSIC_ROUTE_3                        ; 73
-	const MUSIC_OFFICER_ENCOUNTER              ; 74
-	const MUSIC_MT_MOON                        ; 75
-	const MUSIC_MT_MOON_SQUARE                 ; 76
-	const MUSIC_ROUTE_1                        ; 77
-	const MUSIC_PALLET_TOWN                    ; 78
-	const MUSIC_PROF_OAK                       ; 79
-	const MUSIC_BEAUTY_ENCOUNTER               ; 7a
-	const MUSIC_KANTO_TRAINER_BATTLE           ; 7b
-	const MUSIC_CINNABAR_ISLAND_HGSS           ; 7c
-	const MUSIC_CINNABAR_MANSION_RBY           ; 7d
-	const MUSIC_TRAINER_BATTLE_DPPT            ; 7e
-	const MUSIC_SCARY_HOUSE_XY                 ; 7f
-	const MUSIC_ETERNA_FOREST_DPPT             ; 80
-	const MUSIC_MOUNT_CHIMNEY_RSE              ; 81
-	const MUSIC_MOUNT_PYRE_RSE                 ; 82
-	const MUSIC_BATTLE_TOWER_THEME             ; 83
-	const MUSIC_BATTLE_TOWER_LOBBY             ; 84
-	const MUSIC_TRAINER_BATTLE_BW              ; 85
-	const MUSIC_FRONTIER_BRAIN_BATTLE_RSE      ; 86
-	const MUSIC_ZINNIA_ENCOUNTER_ORAS          ; 87
-	const MUSIC_ROUTE_205_DPPT                 ; 88
-	const MUSIC_SURF_HOENN                     ; 89
-	const MUSIC_BICYCLE_RSE                    ; 8a
-	const MUSIC_WILD_BATTLE_SM                 ; 8b
-	const MUSIC_SUNYSHORE_CITY_DPPT            ; 8c
-	const MUSIC_TRAINER_BATTLE_SM              ; 8d
-	const MUSIC_ROUTE_203_DPPT                 ; 8e
-	const MUSIC_WHITE_TREEHOLLOW_W2            ; 8f
-	const MUSIC_LAVERRE_CITY_XY                ; 90
-	const MUSIC_ROUTE_101_RSE                  ; 91
-	const MUSIC_EVER_GRANDE_CITY_RSE           ; 92
-	const MUSIC_OREBURGH_GATE_DPPT             ; 93
-	const MUSIC_ROUTE_12_BW                    ; 94
-	const MUSIC_ROAD_TO_REVERSAL_MOUNTAIN_B2W2 ; 95
-	const MUSIC_ZINNIA_BATTLE_ORAS             ; 96
-	const MUSIC_WALLY_ENCOUNTER_ORAS           ; 97
-	const MUSIC_WALLY_BATTLE_ORAS              ; 98
-	const MUSIC_SPIKY_EARED_PICHU_HGSS         ; 99
-	const MUSIC_MOTHER_BEAST_BATTLE_SM         ; 9a
-	const MUSIC_FROST_CAVERN_XY                ; 9b
-	const MUSIC_POWER_PLANT_XY                 ; 9c
-	const MUSIC_REVERSAL_MOUNTAIN_W2           ; 9d
-	const MUSIC_METEOR_FALLS_RSE               ; 9e
-	const MUSIC_LUGIAS_SONG_2000               ; 9f
-	const MUSIC_LUGIA_BATTLE_HGSS              ; a0
-	const MUSIC_SUMMONING_DANCE_HGSS           ; a1
-	const MUSIC_HO_OH_BATTLE_HGSS              ; a2
-	const MUSIC_CERULEAN_CAVE_RBY              ; a3
-	const MUSIC_MEWTWO_BATTLE_STADIUM          ; a4
-	const MUSIC_ABANDONED_SHIP_RSE             ; a5
-	const MUSIC_KANTO_LEGEND_BATTLE_XY         ; a6
-	const MUSIC_GYM_LEADER_BATTLE_RSE          ; a7
-	const MUSIC_GYM_LEADER_BATTLE_DPPT         ; a8
-	const MUSIC_GYM_LEADER_BATTLE_BW           ; a9
-	const MUSIC_GYM_LEADER_BATTLE_XY           ; aa
-	const MUSIC_GYM_LEADER_BATTLE_GO           ; ab
-	const MUSIC_ELITE_FOUR_BATTLE_BW           ; ac
-	const MUSIC_CELESTIAL_TOWER_BW             ; ad
-	const MUSIC_CHAMPION_BATTLE_RSE            ; ae
-	const MUSIC_MOUNT_CORONET_DPPT             ; af
-	const MUSIC_CHAMPION_BATTLE_DPPT           ; b0
-	const MUSIC_WCS_BATTLE_BW                  ; b1
-	const MUSIC_CHAMPION_BATTLE_B2W2           ; b2
-	const MUSIC_CREDITS                        ; b3
-	const MUSIC_POST_CREDITS                   ; b4
-	const MUSIC_TITLE_XY                       ; b5
-	const MUSIC_DEWFORD_TOWN_RSE               ; b6 ; unused
-	const MUSIC_MARINE_TUBE_B2W2               ; b7 ; unused
-	const MUSIC_LEGENDARY_BATTLE_XY            ; b8 ; unused
-	const MUSIC_WILD_BATTLE_PRISM              ; b9 ; unused
-	const MUSIC_TRAINER_BATTLE_PRISM           ; ba ; unused
-	const MUSIC_GYM_LEADER_BATTLE_PRISM        ; bb ; unused
-	const MUSIC_PALETTE_BATTLE_PRISM           ; bc ; unused
-	const MUSIC_UNDERTALE_MEGALOVANIA          ; bd ; unused
-NUM_SONGS EQU const_value
+	const MUSIC_KANTO_WILD_BATTLE_NIGHT        ; 5f
+	const MUSIC_CERULEAN_CITY_HGSS             ; 60
+	const MUSIC_BICYCLE_RB                     ; 61
+	const MUSIC_NUGGET_BRIDGE_HGSS             ; 62
+	const MUSIC_MAGNET_TRAIN                   ; 63
+	const MUSIC_BLACK_CITY_BW                  ; 64
+	const MUSIC_POKEMON_LULLABY                ; 65
+	const MUSIC_CELADON_CITY                   ; 66
+	const MUSIC_GAME_CORNER_DPPT               ; 67
+	const MUSIC_CANALAVE_CITY_DPPT             ; 68
+	const MUSIC_BICYCLE_XY                     ; 69
+	const MUSIC_ROUTE_12                       ; 6a
+	const MUSIC_POKE_FLUTE_CHANNEL             ; 6b
+	const MUSIC_ROUTE_209_DPPT                 ; 6c
+	const MUSIC_ROUTE_210_DPPT                 ; 6d
+	const MUSIC_ROUTE_225_DPPT                 ; 6e
+	const MUSIC_WILD_BATTLE_GO                 ; 6f
+	const MUSIC_DIGLETTS_CAVE_RBY              ; 70
+	const MUSIC_VIRIDIAN_FOREST                ; 71
+	const MUSIC_HIKER_ENCOUNTER                ; 72
+	const MUSIC_VIRIDIAN_CITY                  ; 73
+	const MUSIC_ROUTE_3                        ; 74
+	const MUSIC_OFFICER_ENCOUNTER              ; 75
+	const MUSIC_MT_MOON                        ; 76
+	const MUSIC_MT_MOON_SQUARE                 ; 77
+	const MUSIC_ROUTE_1                        ; 78
+	const MUSIC_PALLET_TOWN                    ; 79
+	const MUSIC_PROF_OAK                       ; 7a
+	const MUSIC_BEAUTY_ENCOUNTER               ; 7b
+	const MUSIC_KANTO_TRAINER_BATTLE           ; 7c
+	const MUSIC_CINNABAR_ISLAND_HGSS           ; 7d
+	const MUSIC_CINNABAR_MANSION_RBY           ; 7e
+	const MUSIC_TRAINER_BATTLE_DPPT            ; 7f
+	const MUSIC_SCARY_HOUSE_XY                 ; 80
+	const MUSIC_ETERNA_FOREST_DPPT             ; 81
+	const MUSIC_MOUNT_CHIMNEY_RSE              ; 82
+	const MUSIC_MOUNT_PYRE_RSE                 ; 83
+	const MUSIC_BATTLE_TOWER_THEME             ; 84
+	const MUSIC_BATTLE_TOWER_LOBBY             ; 85
+	const MUSIC_BATTLE_FACTORY_RSE             ; 86
+	const MUSIC_TRAINER_BATTLE_BW              ; 87
+	const MUSIC_FRONTIER_BRAIN_BATTLE_RSE      ; 88
+	const MUSIC_ZINNIA_ENCOUNTER_ORAS          ; 89
+	const MUSIC_ROUTE_205_DPPT                 ; 8a
+	const MUSIC_SURF_HOENN                     ; 8b
+	const MUSIC_BICYCLE_RSE                    ; 8c
+	const MUSIC_WILD_BATTLE_SM                 ; 8d
+	const MUSIC_SUNYSHORE_CITY_DPPT            ; 8e
+	const MUSIC_TRAINER_BATTLE_SM              ; 8f
+	const MUSIC_ROUTE_203_DPPT                 ; 90
+	const MUSIC_WHITE_TREEHOLLOW_W2            ; 91
+	const MUSIC_LAVERRE_CITY_XY                ; 92
+	const MUSIC_ROUTE_101_RSE                  ; 93
+	const MUSIC_EVER_GRANDE_CITY_RSE           ; 94
+	const MUSIC_OREBURGH_GATE_DPPT             ; 95
+	const MUSIC_ROUTE_12_BW                    ; 96
+	const MUSIC_ROAD_TO_REVERSAL_MOUNTAIN_B2W2 ; 97
+	const MUSIC_ZINNIA_BATTLE_ORAS             ; 98
+	const MUSIC_WALLY_ENCOUNTER_ORAS           ; 99
+	const MUSIC_WALLY_BATTLE_ORAS              ; 9a
+	const MUSIC_SPIKY_EARED_PICHU_HGSS         ; 9b
+	const MUSIC_MOTHER_BEAST_BATTLE_SM         ; 9c
+	const MUSIC_FROST_CAVERN_XY                ; 9d
+	const MUSIC_POWER_PLANT_XY                 ; 9e
+	const MUSIC_REVERSAL_MOUNTAIN_W2           ; 9f
+	const MUSIC_METEOR_FALLS_RSE               ; a0
+	const MUSIC_LUGIAS_SONG_2000               ; a1
+	const MUSIC_LUGIA_BATTLE_HGSS              ; a2
+	const MUSIC_SUMMONING_DANCE_HGSS           ; a3
+	const MUSIC_HO_OH_BATTLE_HGSS              ; a4
+	const MUSIC_CERULEAN_CAVE_RBY              ; a5
+	const MUSIC_MEWTWO_BATTLE_STADIUM          ; a6
+	const MUSIC_ABANDONED_SHIP_RSE             ; a7
+	const MUSIC_KANTO_LEGEND_BATTLE_XY         ; a8
+	const MUSIC_GYM_LEADER_BATTLE_RSE          ; a9
+	const MUSIC_GYM_LEADER_BATTLE_DPPT         ; aa
+	const MUSIC_GYM_LEADER_BATTLE_BW           ; ab
+	const MUSIC_GYM_LEADER_BATTLE_XY           ; ac
+	const MUSIC_GYM_LEADER_BATTLE_GO           ; ad
+	const MUSIC_ELITE_FOUR_BATTLE_BW           ; ae
+	const MUSIC_CELESTIAL_TOWER_BW             ; af
+	const MUSIC_CHAMPION_BATTLE_RSE            ; b0
+	const MUSIC_MOUNT_CORONET_DPPT             ; b1
+	const MUSIC_CHAMPION_BATTLE_DPPT           ; b2
+	const MUSIC_WCS_BATTLE_BW                  ; b3
+	const MUSIC_CHAMPION_BATTLE_B2W2           ; b4
+	const MUSIC_CREDITS                        ; b5
+	const MUSIC_POST_CREDITS                   ; b6
+	const MUSIC_TITLE_XY                       ; b7
+	const MUSIC_DEWFORD_TOWN_RSE               ; b8 ; unused
+	const MUSIC_MARINE_TUBE_B2W2               ; b9 ; unused
+	const MUSIC_LEGENDARY_BATTLE_XY            ; ba ; unused
+	const MUSIC_WILD_BATTLE_PRISM              ; bb ; unused
+	const MUSIC_TRAINER_BATTLE_PRISM           ; bc ; unused
+	const MUSIC_GYM_LEADER_BATTLE_PRISM        ; bd ; unused
+	const MUSIC_PALETTE_BATTLE_PRISM           ; be ; unused
+	const MUSIC_UNDERTALE_MEGALOVANIA          ; bf ; unused
+NUM_MUSIC_SONGS EQU const_value
 
-; special
-MUSIC_RADIO_TOWER EQU -1
+; GetMapMusic picks music for these values (see data/maps/special_map_music.asm)
+MUSIC_RADIO_TOWER   EQU -1
 MUSIC_MAHOGANY_MART EQU -2
-MUSIC_LAVENDER EQU -3
+MUSIC_LAVENDER      EQU -3

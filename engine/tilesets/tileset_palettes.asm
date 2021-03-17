@@ -3,6 +3,7 @@
 	const PAL_FOR_LANDMARK
 	const PAL_FOR_TILESET
 	const PAL_FOR_OVERCAST
+	const PAL_FOR_DARKNESS
 
 	const_def 1
 	const PAL_SINGLE
@@ -22,15 +23,6 @@ LoadLinkTradePalette:
 	jp FarCopyColorWRAM
 
 LoadSpecialMapPalette:
-; Don't load a special palette if it's dark and we haven't used Flash.
-	call GetMapHeaderTimeOfDayNybble
-	cp PALETTE_DARK
-	jr nz, .not_dark
-	ld a, [wStatusFlags]
-	bit 2, a ; Flash
-	jr z, .not_special
-
-.not_dark
 ; Load a special map, landmark, or tileset palette if one applies.
 	call InitializeSpecialPaletteRegisters
 	ld hl, SpecialBGPalettes
@@ -99,7 +91,6 @@ PokeCenterSpecialCase:
 	ret
 
 MartSpecialCase:
-	GLOBAL GenericMart_BlockData
 	ld hl, MartPalette
 	call LoadEightBGPalettes
 	ld hl, wMapBlocksBank
@@ -209,13 +200,27 @@ CheckIfSpecialPaletteApplies:
 	cp e ; [wTileset]
 	ret
 .not_tileset
-	; PAL_FOR_OVERCAST
+	dec a ; PAL_FOR_OVERCAST?
+	jr nz, .not_overcast
 	push hl
 	call GetOvercastIndex
 	pop hl
 	; invert z
 	sub 1 ; no-optimize a++|a-- (dec a can't set carry)
 	sbc a ; sets a to 0 if carry was not set, i.e. a != 0
+	ret
+.not_overcast
+	; PAL_FOR_DARKNESS
+	push hl
+	push de
+	call GetMapTimeOfDay
+	pop de
+	pop hl
+	and IN_DARKNESS
+	cp IN_DARKNESS
+	ret nz
+	ld a, [wStatusFlags]
+	bit 2, a ; Flash
 	ret
 
 INCLUDE "data/maps/palettes.asm"

@@ -141,7 +141,7 @@ _GetMonIconPalette:
 	; b = form
 	inc hl ; Form is in the byte after Shiny
 	ld a, [hld]
-	and FORM_MASK
+	and BASEMON_MASK
 	ld b, a
 
 	; check shininess at hl
@@ -185,13 +185,10 @@ LoadPartyMenuMonIcon:
 	ret z
 	ld d, a
 	call ItemIsMail
-	jr c, .mail
-	ld a, SPRITE_ANIM_FRAMESET_PARTY_MON_WITH_ITEM
-	jr .okay
-
-.mail
-	ld a, SPRITE_ANIM_FRAMESET_PARTY_MON_WITH_MAIL
-.okay
+	; a = carry ? SPRITE_ANIM_FRAMESET_PARTY_MON_WITH_MAIL : SPRITE_ANIM_FRAMESET_PARTY_MON_WITH_ITEM
+	assert SPRITE_ANIM_FRAMESET_PARTY_MON_WITH_MAIL + 1 == SPRITE_ANIM_FRAMESET_PARTY_MON_WITH_ITEM
+	sbc a
+	add SPRITE_ANIM_FRAMESET_PARTY_MON_WITH_ITEM
 	ld hl, SPRITEANIMSTRUCT_FRAMESET_ID
 	add hl, bc
 	ld [hl], a
@@ -211,13 +208,17 @@ LoadMoveMenuMonIcon:
 	push bc
 
 	depixel 3, 4, 2, 4
+	push de
+	ld hl, wTempMonForm
+	jr _InitScreenMonIcon
 InitScreenMonIcon:
 	push de
 
 	ld a, MON_FORM ; aka MON_IS_EGG
 	call GetPartyParamLocation
+_InitScreenMonIcon:
 	ld a, [hl]
-	and FORM_MASK
+	and BASEMON_MASK
 	ld [wCurIconForm], a
 	bit MON_IS_EGG_F, [hl]
 	ld a, [wd265]
@@ -263,7 +264,7 @@ InitPartyMenuIcon:
 	ld a, [hl]
 	bit MON_IS_EGG_F, a
 	jr nz, .egg
-	and FORM_MASK
+	and BASEMON_MASK
 	ld [wCurIconForm], a
 	ld hl, wPartySpecies
 	add hl, de
@@ -278,9 +279,7 @@ InitPartyMenuIcon:
 	call GetMemIconGFX
 	ldh a, [hObjectStructIndexBuffer]
 ; y coord
-rept 4
-	add a
-endr
+	swap a ; a *= 16, assuming a < 16 since [hObjectStructIndexBuffer] < NUM_OBJECT_STRUCTS EQU 13
 	add $1c
 	ld d, a
 ; x coord
@@ -303,7 +302,7 @@ SetPartyMonIconAnimSpeed:
 	ld [hl], a
 	rlca
 	rlca
-	ld hl, SPRITEANIMSTRUCT_0D
+	ld hl, SPRITEANIMSTRUCT_VAR2
 	add hl, bc
 	ld [hl], a
 	ret
@@ -348,7 +347,7 @@ Fly_PrepMonIcon:
 	push de
 	ld a, MON_FORM
 	call GetPartyParamLocation
-	and FORM_MASK
+	and BASEMON_MASK
 	ld [wCurIconForm], a
 	ld a, [wCurPartyMon]
 	ld hl, wPartySpecies
@@ -393,8 +392,11 @@ GetIcon_a:
 ; Load icon graphics into VRAM starting from tile a.
 	ld l, a
 	ld h, 0
-
+	; fallthrough
 GetIcon:
+	ld c, 8
+	; fallthrough
+DoGetIcon:
 ; Load icon graphics into VRAM starting from tile hl.
 
 ; One tile is 16 bytes long.
@@ -407,12 +409,47 @@ endr
 	push hl
 
 	push hl
+	ld a, c
+	push af
 	call LoadOverworldMonIcon
+	pop af
+	ld c, a
 	ld h, d
 	ld l, e
 	pop de
-
 	call DecompressRequest2bpp
+	pop hl
+	ret
+
+GetStorageIcon_a:
+; Load frame 1 icon graphics into VRAM starting from tile a
+	ld l, a ; no-optimize hl|bc|de = a * 16 (rept)
+	ld h, 0
+rept 4
+	add hl, hl
+endr
+	ld de, vTiles0
+	add hl, de
+	; fallthrough
+GetStorageIcon:
+	push hl
+
+	push hl
+	ld a, 4
+	push af
+	call LoadOverworldMonIcon
+	pop af
+	ld c, a
+	ld h, d
+	ld l, e
+	pop de
+	push de
+	push bc
+	call FarDecompressWRA6InB
+	pop bc
+	pop hl
+	ld de, wDecompressScratch
+	farcall BillsPC_SafeRequest2bppInWRA6
 	pop hl
 	ret
 
@@ -426,13 +463,9 @@ FreezeMonIcons:
 	and a
 	jr z, .next
 	cp d
-	jr z, .loadwithtwo
-	ld a, SPRITE_ANIM_SEQ_NULL
-	jr .ok
-
-.loadwithtwo
 	ld a, SPRITE_ANIM_SEQ_PARTY_MON_SWITCH
-
+	jr z, .ok
+	xor a ; SPRITE_ANIM_SEQ_NULL
 .ok
 	push hl
 	ld c, l
@@ -480,12 +513,10 @@ HoldSwitchmonIcon:
 	and a
 	jr z, .next
 	cp d
-	jr z, .is_switchmon
 	ld a, SPRITE_ANIM_SEQ_PARTY_MON_SELECTED
-	jr .join_back
-
-.is_switchmon
-	ld a, SPRITE_ANIM_SEQ_PARTY_MON_SWITCH
+	jr nz, .join_back
+	assert SPRITE_ANIM_SEQ_PARTY_MON_SELECTED - 1 == SPRITE_ANIM_SEQ_PARTY_MON_SWITCH
+	dec a
 .join_back
 	push hl
 	ld c, l

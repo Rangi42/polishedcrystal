@@ -1,24 +1,24 @@
 SafariZoneWestRestHouse2_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event  2,  7, SAFARI_ZONE_WEST, 8
 	warp_event  3,  7, SAFARI_ZONE_WEST, 8
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 4 ; bg events
-	bg_event  4,  1, SIGNPOST_READ, PokemonJournalKogaScript
-	bg_event  5,  1, SIGNPOST_READ, PokemonJournalKogaScript
-	bg_event  6,  1, SIGNPOST_READ, PokemonJournalKogaScript
-	bg_event  7,  1, SIGNPOST_READ, PokemonJournalKogaScript
+	def_bg_events
+	bg_event  4,  1, BGEVENT_READ, PokemonJournalKogaScript
+	bg_event  5,  1, BGEVENT_READ, PokemonJournalKogaScript
+	bg_event  6,  1, BGEVENT_READ, PokemonJournalKogaScript
+	bg_event  7,  1, BGEVENT_READ, PokemonJournalKogaScript
 
-	db 1 ; object events
-	object_event  3,  4, SPRITE_FLANNERY, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SafariZoneWestRestHouse2FlanneryScript, -1
+	def_object_events
+	object_event  3,  4, SPRITE_FLANNERY, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, SafariZoneWestRestHouse2FlanneryScript, -1
 
-	const_def 1 ; object constants
+	object_const_def
 	const SAFARIZONEWESTRESTHOUSE2_FLANNERY
 
 SafariZoneWestRestHouse2FlanneryScript:
@@ -29,7 +29,7 @@ SafariZoneWestRestHouse2FlanneryScript:
 	checkevent EVENT_INTRODUCED_FLANNERY
 	iftrue .Introduced
 	writetext .IntroText
-	jump .Question
+	sjump .Question
 .Introduced
 	writetext .RematchText
 .Question
@@ -43,7 +43,7 @@ SafariZoneWestRestHouse2FlanneryScript:
 	checkevent EVENT_BEAT_ELITE_FOUR_AGAIN
 	iftrue .Rematch
 	loadtrainer FLANNERY, 1
-	jump .StartBattle
+	sjump .StartBattle
 .Rematch
 	loadtrainer FLANNERY, 2
 .StartBattle

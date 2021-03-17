@@ -1,26 +1,26 @@
 EcruteakShrineInside_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event  5, 11, ECRUTEAK_SHRINE_OUTSIDE, 1
 	warp_event  6, 11, ECRUTEAK_SHRINE_OUTSIDE, 1
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 2 ; bg events
-	bg_event  5,  6, SIGNPOST_JUMPTEXT, EcruteakShrineInsideAltarText
-	bg_event  6,  6, SIGNPOST_JUMPTEXT, EcruteakShrineInsideAltarText
+	def_bg_events
+	bg_event  5,  6, BGEVENT_JUMPTEXT, EcruteakShrineInsideAltarText
+	bg_event  6,  6, BGEVENT_JUMPTEXT, EcruteakShrineInsideAltarText
 
-	db 5 ; object events
-	object_event  7,  6, SPRITE_SABRINA, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, EcruteakShrineInsideReiScript, -1
-	object_event  3,  8, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, EcruteakShrineInsideGrampsText, -1
-	object_event 10,  5, SPRITE_SAGE, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, EcruteakShrineInsideSageText, -1
-	object_event  1,  6, SPRITE_GRANNY, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, EcruteakShrineInsideGrannyText, -1
-	object_event 10,  3, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, FURRET, -1, -1, PAL_NPC_BROWN, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
+	def_object_events
+	object_event  7,  6, SPRITE_SABRINA, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, EcruteakShrineInsideReiScript, -1
+	object_event  3,  8, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, EcruteakShrineInsideGrampsText, -1
+	object_event 10,  5, SPRITE_SAGE, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, EcruteakShrineInsideSageText, -1
+	object_event  1,  6, SPRITE_GRANNY, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, EcruteakShrineInsideGrannyText, -1
+	object_event 10,  3, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, FURRET, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, ObjectEvent, -1
 
-	const_def 1 ; object constants
+	object_const_def
 	const ECRUTEAKSHRINEINSIDE_REI
 
 EcruteakShrineInsideReiScript:
@@ -34,11 +34,11 @@ EcruteakShrineInsideReiScript:
 	closewindow
 	ifequal $1, .ReiBless
 	ifequal $2, .ReiBattle
-	jump .ReiCancel
+	sjump .ReiCancel
 
 .ReiBless
 	writetext EcruteakShrineInsideReiBlessText
-	buttonsound
+	promptbutton
 	special Special_ReiBlessing
 	ifequal $0, .ReiCancel
 	ifequal $1, .EggBlessing
@@ -48,7 +48,7 @@ EcruteakShrineInsideReiScript:
 	waitbutton
 	writetext EcruteakShrineInsideHappinessText
 	waitbutton
-	jump .ReiDone
+	sjump .ReiDone
 
 .ReiBattle
 	writetext EcruteakShrineInsideReiBattleText
@@ -57,26 +57,26 @@ EcruteakShrineInsideReiScript:
 	setflag ENGINE_DAILY_SHRINE_VISIT
 	winlosstext EcruteakShrineInsideReiBeatenText, 0
 	setlasttalked ECRUTEAKSHRINEINSIDE_REI
-	checkcode VAR_BADGES
+	readvar VAR_BADGES
 	ifequal 16, .Battle3
 	checkevent EVENT_BEAT_ELITE_FOUR
 	iftrue .Battle2
 	loadtrainer REI, 1
 	startbattle
 	reloadmapafterbattle
-	jump .AfterRematch
+	sjump .AfterRematch
 
 .Battle2:
 	loadtrainer REI, 2
 	startbattle
 	reloadmapafterbattle
-	jump .AfterRematch
+	sjump .AfterRematch
 
 .Battle3:
 	loadtrainer REI, 3
 	startbattle
 	reloadmapafterbattle
-	jump .AfterRematch
+	sjump .AfterRematch
 
 .AfterRematch:
 	opentext
@@ -130,7 +130,7 @@ EcruteakShrineInsideReiBlessingText:
 	done
 
 EcruteakShrineInsideHappinessText:
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text " looks"
 	line "content."
 	done

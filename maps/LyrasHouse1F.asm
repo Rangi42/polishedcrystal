@@ -1,23 +1,23 @@
 LyrasHouse1F_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 3 ; warp events
+	def_warp_events
 	warp_event  2,  7, NEW_BARK_TOWN, 4
 	warp_event  3,  7, NEW_BARK_TOWN, 4
 	warp_event  0,  0, LYRAS_HOUSE_2F, 1
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 4 ; bg events
-	bg_event 10,  1, SIGNPOST_UP, LyrasFridgeScript
-	bg_event  8,  1, SIGNPOST_JUMPTEXT, LyrasSinkText
-	bg_event  9,  1, SIGNPOST_JUMPTEXT, LyrasStoveText
-	bg_event  5,  1, SIGNPOST_UP, LyrasTVScript
+	def_bg_events
+	bg_event 10,  1, BGEVENT_UP, LyrasFridgeScript
+	bg_event  8,  1, BGEVENT_JUMPTEXT, LyrasSinkText
+	bg_event  9,  1, BGEVENT_JUMPTEXT, LyrasStoveText
+	bg_event  5,  1, BGEVENT_UP, LyrasTVScript
 
-	db 1 ; object events
-	object_event  2,  3, SPRITE_DAD, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, LyrasDadScript, -1
+	def_object_events
+	object_event  2,  3, SPRITE_DAD, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, LyrasDadScript, -1
 
 LyrasDadScript:
 	faceplayer

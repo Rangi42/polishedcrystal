@@ -6,10 +6,6 @@ Special_CelebiShrineEvent:
 	ld [wVramState], a
 
 	call ClearSpriteAnims
-	ld de, CutGrassGFX
-	ld hl, vTiles1
-	lb bc, BANK(CutGrassGFX), 4
-	call Request2bpp
 	ld hl, SpecialCelebiGFX
 	ld de, vTiles0 tile $84
 	lb bc, BANK(SpecialCelebiGFX), 4 * 4
@@ -26,11 +22,11 @@ Special_CelebiShrineEvent:
 	ld hl, SPRITEANIMSTRUCT_ANIM_SEQ_ID
 	add hl, bc
 	ld [hl], SPRITE_ANIM_SEQ_CELEBI
-	ld hl, SPRITEANIMSTRUCT_0F
+	ld hl, SPRITEANIMSTRUCT_VAR4
 	add hl, bc
 	ld [hl], $80
 	ld a, 160 ; frame count
-	ld [wcf64], a
+	ld [wFrameCounter], a
 	ld d, $0
 .loop
 	ld a, [wJumptableIndex]
@@ -76,7 +72,7 @@ Special_CelebiShrineEvent:
 	ret
 
 CelebiEvent_CountDown:
-	ld hl, wcf64
+	ld hl, wFrameCounter
 	ld a, [hl]
 	and a
 	jr z, .done
@@ -104,7 +100,7 @@ UpdateCelebiPosition:
 	ld hl, SPRITEANIMSTRUCT_YCOORD
 	add hl, bc
 	inc [hl]
-	ld hl, SPRITEANIMSTRUCT_0F
+	ld hl, SPRITEANIMSTRUCT_VAR4
 	add hl, bc
 	ld a, [hl]
 	ld d, a
@@ -113,7 +109,7 @@ UpdateCelebiPosition:
 	sub $3
 	ld [hl], a
 .skip
-	ld hl, SPRITEANIMSTRUCT_0E
+	ld hl, SPRITEANIMSTRUCT_VAR3
 	add hl, bc
 	ld a, [hl]
 	inc [hl]

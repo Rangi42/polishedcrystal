@@ -1,21 +1,21 @@
 CliffEdgeGate_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event 17, 19, CIANWOOD_CITY, 8
 	warp_event  3, 19, ROUTE_47, 1
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 1 ; bg events
-	bg_event 17,  6, SIGNPOST_ITEM + BIG_PEARL, EVENT_CLIFF_EDGE_GATE_HIDDEN_BIG_PEARL
+	def_bg_events
+	bg_event 17,  6, BGEVENT_ITEM + BIG_PEARL, EVENT_CLIFF_EDGE_GATE_HIDDEN_BIG_PEARL
 
-	db 3 ; object events
-	object_event 11, 16, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, CliffEdgeGateReceptionistText, EVENT_YELLOW_FOREST_ROCKET_TAKEOVER
-	object_event  3,  4, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, ProfOaksAide3Script, EVENT_YELLOW_FOREST_ROCKET_TAKEOVER
-	object_event 17, 16, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerGruntM12, EVENT_CLEARED_YELLOW_FOREST
+	def_object_events
+	object_event 11, 16, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, CliffEdgeGateReceptionistText, EVENT_YELLOW_FOREST_ROCKET_TAKEOVER
+	object_event  3,  4, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, ProfOaksAide3Script, EVENT_YELLOW_FOREST_ROCKET_TAKEOVER
+	object_event 17, 16, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerGruntM12, EVENT_CLEARED_YELLOW_FOREST
 
 ProfOaksAide3Script:
 	faceplayer
@@ -24,8 +24,8 @@ ProfOaksAide3Script:
 	iftrue .Explain
 	writetext ProfOaksAide3HiText
 	waitbutton
-	count_seen_caught
-	checkcode VAR_DEXCAUGHT
+	countseencaught
+	readvar VAR_DEXCAUGHT
 	ifgreater 44, .HereYouGo
 .UhOh
 	jumpopenedtext ProfOaksAide3UhOhText
@@ -83,7 +83,7 @@ ProfOaksAide3UhOhText:
 	line "Uh-oh! You've only"
 
 	para "caught "
-	deciram wd003, 1, 3
+	text_decimal wTempPokedexCaughtCount, 1, 3
 	text " kinds"
 	line "of #mon."
 
@@ -97,7 +97,7 @@ ProfOaksAide3HereYouGoText:
 	line "Great job! You've"
 
 	para "caught "
-	deciram wd003, 1, 3
+	text_decimal wTempPokedexCaughtCount, 1, 3
 	text " kinds"
 	line "of #mon."
 

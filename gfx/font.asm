@@ -9,12 +9,16 @@ FontItalic:
 INCBIN "gfx/font/italic.1bpp"
 FontSerif:
 INCBIN "gfx/font/serif.1bpp"
-FontBraille:
-INCBIN "gfx/font/braille.1bpp"
+FontMICR:
+INCBIN "gfx/font/micr.1bpp"
+FontChicago:
+INCBIN "gfx/font/chicago.1bpp"
 FontUnown:
 INCBIN "gfx/font/unown.1bpp"
 FontCommon:
 INCBIN "gfx/font/common.1bpp"
+TextboxSpaceGFX::
+INCBIN "gfx/font/space.1bpp"
 
 Frames:
 INCBIN "gfx/frames/1.1bpp"
@@ -41,9 +45,6 @@ INCBIN "gfx/battle/types.1bpp"
 
 CategoryIconGFX:
 INCBIN "gfx/battle/categories.2bpp"
-
-TextBoxSpaceGFX::
-INCBIN "gfx/frames/space.1bpp"
 
 MapEntryFrameGFX:
 INCBIN "gfx/frames/map_entry_sign.2bpp"

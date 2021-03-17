@@ -3,12 +3,12 @@ ScrollingMenu::
 	ldh a, [hROMBank]
 	push af
 
-	ld a, BANK(_ScrollingMenu)
+	ld a, BANK(_ScrollingMenu) ; aka BANK(_InitScrollingMenu)
 	rst Bankswitch
 
-	call _InitScrollingMenu
+	call _InitScrollingMenu ; far-ok
 	call .UpdatePalettes
-	call _ScrollingMenu
+	call _ScrollingMenu ; far-ok
 
 	pop af
 	rst Bankswitch
@@ -38,7 +38,7 @@ InitScrollingMenu::
 	push de
 	call Coord2Tile
 	pop bc
-	jp TextBox
+	jp Textbox
 
 JoyTextDelay_ForcehJoyDown:: ; 354b joypad
 	call DelayFrame

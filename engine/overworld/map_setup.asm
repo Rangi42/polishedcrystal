@@ -17,7 +17,7 @@ INCLUDE "data/maps/setup_scripts.asm"
 ReadMapSetupScript:
 .loop
 	ld a, [hli]
-	cp -1
+	cp -1 ; end?
 	ret z
 
 	push hl
@@ -57,66 +57,19 @@ ReadMapSetupScript:
 	pop hl
 	jr .loop
 
-MapSetupCommands:
-	dba EnableLCD ; 00
-	dba DisableLCD ; 01
-	dba MapSetup_Sound_Off ; 02
-	dba PlayMapMusic ; 03
-	dba RestartMapMusic ; 04
-	dba FadeToMapMusic ; 05
-	dba RotatePalettesRightMapAndMusic ; 06
-	dba EnterMapMusic ; 07
-	dba ForceMapMusic ; 08
-	dba FadeInMusic ; 09
-	dba LoadBlockData ; 0a (callback 1)
-	dba LoadNeighboringBlockData ; 0b
-	dba SaveScreen ; 0c
-	dba BufferScreen ; 0d
-	dba LoadGraphics ; 0e
-	dba LoadTilesetHeader ; 0f
-	dba LoadMapTimeOfDay ; 10
-	dba LoadMapPalettes ; 11
-	dba LoadWildMonData ; 12
-	dba RefreshMapSprites ; 13
-	dba RunCallback_05_03 ; 14
-	dba RunCallback_03 ; 15
-	dba LoadObjectsRunCallback_02 ; 16
-	dba LoadSpawnPoint ; 17
-	dba EnterMapConnection ; 18
-	dba LoadWarpData ; 19
-	dba LoadMapAttributes ; 1a
-	dba LoadMapAttributes_Continue ; 1b
-	dba ClearBGPalettes ; 1c
-	dba FadeOutPalettes ; 1d
-	dba FadeInPalettes ; 1e
-	dba GetCoordOfUpperLeftCorner ; 1f
-	dba RestoreFacingAfterWarp ; 20
-	dba SpawnInFacingDown ; 21
-	dba SpawnPlayer ; 22
-	dba RefreshPlayerCoords ; 23
-	dba DelayClearingOldSprites ; 24
-	dba DelayLoadingNewSprites ; 25
-	dba UpdateRoamMons ; 26
-	dba JumpRoamMons ; 27
-	dba FadeOldMapMusic ; 28
-	dba ActivateMapAnims ; 29
-	dba SuspendMapAnims ; 2a
-	dba RetainOldPalettes ; 2b
-	dba ReturnFromMapSetupScript ; 2c
-	dba DecompressMetatiles ; 2d
-	dba DeferredLoadGraphics ; 2e
+INCLUDE "data/maps/setup_script_pointers.asm"
 
 ActivateMapAnims:
-	ld a, $1
+	ld a, TRUE
 	ldh [hMapAnims], a
 	ret
 
 SuspendMapAnims:
-	xor a
+	xor a ; FALSE
 	ldh [hMapAnims], a
 	ret
 
-LoadObjectsRunCallback_02:
+LoadMapObjects:
 	ld a, MAPCALLBACK_OBJECTS
 	call RunMapCallback
 	call LoadObjectMasks
@@ -135,14 +88,12 @@ LoadObjectMasks:
 	push bc
 	push de
 	call GetObjectTimeMask
-	jr c, .next
-	call CheckObjectFlag
-.next
+	call nc, CheckObjectFlag
 	pop de
 	ld [de], a
 	inc de
 	pop bc
-	ld hl, OBJECT_LENGTH
+	ld hl, MAPOBJECT_LENGTH
 	add hl, bc
 	ld b, h
 	ld c, l
@@ -191,27 +142,25 @@ GetObjectTimeMask:
 	xor a
 	ret
 
-DelayClearingOldSprites:
+ResetPlayerObjectAction:
 	ld hl, wPlayerSpriteSetupFlags
-	set 7, [hl]
+	set PLAYERSPRITESETUP_RESET_ACTION_F, [hl]
 	ret
 
-DelayLoadingNewSprites:
+SkipUpdateMapSprites:
 	ld hl, wPlayerSpriteSetupFlags
-	set 6, [hl]
+	set PLAYERSPRITESETUP_SKIP_RELOAD_GFX_F, [hl]
 	ret
 
-CheckReplaceKrisSprite:
+CheckUpdatePlayerSprite:
 	call .CheckBiking
 	jr c, .ok
 	call .CheckSurfing
 	jr c, .ok
 	call .CheckSurfing2
-	jr c, .ok
-	ret
-
+	ret nc
 .ok
-	jp ReplaceKrisSprite
+	jp UpdatePlayerSprite
 
 .CheckBiking:
 	and a
@@ -227,13 +176,13 @@ CheckReplaceKrisSprite:
 	ld a, [wPlayerState]
 	and a ; cp PLAYER_NORMAL
 	jr z, .nope
-	cp PLAYER_SLIP
+	cp PLAYER_SKATE
 	jr z, .nope
 	cp PLAYER_SURF
 	jr z, .surfing
 	cp PLAYER_SURF_PIKA
 	jr z, .surfing
-	call GetMapPermission
+	call GetMapEnvironment
 	cp INDOOR
 	jr z, .checkbiking
 	cp DUNGEON
@@ -255,29 +204,29 @@ CheckReplaceKrisSprite:
 .CheckSurfing:
 	call GetPlayerStandingTile
 	dec a ; cp WATER_TILE
-	jr nz, .ret_nc
+	jr nz, .nope2
 	ld a, [wPlayerState]
 	cp PLAYER_SURF
-	jr z, ._surfing
+	jr z, .is_surfing
 	cp PLAYER_SURF_PIKA
-	jr z, ._surfing
+	jr z, .is_surfing
 	ld a, PLAYER_SURF
 	ld [wPlayerState], a
-._surfing
+.is_surfing
 	scf
 	ret
-.ret_nc
+.nope2
 	and a
 	ret
 
-FadeOldMapMusic:
+FadeOutMapMusic:
 	ld a, 6
 	jp SkipMusic
 
-RetainOldPalettes:
+ApplyMapPalettes:
 	farjp _UpdateTimePals
 
-RotatePalettesRightMapAndMusic:
+FadeMapMusicAndPalettes:
 	xor a
 	ld [wMusicFadeIDLo], a
 	ld [wMusicFadeIDHi], a
@@ -288,7 +237,7 @@ ForceMapMusic:
 	ld a, [wPlayerState]
 	cp PLAYER_BIKE
 	jr nz, .notbiking
-	call VolumeOff
+	call MinVolume
 	ld a, $88
 	ld [wMusicFade], a
 .notbiking
@@ -298,15 +247,17 @@ DecompressMetatiles:
 	call TilesetUnchanged
 	ret z
 
-	; Decompressed RAM is all at $d000
+	assert wDecompressedMetatiles == WRAM1_Begin
 	ld hl, wTilesetBlocksBank
 	ld c, BANK(wDecompressedMetatiles)
 	call .Decompress
 
+	assert wDecompressedAttributes == WRAM1_Begin
 	ld hl, wTilesetAttributesBank
 	ld c, BANK(wDecompressedAttributes)
 	call .Decompress
 
+	assert wDecompressedCollisions == WRAM1_Begin
 	ld hl, wTilesetCollisionBank
 	ld c, BANK(wDecompressedCollisions)
 
@@ -316,9 +267,8 @@ DecompressMetatiles:
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	ld de, wDecompressedMetatiles
 	ld a, c
 	call StackCallInWRAMBankA
 
 .FunctionD000
-	jp FarDecompressAtB_D000
+	jp FarDecompressInB

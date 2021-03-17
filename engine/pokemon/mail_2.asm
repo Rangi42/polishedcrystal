@@ -59,15 +59,11 @@ ReadAnyMail:
 	cp b
 	jr z, .got_pointer
 	cp -1
-	jr z, .invalid
+	jr z, .got_pointer
 	inc c
 	inc hl
 	inc hl
 	jr .loop2
-
-.invalid
-	ld hl, MailGFXPointers
-	inc hl
 
 .got_pointer
 	ld a, c
@@ -86,7 +82,7 @@ MailGFXPointers:
 	dbw BLUESKY_MAIL, LoadBlueSkyMailGFX
 	dbw MUSIC_MAIL,   LoadMusicMailGFX
 	dbw MIRAGE_MAIL,  LoadMirageMailGFX
-	db -1
+	dbw -1,           LoadFlowerMailGFX ; invalid
 
 LoadSurfMailGFX:
 	push bc
@@ -701,11 +697,11 @@ DrawMailBorder2:
 	ld [hli], a
 	inc a
 	call Mail_DrawTopBottomBorder
-	ld [hl], $31
+	ld [hl], $31 ; no-optimize *hl++|*hl-- = N
 	inc hl
 	inc a
 	call Mail_DrawLeftRightBorder
-	ld [hl], $31
+	ld [hl], $31 ; no-optimize *hl++|*hl-- = N
 	inc hl
 	inc a
 	call Mail_DrawTopBottomBorder

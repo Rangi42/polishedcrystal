@@ -11,7 +11,7 @@ ItemDescriptions:
 	dw FastBallDesc
 	dw HeavyBallDesc
 	dw LoveBallDesc
-	dw ParkBallDesc
+	dw AbilityPatchDesc
 	dw RepeatBallDesc
 	dw TimerBallDesc
 	dw NestBallDesc
@@ -334,9 +334,9 @@ LoveBallDesc:
 	db   "A Ball for the"
 	next "opposite gender.@"
 
-ParkBallDesc:
-	db   "The Bug-Catching"
-	next "Contest Ball.@"
+AbilityPatchDesc:
+	db   "Switches to a"
+	next "rare ability.@"
 
 RepeatBallDesc:
 	db   "A Ball for #mon"

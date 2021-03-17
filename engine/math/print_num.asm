@@ -3,6 +3,7 @@ _PrintNum::
 ; High nibble of c denotes decimal point location.
 ; Works on up to 1-8 digits and up to 4 bytes (up to 99999999).
 ; The higher b nibble has some flags:
+; Bit 4: For each number printed, add a text delay (used for text_decimal)
 ; Bit 5: Print a pokedollar sign before the number itself
 ; Bit 6: Left-aligned number instead of right-aligned
 ; Bit 7: Print leading zeros
@@ -23,7 +24,7 @@ _PrintNum::
 	push hl
 	ld c, 4
 	ld a, b
-	and $1f
+	and $f
 	ld b, a
 .loop
 	ld a, b
@@ -54,6 +55,9 @@ _PrintNum::
 	ld [hl], a
 	ld h, 32
 
+	; Calculate a BCD number using double dabble (iterative shift + addition).
+	; Slower than division by 10, but far simpler (and thus smaller), and
+	; we can afford the performance loss.
 .loop2
 	push hl
 	ld hl, hPrintNum + 3
@@ -61,10 +65,11 @@ _PrintNum::
 	rl d
 	rl c
 	rl b
+	; add last bit of b into [hl], then cascade into higher bytes
 rept 4
 	ld a, [hl]
 	adc a
-	daa
+	daa ; dubious compatibility in bad emulators, should be OK for valid input
 	ld [hld], a
 endr
 	pop hl
@@ -79,7 +84,7 @@ endr
 	; Store maximum string length in the lower b nibble instead of c.
 	; Use c as a loop counter instead. This simplifies code a bit.
 	ld a, b
-	and $e0
+	and $f0
 	add c
 	ld b, a
 	ld c, 8
@@ -157,18 +162,28 @@ PrintHLNum:
 	push af
 	ld a, "¥"
 	ld [hli], a
+	bit PRINTNUM_DELAY_F, b
+	call nz, .printnum_delay
 	pop af
 
 .got_number
 	add "0"
 .got_value
 	ld [hli], a
+	bit PRINTNUM_DELAY_F, b
+	call nz, .printnum_delay
 	ldh a, [hPrintNum + 4]
 	and a
 	ret z
 	dec a
 	ldh [hPrintNum + 4], a
 	ret nz
-	ld [hl], "."
-	inc hl
+	ld a, "."
+	ld [hli], a
 	ret
+.printnum_delay
+	push hl
+	push de
+	push bc
+	call PrintLetterDelay
+	jp PopBCDEHL

@@ -44,14 +44,14 @@ endc
 .loop
 	ld hl, Text_WhatTimeIsIt
 	call PrintText
-	hlcoord 3, 7
-	lb bc, 2, 15
-	call TextBox
-	hlcoord 11, 7
+	hlcoord 1, 7
+	lb bc, 2, 17
+	call Textbox
+	hlcoord 10, 7
 	ld [hl], "▲"
-	hlcoord 11, 10
+	hlcoord 10, 10
 	ld [hl], "▼"
-	hlcoord 4, 9
+	hlcoord 2, 9
 	call DisplayHourOClock
 	ld c, 10
 	call DelayFrames
@@ -76,7 +76,7 @@ endc
 	call PrintText
 	hlcoord 11, 7
 	lb bc, 2, 7
-	call TextBox
+	call Textbox
 	hlcoord 15, 7
 	ld [hl], "▲"
 	hlcoord 15, 10
@@ -159,11 +159,11 @@ SetHour:
 	ld [hl], a
 
 .okay
-	hlcoord 4, 9
+	hlcoord 2, 9
 	ld a, " "
-	ld bc, 15
+	ld bc, 17
 	rst ByteFill
-	hlcoord 4, 9
+	hlcoord 2, 9
 	call DisplayHourOClock
 	call ApplyTilemapInVBlank
 	and a
@@ -254,12 +254,12 @@ PrintTwoDigitNumberRightAlign:
 
 Text_WokeUpOak:
 	; Zzz… Hm? Wha…? You woke me up! Will you check the clock for me?
-	text_jump UnknownText_0x1bc29c
+	text_far _OakTimeWokeUpText
 	text_end
 
 Text_WhatTimeIsIt:
 	; What time is it?
-	text_jump UnknownText_0x1bc2eb
+	text_far _OakTimeWhatTimeIsItText
 	text_end
 
 String_oclock:
@@ -267,8 +267,8 @@ String_oclock:
 
 Text_WhatHrs:
 	; What?@ @
-	text_jump UnknownText_0x1bc2fd
-	start_asm
+	text_far _OakTimeWhatHoursText
+	text_asm
 	hlcoord 1, 16
 	call DisplayHourOClock
 	ld hl, .QuestionMark
@@ -276,12 +276,12 @@ Text_WhatHrs:
 
 .QuestionMark:
 	; ?
-	text_jump UnknownText_0x1bc305
+	text_far _OakTimeHoursQuestionMarkText
 	text_end
 
 Text_HowManyMinutes:
 	; How many minutes?
-	text_jump UnknownText_0x1bc308
+	text_far _OakTimeHowManyMinutesText
 	text_end
 
 String_min:
@@ -289,8 +289,8 @@ String_min:
 
 Text_WhoaMins:
 	; Whoa!@ @
-	text_jump UnknownText_0x1bc31b
-	start_asm
+	text_far _OakTimeWhoaMinutesText
+	text_asm
 	hlcoord 7, 14
 	call DisplayMinutesWithMinString
 	ld hl, .QuestionMark
@@ -298,17 +298,17 @@ Text_WhoaMins:
 
 .QuestionMark:
 	; ?
-	text_jump UnknownText_0x1bc323
+	text_far _OakTimeMinutesQuestionMarkText
 	text_end
 
 OakText_ResponseToSetTime:
-	start_asm
+	text_asm
 	decoord 1, 14
 	ld a, [wInitHourBuffer]
 	ld c, a
 	call PrintHour
-	ld [hl], ":"
-	inc hl
+	ld a, ":"
+	ld [hli], a
 	ld de, wInitMinuteBuffer
 	lb bc, PRINTNUM_LEADINGZEROS | 1, 2
 	call PrintNum
@@ -319,8 +319,10 @@ OakText_ResponseToSetTime:
 	jr c, .NITE
 	cp DAY_HOUR
 	jr c, .MORN
-	cp NITE_HOUR
+	cp EVE_HOUR
 	jr c, .DAY
+	cp NITE_HOUR
+	jr c, .EVE
 .NITE:
 	ld hl, .sodark
 	ret
@@ -330,20 +332,27 @@ OakText_ResponseToSetTime:
 .DAY:
 	ld hl, .yikes
 	ret
+.EVE:
+	ld hl, .napped
+	ret
 
 .overslept
 	; ! I overslept!
-	text_jump UnknownText_0x1bc326
+	text_far _OakTimeOversleptText
 	text_end
 
 .yikes
 	; ! Yikes! I over- slept!
-	text_jump UnknownText_0x1bc336
+	text_far _OakTimeYikesText
+	text_end
+
+.napped
+	text_far ProfElmNappedText
 	text_end
 
 .sodark
 	; ! No wonder it's so dark!
-	text_jump UnknownText_0x1bc34f
+	text_far _OakTimeSoDarkText
 	text_end
 
 TimesetBackgroundGFX:
@@ -359,13 +368,13 @@ Special_SetDayOfWeek:
 .loop
 	hlcoord 0, 12
 	lb bc, 4, 18
-	call TextBox
-	call LoadStandardMenuDataHeader
+	call Textbox
+	call LoadStandardMenuHeader
 	ld hl, .WhatDayIsItText
 	call PrintText
 	hlcoord 9, 3
 	lb bc, 2, 9
-	call TextBox
+	call Textbox
 	hlcoord 14, 3
 	ld [hl], "▲"
 	hlcoord 14, 6
@@ -482,11 +491,11 @@ Special_SetDayOfWeek:
 
 .WhatDayIsItText:
 	; What day is it?
-	text_jump UnknownText_0x1bc369
+	text_far _OakTimeWhatDayIsItText
 	text_end
 
 .ConfirmWeekdayText:
-	start_asm
+	text_asm
 	hlcoord 1, 14
 	call .PlaceWeekdayString
 	ld hl, .IsIt
@@ -494,7 +503,7 @@ Special_SetDayOfWeek:
 
 .IsIt:
 	; , is it?
-	text_jump UnknownText_0x1bc37a
+	text_far _OakTimeIsItText
 	text_end
 
 Special_InitialSetDSTFlag:
@@ -506,7 +515,7 @@ Special_InitialSetDSTFlag:
 	jp PlaceWholeStringInBoxAtOnce
 
 .Text:
-	start_asm
+	text_asm
 	call UpdateTime
 	ldh a, [hHours]
 	ld b, a
@@ -519,7 +528,7 @@ Special_InitialSetDSTFlag:
 
 .DSTIsThatOK:
 	; DST, is that OK?
-	text_jump Text_DSTIsThatOK
+	text_far Text_DSTIsThatOK
 	text_end
 
 Special_InitialClearDSTFlag:
@@ -531,7 +540,7 @@ Special_InitialClearDSTFlag:
 	jp PlaceWholeStringInBoxAtOnce
 
 .Text:
-	start_asm
+	text_asm
 	call UpdateTime
 	ldh a, [hHours]
 	ld b, a
@@ -544,7 +553,7 @@ Special_InitialClearDSTFlag:
 
 .IsThatOK:
 	; , is that OK?
-	text_jump UnknownText_0x1c5ff1
+	text_far _TimeAskOkayText
 	text_end
 
 PrintHour:
@@ -565,24 +574,41 @@ PrintHour:
 GetTimeOfDayString:
 	ld a, c
 	cp MORN_HOUR
-	jr c, .nite
+	ld de, NITE_String
+	ret c
 	cp DAY_HOUR
-	jr c, .morn
+	ld de, MORN_String
+	ret c
+	cp EVE_HOUR
+	ld de, DAY_String
+	ret c
 	cp NITE_HOUR
-	jr c, .day
-.nite
-	ld de, .NITE
-	ret
-.morn
-	ld de, .MORN
-	ret
-.day
-	ld de, .DAY
+	ld de, EVE_String
+	ret c
+	ld de, NITE_String
 	ret
 
-.NITE: db "Nite@"
-.MORN: db "Morn@"
-.DAY: db "Day@"
+NITE_String: db "Night@"
+MORN_String: db "Morning@"
+DAY_String:  db "Day@"
+EVE_String:  db "Evening@"
+
+PlaceCaughtTimeOfDayString::
+	and CAUGHTTIME_MASK
+	ld de, EVE_String
+	jr z, .print
+	rlca
+	rlca
+	rlca
+	cp DAY + 1
+	ld de, MORN_String
+	jr c, .print
+	ld de, DAY_String
+	jr z, .print
+	ld de, NITE_String
+.print
+	rst PlaceString
+	ret
 
 AdjustHourForAMorPM:
 ; Convert the hour stored in c (0-23) to a 1-12 value
@@ -602,7 +628,7 @@ AdjustHourForAMorPM:
 	ld a, 12
 	ret
 
-PrintHoursMins
+PrintHoursMins:
 ; Hours in b, minutes in c
 	ld a, [wOptions2]
 	bit CLOCK_FORMAT, a
@@ -631,8 +657,8 @@ PrintHoursMins
 	ld [hl], " "
 	lb bc, 1, 2
 	call PrintNum
-	ld [hl], ":"
-	inc hl
+	ld a, ":"
+	ld [hli], a
 	ld d, h
 	ld e, l
 	ld hl, sp+$0

@@ -1,25 +1,25 @@
 CinnabarVolcanoB2F_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 1 ; callbacks
+	def_callbacks
 	callback MAPCALLBACK_TILES, CinnabarVolcanoB2FBouldersLand
 
-	db 3 ; warp events
+	def_warp_events
 	warp_event 13,  3, CINNABAR_VOLCANO_B1F, 5
 	warp_event 25, 19, CINNABAR_VOLCANO_B1F, 6
 	warp_event  6,  6, CINNABAR_VOLCANO_B1F, 7 ; hole
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 0 ; bg events
+	def_bg_events
 
-	db 4 ; object events
-	object_event 18, 22, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, MOLTRES, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, CinnabarVolcanoMoltres, EVENT_CINNABAR_VOLCANO_MOLTRES
-	object_event 12, 24, SPRITE_LAWRENCE, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LAWRENCE_FINAL_BIRD
+	def_object_events
+	object_event 18, 22, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, MOLTRES, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, CinnabarVolcanoMoltres, EVENT_CINNABAR_VOLCANO_MOLTRES
+	object_event 12, 24, SPRITE_LAWRENCE, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_LAWRENCE_FINAL_BIRD
 	smashrock_event 21, 19
 	itemball_event 18,  3, FLAME_ORB, 1, EVENT_CINNABAR_VOLCANO_B2F_FLAME_ORB
 
-	const_def 1 ; object constants
+	object_const_def
 	const CINNABARVOLCANOB2F_MOLTRES
 	const CINNABARVOLCANOB2F_LAWRENCE
 
@@ -28,13 +28,13 @@ CinnabarVolcanoB2FBouldersLand:
 	iffalse .skip1
 	changeblock 6, 6, $5f
 .skip1
-	return
+	endcallback
 
 CinnabarVolcanoB2FLawrenceEncounterScript:
 	showemote EMOTE_SHOCK, PLAYER, 15
 	special Special_FadeOutMusic
 	pause 15
-	checkcode VAR_FACING
+	readvar VAR_FACING
 	ifequal UP, .up
 	ifequal DOWN, .down
 	ifequal LEFT, .left
@@ -42,19 +42,19 @@ CinnabarVolcanoB2FLawrenceEncounterScript:
 	appear CINNABARVOLCANOB2F_LAWRENCE
 	applymovement CINNABARVOLCANOB2F_LAWRENCE, CinnabarVolcanoB2FMovementData_LawrenceApproachLeftRight
 	turnobject PLAYER, DOWN
-	jump .continue
+	sjump .continue
 .up
 	moveobject CINNABARVOLCANOB2F_LAWRENCE, 13, 24
 	appear CINNABARVOLCANOB2F_LAWRENCE
 	applymovement CINNABARVOLCANOB2F_LAWRENCE, CinnabarVolcanoB2FMovementData_LawrenceApproachUp
 	turnobject CINNABARVOLCANOB2F_LAWRENCE, UP
 	turnobject PLAYER, DOWN
-	jump .continue
+	sjump .continue
 .down
 	moveobject CINNABARVOLCANOB2F_LAWRENCE, 13, 24
 	appear CINNABARVOLCANOB2F_LAWRENCE
 	applymovement CINNABARVOLCANOB2F_LAWRENCE, CinnabarVolcanoB2FMovementData_LawrenceApproachDown
-	jump .continue
+	sjump .continue
 .left
 	moveobject CINNABARVOLCANOB2F_LAWRENCE, 14, 24
 	appear CINNABARVOLCANOB2F_LAWRENCE
@@ -87,13 +87,13 @@ CinnabarVolcanoMoltres:
 	cry MOLTRES
 	pause 15
 	closetext
-	loadwildmon MOLTRES, 70
-	writecode VAR_BATTLETYPE, BATTLETYPE_LEGENDARY
+	loadwildmon MOLTRES, 65
+	loadvar VAR_BATTLETYPE, BATTLETYPE_LEGENDARY
 	startbattle
 	disappear CINNABARVOLCANOB2F_MOLTRES
 	setevent EVENT_CINNABAR_VOLCANO_MOLTRES
 	reloadmapafterbattle
-	writebyte MOLTRES
+	setval MOLTRES
 	special SpecialMonCheck
 	iffalse .NoCandela
 	setevent EVENT_CELADON_UNIVERSITY_CANDELA
@@ -105,7 +105,7 @@ CinnabarVolcanoMoltres:
 	iffalse .end
 	special SpecialBirdsCheck
 	iffalse .end
-	jump CinnabarVolcanoB2FLawrenceEncounterScript
+	sjump CinnabarVolcanoB2FLawrenceEncounterScript
 .end
 	end
 

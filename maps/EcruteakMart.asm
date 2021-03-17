@@ -1,22 +1,22 @@
 EcruteakMart_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event  2,  7, ECRUTEAK_CITY, 9
 	warp_event  3,  7, ECRUTEAK_CITY, 9
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 0 ; bg events
+	def_bg_events
 
-	db 3 ; object events
+	def_object_events
 	mart_clerk_event  1,  3, MARTTYPE_STANDARD, MART_ECRUTEAK
-	object_event  5,  2, SPRITE_POKEMANIAC, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x99c48, -1
-	object_event  6,  6, SPRITE_RICH_BOY, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_PURPLE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x99cd5, -1
+	object_event  5,  2, SPRITE_POKEMANIAC, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, EcruteakMartSuperNerdText, -1
+	object_event  6,  6, SPRITE_RICH_BOY, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_PURPLE, OBJECTTYPE_COMMAND, jumptextfaceplayer, EcruteakMartGrannyText, -1
 
-UnknownText_0x99c48:
+EcruteakMartSuperNerdText:
 	text "My Eevee evolved"
 	line "into an Espeon."
 
@@ -31,7 +31,7 @@ UnknownText_0x99c48:
 	line "same way…"
 	done
 
-UnknownText_0x99cd5:
+EcruteakMartGrannyText:
 	text "The Magnet Train"
 	line "in Goldenrod is"
 	cont "great, but there"

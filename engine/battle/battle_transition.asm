@@ -177,7 +177,7 @@ endr
 	ld a, [wEnvironment]
 	cp CAVE
 	jr z, .okay2
-	cp PERM_5
+	cp ISOLATED
 	jr z, .okay2
 	cp DUNGEON
 	jr z, .okay2
@@ -207,7 +207,7 @@ StartTrainerBattle_NextScene:
 StartTrainerBattle_SetUpBGMap:
 	call StartTrainerBattle_NextScene
 	xor a
-	ld [wcf64], a
+	ld [wBattleTransitionCounter], a
 	ldh [hBGMapMode], a
 	ret
 
@@ -225,21 +225,21 @@ StartTrainerBattle_SetUpForWavyOutro:
 
 	call StartTrainerBattle_NextScene
 
-	ld a, $43
+	ld a, LOW(rSCX)
 	ldh [hLCDCPointer], a
 	xor a
 	ldh [hLYOverrideStart], a
 	ld a, $90
 	ldh [hLYOverrideEnd], a
 	xor a
-	ld [wcf64], a
-	ld [wcf65], a
+	ld [wBattleTransitionCounter], a
+	ld [wBattleTransitionSineWaveOffset], a
 	ld hl, rIE
 	set LCD_STAT, [hl]
 	ret
 
 StartTrainerBattle_SineWave:
-	ld a, [wcf64]
+	ld a, [wBattleTransitionCounter]
 	cp $60
 	jr c, .DoSineWave
 	ld a, $20
@@ -247,10 +247,10 @@ StartTrainerBattle_SineWave:
 	ret
 
 .DoSineWave:
-	ld hl, wcf65
+	ld hl, wBattleTransitionSineWaveOffset
 	ld a, [hl]
 	inc [hl]
-	ld hl, wcf64
+	ld hl, wBattleTransitionCounter
 	ld d, [hl]
 	add [hl]
 	ld [hl], a
@@ -280,7 +280,7 @@ StartTrainerBattle_SetUpForSpinOutro:
 	ldh [rSVBK], a
 	call StartTrainerBattle_NextScene
 	xor a
-	ld [wcf64], a
+	ld [wBattleTransitionCounter], a
 	ret
 
 spintable_entry: MACRO
@@ -299,7 +299,7 @@ ENDM
 StartTrainerBattle_SpinToBlack:
 	xor a
 	ldh [hBGMapMode], a
-	ld a, [wcf64]
+	ld a, [wBattleTransitionCounter]
 	ld e, a
 	ld d, 0
 	ld hl, .spintable
@@ -309,11 +309,11 @@ endr
 	ld a, [hli]
 	cp -1
 	jr z, .end
-	ld [wcf65], a
+	ld [wBattleTransitionSpinQuadrant], a
 	call .load
 	ld a, $2
 	ldh [hBGMapMode], a
-	ld hl, wcf64
+	ld hl, wBattleTransitionCounter
 	ld a, [hl]
 	inc [hl]
 .mod_3
@@ -389,10 +389,10 @@ endr
 	inc de
 .loop1
 	ld a, [hl]
-	and $ff ^ OAM_PALETTE
+	and $ff ^ PALETTE_MASK
 	or PAL_BG_TEXT ; black
 	ld [hl], a
-	ld a, [wcf65]
+	ld a, [wBattleTransitionSpinQuadrant]
 	bit 0, a
 	jr z, .leftside
 	inc hl
@@ -403,7 +403,7 @@ endr
 	dec c
 	jr nz, .loop1
 	pop hl
-	ld a, [wcf65]
+	ld a, [wBattleTransitionSpinQuadrant]
 	bit 1, a
 	ld bc, SCREEN_WIDTH
 	jr z, .upper
@@ -418,7 +418,7 @@ endr
 	jr z, .loop
 	ld c, a
 .loop2
-	ld a, [wcf65]
+	ld a, [wBattleTransitionSpinQuadrant]
 	bit 0, a
 	jr z, .leftside2
 	dec hl
@@ -448,13 +448,13 @@ StartTrainerBattle_SetUpForRandomScatterOutro:
 	ldh [rSVBK], a
 	call StartTrainerBattle_NextScene
 	ld a, $10
-	ld [wcf64], a
+	ld [wBattleTransitionCounter], a
 	ld a, $2
 	ldh [hBGMapMode], a
 	ret
 
 StartTrainerBattle_SpeckleToBlack:
-	ld hl, wcf64
+	ld hl, wBattleTransitionCounter
 	ld a, [hl]
 	and a
 	jr z, .done
@@ -506,11 +506,11 @@ StartTrainerBattle_SpeckleToBlack:
 ; If the tile has already been blacked out,
 ; sample a new tile
 	ld a, [hl]
-	and OAM_PALETTE
+	and PALETTE_MASK
 	cp PAL_BG_TEXT ; black
 	jr z, .y_loop
 	ld a, [hl]
-	and $ff ^ OAM_PALETTE
+	and $ff ^ PALETTE_MASK
 	or PAL_BG_TEXT ; black
 	ld [hl], a
 	ret
@@ -520,11 +520,16 @@ StartTrainerBattle_LoadPokeBallGraphics:
 	ldh [hBGMapMode], a
 
 	; store this in HRAM to avoid bank-switching later
+	ld a, [wTimeOfDayPalset]
+	cp DARKNESS_PALSET
+	ld a, 4 << 3 ; darkness offset
+	jr z, .got_offset
 	ld a, [wTimeOfDayPal]
 	and %00000011
 	sla a
 	sla a
 	sla a
+.got_offset
 	ldh [hTimeOfDayPalOffset], a
 
 	ld a, [wOtherTrainerClass]
@@ -560,7 +565,7 @@ StartTrainerBattle_LoadPokeBallGraphics:
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
 .loop1
 	ld a, [hl]
-	and $ff ^ OAM_PALETTE
+	and $ff ^ PALETTE_MASK
 	or PAL_BG_RED ; flashing overworld
 	ld [hli], a
 	dec bc
@@ -569,9 +574,8 @@ StartTrainerBattle_LoadPokeBallGraphics:
 	jr nz, .loop1
 
 	ld a, [wOtherTrainerClass]
-	ld de, 1
 	ld hl, .RocketTrainerClasses
-	call IsInArray
+	call IsInByteArray
 	ld de, RocketTransition
 	jr c, .got_transition
 	ld de, PokeBallTransition
@@ -726,6 +730,11 @@ if !DEF(MONOCHROME)
 	RGB 15, 05, 11
 	RGB 15, 02, 04
 	RGB 00, 00, 00
+; eve
+	RGB 25, 17, 13
+	RGB 25, 08, 11
+	RGB 25, 03, 03
+	RGB 06, 05, 05
 ; dark
 	RGB 11, 07, 07
 	RGB 07, 03, 03
@@ -734,7 +743,7 @@ if !DEF(MONOCHROME)
 else
 	MONOCHROME_RGB_FOUR
 	MONOCHROME_RGB_FOUR
-	MONOCHROME_RGB_FOUR
+	MONOCHROME_RGB_FOUR_EVE
 	MONOCHROME_RGB_FOUR_NIGHT
 endc
 
@@ -765,6 +774,11 @@ if !DEF(MONOCHROME)
 	RGB 00, 00, 00
 	RGB 00, 00, 00
 	RGB 00, 00, 00
+; eve
+	RGB 06, 05, 05
+	RGB 06, 05, 05
+	RGB 06, 05, 05
+	RGB 06, 05, 05
 ; dark
 	RGB 00, 00, 00
 	RGB 00, 00, 00
@@ -890,7 +904,7 @@ StartTrainerBattle_ZoomToBlack:
 	push hl
 .col
 	ld a, [hl]
-	and $ff ^ OAM_PALETTE
+	and $ff ^ PALETTE_MASK
 	or PAL_BG_TEXT ; black
 	ld [hli], a
 	dec c

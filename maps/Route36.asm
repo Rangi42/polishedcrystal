@@ -1,10 +1,10 @@
 Route36_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 1 ; callbacks
+	def_callbacks
 	callback MAPCALLBACK_OBJECTS, Route36ArthurCallback
 
-	db 6 ; warp events
+	def_warp_events
 	warp_event 22,  8, ROUTE_36_NATIONAL_PARK_GATE, 3
 	warp_event 22,  9, ROUTE_36_NATIONAL_PARK_GATE, 4
 	warp_event 51, 13, ROUTE_36_RUINS_OF_ALPH_GATE, 1
@@ -12,30 +12,30 @@ Route36_MapScriptHeader:
 	warp_event 61,  8, ROUTE_36_VIOLET_GATE, 1
 	warp_event 61,  9, ROUTE_36_VIOLET_GATE, 2
 
-	db 2 ; coord events
+	def_coord_events
 	coord_event 24,  7, 1, Route36SuicuneScript
 	coord_event 26,  7, 1, Route36SuicuneScript
 
-	db 4 ; bg events
-	bg_event 33,  1, SIGNPOST_JUMPTEXT, Route36TrainerTips2Text
-	bg_event 49, 11, SIGNPOST_JUMPTEXT, RuinsOfAlphNorthSignText
-	bg_event 59,  7, SIGNPOST_JUMPTEXT, Route36SignText
-	bg_event 25,  7, SIGNPOST_JUMPTEXT, Route36TrainerTips1Text
+	def_bg_events
+	bg_event 33,  1, BGEVENT_JUMPTEXT, Route36TrainerTips2Text
+	bg_event 49, 11, BGEVENT_JUMPTEXT, RuinsOfAlphNorthSignText
+	bg_event 59,  7, BGEVENT_JUMPTEXT, Route36SignText
+	bg_event 25,  7, BGEVENT_JUMPTEXT, Route36TrainerTips1Text
 
-	db 11 ; object events
-	object_event 39,  9, SPRITE_WEIRD_TREE, SPRITEMOVEDATA_SUDOWOODO, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SudowoodoScript, EVENT_ROUTE_36_SUDOWOODO
-	object_event 53,  6, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ArthurScript, EVENT_ROUTE_36_ARTHUR_OF_THURSDAY
-	object_event 37, 12, SPRITE_CUTE_GIRL, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, Route36FloriaScript, EVENT_FLORIA_AT_SUDOWOODO
-	object_event 25,  6, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, SUICUNE, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_SAW_SUICUNE_ON_ROUTE_36
-	object_event 30,  6, SPRITE_ACE_TRAINER_F, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route36CooltrainerfChiaraScript, -1
-	object_event 24, 13, SPRITE_PSYCHIC, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerPsychicMark, -1
-	object_event 35, 14, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 5, TrainerSchoolboyAlan1, -1
-	object_event 57,  9, SPRITE_CUTE_GIRL, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, LassScript_0x1940e0, -1
-	object_event 48,  9, SPRITE_FAT_GUY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_PURPLE, PERSONTYPE_SCRIPT, 0, Route36RockSmashGuyScript, -1
+	def_object_events
+	object_event 39,  9, SPRITE_WEIRD_TREE, SPRITEMOVEDATA_SUDOWOODO, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, SudowoodoScript, EVENT_ROUTE_36_SUDOWOODO
+	object_event 53,  6, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ArthurScript, EVENT_ROUTE_36_ARTHUR_OF_THURSDAY
+	object_event 37, 12, SPRITE_CUTE_GIRL, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, Route36FloriaScript, EVENT_FLORIA_AT_SUDOWOODO
+	object_event 25,  6, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, SUICUNE, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_SAW_SUICUNE_ON_ROUTE_36
+	object_event 30,  6, SPRITE_ACE_TRAINER_F, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route36CooltrainerfChiaraScript, -1
+	object_event 24, 13, SPRITE_PSYCHIC, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerPsychicMark, -1
+	object_event 35, 14, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_TRAINER, 5, TrainerSchoolboyAlan1, -1
+	object_event 57,  9, SPRITE_CUTE_GIRL, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, Route36LassScript, -1
+	object_event 48,  9, SPRITE_FAT_GUY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_PURPLE, OBJECTTYPE_SCRIPT, 0, Route36RockSmashGuyScript, -1
 	fruittree_event 25,  4, FRUITTREE_ROUTE_36, RAWST_BERRY, PAL_NPC_BLUE
-	object_event 50,  5, SPRITE_SCHOOLGIRL, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerSchoolgirlMolly, -1
+	object_event 50,  5, SPRITE_SCHOOLGIRL, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, GenericTrainerSchoolgirlMolly, -1
 
-	const_def 1 ; object constants
+	object_const_def
 	const ROUTE36_WEIRD_TREE
 	const ROUTE36_ARTHUR
 	const ROUTE36_FLORIA
@@ -43,14 +43,14 @@ Route36_MapScriptHeader:
 	const ROUTE36_COOLTRAINERF
 
 Route36ArthurCallback:
-	checkcode VAR_WEEKDAY
+	readvar VAR_WEEKDAY
 	ifequal THURSDAY, .ArthurAppears
 	disappear ROUTE36_ARTHUR
-	return
+	endcallback
 
 .ArthurAppears:
 	appear ROUTE36_ARTHUR
-	return
+	endcallback
 
 Route36SuicuneScript:
 	showemote EMOTE_SHOCK, PLAYER, 15
@@ -86,7 +86,7 @@ WateredWeirdTreeScript:: ; export (for when you use Squirtbottle from pack)
 	playsound SFX_SANDSTORM
 	applyonemovement ROUTE36_WEIRD_TREE, tree_shake
 	showtext SudowoodoAttackedText
-	writecode VAR_BATTLETYPE, BATTLETYPE_TRAP
+	loadvar VAR_BATTLETYPE, BATTLETYPE_TRAP
 	loadwildmon SUDOWOODO, 20
 	startbattle
 	setevent EVENT_FOUGHT_SUDOWOODO
@@ -112,7 +112,7 @@ Route36FloriaScript:
 	waitbutton
 	closetext
 	clearevent EVENT_FLORIA_AT_FLOWER_SHOP
-	checkcode VAR_FACING
+	readvar VAR_FACING
 	ifequal UP, .Up
 	applymovement ROUTE36_FLORIA, FloriaMovement1
 	disappear ROUTE36_FLORIA
@@ -137,24 +137,24 @@ Route36RockSmashGuyScript:
 
 .ClearedSudowoodo:
 	writetext RockSmashGuyText2
-	buttonsound
+	promptbutton
 	verbosegivetmhm TM_ROCK_SMASH
 	setevent EVENT_GOT_TM50_ROCK_SMASH
 .AlreadyGotRockSmash:
 	jumpopenedtext RockSmashGuyText3
 
-LassScript_0x1940e0:
+Route36LassScript:
 	checkevent EVENT_FOUGHT_SUDOWOODO
-	iftrue_jumptextfaceplayer UnknownText_0x19469e
+	iftrue_jumptextfaceplayer Route36LassText_ClearedSudowoodo
 	jumptextfaceplayer UnknownText_0x1945b8
 
 TrainerSchoolboyAlan1:
 	trainer SCHOOLBOY, ALAN1, EVENT_BEAT_SCHOOLBOY_ALAN, SchoolboyAlan1SeenText, SchoolboyAlan1BeatenText, 0, .Script
 
 .Script:
-	writecode VAR_CALLERID, PHONE_SCHOOLBOY_ALAN
+	loadvar VAR_CALLERID, PHONE_SCHOOLBOY_ALAN
 	opentext
-	checkflag ENGINE_ALAN
+	checkflag ENGINE_ALAN_READY_FOR_REMATCH
 	iftrue .ChooseRematch
 	checkflag ENGINE_ALAN_HAS_FIRE_STONE
 	iftrue .GiveFireStone
@@ -162,11 +162,11 @@ TrainerSchoolboyAlan1:
 	iftrue .NumberAccepted
 	checkevent EVENT_ALAN_ASKED_FOR_PHONE_NUMBER
 	iftrue .AskAgainForPhoneNumber
-	writetext UnknownText_0x1947aa
-	buttonsound
+	writetext SchoolboyAlanBooksText
+	promptbutton
 	setevent EVENT_ALAN_ASKED_FOR_PHONE_NUMBER
 	callstd asknumber1m
-	jump .ContinueAskForPhoneNumber
+	sjump .ContinueAskForPhoneNumber
 
 .AskAgainForPhoneNumber:
 	callstd asknumber2m
@@ -174,14 +174,14 @@ TrainerSchoolboyAlan1:
 	askforphonenumber PHONE_SCHOOLBOY_ALAN
 	ifequal $1, .PhoneFull
 	ifequal $2, .NumberDeclined
-	trainertotext SCHOOLBOY, ALAN1, $0
+	gettrainername SCHOOLBOY, ALAN1, $0
 	callstd registerednumberm
 	jumpstd numberacceptedm
 
 .ChooseRematch:
 	callstd rematchm
 	winlosstext SchoolboyAlan1BeatenText, 0
-	copybytetovar wAlanFightCount
+	readmem wAlanFightCount
 	ifequal 4, .Fight4
 	ifequal 3, .Fight3
 	ifequal 2, .Fight2
@@ -203,39 +203,39 @@ TrainerSchoolboyAlan1:
 	loadtrainer SCHOOLBOY, ALAN1
 	startbattle
 	reloadmapafterbattle
-	loadvar wAlanFightCount, 1
-	clearflag ENGINE_ALAN
+	loadmem wAlanFightCount, 1
+	clearflag ENGINE_ALAN_READY_FOR_REMATCH
 	end
 
 .LoadFight1:
 	loadtrainer SCHOOLBOY, ALAN2
 	startbattle
 	reloadmapafterbattle
-	loadvar wAlanFightCount, 2
-	clearflag ENGINE_ALAN
+	loadmem wAlanFightCount, 2
+	clearflag ENGINE_ALAN_READY_FOR_REMATCH
 	end
 
 .LoadFight2:
 	loadtrainer SCHOOLBOY, ALAN3
 	startbattle
 	reloadmapafterbattle
-	loadvar wAlanFightCount, 3
-	clearflag ENGINE_ALAN
+	loadmem wAlanFightCount, 3
+	clearflag ENGINE_ALAN_READY_FOR_REMATCH
 	end
 
 .LoadFight3:
 	loadtrainer SCHOOLBOY, ALAN4
 	startbattle
 	reloadmapafterbattle
-	loadvar wAlanFightCount, 4
-	clearflag ENGINE_ALAN
+	loadmem wAlanFightCount, 4
+	clearflag ENGINE_ALAN_READY_FOR_REMATCH
 	end
 
 .LoadFight4:
 	loadtrainer SCHOOLBOY, ALAN5
 	startbattle
 	reloadmapafterbattle
-	clearflag ENGINE_ALAN
+	clearflag ENGINE_ALAN_READY_FOR_REMATCH
 	end
 
 .GiveFireStone:
@@ -294,7 +294,7 @@ Route36CooltrainerfChiaraScript:
 .Beaten:
 	opentext
 	writetext .AfterText1
-	buttonsound
+	promptbutton
 	verbosegiveitem BINDING_BAND
 	iffalse_endtext
 	setevent EVENT_GOT_BINDING_BAND_FROM_ROUTE_36_LEADER
@@ -395,16 +395,16 @@ ArthurScript:
 	opentext
 	checkevent EVENT_GOT_HARD_STONE_FROM_ARTHUR
 	iftrue .AlreadyGotStone
-	checkcode VAR_WEEKDAY
+	readvar VAR_WEEKDAY
 	ifnotequal THURSDAY, ArthurNotThursdayScript
 	checkevent EVENT_MET_ARTHUR_OF_THURSDAY
 	iftrue .MetArthur
 	writetext MeetArthurText
-	buttonsound
+	promptbutton
 	setevent EVENT_MET_ARTHUR_OF_THURSDAY
 .MetArthur:
 	writetext ArthurGivesGiftText
-	buttonsound
+	promptbutton
 	verbosegiveitem HARD_STONE
 	iffalse .BagFull
 	setevent EVENT_GOT_HARD_STONE_FROM_ARTHUR
@@ -574,7 +574,7 @@ UnknownText_0x1945b8:
 	line "opened…"
 	done
 
-UnknownText_0x19469e:
+Route36LassText_ClearedSudowoodo:
 	text "That odd tree dis-"
 	line "appeared without a"
 	cont "trace."
@@ -613,7 +613,7 @@ SchoolboyAlan1BeatenText:
 	line "error?"
 	done
 
-UnknownText_0x1947aa:
+SchoolboyAlanBooksText:
 	text "Darn. I study five"
 	line "hours a day too."
 

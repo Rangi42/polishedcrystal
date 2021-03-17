@@ -18,7 +18,7 @@ EvolveAfterBattle:
 
 	push hl
 
-EvolveAfterBattle_MasterLoop
+EvolveAfterBattle_MasterLoop:
 	ld hl, wCurPartyMon
 	inc [hl]
 
@@ -125,7 +125,7 @@ EvolveAfterBattle_MasterLoop
 	cp PICHU
 	jr nz, .not_spiky_eared_pichu
 	ld a, [wTempMonForm]
-	and FORM_MASK
+	and BASEMON_MASK
 	cp 2
 	jp z, .dont_evolve_2
 
@@ -136,16 +136,16 @@ EvolveAfterBattle_MasterLoop
 	cp TR_MORNDAY
 	jp z, .happiness_daylight
 
-; TR_NITE
+; TR_EVENITE
 	ld a, [wTimeOfDay]
 	cp NITE
-	jp nz, .dont_evolve_3
+	jp c, .dont_evolve_3
 	jp .proceed
 
 .happiness_daylight
 	ld a, [wTimeOfDay]
 	cp NITE
-	jp z, .dont_evolve_3
+	jp nc, .dont_evolve_3
 	jp .proceed
 
 .item
@@ -237,7 +237,7 @@ endr
 	ld a, [wTempMonLevel]
 	ld [wCurPartyLevel], a
 	ld a, [wTempMonForm]
-	and FORM_MASK
+	and BASEMON_MASK
 	ld [wCurForm], a
 	ld a, $1
 	ld [wMonTriedToEvolve], a
@@ -287,7 +287,7 @@ endr
 
 	push hl
 	ld hl, Text_EvolvedIntoPKMN
-	call PrintTextBoxText
+	call PrintTextboxText
 
 	ld de, MUSIC_NONE
 	call PlayMusic
@@ -301,7 +301,7 @@ endr
 	call ClearTileMap
 	call UpdateSpeciesNameIfNotNicknamed
 	ld a, [wTempMonForm]
-	and FORM_MASK
+	and BASEMON_MASK
 	ld [wCurForm], a
 	call GetBaseData
 
@@ -407,7 +407,7 @@ _PlainFormOnEvolution:
 _ChangeFormOnEvolution:
 	ld b, a
 	ld a, [wTempMonForm]
-	and $ff - FORM_MASK
+	and $ff - BASEMON_MASK
 	or b
 	ld [wTempMonForm], a
 	ret
@@ -478,22 +478,22 @@ IsMonHoldingEverstone:
 
 Text_CongratulationsYourPokemon:
 	; Congratulations! Your @ @
-	text_jump UnknownText_0x1c4b92
+	text_far _CongratulationsYourPokemonText
 	text_end
 
 Text_EvolvedIntoPKMN:
 	; evolved into @ !
-	text_jump UnknownText_0x1c4baf
+	text_far _EvolvedIntoText
 	text_end
 
 Text_StoppedEvolving:
 	; Huh? @ stopped evolving!
-	text_jump UnknownText_0x1c4bc5
+	text_far _StoppedEvolvingText
 	text_end
 
 Text_WhatEvolving:
 	; What? @ is evolving!
-	text_jump UnknownText_0x1c4be3
+	text_far _EvolvingText
 	text_end
 
 LearnEvolutionMove:
@@ -619,7 +619,7 @@ FillMoves:
 	ld a, [wEvolutionOldSpecies]
 	and a
 	jr z, .CheckMove
-	ld a, [wd002]
+	ld a, [wPrevPartyLevel]
 	cp b
 	jr nc, .GetMove
 
@@ -758,7 +758,7 @@ GetPartyEvosAttacksPointer:
 	ld bc, PARTYMON_STRUCT_LENGTH
 	rst AddNTimes
 	ld a, [hl]
-	and FORM_MASK
+	and BASEMON_MASK
 	ld b, a
 	; c = species
 	pop af

@@ -1,14 +1,14 @@
 LavRadioTower3F_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event  3,  0, LAV_RADIO_TOWER_2F, 2
 	warp_event 15,  0, LAV_RADIO_TOWER_4F, 1
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 0 ; bg events
+	def_bg_events
 
-	db 0 ; object events
+	def_object_events

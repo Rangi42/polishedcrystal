@@ -135,12 +135,15 @@ AbilityDescriptions:
 	dw ToughClawsDescription
 	dw PixilateDescription
 	dw ParentalBondDescription
+	dw BerserkDescription
 	dw SlushRushDescription
 	dw GalvanizeDescription
 	dw CorrosionDescription
 	dw TanglingHairDescription
+	dw GorillaTacticsDescription
 	dw NeutralizingGasDescription
 	dw PastelVeilDescription
+	dw QuickDrawDescription
 
 NoAbilityDescription:
 	db    "Abilities are"
@@ -678,6 +681,10 @@ ParentalBondDescription:
 	db    "Parent and child"
 	next1 "attack together.@"
 
+BerserkDescription:
+	db    "Ups Spcl.Atk. when"
+	next1 "damaged over half.@"
+
 SlushRushDescription:
 	db    "Boosts Speed in"
 	next1 "a hailstorm.@"
@@ -694,6 +701,14 @@ TanglingHairDescription:
 	db    "Contact may lower"
 	next1 "the foe's Speed.@"
 
+GorillaTacticsDescription:
+	db    "Boosts Attack, but"
+	next1 "allows one move.@"
+
 NeutralizingGasDescription:
 	db    "Suppresses all"
 	next1 "other Abilities.@"
+
+QuickDrawDescription:
+	db    "Moves first"
+	next1 "occasionally.@"

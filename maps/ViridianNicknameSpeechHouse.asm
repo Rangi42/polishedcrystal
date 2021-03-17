@@ -1,23 +1,23 @@
 ViridianNicknameSpeechHouse_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event  2,  7, VIRIDIAN_CITY, 2
 	warp_event  3,  7, VIRIDIAN_CITY, 2
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 0 ; bg events
+	def_bg_events
 
-	db 4 ; object events
-	object_event  2,  4, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x9ae54, -1
-	object_event  5,  4, SPRITE_TWIN, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x9aecb, -1
+	def_object_events
+	object_event  2,  4, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, ViridianNicknameSpeechHousePokefanMText, -1
+	object_event  5,  4, SPRITE_TWIN, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, ViridianNicknameSpeechHouseLassText, -1
 	pokemon_event  5,  2, HOOTHOOT, -1, -1, PAL_NPC_BROWN, HootyText, -1
 	pokemon_event  6,  3, RATTATA, -1, -1, PAL_NPC_PURPLE, RatteyText, -1
 
-UnknownText_0x9ae54:
+ViridianNicknameSpeechHousePokefanMText:
 	text "Do you put a lot"
 	line "of thought into"
 
@@ -31,7 +31,7 @@ UnknownText_0x9ae54:
 	line "with others."
 	done
 
-UnknownText_0x9aecb:
+ViridianNicknameSpeechHouseLassText:
 	text "They're Hooty--"
 	line "a Hoothoot--and"
 	cont "Rattey--a Rattata."

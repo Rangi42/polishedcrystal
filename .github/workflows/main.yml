@@ -10,11 +10,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Set environment variables
-      run: echo "::set-env name=SHORT_SHA::$(echo ${GITHUB_SHA} | cut -c1-8)"
+      run: echo "SHORT_SHA=$(echo ${GITHUB_SHA} | cut -c1-8)" >> $GITHUB_ENV
     - name: Install dependencies
       run: |
         sudo apt-get install make python gcc git bison
-        git clone https://github.com/rednex/rgbds.git
+        git clone -b v0.5.0-rc1 --depth=1 https://github.com/gbdev/rgbds
         pushd rgbds
         sudo make install
         popd
@@ -26,19 +26,19 @@ jobs:
         make -j4
         mv polishedcrystal-3.0.0-beta.gbc build/polishedcrystal-3.0.0-beta.gbc
         mv polishedcrystal-3.0.0-beta.sym build/polishedcrystal-3.0.0-beta.sym
-        make clean
+        make tidy
         make -j4 faithful
         mv polishedcrystal-3.0.0-beta.gbc build/polishedcrystal-3.0.0-faithful-beta.gbc
         mv polishedcrystal-3.0.0-beta.sym build/polishedcrystal-3.0.0-faithful-beta.sym
-        make clean
+        make tidy
         make -j4 debug
         mv polishedcrystal-3.0.0-beta.gbc build/polishedcrystal-3.0.0-debug-beta.gbc
         mv polishedcrystal-3.0.0-beta.sym build/polishedcrystal-3.0.0-debug-beta.sym
-        make clean
+        make tidy
         make -j4 faithful debug
         mv polishedcrystal-3.0.0-beta.gbc build/polishedcrystal-3.0.0-faithful-debug-beta.gbc
         mv polishedcrystal-3.0.0-beta.sym build/polishedcrystal-3.0.0-faithful-debug-beta.sym
-        make clean
+        make tidy
         popd
     - name: Delete old release
       id: delete_release
@@ -93,7 +93,7 @@ jobs:
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
         asset_path: ./polishedcrystal/build/polishedcrystal-3.0.0-faithful-beta.gbc
-        asset_name: polishedcrystal-3.0.0-beta-faithful-${{ env.SHORT_SHA }}.gbc
+        asset_name: polishedcrystal-3.0.0-beta-${{ env.SHORT_SHA }}-faithful.gbc
         asset_content_type: application/octet-stream
     - name: Upload faithful SYM
       id: upload-faithful-sym
@@ -103,7 +103,7 @@ jobs:
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
         asset_path: ./polishedcrystal/build/polishedcrystal-3.0.0-faithful-beta.sym
-        asset_name: polishedcrystal-3.0.0-beta-faithful-${{ env.SHORT_SHA }}.sym
+        asset_name: polishedcrystal-3.0.0-beta-${{ env.SHORT_SHA }}-faithful.sym
         asset_content_type: text/plain
     - name: Upload debug ROM
       id: upload-debug
@@ -113,7 +113,7 @@ jobs:
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
         asset_path: ./polishedcrystal/build/polishedcrystal-3.0.0-debug-beta.gbc
-        asset_name: polishedcrystal-3.0.0-beta-debug-${{ env.SHORT_SHA }}.gbc
+        asset_name: polishedcrystal-3.0.0-beta-${{ env.SHORT_SHA }}-debug.gbc
         asset_content_type: application/octet-stream
     - name: Upload debug SYM
       id: upload-debug-sym
@@ -123,7 +123,7 @@ jobs:
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
         asset_path: ./polishedcrystal/build/polishedcrystal-3.0.0-debug-beta.sym
-        asset_name: polishedcrystal-3.0.0-beta-debug-${{ env.SHORT_SHA }}.sym
+        asset_name: polishedcrystal-3.0.0-beta-${{ env.SHORT_SHA }}-debug.sym
         asset_content_type: text/plain
     - name: Upload faithful debug ROM
       id: upload-faithful-debug
@@ -133,7 +133,7 @@ jobs:
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
         asset_path: ./polishedcrystal/build/polishedcrystal-3.0.0-faithful-debug-beta.gbc
-        asset_name: polishedcrystal-3.0.0-beta-faithful-debug-${{ env.SHORT_SHA }}.gbc
+        asset_name: polishedcrystal-3.0.0-beta-${{ env.SHORT_SHA }}-faithful-debug.gbc
         asset_content_type: application/octet-stream
     - name: Upload faithful debug SYM
       id: upload-faithful-debug-sym
@@ -143,5 +143,5 @@ jobs:
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
         asset_path: ./polishedcrystal/build/polishedcrystal-3.0.0-faithful-debug-beta.sym
-        asset_name: polishedcrystal-3.0.0-beta-faithful-debug-${{ env.SHORT_SHA }}.sym
+        asset_name: polishedcrystal-3.0.0-beta-${{ env.SHORT_SHA }}-faithful-debug.sym
         asset_content_type: text/plain

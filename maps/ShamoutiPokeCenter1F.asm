@@ -1,29 +1,29 @@
 ShamoutiPokeCenter1F_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 1 ; callbacks
+	def_callbacks
 	callback MAPCALLBACK_TILES, ShamoutiPokeCenter1FFixStairScript
 
-	db 3 ; warp events
+	def_warp_events
 	warp_event  5,  7, SHAMOUTI_ISLAND, 1
 	warp_event  6,  7, SHAMOUTI_ISLAND, 1
 	warp_event  0,  7, POKECENTER_2F, 1
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 1 ; bg events
-	bg_event 10,  1, SIGNPOST_READ, PokemonJournalLoreleiScript
+	def_bg_events
+	bg_event 10,  1, BGEVENT_READ, PokemonJournalLoreleiScript
 
-	db 2 ; object events
-	object_event  6,  3, SPRITE_IVY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ShamoutiPokeCenter1FIvyScript, EVENT_SHAMOUTI_POKE_CENTER_IVY
+	def_object_events
+	object_event  6,  3, SPRITE_IVY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ShamoutiPokeCenter1FIvyScript, EVENT_SHAMOUTI_POKE_CENTER_IVY
 	pc_nurse_event  5, 1
 
-	const_def 1 ; object constants
+	object_const_def
 	const SHAMOUTIPOKECENTER1F_IVY
 
 ShamoutiPokeCenter1FFixStairScript:
 	changeblock 0, 6, $39
-	return
+	endcallback
 
 PokemonJournalLoreleiScript:
 	setflag ENGINE_READ_LORELEI_JOURNAL
@@ -69,51 +69,51 @@ ShamoutiPokeCenter1FIvyScript:
 .Bulbasaur:
 	setevent EVENT_GOT_BULBASAUR_FROM_IVY
 	writetext .ChoseKantoStarterText
-	buttonsound
+	promptbutton
 	waitsfx
-	checkcode VAR_PARTYCOUNT
+	readvar VAR_PARTYCOUNT
 	ifequal $6, .NoRoom
-	pokenamemem BULBASAUR, $0
+	getmonname BULBASAUR, $0
 	writetext .ReceivedKantoStarterText
 	playsound SFX_CAUGHT_MON
 	waitsfx
-	buttonsound
+	promptbutton
 	givepoke BULBASAUR, NO_FORM, 10, SITRUS_BERRY
-	jump .Finish
+	sjump .Finish
 
 .Charmander:
 	setevent EVENT_GOT_CHARMANDER_FROM_IVY
 	writetext .ChoseKantoStarterText
-	buttonsound
+	promptbutton
 	waitsfx
-	checkcode VAR_PARTYCOUNT
+	readvar VAR_PARTYCOUNT
 	ifequal $6, .NoRoom
-	pokenamemem CHARMANDER, $0
+	getmonname CHARMANDER, $0
 	writetext .ReceivedKantoStarterText
 	playsound SFX_CAUGHT_MON
 	waitsfx
-	buttonsound
+	promptbutton
 	givepoke CHARMANDER, NO_FORM, 10, SITRUS_BERRY
-	jump .Finish
+	sjump .Finish
 
 .Squirtle:
 	setevent EVENT_GOT_SQUIRTLE_FROM_IVY
 	writetext .ChoseKantoStarterText
-	buttonsound
+	promptbutton
 	waitsfx
-	checkcode VAR_PARTYCOUNT
+	readvar VAR_PARTYCOUNT
 	ifequal $6, .NoRoom
-	pokenamemem SQUIRTLE, $0
+	getmonname SQUIRTLE, $0
 	writetext .ReceivedKantoStarterText
 	playsound SFX_CAUGHT_MON
 	waitsfx
-	buttonsound
+	promptbutton
 	givepoke SQUIRTLE, NO_FORM, 10, SITRUS_BERRY
 .Finish:
 	writetext .GoodbyeText
 	waitbutton
 	closetext
-	checkcode VAR_FACING
+	readvar VAR_FACING
 	turnobject PLAYER, DOWN
 	ifnotequal UP, .noleftstep
 	applyonemovement SHAMOUTIPOKECENTER1F_IVY, step_left
@@ -194,7 +194,7 @@ ShamoutiPokeCenter1FIvyScript:
 .ReceivedKantoStarterText:
 	text "<PLAYER> received"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "!"
 	done
 
@@ -209,7 +209,7 @@ ShamoutiPokeCenter1FIvyScript:
 	para "know you'll take"
 	line "good care of that"
 	cont ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 
 	para "Well, I need to"

@@ -1,14 +1,14 @@
 ShamoutiMerchant_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event  2,  7, SHAMOUTI_ISLAND, 6
 	warp_event  3,  7, SHAMOUTI_ISLAND, 6
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 0 ; bg events
+	def_bg_events
 
-	db 0 ; object events
+	def_object_events

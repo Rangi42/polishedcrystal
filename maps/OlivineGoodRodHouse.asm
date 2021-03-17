@@ -1,18 +1,18 @@
 OlivineGoodRodHouse_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event  2,  7, OLIVINE_CITY, 5
 	warp_event  3,  7, OLIVINE_CITY, 5
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 0 ; bg events
+	def_bg_events
 
-	db 1 ; object events
-	object_event  2,  3, SPRITE_FISHING_GURU, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_SCRIPT, 0, GoodRodGuru, -1
+	def_object_events
+	object_event  2,  3, SPRITE_FISHING_GURU, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, GoodRodGuru, -1
 
 GoodRodGuru:
 	faceplayer
@@ -23,7 +23,7 @@ GoodRodGuru:
 	yesorno
 	iffalse_jumpopenedtext DontWantGoodRodText
 	writetext GiveGoodRodText
-	buttonsound
+	promptbutton
 	verbosegivekeyitem GOOD_ROD
 	writetext GaveGoodRodText
 	waitbutton

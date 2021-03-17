@@ -1,27 +1,27 @@
 Route26_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 3 ; warp events
+	def_warp_events
 	warp_event  7,  5, POKEMON_LEAGUE_GATE, 3
 	warp_event 15, 57, ROUTE_26_HEAL_SPEECH_HOUSE, 1
 	warp_event  5, 71, ROUTE_26_DAY_OF_WEEK_SIBLINGS_HOUSE, 1
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 1 ; bg events
-	bg_event  8,  6, SIGNPOST_JUMPTEXT, Route26SignText
+	def_bg_events
+	bg_event  8,  6, BGEVENT_JUMPTEXT, Route26SignText
 
-	db 11 ; object events
-	object_event  9, 38, SPRITE_DRAGON_TAMER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerDragonTamerKazu, -1
-	object_event 14, 24, SPRITE_ACE_TRAINER_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 2, TrainerCooltrainermGaven1, -1
-	object_event 10, 56, SPRITE_ACE_TRAINER_F, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerCooltrainerfJoyce, -1
-	object_event  5,  8, SPRITE_ACE_TRAINER_F, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 4, TrainerCooltrainerfBeth1, -1
-	object_event 13, 79, SPRITE_PSYCHIC, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerPsychicRichard, -1
-	object_event  2, 82, SPRITE_BATTLE_GIRL, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerBattleGirlRonda, -1
-	object_event  6, 100, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerFisherScott, -1
-	object_event 10, 92, SPRITE_DRAGON_TAMER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerDragonTamerErick, -1
+	def_object_events
+	object_event  9, 38, SPRITE_DRAGON_TAMER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerDragonTamerKazu, -1
+	object_event 14, 24, SPRITE_ACE_TRAINER_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_TRAINER, 2, TrainerCooltrainermGaven1, -1
+	object_event 10, 56, SPRITE_ACE_TRAINER_F, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerCooltrainerfJoyce, -1
+	object_event  5,  8, SPRITE_ACE_TRAINER_F, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_TRAINER, 4, TrainerCooltrainerfBeth1, -1
+	object_event 13, 79, SPRITE_PSYCHIC, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, GenericTrainerPsychicRichard, -1
+	object_event  2, 82, SPRITE_BATTLE_GIRL, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 4, GenericTrainerBattleGirlRonda, -1
+	object_event  6, 100, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerFisherScott, -1
+	object_event 10, 92, SPRITE_DRAGON_TAMER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerDragonTamerErick, -1
 	fruittree_event 14, 54, FRUITTREE_ROUTE_26, SITRUS_BERRY, PAL_NPC_BROWN
 	itemball_event  9, 15, MAX_ELIXIR, 1, EVENT_ROUTE_26_MAX_ELIXIR
 	tmhmball_event 13, 34, TM_DRAGON_CLAW, EVENT_ROUTE_26_TM_DRAGON_CLAW
@@ -44,37 +44,37 @@ GenericTrainerDragonTamerKazu:
 	done
 
 TrainerCooltrainermGaven1:
-	trainer COOLTRAINERM, GAVEN1, EVENT_BEAT_COOLTRAINERM_GAVEN, CooltrainermGaven1SeenText, CooltrainermGaven1BeatenText, 0, CooltrainermGaven1Script
+	trainer COOLTRAINERM, GAVEN1, EVENT_BEAT_COOLTRAINERM_GAVEN, CooltrainermGaven1SeenText, CooltrainermGaven1BeatenText, 0, .Script
 
-CooltrainermGaven1Script:
-	writecode VAR_CALLERID, PHONE_COOLTRAINERM_GAVEN
+.Script:
+	loadvar VAR_CALLERID, PHONE_COOLTRAINERM_GAVEN
 	opentext
-	checkflag ENGINE_GAVEN
-	iftrue UnknownScript_0x1a4d79
+	checkflag ENGINE_GAVEN_READY_FOR_REMATCH
+	iftrue .WantsBattle
 	checkcellnum PHONE_COOLTRAINERM_GAVEN
-	iftrue UnknownScript_0x1a4dcb
+	iftrue .NumberAccepted
 	checkevent EVENT_GAVEN_ASKED_FOR_PHONE_NUMBER
-	iftrue UnknownScript_0x1a4d62
-	writetext UnknownText_0x1a4fe4
-	buttonsound
+	iftrue .AskedAlready
+	writetext CooltrainermGavenAfterText
+	promptbutton
 	setevent EVENT_GAVEN_ASKED_FOR_PHONE_NUMBER
-	scall UnknownScript_0x1a4dbf
-	jump UnknownScript_0x1a4d65
+	scall .AskNumber1
+	sjump .AskForNumber
 
-UnknownScript_0x1a4d62:
-	scall UnknownScript_0x1a4dc3
-UnknownScript_0x1a4d65:
+.AskedAlready:
+	scall .AskNumber2
+.AskForNumber:
 	askforphonenumber PHONE_COOLTRAINERM_GAVEN
-	ifequal $1, UnknownScript_0x1a4dd3
-	ifequal $2, UnknownScript_0x1a4dcf
-	trainertotext COOLTRAINERM, GAVEN1, $0
-	scall UnknownScript_0x1a4dc7
-	jump UnknownScript_0x1a4dcb
+	ifequal $1, .PhoneFull
+	ifequal $2, .NumberDeclined
+	gettrainername COOLTRAINERM, GAVEN1, $0
+	scall .RegisteredNumber
+	sjump .NumberAccepted
 
-UnknownScript_0x1a4d79:
-	scall UnknownScript_0x1a4dd7
+.WantsBattle:
+	scall .Rematch
 	winlosstext CooltrainermGaven1BeatenText, 0
-	copybytetovar wGavenFightCount
+	readmem wGavenFightCount
 	ifequal 2, .Fight2
 	ifequal 1, .Fight1
 	ifequal 0, .LoadFight0
@@ -88,44 +88,44 @@ UnknownScript_0x1a4d79:
 	loadtrainer COOLTRAINERM, GAVEN1
 	startbattle
 	reloadmapafterbattle
-	loadvar wGavenFightCount, 1
-	clearflag ENGINE_GAVEN
+	loadmem wGavenFightCount, 1
+	clearflag ENGINE_GAVEN_READY_FOR_REMATCH
 	end
 
 .LoadFight1:
 	loadtrainer COOLTRAINERM, GAVEN2
 	startbattle
 	reloadmapafterbattle
-	loadvar wGavenFightCount, 2
-	clearflag ENGINE_GAVEN
+	loadmem wGavenFightCount, 2
+	clearflag ENGINE_GAVEN_READY_FOR_REMATCH
 	end
 
 .LoadFight2:
 	loadtrainer COOLTRAINERM, GAVEN3
 	startbattle
 	reloadmapafterbattle
-	clearflag ENGINE_GAVEN
+	clearflag ENGINE_GAVEN_READY_FOR_REMATCH
 	end
 
-UnknownScript_0x1a4dbf:
+.AskNumber1:
 	jumpstd asknumber1m
 
-UnknownScript_0x1a4dc3:
+.AskNumber2:
 	jumpstd asknumber2m
 
-UnknownScript_0x1a4dc7:
+.RegisteredNumber:
 	jumpstd registerednumberm
 
-UnknownScript_0x1a4dcb:
+.NumberAccepted:
 	jumpstd numberacceptedm
 
-UnknownScript_0x1a4dcf:
+.NumberDeclined:
 	jumpstd numberdeclinedm
 
-UnknownScript_0x1a4dd3:
+.PhoneFull:
 	jumpstd phonefullm
 
-UnknownScript_0x1a4dd7:
+.Rematch:
 	jumpstd rematchm
 
 GenericTrainerCooltrainerfJoyce:
@@ -142,37 +142,37 @@ GenericTrainerCooltrainerfJoyce:
 	done
 
 TrainerCooltrainerfBeth1:
-	trainer COOLTRAINERF, BETH1, EVENT_BEAT_COOLTRAINERF_BETH, CooltrainerfBeth1SeenText, CooltrainerfBeth1BeatenText, 0, CooltrainerfBeth1Script
+	trainer COOLTRAINERF, BETH1, EVENT_BEAT_COOLTRAINERF_BETH, CooltrainerfBeth1SeenText, CooltrainerfBeth1BeatenText, 0, .Script
 
-CooltrainerfBeth1Script:
-	writecode VAR_CALLERID, PHONE_COOLTRAINERF_BETH
+.Script:
+	loadvar VAR_CALLERID, PHONE_COOLTRAINERF_BETH
 	opentext
-	checkflag ENGINE_BETH
-	iftrue UnknownScript_0x1a4e35
+	checkflag ENGINE_BETH_READY_FOR_REMATCH
+	iftrue .WantsBattle
 	checkcellnum PHONE_COOLTRAINERF_BETH
-	iftrue UnknownScript_0x1a4e87
+	iftrue .NumberAccepted
 	checkevent EVENT_BETH_ASKED_FOR_PHONE_NUMBER
-	iftrue UnknownScript_0x1a4e1e
-	writetext UnknownText_0x1a51d9
-	buttonsound
+	iftrue .AskedAlready
+	writetext CooltrainerfBethAfterText
+	promptbutton
 	setevent EVENT_BETH_ASKED_FOR_PHONE_NUMBER
-	scall UnknownScript_0x1a4e7b
-	jump UnknownScript_0x1a4e21
+	scall .AskNumber1
+	sjump .AskForNumber
 
-UnknownScript_0x1a4e1e:
-	scall UnknownScript_0x1a4e7f
-UnknownScript_0x1a4e21:
+.AskedAlready:
+	scall .AskNumber2
+.AskForNumber:
 	askforphonenumber PHONE_COOLTRAINERF_BETH
-	ifequal $1, UnknownScript_0x1a4e8f
-	ifequal $2, UnknownScript_0x1a4e8b
-	trainertotext COOLTRAINERF, BETH1, $0
-	scall UnknownScript_0x1a4e83
-	jump UnknownScript_0x1a4e87
+	ifequal $1, .PhoneFull
+	ifequal $2, .NumberDeclined
+	gettrainername COOLTRAINERF, BETH1, $0
+	scall .RegisteredNumber
+	sjump .NumberAccepted
 
-UnknownScript_0x1a4e35:
-	scall UnknownScript_0x1a4e93
+.WantsBattle:
+	scall .Rematch
 	winlosstext CooltrainerfBeth1BeatenText, 0
-	copybytetovar wBethFightCount
+	readmem wBethFightCount
 	ifequal 2, .Fight2
 	ifequal 1, .Fight1
 	ifequal 0, .LoadFight0
@@ -186,44 +186,44 @@ UnknownScript_0x1a4e35:
 	loadtrainer COOLTRAINERF, BETH1
 	startbattle
 	reloadmapafterbattle
-	loadvar wBethFightCount, 1
-	clearflag ENGINE_BETH
+	loadmem wBethFightCount, 1
+	clearflag ENGINE_BETH_READY_FOR_REMATCH
 	end
 
 .LoadFight1:
 	loadtrainer COOLTRAINERF, BETH2
 	startbattle
 	reloadmapafterbattle
-	loadvar wBethFightCount, 2
-	clearflag ENGINE_BETH
+	loadmem wBethFightCount, 2
+	clearflag ENGINE_BETH_READY_FOR_REMATCH
 	end
 
 .LoadFight2:
 	loadtrainer COOLTRAINERF, BETH3
 	startbattle
 	reloadmapafterbattle
-	clearflag ENGINE_BETH
+	clearflag ENGINE_BETH_READY_FOR_REMATCH
 	end
 
-UnknownScript_0x1a4e7b:
+.AskNumber1:
 	jumpstd asknumber1f
 
-UnknownScript_0x1a4e7f:
+.AskNumber2:
 	jumpstd asknumber2f
 
-UnknownScript_0x1a4e83:
+.RegisteredNumber:
 	jumpstd registerednumberf
 
-UnknownScript_0x1a4e87:
+.NumberAccepted:
 	jumpstd numberacceptedf
 
-UnknownScript_0x1a4e8b:
+.NumberDeclined:
 	jumpstd numberdeclinedf
 
-UnknownScript_0x1a4e8f:
+.PhoneFull:
 	jumpstd phonefullf
 
-UnknownScript_0x1a4e93:
+.Rematch:
 	jumpstd rematchf
 
 GenericTrainerPsychicRichard:
@@ -294,7 +294,7 @@ CooltrainermGaven1BeatenText:
 	line "tougher!"
 	done
 
-UnknownText_0x1a4fe4:
+CooltrainermGavenAfterText:
 	text "To get to the"
 	line "#mon League,"
 
@@ -344,7 +344,7 @@ CooltrainerfBeth1BeatenText:
 	line "tools of war."
 	done
 
-UnknownText_0x1a51d9:
+CooltrainerfBethAfterText:
 	text "#mon are in-"
 	line "valuable, lifelong"
 	cont "partners."

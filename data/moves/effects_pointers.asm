@@ -15,6 +15,7 @@ MoveEffectsPointers:
 	dw ConfuseHit
 	dw AttackUpHit
 	dw DefenseUpHit
+	dw SpeedUpHit
 	dw AllUpHit
 	dw AttackDownHit
 	dw DefenseDownHit
@@ -52,6 +53,9 @@ MoveEffectsPointers:
 	dw Growth
 	dw DragonDance
 	dw HoneClaws
+	dw DefenseCurl
+	dw Minimize
+	dw ShellSmash
 	dw AttackDown
 	dw DefenseDown
 	dw StringShot
@@ -99,7 +103,6 @@ MoveEffectsPointers:
 	dw HealBell
 	dw Thief
 	dw MeanLook
-	dw FlameWheel
 	dw Curse
 	dw Protect
 	dw Spikes
@@ -132,8 +135,6 @@ MoveEffectsPointers:
 	dw Thunder
 	dw Teleport
 	dw Fly
-	dw DefenseCurl
-	dw Minimize
 	dw FlareBlitz
 	dw NormalHit
 	dw NormalHit
@@ -152,4 +153,3 @@ MoveEffectsPointers:
 	dw LowKick
 	dw BrickBreak
 	dw TrickRoom
-	dw ShellSmash

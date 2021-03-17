@@ -1,15 +1,15 @@
 YellowForest_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 2 ; callbacks
+	def_callbacks
 	callback MAPCALLBACK_NEWMAP, YellowForestFlyPoint
 	callback MAPCALLBACK_TILES, YellowForestTileScript
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event 28, 47, YELLOW_FOREST_GATE, 1
 	warp_event 29, 47, YELLOW_FOREST_GATE, 2
 
-	db 8 ; coord events
+	def_coord_events
 	coord_event 32, 16, 1, YellowForestBridgeOverheadTrigger
 	coord_event 32, 17, 1, YellowForestBridgeOverheadTrigger
 	coord_event 39, 16, 1, YellowForestBridgeOverheadTrigger
@@ -19,29 +19,29 @@ YellowForest_MapScriptHeader:
 	coord_event 38, 16, 0, YellowForestBridgeUnderfootTrigger
 	coord_event 38, 17, 0, YellowForestBridgeUnderfootTrigger
 
-	db 4 ; bg events
-	bg_event 39, 14, SIGNPOST_ITEM + BIG_MUSHROOM, EVENT_YELLOW_FOREST_HIDDEN_BIG_MUSHROOM
-	bg_event 43, 36, SIGNPOST_ITEM + BALMMUSHROOM, EVENT_YELLOW_FOREST_HIDDEN_BALM_MUSHROOM
-	bg_event 32, 11, SIGNPOST_ITEM + GOLD_LEAF, EVENT_YELLOW_FOREST_HIDDEN_GOLD_LEAF_1
-	bg_event  9, 40, SIGNPOST_ITEM + GOLD_LEAF, EVENT_YELLOW_FOREST_HIDDEN_GOLD_LEAF_2
+	def_bg_events
+	bg_event 39, 14, BGEVENT_ITEM + BIG_MUSHROOM, EVENT_YELLOW_FOREST_HIDDEN_BIG_MUSHROOM
+	bg_event 43, 36, BGEVENT_ITEM + BALMMUSHROOM, EVENT_YELLOW_FOREST_HIDDEN_BALM_MUSHROOM
+	bg_event 32, 11, BGEVENT_ITEM + GOLD_LEAF, EVENT_YELLOW_FOREST_HIDDEN_GOLD_LEAF_1
+	bg_event  9, 40, BGEVENT_ITEM + GOLD_LEAF, EVENT_YELLOW_FOREST_HIDDEN_GOLD_LEAF_2
 
-	db 14 ; object events
-	object_event  7, 24, SPRITE_WALKER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 1, YellowForestWalkerScript, EVENT_YELLOW_FOREST_WALKER
-	object_event  8, 24, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, SKARMORY, -1, -1, PAL_NPC_BROWN, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_YELLOW_FOREST_SKARMORY
-	object_event 47,  6, SPRITE_YELLOW, SPRITEMOVEDATA_WANDER, 1, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, YellowForestYellowScript, -1
-	object_event 49, 26, SPRITE_BALL_CUT_FRUIT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_PURPLE, PERSONTYPE_SCRIPT, 0, YellowForestSurfPikachuDoll, EVENT_DECO_SURFING_PIKACHU_DOLL
-	object_event 31,  8, SPRITE_SUPER_NERD, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, YellowForestSuperNerdText, -1
-	object_event 19, 41, SPRITE_SCHOOLGIRL, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerSchoolgirlSarah, -1
-	object_event 13, 34, SPRITE_SCHOOLGIRL, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerSchoolgirlIsabel, -1
-	object_event  4, 38, SPRITE_TEACHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerTeacherKathryn, -1
-	object_event 43, 42, SPRITE_BREEDER, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerBreederSophie, -1
-	object_event 15, 18, SPRITE_ACE_TRAINER_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, YellowForestCooltrainerMScript, -1
+	def_object_events
+	object_event  7, 24, SPRITE_WALKER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 1, YellowForestWalkerScript, EVENT_YELLOW_FOREST_WALKER
+	object_event  8, 24, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, SKARMORY, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_YELLOW_FOREST_SKARMORY
+	object_event 47,  6, SPRITE_YELLOW, SPRITEMOVEDATA_WANDER, 1, 2, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, YellowForestYellowScript, -1
+	object_event 49, 26, SPRITE_BALL_CUT_FRUIT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_PURPLE, OBJECTTYPE_SCRIPT, 0, YellowForestSurfPikachuDoll, EVENT_DECO_SURFING_PIKACHU_DOLL
+	object_event 31,  8, SPRITE_SUPER_NERD, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, YellowForestSuperNerdText, -1
+	object_event 19, 41, SPRITE_SCHOOLGIRL, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, GenericTrainerSchoolgirlSarah, -1
+	object_event 13, 34, SPRITE_SCHOOLGIRL, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, GenericTrainerSchoolgirlIsabel, -1
+	object_event  4, 38, SPRITE_TEACHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerTeacherKathryn, -1
+	object_event 43, 42, SPRITE_BREEDER, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerBreederSophie, -1
+	object_event 15, 18, SPRITE_ACE_TRAINER_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, YellowForestCooltrainerMScript, -1
 	tmhmball_event 25, 18, TM_LEECH_LIFE, EVENT_YELLOW_FOREST_TM_LEECH_LIFE
 	itemball_event 32, 26, MIRACLE_SEED, 1, EVENT_YELLOW_FOREST_MIRACLE_SEED
 	itemball_event 11, 23, BIG_ROOT, 1, EVENT_YELLOW_FOREST_BIG_ROOT
 	itemball_event 50, 13, LEMONADE, 1, EVENT_YELLOW_FOREST_LEMONADE
 
-	const_def 1 ; object constants
+	object_const_def
 	const YELLOWFOREST_WALKER
 	const YELLOWFOREST_SKARMORY
 	const YELLOWFOREST_YELLOW
@@ -49,17 +49,17 @@ YellowForest_MapScriptHeader:
 
 YellowForestFlyPoint:
 	setflag ENGINE_FLYPOINT_YELLOW_FOREST
-	return
+	endcallback
 
 YellowForestTileScript:
 	checkscene
 	iftrue .underfoot
 	callasm YellowForest_OverheadBridgeAsm
-	return
+	endcallback
 
 .underfoot:
 	callasm YellowForest_UnderfootBridgeAsm
-	return
+	endcallback
 
 YellowForest_OverheadBridgeAsm:
 	changebridgeblock 32, 16, $9d, YELLOW_FOREST
@@ -141,7 +141,7 @@ YellowForestWalkerScript:
 	setevent EVENT_BEAT_WALKER
 	opentext
 	writetext YellowForestWalkerAfterText
-	buttonsound
+	promptbutton
 	verbosegivetmhm HM_FLY
 	setevent EVENT_GOT_HM02_FLY
 	writetext YellowForestWalkerFinalText
@@ -199,7 +199,7 @@ YellowBattleAfterBallScript:
 	opentext
 	writetext YellowForestYellowAfterText
 YellowTryGiveLightBallScript:
-	buttonsound
+	promptbutton
 	verbosegiveitem LIGHT_BALL
 	iffalse NoRoomForLightBallScript
 	setevent EVENT_GOT_LIGHT_BALL_FROM_YELLOW
@@ -224,7 +224,7 @@ YellowForestTutorSeedBombScript:
 	writetext Text_YellowForestTutorQuestion
 	yesorno
 	iffalse .TutorRefused
-	writebyte SEED_BOMB
+	setval SEED_BOMB
 	writetext ClearText
 	special Special_MoveTutor
 	ifequal $0, .TeachMove

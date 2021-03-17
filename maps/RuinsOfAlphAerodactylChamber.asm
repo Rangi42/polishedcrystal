@@ -1,51 +1,51 @@
 RuinsOfAlphAerodactylChamber_MapScriptHeader:
-	db 1 ; scene scripts
+	def_scene_scripts
 	scene_script RuinsofAlphAerodactylChamberTrigger0
 
-	db 1 ; callbacks
-	callback MAPCALLBACK_TILES, UnknownScript_0x58db9
+	def_callbacks
+	callback MAPCALLBACK_TILES, RuinsOfAlphAerodactylChamberHiddenDoorsCallback
 
-	db 5 ; warp events
+	def_warp_events
 	warp_event  3,  9, RUINS_OF_ALPH_OUTSIDE, 4
 	warp_event  4,  9, RUINS_OF_ALPH_OUTSIDE, 4
 	warp_event  3,  3, RUINS_OF_ALPH_INNER_CHAMBER, 8
 	warp_event  4,  3, RUINS_OF_ALPH_INNER_CHAMBER, 9
 	warp_event  4,  0, RUINS_OF_ALPH_AERODACTYL_ITEM_ROOM, 1
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 6 ; bg events
-	bg_event  2,  3, SIGNPOST_JUMPTEXT, RuinsofAlphStatueText
-	bg_event  5,  3, SIGNPOST_JUMPTEXT, RuinsofAlphStatueText
-	bg_event  3,  2, SIGNPOST_UP, MapRuinsofAlphAerodactylChamberSignpost2Script
-	bg_event  4,  2, SIGNPOST_UP, MapRuinsofAlphAerodactylChamberSignpost3Script
-	bg_event  3,  0, SIGNPOST_UP, MapRuinsofAlphAerodactylChamberSignpost4Script
-	bg_event  4,  0, SIGNPOST_UP, MapRuinsofAlphAerodactylChamberSignpost5Script
+	def_bg_events
+	bg_event  2,  3, BGEVENT_JUMPTEXT, RuinsofAlphStatueText
+	bg_event  5,  3, BGEVENT_JUMPTEXT, RuinsofAlphStatueText
+	bg_event  3,  2, BGEVENT_UP, MapRuinsofAlphAerodactylChamberSignpost2Script
+	bg_event  4,  2, BGEVENT_UP, MapRuinsofAlphAerodactylChamberSignpost3Script
+	bg_event  3,  0, BGEVENT_UP, MapRuinsofAlphAerodactylChamberSignpost4Script
+	bg_event  4,  0, BGEVENT_UP, MapRuinsofAlphAerodactylChamberSignpost5Script
 
-	db 0 ; object events
+	def_object_events
 
 RuinsofAlphAerodactylChamberTrigger0:
 	checkevent EVENT_WALL_OPENED_IN_AERODACTYL_CHAMBER
 	iffalse .End
-	priorityjump UnknownScript_0x58dd3
+	prioritysjump RuinsOfAlphAerodactylChamberWallOpenScript
 .End
 	end
 
-UnknownScript_0x58db9:
+RuinsOfAlphAerodactylChamberHiddenDoorsCallback:
 	checkevent EVENT_WALL_OPENED_IN_AERODACTYL_CHAMBER
-	iftrue UnknownScript_0x58dc3
+	iftrue .WallOpen
 	changeblock 4, 0, $24
-UnknownScript_0x58dc3:
+.WallOpen:
 	checkevent EVENT_SOLVED_AERODACTYL_PUZZLE
-	iffalse UnknownScript_0x58dca
-	return
+	iffalse .FloorClosed
+	endcallback
 
-UnknownScript_0x58dca:
+.FloorClosed:
 	changeblock 2, 2, $1
 	changeblock 4, 2, $2
-	return
+	endcallback
 
-UnknownScript_0x58dd3:
+RuinsOfAlphAerodactylChamberWallOpenScript:
 	pause 30
 	earthquake 30
 	showemote EMOTE_SHOCK, PLAYER, 20
@@ -59,16 +59,16 @@ UnknownScript_0x58dd3:
 
 MapRuinsofAlphAerodactylChamberSignpost2Script:
 	refreshscreen
-	writebyte $2
+	setval $2
 	special Special_UnownPuzzle
 	closetext
-	iftrue UnknownScript_0x58df7
+	iftrue .PuzzleComplete
 	end
 
-UnknownScript_0x58df7:
+.PuzzleComplete:
 	setevent EVENT_RUINS_OF_ALPH_INNER_CHAMBER_TOURISTS
 	setevent EVENT_SOLVED_AERODACTYL_PUZZLE
-	setflag ENGINE_UNLOCKED_UNOWNS_3
+	setflag ENGINE_UNLOCKED_UNOWNS_R_TO_W
 	setmapscene RUINS_OF_ALPH_INNER_CHAMBER, $1
 	earthquake 30
 	showemote EMOTE_SHOCK, PLAYER, 15
@@ -86,42 +86,42 @@ UnknownScript_0x58df7:
 
 MapRuinsofAlphAerodactylChamberSignpost3Script:
 	unowntypeface
-	showtext UnknownText_0x58ee7
+	showtext RuinsOfAlphAerodactylChamberDescriptionText
 	restoretypeface
 	special MapCallbackSprites_LoadUsedSpritesGFX
 	end
 
 MapRuinsofAlphAerodactylChamberSignpost5Script:
 	checkevent EVENT_WALL_OPENED_IN_AERODACTYL_CHAMBER
-	iftrue_jumptext UnknownText_0x58ea2
+	iftrue_jumptext RuinsOfAlphAerodactylChamberWallHoleText
 MapRuinsofAlphAerodactylChamberSignpost4Script:
 	opentext
 	checkevent EVENT_RUINS_OF_ALPH_OUTSIDE_TOURIST_YOUNGSTERS
 	iftrue .unsolved
-	writetext UnusedText_0x58e70
-	jump .unownwords
+	writetext RuinsOfAlphChambersItsUnownText
+	sjump .unownwords
 .unsolved
-	writetext UnknownText_0x58e4f
+	writetext RuinsOfAlphAerodactylChamberWallPatternLeftText
 .unownwords
-	writebyte $1
+	setval $1
 	special Special_DisplayUnownWords
 	endtext
 
-UnknownText_0x58e4f:
+RuinsOfAlphAerodactylChamberWallPatternLeftText:
 	text "Patterns appeared"
 	line "on the walls…"
 	done
 
-UnusedText_0x58e70:
+RuinsOfAlphChambersItsUnownText:
 	text "It's Unown text!"
 	done
 
-UnknownText_0x58ea2:
+RuinsOfAlphAerodactylChamberWallHoleText:
 	text "There's a big hole"
 	line "in the wall!"
 	done
 
-UnknownText_0x58ee7:
+RuinsOfAlphAerodactylChamberDescriptionText:
 	text "This flying #-"
 	line "mon attacked its"
 

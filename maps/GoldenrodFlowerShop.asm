@@ -1,39 +1,39 @@
 GoldenrodFlowerShop_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event  2,  7, GOLDENROD_CITY, 6
 	warp_event  3,  7, GOLDENROD_CITY, 6
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 0 ; bg events
+	def_bg_events
 
-	db 3 ; object events
-	object_event  2,  4, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, FlowerShopTeacherScript, -1
-	object_event  5,  6, SPRITE_CUTE_GIRL, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, FlowerShopFloriaScript, EVENT_FLORIA_AT_FLOWER_SHOP
-	object_event  6,  3, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, FlowerShopGentlemanText, EVENT_FLORIA_AT_SUDOWOODO
+	def_object_events
+	object_event  2,  4, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, FlowerShopTeacherScript, -1
+	object_event  5,  6, SPRITE_CUTE_GIRL, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, FlowerShopFloriaScript, EVENT_FLORIA_AT_FLOWER_SHOP
+	object_event  6,  3, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, FlowerShopGentlemanText, EVENT_FLORIA_AT_SUDOWOODO
 
-	const_def 1 ; object constants
+	object_const_def
 	const GOLDENRODFLOWERSHOP_TEACHER
 
 FlowerShopTeacherScript:
 	checkevent EVENT_FOUGHT_SUDOWOODO
 	iftrue .SellMulch
 	checkevent EVENT_GOT_SQUIRTBOTTLE
-	iftrue_jumptextfaceplayer UnknownText_0x5550d
+	iftrue_jumptextfaceplayer GoldenrodFlowerShopTeacherDontDoAnythingDangerousText
 	checkevent EVENT_MET_FLORIA
-	iffalse_jumptextfaceplayer UnknownText_0x553d4
+	iffalse_jumptextfaceplayer GoldenrodFlowerShopTeacherMySisterWentToSeeWigglyTreeRoute36Text
 	checkevent EVENT_TALKED_TO_FLORIA_AT_FLOWER_SHOP
 	iffalse .Lalala
 	checkflag ENGINE_PLAINBADGE
-	iffalse_jumptextfaceplayer UnknownText_0x55463
+	iffalse_jumptextfaceplayer GoldenrodFlowerShopTeacherAskWantToBorrowWaterBottleText
 	faceplayer
 	opentext
-	writetext UnknownText_0x554c2
-	buttonsound
+	writetext GoldenrodFlowerShopTeacherHeresTheSquirtbottleText
+	promptbutton
 	verbosegivekeyitem SQUIRTBOTTLE
 	setevent EVENT_GOT_SQUIRTBOTTLE
 	closetext
@@ -43,7 +43,7 @@ FlowerShopTeacherScript:
 
 .Lalala:
 	turnobject GOLDENRODFLOWERSHOP_TEACHER, LEFT
-	jumptext UnknownText_0x5552e
+	jumptext GoldenrodFlowerShopTeacherLalalaHavePlentyOfWaterText
 
 .SellMulch:
 	faceplayer
@@ -63,7 +63,7 @@ FlowerShopTeacherScript:
 	giveitem MULCH
 	iffalse_jumpopenedtext NoRoomForMulchText
 	takemoney $0, 200
-	jump .Done
+	sjump .Done
 
 .Buy10:
 	checkmoney $0, 2000
@@ -102,8 +102,8 @@ FlowerShopFloriaScript:
 	checkevent EVENT_FOUGHT_SUDOWOODO
 	iftrue .FoughtSudowoodo
 	checkevent EVENT_GOT_SQUIRTBOTTLE
-	iftrue_jumpopenedtext UnknownText_0x555e6
-	writetext UnknownText_0x55561
+	iftrue_jumpopenedtext GoldenrodFlowerShopFloriaYouBeatWhitneyText
+	writetext GoldenrodFlowerShopFloriaWonderIfSisWillLendWaterBottleText
 	waitbutton
 	closetext
 	setevent EVENT_TALKED_TO_FLORIA_AT_FLOWER_SHOP
@@ -114,9 +114,9 @@ FlowerShopFloriaScript:
 .FoughtSudowoodo:
 	checkitem MULCH
 	iftrue_jumpopenedtext DescribeMulchText
-	jumpopenedtext UnknownText_0x55604
+	jumpopenedtext GoldenrodFlowerShopFloriaItReallyWasAMonText
 
-UnknownText_0x553d4:
+GoldenrodFlowerShopTeacherMySisterWentToSeeWigglyTreeRoute36Text:
 	text "Have you seen that"
 	line "wiggly tree that's"
 
@@ -133,7 +133,7 @@ UnknownText_0x553d4:
 	line "it dangerous?"
 	done
 
-UnknownText_0x55463:
+GoldenrodFlowerShopTeacherAskWantToBorrowWaterBottleText:
 	text "Do you want to"
 	line "borrow the water"
 
@@ -144,7 +144,7 @@ UnknownText_0x55463:
 	line "dangerous with it."
 	done
 
-UnknownText_0x554c2:
+GoldenrodFlowerShopTeacherHeresTheSquirtbottleText:
 	text "Oh, you're better"
 	line "than Whitney…"
 
@@ -153,18 +153,18 @@ UnknownText_0x554c2:
 	cont "SquirtBottle!"
 	done
 
-UnknownText_0x5550d:
+GoldenrodFlowerShopTeacherDontDoAnythingDangerousText:
 	text "Don't do anything"
 	line "too dangerous!"
 	done
 
-UnknownText_0x5552e:
+GoldenrodFlowerShopTeacherLalalaHavePlentyOfWaterText:
 	text "Lalala lalalala."
 	line "Have plenty of"
 	cont "water, my lovely!"
 	done
 
-UnknownText_0x55561:
+GoldenrodFlowerShopFloriaWonderIfSisWillLendWaterBottleText:
 	text "When I told my sis"
 	line "about the jiggly"
 
@@ -178,12 +178,12 @@ UnknownText_0x55561:
 	line "bottle…"
 	done
 
-UnknownText_0x555e6:
+GoldenrodFlowerShopFloriaYouBeatWhitneyText:
 	text "Wow, you beat"
 	line "Whitney? Cool!"
 	done
 
-UnknownText_0x55604:
+GoldenrodFlowerShopFloriaItReallyWasAMonText:
 	text "So it really was a"
 	line "#mon!"
 	done

@@ -94,6 +94,7 @@ Music:
 	dba Music_PokemonTowerRBY
 	dba Music_LavenderTown
 	dba Music_KantoWildBattle
+	dba Music_KantoWildBattleNight
 	dba Music_CeruleanCityHGSS
 	dba Music_BicycleRB
 	dba Music_NuggetBridgeHGSS
@@ -132,6 +133,7 @@ Music:
 	dba Music_MountPyreRSE
 	dba Music_BattleTowerTheme
 	dba Music_BattleTowerLobby
+	dba Music_BattleFactoryRSE
 	dba Music_TrainerBattleBW
 	dba Music_FrontierBrainBattleRSE
 	dba Music_ZinniaEncounterORAS

@@ -88,7 +88,7 @@ Place2DMenuItemStrings:
 .col
 	push bc
 	ld a, [wMenuData_2DMenuItemStringsBank]
-	call Place2DMenuItemName
+	call FarString
 	inc de
 	ld a, [wMenuDataSpacing]
 	ld c, a
@@ -616,10 +616,8 @@ _ExitMenu::
 	call GetWindowStackTop
 	ld a, h
 	or l
-	jr z, .done
-	call PopWindow
+	call nz, PopWindow
 
-.done
 	pop af
 	ldh [rSVBK], a
 	ld hl, wWindowStackSize
@@ -631,10 +629,10 @@ Error_Cant_ExitMenu:
 	call PrintText
 	call ApplyTilemapInVBlank
 .infinite_loop
-	jr .infinite_loop
+	jr .infinite_loop ; no-optimize stub jump
 
 .Text_NoWindowsAvailableForPopping:
-	text_jump UnknownText_0x1c46b7
+	text_far _WindowPoppingErrorText
 	text_end
 
 _InitVerticalMenuCursor::

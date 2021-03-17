@@ -1,26 +1,26 @@
 RuinsOfAlphSinjohChamber_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event  5,  9, RUINS_OF_ALPH_OUTSIDE, 12
 	warp_event  4,  9, RUINS_OF_ALPH_OUTSIDE, 12
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 3 ; bg events
-	bg_event  5,  2, SIGNPOST_UP, RuinsofAlphSinjohChamberSignpost
-	bg_event  4,  3, SIGNPOST_JUMPTEXT, RuinsofAlphStatueText
-	bg_event  6,  3, SIGNPOST_JUMPTEXT, RuinsofAlphStatueText
+	def_bg_events
+	bg_event  5,  2, BGEVENT_UP, RuinsofAlphSinjohChamberSignpost
+	bg_event  4,  3, BGEVENT_JUMPTEXT, RuinsofAlphStatueText
+	bg_event  6,  3, BGEVENT_JUMPTEXT, RuinsofAlphStatueText
 
-	db 4 ; object events
-	object_event  3,  1, SPRITE_WII, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_PURPLE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_MYSTRI_UNOWN_W
-	object_event  7,  1, SPRITE_GAMECUBE, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_PURPLE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_MYSTRI_UNOWN_A
-	object_event  3,  5, SPRITE_GOLD_TROPHY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_PURPLE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_MYSTRI_UNOWN_R
-	object_event  7,  5, SPRITE_SILVER_TROPHY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_PURPLE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_MYSTRI_UNOWN_P
+	def_object_events
+	object_event  3,  1, SPRITE_WII, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_PURPLE, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_MYSTRI_UNOWN_W
+	object_event  7,  1, SPRITE_GAMECUBE, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_PURPLE, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_MYSTRI_UNOWN_A
+	object_event  3,  5, SPRITE_GOLD_TROPHY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_PURPLE, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_MYSTRI_UNOWN_R
+	object_event  7,  5, SPRITE_SILVER_TROPHY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_PURPLE, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_MYSTRI_UNOWN_P
 
-	const_def 1 ; object constants
+	object_const_def
 	const RUINSOFALPHSINJOHCHAMBER_UNOWN_W
 	const RUINSOFALPHSINJOHCHAMBER_UNOWN_A
 	const RUINSOFALPHSINJOHCHAMBER_UNOWN_R
@@ -102,7 +102,7 @@ RuinsofAlphSinjohChamberSignpost:
 
 MovementData_WarpToSinjohRuins:
 	step_dig 32
-	hide_person
+	hide_object
 	step_end
 
 RuinsofAlphSinjohChamberMystriText:
@@ -111,6 +111,6 @@ RuinsofAlphSinjohChamberMystriText:
 	cont "at last."
 	done
 
-RuinsofAlphSinjohChamberSurpriseText
+RuinsofAlphSinjohChamberSurpriseText:
 	text "…!"
 	done

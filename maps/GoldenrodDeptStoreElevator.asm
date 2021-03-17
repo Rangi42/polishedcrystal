@@ -1,18 +1,18 @@
 GoldenrodDeptStoreElevator_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event  1,  3, GOLDENROD_DEPT_STORE_1F, -1
 	warp_event  2,  3, GOLDENROD_DEPT_STORE_1F, -1
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 1 ; bg events
-	bg_event  3,  0, SIGNPOST_READ, GoldenrodDeptStoreElevatorButton
+	def_bg_events
+	bg_event  3,  0, BGEVENT_READ, GoldenrodDeptStoreElevatorButton
 
-	db 0 ; object events
+	def_object_events
 
 GoldenrodDeptStoreElevatorButton:
 	opentext

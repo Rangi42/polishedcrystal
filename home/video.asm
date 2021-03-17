@@ -143,11 +143,11 @@ UpdateBGMap::
 ; Update from a specific row
 ; does not update hBGMapHalf
 	dec a
-	coord bc, 0, 0
+	bccoord 0, 0
 	jr z, .DoCustomSourceTiles
 	dec a
 	ret nz
-	coord bc, 0, 0, wAttrMap
+	bccoord 0, 0, wAttrMap
 	ld a, 1
 	ldh [rVBK], a
 	call .DoCustomSourceTiles
@@ -171,11 +171,11 @@ UpdateBGMap::
 	add hl, bc
 	ld sp, hl
 	ldh a, [hBGMapHalf] ; multiply by 32 to get the bg map offset
+	; assumes [hBGMapHalf] < 16
+	swap a
+	add a
 	ld l, a
 	ld h, 0
-rept 5
-	add hl, hl
-endr
 	ldh a, [hBGMapAddress]
 	add l
 	ld l, a
@@ -251,13 +251,13 @@ endr
 	ld bc, BG_MAP_WIDTH - (SCREEN_WIDTH - 1)
 .row
 ; Copy a row of 20 tiles
-	rept (SCREEN_WIDTH / 2) - 1
+rept (SCREEN_WIDTH / 2) - 1
 	pop de
 	ld [hl], e
 	inc l
 	ld [hl], d
 	inc l
-	endr
+endr
 	pop de
 	ld [hl], e
 	inc l
@@ -314,7 +314,7 @@ _Serve1bppRequest::
 
 ; # tiles to copy
 .next
-	rept 4
+rept 4
 	pop de
 	ld a, e
 	ld [hli], a
@@ -322,25 +322,26 @@ _Serve1bppRequest::
 	ld a, d
 	ld [hli], a
 	ld [hli], a
-	endr
+endr
 	dec b
 	jr nz, .next
 	jp WriteVTileSourceAndDestinationAndReturn
+
 .nextopaque
-	rept 4
+rept 4
 	pop de
+	ld a, $ff
+	ld [hli], a
 	ld a, e
-	ld [hl], $ff
-	inc hl
+	ld [hli], a
+	ld a, $ff
 	ld [hli], a
 	ld a, d
-	ld [hl], $ff
-	inc hl
 	ld [hli], a
-	endr
+endr
 	dec b
 	jr nz, .nextopaque
-	jp WriteVTileSourceAndDestinationAndReturn
+	jr WriteVTileSourceAndDestinationAndReturn
 
 LYOverrideStackCopy::
 	ldh a, [hLYOverrideStackCopyAmount]
@@ -389,13 +390,13 @@ _Serve2bppRequest::
 	ld l, e
 
 .next
-	rept 8
+rept 8
 	pop de
 	ld a, e
 	ld [hli], a
 	ld a, d
 	ld [hli], a
-	endr
+endr
 	dec b
 	jr nz, .next
 
@@ -437,7 +438,7 @@ AnimateTileset::
 	ld a, BANK(_AnimateTileset)
 	rst Bankswitch
 
-	call _AnimateTileset
+	call _AnimateTileset ; far-ok
 
 	pop af
 	ldh [rVBK], a

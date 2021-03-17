@@ -1,15 +1,15 @@
 ShamoutiHotel3F_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 3 ; warp events
+	def_warp_events
 	warp_event  3,  0, SHAMOUTI_HOTEL_2F, 2
 	warp_event 10,  0, SHAMOUTI_HOTEL_ROOM_3B, 1
 	warp_event 14,  0, SHAMOUTI_HOTEL_ROOM_3C, 1
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 0 ; bg events
+	def_bg_events
 
-	db 0 ; object events
+	def_object_events

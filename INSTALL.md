@@ -5,7 +5,7 @@ If you just want to play Polished Crystal, use one of the .ips patches as descri
 > You know it's sitting back and looking at it that you realize that Gamefreak is actually really good devs.  
 > Like you have Pokemon and it's a simple formula "How can you fuck it up?" and then all of these Romhacks basically go "Like this."
 >
-> — Anonymous, [/vp/](http://boards.4chan.org/vp/)
+> — Anonymous, [/vp/](https://boards.4channel.org/vp/)
 
 
 ## Windows
@@ -22,7 +22,7 @@ cd polishedcrystal
 mkdir rgbds
 ```
 
-Then download [**rgbds**](https://github.com/bentley/rgbds/). You'll need version 0.3.9 or later. Extract the archive and put all the .exe and .dll files in polishedcrystal/rgbds.
+Then download [**rgbds**](https://rgbds.gbdev.io/). If you're building Polished Crystal 2.2.0, get rgbds version 0.3.9. If you're building the 3.0.0 beta, you'll need version **0.5.0-rc1**. Extract the archive and put all the .exe and .dll files in polishedcrystal/rgbds.
 
 To build **polishedcrystal.gbc**:
 
@@ -50,7 +50,7 @@ Python 2.7 is required.
 ```bash
 sudo apt-get install make python gcc git bison
 
-git clone https://github.com/rednex/rgbds.git
+git clone https://github.com/gbdev/rgbds.git
 cd rgbds
 sudo make install
 cd ..
@@ -74,12 +74,15 @@ make [faithful] [nortc] [hgss|monochrome|noir] [debug]
 
 ## Mac OS X
 
+`md5sum`, `ghead` and `gtail` are required.  
+To install it: ```brew install coreutils```
+
 In **Terminal**, run:
 
 ```bash
 xcode-select --install
 
-git clone https://github.com/rednex/rgbds.git
+git clone https://github.com/gbdev/rgbds.git
 cd rgbds
 sudo make install
 cd ..

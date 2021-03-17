@@ -48,7 +48,6 @@ PidgeyEggMoves:
 
 RattataPlainEggMoves:
 RattataAlolanEggMoves:
-	db FLAME_WHEEL
 	db FURY_STRIKES
 	db REVERSAL
 	db SCREECH
@@ -122,6 +121,7 @@ ClefairyEggMoves:
 	db $ff
 
 VulpixPlainEggMoves:
+	db FLAME_CHARGE
 	db DISABLE
 	db FLARE_BLITZ
 	db HYPNOSIS
@@ -297,7 +297,6 @@ PonytaPlainEggMoves:
 	db HEALINGLIGHT
 	db THRASH
 	db QUICK_ATTACK
-	db FLAME_WHEEL
 	db EXTREMESPEED
 	db PLAY_ROUGH
 	db $ff
@@ -315,7 +314,8 @@ PonytaGalarianEggMoves:
 	db PLAY_ROUGH
 	db $ff
 
-SlowpokeEggMoves:
+SlowpokePlainEggMoves:
+SlowpokeGalarianEggMoves:
 	db BELLY_DRUM
 	db FUTURE_SIGHT
 	db STOMP
@@ -411,7 +411,6 @@ KrabbyEggMoves:
 
 ExeggcuteEggMoves:
 	db MEGA_DRAIN
-	db HEALINGLIGHT
 	db HEALINGLIGHT
 	db ANCIENTPOWER
 	db REFLECT
@@ -797,6 +796,7 @@ ShuckleEggMoves:
 	db $ff
 
 HeracrossEggMoves:
+	db ROCK_BLAST
 	db DEFENSE_CURL
 	db PURSUIT
 	db $ff

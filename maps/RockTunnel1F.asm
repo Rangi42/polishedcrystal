@@ -1,9 +1,9 @@
 RockTunnel1F_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 8 ; warp events
+	def_warp_events
 	warp_event 15,  3, ROUTE_10_NORTH, 4
 	warp_event 11, 25, ROUTE_10_SOUTH, 1
 	warp_event  5,  3, ROCK_TUNNEL_B1F, 1
@@ -13,14 +13,14 @@ RockTunnel1F_MapScriptHeader:
 	warp_event  4, 13, ROCK_TUNNEL_B1F, 5
 	warp_event  6, 15, ROCK_TUNNEL_2F, 2
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 2 ; bg events
-	bg_event 23,  4, SIGNPOST_ITEM + X_ACCURACY, EVENT_ROCK_TUNNEL_1F_HIDDEN_X_ACCURACY
-	bg_event  4, 18, SIGNPOST_ITEM + X_DEFEND, EVENT_ROCK_TUNNEL_1F_HIDDEN_X_DEFEND
+	def_bg_events
+	bg_event 23,  4, BGEVENT_ITEM + X_ACCURACY, EVENT_ROCK_TUNNEL_1F_HIDDEN_X_ACCURACY
+	bg_event  4, 18, BGEVENT_ITEM + X_DEFEND, EVENT_ROCK_TUNNEL_1F_HIDDEN_X_DEFEND
 
-	db 3 ; object events
-	object_event 23, 18, SPRITE_HIKER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerHikerSeamus, -1
+	def_object_events
+	object_event 23, 18, SPRITE_HIKER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerHikerSeamus, -1
 	itemball_event 21, 15, ELIXIR, 1, EVENT_ROCK_TUNNEL_1F_ELIXIR
 	itemball_event 10, 15, HP_UP, 1, EVENT_ROCK_TUNNEL_1F_HP_UP
 

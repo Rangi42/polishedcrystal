@@ -133,7 +133,6 @@ LoadBattleAnimObj:
 	ld a, BANK(wCurItem)
 	ldh [rSVBK], a
 	ld a, [wCurItem]
-	dec a
 	ld e, a
 	ld d, 0
 	; get the palette
@@ -141,7 +140,7 @@ LoadBattleAnimObj:
 	push de
 	ld a, BANK(wOBPals1)
 	ldh [rSVBK], a
-	ld hl, CaughtBallPals + 4 ; skip NO_ITEM
+	ld hl, CaughtBallPals
 rept 4
 	add hl, de
 endr
@@ -163,6 +162,7 @@ endr
 	jr .got_ball
 
 .ball_gfx:
+	dba AnimObjParkBallGFX
 	dba AnimObjPokeBallGFX
 	dba AnimObjGreatBallGFX
 	dba AnimObjUltraBallGFX
@@ -175,7 +175,7 @@ endr
 	dba AnimObjFastBallGFX
 	dba AnimObjHeavyBallGFX
 	dba AnimObjLoveBallGFX
-	dba AnimObjParkBallGFX
+	dba AnimObjPokeBallGFX ; ABILITYPATCH
 	dba AnimObjRepeatBallGFX
 	dba AnimObjTimerBallGFX
 	dba AnimObjNestBallGFX
@@ -188,4 +188,3 @@ endr
 	dba AnimObjDreamBallGFX
 	dba AnimObjPremierBallGFX
 	dba AnimObjCherishBallGFX
-

@@ -92,12 +92,12 @@ InitSpriteAnimStruct::
 	push de
 	push af
 	ld hl, wSpriteAnimationStructs
+	ld bc, $10
 	ld e, 10
 .loop
 	ld a, [hl]
 	and a
 	jr z, .found
-	ld bc, $10
 	add hl, bc
 	dec e
 	jr nz, .loop

@@ -1,9 +1,9 @@
 NavelRockInside_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 14 ; warp events
+	def_warp_events
 	warp_event  7, 81, NAVEL_ROCK_OUTSIDE, 3
 	warp_event  8, 64, NAVEL_ROCK_INSIDE, 3
 	warp_event  3,  3, NAVEL_ROCK_INSIDE, 2
@@ -19,11 +19,11 @@ NavelRockInside_MapScriptHeader:
 	warp_event  2, 12, NAVEL_ROCK_INSIDE, 12
 	warp_event  5, 15, NAVEL_ROCK_ROOF, 1
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 0 ; bg events
+	def_bg_events
 
-	db 2 ; object events
+	def_object_events
 	itemball_event 12, 12, SACRED_ASH, 1, EVENT_NAVEL_ROCK_SACRED_ASH
 	itemball_event 37, 12, MASTER_BALL, 1, EVENT_NAVEL_ROCK_MASTER_BALL
 

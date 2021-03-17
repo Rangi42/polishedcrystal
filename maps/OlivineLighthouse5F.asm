@@ -1,9 +1,9 @@
 OlivineLighthouse5F_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 7 ; warp events
+	def_warp_events
 	warp_event  9, 15, OLIVINE_LIGHTHOUSE_6F, 1
 	warp_event  3,  5, OLIVINE_LIGHTHOUSE_4F, 2
 	warp_event  9,  7, OLIVINE_LIGHTHOUSE_4F, 3
@@ -12,14 +12,14 @@ OlivineLighthouse5F_MapScriptHeader:
 	warp_event 16,  5, OLIVINE_LIGHTHOUSE_6F, 2
 	warp_event 17,  5, OLIVINE_LIGHTHOUSE_6F, 3
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 1 ; bg events
-	bg_event  3, 13, SIGNPOST_ITEM + HYPER_POTION, EVENT_OLIVINE_LIGHTHOUSE_5F_HIDDEN_HYPER_POTION
+	def_bg_events
+	bg_event  3, 13, BGEVENT_ITEM + HYPER_POTION, EVENT_OLIVINE_LIGHTHOUSE_5F_HIDDEN_HYPER_POTION
 
-	db 5 ; object events
-	object_event  8, 11, SPRITE_SAILOR, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerSailorErnest, -1
-	object_event  8,  3, SPRITE_BIRD_KEEPER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerBird_keeperDenis, -1
+	def_object_events
+	object_event  8, 11, SPRITE_SAILOR, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerSailorErnest, -1
+	object_event  8,  3, SPRITE_BIRD_KEEPER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 4, GenericTrainerBird_keeperDenis, -1
 	itemball_event 15, 12, RARE_CANDY, 1, EVENT_OLIVINE_LIGHTHOUSE_5F_RARE_CANDY
 	itemball_event  6, 15, SUPER_REPEL, 1, EVENT_OLIVINE_LIGHTHOUSE_5F_SUPER_REPEL
 	tmhmball_event  2, 13, TM_ENERGY_BALL, EVENT_OLIVINE_LIGHTHOUSE_5F_TM_ENERGY_BALL

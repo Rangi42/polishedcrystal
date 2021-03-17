@@ -1,13 +1,7 @@
+; Landmarks indexes (see data/maps/landmarks.asm)
 	const_def
-	const JOHTO_REGION
-	const KANTO_REGION
-	const ORANGE_REGION
-
-
-	const_def
-
 	const SPECIAL_MAP        ; 00
-
+; Johto landmarks
 	const NEW_BARK_TOWN      ; 01
 	const ROUTE_29           ; 02
 	const CHERRYGROVE_CITY   ; 03
@@ -73,9 +67,7 @@
 	const FAST_SHIP          ; 3f
 	const SINJOH_RUINS       ; 40
 	const MYSTRI_STAGE       ; 41
-
 KANTO_LANDMARK EQU const_value
-
 	const PALLET_TOWN        ; 42
 	const ROUTE_1            ; 43
 	const VIRIDIAN_CITY      ; 44
@@ -139,9 +131,7 @@ KANTO_LANDMARK EQU const_value
 	const INDIGO_PLATEAU     ; 7e
 	const ROUTE_28           ; 7f
 	const CINNABAR_LAB       ; 80
-
 SHAMOUTI_LANDMARK EQU const_value
-
 	const SHAMOUTI_ISLAND    ; 81
 	const BEAUTIFUL_BEACH    ; 82
 	const ROCKY_BEACH        ; 83
@@ -157,5 +147,14 @@ SHAMOUTI_LANDMARK EQU const_value
 	const VALENCIA_ISLAND    ; 8d
 	const NAVEL_ROCK         ; 8e
 	const FARAWAY_ISLAND     ; 8f
-
 NUM_LANDMARKS EQU const_value
+
+; used in CaughtData
+LANDMARK_EVENT EQU $ff
+
+; Regions
+	const_def
+	const JOHTO_REGION  ; 0
+	const KANTO_REGION  ; 1
+	const ORANGE_REGION ; 2
+NUM_REGIONS EQU const_value

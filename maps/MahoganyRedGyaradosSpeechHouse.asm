@@ -1,23 +1,23 @@
 MahoganyRedGyaradosSpeechHouse_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event  2,  7, MAHOGANY_TOWN, 2
 	warp_event  3,  7, MAHOGANY_TOWN, 2
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 0 ; bg events
+	def_bg_events
 
-	db 2 ; object events
-	object_event  2,  3, SPRITE_BLACK_BELT, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x19999c, -1
-	object_event  6,  5, SPRITE_POKEFAN_F, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, TeacherScript_0x199982, -1
+	def_object_events
+	object_event  2,  3, SPRITE_BLACK_BELT, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, MahoganyRedGyaradosSpeechHouseBlackBeltText, -1
+	object_event  6,  5, SPRITE_POKEFAN_F, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, MahoganyRedGyaradosSpeechHouseTeacherScript, -1
 
-TeacherScript_0x199982:
+MahoganyRedGyaradosSpeechHouseTeacherScript:
 	checkflag ENGINE_ROCKETS_IN_RADIO_TOWER
-	iftrue_jumptextfaceplayer UnknownText_0x199a3d
+	iftrue_jumptextfaceplayer MahoganyRedGyaradosSpeechHouseTeacherText_RocketsInRadioTower
 	jumpthistextfaceplayer
 
 	text "My favorite radio"
@@ -25,7 +25,7 @@ TeacherScript_0x199982:
 	cont "#mon Music."
 	done
 
-UnknownText_0x19999c:
+MahoganyRedGyaradosSpeechHouseBlackBeltText:
 	text "I heard that a red"
 	line "Gyarados appeared"
 	cont "at the lake."
@@ -37,7 +37,7 @@ UnknownText_0x19999c:
 	line "in that lake…"
 	done
 
-UnknownText_0x199a3d:
+MahoganyRedGyaradosSpeechHouseTeacherText_RocketsInRadioTower:
 	text "I've been hearing"
 	line "laughter on the"
 

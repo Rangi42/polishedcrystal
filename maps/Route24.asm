@@ -1,12 +1,12 @@
 Route24_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 1 ; callbacks
+	def_callbacks
 	callback MAPCALLBACK_TILES, Route24TileScript
 
-	db 0 ; warp events
+	def_warp_events
 
-	db 10 ; coord events
+	def_coord_events
 	coord_event 19, 15, 1, Route24BridgeOverheadTrigger
 	coord_event 20, 14, 1, Route24BridgeOverheadTrigger
 	coord_event 21, 14, 1, Route24BridgeOverheadTrigger
@@ -18,24 +18,24 @@ Route24_MapScriptHeader:
 	coord_event 20, 38, 0, Route24BridgeUnderfootTrigger
 	coord_event 21, 38, 0, Route24BridgeUnderfootTrigger
 
-	db 1 ; bg events
-	bg_event 16,  5, SIGNPOST_ITEM + POTION, EVENT_ROUTE_24_HIDDEN_POTION
+	def_bg_events
+	bg_event 16,  5, BGEVENT_ITEM + POTION, EVENT_ROUTE_24_HIDDEN_POTION
 
-	db 1 ; object events
-	object_event 21, 25, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 1, TrainerGruntM31, EVENT_ROUTE_24_ROCKET
+	def_object_events
+	object_event 21, 25, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_TRAINER, 1, TrainerGruntM31, EVENT_ROUTE_24_ROCKET
 
-	const_def 1 ; object constants
+	object_const_def
 	const ROUTE24_ROCKET
 
 Route24TileScript:
 	checkscene
 	iftrue .underfoot
 	callasm Route24_OverheadBridgeAsm
-	return
+	endcallback
 
 .underfoot:
 	callasm Route24_UnderfootBridgeAsm
-	return
+	endcallback
 
 Route24_OverheadBridgeAsm:
 	changebridgeblock 20, 16, $ee, ROUTE_24
@@ -83,15 +83,15 @@ Route24_FinishBridge:
 	jp GenericFinishBridge
 
 TrainerGruntM31:
-	trainer GRUNTM, 31, EVENT_BEAT_ROCKET_GRUNTM_31, UnknownText_0x1adc2e, UnknownText_0x1add67, 0, RocketScript_0x1adbfa
+	trainer GRUNTM, 31, EVENT_BEAT_ROCKET_GRUNTM_31, Route24RocketSeenText, Route24RocketBeatenText, 0, Route24RocketScript
 
-RocketScript_0x1adbfa:
+Route24RocketScript:
 	playmusic MUSIC_ROCKET_ENCOUNTER
 	opentext
-	writetext UnknownText_0x1addc0
-	buttonsound
+	writetext Route24RocketAfterBattleText
+	promptbutton
 	special Special_FadeOutMusic
-	writetext UnknownText_0x1adee1
+	writetext Route24RocketDisappearsText
 	waitbutton
 	closetext
 	special Special_FadeBlackQuickly
@@ -105,7 +105,7 @@ RocketScript_0x1adbfa:
 	playmusic MUSIC_NUGGET_BRIDGE_HGSS
 	end
 
-UnknownText_0x1adc2e:
+Route24RocketSeenText:
 	text "Hey, kid! Me am a"
 	line "Team Rocket member"
 	cont "kind of guy!"
@@ -134,7 +134,7 @@ UnknownText_0x1adc2e:
 	line "begin we do!"
 	done
 
-UnknownText_0x1add67:
+Route24RocketBeatenText:
 	text "Ayieeeh! No, no,"
 	line "no, believe it I"
 	cont "can't!"
@@ -144,7 +144,7 @@ UnknownText_0x1add67:
 	cont "not to you!"
 	done
 
-UnknownText_0x1addc0:
+Route24RocketAfterBattleText:
 	text "OK. Tell you mine"
 	line "secret will I."
 
@@ -173,7 +173,7 @@ UnknownText_0x1addc0:
 	line "revenge they are."
 	done
 
-UnknownText_0x1adee1:
+Route24RocketDisappearsText:
 	text "…"
 
 	para "You say what? Team"

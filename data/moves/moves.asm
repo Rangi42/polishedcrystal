@@ -116,7 +116,7 @@ endc
 if DEF(FAITHFUL)
 	move FIRE_SPIN,    EFFECT_TRAP,               35, FIRE,       85, 15,   0, SPECIAL
 else
-	move FIRE_SPIN,    EFFECT_TRAP,               35, FIRE,       90, 15,   0, SPECIAL
+	move FIRE_SPIN,    EFFECT_TRAP,               40, FIRE,       90, 15,   0, SPECIAL
 endc
 	move THUNDERSHOCK, EFFECT_PARALYZE_HIT,       40, ELECTRIC,  100, 30,  10, SPECIAL
 	move THUNDERBOLT,  EFFECT_PARALYZE_HIT,       90, ELECTRIC,  100, 15,  10, SPECIAL
@@ -159,7 +159,7 @@ endc
 if DEF(FAITHFUL)
 	move METRONOME,    EFFECT_METRONOME,           0, NORMAL,    100, 10,   0, STATUS
 else
-	move METRONOME,    EFFECT_METRONOME,           0, UNKNOWN_T, 100, 10,   0, STATUS
+	move METRONOME,    EFFECT_METRONOME,           0, UNKNOWN_T, 100, 20,   0, STATUS
 endc
 	move SCALD,        EFFECT_BURN_HIT,           80, WATER,     100, 15,  30, SPECIAL
 	move TRICK_ROOM,   EFFECT_TRICK_ROOM,          0, PSYCHIC,   100,  5,   0, STATUS
@@ -222,7 +222,7 @@ endc
 	move WILL_O_WISP,  EFFECT_BURN,                0, FIRE,       85, 15,   0, STATUS
 	move ZEN_HEADBUTT, EFFECT_FLINCH_HIT,         80, PSYCHIC,    90, 15,  20, PHYSICAL
 	move FACADE,       EFFECT_CONDITIONAL_BOOST,  70, NORMAL,    100, 20,   0, PHYSICAL
-	move FLAME_WHEEL,  EFFECT_FLAME_WHEEL,        60, FIRE,      100, 25,  10, PHYSICAL
+	move FLAME_CHARGE, EFFECT_SPEED_UP_HIT,       50, FIRE,      100, 20, 100, PHYSICAL
 	move HYPER_VOICE,  EFFECT_NORMAL_HIT,         90, NORMAL,    100, 10,   0, SPECIAL
 	move CURSE,        EFFECT_CURSE,               0, GHOST,     100, 10,   0, STATUS
 	move GYRO_BALL,    EFFECT_GYRO_BALL,           1, STEEL,     100,  5,   0, PHYSICAL
@@ -306,8 +306,8 @@ else
 endc
 	move CROSS_CHOP,   EFFECT_NORMAL_HIT,        100, FIGHTING,   80,  5,   0, PHYSICAL
 	move AQUA_JET,     EFFECT_PRIORITY_HIT,       40, WATER,     100, 20,   0, PHYSICAL
-	move RAIN_DANCE,   EFFECT_RAIN_DANCE,          0, WATER,      90,  5,   0, STATUS
-	move SUNNY_DAY,    EFFECT_SUNNY_DAY,           0, FIRE,       90,  5,   0, STATUS
+	move RAIN_DANCE,   EFFECT_RAIN_DANCE,          0, WATER,     100,  5,   0, STATUS
+	move SUNNY_DAY,    EFFECT_SUNNY_DAY,           0, FIRE,      100,  5,   0, STATUS
 	move CRUNCH,       EFFECT_DEFENSE_DOWN_HIT,   80, DARK,      100, 15,  20, PHYSICAL
 	move MIRROR_COAT,  EFFECT_MIRROR_COAT,         1, PSYCHIC,   100, 20,   0, SPECIAL
 	move NASTY_PLOT,   EFFECT_SP_ATK_UP_2,         0, DARK,      100, 20,   0, STATUS
@@ -323,7 +323,7 @@ endc
 if DEF(FAITHFUL)
 	move WHIRLPOOL,    EFFECT_TRAP,               35, WATER,      85, 15,   0, SPECIAL
 else
-	move WHIRLPOOL,    EFFECT_TRAP,               35, WATER,      90, 15,   0, SPECIAL
+	move WHIRLPOOL,    EFFECT_TRAP,               40, WATER,      90, 15,   0, SPECIAL
 endc
 	move DARK_PULSE,   EFFECT_FLINCH_HIT,         80, DARK,      100, 15,  20, SPECIAL
 	move MOONBLAST,    EFFECT_SP_ATK_DOWN_HIT,    95, FAIRY,     100, 15,  30, SPECIAL

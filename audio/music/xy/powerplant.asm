@@ -554,7 +554,7 @@ Music_PowerPlantXY_Ch4_branch_1:
 	note __, 1
 	note B_, 2
 	note __, 1
-Music_PowerPlantXY_Ch4_branch_3
+Music_PowerPlantXY_Ch4_branch_3:
 	note D_, 4
 	note D_, 2
 	note D_, 2

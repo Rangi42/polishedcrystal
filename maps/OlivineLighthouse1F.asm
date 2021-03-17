@@ -1,30 +1,30 @@
 OlivineLighthouse1F_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 5 ; warp events
+	def_warp_events
 	warp_event 10, 17, OLIVINE_CITY, 8
 	warp_event 11, 17, OLIVINE_CITY, 8
 	warp_event  3, 11, OLIVINE_LIGHTHOUSE_2F, 1
 	warp_event 16, 13, OLIVINE_LIGHTHOUSE_2F, 3
 	warp_event 17, 13, OLIVINE_LIGHTHOUSE_2F, 4
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 0 ; bg events
+	def_bg_events
 
-	db 2 ; object events
-	object_event  8,  2, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SailorScript_0x5ae67, -1
-	object_event 16,  9, SPRITE_MATRON, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x5aec2, -1
+	def_object_events
+	object_event  8,  2, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, OlivineLighthouse1FSailorScript, -1
+	object_event 16,  9, SPRITE_MATRON, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_COMMAND, jumptextfaceplayer, OlivineLighthouse1FPokefanFText, -1
 
-SailorScript_0x5ae67:
+OlivineLighthouse1FSailorScript:
 	checkevent EVENT_GOT_FULL_RESTORE_FROM_LIGHTHOUSE
 	iftrue_jumptextfaceplayer .Text2
 	faceplayer
 	opentext
 	writetext .Text1
-	buttonsound
+	promptbutton
 	verbosegiveitem FULL_RESTORE
 	iffalse_endtext
 	setevent EVENT_GOT_FULL_RESTORE_FROM_LIGHTHOUSE
@@ -47,7 +47,7 @@ SailorScript_0x5ae67:
 	line "this."
 	done
 
-UnknownText_0x5aec2:
+OlivineLighthouse1FPokefanFText:
 	text "In the past, #-"
 	line "mon used to light"
 

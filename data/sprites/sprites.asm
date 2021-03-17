@@ -195,4 +195,4 @@ SpriteHeaders:
 	overworld_sprite ElectricFenceLeftSpriteGFX, STANDING_SPRITE, PAL_OW_TREE
 	overworld_sprite ElectricFenceRightSpriteGFX, STANDING_SPRITE, PAL_OW_TREE
 	overworld_sprite SailboatSpriteGFX, STANDING_SPRITE, PAL_OW_PURPLE
-	overworld_sprite MiscOverheadSpriteGFX, STANDING_SPRITE, PAL_OW_ROCK
+	overworld_sprite IceBoulderSpriteGFX, STANDING_SPRITE, PAL_OW_ROCK

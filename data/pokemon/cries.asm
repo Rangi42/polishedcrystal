@@ -3,7 +3,7 @@ mon_cry: MACRO
 	dw \1, \2, \3
 ENDM
 
-CryHeaders::
+PokemonCries::
 ; entries correspond to constants/pokemon_constants.asm
 	mon_cry CRY_BULBASAUR,   $080,  $081 ; Bulbasaur
 	mon_cry CRY_BULBASAUR,   $020,  $100 ; Ivysaur

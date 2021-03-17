@@ -10,10 +10,10 @@ _Squirtbottle:
 	special UpdateTimePals
 	callasm .CheckCanUseSquirtbottle
 	iffalse .NothingHappenedScript
-	farjump WateredWeirdTreeScript
+	farsjump WateredWeirdTreeScript
 
 .NothingHappenedScript:
-	farjumptext UnknownText_0x1c0b3b
+	farjumptext _SquirtbottleNothingText
 
 .CheckCanUseSquirtbottle:
 	ld a, [wMapGroup]

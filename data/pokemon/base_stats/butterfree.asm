@@ -1,9 +1,9 @@
 
 if DEF(FAITHFUL)
-	db  60,  45,  50,  70,  90,  80
+	db  60,  45,  50,  70,  90,  80 ; 395 BST
 	;   hp  atk  def  spd  sat  sdf
 else
-	db  60,  45,  50,  80, 110, 110
+	db  60,  45,  50,  80, 110, 110 ; 455 BST
 	;   hp  atk  def  spd  sat  sdf
 endc
 
@@ -21,21 +21,18 @@ endc
 	db SHED_SHELL ; item 1
 	db SILVERPOWDER ; item 2
 	dn FEMALE_50, 2 ; gender, step cycles to hatch
-	dn 7, 7 ; frontpic dimensions
-	db COMPOUND_EYES ; ability 1
+	INCBIN "gfx/pokemon/butterfree/front.dimensions"
 if DEF(FAITHFUL)
-	db COMPOUND_EYES ; ability 2
+	abilities_for BUTTERFREE, COMPOUND_EYES, COMPOUND_EYES, TINTED_LENS
 else
-	db LEVITATE ; ability 2
+	abilities_for BUTTERFREE, COMPOUND_EYES, LEVITATE, TINTED_LENS
 endc
-	db TINTED_LENS ; hidden ability
 	db MEDIUM_FAST ; growth rate
 	dn INSECT, INSECT ; egg groups
 
-	; ev_yield
 	ev_yield   0,   0,   0,   0,   2,   1
 	;         hp, atk, def, spd, sat, sdf
 
 	; tmhm
-	tmhm CURSE, TOXIC, HIDDEN_POWER, SUNNY_DAY, HYPER_BEAM, PROTECT, RAIN_DANCE, GIGA_DRAIN, SAFEGUARD, SOLAR_BEAM, RETURN, PSYCHIC, SHADOW_BALL, ROOST, DOUBLE_TEAM, REFLECT, SWIFT, AERIAL_ACE, SUBSTITUTE, FACADE, REST, ATTRACT, THIEF, ENERGY_BALL, ENDURE, ACROBATICS, GIGA_IMPACT, U_TURN, FLASH, DOUBLE_EDGE, DREAM_EATER, SKILL_SWAP, SLEEP_TALK, SWAGGER
+	tmhm CURSE, TOXIC, HIDDEN_POWER, SUNNY_DAY, HYPER_BEAM, PROTECT, RAIN_DANCE, GIGA_DRAIN, SAFEGUARD, SOLAR_BEAM, RETURN, PSYCHIC, SHADOW_BALL, DOUBLE_TEAM, REFLECT, SWIFT, AERIAL_ACE, SUBSTITUTE, FACADE, REST, ATTRACT, THIEF, ROOST, ENERGY_BALL, ACROBATICS, GIGA_IMPACT, U_TURN, FLASH, DOUBLE_EDGE, DREAM_EATER, ENDURE, SKILL_SWAP, SLEEP_TALK, SWAGGER
 	; end

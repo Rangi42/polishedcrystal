@@ -174,35 +174,29 @@ HPBarAnim_UpdateTiles:
 	ld a, [wWhichHPBar]
 	and 1
 	ld b, a
-	push de
-	call HPBarAnim_RedrawHPBar
-	pop de
-	jp HPBarAnim_PaletteUpdate
-
-HPBarAnim_RedrawHPBar:
 	ld a, [wWhichHPBar]
 	cp 2
 	jr nz, .skip
-	ld a, SCREEN_WIDTH * 2
-	add l
-	ld l, a
-	adc h
-	sub l
-	ld h, a
-.skip:
-	jp DrawBattleHPBar
+	push de
+	ld de, SCREEN_WIDTH * 2
+	add hl, de
+	pop de
+.skip
+	call DrawBattleHPBar
+	ld hl, wCurHPAnimPal
+	call SetHPPal
+	ld c, d
+	farjp ApplyHPBarPals
 
 HPBarAnim_UpdateHPRemaining:
 	ld a, [wWhichHPBar]
 	and a
 	ret z
-	dec a
-	jr z, .battlemon
-	ld de, SCREEN_WIDTH + 2
-	jr .update_hp_number
 
-.battlemon
-	ld de, SCREEN_WIDTH + 1
+	ld de, SCREEN_WIDTH + 2
+	dec a
+	jr nz, .update_hp_number
+	dec de
 .update_hp_number
 	push hl
 	add hl, de
@@ -220,12 +214,6 @@ HPBarAnim_UpdateHPRemaining:
 	call PrintNum
 	pop hl
 	ret
-
-HPBarAnim_PaletteUpdate:
-	ld hl, wCurHPAnimPal
-	call SetHPPal
-	ld c, d
-	farjp ApplyHPBarPals
 
 HPBarAnim_BGMapUpdate:
 	ld a, [wWhichHPBar]

@@ -147,7 +147,7 @@ MoveManiacsHouse_BlockData:
 Route39Farmhouse_BlockData:
 LakeOfRageHiddenPowerHouse_BlockData:
 Route28FamousSpeechHouse_BlockData:
-KrissNeighborsHouse_BlockData:
+PlayersNeighborsHouse_BlockData:
 Route30BerrySpeechHouse_BlockData:
 ValenciaHouse_BlockData:
 	INCBIN "maps/JohtoHouse4.ablk.lz"
@@ -208,13 +208,13 @@ SECTION "HiddenTreeGrotto_BlockData", ROMX
 HiddenTreeGrotto_BlockData:
 	INCBIN "maps/HiddenTreeGrotto.ablk.lz"
 
-SECTION "KrissHouse1F_BlockData", ROMX
-KrissHouse1F_BlockData:
-	INCBIN "maps/KrissHouse1F.ablk.lz"
+SECTION "PlayersHouse1F_BlockData", ROMX
+PlayersHouse1F_BlockData:
+	INCBIN "maps/PlayersHouse1F.ablk.lz"
 
-SECTION "KrissHouse2F_BlockData", ROMX
-KrissHouse2F_BlockData:
-	INCBIN "maps/KrissHouse2F.ablk.lz"
+SECTION "PlayersHouse2F_BlockData", ROMX
+PlayersHouse2F_BlockData:
+	INCBIN "maps/PlayersHouse2F.ablk.lz"
 
 SECTION "ElmsLab_BlockData", ROMX
 ElmsLab_BlockData:
@@ -388,6 +388,10 @@ SECTION "KurtsHouse_BlockData", ROMX
 KurtsHouse_BlockData:
 	INCBIN "maps/KurtsHouse.ablk.lz"
 
+SECTION "SlowpokeWellEntrance_BlockData", ROMX
+SlowpokeWellEntrance_BlockData:
+	INCBIN "maps/SlowpokeWellEntrance.ablk.lz"
+
 SECTION "SlowpokeWellB1F_BlockData", ROMX
 SlowpokeWellB1F_BlockData:
 	INCBIN "maps/SlowpokeWellB1F.ablk.lz"
@@ -444,9 +448,9 @@ SECTION "GoldenrodMagnetTrainStation_BlockData", ROMX
 GoldenrodMagnetTrainStation_BlockData:
 	INCBIN "maps/GoldenrodMagnetTrainStation.ablk.lz"
 
-SECTION "Daycare_BlockData", ROMX
-Daycare_BlockData:
-	INCBIN "maps/Daycare.ablk.lz"
+SECTION "DayCare_BlockData", ROMX
+DayCare_BlockData:
+	INCBIN "maps/DayCare.ablk.lz"
 
 SECTION "GoldenrodHarbor_BlockData", ROMX
 GoldenrodHarbor_BlockData:
@@ -647,8 +651,7 @@ OlivinePort_BlockData:
 
 SECTION "OlivinePortPassage_BlockData", ROMX
 OlivinePortPassage_BlockData:
-VermilionPortPassage_BlockData:
-	INCBIN "maps/PortPassage.ablk.lz"
+	INCBIN "maps/OlivinePortPassage.ablk.lz"
 
 SECTION "OlivineLighthouse1F_BlockData", ROMX
 OlivineLighthouse1F_BlockData:
@@ -1866,3 +1869,15 @@ Route48_BlockData:
 SECTION "Route49_BlockData", ROMX
 Route49_BlockData:
 	INCBIN "maps/Route49.ablk.lz"
+
+SECTION "BattleFactory1F_BlockData", ROMX
+BattleFactory1F_BlockData:
+	INCBIN "maps/BattleFactory1F.ablk.lz"
+
+SECTION "BattleFactoryHallway_BlockData", ROMX
+BattleFactoryHallway_BlockData:
+	INCBIN "maps/BattleFactoryHallway.ablk.lz"
+
+SECTION "BattleFactoryBattleRoom_BlockData", ROMX
+BattleFactoryBattleRoom_BlockData:
+	INCBIN "maps/BattleFactoryBattleRoom.ablk.lz"

@@ -1,28 +1,28 @@
 Route18West_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 1 ; callbacks
+	def_callbacks
 	callback MAPCALLBACK_NEWMAP, Route18WestAlwaysOnBike
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event 19,  6, ROUTE_18_GATE, 1
 	warp_event 19,  7, ROUTE_18_GATE, 2
 
-	db 1 ; coord events
+	def_coord_events
 	coord_event 12,  0, 0, Route18WestBikeCheckScript
 
-	db 1 ; bg events
-	bg_event -1,  5, SIGNPOST_JUMPTEXT, UragaChannelSignText
+	def_bg_events
+	bg_event -1,  5, BGEVENT_JUMPTEXT, UragaChannelSignText
 
-	db 1 ; object events
-	object_event  6,  2, SPRITE_BIKER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerBikerCharles, -1
+	def_object_events
+	object_event  6,  2, SPRITE_BIKER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 4, GenericTrainerBikerCharles, -1
 
 Route18WestAlwaysOnBike:
 	setflag ENGINE_ALWAYS_ON_BIKE
-	return
+	endcallback
 
 Route18WestBikeCheckScript:
-	copybytetovar wPlayerState
+	readmem wPlayerState
 	ifequal PLAYER_BIKE, .done
 	showtext Route18WestBikeWarningText
 	applyonemovement PLAYER, step_down

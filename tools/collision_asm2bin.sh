@@ -10,5 +10,5 @@ echo 'SECTION "C", ROM0[$0]' >> "$TEMP_ASM"
 echo "INCLUDE \"$1\"" >> "$TEMP_ASM"
 
 ${RGBDS_DIR}rgbasm -o "$TEMP_O" "$TEMP_ASM"
-tail -c +36 "$TEMP_O" | head -c -4 > $2
+${RGBDS_DIR}rgblink -x -o "$2" "$TEMP_O"
 rm -f "$TEMP_ASM" "$TEMP_O"

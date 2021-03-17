@@ -1,27 +1,27 @@
 ShamoutiHotelRestaurant_MapScriptHeader:
-	db 1 ; scene scripts
+	def_scene_scripts
 	scene_script ShamoutiHotelRestaurantTrigger0
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event 16,  7, SHAMOUTI_HOTEL_1F, 4
 	warp_event 17,  7, SHAMOUTI_HOTEL_1F, 4
 
-	db 2 ; coord events
+	def_coord_events
 	coord_event 16,  6, 1, ShamoutiHotelRestaurantLeavingTrigger1
 	coord_event 16,  7, 1, ShamoutiHotelRestaurantLeavingTrigger2
 
-	db 0 ; bg events
+	def_bg_events
 
-	db 1 ; object events
-	object_event 16,  4, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_PURPLE, PERSONTYPE_COMMAND, jumptextfaceplayer, ShamoutiHotelRestaurantReceptionistText, -1
+	def_object_events
+	object_event 16,  4, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_PURPLE, OBJECTTYPE_COMMAND, jumptextfaceplayer, ShamoutiHotelRestaurantReceptionistText, -1
 
-	const_def 1 ; object constants
+	object_const_def
 	const SHAMOUTIHOTELRESTAURANT_RECEPTIONIST
 
 ShamoutiHotelRestaurantTrigger0:
-	priorityjump ShamoutiHotelRestaurantChallengeScript
+	prioritysjump ShamoutiHotelRestaurantChallengeScript
 	end
 
 ShamoutiHotelRestaurantChallengeScript:
@@ -49,15 +49,15 @@ ShamoutiHotelRestaurantChallengeScript:
 
 .AlreadyAte:
 	writetext .AlreadyAteText
-	jump ShamoutiHotelRestaurantLeaveScript
+	sjump ShamoutiHotelRestaurantLeaveScript
 
 .NeverMind:
 	writetext .NeverMindText
-	jump ShamoutiHotelRestaurantLeaveScript
+	sjump ShamoutiHotelRestaurantLeaveScript
 
 .NotEnoughMoney:
 	writetext .NotEnoughMoneyText
-	jump ShamoutiHotelRestaurantLeaveScript
+	sjump ShamoutiHotelRestaurantLeaveScript
 
 .GreetingText:
 	text "Welcome to the"
@@ -107,7 +107,7 @@ ShamoutiHotelRestaurantLeavingTrigger1:
 	yesorno
 	iffalse .Staying
 	writetext .GoodbyeText
-	jump ShamoutiHotelRestaurantLeaveScript
+	sjump ShamoutiHotelRestaurantLeaveScript
 
 .Staying:
 	writetext ShamoutiHotelRestaurantReceptionistText

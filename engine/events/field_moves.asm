@@ -1,22 +1,18 @@
 BlindingFlash::
-	farcall FadeOutPalettes
+	call FadeOutPalettes
 	ld hl, wStatusFlags
 	set 2, [hl] ; Flash
-	farcall ReplaceTimeOfDayPals
-	farcall UpdateTimeOfDayPal
+	call ReplaceTimeOfDayPals
+	call UpdateTimeOfDayPal
 	ld a, CGB_MAPPALS
 	call GetCGBLayout
 	farcall LoadBlindingFlashPalette
-	farjp FadeInPalettes
+	jp FadeInPalettes
 
 ShakeHeadbuttTree:
 	call ClearSpriteAnims
-	ld de, CutGrassGFX
-	ld hl, vTiles1
-	lb bc, BANK(CutGrassGFX), 4
-	call Request2bpp
 	ld hl, HeadbuttTreeGFX
-	ld de, vTiles1 tile $04
+	ld de, vTiles0 tile $64
 	lb bc, BANK(HeadbuttTreeGFX), 8
 	call DecompressRequest2bpp
 	call Cut_Headbutt_GetPixelFacing
@@ -24,25 +20,25 @@ ShakeHeadbuttTree:
 	call _InitSpriteAnimStruct
 	ld hl, SPRITEANIMSTRUCT_TILE_ID
 	add hl, bc
-	ld [hl], $84
+	ld [hl], $64
 	ld a, 36 * 4
 	ld [wCurSpriteOAMAddr], a
-	farcall DoNextFrameForAllSprites
+	call DoNextFrameForAllSprites
 	call HideHeadbuttTree
-	ld a, $20
-	ld [wcf64], a
+	ld a, 32
+	ld [wFrameCounter], a
 	call WaitSFX
 	ld de, SFX_SANDSTORM
 	call PlaySFX
 .loop
-	ld hl, wcf64
+	ld hl, wFrameCounter
 	ld a, [hl]
 	and a
 	jr z, .done
 	dec [hl]
 	ld a, 36 * 4
 	ld [wCurSpriteOAMAddr], a
-	farcall DoNextFrameForAllSprites
+	call DoNextFrameForAllSprites
 	call DelayFrame
 	jr .loop
 
@@ -57,7 +53,7 @@ ShakeHeadbuttTree:
 	xor a
 	rst ByteFill
 	call DelayFrame
-	jp ReplaceKrisSprite
+	jp UpdatePlayerSprite
 
 HeadbuttTreeGFX:
 INCBIN "gfx/overworld/headbutt_tree.2bpp.lz"
@@ -95,13 +91,11 @@ TreeRelativeLocationTable:
 	dwcoord 8 + 2, 8     ; UP
 
 OWCutAnimation:
-	; Animation index in e
+	; Animation index in a
 	; 0: Split tree in half
 	; 1: Mow the lawn
-	ld a, e
-	and $1
 	ld [wJumptableIndex], a
-	call .LoadCutGFX
+	call ClearSpriteAnims
 	call WaitSFX
 	ld de, SFX_PLACE_PUZZLE_PIECE_DOWN
 	call PlaySFX
@@ -111,27 +105,10 @@ OWCutAnimation:
 	ret nz
 	ld a, 36 * 4
 	ld [wCurSpriteOAMAddr], a
-	farcall DoNextFrameForAllSprites
+	call DoNextFrameForAllSprites
 	call OWCutJumptable
 	call DelayFrame
 	jr .loop
-
-.LoadCutGFX:
-	call ClearSpriteAnims
-	ld de, CutGrassGFX
-	ld hl, vTiles1
-	lb bc, BANK(CutGrassGFX), 4
-	call Request2bpp
-	ld de, CutTreeGFX
-	ld hl, vTiles1 tile $4
-	lb bc, BANK(CutTreeGFX), 4
-	jp Request2bpp
-
-CutTreeGFX:
-INCBIN "gfx/overworld/cut_tree.2bpp"
-
-CutGrassGFX:
-INCBIN "gfx/overworld/cut_grass.2bpp"
 
 OWCutJumptable:
 	call StandardStackJumpTable
@@ -148,9 +125,9 @@ Cut_SpawnAnimateTree:
 	call _InitSpriteAnimStruct
 	ld hl, SPRITEANIMSTRUCT_TILE_ID
 	add hl, bc
-	ld [hl], $84
+	ld [hl], $74
 	ld a, 32
-	ld [wcf64], a
+	ld [wFrameCounter], a
 ; Cut_StartWaiting
 	ld hl, wJumptableIndex
 	inc [hl]
@@ -168,7 +145,7 @@ Cut_SpawnAnimateLeaves:
 	ld a, $30
 	call Cut_SpawnLeaf
 	ld a, 32 ; frames
-	ld [wcf64], a
+	ld [wFrameCounter], a
 ; Cut_StartWaiting
 	ld hl, wJumptableIndex
 	inc [hl]
@@ -182,7 +159,7 @@ Cut_StartWaiting:
 	inc [hl]
 
 Cut_WaitAnimSFX:
-	ld hl, wcf64
+	ld hl, wFrameCounter
 	ld a, [hl]
 	and a
 	jr z, .finished
@@ -201,12 +178,12 @@ Cut_SpawnLeaf:
 	call _InitSpriteAnimStruct
 	ld hl, SPRITEANIMSTRUCT_TILE_ID
 	add hl, bc
-	ld [hl], $80
-	ld hl, SPRITEANIMSTRUCT_0E
+	ld [hl], $70
+	ld hl, SPRITEANIMSTRUCT_VAR3
 	add hl, bc
 	ld [hl], $4
 	pop af
-	ld hl, SPRITEANIMSTRUCT_0C
+	ld hl, SPRITEANIMSTRUCT_VAR1
 	add hl, bc
 	ld [hl], a
 	pop de
@@ -288,19 +265,19 @@ FlyFromAnim:
 	call _InitSpriteAnimStruct
 	ld hl, SPRITEANIMSTRUCT_TILE_ID
 	add hl, bc
-	ld [hl], $84
+	ld [hl], $64
 	ld hl, SPRITEANIMSTRUCT_ANIM_SEQ_ID
 	add hl, bc
 	ld [hl], SPRITE_ANIM_SEQ_FLY_FROM
 	ld a, 128
-	ld [wcf64], a
+	ld [wFrameCounter], a
 .loop
 	ld a, [wJumptableIndex]
 	bit 7, a
 	jr nz, .exit
 	xor a
 	ld [wCurSpriteOAMAddr], a
-	farcall DoNextFrameForAllSprites
+	call DoNextFrameForAllSprites
 	call FlyFunction_FrameTimer
 	call DelayFrame
 	jr .loop
@@ -322,22 +299,22 @@ FlyToAnim:
 	call _InitSpriteAnimStruct
 	ld hl, SPRITEANIMSTRUCT_TILE_ID
 	add hl, bc
-	ld [hl], $84
+	ld [hl], $64
 	ld hl, SPRITEANIMSTRUCT_ANIM_SEQ_ID
 	add hl, bc
 	ld [hl], SPRITE_ANIM_SEQ_FLY_TO
-	ld hl, SPRITEANIMSTRUCT_0F
+	ld hl, SPRITEANIMSTRUCT_VAR4
 	add hl, bc
 	ld [hl], 11 * 8
 	ld a, 64
-	ld [wcf64], a
+	ld [wFrameCounter], a
 .loop
 	ld a, [wJumptableIndex]
 	bit 7, a
 	jr nz, .exit
 	xor a
 	ld [wCurSpriteOAMAddr], a
-	farcall DoNextFrameForAllSprites
+	call DoNextFrameForAllSprites
 	call FlyFunction_FrameTimer
 	call DelayFrame
 	jr .loop
@@ -364,19 +341,15 @@ FlyToAnim:
 
 FlyFunction_InitGFX:
 	call ClearSpriteAnims
-	ld de, CutGrassGFX
-	ld hl, vTiles1 tile $00
-	lb bc, BANK(CutGrassGFX), 4
-	call Request2bpp
-	ld e, $84
-	farcall FlyFunction_GetMonIcon
+	ld e, $64
+	call FlyFunction_GetMonIcon
 	xor a
 	ld [wJumptableIndex], a
 	ret
 
 FlyFunction_FrameTimer:
 	call .SpawnLeaf
-	ld hl, wcf64
+	ld hl, wFrameCounter
 	ld a, [hl]
 	and a
 	jr z, .exit
@@ -394,7 +367,7 @@ FlyFunction_FrameTimer:
 	ret
 
 .SpawnLeaf:
-	ld hl, wcf65
+	ld hl, wFrameCounter2
 	ld a, [hl]
 	inc [hl]
 	and $7
@@ -409,5 +382,5 @@ FlyFunction_FrameTimer:
 	call _InitSpriteAnimStruct
 	ld hl, SPRITEANIMSTRUCT_TILE_ID
 	add hl, bc
-	ld [hl], $80
+	ld [hl], $70
 	ret

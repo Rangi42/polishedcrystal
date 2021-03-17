@@ -1,8 +1,3 @@
-SRAM_Begin EQU $a000
-SRAM_End   EQU $c000
-GLOBAL SRAM_Begin, SRAM_End
-
-
 SECTION "Scratch", SRAM
 
 sScratch:: ds $600
@@ -53,8 +48,10 @@ sMailbox9Backup::  mailmsg sMailbox9Backup
 sMailbox10Backup:: mailmsg sMailbox10Backup
 
 sSaveVersion:: dw
+sUpgradeStep:: db
+sWritingBackup:: db ; 1 if we're saving, anything else if not.
 
-	ds 162
+	ds 160
 
 sRTCStatusFlags:: ds 8
 sLuckyNumberDay:: db
@@ -63,7 +60,7 @@ sLuckyIDNumber:: dw
 
 SECTION "Backup Save", SRAM
 
-sBackupOptions:: ds wOptionsEnd - wOptions1
+sBackupOptions:: ds wOptionsEnd - wOptions
 
 sBackupCheckValue1:: db ; loaded with 99, used to check save corruption
 
@@ -73,7 +70,9 @@ sBackupMapData::     ds wCurMapDataEnd - wCurMapData
 sBackupPokemonData:: ds wPokemonDataEnd - wPokemonData
 sBackupGameDataEnd::
 
-	ds 394
+sBackupOptions3:: db
+
+	ds 393
 
 sBackupChecksum:: dw
 
@@ -82,7 +81,7 @@ sBackupCheckValue2:: db ; loaded with 127, used to check save corruption
 
 SECTION "Save", SRAM
 
-sOptions:: ds wOptionsEnd - wOptions1
+sOptions:: ds wOptionsEnd - wOptions
 
 sCheckValue1:: db ; loaded with 99, used to check save corruption
 
@@ -92,7 +91,9 @@ sMapData::     ds wCurMapDataEnd - wCurMapData
 sPokemonData:: ds wPokemonDataEnd - wPokemonData
 sGameDataEnd::
 
-	ds $18a
+sOptions3:: db
+
+	ds 393
 
 sChecksum:: dw
 
@@ -101,10 +102,38 @@ sCheckValue2:: db ; loaded with 127, used to check save corruption
 
 SECTION "Active Box", SRAM
 
-sBox:: box sBox
+sNewBox1:: newbox sNewBox1
+sNewBox2:: newbox sNewBox2
+sNewBox3:: newbox sNewBox3
+sNewBox4:: newbox sNewBox4
+sNewBox5:: newbox sNewBox5
+sNewBox6:: newbox sNewBox6
+sNewBox7:: newbox sNewBox7
+sNewBox8:: newbox sNewBox8
+sNewBox9:: newbox sNewBox9
+sNewBox10:: newbox sNewBox10
+sNewBox11:: newbox sNewBox11
+sNewBox12:: newbox sNewBox12
+sNewBox13:: newbox sNewBox13
+sNewBox14:: newbox sNewBox14
+sNewBox15:: newbox sNewBox15
+sNewBoxEnd::
 
-	ds $f4
-
+sBackupNewBox1:: newbox sBackupNewBox1
+sBackupNewBox2:: newbox sBackupNewBox2
+sBackupNewBox3:: newbox sBackupNewBox3
+sBackupNewBox4:: newbox sBackupNewBox4
+sBackupNewBox5:: newbox sBackupNewBox5
+sBackupNewBox6:: newbox sBackupNewBox6
+sBackupNewBox7:: newbox sBackupNewBox7
+sBackupNewBox8:: newbox sBackupNewBox8
+sBackupNewBox9:: newbox sBackupNewBox9
+sBackupNewBox10:: newbox sBackupNewBox10
+sBackupNewBox11:: newbox sBackupNewBox11
+sBackupNewBox12:: newbox sBackupNewBox12
+sBackupNewBox13:: newbox sBackupNewBox13
+sBackupNewBox14:: newbox sBackupNewBox14
+sBackupNewBox15:: newbox sBackupNewBox15
 
 SECTION "Link Battle Data", SRAM
 
@@ -175,45 +204,30 @@ sHallOfFameEnd::
 
 SECTION "SRAM Battle Tower", SRAM
 
-; Battle Tower data must be in SRAM because you can save and leave between battles
-sBattleTowerChallengeState::
-; 0: normal
-; 2: battle tower
-	db
+; Battle Tower data must be in SRAM because you can reset between battles
+sBattleTowerChallengeState:: db ; current challenge progress status
 
 sBattleTower::
-sNrOfBeatenBattleTowerTrainers:: db
-sBTChoiceOfLevelGroup:: db
-; Battle Tower trainers are saved here, so nobody appears more than once
-sBTTrainers:: ds BATTLETOWER_NROFTRAINERS
-sBattleTowerSaveFileFlags:: db
+sBT_CurTrainer:: db
 
-sBTMonOfTrainers::
-sBTMonPrevTrainer1:: db
-sBTMonPrevTrainer2:: db
-sBTMonPrevTrainer3:: db
-sBTMonPrevPrevTrainer1:: db
-sBTMonPrevPrevTrainer2:: db
-sBTMonPrevPrevTrainer3:: db
+	ds 1 ; unused, may be 0-4 in old saves
+
+; Battle Tower trainers are saved here, so nobody appears more than once
+sBTTrainers:: ds BATTLETOWER_STREAK_LENGTH
+
+	ds 1 ; unused, may be 0 or 2 in old saves
+
+sBT_PartySelections:: ds PARTY_LENGTH
+
+; Repeat prevention
+sBT_OTMonParties:: ds BATTLETOWER_PARTYDATA_SIZE * BATTLETOWER_SAVEDPARTIES
 
 
 SECTION "Boxes 1-7",  SRAM
 
-sBox1::  box sBox1
-sBox2::  box sBox2
-sBox3::  box sBox3
-sBox4::  box sBox4
-sBox5::  box sBox5
-sBox6::  box sBox6
-sBox7::  box sBox7
+sBoxMons1:: pokedb sBoxMons1
 
 
 SECTION "Boxes 8-14", SRAM
 
-sBox8::  box sBox8
-sBox9::  box sBox9
-sBox10:: box sBox10
-sBox11:: box sBox11
-sBox12:: box sBox12
-sBox13:: box sBox13
-sBox14:: box sBox14
+sBoxMons2:: pokedb sBoxMons2

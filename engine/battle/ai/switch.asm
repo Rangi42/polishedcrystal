@@ -171,7 +171,7 @@ AICheckMatchupForEnemyMon:
 .unknown_moves_done
 	pop hl
 	call .score_result
-	add 10 ; use 10 rather than 0 as baseline
+	add BASE_AI_SWITCH_SCORE
 	push af
 
 	; Now do enemy moves vs player
@@ -249,7 +249,7 @@ AICheckMatchupForEnemyMon:
 	and a
 	ret z ; no effect
 	set 3, e
-	cp $10
+	cp EFFECTIVE
 	ret c ; not very effective
 	set 1, e
 	ret z ; neutral
@@ -310,10 +310,8 @@ AIWantsSwitchCheck:
 	; little improvement
 	ld b, $10
 	cp 9
-	jr nc, .set_switch_score
 	; No reason to switch
-	ret
-
+	ret c
 .set_switch_score
 	ld a, [wEnemySwitchMonParam]
 	add b

@@ -1,35 +1,35 @@
 CianwoodGym_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event  4, 17, CIANWOOD_CITY, 2
 	warp_event  5, 17, CIANWOOD_CITY, 2
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 2 ; bg events
-	bg_event  3, 15, SIGNPOST_READ, CianwoodGymStatue
-	bg_event  6, 15, SIGNPOST_READ, CianwoodGymStatue
+	def_bg_events
+	bg_event  3, 15, BGEVENT_READ, CianwoodGymStatue
+	bg_event  6, 15, BGEVENT_READ, CianwoodGymStatue
 
-	db 10 ; object events
-	object_event  4,  1, SPRITE_CHUCK, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ChuckScript_0x9d60f, -1
+	def_object_events
+	object_event  4,  1, SPRITE_CHUCK, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, CianwoodGymChuckScript, -1
 	strengthboulder_event  5, 1
-	object_event  2, 12, SPRITE_BLACK_BELT, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerBlackbeltYoshi, -1
-	object_event  7, 12, SPRITE_BLACK_BELT, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerBlackbeltLao, -1
-	object_event  3,  9, SPRITE_BLACK_BELT, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerBlackbeltNob, -1
-	object_event  5,  5, SPRITE_BLACK_BELT, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerBlackbeltLung, -1
-	object_event  7, 15, SPRITE_BLACK_BELT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, CianwoodGymBlackBeltText, -1
+	object_event  2, 12, SPRITE_BLACK_BELT, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerBlackbeltYoshi, -1
+	object_event  7, 12, SPRITE_BLACK_BELT, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerBlackbeltLao, -1
+	object_event  3,  9, SPRITE_BLACK_BELT, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, GenericTrainerBlackbeltNob, -1
+	object_event  5,  5, SPRITE_BLACK_BELT, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerBlackbeltLung, -1
+	object_event  7, 15, SPRITE_BLACK_BELT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, CianwoodGymBlackBeltText, -1
 	strengthboulder_event  3, 7
 	strengthboulder_event  4, 7
 	strengthboulder_event  5, 7
 
-	const_def 1 ; object constants
+	object_const_def
 	const CIANWOODGYM_CHUCK
 	const CIANWOODGYM_BOULDER1
 
-ChuckScript_0x9d60f:
+CianwoodGymChuckScript:
 	faceplayer
 	opentext
 	checkevent EVENT_BEAT_CHUCK
@@ -64,7 +64,7 @@ ChuckScript_0x9d60f:
 	setevent EVENT_BEAT_BLACKBELT_NOB
 	setevent EVENT_BEAT_BLACKBELT_LUNG
 	writetext ChuckExplainBadgeText
-	buttonsound
+	promptbutton
 	verbosegivetmhm TM_DYNAMICPUNCH
 	setevent EVENT_GOT_TM01_DYNAMICPUNCH
 	jumpopenedtext ChuckExplainTMText
@@ -101,12 +101,12 @@ GenericTrainerBlackbeltLung:
 	done
 
 CianwoodGymStatue:
-	trainertotext CHUCK, 1, $1
+	gettrainername CHUCK, 1, $1
 	checkflag ENGINE_STORMBADGE
 	iftrue .Beaten
 	jumpstd gymstatue1
 .Beaten:
-	checkcode VAR_BADGES
+	readvar VAR_BADGES
 	ifgreater 12, .LyraToo
 	jumpstd gymstatue2
 .LyraToo

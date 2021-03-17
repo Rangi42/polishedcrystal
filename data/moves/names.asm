@@ -1,4 +1,5 @@
 MoveNames::
+	db "?@"
 	db "Acrobatics@"
 	db "Karate Chop@"
 	db "DoubleSlap@"
@@ -170,7 +171,7 @@ MoveNames::
 	db "Will-O-Wisp@"
 	db "Zen Headbutt@"
 	db "Facade@"
-	db "Flame Wheel@"
+	db "Flame Charge@"
 	db "Hyper Voice@"
 	db "Curse@"
 	db "Gyro Ball@"

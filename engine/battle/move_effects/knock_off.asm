@@ -19,7 +19,7 @@ BattleCommand_knockoff:
 	ld [hl], a
 	call GetCurItemName
 	ld hl, KnockedOffItemText
-	call StdBattleTextBox
+	call StdBattleTextbox
 	ld a, MON_ITEM
 	call OpponentPartyAttr
 	ret z

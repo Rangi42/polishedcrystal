@@ -1,23 +1,23 @@
 Route32PokeCenter1F_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 3 ; warp events
+	def_warp_events
 	warp_event  5,  7, ROUTE_32, 1
 	warp_event  6,  7, ROUTE_32, 1
 	warp_event  0,  7, POKECENTER_2F, 1
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 1 ; bg events
-	bg_event 10,  1, SIGNPOST_READ, PokemonJournalKurtScript
+	def_bg_events
+	bg_event 10,  1, BGEVENT_READ, PokemonJournalKurtScript
 
-	db 4 ; object events
+	def_object_events
 	pc_nurse_event  5, 1
-	object_event  3,  4, SPRITE_FISHING_GURU, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_SCRIPT, 0, FishingGuruScript_0x69b55, -1
-	object_event  8,  2, SPRITE_ACE_TRAINER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x69cac, -1
-	object_event  0,  5, SPRITE_HIKER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_PURPLE, PERSONTYPE_SCRIPT, 0, Route32PokeCenter1FPokefanMScript, -1
+	object_event  3,  4, SPRITE_FISHING_GURU, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, Route32Pokecenter1FFishingGuruScript, -1
+	object_event  8,  2, SPRITE_ACE_TRAINER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, Route32Pokecenter1FCooltrainerFText, -1
+	object_event  0,  5, SPRITE_HIKER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_PURPLE, OBJECTTYPE_SCRIPT, 0, Route32PokeCenter1FPokefanMScript, -1
 
 PokemonJournalKurtScript:
 	setflag ENGINE_READ_KURT_JOURNAL
@@ -38,7 +38,7 @@ PokemonJournalKurtScript:
 	line "Maizie."
 	done
 
-FishingGuruScript_0x69b55:
+Route32Pokecenter1FFishingGuruScript:
 	checkevent EVENT_GOT_OLD_ROD
 	iftrue_jumptextfaceplayer .DoneText
 	faceplayer
@@ -47,7 +47,7 @@ FishingGuruScript_0x69b55:
 	yesorno
 	iffalse_jumpopenedtext .NoText
 	writetext .YesText
-	buttonsound
+	promptbutton
 	verbosegivekeyitem OLD_ROD
 	writetext .AfterText
 	waitbutton
@@ -104,11 +104,11 @@ Route32PokeCenter1FPokefanMScript:
 	yesorno
 	iftrue .Yes
 	writetext .Text2
-	jump .Continue
+	sjump .Continue
 .Yes:
 	writetext .Text3
 .Continue
-	buttonsound
+	promptbutton
 	verbosegiveitem LURE_BALL
 	iffalse .NoRoom
 	setevent EVENT_GOT_LURE_BALL_FROM_FRENCHMAN
@@ -160,7 +160,7 @@ Route32PokeCenter1FPokefanMScript:
 	line "hourrah!"
 	done
 
-UnknownText_0x69cac:
+Route32Pokecenter1FCooltrainerFText:
 	text "What should I make"
 	line "my #mon hold?"
 

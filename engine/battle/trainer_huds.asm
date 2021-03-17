@@ -98,15 +98,6 @@ StageBallTilesData:
 	add hl, bc
 	ret
 
-DrawPlayerHUDBorder:
-	hlcoord 19, 11
-	ld [hl], "<XPEND>"
-	hlcoord 10, 11
-	ld [hl], "<XP1>"
-	inc hl
-	ld [hl], "<XP2>"
-	ret
-
 DrawPlayerPartyIconHUDBorder:
 	ld hl, .tiles
 	ld de, wTrainerHUDTiles
@@ -235,7 +226,7 @@ _ShowLinkBattleParticipants:
 	call LoadFontsExtra
 	hlcoord 2, 3
 	lb bc, 9, 14
-	call TextBox
+	call Textbox
 	hlcoord 4, 5
 	ld de, wPlayerName
 	rst PlaceString
@@ -258,6 +249,11 @@ DoesNuzlockeModePreventCapture:
 	; Is nuzlocke mode on?
 	ld a, [wInitialOptions]
 	bit NUZLOCKE_MODE, a
+	jr z, .no
+
+	; Is tutorial battle?
+	ld a, [wBattleType]
+	cp BATTLETYPE_TUTORIAL
 	jr z, .no
 
 	; Is enemy shiny?

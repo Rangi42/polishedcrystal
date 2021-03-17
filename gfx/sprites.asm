@@ -229,4 +229,4 @@ ElectricFenceRightSpriteGFX::  INCBIN "gfx/sprites/electric_fence_right.2bpp.lz"
 SECTION "Overworld Sprites 10", ROMX
 
 SailboatSpriteGFX::            INCBIN "gfx/sprites/sailboat.2bpp.lz"
-MiscOverheadSpriteGFX::        INCBIN "gfx/sprites/misc_overhead.2bpp.lz"
+IceBoulderSpriteGFX::          INCBIN "gfx/sprites/ice_boulder.2bpp.lz"

@@ -1,33 +1,33 @@
 Route44_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 1 ; warp events
+	def_warp_events
 	warp_event 56,  7, ICE_PATH_1F, 1
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 3 ; bg events
-	bg_event 53,  7, SIGNPOST_JUMPTEXT, Route44Sign1Text
-	bg_event  6, 10, SIGNPOST_JUMPTEXT, Route44Sign2Text
-	bg_event 32,  9, SIGNPOST_ITEM + ELIXIR, EVENT_ROUTE_44_HIDDEN_ELIXIR
+	def_bg_events
+	bg_event 53,  7, BGEVENT_JUMPTEXT, Route44Sign1Text
+	bg_event  6, 10, BGEVENT_JUMPTEXT, Route44Sign2Text
+	bg_event 32,  9, BGEVENT_ITEM + ELIXIR, EVENT_ROUTE_44_HIDDEN_ELIXIR
 
-	db 12 ; object events
-	object_event 32,  8, SPRITE_VETERAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route44VeteranmScript, -1
-	object_event 35,  3, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 1, TrainerFisherWilton1, -1
-	object_event 19, 13, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerFisherEdgar, -1
-	object_event 10,  9, SPRITE_PSYCHIC, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerPsychicPhil, -1
-	object_event 43,  2, SPRITE_POKEMANIAC, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerPokemaniacZach, -1
-	object_event 51,  5, SPRITE_BIRD_KEEPER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 2, TrainerBird_keeperVance1, -1
-	object_event 41, 15, SPRITE_ACE_TRAINER_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 5, GenericTrainerCooltrainermAllen, -1
-	object_event 31, 14, SPRITE_ACE_TRAINER_F, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 5, GenericTrainerCooltrainerfCybil, -1
+	def_object_events
+	object_event 32,  8, SPRITE_VETERAN_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route44VeteranmScript, -1
+	object_event 35,  3, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_TRAINER, 1, TrainerFisherWilton1, -1
+	object_event 19, 13, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerFisherEdgar, -1
+	object_event 10,  9, SPRITE_PSYCHIC, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerPsychicPhil, -1
+	object_event 43,  2, SPRITE_POKEMANIAC, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerPokemaniacZach, -1
+	object_event 51,  5, SPRITE_BIRD_KEEPER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_TRAINER, 2, TrainerBird_keeperVance1, -1
+	object_event 41, 15, SPRITE_ACE_TRAINER_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 5, GenericTrainerCooltrainermAllen, -1
+	object_event 31, 14, SPRITE_ACE_TRAINER_F, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 5, GenericTrainerCooltrainerfCybil, -1
 	fruittree_event  9,  5, FRUITTREE_ROUTE_44, ASPEAR_BERRY, PAL_NPC_BROWN
 	itemball_event 30,  8, MAX_REVIVE, 1, EVENT_ROUTE_44_MAX_REVIVE
 	itemball_event 45,  4, ULTRA_BALL, 1, EVENT_ROUTE_44_ULTRA_BALL
 	itemball_event 14,  9, MAX_REPEL, 1, EVENT_ROUTE_44_MAX_REPEL
 
-	const_def 1 ; object constants
+	object_const_def
 	const ROUTE44_VETERAN_M
 
 Route44VeteranmScript:
@@ -66,7 +66,7 @@ Route44VeteranmScript:
 .Beaten:
 	opentext
 	writetext .AfterText1
-	buttonsound
+	promptbutton
 	verbosegiveitem ROCKY_HELMET
 	iffalse_endtext
 	setevent EVENT_GOT_ROCKY_HELMET_FROM_ROUTE_44_LEADER
@@ -142,34 +142,34 @@ TrainerBird_keeperVance1:
 	trainer BIRD_KEEPER, VANCE1, EVENT_BEAT_BIRD_KEEPER_VANCE, Bird_keeperVance1SeenText, Bird_keeperVance1BeatenText, 0, Bird_keeperVance1Script
 
 Bird_keeperVance1Script:
-	writecode VAR_CALLERID, PHONE_BIRDKEEPER_VANCE
+	loadvar VAR_CALLERID, PHONE_BIRDKEEPER_VANCE
 	opentext
-	checkflag ENGINE_VANCE
+	checkflag ENGINE_VANCE_READY_FOR_REMATCH
 	iftrue UnknownScript_0x19d86a
 	checkcellnum PHONE_BIRDKEEPER_VANCE
-	iftrue UnknownScript_0x19d8eb
+	iftrue Route44NumberAcceptedM
 	checkevent EVENT_VANCE_ASKED_FOR_PHONE_NUMBER
 	iftrue UnknownScript_0x19d853
-	writetext UnknownText_0x19dbf3
-	buttonsound
+	writetext BirdKeeperVanceLegendaryBirdsText
+	promptbutton
 	setevent EVENT_VANCE_ASKED_FOR_PHONE_NUMBER
-	scall UnknownScript_0x19d8df
-	jump UnknownScript_0x19d856
+	scall Route44AskNumber1M
+	sjump UnknownScript_0x19d856
 
 UnknownScript_0x19d853:
-	scall UnknownScript_0x19d8e3
+	scall Route44AskNumber2M
 UnknownScript_0x19d856:
 	askforphonenumber PHONE_BIRDKEEPER_VANCE
-	ifequal $1, UnknownScript_0x19d8f3
-	ifequal $2, UnknownScript_0x19d8ef
-	trainertotext BIRD_KEEPER, VANCE1, $0
-	scall UnknownScript_0x19d8e7
-	jump UnknownScript_0x19d8eb
+	ifequal $1, Route44PhoneFullM
+	ifequal $2, Route44NumberDeclinedM
+	gettrainername BIRD_KEEPER, VANCE1, $0
+	scall Route44RegisteredNumberM
+	sjump Route44NumberAcceptedM
 
 UnknownScript_0x19d86a:
-	scall UnknownScript_0x19d8f7
+	scall Route44RematchM
 	winlosstext Bird_keeperVance1BeatenText, 0
-	copybytetovar wVanceFightCount
+	readmem wVanceFightCount
 	ifequal 2, .Fight2
 	ifequal 1, .Fight1
 	ifequal 0, .LoadFight0
@@ -183,79 +183,79 @@ UnknownScript_0x19d86a:
 	loadtrainer BIRD_KEEPER, VANCE1
 	startbattle
 	reloadmapafterbattle
-	loadvar wVanceFightCount, 1
-	clearflag ENGINE_VANCE
+	loadmem wVanceFightCount, 1
+	clearflag ENGINE_VANCE_READY_FOR_REMATCH
 	end
 
 .LoadFight1:
 	loadtrainer BIRD_KEEPER, VANCE2
 	startbattle
 	reloadmapafterbattle
-	loadvar wVanceFightCount, 2
-	clearflag ENGINE_VANCE
+	loadmem wVanceFightCount, 2
+	clearflag ENGINE_VANCE_READY_FOR_REMATCH
 	end
 
 .LoadFight2:
 	loadtrainer BIRD_KEEPER, VANCE3
 	startbattle
 	reloadmapafterbattle
-	clearflag ENGINE_VANCE
+	clearflag ENGINE_VANCE_READY_FOR_REMATCH
 	checkevent EVENT_VANCE_CARBOS
 	iftrue UnknownScript_0x19d8cb
 	checkevent EVENT_GOT_CARBOS_FROM_VANCE
 	iftrue UnknownScript_0x19d8ca
-	scall UnknownScript_0x19d90a
+	scall Route44RematchGiftM
 	verbosegiveitem CARBOS
-	iffalse UnknownScript_0x19d903
+	iffalse VancePackFull
 	setevent EVENT_GOT_CARBOS_FROM_VANCE
-	jump UnknownScript_0x19d8eb
+	sjump Route44NumberAcceptedM
 
 UnknownScript_0x19d8ca:
 	end
 
 UnknownScript_0x19d8cb:
 	opentext
-	writetext UnknownText_0x19dc67
+	writetext BirdKeeperVance2BeatenText
 	waitbutton
 	verbosegiveitem CARBOS
-	iffalse UnknownScript_0x19d903
+	iffalse VancePackFull
 	clearevent EVENT_VANCE_CARBOS
 	setevent EVENT_GOT_CARBOS_FROM_VANCE
-	jump UnknownScript_0x19d8eb
+	sjump Route44NumberAcceptedM
 
-UnknownScript_0x19d8df:
+Route44AskNumber1M:
 	jumpstd asknumber1m
 
-UnknownScript_0x19d8e3:
+Route44AskNumber2M:
 	jumpstd asknumber2m
 
-UnknownScript_0x19d8e7:
+Route44RegisteredNumberM:
 	jumpstd registerednumberm
 
-UnknownScript_0x19d8eb:
+Route44NumberAcceptedM:
 	jumpstd numberacceptedm
 
-UnknownScript_0x19d8ef:
+Route44NumberDeclinedM:
 	jumpstd numberdeclinedm
 
-UnknownScript_0x19d8f3:
+Route44PhoneFullM:
 	jumpstd phonefullm
 
-UnknownScript_0x19d8f7:
+Route44RematchM:
 	jumpstd rematchm
 
-UnknownScript_0x19d8fb:
+Route44GiftM:
 	jumpstd giftm
 
-UnknownScript_0x19d8ff:
+Route44PackFullM:
 	jumpstd packfullm
 
-UnknownScript_0x19d903:
+VancePackFull:
 	setevent EVENT_VANCE_CARBOS
 	jumpstd packfullm
 	end
 
-UnknownScript_0x19d90a:
+Route44RematchGiftM:
 	jumpstd rematchgiftm
 
 GenericTrainerPsychicPhil:
@@ -270,42 +270,42 @@ TrainerFisherWilton1:
 	trainer FISHER, WILTON1, EVENT_BEAT_FISHER_WILTON, FisherWilton1SeenText, FisherWilton1BeatenText, 0, FisherWilton1Script
 
 FisherWilton1Script:
-	writecode VAR_CALLERID, PHONE_FISHER_WILTON
+	loadvar VAR_CALLERID, PHONE_FISHER_WILTON
 	opentext
-	checkflag ENGINE_WILTON
+	checkflag ENGINE_WILTON_READY_FOR_REMATCH
 	iftrue UnknownScript_0x19d96e
 	checkflag ENGINE_WILTON_HAS_ITEM
 	iftrue UnknownScript_0x19d9b4
 	checkcellnum PHONE_FISHER_WILTON
-	iftrue UnknownScript_0x19d8eb
+	iftrue Route44NumberAcceptedM
 	checkevent EVENT_WILTON_ASKED_FOR_PHONE_NUMBER
 	iftrue UnknownScript_0x19d957
 	checkunits
 	iftrue .metric
 	writetext UnknownText_0x19daa8_Imperial
-	jump .ok
+	sjump .ok
 .metric
 	writetext UnknownText_0x19daa8_Metric
 .ok
-	buttonsound
+	promptbutton
 	setevent EVENT_WILTON_ASKED_FOR_PHONE_NUMBER
-	scall UnknownScript_0x19d8df
-	jump UnknownScript_0x19d95a
+	scall Route44AskNumber1M
+	sjump UnknownScript_0x19d95a
 
 UnknownScript_0x19d957:
-	scall UnknownScript_0x19d8e3
+	scall Route44AskNumber2M
 UnknownScript_0x19d95a:
 	askforphonenumber PHONE_FISHER_WILTON
-	ifequal $1, UnknownScript_0x19d8f3
-	ifequal $2, UnknownScript_0x19d8ef
-	trainertotext FISHER, WILTON1, $0
-	scall UnknownScript_0x19d8e7
-	jump UnknownScript_0x19d8eb
+	ifequal $1, Route44PhoneFullM
+	ifequal $2, Route44NumberDeclinedM
+	gettrainername FISHER, WILTON1, $0
+	scall Route44RegisteredNumberM
+	sjump Route44NumberAcceptedM
 
 UnknownScript_0x19d96e:
-	scall UnknownScript_0x19d8f7
+	scall Route44RematchM
 	winlosstext FisherWilton1BeatenText, 0
-	copybytetovar wWiltonFightCount
+	readmem wWiltonFightCount
 	ifequal 2, .Fight2
 	ifequal 1, .Fight1
 	ifequal 0, .LoadFight0
@@ -319,27 +319,27 @@ UnknownScript_0x19d96e:
 	loadtrainer FISHER, WILTON1
 	startbattle
 	reloadmapafterbattle
-	loadvar wWiltonFightCount, 1
-	clearflag ENGINE_WILTON
+	loadmem wWiltonFightCount, 1
+	clearflag ENGINE_WILTON_READY_FOR_REMATCH
 	end
 
 .LoadFight1:
 	loadtrainer FISHER, WILTON2
 	startbattle
 	reloadmapafterbattle
-	loadvar wWiltonFightCount, 2
-	clearflag ENGINE_WILTON
+	loadmem wWiltonFightCount, 2
+	clearflag ENGINE_WILTON_READY_FOR_REMATCH
 	end
 
 .LoadFight2:
 	loadtrainer FISHER, WILTON3
 	startbattle
 	reloadmapafterbattle
-	clearflag ENGINE_WILTON
+	clearflag ENGINE_WILTON_READY_FOR_REMATCH
 	end
 
 UnknownScript_0x19d9b4:
-	scall UnknownScript_0x19d8fb
+	scall Route44GiftM
 	checkevent EVENT_WILTON_HAS_ULTRA_BALL
 	iftrue UnknownScript_0x19d9c9
 	checkevent EVENT_WILTON_HAS_GREAT_BALL
@@ -349,22 +349,22 @@ UnknownScript_0x19d9b4:
 UnknownScript_0x19d9c9:
 	verbosegiveitem ULTRA_BALL
 	iffalse UnknownScript_0x19d9e7
-	jump UnknownScript_0x19d9e1
+	sjump UnknownScript_0x19d9e1
 
 UnknownScript_0x19d9d2:
 	verbosegiveitem GREAT_BALL
 	iffalse UnknownScript_0x19d9e7
-	jump UnknownScript_0x19d9e1
+	sjump UnknownScript_0x19d9e1
 
 UnknownScript_0x19d9db:
 	verbosegiveitem POKE_BALL
 	iffalse UnknownScript_0x19d9e7
 UnknownScript_0x19d9e1:
 	clearflag ENGINE_WILTON_HAS_ITEM
-	jump UnknownScript_0x19d8eb
+	sjump Route44NumberAcceptedM
 
 UnknownScript_0x19d9e7:
-	jump UnknownScript_0x19d8ff
+	sjump Route44PackFullM
 
 GenericTrainerFisherEdgar:
 	generictrainer FISHER, EDGAR, EVENT_BEAT_FISHER_EDGAR, FisherEdgarSeenText, FisherEdgarBeatenText
@@ -480,7 +480,7 @@ Bird_keeperVance1BeatenText:
 	line "stuff."
 	done
 
-UnknownText_0x19dbf3:
+BirdKeeperVanceLegendaryBirdsText:
 	text "Articuno, Zapdos"
 	line "and Moltres are"
 
@@ -492,7 +492,7 @@ UnknownText_0x19dbf3:
 	cont "birds, though."
 	done
 
-UnknownText_0x19dc67:
+BirdKeeperVance2BeatenText:
 	text "Why can't I ever"
 	line "beat you?"
 

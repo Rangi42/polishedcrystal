@@ -69,7 +69,7 @@ CheckBreedmonCompatibility:
 	ld a, [wBreedMon2Species]
 	ld [wCurSpecies], a
 	ld a, [wBreedMon2Form]
-	and FORM_MASK
+	and BASEMON_MASK
 	ld [wCurForm], a
 	call GetBaseData
 	ld a, [wBaseEggGroups]
@@ -79,7 +79,7 @@ CheckBreedmonCompatibility:
 	ld a, [wBreedMon1Species]
 	ld [wCurSpecies], a
 	ld a, [wBreedMon1Form]
-	and FORM_MASK
+	and BASEMON_MASK
 	ld [wCurForm], a
 	call GetBaseData
 	ld a, [wBaseEggGroups]
@@ -93,7 +93,7 @@ CheckBreedmonCompatibility:
 	jr z, .Compatible
 	ld [wCurSpecies], a
 	ld a, [wBreedMon2Form]
-	and FORM_MASK
+	and BASEMON_MASK
 	ld [wCurForm], a
 	call GetBaseData
 	ld a, [wBaseEggGroups]
@@ -110,7 +110,7 @@ CheckBreedmonCompatibility:
 	jr z, .Compatible
 	ld [wCurSpecies], a
 	ld a, [wBreedMon1Form]
-	and FORM_MASK
+	and BASEMON_MASK
 	ld [wCurForm], a
 	push bc
 	call GetBaseData
@@ -237,7 +237,7 @@ DoEggStep::
 
 OverworldHatchEgg::
 	call RefreshScreen
-	call LoadStandardMenuDataHeader
+	call LoadStandardMenuHeader
 	call HatchEggs
 	call ExitAllMenus
 	call RestartMapMusic
@@ -308,7 +308,7 @@ HatchEggs:
 	ld a, MON_FORM
 	call GetPartyParamLocation
 	ld a, [hl]
-	and FORM_MASK
+	and BASEMON_MASK
 	ld [wCurForm], a
 
 	ld a, [wCurPartyMon]
@@ -426,8 +426,8 @@ HatchEggs:
 
 .Text_HatchEgg:
 	; Huh? @ @
-	text_jump UnknownText_0x1c0db0
-	start_asm
+	text_far Text_BreedHuh
+	text_asm
 	ld hl, wVramState
 	res 0, [hl]
 	push hl
@@ -448,17 +448,17 @@ HatchEggs:
 
 .ClearTextbox:
 	;
-	text_jump ClearText
+	text_far ClearText
 	text_end
 
 .CameOutOfItsEgg:
 	; came out of its EGG!@ @
-	text_jump UnknownText_0x1c0dba
+	text_far _BreedEggHatchText
 	text_end
 
 .Text_NicknameHatchling:
 	; Give a nickname to @ ?
-	text_jump UnknownText_0x1c0dd8
+	text_far _BreedAskNicknameText
 	text_end
 
 GetMotherAddr:
@@ -496,7 +496,7 @@ InitEggMoves:
 	ld c, a
 	; b = form
 	ld a, [wEggMonForm]
-	and FORM_MASK
+	and BASEMON_MASK
 	ld b, a
 	predef FillMoves
 
@@ -533,7 +533,6 @@ InitEggMoves:
 	call InheritLevelMove
 	pop bc
 	pop hl
-	pop de
 	jr .level_up_done_inner
 
 .level_up_done
@@ -575,7 +574,7 @@ InheritLevelMove:
 	ld c, a
 	; b = form
 	ld a, [wEggMonForm]
-	and FORM_MASK
+	and BASEMON_MASK
 	ld b, a
 	; bc = index
 	call GetSpeciesAndFormIndex
@@ -584,7 +583,7 @@ InheritLevelMove:
 	add hl, bc
 	add hl, bc
 	ld a, BANK(EvosAttacksPointers)
-	call GetFarHalfword
+	call GetFarWord
 .loop
 	ld a, BANK(EvosAttacks)
 	call GetFarByte
@@ -611,7 +610,7 @@ InheritEggMove:
 	ld c, a
 	; b = form
 	ld a, [wEggMonForm]
-	and FORM_MASK
+	and BASEMON_MASK
 	ld b, a
 	; bc = index
 	call GetSpeciesAndFormIndex
@@ -620,7 +619,7 @@ InheritEggMove:
 	add hl, bc
 	add hl, bc
 	ld a, BANK(EggMovePointers)
-	call GetFarHalfword
+	call GetFarWord
 .loop
 	ld a, BANK(EggMoves)
 	call GetFarByte
@@ -747,11 +746,11 @@ EggHatch_AnimationSequence:
 	ld c, 80
 	call DelayFrames
 	xor a
-	ld [wcf64], a
+	ld [wFrameCounter], a
 	ldh a, [hSCX]
 	ld b, a
 .outerloop
-	ld hl, wcf64
+	ld hl, wFrameCounter
 	ld a, [hl]
 	inc [hl]
 	cp 8
@@ -810,7 +809,7 @@ Hatch_LoadFrontpicPal:
 	jp GetCGBLayout
 
 EggHatch_CrackShell:
-	ld a, [wcf64]
+	ld a, [wFrameCounter]
 	dec a
 	and $7
 	cp $7
@@ -902,7 +901,7 @@ Special_DayCareMon1:
 	call PrintText
 	ld a, [wBreedMon1Species]
 	call PlayCry
-	ld a, [wDaycareLady]
+	ld a, [wDayCareLady]
 	bit 0, a
 	jr z, DayCareMonCursor
 	call ButtonSound
@@ -915,7 +914,7 @@ Special_DayCareMon2:
 	call PrintText
 	ld a, [wBreedMon2Species]
 	call PlayCry
-	ld a, [wDaycareMan]
+	ld a, [wDayCareMan]
 	bit 0, a
 	jr z, DayCareMonCursor
 	call ButtonSound
@@ -928,12 +927,12 @@ DayCareMonCursor:
 
 DayCareMon2Text:
 	; It's @ that was left with the DAY-CARE LADY.
-	text_jump UnknownText_0x1c0df3
+	text_far _LeftWithDayCareLadyText
 	text_end
 
 DayCareMon1Text:
 	; It's @ that was left with the DAY-CARE MAN.
-	text_jump UnknownText_0x1c0e24
+	text_far _LeftWithDayCareManText
 	text_end
 
 DayCareMonCompatibilityText:
@@ -962,20 +961,20 @@ DayCareMonCompatibilityText:
 
 .Incompatible:
 	; It has no interest in @ .
-	text_jump UnknownText_0x1c0e6f
+	text_far _BreedNoInterestText
 	text_end
 
 .HighCompatibility:
 	; It appears to care for @ .
-	text_jump UnknownText_0x1c0e8d
+	text_far _BreedAppearsToCareForText
 	text_end
 
 .ModerateCompatibility:
 	; It's friendly with @ .
-	text_jump UnknownText_0x1c0eac
+	text_far _BreedFriendlyText
 	text_end
 
 .SlightCompatibility:
 	; It shows interest in @ .
-	text_jump UnknownText_0x1c0ec6
+	text_far _BreedShowsInterestText
 	text_end

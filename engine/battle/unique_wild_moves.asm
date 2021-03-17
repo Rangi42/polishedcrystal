@@ -19,6 +19,11 @@ CheckUniqueWildMove:
 	jr nz, .inc1andloop
 	ld a, [hli] ; move
 	ld b, a
+
+	; Ignore placeholders (move 0)
+	and a
+	ret z
+
 	; always teach moves for certain Pokémon
 	ld a, c
 	cp MAHOGANY_TOWN

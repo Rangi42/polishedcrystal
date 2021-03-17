@@ -1,21 +1,21 @@
 Route5UndergroundEntrance_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 3 ; warp events
+	def_warp_events
 	warp_event  3,  7, ROUTE_5, 1
 	warp_event  4,  7, ROUTE_5, 1
 	warp_event  4,  4, UNDERGROUND, 1
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 0 ; bg events
+	def_bg_events
 
-	db 1 ; object events
-	object_event  2,  3, SPRITE_TEACHER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 1, 1, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x18b558, -1
+	def_object_events
+	object_event  2,  3, SPRITE_TEACHER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 1, 1, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, Route5UndergroundPathEntranceTeacherText, -1
 
-UnknownText_0x18b558:
+Route5UndergroundPathEntranceTeacherText:
 	text "Many cities in"
 	line "Johto have long"
 

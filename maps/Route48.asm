@@ -1,27 +1,27 @@
 Route48_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 1 ; callbacks
+	def_callbacks
 	callback MAPCALLBACK_NEWMAP, Route48JessieJamesCallback
 
-	db 1 ; warp events
+	def_warp_events
 	warp_event 11,  5, YELLOW_FOREST_GATE, 3
 
-	db 2 ; coord events
+	def_coord_events
 	coord_event 20, 12, 0, Route48JessieJamesScript1
 	coord_event 20, 13, 0, Route48JessieJamesScript2
 
-	db 1 ; bg events
-	bg_event 27, 11, SIGNPOST_JUMPTEXT, Route48YellowForestSignText
+	def_bg_events
+	bg_event 27, 11, BGEVENT_JUMPTEXT, Route48YellowForestSignText
 
-	db 5 ; object events
-	object_event 11,  6, SPRITE_ARCHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 1, TrainerArcher2, EVENT_CLEARED_YELLOW_FOREST
-	object_event 15, 12, SPRITE_JESSIE, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_48_JESSIE
-	object_event 26, 12, SPRITE_JAMES, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_48_JAMES
-	object_event 11,  5, SPRITE_NURSE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_48_NURSE
+	def_object_events
+	object_event 11,  6, SPRITE_ARCHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_TRAINER, 1, TrainerArcher2, EVENT_CLEARED_YELLOW_FOREST
+	object_event 15, 12, SPRITE_JESSIE, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_48_JESSIE
+	object_event 26, 12, SPRITE_JAMES, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_48_JAMES
+	object_event 11,  5, SPRITE_NURSE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_48_NURSE
 	itemball_event  4, 13, NUGGET, 1, EVENT_ROUTE_48_NUGGET
 
-	const_def 1 ; object constants
+	object_const_def
 	const ROUTE48_ARCHER
 	const ROUTE48_JESSIE
 	const ROUTE48_JAMES
@@ -31,7 +31,7 @@ Route48JessieJamesCallback:
 	setflag ENGINE_FLYPOINT_YELLOW_FOREST
 	disappear ROUTE48_JESSIE
 	disappear ROUTE48_JAMES
-	return
+	endcallback
 
 Route48JessieJamesScript2:
 	moveobject ROUTE48_JESSIE, 15, 13

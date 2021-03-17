@@ -1,24 +1,24 @@
 WillsRoom_MapScriptHeader:
-	db 1 ; scene scripts
+	def_scene_scripts
 	scene_script WillsRoomEntranceTrigger
 
-	db 1 ; callbacks
+	def_callbacks
 	callback MAPCALLBACK_TILES, WillsRoomDoorCallback
 
-	db 3 ; warp events
+	def_warp_events
 	warp_event  5, 17, INDIGO_PLATEAU_POKECENTER_1F, 4
 	warp_event  4,  2, KOGAS_ROOM, 1
 	warp_event  5,  2, KOGAS_ROOM, 2
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 0 ; bg events
+	def_bg_events
 
-	db 1 ; object events
-	object_event  5,  7, SPRITE_WILL, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, WillScript, -1
+	def_object_events
+	object_event  5,  7, SPRITE_WILL, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, WillScript, -1
 
 WillsRoomEntranceTrigger:
-	priorityjump .Script
+	prioritysjump .Script
 	end
 
 .Script:
@@ -43,10 +43,10 @@ WillsRoomDoorCallback:
 	iffalse .OpenDoor
 	changeblock 4, 2, $16
 .OpenDoor:
-	return
+	endcallback
 
 WillScript:
-	checkcode VAR_BADGES
+	readvar VAR_BADGES
 	ifequal 16, .Rematch
 	checkevent EVENT_BEAT_ELITE_4_WILL
 	iftrue_jumptextfaceplayer .AfterText
@@ -56,7 +56,7 @@ WillScript:
 	startbattle
 	reloadmapafterbattle
 	showtext .AfterText
-	jump .EndBattle
+	sjump .EndBattle
 
 .Rematch:
 	checkevent EVENT_BEAT_ELITE_4_WILL

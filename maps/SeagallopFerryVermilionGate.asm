@@ -1,25 +1,25 @@
 SeagallopFerryVermilionGate_MapScriptHeader:
-	db 2 ; scene scripts
+	def_scene_scripts
 	scene_script SeagallopFerryVermilionGateTrigger0
 	scene_script SeagallopFerryVermilionGateTrigger1
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 1 ; warp events
+	def_warp_events
 	warp_event  6,  0, VERMILION_CITY, 11
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 0 ; bg events
+	def_bg_events
 
-	db 1 ; object events
-	object_event  6,  4, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SeagallopFerryVermilionGateSailorScript, EVENT_OLIVINE_PORT_SAILOR_AT_GANGWAY
+	def_object_events
+	object_event  6,  4, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, SeagallopFerryVermilionGateSailorScript, EVENT_OLIVINE_PORT_SAILOR_AT_GANGWAY
 
-	const_def 1 ; object constants
+	object_const_def
 	const SEAGALLOPFERRYVERMILIONGATE_SAILOR
 
 SeagallopFerryVermilionGateTrigger1:
-	priorityjump SeagallopFerryVermilionGate_PlayerArrives
+	prioritysjump SeagallopFerryVermilionGate_PlayerArrives
 SeagallopFerryVermilionGateTrigger0:
 	end
 
@@ -86,7 +86,7 @@ SeagallopFerryVermilionGateSailorScript:
 	closewindow
 	ifequal $1, .use_orangeticket
 	ifequal $2, .use_mysticticket
-	jump .no_ferry
+	sjump .no_ferry
 
 .use_old_sea_map
 	writetext SeagallopFerryOldSeaMapQuestionText
@@ -104,7 +104,7 @@ SeagallopFerryVermilionGateSailorScript:
 	closewindow
 	ifequal $1, .use_mysticticket
 	ifequal $2, .use_old_sea_map
-	jump .no_ferry
+	sjump .no_ferry
 
 .use_orangeticket_or_old_sea_map
 	writetext SeagallopFerryWhichTicketText
@@ -113,7 +113,7 @@ SeagallopFerryVermilionGateSailorScript:
 	closewindow
 	ifequal $1, .use_orangeticket
 	ifequal $2, .use_old_sea_map
-	jump .no_ferry
+	sjump .no_ferry
 
 .have_three_tickets
 	writetext SeagallopFerryWhichTicketText

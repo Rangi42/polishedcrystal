@@ -1,6 +1,6 @@
 ; All other cases are neutral (1x).
 
-TypeMatchup:
+TypeMatchups:
 	;  attacker, defender,   *=
 	db NORMAL,    ROCK,      NOT_VERY_EFFECTIVE
 	db NORMAL,    STEEL,     NOT_VERY_EFFECTIVE

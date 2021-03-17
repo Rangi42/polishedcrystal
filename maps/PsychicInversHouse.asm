@@ -1,22 +1,22 @@
 PsychicInversHouse_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event  2,  7, ROUTE_16_WEST, 1
 	warp_event  3,  7, ROUTE_16_WEST, 1
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 1 ; bg events
-	bg_event  7,  1, SIGNPOST_JUMPSTD, difficultbookshelf
+	def_bg_events
+	bg_event  7,  1, BGEVENT_JUMPSTD, difficultbookshelf
 
-	db 2 ; object events
-	object_event  2,  2, SPRITE_PSYCHIC, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, PsychicInverScript, -1
-	object_event  6,  3, SPRITE_HEX_MANIAC, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, PsychicInversHouseHexManiacText, -1
+	def_object_events
+	object_event  2,  2, SPRITE_PSYCHIC, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, PsychicInverScript, -1
+	object_event  6,  3, SPRITE_HEX_MANIAC, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, PsychicInversHouseHexManiacText, -1
 
-	const_def 1 ; object constants
+	object_const_def
 	const PSYCHICINVERSHOUSE_INVER
 
 PsychicInverScript:
@@ -35,23 +35,23 @@ PsychicInverScript:
 	setlasttalked PSYCHICINVERSHOUSE_INVER
 ; TODO: pick six random Pokémon from a larger pool
 	loadtrainer INVER, 1
-	writecode VAR_BATTLETYPE, BATTLETYPE_INVERSE
+	loadvar VAR_BATTLETYPE, BATTLETYPE_INVERSE
 	startbattle
 	reloadmapafterbattle
 	opentext
-	copybytetovar wInverseBattleScore
+	readmem wInverseBattleScore
 	ifequal 0, .Score0
 	ifgreater 127, .Score0 ; negative
 	ifless 4, .Score1_3
 	ifless 7, .Score4_6
 	ifless 10, .Score7_9
 	writetext InverseBattle10PointRewardText
-	writebyte RARE_CANDY
+	setval RARE_CANDY
 .Reward
 	waitbutton
 	writetext PsychicInverRewardText
 .GiveReward
-	buttonsound
+	promptbutton
 	verbosegiveitem ITEM_FROM_MEM
 	endtext
 
@@ -59,25 +59,25 @@ PsychicInverScript:
 	writetext InverseBattle0PointRewardText
 	waitbutton
 	writetext PsychicInverZeroRewardText
-	writebyte ORAN_BERRY
-	jump .GiveReward
+	setval ORAN_BERRY
+	sjump .GiveReward
 
 .Score1_3
 	writetext InverseBattle1_3PointRewardText
-	writebyte SITRUS_BERRY
-	jump .Reward
+	setval SITRUS_BERRY
+	sjump .Reward
 
 .Score4_6
 	writetext InverseBattle4_6PointRewardText
 	random MARANGABERRY - LUM_BERRY + 1
-	addvar LUM_BERRY
-	jump .Reward
+	addval LUM_BERRY
+	sjump .Reward
 
 .Score7_9
 	writetext InverseBattle7_9PointRewardText
 	random EVERSTONE - LEAF_STONE + 1
-	addvar LEAF_STONE
-	jump .Reward
+	addval LEAF_STONE
+	sjump .Reward
 
 PsychicInverGreetingText:
 	text "Oh. I wasn't ex-"

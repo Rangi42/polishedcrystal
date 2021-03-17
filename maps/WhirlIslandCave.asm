@@ -1,14 +1,14 @@
 WhirlIslandCave_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event 37, 43, WHIRL_ISLAND_B1F, 9
 	warp_event 33, 51, WHIRL_ISLAND_NW, 4
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 0 ; bg events
+	def_bg_events
 
-	db 0 ; object events
+	def_object_events

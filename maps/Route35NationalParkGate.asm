@@ -1,14 +1,14 @@
 Route35NationalParkGate_MapScriptHeader:
-	db 3 ; scene scripts
+	def_scene_scripts
 	scene_script Route35NationalParkGateTrigger0
 	scene_script Route35NationalParkGateTrigger1
 	scene_script Route35NationalParkGateTrigger2
 
-	db 2 ; callbacks
+	def_callbacks
 	callback MAPCALLBACK_NEWMAP, Route35NationalParkGate_CheckIfStillInContest
 	callback MAPCALLBACK_OBJECTS, Route35NationalParkGate_CheckIfContestDay
 
-	db 6 ; warp events
+	def_warp_events
 	warp_event 15,  0, NATIONAL_PARK, 3
 	warp_event 16,  0, NATIONAL_PARK, 4
 	warp_event 15,  7, ROUTE_35, 3
@@ -16,23 +16,23 @@ Route35NationalParkGate_MapScriptHeader:
 	warp_event  0,  4, OLIVINE_CITY, 11
 	warp_event  0,  5, OLIVINE_CITY, 12
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 1 ; bg events
-	bg_event 17,  0, SIGNPOST_JUMPTEXT, UnknownText_0x6a90e
+	def_bg_events
+	bg_event 17,  0, BGEVENT_JUMPTEXT, BugCatchingContestExplanationText
 
-	db 3 ; object events
-	object_event 14,  1, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_SCRIPT, 0, OfficerScript_0x6a204, EVENT_ROUTE_35_NATIONAL_PARK_GATE_OFFICER_CONTEST_DAY
-	object_event 18,  5, SPRITE_BUG_MANIAC, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x6a8d8, EVENT_ROUTE_35_NATIONAL_PARK_GATE_BUG_MANIAC
-	object_event 12,  3, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_SCRIPT, 0, OfficerScript_0x6a2ca, EVENT_ROUTE_35_NATIONAL_PARK_GATE_OFFICER_NOT_CONTEST_DAY
+	def_object_events
+	object_event 14,  1, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, Route35OfficerScriptContest, EVENT_ROUTE_35_NATIONAL_PARK_GATE_OFFICER_CONTEST_DAY
+	object_event 18,  5, SPRITE_BUG_MANIAC, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, Route35NationalParkGateYoungsterText, EVENT_ROUTE_35_NATIONAL_PARK_GATE_BUG_MANIAC
+	object_event 12,  3, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, Route35NationalParkGateOfficerScript, EVENT_ROUTE_35_NATIONAL_PARK_GATE_OFFICER_NOT_CONTEST_DAY
 
-	const_def 1 ; object constants
+	object_const_def
 	const ROUTE35NATIONALPARKGATE_OFFICER1
 	const ROUTE35NATIONALPARKGATE_BUG_MANIAC
 	const ROUTE35NATIONALPARKGATE_OFFICER2
 
 Route35NationalParkGateTrigger2:
-	priorityjump Route35NationalParkGate_LeavingContestEarly
+	prioritysjump Route35NationalParkGate_LeavingContestEarly
 Route35NationalParkGateTrigger0:
 Route35NationalParkGateTrigger1:
 	end
@@ -41,14 +41,14 @@ Route35NationalParkGate_CheckIfStillInContest:
 	checkflag ENGINE_BUG_CONTEST_TIMER
 	iftrue Route35NationalParkGate_Yes
 	setscene $0
-	return
+	endcallback
 
 Route35NationalParkGate_Yes:
 	setscene $2
-	return
+	endcallback
 
 Route35NationalParkGate_CheckIfContestDay:
-	checkcode VAR_WEEKDAY
+	readvar VAR_WEEKDAY
 	ifequal TUESDAY, Route35NationalParkGate_IsContestDay
 	ifequal THURSDAY, Route35NationalParkGate_IsContestDay
 	ifequal SATURDAY, Route35NationalParkGate_IsContestDay
@@ -57,31 +57,31 @@ Route35NationalParkGate_CheckIfContestDay:
 	disappear ROUTE35NATIONALPARKGATE_OFFICER1
 	appear ROUTE35NATIONALPARKGATE_BUG_MANIAC
 	appear ROUTE35NATIONALPARKGATE_OFFICER2
-	return
+	endcallback
 
 Route35NationalParkGate_IsContestDay:
 	appear ROUTE35NATIONALPARKGATE_OFFICER1
 	disappear ROUTE35NATIONALPARKGATE_BUG_MANIAC
 	disappear ROUTE35NATIONALPARKGATE_OFFICER2
-	return
+	endcallback
 
 Route35NationalParkGate_LeavingContestEarly:
-	applymovement PLAYER, MovementData_0x6a2e2
+	applymovement PLAYER, Route35NationalParkGatePlayerApproachOfficer1Movement
 	turnobject ROUTE35NATIONALPARKGATE_OFFICER1, RIGHT
 	opentext
-	checkcode VAR_CONTESTMINUTES
-	addvar $1
-	RAM2MEM $0
-	writetext UnknownText_0x6a79a
+	readvar VAR_CONTESTMINUTES
+	addval $1
+	getnum $0
+	writetext Route35NationalParkGateOfficer1WantToFinishText
 	yesorno
 	iffalse Route35NationalParkGate_GoBackIn
-	writetext UnknownText_0x6a7db
+	writetext Route35NationalParkGateOfficer1WaitAtNorthGateText
 	waitbutton
 	closetext
 	jumpstd bugcontestresultswarp
 
 Route35NationalParkGate_GoBackIn:
-	writetext UnknownText_0x6a823
+	writetext Route35NationalParkGateOfficer1OkGoFinishText
 	waitbutton
 	closetext
 	scall Route35NationalParkGate_EnterContest
@@ -91,33 +91,33 @@ Route35NationalParkGate_GoBackIn:
 	warpfacing UP, NATIONAL_PARK_BUG_CONTEST, 12, 47
 	end
 
-OfficerScript_0x6a204:
-	checkcode VAR_WEEKDAY
+Route35OfficerScriptContest:
+	readvar VAR_WEEKDAY
 	ifequal SUNDAY, Route35NationalParkGate_NoContestToday
 	ifequal MONDAY, Route35NationalParkGate_NoContestToday
 	ifequal WEDNESDAY, Route35NationalParkGate_NoContestToday
 	ifequal FRIDAY, Route35NationalParkGate_NoContestToday
 	checkflag ENGINE_DAILY_BUG_CONTEST
-	iftrue_jumptextfaceplayer UnknownText_0x6a84f
+	iftrue_jumptextfaceplayer Route35NationalParkGateOfficer1ContestIsOverText
 	faceplayer
 	opentext
 	callstd daytotext
-	writetext UnknownText_0x6a2eb
+	writetext Route35NationalParkGateOfficer1AskToParticipateText
 	yesorno
 	iffalse Route35NationalParkGate_DeclinedToParticipate
-	checkcode VAR_PARTYCOUNT
+	readvar VAR_PARTYCOUNT
 	ifgreater $1, Route35NationalParkGate_LeaveTheRestBehind
 	special ContestDropOffMons
 	clearevent EVENT_LEFT_MONS_WITH_CONTEST_OFFICER
 Route35NationalParkGate_OkayToProceed:
 	setflag ENGINE_BUG_CONTEST_TIMER
 	special PlayMapMusic
-	writetext UnknownText_0x6a39d
-	buttonsound
-	writetext UnknownText_0x6a3c7
+	writetext Route35NationalParkGateOfficer1GiveParkBallsText
+	promptbutton
+	writetext Route35NationalParkGatePlayerReceivedParkBallsText
 	playsound SFX_ITEM
 	waitsfx
-	writetext UnknownText_0x6a3e2
+	writetext Route35NationalParkGateOfficer1ExplainsRulesText
 	waitbutton
 	closetext
 	special Special_GiveParkBalls
@@ -130,9 +130,9 @@ Route35NationalParkGate_OkayToProceed:
 	end
 
 Route35NationalParkGate_EnterContest:
-	checkcode VAR_FACING
+	readvar VAR_FACING
 	ifequal LEFT, Route35NationalParkGate_FacingLeft
-	applymovement PLAYER, MovementData_0x6a2e5
+	applymovement PLAYER, Route35NationalParkGatePlayerGoAroundOfficerAndEnterParkMovement
 	end
 
 Route35NationalParkGate_FacingLeft:
@@ -140,39 +140,39 @@ Route35NationalParkGate_FacingLeft:
 	end
 
 Route35NationalParkGate_LeaveTheRestBehind:
-	checkcode VAR_PARTYCOUNT
+	readvar VAR_PARTYCOUNT
 	ifless 6, Route35NationalParkGate_LessThanFullParty
-	checkcode VAR_BOXSPACE
-	iffalse_jumpopenedtext UnknownText_0x6a67c
+	readvar VAR_BOXSPACE
+	iffalse_jumpopenedtext Route35NationalParkGateOfficer1MakeRoomText
 Route35NationalParkGate_LessThanFullParty: ; 6a27d
 	special CheckFirstMonIsEgg
-	iftrue_jumpopenedtext UnknownText_0x6a71f
-	writetext UnknownText_0x6a4c6
+	iftrue_jumpopenedtext Route35NationalParkGateOfficer1EggAsFirstMonText
+	writetext Route35NationalParkGateOfficer1AskToUseFirstMonText
 	yesorno
 	iffalse Route35NationalParkGate_DeclinedToLeaveMonsBehind
 	special ContestDropOffMons
 	iftrue Route35NationalParkGate_FirstMonIsFainted
 	setevent EVENT_LEFT_MONS_WITH_CONTEST_OFFICER
-	writetext UnknownText_0x6a537
-	buttonsound
-	writetext UnknownText_0x6a56b
+	writetext Route35NationalParkGateOfficer1WellHoldYourMonText
+	promptbutton
+	writetext Route35NationalParkGatePlayersMonLeftWithHelperText
 	playsound SFX_GOT_SAFARI_BALLS
 	waitsfx
-	buttonsound
-	jump Route35NationalParkGate_OkayToProceed
+	promptbutton
+	sjump Route35NationalParkGate_OkayToProceed
 
 Route35NationalParkGate_DeclinedToParticipate:
-	jumpopenedtext UnknownText_0x6a5dc
+	jumpopenedtext Route35NationalParkGateOfficer1TakePartInFutureText
 
 Route35NationalParkGate_DeclinedToLeaveMonsBehind:
-	jumpopenedtext UnknownText_0x6a597
+	jumpopenedtext Route35NationalParkGateOfficer1ChooseMonAndComeBackText
 
 Route35NationalParkGate_FirstMonIsFainted:
-	jumpopenedtext UnknownText_0x6a608
+	jumpopenedtext Route35NationalParkGateOfficer1FirstMonCantBattleText
 
-OfficerScript_0x6a2ca:
+Route35NationalParkGateOfficerScript:
 	checkflag ENGINE_DAILY_BUG_CONTEST
-	iftrue_jumptextfaceplayer UnknownText_0x6a84f
+	iftrue_jumptextfaceplayer Route35NationalParkGateOfficer1ContestIsOverText
 Route35NationalParkGate_NoContestToday:
 	jumpthistextfaceplayer
 
@@ -183,20 +183,20 @@ Route35NationalParkGate_NoContestToday:
 	line "give it a shot."
 	done
 
-MovementData_0x6a2e2:
+Route35NationalParkGatePlayerApproachOfficer1Movement:
 	step_down
 	turn_head_left
 	step_end
 
-MovementData_0x6a2e5:
+Route35NationalParkGatePlayerGoAroundOfficerAndEnterParkMovement:
 	step_right
 	step_up
 	step_up
 	step_end
 
-UnknownText_0x6a2eb:
+Route35NationalParkGateOfficer1AskToParticipateText:
 	text "Today's "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 	line "That means the"
 
@@ -216,18 +216,18 @@ UnknownText_0x6a2eb:
 	line "give it a try?"
 	done
 
-UnknownText_0x6a39d:
+Route35NationalParkGateOfficer1GiveParkBallsText:
 	text "Here are the Park"
 	line "Balls for the"
 	cont "Contest."
 	done
 
-UnknownText_0x6a3c7:
+Route35NationalParkGatePlayerReceivedParkBallsText:
 	text "<PLAYER> received"
 	line "20 Park Balls."
 	done
 
-UnknownText_0x6a3e2:
+Route35NationalParkGateOfficer1ExplainsRulesText:
 	text "The person who"
 	line "gets the strong-"
 	cont "est bug #mon"
@@ -255,7 +255,7 @@ endc
 	line "find!"
 	done
 
-UnknownText_0x6a4c6:
+Route35NationalParkGateOfficer1AskToUseFirstMonText:
 	text "Uh-oh…"
 
 	para "You have more than"
@@ -263,7 +263,7 @@ UnknownText_0x6a4c6:
 
 	para "You'll have to use"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text ", the"
 
 	para "first #mon in"
@@ -273,19 +273,19 @@ UnknownText_0x6a4c6:
 	line "you?"
 	done
 
-UnknownText_0x6a537:
+Route35NationalParkGateOfficer1WellHoldYourMonText:
 	text "Fine, we'll hold"
 	line "your other #mon"
 	cont "while you compete."
 	done
 
-UnknownText_0x6a56b:
+Route35NationalParkGatePlayersMonLeftWithHelperText:
 	text "<PLAYER>'s #mon"
 	line "were left with the"
 	cont "Contest Helper."
 	done
 
-UnknownText_0x6a597:
+Route35NationalParkGateOfficer1ChooseMonAndComeBackText:
 	text "Please choose the"
 	line "#mon to be used"
 
@@ -293,13 +293,13 @@ UnknownText_0x6a597:
 	line "then come see me."
 	done
 
-UnknownText_0x6a5dc:
+Route35NationalParkGateOfficer1TakePartInFutureText:
 	text "OK. We hope you'll"
 	line "take part in the"
 	cont "future."
 	done
 
-UnknownText_0x6a608:
+Route35NationalParkGateOfficer1FirstMonCantBattleText:
 	text "Uh-oh…"
 	line "The first #mon"
 
@@ -313,7 +313,7 @@ UnknownText_0x6a608:
 	line "then come see me."
 	done
 
-UnknownText_0x6a67c:
+Route35NationalParkGateOfficer1MakeRoomText:
 	text "Uh-oh…"
 	line "Both your party"
 
@@ -331,7 +331,7 @@ UnknownText_0x6a67c:
 	line "come see me."
 	done
 
-UnknownText_0x6a71f:
+Route35NationalParkGateOfficer1EggAsFirstMonText:
 	text "Uh-oh…"
 	line "You have an Egg as"
 
@@ -345,16 +345,16 @@ UnknownText_0x6a71f:
 	line "then come see me."
 	done
 
-UnknownText_0x6a79a:
+Route35NationalParkGateOfficer1WantToFinishText:
 	text "You still have "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	line "minute(s) left."
 
 	para "Do you want to"
 	line "finish now?"
 	done
 
-UnknownText_0x6a7db:
+Route35NationalParkGateOfficer1WaitAtNorthGateText:
 	text "OK. Please wait at"
 	line "the North Gate for"
 
@@ -362,13 +362,13 @@ UnknownText_0x6a7db:
 	line "of the winners."
 	done
 
-UnknownText_0x6a823:
+Route35NationalParkGateOfficer1OkGoFinishText:
 	text "OK. Please get"
 	line "back outside and"
 	cont "finish up."
 	done
 
-UnknownText_0x6a84f:
+Route35NationalParkGateOfficer1ContestIsOverText:
 	text "Today's Contest is"
 	line "over. We hope you"
 
@@ -376,13 +376,13 @@ UnknownText_0x6a84f:
 	line "in the future."
 	done
 
-UnknownText_0x6a8d8:
+Route35NationalParkGateYoungsterText:
 	text "When is the next"
 	line "Bug-Catching Con-"
 	cont "test going to be?"
 	done
 
-UnknownText_0x6a90e:
+BugCatchingContestExplanationText:
 	text "The Bug-Catching"
 	line "Contest is held on"
 

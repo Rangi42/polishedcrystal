@@ -155,7 +155,7 @@ MenuBox::
 	call GetMenuBoxDims
 	dec b
 	dec c
-	jp TextBox
+	jp Textbox
 
 GetMenuTextStartCoord::
 	ld a, [wMenuBorderTopCoord]
@@ -195,11 +195,11 @@ ClearWholeMenuBox::
 	jp ClearBox
 
 PushWindow_MenuBoxCoordToTile::
-	coord bc, 0, 0
+	bccoord 0, 0
 	jr PushWindow_MenuBoxCoordToAbsolute
 
 PushWindow_MenuBoxCoordToAttr::
-	coord bc, 0, 0, wAttrMap
+	bccoord 0, 0, wAttrMap
 
 ; fallthrough
 PushWindow_MenuBoxCoordToAbsolute:
@@ -255,7 +255,7 @@ Coord2Absolute:
 	rst AddNTimes
 	ret
 
-CopyMenuDataHeader::
+CopyMenuHeader::
 	ld de, wMenuHeader
 	ld bc, wMenuHeaderEnd - wMenuHeader
 	rst CopyBytes
@@ -263,26 +263,26 @@ CopyMenuDataHeader::
 	ld [wMenuDataBank], a
 	ret
 
-MenuTextBox::
+MenuTextbox::
 	push hl
-	call LoadMenuTextBox
+	call LoadMenuTextbox
 	pop hl
 	jp PrintText
 
-MenuTextBoxBackup::
-	call MenuTextBox
+MenuTextboxBackup::
+	call MenuTextbox
 	jp CloseWindow
 
-LoadMenuTextBox::
-	ld hl, MenuTextBoxDataHeader
-	jr LoadMenuDataHeader
+LoadMenuTextbox::
+	ld hl, MenuTextboxDataHeader
+	jr LoadMenuHeader
 
-LoadStandardMenuDataHeader::
+LoadStandardMenuHeader::
 	ld hl, StandardMenuDataHeader
 	; fallthrough
 
-LoadMenuDataHeader::
-	call CopyMenuDataHeader
+LoadMenuHeader::
+	call CopyMenuHeader
 	jp PushWindow
 
 StandardMenuDataHeader:
@@ -292,7 +292,7 @@ StandardMenuDataHeader:
 	dw 0
 	db 1 ; default option
 
-MenuTextBoxDataHeader:
+MenuTextboxDataHeader:
 	db $40 ; tile backup
 	db 12, 0 ; start coords
 	db 17, 19 ; end coords
@@ -327,29 +327,51 @@ VerticalMenu::
 	ret
 
 GetMenu2::
-	call LoadMenuDataHeader
+	call LoadMenuHeader
 	call VerticalMenu
 	call CloseWindow
 	ld a, [wMenuCursorY]
 	ret
 
-YesNoBox::
+GetYesNoBoxPosition:
 	ld a, [wInPokegear]
 	and a
 	lb bc, SCREEN_WIDTH - 6, 7
-	jr z, .got_position
+	ret z
 	dec b
-.got_position
+	ret
+
+NoYesBox:
+; Returns c (no) or nc (yes). Doesn't mess with menu cursor.
+	call GetYesNoBoxPosition
 	; fallthrough
+PlaceNoYesBox:
+	ld hl, NoYesMenuDataHeader
+	call HandleYesNoMenu
+	ret c
+	add 1 ; no-optimize a++|a--
+	ret
 
+YesNoBox:
+; Returns c (no) or nc (yes) and sets menu cursor appropriately.
+	call GetYesNoBoxPosition
+	; fallthrough
 PlaceYesNoBox::
-; Return nc (yes) or c (no).
-	push bc
 	ld hl, YesNoMenuDataHeader
-	call CopyMenuDataHeader
-	pop bc
+	call HandleYesNoMenu
+	jr c, .fix_menu
+	sub 1 ; no-optimize a++|a--
+	ret
+.fix_menu
+	ld a, 2
+	ld [wMenuCursorY], a
+	ret
 
-.okay
+HandleYesNoMenu:
+; Returns c if cancelled, otherwise $ff or $00 in a for first or second option.
+	push bc
+	call CopyMenuHeader
+	pop bc
 	ld a, b
 	ld [wMenuBorderLeftCoord], a
 	add 5
@@ -359,27 +381,16 @@ PlaceYesNoBox::
 	add 4
 	ld [wMenuBorderBottomCoord], a
 	call PushWindow
-	; fallthrough
-
-InterpretTwoOptionMenu::
 	call VerticalMenu
 	push af
 	ld c, 15
 	call DelayFrames
 	call CloseWindow
-InterpretTwoOptionMenu_AfterCloseWindow::
 	pop af
-	jr c, .no
+	ret c
 	ld a, [wMenuCursorY]
-	cp 2 ; no
-	jr z, .no
-	and a
-	ret
-
-.no
-	ld a, 2
-	ld [wMenuCursorY], a
-	scf
+	dec a
+	dec a
 	ret
 
 YesNoMenuDataHeader::
@@ -395,13 +406,26 @@ YesNoMenuDataHeader::
 	db "Yes@"
 	db "No@"
 
+NoYesMenuDataHeader::
+	db $40 ; tile backup
+	db  7, 14 ; start coords
+	db 11, 19 ; end coords
+	dw .MenuData2
+	db 1 ; default option
+
+.MenuData2
+	db $c0 ; flags
+	db 2
+	db "No@"
+	db "Yes@"
+
 OffsetMenuDataHeader::
 	call _OffsetMenuDataHeader
 	jp PushWindow
 
 _OffsetMenuDataHeader::
 	push de
-	call CopyMenuDataHeader
+	call CopyMenuHeader
 	pop de
 	ld a, [wMenuBorderLeftCoord]
 	ld h, a
@@ -685,8 +709,7 @@ MenuClickSound::
 	jr z, .nosound
 	ld hl, wMenuFlags
 	bit 3, [hl]
-	jr nz, .nosound
-	call PlayClickSFX
+	call z, PlayClickSFX
 .nosound
 	pop af
 	ret
@@ -698,23 +721,10 @@ PlayClickSFX::
 	pop de
 	ret
 
-MenuTextBoxWaitButton::
-	call MenuTextBox
+MenuTextboxWaitButton::
+	call MenuTextbox
 	call WaitButton
 	jp ExitMenu
-
-Place2DMenuItemName::
-	ldh [hTempBank], a
-	ldh a, [hROMBank]
-	push af
-	ldh a, [hTempBank]
-	rst Bankswitch
-
-	rst PlaceString
-	pop af
-	rst Bankswitch
-
-	ret
 
 _2DMenu::
 	ldh a, [hROMBank]

@@ -1,25 +1,25 @@
 Route7SaffronGate_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 4 ; warp events
+	def_warp_events
 	warp_event  0,  4, ROUTE_7, 1
 	warp_event  0,  5, ROUTE_7, 2
 	warp_event  9,  4, SAFFRON_CITY, 10
 	warp_event  9,  5, SAFFRON_CITY, 11
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 0 ; bg events
+	def_bg_events
 
-	db 2 ; object events
-	object_event  5,  1, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, OfficerScript_0x73518, -1
-	object_event  3,  3, SPRITE_SILPH_EMPLOYEE, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, Route7SaffronGateSilphEmployeeText, -1
+	def_object_events
+	object_event  5,  1, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, Route7SaffronGuardScript, -1
+	object_event  3,  3, SPRITE_SILPH_EMPLOYEE, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, Route7SaffronGateSilphEmployeeText, -1
 
-OfficerScript_0x73518:
-	checkevent EVENT_RETURNED_MACHINE_PART
-	iftrue_jumptextfaceplayer UnknownText_0x73592
+Route7SaffronGuardScript:
+	checkevent EVENT_RESTORED_POWER_TO_KANTO
+	iftrue_jumptextfaceplayer Route7SaffronGuardSeriousText
 	jumpthistextfaceplayer
 
 	text "Did you hear about"
@@ -31,7 +31,7 @@ OfficerScript_0x73518:
 	cont "Lavender Town."
 	done
 
-UnknownText_0x73592:
+Route7SaffronGuardSeriousText:
 	text "I take my guard"
 	line "job seriously."
 

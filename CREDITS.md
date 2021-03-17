@@ -35,6 +35,7 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * Pigu and GACT for some battle music (used in TPP Anniversary Crystal 251).
 * ShockSlayer for some Pokémon Go and Pokémon Stadium battle music.
 * Monstarules for the RSE Surf music.
+* TriteHexagon for the Kanto wild night battle music.
 * LevusBevus, GRonnoc, Cat333Pokemon, and KoolBoyMan for some music from Pokémon Prism (available in the music player).
 
 
@@ -50,14 +51,14 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * Freeline for animations of Honchkrow and Munchlax, and the Rocket Executives' and stat trainers' overworld sprites.
 * Megaman-Omega for some of Prism's overworld sprites.
 * SoupPotato (aka SourApple) for some move animations, sprites of Red Gyarados and Ace Duo, and Berry tree tiles.
-* slempa for some move animations.
+* flempa for some Pokémon sprites and move animations.
 * spritershawn for sprites of Red, Blue, and Green.
 * isamuakai01 for sprites of Steven and Cynthia.
+* Maddalena for sprites of Imakuni and the Ghost.
 * Luna for some sprites and tiles.
 * Twilir for Lyra's back sprite.
 * Danny-E for Lorelei's sprite.
 * Nic7C5 for Yellow's sprite.
-* Maddalena for Imakuni's sprite.
 * Kage for Walker's sprite.
 * Pyro for Tamer's sprite.
 * Constantine for Nurse's sprite.
@@ -65,6 +66,7 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * ShockSlayer for Yellow's overworld sprite.
 * coraldev for rowboat and sakura petal tiles.
 * lilbluedemon for some bridge tiles.
+* WhoaMan for some MICR font characters.
 * BettyNewbie for elements of Green's sprite (combined with spritershawn's by me).
 * Fo0xerz for Lawrence III's sprite (devamped by me).
 * Bronzeswagger for the Grunt♂ and Grunt♀ sprite palettes.
@@ -81,6 +83,7 @@ Pokémon Polished Crystal would never have been finished without the help of man
 * Acrozz, Ruvaldak, Serious Senator, and WorldsBoss for trainer and NPC dialog.
 * ShockSlayer for Eusine's losing text.
 * Hello for correcting composers in the music player.
+* Salamandar for Battle Tower sets.
 
 
 ## Special Thanks

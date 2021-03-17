@@ -23,7 +23,7 @@ BattleCommand_attract:
 	farcall DisableAnimations
 	farcall ShowEnemyAbilityActivation
 	ld hl, DoesntAffectText
-	call StdBattleTextBox
+	call StdBattleTextbox
 	farjp EnableAnimations
 
 .failed
@@ -41,7 +41,7 @@ BattleCommand_attract:
 	call AnimateCurrentMove
 
 	ld hl, FellInLoveText
-	call StdBattleTextBox
+	call StdBattleTextbox
 
 	; Check Destiny Knot
 	call GetOpponentItemAfterUnnerve
@@ -65,13 +65,13 @@ BattleCommand_attract:
 	pop bc
 	farcall BufferAbility
 	ld hl, ObliviousPreventedDestinyKnot
-	call StdBattleTextBox
+	call StdBattleTextbox
 	jr .destiny_knot_done
 
 .no_user_ability_protection
 	call GetCurItemName
 	ld hl, DestinyKnotInfatuatedUser
-	call StdBattleTextBox
+	call StdBattleTextbox
 	ld a, BATTLE_VARS_SUBSTATUS1
 	call GetBattleVarAddr
 	set SUBSTATUS_IN_LOVE, [hl]
@@ -167,11 +167,11 @@ CheckMentalHerb:
 	ld hl, CuredDisableWithItem
 	call nz, .print
 
-	farjp ConsumeUserItem
+	jp ConsumeUserItem
 
 .print
 	push bc
-	call StdBattleTextBox
+	call StdBattleTextbox
 	pop bc
 	ret
 

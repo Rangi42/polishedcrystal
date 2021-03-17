@@ -13,7 +13,7 @@ FriendBallIcon::   INCBIN "gfx/items/friend_ball.2bpp.lz"
 FastBallIcon::     INCBIN "gfx/items/fast_ball.2bpp.lz"
 HeavyBallIcon::    INCBIN "gfx/items/heavy_ball.2bpp.lz"
 LoveBallIcon::     INCBIN "gfx/items/love_ball.2bpp.lz"
-ParkBallIcon::     INCBIN "gfx/items/park_ball.2bpp.lz"
+AbilityPatchIcon:: INCBIN "gfx/items/abilitypatch.2bpp.lz"
 RepeatBallIcon::   INCBIN "gfx/items/repeat_ball.2bpp.lz"
 TimerBallIcon::    INCBIN "gfx/items/timer_ball.2bpp.lz"
 
@@ -309,6 +309,8 @@ MusicMailIcon::    INCBIN "gfx/items/music_mail.2bpp.lz"
 MirageMailIcon::   INCBIN "gfx/items/mirage_mail.2bpp.lz"
 
 TMHMIcon::         INCBIN "gfx/items/tm_hm.2bpp.lz"
+ApricornIcon::     INCBIN "gfx/items/apricorn.2bpp.lz"
+ParkBallIcon::     INCBIN "gfx/items/park_ball.2bpp.lz"
 
 
 SECTION "Key Item Icons 1", ROMX

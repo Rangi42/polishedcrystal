@@ -323,4 +323,10 @@ endr
 	dba MarowakIcon ; TODO
 	dba PonytaIcon ; TODO
 	dba RapidashIcon ; TODO
+	dba SlowpokeIcon ; TODO
+	dba SlowbroIcon ; TODO
+	dba SlowkingIcon ; TODO
 	dba WeezingIcon ; TODO
+	dba ArticunoIcon ; TODO
+	dba ZapdosIcon ; TODO
+	dba MoltresIcon ; TODO

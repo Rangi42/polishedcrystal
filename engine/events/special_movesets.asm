@@ -32,7 +32,7 @@ TeachMagikarpDragonRage:
 	db DRAGON_RAGE
 	db 0
 
-GetLastPartyMon:
+GetLastPartyMonStruct:
 	ld bc, wPartyCount
 	ld a, [bc]
 	ld hl, MON_SPECIES
@@ -55,7 +55,7 @@ GetLastPartyMon:
 	ret
 
 GetLastPartyMonMoveset:
-	call GetLastPartyMon
+	call GetLastPartyMonStruct
 	ld de, MON_MOVES
 	add hl, de
 	push hl
@@ -88,7 +88,7 @@ GiveSpecialMoveset:
 	jr .GiveMoves
 
 SetLastPartyMonBall:
-	call GetLastPartyMon
+	call GetLastPartyMonStruct
 	ld de, MON_CAUGHTBALL
 	add hl, de
 	ldh a, [hScriptVar]

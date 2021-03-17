@@ -1,16 +1,16 @@
 HauntedRadioTower6F_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 1 ; warp events
+	def_warp_events
 	warp_event  6, 17, HAUNTED_RADIO_TOWER_5F, 2
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 0 ; bg events
+	def_bg_events
 
-	db 0 ; object events
+	def_object_events
 
 ; setflag ENGINE_EXORCISED_LAV_RADIO_TOWER
 ; setevent EVENT_EXORCISED_LAV_RADIO_TOWER

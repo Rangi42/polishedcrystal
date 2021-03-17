@@ -1,22 +1,22 @@
 EcruteakLugiaSpeechHouse_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event  3,  7, ECRUTEAK_CITY, 7
 	warp_event  4,  7, ECRUTEAK_CITY, 7
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 1 ; bg events
-	bg_event  2,  1, SIGNPOST_JUMPSTD, radio2
+	def_bg_events
+	bg_event  2,  1, BGEVENT_JUMPSTD, radio2
 
-	db 2 ; object events
-	object_event  2,  3, SPRITE_GRAMPS, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x9933d, -1
-	object_event  5,  4, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x993ec, -1
+	def_object_events
+	object_event  2,  3, SPRITE_GRAMPS, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, EcruteakLugiaSpeechHouseGrampsText, -1
+	object_event  5,  4, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, EcruteakLugiaSpeechHouseYoungsterText, -1
 
-UnknownText_0x9933d:
+EcruteakLugiaSpeechHouseGrampsText:
 	text "This happened when"
 	line "I was young."
 
@@ -34,7 +34,7 @@ UnknownText_0x9933d:
 	line "and a dragon."
 	done
 
-UnknownText_0x993ec:
+EcruteakLugiaSpeechHouseYoungsterText:
 	text "Is there really a"
 	line "#mon that big?"
 

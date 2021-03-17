@@ -12,8 +12,8 @@ _TitleScreen:
 	ld hl, wJumptableIndex
 	ld [hli], a ; wJumptableIndex
 	ld [hli], a ; wIntroSceneFrameCounter
-	ld [hli], a ; wTitleScreenTimerLo
-	ld [hl], a  ; wTitleScreenTimerHi
+	ld [hli], a ; wTitleScreenTimer
+	ld [hl], a  ; wTitleScreenTimer+1
 
 ; Turn LCD off
 	call DisableLCD
@@ -355,13 +355,13 @@ AnimateTitleCrystal:
 	ret
 
 TitleSuicuneGFX:
-INCBIN "gfx/title/suicune.w128.2bpp.lz"
+INCBIN "gfx/title/suicune.2bpp.lz"
 
 TitleLogoGFX:
-INCBIN "gfx/title/logo.w160.t4.2bpp.lz"
+INCBIN "gfx/title/logo_version.2bpp.lz"
 
 TitleCrystalGFX:
-INCBIN "gfx/title/crystal.w48.interleave.2bpp.lz"
+INCBIN "gfx/title/crystal.2bpp.lz"
 
 TitleScreenPalettes:
 ; BG

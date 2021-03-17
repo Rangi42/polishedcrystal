@@ -1,10 +1,10 @@
 IcePathB1F_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 1 ; callbacks
-	callback MAPCALLBACK_CMDQUEUE, IcePathB1FSetUpStoneTable
+	def_callbacks
+	callback MAPCALLBACK_STONETABLE, IcePathB1FSetUpStoneTable
 
-	db 8 ; warp events
+	def_warp_events
 	warp_event  3, 15, ICE_PATH_1F, 3
 	warp_event 17,  3, ICE_PATH_B2F_MAHOGANY_SIDE, 1
 	warp_event 11,  2, ICE_PATH_B2F_MAHOGANY_SIDE, 3 ; hole
@@ -14,34 +14,30 @@ IcePathB1F_MapScriptHeader:
 	warp_event  5, 25, ICE_PATH_1F, 4
 	warp_event 11, 27, ICE_PATH_B2F_BLACKTHORN_SIDE, 1
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 1 ; bg events
-	bg_event 17, 30, SIGNPOST_ITEM + MAX_POTION, EVENT_ICE_PATH_B1F_HIDDEN_MAX_POTION
+	def_bg_events
+	bg_event 17, 30, BGEVENT_ITEM + MAX_POTION, EVENT_ICE_PATH_B1F_HIDDEN_MAX_POTION
 
-	db 8 ; object events
-	strengthboulder_event 11,  7, EVENT_BOULDER_IN_ICE_PATH_1
-	strengthboulder_event  7,  8, EVENT_BOULDER_IN_ICE_PATH_2
-	strengthboulder_event  8,  9, EVENT_BOULDER_IN_ICE_PATH_3
-	strengthboulder_event 17,  7, EVENT_BOULDER_IN_ICE_PATH_4
-	object_event  2,  1, SPRITE_SKIER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, IcePathB1FSkierScript, -1
-	object_event  4, 23, SPRITE_BOARDER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerBoarderMax, -1
-	object_event 14, 24, SPRITE_SKIER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerSkierBecky, -1
+	def_object_events
+	object_event 11,  7, SPRITE_ICE_BOULDER, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumpstd, strengthboulder, EVENT_BOULDER_IN_ICE_PATH_1
+	object_event  7,  8, SPRITE_ICE_BOULDER, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumpstd, strengthboulder, EVENT_BOULDER_IN_ICE_PATH_2
+	object_event  8,  9, SPRITE_ICE_BOULDER, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumpstd, strengthboulder, EVENT_BOULDER_IN_ICE_PATH_3
+	object_event 17,  7, SPRITE_ICE_BOULDER, SPRITEMOVEDATA_STRENGTH_BOULDER, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumpstd, strengthboulder, EVENT_BOULDER_IN_ICE_PATH_4
+	object_event  2,  1, SPRITE_SKIER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, IcePathB1FSkierScript, -1
+	object_event  4, 23, SPRITE_BOARDER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerBoarderMax, -1
+	object_event 14, 24, SPRITE_SKIER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, GenericTrainerSkierBecky, -1
 	itemball_event  5, 35, IRON, 1, EVENT_ICE_PATH_B1F_IRON
 
-	const_def 1 ; object constants
+	object_const_def
 	const ICEPATHB1F_BOULDER1
 	const ICEPATHB1F_BOULDER2
 	const ICEPATHB1F_BOULDER3
 	const ICEPATHB1F_BOULDER4
 
 IcePathB1FSetUpStoneTable:
-	writecmdqueue .CommandQueue
-	return
-
-.CommandQueue:
-	dbw CMDQUEUE_STONETABLE, .StoneTable ; check if any stones are sitting on a warp
-	dw 0 ; filler
+	usestonetable .StoneTable
+	endcallback
 
 .StoneTable:
 	stonetable 3, ICEPATHB1F_BOULDER1, .Boulder1
@@ -53,22 +49,22 @@ IcePathB1FSetUpStoneTable:
 .Boulder1:
 	disappear ICEPATHB1F_BOULDER1
 	clearevent EVENT_BOULDER_IN_ICE_PATH_1A
-	jump .FinishBoulder
+	sjump .FinishBoulder
 
 .Boulder2:
 	disappear ICEPATHB1F_BOULDER2
 	clearevent EVENT_BOULDER_IN_ICE_PATH_2A
-	jump .FinishBoulder
+	sjump .FinishBoulder
 
 .Boulder3:
 	disappear ICEPATHB1F_BOULDER3
 	clearevent EVENT_BOULDER_IN_ICE_PATH_3A
-	jump .FinishBoulder
+	sjump .FinishBoulder
 
 .Boulder4:
 	disappear ICEPATHB1F_BOULDER4
 	clearevent EVENT_BOULDER_IN_ICE_PATH_4A
-	jump .FinishBoulder
+	sjump .FinishBoulder
 
 .FinishBoulder:
 	pause 30
@@ -96,7 +92,7 @@ IcePathB1FTutorIcyWindScript:
 	writetext Text_IcePathB1FTutorQuestion
 	yesorno
 	iffalse .TutorRefused
-	writebyte ICY_WIND
+	setval ICY_WIND
 	writetext ClearText
 	special Special_MoveTutor
 	ifequal $0, .TeachMove

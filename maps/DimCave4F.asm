@@ -1,11 +1,11 @@
 DimCave4F_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 2 ; callbacks
+	def_callbacks
 	callback MAPCALLBACK_TILES, DimCave4FBouldersLand
-	callback MAPCALLBACK_CMDQUEUE, DimCave4FSetUpStoneTable
+	callback MAPCALLBACK_STONETABLE, DimCave4FSetUpStoneTable
 
-	db 6 ; warp events
+	def_warp_events
 	warp_event  2, 16, DIM_CAVE_5F, 2
 	warp_event 27, 29, DIM_CAVE_5F, 3
 	warp_event 27, 24, DIM_CAVE_5F, 4 ; hole
@@ -13,23 +13,23 @@ DimCave4F_MapScriptHeader:
 	warp_event 28, 22, DIM_CAVE_3F, 2
 	warp_event 14,  7, DIM_CAVE_3F, 3
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 2 ; bg events
-	bg_event 25, 23, SIGNPOST_ITEM + CALCIUM, EVENT_DIM_CAVE_4F_HIDDEN_CALCIUM
-	bg_event 27, 27, SIGNPOST_ITEM + X_ATTACK, EVENT_DIM_CAVE_4F_HIDDEN_X_ATTACK
+	def_bg_events
+	bg_event 25, 23, BGEVENT_ITEM + CALCIUM, EVENT_DIM_CAVE_4F_HIDDEN_CALCIUM
+	bg_event 27, 27, BGEVENT_ITEM + X_ATTACK, EVENT_DIM_CAVE_4F_HIDDEN_X_ATTACK
 
-	db 8 ; object events
+	def_object_events
 	strengthboulder_event 14, 15, EVENT_BOULDER_IN_DIM_CAVE_4F
-	object_event 27, 25, SPRITE_BOULDER_ROCK_FOSSIL, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptext, DimCaveFallenBoulderText, EVENT_BOULDER_FELL_IN_DIM_CAVE_4F
-	object_event  5, 14, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 0, GenericTrainerScientistJoseph, -1
-	object_event 12,  2, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerScientistNigel, -1
-	object_event 22, 17, SPRITE_SUPER_NERD, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, DimCave4FSuper_nerdText, -1
+	object_event 27, 25, SPRITE_BOULDER_ROCK_FOSSIL, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptext, DimCaveFallenBoulderText, EVENT_BOULDER_FELL_IN_DIM_CAVE_4F
+	object_event  5, 14, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 0, GenericTrainerScientistJoseph, -1
+	object_event 12,  2, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 4, GenericTrainerScientistNigel, -1
+	object_event 22, 17, SPRITE_SUPER_NERD, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, DimCave4FSuper_nerdText, -1
 	itemball_event 17,  2, MAX_ETHER, 1, EVENT_DIM_CAVE_4F_MAX_ETHER
 	itemball_event 27,  8, NUGGET, 1, EVENT_DIM_CAVE_4F_NUGGET
 	itemball_event  6, 23, FULL_RESTORE, 1, EVENT_DIM_CAVE_4F_FULL_RESTORE
 
-	const_def 1 ; object constants
+	object_const_def
 	const DIMCAVE4F_BOULDER
 
 DimCave4FBouldersLand:
@@ -38,15 +38,11 @@ DimCave4FBouldersLand:
 	changeblock 26, 24, $c9
 	changeblock 4, 24, $b9
 .skip
-	return
+	endcallback
 
 DimCave4FSetUpStoneTable:
-	writecmdqueue .CommandQueue
-	return
-
-.CommandQueue:
-	dbw CMDQUEUE_STONETABLE, .StoneTable ; check if any stones are sitting on a warp
-	dw 0 ; filler
+	usestonetable .StoneTable
+	endcallback
 
 .StoneTable:
 	stonetable 6, DIMCAVE4F_BOULDER, .Boulder

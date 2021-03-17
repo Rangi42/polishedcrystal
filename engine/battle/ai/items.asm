@@ -1,5 +1,9 @@
 AI_MaybeSwitch:
+	; This function can be called twice in case of choice-locking. If so,
+	; dismiss the second run of the function if the first gave a target.
+	ld a, [wEnemySwitchTarget]
 	and a
+	ret nz
 
 	ld a, [wBattleMode]
 	dec a
@@ -349,12 +353,12 @@ AI_Items:
 	ld a, [bc]
 	bit CONTEXT_USE_F, a
 	jr nz, .CheckHalfOrQuarterHP
-	farcall AICheckEnemyHalfHP
+	call AICheckEnemyHalfHP
 	jp c, .DontUse
 	ld a, [bc]
 	bit UNKNOWN_USE_F, a
 	jp nz, .CheckQuarterHP
-	farcall AICheckEnemyQuarterHP
+	call AICheckEnemyQuarterHP
 	jp nc, .UseHealItem
 	call Random
 	cp 1 + 50 percent
@@ -362,7 +366,7 @@ AI_Items:
 	jp .DontUse
 
 .CheckQuarterHP:
-	farcall AICheckEnemyQuarterHP
+	call AICheckEnemyQuarterHP
 	jp c, .DontUse
 	call Random
 	cp -1 + 20 percent
@@ -370,9 +374,9 @@ AI_Items:
 	jr .UseHealItem
 
 .CheckHalfOrQuarterHP:
-	farcall AICheckEnemyHalfHP
+	call AICheckEnemyHalfHP
 	jp c, .DontUse
-	farcall AICheckEnemyQuarterHP
+	call AICheckEnemyQuarterHP
 	jp nc, .UseHealItem
 	call Random
 	cp -1 + 20 percent
@@ -664,7 +668,7 @@ EnemyUsedGuardSpec:
 	ld hl, TextJump_EnemyUsed
 	call PrintText
 	ld hl, MistText
-	call StdBattleTextBox
+	call StdBattleTextbox
 	jp AIUpdateHUD
 
 EnemyUsedDireHit:
@@ -724,9 +728,9 @@ PrintText_CopyItemName:
 	ret
 
 TextJump_EnemyUsed:
-	text_jump Text_EnemyUsed
+	text_far Text_EnemyUsed
 	text_end
 
 TextJump_EnemyUsedOn:
-	text_jump Text_EnemyUsedOn
+	text_far Text_EnemyUsedOn
 	text_end

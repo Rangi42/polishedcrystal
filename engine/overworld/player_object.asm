@@ -1,3 +1,5 @@
+INCLUDE "data/sprites/map_objects.asm"
+
 BlankScreen:
 	call DisableSpriteUpdates
 	xor a
@@ -28,14 +30,14 @@ SpawnPlayer:
 	call GetMapObject
 	ld hl, MAPOBJECT_COLOR
 	add hl, bc
-	ln e, (1 << 3) | PAL_OW_RED, PERSONTYPE_SCRIPT
+	ln e, (1 << 3) | PAL_OW_RED, OBJECTTYPE_SCRIPT
 	ld a, [wPlayerSpriteSetupFlags]
 	bit 2, a
 	jr nz, .ok
 	ld a, [wPlayerGender]
 	bit 0, a
 	jr z, .ok
-	ln e, (1 << 3) | PAL_OW_BLUE, PERSONTYPE_SCRIPT
+	ln e, (1 << 3) | PAL_OW_BLUE, OBJECTTYPE_SCRIPT
 
 .ok
 	ld [hl], e
@@ -54,7 +56,8 @@ PlayerObjectTemplate:
 ; Shorter than the actual amount copied by two bytes.
 ; Said bytes seem to be unused, but the game freezes when you first spawn
 ; in your room if this is not loaded.
-	object_event -4, -4, SPRITE_CHRIS, SPRITEMOVEDATA_PLAYER, 15, 15, -1, -1, 0, PERSONTYPE_SCRIPT, 0, 0, -1
+	def_object_events (no db)
+	object_event -4, -4, SPRITE_CHRIS, SPRITEMOVEDATA_PLAYER, 15, 15, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, 0, -1
 
 CopyDECoordsToMapObject::
 	push de
@@ -128,9 +131,9 @@ CopyObjectStruct::
 	call CheckObjectMask
 	and a
 	ret nz ; masked
-	ld hl, wObjectStructs + OBJECT_STRUCT_LENGTH * 1
+	ld hl, wObjectStructs + OBJECT_LENGTH * 1
 	ld a, 1
-	ld de, OBJECT_STRUCT_LENGTH
+	ld de, OBJECT_LENGTH
 .loop
 	ldh [hObjectStructIndexBuffer], a
 	ld a, [hl]
@@ -184,7 +187,7 @@ CopyMapObjectToObjectStruct:
 	and $f0
 	jr z, .skip_color_override
 	swap a
-	and $7 ; OAM_PALETTE
+	and $7 ; PALETTE_MASK
 	ld [wTempObjectCopyPalette], a
 
 .skip_color_override
@@ -216,7 +219,7 @@ CopyMapObjectToObjectStruct:
 	jp CopyTempObjectToObjectStruct
 
 InitializeVisibleSprites:
-	ld bc, wMapObjects + OBJECT_LENGTH
+	ld bc, wMapObjects + MAPOBJECT_LENGTH
 	ld a, 1
 .loop
 	ldh [hMapObjectIndexBuffer], a
@@ -263,7 +266,7 @@ InitializeVisibleSprites:
 	ret c
 
 .next
-	ld hl, OBJECT_LENGTH
+	ld hl, MAPOBJECT_LENGTH
 	add hl, bc
 	ld b, h
 	ld c, l
@@ -297,7 +300,7 @@ CheckObjectEnteringVisibleRange::
 	ld d, a
 	ld a, [wXCoord]
 	ld e, a
-	ld bc, wMapObjects + OBJECT_LENGTH
+	ld bc, wMapObjects + MAPOBJECT_LENGTH
 	ld a, 1
 .loop_v
 	ldh [hMapObjectIndexBuffer], a
@@ -331,7 +334,7 @@ CheckObjectEnteringVisibleRange::
 	pop de
 
 .next_v
-	ld hl, OBJECT_LENGTH
+	ld hl, MAPOBJECT_LENGTH
 	add hl, bc
 	ld b, h
 	ld c, l
@@ -353,7 +356,7 @@ CheckObjectEnteringVisibleRange::
 	ld e, a
 	ld a, [wYCoord]
 	ld d, a
-	ld bc, wMapObjects + OBJECT_LENGTH
+	ld bc, wMapObjects + MAPOBJECT_LENGTH
 	ld a, 1
 .loop_h
 	ldh [hMapObjectIndexBuffer], a
@@ -387,7 +390,7 @@ CheckObjectEnteringVisibleRange::
 	pop de
 
 .next_h
-	ld hl, OBJECT_LENGTH
+	ld hl, MAPOBJECT_LENGTH
 	add hl, bc
 	ld b, h
 	ld c, l
@@ -404,7 +407,9 @@ CopyTempObjectToObjectStruct:
 	ld [hl], a
 
 	ld a, [wTempObjectCopyMovement]
-	call CopySpriteMovementData
+	push bc
+	call .CopySpriteMovementData
+	pop bc
 
 	ld a, [wTempObjectCopyPalette]
 	ld hl, OBJECT_PALETTE
@@ -430,7 +435,7 @@ CopyTempObjectToObjectStruct:
 
 	ld hl, OBJECT_STEP_TYPE
 	add hl, de
-	ld [hl], STEP_TYPE_00
+	ld [hl], STEP_TYPE_RESET
 
 	ld hl, OBJECT_FACING_STEP
 	add hl, de
@@ -502,6 +507,56 @@ CopyTempObjectToObjectStruct:
 	ld hl, wPlayerBGMapOffsetX
 	sub [hl]
 	ld hl, OBJECT_SPRITE_X
+	add hl, de
+	ld [hl], a
+	ret
+
+.CopySpriteMovementData:
+	ld hl, OBJECT_MOVEMENTTYPE
+	add hl, de
+	ld [hl], a
+
+	push de
+	ld e, a
+	ld d, 0
+	ld hl, SpriteMovementData + 1 ; init facing
+rept NUM_SPRITEMOVEDATA_FIELDS
+	add hl, de
+endr
+	ld b, h
+	ld c, l
+	pop de
+
+	ld a, [bc]
+	inc bc
+	rlca
+	rlca
+	and %00001100
+	ld hl, OBJECT_FACING
+	add hl, de
+	ld [hl], a
+
+	ld a, [bc]
+	inc bc
+	ld hl, OBJECT_ACTION
+	add hl, de
+	ld [hl], a
+
+	ld a, [bc]
+	inc bc
+	ld hl, OBJECT_FLAGS1
+	add hl, de
+	ld [hl], a
+
+	ld a, [bc]
+	inc bc
+	ld hl, OBJECT_FLAGS2
+	add hl, de
+	ld [hl], a
+
+	ld a, [bc]
+	inc bc
+	ld hl, OBJECT_PALETTE
 	add hl, de
 	ld [hl], a
 	ret
@@ -672,7 +727,7 @@ FollowNotExact::
 	ld [hl], SPRITEMOVEDATA_FOLLOWNOTEXACT
 	ld hl, OBJECT_STEP_TYPE
 	add hl, de
-	ld [hl], STEP_TYPE_00
+	ld [hl], STEP_TYPE_RESET
 	ret
 
 GetRelativeFacing::

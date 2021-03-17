@@ -17,7 +17,7 @@ BattleCommand_thief:
 	ld [wNamedObjectIndexBuffer], a
 	call GetItemName
 	ld hl, StoleText
-	call StdBattleTextBox
+	call StdBattleTextbox
 
 	; Update parties
 	ld a, [wCurBattleMon]
@@ -55,7 +55,7 @@ CheckStickyHold:
 	farcall DisableAnimations
 	farcall ShowEnemyAbilityActivation
 	ld hl, ItemCantBeStolenText
-	call StdBattleTextBox
+	call StdBattleTextbox
 	farcall EnableAnimations
 	or 1
 	ret

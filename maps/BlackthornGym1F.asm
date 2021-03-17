@@ -1,10 +1,10 @@
 BlackthornGym1F_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 1 ; callbacks
+	def_callbacks
 	callback MAPCALLBACK_TILES, BlackthornGym1FBoulderCallback
 
-	db 7 ; warp events
+	def_warp_events
 	warp_event  4, 17, BLACKTHORN_CITY, 1
 	warp_event  5, 17, BLACKTHORN_CITY, 1
 	warp_event  1,  7, BLACKTHORN_GYM_2F, 1
@@ -13,18 +13,18 @@ BlackthornGym1F_MapScriptHeader:
 	warp_event  7,  7, BLACKTHORN_GYM_2F, 4
 	warp_event  7,  6, BLACKTHORN_GYM_2F, 5
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 2 ; bg events
-	bg_event  3, 15, SIGNPOST_READ, BlackthornGymStatue
-	bg_event  6, 15, SIGNPOST_READ, BlackthornGymStatue
+	def_bg_events
+	bg_event  3, 15, BGEVENT_READ, BlackthornGymStatue
+	bg_event  6, 15, BGEVENT_READ, BlackthornGymStatue
 
-	db 5 ; object events
-	object_event  5,  3, SPRITE_CLAIR, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BlackthornGymClairScript, -1
-	object_event  7, 15, SPRITE_GYM_GUY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, BlackthornGymGuyScript, -1
-	object_event  1, 14, SPRITE_DRAGON_TAMER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerDragonTamerPaul, -1
-	object_event  6,  6, SPRITE_ACE_TRAINER_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerCooltrainermMike, -1
-	object_event  9,  2, SPRITE_ACE_TRAINER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerCooltrainerfLola, -1
+	def_object_events
+	object_event  5,  3, SPRITE_CLAIR, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, BlackthornGymClairScript, -1
+	object_event  7, 15, SPRITE_GYM_GUY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, BlackthornGymGuyScript, -1
+	object_event  1, 14, SPRITE_DRAGON_TAMER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerDragonTamerPaul, -1
+	object_event  6,  6, SPRITE_ACE_TRAINER_M, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerCooltrainermMike, -1
+	object_event  9,  2, SPRITE_ACE_TRAINER_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerCooltrainerfLola, -1
 
 BlackthornGym1FBoulderCallback:
 	checkevent EVENT_BOULDER_IN_BLACKTHORN_GYM_1
@@ -39,15 +39,15 @@ BlackthornGym1FBoulderCallback:
 	iffalse .skip3
 	changeblock 8, 6, $3b
 .skip3
-	return
+	endcallback
 
 BlackthornGymStatue:
-	trainertotext CLAIR, 1, $1
+	gettrainername CLAIR, 1, $1
 	checkflag ENGINE_RISINGBADGE
 	iftrue .Beaten
 	jumpstd gymstatue1
 .Beaten:
-	checkcode VAR_BADGES
+	readvar VAR_BADGES
 	ifgreater 15, .LyraToo
 	jumpstd gymstatue2
 .LyraToo

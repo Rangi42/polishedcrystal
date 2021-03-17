@@ -1,8 +1,15 @@
+NUM_MOM_ITEMS_1 EQUS "((MomItems_1.End - MomItems_1) / 8)"
+NUM_MOM_ITEMS_2 EQUS "((MomItems_2.End - MomItems_2) / 8)"
+
+	const_def 1
+	const MOM_ITEM
+	const MOM_DOLL
+
 MomTriesToBuySomething::
 	ld a, [wMapReentryScriptQueueFlag]
 	and a
 	ret nz
-	call GetMapHeaderPhoneServiceNybble
+	call GetMapPhoneService
 	and a
 	ret nz
 	xor a
@@ -19,7 +26,7 @@ MomTriesToBuySomething::
 
 .Script:
 	callasm .ASMFunction
-	farjump Script_ReceivePhoneCall
+	farsjump Script_ReceivePhoneCall
 
 .ASMFunction:
 	call MomBuysItem_DeductFunds
@@ -32,13 +39,13 @@ MomTriesToBuySomething::
 .ok
 	ld a, PHONE_MOM
 	ld [wCurCaller], a
-	ld bc, wEngineBuffer2
-	ld hl, 0
+	ld bc, wCallerContact
+	ld hl, PHONE_CONTACT_TRAINER_CLASS
 	add hl, bc
-	ld [hl], 0
-	inc hl
-	ld [hl], 1
-	ld hl, wPhoneScriptPointer - wEngineBuffer2
+	xor a ; TRAINER_NONE
+	ld [hli], a
+	ld [hl], PHONE_MOM
+	ld hl, PHONE_CONTACT_SCRIPT2_BANK
 	add hl, bc
 	ld a, BANK(Mom_GetScriptPointer)
 	ld [hli], a
@@ -50,8 +57,8 @@ MomTriesToBuySomething::
 
 CheckBalance_MomItem2:
 	ld a, [wWhichMomItem]
-	cp 10
-	jr nc, .nope
+	cp NUM_MOM_ITEMS_2
+	jr nc, .check_have_2300
 	call GetItemFromMom
 	ld a, [hli]
 	ldh [hMoneyTemp], a
@@ -62,22 +69,18 @@ CheckBalance_MomItem2:
 	ld de, wMomsMoney
 	ld bc, hMoneyTemp
 	farcall CompareMoney
-	jr nc, .have_enough_money
-
-.nope
-	jr .check_have_2300
-
-.have_enough_money
+	jr c, .check_have_2300
 	scf
 	ret
 
 .check_have_2300
 	ld hl, hMoneyTemp
-	ld [hl], LOW(2300 / $10000)
-	inc hl
-	ld [hl], LOW(2300 / $100)
-	inc hl
-	ld [hl], LOW(2300)
+	xor a
+	assert MOM_MONEY < $10000
+	ld [hli], a
+	ld a, HIGH(MOM_MONEY)
+	ld [hli], a
+	ld [hl], LOW(MOM_MONEY)
 .loop
 	ld de, wMomItemTriggerBalance
 	ld bc, wMomsMoney
@@ -93,7 +96,7 @@ CheckBalance_MomItem2:
 
 .exact
 	call .AddMoney
-	ld a, 5
+	ld a, NUM_MOM_ITEMS_1
 	call RandomRange
 	inc a
 	ld [wWhichMomItemSet], a
@@ -153,17 +156,17 @@ Mom_GetScriptPointer:
 	ret
 
 .ItemScript:
-	farwritetext UnknownText_0x1bc615
-	farwritetext UnknownText_0x1bc62a
-	farwritetext UnknownText_0x1bc64e
-	farwritetext UnknownText_0x1bc673
+	farwritetext _MomHiHowAreYouText
+	farwritetext _MomFoundAnItemText
+	farwritetext _MomBoughtWithYourMoneyText
+	farwritetext _MomItsInPCText
 	end
 
 .DollScript:
-	farwritetext UnknownText_0x1bc615
-	farwritetext UnknownText_0x1bc693
-	farwritetext UnknownText_0x1bc64e
-	farwritetext UnknownText_0x1bc6c7
+	farwritetext _MomHiHowAreYouText
+	farwritetext _MomFoundADollText
+	farwritetext _MomBoughtWithYourMoneyText
+	farwritetext _MomItsInYourRoomText
 	end
 
 GetItemFromMom:
@@ -176,7 +179,7 @@ GetItemFromMom:
 
 .zero
 	ld a, [wWhichMomItem]
-	cp 10 ; length of MomItems_2
+	cp NUM_MOM_ITEMS_2
 	jr c, .ok
 	xor a
 

@@ -1,12 +1,19 @@
 BattleCommand_trickroom:
+	call AnimateCurrentMove
+
 	ld hl, wTrickRoom
 	ld a, [hl]
 	and a
-	jr nz, .failed
 	ld [hl], 5
-	call AnimateCurrentMove
+	jr z, .new_trick_room
+	ld [hl], 0
+
+	ld hl, TrickRoomEndedText
+	jp StdBattleTextbox
+
+.new_trick_room
 	ld hl, TrickRoomText
-	call StdBattleTextBox
+	call StdBattleTextbox
 
 	predef GetUserItemAfterUnnerve
 	ld a, b
@@ -22,7 +29,3 @@ BattleCommand_trickroom:
 
 	farcall UseStatItemText
 	jp ConsumeUserItem
-
-.failed
-	call AnimateFailedMove
-	jp PrintButItFailed

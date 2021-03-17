@@ -8,6 +8,7 @@ LyraPhoneDayGreetingText:
 	line "How are you?"
 	done
 
+LyraPhoneEveGreetingText:
 LyraPhoneNiteGreetingText:
 	text "Oh, <PLAYER>!"
 	line "Good evening!"

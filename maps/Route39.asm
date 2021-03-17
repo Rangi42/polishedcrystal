@@ -1,103 +1,103 @@
 Route39_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event  1,  3, ROUTE_39_BARN, 1
 	warp_event  5,  3, ROUTE_39_FARMHOUSE, 1
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 4 ; bg events
-	bg_event  5, 31, SIGNPOST_JUMPTEXT, Route39TrainerTipsText
-	bg_event  9,  5, SIGNPOST_JUMPTEXT, MoomooFarmSignText
-	bg_event 15,  7, SIGNPOST_JUMPTEXT, Route39SignText
-	bg_event  5, 13, SIGNPOST_ITEM + NUGGET, EVENT_ROUTE_39_HIDDEN_NUGGET
+	def_bg_events
+	bg_event  5, 31, BGEVENT_JUMPTEXT, Route39TrainerTipsText
+	bg_event  9,  5, BGEVENT_JUMPTEXT, MoomooFarmSignText
+	bg_event 15,  7, BGEVENT_JUMPTEXT, Route39SignText
+	bg_event  5, 13, BGEVENT_ITEM + NUGGET, EVENT_ROUTE_39_HIDDEN_NUGGET
 
-	db 13 ; object events
-	object_event  7, 14, SPRITE_COWGIRL, SPRITEMOVEDATA_WANDER, 1, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route39CowgirlAnnieScript, -1
-	object_event 13, 29, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 5, GenericTrainerSailorEugene, -1
-	object_event 10, 22, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 4, TrainerPokefanmDerek1, -1
-	object_event 11, 19, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerPokefanfRuth, -1
+	def_object_events
+	object_event  7, 14, SPRITE_COWGIRL, SPRITEMOVEDATA_WANDER, 1, 2, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route39CowgirlAnnieScript, -1
+	object_event 13, 29, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 5, GenericTrainerSailorEugene, -1
+	object_event 10, 22, SPRITE_POKEFAN_M, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_TRAINER, 4, TrainerPokefanmDerek1, -1
+	object_event 11, 19, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 4, GenericTrainerPokefanfRuth, -1
 	pokemon_event  3, 12, MILTANK, -1, -1, PAL_NPC_RED, Route39MiltankText, -1
 	pokemon_event  6, 11, MILTANK, -1, -1, PAL_NPC_RED, Route39MiltankText, -1
 	pokemon_event  4, 15, MILTANK, -1, -1, PAL_NPC_RED, Route39MiltankText, -1
 	pokemon_event  8, 13, MILTANK, -1, -1, PAL_NPC_RED, Route39MiltankText, -1
-	object_event 13,  7, SPRITE_PSYCHIC, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerPsychicNorman, -1
+	object_event 13,  7, SPRITE_PSYCHIC, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerPsychicNorman, -1
 	fruittree_event  9,  3, FRUITTREE_ROUTE_39, CHESTO_BERRY, PAL_NPC_PURPLE
-	object_event  4, 22, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, PokefanFScript_0x1a5bbe, -1
-	object_event  4, 30, SPRITE_BEAUTY, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, Route39BeautyText, -1
+	object_event  4, 22, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, TrainerPokefanfJaime, -1
+	object_event  4, 30, SPRITE_BEAUTY, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, Route39BeautyText, -1
 	tmhmball_event  1,  7, TM_BULLDOZE, EVENT_ROUTE_39_TM_BULLDOZE
 
-	const_def 1 ; object constants
+	object_const_def
 	const ROUTE39_COWGIRL
 
 TrainerPokefanmDerek1:
-	trainer POKEFANM, DEREK1, EVENT_BEAT_POKEFANM_DEREK, PokefanmDerek1SeenText, PokefanmDerek1BeatenText, 0, PokefanmDerek1Script
+	trainer POKEFANM, DEREK1, EVENT_BEAT_POKEFANM_DEREK, PokefanmDerek1SeenText, PokefanmDerek1BeatenText, 0, .Script
 
-PokefanmDerek1Script:
-	writecode VAR_CALLERID, PHONE_POKEFANM_DEREK
+.Script:
+	loadvar VAR_CALLERID, PHONE_POKEFANM_DEREK
 	opentext
 	checkflag ENGINE_DEREK_HAS_NUGGET
-	iftrue UnknownScript_0x1a5b4a
+	iftrue .HasNugget
 	checkcellnum PHONE_POKEFANM_DEREK
-	iftrue UnknownScript_0x1a5b6e
+	iftrue .NumberAccepted
 	checkpoke PIKACHU
-	iffalse UnknownScript_0x1a5b5c
+	iffalse .WantsPikachu
 	checkevent EVENT_DEREK_ASKED_FOR_PHONE_NUMBER
-	iftrue UnknownScript_0x1a5b33
-	writetext UnknownText_0x1a5cf8
-	buttonsound
+	iftrue .AskedAlready
+	writetext PokefanMDerekText_NotBragging
+	promptbutton
 	setevent EVENT_DEREK_ASKED_FOR_PHONE_NUMBER
-	scall UnknownScript_0x1a5b62
-	jump UnknownScript_0x1a5b36
+	scall .AskNumber1
+	sjump .AskForNumber
 
-UnknownScript_0x1a5b33:
-	scall UnknownScript_0x1a5b66
-UnknownScript_0x1a5b36:
+.AskedAlready:
+	scall .AskNumber2
+.AskForNumber:
 	askforphonenumber PHONE_POKEFANM_DEREK
-	ifequal $1, UnknownScript_0x1a5b76
-	ifequal $2, UnknownScript_0x1a5b72
-	trainertotext POKEFANM, DEREK1, $0
-	scall UnknownScript_0x1a5b6a
-	jump UnknownScript_0x1a5b6e
+	ifequal $1, .PhoneFull
+	ifequal $2, .NumberDeclined
+	gettrainername POKEFANM, DEREK1, $0
+	scall .RegisteredNumber
+	sjump .NumberAccepted
 
-UnknownScript_0x1a5b4a:
-	scall UnknownScript_0x1a5b7a
+.HasNugget:
+	scall .Gift
 	verbosegiveitem NUGGET
-	iffalse UnknownScript_0x1a5b59
+	iffalse .NoRoom
 	clearflag ENGINE_DEREK_HAS_NUGGET
-	jump UnknownScript_0x1a5b6e
+	sjump .NumberAccepted
 
-UnknownScript_0x1a5b59:
-	jump UnknownScript_0x1a5b7e
+.NoRoom:
+	sjump .PackFull
 
-UnknownScript_0x1a5b5c:
-	jumpopenedtext UnknownText_0x1a5dec
+.WantsPikachu:
+	jumpopenedtext PokefanMDerekPikachuIsItText
 
-UnknownScript_0x1a5b62:
+.AskNumber1:
 	jumpstd asknumber1m
 
-UnknownScript_0x1a5b66:
+.AskNumber2:
 	jumpstd asknumber2m
 
-UnknownScript_0x1a5b6a:
+.RegisteredNumber:
 	jumpstd registerednumberm
 
-UnknownScript_0x1a5b6e:
+.NumberAccepted:
 	jumpstd numberacceptedm
 
-UnknownScript_0x1a5b72:
+.NumberDeclined:
 	jumpstd numberdeclinedm
 
-UnknownScript_0x1a5b76:
+.PhoneFull:
 	jumpstd phonefullm
 
-UnknownScript_0x1a5b7a:
+.Gift:
 	jumpstd giftm
 
-UnknownScript_0x1a5b7e:
+.PackFull:
 	jumpstd packfullm
 
 GenericTrainerPokefanfRuth:
@@ -154,7 +154,7 @@ Route39CowgirlAnnieScript:
 .Beaten:
 	opentext
 	writetext .AfterText1
-	buttonsound
+	promptbutton
 	verbosegiveitem PP_MAX
 	iffalse_endtext
 	setevent EVENT_GOT_PP_MAX_FROM_ROUTE_39_LEADER
@@ -252,28 +252,28 @@ GenericTrainerPsychicNorman:
 	cont "potential."
 	done
 
-PokefanFScript_0x1a5bbe:
+TrainerPokefanfJaime:
 	faceplayer
 	opentext
 	checktime 1 << NITE
-	iffalse UnknownScript_0x1a5be5
+	iffalse .NotNight
 	checkevent EVENT_BEAT_POKEFANF_JAIME
-	iftrue UnknownScript_0x1a5bdf
-	writetext UnknownText_0x1a5ee8
+	iftrue .Beaten
+	writetext PokefanfJaimeSeenText
 	waitbutton
 	closetext
-	winlosstext UnknownText_0x1a5f17, 0
+	winlosstext PokefanfJaimeBeatenText, 0
 	loadtrainer POKEFANF, JAIME
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_POKEFANF_JAIME
 	endtext
 
-UnknownScript_0x1a5bdf:
-	jumpopenedtext UnknownText_0x1a5f31
+.Beaten:
+	jumpopenedtext PokefanfJaimeAfterBattleText
 
-UnknownScript_0x1a5be5:
-	jumpopenedtext UnknownText_0x1a5ec4
+.NotNight:
+	jumpopenedtext PokefanfJaimeHopeItGetsDarkText
 
 Route39MiltankText:
 	text "Miltank: Mooo!"
@@ -302,7 +302,7 @@ PokefanmDerek1BeatenText:
 	line "show off Pikachu…"
 	done
 
-UnknownText_0x1a5cf8:
+PokefanMDerekText_NotBragging:
 	text "I'm not listening"
 	line "to your bragging!"
 
@@ -327,7 +327,7 @@ PokefanfRuthBeatenText:
 	line "losing."
 	done
 
-UnknownText_0x1a5dec:
+PokefanMDerekPikachuIsItText:
 	text "Pikachu is it!"
 	line "Don't you agree?"
 	done
@@ -343,24 +343,24 @@ PsychicNormanBeatenText:
 	line "have potential."
 	done
 
-UnknownText_0x1a5ec4:
+PokefanfJaimeHopeItGetsDarkText:
 	text "Ufufufu… I hope it"
 	line "gets dark soon."
 	done
 
-UnknownText_0x1a5ee8:
+PokefanfJaimeSeenText:
 	text "You came at just"
 	line "the right time."
 
 	para "Let's battle."
 	done
 
-UnknownText_0x1a5f17:
+PokefanfJaimeBeatenText:
 	text "Oh, how disap-"
 	line "pointing…"
 	done
 
-UnknownText_0x1a5f31:
+PokefanfJaimeAfterBattleText:
 	text "I met my Meowth at"
 	line "night, right here"
 	cont "on Route 39."

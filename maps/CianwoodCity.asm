@@ -1,10 +1,10 @@
 CianwoodCity_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 1 ; callbacks
+	def_callbacks
 	callback MAPCALLBACK_NEWMAP, CianwoodCityFlyPointAndSuicune
 
-	db 8 ; warp events
+	def_warp_events
 	warp_event 17, 41, MANIAS_HOUSE, 1
 	warp_event  8, 43, CIANWOOD_GYM, 1
 	warp_event 23, 43, CIANWOOD_POKECENTER_1F, 1
@@ -14,37 +14,37 @@ CianwoodCity_MapScriptHeader:
 	warp_event  5, 17, MOVE_MANIACS_HOUSE, 1
 	warp_event  4, 25, CLIFF_EDGE_GATE, 1
 
-	db 1 ; coord events
-	coord_event 11, 16, 1, UnknownScript_0x1a001e
+	def_coord_events
+	coord_event 11, 16, 1, CianwoodCitySuicuneAndEusine
 
-	db 8 ; bg events
-	bg_event 20, 34, SIGNPOST_JUMPTEXT, CianwoodCitySignText
-	bg_event  6, 44, SIGNPOST_JUMPTEXT, CianwoodGymSignText
-	bg_event 19, 47, SIGNPOST_JUMPTEXT, CianwoodPharmacySignText
-	bg_event  8, 32, SIGNPOST_JUMPTEXT, CianwoodPhotoStudioSignText
-	bg_event  6, 26, SIGNPOST_JUMPTEXT, CianwoodCliffEdgeGateSignText
-	bg_event  8, 22, SIGNPOST_JUMPTEXT, CianwoodMoveManiacSignText
-	bg_event  4, 19, SIGNPOST_ITEM + REVIVE, EVENT_CIANWOOD_CITY_HIDDEN_REVIVE
-	bg_event  5, 29, SIGNPOST_ITEM + MAX_ETHER, EVENT_CIANWOOD_CITY_HIDDEN_MAX_ETHER
+	def_bg_events
+	bg_event 20, 34, BGEVENT_JUMPTEXT, CianwoodCitySignText
+	bg_event  6, 44, BGEVENT_JUMPTEXT, CianwoodGymSignText
+	bg_event 19, 47, BGEVENT_JUMPTEXT, CianwoodPharmacySignText
+	bg_event  8, 32, BGEVENT_JUMPTEXT, CianwoodPhotoStudioSignText
+	bg_event  6, 26, BGEVENT_JUMPTEXT, CianwoodCliffEdgeGateSignText
+	bg_event  8, 22, BGEVENT_JUMPTEXT, CianwoodMoveManiacSignText
+	bg_event  4, 19, BGEVENT_ITEM + REVIVE, EVENT_CIANWOOD_CITY_HIDDEN_REVIVE
+	bg_event  5, 29, BGEVENT_ITEM + MAX_ETHER, EVENT_CIANWOOD_CITY_HIDDEN_MAX_ETHER
 
-	db 15 ; object events
-	object_event 11, 21, SPRITE_EUSINE, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CIANWOOD_CITY_EUSINE
-	object_event 10, 14, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, SUICUNE, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_SAW_SUICUNE_AT_CIANWOOD_CITY
-	object_event 21, 37, SPRITE_CAMPER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1a02df, -1
-	object_event 16, 33, SPRITE_POKEFAN_M, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1a0319, -1
-	object_event 14, 42, SPRITE_CUTE_GIRL, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1a0394, -1
+	def_object_events
+	object_event 11, 21, SPRITE_EUSINE, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_CIANWOOD_CITY_EUSINE
+	object_event 10, 14, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, SUICUNE, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_SAW_SUICUNE_AT_CIANWOOD_CITY
+	object_event 21, 37, SPRITE_CAMPER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, CianwoodCityYoungsterText, -1
+	object_event 16, 33, SPRITE_POKEFAN_M, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_COMMAND, jumptextfaceplayer, CianwoodCityPokefanMText, -1
+	object_event 14, 42, SPRITE_CUTE_GIRL, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, CianwoodCityLassText, -1
 	smashrock_event  8, 16
 	smashrock_event  9, 17
 	smashrock_event  6, 24
 	smashrock_event  4, 29
 	smashrock_event 10, 27
 	smashrock_event  4, 19
-	object_event 10, 46, SPRITE_MATRON, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_BROWN, PERSONTYPE_SCRIPT, 0, PokefanFScript_0x1a0084, -1
-	object_event  4, 26, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, CianwoodCityRocketText, EVENT_BEAT_CHUCK
-	object_event  9, 25, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, CianwoodCitySailorText, -1
-	object_event 22, 32, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, CianwoodCityFisherText, -1
+	object_event 10, 46, SPRITE_MATRON, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, CianwoodCityChucksWife, -1
+	object_event  4, 26, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, CianwoodCityRocketText, EVENT_BEAT_CHUCK
+	object_event  9, 25, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, CianwoodCitySailorText, -1
+	object_event 22, 32, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, CianwoodCityFisherText, -1
 
-	const_def 1 ; object constants
+	object_const_def
 	const CIANWOODCITY_EUSINE
 	const CIANWOODCITY_SUICUNE
 
@@ -55,18 +55,18 @@ CianwoodCityFlyPointAndSuicune:
 	iffalse .Done
 	disappear CIANWOODCITY_EUSINE
 .Done:
-	return
+	endcallback
 
-UnknownScript_0x1a001e:
+CianwoodCitySuicuneAndEusine:
 	turnobject PLAYER, UP
 	showemote EMOTE_SHOCK, PLAYER, 15
 	pause 15
 	playsound SFX_WARP_FROM
-	applymovement CIANWOODCITY_SUICUNE, MovementData_0x1a00da
+	applymovement CIANWOODCITY_SUICUNE, CianwoodCitySuicuneApproachMovement
 	turnobject PLAYER, DOWN
 	pause 15
 	playsound SFX_WARP_FROM
-	applymovement CIANWOODCITY_SUICUNE, MovementData_0x1a00e0
+	applymovement CIANWOODCITY_SUICUNE, CianwoodCitySuicuneDepartMovement
 	disappear CIANWOODCITY_SUICUNE
 	pause 10
 	setscene $0
@@ -74,7 +74,7 @@ UnknownScript_0x1a001e:
 	checkevent EVENT_GOT_HM05_WHIRLPOOL
 	iftrue .NoLyra
 	setmapscene ROUTE_42, $1
-	jump .Continue
+	sjump .Continue
 .NoLyra
 	setmapscene ROUTE_42, $2
 .Continue
@@ -83,9 +83,9 @@ UnknownScript_0x1a001e:
 	setevent EVENT_BEAT_EUSINE
 	playmusic MUSIC_MYSTICALMAN_ENCOUNTER
 	appear CIANWOODCITY_EUSINE
-	applymovement CIANWOODCITY_EUSINE, MovementData_0x1a00e7
-	showtext UnknownText_0x1a0433
-	winlosstext UnknownText_0x1a05a1, EusineLossText
+	applymovement CIANWOODCITY_EUSINE, CianwoodCityEusineApproachMovement
+	showtext EusineSuicuneText
+	winlosstext EusineBeatenText, EusineLossText
 	setlasttalked CIANWOODCITY_EUSINE
 	loadtrainer MYSTICALMAN, EUSINE
 	startbattle
@@ -93,8 +93,8 @@ UnknownScript_0x1a001e:
 	reloadmapafterbattle
 	special DeleteSavedMusic
 	playmusic MUSIC_MYSTICALMAN_ENCOUNTER
-	showtext UnknownText_0x1a05c3
-	applymovement CIANWOODCITY_EUSINE, MovementData_0x1a00ec
+	showtext EusineAfterText
+	applymovement CIANWOODCITY_EUSINE, CianwoodCityEusineDepartMovement
 	disappear CIANWOODCITY_EUSINE
 	pause 20
 	special Special_FadeOutMusic
@@ -102,19 +102,19 @@ UnknownScript_0x1a001e:
 	pause 10
 	end
 
-PokefanFScript_0x1a0084:
+CianwoodCityChucksWife:
 	checkevent EVENT_BEAT_CHUCK
-	iftrue_jumptextfaceplayer UnknownText_0x1a0277
-	jumptextfaceplayer UnknownText_0x1a00f1
+	iftrue_jumptextfaceplayer ChucksWifeChubbyText
+	jumptextfaceplayer ChucksWifeEasierToFlyText
 
-MovementData_0x1a00da:
+CianwoodCitySuicuneApproachMovement:
 	fix_facing
 	fast_jump_step_down
 	fast_jump_step_down
 	fast_jump_step_right
 	step_end
 
-MovementData_0x1a00e0:
+CianwoodCitySuicuneDepartMovement:
 	fix_facing
 	fast_jump_step_right
 	fast_jump_step_up
@@ -122,21 +122,21 @@ MovementData_0x1a00e0:
 	fast_jump_step_right
 	step_end
 
-MovementData_0x1a00e7:
+CianwoodCityEusineApproachMovement:
 	step_up
 	step_up
 	step_up
 	step_up
 	step_end
 
-MovementData_0x1a00ec:
+CianwoodCityEusineDepartMovement:
 	step_down
 	step_down
 	step_down
 	step_down
 	step_end
 
-UnknownText_0x1a00f1:
+ChucksWifeEasierToFlyText:
 	text "You crossed the"
 	line "sea to get here?"
 
@@ -150,7 +150,7 @@ UnknownText_0x1a00f1:
 	line "to Fly…"
 	done
 
-UnknownText_0x1a0277:
+ChucksWifeChubbyText:
 	text "That's Cianwood's"
 	line "Gym badge!"
 
@@ -169,7 +169,7 @@ UnknownText_0x1a0277:
 	line "training spot."
 	done
 
-UnknownText_0x1a02df:
+CianwoodCityYoungsterText:
 	text "If you use Fly,"
 	line "you can get back"
 
@@ -177,7 +177,7 @@ UnknownText_0x1a02df:
 	line "stantly."
 	done
 
-UnknownText_0x1a0319:
+CianwoodCityPokefanMText:
 	text "Boulders to the"
 	line "north of town can"
 	cont "be crushed."
@@ -195,7 +195,7 @@ else
 endc
 	done
 
-UnknownText_0x1a0394:
+CianwoodCityLassText:
 	text "Chuck, the Gym"
 	line "Leader, spars with"
 
@@ -228,7 +228,7 @@ CianwoodCityFisherText:
 	cont "record, right?"
 	done
 
-UnknownText_0x1a0433:
+EusineSuicuneText:
 	text "Eusine: Yo,"
 	line "<PLAYER>."
 
@@ -266,7 +266,7 @@ UnknownText_0x1a0433:
 	line "Let's battle now!"
 	done
 
-UnknownText_0x1a05a1:
+EusineBeatenText:
 	text "I hate to admit"
 	line "it, but you win."
 	done
@@ -279,7 +279,7 @@ EusineLossText:
 	cont "my greatness now!"
 	done
 
-UnknownText_0x1a05c3:
+EusineAfterText:
 	text "You're amazing,"
 	line "<PLAYER>!"
 

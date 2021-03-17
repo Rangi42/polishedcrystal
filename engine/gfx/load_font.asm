@@ -4,7 +4,7 @@ _LoadStandardOpaqueFont::
 	ld a, TRUE
 	call _LoadStandardMaybeOpaqueFont
 	ld hl, vTiles2 tile " "
-	ld de, TextBoxSpaceGFX
+	ld de, TextboxSpaceGFX
 	jp GetOpaque1bppFontTile
 
 _LoadStandardFont::
@@ -48,9 +48,9 @@ LoadStandardFontPointer::
 	dw FontBold
 	dw FontItalic
 	dw FontSerif
-	dw FontBraille
+	dw FontChicago
+	dw FontMICR
 	dw FontUnown
-	dw FontNormal
 
 _LoadFontsBattleExtra::
 	ld hl, BattleExtrasGFX
@@ -60,17 +60,17 @@ _LoadFontsBattleExtra::
 
 LoadFrame::
 	ld a, [wTextboxFrame]
-	ld bc, TILES_PER_FRAME * LEN_1BPP_TILE
+	ld bc, TEXTBOX_FRAME_TILES * LEN_1BPP_TILE
 	ld hl, Frames
 	rst AddNTimes
 	ld d, h
 	ld e, l
 	ld hl, vTiles0 tile "┌"
-	lb bc, BANK(Frames), TILES_PER_FRAME
+	lb bc, BANK(Frames), TEXTBOX_FRAME_TILES
 	call Get1bpp
 	ld hl, vTiles2 tile " "
-	ld de, TextBoxSpaceGFX
-	lb bc, BANK(TextBoxSpaceGFX), 1
+	ld de, TextboxSpaceGFX
+	lb bc, BANK(TextboxSpaceGFX), 1
 	jp Get1bpp
 
 LoadBattleFontsHPBar:

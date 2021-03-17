@@ -1,144 +1,106 @@
+LITERAL_NOIR_RGB_COLORS EQU 1
 
-	ds 32 palettes
+; 4bpp palette 0
 
-if DEF(FAITHFUL) ; Grape
+	; gray gradient
+	RGB 31,31,31
+	RGB 29,30,31
+	RGB 20,21,22
+	RGB 12,12,12
 
-	RGB 31, 31, 31
-	RGB 17, 07, 28
-	RGB 09, 06, 16
-	RGB 04, 04, 04
+	; red gradient
+	RGB 30,16,19
+	RGB 29,06,07
+	RGB 20,03,03
 
-	ds 3 palettes
-
-	RGB 31, 31, 31
-	RGB 17, 07, 28
-	RGB 12, 12, 12
-	RGB 04, 04, 04
-
-	ds 3 palettes
-
-	RGB 31, 31, 31
-	RGB 06, 16, 31
-	RGB 03, 10, 22
-	RGB 04, 04, 04
-
-	ds 3 palettes
-
-	RGB 31, 31, 31
-	RGB 29, 06, 07
-	RGB 20, 03, 03
-	RGB 04, 04, 04
-
-elif DEF(HGSS) ; Dandelion
-
-	RGB 31, 31, 31
-	RGB 30, 25, 07
-	RGB 24, 19, 00
-	RGB 04, 04, 04
-
-	ds 3 palettes
-
-	RGB 31, 31, 31
-	RGB 30, 25, 07
-	RGB 12, 12, 12
-	RGB 04, 04, 04
-
-	ds 3 palettes
-
-	RGB 31, 31, 31
-	RGB 31, 07, 15
-	RGB 23, 01, 07
-	RGB 04, 04, 04
-
-	ds 3 palettes
-
-	RGB 31, 31, 31
-	RGB 29, 06, 07
-	RGB 20, 03, 03
-	RGB 04, 04, 04
-
-elif DEF(NOIR) ; Atomic Purple
-
-	dw palred 31 + palgreen 31 + palblue 31
-	dw palred 18 + palgreen 14 + palblue 16
-	dw palred 12 + palgreen 07 + palblue 09
-	dw palred 04 + palgreen 04 + palblue 04
-
-	ds 3 palettes
-
-	dw palred 31 + palgreen 31 + palblue 31
-	dw palred 18 + palgreen 14 + palblue 16
-	dw palred 12 + palgreen 12 + palblue 12
-	dw palred 04 + palgreen 04 + palblue 04
-
-	ds 3 palettes
-
-	dw palred 31 + palgreen 31 + palblue 31
-	dw palred 19 + palgreen 21 + palblue 23
-	dw palred 10 + palgreen 10 + palblue 14
-	dw palred 04 + palgreen 04 + palblue 04
-
-	ds 3 palettes
-
-	dw palred 31 + palgreen 31 + palblue 31
-	dw palred 29 + palgreen 06 + palblue 07
-	dw palred 20 + palgreen 03 + palblue 03
-	dw palred 04 + palgreen 04 + palblue 04
-
-elif DEF(MONOCHROME) ; Gray
-
-	RGB 31, 31, 31
-	RGB 23, 23, 23
-	RGB 14, 13, 13
-	RGB 04, 04, 04
-
-	ds 3 palettes
-
-	RGB 31, 31, 31
-	RGB 23, 23, 23
-	RGB 12, 12, 12
-	RGB 04, 04, 04
-
-	ds 3 palettes
-
-	RGB 31, 31, 31
-	RGB 23, 05, 15
-	RGB 14, 04, 08
-	RGB 04, 04, 04
-
-	ds 3 palettes
-
-	RGB 31, 31, 31
-	RGB 29, 06, 07
-	RGB 20, 03, 03
-	RGB 04, 04, 04
-
-else ; Teal
-
-	RGB 31, 31, 31
-	RGB 00, 18, 25
-	RGB 01, 10, 16
-	RGB 04, 04, 04
-
-	ds 3 palettes
-
-	RGB 31, 31, 31
-	RGB 00, 18, 25
-	RGB 12, 12, 12
-	RGB 04, 04, 04
-
-	ds 3 palettes
-
-	RGB 31, 31, 31
-	RGB 19, 31, 13
-	RGB 05, 16, 06
-	RGB 04, 04, 04
-
-	ds 3 palettes
-
-	RGB 31, 31, 31
-	RGB 29, 06, 07
-	RGB 20, 03, 03
-	RGB 04, 04, 04
-
+if DEF(FAITHFUL)
+	; Grape
+	RGB 24,17,31
+	RGB 21,12,31
+	RGB 17,07,28
+	RGB 13,03,25
+	RGB 09,03,17
+elif DEF(HGSS)
+	; Dandelion
+	RGB 31,30,28
+	RGB 31,29,20
+	RGB 30,25,07
+	RGB 26,20,00
+	RGB 17,13,00
+elif DEF(NOIR)
+	; Atomic Purple
+	RGB 28,24,26
+	RGB 23,19,21
+	RGB 18,14,16
+	RGB 15,10,12
+	RGB 12,07,09
+elif DEF(MONOCHROME)
+	; Gray
+	RGB 31,31,31
+	RGB 27,27,27
+	RGB 23,23,23
+	RGB 20,19,19
+	RGB 14,13,13
+elif DEF(NO_RTC)
+	; Berry
+	RGB 31,25,27
+	RGB 31,18,23
+	RGB 31,07,16
+	RGB 28,04,12
+	RGB 22,01,08
+else
+	; Teal
+	RGB 19,26,29
+	RGB 07,22,28
+	RGB 00,18,25
+	RGB 01,13,21
+	RGB 01,10,16
 endc
+
+	; unused
+	RGB 00,00,00
+	RGB 00,00,00
+	RGB 00,00,00
+
+	; black
+	RGB 04,04,04
+
+; 4bpp palette 1
+
+	; white
+	RGB 31,31,31
+
+if !DEF(MONOCHROME)
+	; light "COLOR"
+	RGB 28,07,20
+	RGB 16,06,27
+	RGB 21,26,10
+	RGB 31,29,11
+	RGB 08,22,22
+	; dark "COLOR"
+	RGB 20,00,14
+	RGB 08,06,14
+	RGB 14,18,06
+	RGB 16,13,04
+	RGB 07,12,17
+else
+	; light "COLOR"
+rept 5
+	RGB 23,05,15
+endr
+	; dark "COLOR"
+rept 5
+	RGB 14,04,08
+endr
+endc
+
+	; unused
+	RGB 00,00,00
+	RGB 00,00,00
+	RGB 00,00,00
+	RGB 00,00,00
+
+	; black
+	RGB 04,04,04
+
+PURGE LITERAL_NOIR_RGB_COLORS

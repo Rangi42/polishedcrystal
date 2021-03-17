@@ -1,3 +1,9 @@
+; move ids
+; indexes for:
+; - Moves (see data/moves/moves.asm)
+; - MoveNames (see data/moves/names.asm)
+; - MoveDescriptions (see data/moves/descriptions.asm)
+; - BattleAnimations (see data/moves/animations.asm)
 	const_def
 	const NO_MOVE      ; $00
 	const ACROBATICS   ; $01
@@ -171,7 +177,7 @@
 	const WILL_O_WISP  ; $a9
 	const ZEN_HEADBUTT ; $aa
 	const FACADE       ; $ab
-	const FLAME_WHEEL  ; $ac
+	const FLAME_CHARGE ; $ac
 	const HYPER_VOICE  ; $ad
 	const CURSE        ; $ae
 	const GYRO_BALL    ; $af
@@ -258,9 +264,10 @@ endc
 	const PLAY_ROUGH   ; $fd
 	const DISARM_VOICE ; $fe
 	const STRUGGLE     ; $ff
+NUM_ATTACKS EQU const_value - 1
 
-; Battle animations use the same constants
-; as the moves up to this point.
+; Battle animations use the same constants as the moves up to this point
+	const_next $100
 	const ANIM_THROW_POKE_BALL   ; $100
 	const ANIM_SEND_OUT_MON      ; $101
 	const ANIM_RETURN_MON        ; $102
@@ -288,6 +295,7 @@ endc
 	const ANIM_SHARPEN           ; $117
 	const ANIM_STAT_UP           ; $118
 	const ANIM_STAT_DOWN         ; $119
+NUM_BATTLE_ANIMS EQU const_value - 1
 
 ; wNumHits uses offsets from ANIM_MISS
 	const_def

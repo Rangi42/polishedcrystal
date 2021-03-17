@@ -1,39 +1,39 @@
 OlivineGym_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event  4, 15, OLIVINE_CITY, 2
 	warp_event  5, 15, OLIVINE_CITY, 2
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 2 ; bg events
-	bg_event  3, 13, SIGNPOST_READ, OlivineGymStatue
-	bg_event  6, 13, SIGNPOST_READ, OlivineGymStatue
+	def_bg_events
+	bg_event  3, 13, BGEVENT_READ, OlivineGymStatue
+	bg_event  6, 13, BGEVENT_READ, OlivineGymStatue
 
-	db 4 ; object events
-	object_event  5,  3, SPRITE_JASMINE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, JasmineScript_0x9c12f, EVENT_OLIVINE_GYM_JASMINE
-	object_event  7, 13, SPRITE_GYM_GUY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, OlivineGymGuyScript, -1
-	object_event  3, 10, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 2, OlivineGymGentlemanPreston, EVENT_OLIVINE_GYM_JASMINE
-	object_event  6,  7, SPRITE_LASS, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 2, OlivineGymLassConnie, EVENT_OLIVINE_GYM_JASMINE
+	def_object_events
+	object_event  5,  3, SPRITE_JASMINE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, OlivineGymJasmineScript, EVENT_OLIVINE_GYM_JASMINE
+	object_event  7, 13, SPRITE_GYM_GUY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, OlivineGymGuyScript, -1
+	object_event  3, 10, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_TRAINER, 2, OlivineGymGentlemanPreston, EVENT_OLIVINE_GYM_JASMINE
+	object_event  6,  7, SPRITE_LASS, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_TRAINER, 2, OlivineGymLassConnie, EVENT_OLIVINE_GYM_JASMINE
 
-JasmineScript_0x9c12f:
+OlivineGymJasmineScript:
 	faceplayer
 	opentext
 	checkevent EVENT_BEAT_JASMINE
 	iftrue .FightDone
-	writetext UnknownText_0x9c1b9
+	writetext Jasmine_SteelTypeIntro
 	waitbutton
 	closetext
-	winlosstext UnknownText_0x9c2bb, 0
+	winlosstext Jasmine_BetterTrainer, 0
 	loadtrainer JASMINE, 1
 	startbattle
 	reloadmapafterbattle
 	setevent EVENT_BEAT_JASMINE
 	opentext
-	writetext UnknownText_0x9c33a
+	writetext Text_ReceivedMineralBadge
 	playsound SFX_GET_BADGE
 	waitsfx
 	setflag ENGINE_MINERALBADGE
@@ -41,9 +41,9 @@ JasmineScript_0x9c12f:
 	setmapscene ROUTE_42, $1
 .FightDone:
 	checkevent EVENT_GOT_TM23_IRON_TAIL
-	iftrue_jumpopenedtext UnknownText_0x9c3d1
-	writetext UnknownText_0x9c354
-	buttonsound
+	iftrue_jumpopenedtext Jasmine_GoodLuck
+	writetext Jasmine_BadgeSpeech
+	promptbutton
 	verbosegivetmhm TM_IRON_TAIL
 	setevent EVENT_GOT_TM23_IRON_TAIL
 	jumpthisopenedtext
@@ -72,7 +72,7 @@ OlivineGymLassConnie:
 	trainer 0, 0, EVENT_SPOKE_TO_LASS_CONNIE, .SeenText, 0, 0, .Script
 
 .Script:
-	end_if_just_battled
+	endifjustbattled
 	checkevent EVENT_BEAT_JASMINE
 	iftrue_jumptextfaceplayer .AfterText
 	jumpthistextfaceplayer
@@ -106,7 +106,7 @@ OlivineGymGentlemanPreston:
 	trainer 0, 0, EVENT_SPOKE_TO_GENTLEMAN_PRESTON, .SeenText, 0, 0, .Script
 
 .Script:
-	end_if_just_battled
+	endifjustbattled
 	checkevent EVENT_BEAT_JASMINE
 	iftrue_jumptextfaceplayer .AfterText
 	jumpthistextfaceplayer
@@ -134,7 +134,7 @@ OlivineGymGentlemanPreston:
 	done
 
 OlivineGymStatue:
-	trainertotext JASMINE, 1, $1
+	gettrainername JASMINE, 1, $1
 	checkevent EVENT_JASMINE_RETURNED_TO_GYM
 	iftrue .Returned
 	jumpstd gymstatue0
@@ -143,13 +143,13 @@ OlivineGymStatue:
 	iftrue .Beaten
 	jumpstd gymstatue1
 .Beaten
-	checkcode VAR_BADGES
+	readvar VAR_BADGES
 	ifgreater 13, .LyraToo
 	jumpstd gymstatue2
 .LyraToo
 	jumpstd gymstatue3
 
-UnknownText_0x9c1b9:
+Jasmine_SteelTypeIntro:
 	text "…Thank you for"
 	line "your help at the"
 	cont "Lighthouse…"
@@ -174,7 +174,7 @@ UnknownText_0x9c1b9:
 	para "…Um… May I begin?"
 	done
 
-UnknownText_0x9c2bb:
+Jasmine_BetterTrainer:
 	text "…You are a better"
 	line "trainer than me,"
 
@@ -188,12 +188,12 @@ UnknownText_0x9c2bb:
 	line "this Badge."
 	done
 
-UnknownText_0x9c33a:
+Text_ReceivedMineralBadge:
 	text "<PLAYER> received"
 	line "the Mineral Badge."
 	done
 
-UnknownText_0x9c354:
+Jasmine_BadgeSpeech:
 	text "With that Badge,"
 	line "all #mon up"
 
@@ -207,7 +207,7 @@ UnknownText_0x9c354:
 	line "this too…"
 	done
 
-UnknownText_0x9c3d1:
+Jasmine_GoodLuck:
 	text "Um… I don't know"
 	line "how to say this,"
 	cont "but good luck…"

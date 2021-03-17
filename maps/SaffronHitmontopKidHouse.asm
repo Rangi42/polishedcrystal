@@ -1,21 +1,21 @@
 SaffronHitmontopKidHouse_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event  2,  7, SAFFRON_CITY, 19
 	warp_event  3,  7, SAFFRON_CITY, 19
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 0 ; bg events
+	def_bg_events
 
-	db 2 ; object events
-	object_event  5,  4, SPRITE_CHILD, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, PAL_NPC_BROWN, PERSONTYPE_SCRIPT, 0, SaffronHitmontopKidHouseChildScript, -1
-	object_event  2,  4, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_LEFT, 2, 2, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, SaffronHitmontopKidHouseTeacherScript, -1
+	def_object_events
+	object_event  5,  4, SPRITE_CHILD, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, SaffronHitmontopKidHouseChildScript, -1
+	object_event  2,  4, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_LEFT, 2, 2, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, SaffronHitmontopKidHouseTeacherScript, -1
 
-	const_def 1 ; object constants
+	object_const_def
 	const SAFFRONHITMONTOPKIDHOUSE_CHILD
 
 SaffronHitmontopKidHouseChildScript:
@@ -75,7 +75,7 @@ SaffronHitmontopKidHouseTeacherScript:
 	checkevent EVENT_SHOWED_SAFFRON_KID_HITMONTOP
 	iffalse_jumpopenedtext .Text1
 	writetext .Text2
-	buttonsound
+	promptbutton
 	verbosegiveitem AIR_BALLOON
 	iffalse_endtext
 	setevent EVENT_GOT_AIR_BALLOON_FROM_SAFFRON

@@ -1,10 +1,10 @@
 LavenderTown_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 1 ; callbacks
+	def_callbacks
 	callback MAPCALLBACK_NEWMAP, LavenderTownFlyPoint
 
-	db 7 ; warp events
+	def_warp_events
 	warp_event  5,  7, LAVENDER_POKECENTER_1F, 1
 	warp_event  5, 11, MR_FUJIS_HOUSE, 1
 	warp_event  3, 15, LAVENDER_TOWN_SPEECH_HOUSE, 1
@@ -13,29 +13,29 @@ LavenderTown_MapScriptHeader:
 	warp_event 13, 13, SOUL_HOUSE, 1
 	warp_event 14,  7, LAV_RADIO_TOWER_1F, 1
 
-	db 0 ; coord events
+	def_coord_events
 ; TODO:
 ;	coord_event  8,  5, 0, LavenderTownExpositionTrigger1
 ;	coord_event  9,  5, 0, LavenderTownExpositionTrigger2
 ;	coord_event 10,  5, 0, LavenderTownExpositionTrigger3
 
-	db 4 ; bg events
-	bg_event 11,  5, SIGNPOST_JUMPTEXT, LavenderTownSignText
-	bg_event 15,  9, SIGNPOST_JUMPTEXT, KantoRadioStationSignText
-	bg_event  3, 11, SIGNPOST_JUMPTEXT, VolunteerPokemonHouseSignText
-	bg_event 15, 15, SIGNPOST_JUMPTEXT, SoulHouseSignText
+	def_bg_events
+	bg_event 11,  5, BGEVENT_JUMPTEXT, LavenderTownSignText
+	bg_event 15,  9, BGEVENT_JUMPTEXT, KantoRadioStationSignText
+	bg_event  3, 11, BGEVENT_JUMPTEXT, VolunteerPokemonHouseSignText
+	bg_event 15, 15, BGEVENT_JUMPTEXT, SoulHouseSignText
 
-	db 8 ; object events
-	object_event 14,  7, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LAVENDER_TOWN_FLEEING_YOUNGSTER
-	object_event 12,  9, SPRITE_HIKER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, LavenderTownPokefanMText, -1
-	object_event  2, 17, SPRITE_POKEFAN_F, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, LavenderTownTeacherText, -1
-	object_event 14, 14, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, LavenderTownGrampsText, -1
-	object_event  6, 13, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, LavenderTownYoungsterText, -1
-	object_event  8, 18, SPRITE_POKEMANIAC, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, LavenderTownSuperNerdText, EVENT_LAVENDER_TOWN_FLEEING_YOUNGSTER ; TODO: EVENT_EXORCISED_LAV_RADIO_TOWER
-	object_event  9, 19, SPRITE_BATTLE_GIRL, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, LavenderTownCooltrainerFText, EVENT_LAVENDER_TOWN_FLEEING_YOUNGSTER ; TODO: EVENT_EXORCISED_LAV_RADIO_TOWER
-	object_event 11, 17, SPRITE_ROCKER, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 1, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, LavenderTownRockerText, EVENT_LAVENDER_TOWN_FLEEING_YOUNGSTER ; TODO: EVENT_EXORCISED_LAV_RADIO_TOWER
+	def_object_events
+	object_event 14,  7, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_LAVENDER_TOWN_FLEEING_YOUNGSTER
+	object_event 12,  9, SPRITE_HIKER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, LavenderTownPokefanMText, -1
+	object_event  2, 17, SPRITE_POKEFAN_F, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_COMMAND, jumptextfaceplayer, LavenderTownTeacherText, -1
+	object_event 14, 14, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, LavenderTownGrampsText, -1
+	object_event  6, 13, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, LavenderTownYoungsterText, -1
+	object_event  8, 18, SPRITE_POKEMANIAC, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_COMMAND, jumptextfaceplayer, LavenderTownSuperNerdText, EVENT_LAVENDER_TOWN_FLEEING_YOUNGSTER ; TODO: EVENT_EXORCISED_LAV_RADIO_TOWER
+	object_event  9, 19, SPRITE_BATTLE_GIRL, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, LavenderTownCooltrainerFText, EVENT_LAVENDER_TOWN_FLEEING_YOUNGSTER ; TODO: EVENT_EXORCISED_LAV_RADIO_TOWER
+	object_event 11, 17, SPRITE_ROCKER, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 1, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, LavenderTownRockerText, EVENT_LAVENDER_TOWN_FLEEING_YOUNGSTER ; TODO: EVENT_EXORCISED_LAV_RADIO_TOWER
 
-	const_def 1 ; object constants
+	object_const_def
 	const LAVENDERTOWN_YOUNGSTER1
 
 LavenderTownFlyPoint:
@@ -43,7 +43,7 @@ LavenderTownFlyPoint:
 	setevent EVENT_ROUTE_8_PROTESTORS
 	clearevent EVENT_ROUTE_8_KANTO_POKEMON_FEDERATION
 	setflag ENGINE_FLYPOINT_LAVENDER
-	return
+	endcallback
 
 LavenderTownExpositionTrigger1:
 	moveobject LAVENDERTOWN_YOUNGSTER1, 14, 8
@@ -52,7 +52,7 @@ LavenderTownExpositionTrigger1:
 	applymovement LAVENDERTOWN_YOUNGSTER1, .ApproachPlayerMovement
 	scall LavenderTownSharedExpositionScript
 	applymovement LAVENDERTOWN_YOUNGSTER1, .GoAroundPlayerMovement
-	jump LavenderTownFinishExpositionScript
+	sjump LavenderTownFinishExpositionScript
 
 .ApproachPlayerMovement:
 	big_step_left
@@ -78,7 +78,7 @@ LavenderTownExpositionTrigger2:
 	applymovement LAVENDERTOWN_YOUNGSTER1, .ApproachPlayerMovement
 	scall LavenderTownSharedExpositionScript
 	applymovement LAVENDERTOWN_YOUNGSTER1, .GoAroundPlayerMovement
-	jump LavenderTownFinishExpositionScript
+	sjump LavenderTownFinishExpositionScript
 
 .ApproachPlayerMovement:
 	step_down
@@ -104,7 +104,7 @@ LavenderTownExpositionTrigger3:
 	applymovement LAVENDERTOWN_YOUNGSTER1, .ApproachPlayerMovement
 	scall LavenderTownSharedExpositionScript
 	applymovement LAVENDERTOWN_YOUNGSTER1, .GoAroundPlayerMovement
-	jump LavenderTownFinishExpositionScript
+	sjump LavenderTownFinishExpositionScript
 
 .ApproachPlayerMovement:
 	step_down

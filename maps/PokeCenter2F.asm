@@ -1,53 +1,53 @@
 PokeCenter2F_MapScriptHeader:
-	db 3 ; scene scripts
+	def_scene_scripts
 	scene_script PokeCenter2FDummyTrigger
 	scene_script PokeCenter2FLeftTradeCenterTrigger
 	scene_script PokeCenter2FLeftColosseumTrigger
 
-	db 1 ; callbacks
+	def_callbacks
 	callback MAPCALLBACK_TILES, PokeCenter2FTileCallback
 
-	db 3 ; warp events
+	def_warp_events
 	warp_event  0,  7, POKECENTER_2F, -1
 	warp_event  5,  0, TRADE_CENTER, 1
 	warp_event  9,  0, COLOSSEUM, 1
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 1 ; bg events
-	bg_event  7,  3, SIGNPOST_READ, PokeCenter2FLinkRecordSign
+	def_bg_events
+	bg_event  7,  3, BGEVENT_READ, PokeCenter2FLinkRecordSign
 
-	db 3 ; object events
-	object_event  5,  2, SPRITE_LINK_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, LinkReceptionistScript_Trade, -1
-	object_event  9,  2, SPRITE_LINK_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, LinkReceptionistScript_Battle, -1
-	object_event 13,  3, SPRITE_LINK_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, Text_TimeCapsuleClosed, -1
+	def_object_events
+	object_event  5,  2, SPRITE_LINK_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, LinkReceptionistScript_Trade, -1
+	object_event  9,  2, SPRITE_LINK_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, LinkReceptionistScript_Battle, -1
+	object_event 13,  3, SPRITE_LINK_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, Text_TimeCapsuleClosed, -1
 
-	const_def 1 ; object constants
+	object_const_def
 	const POKECENTER2F_TRADE_RECEPTIONIST
 	const POKECENTER2F_BATTLE_RECEPTIONIST
 
 PokeCenter2FLeftTradeCenterTrigger:
-	priorityjump Script_LeftCableTradeCenter
+	prioritysjump Script_LeftCableTradeCenter
 PokeCenter2FDummyTrigger:
 	end
 
 PokeCenter2FLeftColosseumTrigger:
-	priorityjump Script_LeftCableColosseum
+	prioritysjump Script_LeftCableColosseum
 	end
 
 PokeCenter2FTileCallback:
 	callasm .CheckPokeCenter2FRegion
 	ifequal $0, .done
 	ifequal $2, .shamouti2f
-	changemap KantoPokeCenter2F_BlockData
+	changemapblocks KantoPokeCenter2F_BlockData
 .done
-	return
+	endcallback
 
 .shamouti2f
-	changemap KantoPokeCenter2F_BlockData
+	changemapblocks KantoPokeCenter2F_BlockData
 	changeblock 0, 6, $3c
 	changeblock 2, 0, $4a
-	return
+	endcallback
 
 .CheckPokeCenter2FRegion:
 	call GetBackupLandmark
@@ -96,10 +96,10 @@ Script_WalkOutOfLinkRoom:
 	clearflag ENGINE_KRIS_IN_CABLE_CLUB
 	playsound SFX_TINGLE
 	applymovement PLAYER, PokeCenter2FMovementData_PlayerSpinsClockwiseEndsFacingRight
-	writebyte (PAL_NPC_BLUE) << 4
+	setval (PAL_NPC_BLUE) << 4
 	special Special_SetPlayerPalette
 	applymovement PLAYER, PokeCenter2FMovementData_PlayerSpinsClockwiseEndsFacingLeft
-	special ReplaceKrisSprite
+	special UpdatePlayerSprite
 	applymovement PLAYER, PokeCenter2FMovementData_PlayerTakesTwoStepsDown
 	applymovement POKECENTER2F_TRADE_RECEPTIONIST, PokeCenter2FMovementData_ReceptionistStepsRightAndDown
 	end
@@ -130,7 +130,7 @@ endc
 	writetext Text_PleaseWait
 	special Special_CheckLinkTimeout
 	iffalse .LinkTimedOut
-	copybytetovar wOtherPlayerLinkMode
+	readmem wOtherPlayerLinkMode
 	iffalse .LinkedToFirstGen
 	special Special_CheckBothSelectedSameRoom
 	iffalse .IncompatibleRooms
@@ -159,7 +159,7 @@ endc
 
 .LinkTimedOut:
 	writetext Text_LinkTimedOut
-	jump .AbortLink
+	sjump .AbortLink
 
 .DidNotSave:
 	writetext Text_PleaseComeAgain
@@ -197,7 +197,7 @@ endc
 	writetext Text_PleaseWait
 	special Special_CheckLinkTimeout
 	iffalse .LinkTimedOut
-	copybytetovar wOtherPlayerLinkMode
+	readmem wOtherPlayerLinkMode
 	iffalse .LinkedToFirstGen
 	special Special_CheckBothSelectedSameRoom
 	iffalse .IncompatibleRooms
@@ -226,7 +226,7 @@ endc
 
 .LinkTimedOut:
 	writetext Text_LinkTimedOut
-	jump .AbortLink
+	sjump .AbortLink
 
 .DidNotSave:
 	writetext Text_PleaseComeAgain
@@ -246,24 +246,24 @@ Script_BattleRoomClosed:
 PokeCenter2F_CheckGender:
 	checkflag ENGINE_PLAYER_IS_FEMALE
 	iftrue .Female
-	applymovement2 PokeCenter2FMovementData_ReceptionistWalksUpAndLeft_LookRight
+	applymovementlasttalked PokeCenter2FMovementData_ReceptionistWalksUpAndLeft_LookRight
 	applymovement PLAYER, PokeCenter2FMovementData_PlayerTakesThreeStepsUp
 	end
 
 .Female:
-	applymovement2 PokeCenter2FMovementData_ReceptionistWalksUpAndLeft_LookRight
+	applymovementlasttalked PokeCenter2FMovementData_ReceptionistWalksUpAndLeft_LookRight
 	applymovement PLAYER, PokeCenter2FMovementData_PlayerTakesTwoStepsUp
 	showtext Text_OhPleaseWait
-	applymovement2 PokeCenter2FMovementData_ReceptionistLooksRight
+	applymovementlasttalked PokeCenter2FMovementData_ReceptionistLooksRight
 	turnobject PLAYER, LEFT
 	showtext Text_ChangeTheLook
 	playsound SFX_TINGLE
 	applymovement PLAYER, PokeCenter2FMovementData_PlayerSpinsClockwiseEndsFacingRight
-	writebyte (PAL_NPC_RED) << 4
+	setval (PAL_NPC_RED) << 4
 	special Special_SetPlayerPalette
 	applymovement PLAYER, PokeCenter2FMovementData_PlayerSpinsClockwiseEndsFacingLeft
 	setflag ENGINE_KRIS_IN_CABLE_CLUB
-	special ReplaceKrisSprite
+	special UpdatePlayerSprite
 	showtext Text_LikeTheLook
 	showemote EMOTE_SHOCK, PLAYER, 15
 	applyonemovement PLAYER, step_up

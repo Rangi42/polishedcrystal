@@ -1,22 +1,22 @@
 CeladonHomeDecorStore3F_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event  6,  0, CELADON_HOME_DECOR_STORE_2F, 2
 	warp_event  9,  0, CELADON_HOME_DECOR_STORE_4F, 1
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 1 ; bg events
-	bg_event  8,  0, SIGNPOST_JUMPTEXT, CeladonHomeDecorStore3FDirectoryText
+	def_bg_events
+	bg_event  8,  0, BGEVENT_JUMPTEXT, CeladonHomeDecorStore3FDirectoryText
 
-	db 4 ; object events
-	object_event  7,  7, SPRITE_CLERK, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, CeladonHomeDecorStore3FClerk1Script, -1
-	object_event  8,  7, SPRITE_CLERK, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, CeladonHomeDecorStore3FClerk2Script, -1
-	object_event  3,  5, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonHomeDecorStore3FYoungsterText, -1
-	object_event  9,  3, SPRITE_BEAUTY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonHomeDecorStore3FBeautyText, -1
+	def_object_events
+	object_event  7,  7, SPRITE_CLERK, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, CeladonHomeDecorStore3FClerk1Script, -1
+	object_event  8,  7, SPRITE_CLERK, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, CeladonHomeDecorStore3FClerk2Script, -1
+	object_event  3,  5, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeladonHomeDecorStore3FYoungsterText, -1
+	object_event  9,  3, SPRITE_BEAUTY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeladonHomeDecorStore3FBeautyText, -1
 
 CeladonHomeDecorStore3FClerk1Script:
 	faceplayer
@@ -44,7 +44,7 @@ CeladonHomeDecorStore3FClerk1Script:
 	waitbutton
 	writetext RedCarpetSentText
 	waitbutton
-	jump .Start
+	sjump .Start
 
 .YellowCarpet:
 	checkmoney $0, 45000
@@ -58,7 +58,7 @@ CeladonHomeDecorStore3FClerk1Script:
 	waitbutton
 	writetext YellowCarpetSentText
 	waitbutton
-	jump .Start
+	sjump .Start
 
 .GreenCarpet:
 	checkmoney $0, 45000
@@ -72,17 +72,17 @@ CeladonHomeDecorStore3FClerk1Script:
 	waitbutton
 	writetext GreenCarpetSentText
 	waitbutton
-	jump .Start
+	sjump .Start
 
 .NotEnoughMoney:
 	writetext CeladonHomeDecorStore3FNoMoneyText
 	waitbutton
-	jump .Start
+	sjump .Start
 
 .AlreadyBought:
 	writetext CeladonHomeDecorStore3FAlreadyBoughtText
 	waitbutton
-	jump .Start
+	sjump .Start
 
 .MenuData:
 	db $40 ; flags

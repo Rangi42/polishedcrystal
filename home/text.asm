@@ -37,11 +37,11 @@ ClearTileMap::
 	ret z
 	jp ApplyTilemapInVBlank
 
-SpeechTextBox::
+SpeechTextbox::
 ; Standard textbox.
 	hlcoord TEXTBOX_X, TEXTBOX_Y
 	lb bc, TEXTBOX_INNERH, TEXTBOX_INNERW
-TextBox::
+Textbox::
 ; Draw a text box at hl with room for
 ; b lines of c characters each.
 ; Places a border around the textbox,
@@ -49,10 +49,11 @@ TextBox::
 ; text black-and-white scheme.
 	push bc
 	push hl
-	call TextBoxBorder
+	call TextboxBorder
 	pop hl
 	pop bc
-TextBoxPalette::
+	; fallthrough
+TextboxPalette::
 ; Fill text box width c height b at hl with pal 7
 	ld de, wAttrMap - wTileMap
 	add hl, de
@@ -63,59 +64,65 @@ TextBoxPalette::
 	ld a, PAL_BG_TEXT
 	jr FillBoxWithByte
 
-TextBoxBorder::
+TextBoxCharacters:
+	rawchar "┌─┐" ; top
+	rawchar "│ │" ; middle
+	rawchar "└─┘" ; bottom
+
+TextboxBorder::
+	ld de, TextBoxCharacters
+	; fallthrough
+CreateBoxBorders::
 	; Top
+	call .PlaceRow
+	jr .row
+
+.row_loop
+	dec de
+	dec de
+	dec de
+.row
+	call .PlaceRow
+	dec b
+	jr nz, .row_loop
+
+	; Bottom row (fallthrough)
+
+.PlaceRow:
 	push hl
-	ld a, "┌"
+	ld a, [de]
+	inc de
 	ld [hli], a
-	inc a ; "─"
+	ld a, [de]
+	inc de
 	call .PlaceChars
-	inc a ; "┐"
+	ld a, [de]
+	inc de
 	ld [hl], a
 	pop hl
-
-	; Middle
-	ld de, SCREEN_WIDTH
-	add hl, de
-.row
-	push hl
-	ld a, "│"
-	ld [hli], a
-	ld a, " "
-	call .PlaceChars
-	ld [hl], "│"
-	pop hl
-
-	ld de, SCREEN_WIDTH
-	add hl, de
-	dec b
-	jr nz, .row
-
-	; Bottom
-	ld a, "└"
-	ld [hli], a
-	ld a, "─"
-	call .PlaceChars
-	ld [hl], "┘"
-
+	push bc
+	ld bc, SCREEN_WIDTH
+	add hl, bc
+	pop bc
 	ret
 
 .PlaceChars:
 ; Place char a c times.
-	ld d, c
+	push bc
 .loop
 	ld [hli], a
-	dec d
+	dec c
 	jr nz, .loop
+	pop bc
 	ret
 
 PrintText::
-	call SetUpTextBox
+	call SetUpTextbox
 PrintTextNoBox::
 	push hl
 	call ClearSpeechBox
 	pop hl
-PrintTextBoxText::
+PrintTextboxText::
 	bccoord TEXTBOX_INNERX, TEXTBOX_INNERY
 PlaceWholeStringInBoxAtOnce::
 	ld a, [wTextboxFlags]
@@ -127,9 +134,9 @@ PlaceWholeStringInBoxAtOnce::
 	ld [wTextboxFlags], a
 	ret
 
-SetUpTextBox::
+SetUpTextbox::
 	push hl
-	call SpeechTextBox
+	call SpeechTextbox
 	call UpdateSprites
 	call ApplyTilemap
 	pop hl
@@ -214,13 +221,13 @@ LineBreak::
 	pop hl
 	add hl, bc
 	push hl
-	jp NextChar
+	jr NextChar
 
 LineChar::
 	pop hl
 	hlcoord TEXTBOX_INNERX, TEXTBOX_INNERY + 2
 	push hl
-	jp NextChar
+	jr NextChar
 
 ContText::
 	ld a, [wLinkMode]
@@ -236,7 +243,7 @@ ContText::
 	call TextScroll
 	hlcoord TEXTBOX_INNERX, TEXTBOX_INNERY + 2
 	pop de
-	jp NextChar
+	jr NextChar
 
 Paragraph::
 	push de
@@ -411,7 +418,7 @@ DoTextUntilTerminator::
 
 .TextCommand:
 	cp NGRAMS_START
-	jr nc, Text_Started
+	jr nc, _ImplicitlyStartedText
 	push hl
 	ld e, a
 	ld d, 0
@@ -422,24 +429,23 @@ DoTextUntilTerminator::
 	inc hl
 	ld d, [hl]
 	pop hl
-	; jp de
 	push de
 	ret
 
 TextCommands::
-	dw Text_Start      ; $00 <START>
-	dw Text_FromRAM    ; $01 <RAM>
-	dw Text_WaitButton ; $02 <WAIT>
-	dw Text_ASM        ; $03 <ASM>
-	dw Text_PrintNum   ; $04 <NUM>
-	dw Text_Exit       ; $05 <EXIT>
-	dw Text_PlaySound  ; $06 <SOUND>
-	dw Text_WeekDay    ; $07 <DAY>
-	dw Text_Jump       ; $08 <FAR>
+	dw TextCommand_START         ; $00 <START>
+	dw TextCommand_RAM           ; $01 <RAM>
+	dw TextCommand_PROMPT_BUTTON ; $02 <WAIT>
+	dw TextCommand_ASM           ; $03 <ASM>
+	dw TextCommand_DECIMAL       ; $04 <NUM>
+	dw TextCommand_PAUSE         ; $05 <PAUSE>
+	dw TextCommand_SOUND         ; $06 <SOUND>
+	dw TextCommand_DAY           ; $07 <DAY>
+	dw TextCommand_FAR           ; $08 <FAR>
 
-Text_Started:
+_ImplicitlyStartedText:
 	dec hl
-Text_Start::
+TextCommand_START::
 ; write text until "@"
 	ld d, h
 	ld e, l
@@ -451,8 +457,7 @@ Text_Start::
 	inc hl
 	ret
 
-Text_FromRAM::
-; text_from_ram
+TextCommand_RAM::
 ; write text from a ram address
 	ld a, [hli]
 	ld e, a
@@ -465,8 +470,7 @@ Text_FromRAM::
 	pop hl
 	ret
 
-Text_Jump::
-; text_jump
+TextCommand_FAR::
 ; write text from a different bank
 	ldh a, [hROMBank]
 	push af
@@ -488,9 +492,8 @@ Text_Jump::
 	rst Bankswitch
 	ret
 
-Text_WaitButton::
-; wait for button press
-; show arrow
+TextCommand_PROMPT_BUTTON::
+; wait for button press; show arrow
 	push hl
 	ld a, [wLinkMode]
 	cp LINK_COLOSSEUM
@@ -504,7 +507,7 @@ Text_WaitButton::
 	pop hl
 	ret
 
-Text_ASM::
+TextCommand_ASM::
 	bit 7, h
 	jr nz, .not_rom
 	jp hl
@@ -513,7 +516,8 @@ Text_ASM::
 	ld [hl], "@"
 	ret
 
-Text_PrintNum::
+TextCommand_DECIMAL::
+; print a decimal number
 	ld a, [hli]
 	ld e, a
 	ld a, [hli]
@@ -528,7 +532,7 @@ Text_PrintNum::
 	ld a, b
 	and $f0
 	swap a
-	set PRINTNUM_LEFTALIGN_F, a
+	or PRINTNUM_DELAY | PRINTNUM_LEFTALIGN
 	ld b, a
 	call PrintNum
 FinishString:
@@ -537,7 +541,8 @@ FinishString:
 	pop hl
 	ret
 
-Text_Exit::
+TextCommand_PAUSE::
+; wait for button press or 30 frames
 	push hl
 	push bc
 	call GetJoypad
@@ -551,7 +556,8 @@ Text_Exit::
 	pop hl
 	ret
 
-Text_PlaySound::
+TextCommand_SOUND::
+; play a sound effect
 	ld a, [hli]
 	push hl
 	push de
@@ -562,7 +568,8 @@ Text_PlaySound::
 	call WaitSFX
 	jp PopBCDEHL
 
-Text_WeekDay::
+TextCommand_DAY::
+; print the day of the week
 	call GetWeekday
 PrintDayOfWeek::
 	push hl

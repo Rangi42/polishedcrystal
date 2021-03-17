@@ -1,9 +1,9 @@
 SafariZoneHub_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 9 ; warp events
+	def_warp_events
 	warp_event 16, 27, SAFARI_ZONE_FUCHSIA_GATE, 1
 	warp_event 17, 27, SAFARI_ZONE_FUCHSIA_GATE, 2
 	warp_event 31, 12, SAFARI_ZONE_EAST, 1
@@ -14,14 +14,14 @@ SafariZoneHub_MapScriptHeader:
 	warp_event 17,  2, SAFARI_ZONE_NORTH, 6
 	warp_event 19, 21, SAFARI_ZONE_HUB_REST_HOUSE, 1
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 2 ; bg events
-	bg_event 16, 24, SIGNPOST_JUMPTEXT, SafariZoneHubAreaSignText
-	bg_event 20, 22, SIGNPOST_JUMPTEXT, SafariZoneHubRestHouseSignText
+	def_bg_events
+	bg_event 16, 24, BGEVENT_JUMPTEXT, SafariZoneHubAreaSignText
+	bg_event 20, 22, BGEVENT_JUMPTEXT, SafariZoneHubRestHouseSignText
 
-	db 3 ; object events
-	object_event 26,  6, SPRITE_BUG_MANIAC, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 5, GenericTrainerBug_maniacKai, -1
+	def_object_events
+	object_event 26,  6, SPRITE_BUG_MANIAC, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 5, GenericTrainerBug_maniacKai, -1
 	itemball_event 15, 12, NUGGET, 1, EVENT_SAFARI_ZONE_HUB_NUGGET
 	itemball_event  8, 21, ULTRA_BALL, 1, EVENT_SAFARI_ZONE_HUB_ULTRA_BALL
 

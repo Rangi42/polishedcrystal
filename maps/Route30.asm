@@ -1,37 +1,37 @@
 Route30_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event  7, 39, ROUTE_30_BERRY_SPEECH_HOUSE, 1
 	warp_event 17,  5, MR_POKEMONS_HOUSE, 1
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 6 ; bg events
-	bg_event  9, 43, SIGNPOST_JUMPTEXT, Route30SignText
-	bg_event 13, 29, SIGNPOST_JUMPTEXT, MrPokemonsHouseDirectionsSignText
-	bg_event 15,  5, SIGNPOST_JUMPTEXT, MrPokemonsHouseSignText
-	bg_event  3, 21, SIGNPOST_JUMPTEXT, Route30TrainerTipsText
-	bg_event 14,  9, SIGNPOST_ITEM + POTION, EVENT_ROUTE_30_HIDDEN_POTION
-	bg_event  5, 39, SIGNPOST_JUMPTEXT, BerryMastersHouseSignText
+	def_bg_events
+	bg_event  9, 43, BGEVENT_JUMPTEXT, Route30SignText
+	bg_event 13, 29, BGEVENT_JUMPTEXT, MrPokemonsHouseDirectionsSignText
+	bg_event 15,  5, BGEVENT_JUMPTEXT, MrPokemonsHouseSignText
+	bg_event  3, 21, BGEVENT_JUMPTEXT, Route30TrainerTipsText
+	bg_event 14,  9, BGEVENT_ITEM + POTION, EVENT_ROUTE_30_HIDDEN_POTION
+	bg_event  5, 39, BGEVENT_JUMPTEXT, BerryMastersHouseSignText
 
-	db 12 ; object events
-	object_event  5, 26, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, YoungsterJoey_ImportantBattleScript, EVENT_ROUTE_30_BATTLE
-	object_event  5, 24, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, PIDGEY, -1, -1, PAL_NPC_BROWN, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_30_BATTLE
-	object_event  5, 25, SPRITE_RATTATA_BACK, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_PURPLE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_30_BATTLE
-	object_event  2, 28, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerYoungsterJoey, EVENT_ROUTE_30_YOUNGSTER_JOEY
-	object_event  5, 23, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerYoungsterMikey, -1
-	object_event  1,  7, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerBug_catcherDon, -1
-	object_event  7, 30, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_BROWN, PERSONTYPE_SCRIPT, 0, Route30YoungsterScript, -1
-	object_event  2, 13, SPRITE_LASS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, Route30CooltrainerFText, -1
+	def_object_events
+	object_event  5, 26, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, YoungsterJoey_ImportantBattleScript, EVENT_ROUTE_30_BATTLE
+	object_event  5, 24, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, PIDGEY, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_30_BATTLE
+	object_event  5, 25, SPRITE_RATTATA_BACK, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_PURPLE, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_30_BATTLE
+	object_event  2, 28, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_TRAINER, 3, TrainerYoungsterJoey, EVENT_ROUTE_30_YOUNGSTER_JOEY
+	object_event  5, 23, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerYoungsterMikey, -1
+	object_event  1,  7, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerBug_catcherDon, -1
+	object_event  7, 30, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, Route30YoungsterScript, -1
+	object_event  2, 13, SPRITE_LASS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, Route30CooltrainerFText, -1
 	cuttree_event  8,  6, EVENT_ROUTE_30_CUT_TREE
 	fruittree_event 10, 39, FRUITTREE_ROUTE_30_1, ORAN_BERRY, PAL_NPC_BLUE
 	fruittree_event 11,  5, FRUITTREE_ROUTE_30_2, PECHA_BERRY, PAL_NPC_RED
 	itemball_event  8, 35, ANTIDOTE, 1, EVENT_ROUTE_30_ANTIDOTE
 
-	const_def 1 ; object constants
+	object_const_def
 	const ROUTE30_YOUNGSTER1
 	const ROUTE30_PIDGEY
 	const ROUTE30_RATTATA
@@ -61,19 +61,19 @@ TrainerYoungsterJoey:
 	trainer YOUNGSTER, JOEY1, EVENT_BEAT_YOUNGSTER_JOEY, YoungsterJoey1SeenText, YoungsterJoey1BeatenText, 0, .Script
 
 .Script:
-	writecode VAR_CALLERID, PHONE_YOUNGSTER_JOEY
+	loadvar VAR_CALLERID, PHONE_YOUNGSTER_JOEY
 	opentext
-	checkflag ENGINE_JOEY
+	checkflag ENGINE_JOEY_READY_FOR_REMATCH
 	iftrue .Rematch
 	checkcellnum PHONE_YOUNGSTER_JOEY
 	iftrue .NumberAccepted
 	checkevent EVENT_JOEY_ASKED_FOR_PHONE_NUMBER
 	iftrue .AskAgain
 	writetext YoungsterJoey1AfterText
-	buttonsound
+	promptbutton
 	setevent EVENT_JOEY_ASKED_FOR_PHONE_NUMBER
 	callstd asknumber1m
-	jump .RequestNumber
+	sjump .RequestNumber
 
 .AskAgain:
 	callstd asknumber2m
@@ -81,14 +81,14 @@ TrainerYoungsterJoey:
 	askforphonenumber PHONE_YOUNGSTER_JOEY
 	ifequal $1, .PhoneFull
 	ifequal $2, .NumberDeclined
-	trainertotext YOUNGSTER, JOEY1, $0
+	gettrainername YOUNGSTER, JOEY1, $0
 	callstd registerednumberm
 	jumpstd numberacceptedm
 
 .Rematch:
 	callstd rematchm
 	winlosstext YoungsterJoey1BeatenText, 0
-	copybytetovar wJoeyFightCount
+	readmem wJoeyFightCount
 	ifequal 4, .Fight4
 	ifequal 3, .Fight3
 	ifequal 2, .Fight2
@@ -110,39 +110,39 @@ TrainerYoungsterJoey:
 	loadtrainer YOUNGSTER, JOEY1
 	startbattle
 	reloadmapafterbattle
-	loadvar wJoeyFightCount, 1
-	clearflag ENGINE_JOEY
+	loadmem wJoeyFightCount, 1
+	clearflag ENGINE_JOEY_READY_FOR_REMATCH
 	end
 
 .LoadFight1:
 	loadtrainer YOUNGSTER, JOEY2
 	startbattle
 	reloadmapafterbattle
-	loadvar wJoeyFightCount, 2
-	clearflag ENGINE_JOEY
+	loadmem wJoeyFightCount, 2
+	clearflag ENGINE_JOEY_READY_FOR_REMATCH
 	end
 
 .LoadFight2:
 	loadtrainer YOUNGSTER, JOEY3
 	startbattle
 	reloadmapafterbattle
-	loadvar wJoeyFightCount, 3
-	clearflag ENGINE_JOEY
+	loadmem wJoeyFightCount, 3
+	clearflag ENGINE_JOEY_READY_FOR_REMATCH
 	end
 
 .LoadFight3:
 	loadtrainer YOUNGSTER, JOEY4
 	startbattle
 	reloadmapafterbattle
-	loadvar wJoeyFightCount, 4
-	clearflag ENGINE_JOEY
+	loadmem wJoeyFightCount, 4
+	clearflag ENGINE_JOEY_READY_FOR_REMATCH
 	end
 
 .LoadFight4:
 	loadtrainer YOUNGSTER, JOEY5
 	startbattle
 	reloadmapafterbattle
-	clearflag ENGINE_JOEY
+	clearflag ENGINE_JOEY_READY_FOR_REMATCH
 	checkevent EVENT_JOEY_HP_UP
 	iftrue .GiveHPUp
 	checkevent EVENT_GOT_HP_UP_FROM_JOEY

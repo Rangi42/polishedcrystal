@@ -1,23 +1,23 @@
 Route2946Gate_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 4 ; warp events
+	def_warp_events
 	warp_event  4,  0, ROUTE_46, 1
 	warp_event  5,  0, ROUTE_46, 2
 	warp_event  4,  7, ROUTE_29, 1
 	warp_event  5,  7, ROUTE_29, 1
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 0 ; bg events
+	def_bg_events
 
-	db 2 ; object events
-	object_event  0,  4, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x7b5c1, -1
-	object_event  6,  4, SPRITE_CAMPER, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x7b60d, -1
+	def_object_events
+	object_event  0,  4, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, Route29Route46GateOfficerText, -1
+	object_event  6,  4, SPRITE_CAMPER, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, Route29Route46GateYoungsterText, -1
 
-UnknownText_0x7b5c1:
+Route29Route46GateOfficerText:
 	text "You can't climb"
 	line "ledges."
 
@@ -26,7 +26,7 @@ UnknownText_0x7b5c1:
 	cont "take a shortcut."
 	done
 
-UnknownText_0x7b60d:
+Route29Route46GateYoungsterText:
 	text "Different kinds of"
 	line "#mon appear"
 	cont "past here."

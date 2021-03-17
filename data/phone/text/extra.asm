@@ -1,12 +1,12 @@
 
-UnknownText_0x64000:
+IrwinHangUpText:
 	text "I hate having to"
 	line "hang up on you!"
 
 	para "Call you later!"
 	done
 
-UnknownText_0x64032:
+IrwinRocketTakeoverRumorText:
 	text "<PLAYER>, have you"
 	line "heard?"
 
@@ -20,7 +20,7 @@ UnknownText_0x64032:
 	line "Rocket?"
 	done
 
-UnknownText_0x64099:
+IrwinPlainBadgeGossipText:
 	text "<PLAYER>, I heard!"
 
 	para "You defeated that"
@@ -30,7 +30,7 @@ UnknownText_0x64099:
 	line "to be your friend!"
 	done
 
-UnknownText_0x640e6:
+IrwinJasmineReturnedGossipText:
 	text "Hey, I heard about"
 	line "you!"
 
@@ -47,7 +47,7 @@ UnknownText_0x640e6:
 	line "bed with a cold!"
 	done
 
-UnknownText_0x6416d:
+IrwinRocketHideoutGossipText:
 	text "I heard, I heard,"
 	line "I heard!"
 
@@ -61,7 +61,7 @@ UnknownText_0x6416d:
 	line "Team Rocket?"
 	done
 
-UnknownText_0x641e8:
+IrwinRadioTowerGossipText:
 	text "I heard, I heard,"
 	line "I heard!"
 
@@ -72,7 +72,7 @@ UnknownText_0x641e8:
 	line "rock so hard!"
 	done
 
-UnknownText_0x64247:
+IrwinRisingBadgeGossipText:
 	text "I saw, I saw!"
 
 	para "I saw you go into"
@@ -85,7 +85,7 @@ UnknownText_0x64247:
 	line "You can't fail!"
 	done
 
-UnknownText_0x642bb:
+IrwinEliteFourGossipText:
 	text "Yesterday, I went"
 	line "out to New Bark"
 
@@ -114,7 +114,7 @@ UnknownText_0x642bb:
 	line "mom, believe me!"
 	done
 
-UnknownText_0x643d4:
+IrwinVermilionCityGossipText:
 	text "I saw, I saw,"
 	line "I saw!"
 
@@ -128,7 +128,7 @@ UnknownText_0x643d4:
 	line "your backdrop!"
 	done
 
-UnknownText_0x64448:
+IrwinTrainPassGossipText:
 	text "I heard, I heard!"
 
 	para "You got a Magnet"
@@ -156,7 +156,7 @@ UnknownText_0x64448:
 	line "by Fly?"
 	done
 
-UnknownText_0x6455b:
+IrwinSnorlaxGossipText:
 	text "I saw, I saw!"
 
 	para "You waking up"
@@ -175,7 +175,7 @@ UnknownText_0x6455b:
 	line "magic!"
 	done
 
-UnknownText_0x645ff:
+IrwinMtSilverGossipText:
 	text "I hear rumors"
 	line "about you all over"
 	cont "the place."
@@ -193,7 +193,7 @@ UnknownText_0x645ff:
 	line "cheering you on!"
 	done
 
-UnknownText_0x646a3:
+IrwinCalledRightAwayText:
 	text "Hehe, I called"
 	line "right away!"
 
@@ -201,7 +201,7 @@ UnknownText_0x646a3:
 	line "good friends!"
 	done
 
-UnknownText_0x646df:
+IrwinFogBadgeGossipText:
 	text "I saw, I heard!"
 
 	para "You beat Morty of"
@@ -226,7 +226,7 @@ UnknownText_0x646df:
 	line "took off for home…"
 	done
 
-UnknownText_0x647d8:
+IrwinMarshBadgeGossipText:
 	text "<PLAYER>, I heard!"
 
 	para "You're kicking up"
@@ -241,7 +241,7 @@ UnknownText_0x647d8:
 	para "You so rock!"
 	done
 
-UnknownText_0x64846:
+IrwinYourEscapadesRockText:
 	text "Hearing about your"
 	line "escapades rocks my"
 
@@ -249,7 +249,7 @@ UnknownText_0x64846:
 	line "It sure does!"
 	done
 
-UnknownText_0x64881:
+IrwinGoodMatchText:
 	text "I'm so glad you"
 	line "called!"
 
@@ -260,7 +260,7 @@ UnknownText_0x64881:
 	line "a good match!"
 	done
 
-UnknownText_0x648dc:
+IrwinSoMuchToChatAboutText:
 	text "How are you?"
 
 	para "What are you"
@@ -289,22 +289,22 @@ UnknownText_0x648dc:
 	line "is going nowhere!"
 	done
 
-UnknownText_0x649dc:
+ArnieMonIsSoCuteText:
 	text "I'm always with my"
 	line ""
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text "!"
 
 	para "It's so cute!"
 	line "I just love it!"
 	done
 
-UnknownText_0x64a13:
+ArnieDefeatedMonText:
 	text "Changing the topic"
 	line "here, I saw this"
 
 	para ""
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text " for the"
 	line "first time."
 
@@ -312,11 +312,11 @@ UnknownText_0x64a13:
 	line "beat, actually."
 	done
 
-UnknownText_0x64a71:
+ArnieLostAMonText:
 	text "I was wondering,"
 	line "do you happen to"
 	cont "have "
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text "?"
 
 	para "I can't seem to"
@@ -326,7 +326,7 @@ UnknownText_0x64a71:
 	line "wonder."
 	done
 
-UnknownText_0x64ada:
+ArnieBattleRematchText:
 	text "Hey, let's battle"
 	line "our #mon!"
 
@@ -338,34 +338,34 @@ UnknownText_0x64ada:
 
 	para "I'll be here on"
 	line ""
-	text_from_ram wStringBuffer5
+	text_ram wStringBuffer5
 	text "!"
 	done
 
-UnknownText_0x64b48:
+ArnieHangUpText:
 	text "Let's talk again,"
 	line "huh?"
 	done
 
-UnknownText_0x64b5f:
+ArnieSwarmText:
 	text "Boy, am I glad I"
 	line "caught you!"
 
 	para "A whole bunch of"
 	line ""
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text " have"
 
 	para "appeared around"
 	line ""
-	text_from_ram wStringBuffer5
+	text_ram wStringBuffer5
 	text "!"
 
 	para "You have to see"
 	line "this!"
 	done
 
-UnknownText_0x64bc6:
+ArnieHaventSeenRareMonText:
 	text "I haven't had any"
 	line "luck seeing rare"
 	cont "#mon lately…"
@@ -374,18 +374,18 @@ UnknownText_0x64bc6:
 	line "out there!"
 	done
 
-UnknownText_0x64c13:
+ArnieReminderText:
 	text "Hey, where are you"
 	line "now?"
 
 	para "Let's battle. I'll"
 	line "be waiting for you"
 	cont "on "
-	text_from_ram wStringBuffer5
+	text_ram wStringBuffer5
 	text "!"
 	done
 
-UnknownText_0x64c5a:
+ArnieHurryText:
 	text "Hello? Are you"
 	line "coming or what?"
 
@@ -396,9 +396,9 @@ UnknownText_0x64c5a:
 	line "35 right now!"
 	done
 
-UnknownText_0x64cbd:
+AlanGettingStrongerText:
 	text "My "
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text "'s"
 	line "getting stronger,"
 
@@ -406,12 +406,12 @@ UnknownText_0x64cbd:
 	line "calculated!"
 	done
 
-UnknownText_0x64cf3:
+AlanDefeatedMonText:
 	text "By the way, we"
 	line "knocked out a wild"
 
 	para ""
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text " just"
 	line "the other day."
 
@@ -419,10 +419,10 @@ UnknownText_0x64cf3:
 	line "advance worked!"
 	done
 
-UnknownText_0x64d4f:
+AlanLostAMonText:
 	text "By the way, a wild"
 	line ""
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text " escaped"
 	cont "on me yesterday."
 
@@ -430,7 +430,7 @@ UnknownText_0x64d4f:
 	line "error on my part…"
 	done
 
-UnknownText_0x64da4:
+AlanBattleRematchText:
 	text "I've studied quite"
 	line "a bit since then,"
 
@@ -439,18 +439,18 @@ UnknownText_0x64da4:
 
 	para "I'm hanging out on"
 	line ""
-	text_from_ram wStringBuffer5
+	text_ram wStringBuffer5
 	text "."
 
 	para "Can you come down"
 	line "for a battle?"
 	done
 
-UnknownText_0x64e1f:
+AlanHangUpText:
 	text "See you later!"
 	done
 
-UnknownText_0x64e2f:
+AlanFoundItemText:
 	text "Hehehe, I picked"
 	line "up something nice!"
 
@@ -458,11 +458,11 @@ UnknownText_0x64e2f:
 	line "Why don't you come"
 
 	para "to "
-	text_from_ram wStringBuffer5
+	text_ram wStringBuffer5
 	line "and pick it up?"
 	done
 
-UnknownText_0x64e90:
+AlanHaventPickedUpAnythingText:
 	text "I haven't picked"
 	line "up anything yet."
 
@@ -470,18 +470,18 @@ UnknownText_0x64e90:
 	line "find something."
 	done
 
-UnknownText_0x64ed4:
+AlanReminderText:
 	text "If we don't battle"
 	line "soon, I'll forget"
 	cont "my strategy!"
 
 	para "I'm waiting on"
 	line ""
-	text_from_ram wStringBuffer5
+	text_ram wStringBuffer5
 	text "!"
 	done
 
-UnknownText_0x64f1a:
+AlanComePickUpGiftText:
 	text "I have to do my"
 	line "homework, so can"
 
@@ -490,13 +490,13 @@ UnknownText_0x64f1a:
 
 	para "I'm waiting on"
 	line ""
-	text_from_ram wStringBuffer5
+	text_ram wStringBuffer5
 	text "!"
 	done
 
-UnknownText_0x64f74:
+DanaTakingPhotosText:
 	text "My "
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text " is"
 	line "getting prettier!"
 
@@ -504,11 +504,11 @@ UnknownText_0x64f74:
 	line "photos galore!"
 	done
 
-UnknownText_0x64fb2:
+DanaDefeatedMonText:
 	text "It took only an"
 	line "instant to KO a"
 	cont "wild "
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text "."
 
 	para "It must be because"
@@ -518,10 +518,10 @@ UnknownText_0x64fb2:
 	line "time."
 	done
 
-UnknownText_0x6501c:
+DanaLostAMonText:
 	text "You know what?"
 	line "A wild "
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 
 	para "got away from me"
 	line "again."
@@ -533,10 +533,10 @@ UnknownText_0x6501c:
 	line "and I would've…"
 	done
 
-UnknownText_0x65091:
+DanaBattleRematchText:
 	text "Right now, I'm on"
 	line ""
-	text_from_ram wStringBuffer5
+	text_ram wStringBuffer5
 	text "."
 
 	para "If you're close"
@@ -546,11 +546,11 @@ UnknownText_0x65091:
 	line "for you!"
 	done
 
-UnknownText_0x650e2:
+DanaHangUpText:
 	text "See you!"
 	done
 
-UnknownText_0x650ec:
+DanaFoundItemText:
 	text "You know what?"
 	line "I got a good gift!"
 
@@ -562,11 +562,11 @@ UnknownText_0x650ec:
 
 	para "it! I'm waiting on"
 	line ""
-	text_from_ram wStringBuffer5
+	text_ram wStringBuffer5
 	text "!"
 	done
 
-UnknownText_0x65161:
+DanaCanYouWaitABitLongerText:
 	text "Oh! You wanted a"
 	line "gift, right?"
 
@@ -577,7 +577,7 @@ UnknownText_0x65161:
 	line "longer?"
 	done
 
-UnknownText_0x651bf:
+DanaReminderText:
 	text "Hi! You haven't"
 	line "forgotten about"
 
@@ -586,11 +586,11 @@ UnknownText_0x651bf:
 
 	para "I'm waiting on"
 	line ""
-	text_from_ram wStringBuffer5
+	text_ram wStringBuffer5
 	text "!"
 	done
 
-UnknownText_0x6520f:
+DanaComePickUpText:
 	text "Hello?"
 
 	para "If you don't come"
@@ -601,15 +601,15 @@ UnknownText_0x6520f:
 
 	para "I'm waiting on"
 	line ""
-	text_from_ram wStringBuffer5
+	text_ram wStringBuffer5
 	text "!"
 	done
 
-UnknownText_0x65271:
+ChadObservingWildText:
 	text "I recently began"
 	line "observing wild"
 	cont ""
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text "."
 
 	para "I've been learning"
@@ -625,12 +625,12 @@ UnknownText_0x65271:
 	line "Prof.Oak soon."
 	done
 
-UnknownText_0x65318:
+ChadDefeatedMonText:
 	text "Oh yes, I managed"
 	line "to knock out a"
 
 	para "wild "
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text " a"
 	line "while back."
 
@@ -641,12 +641,12 @@ UnknownText_0x65318:
 	line "was inevitable."
 	done
 
-UnknownText_0x65399:
+ChadLostAMonText:
 	text "Oh yes, I came"
 	line "close to catching"
 
 	para "a wild "
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text ","
 	line "but it got away."
 
@@ -655,11 +655,11 @@ UnknownText_0x65399:
 
 	para "wanting to observe"
 	line ""
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text ". Rats…"
 	done
 
-UnknownText_0x65419:
+ChadBattleRematchText:
 	text "Want to battle?"
 	line "I have to battle"
 
@@ -668,15 +668,15 @@ UnknownText_0x65419:
 
 	para "I'll be on"
 	line ""
-	text_from_ram wStringBuffer5
+	text_ram wStringBuffer5
 	text "!"
 	done
 
-UnknownText_0x65471:
+ChadHangUpText:
 	text "See you later!"
 	done
 
-UnknownText_0x65481:
+ChadBlueGossipText:
 	text "Do you know Blue?"
 
 	para "He's Prof.Oak's"
@@ -689,7 +689,7 @@ UnknownText_0x65481:
 	line "#mon trainer!"
 	done
 
-UnknownText_0x654ea:
+ChadDaisyGossipText:
 	text "Prof.Oak has a"
 	line "granddaughter"
 	cont "named Daisy."
@@ -701,7 +701,7 @@ UnknownText_0x654ea:
 	line "calm right down."
 	done
 
-UnknownText_0x65555:
+ChadProfElmGossipText:
 	text "Everyone's talking"
 	line "about Prof.Elm."
 
@@ -713,7 +713,7 @@ UnknownText_0x65555:
 	line "I envy him!"
 	done
 
-UnknownText_0x655c7:
+ChadProfOaksDreamGossipText:
 	text "Prof.Oak's dream"
 	line "is to compile a"
 
@@ -725,7 +725,7 @@ UnknownText_0x655c7:
 	cont "that project…"
 	done
 
-UnknownText_0x65628:
+ChadKurtGossipText:
 	text "Do you know Kurt,"
 	line "the Ball creator?"
 
@@ -737,7 +737,7 @@ UnknownText_0x65628:
 	cont "another!"
 	done
 
-UnknownText_0x6569b:
+ChadLeagueGossipText:
 	text "#mon League is"
 	line "the great gather-"
 	cont "ing place for all"
@@ -755,7 +755,7 @@ UnknownText_0x6569b:
 	line "great man."
 	done
 
-UnknownText_0x6574a:
+ChadPokemonTalkGossipText:
 	text "Prof.Oak's #mon"
 	line "Talk is a popular"
 	cont "radio show, right?"
@@ -774,7 +774,7 @@ UnknownText_0x6574a:
 	line "thank for it!"
 	done
 
-UnknownText_0x65810:
+ChadProfOakTrainerGossipText:
 	text "Prof.Oak used to"
 	line "be a trainer a"
 	cont "long time ago."
@@ -792,7 +792,7 @@ UnknownText_0x65810:
 	line "a researcher."
 	done
 
-UnknownText_0x658c6:
+ChadDaisyTeaGossipText:
 	text "Prof.Oak has a"
 	line "granddaughter"
 	cont "named Daisy."
@@ -810,7 +810,7 @@ UnknownText_0x658c6:
 	line "Prof.Oak."
 	done
 
-UnknownText_0x65969:
+ChadProfOakTravelingGossipText:
 	text "Did you know?"
 	line "Prof.Oak traveled"
 
@@ -830,7 +830,7 @@ UnknownText_0x65969:
 	line "things too…"
 	done
 
-UnknownText_0x65a23:
+ChadGoingToStudyHardText:
 	text "I'm going to study"
 	line "hard so Prof.Oak"
 
@@ -838,23 +838,23 @@ UnknownText_0x65a23:
 	line "assistant!"
 	done
 
-UnknownText_0x65a63:
+ChadReminderText:
 	text "Do you remember"
 	line "about our battle?"
 
 	para "The place is"
 	line ""
-	text_from_ram wStringBuffer5
+	text_ram wStringBuffer5
 	text "."
 
 	para "Hurry over--I'm"
 	line "waiting."
 	done
 
-UnknownText_0x65ab2:
+DerekCheekPinchingText:
 	text "Listen to this."
 	line "My "
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 
 	para "grins happily when"
 	line "I pinch its cheek."
@@ -865,15 +865,15 @@ UnknownText_0x65ab2:
 	para "I must be special."
 	done
 
-UnknownText_0x65b29:
+DerekDefeatedMonText:
 	text "Oh, and recently,"
 	line "my Pikachu beat a"
 	cont "wild "
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text "!"
 
 	para "A wild "
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text ","
 	line "I tell you!"
 
@@ -887,10 +887,10 @@ UnknownText_0x65b29:
 	line "greatest!"
 	done
 
-UnknownText_0x65bc8:
+DerekLostAMonText:
 	text "Oh, and I saw a"
 	line "wild "
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text " a"
 	cont "little while ago."
 
@@ -904,12 +904,12 @@ UnknownText_0x65bc8:
 	line "good otherwise."
 	done
 
-UnknownText_0x65c4e:
+DerekHangUpText:
 	text "Well, let's talk"
 	line "again!"
 	done
 
-UnknownText_0x65c66:
+DerekBugCatchingContestText:
 	text "Did you remember?"
 	line "The Bug-Catching"
 	cont "Contest is today."
@@ -924,7 +924,7 @@ UnknownText_0x65c66:
 	line "off its cuteness."
 	done
 
-UnknownText_0x65cf9:
+DerekFoundItemText:
 	text "I'd like you to"
 	line "have a Nugget."
 
@@ -936,7 +936,7 @@ UnknownText_0x65cf9:
 	cont "it too!"
 	done
 
-UnknownText_0x65d5c:
+DerekLetsGetTogetherText:
 	text "How is your"
 	line "Pikachu doing?"
 
@@ -945,21 +945,21 @@ UnknownText_0x65d5c:
 	cont "Pikachu!"
 	done
 
-UnknownText_0x65da6:
+DerekComePickUpText:
 	text "What's wrong?"
 
 	para "I'm waiting on"
 	line ""
-	text_from_ram wStringBuffer5
+	text_ram wStringBuffer5
 	text "."
 
 	para "Come pick this up"
 	line "anytime."
 	done
 
-UnknownText_0x65de4:
+TullyMonHasGrownText:
 	text "My "
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text " has"
 	line "grown again."
 
@@ -970,10 +970,10 @@ UnknownText_0x65de4:
 	line "it's way bigger."
 	done
 
-UnknownText_0x65e42:
+TullyDefeatedMonText:
 	text "Oh yeah, I KO'd a"
 	line "wild "
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text "."
 
 	para "It was huge, like"
@@ -984,10 +984,10 @@ UnknownText_0x65e42:
 	cont "the phone…"
 	done
 
-UnknownText_0x65eac:
+TullyLostAMonText:
 	text "Oh yeah, I lost a"
 	line "wild "
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text "."
 
 	para "It was huge, like"
@@ -998,25 +998,25 @@ UnknownText_0x65eac:
 	cont "the phone…"
 	done
 
-UnknownText_0x65f17:
+TullyBattleRematchText:
 	text "We should get a"
 	line "battle going!"
 
 	para "I'll be fishing on"
 	line ""
-	text_from_ram wStringBuffer5
+	text_ram wStringBuffer5
 	text "."
 
 	para "Swing by if you"
 	line "have the time."
 	done
 
-UnknownText_0x65f6e:
+TullyHangUpText:
 	text "Well, I'll be"
 	line "seeing you."
 	done
 
-UnknownText_0x65f88:
+TullyFoundItemText:
 	text "I picked up a good"
 	line "little thing at"
 	cont "the water's edge."
@@ -1026,11 +1026,11 @@ UnknownText_0x65f88:
 
 	para "I'll be waiting on"
 	line ""
-	text_from_ram wStringBuffer5
+	text_ram wStringBuffer5
 	text "."
 	done
 
-UnknownText_0x65ff2:
+TullyNoItemText:
 	text "Have I found"
 	line "anything good?"
 
@@ -1040,7 +1040,7 @@ UnknownText_0x65ff2:
 	line "you need patience."
 	done
 
-UnknownText_0x66043:
+TullyForwardText:
 	text "Yup, Tully here…"
 
 	para "<PLAYER>? What?"
@@ -1048,21 +1048,21 @@ UnknownText_0x66043:
 
 	para "Our battle will be"
 	line "on "
-	text_from_ram wStringBuffer5
+	text_ram wStringBuffer5
 	text "."
 	done
 
-UnknownText_0x66087:
+TullyHurryText:
 	text "I've got something"
 	line "good for you."
 
 	para "Hustle over to"
 	line ""
-	text_from_ram wStringBuffer5
+	text_ram wStringBuffer5
 	text "."
 	done
 
-UnknownText_0x660be:
+BrentRareTradeText:
 	text "Oh yeah, I got an"
 	line "extremely rare"
 
@@ -1076,12 +1076,12 @@ UnknownText_0x660be:
 	line "it a secret!"
 	done
 
-UnknownText_0x6613c:
+BrentDefeatedMonText:
 	text "Oh yeah, I took"
 	line "down this wild"
 
 	para ""
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text "."
 	line "It wasn't rare"
 
@@ -1089,7 +1089,7 @@ UnknownText_0x6613c:
 	line "catching."
 	done
 
-UnknownText_0x6618c:
+BrentLostAMonText:
 	text "Oh yeah, I saw a"
 	line "rare #mon about"
 	cont "an hour ago."
@@ -1104,7 +1104,7 @@ UnknownText_0x6618c:
 	line "at my mistakes?"
 	done
 
-UnknownText_0x66214:
+BrentBattleRematchText:
 	text "You've got time"
 	line "like usual, right?"
 
@@ -1119,15 +1119,15 @@ UnknownText_0x66214:
 
 	para "You know where--"
 	line ""
-	text_from_ram wStringBuffer5
+	text_ram wStringBuffer5
 	text "."
 	done
 
-UnknownText_0x662a9:
+BrentHangUpText:
 	text "So that's it then."
 	done
 
-UnknownText_0x662bc:
+BrentFatherGossipText:
 	text "Did you know…?"
 	line "Bill's father is"
 
@@ -1135,7 +1135,7 @@ UnknownText_0x662bc:
 	line "great #Maniac."
 	done
 
-UnknownText_0x662fc:
+BrentGrandpaGossipText:
 	text "Did you know…?"
 	line "Apparently Bill's"
 
@@ -1143,13 +1143,13 @@ UnknownText_0x662fc:
 	line "#Maniac."
 	done
 
-UnknownText_0x66335:
+BrentGoldenrodGossipText:
 	text "Did you know…?"
 	line "Bill's originally"
 	cont "from Goldenrod."
 	done
 
-UnknownText_0x66366:
+BrentRoute25GossipText:
 	text "Did you know…?"
 	line "Bill evidently"
 
@@ -1157,7 +1157,7 @@ UnknownText_0x66366:
 	line "in Kanto."
 	done
 
-UnknownText_0x663a1:
+BrentAbraGossipText:
 	text "Did you know…?"
 	line "Abra was the first"
 
@@ -1165,7 +1165,7 @@ UnknownText_0x663a1:
 	line "ostensibly caught."
 	done
 
-UnknownText_0x663e6:
+BrentSisterGossipText:
 	text "Did you know…?"
 	line "Bill's younger"
 
@@ -1173,7 +1173,7 @@ UnknownText_0x663e6:
 	line "can't wink."
 	done
 
-UnknownText_0x66421:
+BrentMilkGossipText:
 	text "Did you know…?"
 	line "Bill supposedly"
 
@@ -1181,7 +1181,7 @@ UnknownText_0x66421:
 	line "can't drink it."
 	done
 
-UnknownText_0x6645f:
+BrentBattlingGossipText:
 	text "Did you know…?"
 	line "Evidently, Bill"
 
@@ -1189,7 +1189,7 @@ UnknownText_0x6645f:
 	line "battling."
 	done
 
-UnknownText_0x6649b:
+BrentFlowerShopGossipText:
 	text "Did you know…?"
 	line "Bill appears to"
 
@@ -1197,7 +1197,7 @@ UnknownText_0x6649b:
 	line "the Flower Shop."
 	done
 
-UnknownText_0x664dd:
+BrentKimonoGirlGossipText:
 	text "Did you know…?"
 	line "Bill's mother is"
 
@@ -1205,7 +1205,7 @@ UnknownText_0x664dd:
 	line "a Kimono Girl."
 	done
 
-UnknownText_0x6651e:
+BrentSorryImTooBusyText:
 	text "You wanted to hear"
 	line "about Bill?"
 
@@ -1216,19 +1216,19 @@ UnknownText_0x6651e:
 	line "have time."
 	done
 
-UnknownText_0x66579:
+BrentReminderText:
 	text "You want to see my"
 	line "rare #mon."
 
 	para "Hurry over to"
 	line ""
-	text_from_ram wStringBuffer5
+	text_ram wStringBuffer5
 	text "."
 	done
 
-UnknownText_0x665ad:
+TiffanyMonIsAdorableText:
 	text "My "
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text "'s"
 	line "adorable, don't"
 
@@ -1239,12 +1239,12 @@ UnknownText_0x665ad:
 	line "fluffy and warm!"
 	done
 
-UnknownText_0x66605:
+TiffanyDefeatedMonText:
 	text "Oh, and we had to"
 	line "battle a wild"
 
 	para ""
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text " a while"
 	line "ago…"
 
@@ -1255,16 +1255,16 @@ UnknownText_0x66605:
 
 	para "I hate those nasty"
 	line ""
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text "!"
 	done
 
-UnknownText_0x66688:
+TiffanyLostAMonText:
 	text "Oh, and we had to"
 	line "battle a wild"
 
 	para ""
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text " a while"
 	line "ago…"
 
@@ -1279,7 +1279,7 @@ UnknownText_0x66688:
 	cont "of my Clefairy."
 	done
 
-UnknownText_0x66730:
+TiffanyBattleRematchText:
 	text "I know this might"
 	line "surprise you, but"
 
@@ -1289,12 +1289,12 @@ UnknownText_0x66730:
 	para "I'll be waiting"
 	line "with Clefairy on"
 	cont ""
-	text_from_ram wStringBuffer5
+	text_ram wStringBuffer5
 	text "."
 	done
 
-UnknownText_0x66796:
-	text_from_ram wStringBuffer4
+TiffanyItsAwfulText:
+	text_ram wStringBuffer4
 	text "!"
 
 	para "It's awful."
@@ -1309,11 +1309,11 @@ UnknownText_0x66796:
 	line "Bye-bye!"
 	done
 
-UnknownText_0x667f7:
+TiffanyHangUpText:
 	text "Bye-bye!"
 	done
 
-UnknownText_0x66801:
+TiffanyFoundItemText:
 	text "I bought some Pink"
 	line "Bows at Goldenrod"
 
@@ -1325,16 +1325,16 @@ UnknownText_0x66801:
 
 	para "Come collect it on"
 	line ""
-	text_from_ram wStringBuffer5
+	text_ram wStringBuffer5
 	text "."
 	done
 
-UnknownText_0x66882:
+TiffanyNoItemText:
 	text "I love dressing up"
 	line "my Clefairy!"
 	done
 
-UnknownText_0x668a3:
+TiffanyAsleepText:
 	text "What's wrong?"
 	line "Can't you visit?"
 
@@ -1346,11 +1346,11 @@ UnknownText_0x668a3:
 
 	para "Please hurry to"
 	line ""
-	text_from_ram wStringBuffer5
+	text_ram wStringBuffer5
 	text "!"
 	done
 
-UnknownText_0x6691d:
+TiffanyHurryText:
 	text "What's wrong?"
 	line "Can't you visit?"
 
@@ -1360,13 +1360,13 @@ UnknownText_0x6691d:
 
 	para "Please hurry to"
 	line ""
-	text_from_ram wStringBuffer5
+	text_ram wStringBuffer5
 	text "!"
 	done
 
-UnknownText_0x66980:
+VanceMonHasBecomeTougherText:
 	text "My "
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text "'s"
 	line "become tougher."
 
@@ -1374,20 +1374,20 @@ UnknownText_0x66980:
 	line "liftoff!"
 	done
 
-UnknownText_0x669b2:
+VanceDefeatedMonText:
 	text "We can easily beat"
 	line ""
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text "!"
 
 	para "…Huh? You too?"
 	line "Isn't that great?"
 	done
 
-UnknownText_0x669ed:
+VanceLostAMonText:
 	text "But get this, a"
 	line "wild "
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 
 	para "just barely eluded"
 	line "us."
@@ -1396,10 +1396,10 @@ UnknownText_0x669ed:
 	line "after it…"
 	done
 
-UnknownText_0x66a3a:
+VanceBattleRematchText:
 	text "Right now, I'm on"
 	line ""
-	text_from_ram wStringBuffer5
+	text_ram wStringBuffer5
 	text "."
 
 	para "You know, where I"
@@ -1409,29 +1409,29 @@ UnknownText_0x66a3a:
 	line "I'll wait here."
 	done
 
-UnknownText_0x66a93:
+VanceHangUpText:
 	text "OK, bye for now!"
 	done
 
-UnknownText_0x66aa5:
+VanceLookingForwardText:
 	text "I'll be looking"
 	line "forward to our"
 	cont "next battle!"
 	done
 
-UnknownText_0x66ad1:
+VanceHurryHurryText:
 	text "Oh, <PLAYER>!"
 	line "Hurry, hurry!"
 
 	para ""
-	text_from_ram wStringBuffer5
+	text_ram wStringBuffer5
 	text "!"
 	line "Fly over now!"
 	done
 
-UnknownText_0x66afc:
+WiltonMonHasGrownText:
 	text "My "
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text "'s"
 	line "grown impressive!"
 
@@ -1439,10 +1439,10 @@ UnknownText_0x66afc:
 	line "have improved too!"
 	done
 
-UnknownText_0x66b3e:
+WiltonDefeatedMonText:
 	text "We beat a wild"
 	line ""
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text "…"
 
 	para "You know, I have"
@@ -1452,23 +1452,23 @@ UnknownText_0x66b3e:
 	line "#mon."
 	done
 
-UnknownText_0x66b8f:
+WiltonLostAMonText:
 	text "But a while back,"
 	line "we came this close"
 
 	para "to landing a wild"
 	line ""
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text "."
 
 	para "I tell you, it was"
 	line "huge. Believe me."
 	done
 
-UnknownText_0x66bf3:
+WiltonBattleRematchText:
 	text "I'm fishing on"
 	line ""
-	text_from_ram wStringBuffer5
+	text_ram wStringBuffer5
 	text ","
 
 	para "but nothing's"
@@ -1479,21 +1479,21 @@ UnknownText_0x66bf3:
 	cont "over for a battle."
 	done
 
-UnknownText_0x66c58:
+WiltonHangUpText:
 	text "All right, later."
 	done
 
-UnknownText_0x66c6b:
+WiltonFoundItemText:
 	text "I snagged an item"
 	line "while fishing."
 
 	para "Come pick it up on"
 	line ""
-	text_from_ram wStringBuffer5
+	text_ram wStringBuffer5
 	text "."
 	done
 
-UnknownText_0x66ca7:
+WiltonHaventFoundAnythingText:
 	text "Nah, I haven't"
 	line "found anything"
 
@@ -1504,20 +1504,20 @@ UnknownText_0x66ca7:
 	line "patience."
 	done
 
-UnknownText_0x66cf7:
+WiltonNotBitingText:
 	text "Sigh…"
 	line "They're not biting"
 
 	para "like before on"
 	line ""
-	text_from_ram wStringBuffer5
+	text_ram wStringBuffer5
 	text "…"
 
 	para "You have to come"
 	line "for a battle!"
 	done
 
-UnknownText_0x66d45:
+WiltonWantThisText:
 	text "Don't you want"
 	line "this item?"
 
@@ -1525,7 +1525,7 @@ UnknownText_0x66d45:
 	line "know where?"
 
 	para ""
-	text_from_ram wStringBuffer5
+	text_ram wStringBuffer5
 	text "…"
 	line "Just head from"
 
@@ -1533,12 +1533,12 @@ UnknownText_0x66d45:
 	line "Blackthorn!"
 	done
 
-UnknownText_0x66dab:
+KenjiHangUpText:
 	text "Anyway, we'll chat"
 	line "again!"
 	done
 
-UnknownText_0x66dc5:
+KenjiRemainDedicatedText:
 	text "Are you still on"
 	line "your journey?"
 
@@ -1548,7 +1548,7 @@ UnknownText_0x66dc5:
 	para "Oooooaaarrrgh!"
 	done
 
-UnknownText_0x66e17:
+KenjiCallMeBackAnotherTimeText:
 	text "I'm in training"
 	line "now. I apologize,"
 
@@ -1558,7 +1558,7 @@ UnknownText_0x66e17:
 	para "Oooooaaarrrgh!"
 	done
 
-UnknownText_0x66e67:
+KenjiIllHaveTimeToChatTomorrowText:
 	text "I apologize, but I"
 	line "don't have time to"
 
@@ -1571,7 +1571,7 @@ UnknownText_0x66e67:
 	para "Yiiihah!"
 	done
 
-UnknownText_0x66ed3:
+KenjiHangUpMorningText:
 	text "I plan to take a"
 	line "lunch break, so"
 
@@ -1579,7 +1579,7 @@ UnknownText_0x66ed3:
 	line "Ayiiiyah!"
 	done
 
-UnknownText_0x66f11:
+KenjiTakingABreakText:
 	text "I'm taking a break"
 	line "on Route 45!"
 
@@ -1587,7 +1587,7 @@ UnknownText_0x66f11:
 	line "you are free?"
 	done
 
-UnknownText_0x66f52:
+KenjiHangUpNightText:
 	text "I rested up over"
 	line "my lunch break."
 
@@ -1597,29 +1597,29 @@ UnknownText_0x66f52:
 	para "Oooryaah!"
 	done
 
-UnknownText_0x66f9f:
+ParryNothingCanMatchText:
 	text "Nothing can match"
 	line "my "
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text " now."
 	done
 
-UnknownText_0x66fc0:
+ParryDefeatedMonText:
 	text "Yeah, we KO'd a"
 	line "wild "
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text "!"
 
 	para "That was OK, but I"
 	line "wanted to get it…"
 	done
 
-UnknownText_0x67001:
+ParryLostAMonText:
 	text "And yesterday, we"
 	line "spotted a wild"
 
 	para ""
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text "."
 	line "We were debating"
 
@@ -1633,7 +1633,7 @@ UnknownText_0x67001:
 	line "How about that!"
 	done
 
-UnknownText_0x67096:
+ParryBattleRematchText:
 	text "You're thinking"
 	line "you'd like to"
 
@@ -1642,24 +1642,24 @@ UnknownText_0x67096:
 
 	para "Yep! We'll meet on"
 	line ""
-	text_from_ram wStringBuffer5
+	text_ram wStringBuffer5
 	text "!"
 	done
 
-UnknownText_0x670eb:
+ParryHangUpText:
 	text "OK, give me a call"
 	line "again!"
 	done
 
-UnknownText_0x67106:
+ParryBattleWithMeText:
 	text "You'll battle with"
 	line "me again, right?"
 	done
 
-UnknownText_0x6712a:
+ParryHaventYouGottenToText:
 	text "Haven't you gotten"
 	line "to "
-	text_from_ram wStringBuffer5
+	text_ram wStringBuffer5
 	text "?"
 
 	para "Waiting here isn't"
@@ -1667,37 +1667,37 @@ UnknownText_0x6712a:
 	cont "like to battle!"
 	done
 
-UnknownText_0x6717a:
-	text_from_ram wStringBuffer3
+ErinMonIsMuchStrongerText:
+	text_ram wStringBuffer3
 	text "'s "
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	line "is much stronger"
 	cont "than before!"
 	done
 
-UnknownText_0x671a4:
+ErinDefeatedMonText:
 	text "And, and…"
 	line "I just battled and"
 	cont "beat "
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text "!"
 
 	para "I've raised my"
 	line "#mon properly!"
 	done
 
-UnknownText_0x671eb:
+ErinLostAMonText:
 	text "But, but…"
 
 	para "A wild "
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	line "got away from me"
 
 	para "again. It's just"
 	line "not fair!"
 	done
 
-UnknownText_0x6722e:
+ErinBattleRematchText:
 	text "I'm Erin. Want to"
 	line "battle me again?"
 
@@ -1706,15 +1706,15 @@ UnknownText_0x6722e:
 
 	para "I'll be waiting on"
 	line ""
-	text_from_ram wStringBuffer5
+	text_ram wStringBuffer5
 	text "!"
 	done
 
-UnknownText_0x67281:
+ErinHangUpText:
 	text "See you. Bye-bye!"
 	done
 
-UnknownText_0x67294:
+ErinWorkingHardText:
 	text "I'm working hard"
 	line "to raise my"
 	cont "#mon!"
@@ -1723,12 +1723,12 @@ UnknownText_0x67294:
 	line "another battle!"
 	done
 
-UnknownText_0x672d5:
+ErinComeBattleText:
 	text "Oh, <PLAYER>!"
 	line "Come battle Erin!"
 
 	para "I'll be waiting on"
 	line ""
-	text_from_ram wStringBuffer5
+	text_ram wStringBuffer5
 	text "!"
 	done

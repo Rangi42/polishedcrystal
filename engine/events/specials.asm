@@ -12,7 +12,7 @@ Special::
 	ld a, b
 	jp FarCall_hl
 
-INCLUDE "data/special_pointers.asm"
+INCLUDE "data/events/special_pointers.asm"
 
 Special_SetPlayerPalette:
 	ldh a, [hScriptVar]
@@ -104,10 +104,10 @@ Special_DisplayLinkRecord:
 	farcall DisplayLinkRecord
 	jp ExitAllMenus
 
-Special_KrissHousePC:
+Special_PlayersHousePC:
 	xor a
 	ldh [hScriptVar], a
-	farcall _KrissHousePC
+	farcall _PlayersHousePC
 	ld a, c
 	ldh [hScriptVar], a
 	ret
@@ -125,13 +125,8 @@ BugContestJudging:
 	ld a, SHED_SHELL
 	jr .finish
 .firstplace
-	ld a, SUN_STONE
-	ld hl, wStatusFlags
-	bit 6, [hl] ; hall of fame
-	jr z, .finish
-	ld a, SHINY_STONE - MOON_STONE + 1 ; TODO: include ICE_STONE once it's useful
-	call RandomRange
-	add MOON_STONE
+	ld hl, .FirstPlacePrizes
+	call GetHourIntervalValue
 	jr .finish
 .secondplace
 	ld a, EVERSTONE
@@ -141,6 +136,13 @@ BugContestJudging:
 .finish
 	ld [wBugContestOfficerPrize], a
 	ret
+
+.FirstPlacePrizes:
+	db MORN_HOUR, MOON_STONE
+	db DAY_HOUR,  DAWN_STONE
+	db EVE_HOUR,  SUN_STONE
+	db NITE_HOUR, DUSK_STONE
+	db -1,        MOON_STONE
 
 MapRadio:
 	ldh a, [hScriptVar]
@@ -168,11 +170,11 @@ Special_CardFlip:
 	ld hl, _CardFlip
 	; fallthrough
 
-;Special_DummyNonfunctionalGameCornerGame:
+;Special_UnusedMemoryGame:
 ;	call Special_CheckCoins
 ;	ret c
-;	ld a, BANK(_DummyGame)
-;	ld hl, _DummyGame
+;	ld a, BANK(_MemoryGame)
+;	ld hl, _MemoryGame
 ;	call Special_StartGameCornerGame
 ;	ret
 
@@ -215,12 +217,12 @@ Special_CheckCoins:
 
 .NoCoinsText:
 	; You have no coins.
-	text_jump UnknownText_0x1bd3d7
+	text_far _NoCoinsText
 	text_end
 
 .NoCoinCaseText:
 	; You don't have a COIN CASE.
-	text_jump UnknownText_0x1bd3eb
+	text_far _NoCoinCaseText
 	text_end
 
 ScriptReturnCarry:
@@ -280,11 +282,9 @@ SpecialSnorlaxAwake:
 ; check background music
 	ld a, [wMapMusic]
 	cp MUSIC_POKE_FLUTE_CHANNEL
-	jr nz, .nope
 	ld a, TRUE
-	jr .done
-.nope
-	xor a
+	jr z, .done
+	xor a ; ld a, FALSE
 .done
 	ldh [hScriptVar], a
 	ret
@@ -474,60 +474,13 @@ RespawnRoamingSuicune:
 	ret
 
 BillBoxSwitchCheck:
-	ld a, [wCurBox]
-	cp NUM_BOXES - 1
-	jr nz, .notbox14
-	ld a, -1
-.notbox14
-	inc a
-.billboxloop
-	inc a
-	ld c, a
-	push af
-	farcall GetBoxCountWithC
-	cp MONS_PER_BOX
-	jr nz, .foundspace
-	pop af
-	dec a
-	cp NUM_BOXES - 1
-	jr nz, .notlastbox
-	ld a, -1
-.notlastbox
-	inc a
-	ld c, a
-	ld a, [wCurBox]
-	cp c
-	ld a, c
-	jr nz, .billboxloop
-	xor a
+; Returns 0 if our storage system box-wise is completely full, 1 otherwise.
+	farcall NewStorageBoxPointer
+	ld b, 1
+	jr nc, .ok
+	jr nz, .ok
+	dec b
+.ok
+	ld a, b
 	ldh [hScriptVar], a
 	ret
-
-.foundspace
-	pop af
-	dec a
-	ldh [hScriptVar], a
-	ld [wEngineBuffer1], a
-	ret
-
-BillBoxSwitch:
-	; back up wMisc to wDecompressScratch
-	ld hl, wMisc
-	ld de, wDecompressScratch
-	ld bc, (wMiscEnd - wMisc)
-	ld a, BANK(wDecompressScratch)
-	call FarCopyWRAM
-	; change boxes (overwrites wMisc)
-	ld a, [wEngineBuffer1]
-	ld e, a
-	farcall ChangeBoxSaveGame
-	; a = carry (didn't save) ? FALSE : TRUE
-	sbc a
-	inc a
-	ldh [hScriptVar], a
-	; restore wMisc from wDecompressScratch
-	ld hl, wDecompressScratch
-	ld de, wMisc
-	ld bc, (wMiscEnd - wMisc)
-	ld a, BANK(wDecompressScratch)
-	jp FarCopyWRAM

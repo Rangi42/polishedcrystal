@@ -1,59 +1,59 @@
 GoldenrodDeptStoreRoof_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 2 ; callbacks
+	def_callbacks
 	callback MAPCALLBACK_TILES, GoldenrodDeptStoreRoofCheckSaleChangeBlock
 	callback MAPCALLBACK_OBJECTS, GoldenrodDeptStoreRoofCheckSaleChangeClerk
 
-	db 1 ; warp events
+	def_warp_events
 	warp_event 13,  1, GOLDENROD_DEPT_STORE_6F, 3
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 4 ; bg events
-	bg_event 15,  3, SIGNPOST_RIGHT, Binoculars1
-	bg_event 15,  5, SIGNPOST_RIGHT, Binoculars2
-	bg_event 15,  6, SIGNPOST_RIGHT, Binoculars3
-	bg_event  3,  0, SIGNPOST_UP, PokeDollVendingMachine
+	def_bg_events
+	bg_event 15,  3, BGEVENT_RIGHT, Binoculars1
+	bg_event 15,  5, BGEVENT_RIGHT, Binoculars2
+	bg_event 15,  6, BGEVENT_RIGHT, Binoculars3
+	bg_event  3,  0, BGEVENT_UP, PokeDollVendingMachine
 
-	db 8 ; object events
-	object_event  2,  1, SPRITE_FAT_GUY, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, FisherScript_0x56749, -1
-	object_event 10,  3, SPRITE_POKEFAN_F, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x5677f, -1
-	object_event 14,  6, SPRITE_POKEMANIAC, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_SCRIPT, 0, SuperNerdScript_0x56757, EVENT_GOLDENROD_SALE_ON
-	object_event  3,  4, SPRITE_SCHOOLGIRL, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x56839, EVENT_GOLDENROD_SALE_ON
-	object_event  1,  4, SPRITE_CLERK, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, pokemart, MARTTYPE_ROOFTOP, 0, EVENT_GOLDENROD_SALE_OFF
-	object_event  7,  0, SPRITE_POKEFAN_M, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_BROWN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x5688e, EVENT_GOLDENROD_SALE_OFF
-	object_event  5,  3, SPRITE_TEACHER, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x56901, EVENT_GOLDENROD_SALE_OFF
-	object_event  1,  6, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x56942, EVENT_GOLDENROD_SALE_OFF
+	def_object_events
+	object_event  2,  1, SPRITE_FAT_GUY, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, GoldenrodDeptStoreRoofFisherScript, -1
+	object_event 10,  3, SPRITE_POKEFAN_F, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, GoldenrodDeptStoreRoofPokefanFText, -1
+	object_event 14,  6, SPRITE_POKEMANIAC, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, GoldenrodDeptStoreRoofSuperNerdScript, EVENT_GOLDENROD_SALE_ON
+	object_event  3,  4, SPRITE_SCHOOLGIRL, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, GoldenrodDeptStoreRoofTwinText, EVENT_GOLDENROD_SALE_ON
+	object_event  1,  4, SPRITE_CLERK, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, pokemart, MARTTYPE_ROOFTOP, 0, EVENT_GOLDENROD_SALE_OFF
+	object_event  7,  0, SPRITE_POKEFAN_M, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_COMMAND, jumptextfaceplayer, GoldenrodDeptStoreRoofPokefanMText, EVENT_GOLDENROD_SALE_OFF
+	object_event  5,  3, SPRITE_TEACHER, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, GoldenrodDeptStoreRoofTeacherText, EVENT_GOLDENROD_SALE_OFF
+	object_event  1,  6, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, GoldenrodDeptStoreRoofBugCatcherText, EVENT_GOLDENROD_SALE_OFF
 
 GoldenrodDeptStoreRoofCheckSaleChangeBlock:
 	checkflag ENGINE_GOLDENROD_DEPT_STORE_SALE_IS_ON
 	iftrue .ChangeBlock
-	return
+	endcallback
 
 .ChangeBlock:
 	changeblock 0, 2, $3f
 	changeblock 0, 4, $f
-	return
+	endcallback
 
 GoldenrodDeptStoreRoofCheckSaleChangeClerk:
 	checkflag ENGINE_GOLDENROD_DEPT_STORE_SALE_IS_ON
 	iftrue .ChangeClerk
 	setevent EVENT_GOLDENROD_SALE_OFF
 	clearevent EVENT_GOLDENROD_SALE_ON
-	return
+	endcallback
 
 .ChangeClerk:
 	clearevent EVENT_GOLDENROD_SALE_OFF
 	setevent EVENT_GOLDENROD_SALE_ON
-	return
+	endcallback
 
-FisherScript_0x56749:
+GoldenrodDeptStoreRoofFisherScript:
 	faceplayer
 	opentext
 	checkevent EVENT_DECO_VOLTORB_DOLL
 	iftrue .AlreadyGotVoltorbDoll
-	writetext UnknownText_0x567d2
+	writetext GoldenrodDeptStoreRoofFisherText
 	waitbutton
 	writetext GoldenrodDeptStoreRoofFisherDuplicateText
 	waitbutton
@@ -61,7 +61,7 @@ FisherScript_0x56749:
 	writetext GotVoltorbDollText
 	playsound SFX_ITEM
 	pause 60
-	buttonsound
+	promptbutton
 	writetext VoltorbDollSentText
 	waitbutton
 .AlreadyGotVoltorbDoll
@@ -71,10 +71,10 @@ FisherScript_0x56749:
 	turnobject LAST_TALKED, UP
 	end
 
-SuperNerdScript_0x56757:
-	showtext UnknownText_0x56867
+GoldenrodDeptStoreRoofSuperNerdScript:
+	showtext GoldenrodDeptStoreRoofSuperNerdOhWowText
 	faceplayer
-	showtext UnknownText_0x56871
+	showtext GoldenrodDeptStoreRoofSuperNerdQuitBotheringMeText
 	turnobject LAST_TALKED, RIGHT
 	end
 
@@ -112,7 +112,7 @@ PokeDollVendingMachine:
 	waitbutton
 	writetext JigglypuffDollSentText
 	waitbutton
-	jump .Start
+	sjump .Start
 
 .DittoDoll:
 	checkmoney $0, 2400
@@ -126,7 +126,7 @@ PokeDollVendingMachine:
 	waitbutton
 	writetext DittoDollSentText
 	waitbutton
-	jump .Start
+	sjump .Start
 
 .MeowthDoll:
 	checkmoney $0, 2400
@@ -140,17 +140,17 @@ PokeDollVendingMachine:
 	waitbutton
 	writetext MeowthDollSentText
 	waitbutton
-	jump .Start
+	sjump .Start
 
 .NotEnoughMoney:
 	writetext PokeDollVendingMachineNoMoneyText
 	waitbutton
-	jump .Start
+	sjump .Start
 
 .AlreadyBought:
 	writetext PokeDollVendingMachineAlreadyBoughtText
 	waitbutton
-	jump .Start
+	sjump .Start
 
 .MenuData:
 	db $40 ; flags
@@ -167,7 +167,7 @@ PokeDollVendingMachine:
 	db "Meowth      ¥2400@"
 	db "Cancel@"
 
-UnknownText_0x5677f:
+GoldenrodDeptStoreRoofPokefanFText:
 	text "Whew, I'm tired."
 
 	para "I sometimes come"
@@ -177,7 +177,7 @@ UnknownText_0x5677f:
 	line "from shopping."
 	done
 
-UnknownText_0x567d2:
+GoldenrodDeptStoreRoofFisherText:
 	text "Pardon? Who says"
 	line "an adult can't get"
 	cont "into this?"
@@ -210,22 +210,22 @@ GoldenrodDeptStoreRoofFisherCatchEmAllText:
 	line "30 kinds of dolls."
 	done
 
-UnknownText_0x56839:
+GoldenrodDeptStoreRoofTwinText:
 	text "They have bargain"
 	line "sales here every"
 	cont "so often."
 	done
 
-UnknownText_0x56867:
+GoldenrodDeptStoreRoofSuperNerdOhWowText:
 	text "Oh, wow!"
 	done
 
-UnknownText_0x56871:
+GoldenrodDeptStoreRoofSuperNerdQuitBotheringMeText:
 	text "Will you quit"
 	line "bothering me?"
 	done
 
-UnknownText_0x5688e:
+GoldenrodDeptStoreRoofPokefanMText:
 	text "There's something"
 	line "I really want, but"
 
@@ -237,7 +237,7 @@ UnknownText_0x5688e:
 	cont "I've collected…"
 	done
 
-UnknownText_0x56901:
+GoldenrodDeptStoreRoofTeacherText:
 	text "Oh, everything is"
 	line "so cheap!"
 
@@ -245,7 +245,7 @@ UnknownText_0x56901:
 	line "my Bag's crammed!"
 	done
 
-UnknownText_0x56942:
+GoldenrodDeptStoreRoofBugCatcherText:
 	text "My #mon always"
 	line "get paralyzed or"
 

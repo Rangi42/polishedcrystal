@@ -48,9 +48,7 @@ Facings:
 	dw FacingArchTreeRight  ; FACING_ARCH_TREE_RIGHT
 	dw FacingSailboatTop    ; FACING_SAILBOAT_TOP
 	dw FacingSailboatBottom ; FACING_SAILBOAT_BOTTOM
-FacingsEnd: dw 0
-
-NUM_FACINGS EQU (FacingsEnd - Facings) / 2
+	dw 0
 
 ; Tables used as a reference to transform OAM data.
 
@@ -141,7 +139,7 @@ FacingFishDown:
 	db  0,  8, 0, $01
 	db  8,  0, 2, $02
 	db  8,  8, 2, $03
-	db 16,  0, 4, $7c
+	db 16,  0, 4, $7a
 
 FacingFishUp:
 	db 5 ; #
@@ -149,7 +147,7 @@ FacingFishUp:
 	db  0,  8, 0, $05
 	db  8,  0, 2, $06
 	db  8,  8, 2, $07
-	db -8,  0, 4, $7c
+	db -8,  0, 4, $7a
 
 FacingFishLeft:
 	db 5 ; #
@@ -157,7 +155,7 @@ FacingFishLeft:
 	db  0,  8, 0, $09
 	db  8,  0, 2, $0a
 	db  8,  8, 2, $0b
-	db  5, -8, 4 | X_FLIP, $7d
+	db  5, -8, 4 | X_FLIP, $7b
 
 FacingFishRight:
 	db 5 ; #
@@ -165,14 +163,14 @@ FacingFishRight:
 	db  0,  0, 0 | X_FLIP, $09
 	db  8,  8, 2 | X_FLIP, $0a
 	db  8,  0, 2 | X_FLIP, $0b
-	db  5, 16, 4, $7d
+	db  5, 16, 4, $7b
 
 FacingEmote:
 	db 4 ; #
-	db  0,  0, 4, $78
-	db  0,  8, 4, $79
-	db  8,  0, 4, $7a
-	db  8,  8, 4, $7b
+	db  0,  0, 4, $60
+	db  0,  8, 4, $61
+	db  8,  0, 4, $62
+	db  8,  8, 4, $63
 
 FacingShadow:
 	db 2 ; #
@@ -245,23 +243,23 @@ FacingBoulderDust2:
 
 FacingGrass1:
 	db 2 ; #
-	db  8,  0, 4, $7e
-	db  8,  8, 4 | X_FLIP, $7e
+	db  8,  0, 4, $7d
+	db  8,  8, 4 | X_FLIP, $7d
 
 FacingGrass2:
 	db 2 ; #
-	db  9, -1, 4, $7e
-	db  9,  9, 4 | X_FLIP, $7e
+	db  9, -1, 4, $7d
+	db  9,  9, 4 | X_FLIP, $7d
 
 FacingSplash1:
 	db 2 ; #
-	db  8,  0, 4, $7f
-	db  8,  8, 4 | X_FLIP, $7f
+	db  8,  0, 4, $6f
+	db  8,  8, 4 | X_FLIP, $6f
 
 FacingSplash2:
 	db 2 ; #
-	db  9, -1, 4, $7f
-	db  9,  9, 4 | X_FLIP, $7f
+	db  9, -1, 4, $6f
+	db  9,  9, 4 | X_FLIP, $6f
 
 FacingCutTree:
 	db 4 ; #
@@ -336,10 +334,10 @@ FacingStepUpFlip:
 
 FacingPokecomNews:
 	db 4 ; #
-	db  4,  0, 0, $00
-	db  4,  8, 0, $01
-	db 12,  0, 0, $02
-	db 12,  8, 0, $03
+	db  4,  0, 0, $08
+	db  4,  8, 0, $09
+	db 12,  0, 0, $0a
+	db 12,  8, 0, $0b
 
 FacingArchTreeDown:
 	db 2 ; #

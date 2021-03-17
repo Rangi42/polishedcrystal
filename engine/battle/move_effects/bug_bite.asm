@@ -28,6 +28,7 @@ BattleCommand_bugbite:
 
 	; OK, we will eat the berry. Done by reusing item effect functions,
 	; and if the opponent still has an item, eating it with no effect
+	farcall StealConfusionHealingItem
 	farcall StealHeldStatusHealingItem
 	farcall StealHPHealingItem ; also Enigma Berry
 	farcall StealStatBoostBerry ; also Lansat Berry
@@ -42,7 +43,7 @@ BattleCommand_bugbite:
 	farcall ItemRecoveryAnim
 	call GetCurItemName
 	ld hl, BattleText_UserAteItem
-	call StdBattleTextBox
+	call StdBattleTextbox
 	call ConsumeOpponentItem
 	ld hl, NothingHappenedText
-	jp StdBattleTextBox
+	jp StdBattleTextbox

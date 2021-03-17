@@ -1,24 +1,24 @@
 Route32RuinsOfAlphGate_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 4 ; warp events
+	def_warp_events
 	warp_event  0,  4, RUINS_OF_ALPH_OUTSIDE, 10
 	warp_event  0,  5, RUINS_OF_ALPH_OUTSIDE, 11
 	warp_event  9,  4, ROUTE_32, 2
 	warp_event  9,  5, ROUTE_32, 3
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 0 ; bg events
+	def_bg_events
 
-	db 3 ; object events
-	object_event  5,  2, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x69a36, -1
-	object_event  8,  2, SPRITE_HIKER, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x69a81, -1
-	object_event  1,  6, SPRITE_CAMPER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x69abd, -1
+	def_object_events
+	object_event  5,  2, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, Route32RuinsOfAlphGateOfficerText, -1
+	object_event  8,  2, SPRITE_HIKER, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, Route32RuinsOfAlphGatePokefanMText, -1
+	object_event  1,  6, SPRITE_CAMPER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, Route32RuinsOfAlphGateYoungsterText, -1
 
-UnknownText_0x69a36:
+Route32RuinsOfAlphGateOfficerText:
 	text "Ruins of Alph"
 
 	para "A Look-and-Touch"
@@ -28,7 +28,7 @@ UnknownText_0x69a36:
 	line "stone panels!"
 	done
 
-UnknownText_0x69a81:
+Route32RuinsOfAlphGatePokefanMText:
 	text "You're studying"
 	line "the ruins?"
 
@@ -36,7 +36,7 @@ UnknownText_0x69a81:
 	line "in the making."
 	done
 
-UnknownText_0x69abd:
+Route32RuinsOfAlphGateYoungsterText:
 	text "There are drawings"
 	line "on stone panels."
 

@@ -1,20 +1,20 @@
 OlivineLighthouseRoof_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 1 ; warp events
+	def_warp_events
 	warp_event  9,  3, OLIVINE_LIGHTHOUSE_6F, 4
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 0 ; bg events
+	def_bg_events
 
-	db 2 ; object events
-	object_event  4, 13, SPRITE_SKYLA, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, OlivineLighthouseRoofSkylaScript, -1
+	def_object_events
+	object_event  4, 13, SPRITE_SKYLA, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, OlivineLighthouseRoofSkylaScript, -1
 	itemball_event 16,  8, SILVER_LEAF, 1, EVENT_OLIVINE_LIGHTHOUSE_ROOF_SILVER_LEAF
 
-	const_def 1 ; object constants
+	object_const_def
 	const OLIVINELIGHTHOUSEROOF_SKYLA
 
 OlivineLighthouseRoofSkylaScript:
@@ -27,7 +27,7 @@ OlivineLighthouseRoofSkylaScript:
 	checkevent EVENT_BEAT_SKYLA
 	iffalse .NotYetBattled
 	writetext .RematchText
-	jump .Battle
+	sjump .Battle
 .NotYetBattled
 	checkevent EVENT_INTRODUCED_SKYLA
 	iftrue .Introduced1
@@ -49,10 +49,10 @@ OlivineLighthouseRoofSkylaScript:
 	checkevent EVENT_BEAT_ELITE_FOUR
 	iftrue .Rematch1
 	loadtrainer SKYLA, 1
-	jump .StartBattle
+	sjump .StartBattle
 .Rematch1
 	loadtrainer SKYLA, 2
-	jump .StartBattle
+	sjump .StartBattle
 .Rematch2
 	loadtrainer SKYLA, 3
 .StartBattle

@@ -1,22 +1,22 @@
 SilverCavePokeCenter1F_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 3 ; warp events
+	def_warp_events
 	warp_event  5,  7, SILVER_CAVE_OUTSIDE, 1
 	warp_event  6,  7, SILVER_CAVE_OUTSIDE, 1
 	warp_event  0,  7, POKECENTER_2F, 1
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 1 ; bg events
-	bg_event 10,  1, SIGNPOST_READ, PokemonJournalLanceScript
+	def_bg_events
+	bg_event 10,  1, BGEVENT_READ, PokemonJournalLanceScript
 
-	db 3 ; object events
+	def_object_events
 	pc_nurse_event  5, 1
-	object_event  9,  4, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_DOWN, 1, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SilverCavePokeCenterGrampsScript, -1
-	object_event  2,  4, SPRITE_GRANNY, SPRITEMOVEDATA_STANDING_LEFT, 1, 2, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, SilverCavePokeCenter1FGrannyText, -1
+	object_event  9,  4, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_DOWN, 1, 2, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, SilverCavePokeCenterGrampsScript, -1
+	object_event  2,  4, SPRITE_GRANNY, SPRITEMOVEDATA_STANDING_LEFT, 1, 2, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, SilverCavePokeCenter1FGrannyText, -1
 
 PokemonJournalLanceScript:
 	setflag ENGINE_READ_LANCE_JOURNAL
@@ -41,13 +41,13 @@ SilverCavePokeCenterGrampsScript:
 	opentext
 	writetext .GreetingText
 	waitbutton
-	checkcode VAR_PKMN_JOURNALS
+	readvar VAR_PKMN_JOURNALS
 	ifequal 0, .ReadNone
 	ifequal NUM_POKEMON_JOURNALS, .ReadThemAll
 	jumpthisopenedtext
 
 	text "Oh, you've read "
-	deciram hScriptVar, 1, 2
+	text_decimal hScriptVar, 1, 2
 	line "of them?"
 
 	para "Not bad, but I've"
@@ -71,7 +71,7 @@ SilverCavePokeCenterGrampsScript:
 
 .ReadThemAll:
 	writetext .ReadAllText
-	buttonsound
+	promptbutton
 	verbosegiveitem EXPERT_BELT
 	iffalse_endtext
 	setevent EVENT_GOT_EXPERT_BELT

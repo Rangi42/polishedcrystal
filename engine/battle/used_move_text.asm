@@ -46,7 +46,7 @@ DisplayUsedMoveText:
 	jr z, .ok
 	ld hl, UsedMoveInsteadText
 .ok
-	call StdBattleTextBox
+	call StdBattleTextbox
 	jp ApplyTilemapInVBlank
 
 UpdateUsedMoves:

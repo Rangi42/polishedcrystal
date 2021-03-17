@@ -1,35 +1,35 @@
 BattleTower2F_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 1 ; warp events
+	def_warp_events
 	warp_event  0,  1, BATTLE_TOWER_1F, 4
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 4 ; bg events
-	bg_event  4,  3, SIGNPOST_UP, BattleTower2FTVScript
-	bg_event  5,  3, SIGNPOST_UP, BattleTower2FTVScript
-	bg_event 16,  3, SIGNPOST_UP, BattleTower2FTVScript
-	bg_event 17,  3, SIGNPOST_UP, BattleTower2FTVScript
+	def_bg_events
+	bg_event  4,  3, BGEVENT_UP, BattleTower2FTVScript
+	bg_event  5,  3, BGEVENT_UP, BattleTower2FTVScript
+	bg_event 16,  3, BGEVENT_UP, BattleTower2FTVScript
+	bg_event 17,  3, BGEVENT_UP, BattleTower2FTVScript
 
-	db 13 ; object events
-	object_event  4,  6, SPRITE_CHERYL, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BattleTower2FCherylScript, EVENT_BATTLE_TOWER_CHERYL
-	object_event  7,  7, SPRITE_RILEY, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BattleTower2FRileyScript, EVENT_BATTLE_TOWER_RILEY
-	object_event  9,  4, SPRITE_BUCK, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BattleTower2FBuckScript, EVENT_BATTLE_TOWER_BUCK
-	object_event 17,  8, SPRITE_MARLEY, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BattleTower2FMarleyScript, EVENT_BATTLE_TOWER_MARLEY
-	object_event 12,  7, SPRITE_MIRA, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BattleTower2FMiraScript, EVENT_BATTLE_TOWER_MIRA
-	object_event 15,  6, SPRITE_ANABEL, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BattleTower2FAnabelScript, EVENT_BATTLE_TOWER_ANABEL
-	object_event  4,  6, SPRITE_ACE_TRAINER_M, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, BattleTower2FCooltrainermText, EVENT_MURKY_SWAMP_CHERYL
-	object_event  7,  7, SPRITE_LADY, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, BattleTower2FLadyText, EVENT_DIM_CAVE_RILEY
-	object_event  9,  4, SPRITE_SCHOOLGIRL, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, BattleTower2FTwinText, EVENT_CINNABAR_VOLCANO_BUCK
-	object_event 17,  8, SPRITE_POKEMANIAC, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, BattleTower2FSuperNerdText, EVENT_QUIET_CAVE_MARLEY
+	def_object_events
+	object_event  4,  6, SPRITE_CHERYL, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, BattleTower2FCherylScript, EVENT_BATTLE_TOWER_CHERYL
+	object_event  7,  7, SPRITE_RILEY, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, BattleTower2FRileyScript, EVENT_BATTLE_TOWER_RILEY
+	object_event  9,  4, SPRITE_BUCK, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, BattleTower2FBuckScript, EVENT_BATTLE_TOWER_BUCK
+	object_event 17,  8, SPRITE_MARLEY, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, BattleTower2FMarleyScript, EVENT_BATTLE_TOWER_MARLEY
+	object_event 12,  7, SPRITE_MIRA, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, BattleTower2FMiraScript, EVENT_BATTLE_TOWER_MIRA
+	object_event 15,  6, SPRITE_ANABEL, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, BattleTower2FAnabelScript, EVENT_BATTLE_TOWER_ANABEL
+	object_event  4,  6, SPRITE_ACE_TRAINER_M, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, BattleTower2FCooltrainermText, EVENT_MURKY_SWAMP_CHERYL
+	object_event  7,  7, SPRITE_LADY, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, BattleTower2FLadyText, EVENT_DIM_CAVE_RILEY
+	object_event  9,  4, SPRITE_SCHOOLGIRL, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, BattleTower2FTwinText, EVENT_CINNABAR_VOLCANO_BUCK
+	object_event 17,  8, SPRITE_POKEMANIAC, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, BattleTower2FSuperNerdText, EVENT_QUIET_CAVE_MARLEY
 	pokemon_event 18,  8, PIKACHU, -1, -1, PAL_NPC_RED, BattleTower2FPikachuText, EVENT_QUIET_CAVE_MARLEY
-	object_event 12,  7, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, BattleTower2FYoungsterText, EVENT_SCARY_CAVE_MIRA
-	object_event 15,  6, SPRITE_BLACK_BELT, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, BattleTower2FBlackbeltText, EVENT_NOISY_FOREST_ANABEL
+	object_event 12,  7, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, BattleTower2FYoungsterText, EVENT_SCARY_CAVE_MIRA
+	object_event 15,  6, SPRITE_BLACK_BELT, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, BattleTower2FBlackbeltText, EVENT_NOISY_FOREST_ANABEL
 
-	const_def 1 ; object constants
+	object_const_def
 	const BATTLETOWER2F_CHERYL
 	const BATTLETOWER2F_RILEY
 	const BATTLETOWER2F_BUCK
@@ -78,10 +78,10 @@ BattleTower2FCherylScript:
 	checkevent EVENT_BEAT_ELITE_FOUR
 	iftrue .Team2
 	loadtrainer CHERYL, 1
-	jump .StartBattle
+	sjump .StartBattle
 .Team2
 	loadtrainer CHERYL, 2
-	jump .StartBattle
+	sjump .StartBattle
 .Team3
 	loadtrainer CHERYL, 3
 .StartBattle
@@ -151,7 +151,7 @@ BattleTower2FRileyScript:
 	checkevent EVENT_BEAT_ELITE_FOUR_AGAIN
 	iftrue .Team2
 	loadtrainer RILEY, 1
-	jump .StartBattle
+	sjump .StartBattle
 .Team2
 	loadtrainer RILEY, 2
 .StartBattle
@@ -219,7 +219,7 @@ BattleTower2FBuckScript:
 	checkevent EVENT_BEAT_ELITE_FOUR_AGAIN
 	iftrue .Team2
 	loadtrainer BUCK, 1
-	jump .StartBattle
+	sjump .StartBattle
 .Team2
 	loadtrainer BUCK, 2
 .StartBattle
@@ -270,10 +270,10 @@ BattleTower2FMarleyScript:
 	checkevent EVENT_BEAT_ELITE_FOUR
 	iftrue .Team2
 	loadtrainer MARLEY, 1
-	jump .StartBattle
+	sjump .StartBattle
 .Team2
 	loadtrainer MARLEY, 2
-	jump .StartBattle
+	sjump .StartBattle
 .Team3
 	loadtrainer MARLEY, 3
 .StartBattle
@@ -328,7 +328,7 @@ BattleTower2FMiraScript:
 	checkevent EVENT_BEAT_ELITE_FOUR_AGAIN
 	iftrue .Team2
 	loadtrainer MIRA, 1
-	jump .StartBattle
+	sjump .StartBattle
 .Team2
 	loadtrainer MIRA, 2
 .StartBattle
@@ -390,7 +390,7 @@ BattleTower2FAnabelScript:
 	checkevent EVENT_BEAT_ELITE_FOUR_AGAIN
 	iftrue .Team2
 	loadtrainer ANABEL, 1
-	jump .StartBattle
+	sjump .StartBattle
 .Team2
 	loadtrainer ANABEL, 2
 .StartBattle

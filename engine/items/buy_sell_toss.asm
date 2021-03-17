@@ -38,9 +38,44 @@ CalculateMaximumQuantity:
 	ld [wItemQuantityBuffer], a
 	ret
 
+CalculateMaximumBTQuantity:
+; limit [wItemQuantityBuffer] so that c * [wItemQuantityBuffer] <= wBattlePoints
+; 1 <= [wItemQuantityBuffer] <= 99
+	xor a
+	ldh [hMoneyTemp + 0], a
+	ldh [hMoneyTemp + 1], a
+	ld b, -1
+	jr .start
+.loop
+	cp 99
+	jr nc, .done
+.start
+	ldh a, [hMoneyTemp + 1]
+	add c
+	ldh [hMoneyTemp + 1], a
+	ldh a, [hMoneyTemp + 0]
+	adc 0
+	ldh [hMoneyTemp + 0], a
+	inc b
+	push bc
+	ld bc, hMoneyTemp
+	ld de, wBattlePoints
+	ld a, 2
+	farcall CompareFunds
+	pop bc
+	ld a, b
+	jr nc, .loop
+.done
+	and a
+	jr nz, .ok
+	inc a
+.ok
+	ld [wItemQuantityBuffer], a
+	ret
+
 SelectQuantityToToss:
 	ld hl, TossItem_MenuDataHeader
-	call LoadMenuDataHeader
+	call LoadMenuHeader
 	jr Toss_Sell_Loop
 
 SelectQuantityToBuy:
@@ -52,12 +87,17 @@ RooftopSale_SelectQuantityToBuy:
 	ld [wBuffer2], a
 	call CalculateMaximumQuantity
 	ld hl, BuyItem_MenuDataHeader
-	call LoadMenuDataHeader
+	call LoadMenuHeader
 	jr Toss_Sell_Loop
 
 BT_SelectQuantityToBuy:
+	xor a
+	ld [wBuffer1], a
+	ld a, c
+	ld [wBuffer2], a
+	call CalculateMaximumBTQuantity
 	ld hl, BTBuyItem_MenuDataHeader
-	call LoadMenuDataHeader
+	call LoadMenuHeader
 	jr Toss_Sell_Loop
 
 SelectQuantityToSell:
@@ -67,7 +107,7 @@ SelectQuantityToSell:
 	ld a, e
 	ld [wBuffer2], a
 	ld hl, SellItem_MenuDataHeader
-	call LoadMenuDataHeader
+	call LoadMenuHeader
 	; fallthrough
 
 Toss_Sell_Loop:
@@ -170,8 +210,8 @@ BuySellToss_UpdateQuantityDisplay:
 	call MenuBoxCoord2Tile
 	ld de, SCREEN_WIDTH + 1
 	add hl, de
-	ld [hl], "×"
-	inc hl
+	ld a, "×"
+	ld [hli], a
 	ld de, wItemQuantityChangeBuffer
 	lb bc, PRINTNUM_LEADINGZEROS | 1, 2
 	call PrintNum
@@ -230,7 +270,7 @@ BuySell_DisplaySubtotal:
 BTDisplayPurchaseCost:
 	call BuySell_MultiplyPrice
 	call DisplayPurchasePriceCommon
-	lb bc, 3, 4
+	lb bc, 3, 5
 	call PrintNum
 	ld de, .BPString
 	rst PlaceString
@@ -276,7 +316,7 @@ SellItem_MenuDataHeader:
 
 BTBuyItem_MenuDataHeader:
 	db $40 ; flags
-	db 15, 08 ; start coords
+	db 15, 07 ; start coords
 	db 17, 19 ; end coords
 	dw BTDisplayPurchaseCost
 	db -1 ; default option

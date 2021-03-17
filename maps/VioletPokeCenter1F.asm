@@ -1,26 +1,26 @@
 VioletPokeCenter1F_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 3 ; warp events
+	def_warp_events
 	warp_event  5,  7, VIOLET_CITY, 5
 	warp_event  6,  7, VIOLET_CITY, 5
 	warp_event  0,  7, POKECENTER_2F, 1
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 1 ; bg events
-	bg_event 10,  1, SIGNPOST_READ, PokemonJournalFalknerScript
+	def_bg_events
+	bg_event 10,  1, BGEVENT_READ, PokemonJournalFalknerScript
 
-	db 5 ; object events
-	object_event 10,  2, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_SCRIPT, 0, VioletPokeCenter1FElmsAideScript, EVENT_ELMS_AIDE_IN_VIOLET_POKEMON_CENTER
+	def_object_events
+	object_event 10,  2, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, VioletPokeCenter1FElmsAideScript, EVENT_ELMS_AIDE_IN_VIOLET_POKEMON_CENTER
 	pc_nurse_event  5, 1
-	object_event  9,  4, SPRITE_GAMEBOY_KID, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, VioletPokeCenter1FGameboyKidText, -1
-	object_event  2,  4, SPRITE_GENTLEMAN, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, VioletPokeCenter1FGentlemanText, -1
-	object_event 11,  5, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, VioletPokeCenter1FYoungsterText, -1
+	object_event  9,  4, SPRITE_GAMEBOY_KID, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, VioletPokeCenter1FGameboyKidText, -1
+	object_event  2,  4, SPRITE_GENTLEMAN, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, VioletPokeCenter1FGentlemanText, -1
+	object_event 11,  5, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, VioletPokeCenter1FYoungsterText, -1
 
-	const_def 1 ; object constants
+	object_const_def
 	const VIOLETPOKECENTER1F_SCIENTIST
 
 PokemonJournalFalknerScript:
@@ -46,16 +46,16 @@ VioletPokeCenter1FElmsAideScript:
 	checkevent EVENT_REFUSED_TO_TAKE_EGG_FROM_ELMS_AIDE
 	iftrue .SecondTimeAsking
 	writetext .IntroText
-	jump .AskTakeEgg
+	sjump .AskTakeEgg
 .SecondTimeAsking:
 	writetext .QuestionText
 .AskTakeEgg:
 	yesorno
 	iffalse .RefusedEgg
-	checkcode VAR_PARTYCOUNT
+	readvar VAR_PARTYCOUNT
 	ifequal PARTY_LENGTH, .PartyFull
 	giveegg TOGEPI, EGG_LEVEL
-	farwritetext UnknownText_0x1bdfa5
+	farwritetext _ReceivedEggText
 	playsound SFX_GET_EGG_FROM_DAYCARE_LADY
 	waitsfx
 	setevent EVENT_GOT_TOGEPI_EGG_FROM_ELMS_AIDE
@@ -65,11 +65,11 @@ VioletPokeCenter1FElmsAideScript:
 	writetext .GoodbyeText
 	waitbutton
 	closetext
-	checkcode VAR_FACING
+	readvar VAR_FACING
 	ifequal UP, .AideWalksAroundPlayer
 	turnobject PLAYER, DOWN
 	applymovement VIOLETPOKECENTER1F_SCIENTIST, .WalkStraightMovement
-	jump .Finish
+	sjump .Finish
 .AideWalksAroundPlayer:
 	applymovement VIOLETPOKECENTER1F_SCIENTIST, .WalkAroundMovement
 	turnobject PLAYER, DOWN

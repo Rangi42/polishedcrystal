@@ -1,41 +1,37 @@
 DimCave5F_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 1 ; callbacks
-	callback MAPCALLBACK_CMDQUEUE, DimCave5FSetUpStoneTable
+	def_callbacks
+	callback MAPCALLBACK_STONETABLE, DimCave5FSetUpStoneTable
 
-	db 4 ; warp events
+	def_warp_events
 	warp_event 13, 31, ROUTE_10_NORTH, 5
 	warp_event  2, 16, DIM_CAVE_4F, 1
 	warp_event 27, 29, DIM_CAVE_4F, 2
 	warp_event 28, 25, DIM_CAVE_4F, 3
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 1 ; bg events
-	bg_event 12, 28, SIGNPOST_ITEM + X_SPCL_ATK, EVENT_DIM_CAVE_5F_HIDDEN_X_SPCL_ATK
+	def_bg_events
+	bg_event 12, 28, BGEVENT_ITEM + X_SPCL_ATK, EVENT_DIM_CAVE_5F_HIDDEN_X_SPCL_ATK
 
-	db 8 ; object events
+	def_object_events
 	strengthboulder_event 25,  5, EVENT_BOULDER_IN_DIM_CAVE_5F
-	object_event 13,  4, SPRITE_RILEY, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, DimCave5FRileyScript, EVENT_DIM_CAVE_RILEY
-	object_event 24, 17, SPRITE_SUPER_NERD, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerSuper_nerdFoote, -1
-	object_event 13, 25, SPRITE_ENGINEER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerEngineerHoward, -1
-	object_event 21, 28, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 5, GenericTrainerSuper_nerdDave, -1
+	object_event 13,  4, SPRITE_RILEY, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, DimCave5FRileyScript, EVENT_DIM_CAVE_RILEY
+	object_event 24, 17, SPRITE_SUPER_NERD, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerSuper_nerdFoote, -1
+	object_event 13, 25, SPRITE_ENGINEER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerEngineerHoward, -1
+	object_event 21, 28, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 5, GenericTrainerSuper_nerdDave, -1
 	itemball_event 13, 13, RARE_CANDY, 1, EVENT_DIM_CAVE_5F_RARE_CANDY
 	itemball_event  9, 27, DUSK_STONE, 1, EVENT_DIM_CAVE_5F_DUSK_STONE
 	itemball_event 31, 14, HYPER_POTION, 1, EVENT_DIM_CAVE_5F_HYPER_POTION
 
-	const_def 1 ; object constants
+	object_const_def
 	const DIMCAVE5F_BOULDER
 	const DIMCAVE5F_RILEY
 
 DimCave5FSetUpStoneTable:
-	writecmdqueue .CommandQueue
-	return
-
-.CommandQueue:
-	dbw CMDQUEUE_STONETABLE, .StoneTable ; check if any stones are sitting on a warp
-	dw 0 ; filler
+	usestonetable .StoneTable
+	endcallback
 
 .StoneTable:
 	stonetable 4, DIMCAVE5F_BOULDER, .Boulder
@@ -73,7 +69,7 @@ DimCave5FRileyScript:
 .Beaten
 	opentext
 	writetext .ItemText
-	buttonsound
+	promptbutton
 	verbosegiveitem POWER_BRACER
 	iffalse_endtext
 	writetext .GoodbyeText

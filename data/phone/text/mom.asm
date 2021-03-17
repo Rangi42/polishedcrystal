@@ -5,15 +5,15 @@ MomPhoneGreetingText:
 	line "Working hard?"
 	done
 
-UnknownText_0x1b4021:
+MomPhoneLandmarkText:
 	text "Oh, so you're in"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "…"
 
 	para "Isn't that where"
 	line ""
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 
 	para "is? Did you go"
 	line "take a look?"
@@ -22,7 +22,7 @@ UnknownText_0x1b4021:
 MomPhoneGenericAreaText:
 	text "Really, you're in"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "?"
 
 	para "I've never gone"
@@ -33,7 +33,7 @@ MomPhoneGenericAreaText:
 MomPhoneNewBarkText:
 	text "What? You're in"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "?"
 
 	para "Come see your Mom"
@@ -43,24 +43,24 @@ MomPhoneNewBarkText:
 MomPhoneCherrygroveText:
 	text "You're visiting"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "?"
 
 	para "How about coming"
 	line "home for a bit?"
 	done
 
-UnknownText_0x1b411c:
+MomOtherAreaText:
 	text "Wow, you're in"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "?"
 
 	para "Good luck on your"
 	line "#mon quest!"
 	done
 
-UnknownText_0x1b4150:
+MomDeterminedText:
 	text "That sounds really"
 	line "tough."
 
@@ -71,22 +71,22 @@ UnknownText_0x1b4150:
 	line "be OK, right?"
 	done
 
-UnknownText_0x1b41a7:
+MomCheckBalanceText:
 	text "By the way, you've"
 	line "saved up ¥"
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 
 	para "Do you want to"
 	line "keep on saving?"
 	done
 
-UnknownText_0x1b41ea:
+MomImportantToSaveText:
 	text "It's important to"
 	line "save your money."
 	done
 
-UnknownText_0x1b420d:
+MomYoureNotSavingText:
 	text "Oh, <PLAYER>,"
 	line "you're not saving"
 
@@ -94,17 +94,17 @@ UnknownText_0x1b420d:
 	line "you like to save?"
 	done
 
-UnknownText_0x1b4249:
+MomYouveSavedText:
 	text "By the way, you've"
 	line "saved up ¥"
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "."
 
 	para "Want to start"
 	line "saving again?"
 	done
 
-UnknownText_0x1b4289:
+MomOKIllSaveText:
 	text "OK. I'll save your"
 	line "money."
 	done

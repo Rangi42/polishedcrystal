@@ -48,7 +48,7 @@ SpecialGiveShuckie:
 
 ; Engine flag for this event.
 	ld hl, wDailyFlags
-	set 5, [hl] ; ENGINE_SHUCKIE_GIVEN
+	set 5, [hl] ; ENGINE_GOT_SHUCKIE_TODAY
 	ld a, TRUE
 	ldh [hScriptVar], a
 	ret
@@ -112,9 +112,7 @@ SpecialReturnShuckie:
 	cp 150
 	ld a, $3
 	jr nc, .HappyToStayWithYou
-	xor a ; take from pc
-	ld [wPokemonWithdrawDepositParameter], a
-	predef RemoveMonFromPartyOrBox
+	predef RemoveMonFromParty
 	ld a, $2
 .HappyToStayWithYou:
 	ldh [hScriptVar], a
@@ -136,6 +134,6 @@ SpecialReturnShuckie:
 	ret
 
 SpecialShuckieOT:
-	db "Kirk@"
+	rawchar "Kirk@"
 SpecialShuckieNick:
-	db "Shuckie@"
+	rawchar "Shuckie@"

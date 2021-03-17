@@ -1,9 +1,9 @@
 SaffronGym_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 33 ; warp events
+	def_warp_events
 	warp_event  8, 17, SAFFRON_CITY, 2
 	warp_event  9, 17, SAFFRON_CITY, 2
 	warp_event 11, 14, SAFFRON_GYM, 18
@@ -38,31 +38,31 @@ SaffronGym_MapScriptHeader:
 	warp_event 11, 10, SAFFRON_GYM, 17
 	warp_event  8, 10, SAFFRON_GYM, 3
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 1 ; bg events
-	bg_event  8, 15, SIGNPOST_READ, SaffronGymStatue
+	def_bg_events
+	bg_event  8, 15, BGEVENT_READ, SaffronGymStatue
 
-	db 9 ; object events
-	object_event  9,  8, SPRITE_SABRINA, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SabrinaScript_0x189c2e, -1
-	object_event  2,  3, SPRITE_GRANNY, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerMediumDoris, -1
-	object_event  9,  3, SPRITE_PSYCHIC, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerPsychicLeon, -1
-	object_event 17,  3, SPRITE_PSYCHIC, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerPsychicJared, -1
-	object_event  2,  9, SPRITE_HEX_MANIAC, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerHexManiacLuna, -1
-	object_event 17,  9, SPRITE_HEX_MANIAC, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerHexManiacNatalie, -1
-	object_event  2, 15, SPRITE_PSYCHIC, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerPsychicFranklin, -1
-	object_event 17, 15, SPRITE_GRANNY, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerMediumRebecca, -1
-	object_event  9, 14, SPRITE_GYM_GUY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, SaffronGymGuyScript, -1
+	def_object_events
+	object_event  9,  8, SPRITE_SABRINA, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, SaffronGymSabrinaScript, -1
+	object_event  2,  3, SPRITE_GRANNY, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerMediumDoris, -1
+	object_event  9,  3, SPRITE_PSYCHIC, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerPsychicLeon, -1
+	object_event 17,  3, SPRITE_PSYCHIC, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerPsychicJared, -1
+	object_event  2,  9, SPRITE_HEX_MANIAC, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerHexManiacLuna, -1
+	object_event 17,  9, SPRITE_HEX_MANIAC, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerHexManiacNatalie, -1
+	object_event  2, 15, SPRITE_PSYCHIC, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerPsychicFranklin, -1
+	object_event 17, 15, SPRITE_GRANNY, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerMediumRebecca, -1
+	object_event  9, 14, SPRITE_GYM_GUY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, SaffronGymGuyScript, -1
 
-SabrinaScript_0x189c2e:
+SaffronGymSabrinaScript:
 	faceplayer
 	opentext
 	checkflag ENGINE_SOULBADGE
 	iftrue .FightDone
-	writetext UnknownText_0x189cdf
+	writetext SabrinaIntroText
 	waitbutton
 	closetext
-	winlosstext UnknownText_0x189df4, 0
+	winlosstext SabrinaWinLossText, 0
 	loadtrainer SABRINA, 1
 	startbattle
 	reloadmapafterbattle
@@ -75,30 +75,30 @@ SabrinaScript_0x189c2e:
 	setevent EVENT_BEAT_PSYCHIC_FRANKLIN
 	setevent EVENT_BEAT_MEDIUM_REBECCA
 	opentext
-	writetext UnknownText_0x189e95
+	writetext ReceivedMarshBadgeText
 	playsound SFX_GET_BADGE
 	waitsfx
 	setflag ENGINE_SOULBADGE
-	checkcode VAR_BADGES
+	readvar VAR_BADGES
 	ifequal 9, .FirstBadge
 	ifequal 10, .SecondBadge
 	ifequal 12, .LyrasEgg
-	jump .FightDone
+	sjump .FightDone
 .FirstBadge:
 	specialphonecall SPECIALCALL_FIRSTBADGE
-	jump .FightDone
+	sjump .FightDone
 .SecondBadge:
 	checkevent EVENT_GOT_GS_BALL_FROM_POKECOM_CENTER
 	iftrue .FightDone
 	specialphonecall SPECIALCALL_SECONDBADGE
-	jump .FightDone
+	sjump .FightDone
 .LyrasEgg:
 	specialphonecall SPECIALCALL_LYRASEGG
 .FightDone:
 	checkevent EVENT_GOT_TM29_PSYCHIC
-	iftrue_jumpopenedtext UnknownText_0x189f6c
-	writetext UnknownText_0x189ead
-	buttonsound
+	iftrue_jumpopenedtext SabrinaFightDoneText
+	writetext SabrinaMarshBadgeText
+	promptbutton
 	verbosegivetmhm TM_PSYCHIC
 	setevent EVENT_GOT_TM29_PSYCHIC
 	jumpthisopenedtext
@@ -180,14 +180,14 @@ SaffronGymGuyScript:
 	jumptextfaceplayer SaffronGymGuyText
 
 SaffronGymStatue:
-	trainertotext SABRINA, 1, $1
+	gettrainername SABRINA, 1, $1
 	checkflag ENGINE_SOULBADGE
 	iftrue .Beaten
 	jumpstd gymstatue1
 .Beaten:
 	jumpstd gymstatue2
 
-UnknownText_0x189cdf:
+SabrinaIntroText:
 	text "Sabrina: I knew"
 	line "you were coming…"
 
@@ -205,15 +205,15 @@ UnknownText_0x189cdf:
 	line "to confer Badges"
 
 	para "on anyone who has"
-	line "proven him- or"
-	cont "herself worthy."
+	line "proven themselves"
+	cont "worthy."
 
 	para "Since you wish it,"
 	line "I will show you my"
 	cont "psychic powers!"
 	done
 
-UnknownText_0x189df4:
+SabrinaWinLossText:
 	text "Sabrina: Your"
 	line "power…"
 
@@ -235,7 +235,7 @@ else
 endc
 	done
 
-UnknownText_0x189e95:
+ReceivedMarshBadgeText:
 	text "<PLAYER> received"
 if DEF(FAITHFUL)
 	line "the Marsh Badge."
@@ -244,7 +244,7 @@ else
 endc
 	done
 
-UnknownText_0x189ead:
+SabrinaMarshBadgeText:
 	text "Sabrina: I failed"
 	line "to accurately pre-"
 
@@ -258,7 +258,7 @@ UnknownText_0x189ead:
 	line "TM, too!"
 	done
 
-UnknownText_0x189f6c:
+SabrinaFightDoneText:
 	text "Sabrina: Your love"
 	line "for your #mon"
 

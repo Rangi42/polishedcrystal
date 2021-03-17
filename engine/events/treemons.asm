@@ -96,15 +96,11 @@ RockMonEncounter:
 	jr nc, .no_battle
 
 	call SelectTreeMon
-	jr nc, .no_battle
-
-	ret
+	ret c
 
 .no_battle
 	xor a
 	ret
-
-	db $05 ; ????
 
 GetTreeMonSet:
 ; Return carry and treemon set in a

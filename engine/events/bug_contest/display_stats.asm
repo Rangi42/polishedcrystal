@@ -11,11 +11,11 @@ DisplayCaughtContestMonStats:
 
 	hlcoord 0, 0
 	lb bc, 4, 13
-	call TextBox
+	call Textbox
 
 	hlcoord 0, 6
 	lb bc, 4, 13
-	call TextBox
+	call Textbox
 
 	hlcoord 2, 0
 	ld de, .Stock
@@ -85,5 +85,5 @@ DisplayCaughtContestMonStats:
 
 SwitchMonText:
 	; Switch #MON?
-	text_jump UnknownText_0x1c10cf
+	text_far _ContestAskSwitchText
 	text_end

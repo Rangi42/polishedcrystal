@@ -418,7 +418,7 @@ MetalClaw:
 	hastarget
 	checkhit
 	critical
-	effectchance
+	selfeffectchance
 	damagestats
 	damagecalc
 	stab
@@ -441,7 +441,7 @@ SteelWing:
 	hastarget
 	checkhit
 	critical
-	effectchance
+	selfeffectchance
 	damagestats
 	damagecalc
 	stab
@@ -456,6 +456,29 @@ SteelWing:
 	posthiteffects
 	endmove
 
+SpeedUpHit:
+FlameCharge:
+	checkobedience
+	usedmovetext
+	doturn
+	hastarget
+	checkhit
+	critical
+	selfeffectchance
+	damagestats
+	damagecalc
+	stab
+	damagevariation
+	moveanim
+	failuretext
+	applydamage
+	criticaltext
+	supereffectivetext
+	raisestathit SPEED
+	postfainteffects
+	posthiteffects
+	endmove
+
 AllUpHit:
 Ancientpower:
 	checkobedience
@@ -464,7 +487,7 @@ Ancientpower:
 	hastarget
 	checkhit
 	critical
-	effectchance
+	selfeffectchance
 	damagestats
 	damagecalc
 	stab
@@ -537,7 +560,6 @@ BrickBreak:
 	hastarget
 	checkhit
 	critical
-	effectchance
 	resettypematchup
 	brickbreak
 	damagestats
@@ -684,7 +706,6 @@ CloseCombat:
 	hastarget
 	checkhit
 	critical
-	effectchance
 	damagestats
 	damagecalc
 	stab
@@ -967,6 +988,33 @@ HoneClaws:
 	forceraisestat ACCURACY
 	endmove
 
+DefenseCurl:
+	checkobedience
+	usedmovetext
+	doturn
+	forceraisestat DEFENSE
+	curl
+	endmove
+
+Minimize:
+	checkobedience
+	usedmovetext
+	doturn
+	forceraisestat $10 | EVASION
+	minimize
+	endmove
+
+ShellSmash:
+	checkobedience
+	usedmovetext
+	doturn
+	forcelowerstat DEFENSE
+	forcelowerstat SP_DEFENSE
+	forceraisestat $10 | ATTACK
+	forceraisestat $10 | SP_ATTACK
+	forceraisestat $10 | SPEED
+	endmove
+
 AttackDown:
 Growl:
 	checkobedience
@@ -1115,17 +1163,6 @@ EvasionDown2:
 	loweroppstat $10 | EVASION
 	endmove
 
-ShellSmash:
-	checkobedience
-	usedmovetext
-	doturn
-	forcelowerstat DEFENSE
-	forcelowerstat SP_DEFENSE
-	forceraisestat $10 | ATTACK
-	forceraisestat $10 | SP_ATTACK
-	forceraisestat $10 | SPEED
-	endmove
-
 ResetStats:
 Haze:
 	checkobedience
@@ -1170,8 +1207,8 @@ Roost:
 	checkobedience
 	usedmovetext
 	doturn
-	heal
 	roost
+	heal
 	endmove
 
 Rampage:
@@ -1355,7 +1392,6 @@ BugBite:
 	damagecalc
 	stab
 	damagevariation
-	conditionalboost
 	moveanim
 	failuretext
 	bugbite ; before applydamage to steal HP berries before they take effect
@@ -1476,6 +1512,7 @@ Disable:
 	hastarget
 	checkhit
 	bounceback
+	failuretext
 	disable
 	endmove
 
@@ -1483,6 +1520,8 @@ Counter:
 	checkobedience
 	usedmovetext
 	doturn
+	hastarget
+	checkhit ; needed for Parental Bond, it can't miss
 	counter
 	moveanim
 	failuretext
@@ -1498,6 +1537,7 @@ Encore:
 	hastarget
 	checkhit
 	bounceback
+	failuretext
 	encore
 	endmove
 
@@ -1609,29 +1649,6 @@ MeanLook:
 	arenatrap
 	endmove
 
-FlameWheel:
-	checkobedience
-	usedmovetext
-	doturn
-	hastarget
-	checkhit
-	critical
-	effectchance
-	damagestats
-	damagecalc
-	stab
-	damagevariation
-	moveanim
-	failuretext
-	applydamage
-	criticaltext
-	supereffectivetext
-	defrost
-	postfainteffects
-	posthiteffects
-	burntarget
-	endmove
-
 Curse:
 	checkobedience
 	usedmovetext
@@ -1734,8 +1751,8 @@ Swagger:
 	confusetarget
 	endmove
 
-Avalanche:
 Acrobatics:
+Avalanche:
 Facade:
 Hex:
 Venoshock:
@@ -1914,7 +1931,7 @@ RapidSpin:
 	hastarget
 	checkhit
 	critical
-	effectchance
+	selfeffectchance
 	damagestats
 	damagecalc
 	stab
@@ -1982,6 +1999,8 @@ MirrorCoat:
 	checkobedience
 	usedmovetext
 	doturn
+	hastarget
+	checkhit
 	counter
 	moveanim
 	failuretext
@@ -1997,7 +2016,6 @@ Earthquake:
 	hastarget
 	checkhit
 	critical
-	effectchance
 	damagestats
 	damagecalc
 	stab
@@ -2150,22 +2168,6 @@ Dig:
 	supereffectivetext
 	postfainteffects
 	posthiteffects
-	endmove
-
-DefenseCurl:
-	checkobedience
-	usedmovetext
-	doturn
-	forceraisestat DEFENSE
-	curl
-	endmove
-
-Minimize:
-	checkobedience
-	usedmovetext
-	doturn
-	forceraisestat $10 | EVASION
-	minimize
 	endmove
 
 FlareBlitz:

@@ -1,16 +1,16 @@
 TeamRocketBaseB1F_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 1 ; callbacks
-	callback MAPCALLBACK_OBJECTS, TeamRocketBaseB1FCallback1
+	def_callbacks
+	callback MAPCALLBACK_OBJECTS, TeamRocketBaseB1FHideSecurityGruntCallback
 
-	db 4 ; warp events
+	def_warp_events
 	warp_event 27,  2, MAHOGANY_MART_1F, 3
 	warp_event  3, 14, TEAM_ROCKET_BASE_B2F, 1
 	warp_event  5, 15, TEAM_ROCKET_BASE_B1F, 4
 	warp_event 25,  2, TEAM_ROCKET_BASE_B1F, 3
 
-	db 30 ; coord events
+	def_coord_events
 	; There are five security cameras in the base.
 	; Walking in front of one triggers two Rocket Grunts.
 	coord_event 24,  2, 0, SecurityCamera1a
@@ -46,31 +46,31 @@ TeamRocketBaseB1F_MapScriptHeader:
 	coord_event  4, 13, 0, ExplodingTrap21
 	coord_event  5, 13, 0, ExplodingTrap22
 
-	db 9 ; bg events
-	bg_event 19, 11, SIGNPOST_READ, MapTeamRocketBaseB1FSignpost0Script
-	bg_event 24,  1, SIGNPOST_UP, MapTeamRocketBaseB1FSignpost5Script
-	bg_event  6,  1, SIGNPOST_UP, MapTeamRocketBaseB1FSignpost5Script
-	bg_event  8, 15, SIGNPOST_UP, MapTeamRocketBaseB1FSignpost5Script
-	bg_event 22, 15, SIGNPOST_UP, MapTeamRocketBaseB1FSignpost5Script
-	bg_event 24,  5, SIGNPOST_UP, MapTeamRocketBaseB1FSignpost5Script
-	bg_event 20, 11, SIGNPOST_JUMPSTD, teamrocketoath
-	bg_event 21, 11, SIGNPOST_JUMPSTD, teamrocketoath
-	bg_event  3, 11, SIGNPOST_ITEM + REVIVE, EVENT_TEAM_ROCKET_BASE_B1F_HIDDEN_REVIVE
+	def_bg_events
+	bg_event 19, 11, BGEVENT_READ, TeamRocketBaseB1FSecretSwitch
+	bg_event 24,  1, BGEVENT_UP, TeamRocketBaseB1FSecurityCamera
+	bg_event  6,  1, BGEVENT_UP, TeamRocketBaseB1FSecurityCamera
+	bg_event  8, 15, BGEVENT_UP, TeamRocketBaseB1FSecurityCamera
+	bg_event 22, 15, BGEVENT_UP, TeamRocketBaseB1FSecurityCamera
+	bg_event 24,  5, BGEVENT_UP, TeamRocketBaseB1FSecurityCamera
+	bg_event 20, 11, BGEVENT_JUMPSTD, teamrocketoath
+	bg_event 21, 11, BGEVENT_JUMPSTD, teamrocketoath
+	bg_event  3, 11, BGEVENT_ITEM + REVIVE, EVENT_TEAM_ROCKET_BASE_B1F_HIDDEN_REVIVE
 
-	db 6 ; object events
-	object_event  0,  0, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_TEAM_ROCKET_BASE_SECURITY_GRUNTS
-	object_event  2,  4, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerGruntM16, EVENT_TEAM_ROCKET_BASE_POPULATION
-	object_event 18, 12, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerRocketScientistJed, EVENT_TEAM_ROCKET_BASE_POPULATION
+	def_object_events
+	object_event  0,  0, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_TEAM_ROCKET_BASE_SECURITY_GRUNTS
+	object_event  2,  4, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerGruntM16, EVENT_TEAM_ROCKET_BASE_POPULATION
+	object_event 18, 12, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerRocketScientistJed, EVENT_TEAM_ROCKET_BASE_POPULATION
 	itemball_event 27,  6, HYPER_POTION, 1, EVENT_TEAM_ROCKET_BASE_B1F_HYPER_POTION
 	itemball_event 14, 15, NUGGET, 1, EVENT_TEAM_ROCKET_BASE_B1F_NUGGET
 	itemball_event 21, 12, GUARD_SPEC, 1, EVENT_TEAM_ROCKET_BASE_B1F_GUARD_SPEC
 
-	const_def 1 ; object constants
+	object_const_def
 	const TEAMROCKETBASEB1F_ROCKET1
 
-TeamRocketBaseB1FCallback1:
+TeamRocketBaseB1FHideSecurityGruntCallback:
 	disappear TEAMROCKETBASEB1F_ROCKET1
-	return
+	endcallback
 
 SecurityCamera1a:
 	checkevent EVENT_SECURITY_CAMERA_1
@@ -513,7 +513,7 @@ VoltorbExplodingTrap:
 	cry VOLTORB
 	special FadeInPalettes
 	setlasttalked -1
-	writecode VAR_BATTLETYPE, BATTLETYPE_TRAP
+	loadvar VAR_BATTLETYPE, BATTLETYPE_TRAP
 	loadwildmon VOLTORB, 30
 	startbattle
 	end
@@ -524,7 +524,7 @@ GeodudeExplodingTrap:
 	cry GEODUDE
 	special FadeInPalettes
 	setlasttalked -1
-	writecode VAR_BATTLETYPE, BATTLETYPE_TRAP
+	loadvar VAR_BATTLETYPE, BATTLETYPE_TRAP
 	loadwildmon GEODUDE, 28
 	startbattle
 	end
@@ -535,7 +535,7 @@ KoffingExplodingTrap:
 	cry KOFFING
 	special FadeInPalettes
 	setlasttalked -1
-	writecode VAR_BATTLETYPE, BATTLETYPE_TRAP
+	loadvar VAR_BATTLETYPE, BATTLETYPE_TRAP
 	loadwildmon KOFFING, 28
 	startbattle
 	end
@@ -573,14 +573,14 @@ GenericTrainerGruntM16:
 	cont "courage and walk."
 	done
 
-MapTeamRocketBaseB1FSignpost5Script:
+TeamRocketBaseB1FSecurityCamera:
 	jumptext SecurityCameraText
 
-MapTeamRocketBaseB1FSignpost0Script:
+TeamRocketBaseB1FSecretSwitch:
 	opentext
 	checkevent EVENT_TURNED_OFF_SECURITY_CAMERAS
-	iftrue UnknownScript_0x6cabe
-	writetext UnknownText_0x6cdad
+	iftrue .SecretSwitchOff
+	writetext TeamRocketBaseB1FSecretSwitchText
 	playsound SFX_TALLY
 	waitbutton
 	closetext
@@ -592,8 +592,8 @@ MapTeamRocketBaseB1FSignpost0Script:
 	setevent EVENT_SECURITY_CAMERA_5
 	end
 
-UnknownScript_0x6cabe:
-	jumpopenedtext UnknownText_0x6cdd0
+.SecretSwitchOff:
+	jumpopenedtext TeamRocketBaseB1FSwitchOffText
 
 SecurityCameraMovement1:
 	run_step_right
@@ -743,12 +743,12 @@ SecurityCameraText:
 	line "shiny."
 	done
 
-UnknownText_0x6cdad:
+TeamRocketBaseB1FSecretSwitchText:
 	text "A secret switch!"
 	line "Better press it."
 	done
 
-UnknownText_0x6cdd0:
+TeamRocketBaseB1FSwitchOffText:
 	text "The switch is"
 	line "turned off."
 	done

@@ -1,10 +1,10 @@
 CeruleanCave1F_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 1 ; callbacks
+	def_callbacks
 	callback MAPCALLBACK_TILES, CeruleanCave1FTileScript
 
-	db 8 ; warp events
+	def_warp_events
 	warp_event 27, 21, CERULEAN_CITY, 7
 	warp_event  9,  5, CERULEAN_CAVE_2F, 1
 	warp_event 29,  5, CERULEAN_CAVE_2F, 2
@@ -14,19 +14,19 @@ CeruleanCave1F_MapScriptHeader:
 	warp_event 20, 13, CERULEAN_CAVE_2F, 5
 	warp_event  5, 15, CERULEAN_CAVE_2F, 6
 
-	db 4 ; coord events
+	def_coord_events
 	coord_event 21,  7, 1, CeruleanCave1FBridgeOverheadTrigger
 	coord_event 22,  7, 1, CeruleanCave1FBridgeOverheadTrigger
 	coord_event 21,  6, 0, CeruleanCave1FBridgeUnderfootTrigger
 	coord_event 22,  6, 0, CeruleanCave1FBridgeUnderfootTrigger
 
-	db 4 ; bg events
-	bg_event 10, 13, SIGNPOST_ITEM + ULTRA_BALL, EVENT_CERULEAN_CAVE_1F_HIDDEN_ULTRA_BALL
-	bg_event  5, 16, SIGNPOST_ITEM + PP_UP, EVENT_CERULEAN_CAVE_1F_HIDDEN_PP_UP
-	bg_event 16, 15, SIGNPOST_ITEM + RARE_CANDY, EVENT_CERULEAN_CAVE_1F_HIDDEN_RARE_CANDY
-	bg_event 25,  2, SIGNPOST_ITEM + BERSERK_GENE, EVENT_CERULEAN_CAVE_1F_HIDDEN_BERSERK_GENE
+	def_bg_events
+	bg_event 10, 13, BGEVENT_ITEM + ULTRA_BALL, EVENT_CERULEAN_CAVE_1F_HIDDEN_ULTRA_BALL
+	bg_event  5, 16, BGEVENT_ITEM + PP_UP, EVENT_CERULEAN_CAVE_1F_HIDDEN_PP_UP
+	bg_event 16, 15, BGEVENT_ITEM + RARE_CANDY, EVENT_CERULEAN_CAVE_1F_HIDDEN_RARE_CANDY
+	bg_event 25,  2, BGEVENT_ITEM + BERSERK_GENE, EVENT_CERULEAN_CAVE_1F_HIDDEN_BERSERK_GENE
 
-	db 3 ; object events
+	def_object_events
 	itemball_event  7,  6, BIG_NUGGET, 1, EVENT_CERULEAN_CAVE_1F_BIG_NUGGET
 	itemball_event  9, 17, FULL_RESTORE, 1, EVENT_CERULEAN_CAVE_1F_FULL_RESTORE
 	itemball_event 14,  2, MAX_REVIVE, 1, EVENT_CERULEAN_CAVE_1F_MAX_REVIVE
@@ -35,11 +35,11 @@ CeruleanCave1FTileScript:
 	checkscene
 	iftrue .underfoot
 	callasm CeruleanCave1F_OverheadBridgeAsm
-	return
+	endcallback
 
 .underfoot:
 	callasm CeruleanCave1F_UnderfootBridgeAsm
-	return
+	endcallback
 
 CeruleanCave1F_OverheadBridgeAsm:
 	changebridgeblock 20, 2, $ea, CERULEAN_CAVE_1F

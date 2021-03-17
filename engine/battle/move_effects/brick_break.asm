@@ -5,7 +5,7 @@ BattleCommand_brickbreak:
 	jr z, .got_screens
 	ld hl, wPlayerScreens
 .got_screens
-    ld a, [hl]
+	ld a, [hl]
 	and a
 	ret z
 	ld [hl], 0
@@ -13,10 +13,10 @@ BattleCommand_brickbreak:
 	and SCREENS_REFLECT
 	jr z, .reflect_done
 	ld hl, BrokeReflectText
-	call StdBattleTextBox
+	call StdBattleTextbox
 .reflect_done
 	pop af
 	and SCREENS_LIGHT_SCREEN
 	ret z
 	ld hl, BrokeLightScreenText
-	jp StdBattleTextBox
+	jp StdBattleTextbox

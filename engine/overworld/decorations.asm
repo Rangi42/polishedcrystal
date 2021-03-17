@@ -5,11 +5,11 @@ InitDecorations:
 	ld [wDecoPoster], a
 	ret
 
-_KrisDecorationMenu:
+_PlayerDecorationMenu:
 	ld a, [wWhichIndexSet]
 	push af
-	ld hl, .MenuDataHeader
-	call LoadMenuDataHeader
+	ld hl, .MenuHeader
+	call LoadMenuHeader
 	xor a
 	ld [wBuffer5], a
 	ld a, $1
@@ -35,17 +35,16 @@ _KrisDecorationMenu:
 	ld c, a
 	ret
 
-.MenuDataHeader:
-	db $40 ; flags
-	db 00, 05 ; start coords
-	db 17, 19 ; end coords
-	dw .MenuData2
+.MenuHeader:
+	db MENU_BACKUP_TILES ; flags
+	menu_coords 5, 0, SCREEN_WIDTH - 1, SCREEN_HEIGHT - 1
+	dw .MenuData
 	db 1 ; default option
 
-.MenuData2:
-	db $a0 ; flags
+.MenuData
+	db STATICMENU_CURSOR | STATICMENU_WRAP ; flags
 	db 0 ; items
-	dw wd002
+	dw wNumOwnedDecoCategories
 	dw PlaceNthMenuStrings
 	dw .pointers
 
@@ -76,7 +75,7 @@ _KrisDecorationMenu:
 	ld a, 7
 	call .AppendToStringBuffer2
 	ld hl, wStringBuffer2
-	ld de, wd002
+	ld de, wDecoNameBuffer
 	ld bc, ITEM_NAME_LENGTH
 	rst CopyBytes
 	ret
@@ -133,7 +132,7 @@ _KrisDecorationMenu:
 
 Deco_FillTempWithMinusOne:
 	xor a
-	ld hl, wd002
+	ld hl, wNumOwnedDecoCategories
 	ld [hli], a
 	ld a, -1
 	ld bc, $10
@@ -159,7 +158,7 @@ CheckAllDecorationFlags:
 	jr .loop
 
 AppendDecoIndex:
-	ld hl, wd002
+	ld hl, wNumOwnedDecoCategories
 	inc [hl]
 	ld e, [hl]
 	ld d, $0
@@ -174,7 +173,7 @@ FindOwnedDecosInCategory:
 	pop hl
 	call CheckAllDecorationFlags
 	pop bc
-	ld a, [wd002]
+	ld a, [wNumOwnedDecoCategories]
 	and a
 	ret z
 
@@ -197,10 +196,10 @@ FindOwnedBeds:
 	jp FindOwnedDecosInCategory
 
 .beds
-	db DECO_FEATHERY_BED
-	db DECO_PINK_BED
-	db DECO_POLKADOT_BED
-	db DECO_PIKACHU_BED
+	db DECO_FEATHERY_BED ; 2
+	db DECO_PINK_BED ; 3
+	db DECO_POLKADOT_BED ; 4
+	db DECO_PIKACHU_BED ; 5
 	db -1
 
 DecoCarpetMenu:
@@ -215,10 +214,10 @@ FindOwnedCarpets:
 	jp FindOwnedDecosInCategory
 
 .carpets
-	db DECO_RED_CARPET
-	db DECO_BLUE_CARPET
-	db DECO_YELLOW_CARPET
-	db DECO_GREEN_CARPET
+	db DECO_RED_CARPET ; 7
+	db DECO_BLUE_CARPET ; 8
+	db DECO_YELLOW_CARPET ; 9
+	db DECO_GREEN_CARPET ; a
 	db -1
 
 DecoPlantMenu:
@@ -233,9 +232,9 @@ FindOwnedPlants:
 	jp FindOwnedDecosInCategory
 
 .plants
-	db DECO_MAGNAPLANT
-	db DECO_TROPICPLANT
-	db DECO_JUMBOPLANT
+	db DECO_MAGNAPLANT ; c
+	db DECO_TROPICPLANT ; d
+	db DECO_JUMBOPLANT ; e
 	db -1
 
 DecoPosterMenu:
@@ -250,10 +249,10 @@ FindOwnedPosters:
 	jp FindOwnedDecosInCategory
 
 .posters
-	db DECO_TOWN_MAP
-	db DECO_PIKACHU_POSTER
-	db DECO_CLEFAIRY_POSTER
-	db DECO_MARILL_POSTER
+	db DECO_TOWN_MAP ; 10
+	db DECO_PIKACHU_POSTER ; 11
+	db DECO_CLEFAIRY_POSTER ; 12
+	db DECO_MARILL_POSTER ; 13
 	db -1
 
 DecoConsoleMenu:
@@ -268,10 +267,10 @@ FindOwnedConsoles:
 	jp FindOwnedDecosInCategory
 
 .consoles
-	db DECO_SNES
-	db DECO_N64
-	db DECO_GAMECUBE
-	db DECO_WII
+	db DECO_SNES ; 15
+	db DECO_N64 ; 16
+	db DECO_GAMECUBE ; 17
+	db DECO_WII ; 18
 	db -1
 
 DecoOrnamentMenu:
@@ -286,38 +285,38 @@ FindOwnedOrnaments:
 	jp FindOwnedDecosInCategory
 
 .ornaments
-	db DECO_PIKACHU_DOLL
-	db DECO_RAICHU_DOLL
-	db DECO_SURF_PIKACHU_DOLL
-	db DECO_CLEFAIRY_DOLL
-	db DECO_JIGGLYPUFF_DOLL
-	db DECO_BULBASAUR_DOLL
-	db DECO_CHARMANDER_DOLL
-	db DECO_SQUIRTLE_DOLL
-	db DECO_CHIKORITA_DOLL
-	db DECO_CYNDAQUIL_DOLL
-	db DECO_TOTODILE_DOLL
-	db DECO_POLIWAG_DOLL
-	db DECO_MAREEP_DOLL
-	db DECO_TOGEPI_DOLL
-	db DECO_MAGIKARP_DOLL
-	db DECO_ODDISH_DOLL
-	db DECO_GENGAR_DOLL
-	db DECO_OCTILLERY_DOLL
-	db DECO_DITTO_DOLL
-	db DECO_VOLTORB_DOLL
-	db DECO_ABRA_DOLL
-	db DECO_UNOWN_DOLL
-	db DECO_GEODUDE_DOLL
-	db DECO_PINECO_DOLL
-	db DECO_MARILL_DOLL
-	db DECO_TEDDIURSA_DOLL
-	db DECO_MEOWTH_DOLL
-	db DECO_VULPIX_DOLL
-	db DECO_GROWLITHE_DOLL
-	db DECO_EEVEE_DOLL
-	db DECO_GOLD_TROPHY_DOLL
-	db DECO_SILVER_TROPHY_DOLL
+	db DECO_PIKACHU_DOLL ; 1e
+	db DECO_RAICHU_DOLL ; 1f
+	db DECO_SURF_PIKACHU_DOLL ; 20
+	db DECO_CLEFAIRY_DOLL ; 21
+	db DECO_JIGGLYPUFF_DOLL ; 22
+	db DECO_BULBASAUR_DOLL ; 23
+	db DECO_CHARMANDER_DOLL ; 24
+	db DECO_SQUIRTLE_DOLL ; 25
+	db DECO_CHIKORITA_DOLL ; 26
+	db DECO_CYNDAQUIL_DOLL ; 27
+	db DECO_TOTODILE_DOLL ; 28
+	db DECO_POLIWAG_DOLL ; 29
+	db DECO_MAREEP_DOLL ; 2a
+	db DECO_TOGEPI_DOLL ; 2b
+	db DECO_MAGIKARP_DOLL ; 2c
+	db DECO_ODDISH_DOLL ; 2d
+	db DECO_GENGAR_DOLL ; 2e
+	db DECO_OCTILLERY_DOLL ; 2f
+	db DECO_DITTO_DOLL ; 30
+	db DECO_VOLTORB_DOLL ; 31
+	db DECO_ABRA_DOLL ; 32
+	db DECO_UNOWN_DOLL ; 33
+	db DECO_GEODUDE_DOLL ; 34
+	db DECO_PINECO_DOLL ; 35
+	db DECO_MARILL_DOLL ; 36
+	db DECO_TEDDIURSA_DOLL ; 37
+	db DECO_MEOWTH_DOLL ; 38
+	db DECO_VULPIX_DOLL ; 39
+	db DECO_GROWLITHE_DOLL ; 3a
+	db DECO_EEVEE_DOLL ; 3b
+	db DECO_GOLD_TROPHY_DOLL ; 3c
+	db DECO_SILVER_TROPHY_DOLL ; 3d
 	db -1
 
 DecoBigDollMenu:
@@ -332,9 +331,9 @@ FindOwnedBigDolls:
 	jp FindOwnedDecosInCategory
 
 .big_dolls
-	db DECO_BIG_SNORLAX_DOLL
-	db DECO_BIG_ONIX_DOLL
-	db DECO_BIG_LAPRAS_DOLL
+	db DECO_BIG_SNORLAX_DOLL ; 1a
+	db DECO_BIG_ONIX_DOLL ; 1b
+	db DECO_BIG_LAPRAS_DOLL ; 1c
 	db -1
 
 DecoExitMenu:
@@ -342,32 +341,29 @@ DecoExitMenu:
 	ret
 
 PopulateDecoCategoryMenu:
-	ld a, [wd002]
+	ld a, [wNumOwnedDecoCategories]
 	and a
 	jr z, .empty
 	cp 8
 	jr nc, .beyond_eight
 	xor a
 	ld [wWhichIndexSet], a
-	ld hl, .NonscrollingMenuDataHeader
-	call LoadMenuDataHeader
+	ld hl, .NonscrollingMenuHeader
+	call LoadMenuHeader
 	call DoNthMenu
-	jr c, .no_action_1
-	call DoDecorationAction2
-
-.no_action_1
+	call nc, DoDecorationAction2
 	jp ExitMenu
 
 .beyond_eight
-	ld hl, wd002
+	ld hl, wNumOwnedDecoCategories
 	ld e, [hl]
 	dec [hl]
 	ld d, 0
 	add hl, de
 	ld [hl], -1
-	call LoadStandardMenuDataHeader
-	ld hl, .ScrollingMenuDataHeader
-	call CopyMenuDataHeader
+	call LoadStandardMenuHeader
+	ld hl, .ScrollingMenuHeader
+	call CopyMenuHeader
 	xor a
 	ldh [hBGMapMode], a
 	call InitScrollingMenu
@@ -376,47 +372,42 @@ PopulateDecoCategoryMenu:
 	call ScrollingMenu
 	ld a, [wMenuJoypad]
 	cp 2
-	jr z, .no_action_2
-	call DoDecorationAction2
-
-.no_action_2
+	call nz, DoDecorationAction2
 	jp ExitMenu
 
 .empty
-	ld hl, .Text_nothing_to_choose
-	jp MenuTextBoxBackup
+	ld hl, .NothingToChooseText
+	jp MenuTextboxBackup
 
-.Text_nothing_to_choose:
+.NothingToChooseText:
 	; There's nothing to choose.
-	text_jump UnknownText_0x1bc471
+	text_far _NothingToChooseText
 	text_end
 
-.NonscrollingMenuDataHeader:
-	db $40 ; flags
-	db 00, 00 ; start coords
-	db 17, 19 ; end coords
-	dw .NonscrollingMenuData2
+.NonscrollingMenuHeader:
+	db MENU_BACKUP_TILES
+	menu_coords 0, 0, SCREEN_WIDTH - 1, SCREEN_HEIGHT - 1
+	dw .NonscrollingMenuData
 	db 1 ; default option
 
-.NonscrollingMenuData2:
-	db $a0 ; flags
+.NonscrollingMenuData:
+	db STATICMENU_CURSOR | STATICMENU_WRAP
 	db 0 ; items
-	dw wd002
+	dw wDecoNameBuffer
 	dw DecorationMenuFunction
 	dw DecorationAttributes
 
-.ScrollingMenuDataHeader:
-	db $40 ; flags
-	db 01, 01 ; start coords
-	db 16, 18 ; end coords
-	dw .ScrollingMenuData2
+.ScrollingMenuHeader:
+	db MENU_BACKUP_TILES ; flags
+	menu_coords 1, 1, SCREEN_WIDTH - 2, SCREEN_HEIGHT - 2
+	dw .ScrollingMenuData
 	db 1 ; default option
 
-.ScrollingMenuData2:
-	db $10 ; flags
+.ScrollingMenuData:
+	db SCROLLINGMENU_DISPLAY_ARROWS ; flags
 	db 8, 0 ; rows, columns
-	db 1 ; horizontal spacing
-	dbw 0, wd002 ; text pointer
+	db SCROLLINGMENU_ITEMS_NORMAL ; horizontal spacing
+	dbw 0, wDecoNameBuffer ; text pointer
 	dba DecorationMenuFunction
 	dbw 0, 0
 	dbw 0, 0
@@ -564,7 +555,6 @@ GetDecoName:
 	pop de
 	ld a, e
 	; fallthrough
-
 .getpokename
 	push bc
 	ld [wd265], a
@@ -683,7 +673,7 @@ DecoAction_SetItUp:
 	ld hl, wStringBuffer3
 	call GetDecorationName
 	ld hl, DecoText_PutAwayAndSetUp
-	call MenuTextBoxBackup
+	call MenuTextboxBackup
 	xor a
 	ret
 
@@ -692,13 +682,13 @@ DecoAction_SetItUp:
 	ld hl, wStringBuffer3
 	call GetDecorationName
 	ld hl, DecoText_SetUpTheDeco
-	call MenuTextBoxBackup
+	call MenuTextboxBackup
 	xor a
 	ret
 
 .alreadythere
 	ld hl, DecoText_AlreadySetUp
-	call MenuTextBoxBackup
+	call MenuTextboxBackup
 	scf
 	ret
 
@@ -719,18 +709,18 @@ DecoAction_TryPutItAway:
 	ld hl, wStringBuffer3
 	call GetDecorationName
 	ld hl, DecoText_PutAwayTheDeco
-	call MenuTextBoxBackup
+	call MenuTextboxBackup
 	xor a
 	ret
 
 .nothingthere
 	ld hl, DecoText_NothingToPutAway
-	call MenuTextBoxBackup
+	call MenuTextboxBackup
 	xor a
 	ret
 
 DecoAction_setupornament:
-	ld hl, UnknownText_0x26e41
+	ld hl, WhichSidePutOnText
 	call DecoAction_AskWhichSide
 	jr c, .cancel
 	call DecoAction_SetItUp_Ornament
@@ -744,7 +734,7 @@ DecoAction_setupornament:
 	ret
 
 DecoAction_putawayornament:
-	ld hl, DecoText_WhichSide
+	ld hl, WhichSidePutAwayText
 	call DecoAction_AskWhichSide
 	jr nc, .incave
 	xor a
@@ -781,7 +771,7 @@ DecoAction_SetItUp_Ornament:
 	ld [wBuffer3], a
 	call .getwhichside
 	ld hl, DecoText_PutAwayAndSetUp
-	call MenuTextBoxBackup
+	call MenuTextboxBackup
 	xor a
 	ret
 
@@ -793,13 +783,13 @@ DecoAction_SetItUp_Ornament:
 	ld hl, wStringBuffer3
 	call GetDecorationName
 	ld hl, DecoText_SetUpTheDeco
-	call MenuTextBoxBackup
+	call MenuTextboxBackup
 	xor a
 	ret
 
 .failed
 	ld hl, DecoText_AlreadySetUp
-	call MenuTextBoxBackup
+	call MenuTextboxBackup
 	scf
 	ret
 
@@ -813,9 +803,8 @@ DecoAction_SetItUp_Ornament:
 	ld [wBuffer4], a
 	ret
 
-UnknownText_0x26e41:
-	; Which side do you want to put it on?
-	text_jump UnknownText_0x1bc48c
+WhichSidePutOnText:
+	text_far _WhichSidePutOnText
 	text_end
 
 DecoAction_PutItAway_Ornament:
@@ -829,24 +818,23 @@ DecoAction_PutItAway_Ornament:
 	xor a
 	ld [wBuffer3], a
 	ld hl, DecoText_PutAwayTheDeco
-	call MenuTextBoxBackup
+	call MenuTextboxBackup
 	xor a
 	ret
 
 .nothingthere
 	ld hl, DecoText_NothingToPutAway
-	call MenuTextBoxBackup
+	call MenuTextboxBackup
 	xor a
 	ret
 
-DecoText_WhichSide:
-	; Which side do you want to put away?
-	text_jump UnknownText_0x1bc4b2
+WhichSidePutAwayText:
+	text_far _WhichSidePutAwayText
 	text_end
 
 DecoAction_AskWhichSide:
-	call MenuTextBox
-	ld hl, MenuDataHeader_0x26eab
+	call MenuTextbox
+	ld hl, WhichSideMenuHeader
 	call GetMenu2
 	call ExitMenu
 	call CopyMenuData2
@@ -875,15 +863,14 @@ QueryWhichSide:
 	ret z
 	jp SwapHLDE
 
-MenuDataHeader_0x26eab:
-	db $40 ; flags
-	db 00, 00 ; start coords
-	db 07, 13 ; end coords
-	dw MenuData2_0x26eb3
+WhichSideMenuHeader:
+	db MENU_BACKUP_TILES ; flags
+	menu_coords 0, 0, 13, 7
+	dw WhichSideMenuData
 	db 1 ; default option
 
-MenuData2_0x26eb3:
-	db $80 ; flags
+WhichSideMenuData:
+	db STATICMENU_CURSOR ; flags
 	db 3 ; items
 	db "Right side@"
 	db "Left side@"
@@ -891,27 +878,23 @@ MenuData2_0x26eb3:
 
 DecoText_PutAwayTheDeco:
 	; Put away the @ .
-	text_jump UnknownText_0x1bc4d7
+	text_far _PutAwayTheDecoText
 	text_end
 
 DecoText_NothingToPutAway:
-	; There's nothing to put away.
-	text_jump UnknownText_0x1bc4ec
+	text_far _NothingToPutAwayText
 	text_end
 
 DecoText_SetUpTheDeco:
-	; Set up the @ .
-	text_jump UnknownText_0x1bc509
+	text_far _SetUpTheDecoText
 	text_end
 
 DecoText_PutAwayAndSetUp:
-	; Put away the @ and set up the @ .
-	text_jump UnknownText_0x1bc51c
+	text_far _PutAwayAndSetUpText
 	text_end
 
 DecoText_AlreadySetUp:
-	; That's already set up.
-	text_jump UnknownText_0x1bc546
+	text_far _AlreadySetUpText
 	text_end
 
 GetDecorationName_c_de:
@@ -985,20 +968,20 @@ DecorationDesc_PosterPointers:
 
 DecorationDesc_TownMapPoster:
 	opentext
-	farwritetext UnknownText_0x1bc55d
+	farwritetext _LookTownMapText
 	waitbutton
 	special Special_TownMap
 	closetext
 	end
 
 DecorationDesc_PikachuPoster:
-	farjumptext UnknownText_0x1bc570
+	farjumptext _LookPikachuPosterText
 
 DecorationDesc_ClefairyPoster:
-	farjumptext UnknownText_0x1bc591
+	farjumptext _LookClefairyPosterText
 
 DecorationDesc_MarillPoster:
-	farjumptext UnknownText_0x1bc5b3
+	farjumptext _LookJigglypuffPosterText
 
 DecorationDesc_NullPoster:
 	end
@@ -1022,7 +1005,7 @@ DecorationDesc_Ornament:
 	ret
 
 .OrnamentScript:
-	farjumptext UnknownText_0x1bc5d7
+	farjumptext _LookAdorableDecoText
 
 DecorationDesc_Console:
 	ld a, [wDecoConsole]
@@ -1043,20 +1026,20 @@ DecorationDesc_GiantOrnament:
 	ret
 
 .BigDollScript:
-	farjumptext UnknownText_0x1bc5ef
+	farjumptext _LookGiantDecoText
 
 ToggleMaptileDecorations:
-	lb de, 0, 4
+	lb de, 0, 4 ; bed coordinates
 	ld a, [wDecoBed]
 	call SetDecorationTile
-	lb de, 7, 4
+	lb de, 7, 4 ; plant coordinates
 	ld a, [wDecoPlant]
 	call SetDecorationTile
-	lb de, 6, 0
+	lb de, 6, 0 ; poster coordinates
 	ld a, [wDecoPoster]
 	call SetDecorationTile
 	call SetPosterVisibility
-	lb de, 0, 0
+	lb de, 0, 0 ; carpet top-left coordinates
 	call PadCoords_de
 	ld a, [wDecoCarpet]
 	and a
@@ -1064,15 +1047,15 @@ ToggleMaptileDecorations:
 	call _GetDecorationSprite
 	ld [hl], a
 	push af
-	lb de, 0, 2
+	lb de, 0, 2 ; carpet bottom-left coordinates
 	call PadCoords_de
 	pop af
 	inc a
-	ld [hli], a
+	ld [hli], a ; carpet bottom-left block
 	inc a
-	ld [hli], a
+	ld [hli], a ; carpet bottom-middle block
 	dec a
-	ld [hl], a
+	ld [hl], a ; carpet bottom-right block
 	ret
 
 SetPosterVisibility:
@@ -1083,7 +1066,7 @@ SetPosterVisibility:
 	ld b, RESET_FLAG
 
 .ok
-	ld de, EVENT_KRISS_ROOM_POSTER
+	ld de, EVENT_PLAYERS_ROOM_POSTER
 	jp EventFlagAction
 
 SetDecorationTile:
@@ -1097,19 +1080,19 @@ SetDecorationTile:
 	ret
 
 ToggleDecorationsVisibility:
-	ld de, EVENT_KRISS_HOUSE_2F_CONSOLE
+	ld de, EVENT_PLAYERS_HOUSE_2F_CONSOLE
 	ld hl, wVariableSprites + SPRITE_CONSOLE - SPRITE_VARS
 	ld a, [wDecoConsole]
 	call .ToggleDecorationVisibility
-	ld de, EVENT_KRISS_HOUSE_2F_BIG_DOLL
+	ld de, EVENT_PLAYERS_HOUSE_2F_BIG_DOLL
 	ld hl, wVariableSprites + SPRITE_BIG_DOLL - SPRITE_VARS
 	ld a, [wDecoBigDoll]
 	call .ToggleDecorationVisibility
-	ld de, EVENT_KRISS_HOUSE_2F_DOLL_1
+	ld de, EVENT_PLAYERS_HOUSE_2F_DOLL_1
 	ld hl, wVariableSprites + SPRITE_DOLL_1 - SPRITE_VARS
 	ld a, [wDecoLeftOrnament]
 	call .ToggleDecorationVisibility
-	ld de, EVENT_KRISS_HOUSE_2F_DOLL_2
+	ld de, EVENT_PLAYERS_HOUSE_2F_DOLL_2
 	ld hl, wVariableSprites + SPRITE_DOLL_2 - SPRITE_VARS
 	ld a, [wDecoRightOrnament]
 	and a

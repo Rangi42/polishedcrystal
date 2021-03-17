@@ -6,6 +6,11 @@ Roof2GFX:: INCBIN "gfx/tilesets/roofs/2.2bpp.lz"
 Roof3GFX:: INCBIN "gfx/tilesets/roofs/3.2bpp.lz"
 
 
+SECTION "Overworld Effect Graphics", ROMX
+
+OverworldEffectGFX:: INCBIN "gfx/overworld/overworld.2bpp.lz"
+
+
 SECTION "Copyright Graphics", ROMX
 
 CopyrightGFX:: INCBIN "gfx/splash/copyright.2bpp.lz"
@@ -27,7 +32,7 @@ CreditsSequence2GFX:: INCBIN "gfx/credits/sequence2.2bpp.lz"
 
 SECTION "Stats Graphics", ROMX
 
-GFX_Stats:: INCBIN "gfx/stats/stats.2bpp.lz"
+GFX_Stats:: INCBIN "gfx/stats/stats_balls.2bpp.lz"
 
 
 SECTION "Town Map Graphics", ROMX
@@ -53,15 +58,15 @@ PackF5GFX:: INCBIN "gfx/pack/pack_f5.2bpp.lz"
 
 SECTION "Trainer Card Pics", ROMX
 
-ChrisCardPic:: INCBIN "gfx/trainer_card/chris_card.5x7.2bpp.lz"
-KrisCardPic::  INCBIN "gfx/trainer_card/kris_card.5x7.2bpp.lz"
+ChrisCardPic:: INCBIN "gfx/trainer_card/chris_card.2bpp.lz"
+KrisCardPic::  INCBIN "gfx/trainer_card/kris_card.2bpp.lz"
 
 
 SECTION "Trainer Backpics", ROMX
 
-ChrisBackpic:: INCBIN "gfx/player/chris_back.6x6.2bpp.lz"
-KrisBackpic::  INCBIN "gfx/player/kris_back.6x6.2bpp.lz"
-LyraBackpic::  INCBIN "gfx/battle/lyra_back.6x6.2bpp.lz"
+ChrisBackpic:: INCBIN "gfx/player/chris_back.2bpp.lz"
+KrisBackpic::  INCBIN "gfx/player/kris_back.2bpp.lz"
+LyraBackpic::  INCBIN "gfx/battle/lyra_back.2bpp.lz"
 
 
 SECTION "Battle Graphics", ROMX
@@ -106,3 +111,9 @@ AnimObjDuskBallGFX::    INCBIN "gfx/battle_balls/dusk_ball.2bpp.lz"
 AnimObjDreamBallGFX::   INCBIN "gfx/battle_balls/dream_ball.2bpp.lz"
 AnimObjPremierBallGFX:: INCBIN "gfx/battle_balls/premier_ball.2bpp.lz"
 AnimObjCherishBallGFX:: INCBIN "gfx/battle_balls/cherish_ball.2bpp.lz"
+
+
+SECTION "SGB Border Graphics", ROMX
+
+SGBBorderGFX::
+INCBIN "gfx/sgb/sgb_border.4bpp.lz"

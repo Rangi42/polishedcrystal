@@ -1,23 +1,23 @@
 DarkCaveVioletEntrance_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 3 ; warp events
+	def_warp_events
 	warp_event  3, 15, ROUTE_31, 3
 	warp_event 17,  1, DARK_CAVE_BLACKTHORN_ENTRANCE, 2
 	warp_event 35, 33, ROUTE_46, 3
 
-	db 1 ; coord events
+	def_coord_events
 	coord_event  5,  2, 0, DarkCaveVioletEntranceFalknerTrigger
 
-	db 1 ; bg events
-	bg_event 26,  3, SIGNPOST_ITEM + ELIXIR, EVENT_DARK_CAVE_VIOLET_ENTRANCE_HIDDEN_ELIXIR
+	def_bg_events
+	bg_event 26,  3, BGEVENT_ITEM + ELIXIR, EVENT_DARK_CAVE_VIOLET_ENTRANCE_HIDDEN_ELIXIR
 
-	db 11 ; object events
-	object_event 10,  2, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, URSARING, -1, -1, PAL_NPC_BROWN, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_DARK_CAVE_URSARING
-	object_event  9,  2, SPRITE_PIDGEOTTO_SIDE, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_DARK_CAVE_PIDGEOTTO
-	object_event  8,  2, SPRITE_FALKNER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_DARK_CAVE_FALKNER
+	def_object_events
+	object_event 10,  2, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, URSARING, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_DARK_CAVE_URSARING
+	object_event  9,  2, SPRITE_PIDGEOTTO_SIDE, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_DARK_CAVE_PIDGEOTTO
+	object_event  8,  2, SPRITE_FALKNER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_DARK_CAVE_FALKNER
 	itemball_event  6,  8, POTION, 1, EVENT_DARK_CAVE_VIOLET_ENTRANCE_POTION
 	smashrock_event 16, 14
 	smashrock_event 27, 6
@@ -27,7 +27,7 @@ DarkCaveVioletEntrance_MapScriptHeader:
 	itemball_event 35,  9, HYPER_POTION, 1, EVENT_DARK_CAVE_VIOLET_ENTRANCE_HYPER_POTION
 	itemball_event 30, 28, DIRE_HIT, 1, EVENT_DARK_CAVE_VIOLET_ENTRANCE_DIRE_HIT
 
-	const_def 1 ; object constants
+	object_const_def
 	const DARKCAVEVIOLETENTRANCE_URSARING
 	const DARKCAVEVIOLETENTRANCE_PIDGEOTTO
 	const DARKCAVEVIOLETENTRANCE_FALKNER
@@ -68,7 +68,7 @@ DarkCaveVioletEntranceFalknerTrigger:
 	scall .BeatUrsaring
 	opentext
 	writetext DarkCaveVioletEntranceFalknerDarkIntroText
-	jump .Finish
+	sjump .Finish
 
 .BeatUrsaring:
 	special SaveMusic

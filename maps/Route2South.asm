@@ -1,25 +1,25 @@
 Route2South_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event 15,  3, ROUTE_2_GATE, 3
 	warp_event  5,  7, VIRIDIAN_FOREST_VIRIDIAN_GATE, 3
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 1 ; bg events
-	bg_event  5, 29, SIGNPOST_JUMPTEXT, Route2SignText
+	def_bg_events
+	bg_event  5, 29, BGEVENT_JUMPTEXT, Route2SignText
 
-	db 7 ; object events
-	object_event 10, 23, SPRITE_BUG_MANIAC, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 5, GenericTrainerBug_maniacRob, -1
-	object_event  0, 16, SPRITE_BUG_MANIAC, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerBug_maniacDoug, -1
+	def_object_events
+	object_event 10, 23, SPRITE_BUG_MANIAC, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 5, GenericTrainerBug_maniacRob, -1
+	object_event  0, 16, SPRITE_BUG_MANIAC, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerBug_maniacDoug, -1
 	itemball_event 14, 30, ELIXIR, 1, EVENT_ROUTE_2_ELIXIR
 	cuttree_event 11, 16, EVENT_ROUTE_2_CUT_TREE_3
 	cuttree_event 12, 24, EVENT_ROUTE_2_CUT_TREE_4
 	cuttree_event 12, 30, EVENT_ROUTE_2_CUT_TREE_5
-	object_event 23, 23, SPRITE_BALL_CUT_FRUIT, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_16_WEST_CUT_TREE_1
+	object_event 23, 23, SPRITE_BALL_CUT_FRUIT, SPRITEMOVEDATA_CUTTABLE_TREE, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_16_WEST_CUT_TREE_1
 
 GenericTrainerBug_maniacRob:
 	generictrainer BUG_MANIAC, ROB, EVENT_BEAT_BUG_MANIAC_ROB, Bug_maniacRobSeenText, Bug_maniacRobBeatenText

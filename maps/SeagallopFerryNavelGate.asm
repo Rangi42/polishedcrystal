@@ -1,32 +1,32 @@
 SeagallopFerryNavelGate_MapScriptHeader:
-	db 2 ; scene scripts
+	def_scene_scripts
 	scene_script SeagallopFerryNavelGateTrigger0
 	scene_script SeagallopFerryNavelGateTrigger1
 
-	db 1 ; callbacks
+	def_callbacks
 	callback MAPCALLBACK_NEWMAP, SeagallopFerryNavelGateVisited
 
-	db 1 ; warp events
+	def_warp_events
 	warp_event  6,  0, NAVEL_ROCK_OUTSIDE, 1
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 0 ; bg events
+	def_bg_events
 
-	db 1 ; object events
-	object_event  6,  4, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SeagallopFerryNavelGateSailorScript, EVENT_OLIVINE_PORT_SAILOR_AT_GANGWAY
+	def_object_events
+	object_event  6,  4, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, SeagallopFerryNavelGateSailorScript, EVENT_OLIVINE_PORT_SAILOR_AT_GANGWAY
 
-	const_def 1 ; object constants
+	object_const_def
 	const SEAGALLOPFERRYNAVELGATE_SAILOR
 
 SeagallopFerryNavelGateTrigger1:
-	priorityjump SeagallopFerryNavelGate_PlayerArrives
+	prioritysjump SeagallopFerryNavelGate_PlayerArrives
 SeagallopFerryNavelGateTrigger0:
 	end
 
 SeagallopFerryNavelGateVisited:
 	setevent EVENT_VISITED_NAVEL_ROCK
-	return
+	endcallback
 
 SeagallopFerryNavelGate_PlayerArrives:
 	applymovement SEAGALLOPFERRYNAVELGATE_SAILOR, SeagallopFerryNavelGateSailorArrive1MovementData

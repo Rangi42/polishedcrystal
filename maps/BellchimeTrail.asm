@@ -1,35 +1,35 @@
 BellchimeTrail_MapScriptHeader:
-	db 1 ; scene scripts
+	def_scene_scripts
 	scene_script BellchimeTrailStepDownTrigger
 
-	db 1 ; callbacks
+	def_callbacks
 	callback MAPCALLBACK_OBJECTS, SetupValerieMorningWalkCallback
 
-	db 3 ; warp events
+	def_warp_events
 	warp_event  4,  4, WISE_TRIOS_ROOM, 1
 	warp_event  4,  5, WISE_TRIOS_ROOM, 2
 	warp_event 21,  9, TIN_TOWER_1F, 1 ; hole
 
-	db 1 ; coord events
+	def_coord_events
 	coord_event 21,  9, 1, BellchimeTrailPanUpTrigger
 
-	db 1 ; bg events
-	bg_event 22, 12, SIGNPOST_JUMPTEXT, TinTowerSignText
+	def_bg_events
+	bg_event 22, 12, BGEVENT_JUMPTEXT, TinTowerSignText
 
-	db 1 ; object events
-	object_event 16,  6, SPRITE_VALERIE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BellchimeTrailValerieScript, EVENT_VALERIE_BELLCHIME_TRAIL
+	def_object_events
+	object_event 16,  6, SPRITE_VALERIE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, BellchimeTrailValerieScript, EVENT_VALERIE_BELLCHIME_TRAIL
 
-	const_def 1 ; object constants
+	object_const_def
 	const BELLCHIMETRAIL_VALERIE
 
 BellchimeTrailStepDownTrigger:
-	priorityjump .Script
+	prioritysjump .Script
 	end
 
 .Script:
-	checkcode VAR_YCOORD
+	readvar VAR_YCOORD
 	ifnotequal $9, .Done
-	checkcode VAR_XCOORD
+	readvar VAR_XCOORD
 	ifnotequal $15, .Done
 	applyonemovement PLAYER, step_down
 .Done
@@ -47,15 +47,15 @@ SetupValerieMorningWalkCallback:
 	iffalse .Disappear
 .Appear:
 	appear BELLCHIMETRAIL_VALERIE
-	return
+	endcallback
 
 .Disappear:
 	disappear BELLCHIMETRAIL_VALERIE
-	return
+	endcallback
 
 BellchimeTrailPanUpTrigger:
 	playsound SFX_EXIT_BUILDING
-	applyonemovement PLAYER, hide_person
+	applyonemovement PLAYER, hide_object
 	waitsfx
 	applymovement PLAYER, .PanUpMovement
 	disappear PLAYER
@@ -108,14 +108,14 @@ BellchimeTrailValerieScript:
 	setevent EVENT_BEAT_VALERIE
 	opentext
 	writetext .RewardText
-	buttonsound
+	promptbutton
 	verbosegivetmhm TM_DAZZLINGLEAM
 	setevent EVENT_GOT_TM49_DAZZLINGLEAM_FROM_VALERIE
 	writetext .FarewellText
 .Depart
 	waitbutton
 	closetext
-	checkcode VAR_FACING
+	readvar VAR_FACING
 	ifnotequal RIGHT, .SkipGoAround
 	applymovement BELLCHIMETRAIL_VALERIE, .ValerieGoesAroundMovement
 .SkipGoAround
@@ -131,31 +131,31 @@ BellchimeTrailValerieScript:
 	closetext
 	winlosstext .RematchBeatenText, 0
 	setlasttalked BELLCHIMETRAIL_VALERIE
-	checkcode VAR_BADGES
+	readvar VAR_BADGES
 	ifequal 16, .Battle3
 	checkevent EVENT_BEAT_ELITE_FOUR
 	iftrue .Battle2
 	loadtrainer VALERIE, 1
 	startbattle
 	reloadmapafterbattle
-	jump .AfterRematch
+	sjump .AfterRematch
 
 .Battle2:
 	loadtrainer VALERIE, 2
 	startbattle
 	reloadmapafterbattle
-	jump .AfterRematch
+	sjump .AfterRematch
 
 .Battle3:
 	loadtrainer VALERIE, 3
 	startbattle
 	reloadmapafterbattle
-	jump .AfterRematch
+	sjump .AfterRematch
 
 .AfterRematch:
 	opentext
 	writetext .RematchFarewellText
-	jump .Depart
+	sjump .Depart
 
 .IntroText:
 	text "If it isn't the"

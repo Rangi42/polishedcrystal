@@ -1,45 +1,45 @@
 LuckyIsland_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 1 ; callbacks
+	def_callbacks
 	callback MAPCALLBACK_TILES, Script_ChangeLuckyIslandMap
 
-	db 0 ; warp events
+	def_warp_events
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 0 ; bg events
+	def_bg_events
 
-	db 9 ; object events
-	object_event 27, 18, SPRITE_BALL_CUT_FRUIT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, LuckyIslandLuckyEgg, EVENT_LUCKY_ISLAND_LUCKY_EGG
-	object_event 29,  6, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerFisherHall, EVENT_LUCKY_ISLAND_CIVILIANS
-	object_event 21, 16, SPRITE_BAKER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerBakerMargaret, EVENT_LUCKY_ISLAND_CIVILIANS
-	object_event 32, 23, SPRITE_BAKER, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerBakerOlga, EVENT_LUCKY_ISLAND_CIVILIANS
-	object_event 20, 21, SPRITE_ARTIST, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerArtistReina, EVENT_LUCKY_ISLAND_CIVILIANS
-	object_event 36, 16, SPRITE_ARTIST, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerArtistAlina, EVENT_LUCKY_ISLAND_CIVILIANS
-	object_event 23, 11, SPRITE_SIGHTSEER_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_PURPLE, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerSightseersLiandsu1, EVENT_LUCKY_ISLAND_CIVILIANS
-	object_event 23, 12, SPRITE_LADY, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_PURPLE, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerSightseersLiandsu2, EVENT_LUCKY_ISLAND_CIVILIANS
+	def_object_events
+	object_event 27, 18, SPRITE_BALL_CUT_FRUIT, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, LuckyIslandLuckyEgg, EVENT_LUCKY_ISLAND_LUCKY_EGG
+	object_event 29,  6, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerFisherHall, EVENT_LUCKY_ISLAND_CIVILIANS
+	object_event 21, 16, SPRITE_BAKER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 4, GenericTrainerBakerMargaret, EVENT_LUCKY_ISLAND_CIVILIANS
+	object_event 32, 23, SPRITE_BAKER, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerBakerOlga, EVENT_LUCKY_ISLAND_CIVILIANS
+	object_event 20, 21, SPRITE_ARTIST, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, GenericTrainerArtistReina, EVENT_LUCKY_ISLAND_CIVILIANS
+	object_event 36, 16, SPRITE_ARTIST, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 4, GenericTrainerArtistAlina, EVENT_LUCKY_ISLAND_CIVILIANS
+	object_event 23, 11, SPRITE_SIGHTSEER_M, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_PURPLE, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerSightseersLiandsu1, EVENT_LUCKY_ISLAND_CIVILIANS
+	object_event 23, 12, SPRITE_LADY, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_PURPLE, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerSightseersLiandsu2, EVENT_LUCKY_ISLAND_CIVILIANS
 	fruittree_event 25, 16, FRUITTREE_LUCKY_ISLAND, LIECHI_BERRY, PAL_NPC_RED, EVENT_LUCKY_ISLAND_CIVILIANS
 
-	const_def 1 ; object constants
+	object_const_def
 	const LUCKYISLAND_POKE_BALL
 
 Script_ChangeLuckyIslandMap:
 	special CheckIfTrendyPhraseIsLucky
 	iftrue .show
-	changemap LuckyIslandHidden_BlockData
+	changemapblocks LuckyIslandHidden_BlockData
 	setevent EVENT_LUCKY_ISLAND_CIVILIANS
 .hide_poke_ball
 	setevent EVENT_LUCKY_ISLAND_LUCKY_EGG
-	return
+	endcallback
 
 .show
-	changemap LuckyIsland_BlockData
+	changemapblocks LuckyIsland_BlockData
 	clearevent EVENT_LUCKY_ISLAND_CIVILIANS
 	checkevent EVENT_GOT_LUCKY_EGG_FROM_LUCKY_ISLAND
 	iftrue .hide_poke_ball
 	clearevent EVENT_LUCKY_ISLAND_LUCKY_EGG
-	return
+	endcallback
 
 GenericTrainerFisherHall:
 	generictrainer FISHER, HALL, EVENT_BEAT_FISHER_HALL, .SeenText, .BeatenText

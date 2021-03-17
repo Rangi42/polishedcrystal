@@ -1,20 +1,20 @@
 ManiasHouse_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event  2,  7, CIANWOOD_CITY, 1
 	warp_event  3,  7, CIANWOOD_CITY, 1
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 2 ; bg events
-	bg_event  5,  1, SIGNPOST_JUMPSTD, radio2
-	bg_event  7,  1, SIGNPOST_JUMPSTD, picturebookshelf
+	def_bg_events
+	bg_event  5,  1, BGEVENT_JUMPSTD, radio2
+	bg_event  7,  1, BGEVENT_JUMPSTD, picturebookshelf
 
-	db 1 ; object events
-	object_event  2,  4, SPRITE_ROCKER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_SCRIPT, 0, ManiaScript, -1
+	def_object_events
+	object_event  2,  4, SPRITE_ROCKER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, ManiaScript, -1
 
 ManiaScript:
 	faceplayer
@@ -30,7 +30,7 @@ ManiaScript:
 	iffalse .partyfull
 	special TeachShuckiePoisonJab
 	writetext ManiaText_TakeCareOfShuckie
-	buttonsound
+	promptbutton
 	waitsfx
 	writetext ManiaText_GotShuckie
 	playsound SFX_KEY_ITEM
@@ -40,7 +40,7 @@ ManiaScript:
 	end
 
 .alreadyhaveshuckie
-	checkflag ENGINE_SHUCKIE_GIVEN
+	checkflag ENGINE_GOT_SHUCKIE_TODAY
 	iffalse .returnshuckie
 	jumpopenedtext ManiaText_TakeCareOfShuckie
 

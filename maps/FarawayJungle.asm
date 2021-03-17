@@ -1,20 +1,20 @@
 FarawayJungle_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event 12, 18, FARAWAY_ISLAND, 1
 	warp_event 13, 18, FARAWAY_ISLAND, 2
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 0 ; bg events
+	def_bg_events
 
-	db 1 ; object events
-	object_event 12, 10, SPRITE_MEW, SPRITEMOVEDATA_WANDER, 3, 3, -1, -1, 0, PERSONTYPE_SCRIPT, 0, FarawayJungleMew, EVENT_FARAWAY_JUNGLE_MEW
+	def_object_events
+	object_event 12, 10, SPRITE_MEW, SPRITEMOVEDATA_WANDER, 3, 3, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, FarawayJungleMew, EVENT_FARAWAY_JUNGLE_MEW
 
-	const_def 1 ; object constants
+	object_const_def
 	const FARAWAYJUNGLE_MEW
 
 FarawayJungleMew:
@@ -25,7 +25,7 @@ FarawayJungleMew:
 	pause 15
 	closetext
 	loadwildmon MEW, 30
-	writecode VAR_BATTLETYPE, BATTLETYPE_LEGENDARY
+	loadvar VAR_BATTLETYPE, BATTLETYPE_LEGENDARY
 	startbattle
 	disappear FARAWAYJUNGLE_MEW
 	setevent EVENT_FARAWAY_JUNGLE_MEW

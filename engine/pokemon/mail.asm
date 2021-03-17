@@ -172,7 +172,7 @@ CheckPokeItem::
 	jr c, .close_sram_return
 	xor a
 	ld [wPokemonWithdrawDepositParameter], a
-	predef RemoveMonFromPartyOrBox
+	predef RemoveMonFromParty
 	ld a, $1
 
 .close_sram_return
@@ -202,7 +202,7 @@ GivePokeItem::
 	rst AddNTimes
 	ld d, h
 	ld e, l
-	ld hl, wd002
+	ld hl, wMonMailMessageBuffer
 	ld bc, MAIL_MSG_LENGTH + 1
 	ld a, BANK(sPartyMail)
 	call GetSRAMBank
@@ -290,19 +290,19 @@ IsAnyMonHoldingMail:
 	and a
 	ret
 
-_KrisMailBoxMenu:
+_PlayerMailBoxMenu:
 	call InitMail
 	jr z, .nomail
-	call LoadStandardMenuDataHeader
+	call LoadStandardMenuHeader
 	call MailboxPC
 	jp CloseWindow
 
 .nomail
 	ld hl, .EmptyMailboxText
-	jp MenuTextBoxBackup
+	jp MenuTextboxBackup
 
 .EmptyMailboxText:
-	text_jump _EmptyMailboxText
+	text_far _EmptyMailboxText
 	text_end
 
 InitMail:
@@ -360,13 +360,13 @@ MailboxPC_PrintMailAuthor:
 
 MailboxPC:
 	xor a
-	ld [wOBPals2 palette 6], a
+	ld [wCurMessageScrollPosition], a
 	ld a, 1
 	ld [wCurMessageIndex], a
 .loop
 	call InitMail
 	ld hl, .TopMenuDataHeader
-	call CopyMenuDataHeader
+	call CopyMenuHeader
 	xor a
 	ldh [hBGMapMode], a
 	call InitScrollingMenu
@@ -374,11 +374,11 @@ MailboxPC:
 
 	ld a, [wCurMessageIndex]
 	ld [wMenuCursorBuffer], a
-	ld a, [wOBPals2 palette 6]
+	ld a, [wCurMessageScrollPosition]
 	ld [wMenuScrollPosition], a
 	call ScrollingMenu
 	ld a, [wMenuScrollPosition]
-	ld [wOBPals2 palette 6], a
+	ld [wCurMessageScrollPosition], a
 	ld a, [wMenuCursorY]
 	ld [wCurMessageIndex], a
 
@@ -394,7 +394,7 @@ MailboxPC:
 
 .Submenu:
 	ld hl, .SubMenuDataHeader
-	call LoadMenuDataHeader
+	call LoadMenuHeader
 	call VerticalMenu
 	call ExitMenu
 	ret c
@@ -418,7 +418,7 @@ MailboxPC:
 
 .PutInPack:
 	ld hl, .MessageLostText
-	call MenuTextBox
+	call MenuTextbox
 	call YesNoBox
 	call ExitMenu
 	ret c
@@ -431,7 +431,7 @@ MailboxPC:
 	call ReceiveItem
 	jr c, .put_in_bag
 	ld hl, .PackFullText
-	jp MenuTextBoxBackup
+	jp MenuTextboxBackup
 
 .put_in_bag
 	ld a, [wMenuSelection]
@@ -439,18 +439,18 @@ MailboxPC:
 	ld b, a
 	call DeleteMailFromPC
 	ld hl, .PutAwayText
-	jp MenuTextBoxBackup
+	jp MenuTextboxBackup
 
 .PutAwayText:
-	text_jump ClearedMailPutAwayText
+	text_far ClearedMailPutAwayText
 	text_end
 
 .PackFullText:
-	text_jump MailPackFullText
+	text_far MailPackFullText
 	text_end
 
 .MessageLostText:
-	text_jump MailMessageLostText
+	text_far MailMessageLostText
 	text_end
 
 .GetMailType:
@@ -513,15 +513,15 @@ MailboxPC:
 	jp CloseSubmenu
 
 .HoldingMailText:
-	text_jump MailAlreadyHoldingItemText
+	text_far MailAlreadyHoldingItemText
 	text_end
 
 .EggText:
-	text_jump MailEggText
+	text_far MailEggText
 	text_end
 
 .MailMovedText:
-	text_jump MailMovedFromBoxText
+	text_far MailMovedFromBoxText
 	text_end
 
 .TopMenuDataHeader:

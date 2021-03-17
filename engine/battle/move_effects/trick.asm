@@ -38,7 +38,7 @@ BattleCommand_trick:
 	ld [de], a
 
 	ld hl, SwappedItemsText
-	call StdBattleTextBox
+	call StdBattleTextbox
 
 	ld a, MON_ITEM
 	call BattlePartyAttr

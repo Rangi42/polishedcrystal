@@ -1,29 +1,29 @@
 PowerPlant_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event  2, 17, ROUTE_10_NORTH, 2
 	warp_event  3, 17, ROUTE_10_NORTH, 2
 
-	db 1 ; coord events
+	def_coord_events
 	coord_event  5, 12, 1, PowerPlantGuardPhoneScript
 
-	db 2 ; bg events
-	bg_event  0,  1, SIGNPOST_JUMPSTD, difficultbookshelf
-	bg_event  1,  1, SIGNPOST_JUMPSTD, difficultbookshelf
+	def_bg_events
+	bg_event  0,  1, BGEVENT_JUMPSTD, difficultbookshelf
+	bg_event  1,  1, BGEVENT_JUMPSTD, difficultbookshelf
 
-	db 7 ; object events
-	object_event  4, 14, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_SCRIPT, 0, OfficerScript_0x188df5, -1
-	object_event  2,  9, SPRITE_GYM_GUY, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, GymGuyScript_0x188e15, -1
-	object_event  6, 11, SPRITE_GYM_GUY, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, GymGuyScript_0x188e29, -1
-	object_event  9,  3, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_SCRIPT, 0, OfficerScript_0x188e3d, -1
-	object_event  7,  2, SPRITE_GYM_GUY, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, GymGuyScript_0x188e51, -1
-	object_event 14, 10, SPRITE_FAT_GUY, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, PowerPlantManager, -1
-	object_event  5,  5, SPRITE_GYM_GUY, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, PowerPlantForestText, -1
+	def_object_events
+	object_event  4, 14, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, PowerPlantOfficerScript, -1
+	object_event  2,  9, SPRITE_GYM_GUY, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, PowerPlantGymGuide1Script, -1
+	object_event  6, 11, SPRITE_GYM_GUY, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, PowerPlantGymGuide2Script, -1
+	object_event  9,  3, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, PowerPlantOfficer2Script, -1
+	object_event  7,  2, SPRITE_GYM_GUY, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, PowerPlantGymGuide4Script, -1
+	object_event 14, 10, SPRITE_FAT_GUY, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, PowerPlantManager, -1
+	object_event  5,  5, SPRITE_GYM_GUY, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_COMMAND, jumptextfaceplayer, PowerPlantForestText, -1
 
-	const_def 1 ; object constants
+	object_const_def
 	const POWERPLANT_OFFICER1
 	const POWERPLANT_GYM_GUY1
 	const POWERPLANT_GYM_GUY2
@@ -33,55 +33,55 @@ PowerPlantGuardPhoneScript:
 	showemote EMOTE_SHOCK, POWERPLANT_OFFICER1, 15
 	waitsfx
 	pause 30
-	applymovement POWERPLANT_OFFICER1, MovementData_0x188ed5
+	applymovement POWERPLANT_OFFICER1, PowerPlantOfficer1ApproachGymGuide2Movement
 	turnobject POWERPLANT_GYM_GUY1, DOWN
 	turnobject POWERPLANT_GYM_GUY2, DOWN
-	showtext UnknownText_0x188f22
+	showtext PowerPlantOfficer1CeruleanShadyCharacterText
 	turnobject POWERPLANT_OFFICER1, LEFT
 	turnobject PLAYER, RIGHT
-	showtext UnknownText_0x188f7f
+	showtext PowerPlantOfficer1CouldIAskForYourCooperationText
 	turnobject PLAYER, DOWN
-	applymovement POWERPLANT_OFFICER1, MovementData_0x188eda
+	applymovement POWERPLANT_OFFICER1, PowerPlantOfficer1ReturnToPostMovement
 	setscene $0
 	end
 
-OfficerScript_0x188df5:
-	checkevent EVENT_RETURNED_MACHINE_PART
-	iftrue_jumptextfaceplayer UnknownText_0x188fa2
+PowerPlantOfficerScript:
+	checkevent EVENT_RESTORED_POWER_TO_KANTO
+	iftrue_jumptextfaceplayer PowerPlantOfficer1HaveToBeefUpSecurityText
 	checkevent EVENT_MET_MANAGER_AT_POWER_PLANT
-	iftrue_jumptextfaceplayer UnknownText_0x188f7f
-	jumptextfaceplayer UnknownText_0x188ee0
+	iftrue_jumptextfaceplayer PowerPlantOfficer1CouldIAskForYourCooperationText
+	jumptextfaceplayer PowerPlantOfficer1AThiefBrokeInText
 
-GymGuyScript_0x188e15:
-	checkevent EVENT_RETURNED_MACHINE_PART
-	iftrue_jumptextfaceplayer UnknownText_0x189038
-	jumptextfaceplayer UnknownText_0x188fcf
+PowerPlantGymGuide1Script:
+	checkevent EVENT_RESTORED_POWER_TO_KANTO
+	iftrue_jumptextfaceplayer PowerPlantGymGuide1GeneratorUpAndRunningText
+	jumptextfaceplayer PowerPlantGymGuide1SomeoneStoleAPartText
 
-GymGuyScript_0x188e29:
-	checkevent EVENT_RETURNED_MACHINE_PART
-	iftrue_jumptextfaceplayer UnknownText_0x1890ef
-	jumptextfaceplayer UnknownText_0x189079
+PowerPlantGymGuide2Script:
+	checkevent EVENT_RESTORED_POWER_TO_KANTO
+	iftrue_jumptextfaceplayer PowerPlantGymGuide2GeneratorIsRunningAgainText
+	jumptextfaceplayer PowerPlantGymGuide2PowerPlantUpAndRunningText
 
-OfficerScript_0x188e3d:
-	checkevent EVENT_RETURNED_MACHINE_PART
-	iftrue_jumptextfaceplayer UnknownText_0x18917f
-	jumptextfaceplayer UnknownText_0x18910e
+PowerPlantOfficer2Script:
+	checkevent EVENT_RESTORED_POWER_TO_KANTO
+	iftrue_jumptextfaceplayer PowerPlantOfficer2ManagerHasBeenCheerfulText
+	jumptextfaceplayer PowerPlantOfficer2ManagerHasBeenSadAndFuriousText
 
-GymGuyScript_0x188e51:
-	checkevent EVENT_RETURNED_MACHINE_PART
-	iftrue_jumptextfaceplayer UnknownText_0x189225
-	jumptextfaceplayer UnknownText_0x1891c2
+PowerPlantGymGuide4Script:
+	checkevent EVENT_RESTORED_POWER_TO_KANTO
+	iftrue_jumptextfaceplayer PowerPlantGymGuide4WeCanGetMagnetTrainRunningText
+	jumptextfaceplayer PowerPlantGymGuide4MagnetTrainConsumesElectricityText
 
 PowerPlantManager:
 	faceplayer
 	opentext
-	checkevent EVENT_RETURNED_MACHINE_PART
+	checkevent EVENT_RESTORED_POWER_TO_KANTO
 	iftrue PowerPlantTutorZapCannonScript
 	checkkeyitem MACHINE_PART
 	iftrue UnknownScript_0x188e93
 	checkevent EVENT_MET_MANAGER_AT_POWER_PLANT
-	iftrue_jumpopenedtext UnknownText_0x189308
-	writetext UnknownText_0x189264
+	iftrue_jumpopenedtext PowerPlantManagerIWontForgiveCulpritText
+	writetext PowerPlantManagerWhoWouldRuinMyGeneratorText
 	waitbutton
 	closetext
 	setevent EVENT_MET_MANAGER_AT_POWER_PLANT
@@ -91,10 +91,9 @@ PowerPlantManager:
 	end
 
 UnknownScript_0x188e93:
-	writetext UnknownText_0x18936e
-	buttonsound
+	writetext PowerPlantManagerThatsThePartText
+	promptbutton
 	takekeyitem MACHINE_PART
-	setevent EVENT_RETURNED_MACHINE_PART
 	clearevent EVENT_SAFFRON_TRAIN_STATION_POPULATION
 	setevent EVENT_ROUTE_5_6_POKEFAN_M_BLOCKS_UNDERGROUND_PATH
 	setevent EVENT_ROUTE_24_ROCKET
@@ -102,7 +101,7 @@ UnknownScript_0x188e93:
 	clearevent EVENT_GOLDENROD_TRAIN_STATION_GENTLEMAN
 	setmapscene ROUTE_10_NORTH, $1
 	clearevent EVENT_LAWRENCE_ROUTE_10
-	writetext UnknownText_0x1893c4
+	writetext PowerPlantManagerTakeThisTMText
 	waitbutton
 PowerPlantTutorZapCannonScript:
 	writetext Text_PowerPlantTutorZapCannon
@@ -112,7 +111,7 @@ PowerPlantTutorZapCannonScript:
 	writetext Text_PowerPlantTutorQuestion
 	yesorno
 	iffalse .TutorRefused
-	writebyte ZAP_CANNON
+	setval ZAP_CANNON
 	writetext ClearText
 	special Special_MoveTutor
 	ifequal $0, .TeachMove
@@ -126,14 +125,14 @@ PowerPlantTutorZapCannonScript:
 	takeitem SILVER_LEAF
 	jumpopenedtext Text_PowerPlantTutorTaught
 
-MovementData_0x188ed5:
+PowerPlantOfficer1ApproachGymGuide2Movement:
 	step_right
 	step_right
 	step_up
 	step_up
 	step_end
 
-MovementData_0x188eda:
+PowerPlantOfficer1ReturnToPostMovement:
 	step_down
 	step_down
 	step_left
@@ -141,7 +140,7 @@ MovementData_0x188eda:
 	turn_head_down
 	step_end
 
-UnknownText_0x188ee0:
+PowerPlantOfficer1AThiefBrokeInText:
 	text "A thief broke into"
 	line "the Power Plant…"
 
@@ -149,7 +148,7 @@ UnknownText_0x188ee0:
 	line "coming to?"
 	done
 
-UnknownText_0x188f22:
+PowerPlantOfficer1CeruleanShadyCharacterText:
 	text "I just got word"
 	line "from Cerulean."
 
@@ -160,18 +159,18 @@ UnknownText_0x188f22:
 	line "around."
 	done
 
-UnknownText_0x188f7f:
+PowerPlantOfficer1CouldIAskForYourCooperationText:
 	text "Could I ask for"
 	line "your cooperation?"
 	done
 
-UnknownText_0x188fa2:
+PowerPlantOfficer1HaveToBeefUpSecurityText:
 	text "We'll have to beef"
 	line "up our security"
 	cont "presence."
 	done
 
-UnknownText_0x188fcf:
+PowerPlantGymGuide1SomeoneStoleAPartText:
 	text "Someone made off"
 	line "with a part that's"
 
@@ -183,7 +182,7 @@ UnknownText_0x188fcf:
 	cont "useless!"
 	done
 
-UnknownText_0x189038:
+PowerPlantGymGuide1GeneratorUpAndRunningText:
 	text "The generator's up"
 	line "and running. It's"
 
@@ -191,7 +190,7 @@ UnknownText_0x189038:
 	line "to spare."
 	done
 
-UnknownText_0x189079:
+PowerPlantGymGuide2PowerPlantUpAndRunningText:
 	text "This Power Plant"
 	line "had been abandoned"
 	cont "in the past."
@@ -203,12 +202,12 @@ UnknownText_0x189079:
 	line "the Magnet Train."
 	done
 
-UnknownText_0x1890ef:
+PowerPlantGymGuide2GeneratorIsRunningAgainText:
 	text "The generator's"
 	line "running again!"
 	done
 
-UnknownText_0x18910e:
+PowerPlantOfficer2ManagerHasBeenSadAndFuriousText:
 	text "The Power Plant's"
 	line "Manager is up"
 	cont "ahead."
@@ -220,7 +219,7 @@ UnknownText_0x18910e:
 	cont "furious…"
 	done
 
-UnknownText_0x18917f:
+PowerPlantOfficer2ManagerHasBeenCheerfulText:
 	text "Since the gener-"
 	line "ator's been fixed,"
 
@@ -228,7 +227,7 @@ UnknownText_0x18917f:
 	line "been cheerful."
 	done
 
-UnknownText_0x1891c2:
+PowerPlantGymGuide4MagnetTrainConsumesElectricityText:
 	text "The Magnet Train"
 	line "consumes a lot of"
 	cont "electricity."
@@ -238,7 +237,7 @@ UnknownText_0x1891c2:
 	cont "isn't operating."
 	done
 
-UnknownText_0x189225:
+PowerPlantGymGuide4WeCanGetMagnetTrainRunningText:
 	text "All right! We can"
 	line "finally get the"
 
@@ -246,7 +245,7 @@ UnknownText_0x189225:
 	line "running again."
 	done
 
-UnknownText_0x189264:
+PowerPlantManagerWhoWouldRuinMyGeneratorText:
 	text "Manager: I, I, I'm"
 	line "ready to blast"
 	cont "someone!"
@@ -264,7 +263,7 @@ UnknownText_0x189264:
 	line "Cannon!"
 	done
 
-UnknownText_0x189308:
+PowerPlantManagerIWontForgiveCulpritText:
 	text "Manager: I won't"
 	line "forgive him!"
 
@@ -277,7 +276,7 @@ UnknownText_0x189308:
 	para "Gahahahah!"
 	done
 
-UnknownText_0x18936e:
+PowerPlantManagerThatsThePartText:
 	text "Manager: Ah! Yeah!"
 
 	para "That's the missing"
@@ -286,7 +285,7 @@ UnknownText_0x18936e:
 	cont "You found it?"
 	done
 
-UnknownText_0x1893c4:
+PowerPlantManagerTakeThisTMText:
 	text "Wahah! Thanks!"
 	line "You deserve a"
 	cont "reward!"

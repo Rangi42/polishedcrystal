@@ -1,26 +1,26 @@
 SeafoamGym_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 1 ; warp events
+	def_warp_events
 	warp_event 12, 20, SEAFOAM_ISLANDS_1F, 2
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 0 ; bg events
+	def_bg_events
 
-	db 8 ; object events
-	object_event 10, 20, SPRITE_GYM_GUY, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, SeafoamGymGuyScript, EVENT_SEAFOAM_GYM_GYM_GUY
-	object_event  7, 16, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerScientistLowell, -1
-	object_event 14, 14, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerScientistDennett, -1
-	object_event 19, 12, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerSupernerdCary, -1
-	object_event 12,  7, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerScientistLinden, -1
-	object_event 10,  5, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerSupernerdWaldo, -1
-	object_event  6, 14, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerSupernerdMerle, -1
-	object_event 12, 11, SPRITE_BLAINE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BlaineScript_0x1ab4fb, -1
+	def_object_events
+	object_event 10, 20, SPRITE_GYM_GUY, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, SeafoamGymGuyScript, EVENT_SEAFOAM_GYM_GYM_GUY
+	object_event  7, 16, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerScientistLowell, -1
+	object_event 14, 14, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerScientistDennett, -1
+	object_event 19, 12, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerSupernerdCary, -1
+	object_event 12,  7, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerScientistLinden, -1
+	object_event 10,  5, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerSupernerdWaldo, -1
+	object_event  6, 14, SPRITE_SUPER_NERD, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerSupernerdMerle, -1
+	object_event 12, 11, SPRITE_BLAINE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, SeafoamGymBlaineScript, -1
 
-	const_def 1 ; object constants
+	object_const_def
 	const SEAFOAMGYM_GYM_GUY
 
 GenericTrainerScientistLowell:
@@ -69,15 +69,15 @@ GenericTrainerSupernerdMerle:
 	cont "you are."
 	done
 
-BlaineScript_0x1ab4fb:
+SeafoamGymBlaineScript:
 	faceplayer
 	opentext
 	checkflag ENGINE_VOLCANOBADGE
 	iftrue .FightDone
-	writetext UnknownText_0x1ab548
+	writetext BlaineIntroText
 	waitbutton
 	closetext
-	winlosstext UnknownText_0x1ab646, 0
+	winlosstext BlaineWinLossText, 0
 	loadtrainer BLAINE, 1
 	startbattle
 	iftrue .ReturnAfterBattle
@@ -92,30 +92,30 @@ BlaineScript_0x1ab4fb:
 	setevent EVENT_BEAT_SUPER_NERD_WALDO
 	setevent EVENT_BEAT_SUPER_NERD_MERLE
 	opentext
-	writetext UnknownText_0x1ab683
+	writetext ReceivedVolcanoBadgeText
 	playsound SFX_GET_BADGE
 	waitsfx
 	setflag ENGINE_VOLCANOBADGE
-	checkcode VAR_BADGES
+	readvar VAR_BADGES
 	ifequal 9, .FirstBadge
 	ifequal 10, .SecondBadge
 	ifequal 12, .LyrasEgg
-	jump .FightDone
+	sjump .FightDone
 .FirstBadge:
 	specialphonecall SPECIALCALL_FIRSTBADGE
-	jump .FightDone
+	sjump .FightDone
 .SecondBadge:
 	checkevent EVENT_GOT_GS_BALL_FROM_POKECOM_CENTER
 	iftrue .FightDone
 	specialphonecall SPECIALCALL_SECONDBADGE
-	jump .FightDone
+	sjump .FightDone
 .LyrasEgg:
 	specialphonecall SPECIALCALL_LYRASEGG
 .FightDone:
 	checkevent EVENT_GOT_TM61_WILL_O_WISP
-	iftrue_jumpopenedtext UnknownText_0x1ab71c
-	writetext UnknownText_0x1ab69d
-	buttonsound
+	iftrue_jumpopenedtext BlaineFightDoneText
+	writetext BlaineAfterBattleText
+	promptbutton
 	verbosegivetmhm TM_WILL_O_WISP
 	setevent EVENT_GOT_TM61_WILL_O_WISP
 	jumpthisopenedtext
@@ -234,7 +234,7 @@ SupernerdMerleBeatenText:
 	text "Pardon me!"
 	done
 
-UnknownText_0x1ab548:
+BlaineIntroText:
 	text "Blaine: Waaah!"
 
 	para "My Gym in Cinnabar"
@@ -262,7 +262,7 @@ UnknownText_0x1ab548:
 	line "have Burn Heal!"
 	done
 
-UnknownText_0x1ab646:
+BlaineWinLossText:
 	text "Blaine: Awesome."
 	line "I've burned out…"
 
@@ -270,17 +270,17 @@ UnknownText_0x1ab646:
 	line "Volcano Badge!"
 	done
 
-UnknownText_0x1ab683:
+ReceivedVolcanoBadgeText:
 	text "<PLAYER> received"
 	line "the Volcano Badge."
 	done
 
-UnknownText_0x1ab69d:
+BlaineAfterBattleText:
 	text "Here, I'll give you"
 	line "this, too."
 	done
 
-UnknownText_0x1ab71c:
+BlaineFightDoneText:
 	text "Blaine: My fire"
 	line "#mon will be"
 

@@ -7,10 +7,7 @@ wDefaultSpawnpoint:: db
 
 UNION
 ; mon buffer
-wBufferMonNick:: ds MON_NAME_LENGTH
-wBufferMonOT:: ds NAME_LENGTH
-wBufferMon:: party_struct wBufferMon
-	ds 8
+	ds 78
 wMonOrItemNameBuffer:: ds NAME_LENGTH
 
 NEXTU
@@ -52,14 +49,14 @@ wTownMapCursorLandmark:: db
 wTownMapCursorObjectPointer:: dw
 NEXTU
 wTownMapCursorCoordinates:: dw
+wStartFlypoint:: db
+wEndFlypoint:: db
 ENDU
 
 NEXTU
 ; phone call data
 wPhoneScriptBank:: db
-wPhoneCaller::
-wPhoneCallerLo:: db
-wPhoneCallerHi:: db
+wPhoneCaller:: dw
 
 NEXTU
 ; radio data
@@ -73,12 +70,6 @@ wRadioText:: ds 2 * SCREEN_WIDTH
 wRadioTextEnd::
 
 NEXTU
-; trainer HUD data
-	ds 1
-wPlaceBallsDirection:: db
-wTrainerHUDTiles:: db
-
-NEXTU
 ; movement buffer data
 wMovementBufferCount:: db
 wMovementBufferObject:: db
@@ -86,15 +77,59 @@ wMovementBufferObject:: db
 wMovementBuffer:: ds 55
 
 NEXTU
-; other buffers
-wEarthquakeMovementDataBuffer::
-wLuckyNumberDigitsBuffer:: ds 5
+; trainer HUD data
+	ds 1
+wPlaceBallsDirection:: db
+wTrainerHUDTiles:: db
 
 NEXTU
-; unidentified
-wd002:: db ; TODO: replace with meaningful labels
-wd003:: db ; TODO: replace with meaningful labels
-wd004:: db ; TODO: replace with meaningful labels
+; battle exp gain
+wExperienceGained:: ds 3
+
+NEXTU
+; earthquake data buffer
+wEarthquakeMovementDataBuffer:: ds 5
+
+NEXTU
+; switching items in pack
+wSwitchItemBuffer:: ds 2 ; may store 1 or 2 bytes
+
+NEXTU
+; switching pokemon in party
+; may store NAME_LENGTH, PARTYMON_STRUCT_LENGTH, or MAIL_STRUCT_LENGTH bytes
+wSwitchMonBuffer:: ds 48
+
+NEXTU
+; giving pokemon mail
+wMonMailMessageBuffer:: ds MAIL_MSG_LENGTH + 1
+
+NEXTU
+; prof. oak's pc
+wTempPokedexSeenCount:: db
+wTempPokedexCaughtCount:: db
+
+NEXTU
+; player's room pc
+UNION
+wDecoNameBuffer:: ds ITEM_NAME_LENGTH
+NEXTU
+wNumOwnedDecoCategories:: db
+wOwnedDecoCategories:: ds 16
+ENDU
+
+NEXTU
+; trade
+wCurTradePartyMon:: db
+wCurOTTradePartyMon:: db
+wBufferTrademonNick:: ds MON_NAME_LENGTH
+
+NEXTU
+; link battle record data
+wLinkBattleRecordBuffer::
+wLinkBattleRecordName::   ds NAME_LENGTH
+wLinkBattleRecordWins::   dw
+wLinkBattleRecordLosses:: dw
+wLinkBattleRecordDraws::  dw
 
 NEXTU
 wMoveScreenMode:: db ; normal, learning, reminder, deletion
@@ -106,22 +141,36 @@ wMoveScreenMoves:: ds 55
 
 NEXTU
 ; miscellaneous
-wTempDayOfWeek:: db
+wTempItem::
+wTempPartyCount::
+wPrevPartyLevel::
+wUnownPuzzleCornerTile::
+wKeepSevenBiasChance::
+wTempDayOfWeek::
+	db
 
-	ds 2 ; unused
-
-wStartFlypoint:: db
-wEndFlypoint:: db
-
-	ds 55
+	ds 59
 
 UNION
-; TODO: replace with meaningful values (see pokecrystal commit 2184b60)
-wEngineBuffer1:: db
-wEngineBuffer2:: db
-wEngineBuffer3:: db
-wEngineBuffer4:: db
-wEngineBuffer5:: db
+; trainer data
+wSeenTrainerBank:: db
+wSeenTrainerDistance:: db
+wSeenTrainerDirection:: db
+wTempTrainer::
+wTempTrainerEventFlag::
+wTempTrainerEventFlagLo:: db
+wTempTrainerEventFlagHi:: db
+wTempTrainerClass:: db
+wTempTrainerID:: db
+wSeenTextPointer:: dw
+wWinTextPointer:: dw
+wGenericTempTrainerHeaderEnd::
+wLossTextPointer:: dw
+wScriptAfterPointer:: dw
+wRunningTrainerBattleScript:: db
+wTempTrainerEnd::
+	ds 1
+wStashedTextPointer:: dw
 
 NEXTU
 ; menu items list
@@ -129,20 +178,20 @@ wMenuItemsList:: ds 16
 wMenuItemsListEnd::
 
 NEXTU
-; temporary script buffers
-wTempScriptBuffer:: db
-wJumpStdScriptBuffer:: ds 15
-
-NEXTU
-; item ball data
-wCurItemBallContents:: db
-wCurItemBallQuantity:: db
-
-NEXTU
 ; fruit tree data
 wCurFruitTree:: db
 	ds 1
 wCurFruit:: db
+
+NEXTU
+; item ball data
+wItemBallItemID:: db
+wItemBallQuantity:: db
+
+NEXTU
+; hidden item data
+wHiddenItemEvent:: dw
+wHiddenItemID:: db
 
 NEXTU
 ; elevator data
@@ -168,39 +217,22 @@ wCurBGEvent::
 wCurBGEventYCoord:: db
 wCurBGEventXCoord:: db
 wCurBGEventType:: db
-wCurBGEventScriptAddr:: db
-
-NEXTU
-; trainer data
-	ds 3
-wTempTrainer::
-wTempTrainerEventFlag::
-wTempTrainerEventFlagLo:: db
-wTempTrainerEventFlagHi:: db
-wTempTrainerClass:: db
-wTempTrainerID:: db
-wSeenTextPointer:: dw
-wWinTextPointer:: dw
-wGenericTempTrainerHeaderEnd::
-wLossTextPointer:: dw
-wScriptAfterPointer:: dw
-wRunningTrainerBattleScript:: db
-wTempTrainerEnd::
-	ds 1
-wStashedTextPointer:: dw
+wCurBGEventScriptAddr:: dw
 
 NEXTU
 ; mart data
-	ds 1
+wMartType:: db
 wMartPointerBank:: db
 wMartPointer:: dw
-	ds 1
+wMartJumptableIndex:: db
 wBargainShopFlags:: db
 
 NEXTU
 ; player movement data
-wCurInput:: db
-	ds 3
+wCurInput::
+wFacingTileID:: db
+	ds 2
+wWalkingIntoEdgeWarp:: db
 wMovementAnimation:: db
 wWalkingDirection:: db
 wFacingDirection:: db
@@ -211,16 +243,35 @@ wWalkingTile:: db
 wPlayerTurningDirection:: db
 
 NEXTU
+; temporary script buffers
+wTempScriptBuffer:: db
+wJumpStdScriptBuffer:: ds 15
+
+NEXTU
+; phone script data
+wCheckedTime:: db
+wPhoneListIndex:: db
+wNumAvailableCallers:: db
+wAvailableCallers:: ds CONTACT_LIST_SIZE - 4 ; bug: available callers list affects mem addresses outside union (up to 4 bytes)
+wAvailableCallersEnd::
+
+NEXTU
+; phone caller contact
+	ds 1
+wCallerContact:: ds PHONE_CONTACT_SIZE
+
+NEXTU
 ; backup menu data
 	ds 7
 wMenuCursorBufferBackup:: db
 wMenuScrollPositionBackup:: db
 
 NEXTU
-; phone script pointer
-	ds 10
-wPhoneScriptPointer:: dw
-
+; poison step data
+wPoisonStepData::
+wPoisonStepFlagSum:: db
+wPoisonStepPartyFlags:: ds PARTY_LENGTH
+wPoisonStepDataEnd::
 ENDU
 
 ENDU
@@ -239,11 +290,26 @@ wBattleBerriesPocketScrollPosition:: db
 
 wTMHMMoveNameBackup:: ds MOVE_NAME_LENGTH
 
-wStringBuffer1:: ds 24
-wStringBuffer2:: ds 19
-wStringBuffer3:: ds 19
-wStringBuffer4:: ds 19
-wStringBuffer5:: ds 19
+wStringBuffer1:: ds STRING_BUFFER_LENGTH + 5
+wStringBuffer2:: ds STRING_BUFFER_LENGTH
+wStringBuffer3:: ds STRING_BUFFER_LENGTH
+
+UNION
+; mostly used for the phone, Buffer4 is also used in some overworld events
+wStringBuffer4:: ds STRING_BUFFER_LENGTH
+wStringBuffer5:: ds STRING_BUFFER_LENGTH
+NEXTU
+wAIMoves:: ds 4 ; enemy moves excluding unusable moves
+wAIMoveScore:: ds 4 ; score for each move
+wAIFlags:: ds 2 ; modified from trainer struct as player get more badges
+NEXTU
+; Most of this data is tracked in SRAM to last between saves.
+; It's only moved here as part of battle initialization, mostly.
+; Thus, it's OK for it to reuse other WRAM space.
+wBT_PartySelectCounter:: db
+wBT_PartySelections:: ds PARTY_LENGTH
+wBT_OTMonParty:: ds BATTLETOWER_PARTYDATA_SIZE
+ENDU
 
 wBattleMenuCursorBuffer:: dw
 
@@ -311,16 +377,16 @@ wCurMart:: ds 16
 wCurMartEnd::
 NEXTU
 ; miscellaneous
-wInverseBattleScore::
 wCurElevator:: db
-wCurElevatorFloors::
+wCurElevatorFloors:: db
+NEXTU
+wInverseBattleScore::
+wCurMessageScrollPosition:: db
 wCurMessageIndex:: db
 wMailboxCount:: db
 wMailboxItems:: ds MAILBOX_CAPACITY
 wMailboxEnd:: db
 ENDU
-
-	ds 5 ; unused
 
 wCurIconMonHasItemOrMail:: db
 
@@ -353,19 +419,14 @@ wPokemonWithdrawDepositParameter::
 ; 3: Put into Day-Care
 	db
 
-wIsCurMonInParty::
 wItemQuantityChangeBuffer:: db
 wItemQuantityBuffer:: db
-
-;TempMPWaveform::
-wTempMon:: party_struct wTempMon
 
 wSpriteFlags::
 ; 5: use vbk1 if set, otherwise vbk0
 	db
 
 wHandlePlayerStep:: db
-	ds 1
 
 wPartyMenuActionText:: db
 
@@ -404,7 +465,19 @@ wBGMapAnchor:: dw
 
 wOldTileset:: db
 
-	ds 63 ; unused
+UNION
+wTempMon:: party_struct wTempMon
+wTempMonNickname:: ds MON_NAME_LENGTH
+wTempMonOT:: ds NAME_LENGTH
+NEXTU
+wEncodedTempMon:: savemon_struct wEncodedTempMon
+ENDU
+
+; Points towards box + slot if using GetStorageBoxMon. Slot set to 0 if empty.
+wTempMonBox:: db
+wTempMonSlot:: db
+
+	ds 39 ; unused
 
 wOverworldMapAnchor:: dw
 wMetatileStandingY:: db
@@ -436,6 +509,7 @@ wWestMapConnection:: map_connection_struct wWest
 wEastMapConnection:: map_connection_struct wEast
 
 wTileset::
+wTilesetBank::
 wTilesetGFX0Bank:: db
 wTilesetGFX0Address:: dw
 wTilesetGFX1Bank:: db
@@ -492,20 +566,19 @@ wMagikarpLengthMmLo:: db
 NEXTU
 ; link data
 	ds 9
-wLinkBuffer:: ds 4
+wLinkBattleRNPreamble:: ds 4
 wLinkBattleRNs:: ds 10
-wLinkBattleEarlyEnd:: dw
-wLinkBufferEnd::
 
 NEXTU
 ; battle data
 	ds 7
 wCurEnemyItem:: db
 	ds 15
-wTempEnemyMonSpecies:: db
-wTempBattleMonSpecies:: db
 
 ENDU
+
+wTempEnemyMonSpecies:: db
+wTempBattleMonSpecies:: db
 
 wEnemyMon:: battle_struct wEnemyMon
 
@@ -521,6 +594,7 @@ wBattleMode::
 ; 2: trainer battle
 	db
 
+wBT_TrainerTextIndex::
 wTempWildMonSpecies:: db
 
 wOtherTrainerClass::
@@ -550,8 +624,6 @@ wOtherTrainerID::
 	db
 
 wTrainerClass:: db
-
-	ds 1 ; unused
 
 wMoveSelectionMenuType::
 ; 0: battle move selection
@@ -591,12 +663,13 @@ wCurDamage:: dw
 wMornEncounterRate:: db
 wDayEncounterRate:: db
 wNiteEncounterRate:: db
+wEveEncounterRate:: db
 wWaterEncounterRate:: db
 
 wListMoves_MoveIndicesBuffer:: ds NUM_MOVES
 wPutativeTMHMMove:: db
 wForgettingMove:: db
-wBattleHasJustStarted:: db
+wTotalBattleTurns:: db
 
 ; TODO: apply imported wd265 labels to appropriate locations
 wNamedObjectIndexBuffer::
@@ -640,17 +713,30 @@ wPokedexShowPointerBank:: db
 wEnemyFleeing:: db
 wNumFleeAttempts:: db
 
-wLinkOTExchangeStart::
+wOTPartyData::
 wOTPlayerName:: ds NAME_LENGTH
 wOTPlayerID:: dw
 wOTPartyCount:: db
 wOTPartySpecies:: ds PARTY_LENGTH + 1 ; legacy scripts don't check PartyCount
 
-; OT party data -- OTPartyMon1 and nicknames is always available
-; TODO: organize this union better
+; OT party data -- OTPartyMon1 and nicknames is always available (nicknames available because DudeBag doesn't extend very far)
 wOTPartyMons::
 wOTPartyMon1:: party_struct wOTPartyMon1
+
 UNION
+; OTPartymon2-6 (and OTs/nicknames)
+wOTPartyMon2:: party_struct wOTPartyMon2
+wOTPartyMon3:: party_struct wOTPartyMon3
+wOTPartyMon4:: party_struct wOTPartyMon4
+wOTPartyMon5:: party_struct wOTPartyMon5
+wOTPartyMon6:: party_struct wOTPartyMon6
+
+wOTPartyMonsEnd::
+wOTPartyMonOT:: ds NAME_LENGTH * PARTY_LENGTH
+wOTPartyMonNicknames:: ds MON_NAME_LENGTH * PARTY_LENGTH ; make sure this is always available!
+wOTPartyDataEnd::
+
+NEXTU
 ; catch tutorial dude bag
 wDudeBag::
 wDudeNumItems:: db
@@ -664,18 +750,7 @@ wDudeBalls:: ds 2 * 2
 wDudeBallsEnd:: db
 wDudeBagEnd::
 
-NEXTU
-wOTPartyMon2:: party_struct wOTPartyMon2
-wOTPartyMon3:: party_struct wOTPartyMon3
-wOTPartyMon4:: party_struct wOTPartyMon4
-wOTPartyMon5:: party_struct wOTPartyMon5
-wOTPartyMon6:: party_struct wOTPartyMon6
 ENDU
-wOTPartyMonsEnd::
-wOTPartyMonOT:: ds NAME_LENGTH * PARTY_LENGTH
-wOTPartyMonNicknames:: ds MON_NAME_LENGTH * PARTY_LENGTH
-wOTPartyDataEnd::
-wLinkOTExchangeEnd::
 
 wBattleAction:: db
 wLinkBattleSentAction:: db
@@ -720,7 +795,9 @@ wWildEncounterCooldown:: db
 
 wWildBattlePanic:: db
 
-wBattleScriptFlags:: dw
+wBattleScriptFlags:: db
+wWildMonForm:: db
+
 wPlayerSpriteSetupFlags::
 ; bit 7: if set, cancel wPlayerAction
 ; bit 6: RefreshMapSprites doesn't reload player sprite
@@ -827,7 +904,15 @@ wObject11Struct:: object_struct wObject11
 wObject12Struct:: object_struct wObject12
 wObjectStructsEnd::
 
-wCmdQueue:: ds CMDQUEUE_CAPACITY * CMDQUEUE_ENTRY_SIZE
+wStoneTableAddress:: dw
+
+wBattleTowerCurStreak:: dw
+wBattleTowerTopStreak:: dw
+
+wBillsPC_BoxThemes:: ds NUM_BOXES
+wBillsPC_BoxThemesEnd::
+
+	ds 3
 
 wMapObjects::
 wPlayerObject:: map_object wPlayer
@@ -873,25 +958,25 @@ wCurTimeOfDay:: db
 wSecretID:: dw
 
 wStatusFlags::
-	; 0 - pokedex
-	; 1 - unown dex
-	; 2 - flash
-	; 3 - pokerus
-	; 4 - rocket signal
-	; 5 - wild encounters on/off
-	; 6 - hall of fame
-	; 7 - bug contest on
+	; bit 0: pokedex
+	; bit 1: unown dex
+	; bit 2: flash
+	; bit 3: caught pokerus
+	; bit 4: rocket signal
+	; bit 5: wild encounters on/off
+	; bit 6: hall of fame
+	; bit 7: bug contest on (unused?)
 	db
 
 wStatusFlags2::
-	; 0 - rockets
-	; 1 - safari game
-	; 2 - bug contest timer
-	; 3 - seen shamouti island
-	; 4 - bike shop call
-	; 5 - pokerus
-	; 6 - exorcised lav radio tower
-	; 7 - rockets in mahogany
+	; bit 0: rockets
+	; bit 1: safari game
+	; bit 2: bug contest timer
+	; bit 3: seen shamouti island
+	; bit 4: bike shop call
+	; bit 5: can use sweet scent
+	; bit 6: exorcised lav radio tower
+	; bit 7: rockets in mahogany
 	db
 
 wMoney:: ds 3
@@ -967,9 +1052,8 @@ wFarfetchdPosition:: db
 wAlways0SceneID:: db
 wAzaleaTownSceneID:: db
 wBattleTower1FSceneID:: db
-wBattleTowerBattleRoomSceneID:: db
-wBattleTowerElevatorSceneID:: db
-wBattleTowerHallwaySceneID:: db
+wBattleFactory1FSceneID:: db
+	ds 2 ; unused
 wBattleTowerOutsideSceneID:: db
 wBellchimeTrailSceneID:: db
 wBrunosRoomSceneID:: db
@@ -1001,7 +1085,7 @@ wHallOfFameSceneID:: db
 wIlexForestSceneID:: db
 wKarensRoomSceneID:: db
 wKogasRoomSceneID:: db
-wKrissHouse1FSceneID:: db
+wPlayersHouse1FSceneID:: db
 wLancesRoomSceneID:: db
 wLavenderTownSceneID:: db
 wMahoganyMart1FSceneID:: db
@@ -1088,8 +1172,8 @@ wErinFightCount::    db
 wEventFlags:: flag_array NUM_EVENTS
 
 wCurBox:: db
-wBoxNames:: ds BOX_NAME_LENGTH * NUM_BOXES
-wBoxNamesEnd::
+
+	ds 126 ; unused
 
 wCelebiEvent:: db
 
@@ -1174,14 +1258,13 @@ wYanmaMapNumber:: db
 wVermilionGymTrashCan1:: db
 wVermilionGymTrashCan2:: db
 
-	ds 2 ; unused
-
-wBattlePoints:: db
+wBattlePoints:: dw
+wBattlePointsEnd::
 
 wStepCount:: db
 wPoisonStepCount:: db
 
-wPhoneList:: ds CONTACT_LIST_SIZE
+wPhoneList:: ds CONTACT_LIST_SIZE + 1
 
 wHappinessStepCount:: db
 
@@ -1263,7 +1346,7 @@ wUnlockedUnowns:: db
 wFirstUnownSeen:: db
 wFirstMagikarpSeen:: db
 
-wDaycareMan::
+wDayCareMan::
 ; bit 7: active
 ; bit 6: monsters are compatible
 ; bit 5: egg ready
@@ -1275,7 +1358,7 @@ wBreedMon1Nick::  ds MON_NAME_LENGTH
 wBreedMon1OT:: ds NAME_LENGTH
 wBreedMon1Stats:: box_struct wBreedMon1
 
-wDaycareLady::
+wDayCareLady::
 ; bit 7: active
 ; bit 0: monster 2 in daycare
 	db
@@ -1376,26 +1459,6 @@ wPokeAnimBitmaskBuffer:: db
 wPokeAnimStructEnd::
 
 
-SECTION "Battle Tower", WRAMX
-
-; BattleTower OpponentTrainer-Data (length = 0xe0 = $a + $1 + 3*$3b + $24)
-wBT_OTTrainer:: battle_tower_struct wBT_OT
-
-	ds $20
-
-wBT_TrainerTextIndex:: dw
-
-wBT_OTTrainer1:: battle_tower_struct wBT_OTTrainer1
-wBT_OTTrainer2:: battle_tower_struct wBT_OTTrainer2
-wBT_OTTrainer3:: battle_tower_struct wBT_OTTrainer3
-wBT_OTTrainer4:: battle_tower_struct wBT_OTTrainer4
-wBT_OTTrainer5:: battle_tower_struct wBT_OTTrainer5
-wBT_OTTrainer6:: battle_tower_struct wBT_OTTrainer6
-wBT_OTTrainer7:: battle_tower_struct wBT_OTTrainer7
-
-wBTChoiceOfLvlGroup:: db
-
-
 SECTION "Sound Stack", WRAMX
 
 wSoundEngineBackup:: ds wChannelsEnd - wMusic
@@ -1420,6 +1483,15 @@ wMPNotes:: ds 4 * 256
 NEXTU
 wDecompressedCreditsGFX:: ; ds (4 * 4 tiles) * 13 ; ds $d00
 ENDU
+
+
+SECTION "Game Version", WRAMX
+
+; Contains a copy of the game version. Used as protection against people trying
+; to load a save state for a save in a different game version.
+; Called "game version" to make it clear that there is no direct relation to
+; sSaveVersion -- this isn't the data used for writing to the save.
+wGameVersion:: dw
 
 
 SECTION "Battle Animations RAM", WRAMX

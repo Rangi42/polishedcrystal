@@ -1,22 +1,22 @@
 VioletMart_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event  2,  7, VIOLET_CITY, 1
 	warp_event  3,  7, VIOLET_CITY, 1
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 0 ; bg events
+	def_bg_events
 
-	db 3 ; object events
+	def_object_events
 	mart_clerk_event  1,  3, MARTTYPE_STANDARD, MART_VIOLET
-	object_event  7,  6, SPRITE_GRANNY, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x682a2, -1
-	object_event  5,  2, SPRITE_ACE_TRAINER_M, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x68323, -1
+	object_event  7,  6, SPRITE_GRANNY, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, VioletMartGrannyText, -1
+	object_event  5,  2, SPRITE_ACE_TRAINER_M, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, VioletMartCooltrainerMText, -1
 
-UnknownText_0x682a2:
+VioletMartGrannyText:
 	text "When you first"
 	line "catch a #mon,"
 	cont "it may be weak."
@@ -30,7 +30,7 @@ UnknownText_0x682a2:
 	cont "love."
 	done
 
-UnknownText_0x68323:
+VioletMartCooltrainerMText:
 	text "#mon can hold"
 	line "items like Potion"
 	cont "and Antidote."

@@ -1,24 +1,24 @@
 BlackthornPokeCenter1F_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 3 ; warp events
+	def_warp_events
 	warp_event  5,  7, BLACKTHORN_CITY, 5
 	warp_event  6,  7, BLACKTHORN_CITY, 5
 	warp_event  0,  7, POKECENTER_2F, 1
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 1 ; bg events
-	bg_event 10,  1, SIGNPOST_READ, PokemonJournalClairScript
+	def_bg_events
+	bg_event 10,  1, BGEVENT_READ, PokemonJournalClairScript
 
-	db 5 ; object events
+	def_object_events
 	pc_nurse_event  5, 1
-	object_event  8,  1, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, ProfOaksAide4Script, -1
-	object_event 11,  6, SPRITE_COOL_DUDE, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumpstd, happinesschecknpc, -1
-	object_event  8,  4, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, BlackthornPokeCenter1FGentlemanText, -1
-	object_event  1,  4, SPRITE_SCHOOLGIRL, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, BlackthornPokeCenter1FTwinText, -1
+	object_event  8,  1, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, ProfOaksAide4Script, -1
+	object_event 11,  6, SPRITE_COOL_DUDE, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumpstd, happinesschecknpc, -1
+	object_event  8,  4, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, BlackthornPokeCenter1FGentlemanText, -1
+	object_event  1,  4, SPRITE_SCHOOLGIRL, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, BlackthornPokeCenter1FTwinText, -1
 
 PokemonJournalClairScript:
 	setflag ENGINE_READ_CLAIR_JOURNAL
@@ -44,8 +44,8 @@ ProfOaksAide4Script:
 	opentext
 	writetext .HiText
 	waitbutton
-	count_seen_caught
-	checkcode VAR_DEXCAUGHT
+	countseencaught
+	readvar VAR_DEXCAUGHT
 	ifgreater 59, .HereYouGo
 	jumpthisopenedtext
 
@@ -53,7 +53,7 @@ ProfOaksAide4Script:
 	line "Uh-oh! You've only"
 
 	para "caught "
-	deciram wd003, 1, 3
+	text_decimal wTempPokedexCaughtCount, 1, 3
 	text " kinds"
 	line "of #mon."
 
@@ -103,7 +103,7 @@ ProfOaksAide4Script:
 	line "Great job! You've"
 
 	para "caught "
-	deciram wd003, 1, 3
+	text_decimal wTempPokedexCaughtCount, 1, 3
 	text " kinds"
 	line "of #mon."
 

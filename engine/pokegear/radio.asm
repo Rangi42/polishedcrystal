@@ -139,7 +139,7 @@ PrintRadioLine:
 	call PlaceWholeStringInBoxAtOnce
 	jr .skip
 .print
-	call PrintTextBoxText
+	call PrintTextboxText
 .skip
 	ld a, RADIO_SCROLL
 	ld [wCurRadioLine], a
@@ -223,6 +223,7 @@ rept 4
 	inc hl
 endr
 	; Generate a number, either 0, 1, or 2, to choose a time of day.
+	; (Disallows EVE.)
 .loop2
 	call Random
 	and 3
@@ -283,32 +284,32 @@ OaksPkmnTalk6:
 
 OPT_IntroText1:
 	; MARY: PROF.OAK'S
-	text_jump _OPT_IntroText1
+	text_far _OPT_IntroText1
 	text_end
 
 OPT_IntroText2:
 	; #MON TALK!
-	text_jump _OPT_IntroText2
+	text_far _OPT_IntroText2
 	text_end
 
 OPT_IntroText3:
 	; With me, MARY!
-	text_jump _OPT_IntroText3
+	text_far _OPT_IntroText3
 	text_end
 
 OPT_OakText1:
 	; OAK: @ @
-	text_jump _OPT_OakText1
+	text_far _OPT_OakText1
 	text_end
 
 OPT_OakText2:
 	; may be seen around
-	text_jump _OPT_OakText2
+	text_far _OPT_OakText2
 	text_end
 
 OPT_OakText3:
 	; @ .
-	text_jump _OPT_OakText3
+	text_far _OPT_OakText3
 	text_end
 
 OaksPkmnTalk7:
@@ -321,7 +322,7 @@ OaksPkmnTalk7:
 
 OPT_MaryText1:
 	; MARY: @ 's
-	text_jump _OPT_MaryText1
+	text_far _OPT_MaryText1
 	text_end
 
 OaksPkmnTalk8:
@@ -358,82 +359,82 @@ OaksPkmnTalk8:
 
 .sweetadorably
 	; sweet and adorably
-	text_jump OPT_SweetAdorably
+	text_far OPT_SweetAdorably
 	text_end
 
 .wigglyslickly
 	; wiggly and slickly
-	text_jump OPT_WigglySlickly
+	text_far OPT_WigglySlickly
 	text_end
 
 .aptlynamed
 	; aptly named and
-	text_jump OPT_AptlyNamed
+	text_far OPT_AptlyNamed
 	text_end
 
 .undeniablykindof
 	; undeniably kind of
-	text_jump OPT_UndeniablyKindOf
+	text_far OPT_UndeniablyKindOf
 	text_end
 
 .unbearably
 	; so, so unbearably
-	text_jump OPT_Unbearably
+	text_far OPT_Unbearably
 	text_end
 
 .wowimpressively
 	; wow, impressively
-	text_jump OPT_WowImpressively
+	text_far OPT_WowImpressively
 	text_end
 
 .almostpoisonously
 	; almost poisonously
-	text_jump OPT_AlmostPoisonously
+	text_far OPT_AlmostPoisonously
 	text_end
 
 .sensually
 	; ooh, so sensually
-	text_jump OPT_Sensually
+	text_far OPT_Sensually
 	text_end
 
 .mischievously
 	; so mischievously
-	text_jump OPT_Mischievously
+	text_far OPT_Mischievously
 	text_end
 
 .topically
 	; so very topically
-	text_jump OPT_Topically
+	text_far OPT_Topically
 	text_end
 
 .addictively
 	; sure addictively
-	text_jump OPT_Addictively
+	text_far OPT_Addictively
 	text_end
 
 .looksinwater
 	; looks in water is
-	text_jump OPT_LooksInWater
+	text_far OPT_LooksInWater
 	text_end
 
 .evolutionmustbe
 	; evolution must be
-	text_jump OPT_EvolutionMustBe
+	text_far OPT_EvolutionMustBe
 	text_end
 
 .provocatively
 	; provocatively
-	text_jump OPT_Provocatively
+	text_far OPT_Provocatively
 	text_end
 
 .flippedout
 	; so flipped out and
-	text_jump OPT_FlippedOut
+	text_far OPT_FlippedOut
 	text_end
 
 .heartmeltingly
 	; heart-meltingly
-	text_jump OPT_HeartMeltingly
+	text_far OPT_HeartMeltingly
 	text_end
 
 OaksPkmnTalk9:
@@ -478,82 +479,82 @@ OaksPkmnTalk9:
 
 .cute
 	; cute.
-	text_jump OPT_Cute
+	text_far OPT_Cute
 	text_end
 
 .weird
 	; weird.
-	text_jump OPT_Weird
+	text_far OPT_Weird
 	text_end
 
 .pleasant
 	; pleasant.
-	text_jump OPT_Pleasant
+	text_far OPT_Pleasant
 	text_end
 
 .boldsortof
 	; bold, sort of.
-	text_jump OPT_BoldSortOf
+	text_far OPT_BoldSortOf
 	text_end
 
 .frightening
 	; frightening.
-	text_jump OPT_Frightening
+	text_far OPT_Frightening
 	text_end
 
 .suavedebonair
 	; suave & debonair!
-	text_jump OPT_SuaveDebonair
+	text_far OPT_SuaveDebonair
 	text_end
 
 .powerful
 	; powerful.
-	text_jump OPT_Powerful
+	text_far OPT_Powerful
 	text_end
 
 .exciting
 	; exciting.
-	text_jump OPT_Exciting
+	text_far OPT_Exciting
 	text_end
 
 .groovy
 	; groovy!
-	text_jump OPT_Groovy
+	text_far OPT_Groovy
 	text_end
 
 .inspiring
 	; inspiring.
-	text_jump OPT_Inspiring
+	text_far OPT_Inspiring
 	text_end
 
 .friendly
 	; friendly.
-	text_jump OPT_Friendly
+	text_far OPT_Friendly
 	text_end
 
 .hothothot
 	; hot, hot, hot!
-	text_jump OPT_HotHotHot
+	text_far OPT_HotHotHot
 	text_end
 
 .stimulating
 	; stimulating.
-	text_jump OPT_Stimulating
+	text_far OPT_Stimulating
 	text_end
 
 .guarded
 	; guarded.
-	text_jump OPT_Guarded
+	text_far OPT_Guarded
 	text_end
 
 .lovely
 	; lovely.
-	text_jump OPT_Lovely
+	text_far OPT_Lovely
 	text_end
 
 .speedy
 	; speedy.
-	text_jump OPT_Speedy
+	text_far OPT_Speedy
 	text_end
 
 OaksPkmnTalk10:
@@ -571,7 +572,7 @@ OaksPkmnTalk10:
 
 OPT_PokemonChannelText:
 	; #MON
-	text_jump _OPT_PokemonChannelText
+	text_far _OPT_PokemonChannelText
 	text_end
 
 OaksPkmnTalk11:
@@ -685,7 +686,7 @@ PokedexShow2:
 	ld b, a
 	inc hl
 	ld a, BANK(PokedexDataPointerTable)
-	call GetFarHalfword
+	call GetFarWord
 	ld a, b
 	push af
 	push hl
@@ -708,7 +709,7 @@ endr
 ;	bit POKEDEX_UNITS, a
 ;	jr z, .imperial
 ;	ld a, d
-;	call GetFarHalfword
+;	call GetFarWord
 ;	jr .load
 ;.imperial
 ;	inc hl
@@ -773,10 +774,10 @@ CopyDexEntryPart1:
 	ld bc, SCREEN_WIDTH - 1
 	call FarCopyBytes
 	ld hl, wPokedexShowPointerAddr
-	ld [hl], "<START>"
-	inc hl
-	ld [hl], "<LINE>"
-	inc hl
+	ld a, "<START>"
+	ld [hli], a
+	ld a, "<LINE>"
+	ld [hli], a
 .loop
 	ld a, [hli]
 	cp "@"
@@ -806,7 +807,7 @@ CopyDexEntryPart2:
 
 PokedexShowText:
 	; @ @
-	text_jump _PokedexShowText
+	text_far _PokedexShowText
 	text_end
 
 BenMonMusic1:
@@ -874,52 +875,52 @@ StartPokemonMusicChannel:
 
 BenIntroText1:
 	; BEN: #MON MUSIC
-	text_jump _BenIntroText1
+	text_far _BenIntroText1
 	text_end
 
 BenIntroText2:
 	; CHANNEL!
-	text_jump _BenIntroText2
+	text_far _BenIntroText2
 	text_end
 
 BenIntroText3:
 	; It's me, DJ BEN!
-	text_jump _BenIntroText3
+	text_far _BenIntroText3
 	text_end
 
 FernIntroText1:
 	; FERN: #MUSIC!
-	text_jump _FernIntroText1
+	text_far _FernIntroText1
 	text_end
 
 FernIntroMusic2:
 	; With DJ FERN!
-	text_jump _FernIntroText2
+	text_far _FernIntroText2
 	text_end
 
 BenFernText1:
 	; Today's @ ,
-	text_jump _BenFernText1
+	text_far _BenFernText1
 	text_end
 
 BenFernText2A:
 	; so let us jam to
-	text_jump _BenFernText2A
+	text_far _BenFernText2A
 	text_end
 
 BenFernText2B:
 	; so chill out to
-	text_jump _BenFernText2B
+	text_far _BenFernText2B
 	text_end
 
 BenFernText3A:
 	; #MON March!
-	text_jump _BenFernText3A
+	text_far _BenFernText3A
 	text_end
 
 BenFernText3B:
 	; #MON Lullaby!
-	text_jump _BenFernText3B
+	text_far _BenFernText3B
 	text_end
 
 LuckyNumberShow1:
@@ -1015,67 +1016,67 @@ LuckyNumberShow15:
 
 LC_Text1:
 	; REED: Yeehaw! How
-	text_jump _LC_Text1
+	text_far _LC_Text1
 	text_end
 
 LC_Text2:
 	; y'all doin' now?
-	text_jump _LC_Text2
+	text_far _LC_Text2
 	text_end
 
 LC_Text3:
 	; Whether you're up
-	text_jump _LC_Text3
+	text_far _LC_Text3
 	text_end
 
 LC_Text4:
 	; or way down low,
-	text_jump _LC_Text4
+	text_far _LC_Text4
 	text_end
 
 LC_Text5:
 	; don't you miss the
-	text_jump _LC_Text5
+	text_far _LC_Text5
 	text_end
 
 LC_Text6:
 	; LUCKY NUMBER SHOW!
-	text_jump _LC_Text6
+	text_far _LC_Text6
 	text_end
 
 LC_Text7:
 	; This week's Lucky
-	text_jump _LC_Text7
+	text_far _LC_Text7
 	text_end
 
 LC_Text8:
 	; Number is @ !
-	text_jump _LC_Text8
+	text_far _LC_Text8
 	text_end
 
 LC_Text9:
 	; I'll repeat that!
-	text_jump _LC_Text9
+	text_far _LC_Text9
 	text_end
 
 LC_Text10:
 	; Match it and go to
-	text_jump _LC_Text10
+	text_far _LC_Text10
 	text_end
 
 LC_Text11:
 	; the RADIO TOWER!
-	text_jump _LC_Text11
+	text_far _LC_Text11
 	text_end
 
 LC_DragText1:
 	; …Repeating myself
-	text_jump _LC_DragText1
+	text_far _LC_DragText1
 	text_end
 
 LC_DragText2:
 	; gets to be a drag…
-	text_jump _LC_DragText2
+	text_far _LC_DragText2
 	text_end
 
 PeoplePlaces1:
@@ -1096,17 +1097,17 @@ PeoplePlaces3:
 
 PnP_Text1:
 	; PLACES AND PEOPLE!
-	text_jump _PnP_Text1
+	text_far _PnP_Text1
 	text_end
 
 PnP_Text2:
 	; Brought to you by
-	text_jump _PnP_Text2
+	text_far _PnP_Text2
 	text_end
 
 PnP_Text3:
 	; me, DJ LILY!
-	text_jump _PnP_Text3
+	text_far _PnP_Text3
 	text_end
 
 PeoplePlaces4: ; People
@@ -1127,9 +1128,8 @@ PeoplePlaces4: ; People
 .ok
 	pop af
 	ld c, a
-	ld de, 1
 	push bc
-	call IsInArray
+	call IsInByteArray
 	pop bc
 	jr c, PeoplePlaces4
 	push bc
@@ -1147,7 +1147,7 @@ INCLUDE "data/radio/pnp_hidden_people.asm"
 
 PnP_Text4:
 	; @  @ @
-	text_jump _PnP_Text4
+	text_far _PnP_Text4
 	text_end
 
 PeoplePlaces5:
@@ -1184,82 +1184,82 @@ PeoplePlaces5:
 
 PnP_cute:
 	; is cute.
-	text_jump _PnP_cute
+	text_far _PnP_cute
 	text_end
 
 PnP_lazy:
 	; is sort of lazy.
-	text_jump _PnP_lazy
+	text_far _PnP_lazy
 	text_end
 
 PnP_happy:
 	; is always happy.
-	text_jump _PnP_happy
+	text_far _PnP_happy
 	text_end
 
 PnP_noisy:
 	; is quite noisy.
-	text_jump _PnP_noisy
+	text_far _PnP_noisy
 	text_end
 
 PnP_precocious:
 	; is precocious.
-	text_jump _PnP_precocious
+	text_far _PnP_precocious
 	text_end
 
 PnP_bold:
 	; is somewhat bold.
-	text_jump _PnP_bold
+	text_far _PnP_bold
 	text_end
 
 PnP_picky:
 	; is too picky!
-	text_jump _PnP_picky
+	text_far _PnP_picky
 	text_end
 
 PnP_sortofok:
 	; is sort of OK.
-	text_jump _PnP_sortofok
+	text_far _PnP_sortofok
 	text_end
 
 PnP_soso:
 	; is just so-so.
-	text_jump _PnP_soso
+	text_far _PnP_soso
 	text_end
 
 PnP_great:
 	; is actually great.
-	text_jump _PnP_great
+	text_far _PnP_great
 	text_end
 
 PnP_mytype:
 	; is just my type.
-	text_jump _PnP_mytype
+	text_far _PnP_mytype
 	text_end
 
 PnP_cool:
 	; is so cool, no?
-	text_jump _PnP_cool
+	text_far _PnP_cool
 	text_end
 
 PnP_inspiring:
 	; is inspiring!
-	text_jump _PnP_inspiring
+	text_far _PnP_inspiring
 	text_end
 
 PnP_weird:
 	; is kind of weird.
-	text_jump _PnP_weird
+	text_far _PnP_weird
 	text_end
 
 PnP_rightforme:
 	; is right for me?
-	text_jump _PnP_rightforme
+	text_far _PnP_rightforme
 	text_end
 
 PnP_odd:
 	; is definitely odd!
-	text_jump _PnP_odd
+	text_far _PnP_odd
 	text_end
 
 PeoplePlaces6: ; Places
@@ -1280,7 +1280,7 @@ INCLUDE "data/radio/pnp_places.asm"
 
 PnP_Text5:
 	; @ @
-	text_jump _PnP_Text5
+	text_far _PnP_Text5
 	text_end
 
 PeoplePlaces7:
@@ -1383,52 +1383,52 @@ RocketRadio10:
 
 RocketRadioText1:
 	; … …Ahem, we are
-	text_jump _RocketRadioText1
+	text_far _RocketRadioText1
 	text_end
 
 RocketRadioText2:
 	; TEAM ROCKET!
-	text_jump _RocketRadioText2
+	text_far _RocketRadioText2
 	text_end
 
 RocketRadioText3:
 	; After three years
-	text_jump _RocketRadioText3
+	text_far _RocketRadioText3
 	text_end
 
 RocketRadioText4:
 	; of preparation, we
-	text_jump _RocketRadioText4
+	text_far _RocketRadioText4
 	text_end
 
 RocketRadioText5:
 	; have risen again
-	text_jump _RocketRadioText5
+	text_far _RocketRadioText5
 	text_end
 
 RocketRadioText6:
 	; from the ashes!
-	text_jump _RocketRadioText6
+	text_far _RocketRadioText6
 	text_end
 
 RocketRadioText7:
 	; GIOVANNI! @ Can you
-	text_jump _RocketRadioText7
+	text_far _RocketRadioText7
 	text_end
 
 RocketRadioText8:
 	; hear?@  We did it!
-	text_jump _RocketRadioText8
+	text_far _RocketRadioText8
 	text_end
 
 RocketRadioText9:
 	; @ Where is our boss?
-	text_jump _RocketRadioText9
+	text_far _RocketRadioText9
 	text_end
 
 RocketRadioText10:
 	; @ Is he listening?
-	text_jump _RocketRadioText10
+	text_far _RocketRadioText10
 	text_end
 
 PokeFluteRadio:
@@ -1728,7 +1728,7 @@ BuenasPassword21:
 BuenasPasswordCheckTime:
 	call UpdateTime
 	ldh a, [hHours]
-	cp NITE_HOUR
+	cp EVE_HOUR
 	ret
 
 BuenasPasswordChannelName:
@@ -1736,92 +1736,92 @@ BuenasPasswordChannelName:
 
 BuenaRadioText1:
 	; BUENA: BUENA here!
-	text_jump _BuenaRadioText1
+	text_far _BuenaRadioText1
 	text_end
 
 BuenaRadioText2:
 	; Today's password!
-	text_jump _BuenaRadioText2
+	text_far _BuenaRadioText2
 	text_end
 
 BuenaRadioText3:
 	; Let me think… It's
-	text_jump _BuenaRadioText3
+	text_far _BuenaRadioText3
 	text_end
 
 BuenaRadioText4:
 	; @ !
-	text_jump _BuenaRadioText4
+	text_far _BuenaRadioText4
 	text_end
 
 BuenaRadioText5:
 	; Don't forget it!
-	text_jump _BuenaRadioText5
+	text_far _BuenaRadioText5
 	text_end
 
 BuenaRadioText6:
 	; I'm in GOLDENROD's
-	text_jump _BuenaRadioText6
+	text_far _BuenaRadioText6
 	text_end
 
 BuenaRadioText7:
 	; RADIO TOWER!
-	text_jump _BuenaRadioText7
+	text_far _BuenaRadioText7
 	text_end
 
 BuenaRadioMidnightText1:
 	; BUENA: Oh my…
-	text_jump _BuenaRadioMidnightText1
+	text_far _BuenaRadioMidnightText1
 	text_end
 
 BuenaRadioMidnightText2:
 	; It's midnight! I
-	text_jump _BuenaRadioMidnightText2
+	text_far _BuenaRadioMidnightText2
 	text_end
 
 BuenaRadioMidnightText3:
 	; have to shut down!
-	text_jump _BuenaRadioMidnightText3
+	text_far _BuenaRadioMidnightText3
 	text_end
 
 BuenaRadioMidnightText4:
 	; Thanks for tuning
-	text_jump _BuenaRadioMidnightText4
+	text_far _BuenaRadioMidnightText4
 	text_end
 
 BuenaRadioMidnightText5:
 	; in to the end! But
-	text_jump _BuenaRadioMidnightText5
+	text_far _BuenaRadioMidnightText5
 	text_end
 
 BuenaRadioMidnightText6:
 	; don't stay up too
-	text_jump _BuenaRadioMidnightText6
+	text_far _BuenaRadioMidnightText6
 	text_end
 
 BuenaRadioMidnightText7:
 	; late! Presented to
-	text_jump _BuenaRadioMidnightText7
+	text_far _BuenaRadioMidnightText7
 	text_end
 
 BuenaRadioMidnightText8:
 	; you by DJ BUENA!
-	text_jump _BuenaRadioMidnightText8
+	text_far _BuenaRadioMidnightText8
 	text_end
 
 BuenaRadioMidnightText9:
 	; I'm outta here!
-	text_jump _BuenaRadioMidnightText9
+	text_far _BuenaRadioMidnightText9
 	text_end
 
 BuenaRadioMidnightText10:
 	; …
-	text_jump _BuenaRadioMidnightText10
+	text_far _BuenaRadioMidnightText10
 	text_end
 
 BuenaOffTheAirText:
 	;
-	text_jump _BuenaOffTheAirText
+	text_far _BuenaOffTheAirText
 	text_end
 
 CopyRadioTextToRAM:

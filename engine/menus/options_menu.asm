@@ -6,7 +6,7 @@ OptionsMenu:
 	call ClearBGPalettes
 	hlcoord 0, 0
 	lb bc, SCREEN_HEIGHT - 2, SCREEN_WIDTH - 2
-	call TextBox
+	call Textbox
 	hlcoord 2, 2
 	ld de, StringOptions1
 	rst PlaceString
@@ -94,8 +94,8 @@ StringOptions2:
 	db "        :<LNBRK>"
 	db "Typeface<LNBRK>"
 	db "        :<LNBRK>"
-	db "<LNBRK>"
-	db "<LNBRK>"
+	db "Keyboard<LNBRK>"
+	db "        :<LNBRK>"
 	db "Previous<LNBRK>"
 	db "        <LNBRK>"
 	db "Done@"
@@ -124,7 +124,7 @@ GetOptionPointer:
 	dw Options_TextAutoscroll
 	dw Options_TurningSpeed
 	dw Options_Typeface
-	dw Options_Unused
+	dw Options_Keyboard
 	dw Options_NextPrevious
 	dw Options_Done
 
@@ -344,9 +344,7 @@ Options_Sound:
 .Display:
 	ldh a, [hJoyPressed]
 	and D_LEFT | D_RIGHT
-	jr z, .DontRestartMapMusic
-	call RestartMapMusic
-.DontRestartMapMusic
+	call nz, RestartMapMusic
 	hlcoord 11, 13
 	rst PlaceString
 	and a
@@ -561,7 +559,8 @@ Options_Typeface:
 	dw .Bold
 	dw .Italic
 	dw .Serif
-	dw .Braille
+	dw .Chicago
+	dw .MICR
 	dw .Unown
 
 .Normal:
@@ -574,14 +573,41 @@ Options_Typeface:
 	db "Italic @"
 .Serif:
 	db "Serif  @"
-.Braille:
-	db "Braille@"
+.Chicago:
+	db "Chicago@"
+.MICR:
+	db "MICR   @"
 .Unown:
 	db "Unown  @"
 
-Options_Unused:
+Options_Keyboard:
+	ld hl, wOptions3
+	ldh a, [hJoyPressed]
+	and D_LEFT | D_RIGHT
+	jr nz, .Toggle
+	bit QWERTY_KEYBOARD_F, [hl]
+	jr z, .SetABC
+	jr .SetQWERTY
+.Toggle
+	bit QWERTY_KEYBOARD_F, [hl]
+	jr z, .SetQWERTY
+.SetABC:
+	res QWERTY_KEYBOARD_F, [hl]
+	ld de, .ABC
+	jr .Display
+.SetQWERTY:
+	set QWERTY_KEYBOARD_F, [hl]
+	ld de, .QWERTY
+.Display:
+	hlcoord 11, 13
+	rst PlaceString
 	and a
 	ret
+
+.ABC:
+	db "ABCDEF@"
+.QWERTY:
+	db "QWERTY@"
 
 Options_NextPrevious:
 	ld hl, wCurOptionsPage
@@ -601,7 +627,7 @@ Options_NextPrevious:
 	push de
 	hlcoord 0, 0
 	lb bc, 16, 18
-	call TextBox
+	call Textbox
 	pop de
 	hlcoord 2, 2
 	rst PlaceString
@@ -635,17 +661,6 @@ OptionsControl:
 
 .DownPressed:
 	ld a, [hl] ; load the cursor position to a
-
-	cp $4
-	jr nz, .DownOK
-	ld a, [wCurOptionsPage]
-	and a
-	jr z, .DownOK
-	ld [hl], $6 ; skip missing options on page 2
-	scf
-	ret
-.DownOK
-
 	cp $7 ; maximum number of items in option menu
 	jr nz, .Increase
 	ld [hl], -1
@@ -656,18 +671,6 @@ OptionsControl:
 
 .UpPressed:
 	ld a, [hl]
-
-	cp $6
-	jr nz, .UpOK
-	ld a, [wCurOptionsPage]
-	and a
-	ld a, [hl]
-	jr z, .UpOK
-	ld [hl], $4 ; skip missing options on page 2
-	scf
-	ret
-.UpOK
-
 	and a
 	jr nz, .Decrease
 	ld [hl], $8 ; number of option items + 1

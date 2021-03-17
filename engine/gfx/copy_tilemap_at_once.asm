@@ -41,8 +41,6 @@ _SafeCopyTilemapAtOnce::
 	jr nz, .waitLYAndUpdateMusic
 	xor a
 	ldh [hBGMapHalf], a
-	inc a
-	call SkipMusic
 	bit 2, b
 	jr z, .noForceOAMUpdate
 	xor a
@@ -59,8 +57,9 @@ _SafeCopyTilemapAtOnce::
 	swap a
 	or 5
 	ldh [hBGMapMode], a ; bit 7 = skip attr map
-	ld a, 1 << 7 | 7 ; execute actual vblank 7
+	ld a, 1 << 7 | 7 ; execute actual VBlank7
 	ldh [hVBlank], a
+	call UpdateSound
 	call DelayFrame
 	ld a, d
 	ldh [hCGBPalUpdate], a
@@ -83,10 +82,10 @@ _CopyTilemapAtOnce::
 	ldh [hMapAnims], a
 
 	di
-	coord hl, 0, 0, wAttrMap
+	hlcoord 0, 0, wAttrMap
 	ld a, 1 ; BANK(vStandingFrameTiles)
 	call CopyFullTilemapInHBlank
-	coord hl, 0, 0
+	hlcoord 0, 0
 	xor a ; BANK(vObjTiles)
 	call CopyFullTilemapInHBlank
 
@@ -123,28 +122,28 @@ VBlankSafeCopyTilemapAtOnce::
 	bit 7, a
 	jr z, .attrAndBGCopy
 ; if we only need to update tiles, copy the remaining half in hblank
-	coord hl, 0, 9
+	hlcoord 0, 9
 	ld de, BG_MAP_WIDTH * 9
 	ld b, 9
 	jr CopyTilemapInHBlank
 .attrAndBGCopy
 ; now copy both tile and attr map, of alternating groups of 5/5/4
-	coord hl, 0, 3, wAttrMap
+	hlcoord 0, 3, wAttrMap
 	ld de, BG_MAP_WIDTH * 3
 	call Copy5RowsOfTilemapInHBlank_VBK1
-	coord hl, 0, 3
+	hlcoord 0, 3
 	ld de, BG_MAP_WIDTH * 3
 	call Copy5RowsOfTilemapInHBlank_VBK0
-	coord hl, 0, 8, wAttrMap
+	hlcoord 0, 8, wAttrMap
 	ld de, BG_MAP_WIDTH * 8
 	call Copy5RowsOfTilemapInHBlank_VBK1
-	coord hl, 0, 8
+	hlcoord 0, 8
 	ld de, BG_MAP_WIDTH * 8
 	call Copy5RowsOfTilemapInHBlank_VBK0
-	coord hl, 0, 13, wAttrMap
+	hlcoord 0, 13, wAttrMap
 	ld de, BG_MAP_WIDTH * 13
 	call Copy5RowsOfTilemapInHBlank_VBK1
-	coord hl, 0, 13
+	hlcoord 0, 13
 	ld de, BG_MAP_WIDTH * 13
 
 ; fallthrough
@@ -260,12 +259,9 @@ CopyTilemapInHBlank:
 	ld [hli], a
 	ld [hl], d
 
-	ld a, BG_MAP_WIDTH - (SCREEN_WIDTH - 1)
-	add l
-	ld l, a
-	adc h
-	sub l
-	ld h, a
+	ld de, BG_MAP_WIDTH - (SCREEN_WIDTH - 1)
+	add hl, de
+
 	ldh a, [hTilesPerCycle]
 	dec a
 	jr nz, .loop

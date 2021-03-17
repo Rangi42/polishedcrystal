@@ -13,7 +13,7 @@ BattleCommand_safeguard:
 	ld [hl], a
 	call AnimateCurrentMove
 	ld hl, CoveredByVeilText
-	jp StdBattleTextBox
+	jp StdBattleTextbox
 
 .failed
 	call AnimateFailedMove
@@ -39,5 +39,5 @@ BattleCommand_checksafeguard:
 	ld [wAttackMissed], a
 	call BattleCommand_movedelay
 	ld hl, SafeguardProtectText
-	call StdBattleTextBox
+	call StdBattleTextbox
 	jp EndMoveEffect

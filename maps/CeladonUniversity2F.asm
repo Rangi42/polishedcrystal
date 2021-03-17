@@ -1,9 +1,9 @@
 CeladonUniversity2F_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 6 ; warp events
+	def_warp_events
 	warp_event 23,  8, CELADON_UNIVERSITY_1F, 3
 	warp_event  7,  0, CELADON_UNIVERSITY_CAFETERIA, 1
 	warp_event  5,  8, CELADON_UNIVERSITY_WILLOWS_OFFICE, 1
@@ -11,25 +11,25 @@ CeladonUniversity2F_MapScriptHeader:
 	warp_event 19,  8, CELADON_UNIVERSITY_WESTWOODS_OFFICE, 1
 	warp_event 21,  0, CELADON_UNIVERSITY_POOL, 1
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 7 ; bg events
-	bg_event  6,  0, SIGNPOST_JUMPTEXT, CeladonUniversity2FCafeteriaSignText
-	bg_event 12,  0, SIGNPOST_JUMPTEXT, CeladonUniversity2FHyperTestSignText
-	bg_event 20,  0, SIGNPOST_JUMPTEXT, CeladonUniversity2FPoolSignText
-	bg_event  4,  8, SIGNPOST_JUMPTEXT, CeladonUniversity2FWillowsOfficeSignText
-	bg_event 18,  8, SIGNPOST_JUMPTEXT, CeladonUniversity2FWestwoodsOfficeSignText
-	bg_event 16,  1, SIGNPOST_READ, CeladonUniversity2FMagikarpSign
-	bg_event 24,  1, SIGNPOST_READ, CeladonUniversity2FCuboneSign
+	def_bg_events
+	bg_event  6,  0, BGEVENT_JUMPTEXT, CeladonUniversity2FCafeteriaSignText
+	bg_event 12,  0, BGEVENT_JUMPTEXT, CeladonUniversity2FHyperTestSignText
+	bg_event 20,  0, BGEVENT_JUMPTEXT, CeladonUniversity2FPoolSignText
+	bg_event  4,  8, BGEVENT_JUMPTEXT, CeladonUniversity2FWillowsOfficeSignText
+	bg_event 18,  8, BGEVENT_JUMPTEXT, CeladonUniversity2FWestwoodsOfficeSignText
+	bg_event 16,  1, BGEVENT_READ, CeladonUniversity2FMagikarpSign
+	bg_event 24,  1, BGEVENT_READ, CeladonUniversity2FCuboneSign
 
-	db 7 ; object events
-	object_event  2,  3, SPRITE_BATTLE_GIRL, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_PURPLE, PERSONTYPE_SCRIPT, 0, CeladonUniversity2FCooltrainerfScript, -1
-	object_event  5,  3, SPRITE_COOL_DUDE, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversity2FCooltrainermText, -1
-	object_event 17,  2, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversity2FYoungster1Text, -1
-	object_event 11,  7, SPRITE_COWGIRL, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversity2FCowgirlText, -1
-	object_event  3,  9, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversity2FBug_catcherText, -1
-	object_event 13, 13, SPRITE_CUTE_GIRL, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversity2FLassText, -1
-	object_event 21, 11, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonUniversity2FYoungster2Text, -1
+	def_object_events
+	object_event  2,  3, SPRITE_BATTLE_GIRL, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_PURPLE, OBJECTTYPE_SCRIPT, 0, CeladonUniversity2FCooltrainerfScript, -1
+	object_event  5,  3, SPRITE_COOL_DUDE, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeladonUniversity2FCooltrainermText, -1
+	object_event 17,  2, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeladonUniversity2FYoungster1Text, -1
+	object_event 11,  7, SPRITE_COWGIRL, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeladonUniversity2FCowgirlText, -1
+	object_event  3,  9, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeladonUniversity2FBug_catcherText, -1
+	object_event 13, 13, SPRITE_CUTE_GIRL, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeladonUniversity2FLassText, -1
+	object_event 21, 11, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeladonUniversity2FYoungster2Text, -1
 
 CeladonUniversity2FCooltrainerfScript:
 	checkevent EVENT_GOT_ANTIDOTE_IN_UNIVERSITY
@@ -181,7 +181,7 @@ CeladonUniversity2FWestwoodsOfficeSignText:
 
 CeladonUniversity2FMagikarpSign:
 	refreshscreen
-	pokepic MAGIKARP
+	pokepic MAGIKARP, MAGIKARP_ORCA_FORM
 	cry MAGIKARP
 	waitbutton
 	closepokepic

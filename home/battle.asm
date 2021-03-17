@@ -80,10 +80,22 @@ ResetDamage::
 	ld [wCurDamage + 1], a
 	ret
 
+CallOpponentTurn::
+	ldh [hFarCallSavedA], a
+	ld a, h
+	ldh [hFarCallSavedH], a
+	ld a, l
+	ldh [hFarCallSavedL], a
+	pop hl
+	call SwitchTurn
+	call RetrieveAHLAndCallFunction
+	; fallthrough
+
 BattleCommand_switchturn::
 SwitchTurn::
-	ldh a, [hBattleTurn]
+; Preserves all registers.
 	push af
+	ldh a, [hBattleTurn]
 	xor 1
 	ldh [hBattleTurn], a
 	pop af
@@ -555,7 +567,7 @@ CheckIfUserIsSomeType::
 	ld b, a
 	ldh a, [hBattleTurn]
 	xor 1
-CheckIfSomeoneIsSomeType
+CheckIfSomeoneIsSomeType:
 	ld c, a
 	ld de, wEnemyMonType1
 	ld a, c
@@ -676,9 +688,7 @@ CheckMoveSpeed::
 	ld e, a
 	ld d, 0
 	push de
-	call SetPlayerTurn
-	call CheckSpeed
-	call nz, SetEnemyTurn
+	call SetFastestTurn
 	pop de
 	call .do_it
 	call SwitchTurn
@@ -697,14 +707,34 @@ CheckMoveSpeed::
 	; Increases d if player is given priority, decreases if enemy is given it.
 	; d can be +2 or -2 if one is holding Quick Claw and the other Lagging Tail.
 	push de
+
+	; Quick Draw works like Quick Claw except 30% of the time
+	call GetTrueUserAbility
+	cp QUICK_DRAW
+	jr nz, .quick_draw_done
+	ld b, a
+	farcall BufferAbility
+	ld a, 100
+	call RandomRange
+	cp 30
+	jr nc, .quick_draw_done
+
+	farcall DisableAnimations
+	farcall ShowAbilityActivation
+	ld hl, BattleText_UserItemLetItMoveFirst
+	call StdBattleTextbox
+	farcall EnableAnimations
+	jr .set_priority
+
+.quick_draw_done
 	predef GetUserItemAfterUnnerve
-	pop de
 	ld a, b
 	cp HELD_QUICK_CLAW
 	jr z, .quick_claw
 	cp HELD_CUSTAP_BERRY
 	jr z, .custap_berry
 	cp HELD_LAGGING_TAIL
+	pop de
 	ret nz
 
 	; Lagging tail gives the foe priority
@@ -716,7 +746,6 @@ CheckMoveSpeed::
 	ret
 
 .custap_berry
-	push de
 	farcall QuarterPinchOrGluttony
 	pop de
 	ret nz
@@ -730,14 +759,16 @@ CheckMoveSpeed::
 	ld a, 100
 	call BattleRandomRange
 	cp c
+	pop de
 	ret nc
-	push de
 .activate_item
+	push de
 	farcall ItemRecoveryAnim
 	predef GetUserItemAfterUnnerve
 	call GetCurItemName
 	ld hl, BattleText_UserItemLetItMoveFirst
-	call StdBattleTextBox
+	call StdBattleTextbox
+.set_priority
 	pop de
 	inc d
 	ldh a, [hBattleTurn]
@@ -803,128 +834,25 @@ _CheckSpeed::
 	or 1
 	ret
 
-GetBattleVar::
-; Preserves bc, de, hl.
-	push hl
-	call GetBattleVarAddr
-	pop hl
-	ret
-
-GetBattleVarAddr::
-; Get variable from pair a, depending on whose turn it is.
-; There are 22 variable pairs.
-; Preserves bc, de.
-	push bc
-
-	ld hl, .battlevarpairs
-	ld c, a
-	ld b, 0
-	add hl, bc
-	add hl, bc
-
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-
-; Enemy turn uses the second byte instead.
-; This lets battle variable calls be side-neutral.
-	ldh a, [hBattleTurn]
-	and a
-	jr z, .getvar
-	inc hl
-
-.getvar
-; var id
-	ld a, [hl]
-	ld c, a
-	ld b, 0
-
-	ld hl, .vars
-	add hl, bc
-	add hl, bc
-
-	ld a, [hli]
-	ld h, [hl]
-	ld l, a
-
-	ld a, [hl]
-
-	pop bc
-	ret
-
-.battlevarpairs
-	dw .substatus1, .substatus2, .substatus3, .substatus4
-	dw .substatus1opp, .substatus2opp, .substatus3opp, .substatus4opp
-	dw .ability, .abilityopp, .status, .statusopp, .animation, .effect
-	dw .power, .accuracy, .type, .category, .curmove, .curmoveopp
-	dw .lastcounter, .lastcounteropp, .lastmove, .lastmoveopp
-
-;                       player                     enemy
-.substatus1     db PLAYER_SUBSTATUS_1,    ENEMY_SUBSTATUS_1
-.substatus1opp  db ENEMY_SUBSTATUS_1,     PLAYER_SUBSTATUS_1
-.substatus2     db PLAYER_SUBSTATUS_2,    ENEMY_SUBSTATUS_2
-.substatus2opp  db ENEMY_SUBSTATUS_2,     PLAYER_SUBSTATUS_2
-.substatus3     db PLAYER_SUBSTATUS_3,    ENEMY_SUBSTATUS_3
-.substatus3opp  db ENEMY_SUBSTATUS_3,     PLAYER_SUBSTATUS_3
-.substatus4     db PLAYER_SUBSTATUS_4,    ENEMY_SUBSTATUS_4
-.substatus4opp  db ENEMY_SUBSTATUS_4,     PLAYER_SUBSTATUS_4
-.ability        db PLAYER_ABILITY,        ENEMY_ABILITY
-.abilityopp     db ENEMY_ABILITY,         PLAYER_ABILITY
-.status         db PLAYER_STATUS,         ENEMY_STATUS
-.statusopp      db ENEMY_STATUS,          PLAYER_STATUS
-.animation      db PLAYER_MOVE_ANIMATION, ENEMY_MOVE_ANIMATION
-.effect         db PLAYER_MOVE_EFFECT,    ENEMY_MOVE_EFFECT
-.power          db PLAYER_MOVE_POWER,     ENEMY_MOVE_POWER
-.accuracy       db PLAYER_MOVE_ACCURACY,  ENEMY_MOVE_ACCURACY
-.type           db PLAYER_MOVE_TYPE,      ENEMY_MOVE_TYPE
-.category       db PLAYER_MOVE_CATEGORY,  ENEMY_MOVE_CATEGORY
-.curmove        db PLAYER_CUR_MOVE,       ENEMY_CUR_MOVE
-.curmoveopp     db ENEMY_CUR_MOVE,        PLAYER_CUR_MOVE
-.lastcounter    db PLAYER_COUNTER_MOVE,   ENEMY_COUNTER_MOVE
-.lastcounteropp db ENEMY_COUNTER_MOVE,    PLAYER_COUNTER_MOVE
-.lastmove       db PLAYER_LAST_MOVE,      ENEMY_LAST_MOVE
-.lastmoveopp    db ENEMY_LAST_MOVE,       PLAYER_LAST_MOVE
-
-.vars
-	dw wPlayerSubStatus1,             wEnemySubStatus1
-	dw wPlayerSubStatus2,             wEnemySubStatus2
-	dw wPlayerSubStatus3,             wEnemySubStatus3
-	dw wPlayerSubStatus4,             wEnemySubStatus4
-	dw wPlayerAbility,                wEnemyAbility
-	dw wBattleMonStatus,              wEnemyMonStatus
-	dw wPlayerMoveStructAnimation,    wEnemyMoveStructAnimation
-	dw wPlayerMoveStructEffect,       wEnemyMoveStructEffect
-	dw wPlayerMoveStructPower,        wEnemyMoveStructPower
-	dw wPlayerMoveStructAccuracy,     wEnemyMoveStructAccuracy
-	dw wPlayerMoveStructType,         wEnemyMoveStructType
-	dw wPlayerMoveStructCategory,     wEnemyMoveStructCategory
-	dw wCurPlayerMove,                wCurEnemyMove
-	dw wLastPlayerCounterMove,        wLastEnemyCounterMove
-	dw wLastPlayerMove,               wLastEnemyMove
+INCLUDE "home/battle_vars.asm"
 
 BattleCommand_cleartext::
-EmptyBattleTextBox::
+EmptyBattleTextbox::
 	ld hl, EmptyString
-BattleTextBox::
+	jr BattleTextbox
+
+StdBattleTextbox::
+; Open a textbox and print battle text at 20:hl.
+	anonbankpush BattleText
+
+BattleTextbox::
 ; Open a textbox and print text at hl.
 	push hl
-	call SpeechTextBox
+	call SpeechTextbox
 	call UpdateSprites
 	call ApplyTilemap
 	pop hl
-	jp PrintTextBoxText
-
-StdBattleTextBox::
-; Open a textbox and print battle text at 20:hl.
-GLOBAL BattleText
-	ldh a, [hROMBank]
-	push af
-	ld a, BANK(BattleText)
-	rst Bankswitch
-	call BattleTextBox
-	pop af
-	rst Bankswitch
-	ret
+	jp PrintTextboxText
 
 GetBattleAnimPointer::
 	anonbankpush BattleAnimations

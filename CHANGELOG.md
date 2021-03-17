@@ -150,6 +150,7 @@ These changes have been made since the current 2.2.0 release. If you build the p
 * Add: Instant text option.
 * Add: Imperial or metric units.
 * Add: 12-hour or 24-hour clock.
+* Add: ABC or QWERTY keyboard.
 * Add: Item icons in the Bag.
 * Add: Thrown Balls use individual icons.
 * Add: Pokédex shows shiny palettes after getting the Shiny Charm.
@@ -164,6 +165,7 @@ These changes have been made since the current 2.2.0 release. If you build the p
 * Add: Evolution moves from Gen VII.
 * Add: Move Reminder supports pre-evolution and evolution moves.
 * Add: Dark battle intro at night.
+* Add: Evening as a time of day (shares wild Pokémon with night).
 * Add: Trainer battles can be forfeited.
 * Add: Show genders in party menu.
 * Add: Show weather icons during battle like Gen 5+.

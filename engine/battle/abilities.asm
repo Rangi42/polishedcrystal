@@ -1,4 +1,7 @@
 RunActivationAbilitiesInner:
+	; Chain-triggering causes graphical glitches, so ensure animations
+	; are re-enabled (which also takes care of existing ability slideouts)
+	call EnableAnimations
 	call HasUserFainted
 	ret z
 	call HasOpponentFainted
@@ -69,7 +72,7 @@ NotificationAbilities:
 	call DisableAnimations
 	call ShowAbilityActivation
 	pop hl
-	call StdBattleTextBox
+	call StdBattleTextbox
 	jp EnableAnimations
 
 ImmunityAbility:
@@ -102,7 +105,7 @@ HealStatusAbility:
 	xor a
 	ld [hl], a
 	ld hl, BecameHealthyText
-	call StdBattleTextBox
+	call StdBattleTextbox
 	call EnableAnimations
 	ldh a, [hBattleTurn]
 	and a
@@ -112,7 +115,7 @@ HealStatusAbility:
 OwnTempoAbility:
 	ld a, BATTLE_VARS_SUBSTATUS3
 	call GetBattleVar
-	and SUBSTATUS_CONFUSED
+	bit SUBSTATUS_CONFUSED, a
 	ret z ; not confused
 	call DisableAnimations
 	call ShowAbilityActivation
@@ -120,27 +123,27 @@ OwnTempoAbility:
 	call GetBattleVarAddr
 	res SUBSTATUS_CONFUSED, [hl]
 	ld hl, ConfusedNoMoreText
-	call StdBattleTextBox
+	call StdBattleTextbox
 	jp EnableAnimations
 
 ObliviousAbility:
 	ld a, BATTLE_VARS_SUBSTATUS1
 	call GetBattleVar
-	and SUBSTATUS_IN_LOVE
+	bit SUBSTATUS_IN_LOVE, a
 	ret z ; not infatuated
 	call DisableAnimations
 	call ShowAbilityActivation
 	ld a, BATTLE_VARS_SUBSTATUS1
 	call GetBattleVarAddr
 	res SUBSTATUS_IN_LOVE, [hl]
-	ld hl, ConfusedNoMoreText
-	call StdBattleTextBox
+	ld hl, NoLongerInfatuatedText
+	call StdBattleTextbox
 	jp EnableAnimations
 
 TraceAbility:
 	call GetOpponentAbility
 	inc a
-	ret z
+	ret z ; Neutralizing Gas sentinel upon fainting
 	dec a
 	ret z
 	cp TRACE
@@ -159,7 +162,7 @@ TraceAbility:
 	call ShowAbilityActivation
 	call ShowEnemyAbilityActivation
 	ld hl, TraceActivationText
-	call StdBattleTextBox
+	call StdBattleTextbox
 	call EnableAnimations
 
 	ld a, BATTLE_VARS_ABILITY
@@ -169,7 +172,7 @@ TraceAbility:
 	jp RunActivationAbilitiesInner
 .trace_failure
 	ld hl, TraceFailureText
-	jp StdBattleTextBox
+	jp StdBattleTextbox
 
 ; Lasts 5 turns consistent with Generation VI.
 DrizzleAbility:
@@ -229,12 +232,15 @@ IntimidateAbility:
 	push af
 	farcall BufferAbility
 	pop af
-	ld de, 1
 	ld hl, NoIntimidateAbilities
-	call IsInArray
+	call IsInByteArray
 	jr nc, .intimidate_ok
+	call DisableAnimations
+	call ShowAbilityActivation
+	call ShowEnemyAbilityActivation
 	ld hl, BattleText_IntimidateResisted
-	jp StdBattleTextBox
+	call StdBattleTextbox
+	jp EnableAnimations
 
 .intimidate_ok
 	call DisableAnimations
@@ -303,7 +309,8 @@ ImposterAbility:
 	ret z
 
 	call DisableAnimations
-	call ShowAbilityActivation
+	; flags for the transform wave anim to not affect slideouts
+	farcall ShowPotentialAbilityActivation
 	farcall BattleCommand_transform
 	jp EnableAnimations
 
@@ -364,7 +371,7 @@ AnticipationAbility:
 	call DisableAnimations
 	call ShowEnemyAbilityActivation
 	ld hl, ShudderedText
-	call StdBattleTextBox
+	call StdBattleTextbox
 	call EnableAnimations
 .done
 	; now restore the move struct
@@ -408,9 +415,8 @@ ForewarnAbility:
 	push af
 	push hl
 	; Check for special cases
-	ld de, 1
 	ld hl, DynamicPowerMoves
-	call IsInArray
+	call IsInByteArray
 	pop hl
 	pop bc
 	jr nc, .not_special
@@ -473,7 +479,7 @@ ForewarnAbility:
 	ld [wNamedObjectIndexBuffer], a
 	call GetMoveName
 	ld hl, ForewarnText
-	call StdBattleTextBox
+	call StdBattleTextbox
 	jp EnableAnimations
 
 FriskAbility:
@@ -485,7 +491,7 @@ FriskAbility:
 	call ShowAbilityActivation
 	call GetCurItemName
 	ld hl, FriskedItemText
-	call StdBattleTextBox
+	call StdBattleTextbox
 	jp EnableAnimations
 
 RunEnemyOwnTempoAbility:
@@ -506,7 +512,7 @@ SynchronizeAbility:
 	ld a, BATTLE_VARS_STATUS
 	call GetBattleVar
 	and 1 << PAR | 1 << BRN | 1 << PSN
-	ret z ; not statused
+	ret z ; not statused or frozen/asleep (which doesn't proc Synchronize)
 	call DisableAnimations
 	call ShowAbilityActivation
 	farcall ResetMiss
@@ -530,28 +536,56 @@ SynchronizeAbility:
 	farcall BattleCommand_burn
 	jp EnableAnimations
 
+ResolveOpponentBerserk_CheckMultihit:
+; Does nothing if we're currently in an ongoing multihit move.
+	; Regular multihit
+	ld a, BATTLE_VARS_SUBSTATUS3
+	call GetBattleVarAddr
+	bit SUBSTATUS_IN_LOOP, [hl]
+	ret nz
+
+	; Check if user has Parental Bond
+	call GetTrueUserAbility
+	cp PARENTAL_BOND
+	ret z
+
+	; fallthrough
+ResolveOpponentBerserk:
+	ld a, BATTLE_VARS_SUBSTATUS2_OPP
+	call GetBattleVarAddr
+	bit SUBSTATUS_IN_ABILITY, [hl]
+	ret z
+	res SUBSTATUS_IN_ABILITY, [hl]
+
+	call GetOpponentAbilityAfterMoldBreaker
+	cp BERSERK
+	ret nz
+
+	farcall CheckSheerForceNegation
+	ret z
+
+	call SwitchTurn
+	ld b, SP_ATTACK
+	call StatUpAbility
+	jp SwitchTurn
+
 RunFaintAbilities:
 ; abilities that run after an attack faints an enemy
 	farcall GetFutureSightUser
 	ret nz
 	call GetTrueUserAbility
-	call .user_abilities
+	call _RunFaintUserAbilities
 	call GetOpponentAbilityAfterMoldBreaker
 	push af
 	call SwitchTurn
 	pop af
-	call .opponent_abilities
+	call _RunFaintOpponentAbilities
 	jp SwitchTurn
 
-.user_abilities
-	cp MOXIE
-	jp z, MoxieAbility
-	ret
-.opponent_abilities
+_RunFaintOpponentAbilities:
 	cp AFTERMATH
-	jp z, AftermathAbility
-	ret
-
+	ret nz
+	; fallthrough
 AftermathAbility:
 	; Damp protects against this
 	call GetOpponentAbility
@@ -567,16 +601,14 @@ AftermathAbility:
 	call GetQuarterMaxHP
 	predef SubtractHPFromUser
 	ld hl, IsHurtText
-	call StdBattleTextBox
+	call StdBattleTextbox
 	call EnableAnimations
 	jp SwitchTurn
 
 RunHitAbilities:
 ; abilities that run on hitting the enemy with an offensive attack
 	call CheckContactMove
-	jr c, .skip_contact_abilities
-	call RunContactAbilities
-.skip_contact_abilities
+	call nc, RunContactAbilities
 	; Store type and category (phy/spe/sta) so that abilities can check on them
 	ld a, BATTLE_VARS_MOVE_CATEGORY
 	call GetBattleVar
@@ -686,98 +718,78 @@ EffectSporeAbility:
 	jr c, PoisonPointAbility
 	cp 1 + 66 percent
 	jr c, StaticAbility
-	; there are 2 sleep resistance abilities, so check one here
-	call GetOpponentAbility
-	cp VITAL_SPIRIT
-	ret z
-	lb bc, INSOMNIA, HELD_PREVENT_SLEEP
-	ld d, SLP
+
+	ld hl, CanSleepTarget
+	ld c, SLP
 	jr AfflictStatusAbility
 FlameBodyAbility:
-	call CheckIfTargetIsFireType
-	ret z
-	lb bc, WATER_VEIL, HELD_PREVENT_BURN
-	ld d, BRN
+	ld hl, CanBurnTarget
+	ld c, 1 << BRN
 	jr AfflictStatusAbility
 PoisonTouchAbility:
 	; Poison Touch is the same as an opposing Poison Point, and since
 	; abilities always run from the ability user's POV...
 	; Doesn't apply when opponent has a Substitute up...
-	farcall CheckSubstituteOpp
-	ret nz
-	call GetOpponentAbilityAfterMoldBreaker
-	cp SHIELD_DUST
-	ret z
+	ld b, 1
+	jr DoPoisonAbility
 PoisonPointAbility:
-	call CheckIfTargetIsPoisonType
-	ret z
-	call CheckIfTargetIsSteelType
-	ret z
-	lb bc, IMMUNITY, HELD_PREVENT_POISON
-	ld d, PSN
-	jr AfflictStatusAbility
+	ld b, 0
+	; fallthrough
+DoPoisonAbility:
+	ld hl, CanPoisonTarget
+	ld c, 1 << PSN
+	jr _AfflictStatusAbility
 StaticAbility:
-	call CheckIfTargetIsElectricType
-	ret z
-	lb bc, LIMBER, HELD_PREVENT_PARALYZE
-	ld d, PAR
-AfflictStatusAbility
-; While BattleCommand_whatever already does all these checks,
-; duplicating them here is minor logic, and it avoids spamming
-; needless ability activations that ends up not actually doing
-; anything.
+	ld hl, CanParalyzeTarget
+	ld c, 1 << PAR
+	; fallthrough
+AfflictStatusAbility:
+	ld b, 0
+_AfflictStatusAbility:
+	push hl
+	push bc
+	ld a, BANK(CanPoisonTarget)
+	call FarCall_hl
+	pop bc
+	pop hl
+	ret nz
+
 	call HasOpponentFainted
 	ret z
-	call GetOpponentAbility
-	cp b
-	ret z
-	push de
-	farcall GetOpponentItem
-	pop de
-	ld a, b
-	cp c
-	ret z
-	ld b, d
+
 	ld a, BATTLE_VARS_STATUS_OPP
-	call GetBattleVar
-	and a
-	ret nz
-	call DisableAnimations
-	call ShowAbilityActivation
-	ld a, b
+	call GetBattleVarAddr
+	ld a, c
 	cp SLP
-	jr z, .slp
-	cp BRN
-	jr z, .brn
-	cp PSN
-	jr z, .psn
-	farcall BattleCommand_paralyze
-	jp EnableAnimations
-.slp
-	farcall BattleCommand_sleeptarget
-	jp EnableAnimations
-.brn
-	farcall BattleCommand_burn
-	jp EnableAnimations
-.psn
-	farcall BattleCommand_poison
+	jr nz, .got_status
+
+	; sleep for 1-3 turns (+1 including wakeup turn)
+	ld a, 3
+	call RandomRange
+	inc a
+.got_status
+	ld [hl], a
+
+	call DisableAnimations
+	farcall DisplayStatusProblem
+	call UpdateOpponentInParty
+	call UpdateBattleHuds
+	farcall PostStatusWithSynchronize
 	jp EnableAnimations
 
 CheckNullificationAbilities:
 ; Doesn't deal with the active effect of this, but just checking if they apply vs
 ; an opponent's used attack (not Overcoat vs powder which is checked with Grass)
 	; Most abilities depends on types and can use a lookup table, but a few
-	; doesn't. Check these first.
+	; don't. Check these first.
 	call GetOpponentAbilityAfterMoldBreaker
 	ld b, a
 	cp DAMP
 	jr z, .damp
 	cp SOUNDPROOF
 	jr z, .soundproof
-
-	; Non-damaging moves only work on Flash Fire and Lightning Rod
 	cp FLASH_FIRE
-	jr z, .check_others
+	jr z, .flash_fire
 	cp LIGHTNING_ROD
 	jr z, .check_others
 
@@ -817,16 +829,21 @@ CheckNullificationAbilities:
 	ld a, BATTLE_VARS_MOVE
 	call GetBattleVar
 	ld hl, SoundMoves
-	ld de, 1
-	call IsInArray
-	ret nc
+	call IsInByteArray
+	jr c, .ability_ok
+	ret
+
+.flash_fire
+	; Also affected by status moves and Will-O-Wisp
+	ld a, BATTLE_VARS_MOVE_EFFECT
+	call GetBattleVar
+	cp EFFECT_BURN
+	jr nz, .check_others
 
 .ability_ok
-	; Set wAttackMissed to 3 (means ability immunity kicked in), and wTypeMatchup
-	; to 0 (not neccessary for the engine itself, but helps the AI)
 	ld a, ATKFAIL_ABILITY
 	ld [wAttackMissed], a
-	xor a
+	xor a ; kind of redundant, but helpful for the AI
 	ld [wTypeMatchup], a
 	ret
 
@@ -846,7 +863,7 @@ RunEnemyNullificationAbilities:
 	call ShowAbilityActivation
 	call SwitchTurn
 	ld hl, DoesntAffectText
-	call StdBattleTextBox
+	call StdBattleTextbox
 	call EnableAnimations
 	jp SwitchTurn
 
@@ -871,7 +888,7 @@ DampAbility:
 	call DisableAnimations
 	call ShowAbilityActivation
 	ld hl, CannotUseText
-	call StdBattleTextBox
+	call StdBattleTextbox
 	jp EnableAnimations
 
 RunStatIncreaseAbilities:
@@ -899,10 +916,15 @@ JustifiedAbility:
 	cp DARK
 	ret nz
 	jr AttackUpAbility
+_RunFaintUserAbilities:
+	cp MOXIE
+	ret nz
+	; fallthrough
 MoxieAbility:
 	; Don't run if battle is over
 	farcall CheckAnyOtherAliveOpponentMons
 	ret z
+	; fallthrough
 SapSipperAbility:
 AttackUpAbility:
 	ld b, ATTACK
@@ -918,8 +940,7 @@ RattledAbility:
 	cp DARK
 	jr z, .ok
 	cp GHOST
-	jr z, .ok
-	ret
+	ret nz
 .ok
 	; fallthrough
 MotorDriveAbility:
@@ -949,7 +970,7 @@ StatUpAbility:
 	call ShowAbilityActivation
 	call SwitchTurn
 	ld hl, DoesntAffectText
-	call StdBattleTextBox
+	call StdBattleTextbox
 	call EnableAnimations
 	call SwitchTurn
 .done
@@ -978,12 +999,12 @@ FlashFireAbility:
 	jr nz, .already_fired_up
 	set SUBSTATUS_FLASH_FIRE, [hl]
 	ld hl, FirePoweredUpText
-	call StdBattleTextBox
+	call StdBattleTextbox
 	jp EnableAnimations
 .already_fired_up
 	call SwitchTurn
 	ld hl, DoesntAffectText
-	call StdBattleTextBox
+	call StdBattleTextbox
 	call EnableAnimations
 	jp SwitchTurn
 
@@ -997,16 +1018,18 @@ WaterAbsorbAbility:
 	call GetQuarterMaxHP
 	farcall RestoreHP
 	ld hl, RegainedHealthText
-	call StdBattleTextBox
+	call StdBattleTextbox
 	jp EnableAnimations
 .full_hp
 	ld hl, HPIsFullText
-	call StdBattleTextBox
+	call StdBattleTextbox
 	jp EnableAnimations
 
 ApplySpeedAbilities:
 ; Passive speed boost abilities
 	call GetTrueUserAbility
+	cp UNBURDEN
+	jr z, .unburden
 	cp SWIFT_SWIM
 	jr z, .swift_swim
 	cp CHLOROPHYLL
@@ -1021,6 +1044,14 @@ ApplySpeedAbilities:
 	and a
 	ret z
 	ln a, 3, 2 ; x1.5
+	jr .apply_mod
+.unburden
+	; Only if we have the Unburden volatile
+	ld a, BATTLE_VARS_SUBSTATUS1
+	call GetBattleVar
+	bit SUBSTATUS_UNBURDEN, a
+	ret z
+	ln a, 2, 1 ; x2
 	jr .apply_mod
 .swift_swim
 	ld h, WEATHER_RAIN
@@ -1125,7 +1156,7 @@ SolarPowerWeatherAbility:
 	call GetEighthMaxHP
 	predef SubtractHPFromUser
 	ld hl, IsHurtText
-	call StdBattleTextBox
+	call StdBattleTextbox
 	jp EnableAnimations
 
 IceBodyAbility:
@@ -1152,30 +1183,32 @@ WeatherRecoveryAbility:
 .restore
 	farcall RestoreHP
 	ld hl, RegainedHealthText
-	call StdBattleTextBox
+	call StdBattleTextbox
 	jp EnableAnimations
 
 EndturnAbilitiesA:
-	ld hl, .ability_table
+	ld hl, EndturnAbilityTableA
+	jr _EndturnAbilities
+
+EndturnAbilitiesB:
+; these 2 routines are deliberately seperate to maintain vanilla accuracy
+	ld hl, EndturnAbilityTableB
+	; fallthrough
+_EndturnAbilities:
+	push hl
+	call HasUserFainted
+	pop hl
+	ret z
 	call UserAbilityJumptable
 	ld hl, StatusHealAbilities
 	jp UserAbilityJumptable
 
-.ability_table
+EndturnAbilityTableA:
 	dbw SHED_SKIN, ShedSkinAbility
 	dbw HYDRATION, HydrationAbility
 	dbw -1, -1
 
-HandleAbilities:
-; Abilities handled at the end of the turn.
-	call HasUserFainted
-	ret z
-	ld hl, EndTurnAbilities
-	call UserAbilityJumptable
-	ld hl, StatusHealAbilities
-	jp UserAbilityJumptable
-
-EndTurnAbilities:
+EndturnAbilityTableB:
 	dbw HARVEST, HarvestAbility
 	dbw MOODY, MoodyAbility
 	dbw PICKUP, PickupAbility
@@ -1285,7 +1318,7 @@ RegainItemByAbility:
 	push hl
 	call GetItemName
 	pop hl
-	call StdBattleTextBox
+	call StdBattleTextbox
 	pop bc
 	ldh a, [hBattleTurn]
 	and a
@@ -1459,6 +1492,7 @@ OffensiveDamageAbilities:
 	dbw GUTS, GutsAbility
 	dbw PIXILATE, PixilateAbility
 	dbw GALVANIZE, GalvanizeAbility
+	dbw GORILLA_TACTICS, GorillaTacticsAbility
 	dbw -1, -1
 
 DefensiveDamageAbilities:
@@ -1483,6 +1517,8 @@ HugePowerAbility:
 
 HustleAbility:
 ; 150% physical attack, 80% accuracy (done elsewhere)
+GorillaTacticsAbility:
+; 150% physical attack, locks into one move (done elsewhere)
 	ld a, $32
 	jp ApplyPhysicalAttackDamageMod
 
@@ -1580,9 +1616,9 @@ MoveBoostAbility:
 	ld a, BATTLE_VARS_MOVE
 	call GetBattleVar
 	push bc
-	call IsInArray
+	call IsInByteArray
 	pop bc
-	ret c
+	ret nc
 	ld a, b
 	jp MultiplyAndDivide
 
@@ -1607,7 +1643,7 @@ RecklessAbility:
 ; 120% damage for (Hi) Jump Kick and recoil moves except for Struggle
 	ld a, BATTLE_VARS_MOVE
 	call GetBattleVar
-	cp STRUGGLE
+	inc a ; cp STRUGGLE
 	ret z
 	ld a, BATTLE_VARS_MOVE_EFFECT
 	call GetBattleVar
@@ -1766,23 +1802,17 @@ _GetOpponentAbilityAfterMoldBreaker::
 	ld b, a
 	call GetTrueUserAbility
 	cp MOLD_BREAKER
-	jr z, .cont_check
 	ld a, b
-	jr .end
-.cont_check
-	ld a, b
-	ld de, 1
+	jr nz, .end
 	push hl
 	push bc
 	ld hl, MoldBreakerSuppressedAbilities
-	call IsInArray
+	call IsInByteArray
 	pop bc
 	pop hl
-	jr c, .suppressed
 	ld a, b
-	jr .end
-.suppressed:
-	ld a, NO_ABILITY
+	jr nc, .end
+	xor a ; ld a, NO_ABILITY
 .end
 	pop bc
 	pop de
@@ -1806,6 +1836,9 @@ DisableAnimations:
 	ret
 
 EnableAnimations:
+	ld a, [wAnimationsDisabled]
+	and a
+	ret z
 	call DismissAbilityOverlays
 	xor a
 	ld [wAnimationsDisabled], a
@@ -1826,6 +1859,8 @@ ShowAbilityActivation::
 
 RunPostBattleAbilities::
 ; Checks party for potentially finding items (Pickup) or curing status (Natural Cure)
+	; Ensure that ability slideouts appear for the correct side for Pickup.
+	call SetPlayerTurn
 	ld a, [wPartyCount]
 	jr .first_pass
 .loop
@@ -1909,7 +1944,7 @@ RunPostBattleAbilities::
 	ld b, PICKUP
 	call PerformAbilityGFX
 	ld hl, BattleText_PickedUpItem
-	call StdBattleTextBox
+	call StdBattleTextbox
 	pop de
 	pop bc
 	jp EnableAnimations

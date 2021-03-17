@@ -18,31 +18,51 @@ VBlank::
 	ldh a, [hROMBank]
 	ldh [hROMBankBackup], a
 
+	; Skip the .VBlanks table if [hVBlank] is just 7.
+	; _SafeCopyTilemapAtOnce sets it to 1 << 7 | 7 to execute actual VBlank7.
 	ldh a, [hVBlank]
 	cp 7
 	jr z, .skipToGameTime
 
-	; don't chain vblank crashes
+	; Avoid chaining crashes as a rule. This is especially for vblank ones.
+	; Thus, the fact that this doesn't avoid chaining rst0 (error code 0) is ok.
 	ldh a, [hCrashCode]
-	cp FIRST_VBLANK_ERR
-	jr nc, .skip_crash
+	and a
+	jr nz, .skip_crash
 
 	ld hl, sp+$0
 	ld a, h
 	cp HIGH(wStackBottom)
-	jr c, .SPTooLow
-	jr nz, .SPTooHigh
+	ld a, ERR_STACK_OVERFLOW
+	jr c, .crash
+	ld a, ERR_STACK_UNDERFLOW
+	jr nz, .crash
 
 	ld hl, sp+$b
 	ld a, [hl]
 	inc a
-	cp $81
+	cp HIGH(VRAM_Begin) + 1
 	ld a, ERR_EXECUTING_RAM
 	jr nc, .crash
 
+	ldh a, [rSVBK]
+	ld e, a
+	ld a, BANK(wGameVersion)
+	ldh [rSVBK], a
+	ld hl, wGameVersion
+	ld a, [hli]
+	cp HIGH(SAVE_VERSION)
+	jr nz, .version_crash
+	ld a, [hl]
+	cp LOW(SAVE_VERSION)
+	ld a, ERR_VERSION_MISMATCH
+	jr nz, .version_crash
+	ld a, e
+	ldh [rSVBK], a
+
 .skip_crash
 	ldh a, [hVBlank]
-	and 7
+	and %111
 	add a
 	ld e, a
 	ld d, 0
@@ -78,13 +98,10 @@ VBlank::
 	pop hl
 	reti
 
-.SPTooLow
-	; keep in mind that lower sp = higher stack frame
-	ld a, ERR_STACK_OVERFLOW
-	jr .crash
-
-.SPTooHigh
-	ld a, ERR_STACK_UNDERFLOW
+.version_crash
+	ld a, e
+	ldh [rSVBK], a
+	ld a, ERR_VERSION_MISMATCH
 .crash
 	di
 	jp Crash
@@ -172,7 +189,7 @@ VBlankUpdateSound::
 ; sound only
 	ld a, BANK(_UpdateSound)
 	rst Bankswitch
-	jp _UpdateSound
+	jp _UpdateSound ; far-ok
 
 VBlank6::
 ; palettes
@@ -295,4 +312,4 @@ VBlank7::
 ; also updates oam, and pals if specified
 	ld a, BANK(VBlankSafeCopyTilemapAtOnce)
 	rst Bankswitch
-	jp VBlankSafeCopyTilemapAtOnce
+	jp VBlankSafeCopyTilemapAtOnce ; far-ok

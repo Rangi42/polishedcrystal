@@ -1,21 +1,21 @@
 LakeOfRageHiddenPowerHouse_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event  2,  7, LAKE_OF_RAGE, 1
 	warp_event  3,  7, LAKE_OF_RAGE, 1
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 3 ; bg events
-	bg_event  5,  1, SIGNPOST_JUMPSTD, radio2
-	bg_event  6,  1, SIGNPOST_JUMPSTD, difficultbookshelf
-	bg_event  7,  1, SIGNPOST_JUMPSTD, difficultbookshelf
+	def_bg_events
+	bg_event  5,  1, BGEVENT_JUMPSTD, radio2
+	bg_event  6,  1, BGEVENT_JUMPSTD, difficultbookshelf
+	bg_event  7,  1, BGEVENT_JUMPSTD, difficultbookshelf
 
-	db 1 ; object events
-	object_event  2,  3, SPRITE_FAT_GUY, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, HiddenPowerGuy, -1
+	def_object_events
+	object_event  2,  3, SPRITE_FAT_GUY, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, HiddenPowerGuy, -1
 
 HiddenPowerGuy:
 	faceplayer
@@ -23,12 +23,12 @@ HiddenPowerGuy:
 	checkevent EVENT_GOT_TM10_HIDDEN_POWER
 	iftrue .AlreadyGotItem
 	writetext .Text1
-	buttonsound
+	promptbutton
 	verbosegivetmhm TM_HIDDEN_POWER
 	setevent EVENT_GOT_TM10_HIDDEN_POWER
 	writetext .Text2
 	waitbutton
-	jump .CheckHiddenPower
+	sjump .CheckHiddenPower
 .AlreadyGotItem:
 	writetext .Text4
 	waitbutton
@@ -37,7 +37,7 @@ HiddenPowerGuy:
 	yesorno
 	iffalse_jumpopenedtext .Text7
 	writetext .Text5
-	buttonsound
+	promptbutton
 	special Special_HiddenPowerGuru
 	iffalse_jumpopenedtext .Text4
 	ifequal $1, .Egg
@@ -46,10 +46,10 @@ HiddenPowerGuy:
 	text "I can sense it…"
 
 	para "Your "
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	line "has a Hidden Power"
 	cont "of "
-	text_from_ram wStringBuffer1
+	text_ram wStringBuffer1
 	text "!"
 	done
 

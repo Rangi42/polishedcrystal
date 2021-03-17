@@ -300,14 +300,14 @@ fix_facing: MACRO
 	db movement_fix_facing ; $3b
 	ENDM
 
-	enum movement_show_person
-show_person: MACRO
-	db movement_show_person ; $3c
+	enum movement_show_object
+show_object: MACRO
+	db movement_show_object ; $3c
 	ENDM
 
-	enum movement_hide_person
-hide_person: MACRO
-	db movement_hide_person ; $3d
+	enum movement_hide_object
+hide_object: MACRO
+	db movement_hide_object ; $3d
 	ENDM
 
 	enum movement_step_sleep_1
@@ -366,9 +366,9 @@ step_resume: MACRO
 	db movement_step_resume ; $48
 	ENDM
 
-	enum movement_remove_person
-remove_person: MACRO
-	db movement_remove_person ; $49
+	enum movement_remove_object
+remove_object: MACRO
+	db movement_remove_object ; $49
 	ENDM
 
 	enum movement_step_loop

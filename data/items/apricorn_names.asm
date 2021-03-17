@@ -1,4 +1,5 @@
 ApricornNames::
+	db "?@"
 	db "Red Apricorn@"
 	db "Blu Apricorn@"
 	db "Ylw Apricorn@"

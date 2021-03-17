@@ -1,41 +1,41 @@
 OaksLab_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event  4, 11, PALLET_TOWN, 3
 	warp_event  5, 11, PALLET_TOWN, 3
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 16 ; bg events
-	bg_event  6,  1, SIGNPOST_JUMPSTD, difficultbookshelf
-	bg_event  7,  1, SIGNPOST_JUMPSTD, difficultbookshelf
-	bg_event  8,  1, SIGNPOST_JUMPSTD, difficultbookshelf
-	bg_event  9,  1, SIGNPOST_JUMPSTD, difficultbookshelf
-	bg_event  0,  7, SIGNPOST_JUMPSTD, difficultbookshelf
-	bg_event  1,  7, SIGNPOST_JUMPSTD, difficultbookshelf
-	bg_event  2,  7, SIGNPOST_JUMPSTD, difficultbookshelf
-	bg_event  3,  7, SIGNPOST_JUMPSTD, difficultbookshelf
-	bg_event  6,  7, SIGNPOST_JUMPSTD, difficultbookshelf
-	bg_event  7,  7, SIGNPOST_JUMPSTD, difficultbookshelf
-	bg_event  8,  7, SIGNPOST_JUMPSTD, difficultbookshelf
-	bg_event  9,  7, SIGNPOST_JUMPSTD, difficultbookshelf
-	bg_event  4,  0, SIGNPOST_JUMPTEXT, OaksLabPoster1Text
-	bg_event  5,  0, SIGNPOST_JUMPTEXT, OaksLabPoster2Text
-	bg_event  9,  3, SIGNPOST_JUMPTEXT, OaksLabTrashcanText
-	bg_event  0,  1, SIGNPOST_JUMPTEXT, OaksLabPCText
+	def_bg_events
+	bg_event  6,  1, BGEVENT_JUMPSTD, difficultbookshelf
+	bg_event  7,  1, BGEVENT_JUMPSTD, difficultbookshelf
+	bg_event  8,  1, BGEVENT_JUMPSTD, difficultbookshelf
+	bg_event  9,  1, BGEVENT_JUMPSTD, difficultbookshelf
+	bg_event  0,  7, BGEVENT_JUMPSTD, difficultbookshelf
+	bg_event  1,  7, BGEVENT_JUMPSTD, difficultbookshelf
+	bg_event  2,  7, BGEVENT_JUMPSTD, difficultbookshelf
+	bg_event  3,  7, BGEVENT_JUMPSTD, difficultbookshelf
+	bg_event  6,  7, BGEVENT_JUMPSTD, difficultbookshelf
+	bg_event  7,  7, BGEVENT_JUMPSTD, difficultbookshelf
+	bg_event  8,  7, BGEVENT_JUMPSTD, difficultbookshelf
+	bg_event  9,  7, BGEVENT_JUMPSTD, difficultbookshelf
+	bg_event  4,  0, BGEVENT_JUMPTEXT, OaksLabPoster1Text
+	bg_event  5,  0, BGEVENT_JUMPTEXT, OaksLabPoster2Text
+	bg_event  9,  3, BGEVENT_JUMPTEXT, OaksLabTrashcanText
+	bg_event  0,  1, BGEVENT_JUMPTEXT, OaksLabPCText
 
-	db 6 ; object events
-	object_event  4,  2, SPRITE_OAK, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Oak, -1
-	object_event  7,  3, SPRITE_MON_ICON, SPRITEMOVEDATA_DOLL, 0, EEVEE, -1, -1, PAL_NPC_BROWN, PERSONTYPE_SCRIPT, 0, EeveeDollScript, EVENT_DECO_EEVEE_DOLL
-	object_event  1,  8, SPRITE_AROMA_LADY, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, OaksAssistant1Text, -1
-	object_event  8,  9, SPRITE_SCIENTIST, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, OaksAssistant2Text, -1
-	object_event  1,  4, SPRITE_SCIENTIST, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, OaksAssistant3Text, -1
-	object_event  2,  1, SPRITE_BOOK_PAPER_POKEDEX, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptext, OaksLabPokedexText, -1
+	def_object_events
+	object_event  4,  2, SPRITE_OAK, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Oak, -1
+	object_event  7,  3, SPRITE_MON_ICON, SPRITEMOVEDATA_STILL, 0, EEVEE, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, EeveeDollScript, EVENT_DECO_EEVEE_DOLL
+	object_event  1,  8, SPRITE_AROMA_LADY, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, OaksAssistant1Text, -1
+	object_event  8,  9, SPRITE_SCIENTIST, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, OaksAssistant2Text, -1
+	object_event  1,  4, SPRITE_SCIENTIST, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, OaksAssistant3Text, -1
+	object_event  2,  1, SPRITE_BOOK_PAPER_POKEDEX, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptext, OaksLabPokedexText, -1
 
-	const_def 1 ; object constants
+	object_const_def
 	const OAKSLAB_OAK
 	const OAKSLAB_EEVEE_DOLL
 
@@ -47,7 +47,7 @@ Oak:
 	checkevent EVENT_TALKED_TO_OAK_IN_KANTO
 	iftrue .GiveStarter
 	writetext OakWelcomeKantoText
-	buttonsound
+	promptbutton
 	setevent EVENT_TALKED_TO_OAK_IN_KANTO
 .GiveStarter:
 	checkevent EVENT_GOT_A_POKEMON_FROM_OAK
@@ -55,42 +55,42 @@ Oak:
 	checkevent EVENT_GOT_A_POKEMON_FROM_IVY
 	iffalse .CheckBadges
 	writetext OakLabGiveStarterText
-	buttonsound
+	promptbutton
 	waitsfx
-	checkcode VAR_PARTYCOUNT
+	readvar VAR_PARTYCOUNT
 	ifequal $6, .PartyFull
 	checkevent EVENT_GOT_BULBASAUR_FROM_IVY
 	iftrue .Charmander
 	checkevent EVENT_GOT_CHARMANDER_FROM_IVY
 	iftrue .Squirtle
-	pokenamemem BULBASAUR, $0
+	getmonname BULBASAUR, $0
 	writetext OakLabReceivedKantoStarterText
 	playsound SFX_CAUGHT_MON
 	waitsfx
-	buttonsound
+	promptbutton
 	givepoke BULBASAUR, NO_FORM, 10, SITRUS_BERRY
 	setevent EVENT_GOT_A_POKEMON_FROM_OAK
-	jump .CheckBadges
+	sjump .CheckBadges
 
 .Charmander:
-	pokenamemem CHARMANDER, $0
+	getmonname CHARMANDER, $0
 	writetext OakLabReceivedKantoStarterText
 	playsound SFX_CAUGHT_MON
 	waitsfx
-	buttonsound
+	promptbutton
 	givepoke CHARMANDER, NO_FORM, 10, SITRUS_BERRY
 	setevent EVENT_GOT_A_POKEMON_FROM_OAK
-	jump .CheckBadges
+	sjump .CheckBadges
 
 .Squirtle:
-	pokenamemem SQUIRTLE, $0
+	getmonname SQUIRTLE, $0
 	writetext OakLabReceivedKantoStarterText
 	playsound SFX_CAUGHT_MON
 	waitsfx
-	buttonsound
+	promptbutton
 	givepoke SQUIRTLE, NO_FORM, 10, SITRUS_BERRY
 	setevent EVENT_GOT_A_POKEMON_FROM_OAK
-	jump .CheckBadges
+	sjump .CheckBadges
 
 .PartyFull:
 	writetext OakLabPartyFullText
@@ -100,21 +100,21 @@ Oak:
 	iftrue .CheckPokedex
 	checkevent EVENT_BEAT_ELITE_FOUR_AGAIN
 	iftrue .BattleOak
-	checkcode VAR_BADGES
+	readvar VAR_BADGES
 	ifequal 16, .Complain1
 	ifequal  8, .Complain2
 	writetext OakYesKantoBadgesText
-	buttonsound
+	promptbutton
 .CheckPokedex:
 	writetext OakLabDexCheckText
 	waitbutton
 	special ProfOaksPCBoot
 	checkevent EVENT_GOT_OVAL_CHARM_FROM_OAK
 	iftrue .NoOvalCharm
-	checkcode VAR_DEXSEEN
+	readvar VAR_DEXSEEN
 	ifless NUM_POKEMON, .NoOvalCharm
 	writetext OakLabSeenAllText
-	buttonsound
+	promptbutton
 	verbosegivekeyitem OVAL_CHARM
 	setevent EVENT_GOT_OVAL_CHARM_FROM_OAK
 	writetext OakLabOvalCharmText
@@ -122,10 +122,10 @@ Oak:
 .NoOvalCharm
 	checkevent EVENT_GOT_SHINY_CHARM_FROM_OAK
 	iftrue .NoShinyCharm
-	checkcode VAR_DEXCAUGHT
+	readvar VAR_DEXCAUGHT
 	ifless NUM_POKEMON, .NoShinyCharm
 	writetext OakLabCaughtAllText
-	buttonsound
+	promptbutton
 	verbosegivekeyitem SHINY_CHARM
 	setflag ENGINE_HAVE_SHINY_CHARM
 	setevent EVENT_GOT_SHINY_CHARM_FROM_OAK
@@ -154,25 +154,25 @@ Oak:
 	reloadmapafterbattle
 	opentext
 	writetext OakOpenMtSilverText
-	buttonsound
+	promptbutton
 	setevent EVENT_BEAT_PROF_OAK
 	setevent EVENT_OPENED_MT_SILVER
-	jump .CheckPokedex
+	sjump .CheckPokedex
 
 .NotReady:
 	writetext OakRefusedText
-	buttonsound
-	jump .CheckPokedex
+	promptbutton
+	sjump .CheckPokedex
 
 .Complain1:
 	writetext OakNoEliteFourRematchText
-	buttonsound
-	jump .CheckPokedex
+	promptbutton
+	sjump .CheckPokedex
 
 .Complain2:
 	writetext OakNoKantoBadgesText
-	buttonsound
-	jump .CheckPokedex
+	promptbutton
+	sjump .CheckPokedex
 
 EeveeDollScript:
 	turnobject OAKSLAB_OAK, RIGHT
@@ -237,7 +237,7 @@ OakLabPartyFullText:
 OakLabReceivedKantoStarterText:
 	text "<PLAYER> received"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "!"
 	done
 
@@ -488,7 +488,7 @@ OaksLabPoster2Text:
 	line "manner."
 	done
 
-OaksLabTrashcanText
+OaksLabTrashcanText:
 	text "There's nothing in"
 	line "here…"
 	done

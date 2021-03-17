@@ -97,12 +97,12 @@ _SlotMachine:
 ;	call PlayMusic
 
 	xor a
-	ld [wd002], a
+	ld [wKeepSevenBiasChance], a
 	call Random
 	and %00101010
 	ret nz
 	ld a, $1
-	ld [wd002], a
+	ld [wKeepSevenBiasChance], a
 	ret
 
 Slots_GetPals:
@@ -187,7 +187,7 @@ Slots_BetAndStart:
 	call Slots_IlluminateBetLights
 	call Slots_InitBias
 	ld a, 32
-	ld [wcf64], a
+	ld [wSlotsDelay], a
 	ld a, 4
 	ld [wReel1ReelAction], a
 	ld [wReel2ReelAction], a
@@ -201,7 +201,7 @@ Slots_BetAndStart:
 	jp Slots_PlaySFX
 
 Slots_WaitStart:
-	ld hl, wcf64
+	ld hl, wSlotsDelay
 	ld a, [hl]
 	and a
 	jr z, .proceed
@@ -286,9 +286,9 @@ Slots_FlashIfWin:
 .GotIt:
 	call Slots_Next
 	ld a, 16
-	ld [wcf64], a
+	ld [wSlotsDelay], a
 Slots_FlashScreen:
-	ld hl, wcf64
+	ld hl, wSlotsDelay
 	ld a, [hl]
 	and a
 	jr z, .done
@@ -314,14 +314,14 @@ Slots_GiveEarnedCoins:
 	call DmgToCgbBGPals
 	call SlotGetPayout
 	xor a
-	ld [wcf64], a
+	ld [wSlotsDelay], a
 	jp Slots_Next
 
 Slots_PayoutTextAndAnim:
 	call SlotPayoutText
 	call Slots_Next
 Slots_PayoutAnim:
-	ld hl, wcf64
+	ld hl, wSlotsDelay
 	ld a, [hl]
 	inc [hl]
 	and $1
@@ -347,7 +347,7 @@ Slots_PayoutAnim:
 	ld [hl], e
 	dec hl
 	ld [hl], d
-	ld a, [wcf64]
+	ld a, [wSlotsDelay]
 	and $7
 	ret nz
 	ld de, SFX_GET_COIN_FROM_SLOTS
@@ -575,9 +575,7 @@ Slots_SpinReels:
 	add hl, bc
 	ld a, [hl]
 	and $f
-	jr nz, .skip
-	call Function92bd4
-.skip
+	call z, ReelActionJumptable
 	ld hl, wReel1SpinRate - wReel1
 	add hl, bc
 	ld a, [hl]
@@ -678,7 +676,7 @@ UpdateReelPositionAndOAM:
 	jr nz, .loop
 	ret
 
-Function92bd4:
+ReelActionJumptable:
 	ld hl, wReel1ReelAction - wReel1
 	add hl, bc
 	ld a, [hl]
@@ -873,11 +871,11 @@ ReelAction_WaitReel2SkipTo7:
 	add hl, bc
 	ld a, [hl]
 	and a
-	jr z, .asm_92d02
+	jr z, .ready
 	dec [hl]
 	ret
 
-.asm_92d02
+.ready
 	ld a, SFX_THROW_BALL
 	call Slots_PlaySFX
 	ld hl, wReel1ReelAction - wReel1
@@ -908,21 +906,21 @@ ReelAction_InitGolem:
 	ld hl, wReel1SpinRate - wReel1
 	add hl, bc
 	ld [hl], $0
-	call Function92fc0
+	call Slots_GetNumberOfGolems
 	push bc
 	push af
 	depixel 12, 13
 	ld a, SPRITE_ANIM_INDEX_SLOTS_GOLEM
 	call _InitSpriteAnimStruct
-	ld hl, SPRITEANIMSTRUCT_0E
+	ld hl, SPRITEANIMSTRUCT_VAR3
 	add hl, bc
 	pop af
 	ld [hl], a
 	pop bc
 	xor a
-	ld [wcf64], a
+	ld [wSlotsDelay], a
 ReelAction_WaitGolem:
-	ld a, [wcf64]
+	ld a, [wSlotsDelay]
 	cp 2
 	jr z, .two
 	cp 1
@@ -944,7 +942,7 @@ ReelAction_WaitGolem:
 
 ReelAction_EndGolem:
 	xor a
-	ld [wcf64], a
+	ld [wSlotsDelay], a
 	ld hl, wReel1ReelAction - wReel1
 	add hl, bc
 	dec [hl]
@@ -971,20 +969,20 @@ Slots_InitChansey:
 	call _InitSpriteAnimStruct
 	pop bc
 	xor a
-	ld [wcf64], a
+	ld [wSlotsDelay], a
 	ret
 
 ReelAction_WaitChansey:
-	ld a, [wcf64]
+	ld a, [wSlotsDelay]
 	and a
 	ret z
 	ld hl, wReel1ReelAction - wReel1
 	add hl, bc
 	inc [hl]
 	ld a, $2
-	ld [wcf64], a
+	ld [wSlotsDelay], a
 ReelAction_WaitEgg:
-	ld a, [wcf64]
+	ld a, [wSlotsDelay]
 	cp $4
 	ret c
 	ld hl, wReel1ReelAction - wReel1
@@ -1011,7 +1009,7 @@ ReelAction_DropReel:
 	and a
 	jr nz, .EggAgain
 	ld a, $5
-	ld [wcf64], a
+	ld [wSlotsDelay], a
 	jp Slots_StopReel
 
 .EggAgain:
@@ -1023,7 +1021,7 @@ ReelAction_DropReel:
 	dec [hl]
 	dec [hl]
 	ld a, $1
-	ld [wcf64], a
+	ld [wSlotsDelay], a
 	ret
 
 ReelAction_BoringReelDrops:
@@ -1035,7 +1033,7 @@ ReelAction_BoringReelDrops:
 	ld hl, wReel1ReelAction - wReel1
 	add hl, bc
 	inc [hl]
-	call Function92fc0
+	call Slots_GetNumberOfGolems
 	ld hl, wReel1Slot0a - wReel1
 	add hl, bc
 	ld [hl], a
@@ -1316,7 +1314,7 @@ Slots_CopyReelState:
 	ld [de], a
 	ret
 
-Function92fc0:
+Slots_GetNumberOfGolems:
 	ld hl, wReel1Position - wReel1
 	add hl, bc
 	ld a, [hl]
@@ -1333,7 +1331,7 @@ Function92fc0:
 	ld a, [wSlotBias]
 	and a
 	jr nz, .not_biased_to_seven
-	ld e, $0
+	ld e, a
 .loop1
 	ld hl, wReel1Position - wReel1
 	add hl, bc
@@ -1452,7 +1450,7 @@ Slots_AskBet:
 	ld hl, .Text_BetHowManyCoins
 	call PrintText
 	ld hl, .MenuDataHeader
-	call LoadMenuDataHeader
+	call LoadMenuHeader
 	call VerticalMenu
 	call CloseWindow
 	ret c
@@ -1490,17 +1488,17 @@ Slots_AskBet:
 
 .Text_BetHowManyCoins:
 	; Bet how many coins?
-	text_jump UnknownText_0x1c5049
+	text_far _SlotsBetHowManyCoinsText
 	text_end
 
 .Text_Start:
 	; Start!
-	text_jump UnknownText_0x1c505e
+	text_far _SlotsStartText
 	text_end
 
 .Text_NotEnoughCoins:
 	; Not enough coins.
-	text_jump UnknownText_0x1c5066
+	text_far _SlotsNotEnoughCoinsText
 	text_end
 
 .MenuDataHeader:
@@ -1531,7 +1529,7 @@ Slots_AskPlayAgain:
 .you_have_coins
 	ld hl, .Text_PlayAgain
 	call PrintText
-	call LoadMenuTextBox
+	call LoadMenuTextbox
 	lb bc, 14, 12
 	call PlaceYesNoBox
 	ld a, [wMenuCursorY]
@@ -1547,11 +1545,11 @@ Slots_AskPlayAgain:
 	ret
 
 .Text_OutOfCoins:
-	text_jump UnknownText_0x1c5079
+	text_far _SlotsRanOutOfCoinsText
 	text_end
 
 .Text_PlayAgain:
-	text_jump UnknownText_0x1c5092
+	text_far _SlotsPlayAgainText
 	text_end
 
 SlotGetPayout:
@@ -1620,7 +1618,7 @@ SlotPayoutText:
 	dbw "15@@", .LinedUpMonOrCherry
 
 .Text_PrintPayout:
-	start_asm
+	text_asm
 	ld a, [wSlotMatched]
 	add $25
 	ldcoord_a 2, 13
@@ -1640,21 +1638,25 @@ endr
 
 .Text_LinedUpWonCoins:
 	; lined up! Won @  coins!
-	text_jump UnknownText_0x1c509f
+	text_far _SlotsLinedUpText
 	text_end
 
 .Text_Darn:
 	; Darn!
-	text_jump UnknownText_0x1c50bb
+	text_far _SlotsDarnText
 	text_end
 
+; Oddly, the rarest mode (wKeepSevenBiasChance = 1) is the one with
+; the worse odds to favor seven symbol streaks (12.5% vs 25%).
+; it's possible that either the wKeepSevenBiasChance initialization
+; or this code was intended to lead to flipped percentages.
 .LinedUpSevens:
 	ld a, SFX_2ND_PLACE
 	call Slots_PlaySFX
 	call WaitSFX
-	ld a, [wd002]
+	ld a, [wKeepSevenBiasChance]
 	and a
-	jr nz, .asm_931ff
+	jr nz, .lower_seven_streak_odds
 	call Random
 	and $14
 	ret z
@@ -1662,7 +1664,7 @@ endr
 	ld [wSlotBias], a
 	ret
 
-.asm_931ff
+.lower_seven_streak_odds
 	call Random
 	and $1c
 	ret z
@@ -1692,13 +1694,13 @@ SlotMachine_AnimateGolem:
 	dw .roll
 
 .init
-	ld hl, SPRITEANIMSTRUCT_0E
+	ld hl, SPRITEANIMSTRUCT_VAR3
 	add hl, bc
 	ld a, [hl]
 	and a
 	jr nz, .retain
 	ld a, $2
-	ld [wcf64], a
+	ld [wSlotsDelay], a
 	ld hl, SPRITEANIMSTRUCT_INDEX
 	add hl, bc
 	ld [hl], $0
@@ -1709,7 +1711,7 @@ SlotMachine_AnimateGolem:
 	ld hl, SPRITEANIMSTRUCT_JUMPTABLE_INDEX
 	add hl, bc
 	inc [hl]
-	ld hl, SPRITEANIMSTRUCT_0C
+	ld hl, SPRITEANIMSTRUCT_VAR1
 	add hl, bc
 	ld [hl], $30
 	ld hl, SPRITEANIMSTRUCT_XOFFSET
@@ -1717,7 +1719,7 @@ SlotMachine_AnimateGolem:
 	ld [hl], $0
 
 .fall
-	ld hl, SPRITEANIMSTRUCT_0C
+	ld hl, SPRITEANIMSTRUCT_VAR1
 	add hl, bc
 	ld a, [hl]
 	cp $20
@@ -1734,11 +1736,11 @@ SlotMachine_AnimateGolem:
 	ld hl, SPRITEANIMSTRUCT_JUMPTABLE_INDEX
 	add hl, bc
 	inc [hl]
-	ld hl, SPRITEANIMSTRUCT_0D
+	ld hl, SPRITEANIMSTRUCT_VAR2
 	add hl, bc
 	ld [hl], $2
 	ld a, $1
-	ld [wcf64], a
+	ld [wSlotsDelay], a
 	ld a, SFX_PLACE_PUZZLE_PIECE_DOWN
 	jp Slots_PlaySFX
 
@@ -1752,7 +1754,7 @@ SlotMachine_AnimateGolem:
 	jr nc, .restart
 	and $3
 	ret nz
-	ld hl, SPRITEANIMSTRUCT_0D
+	ld hl, SPRITEANIMSTRUCT_VAR2
 	add hl, bc
 	ld a, [hl]
 	cpl
@@ -1797,10 +1799,10 @@ Slots_AnimateChansey:
 	add hl, bc
 	inc [hl]
 	ld a, $1
-	ld [wcf64], a
+	ld [wSlotsDelay], a
 
 .one
-	ld a, [wcf64]
+	ld a, [wSlotsDelay]
 	cp $2
 	jr z, .retain
 	cp $5
@@ -1814,11 +1816,11 @@ Slots_AnimateChansey:
 	ld hl, SPRITEANIMSTRUCT_JUMPTABLE_INDEX
 	add hl, bc
 	inc [hl]
-	ld hl, SPRITEANIMSTRUCT_0C
+	ld hl, SPRITEANIMSTRUCT_VAR1
 	add hl, bc
 	ld [hl], $8
 .two
-	ld hl, SPRITEANIMSTRUCT_0C
+	ld hl, SPRITEANIMSTRUCT_VAR1
 	add hl, bc
 	ld a, [hl]
 	and a

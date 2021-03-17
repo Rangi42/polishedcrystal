@@ -1,22 +1,22 @@
 NavelRockRoof_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 1 ; callbacks
+	def_callbacks
 	callback MAPCALLBACK_SPRITES, NavelRockRoofDailyLeafRematchCallback
 
-	db 1 ; warp events
+	def_warp_events
 	warp_event  9, 15, NAVEL_ROCK_INSIDE, 14
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 0 ; bg events
+	def_bg_events
 
-	db 3 ; object events
-	object_event  8,  8, SPRITE_LEAF, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Leaf, EVENT_LEAF_IN_NAVEL_ROCK
-	object_event  8,  8, SPRITE_CHRIS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CHRIS_IN_NAVEL_ROCK
-	object_event  8,  8, SPRITE_KRIS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_KRIS_IN_NAVEL_ROCK
+	def_object_events
+	object_event  8,  8, SPRITE_LEAF, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Leaf, EVENT_LEAF_IN_NAVEL_ROCK
+	object_event  8,  8, SPRITE_CHRIS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_CHRIS_IN_NAVEL_ROCK
+	object_event  8,  8, SPRITE_KRIS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_KRIS_IN_NAVEL_ROCK
 
-	const_def 1 ; object constants
+	object_const_def
 	const NAVELROCKROOF_GREEN
 	const NAVELROCKROOF_CHRIS
 	const NAVELROCKROOF_KRIS
@@ -27,11 +27,11 @@ NavelRockRoofDailyLeafRematchCallback:
 	iftrue .Disappear
 	appear NAVELROCKROOF_GREEN
 .Disappear
-	return
+	endcallback
 
 .Appear:
 	appear NAVELROCKROOF_GREEN
-	return
+	endcallback
 
 Leaf:
 	special Special_FadeOutMusic
@@ -60,31 +60,31 @@ Leaf:
 .Sun
 	checkflag ENGINE_PLAYER_IS_FEMALE
 	iftrue .FemaleEndingSequence
-	checkcode VAR_FACING
+	readvar VAR_FACING
 	ifequal UP, .RightMaleEndingSequence
 	turnobject PLAYER, UP
 	moveobject NAVELROCKROOF_CHRIS, 7, 8
 	appear NAVELROCKROOF_CHRIS
-	jump .EndingSequence
+	sjump .EndingSequence
 
 .RightMaleEndingSequence:
 	applyonemovement PLAYER, slow_step_up
 	appear NAVELROCKROOF_CHRIS
-	jump .EndingSequence
+	sjump .EndingSequence
 
 .FemaleEndingSequence:
-	checkcode VAR_FACING
+	readvar VAR_FACING
 	ifequal UP, .RightFemaleEndingSequence
 	turnobject PLAYER, UP
 	moveobject NAVELROCKROOF_KRIS, 7, 8
 	appear NAVELROCKROOF_KRIS
-	jump .EndingSequence
+	sjump .EndingSequence
 
 .RightFemaleEndingSequence:
 	applyonemovement PLAYER, slow_step_up
 	appear NAVELROCKROOF_KRIS
 .EndingSequence:
-	applyonemovement PLAYER, hide_person
+	applyonemovement PLAYER, hide_object
 	pause 30
 	applymovement PLAYER, NavelRockRoofPanUpMovementData
 	pause 40

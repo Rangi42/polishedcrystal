@@ -1,9 +1,9 @@
 CliffCave_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 7 ; warp events
+	def_warp_events
 	warp_event  5, 19, ROUTE_47, 2
 	warp_event  7,  9, ROUTE_47, 3
 	warp_event  5, 33, ROUTE_47, 4
@@ -12,14 +12,14 @@ CliffCave_MapScriptHeader:
 	warp_event  3,  3, CLIFF_CAVE, 4
 	warp_event  7, 27, CLIFF_CAVE, 5
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 1 ; bg events
-	bg_event  9,  9, SIGNPOST_ITEM + ULTRA_BALL, EVENT_CLIFF_CAVE_HIDDEN_ULTRA_BALL
+	def_bg_events
+	bg_event  9,  9, BGEVENT_ITEM + ULTRA_BALL, EVENT_CLIFF_CAVE_HIDDEN_ULTRA_BALL
 
-	db 2 ; object events
-	object_event  9,  5, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerGruntM22, EVENT_CLEARED_YELLOW_FOREST
-	object_event  5, 33, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, CliffCaveRocketText, EVENT_CLEARED_YELLOW_FOREST
+	def_object_events
+	object_event  9,  5, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerGruntM22, EVENT_CLEARED_YELLOW_FOREST
+	object_event  5, 33, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, CliffCaveRocketText, EVENT_CLEARED_YELLOW_FOREST
 
 GenericTrainerGruntM22:
 	generictrainer GRUNTM, 22, EVENT_BEAT_ROCKET_GRUNTM_22, GruntM22SeenText, GruntM22BeatenText

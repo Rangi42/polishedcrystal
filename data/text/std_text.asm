@@ -10,6 +10,12 @@ NurseDayText:
 	cont "#mon Center."
 	done
 
+NurseEveText:
+	text "Good evening!"
+	line "Welcome to our"
+	cont "#mon Center."
+	done
+
 NurseNiteText:
 	text "Good evening!"
 	line "You're out late."
@@ -38,6 +44,16 @@ PokeComNurseDayText:
 	line "#Com Center."
 	done
 
+PokeComNurseEveText:
+	text "Good evening!"
+
+	para "This is the #-"
+	line "mon Communication"
+
+	para "Center--or the"
+	line "#Com Center."
+	done
+
 PokeComNurseNiteText:
 	text "Good to see you"
 	line "working so late."
@@ -58,7 +74,7 @@ NurseAskHealText:
 	line "#mon?"
 	done
 
-NurseFourTrainerStarsText:
+NurseTrainerStarText:
 	text "We can heal your"
 	line "#mon to perfect"
 	cont "health."
@@ -69,18 +85,11 @@ NurseFourTrainerStarsText:
 	line "Card!"
 
 	para "That wonderful"
-	line "shade! And all"
-	cont "those stars!"
+	line "shade! And that"
+	cont "shiny star!"
 
-	para "I've seen several"
-	line "gold Trainer Cards"
-	cont "before…"
-
-	para "But you're the"
-	line "first to top them"
-
-	para "with that impress-"
-	line "ive Trainer Card."
+	para "You're an impres-"
+	line "sive Trainer."
 
 	para "Please, <PLAYER>,"
 	line "may I heal your"
@@ -257,17 +266,17 @@ ContestResults_ReadyToJudgeText:
 
 ContestResults_PlayerWonAPrizeText:
 	text "<PLAYER>, the No."
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	line "finisher, wins"
 	cont ""
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text "!"
 	done
 
 ReceivedItemText:
 	text "<PLAYER> received"
 	line ""
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text "."
 	done
 
@@ -279,7 +288,7 @@ ContestResults_JoinUsNextTimeText:
 ContestResults_ConsolationPrizeText:
 	text "Everyone else gets"
 	line "a "
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	text " as a"
 	cont "consolation prize!"
 	done
@@ -306,11 +315,11 @@ ContestResults_PartyFullText:
 	done
 
 GymStatue_CityGymText:
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	line "#mon Gym"
 
 	para "Leader: "
-	text_from_ram wStringBuffer4
+	text_ram wStringBuffer4
 	done
 
 GymStatue_WinningTrainersText:
@@ -415,14 +424,14 @@ HappinessText1:
 RegisteredNumber1Text:
 	text "<PLAYER> registered"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "'s number."
 	done
 
 RegisteredNumber2Text:
 	text "<PLAYER> registered"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "'s number."
 	done
 
@@ -435,14 +444,14 @@ VendingMachineClangText:
 	text "Clang!"
 
 	para ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	line "popped out."
 	done
 
 VendingMachineScoreText:
 	text "Score! An extra"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	cont "popped out."
 	done
 

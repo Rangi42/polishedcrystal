@@ -130,4 +130,5 @@ VWFWidths:
 	db 5 ; $ff "┘"
 
 VWFCharacterGFX:
+INCBIN "gfx/font/space.1bpp"
 INCBIN "gfx/font/vwf.1bpp"

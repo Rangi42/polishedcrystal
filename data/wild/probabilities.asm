@@ -1,13 +1,13 @@
 GrassMonProbTable:
-	db 30,  $0 ; 30% chance
-	db 60,  $2 ; 30% chance
-	db 80,  $4 ; 20% chance
-	db 90,  $6 ; 10% chance
-	db 95,  $8 ;  5% chance
-	db 98,  $a ;  3% chance
-	db 100, $c ;  2% chance
+	db 30  ; 30% chance
+	db 60  ; 30% chance
+	db 80  ; 20% chance
+	db 90  ; 10% chance
+	db 95  ;  5% chance
+	db 98  ;  3% chance
+	db 100 ;  2% chance
 
 WaterMonProbTable:
-	db 60,  $0 ; 60% chance
-	db 90,  $2 ; 30% chance
-	db 100, $4 ; 10% chance
+	db 60  ; 60% chance
+	db 90  ; 30% chance
+	db 100 ; 10% chance

@@ -1,35 +1,35 @@
 MrPokemonsHouse_MapScriptHeader:
-	db 1 ; scene scripts
+	def_scene_scripts
 	scene_script MrPokemonsHouseTrigger0
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event  2,  7, ROUTE_30, 2
 	warp_event  3,  7, ROUTE_30, 2
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 6 ; bg events
-	bg_event  0,  1, SIGNPOST_JUMPTEXT, MrPokemonsHouse_ForeignMagazinesText
-	bg_event  1,  1, SIGNPOST_JUMPTEXT, MrPokemonsHouse_ForeignMagazinesText
-	bg_event  6,  1, SIGNPOST_JUMPTEXT, MrPokemonsHouse_BrokenComputerText
-	bg_event  7,  1, SIGNPOST_JUMPTEXT, MrPokemonsHouse_BrokenComputerText
-	bg_event  6,  4, SIGNPOST_JUMPTEXT, MrPokemonsHouse_StrangeCoinsText
-	bg_event  3,  1, SIGNPOST_READ, MrPokemonsHouse_CabinetScript
+	def_bg_events
+	bg_event  0,  1, BGEVENT_JUMPTEXT, MrPokemonsHouse_ForeignMagazinesText
+	bg_event  1,  1, BGEVENT_JUMPTEXT, MrPokemonsHouse_ForeignMagazinesText
+	bg_event  6,  1, BGEVENT_JUMPTEXT, MrPokemonsHouse_BrokenComputerText
+	bg_event  7,  1, BGEVENT_JUMPTEXT, MrPokemonsHouse_BrokenComputerText
+	bg_event  6,  4, BGEVENT_JUMPTEXT, MrPokemonsHouse_StrangeCoinsText
+	bg_event  3,  1, BGEVENT_READ, MrPokemonsHouse_CabinetScript
 
-	db 3 ; object events
-	object_event  3,  5, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, MrPokemonsHouse_MrPokemonScript, -1
-	object_event  6,  5, SPRITE_OAK, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_MR_POKEMONS_HOUSE_OAK
-	object_event  4,  4, SPRITE_BOOK_PAPER_POKEDEX, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_GOT_POKEDEX_FROM_OAK
+	def_object_events
+	object_event  3,  5, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, MrPokemonsHouse_MrPokemonScript, -1
+	object_event  6,  5, SPRITE_OAK, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_MR_POKEMONS_HOUSE_OAK
+	object_event  4,  4, SPRITE_BOOK_PAPER_POKEDEX, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_GOT_POKEDEX_FROM_OAK
 
-	const_def 1 ; object constants
+	object_const_def
 	const MRPOKEMONSHOUSE_GENTLEMAN
 	const MRPOKEMONSHOUSE_OAK
 	const MRPOKEMONSHOUSE_POKEDEX
 
 MrPokemonsHouseTrigger0:
-	priorityjump .MrPokemonEvent
+	prioritysjump .MrPokemonEvent
 	end
 
 .MrPokemonEvent:
@@ -39,28 +39,24 @@ MrPokemonsHouseTrigger0:
 	applymovement PLAYER, MrPokemonsHouse_PlayerWalksToMrPokemon
 	opentext
 	writetext MrPokemonIntroText2
-	buttonsound
+	promptbutton
 	waitsfx
-	givekeyitem MYSTERY_EGG
-	writetext MrPokemonsHouse_GotEggText
-	playsound SFX_KEY_ITEM
-	waitsfx
-	keyitemnotify
+	verbosegivekeyitem MYSTERY_EGG
 	setevent EVENT_GOT_MYSTERY_EGG_FROM_MR_POKEMON
 	blackoutmod CHERRYGROVE_CITY
 if !DEF(DEBUG)
 	writetext MrPokemonIntroText3
-	buttonsound
+	promptbutton
 	turnobject MRPOKEMONSHOUSE_GENTLEMAN, RIGHT
 	writetext MrPokemonIntroText4
-	buttonsound
+	promptbutton
 	turnobject MRPOKEMONSHOUSE_GENTLEMAN, DOWN
 	turnobject MRPOKEMONSHOUSE_OAK, LEFT
 	writetext MrPokemonIntroText5
 	waitbutton
 endc
 	closetext
-	jump MrPokemonsHouse_OakScript
+	sjump MrPokemonsHouse_OakScript
 
 MrPokemonsHouse_MrPokemonScript:
 	faceplayer
@@ -75,7 +71,7 @@ MrPokemonsHouse_MrPokemonScript:
 	writetext MrPokemonText_GimmeTheScale
 	yesorno
 	iffalse_jumpopenedtext MrPokemonText_Disappointed
-	checkcode VAR_PARTYCOUNT
+	readvar VAR_PARTYCOUNT
 	ifequal PARTY_LENGTH, .party_full
 	special SpecialGiveShinyDitto
 	opentext
@@ -127,8 +123,8 @@ MrPokemonsHouse_OakScript:
 	special RestartMapMusic
 	showtext MrPokemonText_ImDependingOnYou
 	setevent EVENT_RIVAL_NEW_BARK_TOWN
-	setevent EVENT_KRISS_HOUSE_1F_NEIGHBOR
-	clearevent EVENT_KRISS_NEIGHBORS_HOUSE_NEIGHBOR
+	setevent EVENT_PLAYERS_HOUSE_1F_NEIGHBOR
+	clearevent EVENT_PLAYERS_NEIGHBORS_HOUSE_NEIGHBOR
 	setscene $1
 	setmapscene CHERRYGROVE_CITY, $1
 	setmapscene ELMS_LAB, $3
@@ -154,7 +150,7 @@ MrPokemonsHouse_CabinetScript:
 	writetext MrPokemonsHouse_CabinetText
 	checkevent EVENT_TRADED_RED_SCALE
 	iffalse .NoRedScale
-	buttonsound
+	promptbutton
 	writetext MrPokemonsHouse_RedScaleCabinetText
 .NoRedScale
 	waitbutton
@@ -197,11 +193,6 @@ MrPokemonIntroText2:
 	text "This is what I"
 	line "want Prof.Elm to"
 	cont "examine."
-	done
-
-MrPokemonsHouse_GotEggText:
-	text "<PLAYER> received"
-	line "Mystery Egg."
 	done
 
 MrPokemonIntroText3:

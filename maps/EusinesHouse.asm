@@ -1,34 +1,34 @@
 EusinesHouse_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event  2,  7, CELADON_CITY, 14
 	warp_event  3,  7, CELADON_CITY, 14
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 0 ; bg events
+	def_bg_events
 
-	db 2 ; object events
-	object_event  2,  3, SPRITE_EUSINE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CeladonEusine, EVENT_SET_WHEN_FOUGHT_HO_OH
-	object_event  5,  3, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, EusinesHouseGrampsScript, -1
+	def_object_events
+	object_event  2,  3, SPRITE_EUSINE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, CeladonEusine, EVENT_SET_WHEN_FOUGHT_HO_OH
+	object_event  5,  3, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, EusinesHouseGrampsScript, -1
 
-	const_def 1 ; object constants
+	object_const_def
 	const EUSINESHOUSE_EUSINE
 
 CeladonEusine:
 	faceplayer
 	opentext
 	writetext CeladonEusineText1
-	buttonsound
+	promptbutton
 	special SpecialBeastsCheck
 	iftrue .HoOh
 	writetext EusineNoBeastsText
 	waitbutton
 	closetext
-	writebyte RAIKOU
+	setval RAIKOU
 	special SpecialMonCheck
 	iftrue .OwnRaikou
 	showtext EusineShowsRaikouText
@@ -37,10 +37,10 @@ CeladonEusine:
 	cry RAIKOU
 	waitbutton
 	closepokepic
-	writebyte RAIKOU
+	setval RAIKOU
 	special SpecialSeenMon
 .OwnRaikou
-	writebyte ENTEI
+	setval ENTEI
 	special SpecialMonCheck
 	iftrue .OwnEntei
 	showtext EusineShowsEnteiText
@@ -49,10 +49,10 @@ CeladonEusine:
 	cry ENTEI
 	waitbutton
 	closepokepic
-	writebyte ENTEI
+	setval ENTEI
 	special SpecialSeenMon
 .OwnEntei
-	writebyte SUICUNE
+	setval SUICUNE
 	special SpecialMonCheck
 	iftrue .OwnSuicune
 	showtext EusineShowsSuicuneText
@@ -61,7 +61,7 @@ CeladonEusine:
 	cry SUICUNE
 	waitbutton
 	closepokepic
-	writebyte SUICUNE
+	setval SUICUNE
 	special SpecialSeenMon
 .OwnSuicune
 	jumptext EusineQuestHintText
@@ -70,7 +70,7 @@ CeladonEusine:
 	writetext EusineLeavesCeladonText
 	waitbutton
 	closetext
-	checkcode VAR_FACING
+	readvar VAR_FACING
 	ifnotequal UP, .PathClear
 	applymovement PLAYER, .PlayerStepsAsideMovement
 .PathClear:

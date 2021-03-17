@@ -1,27 +1,16 @@
+; tm/hm/tutor ids
+; indexes for:
+; - TMHMMoves (see data/moves/tmhm_moves.asm)
+	const_def
+
 add_tm: MACRO
 if !DEF(TM01)
 TM01 = const_value
 	enum_start 1
 endc
-	define _\@_1, "TM_\1"
-	const _\@_1
+	const TM_\1
 	enum \1_TMNUM
 ENDM
-
-add_hm: MACRO
-if !DEF(HM01)
-HM01 = const_value
-endc
-	define _\@_1, "HM_\1"
-	const _\@_1
-	enum \1_TMNUM
-ENDM
-
-add_mt: MACRO
-	enum \1_TMNUM
-ENDM
-
-	const_def
 
 	add_tm DYNAMICPUNCH ; $00
 	add_tm DRAGON_CLAW  ; $01
@@ -69,7 +58,7 @@ endc
 	add_tm AERIAL_ACE   ; $27
 	add_tm SUBSTITUTE   ; $28
 	add_tm FACADE       ; $29
-	add_tm WILD_CHARGE  ; $2a
+	add_tm FLAME_CHARGE ; $2a
 	add_tm REST         ; $2b
 	add_tm ATTRACT      ; $2c
 	add_tm THIEF        ; $2d
@@ -83,8 +72,8 @@ endc
 	add_tm FALSE_SWIPE  ; $35
 	add_tm SCALD        ; $36
 	add_tm X_SCISSOR    ; $37
-	add_tm DARK_PULSE   ; $38
-	add_tm ENDURE       ; $39
+	add_tm WILD_CHARGE  ; $38
+	add_tm DARK_PULSE   ; $39
 	add_tm DRAGON_PULSE ; $3a
 	add_tm DRAIN_PUNCH  ; $3b
 	add_tm WILL_O_WISP  ; $3c
@@ -104,6 +93,14 @@ endc
 	add_tm SWORDS_DANCE ; $4a
 NUM_TMS = const_value - TM01
 
+add_hm: MACRO
+if !DEF(HM01)
+HM01 = const_value
+endc
+	const HM_\1
+	enum \1_TMNUM
+ENDM
+
 	add_hm CUT          ; $4b
 	add_hm FLY          ; $4c
 	add_hm SURF         ; $4d
@@ -111,6 +108,13 @@ NUM_TMS = const_value - TM01
 	add_hm WHIRLPOOL    ; $4f
 	add_hm WATERFALL    ; $50
 NUM_HMS = const_value - HM01
+
+add_mt: MACRO
+if !DEF(MT01)
+MT01 = const_value
+endc
+	enum \1_TMNUM
+ENDM
 
 	add_mt AGILITY      ; $51
 	add_mt AQUA_TAIL    ; $52
@@ -122,25 +126,27 @@ NUM_HMS = const_value - HM01
 	add_mt DOUBLE_EDGE  ; $58
 	add_mt DREAM_EATER  ; $59
 	add_mt EARTH_POWER  ; $5a
-	add_mt FIRE_PUNCH   ; $5b
-	add_mt HEADBUTT     ; $5c
-	add_mt HYPER_VOICE  ; $5d
-	add_mt ICE_PUNCH    ; $5e
-	add_mt ICY_WIND     ; $5f
-	add_mt IRON_HEAD    ; $60
-	add_mt KNOCK_OFF    ; $61
-	add_mt PAY_DAY      ; $62
-	add_mt ROLLOUT      ; $63
-	add_mt SEED_BOMB    ; $64
-	add_mt SEISMIC_TOSS ; $65
-	add_mt SKILL_SWAP   ; $66
-	add_mt SLEEP_TALK   ; $67
-	add_mt SUCKER_PUNCH ; $68
-	add_mt SWAGGER      ; $69
-	add_mt THUNDERPUNCH ; $6a
-	add_mt TRICK        ; $6b
-	add_mt TRICK_ROOM   ; $6c
-	add_mt ZAP_CANNON   ; $6d
-	add_mt ZEN_HEADBUTT ; $6e
+	add_mt ENDURE       ; $5b
+	add_mt FIRE_PUNCH   ; $5c
+	add_mt HEADBUTT     ; $5d
+	add_mt HYPER_VOICE  ; $5e
+	add_mt ICE_PUNCH    ; $5f
+	add_mt ICY_WIND     ; $60
+	add_mt IRON_HEAD    ; $61
+	add_mt KNOCK_OFF    ; $62
+	add_mt PAY_DAY      ; $63
+	add_mt ROLLOUT      ; $64
+	add_mt SEED_BOMB    ; $65
+	add_mt SEISMIC_TOSS ; $66
+	add_mt SKILL_SWAP   ; $67
+	add_mt SLEEP_TALK   ; $68
+	add_mt SUCKER_PUNCH ; $69
+	add_mt SWAGGER      ; $6a
+	add_mt THUNDERPUNCH ; $6b
+	add_mt TRICK        ; $6c
+	add_mt TRICK_ROOM   ; $6d
+	add_mt ZAP_CANNON   ; $6e
+	add_mt ZEN_HEADBUTT ; $6f
+NUM_MTS = const_value - MT01
 
 NUM_TM_HM_TUTOR EQU __enum__ - 1

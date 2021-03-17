@@ -1,19 +1,19 @@
 MoveManiacsHouse_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event  2,  7, CIANWOOD_CITY, 7
 	warp_event  3,  7, CIANWOOD_CITY, 7
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 1 ; bg events
-	bg_event  7,  1, SIGNPOST_JUMPSTD, magazinebookshelf
+	def_bg_events
+	bg_event  7,  1, BGEVENT_JUMPSTD, magazinebookshelf
 
-	db 1 ; object events
-	object_event  2,  3, SPRITE_COSPLAYER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, MoveReminderScript, -1
+	def_object_events
+	object_event  2,  3, SPRITE_COSPLAYER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, MoveReminderScript, -1
 
 MoveReminderScript:
 	faceplayer
@@ -25,7 +25,7 @@ MoveReminderScript:
 	writetext MoveReminderPromptText
 	yesorno
 	iffalse .refused
-	writebyte NO_MOVE ; to toggle move relearner
+	setval NO_MOVE ; to toggle move relearner
 	writetext MoveReminderWhichMonText
 	waitbutton
 	special Special_MoveTutor

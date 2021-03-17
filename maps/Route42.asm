@@ -1,16 +1,16 @@
 Route42_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 5 ; warp events
+	def_warp_events
 	warp_event  0,  8, ROUTE_42_ECRUTEAK_GATE, 3
 	warp_event  0,  9, ROUTE_42_ECRUTEAK_GATE, 4
 	warp_event 10,  5, MOUNT_MORTAR_1F_OUTSIDE, 1
 	warp_event 28,  9, MOUNT_MORTAR_1F_OUTSIDE, 2
 	warp_event 46,  7, MOUNT_MORTAR_1F_OUTSIDE, 3
 
-	db 6 ; coord events
+	def_coord_events
 	coord_event 12,  6, 1, Route42LyraScript1
 	coord_event 12,  7, 1, Route42LyraScript2
 	coord_event 12,  8, 1, Route42LyraScript3
@@ -18,21 +18,21 @@ Route42_MapScriptHeader:
 	coord_event 10,  6, 1, Route42LyraScript5
 	coord_event 24, 14, 2, Route42SuicuneScript
 
-	db 5 ; bg events
-	bg_event  4, 10, SIGNPOST_JUMPTEXT, Route42Sign1Text
-	bg_event  7,  5, SIGNPOST_JUMPTEXT, MtMortarSign1Text
-	bg_event 45,  9, SIGNPOST_JUMPTEXT, MtMortarSign2Text
-	bg_event 54,  8, SIGNPOST_JUMPTEXT, Route42Sign2Text
-	bg_event 16, 11, SIGNPOST_ITEM + MAX_POTION, EVENT_ROUTE_42_HIDDEN_MAX_POTION
+	def_bg_events
+	bg_event  4, 10, BGEVENT_JUMPTEXT, Route42Sign1Text
+	bg_event  7,  5, BGEVENT_JUMPTEXT, MtMortarSign1Text
+	bg_event 45,  9, BGEVENT_JUMPTEXT, MtMortarSign2Text
+	bg_event 54,  8, BGEVENT_JUMPTEXT, Route42Sign2Text
+	bg_event 16, 11, BGEVENT_ITEM + MAX_POTION, EVENT_ROUTE_42_HIDDEN_MAX_POTION
 
-	db 13 ; object events
-	object_event 26, 16, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, SUICUNE, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_SAW_SUICUNE_ON_ROUTE_42
-	object_event 10,  5, SPRITE_LYRA, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LYRA_ROUTE_42
-	object_event 40, 10, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 1, TrainerFisherTully1, -1
-	object_event 51,  9, SPRITE_HIKER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerHikerBenjamin, -1
-	object_event 47,  8, SPRITE_POKEMANIAC, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerPokemaniacShane, -1
-	object_event  2,  8, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, Route42OfficerText, EVENT_BEAT_JASMINE
-	object_event  2,  9, SPRITE_OFFICER_F, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, Route42OfficerText, EVENT_BEAT_JASMINE
+	def_object_events
+	object_event 26, 16, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, SUICUNE, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_SAW_SUICUNE_ON_ROUTE_42
+	object_event 10,  5, SPRITE_LYRA, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_LYRA_ROUTE_42
+	object_event 40, 10, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_TRAINER, 1, TrainerFisherTully1, -1
+	object_event 51,  9, SPRITE_HIKER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerHikerBenjamin, -1
+	object_event 47,  8, SPRITE_POKEMANIAC, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerPokemaniacShane, -1
+	object_event  2,  8, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, Route42OfficerText, EVENT_BEAT_JASMINE
+	object_event  2,  9, SPRITE_OFFICER_F, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, Route42OfficerText, EVENT_BEAT_JASMINE
 	cuttree_event 24, 13, EVENT_ROUTE_42_CUT_TREE
 	fruittree_event 27, 16, FRUITTREE_ROUTE_42_1, PNK_APRICORN, PAL_NPC_RED
 	fruittree_event 28, 16, FRUITTREE_ROUTE_42_2, GRN_APRICORN, PAL_NPC_GREEN
@@ -40,7 +40,7 @@ Route42_MapScriptHeader:
 	itemball_event  6,  4, ULTRA_BALL, 1, EVENT_ROUTE_42_ULTRA_BALL
 	itemball_event 33,  8, SUPER_POTION, 1, EVENT_ROUTE_42_SUPER_POTION
 
-	const_def 1 ; object constants
+	object_const_def
 	const ROUTE42_SUICUNE
 	const ROUTE42_LYRA
 
@@ -53,7 +53,7 @@ Route42LyraScript1:
 	appear ROUTE42_LYRA
 	waitsfx
 	applymovement ROUTE42_LYRA, MovementData_Route42LyraApproach1
-	jump Route42LyraScript
+	sjump Route42LyraScript
 
 Route42LyraScript2:
 	turnobject PLAYER, LEFT
@@ -64,7 +64,7 @@ Route42LyraScript2:
 	appear ROUTE42_LYRA
 	waitsfx
 	applymovement ROUTE42_LYRA, MovementData_Route42LyraApproach2
-	jump Route42LyraScript
+	sjump Route42LyraScript
 
 Route42LyraScript3:
 	turnobject PLAYER, LEFT
@@ -75,7 +75,7 @@ Route42LyraScript3:
 	appear ROUTE42_LYRA
 	waitsfx
 	applymovement ROUTE42_LYRA, MovementData_Route42LyraApproach3
-	jump Route42LyraScript
+	sjump Route42LyraScript
 
 Route42LyraScript4:
 	turnobject PLAYER, LEFT
@@ -84,7 +84,7 @@ Route42LyraScript4:
 	appear ROUTE42_LYRA
 	waitsfx
 	applymovement ROUTE42_LYRA, MovementData_Route42LyraApproach4
-	jump Route42LyraScript
+	sjump Route42LyraScript
 
 Route42LyraScript5:
 	turnobject PLAYER, UP
@@ -106,11 +106,11 @@ Route42LyraScript:
 	checkevent EVENT_GOT_CHIKORITA_FROM_ELM
 	iftrue .Chikorita
 	loadtrainer LYRA1, LYRA1_7
-	jump .AfterBattle
+	sjump .AfterBattle
 
 .Totodile:
 	loadtrainer LYRA1, LYRA1_8
-	jump .AfterBattle
+	sjump .AfterBattle
 
 .Chikorita:
 	loadtrainer LYRA1, LYRA1_9
@@ -122,7 +122,7 @@ Route42LyraScript:
 	playmusic MUSIC_LYRA_DEPARTURE_HGSS
 	opentext
 	writetext Route42LyraPresentText
-	buttonsound
+	promptbutton
 	verbosegivetmhm HM_WHIRLPOOL
 	setevent EVENT_GOT_HM05_WHIRLPOOL
 	writetext Route42LyraWhirlpoolText
@@ -133,7 +133,7 @@ Route42LyraScript:
 	checkevent EVENT_SAW_SUICUNE_ON_ROUTE_42
 	iftrue .NoSuicune
 	setscene $2
-	jump .Finish
+	sjump .Finish
 .NoSuicune
 	setscene $0
 .Finish
@@ -144,7 +144,7 @@ Route42SuicuneScript:
 	showemote EMOTE_SHOCK, PLAYER, 15
 	pause 15
 	playsound SFX_WARP_FROM
-	applymovement ROUTE42_SUICUNE, MovementData_0x1a9356
+	applymovement ROUTE42_SUICUNE, Route42SuicuneMovement
 	disappear ROUTE42_SUICUNE
 	pause 10
 	setscene $0
@@ -156,9 +156,9 @@ TrainerFisherTully1:
 	trainer FISHER, TULLY1, EVENT_BEAT_FISHER_TULLY, FisherTully1SeenText, FisherTully1BeatenText, 0, FisherTully1Script
 
 FisherTully1Script:
-	writecode VAR_CALLERID, PHONE_FISHER_TULLY
+	loadvar VAR_CALLERID, PHONE_FISHER_TULLY
 	opentext
-	checkflag ENGINE_TULLY
+	checkflag ENGINE_TULLY_READY_FOR_REMATCH
 	iftrue UnknownScript_0x1a927f
 	checkflag ENGINE_TULLY_HAS_WATER_STONE
 	iftrue UnknownScript_0x1a92dc
@@ -166,11 +166,11 @@ FisherTully1Script:
 	iftrue UnknownScript_0x1a92fd
 	checkevent EVENT_TULLY_ASKED_FOR_PHONE_NUMBER
 	iftrue UnknownScript_0x1a9268
-	writetext UnknownText_0x1a93ab
-	buttonsound
+	writetext FisherTullyAfterBattleText
+	promptbutton
 	setevent EVENT_TULLY_ASKED_FOR_PHONE_NUMBER
 	scall UnknownScript_0x1a92f1
-	jump UnknownScript_0x1a926b
+	sjump UnknownScript_0x1a926b
 
 UnknownScript_0x1a9268:
 	scall UnknownScript_0x1a92f5
@@ -178,14 +178,14 @@ UnknownScript_0x1a926b:
 	askforphonenumber PHONE_FISHER_TULLY
 	ifequal $1, UnknownScript_0x1a9305
 	ifequal $2, UnknownScript_0x1a9301
-	trainertotext FISHER, TULLY1, $0
+	gettrainername FISHER, TULLY1, $0
 	scall UnknownScript_0x1a92f9
-	jump UnknownScript_0x1a92fd
+	sjump UnknownScript_0x1a92fd
 
 UnknownScript_0x1a927f:
 	scall UnknownScript_0x1a9309
 	winlosstext FisherTully1BeatenText, 0
-	copybytetovar wTullyFightCount
+	readmem wTullyFightCount
 	ifequal 3, .Fight3
 	ifequal 2, .Fight2
 	ifequal 1, .Fight1
@@ -203,31 +203,31 @@ UnknownScript_0x1a927f:
 	loadtrainer FISHER, TULLY1
 	startbattle
 	reloadmapafterbattle
-	loadvar wTullyFightCount, 1
-	clearflag ENGINE_TULLY
+	loadmem wTullyFightCount, 1
+	clearflag ENGINE_TULLY_READY_FOR_REMATCH
 	end
 
 .LoadFight1:
 	loadtrainer FISHER, TULLY2
 	startbattle
 	reloadmapafterbattle
-	loadvar wTullyFightCount, 2
-	clearflag ENGINE_TULLY
+	loadmem wTullyFightCount, 2
+	clearflag ENGINE_TULLY_READY_FOR_REMATCH
 	end
 
 .LoadFight2:
 	loadtrainer FISHER, TULLY3
 	startbattle
 	reloadmapafterbattle
-	loadvar wTullyFightCount, 3
-	clearflag ENGINE_TULLY
+	loadmem wTullyFightCount, 3
+	clearflag ENGINE_TULLY_READY_FOR_REMATCH
 	end
 
 .LoadFight3:
 	loadtrainer FISHER, TULLY4
 	startbattle
 	reloadmapafterbattle
-	clearflag ENGINE_TULLY
+	clearflag ENGINE_TULLY_READY_FOR_REMATCH
 	end
 
 UnknownScript_0x1a92dc:
@@ -236,10 +236,10 @@ UnknownScript_0x1a92dc:
 	iffalse UnknownScript_0x1a92ee
 	clearflag ENGINE_TULLY_HAS_WATER_STONE
 	setevent EVENT_TULLY_GAVE_WATER_STONE
-	jump UnknownScript_0x1a92fd
+	sjump UnknownScript_0x1a92fd
 
 UnknownScript_0x1a92ee:
-	jump UnknownScript_0x1a9311
+	sjump UnknownScript_0x1a9311
 
 UnknownScript_0x1a92f1:
 	jumpstd asknumber1m
@@ -317,7 +317,7 @@ MovementData_Route42LyraLeave:
 	step_left
 	step_end
 
-MovementData_0x1a9356:
+Route42SuicuneMovement:
 	fix_facing
 	fast_jump_step_up
 	fast_jump_step_up
@@ -403,7 +403,7 @@ FisherTully1BeatenText:
 	line "right."
 	done
 
-UnknownText_0x1a93ab:
+FisherTullyAfterBattleText:
 	text "I want to become"
 	line "the trainer Champ"
 

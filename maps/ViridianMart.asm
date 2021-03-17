@@ -1,22 +1,22 @@
 ViridianMart_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event  2,  7, VIRIDIAN_CITY, 4
 	warp_event  3,  7, VIRIDIAN_CITY, 4
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 0 ; bg events
+	def_bg_events
 
-	db 3 ; object events
+	def_object_events
 	mart_clerk_event  1,  3, MARTTYPE_STANDARD, MART_VIRIDIAN
-	object_event  7,  2, SPRITE_CUTE_GIRL, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x9b5f4, -1
-	object_event  1,  6, SPRITE_COOL_DUDE, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x9b61a, -1
+	object_event  7,  2, SPRITE_CUTE_GIRL, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, ViridianMartLassText, -1
+	object_event  1,  6, SPRITE_COOL_DUDE, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, ViridianMartCooltrainerMText, -1
 
-UnknownText_0x9b5f4:
+ViridianMartLassText:
 	text "The Gym Leader"
 	line "here is totally"
 	cont "cool."
@@ -29,7 +29,7 @@ UnknownText_0x9b5f4:
 	line "people guessing."
 	done
 
-UnknownText_0x9b61a:
+ViridianMartCooltrainerMText:
 	text "Have you been to"
 	line "Cinnabar?"
 

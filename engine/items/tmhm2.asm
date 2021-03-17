@@ -76,14 +76,14 @@ TMHM_ShowTMMoveDescription:
 	call TMHM_GetCurrentTMHM
 	hlcoord 0, 12
 	lb bc, 4, SCREEN_WIDTH - 2
-	call TextBox
+	call Textbox
 	ld a, [wCurTMHM]
 	cp NUM_TMS + NUM_HMS + 1
 	jr nc, .Cancel
 	ld [wd265], a
+	predef GetTMHMMove
 	farcall LoadTMHMIconPalette
 	call SetPalettes
-	predef GetTMHMMove
 	ld a, [wd265]
 	ld [wCurSpecies], a
 	hlcoord 1, 14
@@ -209,8 +209,8 @@ TMHM_DisplayPocketItems:
 	push af
 	sub NUM_TMS
 	ld [wd265], a
-	ld [hl], "H"
-	inc hl
+	ld a, "H"
+	ld [hli], a
 	ld de, wd265
 	lb bc, PRINTNUM_LEFTALIGN | 1, 2
 	call PrintNum
@@ -380,7 +380,7 @@ AskTeachTMHM:
 	call PrintText
 	ld de, SFX_CHOOSE_PC_OPTION
 	call WaitPlaySFX
-	call Text_WaitButton
+	call TextCommand_PROMPT_BUTTON
 	ld hl, Text_ItContained
 	call PrintText
 	call YesNoBox
@@ -403,9 +403,9 @@ ChooseMonToLearnTMHM_NoRefresh:
 	farcall InitPartyMenuGFX
 	ld a, [wPutativeTMHMMove]
 	and a
-	ld a, 3 ; TeachWhichPKMNString
+	ld a, PARTYMENUACTION_TEACH_TMHM
 	jr nz, .got_text
-	ld a, 9 ; TutorWhichPKMNString
+	ld a, PARTYMENUACTION_MOVE_RELEARNER
 .got_text
 	ld [wPartyMenuActionText], a
 .loopback
@@ -448,7 +448,7 @@ TeachTMHM:
 	ld a, MON_FORM
 	call GetPartyParamLocation
 	ld a, [hl]
-	and FORM_MASK
+	and BASEMON_MASK
 	ld [wCurForm], a
 	predef CanLearnTMHMMove
 
@@ -606,27 +606,27 @@ KnowsMove:
 
 .Text_knows:
 	; knows @ .
-	text_jump UnknownText_0x1c5ea8
+	text_far _KnowsMoveText
 	text_end
 
 Text_BootedTM:
 	; Booted up a TM.
-	text_jump UnknownText_0x1c0373
+	text_far _BootedTMText
 	text_end
 
 Text_BootedHM:
 	; Booted up an HM.
-	text_jump UnknownText_0x1c0384
+	text_far _BootedHMText
 	text_end
 
 Text_ItContained:
 	; It contained @ . Teach @ to a #MON?
-	text_jump UnknownText_0x1c0396
+	text_far _ContainedMoveText
 	text_end
 
 Text_TMHMNotCompatible:
 	; is not compatible with @ . It can't learn @ .
-	text_jump UnknownText_0x1c03c2
+	text_far _TMHMNotCompatibleText
 	text_end
 
 INCLUDE "data/moves/tmhm_order.asm"

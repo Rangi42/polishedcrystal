@@ -1,4 +1,4 @@
-	db  86,  76,  86,  95, 116,  56
+	db  86,  76,  86,  95, 116,  56 ; 515 BST
 	;   hp  atk  def  spd  sat  sdf
 
 if DEF(FAITHFUL)
@@ -11,21 +11,18 @@ endc
 	db NO_ITEM ; item 1
 	db WIDE_LENS ; item 2
 	dn FEMALE_50, 3 ; gender, step cycles to hatch
-	dn 7, 7 ; frontpic dimensions
-	db SPEED_BOOST ; ability 1
-	db TINTED_LENS ; ability 2
+	INCBIN "gfx/pokemon/yanmega/front.dimensions"
 if DEF(FAITHFUL)
-	db FRISK ; hidden ability
+	abilities_for YANMEGA, SPEED_BOOST, TINTED_LENS, FRISK
 else
-	db LEVITATE ; hidden ability
+	abilities_for YANMEGA, SPEED_BOOST, TINTED_LENS, LEVITATE
 endc
 	db MEDIUM_FAST ; growth rate
 	dn INSECT, INSECT ; egg groups
 
-	; ev_yield
 	ev_yield   0,   2,   0,   0,   0,   0
 	;         hp, atk, def, spd, sat, sdf
 
 	; tmhm
-	tmhm DRAGON_CLAW, TOXIC, HIDDEN_POWER, SUNNY_DAY, HYPER_BEAM, PROTECT, GIGA_DRAIN, SOLAR_BEAM, RETURN, PSYCHIC, SHADOW_BALL, ROOST, DOUBLE_TEAM, SWIFT, AERIAL_ACE, SUBSTITUTE, FACADE, REST, ATTRACT, THIEF, STEEL_WING, LEECH_LIFE, ENDURE, DRAGON_PULSE, GIGA_IMPACT, U_TURN, FLASH, FLY, DREAM_EATER, HEADBUTT, SLEEP_TALK, SWAGGER
+	tmhm DRAGON_CLAW, CURSE, TOXIC, HIDDEN_POWER, SUNNY_DAY, HYPER_BEAM, PROTECT, GIGA_DRAIN, SOLAR_BEAM, RETURN, PSYCHIC, SHADOW_BALL, DOUBLE_TEAM, SWIFT, AERIAL_ACE, SUBSTITUTE, FACADE, REST, ATTRACT, THIEF, STEEL_WING, LEECH_LIFE, ROOST, DRAGON_PULSE, GIGA_IMPACT, U_TURN, FLASH, FLY, DOUBLE_EDGE, DREAM_EATER, ENDURE, HEADBUTT, SLEEP_TALK, SWAGGER
 	; end

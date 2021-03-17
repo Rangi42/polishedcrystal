@@ -475,13 +475,13 @@ CheckSolvedUnownPuzzle:
 
 RedrawUnownPuzzlePieces:
 	call GetCurrentPuzzlePieceVTileCorner
-	ld [wd002], a
+	ld [wUnownPuzzleCornerTile], a
 	xor a
 	call GetUnownPuzzleCoordData ; get pixel positions
 	ld a, [hli]
 	ld b, [hl]
 	ld c, a
-	ld a, [wd002]
+	ld a, [wUnownPuzzleCornerTile]
 	cp $e0
 	jr z, .NoPiece
 	ld hl, .OAM_HoldingPiece
@@ -503,7 +503,7 @@ RedrawUnownPuzzlePieces:
 	add c
 	ld [de], a
 	inc de
-	ld a, [wd002]
+	ld a, [wUnownPuzzleCornerTile]
 	add [hl]
 	ld [de], a
 	inc hl
@@ -679,11 +679,11 @@ ConvertLoadedPuzzlePieces:
 	ret
 
 .GetEnlargedTile:
+	; a = [.EnlargedTiles + a]
 	push hl
-	ld hl, .EnlargedTiles
-	add l
+	add LOW(.EnlargedTiles)
 	ld l, a
-	adc h
+	adc HIGH(.EnlargedTiles)
 	sub l
 	ld h, a
 	ld a, [hl]
@@ -691,11 +691,8 @@ ConvertLoadedPuzzlePieces:
 	ret
 
 .EnlargedTiles:
-
-x = 0
-rept 16
+for x, 16
 	db ((x & %1000) * %11000) + ((x & %0100) * %1100) + ((x & %0010) * %110) + ((x & %0001) * %11)
-x = x + 1
 endr
 
 UnownPuzzle_AddPuzzlePieceBorders:

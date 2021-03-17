@@ -179,11 +179,13 @@ PerformAbilityGFX:
 	inc de
 	push de
 	push hl
+	; hl = vTiles1 tile a
+	swap a
+	ld h, a
+	and $f0
 	ld l, a
-	ld h, 0
-rept 4
-	add hl, hl
-endr
+	xor h
+	ld h, a
 	ld bc, vTiles1
 	add hl, bc
 	ld d, h
@@ -265,7 +267,7 @@ SetAbilityOverlayAttributes:
 	inc a
 	jr z, .no_pal_change
 	ld a, [hl]
-	and ~OAM_PALETTE
+	and ~PALETTE_MASK
 	or b
 	ld [hl], b
 .no_pal_change
@@ -349,7 +351,7 @@ DismissAbilityOverlays:
 	ld c, SLIDEOUT_WIDTH
 .attr_loop
 	ld a, [hl]
-	and $ff ^ (OAM_PALETTE | TILE_BANK | BEHIND_BG)
+	and $ff ^ (PALETTE_MASK | VRAM_BANK_1 | PRIORITY)
 	or b
 	ld [hli], a
 	dec c

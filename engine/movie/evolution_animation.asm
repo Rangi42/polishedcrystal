@@ -239,7 +239,7 @@ EvolutionAnimation:
 	call GetPartyLocation
 	ld b, h
 	ld c, l
-	farjp CheckFaintedFrzSlp
+	jp CheckFaintedFrzSlp
 
 .PlayEvolvedSFX:
 	ld a, [wEvolutionCanceled]
@@ -276,7 +276,7 @@ EvolutionAnimation:
 	inc [hl]
 	and $1
 	jr nz, .done_balls
-	ld e, $0
+	ld e, a
 	call .GenerateBallOfLight
 	ld e, $10
 	call .GenerateBallOfLight
@@ -301,7 +301,7 @@ EvolutionAnimation:
 	ld hl, SPRITEANIMSTRUCT_TILE_ID
 	add hl, bc
 	ld [hl], $0
-	ld hl, SPRITEANIMSTRUCT_0C
+	ld hl, SPRITEANIMSTRUCT_VAR1
 	add hl, bc
 	ld [hl], $10
 	ret

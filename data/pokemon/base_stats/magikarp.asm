@@ -1,4 +1,4 @@
-	db  20,  10,  55,  80,  15,  20
+	db  20,  10,  55,  80,  15,  20 ; 200 BST
 	;   hp  atk  def  spd  sat  sdf
 
 	db WATER, WATER
@@ -7,14 +7,11 @@
 	db NO_ITEM ; item 1
 	db NO_ITEM ; item 2
 	dn FEMALE_50, 0 ; gender, step cycles to hatch
-	dn 6, 6 ; frontpic dimensions
-	db SWIFT_SWIM ; ability 1
-	db SWIFT_SWIM ; ability 2
-	db RATTLED ; hidden ability
+	INCBIN "gfx/pokemon/magikarp_plain/front.dimensions"
+	abilities_for MAGIKARP, SWIFT_SWIM, SWIFT_SWIM, RATTLED
 	db SLOW ; growth rate
 	dn FISH, REPTILE ; egg groups
 
-	; ev_yield
 	ev_yield   0,   0,   0,   1,   0,   0
 	;         hp, atk, def, spd, sat, sdf
 

@@ -1,22 +1,22 @@
 CeruleanPoliceStation_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event  2,  7, CERULEAN_CITY, 2
 	warp_event  3,  7, CERULEAN_CITY, 2
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 0 ; bg events
+	def_bg_events
 
-	db 3 ; object events
-	object_event  3,  1, SPRITE_FISHING_GURU, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x18805a, -1
-	object_event  5,  4, SPRITE_MATRON, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x1880c3, -1
+	def_object_events
+	object_event  3,  1, SPRITE_FISHING_GURU, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeruleanPoliceStationFishingGuruText, -1
+	object_event  5,  4, SPRITE_MATRON, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeruleanPoliceStationPokefanFText, -1
 	pokemon_event  3,  5, DIGLETT, -1, -1, PAL_NPC_BROWN, CeruleanDiglettText, -1
 
-UnknownText_0x18805a:
+CeruleanPoliceStationFishingGuruText:
 	text "I heard that some"
 	line "shady character is"
 	cont "skulking about."
@@ -26,7 +26,7 @@ UnknownText_0x18805a:
 	cont "to be a thief."
 	done
 
-UnknownText_0x1880c3:
+CeruleanPoliceStationPokefanFText:
 	text "We were held up by"
 	line "robbers before."
 	done

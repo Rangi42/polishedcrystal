@@ -1,29 +1,29 @@
 Route31VioletGate_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 4 ; warp events
+	def_warp_events
 	warp_event  0,  4, VIOLET_CITY, 8
 	warp_event  0,  5, VIOLET_CITY, 9
 	warp_event  9,  4, ROUTE_31, 1
 	warp_event  9,  5, ROUTE_31, 2
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 0 ; bg events
+	def_bg_events
 
-	db 2 ; object events
-	object_event  5,  2, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x19763a, -1
-	object_event  1,  2, SPRITE_BATTLE_GIRL, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x197661, -1
+	def_object_events
+	object_event  5,  2, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, Route31VioletGateOfficerText, -1
+	object_event  1,  2, SPRITE_BATTLE_GIRL, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_COMMAND, jumptextfaceplayer, Route31VioletGateCooltrainerFText, -1
 
-UnknownText_0x19763a:
+Route31VioletGateOfficerText:
 	text "Hi there!"
 	line "Did you visit"
 	cont "Sprout Tower?"
 	done
 
-UnknownText_0x197661:
+Route31VioletGateCooltrainerFText:
 	text "I came too far"
 	line "out. I'd better"
 	cont "phone home!"

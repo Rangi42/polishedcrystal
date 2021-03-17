@@ -108,7 +108,7 @@ _CardFlip:
 
 .PlayWithThreeCoinsText:
 	; Play with three coins?
-	text_jump UnknownText_0x1c5793
+	text_far _CardFlipPlayWithThreeCoinsText
 	text_end
 
 .DeductCoins:
@@ -146,7 +146,7 @@ _CardFlip:
 
 .NotEnoughCoinsText:
 	; Not enough coins…
-	text_jump UnknownText_0x1c57ab
+	text_far _CardFlipNotEnoughCoinsText
 	text_end
 
 .ChooseACard:
@@ -224,7 +224,7 @@ _CardFlip:
 
 .ChooseACardText:
 	; Choose a card.
-	text_jump UnknownText_0x1c57be
+	text_far _CardFlipChooseACardText
 	text_end
 
 .PlaceYourBet:
@@ -242,7 +242,7 @@ _CardFlip:
 
 .PlaceYourBetText:
 	; Place your bet.
-	text_jump UnknownText_0x1c57ce
+	text_far _CardFlipPlaceYourBetText
 	text_end
 
 .CheckTheCard:
@@ -307,12 +307,12 @@ _CardFlip:
 
 .PlayAgainText:
 	; Want to play again?
-	text_jump UnknownText_0x1c57df
+	text_far _CardFlipPlayAgainText
 	text_end
 
 .CardsShuffledText:
 	; The cards have been shuffled.
-	text_jump UnknownText_0x1c57f4
+	text_far _CardFlipShuffledText
 	text_end
 
 .Quit:
@@ -464,15 +464,15 @@ CardFlip_UpdateCoinBalanceDisplay:
 	push hl
 	hlcoord 0, 12
 	lb bc, 4, SCREEN_WIDTH - 2
-	call TextBox
+	call Textbox
 	pop hl
-	call PrintTextBoxText
+	call PrintTextboxText
 	; fallthrough
 
 CardFlip_PrintCoinBalance:
 	hlcoord 8, 15
 	lb bc, 1, 10
-	call TextBox
+	call Textbox
 	hlcoord 9, 16
 	ld de, .CoinStr
 	rst PlaceString
@@ -497,7 +497,7 @@ CardFlip_InitTilemap:
 	call CardFlip_CopyToBox
 	hlcoord 0, 12
 	lb bc, 4, 18
-	jp TextBox
+	jp Textbox
 
 CardFlip_CopyToBox:
 .row
@@ -1023,10 +1023,7 @@ CardFlip_CheckWinCondition:
 .loop
 	push bc
 	call .IsCoinCaseFull
-	jr c, .full
-	call .AddCoinPlaySFX
-
-.full
+	call nc, .AddCoinPlaySFX
 	call CardFlip_PrintCoinBalance
 	ld c, 2
 	call DelayFrames
@@ -1037,12 +1034,12 @@ CardFlip_CheckWinCondition:
 
 .Text_Yeah:
 	; Yeah!
-	text_jump UnknownText_0x1c5813
+	text_far _CardFlipYeahText
 	text_end
 
 .Text_Darn:
 	; Darn…
-	text_jump UnknownText_0x1c581a
+	text_far _CardFlipDarnText
 	text_end
 
 .AddCoinPlaySFX:
@@ -1328,145 +1325,145 @@ ENDM
 
 .SingleTile:
 	db 6
-	dsprite   0, 0,  -1, 7, $00, $0 | BEHIND_BG
-	dsprite   0, 0,   0, 0, $02, $0 | BEHIND_BG
-	dsprite   0, 0,   1, 0, $03, $0 | BEHIND_BG
-	dsprite   0, 5,  -1, 7, $00, $0 | Y_FLIP | BEHIND_BG
-	dsprite   0, 5,   0, 0, $02, $0 | Y_FLIP | BEHIND_BG
-	dsprite   0, 5,   1, 0, $03, $0 | BEHIND_BG
+	dsprite   0, 0,  -1, 7, $00, $0 | PRIORITY
+	dsprite   0, 0,   0, 0, $02, $0 | PRIORITY
+	dsprite   0, 0,   1, 0, $03, $0 | PRIORITY
+	dsprite   0, 5,  -1, 7, $00, $0 | Y_FLIP | PRIORITY
+	dsprite   0, 5,   0, 0, $02, $0 | Y_FLIP | PRIORITY
+	dsprite   0, 5,   1, 0, $03, $0 | PRIORITY
 
 .PokeGroup:
 	db 26
-	dsprite   0, 0,  -1, 7, $00, $0 | BEHIND_BG
-	dsprite   0, 0,   0, 0, $02, $0 | BEHIND_BG
-	dsprite   0, 0,   1, 0, $00, $0 | X_FLIP | BEHIND_BG
-	dsprite   1, 0,  -1, 7, $01, $0 | BEHIND_BG
-	dsprite   1, 0,   1, 0, $01, $0 | X_FLIP | BEHIND_BG
-	dsprite   2, 0,  -1, 7, $01, $0 | BEHIND_BG
-	dsprite   2, 0,   1, 0, $03, $0 | BEHIND_BG
-	dsprite   3, 0,  -1, 7, $01, $0 | BEHIND_BG
-	dsprite   3, 0,   1, 0, $03, $0 | BEHIND_BG
-	dsprite   4, 0,  -1, 7, $01, $0 | BEHIND_BG
-	dsprite   4, 0,   1, 0, $03, $0 | BEHIND_BG
-	dsprite   5, 0,  -1, 7, $01, $0 | BEHIND_BG
-	dsprite   5, 0,   1, 0, $03, $0 | BEHIND_BG
-	dsprite   6, 0,  -1, 7, $01, $0 | BEHIND_BG
-	dsprite   6, 0,   1, 0, $03, $0 | BEHIND_BG
-	dsprite   7, 0,  -1, 7, $01, $0 | BEHIND_BG
-	dsprite   7, 0,   1, 0, $03, $0 | BEHIND_BG
-	dsprite   8, 0,  -1, 7, $01, $0 | BEHIND_BG
-	dsprite   8, 0,   1, 0, $03, $0 | BEHIND_BG
-	dsprite   9, 0,  -1, 7, $01, $0 | BEHIND_BG
-	dsprite   9, 0,   1, 0, $03, $0 | BEHIND_BG
-	dsprite  10, 0,  -1, 7, $01, $0 | BEHIND_BG
-	dsprite  10, 0,   1, 0, $03, $0 | BEHIND_BG
-	dsprite  10, 1,  -1, 7, $00, $0 | Y_FLIP | BEHIND_BG
-	dsprite  10, 1,   0, 0, $02, $0 | Y_FLIP | BEHIND_BG
-	dsprite  10, 1,   1, 0, $03, $0 | BEHIND_BG
+	dsprite   0, 0,  -1, 7, $00, $0 | PRIORITY
+	dsprite   0, 0,   0, 0, $02, $0 | PRIORITY
+	dsprite   0, 0,   1, 0, $00, $0 | X_FLIP | PRIORITY
+	dsprite   1, 0,  -1, 7, $01, $0 | PRIORITY
+	dsprite   1, 0,   1, 0, $01, $0 | X_FLIP | PRIORITY
+	dsprite   2, 0,  -1, 7, $01, $0 | PRIORITY
+	dsprite   2, 0,   1, 0, $03, $0 | PRIORITY
+	dsprite   3, 0,  -1, 7, $01, $0 | PRIORITY
+	dsprite   3, 0,   1, 0, $03, $0 | PRIORITY
+	dsprite   4, 0,  -1, 7, $01, $0 | PRIORITY
+	dsprite   4, 0,   1, 0, $03, $0 | PRIORITY
+	dsprite   5, 0,  -1, 7, $01, $0 | PRIORITY
+	dsprite   5, 0,   1, 0, $03, $0 | PRIORITY
+	dsprite   6, 0,  -1, 7, $01, $0 | PRIORITY
+	dsprite   6, 0,   1, 0, $03, $0 | PRIORITY
+	dsprite   7, 0,  -1, 7, $01, $0 | PRIORITY
+	dsprite   7, 0,   1, 0, $03, $0 | PRIORITY
+	dsprite   8, 0,  -1, 7, $01, $0 | PRIORITY
+	dsprite   8, 0,   1, 0, $03, $0 | PRIORITY
+	dsprite   9, 0,  -1, 7, $01, $0 | PRIORITY
+	dsprite   9, 0,   1, 0, $03, $0 | PRIORITY
+	dsprite  10, 0,  -1, 7, $01, $0 | PRIORITY
+	dsprite  10, 0,   1, 0, $03, $0 | PRIORITY
+	dsprite  10, 1,  -1, 7, $00, $0 | Y_FLIP | PRIORITY
+	dsprite  10, 1,   0, 0, $02, $0 | Y_FLIP | PRIORITY
+	dsprite  10, 1,   1, 0, $03, $0 | PRIORITY
 
 .NumGroup:
 	db 20
-	dsprite   0, 0,  -1, 7, $00, $0 | BEHIND_BG
-	dsprite   0, 0,   0, 0, $02, $0 | BEHIND_BG
-	dsprite   0, 0,   1, 0, $02, $0 | BEHIND_BG
-	dsprite   0, 0,   2, 0, $03, $0 | BEHIND_BG
-	dsprite   0, 0,   3, 0, $02, $0 | BEHIND_BG
-	dsprite   0, 0,   4, 0, $03, $0 | BEHIND_BG
-	dsprite   0, 0,   5, 0, $02, $0 | BEHIND_BG
-	dsprite   0, 0,   6, 0, $03, $0 | BEHIND_BG
-	dsprite   0, 0,   7, 0, $02, $0 | BEHIND_BG
-	dsprite   0, 0,   8, 0, $03, $0 | BEHIND_BG
-	dsprite   0, 5,  -1, 7, $00, $0 | Y_FLIP | BEHIND_BG
-	dsprite   0, 5,   0, 0, $02, $0 | Y_FLIP | BEHIND_BG
-	dsprite   0, 5,   1, 0, $02, $0 | Y_FLIP | BEHIND_BG
-	dsprite   0, 5,   2, 0, $03, $0 | BEHIND_BG
-	dsprite   0, 5,   3, 0, $02, $0 | Y_FLIP | BEHIND_BG
-	dsprite   0, 5,   4, 0, $03, $0 | BEHIND_BG
-	dsprite   0, 5,   5, 0, $02, $0 | Y_FLIP | BEHIND_BG
-	dsprite   0, 5,   6, 0, $03, $0 | BEHIND_BG
-	dsprite   0, 5,   7, 0, $02, $0 | Y_FLIP | BEHIND_BG
-	dsprite   0, 5,   8, 0, $03, $0 | BEHIND_BG
+	dsprite   0, 0,  -1, 7, $00, $0 | PRIORITY
+	dsprite   0, 0,   0, 0, $02, $0 | PRIORITY
+	dsprite   0, 0,   1, 0, $02, $0 | PRIORITY
+	dsprite   0, 0,   2, 0, $03, $0 | PRIORITY
+	dsprite   0, 0,   3, 0, $02, $0 | PRIORITY
+	dsprite   0, 0,   4, 0, $03, $0 | PRIORITY
+	dsprite   0, 0,   5, 0, $02, $0 | PRIORITY
+	dsprite   0, 0,   6, 0, $03, $0 | PRIORITY
+	dsprite   0, 0,   7, 0, $02, $0 | PRIORITY
+	dsprite   0, 0,   8, 0, $03, $0 | PRIORITY
+	dsprite   0, 5,  -1, 7, $00, $0 | Y_FLIP | PRIORITY
+	dsprite   0, 5,   0, 0, $02, $0 | Y_FLIP | PRIORITY
+	dsprite   0, 5,   1, 0, $02, $0 | Y_FLIP | PRIORITY
+	dsprite   0, 5,   2, 0, $03, $0 | PRIORITY
+	dsprite   0, 5,   3, 0, $02, $0 | Y_FLIP | PRIORITY
+	dsprite   0, 5,   4, 0, $03, $0 | PRIORITY
+	dsprite   0, 5,   5, 0, $02, $0 | Y_FLIP | PRIORITY
+	dsprite   0, 5,   6, 0, $03, $0 | PRIORITY
+	dsprite   0, 5,   7, 0, $02, $0 | Y_FLIP | PRIORITY
+	dsprite   0, 5,   8, 0, $03, $0 | PRIORITY
 
 .NumGroupPair:
 	db 30
-	dsprite   0, 0,   0, 0, $00, $0 | BEHIND_BG
-	dsprite   0, 0,   1, 0, $02, $0 | BEHIND_BG
-	dsprite   0, 0,   2, 0, $02, $0 | BEHIND_BG
-	dsprite   0, 0,   3, 0, $03, $0 | BEHIND_BG
-	dsprite   0, 0,   4, 0, $02, $0 | BEHIND_BG
-	dsprite   0, 0,   5, 0, $03, $0 | BEHIND_BG
-	dsprite   0, 0,   6, 0, $02, $0 | BEHIND_BG
-	dsprite   0, 0,   7, 0, $03, $0 | BEHIND_BG
-	dsprite   0, 0,   8, 0, $02, $0 | BEHIND_BG
-	dsprite   0, 0,   9, 0, $03, $0 | BEHIND_BG
-	dsprite   1, 0,   0, 0, $01, $0 | BEHIND_BG
-	dsprite   1, 0,   3, 0, $03, $0 | BEHIND_BG
-	dsprite   1, 0,   5, 0, $03, $0 | BEHIND_BG
-	dsprite   1, 0,   7, 0, $03, $0 | BEHIND_BG
-	dsprite   1, 0,   9, 0, $03, $0 | BEHIND_BG
-	dsprite   2, 0,   0, 0, $01, $0 | BEHIND_BG
-	dsprite   2, 0,   3, 0, $03, $0 | BEHIND_BG
-	dsprite   2, 0,   5, 0, $03, $0 | BEHIND_BG
-	dsprite   2, 0,   7, 0, $03, $0 | BEHIND_BG
-	dsprite   2, 0,   9, 0, $03, $0 | BEHIND_BG
-	dsprite   2, 1,   0, 0, $00, $0 | Y_FLIP | BEHIND_BG
-	dsprite   2, 1,   1, 0, $02, $0 | Y_FLIP | BEHIND_BG
-	dsprite   2, 1,   2, 0, $02, $0 | Y_FLIP | BEHIND_BG
-	dsprite   2, 1,   3, 0, $03, $0 | BEHIND_BG
-	dsprite   2, 1,   4, 0, $03, $0 | BEHIND_BG
-	dsprite   2, 1,   5, 0, $03, $0 | BEHIND_BG
-	dsprite   2, 1,   6, 0, $03, $0 | BEHIND_BG
-	dsprite   2, 1,   7, 0, $03, $0 | BEHIND_BG
-	dsprite   2, 1,   8, 0, $03, $0 | BEHIND_BG
-	dsprite   2, 1,   9, 0, $03, $0 | BEHIND_BG
+	dsprite   0, 0,   0, 0, $00, $0 | PRIORITY
+	dsprite   0, 0,   1, 0, $02, $0 | PRIORITY
+	dsprite   0, 0,   2, 0, $02, $0 | PRIORITY
+	dsprite   0, 0,   3, 0, $03, $0 | PRIORITY
+	dsprite   0, 0,   4, 0, $02, $0 | PRIORITY
+	dsprite   0, 0,   5, 0, $03, $0 | PRIORITY
+	dsprite   0, 0,   6, 0, $02, $0 | PRIORITY
+	dsprite   0, 0,   7, 0, $03, $0 | PRIORITY
+	dsprite   0, 0,   8, 0, $02, $0 | PRIORITY
+	dsprite   0, 0,   9, 0, $03, $0 | PRIORITY
+	dsprite   1, 0,   0, 0, $01, $0 | PRIORITY
+	dsprite   1, 0,   3, 0, $03, $0 | PRIORITY
+	dsprite   1, 0,   5, 0, $03, $0 | PRIORITY
+	dsprite   1, 0,   7, 0, $03, $0 | PRIORITY
+	dsprite   1, 0,   9, 0, $03, $0 | PRIORITY
+	dsprite   2, 0,   0, 0, $01, $0 | PRIORITY
+	dsprite   2, 0,   3, 0, $03, $0 | PRIORITY
+	dsprite   2, 0,   5, 0, $03, $0 | PRIORITY
+	dsprite   2, 0,   7, 0, $03, $0 | PRIORITY
+	dsprite   2, 0,   9, 0, $03, $0 | PRIORITY
+	dsprite   2, 1,   0, 0, $00, $0 | Y_FLIP | PRIORITY
+	dsprite   2, 1,   1, 0, $02, $0 | Y_FLIP | PRIORITY
+	dsprite   2, 1,   2, 0, $02, $0 | Y_FLIP | PRIORITY
+	dsprite   2, 1,   3, 0, $03, $0 | PRIORITY
+	dsprite   2, 1,   4, 0, $03, $0 | PRIORITY
+	dsprite   2, 1,   5, 0, $03, $0 | PRIORITY
+	dsprite   2, 1,   6, 0, $03, $0 | PRIORITY
+	dsprite   2, 1,   7, 0, $03, $0 | PRIORITY
+	dsprite   2, 1,   8, 0, $03, $0 | PRIORITY
+	dsprite   2, 1,   9, 0, $03, $0 | PRIORITY
 
 .PokeGroupPair:
 	db 38
-	dsprite   0, 0,  -1, 7, $00, $0 | BEHIND_BG
-	dsprite   0, 0,   3, 0, $00, $0 | X_FLIP | BEHIND_BG
-	dsprite   1, 0,  -1, 7, $01, $0 | BEHIND_BG
-	dsprite   1, 0,   3, 0, $01, $0 | X_FLIP | BEHIND_BG
-	dsprite   2, 0,  -1, 7, $01, $0 | BEHIND_BG
-	dsprite   2, 0,   3, 0, $01, $0 | X_FLIP | BEHIND_BG
-	dsprite   3, 0,  -1, 7, $01, $0 | BEHIND_BG
-	dsprite   3, 0,   1, 0, $03, $0 | BEHIND_BG
-	dsprite   3, 0,   3, 0, $03, $0 | BEHIND_BG
-	dsprite   4, 0,  -1, 7, $01, $0 | BEHIND_BG
-	dsprite   4, 0,   1, 0, $03, $0 | BEHIND_BG
-	dsprite   4, 0,   3, 0, $03, $0 | BEHIND_BG
-	dsprite   5, 0,  -1, 7, $01, $0 | BEHIND_BG
-	dsprite   5, 0,   1, 0, $03, $0 | BEHIND_BG
-	dsprite   5, 0,   3, 0, $03, $0 | BEHIND_BG
-	dsprite   6, 0,  -1, 7, $01, $0 | BEHIND_BG
-	dsprite   6, 0,   1, 0, $03, $0 | BEHIND_BG
-	dsprite   6, 0,   3, 0, $03, $0 | BEHIND_BG
-	dsprite   7, 0,  -1, 7, $01, $0 | BEHIND_BG
-	dsprite   7, 0,   1, 0, $03, $0 | BEHIND_BG
-	dsprite   7, 0,   3, 0, $03, $0 | BEHIND_BG
-	dsprite   8, 0,  -1, 7, $01, $0 | BEHIND_BG
-	dsprite   8, 0,   1, 0, $03, $0 | BEHIND_BG
-	dsprite   8, 0,   3, 0, $03, $0 | BEHIND_BG
-	dsprite   9, 0,  -1, 7, $01, $0 | BEHIND_BG
-	dsprite   9, 0,   1, 0, $03, $0 | BEHIND_BG
-	dsprite   9, 0,   3, 0, $03, $0 | BEHIND_BG
-	dsprite  10, 0,  -1, 7, $01, $0 | BEHIND_BG
-	dsprite  10, 0,   1, 0, $03, $0 | BEHIND_BG
-	dsprite  10, 0,   3, 0, $03, $0 | BEHIND_BG
-	dsprite  11, 0,  -1, 7, $01, $0 | BEHIND_BG
-	dsprite  11, 0,   1, 0, $03, $0 | BEHIND_BG
-	dsprite  11, 0,   3, 0, $03, $0 | BEHIND_BG
-	dsprite  11, 1,  -1, 7, $00, $0 | Y_FLIP | BEHIND_BG
-	dsprite  11, 1,   0, 0, $02, $0 | Y_FLIP | BEHIND_BG
-	dsprite  11, 1,   1, 0, $03, $0 | Y_FLIP | BEHIND_BG
-	dsprite  11, 1,   2, 0, $02, $0 | Y_FLIP | BEHIND_BG
-	dsprite  11, 1,   3, 0, $03, $0 | X_FLIP | Y_FLIP | BEHIND_BG
+	dsprite   0, 0,  -1, 7, $00, $0 | PRIORITY
+	dsprite   0, 0,   3, 0, $00, $0 | X_FLIP | PRIORITY
+	dsprite   1, 0,  -1, 7, $01, $0 | PRIORITY
+	dsprite   1, 0,   3, 0, $01, $0 | X_FLIP | PRIORITY
+	dsprite   2, 0,  -1, 7, $01, $0 | PRIORITY
+	dsprite   2, 0,   3, 0, $01, $0 | X_FLIP | PRIORITY
+	dsprite   3, 0,  -1, 7, $01, $0 | PRIORITY
+	dsprite   3, 0,   1, 0, $03, $0 | PRIORITY
+	dsprite   3, 0,   3, 0, $03, $0 | PRIORITY
+	dsprite   4, 0,  -1, 7, $01, $0 | PRIORITY
+	dsprite   4, 0,   1, 0, $03, $0 | PRIORITY
+	dsprite   4, 0,   3, 0, $03, $0 | PRIORITY
+	dsprite   5, 0,  -1, 7, $01, $0 | PRIORITY
+	dsprite   5, 0,   1, 0, $03, $0 | PRIORITY
+	dsprite   5, 0,   3, 0, $03, $0 | PRIORITY
+	dsprite   6, 0,  -1, 7, $01, $0 | PRIORITY
+	dsprite   6, 0,   1, 0, $03, $0 | PRIORITY
+	dsprite   6, 0,   3, 0, $03, $0 | PRIORITY
+	dsprite   7, 0,  -1, 7, $01, $0 | PRIORITY
+	dsprite   7, 0,   1, 0, $03, $0 | PRIORITY
+	dsprite   7, 0,   3, 0, $03, $0 | PRIORITY
+	dsprite   8, 0,  -1, 7, $01, $0 | PRIORITY
+	dsprite   8, 0,   1, 0, $03, $0 | PRIORITY
+	dsprite   8, 0,   3, 0, $03, $0 | PRIORITY
+	dsprite   9, 0,  -1, 7, $01, $0 | PRIORITY
+	dsprite   9, 0,   1, 0, $03, $0 | PRIORITY
+	dsprite   9, 0,   3, 0, $03, $0 | PRIORITY
+	dsprite  10, 0,  -1, 7, $01, $0 | PRIORITY
+	dsprite  10, 0,   1, 0, $03, $0 | PRIORITY
+	dsprite  10, 0,   3, 0, $03, $0 | PRIORITY
+	dsprite  11, 0,  -1, 7, $01, $0 | PRIORITY
+	dsprite  11, 0,   1, 0, $03, $0 | PRIORITY
+	dsprite  11, 0,   3, 0, $03, $0 | PRIORITY
+	dsprite  11, 1,  -1, 7, $00, $0 | Y_FLIP | PRIORITY
+	dsprite  11, 1,   0, 0, $02, $0 | Y_FLIP | PRIORITY
+	dsprite  11, 1,   1, 0, $03, $0 | Y_FLIP | PRIORITY
+	dsprite  11, 1,   2, 0, $02, $0 | Y_FLIP | PRIORITY
+	dsprite  11, 1,   3, 0, $03, $0 | X_FLIP | Y_FLIP | PRIORITY
 
 .Impossible:
 	db 4
-	dsprite   0, 0,   0, 0, $00, $0 | BEHIND_BG
-	dsprite   0, 0,   1, 0, $00, $0 | X_FLIP | BEHIND_BG
-	dsprite   1, 0,   0, 0, $00, $0 | Y_FLIP | BEHIND_BG
-	dsprite   1, 0,   1, 0, $00, $0 | X_FLIP | Y_FLIP | BEHIND_BG
+	dsprite   0, 0,   0, 0, $00, $0 | PRIORITY
+	dsprite   0, 0,   1, 0, $00, $0 | X_FLIP | PRIORITY
+	dsprite   1, 0,   0, 0, $00, $0 | Y_FLIP | PRIORITY
+	dsprite   1, 0,   1, 0, $00, $0 | X_FLIP | Y_FLIP | PRIORITY
 
 CardFlip_InitAttrPals:
 	hlcoord 0, 0, wAttrMap
@@ -1570,7 +1567,7 @@ else
 endc
 
 CardFlipLZ03:
-INCBIN "gfx/card_flip/0e0cdb.2bpp.lz"
+INCBIN "gfx/card_flip/card_flip_3.2bpp.lz"
 
 CardFlipOffButtonGFX:
 INCBIN "gfx/card_flip/off_button.2bpp"
@@ -1579,21 +1576,10 @@ CardFlipOnButtonGFX:
 INCBIN "gfx/card_flip/on_button.2bpp"
 
 CardFlipLZ01:
-INCBIN "gfx/card_flip/0e0d16.2bpp.lz"
+INCBIN "gfx/card_flip/card_flip_1.2bpp.lz"
 
 CardFlipLZ02:
-INCBIN "gfx/card_flip/0e0ea8.2bpp.lz"
+INCBIN "gfx/card_flip/card_flip_2.2bpp.lz"
 
 CardFlipTilemap:
-	db CARDFLIP_LIGHT_OFF, $15, $27, $2a, $2a, $06, $27, $2a, $2a, $06, $27
-	db CARDFLIP_LIGHT_OFF, $07, $27, $3e, $3f, $42, $43, $46, $47, $4a, $4b
-	db CARDFLIP_LIGHT_OFF, $17, $26, $40, $41, $44, $45, $48, $49, $4c, $4d
-	db CARDFLIP_LIGHT_OFF, $25, $04, $00, $01, $00, $01, $00, $01, $00, $01
-	db CARDFLIP_LIGHT_OFF, $05, $14, $10, $11, $10, $11, $10, $11, $10, $11
-	db CARDFLIP_LIGHT_OFF, $16, $24, $20, $21, $20, $21, $20, $21, $20, $21
-	db CARDFLIP_LIGHT_OFF, $25, $04, $00, $02, $00, $02, $00, $02, $00, $02
-	db CARDFLIP_LIGHT_OFF, $05, $14, $10, $12, $10, $12, $10, $12, $10, $12
-	db CARDFLIP_LIGHT_OFF, $16, $24, $20, $22, $20, $22, $20, $22, $20, $22
-	db CARDFLIP_LIGHT_OFF, $25, $04, $00, $03, $00, $03, $00, $03, $00, $03
-	db CARDFLIP_LIGHT_OFF, $05, $14, $10, $13, $10, $13, $10, $13, $10, $13
-	db CARDFLIP_LIGHT_OFF, $16, $24, $20, $23, $20, $23, $20, $23, $20, $23
+INCBIN "gfx/card_flip/card_flip.tilemap"

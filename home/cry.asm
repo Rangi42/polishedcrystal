@@ -49,12 +49,10 @@ LoadCryHeader::
 	call GetCryIndex
 	ret c
 
-	ldh a, [hROMBank]
-	push af
-	ld a, BANK(CryHeaders)
-	rst Bankswitch
+	anonbankpush PokemonCries
 
-	ld hl, CryHeaders
+.Function:
+	ld hl, PokemonCries
 rept 6
 	add hl, bc
 endr
@@ -73,8 +71,6 @@ endr
 	ld a, [hl]
 	ld [wCryLength + 1], a
 
-	pop af
-	rst Bankswitch
 	and a
 	ret
 
@@ -84,9 +80,12 @@ GetCryIndex::
 	cp NUM_POKEMON + 1
 	jr nc, .no
 
-	dec a
 	ld c, a
-	ld b, 0
+	ld a, [wCurForm]
+	ld b, a
+	call GetExtendedSpeciesIndex
+	dec bc
+	ld a, c
 	and a
 	ret
 

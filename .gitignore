@@ -1,52 +1,28 @@
-# generated
-*.tx
-*.o
-
-# precompiled python
-*.pyc
-*$py.class
-
-# no binaries
-*.exe
-
-# roms
+# generated extensions
 *.gbc
-*.gb
-
-# for any of the poor souls with save game files in their working directory
-*.sgm
-*.sav
-*.rtc
-*.sn1
-*.sn2
-*.sn3
-*.sn4
-*.sn5
-*.sn6
-*.sn7
-*.sn8
-*.sn9
-*.sn0
-
-# rgbds extras
 *.map
 *.sym
-
-# patch files
+*.exe
 *.bsp
-
-# for vim configuration
-# url: http://www.vim.org/scripts/script.php?script_id=441
-.lvimrc
-
-# swap files for vim
-.*.swp
-
-# swap files for gedit
-*~
-
-# intermediate build products
-gfx/tilesets/*.2bpp
+*.h.gch
+*.pyc
+*$py.class
+*.o
+*.lz
+*.1bpp
+*.2bpp
+*.2bpp.vram0
+*.2bpp.vram1
+*.2bpp.vram2
+*.2bpp.vram0p
+*.2bpp.vram1p
+*.2bpp.vram2p
+gfx/pokemon/*/*.dimensions
+gfx/pokemon/*/*.animated.tilemap
+gfx/pokemon/*/bitmask.asm
+gfx/pokemon/*/frames.asm
+data/tilesets/*_collision.bin
+bank_ends.txt
 
 # local tools
 deploy.sh

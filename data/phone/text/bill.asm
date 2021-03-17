@@ -42,10 +42,9 @@ BillPhoneNotFullText:
 	text "Thanks for"
 	line "waiting!"
 
-	para "<PLAYER>, your Box"
-	line "has room for "
-	text_from_ram wStringBuffer3
-	cont "more #mon."
+	para "<PLAYER>, your"
+	line "database has a lot"
+	cont "of space left."
 
 	para "Get out there and"
 	line "fill it up!"
@@ -55,28 +54,21 @@ BillPhoneNearlyFullText:
 	text "Thanks for"
 	line "waiting!"
 
-	para "<PLAYER>, your Box"
-	line "has room for only"
-	cont ""
-	text_from_ram wStringBuffer3
-	text " more #mon."
+	para "<PLAYER>, your"
+	line "database is almost"
+	cont "overtaxed!"
 
 	para "Maybe you should"
-	line "switch your Box."
+	line "save your game?"
 	done
 
 BillPhoneFullText:
 	text "Thanks for"
 	line "waiting!"
 
-	para "<PLAYER>, your Box"
-	line "is full!"
-
-	para "You'll have to"
-	line "switch Boxes if"
-
-	para "you want to catch"
-	line "more #mon."
+	para "<PLAYER>, your"
+	line "database is"
+	cont "overtaxed."
 	prompt
 
 BillPhoneNewlyFullText:
@@ -87,14 +79,8 @@ BillPhoneNewlyFullText:
 	line "my Storage System."
 
 	para "That last #mon"
-	line "you sent filled"
-	cont "your Box up."
-
-	para "You'll have to"
-	line "switch Boxes if"
-
-	para "you want to catch"
-	line "more #mon."
+	line "overtaxed my"
+	cont "systems!"
 	prompt
 
 BillWholePCFullText:
@@ -106,13 +92,18 @@ BillWholePCFullText:
 	cont "to make space."
 	done
 
-BillWantNextBox:
-	text "I'll swap to the"
-	line "next Box with"
-	cont "space for you."
+BillFlushBySaving:
+	text "It needs to run"
+	line "garbage collection"
+	cont "before more use."
 
-	para "However…"
-	prompt
+	para "Save the game to"
+	line "continue using the"
+	cont "PC."
+
+	para "Do you want to"
+	line "save now?"
+	done
 
 BillThankYouText:
 	text "Thank you for"
@@ -124,13 +115,9 @@ BillCallMeToSwitch:
 	text "OK, I'll leave it"
 	line "alone."
 
-	para "Call me back if"
+	para "Save the game if"
 	line "you change your"
 	cont "mind."
-
-	para "You can also"
-	line "change boxes your-"
-	cont "self via PC."
 	prompt
 
 BillPhoneSecondBadgeText:

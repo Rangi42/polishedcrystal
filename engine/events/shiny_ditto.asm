@@ -80,6 +80,6 @@ endr
 	ret
 
 .OT:
-	db "Mr.<PK><MN>@"
+	rawchar "Mr.<PK><MN>@"
 .Nickname:
-	db "Masuda@"
+	rawchar "Masuda@"

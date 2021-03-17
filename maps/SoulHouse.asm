@@ -1,25 +1,25 @@
 SoulHouse_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 3 ; warp events
+	def_warp_events
 	warp_event  4,  9, LAVENDER_TOWN, 6
 	warp_event  5,  9, LAVENDER_TOWN, 6
 	warp_event  4,  2, SOUL_HOUSE_B1F, 1
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 0 ; bg events
+	def_bg_events
 
-	db 5 ; object events
-	object_event  9,  7, SPRITE_AGATHA, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, AgathaScript, -1
-	object_event  4,  2, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, MrFujiText, -1 ; TODO: EVENT_SOUL_HOUSE_MR_FUJI
-	object_event  7,  3, SPRITE_POKEFAN_F, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x7ed4d, -1
-	object_event  2,  7, SPRITE_CUTE_GIRL, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x7edb1, -1
-	object_event  1,  5, SPRITE_GRANNY, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x7eddb, -1
+	def_object_events
+	object_event  9,  7, SPRITE_AGATHA, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, AgathaScript, -1
+	object_event  4,  2, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_COMMAND, jumptextfaceplayer, MrFujiText, -1 ; TODO: EVENT_SOUL_HOUSE_MR_FUJI
+	object_event  7,  3, SPRITE_POKEFAN_F, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_COMMAND, jumptextfaceplayer, SoulHouseTeacherText, -1
+	object_event  2,  7, SPRITE_CUTE_GIRL, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_COMMAND, jumptextfaceplayer, SoulHouseLassText, -1
+	object_event  1,  5, SPRITE_GRANNY, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_COMMAND, jumptextfaceplayer, SoulHouseGrannyText, -1
 
-	const_def 1 ; object constants
+	object_const_def
 	const SOULHOUSE_AGATHA
 
 AgathaScript:
@@ -38,7 +38,7 @@ AgathaScript:
 	setevent EVENT_BEAT_AGATHA
 	opentext
 	writetext AgathaRewardText
-	buttonsound
+	promptbutton
 	verbosegivetmhm TM_SHADOW_CLAW
 	setevent EVENT_GOT_TM65_SHADOW_CLAW_FROM_AGATHA
 AgathaAfterScript:
@@ -69,7 +69,7 @@ MrFujiText:
 	line "make them happy."
 	done
 
-UnknownText_0x7ed4d:
+SoulHouseTeacherText:
 	text "There are other"
 	line "graves of #mon"
 	cont "here, I think."
@@ -79,13 +79,13 @@ UnknownText_0x7ed4d:
 	cont "Mr.Fuji may enter."
 	done
 
-UnknownText_0x7edb1:
+SoulHouseLassText:
 	text "I came with my mom"
 	line "to visit #mon"
 	cont "graves…"
 	done
 
-UnknownText_0x7eddb:
+SoulHouseGrannyText:
 	text "The #mon that"
 	line "lived with me…"
 
@@ -144,7 +144,7 @@ AgathaSeenText:
 	cont "trainer can do!"
 	done
 
-AgathaBeatenText
+AgathaBeatenText:
 	text "Oh, my!"
 	done
 

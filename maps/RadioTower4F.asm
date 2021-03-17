@@ -1,57 +1,62 @@
 RadioTower4F_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 4 ; warp events
+	def_warp_events
 	warp_event  0,  0, RADIO_TOWER_5F, 1
 	warp_event  9,  0, RADIO_TOWER_3F, 2
 	warp_event 12,  0, RADIO_TOWER_5F, 2
 	warp_event 17,  0, RADIO_TOWER_3F, 3
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 2 ; bg events
-	bg_event  7,  0, SIGNPOST_JUMPTEXT, UnknownText_0x5effe
-	bg_event 15,  0, SIGNPOST_JUMPTEXT, UnknownText_0x5f00d
+	def_bg_events
+	bg_event  7,  0, BGEVENT_JUMPTEXT, RadioTower4FProductionSignText
+	bg_event 15,  0, BGEVENT_JUMPTEXT, RadioTower4FStudio2SignText
 
-	db 7 ; object events
-	object_event  5,  6, SPRITE_ROCKET, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerGruntM10, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
-	object_event  6,  4, SPRITE_FAT_GUY, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x5ec12, EVENT_RADIO_TOWER_CIVILIANS_AFTER
-	object_event 14,  6, SPRITE_BUENA, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, MaryScript_0x5eb85, -1
+	def_object_events
+	object_event  5,  6, SPRITE_ROCKET, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerGruntM10, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
+	object_event  6,  4, SPRITE_FAT_GUY, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, RadioTower4FFisherText, EVENT_RADIO_TOWER_CIVILIANS_AFTER
+	object_event 14,  6, SPRITE_BUENA, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, RadioTower4FDJMaryScript, -1
 	pokemon_event 12,  7, MEOWTH, -1, -1, PAL_NPC_RED, RadioTowerMeowthText, -1
-	object_event 14,  1, SPRITE_PROTON, SPRITEMOVEDATA_STANDING_LEFT, 0, 2, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerProton1, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
-	object_event 12,  4, SPRITE_ROCKET_GIRL, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerGruntF4, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
-	object_event  4,  2, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerRocketScientistRich, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
+	object_event 14,  1, SPRITE_PROTON, SPRITEMOVEDATA_STANDING_LEFT, 0, 2, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, GenericTrainerProton1, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
+	object_event 12,  4, SPRITE_ROCKET_GIRL, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerGruntF4, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
+	object_event  4,  2, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 4, GenericTrainerRocketScientistRich, EVENT_RADIO_TOWER_ROCKET_TAKEOVER
 
-	const_def 1 ; object constants
+	object_const_def
 	const RADIOTOWER4F_ROCKET
 
-MaryScript_0x5eb85:
+RadioTower4FDJMaryScript:
 	faceplayer
 	opentext
 	checkevent EVENT_GOT_PINK_BOW_FROM_MARY
-	iftrue UnknownScript_0x5ebac
+	iftrue_jumpopenedtext RadioTower4FDJMaryText_After
 	checkevent EVENT_CLEARED_RADIO_TOWER
-	iftrue UnknownScript_0x5eb99
-	jumpopenedtext UnknownText_0x5ec68
+	iftrue .ClearedRockets
+	jumpthisopenedtext
 
-UnknownScript_0x5eb99:
-	writetext UnknownText_0x5ecab
-	buttonsound
+	text "Mary: Why? Why do"
+	line "I have to suffer"
+	cont "through this?"
+
+	para "Meowth, help me!"
+	done
+
+.ClearedRockets:
+	writetext RadioTower4FDJMaryText_ClearedRockets
+	promptbutton
 	verbosegiveitem PINK_BOW
-	iffalse UnknownScript_0x5ebb0
-	writetext UnknownText_0x5ecef
-	waitbutton
-	closetext
+	iffalse_endtext
 	setevent EVENT_GOT_PINK_BOW_FROM_MARY
-	end
+	jumpthisopenedtext
 
-UnknownScript_0x5ebac:
-	writetext UnknownText_0x5ed2c
-	waitbutton
-UnknownScript_0x5ebb0:
-	endtext
+	text "Mary: It's just"
+	line "right for #mon"
+
+	para "that know Fairy-"
+	line "type moves."
+	done
 
 GenericTrainerGruntM10:
 	generictrainer GRUNTM, 10, EVENT_BEAT_ROCKET_GRUNTM_10, GruntM10SeenText, GruntM10BeatenText
@@ -90,7 +95,7 @@ GenericTrainerRocketScientistRich:
 	cont "stop Team Rocket?"
 	done
 
-UnknownText_0x5ec12:
+RadioTower4FFisherText:
 	text "I listened to the"
 	line "radio while I was"
 	cont "at the ruins."
@@ -99,15 +104,7 @@ UnknownText_0x5ec12:
 	line "broadcast there."
 	done
 
-UnknownText_0x5ec68:
-	text "Mary: Why? Why do"
-	line "I have to suffer"
-	cont "through this?"
-
-	para "Meowth, help me!"
-	done
-
-UnknownText_0x5ecab:
+RadioTower4FDJMaryText_ClearedRockets:
 	text "Mary: Oh! You're"
 	line "my little savior!"
 
@@ -115,15 +112,7 @@ UnknownText_0x5ecab:
 	line "as my thanks?"
 	done
 
-UnknownText_0x5ecef:
-	text "Mary: It's just"
-	line "right for #mon"
-
-	para "that know Fairy-"
-	line "type moves."
-	done
-
-UnknownText_0x5ed2c:
+RadioTower4FDJMaryText_After:
 	text "Mary: Please tune"
 	line "into me on Prof."
 
@@ -193,10 +182,10 @@ RocketScientistRichBeatenText:
 	line "come with snags."
 	done
 
-UnknownText_0x5effe:
+RadioTower4FProductionSignText:
 	text "4F Production"
 	done
 
-UnknownText_0x5f00d:
+RadioTower4FStudio2SignText:
 	text "4F Studio 2"
 	done

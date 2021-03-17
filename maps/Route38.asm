@@ -1,26 +1,26 @@
 Route38_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event 35,  8, ROUTE_38_ECRUTEAK_GATE, 1
 	warp_event 35,  9, ROUTE_38_ECRUTEAK_GATE, 2
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 2 ; bg events
-	bg_event 33,  7, SIGNPOST_JUMPTEXT, Route38SignText
-	bg_event  5, 13, SIGNPOST_JUMPTEXT, Route38TrainerTipsText
+	def_bg_events
+	bg_event 33,  7, BGEVENT_JUMPTEXT, Route38SignText
+	bg_event  5, 13, BGEVENT_JUMPTEXT, Route38TrainerTipsText
 
-	db 7 ; object events
-	object_event  4,  1, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 1, TrainerSchoolboyChad1, -1
-	object_event 15,  3, SPRITE_LASS, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 2, TrainerLassDana1, -1
-	object_event 12, 15, SPRITE_BIRD_KEEPER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerBird_keeperToby, -1
-	object_event 19,  9, SPRITE_BEAUTY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerBeautyValencia, -1
-	object_event 24,  5, SPRITE_SAILOR, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerSailorHarry, -1
+	def_object_events
+	object_event  4,  1, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_TRAINER, 1, TrainerSchoolboyChad1, -1
+	object_event 15,  3, SPRITE_LASS, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, OBJECTTYPE_TRAINER, 2, TrainerLassDana1, -1
+	object_event 12, 15, SPRITE_BIRD_KEEPER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerBird_keeperToby, -1
+	object_event 19,  9, SPRITE_BEAUTY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerBeautyValencia, -1
+	object_event 24,  5, SPRITE_SAILOR, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, GenericTrainerSailorHarry, -1
 	fruittree_event 12, 10, FRUITTREE_ROUTE_38, SITRUS_BERRY, PAL_NPC_BROWN
-	object_event  5,  8, SPRITE_BEAUTY, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerBeautyOlivia, -1
+	object_event  5,  8, SPRITE_BEAUTY, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerBeautyOlivia, -1
 
 GenericTrainerBird_keeperToby:
 	generictrainer BIRD_KEEPER, TOBY, EVENT_BEAT_BIRD_KEEPER_TOBY, Bird_keeperTobySeenText, Bird_keeperTobyBeatenText
@@ -46,9 +46,9 @@ TrainerLassDana1:
 	trainer LASS, DANA1, EVENT_BEAT_LASS_DANA, LassDana1SeenText, LassDana1BeatenText, 0, .script
 
 .script
-	writecode VAR_CALLERID, PHONE_LASS_DANA
+	loadvar VAR_CALLERID, PHONE_LASS_DANA
 	opentext
-	checkflag ENGINE_DANA
+	checkflag ENGINE_DANA_READY_FOR_REMATCH
 	iftrue .DanaRematch
 	checkflag ENGINE_DANA_HAS_THUNDERSTONE
 	iftrue .TryGiveThunderstone
@@ -56,11 +56,11 @@ TrainerLassDana1:
 	iftrue .NumberAccepted
 	checkevent EVENT_DANA_ASKED_FOR_PHONE_NUMBER
 	iftrue .SecondTimeAsking
-	writetext UnknownText_0x1a20ec
-	buttonsound
+	writetext LassDanaMoomooMilkText
+	promptbutton
 	setevent EVENT_DANA_ASKED_FOR_PHONE_NUMBER
 	callstd asknumber1f
-	jump .AskForPhoneNumber
+	sjump .AskForPhoneNumber
 
 .SecondTimeAsking:
 	callstd asknumber2f
@@ -68,14 +68,14 @@ TrainerLassDana1:
 	askforphonenumber PHONE_LASS_DANA
 	ifequal $1, .PhoneFull
 	ifequal $2, .DeclinedPhoneNumber
-	trainertotext LASS, DANA1, $0
+	gettrainername LASS, DANA1, $0
 	callstd registerednumberf
 	jumpstd numberacceptedf
 
 .DanaRematch:
 	callstd rematchf
 	winlosstext LassDana1BeatenText, 0
-	copybytetovar wDanaFightCount
+	readmem wDanaFightCount
 	ifequal 4, .Fight4
 	ifequal 3, .Fight3
 	ifequal 2, .Fight2
@@ -97,39 +97,39 @@ TrainerLassDana1:
 	loadtrainer LASS, DANA1
 	startbattle
 	reloadmapafterbattle
-	loadvar wDanaFightCount, 1
-	clearflag ENGINE_DANA
+	loadmem wDanaFightCount, 1
+	clearflag ENGINE_DANA_READY_FOR_REMATCH
 	end
 
 .LoadFight1:
 	loadtrainer LASS, DANA2
 	startbattle
 	reloadmapafterbattle
-	loadvar wDanaFightCount, 2
-	clearflag ENGINE_DANA
+	loadmem wDanaFightCount, 2
+	clearflag ENGINE_DANA_READY_FOR_REMATCH
 	end
 
 .LoadFight2:
 	loadtrainer LASS, DANA3
 	startbattle
 	reloadmapafterbattle
-	loadvar wDanaFightCount, 3
-	clearflag ENGINE_DANA
+	loadmem wDanaFightCount, 3
+	clearflag ENGINE_DANA_READY_FOR_REMATCH
 	end
 
 .LoadFight3:
 	loadtrainer LASS, DANA4
 	startbattle
 	reloadmapafterbattle
-	loadvar wDanaFightCount, 4
-	clearflag ENGINE_DANA
+	loadmem wDanaFightCount, 4
+	clearflag ENGINE_DANA_READY_FOR_REMATCH
 	end
 
 .LoadFight4:
 	loadtrainer LASS, DANA5
 	startbattle
 	reloadmapafterbattle
-	clearflag ENGINE_DANA
+	clearflag ENGINE_DANA_READY_FOR_REMATCH
 	end
 
 .TryGiveThunderstone:
@@ -156,19 +156,19 @@ TrainerSchoolboyChad1:
 	trainer SCHOOLBOY, CHAD1, EVENT_BEAT_SCHOOLBOY_CHAD, SchoolboyChad1SeenText, SchoolboyChad1BeatenText, 0, .script
 
 .script
-	writecode VAR_CALLERID, PHONE_SCHOOLBOY_CHAD
+	loadvar VAR_CALLERID, PHONE_SCHOOLBOY_CHAD
 	opentext
-	checkflag ENGINE_CHAD
+	checkflag ENGINE_CHAD_READY_FOR_REMATCH
 	iftrue .ChadRematch
 	checkcellnum PHONE_SCHOOLBOY_CHAD
 	iftrue .HaveChadsNumber
 	checkevent EVENT_CHAD_ASKED_FOR_PHONE_NUMBER
 	iftrue .SecondTimeAsking
-	writetext UnknownText_0x1a200e
-	buttonsound
+	writetext SchoolboyChadSoManyTestsText
+	promptbutton
 	setevent EVENT_CHAD_ASKED_FOR_PHONE_NUMBER
 	callstd asknumber1m
-	jump .AskToRegisterNumber
+	sjump .AskToRegisterNumber
 
 .SecondTimeAsking:
 	callstd asknumber2m
@@ -176,14 +176,14 @@ TrainerSchoolboyChad1:
 	askforphonenumber PHONE_SCHOOLBOY_CHAD
 	ifequal $1, .PhoneFull
 	ifequal $2, .SaidNo
-	trainertotext SCHOOLBOY, CHAD1, $0
+	gettrainername SCHOOLBOY, CHAD1, $0
 	callstd registerednumberm
 	jumpstd numberacceptedm
 
 .ChadRematch:
 	callstd rematchm
 	winlosstext SchoolboyChad1BeatenText, 0
-	copybytetovar wChadFightCount
+	readmem wChadFightCount
 	ifequal 4, .Fight4
 	ifequal 3, .Fight3
 	ifequal 2, .Fight2
@@ -205,39 +205,39 @@ TrainerSchoolboyChad1:
 	loadtrainer SCHOOLBOY, CHAD1
 	startbattle
 	reloadmapafterbattle
-	loadvar wChadFightCount, 1
-	clearflag ENGINE_CHAD
+	loadmem wChadFightCount, 1
+	clearflag ENGINE_CHAD_READY_FOR_REMATCH
 	end
 
 .LoadFight1:
 	loadtrainer SCHOOLBOY, CHAD2
 	startbattle
 	reloadmapafterbattle
-	loadvar wChadFightCount, 2
-	clearflag ENGINE_CHAD
+	loadmem wChadFightCount, 2
+	clearflag ENGINE_CHAD_READY_FOR_REMATCH
 	end
 
 .LoadFight2:
 	loadtrainer SCHOOLBOY, CHAD3
 	startbattle
 	reloadmapafterbattle
-	loadvar wChadFightCount, 3
-	clearflag ENGINE_CHAD
+	loadmem wChadFightCount, 3
+	clearflag ENGINE_CHAD_READY_FOR_REMATCH
 	end
 
 .LoadFight3:
 	loadtrainer SCHOOLBOY, CHAD4
 	startbattle
 	reloadmapafterbattle
-	loadvar wChadFightCount, 4
-	clearflag ENGINE_CHAD
+	loadmem wChadFightCount, 4
+	clearflag ENGINE_CHAD_READY_FOR_REMATCH
 	end
 
 .LoadFight4:
 	loadtrainer SCHOOLBOY, CHAD5
 	startbattle
 	reloadmapafterbattle
-	clearflag ENGINE_CHAD
+	clearflag ENGINE_CHAD_READY_FOR_REMATCH
 	end
 
 .HaveChadsNumber:
@@ -291,7 +291,7 @@ SchoolboyChad1BeatenText:
 	line "enough, I guess."
 	done
 
-UnknownText_0x1a200e:
+SchoolboyChadSoManyTestsText:
 	text "I have to take so"
 	line "many tests, I"
 
@@ -317,7 +317,7 @@ LassDana1BeatenText:
 	line "battle that way."
 	done
 
-UnknownText_0x1a20ec:
+LassDanaMoomooMilkText:
 	text "I know something"
 	line "good!"
 

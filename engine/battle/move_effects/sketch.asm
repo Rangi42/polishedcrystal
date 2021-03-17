@@ -37,7 +37,7 @@ BattleCommand_sketch:
 ; Fail if move is invalid or is Struggle.
 	and a
 	jr z, .fail
-	cp STRUGGLE
+	inc a ; cp STRUGGLE
 	jr z, .fail
 ; Fail if user already knows that move
 	ld c, NUM_MOVES
@@ -47,6 +47,8 @@ BattleCommand_sketch:
 	jr z, .fail
 	dec c
 	jr nz, .does_user_already_know_move
+	farcall GetDisableEncoreMoves
+	push de
 ; Find Sketch in the user's moveset.
 ; Pointer in hl, and index in c.
 	dec hl
@@ -86,9 +88,11 @@ BattleCommand_sketch:
 .done_copy
 	call GetMoveName
 	call AnimateCurrentMove
+	pop de
+	farcall SetDisableEncoreMoves
 
 	ld hl, SketchedText
-	jp StdBattleTextBox
+	jp StdBattleTextbox
 
 .fail
 	call AnimateFailedMove

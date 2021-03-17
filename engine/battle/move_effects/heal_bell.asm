@@ -21,4 +21,4 @@ BattleCommand_healbell:
 	call AnimateCurrentMove
 
 	ld hl, BellChimedText
-	jp StdBattleTextBox
+	jp StdBattleTextbox

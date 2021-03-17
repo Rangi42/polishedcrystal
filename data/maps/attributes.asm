@@ -2,7 +2,7 @@ map_attributes: MACRO
 ; label, map, border block, connections
 CURRENT_MAP_WIDTH = \2_WIDTH
 CURRENT_MAP_HEIGHT = \2_HEIGHT
-\1_SecondMapHeader::
+\1_MapAttributes::
 	db \3
 	db \2_HEIGHT, \2_WIDTH
 	db BANK(\1_BlockData)
@@ -12,457 +12,484 @@ CURRENT_MAP_HEIGHT = \2_HEIGHT
 	db \4
 ENDM
 
+; Connections go in order: north, south, west, east
 connection: MACRO
 ;\1: direction
-;\2: map label
+;\2: map name
 ;\3: map id
-;\4: x (east/west) or y (north/south)
-;\5: offset?
-;\6: strip length
-if "\1" == "north"
-	map_id \3
-	dw wDecompressScratch + \3_WIDTH * (\3_HEIGHT - 3) + \5
-	dw wOverworldMapBlocks + \4 + 3
-	db \6
-	db \3_WIDTH
-	db \3_HEIGHT * 2 - 1
-	db (\4 - \5) * -2
-	dw wOverworldMapBlocks + \3_HEIGHT * (\3_WIDTH + 6) + 1
-elif "\1" == "south"
-	map_id \3
-	dw wDecompressScratch + \5
-	dw wOverworldMapBlocks + (CURRENT_MAP_HEIGHT + 3) * (CURRENT_MAP_WIDTH + 6) + \4 + 3
-	db \6
-	db \3_WIDTH
-	db 0
-	db (\4 - \5) * -2
-	dw wOverworldMapBlocks + \3_WIDTH + 7
-elif "\1" == "west"
-	map_id \3
-	dw wDecompressScratch + (\3_WIDTH * \5) + \3_WIDTH - 3
-	dw wOverworldMapBlocks + (CURRENT_MAP_WIDTH + 6) * (\4 + 3)
-	db \6
-	db \3_WIDTH
-	db (\4 - \5) * -2
-	db \3_WIDTH * 2 - 1
-	dw wOverworldMapBlocks + \3_WIDTH * 2 + 6
-elif "\1" == "east"
-	map_id \3
-	dw wDecompressScratch + (\3_WIDTH * \5)
-	dw wOverworldMapBlocks + (CURRENT_MAP_WIDTH + 6) * (\4 + 3 + 1) - 3
-	db \6
-	db \3_WIDTH
-	db (\4 - \5) * -2
-	db 0
-	dw wOverworldMapBlocks + \3_WIDTH + 7
+;\4: offset of the target map relative to the current map
+;    (x offset for east/west, y offset for north/south)
+
+; Calculate tile offsets for source (current) and target maps
+_src = 0
+_tgt = (\4) + 3
+if _tgt < 0
+_src = -_tgt
+_tgt = 0
 endc
+
+if !STRCMP("\1", "north")
+_blk = \3_WIDTH * (\3_HEIGHT - 3) + _src
+_map = _tgt
+_win = (\3_WIDTH + 6) * \3_HEIGHT + 1
+_y = \3_HEIGHT * 2 - 1
+_x = (\4) * -2
+_len = CURRENT_MAP_WIDTH + 3 - (\4)
+if _len > \3_WIDTH
+_len = \3_WIDTH
+endc
+
+elif !STRCMP("\1", "south")
+_blk = _src
+_map = (CURRENT_MAP_WIDTH + 6) * (CURRENT_MAP_HEIGHT + 3) + _tgt
+_win = \3_WIDTH + 7
+_y = 0
+_x = (\4) * -2
+_len = CURRENT_MAP_WIDTH + 3 - (\4)
+if _len > \3_WIDTH
+_len = \3_WIDTH
+endc
+
+elif !STRCMP("\1", "west")
+_blk = (\3_WIDTH * _src) + \3_WIDTH - 3
+_map = (CURRENT_MAP_WIDTH + 6) * _tgt
+_win = (\3_WIDTH + 6) * 2 - 6
+_y = (\4) * -2
+_x = \3_WIDTH * 2 - 1
+_len = CURRENT_MAP_HEIGHT + 3 - (\4)
+if _len > \3_HEIGHT
+_len = \3_HEIGHT
+endc
+
+elif !STRCMP("\1", "east")
+_blk = (\3_WIDTH * _src)
+_map = (CURRENT_MAP_WIDTH + 6) * _tgt + CURRENT_MAP_WIDTH + 3
+_win = \3_WIDTH + 7
+_y = (\4) * -2
+_x = 0
+_len = CURRENT_MAP_HEIGHT + 3 - (\4)
+if _len > \3_HEIGHT
+_len = \3_HEIGHT
+endc
+
+else
+fail "Invalid direction for 'connection'."
+endc
+
+	map_id \3
+	dw wDecompressScratch + _blk
+	dw wOverworldMapBlocks + _map
+	db _len - _src
+	db \3_WIDTH
+	db _y, _x
+	dw wOverworldMapBlocks + _win
 ENDM
 
 	map_attributes NewBarkTown, NEW_BARK_TOWN, $5, WEST | EAST
-	connection west, Route29, ROUTE_29, 0, 0, 9
-	connection east, Route27, ROUTE_27, 0, 0, 9
+	connection west, Route29, ROUTE_29, 0
+	connection east, Route27, ROUTE_27, 0
 
 	map_attributes CherrygroveCity, CHERRYGROVE_CITY, $35, NORTH | WEST | EAST
-	connection north, Route30, ROUTE_30, 5, 0, 10
-	connection west, CherrygroveBay, CHERRYGROVE_BAY, -1, 14, 10
-	connection east, Route29, ROUTE_29, 0, 0, 9
+	connection north, Route30, ROUTE_30, 5
+	connection west, CherrygroveBay, CHERRYGROVE_BAY, -15
+	connection east, Route29, ROUTE_29, 0
 
 	map_attributes VioletCity, VIOLET_CITY, $5, NORTH | SOUTH | WEST | EAST
-	connection north, VioletOutskirts, VIOLET_OUTSKIRTS, 0, 0, 20
-	connection south, Route32, ROUTE_32, 0, 0, 10
-	connection west, Route36, ROUTE_36, 0, -2, 9
-	connection east, Route31, ROUTE_31, 11, 0, 9
+	connection north, VioletOutskirts, VIOLET_OUTSKIRTS, 0
+	connection south, Route32, ROUTE_32, 0
+	connection west, Route36, ROUTE_36, 2
+	connection east, Route31, ROUTE_31, 11
 
 	map_attributes AzaleaTown, AZALEA_TOWN, $5, WEST | EAST
-	connection west, Route34, ROUTE_34, -3, 15, 12
-	connection east, Route33, ROUTE_33, 0, 0, 9
+	connection west, Route34, ROUTE_34, -18
+	connection east, Route33, ROUTE_33, 0
 
 	map_attributes CianwoodCity, CIANWOOD_CITY, $35, EAST
-	connection east, Route41, ROUTE_41, 0, 0, 27
+	connection east, Route41, ROUTE_41, 0
 
 	map_attributes GoldenrodCity, GOLDENROD_CITY, $35, NORTH | SOUTH | EAST
-	connection north, Route35, ROUTE_35, 5, 0, 12
-	connection south, Route34, ROUTE_34, 7, 0, 10
-	connection east, MagnetTunnelWest, MAGNET_TUNNEL_WEST, 0, 0, 11
+	connection north, Route35, ROUTE_35, 5
+	connection south, Route34, ROUTE_34, 7
+	connection east, MagnetTunnelWest, MAGNET_TUNNEL_WEST, 0
 
 	map_attributes OlivineCity, OLIVINE_CITY, $35, NORTH | SOUTH | WEST
-	connection north, Route39, ROUTE_39, 5, 0, 10
-	connection south, Route35Coast, ROUTE_35_COAST, 0, -7, 32
-	connection west, Route40, ROUTE_40, 7, 0, 12
+	connection north, Route39, ROUTE_39, 5
+	connection south, Route35Coast, ROUTE_35_COAST, 7
+	connection west, Route40, ROUTE_40, 7
 
 	map_attributes EcruteakCity, ECRUTEAK_CITY, $5, SOUTH | WEST | EAST
-	connection south, Route37, ROUTE_37, 5, 0, 10
-	connection west, Route38, ROUTE_38, 5, 0, 9
-	connection east, Route42, ROUTE_42, 9, 0, 9
+	connection south, Route37, ROUTE_37, 5
+	connection west, Route38, ROUTE_38, 5
+	connection east, Route42, ROUTE_42, 9
 
 	map_attributes MahoganyTown, MAHOGANY_TOWN, $71, NORTH | WEST | EAST
-	connection north, Route43, ROUTE_43, 0, 0, 10
-	connection west, Route42, ROUTE_42, 0, 0, 9
-	connection east, Route44, ROUTE_44, 0, 0, 9
+	connection north, Route43, ROUTE_43, 0
+	connection west, Route42, ROUTE_42, 0
+	connection east, Route44, ROUTE_44, 0
 
 	map_attributes LakeOfRage, LAKE_OF_RAGE, $5, SOUTH
-	connection south, Route43, ROUTE_43, 5, 0, 10
+	connection south, Route43, ROUTE_43, 5
 
 	map_attributes BlackthornCity, BLACKTHORN_CITY, $71, SOUTH
-	connection south, Route45, ROUTE_45, -2, 0, 12
+	connection south, Route45, ROUTE_45, -2
 
 	map_attributes SilverCaveOutside, SILVER_CAVE_OUTSIDE, $71, EAST
-	connection east, Route28, ROUTE_28, 6, 0, 9
+	connection east, Route28, ROUTE_28, 6
 
 	map_attributes Route26, ROUTE_26, $5, WEST
-	connection west, Route27, ROUTE_27, 45, 0, 9
+	connection west, Route27, ROUTE_27, 45
 
 	map_attributes Route27, ROUTE_27, $35, WEST | EAST
-	connection west, NewBarkTown, NEW_BARK_TOWN, 0, 0, 9
-	connection east, Route26, ROUTE_26, -3, 42, 12
+	connection west, NewBarkTown, NEW_BARK_TOWN, 0
+	connection east, Route26, ROUTE_26, -45
 
 	map_attributes Route28, ROUTE_28, $71, WEST
-	connection west, SilverCaveOutside, SILVER_CAVE_OUTSIDE, -3, 3, 12
+	connection west, SilverCaveOutside, SILVER_CAVE_OUTSIDE, -6
 
 	map_attributes Route29, ROUTE_29, $5, NORTH | WEST | EAST
-	connection north, Route46, ROUTE_46, 10, 0, 10
-	connection west, CherrygroveCity, CHERRYGROVE_CITY, 0, 0, 9
-	connection east, NewBarkTown, NEW_BARK_TOWN, 0, 0, 9
+	connection north, Route46, ROUTE_46, 10
+	connection west, CherrygroveCity, CHERRYGROVE_CITY, 0
+	connection east, NewBarkTown, NEW_BARK_TOWN, 0
 
 	map_attributes Route30, ROUTE_30, $5, NORTH | SOUTH
-	connection north, Route31, ROUTE_31, -3, 7, 13
-	connection south, CherrygroveCity, CHERRYGROVE_CITY, -3, 2, 16
+	connection north, Route31, ROUTE_31, -10
+	connection south, CherrygroveCity, CHERRYGROVE_CITY, -5
 
 	map_attributes Route31, ROUTE_31, $5, SOUTH | WEST
-	connection south, Route30, ROUTE_30, 10, 0, 10
-	connection west, VioletCity, VIOLET_CITY, -2, 6, 12
+	connection south, Route30, ROUTE_30, 10
+	connection west, VioletCity, VIOLET_CITY, -8
 
 	map_attributes Route32, ROUTE_32, $5, NORTH | SOUTH | WEST | EAST
-	connection north, VioletCity, VIOLET_CITY, 0, 0, 13
-	connection south, Route33, ROUTE_33, 0, 0, 10
-	connection west, MagnetTunnelEast, MAGNET_TUNNEL_EAST, 9, 0, 11
-	connection east, CherrygroveBay, CHERRYGROVE_BAY, 12, 0, 26
+	connection north, VioletCity, VIOLET_CITY, 0
+	connection south, Route33, ROUTE_33, 0
+	connection west, MagnetTunnelEast, MAGNET_TUNNEL_EAST, 9
+	connection east, CherrygroveBay, CHERRYGROVE_BAY, 12
 
 	map_attributes Route33, ROUTE_33, $5, NORTH | WEST
-	connection north, Route32, ROUTE_32, 0, 0, 10
-	connection west, AzaleaTown, AZALEA_TOWN, 0, 0, 9
+	connection north, Route32, ROUTE_32, 0
+	connection west, AzaleaTown, AZALEA_TOWN, 0
 
 	map_attributes Route34, ROUTE_34, $5, NORTH | WEST | EAST
-	connection north, GoldenrodCity, GOLDENROD_CITY, -3, 4, 16
-	connection west, Route34Coast, ROUTE_34_COAST, 0, 0, 27
-	connection east, AzaleaTown, AZALEA_TOWN, 18, 0, 9
+	connection north, GoldenrodCity, GOLDENROD_CITY, -7
+	connection west, Route34Coast, ROUTE_34_COAST, 0
+	connection east, AzaleaTown, AZALEA_TOWN, 18
 
 	map_attributes Route34Coast, ROUTE_34_COAST, $35, SOUTH | EAST
-	connection south, StormyBeach, STORMY_BEACH, 0, 0, 9
-	connection east, Route34, ROUTE_34, 0, 0, 27
+	connection south, StormyBeach, STORMY_BEACH, 0
+	connection east, Route34, ROUTE_34, 0
 
 	map_attributes StormyBeach, STORMY_BEACH, $35, NORTH
-	connection north, Route34Coast, ROUTE_34_COAST, 0, 0, 9
+	connection north, Route34Coast, ROUTE_34_COAST, 0
 
 	map_attributes Route35, ROUTE_35, $5, NORTH | SOUTH
-	connection north, Route36, ROUTE_36, 0, 0, 14
-	connection south, GoldenrodCity, GOLDENROD_CITY, -2, 3, 16
+	connection north, Route36, ROUTE_36, 0
+	connection south, GoldenrodCity, GOLDENROD_CITY, -5
 
 	map_attributes Route35Coast, ROUTE_35_COAST, $35, NORTH | SOUTH
-	connection north, OlivineCity, OLIVINE_CITY, 0, 7, 32
-	connection south, GoldenrodHarbor, GOLDENROD_HARBOR, 0, 0, 24
+	connection north, OlivineCity, OLIVINE_CITY, -7
+	connection south, GoldenrodHarbor, GOLDENROD_HARBOR, 0
 
 	map_attributes Route36, ROUTE_36, $5, NORTH | SOUTH | EAST
-	connection north, Route37, ROUTE_37, 12, 0, 10
-	connection south, Route35, ROUTE_35, 0, 0, 12
-	connection east, VioletCity, VIOLET_CITY, -2, 0, 12
+	connection north, Route37, ROUTE_37, 12
+	connection south, Route35, ROUTE_35, 0
+	connection east, VioletCity, VIOLET_CITY, -2
 
 	map_attributes Route37, ROUTE_37, $5, NORTH | SOUTH
-	connection north, EcruteakCity, ECRUTEAK_CITY, -3, 2, 16
-	connection south, Route36, ROUTE_36, -3, 9, 16
+	connection north, EcruteakCity, ECRUTEAK_CITY, -5
+	connection south, Route36, ROUTE_36, -12
 
 	map_attributes Route38, ROUTE_38, $5, WEST | EAST
-	connection west, Route39, ROUTE_39, 0, 0, 12
-	connection east, EcruteakCity, ECRUTEAK_CITY, -3, 2, 15
+	connection west, Route39, ROUTE_39, 0
+	connection east, EcruteakCity, ECRUTEAK_CITY, -5
 
 	map_attributes Route39, ROUTE_39, $5, SOUTH | EAST
-	connection south, OlivineCity, OLIVINE_CITY, -3, 2, 16
-	connection east, Route38, ROUTE_38, 0, 0, 9
+	connection south, OlivineCity, OLIVINE_CITY, -5
+	connection east, Route38, ROUTE_38, 0
 
 	map_attributes Route40, ROUTE_40, $35, SOUTH | EAST
-	connection south, Route41, ROUTE_41, -3, 12, 13
-	connection east, OlivineCity, OLIVINE_CITY, -3, 4, 12
+	connection south, Route41, ROUTE_41, -15
+	connection east, OlivineCity, OLIVINE_CITY, -7
 
 	map_attributes Route41, ROUTE_41, $35, NORTH | WEST | EAST
-	connection north, Route40, ROUTE_40, 15, 0, 10
-	connection west, CianwoodCity, CIANWOOD_CITY, 0, 0, 27
-	connection east, GoldenrodHarbor, GOLDENROD_HARBOR, 3, 0, 20
+	connection north, Route40, ROUTE_40, 15
+	connection west, CianwoodCity, CIANWOOD_CITY, 0
+	connection east, GoldenrodHarbor, GOLDENROD_HARBOR, 3
 
 	map_attributes Route42, ROUTE_42, $5, SOUTH | WEST | EAST
-	connection south, VioletOutskirts, VIOLET_OUTSKIRTS, 5, 0, 14
-	connection west, EcruteakCity, ECRUTEAK_CITY, -3, 6, 12
-	connection east, MahoganyTown, MAHOGANY_TOWN, 0, 0, 9
+	connection south, VioletOutskirts, VIOLET_OUTSKIRTS, 5
+	connection west, EcruteakCity, ECRUTEAK_CITY, -9
+	connection east, MahoganyTown, MAHOGANY_TOWN, 0
 
 	map_attributes Route43, ROUTE_43, $5, NORTH | SOUTH
-	connection north, LakeOfRage, LAKE_OF_RAGE, -3, 2, 16
-	connection south, MahoganyTown, MAHOGANY_TOWN, 0, 0, 10
+	connection north, LakeOfRage, LAKE_OF_RAGE, -5
+	connection south, MahoganyTown, MAHOGANY_TOWN, 0
 
 	map_attributes Route44, ROUTE_44, $71, WEST
-	connection west, MahoganyTown, MAHOGANY_TOWN, 0, 0, 9
+	connection west, MahoganyTown, MAHOGANY_TOWN, 0
 
 	map_attributes Route45, ROUTE_45, $71, NORTH | WEST
-	connection north, BlackthornCity, BLACKTHORN_CITY, 1, -1, 12
-	connection west, Route46, ROUTE_46, 37, 0, 12
+	connection north, BlackthornCity, BLACKTHORN_CITY, 2
+	connection west, Route46, ROUTE_46, 37
 
 	map_attributes Route46, ROUTE_46, $5, SOUTH | EAST
-	connection south, Route29, ROUTE_29, -3, 7, 16
-	connection east, Route45, ROUTE_45, -3, 34, 12
+	connection south, Route29, ROUTE_29, -10
+	connection east, Route45, ROUTE_45, -37
 
 	map_attributes PewterCity, PEWTER_CITY, $f, SOUTH | EAST
-	connection south, Route2North, ROUTE_2_NORTH, 5, 0, 10
-	connection east, Route3, ROUTE_3, 5, 0, 9
+	connection south, Route2North, ROUTE_2_NORTH, 5
+	connection east, Route3, ROUTE_3, 5
 
 	map_attributes Route2North, ROUTE_2_NORTH, $f, NORTH | SOUTH
-	connection north, PewterCity, PEWTER_CITY, -3, 2, 16
-	connection south, Route2South, ROUTE_2_SOUTH, 0, 0, 10
+	connection north, PewterCity, PEWTER_CITY, -5
+	connection south, Route2South, ROUTE_2_SOUTH, 0
 
 	map_attributes Route2South, ROUTE_2_SOUTH, $f, NORTH | SOUTH | EAST
-	connection north, Route2North, ROUTE_2_NORTH, 0, 0, 10
-	connection south, ViridianCity, VIRIDIAN_CITY, -3, 2, 16
-	connection east, Route16West, ROUTE_16_WEST, 8, 0, 10
+	connection north, Route2North, ROUTE_2_NORTH, 0
+	connection south, ViridianCity, VIRIDIAN_CITY, -5
+	connection east, Route16West, ROUTE_16_WEST, 8
 
 	map_attributes ViridianCity, VIRIDIAN_CITY, $f, NORTH | SOUTH | WEST
-	connection north, Route2South, ROUTE_2_SOUTH, 5, 0, 10
-	connection south, Route1, ROUTE_1, 5, 0, 10
-	connection west, Route22, ROUTE_22, 4, 0, 9
+	connection north, Route2South, ROUTE_2_SOUTH, 5
+	connection south, Route1, ROUTE_1, 5
+	connection west, Route22, ROUTE_22, 4
 
 	map_attributes Route22, ROUTE_22, $2c, EAST
-	connection east, ViridianCity, VIRIDIAN_CITY, -3, 1, 15
+	connection east, ViridianCity, VIRIDIAN_CITY, -4
 
 	map_attributes Route1, ROUTE_1, $f, NORTH | SOUTH
-	connection north, ViridianCity, VIRIDIAN_CITY, -3, 2, 13
-	connection south, PalletTown, PALLET_TOWN, 1, 0, 10
+	connection north, ViridianCity, VIRIDIAN_CITY, -5
+	connection south, PalletTown, PALLET_TOWN, 1
 
 	map_attributes PalletTown, PALLET_TOWN, $f, NORTH | SOUTH
-	connection north, Route1, ROUTE_1, -1, 0, 10
-	connection south, Route21, ROUTE_21, 0, 0, 10
+	connection north, Route1, ROUTE_1, -1
+	connection south, Route21, ROUTE_21, 0
 
 	map_attributes Route21, ROUTE_21, $43, NORTH | SOUTH | EAST
-	connection north, PalletTown, PALLET_TOWN, 0, 0, 10
-	connection south, CinnabarIsland, CINNABAR_ISLAND, 0, 0, 10
-	connection east, UragaChannelWest, URAGA_CHANNEL_WEST, 19, 0, 15
+	connection north, PalletTown, PALLET_TOWN, 0
+	connection south, CinnabarIsland, CINNABAR_ISLAND, 0
+	connection east, UragaChannelWest, URAGA_CHANNEL_WEST, 19
 
 	map_attributes CinnabarIsland, CINNABAR_ISLAND, $43, NORTH | EAST
-	connection north, Route21, ROUTE_21, 0, 0, 10
-	connection east, Route20, ROUTE_20, 2, 0, 9
+	connection north, Route21, ROUTE_21, 0
+	connection east, Route20, ROUTE_20, 2
 
 	map_attributes Route20, ROUTE_20, $43, WEST | EAST
-	connection west, CinnabarIsland, CINNABAR_ISLAND, -2, 0, 11
-	connection east, Route19, ROUTE_19, -3, 17, 12
+	connection west, CinnabarIsland, CINNABAR_ISLAND, -2
+	connection east, Route19, ROUTE_19, -20
 
 	map_attributes Route19, ROUTE_19, $43, NORTH | WEST
-	connection north, FuchsiaCity, FUCHSIA_CITY, 0, 0, 13
-	connection west, Route20, ROUTE_20, 20, 0, 9
+	connection north, FuchsiaCity, FUCHSIA_CITY, 0
+	connection west, Route20, ROUTE_20, 20
 
 	map_attributes FuchsiaCity, FUCHSIA_CITY, $f, SOUTH | WEST | EAST
-	connection south, Route19, ROUTE_19, 0, 0, 10
-	connection west, Route18East, ROUTE_18_EAST, 7, 0, 11
-	connection east, Route15, ROUTE_15, 9, 0, 9
+	connection south, Route19, ROUTE_19, 0
+	connection west, Route18East, ROUTE_18_EAST, 7
+	connection east, Route15, ROUTE_15, 9
 
 	map_attributes Route18East, ROUTE_18_EAST, $43, WEST | EAST
-	connection west, Route18West, ROUTE_18_WEST, 0, 0, 11
-	connection east, FuchsiaCity, FUCHSIA_CITY, -3, 4, 14
+	connection west, Route18West, ROUTE_18_WEST, 0
+	connection east, FuchsiaCity, FUCHSIA_CITY, -7
 
 	map_attributes Route18West, ROUTE_18_WEST, $43, NORTH | WEST | EAST
-	connection north, Route17, ROUTE_17, 0, 0, 10
-	connection west, UragaChannelEast, URAGA_CHANNEL_EAST, 0, 0, 9
-	connection east, Route18East, ROUTE_18_EAST, 0, 0, 11
+	connection north, Route17, ROUTE_17, 0
+	connection west, UragaChannelEast, URAGA_CHANNEL_EAST, 0
+	connection east, Route18East, ROUTE_18_EAST, 0
 
 	map_attributes UragaChannelEast, URAGA_CHANNEL_EAST, $43, WEST | EAST
-	connection west, UragaChannelWest, URAGA_CHANNEL_WEST, 0, 0, 9
-	connection east, Route18West, ROUTE_18_WEST, 0, 0, 9
+	connection west, UragaChannelWest, URAGA_CHANNEL_WEST, 0
+	connection east, Route18West, ROUTE_18_WEST, 0
 
 	map_attributes UragaChannelWest, URAGA_CHANNEL_WEST, $43, WEST | EAST
-	connection west, Route21, ROUTE_21, -3, 16, 15
-	connection east, UragaChannelEast, URAGA_CHANNEL_EAST, 0, 0, 9
+	connection west, Route21, ROUTE_21, -19
+	connection east, UragaChannelEast, URAGA_CHANNEL_EAST, 0
 
 	map_attributes Route17, ROUTE_17, $43, NORTH | SOUTH
-	connection north, Route16South, ROUTE_16_SOUTH, 0, 0, 10
-	connection south, Route18West, ROUTE_18_WEST, 0, 0, 10
+	connection north, Route16South, ROUTE_16_SOUTH, 0
+	connection south, Route18West, ROUTE_18_WEST, 0
 
 	map_attributes Route16South, ROUTE_16_SOUTH, $f, SOUTH
-	connection south, Route17, ROUTE_17, 0, 0, 10
+	connection south, Route17, ROUTE_17, 0
 
 	map_attributes Route16Northeast, ROUTE_16_NORTHEAST, $f, WEST | EAST
-	connection west, Route16West, ROUTE_16_WEST, 0, 0, 11
-	connection east, CeladonCity, CELADON_CITY, -3, 7, 10
+	connection west, Route16West, ROUTE_16_WEST, 0
+	connection east, CeladonCity, CELADON_CITY, -10
 
 	map_attributes Route16Northwest, ROUTE_16_NORTHWEST, $f, WEST | EAST
-	connection west, Route16West, ROUTE_16_WEST, 0, 0, 11
-	connection east, CeladonCity, CELADON_CITY, -3, 7, 10
+	connection west, Route16West, ROUTE_16_WEST, 0
+	connection east, CeladonCity, CELADON_CITY, -10
 
 	map_attributes Route16West, ROUTE_16_WEST, $f, WEST | EAST
-	connection west, Route2South, ROUTE_2_SOUTH, -3, 5, 10
-	connection east, Route16Northwest, ROUTE_16_NORTHWEST, 0, 0, 11
+	connection west, Route2South, ROUTE_2_SOUTH, -8
+	connection east, Route16Northwest, ROUTE_16_NORTHWEST, 0
 
 	map_attributes CeladonCity, CELADON_CITY, $f, WEST | EAST
-	connection west, Route16Northeast, ROUTE_16_NORTHEAST, 10, 0, 8
-	connection east, Route7, ROUTE_7, 5, 0, 9
+	connection west, Route16Northeast, ROUTE_16_NORTHEAST, 10
+	connection east, Route7, ROUTE_7, 5
 
 	map_attributes Route7, ROUTE_7, $f, NORTH | WEST | EAST
-	connection north, CeladonOutskirts, CELADON_OUTSKIRTS, 0, 0, 10
-	connection west, CeladonCity, CELADON_CITY, -3, 2, 15
-	connection east, SaffronCity, SAFFRON_CITY, -3, 3, 12
+	connection north, CeladonOutskirts, CELADON_OUTSKIRTS, 0
+	connection west, CeladonCity, CELADON_CITY, -5
+	connection east, SaffronCity, SAFFRON_CITY, -6
 
 	map_attributes LuckyIsland, LUCKY_ISLAND, $43, NORTH | WEST
-	connection north, Route13East, ROUTE_13_EAST, 0, 0, 23
-	connection west, Route14, ROUTE_14, 0, 0, 17
+	connection north, Route13East, ROUTE_13_EAST, 0
+	connection west, Route14, ROUTE_14, 0
 
 	map_attributes Route15, ROUTE_15, $f, WEST | EAST
-	connection west, FuchsiaCity, FUCHSIA_CITY, -3, 6, 12
-	connection east, Route14, ROUTE_14, -3, 7, 12
+	connection west, FuchsiaCity, FUCHSIA_CITY, -9
+	connection east, Route14, ROUTE_14, -10
 
 	map_attributes Route14, ROUTE_14, $43, NORTH | WEST | EAST
-	connection north, Route13West, ROUTE_13_WEST, 0, 0, 12
-	connection west, Route15, ROUTE_15, 10, 0, 9
-	connection east, LuckyIsland, LUCKY_ISLAND, 0, 0, 15
+	connection north, Route13West, ROUTE_13_WEST, 0
+	connection west, Route15, ROUTE_15, 10
+	connection east, LuckyIsland, LUCKY_ISLAND, 0
 
 	map_attributes Route13East, ROUTE_13_EAST, $43, NORTH | SOUTH | WEST
-	connection north, Route12South, ROUTE_12_SOUTH, 13, 0, 10
-	connection south, LuckyIsland, LUCKY_ISLAND, 0, 0, 23
-	connection west, Route13West, ROUTE_13_WEST, 0, 0, 10
+	connection north, Route12South, ROUTE_12_SOUTH, 13
+	connection south, LuckyIsland, LUCKY_ISLAND, 0
+	connection west, Route13West, ROUTE_13_WEST, 0
 
 	map_attributes Route13West, ROUTE_13_WEST, $43, SOUTH | EAST
-	connection south, Route14, ROUTE_14, 0, 0, 12
-	connection east, Route13East, ROUTE_13_EAST, 0, 0, 10
+	connection south, Route14, ROUTE_14, 0
+	connection east, Route13East, ROUTE_13_EAST, 0
 
 	map_attributes Route12North, ROUTE_12_NORTH, $43, NORTH | SOUTH
-	connection north, LavenderTown, LAVENDER_TOWN, 0, 0, 10
-	connection south, Route12South, ROUTE_12_SOUTH, 0, 0, 10
+	connection north, LavenderTown, LAVENDER_TOWN, 0
+	connection south, Route12South, ROUTE_12_SOUTH, 0
 
 	map_attributes Route12South, ROUTE_12_SOUTH, $43, NORTH | SOUTH | WEST
-	connection north, Route12North, ROUTE_12_NORTH, 0, 0, 10
-	connection south, Route13East, ROUTE_13_EAST, 0, 13, 10
-	connection west, Route11, ROUTE_11, 17, 0, 9
+	connection north, Route12North, ROUTE_12_NORTH, 0
+	connection south, Route13East, ROUTE_13_EAST, -13
+	connection west, Route11, ROUTE_11, 17
 
 	map_attributes Route11, ROUTE_11, $f, WEST | EAST
-	connection west, VermilionCity, VERMILION_CITY, -3, 2, 15
-	connection east, Route12South, ROUTE_12_SOUTH, -3, 14, 15
+	connection west, VermilionCity, VERMILION_CITY, -5
+	connection east, Route12South, ROUTE_12_SOUTH, -17
 
 	map_attributes LavenderTown, LAVENDER_TOWN, $2c, NORTH | SOUTH | WEST
-	connection north, Route10South, ROUTE_10_SOUTH, 0, 0, 10
-	connection south, Route12North, ROUTE_12_NORTH, 0, 0, 10
-	connection west, Route8, ROUTE_8, 0, 0, 11
+	connection north, Route10South, ROUTE_10_SOUTH, 0
+	connection south, Route12North, ROUTE_12_NORTH, 0
+	connection west, Route8, ROUTE_8, 0
 
 	map_attributes VermilionCity, VERMILION_CITY, $43, NORTH | EAST
-	connection north, Route6, ROUTE_6, 3, 0, 15
-	connection east, Route11, ROUTE_11, 5, 0, 9
+	connection north, Route6, ROUTE_6, 3
+	connection east, Route11, ROUTE_11, 5
 
 	map_attributes Route6, ROUTE_6, $f, NORTH | SOUTH
-	connection north, SaffronCity, SAFFRON_CITY, -3, 0, 18
-	connection south, VermilionCity, VERMILION_CITY, -3, 0, 18
+	connection north, SaffronCity, SAFFRON_CITY, -3
+	connection south, VermilionCity, VERMILION_CITY, -3
 
 	map_attributes SaffronCity, SAFFRON_CITY, $f, NORTH | SOUTH | WEST | EAST
-	connection north, Route5, ROUTE_5, 5, 0, 10
-	connection south, Route6, ROUTE_6, 3, 0, 15
-	connection west, Route7, ROUTE_7, 6, 0, 9
-	connection east, Route8, ROUTE_8, 4, 0, 11
+	connection north, Route5, ROUTE_5, 5
+	connection south, Route6, ROUTE_6, 3
+	connection west, Route7, ROUTE_7, 6
+	connection east, Route8, ROUTE_8, 4
 
 	map_attributes Route5, ROUTE_5, $f, NORTH | SOUTH
-	connection north, CeruleanCity, CERULEAN_CITY, -3, 2, 16
-	connection south, SaffronCity, SAFFRON_CITY, -3, 2, 16
+	connection north, CeruleanCity, CERULEAN_CITY, -5
+	connection south, SaffronCity, SAFFRON_CITY, -5
 
 	map_attributes CeruleanCity, CERULEAN_CITY, $f, NORTH | SOUTH | WEST | EAST
-	connection north, Route24, ROUTE_24, 0, 0, 14
-	connection south, Route5, ROUTE_5, 5, 0, 10
-	connection west, Route4, ROUTE_4, 2, 0, 10
-	connection east, Route9, ROUTE_9, 4, 0, 9
+	connection north, Route24, ROUTE_24, 0
+	connection south, Route5, ROUTE_5, 5
+	connection west, Route4, ROUTE_4, 2
+	connection east, Route9, ROUTE_9, 4
 
 	map_attributes Route24, ROUTE_24, $2c, SOUTH | EAST
-	connection south, CeruleanCity, CERULEAN_CITY, 0, 0, 14
-	connection east, Route25, ROUTE_25, 0, 0, 21
+	connection south, CeruleanCity, CERULEAN_CITY, 0
+	connection east, Route25, ROUTE_25, 0
 
 	map_attributes Route25, ROUTE_25, $2c, WEST | EAST
-	connection west, Route24, ROUTE_24, 0, 0, 20
-	connection east, CeruleanCape, CERULEAN_CAPE, 0, 0, 19
+	connection west, Route24, ROUTE_24, 0
+	connection east, CeruleanCape, CERULEAN_CAPE, 0
 
 	map_attributes CeruleanCape, CERULEAN_CAPE, $2c, WEST
-	connection west, Route25, ROUTE_25, 0, 0, 20
+	connection west, Route25, ROUTE_25, 0
 
 	map_attributes Route3, ROUTE_3, $2c, WEST
-	connection west, PewterCity, PEWTER_CITY, -3, 2, 15
+	connection west, PewterCity, PEWTER_CITY, -5
 
 	map_attributes Route4, ROUTE_4, $2c, EAST
-	connection east, CeruleanCity, CERULEAN_CITY, -2, 0, 16
+	connection east, CeruleanCity, CERULEAN_CITY, -2
 
 	map_attributes Route8, ROUTE_8, $2c, WEST | EAST
-	connection west, SaffronCity, SAFFRON_CITY, -2, 2, 14
-	connection east, LavenderTown, LAVENDER_TOWN, 0, 0, 10
+	connection west, SaffronCity, SAFFRON_CITY, -4
+	connection east, LavenderTown, LAVENDER_TOWN, 0
 
 	map_attributes Route9, ROUTE_9, $2c, WEST | EAST
-	connection west, CeruleanCity, CERULEAN_CITY, -3, 1, 12
-	connection east, Route10North, ROUTE_10_NORTH, 0, 6, 12
+	connection west, CeruleanCity, CERULEAN_CITY, -4
+	connection east, Route10North, ROUTE_10_NORTH, -6
 
 	map_attributes Route10North, ROUTE_10_NORTH, $2c, SOUTH | WEST
-	connection south, Route10South, ROUTE_10_SOUTH, 0, 0, 10
-	connection west, Route9, ROUTE_9, 6, 0, 12
+	connection south, Route10South, ROUTE_10_SOUTH, 0
+	connection west, Route9, ROUTE_9, 6
 
 	map_attributes Route10South, ROUTE_10_SOUTH, $2c, NORTH | SOUTH
-	connection north, Route10North, ROUTE_10_NORTH, 0, 0, 10
-	connection south, LavenderTown, LAVENDER_TOWN, 0, 0, 10
+	connection north, Route10North, ROUTE_10_NORTH, 0
+	connection south, LavenderTown, LAVENDER_TOWN, 0
 
 	map_attributes Route47, ROUTE_47, $35, NORTH
-	connection north, Route48, ROUTE_48, 0, 0, 36
+	connection north, Route48, ROUTE_48, 0
 
 	map_attributes Route48, ROUTE_48, $35, SOUTH
-	connection south, Route47, ROUTE_47, 0, 0, 36
+	connection south, Route47, ROUTE_47, 0
 
 	map_attributes CherrygroveBay, CHERRYGROVE_BAY, $35, SOUTH | WEST | EAST
-	connection south, Route32Coast, ROUTE_32_COAST, 0, 0, 15
-	connection west, Route32, ROUTE_32, -2, 10, 26
-	connection east, CherrygroveCity, CHERRYGROVE_CITY, 15, 0, 10
+	connection south, Route32Coast, ROUTE_32_COAST, 0
+	connection west, Route32, ROUTE_32, -12
+	connection east, CherrygroveCity, CHERRYGROVE_CITY, 15
 
 	map_attributes Route32Coast, ROUTE_32_COAST, $35, NORTH
-	connection north, CherrygroveBay, CHERRYGROVE_BAY, 0, 0, 15
+	connection north, CherrygroveBay, CHERRYGROVE_BAY, 0
 
 	map_attributes VioletOutskirts, VIOLET_OUTSKIRTS, $5, NORTH | SOUTH
-	connection north, Route42, ROUTE_42, -3, 2, 20
-	connection south, VioletCity, VIOLET_CITY, 0, 0, 20
+	connection north, Route42, ROUTE_42, -5
+	connection south, VioletCity, VIOLET_CITY, 0
 
 	map_attributes RuinsOfAlphOutside, RUINS_OF_ALPH_OUTSIDE, $5, SOUTH
-	connection south, MagnetTunnelEast, MAGNET_TUNNEL_EAST, -2, 0, 10
+	connection south, MagnetTunnelEast, MAGNET_TUNNEL_EAST, -2
 
 	map_attributes GoldenrodHarbor, GOLDENROD_HARBOR, $35, NORTH | WEST
-	connection north, Route35Coast, ROUTE_35_COAST, 0, 0, 24
-	connection west, Route41, ROUTE_41, -3, 0, 20
+	connection north, Route35Coast, ROUTE_35_COAST, 0
+	connection west, Route41, ROUTE_41, -3
 
 	map_attributes MagnetTunnelEast, MAGNET_TUNNEL_EAST, $5, NORTH | EAST
-	connection north, RuinsOfAlphOutside, RUINS_OF_ALPH_OUTSIDE, 2, 0, 11
-	connection east, Route32, ROUTE_32, -1, 8, 13
+	connection north, RuinsOfAlphOutside, RUINS_OF_ALPH_OUTSIDE, 2
+	connection east, Route32, ROUTE_32, -9
 
 	map_attributes MagnetTunnelWest, MAGNET_TUNNEL_WEST, $5, WEST
-	connection west, GoldenrodCity, GOLDENROD_CITY, 0, 0, 11
+	connection west, GoldenrodCity, GOLDENROD_CITY, 0
 
 	map_attributes CeladonOutskirts, CELADON_OUTSKIRTS, $f, SOUTH
-	connection south, Route7, ROUTE_7, 0, 0, 10
+	connection south, Route7, ROUTE_7, 0
 
-	map_attributes Route23, ROUTE_23, $f, NORTH
-	connection north, IndigoPlateau, INDIGO_PLATEAU, 0, 0, 10
+	map_attributes Route23, ROUTE_23, $2c, NORTH
+	connection north, IndigoPlateau, INDIGO_PLATEAU, 0
 
 	map_attributes IndigoPlateau, INDIGO_PLATEAU, $2c, SOUTH
-	connection south, Route23, ROUTE_23, 0, 0, 10
+	connection south, Route23, ROUTE_23, 0
 
 	map_attributes ShamoutiIsland, SHAMOUTI_ISLAND, $35, NORTH | EAST
-	connection north, RockyBeach, ROCKY_BEACH, 0, 0, 18
-	connection east, BeautifulBeach, BEAUTIFUL_BEACH, 0, 0, 15
+	connection north, RockyBeach, ROCKY_BEACH, 0
+	connection east, BeautifulBeach, BEAUTIFUL_BEACH, 0
 
 	map_attributes BeautifulBeach, BEAUTIFUL_BEACH, $35, WEST
-	connection west, ShamoutiIsland, SHAMOUTI_ISLAND, 0, 0, 15
+	connection west, ShamoutiIsland, SHAMOUTI_ISLAND, 0
 
 	map_attributes WarmBeach, WARM_BEACH, $35, SOUTH
-	connection south, ShamoutiCoast, SHAMOUTI_COAST, 0, 0, 12
+	connection south, ShamoutiCoast, SHAMOUTI_COAST, 0
 
 	map_attributes ShamoutiCoast, SHAMOUTI_COAST, $35, NORTH
-	connection north, WarmBeach, WARM_BEACH, 0, 0, 12
+	connection north, WarmBeach, WARM_BEACH, 0
 
 	map_attributes RockyBeach, ROCKY_BEACH, $35, SOUTH
-	connection south, ShamoutiIsland, SHAMOUTI_ISLAND, 0, 0, 18
+	connection south, ShamoutiIsland, SHAMOUTI_ISLAND, 0
 
 	map_attributes ValenciaIsland, VALENCIA_ISLAND, $0, WEST
-	connection west, Route49, ROUTE_49, 0, 2, 9
+	connection west, Route49, ROUTE_49, -2
 
 	map_attributes Route49, ROUTE_49, $0, EAST
-	connection east, ValenciaIsland, VALENCIA_ISLAND, 2, 0, 9
+	connection east, ValenciaIsland, VALENCIA_ISLAND, 2
 
 	map_attributes SproutTower1F, SPROUT_TOWER_1F, $0, 0
 	map_attributes SproutTower2F, SPROUT_TOWER_2F, $0, 0
@@ -507,6 +534,7 @@ ENDM
 	map_attributes UnionCaveB1FNorth, UNION_CAVE_B1F_NORTH, $9, 0
 	map_attributes UnionCaveB1FSouth, UNION_CAVE_B1F_SOUTH, $9, 0
 	map_attributes UnionCaveB2F, UNION_CAVE_B2F, $9, 0
+	map_attributes SlowpokeWellEntrance, SLOWPOKE_WELL_ENTRANCE, $9, 0
 	map_attributes SlowpokeWellB1F, SLOWPOKE_WELL_B1F, $9, 0
 	map_attributes SlowpokeWellB2F, SLOWPOKE_WELL_B2F, $9, 0
 	map_attributes OlivineLighthouse1F, OLIVINE_LIGHTHOUSE_1F, $0, 0
@@ -671,7 +699,7 @@ ENDM
 	map_attributes GoldenrodHarborGate, GOLDENROD_HARBOR_GATE, $0, 0
 	map_attributes IlexForestAzaleaGate, ILEX_FOREST_AZALEA_GATE, $0, 0
 	map_attributes Route34IlexForestGate, ROUTE_34_ILEX_FOREST_GATE, $0, 0
-	map_attributes Daycare, DAYCARE, $0, 0
+	map_attributes DayCare, DAYCARE, $0, 0
 	map_attributes GoldenrodHPUpHouse, GOLDENROD_HP_UP_HOUSE, $0, 0
 	map_attributes GoldenrodNetBallHouse, GOLDENROD_NET_BALL_HOUSE, $0, 0
 	map_attributes GoldenrodBandHouse, GOLDENROD_BAND_HOUSE, $0, 0
@@ -690,6 +718,9 @@ ENDM
 	map_attributes Route11Gate2F, ROUTE_11_GATE_2F, $0, 0
 	map_attributes VermilionPollutionSpeechHouse, VERMILION_POLLUTION_SPEECH_HOUSE, $0, 0
 	map_attributes VermilionSSAnneSpeechHouse, VERMILION_S_S_ANNE_SPEECH_HOUSE, $0, 0
+	map_attributes BattleFactory1F, BATTLE_FACTORY_1F, $0, 0
+	map_attributes BattleFactoryHallway, BATTLE_FACTORY_HALLWAY, $0, 0
+	map_attributes BattleFactoryBattleRoom, BATTLE_FACTORY_BATTLE_ROOM, $0, 0
 	map_attributes RedsHouse1F, REDS_HOUSE_1F, $0, 0
 	map_attributes RedsHouse2F, REDS_HOUSE_2F, $0, 0
 	map_attributes BluesHouse1F, BLUES_HOUSE_1F, $0, 0
@@ -708,7 +739,6 @@ ENDM
 	map_attributes FastShipCabins_SE_SSE_CaptainsCabin, FAST_SHIP_CABINS_SE_SSE_CAPTAINS_CABIN, $0, 0
 	map_attributes FastShipB1F, FAST_SHIP_B1F, $0, 0
 	map_attributes OlivinePortPassage, OLIVINE_PORT_PASSAGE, $0, 0
-	map_attributes VermilionPortPassage, VERMILION_PORT_PASSAGE, $0, 0
 	map_attributes MountMoonSquare, MOUNT_MOON_SQUARE, $2d, 0
 	map_attributes MountMoonGiftShop, MOUNT_MOON_GIFT_SHOP, $0, 0
 	map_attributes TinTowerRoof, TIN_TOWER_ROOF, $1, 0
@@ -838,9 +868,9 @@ ENDM
 	map_attributes Route2Gate, ROUTE_2_GATE, $0, 0
 	map_attributes PokemonLeagueGate, POKEMON_LEAGUE_GATE, $0, 0
 	map_attributes ElmsLab, ELMS_LAB, $0, 0
-	map_attributes KrissHouse1F, KRISS_HOUSE_1F, $0, 0
-	map_attributes KrissHouse2F, KRISS_HOUSE_2F, $0, 0
-	map_attributes KrissNeighborsHouse, KRISS_NEIGHBORS_HOUSE, $0, 0
+	map_attributes PlayersHouse1F, PLAYERS_HOUSE_1F, $0, 0
+	map_attributes PlayersHouse2F, PLAYERS_HOUSE_2F, $0, 0
+	map_attributes PlayersNeighborsHouse, PLAYERS_NEIGHBORS_HOUSE, $0, 0
 	map_attributes LyrasHouse1F, LYRAS_HOUSE_1F, $0, 0
 	map_attributes LyrasHouse2F, LYRAS_HOUSE_2F, $0, 0
 	map_attributes ElmsHouse, ELMS_HOUSE, $0, 0

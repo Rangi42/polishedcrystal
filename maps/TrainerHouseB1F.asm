@@ -1,23 +1,23 @@
 TrainerHouseB1F_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 1 ; callbacks
+	def_callbacks
 	callback MAPCALLBACK_OBJECTS, TrainerHouseB1FCallback
 
-	db 1 ; warp events
+	def_warp_events
 	warp_event  9,  4, TRAINER_HOUSE_1F, 3
 
-	db 1 ; coord events
+	def_coord_events
 	coord_event  7,  3, 0, TrainerHouseReceptionistScript
 
-	db 0 ; bg events
+	def_bg_events
 
-	db 3 ; object events
-	object_event  6, 11, SPRITE_CHRIS, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_TRAINER_HOUSE_CAL
-	object_event  6, 11, SPRITE_KRIS, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_TRAINER_HOUSE_CARRIE
-	object_event  7,  1, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
+	def_object_events
+	object_event  6, 11, SPRITE_CHRIS, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_TRAINER_HOUSE_CAL
+	object_event  6, 11, SPRITE_KRIS, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_TRAINER_HOUSE_CARRIE
+	object_event  7,  1, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, ObjectEvent, -1
 
-	const_def 1 ; object constants
+	object_const_def
 	const TRAINERHOUSEB1F_CAL
 	const TRAINERHOUSEB1F_CARRIE
 
@@ -26,12 +26,12 @@ TrainerHouseB1FCallback:
 	iftrue .Cal
 	disappear TRAINERHOUSEB1F_CAL
 	appear TRAINERHOUSEB1F_CARRIE
-	jump .Done
+	sjump .Done
 .Cal:
 	disappear TRAINERHOUSEB1F_CARRIE
 	appear TRAINERHOUSEB1F_CAL
 .Done:
-	return
+	endcallback
 
 TrainerHouseReceptionistScript:
 	turnobject PLAYER, UP
@@ -39,16 +39,16 @@ TrainerHouseReceptionistScript:
 	checkflag ENGINE_FOUGHT_IN_TRAINER_HALL_TODAY
 	iftrue .FoughtTooManyTimes
 	writetext TrainerHouseB1FIntroText
-	buttonsound
+	promptbutton
 	checkflag ENGINE_PLAYER_IS_FEMALE
 	iftrue .GetCalName
-	trainertotext CARRIE, 1, $0
-	jump .GotName
+	gettrainername CARRIE, 1, $0
+	sjump .GotName
 .GetCalName
-	trainertotext CAL, 1, $0
+	gettrainername CAL, 1, $0
 .GotName:
 	writetext TrainerHouseB1FYourOpponentIsText
-	buttonsound
+	promptbutton
 	writetext TrainerHouseB1FAskWantToBattleText
 	yesorno
 	iffalse .Declined
@@ -63,7 +63,7 @@ TrainerHouseReceptionistScript:
 	iftrue .LoadTrainerCal
 	setlasttalked TRAINERHOUSEB1F_CARRIE
 	loadtrainer CARRIE, 1
-	jump .StartBattle
+	sjump .StartBattle
 .LoadTrainerCal
 	setlasttalked TRAINERHOUSEB1F_CAL
 	loadtrainer CAL, 1
@@ -71,12 +71,8 @@ TrainerHouseReceptionistScript:
 	startbattle
 	reloadmapafterbattle
 .End:
+	givebp 1
 	opentext
-	checkcode VAR_BATTLEPOINTS
-	ifequal 255, .MaxPoints
-	addvar 1
-	writevarcode VAR_BATTLEPOINTS
-.MaxPoints:
 	writetext TrainerHouseB1FEarnedBattlePointText
 	specialsound
 	waitbutton
@@ -145,7 +141,7 @@ TrainerHouseB1FIntroText:
 	done
 
 TrainerHouseB1FYourOpponentIsText:
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text " is your"
 	line "opponent today."
 	done

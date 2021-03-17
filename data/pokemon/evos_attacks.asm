@@ -81,7 +81,7 @@ CharmanderEvosAttacks:
 	db 16, METAL_CLAW ; Dragon Rage → TM move
 	db 19, DRAGON_RAGE ; Scary Face → Dragon Rage
 	db 25, SCARY_FACE ; Fire Fang → Scary Face
-	db 28, FLAME_WHEEL ; Flame Burst → similar move
+	db 28, FLAME_CHARGE ; Flame Burst → TM move
 	db 34, SLASH
 	db 37, FLAMETHROWER
 	db 43, FIRE_SPIN
@@ -98,7 +98,7 @@ CharmeleonEvosAttacks:
 	db 17, METAL_CLAW ; Dragon Rage → TM move
 	db 21, DRAGON_RAGE ; Scary Face → Dragon Rage
 	db 28, SCARY_FACE ; Fire Fang → Scary Face
-	db 32, FLAME_WHEEL ; Flame Burst → similar move
+	db 32, FLAME_CHARGE ; Flame Burst → TM move
 	db 39, SLASH
 	db 43, FLAMETHROWER
 	db 50, FIRE_SPIN
@@ -121,7 +121,7 @@ CharizardEvosAttacks:
 	db 17, METAL_CLAW ; Dragon Rage → TM move
 	db 21, DRAGON_RAGE ; Scary Face → Dragon Rage
 	db 28, SCARY_FACE ; Fire Fang → Scary Face
-	db 32, FLAME_WHEEL ; Flame Burst → similar move
+	db 32, FLAME_CHARGE ; Flame Burst → TM move
 	db 41, SLASH
 	db 47, FLAMETHROWER
 	db 56, FIRE_SPIN
@@ -1233,11 +1233,11 @@ GrowlitheEvosAttacks:
 	db 8, LEER
 	db 10, SAFEGUARD ; Odor Sleuth → egg move
 	db 12, BATON_PASS ; Helping Hand → new move
-	db 17, FLAME_WHEEL
+	db 17, FIRE_SPIN ; Flame Wheel → egg move
 	db 19, REVERSAL
 	db 21, DOUBLE_KICK ; Fire Fang → egg move
 	db 23, TAKE_DOWN
-	db 28, FIRE_SPIN ; Flame Burst → egg move
+	db 28, FLAME_CHARGE ; Flame Burst → TM move
 	db 30, AGILITY
 	db 32, THRASH ; Retaliate → egg move
 	db 34, FLAMETHROWER
@@ -1254,7 +1254,7 @@ ArcanineEvosAttacks:
 	db 1, GROWL
 	db 1, BITE
 	db 1, ROAR
-	db 1, FLAME_WHEEL
+	db 1, FLAME_CHARGE
 	db 1, TAKE_DOWN
 	db 1, EXTREMESPEED ; evolution move
 	db 0 ; no more level-up moves
@@ -1645,8 +1645,8 @@ PonytaPlainEvosAttacks:
 	db 1, TACKLE
 	db 4, LEER ; Tail Whip → similar move
 	db 9, EMBER
-	db 13, FLAME_WHEEL
-	db 17, STOMP
+	db 13, STOMP ; Flame Wheel → Stomp
+	db 17, FLAME_CHARGE ; Stomp → Flame Charge
 	db 21, LOW_KICK ; Flame Charge → event move
 	db 25, FIRE_SPIN
 	db 29, TAKE_DOWN
@@ -1685,9 +1685,9 @@ RapidashPlainEvosAttacks:
 	db 1, TACKLE
 	db 4, LEER ; Tail Whip → similar move
 	db 9, EMBER
-	db 13, FLAME_WHEEL
-	db 17, STOMP
-	db 21, QUICK_ATTACK ; Flame Charge → egg move
+	db 13, STOMP ; Flame Wheel → Stomp
+	db 17, FLAME_CHARGE ; Stomp → Flame Charge
+	db 21, LOW_KICK ; Flame Charge → event move
 	db 25, FIRE_SPIN
 	db 29, TAKE_DOWN
 	db 33, DOUBLE_KICK ; Inferno → egg move
@@ -1717,7 +1717,7 @@ RapidashGalarianEvosAttacks:
 	db 49, MOONBLAST ; Healing Wish → new move
 	db 0 ; no more level-up moves
 
-SlowpokeEvosAttacks:
+SlowpokePlainEvosAttacks:
 	db EVOLVE_HOLDING, KINGS_ROCK, SLOWKING
 	db EVOLVE_LEVEL, 37, SLOWBRO
 	db 0 ; no more evolutions
@@ -1738,13 +1738,54 @@ SlowpokeEvosAttacks:
 	db 58, RECOVER ; Heal Pulse → similar move
 	db 0 ; no more level-up moves
 
-SlowbroEvosAttacks:
+SlowpokeGalarianEvosAttacks:
+	db EVOLVE_HOLDING, KINGS_ROCK, SLOWKING
+	db EVOLVE_LEVEL, 37, SLOWBRO
+	db 0 ; no more evolutions
+	db 1, CURSE
+	db 1, TACKLE
+	db 5, GROWL
+	db 9, ACID
+	db 14, CONFUSION
+	db 19, DISABLE
+	db 23, HEADBUTT
+	db 28, WATER_PULSE
+	db 32, ZEN_HEADBUTT
+	db 36, SAFEGUARD ; Slack Off → egg move
+	db 41, AMNESIA
+	db 45, PSYCHIC_M
+	db 49, RAIN_DANCE
+	db 54, BELLY_DRUM ; Psych Up → egg move
+	db 58, RECOVER ; Heal Pulse → similar move
+	db 0 ; no more level-up moves
+
+SlowbroPlainEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, DEFENSE_CURL ; Withdraw → similar move ; evolution move
 	db 1, CURSE
 	db 1, TACKLE
 	db 5, GROWL
 	db 9, WATER_GUN
+	db 14, CONFUSION
+	db 19, DISABLE
+	db 23, HEADBUTT
+	db 28, WATER_PULSE
+	db 32, ZEN_HEADBUTT
+	db 36, SAFEGUARD ; Slack Off → egg move
+	db 43, AMNESIA
+	db 49, PSYCHIC_M
+	db 55, RAIN_DANCE
+	db 62, BELLY_DRUM ; Psych Up → egg move
+	db 68, RECOVER ; Heal Pulse → similar move
+	db 0 ; no more level-up moves
+
+SlowbroGalarianEvosAttacks:
+	db 0 ; no more evolutions
+	db 1, GUNK_SHOT ; Shell Side Arm → similar move ; evolution move
+	db 1, CURSE
+	db 1, TACKLE
+	db 5, GROWL
+	db 9, ACID
 	db 14, CONFUSION
 	db 19, DISABLE
 	db 23, HEADBUTT
@@ -2217,7 +2258,7 @@ VoltorbEvosAttacks:
 	db 29, LIGHT_SCREEN
 	db 34, EXPLOSION ; Magnet Rise → Explosion
 	db 37, THUNDER ; Discharge → TM move
-	db 41, HYPER_BEAM ; Explosion → TM move
+	db 41, BUG_BUZZ ; Explosion → new move
 	db 46, GYRO_BALL
 	db 48, MIRROR_COAT
 	db 0 ; no more level-up moves
@@ -2238,7 +2279,7 @@ ElectrodeEvosAttacks:
 	db 29, LIGHT_SCREEN
 	db 36, EXPLOSION ; Magnet Rise → Explosion
 	db 41, THUNDER ; Discharge → TM move
-	db 47, HYPER_BEAM ; Explosion → TM move
+	db 47, BUG_BUZZ ; Explosion → new move
 	db 54, GYRO_BALL
 	db 58, MIRROR_COAT
 	db 0 ; no more level-up moves
@@ -2337,7 +2378,7 @@ MarowakAlolanEvosAttacks:
 	db 1, GROWL
 	db 3, TACKLE ; Tail Whip → new move
 	db 7, ASTONISH ; Bone Club → new move
-	db 11, FLAME_WHEEL
+	db 11, FLAME_CHARGE ; Flame Wheel → TM move
 	db 13, LEER
 	db 17, HEX
 	db 21, BONEMERANG
@@ -2348,7 +2389,7 @@ MarowakAlolanEvosAttacks:
 	db 43, ACROBATICS ; Stomping Tantrum → new move
 	db 49, ROCK_SMASH ; Endeavor → TM move
 	db 53, FLARE_BLITZ
-	db 59, REVERSAL ; Retaliate → new move
+	db 59, PAIN_SPLIT ; Retaliate → S/M tutor move
 	db 65, OUTRAGE ; Bone Rush → HGSS tutor move
 	db 0 ; no more level-up moves
 
@@ -2779,7 +2820,7 @@ MagmarEvosAttacks:
 	db 12, FEINT_ATTACK
 	db 15, FIRE_SPIN
 	db 19, LOW_KICK ; Clear Smog → HGSS tutor move
-	db 22, FLAME_WHEEL ; Flame Burst → new move
+	db 22, FLAME_CHARGE ; Flame Burst → TM move
 	db 26, CONFUSE_RAY
 	db 29, FIRE_PUNCH
 	db 36, SUNNY_DAY ; Lava Plume → Sunny Day
@@ -2893,7 +2934,7 @@ EeveeEvosAttacks:
 	db EVOLVE_LOCATION, ILEX_FOREST, LEAFEON
 	db EVOLVE_LOCATION, ICE_PATH, GLACEON
 	db EVOLVE_HAPPINESS, TR_MORNDAY, ESPEON
-	db EVOLVE_HAPPINESS, TR_NITE, UMBREON
+	db EVOLVE_HAPPINESS, TR_EVENITE, UMBREON
 	db 0 ; no more evolutions
 	db 1, GROWL
 	db 1, TACKLE
@@ -2961,8 +3002,8 @@ FlareonEvosAttacks:
 	db 9, DOUBLE_KICK ; Baby-Doll Eyes → Let's Go move
 	db 13, QUICK_ATTACK
 	db 17, BITE
-	db 20, FLAME_WHEEL ; Fire Fang → new move
-	db 25, FIRE_SPIN
+	db 20, FIRE_SPIN ; Fire Fang → Fire Spin
+	db 25, FLAME_CHARGE ; Fire Spin → TM move
 	db 29, SCARY_FACE
 	db 33, SMOKESCREEN ; Smog → new move
 	db 37, FLAMETHROWER ; Lava Plume → new move
@@ -2980,10 +3021,10 @@ PorygonEvosAttacks:
 	db 12, AGILITY
 	db 18, RECOVER
 	db 23, GROWTH ; Magnet Rise → new move
-	db 29, ICE_BEAM ; Signal Beam → TM move
-	db 34, BARRIER ; Recycle → event move
-	db 40, THUNDERBOLT ; Discharge → TM move
-	db 45, MIRROR_COAT ; Lock-On → new move
+	db 29, AURORA_BEAM ; Signal Beam → new move
+	db 34, THUNDER_WAVE ; Recycle → TM move
+	db 40, BARRIER ; Discharge → event move
+	db 45, THUNDERBOLT ; Lock-On → TM move
 	db 50, TRI_ATTACK
 	db 56, MIRROR_COAT ; Magic Coat → new move
 	db 62, ZAP_CANNON
@@ -3108,7 +3149,7 @@ SnorlaxEvosAttacks:
 	db 57, GIGA_IMPACT
 	db 0 ; no more level-up moves
 
-ArticunoEvosAttacks:
+ArticunoPlainEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, GUST
 	db 1, ICY_WIND ; Powder Snow → similar move
@@ -3129,14 +3170,35 @@ ArticunoEvosAttacks:
 	db 99, AEROBLAST ; new move
 	db 0 ; no more level-up moves
 
-ZapdosEvosAttacks:
+ArticunoGalarianEvosAttacks:
+	db 0 ; no more evolutions
+	db 1, GUST
+	db 1, CONFUSION
+	db 1, LEER ; Let's Go move
+	db 8, SAFEGUARD ; Psycho Shift → new move
+	db 15, HYPNOSIS
+	db 22, EXTRASENSORY ; Mind Reader → event move
+	db 29, ANCIENTPOWER
+	db 36, AGILITY
+	db 43, PSYCHIC_M ; Freezing Glare → TM move
+	db 50, AIR_SLASH ; Reflect → new move
+	db 57, DREAM_EATER
+	db 64, REFLECT ; Tailwind → Reflect
+	db 71, FUTURE_SIGHT
+	db 78, BRAVE_BIRD ; Sheer Cold → TR move
+	db 85, RECOVER
+	db 92, HURRICANE
+	db 99, AEROBLAST ; new move
+	db 0 ; no more level-up moves
+
+ZapdosPlainEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, PECK
 	db 1, THUNDERSHOCK
 	db 1, LEER ; Let's Go move
 	db 8, THUNDER_WAVE
 	db 15, PROTECT ; Detect → similar move
-	db 22, EXTRASENSORY ; Pluck → event
+	db 22, EXTRASENSORY ; Pluck → event move
 	db 29, ANCIENTPOWER
 	db 36, AGILITY ; Charge → Agility
 	db 43, THUNDERBOLT ; Agility → TM move
@@ -3150,7 +3212,28 @@ ZapdosEvosAttacks:
 	db 99, ZAP_CANNON
 	db 0 ; no more level-up moves
 
-MoltresEvosAttacks:
+ZapdosGalarianEvosAttacks:
+	db 0 ; no more evolutions
+	db 1, PECK
+	db 1, LOW_KICK ; Rock Smash → TR move
+	db 1, LEER ; Let's Go move
+	db 8, FOCUS_ENERGY
+	db 15, PROTECT ; Detect → similar move
+	db 22, COUNTER ; Pluck → Counter
+	db 29, ANCIENTPOWER
+	db 36, AGILITY ; Charge → Agility
+	db 43, ROCK_SMASH ; Agility → Rock Smash/Brick Break
+	db 50, DRILL_PECK ; Discharge → Drill Peck
+	db 57, BULK_UP
+	db 64, LIGHT_SCREEN
+	db 71, CLOSE_COMBAT
+	db 78, BRAVE_BIRD ; Counter → TR move
+	db 85, HI_JUMP_KICK ; Quick Guard → new move
+	db 92, HURRICANE
+	db 99, REVERSAL
+	db 0 ; no more level-up moves
+
+MoltresPlainEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, WING_ATTACK
 	db 1, EMBER
@@ -3169,6 +3252,27 @@ MoltresEvosAttacks:
 	db 85, ROOST
 	db 92, HURRICANE
 	db 99, SOLAR_BEAM
+	db 0 ; no more level-up moves
+
+MoltresGalarianEvosAttacks:
+	db 0 ; no more evolutions
+	db 1, GUST
+	db 1, PURSUIT ; Payback → new move
+	db 1, LEER
+	db 8, FEINT_ATTACK ; new move
+	db 15, SAFEGUARD
+	db 22, WING_ATTACK
+	db 29, ANCIENTPOWER
+	db 36, AGILITY ; Flamethrower → Agility
+	db 43, SUCKER_PUNCH
+	db 50, AIR_SLASH
+	db 57, NASTY_PLOT ; After You → Nasty Plot
+	db 64, DARK_PULSE ; Fiery Wrath → similar move
+	db 71, HEX ; Nasty Plot → TR move
+	db 78, BRAVE_BIRD ; Sky Attack → new move
+	db 85, PAIN_SPLIT ; Memento → new move
+	db 92, HURRICANE
+	db 99, NIGHT_SLASH ; new move
 	db 0 ; no more level-up moves
 
 DratiniEvosAttacks:
@@ -3348,8 +3452,8 @@ CyndaquilEvosAttacks:
 	db 6, SMOKESCREEN
 	db 10, EMBER
 	db 13, QUICK_ATTACK
-	db 19, FLAME_WHEEL
-	db 22, DEFENSE_CURL
+	db 19, DEFENSE_CURL ; Flame Wheel → Defense Curl
+	db 22, FLAME_CHARGE ; Defense Curl → Flame Charge
 	db 28, DIG ; Flame Charge → TM move
 	db 31, SWIFT
 	db 37, REVERSAL ; Lava Plume → egg move
@@ -3369,8 +3473,8 @@ QuilavaEvosAttacks:
 	db 6, SMOKESCREEN
 	db 10, EMBER
 	db 13, QUICK_ATTACK
-	db 20, FLAME_WHEEL
-	db 24, DEFENSE_CURL
+	db 20, DEFENSE_CURL ; Flame Wheel → Defense Curl
+	db 24, FLAME_CHARGE ; Defense Curl → Flame Charge
 	db 31, SWIFT
 	db 35, DIG ; Flame Charge → TM move
 	db 42, REVERSAL ; Lava Plume → egg move
@@ -3390,8 +3494,8 @@ TyphlosionEvosAttacks:
 	db 6, SMOKESCREEN
 	db 10, EMBER
 	db 13, QUICK_ATTACK
-	db 20, FLAME_WHEEL
-	db 24, DEFENSE_CURL
+	db 20, DEFENSE_CURL ; Flame Wheel → Defense Curl
+	db 24, FLAME_CHARGE ; Defense Curl → Flame Charge
 	db 31, SWIFT
 	db 35, DIG ; Flame Charge → TM move
 	db 43, REVERSAL ; Lava Plume → egg move
@@ -4171,7 +4275,7 @@ HonchkrowEvosAttacks:
 	db 75, DARK_PULSE
 	db 0 ; no more level-up moves
 
-SlowkingEvosAttacks:
+SlowkingPlainEvosAttacks:
 	db 0 ; no more evolutions
 	db 1, POWER_GEM
 	db 1, HIDDEN_POWER
@@ -4179,6 +4283,28 @@ SlowkingEvosAttacks:
 	db 1, TACKLE
 	db 5, GROWL
 	db 9, WATER_GUN
+	db 14, CONFUSION
+	db 19, DISABLE
+	db 23, HEADBUTT
+	db 28, WATER_PULSE
+	db 32, ZEN_HEADBUTT
+	db 36, NASTY_PLOT
+	db 41, SWAGGER
+	db 45, PSYCHIC_M
+	db 49, RAIN_DANCE ; Trump Card → TM move
+	db 54, BELLY_DRUM ; Psych Up → egg move
+	db 58, RECOVER ; Heal Pulse → similar move
+	db 0 ; no more level-up moves
+
+SlowkingGalarianEvosAttacks:
+	db 0 ; no more evolutions
+	db 1, HEX ; Eerie Spell → Sw/Sh TR move ; evolution move
+	db 1, POWER_GEM
+	db 1, HIDDEN_POWER
+	db 1, CURSE
+	db 1, TACKLE
+	db 5, GROWL
+	db 9, ACID
 	db 14, CONFUSION
 	db 19, DISABLE
 	db 23, HEADBUTT
@@ -4503,16 +4629,12 @@ HeracrossEvosAttacks:
 	db 1, HORN_ATTACK
 	db 1, ENDURE
 	db 7, BUG_BITE ; Feint → HGSS tutor move
-	db 10, AERIAL_ACE
+	db 10, FURY_STRIKES ; Aerial Ace → Fury Strikes
 	db 16, LOW_KICK ; Chip Away → HGSS tutor move
 	db 19, COUNTER
-	db 25, FURY_STRIKES ; Fury Attack → similar move
+	db 25, AERIAL_ACE ; Fury Attack → Aerial Ace
 	db 28, SEISMIC_TOSS ; Brick Break → tutor move
-if DEF(FAITHFUL)
 	db 31, PIN_MISSILE
-else
-	db 31, ROCK_SMASH ; Pin Missile → "Brick Break"
-endc
 	db 34, TAKE_DOWN
 	db 37, MEGAHORN
 	db 43, CLOSE_COMBAT
@@ -4610,7 +4732,7 @@ SlugmaEvosAttacks:
 	db 15, FIRE_SPIN ; Incinerate → new move
 	db 20, SMOKESCREEN ; Clear Smog → egg move
 	db 22, ANCIENTPOWER
-	db 27, FLAME_WHEEL ; Flame Burst → new move
+	db 27, FLAME_CHARGE ; Flame Burst → TM move
 	db 29, ROCK_SLIDE
 	db 34, PAIN_SPLIT ; Lava Plume → HGSS tutor move
 	db 36, AMNESIA
@@ -4630,7 +4752,7 @@ MagcargoEvosAttacks:
 	db 15, FIRE_SPIN ; Incinerate → new move
 	db 20, SMOKESCREEN ; Clear Smog → egg move
 	db 22, ANCIENTPOWER
-	db 27, FLAME_WHEEL ; Flame Burst → new move
+	db 27, FLAME_CHARGE ; Flame Burst → TM move
 	db 29, ROCK_SLIDE
 	db 34, PAIN_SPLIT ; Lava Plume → HGSS tutor move
 	db 36, AMNESIA
@@ -4708,16 +4830,16 @@ CorsolaEvosAttacks:
 	db 1, TACKLE
 	db 1, DEFENSE_CURL ; Harden → similar move
 	db 4, WATER_GUN ; Bubble → similar move
-	db 8, RECOVER
+	db 8, ROLLOUT ; Recover → TM move
 	db 10, BUBBLE_BEAM
 	db 13, SAFEGUARD ; Refresh → egg move
 	db 17, ANCIENTPOWER
-	db 20, ICICLE_SPEAR ; Spike Cannon → new move
+	db 20, ICICLE_SPEAR ; Spike Cannon → egg move
 	db 23, CONFUSE_RAY ; Lucky Chant → egg move
 	db 27, ENDURE ; Brine → Endure
 	db 29, BARRIER ; Iron Defense → similar move
 	db 31, ROCK_BLAST
-	db 35, RECOVER ; Endure → new move
+	db 35, RECOVER ; Endure → Recover
 	db 38, HYDRO_PUMP ; Aqua Ring → Sw/Sh move
 	db 41, POWER_GEM
 	db 45, MIRROR_COAT
@@ -4915,10 +5037,10 @@ Porygon2EvosAttacks:
 	db 12, AGILITY
 	db 18, RECOVER
 	db 23, GROWTH ; Magnet Rise → new move
-	db 29, ICE_BEAM ; Signal Beam → TM move
-	db 34, BARRIER ; Recycle → event move
-	db 40, THUNDERBOLT ; Discharge → TM move
-	db 45, MIRROR_COAT ; Lock-On → new move
+	db 29, AURORA_BEAM ; Signal Beam → new move
+	db 34, THUNDER_WAVE ; Recycle → TM move
+	db 40, BARRIER ; Discharge → event move
+	db 45, THUNDERBOLT ; Lock-On → TM move
 	db 50, TRI_ATTACK
 	db 56, MIRROR_COAT ; Magic Coat → new move
 	db 62, ZAP_CANNON
@@ -4935,10 +5057,10 @@ PorygonZEvosAttacks:
 	db 12, AGILITY
 	db 18, RECOVER
 	db 23, GROWTH ; Magnet Rise → new move
-	db 29, ICE_BEAM ; Signal Beam → TM move
+	db 29, AURORA_BEAM ; Signal Beam → new move
 	db 34, PAIN_SPLIT ; Embargo → HGSS tutor move
-	db 40, THUNDERBOLT ; Discharge → TM move
-	db 45, MIRROR_COAT ; Lock-On → new move
+	db 40, BARRIER ; Discharge → event move
+	db 45, THUNDERBOLT ; Lock-On → TM move
 	db 50, TRI_ATTACK
 	db 56, MIRROR_COAT ; Magic Coat → new move
 	db 62, ZAP_CANNON
@@ -5038,7 +5160,7 @@ MagbyEvosAttacks:
 	db 12, FEINT_ATTACK
 	db 15, FIRE_SPIN
 	db 19, LOW_KICK ; Clear Smog → HGSS tutor move
-	db 22, FLAME_WHEEL ; Flame Burst → new move
+	db 22, FLAME_CHARGE ; Flame Burst → TM move
 	db 26, CONFUSE_RAY
 	db 29, FIRE_PUNCH
 	db 33, SUNNY_DAY ; Lava Plume → Sunny Day
@@ -5058,7 +5180,7 @@ MagmortarEvosAttacks:
 	db 12, FEINT_ATTACK
 	db 15, FIRE_SPIN
 	db 19, LOW_KICK ; Clear Smog → HGSS tutor move
-	db 22, FLAME_WHEEL ; Flame Burst → new move
+	db 22, FLAME_CHARGE ; Flame Burst → TM move
 	db 26, CONFUSE_RAY
 	db 29, FIRE_PUNCH
 	db 36, SUNNY_DAY ; Lava Plume → Sunny Day
@@ -5136,7 +5258,7 @@ EnteiEvosAttacks:
 	db 29, STOMP
 	db 36, FLAMETHROWER
 	db 43, SWAGGER
-	db 50, FLAME_WHEEL ; Fire Fang → new move
+	db 50, FLAME_CHARGE ; Fire Fang → TM move
 	db 57, EXTREMESPEED ; Lava Plume → event move
 	db 64, EXTRASENSORY
 	db 71, FIRE_BLAST

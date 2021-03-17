@@ -36,12 +36,12 @@ Special_MoveTutor:
 
 CheckCanLearnMoveTutorMove:
 	ld hl, .MenuDataHeader
-	call LoadMenuDataHeader
+	call LoadMenuHeader
 
 	ld a, MON_FORM
 	call GetPartyParamLocation
 	ld a, [hl]
-	and FORM_MASK
+	and BASEMON_MASK
 	ld [wCurForm], a
 	predef CanLearnTMHMMove
 

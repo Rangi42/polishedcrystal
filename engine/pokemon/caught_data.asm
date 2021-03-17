@@ -5,7 +5,7 @@ CheckPartyFullAfterContest:
 	ld [wCurPartySpecies], a
 	ld [wCurSpecies], a
 	ld a, [wContestMonForm]
-	and FORM_MASK
+	and BASEMON_MASK
 	ld [wCurForm], a
 	call GetBaseData
 	ld hl, wPartyCount
@@ -71,7 +71,7 @@ CheckPartyFullAfterContest:
 	call GetPartyLocation
 	ld a, [hl]
 	ld [wCurPartyLevel], a
-	ld a, PARK_BALL
+	xor a ; PARK_BALL
 	ld [wCurItem], a
 	call SetCaughtData
 	ld a, [wPartyCount]
@@ -85,58 +85,52 @@ CheckPartyFullAfterContest:
 	ret
 
 .TryAddToBox:
-	ld a, BANK(sBoxCount)
-	call GetSRAMBank
-	ld hl, sBoxCount
-	ld a, [hl]
-	cp MONS_PER_BOX
-	call CloseSRAM
-	jr nc, .BoxFull
+	farcall NewStorageBoxPointer
+	jr c, .BoxFull
+	push bc
 	xor a
 	ld [wCurPartyMon], a
 	ld hl, wContestMon
-	ld de, wBufferMon
+	ld de, wTempMon
 	ld bc, BOXMON_STRUCT_LENGTH
 	rst CopyBytes
 	ld hl, wPlayerName
-	ld de, wBufferMonOT
+	ld de, wTempMonOT
 	ld bc, NAME_LENGTH
 	rst CopyBytes
-	farcall InsertPokemonIntoBox
+	pop bc
+	ld a, b
+	ld [wTempMonBox], a
+	ld a, c
+	ld [wTempMonSlot], a
+	farcall UpdateStorageBoxMonFromTemp
 	ld a, [wCurPartySpecies]
 	ld [wd265], a
 	call GetPokemonName
 	call GiveANickname_YesNo
 	ld hl, wStringBuffer1
 	jr c, .Box_SkipNickname
-	ld a, BOXMON
+	ld a, TEMPMON
 	ld [wMonType], a
 	ld de, wMonOrItemNameBuffer
 	farcall InitNickname
 	ld hl, wMonOrItemNameBuffer
 
 .Box_SkipNickname:
-	ld a, BANK(sBoxMonNicknames)
-	call GetSRAMBank
-	ld de, sBoxMonNicknames
+	ld de, wTempMonNickname
 	ld bc, MON_NAME_LENGTH
 	rst CopyBytes
-	call CloseSRAM
+	farcall UpdateStorageBoxMonFromTemp
 
 .BoxFull:
-	ld a, BANK(sBoxMon1Level)
-	call GetSRAMBank
-	ld a, [sBoxMon1Level]
+	ld a, [wTempMonLevel]
 	ld [wCurPartyLevel], a
-	call CloseSRAM
-	ld a, PARK_BALL
+	xor a ; PARK_BALL
 	ld [wCurItem], a
 	call SetBoxMonCaughtData
-	ld a, BANK(sBoxMon1CaughtLocation)
-	call GetSRAMBank
-	ld hl, sBoxMon1CaughtLocation
+	ld hl, wTempMonCaughtLocation
 	ld [hl], NATIONAL_PARK
-	call CloseSRAM
+	farcall UpdateStorageBoxMonFromTemp
 	xor a
 	ld [wContestMon], a
 	ld a, $1
@@ -163,7 +157,7 @@ GiveANickname_YesNo:
 
 TextJump_GiveANickname:
 	; Give a nickname to the @  you received?
-	text_jump UnknownText_0x1c12fc
+	text_far _CaughtAskNicknameText
 	text_end
 
 SetCaughtData:
@@ -175,11 +169,9 @@ SetBoxmonOrEggmonCaughtData:
 	; CaughtGender
 	ld a, [wPlayerGender]
 	and a
-	jr z, .male
+	assert !MALE
+	jr z, .ok
 	ld a, FEMALE
-	jr .ok
-.male
-	ld a, MALE
 .ok
 	ld b, a
 	; CaughtTime
@@ -188,6 +180,7 @@ SetBoxmonOrEggmonCaughtData:
 	rrca
 	rrca
 	rrca
+	and CAUGHTTIME_MASK
 	or b
 	ld b, a
 	; CaughtBall
@@ -204,20 +197,14 @@ SetBoxmonOrEggmonCaughtData:
 	ret
 
 SetBoxMonCaughtData:
-	ld a, BANK(sBoxMon1CaughtData)
-	call GetSRAMBank
-	ld hl, sBoxMon1CaughtData
+	ld hl, wTempMonCaughtData
 	call SetBoxmonOrEggmonCaughtData
-	jp CloseSRAM
+	farjp UpdateStorageBoxMonFromTemp
 
 SetGiftBoxMonCaughtData:
-	push bc
-	ld a, BANK(sBoxMon1CaughtData)
-	call GetSRAMBank
-	ld hl, sBoxMon1CaughtData
-	pop bc
+	ld hl, wTempMonCaughtData
 	call SetGiftMonCaughtData
-	jp CloseSRAM
+	farjp UpdateStorageBoxMonFromTemp
 
 SetGiftPartyMonCaughtData:
 	ld a, [wPartyCount]
@@ -233,6 +220,7 @@ SetGiftMonCaughtData:
 	rrca
 	rrca
 	rrca
+	and CAUGHTTIME_MASK
 	or b
 	ld b, a
 	; CaughtBall

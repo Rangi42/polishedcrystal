@@ -18,7 +18,7 @@ TossItemFromPC:
 	push de
 	call PartyMonItemName
 	ld hl, .TossHowMany
-	call MenuTextBox
+	call MenuTextbox
 	farcall SelectQuantityToToss
 	push af
 	call CloseWindow
@@ -26,7 +26,7 @@ TossItemFromPC:
 	pop af
 	jr c, .quit
 	ld hl, .ConfirmToss
-	call MenuTextBox
+	call MenuTextbox
 	call YesNoBox
 	push af
 	call ExitMenu
@@ -37,7 +37,7 @@ TossItemFromPC:
 	call TossItem
 	call PartyMonItemName
 	ld hl, .TossedThisMany
-	call MenuTextBox
+	call MenuTextbox
 	call ExitMenu
 	and a
 	ret
@@ -49,25 +49,25 @@ TossItemFromPC:
 
 .TossHowMany:
 	; Toss out how many @ (S)?
-	text_jump UnknownText_0x1c1a90
+	text_far _ItemsTossOutHowManyText
 	text_end
 
 .ConfirmToss:
 	; Throw away @ @ (S)?
-	text_jump UnknownText_0x1c1aad
+	text_far _ItemsThrowAwayText
 	text_end
 
 .TossedThisMany:
 	; Discarded @ (S).
-	text_jump UnknownText_0x1c1aca
+	text_far _ItemsDiscardedText
 	text_end
 
 CantUseItem:
 	ld hl, CantUseItemText
-	jp MenuTextBoxWaitButton
+	jp MenuTextboxWaitButton
 
 CantUseItemText:
-	text_jump UnknownText_0x1c1b03
+	text_far _ItemsOakWarningText
 	text_end
 
 PartyMonItemName:
@@ -191,7 +191,7 @@ GiveTakePartyMonItem:
 	hlcoord 1, 16
 	rst PlaceString
 	ld hl, GiveTakeItemMenuData
-	call LoadMenuDataHeader
+	call LoadMenuHeader
 	call VerticalMenu
 	call ExitMenu
 	jr c, .cancel
@@ -202,10 +202,13 @@ GiveTakePartyMonItem:
 	ld bc, MON_NAME_LENGTH
 	rst CopyBytes
 	ld a, [wMenuCursorY]
-	cp 1
-	jr nz, .take
+	cp 2 ; 2 = take
+	jr z, .take
+	cp 3 ; 3 = swap
+	jr z, .swap
+	; 1 = give
 
-	call LoadStandardMenuDataHeader
+	call LoadStandardMenuHeader
 	call ClearPalettes
 	call .GiveItem
 	call ClearPalettes
@@ -219,6 +222,11 @@ GiveTakePartyMonItem:
 	ld a, 3
 	ret
 
+.swap
+	call SwapPartyItem
+	ld a, 3
+	ret
+
 .cancel
 	ld a, 3
 	ret
@@ -227,26 +235,11 @@ GiveTakePartyMonItem:
 	db "No held item@"
 
 .GiveItem:
-
-	farcall DepositSellInitPackBuffers
-
-.loop
-	farcall DepositSellPack
-
-	ld a, [wcf66]
-	and a
+	call GetItemToGive
 	ret z
-
-	call CheckUniqueItemPocket
-	jr nz, TryGiveItemToPartymon
-
-	ld hl, CantBeHeldText
-	call MenuTextBoxBackup
-	jr .loop
-
+	; fallthrough
 TryGiveItemToPartymon:
-
-	call SpeechTextBox
+	call SpeechTextbox
 	call PartyMonItemName
 	call GetPartyItemLocation
 	ld a, [hl]
@@ -260,14 +253,14 @@ TryGiveItemToPartymon:
 	jr .already_holding_item
 
 .give_item_to_mon
-	call GiveItemToPokemon
+	call TossItemToGive
 	ld hl, MadeHoldText
-	call MenuTextBoxBackup
+	call MenuTextboxBackup
 	jp GivePartyItem
 
 .please_remove_mail
 	ld hl, PleaseRemoveMailText
-	jp MenuTextBoxBackup
+	jp MenuTextboxBackup
 
 .already_holding_item
 	ld [wd265], a
@@ -276,7 +269,7 @@ TryGiveItemToPartymon:
 	call StartMenuYesNo
 	ret c
 
-	call GiveItemToPokemon
+	call TossItemToGive
 	ld a, [wd265]
 	push af
 	ld a, [wCurItem]
@@ -290,15 +283,14 @@ TryGiveItemToPartymon:
 	ld [wCurItem], a
 	call ReceiveItemFromPokemon
 	ld hl, ItemStorageIsFullText
-	jp MenuTextBoxBackup
+	jp MenuTextboxBackup
 
 .bag_not_full
 	ld hl, TookAndMadeHoldText
-	call MenuTextBoxBackup
+	call MenuTextboxBackup
 	ld a, [wd265]
 	ld [wCurItem], a
 	; fallthrough
-
 GivePartyItem:
 	call GetPartyItemLocation
 	ld a, [wCurItem]
@@ -310,8 +302,140 @@ GivePartyItem:
 	ret nc
 	jp ComposeMailMessage
 
+GetItemToGive:
+	call DepositSellInitPackBuffers
+	; fallthrough
+_GetItemToGive:
+; Returns nz if we got an item to give.
+	call DepositSellPack
+
+	ld a, [wPackUsedItem]
+	and a
+	ret z
+
+	call CheckUniqueItemPocket
+	ret nz
+
+	ld hl, CantBeHeldText
+	call MenuTextboxBackup
+	jr _GetItemToGive
+
+PCPickItem:
+; For preparing an item to give to a mon of choice later on (or swap).
+; Returns nz on success.
+	call DepositSellInitPackBuffers
+	jr _GetItemToGive
+
+PCGiveItem:
+	call DepositSellInitPackBuffers
+.loop
+	call _GetItemToGive
+	ret z
+
+	; Ensure that we aren't trying to give Mail to a Pokémon in storage.
+	ld a, [wCurItem]
+	ld d, a
+	call ItemIsMail
+	jr nc, .item_ok
+
+	ld a, [wTempMonBox]
+	and a
+	jr z, .item_ok
+
+	ld hl, CantPlaceMailInStorageText
+	call MenuTextboxBackup
+	jr .loop
+
+.item_ok
+	call PartyMonItemName
+	call TossItemToGive
+
+	ld hl, wTempMonNickname
+	ld de, wMonOrItemNameBuffer
+	ld bc, MON_NAME_LENGTH
+	rst CopyBytes
+
+	ld hl, MadeHoldText
+	call MenuTextboxBackup
+
+	; Now, actually give the item.
+	ld a, [wTempMonSpecies]
+	ld [wCurPartySpecies], a
+	ld de, wCurItem
+	ld a, [de]
+	ld [wTempMonItem], a
+	ld hl, wTempMonForm
+	call _UpdateMewtwoForm
+	farcall UpdateStorageBoxMonFromTemp
+
+	; We know that if we're dealing with Mail, then we're giving to a partymon.
+	; Thus, there's no harm in using party-specific code.
+	ld a, [wTempMonSlot]
+	dec a
+	ld [wCurPartyMon], a
+	ld a, [wCurItem]
+	ld d, a
+	call ItemIsMail
+	ret nc
+	jp ComposeMailMessage
+
+; swap items between two party pokemon
+SwapPartyItem:
+	ld a, [wPartyCount]
+	cp 2
+	jr c, .DontSwap
+	ld a, [wCurPartyMon]
+	inc a
+	ld [wSwitchMon], a
+	farcall HoldSwitchmonIcon
+	farcall InitPartyMenuNoCancel
+	ld a, 4
+	ld [wPartyMenuActionText], a
+	farcall WritePartyMenuTilemap
+	farcall PrintPartyMenuText
+	hlcoord 0, 1
+	ld bc, 20 * 2
+	ld a, [wSwitchMon]
+	dec a
+	rst AddNTimes
+	ld [hl], "▷"
+	call ApplyTilemapInVBlank
+	call SetPalettes
+	call DelayFrame
+	farcall PartyMenuSelect
+	bit 1, b
+	jr c, .DontSwap
+	; wSwitchMon contains first selected pkmn
+	; wCurPartyMon contains second selected pkmn
+	; getting pkmn2 item and putting into stack item addr + item id
+	call GetPartyItemLocation
+	ld a, [hl] ; a pkmn2 contains item
+	push hl
+	push af
+	; getting pkmn 1 item and putting item id into b
+	ld a, [wSwitchMon]
+	dec a
+	ld [wCurPartyMon], a
+	call GetPartyItemLocation
+	ld a, [hl] ; a pkmn1 contains item
+	ld b, a
+	; actual swap
+	pop af
+	ld [hl], a ; pkmn1 get pkm2 item
+	pop hl
+	ld a, b
+	ld [hl], a ; pkmn1 get pkm2 item
+	xor a
+	ld [wPartyMenuActionText], a
+	jp CancelPokemonAction
+
+.DontSwap
+	xor a
+	ld [wPartyMenuActionText], a
+	jp CancelPokemonAction
+
 TakePartyItem:
-	call SpeechTextBox
+	call SpeechTextbox
 	call GetPartyItemLocation
 	ld a, [hl]
 	and a
@@ -329,79 +453,88 @@ TakePartyItem:
 	call UpdateMewtwoForm
 	call GetItemName
 	ld hl, TookFromText
-	jp MenuTextBoxBackup
+	jp MenuTextboxBackup
 
 .asm_12c8c
 	ld hl, IsntHoldingAnythingText
-	jp MenuTextBoxBackup
+	jp MenuTextboxBackup
 
 .asm_12c94
 	ld hl, ItemStorageIsFullText
-	jp MenuTextBoxBackup
+	jp MenuTextboxBackup
 
 UpdateMewtwoForm:
+	ld d, h
+	ld e, l
+	ld a, MON_FORM
+	call GetPartyParamLocation
+_UpdateMewtwoForm:
 	ld a, [wCurPartySpecies]
 	cp MEWTWO
 	ret nz
-	ld a, [hl]
+	ld a, [de]
 	cp ARMOR_SUIT
 	ld a, MEWTWO_ARMORED_FORM
 	jr z, .got_form
 	dec a ; PLAIN_FORM
 .got_form
 	ld d, a
-	ld a, MON_FORM
-	call GetPartyParamLocation
 	ld a, [hl]
-	and $ff - FORM_MASK
+	and $ff - BASEMON_MASK
 	or d
 	ld [hl], a
 	ret
 
 GiveTakeItemMenuData:
 	db %01010000
-	db 12, 13 ; start coords
+	db 10, 13 ; start coords
 	db 17, 19 ; end coords
 	dw .Items
 	db 1 ; default option
 
 .Items:
 	db %10000000 ; x padding
-	db 2 ; # items
+	db 3 ; # items
 	db "Give@"
 	db "Take@"
+	db "Swap@"
 
 TookAndMadeHoldText:
-	text_jump UnknownText_0x1c1b2c
+	text_far _PokemonSwapItemText
 	text_end
 
 MadeHoldText:
-	text_jump UnknownText_0x1c1b57
+	text_far _PokemonHoldItemText
 	text_end
 
 PleaseRemoveMailText:
-	text_jump UnknownText_0x1c1b6f
+	text_far _PokemonRemoveMailText
 	text_end
 
 IsntHoldingAnythingText:
-	text_jump UnknownText_0x1c1b8e
+	text_far _PokemonNotHoldingText
 	text_end
 
 ItemStorageIsFullText:
-	text_jump UnknownText_0x1c1baa
+	text_far _ItemStorageFullText
 	text_end
 
 TookFromText:
-	text_jump UnknownText_0x1c1bc4
+	text_far _PokemonTookItemText
 	text_end
 
 SwitchAlreadyHoldingText:
-	text_jump UnknownText_0x1c1bdc
+	text_far _PokemonAskSwapItemText
 	text_end
 
 CantBeHeldText:
-	text_jump UnknownText_0x1c1c09
+	text_far _ItemCantHeldText
 	text_end
+
+CantPlaceMailInStorageText:
+	text "Can't place Mail in"
+	line "storage."
+	prompt
 
 GetPartyItemLocation:
 	push af
@@ -416,20 +549,20 @@ ReceiveItemFromPokemon:
 	ld hl, wNumItems
 	jp ReceiveItem
 
-GiveItemToPokemon:
+TossItemToGive:
 	ld a, $1
 	ld [wItemQuantityChangeBuffer], a
 	ld hl, wNumItems
 	jp TossItem
 
 StartMenuYesNo:
-	call MenuTextBox
+	call MenuTextbox
 	call YesNoBox
 	jp ExitMenu
 
 ComposeMailMessage:
 	ld de, wTempMailMessage
-	farcall _ComposeMailMessage
+	call _ComposeMailMessage
 	ld hl, wPlayerName
 	ld de, wTempMailAuthor
 	ld bc, NAME_LENGTH - 1
@@ -463,64 +596,24 @@ MonMailAction:
 
 ; Show the READ/TAKE/QUIT menu.
 	ld hl, .MenuDataHeader
-	call LoadMenuDataHeader
+	call LoadMenuHeader
 	call VerticalMenu
 	call ExitMenu
 
 ; Interpret the menu.
-	jp c, .done
+	ld a, $3
+	ret c
 	ld a, [wMenuCursorY]
 	cp $1
 	jr z, .read
 	cp $2
-	jr z, .take
-	jp .done
+	jr z, TakeMail
+	ld a, $3
+	ret
 
 .read
 	farcall ReadPartyMonMail
 	xor a
-	ret
-
-.take
-	ld hl, .sendmailtopctext
-	call StartMenuYesNo
-	jr c, .RemoveMailToBag
-	ld a, [wCurPartyMon]
-	ld b, a
-	farcall SendMailToPC
-	jr c, .MailboxFull
-	ld hl, .sentmailtopctext
-	call MenuTextBoxBackup
-	jr .done
-
-.MailboxFull:
-	ld hl, .mailboxfulltext
-	call MenuTextBoxBackup
-	jr .done
-
-.RemoveMailToBag:
-	ld hl, .mailwilllosemessagetext
-	call StartMenuYesNo
-	jr c, .done
-	call GetPartyItemLocation
-	ld a, [hl]
-	ld [wCurItem], a
-	call ReceiveItemFromPokemon
-	jr nc, .BagIsFull
-	call GetPartyItemLocation
-	ld [hl], $0
-	call GetCurNick
-	ld hl, .tookmailfrommontext
-	call MenuTextBoxBackup
-	jr .done
-
-.BagIsFull:
-	ld hl, .bagfulltext
-	call MenuTextBoxBackup
-	; fallthrough
-
-.done
-	ld a, $3
 	ret
 
 .MenuDataHeader:
@@ -537,43 +630,93 @@ MonMailAction:
 	db "Take@"
 	db "Quit@"
 
+TakeMail:
+	ld hl, .sendmailtopctext
+	call StartMenuYesNo
+	jr c, .RemoveMailToBag
+	ld a, [wCurPartyMon]
+	ld b, a
+	farcall SendMailToPC
+	jr c, .MailboxFull
+	ld hl, .sentmailtopctext
+	call MenuTextboxBackup
+	jr .TookMail
+
+.MailboxFull:
+	ld hl, .mailboxfulltext
+	call MenuTextboxBackup
+	jr .KeptMail
+
+.RemoveMailToBag:
+	ld hl, .mailwilllosemessagetext
+	call StartMenuYesNo
+	jr c, .KeptMail
+	call GetPartyItemLocation
+	ld a, [hl]
+	ld [wCurItem], a
+	call ReceiveItemFromPokemon
+	jr nc, .BagIsFull
+	call GetPartyItemLocation
+	ld [hl], $0
+	call GetCurNick
+	ld hl, .tookmailfrommontext
+	call MenuTextboxBackup
+	; fallthrough
+.TookMail:
+	scf
+	jr .done
+
+.BagIsFull:
+	ld hl, .bagfulltext
+	call MenuTextboxBackup
+	; fallthrough
+.KeptMail:
+	and a
+.done
+	ld a, $3
+	ret
+
 .mailwilllosemessagetext
 ; The MAIL will lose its message. OK?
-	text_jump UnknownText_0x1c1c22
+	text_far _MailLoseMessageText
 	text_end
 
 .tookmailfrommontext
 ; MAIL detached from <POKEMON>.
-	text_jump UnknownText_0x1c1c47
+	text_far _MailDetachedText
 	text_end
 
 .bagfulltext
 ; There's no space for removing MAIL.
-	text_jump UnknownText_0x1c1c62
+	text_far _MailNoSpaceText
 	text_end
 
 .sendmailtopctext
 ; Send the removed MAIL to your PC?
-	text_jump UnknownText_0x1c1c86
+	text_far _MailAskSendToPCText
 	text_end
 
 .mailboxfulltext
 ; Your PC's MAILBOX is full.
-	text_jump UnknownText_0x1c1ca9
+	text_far _MailboxFullText
 	text_end
 
 .sentmailtopctext
 ; The MAIL was sent to your PC.
-	text_jump UnknownText_0x1c1cc4
+	text_far _MailSentToPCText
 	text_end
 
 OpenPartyStats:
-	call LoadStandardMenuDataHeader
+; Stats screen for partymon in wCurPartyMon.
+	call PreparePartyTempMon
+	; fallthrough
+_OpenPartyStats:
+; Stats screen for any mon, as supplied by wTempMonBox+wTempMonSlot
+	call LoadStandardMenuHeader
 	call ClearSprites
-; PartyMon
-	xor a
-	ld [wMonType], a
 	call LowVolume
+	ld a, TEMPMON
+	ld [wMonType], a
 	predef StatsScreenInit
 	call MaxVolume
 	call ExitMenu
@@ -660,7 +803,7 @@ MonMenu_FreshSnack:
 
 .Text_NotEnoughHP:
 	; Not enough HP!
-	text_jump UnknownText_0x1c1ce3
+	text_far _PokemonNotEnoughHPText
 	text_end
 
 .CheckMonHasEnoughHP:
@@ -698,7 +841,7 @@ ChooseMoveToDelete:
 	call LoadFontsBattleExtra
 	ld a, MOVESCREEN_DELETER
 	ld [wMoveScreenMode], a
-	call MoveScreenLoop
+	call MoveScreen
 	pop bc
 	push af
 	ld a, b
@@ -716,7 +859,7 @@ ChooseMoveToForget:
 	call LoadFontsBattleExtra
 	ld a, MOVESCREEN_NEWMOVE
 	ld [wMoveScreenMode], a
-	call MoveScreenLoop
+	call MoveScreen
 	pop bc
 	push af
 	ld a, b
@@ -744,7 +887,7 @@ ChooseMoveToForget:
 	farcall InitPartyMenuLayout
 	pop af
 	ld [wCurPartyMon], a
-	call SpeechTextBox
+	call SpeechTextbox
 .done
 	call ApplyTilemapInVBlank
 	call SetPalettes
@@ -760,7 +903,7 @@ ChooseMoveToRelearn:
 	call LoadFontsBattleExtra
 	ld a, MOVESCREEN_REMINDER
 	ld [wMoveScreenMode], a
-	call MoveScreenLoop
+	call MoveScreen
 	pop bc
 	push af
 	ld a, b
@@ -774,7 +917,7 @@ ChooseMoveToRelearn:
 	ld [wCurPartyMon], a
 	pop af
 	push af
-	call nz, SpeechTextBox
+	call nz, SpeechTextbox
 	call ApplyTilemapInVBlank
 	call SetPalettes
 	call DelayFrame
@@ -782,9 +925,25 @@ ChooseMoveToRelearn:
 	pop af
 	ret
 
+PreparePartyTempMon:
+; Switches curpartymon to tempmon box+slot
+	xor a
+	ld [wTempMonBox], a
+	ld a, [wCurPartyMon]
+	inc a
+	ld [wTempMonSlot], a
+	ret
+
 ManagePokemonMoves:
-	ld a, MON_IS_EGG
-	call GetPartyParamLocation
+	call PreparePartyTempMon
+	; fallthrough
+_ManagePokemonMoves:
+	ld a, [wTempMonBox]
+	ld b, a
+	ld a, [wTempMonSlot]
+	ld c, a
+	farcall GetStorageBoxMon
+	ld hl, wTempMonIsEgg
 	bit MON_IS_EGG_F, [hl]
 	jr nz, .egg
 	ld hl, wOptions1
@@ -802,11 +961,23 @@ ManagePokemonMoves:
 	xor a
 	ret
 
+MoveScreen:
+	call PreparePartyTempMon
+	; fallthrough
 MoveScreenLoop:
 ; Returns:
 ; a = >0: f = nc|nz; selected move (index in wMoveScreenSelectedMove)
 ; a =  0: f = nc|z;  user pressed B
 ;         f = c;     no options existed, move screen was aborted early
+	ld a, [wTempMonBox]
+	ld b, a
+	ld a, [wTempMonSlot]
+	ld c, a
+
+	; Update this in case we switched to a different mon.
+	dec a
+	ld [wCurPartyMon], a
+	farcall GetStorageBoxMon
 	xor a
 	ld [wMoveScreenSelectedMove], a
 	ld [wMoveScreenCursor], a
@@ -827,8 +998,7 @@ MoveScreenLoop:
 
 	; Copy over moves from the party struct
 	ld bc, NUM_MOVES
-	ld a, MON_MOVES
-	call GetPartyParamLocation
+	ld hl, wTempMonMoves
 	ld de, wMoveScreenMoves
 .movecopy_loop
 	ld a, [hli]
@@ -913,8 +1083,7 @@ MoveScreenLoop:
 	ld a, [hl]
 	push bc
 	ld hl, HMMoves
-	ld de, 1
-	call IsInArray
+	call IsInByteArray
 	pop bc
 	ld a, c
 	jr nc, .ok
@@ -963,36 +1132,23 @@ MoveScreenLoop:
 	ld a, 3
 	jp .update_screen_cursor
 .species_right
-	ld a, [wPartyCount]
-	ld d, a
-	ld a, [wCurPartyMon]
-	dec d
-	cp d
-	jp z, .loop
+	ld a, [wTempMonSlot]
+	ld c, a
 .loop_right
-	inc a
-	ld d, a
-	ld bc, PARTYMON_STRUCT_LENGTH
-	ld hl, wPartyMon1IsEgg
-	rst AddNTimes
-	ld a, [hl]
-	and IS_EGG_MASK
-	ld a, d
-	jr nz, .loop_right_invalid
-	ld hl, wPartyMon1Species
-	rst AddNTimes
-	ld a, [hl]
-	call IsAPokemon
-	ld a, d
-	jr c, .loop_right_invalid
-	ld [wCurPartyMon], a
-	jp MoveScreenLoop
-.loop_right_invalid
-	ld a, [wPartyCount]
-	dec a
-	cp d
-	ld a, d
-	jp z, .loop
+	push bc
+	farcall NextStorageBoxMon
+	pop bc
+	jr nz, .check_right
+
+	; There's no (non-Egg) mons afterwards, so revert wTempMon to what it was.
+	ld a, [wTempMonBox]
+	ld b, a
+	farcall GetStorageBoxMon
+	jp .loop
+.check_right
+	ld a, [wTempMonIsEgg]
+	bit MON_IS_EGG_F, a
+	jp z, MoveScreenLoop
 	jr .loop_right
 .pressed_left
 	ld a, [wMoveScreenMode]
@@ -1004,30 +1160,23 @@ MoveScreenLoop:
 	xor a
 	jr .update_screen_cursor
 .species_left
-	ld a, [wCurPartyMon]
-	and a
-	jp z, .loop
+	ld a, [wTempMonSlot]
+	ld c, a
 .loop_left
-	dec a
-	ld d, a
-	ld bc, PARTYMON_STRUCT_LENGTH
-	ld hl, wPartyMon1IsEgg
-	rst AddNTimes
-	ld a, [hl]
-	and IS_EGG_MASK
-	ld a, d
-	jr nz, .loop_left_invalid
-	ld hl, wPartyMon1Species
-	rst AddNTimes
-	ld a, [hl]
-	call IsAPokemon
-	ld a, d
-	jr c, .loop_left_invalid
-	ld [wCurPartyMon], a
-	jp MoveScreenLoop
-.loop_left_invalid
-	and a
-	jp z, .loop
+	push bc
+	farcall PrevStorageBoxMon
+	pop bc
+	jr nz, .check_left
+
+	; There's no previous (non-Egg) mons, so revert wTempMon to what it was.
+	ld a, [wTempMonBox]
+	ld b, a
+	farcall GetStorageBoxMon
+	jp .loop
+.check_left
+	ld a, [wTempMonIsEgg]
+	bit MON_IS_EGG_F, a
+	jp z, MoveScreenLoop
 	jr .loop_left
 .pressed_up
 	ld a, [wMoveScreenCursor]
@@ -1101,12 +1250,24 @@ MoveScreenLoop:
 	jr .finish_swap
 
 .regular_swap_move
-	ld a, MON_MOVES
-	call GetPartyParamLocation
+	ld hl, wTempMonMoves
 	call .swap_location
-	ld a, MON_PP
-	call GetPartyParamLocation
+	ld hl, wTempMonPP
 	call .swap_location
+.storage_swap_loop
+	farcall UpdateStorageBoxMonFromTemp
+	jr z, .finish_swap
+
+	; undo the swap
+	ld hl, wTempMonMoves
+	call .swap_location
+	ld hl, wTempMonPP
+	call .swap_location
+	ld hl, .MustSaveFirst
+	call PrintTextNoBox
+	xor a
+	ld [wMoveSwapBuffer], a
+	jp .outer_loop
 
 .finish_swap
 	ld hl, wMoveScreenMoves
@@ -1142,6 +1303,11 @@ MoveScreenLoop:
 	ld [de], a
 	ret
 
+.MustSaveFirst:
+	text "Please save the"
+	line "game first."
+	prompt
+
 GetForgottenMoves::
 ; retrieve a list of a mon's forgotten moves, excluding ones beyond level
 ; and moves the mon already knows
@@ -1153,7 +1319,7 @@ GetForgottenMoves::
 	ld a, MON_FORM
 	call GetPartyParamLocation
 	ld a, [hl]
-	and FORM_MASK
+	and BASEMON_MASK
 	ld b, a
 	; bc = index
 	call GetSpeciesAndFormIndex
@@ -1162,7 +1328,7 @@ GetForgottenMoves::
 	add hl, bc
 	add hl, bc
 	ld a, BANK(EvosAttacksPointers)
-	call GetFarHalfword
+	call GetFarWord
 .skip_evos
 	ld a, BANK(EvosAttacks)
 	call GetFarByte
@@ -1244,33 +1410,25 @@ SetUpMoveScreenBG:
 	call GetCGBLayout
 	call LoadFontsBattleExtra
 	call ClearSpriteAnims2
-	ld a, [wCurPartyMon]
-	ld e, a
-	ld d, $0
-	ld hl, wPartySpecies
-	add hl, de
-	ld a, [hl]
+	ld a, [wTempMonSpecies]
 	ld [wd265], a
+	ld a, [wTempMonForm]
+	ld [wCurForm], a
 	farcall LoadMoveMenuMonIcon
 	hlcoord 0, 1
 	lb bc, 9, 18
-	call TextBox
+	call Textbox
 	hlcoord 0, 11
 	lb bc, 5, 18
-	call TextBox
+	call Textbox
 	hlcoord 2, 0
 	lb bc, 2, 3
 	call ClearBox
-	xor a
-	ld [wMonType], a
-	ld hl, wPartyMonNicknames
-	ld a, [wCurPartyMon]
-	call GetNick
+	ld de, wTempMonNickname
 	hlcoord 5, 1
 	rst PlaceString
-	push bc
-	farcall CopyPkmnToTempMon
-	pop hl
+	ld h, b
+	ld l, c
 	call PrintLevel
 	call SetPalettes
 	hlcoord 16, 0
@@ -1299,6 +1457,9 @@ MoveScreen_ListMoves:
 	predef ListMoves
 
 	; Get PP -- either current PP, or default PP for the move
+	ld a, [wMoveScreenMode]
+	and a
+	jr z, .got_pp
 	ld hl, wListMoves_MoveIndicesBuffer
 	ld de, wTempMonMoves
 	ld bc, NUM_MOVES
@@ -1358,7 +1519,7 @@ MoveScreen_ListMoves:
 MoveScreen_ListMovesFast:
 	hlcoord 0, 11
 	lb bc, 5, 18
-	call TextBox
+	call Textbox
 	ld hl, wTempMonMoves
 	ld a, [wMoveScreenCursor]
 	ld c, a
@@ -1436,8 +1597,8 @@ PlaceMoveData:
 	lb bc, BANK(CategoryIconGFX), 2
 	call Request2bpp
 	hlcoord 1, 12
-	ld [hl], $59
-	inc hl
+	ld a, $59
+	ld [hli], a
 	ld [hl], $5a
 
 	ld hl, Moves + MOVE_TYPE
@@ -1459,12 +1620,12 @@ PlaceMoveData:
 	lb bc, BANK(TypeIconGFX), 4
 	call Request1bpp
 	hlcoord 3, 12
-	ld [hl], $5b
-	inc hl
-	ld [hl], $5c
-	inc hl
-	ld [hl], $5d
-	inc hl
+	ld a, $5b
+	ld [hli], a
+	inc a ; $5c
+	ld [hli], a
+	inc a ; $5d
+	ld [hli], a
 	ld [hl], $5e
 
 	ld hl, Moves + MOVE_POWER
@@ -1511,5 +1672,5 @@ String_PowAcc:
 
 Text_CantForgetHM:
 ; HM moves can't be forgotten now.
-	text_jump UnknownText_0x1c5772
+	text_far _MoveCantForgetHMText
 	text_end

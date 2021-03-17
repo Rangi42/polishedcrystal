@@ -1,24 +1,24 @@
 MystriStage_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event  6, 19, SINJOH_RUINS, 1
 	warp_event  7, 19, SINJOH_RUINS, 1
 
-	db 2 ; coord events
+	def_coord_events
 	coord_event  6, 11, 1, MystriStageTrigger1Script
 	coord_event  7, 11, 1, MystriStageTrigger2Script
 
-	db 0 ; bg events
+	def_bg_events
 
-	db 3 ; object events
-	object_event  6, 10, SPRITE_CYNTHIA, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, MystriStageCynthiaSafeguardScript, EVENT_LISTENED_TO_CYNTHIA_INTRO
-	object_event  7,  7, SPRITE_CYNTHIA, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, MystriStageCynthiaScript, EVENT_MYSTRI_STAGE_CYNTHIA
-	object_event  6,  8, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, EGG, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, MystriStageEggScript, EVENT_MYSTRI_STAGE_EGG
+	def_object_events
+	object_event  6, 10, SPRITE_CYNTHIA, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, MystriStageCynthiaSafeguardScript, EVENT_LISTENED_TO_CYNTHIA_INTRO
+	object_event  7,  7, SPRITE_CYNTHIA, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, MystriStageCynthiaScript, EVENT_MYSTRI_STAGE_CYNTHIA
+	object_event  6,  8, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, EGG, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, MystriStageEggScript, EVENT_MYSTRI_STAGE_EGG
 
-	const_def 1 ; object constants
+	object_const_def
 	const MYSTRISTAGE_CYNTHIA1
 	const MYSTRISTAGE_CYNTHIA2
 	const MYSTRISTAGE_EGG
@@ -121,7 +121,7 @@ MystriStageBeatCynthiaScript:
 	jumptextfaceplayer MystriStageCynthiaEggText
 
 MystriStageEggScript:
-	checkcode VAR_PARTYCOUNT
+	readvar VAR_PARTYCOUNT
 	ifequal PARTY_LENGTH, .PartyFull
 	special GiveMystriEgg
 	disappear MYSTRISTAGE_EGG

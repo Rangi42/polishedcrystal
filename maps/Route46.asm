@@ -1,24 +1,24 @@
 Route46_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 3 ; warp events
+	def_warp_events
 	warp_event  7, 33, ROUTE_29_46_GATE, 1
 	warp_event  8, 33, ROUTE_29_46_GATE, 2
 	warp_event 14,  5, DARK_CAVE_VIOLET_ENTRANCE, 3
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 1 ; bg events
-	bg_event  9, 27, SIGNPOST_JUMPTEXT, Route46SignText
+	def_bg_events
+	bg_event  9, 27, BGEVENT_JUMPTEXT, Route46SignText
 
-	db 8 ; object events
-	object_event 15, 13, SPRITE_HIKER, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route46HikerScript, -1
-	object_event 12, 19, SPRITE_HIKER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerHikerBailey, -1
-	object_event  4, 14, SPRITE_CAMPER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerCamperTed, -1
-	object_event  2, 13, SPRITE_PICNICKER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 2, TrainerPicnickerErin1, -1
-	object_event  7, 26, SPRITE_CUTE_GIRL, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, Route46LassText, -1
+	def_object_events
+	object_event 15, 13, SPRITE_HIKER, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route46HikerScript, -1
+	object_event 12, 19, SPRITE_HIKER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, GenericTrainerHikerBailey, -1
+	object_event  4, 14, SPRITE_CAMPER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, GenericTrainerCamperTed, -1
+	object_event  2, 13, SPRITE_PICNICKER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_TRAINER, 2, TrainerPicnickerErin1, -1
+	object_event  7, 26, SPRITE_CUTE_GIRL, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, Route46LassText, -1
 	fruittree_event  7,  5, FRUITTREE_ROUTE_46_1, CHERI_BERRY, PAL_NPC_RED
 	fruittree_event  8,  6, FRUITTREE_ROUTE_46_2, CHESTO_BERRY, PAL_NPC_PURPLE
 	itemball_event  1, 15, X_SPEED, 1, EVENT_ROUTE_46_X_SPEED
@@ -39,7 +39,7 @@ Route46TutorRoute46Script:
 	writetext Text_Route46TutorQuestion
 	yesorno
 	iffalse .TutorRefused
-	writebyte ROLLOUT
+	setval ROLLOUT
 	writetext ClearText
 	special Special_MoveTutor
 	ifequal $0, .TeachMove
@@ -67,34 +67,34 @@ TrainerPicnickerErin1:
 	trainer PICNICKER, ERIN1, EVENT_BEAT_PICNICKER_ERIN, PicnickerErin1SeenText, PicnickerErin1BeatenText, 0, PicnickerErin1Script
 
 PicnickerErin1Script:
-	writecode VAR_CALLERID, PHONE_PICNICKER_ERIN
+	loadvar VAR_CALLERID, PHONE_PICNICKER_ERIN
 	opentext
-	checkflag ENGINE_ERIN
+	checkflag ENGINE_ERIN_READY_FOR_REMATCH
 	iftrue UnknownScript_0x1a96da
 	checkcellnum PHONE_PICNICKER_ERIN
-	iftrue UnknownScript_0x1a975b
+	iftrue Route46NumberAcceptedF
 	checkevent EVENT_ERIN_ASKED_FOR_PHONE_NUMBER
 	iftrue UnknownScript_0x1a96c3
-	writetext UnknownText_0x1a98c6
-	buttonsound
+	writetext PicnickerErinAfterBattleText
+	promptbutton
 	setevent EVENT_ERIN_ASKED_FOR_PHONE_NUMBER
-	scall UnknownScript_0x1a974f
-	jump UnknownScript_0x1a96c6
+	scall Route46AskNumber1F
+	sjump UnknownScript_0x1a96c6
 
 UnknownScript_0x1a96c3:
-	scall UnknownScript_0x1a9753
+	scall Route46AskNumber2F
 UnknownScript_0x1a96c6:
 	askforphonenumber PHONE_PICNICKER_ERIN
-	ifequal $1, UnknownScript_0x1a9763
-	ifequal $2, UnknownScript_0x1a975f
-	trainertotext PICNICKER, ERIN1, $0
-	scall UnknownScript_0x1a9757
-	jump UnknownScript_0x1a975b
+	ifequal $1, Route46PhoneFullF
+	ifequal $2, Route46NumberDeclinedF
+	gettrainername PICNICKER, ERIN1, $0
+	scall Route46RegisteredNumberF
+	sjump Route46NumberAcceptedF
 
 UnknownScript_0x1a96da:
-	scall UnknownScript_0x1a9767
+	scall Route46RematchF
 	winlosstext PicnickerErin1BeatenText, 0
-	copybytetovar wErinFightCount
+	readmem wErinFightCount
 	ifequal 2, .Fight2
 	ifequal 1, .Fight1
 	ifequal 0, .LoadFight0
@@ -108,73 +108,73 @@ UnknownScript_0x1a96da:
 	loadtrainer PICNICKER, ERIN1
 	startbattle
 	reloadmapafterbattle
-	loadvar wErinFightCount, 1
-	clearflag ENGINE_ERIN
+	loadmem wErinFightCount, 1
+	clearflag ENGINE_ERIN_READY_FOR_REMATCH
 	end
 
 .LoadFight1:
 	loadtrainer PICNICKER, ERIN2
 	startbattle
 	reloadmapafterbattle
-	loadvar wErinFightCount, 2
-	clearflag ENGINE_ERIN
+	loadmem wErinFightCount, 2
+	clearflag ENGINE_ERIN_READY_FOR_REMATCH
 	end
 
 .LoadFight2:
 	loadtrainer PICNICKER, ERIN3
 	startbattle
 	reloadmapafterbattle
-	clearflag ENGINE_ERIN
+	clearflag ENGINE_ERIN_READY_FOR_REMATCH
 	checkevent EVENT_ERIN_CALCIUM
 	iftrue UnknownScript_0x1a973b
 	checkevent EVENT_GOT_CALCIUM_FROM_ERIN
 	iftrue UnknownScript_0x1a973a
-	scall UnknownScript_0x1a9772
+	scall Route46RematchGiftF
 	verbosegiveitem CALCIUM
-	iffalse UnknownScript_0x1a976b
+	iffalse ErinNoRoomForCalcium
 	setevent EVENT_GOT_CALCIUM_FROM_ERIN
-	jump UnknownScript_0x1a975b
+	sjump Route46NumberAcceptedF
 
 UnknownScript_0x1a973a:
 	end
 
 UnknownScript_0x1a973b:
 	opentext
-	writetext UnknownText_0x1a9927
+	writetext PicnickerErin2BeatenText
 	waitbutton
 	verbosegiveitem CALCIUM
-	iffalse UnknownScript_0x1a976b
+	iffalse ErinNoRoomForCalcium
 	clearevent EVENT_ERIN_CALCIUM
 	setevent EVENT_GOT_CALCIUM_FROM_ERIN
-	jump UnknownScript_0x1a975b
+	sjump Route46NumberAcceptedF
 
-UnknownScript_0x1a974f:
+Route46AskNumber1F:
 	jumpstd asknumber1f
 
-UnknownScript_0x1a9753:
+Route46AskNumber2F:
 	jumpstd asknumber2f
 
-UnknownScript_0x1a9757:
+Route46RegisteredNumberF:
 	jumpstd registerednumberf
 
-UnknownScript_0x1a975b:
+Route46NumberAcceptedF:
 	jumpstd numberacceptedf
 
-UnknownScript_0x1a975f:
+Route46NumberDeclinedF:
 	jumpstd numberdeclinedf
 
-UnknownScript_0x1a9763:
+Route46PhoneFullF:
 	jumpstd phonefullf
 
-UnknownScript_0x1a9767:
+Route46RematchF:
 	jumpstd rematchf
 
-UnknownScript_0x1a976b:
+ErinNoRoomForCalcium:
 	setevent EVENT_ERIN_CALCIUM
 	jumpstd packfullf
 	end
 
-UnknownScript_0x1a9772:
+Route46RematchGiftF:
 	jumpstd rematchgiftf
 
 GenericTrainerHikerBailey:
@@ -264,7 +264,7 @@ PicnickerErin1BeatenText:
 	text "Oh, rats!"
 	done
 
-UnknownText_0x1a98c6:
+PicnickerErinAfterBattleText:
 	text "I've been to many"
 	line "Gyms, but the Gym"
 
@@ -275,7 +275,7 @@ UnknownText_0x1a98c6:
 	line "pretty flowers!"
 	done
 
-UnknownText_0x1a9927:
+PicnickerErin2BeatenText:
 	text "Aww… I keep losing"
 	line "all the time!"
 

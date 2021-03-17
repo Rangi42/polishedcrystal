@@ -1,22 +1,22 @@
 Route2Gate_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 4 ; warp events
+	def_warp_events
 	warp_event  4,  0, ROUTE_2_NORTH, 2
 	warp_event  5,  0, ROUTE_2_NORTH, 3
 	warp_event  4,  7, ROUTE_2_SOUTH, 1
 	warp_event  5,  7, ROUTE_2_SOUTH, 1
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 0 ; bg events
+	def_bg_events
 
-	db 1 ; object events
-	object_event  6,  4, SPRITE_SCIENTIST, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x9b955, -1
+	def_object_events
+	object_event  6,  4, SPRITE_SCIENTIST, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, Route2GateScientistText, -1
 
-UnknownText_0x9b955:
+Route2GateScientistText:
 	text "Are you <PLAYER>?"
 
 	para "I work as Prof."

@@ -1,25 +1,25 @@
 BrunosRoom_MapScriptHeader:
-	db 1 ; scene scripts
+	def_scene_scripts
 	scene_script BrunosRoomEntranceTrigger
 
-	db 1 ; callbacks
+	def_callbacks
 	callback MAPCALLBACK_TILES, BrunosRoomDoorCallback
 
-	db 4 ; warp events
+	def_warp_events
 	warp_event  4, 17, KOGAS_ROOM, 3
 	warp_event  5, 17, KOGAS_ROOM, 4
 	warp_event  4,  2, KARENS_ROOM, 1
 	warp_event  5,  2, KARENS_ROOM, 2
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 0 ; bg events
+	def_bg_events
 
-	db 1 ; object events
-	object_event  5,  7, SPRITE_BRUNO, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BrunoScript, -1
+	def_object_events
+	object_event  5,  7, SPRITE_BRUNO, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, BrunoScript, -1
 
 BrunosRoomEntranceTrigger:
-	priorityjump .Script
+	prioritysjump .Script
 	end
 
 .Script:
@@ -44,10 +44,10 @@ BrunosRoomDoorCallback:
 	iffalse .OpenDoor
 	changeblock 4, 2, $16
 .OpenDoor:
-	return
+	endcallback
 
 BrunoScript:
-	checkcode VAR_BADGES
+	readvar VAR_BADGES
 	ifequal 16, .Rematch
 	checkevent EVENT_BEAT_ELITE_4_BRUNO
 	iftrue_jumptextfaceplayer .AfterText
@@ -57,7 +57,7 @@ BrunoScript:
 	startbattle
 	reloadmapafterbattle
 	showtext .AfterText
-	jump .EndBattle
+	sjump .EndBattle
 
 .Rematch:
 	checkevent EVENT_BEAT_ELITE_4_BRUNO

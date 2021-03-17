@@ -10,4 +10,4 @@ BattleCommand_endure:
 	call AnimateCurrentMove
 
 	ld hl, BracedItselfText
-	jp StdBattleTextBox
+	jp StdBattleTextbox

@@ -29,7 +29,7 @@ BattleCommand_curse:
 	predef SubtractHPFromUser
 	call UpdateUserInParty
 	ld hl, PutACurseText
-	jp StdBattleTextBox
+	jp StdBattleTextbox
 
 .failed
 	call AnimateFailedMove

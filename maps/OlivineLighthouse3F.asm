@@ -1,9 +1,9 @@
 OlivineLighthouse3F_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 9 ; warp events
+	def_warp_events
 	warp_event 13,  3, OLIVINE_LIGHTHOUSE_4F, 1
 	warp_event  5,  3, OLIVINE_LIGHTHOUSE_2F, 2
 	warp_event  9,  5, OLIVINE_LIGHTHOUSE_4F, 4
@@ -14,18 +14,18 @@ OlivineLighthouse3F_MapScriptHeader:
 	warp_event  8,  3, OLIVINE_LIGHTHOUSE_4F, 7
 	warp_event  9,  3, OLIVINE_LIGHTHOUSE_4F, 8
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 0 ; bg events
+	def_bg_events
 
-	db 4 ; object events
-	object_event  9, 14, SPRITE_BATTLE_GIRL, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, OlivineLighthouse3FBattleGirlEmy, -1
-	object_event  9,  2, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerSailorTerrell, -1
-	object_event 13,  5, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerGentlemanPreston, EVENT_OLIVINE_LIGHTHOUSE_JASMINE
-	object_event  3,  9, SPRITE_BIRD_KEEPER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 3, TrainerBird_keeperTheo, -1
+	def_object_events
+	object_event  9, 14, SPRITE_BATTLE_GIRL, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, OlivineLighthouse3FBattleGirlEmy, -1
+	object_event  9,  2, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerSailorTerrell, -1
+	object_event 13,  5, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 4, GenericTrainerGentlemanPreston, EVENT_OLIVINE_LIGHTHOUSE_JASMINE
+	object_event  3,  9, SPRITE_BIRD_KEEPER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_TRAINER, 3, TrainerBird_keeperTheo, -1
 	itemball_event  8,  2, ETHER, 1, EVENT_OLIVINE_LIGHTHOUSE_3F_ETHER
 
-	const_def 1 ; object constants
+	object_const_def
 	const OLIVINELIGHTHOUSE3F_COOLTRAINER_F
 
 OlivineLighthouse3FBattleGirlEmy:
@@ -68,7 +68,7 @@ OlivineLighthouse3FBattleGirlEmy:
 .Beaten:
 	opentext
 	writetext .AfterText1
-	buttonsound
+	promptbutton
 	verbosegiveitem PROTECT_PADS
 	iffalse_endtext
 	setevent EVENT_GOT_PROTECT_PADS_FROM_LIGHTHOUSE_LEADER
@@ -147,10 +147,10 @@ TrainerBird_keeperTheo:
 	trainer BIRD_KEEPER, THEO, EVENT_BEAT_BIRD_KEEPER_THEO, Bird_keeperTheoSeenText, Bird_keeperTheoBeatenText, 0, Bird_keeperTheoScript
 
 Bird_keeperTheoScript:
-	end_if_just_battled
+	endifjustbattled
 	checkevent EVENT_JASMINE_RETURNED_TO_GYM
 	iftrue_jumptextfaceplayer Bird_keeperTheoFinalText
-	jumptextfaceplayer UnknownText_0x5b2df
+	jumptextfaceplayer BirdKeeperTheoAfterBattleText
 
 GenericTrainerGentlemanPreston:
 	generictrainer GENTLEMAN, PRESTON, EVENT_BEAT_GENTLEMAN_PRESTON, GentlemanPrestonSeenText, GentlemanPrestonBeatenText
@@ -187,7 +187,7 @@ Bird_keeperTheoBeatenText:
 	line "concerned…"
 	done
 
-UnknownText_0x5b2df:
+BirdKeeperTheoAfterBattleText:
 	text "How the heck do"
 	line "you go up?"
 

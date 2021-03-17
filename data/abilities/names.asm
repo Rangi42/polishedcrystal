@@ -135,12 +135,15 @@ AbilityNames:
 	dw ToughClaws
 	dw Pixilate
 	dw ParentalBond
+	dw Berserk
 	dw SlushRush
 	dw Galvanize
 	dw Corrosion
 	dw TanglingHair
+	dw GorillaTactics
 	dw NeutralizingGas
 	dw PastelVeil
+	dw QuickDraw
 
 NoAbility:       rawchar "---@"
 Stench:          rawchar "Stench@"
@@ -278,9 +281,12 @@ MegaLauncher:    rawchar "Mega Launcher@"
 ToughClaws:      rawchar "Tough Claws@"
 Pixilate:        rawchar "Pixilate@"
 ParentalBond:    rawchar "Parental Bond@"
+Berserk:         rawchar "Berserk@"
 SlushRush:       rawchar "Slush Rush@"
 Galvanize:       rawchar "Galvanize@"
 Corrosion:       rawchar "Corrosion@"
 TanglingHair:    rawchar "Tangling Hair@"
+GorillaTactics:  rawchar "Gorilla Tactics@"
 NeutralizingGas: rawchar "Neutralizing Gas@"
 PastelVeil:      rawchar "Pastel Veil@"
+QuickDraw:       rawchar "Quick Draw@"

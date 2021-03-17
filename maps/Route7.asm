@@ -1,24 +1,24 @@
 Route7_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event 15,  6, ROUTE_7_SAFFRON_GATE, 1
 	warp_event 15,  7, ROUTE_7_SAFFRON_GATE, 2
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 2 ; bg events
-	bg_event  5, 13, SIGNPOST_JUMPTEXT, Route7UndergroundPathSignText
-	bg_event  6, 11, SIGNPOST_JUMPTEXT, Route7LockedDoorText
+	def_bg_events
+	bg_event  5, 13, BGEVENT_JUMPTEXT, Route7UndergroundPathSignText
+	bg_event  6, 11, BGEVENT_JUMPTEXT, Route7LockedDoorText
 
-	db 3 ; object events
-	object_event  1,  0, SPRITE_BIG_SNORLAX, SPRITEMOVEDATA_SNORLAX, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, Route7Snorlax, EVENT_ROUTE_8_SNORLAX
-	object_event 15, 11, SPRITE_BREEDER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 5, GenericTrainerBreederCarlene, -1
+	def_object_events
+	object_event  1,  0, SPRITE_BIG_SNORLAX, SPRITEMOVEDATA_SNORLAX, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route7Snorlax, EVENT_ROUTE_8_SNORLAX
+	object_event 15, 11, SPRITE_BREEDER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 5, GenericTrainerBreederCarlene, -1
 	itemball_event 16,  1, MENTAL_HERB, 1, EVENT_ROUTE_7_MENTAL_HERB
 
-	const_def 1 ; object constants
+	object_const_def
 	const ROUTE7_BIG_SNORLAX
 
 GenericTrainerBreederCarlene:
@@ -56,7 +56,7 @@ Route7Snorlax:
 	pause 15
 	cry SNORLAX
 	closetext
-	writecode VAR_BATTLETYPE, BATTLETYPE_FORCEITEM
+	loadvar VAR_BATTLETYPE, BATTLETYPE_FORCEITEM
 	loadwildmon SNORLAX, 60
 	startbattle
 	disappear ROUTE7_BIG_SNORLAX

@@ -1,40 +1,40 @@
 Route26DayofWeekSiblingsHouse_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event  2,  7, ROUTE_26, 3
 	warp_event  3,  7, ROUTE_26, 3
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 0 ; bg events
+	def_bg_events
 
-	db 1 ; object events
-	object_event  3,  3, SPRITE_BOOK_PAPER_POKEDEX, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BookScript_0x7b1e4, -1
+	def_object_events
+	object_event  3,  3, SPRITE_BOOK_PAPER_POKEDEX, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, DayOfWeekSiblingsHousePokedexScript, -1
 
-BookScript_0x7b1e4:
+DayOfWeekSiblingsHousePokedexScript:
 	opentext
-	writetext UnknownText_0x7b1f9
+	writetext DayOfWeekSiblingsHousePokedexText1
 	yesorno
-	iffalse UnknownText_0x7b1f7
-	writetext UnknownText_0x7b222
+	iffalse .End
+	writetext DayOfWeekSiblingsHousePokedexText2
 	yesorno
-	iffalse UnknownText_0x7b1f7
-	writetext UnknownText_0x7b2b9
+	iffalse .End
+	writetext DayOfWeekSiblingsHousePokedexText3
 	waitbutton
-UnknownText_0x7b1f7:
+.End:
 	endtext
 
-UnknownText_0x7b1f9:
+DayOfWeekSiblingsHousePokedexText1:
 	text "There's something"
 	line "written here."
 
 	para "Read it?"
 	done
 
-UnknownText_0x7b222:
+DayOfWeekSiblingsHousePokedexText2:
 	text "To my brothers and"
 	line "sisters:"
 
@@ -52,7 +52,7 @@ UnknownText_0x7b222:
 	para "Keep reading?"
 	done
 
-UnknownText_0x7b2b9:
+DayOfWeekSiblingsHousePokedexText3:
 	text "Monday, Monica"
 	line "Route 40"
 

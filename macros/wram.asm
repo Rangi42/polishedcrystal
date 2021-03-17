@@ -25,7 +25,7 @@ box_struct: MACRO
 \1Nature::         db
 \1Gender::
 \1IsEgg::
-\1IsDead::
+\1ExtSpecies::
 \1Form::           db
 \1PP::             ds NUM_MOVES
 \1Happiness::      db
@@ -38,6 +38,29 @@ box_struct: MACRO
 \1CaughtLocation:: db
 \1Level::          db
 \1End::
+ENDM
+
+savemon_struct: MACRO
+; game logic relies on nick being after boxmon and ot being after nick
+	box_struct \1
+\1Extra::          ds 3 ; superfluous OT name bytes
+\1Nick::           ds MON_NAME_LENGTH - 1
+\1OT::             ds PLAYER_NAME_LENGTH - 1
+\1EncodeEnd::
+ENDM
+
+pokedb: MACRO
+\1Mons::
+\1Mon1::           savemon_struct \1Mon1
+\1Mon2::           ds SAVEMON_STRUCT_LENGTH * (MONDB_ENTRIES - 1)
+\1UsedEntries::    flag_array MONDB_ENTRIES
+\1End::
+ENDM
+
+newbox: MACRO
+\1Entries::        ds MONS_PER_BOX
+\1Banks::          flag_array MONS_PER_BOX
+\1Name::           ds BOX_NAME_LENGTH
 ENDM
 
 party_struct: MACRO
@@ -70,7 +93,7 @@ battle_struct: MACRO
 \1Nature::         db
 \1Gender::
 \1IsEgg::
-\1IsDead::
+\1ExtSpecies::
 \1Form::           db
 \1PP::             ds NUM_MOVES
 \1Happiness::      db
@@ -160,22 +183,6 @@ channel_struct: MACRO
 \1Field0x30::         dw
 ENDM
 
-battle_tower_struct: MACRO
-\1Name:: ds NAME_LENGTH - 1
-\1TrainerClass:: db
-\1Pkmn1:: party_struct \1Pkmn1
-\1Pkmn1Name:: ds MON_NAME_LENGTH
-\1Pkmn1NameEnd::
-\1Pkmn2:: party_struct \1Pkmn2
-\1Pkmn2Name:: ds MON_NAME_LENGTH
-\1Pkmn2NameEnd::
-\1Pkmn3:: party_struct \1Pkmn3
-\1Pkmn3Name:: ds MON_NAME_LENGTH
-\1Pkmn3NameEnd::
-\1Padding: ds BATTLETOWER_PADDING_SIZE
-\1TrainerEnd::
-ENDM
-
 mailmsg: MACRO
 \1Message:: ds MAIL_MSG_LENGTH
 \1MessageEnd:: db
@@ -250,7 +257,7 @@ trademon: MACRO
 \1Nature:: db
 \1Gender::
 \1IsEgg::
-\1IsDead::
+\1ExtSpecies::
 \1Form:: db
 \1ID:: dw
 \1CaughtData:: db

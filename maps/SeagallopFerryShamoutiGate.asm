@@ -1,26 +1,26 @@
 SeagallopFerryShamoutiGate_MapScriptHeader:
-	db 2 ; scene scripts
+	def_scene_scripts
 	scene_script SeagallopFerryShamoutiGateTrigger0
 	scene_script SeagallopFerryShamoutiGateTrigger1
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 1 ; warp events
+	def_warp_events
 	warp_event  6,  0, BEAUTIFUL_BEACH, 1
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 0 ; bg events
+	def_bg_events
 
-	db 2 ; object events
-	object_event  6,  4, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SeagallopFerryShamoutiGateSailorScript, EVENT_OLIVINE_PORT_SAILOR_AT_GANGWAY
-	object_event  4,  1, SPRITE_SCHOOLGIRL, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, SeagallopFerryShamoutiGateTwinText, -1
+	def_object_events
+	object_event  6,  4, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, SeagallopFerryShamoutiGateSailorScript, EVENT_OLIVINE_PORT_SAILOR_AT_GANGWAY
+	object_event  4,  1, SPRITE_SCHOOLGIRL, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, SeagallopFerryShamoutiGateTwinText, -1
 
-	const_def 1 ; object constants
+	object_const_def
 	const SEAGALLOPFERRYSHAMOUTIGATE_SAILOR
 
 SeagallopFerryShamoutiGateTrigger1:
-	priorityjump SeagallopFerryShamoutiGate_PlayerArrives
+	prioritysjump SeagallopFerryShamoutiGate_PlayerArrives
 SeagallopFerryShamoutiGateTrigger0:
 	end
 
@@ -44,7 +44,7 @@ SeagallopFerryShamoutiGateSailorScript:
 	closewindow
 	ifequal $1, .ToVermilion
 	ifequal $2, .ToValencia
-	jump .RefuseFerry
+	sjump .RefuseFerry
 
 .OnlyVermilion
 	writetext SeagallopFerryShamoutiToVermilionQuestionText

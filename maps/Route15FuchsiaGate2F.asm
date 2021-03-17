@@ -1,18 +1,18 @@
 Route15FuchsiaGate2F_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 1 ; warp events
+	def_warp_events
 	warp_event  7,  7, ROUTE_15_FUCHSIA_GATE_2F, -1
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 2 ; bg events
-	bg_event  1,  2, SIGNPOST_UP, Route15FuchsiaGate2FBinoculars1
-	bg_event  6,  2, SIGNPOST_UP, Route15FuchsiaGate2FBinoculars2
+	def_bg_events
+	bg_event  1,  2, BGEVENT_UP, Route15FuchsiaGate2FBinoculars1
+	bg_event  6,  2, BGEVENT_UP, Route15FuchsiaGate2FBinoculars2
 
-	db 0 ; object events
+	def_object_events
 
 Route15FuchsiaGate2FBinoculars1:
 	jumptext Route15FuchsiaGate2FBinoculars1Text

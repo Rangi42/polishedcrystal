@@ -1,14 +1,12 @@
 Pokepic::
 	ld hl, PokepicMenuDataHeader
-	call CopyMenuDataHeader
+	call CopyMenuHeader
 	call MenuBox
 	call UpdateSprites
-	ld a, [wIsCurMonInParty]
-	and a
-	jr nz, .partymon
+	ld a, [wCurForm]
+	cp -1
+	jr z, .partymon
 	farcall LoadPokemonPalette
-	ld a, 1
-	ld [wCurForm], a
 	jr .got_palette
 .partymon
 	farcall LoadPartyMonPalette
@@ -42,7 +40,7 @@ _Displaypic:
 
 Trainerpic::
 	ld hl, PokepicMenuDataHeader
-	call CopyMenuDataHeader
+	call CopyMenuHeader
 	call MenuBox
 	call UpdateSprites
 	call SafeCopyTilemapAtOnce
@@ -63,7 +61,7 @@ Paintingpic::
 	lb bc, BANK(PaintingFrameGFX), 9
 	call Get2bpp
 	ld hl, PokepicMenuDataHeader
-	call CopyMenuDataHeader
+	call CopyMenuHeader
 	call MenuBox
 	hlcoord 9, 12
 	ld a, "┌" - 3
@@ -82,7 +80,7 @@ Paintingpic::
 
 ClosePokepic::
 	ld hl, PokepicMenuDataHeader
-	call CopyMenuDataHeader
+	call CopyMenuHeader
 	call ClearMenuBoxInterior
 	call GetMemCGBLayout
 	xor a
@@ -91,7 +89,7 @@ ClosePokepic::
 	call UpdateSprites
 	ld b, 1
 	call SafeCopyTilemapAtOnce
-	farjp ReloadVisibleSprites
+	farjp RefreshSprites
 
 PokepicMenuDataHeader:
 	db $40 ; flags

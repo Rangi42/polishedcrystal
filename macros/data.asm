@@ -48,11 +48,9 @@ endr
 ENDM
 
 dx: MACRO
-x = 8 * ((\1) - 1)
-	rept \1
+for x, 8 * ((\1) - 1), -1, -8
 	db LOW((\2) >> x)
-x = x - 8
-	endr
+endr
 ENDM
 
 dt: MACRO ; three-byte (big-endian)
@@ -108,6 +106,43 @@ rept _NARG
 	dn ((\1) % 100) / 10, (\1) % 10
 	shift
 endr
+ENDM
+
+dp: MACRO ; db species, extspecies | form
+if _NARG == 2
+	db LOW(\1), HIGH(\1) << MON_EXTSPECIES_F | \2
+else
+	db LOW(\1), HIGH(\1) << MON_EXTSPECIES_F
+endc
+ENDM
+
+dbp: MACRO
+	db \1
+if _NARG == 3
+	dp \2, \3
+else
+	dp \2
+endc
+ENDM
+
+dpb: MACRO
+if _NARG == 3
+	dp \1, \2
+	shift
+else
+	dp \1
+endc
+	db \2
+ENDM
+
+dpw: MACRO
+if _NARG == 3
+	dp \1, \2
+	shift
+else
+	dp \1
+endc
+	dw \2
 ENDM
 
 

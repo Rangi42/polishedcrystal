@@ -111,7 +111,7 @@ GetFishGroupIndex:
 
 	push hl
 	ld hl, wDailyFlags
-	bit 2, [hl] ; ENGINE_SPECIAL_WILDDATA
+	bit 2, [hl] ; ENGINE_FISH_SWARM
 	pop hl
 	jr z, .done
 

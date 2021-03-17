@@ -1,25 +1,25 @@
 CeladonHomeDecorStore1F_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 3 ; warp events
+	def_warp_events
 	warp_event  3,  7, CELADON_CITY, 12
 	warp_event  4,  7, CELADON_CITY, 12
 	warp_event  9,  0, CELADON_HOME_DECOR_STORE_2F, 1
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 1 ; bg events
-	bg_event  8,  0, SIGNPOST_JUMPTEXT, CeladonHomeDecorStore1FDirectoryText
+	def_bg_events
+	bg_event  8,  0, BGEVENT_JUMPTEXT, CeladonHomeDecorStore1FDirectoryText
 
-	db 6 ; object events
-	object_event  4,  1, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonHomeDecorStore1FReceptionistText, -1
-	object_event  5,  1, SPRITE_CLERK, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, CeladonHomeDecorStore1FClerkScript, -1
-	object_event  7,  5, SPRITE_MON_ICON, SPRITEMOVEDATA_DOLL, 0, BULBASAUR, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptext, CeladonHomeDecorStore1FBulbasaurDollText, -1
-	object_event  8,  5, SPRITE_MON_ICON, SPRITEMOVEDATA_DOLL, 0, CHARMANDER, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptext, CeladonHomeDecorStore1FCharmanderDollText, -1
-	object_event  9,  5, SPRITE_MON_ICON, SPRITEMOVEDATA_DOLL, 0, SQUIRTLE, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptext, CeladonHomeDecorStore1FSquirtleDollText, -1
-	object_event  0,  4, SPRITE_BATTLE_GIRL, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, CeladonHomeDecorStore1FCooltrainerfText, -1
+	def_object_events
+	object_event  4,  1, SPRITE_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeladonHomeDecorStore1FReceptionistText, -1
+	object_event  5,  1, SPRITE_CLERK, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, CeladonHomeDecorStore1FClerkScript, -1
+	object_event  7,  5, SPRITE_MON_ICON, SPRITEMOVEDATA_STILL, 0, BULBASAUR, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptext, CeladonHomeDecorStore1FBulbasaurDollText, -1
+	object_event  8,  5, SPRITE_MON_ICON, SPRITEMOVEDATA_STILL, 0, CHARMANDER, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptext, CeladonHomeDecorStore1FCharmanderDollText, -1
+	object_event  9,  5, SPRITE_MON_ICON, SPRITEMOVEDATA_STILL, 0, SQUIRTLE, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_COMMAND, jumptext, CeladonHomeDecorStore1FSquirtleDollText, -1
+	object_event  0,  4, SPRITE_BATTLE_GIRL, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, CeladonHomeDecorStore1FCooltrainerfText, -1
 
 CeladonHomeDecorStore1FClerkScript:
 	faceplayer
@@ -47,7 +47,7 @@ CeladonHomeDecorStore1FClerkScript:
 	waitbutton
 	writetext BulbasaurDollSentText
 	waitbutton
-	jump .Start
+	sjump .Start
 
 .CharmanderDoll:
 	checkmoney $0, 16000
@@ -61,7 +61,7 @@ CeladonHomeDecorStore1FClerkScript:
 	waitbutton
 	writetext CharmanderDollSentText
 	waitbutton
-	jump .Start
+	sjump .Start
 
 .SquirtleDoll:
 	checkmoney $0, 16000
@@ -75,17 +75,17 @@ CeladonHomeDecorStore1FClerkScript:
 	waitbutton
 	writetext SquirtleDollSentText
 	waitbutton
-	jump .Start
+	sjump .Start
 
 .NotEnoughMoney:
 	writetext CeladonHomeDecorStore1FNoMoneyText
 	waitbutton
-	jump .Start
+	sjump .Start
 
 .AlreadyBought:
 	writetext CeladonHomeDecorStore1FAlreadyBoughtText
 	waitbutton
-	jump .Start
+	sjump .Start
 
 .MenuData:
 	db $40 ; flags

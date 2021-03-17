@@ -5,7 +5,7 @@ ShowLinkBattleParticipants:
 	and a
 	ret z
 
-	farcall _ShowLinkBattleParticipants
+	call _ShowLinkBattleParticipants
 	ld c, 150
 	call DelayFrames
 	call ClearTileMap
@@ -131,7 +131,7 @@ PlayBattleMusic:
 	jp PopBCDEHL
 
 .loadfromarray
-	ld e, 3
+	ld e, 3 ; d is already 0 from 'ld de, MUSIC_NONE'
 	call IsInArray
 	ret nc
 	inc hl
@@ -141,17 +141,16 @@ PlayBattleMusic:
 	push hl
 	call RegionCheck
 	pop hl
-	ld a, e
-	and a ; Johto
-	jr nz, .ok
 	ld a, [wTimeOfDay]
 	cp NITE
-	jr nz, .ok
-	ld e, 3 ; Johto at night
-
-.ok
+	; a = carry ? 0 : NUM_REGIONS
+	ccf
+	sbc a
+	and NUM_REGIONS
+	add e
+	add a
+	ld e, a
 	ld d, 0
-	add hl, de
 	add hl, de
 .found
 	ld a, [hli]

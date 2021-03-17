@@ -137,9 +137,8 @@ wAutoInputLength:: db
 wMonStatusFlags:: db
 wGameLogicPaused:: db
 wSpriteUpdatesEnabled:: db
-	ds 1
 wMapTimeOfDay:: db
-	ds 5
+
 wPrevDexEntry:: db
 
 wPrevLandmark:: db
@@ -153,14 +152,17 @@ wLinkMode::
 
 wPlayerNextMovement:: db
 wPlayerMovement:: db
-	ds 2
+
 wMovementObject:: db
 wMovementDataPointer:: ds 3 ; dba
-	ds 4
-wMovementByteWasControlSwitch:: db
-wMovementPointer:: dw
-	ds 3
 
+wMovementByteWasControlSwitch:: db
+
+UNION
+wObjectPriorities:: ds NUM_OBJECT_STRUCTS
+NEXTU
+wMovementPointer:: dw
+	ds 2
 wTempObjectCopyMapObjectIndex:: db
 wTempObjectCopySprite:: db
 wTempObjectCopySpriteVTile:: db
@@ -170,6 +172,7 @@ wTempObjectCopyRange:: db
 wTempObjectCopyX:: db
 wTempObjectCopyY:: db
 wTempObjectCopyRadius:: db
+ENDU
 
 wTileDown:: db
 wTileUp:: db
@@ -184,6 +187,8 @@ wTilePermissions::
 ; bit 1: left
 ; bit 0: right
 	db
+
+	ds 13
 
 
 SECTION "Sprite Animations", WRAM0
@@ -218,7 +223,6 @@ wCurIconForm:: db
 wCurIconTile:: db
 
 wSpriteAnimAddrBackup::
-wSpriteAnimIDBuffer::
 wCurSpriteAddSubFlags::
 	dw
 wCurAnimVTile:: db
@@ -347,10 +351,6 @@ wOddEggName:: ds MON_NAME_LENGTH
 wOddEggOTName:: ds MON_NAME_LENGTH
 
 NEXTU
-; battle tower temp struct
-wBT_OTTemp:: battle_tower_struct wBT_OTTemp
-
-NEXTU
 ; hall of fame temp struct
 wHallOfFameTemp:: hall_of_fame wHallOfFameTemp
 
@@ -359,6 +359,11 @@ NEXTU
 wTimeSetBuffer:: ds 20
 wInitHourBuffer:: ds 13
 wInitMinuteBuffer:: ds 17
+
+NEXTU
+; link patch lists
+wPlayerPatchLists:: ds 200
+wOTPatchLists:: ds 200
 
 NEXTU
 ; link engine
@@ -782,20 +787,20 @@ wDiscardPileEnd::
 wCardFlipEnd::
 
 ;NEXTU
-;; dummy game
-;wDummyGame::
-;wDummyGameCards:: ds 9 * 5
-;wDummyGameCardsEnd::
-;wDummyGameLastCardPicked:: db
-;wDummyGameCard1:: db
-;wDummyGameCard2:: db
-;wDummyGameCard1Location:: db
-;wDummyGameCard2Location:: db
-;wDummyGameNumberTriesRemaining:: db
-;wDummyGameLastMatches:: ds 5
-;wDummyGameCounter:: db
-;wDummyGameNumCardsMatched:: db
-;wDummyGameEnd::
+;; memory game
+;wMemoryGame::
+;wMemoryGameCards:: ds 9 * 5
+;wMemoryGameCardsEnd::
+;wMemoryGameLastCardPicked:: db
+;wMemoryGameCard1:: db
+;wMemoryGameCard2:: db
+;wMemoryGameCard1Location:: db
+;wMemoryGameCard2Location:: db
+;wMemoryGameNumberTriesRemaining:: db
+;wMemoryGameLastMatches:: ds 5
+;wMemoryGameCounter:: db
+;wMemoryGameNumCardsMatched:: db
+;wMemoryGameEnd::
 
 NEXTU
 ; Unown puzzle
@@ -852,31 +857,78 @@ NEXTU
 wCreditsBlankFrame2bpp:: ds 8 * 8 * 2
 
 NEXTU
-; Bill's PC
-wBillsPCData::
-wBillsPCPokemonList::
-; (species, box number, list index) x30
-	ds 3 * 30
-	ds 721
-wBillsPC_ScrollPosition:: db
-wBillsPC_CursorPosition:: db
-wBillsPC_NumMonsInBox:: db
-wBillsPC_NumMonsOnScreen:: db
-wBillsPC_LoadedBox:: db ; 0 if party, 1 - 14 if box, 15 if active box
-wBillsPC_BackupScrollPosition:: db
-wBillsPC_BackupCursorPosition:: db
-wBillsPC_BackupLoadedBox:: db
-wBillsPC_MonHasMail:: db
-wBillsPCDataEnd::
+
+; If you change ordering of this, remember to fix LCD hblank code too.
+; Note that (as of when comment was written), hblank can't always keep up
+; if doing 4 pals in one go during party shifting.
+wBillsPC_CurPals::
+wBillsPC_CurPartyPals:: ds 2 * 2 * 2 ; 2 bytes per color, 2 colors, 2 mons
+wBillsPC_CurMonPals:: ds 2 * 2 * 4 ; 2 bytes per color, 2 colors, 4 mons
+
+; Stores palettes used for party+box.
+wBillsPC_PalList::
+wBillsPC_PokepicPal:: ds 2 * 2 * 1
+wBillsPC_PokerusShinyPal:: ds 2 * 2 * 1
+wBillsPC_MonPals1:: ds 2 * 2 * 4
+
+	ds 2 * 2 * 2 ; unused row2 BG2-3
+
+wBillsPC_MonPals2:: ds 2 * 2 * 4
+wBillsPC_PartyPals3:: ds 2 * 2 * 2
+wBillsPC_MonPals3:: ds 2 * 2 * 4
+wBillsPC_PartyPals4:: ds 2 * 2 * 2
+wBillsPC_MonPals4:: ds 2 * 2 * 4
+wBillsPC_PartyPals5:: ds 2 * 2 * 2
+wBillsPC_MonPals5:: ds 2 * 2 * 4
+
+; Species lists
+wBillsPC_PartyList:: ds 6 * 2
+wBillsPC_BoxList:: ds 20 * 2
+
+wBillsPC_HeldIcon:: dw
+wBillsPC_QuickIcon:: dw
+
+; Cursor data
+wBillsPC_CursorItem:: db ; what item is selected.
+wBillsPC_CursorPos:: db ; 0-3 * 4*row, row 0 is title. Bit 7 means in party.
+wBillsPC_CursorHeldBox:: db ; 0 for party, 1-15 otherwise
+wBillsPC_CursorHeldSlot:: db ; 0 for nothing held, or 1-20 (1-6 if party)
+wBillsPC_CursorDestBox:: db ; 0 for party, 1-15 otherwise
+wBillsPC_CursorDestSlot:: db ; 0 for release, or 1-20 (1-6 if party)
+wBillsPC_CursorMode:: db ; 0 for regular mode (red), 1 for swap mode (blue), 2 for item mode (green)
+wBillsPC_CursorAnimFlag:: db ; manage cursor behaviour
+wBillsPC_ItemVWF:: ds 10 tiles
+
+; Quick-move sprite data.
+wBillsPC_QuickFrom::
+wBillsPC_QuickFromBox:: db
+wBillsPC_QuickFromSlot:: db
+wBillsPC_QuickFromX:: db
+wBillsPC_QuickFromY:: db
+
+wBillsPC_QuickTo::
+wBillsPC_QuickToBox:: db
+wBillsPC_QuickToSlot:: db
+wBillsPC_QuickToX:: db
+wBillsPC_QuickToY:: db
+wBillsPC_QuickFrames:: db
+
+wBillsPC_ApplyThemePals:: db ; used by _CGB_BillsPC
 
 NEXTU
-; link data
-wLinkData::
+; raw link data
+wLinkData:: ds 1300
+wLinkDataEnd::
+
+NEXTU
+; link data members
 wLinkPlayerName:: ds NAME_LENGTH
 wLinkPartyCount:: db
 wLinkPartySpecies:: ds PARTY_LENGTH
 wLinkPartyEnd:: db ; older code doesn't check PartyCount
 
+UNION
+; link player data
 wLinkPlayerData::
 wLinkPlayerPartyMon1:: party_struct wLinkPlayerPartyMon1
 wLinkPlayerPartyMon2:: party_struct wLinkPlayerPartyMon2
@@ -887,24 +939,35 @@ wLinkPlayerPartyMon6:: party_struct wLinkPlayerPartyMon6
 wLinkPlayerPartyMonOTNames:: ds PARTY_LENGTH * NAME_LENGTH
 wLinkPlayerPartyMonNicks:: ds PARTY_LENGTH * MON_NAME_LENGTH
 wLinkPlayerDataEnd::
-	ds 861
-wLinkDataEnd::
 
 NEXTU
-; more link data
-; TODO: replace with meaningful labels
-	ds 271
-wc90f:: ds 229
-wc9f4:: ds 5
-wc9f9:: ds 145
-	ds 53
-wcabf:: ds 79
-wcb0e:: ds 5
-wcb13:: ds 113
-wcb84:: ds 102
-	ds 96
-wcc4a:: ds 84
-wcc9e:: ds 130
+; link patch lists
+wLinkPatchList1:: ds SERIAL_PATCH_LIST_LENGTH
+wLinkPatchList2:: ds SERIAL_PATCH_LIST_LENGTH
+ENDU
+
+NEXTU
+; link mail data
+	ds 500
+wLinkPlayerMail::
+wLinkPlayerMailPreamble:: ds SERIAL_MAIL_PREAMBLE_LENGTH
+wLinkPlayerMailMessages:: ds (MAIL_MSG_LENGTH + 1) * PARTY_LENGTH
+wLinkPlayerMailMetadata:: ds (MAIL_STRUCT_LENGTH - (MAIL_MSG_LENGTH + 1)) * PARTY_LENGTH
+wLinkPlayerMailPatchSet:: ds 103
+wLinkPlayerMailEnd::
+	ds 10
+wLinkOTMail::
+wLinkOTMailMessages:: ds (MAIL_MSG_LENGTH + 1) * PARTY_LENGTH
+wLinkOTMailMetadata:: ds (MAIL_STRUCT_LENGTH - (MAIL_MSG_LENGTH + 1)) * PARTY_LENGTH
+wOTPlayerMailPatchSet:: ds 103 + SERIAL_MAIL_PREAMBLE_LENGTH
+wLinkOTMailEnd::
+	ds 10
+
+NEXTU
+; received link mail data
+	ds 500
+wLinkReceivedMail:: ds MAIL_STRUCT_LENGTH * PARTY_LENGTH
+wLinkReceivedMailEnd:: db
 
 ENDU
 
@@ -920,7 +983,6 @@ wMemCGBLayout:: db
 UNION
 wCreditsPos:: dw
 wCreditsTimer:: db
-wCopyingSGBTileData:: db
 wTrainerCardBadgePaletteAddr:: dw
 
 NEXTU
@@ -934,23 +996,32 @@ ENDU
 
 wTileAnimBuffer:: ds 1 tiles
 
-; addresses dealing with serial comms
+; link data
+UNION
 wOtherPlayerLinkMode:: db
 wOtherPlayerLinkAction:: db
 	ds 3
 wPlayerLinkAction:: db
-wcf57:: db ; TODO: replace with meaningful label
-	ds 3
+	ds 4
+NEXTU
+wLinkReceivedSyncBuffer:: ds 5
+wLinkPlayerSyncBuffer:: ds 5
+ENDU
+
 wLinkTimeoutFrames:: dw
-wcf5d:: dw ; TODO: replace with meaningful label
+wLinkByteTimeout:: dw
 
 wJumptableIndex:: db ; must come right before the union
 
 UNION
 ; intro and title data
 wIntroSceneFrameCounter:: db
-wTitleScreenTimerLo:: db
-wTitleScreenTimerHi:: db
+wIntroSceneTimer:: db
+
+NEXTU
+; title data
+	ds 1
+wTitleScreenTimer:: dw
 
 NEXTU
 ; credits data
@@ -959,30 +1030,72 @@ wCreditsBorderMon:: db
 wCreditsLYOverride:: db
 
 NEXTU
+; pokedex
+wPrevDexEntryJumptableIndex:: db
+wPrevDexEntryBackup:: db
+
+NEXTU
+; pokegear
+wPokegearCard:: db
+wPokegearMapRegion:: db
+
+NEXTU
+; pack
+wPackJumptableIndex:: db
+wCurPocket:: db
+wPackUsedItem:: db
+
+NEXTU
+; trainer card badges
+wTrainerCardBadgeFrameCounter:: db
+wTrainerCardBadgeTileID:: db
+
+NEXTU
+; slot machine
+wSlotsDelay:: db
+
+NEXTU
+; card flip
+wCardFlipCursorY:: db
+wCardFlipCursorX:: db
+wCardFlipWhichCard:: db
+
+;NEXTU
+;; unused memory game
+;wMemoryGameCardChoice:: db
+
+NEXTU
+; magnet train
+wMagnetTrainOffset:: db
+wMagnetTrainPosition:: db
+wMagnetTrainWaitCounter:: db
+
+NEXTU
 ; unown puzzle data
 wHoldingUnownPuzzlePiece:: db
 wUnownPuzzleCursorPosition:: db
 wUnownPuzzleHeldPiece:: db
 
 NEXTU
-; card flip data
-wCardFlipCursorY:: db
-wCardFlipCursorX:: db
-wCardFlipWhichCard:: db
+; battle transitions
+wBattleTransitionCounter:: db
+wBattleTransitionSineWaveOffset::
+wBattleTransitionSpinQuadrant:: db
+
+NEXTU
+; stats screen
+wStatsScreenFlags:: db
 
 NEXTU
 ; miscellaneous
-wDexEntryPrevJumptableIndex::
+wFrameCounter::
 wMomBankDigitCursorPosition::
-wNrOfBeatenBattleTowerTrainers::
+wNamingScreenLetterCase::
+wHallOfFameMonCounter::
+wTradeDialog::
 	db
-wCurPocket:: db
-
-NEXTU
-; unidentified
-wcf64:: db ; TODO: replace with meaningful labels
-wcf65:: db ; TODO: replace with meaningful labels
-wcf66:: db ; TODO: replace with meaningful labels
+wFrameCounter2:: db
+wUnusedTradeAnimPlayEvolutionMusic:: db
 
 ENDU
 
@@ -1093,7 +1206,7 @@ wTextDelayFrames:: db
 
 wGenericDelay:: db
 
-wGameTimerPause::
+wGameTimerPaused::
 ; bit 0
 	db
 
@@ -1133,7 +1246,13 @@ wOBP0:: db
 wOBP1:: db
 
 wNumHits:: db
-	ds 1 ; pretty sure wNumHits only needs one byte?
+
+wOptions3::
+; bit 0: keyword abc/qwerty
+; bits 1-7: unused
+	db
+
+wOptions::
 
 wOptions1::
 ; bit 0-1: text delay

@@ -87,16 +87,13 @@ _PrepMonFrontpic:
 
 PrintLevel::
 ; Print wTempMonLevel at hl
-
-	ld a, [wTempMonLevel]
-	ld [hl], "<LV>"
-	inc hl
-
+	ld a, "<LV>"
+	ld [hli], a
 ; How many digits?
 	ld c, 2
+	ld a, [wTempMonLevel]
 	cp 100
 	jr c, Print8BitNumRightAlign
-
 ; 3-digit numbers overwrite the :L.
 	dec hl
 	inc c
@@ -112,10 +109,6 @@ GetBaseData::
 	push hl
 	push de
 	push bc
-	ldh a, [hROMBank]
-	push af
-	ld a, BANK(BaseData)
-	rst Bankswitch
 	ld a, [wCurSpecies]
 	ld c, a
 	ld a, [wCurForm]
@@ -127,9 +120,8 @@ GetBaseData::
 	rst AddNTimes
 	ld de, wCurBaseData
 	ld bc, BASEMON_STRUCT_LENGTH
-	rst CopyBytes
-	pop af
-	rst Bankswitch
+	ld a, BANK(BaseData)
+	call FarCopyBytes
 	jp PopBCDEHL
 
 GetNature::
@@ -183,7 +175,7 @@ GetAbility::
 
 	inc hl
 	ld a, [hld]
-	and FORM_MASK
+	and BASEMON_MASK
 	ld b, a
 
 	push hl
@@ -253,6 +245,35 @@ GetNick::
 	rst CopyBytes
 	jp PopBCDEHL
 
+ReverseExtSpecies:
+; input: bc = extended species index
+; output: c = species, b = possible extspecies mask
+; keep in mind that we can't retain form data
+	bit 0, b
+	ret z
+	inc c ; extspecies $100 is bulbasaur ($01) with extspecies set
+	ld b, EXTSPECIES_MASK
+	ret
+
+GetPokedexNumber::
+; input: c = species, b = form
+; output bc = pokedex number (extended index - 1 if 256+, otherwise just c)
+; this reflects how eggs don't have a pokédex number.
+	call GetExtendedSpeciesIndex
+	bit 0, b
+	ret z
+	dec bc
+	ret
+
+GetExtendedSpeciesIndex::
+; input: c = species, b = form
+; output: bc = extended index
+	ld hl, ExtSpeciesTable - 1
+	call _GetSpeciesAndFormIndexHelper
+	ret c
+	ld bc, -ExtSpeciesTable
+	jr _GetSpeciesAndFormIndexFinal
+
 GetCosmeticSpeciesAndFormIndex::
 ; input: c = species, b = form
 ; output: bc = extended index
@@ -281,10 +302,10 @@ _GetSpeciesAndFormIndexFinal:
 
 _GetSpeciesAndFormIndexHelper:
 	ld a, b
-	and FORM_MASK
+	and BASEMON_MASK
 	jr z, .normal ; NO_FORM?
 	cp PLAIN_FORM
-	jr z, .normal
+	jr z, .normal ; species index isn't >255 and form is plain
 	ld b, a
 .next
 	inc hl
@@ -294,7 +315,23 @@ _GetSpeciesAndFormIndexHelper:
 	jr z, .normal
 	cp c
 	jr nz, .next
+
+	; If form mask is 0, only verify extspecies
+	ld a, BASEMON_MASK
+	and [hl]
+	jr z, .next ; Should never happen
+	cp EXTSPECIES_MASK
+	jr nz, .full_comparision
+
+	; Table index is extspecies only. If input form isn't, ignore it.
+	bit MON_EXTSPECIES_F, b
+	jr z, .next
+	inc hl ; makes sure we point at a proper index with final helper
+	ret
+
+.full_comparision
 	ld a, [hli]
+	bit MON_EXTSPECIES_F, a
 	cp b
 	jr nz, .loop
 	ret

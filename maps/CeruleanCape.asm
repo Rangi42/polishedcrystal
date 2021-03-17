@@ -1,47 +1,47 @@
 CeruleanCape_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 1 ; callbacks
+	def_callbacks
 	callback MAPCALLBACK_NEWMAP, CeruleanCapeFlyPoint
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event  9,  5, BILLS_HOUSE, 1
 	warp_event 38, 29, DIM_CAVE_2F, 1
 
-	db 3 ; coord events
+	def_coord_events
 	coord_event  4,  6, 1, CeruleanCapeDateInterruptedTrigger1
 	coord_event  4,  7, 1, CeruleanCapeDateInterruptedTrigger2
 	coord_event  9, 12, 1, CeruleanCapeDateInterruptedTrigger3
 
-	db 3 ; bg events
-	bg_event  7,  5, SIGNPOST_JUMPTEXT, BillsHouseSignText
-	bg_event 31, 12, SIGNPOST_ITEM + PEARL_STRING, EVENT_CERULEAN_CAPE_HIDDEN_PEARL_STRING
-	bg_event 18,  3, SIGNPOST_ITEM + BOTTLE_CAP, EVENT_CERULEAN_CAPE_HIDDEN_BOTTLE_CAP
+	def_bg_events
+	bg_event  7,  5, BGEVENT_JUMPTEXT, BillsHouseSignText
+	bg_event 31, 12, BGEVENT_ITEM + PEARL_STRING, EVENT_CERULEAN_CAPE_HIDDEN_PEARL_STRING
+	bg_event 18,  3, BGEVENT_ITEM + BOTTLE_CAP, EVENT_CERULEAN_CAPE_HIDDEN_BOTTLE_CAP
 
-	db 15 ; object events
-	object_event  8,  9, SPRITE_MISTY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CERULEAN_CAPE_BOYFRIEND
-	object_event  8, 10, SPRITE_COOL_DUDE, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_CERULEAN_CAPE_BOYFRIEND
-	object_event 25,  7, SPRITE_SWIMMER_GUY, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerSwimmermRomeo, -1
-	object_event 41, 16, SPRITE_SWIMMER_GUY, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerSwimmermMalcolm, -1
-	object_event 21, 23, SPRITE_SWIMMER_GUY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerSwimmermArmand, -1
-	object_event 19, 12, SPRITE_BEAUTY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerBeautyBridget, -1
-	object_event  1, 21, SPRITE_BEAUTY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerBeautyVeronica, -1
-	object_event  0, 27, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerGentlemanCamus, -1
-	object_event 41, 26, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerGentlemanGeoffrey, -1
-	object_event 16, 32, SPRITE_BATTLE_GIRL, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerGuitaristfMorgan, -1
-	object_event  7, 26, SPRITE_LADY, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_TRAINER, 1, TrainerLadyJessica, -1
-	object_event 32, 11, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 1, GenericTrainerFisherLeroy, -1
-	object_event -4, 8, SPRITE_ACE_TRAINER_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_25_COOLTRAINER_M_BEFORE
-	object_event -2, 8, SPRITE_ACE_TRAINER_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x19f520, EVENT_ROUTE_25_COOLTRAINER_M_AFTER
+	def_object_events
+	object_event  8,  9, SPRITE_MISTY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_CERULEAN_CAPE_BOYFRIEND
+	object_event  8, 10, SPRITE_COOL_DUDE, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_CERULEAN_CAPE_BOYFRIEND
+	object_event 25,  7, SPRITE_SWIMMER_GUY, SPRITEMOVEDATA_SPINCLOCKWISE, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 4, GenericTrainerSwimmermRomeo, -1
+	object_event 41, 16, SPRITE_SWIMMER_GUY, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 4, GenericTrainerSwimmermMalcolm, -1
+	object_event 21, 23, SPRITE_SWIMMER_GUY, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 4, GenericTrainerSwimmermArmand, -1
+	object_event 19, 12, SPRITE_BEAUTY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, GenericTrainerBeautyBridget, -1
+	object_event  1, 21, SPRITE_BEAUTY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerBeautyVeronica, -1
+	object_event  0, 27, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 4, GenericTrainerGentlemanCamus, -1
+	object_event 41, 26, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 4, GenericTrainerGentlemanGeoffrey, -1
+	object_event 16, 32, SPRITE_BATTLE_GIRL, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_GENERICTRAINER, 4, GenericTrainerGuitaristfMorgan, -1
+	object_event  7, 26, SPRITE_LADY, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_TRAINER, 1, TrainerLadyJessica, -1
+	object_event 32, 11, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 1, GenericTrainerFisherLeroy, -1
+	object_event -4, 8, SPRITE_ACE_TRAINER_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_25_COOLTRAINER_M_BEFORE
+	object_event -2, 8, SPRITE_ACE_TRAINER_M, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, CooltrainermKevinAfterBattleText, EVENT_ROUTE_25_COOLTRAINER_M_AFTER
 	itemball_event 31, 12, SHELL_BELL, 1, EVENT_CERULEAN_CAPE_SHELL_BELL
 
-	const_def 1 ; object constants
+	object_const_def
 	const CERULEANCAPE_MISTY
 	const CERULEANCAPE_BOYFRIEND
 
 CeruleanCapeFlyPoint:
 	setflag ENGINE_FLYPOINT_CERULEAN_CAPE
-	return
+	endcallback
 
 CeruleanCapeDateInterruptedTrigger1:
 	showemote EMOTE_HEART, CERULEANCAPE_MISTY, 15
@@ -54,28 +54,28 @@ CeruleanCapeDateInterruptedTrigger1:
 	playmusic MUSIC_BEAUTY_ENCOUNTER
 	turnobject CERULEANCAPE_MISTY, UP
 	pause 5
-	applymovement CERULEANCAPE_MISTY, MovementData_0x19efed
-	showtext UnknownText_0x19f006
-	applymovement CERULEANCAPE_MISTY, MovementData_0x19effa
-	jump CeruleanCapeDateFinishScript
+	applymovement CERULEANCAPE_MISTY, Route25MistyApproachesPlayerMovement1
+	showtext Route25MistyDateText
+	applymovement CERULEANCAPE_MISTY, Route25MistyLeavesPlayerMovement1
+	sjump CeruleanCapeDateFinishScript
 
 CeruleanCapeDateInterruptedTrigger2:
 	showemote EMOTE_HEART, CERULEANCAPE_MISTY, 15
 	pause 30
 	showemote EMOTE_SHOCK, CERULEANCAPE_BOYFRIEND, 10
 	turnobject CERULEANCAPE_MISTY, DOWN
-	applymovement CERULEANCAPE_BOYFRIEND, MovementData_0x19efea
+	applymovement CERULEANCAPE_BOYFRIEND, Route25MistysDateLeavesMovement2
 	disappear CERULEANCAPE_BOYFRIEND
 	pause 15
 	playmusic MUSIC_BEAUTY_ENCOUNTER
 	turnobject CERULEANCAPE_MISTY, UP
 	pause 5
-	applymovement CERULEANCAPE_MISTY, MovementData_0x19eff4
-	showtext UnknownText_0x19f006
-	applymovement CERULEANCAPE_MISTY, MovementData_0x19effd
+	applymovement CERULEANCAPE_MISTY, Route25MistyApproachesPlayerMovement2
+	showtext Route25MistyDateText
+	applymovement CERULEANCAPE_MISTY, Route25MistyLeavesPlayerMovement2
 CeruleanCapeDateFinishScript:
 	turnobject PLAYER, LEFT
-	applymovement CERULEANCAPE_MISTY, MovementData_0x19f000
+	applymovement CERULEANCAPE_MISTY, Route25MistyLeavesMovement
 	disappear CERULEANCAPE_MISTY
 	clearevent EVENT_TRAINERS_IN_CERULEAN_GYM
 	setscene $0
@@ -97,7 +97,7 @@ CeruleanCapeDateInterruptedTrigger3:
 	turnobject CERULEANCAPE_MISTY, DOWN
 	pause 5
 	applymovement CERULEANCAPE_MISTY, .ApproachMovement
-	showtext UnknownText_0x19f006
+	showtext Route25MistyDateText
 	applymovement CERULEANCAPE_MISTY, .LeaveMovement
 	disappear CERULEANCAPE_MISTY
 	clearevent EVENT_TRAINERS_IN_CERULEAN_GYM
@@ -307,7 +307,7 @@ TrainerLadyJessica:
 	trainer LADY, JESSICA, EVENT_BEAT_LADY_JESSICA, .SeenText, .BeatenText, 0, .Script
 
 .Script:
-	end_if_just_battled
+	endifjustbattled
 	opentext
 	checkevent EVENT_SPOKE_TO_LADY_JESSICA
 	iftrue .SpokeAgain
@@ -372,14 +372,14 @@ GenericTrainerFisherLeroy:
 	line "right for me now…"
 	done
 
-MovementData_0x19efea:
+Route25MistysDateLeavesMovement2:
 	run_step_down
 	run_step_down
 	step_end
 
-MovementData_0x19efed:
+Route25MistyApproachesPlayerMovement1:
 	step_up
-MovementData_0x19eff4:
+Route25MistyApproachesPlayerMovement2:
 	step_up
 	step_up
 	step_left
@@ -387,17 +387,17 @@ MovementData_0x19eff4:
 	step_left
 	step_end
 
-MovementData_0x19effa:
+Route25MistyLeavesPlayerMovement1:
 	step_down
 	step_left
 	step_end
 
-MovementData_0x19effd:
+Route25MistyLeavesPlayerMovement2:
 	step_up
 	step_left
 	step_end
 
-MovementData_0x19f000:
+Route25MistyLeavesMovement:
 	step_left
 	step_left
 	step_left
@@ -405,7 +405,7 @@ MovementData_0x19f000:
 	step_left
 	step_end
 
-UnknownText_0x19f006:
+Route25MistyDateText:
 	text "Misty: Aww! Why"
 	line "did you have to"
 

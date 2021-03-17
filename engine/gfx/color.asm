@@ -26,26 +26,28 @@ ApplyHPBarPals:
 	ld a, [wWhichHPBar]
 	and a
 	jr z, .Enemy
-	cp $1
+	dec a
 	jr z, .Player
-	cp $2
+	dec a
 	jr z, .PartyMenu
 	ret
 
 .Enemy:
-	ld de, wBGPals2 palette PAL_BATTLE_BG_PLAYER_HP + 2
+	ld de, wBGPals2 palette PAL_BATTLE_BG_ENEMY_HP + 2
 	jr .okay
 
 .Player:
-	ld de, wBGPals2 palette PAL_BATTLE_BG_ENEMY_HP + 2
+	ld de, wBGPals2 palette PAL_BATTLE_BG_PLAYER_HP + 2
 
 .okay
-	ld l, c
-	ld h, $0
-	add hl, hl
-	add hl, hl
-	ld bc, HPBarInteriorPals
-	add hl, bc
+	ld a, c
+	add a
+	add a
+	add LOW(HPBarInteriorPals)
+	ld l, a
+	adc HIGH(HPBarInteriorPals)
+	sub l
+	ld h, a
 	ld bc, 4
 	call FarCopyColorWRAM
 	ld a, $1
@@ -136,6 +138,17 @@ LoadKeyItemIconPalette:
 	ld bc, KeyItemIconPalettes
 	jr LoadIconPalette
 
+LoadKeyItemIconPaletteForOverworld:
+	ld a, [wCurKeyItem]
+	ld bc, KeyItemIconPalettes
+	jr LoadIconPalette
+
+LoadApricornIconPalette:
+	ld a, [wCurFruit]
+	dec a
+	ld bc, ApricornIconPalettes
+	jr LoadIconPalette
+
 LoadItemIconPalette:
 	ld a, [wCurSpecies]
 	ld bc, ItemIconPalettes
@@ -153,13 +166,9 @@ LoadIconPalette:
 	jp FarCopyColorWRAM
 
 LoadTMHMIconPalette:
-	ld a, [wCurTMHM]
-	dec a
-	ld hl, TMHMTypes
-	ld b, 0
-	ld c, a
-	add hl, bc
-	ld a, [hl]
+	ld a, [wNamedObjectIndexBuffer]
+	ld hl, Moves + MOVE_TYPE
+	call GetMoveProperty
 	ld hl, TMHMTypeIconPals
 	ld c, a
 	ld b, 0
@@ -174,20 +183,35 @@ endr
 	jp FarCopyColorWRAM
 
 LoadStatsScreenPals:
-	ld hl, StatsScreenPagePals
-	ld b, 0
-	add hl, bc
-	add hl, bc
 	ldh a, [rSVBK]
 	push af
 	ld a, $5
 	ldh [rSVBK], a
+	ld hl, StatsScreenPagePals
+	ld b, 0
+	add hl, bc
+	add hl, bc
 	ld a, [hli]
 	ld [wBGPals1 palette 0], a
-	ld [wBGPals1 palette 2], a
 	ld a, [hl]
 	ld [wBGPals1 palette 0 + 1], a
-	ld [wBGPals1 palette 2 + 1], a
+	ld a, c
+	and a ; pink page 0 has exp bar
+	ld hl, GenderAndExpBarPals + 2
+	jr z, .ok
+	ld a, [wCurHPPal]
+	add a
+	add a
+	add LOW(HPBarInteriorPals + 2)
+	ld l, a
+	adc HIGH(HPBarInteriorPals + 2)
+	sub l
+	ld h, a
+.ok
+	ld a, [hli]
+	ld [wBGPals1 palette 0 + 4], a
+	ld a, [hl]
+	ld [wBGPals1 palette 0 + 5], a
 	pop af
 	ldh [rSVBK], a
 	call ApplyPals
@@ -210,11 +234,12 @@ LoadMailPalettes:
 	jp ApplyAttrMap
 
 LoadHLPaletteIntoDE:
+	ld c, $8
+LoadCPaletteBytesFromHLIntoDE:
 	ldh a, [rSVBK]
 	push af
 	ld a, $5
 	ldh [rSVBK], a
-	ld c, $8
 .loop
 	ld a, [hli]
 	ld [de], a
@@ -350,10 +375,10 @@ ApplyAttrMap:
 	jr nz, .col
 	ld a, BG_MAP_WIDTH - SCREEN_WIDTH
 	add e
-	jr nc, .okay
-	inc d
-.okay
 	ld e, a
+	adc d
+	sub e
+	ld d, a
 	dec b
 	jr nz, .row
 	xor a
@@ -394,6 +419,16 @@ ApplyPartyMenuHPPals:
 	lb bc, 2, 8
 	ld a, e
 	jp FillBoxWithByte
+
+SetPartyMenuPal:
+; Writes mon icon color a to palette in de
+	ld hl, PartyMenuOBPals
+	ld bc, 1 palettes
+	push bc
+	rst AddNTimes
+	pop bc
+	ld bc, 1 palettes
+	jp FarCopyColorWRAM
 
 InitPartyMenuOBPals:
 	ld hl, PartyMenuOBPals
@@ -481,7 +516,7 @@ GetMonPalettePointer:
 	; b = form
 	inc hl ; Form is in the byte after Shiny
 	ld a, [hl]
-	and FORM_MASK
+	and BASEMON_MASK
 	ld b, a
 	; bc = index
 	call GetSpeciesAndFormIndex
@@ -654,7 +689,7 @@ LoadMapPals:
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
-	; Futher refine by time of day
+	; Further refine by time of day
 	ld a, [wTimeOfDayPal]
 	and 3
 	add a
@@ -721,12 +756,7 @@ LoadMapPals:
 	and a
 	jr z, .not_overcast
 	dec a
-	ld l, a
-	ld h, 0
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	ld de, OvercastRoofPals
+	ld hl, OvercastRoofPals
 	jr .get_roof_color
 
 .not_overcast
@@ -735,25 +765,29 @@ LoadMapPals:
 	jr z, .outside
 	cp ROUTE
 	jr z, .outside
-	cp PERM_5
+	cp ISOLATED
 	ret nz
 .outside
 	ld a, [wMapGroup]
-	ld l, a
-	ld h, 0
-	add hl, hl
-	add hl, hl
-	add hl, hl
-	ld de, RoofPals
+	ld hl, RoofPals
 .get_roof_color
+	add a
+	add a
+	ld e, a
+	ld d, 0
 	add hl, de
+	add hl, de
+	add hl, de
+	ld de, 4
 	ld a, [wTimeOfDayPal]
 	and 3
 	cp NITE
 	jr c, .morn_day
-rept 4
-	inc hl
-endr
+	jr z, .nite
+; eve
+	add hl, de
+.nite
+	add hl, de
 .morn_day
 	ld de, wBGPals1 palette 6 + 2
 	ld bc, 4

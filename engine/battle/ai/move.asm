@@ -1,36 +1,101 @@
 AIChooseMove:
-; Score each move in wEnemyMonMoves starting from wBuffer1. Lower is better.
-; Pick the move with the lowest score.
-
+; Wrapper around AI move choosing. Let the AI switch out if its desired move
+; differs from one it is locked into with Choice or Encore.
 	; Linking is handled elsewhere
 	ld a, [wLinkMode]
 	and a
 	ret nz
 
-	; Default score is 20, unusable moves are set to 80.
-	call SetEnemyTurn
-	ld hl, wStringBuffer5 + 3
-	ld a, 4
-.unusable_loop
-	dec a
+	ld a, [wEnemyEncoreCount]
 	push af
-	push hl
-	farcall CheckUsableMove
-	ld a, 20
-	jr z, .unusable_next
-	ld a, 80
-.unusable_next
-	pop hl
-	ld [hl], a
+	xor a
+	ld [wEnemyEncoreCount], a
+
+	; First, check if the AI has any usable moves. This prevents switches
+	; caused by the AI running out of usable moves alltogether.
+	call SetEnemyTurn
+	farcall CheckUsableMoves
+	jr z, .not_struggling
+
+	; Just bypass the checks alltogether
 	pop af
-	dec hl
-	and a
-	jr nz, .unusable_loop
+	ld [wEnemyEncoreCount], a
+	ret
+
+.not_struggling
+	call _AIChooseMove
+	pop af
+	ld [wEnemyEncoreCount], a
+
+	; Check if the chosen move is usable after restoring Choice/Encore
+	ld a, [wCurEnemyMoveNum]
+	farcall CheckUsableMove
+	ret z
+
+	; Move is unusable. Fix the move selection to a valid move, but prefer
+	; to switch if we can, assuming we have usable moves at all.
+	farcall CheckUsableMoves
+	call z, _AIChooseMove
+
+	; Strongly encourage switch-out by pretending we have Perish 1.
+	ld a, [wEnemyPerishCount]
+	push af
+	ld a, 1
+	ld [wEnemyPerishCount], a
+	farcall AI_MaybeSwitch
+	pop af
+	ld [wEnemyPerishCount], a
+	ret
+
+_AIChooseMove:
+; Score each move (lower is better) according to how much we want to use them.
+	; At times, we call the battle engine directly to check stuff. So set turn.
+	call SetEnemyTurn
+
+	; Set a baseline score of 80 on all moves. Replace with 20 for usable moves.
+	ld hl, wAIMoveScore
+	ld a, 80
+	ld [hli], a
+	ld [hli], a
+	ld [hli], a
+	ld [hl], a
+
+	; Zerofill moves
+	ld hl, wAIMoves + 3
+	xor a
+	ld [hld], a
+	ld [hld], a
+	ld [hld], a
+	ld [hl], a
+
+	; Copy our moves to a seperate AI moves struct, excluding unusable moves.
+	; ld hl, wAIMoves (not needed, direct result of above)
+	ld de, wEnemyMonMoves
+	ld bc, wAIMoveScore - 1 - wAIMoves ; for setting baseline score to 20
+	xor a
+
+.loop_usable_moves
+	push af
+	farcall CheckUsableMove
+	ld a, [de]
+	inc de
+	jr nz, .next_usable_move
+	ld [hli], a
+	push hl
+	add hl, bc
+	ld [hl], 20
+	pop hl
+.next_usable_move
+	pop af
+	inc a
+	cp NUM_MOVES
+	jr nz, .loop_usable_moves
+	; Finished initializing AI move table
 
 	; Wildmons choose moves at random
 	ld a, [wBattleMode]
 	dec a
-	jr z, .DecrementScores
+	jp z, .DecrementScores
 
 ; Apply AI scoring layers depending on the trainer class.
 .ApplyLayers:
@@ -48,7 +113,25 @@ AIChooseMove:
 	rst AddNTimes
 
 .battle_tower_skip
+	ld de, wAIFlags
+	ld bc, 2
+	ld a, BANK(TrainerClassAttributes)
+	call FarCopyBytes
+
+	; Add badge flags
+	call .AddBadgeFlags
+
+	; Aggressive overrides type matchups
+	ld hl, wAIFlags
+	lb bc, CHECK_FLAG, AI_AGGRESSIVE_F
+	predef FlagPredef
+	jr z, .not_aggressive
+	lb bc, RESET_FLAG, AI_TYPES_F
+	predef FlagPredef
+
+.not_aggressive
 	lb bc, CHECK_FLAG, 0
+	ld hl, wAIFlags
 	push bc
 	push hl
 
@@ -58,18 +141,12 @@ AIChooseMove:
 
 	ld a, c
 	cp 16 ; up to 16 scoring layers
+if DEF(DEBUG)
+	jr z, .DebugAndDecrement
+endc
 	jr z, .DecrementScores
 
-	call .BadgeAICheck
-	jr nc, .check_flags
-	inc c
 	push bc
-	push hl
-	jr .apply_layer
-
-.check_flags
-	push bc
-	ld d, BANK(TrainerClassAttributes)
 	predef FlagPredef
 	ld d, c
 	pop bc
@@ -78,15 +155,15 @@ AIChooseMove:
 	push bc
 	push hl
 
-if DEF(DEBUG)
-	call AIDebug
-endc
-
 	ld a, d
 	and a
 	jr z, .CheckLayer
 
 .apply_layer
+if DEF(DEBUG)
+	call AIDebug
+endc
+
 	ld hl, AIScoringPointers
 	dec c
 	ld b, 0
@@ -100,48 +177,43 @@ endc
 
 	jr .CheckLayer
 
-.BadgeAICheck:
-	push hl
-	push de
-	ld hl, .BadgeAILayers
-	push bc
-	ld de, 2
-	call IsInArray
-	jr nc, .done
-	push hl
+.AddBadgeFlags:
 	ld hl, wBadges
 	ld b, wBadgesEnd - wBadges
 	call CountSetBits
+	ld hl, .BadgeAILayers
+.badge_loop
+	ld c, [hl]
+	cp c
+	ret c
+	inc hl
+	push hl
+	push af
+	ld c, [hl]
+	ld hl, wAIFlags
+	ld b, SET_FLAG
+	predef FlagPredef
+	pop af
 	pop hl
 	inc hl
-	ld c, [hl]
-
-	; If our total badges (in a) exceed badge threshold (in c), return c.
-	cp c
-	ccf
-.done
-	pop bc
-	pop de
-	pop hl
-	ret
+	jr .badge_loop
 
 .BadgeAILayers:
-	; Don't do redundant things (such as paralyzing a paralyzed foe, etc)
-	db AI_BASIC_F, 0
-	; Learn about type advantage
-	db AI_TYPES_F, 2
-	; Learn about ineffective status moves (Hypnosis vs Insomnia, etc)
-	db AI_STATUS_F, 4
-	; Maximize damage potential
-	db AI_AGGRESSIVE_F, 8
-	; "Smart" AI
-	db AI_SMART_F, 16
+	db 0, AI_BASIC_F ; Avoid redundant actions; paralyzing a paralyzed foe/etc.
+	db 2, AI_TYPES_F ; We've mastered type matchups. Hop would be proud.
+	db 4, AI_STATUS_F ; Hypnosis vs Insomnia, etc.
+	db 8, AI_AGGRESSIVE_F ; Use most damaging move.
+	db 16, AI_SMART_F ; "Advanced" AI
 	db -1
 
 ; Decrement the scores of all moves one by one until one reaches 0.
+if DEF(DEBUG)
+.DebugAndDecrement:
+	call AIDebug
+endc
 .DecrementScores:
-	ld hl, wStringBuffer5
-	ld de, wEnemyMonMoves
+	ld hl, wAIMoveScore
+	ld de, wAIMoves
 	ld c, NUM_MOVES
 
 .DecrementNextScore:
@@ -175,8 +247,8 @@ endc
 	cp NUM_MOVES + 1
 	jr nz, .move_loop
 
-	ld hl, wStringBuffer5
-	ld de, wEnemyMonMoves
+	ld hl, wAIMoveScore
+	ld de, wAIMoves
 	ld c, NUM_MOVES
 
 ; Give a score of 0 to a blank move
@@ -205,7 +277,7 @@ endc
 
 ; Randomly choose one of the moves with a score of 1
 .ChooseMove:
-	ld hl, wStringBuffer5
+	ld hl, wAIMoveScore
 	call Random
 	and 3
 	ld c, a
@@ -216,27 +288,37 @@ endc
 	jr z, .ChooseMove
 
 	ld [wCurEnemyMove], a
+
+	; Figure out which move number this is in the actual move struct
+	ld c, -1
+	ld b, a
+	ld hl, wEnemyMonMoves
+.loop_move_num
+	inc c
+	ld a, [hli]
+	cp b
+	jr nz, .loop_move_num
 	ld a, c
 	ld [wCurEnemyMoveNum], a
 	ret
 
-AIScoringPointers:
-	dw AI_Basic
-	dw AI_Setup
-	dw AI_Types
-	dw AI_Offensive
-	dw AI_Smart
-	dw AI_Opportunist
-	dw AI_Aggressive
-	dw AI_Cautious
-	dw AI_Status
-	dw AI_Risky
-	dw DoNothing
-	dw DoNothing
-	dw DoNothing
-	dw DoNothing
-	dw DoNothing
-	dw DoNothing
+AIScoringPointers: ; these are all farcalled in BANK(AIScoring)
+	dw AI_Basic ; far-ok
+	dw AI_Setup ; far-ok
+	dw AI_Types ; far-ok
+	dw AI_Offensive ; far-ok
+	dw AI_Smart ; far-ok
+	dw AI_Opportunist ; far-ok
+	dw AI_Aggressive ; far-ok
+	dw AI_Cautious ; far-ok
+	dw AI_Status ; far-ok
+	dw AI_Risky ; far-ok
+	dw DoNothing ; far-ok
+	dw DoNothing ; far-ok
+	dw DoNothing ; far-ok
+	dw DoNothing ; far-ok
+	dw DoNothing ; far-ok
+	dw DoNothing ; far-ok
 
 if DEF(DEBUG)
 AIDebug:
@@ -263,7 +345,7 @@ AIDebug:
 
 	; Print move names
 	pop hl
-	ld de, wEnemyMonMoves
+	ld de, wAIMoves
 	ld c, 4
 .move_loop
 	push de
@@ -286,7 +368,7 @@ AIDebug:
 	add hl, bc
 	pop bc
 	push bc
-	ld de, wStringBuffer5 - 1
+	ld de, wAIMoveScore - 1
 	ld a, 5
 .score_target
 	inc de

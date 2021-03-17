@@ -1,56 +1,56 @@
 Route1617Gate_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 5 ; warp events
+	def_warp_events
 	warp_event  0,  5, ROUTE_16_SOUTH, 1
 	warp_event  0,  6, ROUTE_16_SOUTH, 2
 	warp_event  9,  5, ROUTE_16_NORTHEAST, 1
 	warp_event  9,  6, ROUTE_16_NORTHEAST, 2
 	warp_event  8,  8, ROUTE_16_17_GATE_2F, 1
 
-	db 5 ; coord events
-	coord_event  5,  3, 0, UnknownScript_0x733ed
-	coord_event  5,  4, 0, UnknownScript_0x733ed
+	def_coord_events
+	coord_event  5,  3, 0, Route16GateBicycleCheck
+	coord_event  5,  4, 0, Route16GateBicycleCheck
 	coord_event  5,  5, 0, Route1617GateStepUpOneTrigger
 	coord_event  5,  6, 0, Route1617GateStepUpTwoTrigger
 	coord_event  5,  7, 0, Route1617GateStepUpThreeTrigger
 
-	db 0 ; bg events
+	def_bg_events
 
-	db 1 ; object events
-	object_event  5,  1, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x73408, -1
+	def_object_events
+	object_event  5,  1, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_COMMAND, jumptextfaceplayer, Route1617GateOfficerText, -1
 
-	const_def 1 ; object constants
+	object_const_def
 	const ROUTE1617GATE_OFFICER
 
 Route1617GateStepUpOneTrigger:
 	checkkeyitem BICYCLE
 	iftrue DoNothingScript
 	applyonemovement PLAYER, step_up
-	jump UnknownScript_0x733f3
+	sjump UnknownScript_0x733f3
 
 Route1617GateStepUpTwoTrigger:
 	checkkeyitem BICYCLE
 	iftrue DoNothingScript
 	applymovement PLAYER, Route1617GateStepUpTwoMovementData
-	jump UnknownScript_0x733f3
+	sjump UnknownScript_0x733f3
 
 Route1617GateStepUpThreeTrigger:
 	checkkeyitem BICYCLE
 	iftrue DoNothingScript
 	applymovement PLAYER, Route1617GateStepUpThreeMovementData
-	jump UnknownScript_0x733f3
+	sjump UnknownScript_0x733f3
 
-UnknownScript_0x733ed:
+Route16GateBicycleCheck:
 	checkkeyitem BICYCLE
 	iftrue DoNothingScript
 UnknownScript_0x733f3:
 	showemote EMOTE_SHOCK, ROUTE1617GATE_OFFICER, 15
 	turnobject PLAYER, UP
-	showtext UnknownText_0x73496
-	applymovement PLAYER, MovementData_0x73405
+	showtext Route16GateCannotPassText
+	applymovement PLAYER, Route16GateCannotPassMovement
 	end
 
 Route1617GateStepUpThreeMovementData:
@@ -60,12 +60,12 @@ Route1617GateStepUpTwoMovementData:
 	step_up
 	step_end
 
-MovementData_0x73405:
+Route16GateCannotPassMovement:
 	step_right
 	turn_head_left
 	step_end
 
-UnknownText_0x73408:
+Route1617GateOfficerText:
 	text "Cycling Road"
 	line "starts here."
 
@@ -80,7 +80,7 @@ UnknownText_0x73408:
 	line "a ship or train."
 	done
 
-UnknownText_0x73496:
+Route16GateCannotPassText:
 	text "Hey! Whoa! Stop!"
 
 	para "You can't go out"

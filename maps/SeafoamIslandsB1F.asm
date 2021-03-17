@@ -1,9 +1,9 @@
 SeafoamIslandsB1F_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 6 ; warp events
+	def_warp_events
 	warp_event 35, 15, SEAFOAM_ISLANDS_1F, 3
 	warp_event  3,  3, SEAFOAM_ISLANDS_1F, 5
 	warp_event 27, 15, SEAFOAM_ISLANDS_B2F, 1
@@ -11,12 +11,12 @@ SeafoamIslandsB1F_MapScriptHeader:
 	warp_event 15, 11, SEAFOAM_ISLANDS_B2F, 3
 	warp_event  7, 15, SEAFOAM_ISLANDS_B2F, 4
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 1 ; bg events
-	bg_event 20, 11, SIGNPOST_ITEM + ICE_HEAL, EVENT_SEAFOAM_ISLANDS_B1F_HIDDEN_ICE_HEAL
+	def_bg_events
+	bg_event 20, 11, BGEVENT_ITEM + ICE_HEAL, EVENT_SEAFOAM_ISLANDS_B1F_HIDDEN_ICE_HEAL
 
-	db 8 ; object events
+	def_object_events
 	itemball_event 20,  3, GRIP_CLAW, 1, EVENT_SEAFOAM_ISLANDS_B1F_GRIP_CLAW
 	itemball_event 24,  5, ICE_HEAL, 1, EVENT_SEAFOAM_ISLANDS_B1F_ICE_HEAL
 	strengthboulder_event 30, 9

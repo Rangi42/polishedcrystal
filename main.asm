@@ -32,17 +32,26 @@ SECTION "bank3", ROMX
 
 INCLUDE "engine/events/checktime.asm"
 INCLUDE "engine/events/specials.asm"
-INCLUDE "engine/math/print_num.asm"
 INCLUDE "engine/pokemon/health.asm"
 INCLUDE "engine/events/overworld.asm"
 INCLUDE "engine/items/items.asm"
 INCLUDE "engine/battle/anim_hp_bar.asm"
 INCLUDE "engine/pokemon/move_mon.asm"
-INCLUDE "engine/pokemon/bills_pc_top.asm"
 INCLUDE "engine/pokemon/breedmon_level_growth.asm"
 INCLUDE "engine/events/bug_contest/caught_mon.asm"
 INCLUDE "engine/events/bug_contest/display_stats.asm"
 INCLUDE "engine/items/item_effects.asm"
+
+
+SECTION "Print Number", ROMX
+
+INCLUDE "engine/math/print_num.asm"
+
+
+SECTION "Bills PC", ROMX
+
+INCLUDE "engine/pokemon/bills_pc.asm"
+INCLUDE "engine/pokemon/bills_pc_ui.asm"
 
 
 SECTION "Poke Ball Effects", ROMX
@@ -60,10 +69,12 @@ INCLUDE "engine/overworld/load_map_part.asm"
 SECTION "bank4", ROMX
 
 INCLUDE "engine/items/pack.asm"
+INCLUDE "engine/events/itemball.asm"
+INCLUDE "engine/events/fruit_trees.asm"
+INCLUDE "engine/gfx/item_icons.asm"
 INCLUDE "engine/overworld/time.asm"
 INCLUDE "engine/items/tmhm.asm"
 INCLUDE "engine/menus/naming_screen.asm"
-INCLUDE "engine/events/itemball.asm"
 INCLUDE "engine/events/heal_machine_anim.asm"
 INCLUDE "engine/events/whiteout.asm"
 INCLUDE "engine/events/forced_movement.asm"
@@ -133,6 +144,7 @@ INCLUDE "data/moves/effects.asm"
 SECTION "bankA", ROMX
 
 INCLUDE "engine/link/link.asm"
+INCLUDE "engine/movie/trade_animation.asm"
 
 
 SECTION "Wild Data", ROMX
@@ -198,7 +210,6 @@ INCLUDE "engine/pokemon/evolve.asm"
 
 SECTION "bank11", ROMX
 
-INCLUDE "engine/events/fruit_trees.asm"
 INCLUDE "engine/battle/ai/move.asm"
 INCLUDE "engine/pokemon/mail.asm"
 INCLUDE "engine/events/hidden_grottoes.asm"
@@ -217,12 +228,11 @@ INCLUDE "engine/events/buena_menu.asm"
 
 SECTION "Collision Permissions", ROMX
 
-INCLUDE "data/collision_permissions.asm"
+INCLUDE "data/collision/collision_permissions.asm"
 
 
 SECTION "bank13", ROMX
 
-INCLUDE "engine/menus/empty_sram.asm"
 INCLUDE "engine/events/checksave.asm"
 INCLUDE "data/maps/scenes.asm"
 INCLUDE "engine/rtc/reset_password.asm"
@@ -238,10 +248,8 @@ INCLUDE "engine/events/catch_tutorial.asm"
 INCLUDE "engine/movie/evolution_animation.asm"
 INCLUDE "engine/movie/init_hof_credits.asm"
 INCLUDE "engine/battle/sliding_intro.asm"
-INCLUDE "engine/battle/check_battle_scene.asm"
 INCLUDE "engine/movie/bsod.asm"
 INCLUDE "engine/events/judge_machine.asm"
-
 INCLUDE "engine/events/poisonstep.asm"
 INCLUDE "engine/events/squirtbottle.asm"
 INCLUDE "engine/events/card_key.asm"
@@ -258,7 +266,6 @@ INCLUDE "engine/pokemon/mon_stats.asm"
 INCLUDE "engine/pokemon/experience.asm"
 INCLUDE "engine/pokemon/switchpartymons.asm"
 INCLUDE "engine/gfx/load_pics.asm"
-INCLUDE "engine/pokemon/move_mon_wo_mail.asm"
 INCLUDE "data/pokemon/names.asm"
 INCLUDE "engine/pokemon/natures.asm"
 
@@ -421,15 +428,15 @@ SECTION "bank38", ROMX
 
 INCLUDE "engine/games/card_flip.asm"
 INCLUDE "engine/games/unown_puzzle.asm"
-;INCLUDE "engine/games/dummy_game.asm"
-INCLUDE "engine/pokemon/bills_pc.asm"
+;INCLUDE "engine/games/memory_game.asm"
 INCLUDE "engine/gfx/fade.asm"
 
 
 SECTION "bank39", ROMX
 
 INCLUDE "engine/menus/options_menu.asm"
-INCLUDE "engine/movie/crystal_intro.asm"
+INCLUDE "engine/movie/splash.asm"
+INCLUDE "engine/movie/intro.asm"
 
 
 SECTION "Typefaces", ROMX
@@ -461,7 +468,6 @@ INCLUDE "engine/gfx/dma_transfer.asm"
 INCLUDE "gfx/emotes.asm"
 INCLUDE "engine/overworld/warp_connection.asm"
 INCLUDE "engine/battle/used_move_text.asm"
-INCLUDE "engine/gfx/item_icons.asm"
 
 
 SECTION "Title", ROMX
@@ -525,8 +531,9 @@ INCLUDE "engine/battle/stats.asm"
 SECTION "Item Text", ROMX
 
 INCLUDE "data/items/names.asm"
-INCLUDE "engine/items/print_item_description.asm"
+INCLUDE "data/items/key_names.asm"
 INCLUDE "data/items/apricorn_names.asm"
+INCLUDE "engine/items/print_item_description.asm"
 
 
 SECTION "Move and Landmark Text", ROMX

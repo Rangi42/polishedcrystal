@@ -1,29 +1,29 @@
 ValeriesHouse_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 1 ; callbacks
+	def_callbacks
 	callback MAPCALLBACK_OBJECTS, SetupValerieAfterMorningWalkScript
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event  3,  7, ECRUTEAK_CITY, 12
 	warp_event  4,  7, ECRUTEAK_CITY, 12
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 1 ; bg events
-	bg_event  2,  1, SIGNPOST_JUMPSTD, radio2
+	def_bg_events
+	bg_event  2,  1, BGEVENT_JUMPSTD, radio2
 
-	db 8 ; object events
-	object_event  2,  3, SPRITE_VALERIE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, ValeriesHouseValerieText, EVENT_VALERIE_ECRUTEAK_CITY
-	object_event  3,  3, SPRITE_BOOK_PAPER_POKEDEX, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptext, ValeriesHouseRedFairyBookText, EVENT_RED_FAIRY_BOOK
-	object_event  3,  3, SPRITE_BOOK_PAPER_POKEDEX, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptext, ValeriesHouseBlueFairyBookText, EVENT_BLUE_FAIRY_BOOK
-	object_event  3,  3, SPRITE_BOOK_PAPER_POKEDEX, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptext, ValeriesHouseGreenFairyBookText, EVENT_GREEN_FAIRY_BOOK
-	object_event  3,  3, SPRITE_BOOK_PAPER_POKEDEX, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_COMMAND, jumptext, ValeriesHouseBrownFairyBookText, EVENT_BROWN_FAIRY_BOOK
-	object_event  3,  3, SPRITE_BOOK_PAPER_POKEDEX, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_PURPLE, PERSONTYPE_COMMAND, jumptext, ValeriesHouseVioletFairyBookText, EVENT_VIOLET_FAIRY_BOOK
-	object_event  3,  3, SPRITE_BOOK_PAPER_POKEDEX, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptext, ValeriesHousePinkFairyBookText, EVENT_PINK_FAIRY_BOOK
-	object_event  3,  3, SPRITE_BOOK_PAPER_POKEDEX, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, PERSONTYPE_COMMAND, jumptext, ValeriesHouseYellowFairyBookText, EVENT_YELLOW_FAIRY_BOOK
+	def_object_events
+	object_event  2,  3, SPRITE_VALERIE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, ValeriesHouseValerieText, EVENT_VALERIE_ECRUTEAK_CITY
+	object_event  3,  3, SPRITE_BOOK_PAPER_POKEDEX, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptext, ValeriesHouseRedFairyBookText, EVENT_RED_FAIRY_BOOK
+	object_event  3,  3, SPRITE_BOOK_PAPER_POKEDEX, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_COMMAND, jumptext, ValeriesHouseBlueFairyBookText, EVENT_BLUE_FAIRY_BOOK
+	object_event  3,  3, SPRITE_BOOK_PAPER_POKEDEX, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptext, ValeriesHouseGreenFairyBookText, EVENT_GREEN_FAIRY_BOOK
+	object_event  3,  3, SPRITE_BOOK_PAPER_POKEDEX, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_COMMAND, jumptext, ValeriesHouseBrownFairyBookText, EVENT_BROWN_FAIRY_BOOK
+	object_event  3,  3, SPRITE_BOOK_PAPER_POKEDEX, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_PURPLE, OBJECTTYPE_COMMAND, jumptext, ValeriesHouseVioletFairyBookText, EVENT_VIOLET_FAIRY_BOOK
+	object_event  3,  3, SPRITE_BOOK_PAPER_POKEDEX, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptext, ValeriesHousePinkFairyBookText, EVENT_PINK_FAIRY_BOOK
+	object_event  3,  3, SPRITE_BOOK_PAPER_POKEDEX, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_COMMAND, jumptext, ValeriesHouseYellowFairyBookText, EVENT_YELLOW_FAIRY_BOOK
 
-	const_def 1 ; object constants
+	object_const_def
 	const VALERIESHOUSE_VALERIE
 	const VALERIESHOUSE_RED_FAIRY_BOOK
 	const VALERIESHOUSE_BLUE_FAIRY_BOOK
@@ -44,11 +44,11 @@ SetupValerieAfterMorningWalkScript:
 	iffalse .Appear
 .Disappear:
 	disappear VALERIESHOUSE_VALERIE
-	jump SetupFairyBookScript
+	sjump SetupFairyBookScript
 
 .Appear
 	appear VALERIESHOUSE_VALERIE
-	jump SetupFairyBookScript
+	sjump SetupFairyBookScript
 
 SetupFairyBookScript:
 	disappear VALERIESHOUSE_RED_FAIRY_BOOK
@@ -58,7 +58,7 @@ SetupFairyBookScript:
 	disappear VALERIESHOUSE_VIOLET_FAIRY_BOOK
 	disappear VALERIESHOUSE_PINK_FAIRY_BOOK
 	disappear VALERIESHOUSE_YELLOW_FAIRY_BOOK
-	checkcode VAR_WEEKDAY
+	readvar VAR_WEEKDAY
 	ifequal MONDAY, .Monday
 	ifequal TUESDAY, .Tuesday
 	ifequal WEDNESDAY, .Wednesday
@@ -67,25 +67,25 @@ SetupFairyBookScript:
 	ifequal SATURDAY, .Saturday
 .Sunday
 	appear VALERIESHOUSE_PINK_FAIRY_BOOK
-	return
+	endcallback
 .Monday
 	appear VALERIESHOUSE_BROWN_FAIRY_BOOK
-	return
+	endcallback
 .Tuesday
 	appear VALERIESHOUSE_RED_FAIRY_BOOK
-	return
+	endcallback
 .Wednesday
 	appear VALERIESHOUSE_BLUE_FAIRY_BOOK
-	return
+	endcallback
 .Thursday
 	appear VALERIESHOUSE_GREEN_FAIRY_BOOK
-	return
+	endcallback
 .Friday
 	appear VALERIESHOUSE_YELLOW_FAIRY_BOOK
-	return
+	endcallback
 .Saturday
 	appear VALERIESHOUSE_VIOLET_FAIRY_BOOK
-	return
+	endcallback
 
 ValeriesHouseValerieText:
 	text "Valerie: My"

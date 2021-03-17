@@ -1,16 +1,16 @@
 IcePathB2FBlackthornSide_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event  3, 15, ICE_PATH_B1F, 8
 	warp_event  3,  3, ICE_PATH_B3F, 2
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 1 ; bg events
-	bg_event  2, 10, SIGNPOST_ITEM + ICE_HEAL, EVENT_ICE_PATH_B2F_BLACKTHORN_SIDE_HIDDEN_ICE_HEAL
+	def_bg_events
+	bg_event  2, 10, BGEVENT_ITEM + ICE_HEAL, EVENT_ICE_PATH_B2F_BLACKTHORN_SIDE_HIDDEN_ICE_HEAL
 
-	db 1 ; object events
+	def_object_events
 	itemball_event  8, 16, NUGGET, 1, EVENT_ICE_PATH_B2F_BLACKTHORN_SIDE_NUGGET

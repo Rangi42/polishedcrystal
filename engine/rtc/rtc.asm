@@ -1,50 +1,17 @@
-; do not talk to the RTC hardware in the no-RTC patch
-if !DEF(NO_RTC)
-; start the RTC hardware running;
-; it will continue to count time passing while the GameBoy is off
-StartRTC:
-	; turn on the SRAM, where the RTC hardware is also located
-	ld a, SRAM_ENABLE
-	ld [MBC3SRamEnable], a
-	; enable the RTC hardware
-	call LatchClock
-	; the control flags for the RTC hardware are in the top bits of the
-	; topmost value (the high-byte of the day count);
-	; tell the MBC3 mapper to select this value for read/write
-	ld a, RTC_DH
-	ld [MBC3SRamBank], a
-	; read the value of the days count high byte
-	ld a, [MBC3RTC]
-	; activate the clock hardware by setting bit 6 to zero
-	res 6, a
-	ld [MBC3RTC], a
-	; remember to switch off the SRAM
-	jp CloseSRAM
-endc
-
 ; get time of day based on the current hour
 GetTimeOfDay::
-	ldh a, [hHours]
 	ld hl, TimesOfDay
-.check
-	cp [hl]
-	jr c, .match
-	inc hl
-	inc hl
-	jr .check
-.match
-	inc hl
-	ld a, [hl]
+	call GetHourIntervalValue
 	ld [wTimeOfDay], a
 	ret
 
 ; hours for the time of day
 TimesOfDay:
 	db MORN_HOUR, NITE
-	db DAY_HOUR, MORN
-	db NITE_HOUR, DAY
-	db 24, NITE
-	db -1, MORN
+	db DAY_HOUR,  MORN
+	db EVE_HOUR,  DAY
+	db NITE_HOUR, EVE
+	db -1,        NITE
 
 StageRTCTimeForSave:
 	call UpdateTime
@@ -89,22 +56,36 @@ endc
 StartClock::
 	; read the current clock time into the cache in HRAM
 	call GetClock
-	call Function1409b
+	call _FixDays
 	call FixDays
-if DEF(NO_RTC)
-	ret nc
-	jp RecordRTCStatus
-else
-	jr nc, .skip_set
 	; bit 5: Day count exceeds 139
 	; bit 6: Day count exceeds 255
-	call RecordRTCStatus
-.skip_set
+	call c, RecordRTCStatus
+if DEF(NO_RTC)
+	ret
+else
 	; start the RTC hardware running
-	jp StartRTC
+	; it will continue to count time passing while the GameBoy is off
+	; turn on the SRAM, where the RTC hardware is also located
+	ld a, SRAM_ENABLE
+	ld [MBC3SRamEnable], a
+	; enable the RTC hardware
+	call LatchClock
+	; the control flags for the RTC hardware are in the top bits of the
+	; topmost value (the high-byte of the day count);
+	; tell the MBC3 mapper to select this value for read/write
+	ld a, RTC_DH
+	ld [MBC3SRamBank], a
+	; read the value of the days count high byte
+	ld a, [MBC3RTC]
+	; activate the clock hardware by setting bit 6 to zero
+	res 6, a
+	ld [MBC3RTC], a
+	; remember to switch off the SRAM
+	jp CloseSRAM
 endc
 
-Function1409b:
+_FixDays:
 	ld hl, hRTCDayHi
 	bit 7, [hl]
 	jr nz, .set_bit_7
@@ -118,7 +99,7 @@ Function1409b:
 	ld a, %10000000
 	jp RecordRTCStatus ; set bit 7 on sRTCStatusFlags
 
-Function140ae:
+ClockContinue:
 	call CheckRTCStatus
 	ld c, a
 	and %11000000 ; Day count exceeded 255 or 16383

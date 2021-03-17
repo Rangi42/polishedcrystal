@@ -1,16 +1,8 @@
 SelectMonFromParty:
-	call DisableSpriteUpdates
 	xor a
-	ld [wPartyMenuActionText], a
-	call ClearBGPalettes
-	call InitPartyMenuLayout
-	call ApplyTilemapInVBlank
-	call SetPalettes
-	call DelayFrame
-	call PartyMenuSelect
-	jp ReturnToMapWithSpeechTextbox
-
-SelectTradeOrDaycareMon:
+	ld b, a
+	; fallthrough
+SelectTradeOrDayCareMon:
 	ld a, b
 	ld [wPartyMenuActionText], a
 	call DisableSpriteUpdates
@@ -23,6 +15,340 @@ SelectTradeOrDaycareMon:
 	call DelayFrame
 	call PartyMenuSelect
 	jp ReturnToMapWithSpeechTextbox
+
+BT_PartySelect:
+	ld a, PARTYMENUACTION_BATTLE_TOWER
+	ld [wPartyMenuActionText], a
+	call DisableSpriteUpdates
+	call ClearBGPalettes
+
+.loop
+	call InitPartyMenuLayout
+	call ApplyTilemapInVBlank
+	ld a, CGB_PARTY_MENU
+	call GetCGBLayout
+	call SetPalettes
+	call DelayFrame
+	call PartyMenuSelect
+	jr c, .return
+	farcall FreezeMonIcons
+
+	; Check if we're entering something. In that case, remove the entry.
+	ld a, [wCurPartyMon]
+	call BT_CheckEnterState
+	jr z, .open_menu ; not entered or banned
+
+	call BT_RemoveCurSelection
+	jr .loop
+.open_menu
+	call .Menu
+	jr c, .loop
+	; Banned mons don't get the "Enter" option
+	ld a, [wCurPartyMon]
+	call BT_CheckEnterState
+	ld a, [wMenuCursorY]
+	adc 0
+	dec a ; Enter
+	jr z, .Enter
+	dec a ; Stats
+	jp z, .Stats
+	dec a ; Moves
+	jp z, .Moves
+	jr .loop ; Cancel
+
+.return
+	jp ReturnToMapWithSpeechTextbox
+
+.Menu:
+	; 3 menu headers; eggs (implicitly banned), banned, regular
+	; Check if mon is an Egg
+	ld a, MON_IS_EGG
+	call GetPartyParamLocation
+	bit MON_IS_EGG_F, [hl]
+	ld hl, .EggMenuHeader
+	jr nz, .DisplayMenu
+
+	; Check if mon is banned
+	ld a, [wCurPartyMon]
+	call BT_CheckEnterState
+	ld hl, .MenuHeader
+	jr nc, .DisplayMenu
+	ld hl, .BannedMenuHeader
+	; fallthrough
+.DisplayMenu:
+	call CopyMenuHeader
+	xor a
+	ldh [hBGMapMode], a
+	call MenuBox
+	call UpdateSprites
+	call PlaceVerticalMenuItems
+	call ApplyTilemapInVBlank
+	call CopyMenuData2
+	ld a, [wMenuDataFlags]
+	bit 7, a
+	scf
+	ret z
+	call InitVerticalMenuCursor
+	ld hl, w2DMenuFlags1
+	set 6, [hl]
+	call DoMenuJoypadLoop
+	ld de, SFX_READ_TEXT_2
+	call PlaySFX
+	ldh a, [hJoyPressed]
+	and a ; clear carry
+	bit B_BUTTON_F, a
+	ret z
+	scf
+	ret
+
+.Enter:
+	call BT_AddCurSelection
+	ld hl, .too_many_mons_text
+	jp c, .print_error
+	ld a, [wBT_PartySelectCounter]
+	cp 3
+	jp nz, .loop
+
+	; Entered 3 mons. Check legality, and if OK, prompt to enter those 3.
+	farcall BT_SetPlayerOT
+	farcall BT_LegalityCheck
+	dec e
+	ld hl, .same_species
+	jr z, .reset_and_print_error
+	dec e
+	ld hl, .same_item
+	jr z, .reset_and_print_error
+
+	call InitPartyMenuLayout
+	farcall FreezeMonIcons
+	hlcoord 1, 16
+	ld de, .selection_ok_text
+	call PlaceString
+	ld hl, .YesNoMenuHeader
+	call .DisplayMenu
+	ld a, [wMenuCursorY]
+	jp c, .loop
+	dec a
+	jp nz, .loop
+	jp .return
+
+.selection_ok_text
+	db "Enter battle?@"
+
+.reset_and_print_error
+	push hl
+	call InitPartyMenuLayout
+	farcall FreezeMonIcons
+	pop hl
+	call PrintText
+	xor a
+	ld [wBT_PartySelectCounter], a
+	jp .loop
+
+.print_error
+	call PrintText
+	jp .loop
+
+.too_many_mons_text
+	text "You may only enter"
+	line "with 3 #mon!"
+	prompt
+
+.same_species
+	text "The #mon must"
+	line "be of different"
+	cont "species!"
+	prompt
+
+.same_item
+	text "The #mon's held"
+	line "items must differ!"
+	prompt
+
+.Stats:
+	farcall OpenPartyStats
+	jp .loop
+
+.Moves:
+	; For Eggs, "Moves" is actually the "Cancel" option
+	ld a, MON_IS_EGG
+	call GetPartyParamLocation
+	bit MON_IS_EGG_F, [hl]
+	jr nz, .Cancel
+	farcall ManagePokemonMoves
+
+.Cancel:
+	jp .loop
+
+.EggMenuHeader:
+	db $00 ; flags
+	db 13, 11 ; start coords
+	db 17, 19 ; end coords
+	dw .EggMenuData
+	db 1 ; default option
+
+.EggMenuData:
+	db $c0 ; flags
+	db 2 ; items
+	db "Stats@"
+	db "Cancel@"
+
+.MenuHeader:
+	db $00 ; flags
+	db 9, 11 ; start coords
+	db 17, 19 ; end coords
+	dw .MenuData
+	db 1 ; default option
+
+.MenuData:
+	db $c0 ; flags
+	db 4 ; items
+	db "Enter@"
+	db "Stats@"
+	db "Moves@"
+	db "Cancel@"
+
+.BannedMenuHeader:
+	db $00 ; flags
+	db 11, 11 ; start coords
+	db 17, 19 ; end coords
+	dw .BannedMenuData
+	db 1 ; default option
+
+.BannedMenuData:
+	db $c0 ; flags
+	db 3 ; items
+	db "Stats@"
+	db "Moves@"
+	db "Cancel@"
+
+.YesNoMenuHeader:
+; the regular yes/no prompt position is unsuitable, so make our own here
+	db $00 ; flags
+	db 13, 14 ; start coords
+	db 17, 19 ; end coords
+	dw .YesNoMenuData
+	db 1 ; default option
+
+.YesNoMenuData:
+	db $c0 ; flags
+	db 2 ; items
+	db "Yes@"
+	db "No@"
+
+BT_CheckEnterState:
+; Check enter state of party mon in a. Returns:
+; z|c: Banned
+; z|nc: Allowed, not entered
+; nz|nc: Allowed and entered, a contains entry number (1-3)
+	push hl
+	push de
+	push bc
+
+	; Check if the mon is banned
+	push af
+	ld hl, wPartyMon1IsEgg
+	call GetPartyLocation
+	bit MON_IS_EGG_F, [hl]
+	jr nz, .banned
+	pop af
+	push af
+	ld hl, wPartyMon1Species
+	call GetPartyLocation
+	ld a, [hl]
+	ld hl, UberMons
+	call IsInByteArray
+	jr c, .banned
+	pop af
+
+	; Check entry number, if any
+	ld b, a
+	ld hl, wBT_PartySelectCounter
+	ld c, [hl]
+	inc c
+	ld d, 0
+	ld hl, wBT_PartySelections
+.loop
+	dec c
+	ld a, c
+	and a
+	jr z, .return ; Not entered
+	inc d
+	ld a, [hli]
+	cp b
+	jr nz, .loop
+
+	; Entry number is stored in d
+	ld a, d
+	and a
+	jr .return
+
+.banned
+	pop af
+	xor a
+	scf
+.return
+	jp PopBCDEHL
+
+BT_AddCurSelection:
+; Adds wCurPartyMon to BT selection. Doesn't verify that the mon already
+; is entered, but will reject the selection if the player attempts to
+; select a 4th+ mon by returning c.
+	push hl
+	ld hl, wBT_PartySelectCounter
+	ld a, [hl]
+	cp 3
+	ccf
+	jr c, .return
+	inc [hl]
+
+	add LOW(wBT_PartySelections)
+	ld l, a
+	adc HIGH(wBT_PartySelections)
+	sub l
+	ld h, a
+
+	ld a, [wCurPartyMon]
+	ld [hl], a
+	and a
+
+.return
+	pop hl
+	ret
+
+BT_RemoveCurSelection:
+; Removes wCurPartyMon from BT selection and shifts other entries.
+; Assumes the selection entry is valid and will break otherwise.
+	push hl
+	push de
+	push bc
+	ld hl, wBT_PartySelectCounter
+	ld e, [hl]
+	dec [hl]
+	ld a, [wCurPartyMon]
+	ld c, a
+	ld hl, wBT_PartySelections
+	ld d, 0
+.loop
+	inc d
+	ld a, [hli]
+	cp c
+	jr nz, .loop
+
+	; Found entry. Shift entries after this one.
+	ld b, h
+	ld c, l
+	dec hl
+
+.shift_loop
+	ld a, d
+	cp e
+	jp z, PopBCDEHL
+	ld a, [bc]
+	inc bc
+	ld [hli], a
+	inc d
+	jr .shift_loop
 
 InitPartyMenuLayout:
 	call LoadPartyMenuGFX
@@ -72,6 +398,7 @@ WritePartyMenuTilemap:
 	dw PlacePartyMonEvoStoneCompatibility
 	dw PlacePartyMonGender
 	dw PlacePartyMonRemindable
+	dw PlacePartyMonBattleTower
 
 PlacePartyNicknames:
 	hlcoord 3, 1
@@ -100,11 +427,11 @@ PlacePartyNicknames:
 .end
 	dec hl
 	dec hl
-	ld de, .CANCEL
+	ld de, .Cancel
 	rst PlaceString
 	ret
 
-.CANCEL:
+.Cancel:
 	db "Cancel@"
 
 PlacePartyHPBar:
@@ -310,7 +637,7 @@ PlacePartyMonTMHMCompatibility:
 	ld bc, PARTYMON_STRUCT_LENGTH
 	rst AddNTimes
 	ld a, [hl]
-	and FORM_MASK
+	and BASEMON_MASK
 	ld [wCurForm], a
 	predef CanLearnTMHMMove
 	pop hl
@@ -371,7 +698,7 @@ PlacePartyMonEvoStoneCompatibility:
 	ld bc, PARTYMON_STRUCT_LENGTH
 	rst AddNTimes
 	ld a, [hl]
-	and FORM_MASK
+	and BASEMON_MASK
 	ld b, a
 	; c = species
 	ld c, e
@@ -469,7 +796,7 @@ PlacePartyMonGender:
 	jr c, .got_gender
 	ld a, "<MALE>"
 	jr nz, .got_gender
-	ld a, "<FEMALE>"
+	inc a ; "<FEMALE>"
 
 .got_gender
 	pop hl
@@ -539,6 +866,54 @@ PlacePartyMonRemindable:
 
 .string_not_able
 	db "Not able@"
+
+PlacePartyMonBattleTower:
+	ld bc, 0
+	hlcoord 12, 2
+.loop
+	ld a, [wPartyCount]
+	cp c
+	ret z
+
+	ld a, c
+	call BT_CheckEnterState
+
+	ld de, .Banned
+	jr c, .next
+	ld de, .Able
+	jr z, .next
+	dec a
+	ld de, .First
+	jr z, .next
+	dec a
+	ld de, .Second
+	jr z, .next
+	ld de, .Third
+.next
+	push hl
+	push bc
+	rst PlaceString
+	pop bc
+	pop hl
+	ld de, SCREEN_WIDTH * 2
+	add hl, de
+	inc c
+	jr .loop
+
+.Banned
+	db "Banned@"
+
+.Able
+	db "Able@"
+
+.First
+	db "First@"
+
+.Second
+	db "Second@"
+
+.Third
+	db "Third@"
 
 PartyMenuCheckEgg:
 	push hl
@@ -700,7 +1075,7 @@ PartyMenuSelect:
 PrintPartyMenuText:
 	hlcoord 0, 14
 	lb bc, 2, 18
-	call TextBox
+	call Textbox
 	ld a, [wPartyCount]
 	and a
 	jr nz, .haspokemon
@@ -740,6 +1115,7 @@ PartyMenuStrings:
 	dw ChooseAMonString ; Probably used to be ChooseAMalePKMNString
 	dw ToWhichPKMNString
 	dw TutorWhichPKMNString
+	dw Choose3MonString
 
 ChooseAMonString:
 	db "Choose a #mon.@"
@@ -751,6 +1127,8 @@ TeachWhichPKMNString:
 	db "Teach which <PK><MN>?@"
 TutorWhichPKMNString:
 	db "Tutor which <PK><MN>?@"
+Choose3MonString:
+	db "Choose 3 battle <PK><MN>@"
 MoveToWhereString:
 	db "Move to where?@"
 ToWhichPKMNString:
@@ -782,52 +1160,52 @@ PrintPartyMenuActionText:
 
 .Text_RecoveredSomeHP:
 	; recovered @ HP!
-	text_jump UnknownText_0x1bc0a2
+	text_far _RecoveredSomeHPText
 	text_end
 
 .Text_CuredOfPoison:
 	; 's cured of poison.
-	text_jump UnknownText_0x1bc0bb
+	text_far _CuredOfPoisonText
 	text_end
 
 .Text_RidOfParalysis:
 	; 's rid of paralysis.
-	text_jump UnknownText_0x1bc0d2
+	text_far _RidOfParalysisText
 	text_end
 
 .Text_BurnWasHealed:
 	; 's burn was healed.
-	text_jump UnknownText_0x1bc0ea
+	text_far _BurnWasHealedText
 	text_end
 
 .Text_Defrosted:
 	; was defrosted.
-	text_jump UnknownText_0x1bc101
+	text_far _WasDefrostedText
 	text_end
 
 .Text_WokeUp:
 	; woke up.
-	text_jump UnknownText_0x1bc115
+	text_far _WokeUpText
 	text_end
 
 .Text_HealthReturned:
 	; 's health returned.
-	text_jump UnknownText_0x1bc123
+	text_far _HealthReturnedText
 	text_end
 
 .Text_Revitalized:
 	; is revitalized.
-	text_jump UnknownText_0x1bc13a
+	text_far _RevitalizedText
 	text_end
 
 .Text_GrewToLevel:
 	; grew to level @ !@ @
-	text_jump UnknownText_0x1bc14f
+	text_far _GrewToLevelText
 	text_end
 
 .Text_CameToItsSenses:
 	; came to its senses.
-	text_jump UnknownText_0x1bc16e
+	text_far _CameToItsSensesText
 	text_end
 
 .PrintText:

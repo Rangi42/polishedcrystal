@@ -1,65 +1,65 @@
 AzaleaTown_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 2 ; callbacks
+	def_callbacks
 	callback MAPCALLBACK_NEWMAP, AzaleaTownFlypointCallback
 	callback MAPCALLBACK_TILES, AzaleaTownRainScript
 
-	db 8 ; warp events
+	def_warp_events
 	warp_event 15,  9, AZALEA_POKECENTER_1F, 1
 	warp_event 21, 13, CHARCOAL_KILN, 1
 	warp_event 21,  5, AZALEA_MART, 2
 	warp_event  9,  5, KURTS_HOUSE, 1
 	warp_event 10, 15, AZALEA_GYM, 1
-	warp_event 31,  7, SLOWPOKE_WELL_B1F, 1
+	warp_event 31,  7, SLOWPOKE_WELL_ENTRANCE, 1
 	warp_event  2, 10, ILEX_FOREST_AZALEA_GATE, 3
 	warp_event  2, 11, ILEX_FOREST_AZALEA_GATE, 4
 
-	db 3 ; coord events
+	def_coord_events
 	coord_event  5, 10, 1, AzaleaTownRivalBattleTrigger1
 	coord_event  5, 11, 1, AzaleaTownRivalBattleTrigger2
 	coord_event  9,  6, 2, AzaleaTown_CelebiTrigger
 
-	db 7 ; bg events
-	bg_event 19,  9, SIGNPOST_JUMPTEXT, AzaleaTownSignText
-	bg_event 10,  9, SIGNPOST_JUMPTEXT, KurtsHouseSignText
-	bg_event 14, 15, SIGNPOST_JUMPTEXT, AzaleaGymSignText
-	bg_event 29,  8, SIGNPOST_JUMPTEXT, SlowpokeWellSignText
-	bg_event 19, 13, SIGNPOST_JUMPTEXT, CharcoalKilnSignText
-	bg_event  3,  9, SIGNPOST_JUMPTEXT, AzaleaTownIlexForestSignText
-	bg_event 31,  6, SIGNPOST_ITEM + FULL_HEAL, EVENT_AZALEA_TOWN_HIDDEN_FULL_HEAL
+	def_bg_events
+	bg_event 19,  9, BGEVENT_JUMPTEXT, AzaleaTownSignText
+	bg_event 10,  9, BGEVENT_JUMPTEXT, KurtsHouseSignText
+	bg_event 14, 15, BGEVENT_JUMPTEXT, AzaleaGymSignText
+	bg_event 29,  8, BGEVENT_JUMPTEXT, SlowpokeWellSignText
+	bg_event 19, 13, BGEVENT_JUMPTEXT, CharcoalKilnSignText
+	bg_event  3,  9, BGEVENT_JUMPTEXT, AzaleaTownIlexForestSignText
+	bg_event 31,  6, BGEVENT_ITEM + FULL_HEAL, EVENT_AZALEA_TOWN_HIDDEN_FULL_HEAL
 
-	db 12 ; object events
-	object_event 11, 10, SPRITE_SILVER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_AZALEA_TOWN
-	object_event  6,  5, SPRITE_KURT, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, AzaleaTownKurtScript, EVENT_AZALEA_TOWN_KURT
-	object_event 21,  9, SPRITE_GRAMPS, SPRITEMOVEDATA_WANDER, 2, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, AzaleaTownGrampsScript, -1
-	object_event 15, 13, SPRITE_POKEFAN_F, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, AzaleaTownTeacherText, -1
-	object_event  7,  9, SPRITE_CAMPER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, AzaleaTownYoungsterText, -1
-	object_event 31,  9, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, AzaleaTownRocket1Text, EVENT_AZALEA_TOWN_SLOWPOKETAIL_ROCKET
-	object_event 10, 16, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, AzaleaTownRocket2Text, EVENT_SLOWPOKE_WELL_ROCKETS
-	object_event  8, 17, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, SLOWPOKE, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, AzaleaTownSlowpokeScript, EVENT_AZALEA_TOWN_SLOWPOKES
-	object_event 18,  9, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, SLOWPOKE, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, AzaleaTownSlowpokeScript, EVENT_AZALEA_TOWN_SLOWPOKES
-	object_event 29,  9, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, SLOWPOKE, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, AzaleaTownSlowpokeScript, EVENT_AZALEA_TOWN_SLOWPOKES
-	object_event 15, 15, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, SLOWPOKE, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, AzaleaTownSlowpokeScript, EVENT_AZALEA_TOWN_SLOWPOKES
+	def_object_events
+	object_event 11, 10, SPRITE_SILVER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_AZALEA_TOWN
+	object_event  6,  5, SPRITE_KURT, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, AzaleaTownKurtScript, EVENT_AZALEA_TOWN_KURT
+	object_event 21,  9, SPRITE_GRAMPS, SPRITEMOVEDATA_WANDER, 2, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, AzaleaTownGrampsScript, -1
+	object_event 15, 13, SPRITE_POKEFAN_F, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_COMMAND, jumptextfaceplayer, AzaleaTownTeacherText, -1
+	object_event  7,  9, SPRITE_CAMPER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, AzaleaTownYoungsterText, -1
+	object_event 31,  9, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, AzaleaTownRocket1Text, EVENT_AZALEA_TOWN_SLOWPOKETAIL_ROCKET
+	object_event 10, 16, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, AzaleaTownRocket2Text, EVENT_SLOWPOKE_WELL_ROCKETS
+	object_event  8, 17, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, SLOWPOKE, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, AzaleaTownSlowpokeScript, EVENT_AZALEA_TOWN_SLOWPOKES
+	object_event 18,  9, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, SLOWPOKE, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, AzaleaTownSlowpokeScript, EVENT_AZALEA_TOWN_SLOWPOKES
+	object_event 29,  9, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, SLOWPOKE, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, AzaleaTownSlowpokeScript, EVENT_AZALEA_TOWN_SLOWPOKES
+	object_event 15, 15, SPRITE_MON_ICON, SPRITEMOVEDATA_POKEMON, 0, SLOWPOKE, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, AzaleaTownSlowpokeScript, EVENT_AZALEA_TOWN_SLOWPOKES
 	fruittree_event  8,  2, FRUITTREE_AZALEA_TOWN, WHT_APRICORN, PAL_NPC_SILVER
 
-	const_def 1 ; object constants
+	object_const_def
 	const AZALEATOWN_SILVER
 	const AZALEATOWN_KURT
 
 AzaleaTownFlypointCallback:
 	setflag ENGINE_FLYPOINT_AZALEA
-	return
+	endcallback
 
 AzaleaTownRainScript:
 	special Special_GetOvercastIndex
 	ifequal AZALEA_OVERCAST, .rain
-	changemap AzaleaTown_BlockData
-	return
+	changemapblocks AzaleaTown_BlockData
+	endcallback
 
 .rain
-	changemap AzaleaTownRaining_BlockData
-	return
+	changemapblocks AzaleaTownRaining_BlockData
+	endcallback
 
 AzaleaTownRivalBattleTrigger1:
 	moveobject AZALEATOWN_SILVER, 11, 11
@@ -85,7 +85,7 @@ AzaleaTownRivalBattleTrigger2:
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle
-	jump .AfterBattle
+	sjump .AfterBattle
 
 .Totodile:
 	winlosstext .WinText, .LossText
@@ -94,7 +94,7 @@ AzaleaTownRivalBattleTrigger2:
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle
-	jump .AfterBattle
+	sjump .AfterBattle
 
 .Chikorita:
 	winlosstext .WinText, .LossText
@@ -103,7 +103,7 @@ AzaleaTownRivalBattleTrigger2:
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle
-	jump .AfterBattle
+	sjump .AfterBattle
 
 .AfterBattle:
 	special DeleteSavedMusic
@@ -206,13 +206,13 @@ AzaleaTown_CelebiTrigger:
 
 		para "What is going on?"
 		done
-	buttonsound
+	promptbutton
 	turnobject AZALEATOWN_KURT, RIGHT
 	writethistext
 		text "<PLAYER>, here's"
 		line "your GS Ball back!"
 		done
-	buttonsound
+	promptbutton
 	writetext AzaleaTownKurtText
 	waitbutton
 	verbosegivekeyitem GS_BALL

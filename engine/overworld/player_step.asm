@@ -206,3 +206,173 @@ UpdateOverworldMap:
 	inc hl
 	inc [hl]
 	ret
+
+ScrollMapDown::
+	call ReloadWalkedTile
+	hlcoord 0, 0
+	ld de, wBGMapBuffer + 8
+	call BackupBGMapRow
+	hlcoord 0, 0, wAttrMap
+	ld de, wBGMapPalBuffer + 8
+	call BackupBGMapRow
+	ld a, [wBGMapAnchor]
+	ld e, a
+	ld a, [wBGMapAnchor + 1]
+	ld d, a
+	call UpdateBGMapRow
+	ld a, $1
+	ldh [hBGMapUpdate], a
+	ret
+
+ScrollMapUp::
+	call ReloadWalkedTile
+	hlcoord 0, SCREEN_HEIGHT - 2
+	ld de, wBGMapBuffer + 8
+	call BackupBGMapRow
+	hlcoord 0, SCREEN_HEIGHT - 2, wAttrMap
+	ld de, wBGMapPalBuffer + 8
+	call BackupBGMapRow
+	ld hl, wBGMapAnchor
+	ld a, [hli]
+	ld h, [hl]
+	ld l, a
+	ld bc, $0200
+	add hl, bc
+; cap d at HIGH(vBGMap1)
+	ld a, h
+	and %00000011
+	or HIGH(vBGMap0)
+	ld e, l
+	ld d, a
+	call UpdateBGMapRow
+	ld a, $1
+	ldh [hBGMapUpdate], a
+	ret
+
+ScrollMapRight::
+	call ReloadWalkedTile
+	hlcoord 0, 0
+	ld de, wBGMapBuffer + 8
+	call BackupBGMapColumn
+	hlcoord 0, 0, wAttrMap
+	ld de, wBGMapPalBuffer + 8
+	call BackupBGMapColumn
+	ld a, [wBGMapAnchor]
+	ld e, a
+	ld a, [wBGMapAnchor + 1]
+	ld d, a
+	call UpdateBGMapColumn
+	ld a, $1
+	ldh [hBGMapUpdate], a
+	ret
+
+ScrollMapLeft::
+	call ReloadWalkedTile
+	hlcoord SCREEN_WIDTH - 2, 0
+	ld de, wBGMapBuffer + 8
+	call BackupBGMapColumn
+	hlcoord SCREEN_WIDTH - 2, 0, wAttrMap
+	ld de, wBGMapPalBuffer + 8
+	call BackupBGMapColumn
+	ld a, [wBGMapAnchor]
+
+	; add SCREEN_HEIGHT, but wrap-around the last 5 bits
+	swap a
+	rrca
+	add SCREEN_HEIGHT << 3
+	rlca
+	swap a
+	ld e, a
+	ld a, [wBGMapAnchor + 1]
+	ld d, a
+	call UpdateBGMapColumn
+	ld a, $1
+	ldh [hBGMapUpdate], a
+	ret
+
+BackupBGMapRow::
+	ld c, 2 * SCREEN_WIDTH
+.loop
+	ld a, [hli]
+	ld [de], a
+	inc de
+	dec c
+	jr nz, .loop
+	ret
+
+BackupBGMapColumn::
+	ld c, SCREEN_HEIGHT
+.loop
+	ld a, [hli]
+	ld [de], a
+	inc de
+	ld a, [hl]
+	ld [de], a
+	inc de
+	ld a, SCREEN_WIDTH - 1
+	; hl += a
+	add l
+	ld l, a
+	adc h
+	sub l
+	ld h, a
+	dec c
+	jr nz, .loop
+	ret
+
+UpdateBGMapRow::
+	ld hl, wBGMapBufferPtrs + 8
+	push de
+	call .iteration
+	pop de
+	ld a, BG_MAP_WIDTH
+	add e
+	ld e, a
+
+.iteration
+	ld c, 10
+.loop
+	ld a, e
+	ld [hli], a
+	ld a, d
+	ld [hli], a
+	ld a, e
+	inc a
+	inc a
+	and $1f
+	ld b, a
+	ld a, e
+	and $e0
+	or b
+	ld e, a
+	dec c
+	jr nz, .loop
+	ld a, SCREEN_WIDTH + 4
+	ldh [hBGMapTileCount], a
+	ret
+
+UpdateBGMapColumn::
+	ld hl, wBGMapBufferPtrs + 8
+	ld c, SCREEN_HEIGHT
+.loop
+	ld a, e
+	ld [hli], a
+	ld a, d
+	ld [hli], a
+	ld a, BG_MAP_HEIGHT
+	add e
+	ld e, a
+	jr nc, .skip
+	inc d
+; cap d at HIGH(vBGMap1)
+	ld a, d
+	and %11
+	or HIGH(vBGMap0)
+	ld d, a
+
+.skip
+	dec c
+	jr nz, .loop
+	ld a, SCREEN_HEIGHT + 4
+	ldh [hBGMapTileCount], a
+	ret

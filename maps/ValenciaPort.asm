@@ -1,22 +1,22 @@
 ValenciaPort_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event 10, 17, ROUTE_49, 1
 	warp_event 11, 17, ROUTE_49, 1
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 1 ; bg events
-	bg_event 10,  9, SIGNPOST_ITEM + MAX_POTION, EVENT_VALENCIA_PORT_HIDDEN_MAX_POTION
+	def_bg_events
+	bg_event 10,  9, BGEVENT_ITEM + MAX_POTION, EVENT_VALENCIA_PORT_HIDDEN_MAX_POTION
 
-	db 2 ; object events
-	object_event 11,  4, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ValenciaPortSailorScript, -1
-	object_event 13, 10, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, ValenciaPortFisherText, -1
+	def_object_events
+	object_event 11,  4, SPRITE_SAILOR, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ValenciaPortSailorScript, -1
+	object_event 13, 10, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, ValenciaPortFisherText, -1
 
-	const_def 1 ; object constants
+	object_const_def
 	const VALENCIAPORT_SAILOR
 
 ValenciaPortSailorScript:

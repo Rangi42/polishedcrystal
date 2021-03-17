@@ -1,17 +1,17 @@
 NewBarkTown_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 1 ; callbacks
+	def_callbacks
 	callback MAPCALLBACK_NEWMAP, NewBarkTownFlyPoint
 
-	db 5 ; warp events
+	def_warp_events
 	warp_event  6,  3, ELMS_LAB, 1
-	warp_event 15,  5, KRISS_HOUSE_1F, 1
-	warp_event  3, 11, KRISS_NEIGHBORS_HOUSE, 1
+	warp_event 15,  5, PLAYERS_HOUSE_1F, 1
+	warp_event  3, 11, PLAYERS_NEIGHBORS_HOUSE, 1
 	warp_event 11, 13, LYRAS_HOUSE_1F, 1
 	warp_event 10,  2, ELMS_HOUSE, 2
 
-	db 7 ; coord events
+	def_coord_events
 	coord_event  1,  8, 0, NewBarkTown_TeacherStopsYouTrigger1
 	coord_event  1,  9, 0, NewBarkTown_TeacherStopsYouTrigger2
 	coord_event  6,  4, 0, NewBarkTown_LyraIntroTrigger
@@ -20,21 +20,21 @@ NewBarkTown_MapScriptHeader:
 	coord_event 17,  8, 1, NewBarkTown_LyraFinalTrigger3
 	coord_event 17,  9, 1, NewBarkTown_LyraFinalTrigger4
 
-	db 5 ; bg events
-	bg_event  8,  8, SIGNPOST_JUMPTEXT, NewBarkTownSignText
-	bg_event 13,  5, SIGNPOST_JUMPTEXT, PlayersHouseSignText
-	bg_event  3,  3, SIGNPOST_JUMPTEXT, ElmsLabSignText
-	bg_event  9, 13, SIGNPOST_JUMPTEXT, LyrasHouseSignText
-	bg_event  3,  2, SIGNPOST_ITEM + POTION, EVENT_NEW_BARK_TOWN_HIDDEN_POTION
+	def_bg_events
+	bg_event  8,  8, BGEVENT_JUMPTEXT, NewBarkTownSignText
+	bg_event 13,  5, BGEVENT_JUMPTEXT, PlayersHouseSignText
+	bg_event  3,  3, BGEVENT_JUMPTEXT, ElmsLabSignText
+	bg_event  9, 13, BGEVENT_JUMPTEXT, LyrasHouseSignText
+	bg_event  3,  2, BGEVENT_ITEM + POTION, EVENT_NEW_BARK_TOWN_HIDDEN_POTION
 
-	db 5 ; object events
-	object_event  3,  2, SPRITE_SILVER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, NewBarkTownSilverScript, EVENT_RIVAL_NEW_BARK_TOWN
-	object_event  1,  6, SPRITE_LYRA, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_LYRA_NEW_BARK_TOWN
-	object_event  6,  8, SPRITE_POKEFAN_F, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, NewBarkTownTeacherScript, -1
-	object_event 13,  8, SPRITE_FAT_GUY, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, PAL_NPC_GREEN, PERSONTYPE_COMMAND, jumptextfaceplayer, Text_ElmDiscoveredNewMon, -1
-	object_event  7, 15, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, (1 << MORN) | (1 << DAY), 0, PERSONTYPE_COMMAND, jumptextfaceplayer, Text_GearIsImpressive, -1
+	def_object_events
+	object_event  3,  2, SPRITE_SILVER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, NewBarkTownSilverScript, EVENT_RIVAL_NEW_BARK_TOWN
+	object_event  1,  6, SPRITE_LYRA, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_LYRA_NEW_BARK_TOWN
+	object_event  6,  8, SPRITE_POKEFAN_F, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, NewBarkTownTeacherScript, -1
+	object_event 13,  8, SPRITE_FAT_GUY, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_COMMAND, jumptextfaceplayer, Text_ElmDiscoveredNewMon, -1
+	object_event  7, 15, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, (1 << MORN) | (1 << DAY), 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, Text_GearIsImpressive, -1
 
-	const_def 1 ; object constants
+	object_const_def
 	const NEWBARKTOWN_SILVER
 	const NEWBARKTOWN_LYRA
 	const NEWBARKTOWN_TEACHER
@@ -42,7 +42,7 @@ NewBarkTown_MapScriptHeader:
 NewBarkTownFlyPoint:
 	setflag ENGINE_FLYPOINT_NEW_BARK
 	clearevent EVENT_FIRST_TIME_BANKING_WITH_MOM
-	return
+	endcallback
 
 NewBarkTown_TeacherStopsYouTrigger1:
 	playmusic MUSIC_MOM
@@ -98,15 +98,15 @@ NewBarkTown_LyraIntroTrigger:
 
 NewBarkTown_LyraFinalTrigger1:
 	moveobject NEWBARKTOWN_LYRA, 14, 11
-	jump NewBarkTown_LyraFinalTrigger
+	sjump NewBarkTown_LyraFinalTrigger
 
 NewBarkTown_LyraFinalTrigger2:
 	moveobject NEWBARKTOWN_LYRA, 14, 12
-	jump NewBarkTown_LyraFinalTrigger
+	sjump NewBarkTown_LyraFinalTrigger
 
 NewBarkTown_LyraFinalTrigger3:
 	moveobject NEWBARKTOWN_LYRA, 14, 13
-	jump NewBarkTown_LyraFinalTrigger
+	sjump NewBarkTown_LyraFinalTrigger
 
 NewBarkTown_LyraFinalTrigger4:
 	moveobject NEWBARKTOWN_LYRA, 14, 14
@@ -127,11 +127,11 @@ NewBarkTown_LyraFinalTrigger:
 	checkevent EVENT_GOT_CHIKORITA_FROM_ELM
 	iftrue .Chikorita
 	loadtrainer LYRA1, LYRA1_10
-	jump .AfterBattle
+	sjump .AfterBattle
 
 .Totodile:
 	loadtrainer LYRA1, LYRA1_11
-	jump .AfterBattle
+	sjump .AfterBattle
 
 .Chikorita:
 	loadtrainer LYRA1, LYRA1_12

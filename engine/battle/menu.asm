@@ -9,7 +9,7 @@ ContestBattleMenu:
 SafariBattleMenu:
 	ld hl, SafariBattleMenuDataHeader
 _BattleMenuCommon:
-	call LoadMenuDataHeader
+	call LoadMenuHeader
 	ld a, [wBattleMenuCursorBuffer]
 	ld [wMenuCursorBuffer], a
 	ld b, QUICK_B

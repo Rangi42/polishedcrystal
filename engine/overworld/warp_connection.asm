@@ -1,13 +1,15 @@
-RunCallback_05_03:
+HandleNewMap:
 	call ResetOWMapState
-	call GetCurrentMapTrigger
+	call GetCurrentMapSceneID
 	ld a, MAPCALLBACK_NEWMAP
 	call RunMapCallback
-RunCallback_03:
-	farcall ClearCmdQueue
-	ld a, MAPCALLBACK_CMDQUEUE
+HandleContinueMap:
+	xor a
+	ld [wStoneTableAddress], a
+	ld [wStoneTableAddress+1], a
+	ld a, MAPCALLBACK_STONETABLE
 	call RunMapCallback
-	call GetMapHeaderTimeOfDayNybble
+	call GetMapTimeOfDay
 	ld [wMapTimeOfDay], a
 	ret
 
@@ -168,7 +170,7 @@ EnteredConnection:
 	scf
 	ret
 
-LoadWarpData:
+EnterMapWarp:
 	call .SaveDigWarp
 	call .SetSpawn
 	ld a, [wNextWarp]
@@ -180,23 +182,16 @@ LoadWarpData:
 	ret
 
 .SaveDigWarp:
-	call GetMapPermission
-	call CheckOutdoorMap
+	call GetMapEnvironment
+	call CheckOutdoorOrIsolatedMap
 	ret nz
 	ld a, [wNextMapGroup]
 	ld b, a
 	ld a, [wNextMapNumber]
 	ld c, a
-	call GetAnyMapPermission
+	call GetAnyMapEnvironment
 	call CheckIndoorMap
 	ret nz
-	ld a, [wPrevMapGroup]
-	cp GROUP_TIN_TOWER_ROOF
-	jr nz, .not_tin_tower_roof
-	ld a, [wPrevMapNumber]
-	cp MAP_TIN_TOWER_ROOF
-	ret z
-.not_tin_tower_roof
 	ld a, [wPrevWarp]
 	ld [wDigWarpNumber], a
 	ld a, [wPrevMapGroup]
@@ -206,14 +201,14 @@ LoadWarpData:
 	ret
 
 .SetSpawn:
-	call GetMapPermission
+	call GetMapEnvironment
 	call CheckOutdoorMap
 	ret nz
 	ld a, [wNextMapGroup]
 	ld b, a
 	ld a, [wNextMapNumber]
 	ld c, a
-	call GetAnyMapPermission
+	call GetAnyMapEnvironment
 	call CheckIndoorMap
 	ret nz
 	ld a, [wNextMapGroup]
@@ -291,10 +286,10 @@ LoadMapTimeOfDay:
 	rst ByteFill
 	ret
 
-DeferredLoadGraphics:
+DeferredLoadMapGraphics:
 	call TilesetUnchanged
 	jr z, .done
-	call LoadTilesetHeader
+	call LoadMapTileset
 	ld a, 3
 	ld [wPendingOverworldGraphics], a
 .done
@@ -303,13 +298,13 @@ DeferredLoadGraphics:
 	ldh [hTileAnimFrame], a
 	ret
 
-LoadGraphics:
-	call LoadTilesetHeader
-	call LoadTileset
+LoadMapGraphics:
+	call LoadMapTileset
+	call LoadTilesetGFX
 	xor a
 	ldh [hMapAnims], a
 	ldh [hTileAnimFrame], a
-	farjp ReloadVisibleSprites
+	farjp RefreshSprites
 
 LoadMapPalettes:
 	ld a, CGB_MAPPALS
@@ -320,10 +315,10 @@ RefreshMapSprites:
 	xor a
 	ldh [hBGMapMode], a
 
-	farcall ReturnFromMapSetupScript
+	farcall InitMapNameSign
 	call GetMovementPermissions
 	farcall RefreshPlayerSprite
-	farcall CheckReplaceKrisSprite
+	farcall CheckUpdatePlayerSprite
 	ld hl, wPlayerSpriteSetupFlags
 	bit 6, [hl]
 	jr nz, .skip
@@ -393,7 +388,7 @@ CheckMovingOffEdgeOfMap::
 	scf
 	ret
 
-GetCoordOfUpperLeftCorner::
+GetMapScreenCoords::
 	ld hl, wOverworldMapBlocks
 	ld a, [wXCoord]
 	bit 0, a

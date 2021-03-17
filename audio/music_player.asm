@@ -108,6 +108,11 @@ endc
 MusicPlayer::
 	call ClearTileMap
 
+	ld a, LOW(LCDMusicPlayer)
+	ldh [hFunctionTargetLo], a
+	ld a, HIGH(LCDMusicPlayer)
+	ldh [hFunctionTargetHi], a
+
 ; Load palette
 	ld hl, rIE
 	set LCD_STAT, [hl]
@@ -139,9 +144,9 @@ MusicPlayer::
 	hlcoord 8, 17, wAttrMap
 	ld [hl], $2
 	hlcoord 12, 17, wAttrMap
-	ld [hl], $1
-	inc hl
-	ld [hl], $1
+	ld a, $1
+	ld [hli], a
+	ld [hl], a
 
 	farcall ApplyAttrMapVBank0
 	ld a, $1
@@ -226,7 +231,7 @@ RenderMusicPlayer:
 
 	ld a, [wSongSelection]
 	; let's see if a song is currently selected
-	cp NUM_SONGS
+	cp NUM_MUSIC_SONGS
 	jr nc, .bad_selection
 	and a
 	jr nz, _RedrawMusicPlayer
@@ -267,14 +272,14 @@ MusicPlayerLoop:
 	ld a, [wSongSelection]
 	dec a
 	jp nz, _RedrawMusicPlayer
-	ld a, NUM_SONGS - 1
+	ld a, NUM_MUSIC_SONGS - 1
 	jp _RedrawMusicPlayer
 
 .right:
 ; next song
 	ld a, [wSongSelection]
 	inc a
-	cp NUM_SONGS
+	cp NUM_MUSIC_SONGS
 	jp nz, _RedrawMusicPlayer
 	ld a, 1
 	jp _RedrawMusicPlayer
@@ -284,17 +289,17 @@ MusicPlayerLoop:
 	ld a, [wSongSelection]
 	sub MP_LIST_PAGE_SKIP
 	jr z, .zerofix
-	cp NUM_SONGS
+	cp NUM_MUSIC_SONGS
 	jp c, _RedrawMusicPlayer
 .zerofix
-	ld a, NUM_SONGS - 1
+	ld a, NUM_MUSIC_SONGS - 1
 	jp _RedrawMusicPlayer
 
 .up:
 ; 10 songs ahead
 	ld a, [wSongSelection]
 	add MP_LIST_PAGE_SKIP
-	cp NUM_SONGS
+	cp NUM_MUSIC_SONGS
 	jp c, _RedrawMusicPlayer
 	ld a, 1
 	jp _RedrawMusicPlayer
@@ -714,7 +719,7 @@ DrawPitchTransposition:
 	and a
 	ret z
 .continue
-	ld [hl], "P"
+	ld [hl], "P" ; no-optimize *hl++|*hl-- = N
 	inc hl
 	lb bc, PRINTNUM_LEFTALIGN | 1, 2
 	ld de, wPitchTransposition
@@ -731,7 +736,7 @@ DrawTempoAdjustment:
 	and a
 	ret z
 .continue
-	ld [hl], "T"
+	ld [hl], "T" ; no-optimize *hl++|*hl-- = N
 	inc hl
 	lb bc, PRINTNUM_LEFTALIGN | 1, 3
 	ld de, wTempoAdjustment
@@ -868,9 +873,8 @@ DrawChData:
 	jr nz, .blank_hit
 	ld a, [wNoiseHit]
 	and a
-	jr z, .blank_hit
 	ld a, MP_METER8
-	jr .got_hit
+	jr nz, .got_hit
 .blank_hit
 	ld a, " "
 .got_hit
@@ -1525,7 +1529,7 @@ SongSelector:
 
 	hlcoord 0, 0
 	lb bc, SCREEN_HEIGHT - 2, SCREEN_WIDTH - 2
-	call TextBox
+	call Textbox
 
 	hlcoord 0, MP_LIST_CURSOR_Y
 	ld [hl], "▶"
@@ -1533,7 +1537,7 @@ SongSelector:
 	ld [wSelectorTop], a ; backup, in case of B button
 	cp MP_LIST_CURSOR_Y
 	jr nc, .ok
-	add NUM_SONGS - 1
+	add NUM_MUSIC_SONGS - 1
 .ok
 	sub MP_LIST_CURSOR_Y - 1
 	ld [wSongSelection], a
@@ -1555,9 +1559,9 @@ SongSelector:
 .a:
 ; select song
 	ld a, [wSongSelection]
-	cp NUM_SONGS - MP_LIST_CURSOR_Y + 1
+	cp NUM_MUSIC_SONGS - MP_LIST_CURSOR_Y + 1
 	jr c, .no_overflow
-	sub NUM_SONGS - MP_LIST_CURSOR_Y
+	sub NUM_MUSIC_SONGS - MP_LIST_CURSOR_Y
 	jr .got_song
 .no_overflow
 	add MP_LIST_CURSOR_Y - 1
@@ -1572,7 +1576,7 @@ SongSelector:
 	ld a, [wSongSelection]
 	dec a
 	jr nz, .no_underflow_up
-	ld a, NUM_SONGS - 1
+	ld a, NUM_MUSIC_SONGS - 1
 .no_underflow_up
 	ld [wSongSelection], a
 	call UpdateSelectorNames
@@ -1582,7 +1586,7 @@ SongSelector:
 ; next song
 	ld a, [wSongSelection]
 	inc a
-	cp NUM_SONGS
+	cp NUM_MUSIC_SONGS
 	jr nz, .no_overflow_down
 	ld a, 1
 .no_overflow_down
@@ -1595,7 +1599,7 @@ SongSelector:
 	ld a, [wSongSelection]
 	cp MP_LIST_PAGE_SKIP + 1
 	jr nc, .no_underflow_left
-	add NUM_SONGS - 1
+	add NUM_MUSIC_SONGS - 1
 .no_underflow_left
 	sub MP_LIST_PAGE_SKIP
 	ld [wSongSelection], a
@@ -1605,9 +1609,9 @@ SongSelector:
 .right:
 ; 10 songs ahead
 	ld a, [wSongSelection]
-	cp NUM_SONGS - MP_LIST_PAGE_SKIP
+	cp NUM_MUSIC_SONGS - MP_LIST_PAGE_SKIP
 	jr c, .no_overflow_right
-	sub NUM_SONGS - 1
+	sub NUM_MUSIC_SONGS - 1
 .no_overflow_right
 	add MP_LIST_PAGE_SKIP
 	ld [wSongSelection], a
@@ -1646,7 +1650,7 @@ endr
 	inc b
 	inc c
 	ld a, c
-	cp NUM_SONGS
+	cp NUM_MUSIC_SONGS
 	jr c, .noOverflow
 	ld c, 1
 	ld de, SongInfo
@@ -1682,8 +1686,8 @@ MPLPlaceString:
 	lb bc, 1, 3
 	call PrintNum
 	pop de
-	ld [hl], " "
-	inc hl
+	ld a, " "
+	ld [hli], a
 	push hl
 	push de
 	rst PlaceString
@@ -1712,7 +1716,7 @@ MPLPlaceString:
 	sub c
 	jr z, .ok
 .loop2
-	ld [hl], " "
+	ld [hl], " " ; no-optimize *hl++|*hl-- = N
 	inc hl
 	dec a
 	jr nz, .loop2
@@ -1722,8 +1726,8 @@ MPLPlaceString:
 	ld bc, 17
 	ld hl, wStringBuffer2
 	add hl, bc
-	ld [hl], "…"
-	inc hl
+	ld a, "…"
+	ld [hli], a
 	ld [hl], "@"
 .ok
 	pop hl
@@ -1753,9 +1757,9 @@ ChannelsOffTilemaps:
 
 NoteOAM:
 	; y, x, tile id, OAM attributes
-	db 0, 0, $20, BEHIND_BG
-	db 0, 0, $40, BEHIND_BG
-	db 0, 0, $60, BEHIND_BG
+	db 0, 0, $20, PRIORITY
+	db 0, 0, $40, PRIORITY
+	db 0, 0, $60, PRIORITY
 
 INCLUDE "data/music_player/notes.asm"
 INCLUDE "data/music_player/song_info.asm"

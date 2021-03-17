@@ -1,7 +1,10 @@
+; collision permissions (see data/collision/collision_permissions.asm)
 LAND_TILE  EQU %00 ; 'and a' checks
 WATER_TILE EQU %01 ; 'dec a' checks
 WALL_TILE  EQU %10
 
+; collision data types (see data/tilesets/*_collision.asm)
+; TileCollisionTable indexes (see data/collision/collision_permissions.asm)
 COLL_FLOOR             EQU $00
 COLL_VOID              EQU $01
 COLL_WALL              EQU $07
@@ -72,3 +75,15 @@ COLL_STAIRS_LEFT_DOWN  EQU $c1
 COLL_STAIRS_RIGHT_UP   EQU $c2
 COLL_STAIRS_LEFT_UP    EQU $c3
 COLL_ELEVATOR_BUTTON   EQU $d1
+
+; collision data type nybbles
+LO_NYBBLE_GRASS      EQU $07
+HI_NYBBLE_TALL_GRASS EQU $10
+HI_NYBBLE_WATER      EQU $20
+HI_NYBBLE_CURRENT    EQU $30
+HI_NYBBLE_WALK       EQU $40
+HI_NYBBLE_WALK_ALT   EQU $50
+HI_NYBBLE_WARPS      EQU $70
+HI_NYBBLE_LEDGES     EQU $a0
+HI_NYBBLE_SIDE_WALLS EQU $b0
+HI_NYBBLE_SIDE_BUOYS EQU $c0

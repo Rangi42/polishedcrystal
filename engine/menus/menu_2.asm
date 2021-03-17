@@ -44,26 +44,26 @@ PlaceMenuItemQuantity:
 	push de
 	pop hl
 _PlaceMenuQuantity:
-	ld de, $15
+	ld de, SCREEN_WIDTH + 1
 	add hl, de
-	ld [hl], "×"
-	inc hl
+	ld a, "×"
+	ld [hli], a
 	ld de, wMenuSelectionQuantity
 	lb bc, 1, 2
 	jp PrintNum
 
 PlaceMoneyTopRight:
-	ld hl, MenuDataHeader_0x24b15
-	call CopyMenuDataHeader
+	ld hl, MoneyTopRightMenuHeader
+	call CopyMenuHeader
 	jr PlaceMoneyDataHeader
 
 PlaceMoneyBottomLeft:
-	ld hl, MenuDataHeader_0x24b1d
-	call CopyMenuDataHeader
+	ld hl, MoneyBottomLeftMenuHeader
+	call CopyMenuHeader
 	jr PlaceMoneyDataHeader
 
 PlaceMoneyAtTopLeftOfTextbox:
-	ld hl, MenuDataHeader_0x24b15
+	ld hl, MoneyTopRightMenuHeader
 	lb de, 0, 11
 	call OffsetMenuDataHeader
 
@@ -76,14 +76,14 @@ PlaceMoneyDataHeader:
 	lb bc, PRINTNUM_MONEY | 3, 7
 	jp PrintNum
 
-MenuDataHeader_0x24b15:
+MoneyTopRightMenuHeader:
 	db $40 ; flags
 	db 00, 10 ; start coords
 	db 02, 19 ; end coords
 	dw NULL
 	db 1 ; default option
 
-MenuDataHeader_0x24b1d:
+MoneyBottomLeftMenuHeader:
 	db $40 ; flags
 	db 11, 00 ; start coords
 	db 13, 09 ; end coords
@@ -93,7 +93,7 @@ MenuDataHeader_0x24b1d:
 PlaceBlueCardPointsTopRight:
 	hlcoord 11, 0
 	lb bc, 1, 7
-	call TextBox
+	call Textbox
 	hlcoord 12, 1
 	ld de, wBlueCardBalance
 	lb bc, 1, 3
@@ -106,12 +106,12 @@ PlaceBlueCardPointsTopRight:
 	db " Pts@"
 
 PlaceBattlePointsTopRight:
-	hlcoord 12, 0
-	lb bc, 1, 6
-	call TextBox
-	hlcoord 13, 1
+	hlcoord 10, 0
+	lb bc, 1, 8
+	call Textbox
+	hlcoord 11, 1
 	ld de, wBattlePoints
-	lb bc, 1, 3
+	lb bc, 2, 5
 	call PrintNum
 	ld de, .BPString
 	rst PlaceString
@@ -124,7 +124,7 @@ Special_DisplayCoinCaseBalance:
 	; Place a text box of size 1x7 at 11, 0.
 	hlcoord 11, 0
 	lb bc, 1, 7
-	call TextBox
+	call Textbox
 	hlcoord 12, 0
 	ld de, CoinString
 	rst PlaceString
@@ -136,7 +136,7 @@ Special_DisplayCoinCaseBalance:
 Special_DisplayMoneyAndCoinBalance:
 	hlcoord 5, 0
 	lb bc, 3, 13
-	call TextBox
+	call Textbox
 	hlcoord 6, 1
 	ld de, MoneyString
 	rst PlaceString
@@ -160,7 +160,7 @@ CoinString:
 StartMenu_DrawBugContestStatusBox:
 	hlcoord 0, 0
 	lb bc, 5, 17
-	jp TextBox
+	jp Textbox
 
 StartMenu_PrintBugContestStatus:
 	ld hl, wOptions1

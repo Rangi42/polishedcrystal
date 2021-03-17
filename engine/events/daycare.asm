@@ -21,17 +21,17 @@
 	const DAYCARETEXT_13
 
 Special_DayCareMan:
-	ld hl, wDaycareMan
+	ld hl, wDayCareMan
 	bit 0, [hl]
 	jr nz, .AskWithdrawMon
-	ld hl, wDaycareMan
+	ld hl, wDayCareMan
 	ld a, DAYCARETEXT_MAN_INTRO
 	call DayCareManIntroText
 	jr c, .cancel
 	call DayCareAskDepositPokemon
 	jr c, .print_text
-	farcall DepositMonWithDaycareMan
-	ld hl, wDaycareMan
+	farcall DepositMonWithDayCareMan
+	ld hl, wDayCareMan
 	set 0, [hl]
 	call DayCare_DepositPokemonText
 	jp DayCare_InitBreeding
@@ -42,9 +42,9 @@ Special_DayCareMan:
 	call GetPriceToRetrieveBreedmon
 	call DayCare_AskWithdrawBreedMon
 	jr c, .print_text
-	farcall RetrievePokemonFromDaycareMan
+	farcall RetrievePokemonFromDayCareMan
 	call DayCare_TakeMoney_PlayCry
-	ld hl, wDaycareMan
+	ld hl, wDayCareMan
 	res 0, [hl]
 	res 5, [hl]
 	jr .cancel
@@ -57,17 +57,17 @@ Special_DayCareMan:
 	jp PrintDayCareText
 
 Special_DayCareLady:
-	ld hl, wDaycareLady
+	ld hl, wDayCareLady
 	bit 0, [hl]
 	jr nz, .AskWithdrawMon
-	ld hl, wDaycareLady
+	ld hl, wDayCareLady
 	ld a, DAYCARETEXT_LADY_INTRO
 	call DayCareLadyIntroText
 	jr c, .cancel
 	call DayCareAskDepositPokemon
 	jr c, .print_text
-	farcall DepositMonWithDaycareLady
-	ld hl, wDaycareLady
+	farcall DepositMonWithDayCareLady
+	ld hl, wDayCareLady
 	set 0, [hl]
 	call DayCare_DepositPokemonText
 	jp DayCare_InitBreeding
@@ -78,11 +78,11 @@ Special_DayCareLady:
 	call GetPriceToRetrieveBreedmon
 	call DayCare_AskWithdrawBreedMon
 	jr c, .print_text
-	farcall RetrievePokemonFromDaycareLady
+	farcall RetrievePokemonFromDayCareLady
 	call DayCare_TakeMoney_PlayCry
-	ld hl, wDaycareLady
+	ld hl, wDayCareLady
 	res 0, [hl]
-	ld hl, wDaycareMan
+	ld hl, wDayCareMan
 	res 5, [hl]
 	jr .cancel
 
@@ -99,7 +99,7 @@ DayCareLadyIntroText:
 	inc a
 DayCareManIntroText:
 	set 7, [hl]
-DayCarePersonIntroText
+DayCarePersonIntroText:
 	call PrintDayCareText
 	jp YesNoBox
 
@@ -109,8 +109,8 @@ DayCareAskDepositPokemon:
 	jr c, .OnlyOneMon
 	ld a, DAYCARETEXT_WHICH_ONE
 	call PrintDayCareText
-	ld b, 6
-	farcall SelectTradeOrDaycareMon
+	ld b, PARTYMENUACTION_GIVE_MON
+	farcall SelectTradeOrDayCareMon
 	jr c, .Declined
 	ld hl, wPartyMon1IsEgg
 	ld a, [wCurPartyMon]
@@ -188,7 +188,7 @@ DayCare_AskWithdrawBreedMon:
 .check_money
 	ld de, wMoney
 	ld bc, wStringBuffer2 + 2
-	farcall CompareMoney
+	call CompareMoney
 	jr c, .not_enough_money
 	ld a, [wPartyCount]
 	cp PARTY_LENGTH
@@ -214,7 +214,7 @@ DayCare_AskWithdrawBreedMon:
 DayCare_TakeMoney_PlayCry:
 	ld bc, wStringBuffer2 + 2
 	ld de, wMoney
-	farcall TakeMoney
+	call TakeMoney
 	ld a, DAYCARETEXT_WITHDRAW
 	call PrintDayCareText
 	ld a, [wCurPartySpecies]
@@ -279,106 +279,106 @@ PrintDayCareText:
 
 .DayCareManIntro:
 	; I'm the DAY-CARE MAN. Want me to raise a #MON?
-	text_jump UnknownText_0x1bdaa9
+	text_far _DayCareManIntroText
 	text_end
 
 .DayCareManOddEgg:
 	; I'm the DAY-CARE MAN. Do you know about EGGS? I was raising #MON with my wife, you see. We were shocked to find an EGG! How incredible is that? So, want me to raise a #MON?
-	text_jump UnknownText_0x1bdad8
+	text_far _DayCareManIntroEggText
 	text_end
 
 .DayCareLadyIntro:
 	; I'm the DAY-CARE LADY. Should I raise a #MON for you?
-	text_jump UnknownText_0x1bdb85
+	text_far _DayCareLadyIntroText
 	text_end
 
 .DayCareLadyOddEgg:
 	; I'm the DAY-CARE LADY. Do you know about EGGS? My husband and I were raising some #MON, you see. We were shocked to find an EGG! How incredible could that be? Should I raise a #MON for you?
-	text_jump UnknownText_0x1bdbbb
+	text_far _DayCareLadyIntroEggText
 	text_end
 
 .WhichOne:
 	; What should I raise for you?
-	text_jump UnknownText_0x1bdc79
+	text_far _WhatShouldIRaiseText
 	text_end
 
 .JustOneMon:
 	; Oh? But you have just one #MON.
-	text_jump UnknownText_0x1bdc97
+	text_far _OnlyOneMonText
 	text_end
 
 .CantAcceptEgg:
 	; Sorry, but I can't accept an EGG.
-	text_jump UnknownText_0x1bdcb8
+	text_far _CantAcceptEggText
 	text_end
 
 .RemoveMail:
 	; Remove MAIL before you come see me.
-	text_jump UnknownText_0x1bdcda
+	text_far _RemoveMailText
 	text_end
 
 .LastHealthyMon:
 	; If you give me that, what will you battle with?
-	text_jump UnknownText_0x1bdcff
+	text_far _LastHealthyMonText
 	text_end
 
 .OkayIllRaiseYourMon:
 	; OK. I'll raise your @ .
-	text_jump UnknownText_0x1bdd30
+	text_far _IllRaiseYourMonText
 	text_end
 
 .ComeBackForItLater:
 	; Come back for it later.
-	text_jump UnknownText_0x1bdd4b
+	text_far _ComeBackLaterText
 	text_end
 
 .AreWeGeniusesOrWhat:
 	; Are we geniuses or what? Want to see your @ ?
-	text_jump UnknownText_0x1bdd64
+	text_far _AreWeGeniusesText
 	text_end
 
 .AskRetrieveMon:
 	; Your @ has grown a lot. By level, it's grown by @ . If you want your #MON back, it will cost ¥@ .
-	text_jump UnknownText_0x1bdd96
+	text_far _YourMonHasGrownText
 	text_end
 
 .PerfectHeresYourMon:
 	; Perfect! Here's your #MON.
-	text_jump UnknownText_0x1bde04
+	text_far _PerfectHeresYourMonText
 	text_end
 
 .GotBackMon:
 	; got back @ .
-	text_jump UnknownText_0x1bde1f
+	text_far _GotBackMonText
 	text_end
 
 .ImmediatelyWithdrawMon:
 	; Huh? Back already? Your @ needs a little more time with us. If you want your #MON back, it will cost ¥100.
-	text_jump UnknownText_0x1bde32
+	text_far _BackAlreadyText
 	text_end
 
 .PartyFull:
 	; You have no room for it.
-	text_jump UnknownText_0x1bdea2
+	text_far _HaveNoRoomText
 	text_end
 
 .NotEnoughMoney:
 	; You don't have enough money.
-	text_jump UnknownText_0x1bdebc
+	text_far _NotEnoughMoneyText
 	text_end
 
 .OhFineThen:
 	; Oh, fine then.
-	text_jump UnknownText_0x1bded9
+	text_far _OhFineThenText
 	text_end
 
 .ComeAgain:
 	; Come again.
-	text_jump UnknownText_0x1bdee9
+	text_far _ComeAgainText
 	text_end
 
 Special_DayCareManOutside:
-	ld hl, wDaycareMan
+	ld hl, wDayCareMan
 	bit 6, [hl]
 	jr nz, .AskGiveEgg
 	ld hl, .NotYet
@@ -386,7 +386,7 @@ Special_DayCareManOutside:
 
 .NotYet:
 	; Not yet…
-	text_jump UnknownText_0x1bdef6
+	text_far _NotYetText
 	text_end
 
 .AskGiveEgg:
@@ -398,7 +398,7 @@ Special_DayCareManOutside:
 	cp PARTY_LENGTH
 	jr nc, .PartyFull
 	call DayCare_GiveEgg
-	ld hl, wDaycareMan
+	ld hl, wDayCareMan
 	res 6, [hl]
 	call DayCare_InitBreeding
 	ld hl, .GotEggText
@@ -428,27 +428,27 @@ Special_DayCareManOutside:
 
 .IntroText:
 	; Ah, it's you! We were raising your #MON, and my goodness, were we surprised! Your #MON had an EGG! We don't know how it got there, but your #MON had it. You want it?
-	text_jump UnknownText_0x1bdf00
+	text_far _FoundAnEggText
 	text_end
 
 .GotEggText:
 	; received the EGG!
-	text_jump UnknownText_0x1bdfa5
+	text_far _ReceivedEggText
 	text_end
 
 .TakeGoodCareOfItText:
 	; Take good care of it.
-	text_jump UnknownText_0x1bdfba
+	text_far _TakeGoodCareOfEggText
 	text_end
 
 .IllKeepItThanksText:
 	; Well then, I'll keep it. Thanks!
-	text_jump UnknownText_0x1bdfd1
+	text_far _IllKeepItThanksText
 	text_end
 
 .PartyFullText:
 	; You have no room in your party. Come back later.
-	text_jump UnknownText_0x1bdff2
+	text_far _NoRoomForEggText
 	text_end
 
 DayCare_GiveEgg:
@@ -473,11 +473,11 @@ DayCare_GiveEgg:
 	cp MAGIKARP
 	jr nz, .not_red_magikarp
 	ld a, [wEggMonForm]
-	and FORM_MASK
+	and BASEMON_MASK
 	cp GYARADOS_RED_FORM
 	jr c, .not_red_magikarp
 	ld a, [wEggMonForm]
-	and $ff - FORM_MASK
+	and $ff - BASEMON_MASK
 	or PLAIN_FORM
 	ld [wEggMonForm], a
 .not_red_magikarp
@@ -694,17 +694,17 @@ InheritDV:
 	ret
 
 DayCare_InitBreeding:
-	ld a, [wDaycareLady]
+	ld a, [wDayCareLady]
 	bit 0, a
 	ret z
-	ld a, [wDaycareMan]
+	ld a, [wDayCareMan]
 	bit 0, a
 	ret z
-	farcall CheckBreedmonCompatibility
+	call CheckBreedmonCompatibility
 	ld a, [wd265]
 	and a
 	ret z
-	ld hl, wDaycareMan
+	ld hl, wDayCareMan
 	set 5, [hl]
 .loop
 	call Random
@@ -781,7 +781,7 @@ DayCare_InitBreeding:
 	ld hl, wBreedMon1Form
 	call .inherit_mother_unless_samespecies
 	ld a, [hl]
-	and FORM_MASK
+	and BASEMON_MASK
 	ld [wCurForm], a
 
 	call GetBaseData
@@ -798,7 +798,7 @@ DayCare_InitBreeding:
 	ld [wEggMonItem], a
 
 	; Set moves for the egg
-	farcall InitEggMoves
+	call InitEggMoves
 
 	; Set OTID to the player
 	ld hl, wEggMonID
@@ -917,11 +917,10 @@ DayCare_InitBreeding:
 	cp 2
 	jr c, .hidden_ability
 	cp 21
-	jr c, .ability2
-	ld a, ABILITY_1
-	jr .got_ability
-.ability2
-	ld a, ABILITY_2
+	; a = carry ? ABILITY_2 : ABILITY_1
+	sbc a
+	and ABILITY_2 - ABILITY_1
+	add ABILITY_1
 	jr .got_ability
 .hidden_ability
 	ld a, HIDDEN_ABILITY

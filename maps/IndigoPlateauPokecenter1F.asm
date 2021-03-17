@@ -1,33 +1,33 @@
 IndigoPlateauPokecenter1F_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 1 ; callbacks
+	def_callbacks
 	callback MAPCALLBACK_NEWMAP, PrepareEliteFourCallback
 
-	db 4 ; warp events
+	def_warp_events
 	warp_event  9, 13, INDIGO_PLATEAU, 1
 	warp_event 10, 13, INDIGO_PLATEAU, 2
 	warp_event  0, 13, POKECENTER_2F, 1
 	warp_event 12,  3, WILLS_ROOM, 1
 
-	db 2 ; coord events
+	def_coord_events
 	coord_event 14,  4, 0, PlateauRivalBattleTrigger1
 	coord_event 15,  4, 0, PlateauRivalBattleTrigger2
 
-	db 1 ; bg events
-	bg_event 13,  7, SIGNPOST_READ, PokemonJournalGiovanniScript
+	def_bg_events
+	bg_event 13,  7, BGEVENT_READ, PokemonJournalGiovanniScript
 
-	db 8 ; object events
-	object_event 14,  9, SPRITE_SILVER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_INDIGO_PLATEAU_POKECENTER_RIVAL
-	object_event 14,  9, SPRITE_LYRA, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_INDIGO_PLATEAU_POKECENTER_LYRA
-	object_event 10,  9, SPRITE_YELLOW, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, IndigoPlateauYellowScript, EVENT_INDIGO_PLATEAU_POKECENTER_YELLOW
+	def_object_events
+	object_event 14,  9, SPRITE_SILVER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_INDIGO_PLATEAU_POKECENTER_RIVAL
+	object_event 14,  9, SPRITE_LYRA, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_INDIGO_PLATEAU_POKECENTER_LYRA
+	object_event 10,  9, SPRITE_YELLOW, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, IndigoPlateauYellowScript, EVENT_INDIGO_PLATEAU_POKECENTER_YELLOW
 	pc_nurse_event  9, 7
 	mart_clerk_event  1,  9, MARTTYPE_STANDARD, MART_INDIGO_PLATEAU
-	object_event  6,  9, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, IndigoPlateauTeleportGuyScript, EVENT_TELEPORT_GUY
+	object_event  6,  9, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, IndigoPlateauTeleportGuyScript, EVENT_TELEPORT_GUY
 	pokemon_event  5,  9, ABRA, -1, -1, PAL_NPC_BROWN, IndigoPlateauAbraText, EVENT_TELEPORT_GUY
-	object_event  5, 12, SPRITE_ACE_TRAINER_M, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, IndigoPlateauCooltrainermText, -1
+	object_event  5, 12, SPRITE_ACE_TRAINER_M, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_COMMAND, jumptextfaceplayer, IndigoPlateauCooltrainermText, -1
 
-	const_def 1 ; object constants
+	object_const_def
 	const INDIGOPLATEAUPOKECENTER1F_SILVER
 	const INDIGOPLATEAUPOKECENTER1F_LYRA
 	const INDIGOPLATEAUPOKECENTER1F_YELLOW
@@ -55,7 +55,7 @@ PrepareEliteFourCallback:
 	clearevent EVENT_BEAT_ELITE_4_KAREN
 	clearevent EVENT_BEAT_CHAMPION_LANCE
 	setevent EVENT_LANCES_ROOM_OAK_AND_MARY
-	return
+	endcallback
 
 PlateauRivalBattleTrigger1:
 	moveobject INDIGOPLATEAUPOKECENTER1F_SILVER, 15, 9
@@ -63,7 +63,7 @@ PlateauRivalBattleTrigger1:
 PlateauRivalBattleTrigger2:
 	checkevent EVENT_FINAL_BATTLE_WITH_LYRA
 	iftrue .LyraFight
-	checkcode VAR_WEEKDAY
+	readvar VAR_WEEKDAY
 	ifequal MONDAY, .MaybeRivalFight
 	ifequal TUESDAY, .MaybeLyraFight
 	ifequal WEDNESDAY, .MaybeRivalFight
@@ -99,7 +99,7 @@ PlateauRivalBattleTrigger2:
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle
-	jump .RivalPostBattle
+	sjump .RivalPostBattle
 
 .RivalTotodile:
 	winlosstext PlateauRivalWinText, PlateauRivalLoseText
@@ -108,7 +108,7 @@ PlateauRivalBattleTrigger2:
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle
-	jump .RivalPostBattle
+	sjump .RivalPostBattle
 
 .RivalChikorita:
 	winlosstext PlateauRivalWinText, PlateauRivalLoseText
@@ -162,7 +162,7 @@ PlateauRivalBattleTrigger2:
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle
-	jump .LyraPostBattle
+	sjump .LyraPostBattle
 
 .LyraTotodile:
 	winlosstext PlateauRivalWinText, PlateauRivalLoseText
@@ -171,7 +171,7 @@ PlateauRivalBattleTrigger2:
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle
-	jump .LyraPostBattle
+	sjump .LyraPostBattle
 
 .LyraChikorita:
 	winlosstext PlateauRivalWinText, PlateauRivalLoseText
@@ -356,43 +356,43 @@ IndigoPlateauYellowScript:
 	yesorno
 	iffalse_jumpopenedtext .RefusedText
 	writetext .GiveStarterText
-	buttonsound
+	promptbutton
 	waitsfx
-	checkcode VAR_PARTYCOUNT
+	readvar VAR_PARTYCOUNT
 	ifequal $6, .PartyFull
 	checkevent EVENT_GOT_BULBASAUR_FROM_IVY
 	iftrue .Squirtle
 	checkevent EVENT_GOT_CHARMANDER_FROM_IVY
 	iftrue .Bulbasaur
-	pokenamemem CHARMANDER, $0
+	getmonname CHARMANDER, $0
 	writetext .ReceivedKantoStarterText
 	playsound SFX_CAUGHT_MON
 	waitsfx
-	buttonsound
+	promptbutton
 	givepoke CHARMANDER, NO_FORM, 10, SITRUS_BERRY
-	jump .Finish
+	sjump .Finish
 
 .Bulbasaur:
-	pokenamemem BULBASAUR, $0
+	getmonname BULBASAUR, $0
 	writetext .ReceivedKantoStarterText
 	playsound SFX_CAUGHT_MON
 	waitsfx
-	buttonsound
+	promptbutton
 	givepoke BULBASAUR, NO_FORM, 10, SITRUS_BERRY
-	jump .Finish
+	sjump .Finish
 
 .Squirtle:
-	pokenamemem SQUIRTLE, $0
+	getmonname SQUIRTLE, $0
 	writetext .ReceivedKantoStarterText
 	playsound SFX_CAUGHT_MON
 	waitsfx
-	buttonsound
+	promptbutton
 	givepoke SQUIRTLE, NO_FORM, 10, SITRUS_BERRY
 .Finish:
 	writetext .GoodbyeText
 	waitbutton
 	closetext
-	checkcode VAR_FACING
+	readvar VAR_FACING
 	turnobject PLAYER, DOWN
 	ifnotequal UP, .noleftstep
 	applyonemovement INDIGOPLATEAUPOKECENTER1F_YELLOW, step_left
@@ -465,7 +465,7 @@ IndigoPlateauYellowScript:
 	line "good care of that"
 
 	para ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text ","
 	line "<PLAYER>!"
 
@@ -477,7 +477,7 @@ IndigoPlateauYellowScript:
 .ReceivedKantoStarterText:
 	text "<PLAYER> received"
 	line ""
-	text_from_ram wStringBuffer3
+	text_ram wStringBuffer3
 	text "!"
 	done
 

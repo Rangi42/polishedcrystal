@@ -1,6 +1,6 @@
 ; Audio interfaces.
 
-MapSetup_Sound_Off::
+InitSound::
 
 	push hl
 	push de
@@ -9,10 +9,10 @@ MapSetup_Sound_Off::
 
 	ldh a, [hROMBank]
 	push af
-	ld a, BANK(_MapSetup_Sound_Off)
+	ld a, BANK(_InitSound)
 	rst Bankswitch
 
-	call _MapSetup_Sound_Off
+	call _InitSound ; far-ok
 
 	pop af
 	rst Bankswitch
@@ -31,7 +31,7 @@ UpdateSound::
 	ld a, BANK(_UpdateSound)
 	rst Bankswitch
 
-	call _UpdateSound
+	call _UpdateSound ; far-ok
 
 	pop af
 	rst Bankswitch
@@ -40,7 +40,6 @@ UpdateSound::
 
 _LoadMusicByte::
 ; wCurMusicByte = [a:de]
-GLOBAL LoadMusicByte
 	rst Bankswitch
 	ld a, [de]
 	ld [wCurMusicByte], a
@@ -66,18 +65,18 @@ PlayMusic::
 
 	ldh a, [hROMBank]
 	push af
-	ld a, BANK(_PlayMusic) ; and BANK(_MapSetup_Sound_Off)
+	ld a, BANK(_PlayMusic) ; and BANK(_InitSound)
 	rst Bankswitch
 
 	ld a, e
 	and a
 	jr z, .nomusic
 
-	call _PlayMusic
+	call _PlayMusic ; far-ok
 	jr .end
 
 .nomusic
-	call _MapSetup_Sound_Off
+	call _InitSound ; far-ok
 
 .end
 	pop af
@@ -100,10 +99,10 @@ PlayMusic2::
 
 	push de
 	ld de, MUSIC_NONE
-	call _PlayMusic
+	call _PlayMusic ; far-ok
 	call DelayFrame
 	pop de
-	call _PlayMusic
+	call _PlayMusic ; far-ok
 
 	pop af
 	rst Bankswitch
@@ -122,10 +121,10 @@ PlayCryHeader::
 	push af
 
 	; Cry headers are stuck in one bank.
-	ld a, BANK(CryHeaders)
+	ld a, BANK(PokemonCries)
 	rst Bankswitch
 
-	ld hl, CryHeaders
+	ld hl, PokemonCries
 rept 6
 	add hl, de
 endr
@@ -147,7 +146,7 @@ endr
 	ld a, BANK(_PlayCryHeader)
 	rst Bankswitch
 
-	call _PlayCryHeader
+	call _PlayCryHeader ; far-ok
 
 	pop af
 	rst Bankswitch
@@ -183,7 +182,7 @@ PlaySFX::
 
 	ld a, e
 	ld [wCurSFX], a
-	call _PlaySFX
+	call _PlaySFX ; far-ok
 
 	pop af
 	rst Bankswitch
@@ -253,12 +252,12 @@ LowVolume::
 	ld [wVolume], a
 	ret
 
-VolumeOff::
+MinVolume::
 	xor a
 	ld [wVolume], a
 	ret
 
-FadeInMusic::
+FadeInToMusic::
 	ld a, 4 | 1 << 7
 	ld [wMusicFade], a
 	ret
@@ -285,7 +284,7 @@ FadeToMapMusic::
 	push bc
 	push af
 
-	call GetMapMusic
+	call GetMapMusic_MaybeSpecial
 	ld a, [wMapMusic]
 	cp e
 	jr z, .done
@@ -309,14 +308,14 @@ PlayMapMusic::
 	push bc
 	push af
 
-	call GetMapMusic
+	call GetMapMusic_MaybeSpecial
 	ld a, [wMapMusic]
 	cp e
 	call nz, PlayMusicAfterDelay
 
 	jp PopAFBCDEHL
 
-EnterMapMusic::
+PlayMapMusicBike::
 	push hl
 	push de
 	push bc
@@ -324,7 +323,7 @@ EnterMapMusic::
 
 	xor a
 	ld [wDontPlayMapMusicOnReload], a
-	call GetMapMusic
+	call GetMapMusic_MaybeSpecial
 	call PlayMusicAfterDelay
 
 	jp PopAFBCDEHL
@@ -356,7 +355,7 @@ RestartMapMusic::
 	call PlayMusic
 	jp PopAFBCDEHL
 
-GetMapMusic::
+GetMapMusic_MaybeSpecial::
 	ld hl, SpecialMusicMaps
 	ld a, [wMapGroup]
 	ld b, a
@@ -402,7 +401,7 @@ GetPlayerStateMusic:
 	jr z, .surf
 	cp PLAYER_SURF_PIKA
 	jr z, .surf_pikachu
-	jp GetMapHeaderMusic
+	jp GetMapMusic
 
 .bike:
 	call RegionCheck
@@ -437,15 +436,15 @@ music_map: MACRO
 	map_id \1
 	dw \2
 ENDM
-	music_map ROUTE_23, GetMapHeaderMusic
-	music_map INDIGO_PLATEAU, GetMapHeaderMusic
-	music_map QUIET_CAVE_1F, GetMapHeaderMusic
-	music_map QUIET_CAVE_B1F, GetMapHeaderMusic
-	music_map QUIET_CAVE_B2F, GetMapHeaderMusic
-	music_map QUIET_CAVE_B3F, GetMapHeaderMusic
-	music_map SCARY_CAVE_SHIPWRECK, GetMapHeaderMusic
-	music_map WHIRL_ISLAND_LUGIA_CHAMBER, GetMapHeaderMusic
-	music_map TIN_TOWER_ROOF, GetMapHeaderMusic
+	music_map ROUTE_23, GetMapMusic
+	music_map INDIGO_PLATEAU, GetMapMusic
+	music_map QUIET_CAVE_1F, GetMapMusic
+	music_map QUIET_CAVE_B1F, GetMapMusic
+	music_map QUIET_CAVE_B2F, GetMapMusic
+	music_map QUIET_CAVE_B3F, GetMapMusic
+	music_map SCARY_CAVE_SHIPWRECK, GetMapMusic
+	music_map WHIRL_ISLAND_LUGIA_CHAMBER, GetMapMusic
+	music_map TIN_TOWER_ROOF, GetMapMusic
 	music_map ROUTE_16_SOUTH, GetCyclingRoadMusic
 	music_map ROUTE_17, GetCyclingRoadMusic
 	music_map ROUTE_18_WEST, GetCyclingRoadMusic

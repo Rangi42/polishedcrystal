@@ -1,27 +1,27 @@
 FastShipCabins_SW_SSW_NW_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 5 ; warp events
+	def_warp_events
 	warp_event  2,  0, FAST_SHIP_1F, 5
 	warp_event  2, 19, FAST_SHIP_1F, 6
 	warp_event  3, 19, FAST_SHIP_1F, 6
 	warp_event  2, 31, FAST_SHIP_1F, 7
 	warp_event  3, 31, FAST_SHIP_1F, 7
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 2 ; bg events
-	bg_event  7,  1, SIGNPOST_READ, FastShipBed
-	bg_event  7,  2, SIGNPOST_READ, FastShipBed
+	def_bg_events
+	bg_event  7,  1, BGEVENT_READ, FastShipBed
+	bg_event  7,  2, BGEVENT_READ, FastShipBed
 
-	db 5 ; object events
-	object_event  1, 15, SPRITE_FIREBREATHER, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerFirebreatherLyle, EVENT_FAST_SHIP_PASSENGERS_FIRST_TRIP
-	object_event  6, 15, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerBug_catcherKen, EVENT_FAST_SHIP_PASSENGERS_WESTBOUND
-	object_event  5, 27, SPRITE_RICH_BOY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerRichBoyWinston, EVENT_FAST_SHIP_PASSENGERS_FIRST_TRIP
-	object_event  1, 26, SPRITE_BEAUTY, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerBeautyCassie, EVENT_FAST_SHIP_PASSENGERS_EASTBOUND
-	object_event  3, 28, SPRITE_ROCKER, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, 0, PERSONTYPE_TRAINER, 2, TrainerGuitaristmClyde, EVENT_FAST_SHIP_PASSENGERS_WESTBOUND
+	def_object_events
+	object_event  1, 15, SPRITE_FIREBREATHER, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, GenericTrainerFirebreatherLyle, EVENT_FAST_SHIP_PASSENGERS_FIRST_TRIP
+	object_event  6, 15, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, GenericTrainerBug_catcherKen, EVENT_FAST_SHIP_PASSENGERS_WESTBOUND
+	object_event  5, 27, SPRITE_RICH_BOY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerRichBoyWinston, EVENT_FAST_SHIP_PASSENGERS_FIRST_TRIP
+	object_event  1, 26, SPRITE_BEAUTY, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerBeautyCassie, EVENT_FAST_SHIP_PASSENGERS_EASTBOUND
+	object_event  3, 28, SPRITE_ROCKER, SPRITEMOVEDATA_SPINCOUNTERCLOCKWISE, 0, 0, -1, -1, 0, OBJECTTYPE_TRAINER, 2, TrainerGuitaristmClyde, EVENT_FAST_SHIP_PASSENGERS_WESTBOUND
 
 GenericTrainerFirebreatherLyle:
 	generictrainer FIREBREATHER, LYLE, EVENT_BEAT_FIREBREATHER_LYLE, FirebreatherLyleSeenText, FirebreatherLyleBeatenText
@@ -64,14 +64,14 @@ TrainerGuitaristmClyde:
 	trainer GUITARISTM, CLYDE, EVENT_BEAT_GUITARISTM_CLYDE, GuitaristmClydeSeenText, GuitaristmClydeBeatenText, 0, GuitaristmClydeScript
 
 GuitaristmClydeScript:
-	end_if_just_battled
+	endifjustbattled
 	opentext
-	checkcode VAR_BATTLEPOINTS
-	ifgreater 0, .BattleTower
-	jumpopenedtext UnknownText_0x75d65
+	checkbp 0
+	iffalse .BattleTower
+	jumpopenedtext GuitaristClydeAfterBattleText
 
 .BattleTower:
-	jumpopenedtext UnknownText_0x75cfe
+	jumpopenedtext GuitaristClydeAfterBattleMobileText
 
 FastShipBed:
 	showtext FastShipBedText1
@@ -165,7 +165,7 @@ GuitaristmClydeBeatenText:
 	line "Total distortion!"
 	done
 
-UnknownText_0x75d65:
+GuitaristClydeAfterBattleText:
 	text "Speaking of the"
 	line "Radio Station,"
 
@@ -173,7 +173,7 @@ UnknownText_0x75d65:
 	line "lucky number?"
 	done
 
-UnknownText_0x75cfe:
+GuitaristClydeAfterBattleMobileText:
 	text "I was going to"
 	line "make my debut at"
 	cont "the Battle Tower…"

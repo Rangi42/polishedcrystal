@@ -1,8 +1,18 @@
-; script vars
+; object constants
 PLAYER      EQU  0
 LAST_TALKED EQU -2
 
+; string buffer constants
+	const_def
+	const STRING_BUFFER_3 ; use wStringBuffer3
+	const STRING_BUFFER_4 ; use wStringBuffer4
+	const STRING_BUFFER_5 ; use wStringBuffer5
+NUM_STRING_BUFFERS EQU const_value
 
+STRING_BUFFER_LENGTH EQU 19
+
+; readvar/writevar/loadvar arguments
+; _GetVarAction.VarActionTable indexes (see engine/overworld/variables.asm)
 	const_def
 	const VAR_STRINGBUFFER2    ; 00
 	const VAR_PARTYCOUNT       ; 01
@@ -25,23 +35,21 @@ LAST_TALKED EQU -2
 	const VAR_XCOORD           ; 12
 	const VAR_YCOORD           ; 13
 	const VAR_SPECIALPHONECALL ; 14
-	const VAR_BT_WIN_STREAK    ; 15
-	const VAR_KURT_APRICORNS   ; 16
-	const VAR_CALLERID         ; 17
-	const VAR_BLUECARDBALANCE  ; 18
-	const VAR_BUENASPASSWORD   ; 19
-	const VAR_KENJI_BREAK      ; 1a
-	const VAR_BATTLEPOINTS     ; 1b
-	const VAR_PKMN_JOURNALS    ; 1c
-	const VAR_TRAINER_STARS    ; 1d
-NUM_VARS EQU const_value       ; 1e
+	const VAR_KURT_APRICORNS   ; 15
+	const VAR_CALLERID         ; 16
+	const VAR_BLUECARDBALANCE  ; 17
+	const VAR_BUENASPASSWORD   ; 18
+	const VAR_KENJI_BREAK      ; 19
+	const VAR_PKMN_JOURNALS    ; 1a
+	const VAR_TRAINER_STARS    ; 1b
+NUM_VARS EQU const_value   ; 1c
 
+; variable action types
 RETVAR_STRBUF2 EQU (0 << 6)
 RETVAR_ADDR_DE EQU (1 << 6)
 RETVAR_EXECUTE EQU (2 << 6)
 
-
-; see engine/events.asm:PlayerEventScriptPointers
+; PlayerEventScriptPointers indexes (see engine/overworld/events.asm)
 	const_def -1
 	const PLAYEREVENT_MAPSCRIPT
 	const PLAYEREVENT_NONE
@@ -77,42 +85,37 @@ COORD_EVENT_SIZE  EQU 5  ; coord_event
 BG_EVENT_SIZE     EQU 5  ; bg_event
 OBJECT_EVENT_SIZE EQU 13 ; object_event
 
-; see engine/events.asm:TryReadSign.signs
+; bg_event types
+; TryBGEvent arguments (see engine/overworld/events.asm)
 	const_def
-	const SIGNPOST_READ
-	const SIGNPOST_UP
-	const SIGNPOST_DOWN
-	const SIGNPOST_RIGHT
-	const SIGNPOST_LEFT
-	const SIGNPOST_IFSET
-	const SIGNPOST_IFNOTSET
-	const SIGNPOST_JUMPTEXT
-	const SIGNPOST_JUMPSTD
-	const SIGNPOST_GROTTOITEM
-; SIGNPOST_ITEM has to be the last signpost type, since hidden item signposts
-; use type SIGNPOST_ITEM + (item id) to save space.
-; Note that this requires SIGNPOST_ITEM + (item id) <= $ff, so currently most
+	const BGEVENT_READ
+	const BGEVENT_UP
+	const BGEVENT_DOWN
+	const BGEVENT_RIGHT
+	const BGEVENT_LEFT
+	const BGEVENT_IFSET
+	const BGEVENT_IFNOTSET
+	const BGEVENT_JUMPTEXT
+	const BGEVENT_JUMPSTD
+	const BGEVENT_GROTTOITEM
+; BGEVENT_ITEM has to be the last BG event type, since hidden item BG events
+; use type BGEVENT_ITEM + (item id) to save space.
+; Note that this requires BGEVENT_ITEM + (item id) <= $ff, so currently most
 ; of the mail items cannot be hidden.
-SIGNPOST_ITEM EQU const_value
+BGEVENT_ITEM EQU const_value
 
 ; see engine/events.asm:TryObjectEvent.pointers
 	const_def
-	const PERSONTYPE_SCRIPT         ; 0
-	const PERSONTYPE_POKEBALL       ; 1
-	const PERSONTYPE_TRAINER        ; 2
-	const PERSONTYPE_GENERICTRAINER ; 3
-	const PERSONTYPE_POKEMON        ; 4
-	const PERSONTYPE_COMMAND        ; 5
-NUM_PERSONTYPES EQU const_value
+	const OBJECTTYPE_SCRIPT         ; 0
+	const OBJECTTYPE_ITEMBALL       ; 1
+	const OBJECTTYPE_TRAINER        ; 2
+	const OBJECTTYPE_GENERICTRAINER ; 3
+	const OBJECTTYPE_POKEMON        ; 4
+	const OBJECTTYPE_COMMAND        ; 5
+NUM_OBJECTTYPES EQU const_value
 
-
-CMDQUEUE_ENTRY_SIZE EQU 6
-CMDQUEUE_CAPACITY EQU 4
-CMDQUEUE_ADDR EQU 1 ; offsets 0, 3, 4, and 5 are unused
-CMDQUEUE_STONETABLE EQU 2 ; types 0, 1, 3, and 4 are unused
-
-
-; elevator floors
+; elevfloor macro values
+; ElevatorFloorNames indexes (see data/events/elevator_floors.asm)
 	const_def
 	const _B4F
 	const _B3F
@@ -131,7 +134,8 @@ CMDQUEUE_STONETABLE EQU 2 ; types 0, 1, 3, and 4 are unused
 	const _11F
 	const _ROOF
 
-; see engine/overworld.asm:EmotesPointers
+; showemote arguments
+; Emotes indexes (see data/sprites/emotes.asm)
 	const_def
 	const EMOTE_SHOCK ; 0
 	const EMOTE_QUESTION ; 1
@@ -141,15 +145,10 @@ CMDQUEUE_STONETABLE EQU 2 ; types 0, 1, 3, and 4 are unused
 	const EMOTE_BOLT ; 5
 	const EMOTE_SLEEP ; 6
 	const EMOTE_FISH ; 7
-	const EMOTE_SHADOW ; 8
-	const EMOTE_ROD ; 9
-	const EMOTE_BOULDER_DUST ; 10
-	const EMOTE_SHAKING_GRASS ; 11
-	const EMOTE_PUDDLE_SPLASH ; 12
-EMOTE_MEM EQU -1
+EMOTE_FROM_MEM EQU -1
 
-; fruit trees
-; see engine/events/fruit_trees.asm
+; fruittree arguments
+; FruitTreeItems indexes (see data/items/fruit_trees.asm)
 	const_def 1
 ; Apricorn trees come first, then Berry trees
 	const FRUITTREE_AZALEA_TOWN     ; 01
@@ -218,14 +217,22 @@ NUM_FRUIT_TREES EQU const_value - 1
 	const HIDDENGROTTO_17                 ; 17
 NUM_HIDDEN_GROTTOES EQU const_value - 1
 
+; describedecoration arguments
+; DescribeDecoration.JumpTable indexes (see engine/overworld/decorations.asm)
+	const_def
+	const DECODESC_POSTER     ; 0
+	const DECODESC_LEFT_DOLL  ; 1
+	const DECODESC_RIGHT_DOLL ; 2
+	const DECODESC_BIG_DOLL   ; 3
+	const DECODESC_CONSOLE    ; 4
+
 ; swarm arguments
 ; StoreSwarmMapIndices arguments
 	const_def
 	const SWARM_DUNSPARCE ; 0
 	const SWARM_YANMA     ; 1
 
-
-; ActivateFishingSwarm writebyte arguments
+; ActivateFishingSwarm setval arguments
 	const_def
 	const FISHSWARM_NONE     ; 0
 	const FISHSWARM_QWILFISH ; 1

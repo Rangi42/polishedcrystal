@@ -10,6 +10,8 @@ elif "\1" == "tileset"
 	db \2 ; tileset
 elif "\1" == "overcast"
 	db PAL_FOR_OVERCAST
+elif "\1" == "darkness"
+	db PAL_FOR_DARKNESS
 endc
 ENDM
 
@@ -19,6 +21,7 @@ special_bg_pal: MACRO
 	db \3 ; type
 	dw \4 ; source
 ENDM
+	special_bg_pal darkness, (unused),                    PAL_SINGLE,    DarknessBGPalette
 	special_bg_pal map,      OLIVINE_LIGHTHOUSE_ROOF,     PAL_TIMEOFDAY, GoldenrodDeptStoreRoofPalette
 	special_bg_pal map,      SILVER_CAVE_ROOM_1,          PAL_SINGLE,    SilverCavePalette
 	special_bg_pal map,      SILVER_CAVE_ROOM_2,          PAL_SINGLE,    SilverCavePalette
@@ -80,6 +83,7 @@ ENDM
 	special_bg_pal tileset,  TILESET_GAME_CORNER,         PAL_SINGLE,    GameCornerPalette
 	special_bg_pal tileset,  TILESET_HOTEL,               PAL_SINGLE,    HotelPalette
 	special_bg_pal tileset,  TILESET_BATTLE_TOWER_INSIDE, PAL_SINGLE,    BattleTowerPalette
+	special_bg_pal tileset,  TILESET_BATTLE_FACTORY,      PAL_SINGLE,    BattleFactoryPalette
 	special_bg_pal tileset,  TILESET_RADIO_TOWER,         PAL_SINGLE,    RadioTowerPalette
 	special_bg_pal tileset,  TILESET_QUIET_CAVE,          PAL_SINGLE,    QuietCavePalette
 	special_bg_pal tileset,  TILESET_ICE_PATH,            PAL_SINGLE,    IcePathPalette
@@ -101,30 +105,31 @@ endc
 	dw wOBPals1 palette \4 ; destination
 	db \5 palettes ; length
 ENDM
+	special_ob_pal darkness, (unused),                        DarknessOBPalette,                      PAL_OW_RED,    8
 	special_ob_pal overcast, (unused),                        OvercastOBPalette,                      PAL_OW_RED,    8, 8
-	special_ob_pal map,      MURKY_SWAMP,                     wBGPals1 palette PAL_BG_GREEN,       PAL_OW_TREE,   1
+	special_ob_pal map,      MURKY_SWAMP,                     wBGPals1 palette PAL_BG_GREEN,          PAL_OW_TREE,   1
 	special_ob_pal map,      ROUTE_34,                        OverworldPartyMonPalettes,              PAL_OW_ROCK,   1, 3
 	special_ob_pal map,      VERMILION_GYM,                   VermilionGymOBPalette_Tree,             PAL_OW_TREE,   1
 	special_ob_pal map,      LIGHTNING_ISLAND,                LightningIslandOBPalette_Tree,          PAL_OW_TREE,   1
 	special_ob_pal map,      ROCK_TUNNEL_2F,                  RockTunnelOBPalette_Tree,               PAL_OW_TREE,   1
 	special_ob_pal map,      LYRAS_HOUSE_2F,                  LyrasHouse2FOBPalette_Rock,             PAL_OW_ROCK,   1
-	special_ob_pal map,      KRISS_HOUSE_2F,                  OverworldPartyMonPalettes + 3 palettes, PAL_OW_SILVER, 3
+	special_ob_pal map,      PLAYERS_HOUSE_2F,                OverworldPartyMonPalettes + 3 palettes, PAL_OW_SILVER, 3
 	special_ob_pal map,      GOLDENROD_HARBOR,                GoldenrodHarborOBPalette_Purple,        PAL_OW_PURPLE, 1, 1
 	special_ob_pal map,      GOLDENROD_POKECOM_CENTER_1F,     PokecomCenter1FOBPalette_Rock,          PAL_OW_ROCK,   1
 	special_ob_pal map,      GOLDENROD_POKECOM_CENTER_OFFICE, PokecomCenterOfficeOBPalette_Purple,    PAL_OW_PURPLE, 1
 	special_ob_pal map,      GOLDENROD_MUSEUM_1F,             GoldenrodMuseumOBPalettes_TreeRock,     PAL_OW_TREE,   2
 	special_ob_pal map,      GOLDENROD_MUSEUM_2F,             GoldenrodMuseumOBPalettes_TreeRock,     PAL_OW_TREE,   2
 	special_ob_pal map,      CELADON_DEPT_STORE_3F,           OverworldPartyMonPalettes + 3 palettes, PAL_OW_ROCK,   1
-	special_ob_pal map,      MOUNT_MOON_SQUARE,               wBGPals1 palette PAL_BG_GRAY,        PAL_OW_ROCK,   1
-	special_ob_pal map,      MAGNET_TUNNEL_INSIDE,            wBGPals1 palette PAL_BG_GRAY,        PAL_OW_ROCK,   1
-	special_ob_pal landmark, CINNABAR_VOLCANO,                wBGPals1 palette PAL_BG_BROWN,       PAL_OW_ROCK,   1
-	special_ob_pal landmark, DIM_CAVE,                        wBGPals1 palette PAL_BG_BROWN,       PAL_OW_ROCK,   1
-	special_ob_pal landmark, ICE_PATH,                        wBGPals1 palette PAL_BG_BROWN,       PAL_OW_ROCK,   1
-	special_ob_pal landmark, SEAFOAM_ISLANDS,                 wBGPals1 palette PAL_BG_BROWN,       PAL_OW_ROCK,   1
-	special_ob_pal landmark, WHIRL_ISLANDS,                   wBGPals1 palette PAL_BG_BROWN,       PAL_OW_ROCK,   1
-	special_ob_pal tileset,  TILESET_SHAMOUTI_ISLAND,         wBGPals1 palette PAL_BG_GREEN,       PAL_OW_TREE,   1
-	special_ob_pal tileset,  TILESET_SAFARI_ZONE,             wBGPals1 palette PAL_BG_GREEN,       PAL_OW_TREE,   1
-	special_ob_pal tileset,  TILESET_FARAWAY_ISLAND,          wBGPals1 palette PAL_BG_RED,         PAL_OW_TREE,   1
+	special_ob_pal map,      MOUNT_MOON_SQUARE,               wBGPals1 palette PAL_BG_GRAY,           PAL_OW_ROCK,   1
+	special_ob_pal map,      MAGNET_TUNNEL_INSIDE,            wBGPals1 palette PAL_BG_GRAY,           PAL_OW_ROCK,   1
+	special_ob_pal landmark, CINNABAR_VOLCANO,                wBGPals1 palette PAL_BG_BROWN,          PAL_OW_ROCK,   1
+	special_ob_pal landmark, DIM_CAVE,                        wBGPals1 palette PAL_BG_BROWN,          PAL_OW_ROCK,   1
+	special_ob_pal landmark, ICE_PATH,                        wBGPals1 palette PAL_BG_BROWN,          PAL_OW_ROCK,   1
+	special_ob_pal landmark, SEAFOAM_ISLANDS,                 wBGPals1 palette PAL_BG_BROWN,          PAL_OW_ROCK,   1
+	special_ob_pal landmark, WHIRL_ISLANDS,                   wBGPals1 palette PAL_BG_BROWN,          PAL_OW_ROCK,   1
+	special_ob_pal tileset,  TILESET_SHAMOUTI_ISLAND,         wBGPals1 palette PAL_BG_GREEN,          PAL_OW_TREE,   1
+	special_ob_pal tileset,  TILESET_SAFARI_ZONE,             wBGPals1 palette PAL_BG_GREEN,          PAL_OW_TREE,   1
+	special_ob_pal tileset,  TILESET_FARAWAY_ISLAND,          wBGPals1 palette PAL_BG_RED,            PAL_OW_TREE,   1
 	db 0 ; end
 
 BlindingFlashPalette:
@@ -165,6 +170,24 @@ endc
 BattleTowerPalette:
 if !DEF(MONOCHROME)
 INCLUDE "gfx/tilesets/battle_tower_inside.pal"
+else
+rept 5
+	MONOCHROME_RGB_FOUR
+endr
+	RGB_MONOCHROME_LIGHT
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_BLACK
+	MONOCHROME_RGB_FOUR
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_BLACK
+endc
+
+BattleFactoryPalette:
+if !DEF(MONOCHROME)
+INCLUDE "gfx/tilesets/battle_factory.pal"
 else
 rept 5
 	MONOCHROME_RGB_FOUR
@@ -1297,6 +1320,51 @@ endr
 	RGB_MONOCHROME_BLACK
 endc
 
+DarknessBGPalette:
+if !DEF(MONOCHROME)
+INCLUDE "gfx/tilesets/darkness.pal"
+else
+rept 4
+	RGB_MONOCHROME_BLACK
+	RGB_MONOCHROME_BLACK
+	RGB_MONOCHROME_BLACK
+	RGB_MONOCHROME_BLACK
+endr
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_BLACK
+	RGB_MONOCHROME_BLACK
+	RGB_MONOCHROME_BLACK
+rept 2
+	RGB_MONOCHROME_BLACK
+	RGB_MONOCHROME_BLACK
+	RGB_MONOCHROME_BLACK
+	RGB_MONOCHROME_BLACK
+endr
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_BLACK
+endc
+
+DarknessOBPalette:
+if !DEF(MONOCHROME)
+INCLUDE "gfx/overworld/npc_sprites_darkness.pal"
+else
+rept 5
+	MONOCHROME_RGB_FOUR_OW_DARKNESS
+endr
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_BLACK
+rept 2
+	RGB_MONOCHROME_BLACK
+	RGB_MONOCHROME_BLACK
+	RGB_MONOCHROME_BLACK
+	RGB_MONOCHROME_BLACK
+endr
+endc
+
 OvercastBGPalette:
 if DEF(HGSS)
 INCLUDE "gfx/tilesets/palettes/hgss/ob.pal"
@@ -1382,7 +1450,13 @@ if !DEF(MONOCHROME)
 	RGB 15, 14, 24
 	RGB 10, 09, 20
 	RGB 00, 00, 00
+; eve
+	RGB 31, 21, 14
+	RGB 31, 21, 14
+	RGB 16, 14, 23
+	RGB 00, 00, 00
 else
+	MONOCHROME_RGB_FOUR_OW
 	MONOCHROME_RGB_FOUR_OW
 	MONOCHROME_RGB_FOUR_OW
 	MONOCHROME_RGB_FOUR_OW_NIGHT
@@ -1445,8 +1519,12 @@ if !DEF(MONOCHROME)
 	RGB 15,14,24, 16,09,09, 07,07,10, 00,00,00 ; gray
 	RGB 15,14,24, 16,09,09, 17,07,08, 00,00,00 ; pink
 	RGB 15,14,24, 16,09,09, 02,12,16, 00,00,00 ; teal
+; eve
+	RGB 31,21,14, 31,19,10, 13,13,13, 00,00,00 ; gray
+	RGB 31,21,14, 31,19,10, 31,10,11, 00,00,00 ; pink
+	RGB 31,21,14, 31,19,10, 03,23,21, 00,00,00 ; teal
 else
-rept 6
+rept 9
 	MONOCHROME_RGB_FOUR_OW
 endr
 rept 3

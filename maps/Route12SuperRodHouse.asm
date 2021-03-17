@@ -1,35 +1,35 @@
 Route12SuperRodHouse_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event  2,  7, ROUTE_12_SOUTH, 1
 	warp_event  3,  7, ROUTE_12_SOUTH, 1
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 0 ; bg events
+	def_bg_events
 
-	db 1 ; object events
-	object_event  5,  3, SPRITE_FISHING_GURU, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, FishingGuruScript_0x7f484, -1
+	def_object_events
+	object_event  5,  3, SPRITE_FISHING_GURU, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, Route12SuperRodHouseFishingGuruScript, -1
 
-FishingGuruScript_0x7f484:
+Route12SuperRodHouseFishingGuruScript:
 	checkevent EVENT_GOT_SUPER_ROD
-	iftrue_jumptextfaceplayer UnknownText_0x7f57c
+	iftrue_jumptextfaceplayer GaveSuperRodText
 	faceplayer
 	opentext
-	writetext UnknownText_0x7f4af
+	writetext OfferSuperRodText
 	yesorno
 	iffalse UnknownScript_0x7f4a6
-	writetext UnknownText_0x7f52f
-	buttonsound
+	writetext GiveSuperRodText
+	promptbutton
 	verbosegivekeyitem SUPER_ROD
 	iffalse UnknownScript_0x7f4aa
 	setevent EVENT_GOT_SUPER_ROD
 	jumpthisopenedtext
 
-UnknownText_0x7f57c:
+GaveSuperRodText:
 	text "Try your hand at"
 	line "fishing wherever"
 	cont "there is water."
@@ -42,12 +42,12 @@ UnknownText_0x7f57c:
 	done
 
 UnknownScript_0x7f4a6:
-	writetext UnknownText_0x7f5ec
+	writetext DontWantSuperRodText
 	waitbutton
 UnknownScript_0x7f4aa:
 	endtext
 
-UnknownText_0x7f4af:
+OfferSuperRodText:
 	text "I'm the Fishing"
 	line "Guru's younger"
 	cont "brother."
@@ -62,7 +62,7 @@ UnknownText_0x7f4af:
 	line "right."
 	done
 
-UnknownText_0x7f52f:
+GiveSuperRodText:
 	text "Yes, yes. Just as"
 	line "I thought!"
 
@@ -71,7 +71,7 @@ UnknownText_0x7f52f:
 	cont "Super Rod."
 	done
 
-UnknownText_0x7f5ec:
+DontWantSuperRodText:
 	text "Huh? My own eyes"
 	line "deceived me?"
 	done

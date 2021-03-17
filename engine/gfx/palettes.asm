@@ -94,6 +94,14 @@ else
 	MONOCHROME_RGB_TWO
 endc
 
+PokerusAndShinyPals:
+if !DEF(MONOCHROME)
+	RGB 31, 25, 00
+	RGB 31, 10, 26
+else
+	MONOCHROME_RGB_TWO
+endc
+
 StatsScreenPals:
 if !DEF(MONOCHROME)
 ; pink
@@ -251,9 +259,9 @@ endc
 ItemIconPalettes:
 CaughtBallPals:
 if !DEF(MONOCHROME)
-; NO ITEM
-	RGB 20, 20, 20
-	RGB 10, 10, 10
+; PARK BALL
+	RGB 00, 10, 10
+	RGB 14, 20, 05
 ; POKE BALL
 	RGB 31, 31, 31
 	RGB 30, 10, 06
@@ -290,9 +298,9 @@ if !DEF(MONOCHROME)
 ; LOVE BALL
 	RGB 31, 16, 19
 	RGB 31, 25, 26
-; PARK BALL
-	RGB 00, 10, 10
-	RGB 14, 20, 05
+; ABILITYPATCH
+	RGB 17, 28, 31
+	RGB 08, 20, 22
 ; REPEAT BALL
 	RGB 30, 10, 06
 	RGB 31, 30, 08
@@ -1209,102 +1217,34 @@ rept 19
 endr
 endc
 
-TMHMTypes:
-; This merges data from battle/moves/moves.asm:Moves and engine/tmhm.asm:TMHMMoves
-; for efficiency.
-	db FIGHTING ; DYNAMICPUNCH
-	db DRAGON   ; DRAGON_CLAW
-	db GHOST    ; CURSE
-	db PSYCHIC  ; CALM_MIND
-	db NORMAL   ; ROAR
-	db POISON   ; TOXIC
-	db ICE      ; HAIL
-	db FIGHTING ; BULK_UP
-	db POISON   ; VENOSHOCK
-if DEF(FAITHFUL)
-	db NORMAL   ; HIDDEN_POWER
+ApricornIconPalettes:
+if !DEF(MONOCHROME)
+; RED APRICORN
+	RGB 31, 08, 06
+	RGB 21, 12, 05
+; BLU APRICORN
+	RGB 06, 15, 30
+	RGB 21, 12, 05
+; YLW APRICORN
+	RGB 30, 26, 06
+	RGB 21, 12, 05
+; GRN APRICORN
+	RGB 07, 24, 12
+	RGB 21, 12, 05
+; WHT APRICORN
+	RGB 23, 25, 27
+	RGB 21, 12, 05
+; BLK APRICORN
+	RGB 09, 09, 09
+	RGB 21, 12, 05
+; PNK APRICORN
+	RGB 31, 18, 23
+	RGB 21, 12, 05
 else
-	db UNKNOWN_T ; HIDDEN_POWER
+rept 7
+	MONOCHROME_RGB_TWO
+endr
 endc
-	db FIRE     ; SUNNY_DAY
-	db DARK     ; HONE_CLAWS
-	db ICE      ; ICE_BEAM
-	db ICE      ; BLIZZARD
-	db NORMAL   ; HYPER_BEAM
-	db PSYCHIC  ; LIGHT_SCREEN
-	db NORMAL   ; PROTECT
-	db WATER    ; RAIN_DANCE
-	db GRASS    ; GIGA_DRAIN
-	db NORMAL   ; SAFEGUARD
-	db GROUND   ; BULLDOZE
-	db GRASS    ; SOLAR_BEAM
-	db STEEL    ; IRON_TAIL
-	db ELECTRIC ; THUNDERBOLT
-	db ELECTRIC ; THUNDER
-	db GROUND   ; EARTHQUAKE
-	db NORMAL   ; RETURN
-	db GROUND   ; DIG
-	db PSYCHIC  ; PSYCHIC_M
-	db GHOST    ; SHADOW_BALL
-	db FIGHTING ; ROCK_SMASH
-	db NORMAL   ; DOUBLE_TEAM
-	db PSYCHIC  ; REFLECT
-	db STEEL    ; FLASH_CANNON
-	db FIRE     ; FLAMETHROWER
-	db POISON   ; SLUDGE_BOMB
-	db GROUND   ; SANDSTORM
-	db FIRE     ; FIRE_BLAST
-	db NORMAL   ; SWIFT
-	db FLYING   ; AERIAL_ACE
-	db NORMAL   ; SUBSTITUTE
-	db NORMAL
-	db ELECTRIC ; WILD_CHARGE
-	db PSYCHIC  ; REST
-	db NORMAL   ; ATTRACT
-	db DARK     ; THIEF
-	db STEEL    ; STEEL_WING
-	db ROCK     ; ROCK_SLIDE
-	db FAIRY    ; DAZZLINGLEAM
-	db BUG      ; LEECH_LIFE
-	db FLYING   ; ROOST
-	db FIGHTING ; FOCUS_BLAST
-	db GRASS    ; ENERGY_BALL
-	db NORMAL   ; FALSE_SWIPE
-	db WATER    ; SCALD
-	db BUG      ; X_SCISSOR
-	db DARK     ; DARK_PULSE
-	db NORMAL   ; ENDURE
-	db DRAGON   ; DRAGON_PULSE
-	db FIGHTING ; DRAIN_PUNCH
-	db FIRE     ; WILL_O_WISP
-	db FLYING   ; ACROBATICS
-	db WATER    ; WATER_PULSE
-	db NORMAL   ; EXPLOSION
-	db GHOST    ; SHADOW_CLAW
-	db POISON   ; POISON_JAB
-	db ICE      ; AVALANCHE
-	db FIGHTING ; GIGA_IMPACT
-	db BUG      ; U_TURN
-	db NORMAL   ; FLASH
-	db ROCK     ; STONE_EDGE
-	db ELECTRIC ; VOLT_SWITCH
-	db ELECTRIC ; THUNDER_WAVE
-	db STEEL    ; GYRO_BALL
-	db NORMAL   ; SWORDS_DANCE
-if DEF(FAITHFUL)
-	db NORMAL   ; CUT
-else
-	db STEEL    ; CUT
-endc
-	db FLYING   ; FLY
-	db WATER    ; SURF
-if DEF(FAITHFUL)
-	db NORMAL   ; STRENGTH
-else
-	db FIGHTING ; STRENGTH
-endc
-	db WATER    ; WHIRLPOOL
-	db WATER    ; WATERFALL
 
 PokegearPals:
 if !DEF(MONOCHROME)
@@ -1965,4 +1905,274 @@ else
 	RGB_MONOCHROME_LIGHT
 	RGB_MONOCHROME_DARK
 	RGB_MONOCHROME_WHITE
+endc
+
+BillsPC_ThemePals:
+if !DEF(MONOCHROME)
+; standard
+	RGB 20, 26, 31
+	; two gender colors go here
+	RGB 00, 00, 00
+	RGB 20, 26, 31
+	RGB 05, 06, 18
+	RGB 11, 16, 30
+	RGB 31, 31, 31
+; pro
+	RGB 07, 11, 22
+	; two gender colors go here
+	RGB 31, 31, 31
+	RGB 07, 11, 22
+	RGB 03, 04, 13
+	RGB 13, 24, 29
+	RGB 31, 31, 31
+; mobile
+	RGB 20, 28, 20
+	; two gender colors go here
+	RGB 00, 00, 00
+	RGB 20, 28, 20
+	RGB 00, 00, 00
+	RGB 10, 18, 15
+	RGB 31, 31, 31
+; classic
+	RGB 00, 16, 16
+	; two gender colors go here
+	RGB 31, 31, 31
+	RGB 00, 16, 16
+	RGB 00, 00, 00
+	RGB 23, 24, 24
+	RGB 31, 31, 31
+; bliss
+	RGB 07, 20, 07
+	; two gender colors go here
+	RGB 31, 31, 31
+	RGB 07, 20, 07
+	RGB 00, 06, 15
+	RGB 06, 15, 28
+	RGB 31, 31, 31
+; contrast
+	RGB 06, 17, 24
+	; two gender colors go here
+	RGB 31, 31, 31
+	RGB 06, 17, 24
+	RGB 08, 08, 08
+	RGB 31, 13, 00
+	RGB 31, 31, 31
+; nature
+	RGB 05, 14, 00
+	; two gender colors go here
+	RGB 31, 31, 31
+	RGB 05, 14, 00
+	RGB 03, 06, 05
+	RGB 12, 25, 01
+	RGB 31, 31, 31
+; truth
+	RGB 31, 09, 09
+	; two gender colors go here
+	RGB 31, 31, 31
+	RGB 31, 09, 09
+	RGB 15, 07, 07
+	RGB 31, 16, 08
+	RGB 31, 31, 31
+; ideals
+	RGB 02, 11, 14
+	; two gender colors go here
+	RGB 31, 31, 31
+	RGB 02, 11, 14
+	RGB 00, 03, 06
+	RGB 00, 26, 29
+	RGB 31, 31, 31
+; light
+	RGB 21, 21, 21
+	; two gender colors go here
+	RGB 00, 00, 00
+	RGB 21, 21, 21
+	RGB 00, 00, 00
+	RGB 10, 10, 10
+	RGB 31, 31, 31
+; darkness
+	RGB 10, 10, 10
+	; two gender colors go here
+	RGB 31, 31, 31
+	RGB 10, 10, 10
+	RGB 00, 00, 00
+	RGB 21, 21, 21
+	RGB 31, 31, 31
+; matte
+	RGB 07, 07, 07
+	; two gender colors go here
+	RGB 31, 31, 31
+	RGB 07, 07, 07
+	RGB 07, 07, 07
+	RGB 07, 07, 07
+	RGB 31, 31, 31
+; normal
+	RGB 14, 11, 09
+	; two gender colors go here
+	RGB 31, 31, 31
+	RGB 14, 11, 09
+	RGB 05, 05, 03
+	RGB 21, 21, 14
+	RGB 31, 31, 31
+; fighting
+	RGB 09, 08, 07
+	; two gender colors go here
+	RGB 31, 31, 31
+	RGB 09, 08, 07
+	RGB 06, 01, 00
+	RGB 27, 04, 02
+	RGB 31, 31, 31
+; flying
+	RGB 14, 11, 19
+	; two gender colors go here
+	RGB 31, 31, 31
+	RGB 14, 11, 19
+	RGB 05, 04, 07
+	RGB 22, 17, 30
+	RGB 31, 31, 31
+; poison
+	RGB 09, 07, 10
+	; two gender colors go here
+	RGB 31, 31, 31
+	RGB 09, 07, 10
+	RGB 05, 02, 04
+	RGB 22, 07, 19
+	RGB 31, 31, 31
+; ground
+	RGB 17, 13, 06
+	; two gender colors go here
+	RGB 31, 31, 31
+	RGB 17, 13, 06
+	RGB 07, 06, 03
+	RGB 29, 24, 12
+	RGB 31, 31, 31
+; rock
+	RGB 14, 11, 05
+	; two gender colors go here
+	RGB 31, 31, 31
+	RGB 14, 11, 05
+	RGB 06, 05, 02
+	RGB 24, 20, 07
+	RGB 31, 31, 31
+; bug
+	RGB 15, 18, 02
+	; two gender colors go here
+	RGB 31, 31, 31
+	RGB 15, 18, 02
+	RGB 05, 05, 01
+	RGB 21, 23, 06
+	RGB 31, 31, 31
+; ghost
+	RGB 09, 07, 10
+	; two gender colors go here
+	RGB 31, 31, 31
+	RGB 09, 07, 10
+	RGB 03, 02, 04
+	RGB 15, 11, 18
+	RGB 31, 31, 31
+; steel
+	RGB 16, 15, 14
+	; two gender colors go here
+	RGB 31, 31, 31
+	RGB 16, 15, 14
+	RGB 05, 05, 06
+	RGB 23, 23, 25
+	RGB 31, 31, 31
+; fire
+	RGB 24, 06, 05
+	; two gender colors go here
+	RGB 31, 31, 31
+	RGB 24, 06, 05
+	RGB 07, 04, 01
+	RGB 31, 15, 04
+	RGB 31, 31, 31
+; water
+	RGB 09, 11, 15
+	; two gender colors go here
+	RGB 31, 31, 31
+	RGB 09, 11, 15
+	RGB 03, 04, 07
+	RGB 11, 18, 30
+	RGB 31, 31, 31
+; grass
+	RGB 11, 16, 08
+	; two gender colors go here
+	RGB 31, 31, 31
+	RGB 11, 16, 08
+	RGB 03, 06, 03
+	RGB 11, 25, 11
+	RGB 31, 31, 31
+; electric
+	RGB 23, 20, 07
+	; two gender colors go here
+	RGB 31, 31, 31
+	RGB 23, 20, 07
+	RGB 07, 06, 02
+	RGB 31, 24, 06
+	RGB 31, 31, 31
+; psychic
+	RGB 17, 10, 12
+	; two gender colors go here
+	RGB 31, 31, 31
+	RGB 17, 10, 12
+	RGB 07, 02, 03
+	RGB 31, 09, 15
+	RGB 31, 31, 31
+; ice
+	RGB 18, 18, 20
+	; two gender colors go here
+	RGB 31, 31, 31
+	RGB 18, 18, 20
+	RGB 04, 06, 06
+	RGB 16, 27, 27
+	RGB 31, 31, 31
+; dragon
+	RGB 09, 07, 18
+	; two gender colors go here
+	RGB 31, 31, 31
+	RGB 09, 07, 18
+	RGB 03, 02, 07
+	RGB 15, 07, 31
+	RGB 31, 31, 31
+; dark
+	RGB 09, 08, 07
+	; two gender colors go here
+	RGB 31, 31, 31
+	RGB 09, 08, 07
+	RGB 03, 02, 02
+	RGB 15, 11, 09
+	RGB 31, 31, 31
+; fairy
+	RGB 21, 15, 15
+	; two gender colors go here
+	RGB 31, 31, 31
+	RGB 21, 15, 15
+	RGB 07, 05, 07
+	RGB 31, 20, 29
+	RGB 31, 31, 31
+else
+; standard
+	RGB_MONOCHROME_WHITE
+	; two gender colors go here
+	RGB_MONOCHROME_BLACK
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_LIGHT
+	RGB_MONOCHROME_WHITE
+; pro
+	RGB_MONOCHROME_DARK
+	; two gender colors go here
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_BLACK
+	RGB_MONOCHROME_LIGHT
+	RGB_MONOCHROME_WHITE
+rept NUM_BILLS_PC_THEMES - 2
+	RGB_MONOCHROME_DARK
+	; two gender colors go here
+	RGB_MONOCHROME_WHITE
+	RGB_MONOCHROME_DARK
+	RGB_MONOCHROME_BLACK
+	RGB_MONOCHROME_LIGHT
+	RGB_MONOCHROME_WHITE
+endr
 endc

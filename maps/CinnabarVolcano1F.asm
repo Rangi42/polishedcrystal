@@ -1,10 +1,10 @@
 CinnabarVolcano1F_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 1 ; callbacks
-	callback MAPCALLBACK_CMDQUEUE, CinnabarVolcano1FBouldersFall
+	def_callbacks
+	callback MAPCALLBACK_STONETABLE, CinnabarVolcano1FBouldersFall
 
-	db 10 ; warp events
+	def_warp_events
 	warp_event 13, 25, CINNABAR_ISLAND, 2
 	warp_event  5, 13, CINNABAR_VOLCANO_B1F, 1
 	warp_event 14, 20, CINNABAR_VOLCANO_B1F, 2
@@ -16,20 +16,20 @@ CinnabarVolcano1F_MapScriptHeader:
 	warp_event 10,  7, CINNABAR_VOLCANO_B1F, 11
 	warp_event 15,  3, CINNABAR_VOLCANO_B1F, 12
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 1 ; bg events
-	bg_event 13,  1, SIGNPOST_ITEM + FULL_RESTORE, EVENT_CINNABAR_VOLCANO_1F_HIDDEN_FULL_RESTORE
+	def_bg_events
+	bg_event 13,  1, BGEVENT_ITEM + FULL_RESTORE, EVENT_CINNABAR_VOLCANO_1F_HIDDEN_FULL_RESTORE
 
-	db 15 ; object events
-	object_event  4,  9, SPRITE_BUCK, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, 0, PERSONTYPE_SCRIPT, 0, CinnabarVolcano1FBuckScript, EVENT_CINNABAR_VOLCANO_BUCK
+	def_object_events
+	object_event  4,  9, SPRITE_BUCK, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 2, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, CinnabarVolcano1FBuckScript, EVENT_CINNABAR_VOLCANO_BUCK
 	strengthboulder_event  6, 16, EVENT_BOULDER_IN_CINNABAR_VOLCANO_1F_1
 	strengthboulder_event 15, 22, EVENT_BOULDER_IN_CINNABAR_VOLCANO_1F_2
 	strengthboulder_event 19,  4, EVENT_BOULDER_IN_CINNABAR_VOLCANO_1F_3
 	strengthboulder_event  5,  4, EVENT_BOULDER_IN_CINNABAR_VOLCANO_1F_4
 	strengthboulder_event 23, 16
-	object_event  2, 19, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerScientistOskar, -1
-	object_event 17, 24, SPRITE_SUPER_NERD, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerSuperNerdLuis, -1
+	object_event  2, 19, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerScientistOskar, -1
+	object_event 17, 24, SPRITE_SUPER_NERD, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, GenericTrainerSuperNerdLuis, -1
 	smashrock_event  5, 18
 	smashrock_event 11, 21
 	smashrock_event 35, 23
@@ -38,7 +38,7 @@ CinnabarVolcano1F_MapScriptHeader:
 	smashrock_event 13, 2
 	smashrock_event  8, 4
 
-	const_def 1 ; object constants
+	object_const_def
 	const CINNABARVOLCANO1F_BUCK
 	const CINNABARVOLCANO1F_BOULDER1
 	const CINNABARVOLCANO1F_BOULDER2
@@ -46,12 +46,8 @@ CinnabarVolcano1F_MapScriptHeader:
 	const CINNABARVOLCANO1F_BOULDER4
 
 CinnabarVolcano1FBouldersFall:
-	writecmdqueue .BoulderCmdQueue
-	return
-
-.BoulderCmdQueue:
-	dbw CMDQUEUE_STONETABLE, .BoulderTable ; check if any stones are sitting on a warp
-	dw 0 ; filler
+	usestonetable .BoulderTable
+	endcallback
 
 .BoulderTable:
 	stonetable 6, CINNABARVOLCANO1F_BOULDER1, .Disappear1
@@ -62,19 +58,19 @@ CinnabarVolcano1FBouldersFall:
 
 .Disappear1:
 	disappear CINNABARVOLCANO1F_BOULDER1
-	jump .Fall
+	sjump .Fall
 
 .Disappear2:
 	disappear CINNABARVOLCANO1F_BOULDER2
-	jump .Fall
+	sjump .Fall
 
 .Disappear3:
 	disappear CINNABARVOLCANO1F_BOULDER3
-	jump .Fall
+	sjump .Fall
 
 .Disappear4:
 	disappear CINNABARVOLCANO1F_BOULDER4
-	jump .Fall
+	sjump .Fall
 
 .Fall:
 	pause 30
@@ -106,7 +102,7 @@ CinnabarVolcano1FBuckScript:
 .Beaten
 	opentext
 	writetext .ItemText
-	buttonsound
+	promptbutton
 	verbosegiveitem POWER_BELT
 	iffalse_endtext
 	writetext .GoodbyeText

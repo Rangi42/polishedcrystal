@@ -16,7 +16,7 @@ BattleCommand_spikes:
 	call AnimateCurrentMove
 
 	ld hl, SpikesText
-	jp StdBattleTextBox
+	jp StdBattleTextbox
 
 BattleCommand_toxicspikes:
 	ldh a, [hBattleTurn]
@@ -36,7 +36,7 @@ BattleCommand_toxicspikes:
 	call AnimateCurrentMove
 
 	ld hl, ToxicSpikesText
-	jp StdBattleTextBox
+	jp StdBattleTextbox
 
 .failed
 	jp FailSpikes

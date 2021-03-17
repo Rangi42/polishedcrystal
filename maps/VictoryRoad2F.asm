@@ -1,77 +1,77 @@
 VictoryRoad2F_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 5 ; warp events
+	def_warp_events
 	warp_event 25,  9, ROUTE_23, 4
 	warp_event  3, 11, VICTORY_ROAD_1F, 2
 	warp_event  3,  4, VICTORY_ROAD_3F, 1
 	warp_event 15,  7, VICTORY_ROAD_3F, 2
 	warp_event 19,  9, VICTORY_ROAD_3F, 3
 
-	db 1 ; coord events
-	coord_event 25,  9, 0, UnknownScript_0x74492
+	def_coord_events
+	coord_event 25,  9, 0, VictoryRoadRivalLeft
 
-	db 1 ; bg events
-	bg_event  5,  5, SIGNPOST_ITEM + MAX_POTION, EVENT_VICTORY_ROAD_2F_HIDDEN_MAX_POTION
+	def_bg_events
+	bg_event  5,  5, BGEVENT_ITEM + MAX_POTION, EVENT_VICTORY_ROAD_2F_HIDDEN_MAX_POTION
 
-	db 6 ; object events
-	object_event 20,  9, SPRITE_SILVER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_VICTORY_ROAD
-	object_event 11, 11, SPRITE_VETERAN_F, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 4, GenericTrainerVeteranfJoanne, -1
-	object_event  5,  3, SPRITE_VETERAN_F, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerVeteranfSylvie, -1
+	def_object_events
+	object_event 20,  9, SPRITE_SILVER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_VICTORY_ROAD
+	object_event 11, 11, SPRITE_VETERAN_F, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 4, GenericTrainerVeteranfJoanne, -1
+	object_event  5,  3, SPRITE_VETERAN_F, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, GenericTrainerVeteranfSylvie, -1
 	tmhmball_event  8,  4, TM_EARTHQUAKE, EVENT_VICTORY_ROAD_2F_TM_EARTHQUAKE
 	itemball_event 20,  5, FULL_RESTORE, 1, EVENT_VICTORY_ROAD_2F_FULL_RESTORE
 	itemball_event  9, 14, HP_UP, 1, EVENT_VICTORY_ROAD_2F_HP_UP
 
-	const_def 1 ; object constants
+	object_const_def
 	const VICTORYROAD2F_SILVER
 
-UnknownScript_0x74492:
+VictoryRoadRivalLeft:
 	showemote EMOTE_SHOCK, PLAYER, 15
 	turnobject PLAYER, LEFT
 	special Special_FadeOutMusic
 	pause 15
 	appear VICTORYROAD2F_SILVER
-	applymovement VICTORYROAD2F_SILVER, MovementData_0x74539
+	applymovement VICTORYROAD2F_SILVER, VictoryRoadRivalBattleApproachMovement1
 	playmusic MUSIC_RIVAL_ENCOUNTER
-	showtext UnknownText_0x7455f
+	showtext VictoryRoadRivalBeforeText
 	setevent EVENT_RIVAL_VICTORY_ROAD
 	checkevent EVENT_GOT_TOTODILE_FROM_ELM
 	iftrue UnknownScript_0x744ff
 	checkevent EVENT_GOT_CHIKORITA_FROM_ELM
 	iftrue UnknownScript_0x7450f
-	winlosstext UnknownText_0x7463d, UnknownText_0x747aa
+	winlosstext VictoryRoadRivalDefeatText, VictoryRoadRivalVictoryText
 	setlasttalked VICTORYROAD2F_SILVER
 	loadtrainer RIVAL1, RIVAL1_15
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle
-	jump UnknownScript_0x7451f
+	sjump UnknownScript_0x7451f
 
 UnknownScript_0x744ff:
-	winlosstext UnknownText_0x7463d, UnknownText_0x747aa
+	winlosstext VictoryRoadRivalDefeatText, VictoryRoadRivalVictoryText
 	setlasttalked VICTORYROAD2F_SILVER
 	loadtrainer RIVAL1, RIVAL1_13
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle
-	jump UnknownScript_0x7451f
+	sjump UnknownScript_0x7451f
 
 UnknownScript_0x7450f:
-	winlosstext UnknownText_0x7463d, UnknownText_0x747aa
+	winlosstext VictoryRoadRivalDefeatText, VictoryRoadRivalVictoryText
 	setlasttalked VICTORYROAD2F_SILVER
 	loadtrainer RIVAL1, RIVAL1_14
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle
-	jump UnknownScript_0x7451f
+	sjump UnknownScript_0x7451f
 
 UnknownScript_0x7451f:
 	special DeleteSavedMusic
 	playmusic MUSIC_RIVAL_AFTER
-	showtext UnknownText_0x746ce
-	applymovement VICTORYROAD2F_SILVER, MovementData_0x7454c
+	showtext VictoryRoadRivalAfterText
+	applymovement VICTORYROAD2F_SILVER, VictoryRoadRivalBattleExitMovement1
 	disappear VICTORYROAD2F_SILVER
 	setscene $1
 	playmapmusic
@@ -93,21 +93,21 @@ GenericTrainerVeteranfSylvie:
 	cont "already?"
 	done
 
-MovementData_0x74539:
+VictoryRoadRivalBattleApproachMovement1:
 	step_right
 	step_right
 	step_right
 	step_right
 	step_end
 
-MovementData_0x7454c:
+VictoryRoadRivalBattleExitMovement1:
 	step_left
 	step_left
 	step_left
 	step_left
 	step_end
 
-UnknownText_0x7455f:
+VictoryRoadRivalBeforeText:
 	text "Hold it."
 
 	para "…Are you going to"
@@ -133,7 +133,7 @@ UnknownText_0x7455f:
 	line "I challenge you!"
 	done
 
-UnknownText_0x7463d:
+VictoryRoadRivalDefeatText:
 	text "…I couldn't win…"
 
 	para "I gave it every-"
@@ -149,7 +149,7 @@ UnknownText_0x7463d:
 	line "said to me…"
 	done
 
-UnknownText_0x746ce:
+VictoryRoadRivalAfterText:
 	text "…I haven't given up"
 	line "on becoming the"
 	cont "greatest trainer…"
@@ -171,7 +171,7 @@ UnknownText_0x746ce:
 	line "at it until then."
 	done
 
-UnknownText_0x747aa:
+VictoryRoadRivalVictoryText:
 	text "…Humph!"
 
 	para "When it comes down"

@@ -168,7 +168,7 @@ CombineSwitchItems:
 
 CopySwitchItemToBuffer:
 	call ItemSwitch_GetNthItem
-	ld de, wd002
+	ld de, wSwitchItemBuffer
 	call ItemSwitch_ConvertSpacingToDW
 	rst CopyBytes
 	ret
@@ -177,7 +177,7 @@ CopyBufferedSwitchItemToScrollLocation:
 	call ItemSwitch_GetNthItem
 	ld d, h
 	ld e, l
-	ld hl, wd002
+	ld hl, wSwitchItemBuffer
 	call ItemSwitch_ConvertSpacingToDW
 	rst CopyBytes
 	ret

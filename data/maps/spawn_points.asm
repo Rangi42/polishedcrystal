@@ -5,7 +5,7 @@ spawn: MACRO
 ENDM
 
 SpawnPoints:
-	spawn KRISS_HOUSE_2F,              3,  3
+	spawn PLAYERS_HOUSE_2F,            3,  3
 
 	spawn PALLET_TOWN,                 5,  6
 	spawn VIRIDIAN_CITY,              23, 26
@@ -20,7 +20,7 @@ SpawnPoints:
 	spawn CELADON_CITY,               33, 10
 	spawn FUCHSIA_CITY,               19, 28
 	spawn CINNABAR_ISLAND,            11, 16
-	spawn INDIGO_PLATEAU,              9,  6
+	spawn INDIGO_PLATEAU,             11,  6
 
 	spawn NEW_BARK_TOWN,              15,  6
 	spawn CHERRYGROVE_CITY,           29,  4

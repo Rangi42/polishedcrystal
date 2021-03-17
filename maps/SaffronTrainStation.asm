@@ -1,44 +1,44 @@
 SaffronTrainStation_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 4 ; warp events
+	def_warp_events
 	warp_event  8, 17, SAFFRON_CITY, 6
 	warp_event  9, 17, SAFFRON_CITY, 6
 	warp_event  6,  5, GOLDENROD_MAGNET_TRAIN_STATION, 4
 	warp_event 11,  5, GOLDENROD_MAGNET_TRAIN_STATION, 3
 
-	db 1 ; coord events
+	def_coord_events
 	coord_event 11,  6, 0, Script_ArriveFromGoldenrod
 
-	db 0 ; bg events
+	def_bg_events
 
-	db 4 ; object events
-	object_event  9,  9, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_SCRIPT, 0, OfficerScript_0x18a81e, -1
-	object_event 10, 14, SPRITE_GYM_GUY, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_SCRIPT, 0, GymGuyScript_0x18a875, -1
-	object_event  6, 11, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x18aaab, EVENT_SAFFRON_TRAIN_STATION_POPULATION
-	object_event  6, 10, SPRITE_PICNICKER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, UnknownText_0x18ab20, EVENT_SAFFRON_TRAIN_STATION_POPULATION
+	def_object_events
+	object_event  9,  9, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, SaffronMagnetTrainStationOfficerScript, -1
+	object_event 10, 14, SPRITE_GYM_GUY, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, SaffronMagnetTrainStationGymGuideScript, -1
+	object_event  6, 11, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_COMMAND, jumptextfaceplayer, SaffronMagnetTrainStationTeacherText, EVENT_SAFFRON_TRAIN_STATION_POPULATION
+	object_event  6, 10, SPRITE_PICNICKER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, SaffronMagnetTrainStationLassText, EVENT_SAFFRON_TRAIN_STATION_POPULATION
 
-	const_def 1 ; object constants
+	object_const_def
 	const SAFFRONTRAINSTATION_OFFICER
 
-OfficerScript_0x18a81e:
+SaffronMagnetTrainStationOfficerScript:
 	checkevent EVENT_RESTORED_POWER_TO_KANTO
-	iffalse_jumptextfaceplayer UnknownText_0x18a8a9
+	iffalse_jumptextfaceplayer SaffronMagnetTrainStationOfficerTrainIsntOperatingText
 	faceplayer
 	opentext
-	writetext UnknownText_0x18a8dd
+	writetext SaffronMagnetTrainStationOfficerAreYouComingOnBoardText
 	yesorno
-	iffalse_jumpopenedtext UnknownText_0x18a978
+	iffalse_jumpopenedtext SaffronMagnetTrainStationOfficerHopeToSeeYouAgainText
 	checkkeyitem PASS
-	iffalse_jumpopenedtext UnknownText_0x18a956
-	writetext UnknownText_0x18a917
+	iffalse_jumpopenedtext SaffronMagnetTrainStationOfficerYouDontHaveAPassText
+	writetext SaffronMagnetTrainStationOfficerRightThisWayText
 	waitbutton
 	closetext
-	applymovement SAFFRONTRAINSTATION_OFFICER, MovementData_0x18a88f
-	applymovement PLAYER, MovementData_0x18a898
-	writebyte $1
+	applymovement SAFFRONTRAINSTATION_OFFICER, SaffronMagnetTrainStationOfficerApproachTrainDoorMovement
+	applymovement PLAYER, SaffronMagnetTrainStationPlayerApproachAndEnterTrainMovement
+	setval $1
 	special Special_MagnetTrain
 	warpcheck
 	newloadmap MAPSETUP_TRAIN
@@ -47,30 +47,30 @@ OfficerScript_0x18a81e:
 	end
 
 Script_ArriveFromGoldenrod:
-	applymovement SAFFRONTRAINSTATION_OFFICER, MovementData_0x18a88f
-	applymovement PLAYER, MovementData_0x18a8a1
-	applymovement SAFFRONTRAINSTATION_OFFICER, MovementData_0x18a894
-	jumptext UnknownText_0x18a993
+	applymovement SAFFRONTRAINSTATION_OFFICER, SaffronMagnetTrainStationOfficerApproachTrainDoorMovement
+	applymovement PLAYER, SaffronMagnetTrainStationPlayerLeaveTrainAndEnterStationMovement
+	applymovement SAFFRONTRAINSTATION_OFFICER, SaffronMagnetTrainStationOfficerReturnToBoardingGateMovement
+	jumptext SaffronMagnetTrainStationOfficerArrivedInSaffronText
 
-GymGuyScript_0x18a875:
-	checkevent EVENT_RETURNED_MACHINE_PART
-	iftrue_jumptextfaceplayer UnknownText_0x18aa61
-	jumptextfaceplayer UnknownText_0x18a9ca
+SaffronMagnetTrainStationGymGuideScript:
+	checkevent EVENT_RESTORED_POWER_TO_KANTO
+	iftrue_jumptextfaceplayer SaffronMagnetTrainStationGymGuideText_ReturnedMachinePart
+	jumptextfaceplayer SaffronMagnetTrainStationGymGuideText
 
-MovementData_0x18a88f:
+SaffronMagnetTrainStationOfficerApproachTrainDoorMovement:
 	step_up
 	step_up
 	step_right
 	turn_head_left
 	step_end
 
-MovementData_0x18a894:
+SaffronMagnetTrainStationOfficerReturnToBoardingGateMovement:
 	step_left
 	step_down
 	step_down
 	step_end
 
-MovementData_0x18a898:
+SaffronMagnetTrainStationPlayerApproachAndEnterTrainMovement:
 	step_up
 	step_up
 	step_up
@@ -81,7 +81,7 @@ MovementData_0x18a898:
 	step_up
 	step_end
 
-MovementData_0x18a8a1:
+SaffronMagnetTrainStationPlayerLeaveTrainAndEnterStationMovement:
 	step_left
 	step_left
 	step_down
@@ -91,13 +91,13 @@ MovementData_0x18a8a1:
 	turn_head_up
 	step_end
 
-UnknownText_0x18a8a9:
+SaffronMagnetTrainStationOfficerTrainIsntOperatingText:
 	text "I'm sorry, but the"
 	line "Magnet Train isn't"
 	cont "operating now."
 	done
 
-UnknownText_0x18a8dd:
+SaffronMagnetTrainStationOfficerAreYouComingOnBoardText:
 	text "We'll soon depart"
 	line "for Goldenrod."
 
@@ -105,7 +105,7 @@ UnknownText_0x18a8dd:
 	line "board?"
 	done
 
-UnknownText_0x18a917:
+SaffronMagnetTrainStationOfficerRightThisWayText:
 	text "May I see your"
 	line "rail pass, please?"
 
@@ -113,17 +113,17 @@ UnknownText_0x18a917:
 	line "way, please."
 	done
 
-UnknownText_0x18a956:
+SaffronMagnetTrainStationOfficerYouDontHaveAPassText:
 	text "Sorry, but you"
 	line "don't have a pass."
 	done
 
-UnknownText_0x18a978:
+SaffronMagnetTrainStationOfficerHopeToSeeYouAgainText:
 	text "We hope to see you"
 	line "again."
 	done
 
-UnknownText_0x18a993:
+SaffronMagnetTrainStationOfficerArrivedInSaffronText:
 	text "We have arrived in"
 	line "Saffron."
 
@@ -131,7 +131,7 @@ UnknownText_0x18a993:
 	line "again."
 	done
 
-UnknownText_0x18a9ca:
+SaffronMagnetTrainStationGymGuideText:
 	text "The Magnet Train"
 	line "is a super modern"
 
@@ -147,7 +147,7 @@ UnknownText_0x18a9ca:
 	cont "tricity…"
 	done
 
-UnknownText_0x18aa61:
+SaffronMagnetTrainStationGymGuideText_ReturnedMachinePart:
 	text "Whew…"
 
 	para "How many times"
@@ -157,7 +157,7 @@ UnknownText_0x18aa61:
 	line "Kanto and Johto?"
 	done
 
-UnknownText_0x18aaab:
+SaffronMagnetTrainStationTeacherText:
 	text "Before the Magnet"
 	line "Train Station was"
 
@@ -169,7 +169,7 @@ UnknownText_0x18aaab:
 	cont "to live there."
 	done
 
-UnknownText_0x18ab20:
+SaffronMagnetTrainStationLassText:
 	text "Hi. Do you have a"
 	line "rail pass? I have"
 

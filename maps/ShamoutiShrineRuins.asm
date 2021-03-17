@@ -1,24 +1,24 @@
 ShamoutiShrineRuins_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event  2, 18, NOISY_FOREST, 3
 	warp_event  2, 19, NOISY_FOREST, 4
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 1 ; bg events
-	bg_event  7, 10, SIGNPOST_ITEM + MAX_REVIVE, EVENT_SHAMOUTI_SHRINE_RUINS_HIDDEN_MAX_REVIVE
+	def_bg_events
+	bg_event  7, 10, BGEVENT_ITEM + MAX_REVIVE, EVENT_SHAMOUTI_SHRINE_RUINS_HIDDEN_MAX_REVIVE
 
-	db 4 ; object events
-	object_event  8, 11, SPRITE_LAWRENCE, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ShamoutiShrineRuinsLawrenceScript, EVENT_LAWRENCE_SHAMOUTI_SHRINE_RUINS
-	object_event 10, 17, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, ShamoutiShrineRuinsGrampsText, -1
-	object_event 14, 13, SPRITE_LADY, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, ShamoutiShrineRuinsLadyText, -1
+	def_object_events
+	object_event  8, 11, SPRITE_LAWRENCE, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ShamoutiShrineRuinsLawrenceScript, EVENT_LAWRENCE_SHAMOUTI_SHRINE_RUINS
+	object_event 10, 17, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, ShamoutiShrineRuinsGrampsText, -1
+	object_event 14, 13, SPRITE_LADY, SPRITEMOVEDATA_WALK_UP_DOWN, 2, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_COMMAND, jumptextfaceplayer, ShamoutiShrineRuinsLadyText, -1
 	itemball_event  4, 27, RARE_CANDY, 1, EVENT_SHAMOUTI_SHRINE_RUINS_RARE_CANDY
 
-	const_def 1 ; object constants
+	object_const_def
 	const SHAMOUTISHRINERUINS_LAWRENCE
 
 ShamoutiShrineRuinsLawrenceScript:
@@ -36,24 +36,24 @@ ShamoutiShrineRuinsLawrenceScript:
 	playmusic MUSIC_ZINNIA_ENCOUNTER_ORAS
 	opentext
 	writetext .AfterText
-	buttonsound
+	promptbutton
 	verbosegivekeyitem SILVER_WING
 	writetext .SilverWingText
 	waitbutton
 	closetext
-	checkcode VAR_FACING
+	readvar VAR_FACING
 	ifequal UP, .up
 	ifequal DOWN, .down
 	ifequal LEFT, .left
 .right
 	turnobject SHAMOUTISHRINERUINS_LAWRENCE, RIGHT
-	jump .continue
+	sjump .continue
 .up
 	turnobject SHAMOUTISHRINERUINS_LAWRENCE, UP
-	jump .continue
+	sjump .continue
 .down
 	turnobject SHAMOUTISHRINERUINS_LAWRENCE, DOWN
-	jump .continue
+	sjump .continue
 .left
 	turnobject SHAMOUTISHRINERUINS_LAWRENCE, LEFT
 .continue

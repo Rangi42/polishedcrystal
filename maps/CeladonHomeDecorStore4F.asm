@@ -1,31 +1,31 @@
 
 CeladonHomeDecorStore4F_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 1 ; warp events
+	def_warp_events
 	warp_event  9,  0, CELADON_HOME_DECOR_STORE_3F, 2
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 5 ; bg events
-	bg_event  8,  0, SIGNPOST_JUMPTEXT, CeladonHomeDecorStore4FDirectoryText
-	bg_event  2,  5, SIGNPOST_READ, BigOnixDollScript
-	bg_event  3,  5, SIGNPOST_READ, BigOnixDollScript
-	bg_event  2,  6, SIGNPOST_READ, BigOnixDollScript
-	bg_event  3,  6, SIGNPOST_READ, BigOnixDollScript
+	def_bg_events
+	bg_event  8,  0, BGEVENT_JUMPTEXT, CeladonHomeDecorStore4FDirectoryText
+	bg_event  2,  5, BGEVENT_READ, BigOnixDollScript
+	bg_event  3,  5, BGEVENT_READ, BigOnixDollScript
+	bg_event  2,  6, BGEVENT_READ, BigOnixDollScript
+	bg_event  3,  6, BGEVENT_READ, BigOnixDollScript
 
-	db 9 ; object events
-	object_event  9,  5, SPRITE_CLERK, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BLUE, PERSONTYPE_COMMAND, jumptextfaceplayer, BigDollClerkText, -1
-	object_event  1,  3, SPRITE_BIG_SNORLAX, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BigSnorlaxDollScript, -1
-	object_event  2,  3, SPRITE_BIG_SNORLAX, SPRITEMOVEDATA_STANDING_DOWN_FLIP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BigSnorlaxDollScript, -1
-	object_event  1,  4, SPRITE_BIG_SNORLAX, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BigSnorlaxDollScript, -1
-	object_event  2,  4, SPRITE_BIG_SNORLAX, SPRITEMOVEDATA_STANDING_UP_FLIP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BigSnorlaxDollScript, -1
-	object_event  4,  4, SPRITE_BIG_LAPRAS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BigLaprasDollScript, -1
-	object_event  5,  4, SPRITE_BIG_LAPRAS, SPRITEMOVEDATA_STANDING_DOWN_FLIP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BigLaprasDollScript, -1
-	object_event  4,  5, SPRITE_BIG_LAPRAS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BigLaprasDollScript, -1
-	object_event  5,  5, SPRITE_BIG_LAPRAS, SPRITEMOVEDATA_STANDING_UP_FLIP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, BigLaprasDollScript, -1
+	def_object_events
+	object_event  9,  5, SPRITE_CLERK, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_COMMAND, jumptextfaceplayer, BigDollClerkText, -1
+	object_event  1,  3, SPRITE_BIG_SNORLAX, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, BigSnorlaxDollScript, -1
+	object_event  2,  3, SPRITE_BIG_SNORLAX, SPRITEMOVEDATA_STANDING_DOWN_FLIP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, BigSnorlaxDollScript, -1
+	object_event  1,  4, SPRITE_BIG_SNORLAX, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, BigSnorlaxDollScript, -1
+	object_event  2,  4, SPRITE_BIG_SNORLAX, SPRITEMOVEDATA_STANDING_UP_FLIP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, BigSnorlaxDollScript, -1
+	object_event  4,  4, SPRITE_BIG_LAPRAS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, BigLaprasDollScript, -1
+	object_event  5,  4, SPRITE_BIG_LAPRAS, SPRITEMOVEDATA_STANDING_DOWN_FLIP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, BigLaprasDollScript, -1
+	object_event  4,  5, SPRITE_BIG_LAPRAS, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, BigLaprasDollScript, -1
+	object_event  5,  5, SPRITE_BIG_LAPRAS, SPRITEMOVEDATA_STANDING_UP_FLIP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, BigLaprasDollScript, -1
 
 BigDollClerkNoMoneyScript:
 	jumpopenedtext BigDollClerkNoMoneyText

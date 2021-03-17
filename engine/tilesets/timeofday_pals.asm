@@ -115,22 +115,6 @@ FadeOutPalettes::
 	ld c, 10
 	jp FadeToWhite
 
-Special_BattleTower_Fade:
-	call FillWhiteBGColor
-	ld c, $9
-	call GetTimePalFade
-	ld b, $4
-.asm_8c09c
-	call DmgToCgbTimePals
-	inc hl
-	inc hl
-	inc hl
-	ld c, $7
-	call DelayFrames
-	dec b
-	jr nz, .asm_8c09c
-	ret
-
 Special_FadeInQuickly:
 	ld c, $0
 	call GetTimePalFade
@@ -176,10 +160,19 @@ brightlevel: MACRO
 ENDM
 
 ReplaceTimeOfDayPals:
+	ld a, [wMapTimeOfDay]
+	and IN_DARKNESS ; needs Flash
+	jr z, .not_dark
+	ld a, [wStatusFlags]
+	bit 2, a ; Flash
+	jr nz, .not_dark
+	ld a, DARKNESS_PALSET
+	ld [wTimeOfDayPalset], a
+	ret
+
+.not_dark
 	ld hl, .BrightnessLevels
 	ld a, [wMapTimeOfDay]
-	cp PALETTE_DARK ; needs Flash
-	jr z, .DarkCave
 	and $7
 	ld e, a
 	ld d, 0
@@ -188,28 +181,12 @@ ReplaceTimeOfDayPals:
 	ld [wTimeOfDayPalset], a
 	ret
 
-.DarkCave:
-	ld a, [wStatusFlags]
-	bit 2, a ; Flash
-	jr nz, .UsedFlash
-	ld a, %11111111 ; 3, 3, 3, 3
-	ld [wTimeOfDayPalset], a
-	ret
-
-.UsedFlash:
-	ld a, %10101010 ; 2, 2, 2, 2
-	ld [wTimeOfDayPalset], a
-	ret
-
 .BrightnessLevels:
 	brightlevel 3, 2, 1, 0 ; PALETTE_AUTO
 	brightlevel 1, 1, 1, 1 ; PALETTE_DAY
 	brightlevel 2, 2, 2, 2 ; PALETTE_NITE
 	brightlevel 0, 0, 0, 0 ; PALETTE_MORN
-	brightlevel 3, 3, 3, 3 ; PALETTE_DARK
-	brightlevel 3, 2, 1, 0
-	brightlevel 3, 2, 1, 0
-	brightlevel 3, 2, 1, 0
+	brightlevel 3, 3, 3, 3 ; PALETTE_EVE
 
 GetTimePalette:
 	ld a, [wTimeOfDay]
@@ -219,7 +196,7 @@ GetTimePalette:
 	dw .MorningPalette
 	dw .DayPalette
 	dw .NitePalette
-	dw .DarknessPalette
+	dw .EvePalette
 
 .MorningPalette:
 	ld a, [wTimeOfDayPalset]
@@ -239,7 +216,7 @@ GetTimePalette:
 	swap a
 	ret
 
-.DarknessPalette:
+.EvePalette:
 	ld a, [wTimeOfDayPalset]
 	and %11000000 ; 3
 	rlca

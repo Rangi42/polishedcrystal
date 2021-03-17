@@ -79,7 +79,7 @@ BattleCommand_conversion:
 .player_choose_move
 	push de
 	ld hl, ChangeIntoTypeText
-	call StdBattleTextBox
+	call StdBattleTextbox
 
 	ld a, [wCurMoveNum]
 	ld d, a
@@ -112,7 +112,7 @@ BattleCommand_conversion:
 	ld [wCurPlayerMove], a
 
 	push bc
-	farcall UpdateMoveData
+	call UpdateMoveData
 	pop bc
 	ld a, b
 	jr .validate_choice
@@ -188,7 +188,7 @@ BattleCommand_conversion:
 	farcall GetTypeName
 	call AnimateCurrentMove
 	ld hl, TransformedTypeText
-	jp StdBattleTextBox
+	jp StdBattleTextbox
 .invalid_selection
 	; If the player chose an invalid move, give an appropriate message.
 	; Otherwise, just loop back to move selection.
@@ -196,7 +196,7 @@ BattleCommand_conversion:
 	and a
 	ld hl, InvalidTypeChangeText
 	push de
-	call z, StdBattleTextBox
+	call z, StdBattleTextbox
 	pop de
 
 	; skip move delay after the first selection

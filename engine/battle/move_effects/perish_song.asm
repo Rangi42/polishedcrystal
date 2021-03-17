@@ -1,35 +1,58 @@
 BattleCommand_perishsong:
-	ld hl, wPlayerSubStatus1
-	ld de, wEnemySubStatus1
-	bit SUBSTATUS_PERISH, [hl]
-	jr z, .ok
+	; Track if we have afflicted anyone with Perish
+	ld b, 1
 
+	; Set hl to user perish, de to opponent perish
+	ld hl, wPlayerPerishCount
+	ld de, wEnemyPerishCount
+	ldh a, [hBattleTurn]
+	and a
+	call nz, SwapHLDE
+
+	; Handle user Perish
+	ld a, [hl]
+	and a
+	jr nz, .user_done
+	ld [hl], 4
+	inc b
+
+.user_done
+	; Handle opponent Perish
 	ld a, [de]
-	bit SUBSTATUS_PERISH, a
-	jr nz, .failed
+	and a
+	jr nz, .opponent_done
 
-.ok
-	bit SUBSTATUS_PERISH, [hl]
-	jr nz, .enemy
-
-	set SUBSTATUS_PERISH, [hl]
+	; Check if opponent Soundproof immunity applies
+	call GetOpponentAbilityAfterMoldBreaker
+	cp SOUNDPROOF
+	jr z, .soundproof
 	ld a, 4
-	ld [wPlayerPerishCount], a
-
-.enemy
-	ld a, [de]
-	bit SUBSTATUS_PERISH, a
-	jr nz, .done
-
-	set SUBSTATUS_PERISH, a
 	ld [de], a
-	ld a, 4
-	ld [wEnemyPerishCount], a
+	inc b
+	jr .opponent_done
 
-.done
+.soundproof
+	; Otherwise, notify about soundproof immunity
+	push bc
+	farcall DisableAnimations
+	farcall ShowEnemyAbilityActivation
+	ld hl, DoesntAffectText
+	call StdBattleTextbox
+	farcall EnableAnimations
+	pop bc
+
+	; Don't print a failure message if Soundproof suppressed the effect
+	dec b
+	ret z
+	inc b
+
+.opponent_done
+	dec b
+	jr z, .failed ; nobody was afflicted
+
 	call AnimateCurrentMove
 	ld hl, StartPerishText
-	jp StdBattleTextBox
+	jp StdBattleTextbox
 
 .failed
 	call AnimateFailedMove

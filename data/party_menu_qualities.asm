@@ -8,6 +8,7 @@
 	const PLACE_PARTYMON_EVO
 	const PLACE_PARTYMON_GENDER
 	const PLACE_PARTYMON_RELEARNER
+	const PLACE_PARTYMON_BATTLETOWER
 
 PartyMenuQualityPointers:
 ; entries correspond to PARTYMENUACTION_* constants
@@ -21,6 +22,7 @@ PartyMenuQualityPointers:
 	dw .Gender
 	dw .Default
 	dw .Reminder
+	dw .BTLTower
 
 placepartymon: MACRO
 rept _NARG
@@ -35,3 +37,4 @@ ENDM
 .TMHM:     placepartymon NICKNAMES, TMHM,              LEVEL, GENDER, STATUS
 .EvoStone: placepartymon NICKNAMES, EVO,               LEVEL, GENDER, STATUS
 .Reminder: placepartymon NICKNAMES, RELEARNER,         LEVEL, GENDER, STATUS
+.BTLTower: placepartymon NICKNAMES, BATTLETOWER,       LEVEL, GENDER, STATUS

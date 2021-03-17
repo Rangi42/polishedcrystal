@@ -1,38 +1,38 @@
 BurnedTower1F_MapScriptHeader:
-	db 1 ; scene scripts
+	def_scene_scripts
 	scene_script BurnedTower1FTrigger0
 
-	db 1 ; callbacks
+	def_callbacks
 	callback MAPCALLBACK_TILES, BurnedTower1FHoleAndLadder
 
-	db 4 ; warp events
+	def_warp_events
 	warp_event  7, 15, ECRUTEAK_CITY, 13
 	warp_event  8, 15, ECRUTEAK_CITY, 13
 	warp_event  8,  9, BURNED_TOWER_B1F, 1
 	warp_event  5, 15, BURNED_TOWER_B1F, 2
 
-	db 1 ; coord events
+	def_coord_events
 	coord_event  9,  9, 1, BurnedTowerRivalBattleScript
 
-	db 2 ; bg events
-	bg_event  6,  7, SIGNPOST_ITEM + ETHER, EVENT_BURNED_TOWER_1F_HIDDEN_ETHER
-	bg_event 11, 11, SIGNPOST_ITEM + ULTRA_BALL, EVENT_BURNED_TOWER_1F_HIDDEN_ULTRA_BALL
+	def_bg_events
+	bg_event  6,  7, BGEVENT_ITEM + ETHER, EVENT_BURNED_TOWER_1F_HIDDEN_ETHER
+	bg_event 11, 11, BGEVENT_ITEM + ULTRA_BALL, EVENT_BURNED_TOWER_1F_HIDDEN_ULTRA_BALL
 
-	db 7 ; object events
-	object_event 10, 12, SPRITE_EUSINE, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, BurnedTower1FEusineText, EVENT_BURNED_TOWER_1F_EUSINE
-	object_event  6,  9, SPRITE_SILVER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_BURNED_TOWER
+	def_object_events
+	object_event 10, 12, SPRITE_EUSINE, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, BurnedTower1FEusineText, EVENT_BURNED_TOWER_1F_EUSINE
+	object_event  6,  9, SPRITE_SILVER, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_RIVAL_BURNED_TOWER
 	smashrock_event 13, 4
-	object_event 12, 14, SPRITE_MORTY, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, BurnedTower1FMortyText, EVENT_BURNED_TOWER_MORTY
+	object_event 12, 14, SPRITE_MORTY, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, BurnedTower1FMortyText, EVENT_BURNED_TOWER_MORTY
 	itemball_event 13,  1, HP_UP, 1, EVENT_BURNED_TOWER_1F_HP_UP
-	object_event  1,  1, SPRITE_HEX_MANIAC, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerHexManiacTamara, -1
-	object_event 11,  3, SPRITE_FIREBREATHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 2, GenericTrainerFirebreatherNed, -1
+	object_event  1,  1, SPRITE_HEX_MANIAC, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, GenericTrainerHexManiacTamara, -1
+	object_event 11,  3, SPRITE_FIREBREATHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 2, GenericTrainerFirebreatherNed, -1
 
-	const_def 1 ; object constants
+	object_const_def
 	const BURNEDTOWER1F_EUSINE
 	const BURNEDTOWER1F_SILVER
 
 BurnedTower1FTrigger0:
-	priorityjump BurnedTower1FEusineTriggerScript
+	prioritysjump BurnedTower1FEusineTriggerScript
 	end
 
 BurnedTower1FHoleAndLadder:
@@ -44,7 +44,7 @@ BurnedTower1FHoleAndLadder:
 	iftrue .Done
 	changeblock 4, 14, $9 ; ladder
 .Done:
-	return
+	endcallback
 
 BurnedTower1FEusineTriggerScript:
 	turnobject BURNEDTOWER1F_EUSINE, DOWN
@@ -75,7 +75,7 @@ BurnedTowerRivalBattleScript:
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle
-	jump .returnfrombattle
+	sjump .returnfrombattle
 
 .totodile
 	winlosstext BurnedTowerSilver_WinText, BurnedTowerSilver_LossText
@@ -84,7 +84,7 @@ BurnedTowerRivalBattleScript:
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle
-	jump .returnfrombattle
+	sjump .returnfrombattle
 
 .chikorita
 	winlosstext BurnedTowerSilver_WinText, BurnedTowerSilver_LossText
@@ -93,7 +93,7 @@ BurnedTowerRivalBattleScript:
 	startbattle
 	dontrestartmapmusic
 	reloadmapafterbattle
-	jump .returnfrombattle
+	sjump .returnfrombattle
 
 .returnfrombattle
 	special DeleteSavedMusic

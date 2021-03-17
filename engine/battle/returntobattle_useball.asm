@@ -14,7 +14,7 @@ _ReturnToBattle_UseBall:
 	farcall _LoadBattleFontsHPBar
 	call GetMemCGBLayout
 	call CloseWindow
-	call LoadStandardMenuDataHeader
+	call LoadStandardMenuHeader
 	call ApplyTilemapInVBlank
 	call SetPalettes
 	farcall LoadPlayerStatusIcon

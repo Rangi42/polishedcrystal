@@ -1,19 +1,19 @@
 Route12North_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event 10, 15, ROUTE_12_GATE, 1
 	warp_event 11, 15, ROUTE_12_GATE, 2
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 1 ; bg events
-	bg_event 13, 13, SIGNPOST_JUMPTEXT, FishingSpotSignText
+	def_bg_events
+	bg_event 13, 13, BGEVENT_JUMPTEXT, FishingSpotSignText
 
-	db 1 ; object events
-	object_event  6, 11, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, PERSONTYPE_GENERICTRAINER, 3, GenericTrainerFisherKyle, -1
+	def_object_events
+	object_event  6, 11, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_GENERICTRAINER, 3, GenericTrainerFisherKyle, -1
 
 GenericTrainerFisherKyle:
 	generictrainer FISHER, KYLE, EVENT_BEAT_FISHER_KYLE, FisherKyleSeenText, FisherKyleBeatenText

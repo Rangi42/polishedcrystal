@@ -1,7 +1,7 @@
 BattleCommand_metronome:
 	call ClearLastMove
 	call CheckUserIsCharging
-	jr nz, .asm_3742b
+	jr nz, .charging
 
 	ld a, [wKickCounter]
 	push af
@@ -9,19 +9,16 @@ BattleCommand_metronome:
 	pop af
 	ld [wKickCounter], a
 
-.asm_3742b
+.charging
 	call LoadMoveAnim
 
 .GetMove:
 	call BattleRandom
-	cp STRUGGLE
-	jr z, .GetMove
 
 ; None of the moves in MetronomeExcepts.
 	push af
-	ld de, 1
 	ld hl, MetronomeExcepts
-	call IsInArray
+	call IsInByteArray
 	pop bc
 	jr c, .GetMove
 

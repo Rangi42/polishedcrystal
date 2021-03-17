@@ -1,25 +1,25 @@
 HallOfFame_MapScriptHeader:
-	db 1 ; scene scripts
+	def_scene_scripts
 	scene_script HallOfFameEntranceTrigger
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event  4, 13, LANCES_ROOM, 3
 	warp_event  5, 13, LANCES_ROOM, 4
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 0 ; bg events
+	def_bg_events
 
-	db 1 ; object events
-	object_event  4, 12, SPRITE_LANCE, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, ObjectEvent, -1
+	def_object_events
+	object_event  4, 12, SPRITE_LANCE, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, -1
 
-	const_def 1 ; object constants
+	object_const_def
 	const HALLOFFAME_LANCE
 
 HallOfFameEntranceTrigger:
-	priorityjump .Script
+	prioritysjump .Script
 	end
 
 .Script:
@@ -30,15 +30,15 @@ HallOfFameEntranceTrigger:
 	opentext
 	writetext .LanceText1
 	waitbutton
-	checkcode VAR_BADGES
+	readvar VAR_BADGES
 	ifequal 16, .CheckGoldTrophy
 	checkevent EVENT_DECO_SILVER_TROPHY
 	iftrue .NoTrophy
-	jump .SilverTrophy
+	sjump .SilverTrophy
 .CheckGoldTrophy
 	checkevent EVENT_DECO_GOLD_TROPHY
 	iftrue .NoTrophy
-	jump .GoldTrophy
+	sjump .GoldTrophy
 .SilverTrophy
 	writetext .LanceTrophyText
 	waitbutton
@@ -49,7 +49,7 @@ HallOfFameEntranceTrigger:
 	waitbutton
 	writetext .SilverTrophySentText
 	waitbutton
-	jump .NoTrophy
+	sjump .NoTrophy
 .GoldTrophy
 	writetext .LanceTrophyText
 	waitbutton
@@ -60,7 +60,7 @@ HallOfFameEntranceTrigger:
 	waitbutton
 	writetext .GoldTrophySentText
 	waitbutton
-	jump .NoTrophy
+	sjump .NoTrophy
 .NoTrophy
 	writetext .LanceText2
 	waitbutton
@@ -69,9 +69,9 @@ HallOfFameEntranceTrigger:
 	applyonemovement PLAYER, slow_step_up
 	setscene $1
 	pause 15
-	writebyte 2 ; Machine is in the Hall of Fame
+	setval 2 ; Machine is in the Hall of Fame
 	special HealMachineAnim
-	checkcode VAR_BADGES
+	readvar VAR_BADGES
 	ifless 16, .NotATrueRematch
 	setevent EVENT_BEAT_ELITE_FOUR_AGAIN
 .NotATrueRematch

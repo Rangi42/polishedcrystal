@@ -69,7 +69,7 @@ KeyItems_ShowDescription:
 	call KeyItems_GetCurrentKeyItem
 	hlcoord 0, 12
 	lb bc, 4, SCREEN_WIDTH - 2
-	call TextBox
+	call Textbox
 	ld a, [wCurKeyItem]
 	cp NUM_KEY_ITEMS + 1
 	jr nc, .Cancel

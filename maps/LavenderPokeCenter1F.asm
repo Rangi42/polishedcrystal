@@ -1,23 +1,23 @@
 LavenderPokeCenter1F_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 3 ; warp events
+	def_warp_events
 	warp_event  5,  7, LAVENDER_TOWN, 1
 	warp_event  6,  7, LAVENDER_TOWN, 1
 	warp_event  0,  7, POKECENTER_2F, 1
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 1 ; bg events
-	bg_event 10,  1, SIGNPOST_READ, PokemonJournalMrFujiScript
+	def_bg_events
+	bg_event 10,  1, BGEVENT_READ, PokemonJournalMrFujiScript
 
-	db 4 ; object events
+	def_object_events
 	pc_nurse_event  5, 1
-	object_event  1,  5, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_RED, PERSONTYPE_SCRIPT, 0, LavenderPokeCenter1FYoungsterScript, -1
-	object_event 11,  6, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, LavenderPokeCenter1FGentlemanText, -1
-	object_event  6,  3, SPRITE_TEACHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, LavenderPokeCenter1FTeacherText, -1
+	object_event  1,  5, SPRITE_SCHOOLBOY, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 0, 1, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, LavenderPokeCenter1FYoungsterScript, -1
+	object_event 11,  6, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, LavenderPokeCenter1FGentlemanText, -1
+	object_event  6,  3, SPRITE_TEACHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, LavenderPokeCenter1FTeacherText, -1
 
 PokemonJournalMrFujiScript:
 	setflag ENGINE_READ_MR_FUJI_JOURNAL
@@ -39,7 +39,7 @@ PokemonJournalMrFujiScript:
 	done
 
 LavenderPokeCenter1FYoungsterScript:
-	checkevent EVENT_RETURNED_MACHINE_PART
+	checkevent EVENT_RESTORED_POWER_TO_KANTO
 	iffalse_jumptextfaceplayer .NoMachinePartText
 	checkevent EVENT_EXORCISED_LAV_RADIO_TOWER
 	iffalse_jumptextfaceplayer .NoExorcismText

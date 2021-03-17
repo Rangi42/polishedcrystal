@@ -1,29 +1,29 @@
 SilphCo2F_MapScriptHeader:
-	db 0 ; scene scripts
+	def_scene_scripts
 
-	db 0 ; callbacks
+	def_callbacks
 
-	db 2 ; warp events
+	def_warp_events
 	warp_event 13,  0, SILPH_CO_1F, 3
 	warp_event 11,  0, SILPH_CO_3F, 1
 
-	db 0 ; coord events
+	def_coord_events
 
-	db 8 ; bg events
-	bg_event  3,  2, SIGNPOST_JUMPTEXT, SilphCo2FDeptSignText
-	bg_event  9,  2, SIGNPOST_JUMPTEXT, SilphCo2FDeptSignText
-	bg_event  5,  0, SIGNPOST_JUMPTEXT, SilphCo2FElevatorText
-	bg_event  0,  3, SIGNPOST_JUMPSTD, difficultbookshelf
-	bg_event  6,  3, SIGNPOST_JUMPSTD, difficultbookshelf
-	bg_event  7,  3, SIGNPOST_JUMPSTD, difficultbookshelf
-	bg_event 12,  3, SIGNPOST_JUMPSTD, difficultbookshelf
-	bg_event 13,  3, SIGNPOST_JUMPSTD, difficultbookshelf
+	def_bg_events
+	bg_event  3,  2, BGEVENT_JUMPTEXT, SilphCo2FDeptSignText
+	bg_event  9,  2, BGEVENT_JUMPTEXT, SilphCo2FDeptSignText
+	bg_event  5,  0, BGEVENT_JUMPTEXT, SilphCo2FElevatorText
+	bg_event  0,  3, BGEVENT_JUMPSTD, difficultbookshelf
+	bg_event  6,  3, BGEVENT_JUMPSTD, difficultbookshelf
+	bg_event  7,  3, BGEVENT_JUMPSTD, difficultbookshelf
+	bg_event 12,  3, BGEVENT_JUMPSTD, difficultbookshelf
+	bg_event 13,  3, BGEVENT_JUMPSTD, difficultbookshelf
 
-	db 4 ; object events
-	object_event  4,  5, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_SCRIPT, 0, SilphCo2FScientist1Script, -1
-	object_event 14,  4, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, SilphCo2FScientist2Text, -1
-	object_event  8,  5, SPRITE_SILPH_EMPLOYEE, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, SilphCo2FSilphEmployee1Text, -1
-	object_event  2,  5, SPRITE_SILPH_EMPLOYEE, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, PERSONTYPE_COMMAND, jumptextfaceplayer, SilphCo2FSilphEmployee2Text, -1
+	def_object_events
+	object_event  4,  5, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, SilphCo2FScientist1Script, -1
+	object_event 14,  4, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, SilphCo2FScientist2Text, -1
+	object_event  8,  5, SPRITE_SILPH_EMPLOYEE, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, SilphCo2FSilphEmployee1Text, -1
+	object_event  2,  5, SPRITE_SILPH_EMPLOYEE, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_COMMAND, jumptextfaceplayer, SilphCo2FSilphEmployee2Text, -1
 
 SilphCo2FScientist1Script:
 	faceplayer
@@ -31,7 +31,7 @@ SilphCo2FScientist1Script:
 	checkevent EVENT_GOT_UP_GRADE
 	iftrue SilphCo2FScientist1GaveUpGradeScript
 	writetext SilphCo2FScientist1Text1
-	buttonsound
+	promptbutton
 	verbosegiveitem UP_GRADE
 	iffalse SilphCo2FScientist1NoRoomForUpGradeScript
 	setevent EVENT_GOT_UP_GRADE
