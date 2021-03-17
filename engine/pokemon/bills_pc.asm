@@ -716,8 +716,9 @@ OpenStorageDB:
 	jp GetSRAMBank
 
 EncodeTempMon:
-; Encodes wTempMon to prepare for storage. This assumes ordering and sizes of
-; party struct, nickname and OT(+extra) in wTempMon doesn't change.
+; Encodes party_struct wTempMon in-place to savemon_struct wEncodedTempMon.
+; Bytes identical to both structs do not need encoding.
+
 	; Convert 4 PP bytes to 1 PP Up byte.
 	ld hl, wTempMonPP
 	ld b, NUM_MOVES
@@ -741,38 +742,42 @@ EncodeTempMon:
 	rst CopyBytes
 
 	; Move Extra bytes.
-	ld hl, wTempMonOT + PLAYER_NAME_LENGTH
+	; de == wEncodedTempMonExtra
+	ld hl, wTempMonExtra
 	ld bc, 3
 	rst CopyBytes
 
 	; Move name-related bytes.
 	ld hl, wTempMonNickname
 	ld de, wEncodedTempMonNickname
-	ld bc, MON_NAME_LENGTH
+	ld bc, MON_NAME_LENGTH - 1
 	rst CopyBytes
 	ld hl, wTempMonOT
 	ld de, wEncodedTempMonOT
 	ld bc, PLAYER_NAME_LENGTH - 1
 	rst CopyBytes
 
-	; Convert nickname/OT characters into reversible 7bit.
+	; Convert nickname+OT characters into reversible 7bit.
 	ld hl, wEncodedTempMonNickname
 	ld b, wEncodedTempMonEnd - wEncodedTempMonNickname
 .charmap_loop
 	ld a, [hl]
-	ld c, $fa
+	; " " -> $7a
+	ld c, $7a | ~%01111111
 	cp " "
 	jr z, .replace
+	; "@" -> $7b
 	inc c
 	cp "@"
 	jr z, .replace
+	; "<NULL>" -> $7c
 	inc c
 	and a
 	jr nz, .removebit
 .replace
 	ld a, c
 .removebit
-	and $7f
+	and %01111111
 	ld [hli], a
 	dec b
 	jr nz, .charmap_loop
@@ -784,13 +789,13 @@ ChecksumTempMon:
 	; boxmon struct + 3 extra bytes (normally placed after OT)
 	ld bc, wEncodedTempMon
 	ld hl, 127
-	lb de, wEncodedTempMonNickname - wEncodedTempMon, 0
+	lb de, SAVEMON_NICKNAME, 0
 	call .DoChecksum
 
 	; nickname + OT. This skips one CRC multiplier due to a double-increase.
 	; Counterintuitive but harmless.
 	ld bc, wEncodedTempMonNickname
-	ld d, $80 | (wEncodedTempMonEnd - wEncodedTempMonNickname)
+	ld d, $80 | (SAVEMON_STRUCT_LENGTH - SAVEMON_NICKNAME)
 	call .DoChecksum
 
 	; Compare and write the result
@@ -801,14 +806,14 @@ ChecksumTempMon:
 	; The padding being nonzero is also counted as invalid.
 	ld b, 0 ; used for checksum error detection
 	ld hl, wEncodedTempMonNickname
-	ld c, wEncodedTempMonEnd - wEncodedTempMonNickname
+	ld c, SAVEMON_STRUCT_LENGTH - SAVEMON_NICKNAME
 .WriteChecksum:
 	ld a, [hl]
-	and $7f
+	and %01111111
 	sla e
 	rl d
 	jr nc, .not_set
-	or $80
+	or %10000000
 .not_set
 	cp [hl]
 	ld [hli], a
@@ -830,7 +835,7 @@ ChecksumTempMon:
 	inc bc
 	bit 7, d
 	jr z, .not_7bit
-	and $7f
+	and %01111111
 .not_7bit
 	push bc
 	ld b, 0
@@ -849,7 +854,7 @@ DecodeTempMon:
 
 	; Move extra data back
 	ld hl, wEncodedTempMonExtra
-	ld de, wTempMonOT + PLAYER_NAME_LENGTH
+	ld de, wTempMonExtra
 	ld bc, 3
 	rst CopyBytes
 

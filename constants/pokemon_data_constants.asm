@@ -127,10 +127,52 @@ MON_SPD                rw
 MON_SAT                rw
 MON_SDF                rw
 PARTYMON_STRUCT_LENGTH EQU _RS
-rsset BOXMON_STRUCT_LENGTH - 3 ; replaces 4 PP bytes with 1 PP Ups byte
-MON_EXTRA              rb 3
-MON_NICK               rb MON_NAME_LENGTH - 1
-MON_OT                 rb PLAYER_NAME_LENGTH - 1
+
+; savemon_struct members (see macros/wram.asm)
+rsreset
+SAVEMON_SPECIES            rb
+SAVEMON_ITEM               rb
+SAVEMON_MOVES              rb NUM_MOVES
+SAVEMON_ID                 rw
+SAVEMON_EXP                rb 3
+SAVEMON_EVS                rb NUM_STATS
+rsset SAVEMON_EVS
+SAVEMON_HP_EV              rb
+SAVEMON_ATK_EV             rb
+SAVEMON_DEF_EV             rb
+SAVEMON_SPD_EV             rb
+SAVEMON_SAT_EV             rb
+SAVEMON_SDF_EV             rb
+SAVEMON_DVS                rb NUM_STATS / 2
+rsset SAVEMON_DVS
+SAVEMON_HP_ATK_DV          rb
+SAVEMON_DEF_SPD_DV         rb
+SAVEMON_SAT_SDF_DV         rb
+SAVEMON_PERSONALITY        rw
+SAVEMON_SHINY      EQU SAVEMON_PERSONALITY
+SAVEMON_ABILITY    EQU SAVEMON_PERSONALITY
+SAVEMON_NATURE     EQU SAVEMON_PERSONALITY
+SAVEMON_GENDER     EQU SAVEMON_PERSONALITY + 1
+SAVEMON_IS_EGG     EQU SAVEMON_PERSONALITY + 1
+SAVEMON_EXTSPECIES EQU SAVEMON_PERSONALITY + 1
+SAVEMON_FORM       EQU SAVEMON_PERSONALITY + 1
+; savemon_struct is identical to party_struct before this point
+SAVEMON_PP_UPS             rb
+; savemon_struct is shifted from party_struct beyond this point
+SAVEMON_HAPPINESS          rb
+SAVEMON_PKRUS              rb
+SAVEMON_CAUGHTDATA         rb 3
+rsset SAVEMON_CAUGHTDATA
+SAVEMON_CAUGHTGENDER       rb
+SAVEMON_CAUGHTTIME EQU SAVEMON_CAUGHTGENDER
+SAVEMON_CAUGHTBALL EQU SAVEMON_CAUGHTGENDER
+SAVEMON_CAUGHTLEVEL        rb
+SAVEMON_CAUGHTLOCATION     rb
+SAVEMON_LEVEL              rb
+; savemon_struct is different from party_struct beyond this point
+SAVEMON_EXTRA              rb 3
+SAVEMON_NICKNAME           rb MON_NAME_LENGTH - 1
+SAVEMON_OT                 rb PLAYER_NAME_LENGTH - 1
 SAVEMON_STRUCT_LENGTH EQU _RS
 
 ; personality
