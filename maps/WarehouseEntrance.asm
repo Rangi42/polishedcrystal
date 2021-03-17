@@ -223,7 +223,7 @@ OlderHaircutBrotherScript:
 	ifequal $2, .NotEnoughMoney
 	writetext GoldenrodUndergroundOlderHaircutBrotherAskWhichMonText
 	promptbutton
-	special Special_YoungerHaircutBrother
+	special Special_OlderHaircutBrother
 	ifequal $0, .Refused
 	ifequal $1, .Refused
 	setflag ENGINE_GOLDENROD_UNDERGROUND_GOT_HAIRCUT
@@ -298,7 +298,7 @@ YoungerHaircutBrotherScript:
 	ifequal $2, .NotEnoughMoney
 	writetext GoldenrodUndergroundYoungerHaircutBrotherAskWhichMonText
 	promptbutton
-	special Special_OlderHaircutBrother
+	special Special_YoungerHaircutBrother
 	ifequal $0, .Refused
 	ifequal $1, .Refused
 	setflag ENGINE_GOLDENROD_UNDERGROUND_GOT_HAIRCUT

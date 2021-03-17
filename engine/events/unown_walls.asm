@@ -4,7 +4,7 @@ SpecialHoOhChamber:
 	ld [wCurPartySpecies], a
 	ld [wCurSpecies], a
 	ld a, [wPartyMon1Form]
-	and BASEMON_MASK
+	and SPECIESFORM_MASK
 	ld [wCurForm], a
 	call GetBaseData
 	ld a, [wBaseType1]
@@ -82,7 +82,7 @@ SpecialKabutoChamber:
 
 Special_DisplayUnownWords:
 	ldh a, [hScriptVar]
-	ld hl, UnownWallMenuDataHeaders
+	ld hl, MenuHeaders_UnownWalls
 	and a
 	jr z, .load
 
@@ -106,7 +106,7 @@ Special_DisplayUnownWords:
 	add hl, de
 	ldh a, [hScriptVar]
 	ld c, a
-	ld de, UnownWallWords
+	ld de, UnownWalls
 	and a
 	jr z, .copy
 .loop2

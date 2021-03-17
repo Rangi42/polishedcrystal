@@ -205,7 +205,7 @@ SpecialCharacters:
 
 NextLineChar::
 	ld a, [wTextboxFlags]
-	bit NO_LINE_SPACING, a
+	bit NO_LINE_SPACING_F, a
 	ld bc, SCREEN_WIDTH * 2
 	jr z, LineBreak.ok
 LineBreak::

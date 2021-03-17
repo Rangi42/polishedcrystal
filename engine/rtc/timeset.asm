@@ -594,7 +594,7 @@ DAY_String:  db "Day@"
 EVE_String:  db "Evening@"
 
 PlaceCaughtTimeOfDayString::
-	and CAUGHTTIME_MASK
+	and CAUGHT_TIME_MASK
 	ld de, EVE_String
 	jr z, .print
 	rlca

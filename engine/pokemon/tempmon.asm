@@ -174,7 +174,7 @@ GetPkmnForm:
 	rst AddNTimes
 	ld a, [hl]
 .done
-	and BASEMON_MASK
+	and SPECIESFORM_MASK
 	ld [wCurForm], a
 	ret
 

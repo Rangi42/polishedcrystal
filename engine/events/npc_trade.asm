@@ -356,7 +356,7 @@ GetCaughtGender:
 	ld hl, MON_CAUGHTGENDER
 	add hl, bc
 	ld a, [hl]
-	and CAUGHTGENDER_MASK
+	and CAUGHT_GENDER_MASK
 	rla
 	ret
 

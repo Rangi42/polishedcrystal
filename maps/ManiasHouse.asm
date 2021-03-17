@@ -54,7 +54,7 @@ ManiaScript:
 	writetext ManiaText_CanIHaveMyMonBack
 	yesorno
 	iffalse .refused
-	special SpecialReturnShuckie
+	special ReturnShuckie
 	ifequal $0, .wrong
 	ifequal $1, .refused
 	ifequal $3, .superhappy

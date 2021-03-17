@@ -69,21 +69,21 @@ CheckBreedmonCompatibility:
 	ld a, [wBreedMon2Species]
 	ld [wCurSpecies], a
 	ld a, [wBreedMon2Form]
-	and BASEMON_MASK
+	and SPECIESFORM_MASK
 	ld [wCurForm], a
 	call GetBaseData
 	ld a, [wBaseEggGroups]
-	cp NO_EGGS * $11
+	cp EGG_NONE * $11
 	jr z, .Incompatible
 
 	ld a, [wBreedMon1Species]
 	ld [wCurSpecies], a
 	ld a, [wBreedMon1Form]
-	and BASEMON_MASK
+	and SPECIESFORM_MASK
 	ld [wCurForm], a
 	call GetBaseData
 	ld a, [wBaseEggGroups]
-	cp NO_EGGS * $11
+	cp EGG_NONE * $11
 	jr z, .Incompatible
 
 ; Ditto is automatically compatible with everything.
@@ -93,7 +93,7 @@ CheckBreedmonCompatibility:
 	jr z, .Compatible
 	ld [wCurSpecies], a
 	ld a, [wBreedMon2Form]
-	and BASEMON_MASK
+	and SPECIESFORM_MASK
 	ld [wCurForm], a
 	call GetBaseData
 	ld a, [wBaseEggGroups]
@@ -110,7 +110,7 @@ CheckBreedmonCompatibility:
 	jr z, .Compatible
 	ld [wCurSpecies], a
 	ld a, [wBreedMon1Form]
-	and BASEMON_MASK
+	and SPECIESFORM_MASK
 	ld [wCurForm], a
 	push bc
 	call GetBaseData
@@ -308,7 +308,7 @@ HatchEggs:
 	ld a, MON_FORM
 	call GetPartyParamLocation
 	ld a, [hl]
-	and BASEMON_MASK
+	and SPECIESFORM_MASK
 	ld [wCurForm], a
 
 	ld a, [wCurPartyMon]
@@ -496,7 +496,7 @@ InitEggMoves:
 	ld c, a
 	; b = form
 	ld a, [wEggMonForm]
-	and BASEMON_MASK
+	and SPECIESFORM_MASK
 	ld b, a
 	predef FillMoves
 
@@ -574,7 +574,7 @@ InheritLevelMove:
 	ld c, a
 	; b = form
 	ld a, [wEggMonForm]
-	and BASEMON_MASK
+	and SPECIESFORM_MASK
 	ld b, a
 	; bc = index
 	call GetSpeciesAndFormIndex
@@ -610,7 +610,7 @@ InheritEggMove:
 	ld c, a
 	; b = form
 	ld a, [wEggMonForm]
-	and BASEMON_MASK
+	and SPECIESFORM_MASK
 	ld b, a
 	; bc = index
 	call GetSpeciesAndFormIndex

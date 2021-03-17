@@ -163,7 +163,7 @@ StatsScreen_CopyToTempMon:
 	ld a, [wBufferMon]
 	ld [wCurSpecies], a
 	ld a, [wBufferMonForm]
-	and BASEMON_MASK
+	and SPECIESFORM_MASK
 	ld [wCurForm], a
 	call GetBaseData
 	ld hl, wBufferMon
@@ -482,7 +482,7 @@ StatsScreen_LoadGFX:
 	; draw center
 	; index = $40 + [wTempMonCaughtBall]
 	ld a, [wTempMonCaughtBall]
-	and CAUGHTBALL_MASK
+	and CAUGHT_BALL_MASK
 	add $40
 	hlcoord 8, 6
 	ld [hl], a ; center

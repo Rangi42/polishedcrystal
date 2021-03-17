@@ -1,11 +1,12 @@
-	const_def
-	const GROTTODATA_WARP
-	const GROTTODATA_ITEM
-	const GROTTODATA_MON1
-	const GROTTODATA_MON2
-	const GROTTODATA_MON3
-	const GROTTODATA_MON4
-	const GROTTODATA_MONLEVEL
+rsreset
+GROTTODATA_WARP     rb
+GROTTODATA_ITEM     rb
+GROTTODATA_MON1     rb
+GROTTODATA_MON2     rb
+GROTTODATA_MON3     rb
+GROTTODATA_MON4     rb
+GROTTODATA_MONLEVEL rb
+GROTTODATA_LENGTH EQU _RS
 
 InitializeHiddenGrotto::
 ; store backup warp number
@@ -120,7 +121,7 @@ EmptiedHiddenGrotto:
 	ret
 
 GetHiddenGrottoDataMember:
-	ld bc, HiddenGrotto2 - HiddenGrotto1
+	ld bc, GROTTODATA_LENGTH
 	jr AddCurHiddenGrottoTimes
 
 GetHiddenGrottoContentPointer:

@@ -107,7 +107,7 @@ TryAddMonToParty:
 	inc hl
 	ld a, [wTrainerGroupBank]
 	call GetFarByte
-	and BASEMON_MASK
+	and SPECIESFORM_MASK
 .got_trainer_form
 	ld [wCurForm], a
 .not_trainer_form
@@ -118,7 +118,7 @@ TryAddMonToParty:
 	ld a, wRoamMon1Form - wRoamMon1
 	farcall DoGetRoamMonData
 	ld a, [hl]
-	and BASEMON_MASK
+	and SPECIESFORM_MASK
 	ld [wCurForm], a
 .not_roaming_form
 
@@ -397,7 +397,7 @@ endr
 	ld a, [wCurPartySpecies]
 	ld c, a
 	ld a, [wPartyMon1Form]
-	and BASEMON_MASK
+	and SPECIESFORM_MASK
 	ld b, a
 	call GetGenderRatio
 	pop af
@@ -654,9 +654,9 @@ SentGetPkmnIntoFromBox:
 	ld a, [wPokemonWithdrawDepositParameter]
 	and a
 	jr z, .check_IfPartyIsFull
-	cp DAYCARE_WITHDRAW
+	cp DAY_CARE_WITHDRAW
 	jr z, .check_IfPartyIsFull
-	cp DAYCARE_DEPOSIT
+	cp DAY_CARE_DEPOSIT
 	ld hl, wBreedMon1Species
 	jr z, .breedmon
 
@@ -681,7 +681,7 @@ SentGetPkmnIntoFromBox:
 	ld b, 0
 	add hl, bc
 	ld a, [wPokemonWithdrawDepositParameter]
-	cp DAYCARE_WITHDRAW
+	cp DAY_CARE_WITHDRAW
 	ld a, [wBreedMon1Species]
 	jr z, .okay1
 	ld a, [wCurPartySpecies]
@@ -712,7 +712,7 @@ SentGetPkmnIntoFromBox:
 	ld hl, sBoxMon1Species
 	ld bc, BOXMON_STRUCT_LENGTH
 	jr z, .okay3
-	cp DAYCARE_WITHDRAW
+	cp DAY_CARE_WITHDRAW
 	ld hl, wBreedMon1Species
 	jr z, .okay4
 	ld hl, wPartyMon1Species
@@ -726,7 +726,7 @@ SentGetPkmnIntoFromBox:
 	ld bc, BOXMON_STRUCT_LENGTH
 	rst CopyBytes
 	ld a, [wPokemonWithdrawDepositParameter]
-	cp DAYCARE_DEPOSIT
+	cp DAY_CARE_DEPOSIT
 	ld de, wBreedMon1OT
 	jr z, .okay5
 	dec a
@@ -748,7 +748,7 @@ SentGetPkmnIntoFromBox:
 	and a
 	jr z, .okay7
 	ld hl, wBreedMon1OT
-	cp DAYCARE_WITHDRAW
+	cp DAY_CARE_WITHDRAW
 	jr z, .okay8
 	ld hl, wPartyMonOT
 
@@ -760,7 +760,7 @@ SentGetPkmnIntoFromBox:
 	ld bc, NAME_LENGTH
 	rst CopyBytes
 	ld a, [wPokemonWithdrawDepositParameter]
-	cp DAYCARE_DEPOSIT
+	cp DAY_CARE_DEPOSIT
 	ld de, wBreedMon1Nick
 	jr z, .okay9
 	dec a
@@ -782,7 +782,7 @@ SentGetPkmnIntoFromBox:
 	and a
 	jr z, .okay11
 	ld hl, wBreedMon1Nick
-	cp DAYCARE_WITHDRAW
+	cp DAY_CARE_WITHDRAW
 	jr z, .okay12
 	ld hl, wPartyMonNicknames
 
@@ -798,7 +798,7 @@ SentGetPkmnIntoFromBox:
 	ld a, [wPokemonWithdrawDepositParameter]
 	cp PC_DEPOSIT
 	jr z, .took_out_of_box
-	cp DAYCARE_DEPOSIT
+	cp DAY_CARE_DEPOSIT
 	jp z, .CloseSRAM_And_ClearCarryFlag
 
 	push hl
@@ -830,7 +830,7 @@ SentGetPkmnIntoFromBox:
 	and a
 	jr z, .prepare_hyper_addr
 	ld hl, wBreedMon1OT
-	cp DAYCARE_WITHDRAW
+	cp DAY_CARE_WITHDRAW
 	jr z, .got_hyper_addr
 	ld hl, wPartyMonOT
 
@@ -1538,7 +1538,7 @@ ComputeNPCTrademonStats:
 	ld a, MON_FORM
 	call GetPartyParamLocation
 	ld a, [hl]
-	and BASEMON_MASK
+	and SPECIESFORM_MASK
 	ld [wCurForm], a
 	call GetBaseData
 	ld a, MON_MAXHP
@@ -1569,7 +1569,7 @@ UpdatePkmnStats:
 	ld a, MON_FORM
 	call GetPartyParamLocation
 	ld a, [hl]
-	and BASEMON_MASK
+	and SPECIESFORM_MASK
 	ld [wCurForm], a
 	call GetBaseData
 	ld a, MON_LEVEL

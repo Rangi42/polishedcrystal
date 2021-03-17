@@ -2,23 +2,23 @@
 	;   hp  atk  def  spd  sat  sdf
 
 if DEF(FAITHFUL)
-	db WATER, WATER
+	db WATER, WATER ; type
 else
-	db WATER, STEEL
+	db WATER, STEEL ; type
 endc
 	db 45 ; catch rate
 	db 210 ; base exp
 	db NO_ITEM ; item 1
 	db NO_ITEM ; item 2
-	dn FEMALE_12_5, 3 ; gender, step cycles to hatch
+	dn GENDER_F12_5, 3 ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/blastoise/front.dimensions"
 	abilities_for BLASTOISE, TORRENT, RAIN_DISH, MEGA_LAUNCHER
-	db MEDIUM_SLOW ; growth rate
-	dn MONSTER, AMPHIBIAN ; egg groups
+	db GROWTH_MEDIUM_SLOW ; growth rate
+	dn EGG_MONSTER, EGG_WATER_1 ; egg groups
 
 	ev_yield   0,   0,   0,   0,   0,   3
-	;         hp, atk, def, spd, sat, sdf
+	;         hp  atk  def  spd  sat  sdf
 
-	; tmhm
+	; tm/hm learnset
 	tmhm DYNAMICPUNCH, CURSE, ROAR, TOXIC, HAIL, HIDDEN_POWER, ICE_BEAM, BLIZZARD, HYPER_BEAM, PROTECT, RAIN_DANCE, BULLDOZE, IRON_TAIL, EARTHQUAKE, RETURN, DIG, ROCK_SMASH, DOUBLE_TEAM, FLASH_CANNON, SUBSTITUTE, FACADE, REST, ATTRACT, ROCK_SLIDE, FOCUS_BLAST, SCALD, DARK_PULSE, DRAGON_PULSE, WATER_PULSE, AVALANCHE, GIGA_IMPACT, GYRO_BALL, SURF, STRENGTH, WHIRLPOOL, WATERFALL, AQUA_TAIL, BODY_SLAM, COUNTER, DEFENSE_CURL, DOUBLE_EDGE, ENDURE, HEADBUTT, ICE_PUNCH, ICY_WIND, IRON_HEAD, ROLLOUT, SEISMIC_TOSS, SLEEP_TALK, SWAGGER, ZAP_CANNON, ZEN_HEADBUTT
 	; end

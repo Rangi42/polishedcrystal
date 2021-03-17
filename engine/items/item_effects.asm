@@ -454,7 +454,7 @@ PokeBallEffect:
 	ld [wCurSpecies], a
 	ld [wCurPartySpecies], a
 	ld a, [wOTPartyMon1Form]
-	and BASEMON_MASK
+	and SPECIESFORM_MASK
 	ld [wCurForm], a
 	call GetBaseData
 
@@ -1412,7 +1412,7 @@ UseItem_GetBaseDataAndNickParameters:
 	ld a, MON_FORM
 	call GetPartyParamLocation
 	ld a, [hl]
-	and BASEMON_MASK
+	and SPECIESFORM_MASK
 	ld [wCurForm], a
 	call GetBaseData
 	ld a, [wCurPartyMon]
@@ -2300,12 +2300,12 @@ Ball_ReplacePartyMonCaughtBall:
 	ld hl, wPartyMon1CaughtBall
 	call GetPartyLocation
 	ld a, [hl]
-	and CAUGHTBALL_MASK
+	and CAUGHT_BALL_MASK
 	cp b
 	jr z, AlreadyInThatBallMessage
 
 	ld a, [hl]
-	and $ff ^ CAUGHTBALL_MASK
+	and $ff ^ CAUGHT_BALL_MASK
 	add b
 	ld [hl], a
 	call UseDisposableItem

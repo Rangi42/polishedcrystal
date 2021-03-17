@@ -7,9 +7,9 @@ else
 endc
 
 if DEF(FAITHFUL)
-	db GRASS, GRASS
+	db GRASS, GRASS ; type
 else
-	db GRASS, FAIRY
+	db GRASS, FAIRY ; type
 endc
 	db 45 ; catch rate
 if DEF(FAITHFUL)
@@ -19,19 +19,19 @@ else
 endc
 	db NO_ITEM ; item 1
 	db ABSORB_BULB ; item 2
-	dn FEMALE_50, 3 ; gender, step cycles to hatch
+	dn GENDER_F50, 3 ; gender ratio, step cycles to hatch
 	INCBIN "gfx/pokemon/bellossom/front.dimensions"
 if DEF(FAITHFUL)
 	abilities_for BELLOSSOM, CHLOROPHYLL, CHLOROPHYLL, CHLOROPHYLL
 else
 	abilities_for BELLOSSOM, CHLOROPHYLL, CHLOROPHYLL, OWN_TEMPO
 endc
-	db MEDIUM_SLOW ; growth rate
-	dn PLANT, PLANT ; egg groups
+	db GROWTH_MEDIUM_SLOW ; growth rate
+	dn EGG_PLANT, EGG_PLANT ; egg groups
 
 	ev_yield   0,   0,   0,   0,   0,   3
-	;         hp, atk, def, spd, sat, sdf
+	;         hp  atk  def  spd  sat  sdf
 
-	; tmhm
+	; tm/hm learnset
 	tmhm CURSE, TOXIC, HIDDEN_POWER, SUNNY_DAY, HYPER_BEAM, PROTECT, GIGA_DRAIN, SAFEGUARD, SOLAR_BEAM, RETURN, DOUBLE_TEAM, SLUDGE_BOMB, SUBSTITUTE, FACADE, REST, ATTRACT, DAZZLINGLEAM, ENERGY_BALL, DRAIN_PUNCH, GIGA_IMPACT, FLASH, SWORDS_DANCE, CUT, DOUBLE_EDGE, EARTH_POWER, ENDURE, HYPER_VOICE, SEED_BOMB, SLEEP_TALK, SWAGGER
 	; end

@@ -7133,7 +7133,7 @@ GetNewBaseExp:
 	; b = form
 	ld a, MON_FORM
 	call OTPartyAttr
-	and BASEMON_MASK
+	and SPECIESFORM_MASK
 	ld b, a
 	; bc = index
 	call GetSpeciesAndFormIndex

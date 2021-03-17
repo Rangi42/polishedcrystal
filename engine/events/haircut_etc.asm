@@ -1,9 +1,9 @@
-Special_YoungerHaircutBrother:
-	ld hl, Data_YoungerHaircutBrother
-	jr MassageOrHaircut
-
 Special_OlderHaircutBrother:
 	ld hl, Data_OlderHaircutBrother
+	jr MassageOrHaircut
+
+Special_YoungerHaircutBrother:
+	ld hl, Data_YoungerHaircutBrother
 	jr MassageOrHaircut
 
 Special_DaisyMassage:

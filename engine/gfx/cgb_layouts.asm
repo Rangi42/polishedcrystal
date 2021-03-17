@@ -312,7 +312,7 @@ _CGB_StatsScreenHPPals:
 	ld hl, CaughtBallPals
 	ld bc, $4
 	ld a, [wTempMonCaughtBall]
-	and CAUGHTBALL_MASK
+	and CAUGHT_BALL_MASK
 	rst AddNTimes
 	ld de, wBGPals1 palette 7
 	call LoadPalette_White_Col1_Col2_Black
