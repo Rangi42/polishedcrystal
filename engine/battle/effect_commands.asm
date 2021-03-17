@@ -132,7 +132,7 @@ DoMove:
 	add hl, bc
 	add hl, bc
 	ld a, BANK(MoveEffectsPointers)
-	call GetFarHalfword
+	call GetFarWord
 
 	ld a, l
 	ld [wBattleScriptBufferLoc], a
@@ -157,7 +157,7 @@ DoMove:
 	pop bc
 
 	ld a, BANK(BattleCommandPointers)
-	call GetFarHalfword
+	call GetFarWord
 
 	call _hl_
 
@@ -3351,7 +3351,7 @@ UnevolvedEviolite:
 	add hl, bc
 	add hl, bc
 	ld a, BANK(EvosAttacksPointers)
-	call GetFarHalfword
+	call GetFarWord
 	ld a, BANK(EvosAttacks)
 	call GetFarByte
 	and a
@@ -6446,7 +6446,7 @@ GetItemHeldEffect:
 	ld a, ITEMATTR_STRUCT_LENGTH
 	rst AddNTimes
 	ld a, BANK(ItemAttributes)
-	call GetFarHalfword
+	call GetFarWord
 	ld b, l
 	ld c, h
 	pop hl

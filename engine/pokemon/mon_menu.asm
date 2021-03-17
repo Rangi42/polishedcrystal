@@ -1328,7 +1328,7 @@ GetForgottenMoves::
 	add hl, bc
 	add hl, bc
 	ld a, BANK(EvosAttacksPointers)
-	call GetFarHalfword
+	call GetFarWord
 .skip_evos
 	ld a, BANK(EvosAttacks)
 	call GetFarByte

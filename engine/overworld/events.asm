@@ -367,7 +367,7 @@ RunSceneScript:
 
 	ld a, [wMapScriptsBank]
 	ld b, a
-	call GetFarHalfword
+	call GetFarWord
 	ld a, b
 	call GetFarByte
 	cp end_command
@@ -706,7 +706,7 @@ CheckBGEventFlag:
 	ld l, a
 	push hl
 	ld a, [wMapScriptsBank]
-	call GetFarHalfword
+	call GetFarWord
 	ld e, l
 	ld d, h
 	ld b, CHECK_FLAG

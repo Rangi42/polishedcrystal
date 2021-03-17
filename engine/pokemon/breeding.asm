@@ -583,7 +583,7 @@ InheritLevelMove:
 	add hl, bc
 	add hl, bc
 	ld a, BANK(EvosAttacksPointers)
-	call GetFarHalfword
+	call GetFarWord
 .loop
 	ld a, BANK(EvosAttacks)
 	call GetFarByte
@@ -619,7 +619,7 @@ InheritEggMove:
 	add hl, bc
 	add hl, bc
 	ld a, BANK(EggMovePointers)
-	call GetFarHalfword
+	call GetFarWord
 .loop
 	ld a, BANK(EggMoves)
 	call GetFarByte

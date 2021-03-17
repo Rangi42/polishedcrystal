@@ -31,8 +31,8 @@ _ByteFill::
 	jr nz, .PutByte
 	ret
 
-GetFarHalfword::
-; retrieve a halfword from a:hl, and return it in hl.
+GetFarWord::
+; retrieve a word from a:hl, and return it in hl.
 	; bankswitch to new bank
 	ldh [hTempBank], a
 	ldh a, [hROMBank]
@@ -40,7 +40,7 @@ GetFarHalfword::
 	ldh a, [hTempBank]
 	rst Bankswitch
 
-	; get halfword from new bank, put it in hl
+	; get word from new bank, put it in hl
 	ld a, [hli]
 	ld h, [hl]
 	ld l, a
