@@ -468,7 +468,8 @@ wOldTileset:: db
 UNION
 wTempMon:: party_struct wTempMon
 wTempMonNickname:: ds MON_NAME_LENGTH
-wTempMonOT:: ds NAME_LENGTH
+wTempMonOT:: ds PLAYER_NAME_LENGTH
+wTempMonExtra:: ds 3
 NEXTU
 wEncodedTempMon:: savemon_struct wEncodedTempMon
 ENDU
@@ -731,9 +732,27 @@ wOTPartyMon4:: party_struct wOTPartyMon4
 wOTPartyMon5:: party_struct wOTPartyMon5
 wOTPartyMon6:: party_struct wOTPartyMon6
 
-wOTPartyMonsEnd::
-wOTPartyMonOT:: ds NAME_LENGTH * PARTY_LENGTH
-wOTPartyMonNicknames:: ds MON_NAME_LENGTH * PARTY_LENGTH ; make sure this is always available!
+wOTPartyMonOT::
+wOTPartyMon1OT:: ds PLAYER_NAME_LENGTH
+wOTPartyMon1Extra:: ds 3
+wOTPartyMon2OT:: ds PLAYER_NAME_LENGTH
+wOTPartyMon2Extra:: ds 3
+wOTPartyMon3OT:: ds PLAYER_NAME_LENGTH
+wOTPartyMon3Extra:: ds 3
+wOTPartyMon4OT:: ds PLAYER_NAME_LENGTH
+wOTPartyMon4Extra:: ds 3
+wOTPartyMon5OT:: ds PLAYER_NAME_LENGTH
+wOTPartyMon5Extra:: ds 3
+wOTPartyMon6OT:: ds PLAYER_NAME_LENGTH
+wOTPartyMon6Extra:: ds 3
+
+wOTPartyMonNicknames::
+wOTPartyMon1Nickname:: ds MON_NAME_LENGTH
+wOTPartyMon2Nickname:: ds MON_NAME_LENGTH
+wOTPartyMon3Nickname:: ds MON_NAME_LENGTH
+wOTPartyMon4Nickname:: ds MON_NAME_LENGTH
+wOTPartyMon5Nickname:: ds MON_NAME_LENGTH
+wOTPartyMon6Nickname:: ds MON_NAME_LENGTH
 wOTPartyDataEnd::
 
 NEXTU
@@ -1327,9 +1346,27 @@ wPartyMon4:: party_struct wPartyMon4
 wPartyMon5:: party_struct wPartyMon5
 wPartyMon6:: party_struct wPartyMon6
 
-wPartyMonOT:: ds NAME_LENGTH * PARTY_LENGTH
+wPartyMonOT::
+wPartyMon1OT:: ds PLAYER_NAME_LENGTH
+wPartyMon1Extra:: ds 3
+wPartyMon2OT:: ds PLAYER_NAME_LENGTH
+wPartyMon2Extra:: ds 3
+wPartyMon3OT:: ds PLAYER_NAME_LENGTH
+wPartyMon3Extra:: ds 3
+wPartyMon4OT:: ds PLAYER_NAME_LENGTH
+wPartyMon4Extra:: ds 3
+wPartyMon5OT:: ds PLAYER_NAME_LENGTH
+wPartyMon5Extra:: ds 3
+wPartyMon6OT:: ds PLAYER_NAME_LENGTH
+wPartyMon6Extra:: ds 3
 
-wPartyMonNicknames:: ds MON_NAME_LENGTH * PARTY_LENGTH
+wPartyMonNicknames::
+wPartyMon1Nickname:: ds MON_NAME_LENGTH
+wPartyMon2Nickname:: ds MON_NAME_LENGTH
+wPartyMon3Nickname:: ds MON_NAME_LENGTH
+wPartyMon4Nickname:: ds MON_NAME_LENGTH
+wPartyMon5Nickname:: ds MON_NAME_LENGTH
+wPartyMon6Nickname:: ds MON_NAME_LENGTH
 wPartyMonNicknamesEnd::
 
 	ds 9 ; unused
@@ -1355,7 +1392,8 @@ wDayCareMan::
 
 wBreedMon1::
 wBreedMon1Nick::  ds MON_NAME_LENGTH
-wBreedMon1OT:: ds NAME_LENGTH
+wBreedMon1OT::    ds PLAYER_NAME_LENGTH
+wBreedMon1Extra:: ds 3
 wBreedMon1Stats:: oldbox_struct wBreedMon1
 
 wDayCareLady::
@@ -1370,13 +1408,15 @@ wBreedMotherOrNonDitto::
 	db
 
 wBreedMon2::
-wBreedMon2Nick:: ds MON_NAME_LENGTH
-wBreedMon2OT:: ds NAME_LENGTH
+wBreedMon2Nick::  ds MON_NAME_LENGTH
+wBreedMon2OT::    ds PLAYER_NAME_LENGTH
+wBreedMon2Extra:: ds 3
 wBreedMon2Stats:: oldbox_struct wBreedMon2
 
-wEggNick:: ds MON_NAME_LENGTH
-wEggOT:: ds NAME_LENGTH
-wEggMon:: oldbox_struct wEggMon
+wEggNick::  ds MON_NAME_LENGTH
+wEggOT::    ds PLAYER_NAME_LENGTH
+wEggExtra:: ds 3
+wEggMon::   oldbox_struct wEggMon
 
 wBugContestSecondPartySpecies:: db
 wContestMon:: party_struct wContestMon

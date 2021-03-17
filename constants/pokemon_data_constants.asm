@@ -82,7 +82,6 @@ MON_ITEM               rb
 MON_MOVES              rb NUM_MOVES
 MON_ID                 rw
 MON_EXP                rb 3
-
 MON_EVS                rb NUM_STATS
 rsset MON_EVS
 MON_HP_EV              rb
