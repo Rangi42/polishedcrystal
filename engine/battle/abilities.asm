@@ -1938,7 +1938,7 @@ RunPostBattleAbilities::
 	ld [wNamedObjectIndexBuffer], a
 	call GetPokemonName
 	ld hl, wStringBuffer1
-	ld de, wBattleMonNick
+	ld de, wBattleMonNickname
 	ld bc, MON_NAME_LENGTH
 	rst CopyBytes
 	ld b, PICKUP

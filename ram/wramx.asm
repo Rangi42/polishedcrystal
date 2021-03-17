@@ -121,7 +121,7 @@ NEXTU
 ; trade
 wCurTradePartyMon:: db
 wCurOTTradePartyMon:: db
-wBufferTrademonNick:: ds MON_NAME_LENGTH
+wBufferTrademonNickname:: ds MON_NAME_LENGTH
 
 NEXTU
 ; link battle record data
@@ -732,7 +732,7 @@ wOTPartyMon4:: party_struct wOTPartyMon4
 wOTPartyMon5:: party_struct wOTPartyMon5
 wOTPartyMon6:: party_struct wOTPartyMon6
 
-wOTPartyMonOT::
+wOTPartyMonOTs::
 wOTPartyMon1OT:: ds PLAYER_NAME_LENGTH
 wOTPartyMon1Extra:: ds 3
 wOTPartyMon2OT:: ds PLAYER_NAME_LENGTH
@@ -1343,7 +1343,7 @@ wPartyMon4:: party_struct wPartyMon4
 wPartyMon5:: party_struct wPartyMon5
 wPartyMon6:: party_struct wPartyMon6
 
-wPartyMonOT::
+wPartyMonOTs::
 wPartyMon1OT:: ds PLAYER_NAME_LENGTH
 wPartyMon1Extra:: ds 3
 wPartyMon2OT:: ds PLAYER_NAME_LENGTH
@@ -1388,8 +1388,8 @@ wDayCareMan::
 	db
 
 wBreedMon1::
-wBreedMon1Nick::  ds MON_NAME_LENGTH
-wBreedMon1OT::    ds PLAYER_NAME_LENGTH
+wBreedMon1Nickname:: ds MON_NAME_LENGTH
+wBreedMon1OT:: ds PLAYER_NAME_LENGTH
 wBreedMon1Extra:: ds 3
 wBreedMon1Stats:: oldbox_struct wBreedMon1
 
@@ -1405,15 +1405,15 @@ wBreedMotherOrNonDitto::
 	db
 
 wBreedMon2::
-wBreedMon2Nick::  ds MON_NAME_LENGTH
-wBreedMon2OT::    ds PLAYER_NAME_LENGTH
+wBreedMon2Nickname:: ds MON_NAME_LENGTH
+wBreedMon2OT:: ds PLAYER_NAME_LENGTH
 wBreedMon2Extra:: ds 3
 wBreedMon2Stats:: oldbox_struct wBreedMon2
 
-wEggNick::  ds MON_NAME_LENGTH
-wEggOT::    ds PLAYER_NAME_LENGTH
-wEggExtra:: ds 3
-wEggMon::   oldbox_struct wEggMon
+wEggMonNickname:: ds MON_NAME_LENGTH
+wEggMonOT:: ds PLAYER_NAME_LENGTH
+wEggMonExtra:: ds 3
+wEggMon:: oldbox_struct wEggMon
 
 wBugContestSecondPartySpecies:: db
 wContestMon:: party_struct wContestMon

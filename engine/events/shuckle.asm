@@ -35,15 +35,15 @@ SpecialGiveShuckie:
 	dec a
 	ld hl, wPartyMonNicknames
 	call SkipNames
-	ld de, SpecialShuckieNick
+	ld de, SpecialShuckleNickname
 	call CopyName2
 
 ; OT.
 	ld a, [wPartyCount]
 	dec a
-	ld hl, wPartyMonOT
+	ld hl, wPartyMonOTs
 	call SkipNames
-	ld de, SpecialShuckieOT
+	ld de, SpecialShuckleOT
 	call CopyName2
 
 ; Engine flag for this event.
@@ -88,9 +88,9 @@ ReturnShuckie:
 
 ; OT
 	ld a, [wCurPartyMon]
-	ld hl, wPartyMonOT
+	ld hl, wPartyMonOTs
 	call SkipNames
-	ld de, SpecialShuckieOT
+	ld de, SpecialShuckleOT
 .CheckOT:
 	ld a, [de]
 	cp [hl]
@@ -133,7 +133,8 @@ ReturnShuckie:
 	ldh [hScriptVar], a
 	ret
 
-SpecialShuckieOT:
+SpecialShuckleOT:
 	rawchar "Kirk@"
-SpecialShuckieNick:
+
+SpecialShuckleNickname:
 	rawchar "Shuckie@"

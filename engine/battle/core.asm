@@ -1280,9 +1280,9 @@ endr
 	call SkipNames
 	ldh a, [hBattleTurn]
 	and a
-	ld de, wBattleMonNick
+	ld de, wBattleMonNickname
 	jr z, .got_battle_nick
-	ld de, wEnemyMonNick
+	ld de, wEnemyMonNickname
 .got_battle_nick
 	ld bc, MON_NAME_LENGTH
 	rst CopyBytes
@@ -2757,7 +2757,7 @@ OfferSwitch:
 	ld a, [wEnemySwitchTarget]
 	dec a
 	call SkipNames
-	ld de, wEnemyMonNick
+	ld de, wEnemyMonNickname
 	ld bc, MON_NAME_LENGTH
 	rst CopyBytes
 
@@ -3703,9 +3703,9 @@ CheckDanger:
 	ret
 
 PrintPlayerHUD:
-	ld de, wBattleMonNick
+	ld de, wBattleMonNickname
 	hlcoord 11, 7
-	ld a, [wBattleMonNick + MON_NAME_LENGTH - 2]
+	ld a, [wBattleMonNickname + MON_NAME_LENGTH - 2]
 	cp "@"
 	jr z, .short_name
 	dec hl ; hlcoord 10, 7
@@ -3792,7 +3792,7 @@ DrawEnemyHUD:
 	ld [wCurPartySpecies], a
 	call GetEnemyMonVariant
 	call GetBaseData
-	ld de, wEnemyMonNick
+	ld de, wEnemyMonNickname
 	hlcoord 1, 0
 	rst PlaceString
 	ld h, b
@@ -6362,7 +6362,7 @@ GiveExperiencePoints:
 	ld [wStringBuffer2], a
 	ld a, [wCurPartyMon]
 	ld hl, wPartyMonNicknames
-	call GetNick
+	call GetNickname
 	ld hl, Text_PkmnGainedExpPoint
 	call BattleTextbox
 	ld a, [wStringBuffer2 + 2]
@@ -6980,7 +6980,7 @@ AnimateExpBar:
 	ld c, $40
 	call .LoopBarAnimation
 	call PrintPlayerHUD
-	ld hl, wBattleMonNick
+	ld hl, wBattleMonNickname
 	ld de, wStringBuffer1
 	ld bc, MON_NAME_LENGTH
 	rst CopyBytes

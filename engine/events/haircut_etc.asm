@@ -29,7 +29,7 @@ MassageOrHaircut:
 	pop hl
 	jr nz, .egg
 	push hl
-	call GetCurNick
+	call GetCurNickname
 	call CopyPokemonName_Buffer1_Buffer3
 	pop hl
 	call Random

@@ -48,7 +48,7 @@ CheckMagikarpLength:
 	ld [de], a
 	inc de
 	ld a, [wCurPartyMon]
-	ld hl, wPartyMonOT
+	ld hl, wPartyMonOTs
 	call SkipNames
 	rst CopyBytes
 	ld a, 3

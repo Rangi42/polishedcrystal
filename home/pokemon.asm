@@ -230,10 +230,10 @@ GetGenderRatio::
 	ld c, a
 	ret
 
-GetCurNick::
+GetCurNickname::
 	ld a, [wCurPartyMon]
 	ld hl, wPartyMonNicknames
-GetNick::
+GetNickname::
 ; Get nickname a from list hl.
 	ld de, wStringBuffer1
 	push hl

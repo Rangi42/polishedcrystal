@@ -1181,7 +1181,7 @@ Text_EnemyUsedOn::
 	text_ram wMonOrItemNameBuffer
 	text_start
 	cont "on "
-	text_ram wEnemyMonNick
+	text_ram wEnemyMonNickname
 	text "!"
 	prompt
 
@@ -1944,13 +1944,13 @@ Text_YourFoesWeakGetmPkmn::
 
 SECTION "Text_BattleMonNick01", ROMX
 Text_BattleMonNick01::
-	text_ram wBattleMonNick
+	text_ram wBattleMonNickname
 	text "!"
 	done
 
 SECTION "Text_BattleMonNickComma", ROMX
 Text_BattleMonNickComma::
-	text_ram wBattleMonNick
+	text_ram wBattleMonNickname
 	text ",@"
 	text_end
 
@@ -2502,7 +2502,7 @@ _BreedAskNicknameText::
 SECTION "_LeftWithDayCareLadyText", ROMX
 _LeftWithDayCareLadyText::
 	text "It's "
-	text_ram wBreedMon2Nick
+	text_ram wBreedMon2Nickname
 	line "that was left with"
 	cont "the Day-Care Lady."
 	done
@@ -3390,7 +3390,7 @@ _LinkAbnormalMonText::
 SECTION "_LinkAskTradeForText", ROMX
 _LinkAskTradeForText::
 	text "Trade "
-	text_ram wBufferTrademonNick
+	text_ram wBufferTrademonNickname
 	line "for "
 	text_ram wStringBuffer1
 	text "?"
@@ -4160,7 +4160,7 @@ _BallSoCloseText::
 SECTION "Text_BallCaught", ROMX
 Text_BallCaught::
 	text "Gotcha! "
-	text_ram wEnemyMonNick
+	text_ram wEnemyMonNickname
 	line "was caught!"
 	text_sound SFX_CAUGHT_MON
 	text_end
@@ -4188,7 +4188,7 @@ _BallSentToPCText::
 
 SECTION "_NewDexDataText", ROMX
 _NewDexDataText::
-	text_ram wEnemyMonNick
+	text_ram wEnemyMonNickname
 	text "'s data"
 	line "was newly added to"
 	cont "the #dex."

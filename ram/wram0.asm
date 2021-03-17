@@ -380,8 +380,8 @@ wBattle::
 wEnemyMoveStruct::  move_struct wEnemyMoveStruct
 wPlayerMoveStruct:: move_struct wPlayerMoveStruct
 
-wEnemyMonNick::  ds MON_NAME_LENGTH
-wBattleMonNick:: ds MON_NAME_LENGTH
+wEnemyMonNickname::  ds MON_NAME_LENGTH
+wBattleMonNickname:: ds MON_NAME_LENGTH
 
 wBattleMon:: battle_struct wBattleMon
 
@@ -936,8 +936,8 @@ wLinkPlayerPartyMon3:: party_struct wLinkPlayerPartyMon3
 wLinkPlayerPartyMon4:: party_struct wLinkPlayerPartyMon4
 wLinkPlayerPartyMon5:: party_struct wLinkPlayerPartyMon5
 wLinkPlayerPartyMon6:: party_struct wLinkPlayerPartyMon6
-wLinkPlayerPartyMonOTNames:: ds PARTY_LENGTH * NAME_LENGTH
-wLinkPlayerPartyMonNicks:: ds PARTY_LENGTH * MON_NAME_LENGTH
+wLinkPlayerPartyMonOTs:: ds PARTY_LENGTH * NAME_LENGTH
+wLinkPlayerPartyMonNicknames:: ds PARTY_LENGTH * MON_NAME_LENGTH
 wLinkPlayerDataEnd::
 
 NEXTU

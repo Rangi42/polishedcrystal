@@ -3,8 +3,8 @@ NamesPointers::
 	dba MoveNames
 	dba ApricornNames
 	dba ItemNames
-	dbw 0, wPartyMonOT
-	dbw 0, wOTPartyMonOT
+	dbw 0, wPartyMonOTs
+	dbw 0, wOTPartyMonOTs
 	dba TrainerClassNames
 	dba KeyItemNames
 

@@ -482,7 +482,7 @@ Link_PrepPartyData_Gen2:
 	ld bc, PARTY_LENGTH * PARTYMON_STRUCT_LENGTH
 	rst CopyBytes
 
-	ld hl, wPartyMonOT
+	ld hl, wPartyMonOTs
 	ld bc, PARTY_LENGTH * NAME_LENGTH
 	rst CopyBytes
 
@@ -1369,7 +1369,7 @@ LinkTrade:
 	ld [wNamedObjectIndexBuffer], a
 	call GetPokemonName
 	ld hl, wStringBuffer1
-	ld de, wBufferTrademonNick
+	ld de, wBufferTrademonNickname
 	ld bc, MON_NAME_LENGTH
 	rst CopyBytes
 	ld a, [wCurOTTradePartyMon]
@@ -1521,7 +1521,7 @@ LinkTrade:
 	push af
 ; OT name
 	ld a, [wCurTradePartyMon]
-	ld hl, wPartyMonOT
+	ld hl, wPartyMonOTs
 	call SkipNames
 	ld de, wPlayerTrademonOTName
 	ld bc, NAME_LENGTH
@@ -1576,7 +1576,7 @@ LinkTrade:
 	ld [wOTTrademonSpecies], a
 ; OT name
 	ld a, [wCurOTTradePartyMon]
-	ld hl, wOTPartyMonOT
+	ld hl, wOTPartyMonOTs
 	call SkipNames
 	ld de, wOTTrademonOTName
 	ld bc, NAME_LENGTH

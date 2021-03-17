@@ -152,7 +152,7 @@ DoPoisonStep::
 	jr z, .mon_not_fainted
 	ld c, HAPPINESS_POISONFAINT
 	predef ChangeHappiness
-	farcall GetPartyNick
+	farcall GetPartyNickname
 	ld hl, .PoisonRecoveryText
 	call PrintText
 

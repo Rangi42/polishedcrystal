@@ -3,14 +3,14 @@ rsreset
 NPCTRADE_DIALOG      rb
 NPCTRADE_GIVEMON     rb
 NPCTRADE_GETMON      rb
-NPCTRADE_NICK        rb MON_NAME_LENGTH
+NPCTRADE_NICKNAME    rb MON_NAME_LENGTH
 NPCTRADE_DVS         rb 3
 NPCTRADE_PERSONALITY rw
 NPCTRADE_BALL        rb
 NPCTRADE_ITEM        rb
 NPCTRADE_OT_ID       rw
 NPCTRADE_OT_NAME     rb PLAYER_NAME_LENGTH
-NPCTRADE_PADDING     rb
+                     rb_skip
 NPCTRADE_STRUCT_LENGTH EQU _RS
 
 ; NPCTrades indexes (see data/events/npc_trades.asm)

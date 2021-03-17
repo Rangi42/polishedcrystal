@@ -264,7 +264,7 @@ SwapPartyMons:
 	call DoPartySwap
 
 	; Swap OT name
-	ld hl, wPartyMonOT
+	ld hl, wPartyMonOTs
 	ld c, NAME_LENGTH
 	call DoPartySwap
 
@@ -636,7 +636,7 @@ CopyBetweenPartyAndTemp:
 	ld a, MON_NAME_LENGTH
 	call .Copy
 
-	ld hl, wPartyMonOT
+	ld hl, wPartyMonOTs
 	ld de, wTempMonOT
 	ld a, NAME_LENGTH
 	call .Copy
@@ -747,7 +747,7 @@ EncodeTempMon:
 
 	; Move name-related bytes.
 	ld hl, wTempMonNickname
-	ld de, wEncodedTempMonNick
+	ld de, wEncodedTempMonNickname
 	ld bc, MON_NAME_LENGTH
 	rst CopyBytes
 	ld hl, wTempMonOT
@@ -756,8 +756,8 @@ EncodeTempMon:
 	rst CopyBytes
 
 	; Convert nickname/OT characters into reversible 7bit.
-	ld hl, wEncodedTempMonNick
-	ld b, wEncodedTempMonEnd - wEncodedTempMonNick
+	ld hl, wEncodedTempMonNickname
+	ld b, wEncodedTempMonEnd - wEncodedTempMonNickname
 .charmap_loop
 	ld a, [hl]
 	ld c, $fa
@@ -784,13 +784,13 @@ ChecksumTempMon:
 	; boxmon struct + 3 extra bytes (normally placed after OT)
 	ld bc, wEncodedTempMon
 	ld hl, 127
-	lb de, wEncodedTempMonNick - wEncodedTempMon, 0
+	lb de, wEncodedTempMonNickname - wEncodedTempMon, 0
 	call .DoChecksum
 
 	; nickname + OT. This skips one CRC multiplier due to a double-increase.
 	; Counterintuitive but harmless.
-	ld bc, wEncodedTempMonNick
-	ld d, $80 | (wEncodedTempMonEnd - wEncodedTempMonNick)
+	ld bc, wEncodedTempMonNickname
+	ld d, $80 | (wEncodedTempMonEnd - wEncodedTempMonNickname)
 	call .DoChecksum
 
 	; Compare and write the result
@@ -800,8 +800,8 @@ ChecksumTempMon:
 	; Checksum is 16bit, further ones are padded with zeroes.
 	; The padding being nonzero is also counted as invalid.
 	ld b, 0 ; used for checksum error detection
-	ld hl, wEncodedTempMonNick
-	ld c, wEncodedTempMonEnd - wEncodedTempMonNick
+	ld hl, wEncodedTempMonNickname
+	ld c, wEncodedTempMonEnd - wEncodedTempMonNickname
 .WriteChecksum:
 	ld a, [hl]
 	and $7f
@@ -854,8 +854,8 @@ DecodeTempMon:
 	rst CopyBytes
 
 	; Reverse the 7bit character encoding back to its original state.
-	ld hl, wEncodedTempMonNick
-	ld b, wEncodedTempMonEnd - wEncodedTempMonNick
+	ld hl, wEncodedTempMonNickname
+	ld b, wEncodedTempMonEnd - wEncodedTempMonNickname
 .charmap_loop
 	ld a, [hl]
 	or $80
@@ -878,8 +878,8 @@ DecodeTempMon:
 	dec b
 	jr nz, .charmap_loop
 
-	; Copy nick and OT back to its original place. We need to do this backwards
-	; due to overlap between wEncodedTempMon(Nick|OT) and wTempMon(Nick|OT).
+	; Copy nickname and OT back to its original place. We need to do this backwards
+	; due to overlap between wEncodedTempMon(Nickname|OT) and wTempMon(Nickname|OT).
 	ld hl, wEncodedTempMonOT + PLAYER_NAME_LENGTH - 2
 	ld de, wTempMonOT + PLAYER_NAME_LENGTH - 1
 	lb bc, 2, PLAYER_NAME_LENGTH - 1

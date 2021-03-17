@@ -31,11 +31,11 @@ TryAddMonToParty:
 	ld a, -1
 	ld [de], a
 	; Now let's load the OT name.
-	ld hl, wPartyMonOT
+	ld hl, wPartyMonOTs
 	ld a, [wMonType]
 	and $f
 	jr z, .loadOTname
-	ld hl, wOTPartyMonOT
+	ld hl, wOTPartyMonOTs
 
 .loadOTname
 	ldh a, [hMoveMon] ; Restore index from backup
@@ -554,13 +554,13 @@ AddTempmonToParty:
 	ld hl, wTempMonSpecies
 	rst CopyBytes
 
-	ld hl, wPartyMonOT
+	ld hl, wPartyMonOTs
 	ld a, [wPartyCount]
 	dec a
 	call SkipNames
 	ld d, h
 	ld e, l
-	ld hl, wOTPartyMonOT
+	ld hl, wOTPartyMonOTs
 	ld a, [wCurPartyMon]
 	call SkipNames
 	ld bc, NAME_LENGTH
@@ -682,10 +682,10 @@ RetrieveBreedmon:
 	ld a, [wPokemonWithdrawDepositParameter]
 	and a
 	ld a, [wBreedMon1Species]
-	ld de, wBreedMon1Nick
+	ld de, wBreedMon1Nickname
 	jr z, .okay
 	ld a, [wBreedMon2Species]
-	ld de, wBreedMon2Nick
+	ld de, wBreedMon2Nickname
 
 .okay
 	ld [hli], a
@@ -698,7 +698,7 @@ RetrieveBreedmon:
 	call SwapHLDE
 	rst CopyBytes
 	push hl
-	ld hl, wPartyMonOT
+	ld hl, wPartyMonOTs
 	ld a, [wPartyCount]
 	dec a
 	call SkipNames
@@ -781,11 +781,11 @@ GetLastPartyMon:
 	ret
 
 DepositMonWithDayCareMan:
-	ld de, wBreedMon1Nick
+	ld de, wBreedMon1Nickname
 	jr _DepositBreedmon
 
 DepositMonWithDayCareLady:
-	ld de, wBreedMon2Nick
+	ld de, wBreedMon2Nickname
 
 _DepositBreedmon:
 	ld a, [wCurPartyMon]
@@ -793,7 +793,7 @@ _DepositBreedmon:
 	call SkipNames
 	rst CopyBytes
 	ld a, [wCurPartyMon]
-	ld hl, wPartyMonOT
+	ld hl, wPartyMonOTs
 	call SkipNames
 	rst CopyBytes
 	ld a, [wCurPartyMon]
@@ -1096,7 +1096,7 @@ GetHyperTraining:
 
 GetHyperTrainingAddr:
 	ld a, [wCurPartyMon]
-	ld hl, wPartyMonOT
+	ld hl, wPartyMonOTs
 	push bc
 	call SkipNames
 	ld bc, PLAYER_NAME_LENGTH
@@ -1487,7 +1487,7 @@ GivePoke::
 
 	push hl
 	ld a, [wCurPartyMon]
-	ld hl, wPartyMonOT
+	ld hl, wPartyMonOTs
 	call SkipNames
 	ld d, h
 	ld e, l

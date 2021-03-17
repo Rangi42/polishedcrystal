@@ -65,7 +65,7 @@ endr
 ; OT.
 	ld a, [wPartyCount]
 	dec a
-	ld hl, wPartyMonOT
+	ld hl, wPartyMonOTs
 	call SkipNames
 	ld de, .OT
 	call CopyName2

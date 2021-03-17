@@ -367,7 +367,7 @@ HatchEggs:
 	ld a, [wPlayerID + 1]
 	ld [hl], a
 	ld a, [wCurPartyMon]
-	ld hl, wPartyMonOT
+	ld hl, wPartyMonOTs
 	ld bc, NAME_LENGTH
 	rst AddNTimes
 	ld d, h
@@ -905,7 +905,7 @@ Special_DayCareMon1:
 	bit 0, a
 	jr z, DayCareMonCursor
 	call ButtonSound
-	ld hl, wBreedMon2Nick
+	ld hl, wBreedMon2Nickname
 	call DayCareMonCompatibilityText
 	jp PrintText
 
@@ -918,7 +918,7 @@ Special_DayCareMon2:
 	bit 0, a
 	jr z, DayCareMonCursor
 	call ButtonSound
-	ld hl, wBreedMon1Nick
+	ld hl, wBreedMon1Nickname
 	call DayCareMonCompatibilityText
 	jp PrintText
 

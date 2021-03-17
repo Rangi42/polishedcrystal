@@ -443,8 +443,8 @@ BT_SetPlayerOT:
 	call .CopyPartyData
 
 	; OT name struct
-	ld hl, wPartyMonOT
-	ld de, wOTPartyMonOT
+	ld hl, wPartyMonOTs
+	ld de, wOTPartyMonOTs
 	ld a, NAME_LENGTH
 	call .CopyPartyData
 	pop de
