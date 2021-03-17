@@ -59,6 +59,9 @@ BSOD:
 	dec a ; a == ERR_BT_STATE?
 	ld de, .BTOldSave
 	jr z, .PrintErrorType
+	dec a ; a == ERR_VERSION_MISMATCH?
+	ld de, .VersionMismatch
+	jr z, .PrintErrorType
 	dec a ; a == ERR_OLDBOX?
 	ld de, .OldBox
 	jr z, .PrintErrorType
@@ -142,6 +145,9 @@ endc
 
 .BTOldSave:
 	db "Old save@"
+
+.VersionMismatch:
+	db "Game ver mismatch@"
 
 .OldBox:
 	db "Using oldbox@"

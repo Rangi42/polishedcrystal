@@ -107,6 +107,18 @@ Init::
 	call ClearSprites
 	call ClearsScratch
 
+	; Write game version to WRAM.
+	ldh a, [rSVBK]
+	push af
+	ld a, BANK(wGameVersion)
+	ldh [rSVBK], a
+	ld a, HIGH(SAVE_VERSION)
+	ld [wGameVersion], a
+	ld a, LOW(SAVE_VERSION)
+	ld [wGameVersion + 1], a
+	pop af
+	ldh [rSVBK], a
+
 ; Initialize the RNG state. It can be initialized to anything but zero; this is just a simple way of doing it.
 	ld hl, wRNGState
 	ld a, "R"

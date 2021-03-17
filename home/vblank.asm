@@ -22,10 +22,11 @@ VBlank::
 	cp 7
 	jr z, .skipToGameTime
 
-	; don't chain vblank crashes
+	; Avoid chaining crashes as a rule. This is especially for vblank ones.
+	; Thus, the fact that this doesn't avoid chaining rst0 (error code 0) is ok.
 	ldh a, [hCrashCode]
-	cp FIRST_VBLANK_ERR
-	jr nc, .skip_crash
+	and a
+	jr nz, .skip_crash
 
 	ld hl, sp+$0
 	ld a, h
@@ -39,6 +40,20 @@ VBlank::
 	cp HIGH(VRAM_Begin) + 1
 	ld a, ERR_EXECUTING_RAM
 	jr nc, .crash
+
+	ldh a, [rSVBK]
+	push af
+	ld a, BANK(wGameVersion)
+	ldh [rSVBK], a
+	ld a, [wGameVersion]
+	cp HIGH(SAVE_VERSION)
+	jr nz, .version_crash
+	ld a, [wGameVersion + 1]
+	cp LOW(SAVE_VERSION)
+	ld a, ERR_VERSION_MISMATCH
+	jr nz, .version_crash
+	pop af
+	ldh [rSVBK], a
 
 .skip_crash
 	ldh a, [hVBlank]
@@ -78,6 +93,12 @@ VBlank::
 	pop hl
 	reti
 
+.version_crash
+	pop af
+	ldh [rSVBK], a
+	ld a, ERR_VERSION_MISMATCH
+	jr .crash
+
 .SPTooLow
 	; keep in mind that lower sp = higher stack frame
 	ld a, ERR_STACK_OVERFLOW
@@ -85,6 +106,7 @@ VBlank::
 
 .SPTooHigh
 	ld a, ERR_STACK_UNDERFLOW
+	; fallthrough
 .crash
 	di
 	jp Crash
